@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kri8v-00017a-9y
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Dec 2020 08:56:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41518)
+	id 1kri8v-00018p-PQ
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Dec 2020 08:56:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1krdBT-0001i9-PR; Tue, 22 Dec 2020 03:38:19 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2919)
+ id 1krdBW-0001jW-GB; Tue, 22 Dec 2020 03:38:22 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2621)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1krdBR-0002dx-3p; Tue, 22 Dec 2020 03:38:19 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4D0V7q1rf2zM7G1;
- Tue, 22 Dec 2020 16:37:11 +0800 (CST)
+ id 1krdBU-0002cX-U4; Tue, 22 Dec 2020 03:38:22 -0500
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4D0V7y4dmJz7JXT;
+ Tue, 22 Dec 2020 16:37:18 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.498.0; Tue, 22 Dec 2020
- 16:37:55 +0800
+ 16:37:54 +0800
 From: Zhang Han <zhanghan64@huawei.com>
 To: <jasowang@redhat.com>
 CC: <hunongda@huawei.com>, <alex.chen@huawei.com>,
  <hang.zhanghailiang@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>
-Subject: [PATCH 9/9] net: Fix the indent problems
-Date: Tue, 22 Dec 2020 16:23:40 +0800
-Message-ID: <20201222082340.67405-10-zhanghan64@huawei.com>
+Subject: [PATCH 7/9] net: Remove assignment in if condition
+Date: Tue, 22 Dec 2020 16:23:38 +0800
+Message-ID: <20201222082340.67405-8-zhanghan64@huawei.com>
 X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
 In-Reply-To: <20201222082340.67405-1-zhanghan64@huawei.com>
 References: <20201222082340.67405-1-zhanghan64@huawei.com>
@@ -31,13 +31,13 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.124.27]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhanghan64@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=zhanghan64@huawei.com;
+ helo=szxga07-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Tue, 22 Dec 2020 08:55:59 -0500
@@ -52,113 +52,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Dec 2020 08:38:20 -0000
+X-List-Received-Date: Tue, 22 Dec 2020 08:38:22 -0000
 
-Fix Suspect code indent for statements
+Put the assignment before the if condition
 
 Signed-off-by: Zhang Han <zhanghan64@huawei.com>
 ---
- net/tap-solaris.c | 18 +++++++++---------
- net/tap-win32.c   | 28 ++++++++++++++--------------
- net/vde.c         |  2 +-
- 3 files changed, 24 insertions(+), 24 deletions(-)
+ net/tap-bsd.c     | 3 ++-
+ net/tap-solaris.c | 9 ++++++---
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
+diff --git a/net/tap-bsd.c b/net/tap-bsd.c
+index dc8f9c8658..d1dca793f9 100644
+--- a/net/tap-bsd.c
++++ b/net/tap-bsd.c
+@@ -176,7 +176,8 @@ int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
+ 
+     if (fd < 0) {
+         /* Tap device not specified or does not exist. */
+-        if ((fd = tap_open_clone(ifname, ifname_size, errp)) < 0) {
++        fd = tap_open_clone(ifname, ifname_size, errp);
++        if (fd < 0) {
+             return -1;
+         }
+     }
 diff --git a/net/tap-solaris.c b/net/tap-solaris.c
-index 0b4f709abc..fc1e796f70 100644
+index a0a5456ab6..d5af4efd60 100644
 --- a/net/tap-solaris.c
 +++ b/net/tap-solaris.c
-@@ -76,16 +76,16 @@ static int tap_alloc(char *dev, size_t dev_size, Error **errp)
-     memset(&ifr, 0x0, sizeof(ifr));
- 
-     if (*dev) {
--       ptr = dev;
--       while (*ptr && !qemu_isdigit((int)*ptr)) {
--           ptr++;
--       }
--       ppa = atoi(ptr);
-+        ptr = dev;
-+        while (*ptr && !qemu_isdigit((int)*ptr)) {
-+            ptr++;
-+        }
-+        ppa = atoi(ptr);
+@@ -105,7 +105,8 @@ static int tap_alloc(char *dev, size_t dev_size, Error **errp)
+     strioc_ppa.ic_timout = 0;
+     strioc_ppa.ic_len = sizeof(ppa);
+     strioc_ppa.ic_dp = (char *)&ppa;
+-    if ((ppa = ioctl(tap_fd, I_STR, &strioc_ppa)) < 0) {
++    ppa = ioctl(tap_fd, I_STR, &strioc_ppa));
++    if (ppa < 0) {
+         error_report("Can't assign new interface");
      }
  
-     /* Check if IP device was opened */
-     if (ip_fd) {
--       close(ip_fd);
-+        close(ip_fd);
+@@ -162,12 +163,14 @@ static int tap_alloc(char *dev, size_t dev_size, Error **errp)
+         error_report("Can't set ifname to arp");
      }
  
-     TFR(ip_fd = open("/dev/udp", O_RDWR, 0));
-@@ -182,9 +182,9 @@ static int tap_alloc(char *dev, size_t dev_size, Error **errp)
-     ifr.lifr_arp_muxid = arp_muxid;
- 
-     if (ioctl(ip_fd, SIOCSLIFMUXID, &ifr) < 0) {
--      ioctl(ip_fd, I_PUNLINK , arp_muxid);
--      ioctl(ip_fd, I_PUNLINK, ip_muxid);
--      error_report("Can't set multiplexor id");
-+        ioctl(ip_fd, I_PUNLINK , arp_muxid);
-+        ioctl(ip_fd, I_PUNLINK, ip_muxid);
-+        error_report("Can't set multiplexor id");
+-    if ((ip_muxid = ioctl(ip_fd, I_LINK, if_fd)) < 0) {
++    ip_muxid = ioctl(ip_fd, I_LINK, if_fd);
++    if (ip_muxid < 0) {
+         error_setg(errp, "Can't link TAP device to IP");
+         return -1;
      }
  
-     snprintf(dev, dev_size, "tap%d", ppa);
-diff --git a/net/tap-win32.c b/net/tap-win32.c
-index 107027aa24..b3af8fcba9 100644
---- a/net/tap-win32.c
-+++ b/net/tap-win32.c
-@@ -158,24 +158,24 @@ static tun_buffer_t *get_buffer_from_output_queue(tap_win32_overlapped_t *const
-     result = WaitForSingleObject(overlapped->output_queue_semaphore, timeout);
- 
-     switch (result) {
--        /* The semaphore object was signaled. */
--        case WAIT_OBJECT_0:
--            EnterCriticalSection(&overlapped->output_queue_cs);
-+    /* The semaphore object was signaled. */
-+    case WAIT_OBJECT_0:
-+        EnterCriticalSection(&overlapped->output_queue_cs);
- 
--            buffer = overlapped->output_queue_front;
--            overlapped->output_queue_front = buffer->next;
-+        buffer = overlapped->output_queue_front;
-+        overlapped->output_queue_front = buffer->next;
- 
--            if (overlapped->output_queue_front == NULL) {
--                overlapped->output_queue_back = NULL;
--            }
-+        if (overlapped->output_queue_front == NULL) {
-+            overlapped->output_queue_back = NULL;
-+        }
- 
--            LeaveCriticalSection(&overlapped->output_queue_cs);
--            break;
-+        LeaveCriticalSection(&overlapped->output_queue_cs);
-+        break;
- 
--        /* Semaphore was nonsignaled, so a time-out occurred. */
--        case WAIT_TIMEOUT:
--            /* Cannot open another window. */
--            break;
-+    /* Semaphore was nonsignaled, so a time-out occurred. */
-+    case WAIT_TIMEOUT:
-+        /* Cannot open another window. */
-+        break;
+-    if ((arp_muxid = ioctl(ip_fd, link_type, arp_fd)) < 0) {
++    arp_muxid = ioctl(ip_fd, link_type, arp_fd);
++    if (arp_muxid < 0) {
+         error_report("Can't link TAP device to ARP");
      }
  
-     return buffer;
-diff --git a/net/vde.c b/net/vde.c
-index 0b06464f4d..9ccedddc63 100644
---- a/net/vde.c
-+++ b/net/vde.c
-@@ -55,7 +55,7 @@ static ssize_t vde_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-     ssize_t ret;
- 
-     do {
--      ret = vde_send(s->vde, (const char *)buf, size, 0);
-+        ret = vde_send(s->vde, (const char *)buf, size, 0);
-     } while (ret < 0 && errno == EINTR);
- 
-     return ret;
 -- 
 2.29.1.59.gf9b6481aed
 
