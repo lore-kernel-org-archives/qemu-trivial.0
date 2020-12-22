@@ -1,92 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1krLCN-0004yy-UE
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Dec 2020 08:26:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53742)
+	id 1kri8v-00017a-9y
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Dec 2020 08:56:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1krLCB-0004xR-Lk
- for qemu-trivial@nongnu.org; Mon, 21 Dec 2020 08:25:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:29912)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1krLC6-000575-R6
- for qemu-trivial@nongnu.org; Mon, 21 Dec 2020 08:25:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1608557145;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=P+lPXiAL1rTSS5/AHiHxE3G6s4PPGu7F7Esp739Z0X0=;
- b=PmXTBDH8CLo0NzH2DfE+U5asg73Efw4qlf+b5L6qw18GeS5RyEj3AO4yfUHuFrEaR1mhea
- YJRB7FfaXedZHrMBpp5uUQVkFVicybSu2djolv7Kwr0evHFR6oyQ2c8Azs1p+56seBlo0i
- 9gz4Tz3ABNF7eFKvckMWHP48EV3udqE=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-296-Uwj5CsBIN-yPnoy2pjoOgg-1; Mon, 21 Dec 2020 08:25:44 -0500
-X-MC-Unique: Uwj5CsBIN-yPnoy2pjoOgg-1
-Received: by mail-wr1-f72.google.com with SMTP id o17so8562667wra.8
- for <qemu-trivial@nongnu.org>; Mon, 21 Dec 2020 05:25:43 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=P+lPXiAL1rTSS5/AHiHxE3G6s4PPGu7F7Esp739Z0X0=;
- b=bArkRvCl9iPddG0aJPV3ZsatokmejM+fIsrb9KTP5tsW4mtQpuPm3P2uwrIVX3OhA7
- sdySLoxXRBKmWZ9VLFJdljV9hKknaOXMsQB26m/Gn7A7Ns8Ws7NZio1izjY7TKt3IRz0
- kyq4fQ8LC8BVj3VU6y7p/HyZW93GnpvBDJqpZ65ido6/C8qceg+6rcWTnmHfCAV6vllm
- HGF7u8Pc8ZHx+madleCAwcyJq7AKOIYTUYbKXkDjuUgz4k5/f+CiCVjFibfqdXO9A9Gf
- 12qI9JHejqQwU7HDqBiJtUt2VpuyUHb2r3RDPFz9Wo0OtNX9ovaWg5+r5/hgzBAtZdE/
- BdUw==
-X-Gm-Message-State: AOAM532nYQgPO09chsMxeKXHpvugaX3WPFH8qMyfX3bVtQO9E2Ej5Bj5
- eBWFJGjI9k0sP13vyMTvoIZSthdpbD4vywLhFYwbB9K/V2MoFfYJYPZO4/5hebIig7I8TX+whLG
- 57tuM7u/HGxbDS9ux3LDDD2AlZ9K/AtX3dpc+gMxvWh+Shwu8JD9frZfha4mqCeSQ6hojiw==
-X-Received: by 2002:a1c:5fd4:: with SMTP id t203mr16129274wmb.15.1608557142330; 
- Mon, 21 Dec 2020 05:25:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwS4zdbPIJuttgyVd890lszMc0dQ64yf3/RVbnjEILkCcWMKHt6/o62at+CoZnkm06RTTpxIg==
-X-Received: by 2002:a1c:5fd4:: with SMTP id t203mr16129243wmb.15.1608557141995; 
- Mon, 21 Dec 2020 05:25:41 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:63a7:c72e:ea0e:6045?
- ([2001:b07:6468:f312:63a7:c72e:ea0e:6045])
- by smtp.gmail.com with ESMTPSA id i16sm26247035wrx.89.2020.12.21.05.25.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Dec 2020 05:25:41 -0800 (PST)
-Subject: Re: [PATCH] Docs/RCU: Correct sample code of qatomic_rcu_set
-To: Keqian Zhu <zhukeqian1@huawei.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jones <drjones@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com, "qemu-trivial@nongnu.org"
+ (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
+ id 1krdBT-0001i9-PR; Tue, 22 Dec 2020 03:38:19 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2919)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
+ id 1krdBR-0002dx-3p; Tue, 22 Dec 2020 03:38:19 -0500
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4D0V7q1rf2zM7G1;
+ Tue, 22 Dec 2020 16:37:11 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.498.0; Tue, 22 Dec 2020
+ 16:37:55 +0800
+From: Zhang Han <zhanghan64@huawei.com>
+To: <jasowang@redhat.com>
+CC: <hunongda@huawei.com>, <alex.chen@huawei.com>,
+ <hang.zhanghailiang@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>
-References: <20201221121745.27156-1-zhukeqian1@huawei.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <2acdeb6f-6763-7332-e3f2-6d9cf9acf5ae@redhat.com>
-Date: Mon, 21 Dec 2020 14:25:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+Subject: [PATCH 9/9] net: Fix the indent problems
+Date: Tue, 22 Dec 2020 16:23:40 +0800
+Message-ID: <20201222082340.67405-10-zhanghan64@huawei.com>
+X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
+In-Reply-To: <20201222082340.67405-1-zhanghan64@huawei.com>
+References: <20201222082340.67405-1-zhanghan64@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20201221121745.27156-1-zhukeqian1@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.233, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.124.27]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=zhanghan64@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 22 Dec 2020 08:55:59 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,32 +52,114 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Dec 2020 13:25:58 -0000
+X-List-Received-Date: Tue, 22 Dec 2020 08:38:20 -0000
 
-On 21/12/20 13:17, Keqian Zhu wrote:
-> Correct sample code to avoid confusing readers.
-> 
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> ---
->   docs/devel/rcu.txt | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/docs/devel/rcu.txt b/docs/devel/rcu.txt
-> index cdf002edd8..2e6cc607a1 100644
-> --- a/docs/devel/rcu.txt
-> +++ b/docs/devel/rcu.txt
-> @@ -392,7 +392,7 @@ Instead, we store the size of the array with the array itself:
->   
->               /* Removal phase.  */
->               old_array = global_array;
-> -            qatomic_rcu_set(&new_array->data, new_array);
-> +            qatomic_rcu_set(&global_array, new_array);
->               synchronize_rcu();
->   
->               /* Reclamation phase.  */
-> 
+Fix Suspect code indent for statements
 
-Cc: qemu-trivial@nongnu.org
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Zhang Han <zhanghan64@huawei.com>
+---
+ net/tap-solaris.c | 18 +++++++++---------
+ net/tap-win32.c   | 28 ++++++++++++++--------------
+ net/vde.c         |  2 +-
+ 3 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/net/tap-solaris.c b/net/tap-solaris.c
+index 0b4f709abc..fc1e796f70 100644
+--- a/net/tap-solaris.c
++++ b/net/tap-solaris.c
+@@ -76,16 +76,16 @@ static int tap_alloc(char *dev, size_t dev_size, Error **errp)
+     memset(&ifr, 0x0, sizeof(ifr));
+ 
+     if (*dev) {
+-       ptr = dev;
+-       while (*ptr && !qemu_isdigit((int)*ptr)) {
+-           ptr++;
+-       }
+-       ppa = atoi(ptr);
++        ptr = dev;
++        while (*ptr && !qemu_isdigit((int)*ptr)) {
++            ptr++;
++        }
++        ppa = atoi(ptr);
+     }
+ 
+     /* Check if IP device was opened */
+     if (ip_fd) {
+-       close(ip_fd);
++        close(ip_fd);
+     }
+ 
+     TFR(ip_fd = open("/dev/udp", O_RDWR, 0));
+@@ -182,9 +182,9 @@ static int tap_alloc(char *dev, size_t dev_size, Error **errp)
+     ifr.lifr_arp_muxid = arp_muxid;
+ 
+     if (ioctl(ip_fd, SIOCSLIFMUXID, &ifr) < 0) {
+-      ioctl(ip_fd, I_PUNLINK , arp_muxid);
+-      ioctl(ip_fd, I_PUNLINK, ip_muxid);
+-      error_report("Can't set multiplexor id");
++        ioctl(ip_fd, I_PUNLINK , arp_muxid);
++        ioctl(ip_fd, I_PUNLINK, ip_muxid);
++        error_report("Can't set multiplexor id");
+     }
+ 
+     snprintf(dev, dev_size, "tap%d", ppa);
+diff --git a/net/tap-win32.c b/net/tap-win32.c
+index 107027aa24..b3af8fcba9 100644
+--- a/net/tap-win32.c
++++ b/net/tap-win32.c
+@@ -158,24 +158,24 @@ static tun_buffer_t *get_buffer_from_output_queue(tap_win32_overlapped_t *const
+     result = WaitForSingleObject(overlapped->output_queue_semaphore, timeout);
+ 
+     switch (result) {
+-        /* The semaphore object was signaled. */
+-        case WAIT_OBJECT_0:
+-            EnterCriticalSection(&overlapped->output_queue_cs);
++    /* The semaphore object was signaled. */
++    case WAIT_OBJECT_0:
++        EnterCriticalSection(&overlapped->output_queue_cs);
+ 
+-            buffer = overlapped->output_queue_front;
+-            overlapped->output_queue_front = buffer->next;
++        buffer = overlapped->output_queue_front;
++        overlapped->output_queue_front = buffer->next;
+ 
+-            if (overlapped->output_queue_front == NULL) {
+-                overlapped->output_queue_back = NULL;
+-            }
++        if (overlapped->output_queue_front == NULL) {
++            overlapped->output_queue_back = NULL;
++        }
+ 
+-            LeaveCriticalSection(&overlapped->output_queue_cs);
+-            break;
++        LeaveCriticalSection(&overlapped->output_queue_cs);
++        break;
+ 
+-        /* Semaphore was nonsignaled, so a time-out occurred. */
+-        case WAIT_TIMEOUT:
+-            /* Cannot open another window. */
+-            break;
++    /* Semaphore was nonsignaled, so a time-out occurred. */
++    case WAIT_TIMEOUT:
++        /* Cannot open another window. */
++        break;
+     }
+ 
+     return buffer;
+diff --git a/net/vde.c b/net/vde.c
+index 0b06464f4d..9ccedddc63 100644
+--- a/net/vde.c
++++ b/net/vde.c
+@@ -55,7 +55,7 @@ static ssize_t vde_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+     ssize_t ret;
+ 
+     do {
+-      ret = vde_send(s->vde, (const char *)buf, size, 0);
++        ret = vde_send(s->vde, (const char *)buf, size, 0);
+     } while (ret < 0 && errno == EINTR);
+ 
+     return ret;
+-- 
+2.29.1.59.gf9b6481aed
 
 
