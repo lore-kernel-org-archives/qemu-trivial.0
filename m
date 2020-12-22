@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kri8v-00018D-Ik
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Dec 2020 08:56:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41544)
+	id 1kri91-0001JJ-B6
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Dec 2020 08:56:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1krdBU-0001iQ-SG; Tue, 22 Dec 2020 03:38:20 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2618)
+ id 1krdBX-0001kM-Jb; Tue, 22 Dec 2020 03:38:23 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2619)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1krdBR-0002cZ-Uu; Tue, 22 Dec 2020 03:38:20 -0500
+ id 1krdBS-0002cY-1z; Tue, 22 Dec 2020 03:38:23 -0500
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4D0V7y4qPJz7JYV;
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4D0V7y50Lmz7JYl;
  Tue, 22 Dec 2020 16:37:18 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.498.0; Tue, 22 Dec 2020
- 16:37:54 +0800
+ 16:37:52 +0800
 From: Zhang Han <zhanghan64@huawei.com>
 To: <jasowang@redhat.com>
 CC: <hunongda@huawei.com>, <alex.chen@huawei.com>,
  <hang.zhanghailiang@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>
-Subject: [PATCH 8/9] net: Remove initialization of static ints
-Date: Tue, 22 Dec 2020 16:23:39 +0800
-Message-ID: <20201222082340.67405-9-zhanghan64@huawei.com>
+Subject: [PATCH 3/9] net: Transfer // comments to /**/
+Date: Tue, 22 Dec 2020 16:23:34 +0800
+Message-ID: <20201222082340.67405-4-zhanghan64@huawei.com>
 X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
 In-Reply-To: <20201222082340.67405-1-zhanghan64@huawei.com>
 References: <20201222082340.67405-1-zhanghan64@huawei.com>
@@ -52,32 +52,173 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Dec 2020 08:38:21 -0000
+X-List-Received-Date: Tue, 22 Dec 2020 08:38:24 -0000
 
-Do not initialise statics to 0 or NULL
+Do not use C99 // comments, thransfer // to /**/
 
 Signed-off-by: Zhang Han <zhanghan64@huawei.com>
 ---
- net/tap-solaris.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ net/checksum.c    |  6 ++---
+ net/tap-solaris.c |  2 +-
+ net/tap-win32.c   | 60 +++++++++++++++++++++++++++--------------------
+ 3 files changed, 38 insertions(+), 30 deletions(-)
 
+diff --git a/net/checksum.c b/net/checksum.c
+index b78bf15098..eb2eff5fa4 100644
+--- a/net/checksum.c
++++ b/net/checksum.c
+@@ -52,9 +52,9 @@ uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
+ {
+     uint32_t sum = 0;
+ 
+-    sum += net_checksum_add(length, buf);         // payload
+-    sum += net_checksum_add(8, addrs);            // src + dst address
+-    sum += proto + length;                        // protocol & length
++    sum += net_checksum_add(length, buf);         /* payload */
++    sum += net_checksum_add(8, addrs);            /* src + dst address */
++    sum += proto + length;                        /* protocol & length */
+     return net_checksum_finish(sum);
+ }
+ 
 diff --git a/net/tap-solaris.c b/net/tap-solaris.c
-index d5af4efd60..0b4f709abc 100644
+index 1c8d5f7982..a0a5456ab6 100644
 --- a/net/tap-solaris.c
 +++ b/net/tap-solaris.c
-@@ -63,10 +63,10 @@ static int tap_alloc(char *dev, size_t dev_size, Error **errp)
-     /* FIXME leaks like a sieve on error paths */
-     /* FIXME suspicious: many errors are reported, then ignored */
-     int tap_fd, if_fd, ppa = -1;
--    static int ip_fd = 0;
-+    static int ip_fd;
-     char *ptr;
+@@ -35,7 +35,7 @@
+ #include <netinet/in.h>
+ #include <netinet/in_systm.h>
+ #include <netinet/ip.h>
+-#include <netinet/ip_icmp.h> // must come after ip.h
++#include <netinet/ip_icmp.h> /* must come after ip.h */
+ #include <netinet/udp.h>
+ #include <netinet/tcp.h>
+ #include <net/if.h>
+diff --git a/net/tap-win32.c b/net/tap-win32.c
+index 0a5252ab55..0f0d95cdbb 100644
+--- a/net/tap-win32.c
++++ b/net/tap-win32.c
+@@ -38,9 +38,11 @@
+ #include <windows.h>
+ #include <winioctl.h>
  
--    static int arp_fd = 0;
-+    static int arp_fd;
-     int ip_muxid, arp_muxid;
-     struct strioctl  strioc_if, strioc_ppa;
-     int link_type = I_PLINK;
+-//=============
+-// TAP IOCTLs
+-//=============
++/*
++ * =============
++ * TAP IOCTLs
++ * =============
++ */
+ 
+ #define TAP_CONTROL_CODE(request, method) \
+   CTL_CODE(FILE_DEVICE_UNKNOWN, request, method, FILE_ANY_ACCESS)
+@@ -55,26 +57,32 @@
+ #define TAP_IOCTL_GET_LOG_LINE          TAP_CONTROL_CODE(8, METHOD_BUFFERED)
+ #define TAP_IOCTL_CONFIG_DHCP_SET_OPT   TAP_CONTROL_CODE(9, METHOD_BUFFERED)
+ 
+-//=================
+-// Registry keys
+-//=================
++/*
++ * =================
++ * Registry keys
++ * =================
++ */
+ 
+ #define ADAPTER_KEY "SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002BE10318}"
+ 
+ #define NETWORK_CONNECTIONS_KEY "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}"
+ 
+-//======================
+-// Filesystem prefixes
+-//======================
++/*
++ * ======================
++ * Filesystem prefixes
++ * ======================
++ */
+ 
+ #define USERMODEDEVICEDIR "\\\\.\\Global\\"
+ #define TAPSUFFIX         ".tap"
+ 
+-//======================
+-// Compile time configuration
+-//======================
++/*
++ * ======================
++ * Compile time configuration
++ * ======================
++ */
+ 
+-//#define DEBUG_TAP_WIN32
++/* #define DEBUG_TAP_WIN32 */
+ 
+ /* FIXME: The asynch write path appears to be broken at
+  * present. WriteFile() ignores the lpNumberOfBytesWritten parameter
+@@ -121,7 +129,7 @@ static tun_buffer_t* get_buffer_from_free_list(tap_win32_overlapped_t* const ove
+     WaitForSingleObject(overlapped->free_list_semaphore, INFINITE);
+     EnterCriticalSection(&overlapped->free_list_cs);
+     buffer = overlapped->free_list;
+-//    assert(buffer != NULL);
++    /* assert(buffer != NULL); */
+     overlapped->free_list = buffer->next;
+     LeaveCriticalSection(&overlapped->free_list_cs);
+     buffer->next = NULL;
+@@ -142,11 +150,11 @@ static tun_buffer_t* get_buffer_from_output_queue(tap_win32_overlapped_t* const
+     tun_buffer_t* buffer = NULL;
+     DWORD result, timeout = block ? INFINITE : 0L;
+ 
+-    // Non-blocking call
++    /* Non-blocking call */
+     result = WaitForSingleObject(overlapped->output_queue_semaphore, timeout);
+ 
+     switch (result) {
+-        // The semaphore object was signaled.
++        /* The semaphore object was signaled. */
+         case WAIT_OBJECT_0:
+             EnterCriticalSection(&overlapped->output_queue_cs);
+ 
+@@ -160,9 +168,9 @@ static tun_buffer_t* get_buffer_from_output_queue(tap_win32_overlapped_t* const
+             LeaveCriticalSection(&overlapped->output_queue_cs);
+             break;
+ 
+-        // Semaphore was nonsignaled, so a time-out occurred.
++        /* Semaphore was nonsignaled, so a time-out occurred. */
+         case WAIT_TIMEOUT:
+-            // Cannot open another window.
++            /* Cannot open another window. */
+             break;
+     }
+ 
+@@ -420,20 +428,20 @@ static void tap_win32_overlapped_init(tap_win32_overlapped_t* const overlapped,
+     InitializeCriticalSection(&overlapped->free_list_cs);
+ 
+     overlapped->output_queue_semaphore = CreateSemaphore(
+-        NULL,   // default security attributes
+-        0,   // initial count
+-        TUN_MAX_BUFFER_COUNT,   // maximum count
+-        NULL);  // unnamed semaphore
++        NULL,   /* default security attributes */
++        0,   /* initial count */
++        TUN_MAX_BUFFER_COUNT,   /* maximum count */
++        NULL);  /* unnamed semaphore */
+ 
+     if (!overlapped->output_queue_semaphore) {
+         fprintf(stderr, "error creating output queue semaphore!\n");
+     }
+ 
+     overlapped->free_list_semaphore = CreateSemaphore(
+-        NULL,   // default security attributes
+-        TUN_MAX_BUFFER_COUNT,   // initial count
+-        TUN_MAX_BUFFER_COUNT,   // maximum count
+-        NULL);  // unnamed semaphore
++        NULL,   /* default security attributes */
++        TUN_MAX_BUFFER_COUNT,   /* initial count */
++        TUN_MAX_BUFFER_COUNT,   /* maximum count */
++        NULL);  /* unnamed semaphore */
+ 
+     if (!overlapped->free_list_semaphore) {
+         fprintf(stderr, "error creating free list semaphore!\n");
 -- 
 2.29.1.59.gf9b6481aed
 
