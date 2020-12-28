@@ -1,58 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ktngC-00007s-UZ
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 03:15:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58274)
+	id 1ktqSH-0001eI-UZ
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 06:12:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1ktngB-00005z-Uy; Mon, 28 Dec 2020 03:14:59 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:40664)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
- id 1ktngA-0004kz-Bb; Mon, 28 Dec 2020 03:14:59 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id x16so13212662ejj.7;
- Mon, 28 Dec 2020 00:14:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=BjB2kfCb9GFsRopJ/P6iE8ClJI9dh3lRoLxLzjvEO4w=;
- b=FHZlb45CN2lfXuRbxst3YZcZb5KlsLRTHxuM+6fdNq0koLLaLlTl5mh/b99QmVN0Ui
- 7x/Cllc6wfdMcxO6dLDK3ANkX6PvC04c5Dp58xCLdO6f0pyWmo3UsczGJpCQt3Zg+SMo
- S/y3KOwvYze96ST+SPqNsBmhnvVbyaVhdeT31wi3ABfMCGfSde21X456K8Faz6+XzobM
- XsIL6zjyBNz29S//fNlQ99cSRU8dlZgPfbJ85nPwI1Bqr4LG4jZbtFOoCCLx6t1mtMTp
- pvpwg3h05fZS8pHoj7F7EkmGJ4CRJeub6sW0SxNE6li2bQQ87CD0UDVNdc40KfEObE9c
- HrrA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1ktqSG-0001d8-6a
+ for qemu-trivial@nongnu.org; Mon, 28 Dec 2020 06:12:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:24724)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1ktqSE-0003Ud-Ls
+ for qemu-trivial@nongnu.org; Mon, 28 Dec 2020 06:12:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1609153965;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zk5UQGksXRhFLqYMc0FKsbLfo1hQPPJPk+2NFsaqLmw=;
+ b=LFcxCq6BBUBNmiCX7ikXm995yN7Ni7ssmZgRHYbWTIUj6Os77B2Cxi5Hhurn5pOs6AIJsz
+ MWp1TpllkpVJjGcerUkS7+tNAZz2AQhv5eAj1L1mzg6VMOUo/AffjMd8oWxb26A391pum2
+ YxGM07BvnCDcU7gb1zON9lupYK760ZU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-276-FdK2zSPZOXK5bM4Nyls7sw-1; Mon, 28 Dec 2020 06:12:41 -0500
+X-MC-Unique: FdK2zSPZOXK5bM4Nyls7sw-1
+Received: by mail-wr1-f71.google.com with SMTP id m20so5709001wrh.2
+ for <qemu-trivial@nongnu.org>; Mon, 28 Dec 2020 03:12:41 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=BjB2kfCb9GFsRopJ/P6iE8ClJI9dh3lRoLxLzjvEO4w=;
- b=gjHtFpABLEhRsDsLLFUxlvCgJQB4oWbU1y0PEuQoAKz3dkUxSL3vjBZrNijofem4OH
- w7ZtwM62/2lxvHmK/eUqGyddnF6vguYSKri5YivVlBVcrEfMcRC7LaX5G5lEgSKAS5Ac
- xF/g+x44UBRL40N1xolyQWJ3M3KhR682ugCj0LgfTOWJ+L2WqillmniivS1/B921VIQF
- w03wVWnV+lRvQbh8UIbw53K+OLLPw6NK4juxniDdNre5BWmdu4Nbul5qL9DYhcEC13gJ
- m39FDN+Ip6jOt4/EWqf0+JP/CqnFRsZEnHICvEohs1wBZJpuCbExbPS2Q/yCPAZqHKCF
- 6pbw==
-X-Gm-Message-State: AOAM530BTgv8XN9IFRaTZzlIzFvn1xfKN+ztAkRP4wbiRJ9l0krWKsMZ
- DpqLcuXWodXFA9Jzwmp4wq4i1OaJdVRL1jbTgigo9E8aEj03jg==
-X-Google-Smtp-Source: ABdhPJw7ybnaySpCZMCh873Se1j4xpPvw8u1ye4zjxWQ5gofi5XUlwqVwpdU41ucbrLKPpPSRLv15Kc/XHt7UzkrQzE=
-X-Received: by 2002:a17:906:d10f:: with SMTP id
- b15mr40294469ejz.268.1609143295795; 
- Mon, 28 Dec 2020 00:14:55 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zk5UQGksXRhFLqYMc0FKsbLfo1hQPPJPk+2NFsaqLmw=;
+ b=VHSv34IbBwB+KHCJ3fnzkcqxcXL5yo4iWrAztgp9UvdMvLoAmMjH1y3DJmLyww6CE5
+ H+JTIHtFnOWjA+q9Ey/zrIaCBq0wzcJD/ulIlbMqjoXvdp5UXrUKKoEPc9Gk1U2BmUZQ
+ IhBoiXmM8el+6KknAU/uYo+zUx8w9NRnMAqmBvbkmk/SdqyVJlCixs0H1KzJeUTuZLQn
+ a98BDshDBJPrSpamXV4xUkzYwQNWzRm8L0L8Fp3M3yReXVVGyGrjvVXPJgC3HGUD0ZBx
+ 8kbbMBqjtbKvI/HaFogqqXRcALVBLn85TuTxcij3mggsaoyyir9A5sXHr0MzQ22fl5GI
+ If/A==
+X-Gm-Message-State: AOAM532Q8UeDLt8MSJyVImyBwWkygAdK36BUvPKV/F6/YPoirEp5S34m
+ qne41WgGoDpjcGIJ8ewjg0nNkJ6cUNeEq59otMlQHJDsz1xOt4dI7YB7yeNYYaPjOLWp/DvH0l/
+ appRME3V4OkcDu2NTTQ==
+X-Received: by 2002:a5d:47a5:: with SMTP id 5mr51669579wrb.109.1609153960610; 
+ Mon, 28 Dec 2020 03:12:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJweAdY98ZxtFWUSulnn2yhZQwvf9GNtMJL9R1DdMxUh6hXiGRgw8cfmVfeicdkVqe4WvJZUQQ==
+X-Received: by 2002:a5d:47a5:: with SMTP id 5mr51669548wrb.109.1609153960323; 
+ Mon, 28 Dec 2020 03:12:40 -0800 (PST)
+Received: from ?IPv6:2a01:e35:2fb0:49e0:98dc:fe2:8fe8:bc3b?
+ ([2a01:e35:2fb0:49e0:98dc:fe2:8fe8:bc3b])
+ by smtp.gmail.com with ESMTPSA id z3sm58115479wrn.59.2020.12.28.03.12.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 28 Dec 2020 03:12:39 -0800 (PST)
+Subject: Re: [PATCH 1/4] qobject: open brace '{' following struct go on the
+ same line
+To: Zhang Han <zhanghan64@huawei.com>, armbru@redhat.com
+Cc: alex.chen@huawei.com, hunongda@huawei.com, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
+References: <20201228071129.24563-1-zhanghan64@huawei.com>
+ <20201228071129.24563-2-zhanghan64@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <791fabe6-cdab-2891-0dca-393ade874dfe@redhat.com>
+Date: Mon, 28 Dec 2020 12:12:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-From: David CARLIER <devnexen@gmail.com>
-Date: Mon, 28 Dec 2020 08:14:44 +0000
-Message-ID: <CA+XhMqwAwa4S8FbZ5sOT152w8ystdGdndru4sTY7jUQmJ-=muw@mail.gmail.com>
-Subject: [PATCH 2/2] bsd-user,
- Adding more strace support for a handful of syscalls.
-To: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=devnexen@gmail.com; helo=mail-ej1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+In-Reply-To: <20201228071129.24563-2-zhanghan64@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.041,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.829, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -65,55 +93,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Dec 2020 08:15:00 -0000
+X-List-Received-Date: Mon, 28 Dec 2020 11:12:48 -0000
 
----
- bsd-user/freebsd/strace.list | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+On 12/28/20 8:11 AM, Zhang Han wrote:
+> Put open brace '{' on the same line of struct.
+> 
+> Signed-off-by: Zhang Han <zhanghan64@huawei.com>
+> ---
+>  qobject/json-parser.c | 3 +--
+>  qobject/qjson.c       | 3 +--
+>  2 files changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/bsd-user/freebsd/strace.list b/bsd-user/freebsd/strace.list
-index 2800a2d4eb..136d2c42d7 100644
---- a/bsd-user/freebsd/strace.list
-+++ b/bsd-user/freebsd/strace.list
-@@ -38,6 +38,13 @@
- { TARGET_FREEBSD_NR_adjtime, "adjtime", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_bind, "bind", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_break, "break", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_cap_enter, "cap_enter", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_cap_fcntls_get, "cap_fcntls_get", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_cap_fcntls_limit, "cap_fcntls_limit", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_cap_getmode, "cap_getmode", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_cap_ioctls_get, "cap_ioctls_get", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_cap_ioctls_limit, "cap_ioctls_limit", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_cap_rights_limit, "cap_rights_limit", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_chdir, "chdir", "%s(\"%s\")", NULL, NULL },
- { TARGET_FREEBSD_NR_chflags, "chflags", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_chmod, "chmod", "%s(\"%s\",%#o)", NULL, NULL },
-@@ -48,6 +55,8 @@
- { TARGET_FREEBSD_NR_clock_settime, "clock_settime", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_close, "close", "%s(%d)", NULL, NULL },
- { TARGET_FREEBSD_NR_connect, "connect", "%s(%d,%#x,%d)", NULL, NULL },
-+{ TARGET_FREEBSD_NR_cpuset_getdomain, "cpuset_getdomain", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_cpuset_setdomain, "cpuset_setdomain", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_dup, "dup", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_dup2, "dup2", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_eaccess, "eaccess", "%s(\"%s\",%#x)", NULL, NULL },
-@@ -148,6 +157,8 @@
- { TARGET_FREEBSD_NR_pathconf, "pathconf", "%s(\"%s\", %d)", NULL, NULL },
- { TARGET_FREEBSD_NR_pipe, "pipe", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_poll, "poll", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_posix_fallocate, "posix_fallocate", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_posix_openpt, "posix_openpt", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_pread, "pread", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_preadv, "preadv", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_profil, "profil", NULL, NULL, NULL },
-@@ -227,5 +238,6 @@
- { TARGET_FREEBSD_NR_utimes, "utimes", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_vfork, "vfork", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_wait4, "wait4", NULL, NULL, NULL },
-+{ TARGET_FREEBSD_NR_wait4, "wait6", NULL, NULL, NULL },
- { TARGET_FREEBSD_NR_write, "write", "%s(%d,%#x,%d)", NULL, NULL },
- { TARGET_FREEBSD_NR_writev, "writev", "%s(%d,%p,%#x)", NULL, NULL },
--- 
-2.30.0.rc2
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
 
