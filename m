@@ -1,86 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ktqSz-0002gQ-E5
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 06:13:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58130)
+	id 1ktvYM-00063y-32
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 11:39:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1ktqSx-0002dq-9V
- for qemu-trivial@nongnu.org; Mon, 28 Dec 2020 06:13:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34501)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1ktqSu-0003nI-Q3
- for qemu-trivial@nongnu.org; Mon, 28 Dec 2020 06:13:31 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1609154008;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7p3Oc9PDJl3SFKn/9CXzds7jjg++8Mo8Pv6ZGV02bwI=;
- b=RWT80E9Asr8M+x0kkVu9lR1ZqSiqtTONpKtJEhlND8pCt7DXZ1pfx/eKwgRC8Vcc/M0CGS
- wZP9yZlx2EGYs0SCGX5TMYIEpmcbqSxl3+H6C6OqlCJST1JFFOPNnwnuSaAO/jqhc7BVVN
- Dkjtxd0LgiML18D1fVd8R6zan8xbIH8=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-219-2MDWG_39Nx-4eceHcYUt7w-1; Mon, 28 Dec 2020 06:13:26 -0500
-X-MC-Unique: 2MDWG_39Nx-4eceHcYUt7w-1
-Received: by mail-wm1-f70.google.com with SMTP id r1so7002480wmn.8
- for <qemu-trivial@nongnu.org>; Mon, 28 Dec 2020 03:13:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1ktvYJ-00062j-8K; Mon, 28 Dec 2020 11:39:24 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:44923)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1ktvYD-0000vy-Te; Mon, 28 Dec 2020 11:39:21 -0500
+Received: by mail-ej1-x631.google.com with SMTP id w1so14835019ejf.11;
+ Mon, 28 Dec 2020 08:39:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=YNpJPtBT6Oihbn07w9iHm5NjbLipfilKsvPAfcM/vSI=;
+ b=p7N/PoQzTddc+1u2Q9/q9cjnDedVsfue8/LXmOw6VsOTDwYO5NKk4hVvQ7UTcWti6C
+ A9HriDQAPdznNvOXpvZlLqur9an69udYPOMcycl2dOZ3mHAB1DxXtyUHrExOdZW6qFjk
+ xZKxNdROBqTxjK6faQ8tPOXBoTO3bRcxD0RyAwD9/bddxl61Lte0NxozRvyCU1hu5pBW
+ LusG+/vba0Ikbls5JBFdhtoJNv3XWPePbgiXhr69Wken8awBAXziQ6hVQ+SBYIgrSWsA
+ HsHGMAf89l/t5bayZO/bzBdxN89OhHBw0dzEdLmIN3eLuB9uyOZtLl3Mh439f1/esMw9
+ 5UpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7p3Oc9PDJl3SFKn/9CXzds7jjg++8Mo8Pv6ZGV02bwI=;
- b=GpSzAcsNE7DvZ6Ia6T1ou+XKCpmIc5XzFaPra7zUHGyKaEeFUr9l28T4GwDgo3Hbe+
- yySY4lmhs8Pttapb+tu0JNsMbLUIHfwB8Y32sQc64GYlteLw682i52av5dKa1jMdKpvA
- KP7VvutzS8cCMWmy48LMZBmbRUGTNBJvB08moEMbOU1ahujcITAzIRU/YaNJmb6MQ2nP
- 2ks4igok8Cc5nEuPfe0FX59Vvgbm6Zw1JSyQ5Vhf3mJpmtZXEEFeAMFYVRrReBc9BNSJ
- bGQ5xYU5Z+hWvL/bh4M3qImJED659zKcvsRL1Do9dmv7ynE4LEsmUB0dD4AeU5IqEBtm
- 9nzQ==
-X-Gm-Message-State: AOAM532Y405HGPXt3d2Kbc+RK1LSMZN/+nSyOpU81SenkDdoI9Ba7knV
- a4RiFJ9wg/69w6kGJcFKsdhOI3M+lvs+OagvCAT+ORab07myNAHMqf7eLBuzK+lC5dVdMfP/nsk
- DBWQc6iJf5t856HAs6w==
-X-Received: by 2002:a7b:cd91:: with SMTP id y17mr20251636wmj.5.1609154005639; 
- Mon, 28 Dec 2020 03:13:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxiKkKfa48xjfbghHcW/AxbIK3Rk77OBXnznlAfFfXRcBuo62ZKiCi9dFutoNYgrfLAsQhCcQ==
-X-Received: by 2002:a7b:cd91:: with SMTP id y17mr20251603wmj.5.1609154005277; 
- Mon, 28 Dec 2020 03:13:25 -0800 (PST)
-Received: from ?IPv6:2a01:e35:2fb0:49e0:98dc:fe2:8fe8:bc3b?
- ([2a01:e35:2fb0:49e0:98dc:fe2:8fe8:bc3b])
- by smtp.gmail.com with ESMTPSA id m2sm18826592wml.34.2020.12.28.03.13.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Dec 2020 03:13:24 -0800 (PST)
-Subject: Re: [PATCH 4/4] qobject: braces {} are necessary for all arms of this
- statement
-To: Zhang Han <zhanghan64@huawei.com>, armbru@redhat.com
-Cc: alex.chen@huawei.com, hunongda@huawei.com, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
-References: <20201228071129.24563-1-zhanghan64@huawei.com>
- <20201228071129.24563-5-zhanghan64@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <99dc0059-b4a6-d8fa-80fe-58ee77285db1@redhat.com>
-Date: Mon, 28 Dec 2020 12:13:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=YNpJPtBT6Oihbn07w9iHm5NjbLipfilKsvPAfcM/vSI=;
+ b=o9mtg9KJmcniQFYN3pI4qiwohkYOn/oMg4zMN9dlgiN8v2kmtEY9/VpQXvLjM1WWBF
+ tetsR4F/RFkZWWpXBeTqHR1e3+LRwwPRiiSi08JDsHrSX1NJ57xmuRolG1Z8QvD9Hu0J
+ zaYYMMh+8LDWzdeQBRf8JEwP8F4Iw7AouwQ/DbQKsHKepDmjiGKDHnRGg+2NwBqDsyEb
+ 3WcUiA/iFiAYECVBAM7eOZ3vKjIiS+hyYfzANPAkIhUY0l8mOim1aJoLMh58tRwTMu4l
+ +pLCVJ3E3GUpWUYqccjLFPAboVW0wgbx/z9KI9F/eQWrwYeRkeSJJWPdTa+TYhOziAdg
+ NihA==
+X-Gm-Message-State: AOAM531/SVJkZiYquWWglJoFORRWGMwEjtusjC/bfxPP7AcV8JIZZkYG
+ iqGqFx/rF0lC6nKcaIgQSMeeRVteknTkOnm5XDs=
+X-Google-Smtp-Source: ABdhPJxlUenRrCMMBmc+q5jkdLTU//+n1A0Aap8mdkqyqCXudlH3x0cJfuV+K+ZCYlZsBAgtuWeox1Ge3DINpiR9ibY=
+X-Received: by 2002:a17:906:6c8b:: with SMTP id
+ s11mr41917070ejr.187.1609173556052; 
+ Mon, 28 Dec 2020 08:39:16 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201228071129.24563-5-zhanghan64@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -36
-X-Spam_score: -3.7
-X-Spam_bar: ---
-X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.041,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.829, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <CA+XhMqwjq99QdTKntxbQ_rZ-L3bQX7D3WHLkwMdK6zmiP=_56w@mail.gmail.com>
+ <CANCZdfpt0vEvJR7BYpPSxKdHs6r0BoUtXsHL1gi+x6ZopzZ1OA@mail.gmail.com>
+In-Reply-To: <CANCZdfpt0vEvJR7BYpPSxKdHs6r0BoUtXsHL1gi+x6ZopzZ1OA@mail.gmail.com>
+From: David CARLIER <devnexen@gmail.com>
+Date: Mon, 28 Dec 2020 16:39:05 +0000
+Message-ID: <CA+XhMqwVS7nOCdf0Ji_=ZpWQYp03z4dcTwkHqBwOCCkEQv8_sQ@mail.gmail.com>
+Subject: Re: [PATCH 0/2] bsd-user, FreeBSD update
+To: Warner Losh <imp@bsdimp.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=devnexen@gmail.com; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -93,16 +71,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Dec 2020 11:13:31 -0000
+X-List-Received-Date: Mon, 28 Dec 2020 16:39:25 -0000
 
-On 12/28/20 8:11 AM, Zhang Han wrote:
-> Add braces {} for arms of if/for statement
-> 
-> Signed-off-by: Zhang Han <zhanghan64@huawei.com>
-> ---
->  qobject/qdict.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+Oh good to know I understand better why syscalls not updated for so long.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+To upstream I would suggest not to push straight all these changes in
+one shot and focus on FreeBSD at first, much less to review and so on.
 
+Regards.
+
+On Mon, 28 Dec 2020 at 16:21, Warner Losh <imp@bsdimp.com> wrote:
+>
+>
+>
+> On Mon, Dec 28, 2020 at 1:15 AM David CARLIER <devnexen@gmail.com> wrote:
+>>
+>> From 10b13162949debdbbd8394bc1047511d1a900176 Mon Sep 17 00:00:00 2001
+>> From: David Carlier <devnexen@gmail.com>
+>> Date: Mon, 28 Dec 2020 08:10:43 +0000
+>> Subject: [PATCH 0/2] *** SUBJECT HERE ***
+>>
+>> bsd-user, FreeBSD update.
+>>
+>> David Carlier (2):
+>>   bsd-user, updating the FreeBSD's syscall list, based on the 11.x
+>>   bsd-user, Adding more strace support for a handful of syscalls.
+>>
+>>  bsd-user/freebsd/strace.list  | 12 ++++++++++++
+>>  bsd-user/freebsd/syscall_nr.h | 25 ++++++++++++++++++++++---
+>>  2 files changed, 34 insertions(+), 3 deletions(-)
+>
+>
+> Have you seen my patches in this area? Are you familiar with the bsd-user=
+ efforts we've been doing at https://github.com/qemu-bsd-user/qemu-bsd-user=
+ We have about 300 patches in the queue and the more that others change thi=
+ngs, the harder it is to get them in. They are a twisty maze of conflicts e=
+arly in the series and some not-updated API calls dealing with the evolutio=
+n of the qemu cpu model as well.
+>
+> I posted this series two weeks ago: https://lists.gnu.org/archive/html/qe=
+mu-devel/2020-12/msg05528.html
+>
+> This part https://lists.gnu.org/archive/html/qemu-devel/2020-12/msg05530.=
+html updates the system call numbers to the latest FreeBSD 13 numbers.
+>
+> Perhaps you could help in these efforts? They have been going on since ar=
+ound Qemu 1.0 and we were bad about getting them upstreamed early, and so a=
+re paying the price now. We use the code in the above repo to build about 4=
+0k packages for a couple of different architectures.
+>
+> Warner
+>
+>>
+>> --
+>> 2.30.0.rc2
+>>
 
