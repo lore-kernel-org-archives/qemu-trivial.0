@@ -1,17 +1,17 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ktmvd-0000K3-5n
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 02:26:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49394)
+	id 1ktmvf-0000KV-2I
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 02:26:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1ktmvZ-0000FC-7y; Mon, 28 Dec 2020 02:26:49 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2903)
+ id 1ktmvY-0000Ee-Nu; Mon, 28 Dec 2020 02:26:48 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2907)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1ktmvI-0007jr-C5; Mon, 28 Dec 2020 02:26:48 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4D48GF6Bwtz15kqJ;
- Mon, 28 Dec 2020 15:25:25 +0800 (CST)
+ id 1ktmvI-0007lK-Dw; Mon, 28 Dec 2020 02:26:48 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4D48GL70Bkz15kqQ;
+ Mon, 28 Dec 2020 15:25:30 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS405-HUB.china.huawei.com
  (10.3.19.205) with Microsoft SMTP Server id 14.3.498.0; Mon, 28 Dec 2020
  15:26:07 +0800
@@ -19,10 +19,9 @@ From: Zhang Han <zhanghan64@huawei.com>
 To: <armbru@redhat.com>
 CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>
-Subject: [PATCH 1/4] qobject: open brace '{' following struct go on the same
- line
-Date: Mon, 28 Dec 2020 15:11:26 +0800
-Message-ID: <20201228071129.24563-2-zhanghan64@huawei.com>
+Subject: [PATCH 2/4] qobject: code indent should never use tabs
+Date: Mon, 28 Dec 2020 15:11:27 +0800
+Message-ID: <20201228071129.24563-3-zhanghan64@huawei.com>
 X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
 In-Reply-To: <20201228071129.24563-1-zhanghan64@huawei.com>
 References: <20201228071129.24563-1-zhanghan64@huawei.com>
@@ -53,42 +52,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 28 Dec 2020 07:26:49 -0000
 
-Put open brace '{' on the same line of struct.
+Transfer tabs to spaces.
 
 Signed-off-by: Zhang Han <zhanghan64@huawei.com>
 ---
- qobject/json-parser.c | 3 +--
- qobject/qjson.c       | 3 +--
- 2 files changed, 2 insertions(+), 4 deletions(-)
+ qobject/qdict.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/qobject/json-parser.c b/qobject/json-parser.c
-index c0f521b56b..18b87a42f3 100644
---- a/qobject/json-parser.c
-+++ b/qobject/json-parser.c
-@@ -31,8 +31,7 @@ struct JSONToken {
-     char str[];
- };
+diff --git a/qobject/qdict.c b/qobject/qdict.c
+index 1079bd3f6f..2c07b3c87f 100644
+--- a/qobject/qdict.c
++++ b/qobject/qdict.c
+@@ -38,8 +38,8 @@ QDict *qdict_new(void)
+  */
+ static unsigned int tdb_hash(const char *name)
+ {
+-    unsigned value;	/* Used to compute the hash value.  */
+-    unsigned   i;	/* Used to cycle through random values. */
++    unsigned value;    /* Used to compute the hash value.  */
++    unsigned   i;      /* Used to cycle through random values. */
  
--typedef struct JSONParserContext
--{
-+typedef struct JSONParserContext {
-     Error *err;
-     JSONToken *current;
-     GQueue *buf;
-diff --git a/qobject/qjson.c b/qobject/qjson.c
-index f1f2c69704..f5623081e3 100644
---- a/qobject/qjson.c
-+++ b/qobject/qjson.c
-@@ -22,8 +22,7 @@
- #include "qapi/qmp/qstring.h"
- #include "qemu/unicode.h"
- 
--typedef struct JSONParsingState
--{
-+typedef struct JSONParsingState {
-     JSONMessageParser parser;
-     QObject *result;
-     Error *err;
+     /* Set the initial value from the key size. */
+     for (value = 0x238F13AF * strlen(name), i=0; name[i]; i++)
 -- 
 2.29.1.59.gf9b6481aed
 
