@@ -1,52 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ktnEq-00085W-ID
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 02:46:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52514)
+	id 1ktnfz-0008BS-LL
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 03:14:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1ktnEo-00083L-F0; Mon, 28 Dec 2020 02:46:43 -0500
-Resent-Date: Mon, 28 Dec 2020 02:46:42 -0500
-Resent-Message-Id: <E1ktnEo-00083L-F0@lists.gnu.org>
-Received: from sender4-of-o55.zoho.com ([136.143.188.55]:21581)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1ktnEl-0008Ja-5O; Mon, 28 Dec 2020 02:46:41 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1609141550; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=hTML4MOCQSmRP6a10MnEQjLlh2QCoy7oGwEmpfK+sVZDbNhvLxiqUE6kPvzL1kV3WVRa2BWrWMP9wIX3Qp5Htsw7no+KBG/pd+H8db4hYe8bQtagtYgawEbshESlhGnno5nvHC87rMFUodmFZ0iKtvK+G2MQL0MZTWH2hWdhj0o=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1609141550;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=yyviRqO/AxzPA4qMMjgykC4zCcvCJyb1zyrOO0ml3/k=; 
- b=Ss2hL+2sYj8sVaprkDGRvEqvsOSa2xDYOXrru7IvlA2TogObnK4DnTuMfcdgdfLzW/7hwhI4x1AvSq8bBKWRVvslJ8THV1fKFN2+qtVlIzo1EljLmUamgbiLBf0qWAw350aPW58mGrMdoJNIhro1BYY4tkPdriKNvHDxCbIrluw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1609141543683617.4321460860792;
- Sun, 27 Dec 2020 23:45:43 -0800 (PST)
-In-Reply-To: <20201228071129.24563-1-zhanghan64@huawei.com>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 0/4] Fix some style problems in qobject
-Message-ID: <160914154293.10865.8756339184706011694@600e7e483b3a>
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1ktnfy-00089q-6f; Mon, 28 Dec 2020 03:14:46 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:44576)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <devnexen@gmail.com>)
+ id 1ktnfv-0004dp-Sd; Mon, 28 Dec 2020 03:14:45 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id p22so9000552edu.11;
+ Mon, 28 Dec 2020 00:14:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=bZPdva3rrEvtWTVI5+0aCjnTV2tMqJ91QjYptzh0T6k=;
+ b=VgslnLbiUFtY9XC1A3QJ05ExgDU1KcSlh2GuJ8YaXRvdw7WMeqNmm6qMqXT+pzyTkg
+ pKgYkUat+Zstl2+WVkj2VYzG7k+sAqol0DNw1Eo5R+nPZTNs5qsaBjgalodu9D7zbVOC
+ pX8R3u337FhTW0NklJzPCFBAWkTrG+Pf/MzVWIfZUEKd4ObTAhfzV7cRb1kBOv+i449a
+ hDtmzpZA6rAn8mhcM2x5c7FZrWa29qFZrFCgf95ri9JhnR+a4jEOKOcu7H/2yQPGQfYv
+ kkGKmyUxzqEa+6r3CwAnWBAcisr6u1iyXxQQLVWSLKTsHyU7r/Uu7jtapn/ZnjJ1cORO
+ j1pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=bZPdva3rrEvtWTVI5+0aCjnTV2tMqJ91QjYptzh0T6k=;
+ b=C+JWrl2b0+qrDKdqFANihfldHT9yQ6rfXAZgJoyzE8fShjmqw8EstYNZZllVrmhkej
+ 7Ep7e9QFno9frGvgR53/yjhoFIhIo7EX6ACvGCY9QS5+ka98L3++DXYpm4TsugW9Qq5k
+ QB+SwqPuMxHOmh0PDay5Qnh2xawuc8ZwUDM847DvhLhcBnpyvFWGteWbWXICX+7gRp39
+ 18u2pOAFl70i+MDAk5cjKJ1e+DrimM8TcAMY8mRKTjDSo3GcDZeDnMOzLgDUZaG/lbBj
+ wWWyAUFklPndvUkldvHZjbV0a6eF8Dtlv6XRUK6X1fE3YKREGZaj2C/iOj98qTuImMRG
+ 0FtA==
+X-Gm-Message-State: AOAM5339PxREuWBaqreusT6tUD+z5hveXn1dQf0lVb4rNIn33auNZEbG
+ i+7ed7X0neS+hszpStshozIvjCQ56pAtFDevydABmxhW+/Q6lw==
+X-Google-Smtp-Source: ABdhPJxAeeTIut19lP8uLRPFLZZWA9g4l2a1kiwO7RXX/hLiMDV7Bdzi7QpECiZMxxJGEEU+mJUOjUU2LAoTiCUG97Q=
+X-Received: by 2002:a05:6402:354e:: with SMTP id
+ f14mr33753298edd.183.1609143280682; 
+ Mon, 28 Dec 2020 00:14:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: zhanghan64@huawei.com
-Cc: armbru@redhat.com, alex.chen@huawei.com, hunongda@huawei.com,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
-Date: Sun, 27 Dec 2020 23:45:43 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.55; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o55.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+From: David CARLIER <devnexen@gmail.com>
+Date: Mon, 28 Dec 2020 08:14:29 +0000
+Message-ID: <CA+XhMqwjq99QdTKntxbQ_rZ-L3bQX7D3WHLkwMdK6zmiP=_56w@mail.gmail.com>
+Subject: [PATCH 0/2] bsd-user, FreeBSD update
+To: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=devnexen@gmail.com; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,49 +64,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Dec 2020 07:46:43 -0000
+X-List-Received-Date: Mon, 28 Dec 2020 08:14:46 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTIyODA3MTEyOS4yNDU2
-My0xLXpoYW5naGFuNjRAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBo
-YXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3Jl
-IGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAxMjI4MDcxMTI5LjI0
-NTYzLTEtemhhbmdoYW42NEBodWF3ZWkuY29tClN1YmplY3Q6IFtQQVRDSCAwLzRdIEZpeCBzb21l
-IHN0eWxlIHByb2JsZW1zIGluIHFvYmplY3QKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEv
-YmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29u
-ZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJl
-bmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4v
-c2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBF
-TkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0
-CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAtIFt0YWcgdXBk
-YXRlXSAgICAgIHBhdGNoZXcvMjAyMDEyMTkxMDQyMjkuMTk2NC0xLW1hcmsuY2F2ZS1heWxhbmRA
-aWxhbmRlLmNvLnVrIC0+IHBhdGNoZXcvMjAyMDEyMTkxMDQyMjkuMTk2NC0xLW1hcmsuY2F2ZS1h
-eWxhbmRAaWxhbmRlLmNvLnVrCiAtIFt0YWcgdXBkYXRlXSAgICAgIHBhdGNoZXcvMjAyMDEyMjYx
-MDMzNDcuODY4LTEtZ2FvamluaGFvQGh1YXdlaS5jb20gLT4gcGF0Y2hldy8yMDIwMTIyNjEwMzM0
-Ny44NjgtMS1nYW9qaW5oYW9AaHVhd2VpLmNvbQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3
-LzIwMjAxMjI4MDcxMTI5LjI0NTYzLTEtemhhbmdoYW42NEBodWF3ZWkuY29tIC0+IHBhdGNoZXcv
-MjAyMDEyMjgwNzExMjkuMjQ1NjMtMS16aGFuZ2hhbjY0QGh1YXdlaS5jb20KU3dpdGNoZWQgdG8g
-YSBuZXcgYnJhbmNoICd0ZXN0JwoxY2FhMGZkIHFvYmplY3Q6IGJyYWNlcyB7fSBhcmUgbmVjZXNz
-YXJ5IGZvciBhbGwgYXJtcyBvZiB0aGlzIHN0YXRlbWVudApiMGNhMDdlIHFvYmplY3Q6IHNwYWNl
-cyByZXF1aXJlZCBhcm91bmQgdGhhdCBvcGVyYXRvcnMKMGFkYWU2MCBxb2JqZWN0OiBjb2RlIGlu
-ZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKNGVlYTk5MSBxb2JqZWN0OiBvcGVuIGJyYWNlICd7
-JyBmb2xsb3dpbmcgc3RydWN0IGdvIG9uIHRoZSBzYW1lIGxpbmUKCj09PSBPVVRQVVQgQkVHSU4g
-PT09CjEvNCBDaGVja2luZyBjb21taXQgNGVlYTk5MTkzNjFkIChxb2JqZWN0OiBvcGVuIGJyYWNl
-ICd7JyBmb2xsb3dpbmcgc3RydWN0IGdvIG9uIHRoZSBzYW1lIGxpbmUpCjIvNCBDaGVja2luZyBj
-b21taXQgMGFkYWU2MDc5YjIxIChxb2JqZWN0OiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNl
-IHRhYnMpCjMvNCBDaGVja2luZyBjb21taXQgYjBjYTA3ZTZjYWM2IChxb2JqZWN0OiBzcGFjZXMg
-cmVxdWlyZWQgYXJvdW5kIHRoYXQgb3BlcmF0b3JzKQpFUlJPUjogYnJhY2VzIHt9IGFyZSBuZWNl
-c3NhcnkgZm9yIGFsbCBhcm1zIG9mIHRoaXMgc3RhdGVtZW50CiMyMjogRklMRTogcW9iamVjdC9x
-ZGljdC5jOjQ1OgorICAgIGZvciAodmFsdWUgPSAweDIzOEYxM0FGICogc3RybGVuKG5hbWUpLCBp
-ID0gMDsgbmFtZVtpXTsgaSsrKQpbLi4uXQoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAx
-MCBsaW5lcyBjaGVja2VkCgpQYXRjaCAzLzQgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2
-aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0
-aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjQv
-NCBDaGVja2luZyBjb21taXQgMWNhYTBmZGJjZGE5IChxb2JqZWN0OiBicmFjZXMge30gYXJlIG5l
-Y2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhpcyBzdGF0ZW1lbnQpCj09PSBPVVRQVVQgRU5EID09
-PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZh
-aWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAxMjI4MDcxMTI5LjI0NTYzLTEt
-emhhbmdoYW42NEBodWF3ZWkuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgot
-LS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRj
-aGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVk
-aGF0LmNvbQ==
+From 10b13162949debdbbd8394bc1047511d1a900176 Mon Sep 17 00:00:00 2001
+From: David Carlier <devnexen@gmail.com>
+Date: Mon, 28 Dec 2020 08:10:43 +0000
+Subject: [PATCH 0/2] *** SUBJECT HERE ***
+
+bsd-user, FreeBSD update.
+
+David Carlier (2):
+  bsd-user, updating the FreeBSD's syscall list, based on the 11.x
+  bsd-user, Adding more strace support for a handful of syscalls.
+
+ bsd-user/freebsd/strace.list  | 12 ++++++++++++
+ bsd-user/freebsd/syscall_nr.h | 25 ++++++++++++++++++++++---
+ 2 files changed, 34 insertions(+), 3 deletions(-)
+
+-- 
+2.30.0.rc2
 
