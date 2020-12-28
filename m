@@ -1,54 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ktx3o-0004jp-It
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 13:16:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36166)
+	id 1ktx3p-0004lK-9t
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Dec 2020 13:16:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1ktvH8-0006iQ-8O
- for qemu-trivial@nongnu.org; Mon, 28 Dec 2020 11:21:40 -0500
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731]:34851)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1ktvrm-0007kY-Mb
+ for qemu-trivial@nongnu.org; Mon, 28 Dec 2020 11:59:30 -0500
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a]:34463)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1ktvH5-00072t-6M
- for qemu-trivial@nongnu.org; Mon, 28 Dec 2020 11:21:38 -0500
-Received: by mail-qk1-x731.google.com with SMTP id n142so9206105qkn.2
- for <qemu-trivial@nongnu.org>; Mon, 28 Dec 2020 08:21:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1ktvrk-0003r9-0j
+ for qemu-trivial@nongnu.org; Mon, 28 Dec 2020 11:59:30 -0500
+Received: by mail-qk1-x72a.google.com with SMTP id c7so9318874qke.1
+ for <qemu-trivial@nongnu.org>; Mon, 28 Dec 2020 08:59:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Kx2liJFWVJ70dQN59D3kj7Iv+SGPfkUhAFVKuO6MaEY=;
- b=11X4nHHJ2C+YOdMKMwn9wYPlcS/a+DRceahoKBD2O1MVEIRpG4PaeGsTdkGLzQpYff
- xgJMiFS0J0fwqx1Tr34FiCXW22Fy2Zo/tjgwbH2JTD0yTzjeC0/TBzvlqeNPG8Z62xYF
- HjnJuV2+X3P23aDWxcghgNycSipVsWSaStIJJ+4C5EfaUqZUZR5qO0MTen+6KGHsuPFh
- CrL3XvF45Ngy8NNNCbHtlS0m0P7uJvTq9j7B8VRjvorYPSctALzoo9F25PZm0NVRFLhN
- vjaXXrfC8lFQBhGq2plGiIuxJMwy+FHn/OTMjgGtUbpqc/FKE3wloYg6iw/r8xpeJiBX
- +AuA==
+ :cc; bh=4nnJIwkLFeX3Fq70HwRs76kbbpNE/NvCaPaaXPCOYLY=;
+ b=wrGpaYtPYprYnHZrvJLWcYafyfFua1M8QuPlf7vfUanXQ09tOItewN+BfJmnwSqbTE
+ vNI5bhayFkk6Y3VmzM6NfJthZEGVSzE0rmVg7JRt9/hgpHpK2HodMCa/cabbJnpY01zZ
+ EHRXM32QPRD9AKVV4GJjRTyEYOdL83TKOU25G8m0Euiny0tMEIVa2rGvHEjgDr01K7K9
+ mvZnDIAIF0wR27iW2f755AwfbjF9Kd7/CJo9BD6OR6FlzJERtnNt5KkQhT5HHp+XMw/m
+ SZtvAKyVBjuKLHBBtDYR4nyV66Y/mcmhXVULiZN9PH7isfq2Dbw9XtCCI+1ef2ggInPh
+ 7NCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Kx2liJFWVJ70dQN59D3kj7Iv+SGPfkUhAFVKuO6MaEY=;
- b=CUPzh50ngiPYwGKDL1bC0PcYeoIefFzIH14wgdNcOR5bNdC4raS4ZRMgwncmGAseRq
- UuufX9jH0HBydUoLOfUQTOfe6lORFlrLu0sp9cVZfmigIvhPz81QjerVWv2A+i1eyBIA
- evM+AFA+gVOVXDLGEAlJbIaocs3ggeiVadpg5cP/dCL+UKSgapHk8iLXC1xCfntguR+8
- 628aai0RQ5XuLQmXReazT87zkAGkBxuS7g+sKmxMabxWaohqEccNDP7JE04Sm4GnsBN7
- vo6snBwFJRMWUe/iUmQJMDangq0Y/Xz75D20nr9tmLBh3rEKGr91bSsGrhABfJc7PWhi
- YQ6g==
-X-Gm-Message-State: AOAM532Qrd6/5VWvjBL6RtiI7QMM+x1ZGofP9XaOvju6us7UV9RaSpVL
- 9d6jsRf+y4jFxBzBeed0s/bN18Zo3CoW3K+8Y7gF1A==
-X-Google-Smtp-Source: ABdhPJznmtlka9JAoQv78DroYRfnWAUAmg2KGBRN4/uobCbPVBzGfiUfL+QW3sGxbgZ9/sSOCkdAp2nb8Iu+kNzjEGI=
-X-Received: by 2002:a37:a614:: with SMTP id p20mr44149088qke.359.1609172493622; 
- Mon, 28 Dec 2020 08:21:33 -0800 (PST)
+ bh=4nnJIwkLFeX3Fq70HwRs76kbbpNE/NvCaPaaXPCOYLY=;
+ b=kgiIDf/gBcBVYti44LGyeDYakX1+E02elSkBN0KQu983WtG4KUwNk1cHWDq900Pa/w
+ LTkEBXseD4dhWYmWvuIOl0/+NNpJNhteFtJHguVmlOI4JUNCl/qhgponRdeKqMMzo+vu
+ twFcSNrP1k8RPDFDRU+nEo6Vujgn4eIdUe0lNTzvr0igmJZ6MKyS+H/HzSdF+Mf7TKsF
+ yxPLf+DGTC1EV7jhFV1Q7v48oCZq6C4B1DhBla9RorqdabidvXHCe4M6d+PeN57ivFYt
+ FT9PJFtHjxbOiVEEEgGj1DlhhoJ6XGiGINLhfpVx8qEC11wT0TanfE4bfspVBIlw5aQQ
+ 0bUA==
+X-Gm-Message-State: AOAM533KCAnAzUiWj9JMjVDBX6N2GZOHq2uowKedzEqrLr41E4FmKqYd
+ 4mTQFca9qrJtgGpbFeKDlm4S8HAe2LlvYnqg4deOEg==
+X-Google-Smtp-Source: ABdhPJyk9PbKN4STzV9r/utaZOE7u/Co+RsrJFq712zy3hLx+IJAOc4Sszi3cE0rsuyMb7egnGChWfI5lOVSJbRdMt0=
+X-Received: by 2002:a37:a614:: with SMTP id p20mr44291657qke.359.1609174766810; 
+ Mon, 28 Dec 2020 08:59:26 -0800 (PST)
 MIME-Version: 1.0
 References: <CA+XhMqwjq99QdTKntxbQ_rZ-L3bQX7D3WHLkwMdK6zmiP=_56w@mail.gmail.com>
-In-Reply-To: <CA+XhMqwjq99QdTKntxbQ_rZ-L3bQX7D3WHLkwMdK6zmiP=_56w@mail.gmail.com>
+ <CANCZdfpt0vEvJR7BYpPSxKdHs6r0BoUtXsHL1gi+x6ZopzZ1OA@mail.gmail.com>
+ <CA+XhMqwVS7nOCdf0Ji_=ZpWQYp03z4dcTwkHqBwOCCkEQv8_sQ@mail.gmail.com>
+In-Reply-To: <CA+XhMqwVS7nOCdf0Ji_=ZpWQYp03z4dcTwkHqBwOCCkEQv8_sQ@mail.gmail.com>
 From: Warner Losh <imp@bsdimp.com>
-Date: Mon, 28 Dec 2020 09:21:22 -0700
-Message-ID: <CANCZdfpt0vEvJR7BYpPSxKdHs6r0BoUtXsHL1gi+x6ZopzZ1OA@mail.gmail.com>
+Date: Mon, 28 Dec 2020 09:59:15 -0700
+Message-ID: <CANCZdfp5QQpK-GmNZ-j0Pak5RRXruYcHSV0sGrT75YnUMT0zbw@mail.gmail.com>
 Subject: Re: [PATCH 0/2] bsd-user, FreeBSD update
 To: David CARLIER <devnexen@gmail.com>
 Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000dd732105b788aa44"
-Received-SPF: none client-ip=2607:f8b0:4864:20::731;
- envelope-from=wlosh@bsdimp.com; helo=mail-qk1-x731.google.com
+Content-Type: multipart/alternative; boundary="0000000000005b8c7d05b7893226"
+Received-SPF: none client-ip=2607:f8b0:4864:20::72a;
+ envelope-from=wlosh@bsdimp.com; helo=mail-qk1-x72a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -68,105 +70,160 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Dec 2020 16:21:48 -0000
+X-List-Received-Date: Mon, 28 Dec 2020 16:59:30 -0000
 
---000000000000dd732105b788aa44
+--0000000000005b8c7d05b7893226
 Content-Type: text/plain; charset="UTF-8"
 
-On Mon, Dec 28, 2020 at 1:15 AM David CARLIER <devnexen@gmail.com> wrote:
+Yes. I've picked 4 changes to make sure that I've got the size and
+groupings of patches right for this project. I've heard nothing back on
+them, so I'll try again after the first of the year.
 
-> From 10b13162949debdbbd8394bc1047511d1a900176 Mon Sep 17 00:00:00 2001
-> From: David Carlier <devnexen@gmail.com>
-> Date: Mon, 28 Dec 2020 08:10:43 +0000
-> Subject: [PATCH 0/2] *** SUBJECT HERE ***
->
-> bsd-user, FreeBSD update.
->
-> David Carlier (2):
->   bsd-user, updating the FreeBSD's syscall list, based on the 11.x
->   bsd-user, Adding more strace support for a handful of syscalls.
->
->  bsd-user/freebsd/strace.list  | 12 ++++++++++++
->  bsd-user/freebsd/syscall_nr.h | 25 ++++++++++++++++++++++---
->  2 files changed, 34 insertions(+), 3 deletions(-)
->
-
-Have you seen my patches in this area? Are you familiar with the bsd-user
-efforts we've been doing at https://github.com/qemu-bsd-user/qemu-bsd-user
-We have about 300 patches in the queue and the more that others change
-things, the harder it is to get them in. They are a twisty maze of
-conflicts early in the series and some not-updated API calls dealing with
-the evolution of the qemu cpu model as well.
-
-I posted this series two weeks ago:
-https://lists.gnu.org/archive/html/qemu-devel/2020-12/msg05528.html
-
-This part
-https://lists.gnu.org/archive/html/qemu-devel/2020-12/msg05530.html updates
-the system call numbers to the latest FreeBSD 13 numbers.
-
-Perhaps you could help in these efforts? They have been going on since
-around Qemu 1.0 and we were bad about getting them upstreamed early, and so
-are paying the price now. We use the code in the above repo to build about
-40k packages for a couple of different architectures.
+I'd thought about just removing it all and pushing up the current state,
+but I think even that might be unreviewable.
 
 Warner
 
+On Mon, Dec 28, 2020 at 9:39 AM David CARLIER <devnexen@gmail.com> wrote:
 
-> --
-> 2.30.0.rc2
+> Oh good to know I understand better why syscalls not updated for so long.
 >
+> To upstream I would suggest not to push straight all these changes in
+> one shot and focus on FreeBSD at first, much less to review and so on.
+>
+> Regards.
+>
+> On Mon, 28 Dec 2020 at 16:21, Warner Losh <imp@bsdimp.com> wrote:
+> >
+> >
+> >
+> > On Mon, Dec 28, 2020 at 1:15 AM David CARLIER <devnexen@gmail.com>
+> wrote:
+> >>
+> >> From 10b13162949debdbbd8394bc1047511d1a900176 Mon Sep 17 00:00:00 2001
+> >> From: David Carlier <devnexen@gmail.com>
+> >> Date: Mon, 28 Dec 2020 08:10:43 +0000
+> >> Subject: [PATCH 0/2] *** SUBJECT HERE ***
+> >>
+> >> bsd-user, FreeBSD update.
+> >>
+> >> David Carlier (2):
+> >>   bsd-user, updating the FreeBSD's syscall list, based on the 11.x
+> >>   bsd-user, Adding more strace support for a handful of syscalls.
+> >>
+> >>  bsd-user/freebsd/strace.list  | 12 ++++++++++++
+> >>  bsd-user/freebsd/syscall_nr.h | 25 ++++++++++++++++++++++---
+> >>  2 files changed, 34 insertions(+), 3 deletions(-)
+> >
+> >
+> > Have you seen my patches in this area? Are you familiar with the
+> bsd-user efforts we've been doing at
+> https://github.com/qemu-bsd-user/qemu-bsd-user We have about 300 patches
+> in the queue and the more that others change things, the harder it is to
+> get them in. They are a twisty maze of conflicts early in the series and
+> some not-updated API calls dealing with the evolution of the qemu cpu model
+> as well.
+> >
+> > I posted this series two weeks ago:
+> https://lists.gnu.org/archive/html/qemu-devel/2020-12/msg05528.html
+> >
+> > This part
+> https://lists.gnu.org/archive/html/qemu-devel/2020-12/msg05530.html
+> updates the system call numbers to the latest FreeBSD 13 numbers.
+> >
+> > Perhaps you could help in these efforts? They have been going on since
+> around Qemu 1.0 and we were bad about getting them upstreamed early, and so
+> are paying the price now. We use the code in the above repo to build about
+> 40k packages for a couple of different architectures.
+> >
+> > Warner
+> >
+> >>
+> >> --
+> >> 2.30.0.rc2
+> >>
 >
 
---000000000000dd732105b788aa44
+--0000000000005b8c7d05b7893226
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Dec 28, 2020 at 1:15 AM David=
- CARLIER &lt;<a href=3D"mailto:devnexen@gmail.com">devnexen@gmail.com</a>&g=
-t; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
-x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">From 1=
-0b13162949debdbbd8394bc1047511d1a900176 Mon Sep 17 00:00:00 2001<br>
-From: David Carlier &lt;<a href=3D"mailto:devnexen@gmail.com" target=3D"_bl=
-ank">devnexen@gmail.com</a>&gt;<br>
-Date: Mon, 28 Dec 2020 08:10:43 +0000<br>
-Subject: [PATCH 0/2] *** SUBJECT HERE ***<br>
+<div dir=3D"ltr">Yes. I&#39;ve picked 4 changes to make sure that I&#39;ve =
+got the size and groupings of patches right for this project. I&#39;ve hear=
+d nothing back on them, so I&#39;ll try again after the first of the year.<=
+div><br></div><div>I&#39;d thought about just removing it all and pushing u=
+p the current state, but I think even that might be unreviewable.</div><div=
+><br></div><div>Warner</div></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Mon, Dec 28, 2020 at 9:39 AM David CARLIER=
+ &lt;<a href=3D"mailto:devnexen@gmail.com">devnexen@gmail.com</a>&gt; wrote=
+:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
+8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Oh good to kno=
+w I understand better why syscalls not updated for so long.<br>
 <br>
-bsd-user, FreeBSD update.<br>
+To upstream I would suggest not to push straight all these changes in<br>
+one shot and focus on FreeBSD at first, much less to review and so on.<br>
 <br>
-David Carlier (2):<br>
-=C2=A0 bsd-user, updating the FreeBSD&#39;s syscall list, based on the 11.x=
+Regards.<br>
 <br>
-=C2=A0 bsd-user, Adding more strace support for a handful of syscalls.<br>
+On Mon, 28 Dec 2020 at 16:21, Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.=
+com" target=3D"_blank">imp@bsdimp.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; On Mon, Dec 28, 2020 at 1:15 AM David CARLIER &lt;<a href=3D"mailto:de=
+vnexen@gmail.com" target=3D"_blank">devnexen@gmail.com</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; From 10b13162949debdbbd8394bc1047511d1a900176 Mon Sep 17 00:00:00 =
+2001<br>
+&gt;&gt; From: David Carlier &lt;<a href=3D"mailto:devnexen@gmail.com" targ=
+et=3D"_blank">devnexen@gmail.com</a>&gt;<br>
+&gt;&gt; Date: Mon, 28 Dec 2020 08:10:43 +0000<br>
+&gt;&gt; Subject: [PATCH 0/2] *** SUBJECT HERE ***<br>
+&gt;&gt;<br>
+&gt;&gt; bsd-user, FreeBSD update.<br>
+&gt;&gt;<br>
+&gt;&gt; David Carlier (2):<br>
+&gt;&gt;=C2=A0 =C2=A0bsd-user, updating the FreeBSD&#39;s syscall list, bas=
+ed on the 11.x<br>
+&gt;&gt;=C2=A0 =C2=A0bsd-user, Adding more strace support for a handful of =
+syscalls.<br>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 bsd-user/freebsd/strace.list=C2=A0 | 12 ++++++++++++<br>
+&gt;&gt;=C2=A0 bsd-user/freebsd/syscall_nr.h | 25 ++++++++++++++++++++++---=
 <br>
-=C2=A0bsd-user/freebsd/strace.list=C2=A0 | 12 ++++++++++++<br>
-=C2=A0bsd-user/freebsd/syscall_nr.h | 25 ++++++++++++++++++++++---<br>
-=C2=A02 files changed, 34 insertions(+), 3 deletions(-)<br></blockquote><di=
-v><br></div><div>Have you seen my patches in this area? Are you familiar wi=
-th the bsd-user efforts we&#39;ve been doing at=C2=A0<a href=3D"https://git=
-hub.com/qemu-bsd-user/qemu-bsd-user">https://github.com/qemu-bsd-user/qemu-=
-bsd-user</a> We have about 300 patches in the queue and the more that other=
-s change things, the harder it is to get them in. They are a twisty maze of=
- conflicts early in the series and some not-updated API calls dealing with =
-the evolution of the qemu cpu model as well.</div><div><br></div><div>I pos=
-ted this series two=C2=A0weeks ago: <a href=3D"https://lists.gnu.org/archiv=
-e/html/qemu-devel/2020-12/msg05528.html">https://lists.gnu.org/archive/html=
-/qemu-devel/2020-12/msg05528.html</a></div><div><br></div><div>This part <a=
- href=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-12/msg05530.htm=
-l">https://lists.gnu.org/archive/html/qemu-devel/2020-12/msg05530.html</a> =
-updates the system call numbers to the latest FreeBSD 13 numbers.</div><div=
-><br></div><div>Perhaps you could help in these efforts? They have been goi=
-ng on since around Qemu 1.0 and we were bad about getting them upstreamed e=
-arly, and so are paying the price now. We use the code in the above repo to=
- build about 40k packages for a couple of different architectures.</div><di=
-v><br></div><div>Warner<br></div><div>=C2=A0</div><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex">
--- <br>
-2.30.0.rc2<br>
-<br>
-</blockquote></div></div>
+&gt;&gt;=C2=A0 2 files changed, 34 insertions(+), 3 deletions(-)<br>
+&gt;<br>
+&gt;<br>
+&gt; Have you seen my patches in this area? Are you familiar with the bsd-u=
+ser efforts we&#39;ve been doing at <a href=3D"https://github.com/qemu-bsd-=
+user/qemu-bsd-user" rel=3D"noreferrer" target=3D"_blank">https://github.com=
+/qemu-bsd-user/qemu-bsd-user</a> We have about 300 patches in the queue and=
+ the more that others change things, the harder it is to get them in. They =
+are a twisty maze of conflicts early in the series and some not-updated API=
+ calls dealing with the evolution of the qemu cpu model as well.<br>
+&gt;<br>
+&gt; I posted this series two weeks ago: <a href=3D"https://lists.gnu.org/a=
+rchive/html/qemu-devel/2020-12/msg05528.html" rel=3D"noreferrer" target=3D"=
+_blank">https://lists.gnu.org/archive/html/qemu-devel/2020-12/msg05528.html=
+</a><br>
+&gt;<br>
+&gt; This part <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/202=
+0-12/msg05530.html" rel=3D"noreferrer" target=3D"_blank">https://lists.gnu.=
+org/archive/html/qemu-devel/2020-12/msg05530.html</a> updates the system ca=
+ll numbers to the latest FreeBSD 13 numbers.<br>
+&gt;<br>
+&gt; Perhaps you could help in these efforts? They have been going on since=
+ around Qemu 1.0 and we were bad about getting them upstreamed early, and s=
+o are paying the price now. We use the code in the above repo to build abou=
+t 40k packages for a couple of different architectures.<br>
+&gt;<br>
+&gt; Warner<br>
+&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; --<br>
+&gt;&gt; 2.30.0.rc2<br>
+&gt;&gt;<br>
+</blockquote></div>
 
---000000000000dd732105b788aa44--
+--0000000000005b8c7d05b7893226--
 
