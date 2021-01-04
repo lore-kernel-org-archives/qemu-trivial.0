@@ -1,59 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kw34A-0003hp-8L
-	for mharc-qemu-trivial@gnu.org; Sun, 03 Jan 2021 08:05:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35696)
+	id 1kwMEB-0008Bg-5B
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Jan 2021 04:32:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kw349-0003hM-2O; Sun, 03 Jan 2021 08:05:01 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:44823)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kw347-0003FZ-8z; Sun, 03 Jan 2021 08:05:00 -0500
-Received: by mail-wr1-x432.google.com with SMTP id w5so28169854wrm.11;
- Sun, 03 Jan 2021 05:04:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=YU1+4NwadEE3N+OESJxPKN86R8fGB0+GBAw3oHs9kEI=;
- b=nWcr//BQWeoemUa4ecrXAtoyxBmKMNh0s3zHxxDkurcPdR7fvmZiql0va6e471Igx1
- vJJaTssz/FA+KlD5CWYMW38RHAZrkVkPGJmaLC/7ezzlJKLtr+DCBqqFHTZcZmUwCFGr
- F66L1f0dKLabVLHGQw0fWDGdHaV+tuzgR2gTodoaak9s2UQmss1IebBRdlWmJvHg7AjX
- tiSZqnYvJHf1WUH/nRLqsxCF6i7SxZNFSc6MmCg6BoW8+O1s5mEtJ/NtF+EX98A5oWSq
- y1yI9bSmgeVfvbC9jBT2KucHRuW83I+WQ4SpP94Yq7NqdPZujeTvb+dYvXMFEEJkYsNZ
- 4seA==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kwME9-00088O-Ff
+ for qemu-trivial@nongnu.org; Mon, 04 Jan 2021 04:32:37 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:53535)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kwME7-0000dw-BM
+ for qemu-trivial@nongnu.org; Mon, 04 Jan 2021 04:32:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1609752754;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HxTr71QZaT90y8c2vL2GVs5Sp2A5X0ewvCwxjpolVVQ=;
+ b=eFegN5DYxlwHQjgzb7T49vdg0kqgCEz9jHfaDmqPsteRZ905ITtsloFDLW1Std8gl/Q8L8
+ vspS7JdfxRoGZZY0eaD/Gs2m0fuOO4rEUlKnM1rNnQnFUnaCgE5nyqMqzvfqU49a85lRtX
+ SoTZYKlQYIWr0o6uLmJcKWZKpc0WLC8=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-396-mmTu-8bBPLeo2DUFtjWg5Q-1; Mon, 04 Jan 2021 04:32:31 -0500
+X-MC-Unique: mmTu-8bBPLeo2DUFtjWg5Q-1
+Received: by mail-wr1-f71.google.com with SMTP id o17so13025044wra.8
+ for <qemu-trivial@nongnu.org>; Mon, 04 Jan 2021 01:32:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=YU1+4NwadEE3N+OESJxPKN86R8fGB0+GBAw3oHs9kEI=;
- b=MoBD0iWBZUMxAImL1BfqIfsTeckR0Ht4TNgop21/RNxdPaBXcKmPf9IMQvbpI6dZ1q
- GT76ffcOETzuL9PTudnAjjMiQR/bPjj61GQilzKEXSHJ+Dejm2PT02n9I5GHnbAJwRUg
- 3SJ0hjW0rqRgKxIMGMjEFc/RRKoS5o8fqZZRA7PsNTRFWEJYmMOxdA4kT9vzuRIAwN7o
- Ykz0Aubt+qCQhlQq1/rpOzHYZk3rVx/HGuHOgTN8D4BdZz4wNuQge+UYJIeXQvHP+DeW
- nwn/0I9zKg1qtdyQCAH7hrziN24svbKJ2MloabLGzkJiOq2mzKfyOZJb1jR7RICJXCMs
- OztA==
-X-Gm-Message-State: AOAM531U3ugg6+hwIqy10vgrjQmQcjOD8xT0kUGg4U41jqWL+cVeD5Oc
- sJ2+0Mkh/ZroSuvALRwzPt0=
-X-Google-Smtp-Source: ABdhPJynJccwG9STFPGTdIrwHAvK7bKQV0SRmf36YPSMtmYFUisMuWulGJ0B9N5hF7jqbfMQTHD1BA==
-X-Received: by 2002:a5d:470d:: with SMTP id y13mr76076750wrq.309.1609679096144; 
- Sun, 03 Jan 2021 05:04:56 -0800 (PST)
-Received: from [192.168.1.34] (194.red-83-57-172.dynamicip.rima-tde.net.
- [83.57.172.194])
- by smtp.gmail.com with ESMTPSA id x25sm27360980wmc.3.2021.01.03.05.04.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 Jan 2021 05:04:55 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 0/5] hw: Use PCI macros from 'hw/pci/pci.h'
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- qemu-trivial@nongnu.org, Paul Durrant <paul@xen.org>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Eduardo Habkost
- <ehabkost@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, =?UTF-8?Q?C=c3=a9dric_Le_Goate?=
- =?UTF-8?Q?r?= <clg@kaod.org>, David Gibson <david@gibson.dropbear.id.au>,
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=tn7hDzxpKrM1swuwnw3aSgEMZIORK6hhOk9QF/UxR54=;
+ b=Y3KJBytZrTLv40isWUF1EkhugbY0IqjxMx35v5RCJ/whaNFxu7bH0ZfoI6PZ4dDwiO
+ LYq0K5njjybbJbFgpLGkDhJDxUdHX5Wh+joy9mz8xxT3oVa+RCS8ERhKRFEqepnt1mh1
+ EviJyOEkXBEIs92K/qLDZQ5EqJky5X/xl8xs7PAK+uicUBuu1Ny2fps4azq+ohfhvTGK
+ dn39vu1/5D4dK+G4Riismg0BprU7oMp3pXjA4vJ07SHTjHrBlkBIswBFWfGddQy9UVKo
+ hpEdgarZSPfxxNO3Q1V5aMMdkiqaunGBa32stf1Lbed26tG/RgFeSuEgp1c7z/NskG26
+ 8J1Q==
+X-Gm-Message-State: AOAM531rdzycGl12QtU5Rkfmv2T97wMGdI+cBBPYGYQ1klMTkNEV+EsU
+ ECN46gUWkmciSut0284hxS18FpYZe+glZf9Dc3qrDgCK5XiprTkNdG1BHl/rGJAcCVaHEoENbfH
+ 8ah/Hof5dAM/wcG2A6w==
+X-Received: by 2002:a05:6000:10c4:: with SMTP id
+ b4mr80539872wrx.170.1609752750022; 
+ Mon, 04 Jan 2021 01:32:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx4JuLN6jtROkA0DcLhevcSrtv/oKG8Fo13+2fbLpVuH3BNDwBHHvd1SgSdxKPaKWu9HdWnpw==
+X-Received: by 2002:a05:6000:10c4:: with SMTP id
+ b4mr80539832wrx.170.1609752749696; 
+ Mon, 04 Jan 2021 01:32:29 -0800 (PST)
+Received: from redhat.com (bzq-79-178-32-166.red.bezeqint.net. [79.178.32.166])
+ by smtp.gmail.com with ESMTPSA id n9sm88912868wrq.41.2021.01.04.01.32.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Jan 2021 01:32:28 -0800 (PST)
+Date: Mon, 4 Jan 2021 04:32:25 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
+ Paul Durrant <paul@xen.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-arm@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
  Stefano Stabellini <sstabellini@kernel.org>, Helge Deller <deller@gmx.de>,
  Anthony Perard <anthony.perard@citrix.com>,
  Richard Henderson <rth@twiddle.net>,
@@ -63,28 +71,29 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Paolo Bonzini <pbonzini@redhat.com>, Huacai Chen <chenhc@lemote.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH 0/5] hw: Use PCI macros from 'hw/pci/pci.h'
+Message-ID: <20210104043218-mutt-send-email-mst@kernel.org>
 References: <20201012124506.3406909-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <04b12adf-39ad-dc19-0458-74b0db809a95@amsat.org>
-Date: Sun, 3 Jan 2021 14:04:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ <04b12adf-39ad-dc19-0458-74b0db809a95@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20201012124506.3406909-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <04b12adf-39ad-dc19-0458-74b0db809a95@amsat.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.262,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,23 +106,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 03 Jan 2021 13:05:01 -0000
+X-List-Received-Date: Mon, 04 Jan 2021 09:32:37 -0000
 
-On 10/12/20 2:45 PM, Philippe Mathieu-Daudé wrote:
-> Trivial patches using the generic PCI macros from "hw/pci/pci.h".
+On Sun, Jan 03, 2021 at 02:04:53PM +0100, Philippe Mathieu-Daudé wrote:
+> On 10/12/20 2:45 PM, Philippe Mathieu-Daudé wrote:
+> > Trivial patches using the generic PCI macros from "hw/pci/pci.h".
+> > 
+> > Philippe Mathieu-Daudé (5):
+> >   hw/pci-host/bonito: Make PCI_ADDR() macro more readable
+> >   hw/pci-host: Use the PCI_BUILD_BDF() macro from 'hw/pci/pci.h'
+> >   hw/pci-host/uninorth: Use the PCI_FUNC() macro from 'hw/pci/pci.h'
+> >   hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
+> >   hw: Use the PCI_DEVFN() macro from 'hw/pci/pci.h'
 > 
-> Philippe Mathieu-Daudé (5):
->   hw/pci-host/bonito: Make PCI_ADDR() macro more readable
->   hw/pci-host: Use the PCI_BUILD_BDF() macro from 'hw/pci/pci.h'
->   hw/pci-host/uninorth: Use the PCI_FUNC() macro from 'hw/pci/pci.h'
->   hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
->   hw: Use the PCI_DEVFN() macro from 'hw/pci/pci.h'
+> As this series are trivial and Acked, I'm going to queue
+> it via the mips-tree, as other reviewed patches depend
+> on it.
+> 
+> Thanks,
+> 
+> Phil.
 
-As this series are trivial and Acked, I'm going to queue
-it via the mips-tree, as other reviewed patches depend
-on it.
+Fine.
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
-Thanks,
-
-Phil.
 
