@@ -1,99 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kwMEB-0008Bg-5B
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Jan 2021 04:32:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39930)
+	id 1kwQbu-00084S-9s
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Jan 2021 09:13:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kwME9-00088O-Ff
- for qemu-trivial@nongnu.org; Mon, 04 Jan 2021 04:32:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:53535)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kwME7-0000dw-BM
- for qemu-trivial@nongnu.org; Mon, 04 Jan 2021 04:32:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1609752754;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HxTr71QZaT90y8c2vL2GVs5Sp2A5X0ewvCwxjpolVVQ=;
- b=eFegN5DYxlwHQjgzb7T49vdg0kqgCEz9jHfaDmqPsteRZ905ITtsloFDLW1Std8gl/Q8L8
- vspS7JdfxRoGZZY0eaD/Gs2m0fuOO4rEUlKnM1rNnQnFUnaCgE5nyqMqzvfqU49a85lRtX
- SoTZYKlQYIWr0o6uLmJcKWZKpc0WLC8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-396-mmTu-8bBPLeo2DUFtjWg5Q-1; Mon, 04 Jan 2021 04:32:31 -0500
-X-MC-Unique: mmTu-8bBPLeo2DUFtjWg5Q-1
-Received: by mail-wr1-f71.google.com with SMTP id o17so13025044wra.8
- for <qemu-trivial@nongnu.org>; Mon, 04 Jan 2021 01:32:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=tn7hDzxpKrM1swuwnw3aSgEMZIORK6hhOk9QF/UxR54=;
- b=Y3KJBytZrTLv40isWUF1EkhugbY0IqjxMx35v5RCJ/whaNFxu7bH0ZfoI6PZ4dDwiO
- LYq0K5njjybbJbFgpLGkDhJDxUdHX5Wh+joy9mz8xxT3oVa+RCS8ERhKRFEqepnt1mh1
- EviJyOEkXBEIs92K/qLDZQ5EqJky5X/xl8xs7PAK+uicUBuu1Ny2fps4azq+ohfhvTGK
- dn39vu1/5D4dK+G4Riismg0BprU7oMp3pXjA4vJ07SHTjHrBlkBIswBFWfGddQy9UVKo
- hpEdgarZSPfxxNO3Q1V5aMMdkiqaunGBa32stf1Lbed26tG/RgFeSuEgp1c7z/NskG26
- 8J1Q==
-X-Gm-Message-State: AOAM531rdzycGl12QtU5Rkfmv2T97wMGdI+cBBPYGYQ1klMTkNEV+EsU
- ECN46gUWkmciSut0284hxS18FpYZe+glZf9Dc3qrDgCK5XiprTkNdG1BHl/rGJAcCVaHEoENbfH
- 8ah/Hof5dAM/wcG2A6w==
-X-Received: by 2002:a05:6000:10c4:: with SMTP id
- b4mr80539872wrx.170.1609752750022; 
- Mon, 04 Jan 2021 01:32:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx4JuLN6jtROkA0DcLhevcSrtv/oKG8Fo13+2fbLpVuH3BNDwBHHvd1SgSdxKPaKWu9HdWnpw==
-X-Received: by 2002:a05:6000:10c4:: with SMTP id
- b4mr80539832wrx.170.1609752749696; 
- Mon, 04 Jan 2021 01:32:29 -0800 (PST)
-Received: from redhat.com (bzq-79-178-32-166.red.bezeqint.net. [79.178.32.166])
- by smtp.gmail.com with ESMTPSA id n9sm88912868wrq.41.2021.01.04.01.32.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Jan 2021 01:32:28 -0800 (PST)
-Date: Mon, 4 Jan 2021 04:32:25 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
- Paul Durrant <paul@xen.org>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-arm@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Stefano Stabellini <sstabellini@kernel.org>, Helge Deller <deller@gmx.de>,
- Anthony Perard <anthony.perard@citrix.com>,
- Richard Henderson <rth@twiddle.net>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- xen-devel@lists.xenproject.org,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Paolo Bonzini <pbonzini@redhat.com>, Huacai Chen <chenhc@lemote.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH 0/5] hw: Use PCI macros from 'hw/pci/pci.h'
-Message-ID: <20210104043218-mutt-send-email-mst@kernel.org>
-References: <20201012124506.3406909-1-philmd@redhat.com>
- <04b12adf-39ad-dc19-0458-74b0db809a95@amsat.org>
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kwQbs-00083B-Ag; Mon, 04 Jan 2021 09:13:24 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3018)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kwQbm-0002nW-4I; Mon, 04 Jan 2021 09:13:23 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4D8cyB06pCzj2YQ;
+ Mon,  4 Jan 2021 22:12:02 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.498.0; Mon, 4 Jan 2021
+ 22:12:45 +0800
+From: Gan Qixin <ganqixin@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <kuhn.chenqun@huawei.com>, <zhang.zhanghailiang@huawei.com>, Gan Qixin
+ <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>, Thomas Huth
+ <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH] qtest/libqtest.c: fix heap-buffer-overflow in
+ qtest_cb_for_every_machine()
+Date: Mon, 4 Jan 2021 22:10:25 +0800
+Message-ID: <20210104141025.496193-1-ganqixin@huawei.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-In-Reply-To: <04b12adf-39ad-dc19-0458-74b0db809a95@amsat.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
+ helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,28 +50,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Jan 2021 09:32:37 -0000
+X-List-Received-Date: Mon, 04 Jan 2021 14:13:24 -0000
 
-On Sun, Jan 03, 2021 at 02:04:53PM +0100, Philippe Mathieu-Daudé wrote:
-> On 10/12/20 2:45 PM, Philippe Mathieu-Daudé wrote:
-> > Trivial patches using the generic PCI macros from "hw/pci/pci.h".
-> > 
-> > Philippe Mathieu-Daudé (5):
-> >   hw/pci-host/bonito: Make PCI_ADDR() macro more readable
-> >   hw/pci-host: Use the PCI_BUILD_BDF() macro from 'hw/pci/pci.h'
-> >   hw/pci-host/uninorth: Use the PCI_FUNC() macro from 'hw/pci/pci.h'
-> >   hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
-> >   hw: Use the PCI_DEVFN() macro from 'hw/pci/pci.h'
-> 
-> As this series are trivial and Acked, I'm going to queue
-> it via the mips-tree, as other reviewed patches depend
-> on it.
-> 
-> Thanks,
-> 
-> Phil.
+When the length of mname is less than 5, memcpy ("xenfv", mname, 5) will cause
+heap buffer overflow. Therefore, use strcmp to avoid this problem.
 
-Fine.
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+The asan showed stack:
+
+ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000f2f4 at
+pc 0x7f65d8cc2225 bp 0x7ffe93cc5a60 sp 0x7ffe93cc5208 READ of size 5 at
+0x60200000f2f4 thread T0
+    #0 0x7f65d8cc2224 in memcmp (/lib64/libasan.so.5+0xdf224)
+    #1 0x5632c20be95b in qtest_cb_for_every_machine tests/qtest/libqtest.c:1282
+    #2 0x5632c20b7995 in main tests/qtest/test-hmp.c:160
+    #3 0x7f65d88fed42 in __libc_start_main (/lib64/libc.so.6+0x26d42)
+    #4 0x5632c20b72cd in _start (build/tests/qtest/test-hmp+0x542cd)
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+---
+Cc: Thomas Huth <thuth@redhat.com>
+Cc: Laurent Vivier <lvivier@redhat.com>
+---
+ tests/qtest/libqtest.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index e49f3a1e45..e8179a3509 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -1281,7 +1281,7 @@ void qtest_cb_for_every_machine(void (*cb)(const char *machine),
+         g_assert(qstr);
+         mname = qstring_get_str(qstr);
+         /* Ignore machines that cannot be used for qtests */
+-        if (!memcmp("xenfv", mname, 5) || g_str_equal("xenpv", mname)) {
++        if (!strcmp("xenfv", mname) || g_str_equal("xenpv", mname)) {
+             continue;
+         }
+         if (!skip_old_versioned || !qtest_is_old_versioned_machine(mname)) {
+-- 
+2.23.0
 
 
