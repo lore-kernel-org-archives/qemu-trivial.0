@@ -1,70 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kxCCX-0006Dk-AO
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Jan 2021 12:02:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33882)
+	id 1kxRbf-0005xd-6W
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Jan 2021 04:29:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kxCCT-0006Ai-Bf
- for qemu-trivial@nongnu.org; Wed, 06 Jan 2021 12:02:22 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55078)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kxRbe-0005xO-2j
+ for qemu-trivial@nongnu.org; Thu, 07 Jan 2021 04:29:22 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47552)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kxCCQ-0005T8-Uf
- for qemu-trivial@nongnu.org; Wed, 06 Jan 2021 12:02:20 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kxRba-0006NL-So
+ for qemu-trivial@nongnu.org; Thu, 07 Jan 2021 04:29:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1609952537;
+ s=mimecast20190719; t=1610011758;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ehrLtNBTNRbeo/Y70jedK8fZnXOpc2+Da3hK5em4AC4=;
- b=QAavYcNKFkEHA6/GRZrjqUpdrfoYfjZCZSjScMu6Dewh9ZX36+Tp/1/Cp9FuQcERo1xkBl
- JsI02oPNRTyX/T7WOrniQR7R6yb0UT8JJAwylgUI+8DcutpfsxNOE3zjvv/QDpEMp8MgH8
- abSnW/RYJVgYsSIZSxEjvxHtKTxDzKA=
+ bh=3ePiS5njrGQXJmP5U9dtCR81sH3mKJKWuWZGlsaqcKs=;
+ b=WBVLtaK7wzXQ8F+8UhKj7dFcKamf6JoajD+ED1YMCH3/t12jcxnXZ1HLi4j4vvRKqJbE0a
+ EcLNzY/FXOkqi/pWLcQE131l6I+IZwim5xn0uZloEAzGoz6iDEfXPAl3OpdJMK2M6+ZNBD
+ 3UmC/pqOUF9ZOJgK9zOxg48J+d+80sQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-206-qqizzyyzNxCGqwJRVGUQww-1; Wed, 06 Jan 2021 12:02:11 -0500
-X-MC-Unique: qqizzyyzNxCGqwJRVGUQww-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-405-mPbEZdgNMzS0y2XHebMcxg-1; Thu, 07 Jan 2021 04:29:15 -0500
+X-MC-Unique: mPbEZdgNMzS0y2XHebMcxg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19D54190A7A1;
- Wed,  6 Jan 2021 17:02:10 +0000 (UTC)
-Received: from localhost (ovpn-113-208.ams2.redhat.com [10.36.113.208])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 694641002393;
- Wed,  6 Jan 2021 17:02:06 +0000 (UTC)
-Date: Wed, 6 Jan 2021 17:02:05 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Peter Xu <peterx@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com, qemu-trivial@nongnu.org
-Subject: Re: [PATCH v2] Docs/RCU: Correct sample code of qatomic_rcu_set
-Message-ID: <20210106170205.GA133350@stefanha-x1.localdomain>
-References: <20210106071710.15836-1-zhukeqian1@huawei.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8825E10766BD;
+ Thu,  7 Jan 2021 09:29:13 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-114-16.ams2.redhat.com [10.36.114.16])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8541E60BF1;
+ Thu,  7 Jan 2021 09:29:11 +0000 (UTC)
+Subject: Re: [PATCH] tests/docker: Remove Debian 9 remnant lines
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Fam Zheng <fam@euphon.net>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210107072933.3828450-1-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <eb1e395c-a7fb-c7fd-a670-ece13326412a@redhat.com>
+Date: Thu, 7 Jan 2021 10:29:10 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20210106071710.15836-1-zhukeqian1@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20210107072933.3828450-1-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="xHFwDpU9dbj6ez1V"
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=stefanha@redhat.com;
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
+X-Spam_score_int: -32
+X-Spam_score: -3.3
 X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.252,
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.252,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.249, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,46 +76,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Jan 2021 17:02:22 -0000
+X-List-Received-Date: Thu, 07 Jan 2021 09:29:22 -0000
 
---xHFwDpU9dbj6ez1V
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Jan 06, 2021 at 03:17:10PM +0800, Keqian Zhu wrote:
-> Correct sample code to avoid confusing readers.
->=20
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Cc: qemu-trivial@nongnu.org
-> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> Reviewed-by: Peter Xu <peterx@redhat.com>
+On 07/01/2021 08.29, Philippe Mathieu-Daudé wrote:
+> Debian 9 base container has been removed in commits
+> e3755276d1f and c9d78b06c06. Remove the last remnants.
+> 
+> Fixes: e3755276d1f ("tests/docker: Remove old Debian 9 containers")
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->=20
-> v2:
->  - Add Cc and R-b.
->=20
-> ---
->  docs/devel/rcu.txt | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>   tests/docker/Makefile.include | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+> index c254ac38d0a..0779dab5b96 100644
+> --- a/tests/docker/Makefile.include
+> +++ b/tests/docker/Makefile.include
+> @@ -108,7 +108,6 @@ ifneq ($(HOST_ARCH),x86_64)
+>   DOCKER_PARTIAL_IMAGES += debian-mips-cross debian-mipsel-cross debian-mips64el-cross
+>   DOCKER_PARTIAL_IMAGES += debian-ppc64el-cross
+>   DOCKER_PARTIAL_IMAGES += debian-s390x-cross
+> -DOCKER_PARTIAL_IMAGES += debian-win32-cross debian-win64-cross
+>   DOCKER_PARTIAL_IMAGES += fedora travis
+>   endif
+>   
+> 
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---xHFwDpU9dbj6ez1V
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl/17Q0ACgkQnKSrs4Gr
-c8gZpgf/YNO4iFwAYjwd3y/gTXwdffsM/jadr2ElZQmD8kpXrxKzBjtCq7+zsDsU
-f0GmHKjd6WCJNg/0Fli7gExWwWcF6Yazol1pCK3XcilbEBSDyCgrWKsB0sOdHJMs
-3zEBi6BQDE5uC61Vk7a2yezGZYl3w1NJ3D1Qn5JvlWx0yOWPt3pkz3MDNCP9GO0a
-A3diaDB355bcRfq0BiSKL5XjmTU/NdA7qHWIOHYdPgad5Vd7jLL2qbLfqysca1E6
-StDse/NvG6/eIf0NupZX5qIkbpSFZUZ1yCM/ty7WJNv0V5Fhysyip+7agRGSd+C/
-5uWnnSR0kUSKZEcXVDDIBDrX5GNIkg==
-=i5Xn
------END PGP SIGNATURE-----
-
---xHFwDpU9dbj6ez1V--
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
