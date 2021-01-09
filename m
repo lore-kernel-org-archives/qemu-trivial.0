@@ -1,89 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kxtLo-0007gf-9G
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Jan 2021 10:06:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38916)
+	id 1kyLRf-0001Sj-4V
+	for mharc-qemu-trivial@gnu.org; Sat, 09 Jan 2021 16:06:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57282)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1kxtLk-0007fS-RQ
- for qemu-trivial@nongnu.org; Fri, 08 Jan 2021 10:06:48 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36501)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1kxtLh-0000kL-SS
- for qemu-trivial@nongnu.org; Fri, 08 Jan 2021 10:06:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610118404;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7wBwsG56Bsxex18dbtXK0XZybqGGh77JwLxho0q30kU=;
- b=TQLGB7AycS0hJLQH10ii0MQd2heKNcU9iDZuqENXTBUs0OINB7Agrg040rf62dOiuKsNL/
- H9nF6Tra95yNt3XYwT5IUy0Vyv777cCaekpT7u9p1hMHh6JCVFmrZ21qQA+w7wpfK1zpu9
- a+7pogNWIMA2gbP/d4cjbHiKQdDA+F0=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-583-qHh5rPRUPY-JW1FT_py6Bg-1; Fri, 08 Jan 2021 10:06:43 -0500
-X-MC-Unique: qHh5rPRUPY-JW1FT_py6Bg-1
-Received: by mail-wm1-f71.google.com with SMTP id k67so3324058wmk.5
- for <qemu-trivial@nongnu.org>; Fri, 08 Jan 2021 07:06:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=7wBwsG56Bsxex18dbtXK0XZybqGGh77JwLxho0q30kU=;
- b=WUSdp0ZxADGJrGeGfmyCSVj4zWlMc4G2liiQVdNtQ3yMbF6nfA6Z5w2GdytW37MUct
- PKx2uLS69uRiySU/8Q8fhLv7DkBRmTI/RGLoTFu4itEhlt5echJNDwCcNjAvapAkrPBS
- a32mcgtKWZhyJP38fADKWO01zABM95sGs0fft3Gyqtka90ltp7BiT6BNl616faCSFxSp
- TPQeOFo+/7XNXP/NxLAw8NlDm8+IGZa+0p4EAK/qsGV1Dr4c/X8p76qjxoxCauWkQyNi
- rm2zGIF7GxyEmw7Ho+2rkfc5cynjwuWxnHX6LmcaJ6SAPzUT68zpDMDuumuPIkj2YAq9
- FxcQ==
-X-Gm-Message-State: AOAM5339uRMcTEVlnVcxSN3TYGYK1nbtK7m2geSh7HAVZV2Tgz+u/O4T
- Hu3DKY2fY63xh+pYCz4+4esDUhJNIh6USbQsMfm5JR4/+1xei10cyzedMdFBDXVJEphsjNFmBsK
- NsO/DCRYSizvmE2oQZA==
-X-Received: by 2002:a05:600c:255:: with SMTP id
- 21mr3398868wmj.69.1610118401945; 
- Fri, 08 Jan 2021 07:06:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyUeWRJX1r0y9VjEADh5VGcoDvFcBVgX8mTsN/VfcHJXXgT7mVhg/KHuM/q/z1NS7z292Kv+Q==
-X-Received: by 2002:a05:600c:255:: with SMTP id
- 21mr3398842wmj.69.1610118401685; 
- Fri, 08 Jan 2021 07:06:41 -0800 (PST)
-Received: from steredhat (host-79-34-249-199.business.telecomitalia.it.
- [79.34.249.199])
- by smtp.gmail.com with ESMTPSA id a62sm12347646wmf.7.2021.01.08.07.06.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jan 2021 07:06:40 -0800 (PST)
-Date: Fri, 8 Jan 2021 16:06:38 +0100
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH] hw/virtio-pci: Replace error_report() by
- qemu_log_mask(GUEST_ERROR)
-Message-ID: <20210108150638.pzc4mu5knw37ejsv@steredhat>
-References: <20201210172834.178052-1-philmd@redhat.com>
- <20210108120243.zgajoyust5n56l5m@steredhat>
- <990898ff-a225-0548-690a-f7bab039ca08@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <990898ff-a225-0548-690a-f7bab039ca08@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sgarzare@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=sgarzare@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.247,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <stefan-guix@vodafonemail.de>)
+ id 1kyJSo-0008JW-0c; Sat, 09 Jan 2021 13:59:50 -0500
+Received: from smtpout2.vodafonemail.de ([145.253.239.133]:49188)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefan-guix@vodafonemail.de>)
+ id 1kyJSi-0001of-TM; Sat, 09 Jan 2021 13:59:49 -0500
+Received: from smtp.vodafone.de (unknown [10.2.0.35])
+ by smtpout2.vodafonemail.de (Postfix) with ESMTP id BD66B123E39;
+ Sat,  9 Jan 2021 19:59:39 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vodafonemail.de;
+ s=vfde-smtpout-mb-15sep; t=1610218779;
+ bh=wDKD71gbdhcf7PdQSEhdacQIjUWSF0Uo35+WpJtyu5M=;
+ h=From:Subject:Date:Cc:To;
+ b=iuNw+Mt1WzimIHjVgrnpDTBel+vMvxCmsUEAhY+yEAtxM4CCXl6c4IofdCmgrY4Z+
+ aPlLM2peTMfpSq/Zctj9DlL1Hj3LUmlpLfgMQyAeVyawaerQR0RkAdG0xk3InNTcro
+ lNiC+LvhofDzVR9FQ2fVnxG7E2yLpieodmV+2JYc=
+Received: from macbook-pro.kuh-wiese.my-router.de
+ (dslb-002-206-141-230.002.206.pools.vodafone-ip.de [2.206.141.230])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by smtp.vodafone.de (Postfix) with ESMTPSA id 7C05F140248;
+ Sat,  9 Jan 2021 18:59:39 +0000 (UTC)
+From: Stefan <stefan-guix@vodafonemail.de>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Subject: [PATCH 1/1] linux-user/syscall: Fix do_ioctl_ifconf() for 64 bit
+ targets.
+Date: Sat, 9 Jan 2021 19:59:42 +0100
+Message-Id: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
+Cc: Laurent Vivier <laurent@vivier.eu>,
+ qemu-stable@nongnu.org
+To: qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+X-Mailer: Apple Mail (2.3124)
+X-purgate-type: clean
+X-purgate-Ad: Categorized by eleven eXpurgate (R) http://www.eleven.de
+X-purgate: This mail is considered clean (visit http://www.eleven.de for
+ further information)
+X-purgate: clean
+X-purgate-size: 1895
+X-purgate-ID: 155817::1610218779-0000239E-4442BE00/0/0
+Received-SPF: pass client-ip=145.253.239.133;
+ envelope-from=stefan-guix@vodafonemail.de; helo=smtpout2.vodafonemail.de
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 09 Jan 2021 16:06:46 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -95,46 +67,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Jan 2021 15:06:49 -0000
+X-List-Received-Date: Sat, 09 Jan 2021 18:59:50 -0000
 
-On Fri, Jan 08, 2021 at 04:00:21PM +0100, Philippe Mathieu-Daudé wrote:
->On 1/8/21 1:02 PM, Stefano Garzarella wrote:
->> On Thu, Dec 10, 2020 at 06:28:34PM +0100, Philippe Mathieu-DaudÃƒÂ© wrote:
->>> Replace I/O write error reported with error_report() by
->>> qemu_log_mask(GUEST_ERROR) which allow filtering.
->>>
->>> Signed-off-by: Philippe Mathieu-DaudÃƒÂ© <philmd@redhat.com>
->>> ---
->>> hw/virtio/virtio-pci.c | 6 ++++--
->>> 1 file changed, 4 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
->>> index f863f69ede4..094c36aa3ea 100644
->>> --- a/hw/virtio/virtio-pci.c
->>> +++ b/hw/virtio/virtio-pci.c
->>> @@ -27,6 +27,7 @@
->>> #include "hw/qdev-properties.h"
->>> #include "qapi/error.h"
->>> #include "qemu/error-report.h"
->>             ^
->> Just a little thing, could we remove this inclusion since we are not
->> using error_report() anymore in this file?
->
->We can't because virtio_pci_device_plugged() calls
->warn_report() twice :/
+The sizeof(struct ifreq) is 40 for 64 bit and 32 for 32 bit =
+architectures.
+This structure contains a union of other structures, of which struct =
+ifmap
+is the biggest for 64 bit architectures. Calling ioclt(=E2=80=A6, =
+SIOCGIFCONF, =E2=80=A6)
+fills a struct sockaddr of that union, and do_ioctl_ifconf() only =
+considered
+that struct sockaddr for the size of the union, which has the same size =
+as
+struct ifmap on 32 bit architectures. So do_ioctl_ifconf() assumed a =
+wrong
+size of 32 for struct ifreq instead of the correct size of 40 on 64 bit
+architectures.
 
-Of course you are right :-)
+The fix makes do_ioctl_ifconf() handle struct ifmap as the biggest part =
+of
+the union, treating struct ifreq with the correct size.
 
-Stefano
+Signed-off-by: Stefan <stefan-guix@vodafonemail.de>
+---
+  linux-user/syscall.c | 3 ++-
+  1 file changed, 2 insertions(+), 1 deletion(-)
 
->
->> Anyway the patch LGTM:
->>
->> Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
->
->Thanks!
->
->Phil.
->
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index d182890ff0..15a6abadc1 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -4902,6 +4902,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry =
+*ie, uint8_t *buf_temp,
+      struct ifconf *host_ifconf;
+      uint32_t outbufsz;
+      const argtype ifreq_arg_type[] =3D { =
+MK_STRUCT(STRUCT_sockaddr_ifreq) };
++    const argtype ifreq_max_type[] =3D { MK_STRUCT(STRUCT_ifmap_ifreq) =
+};
+      int target_ifreq_size;
+      int nb_ifreq;
+      int free_buf =3D 0;
+@@ -4925,7 +4926,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry =
+*ie, uint8_t *buf_temp,
+ =20
+      host_ifconf =3D (struct ifconf *)(unsigned long)buf_temp;
+      target_ifc_buf =3D (abi_long)(unsigned long)host_ifconf->ifc_buf;
+-    target_ifreq_size =3D thunk_type_size(ifreq_arg_type, 0);
++    target_ifreq_size =3D thunk_type_size(ifreq_max_type, 0);
+ =20
+      if (target_ifc_buf !=3D 0) {
+          target_ifc_len =3D host_ifconf->ifc_len;
+--=20
+2.29.2
 
 
