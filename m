@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kyyzn-0001wT-7N
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Jan 2021 10:20:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50274)
+	id 1kyyzo-00020T-Fv
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Jan 2021 10:20:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50338)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kyyzl-0001sF-Ak
- for qemu-trivial@nongnu.org; Mon, 11 Jan 2021 10:20:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25593)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kyyzm-0001vR-PP
+ for qemu-trivial@nongnu.org; Mon, 11 Jan 2021 10:20:38 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:59472)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kyyzg-00044G-Tw
- for qemu-trivial@nongnu.org; Mon, 11 Jan 2021 10:20:35 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kyyzl-000457-1E
+ for qemu-trivial@nongnu.org; Mon, 11 Jan 2021 10:20:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610378429;
+ s=mimecast20190719; t=1610378436;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=LM7AeLfQEqrU558zvQoXSQweJ4vkeUX1kaefzrhoJho=;
- b=YkxYGwGWOYWNGfrisMetuHVhx16PugXSCwnmAKLWECv7I5Db5amGX9G4uRIUxmWLNFob2O
- nlLcbkXXop51mSD7Euk/y56iL2CTxGAQkrWBi7I2/vIvpoy6qZJE+WXcEXb52O6No9vOIi
- 3hV6dTsl8N81WeTn7wisiJ1oC854wvI=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-343-lVHZWITLMterjwXU1YRJrA-1; Mon, 11 Jan 2021 10:20:25 -0500
-X-MC-Unique: lVHZWITLMterjwXU1YRJrA-1
-Received: by mail-ej1-f72.google.com with SMTP id n17so21334eja.23
- for <qemu-trivial@nongnu.org>; Mon, 11 Jan 2021 07:20:25 -0800 (PST)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=97BNT6jh6NRO0TVk+TL23RreQDhzFRma0TINePq+NK8=;
+ b=WmrD/QMLLe6mMlP9odwpyo3CG/WprmCO3tuHBOCOnFr5nKsyybD7J8lFKV398L+OslpC5T
+ k2U7+AjUbAeco4+MvOBuSrrnulaYnN53YwinaYfDDo9g0cjm0QjFwHDySsIZZhcJrgT8sR
+ EkSNuvQjbOH01Ut1W9TpfFYuPNYBAu0=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-316-YA7Q8ASBOxy0FQYTMEwilQ-1; Mon, 11 Jan 2021 10:20:32 -0500
+X-MC-Unique: YA7Q8ASBOxy0FQYTMEwilQ-1
+Received: by mail-ed1-f72.google.com with SMTP id dh21so8361213edb.6
+ for <qemu-trivial@nongnu.org>; Mon, 11 Jan 2021 07:20:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Ucd06r2eJPcCIqt9QCTk/uw4j4Vi5AVfWPojlXh2MWo=;
- b=WcHqIPUwmqIkQZm7N/ws38lpkSqKw2PAlRfV6MI/orXTz6WODk8sF9WLUo5/V1SHif
- NsOQAakPsb7zngxOylFYpqOV2MbasVpW8rQ42I2JDPqzCjOOMJDm44XZ9y5mPT7EOUdJ
- dASC6dbI86xXeNpW91VhZyLk9vmSjMkZWY2asGHCUiP/Ez4W0sdIooSs08xgz5QnIr4p
- TvY1XTjwlV0UEqW26z7+5awpZjOMUY6e+MNKeqd5kNM034fVX2W9AMEKM4baZdGJpZWG
- krPuNnAItHHjEgnpT73dIzspRWDArRZdbBArJ1K2N2dyEbX3gpLXTmKIlJFpEJmsp73M
- /oUg==
-X-Gm-Message-State: AOAM531dJmyeVN5bbJjFuFuPgq8SLunXExvCPzVHqxyht6SWkaThk5iH
- 0NnpcsbRkEsvMdFkT1Kn4qTvzOth4AzkPOe4YTqaSYmMWmJhrbeFC5DRTAN+Wh+g41R52qIjegu
- CfpcfPfrVTXtnW8pQYA==
-X-Received: by 2002:a17:907:e9e:: with SMTP id
- ho30mr11282830ejc.529.1610378424338; 
- Mon, 11 Jan 2021 07:20:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJywxJElqigN/5jUO+VSUtxZXH9MfGPzYtOFdIcNPFnX2mDokjoLqsfHorN2m3Haq800FJrUjA==
-X-Received: by 2002:a17:907:e9e:: with SMTP id
- ho30mr11282789ejc.529.1610378424080; 
- Mon, 11 Jan 2021 07:20:24 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=97BNT6jh6NRO0TVk+TL23RreQDhzFRma0TINePq+NK8=;
+ b=oZem7UDaM26mLVzxGrk9odMpzCr5Rtqlswz7J+eT8kOnEtbSwCAJAKNjSTdYmQ1G7I
+ 7+I+A8FGDbwhfEb5tMdFQIcMCNnO8fvnmsv6yI/IduJeNy/y+/uSGk2jbAfFwtYqBwnj
+ aRCu0M9LYO0zdovIQ7UJw2a2rFQ3S9mI20j25TUXUv5Senn4WbXxZ4nvjmeeuzi+WOpW
+ G+sfm3cqsIul+mW7BlQdxY1CoGD0HsQiGgq9X3dn1l8BpdBm2b4BdMRM9pSgETsBqbLB
+ R9CNavCk/SMbxHuzy/rINrIMGhLqi0hiOyTI1d0rBfIq6Dy4Dwat4UZATyy/ks1bSEYP
+ +7Pg==
+X-Gm-Message-State: AOAM531RdnuWHZ+4X4V+KIyWPdElP+H9x6fUfrr2WkikJz080wj4V1iX
+ U++OT4gIVmjp2eh/EejtPa+Nbb0SwV4K7H3j8YNPEDznb4J31VOHaNlllxyMjv9Pr5xLH+LHtnh
+ 4LQRlCWy5juaxvTG/4g==
+X-Received: by 2002:aa7:cdc3:: with SMTP id h3mr14236998edw.52.1610378431355; 
+ Mon, 11 Jan 2021 07:20:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxfzQ4g/Xi77uXbjKsyJn2nZrlWGnmTOg2kIy8FkRbXj1BTf3rxwC5MxkZMkcW73D4xDrLEXw==
+X-Received: by 2002:aa7:cdc3:: with SMTP id h3mr14236981edw.52.1610378431207; 
+ Mon, 11 Jan 2021 07:20:31 -0800 (PST)
 Received: from x1w.redhat.com (129.red-88-21-205.staticip.rima-tde.net.
  [88.21.205.129])
- by smtp.gmail.com with ESMTPSA id y17sm7157263ejj.84.2021.01.11.07.20.21
+ by smtp.gmail.com with ESMTPSA id c12sm76932edw.55.2021.01.11.07.20.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 07:20:23 -0800 (PST)
+ Mon, 11 Jan 2021 07:20:30 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Huacai Chen <chenhuacai@kernel.org>, Greg Kurz <groug@kaod.org>,
@@ -80,26 +79,27 @@ Cc: Huacai Chen <chenhuacai@kernel.org>, Greg Kurz <groug@kaod.org>,
  Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
  Stefan Hajnoczi <stefanha@redhat.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: [PATCH 0/2] sysemu: Let VMChangeStateHandler take boolean 'running'
- argument
-Date: Mon, 11 Jan 2021 16:20:18 +0100
-Message-Id: <20210111152020.1422021-1-philmd@redhat.com>
+Subject: [PATCH 1/2] sysemu/runstate: Let runstate_is_running() return bool
+Date: Mon, 11 Jan 2021 16:20:19 +0100
+Message-Id: <20210111152020.1422021-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210111152020.1422021-1-philmd@redhat.com>
+References: <20210111152020.1422021-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -113,63 +113,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jan 2021 15:20:37 -0000
+X-List-Received-Date: Mon, 11 Jan 2021 15:20:39 -0000
 
-Trivial prototype change to clarify the use of the 'running'=0D
-argument of VMChangeStateHandler.=0D
-=0D
-Green CI:=0D
-https://gitlab.com/philmd/qemu/-/pipelines/239497352=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (2):=0D
-  sysemu/runstate: Let runstate_is_running() return bool=0D
-  sysemu: Let VMChangeStateHandler take boolean 'running' argument=0D
-=0D
- include/sysemu/runstate.h   | 12 +++++++++---=0D
- target/arm/kvm_arm.h        |  2 +-=0D
- target/ppc/cpu-qom.h        |  2 +-=0D
- accel/xen/xen-all.c         |  2 +-=0D
- audio/audio.c               |  2 +-=0D
- block/block-backend.c       |  2 +-=0D
- gdbstub.c                   |  2 +-=0D
- hw/block/pflash_cfi01.c     |  2 +-=0D
- hw/block/virtio-blk.c       |  2 +-=0D
- hw/display/qxl.c            |  2 +-=0D
- hw/i386/kvm/clock.c         |  2 +-=0D
- hw/i386/kvm/i8254.c         |  2 +-=0D
- hw/i386/kvmvapic.c          |  2 +-=0D
- hw/i386/xen/xen-hvm.c       |  2 +-=0D
- hw/ide/core.c               |  2 +-=0D
- hw/intc/arm_gicv3_its_kvm.c |  2 +-=0D
- hw/intc/arm_gicv3_kvm.c     |  2 +-=0D
- hw/intc/spapr_xive_kvm.c    |  2 +-=0D
- hw/misc/mac_via.c           |  2 +-=0D
- hw/net/e1000e_core.c        |  2 +-=0D
- hw/nvram/spapr_nvram.c      |  2 +-=0D
- hw/ppc/ppc.c                |  2 +-=0D
- hw/ppc/ppc_booke.c          |  2 +-=0D
- hw/s390x/tod-kvm.c          |  2 +-=0D
- hw/scsi/scsi-bus.c          |  2 +-=0D
- hw/usb/hcd-ehci.c           |  2 +-=0D
- hw/usb/host-libusb.c        |  2 +-=0D
- hw/usb/redirect.c           |  2 +-=0D
- hw/vfio/migration.c         |  2 +-=0D
- hw/virtio/virtio-rng.c      |  2 +-=0D
- hw/virtio/virtio.c          |  2 +-=0D
- net/net.c                   |  2 +-=0D
- softmmu/memory.c            |  2 +-=0D
- softmmu/runstate.c          |  4 ++--=0D
- target/arm/kvm.c            |  2 +-=0D
- target/i386/kvm/kvm.c       |  2 +-=0D
- target/i386/sev.c           |  2 +-=0D
- target/i386/whpx/whpx-all.c |  2 +-=0D
- target/mips/kvm.c           |  4 ++--=0D
- ui/gtk.c                    |  2 +-=0D
- ui/spice-core.c             |  2 +-=0D
- 41 files changed, 51 insertions(+), 45 deletions(-)=0D
-=0D
---=20=0D
-2.26.2=0D
-=0D
+runstate_check() returns a boolean. runstate_is_running()
+returns what runstate_check() returns, also a boolean.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ include/sysemu/runstate.h | 2 +-
+ softmmu/runstate.c        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/sysemu/runstate.h b/include/sysemu/runstate.h
+index e557f470d42..3ab35a039a0 100644
+--- a/include/sysemu/runstate.h
++++ b/include/sysemu/runstate.h
+@@ -6,7 +6,7 @@
+ 
+ bool runstate_check(RunState state);
+ void runstate_set(RunState new_state);
+-int runstate_is_running(void);
++bool runstate_is_running(void);
+ bool runstate_needs_reset(void);
+ bool runstate_store(char *str, size_t size);
+ 
+diff --git a/softmmu/runstate.c b/softmmu/runstate.c
+index 636aab0addb..c7a67147d17 100644
+--- a/softmmu/runstate.c
++++ b/softmmu/runstate.c
+@@ -217,7 +217,7 @@ void runstate_set(RunState new_state)
+     current_run_state = new_state;
+ }
+ 
+-int runstate_is_running(void)
++bool runstate_is_running(void)
+ {
+     return runstate_check(RUN_STATE_RUNNING);
+ }
+-- 
+2.26.2
 
 
