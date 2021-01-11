@@ -1,79 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kymSt-0000ma-En
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Jan 2021 20:57:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33642)
+	id 1kymuH-00069q-EV
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Jan 2021 21:26:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <natechancellor@gmail.com>)
- id 1kyljw-0001yi-F3; Sun, 10 Jan 2021 20:11:24 -0500
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:45093)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <natechancellor@gmail.com>)
- id 1kylju-0007T4-F8; Sun, 10 Jan 2021 20:11:24 -0500
-Received: by mail-io1-xd34.google.com with SMTP id n4so16159671iow.12;
- Sun, 10 Jan 2021 17:11:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=40xBpLb9i5JA4ltONMM4DzrFU4VYMiEYWHZMM/Qqmkk=;
- b=Mz47lXaKQWi00yo77UwbZK85P1iMJ2oCt5Wzq+qFQnYI8+kFTNZqE2yttwE6ggfJ4B
- 8nSeeSOB+92QEFbhZ78NSX4r2ntLwWso1xWns3QoMKoN638m8rXR6fKKxq05HfJTQhhb
- PtQoF/jHCaILpRRJNH9tBRD9o/w2fuH1umnT/EzaIn+5CnwIMfl6AELkQENdAE+mAfKM
- J74EK7H8dkdUEvEbYv5tDCGYpY8HY8mRfQA6fNU/9W/jOFYgsSg95+olvifWqQfC294v
- H70JZXKXIPHkRX/WsAsA4T4VCrBb6oOb2DOjmsqNUZKuQxv106zeXsU+gZRM94w5fVxb
- GxMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=40xBpLb9i5JA4ltONMM4DzrFU4VYMiEYWHZMM/Qqmkk=;
- b=GOkutqKoYCab9X6zerrLmYzqtNwAqu/koJXpozU062fEFcEmM0zfhUIC9ukjfwWJad
- LF07TfAxuN+yGm0xnQ9x8OZzmvX0O6jEYzGbD393cECQ9Z9KFbN8cF9tFM2UPZDWvIGf
- vQ6i9fc3JpslcU3sQ0FE3XrqoaTneg2+uP17AvXf+baVuy96ya0K4X+OCQ+1T4m0oS+Z
- CzGnyXw3KxUgRLENCjh/V9+d1PqOehIrdY0N54Wv2uyLbNC/auB+ooCM5uGJlnlnwHRP
- sqtLHa7tpGc3MPrI6yu8yySIlOrsRctXNfE67xxjkBl/CT9PTBF8C9h4clF4Fh88V2A0
- kQbQ==
-X-Gm-Message-State: AOAM532W/TaamU1jvRmuaBTAIoZtasrL/67jyXthKclFr0aCN1aKmBwt
- usIIG7J+rCVNGHtpEroQ0Os=
-X-Google-Smtp-Source: ABdhPJwtbFyaFg0BHygcsRMzEUS7s4kD2yXpMBrhSAKmvQQm3/sNY0LE3+VQS1BqqfVM0lAtJgTJ/g==
-X-Received: by 2002:a02:91c2:: with SMTP id s2mr12672310jag.48.1610327479943; 
- Sun, 10 Jan 2021 17:11:19 -0800 (PST)
-Received: from ubuntu-m3-large-x86 ([2604:1380:45f1:1d00::1])
- by smtp.gmail.com with ESMTPSA id m19sm13943066ila.81.2021.01.10.17.11.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 10 Jan 2021 17:11:19 -0800 (PST)
-Date: Sun, 10 Jan 2021 18:11:17 -0700
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- David Gibson <david@gibson.dropbear.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: Re: [PATCH 4/5] hw/ppc/ppc4xx_pci: Replace pointless warning by
- assert()
-Message-ID: <20210111011117.GA215408@ubuntu-m3-large-x86>
-References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-5-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kymuG-00069Z-69; Sun, 10 Jan 2021 21:26:08 -0500
+Received: from szxga08-in.huawei.com ([45.249.212.255]:2247)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1kymuC-0006Ph-FM; Sun, 10 Jan 2021 21:26:07 -0500
+Received: from dggemi403-hub.china.huawei.com (unknown [172.30.72.57])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4DDcwB5C2Rz13g3n;
+ Mon, 11 Jan 2021 10:24:10 +0800 (CST)
+Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.51]) by
+ dggemi403-hub.china.huawei.com ([10.3.17.136]) with mapi id 14.03.0509.000;
+ Mon, 11 Jan 2021 10:25:40 +0800
+From: ganqixin <ganqixin@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>
+Subject: RE: [PATCH v2 0/7] Fix some memleaks caused by ptimer_init
+Thread-Topic: [PATCH v2 0/7] Fix some memleaks caused by ptimer_init
+Thread-Index: AQHW1GhbfX5OzV4bGkyve9Xidi/Fb6odN9iAgASetUA=
+Date: Mon, 11 Jan 2021 02:25:39 +0000
+Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F49606625057@DGGEMI525-MBS.china.huawei.com>
+References: <20201217113137.121607-1-ganqixin@huawei.com>
+ <CAFEAcA9Z9VDTW5GSC=R_NYF_FOoKMXQcCy3U6pctmj0jg=0-Fg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9Z9VDTW5GSC=R_NYF_FOoKMXQcCy3U6pctmj0jg=0-Fg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.159]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200901104043.91383-5-f4bug@amsat.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
- envelope-from=natechancellor@gmail.com; helo=mail-io1-xd34.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.255; envelope-from=ganqixin@huawei.com;
+ helo=szxga08-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 10 Jan 2021 20:57:48 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,125 +56,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jan 2021 01:11:24 -0000
+X-List-Received-Date: Mon, 11 Jan 2021 02:26:08 -0000
 
-On Tue, Sep 01, 2020 at 12:40:42PM +0200, Philippe Mathieu-Daudé wrote:
-> We call pci_register_root_bus() to register 4 IRQs with the
-> ppc4xx_pci_set_irq() handler. As it can only be called with
-> values in the [0-4[ range, replace the pointless warning by
-> an assert().
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/ppc/ppc4xx_pci.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-> index cd3f192a138..503ef46b39a 100644
-> --- a/hw/ppc/ppc4xx_pci.c
-> +++ b/hw/ppc/ppc4xx_pci.c
-> @@ -256,10 +256,7 @@ static void ppc4xx_pci_set_irq(void *opaque, int irq_num, int level)
->      qemu_irq *pci_irqs = opaque;
->  
->      trace_ppc4xx_pci_set_irq(irq_num);
-> -    if (irq_num < 0) {
-> -        fprintf(stderr, "%s: PCI irq %d\n", __func__, irq_num);
-> -        return;
-> -    }
-> +    assert(irq_num >= 0);
->      qemu_set_irq(pci_irqs[irq_num], level);
->  }
->  
-> -- 
-> 2.26.2
-> 
-> 
-
-Hopefully reporting this here is okay, I find Launchpad hard to use but
-I can file it there if need be.
-
-The assertion added by this patch triggers while trying to boot a
-ppc44x_defconfig Linux kernel:
-
-$ qemu-system-ppc \
-    -machine bamboo \
-    -no-reboot \
-    -append console=ttyS0 \
-    -display none \
-    -kernel uImage \
-    -m 128m \
-    -nodefaults \
-    -serial mon:stdio
-Linux version 5.11.0-rc3 (nathan@ubuntu-m3-large-x86) (powerpc-linux-gcc (GCC) 10.2.0, GNU ld (GNU Binutils) 2.35) #1 Sun Jan 10 15:52:24 MST 2021
-Using PowerPC 44x Platform machine description
-ioremap() called early from find_legacy_serial_ports+0x64c/0x794. Use early_ioremap() instead
-printk: bootconsole [udbg0] enabled
------------------------------------------------------
-phys_mem_size     = 0x8000000
-dcache_bsize      = 0x20
-icache_bsize      = 0x20
-cpu_features      = 0x0000000000000100
-  possible        = 0x0000000040000100
-  always          = 0x0000000000000100
-cpu_user_features = 0x8c008000 0x00000000
-mmu_features      = 0x00000008
------------------------------------------------------
-Zone ranges:
-  Normal   [mem 0x0000000000000000-0x0000000007ffffff]
-Movable zone start for each node
-Early memory node ranges
-  node   0: [mem 0x0000000000000000-0x0000000007ffffff]
-Initmem setup node 0 [mem 0x0000000000000000-0x0000000007ffffff]
-MMU: Allocated 1088 bytes of context maps for 255 contexts
-Built 1 zonelists, mobility grouping on.  Total pages: 32448
-Kernel command line: console=ttyS0
-Dentry cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
-Inode-cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
-mem auto-init: stack:off, heap alloc:off, heap free:off
-Memory: 122712K/131072K available (5040K kernel code, 236K rwdata, 1260K rodata, 200K init, 134K bss, 8360K reserved, 0K cma-reserved)
-Kernel virtual memory layout:
-  * 0xffbdf000..0xfffff000  : fixmap
-  * 0xffbdd000..0xffbdf000  : early ioremap
-  * 0xd1000000..0xffbdd000  : vmalloc & ioremap
-SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
-NR_IRQS: 512, nr_irqs: 512, preallocated irqs: 16
-UIC0 (32 IRQ sources) at DCR 0xc0
-random: get_random_u32 called from start_kernel+0x370/0x508 with crng_init=0
-clocksource: timebase: mask: 0xffffffffffffffff max_cycles: 0x5c4093a7d1, max_idle_ns: 440795210635 ns
-clocksource: timebase mult[2800000] shift[24] registered
-pid_max: default: 32768 minimum: 301
-Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
-Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
-clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
-futex hash table entries: 256 (order: -1, 3072 bytes, linear)
-NET: Registered protocol family 16
-DMA: preallocated 128 KiB GFP_KERNEL pool for atomic allocations
-
-PCI host bridge /plb/pci@ec000000 (primary) ranges:
- MEM 0x00000000a0000000..0x00000000bfffffff -> 0x00000000a0000000
-  IO 0x00000000e8000000..0x00000000e800ffff -> 0x0000000000000000
-4xx PCI DMA offset set to 0x00000000
-4xx PCI DMA window base to 0x0000000000000000
-DMA window size 0x0000000080000000
-PCI: Probing PCI hardware
-PCI host bridge to bus 0000:00
-pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
-pci_bus 0000:00: root bus resource [mem 0xa0000000-0xbfffffff]
-pci_bus 0000:00: root bus resource [bus 00-ff]
-pci_bus 0000:00: busn_res: [bus 00-ff] end is updated to ff
-pci 0000:00:00.0: [1014:027f] type 00 class 0x068000
-qemu-system-ppc: ../hw/ppc/ppc4xx_pci.c:259: ppc4xx_pci_set_irq: Assertion `irq_num >= 0' failed.
-
-On v5.2.0, it looks like a higher assertion triggers, added by
-commit 459ca8bfa4 ("pci: Assert irqnum is between 0 and bus->nirqs in
-pci_bus_change_irq_level").
-
-qemu-system-ppc: ../hw/pci/pci.c:253: pci_bus_change_irq_level: Assertion `irq_num >= 0' failed.
-
-I have uploaded the kernel image here:
-
-https://github.com/nathanchance/bug-files/blob/8edf230441bd8eda067973fdf0eb063c94f04379/qemu-0270d74ef886235051c13c39b0de88500c628a02/uImage
-
-Cheers,
-Nathan
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWls
+dG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0KPiBTZW50OiBGcmlkYXksIEphbnVhcnkgOCwg
+MjAyMSA3OjQzIFBNDQo+IFRvOiBnYW5xaXhpbiA8Z2FucWl4aW5AaHVhd2VpLmNvbT4NCj4gQ2M6
+IFFFTVUgRGV2ZWxvcGVycyA8cWVtdS1kZXZlbEBub25nbnUub3JnPjsgUUVNVSBUcml2aWFsDQo+
+IDxxZW11LXRyaXZpYWxAbm9uZ251Lm9yZz47IEJlbmlhbWlubyBHYWx2YW5pIDxiLmdhbHZhbmlA
+Z21haWwuY29tPjsNCj4gQW50b255IFBhdmxvdiA8YW50b255bnBhdmxvdkBnbWFpbC5jb20+OyBJ
+Z29yIE1pdHN5YW5rbw0KPiA8aS5taXRzeWFua29AZ21haWwuY29tPjsgc3VuZGVlcCBzdWJiYXJh
+eWEgPHN1bmRlZXAubGttbEBnbWFpbC5jb20+Ow0KPiBKYW4gS2lzemthIDxqYW4ua2lzemthQHdl
+Yi5kZT47IENoZW5xdW4gKGt1aG4pDQo+IDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT47IFpoYW5n
+aGFpbGlhbmcNCj4gPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT4NCj4gU3ViamVjdDog
+UmU6IFtQQVRDSCB2MiAwLzddIEZpeCBzb21lIG1lbWxlYWtzIGNhdXNlZCBieSBwdGltZXJfaW5p
+dA0KPiANCj4gT24gVGh1LCAxNyBEZWMgMjAyMCBhdCAxMTozMiwgR2FuIFFpeGluIDxnYW5xaXhp
+bkBodWF3ZWkuY29tPiB3cm90ZToNCj4gPg0KPiA+IHYxLT52MjoNCj4gPiBDaGFuZ2VzIHN1Z2dl
+c3RlZCBieSBQZXRlciBNYXlkZWxsOg0KPiA+ICAgICBEZWxldGUgdGhlIG1vZGlmaWNhdGlvbiBv
+ZiB1bnJlbGF0ZWQgd2hpdGVzcGFjZS4NCj4gPg0KPiA+IEdhbiBRaXhpbiAoNyk6DQo+ID4gICBh
+bGx3aW5uZXItYTEwLXBpdDogVXNlIHB0aW1lcl9mcmVlKCkgaW4gdGhlIGZpbmFsaXplIGZ1bmN0
+aW9uIHRvIGF2b2lkDQo+ID4gICAgIG1lbWxlYWtzDQo+ID4gICBkaWdpYy10aW1lcjogVXNlIHB0
+aW1lcl9mcmVlKCkgaW4gdGhlIGZpbmFsaXplIGZ1bmN0aW9uIHRvIGF2b2lkDQo+ID4gICAgIG1l
+bWxlYWtzDQo+ID4gICBleHlub3M0MjEwX21jdDogVXNlIHB0aW1lcl9mcmVlKCkgaW4gdGhlIGZp
+bmFsaXplIGZ1bmN0aW9uIHRvIGF2b2lkDQo+ID4gICAgIG1lbWxlYWtzDQo+ID4gICBleHlub3M0
+MjEwX3B3bTogVXNlIHB0aW1lcl9mcmVlKCkgaW4gdGhlIGZpbmFsaXplIGZ1bmN0aW9uIHRvIGF2
+b2lkDQo+ID4gICAgIG1lbWxlYWtzDQo+ID4gICBleHlub3M0MjEwX3J0YzogVXNlIHB0aW1lcl9m
+cmVlKCkgaW4gdGhlIGZpbmFsaXplIGZ1bmN0aW9uIHRvIGF2b2lkDQo+ID4gICAgIG1lbWxlYWtz
+DQo+ID4gICBtc3MtdGltZXI6IFVzZSBwdGltZXJfZnJlZSgpIGluIHRoZSBmaW5hbGl6ZSBmdW5j
+dGlvbiB0byBhdm9pZA0KPiA+ICAgICBtZW1sZWFrcw0KPiA+ICAgbXVzaWNwYWw6IFVzZSBwdGlt
+ZXJfZnJlZSgpIGluIHRoZSBmaW5hbGl6ZSBmdW5jdGlvbiB0byBhdm9pZA0KPiA+IG1lbWxlYWtz
+DQo+IA0KPiBBcHBsaWVkIHRvIHRhcmdldC1hcm0ubmV4dCwgdGhhbmtzLg0KPiANCj4gUFM6IHNv
+bWV0aGluZyBvZGQgaGFwcGVuZWQgd2l0aCB0aGUgdGhyZWFkaW5nIG9mIHRoaXMgc2VyaWVzIC0t
+IHRoZSBwYXRjaA0KPiBlbWFpbHMgd2VyZW4ndCBmb2xsb3ctdXBzIHRvIHRoZSBjb3ZlciBsZXR0
+ZXIgLS0gc28gdGhlIGF1dG9tYXRlZCB0b29scyBsaWtlDQo+IHBhdGNoZXcgZ290IGNvbmZ1c2Vk
+IGFuZCB0aG91Z2h0IHRoZSBzZXJpZXMgd2FzIGVtcHR5Og0KPiBodHRwczovL3BhdGNoZXcub3Jn
+L1FFTVUvMjAyMDEyMTcxMTMxMzcuMTIxNjA3LTEtZ2FucWl4aW5AaHVhd2VpLmNvDQo+IG0vDQo+
+IA0KPiBZb3UgbWlnaHQgd2FudCB0byBsb29rIGludG8gZml4aW5nIHRoYXQgZm9yIG5leHQgdGlt
+ZSB5b3Ugc2VuZCBhIHBhdGNoc2V0Lg0KPiANCg0KVGhhbmtzIGZvciB0ZWxsaW5nIG1lIHRoZSBl
+cnJvciB0aGF0IG9jY3VycmVkIHdoZW4gcmVjZWl2aW5nIHRoaXMgcGF0Y2ggZW1haWwuIEkgd2ls
+bCBmaXggaXQuDQo=
 
