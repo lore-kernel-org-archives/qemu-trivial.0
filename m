@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzPfh-0005yK-7X
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 14:49:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45586)
+	id 1kzPjh-0000pz-HJ
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 14:53:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46460)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kzPfg-0005xI-05; Tue, 12 Jan 2021 14:49:40 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:52463)
+ id 1kzPjf-0000mQ-PS; Tue, 12 Jan 2021 14:53:47 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:53815)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kzPfd-00075U-Nz; Tue, 12 Jan 2021 14:49:39 -0500
+ id 1kzPje-0008NR-0J; Tue, 12 Jan 2021 14:53:47 -0500
 Received: from [192.168.100.1] ([82.252.137.42]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MN5Nt-1kgMgD0ViX-00J1qz; Tue, 12 Jan 2021 20:49:24 +0100
-Subject: Re: [PATCH] vnc: Fix a memleak in vnc_display_connect()
-To: Alex Chen <alex.chen@huawei.com>, kraxel@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- zhang.zhanghailiang@huawei.com
-References: <20201126065702.35095-1-alex.chen@huawei.com>
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MPaQU-1kdsRi3avC-00MdZv; Tue, 12 Jan 2021 20:53:41 +0100
+Subject: Re: [PATCH] hw/virtio-pci: Replace error_report() by
+ qemu_log_mask(GUEST_ERROR)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20201210172834.178052-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <a431bb77-4cf5-c94e-2aa4-c1ac52400ec6@vivier.eu>
-Date: Tue, 12 Jan 2021 20:49:23 +0100
+Message-ID: <a028ed7d-e5b5-30af-3acf-57aecab97841@vivier.eu>
+Date: Tue, 12 Jan 2021 20:53:40 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20201126065702.35095-1-alex.chen@huawei.com>
+In-Reply-To: <20201210172834.178052-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:vTYDjdgZ2IzQzPpgtsDnQAK5/HGbB4sVlVFC1hjx7vNSG1NQujb
- PPupmVYmtUzs8Ne76594QpTzAkYgmRWnd0dDLj7Tqd4p1mWwiCAeYPjXleEx6VtjHsU1V+4
- pil2GcLhZ4Dkutb4xmnjbf/nat4qc1r/yXg+yZgT0393N9dAh6537C5HuXfWxR+XggZ9GVl
- owTlnWMO5Vd9V23YIkWzg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JYuw/Ti/a4Q=:vlq4SrqZSHFLBo4ClxnZ+J
- ogfrZbwXCqyZsRbtStOpGs652h0/asmzbNP4erNmer4PzY/5mBVrelwHU1OU4O0KEnoMtMP74
- +xe2NYpJaOzTxRqlURCuilLd/HrxVYgjuWlloptpA5DMMHeERDOBSEOUsuNHUHa6KGNGOsnHS
- 45fvvAN9m3BcRoWYZRHwRJHiIRxuhSNOk/XS7n6ufhVGwqPcklRfhu8xxn6r9f5/DIqsrgJ8N
- VyBPWVe/9X8rS32zFu3tI+TrNLwO+kFcn98aKljfsOJDSJXBgCHjV74DSkCDznJZpM+mJC5Uh
- HXb1h9g2T776A8m5vPw15FkcjtUQhd1pm1CSA54wM5sTAHtjIyzRKleFh6/m0PJi3/g0rvZfT
- DMz19t3hv0KcNStu6H899piuFlLEIdVOnPBhannQ0It6LMMX10L69DtThmxWCpUWlSi7475K7
- m9tPHsheXA==
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:8qO0rVLaRThd/utssdXcFA41HkEeCRnTYwJLsFbRb7KNJiCaE4W
+ apzLdBSdi1LuOn5qmS/+zoV+rSS2gA7OjRblskph4UAMKdL0vtdawV3K9DPHkSQu+10vNKF
+ f2rO8xPwB97VopaH5Bvpj6RpkJfyWTsKDFPFJJtgzhxeA8rBNPs3P7Gfu6/6rSboO52nrH0
+ Bgy2uJ/7BpNsfXrloDArg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:aDzHYhBSo7M=:6aGCHPhoXHEOrfPBkeOCt7
+ msNQRtg1STyiCjQWPlGMDvOefRc2K5N7dI5IJU3TZPMgJiG4PRMjtTF0HzgLCqZ59dTVP/8yz
+ 6CyTCe3tW+l3M6mvFUOJFf9PaILcL/4ecufWfaGN9dSA3bRWWO6jo6B8TzRY165s4ZG7IYgzt
+ pjxpqgt22J5WQvJ40N8zimgT9hwVXHGa/QNcEU4glDS7CPNS3n+UeZZkIzUxnHA9d5rcORSyq
+ 4Dd6KGoPjnOA16Q7DTBdvUbCsBjQM3Yyr4TB7vjI2wJXg10viMn+zuyadgPhifBCOceEMf216
+ KTdj4EwugKQgCRXQCBeegp2vFeDAmihS0vHrcplyAXt+0xGFib6OmI7mhgoRTnKJz+QZaMTn9
+ keX8DfB7hRSCchG8IXHIy5T956bti7u0x4TlCDAdObQ9iqZHnZvKCkPrx4rPl3vAOGH07NjxD
+ QOf5W0VTgQ==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,30 +60,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jan 2021 19:49:40 -0000
+X-List-Received-Date: Tue, 12 Jan 2021 19:53:48 -0000
 
-Le 26/11/2020 à 07:57, Alex Chen a écrit :
-> Free the 'sioc' when the qio_channel_socket_connect_sync() fails.
+Le 10/12/2020 à 18:28, Philippe Mathieu-Daudé a écrit :
+> Replace I/O write error reported with error_report() by
+> qemu_log_mask(GUEST_ERROR) which allow filtering.
 > 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  ui/vnc.c | 1 +
->  1 file changed, 1 insertion(+)
+>  hw/virtio/virtio-pci.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/ui/vnc.c b/ui/vnc.c
-> index 49235056f7..dae56e9493 100644
-> --- a/ui/vnc.c
-> +++ b/ui/vnc.c
-> @@ -3743,6 +3743,7 @@ static int vnc_display_connect(VncDisplay *vd,
->      sioc = qio_channel_socket_new();
->      qio_channel_set_name(QIO_CHANNEL(sioc), "vnc-reverse");
->      if (qio_channel_socket_connect_sync(sioc, saddr[0], errp) < 0) {
-> +        object_unref(OBJECT(sioc));
->          return -1;
+> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+> index f863f69ede4..094c36aa3ea 100644
+> --- a/hw/virtio/virtio-pci.c
+> +++ b/hw/virtio/virtio-pci.c
+> @@ -27,6 +27,7 @@
+>  #include "hw/qdev-properties.h"
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+> +#include "qemu/log.h"
+>  #include "qemu/module.h"
+>  #include "hw/pci/msi.h"
+>  #include "hw/pci/msix.h"
+> @@ -365,8 +366,9 @@ static void virtio_ioport_write(void *opaque, uint32_t addr, uint32_t val)
+>          virtio_queue_set_vector(vdev, vdev->queue_sel, val);
+>          break;
+>      default:
+> -        error_report("%s: unexpected address 0x%x value 0x%x",
+> -                     __func__, addr, val);
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: unexpected address 0x%x value 0x%x\n",
+> +                      __func__, addr, val);
+>          break;
 >      }
->      vnc_connect(vd, sioc, false, false);
+>  }
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
