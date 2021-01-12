@@ -1,56 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzHHI-0002A3-2i
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 05:51:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54514)
+	id 1kzHsF-0004kb-CG
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 06:30:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kzHHA-00026v-Ds; Tue, 12 Jan 2021 05:51:48 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2129)
+ id 1kzHsB-0004iK-8X; Tue, 12 Jan 2021 06:30:03 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2582)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kzHH5-0005So-Tu; Tue, 12 Jan 2021 05:51:48 -0500
-Received: from dggemi401-hub.china.huawei.com (unknown [172.30.72.55])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4DFS626lBgz5GXN;
- Tue, 12 Jan 2021 18:50:34 +0800 (CST)
-Received: from DGGEMI421-HUB.china.huawei.com (10.1.199.150) by
- dggemi401-hub.china.huawei.com (10.3.17.134) with Microsoft SMTP Server (TLS)
- id 14.3.498.0; Tue, 12 Jan 2021 18:51:22 +0800
-Received: from DGGEMI525-MBS.china.huawei.com ([169.254.6.51]) by
- dggemi421-hub.china.huawei.com ([10.1.199.150]) with mapi id 14.03.0509.000;
- Tue, 12 Jan 2021 18:51:13 +0800
-From: ganqixin <ganqixin@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
- <qemu-trivial@nongnu.org>, David Gibson <david@gibson.dropbear.id.au>,
- "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, Euler Robot <euler.robot@huawei.com>
-Subject: RE: [PATCH v2 1/2] pl031: Use timer_free() in the finalize function
- to avoid memleaks
-Thread-Topic: [PATCH v2 1/2] pl031: Use timer_free() in the finalize
- function to avoid memleaks
-Thread-Index: AQHW6Mybnw6580g4mUaCHBiRS8PgJqojQduAgACHiDA=
-Date: Tue, 12 Jan 2021 10:51:12 +0000
-Message-ID: <A5B86EC83C48EF4CB2BC58BEF3A2F49606625E97@DGGEMI525-MBS.china.huawei.com>
-References: <20210112101746.379517-1-ganqixin@huawei.com>
- <20210112101746.379517-2-ganqixin@huawei.com>
- <CAFEAcA-68F=NcqS8AyiPTToc7CQyoymPhp3Z77idQkVk7fHYXg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-68F=NcqS8AyiPTToc7CQyoymPhp3Z77idQkVk7fHYXg@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.185.159]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ id 1kzHs6-0001QN-O7; Tue, 12 Jan 2021 06:30:03 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DFSyQ3Cj2zj5Rf;
+ Tue, 12 Jan 2021 19:29:02 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.498.0; Tue, 12 Jan 2021
+ 19:29:43 +0800
+From: Gan Qixin <ganqixin@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <peter.maydell@linaro.org>, <david@gibson.dropbear.id.au>,
+ <kuhn.chenqun@huawei.com>, <zhang.zhanghailiang@huawei.com>, Gan Qixin
+ <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>
+Subject: [PATCH v3 1/2] pl031: Use timer_free() in the finalize function to
+ avoid memleaks
+Date: Tue, 12 Jan 2021 19:27:04 +0800
+Message-ID: <20210112112705.380534-2-ganqixin@huawei.com>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210112112705.380534-1-ganqixin@huawei.com>
+References: <20210112112705.380534-1-ganqixin@huawei.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188; envelope-from=ganqixin@huawei.com;
- helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=ganqixin@huawei.com;
+ helo=szxga06-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,56 +52,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jan 2021 10:51:51 -0000
+X-List-Received-Date: Tue, 12 Jan 2021 11:30:05 -0000
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWls
-dG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0KPiBTZW50OiBUdWVzZGF5LCBKYW51YXJ5IDEy
-LCAyMDIxIDY6MjIgUE0NCj4gVG86IGdhbnFpeGluIDxnYW5xaXhpbkBodWF3ZWkuY29tPg0KPiBD
-YzogUUVNVSBEZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBRRU1VIFRyaXZpYWwN
-Cj4gPHFlbXUtdHJpdmlhbEBub25nbnUub3JnPjsgRGF2aWQgR2lic29uIDxkYXZpZEBnaWJzb24u
-ZHJvcGJlYXIuaWQuYXU+Ow0KPiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5j
-b20+OyBaaGFuZ2hhaWxpYW5nDQo+IDx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBF
-dWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRD
-SCB2MiAxLzJdIHBsMDMxOiBVc2UgdGltZXJfZnJlZSgpIGluIHRoZSBmaW5hbGl6ZSBmdW5jdGlv
-biB0bw0KPiBhdm9pZCBtZW1sZWFrcw0KPiANCj4gT24gVHVlLCAxMiBKYW4gMjAyMSBhdCAxMDoy
-MCwgR2FuIFFpeGluIDxnYW5xaXhpbkBodWF3ZWkuY29tPiB3cm90ZToNCj4gPg0KPiA+IFdoZW4g
-cnVubmluZyBkZXZpY2UtaW50cm9zcGVjdC10ZXN0LCBhIG1lbW9yeSBsZWFrIG9jY3VycmVkIGlu
-IHRoZQ0KPiA+IHBsMDMxX2luaXQgZnVuY3Rpb24sIHRoaXMgcGF0Y2ggdXNlIHRpbWVyX2ZyZWUo
-KSBpbiB0aGUgZmluYWxpemUgZnVuY3Rpb24gdG8gZml4DQo+IGl0Lg0KPiA+DQo+ID4gQVNBTiBz
-aG93cyBtZW1vcnkgbGVhayBzdGFjazoNCj4gPg0KPiA+IERpcmVjdCBsZWFrIG9mIDQ4IGJ5dGUo
-cykgaW4gMSBvYmplY3QocykgYWxsb2NhdGVkIGZyb206DQo+ID4gICAgICMwIDB4ZmZmZmFiOTdl
-MWYwIGluIF9faW50ZXJjZXB0b3JfY2FsbG9jDQo+ICgvbGliNjQvbGliYXNhbi5zby41KzB4ZWUx
-ZjApDQo+ID4gICAgICMxIDB4ZmZmZmFiMjU2ODAwIGluIGdfbWFsbG9jMCAoL2xpYjY0L2xpYmds
-aWItMi4wLnNvLjArMHg1NjgwMCkNCj4gPiAgICAgIzIgMHhhYWFiZjU2MjFjZmMgaW4gdGltZXJf
-bmV3X2Z1bGwNCj4gcWVtdS9pbmNsdWRlL3FlbXUvdGltZXIuaDo1MjMNCj4gPiAgICAgIzMgMHhh
-YWFiZjU2MjFjZmMgaW4gdGltZXJfbmV3IHFlbXUvaW5jbHVkZS9xZW11L3RpbWVyLmg6NTQ0DQo+
-ID4gICAgICM0IDB4YWFhYmY1NjIxY2ZjIGluIHRpbWVyX25ld19ucyBxZW11L2luY2x1ZGUvcWVt
-dS90aW1lci5oOjU2Mg0KPiA+ICAgICAjNSAweGFhYWJmNTYyMWNmYyBpbiBwbDAzMV9pbml0IHFl
-bXUvaHcvcnRjL3BsMDMxLmM6MTk0DQo+ID4gICAgICM2IDB4YWFhYmY2MzM5ZjZjIGluIG9iamVj
-dF9pbml0aWFsaXplX3dpdGhfdHlwZQ0KPiBxZW11L3FvbS9vYmplY3QuYzo1MTUNCj4gPiAgICAg
-IzcgMHhhYWFiZjYzM2ExZTAgaW4gb2JqZWN0X25ld193aXRoX3R5cGUNCj4gcWVtdS9xb20vb2Jq
-ZWN0LmM6NzI5DQo+ID4gICAgICM4IDB4YWFhYmY2Mzc1ZTQwIGluIHFtcF9kZXZpY2VfbGlzdF9w
-cm9wZXJ0aWVzDQo+IHFlbXUvcW9tL3FvbS1xbXAtY21kcy5jOjE1Mw0KPiA+ICAgICAjOSAweGFh
-YWJmNWE5NTU0MCBpbiBxZGV2X2RldmljZV9oZWxwDQo+IHFlbXUvc29mdG1tdS9xZGV2LW1vbml0
-b3IuYzoyODMNCj4gPiAgICAgIzEwIDB4YWFhYmY1YTk2OTQwIGluIHFtcF9kZXZpY2VfYWRkDQo+
-IHFlbXUvc29mdG1tdS9xZGV2LW1vbml0b3IuYzo4MDENCj4gPiAgICAgIzExIDB4YWFhYmY1YTk2
-ZTcwIGluIGhtcF9kZXZpY2VfYWRkDQo+IHFlbXUvc29mdG1tdS9xZGV2LW1vbml0b3IuYzo5MTYN
-Cj4gPiAgICAgIzEyIDB4YWFhYmY1YWMwYTJjIGluIGhhbmRsZV9obXBfY29tbWFuZA0KPiBxZW11
-L21vbml0b3IvaG1wLmM6MTEwMA0KPiA+DQo+ID4gUmVwb3J0ZWQtYnk6IEV1bGVyIFJvYm90IDxl
-dWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6IEdhbiBRaXhpbiA8Z2Fu
-cWl4aW5AaHVhd2VpLmNvbT4NCj4gPiAtLS0NCj4gPiBDYzogUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIu
-bWF5ZGVsbEBsaW5hcm8ub3JnPg0KPiA+IC0tLQ0KPiA+ICBody9ydGMvcGwwMzEuYyB8IDkgKysr
-KysrKysrDQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKykNCj4gPg0KPiA+IGRp
-ZmYgLS1naXQgYS9ody9ydGMvcGwwMzEuYyBiL2h3L3J0Yy9wbDAzMS5jIGluZGV4DQo+ID4gYWU0
-N2YwOTYzNS4uZjA5ODFlNmMyMSAxMDA2NDQNCj4gPiAtLS0gYS9ody9ydGMvcGwwMzEuYw0KPiA+
-ICsrKyBiL2h3L3J0Yy9wbDAzMS5jDQo+ID4gQEAgLTE5NCw2ICsxOTQsMTQgQEAgc3RhdGljIHZv
-aWQgcGwwMzFfaW5pdChPYmplY3QgKm9iaikNCj4gPiAgICAgIHMtPnRpbWVyID0gdGltZXJfbmV3
-X25zKHJ0Y19jbG9jaywgcGwwMzFfaW50ZXJydXB0LCBzKTsgIH0NCj4gPg0KPiA+ICtzdGF0aWMg
-dm9pZCBwbDAzMV9maW5hbGl6ZShPYmplY3QgKm9iaikgew0KPiA+ICsgICAgUEwwMzFTdGF0ZSAq
-cyA9IFBMMDMxKG9iaik7DQo+ID4gKw0KPiA+ICsgICAgdGltZXJfZGVsKHMtPnRpbWVyKTsNCj4g
-PiArICAgIHRpbWVyX2ZyZWUocy0+dGltZXIpOw0KPiANCj4gWW91IGRvbid0IG5lZWQgdG8gY2Fs
-bCB0aW1lcl9kZWwoKSBiZWZvcmUgdGltZXJfZnJlZSgpIGFueSBtb3JlOg0KPiBzZWUgY29tbWl0
-IDVmOGU5M2MzZTI2MmFiLg0KPiANCg0KVGhhbmtzIGZvciB5b3VyIHJlcGx5LCBJIGRpZG4ndCBu
-b3RpY2UgdGhpcyBuZXcgY2hhbmdlLCBJIHdpbGwgcmVzZW5kIHRoZXNlIHBhdGNoZXMgbGF0ZXIu
-DQo=
+When running device-introspect-test, a memory leak occurred in the pl031_init
+function, this patch use timer_free() in the finalize function to fix it.
+
+ASAN shows memory leak stack:
+
+Direct leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0xffffab97e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
+    #1 0xffffab256800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
+    #2 0xaaabf5621cfc in timer_new_full qemu/include/qemu/timer.h:523
+    #3 0xaaabf5621cfc in timer_new qemu/include/qemu/timer.h:544
+    #4 0xaaabf5621cfc in timer_new_ns qemu/include/qemu/timer.h:562
+    #5 0xaaabf5621cfc in pl031_init qemu/hw/rtc/pl031.c:194
+    #6 0xaaabf6339f6c in object_initialize_with_type qemu/qom/object.c:515
+    #7 0xaaabf633a1e0 in object_new_with_type qemu/qom/object.c:729
+    #8 0xaaabf6375e40 in qmp_device_list_properties qemu/qom/qom-qmp-cmds.c:153
+    #9 0xaaabf5a95540 in qdev_device_help qemu/softmmu/qdev-monitor.c:283
+    #10 0xaaabf5a96940 in qmp_device_add qemu/softmmu/qdev-monitor.c:801
+    #11 0xaaabf5a96e70 in hmp_device_add qemu/softmmu/qdev-monitor.c:916
+    #12 0xaaabf5ac0a2c in handle_hmp_command qemu/monitor/hmp.c:1100
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+---
+Cc: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/rtc/pl031.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
+index ae47f09635..2bbb2062ac 100644
+--- a/hw/rtc/pl031.c
++++ b/hw/rtc/pl031.c
+@@ -194,6 +194,13 @@ static void pl031_init(Object *obj)
+     s->timer = timer_new_ns(rtc_clock, pl031_interrupt, s);
+ }
+ 
++static void pl031_finalize(Object *obj)
++{
++    PL031State *s = PL031(obj);
++
++    timer_free(s->timer);
++}
++
+ static int pl031_pre_save(void *opaque)
+ {
+     PL031State *s = opaque;
+@@ -329,6 +336,7 @@ static const TypeInfo pl031_info = {
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(PL031State),
+     .instance_init = pl031_init,
++    .instance_finalize = pl031_finalize,
+     .class_init    = pl031_class_init,
+ };
+ 
+-- 
+2.27.0
+
 
