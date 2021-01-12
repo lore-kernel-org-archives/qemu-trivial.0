@@ -1,60 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzMLB-0005xp-GS
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 11:16:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47796)
+	id 1kzMkT-0005u4-Sw
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 11:42:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kzMLA-0005xN-3j
- for qemu-trivial@nongnu.org; Tue, 12 Jan 2021 11:16:16 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:54175)
+ id 1kzMkS-0005rI-SB
+ for qemu-trivial@nongnu.org; Tue, 12 Jan 2021 11:42:24 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:39612)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kzML7-0008He-T4
- for qemu-trivial@nongnu.org; Tue, 12 Jan 2021 11:16:15 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id k10so2387856wmi.3
- for <qemu-trivial@nongnu.org>; Tue, 12 Jan 2021 08:16:12 -0800 (PST)
+ id 1kzMkP-0001Z6-Kz
+ for qemu-trivial@nongnu.org; Tue, 12 Jan 2021 11:42:24 -0500
+Received: by mail-ej1-x634.google.com with SMTP id n26so4431151eju.6
+ for <qemu-trivial@nongnu.org>; Tue, 12 Jan 2021 08:42:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=6s1AwCaLK/CUqXxViLf0QxnciSlkvphZJyETdGYuiaM=;
- b=oRpIo2Y1rRJ8DVtP1zR1KfwHRvXkg5EyW2QPFWSRXfEiLIB5+m9nJBH5rtoJ88kJno
- 5SH1mJ4JiWUB1H3rw6I8S2F7oW49AoQTHjUXB6greCuTNmGq5EDKvwudrsgZz69LqXIS
- YM2I0uub7h/1QfvSrdZZkGYfJguALNsBZCIxpWYfSqQZ6aY4zX76DsUZwfmzN/uxwUpf
- ZvDhqNXKm/VsoqXh6dhxSVL54BFfpPQspoOGkTb42MzziCPtqjZqljrDkV7quQlocDzB
- WEAPZLeDh6rTs1K4Qm/zn+GcDr9BiQgeiRJj0VyiGmWvCjlfACqvvATLJ3ZCalxCf/Yv
- N4wg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=UIVbbQFttvN17seLXDfAzo2rnf6D0gitn3FMp5UU6xM=;
+ b=jPVSko+4ckOv3/9tkxconkkJ8fZU9v66to2XRq08CCjjzMinT1e2MKdjl/Tcx6GuTR
+ Wb0D/NcLiPvqxVZGkG+Kz+UQTc5ArBW5npr+yhBcAs9FYB++Gv/tbVOVoO+21LanD0Tt
+ Zj6ebsHM3D1r9/6dEFv+qBI4fJQb3QRgLbKLa4j/F+J1oOP/ziw/PRtRsoaDc+IUXY3B
+ BIHQ8ux+k39SYgbUuaVelCB07h9nRSf5XbfpyuJRaSDKJWc8qOrXCHTRWGePImDA2lkD
+ M0RVckp2d94UqdLjMkIvCeP1r+gUTef+rvQLuhiU1AptYBCLfc+I8Gnmoe+fRzU3Bcgh
+ H9oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=6s1AwCaLK/CUqXxViLf0QxnciSlkvphZJyETdGYuiaM=;
- b=TyFjISwAPiasdr7sfolfjuBAb0JMc0jSWmeMqLKJ0sJa9RfUCWJgBsUVXhHbGyVyyk
- J9WDbygwp+Ga3DHRc9ef82vp3nljLabzOs0R4KXgPMFHS284TICVCgetTtKsLiALho0k
- HnBcGnFiQJ7QnKbOTHhmbBsNN4iKJYScIfcvzOncZ8A9faVT8NWkM2VNnwvC6aNhoPgA
- ktDCSOCVNTiELWJboZt1857oqE6Sm7eGLyW+P18B0CLKMU5h3wTpaPBxYYCdnSImp+ko
- gpSlTD/qsTohkrtPK8AKrTjh2+MWv6dNXnj9tJuPAQP5MBbNCmqtj5GVPbOozCD/Ur8X
- fI1w==
-X-Gm-Message-State: AOAM5320NjDtNjVQxfrZfrONXEY1Y7lG2PfAfYnW7jJ4rJdvK3R1lj8S
- UFgRHFGpNlXBfpcot+z03tc53A==
-X-Google-Smtp-Source: ABdhPJyu/eQS4osi3GVbLAa+7CPvd1hVdMHzdVb/LomyWVkC08xPWNBD0FYZu5DoeDIlzSX6qMjybg==
-X-Received: by 2002:a1c:df85:: with SMTP id w127mr44939wmg.166.1610468171073; 
- Tue, 12 Jan 2021 08:16:11 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j2sm5840061wrh.78.2021.01.12.08.16.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jan 2021 08:16:10 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] hw/display/vmware_vga: Remove dependency on VNC header
-Date: Tue, 12 Jan 2021 16:16:08 +0000
-Message-Id: <20210112161608.16055-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UIVbbQFttvN17seLXDfAzo2rnf6D0gitn3FMp5UU6xM=;
+ b=rdt0UPzCYYOGhOYS+/E/3YHqyIwdzmQBPPVRyJC3KeJvUNgEkHpxpOStMtcutoZ4pK
+ G9ejYuWYeZkJi4rwqhh0IL4vXnUuAKg5KQpPH5JZmReNOYV0zxPoFx1ENOmbD7aPsupk
+ 0USHvHctaQnu5qKCGDGCDjpQPN2NVNEZAY5gD2o1rwj1MDRnNDGSMY133DSYA1IWVHWo
+ JNNPZXST3kZhnqSGRcXgQDnjeOsCguR0rzl/9vy7iGMBb0rNWBojV9oXqeLQH6JkWK78
+ AgAI7XJSWjcoOQz5xAr6NM6LIRWNienahJ8/XBf0wrKJJKSko/rF4Rb3sd43dQYKjdQs
+ 6GFw==
+X-Gm-Message-State: AOAM531XATtG1aKv/kshG+ok8na62XJ3FQomrBJYNkNExWnS47IpU8nB
+ Bct867A+46s+gGRIHDpQO2H8TCLems4acDWSUKCrEA==
+X-Google-Smtp-Source: ABdhPJzm+wQviwzcL6ioULEfRt8w/EiTe61whI+b0LsCMUzrXdrQN8zrSIbdy/gqIdMmqZyIy84AWk5LttdKrFu4B2g=
+X-Received: by 2002:a17:906:e250:: with SMTP id
+ gq16mr3685036ejb.382.1610469739747; 
+ Tue, 12 Jan 2021 08:42:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+References: <20210112112705.380534-1-ganqixin@huawei.com>
+ <20210112112705.380534-2-ganqixin@huawei.com>
+In-Reply-To: <20210112112705.380534-2-ganqixin@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Jan 2021 16:42:08 +0000
+Message-ID: <CAFEAcA_AG77gJySKNRcKFrGsmhn2uNZMyB4aNynD6w5rFTz=7g@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] pl031: Use timer_free() in the finalize function
+ to avoid memleaks
+To: Gan Qixin <ganqixin@huawei.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ David Gibson <david@gibson.dropbear.id.au>,
+ "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -74,54 +77,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jan 2021 16:16:16 -0000
+X-List-Received-Date: Tue, 12 Jan 2021 16:42:25 -0000
 
-In commit 2f487a3d40faff1 we fixed a problem observed with using the
-vmware-vga device and the VNC UI frontend in a belt-and-braces
-manner:
- * we made the VNC frontend handle non-multiple-of-16 surface widths
- * we rounded up the vmware-vga display width to a multiple of 16
+On Tue, 12 Jan 2021 at 11:29, Gan Qixin <ganqixin@huawei.com> wrote:
+>
+> When running device-introspect-test, a memory leak occurred in the pl031_init
+> function, this patch use timer_free() in the finalize function to fix it.
+>
+> ASAN shows memory leak stack:
+>
+> Direct leak of 48 byte(s) in 1 object(s) allocated from:
+>     #0 0xffffab97e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
+>     #1 0xffffab256800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
+>     #2 0xaaabf5621cfc in timer_new_full qemu/include/qemu/timer.h:523
+>     #3 0xaaabf5621cfc in timer_new qemu/include/qemu/timer.h:544
+>     #4 0xaaabf5621cfc in timer_new_ns qemu/include/qemu/timer.h:562
+>     #5 0xaaabf5621cfc in pl031_init qemu/hw/rtc/pl031.c:194
+>     #6 0xaaabf6339f6c in object_initialize_with_type qemu/qom/object.c:515
+>     #7 0xaaabf633a1e0 in object_new_with_type qemu/qom/object.c:729
+>     #8 0xaaabf6375e40 in qmp_device_list_properties qemu/qom/qom-qmp-cmds.c:153
+>     #9 0xaaabf5a95540 in qdev_device_help qemu/softmmu/qdev-monitor.c:283
+>     #10 0xaaabf5a96940 in qmp_device_add qemu/softmmu/qdev-monitor.c:801
+>     #11 0xaaabf5a96e70 in hmp_device_add qemu/softmmu/qdev-monitor.c:916
+>     #12 0xaaabf5ac0a2c in handle_hmp_command qemu/monitor/hmp.c:1100
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+> ---
+> Cc: Peter Maydell <peter.maydell@linaro.org>
 
-However this introduced a spurious dependency of a device model on a
-UI frontend header.  vmware-vga isn't special and should not care
-about what UI frontend it is using, and the VNC frontend needs to
-handle arbitrary surface widths because other display device models
-could use them.  Moreover, even if the maximum width in vmware-vga is
-made a multiple of 16, the guest itself can always program a
-different width.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Remove the dependency on the VNC header.  Since we have been using
-the rounded-up width value since 2014, stick with it rather than
-introducing a behaviour change, but don't calculate it by rounding up
-to VNC_DIRTY_BITS_PER_PIXEL any more.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/display/vmware_vga.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index bef0d7d69a7..e2969a6c81c 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -29,7 +29,6 @@
- #include "qemu/log.h"
- #include "hw/loader.h"
- #include "trace.h"
--#include "ui/vnc.h"
- #include "hw/pci/pci.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
-@@ -220,7 +219,7 @@ enum {
- 
- /* These values can probably be changed arbitrarily.  */
- #define SVGA_SCRATCH_SIZE               0x8000
--#define SVGA_MAX_WIDTH                  ROUND_UP(2360, VNC_DIRTY_PIXELS_PER_BIT)
-+#define SVGA_MAX_WIDTH                  2368
- #define SVGA_MAX_HEIGHT                 1770
- 
- #ifdef VERBOSE
--- 
-2.20.1
-
+thanks
+-- PMM
 
