@@ -1,68 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzIgW-0005J2-Od
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 07:22:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49394)
+	id 1kzMLB-0005xp-GS
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 11:16:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kzIgV-0005Gu-0c
- for qemu-trivial@nongnu.org; Tue, 12 Jan 2021 07:22:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40493)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kzIgS-0002m1-AR
- for qemu-trivial@nongnu.org; Tue, 12 Jan 2021 07:22:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610454116;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DVID1fWSM/fly60272S8c7ibjrhQS/0eCp/MmX/Z3AA=;
- b=f5m0XXAfJrmhRj1bYIP5qpHD9TpMB1pIqplpMjqIC0aA/PeHIm1UmwYmZfvbUuYylV+ODw
- el4dBINyiHEK+HU1y4qtNDQNpY6AbMJFoq90/m4qLB6FOqX/nRcgATAdzqmBllEZe82Jyh
- 9hXc8J9GQqibe8/HyWgpkBQORxbFgos=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-415-RiOjrIJkOP61l-CBF9KkZA-1; Tue, 12 Jan 2021 07:21:54 -0500
-X-MC-Unique: RiOjrIJkOP61l-CBF9KkZA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 790E81842143;
- Tue, 12 Jan 2021 12:21:53 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-184.ams2.redhat.com [10.36.112.184])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 32A7B5C238;
- Tue, 12 Jan 2021 12:21:51 +0000 (UTC)
-Subject: Re: [PATCH] hw/ide/ahci: Replace fprintf() by
- qemu_log_mask(GUEST_ERROR)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>,
- qemu-block@nongnu.org
-References: <20210112112955.1849212-1-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <049f67cc-17e8-80f2-4464-b1fb05b4c814@redhat.com>
-Date: Tue, 12 Jan 2021 13:21:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kzMLA-0005xN-3j
+ for qemu-trivial@nongnu.org; Tue, 12 Jan 2021 11:16:16 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:54175)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kzML7-0008He-T4
+ for qemu-trivial@nongnu.org; Tue, 12 Jan 2021 11:16:15 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id k10so2387856wmi.3
+ for <qemu-trivial@nongnu.org>; Tue, 12 Jan 2021 08:16:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6s1AwCaLK/CUqXxViLf0QxnciSlkvphZJyETdGYuiaM=;
+ b=oRpIo2Y1rRJ8DVtP1zR1KfwHRvXkg5EyW2QPFWSRXfEiLIB5+m9nJBH5rtoJ88kJno
+ 5SH1mJ4JiWUB1H3rw6I8S2F7oW49AoQTHjUXB6greCuTNmGq5EDKvwudrsgZz69LqXIS
+ YM2I0uub7h/1QfvSrdZZkGYfJguALNsBZCIxpWYfSqQZ6aY4zX76DsUZwfmzN/uxwUpf
+ ZvDhqNXKm/VsoqXh6dhxSVL54BFfpPQspoOGkTb42MzziCPtqjZqljrDkV7quQlocDzB
+ WEAPZLeDh6rTs1K4Qm/zn+GcDr9BiQgeiRJj0VyiGmWvCjlfACqvvATLJ3ZCalxCf/Yv
+ N4wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6s1AwCaLK/CUqXxViLf0QxnciSlkvphZJyETdGYuiaM=;
+ b=TyFjISwAPiasdr7sfolfjuBAb0JMc0jSWmeMqLKJ0sJa9RfUCWJgBsUVXhHbGyVyyk
+ J9WDbygwp+Ga3DHRc9ef82vp3nljLabzOs0R4KXgPMFHS284TICVCgetTtKsLiALho0k
+ HnBcGnFiQJ7QnKbOTHhmbBsNN4iKJYScIfcvzOncZ8A9faVT8NWkM2VNnwvC6aNhoPgA
+ ktDCSOCVNTiELWJboZt1857oqE6Sm7eGLyW+P18B0CLKMU5h3wTpaPBxYYCdnSImp+ko
+ gpSlTD/qsTohkrtPK8AKrTjh2+MWv6dNXnj9tJuPAQP5MBbNCmqtj5GVPbOozCD/Ur8X
+ fI1w==
+X-Gm-Message-State: AOAM5320NjDtNjVQxfrZfrONXEY1Y7lG2PfAfYnW7jJ4rJdvK3R1lj8S
+ UFgRHFGpNlXBfpcot+z03tc53A==
+X-Google-Smtp-Source: ABdhPJyu/eQS4osi3GVbLAa+7CPvd1hVdMHzdVb/LomyWVkC08xPWNBD0FYZu5DoeDIlzSX6qMjybg==
+X-Received: by 2002:a1c:df85:: with SMTP id w127mr44939wmg.166.1610468171073; 
+ Tue, 12 Jan 2021 08:16:11 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id j2sm5840061wrh.78.2021.01.12.08.16.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Jan 2021 08:16:10 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] hw/display/vmware_vga: Remove dependency on VNC header
+Date: Tue, 12 Jan 2021 16:16:08 +0000
+Message-Id: <20210112161608.16055-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20210112112955.1849212-1-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,44 +74,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jan 2021 12:22:03 -0000
+X-List-Received-Date: Tue, 12 Jan 2021 16:16:16 -0000
 
-On 12/01/2021 12.29, Philippe Mathieu-Daudé wrote:
-> Replace fprintf() calls by qemu_log_mask(LOG_GUEST_ERROR).
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->   hw/ide/ahci.c | 8 +++++---
->   1 file changed, 5 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-> index 4b675b9cfd8..6d50482b8d1 100644
-> --- a/hw/ide/ahci.c
-> +++ b/hw/ide/ahci.c
-> @@ -465,8 +465,9 @@ static void ahci_mem_write(void *opaque, hwaddr addr,
->   
->       /* Only aligned reads are allowed on AHCI */
->       if (addr & 3) {
-> -        fprintf(stderr, "ahci: Mis-aligned write to addr 0x"
-> -                TARGET_FMT_plx "\n", addr);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "ahci: Mis-aligned write to addr 0x%03" HWADDR_PRIX "\n",
-> +                      addr);
->           return;
->       }
->   
-> @@ -1111,7 +1112,8 @@ static void process_ncq_command(AHCIState *s, int port, uint8_t *cmd_fis,
->       g_assert(is_ncq(ncq_fis->command));
->       if (ncq_tfs->used) {
->           /* error - already in use */
-> -        fprintf(stderr, "%s: tag %d already used\n", __func__, tag);
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: tag %d already used\n",
-> +                      __func__, tag);
->           return;
->       }
->   
-> 
+In commit 2f487a3d40faff1 we fixed a problem observed with using the
+vmware-vga device and the VNC UI frontend in a belt-and-braces
+manner:
+ * we made the VNC frontend handle non-multiple-of-16 surface widths
+ * we rounded up the vmware-vga display width to a multiple of 16
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+However this introduced a spurious dependency of a device model on a
+UI frontend header.  vmware-vga isn't special and should not care
+about what UI frontend it is using, and the VNC frontend needs to
+handle arbitrary surface widths because other display device models
+could use them.  Moreover, even if the maximum width in vmware-vga is
+made a multiple of 16, the guest itself can always program a
+different width.
+
+Remove the dependency on the VNC header.  Since we have been using
+the rounded-up width value since 2014, stick with it rather than
+introducing a behaviour change, but don't calculate it by rounding up
+to VNC_DIRTY_BITS_PER_PIXEL any more.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/display/vmware_vga.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+index bef0d7d69a7..e2969a6c81c 100644
+--- a/hw/display/vmware_vga.c
++++ b/hw/display/vmware_vga.c
+@@ -29,7 +29,6 @@
+ #include "qemu/log.h"
+ #include "hw/loader.h"
+ #include "trace.h"
+-#include "ui/vnc.h"
+ #include "hw/pci/pci.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+@@ -220,7 +219,7 @@ enum {
+ 
+ /* These values can probably be changed arbitrarily.  */
+ #define SVGA_SCRATCH_SIZE               0x8000
+-#define SVGA_MAX_WIDTH                  ROUND_UP(2360, VNC_DIRTY_PIXELS_PER_BIT)
++#define SVGA_MAX_WIDTH                  2368
+ #define SVGA_MAX_HEIGHT                 1770
+ 
+ #ifdef VERBOSE
+-- 
+2.20.1
 
 
