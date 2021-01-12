@@ -1,32 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzGnZ-00069b-Oy
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 05:21:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46976)
+	id 1kzGna-0006B6-AK
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2021 05:21:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kzGnW-00062B-H5; Tue, 12 Jan 2021 05:21:10 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2911)
+ id 1kzGnX-00065N-SK; Tue, 12 Jan 2021 05:21:11 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2913)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kzGnU-0003PW-HI; Tue, 12 Jan 2021 05:21:10 -0500
+ id 1kzGnU-0003PX-Iw; Tue, 12 Jan 2021 05:21:11 -0500
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DFRQd0HYzz15pGV;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DFRQd03ybz15my6;
  Tue, 12 Jan 2021 18:19:53 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.498.0; Tue, 12 Jan 2021
- 18:20:45 +0800
+ 18:20:43 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <david@gibson.dropbear.id.au>,
  <kuhn.chenqun@huawei.com>, <zhang.zhanghailiang@huawei.com>, Gan Qixin
- <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>
-Subject: [PATCH v2 1/2] pl031: Use timer_free() in the finalize function to
- avoid memleaks
-Date: Tue, 12 Jan 2021 18:17:45 +0800
-Message-ID: <20210112101746.379517-2-ganqixin@huawei.com>
+ <ganqixin@huawei.com>
+Subject: [PATCH v2 0/2] Fix some memleaks caused by timer_new_ns
+Date: Tue, 12 Jan 2021 18:17:44 +0800
+Message-ID: <20210112101746.379517-1-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210112101746.379517-1-ganqixin@huawei.com>
-References: <20210112101746.379517-1-ganqixin@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -52,64 +49,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jan 2021 10:21:11 -0000
+X-List-Received-Date: Tue, 12 Jan 2021 10:21:12 -0000
 
-When running device-introspect-test, a memory leak occurred in the pl031_init
-function, this patch use timer_free() in the finalize function to fix it.
+v1->v2:
 
-ASAN shows memory leak stack:
+patch1:
+  Delete the modification of unrelated whitespace.
+patch2:
+  Add David Gibson acked tag.
+patch3:
+  Has been applied, so delete it.
 
-Direct leak of 48 byte(s) in 1 object(s) allocated from:
-    #0 0xffffab97e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
-    #1 0xffffab256800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
-    #2 0xaaabf5621cfc in timer_new_full qemu/include/qemu/timer.h:523
-    #3 0xaaabf5621cfc in timer_new qemu/include/qemu/timer.h:544
-    #4 0xaaabf5621cfc in timer_new_ns qemu/include/qemu/timer.h:562
-    #5 0xaaabf5621cfc in pl031_init qemu/hw/rtc/pl031.c:194
-    #6 0xaaabf6339f6c in object_initialize_with_type qemu/qom/object.c:515
-    #7 0xaaabf633a1e0 in object_new_with_type qemu/qom/object.c:729
-    #8 0xaaabf6375e40 in qmp_device_list_properties qemu/qom/qom-qmp-cmds.c:153
-    #9 0xaaabf5a95540 in qdev_device_help qemu/softmmu/qdev-monitor.c:283
-    #10 0xaaabf5a96940 in qmp_device_add qemu/softmmu/qdev-monitor.c:801
-    #11 0xaaabf5a96e70 in hmp_device_add qemu/softmmu/qdev-monitor.c:916
-    #12 0xaaabf5ac0a2c in handle_hmp_command qemu/monitor/hmp.c:1100
+Gan Qixin (2):
+  pl031: Use timer_free() in the finalize function to avoid memleaks
+  misc/mos6522: Use timer_free() in the finalize function to avoid
+    memleak
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
----
-Cc: Peter Maydell <peter.maydell@linaro.org>
----
- hw/rtc/pl031.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/misc/mos6522.c | 11 +++++++++++
+ hw/rtc/pl031.c    |  9 +++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
-index ae47f09635..f0981e6c21 100644
---- a/hw/rtc/pl031.c
-+++ b/hw/rtc/pl031.c
-@@ -194,6 +194,14 @@ static void pl031_init(Object *obj)
-     s->timer = timer_new_ns(rtc_clock, pl031_interrupt, s);
- }
- 
-+static void pl031_finalize(Object *obj)
-+{
-+    PL031State *s = PL031(obj);
-+
-+    timer_del(s->timer);
-+    timer_free(s->timer);
-+}
-+
- static int pl031_pre_save(void *opaque)
- {
-     PL031State *s = opaque;
-@@ -329,6 +337,7 @@ static const TypeInfo pl031_info = {
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(PL031State),
-     .instance_init = pl031_init,
-+    .instance_finalize = pl031_finalize,
-     .class_init    = pl031_class_init,
- };
- 
 -- 
 2.27.0
-
 
