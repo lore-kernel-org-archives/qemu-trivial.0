@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kznXd-00054R-6q
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2021 16:18:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57966)
+	id 1kznXe-00057G-D2
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2021 16:18:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58146)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
- id 1kzn8J-0005ly-1B; Wed, 13 Jan 2021 15:52:47 -0500
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d]:41947)
+ id 1kzn95-0005qV-UG; Wed, 13 Jan 2021 15:53:35 -0500
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d]:38121)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
- id 1kzn8E-0008Qh-WE; Wed, 13 Jan 2021 15:52:46 -0500
-Received: by mail-lf1-x12d.google.com with SMTP id s26so4773823lfc.8;
- Wed, 13 Jan 2021 12:52:41 -0800 (PST)
+ id 1kzn94-0000Si-CW; Wed, 13 Jan 2021 15:53:35 -0500
+Received: by mail-lf1-x12d.google.com with SMTP id h205so4796232lfd.5;
+ Wed, 13 Jan 2021 12:53:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=P6ZhPA0H7vSh/Bh463Dcax+Pk8uyXk7eLpEOeLQtIVY=;
- b=NJTNKu9Shntepq+YGXp4s+3aXmhCn8KWaPaKm8zhNCfsVOFi8nFByDkfCpL2DPcQrG
- BzSFms24R8nP3accs1UmWbUPkE4kejkp9xxKJ6N94qS+AEGDaX6zqvAOa6IGuScRgHWb
- zWbPNsEERTC45S4Z9VO/JW9lEhYOA8I9I5TAZGjWcaLJHMT8cx+UEwrKY/pjSEg1s/kf
- nyotFVOIt6CEcOjhBqI9cigpSIoQ48hHpGPyJoas6CIrfj0q2M7VnxpI6Qc7NjlHmiYd
- 9vcVvuCWT+4K2Rffm+rgeuPQF4ruEsyjA+a6yzECXVWtMvo1h3+12Sv9Yb4t/2BUcBQg
- LpaQ==
+ bh=mUgrc3M0DZmOlA4+yxCQfDMaewayvLv0hgNavKax1XM=;
+ b=nnhDWPswhzmDPwjRLsX2Rdu9Jazppom0aM2MhrSnV2FguxVHwViXGzLiag5AXt8jmd
+ 8YYhG1a95LthVQZirK/hj4llTb8gaZOq09gcs7gdVIGGaSl9/2mpkb/DRNTjmKXuhYlP
+ TUBIyDmHPgKzElXtqMWokZ+Mkv2REClGvTvevpkTY3sDsNqNIoE83f3WJvmGNpD7bbWx
+ Ma/Fbno+EtQZCFKOizVOveZh1jMEFEP9Wbmke6c8UprdQI7aIWIDh7nrpT80oSSHeXAA
+ gx3q3wYVNGurU+l7AdgnITj1bPHO2UckcyAvyqjZ5QqXA0MnSoxvNG3+jYRp+87ZIRgF
+ BW/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=P6ZhPA0H7vSh/Bh463Dcax+Pk8uyXk7eLpEOeLQtIVY=;
- b=cWo/9aUOB23OFowp3i25c9cbQSA34xJAqYQQ5NraQ03wzjDwZTDxH5S10xlq1srAFx
- H8dIOwRUgfuQwXVyEaTP1ceAKlbVRBF4rK9OPQb2IWqjpbEjBj9x8GtdcVckPiDT9AG7
- 1i7CtcG005UU76QfxKL7HzlTXg4HmUQ6otIcHuT5X5KPgQVPIdV2S6+wtcFAmcXy3MSC
- X9y71xBiAsokFryFDq+Ihu41A/9E+40ZdL7sPhnoJFp/jpawGmLTI3yhS7qxDWSkHVkY
- p+M3fRqnepoewcrhRjso+ywF5rNhG3HHJh9IOXRQ7rWG98mFbjj3r5nhesV8f8Npt/ez
- gu/w==
-X-Gm-Message-State: AOAM530nyvJBDrgqu63pBrwk2swZaa98UepCGWf9+P5DYkJWlVbxwwv+
- FWRpFAKQL7kC/QzhVBLGzp+wrJ7/H7JmFdtN
-X-Google-Smtp-Source: ABdhPJyBB3m+7UgzLR6B6HC5AlQyQAjgmDlaGSG3UQ8Dij2pJjUqmfqoAlrSlGbzOn05t3jjwaULAQ==
-X-Received: by 2002:a19:7d85:: with SMTP id y127mr1596523lfc.253.1610571159718; 
- Wed, 13 Jan 2021 12:52:39 -0800 (PST)
+ bh=mUgrc3M0DZmOlA4+yxCQfDMaewayvLv0hgNavKax1XM=;
+ b=G446qAy6Ud1DaOQDzLSI3LzQxP78GNqawPoB727S014auQ4Q7n4UWNZP8zIUGrD60r
+ ltRZJYjxrF5mwup8+vNi9/vtXzIZmpDxkGteRnTAxORz1bZUfeCQU6WnmM+FFniAJlTF
+ m/Eg84bUqokF9pOe6x/kerriWBUtkfmPZ7iebH8ihx9hTEhrk2+RL5r9I5GQ5jA0waIQ
+ QdBYIsp8Iv7H4Sy8mMTciVXAqYawhwsYSXdGGA64L02C69hmeMPEjNu7bty3VBLTVMGP
+ navS6Z4LBhy2/Rbe9XfhjDcfzov0C4HP9MQ/xlcv+x4tHNfWLT/TCvr3cIVCTG4sO5b4
+ /Mqw==
+X-Gm-Message-State: AOAM530BXYIJ2S182eRu0U5c1qBEN4sAz+xFHlGi7TSm/fOEEVzeOHPA
+ lhwAEGDDNnTNcr3lZPM+dGDerPmKKrF69t66
+X-Google-Smtp-Source: ABdhPJy6oEdM08YOtI4xOuf95QGozQcwUszvUj9yBiIIcL+q8tEy/IYz8JC+3g9NgFhHY82a23MoPA==
+X-Received: by 2002:a05:6512:20c1:: with SMTP id
+ u1mr1586728lfr.549.1610571212062; 
+ Wed, 13 Jan 2021 12:53:32 -0800 (PST)
 Received: from localhost.localdomain ([188.243.183.134])
- by smtp.gmail.com with ESMTPSA id m7sm317605lfb.146.2021.01.13.12.52.38
+ by smtp.gmail.com with ESMTPSA id a24sm316167lfi.192.2021.01.13.12.53.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Jan 2021 12:52:38 -0800 (PST)
+ Wed, 13 Jan 2021 12:53:31 -0800 (PST)
 From: yaroshchuk2000@gmail.com
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, r.bolshakov@yadro.com,
  Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
-Subject: [PATCH] target/i386/hvf: add vmware-cpuid-freq cpu feature
-Date: Wed, 13 Jan 2021 23:52:21 +0300
-Message-Id: <20210113205221.32308-1-yaroshchuk2000@gmail.com>
+Subject: [PATCH] target/i386/hvf: add rdmsr 35H MSR_CORE_THREAD_COUNT
+Date: Wed, 13 Jan 2021 23:53:23 +0300
+Message-Id: <20210113205323.33310-1-yaroshchuk2000@gmail.com>
 X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -74,161 +75,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jan 2021 20:52:47 -0000
+X-List-Received-Date: Wed, 13 Jan 2021 20:53:36 -0000
 
 From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
 
-For `-accel hvf` cpu_x86_cpuid() is wrapped with hvf_cpu_x86_cpuid() to
-add paravirtualization cpuid leaf 0x40000010
-https://lkml.org/lkml/2008/10/1/246
+Some guests (ex. Darwin-XNU) can attemp to read this MSR to retrieve and
+validate CPU topology comparing it to ACPI MADT content
 
-Leaf 0x40000010, Timing Information:
-EAX: (Virtual) TSC frequency in kHz.
-EBX: (Virtual) Bus (local apic timer) frequency in kHz.
-ECX, EDX: RESERVED (Per above, reserved fields are set to zero).
+MSR description from Intel Manual:
+35H: MSR_CORE_THREAD_COUNT: Configured State of Enabled Processor Core
+  Count and Logical Processor Count
 
-On macOS TSC and APIC Bus frequencies can be readed by sysctl call with
-names `machdep.tsc.frequency` and `hw.busfrequency`
+Bits 15:0 THREAD_COUNT The number of logical processors that are
+  currently enabled in the physical package
 
-This options is required for Darwin-XNU guest to be synchronized with
-host
+Bits 31:16 Core_COUNT The number of processor cores that are currently
+  enabled in the physical package
+
+Bits 63:32 Reserved
 
 Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
 ---
- target/i386/hvf/hvf.c | 92 ++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 91 insertions(+), 1 deletion(-)
+ target/i386/cpu.h         | 2 ++
+ target/i386/hvf/x86_emu.c | 5 +++++
+ 2 files changed, 7 insertions(+)
 
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index ed9356565c..0873e4969e 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -65,6 +65,7 @@
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index d23a5b340a..cc35676b50 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -371,6 +371,8 @@ typedef enum X86Seg {
+ #define MSR_MTRRcap_FIXRANGE_SUPPORT    (1 << 8)
+ #define MSR_MTRRcap_WC_SUPPORTED        (1 << 10)
  
- #include <Hypervisor/hv.h>
- #include <Hypervisor/hv_vmx.h>
-+#include <sys/sysctl.h>
- 
- #include "exec/address-spaces.h"
- #include "hw/i386/apic_internal.h"
-@@ -456,6 +457,50 @@ static void dummy_signal(int sig)
- {
- }
- 
-+static void init_tsc_freq(CPUX86State *env)
-+{
-+    size_t length;
-+    uint64_t tsc_freq;
++#define MSR_CORE_THREAD_COUNT           0x35
 +
-+    if (env->tsc_khz != 0) {
-+        return;
-+    }
-+
-+    length = sizeof(uint64_t);
-+    if (sysctlbyname("machdep.tsc.frequency", &tsc_freq, &length, NULL, 0)) {
-+        /* fprintf(stderr, "%s: sysctl machdep.tsc.frequency errored\n", __func__); */
-+        return;
-+    }
-+    env->tsc_khz = tsc_freq / 1000;  /* Hz to KHz */
-+}
-+
-+static void init_apic_bus_freq(CPUX86State *env)
-+{
-+    size_t length;
-+    uint64_t bus_freq;
-+
-+    if (env->apic_bus_freq != 0) {
-+        return;
-+    }
-+
-+    length = sizeof(uint64_t);
-+    if (sysctlbyname("hw.busfrequency", &bus_freq, &length, NULL, 0)) {
-+        /* fprintf(stderr, "%s: sysctl hw.busfrequency errored\n", __func__); */
-+        return;
-+    }
-+    env->apic_bus_freq = bus_freq;
-+}
-+
-+static inline bool tsc_is_known(CPUX86State *env)
-+{
-+    return env->tsc_khz != 0;
-+}
-+
-+static inline bool apic_bus_freq_is_known(CPUX86State *env)
-+{
-+    return env->apic_bus_freq != 0;
-+}
-+
- int hvf_init_vcpu(CPUState *cpu)
- {
- 
-@@ -480,6 +525,15 @@ int hvf_init_vcpu(CPUState *cpu)
-     hvf_state->hvf_caps = g_new0(struct hvf_vcpu_caps, 1);
-     env->hvf_mmio_buf = g_new(char, 4096);
- 
-+    if (x86cpu->vmware_cpuid_freq) {
-+        init_tsc_freq(env);
-+        init_apic_bus_freq(env);
-+
-+        if (!tsc_is_known(env) || !apic_bus_freq_is_known(env)) {
-+            error_report("vmware-cpuid-freq: feature couldn't be enabled");
-+        }
-+    }
-+
-     r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
-     cpu->vcpu_dirty = 1;
-     assert_hvf_ok(r);
-@@ -597,6 +651,42 @@ static void hvf_store_events(CPUState *cpu, uint32_t ins_len, uint64_t idtvec_in
-     }
- }
- 
-+static void hvf_cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
-+                              uint32_t *eax, uint32_t *ebx,
-+                              uint32_t *ecx, uint32_t *edx)
-+{
-+    /*
-+     * A wrapper extends cpu_x86_cpuid with 0x40000000 and 0x40000010 leafs
-+     * Provides vmware-cpuid-freq support to hvf
-+     */
-+
-+    uint32_t signature[3];
-+
-+    if (!tsc_is_known(env) || !apic_bus_freq_is_known(env)) {
-+        cpu_x86_cpuid(env, index, count, eax, ebx, ecx, edx);
-+        return;
-+    }
-+
-+    switch (index) {
-+        case 0x40000000:
-+            memcpy(signature, "TCGTCGTCGTCG", 12); /* QEMU Signature */
-+            *eax = 0x40000010;                     /* Max available cpuid leaf */
-+            *ebx = signature[0];
-+            *ecx = signature[1];
-+            *edx = signature[2];
-+            break;
-+        case 0x40000010:
-+            *eax = env->tsc_khz;
-+            *ebx = env->apic_bus_freq / 1000; /* Hz to KHz */
-+            *ecx = 0;
-+            *edx = 0;
-+            break;
-+        default:
-+            cpu_x86_cpuid(env, index, count, eax, ebx, ecx, edx);
-+            break;
-+    }
-+}
-+
- int hvf_vcpu_exec(CPUState *cpu)
+ #define MSR_IA32_SYSENTER_CS            0x174
+ #define MSR_IA32_SYSENTER_ESP           0x175
+ #define MSR_IA32_SYSENTER_EIP           0x176
+diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c
+index da570e352b..2d362763fb 100644
+--- a/target/i386/hvf/x86_emu.c
++++ b/target/i386/hvf/x86_emu.c
+@@ -668,6 +668,7 @@ void simulate_rdmsr(struct CPUState *cpu)
  {
      X86CPU *x86_cpu = X86_CPU(cpu);
-@@ -734,7 +824,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-             uint32_t rcx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RCX);
-             uint32_t rdx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RDX);
+     CPUX86State *env = &x86_cpu->env;
++    CPUState *cs = env_cpu(env);
+     uint32_t msr = ECX(env);
+     uint64_t val = 0;
  
--            cpu_x86_cpuid(env, rax, rcx, &rax, &rbx, &rcx, &rdx);
-+            hvf_cpu_x86_cpuid(env, rax, rcx, &rax, &rbx, &rcx, &rdx);
- 
-             wreg(cpu->hvf_fd, HV_X86_RAX, rax);
-             wreg(cpu->hvf_fd, HV_X86_RBX, rbx);
+@@ -745,6 +746,10 @@ void simulate_rdmsr(struct CPUState *cpu)
+     case MSR_MTRRdefType:
+         val = env->mtrr_deftype;
+         break;
++    case MSR_CORE_THREAD_COUNT:
++        val = cs->nr_threads * cs->nr_cores; /* thread count, bits 15..0 */
++        val |= ((uint32_t)cs->nr_cores << 16u); /* core count, bits 31..16 */
++        break;
+     default:
+         /* fprintf(stderr, "%s: unknown msr 0x%x\n", __func__, msr); */
+         val = 0;
 -- 
 2.28.0
 
