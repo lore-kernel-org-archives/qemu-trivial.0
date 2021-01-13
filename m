@@ -1,85 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzpaD-0006CC-Mo
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2021 18:29:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58198)
+	id 1kzqzd-00069N-Hn
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2021 20:00:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41836)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kzpa8-0006Ag-QS
- for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 18:29:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51134)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kzpa4-0003qP-TT
- for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 18:29:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610580575;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fif37q7xRFd66DR0whtSibS93whJ6zeQDCaP5SPREV4=;
- b=EbPJF0rFVHA0jOi+xnyNONAD7kNama1WrYV9diIFV1OdXKlki4qrx6UP9pThe6j0c5sw2d
- COxmZcY8a16n+hd08OeL5w5xrI20SkLc8CXQwfvsDoOwPBTOzordh5oCh7ZG0B/qfjlrR0
- 1+kpNBV5U0Plq/aItd4nqVPUaLLW9P4=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-437-wRld-mJNNimKjE6kmF5DZw-1; Wed, 13 Jan 2021 18:29:32 -0500
-X-MC-Unique: wRld-mJNNimKjE6kmF5DZw-1
-Received: by mail-wr1-f70.google.com with SMTP id b8so1692972wrv.14
- for <qemu-trivial@nongnu.org>; Wed, 13 Jan 2021 15:29:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mforney@mforney.org>)
+ id 1kzo98-0005Ov-Rb
+ for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 16:57:42 -0500
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:42111)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mforney@mforney.org>)
+ id 1kzo95-0005sg-G5
+ for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 16:57:42 -0500
+Received: by mail-pl1-x635.google.com with SMTP id s15so1832268plr.9
+ for <qemu-trivial@nongnu.org>; Wed, 13 Jan 2021 13:57:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mforney-org.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ESmcMAnWBHSju3uQEPj3whFpqEMjgBqgGp2w8gcr9E8=;
+ b=UbL36ckuCBomOWV22TdRQ2YiffoVyevA/2Dt/OoWE8fKYLGSyW6JSY2bN5EEGHQajm
+ 2jDcIrLyloa2wsyBPfdYXjO22F42XePxRdRErZVxbTEHri6WrUb2HrOBJ8N82pYWj6bm
+ zSgFyfNYP0L0Zs62ISrmfbHUl4RXu4wndTyQ4644RLHuVISPZkqxE33i0y1Fj5od5vcN
+ xBfvg1oFXauXjc20cDDUVjDTMsVnVtZWmkHH1ydq8OVT0D4gcdsP1SEv6ga8sdx/0hSl
+ NAhoDeisPh/MvVLrbHwPLqsVPOpdK7bXhl+nB8j0FKKKqteoujwkm7AWLANjwWNpxIQy
+ i/Cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=fif37q7xRFd66DR0whtSibS93whJ6zeQDCaP5SPREV4=;
- b=RTiu5oBs5bRN5pyegVLykSVqLOD09+GDqn+ENl/4UoKUnp4AZgsFlQ0Xtrw3QTllTC
- is28Zh7Y8duiYkmbl8EKzGU55BShJ/QvZorN8XyfqjtiVABLG/1A0jh0retxcdRBfTPx
- fe2/pEI4MP2SmrBNZ5BZz/nlrJG/zH6J3tzI7cJ0yDZ5+yL8Rwbg8mNIqacK+WwFvwkP
- P/v8r1R9m/vRTYIiFwp32kfyDG2XUE+QxndukRMc+sFaxw+AUbfTMqJHPG8JxbltJXt6
- Eh3cH6lk2yFcSSR4eT3o6zHyWznEKdJr/ERPma/mxLx+Y7ZvdyIwOcFLso94LRUTTMSw
- ysiw==
-X-Gm-Message-State: AOAM531iGe5hcgAtJaC01xJ/2NASmSaMf+c7Y1LsWafm5xWfm/oKYqBv
- bISISHwD5ZavFhsvvo8PCybOnjH3Pq/GfmY4vsh3NZcsl+SrrglWQ/UyXZMxRl2Noe1qwZkvG0U
- giN0mkKh+BWGzC6d8NQ==
-X-Received: by 2002:adf:f4d0:: with SMTP id h16mr4975163wrp.30.1610580570913; 
- Wed, 13 Jan 2021 15:29:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzUvWFbqC92jAmHWuoiiPuN8eBx7wubl8iV1+Q1XOE4XaNT7FvsD0u9fZGL934En4TbZRlcFQ==
-X-Received: by 2002:adf:f4d0:: with SMTP id h16mr4975145wrp.30.1610580570665; 
- Wed, 13 Jan 2021 15:29:30 -0800 (PST)
-Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id z6sm5958234wrw.58.2021.01.13.15.29.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Jan 2021 15:29:29 -0800 (PST)
-Subject: Re: [PATCH 0/2] MAINTAINERS cleanups
-To: John Snow <jsnow@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <20201030153416.429791-1-jsnow@redhat.com>
- <2e2482ad-0d71-d34c-320a-b95117559a53@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6fb0c5c9-f248-036f-f9f0-6c1f85ab5484@redhat.com>
-Date: Thu, 14 Jan 2021 00:29:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ESmcMAnWBHSju3uQEPj3whFpqEMjgBqgGp2w8gcr9E8=;
+ b=YtSmEmb4h7GFeWNqGTDfjXKvrjkPrWuPG8SeX5V5nGwqtKy3Bh6adIkdFEMpEz6my3
+ xYhL9kdfu6JqH21QVYiioTQvCH9YUcNs2KGWCNhEqe8cQZzoGzGmgAEvKsWn3r0YKHEx
+ hsvnHAB5fGQ+J9v9QLAj8X4mRHY2P6c3LuFv50iO1+H0+V48pHtJtIMf1of50/ROF0uq
+ OwTfLjul7O7wiuZhCsAs1ELSS+BXIvPkgJLd7SfkCtWc2W8utCq79diYBbAxNL3AvOUQ
+ FXa12gDJPI0WrzPLF0G4hIekApOqv/yx7e9y9DfTreGo72C6K4SgH9v6l9vcslBftMXt
+ V0Kw==
+X-Gm-Message-State: AOAM532jZY36QRrXP3nWbk7rS9bCvUlGA68FvxhtfwrtjT1hcTABhlP+
+ I5eHFZLh2hwNnRTO91aTRhxJ1A==
+X-Google-Smtp-Source: ABdhPJwvQapnkMFi4dWdcg3lGLIHT5/ad1uUxLRwlozz/YgXQW/o9QA+IXphtESAm8ENB1E39V0GcQ==
+X-Received: by 2002:a17:902:b097:b029:dc:5c:a986 with SMTP id
+ p23-20020a170902b097b02900dc005ca986mr4242617plr.59.1610575056102; 
+ Wed, 13 Jan 2021 13:57:36 -0800 (PST)
+Received: from localhost ([2601:647:5180:4570:c90:56ff:fe92:3a06])
+ by smtp.gmail.com with ESMTPSA id p15sm3542138pgl.19.2021.01.13.13.57.34
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 13 Jan 2021 13:57:34 -0800 (PST)
+From: Michael Forney <mforney@mforney.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Eric Blake <eblake@redhat.com>
+Subject: [PATCH v2] osdep.h: Remove <sys/signal.h> include
+Date: Wed, 13 Jan 2021 13:56:00 -0800
+Message-Id: <20210113215600.16100-1-mforney@mforney.org>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201027003848.10920-1-mforney@mforney.org>
+References: <20201027003848.10920-1-mforney@mforney.org>
 MIME-Version: 1.0
-In-Reply-To: <2e2482ad-0d71-d34c-320a-b95117559a53@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: none client-ip=2607:f8b0:4864:20::635;
+ envelope-from=mforney@mforney.org; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 13 Jan 2021 20:00:03 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,22 +78,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jan 2021 23:29:42 -0000
+X-List-Received-Date: Wed, 13 Jan 2021 21:57:43 -0000
 
-Cc'ing qemu-trivial@
+Prior to 2a4b472c3c, sys/signal.h was only included on OpenBSD
+(apart from two .c files). The POSIX standard location for this
+header is just <signal.h> and in fact, OpenBSD's signal.h includes
+sys/signal.h itself.
 
-On 1/13/21 11:08 PM, John Snow wrote:
-> On 10/30/20 11:34 AM, John Snow wrote:
->>
->>
->> John Snow (2):
->>    MAINTAINERS: Remove Ben Warren
->>    MAINTAINERS: Make status spellings consistent
->>
->>   MAINTAINERS | 13 ++++++-------
->>   1 file changed, 6 insertions(+), 7 deletions(-)
->>
-> 
-> A little late for 5.2 now, but ... ping?
+Unconditionally including <sys/signal.h> on musl causes warnings
+for just about every source file:
+
+  /usr/include/sys/signal.h:1:2: warning: #warning redirecting incorrect #include <sys/signal.h> to <signal.h> [-Wcpp]
+      1 | #warning redirecting incorrect #include <sys/signal.h> to <signal.h>
+        |  ^~~~~~~
+
+Since there don't seem to be any platforms which require including
+<sys/signal.h> in addition to <signal.h>, and some platforms like
+Haiku lack it completely, just remove it.
+
+Tested building on OpenBSD after removing this include.
+
+Signed-off-by: Michael Forney <mforney@mforney.org>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+---
+Changes since v1: rebase on latest master
+
+ include/qemu/osdep.h | 4 ----
+ meson.build          | 1 -
+ 2 files changed, 5 deletions(-)
+
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index f9ec8c84e9..a434382c58 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -104,10 +104,6 @@ extern int daemon(int, int);
+ #include <setjmp.h>
+ #include <signal.h>
+ 
+-#ifdef HAVE_SYS_SIGNAL_H
+-#include <sys/signal.h>
+-#endif
+-
+ #ifndef _WIN32
+ #include <sys/wait.h>
+ #else
+diff --git a/meson.build b/meson.build
+index 3d889857a0..af2bc89741 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1113,7 +1113,6 @@ config_host_data.set('HAVE_DRM_H', cc.has_header('libdrm/drm.h'))
+ config_host_data.set('HAVE_PTY_H', cc.has_header('pty.h'))
+ config_host_data.set('HAVE_SYS_IOCCOM_H', cc.has_header('sys/ioccom.h'))
+ config_host_data.set('HAVE_SYS_KCOV_H', cc.has_header('sys/kcov.h'))
+-config_host_data.set('HAVE_SYS_SIGNAL_H', cc.has_header('sys/signal.h'))
+ 
+ ignored = ['CONFIG_QEMU_INTERP_PREFIX'] # actually per-target
+ arrays = ['CONFIG_AUDIO_DRIVERS', 'CONFIG_BDRV_RW_WHITELIST', 'CONFIG_BDRV_RO_WHITELIST']
+-- 
+2.30.0
 
 
