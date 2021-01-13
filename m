@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kza8W-0001If-R3
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2021 02:00:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44078)
+	id 1kzaDj-0003FS-2Y
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2021 02:05:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kza8V-0001H8-0W
- for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 02:00:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46995)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kzaDh-0003EJ-9n
+ for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 02:05:29 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:42601)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kza8R-0005mr-Ft
- for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 02:00:06 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kzaDe-0008CU-GN
+ for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 02:05:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610521201;
+ s=mimecast20190719; t=1610521524;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ixj4+yi0lETAF+ggllGxIF5hknlV3cJnCPByBZMlBGI=;
- b=ZU+d8rTrGF74b1mJ84qCq+Erc0Rn5NEwAW87FtWI4WxWP6sZWmgGA26EiWFHpMBc4fsHLb
- ZiFS/Qk6+F8MjtYhgGFP9yIbGcsQgvFezBZm+ymrvFKSphAJ9dWFuH+RefPF4ygFvcHdQD
- lk5pPSyAYsiqysHetn4izglH7YpYmXA=
+ bh=kY0zJaLLaAZfbU7u5cifFOLBnqgQbzx/khQ/RPfZ2U4=;
+ b=SceOld+XABU88UbMqhWKYWM8dhAeKy2YcukWjyydqH61wthMUVC7cCkT3TVkriQ3c7jD65
+ jE1MFnhwP2QYEIswBruMRihlXS2vkwxsck6SeNcRO43uIHwGq9DPM1EuEPO58KjRCqDJsQ
+ 9mjNMK1C4xDLG7Jl4vm3k8o5yFhcHVs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-126-vBKCDyURPLC2SeHZX_nPEQ-1; Wed, 13 Jan 2021 01:59:58 -0500
-X-MC-Unique: vBKCDyURPLC2SeHZX_nPEQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-116-i0jsS_qiMoi_ifAcjqZjJQ-1; Wed, 13 Jan 2021 02:05:21 -0500
+X-MC-Unique: i0jsS_qiMoi_ifAcjqZjJQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EA0048015D0;
- Wed, 13 Jan 2021 06:59:55 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1BAAF8066E2;
+ Wed, 13 Jan 2021 07:05:19 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-122.ams2.redhat.com [10.36.112.122])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 36D025C559;
- Wed, 13 Jan 2021 06:59:51 +0000 (UTC)
-Subject: Re: [PATCH 2/9] configure: Add sys/timex.h to probe clk_adjtime
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DAA2B1C956;
+ Wed, 13 Jan 2021 07:05:11 +0000 (UTC)
+Subject: Re: [PATCH 3/9] configure/meson: Only check sys/signal.h on non-Linux
 To: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-devel@nongnu.org,
  QEMU Trivial <qemu-trivial@nongnu.org>
 Cc: Kevin Wolf <kwolf@redhat.com>, Fam Zheng <fam@euphon.net>,
@@ -44,20 +44,20 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Fam Zheng <fam@euphon.net>,
  Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- David Gibson <david@gibson.dropbear.id.au>, John Snow <jsnow@redhat.com>
+ David Gibson <david@gibson.dropbear.id.au>
 References: <20201221005318.11866-1-jiaxun.yang@flygoat.com>
- <20201221005318.11866-3-jiaxun.yang@flygoat.com>
+ <20201221005318.11866-4-jiaxun.yang@flygoat.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <c4977db1-2f4e-22fd-9e40-1dcd11df7922@redhat.com>
-Date: Wed, 13 Jan 2021 07:59:50 +0100
+Message-ID: <fb676594-d25d-5f13-ef1e-0e4a7e77ca63@redhat.com>
+Date: Wed, 13 Jan 2021 08:05:10 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20201221005318.11866-3-jiaxun.yang@flygoat.com>
+In-Reply-To: <20201221005318.11866-4-jiaxun.yang@flygoat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
@@ -80,41 +80,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jan 2021 07:00:07 -0000
-
-
-In the subject:
-
-s/clk_adjtime/clock_adjtime/
+X-List-Received-Date: Wed, 13 Jan 2021 07:05:29 -0000
 
 On 21/12/2020 01.53, Jiaxun Yang wrote:
-> It is not a part of standard time.h. Glibc put it under
-> time.h however musl treat it as a sys timex extension.
+> signal.h is equlevant of sys/signal.h on Linux, musl would complain
+> wrong usage of sys/signal.h.
+> 
+> In file included from /builds/FlyGoat/qemu/include/qemu/osdep.h:108,
+>                   from ../tests/qemu-iotests/socket_scm_helper.c:13:
+> /usr/include/sys/signal.h:1:2: error: #warning redirecting incorrect #include <sys/signal.h> to <signal.h> [-Werror=cpp]
+>      1 | #warning redirecting incorrect #include <sys/signal.h> to <signal.h>
+>        |  ^~~~~~~
 > 
 > Signed-off-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
 > ---
->   configure | 1 +
->   1 file changed, 1 insertion(+)
+>   meson.build | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
 > 
-> diff --git a/configure b/configure
-> index c228f7c21e..990f37e123 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4374,6 +4374,7 @@ fi
->   clock_adjtime=no
->   cat > $TMPC <<EOF
->   #include <time.h>
-> +#include <sys/timex.h>
->   
->   int main(void)
->   {
-> 
+> diff --git a/meson.build b/meson.build
+> index 372576f82c..1ef8722b3a 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -841,7 +841,10 @@ config_host_data.set('HAVE_DRM_H', cc.has_header('libdrm/drm.h'))
+>   config_host_data.set('HAVE_PTY_H', cc.has_header('pty.h'))
+>   config_host_data.set('HAVE_SYS_IOCCOM_H', cc.has_header('sys/ioccom.h'))
+>   config_host_data.set('HAVE_SYS_KCOV_H', cc.has_header('sys/kcov.h'))
+> -config_host_data.set('HAVE_SYS_SIGNAL_H', cc.has_header('sys/signal.h'))
+> +if targetos != 'linux'
+> +  # signal.h is equlevant of sys/signal.h on Linux
+> +  config_host_data.set('HAVE_SYS_SIGNAL_H', cc.has_header('sys/signal.h'))
+> +endif
 
-According to the man page:
-
-  http://www.tin.org/bin/man.cgi?section=2&topic=clock_adjtime
-
-sys/timex.h is indeed the right header here.
+Seems like it sys/signal.h was introduced for OpenBSD once (see commit 
+128ab2ff50a), so this new check should be fine.
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
