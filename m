@@ -1,72 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzaOn-0000zY-Ga
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2021 02:16:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49540)
+	id 1kzeSd-0002G2-Pr
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2021 06:37:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kzaOh-0000vt-16
- for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 02:16:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:31967)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kzaOa-0004wn-G5
- for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 02:16:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610522197;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5QI01U/Sn8jXYFcypzrx+Uzp6GT1H5HkA3ClrziD+zM=;
- b=HrDBXAVVdsWewdTHmwan4BO6fQlHm/DYZZH3tAV6Q2BlPGFajSul3r2LHVcHrpbw9TK572
- LsQ+L9s5zA5dWDIu1Ic7Y4w7jk8rHk9Eqq0SNkQU2MdJyntr+9C/RGZupkMUfivbMrZJpK
- mcYoJS4RvKWxvU9pBfaIMlFsDoj8qhU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-295-0RApVqFLMyOb6O_2KK5x_A-1; Wed, 13 Jan 2021 02:16:35 -0500
-X-MC-Unique: 0RApVqFLMyOb6O_2KK5x_A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A6ED2425C8;
- Wed, 13 Jan 2021 07:16:33 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-122.ams2.redhat.com [10.36.112.122])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B653A5D9DC;
- Wed, 13 Jan 2021 07:16:26 +0000 (UTC)
-Subject: Re: [PATCH 6/9] hw/block/nand: Rename PAGE_SIZE to NAND_PAGE_SIZE
-To: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Kevin Wolf <kwolf@redhat.com>, Fam Zheng <fam@euphon.net>,
- kvm@vger.kernel.org, Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
- Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20201221005318.11866-1-jiaxun.yang@flygoat.com>
- <20201221005318.11866-7-jiaxun.yang@flygoat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <72cf8a20-e379-53c4-de76-a31002746ac5@redhat.com>
-Date: Wed, 13 Jan 2021 08:16:25 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kzeSd-0002Fe-3T
+ for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 06:37:11 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:39396)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kzeSa-0004Gp-T2
+ for qemu-trivial@nongnu.org; Wed, 13 Jan 2021 06:37:10 -0500
+Received: by mail-ed1-x532.google.com with SMTP id c7so1535618edv.6
+ for <qemu-trivial@nongnu.org>; Wed, 13 Jan 2021 03:37:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4F1rmmgzkcYAHDbt+LpZar8xaojmFJxb7Xqq4gkK6BM=;
+ b=SgFzl6SCUKomp9/rXHcmO68qwJXKInafIEhap905AWHxVCUbi0RORFtSY3nUFR7OuQ
+ oqeRZ2ySroRQdds2GbD/kcS8T8i47oKm7B+/69CvcqnzZwV2nAMx1pqFYh3UZ2s7skNd
+ ym6wsO2JqG+M9zZWX47cqQuI3cPKzUi5nMfYXNM1JItICkmFXeolebL8JvRaKdTYaPD2
+ Jhggtnby6OkCeS3FLwjih6uL9behMY3eaB/nQOI+A/l/WXRNoWler+VAfr13XBL6C/q/
+ q88viu81oItwi/KcfZofbMI2gI87hC6j/74P2WvZcrbAUkJZne78cabvLkEoor4tVGqP
+ If7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4F1rmmgzkcYAHDbt+LpZar8xaojmFJxb7Xqq4gkK6BM=;
+ b=YBZFzhEZyW2qFNQJZ5OXB+lrhaO2RhbTgIFeUVODCUOyjrWEHJWPkCwZia4zeGHwi3
+ ZrI4MjA5nqwZpQpppNLB8VSJVI4dWdEhwK8A6oFFDVDTC3CW6nBqQ/aDlkAdCgi7mBcg
+ MN+G9BwP9ILduZjuPtwG4j330YrSWIntG/yb7Gd/ahF0gUqWe8zHom8cTAFB005rNOab
+ /UQgQjlLy4E+H58wwvxTYz9HYlF2giTX4rvSxA0CNzDRlR83W3qd/ZMr1sSHe35EBF8p
+ 7E3d9ZCNOfudYliSDaIOAOT4inqqsa16u+wieID7WtI4ZF04gEVJvSV/9SeK3fQpyeNw
+ MkQg==
+X-Gm-Message-State: AOAM532IiR5FDbsOIRRGSjt/Z2bdtOZshlgRdWCeDbaxsoINYh2sO5oG
+ inJli60H0l1d0CxbQ6kW81CMuFFMvXide5UACTBvSA==
+X-Google-Smtp-Source: ABdhPJzj1xn+B3XyIrFGeol6n1IV8bxn06RSlnQBWgrWcSTcm2KSF8hdIlmMGd/QNyTk+WmtLOQgg5A2jbtfLMcPXZs=
+X-Received: by 2002:aa7:d915:: with SMTP id a21mr1389742edr.251.1610537827012; 
+ Wed, 13 Jan 2021 03:37:07 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201221005318.11866-7-jiaxun.yang@flygoat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20201221005318.11866-1-jiaxun.yang@flygoat.com>
+ <20201221005318.11866-4-jiaxun.yang@flygoat.com>
+ <fb676594-d25d-5f13-ef1e-0e4a7e77ca63@redhat.com>
+In-Reply-To: <fb676594-d25d-5f13-ef1e-0e4a7e77ca63@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 13 Jan 2021 11:36:55 +0000
+Message-ID: <CAFEAcA_B_-FXnKOF2=_knv6UntTVDA6oVLzdpX=DpC0smC=ZPw@mail.gmail.com>
+Subject: Re: [PATCH 3/9] configure/meson: Only check sys/signal.h on non-Linux
+To: Thomas Huth <thuth@redhat.com>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
+ Fam Zheng <fam@euphon.net>, kvm-devel <kvm@vger.kernel.org>,
+ Viktor Prutyanov <viktor.prutyanov@phystech.edu>, 
+ Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Alistair Francis <alistair@alistair23.me>, Greg Kurz <groug@kaod.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, qemu-ppc <qemu-ppc@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Qemu-block <qemu-block@nongnu.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ David Gibson <david@gibson.dropbear.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,156 +83,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jan 2021 07:16:53 -0000
+X-List-Received-Date: Wed, 13 Jan 2021 11:37:11 -0000
 
-On 21/12/2020 01.53, Jiaxun Yang wrote:
-> As per POSIX specification of limits.h [1], OS libc may define
-> PAGE_SIZE in limits.h.
-> 
-> To prevent collosion of definition, we rename PAGE_SIZE here.
-> 
-> [1]: https://pubs.opengroup.org/onlinepubs/7908799/xsh/limits.h.html
-> 
-> Signed-off-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
-> ---
->   hw/block/nand.c | 40 ++++++++++++++++++++--------------------
->   1 file changed, 20 insertions(+), 20 deletions(-)
-> 
-> diff --git a/hw/block/nand.c b/hw/block/nand.c
-> index 1d7a48a2ec..17645667d8 100644
-> --- a/hw/block/nand.c
-> +++ b/hw/block/nand.c
-> @@ -114,24 +114,24 @@ static void mem_and(uint8_t *dest, const uint8_t *src, size_t n)
->   # define NAND_IO
->   
->   # define PAGE(addr)		((addr) >> ADDR_SHIFT)
-> -# define PAGE_START(page)	(PAGE(page) * (PAGE_SIZE + OOB_SIZE))
-> +# define PAGE_START(page)	(PAGE(page) * (NAND_PAGE_SIZE + OOB_SIZE))
->   # define PAGE_MASK		((1 << ADDR_SHIFT) - 1)
->   # define OOB_SHIFT		(PAGE_SHIFT - 5)
->   # define OOB_SIZE		(1 << OOB_SHIFT)
->   # define SECTOR(addr)		((addr) >> (9 + ADDR_SHIFT - PAGE_SHIFT))
->   # define SECTOR_OFFSET(addr)	((addr) & ((511 >> PAGE_SHIFT) << 8))
->   
-> -# define PAGE_SIZE		256
-> +# define NAND_PAGE_SIZE     256
->   # define PAGE_SHIFT		8
->   # define PAGE_SECTORS		1
->   # define ADDR_SHIFT		8
->   # include "nand.c"
-> -# define PAGE_SIZE		512
-> +# define NAND_PAGE_SIZE     512
->   # define PAGE_SHIFT		9
->   # define PAGE_SECTORS		1
->   # define ADDR_SHIFT		8
->   # include "nand.c"
-> -# define PAGE_SIZE		2048
-> +# define NAND_PAGE_SIZE		2048
->   # define PAGE_SHIFT		11
->   # define PAGE_SECTORS		4
->   # define ADDR_SHIFT		16
-> @@ -661,7 +661,7 @@ type_init(nand_register_types)
->   #else
->   
->   /* Program a single page */
-> -static void glue(nand_blk_write_, PAGE_SIZE)(NANDFlashState *s)
-> +static void glue(nand_blk_write_, NAND_PAGE_SIZE)(NANDFlashState *s)
->   {
->       uint64_t off, page, sector, soff;
->       uint8_t iobuf[(PAGE_SECTORS + 2) * 0x200];
-> @@ -681,11 +681,11 @@ static void glue(nand_blk_write_, PAGE_SIZE)(NANDFlashState *s)
->               return;
->           }
->   
-> -        mem_and(iobuf + (soff | off), s->io, MIN(s->iolen, PAGE_SIZE - off));
-> -        if (off + s->iolen > PAGE_SIZE) {
-> +        mem_and(iobuf + (soff | off), s->io, MIN(s->iolen, NAND_PAGE_SIZE - off));
-> +        if (off + s->iolen > NAND_PAGE_SIZE) {
->               page = PAGE(s->addr);
-> -            mem_and(s->storage + (page << OOB_SHIFT), s->io + PAGE_SIZE - off,
-> -                            MIN(OOB_SIZE, off + s->iolen - PAGE_SIZE));
-> +            mem_and(s->storage + (page << OOB_SHIFT), s->io + NAND_PAGE_SIZE - off,
-> +                            MIN(OOB_SIZE, off + s->iolen - NAND_PAGE_SIZE));
->           }
->   
->           if (blk_pwrite(s->blk, sector << BDRV_SECTOR_BITS, iobuf,
-> @@ -713,7 +713,7 @@ static void glue(nand_blk_write_, PAGE_SIZE)(NANDFlashState *s)
->   }
->   
->   /* Erase a single block */
-> -static void glue(nand_blk_erase_, PAGE_SIZE)(NANDFlashState *s)
-> +static void glue(nand_blk_erase_, NAND_PAGE_SIZE)(NANDFlashState *s)
->   {
->       uint64_t i, page, addr;
->       uint8_t iobuf[0x200] = { [0 ... 0x1ff] = 0xff, };
-> @@ -725,7 +725,7 @@ static void glue(nand_blk_erase_, PAGE_SIZE)(NANDFlashState *s)
->   
->       if (!s->blk) {
->           memset(s->storage + PAGE_START(addr),
-> -                        0xff, (PAGE_SIZE + OOB_SIZE) << s->erase_shift);
-> +                        0xff, (NAND_PAGE_SIZE + OOB_SIZE) << s->erase_shift);
->       } else if (s->mem_oob) {
->           memset(s->storage + (PAGE(addr) << OOB_SHIFT),
->                           0xff, OOB_SIZE << s->erase_shift);
-> @@ -751,7 +751,7 @@ static void glue(nand_blk_erase_, PAGE_SIZE)(NANDFlashState *s)
->   
->           memset(iobuf, 0xff, 0x200);
->           i = (addr & ~0x1ff) + 0x200;
-> -        for (addr += ((PAGE_SIZE + OOB_SIZE) << s->erase_shift) - 0x200;
-> +        for (addr += ((NAND_PAGE_SIZE + OOB_SIZE) << s->erase_shift) - 0x200;
->                           i < addr; i += 0x200) {
->               if (blk_pwrite(s->blk, i, iobuf, BDRV_SECTOR_SIZE, 0) < 0) {
->                   printf("%s: write error in sector %" PRIu64 "\n",
-> @@ -772,7 +772,7 @@ static void glue(nand_blk_erase_, PAGE_SIZE)(NANDFlashState *s)
->       }
->   }
->   
-> -static void glue(nand_blk_load_, PAGE_SIZE)(NANDFlashState *s,
-> +static void glue(nand_blk_load_, NAND_PAGE_SIZE)(NANDFlashState *s,
->                   uint64_t addr, int offset)
->   {
->       if (PAGE(addr) >= s->pages) {
-> @@ -786,7 +786,7 @@ static void glue(nand_blk_load_, PAGE_SIZE)(NANDFlashState *s,
->                   printf("%s: read error in sector %" PRIu64 "\n",
->                                   __func__, SECTOR(addr));
->               }
-> -            memcpy(s->io + SECTOR_OFFSET(s->addr) + PAGE_SIZE,
-> +            memcpy(s->io + SECTOR_OFFSET(s->addr) + NAND_PAGE_SIZE,
->                               s->storage + (PAGE(s->addr) << OOB_SHIFT),
->                               OOB_SIZE);
->               s->ioaddr = s->io + SECTOR_OFFSET(s->addr) + offset;
-> @@ -800,23 +800,23 @@ static void glue(nand_blk_load_, PAGE_SIZE)(NANDFlashState *s,
->           }
->       } else {
->           memcpy(s->io, s->storage + PAGE_START(s->addr) +
-> -                        offset, PAGE_SIZE + OOB_SIZE - offset);
-> +                        offset, NAND_PAGE_SIZE + OOB_SIZE - offset);
->           s->ioaddr = s->io;
->       }
->   }
->   
-> -static void glue(nand_init_, PAGE_SIZE)(NANDFlashState *s)
-> +static void glue(nand_init_, NAND_PAGE_SIZE)(NANDFlashState *s)
->   {
->       s->oob_shift = PAGE_SHIFT - 5;
->       s->pages = s->size >> PAGE_SHIFT;
->       s->addr_shift = ADDR_SHIFT;
->   
-> -    s->blk_erase = glue(nand_blk_erase_, PAGE_SIZE);
-> -    s->blk_write = glue(nand_blk_write_, PAGE_SIZE);
-> -    s->blk_load = glue(nand_blk_load_, PAGE_SIZE);
-> +    s->blk_erase = glue(nand_blk_erase_, NAND_PAGE_SIZE);
-> +    s->blk_write = glue(nand_blk_write_, NAND_PAGE_SIZE);
-> +    s->blk_load = glue(nand_blk_load_, NAND_PAGE_SIZE);
->   }
->   
-> -# undef PAGE_SIZE
-> +# undef NAND_PAGE_SIZE
->   # undef PAGE_SHIFT
->   # undef PAGE_SECTORS
->   # undef ADDR_SHIFT
-> 
+On Wed, 13 Jan 2021 at 07:06, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 21/12/2020 01.53, Jiaxun Yang wrote:
+> > signal.h is equlevant of sys/signal.h on Linux, musl would complain
+> > wrong usage of sys/signal.h.
+> >
+> > In file included from /builds/FlyGoat/qemu/include/qemu/osdep.h:108,
+> >                   from ../tests/qemu-iotests/socket_scm_helper.c:13:
+> > /usr/include/sys/signal.h:1:2: error: #warning redirecting incorrect #include <sys/signal.h> to <signal.h> [-Werror=cpp]
+> >      1 | #warning redirecting incorrect #include <sys/signal.h> to <signal.h>
+> >        |  ^~~~~~~
+> >
+> > Signed-off-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
+> > ---
+> >   meson.build | 5 ++++-
+> >   1 file changed, 4 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/meson.build b/meson.build
+> > index 372576f82c..1ef8722b3a 100644
+> > --- a/meson.build
+> > +++ b/meson.build
+> > @@ -841,7 +841,10 @@ config_host_data.set('HAVE_DRM_H', cc.has_header('libdrm/drm.h'))
+> >   config_host_data.set('HAVE_PTY_H', cc.has_header('pty.h'))
+> >   config_host_data.set('HAVE_SYS_IOCCOM_H', cc.has_header('sys/ioccom.h'))
+> >   config_host_data.set('HAVE_SYS_KCOV_H', cc.has_header('sys/kcov.h'))
+> > -config_host_data.set('HAVE_SYS_SIGNAL_H', cc.has_header('sys/signal.h'))
+> > +if targetos != 'linux'
+> > +  # signal.h is equlevant of sys/signal.h on Linux
+> > +  config_host_data.set('HAVE_SYS_SIGNAL_H', cc.has_header('sys/signal.h'))
+> > +endif
+>
+> Seems like it sys/signal.h was introduced for OpenBSD once (see commit
+> 128ab2ff50a), so this new check should be fine.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+The right way to fix this would be to apply
+https://patchew.org/QEMU/20201027003848.10920-1-mforney@mforney.org/
+which got reviewed but never applied (it might need a respin to work
+with meson) which simply removes the sys/signal.h include and the
+"does the header exist" test entirely -- there is no platform which
+needs sys/signal.h.
 
+thanks
+-- PMM
 
