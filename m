@@ -1,53 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzyBU-0008Je-1V
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 03:40:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38786)
+	id 1l00u9-0000Ey-TR
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 06:35:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51996)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kzyBS-0008J6-Rf; Thu, 14 Jan 2021 03:40:46 -0500
-Resent-Date: Thu, 14 Jan 2021 03:40:46 -0500
-Resent-Message-Id: <E1kzyBS-0008J6-Rf@lists.gnu.org>
-Received: from sender4-of-o52.zoho.com ([136.143.188.52]:21205)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kzyBQ-00034h-0o; Thu, 14 Jan 2021 03:40:46 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1610613628; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=TV6oTz7cDRPyY+adSfeufuYyLaTdfKY3JIrI5bhIIWL9lwGwsAU74LMg4Qyooj1JFbCNO9Sc2t+r2QEqGc1sEVrbVlsirFZc+mG8zzkmbSq7c8guDyf2+xjf1KgspY98Korq7sZZ6U9ikSaN+o9edG+nEHw39hrekvnt59xz44k=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1610613628;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=lX/1taTEjCey71Part5Ei/mVBHjbpS61rdTcAMa0GPc=; 
- b=i37KLSnUo2PVVaXMgvnmltfTNj6HDSxg0Hm8fQLrzCvoaLcC9PuWh7pHRN6XOWPS1wLtONwK6wK3QhzcYwI79QYqu5J3VScFpCHIhdYn+VyculTiUg8l/jH9YXLQeL7pcXVev/xn6XHgd8JjnzyA2WSlIV0EJwoFXrhl+5I7lG0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1610613626046946.520628145836;
- Thu, 14 Jan 2021 00:40:26 -0800 (PST)
-In-Reply-To: <20210114081059.19632-1-zhanghan64@huawei.com>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 0/6] Fix some style problems in audio
-Message-ID: <161061362461.25322.14663542493131765720@73fb1a5943b8>
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l00u8-0000Ek-Bw
+ for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 06:35:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29705)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l00u6-00016f-RE
+ for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 06:35:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1610624101;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9dcRajHcr1N/4P+S0A0AV0uaR8Tr7mSa4F7XPXvzMBo=;
+ b=dXNA8kuEC26a1knwhKDMQNyjqnGY6mhanrSBN26wMgsqLRX/A103cdCqwQnnP+TQ7d/oMK
+ 1H4mSvSM4R26TiPk1jZ9kzf9ioOiDaRP79+R4dT/O8vKTjGq93QAy4X6X+/L1w9PtwCTP3
+ UrzpV+wIhOxn+NfPu+GWnXNSFHnJnAM=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-177-_gn7e05YN2qZBAf7EdTYmg-1; Thu, 14 Jan 2021 06:35:00 -0500
+X-MC-Unique: _gn7e05YN2qZBAf7EdTYmg-1
+Received: by mail-wr1-f72.google.com with SMTP id g16so2493791wrv.1
+ for <qemu-trivial@nongnu.org>; Thu, 14 Jan 2021 03:35:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9dcRajHcr1N/4P+S0A0AV0uaR8Tr7mSa4F7XPXvzMBo=;
+ b=ptMj5my6rjQ9Tvb0GX9W9ULuegOXNwFTb7GhufP2qGT/l7+WDC+s19eInHGjUy6Fs3
+ j5aNLLvxUP6CyFqIvkKCNkJcMsPm7SL4b0m7NGxZfm1OeB0O+ysPQfdPPuqIC85lS38L
+ MZlcLaBPFvcWYlrqMlUCj2YF5OPi56aU9hkIbs/F1v+Lv/eHtQNAOJhhE7W7bL6mk7Ir
+ P+qozJTYmo9jvZ9hTVHkRYU0IrBGZBleRbfEZFyOSjCAswHOqyZiLizHq97UpGIF82Ob
+ HqIoMf/0lUyqV5BxmdfXKyKWb501UKlW/wzXAuBASZlFPFNds0lbCCPRE7fM6/B3nSXg
+ xs4A==
+X-Gm-Message-State: AOAM530rzQiE3E6yR0rWfmsfIolGURErCL8z4winAj3k4xJcAmxAJ/lV
+ 2Bth4zXt04fKtIGJXvg4yHtDB4jOaWGeBB+lx2sp5E7SHv9PrMOQQW3ldaJqDIYYk5ScBUucwL6
+ oDTuvzm28UVY3NsrcWQ==
+X-Received: by 2002:a1c:4d12:: with SMTP id o18mr3637188wmh.114.1610624099105; 
+ Thu, 14 Jan 2021 03:34:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwcgI+3c4QPRIV3lsUo69z6s+JCyFf8l0Cm9CPKfU4PwP3tCicZSWRYvtF8E00NC8ElhI6eWQ==
+X-Received: by 2002:a1c:4d12:: with SMTP id o18mr3637162wmh.114.1610624098842; 
+ Thu, 14 Jan 2021 03:34:58 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id u205sm7729569wme.42.2021.01.14.03.34.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 14 Jan 2021 03:34:58 -0800 (PST)
+Subject: Re: [PATCH 6/9] net: Transfer tabs to spcaes
+To: Zhang Han <zhanghan64@huawei.com>, jasowang@redhat.com
+Cc: alex.chen@huawei.com, hunongda@huawei.com, qemu-trivial@nongnu.org,
+ hang.zhanghailiang@huawei.com, qemu-devel@nongnu.org
+References: <20201222082340.67405-1-zhanghan64@huawei.com>
+ <20201222082340.67405-7-zhanghan64@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <ec8d38ce-180e-4718-d39a-7cedee0a8350@redhat.com>
+Date: Thu, 14 Jan 2021 12:34:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: zhanghan64@huawei.com
-Cc: kraxel@redhat.com, hunongda@huawei.com, zhang.zhanghailiang@huawei.com,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org, alex.chen@huawei.com,
- zhanghan64@huawei.com
-Date: Thu, 14 Jan 2021 00:40:26 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.52; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o52.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20201222082340.67405-7-zhanghan64@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -61,48 +92,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Jan 2021 08:40:47 -0000
+X-List-Received-Date: Thu, 14 Jan 2021 11:35:04 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDExNDA4MTA1OS4xOTYz
-Mi0xLXpoYW5naGFuNjRAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBo
-YXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3Jl
-IGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMTE0MDgxMDU5LjE5
-NjMyLTEtemhhbmdoYW42NEBodWF3ZWkuY29tClN1YmplY3Q6IFtQQVRDSCAwLzZdIEZpeCBzb21l
-IHN0eWxlIHByb2JsZW1zIGluIGF1ZGlvCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jp
-bi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZp
-ZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
-bWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3Nj
-cmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5E
-ID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApG
-cm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10g
-ICAgICAgICBwYXRjaGV3LzIwMjEwMTE0MDgxMDU5LjE5NjMyLTEtemhhbmdoYW42NEBodWF3ZWku
-Y29tIC0+IHBhdGNoZXcvMjAyMTAxMTQwODEwNTkuMTk2MzItMS16aGFuZ2hhbjY0QGh1YXdlaS5j
-b20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo4ZjM1YTkyIGF1ZGlvOiBTdXNwZWN0
-IGNvZGUgaW5kZW50IGZvciBjb25kaXRpb25hbCBzdGF0ZW1lbnRzCjhlZDA4NTMgYXVkaW86IERv
-bid0IHVzZSAnIycgZmxhZyBvZiBwcmludGYgZm9ybWF0ICgnJSMnKSBpbgo1MWNkMWU3IGF1ZGlv
-OiBGaXggbGluZXMgb3ZlciA5MCBjaGFyYWN0ZXJzCjVkODU0OWMgYXVkaW86IGZvbyogYmFyIiBz
-aG91bGQgYmUgImZvbyAqYmFyIi4KZDFmZjgyYyBhdWRpbzogQWRkIHNwYWNlcyBhcm91bmQgb3Bl
-cmF0b3IvZGVsZXRlIHJlZHVuZGFudCBzcGFjZXMKZmQxNWZlMiBhdWRpbzogQWRkIGJyYWNlcyBm
-b3Igc3RhdGVtZW50cy9maXggYnJhY2VzJyBwb3NpdGlvbgoKPT09IE9VVFBVVCBCRUdJTiA9PT0K
-MS82IENoZWNraW5nIGNvbW1pdCBmZDE1ZmUyZDhjN2MgKGF1ZGlvOiBBZGQgYnJhY2VzIGZvciBz
-dGF0ZW1lbnRzL2ZpeCBicmFjZXMnIHBvc2l0aW9uKQoyLzYgQ2hlY2tpbmcgY29tbWl0IGQxZmY4
-MmMyNjY1YSAoYXVkaW86IEFkZCBzcGFjZXMgYXJvdW5kIG9wZXJhdG9yL2RlbGV0ZSByZWR1bmRh
-bnQgc3BhY2VzKQpFUlJPUjogc3BhY2UgcHJvaGliaXRlZCBiZXR3ZWVuIGZ1bmN0aW9uIG5hbWUg
-YW5kIG9wZW4gcGFyZW50aGVzaXMgJygnCiMyMzogRklMRTogYXVkaW8vYXVkaW9fdGVtcGxhdGUu
-aDoyMTE6CisgICAgICAgIGdsdWUgKGF1ZGlvX3BjbV9od19mcmVlX3Jlc291cmNlc18gLCBUWVBF
-KSAoaHcpOwoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAzMiBsaW5lcyBjaGVja2VkCgpQ
-YXRjaCAyLzYgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRo
-ZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFp
-bmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjMvNiBDaGVja2luZyBjb21taXQg
-NWQ4NTQ5Y2RiNmI0IChhdWRpbzogZm9vKiBiYXIiIHNob3VsZCBiZSAiZm9vICpiYXIiLikKNC82
-IENoZWNraW5nIGNvbW1pdCA1MWNkMWU3MzhhMWMgKGF1ZGlvOiBGaXggbGluZXMgb3ZlciA5MCBj
-aGFyYWN0ZXJzKQo1LzYgQ2hlY2tpbmcgY29tbWl0IDhlZDA4NTM2OTkzZCAoYXVkaW86IERvbid0
-IHVzZSAnIycgZmxhZyBvZiBwcmludGYgZm9ybWF0ICgnJSMnKSBpbikKNi82IENoZWNraW5nIGNv
-bW1pdCA4ZjM1YTkyZTZhYTYgKGF1ZGlvOiBTdXNwZWN0IGNvZGUgaW5kZW50IGZvciBjb25kaXRp
-b25hbCBzdGF0ZW1lbnRzKQo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQg
-d2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hl
-dy5vcmcvbG9ncy8yMDIxMDExNDA4MTA1OS4xOTYzMi0xLXpoYW5naGFuNjRAaHVhd2VpLmNvbS90
-ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
-bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQg
-eW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+On 12/22/20 9:23 AM, Zhang Han wrote:
+> Code indent use spaces instead of tabs.
+> 
+> Signed-off-by: Zhang Han <zhanghan64@huawei.com>
+> ---
+>  net/tap-linux.h | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+
+FWIW typo "spaces" in subject (no need to repost).
+
 
