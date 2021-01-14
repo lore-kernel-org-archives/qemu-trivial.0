@@ -1,42 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzxyR-0004ZB-KF
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 03:27:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35970)
+	id 1kzyBU-0008Je-1V
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 03:40:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1kzxyP-0004Sx-0v; Thu, 14 Jan 2021 03:27:17 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2589)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kzyBS-0008J6-Rf; Thu, 14 Jan 2021 03:40:46 -0500
+Resent-Date: Thu, 14 Jan 2021 03:40:46 -0500
+Resent-Message-Id: <E1kzyBS-0008J6-Rf@lists.gnu.org>
+Received: from sender4-of-o52.zoho.com ([136.143.188.52]:21205)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1kzxyI-0006bu-Sc; Thu, 14 Jan 2021 03:27:16 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DGcpb215Mzj6R8;
- Thu, 14 Jan 2021 16:26:15 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.498.0; Thu, 14 Jan 2021
- 16:26:57 +0800
-From: Zhang Han <zhanghan64@huawei.com>
-To: <kraxel@redhat.com>
-CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
- <zhanghan64@huawei.com>
-Subject: [PATCH 4/6] audio: Fix lines over 90 characters
-Date: Thu, 14 Jan 2021 16:10:57 +0800
-Message-ID: <20210114081059.19632-5-zhanghan64@huawei.com>
-X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kzyBQ-00034h-0o; Thu, 14 Jan 2021 03:40:46 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1610613628; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=TV6oTz7cDRPyY+adSfeufuYyLaTdfKY3JIrI5bhIIWL9lwGwsAU74LMg4Qyooj1JFbCNO9Sc2t+r2QEqGc1sEVrbVlsirFZc+mG8zzkmbSq7c8guDyf2+xjf1KgspY98Korq7sZZ6U9ikSaN+o9edG+nEHw39hrekvnt59xz44k=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1610613628;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=lX/1taTEjCey71Part5Ei/mVBHjbpS61rdTcAMa0GPc=; 
+ b=i37KLSnUo2PVVaXMgvnmltfTNj6HDSxg0Hm8fQLrzCvoaLcC9PuWh7pHRN6XOWPS1wLtONwK6wK3QhzcYwI79QYqu5J3VScFpCHIhdYn+VyculTiUg8l/jH9YXLQeL7pcXVev/xn6XHgd8JjnzyA2WSlIV0EJwoFXrhl+5I7lG0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1610613626046946.520628145836;
+ Thu, 14 Jan 2021 00:40:26 -0800 (PST)
 In-Reply-To: <20210114081059.19632-1-zhanghan64@huawei.com>
-References: <20210114081059.19632-1-zhanghan64@huawei.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 0/6] Fix some style problems in audio
+Message-ID: <161061362461.25322.14663542493131765720@73fb1a5943b8>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=zhanghan64@huawei.com;
- helo=szxga06-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: zhanghan64@huawei.com
+Cc: kraxel@redhat.com, hunongda@huawei.com, zhang.zhanghailiang@huawei.com,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org, alex.chen@huawei.com,
+ zhanghan64@huawei.com
+Date: Thu, 14 Jan 2021 00:40:26 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.52; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o52.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -51,115 +61,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Jan 2021 08:27:17 -0000
+X-List-Received-Date: Thu, 14 Jan 2021 08:40:47 -0000
 
-Fix the line width of code.
-
-Signed-off-by: Zhang Han <zhanghan64@huawei.com>
----
- audio/dsoundaudio.c | 37 +++++++++++++++++++++++++++----------
- 1 file changed, 27 insertions(+), 10 deletions(-)
-
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index 38ae2471f6..1891a38bee 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -89,7 +89,9 @@ static void dsound_log_hresult (HRESULT hr)
- #endif
- #ifdef DSERR_ALLOCATED
-     case DSERR_ALLOCATED:
--        str = "The request failed because resources, such as a priority level, were already in use by another caller";
-+        str = "The request failed because resources, "
-+              "such as a priority level, were already in use "
-+              "by another caller";
-         break;
- #endif
- #ifdef DSERR_ALREADYINITIALIZED
-@@ -104,7 +106,8 @@ static void dsound_log_hresult (HRESULT hr)
- #endif
- #ifdef DSERR_BADSENDBUFFERGUID
-     case DSERR_BADSENDBUFFERGUID:
--        str = "The GUID specified in an audiopath file does not match a valid mix-in buffer";
-+        str = "The GUID specified in an audiopath file "
-+              "does not match a valid mix-in buffer";
-         break;
- #endif
- #ifdef DSERR_BUFFERLOST
-@@ -114,22 +117,31 @@ static void dsound_log_hresult (HRESULT hr)
- #endif
- #ifdef DSERR_BUFFERTOOSMALL
-     case DSERR_BUFFERTOOSMALL:
--        str = "The buffer size is not great enough to enable effects processing";
-+        str = "The buffer size is not great enough to "
-+              "enable effects processing";
-         break;
- #endif
- #ifdef DSERR_CONTROLUNAVAIL
-     case DSERR_CONTROLUNAVAIL:
--        str = "The buffer control (volume, pan, and so on) requested by the caller is not available. Controls must be specified when the buffer is created, using the dwFlags member of DSBUFFERDESC";
-+        str = "The buffer control (volume, pan, and so on) "
-+              "requested by the caller is not available. "
-+              "Controls must be specified when the buffer is created, "
-+              "using the dwFlags member of DSBUFFERDESC";
-         break;
- #endif
- #ifdef DSERR_DS8_REQUIRED
-     case DSERR_DS8_REQUIRED:
--        str = "A DirectSound object of class CLSID_DirectSound8 or later is required for the requested functionality. For more information, see IDirectSound8 Interface";
-+        str = "A DirectSound object of class CLSID_DirectSound8 or later "
-+              "is required for the requested functionality. "
-+              "For more information, see IDirectSound8 Interface";
-         break;
- #endif
- #ifdef DSERR_FXUNAVAILABLE
-     case DSERR_FXUNAVAILABLE:
--        str = "The effects requested could not be found on the system, or they are in the wrong order or in the wrong location; for example, an effect expected in hardware was found in software";
-+        str = "The effects requested could not be found on the system, "
-+              "or they are in the wrong order or in the wrong location; "
-+              "for example, an effect expected in hardware "
-+              "was found in software";
-         break;
- #endif
- #ifdef DSERR_GENERIC
-@@ -154,7 +166,8 @@ static void dsound_log_hresult (HRESULT hr)
- #endif
- #ifdef DSERR_NODRIVER
-     case DSERR_NODRIVER:
--        str = "No sound driver is available for use, or the given GUID is not a valid DirectSound device ID";
-+        str = "No sound driver is available for use, "
-+              "or the given GUID is not a valid DirectSound device ID";
-         break;
- #endif
- #ifdef DSERR_NOINTERFACE
-@@ -169,12 +182,14 @@ static void dsound_log_hresult (HRESULT hr)
- #endif
- #ifdef DSERR_OTHERAPPHASPRIO
-     case DSERR_OTHERAPPHASPRIO:
--        str = "Another application has a higher priority level, preventing this call from succeeding";
-+        str = "Another application has a higher priority level, "
-+              "preventing this call from succeeding";
-         break;
- #endif
- #ifdef DSERR_OUTOFMEMORY
-     case DSERR_OUTOFMEMORY:
--        str = "The DirectSound subsystem could not allocate sufficient memory to complete the caller's request";
-+        str = "The DirectSound subsystem could not allocate "
-+               "sufficient memory to complete the caller's request";
-         break;
- #endif
- #ifdef DSERR_PRIOLEVELNEEDED
-@@ -189,7 +204,9 @@ static void dsound_log_hresult (HRESULT hr)
- #endif
- #ifdef DSERR_UNINITIALIZED
-     case DSERR_UNINITIALIZED:
--        str = "The Initialize method has not been called or has not been called successfully before other methods were called";
-+        str = "The Initialize method has not been called "
-+              "or has not been called successfully "
-+              "before other methods were called";
-         break;
- #endif
- #ifdef DSERR_UNSUPPORTED
--- 
-2.29.1.59.gf9b6481aed
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDExNDA4MTA1OS4xOTYz
+Mi0xLXpoYW5naGFuNjRAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBo
+YXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3Jl
+IGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMTE0MDgxMDU5LjE5
+NjMyLTEtemhhbmdoYW42NEBodWF3ZWkuY29tClN1YmplY3Q6IFtQQVRDSCAwLzZdIEZpeCBzb21l
+IHN0eWxlIHByb2JsZW1zIGluIGF1ZGlvCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jp
+bi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZp
+ZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
+bWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3Nj
+cmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5E
+ID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApG
+cm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10g
+ICAgICAgICBwYXRjaGV3LzIwMjEwMTE0MDgxMDU5LjE5NjMyLTEtemhhbmdoYW42NEBodWF3ZWku
+Y29tIC0+IHBhdGNoZXcvMjAyMTAxMTQwODEwNTkuMTk2MzItMS16aGFuZ2hhbjY0QGh1YXdlaS5j
+b20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo4ZjM1YTkyIGF1ZGlvOiBTdXNwZWN0
+IGNvZGUgaW5kZW50IGZvciBjb25kaXRpb25hbCBzdGF0ZW1lbnRzCjhlZDA4NTMgYXVkaW86IERv
+bid0IHVzZSAnIycgZmxhZyBvZiBwcmludGYgZm9ybWF0ICgnJSMnKSBpbgo1MWNkMWU3IGF1ZGlv
+OiBGaXggbGluZXMgb3ZlciA5MCBjaGFyYWN0ZXJzCjVkODU0OWMgYXVkaW86IGZvbyogYmFyIiBz
+aG91bGQgYmUgImZvbyAqYmFyIi4KZDFmZjgyYyBhdWRpbzogQWRkIHNwYWNlcyBhcm91bmQgb3Bl
+cmF0b3IvZGVsZXRlIHJlZHVuZGFudCBzcGFjZXMKZmQxNWZlMiBhdWRpbzogQWRkIGJyYWNlcyBm
+b3Igc3RhdGVtZW50cy9maXggYnJhY2VzJyBwb3NpdGlvbgoKPT09IE9VVFBVVCBCRUdJTiA9PT0K
+MS82IENoZWNraW5nIGNvbW1pdCBmZDE1ZmUyZDhjN2MgKGF1ZGlvOiBBZGQgYnJhY2VzIGZvciBz
+dGF0ZW1lbnRzL2ZpeCBicmFjZXMnIHBvc2l0aW9uKQoyLzYgQ2hlY2tpbmcgY29tbWl0IGQxZmY4
+MmMyNjY1YSAoYXVkaW86IEFkZCBzcGFjZXMgYXJvdW5kIG9wZXJhdG9yL2RlbGV0ZSByZWR1bmRh
+bnQgc3BhY2VzKQpFUlJPUjogc3BhY2UgcHJvaGliaXRlZCBiZXR3ZWVuIGZ1bmN0aW9uIG5hbWUg
+YW5kIG9wZW4gcGFyZW50aGVzaXMgJygnCiMyMzogRklMRTogYXVkaW8vYXVkaW9fdGVtcGxhdGUu
+aDoyMTE6CisgICAgICAgIGdsdWUgKGF1ZGlvX3BjbV9od19mcmVlX3Jlc291cmNlc18gLCBUWVBF
+KSAoaHcpOwoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAzMiBsaW5lcyBjaGVja2VkCgpQ
+YXRjaCAyLzYgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRo
+ZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFp
+bmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjMvNiBDaGVja2luZyBjb21taXQg
+NWQ4NTQ5Y2RiNmI0IChhdWRpbzogZm9vKiBiYXIiIHNob3VsZCBiZSAiZm9vICpiYXIiLikKNC82
+IENoZWNraW5nIGNvbW1pdCA1MWNkMWU3MzhhMWMgKGF1ZGlvOiBGaXggbGluZXMgb3ZlciA5MCBj
+aGFyYWN0ZXJzKQo1LzYgQ2hlY2tpbmcgY29tbWl0IDhlZDA4NTM2OTkzZCAoYXVkaW86IERvbid0
+IHVzZSAnIycgZmxhZyBvZiBwcmludGYgZm9ybWF0ICgnJSMnKSBpbikKNi82IENoZWNraW5nIGNv
+bW1pdCA4ZjM1YTkyZTZhYTYgKGF1ZGlvOiBTdXNwZWN0IGNvZGUgaW5kZW50IGZvciBjb25kaXRp
+b25hbCBzdGF0ZW1lbnRzKQo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQg
+d2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hl
+dy5vcmcvbG9ncy8yMDIxMDExNDA4MTA1OS4xOTYzMi0xLXpoYW5naGFuNjRAaHVhd2VpLmNvbS90
+ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
+bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQg
+eW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 
