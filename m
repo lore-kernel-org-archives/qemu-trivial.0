@@ -1,67 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l0Agx-00084T-5x
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 17:02:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50634)
+	id 1l0BFu-00047b-RI
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 17:38:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1l0Agv-00083W-As
- for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 17:02:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:50068)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1l0Agr-0006i3-9i
- for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 17:02:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610661719;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MWbvcMqKvDq1K2nxaaiJPUZSN5GVEYvGsXMyiY0q5EE=;
- b=fkgYBmywJv9dnukFrLT77LXRaVQXanU9iLPuWsQeQS0/4Iv7rRqfvchrFHiwXOusMgqXw8
- 34H7+k2VOwOO9IUVE+qROBBvSYulnJB56FezhusUYQsMdc6L1l/0jqkQduu1Ksx676oDiA
- T1xAbVqMUa3568h73GNm8vY6k5n32Pc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-56-WeBh4f3HO6yqxVcUpEpjyw-1; Thu, 14 Jan 2021 17:01:55 -0500
-X-MC-Unique: WeBh4f3HO6yqxVcUpEpjyw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B33E107ACF7;
- Thu, 14 Jan 2021 22:01:54 +0000 (UTC)
-Received: from [10.10.120.151] (ovpn-120-151.rdu2.redhat.com [10.10.120.151])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B1B1A63BA7;
- Thu, 14 Jan 2021 22:01:53 +0000 (UTC)
-Subject: Re: [PATCH v2] osdep.h: Remove <sys/signal.h> include
-To: Michael Forney <mforney@mforney.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>
-References: <20201027003848.10920-1-mforney@mforney.org>
- <20210113215600.16100-1-mforney@mforney.org>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <35abc8a5-b463-a7f0-95a1-b6ab7fd35522@redhat.com>
-Date: Thu, 14 Jan 2021 17:01:53 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <mforney@mforney.org>)
+ id 1l0BFt-00046y-Ca
+ for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 17:38:13 -0500
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:34174)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mforney@mforney.org>)
+ id 1l0BFr-0002EO-9E
+ for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 17:38:13 -0500
+Received: by mail-pg1-x532.google.com with SMTP id i5so4769720pgo.1
+ for <qemu-trivial@nongnu.org>; Thu, 14 Jan 2021 14:38:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mforney-org.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=IqgaHUk5U7mtZ3Pv6go/Z6K4kDupzt6qMv35bF1pAi4=;
+ b=ItzAJBNEqh7mxYTg3EmuH915g75jXUxwWx8YZ4Wn9NE10i2E19ZCGU3QfNW6VO0wKf
+ 6GPCkP9uEGulRxxI+kBeGWAhG7bDGcHn5JA0Rt0Q/LowyJHigXyrbt29gMaJBkc3kreo
+ 32eXwMIvSNoR6W8A7Rule8SN6/RPnFYEc5PjEVlJ3DB0Eea7IRAKxe5jzUrg34XDJqhd
+ 0uil7NpolOLdS7dGLTghNlHsch/kWgpps65GbsHGJH9HMMCzFJ0WogKSd7Wkrn5o2hnp
+ Ye5QQ/XR8khXyLIiko9wK8WJMldWd+TD55oRKhOF8mpR7Ec5cFDcuIQ8ru+QFtg5SsVd
+ sYOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=IqgaHUk5U7mtZ3Pv6go/Z6K4kDupzt6qMv35bF1pAi4=;
+ b=ugXSKpbRMSDt4g9nnMCrcMpawv56lHwazAdoa0B5ns2Zhe9HildWV1SParNCu1WPMi
+ m52VtiMyL79V1q7MUTEFRpr7etx2GRm3OEFzqCy6xWyUQQZo0Fby7ZYwz8MJv9kX9/dy
+ kNOhGfusIiWm2JpZSHfhSyWloHAx1SGnTtynSFi2/7mkQY5nIe3HXQJ/dzwO4jjc8r6G
+ UYTMtJQkOHTsyz8zG2Goyxk5ojUwbFESQ1B//Wr1SbiU/1u3jRJivLjAMOshDM6alZO3
+ rBTwOR9+CELeJT/052PboSwKX9A+/DLxbgsvkhq+zHIiCi8jvAzpnWe5KfS4zjMl2S2r
+ MXww==
+X-Gm-Message-State: AOAM530laiePQ02ahoVaNIwDncrjSn/GoUn1Qmy8kk8n98YaMK586hbG
+ fRh7U9STB3CpqN8o7JUU6IT8kQ==
+X-Google-Smtp-Source: ABdhPJxdAOfOfpWoyvPTeqah34NTW87d7X+UV/kQb95J3DzXiWtucHxo9lpvBgeKSr055H0Z7ehIiw==
+X-Received: by 2002:a62:1ad3:0:b029:19d:cc02:5d07 with SMTP id
+ a202-20020a621ad30000b029019dcc025d07mr9358904pfa.70.1610663888442; 
+ Thu, 14 Jan 2021 14:38:08 -0800 (PST)
+Received: from localhost ([2601:647:5180:4570:c90:56ff:fe92:3a06])
+ by smtp.gmail.com with ESMTPSA id u12sm6140344pfh.98.2021.01.14.14.38.07
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 14 Jan 2021 14:38:07 -0800 (PST)
+From: Michael Forney <mforney@mforney.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH v2] linux-user: Remove obsolete F_SHLCK and F_EXLCK translation
+Date: Thu, 14 Jan 2021 14:36:02 -0800
+Message-Id: <20210114223602.9004-1-mforney@mforney.org>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201028032727.31326-1-mforney@mforney.org>
+References: <20201028032727.31326-1-mforney@mforney.org>
 MIME-Version: 1.0
-In-Reply-To: <20210113215600.16100-1-mforney@mforney.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.248,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.237, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::532;
+ envelope-from=mforney@mforney.org; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,35 +76,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Jan 2021 22:02:05 -0000
+X-List-Received-Date: Thu, 14 Jan 2021 22:38:13 -0000
 
-On 1/13/21 4:56 PM, Michael Forney wrote:
-> Prior to 2a4b472c3c, sys/signal.h was only included on OpenBSD
-> (apart from two .c files). The POSIX standard location for this
-> header is just <signal.h> and in fact, OpenBSD's signal.h includes
-> sys/signal.h itself.
-> 
-> Unconditionally including <sys/signal.h> on musl causes warnings
-> for just about every source file:
-> 
->    /usr/include/sys/signal.h:1:2: warning: #warning redirecting incorrect #include <sys/signal.h> to <signal.h> [-Wcpp]
->        1 | #warning redirecting incorrect #include <sys/signal.h> to <signal.h>
->          |  ^~~~~~~
-> 
-> Since there don't seem to be any platforms which require including
-> <sys/signal.h> in addition to <signal.h>, and some platforms like
-> Haiku lack it completely, just remove it.
-> 
-> Tested building on OpenBSD after removing this include.
-> 
-> Signed-off-by: Michael Forney <mforney@mforney.org>
-> Reviewed-by: Eric Blake <eblake@redhat.com>
+These lock types are unsupported by Linux since v2.2[0][1] and
+always return EINVAL (except on SPARC up until v2.6, which just
+warned).
 
-I ran into this myself when testing an Alpine linux build with musl.
+musl libc does not define these constants, so just remove them from
+the translation cases.
 
-Seems to certainly cut down on the number of errors seen when building 
-in Alpine. There's still a few more, but there's definitely less.
+[0] https://github.com/mpe/linux-fullhistory/blob/v2.2.0/fs/locks.c#L322-L324
+[1] https://github.com/mpe/linux-fullhistory/blob/v2.2.0/fs/locks.c#L429-L445
 
-Tested-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Michael Forney <mforney@mforney.org>
+---
+Changes since v1: fixed typo in commit message, resend to qemu-trivial.
+
+ linux-user/alpha/target_fcntl.h | 2 --
+ linux-user/generic/fcntl.h      | 5 -----
+ linux-user/syscall.c            | 2 --
+ 3 files changed, 9 deletions(-)
+
+diff --git a/linux-user/alpha/target_fcntl.h b/linux-user/alpha/target_fcntl.h
+index 2617e73472..e16ed1d415 100644
+--- a/linux-user/alpha/target_fcntl.h
++++ b/linux-user/alpha/target_fcntl.h
+@@ -33,8 +33,6 @@
+ #define TARGET_F_RDLCK         1
+ #define TARGET_F_WRLCK         2
+ #define TARGET_F_UNLCK         8
+-#define TARGET_F_EXLCK         16
+-#define TARGET_F_SHLCK         32
+ 
+ #include "../generic/fcntl.h"
+ #endif
+diff --git a/linux-user/generic/fcntl.h b/linux-user/generic/fcntl.h
+index c85c5b9fed..4568d1f42b 100644
+--- a/linux-user/generic/fcntl.h
++++ b/linux-user/generic/fcntl.h
+@@ -119,11 +119,6 @@ struct target_f_owner_ex {
+ #define TARGET_F_UNLCK         2
+ #endif
+ 
+-#ifndef TARGET_F_EXLCK
+-#define TARGET_F_EXLCK         4
+-#define TARGET_F_SHLCK         8
+-#endif
+-
+ #ifndef TARGET_HAVE_ARCH_STRUCT_FLOCK
+ #ifndef TARGET_ARCH_FLOCK_PAD
+ #define TARGET_ARCH_FLOCK_PAD
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index d182890ff0..f238edf715 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -6664,8 +6664,6 @@ static int target_to_host_fcntl_cmd(int cmd)
+     TRANSTBL_CONVERT(F_RDLCK); \
+     TRANSTBL_CONVERT(F_WRLCK); \
+     TRANSTBL_CONVERT(F_UNLCK); \
+-    TRANSTBL_CONVERT(F_EXLCK); \
+-    TRANSTBL_CONVERT(F_SHLCK); \
+     }
+ 
+ static int target_to_host_flock(int type)
+-- 
+2.30.0
 
 
