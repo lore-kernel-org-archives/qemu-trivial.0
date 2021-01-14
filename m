@@ -1,69 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l08ao-00018n-HW
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 14:47:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46866)
+	id 1l0Agx-00084T-5x
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 17:02:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
- id 1l08ae-00017I-U2; Thu, 14 Jan 2021 14:47:33 -0500
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135]:40565)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
- id 1l08ab-0002aD-Dt; Thu, 14 Jan 2021 14:47:27 -0500
-Received: by mail-lf1-x135.google.com with SMTP id v24so3092908lfr.7;
- Thu, 14 Jan 2021 11:47:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=kDGM78Jc6bQS0W/3FN3uoe75mgu7A+n9LhSjIpG/GDE=;
- b=QnanqiK6KeE/NZ9L7ujtJxE82TOjGQLLXXO0m+xTkRHa3/1CvaNWdSW5UN4ZUzPYlp
- gLObeZZe2Z9iriTbUQy7Y3ckPCsLNt149YGCe8zFxdC1M2bUlUx0kyf/OP0pz15K9hyJ
- UXMzA3QVQNsy3SjePxMaKpwtiEuJupNwwnJt0j6rFcv/XY18CE9CFkvp7NxPm+qULRPH
- SX9SfzfzyFT/mht/7ph7lbnqXv3rfFJtoUwThCALw0sAYyqr+uJc5z0ia7nvStE+guqu
- BLroYipSkVVnIENIPXq0moIPzpZ2lX4tfageJZGWhOmjMJPMRtZibyJiAYHk5YmFdb2h
- Xc8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=kDGM78Jc6bQS0W/3FN3uoe75mgu7A+n9LhSjIpG/GDE=;
- b=AZQ9hZ/RiZYky1ZZyXNYPIjF2SpWuIAIpWQFBai1ExwQM1j+P5gdpgbnL2oq+VvQQs
- xG98zQMydE3OmdFm7kz1vXGbAHx2ZpmVsNtG4wIz++WbB/kwJEJRO2l4DMOkKNT8oumA
- uoO6k/vtlRcAM7ty7LaEAt2nQBe61C0HkOPLF1xFtABV1ImKEkFysD+Vz9/t+aDFU/Qw
- /yyKkAJ1noL80HQMeznh8l8X5d5PiivrQxzMNTE4u0l0KUfqUzsyN2lVYSPmaR+hKESQ
- iNKHSFCgDU3Io+5X9dR10u/CXnRWDzc3F7EcNwhowy27tAIEgoXhPWBXqKoOuS0Fn7J1
- 0AcQ==
-X-Gm-Message-State: AOAM531pittuKRkgbl0iCjkO3xdPFIrlwFG6kMXpu4OVca1V/o+2wYTY
- TA8UqCUBGc2528zyYblimyTOg4D7qCICS3MY
-X-Google-Smtp-Source: ABdhPJy23iQfzKSkhSzAiWGR5ycGo6RhC1TY3bjpA4OSJqrFJe/uguP3OiZh498NShxfluiaNN2bLA==
-X-Received: by 2002:a05:6512:3f3:: with SMTP id
- n19mr3991134lfq.586.1610653642778; 
- Thu, 14 Jan 2021 11:47:22 -0800 (PST)
-Received: from localhost.localdomain ([188.243.183.134])
- by smtp.gmail.com with ESMTPSA id h3sm638733lfl.257.2021.01.14.11.47.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Jan 2021 11:47:22 -0800 (PST)
-From: yaroshchuk2000@gmail.com
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, r.bolshakov@yadro.com,
- Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
-Subject: [PATCH v2] target/i386/hvf: add vmware-cpuid-freq cpu feature
-Date: Thu, 14 Jan 2021 22:47:03 +0300
-Message-Id: <20210114194703.134333-1-yaroshchuk2000@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20210113205221.32308-1-yaroshchuk2000@gmail.com>
-References: <20210113205221.32308-1-yaroshchuk2000@gmail.com>
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1l0Agv-00083W-As
+ for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 17:02:05 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:50068)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1l0Agr-0006i3-9i
+ for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 17:02:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1610661719;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MWbvcMqKvDq1K2nxaaiJPUZSN5GVEYvGsXMyiY0q5EE=;
+ b=fkgYBmywJv9dnukFrLT77LXRaVQXanU9iLPuWsQeQS0/4Iv7rRqfvchrFHiwXOusMgqXw8
+ 34H7+k2VOwOO9IUVE+qROBBvSYulnJB56FezhusUYQsMdc6L1l/0jqkQduu1Ksx676oDiA
+ T1xAbVqMUa3568h73GNm8vY6k5n32Pc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-56-WeBh4f3HO6yqxVcUpEpjyw-1; Thu, 14 Jan 2021 17:01:55 -0500
+X-MC-Unique: WeBh4f3HO6yqxVcUpEpjyw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B33E107ACF7;
+ Thu, 14 Jan 2021 22:01:54 +0000 (UTC)
+Received: from [10.10.120.151] (ovpn-120-151.rdu2.redhat.com [10.10.120.151])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B1B1A63BA7;
+ Thu, 14 Jan 2021 22:01:53 +0000 (UTC)
+Subject: Re: [PATCH v2] osdep.h: Remove <sys/signal.h> include
+To: Michael Forney <mforney@mforney.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>
+References: <20201027003848.10920-1-mforney@mforney.org>
+ <20210113215600.16100-1-mforney@mforney.org>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <35abc8a5-b463-a7f0-95a1-b6ab7fd35522@redhat.com>
+Date: Thu, 14 Jan 2021 17:01:53 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=yaroshchuk2000@gmail.com; helo=mail-lf1-x135.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210113215600.16100-1-mforney@mforney.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.248,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.237, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,160 +74,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Jan 2021 19:47:34 -0000
+X-List-Received-Date: Thu, 14 Jan 2021 22:02:05 -0000
 
-From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
+On 1/13/21 4:56 PM, Michael Forney wrote:
+> Prior to 2a4b472c3c, sys/signal.h was only included on OpenBSD
+> (apart from two .c files). The POSIX standard location for this
+> header is just <signal.h> and in fact, OpenBSD's signal.h includes
+> sys/signal.h itself.
+> 
+> Unconditionally including <sys/signal.h> on musl causes warnings
+> for just about every source file:
+> 
+>    /usr/include/sys/signal.h:1:2: warning: #warning redirecting incorrect #include <sys/signal.h> to <signal.h> [-Wcpp]
+>        1 | #warning redirecting incorrect #include <sys/signal.h> to <signal.h>
+>          |  ^~~~~~~
+> 
+> Since there don't seem to be any platforms which require including
+> <sys/signal.h> in addition to <signal.h>, and some platforms like
+> Haiku lack it completely, just remove it.
+> 
+> Tested building on OpenBSD after removing this include.
+> 
+> Signed-off-by: Michael Forney <mforney@mforney.org>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 
-For `-accel hvf` cpu_x86_cpuid() is wrapped with hvf_cpu_x86_cpuid() to
-add paravirtualization cpuid leaf 0x40000010
-https://lkml.org/lkml/2008/10/1/246
+I ran into this myself when testing an Alpine linux build with musl.
 
-Leaf 0x40000010, Timing Information:
-EAX: (Virtual) TSC frequency in kHz.
-EBX: (Virtual) Bus (local apic timer) frequency in kHz.
-ECX, EDX: RESERVED (Per above, reserved fields are set to zero).
+Seems to certainly cut down on the number of errors seen when building 
+in Alpine. There's still a few more, but there's definitely less.
 
-On macOS TSC and APIC Bus frequencies can be readed by sysctl call with
-names `machdep.tsc.frequency` and `hw.busfrequency`
-
-This options is required for Darwin-XNU guest to be synchronized with
-host
-
-Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
----
- target/i386/hvf/hvf.c | 90 ++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 89 insertions(+), 1 deletion(-)
-
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index ed9356565c..a5daafe202 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -65,6 +65,7 @@
- 
- #include <Hypervisor/hv.h>
- #include <Hypervisor/hv_vmx.h>
-+#include <sys/sysctl.h>
- 
- #include "exec/address-spaces.h"
- #include "hw/i386/apic_internal.h"
-@@ -456,6 +457,48 @@ static void dummy_signal(int sig)
- {
- }
- 
-+static void init_tsc_freq(CPUX86State *env)
-+{
-+    size_t length;
-+    uint64_t tsc_freq;
-+
-+    if (env->tsc_khz != 0) {
-+        return;
-+    }
-+
-+    length = sizeof(uint64_t);
-+    if (sysctlbyname("machdep.tsc.frequency", &tsc_freq, &length, NULL, 0)) {
-+        return;
-+    }
-+    env->tsc_khz = tsc_freq / 1000;  /* Hz to KHz */
-+}
-+
-+static void init_apic_bus_freq(CPUX86State *env)
-+{
-+    size_t length;
-+    uint64_t bus_freq;
-+
-+    if (env->apic_bus_freq != 0) {
-+        return;
-+    }
-+
-+    length = sizeof(uint64_t);
-+    if (sysctlbyname("hw.busfrequency", &bus_freq, &length, NULL, 0)) {
-+        return;
-+    }
-+    env->apic_bus_freq = bus_freq;
-+}
-+
-+static inline bool tsc_is_known(CPUX86State *env)
-+{
-+    return env->tsc_khz != 0;
-+}
-+
-+static inline bool apic_bus_freq_is_known(CPUX86State *env)
-+{
-+    return env->apic_bus_freq != 0;
-+}
-+
- int hvf_init_vcpu(CPUState *cpu)
- {
- 
-@@ -480,6 +523,15 @@ int hvf_init_vcpu(CPUState *cpu)
-     hvf_state->hvf_caps = g_new0(struct hvf_vcpu_caps, 1);
-     env->hvf_mmio_buf = g_new(char, 4096);
- 
-+    if (x86cpu->vmware_cpuid_freq) {
-+        init_tsc_freq(env);
-+        init_apic_bus_freq(env);
-+
-+        if (!tsc_is_known(env) || !apic_bus_freq_is_known(env)) {
-+            error_report("vmware-cpuid-freq: feature couldn't be enabled");
-+        }
-+    }
-+
-     r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
-     cpu->vcpu_dirty = 1;
-     assert_hvf_ok(r);
-@@ -597,6 +649,42 @@ static void hvf_store_events(CPUState *cpu, uint32_t ins_len, uint64_t idtvec_in
-     }
- }
- 
-+static void hvf_cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
-+                              uint32_t *eax, uint32_t *ebx,
-+                              uint32_t *ecx, uint32_t *edx)
-+{
-+    /*
-+     * A wrapper extends cpu_x86_cpuid with 0x40000000 and 0x40000010 leafs
-+     * Provides vmware-cpuid-freq support to hvf
-+     */
-+
-+    uint32_t signature[3];
-+
-+    if (!tsc_is_known(env) || !apic_bus_freq_is_known(env)) {
-+        cpu_x86_cpuid(env, index, count, eax, ebx, ecx, edx);
-+        return;
-+    }
-+
-+    switch (index) {
-+    case 0x40000000:
-+        memcpy(signature, "TCGTCGTCGTCG", 12); /* QEMU Signature */
-+        *eax = 0x40000010;                     /* Max available cpuid leaf */
-+        *ebx = signature[0];
-+        *ecx = signature[1];
-+        *edx = signature[2];
-+        break;
-+    case 0x40000010:
-+        *eax = env->tsc_khz;
-+        *ebx = env->apic_bus_freq / 1000; /* Hz to KHz */
-+        *ecx = 0;
-+        *edx = 0;
-+        break;
-+    default:
-+        cpu_x86_cpuid(env, index, count, eax, ebx, ecx, edx);
-+        break;
-+    }
-+}
-+
- int hvf_vcpu_exec(CPUState *cpu)
- {
-     X86CPU *x86_cpu = X86_CPU(cpu);
-@@ -734,7 +822,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-             uint32_t rcx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RCX);
-             uint32_t rdx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RDX);
- 
--            cpu_x86_cpuid(env, rax, rcx, &rax, &rbx, &rcx, &rdx);
-+            hvf_cpu_x86_cpuid(env, rax, rcx, &rax, &rbx, &rcx, &rdx);
- 
-             wreg(cpu->hvf_fd, HV_X86_RAX, rax);
-             wreg(cpu->hvf_fd, HV_X86_RBX, rbx);
--- 
-2.28.0
+Tested-by: John Snow <jsnow@redhat.com>
 
 
