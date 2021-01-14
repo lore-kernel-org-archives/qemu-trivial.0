@@ -1,85 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l00uo-0000lO-Ft
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 06:35:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52136)
+	id 1l08ao-00018n-HW
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 14:47:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46866)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l00un-0000is-Hh
- for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 06:35:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47650)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l00um-0001SM-4x
- for qemu-trivial@nongnu.org; Thu, 14 Jan 2021 06:35:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610624143;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+Dnv8RgGDyFS/r9W+oIiqDJvcKmXh15wK8wW7gxH3nM=;
- b=BXjCYK9KobpCvOTKxHZIxmoF1KOe/HlDL5hwKrS9muvalYoKFnmpbSOFKDVT5UPMBLE6NW
- uEcFWbepV5F2h7qGiqnihaHERVsxK+0Hi0cmOahbBNxmv17im2e53BL3Y7pTr7yLc1q7QK
- 4sXq57GhUQWtry55eisO8CDGXXF4UZM=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-264-mORI41boOLODn47Q-9r-DA-1; Thu, 14 Jan 2021 06:35:41 -0500
-X-MC-Unique: mORI41boOLODn47Q-9r-DA-1
-Received: by mail-wr1-f70.google.com with SMTP id i4so2476821wrm.21
- for <qemu-trivial@nongnu.org>; Thu, 14 Jan 2021 03:35:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
+ id 1l08ae-00017I-U2; Thu, 14 Jan 2021 14:47:33 -0500
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135]:40565)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
+ id 1l08ab-0002aD-Dt; Thu, 14 Jan 2021 14:47:27 -0500
+Received: by mail-lf1-x135.google.com with SMTP id v24so3092908lfr.7;
+ Thu, 14 Jan 2021 11:47:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=kDGM78Jc6bQS0W/3FN3uoe75mgu7A+n9LhSjIpG/GDE=;
+ b=QnanqiK6KeE/NZ9L7ujtJxE82TOjGQLLXXO0m+xTkRHa3/1CvaNWdSW5UN4ZUzPYlp
+ gLObeZZe2Z9iriTbUQy7Y3ckPCsLNt149YGCe8zFxdC1M2bUlUx0kyf/OP0pz15K9hyJ
+ UXMzA3QVQNsy3SjePxMaKpwtiEuJupNwwnJt0j6rFcv/XY18CE9CFkvp7NxPm+qULRPH
+ SX9SfzfzyFT/mht/7ph7lbnqXv3rfFJtoUwThCALw0sAYyqr+uJc5z0ia7nvStE+guqu
+ BLroYipSkVVnIENIPXq0moIPzpZ2lX4tfageJZGWhOmjMJPMRtZibyJiAYHk5YmFdb2h
+ Xc8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=+Dnv8RgGDyFS/r9W+oIiqDJvcKmXh15wK8wW7gxH3nM=;
- b=kI+HKbtWYAj0GKTAz6L0pJT3qwHEWX4nThty24GsvbYUPSWkrCBMW/ed5HP3ZKdTBN
- eUmIiIbyOvcuQm2X+JUUOl0mpsEvAtMZRs/z0CHszNb+M0mASNrsydjFsScWDU0iP6AU
- 8bU9ssWoQuqMa/S0IsZcBJnuDnSeq5dzRUXekmDmgW5wP+/Vvpo+H/X2qewNQM+oj2ur
- uUecj9Yc89Rct+7pWzcblDfeIiDgOjI0CLThhBKA2X0TZ980ZbbCxdP4YUHFTMY898gO
- XtMPLm/sz13UNkrDWzGNoVGmaHmg9neO4WesvGDwd91USkbX7SA6yB0dFbb8j9sQW/MI
- yNVA==
-X-Gm-Message-State: AOAM5316GcICVofXe5ljoNtbqgG5RSFf4Qxf0plG9zE53dV5sBoNxfjf
- /BwxbEIpp96/M+IA2X/n6tkuc7pf8D4t+YM6Lrfm4SS8GJQ400xweiy5I9xE686hQeWyuL8WzeI
- B8UYmAKEgayU0UrF3hA==
-X-Received: by 2002:a1c:4b10:: with SMTP id y16mr3598365wma.73.1610624140416; 
- Thu, 14 Jan 2021 03:35:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw1EpvQ0pGVtA7VZcLBY+WujKGrQBtb1G9oq0rLbqhXIrx5g8my9A0WpBJi2BLPZ2IOi9MCwg==
-X-Received: by 2002:a1c:4b10:: with SMTP id y16mr3598345wma.73.1610624140182; 
- Thu, 14 Jan 2021 03:35:40 -0800 (PST)
-Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id p8sm9693282wru.50.2021.01.14.03.35.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 14 Jan 2021 03:35:39 -0800 (PST)
-Subject: Re: [PATCH 7/9] net: Remove assignment in if condition
-To: Zhang Han <zhanghan64@huawei.com>, jasowang@redhat.com
-Cc: alex.chen@huawei.com, hunongda@huawei.com, qemu-trivial@nongnu.org,
- hang.zhanghailiang@huawei.com, qemu-devel@nongnu.org
-References: <20201222082340.67405-1-zhanghan64@huawei.com>
- <20201222082340.67405-8-zhanghan64@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <5426b47e-cd7c-de59-bd70-b74c69ba4904@redhat.com>
-Date: Thu, 14 Jan 2021 12:35:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=kDGM78Jc6bQS0W/3FN3uoe75mgu7A+n9LhSjIpG/GDE=;
+ b=AZQ9hZ/RiZYky1ZZyXNYPIjF2SpWuIAIpWQFBai1ExwQM1j+P5gdpgbnL2oq+VvQQs
+ xG98zQMydE3OmdFm7kz1vXGbAHx2ZpmVsNtG4wIz++WbB/kwJEJRO2l4DMOkKNT8oumA
+ uoO6k/vtlRcAM7ty7LaEAt2nQBe61C0HkOPLF1xFtABV1ImKEkFysD+Vz9/t+aDFU/Qw
+ /yyKkAJ1noL80HQMeznh8l8X5d5PiivrQxzMNTE4u0l0KUfqUzsyN2lVYSPmaR+hKESQ
+ iNKHSFCgDU3Io+5X9dR10u/CXnRWDzc3F7EcNwhowy27tAIEgoXhPWBXqKoOuS0Fn7J1
+ 0AcQ==
+X-Gm-Message-State: AOAM531pittuKRkgbl0iCjkO3xdPFIrlwFG6kMXpu4OVca1V/o+2wYTY
+ TA8UqCUBGc2528zyYblimyTOg4D7qCICS3MY
+X-Google-Smtp-Source: ABdhPJy23iQfzKSkhSzAiWGR5ycGo6RhC1TY3bjpA4OSJqrFJe/uguP3OiZh498NShxfluiaNN2bLA==
+X-Received: by 2002:a05:6512:3f3:: with SMTP id
+ n19mr3991134lfq.586.1610653642778; 
+ Thu, 14 Jan 2021 11:47:22 -0800 (PST)
+Received: from localhost.localdomain ([188.243.183.134])
+ by smtp.gmail.com with ESMTPSA id h3sm638733lfl.257.2021.01.14.11.47.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Jan 2021 11:47:22 -0800 (PST)
+From: yaroshchuk2000@gmail.com
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, r.bolshakov@yadro.com,
+ Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
+Subject: [PATCH v2] target/i386/hvf: add vmware-cpuid-freq cpu feature
+Date: Thu, 14 Jan 2021 22:47:03 +0300
+Message-Id: <20210114194703.134333-1-yaroshchuk2000@gmail.com>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20210113205221.32308-1-yaroshchuk2000@gmail.com>
+References: <20210113205221.32308-1-yaroshchuk2000@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201222082340.67405-8-zhanghan64@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=yaroshchuk2000@gmail.com; helo=mail-lf1-x135.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -92,17 +76,160 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Jan 2021 11:35:45 -0000
+X-List-Received-Date: Thu, 14 Jan 2021 19:47:34 -0000
 
-On 12/22/20 9:23 AM, Zhang Han wrote:
-> Put the assignment before the if condition
-> 
-> Signed-off-by: Zhang Han <zhanghan64@huawei.com>
-> ---
->  net/tap-bsd.c     | 3 ++-
->  net/tap-solaris.c | 9 ++++++---
->  2 files changed, 8 insertions(+), 4 deletions(-)
+From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+For `-accel hvf` cpu_x86_cpuid() is wrapped with hvf_cpu_x86_cpuid() to
+add paravirtualization cpuid leaf 0x40000010
+https://lkml.org/lkml/2008/10/1/246
+
+Leaf 0x40000010, Timing Information:
+EAX: (Virtual) TSC frequency in kHz.
+EBX: (Virtual) Bus (local apic timer) frequency in kHz.
+ECX, EDX: RESERVED (Per above, reserved fields are set to zero).
+
+On macOS TSC and APIC Bus frequencies can be readed by sysctl call with
+names `machdep.tsc.frequency` and `hw.busfrequency`
+
+This options is required for Darwin-XNU guest to be synchronized with
+host
+
+Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
+---
+ target/i386/hvf/hvf.c | 90 ++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 89 insertions(+), 1 deletion(-)
+
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index ed9356565c..a5daafe202 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -65,6 +65,7 @@
+ 
+ #include <Hypervisor/hv.h>
+ #include <Hypervisor/hv_vmx.h>
++#include <sys/sysctl.h>
+ 
+ #include "exec/address-spaces.h"
+ #include "hw/i386/apic_internal.h"
+@@ -456,6 +457,48 @@ static void dummy_signal(int sig)
+ {
+ }
+ 
++static void init_tsc_freq(CPUX86State *env)
++{
++    size_t length;
++    uint64_t tsc_freq;
++
++    if (env->tsc_khz != 0) {
++        return;
++    }
++
++    length = sizeof(uint64_t);
++    if (sysctlbyname("machdep.tsc.frequency", &tsc_freq, &length, NULL, 0)) {
++        return;
++    }
++    env->tsc_khz = tsc_freq / 1000;  /* Hz to KHz */
++}
++
++static void init_apic_bus_freq(CPUX86State *env)
++{
++    size_t length;
++    uint64_t bus_freq;
++
++    if (env->apic_bus_freq != 0) {
++        return;
++    }
++
++    length = sizeof(uint64_t);
++    if (sysctlbyname("hw.busfrequency", &bus_freq, &length, NULL, 0)) {
++        return;
++    }
++    env->apic_bus_freq = bus_freq;
++}
++
++static inline bool tsc_is_known(CPUX86State *env)
++{
++    return env->tsc_khz != 0;
++}
++
++static inline bool apic_bus_freq_is_known(CPUX86State *env)
++{
++    return env->apic_bus_freq != 0;
++}
++
+ int hvf_init_vcpu(CPUState *cpu)
+ {
+ 
+@@ -480,6 +523,15 @@ int hvf_init_vcpu(CPUState *cpu)
+     hvf_state->hvf_caps = g_new0(struct hvf_vcpu_caps, 1);
+     env->hvf_mmio_buf = g_new(char, 4096);
+ 
++    if (x86cpu->vmware_cpuid_freq) {
++        init_tsc_freq(env);
++        init_apic_bus_freq(env);
++
++        if (!tsc_is_known(env) || !apic_bus_freq_is_known(env)) {
++            error_report("vmware-cpuid-freq: feature couldn't be enabled");
++        }
++    }
++
+     r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
+     cpu->vcpu_dirty = 1;
+     assert_hvf_ok(r);
+@@ -597,6 +649,42 @@ static void hvf_store_events(CPUState *cpu, uint32_t ins_len, uint64_t idtvec_in
+     }
+ }
+ 
++static void hvf_cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
++                              uint32_t *eax, uint32_t *ebx,
++                              uint32_t *ecx, uint32_t *edx)
++{
++    /*
++     * A wrapper extends cpu_x86_cpuid with 0x40000000 and 0x40000010 leafs
++     * Provides vmware-cpuid-freq support to hvf
++     */
++
++    uint32_t signature[3];
++
++    if (!tsc_is_known(env) || !apic_bus_freq_is_known(env)) {
++        cpu_x86_cpuid(env, index, count, eax, ebx, ecx, edx);
++        return;
++    }
++
++    switch (index) {
++    case 0x40000000:
++        memcpy(signature, "TCGTCGTCGTCG", 12); /* QEMU Signature */
++        *eax = 0x40000010;                     /* Max available cpuid leaf */
++        *ebx = signature[0];
++        *ecx = signature[1];
++        *edx = signature[2];
++        break;
++    case 0x40000010:
++        *eax = env->tsc_khz;
++        *ebx = env->apic_bus_freq / 1000; /* Hz to KHz */
++        *ecx = 0;
++        *edx = 0;
++        break;
++    default:
++        cpu_x86_cpuid(env, index, count, eax, ebx, ecx, edx);
++        break;
++    }
++}
++
+ int hvf_vcpu_exec(CPUState *cpu)
+ {
+     X86CPU *x86_cpu = X86_CPU(cpu);
+@@ -734,7 +822,7 @@ int hvf_vcpu_exec(CPUState *cpu)
+             uint32_t rcx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RCX);
+             uint32_t rdx = (uint32_t)rreg(cpu->hvf_fd, HV_X86_RDX);
+ 
+-            cpu_x86_cpuid(env, rax, rcx, &rax, &rbx, &rcx, &rdx);
++            hvf_cpu_x86_cpuid(env, rax, rcx, &rax, &rbx, &rcx, &rdx);
+ 
+             wreg(cpu->hvf_fd, HV_X86_RAX, rax);
+             wreg(cpu->hvf_fd, HV_X86_RBX, rbx);
+-- 
+2.28.0
 
 
