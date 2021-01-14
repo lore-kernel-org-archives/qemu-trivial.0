@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzxyM-0004NQ-Jt
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 03:27:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35862)
+	id 1kzxyO-0004Qf-3j
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 03:27:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35912)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1kzxyK-0004IU-0V; Thu, 14 Jan 2021 03:27:12 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2591)
+ id 1kzxyL-0004Lr-SO; Thu, 14 Jan 2021 03:27:13 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2588)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1kzxyH-0006bw-9K; Thu, 14 Jan 2021 03:27:11 -0500
+ id 1kzxyK-0006bt-3y; Thu, 14 Jan 2021 03:27:13 -0500
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DGcpb0wgYzj6Qx;
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DGcpb1bppzj6R4;
  Thu, 14 Jan 2021 16:26:15 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.498.0; Thu, 14 Jan 2021
- 16:26:55 +0800
+ 16:26:58 +0800
 From: Zhang Han <zhanghan64@huawei.com>
 To: <kraxel@redhat.com>
 CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
  <zhanghan64@huawei.com>
-Subject: [PATCH 2/6] audio: Add spaces around operator/delete redundant spaces
-Date: Thu, 14 Jan 2021 16:10:55 +0800
-Message-ID: <20210114081059.19632-3-zhanghan64@huawei.com>
+Subject: [PATCH 5/6] audio: Don't use '#' flag of printf format ('%#') in
+Date: Thu, 14 Jan 2021 16:10:58 +0800
+Message-ID: <20210114081059.19632-6-zhanghan64@huawei.com>
 X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
 In-Reply-To: <20210114081059.19632-1-zhanghan64@huawei.com>
 References: <20210114081059.19632-1-zhanghan64@huawei.com>
@@ -51,72 +51,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Jan 2021 08:27:12 -0000
+X-List-Received-Date: Thu, 14 Jan 2021 08:27:14 -0000
 
-Fix problems about spaces:
--operator needs spaces around it, add them.
--somespaces are redundant, remove them.
+Use '0x' prefix instead of '%#'
 
 Signed-off-by: Zhang Han <zhanghan64@huawei.com>
 ---
- audio/audio_template.h | 2 +-
- audio/coreaudio.c      | 2 +-
- audio/dsoundaudio.c    | 2 +-
- audio/jackaudio.c      | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ audio/dsoundaudio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/audio/audio_template.h b/audio/audio_template.h
-index 236db7136b..6d42fa7011 100644
---- a/audio/audio_template.h
-+++ b/audio/audio_template.h
-@@ -208,7 +208,7 @@ static void glue (audio_pcm_hw_gc_, TYPE) (HW **hwp)
-         QLIST_REMOVE (hw, entries);
-         glue (hw->pcm_ops->fini_, TYPE) (hw);
-         glue (s->nb_hw_voices_, TYPE) += 1;
--        glue (audio_pcm_hw_free_resources_ ,TYPE) (hw);
-+        glue (audio_pcm_hw_free_resources_ , TYPE) (hw);
-         g_free (hw);
-         *hwp = NULL;
-     }
-diff --git a/audio/coreaudio.c b/audio/coreaudio.c
-index 408b587126..6ca0d79c1f 100644
---- a/audio/coreaudio.c
-+++ b/audio/coreaudio.c
-@@ -270,7 +270,7 @@ static void coreaudio_logstatus (OSStatus status)
- {
-     const char *str = "BUG";
- 
--    switch(status) {
-+    switch (status) {
-     case kAudioHardwareNoError:
-         str = "kAudioHardwareNoError";
-         break;
 diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index ba201898e1..38ae2471f6 100644
+index 1891a38bee..f7a3351306 100644
 --- a/audio/dsoundaudio.c
 +++ b/audio/dsoundaudio.c
-@@ -133,7 +133,7 @@ static void dsound_log_hresult (HRESULT hr)
+@@ -215,7 +215,7 @@ static void dsound_log_hresult (HRESULT hr)
          break;
  #endif
- #ifdef DSERR_GENERIC
--    case DSERR_GENERIC :
-+    case DSERR_GENERIC:
-         str = "An undetermined error occurred inside the DirectSound subsystem";
-         break;
- #endif
-diff --git a/audio/jackaudio.c b/audio/jackaudio.c
-index 3b7c18443d..821d4060c0 100644
---- a/audio/jackaudio.c
-+++ b/audio/jackaudio.c
-@@ -277,7 +277,7 @@ static int qjack_process(jack_nframes_t nframes, void *arg)
-         if (likely(c->enabled)) {
-             qjack_buffer_read_l(&c->fifo, buffers, nframes);
-         } else {
--            for(int i = 0; i < c->nchannels; ++i) {
-+            for (int i = 0; i < c->nchannels; ++i) {
-                 memset(buffers[i], 0, nframes * sizeof(float));
-             }
-         }
+     default:
+-        AUD_log (AUDIO_CAP, "Reason: Unknown (HRESULT %#lx)\n", hr);
++        AUD_log (AUDIO_CAP, "Reason: Unknown (HRESULT 0x%lx)\n", hr);
+         return;
+     }
+ 
 -- 
 2.29.1.59.gf9b6481aed
 
