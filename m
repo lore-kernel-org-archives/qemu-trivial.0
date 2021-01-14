@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1kzxyP-0004Tx-GX
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 03:27:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35932)
+	id 1kzxyQ-0004X8-Ty
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 03:27:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35966)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1kzxyN-0004PY-Ds; Thu, 14 Jan 2021 03:27:15 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2587)
+ id 1kzxyO-0004SX-QX; Thu, 14 Jan 2021 03:27:16 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2633)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1kzxyI-0006bs-Ka; Thu, 14 Jan 2021 03:27:15 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DGcpb1PQGzj6R0;
- Thu, 14 Jan 2021 16:26:15 +0800 (CST)
+ id 1kzxyM-0006fx-OR; Thu, 14 Jan 2021 03:27:16 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4DGcpS339Qz7VDb;
+ Thu, 14 Jan 2021 16:26:08 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.498.0; Thu, 14 Jan 2021
- 16:26:56 +0800
+ 16:26:59 +0800
 From: Zhang Han <zhanghan64@huawei.com>
 To: <kraxel@redhat.com>
 CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
  <zhanghan64@huawei.com>
-Subject: [PATCH 3/6] audio: foo* bar" should be "foo *bar".
-Date: Thu, 14 Jan 2021 16:10:56 +0800
-Message-ID: <20210114081059.19632-4-zhanghan64@huawei.com>
+Subject: [PATCH 6/6] audio: Suspect code indent for conditional statements
+Date: Thu, 14 Jan 2021 16:10:59 +0800
+Message-ID: <20210114081059.19632-7-zhanghan64@huawei.com>
 X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
 In-Reply-To: <20210114081059.19632-1-zhanghan64@huawei.com>
 References: <20210114081059.19632-1-zhanghan64@huawei.com>
@@ -31,8 +31,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.124.27]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=zhanghan64@huawei.com;
- helo=szxga06-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=zhanghan64@huawei.com;
+ helo=szxga07-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -51,38 +51,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Jan 2021 08:27:16 -0000
+X-List-Received-Date: Thu, 14 Jan 2021 08:27:17 -0000
 
-Transfer "foo* " to "foo *"
+Fix code indent.
 
 Signed-off-by: Zhang Han <zhanghan64@huawei.com>
 ---
- audio/coreaudio.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ audio/paaudio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/audio/coreaudio.c b/audio/coreaudio.c
-index 6ca0d79c1f..b7c02e0e51 100644
---- a/audio/coreaudio.c
-+++ b/audio/coreaudio.c
-@@ -421,12 +421,12 @@ COREAUDIO_WRAPPER_FUNC(write, size_t, (HWVoiceOut *hw, void *buf, size_t size),
- /* callback to feed audiooutput buffer */
- static OSStatus audioDeviceIOProc(
-     AudioDeviceID inDevice,
--    const AudioTimeStamp* inNow,
--    const AudioBufferList* inInputData,
--    const AudioTimeStamp* inInputTime,
--    AudioBufferList* outOutputData,
--    const AudioTimeStamp* inOutputTime,
--    void* hwptr)
-+    const AudioTimeStamp *inNow,
-+    const AudioBufferList *inInputData,
-+    const AudioTimeStamp *inInputTime,
-+    AudioBufferList *outOutputData,
-+    const AudioTimeStamp *inOutputTime,
-+    void *hwptr)
- {
-     UInt32 frameCount, pending_frames;
-     void *out = outOutputData->mBuffers[0].mData;
+diff --git a/audio/paaudio.c b/audio/paaudio.c
+index b052084698..7ea9f637c2 100644
+--- a/audio/paaudio.c
++++ b/audio/paaudio.c
+@@ -437,7 +437,7 @@ static pa_stream *qpa_simple_new (
+     }
+ 
+     if (r < 0) {
+-      goto fail;
++        goto fail;
+     }
+ 
+     pa_threaded_mainloop_unlock(c->mainloop);
 -- 
 2.29.1.59.gf9b6481aed
 
