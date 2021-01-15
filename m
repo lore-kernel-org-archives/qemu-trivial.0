@@ -1,72 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l0Sjb-0000Y2-Mb
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jan 2021 12:18:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39274)
+	id 1l0SpW-0005Yh-0y
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jan 2021 12:24:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40822)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1l0Sja-0000XI-5d
- for qemu-trivial@nongnu.org; Fri, 15 Jan 2021 12:18:02 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:39743)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1l0SpL-0005XA-K2
+ for qemu-trivial@nongnu.org; Fri, 15 Jan 2021 12:24:01 -0500
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129]:38239)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1l0SjS-0000FE-6Q
- for qemu-trivial@nongnu.org; Fri, 15 Jan 2021 12:18:01 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id u14so4047337wmq.4
- for <qemu-trivial@nongnu.org>; Fri, 15 Jan 2021 09:17:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1l0SpI-00028G-Mw
+ for qemu-trivial@nongnu.org; Fri, 15 Jan 2021 12:23:59 -0500
+Received: by mail-lf1-x129.google.com with SMTP id h205so14222274lfd.5
+ for <qemu-trivial@nongnu.org>; Fri, 15 Jan 2021 09:23:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=42mRN6NepMeNgZ7kJJEjfLKx41zcNGB94iUcAdJ8y80=;
- b=RuJsfeN9a2qowmH7tpj3IeX/cI+Ane7TghTA+jv3HhtuPO06Rc3xvJWCy6AkoW+7N+
- jCGNzq5J3ikgHZ9n9krKZ712JJ7YJeqiMvBLWuDu61PpeMPh0VuCZ5yBb6kuZ2B/zpwo
- MHauq/3nKrthuQ1td5bmJHd8DX4X26XJjjObWTzh2ybBT5dYvddABoemNweqUmDxbynL
- Khf93g5XsSJxdtwqSO/8eY0+8fSWmxgcGO/Di+oy9VudCCU9ua/ItFMk15LY7pAm9D8G
- Z40JbdyqUnCFxBiw8xPzFp/4zf1UykTYPmmQ6vFBsTXaTZWb0T0MuY0nikB/Z8nijuk9
- iocA==
+ :cc; bh=nTWCFIx555kNR1BR9spGpBMkFuzsAF0RkFSwD+yTyMU=;
+ b=kY00Nm8L3NWrJe1hogEatH7P3xaAXv+hTSNZssBdUlqFMIRk5YDDMs4OovZ12Oghyr
+ XLNxz//YauhU4t9X8ISTx01y2i1KWAEjeOREkeWULp7dazJu4yWHXisY9ARlX6+fjlTU
+ GpgLZx0KJrkLmvwUlb/JmHo5UbWZsiJ4GIfkrBA9gRgRHTn98Hxbu/TLGELcEz64Xbmh
+ E5+cfcnP72CjdVXzoB//JqYrmD7wSAVL8VRTMmHUGQjhRK2+blWNfAdDXaqhETpsmdQB
+ bLbHB5pgirszeGoJV7I+G75tPtaNzkFkliwkYBKEtH4mq7XNU6bVprz8V+wZF3zgZzOR
+ Hy/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=42mRN6NepMeNgZ7kJJEjfLKx41zcNGB94iUcAdJ8y80=;
- b=VGiIP8ogdkZkJTenFjhZ+y7wQE1AsdPntJpDo0kzbPmqDGJJmvea3iLHVlISDNhxCR
- FGce1SrQZ0HTUTW/ibl6C6RTHWBsfBxmMKGRkF8p/0Z4XTXiW3ky7OrXO/hn3GE3itff
- pwslo5NH3MhI0c3EVVDor/QRQEsvvg26tGKuyLQ2WCL/hKJxqApx1u6Z6adKghLTFKN7
- 0HR3uRJql3EYklt/XoBaHywq3OWBKXvrh6T9WuGPu+9vVDytnzI/lYjP3dpue/BQJCHe
- lMhRPhS2wGE2yuzHjRraPzTbvAQ7i029SPxBD+Hekejs5i4NjiBHEyEAka19eVcB781n
- 06NA==
-X-Gm-Message-State: AOAM531Sfa/iP/X2vyyXUzlYPPOSaeUWdS0c47Kwzgow88O+Vlkn8EDW
- 9lM6HsF0e2wqtweU3/jngg0a+m9XXigQAFibrBLbXw==
-X-Google-Smtp-Source: ABdhPJy3HBp2rw2emmQ6AkHO4LkHQV43rvqkBYuq0y/WkthDMpZRzInChsek8DrmKA6XLZTVSktrpzOEAq+sOWC6v+w=
-X-Received: by 2002:a1c:984a:: with SMTP id a71mr3036881wme.175.1610731068332; 
- Fri, 15 Jan 2021 09:17:48 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=nTWCFIx555kNR1BR9spGpBMkFuzsAF0RkFSwD+yTyMU=;
+ b=nqnUYL821WqUKUKuwGb/wIt/D9UP4vRC3RVJm+wbuMqCKUpgQz5ofIHaYisf7faUKT
+ rTA6KlgqLTWd7OKnaVyk9kgu11xnow8Z28fJ1sNsjXVfg+By7XdYchKIE3AYsnPV5Dvq
+ mwk2Cg3hj3uwWEFmFWEBdgkDzIJEuMzU3CsZuZIVKmM9Z0TI4cxKMMryiZaM0L7cgBf3
+ XmGCZTX2PQc4gIzIlIVoXElfSCDf2aFQXSm+Ejp90FSUKNqN/fkfrr5FTFUHUFVVmmhI
+ HL62yP6TdbsokfSMUsNFDB31c/zKSZKgO8IxYgbb5+x+eGEMG3zXSIC5T3fyuQTUIesY
+ w2bg==
+X-Gm-Message-State: AOAM530S7EQuh+3M/NkYm1YW9Nbtq0HW2qV6cwp9WOxpslJCmSEkP/A7
+ RvJuYG9Psaq4PNH5vsEalQxRdElmvtWAFAPMfCcHsg==
+X-Google-Smtp-Source: ABdhPJwCFOgHBTzfQbasUmmf1Nu9wdk4Sd4bPVHcx16gEkKCTi6dEvdeTURMjFHIBSMd2RFaxmQZ6fDvfyHKjbfLXIM=
+X-Received: by 2002:ac2:59ce:: with SMTP id x14mr6180833lfn.545.1610731433378; 
+ Fri, 15 Jan 2021 09:23:53 -0800 (PST)
 MIME-Version: 1.0
 References: <20210115075634.717909-1-ganqixin@huawei.com>
  <74ba9c97-4d1f-111a-cffe-7aff18ac3f7c@amsat.org>
-In-Reply-To: <74ba9c97-4d1f-111a-cffe-7aff18ac3f7c@amsat.org>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 15 Jan 2021 09:17:35 -0800
-Message-ID: <CAFQmdRa8=O7QLHHFahxoSONw5iNtFZBBo_+A6yq-VJjw5Smc+g@mail.gmail.com>
+ <CAFQmdRa8=O7QLHHFahxoSONw5iNtFZBBo_+A6yq-VJjw5Smc+g@mail.gmail.com>
+In-Reply-To: <CAFQmdRa8=O7QLHHFahxoSONw5iNtFZBBo_+A6yq-VJjw5Smc+g@mail.gmail.com>
+From: Hao Wu <wuhaotsh@google.com>
+Date: Fri, 15 Jan 2021 09:23:41 -0800
+Message-ID: <CAGcCb10nuW72ZyyJxgLumNdQ3w5=1uFj2BkrZvL7Xhfczq-S4Q@mail.gmail.com>
 Subject: Re: [PATCH] qtest/npcm7xx_pwm-test: Fix memleak in pwm_qom_get
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Hao Wu <wuhaotsh@google.com>
-Cc: Gan Qixin <ganqixin@huawei.com>, QEMU Developers <qemu-devel@nongnu.org>,
+To: Havard Skinnemoen <hskinnemoen@google.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Gan Qixin <ganqixin@huawei.com>, QEMU Developers <qemu-devel@nongnu.org>,
  qemu-trivial@nongnu.org, 
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  zhang.zhanghailiang@huawei.com, 
  Tyrone Ting <kfting@nuvoton.com>, Euler Robot <euler.robot@huawei.com>, 
  Chen Qun <kuhn.chenqun@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=hskinnemoen@google.com; helo=mail-wm1-x32b.google.com
+Content-Type: multipart/alternative; boundary="000000000000eace8a05b8f3a273"
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x129.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
 X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,63 +78,172 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jan 2021 17:18:02 -0000
+X-List-Received-Date: Fri, 15 Jan 2021 17:24:05 -0000
 
-+Hao Wu
+--000000000000eace8a05b8f3a273
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jan 15, 2021 at 1:15 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
+On Fri, Jan 15, 2021 at 9:17 AM Havard Skinnemoen <hskinnemoen@google.com>
+wrote:
+
+> +Hao Wu
 >
-> On 1/15/21 8:56 AM, Gan Qixin wrote:
-> > The pwm_qom_get function didn't free "response", which caused an indire=
-ct
-> > memory leak. So use qobject_unref() to fix it.
+> On Fri, Jan 15, 2021 at 1:15 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org>
+> wrote:
 > >
-> > ASAN shows memory leak stack:
+> > On 1/15/21 8:56 AM, Gan Qixin wrote:
+> > > The pwm_qom_get function didn't free "response", which caused an
+> indirect
+> > > memory leak. So use qobject_unref() to fix it.
+> > >
+> > > ASAN shows memory leak stack:
+> > >
+> > > Indirect leak of 74160000 byte(s) in 18000 object(s) allocated from:
+> > >     #0 0x7f96e2f79d4e in __interceptor_calloc
+> (/lib64/libasan.so.5+0x112d4e)
+> > >     #1 0x7f96e2d98a50 in g_malloc0 (/lib64/libglib-2.0.so.0+0x55a50)
+> > >     #2 0x556313112180 in qdict_new ../qobject/qdict.c:30
+> > >     #3 0x556313115bca in parse_object ../qobject/json-parser.c:318
+> > >     #4 0x556313117810 in parse_value ../qobject/json-parser.c:546
+> > >     #5 0x556313117bda in json_parser_parse ../qobject/json-parser.c:5=
+80
+> > >     #6 0x55631310fe67 in json_message_process_token
+> ../qobject/json-streamer.c:92
+> > >     #7 0x5563131210b7 in json_lexer_feed_char
+> ../qobject/json-lexer.c:313
+> > >     #8 0x556313121662 in json_lexer_feed ../qobject/json-lexer.c:350
+> > >     #9 0x5563131101e9 in json_message_parser_feed
+> ../qobject/json-streamer.c:121
+> > >     #10 0x5563130cb81e in qmp_fd_receive ../tests/qtest/libqtest.c:61=
+4
+> > >     #11 0x5563130cba2b in qtest_qmp_receive_dict
+> ../tests/qtest/libqtest.c:636
+> > >     #12 0x5563130cb939 in qtest_qmp_receive
+> ../tests/qtest/libqtest.c:624
+> > >     #13 0x5563130cbe0d in qtest_vqmp ../tests/qtest/libqtest.c:715
+> > >     #14 0x5563130cc40f in qtest_qmp ../tests/qtest/libqtest.c:756
+> > >     #15 0x5563130c5623 in pwm_qom_get
+> ../tests/qtest/npcm7xx_pwm-test.c:180
+> > >     #16 0x5563130c595e in pwm_get_duty
+> ../tests/qtest/npcm7xx_pwm-test.c:210
+> > >     #17 0x5563130c7529 in test_toggle
+> ../tests/qtest/npcm7xx_pwm-test.c:447
+> > >
+> > > Reported-by: Euler Robot <euler.robot@huawei.com>
+> > > Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+> > > ---
+> > > Cc: Havard Skinnemoen <hskinnemoen@google.com>
+> > > Cc: Tyrone Ting <kfting@nuvoton.com>
+> > > Cc: Thomas Huth <thuth@redhat.com>
+> > > Cc: Laurent Vivier <lvivier@redhat.com>
+> > > ---
+> > >  tests/qtest/npcm7xx_pwm-test.c | 5 ++++-
+> > >  1 file changed, 4 insertions(+), 1 deletion(-)
 > >
-> > Indirect leak of 74160000 byte(s) in 18000 object(s) allocated from:
-> >     #0 0x7f96e2f79d4e in __interceptor_calloc (/lib64/libasan.so.5+0x11=
-2d4e)
-> >     #1 0x7f96e2d98a50 in g_malloc0 (/lib64/libglib-2.0.so.0+0x55a50)
-> >     #2 0x556313112180 in qdict_new ../qobject/qdict.c:30
-> >     #3 0x556313115bca in parse_object ../qobject/json-parser.c:318
-> >     #4 0x556313117810 in parse_value ../qobject/json-parser.c:546
-> >     #5 0x556313117bda in json_parser_parse ../qobject/json-parser.c:580
-> >     #6 0x55631310fe67 in json_message_process_token ../qobject/json-str=
-eamer.c:92
-> >     #7 0x5563131210b7 in json_lexer_feed_char ../qobject/json-lexer.c:3=
-13
-> >     #8 0x556313121662 in json_lexer_feed ../qobject/json-lexer.c:350
-> >     #9 0x5563131101e9 in json_message_parser_feed ../qobject/json-strea=
-mer.c:121
-> >     #10 0x5563130cb81e in qmp_fd_receive ../tests/qtest/libqtest.c:614
-> >     #11 0x5563130cba2b in qtest_qmp_receive_dict ../tests/qtest/libqtes=
-t.c:636
-> >     #12 0x5563130cb939 in qtest_qmp_receive ../tests/qtest/libqtest.c:6=
-24
-> >     #13 0x5563130cbe0d in qtest_vqmp ../tests/qtest/libqtest.c:715
-> >     #14 0x5563130cc40f in qtest_qmp ../tests/qtest/libqtest.c:756
-> >     #15 0x5563130c5623 in pwm_qom_get ../tests/qtest/npcm7xx_pwm-test.c=
-:180
-> >     #16 0x5563130c595e in pwm_get_duty ../tests/qtest/npcm7xx_pwm-test.=
-c:210
-> >     #17 0x5563130c7529 in test_toggle ../tests/qtest/npcm7xx_pwm-test.c=
-:447
-> >
-> > Reported-by: Euler Robot <euler.robot@huawei.com>
-> > Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> > ---
-> > Cc: Havard Skinnemoen <hskinnemoen@google.com>
-> > Cc: Tyrone Ting <kfting@nuvoton.com>
-> > Cc: Thomas Huth <thuth@redhat.com>
-> > Cc: Laurent Vivier <lvivier@redhat.com>
-> > ---
-> >  tests/qtest/npcm7xx_pwm-test.c | 5 ++++-
-> >  1 file changed, 4 insertions(+), 1 deletion(-)
+> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 >
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 
-Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+Thank you for finding this out!
 
-Thanks!
+>
+> Thanks!
+>
+
+--000000000000eace8a05b8f3a273
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jan 15, 2021 at 9:17 AM Havar=
+d Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@google.com">hskinnemoen@goog=
+le.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">+Hao Wu<br>
+<br>
+On Fri, Jan 15, 2021 at 1:15 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"=
+mailto:f4bug@amsat.org" target=3D"_blank">f4bug@amsat.org</a>&gt; wrote:<br=
+>
+&gt;<br>
+&gt; On 1/15/21 8:56 AM, Gan Qixin wrote:<br>
+&gt; &gt; The pwm_qom_get function didn&#39;t free &quot;response&quot;, wh=
+ich caused an indirect<br>
+&gt; &gt; memory leak. So use qobject_unref() to fix it.<br>
+&gt; &gt;<br>
+&gt; &gt; ASAN shows memory leak stack:<br>
+&gt; &gt;<br>
+&gt; &gt; Indirect leak of 74160000 byte(s) in 18000 object(s) allocated fr=
+om:<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#0 0x7f96e2f79d4e in __interceptor_calloc (/li=
+b64/libasan.so.5+0x112d4e)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#1 0x7f96e2d98a50 in g_malloc0 (/lib64/libglib=
+-2.0.so.0+0x55a50)<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#2 0x556313112180 in qdict_new ../qobject/qdic=
+t.c:30<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#3 0x556313115bca in parse_object ../qobject/j=
+son-parser.c:318<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#4 0x556313117810 in parse_value ../qobject/js=
+on-parser.c:546<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#5 0x556313117bda in json_parser_parse ../qobj=
+ect/json-parser.c:580<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#6 0x55631310fe67 in json_message_process_toke=
+n ../qobject/json-streamer.c:92<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#7 0x5563131210b7 in json_lexer_feed_char ../q=
+object/json-lexer.c:313<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#8 0x556313121662 in json_lexer_feed ../qobjec=
+t/json-lexer.c:350<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#9 0x5563131101e9 in json_message_parser_feed =
+../qobject/json-streamer.c:121<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#10 0x5563130cb81e in qmp_fd_receive ../tests/=
+qtest/libqtest.c:614<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#11 0x5563130cba2b in qtest_qmp_receive_dict .=
+./tests/qtest/libqtest.c:636<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#12 0x5563130cb939 in qtest_qmp_receive ../tes=
+ts/qtest/libqtest.c:624<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#13 0x5563130cbe0d in qtest_vqmp ../tests/qtes=
+t/libqtest.c:715<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#14 0x5563130cc40f in qtest_qmp ../tests/qtest=
+/libqtest.c:756<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#15 0x5563130c5623 in pwm_qom_get ../tests/qte=
+st/npcm7xx_pwm-test.c:180<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#16 0x5563130c595e in pwm_get_duty ../tests/qt=
+est/npcm7xx_pwm-test.c:210<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0#17 0x5563130c7529 in test_toggle ../tests/qte=
+st/npcm7xx_pwm-test.c:447<br>
+&gt; &gt;<br>
+&gt; &gt; Reported-by: Euler Robot &lt;<a href=3D"mailto:euler.robot@huawei=
+.com" target=3D"_blank">euler.robot@huawei.com</a>&gt;<br>
+&gt; &gt; Signed-off-by: Gan Qixin &lt;<a href=3D"mailto:ganqixin@huawei.co=
+m" target=3D"_blank">ganqixin@huawei.com</a>&gt;<br>
+&gt; &gt; ---<br>
+&gt; &gt; Cc: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@google.co=
+m" target=3D"_blank">hskinnemoen@google.com</a>&gt;<br>
+&gt; &gt; Cc: Tyrone Ting &lt;<a href=3D"mailto:kfting@nuvoton.com" target=
+=3D"_blank">kfting@nuvoton.com</a>&gt;<br>
+&gt; &gt; Cc: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=3D=
+"_blank">thuth@redhat.com</a>&gt;<br>
+&gt; &gt; Cc: Laurent Vivier &lt;<a href=3D"mailto:lvivier@redhat.com" targ=
+et=3D"_blank">lvivier@redhat.com</a>&gt;<br>
+&gt; &gt; ---<br>
+&gt; &gt;=C2=A0 tests/qtest/npcm7xx_pwm-test.c | 5 ++++-<br>
+&gt; &gt;=C2=A0 1 file changed, 4 insertions(+), 1 deletion(-)<br>
+&gt;<br>
+&gt; Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@a=
+msat.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+<br>
+Reviewed-by: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@google.com=
+" target=3D"_blank">hskinnemoen@google.com</a>&gt;<br></blockquote><div>Rev=
+iewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@google=
+.com</a>&gt;</div><div><br></div><div>Thank you for finding this out!=C2=A0=
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
+order-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Thanks!<br>
+</blockquote></div></div>
+
+--000000000000eace8a05b8f3a273--
 
