@@ -1,52 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l0EKP-0003ZJ-8O
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 20:55:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36260)
+	id 1l0K12-0003hs-PO
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jan 2021 02:59:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57794)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l0EKN-0003Z5-Qc; Thu, 14 Jan 2021 20:55:03 -0500
-Resent-Date: Thu, 14 Jan 2021 20:55:03 -0500
-Resent-Message-Id: <E1l0EKN-0003Z5-Qc@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21383)
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1l0K11-0003gq-2I; Fri, 15 Jan 2021 02:59:27 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3289)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l0EKL-0002PU-EV; Thu, 14 Jan 2021 20:55:03 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1610675687; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=C45+1kBLhBlsgowCRn5Mde2rX2Q90TLCg7hTmFsy+PnE2CeGC17bR0g5lwr5xatBF2Xm/Ix6BgDBnGa3oLxoNVZOkzjtXS7HnLev1C6YXhfP5isXLNJ5HSowVjYmaQvb0z4etZ0MbG+cHY/N7s06QYRsXfM2qGC8Gedi4Z0XAcw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1610675687;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=326YZzSn0bshP2Pmk5wCw6hR9MvzjvKvHgq6cqhY0NE=; 
- b=fsWbTIEeANGaEK1+kLAoA+2/MYrmE/lE+vnZL1R5CRtURZxvsjKHg9qSfS2NivSn7E4CeJfmDSB+drtz6RQy4IkOSxC9LzQsZQGYNeZrQIpngFn8L7X62UUvdluSp/a8Ej2K32BceTzCNpBn0AD0v/DQrqVo0rcZOFVGD3TK/NI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1610675685452674.4957428190091;
- Thu, 14 Jan 2021 17:54:45 -0800 (PST)
-In-Reply-To: <20210115012431.79533-1-zhanghan64@huawei.com>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2 0/7]Fix some style problems in audio
-Message-ID: <161067568385.26655.3608742083119578086@73fb1a5943b8>
+ (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
+ id 1l0K0y-0007wZ-A5; Fri, 15 Jan 2021 02:59:26 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DHD7H1Btyzl4xy;
+ Fri, 15 Jan 2021 15:57:47 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.498.0; Fri, 15 Jan 2021
+ 15:59:00 +0800
+From: Gan Qixin <ganqixin@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <kuhn.chenqun@huawei.com>, <zhang.zhanghailiang@huawei.com>, Gan Qixin
+ <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Havard
+ Skinnemoen" <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>,
+ "Thomas Huth" <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH] qtest/npcm7xx_pwm-test: Fix memleak in pwm_qom_get
+Date: Fri, 15 Jan 2021 15:56:34 +0800
+Message-ID: <20210115075634.717909-1-ganqixin@huawei.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: zhanghan64@huawei.com
-Cc: kraxel@redhat.com, hunongda@huawei.com, zhang.zhanghailiang@huawei.com,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org, alex.chen@huawei.com,
- zhanghan64@huawei.com
-Date: Thu, 14 Jan 2021 17:54:45 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=ganqixin@huawei.com;
+ helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -61,51 +50,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jan 2021 01:55:04 -0000
+X-List-Received-Date: Fri, 15 Jan 2021 07:59:27 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDExNTAxMjQzMS43OTUz
-My0xLXpoYW5naGFuNjRAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBo
-YXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3Jl
-IGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMTE1MDEyNDMxLjc5
-NTMzLTEtemhhbmdoYW42NEBodWF3ZWkuY29tClN1YmplY3Q6IFtQQVRDSCB2MiAwLzddRml4IHNv
-bWUgc3R5bGUgcHJvYmxlbXMgaW4gYXVkaW8KCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEv
-YmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29u
-ZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJl
-bmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4v
-c2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBF
-TkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0
-CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFn
-XSAgICAgICAgIHBhdGNoZXcvMjAyMTAxMTUwMTI0MzEuNzk1MzMtMS16aGFuZ2hhbjY0QGh1YXdl
-aS5jb20gLT4gcGF0Y2hldy8yMDIxMDExNTAxMjQzMS43OTUzMy0xLXpoYW5naGFuNjRAaHVhd2Vp
-LmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmFhOWZkNDEgYXVkaW86IHNwYWNl
-IHByb2hpYml0ZWQgYmV0d2VlbiBmdW5jdGlvbiBuYW1lIGFuZCBwYXJlbnRoZXNpcycoJwpmMzZl
-YmU5IGF1ZGlvOiBTdXNwZWN0IGNvZGUgaW5kZW50IGZvciBjb25kaXRpb25hbCBzdGF0ZW1lbnRz
-CmE1MDQ4YjQgYXVkaW86IERvbid0IHVzZSAnJSMnIGluIGZvcm1hdCBzdHJpbmdzCjEzNmRmNWQg
-YXVkaW86IEZpeCBsaW5lcyBvdmVyIDkwIGNoYXJhY3RlcnMKNWNmZWExNiBhdWRpbzogZm9vKiBi
-YXIiIHNob3VsZCBiZSAiZm9vICpiYXIiLgowZjQzMjRmIGF1ZGlvOiBBZGQgc3BhY2VzIGFyb3Vu
-ZCBvcGVyYXRvci9kZWxldGUgcmVkdW5kYW50IHNwYWNlcwo0YTliOTE2IGF1ZGlvOiBBZGQgYnJh
-Y2VzIGZvciBzdGF0ZW1lbnRzL2ZpeCBicmFjZXMnIHBvc2l0aW9uCgo9PT0gT1VUUFVUIEJFR0lO
-ID09PQoxLzcgQ2hlY2tpbmcgY29tbWl0IDRhOWI5MTYwZjNjOSAoYXVkaW86IEFkZCBicmFjZXMg
-Zm9yIHN0YXRlbWVudHMvZml4IGJyYWNlcycgcG9zaXRpb24pCjIvNyBDaGVja2luZyBjb21taXQg
-MGY0MzI0ZmY2MzMzIChhdWRpbzogQWRkIHNwYWNlcyBhcm91bmQgb3BlcmF0b3IvZGVsZXRlIHJl
-ZHVuZGFudCBzcGFjZXMpCkVSUk9SOiBzcGFjZSBwcm9oaWJpdGVkIGJldHdlZW4gZnVuY3Rpb24g
-bmFtZSBhbmQgb3BlbiBwYXJlbnRoZXNpcyAnKCcKIzIzOiBGSUxFOiBhdWRpby9hdWRpb190ZW1w
-bGF0ZS5oOjIxMToKKyAgICAgICAgZ2x1ZSAoYXVkaW9fcGNtX2h3X2ZyZWVfcmVzb3VyY2VzXyAs
-IFRZUEUpIChodyk7Cgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDMyIGxpbmVzIGNoZWNr
-ZWQKClBhdGNoIDIvNyBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
-b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
-aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKMy83IENoZWNraW5nIGNv
-bW1pdCA1Y2ZlYTE2M2RkODcgKGF1ZGlvOiBmb28qIGJhciIgc2hvdWxkIGJlICJmb28gKmJhciIu
-KQo0LzcgQ2hlY2tpbmcgY29tbWl0IDEzNmRmNWQ3Njc2MiAoYXVkaW86IEZpeCBsaW5lcyBvdmVy
-IDkwIGNoYXJhY3RlcnMpCjUvNyBDaGVja2luZyBjb21taXQgYTUwNDhiNDM3ZGFkIChhdWRpbzog
-RG9uJ3QgdXNlICclIycgaW4gZm9ybWF0IHN0cmluZ3MpCjYvNyBDaGVja2luZyBjb21taXQgZjM2
-ZWJlOTc1NTlmIChhdWRpbzogU3VzcGVjdCBjb2RlIGluZGVudCBmb3IgY29uZGl0aW9uYWwgc3Rh
-dGVtZW50cykKNy83IENoZWNraW5nIGNvbW1pdCBhYTlmZDQxOTQ3YjQgKGF1ZGlvOiBzcGFjZSBw
-cm9oaWJpdGVkIGJldHdlZW4gZnVuY3Rpb24gbmFtZSBhbmQgcGFyZW50aGVzaXMnKCcpCj09PSBP
-VVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVs
-bCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjEwMTE1MDEy
-NDMxLjc5NTMzLTEtemhhbmdoYW42NEBodWF3ZWkuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlw
-ZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBb
-aHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNo
-ZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+The pwm_qom_get function didn't free "response", which caused an indirect
+memory leak. So use qobject_unref() to fix it.
+
+ASAN shows memory leak stack:
+
+Indirect leak of 74160000 byte(s) in 18000 object(s) allocated from:
+    #0 0x7f96e2f79d4e in __interceptor_calloc (/lib64/libasan.so.5+0x112d4e)
+    #1 0x7f96e2d98a50 in g_malloc0 (/lib64/libglib-2.0.so.0+0x55a50)
+    #2 0x556313112180 in qdict_new ../qobject/qdict.c:30
+    #3 0x556313115bca in parse_object ../qobject/json-parser.c:318
+    #4 0x556313117810 in parse_value ../qobject/json-parser.c:546
+    #5 0x556313117bda in json_parser_parse ../qobject/json-parser.c:580
+    #6 0x55631310fe67 in json_message_process_token ../qobject/json-streamer.c:92
+    #7 0x5563131210b7 in json_lexer_feed_char ../qobject/json-lexer.c:313
+    #8 0x556313121662 in json_lexer_feed ../qobject/json-lexer.c:350
+    #9 0x5563131101e9 in json_message_parser_feed ../qobject/json-streamer.c:121
+    #10 0x5563130cb81e in qmp_fd_receive ../tests/qtest/libqtest.c:614
+    #11 0x5563130cba2b in qtest_qmp_receive_dict ../tests/qtest/libqtest.c:636
+    #12 0x5563130cb939 in qtest_qmp_receive ../tests/qtest/libqtest.c:624
+    #13 0x5563130cbe0d in qtest_vqmp ../tests/qtest/libqtest.c:715
+    #14 0x5563130cc40f in qtest_qmp ../tests/qtest/libqtest.c:756
+    #15 0x5563130c5623 in pwm_qom_get ../tests/qtest/npcm7xx_pwm-test.c:180
+    #16 0x5563130c595e in pwm_get_duty ../tests/qtest/npcm7xx_pwm-test.c:210
+    #17 0x5563130c7529 in test_toggle ../tests/qtest/npcm7xx_pwm-test.c:447
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+---
+Cc: Havard Skinnemoen <hskinnemoen@google.com>
+Cc: Tyrone Ting <kfting@nuvoton.com>
+Cc: Thomas Huth <thuth@redhat.com>
+Cc: Laurent Vivier <lvivier@redhat.com>
+---
+ tests/qtest/npcm7xx_pwm-test.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
+index 33fbdf5f54..63557d2c06 100644
+--- a/tests/qtest/npcm7xx_pwm-test.c
++++ b/tests/qtest/npcm7xx_pwm-test.c
+@@ -175,6 +175,7 @@ static int pwm_index(const PWM *pwm)
+ static uint64_t pwm_qom_get(QTestState *qts, const char *path, const char *name)
+ {
+     QDict *response;
++    uint64_t val;
+ 
+     g_test_message("Getting properties %s from %s", name, path);
+     response = qtest_qmp(qts, "{ 'execute': 'qom-get',"
+@@ -182,7 +183,9 @@ static uint64_t pwm_qom_get(QTestState *qts, const char *path, const char *name)
+             path, name);
+     /* The qom set message returns successfully. */
+     g_assert_true(qdict_haskey(response, "return"));
+-    return qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")));
++    val = qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")));
++    qobject_unref(response);
++    return val;
+ }
+ 
+ static uint64_t pwm_get_freq(QTestState *qts, int module_index, int pwm_index)
+-- 
+2.27.0
+
 
