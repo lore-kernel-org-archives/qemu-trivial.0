@@ -1,43 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l0E6f-0003NK-A6
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 20:40:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34324)
+	id 1l0EKP-0003ZJ-8O
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 20:55:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1l0E6b-0003EJ-Ok; Thu, 14 Jan 2021 20:40:49 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2932)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1l0EKN-0003Z5-Qc; Thu, 14 Jan 2021 20:55:03 -0500
+Resent-Date: Thu, 14 Jan 2021 20:55:03 -0500
+Resent-Message-Id: <E1l0EKN-0003Z5-Qc@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21383)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1l0E6V-0006NZ-Cu; Thu, 14 Jan 2021 20:40:49 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DH3kX3gh0zMKbM;
- Fri, 15 Jan 2021 09:39:16 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.498.0; Fri, 15 Jan 2021
- 09:40:29 +0800
-From: Zhang Han <zhanghan64@huawei.com>
-To: <kraxel@redhat.com>
-CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
- <zhanghan64@huawei.com>
-Subject: [PATCH v2 1/7] audio: Add braces for statements/fix braces' position
-Date: Fri, 15 Jan 2021 09:24:25 +0800
-Message-ID: <20210115012431.79533-2-zhanghan64@huawei.com>
-X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1l0EKL-0002PU-EV; Thu, 14 Jan 2021 20:55:03 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1610675687; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=C45+1kBLhBlsgowCRn5Mde2rX2Q90TLCg7hTmFsy+PnE2CeGC17bR0g5lwr5xatBF2Xm/Ix6BgDBnGa3oLxoNVZOkzjtXS7HnLev1C6YXhfP5isXLNJ5HSowVjYmaQvb0z4etZ0MbG+cHY/N7s06QYRsXfM2qGC8Gedi4Z0XAcw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1610675687;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=326YZzSn0bshP2Pmk5wCw6hR9MvzjvKvHgq6cqhY0NE=; 
+ b=fsWbTIEeANGaEK1+kLAoA+2/MYrmE/lE+vnZL1R5CRtURZxvsjKHg9qSfS2NivSn7E4CeJfmDSB+drtz6RQy4IkOSxC9LzQsZQGYNeZrQIpngFn8L7X62UUvdluSp/a8Ej2K32BceTzCNpBn0AD0v/DQrqVo0rcZOFVGD3TK/NI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1610675685452674.4957428190091;
+ Thu, 14 Jan 2021 17:54:45 -0800 (PST)
 In-Reply-To: <20210115012431.79533-1-zhanghan64@huawei.com>
-References: <20210115012431.79533-1-zhanghan64@huawei.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v2 0/7]Fix some style problems in audio
+Message-ID: <161067568385.26655.3608742083119578086@73fb1a5943b8>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhanghan64@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: zhanghan64@huawei.com
+Cc: kraxel@redhat.com, hunongda@huawei.com, zhang.zhanghailiang@huawei.com,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org, alex.chen@huawei.com,
+ zhanghan64@huawei.com
+Date: Thu, 14 Jan 2021 17:54:45 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -51,289 +61,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jan 2021 01:40:50 -0000
+X-List-Received-Date: Fri, 15 Jan 2021 01:55:04 -0000
 
-Fix problems about braces:
--braces are necessary for all arms of if/for/while statements
--else should follow close brace '}'
-
-Signed-off-by: Zhang Han <zhanghan64@huawei.com>
----
- audio/alsaaudio.c      | 15 +++++----------
- audio/audio.c          | 26 ++++++++++++--------------
- audio/audio_template.h | 12 ++++--------
- audio/coreaudio.c      |  3 +--
- audio/dsoundaudio.c    |  9 +++------
- audio/ossaudio.c       | 12 ++++--------
- 6 files changed, 29 insertions(+), 48 deletions(-)
-
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index a8e62542f9..480b64b4c6 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -278,32 +278,28 @@ static snd_pcm_format_t aud_to_alsafmt (AudioFormat fmt, int endianness)
-     case AUDIO_FORMAT_S16:
-         if (endianness) {
-             return SND_PCM_FORMAT_S16_BE;
--        }
--        else {
-+        } else {
-             return SND_PCM_FORMAT_S16_LE;
-         }
- 
-     case AUDIO_FORMAT_U16:
-         if (endianness) {
-             return SND_PCM_FORMAT_U16_BE;
--        }
--        else {
-+        } else {
-             return SND_PCM_FORMAT_U16_LE;
-         }
- 
-     case AUDIO_FORMAT_S32:
-         if (endianness) {
-             return SND_PCM_FORMAT_S32_BE;
--        }
--        else {
-+        } else {
-             return SND_PCM_FORMAT_S32_LE;
-         }
- 
-     case AUDIO_FORMAT_U32:
-         if (endianness) {
-             return SND_PCM_FORMAT_U32_BE;
--        }
--        else {
-+        } else {
-             return SND_PCM_FORMAT_U32_LE;
-         }
- 
-@@ -722,8 +718,7 @@ static int alsa_voice_ctl (snd_pcm_t *handle, const char *typ, int ctl)
-             alsa_logerr (err, "Could not stop %s\n", typ);
-             return -1;
-         }
--    }
--    else {
-+    } else {
-         err = snd_pcm_prepare (handle);
-         if (err < 0) {
-             alsa_logerr (err, "Could not prepare handle for %s\n", typ);
-diff --git a/audio/audio.c b/audio/audio.c
-index b48471bb3f..55834ac8c8 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -344,8 +344,7 @@ void audio_pcm_info_clear_buf (struct audio_pcm_info *info, void *buf, int len)
- 
-     if (info->is_signed || info->is_float) {
-         memset(buf, 0x00, len * info->bytes_per_frame);
--    }
--    else {
-+    } else {
-         switch (info->bits) {
-         case 8:
-             memset(buf, 0x80, len * info->bytes_per_frame);
-@@ -584,8 +583,7 @@ static size_t audio_pcm_sw_get_rpos_in(SWVoiceIn *sw)
-     rpos = hw->conv_buf->pos - live;
-     if (rpos >= 0) {
-         return rpos;
--    }
--    else {
-+    } else {
-         return hw->conv_buf->size + rpos;
-     }
- }
-@@ -788,10 +786,14 @@ static int audio_is_timer_needed(AudioState *s)
-     HWVoiceOut *hwo = NULL;
- 
-     while ((hwo = audio_pcm_hw_find_any_enabled_out(s, hwo))) {
--        if (!hwo->poll_mode) return 1;
-+        if (!hwo->poll_mode) {
-+            return 1;
-+        }
-     }
-     while ((hwi = audio_pcm_hw_find_any_enabled_in(s, hwi))) {
--        if (!hwi->poll_mode) return 1;
-+        if (!hwi->poll_mode) {
-+            return 1;
-+        }
-     }
-     return 0;
- }
-@@ -908,8 +910,7 @@ void AUD_set_active_out (SWVoiceOut *sw, int on)
-                     audio_reset_timer (s);
-                 }
-             }
--        }
--        else {
-+        } else {
-             if (hw->enabled) {
-                 int nb_active = 0;
- 
-@@ -956,8 +957,7 @@ void AUD_set_active_in (SWVoiceIn *sw, int on)
-                 }
-             }
-             sw->total_hw_samples_acquired = hw->total_samples_captured;
--        }
--        else {
-+        } else {
-             if (hw->enabled) {
-                 int nb_active = 0;
- 
-@@ -1540,8 +1540,7 @@ static int audio_driver_init(AudioState *s, struct audio_driver *drv,
-         audio_init_nb_voices_in(s, drv);
-         s->drv = drv;
-         return 0;
--    }
--    else {
-+    } else {
-         if (msg) {
-             dolog("Could not init `%s' audio driver\n", drv->name);
-         }
-@@ -1856,8 +1855,7 @@ CaptureVoiceOut *AUD_add_capture(
-     if (cap) {
-         QLIST_INSERT_HEAD (&cap->cb_head, cb, entries);
-         return cap;
--    }
--    else {
-+    } else {
-         HWVoiceOut *hw;
-         CaptureVoiceOut *cap;
- 
-diff --git a/audio/audio_template.h b/audio/audio_template.h
-index 8dd48ce14e..236db7136b 100644
---- a/audio/audio_template.h
-+++ b/audio/audio_template.h
-@@ -47,8 +47,7 @@ static void glue(audio_init_nb_voices_, TYPE)(AudioState *s,
- #ifdef DAC
-             dolog ("Driver `%s' does not support " NAME "\n", drv->name);
- #endif
--        }
--        else {
-+        } else {
-             dolog ("Driver `%s' does not support %d " NAME " voices, max %d\n",
-                    drv->name,
-                    glue (s->nb_hw_voices_, TYPE),
-@@ -387,8 +386,7 @@ static SW *glue(audio_pcm_create_voice_pair_, TYPE)(
- 
-     if (pdo->fixed_settings) {
-         hw_as = audiodev_to_audsettings(pdo);
--    }
--    else {
-+    } else {
-         hw_as = *as;
-     }
- 
-@@ -498,8 +496,7 @@ SW *glue (AUD_open_, TYPE) (
-         if (glue (audio_pcm_sw_init_, TYPE) (sw, hw, name, as)) {
-             goto fail;
-         }
--    }
--    else {
-+    } else {
-         sw = glue(audio_pcm_create_voice_pair_, TYPE)(s, name, as);
-         if (!sw) {
-             dolog ("Failed to create voice `%s'\n", name);
-@@ -553,8 +550,7 @@ uint64_t glue (AUD_get_elapsed_usec_, TYPE) (SW *sw, QEMUAudioTimeStamp *ts)
- 
-     if (cur_ts >= old_ts) {
-         delta = cur_ts - old_ts;
--    }
--    else {
-+    } else {
-         delta = UINT64_MAX - old_ts + cur_ts;
-     }
- 
-diff --git a/audio/coreaudio.c b/audio/coreaudio.c
-index 79a9d40bf8..408b587126 100644
---- a/audio/coreaudio.c
-+++ b/audio/coreaudio.c
-@@ -524,8 +524,7 @@ static int coreaudio_init_out(HWVoiceOut *hw, struct audsettings *as,
-     } else if (frameRange.mMaximum < frames) {
-         core->audioDevicePropertyBufferFrameSize = (UInt32) frameRange.mMaximum;
-         dolog ("warning: Downsizing Buffer Frames to %f\n", frameRange.mMaximum);
--    }
--    else {
-+    } else {
-         core->audioDevicePropertyBufferFrameSize = frames;
-     }
- 
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index 4cdf19ab67..ba201898e1 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -404,8 +404,7 @@ static void dsound_enable_out(HWVoiceOut *hw, bool enable)
-                 dsound_logerr (hr, "Could not stop playing buffer\n");
-                 return;
-             }
--        }
--        else {
-+        } else {
-             dolog ("warning: Voice is not playing\n");
-         }
-     }
-@@ -509,8 +508,7 @@ static void dsound_enable_in(HWVoiceIn *hw, bool enable)
-                 dsound_logerr (hr, "Could not stop capturing\n");
-                 return;
-             }
--        }
--        else {
-+        } else {
-             dolog ("warning: Voice is not capturing\n");
-         }
-     }
-@@ -659,8 +657,7 @@ static void *dsound_audio_init(Audiodev *dev)
-         );
-     if (FAILED (hr)) {
-         dsound_logerr (hr, "Could not create DirectSoundCapture instance\n");
--    }
--    else {
-+    } else {
-         hr = IDirectSoundCapture_Initialize (s->dsound_capture, NULL);
-         if (FAILED (hr)) {
-             dsound_logerr (hr, "Could not initialize DirectSoundCapture\n");
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index a7dcaa31ad..e9f81e9b9c 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -142,16 +142,14 @@ static int aud_to_ossfmt (AudioFormat fmt, int endianness)
-     case AUDIO_FORMAT_S16:
-         if (endianness) {
-             return AFMT_S16_BE;
--        }
--        else {
-+        } else {
-             return AFMT_S16_LE;
-         }
- 
-     case AUDIO_FORMAT_U16:
-         if (endianness) {
-             return AFMT_U16_BE;
--        }
--        else {
-+        } else {
-             return AFMT_U16_LE;
-         }
- 
-@@ -542,16 +540,14 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
-             int trig = 0;
-             if (ioctl (fd, SNDCTL_DSP_SETTRIGGER, &trig) < 0) {
-                 oss_logerr (errno, "SNDCTL_DSP_SETTRIGGER 0 failed\n");
--            }
--            else {
-+            } else {
-                 trig = PCM_ENABLE_OUTPUT;
-                 if (ioctl (fd, SNDCTL_DSP_SETTRIGGER, &trig) < 0) {
-                     oss_logerr (
-                         errno,
-                         "SNDCTL_DSP_SETTRIGGER PCM_ENABLE_OUTPUT failed\n"
-                         );
--                }
--                else {
-+                } else {
-                     oss->mmapped = 1;
-                 }
-             }
--- 
-2.29.1.59.gf9b6481aed
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDExNTAxMjQzMS43OTUz
+My0xLXpoYW5naGFuNjRAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBo
+YXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3Jl
+IGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMTE1MDEyNDMxLjc5
+NTMzLTEtemhhbmdoYW42NEBodWF3ZWkuY29tClN1YmplY3Q6IFtQQVRDSCB2MiAwLzddRml4IHNv
+bWUgc3R5bGUgcHJvYmxlbXMgaW4gYXVkaW8KCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEv
+YmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29u
+ZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJl
+bmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4v
+c2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBF
+TkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0
+CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFn
+XSAgICAgICAgIHBhdGNoZXcvMjAyMTAxMTUwMTI0MzEuNzk1MzMtMS16aGFuZ2hhbjY0QGh1YXdl
+aS5jb20gLT4gcGF0Y2hldy8yMDIxMDExNTAxMjQzMS43OTUzMy0xLXpoYW5naGFuNjRAaHVhd2Vp
+LmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmFhOWZkNDEgYXVkaW86IHNwYWNl
+IHByb2hpYml0ZWQgYmV0d2VlbiBmdW5jdGlvbiBuYW1lIGFuZCBwYXJlbnRoZXNpcycoJwpmMzZl
+YmU5IGF1ZGlvOiBTdXNwZWN0IGNvZGUgaW5kZW50IGZvciBjb25kaXRpb25hbCBzdGF0ZW1lbnRz
+CmE1MDQ4YjQgYXVkaW86IERvbid0IHVzZSAnJSMnIGluIGZvcm1hdCBzdHJpbmdzCjEzNmRmNWQg
+YXVkaW86IEZpeCBsaW5lcyBvdmVyIDkwIGNoYXJhY3RlcnMKNWNmZWExNiBhdWRpbzogZm9vKiBi
+YXIiIHNob3VsZCBiZSAiZm9vICpiYXIiLgowZjQzMjRmIGF1ZGlvOiBBZGQgc3BhY2VzIGFyb3Vu
+ZCBvcGVyYXRvci9kZWxldGUgcmVkdW5kYW50IHNwYWNlcwo0YTliOTE2IGF1ZGlvOiBBZGQgYnJh
+Y2VzIGZvciBzdGF0ZW1lbnRzL2ZpeCBicmFjZXMnIHBvc2l0aW9uCgo9PT0gT1VUUFVUIEJFR0lO
+ID09PQoxLzcgQ2hlY2tpbmcgY29tbWl0IDRhOWI5MTYwZjNjOSAoYXVkaW86IEFkZCBicmFjZXMg
+Zm9yIHN0YXRlbWVudHMvZml4IGJyYWNlcycgcG9zaXRpb24pCjIvNyBDaGVja2luZyBjb21taXQg
+MGY0MzI0ZmY2MzMzIChhdWRpbzogQWRkIHNwYWNlcyBhcm91bmQgb3BlcmF0b3IvZGVsZXRlIHJl
+ZHVuZGFudCBzcGFjZXMpCkVSUk9SOiBzcGFjZSBwcm9oaWJpdGVkIGJldHdlZW4gZnVuY3Rpb24g
+bmFtZSBhbmQgb3BlbiBwYXJlbnRoZXNpcyAnKCcKIzIzOiBGSUxFOiBhdWRpby9hdWRpb190ZW1w
+bGF0ZS5oOjIxMToKKyAgICAgICAgZ2x1ZSAoYXVkaW9fcGNtX2h3X2ZyZWVfcmVzb3VyY2VzXyAs
+IFRZUEUpIChodyk7Cgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDMyIGxpbmVzIGNoZWNr
+ZWQKClBhdGNoIDIvNyBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
+b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
+aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKMy83IENoZWNraW5nIGNv
+bW1pdCA1Y2ZlYTE2M2RkODcgKGF1ZGlvOiBmb28qIGJhciIgc2hvdWxkIGJlICJmb28gKmJhciIu
+KQo0LzcgQ2hlY2tpbmcgY29tbWl0IDEzNmRmNWQ3Njc2MiAoYXVkaW86IEZpeCBsaW5lcyBvdmVy
+IDkwIGNoYXJhY3RlcnMpCjUvNyBDaGVja2luZyBjb21taXQgYTUwNDhiNDM3ZGFkIChhdWRpbzog
+RG9uJ3QgdXNlICclIycgaW4gZm9ybWF0IHN0cmluZ3MpCjYvNyBDaGVja2luZyBjb21taXQgZjM2
+ZWJlOTc1NTlmIChhdWRpbzogU3VzcGVjdCBjb2RlIGluZGVudCBmb3IgY29uZGl0aW9uYWwgc3Rh
+dGVtZW50cykKNy83IENoZWNraW5nIGNvbW1pdCBhYTlmZDQxOTQ3YjQgKGF1ZGlvOiBzcGFjZSBw
+cm9oaWJpdGVkIGJldHdlZW4gZnVuY3Rpb24gbmFtZSBhbmQgcGFyZW50aGVzaXMnKCcpCj09PSBP
+VVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVs
+bCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjEwMTE1MDEy
+NDMxLjc5NTMzLTEtemhhbmdoYW42NEBodWF3ZWkuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlw
+ZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBb
+aHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNo
+ZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
