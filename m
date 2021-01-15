@@ -1,87 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l0LIX-0004ZL-P5
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jan 2021 04:21:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44754)
+	id 1l0S93-0007MC-Cr
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jan 2021 11:40:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l0LIW-0004TZ-EI
- for qemu-trivial@nongnu.org; Fri, 15 Jan 2021 04:21:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35920)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l0LIT-0003u7-FW
- for qemu-trivial@nongnu.org; Fri, 15 Jan 2021 04:21:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610702492;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=iy8FmWFQOgn2y1p899VQeHe7zr/hq1O6xs/p/O1P7z8=;
- b=NRzZy2HwssfSFShlX/aK32u7OvFI8lBh8a2WMA6U57gh1jZANL0JNWd43TO/XNvtoLpbZB
- 7BsTVqLK0LIPbtjlGW92lyOIjvxy55aZaxYj3u1QM8AvZZq8LegU9SHbtH6FlCoCklnhfJ
- AdS99BQVP3bMCTmXVutRalKNLodbdfM=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-38-V-5DdLzpOLWRx_HwAvT5Cw-1; Fri, 15 Jan 2021 04:21:31 -0500
-X-MC-Unique: V-5DdLzpOLWRx_HwAvT5Cw-1
-Received: by mail-ed1-f69.google.com with SMTP id g25so3579717edu.4
- for <qemu-trivial@nongnu.org>; Fri, 15 Jan 2021 01:21:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l0S8t-0007JT-Sr
+ for qemu-trivial@nongnu.org; Fri, 15 Jan 2021 11:40:13 -0500
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c]:35796)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l0S8s-0000Cv-7q
+ for qemu-trivial@nongnu.org; Fri, 15 Jan 2021 11:40:07 -0500
+Received: by mail-pg1-x52c.google.com with SMTP id n7so6355481pgg.2
+ for <qemu-trivial@nongnu.org>; Fri, 15 Jan 2021 08:40:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=CltrdbYuLXVKY3LDVHCnngcjOfhZpfm1o2jvOUIdbEM=;
+ b=wMxo94kENtzUgOXsFcb0gkE9p2XqDnIBkKY0BZ8GN42xIGHBLyWP5Ve5DHD65dYQRJ
+ 3uLyxVd95MDKSqL8jRE+vAkUgjoX/az9vOjqqviekUgkoFSLUIe4VHvI+XSpQkaBhRzT
+ 8xH7f8GDq1mcasXXIQ65IeE892ZpHZx0OaZlFd/wv32223sBw3zg/PuSHxBsoN8XQn20
+ ydS7qDnPRaP9TLuTF3sH01ov7dK38T8l6XouVTe35O8XUkzM//2qKzWKsUOHVSyI2AnB
+ Tx7j7QrlJFXgSCRfvId5/DscWpy4z4Vlzzua6uIjV3ynBHgjAjwt0Bn7gm2j+AHN82BQ
+ 4TZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=iy8FmWFQOgn2y1p899VQeHe7zr/hq1O6xs/p/O1P7z8=;
- b=I4Q9Qe/3QMT/pvi8tvaGxPjB1CnypOtZGC1WRxG7uKdz3sYspMd23YOw3VmbYoG99Z
- GmerpIKjaspsscG3UFp7bbPUIL8xARlJAbLgYWubuuyE46LL1nqooIpEiqNKnfhsucjp
- svLpUtVwh5ysmPxU2F7f5LwI2gsVdphR0E8QvKLVoifO+hGZDCg7VUCh+0QN/yWVtUAe
- a+jDEY8ab8UXS2w8kNS6pP3/0Ee8CyFLed2j+2gyNNlZscOOe8nUawszKgSqP6xQB5pl
- tV2lARd8Prkw8/BsWooPp6GLlWO1HFhPUt1d85SnrBxmh6ZZW8UXecOMPt+P5tU6xc9K
- 0dKQ==
-X-Gm-Message-State: AOAM533glyorkCVMGZqQQSV5Xx3j86NSEg6ICp+RlUz1Eb8jO5M0tpgs
- mNaCJIOFAu9TNdmq5CodhGjUj1ONuq1rg8oKLhemPWaOaHV+zCuzfvjuI4Q9JclnbLr4VFF/dyT
- jpUHKr22+kdi8iyft2g==
-X-Received: by 2002:a17:906:77c5:: with SMTP id
- m5mr7938698ejn.424.1610702489767; 
- Fri, 15 Jan 2021 01:21:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxmXkt2XFc0FUFA6PXdrv5k5+N8YeXX43dcHNkUdQyM2dp/BzaG2Nnzd96G6WtRoS09Wm9VIw==
-X-Received: by 2002:a17:906:77c5:: with SMTP id
- m5mr7938692ejn.424.1610702489642; 
- Fri, 15 Jan 2021 01:21:29 -0800 (PST)
-Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id e1sm3351229edk.51.2021.01.15.01.21.28
+ bh=CltrdbYuLXVKY3LDVHCnngcjOfhZpfm1o2jvOUIdbEM=;
+ b=MjLAJ9N3zg+8XF7NC583M+Jd1zwfFPCp9kAV63UWqTjHq/Qhm14BSY7FEzq6nZt7eY
+ LQQ/On7AnGQShrujRLslcvjRaVS2xdItyVXi/tvQvY+nJ1l9iJTlUUp7nEFhu8DuiPq/
+ fWYY2pRXywLMaPVT9IBNS5RwTOCnoUEnjmuJj4OBSW+ojzcBCC/fnJVRSU2jrsC3MhCC
+ 1S4egzV/sLoEuDTJcJHj6A8rEGjA1yq0I31a/wle06CwBuOCGg6QZRP93uXtGwWEgW/N
+ 3v3MHYE1XMJj8k1h2cSmOgHbqpsQSUvZWOiGGLAj8eLsrGA/qUnZ+VI8TA/mjrE9Z8op
+ Ib1w==
+X-Gm-Message-State: AOAM531/xoDhSA604lW95ZeUrpE6Kh26UCje/ZikXZoX3CDfXteq3g2s
+ CUCsj3kxph0xCAheDetx2oUGQw==
+X-Google-Smtp-Source: ABdhPJyvzSxPTxK8EFX3e37b8QdcTs7SSWCE/81rIZfaCbhkn2coEmZr3soYivm5iNaZk2uvPC+H0Q==
+X-Received: by 2002:a63:5407:: with SMTP id i7mr13671649pgb.418.1610728803945; 
+ Fri, 15 Jan 2021 08:40:03 -0800 (PST)
+Received: from [10.25.18.3] (rrcs-173-197-107-21.west.biz.rr.com.
+ [173.197.107.21])
+ by smtp.gmail.com with ESMTPSA id a188sm1282543pfb.108.2021.01.15.08.40.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 15 Jan 2021 01:21:29 -0800 (PST)
-Subject: Re: [PATCH v2 2/7] audio: Add spaces around operator/delete redundant
- spaces
-To: Zhang Han <zhanghan64@huawei.com>, kraxel@redhat.com
-Cc: hunongda@huawei.com, zhang.zhanghailiang@huawei.com,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org, alex.chen@huawei.com
-References: <20210115012431.79533-1-zhanghan64@huawei.com>
- <20210115012431.79533-3-zhanghan64@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <22e89cf6-937c-617f-8616-14568caf8312@redhat.com>
-Date: Fri, 15 Jan 2021 10:21:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ Fri, 15 Jan 2021 08:40:03 -0800 (PST)
+Subject: Re: [PATCH] util/cacheflush: Fix error generated by clang
+To: Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: kuhn.chenqun@huawei.com, zhang.zhanghailiang@huawei.com,
+ Euler Robot <euler.robot@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20210115075656.717957-1-ganqixin@huawei.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <8d1971bb-0c0d-b7cb-5fed-4d105e17a511@linaro.org>
+Date: Fri, 15 Jan 2021 06:39:59 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210115012431.79533-3-zhanghan64@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20210115075656.717957-1-ganqixin@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.248,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.237, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -95,21 +82,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jan 2021 09:21:36 -0000
+X-List-Received-Date: Fri, 15 Jan 2021 16:40:13 -0000
 
-On 1/15/21 2:24 AM, Zhang Han wrote:
-> Fix problems about spaces:
-> -operator needs spaces around it, add them.
-> -somespaces are redundant, remove them.
+On 1/14/21 9:56 PM, Gan Qixin wrote:
+> When compiling qemu-fuzz-i386 on aarch64 host, clang reported the following
+> error:
 > 
-> Signed-off-by: Zhang Han <zhanghan64@huawei.com>
+> ../util/cacheflush.c:38:44: error: value size does not match register size
+> specified by the constraint and modifier [-Werror,-Wasm-operand-widths]
+>     asm volatile("mrs\t%0, ctr_el0" : "=r"(save_ctr_el0));
+>                                            ^
+> ../util/cacheflush.c:38:24: note: use constraint modifier "w"
+>     asm volatile("mrs\t%0, ctr_el0" : "=r"(save_ctr_el0));
+>                        ^~
+>                        %w0
+> 
+> Modify the type of save_ctr_el0 to uint64_t to fix it.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 > ---
->  audio/audio_template.h | 2 +-
->  audio/coreaudio.c      | 2 +-
->  audio/dsoundaudio.c    | 2 +-
->  audio/jackaudio.c      | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  util/cacheflush.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+This is clang being overly-picky.  IMO it should have done the mrs into a
+64-bit register, then truncated the value when storing to the 32-bit variable.
+ Which is what GCC does.  Certainly the code as written only needs the low 20
+bits of the result.
 
+But your change will not really make any difference to the generated code,
+except for 4 more bytes of storage, so:
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
 
