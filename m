@@ -1,31 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l0E6a-0003Bo-SS
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 20:40:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34298)
+	id 1l0E6d-0003HY-0y
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 20:40:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1l0E6Y-00038r-UP; Thu, 14 Jan 2021 20:40:46 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3028)
+ id 1l0E6Y-00038f-21; Thu, 14 Jan 2021 20:40:46 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2933)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1l0E6W-0006QF-C0; Thu, 14 Jan 2021 20:40:46 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DH3ky51Jpzj7wk;
- Fri, 15 Jan 2021 09:39:38 +0800 (CST)
+ id 1l0E6V-0006NM-3K; Thu, 14 Jan 2021 20:40:45 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DH3kX4LXfzMKbT;
+ Fri, 15 Jan 2021 09:39:16 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
  (10.3.19.213) with Microsoft SMTP Server id 14.3.498.0; Fri, 15 Jan 2021
- 09:40:32 +0800
+ 09:40:28 +0800
 From: Zhang Han <zhanghan64@huawei.com>
 To: <kraxel@redhat.com>
 CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
  <zhanghan64@huawei.com>
-Subject: [PATCH v2 6/7] audio: Suspect code indent for conditional statements
-Date: Fri, 15 Jan 2021 09:24:30 +0800
-Message-ID: <20210115012431.79533-7-zhanghan64@huawei.com>
+Subject: [PATCH v2 0/7]Fix some style problems in audio
+Date: Fri, 15 Jan 2021 09:24:24 +0800
+Message-ID: <20210115012431.79533-1-zhanghan64@huawei.com>
 X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
-In-Reply-To: <20210115012431.79533-1-zhanghan64@huawei.com>
-References: <20210115012431.79533-1-zhanghan64@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -51,28 +49,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jan 2021 01:40:47 -0000
+X-List-Received-Date: Fri, 15 Jan 2021 01:40:46 -0000
 
-Fix code indent.
+Some style problems in audio directory are found by checkpatch.pl. Fix these
+style problems.
 
-Signed-off-by: Zhang Han <zhanghan64@huawei.com>
----
- audio/paaudio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v2:
+- fix style problem: redundant spaces between function name and open parenthesis'('
+- fix subject of patch[5/7] for email display
 
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index b052084698..7ea9f637c2 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -437,7 +437,7 @@ static pa_stream *qpa_simple_new (
-     }
- 
-     if (r < 0) {
--      goto fail;
-+        goto fail;
-     }
- 
-     pa_threaded_mainloop_unlock(c->mainloop);
+Zhang Han (7):
+  audio: Add braces for statements/fix braces' position
+  audio: Add spaces around operator/delete redundant spaces
+  audio: foo* bar" should be "foo *bar".
+  audio: Fix lines over 90 characters
+  audio: Don't use '%#' in format strings
+  audio: Suspect code indent for conditional statements
+  audio: space prohibited between function name and parenthesis'('
+
+ audio/alsaaudio.c      | 15 +++++--------
+ audio/audio.c          | 26 ++++++++++------------
+ audio/audio_template.h | 24 +++++++++-----------
+ audio/coreaudio.c      | 17 +++++++-------
+ audio/dsoundaudio.c    | 50 +++++++++++++++++++++++++++---------------
+ audio/jackaudio.c      |  2 +-
+ audio/ossaudio.c       | 12 ++++------
+ audio/paaudio.c        |  2 +-
+ 8 files changed, 73 insertions(+), 75 deletions(-)
+
 -- 
 2.29.1.59.gf9b6481aed
 
