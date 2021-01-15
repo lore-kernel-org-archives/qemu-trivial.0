@@ -1,16 +1,16 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l0E6d-0003Jj-O2
+	id 1l0E6d-0003KN-U9
 	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2021 20:40:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34312)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1l0E6a-0003BP-KU; Thu, 14 Jan 2021 20:40:48 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3027)
+ id 1l0E6b-0003Dg-Gi; Thu, 14 Jan 2021 20:40:49 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3030)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1l0E6V-0006QG-RU; Thu, 14 Jan 2021 20:40:48 -0500
+ id 1l0E6X-0006RV-IO; Thu, 14 Jan 2021 20:40:49 -0500
 Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DH3ky4cFNzj7wf;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DH3ky5CYyzj7wm;
  Fri, 15 Jan 2021 09:39:38 +0800 (CST)
 Received: from huawei.com (10.175.124.27) by DGGEMS413-HUB.china.huawei.com
  (10.3.19.213) with Microsoft SMTP Server id 14.3.498.0; Fri, 15 Jan 2021
@@ -20,9 +20,9 @@ To: <kraxel@redhat.com>
 CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-devel@nongnu.org>,
  <qemu-trivial@nongnu.org>, <zhang.zhanghailiang@huawei.com>,
  <zhanghan64@huawei.com>
-Subject: [PATCH v2 5/7] audio: Don't use '%#' in format strings
-Date: Fri, 15 Jan 2021 09:24:29 +0800
-Message-ID: <20210115012431.79533-6-zhanghan64@huawei.com>
+Subject: [PATCH v2 4/7] audio: Fix lines over 90 characters
+Date: Fri, 15 Jan 2021 09:24:28 +0800
+Message-ID: <20210115012431.79533-5-zhanghan64@huawei.com>
 X-Mailer: git-send-email 2.29.1.59.gf9b6481aed
 In-Reply-To: <20210115012431.79533-1-zhanghan64@huawei.com>
 References: <20210115012431.79533-1-zhanghan64@huawei.com>
@@ -51,28 +51,114 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jan 2021 01:40:49 -0000
+X-List-Received-Date: Fri, 15 Jan 2021 01:40:50 -0000
 
-Use '0x' prefix instead of '%#'
+Fix the line width of code.
 
 Signed-off-by: Zhang Han <zhanghan64@huawei.com>
 ---
- audio/dsoundaudio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ audio/dsoundaudio.c | 37 +++++++++++++++++++++++++++----------
+ 1 file changed, 27 insertions(+), 10 deletions(-)
 
 diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index 1891a38bee..f7a3351306 100644
+index 38ae2471f6..1891a38bee 100644
 --- a/audio/dsoundaudio.c
 +++ b/audio/dsoundaudio.c
-@@ -215,7 +215,7 @@ static void dsound_log_hresult (HRESULT hr)
+@@ -89,7 +89,9 @@ static void dsound_log_hresult (HRESULT hr)
+ #endif
+ #ifdef DSERR_ALLOCATED
+     case DSERR_ALLOCATED:
+-        str = "The request failed because resources, such as a priority level, were already in use by another caller";
++        str = "The request failed because resources, "
++              "such as a priority level, were already in use "
++              "by another caller";
          break;
  #endif
-     default:
--        AUD_log (AUDIO_CAP, "Reason: Unknown (HRESULT %#lx)\n", hr);
-+        AUD_log (AUDIO_CAP, "Reason: Unknown (HRESULT 0x%lx)\n", hr);
-         return;
-     }
- 
+ #ifdef DSERR_ALREADYINITIALIZED
+@@ -104,7 +106,8 @@ static void dsound_log_hresult (HRESULT hr)
+ #endif
+ #ifdef DSERR_BADSENDBUFFERGUID
+     case DSERR_BADSENDBUFFERGUID:
+-        str = "The GUID specified in an audiopath file does not match a valid mix-in buffer";
++        str = "The GUID specified in an audiopath file "
++              "does not match a valid mix-in buffer";
+         break;
+ #endif
+ #ifdef DSERR_BUFFERLOST
+@@ -114,22 +117,31 @@ static void dsound_log_hresult (HRESULT hr)
+ #endif
+ #ifdef DSERR_BUFFERTOOSMALL
+     case DSERR_BUFFERTOOSMALL:
+-        str = "The buffer size is not great enough to enable effects processing";
++        str = "The buffer size is not great enough to "
++              "enable effects processing";
+         break;
+ #endif
+ #ifdef DSERR_CONTROLUNAVAIL
+     case DSERR_CONTROLUNAVAIL:
+-        str = "The buffer control (volume, pan, and so on) requested by the caller is not available. Controls must be specified when the buffer is created, using the dwFlags member of DSBUFFERDESC";
++        str = "The buffer control (volume, pan, and so on) "
++              "requested by the caller is not available. "
++              "Controls must be specified when the buffer is created, "
++              "using the dwFlags member of DSBUFFERDESC";
+         break;
+ #endif
+ #ifdef DSERR_DS8_REQUIRED
+     case DSERR_DS8_REQUIRED:
+-        str = "A DirectSound object of class CLSID_DirectSound8 or later is required for the requested functionality. For more information, see IDirectSound8 Interface";
++        str = "A DirectSound object of class CLSID_DirectSound8 or later "
++              "is required for the requested functionality. "
++              "For more information, see IDirectSound8 Interface";
+         break;
+ #endif
+ #ifdef DSERR_FXUNAVAILABLE
+     case DSERR_FXUNAVAILABLE:
+-        str = "The effects requested could not be found on the system, or they are in the wrong order or in the wrong location; for example, an effect expected in hardware was found in software";
++        str = "The effects requested could not be found on the system, "
++              "or they are in the wrong order or in the wrong location; "
++              "for example, an effect expected in hardware "
++              "was found in software";
+         break;
+ #endif
+ #ifdef DSERR_GENERIC
+@@ -154,7 +166,8 @@ static void dsound_log_hresult (HRESULT hr)
+ #endif
+ #ifdef DSERR_NODRIVER
+     case DSERR_NODRIVER:
+-        str = "No sound driver is available for use, or the given GUID is not a valid DirectSound device ID";
++        str = "No sound driver is available for use, "
++              "or the given GUID is not a valid DirectSound device ID";
+         break;
+ #endif
+ #ifdef DSERR_NOINTERFACE
+@@ -169,12 +182,14 @@ static void dsound_log_hresult (HRESULT hr)
+ #endif
+ #ifdef DSERR_OTHERAPPHASPRIO
+     case DSERR_OTHERAPPHASPRIO:
+-        str = "Another application has a higher priority level, preventing this call from succeeding";
++        str = "Another application has a higher priority level, "
++              "preventing this call from succeeding";
+         break;
+ #endif
+ #ifdef DSERR_OUTOFMEMORY
+     case DSERR_OUTOFMEMORY:
+-        str = "The DirectSound subsystem could not allocate sufficient memory to complete the caller's request";
++        str = "The DirectSound subsystem could not allocate "
++               "sufficient memory to complete the caller's request";
+         break;
+ #endif
+ #ifdef DSERR_PRIOLEVELNEEDED
+@@ -189,7 +204,9 @@ static void dsound_log_hresult (HRESULT hr)
+ #endif
+ #ifdef DSERR_UNINITIALIZED
+     case DSERR_UNINITIALIZED:
+-        str = "The Initialize method has not been called or has not been called successfully before other methods were called";
++        str = "The Initialize method has not been called "
++              "or has not been called successfully "
++              "before other methods were called";
+         break;
+ #endif
+ #ifdef DSERR_UNSUPPORTED
 -- 
 2.29.1.59.gf9b6481aed
 
