@@ -1,66 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l17gf-0003Lo-GN
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Jan 2021 08:01:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51986)
+	id 1l1B9A-0001fb-S3
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Jan 2021 11:43:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60812)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan-guix@vodafonemail.de>)
- id 1l17gQ-0003FT-MR; Sun, 17 Jan 2021 08:01:32 -0500
-Received: from smtpout2.vodafonemail.de ([145.253.239.133]:36376)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan-guix@vodafonemail.de>)
- id 1l17gB-0004ov-2L; Sun, 17 Jan 2021 08:01:28 -0500
-Received: from smtp.vodafone.de (unknown [10.2.0.34])
- by smtpout2.vodafonemail.de (Postfix) with ESMTP id E0C4C12453A;
- Sun, 17 Jan 2021 14:00:52 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vodafonemail.de;
- s=vfde-smtpout-mb-15sep; t=1610888452;
- bh=/rza7j/PIZM2aQG/N/JBwdhTsYZXcfWvWO1vmDYvtX4=;
- h=Subject:From:In-Reply-To:Date:Cc:References:To;
- b=a5263tIzLrbcKJG3Y3bebzv8mVUeD67ktn6LUZ+duiZm7kKedcskrWjFygnXOxE8D
- QlILBgA7vUuWvkPkomVx0sLZr7ACWCam9Jq7Td4U3jMOYPOJp/EExbSCLSLjrDZeLN
- Dx5ohpNoKvpAN0FYbMcAm+JURxdsnwrJbhTHdA2c=
-Received: from macbook-pro.kuh-wiese.my-router.de
- (dslb-002-206-141-230.002.206.pools.vodafone-ip.de [2.206.141.230])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by smtp.vodafone.de (Postfix) with ESMTPSA id AB91A141060;
- Sun, 17 Jan 2021 13:00:52 +0000 (UTC)
-Subject: Re: [PATCH 1/1] linux-user/syscall: Fix do_ioctl_ifconf() for 64 bit
- targets.
-Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
-Content-Type: text/html; charset=utf-8
-X-Apple-Auto-Saved: 1
-X-Apple-Mail-Plain-Text-Draft: yes
-From: Stefan <stefan-guix@vodafonemail.de>
-X-Apple-Mail-Remote-Attachments: YES
-X-Apple-Base-Url: x-msg://16/
-In-Reply-To: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
-X-Apple-Windows-Friendly: 1
-Date: Sun, 17 Jan 2021 14:00:41 +0100
-Cc: Laurent Vivier <laurent@vivier.eu>,
- qemu-stable@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <1ADCBF56-A0D6-42AF-A2AF-1824F411397F@vodafonemail.de>
-References: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
-X-Uniform-Type-Identifier: com.apple.mail-draft
-To: qemu-devel@nongnu.org,
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1l1B99-0001fO-Bz
+ for qemu-trivial@nongnu.org; Sun, 17 Jan 2021 11:43:23 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:51707)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1l1B96-0008OO-Og
+ for qemu-trivial@nongnu.org; Sun, 17 Jan 2021 11:43:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1610901798;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=48WKtWO3GLc07dUk+0V7gia0jN9m+GtRLmTQyQFnvYU=;
+ b=iJKBevtUGUqM2GOgwSPYyWxYT3I3xlft+LukjETzz+avKNMyVFNLdvzMHzcGOZuSIpCZUI
+ D68uhViJPpKCK4W3KuVdYqmYOhHJvduEkx1I3DsapJWjtZxvMf4OheJdibQ6NFyoUBYnEG
+ 8kmHdOM/jwPMG+p7LFyAfnoPfXMvqZk=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-134-WjQP1d23MLG6b9J0Yr925w-1; Sun, 17 Jan 2021 11:43:16 -0500
+X-MC-Unique: WjQP1d23MLG6b9J0Yr925w-1
+Received: by mail-ej1-f69.google.com with SMTP id d15so314277ejc.21
+ for <qemu-trivial@nongnu.org>; Sun, 17 Jan 2021 08:43:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=48WKtWO3GLc07dUk+0V7gia0jN9m+GtRLmTQyQFnvYU=;
+ b=ghKyfYQ2bJKF6ihU1wqd35/OhRKH03VNiIYxXF5I6E8ahVqJY/nrU1XcQHEzbaDGLg
+ uUMSTM4Xp/uHABFUHdI/H6Y5dcWkZfXQD8VF9dZa4COVLrpPQxrK0DgS6nc5jEBciBgl
+ Xt3l+hLYddd0B30KoJNIsfAb0FKoDkDmnHxYpPnu5QaR/Jo7yDMDSmLX9JxhsBi9HhxD
+ j7USDDjeYgsslFhIaLwaNo7IaqJ8UOASikDG4Lr17NDHckyThFByk142tL+m1rMgcr7b
+ /ZTTJihNdf5ZV4fULtquGma0O7MaQQPticbbSZeRlak37CpYzWPRVXCImMp8yRnJo1jX
+ KQYg==
+X-Gm-Message-State: AOAM5325vRehbZn7mdKh4mp3rCOqhVxZPSGMi6KfCKuTiEeH3KJToRKk
+ e9W9wRBgGprV5xtoym6MmWcpitoz/YfdAzKshPWZd+QmSJ+Fp6IwH133hYGkc92J07/vUqPOTrI
+ e0SUsXQkmg5snhYvo7g==
+X-Received: by 2002:aa7:cb49:: with SMTP id w9mr17218917edt.357.1610901795010; 
+ Sun, 17 Jan 2021 08:43:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxXP5hQ/yiq9vwwSAfYtXPJ4GPAUp0onPS6aWzPaCRayFs/YnTtHvo/1amWv/2kkn/U5nfM1Q==
+X-Received: by 2002:aa7:cb49:: with SMTP id w9mr17218901edt.357.1610901794816; 
+ Sun, 17 Jan 2021 08:43:14 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id dm1sm2764409edb.72.2021.01.17.08.43.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 17 Jan 2021 08:43:13 -0800 (PST)
+Subject: Re: [PATCH] util/cacheflush: Fix error generated by clang
+To: Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-X-Mailer: Apple Mail (2.3124)
-X-purgate-type: clean
-X-purgate-Ad: Categorized by eleven eXpurgate (R) http://www.eleven.de
-X-purgate: This mail is considered clean (visit http://www.eleven.de for
- further information)
-X-purgate: clean
-X-purgate-size: 619
-X-purgate-ID: 155817::1610888452-00003440-4433C19F/0/0
-Received-SPF: pass client-ip=145.253.239.133;
- envelope-from=stefan-guix@vodafonemail.de; helo=smtpout2.vodafonemail.de
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- MIME_HTML_ONLY=0.1, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01,
+Cc: kuhn.chenqun@huawei.com, zhang.zhanghailiang@huawei.com,
+ Euler Robot <euler.robot@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20210115075656.717957-1-ganqixin@huawei.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <ba0fdc6d-8efa-cbeb-6ebb-8589cd129d64@redhat.com>
+Date: Sun, 17 Jan 2021 17:43:12 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
+MIME-Version: 1.0
+In-Reply-To: <20210115075656.717957-1-ganqixin@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.189,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.252, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
  RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -75,16 +95,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Jan 2021 13:01:35 -0000
+X-List-Received-Date: Sun, 17 Jan 2021 16:43:23 -0000
 
-<html><head></head><body class=3D"ApplePlainTextBody" dir=3D"auto" =
-style=3D"word-wrap: break-word; -webkit-nbsp-mode: space; =
--webkit-line-break: =
-after-white-space;">ping<br><br>http://patchwork.ozlabs.org/project/qemu-d=
-evel/patch/60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de/<br><br>
-<div><br></div><div>Hi!</div><div><br></div><div>I=E2=80=99d like to =
-remind you to this trivial patch to get&nbsp;ioclt(=E2=80=A6, =
-SIOCGIFCONF, =E2=80=A6) working properly on 64 bit target =
-architectures.</div><div><br></div><div><br></div><div>Bye</div><div><br><=
-/div><div>Stefan</div></body></html>=
+On 15/01/21 08:56, Gan Qixin wrote:
+> When compiling qemu-fuzz-i386 on aarch64 host, clang reported the following
+> error:
+> 
+> ../util/cacheflush.c:38:44: error: value size does not match register size
+> specified by the constraint and modifier [-Werror,-Wasm-operand-widths]
+>      asm volatile("mrs\t%0, ctr_el0" : "=r"(save_ctr_el0));
+>                                             ^
+> ../util/cacheflush.c:38:24: note: use constraint modifier "w"
+>      asm volatile("mrs\t%0, ctr_el0" : "=r"(save_ctr_el0));
+>                         ^~
+>                         %w0
+> 
+> Modify the type of save_ctr_el0 to uint64_t to fix it.
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+> ---
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>   util/cacheflush.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/util/cacheflush.c b/util/cacheflush.c
+> index 6a20723902..933355b0c9 100644
+> --- a/util/cacheflush.c
+> +++ b/util/cacheflush.c
+> @@ -32,7 +32,7 @@ void flush_idcache_range(uintptr_t rx, uintptr_t rw, size_t len)
+>    * We want to save the whole contents of CTR_EL0, so that we
+>    * have more than the linesize, but also IDC and DIC.
+>    */
+> -static unsigned int save_ctr_el0;
+> +static uint64_t save_ctr_el0;
+>   static void __attribute__((constructor)) init_ctr_el0(void)
+>   {
+>       asm volatile("mrs\t%0, ctr_el0" : "=r"(save_ctr_el0));
+> @@ -46,9 +46,9 @@ void flush_idcache_range(uintptr_t rx, uintptr_t rw, size_t len)
+>   {
+>       const unsigned CTR_IDC = 1u << 28;
+>       const unsigned CTR_DIC = 1u << 29;
+> -    const unsigned int ctr_el0 = save_ctr_el0;
+> -    const uintptr_t icache_lsize = 4 << extract32(ctr_el0, 0, 4);
+> -    const uintptr_t dcache_lsize = 4 << extract32(ctr_el0, 16, 4);
+> +    const uint64_t ctr_el0 = save_ctr_el0;
+> +    const uintptr_t icache_lsize = 4 << extract64(ctr_el0, 0, 4);
+> +    const uintptr_t dcache_lsize = 4 << extract64(ctr_el0, 16, 4);
+>       uintptr_t p;
+>   
+>       /*
+> 
+
+Queued, thanks.
+
 
