@@ -1,64 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l1XQn-0001zE-9k
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 11:31:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34590)
+	id 1l1YP0-0008GP-Rc
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 12:33:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58644)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l1XQl-0001yz-UJ
- for qemu-trivial@nongnu.org; Mon, 18 Jan 2021 11:31:03 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:40410)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l1XQj-0001Q3-Ba
- for qemu-trivial@nongnu.org; Mon, 18 Jan 2021 11:31:03 -0500
-Received: by mail-ej1-x629.google.com with SMTP id gx5so5284325ejb.7
- for <qemu-trivial@nongnu.org>; Mon, 18 Jan 2021 08:31:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KHDR9AoyqNQgSLghH83t8jh8D3FsnHz2a9SjFqwNyBI=;
- b=CbJcWpP721eqPAtDF1o4XpLeVq6yLSdgTmLrcosvonvOdg2TecO8g9xlB/5NWjx7Oj
- GjOJfIh2hfaXYBtvccax4gAl1Lw591qX8DYVEUbSCZKpkxkZ2/lihb+saFM3wMgOHpSe
- N7u5rjUfbjtQQmivFgrvrBVfc1ZYtrl+8vwsj4S2BytO/rl/K5l+tZx9Nj2rE1Y9i/Uj
- sa1DqcJYwCO9WEWggS65GT7jb3xV52HaX1asB6dqLr252OlXQS6crnIVwuDej/eBznqd
- 4y4VGU70OsKKQsG4Sg/y1eNSeFOgh0Ldx4tj0pFE7Ii2UD+qSXrmHWI1jBwIcVSsPAWS
- UElA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KHDR9AoyqNQgSLghH83t8jh8D3FsnHz2a9SjFqwNyBI=;
- b=EprXK1hz+9rmoFjYfMSDpO0/j7jyIB+vusRiPCUg64MQtyU8jz3KhMeXc/IQeqv9OU
- pDg2/SdKq3N16VonHd0jOzRY431bhJKdAD7kJxZCIrXa6A+sUCeLasLMMZPH9xIrKnd+
- icfbOIlbDFK5h4jIzsYSKHbsqvGS/FYxQGxm+mMbLp9PT0/UHBADMf3SW/GQap7TpVIA
- t9je6IYGq9QdeKufisH6dR+7fz7sisfTdS5v8tZ6eO0wJijDlTFjmWAi8pMoqUNdA6L/
- UT4kiWUV42Oimr0j1enoYNlADtB7ZUMHWSqvoQQYQx9fXOPvp2bvOhb/fiyV1elUEKrJ
- 6Yzg==
-X-Gm-Message-State: AOAM531BJvACcoKHEgmDakyHPdOsNkYuzV+qF/rtPQtYs61M//RqAOBq
- 3eCiH+1HK4MRGJMZhX/jEThJYbwRO/PP6pJ7y18ecg==
-X-Google-Smtp-Source: ABdhPJzAJItOl6oeJB0UNA1uJN9AXKg62jCE39h12D3V0PjE2cVMiWHIXyj0zaYEQLnWZ5p5z85IjkkGwLGk8wv8DQ0=
-X-Received: by 2002:a17:906:2747:: with SMTP id
- a7mr353593ejd.250.1610987459636; 
- Mon, 18 Jan 2021 08:30:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1l1YOz-0008Dn-5u; Mon, 18 Jan 2021 12:33:17 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:58325)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1l1YOu-00062G-0c; Mon, 18 Jan 2021 12:33:16 -0500
+Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MAwPf-1lCK2y1jUv-00BJaI; Mon, 18 Jan 2021 18:33:05 +0100
+Subject: Re: [PATCH v2] linux-user: Remove obsolete F_SHLCK and F_EXLCK
+ translation
+To: Michael Forney <mforney@mforney.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20201028032727.31326-1-mforney@mforney.org>
+ <20210114223602.9004-1-mforney@mforney.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <663b0b8b-4fd3-cdf6-aaa8-0b66f633bcdc@vivier.eu>
+Date: Mon, 18 Jan 2021 18:33:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-References: <20210118113205.1915888-1-laurent@vivier.eu>
-In-Reply-To: <20210118113205.1915888-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Jan 2021 16:30:48 +0000
-Message-ID: <CAFEAcA_Mq5rAimG63fVX7tbJ_S9xvFJ3b3nTMhS2W_gbo5PKXA@mail.gmail.com>
-Subject: Re: [PULL 0/4] Trivial branch for 6.0 patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+In-Reply-To: <20210114223602.9004-1-mforney@mforney.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:eYuEeSUtJMBf6oRKjRvoMtgtwgd1UVWttPP+VOsi9Zm/H249sb8
+ iBOFVipJh1Dk7pi2t44xIyaz052rNO034Henrbl0+KuiYxQ0Mrm8BsyB/QY5g3q/3RpnVAK
+ PQZc7haT4KKfGjudwWYWr/VCYS5XsnS44EbHN0jAM5A2S72kb78Flk/o3Hh/+LmonGj15p/
+ JewUmj0ARU3gHgUO0HQ5g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Bk+64ZYDeT4=:pwzciXtlgdnqfuces9UH3T
+ d8EgFfZ9XTMrNKF5/0CvgKZId1F8VEpZzRVhE8329qcTlQI/lSYS324A6doE7Om6hdZjZ47Vd
+ aj6FWh4ToyF4NaT8eJ8t72iIea9duMTPbgaKCggjBc0qsHLdJ/785U2Xei+ZlrlBZUXVXBF8y
+ 5zvKx4UOKho73QF8bIVArMzNE5vacFhb/kcSHFzW/f0AE+d2gvC3zcDwVla4gaxeQaQwT8sbW
+ ALjdzbuM2L7/K58D1VnK1JjTivpR2XgYqObcnhsYDVWLSXywNhnDxUL/Atp1LT6MZlTT3ILNZ
+ FvUbSf/kvNEev8hmxBIX7ZL31AmjJjvjWl3Fp2m1898zikljCfQIblUkoy/BYhZv6EGvSodah
+ 3JmRbhxUjc1aSWRMWP/2TvbjaSmVxAorQ4L4xhVtCD9qYraJX8SxAmJ8sP0lCG0rJIMpUNTKw
+ 6qNgjx2mqw==
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.194,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,45 +60,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Jan 2021 16:31:04 -0000
+X-List-Received-Date: Mon, 18 Jan 2021 17:33:17 -0000
 
-On Mon, 18 Jan 2021 at 11:34, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit e0cbcf1eea16e81f116560130a1b36da711fb102:
->
->   Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (=
-> 2021-01-17 17:04:40 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.0-pull-request
->
-> for you to fetch changes up to 580e733321511ab4eda7d6ca14ca157d71ea8728:
->
->   hw/ide/ahci: Replace fprintf() by qemu_log_mask(GUEST_ERROR) (2021-01-18 11=
-> :51:26 +0100)
->
-> ----------------------------------------------------------------
-> Trivial patches 20210118
->
-> Fix memory leaks
-> Use qemu_log_mask(GUEST_ERROR) rather than error_report().
->
-> ----------------------------------------------------------------
->
-> Gan Qixin (2):
->   pl031: Use timer_free() in the finalize function to avoid memleaks
->   misc/mos6522: Use timer_free() in the finalize function to avoid
->     memleak
->
-> Philippe Mathieu-Daud=C3=A9 (2):
->   hw/virtio-pci: Replace error_report() by qemu_log_mask(GUEST_ERROR)
->   hw/ide/ahci: Replace fprintf() by qemu_log_mask(GUEST_ERROR)
+Le 14/01/2021 à 23:36, Michael Forney a écrit :
+> These lock types are unsupported by Linux since v2.2[0][1] and
+> always return EINVAL (except on SPARC up until v2.6, which just
+> warned).
+> 
+> musl libc does not define these constants, so just remove them from
+> the translation cases.
+> 
+> [0] https://github.com/mpe/linux-fullhistory/blob/v2.2.0/fs/locks.c#L322-L324
+> [1] https://github.com/mpe/linux-fullhistory/blob/v2.2.0/fs/locks.c#L429-L445
+> 
+> Signed-off-by: Michael Forney <mforney@mforney.org>
+> ---
+> Changes since v1: fixed typo in commit message, resend to qemu-trivial.
+> 
+>  linux-user/alpha/target_fcntl.h | 2 --
+>  linux-user/generic/fcntl.h      | 5 -----
+>  linux-user/syscall.c            | 2 --
+>  3 files changed, 9 deletions(-)
+> 
+> diff --git a/linux-user/alpha/target_fcntl.h b/linux-user/alpha/target_fcntl.h
+> index 2617e73472..e16ed1d415 100644
+> --- a/linux-user/alpha/target_fcntl.h
+> +++ b/linux-user/alpha/target_fcntl.h
+> @@ -33,8 +33,6 @@
+>  #define TARGET_F_RDLCK         1
+>  #define TARGET_F_WRLCK         2
+>  #define TARGET_F_UNLCK         8
+> -#define TARGET_F_EXLCK         16
+> -#define TARGET_F_SHLCK         32
+>  
+>  #include "../generic/fcntl.h"
+>  #endif
+> diff --git a/linux-user/generic/fcntl.h b/linux-user/generic/fcntl.h
+> index c85c5b9fed..4568d1f42b 100644
+> --- a/linux-user/generic/fcntl.h
+> +++ b/linux-user/generic/fcntl.h
+> @@ -119,11 +119,6 @@ struct target_f_owner_ex {
+>  #define TARGET_F_UNLCK         2
+>  #endif
+>  
+> -#ifndef TARGET_F_EXLCK
+> -#define TARGET_F_EXLCK         4
+> -#define TARGET_F_SHLCK         8
+> -#endif
+> -
+>  #ifndef TARGET_HAVE_ARCH_STRUCT_FLOCK
+>  #ifndef TARGET_ARCH_FLOCK_PAD
+>  #define TARGET_ARCH_FLOCK_PAD
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index d182890ff0..f238edf715 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -6664,8 +6664,6 @@ static int target_to_host_fcntl_cmd(int cmd)
+>      TRANSTBL_CONVERT(F_RDLCK); \
+>      TRANSTBL_CONVERT(F_WRLCK); \
+>      TRANSTBL_CONVERT(F_UNLCK); \
+> -    TRANSTBL_CONVERT(F_EXLCK); \
+> -    TRANSTBL_CONVERT(F_SHLCK); \
+>      }
+>  
+>  static int target_to_host_flock(int type)
+> 
 
-Applied, thanks.
+Applied to my linux-user-for-6.0 branch.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/6.0
-for any user-visible changes.
+Thanks,
+Laurent
 
--- PMM
 
