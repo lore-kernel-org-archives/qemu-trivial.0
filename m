@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l1V85-0002xL-Js
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 09:03:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45994)
+	id 1l1WWa-0000xk-5M
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 10:33:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43846)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l1V83-0002uj-Hl; Mon, 18 Jan 2021 09:03:35 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:49583)
+ id 1l1WWY-0000w7-OP; Mon, 18 Jan 2021 10:32:58 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:49021)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l1V7y-0000ua-HN; Mon, 18 Jan 2021 09:03:35 -0500
+ id 1l1WWW-000179-Lm; Mon, 18 Jan 2021 10:32:58 -0500
 Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MN4ux-1lHmxM3Ebl-00J4WB; Mon, 18 Jan 2021 15:03:25 +0100
-Subject: Re: [PATCH 1/1] linux-user/syscall: Fix do_ioctl_ifconf() for 64 bit
- targets.
-To: Stefan <stefan-guix@vodafonemail.de>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: qemu-stable@nongnu.org
-References: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MvJsF-1lryib4A77-00rIAl; Mon, 18 Jan 2021 16:32:53 +0100
+Subject: Re: [PATCH v2] linux-user: Remove obsolete F_SHLCK and F_EXLCK
+ translation
+To: Michael Forney <mforney@mforney.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20201028032727.31326-1-mforney@mforney.org>
+ <20210114223602.9004-1-mforney@mforney.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <57408fa3-8201-b8b5-aa8d-50448a010f43@vivier.eu>
-Date: Mon, 18 Jan 2021 15:03:24 +0100
+Message-ID: <ab02f165-21ae-1d6f-ebf6-c9a32b4ec424@vivier.eu>
+Date: Mon, 18 Jan 2021 16:32:51 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
+In-Reply-To: <20210114223602.9004-1-mforney@mforney.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5JOWgh5VSgf59pRBkIIxIqCsIbVBxh3f1FstNrxe0qV6GJ4STHQ
- 24rOe2LJLYPafqbHg0G1HVgkQwLVhuYDP3REjXft44IC1i+kIJDE/5BlzgRqBbyuuhpVsVP
- K/NVnUEELQra8kDRKIDyhakNVhQAf7Hretr659TnQBFy3Cp9JeI/3yCirX9MXh6k8oSPg/u
- fnj2/tJOZcNjeEJwfEeUQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:W6pa453V+vw=:TlwS8fpOfVChEY3SXU/GLR
- SkPjJzMQ77gR6jfzn7uAK+Gzc7RC5WE9r4P/YkSAa0bHjJxrKNQThWqq3Zs4jwX2sc2OeAVPG
- fnT0qdzB+bws5YWgsjU9fVjYrTITTvI6s9Q+SnXyHDUbn4rnaf7gBHQWGfIkvHdL9fvJ1vb6r
- xRjpzJ/+obUVAULQXIMlxkjOwaer6Js6DP/t36+iczzQgzCQapdxQfa2ciIB9suI32lBbcFZf
- bKRmYtHd8OHqLCsr6FbkYGvm1wQ8JFU0EqItNpMc4m1bnKAourP+Lw6ad9Y6IczSztm88fwew
- JV8jqv0331Y6NSIIevf1auudTLgaR0ZSIIsrTO4tnrCilOo/nH4wdI20Vm8U4M+NkfmMG4Tm3
- RKr7UN3MsEYJOCgOGWJLB+ITArxrRK48Uh0PE9udTOTZyzElqPLrxXV66Nbl4uuWPv9Xs137w
- INcjrRd3Pw==
+X-Provags-ID: V03:K1:sIjgJcuFdFf7dCVf33abFgt1eDMb7ZKJ/WZffbTS6XwZTkULcTi
+ 8TzK9+2dcTTRfP5oqdIzN+knDYvj584g7tzyjqfaRSnspwJ2OnI/uriKPYrb5NqT5PEbS+m
+ YFtBaseW+j+aTHmAyLZyvIHM3ZZx4RtGBFiP6JJoWD/HUjDY8SW0ORjoLZnFp2/al7BIMT6
+ C0sE4RmUeWZ56ZahIzeQw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pU0UyofcXnc=:7QIS+HpEPJSsCUiIGz/Vsu
+ qkHrN1UBOZCdDtgzNXypgIt12Ygj4tkqXIGaF7v6ZkLoLuL5JyD3uWKTBpQDqedStdDH5iTF9
+ Xc5apOyGBJ1Knq1MzDHX4RJfBBK+LerO8UZ+McYRYFjF9VFjjuNO5fWPQa2kmpsyOy/rguFmN
+ uk9Oa+m/Q091t92Ivn87RDGzS8lPtBUM0sfhxOvmXX050WH/Bx0BVpUTyM+Xgm8/ss/oOA7nV
+ hEPttMbZeP9hJ76GhKJWs5RepSZ4Y7LT+Z1/BI/6zEMWAPYS+RjebXmYS7sHvADyd7Nrrw37H
+ fK3SruIKOoMxGh0CJOnHsmv/Wcaawvzg5vYRsJ6tdU00B3cLctZdMwwxhf+8ihRQaC+QLkg1h
+ buNvzMfsjtxhIi9UYToaYINkNsD1gUGIXw4TApguKmX7xgBrJirYrNGay11MzJTR1Qh1cYD+C
+ 3FLCWsQZXA==
 Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -20
@@ -60,57 +60,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Jan 2021 14:03:35 -0000
+X-List-Received-Date: Mon, 18 Jan 2021 15:32:59 -0000
 
-Le 09/01/2021 à 19:59, Stefan a écrit :
-> The sizeof(struct ifreq) is 40 for 64 bit and 32 for 32 bit architectures.
-> This structure contains a union of other structures, of which struct ifmap
-> is the biggest for 64 bit architectures. Calling ioclt(…, SIOCGIFCONF, …)
-> fills a struct sockaddr of that union, and do_ioctl_ifconf() only considered
-> that struct sockaddr for the size of the union, which has the same size as
-> struct ifmap on 32 bit architectures. So do_ioctl_ifconf() assumed a wrong
-> size of 32 for struct ifreq instead of the correct size of 40 on 64 bit
-> architectures.
+Le 14/01/2021 à 23:36, Michael Forney a écrit :
+> These lock types are unsupported by Linux since v2.2[0][1] and
+> always return EINVAL (except on SPARC up until v2.6, which just
+> warned).
 > 
-> The fix makes do_ioctl_ifconf() handle struct ifmap as the biggest part of
-> the union, treating struct ifreq with the correct size.
+> musl libc does not define these constants, so just remove them from
+> the translation cases.
 > 
-> Signed-off-by: Stefan <stefan-guix@vodafonemail.de>
+> [0] https://github.com/mpe/linux-fullhistory/blob/v2.2.0/fs/locks.c#L322-L324
+> [1] https://github.com/mpe/linux-fullhistory/blob/v2.2.0/fs/locks.c#L429-L445
+> 
+> Signed-off-by: Michael Forney <mforney@mforney.org>
 > ---
->   linux-user/syscall.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+> Changes since v1: fixed typo in commit message, resend to qemu-trivial.
 > 
+>  linux-user/alpha/target_fcntl.h | 2 --
+>  linux-user/generic/fcntl.h      | 5 -----
+>  linux-user/syscall.c            | 2 --
+>  3 files changed, 9 deletions(-)
+> 
+> diff --git a/linux-user/alpha/target_fcntl.h b/linux-user/alpha/target_fcntl.h
+> index 2617e73472..e16ed1d415 100644
+> --- a/linux-user/alpha/target_fcntl.h
+> +++ b/linux-user/alpha/target_fcntl.h
+> @@ -33,8 +33,6 @@
+>  #define TARGET_F_RDLCK         1
+>  #define TARGET_F_WRLCK         2
+>  #define TARGET_F_UNLCK         8
+> -#define TARGET_F_EXLCK         16
+> -#define TARGET_F_SHLCK         32
+>  
+>  #include "../generic/fcntl.h"
+>  #endif
+> diff --git a/linux-user/generic/fcntl.h b/linux-user/generic/fcntl.h
+> index c85c5b9fed..4568d1f42b 100644
+> --- a/linux-user/generic/fcntl.h
+> +++ b/linux-user/generic/fcntl.h
+> @@ -119,11 +119,6 @@ struct target_f_owner_ex {
+>  #define TARGET_F_UNLCK         2
+>  #endif
+>  
+> -#ifndef TARGET_F_EXLCK
+> -#define TARGET_F_EXLCK         4
+> -#define TARGET_F_SHLCK         8
+> -#endif
+> -
+>  #ifndef TARGET_HAVE_ARCH_STRUCT_FLOCK
+>  #ifndef TARGET_ARCH_FLOCK_PAD
+>  #define TARGET_ARCH_FLOCK_PAD
 > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index d182890ff0..15a6abadc1 100644
+> index d182890ff0..f238edf715 100644
 > --- a/linux-user/syscall.c
 > +++ b/linux-user/syscall.c
-> @@ -4902,6 +4902,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
->       struct ifconf *host_ifconf;
->       uint32_t outbufsz;
->       const argtype ifreq_arg_type[] = { MK_STRUCT(STRUCT_sockaddr_ifreq) };
-> +    const argtype ifreq_max_type[] = { MK_STRUCT(STRUCT_ifmap_ifreq) };
-
-Why don't you simply replace STRUCT_sockaddr_ifreq by STRUCT_ifmap_ifreq rather than introducing a
-new constant?
-
->       int target_ifreq_size;
->       int nb_ifreq;
->       int free_buf = 0;
-> @@ -4925,7 +4926,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
->   
->       host_ifconf = (struct ifconf *)(unsigned long)buf_temp;
->       target_ifc_buf = (abi_long)(unsigned long)host_ifconf->ifc_buf;
-> -    target_ifreq_size = thunk_type_size(ifreq_arg_type, 0);
-> +    target_ifreq_size = thunk_type_size(ifreq_max_type, 0);
->   
->       if (target_ifc_buf != 0) {
->           target_ifc_len = host_ifconf->ifc_len;
+> @@ -6664,8 +6664,6 @@ static int target_to_host_fcntl_cmd(int cmd)
+>      TRANSTBL_CONVERT(F_RDLCK); \
+>      TRANSTBL_CONVERT(F_WRLCK); \
+>      TRANSTBL_CONVERT(F_UNLCK); \
+> -    TRANSTBL_CONVERT(F_EXLCK); \
+> -    TRANSTBL_CONVERT(F_SHLCK); \
+>      }
+>  
+>  static int target_to_host_flock(int type)
 > 
 
-In the "if (!is_error(ret))", why don't you use the same size with the part that copies back the
-values to the user?
-
-Thanks,
-Laurent
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
