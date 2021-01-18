@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l1OVd-00078y-KB
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 01:59:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36592)
+	id 1l1Sld-0007ky-Ip
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 06:32:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1l1OVc-00076l-0a; Mon, 18 Jan 2021 01:59:28 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3035)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1l1Slb-0007jO-QW; Mon, 18 Jan 2021 06:32:15 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:34353)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1l1OVZ-00071M-7h; Mon, 18 Jan 2021 01:59:27 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DK2g04QfPzj8nX;
- Mon, 18 Jan 2021 14:58:04 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.498.0; Mon, 18 Jan 2021
- 14:59:02 +0800
-From: Gan Qixin <ganqixin@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <kuhn.chenqun@huawei.com>, <zhang.zhanghailiang@huawei.com>, Gan Qixin
- <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>, Hao Wu
- <wuhaotsh@google.com>, Havard Skinnemoen <hskinnemoen@google.com>, "Tyrone
- Ting" <kfting@nuvoton.com>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
- <lvivier@redhat.com>
-Subject: [PATCH] npcm7xx_adc-test: Fix memleak in adc_qom_set
-Date: Mon, 18 Jan 2021 14:56:27 +0800
-Message-ID: <20210118065627.79903-1-ganqixin@huawei.com>
-X-Mailer: git-send-email 2.27.0
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1l1Sla-0000N7-0L; Mon, 18 Jan 2021 06:32:15 -0500
+Received: from localhost.localdomain ([82.252.149.54]) by
+ mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1MGhds-1lFA8O0mMU-00DnXP; Mon, 18 Jan 2021 12:32:10 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org
+Subject: [PULL 0/4] Trivial branch for 6.0 patches
+Date: Mon, 18 Jan 2021 12:32:01 +0100
+Message-Id: <20210118113205.1915888-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=ganqixin@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:5Gc967od3dN+OGgcQwtX/qPdD2y2V4G6Vjjf3AFzflsxG7RJoVe
+ dJC1WYLeYUeH1tggFu73/ZnPQwH96j3uZRVrb/fCDMV9V6AeIoXtN8MHEzO06jsdQ1gUY08
+ DOd1oHwUTxaZd4G/gKQhm8K3bPYo3vylI29M7r+gezUYLolnnaldtAL70SpYe6oHHX88hHF
+ L/88wTU1mZ/2vzzpzo9Ww==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:83EzG334xOI=:wJerRRQ54DKSrWBOKTpXZn
+ q3xvrwZ7+gv/yW6lsTxsBZAka9ftY0XVkjHG13ZHpeR4OL5G5BkbXXZKt0iFwtw8ryY+pmJMy
+ jlFZXF+FBpgeDt5RyGC3Qvd+Pqn3JXx9sivhSAOaSohGy5G3XdZXF8t5gwMzhhbeZ13GMYknu
+ gLEzAVL22qdpseyZqLurxZZrnPh5MWidYX5sH68y/e+lpWFPHNBtcTZHhml0n2i3N1Dt+D9bN
+ T57MgmA1MW/X4VjbB0zW9TPJ0IBwLDORMgU7OqXZ966J0RsI2uXmPuebjGVWfnFwEadeprfsB
+ YJf+KzLzjeVTr+8Csh2A/gVtiGdHzsX1A/EPYCt1Dp9ULMixgb4cFLEfUC/BDpJJNvWutMmY1
+ SP8c3bnXaqoZEsD+D1SjSH1uMByGIKDB6BjJb+D6w0yFuaxF+XWvJulQaxkur
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -51,58 +54,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Jan 2021 06:59:28 -0000
+X-List-Received-Date: Mon, 18 Jan 2021 11:32:16 -0000
 
-The adc_qom_set function didn't free "response", which caused an indirect
-memory leak. So use qobject_unref() to fix it.
-
-ASAN shows memory leak stack:
-
-Indirect leak of 593280 byte(s) in 144 object(s) allocated from:
-    #0 0x7f9a5e7e8d4e in __interceptor_calloc (/lib64/libasan.so.5+0x112d4e)
-    #1 0x7f9a5e607a50 in g_malloc0 (/lib64/libglib-2.0.so.0+0x55a50)
-    #2 0x55b1bebf636b in qdict_new ../qobject/qdict.c:30
-    #3 0x55b1bec09699 in parse_object ../qobject/json-parser.c:318
-    #4 0x55b1bec0b2df in parse_value ../qobject/json-parser.c:546
-    #5 0x55b1bec0b6a9 in json_parser_parse ../qobject/json-parser.c:580
-    #6 0x55b1bec060d1 in json_message_process_token ../qobject/json-streamer.c:92
-    #7 0x55b1bec16a12 in json_lexer_feed_char ../qobject/json-lexer.c:313
-    #8 0x55b1bec16fbd in json_lexer_feed ../qobject/json-lexer.c:350
-    #9 0x55b1bec06453 in json_message_parser_feed ../qobject/json-streamer.c:121
-    #10 0x55b1bebc2d51 in qmp_fd_receive ../tests/qtest/libqtest.c:614
-    #11 0x55b1bebc2f5e in qtest_qmp_receive_dict ../tests/qtest/libqtest.c:636
-    #12 0x55b1bebc2e6c in qtest_qmp_receive ../tests/qtest/libqtest.c:624
-    #13 0x55b1bebc3340 in qtest_vqmp ../tests/qtest/libqtest.c:715
-    #14 0x55b1bebc3942 in qtest_qmp ../tests/qtest/libqtest.c:756
-    #15 0x55b1bebbd64a in adc_qom_set ../tests/qtest/npcm7xx_adc-test.c:127
-    #16 0x55b1bebbd793 in adc_write_input ../tests/qtest/npcm7xx_adc-test.c:140
-    #17 0x55b1bebbdf92 in test_convert_external ../tests/qtest/npcm7xx_adc-test.c:246
-
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
----
-Cc: Hao Wu <wuhaotsh@google.com>
-Cc: Havard Skinnemoen <hskinnemoen@google.com>
-Cc: Tyrone Ting <kfting@nuvoton.com>
-Cc: Thomas Huth <thuth@redhat.com>
-Cc: Laurent Vivier <lvivier@redhat.com>
----
- tests/qtest/npcm7xx_adc-test.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/tests/qtest/npcm7xx_adc-test.c b/tests/qtest/npcm7xx_adc-test.c
-index f029706945..5ce8ce13b3 100644
---- a/tests/qtest/npcm7xx_adc-test.c
-+++ b/tests/qtest/npcm7xx_adc-test.c
-@@ -129,6 +129,7 @@ static void adc_qom_set(QTestState *qts, const ADC *adc,
-             path, name, value);
-     /* The qom set message returns successfully. */
-     g_assert_true(qdict_haskey(response, "return"));
-+    qobject_unref(response);
- }
- 
- static void adc_write_input(QTestState *qts, const ADC *adc,
--- 
-2.27.0
-
+The following changes since commit e0cbcf1eea16e81f116560130a1b36da711fb102=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging=
+ (=3D=0D
+2021-01-17 17:04:40 +0000)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  git://github.com/vivier/qemu.git tags/trivial-branch-for-6.0-pull-request=
+=0D
+=0D
+for you to fetch changes up to 580e733321511ab4eda7d6ca14ca157d71ea8728:=0D
+=0D
+  hw/ide/ahci: Replace fprintf() by qemu_log_mask(GUEST_ERROR) (2021-01-18 =
+11=3D=0D
+:51:26 +0100)=0D
+=0D
+----------------------------------------------------------------=0D
+Trivial patches 20210118=0D
+=0D
+Fix memory leaks=0D
+Use qemu_log_mask(GUEST_ERROR) rather than error_report().=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Gan Qixin (2):=0D
+  pl031: Use timer_free() in the finalize function to avoid memleaks=0D
+  misc/mos6522: Use timer_free() in the finalize function to avoid=0D
+    memleak=0D
+=0D
+Philippe Mathieu-Daud=3DC3=3DA9 (2):=0D
+  hw/virtio-pci: Replace error_report() by qemu_log_mask(GUEST_ERROR)=0D
+  hw/ide/ahci: Replace fprintf() by qemu_log_mask(GUEST_ERROR)=0D
+=0D
+ hw/ide/ahci.c          | 8 +++++---=0D
+ hw/misc/mos6522.c      | 9 +++++++++=0D
+ hw/rtc/pl031.c         | 8 ++++++++=0D
+ hw/virtio/virtio-pci.c | 6 ++++--=0D
+ 4 files changed, 26 insertions(+), 5 deletions(-)=0D
+=0D
+--=3D20=0D
+2.29.2=0D
+=0D
 
