@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l1Sm4-000844-Eo
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 06:32:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57306)
+	id 1l1V85-0002xL-Js
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 09:03:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l1Slz-0007zA-IK; Mon, 18 Jan 2021 06:32:40 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:39895)
+ id 1l1V83-0002uj-Hl; Mon, 18 Jan 2021 09:03:35 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:49583)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l1Sls-0000Up-1O; Mon, 18 Jan 2021 06:32:39 -0500
-Received: from localhost.localdomain ([82.252.149.54]) by
- mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M8QBa-1l5qTm2V2e-004PbN; Mon, 18 Jan 2021 12:32:14 +0100
+ id 1l1V7y-0000ua-HN; Mon, 18 Jan 2021 09:03:35 -0500
+Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MN4ux-1lHmxM3Ebl-00J4WB; Mon, 18 Jan 2021 15:03:25 +0100
+Subject: Re: [PATCH 1/1] linux-user/syscall: Fix do_ioctl_ifconf() for 64 bit
+ targets.
+To: Stefan <stefan-guix@vodafonemail.de>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: qemu-stable@nongnu.org
+References: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
 From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, Gan Qixin <ganqixin@huawei.com>,
- Euler Robot <euler.robot@huawei.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 3/4] misc/mos6522: Use timer_free() in the finalize function to
- avoid memleak
-Date: Mon, 18 Jan 2021 12:32:04 +0100
-Message-Id: <20210118113205.1915888-4-laurent@vivier.eu>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210118113205.1915888-1-laurent@vivier.eu>
-References: <20210118113205.1915888-1-laurent@vivier.eu>
+Message-ID: <57408fa3-8201-b8b5-aa8d-50448a010f43@vivier.eu>
+Date: Mon, 18 Jan 2021 15:03:24 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
+In-Reply-To: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:kOWuMus3UQdj1CwohTTwUIPfE1m0cm3AIDrkUyZ5H6hTcmWKVST
- /kyRw1MHAi1GwnCs0lbahJk6T7ekOJk8ie+vLv1X6H43at/OrLAwv85ukLmIw74RPsSI3lH
- 9Xxl32mYvm+riF9CNIfoSG2S6UNMZCb0FNW61nwBZH73GNkbFUeSlJD6JIvqlsYhzcLaAod
- 2znZeiVJVI5KQAoBMHnmA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lG7wYzcJ/iY=:4J/0kcaZR0jW7saUY72tu0
- TMcKGUwxB3ajJRILi8V9u2yFvmx+QJZil8h2AVcK9+NPT6DV6mmqpu3CJ/9Av3Rq6srY3wsEy
- /e53T3EJENkNHd9xffeXngFYnm9DGekogWsoeBIzukSN3QGRyhiZZLDVOWAgIGvMxivpeyHfS
- Mo7UaUPiLmvSTYUt/gPFtWLW3pcFDDzqlxJSc8wGmzjXwpMBFgsPDT70Fvy+FgXEz3pooa7Tz
- BiV+BzDG4PxE3w5AwxDJht/v+FI/x9DSGKyyu9oYifjuviL9oi+16pdPVQ6l+uwiZJWdrpZjd
- 1tyEUfkAVSN+xDNs2OJqbN+fRxWgHfsclQWj/ZueVADq71w00wMB+fnWrAzh8FguKl779J6z2
- TkL/9xhKYY9eTttGqUAy4XWqxH0wIum43ICilUyWSKxu1QKa46Lek8SLutiBwXxH09lfe9NVm
- IZC1FPQxRQ==
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:5JOWgh5VSgf59pRBkIIxIqCsIbVBxh3f1FstNrxe0qV6GJ4STHQ
+ 24rOe2LJLYPafqbHg0G1HVgkQwLVhuYDP3REjXft44IC1i+kIJDE/5BlzgRqBbyuuhpVsVP
+ K/NVnUEELQra8kDRKIDyhakNVhQAf7Hretr659TnQBFy3Cp9JeI/3yCirX9MXh6k8oSPg/u
+ fnj2/tJOZcNjeEJwfEeUQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:W6pa453V+vw=:TlwS8fpOfVChEY3SXU/GLR
+ SkPjJzMQ77gR6jfzn7uAK+Gzc7RC5WE9r4P/YkSAa0bHjJxrKNQThWqq3Zs4jwX2sc2OeAVPG
+ fnT0qdzB+bws5YWgsjU9fVjYrTITTvI6s9Q+SnXyHDUbn4rnaf7gBHQWGfIkvHdL9fvJ1vb6r
+ xRjpzJ/+obUVAULQXIMlxkjOwaer6Js6DP/t36+iczzQgzCQapdxQfa2ciIB9suI32lBbcFZf
+ bKRmYtHd8OHqLCsr6FbkYGvm1wQ8JFU0EqItNpMc4m1bnKAourP+Lw6ad9Y6IczSztm88fwew
+ JV8jqv0331Y6NSIIevf1auudTLgaR0ZSIIsrTO4tnrCilOo/nH4wdI20Vm8U4M+NkfmMG4Tm3
+ RKr7UN3MsEYJOCgOGWJLB+ITArxrRK48Uh0PE9udTOTZyzElqPLrxXV66Nbl4uuWPv9Xs137w
+ INcjrRd3Pw==
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.194,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,68 +60,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Jan 2021 11:32:41 -0000
+X-List-Received-Date: Mon, 18 Jan 2021 14:03:35 -0000
 
-From: Gan Qixin <ganqixin@huawei.com>
+Le 09/01/2021 à 19:59, Stefan a écrit :
+> The sizeof(struct ifreq) is 40 for 64 bit and 32 for 32 bit architectures.
+> This structure contains a union of other structures, of which struct ifmap
+> is the biggest for 64 bit architectures. Calling ioclt(…, SIOCGIFCONF, …)
+> fills a struct sockaddr of that union, and do_ioctl_ifconf() only considered
+> that struct sockaddr for the size of the union, which has the same size as
+> struct ifmap on 32 bit architectures. So do_ioctl_ifconf() assumed a wrong
+> size of 32 for struct ifreq instead of the correct size of 40 on 64 bit
+> architectures.
+> 
+> The fix makes do_ioctl_ifconf() handle struct ifmap as the biggest part of
+> the union, treating struct ifreq with the correct size.
+> 
+> Signed-off-by: Stefan <stefan-guix@vodafonemail.de>
+> ---
+>   linux-user/syscall.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index d182890ff0..15a6abadc1 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -4902,6 +4902,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
+>       struct ifconf *host_ifconf;
+>       uint32_t outbufsz;
+>       const argtype ifreq_arg_type[] = { MK_STRUCT(STRUCT_sockaddr_ifreq) };
+> +    const argtype ifreq_max_type[] = { MK_STRUCT(STRUCT_ifmap_ifreq) };
 
-When running device-introspect-test, a memory leak occurred in the mos6522_init
-function, this patch use timer_free() in the finalize function to fix it.
+Why don't you simply replace STRUCT_sockaddr_ifreq by STRUCT_ifmap_ifreq rather than introducing a
+new constant?
 
-ASAN shows memory leak stack:
+>       int target_ifreq_size;
+>       int nb_ifreq;
+>       int free_buf = 0;
+> @@ -4925,7 +4926,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
+>   
+>       host_ifconf = (struct ifconf *)(unsigned long)buf_temp;
+>       target_ifc_buf = (abi_long)(unsigned long)host_ifconf->ifc_buf;
+> -    target_ifreq_size = thunk_type_size(ifreq_arg_type, 0);
+> +    target_ifreq_size = thunk_type_size(ifreq_max_type, 0);
+>   
+>       if (target_ifc_buf != 0) {
+>           target_ifc_len = host_ifconf->ifc_len;
+> 
 
-Direct leak of 96 byte(s) in 2 object(s) allocated from:
-    #0 0xfffd5fe9e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
-    #1 0xfffd5f7b6800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
-    #2 0xaaae50303d0c in timer_new_full qemu/include/qemu/timer.h:523
-    #3 0xaaae50303d0c in timer_new qemu/include/qemu/timer.h:544
-    #4 0xaaae50303d0c in timer_new_ns qemu/include/qemu/timer.h:562
-    #5 0xaaae50303d0c in mos6522_init qemu/hw/misc/mos6522.c:490
-    #6 0xaaae50b77d70 in object_init_with_type qemu/qom/object.c:371
-    #7 0xaaae50b7ae84 in object_initialize_with_type qemu/qom/object.c:515
-    #8 0xaaae50b7b0f8 in object_new_with_type qemu/qom/object.c:729
-    #9 0xaaae50bb6d58 in qmp_device_list_properties qemu/qom/qom-qmp-cmds.c:153
-    #10 0xaaae50d7e1dc in qmp_marshal_device_list_properties qemu/qapi/qapi-commands-qdev.c:59
-    #11 0xaaae50dc87a0 in do_qmp_dispatch_bh qemu/qapi/qmp-dispatch.c:110
-    #12 0xaaae50d931a0 in aio_bh_call qemu/util/async.c:136
+In the "if (!is_error(ret))", why don't you use the same size with the part that copies back the
+values to the user?
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20210112112705.380534-3-ganqixin@huawei.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/misc/mos6522.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
-index ac4cd1d58ebe..1c57332b4004 100644
---- a/hw/misc/mos6522.c
-+++ b/hw/misc/mos6522.c
-@@ -490,6 +490,14 @@ static void mos6522_init(Object *obj)
-     s->timers[1].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, mos6522_timer2, s);
- }
- 
-+static void mos6522_finalize(Object *obj)
-+{
-+    MOS6522State *s = MOS6522(obj);
-+
-+    timer_free(s->timers[0].timer);
-+    timer_free(s->timers[1].timer);
-+}
-+
- static Property mos6522_properties[] = {
-     DEFINE_PROP_UINT64("frequency", MOS6522State, frequency, 0),
-     DEFINE_PROP_END_OF_LIST()
-@@ -519,6 +527,7 @@ static const TypeInfo mos6522_type_info = {
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(MOS6522State),
-     .instance_init = mos6522_init,
-+    .instance_finalize = mos6522_finalize,
-     .abstract = true,
-     .class_size = sizeof(MOS6522DeviceClass),
-     .class_init = mos6522_class_init,
--- 
-2.29.2
+Thanks,
+Laurent
 
 
