@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l1Slm-0007sy-FV
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 06:32:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57256)
+	id 1l1Sm3-00082R-VB
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 06:32:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l1Sli-0007qN-3f; Mon, 18 Jan 2021 06:32:22 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:32835)
+ id 1l1Slt-0007y7-Rb; Mon, 18 Jan 2021 06:32:36 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:55349)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l1Slg-0000Q0-Ez; Mon, 18 Jan 2021 06:32:21 -0500
+ id 1l1Slm-0000TW-Lg; Mon, 18 Jan 2021 06:32:33 -0500
 Received: from localhost.localdomain ([82.252.149.54]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MlO9r-1lkOos0m7x-00llJE; Mon, 18 Jan 2021 12:32:15 +0100
+ id 1MStOy-1lTQId0hFW-00UMz1; Mon, 18 Jan 2021 12:32:13 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 4/4] hw/ide/ahci: Replace fprintf() by
- qemu_log_mask(GUEST_ERROR)
-Date: Mon, 18 Jan 2021 12:32:05 +0100
-Message-Id: <20210118113205.1915888-5-laurent@vivier.eu>
+ qemu-trivial@nongnu.org, Gan Qixin <ganqixin@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 2/4] pl031: Use timer_free() in the finalize function to avoid
+ memleaks
+Date: Mon, 18 Jan 2021 12:32:03 +0100
+Message-Id: <20210118113205.1915888-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210118113205.1915888-1-laurent@vivier.eu>
 References: <20210118113205.1915888-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:75/DxdI5dAfrV67DyZ6ZftfY9vcFxZNe2ENnwHOvirp+DuRAj6s
- 1KFBKiB/zwwbx4XlEbp6PxFmuaMZX4UfmnbtBp25LE6287f1CxFGQDl+RE8nBqkSxNEnrH1
- ZClgKBA12YJvWjOLYtg4nyFYrG6V10EGfAzaa+Lc6KrXVznZWZqInDuXUcemOqlr3l9nJjK
- C/bqu2F+IrubHGqs4SSWg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Oo18ZwQLkMk=:/Nh1sYK8HD5tVrPOh9iQD0
- EF/833396CidPRsf6M0sENKI720BEfbldlRMaO2PpbDa++rTlvQewqoDA9fvDfrnxdpWKGGpj
- nt0aIOeJS1BG5pZ3GxJjG5aHFCmhQjXEhvLYsMSjOEymXBZ3umZd84NUE0lBLBPNGY30Bac4c
- mpewhFAl5257Piq5wT+QkWipLgL6KVx8QKNhdNUu4H5/fx14Cx9tX/mKgDxf4mVSrFKhxDMyS
- outkzLzoEf1ga9EgTLjJzFPQsXJ+ifgNRylr/JAvtvXQvCicT+8HurAVkg8YtxAucjzUNpFBY
- S9DMkqLDjpkRIR+MY5/DrhHkPPGu9/8PDazRQHgqiHLqUVXLO/AjmGZXilkTChnrEOVBmDwhC
- kleESefjsL+W39BQFzf1ibDrN3VohPRzzMXDSN6AHX5TMFq1q9ATNz/m9RpXLqrPvSc8zFcz1
- QYkhABlAPQ==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ZiGxvzKsj0KAfmOmtibw21jlgd3fohYDzstTPc9Hatb1Di5QVvx
+ B2+/MQnGJynWgmrl6brgUyAtYSXa6iQ/N6p9H9gfm0Mwh9QksWZDlDoFDd/xCx/48SBLp6w
+ ZPKFzWUFM1pqy8W7jyBUlsbNPHdA+8fGJRdnyScD2CrUm9LdlTfiAom8hWSCwK/SOnOGoqC
+ 9Qn4Y8V53fYlp1BvGyIWA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:061fqQGQQH0=:VdiZ+EudP3JydSwB2Ztj7N
+ CSN0vC9vPlh+CsjU96bbWajpEVwbi6UCw4KNNmKtu1EHbkOpIdYtWD26T3UwVAeVlYEtPPtTJ
+ MmNGILeqhNH7g+HTO2jXjrPGYoFffxqyx/xBYH+s210AMetBrTc2LqTpg4bCbPZR5bWJrrzqX
+ 72+1XBOtVAyO0fUfVOtLcC/gmBRjB8RN4Ly+1c7jCh604J6Ybll2VQfyQJREg50bn2eF8D4q8
+ ImrVyGZqykwcOH5u90pE7EJtKUkV/uZdWrNiZRIlttbZ9bbJcqhjgeuB3Yswx9mBS83P2RMb6
+ NsuzoPBhUEDQCAgvcvvXfPhFU9HUAO2ey+B2u1vE+cdIjy5yCGWO4FyQ0co0CoMH2aeITBjRX
+ y/IyZdEp1JaohDVkJ5+7IWPyCnBfd7wr/WwAycCM8ZGJSkPOZ6EHQsCidnImD
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,45 +58,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Jan 2021 11:32:24 -0000
+X-List-Received-Date: Mon, 18 Jan 2021 11:32:40 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Gan Qixin <ganqixin@huawei.com>
 
-Replace fprintf() calls by qemu_log_mask(LOG_GUEST_ERROR).
+When running device-introspect-test, a memory leak occurred in the pl031_init
+function, this patch use timer_free() in the finalize function to fix it.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20210112112955.1849212-1-philmd@redhat.com>
+ASAN shows memory leak stack:
+
+Direct leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0xffffab97e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
+    #1 0xffffab256800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
+    #2 0xaaabf5621cfc in timer_new_full qemu/include/qemu/timer.h:523
+    #3 0xaaabf5621cfc in timer_new qemu/include/qemu/timer.h:544
+    #4 0xaaabf5621cfc in timer_new_ns qemu/include/qemu/timer.h:562
+    #5 0xaaabf5621cfc in pl031_init qemu/hw/rtc/pl031.c:194
+    #6 0xaaabf6339f6c in object_initialize_with_type qemu/qom/object.c:515
+    #7 0xaaabf633a1e0 in object_new_with_type qemu/qom/object.c:729
+    #8 0xaaabf6375e40 in qmp_device_list_properties qemu/qom/qom-qmp-cmds.c:153
+    #9 0xaaabf5a95540 in qdev_device_help qemu/softmmu/qdev-monitor.c:283
+    #10 0xaaabf5a96940 in qmp_device_add qemu/softmmu/qdev-monitor.c:801
+    #11 0xaaabf5a96e70 in hmp_device_add qemu/softmmu/qdev-monitor.c:916
+    #12 0xaaabf5ac0a2c in handle_hmp_command qemu/monitor/hmp.c:1100
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20210112112705.380534-2-ganqixin@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/ide/ahci.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ hw/rtc/pl031.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 4b675b9cfd8d..6d50482b8d1a 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -465,8 +465,9 @@ static void ahci_mem_write(void *opaque, hwaddr addr,
+diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
+index ae47f09635da..2bbb2062ac85 100644
+--- a/hw/rtc/pl031.c
++++ b/hw/rtc/pl031.c
+@@ -194,6 +194,13 @@ static void pl031_init(Object *obj)
+     s->timer = timer_new_ns(rtc_clock, pl031_interrupt, s);
+ }
  
-     /* Only aligned reads are allowed on AHCI */
-     if (addr & 3) {
--        fprintf(stderr, "ahci: Mis-aligned write to addr 0x"
--                TARGET_FMT_plx "\n", addr);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "ahci: Mis-aligned write to addr 0x%03" HWADDR_PRIX "\n",
-+                      addr);
-         return;
-     }
- 
-@@ -1111,7 +1112,8 @@ static void process_ncq_command(AHCIState *s, int port, uint8_t *cmd_fis,
-     g_assert(is_ncq(ncq_fis->command));
-     if (ncq_tfs->used) {
-         /* error - already in use */
--        fprintf(stderr, "%s: tag %d already used\n", __func__, tag);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: tag %d already used\n",
-+                      __func__, tag);
-         return;
-     }
++static void pl031_finalize(Object *obj)
++{
++    PL031State *s = PL031(obj);
++
++    timer_free(s->timer);
++}
++
+ static int pl031_pre_save(void *opaque)
+ {
+     PL031State *s = opaque;
+@@ -329,6 +336,7 @@ static const TypeInfo pl031_info = {
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(PL031State),
+     .instance_init = pl031_init,
++    .instance_finalize = pl031_finalize,
+     .class_init    = pl031_class_init,
+ };
  
 -- 
 2.29.2
