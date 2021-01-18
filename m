@@ -1,53 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l1YP0-0008GP-Rc
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 12:33:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58644)
+	id 1l1azH-00053I-4t
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2021 15:18:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l1YOz-0008Dn-5u; Mon, 18 Jan 2021 12:33:17 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:58325)
+ (Exim 4.90_1) (envelope-from <stefan-guix@vodafonemail.de>)
+ id 1l1azE-000520-Ve; Mon, 18 Jan 2021 15:18:52 -0500
+Received: from smtpout2.vodafonemail.de ([145.253.239.133]:38054)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l1YOu-00062G-0c; Mon, 18 Jan 2021 12:33:16 -0500
-Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MAwPf-1lCK2y1jUv-00BJaI; Mon, 18 Jan 2021 18:33:05 +0100
-Subject: Re: [PATCH v2] linux-user: Remove obsolete F_SHLCK and F_EXLCK
- translation
-To: Michael Forney <mforney@mforney.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20201028032727.31326-1-mforney@mforney.org>
- <20210114223602.9004-1-mforney@mforney.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <663b0b8b-4fd3-cdf6-aaa8-0b66f633bcdc@vivier.eu>
-Date: Mon, 18 Jan 2021 18:33:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
-MIME-Version: 1.0
-In-Reply-To: <20210114223602.9004-1-mforney@mforney.org>
+ (Exim 4.90_1) (envelope-from <stefan-guix@vodafonemail.de>)
+ id 1l1azC-0003o4-73; Mon, 18 Jan 2021 15:18:52 -0500
+Received: from smtp.vodafone.de (unknown [10.2.0.35])
+ by smtpout2.vodafonemail.de (Postfix) with ESMTP id 606B2120BBF;
+ Mon, 18 Jan 2021 21:18:45 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vodafonemail.de;
+ s=vfde-smtpout-mb-15sep; t=1611001125;
+ bh=bwr/bN/ILJgd0r2pstmyBnGv4x12vA/Yaeo2hEbQp9A=;
+ h=Subject:From:In-Reply-To:Date:Cc:References:To;
+ b=CGIlh11lADJ5YZ1j8Mn5LdPif7NouwNM3ZthaN0Eb19BmigN+3d3/F1OfZVyXfJS1
+ 4lz8VGKjAicPPWij6RPg6ufzqYArvbS2e3cQqJtVGuOhmujgnQabo+VQVcKU7ZCztR
+ uphsZlX57To3PsUFrfb0jZqk7XDHMaf8NTCgDKa8=
+Received: from macbook-pro.kuh-wiese.my-router.de
+ (dslb-002-206-141-230.002.206.pools.vodafone-ip.de [2.206.141.230])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by smtp.vodafone.de (Postfix) with ESMTPSA id 26FFA1420B0;
+ Mon, 18 Jan 2021 20:18:45 +0000 (UTC)
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:eYuEeSUtJMBf6oRKjRvoMtgtwgd1UVWttPP+VOsi9Zm/H249sb8
- iBOFVipJh1Dk7pi2t44xIyaz052rNO034Henrbl0+KuiYxQ0Mrm8BsyB/QY5g3q/3RpnVAK
- PQZc7haT4KKfGjudwWYWr/VCYS5XsnS44EbHN0jAM5A2S72kb78Flk/o3Hh/+LmonGj15p/
- JewUmj0ARU3gHgUO0HQ5g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Bk+64ZYDeT4=:pwzciXtlgdnqfuces9UH3T
- d8EgFfZ9XTMrNKF5/0CvgKZId1F8VEpZzRVhE8329qcTlQI/lSYS324A6doE7Om6hdZjZ47Vd
- aj6FWh4ToyF4NaT8eJ8t72iIea9duMTPbgaKCggjBc0qsHLdJ/785U2Xei+ZlrlBZUXVXBF8y
- 5zvKx4UOKho73QF8bIVArMzNE5vacFhb/kcSHFzW/f0AE+d2gvC3zcDwVla4gaxeQaQwT8sbW
- ALjdzbuM2L7/K58D1VnK1JjTivpR2XgYqObcnhsYDVWLSXywNhnDxUL/Atp1LT6MZlTT3ILNZ
- FvUbSf/kvNEev8hmxBIX7ZL31AmjJjvjWl3Fp2m1898zikljCfQIblUkoy/BYhZv6EGvSodah
- 3JmRbhxUjc1aSWRMWP/2TvbjaSmVxAorQ4L4xhVtCD9qYraJX8SxAmJ8sP0lCG0rJIMpUNTKw
- 6qNgjx2mqw==
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+Subject: Re: [PATCH 1/1] linux-user/syscall: Fix do_ioctl_ifconf() for 64 bit
+ targets.
+From: Stefan <stefan-guix@vodafonemail.de>
+In-Reply-To: <57408fa3-8201-b8b5-aa8d-50448a010f43@vivier.eu>
+Date: Mon, 18 Jan 2021 21:18:42 +0100
+Cc: qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org,
+ qemu-stable@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <5B52EBE5-2490-4997-B7CB-944DE3F3AB6D@vodafonemail.de>
+References: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
+ <57408fa3-8201-b8b5-aa8d-50448a010f43@vivier.eu>
+To: Laurent Vivier <laurent@vivier.eu>
+X-Mailer: Apple Mail (2.3124)
+X-purgate-type: clean
+X-purgate-Ad: Categorized by eleven eXpurgate (R) http://www.eleven.de
+X-purgate: This mail is considered clean (visit http://www.eleven.de for
+ further information)
+X-purgate: clean
+X-purgate-size: 1864
+X-purgate-ID: 155817::1611001125-0000239E-D7094880/0/0
+Received-SPF: pass client-ip=145.253.239.133;
+ envelope-from=stefan-guix@vodafonemail.de; helo=smtpout2.vodafonemail.de
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.194,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,75 +69,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Jan 2021 17:33:17 -0000
+X-List-Received-Date: Mon, 18 Jan 2021 20:18:53 -0000
 
-Le 14/01/2021 à 23:36, Michael Forney a écrit :
-> These lock types are unsupported by Linux since v2.2[0][1] and
-> always return EINVAL (except on SPARC up until v2.6, which just
-> warned).
-> 
-> musl libc does not define these constants, so just remove them from
-> the translation cases.
-> 
-> [0] https://github.com/mpe/linux-fullhistory/blob/v2.2.0/fs/locks.c#L322-L324
-> [1] https://github.com/mpe/linux-fullhistory/blob/v2.2.0/fs/locks.c#L429-L445
-> 
-> Signed-off-by: Michael Forney <mforney@mforney.org>
-> ---
-> Changes since v1: fixed typo in commit message, resend to qemu-trivial.
-> 
->  linux-user/alpha/target_fcntl.h | 2 --
->  linux-user/generic/fcntl.h      | 5 -----
->  linux-user/syscall.c            | 2 --
->  3 files changed, 9 deletions(-)
-> 
-> diff --git a/linux-user/alpha/target_fcntl.h b/linux-user/alpha/target_fcntl.h
-> index 2617e73472..e16ed1d415 100644
-> --- a/linux-user/alpha/target_fcntl.h
-> +++ b/linux-user/alpha/target_fcntl.h
-> @@ -33,8 +33,6 @@
->  #define TARGET_F_RDLCK         1
->  #define TARGET_F_WRLCK         2
->  #define TARGET_F_UNLCK         8
-> -#define TARGET_F_EXLCK         16
-> -#define TARGET_F_SHLCK         32
->  
->  #include "../generic/fcntl.h"
->  #endif
-> diff --git a/linux-user/generic/fcntl.h b/linux-user/generic/fcntl.h
-> index c85c5b9fed..4568d1f42b 100644
-> --- a/linux-user/generic/fcntl.h
-> +++ b/linux-user/generic/fcntl.h
-> @@ -119,11 +119,6 @@ struct target_f_owner_ex {
->  #define TARGET_F_UNLCK         2
->  #endif
->  
-> -#ifndef TARGET_F_EXLCK
-> -#define TARGET_F_EXLCK         4
-> -#define TARGET_F_SHLCK         8
-> -#endif
-> -
->  #ifndef TARGET_HAVE_ARCH_STRUCT_FLOCK
->  #ifndef TARGET_ARCH_FLOCK_PAD
->  #define TARGET_ARCH_FLOCK_PAD
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index d182890ff0..f238edf715 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -6664,8 +6664,6 @@ static int target_to_host_fcntl_cmd(int cmd)
->      TRANSTBL_CONVERT(F_RDLCK); \
->      TRANSTBL_CONVERT(F_WRLCK); \
->      TRANSTBL_CONVERT(F_UNLCK); \
-> -    TRANSTBL_CONVERT(F_EXLCK); \
-> -    TRANSTBL_CONVERT(F_SHLCK); \
->      }
->  
->  static int target_to_host_flock(int type)
-> 
+Hi Laurent!
 
-Applied to my linux-user-for-6.0 branch.
+Thanks for your response.
 
-Thanks,
-Laurent
+> Why don't you simply replace STRUCT_sockaddr_ifreq by =
+STRUCT_ifmap_ifreq rather than introducing a
+> new constant?
 
+Because STRUCT_sockaddr_ifreq is the union part to be filled and is =
+needed as an argument to thunk_convert() in this loop below:
+
+            for (i =3D 0; i < nb_ifreq ; i++) {
+                thunk_convert(argptr + i * target_ifreq_size,
+                              host_ifc_buf + i * sizeof(struct ifreq),
+                              ifreq_arg_type, THUNK_TARGET);
+            }
+
+> In the "if (!is_error(ret))", why don't you use the same size with the =
+part that copies back the
+> values to the user?
+
+I=E2=80=99m not sure if I understand your question correctly. Well, =
+ioclt(=E2=80=A6, SIOCGIFCONF, =E2=80=A6) returns an array of struct =
+ifreq, which contains a union, of which only struct sockaddr ifr_addr =
+needs to be filled. But that union element is not the biggest element on =
+64 bit architectures.
+
+Without the fix the returned data is not an array of struct ifreq but an =
+array of some artificial struct:
+
+struct sockaddr_ifreq {
+    char ifr_name[IFNAMSIZ]; /* Interface name */
+    struct sockaddr ifr_addr;
+}
+
+That artificial struct is too short for 64 bit architectures. On real =
+x86_64 systems the size of the array returned by ioclt(=E2=80=A6, =
+SIOCGIFCONF, =E2=80=A6) is a multiple of 40 bytes, the sizeof(struct =
+ifreq). And it=E2=80=99s also a multiple of 40 on real aarch64 systems. =
+However, on x86_64 emulating aarch64 with qemu, the returned array size =
+is only a multiple of 32 bytes, which is wrong. It is enough to fill =
+only 32 bytes with thunk_convert() and ifreq_arg_type is also the proper =
+type, but the array element increase has to be 40 bytes.
+
+I hope this clarifies your question.
+
+
+Bye
+
+Stefan=
 
