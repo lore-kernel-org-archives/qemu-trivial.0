@@ -1,72 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l1kUV-0005jF-Jk
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Jan 2021 01:27:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39562)
+	id 1l1p5p-0008Rh-Ao
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Jan 2021 06:22:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1kUT-0005dx-SS; Tue, 19 Jan 2021 01:27:45 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:46264)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1l1p5n-0008Qf-SH
+ for qemu-trivial@nongnu.org; Tue, 19 Jan 2021 06:22:35 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:45695)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1kUR-00025k-Vz; Tue, 19 Jan 2021 01:27:45 -0500
-Received: by mail-ej1-x630.google.com with SMTP id rv9so8105600ejb.13;
- Mon, 18 Jan 2021 22:27:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=QGEW/zhOCWpBx/ValuvqrDoUReEloE3J1VaEmWJOUPE=;
- b=dUtqZiCpuugJXP+lVz8o5S3DnNQCHOvVd0OE+I6H0e7Qu24JDuw+Qr5EO362RzBBUR
- ULiNIR7wOPxb3dfceqqL97YDlxaI+V2oFW2qtJvd99TOyAJ+90V20GGt8MD8IPzOt8+t
- DlLLd54NxP4/kxpYKNWHc5KPZxIgQnWZf3JojQ4Lle9ov05MBucOIYZ6Ou7pzQWEAc1y
- i+p/JyIa9kCd63QW+CrVDhtkEQkU76Y20isPhcvLN2CwQO8USvP8q7KV7hNHjNcngpEa
- SNxPz23BAY6z8XBn7HoITGjIgurVa2txPWKxF8BJHASf0VRHwrjwQgpGd/TrUr4qQZic
- CbnA==
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1l1p5l-0006dz-Li
+ for qemu-trivial@nongnu.org; Tue, 19 Jan 2021 06:22:35 -0500
+Received: by mail-wr1-x433.google.com with SMTP id d26so19334787wrb.12
+ for <qemu-trivial@nongnu.org>; Tue, 19 Jan 2021 03:22:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=CyhEIwRlwVnBn9aB4qPZtXfEMlJn7mRs+0RkiF7RofY=;
+ b=jiNrfIIxyAzLtZXia6lTdFdNyFZJ/lmpNPbNcZapvMshelaperGTXDXoXM9AYXfCqu
+ D99+1q09nPmWMygW46jX8VFN7LUAcARSG9PEiY+nrwyFp6g9OODdn90d0Hllk7W2wuiK
+ Gd7yfBi22jq2EOo1vLyaPAHICcX4Zg9OKialn4hpLDMe7CpvG4I74+j3wnHvU8vHQec6
+ qEqW9d/YX85Rd64tuiHlFTTV3RQSdVjNgPIP1cXmHERYd372/FLhKtPNJaa31VwadgTy
+ EQgevRU0KN3Ude0bwBTPqGf6MYXnvyJqMZrhm1IWnYsOPDi3QxwuUuTiJm+xHJRaRlyM
+ a6wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=QGEW/zhOCWpBx/ValuvqrDoUReEloE3J1VaEmWJOUPE=;
- b=G8dhIHMKo8jiNaWMXrfmWZ2cb6svijn4MEzJ33J+YNX0fy5SoQGpFBbjTcHw2zakGO
- vWpnE65CW5VmESWRe9p4ih9eHgY1dvezKHauq1UdgbI+i6gt9HxBKL4qK5WCDB7cD2Q0
- VH0rq75btung/qBIFpD02yTyNjSi+DB5ghRCjsf4qzz/IsmyqoQN3PSmhuXqzAroHGWK
- j9rCwa77FqG8T5yd1IpF9ig6kB0vOlqBRFa25oCGA9QNstr9UjtF/eYA7BYcXESaK/yF
- bK2+2q5TF8dK2cYfLZJ8u8ik3uCYgbz2c6vrC09Exms8Hx53NocQ0qgw01d1SRv/eiVF
- FbCQ==
-X-Gm-Message-State: AOAM533ox3mfE/aDYB5L79HHichCZs9THLdnQsyTJMT9CtFjoTkdN6hz
- tL5q6NEW40R6gzxebsmuNyFWGl+6+ic=
-X-Google-Smtp-Source: ABdhPJxd1EJzrrB+1loKd/kLbqMd14iHb6TEvtBpcmFb7PTCkkPughfkBUxZaCUTc96lMMhOegNOxw==
-X-Received: by 2002:a17:906:3111:: with SMTP id
- 17mr1900065ejx.152.1611037661580; 
- Mon, 18 Jan 2021 22:27:41 -0800 (PST)
-Received: from x1w.redhat.com (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id z1sm12374201edm.89.2021.01.18.22.27.40
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=CyhEIwRlwVnBn9aB4qPZtXfEMlJn7mRs+0RkiF7RofY=;
+ b=Ebafs+zSk5+PXmFyz0CXZxg1assc/X4Mz8iEmVUgK2HL4tlhtPnmDRiu//oJ5ptggg
+ a1+aah/Qtk1NMcV1/bIAsDnUZZtt3L9WYv1P0Xvb+10AlU5EH7zGgykXD+SGIRay6niz
+ zgYiY57ycQW6/Ext4n/9Og7K35V0x67VegPqJxFT+JIM5+xzrzwJYCGMngvOnXj9iKpp
+ 2MxtEOHbyaYvnCLcPTvScUgK9O+uRuWyGz3or/N25L/ap+T3kBGWjFF83K7Y1ihbmK7u
+ bhFGj50GRksUifP1eezcZP8uDmetxqIiZUhs0SuDr6pSYLylIW2KpFn63/agMBmOEEFW
+ yHOw==
+X-Gm-Message-State: AOAM5319NGZjCQmlqxcoleGQ9xpV6XsMhpX2oXdEU5bu6GKABjqwrI1y
+ HHn2R0or/Mug4kdvFYAkXFTSd2P2K2ADjq1N
+X-Google-Smtp-Source: ABdhPJw9XOZse3dEjtcQ1sQ4yN/ru7xweoEX/q4iZ9T/OMLWMPXufuLd8r+07HY1pcuWC4rhuNJbxw==
+X-Received: by 2002:adf:ffc8:: with SMTP id x8mr3893067wrs.158.1611055351628; 
+ Tue, 19 Jan 2021 03:22:31 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id u205sm4176433wme.42.2021.01.19.03.22.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Jan 2021 22:27:40 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] target/arm/m_helper: Silence GCC 10 maybe-uninitialized error
-Date: Tue, 19 Jan 2021 07:27:39 +0100
-Message-Id: <20210119062739.589049-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ Tue, 19 Jan 2021 03:22:30 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id F26A91FF7E;
+ Tue, 19 Jan 2021 11:22:29 +0000 (GMT)
+References: <20210119052120.522069-1-f4bug@amsat.org>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
+ qemu-trivial@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@redhat.com>
+Subject: Re: [PATCH] tests/docker: Fix typo in help message
+Date: Tue, 19 Jan 2021 11:22:25 +0000
+In-reply-to: <20210119052120.522069-1-f4bug@amsat.org>
+Message-ID: <87bldluq6i.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,40 +81,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Jan 2021 06:27:46 -0000
+X-List-Received-Date: Tue, 19 Jan 2021 11:22:36 -0000
 
-When building with GCC 10.2 configured with --extra-cflags=-Os, we get:
 
-  target/arm/m_helper.c: In function ‘arm_v7m_cpu_do_interrupt’:
-  target/arm/m_helper.c:1811:16: error: ‘restore_s16_s31’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-   1811 |             if (restore_s16_s31) {
-        |                ^
-  target/arm/m_helper.c:1350:10: note: ‘restore_s16_s31’ was declared here
-   1350 |     bool restore_s16_s31;
-        |          ^~~~~~~~~~~~~~~
-  cc1: all warnings being treated as errors
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-Initialize the 'restore_s16_s31' variable to silence the warning.
+> To have the variable properly passed, we need to set it,
+> ie. NOUSER=3D1. Fix the message displayed by 'make docker'.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/arm/m_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Queued to testing/next, thanks.
 
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 61760030292..731c435c00b 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -1347,7 +1347,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-     bool exc_secure = false;
-     bool return_to_secure;
-     bool ftype;
--    bool restore_s16_s31;
-+    bool restore_s16_s31 = false;
- 
-     /*
-      * If we're not in Handler mode then jumps to magic exception-exit
--- 
-2.26.2
+> ---
+>  tests/docker/Makefile.include | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+> index 0779dab5b96..bdc53ddfcf9 100644
+> --- a/tests/docker/Makefile.include
+> +++ b/tests/docker/Makefile.include
+> @@ -209,7 +209,7 @@ endif
+>  	@echo '                         before running the command.'
+>  	@echo '    NETWORK=3D1            Enable virtual network interface with=
+ default backend.'
+>  	@echo '    NETWORK=3D$$BACKEND     Enable virtual network interface wit=
+h $$BACKEND.'
+> -	@echo '    NOUSER               Define to disable adding current user t=
+o containers passwd.'
+> +	@echo '    NOUSER=3D1             Define to disable adding current user=
+ to containers passwd.'
+>  	@echo '    NOCACHE=3D1            Ignore cache when build images.'
+>  	@echo '    EXECUTABLE=3D<path>    Include executable in image.'
+>  	@echo '    EXTRA_FILES=3D"<path> [... <path>]"'
 
+
+--=20
+Alex Benn=C3=A9e
 
