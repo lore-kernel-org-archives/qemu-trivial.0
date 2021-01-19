@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l1jSK-0003Bz-7k
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Jan 2021 00:21:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56054)
+	id 1l1kUV-0005jF-Jk
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Jan 2021 01:27:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39562)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1jSI-0003AT-FL; Tue, 19 Jan 2021 00:21:26 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:34869)
+ id 1l1kUT-0005dx-SS; Tue, 19 Jan 2021 01:27:45 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:46264)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1jSG-0004Au-UX; Tue, 19 Jan 2021 00:21:26 -0500
-Received: by mail-ed1-x535.google.com with SMTP id u19so20045785edx.2;
- Mon, 18 Jan 2021 21:21:24 -0800 (PST)
+ id 1l1kUR-00025k-Vz; Tue, 19 Jan 2021 01:27:45 -0500
+Received: by mail-ej1-x630.google.com with SMTP id rv9so8105600ejb.13;
+ Mon, 18 Jan 2021 22:27:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ZvJJR/TLmSPSU+it15dUTOtYooEyYIl80JB+Vf2GE68=;
- b=XyWdqSX300KAEJ8XfNwFzsr6PMVAOc8EACHtDJRw2hWWG4r5M+dsddc9cdm91U07Hw
- E/CWefN7Bjf5d8HpmZt7XQvF2GHaiS0Ja2fh+1eeKRN0uXaPAHzZUueFcTSqfSuovZZo
- 0WoQ3H6RpsogHUTstvT9sSOlhESb6LnrSKKnfGm4xrcjadHEjr/28FALx5ZRyTKgky7a
- zVK+e+RWu4wqbtQZ/Kt9N6TzJK9UWxJV6nep+3xBeOClPsOcv6k8pdCsUXItWMAOX0fd
- ZIKUpPPgUWTfF+AH7l6YyuRGRSICJA4/EGbdicNnDjnr+UQaMhSWhzt+H4euqfYriHzF
- Dj4Q==
+ bh=QGEW/zhOCWpBx/ValuvqrDoUReEloE3J1VaEmWJOUPE=;
+ b=dUtqZiCpuugJXP+lVz8o5S3DnNQCHOvVd0OE+I6H0e7Qu24JDuw+Qr5EO362RzBBUR
+ ULiNIR7wOPxb3dfceqqL97YDlxaI+V2oFW2qtJvd99TOyAJ+90V20GGt8MD8IPzOt8+t
+ DlLLd54NxP4/kxpYKNWHc5KPZxIgQnWZf3JojQ4Lle9ov05MBucOIYZ6Ou7pzQWEAc1y
+ i+p/JyIa9kCd63QW+CrVDhtkEQkU76Y20isPhcvLN2CwQO8USvP8q7KV7hNHjNcngpEa
+ SNxPz23BAY6z8XBn7HoITGjIgurVa2txPWKxF8BJHASf0VRHwrjwQgpGd/TrUr4qQZic
+ CbnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=ZvJJR/TLmSPSU+it15dUTOtYooEyYIl80JB+Vf2GE68=;
- b=OLmVVDOdCc7ZlpOFqE5XFi0bONwzzz0yAS+kYo7tVYcElqf71AnkOU9/foXevLer8l
- lcU0dW8d24lLoBD+NWYOCRlQw1bEQegPgA65Sx5La3UToN8s3bJ7/djx+Vx+svs1MDGO
- /BPOhJkk43trb1oAlriOAu+ZURRkGZRz3/+EUXrPMY2xqYEW59j0ayOwPjtjkvvHCTKD
- 1bAkuJ/iiw/n6TOPtkhuECWZeSxVRpNN+fciYG04tthccaRwZxhDpdhnXZ3IwAPikK/z
- 0HGQG/5Cx/18YGMuPrEUIP0dvFYO/8mo7th4+Qw5uUTS14+AQ/m6yK+jlSmooqKXc6XM
- fF6g==
-X-Gm-Message-State: AOAM533wHbHqIZttMXFQW7I3Kru93bV09crPdGpc4S0gqwXHYBlPpPlW
- y73XySeakb+IvnlUDZ1uvewnvbIUhVo=
-X-Google-Smtp-Source: ABdhPJzEC5vnyM4OTkcARc91aShaj+eKCcjMQnsUZgbrMVUpem/Wby0TvpPptsFoZVu6a51C2d9fRw==
-X-Received: by 2002:a05:6402:5193:: with SMTP id
- q19mr2071732edd.264.1611033682695; 
- Mon, 18 Jan 2021 21:21:22 -0800 (PST)
+ bh=QGEW/zhOCWpBx/ValuvqrDoUReEloE3J1VaEmWJOUPE=;
+ b=G8dhIHMKo8jiNaWMXrfmWZ2cb6svijn4MEzJ33J+YNX0fy5SoQGpFBbjTcHw2zakGO
+ vWpnE65CW5VmESWRe9p4ih9eHgY1dvezKHauq1UdgbI+i6gt9HxBKL4qK5WCDB7cD2Q0
+ VH0rq75btung/qBIFpD02yTyNjSi+DB5ghRCjsf4qzz/IsmyqoQN3PSmhuXqzAroHGWK
+ j9rCwa77FqG8T5yd1IpF9ig6kB0vOlqBRFa25oCGA9QNstr9UjtF/eYA7BYcXESaK/yF
+ bK2+2q5TF8dK2cYfLZJ8u8ik3uCYgbz2c6vrC09Exms8Hx53NocQ0qgw01d1SRv/eiVF
+ FbCQ==
+X-Gm-Message-State: AOAM533ox3mfE/aDYB5L79HHichCZs9THLdnQsyTJMT9CtFjoTkdN6hz
+ tL5q6NEW40R6gzxebsmuNyFWGl+6+ic=
+X-Google-Smtp-Source: ABdhPJxd1EJzrrB+1loKd/kLbqMd14iHb6TEvtBpcmFb7PTCkkPughfkBUxZaCUTc96lMMhOegNOxw==
+X-Received: by 2002:a17:906:3111:: with SMTP id
+ 17mr1900065ejx.152.1611037661580; 
+ Mon, 18 Jan 2021 22:27:41 -0800 (PST)
 Received: from x1w.redhat.com (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id f9sm697407edm.6.2021.01.18.21.21.21
+ by smtp.gmail.com with ESMTPSA id z1sm12374201edm.89.2021.01.18.22.27.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Jan 2021 21:21:22 -0800 (PST)
+ Mon, 18 Jan 2021 22:27:40 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Fam Zheng <fam@euphon.net>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] tests/docker: Fix typo in help message
-Date: Tue, 19 Jan 2021 06:21:20 +0100
-Message-Id: <20210119052120.522069-1-f4bug@amsat.org>
+Subject: [PATCH] target/arm/m_helper: Silence GCC 10 maybe-uninitialized error
+Date: Tue, 19 Jan 2021 07:27:39 +0100
+Message-Id: <20210119062739.589049-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -80,29 +79,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Jan 2021 05:21:26 -0000
+X-List-Received-Date: Tue, 19 Jan 2021 06:27:46 -0000
 
-To have the variable properly passed, we need to set it,
-ie. NOUSER=1. Fix the message displayed by 'make docker'.
+When building with GCC 10.2 configured with --extra-cflags=-Os, we get:
+
+  target/arm/m_helper.c: In function ‘arm_v7m_cpu_do_interrupt’:
+  target/arm/m_helper.c:1811:16: error: ‘restore_s16_s31’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   1811 |             if (restore_s16_s31) {
+        |                ^
+  target/arm/m_helper.c:1350:10: note: ‘restore_s16_s31’ was declared here
+   1350 |     bool restore_s16_s31;
+        |          ^~~~~~~~~~~~~~~
+  cc1: all warnings being treated as errors
+
+Initialize the 'restore_s16_s31' variable to silence the warning.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- tests/docker/Makefile.include | 2 +-
+ target/arm/m_helper.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 0779dab5b96..bdc53ddfcf9 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -209,7 +209,7 @@ endif
- 	@echo '                         before running the command.'
- 	@echo '    NETWORK=1            Enable virtual network interface with default backend.'
- 	@echo '    NETWORK=$$BACKEND     Enable virtual network interface with $$BACKEND.'
--	@echo '    NOUSER               Define to disable adding current user to containers passwd.'
-+	@echo '    NOUSER=1             Define to disable adding current user to containers passwd.'
- 	@echo '    NOCACHE=1            Ignore cache when build images.'
- 	@echo '    EXECUTABLE=<path>    Include executable in image.'
- 	@echo '    EXTRA_FILES="<path> [... <path>]"'
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 61760030292..731c435c00b 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -1347,7 +1347,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+     bool exc_secure = false;
+     bool return_to_secure;
+     bool ftype;
+-    bool restore_s16_s31;
++    bool restore_s16_s31 = false;
+ 
+     /*
+      * If we're not in Handler mode then jumps to magic exception-exit
 -- 
 2.26.2
 
