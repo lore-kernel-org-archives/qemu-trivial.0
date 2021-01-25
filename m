@@ -1,44 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l3GBK-00016p-CS
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Jan 2021 05:30:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48972)
+	id 1l44Pr-000646-J1
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jan 2021 11:08:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37080)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1l3GBI-00015y-3d; Sat, 23 Jan 2021 05:30:12 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]:43648
- helo=mail.v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1l3GBG-0006Mw-Kj; Sat, 23 Jan 2021 05:30:11 -0500
-Received: from edv-macbook-pro.fritz.box (p5b1511bf.dip0.t-ipconnect.de
- [91.21.17.191])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 3219FDA1481;
- Sat, 23 Jan 2021 11:30:08 +0100 (CET)
-Subject: Re: [PATCH] tcg/tci: Restrict tci_write_reg16() to 64-bit hosts
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20210123094107.2340222-1-f4bug@amsat.org>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <5450690d-bda6-4ea8-4e4e-006db464dbda@weilnetz.de>
-Date: Sat, 23 Jan 2021 11:30:11 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:78.0)
- Gecko/20100101 Thunderbird/78.6.1
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l44Po-000627-WE
+ for qemu-trivial@nongnu.org; Mon, 25 Jan 2021 11:08:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41273)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l44Pl-00054e-3n
+ for qemu-trivial@nongnu.org; Mon, 25 Jan 2021 11:08:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1611590908;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jBN2dktxTrpO9M6k6ef1tF5vBWOoz39+ja9xurhvQ1s=;
+ b=gvZHVoGEaTPPdzn6AmUAdSBVAhcz6thMTFUL6SHHrFg7yXLQNZwiEMfrHuUvuNwZZipeKs
+ b+1WjL19Hux9oNKetUNLpR87V/eTZXmspF5XxJCvjAbr692nC7bvkyNC6UEZDLJl0ULMds
+ +XFuaIw/0Oz+5NS+JgUJR86iSs2qJsE=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-166-IL1My31gOJKtbCcfsY8iLQ-1; Mon, 25 Jan 2021 11:08:27 -0500
+X-MC-Unique: IL1My31gOJKtbCcfsY8iLQ-1
+Received: by mail-ej1-f72.google.com with SMTP id j14so3984754eja.15
+ for <qemu-trivial@nongnu.org>; Mon, 25 Jan 2021 08:08:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=jBN2dktxTrpO9M6k6ef1tF5vBWOoz39+ja9xurhvQ1s=;
+ b=itwYMhVUaFWdPzb8Pg6ZQnb6vzYTfNZZTiRPVGRtiTJVpNIvNe+w1RHcB90gtZNQ+c
+ qq9Hw4Zq4mj1jGrAf5V7dUHmcSf00ylP/cY722pAMDfqyEKmwpBxKUpEH+uSv0OJL8b7
+ rFlWznTdWuPUnhU2elvKRxhMX1oYX1u2mwooWvenA6xyLrTg2Xyde8qpFc4ywbr8MmFg
+ rTGdry1LT2BJnK0jYB//CqWj8QbCrAHp+0KTOB4tucrN2PIsCwinu/0kkEmWqnxJaiwe
+ dDYlwuCvcRpny7v1sWe5Pz/VXkzvv/O9Oam3REogGezgq1CPmClvk9JSaYt67VMHe1+7
+ 12dQ==
+X-Gm-Message-State: AOAM531rnTSztxAkMwEIB+sMZxInUNOBr4IAgkzVP5+fF0kZijIyOFvi
+ r33macnZSWefqi9Ya9vQ7IuSb97zHC3HknFpS9B6qtL3IzBKiZZDKajzFNvTHOxXarQANRxNUfX
+ g8whbduHBJ3Mho371Ua0ybbmgm0rMdbMoe4uqOPOcWJLZeQfODYCTGf5Re34Fi1tA5/E=
+X-Received: by 2002:aa7:c384:: with SMTP id k4mr1044261edq.23.1611590905843;
+ Mon, 25 Jan 2021 08:08:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw+CL7sj8/+xEU+PEX8ORng+pepYe+ve9v6GJLYzyNNYntV3DvKzz8xylLmtv11og4Tm0jVyQ==
+X-Received: by 2002:aa7:c384:: with SMTP id k4mr1044243edq.23.1611590905622;
+ Mon, 25 Jan 2021 08:08:25 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id dm1sm10497599edb.72.2021.01.25.08.08.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Jan 2021 08:08:24 -0800 (PST)
+Subject: Re: [PATCH] net/slirp.c: Fix spelling error in error message
+To: Doug Evans <dje@google.com>, qemu-devel@nongnu.org
+Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210122004251.843837-1-dje@google.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <f2162586-0970-14e1-81e2-367fb94dc66e@redhat.com>
+Date: Mon, 25 Jan 2021 17:08:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210123094107.2340222-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20210122004251.843837-1-dje@google.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.221,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.255,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -51,47 +91,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Jan 2021 10:30:12 -0000
+X-List-Received-Date: Mon, 25 Jan 2021 16:08:33 -0000
 
-Am 23.01.21 um 10:41 schrieb Philippe Mathieu-Daudé:
-
-> Restrict tci_write_reg16() to 64-bit hosts to fix on 32-bit ones:
->
->    [520/1115] Compiling C object libqemu-arm-linux-user.fa.p/tcg_tci.c.o
->    FAILED: libqemu-arm-linux-user.fa.p/tcg_tci.c.o
->    tcg/tci.c:132:1: error: 'tci_write_reg16' defined but not used [-Werror=unused-function]
->     tci_write_reg16(tcg_target_ulong *regs, TCGReg index, uint16_t value)
->     ^~~~~~~~~~~~~~~
->
-> Fixes: 2f160e0f979 ("tci: Add implementation for INDEX_op_ld16u_i64")
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On 1/22/21 1:42 AM, dje--- via wrote:
+> DNS should be DHCP
+> 
+> Signed-off-by: Doug Evans <dje@google.com>
 > ---
->   tcg/tci.c | 2 ++
->   1 file changed, 2 insertions(+)
->
-> diff --git a/tcg/tci.c b/tcg/tci.c
-> index 2311aa7d3ab..3fc82d3c79d 100644
-> --- a/tcg/tci.c
-> +++ b/tcg/tci.c
-> @@ -128,11 +128,13 @@ static void tci_write_reg8(tcg_target_ulong *regs, TCGReg index, uint8_t value)
->       tci_write_reg(regs, index, value);
->   }
->   
-> +#if TCG_TARGET_REG_BITS == 64
->   static void
->   tci_write_reg16(tcg_target_ulong *regs, TCGReg index, uint16_t value)
->   {
->       tci_write_reg(regs, index, value);
->   }
-> +#endif
->   
->   static void
->   tci_write_reg32(tcg_target_ulong *regs, TCGReg index, uint32_t value)
+>  net/slirp.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-Thanks for fixing this. This could optionally be applied via qemu-trivial.
-
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
