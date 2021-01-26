@@ -1,77 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l4IGs-00051I-4i
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Jan 2021 01:56:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47824)
+	id 1l4THZ-0006nV-IK
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Jan 2021 13:41:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l4IGr-0004xp-7W; Tue, 26 Jan 2021 01:56:13 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:42062)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l4IGp-0003N2-IW; Tue, 26 Jan 2021 01:56:12 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id r12so21455565ejb.9;
- Mon, 25 Jan 2021 22:56:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=32aGueFSV2uVi9yEC9Wg3aow+A/sRmFRH4xj/YR6gpA=;
- b=GVN7V7DrjgwXM4VzwvVuI+INA8c/TpTy8XP3jd+5je+AwKZgaW/wEqRY0GqprihO+k
- 0asLviPRdMjGGe+TdgblyCx9rDbsbOnbRDJNq8s10XDRu59tG+CE+OR4/0HUUtY+KL2U
- RVVPpuBpdht+ISkeapnzfOgbcR1lKXZH6dWAWvh0D8DhXS4n5TlxPzUDw44KD53DBsmg
- xKD0tdVSagY+YzqGSJAYH2UAOFl6xJrV2/Rj3pgDXxbdFJUs1ZtE08+MZwhlHIX+RnnJ
- elKWTEQ9VrjH84NqCjVH1RkJoxKOyT0qinqXdRJ7CuhhW9HAk+wrp/2kE58jTK8x7uby
- u+/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=32aGueFSV2uVi9yEC9Wg3aow+A/sRmFRH4xj/YR6gpA=;
- b=QfgL+ZfbBh0lZf61VUrWMdNa1zB1v+xwqCBpqYnO5mjt4qx3o9+WYN8M2ri0ZCbYAV
- QeRHxgJ92mFZX32H3V4f9CcOQ96YQt2VrKBm8HHnogzMBrU6O2JBzUx1tPzmOAlewUcJ
- SwzN/JVKRU5v+I3I5Fw6MbMRIeYb6EZ+W9RKy9Seuv2SABmyMpj8opqevVxnPoTWbSjN
- LALKenJFq0Z4VHA1hziYWaESYK1KPtvXI3JeThLzmrJc5AzHDbY/9doEyMIVzTsfQdRU
- C9AhjOF/v7OyjprQhlX8Q8lMeRUN8kzKS62PfCOSvV6+3qoh+2Ev9UgZmu/KIii6DAG2
- GnZg==
-X-Gm-Message-State: AOAM531rtqUidPkJ995pJocEeSEcNFHYfEa8HGKur6v+UENGhjUDqCGD
- GewyZ/0DBJM7HWYc27/IhAk=
-X-Google-Smtp-Source: ABdhPJzU0/TLsKEkB+nlv/JMFOmqA3kRrgoCEZvWTViPOMBbAwJUWK2GStxJzBkLSJb0VQmNSh5xVA==
-X-Received: by 2002:a17:906:f0c3:: with SMTP id
- dk3mr2529601ejb.540.1611644168883; 
- Mon, 25 Jan 2021 22:56:08 -0800 (PST)
-Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id y59sm12447442ede.59.2021.01.25.22.56.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Jan 2021 22:56:08 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw/misc: Fix arith overflow in NPCM7XX PWM module
-To: Hao Wu <wuhaotsh@google.com>, peter.maydell@linaro.org
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- hskinnemoen@google.com
-References: <20210125234836.607233-1-wuhaotsh@google.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <52a16c14-820b-762c-d74f-e29fac912beb@amsat.org>
-Date: Tue, 26 Jan 2021 07:56:06 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
+ id 1l4T3g-0002Vp-O1
+ for qemu-trivial@nongnu.org; Tue, 26 Jan 2021 13:27:20 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:39662)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
+ id 1l4T3c-00076K-Jw
+ for qemu-trivial@nongnu.org; Tue, 26 Jan 2021 13:27:18 -0500
+Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 10QICWgA067186
+ for <qemu-trivial@nongnu.org>; Tue, 26 Jan 2021 13:27:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=GGbqhoia1Ppb2PK5coUwLvH0RzxzwK44XQYlUyQ5bv4=;
+ b=JctHzX6rumDoVCaK6hCV1mXKzlQsSQ5/ubuXf8BbeUjtR09qhuJTHbIbn9LVz9fHU1MU
+ higYNYPvWT2uzLpxs063+uhbsEvS7DeIk62DGGV2PD/Sb/6h7A8MFx/FJBP/AL43KIQV
+ Z81Qrzl1dY6cTV7yEjZwzEZid7nDuSoY+k0ygFFtaatJN5KEugbr7gG3JClAi0CKTT4b
+ yHwAN5UKRD7uQfYHpI2a8nfgrUo/P0bpUIFXOysrx0l/bXQvM+YHDz4fgwY50rg+hiyb
+ JIgrfhnk9vBUfAchNgR6HGPIixr9MD47r5k1aKF3MdmO5jH9nFav6YOpif3wPwI7FyOr Zw== 
+Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com
+ [169.63.121.186])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 36ar5f89qa-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <qemu-trivial@nongnu.org>; Tue, 26 Jan 2021 13:27:14 -0500
+Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
+ by ppma03wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 10QIHkb7020841
+ for <qemu-trivial@nongnu.org>; Tue, 26 Jan 2021 18:27:13 GMT
+Received: from b03cxnp07029.gho.boulder.ibm.com
+ (b03cxnp07029.gho.boulder.ibm.com [9.17.130.16])
+ by ppma03wdc.us.ibm.com with ESMTP id 36a0t2g626-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <qemu-trivial@nongnu.org>; Tue, 26 Jan 2021 18:27:13 +0000
+Received: from b03ledav006.gho.boulder.ibm.com
+ (b03ledav006.gho.boulder.ibm.com [9.17.130.237])
+ by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 10QIRC0W26149334
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 26 Jan 2021 18:27:12 GMT
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 27D00C605A;
+ Tue, 26 Jan 2021 18:27:12 +0000 (GMT)
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4B7B2C6055;
+ Tue, 26 Jan 2021 18:27:11 +0000 (GMT)
+Received: from lagarcia.br.ibm.com (unknown [9.85.165.159])
+ by b03ledav006.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Tue, 26 Jan 2021 18:27:10 +0000 (GMT)
+From: lagarcia@linux.ibm.com
+To: qemu-trivial@nongnu.org
+Cc: Leonardo Garcia <lagarcia@br.ibm.com>
+Subject: [PATCH] Fix typo in comment.
+Date: Tue, 26 Jan 2021 15:26:51 -0300
+Message-Id: <2833bf05e3c85267c5fefaab7326b58521da3896.1611685564.git.lagarcia@br.ibm.com>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-In-Reply-To: <20210125234836.607233-1-wuhaotsh@google.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.343, 18.0.737
+ definitions=2021-01-26_09:2021-01-26,
+ 2021-01-26 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 bulkscore=0
+ phishscore=0 suspectscore=0 impostorscore=0 priorityscore=1501
+ lowpriorityscore=0 adultscore=0 malwarescore=0 mlxlogscore=961 mlxscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2101260091
+Received-SPF: pass client-ip=148.163.156.1;
+ envelope-from=lagarcia@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 26 Jan 2021 13:41:39 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,62 +93,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Jan 2021 06:56:13 -0000
+X-List-Received-Date: Tue, 26 Jan 2021 18:27:20 -0000
 
-Hi Hao Wu,
+From: Leonardo Garcia <lagarcia@br.ibm.com>
 
-On 1/26/21 12:48 AM, wuhaotsh--- via wrote:
-> There's a potential arith overflow in npcm7xx_pwm_calculate_duty.
+Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
+---
+ hw/virtio/vhost.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> This patch fixes it.
-
-  ^ not very useful information ;)
-
-What about the simplest approach Peter suggested, a 32-bit duty?
-
-> Thanks Peter for finding this out.
-
-Technically Coverity found this out.
-Using QEMU git tags, this is:
-
-Fixes: CID 1442342
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> ---
->  hw/misc/npcm7xx_pwm.c          | 4 ++--
->  tests/qtest/npcm7xx_pwm-test.c | 2 +-
->  2 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/misc/npcm7xx_pwm.c b/hw/misc/npcm7xx_pwm.c
-> index e99e3cc7ef..90b4f630a0 100644
-> --- a/hw/misc/npcm7xx_pwm.c
-> +++ b/hw/misc/npcm7xx_pwm.c
-> @@ -102,9 +102,9 @@ static uint32_t npcm7xx_pwm_calculate_duty(NPCM7xxPWM *p)
->          if (p->cnr == 0) {
->              duty = 0;
->          } else if (p->cmr >= p->cnr) {
-> -            duty = NPCM7XX_PWM_MAX_DUTY;
-> +            duty = (uint64_t)NPCM7XX_PWM_MAX_DUTY;
->          } else {
-> -            duty = NPCM7XX_PWM_MAX_DUTY * (p->cmr + 1) / (p->cnr + 1);
-> +            duty = (uint64_t)NPCM7XX_PWM_MAX_DUTY * (p->cmr + 1) / (p->cnr + 1);
->          }
->      } else {
->          duty = 0;
-> diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
-> index 63557d2c06..f55571b31d 100644
-> --- a/tests/qtest/npcm7xx_pwm-test.c
-> +++ b/tests/qtest/npcm7xx_pwm-test.c
-> @@ -280,7 +280,7 @@ static uint64_t pwm_compute_duty(uint32_t cnr, uint32_t cmr, bool inverted)
->      } else if (cmr >= cnr) {
->          duty = MAX_DUTY;
->      } else {
-> -        duty = MAX_DUTY * (cmr + 1) / (cnr + 1);
-> +        duty = (uint64_t)MAX_DUTY * (cmr + 1) / (cnr + 1);
->      }
->  
->      if (inverted) {
-> 
+diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+index 28c7d78172..d6d290e79f 100644
+--- a/hw/virtio/vhost.c
++++ b/hw/virtio/vhost.c
+@@ -285,7 +285,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
+      * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
+      * incremental memory mapping API via IOTLB API. For platform that
+      * does not have IOMMU, there's no need to enable this feature
+-     * which may cause unnecessary IOTLB miss/update trnasactions.
++     * which may cause unnecessary IOTLB miss/update transactions.
+      */
+     return vdev->dma_as != &address_space_memory &&
+            virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
+-- 
+2.29.2
 
 
