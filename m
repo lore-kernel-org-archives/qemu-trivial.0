@@ -1,63 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l58RH-0005hJ-DE
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Jan 2021 09:38:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43968)
+	id 1l591p-0007yF-Hi
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Jan 2021 10:16:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l58RD-0005fZ-6P
- for qemu-trivial@nongnu.org; Thu, 28 Jan 2021 09:38:24 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:33651)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l58RA-0006Ce-RT
- for qemu-trivial@nongnu.org; Thu, 28 Jan 2021 09:38:22 -0500
-Received: by mail-ej1-x629.google.com with SMTP id by1so8151019ejc.0
- for <qemu-trivial@nongnu.org>; Thu, 28 Jan 2021 06:38:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BOUtrUQbu4v4DcBOyp3QHTI9z/QDDXd95PtlE1x7RnU=;
- b=esnld8CMrPBUhXNe/av8piYuONGbvNGhHTxp571wsxa00L0pCrdGBsLTOo/PYzz/5D
- xEVul5br5U2/dA+q23ucGHf1rlBDCG1LdLHRngyO8no5Ow/2mAIg2CP/SEYx/zFRL1jd
- dwCUYLUIUTTHm99DV/VexRIbzWY3nPOkPoYJaKME7+3GxVa0HvCV6loB3if/dDrEsStS
- p1KCq0LCXJcmOz4OtFSlkVwEwf3z6xZRSrCaqcI4VsqK1FkyHGFNeXhNsdx11dnIXuvl
- 1u+VGG57g0KLEukT4cCeAxM9sKsae2ySokq0RiV8nHtxDK4sMfihWLbDPoVd0PJx8Fqr
- PSMg==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1l591n-0007vq-1G
+ for qemu-trivial@nongnu.org; Thu, 28 Jan 2021 10:16:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:32666)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1l591j-0002mz-Dy
+ for qemu-trivial@nongnu.org; Thu, 28 Jan 2021 10:16:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1611846963;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DYMmxn0WY/aIAyBB2C/ZnyCi4mWfwlYJFky34Bmk+Q4=;
+ b=LJFWEFqoa/F54/Q7iL5k/zFKvcErk8+HdE5Vc4wiwYB6aZ7RW3PS00ljxj6sTOYHcLxt1w
+ ER6pL2kpARSFEMWzl+EC+RSOpBTODi7Rjd4zRO43NTAM7glPrCPfeo+SK6xFaBWZzl0Dwb
+ dXoSxP8RNq0uan2Ir/6WtsTBun1FNx8=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-477-I6byiPvfOUiL_pMLLKze2w-1; Thu, 28 Jan 2021 10:16:02 -0500
+X-MC-Unique: I6byiPvfOUiL_pMLLKze2w-1
+Received: by mail-ed1-f71.google.com with SMTP id f4so3322912eds.5
+ for <qemu-trivial@nongnu.org>; Thu, 28 Jan 2021 07:16:02 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BOUtrUQbu4v4DcBOyp3QHTI9z/QDDXd95PtlE1x7RnU=;
- b=EasWa/cDrOBaIcTENJaf7edjCkax3jzuZwnWNQCGBAx8gvUS8qSHt0IZHllj4N9PMK
- 3+UQjFkkfJeq/bGL4kCmCDKaEfLyQhAS8Ha5PYmGYCRyp+xcAbX1lU9AFxnaLr7IBPol
- a5N4Z5p2XRgdUEbMAaiiOCV6EDAK3pZA60EZTqtkj2i3C8spT+AaLUNBCA6Wpuh2N2UG
- oWGNZwiVRMszIbDYRnIMqgMIyXVyHm8ylbCg3MJYgO4iCEympK+YSJgWtzS4x+99EQAJ
- y0L98SIZxfT9R06AvJAfo7/hmeV4Ezx7ruGFYSrrcY3YNKYM4ixMKVnFvQmTj19W7j29
- F0Dg==
-X-Gm-Message-State: AOAM5319ngVNGnzl5iQwlbZybYDr8IA761SEvNL6Le1yDclqB5csm2CU
- eQqA33t4tZ4Lgf0jt78Ae/QB5vzTT1C3A6lz6QREbQ==
-X-Google-Smtp-Source: ABdhPJyI9TP7ov/1P3UAanPd7JEGWctGR4ePuKKd78/7NTmQGUnfYq4SNeZPdcUlbeR/w8K5PKpmVOG/W4c10dXiMqg=
-X-Received: by 2002:a17:906:2747:: with SMTP id
- a7mr11928329ejd.250.1611844699361; 
- Thu, 28 Jan 2021 06:38:19 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=DYMmxn0WY/aIAyBB2C/ZnyCi4mWfwlYJFky34Bmk+Q4=;
+ b=Ns3vVOlNOQqxlC6vpO95gAs4AmA5vEtQVltFAgaj5OmmxPWYQIBu5FfrgzEOESCVt0
+ KTwk3Z1E1NiF1iJL2RfgDUSFWSVGUQr8RWOFgys8vuBDJmfI033O2vjtuExVTNGMon1y
+ oZKHLrV+xJQ6K+bZbAE3vzsbYhvRN+acq0SZyf3JJw795fBFarhoUWWWEbxdLD1gP04K
+ Jq5WL1Zwuefkj8TX9NRb1QP+0X0qrYAFIg8xxKxCKoXTqDLc5i5IDaraXODbqGz6DHqU
+ UukQjpwLCD12/wtCCsaqDy4XPy17lMXVjhHtgoFmZfAFFm2n7egbzfMZL1B/saVtJ3Om
+ mUjg==
+X-Gm-Message-State: AOAM532aLtuK5nsgUfMCI/WWP296qiqfftmltWxfiPA81Yv/i+GtRzQr
+ QEzXj5CPc2GiY43QR3xhQa5kPdfVtJur1TQcY9MBYEIq7v1v0bqMJvQ2BfLysIGzruM+UKw6M+2
+ F32AsRXFIQIRlvzbldA==
+X-Received: by 2002:a17:906:f991:: with SMTP id
+ li17mr11746436ejb.31.1611846961178; 
+ Thu, 28 Jan 2021 07:16:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzvvH5DkbiANuzqAUhjdEjO07V5dfsXS5adFl/7E3xjgMEq8N2UYhT3cJpmjqCo5tV3F0R0rw==
+X-Received: by 2002:a17:906:f991:: with SMTP id
+ li17mr11746426ejb.31.1611846961006; 
+ Thu, 28 Jan 2021 07:16:01 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id y8sm3040908edd.97.2021.01.28.07.15.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Jan 2021 07:16:00 -0800 (PST)
+Subject: Re: [PATCH] docs: don't install corresponding man page if guest agent
+ is disabled
+To: Stefan Reiter <s.reiter@proxmox.com>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20210128145801.14384-1-s.reiter@proxmox.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <aea9ab28-61ab-a162-f2fc-20613e74fd4d@redhat.com>
+Date: Thu, 28 Jan 2021 16:15:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-References: <20210128143102.7834-1-michael.nawrocki@gtri.gatech.edu>
-In-Reply-To: <20210128143102.7834-1-michael.nawrocki@gtri.gatech.edu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 Jan 2021 14:38:08 +0000
-Message-ID: <CAFEAcA-tj9+WETE-Jsq0Wt5xHZcX2ysx7BB-jNrVY1X4xravHA@mail.gmail.com>
-Subject: Re: [PATCH 0/1] target/arm: Fix SCR_EL3 migration issue
-To: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210128145801.14384-1-s.reiter@proxmox.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.252,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,35 +96,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Jan 2021 14:38:24 -0000
+X-List-Received-Date: Thu, 28 Jan 2021 15:16:11 -0000
 
-On Thu, 28 Jan 2021 at 14:31, Mike Nawrocki
-<michael.nawrocki@gtri.gatech.edu> wrote:
->
-> The SCR_EL3 register reset value (0)  and the value produced when
-> writing 0 via the scr_write function (set as writefn in the register
-> struct) differ. This causes migration to fail.
->
-> I believe the solution is to specify a raw_writefn for that register.
->
-> Failing invocation:
-> $ qemu-system-arm -machine vexpress-a9 -cpu cortex-a9 -nographic
-> QEMU 5.2.0 monitor - type 'help' for more information
-> (qemu) migrate "exec:cat > img"
-> (qemu) q
-> $ qemu-system-arm -machine vexpress-a9 -cpu cortex-a9 -nographic -incoming "exec:cat img"
-> qemu-system-arm: error while loading state for instance 0x0 of device 'cpu'
-> qemu-system-arm: load of migration failed: Operation not permitted
+On 28/01/21 15:58, Stefan Reiter wrote:
+> No sense outputting the qemu-ga and qemu-ga-ref man pages when the guest
+> agent binary itself is disabled. This mirrors behaviour from before the
+> meson switch.
+> 
+> Signed-off-by: Stefan Reiter <s.reiter@proxmox.com>
+> ---
+>   docs/meson.build | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/docs/meson.build b/docs/meson.build
+> index bb14eaebd3..f84306ba7e 100644
+> --- a/docs/meson.build
+> +++ b/docs/meson.build
+> @@ -46,9 +46,11 @@ if build_docs
+>                             meson.source_root() / 'docs/sphinx/qmp_lexer.py',
+>                             qapi_gen_depends ]
+>   
+> +  have_ga = have_tools and config_host.has_key('CONFIG_GUEST_AGENT')
+> +
+>     man_pages = {
+> -        'qemu-ga.8': (have_tools ? 'man8' : ''),
+> -        'qemu-ga-ref.7': 'man7',
+> +        'qemu-ga.8': (have_ga ? 'man8' : ''),
+> +        'qemu-ga-ref.7': (have_ga ? 'man7' : ''),
+>           'qemu-qmp-ref.7': 'man7',
+>           'qemu-storage-daemon-qmp-ref.7': (have_tools ? 'man7' : ''),
+>           'qemu-img.1': (have_tools ? 'man1' : ''),
+> 
 
-I'll review the patch later, but for the moment just a note that
-I'm pretty sure this is not the only issue you'll run into with
-trying to migrate an AArch32 TrustZone-enabled CPU.
-https://bugs.launchpad.net/qemu/+bug/1839807 has the details
-but in summary we aren't migrating the Secure banked contents
-of cp15 registers which are banked Secure/Non-Secure. The
-symptom will be that migration succeeds but the guest doesn't
-behave correctly on the destination/after state restore.
+Queued, thanks.
 
-thanks
--- PMM
+Paolo
+
 
