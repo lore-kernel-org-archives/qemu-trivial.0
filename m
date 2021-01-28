@@ -1,54 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l4nd8-0001Vj-Ee
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jan 2021 11:25:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49146)
+	id 1l569U-0001ZN-RZ
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Jan 2021 07:11:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38510)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l4nd6-0001Sz-5O; Wed, 27 Jan 2021 11:25:16 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:50945)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l4nd4-0007pH-Ft; Wed, 27 Jan 2021 11:25:15 -0500
-Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MPoTl-1lIK0W1qAV-00Mu37; Wed, 27 Jan 2021 17:25:07 +0100
-Subject: Re: [PATCH] net/slirp.c: Fix spelling error in error message
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Doug Evans <dje@google.com>, qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>
-References: <20210122004251.843837-1-dje@google.com>
- <f2162586-0970-14e1-81e2-367fb94dc66e@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <08636ec2-2346-f66e-1e6f-6ca570708993@vivier.eu>
-Date: Wed, 27 Jan 2021 17:25:06 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l569S-0001Vn-Eo
+ for qemu-trivial@nongnu.org; Thu, 28 Jan 2021 07:11:54 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:41526)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l569Q-0007H9-0f
+ for qemu-trivial@nongnu.org; Thu, 28 Jan 2021 07:11:54 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id bx12so6310475edb.8
+ for <qemu-trivial@nongnu.org>; Thu, 28 Jan 2021 04:11:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=0lWTQBcnDCad8XpdN62W1XLqjcZb1faD1VJFzo+wx5c=;
+ b=jOsWkj1VBqgvLEJNsfW/aIG2I2AEZM94wUeGAvUAKWuQVDW+d0o5T3z3Zc5bwYV+0/
+ Iv1sCgbVG6hBoJqZJB82GLQv3DYx+b4aflbL1cQFgzY3za6Sky7eRkNODOqNQiqpR6PB
+ VL3IuliHsG90QP7BHUGYb0GAkhAUJ6eG0YuKw3WXU9fBtZkApxF1iyzocSDx2kpgydkg
+ lzHIFLnoHb3QZ330bgr9dPlTwb+b8EZ5mvHK3tcdWnvGuGKmqJlQgvL9kn1dI/bBFOKP
+ R9iPc1Zg/CxOYrA/gUqACCryVq6iTlw1gz8SxaMyECSZ2CibaPmTJ0s5V5GK8oIHU+cb
+ /fIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=0lWTQBcnDCad8XpdN62W1XLqjcZb1faD1VJFzo+wx5c=;
+ b=iVTIoUeWbNv2Sv6aHhZRxM5/TdT9XHnDJYyxuzCZQk7Qo6b1fCgIpJ9p7yR7yAfsTs
+ IidHZ7iWZt9n9tbP6T6YTEW+rOUDY2CAjwlFT8g/gwNeQKvKCsjYx0usOPkjShCI6ieq
+ WBAH+tEAleObc0kah9sQLQzSg3i2zJeKiAq3qr9GisDnkKq7cpMIq/XR1mTVqgmVtjWz
+ YUyHm/MfygZWHZSb86d+jJN06HXfMtlcTXY9YMRCYlP1YCgiLwWFzkSY3hdkraW4nrCI
+ Ktup+DsHGT/ejToVhylI5pEplEYlkGrQEHhQQ/jJTnjcX5+rW3MJh0LNAEr6DmLdP+c8
+ +TSw==
+X-Gm-Message-State: AOAM5319ofOOcw52ajiBQuOUYDn/ncJlpgqGY5A1jMEUgOjvGFuDW6/g
+ 3fOKEbPKfvbDBgJslFYP/L3hggbamxBsITncSz5ZEw==
+X-Google-Smtp-Source: ABdhPJwSUoyImPlO/hkwouKtduzASZ6+PiOhDTWs2l6snrmmf/CYUnaY/yW2CcrI38hekbTDKAM/8VWQcT4saQ7KOm8=
+X-Received: by 2002:a05:6402:5107:: with SMTP id
+ m7mr13543617edd.52.1611835910179; 
+ Thu, 28 Jan 2021 04:11:50 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <f2162586-0970-14e1-81e2-367fb94dc66e@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/EtgNT+E8rleu15rPsA3TL2bZQNHvq1LCn0fMr9nfgUiOvuNAgb
- PCHMgNqxpQZyI4d1V7pat8DdEQf2ZvOJnzWeOwQaZG3VWrxzP5djkXEe69Ia4OXpC2UlXzF
- ylHz4xp5E2PME2OAtYewRAaDOpcXBoMkXmV6qPd7qa6OK/gnvmEKlc208NoxDLR2IoCxUeO
- QBJQVSEEqtHkA5o5plepA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DjSy+umSNOE=:EQ1+3iGNEepsj2C+ykWRTc
- F0vcnZgt6o6IpqhLsj86o+Pqvoz8QOyzU5g3szk227Jse2ZSXE5E8RifavrJuZX+mmHDE836w
- MyTkr4/8eZTbczFK2/F7TMc8cuRlGxQWkSfbN+SZ5PSU0xv6uQS5nSGqN2Kx6C96LFQ6PD+a9
- /aOKrJ93JPl/UXbXxrpzxhMcGIvdEDtBdqWO8yAXATpc+erl3kltjJ9SrnhqRCPAPaC1VB3N4
- Gz+LklCITERWuejK4VZgg4Tj63+VGdJXL41Rp0esYuFGshVKcKMniXMZu4d318HmGqmYYcPfn
- ycXKi/amUgrmaZDjbxiljsDPih0ut/cuzuvt5Bi+BInLkYxSRaAzKkOw6p7N0qa/YlaVbWpyn
- ksCJNA73ZMjO52RZgGXdVmCJZWs9dSIFyZ8rnv0EI3n134lKNrbdGkfFmyrLe941Q9IUcj7Di
- RVfhMxP0pA==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20210127011142.2122790-1-wuhaotsh@google.com>
+In-Reply-To: <20210127011142.2122790-1-wuhaotsh@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 28 Jan 2021 12:11:38 +0000
+Message-ID: <CAFEAcA_PHnwpdPBT-fYqogwaiVj3CU2tXg1C00F_eVHmc4L+ww@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/misc: Fix arith overflow in NPCM7XX PWM module
+To: Hao Wu <wuhaotsh@google.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Doug Evans <dje@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,24 +74,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jan 2021 16:25:16 -0000
+X-List-Received-Date: Thu, 28 Jan 2021 12:11:54 -0000
 
-Le 25/01/2021 à 17:08, Philippe Mathieu-Daudé a écrit :
-> On 1/22/21 1:42 AM, dje--- via wrote:
->> DNS should be DHCP
->>
->> Signed-off-by: Doug Evans <dje@google.com>
->> ---
->>  net/slirp.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> 
-> 
+On Wed, 27 Jan 2021 at 01:11, Hao Wu <wuhaotsh@google.com> wrote:
+>
+> Fix potential overflow problem when calculating pwm_duty.
+> 1. Ensure p->cmr and p->cnr to be from [0,65535], according to the
+>    hardware specification.
+> 2. Changed duty to uint32_t. However, since MAX_DUTY * (p->cmr+1)
+>    can excceed UINT32_MAX, we convert them to uint64_t in computation
+>    and converted them back to uint32_t.
+>    (duty is guaranteed to be <= MAX_DUTY so it won't overflow.)
+>
+> Fixes: CID 1442342
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Doug Evans <dje@google.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> ---
 
-Applied to my trivial-patches branch.
 
-Thanks,
-Laurent
 
+Applied to target-arm.next, thanks.
+
+-- PMM
 
