@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l5PD5-00054v-Os
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 03:32:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35578)
+	id 1l5PD8-00057q-5u
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 03:32:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l5PD3-000529-4N; Fri, 29 Jan 2021 03:32:53 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:34577)
+ id 1l5PD5-00054a-CH; Fri, 29 Jan 2021 03:32:55 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:40271)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l5PD1-0002Sz-0m; Fri, 29 Jan 2021 03:32:52 -0500
+ id 1l5PD3-0002UM-B7; Fri, 29 Jan 2021 03:32:55 -0500
 Received: from localhost.localdomain ([82.252.149.54]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mf3yk-1lbj9c3WHK-00gZKN; Fri, 29 Jan 2021 09:32:43 +0100
+ id 1MXGSU-1lU8Q80aOU-00Yh4x; Fri, 29 Jan 2021 09:32:42 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Doug Evans <dje@google.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 3/4] net/slirp.c: Fix spelling error in error message
-Date: Fri, 29 Jan 2021 09:32:35 +0100
-Message-Id: <20210129083236.584238-4-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Stefan Weil <sw@weilnetz.de>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 2/4] tcg/tci: Restrict tci_write_reg16() to 64-bit hosts
+Date: Fri, 29 Jan 2021 09:32:34 +0100
+Message-Id: <20210129083236.584238-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210129083236.584238-1-laurent@vivier.eu>
 References: <20210129083236.584238-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:PsrHh8FtWYObSHkcd8w+gUGuZHc8OibAGF6YNLrX0/x5LY8CAi7
- TpEJwjoXnVmK0YCG/WRUERwwnWFTqUgZ8YtOWE4pxXmepTYqA4ThCjpcGwY9lQ8bDGegznE
- jL0e43f80Ho/uiWGeSbX4hsxuYWmumbN7J3jndKbItAHBp6qUkkmCJxCoJGvBuSYPW/In10
- AYerTtrUrrd1WPEes2L+Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hmKZVSv3PS0=:QoBSNK+e9YbdDKjqMa+nMV
- Bx0277auU8VrYVIf0FyFZNY0a6qFI+eiY8CvDXUHGor4COaxh4QCsFm2NKbuWrEaxTOm91jLN
- VFY+H73s60o79Vz9feR00uCSoNTLdklMXMPdJa9/I61PFOOQJ4naZuiPXUdG9ME3Czc1yU8Wl
- j98pjOWCUnYPaFUNaDfJzuFGAA4AjX6Na9WUmZZMqXonz8w1mZ5klZywE4H8+qEtbuklB0FVF
- t+NPgN52y+EX8MKbohO8T102uQHOtx0sRORfje8ZgzzkGmmOos3rELU/QEkQJjUdBtbPO5B4+
- RW6UYoeueHV5XgFs5o63BH+S/HPglV9G7+e7BV0Slj7wstWv4Oew9v/Xh/5POz09x+ju8i5LL
- KuraWc7cmexlrX2z+cMh5ooM/qHb03cpatBmMZdD0TTUdW1M1WyAgcoSD9jIOL4iVb5e+gLS6
- ZdYbcikE7A==
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:f5G6Sd3S5lkNKACmVqO4C1GfHyqj7/tVUjhGmX1jtTIu0/pCGx1
+ 267zMTLOB12O3MLSBfTSThllSIKjlHWTY4HiMOGjCVFxPWDYU15ey4OCMWxt62Xvzi8VtuK
+ urj+e37WilOlf+BM5mnDhpQQEqW+w6aIDNy476+DaNcoMt+q1kXDzVTK22X/HwYyxcif4m8
+ eIjZP8mBnajybTmWwZaHg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:A40ekwuV+VQ=:DoSzneYg0PMg4Z/xxtjkBA
+ Zy0I9NHT6ieNiWyJtCb9iAFIOcEQ3w/1NM0ccTvqnA3HSX1KJnMF23A6N/nzP3XbpXVrNuhSM
+ 2BLINZSPL0Cyck0Kj01tSlMaNsPQBUI01+6mTjM+2pV8QMBah7uRERxeb9ZkRl1KP7zzSuN7u
+ C3cwYxR9ep7etgupWu71s3YOauSvKde0SWaiOLBELFZsFGGhWUAOu0OeT7piiFJXp2f5d1i9R
+ vQSm1e/wr8InNCMkRwTCnwbUmapl/mD1me9Dl967IP04cc5mCGV2GTZPO+surl7zd51rD8r3r
+ +digl+aEQjyBqNLPw7Co7djWVkGXkYhmnjNFk4ho/s/8lSzrRcCsBmLnEexeALAQWFYSxfMoa
+ am3nx6yNKMaZNdhQdfmRhA/YqF58DvFULT/Lf2bT1Chx3M/CxxnKhycEFlQXde4hNCMSX/9mu
+ C+zUtURQGA==
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,34 +58,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jan 2021 08:32:53 -0000
+X-List-Received-Date: Fri, 29 Jan 2021 08:32:57 -0000
 
-From: Doug Evans <dje@google.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-DNS should be DHCP
+Restrict tci_write_reg16() to 64-bit hosts to fix on 32-bit ones:
 
-Signed-off-by: Doug Evans <dje@google.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
-Message-Id: <20210122004251.843837-1-dje@google.com>
+  [520/1115] Compiling C object libqemu-arm-linux-user.fa.p/tcg_tci.c.o
+  FAILED: libqemu-arm-linux-user.fa.p/tcg_tci.c.o
+  tcg/tci.c:132:1: error: 'tci_write_reg16' defined but not used [-Werror=unused-function]
+   tci_write_reg16(tcg_target_ulong *regs, TCGReg index, uint16_t value)
+   ^~~~~~~~~~~~~~~
+
+Fixes: 2f160e0f979 ("tci: Add implementation for INDEX_op_ld16u_i64")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Message-Id: <20210123094107.2340222-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- net/slirp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tcg/tci.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/net/slirp.c b/net/slirp.c
-index 8350c6d45f70..be914c0be058 100644
---- a/net/slirp.c
-+++ b/net/slirp.c
-@@ -473,7 +473,7 @@ static int net_slirp_init(NetClientState *peer, const char *model,
-         return -1;
-     }
-     if (dhcp.s_addr == host.s_addr || dhcp.s_addr == dns.s_addr) {
--        error_setg(errp, "DNS must be different from host and DNS");
-+        error_setg(errp, "DHCP must be different from host and DNS");
-         return -1;
-     }
+diff --git a/tcg/tci.c b/tcg/tci.c
+index 2311aa7d3ab6..3fc82d3c79d7 100644
+--- a/tcg/tci.c
++++ b/tcg/tci.c
+@@ -128,11 +128,13 @@ static void tci_write_reg8(tcg_target_ulong *regs, TCGReg index, uint8_t value)
+     tci_write_reg(regs, index, value);
+ }
  
++#if TCG_TARGET_REG_BITS == 64
+ static void
+ tci_write_reg16(tcg_target_ulong *regs, TCGReg index, uint16_t value)
+ {
+     tci_write_reg(regs, index, value);
+ }
++#endif
+ 
+ static void
+ tci_write_reg32(tcg_target_ulong *regs, TCGReg index, uint32_t value)
 -- 
 2.29.2
 
