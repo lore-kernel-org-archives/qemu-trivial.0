@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l5PD8-00057q-5u
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 03:32:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35598)
+	id 1l5PDA-0005F2-Rk
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 03:33:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l5PD5-00054a-CH; Fri, 29 Jan 2021 03:32:55 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:40271)
+ id 1l5PD7-00056k-OL; Fri, 29 Jan 2021 03:32:57 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:55899)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l5PD3-0002UM-B7; Fri, 29 Jan 2021 03:32:55 -0500
+ id 1l5PD5-0002Uo-K5; Fri, 29 Jan 2021 03:32:57 -0500
 Received: from localhost.localdomain ([82.252.149.54]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MXGSU-1lU8Q80aOU-00Yh4x; Fri, 29 Jan 2021 09:32:42 +0100
+ id 1MavF5-1lfpsu1tNb-00cSb4; Fri, 29 Jan 2021 09:32:43 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Stefan Weil <sw@weilnetz.de>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Stefan Weil <sw@weilnetz.de>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 2/4] tcg/tci: Restrict tci_write_reg16() to 64-bit hosts
-Date: Fri, 29 Jan 2021 09:32:34 +0100
-Message-Id: <20210129083236.584238-3-laurent@vivier.eu>
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 4/4] target/rx: Fix compiler errors for build with sanitizers
+Date: Fri, 29 Jan 2021 09:32:36 +0100
+Message-Id: <20210129083236.584238-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210129083236.584238-1-laurent@vivier.eu>
 References: <20210129083236.584238-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:f5G6Sd3S5lkNKACmVqO4C1GfHyqj7/tVUjhGmX1jtTIu0/pCGx1
- 267zMTLOB12O3MLSBfTSThllSIKjlHWTY4HiMOGjCVFxPWDYU15ey4OCMWxt62Xvzi8VtuK
- urj+e37WilOlf+BM5mnDhpQQEqW+w6aIDNy476+DaNcoMt+q1kXDzVTK22X/HwYyxcif4m8
- eIjZP8mBnajybTmWwZaHg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:A40ekwuV+VQ=:DoSzneYg0PMg4Z/xxtjkBA
- Zy0I9NHT6ieNiWyJtCb9iAFIOcEQ3w/1NM0ccTvqnA3HSX1KJnMF23A6N/nzP3XbpXVrNuhSM
- 2BLINZSPL0Cyck0Kj01tSlMaNsPQBUI01+6mTjM+2pV8QMBah7uRERxeb9ZkRl1KP7zzSuN7u
- C3cwYxR9ep7etgupWu71s3YOauSvKde0SWaiOLBELFZsFGGhWUAOu0OeT7piiFJXp2f5d1i9R
- vQSm1e/wr8InNCMkRwTCnwbUmapl/mD1me9Dl967IP04cc5mCGV2GTZPO+surl7zd51rD8r3r
- +digl+aEQjyBqNLPw7Co7djWVkGXkYhmnjNFk4ho/s/8lSzrRcCsBmLnEexeALAQWFYSxfMoa
- am3nx6yNKMaZNdhQdfmRhA/YqF58DvFULT/Lf2bT1Chx3M/CxxnKhycEFlQXde4hNCMSX/9mu
- C+zUtURQGA==
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:BaYDGEebk0Ib9T0dj5uodmqiGbdl9jH8EHL4EwWBwwXZyKzxuRA
+ +nZsdSrhKjt92nft9HurvGIQqVEvxpe6ZOiJqWAAfs5BQTqFyMqiHWrdfTC6VG+KT5evcwD
+ cjtI46wRiLwIVmioQiJYuyzrQocmuY/l/Wh6CAwAnVIHMYVq9UrWVkDtNBMXlrS/fS2h38Y
+ 3RgMhOZiSnOBq5FRSbXDw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oBVT3JliVDs=:11x6MepuolRwEqMxtP0sXE
+ w7lDhGdb+Qnp9CMTWc6FWZXs13X80ax9odc/qT5pTyYrX3vnEbRq6kLBNHw/6oIFtQ/+V1eCe
+ PNhZdpP8+XuJ+1wu3qqUH+5hZk/fS6CxFf6DAH5X/RmhaMrGM410+6vvccx6qHliVXACqd2Ik
+ 7BD295U8YuJjFlzenZnYRr1C8oHPIXZJ8i5azsVw2RuXvevqn6qOAKr324EZ+AZ27xtO2ioVr
+ zJzKlxCR7D8rHbiIjoZ4bnaV96Ymjsk1XnrMULylXed3NsTlHsC+n0JTDbuW8ml6y2S6oX8HU
+ 8Srxb0u5ClxQnBvJrglLOt2hc1+afcA0C4pwdfAV8C9YtvHjcZwSZf+arfzj9ChcSwi4Kurxb
+ 4CQ1Cicme5I0PE8nUFT2a6jT0tqYpNB8cGZtgn4vdrR4WQHHuGfSGhExBqGZR
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -58,45 +58,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jan 2021 08:32:57 -0000
+X-List-Received-Date: Fri, 29 Jan 2021 08:32:58 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Stefan Weil <sw@weilnetz.de>
 
-Restrict tci_write_reg16() to 64-bit hosts to fix on 32-bit ones:
+gcc (Debian 10.2.1-6) 10.2.1 20210110 aborts builds with enabled sanitizers:
 
-  [520/1115] Compiling C object libqemu-arm-linux-user.fa.p/tcg_tci.c.o
-  FAILED: libqemu-arm-linux-user.fa.p/tcg_tci.c.o
-  tcg/tci.c:132:1: error: 'tci_write_reg16' defined but not used [-Werror=unused-function]
-   tci_write_reg16(tcg_target_ulong *regs, TCGReg index, uint16_t value)
-   ^~~~~~~~~~~~~~~
+../../../target/rx/op_helper.c: In function ‘helper_scmpu’:
+../../../target/rx/op_helper.c:213:24: error: ‘tmp1’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  213 |     env->psw_c = (tmp0 >= tmp1);
+      |                  ~~~~~~^~~~~~~~
+../../../target/rx/op_helper.c:213:24: error: ‘tmp0’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+../../../target/rx/op_helper.c: In function ‘helper_suntil’:
+../../../target/rx/op_helper.c:299:23: error: ‘tmp’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  299 |     env->psw_c = (tmp <= env->regs[2]);
+      |                  ~~~~~^~~~~~~~~~~~~~~~
+../../../target/rx/op_helper.c: In function ‘helper_swhile’:
+../../../target/rx/op_helper.c:318:23: error: ‘tmp’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  318 |     env->psw_c = (tmp <= env->regs[2]);
+      |                  ~~~~~^~~~~~~~~~~~~~~~
 
-Fixes: 2f160e0f979 ("tci: Add implementation for INDEX_op_ld16u_i64")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-Message-Id: <20210123094107.2340222-1-f4bug@amsat.org>
+Rewriting the code fixes those errors.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20210128172127.46041-1-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tcg/tci.c | 2 ++
- 1 file changed, 2 insertions(+)
+ target/rx/op_helper.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/tcg/tci.c b/tcg/tci.c
-index 2311aa7d3ab6..3fc82d3c79d7 100644
---- a/tcg/tci.c
-+++ b/tcg/tci.c
-@@ -128,11 +128,13 @@ static void tci_write_reg8(tcg_target_ulong *regs, TCGReg index, uint8_t value)
-     tci_write_reg(regs, index, value);
+diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
+index 59389f49921f..4d315b44492f 100644
+--- a/target/rx/op_helper.c
++++ b/target/rx/op_helper.c
+@@ -201,14 +201,14 @@ void helper_scmpu(CPURXState *env)
+     if (env->regs[3] == 0) {
+         return;
+     }
+-    while (env->regs[3] != 0) {
++    do {
+         tmp0 = cpu_ldub_data_ra(env, env->regs[1]++, GETPC());
+         tmp1 = cpu_ldub_data_ra(env, env->regs[2]++, GETPC());
+         env->regs[3]--;
+         if (tmp0 != tmp1 || tmp0 == '\0') {
+             break;
+         }
+-    }
++    } while (env->regs[3] != 0);
+     env->psw_z = tmp0 - tmp1;
+     env->psw_c = (tmp0 >= tmp1);
  }
- 
-+#if TCG_TARGET_REG_BITS == 64
- static void
- tci_write_reg16(tcg_target_ulong *regs, TCGReg index, uint16_t value)
- {
-     tci_write_reg(regs, index, value);
+@@ -287,14 +287,14 @@ void helper_suntil(CPURXState *env, uint32_t sz)
+     if (env->regs[3] == 0) {
+         return ;
+     }
+-    while (env->regs[3] != 0) {
++    do {
+         tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
+         env->regs[1] += 1 << sz;
+         env->regs[3]--;
+         if (tmp == env->regs[2]) {
+             break;
+         }
+-    }
++    } while (env->regs[3] != 0);
+     env->psw_z = tmp - env->regs[2];
+     env->psw_c = (tmp <= env->regs[2]);
  }
-+#endif
- 
- static void
- tci_write_reg32(tcg_target_ulong *regs, TCGReg index, uint32_t value)
+@@ -306,14 +306,14 @@ void helper_swhile(CPURXState *env, uint32_t sz)
+     if (env->regs[3] == 0) {
+         return ;
+     }
+-    while (env->regs[3] != 0) {
++    do {
+         tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
+         env->regs[1] += 1 << sz;
+         env->regs[3]--;
+         if (tmp != env->regs[2]) {
+             break;
+         }
+-    }
++    } while (env->regs[3] != 0);
+     env->psw_z = env->regs[3];
+     env->psw_c = (tmp <= env->regs[2]);
+ }
 -- 
 2.29.2
 
