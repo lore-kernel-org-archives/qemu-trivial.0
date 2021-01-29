@@ -1,45 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l5OfI-0006nb-IT
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 02:58:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59036)
+	id 1l5Oi1-0000Xx-Ki
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 03:00:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l5OfH-0006nR-SW; Fri, 29 Jan 2021 02:57:59 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:53247)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1l5Ohw-0000XI-Rm
+ for qemu-trivial@nongnu.org; Fri, 29 Jan 2021 03:00:45 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:49949)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1l5OfG-0003wh-2H; Fri, 29 Jan 2021 02:57:59 -0500
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1l5Ohc-0004zZ-Mp
+ for qemu-trivial@nongnu.org; Fri, 29 Jan 2021 03:00:42 -0500
 Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MJEtx-1lOQXy3kuR-00Ki0v; Fri, 29 Jan 2021 08:57:46 +0100
-Subject: Re: [PATCH] target/rx: Fix compiler errors for build with sanitizers
-To: Stefan Weil <sw@weilnetz.de>, Yoshinori Sato <ysato@users.sourceforge.jp>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20210128172127.46041-1-sw@weilnetz.de>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mk0FS-1lpV281FMW-00kOYl; Fri, 29 Jan 2021 09:00:16 +0100
+Subject: Re: [PATCH] Fix typo in comment.
+To: lagarcia@linux.ibm.com, qemu-trivial@nongnu.org
+Cc: Leonardo Garcia <lagarcia@br.ibm.com>
+References: <2833bf05e3c85267c5fefaab7326b58521da3896.1611685564.git.lagarcia@br.ibm.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <1519606e-54cc-d0c2-32bd-6d44278059d5@vivier.eu>
-Date: Fri, 29 Jan 2021 08:57:44 +0100
+Message-ID: <da3ee880-33f5-d43f-6784-bb3d81b6c591@vivier.eu>
+Date: Fri, 29 Jan 2021 09:00:14 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210128172127.46041-1-sw@weilnetz.de>
+In-Reply-To: <2833bf05e3c85267c5fefaab7326b58521da3896.1611685564.git.lagarcia@br.ibm.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Vr8FxA6xvg+i4OyYMfdpS/+CYTYv94hXSV3B86Hj7M4n5AUjk/F
- f1LzUWpKf5s6XcXZdHqTp3oTioszBGruAZ1LQkDwvyfW2n6kOKcTQvBI4sEi0+rlEYS37vK
- 0h3rTpU3iplJ7jG6q5TmMhn2SRoPWqsbUYS25IlS6JUd1oc9CS/FLnLjJIi+HOZ83FhR6BX
- 4b6P7U1qBY/dog3+IAVLQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+SZBWB45JWY=:Wr+CWHvx16i+G73yOEr6Gf
- /e61qic36KCUnpm1adm+1LSHNND548w/fUzrQa9B12mCm9LmRnT9rcZNJaN4YZCyU904kuf6k
- k+qzVI/uwdZQC+OUGMQRi4NmmZ55RYdu1TKe/8ndIquw1wNJ9/a2RdPu/V0SzeQBxQx83jZww
- YqvaJDaXTclNLLUgHlrmxntu0OSGfuWgmrRNB1oEPatlIrSsoo9FpK/elONPGV7YkTLUm6GAr
- sCzadAv4KFO8HFJmbSPooJEDjC+0DpUSSi3cLRmr9AFxla2zKfLZsZZFjRuoW+AzZbzuTlOcq
- W0C8Y45wtugbVt77v5jf9x4rp1UgEjChJwOjndsahu7hnBehwII+oxM9cUewyFTOV+JGO+RJW
- ku3jY00dftPQPHTVGOc5Obd0MFoLicp5vJFmQ6rCeW0OPJ/tiZsEXgqJFxjqLUK2pjc4z3Trb
- B2Xza1xEYg==
+X-Provags-ID: V03:K1:Jqs1QIdm9hPWxkNi5nMAEo2y1d26fRvagHOV00DzxmnDiImJgef
+ SLGfVK644vipsZNbPtB+UA/ROdC2y3FeMikegey3ShFyiRcxAEM1PdJYlxqdXHxRqi+d6lI
+ ZMGUaRPgfA0xPMBf9sPqspnl4u/12aHKttlwq21NuuGKcPcGZ2MaSA5rXkTWUg1TAUTIeR9
+ 3k+MRtlHOiF+TW1wu0JrA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:QHkkTjHCios=:LdPmTqXHa29Tht/0czoVkP
+ UAmrrtZ5bppgRSgdrCJUtVWXJ9XLhurhE0Hz3M0fyL0rBw+wCEp3+tAAX7QQFEGWR+fItkpOs
+ Iz5zBORrK1v/OqAZuvL0C8Gw2A3FxFrR949qIBdE3O/ibIl50BhV6qbrGUuWluFthQe1JcAeu
+ +ycDBGYC3IeuMcp5W5u4CbBTAs0kDJjrrvQ14Wt+U9cc6XV3YdsxkBjT1qh5WtYyFUPHiMGtt
+ cmwFU3K8IwUDjdqGHDEwXSau2Py89ypY0iOGaFjvc90zRwDgif6DaT7Q/sIq5z1qbayaAjbTO
+ T231rEPQ5Jq1s2fn0awl+4YMLEELFPmPkhF2WzuZTZtBjrSb5E56fnWdRBQ3wSEaaeFrBY8UR
+ t/uTeIavwZbA3hezU7OkvmuocaIvCn8GCefQCpLerNic2ABSme2Hov0vlWzk5rjQ82ny2Hc6z
+ Crvjb+Ui8w==
 Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -47,7 +45,7 @@ X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,99 +58,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jan 2021 07:58:00 -0000
+X-List-Received-Date: Fri, 29 Jan 2021 08:00:45 -0000
 
-Le 28/01/2021 à 18:21, Stefan Weil a écrit :
-> gcc (Debian 10.2.1-6) 10.2.1 20210110 aborts builds with enabled sanitizers:
+Le 26/01/2021 à 19:26, lagarcia@linux.ibm.com a écrit :
+> From: Leonardo Garcia <lagarcia@br.ibm.com>
 > 
-> ../../../target/rx/op_helper.c: In function ‘helper_scmpu’:
-> ../../../target/rx/op_helper.c:213:24: error: ‘tmp1’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->   213 |     env->psw_c = (tmp0 >= tmp1);
->       |                  ~~~~~~^~~~~~~~
-> ../../../target/rx/op_helper.c:213:24: error: ‘tmp0’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-> ../../../target/rx/op_helper.c: In function ‘helper_suntil’:
-> ../../../target/rx/op_helper.c:299:23: error: ‘tmp’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->   299 |     env->psw_c = (tmp <= env->regs[2]);
->       |                  ~~~~~^~~~~~~~~~~~~~~~
-> ../../../target/rx/op_helper.c: In function ‘helper_swhile’:
-> ../../../target/rx/op_helper.c:318:23: error: ‘tmp’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->   318 |     env->psw_c = (tmp <= env->regs[2]);
->       |                  ~~~~~^~~~~~~~~~~~~~~~
-> 
-> Rewriting the code fixes those errors.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
 > ---
+>  hw/virtio/vhost.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Those error are false positives, but simple code changes help the
-> compiler (and perhaps reviewers) to understand it better.
-> 
-> Stefan
-> 
-> 
->  target/rx/op_helper.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
-> index 59389f4992..4d315b4449 100644
-> --- a/target/rx/op_helper.c
-> +++ b/target/rx/op_helper.c
-> @@ -201,14 +201,14 @@ void helper_scmpu(CPURXState *env)
->      if (env->regs[3] == 0) {
->          return;
->      }
-> -    while (env->regs[3] != 0) {
-> +    do {
->          tmp0 = cpu_ldub_data_ra(env, env->regs[1]++, GETPC());
->          tmp1 = cpu_ldub_data_ra(env, env->regs[2]++, GETPC());
->          env->regs[3]--;
->          if (tmp0 != tmp1 || tmp0 == '\0') {
->              break;
->          }
-> -    }
-> +    } while (env->regs[3] != 0);
->      env->psw_z = tmp0 - tmp1;
->      env->psw_c = (tmp0 >= tmp1);
->  }
-> @@ -287,14 +287,14 @@ void helper_suntil(CPURXState *env, uint32_t sz)
->      if (env->regs[3] == 0) {
->          return ;
->      }
-> -    while (env->regs[3] != 0) {
-> +    do {
->          tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
->          env->regs[1] += 1 << sz;
->          env->regs[3]--;
->          if (tmp == env->regs[2]) {
->              break;
->          }
-> -    }
-> +    } while (env->regs[3] != 0);
->      env->psw_z = tmp - env->regs[2];
->      env->psw_c = (tmp <= env->regs[2]);
->  }
-> @@ -306,14 +306,14 @@ void helper_swhile(CPURXState *env, uint32_t sz)
->      if (env->regs[3] == 0) {
->          return ;
->      }
-> -    while (env->regs[3] != 0) {
-> +    do {
->          tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
->          env->regs[1] += 1 << sz;
->          env->regs[3]--;
->          if (tmp != env->regs[2]) {
->              break;
->          }
-> -    }
-> +    } while (env->regs[3] != 0);
->      env->psw_z = env->regs[3];
->      env->psw_c = (tmp <= env->regs[2]);
->  }
+> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+> index 28c7d78172..d6d290e79f 100644
+> --- a/hw/virtio/vhost.c
+> +++ b/hw/virtio/vhost.c
+> @@ -285,7 +285,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
+>       * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
+>       * incremental memory mapping API via IOTLB API. For platform that
+>       * does not have IOMMU, there's no need to enable this feature
+> -     * which may cause unnecessary IOTLB miss/update trnasactions.
+> +     * which may cause unnecessary IOTLB miss/update transactions.
+>       */
+>      return vdev->dma_as != &address_space_memory &&
+>             virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
 > 
 
-Applied to my trivial-patches branch.
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
+Please, re-send your patch to qemu-devel@nongnu.org, this is the reference list.
 
 Thanks,
 Laurent
-
 
