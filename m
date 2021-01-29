@@ -1,68 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l5N2S-0005dc-HZ
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 01:13:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44442)
+	id 1l5OfI-0006nb-IT
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 02:58:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59036)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1l5N2R-0005dP-C5
- for qemu-trivial@nongnu.org; Fri, 29 Jan 2021 01:13:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:31190)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1l5N2O-0000aL-Nt
- for qemu-trivial@nongnu.org; Fri, 29 Jan 2021 01:13:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1611900822;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=R6zA6qV84vOExpWoikaoEiXCWw3A87+hH2PlOh6C8Rc=;
- b=ZoqcSi0aS1W/1lMzVUUhj7XZcm8ar530PPfqURRc/Lzq3HKy5/BKX5V29+N/s/h9dakrq/
- HX2jD3rCDdbKCK45+abNC7fKLBPaZ+/LtiSAEYIq5ri1nbXlQDTKyNIehgetadLqCveCzS
- tx4MS/Aq5dl8MIh1xvzKYPafGjNrbAY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-160-eJhNm-1UNvKc_v0OJeT5Fg-1; Fri, 29 Jan 2021 01:13:40 -0500
-X-MC-Unique: eJhNm-1UNvKc_v0OJeT5Fg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75BAC10054FF;
- Fri, 29 Jan 2021 06:13:39 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-110.ams2.redhat.com [10.36.112.110])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CF6C9271AB;
- Fri, 29 Jan 2021 06:13:37 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1l5OfH-0006nR-SW; Fri, 29 Jan 2021 02:57:59 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:53247)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1l5OfG-0003wh-2H; Fri, 29 Jan 2021 02:57:59 -0500
+Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MJEtx-1lOQXy3kuR-00Ki0v; Fri, 29 Jan 2021 08:57:46 +0100
 Subject: Re: [PATCH] target/rx: Fix compiler errors for build with sanitizers
 To: Stefan Weil <sw@weilnetz.de>, Yoshinori Sato <ysato@users.sourceforge.jp>
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 References: <20210128172127.46041-1-sw@weilnetz.de>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <13bd2f80-1467-4f2a-78ee-6b6e859115c7@redhat.com>
-Date: Fri, 29 Jan 2021 07:13:36 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <1519606e-54cc-d0c2-32bd-6d44278059d5@vivier.eu>
+Date: Fri, 29 Jan 2021 08:57:44 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
+ Thunderbird/78.6.0
 MIME-Version: 1.0
 In-Reply-To: <20210128172127.46041-1-sw@weilnetz.de>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.252,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:Vr8FxA6xvg+i4OyYMfdpS/+CYTYv94hXSV3B86Hj7M4n5AUjk/F
+ f1LzUWpKf5s6XcXZdHqTp3oTioszBGruAZ1LQkDwvyfW2n6kOKcTQvBI4sEi0+rlEYS37vK
+ 0h3rTpU3iplJ7jG6q5TmMhn2SRoPWqsbUYS25IlS6JUd1oc9CS/FLnLjJIi+HOZ83FhR6BX
+ 4b6P7U1qBY/dog3+IAVLQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+SZBWB45JWY=:Wr+CWHvx16i+G73yOEr6Gf
+ /e61qic36KCUnpm1adm+1LSHNND548w/fUzrQa9B12mCm9LmRnT9rcZNJaN4YZCyU904kuf6k
+ k+qzVI/uwdZQC+OUGMQRi4NmmZ55RYdu1TKe/8ndIquw1wNJ9/a2RdPu/V0SzeQBxQx83jZww
+ YqvaJDaXTclNLLUgHlrmxntu0OSGfuWgmrRNB1oEPatlIrSsoo9FpK/elONPGV7YkTLUm6GAr
+ sCzadAv4KFO8HFJmbSPooJEDjC+0DpUSSi3cLRmr9AFxla2zKfLZsZZFjRuoW+AzZbzuTlOcq
+ W0C8Y45wtugbVt77v5jf9x4rp1UgEjChJwOjndsahu7hnBehwII+oxM9cUewyFTOV+JGO+RJW
+ ku3jY00dftPQPHTVGOc5Obd0MFoLicp5vJFmQ6rCeW0OPJ/tiZsEXgqJFxjqLUK2pjc4z3Trb
+ B2Xza1xEYg==
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,24 +60,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jan 2021 06:13:47 -0000
+X-List-Received-Date: Fri, 29 Jan 2021 07:58:00 -0000
 
-On 28/01/2021 18.21, Stefan Weil wrote:
+Le 28/01/2021 à 18:21, Stefan Weil a écrit :
 > gcc (Debian 10.2.1-6) 10.2.1 20210110 aborts builds with enabled sanitizers:
 > 
 > ../../../target/rx/op_helper.c: In function ‘helper_scmpu’:
 > ../../../target/rx/op_helper.c:213:24: error: ‘tmp1’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->    213 |     env->psw_c = (tmp0 >= tmp1);
->        |                  ~~~~~~^~~~~~~~
+>   213 |     env->psw_c = (tmp0 >= tmp1);
+>       |                  ~~~~~~^~~~~~~~
 > ../../../target/rx/op_helper.c:213:24: error: ‘tmp0’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
 > ../../../target/rx/op_helper.c: In function ‘helper_suntil’:
 > ../../../target/rx/op_helper.c:299:23: error: ‘tmp’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->    299 |     env->psw_c = (tmp <= env->regs[2]);
->        |                  ~~~~~^~~~~~~~~~~~~~~~
+>   299 |     env->psw_c = (tmp <= env->regs[2]);
+>       |                  ~~~~~^~~~~~~~~~~~~~~~
 > ../../../target/rx/op_helper.c: In function ‘helper_swhile’:
 > ../../../target/rx/op_helper.c:318:23: error: ‘tmp’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->    318 |     env->psw_c = (tmp <= env->regs[2]);
->        |                  ~~~~~^~~~~~~~~~~~~~~~
+>   318 |     env->psw_c = (tmp <= env->regs[2]);
+>       |                  ~~~~~^~~~~~~~~~~~~~~~
 > 
 > Rewriting the code fixes those errors.
 > 
@@ -103,7 +88,71 @@ On 28/01/2021 18.21, Stefan Weil wrote:
 > compiler (and perhaps reviewers) to understand it better.
 > 
 > Stefan
+> 
+> 
+>  target/rx/op_helper.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
+> index 59389f4992..4d315b4449 100644
+> --- a/target/rx/op_helper.c
+> +++ b/target/rx/op_helper.c
+> @@ -201,14 +201,14 @@ void helper_scmpu(CPURXState *env)
+>      if (env->regs[3] == 0) {
+>          return;
+>      }
+> -    while (env->regs[3] != 0) {
+> +    do {
+>          tmp0 = cpu_ldub_data_ra(env, env->regs[1]++, GETPC());
+>          tmp1 = cpu_ldub_data_ra(env, env->regs[2]++, GETPC());
+>          env->regs[3]--;
+>          if (tmp0 != tmp1 || tmp0 == '\0') {
+>              break;
+>          }
+> -    }
+> +    } while (env->regs[3] != 0);
+>      env->psw_z = tmp0 - tmp1;
+>      env->psw_c = (tmp0 >= tmp1);
+>  }
+> @@ -287,14 +287,14 @@ void helper_suntil(CPURXState *env, uint32_t sz)
+>      if (env->regs[3] == 0) {
+>          return ;
+>      }
+> -    while (env->regs[3] != 0) {
+> +    do {
+>          tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
+>          env->regs[1] += 1 << sz;
+>          env->regs[3]--;
+>          if (tmp == env->regs[2]) {
+>              break;
+>          }
+> -    }
+> +    } while (env->regs[3] != 0);
+>      env->psw_z = tmp - env->regs[2];
+>      env->psw_c = (tmp <= env->regs[2]);
+>  }
+> @@ -306,14 +306,14 @@ void helper_swhile(CPURXState *env, uint32_t sz)
+>      if (env->regs[3] == 0) {
+>          return ;
+>      }
+> -    while (env->regs[3] != 0) {
+> +    do {
+>          tmp = cpu_ldufn[sz](env, env->regs[1], GETPC());
+>          env->regs[1] += 1 << sz;
+>          env->regs[3]--;
+>          if (tmp != env->regs[2]) {
+>              break;
+>          }
+> -    }
+> +    } while (env->regs[3] != 0);
+>      env->psw_z = env->regs[3];
+>      env->psw_c = (tmp <= env->regs[2]);
+>  }
+> 
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
 
