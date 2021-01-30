@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l5fUI-0002rH-HC
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 20:55:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40916)
+	id 1l5fUJ-0002tS-1g
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 20:55:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l5fU8-0002oK-Oy; Fri, 29 Jan 2021 20:55:41 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:43112)
+ id 1l5fU2-0002mE-R5; Fri, 29 Jan 2021 20:55:33 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:53399)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l5fU6-0000uG-RH; Fri, 29 Jan 2021 20:55:36 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id z6so10572199wrq.10;
- Fri, 29 Jan 2021 17:55:33 -0800 (PST)
+ id 1l5fU1-0000sX-GF; Fri, 29 Jan 2021 20:55:30 -0500
+Received: by mail-wm1-x329.google.com with SMTP id j18so8146571wmi.3;
+ Fri, 29 Jan 2021 17:55:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0V4s5H5BNAAAhx8ZOQKz6ZBT7eCkPLs40vaKE8q9iFo=;
- b=APEse49A8zK0chpt6sp8oLYngL46dVofgjHcagLSV/788H7B+zhuhPJcbysfMy4nz9
- 7yFpIwdiozY3UH6COinIyhLWTpcQyuvzJ8wPie3wcmipNmy++QCvOGM8jy5ppfP0aVCh
- LXXOhE/eLhSK4PTnH1NziZ68dYjW9lPQtKcU9NtJQ+EKFa6KW/O9W9jB8H4FiOSAvQ9A
- MmcVFLZIzI+mT2wQRMiUov1wW/WyonwMGHJigitn3RAud4MkwCZ9qSeIVBY8ER9rU+TS
- QusOVR6pjG/Vvm74qn6i7z0nQDSZ6PvpSOJdCntz2V1WfFLlb6zT3piprJ2a4ApNa6aI
- aw1g==
+ bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
+ b=BZTRcOn/HJkpWsRhLv0QpZri9dtTj9FhDkxOHuyJAqjGBTJaQzZVNL5WyOC21THEAS
+ IzTqxmkDU5ePXyBLSWvji/9MjOkJBxOe8N5616ednCW1h+emp+Xw2NFIogFZS/wiD+Mm
+ J8ASjop3aQ3wyVi6hF8VhLhaZG27DBg/t0azC5Dc2HQKG1n2YirYiVVvirb1owUWvJzr
+ yscTazLhBVy+1p9ePd+ByVPUJZbAs1J8UTEukJQgoDffUqPvGp0nJF3ZTIE0Ep4E6dXn
+ zuJaT3rnVLcWhaTV1kfk/MGweZJlBCPXlnbRZxlf9gq7ZI1sLdAdG4NEDPWLGXcHK797
+ 1zIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=0V4s5H5BNAAAhx8ZOQKz6ZBT7eCkPLs40vaKE8q9iFo=;
- b=PHpyYllOfj5ee7s2vs1qMKkGcwhWJnTPdW65ZfehZYoGmmDhuBxojqWlnhRbP8nfRM
- 6/mEhNNDK7Ew6e9IYwLm5M/c5/fDMSyus92udXjW3SWWeGA2js5oPfekDBXbedakj2e8
- E/3wiU79X+a0RWFVX/2lnoEiLlnpVHYzvuR+8UMbrJT3LX1z0hkuJipZHBveX7hf2MWM
- kIh4qW4ipUFF0nsX1vKoYQLFInVWlbESJC8Uz2UFAF4MYb1Gh3yxoYWA02v03SSbrSj3
- TkbxRLmhVztGXHodOVv5sBMZHWoRF5ZhL8T5RrlpT3xD/yGwh8hvRUfx2Ok1omo/7YpJ
- mo5A==
-X-Gm-Message-State: AOAM532po/96k/zmTQ/lcEGyEkwjMSpT6KdbshfU6WtpWDIm4GfBrRt3
- Ct3PRbSYvS/h/pW0qa7CEO0YMrkguOs=
-X-Google-Smtp-Source: ABdhPJztBFrHwR7cyMvGx0PTknqjLiLVu6pDu8HNJL0HmBuBrCqF9fW1FiCM4aLH3J/OEcBqHp8BTA==
-X-Received: by 2002:a5d:60c2:: with SMTP id x2mr7649542wrt.248.1611971732203; 
- Fri, 29 Jan 2021 17:55:32 -0800 (PST)
+ bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
+ b=aL+teRMArEQ6fvV7QrvXr65h6FQ8X5ni7yeJrEyvHplm0WMOlEq9imBscwod72bw5c
+ RlsprdFHEy5tlQiMiPUND7xeGN4IL/QtV+eEs+cyMGztIY86sk/OrNZ30KxO7XuPGlP9
+ qPHEJLOefIABS+Tj1YYDtfc8XBbtJqAanyvQ4FC0qL16jU/seLfN3iqo1g42/gykzT+5
+ W4Jkwz2VsZYFomXLugRmzOurtAoYCC+oyWDOgPQbjFhJa+W2pMzmdHCQy/MV01PQUMOf
+ qovmPbeeDlX8dsrke7QX4e0JvwuSswxzlXfGoli2MnjupH0TWy0dcPe0/XGMeCQvUFI7
+ n16Q==
+X-Gm-Message-State: AOAM533cuTXJbedaMWjAzWh+YWzc8+IBrfjmSDlbu6oNy5+BGlnTDUCM
+ dl1gOE9F76oGexLgwCL1CbLSttB/53o=
+X-Google-Smtp-Source: ABdhPJzxzPBg4SeY+Z6XReaUVeRJ6xga5fOttyCGezTucRzWBU4vTP6FOuodsFF+cO3/geJk/sy++A==
+X-Received: by 2002:a7b:c188:: with SMTP id y8mr5772912wmi.173.1611971727158; 
+ Fri, 29 Jan 2021 17:55:27 -0800 (PST)
 Received: from localhost.localdomain (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id s23sm11913258wmc.35.2021.01.29.17.55.30
+ by smtp.gmail.com with ESMTPSA id d2sm16883840wre.39.2021.01.29.17.55.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Jan 2021 17:55:31 -0800 (PST)
+ Fri, 29 Jan 2021 17:55:26 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,18 +54,17 @@ Cc: qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
  Michael Tokarev <mjt@tls.msk.ru>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 2/3] hw/arm/Kconfig: Add missing dependency EXYNOS4210 ->
- OR_IRQ
-Date: Sat, 30 Jan 2021 02:55:18 +0100
-Message-Id: <20210130015519.4072469-3-f4bug@amsat.org>
+Subject: [PATCH 1/3] hw/arm/Kconfig: Add missing dependency STM32F405 -> OR_IRQ
+Date: Sat, 30 Jan 2021 02:55:17 +0100
+Message-Id: <20210130015519.4072469-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210130015519.4072469-1-f4bug@amsat.org>
 References: <20210130015519.4072469-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -86,28 +85,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 Jan 2021 01:55:44 -0000
+X-List-Received-Date: Sat, 30 Jan 2021 01:55:41 -0000
 
-The Exynos4210 SoC uses an OR gate on the PL330 IRQ lines.
+The STM32F405 SoC uses an OR gate on its ADC IRQs.
 
-Fixes: dab15fbe2ab ("hw/arm/exynos4210: Fix DMA initialization")
+Fixes: 529fc5fd3e1 ("hw/arm: Add the STM32F4xx SoC")
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+Cc: alistair@alistair23.me
 ---
  hw/arm/Kconfig | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index a320a124855..223016bb4e8 100644
+index 13cc42dcc84..a320a124855 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -52,6 +52,7 @@ config EXYNOS4
-     select PTIMER
-     select SDHCI
-     select USB_EHCI_SYSBUS
-+    select OR_IRQ
- 
- config HIGHBANK
+@@ -336,6 +336,7 @@ config STM32F205_SOC
+ config STM32F405_SOC
      bool
+     select ARM_V7M
++    select OR_IRQ
+     select STM32F4XX_SYSCFG
+     select STM32F4XX_EXTI
+ 
 -- 
 2.26.2
 
