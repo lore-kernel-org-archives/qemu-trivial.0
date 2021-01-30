@@ -1,64 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l5RZS-0001Fm-BY
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 06:04:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60870)
+	id 1l5fU6-0002oA-7k
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2021 20:55:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40892)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l5RZR-0001DQ-Gz
- for qemu-trivial@nongnu.org; Fri, 29 Jan 2021 06:04:09 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:43933)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l5fTz-0002ka-FC; Fri, 29 Jan 2021 20:55:27 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:37556)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l5RZP-0000A1-Ne
- for qemu-trivial@nongnu.org; Fri, 29 Jan 2021 06:04:09 -0500
-Received: by mail-ej1-x633.google.com with SMTP id a10so12354906ejg.10
- for <qemu-trivial@nongnu.org>; Fri, 29 Jan 2021 03:04:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GyLy5CJXM8DxYz1RorINlMAfKlOYmHyccVLg8bejyq8=;
- b=c6+Io+laVoRsuUxXJ24dvuFW8IyWbGW6/UTT4jzjYZfzrLeLypRcsnWAowDKTQUYVD
- ayn2Om0LRipPYOOCzJuYDiwP7KyzI/pv3Xl5iufqUkL3Tq8MAXbF95IjonKHB3Cr+L3i
- YEpLJrbj/c83QoBYcfKqp/tzPF2EjNlncfBlkWOatRV6z6yx43HUb0EKy6KK0oL0n55r
- hCEYJGnc3zRsR6gKJ/nZN844xkkoW20XBsJ525DPcWlNA3DlfPk6Odwk26k3J4rjSeH0
- CVn8iXbcxFwVGr4D7sZs/A6lszvNBaimocKI/X4HWRznX0bixUozwwCM2U3aAAmN04QR
- aiQg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l5fTy-0000qn-2h; Fri, 29 Jan 2021 20:55:27 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id v15so10651638wrx.4;
+ Fri, 29 Jan 2021 17:55:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=juwQODmtdvn6bCkwoawWQSLQCGd025TFqesErnaNJGk=;
+ b=aXo/BvSNo1mvBU3NnkxeQi8TkxlnnlCBbz/JTlhSc1P2uBAB+GdYaWbRmPJz5Qo0hZ
+ bqP98JT7yZHWwWWG0Q0DnOjejVaHk/DnK8A7ScGdZyfc2kOrbmTDDDvSmakyhsFveVwa
+ dSNC13s6qE8DYs49ckmXtVma4e9CLG3h5wQQnOY7C3JJP2vMZf0Nt0heler6VZG/xE5+
+ 0nRfXqOfyozeweDklBeVEJQWir5aZkxCD2n663McgKgvLUQVJaGiS1hy6FArdD/tDkMo
+ kcWUmHE3oiv/fXS5or4ZsZFbS414WIwvbU/YhO+IVWpzhxkcwpDUtnvqeSkiqKIlHsa2
+ 8sqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GyLy5CJXM8DxYz1RorINlMAfKlOYmHyccVLg8bejyq8=;
- b=a5/Ev9yFR/N7p18/QjsvEcl3B3SJOlCGVp9/LD6kiZksag528Vt7BPHRH1uNzcCKXJ
- 4N5RFEIVXMTrn+Jz22NR9P1s8RTW+dKk44MW9b2G847oWRAzFX/CN7jCkCQueRyzPvsS
- 1mw2P5wn1k/BlHhoPna4HBN1hu7K3hPPMQ+wJ64O9k09j5J3GKWdAheWAj5wfZ81luHG
- xpuv03r6B0lS/RgFbEpaD7ZmyE0BKYnsV75gx7aaARxTZHZCloZ+TdsgGMmLVXxmhwzx
- azncxjP18ypE9tPGve4PMEV0hqQyF25xkFjvlfkmABGWACWyxgRnoQVDNi2Mqg3dvX0R
- q41A==
-X-Gm-Message-State: AOAM533slNCGCWJ5PRLgErQP1HZDapFYUJx2VDjlCCCJkttY9x7VtcE3
- b4Ydcd8xr5QxXpdsRQ6sIVNkBtlCRpA1zzz4SPaj6u+K2aU=
-X-Google-Smtp-Source: ABdhPJwCh6eG/+0xeNuFdb6szdcrkEWzm2X9gTU64yFo2J91/FUVrubD4IQTpGuzvxXur1SF8OORYddMPfgvyxBn6Pc=
-X-Received: by 2002:a17:906:2747:: with SMTP id
- a7mr4126776ejd.250.1611918244218; 
- Fri, 29 Jan 2021 03:04:04 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=juwQODmtdvn6bCkwoawWQSLQCGd025TFqesErnaNJGk=;
+ b=TGS8v2kJikgstAnbTy8xBAjoBwGEh63f4VjxiPPz67/0lsDmoIZFZPC12MM8RGgiyK
+ aWAgLSsyvAb/NZ1fZA1Tt2PmCTWK7enJlukVxKic1r6y+57n1VoEA4glsS6IIovN5bXb
+ 6ekHS81ZJ/+/tMkhwaiZFZS4UnM7cdB7oSZfEhEPAAAUS9+1X104RQ+Fr8PMfj9kRxK6
+ jZd74LuBPfQRzxhDokean20KKEK5y+8If55AGa/F9c0kzD17nudM80aKv97J7a/eukSH
+ IaAHmCh3o3qe6rSiwSVk6JSDD/bHfYMY+LlkbGcEgxySGVfXXeL9jxigrztLUpsU42Y3
+ kf9w==
+X-Gm-Message-State: AOAM531DttIRhjzmppODCAKbToidT6/JKwAOBRuNECJ5OqmsKbf+yYSs
+ 8mWfG2RAyGqAnk0fyQZvlF8a+ggJ4fg=
+X-Google-Smtp-Source: ABdhPJwATqa7akZxhOTXvXQr704cZQzfALE6d38hH/ZEMByZ6nleBgH/5Nbdi1P3oeX/wJ6n+aKSzQ==
+X-Received: by 2002:adf:f452:: with SMTP id f18mr7158826wrp.11.1611971722179; 
+ Fri, 29 Jan 2021 17:55:22 -0800 (PST)
+Received: from localhost.localdomain (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id s25sm16116986wrs.49.2021.01.29.17.55.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Jan 2021 17:55:21 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 0/3] hw/arm: Misc trivial fixes/cleanups
+Date: Sat, 30 Jan 2021 02:55:16 +0100
+Message-Id: <20210130015519.4072469-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20210129083236.584238-1-laurent@vivier.eu>
-In-Reply-To: <20210129083236.584238-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 29 Jan 2021 11:03:53 +0000
-Message-ID: <CAFEAcA83RCjeeO-9pyM52Vr_unGZe46JW=XmSN_28cE7jvoMvQ@mail.gmail.com>
-Subject: Re: [PULL 0/4] Trivial branch for 6.0 patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,34 +83,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jan 2021 11:04:09 -0000
+X-List-Received-Date: Sat, 30 Jan 2021 01:55:28 -0000
 
-On Fri, 29 Jan 2021 at 08:34, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 9cd69f1a270235b652766f00b94114f48a2d603f:
->
->   Merge remote-tracking branch 'remotes/stefanberger/tags/pull-tpm-2021-01-25=
-> -1' into staging (2021-01-26 09:51:02 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.0-pull-request
->
-> for you to fetch changes up to 77182df19f874adfc4ac98248606c154764baaa8:
->
->   target/rx: Fix compiler errors for build with sanitizers (2021-01-29 09:31:=
-> 53 +0100)
->
-> ----------------------------------------------------------------
-> Trivial patches 20210129
->
-> ----------------------------------------------------------------
-
-
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/6.0
-for any user-visible changes.
-
--- PMM
+A pair of bugfixes and cleanup patches noticed while=0D
+rebasing my "Support disabling TCG on ARM (part 2)" series.=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  hw/arm/Kconfig: Add missing dependency STM32F405 -> OR_IRQ=0D
+  hw/arm/Kconfig: Add missing dependency EXYNOS4210 -> OR_IRQ=0D
+  hw/arm: Display CPU type in machine description=0D
+=0D
+ hw/arm/digic_boards.c  | 2 +-=0D
+ hw/arm/microbit.c      | 2 +-=0D
+ hw/arm/netduino2.c     | 2 +-=0D
+ hw/arm/netduinoplus2.c | 2 +-=0D
+ hw/arm/orangepi.c      | 2 +-=0D
+ hw/arm/stellaris.c     | 4 ++--=0D
+ hw/arm/Kconfig         | 2 ++=0D
+ 7 files changed, 9 insertions(+), 7 deletions(-)=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D
 
