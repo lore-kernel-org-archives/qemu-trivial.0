@@ -1,48 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6Hia-0001uq-Ck
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2021 13:45:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55222)
+	id 1l6HjT-00029c-Qn
+	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2021 13:46:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6HiX-0001pv-LE; Sun, 31 Jan 2021 13:45:01 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:52985)
+ id 1l6Hit-00020f-FH; Sun, 31 Jan 2021 13:45:23 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:36743)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6HiW-0007W5-7W; Sun, 31 Jan 2021 13:45:01 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id o5so1145135wmq.2;
- Sun, 31 Jan 2021 10:44:59 -0800 (PST)
+ id 1l6His-0007ea-1J; Sun, 31 Jan 2021 13:45:23 -0500
+Received: by mail-wr1-x430.google.com with SMTP id 6so14246779wri.3;
+ Sun, 31 Jan 2021 10:45:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
- b=Ar83hyG1wfqk990LmyX56lvWVmRRWSUEpVqyMnuuaaHJmSx9fQuhZTQWz5jZAwbPmj
- wp3f+NM1Dlntqul213WvJHoGbrHt/JOBCaIwLwd8mMwZqkk/a1WSyVB5yOyhQFj+ucf/
- VoYH1Lq32TXiBWgiYVXVg4QrCqnGScz9PlJr1izmus4bIu3abO/LdTnzgyReyZVhtGXL
- 5XVCirWVxwIE7Vkpc5U+OmR/A4JO68UGLAkC0MCOFdIn9ESnH8jitD0Yz/Wu+eKyGuOm
- n6VosZs4M5Xa8LFs848I0PZUknvG1ILFBOKmmvfdVuhoV1XFpeGvPKKsXdroZHS/feR3
- 7wMQ==
+ bh=wOeLzgMSRQZ8FekGiXtfrDvmIAILNb9yREGpHP0D6s0=;
+ b=KVrY0B8T6uPLzVgWQEfLIqHrX+zuPOpU57rhUUgJQpapXgcQLvl9AN0DHa4z1R9h3a
+ eqQZjVURkG30FuFHHvhgvQyorW7RnbW79v3kuvRfDvFSGPXV1s7cKkY2kDchowABAhNS
+ 9U8EQ/OGtBZkDSsdl2EtQZQJ5aQRNtm6x/cvbHsS4fstxOeX7ubm/BCBsZxDQGq3QZ2b
+ R5zN73nly7kxyAhIVu3J6uWfWpLrhprqk0Olf4NkdrOLN1/9l+RuqYdRGgGy29Gc213f
+ gJATe5ihE2mtBBON4qLi1ZgosnvBMzTEskNYMwJECA7ez435oGIIYyP+onc7uOBqOl2I
+ lohQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
- b=k24sDsUaksK01Yo3Mv6hOBuJIGm+m4Af433SRdyOBCVw/6MzR0M99jEv9YQnqK1OZr
- fscWY9TVU1zONlNUqHDLkLGpb7S7X7hZxIU6wxzyB9OP1yk62kiWoRDDmmy2oIFT+YQQ
- 7OsDsfLAthn9b7o6peYkxObpyOAs3i2NLsthoA+uXFxj6fROYQYKHtj8iu0ZlX12lFov
- YBOYig3/IiOEyXxybzm/ZSpQfDRVWzKcfSVzf4JYiDxdp72l7Pzqe7dB41hnhzk+YFIb
- 32XIpDTOPBAfZigeDrr2UvNtPpPzvLfwBvYBKpLrZlbsNfIP/Zar7oRLYI1m4jQBwdaD
- R/4A==
-X-Gm-Message-State: AOAM531P6Qf66iQuUzuL1wznTV2DYlXFXoF2VtregBTBMRKm+a8J6sEv
- 7mTuup8yrYwW2rJxn4TxLzxVH1LsJgM=
-X-Google-Smtp-Source: ABdhPJyYvINpxyBLy+SG1ryCF0bcAlkAQlIphE5zpao88S66RKUpceyH9ZeaGvOesvSS8l5ovJ9sPA==
-X-Received: by 2002:a05:600c:268b:: with SMTP id
- 11mr12117657wmt.132.1612118697963; 
- Sun, 31 Jan 2021 10:44:57 -0800 (PST)
+ bh=wOeLzgMSRQZ8FekGiXtfrDvmIAILNb9yREGpHP0D6s0=;
+ b=Ojqfn0PBgE+sPC9gbrW+J8JC0C8N05ZAMWNxGntaq5cZ8p2vhuRCuFYQO8s84alt/i
+ QakrKTCIE+5uKn5SxGedVcEEnu/kX5rkOoW91xv7d+SXXtNgidpdipvxCKmNMHaDkRGz
+ qgOCPLCBrNl9iH8SxHrW1s1l/2L9m7Qu05TVjwSAn7DBfG7TwvDh/7l5eZ6AFTRr2GGz
+ RLz3g/kFlAfqIzHSuVoUqyx4t1kspEwh5pIxe/i1T6jjOqGeScFf98A4Xcv/KJ/oMOco
+ IXY84ybGUqOA8YvAFz1lst0WkFCJQGloeLaWFcZeIAkdFAc9qe5dMuV3P8z+Qy7OsE4h
+ pdxw==
+X-Gm-Message-State: AOAM533GNE9UXki09O5d6Y23cRnN/FhGLPzaJpUaSEKyg04Pai4UGOrA
+ ZfsPXak0eD8Acb1MCRTCsTLsKznzaJk=
+X-Google-Smtp-Source: ABdhPJzsQvoN33vwSUbNLlZsoDPRFKNXvQKn62BfLnbqU7A86wrBONVcMYBD9P61tFgYi4b0aZOG4w==
+X-Received: by 2002:adf:d850:: with SMTP id k16mr14517011wrl.191.1612118718139; 
+ Sun, 31 Jan 2021 10:45:18 -0800 (PST)
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net.
  [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id v4sm27450035wrw.42.2021.01.31.10.44.56
+ by smtp.gmail.com with ESMTPSA id 17sm18042395wmk.48.2021.01.31.10.45.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 10:44:57 -0800 (PST)
+ Sun, 31 Jan 2021 10:45:17 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,17 +53,17 @@ Cc: Niek Linnenbank <nieklinnenbank@gmail.com>,
  qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v3 1/6] hw/arm/stm32f405_soc: Add missing dependency on OR_IRQ
-Date: Sun, 31 Jan 2021 19:44:44 +0100
-Message-Id: <20210131184449.382425-2-f4bug@amsat.org>
+Subject: [PATCH v3 5/6] hw/net/can: ZynqMP CAN device requires PTIMER
+Date: Sun, 31 Jan 2021 19:44:48 +0100
+Message-Id: <20210131184449.382425-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210131184449.382425-1-f4bug@amsat.org>
 References: <20210131184449.382425-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -85,30 +84,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 Jan 2021 18:45:02 -0000
+X-List-Received-Date: Sun, 31 Jan 2021 18:45:44 -0000
 
-The STM32F405 SoC uses an OR gate on its ADC IRQs.
+Add a dependency XLNX_ZYNQMP -> PTIMER to fix:
 
-Fixes: 529fc5fd3e1 ("hw/arm: Add the STM32F4xx SoC")
+  /usr/bin/ld:
+  libcommon.fa.p/hw_net_can_xlnx-zynqmp-can.c.o: in function `xlnx_zynqmp_can_realize':
+  hw/net/can/xlnx-zynqmp-can.c:1082: undefined reference to `ptimer_init'
+  hw/net/can/xlnx-zynqmp-can.c:1085: undefined reference to `ptimer_transaction_begin'
+  hw/net/can/xlnx-zynqmp-can.c:1087: undefined reference to `ptimer_set_freq'
+  hw/net/can/xlnx-zynqmp-can.c:1088: undefined reference to `ptimer_set_limit'
+  hw/net/can/xlnx-zynqmp-can.c:1089: undefined reference to `ptimer_run'
+  hw/net/can/xlnx-zynqmp-can.c:1090: undefined reference to `ptimer_transaction_commit'
+  libcommon.fa.p/hw_net_can_xlnx-zynqmp-can.c.o:(.data.rel+0x2c8): undefined reference to `vmstate_ptimer'
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Cc: alistair@alistair23.me
----
- hw/arm/Kconfig | 1 +
+ hw/Kconfig | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 13cc42dcc84..a320a124855 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -336,6 +336,7 @@ config STM32F205_SOC
- config STM32F405_SOC
+diff --git a/hw/Kconfig b/hw/Kconfig
+index 5ad3c6b5a4b..d4cec9e476c 100644
+--- a/hw/Kconfig
++++ b/hw/Kconfig
+@@ -81,3 +81,4 @@ config XLNX_ZYNQMP
      bool
-     select ARM_V7M
-+    select OR_IRQ
-     select STM32F4XX_SYSCFG
-     select STM32F4XX_EXTI
- 
+     select REGISTER
+     select CAN_BUS
++    select PTIMER
 -- 
 2.26.2
 
