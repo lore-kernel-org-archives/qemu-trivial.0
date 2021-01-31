@@ -1,75 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6EQm-00032j-N8
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2021 10:14:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55566)
+	id 1l6EgN-0007KT-V9
+	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2021 10:30:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58460)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6EQk-0002xq-SF; Sun, 31 Jan 2021 10:14:26 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:35717)
+ id 1l6EgM-0007Iu-6B; Sun, 31 Jan 2021 10:30:34 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:54642)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6EQj-0006mv-7l; Sun, 31 Jan 2021 10:14:26 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id e15so11033207wme.0;
- Sun, 31 Jan 2021 07:14:24 -0800 (PST)
+ id 1l6EgK-00068L-Cz; Sun, 31 Jan 2021 10:30:33 -0500
+Received: by mail-wm1-x330.google.com with SMTP id u14so10522532wml.4;
+ Sun, 31 Jan 2021 07:30:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=r+g1tP1DkDesVdYhAnUOBWvR86/+XyTKbQQZsxh+ijo=;
- b=hSIFqsW4F8vJBfeIY+WbylKHqyBILO/QWN+oHD5gx2tRowQtjti8gFbzGRtW2PQzKu
- mHCciR6q/vLXCBJXLPTrg+JYVpTT8H5PRUXZp8S0hRmhRjztg6u2ohFMhv1uyQQmgxZn
- 7Ek+MdiIv/p3yf2VYrTzBWk38OKpGo5mHwvTMvcOnthRdZzodkHWp+7PtS3fO8vNQkEh
- eUzGHNUh5ddXDvUq3I+vzabRFbPyeeNWPhhqLOmQfdNAxZxZaocC8U7TjTHalL6ZaCn+
- xV1YNZ6QujS4GoCxx5h8GTHWhllqLFlrYKVn835J0+vY/sOfc4MsScjA9EotivNG9NlN
- xAeA==
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Gh18bhV9zisklL0MEsmCywLJO5xfZXZsIz+HoCdo1tY=;
+ b=ktCiK2UqjaW3DPRyDt0a1mEENoqse5ZGMNz0/JrIowbj4k6ghrw9FlcJtRMhapWArW
+ JaLHv8aAnRZr+iU2XFmMAxcmZSUoqNz8x5OsKv68Il1+Mx0+buMS/bKmD/twO/20znlV
+ /PG05F5teAaut1Z9swJD+DP8Gw9kGI/3nor4IltoAOxWDE8D9vaivS9Vy+2ptjF8DZRR
+ +VVxyRv2feHdXkZjU+KQlpUPNv/ULt5EIr7shZFE6smLB4RQehuUX8U1fXC9jzcZdc3n
+ nxxP1FtDWnUGPwcnCspizHJl7UvQfaaGRdVQbisdhLakaXvsvMuWZs+C5DcwwgEgAprV
+ hVcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=r+g1tP1DkDesVdYhAnUOBWvR86/+XyTKbQQZsxh+ijo=;
- b=clBWSr2z/5vLgurb63OwdrbZu79y7UdiOKnV/6sjNlaB5K+PzpjFhknX6W5KMtJm97
- k1Bg/s50HsHzhxSTN9sjdGosVjx5ntneOaqBoaHuS14kqY8wYB50XmvIF6SjbxYBXUgP
- N0lRcNXZopScW7JGZXXT3V98n3kOG8p3c9ZwNh1fGbkpBFZuTZe74nxlGF2x/k7Vde5O
- qFZ/zLkzp3hiOKJi602nGUbXxf4m4eMmLUAQ0ts7qNWyiv+jfMlB6yMiZWG/sL+HGU08
- rGFK3IZTWijSdQBcNTUSYlxQMKfrokWJkhJhHGjc48LrzE9POLGls9BipXUmhrrtEGj1
- b+dw==
-X-Gm-Message-State: AOAM531G/8dvwIAK5i6Npohi1z2jnIJ2iJqzHD2AaYqB2ViBQ7vV2hus
- NgInxEeK1wNpyv55AjvYhd/4izS4iLE=
-X-Google-Smtp-Source: ABdhPJxidqpTr3QzQlIyLmEZ1bbwOq7P/2eRvmnG+JeWWBFUdRv1yZstRnQY9MvACPPC5SLu2g+j9w==
-X-Received: by 2002:a05:600c:210b:: with SMTP id
- u11mr11676843wml.16.1612106062785; 
- Sun, 31 Jan 2021 07:14:22 -0800 (PST)
-Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net.
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Gh18bhV9zisklL0MEsmCywLJO5xfZXZsIz+HoCdo1tY=;
+ b=GrU8d2JCWblXPMmVeabUNjmAGcjj9icEhF4hEZy118//Bbtd4Z6aHThzgGxIaaGubt
+ UrL8sB13TVKb+8fqqN1Ryckz34zVsiP3Z8oW9ZwOC0Mzltx2jPunQx0Jg4v/S5pMXTGA
+ mcooi15Tu0Fra7o+eD9wX5viKURpLcnNiLs3/vQDt/Qjuo2tzBdzrSfQ984YMIcqo41s
+ 0arwQldvz79f2S0TeIwzGvgmdogZIOxSuAZY6b5+/GBxGVJEwgZYdLH37YKc0KP8Vbo+
+ DcphnXpf/fZIvo4RTnrGk4DALuicjE0QXrjRutROdAgDM/BYHzMj01QJj+WukAZfkTyd
+ YFnQ==
+X-Gm-Message-State: AOAM533XR0n4ivKiNFzO5rLobUVU6ShZFsLnIhlZ2DeOpRqmlfSanBn5
+ W9rGnjf6U+1QiYDlt4XP0Ag=
+X-Google-Smtp-Source: ABdhPJwtJys2srrsJREP1tWsA4cNb6J6/VJxCTqonvIqZarZMWOQogvTub2xN8waQKFZRDZYpjf+zA==
+X-Received: by 2002:a05:600c:4ed3:: with SMTP id
+ g19mr11181247wmq.95.1612107029974; 
+ Sun, 31 Jan 2021 07:30:29 -0800 (PST)
+Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
  [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id s4sm18304850wme.38.2021.01.31.07.14.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 07:14:22 -0800 (PST)
+ by smtp.gmail.com with ESMTPSA id e11sm23243632wrt.35.2021.01.31.07.30.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 31 Jan 2021 07:30:29 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v2 6/7] hw/arm/xlnx-zcu102: Restrict ZynqMP ZCU102 board
+ to 64-bit build
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Luc Michel <luc@lmichel.fr>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [RFC PATCH 2/2] hw/arm/raspi: Restrict BCM2835 / BCM2836 SoC to TCG
-Date: Sun, 31 Jan 2021 16:14:10 +0100
-Message-Id: <20210131151410.318649-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210131151410.318649-1-f4bug@amsat.org>
-References: <20210131151410.318649-1-f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>
+References: <20210131105918.228787-1-f4bug@amsat.org>
+ <20210131105918.228787-7-f4bug@amsat.org>
+ <5cb160b9-f9a4-05af-9a94-ade51bf4beb7@amsat.org>
+Message-ID: <4134e248-b7ba-a6cf-a1b8-9409e8051c1b@amsat.org>
+Date: Sun, 31 Jan 2021 16:30:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <5cb160b9-f9a4-05af-9a94-ade51bf4beb7@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.079,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -84,112 +89,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 Jan 2021 15:14:27 -0000
+X-List-Received-Date: Sun, 31 Jan 2021 15:30:34 -0000
 
-KVM requires the target cpu to be at least ARMv8 architecture
-(support on ARMv7 has been dropped in commit 82bf7ae84ce:
-"target/arm: Remove KVM support for 32-bit Arm hosts").
+On 1/31/21 1:31 PM, Philippe Mathieu-Daudé wrote:
+> On 1/31/21 11:59 AM, Philippe Mathieu-Daudé wrote:
+>> The ZynqMP ZCU102 board only use the Cortex-A53 CPU, which
+>> is only available in the 64-bit build. It is pointless to
+>> have this board present in the 32-bit build where this CPU
+>> is not available.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>> Cc: Alistair Francis <alistair@alistair23.me>
+>> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+>> ---
+>>  hw/arm/meson.build | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+>> index 059ff7382f2..345099f5a1b 100644
+>> --- a/hw/arm/meson.build
+>> +++ b/hw/arm/meson.build
+>> @@ -41,7 +41,7 @@
+>>  arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c', 'bcm2836.c', 'raspi.c'))
+>>  arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
+>>  arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
+>> -arm_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp.c', 'xlnx-zcu102.c'))
+>> +arm_ss.add(when: ['CONFIG_XLNX_ZYNQMP_ARM', 'TARGET_AARCH64'], if_true: files('xlnx-zynqmp.c', 'xlnx-zcu102.c'))
+> 
+> Please disregard this patch, it shows that my other patch
+> "meson: Introduce target-specific Kconfig" is incorrect:
+> https://lists.gnu.org/archive/html/qemu-devel/2021-01/msg07989.html
+> Probably because per docs/devel/kconfig.rst "devices are usually
+> ``default y`` if and only if they have at least one ``depends on``".
 
-From the various SoC used by the Raspberry Pi machines, only
-the BCM2837 is an ARMv8 (Cortex-A53).
+The problem is the XLNX_ZYNQMP_ARM was incorrectly selected,
+enabling AARCH64.
+https://lists.gnu.org/archive/html/qemu-devel/2021-01/msg08014.html
 
-Restrict the BCM2835 (ARM1176) and BCM2836 (Cortex-A7) to TCG.
+With this change there is no problem (and this patch is not necessary):
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/bcm2836.c | 6 ++++++
- hw/arm/raspi.c   | 4 ++++
- 2 files changed, 10 insertions(+)
+ config XLNX_ZYNQMP_ARM
+     bool
+-    default y if TCG && ARM
++    default y if TCG && AARCH64
 
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index fd16ed87c40..3051764f2dc 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -89,6 +89,7 @@ static bool bcm283x_common_realize(DeviceState *dev, Error **errp)
-     return true;
- }
- 
-+#ifdef CONFIG_TCG
- static void bcm2835_realize(DeviceState *dev, Error **errp)
- {
-     BCM283XState *s = BCM283X(dev);
-@@ -107,6 +108,7 @@ static void bcm2835_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
-             qdev_get_gpio_in(DEVICE(&s->cpu[0].core), ARM_CPU_FIQ));
- }
-+#endif /* CONFIG_TCG */
- 
- static void bcm2836_realize(DeviceState *dev, Error **errp)
- {
-@@ -178,6 +180,7 @@ static void bcm283x_class_init(ObjectClass *oc, void *data)
-     dc->user_creatable = false;
- }
- 
-+#ifdef CONFIG_TCG
- static void bcm2835_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
-@@ -201,6 +204,7 @@ static void bcm2836_class_init(ObjectClass *oc, void *data)
-     bc->clusterid = 0xf;
-     dc->realize = bcm2836_realize;
- };
-+#endif /* CONFIG_TCG */
- 
- #ifdef TARGET_AARCH64
- static void bcm2837_class_init(ObjectClass *oc, void *data)
-@@ -227,6 +231,7 @@ static const TypeInfo bcm283x_types[] = {
-         .class_init     = bcm283x_class_init,
-         .abstract       = true,
-     },
-+#ifdef CONFIG_TCG
-     {
-         .name           = TYPE_BCM2835,
-         .parent         = TYPE_BCM283X,
-@@ -236,6 +241,7 @@ static const TypeInfo bcm283x_types[] = {
-         .parent         = TYPE_BCM283X,
-         .class_init     = bcm2836_class_init,
-     },
-+#endif /* CONFIG_TCG */
- #ifdef TARGET_AARCH64
-     {
-         .name           = TYPE_BCM2837,
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index dce966a4dd8..cfa15504d9c 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -319,6 +319,7 @@ static void raspi_machine_class_common_init(MachineClass *mc,
-     mc->default_ram_id = "ram";
- };
- 
-+#ifdef CONFIG_TCG
- static void raspi0_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -346,6 +347,7 @@ static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
-     rmc->board_rev = 0xa21041;
-     raspi_machine_class_common_init(mc, rmc->board_rev);
- };
-+#endif /* CONFIG_TCG */
- 
- #ifdef TARGET_AARCH64
- static void raspi3ap_machine_class_init(ObjectClass *oc, void *data)
-@@ -376,6 +378,7 @@ static const TypeInfo raspi_machine_types[] = {
-         .class_size     = sizeof(RaspiMachineClass),
-         .abstract       = true,
-     },
-+#ifdef CONFIG_TCG
-     {
-         .name           = MACHINE_TYPE_NAME("raspi0"),
-         .parent         = TYPE_RASPI_MACHINE,
-@@ -389,6 +392,7 @@ static const TypeInfo raspi_machine_types[] = {
-         .parent         = TYPE_RASPI_MACHINE,
-         .class_init     = raspi2b_machine_class_init,
-     },
-+#endif /* CONFIG_TCG */
- #ifdef TARGET_AARCH64
-     {
-         .name           = MACHINE_TYPE_NAME("raspi3ap"),
--- 
-2.26.2
+Regards,
 
+Phil.
 
