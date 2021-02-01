@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6awj-0007Ae-2p
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 10:16:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35480)
+	id 1l6axK-0007lw-Io
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 10:17:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35586)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6awg-00077g-4w; Mon, 01 Feb 2021 10:16:54 -0500
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31]:42077)
+ id 1l6axI-0007jd-PK; Mon, 01 Feb 2021 10:17:32 -0500
+Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a]:37697)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6awa-0001dF-Su; Mon, 01 Feb 2021 10:16:53 -0500
-Received: by mail-io1-xd31.google.com with SMTP id u20so3606557iot.9;
- Mon, 01 Feb 2021 07:16:46 -0800 (PST)
+ id 1l6axH-0001xr-2z; Mon, 01 Feb 2021 10:17:32 -0500
+Received: by mail-io1-xd2a.google.com with SMTP id d13so17711049ioy.4;
+ Mon, 01 Feb 2021 07:17:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=Alq5OZIl9+U/IHBWXNwlGw8gVM/UVyqiUZrelU07SI8=;
- b=tjCHp5CJgJs+qaWIUR6Yy/iipMxmAAnsAlXcnvDUSd124Hq5O0D23xiyIWS3tFdhow
- EsEZvtl4M4p0rFgIHWOyZDdwS2oqVTjHiPQj/f3djxjwts4qRAB49N6c+DUq4y39CVLa
- 5ha7J0xyTV/w0hyfVuaRCzZtzCKQvs+BUTcPnkb8HuRGcNn27ugCL16OiHYRvDUpfMGG
- D4koz2Nc01Ir9s+/0g67VgnZg80vqwIzQ0uHJOLV+Rz2yybM77pb9s3qmJlUzhHHgq7S
- /uYZ3gkexCFkovIUqscSRVQFXNxlJxMjVFClG1BSS/mo+qnCv/egRChhVJJPenUTTNOd
- JwUQ==
+ bh=gDOUEAMCOcVpC8+Ktm4REQG9jTibaj2y2OtvFFqaoR8=;
+ b=vGLCRpkRI2eSE9Auyv/J9729gX4sJPjIiSV7eHDWY3CVBvl095cRaLupAmvY907rnt
+ oPTrR512TdhLLtu8wsyHmzKE91oWLrDGdxDLtoOqi+Nx9awtoZ0zgpun+vCQGTVC0n+Q
+ 7noYLo1OW53WXXzw7RkozppbwJu1p/El/OzDPpmBxa5T3MZS66Zz9DN+JHeinL2OX7/U
+ gqUCzTwoWEs1jVbs1Bzm+YYOonn0vuRWCNifYcGGlZItzaZhMlbZJxrqhrV6vk/Lcm2v
+ KrmOwnYQ+oMhE+2xoy0EU/vr6BrINPKvw8n7VvWPzHXW29zk/0iDsod7RpN1FhMLyLKy
+ FLsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=Alq5OZIl9+U/IHBWXNwlGw8gVM/UVyqiUZrelU07SI8=;
- b=aWyZDWQB/A4+KbbKm12G4f/+Gadr+Ot8HNOXrvv8fX9bONiWX087zRB2Wt/a6yPBJG
- DcMRfMYDQLGEfaZpT46Lq6pWVcl1hTdtLs2uDL/drKcZFKc4fQ17jblKYfo1dMvlOlHq
- 7DchC9u3/PA9Ecd0+tHodxXD/t+rWHC1ij5EDwUntOPTKPK9PsCYa748/i+mZZpp5wvy
- XSZWez5rTNr6dizlteZZF99MRbbIhh4jPrIMpw1sMCP8we8L63DGrweamTAJth0sulUV
- EBXaFSWVdlRCknIIvrCvn1XVi/ICpIEGXH6sHAzBf0wyiY7z78lY2Ljiglc7C8k9WPAq
- /bKA==
-X-Gm-Message-State: AOAM531KtuydPnCvO5HRI6g0vl28slksZ2KeaaJJAsWLqyGTwn24PMsz
- J/Otsb9DeBb1MyFPbTzhpA2bGJgtpYxwUMk5eOI=
-X-Google-Smtp-Source: ABdhPJyr20fLldf41OBBeAwHwgNhQN48SXmO0mKrn4JOWNxmxKlxS+pvoYlNyIwZ4f/Oc4s9wz7FDBEqlcVN7qTVc1M=
-X-Received: by 2002:a02:cbad:: with SMTP id v13mr14624551jap.26.1612192606136; 
- Mon, 01 Feb 2021 07:16:46 -0800 (PST)
+ bh=gDOUEAMCOcVpC8+Ktm4REQG9jTibaj2y2OtvFFqaoR8=;
+ b=GYfOJZ1kE9F9j/6F8F70jm0IY8A+anrSfpbWxUZ1aqODF6KzhzJdQfFx2CwQ4LnYE3
+ kjk3hdm26+Be2A9eb6xR+KduQhQ3yB90kPiqTP11+hX0XudvwAbNaa8FLTe8614SG+vD
+ VSDTzYbzDkYnXX1eUKAQ97xGOLEHf1n92YwGxaSjX83iTH+CSxxhKfHi9iCVi9YeejfK
+ y/PHynN3dBMPa1ToyQVKX7pP0prd9TK71hZYFIUKm+2ry8/iGWWVF9V/U07mrxQJPzNL
+ w9vE7Adf5uxzKuFThA5yc5SS20vb1Fsp0yVJIcc0d3tQeM2vUgilmbQXhJy/vpWFzzs7
+ 90Jw==
+X-Gm-Message-State: AOAM531+imsXNm6BVtN+QpbZy8GF2vM1uXaKnsdtVzK5K7F0V6ktwFXp
+ y+/lEbFZdZ7ckLI/YXMfSzW/vh55XqPedN8wiuQ=
+X-Google-Smtp-Source: ABdhPJw9mNqq5ofLBS24C1TRmv4FdipR+keeYfFRk4zZvF0EV/eKgqKImB+4G1DFVRPP/WM1dHXDQGDQKsZWOD+95Yc=
+X-Received: by 2002:a02:3b6c:: with SMTP id i44mr15143360jaf.91.1612192648963; 
+ Mon, 01 Feb 2021 07:17:28 -0800 (PST)
 MIME-Version: 1.0
 References: <20210131105918.228787-1-f4bug@amsat.org>
- <20210131105918.228787-2-f4bug@amsat.org>
-In-Reply-To: <20210131105918.228787-2-f4bug@amsat.org>
+ <20210131105918.228787-4-f4bug@amsat.org>
+In-Reply-To: <20210131105918.228787-4-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 1 Feb 2021 07:16:19 -0800
-Message-ID: <CAKmqyKPPSJtTfAPKEaXt5MVrbf5r2ZyidHhzDynmS5+e14LpJw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/7] hw/arm/stm32f405_soc: Add missing dependency on
- OR_IRQ
+Date: Mon, 1 Feb 2021 07:17:02 -0800
+Message-ID: <CAKmqyKOyoXVJ14i66LmsNoj9OZ69Txv_xssNSuHq+cy6-CysJw@mail.gmail.com>
+Subject: Re: [PATCH v2 3/7] hw/arm/xlnx-versal: Versal SoC requires ZDMA
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Peter Maydell <peter.maydell@linaro.org>, 
@@ -53,11 +52,13 @@ Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>, 
  Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, 
- Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Joel Stanley <joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d31;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd31.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2a;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd2a.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -78,14 +79,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2021 15:16:54 -0000
+X-List-Received-Date: Mon, 01 Feb 2021 15:17:33 -0000
 
-On Sun, Jan 31, 2021 at 3:00 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Sun, Jan 31, 2021 at 3:08 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 >
-> The STM32F405 SoC uses an OR gate on its ADC IRQs.
+> The Versal SoC instantiates the TYPE_XLNX_ZDMA object in
+> versal_create_admas(). Introduce the XLNX_ZDMA configuration
+> and select it to fix:
 >
-> Fixes: 529fc5fd3e1 ("hw/arm: Add the STM32F4xx SoC")
+>   $ qemu-system-aarch64 -M xlnx-versal-virt ...
+>   qemu-system-aarch64: missing object type 'xlnx.zdma'
+>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -93,23 +98,64 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
-> Cc: alistair@alistair23.me
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 > ---
->  hw/arm/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+>  hw/arm/Kconfig     | 2 ++
+>  hw/dma/Kconfig     | 3 +++
+>  hw/dma/meson.build | 2 +-
+>  3 files changed, 6 insertions(+), 1 deletion(-)
 >
 > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 13cc42dcc84..a320a124855 100644
+> index 223016bb4e8..09298881f2f 100644
 > --- a/hw/arm/Kconfig
 > +++ b/hw/arm/Kconfig
-> @@ -336,6 +336,7 @@ config STM32F205_SOC
->  config STM32F405_SOC
->      bool
->      select ARM_V7M
-> +    select OR_IRQ
->      select STM32F4XX_SYSCFG
->      select STM32F4XX_EXTI
+> @@ -354,6 +354,7 @@ config XLNX_ZYNQMP_ARM
+>      select XILINX_AXI
+>      select XILINX_SPIPS
+>      select XLNX_ZYNQMP
+> +    select XLNX_ZDMA
 >
+>  config XLNX_VERSAL
+>      bool
+> @@ -362,6 +363,7 @@ config XLNX_VERSAL
+>      select CADENCE
+>      select VIRTIO_MMIO
+>      select UNIMP
+> +    select XLNX_ZDMA
+>
+>  config NPCM7XX
+>      bool
+> diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
+> index d67492d36c1..5d6be1a7a7a 100644
+> --- a/hw/dma/Kconfig
+> +++ b/hw/dma/Kconfig
+> @@ -18,6 +18,9 @@ config ZYNQ_DEVCFG
+>      bool
+>      select REGISTER
+>
+> +config XLNX_ZDMA
+> +    bool
+> +
+>  config STP2000
+>      bool
+>
+> diff --git a/hw/dma/meson.build b/hw/dma/meson.build
+> index b991d7698c7..47b4a7cb47b 100644
+> --- a/hw/dma/meson.build
+> +++ b/hw/dma/meson.build
+> @@ -9,7 +9,7 @@
+>  softmmu_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_dma.c'))
+>  softmmu_ss.add(when: 'CONFIG_STP2000', if_true: files('sparc32_dma.c'))
+>  softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx_dpdm=
+a.c'))
+> -softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zdma=
+.c'))
+> +softmmu_ss.add(when: 'CONFIG_XLNX_ZDMA', if_true: files('xlnx-zdma.c'))
+>  softmmu_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_dma.c', 'soc_dm=
+a.c'))
+>  softmmu_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_dma.c'))
+>  softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_dma.c'))
 > --
 > 2.26.2
 >
