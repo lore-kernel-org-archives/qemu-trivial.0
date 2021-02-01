@@ -1,45 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6SXk-0001hJ-Vs
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 01:18:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49478)
+	id 1l6UBg-0000AJ-LN
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 03:03:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35394)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1l6SXj-0001gu-IR; Mon, 01 Feb 2021 01:18:35 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3299)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhanghan64@huawei.com>)
- id 1l6SXh-0004AT-1d; Mon, 01 Feb 2021 01:18:35 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DTd4w34HKzlDfx;
- Mon,  1 Feb 2021 14:16:48 +0800 (CST)
-Received: from [10.108.234.139] (10.108.234.139) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.498.0; Mon, 1 Feb 2021 14:18:18 +0800
-Subject: Re: [PATCH 0/9] Fix some style problems in net
-To: <jasowang@redhat.com>
-CC: <alex.chen@huawei.com>, <hunongda@huawei.com>, <qemu-trivial@nongnu.org>, 
- <hang.zhanghailiang@huawei.com>, <qemu-devel@nongnu.org>
-References: <160865644490.22007.1893392783918998373@600e7e483b3a>
- <c938691d-2739-4c6f-c4b7-a5f96e32945b@huawei.com>
-From: "zhanghan (J)" <zhanghan64@huawei.com>
-Message-ID: <62540827-4765-feb6-6501-8e991189a8e9@huawei.com>
-Date: Mon, 1 Feb 2021 14:18:17 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6UBe-00009O-W2; Mon, 01 Feb 2021 03:03:55 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:40659)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6UBd-0007wQ-HN; Mon, 01 Feb 2021 03:03:54 -0500
+Received: by mail-wr1-x432.google.com with SMTP id c12so15491236wrc.7;
+ Mon, 01 Feb 2021 00:03:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=heutC6rB2Jj4FFexObbfHYedqet2ADGcqJ4tiRcLAGw=;
+ b=Xj/cCURNppsKTWvEkIN0lbZ4YDwe2nP0VuJrfZwbf+kSwj0VmiM4z2AYx00z1QffUh
+ P5iFkPgudB0mK8TbM7qL+Mfqt2YnwMYyY3RjqGK0xQ2oQMw2xpkPVFr/CrD2ClgcRjvG
+ PBZyqfJmzuQRG3sqEzRFxiz8IjGeXiTXIhssQ+wdKXWDehjIaRXc7P5W0L4o69vRBe1t
+ PrA3JB/kAZ9COb0b6+KcElh2ozXnkZXFr5OBY5TuSWVM45wW+D+Cl94tRDztcZvA+UQN
+ Q6banGwhDGOlSl2WI6D65h5ZYm/YCw1mW0OrpLx6+ET/F042Ii0GJicWI40euIQ9eYvB
+ K/Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=heutC6rB2Jj4FFexObbfHYedqet2ADGcqJ4tiRcLAGw=;
+ b=SN56WKPDtLaLQlNsSu8JsrNnq2OPgC61Z5X+PyjIW0o0JE6Nn6tIqtFPnIC7DjAqMn
+ LgyTfeuM+xFH02iwcHM6/cOmjNhB/ZwWDPdqKhBAqNzp8QPN/i5bK1idSUOQHVO4/RRn
+ wB0Y8EG7zYjqO29Tzc7nOY9WAkRPQW0+D4+OYPpTCPiNi2nooQrGXzutP11FUbCsIWy3
+ Bf7JWb6lQHuSmg7j4/2XzpZg1xJZ5BcIdkOG1dzi5loiOJHa9hytNlFOdfDdFeuqzUdW
+ Q1nLY4lYK+DLvHS+dA4wspNOwA536/wgN0w/32jnAwnAzKgGQHkfzuU7zPtaHY/d9M5P
+ qQWw==
+X-Gm-Message-State: AOAM530HH6ygvr9GnB6AGBd/il0aHng67kgcLpqceFgXJK+4Sjjg9MKO
+ fPdhKJN7Zs/DVg97HU6mnyA6VLYkbwU=
+X-Google-Smtp-Source: ABdhPJzO+HSjSYJEMGQLsjKgnv9HmTtj63q627jN1IMmLmEOkk7VfvL+84R1yh9c6TVaRiEKvUK98w==
+X-Received: by 2002:adf:9031:: with SMTP id h46mr16812679wrh.19.1612166631392; 
+ Mon, 01 Feb 2021 00:03:51 -0800 (PST)
+Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net.
+ [83.57.171.7])
+ by smtp.gmail.com with ESMTPSA id t18sm22059871wrr.56.2021.02.01.00.03.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 01 Feb 2021 00:03:50 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Sarah Harris <S.E.Harris@kent.ac.uk>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] target/avr/cpu: Use device_class_set_parent_realize()
+Date: Mon,  1 Feb 2021 09:03:48 +0100
+Message-Id: <20210201080348.438095-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <c938691d-2739-4c6f-c4b7-a5f96e32945b@huawei.com>
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.108.234.139]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=zhanghan64@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.079,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -52,12 +78,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2021 06:18:35 -0000
+X-List-Received-Date: Mon, 01 Feb 2021 08:03:55 -0000
 
-ping？This patch set about code style problem in net receives no replies.
+Change generated automatically using the Coccinelle
+patch included in commit bf853881690 ("qdev: use
+device_class_set_parent_realize/unrealize/reset()")
 
-Did I miss any response?
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/avr/cpu.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-The link follows:
-http://patchwork.ozlabs.org/project/qemu-devel/cover/20201222082340.67405-1-zhanghan64@huawei.com/
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index 6f3d5a9e4a7..e60036e41ef 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -190,9 +190,7 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
+     CPUClass *cc = CPU_CLASS(oc);
+     AVRCPUClass *mcc = AVR_CPU_CLASS(oc);
+ 
+-    mcc->parent_realize = dc->realize;
+-    dc->realize = avr_cpu_realizefn;
+-
++    device_class_set_parent_realize(dc, avr_cpu_realizefn, &mcc->parent_realize);
+     device_class_set_parent_reset(dc, avr_cpu_reset, &mcc->parent_reset);
+ 
+     cc->class_by_name = avr_cpu_class_by_name;
+-- 
+2.26.2
+
 
