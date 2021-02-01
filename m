@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6ay5-0008Tq-SX
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 10:18:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35748)
+	id 1l6b9F-0007Tm-Ov
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 10:29:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38380)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6ay1-0008Rp-MY; Mon, 01 Feb 2021 10:18:18 -0500
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33]:46397)
+ id 1l6b99-0007Sn-Mr; Mon, 01 Feb 2021 10:29:48 -0500
+Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135]:35338)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6axy-0002Gl-7m; Mon, 01 Feb 2021 10:18:17 -0500
-Received: by mail-io1-xd33.google.com with SMTP id u8so12615024ior.13;
- Mon, 01 Feb 2021 07:18:10 -0800 (PST)
+ id 1l6b97-0007P3-53; Mon, 01 Feb 2021 10:29:47 -0500
+Received: by mail-il1-x135.google.com with SMTP id g7so14851606iln.2;
+ Mon, 01 Feb 2021 07:29:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=rsBBNq0YNUibXzK6TlF3VCvzx6/0Sg0ag9aEiZUg1IQ=;
- b=s+L7wAtoX/lkd1NN6++IQdEUyS5COw9aMmkYOVX30uxMMaE+HmhELtOqgBe4AEZguZ
- 6Srff+KtYCf6sRNOxYJHUlppxdGfQuOKNR62F6GG5b8o7VO2YhpbpOXqhfwSca+9BWA4
- 7cyzy2NKsjB7PRJmnmxPSFEeozDXLbknmcZgIVOK1B0BYw0naLTgnqJ9Gfj+njDSdzQg
- t+MYljHW1WwiIj8y26t7S9sn0WG8cHhArCP3AxBGU8fS9HPj5OBLN76RDI66+DA1J/uo
- ND4CSoPKMh1uETSx3krnEEQwPeDDR461gPZaNLvdQcl6BueGDv46qLaXlJBG4XX1nJUY
- Dsmg==
+ bh=GmdPeZb/oJT4aN44C5E62k5JoooyjcliKf9JKqs8+hM=;
+ b=LoyPCsGTZJySEFcbIaxqOjnX8/Fqw0wdudMpr1ZYtUTePYWoghxLxrypHUNnXE9xgT
+ 8d7sUw6/VlkXoSXCp8l34cZ/PcXyf9ASGRfsaSGJgNaSv/W4AIUJoekZ339rPy3ddFWj
+ /Wdt9SEznSFgBwE4gQ9wiYPhgaOkfFFag+g9oWkl7QUkBibFnR9E3azlCwAAeszK2iVi
+ znz5L5cCHWrk+NjKL4CKiB3FTUUGJxqmnEHbFBKyxeVs/M0AvtLj3/cIu3jcC+6N92wq
+ dkljVfMTe1wg52b10vUQCcZ5eDS/TYQwavWE+ivdEpnfA8obaur3djALtK1BfaMz9xvF
+ fnCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=rsBBNq0YNUibXzK6TlF3VCvzx6/0Sg0ag9aEiZUg1IQ=;
- b=spF/xkggid+teLUh02hOSNSgNuNM5NwAqVLsOr/OOEatF4fUEwxad4Szbz9yKuTV1f
- rJ+G0xxj68ks8WUHiPwr/dt3BOfv8JnQ0ml04NvwC95u1nI8F4bz7Qx62JsBnCUIZwKt
- 19RqgfovYiOwKSSJIIdOLzDAMcyLbN6o4dXo3ucH2wkSwq8QSDOem9U66V2bFWgLolIN
- Fz2bUyYXflDv2PcfDN9Se5lWO51RzABI+5fKxj9J/GdUv3O3q67KJU6w/RPoG3Erdn7u
- 61lMCg9YRvlwElst/jcCC2mxwcyHp3Lle16Nn/W3g92ECJpCW374YE/qBQvvsrXklU0B
- iboA==
-X-Gm-Message-State: AOAM530vps61ocZl4p0onU2gshtEZu5YVduW5/Kt4QxxaM/7xc+w0DKW
- 6Kh6y7PxkIQp35W1whRTxnwCRW8ZTvcaXg2sjPM=
-X-Google-Smtp-Source: ABdhPJwz+RtsuuXnzBWOJW2O7I3qpJVQeqUsX1fun383WrAEZ/krnPpCF3WayNNa3W8QmGHysggNPBRJnRcsnCxo3fY=
-X-Received: by 2002:a6b:d30d:: with SMTP id s13mr13396022iob.175.1612192690146; 
- Mon, 01 Feb 2021 07:18:10 -0800 (PST)
+ bh=GmdPeZb/oJT4aN44C5E62k5JoooyjcliKf9JKqs8+hM=;
+ b=EbrY6eumx6cHGujXxI4bQqAMOWm8pQyKiGNLz9GX/JY0cF93NBgF6yzAnqdnK2FHHN
+ 7fiC4yq+SMXYIGVOJWNQHeMGsXi5wrRHyw45NfMUZQS0PfEtV7DIwentjqp0WEFn4CSB
+ jqOfsHIYir0edCr3rn0MWc84oVFgwcidmYwRBVMe/FN9DVVtpDzwAy8YGERnpnxwMAoi
+ gvUUBCqNoxK9eJzCAOlbYsUnaKKa7iFYo6Nm51TZhQUOs1cEhzs6sGIhNJJ1DOS+zvME
+ zNzolTvmmopKWYQxDrCbYDwuz2Ct4f/vCvZsiAh7y4mr7gzGCP4M3ixya65uHo3xUcra
+ +IRw==
+X-Gm-Message-State: AOAM53119RrSVdCJq+S9Z/w0irCwh/OdaMcSQ1xiSq+BoSLDAdfIWRE+
+ AkRpHqlFycmrpwbYwjUevryBNYfoT6wLU4H40Uk=
+X-Google-Smtp-Source: ABdhPJyAD0yzmq9zS4utSygcWQ54kJqTUBGfP+04+PhcGOTe97DcekVQRZKdT3ct+Vy+FXXQsGakNgl5hzG5PDVxuFo=
+X-Received: by 2002:a92:4b06:: with SMTP id m6mr14280388ilg.177.1612193383077; 
+ Mon, 01 Feb 2021 07:29:43 -0800 (PST)
 MIME-Version: 1.0
 References: <20210131105918.228787-1-f4bug@amsat.org>
- <20210131105918.228787-8-f4bug@amsat.org>
-In-Reply-To: <20210131105918.228787-8-f4bug@amsat.org>
+ <20210131105918.228787-5-f4bug@amsat.org>
+In-Reply-To: <20210131105918.228787-5-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 1 Feb 2021 07:17:44 -0800
-Message-ID: <CAKmqyKNUtvJo_Y=3xKkvqsnw7t45A=PLR3Q1xTZx+XT42fzwMg@mail.gmail.com>
-Subject: Re: [PATCH v2 7/7] hw/arm: Display CPU type in machine description
+Date: Mon, 1 Feb 2021 07:29:16 -0800
+Message-ID: <CAKmqyKMDTs11Sm=Ho63SQEi_0XucQE0UfHB5V8fKidEem=LMHw@mail.gmail.com>
+Subject: Re: [PATCH v2 4/7] hw/arm/virt: Do not include 64-bit CPUs in 32-bit
+ build
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Peter Maydell <peter.maydell@linaro.org>, 
@@ -55,8 +56,8 @@ Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d33;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd33.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::135;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x135.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -77,14 +78,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2021 15:18:19 -0000
+X-List-Received-Date: Mon, 01 Feb 2021 15:29:50 -0000
 
-On Sun, Jan 31, 2021 at 3:08 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Sun, Jan 31, 2021 at 3:09 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 >
-> Most of ARM machines display their CPU when QEMU list the available
-> machines (-M help). Some machines do not. Fix to unify the help
-> output.
+> Similarly to commit 210f47840dd, remove 64-bit CPUs (which have
+> never been available on 32-bit build, see commit d14d42f19bf),
+> to fix:
+>
+>   $ make check-qtest-arm
+>   ...
+>   Running test qtest-arm/device-introspect-test
+>   missing object type 'cortex-a53-arm-cpu'
+>   Broken pipe
+>   ../tests/qtest/libqtest.c:181: kill_qemu() detected QEMU death from sig=
+nal 6 (Aborted) (core dumped)
+>   ERROR qtest-arm/device-introspect-test - too few tests run (expected 6,=
+ got 5)
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -93,104 +104,25 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/digic_boards.c  | 2 +-
->  hw/arm/microbit.c      | 2 +-
->  hw/arm/netduino2.c     | 2 +-
->  hw/arm/netduinoplus2.c | 2 +-
->  hw/arm/orangepi.c      | 2 +-
->  hw/arm/stellaris.c     | 4 ++--
->  6 files changed, 7 insertions(+), 7 deletions(-)
+>  hw/arm/virt.c | 2 ++
+>  1 file changed, 2 insertions(+)
 >
-> diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
-> index be12873673b..6cdc1d83fca 100644
-> --- a/hw/arm/digic_boards.c
-> +++ b/hw/arm/digic_boards.c
-> @@ -142,7 +142,7 @@ static void canon_a1100_init(MachineState *machine)
->
->  static void canon_a1100_machine_init(MachineClass *mc)
->  {
-> -    mc->desc =3D "Canon PowerShot A1100 IS";
-> +    mc->desc =3D "Canon PowerShot A1100 IS (ARM946)";
->      mc->init =3D &canon_a1100_init;
->      mc->ignore_memory_transaction_failures =3D true;
->      mc->default_ram_size =3D 64 * MiB;
-> diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-> index 0947491cb97..e9494334ce7 100644
-> --- a/hw/arm/microbit.c
-> +++ b/hw/arm/microbit.c
-> @@ -64,7 +64,7 @@ static void microbit_machine_class_init(ObjectClass *oc=
-, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
->
-> -    mc->desc =3D "BBC micro:bit";
-> +    mc->desc =3D "BBC micro:bit (Cortex-M0)";
->      mc->init =3D microbit_init;
->      mc->max_cpus =3D 1;
->  }
-> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-> index 8f103341443..1733b71507c 100644
-> --- a/hw/arm/netduino2.c
-> +++ b/hw/arm/netduino2.c
-> @@ -54,7 +54,7 @@ static void netduino2_init(MachineState *machine)
->
->  static void netduino2_machine_init(MachineClass *mc)
->  {
-> -    mc->desc =3D "Netduino 2 Machine";
-> +    mc->desc =3D "Netduino 2 Machine (Cortex-M3)";
->      mc->init =3D netduino2_init;
->      mc->ignore_memory_transaction_failures =3D true;
->  }
-> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-> index 68abd3ec69d..d3ad7a2b675 100644
-> --- a/hw/arm/netduinoplus2.c
-> +++ b/hw/arm/netduinoplus2.c
-> @@ -55,7 +55,7 @@ static void netduinoplus2_init(MachineState *machine)
->
->  static void netduinoplus2_machine_init(MachineClass *mc)
->  {
-> -    mc->desc =3D "Netduino Plus 2 Machine";
-> +    mc->desc =3D "Netduino Plus 2 Machine (Cortex-M4)";
->      mc->init =3D netduinoplus2_init;
->  }
->
-> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> index d6306dfddae..40cdb5c6d2c 100644
-> --- a/hw/arm/orangepi.c
-> +++ b/hw/arm/orangepi.c
-> @@ -113,7 +113,7 @@ static void orangepi_init(MachineState *machine)
->
->  static void orangepi_machine_init(MachineClass *mc)
->  {
-> -    mc->desc =3D "Orange Pi PC";
-> +    mc->desc =3D "Orange Pi PC (Cortex-A7)";
->      mc->init =3D orangepi_init;
->      mc->block_default_type =3D IF_SD;
->      mc->units_per_default_bus =3D 1;
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index ad72c0959f1..27292ec4113 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -1538,7 +1538,7 @@ static void lm3s811evb_class_init(ObjectClass *oc, =
-void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
->
-> -    mc->desc =3D "Stellaris LM3S811EVB";
-> +    mc->desc =3D "Stellaris LM3S811EVB (Cortex-M3)";
->      mc->init =3D lm3s811evb_init;
->      mc->ignore_memory_transaction_failures =3D true;
->      mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-m3");
-> @@ -1554,7 +1554,7 @@ static void lm3s6965evb_class_init(ObjectClass *oc,=
- void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
->
-> -    mc->desc =3D "Stellaris LM3S6965EVB";
-> +    mc->desc =3D "Stellaris LM3S6965EVB (Cortex-M3)";
->      mc->init =3D lm3s6965evb_init;
->      mc->ignore_memory_transaction_failures =3D true;
->      mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-m3");
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 399da734548..f0e9d7dd7d8 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -199,9 +199,11 @@ static const int a15irqmap[] =3D {
+>  static const char *valid_cpus[] =3D {
+>      ARM_CPU_TYPE_NAME("cortex-a7"),
+>      ARM_CPU_TYPE_NAME("cortex-a15"),
+> +#ifdef TARGET_AARCH64
+>      ARM_CPU_TYPE_NAME("cortex-a53"),
+>      ARM_CPU_TYPE_NAME("cortex-a57"),
+>      ARM_CPU_TYPE_NAME("cortex-a72"),
+> +#endif /* TARGET_AARCH64 */
+>      ARM_CPU_TYPE_NAME("host"),
+>      ARM_CPU_TYPE_NAME("max"),
+>  };
 > --
 > 2.26.2
 >
