@@ -1,75 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6YJ7-000374-Lf
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 07:27:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59656)
+	id 1l6ahy-0004Co-Bz
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 10:01:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1l6YJ5-00035E-V7
- for qemu-trivial@nongnu.org; Mon, 01 Feb 2021 07:27:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27896)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1l6YJ4-0002SE-Gd
- for qemu-trivial@nongnu.org; Mon, 01 Feb 2021 07:27:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612182469;
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l6UGs-0001SV-3d; Mon, 01 Feb 2021 03:09:18 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:36804)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l6UGp-0001wk-T4; Mon, 01 Feb 2021 03:09:17 -0500
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 51E99C602E6;
+ Mon,  1 Feb 2021 09:09:10 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1612166950;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VYGIOdWIV0PypYwUveXqIouhJQmoPoE/z2ry2h7Wx6I=;
- b=G39r5ZXxqq2MOfymFTUeQ31+Rbn0KI8b7fKFF7TQu34otYa6HgeM9I3dm427S95QB3P2xp
- JlL+cf/uT3HHvfQxiMXui1JPFCEYfJx0lAe/QI+IhxmQl/CAVhNOQNkIZKwcs/ANRwR+9X
- zAO6r6B7QF1WGIg6u2Ocq50DHIC3RCU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-485-WFoHyZ07PMKL9kCgeUCUMw-1; Mon, 01 Feb 2021 07:27:48 -0500
-X-MC-Unique: WFoHyZ07PMKL9kCgeUCUMw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B6A0B9CC00;
- Mon,  1 Feb 2021 12:27:46 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-115-51.ams2.redhat.com
- [10.36.115.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 727215C1A3;
- Mon,  1 Feb 2021 12:27:46 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 0B535113865F; Mon,  1 Feb 2021 13:27:45 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: "zhanghan (J)" <zhanghan64@huawei.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- alex.chen@huawei.com,
- hunongda@huawei.com,  qemu-trivial@nongnu.org,  qemu-devel@nongnu.org,
- zhang.zhanghailiang@huawei.com
-Subject: Re: [PATCH 0/4] Fix some style problems in qobject
-References: <20201228071129.24563-1-zhanghan64@huawei.com>
- <20201228071129.24563-2-zhanghan64@huawei.com>
- <791fabe6-cdab-2891-0dca-393ade874dfe@redhat.com>
- <e9bf06bb-479c-2991-6d1c-b5410c650448@huawei.com>
- <1b78ab9d-b1c6-5978-35bb-0892617ab2b3@huawei.com>
-Date: Mon, 01 Feb 2021 13:27:45 +0100
-In-Reply-To: <1b78ab9d-b1c6-5978-35bb-0892617ab2b3@huawei.com> (zhanghan's
- message of "Mon, 1 Feb 2021 14:16:39 +0800")
-Message-ID: <871re0m0qm.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ bh=y2mbTAOSW43stHE3WluobYQIt2cFJmUioMvJ34X3NGQ=;
+ b=ROcyJhbzqO8pMz2tuSudK9D7F04DhJfx/1fNqLJw4YX+BxfSztUURM5oAG/u9fkdgciaeQ
+ HemU735u08jSJcjVQkj9IgQ7oNFijy7KN9O5voLDHDECwOCWIrnGEI2qCio8C357f+vZLK
+ DiuamlFluYsrcqP6NOcRgKRUJm2fpFd6zpiuz3tL1qa/JbLtx4oO9yjP9j0yIRsI+2mYoy
+ 9U1Xn2p4Il+W4lD/0t33JznjsUXgzffcJoTodaFBV4Nj45zZM2Du5f/8/T7TUJ2PBOnNt6
+ o+hOF6zNVNVa1n6wretDhCbTlCgSmarzO2gmvvp6Ax3VWSsegFbVS44iUWdTYQ==
+Date: Mon, 1 Feb 2021 09:09:36 +0100
+From: Luc Michel <luc@lmichel.fr>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [RFC PATCH 1/2] hw/arm/raspi: Trivial code movement
+Message-ID: <20210201080936.wgoxywx6zkjpkeht@sekoia-pc.home.lmichel.fr>
+References: <20210131151410.318649-1-f4bug@amsat.org>
+ <20210131151410.318649-2-f4bug@amsat.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20210131151410.318649-2-f4bug@amsat.org>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 01 Feb 2021 10:01:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,17 +62,119 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2021 12:27:52 -0000
+X-List-Received-Date: Mon, 01 Feb 2021 08:09:18 -0000
 
-"zhanghan (J)" <zhanghan64@huawei.com> writes:
+On 16:14 Sun 31 Jan     , Philippe Mathieu-Daudé wrote:
+> Move the abstract TYPE_BCM283X and TYPE_RASPI_MACHINE declarations
+> earlier to make the next commit easier to review.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> ping=EF=BC=9FThis patch set about code style problem in qobject  receives=
- no replies.
->
-> Did I miss any response?
+Reviewed-by: Luc Michel <luc@lmichel.fr>
 
-The Christmas break ate your patches.  My apologies!
+> ---
+>  hw/arm/bcm2836.c | 32 +++++++++++++++++---------------
+>  hw/arm/raspi.c   | 18 ++++++++++--------
+>  2 files changed, 27 insertions(+), 23 deletions(-)
+> 
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index de7ade2878e..fd16ed87c40 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -219,20 +219,6 @@ static void bcm2837_class_init(ObjectClass *oc, void *data)
+>  
+>  static const TypeInfo bcm283x_types[] = {
+>      {
+> -        .name           = TYPE_BCM2835,
+> -        .parent         = TYPE_BCM283X,
+> -        .class_init     = bcm2835_class_init,
+> -    }, {
+> -        .name           = TYPE_BCM2836,
+> -        .parent         = TYPE_BCM283X,
+> -        .class_init     = bcm2836_class_init,
+> -#ifdef TARGET_AARCH64
+> -    }, {
+> -        .name           = TYPE_BCM2837,
+> -        .parent         = TYPE_BCM283X,
+> -        .class_init     = bcm2837_class_init,
+> -#endif
+> -    }, {
+>          .name           = TYPE_BCM283X,
+>          .parent         = TYPE_DEVICE,
+>          .instance_size  = sizeof(BCM283XState),
+> @@ -240,7 +226,23 @@ static const TypeInfo bcm283x_types[] = {
+>          .class_size     = sizeof(BCM283XClass),
+>          .class_init     = bcm283x_class_init,
+>          .abstract       = true,
+> -    }
+> +    },
+> +    {
+> +        .name           = TYPE_BCM2835,
+> +        .parent         = TYPE_BCM283X,
+> +        .class_init     = bcm2835_class_init,
+> +    }, {
+> +        .name           = TYPE_BCM2836,
+> +        .parent         = TYPE_BCM283X,
+> +        .class_init     = bcm2836_class_init,
+> +    },
+> +#ifdef TARGET_AARCH64
+> +    {
+> +        .name           = TYPE_BCM2837,
+> +        .parent         = TYPE_BCM283X,
+> +        .class_init     = bcm2837_class_init,
+> +    },
+> +#endif
+>  };
+>  
+>  DEFINE_TYPES(bcm283x_types)
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 990509d3852..dce966a4dd8 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -369,6 +369,13 @@ static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
+>  #endif /* TARGET_AARCH64 */
+>  
+>  static const TypeInfo raspi_machine_types[] = {
+> +    {
+> +        .name           = TYPE_RASPI_MACHINE,
+> +        .parent         = TYPE_MACHINE,
+> +        .instance_size  = sizeof(RaspiMachineState),
+> +        .class_size     = sizeof(RaspiMachineClass),
+> +        .abstract       = true,
+> +    },
+>      {
+>          .name           = MACHINE_TYPE_NAME("raspi0"),
+>          .parent         = TYPE_RASPI_MACHINE,
+> @@ -381,8 +388,9 @@ static const TypeInfo raspi_machine_types[] = {
+>          .name           = MACHINE_TYPE_NAME("raspi2b"),
+>          .parent         = TYPE_RASPI_MACHINE,
+>          .class_init     = raspi2b_machine_class_init,
+> +    },
+>  #ifdef TARGET_AARCH64
+> -    }, {
+> +    {
+>          .name           = MACHINE_TYPE_NAME("raspi3ap"),
+>          .parent         = TYPE_RASPI_MACHINE,
+>          .class_init     = raspi3ap_machine_class_init,
+> @@ -390,14 +398,8 @@ static const TypeInfo raspi_machine_types[] = {
+>          .name           = MACHINE_TYPE_NAME("raspi3b"),
+>          .parent         = TYPE_RASPI_MACHINE,
+>          .class_init     = raspi3b_machine_class_init,
+> +    },
+>  #endif
+> -    }, {
+> -        .name           = TYPE_RASPI_MACHINE,
+> -        .parent         = TYPE_MACHINE,
+> -        .instance_size  = sizeof(RaspiMachineState),
+> -        .class_size     = sizeof(RaspiMachineClass),
+> -        .abstract       = true,
+> -    }
+>  };
+>  
+>  DEFINE_TYPES(raspi_machine_types)
+> -- 
+> 2.26.2
+> 
 
-[...]
-
+-- 
 
