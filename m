@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6b9F-0007Tm-Ov
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 10:29:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38380)
+	id 1l6fIB-00079K-4k
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 14:55:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53390)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6b99-0007Sn-Mr; Mon, 01 Feb 2021 10:29:48 -0500
-Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135]:35338)
+ id 1l6fI8-00077F-Dv; Mon, 01 Feb 2021 14:55:20 -0500
+Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35]:40265)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6b97-0007P3-53; Mon, 01 Feb 2021 10:29:47 -0500
-Received: by mail-il1-x135.google.com with SMTP id g7so14851606iln.2;
- Mon, 01 Feb 2021 07:29:43 -0800 (PST)
+ id 1l6fI6-0004ja-Cd; Mon, 01 Feb 2021 14:55:20 -0500
+Received: by mail-io1-xd35.google.com with SMTP id n2so18744562iom.7;
+ Mon, 01 Feb 2021 11:55:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=GmdPeZb/oJT4aN44C5E62k5JoooyjcliKf9JKqs8+hM=;
- b=LoyPCsGTZJySEFcbIaxqOjnX8/Fqw0wdudMpr1ZYtUTePYWoghxLxrypHUNnXE9xgT
- 8d7sUw6/VlkXoSXCp8l34cZ/PcXyf9ASGRfsaSGJgNaSv/W4AIUJoekZ339rPy3ddFWj
- /Wdt9SEznSFgBwE4gQ9wiYPhgaOkfFFag+g9oWkl7QUkBibFnR9E3azlCwAAeszK2iVi
- znz5L5cCHWrk+NjKL4CKiB3FTUUGJxqmnEHbFBKyxeVs/M0AvtLj3/cIu3jcC+6N92wq
- dkljVfMTe1wg52b10vUQCcZ5eDS/TYQwavWE+ivdEpnfA8obaur3djALtK1BfaMz9xvF
- fnCw==
+ bh=iFgdCd4i3qm6ycc3lZFNiqhev/tXTwMUNIvl1DVBxow=;
+ b=qGKOHJKkQYTJ13t1MEQLQTki0FMwz5IrUzkcu8XiKptS7oci7Tr5rntwWPbsW/FSI6
+ 5jGXVAwwDyQLV6woUn89R6/yKbwDEH8jTIsgPFycKdppiSNjYvuI1RqJe620G1By0usI
+ Xi3WTuSW2XZKRz/8twZq+cFFEHt5h6Mb+oFhvYqOTL7fUTxRjEg8nfluTw819QT7ROca
+ xbL12X5yrw8Nybp00OqDMaAUHG+h0bsl2y4JhenVtaejcXCBE9ziCQyPGlMxl9UPOVYl
+ 3/CL1lLa6z/WgZPpscIfZb/CvoMa5nI1ZJczsQhrp/2Yvdw32qUC/g0hR4za4b0m2Lj2
+ k4vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=GmdPeZb/oJT4aN44C5E62k5JoooyjcliKf9JKqs8+hM=;
- b=EbrY6eumx6cHGujXxI4bQqAMOWm8pQyKiGNLz9GX/JY0cF93NBgF6yzAnqdnK2FHHN
- 7fiC4yq+SMXYIGVOJWNQHeMGsXi5wrRHyw45NfMUZQS0PfEtV7DIwentjqp0WEFn4CSB
- jqOfsHIYir0edCr3rn0MWc84oVFgwcidmYwRBVMe/FN9DVVtpDzwAy8YGERnpnxwMAoi
- gvUUBCqNoxK9eJzCAOlbYsUnaKKa7iFYo6Nm51TZhQUOs1cEhzs6sGIhNJJ1DOS+zvME
- zNzolTvmmopKWYQxDrCbYDwuz2Ct4f/vCvZsiAh7y4mr7gzGCP4M3ixya65uHo3xUcra
- +IRw==
-X-Gm-Message-State: AOAM53119RrSVdCJq+S9Z/w0irCwh/OdaMcSQ1xiSq+BoSLDAdfIWRE+
- AkRpHqlFycmrpwbYwjUevryBNYfoT6wLU4H40Uk=
-X-Google-Smtp-Source: ABdhPJyAD0yzmq9zS4utSygcWQ54kJqTUBGfP+04+PhcGOTe97DcekVQRZKdT3ct+Vy+FXXQsGakNgl5hzG5PDVxuFo=
-X-Received: by 2002:a92:4b06:: with SMTP id m6mr14280388ilg.177.1612193383077; 
- Mon, 01 Feb 2021 07:29:43 -0800 (PST)
+ bh=iFgdCd4i3qm6ycc3lZFNiqhev/tXTwMUNIvl1DVBxow=;
+ b=fRGi4HlR/vud6ax+v4pf7L9UIreI8PreJAcvuHpESbrQuMBMJGARZ7dRnuizVh16Dk
+ TeGgiV9XZ3E3YikUNZTy1RMxiYx2SLF76YNa6TzK3rnAcvjF1kJDHK55jf2LJsU7pWaM
+ k7JXKeRc4LKjcx+z+n3PWVGhet8EmqN0/Nqs4ZjB9tPyF3Q7WQFJ0ngd9h0HOiwC52tF
+ vWJjsDHzhALN7QmF1MTZDJzymF4RKud7ydb8aR6QhyppH2rS1Uw0AJIpKzkIBWeJqMxA
+ 6OgnhwaeK/Cbrus0+NrH4N9/VZOJ8SYHWFxBhrb0xzStAVUpR5butzo50DxiMhlTD3yO
+ +8AQ==
+X-Gm-Message-State: AOAM530sLCvVCZIoxXPKtR4E1DmEOJZ7a4go2fy+3TAEXlz3A5cs0KND
+ 45VGFC65c25NjtKqZ+o5ddZ1D6IEQgrw+0olnYg=
+X-Google-Smtp-Source: ABdhPJxXqnX9j+W9QDwsK/e38Ggv8yiyTUAGb1loils5z7d3/VzsmFM3av120A75uvplB0NQReDcVJwUF78wDJsohhU=
+X-Received: by 2002:a02:634b:: with SMTP id j72mr16886851jac.106.1612209316634; 
+ Mon, 01 Feb 2021 11:55:16 -0800 (PST)
 MIME-Version: 1.0
-References: <20210131105918.228787-1-f4bug@amsat.org>
- <20210131105918.228787-5-f4bug@amsat.org>
-In-Reply-To: <20210131105918.228787-5-f4bug@amsat.org>
+References: <20210131184449.382425-1-f4bug@amsat.org>
+ <20210131184449.382425-2-f4bug@amsat.org>
+In-Reply-To: <20210131184449.382425-2-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 1 Feb 2021 07:29:16 -0800
-Message-ID: <CAKmqyKMDTs11Sm=Ho63SQEi_0XucQE0UfHB5V8fKidEem=LMHw@mail.gmail.com>
-Subject: Re: [PATCH v2 4/7] hw/arm/virt: Do not include 64-bit CPUs in 32-bit
- build
+Date: Mon, 1 Feb 2021 11:54:49 -0800
+Message-ID: <CAKmqyKNLSKQ6X5BjjPp1+6KsCRqnu4cVaT5hQEsftoZCF6sZkQ@mail.gmail.com>
+Subject: Re: [PATCH v3 1/6] hw/arm/stm32f405_soc: Add missing dependency on
+ OR_IRQ
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Peter Maydell <peter.maydell@linaro.org>, 
@@ -56,8 +56,8 @@ Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::135;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d35;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd35.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -78,25 +78,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2021 15:29:50 -0000
+X-List-Received-Date: Mon, 01 Feb 2021 19:55:20 -0000
 
-On Sun, Jan 31, 2021 at 3:09 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
+On Sun, Jan 31, 2021 at 10:46 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
 >
-> Similarly to commit 210f47840dd, remove 64-bit CPUs (which have
-> never been available on 32-bit build, see commit d14d42f19bf),
-> to fix:
+> The STM32F405 SoC uses an OR gate on its ADC IRQs.
 >
->   $ make check-qtest-arm
->   ...
->   Running test qtest-arm/device-introspect-test
->   missing object type 'cortex-a53-arm-cpu'
->   Broken pipe
->   ../tests/qtest/libqtest.c:181: kill_qemu() detected QEMU death from sig=
-nal 6 (Aborted) (core dumped)
->   ERROR qtest-arm/device-introspect-test - too few tests run (expected 6,=
- got 5)
->
+> Fixes: 529fc5fd3e1 ("hw/arm: Add the STM32F4xx SoC")
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -104,25 +93,23 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/virt.c | 2 ++
->  1 file changed, 2 insertions(+)
+> Cc: alistair@alistair23.me
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 399da734548..f0e9d7dd7d8 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -199,9 +199,11 @@ static const int a15irqmap[] =3D {
->  static const char *valid_cpus[] =3D {
->      ARM_CPU_TYPE_NAME("cortex-a7"),
->      ARM_CPU_TYPE_NAME("cortex-a15"),
-> +#ifdef TARGET_AARCH64
->      ARM_CPU_TYPE_NAME("cortex-a53"),
->      ARM_CPU_TYPE_NAME("cortex-a57"),
->      ARM_CPU_TYPE_NAME("cortex-a72"),
-> +#endif /* TARGET_AARCH64 */
->      ARM_CPU_TYPE_NAME("host"),
->      ARM_CPU_TYPE_NAME("max"),
->  };
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 13cc42dcc84..a320a124855 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -336,6 +336,7 @@ config STM32F205_SOC
+>  config STM32F405_SOC
+>      bool
+>      select ARM_V7M
+> +    select OR_IRQ
+>      select STM32F4XX_SYSCFG
+>      select STM32F4XX_EXTI
+>
 > --
 > 2.26.2
 >
