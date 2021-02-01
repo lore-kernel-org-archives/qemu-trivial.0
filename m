@@ -1,72 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6fJy-0000uR-Kt
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 14:57:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53756)
+	id 1l6gmR-0003Iw-KX
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 16:30:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6fJt-0000r8-NK; Mon, 01 Feb 2021 14:57:10 -0500
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a]:36004)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6fJr-0005fi-SM; Mon, 01 Feb 2021 14:57:09 -0500
-Received: by mail-il1-x12a.google.com with SMTP id p8so16844044ilg.3;
- Mon, 01 Feb 2021 11:57:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=W2dJn2sLoY9H+IKibEtw6/D6QgYv/E2xZxjVcAwjgmk=;
- b=LQIs2QwD80ymhtl44nrZgYq21K0dzZykpVIT/KU5HrBelc9HLidqOViek7clRNiJdY
- IIykWLdTHPR5fNR4jVOg8T8b88mMSYR7W8CspcfCrdkMBceQY2Xs3y/JjxzWfvVq0u/K
- 2lb4Yg2EzxleaWBWVguBQnzBUNOZXTuLTu0mn7+VKLuOSSgRzGKoukJsvtj7NpSdvkTT
- vwwqkAvm5FRxY20sEZmzMcjmJF/tajHPj9+KmQWh/ucMhljNmZPZiB4OcOUwmkZq9Ryb
- eoz1SLCbufzUV7SzUzBluxsZ5lAZE2YHWZr4UDcW87l8mkdCWsrYOsa2T/Y8/1jBavo9
- f3Hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=W2dJn2sLoY9H+IKibEtw6/D6QgYv/E2xZxjVcAwjgmk=;
- b=shL6TlI38mbYFHhDHayd8V5KMRrbyCzo9hvawmBt/YAkiswYaz2EY85z1juToQli2Y
- 4zND9Gd8RfskRrNQuHtDgAh34YhGef+JME6kbKJygDkFnPXZchhKfCXAKbmRJv3/gKfW
- FjOUDF8hKzWxnmEhLr/sbhYG5LBp10+oVtAvdQOiJjBs8/lFtqEA0pBd4snjbbuy7SqS
- Q34k0gMYxyEnnubaXUtNYwzQ1w/i9W7X5zmh9S4wQiCseYVj/MnC18vpcT4aXrv9QNxg
- VlhND0ndSJjiqNAwyYL1wpfB0fncLW+tB4y/eeozHB/coF3MxJBXVa8AuTQb6oKAqrbp
- vnmg==
-X-Gm-Message-State: AOAM530iiTGd3X5N0UDEISlhJAAlBayd0Sfvfs+yrml5gjlOxr2AS3CA
- enJUrbjZFyfPIGJYGlcj6jxRKkD3dXctnD07mOVdv9XZZO8=
-X-Google-Smtp-Source: ABdhPJx1zl3+B8mfXw9T2LtJvLPDe/dwzmTi1pww9/h+qZV4GRota3Lmw7xoOvCpNgZzarnVAj0xr9G+aH2Wt1+PYjQ=
-X-Received: by 2002:a05:6e02:20e5:: with SMTP id
- q5mr14550714ilv.131.1612209425045; 
- Mon, 01 Feb 2021 11:57:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ryan@finnie.org>)
+ id 1l6fP6-0007gk-3r; Mon, 01 Feb 2021 15:02:32 -0500
+Received: from feh.colobox.com ([209.177.154.210]:57842)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ryan@finnie.org>)
+ id 1l6fP4-0008Fa-0o; Mon, 01 Feb 2021 15:02:31 -0500
+Received: from linda.snowman.lan (unknown [IPv6:2600:6c4e:97f:cf46::5])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by feh.colobox.com (Postfix) with ESMTPSA id 38660440143;
+ Mon,  1 Feb 2021 20:02:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=finnie.org; s=mail;
+ t=1612209745; bh=EUY1j1vbrR0wwL9oFyA+kRr0jNraMTLHTnS4DlQEkLU=;
+ h=From:To:Cc:Subject:Date:From;
+ b=JFhw5S8OSRiCVY0B+G8L82TCF0EXdWeiVDz2eHyXAjPBWGanPKaz0Yo7iIKZj13Vx
+ RwZ0N9t+9QrJQVYUMM9DcLsDSketyj5vj3q5skzUke9m3wMjtJ59Y163BRNwaIKE0K
+ lnj1cxMol2UvI9MYd5G9271nXMl9Lu9zzu/QnJKAL6JPtZtcwS0u7igiBJ0bBrxe8t
+ cnvJ3seqrUn7y898iTwG0HA8Lho1a69oZlqH1zu2EPA8BBOfKmhB6+SIyGOGU/0tvl
+ a88jpBprCr7CVw3ZD37GJ2EGHaDLWHXl8j2a+JEQ08FP3gsdHspSeC+gJtm5h6ZECC
+ iegvIgPBDU5XA==
+From: Ryan Finnie <ryan@finnie.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Ryan Finnie <ryan@finnie.org>
+Subject: [PATCH] Fix SPDX-License-Identifier typos
+Date: Mon,  1 Feb 2021 12:01:47 -0800
+Message-Id: <20210201200147.211914-1-ryan@finnie.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20210131184449.382425-1-f4bug@amsat.org>
- <20210131184449.382425-7-f4bug@amsat.org>
-In-Reply-To: <20210131184449.382425-7-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 1 Feb 2021 11:56:37 -0800
-Message-ID: <CAKmqyKN-Yg-XOPNh5BVyZG9WLZdmtLm6HPF3rCeRtNryhCwosQ@mail.gmail.com>
-Subject: Re: [PATCH v3 6/6] hw/arm: Display CPU type in machine description
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>, 
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, 
- Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12a;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x12a.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-Virus-Scanned: clamav-milter 0.102.4 at feh
+X-Virus-Status: Clean
+Received-SPF: pass client-ip=209.177.154.210; envelope-from=ryan@finnie.org;
+ helo=feh.colobox.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 01 Feb 2021 16:30:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -78,122 +57,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2021 19:57:10 -0000
+X-List-Received-Date: Mon, 01 Feb 2021 20:02:32 -0000
 
-On Sun, Jan 31, 2021 at 10:54 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
->
-> Most of ARM machines display their CPU when QEMU list the available
-> machines (-M help). Some machines do not. Fix to unify the help
-> output.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Several SPDX headers contain "SPDX-License-Identifer" (note the
+missing "i" before "er"); fix these typos.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Ryan Finnie <ryan@finnie.org>
+Cc: qemu-trivial@nongnu.org
+---
+ hw/misc/aspeed_xdma.c         | 2 +-
+ hw/misc/sbsa_ec.c             | 2 +-
+ hw/sd/aspeed_sdhci.c          | 2 +-
+ include/hw/misc/aspeed_xdma.h | 2 +-
+ include/hw/sd/aspeed_sdhci.h  | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-Alistair
+diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
+index dca5585a75..533d237e3c 100644
+--- a/hw/misc/aspeed_xdma.c
++++ b/hw/misc/aspeed_xdma.c
+@@ -3,7 +3,7 @@
+  * Eddie James <eajames@linux.ibm.com>
+  *
+  * Copyright (C) 2019 IBM Corp
+- * SPDX-License-Identifer: GPL-2.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #include "qemu/osdep.h"
+diff --git a/hw/misc/sbsa_ec.c b/hw/misc/sbsa_ec.c
+index 9a7d7f914a..83020fe9ac 100644
+--- a/hw/misc/sbsa_ec.c
++++ b/hw/misc/sbsa_ec.c
+@@ -7,7 +7,7 @@
+  * Copyright (c) 2020 Nuvia Inc
+  * Written by Graeme Gregory <graeme@nuviainc.com>
+  *
+- * SPDX-License-Identifer: GPL-2.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #include "qemu/osdep.h"
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index 4f24b7d2f9..3299844de6 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -3,7 +3,7 @@
+  * Eddie James <eajames@linux.ibm.com>
+  *
+  * Copyright (C) 2019 IBM Corp
+- * SPDX-License-Identifer: GPL-2.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #include "qemu/osdep.h"
+diff --git a/include/hw/misc/aspeed_xdma.h b/include/hw/misc/aspeed_xdma.h
+index 9869ef4728..a2dea96984 100644
+--- a/include/hw/misc/aspeed_xdma.h
++++ b/include/hw/misc/aspeed_xdma.h
+@@ -3,7 +3,7 @@
+  * Eddie James <eajames@linux.ibm.com>
+  *
+  * Copyright (C) 2019 IBM Corp.
+- * SPDX-License-Identifer: GPL-2.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #ifndef ASPEED_XDMA_H
+diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
+index b093d1b861..057bc5f3d1 100644
+--- a/include/hw/sd/aspeed_sdhci.h
++++ b/include/hw/sd/aspeed_sdhci.h
+@@ -3,7 +3,7 @@
+  * Eddie James <eajames@linux.ibm.com>
+  *
+  * Copyright (C) 2019 IBM Corp
+- * SPDX-License-Identifer: GPL-2.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #ifndef ASPEED_SDHCI_H
+-- 
+2.25.1
 
-> ---
->  hw/arm/digic_boards.c  | 2 +-
->  hw/arm/microbit.c      | 2 +-
->  hw/arm/netduino2.c     | 2 +-
->  hw/arm/netduinoplus2.c | 2 +-
->  hw/arm/orangepi.c      | 2 +-
->  hw/arm/stellaris.c     | 4 ++--
->  6 files changed, 7 insertions(+), 7 deletions(-)
->
-> diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
-> index be12873673b..6cdc1d83fca 100644
-> --- a/hw/arm/digic_boards.c
-> +++ b/hw/arm/digic_boards.c
-> @@ -142,7 +142,7 @@ static void canon_a1100_init(MachineState *machine)
->
->  static void canon_a1100_machine_init(MachineClass *mc)
->  {
-> -    mc->desc =3D "Canon PowerShot A1100 IS";
-> +    mc->desc =3D "Canon PowerShot A1100 IS (ARM946)";
->      mc->init =3D &canon_a1100_init;
->      mc->ignore_memory_transaction_failures =3D true;
->      mc->default_ram_size =3D 64 * MiB;
-> diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-> index 0947491cb97..e9494334ce7 100644
-> --- a/hw/arm/microbit.c
-> +++ b/hw/arm/microbit.c
-> @@ -64,7 +64,7 @@ static void microbit_machine_class_init(ObjectClass *oc=
-, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
->
-> -    mc->desc =3D "BBC micro:bit";
-> +    mc->desc =3D "BBC micro:bit (Cortex-M0)";
->      mc->init =3D microbit_init;
->      mc->max_cpus =3D 1;
->  }
-> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-> index 8f103341443..1733b71507c 100644
-> --- a/hw/arm/netduino2.c
-> +++ b/hw/arm/netduino2.c
-> @@ -54,7 +54,7 @@ static void netduino2_init(MachineState *machine)
->
->  static void netduino2_machine_init(MachineClass *mc)
->  {
-> -    mc->desc =3D "Netduino 2 Machine";
-> +    mc->desc =3D "Netduino 2 Machine (Cortex-M3)";
->      mc->init =3D netduino2_init;
->      mc->ignore_memory_transaction_failures =3D true;
->  }
-> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-> index 68abd3ec69d..d3ad7a2b675 100644
-> --- a/hw/arm/netduinoplus2.c
-> +++ b/hw/arm/netduinoplus2.c
-> @@ -55,7 +55,7 @@ static void netduinoplus2_init(MachineState *machine)
->
->  static void netduinoplus2_machine_init(MachineClass *mc)
->  {
-> -    mc->desc =3D "Netduino Plus 2 Machine";
-> +    mc->desc =3D "Netduino Plus 2 Machine (Cortex-M4)";
->      mc->init =3D netduinoplus2_init;
->  }
->
-> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> index d6306dfddae..40cdb5c6d2c 100644
-> --- a/hw/arm/orangepi.c
-> +++ b/hw/arm/orangepi.c
-> @@ -113,7 +113,7 @@ static void orangepi_init(MachineState *machine)
->
->  static void orangepi_machine_init(MachineClass *mc)
->  {
-> -    mc->desc =3D "Orange Pi PC";
-> +    mc->desc =3D "Orange Pi PC (Cortex-A7)";
->      mc->init =3D orangepi_init;
->      mc->block_default_type =3D IF_SD;
->      mc->units_per_default_bus =3D 1;
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index ad72c0959f1..27292ec4113 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -1538,7 +1538,7 @@ static void lm3s811evb_class_init(ObjectClass *oc, =
-void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
->
-> -    mc->desc =3D "Stellaris LM3S811EVB";
-> +    mc->desc =3D "Stellaris LM3S811EVB (Cortex-M3)";
->      mc->init =3D lm3s811evb_init;
->      mc->ignore_memory_transaction_failures =3D true;
->      mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-m3");
-> @@ -1554,7 +1554,7 @@ static void lm3s6965evb_class_init(ObjectClass *oc,=
- void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
->
-> -    mc->desc =3D "Stellaris LM3S6965EVB";
-> +    mc->desc =3D "Stellaris LM3S6965EVB (Cortex-M3)";
->      mc->init =3D lm3s6965evb_init;
->      mc->ignore_memory_transaction_failures =3D true;
->      mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-m3");
-> --
-> 2.26.2
->
->
 
