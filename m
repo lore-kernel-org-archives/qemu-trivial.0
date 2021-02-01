@@ -1,48 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6X4Z-00006Z-AN
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 06:08:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43018)
+	id 1l6YJ7-000374-Lf
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 07:27:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59656)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
- id 1l6X4S-0008VH-3Y; Mon, 01 Feb 2021 06:08:42 -0500
-Received: from kylie.crudebyte.com ([5.189.157.229]:50609)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
- id 1l6X4O-0007JR-EQ; Mon, 01 Feb 2021 06:08:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=crudebyte.com; s=kylie; h=Content-Type:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
- Content-ID:Content-Description;
- bh=5jdSVpy/1KSbNdZK0RnYNaH3tEI5Tt5lBT5F+axQkIM=; b=jNR36+vZN7K4f6vizdCFhK0VWe
- YjGK9XECVeAEJ++IMRmwxi9cb2qPQSh0U7EKjviF4ZDZIhqw2ey1FO1XWMyqGN2fHqCqTNPbuD2/7
- D9GCO/7ef0hOVQDEK8uSJ7OaHOhqvp1rsFEFxPZAmkqINVNmSEs56E0rdg4jFx/nnZdjEnq8WOzrf
- nDLXph6cixFF/dW9CoypGqlhhUnqs9vyPC4QpOo9HNwPxTONGsf8Pa+HRLXCR2VophTMcIysnlHAk
- 6oDArMLcETJZPQTN5CqLZNSJ6B6S3slAHQvfBYAb3vjyz73013uR6dPFgm7u/cgDJjCx7NF67z+LL
- elOUT367H+NQ72JVZ7wPqNoBoOXr2JXMUOqrbkMVd6+KKPQ/IeHfhaCyeykSPodQKFdnCws83YtEe
- plfBKIAAZAdOT8F6qCEXmK69JX5P1U1qEle/pipoBMyarB8eJGu/1HoQTVhWRR1/MQLQMgBgyBJQ3
- CQpCeQbt4bC5SCqeGZgBTHpC2S9ZA/coDewXtfD+3rmrmMt2mOcTspWaWtIfuq9bbm5KtyaRKoLDA
- QTdZrgC6H+1IM4ZeEq62D63ozlAuEOlGYS85fC9vxNdGlO9r379AQfUtFqUQytTjiFgo4EGKwiYbd
- tVkyqNpdHkmwihg3vJqHe3Z38Gj8aN6e4Q4KC7uIM=;
-From: Christian Schoenebeck <qemu_oss@crudebyte.com>
-To: qemu-devel@nongnu.org
-Cc: Greg Kurz <groug@kaod.org>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] MAINTAINERS: add my github tree URL
-Date: Mon, 01 Feb 2021 12:08:27 +0100
-Message-ID: <6250520.xprUBRPNkx@silver>
-In-Reply-To: <20210201110810.28b58ddc@bahia.lan>
-References: <E1l5rYG-0005sv-87@lizzy.crudebyte.com>
- <20210201110810.28b58ddc@bahia.lan>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1l6YJ5-00035E-V7
+ for qemu-trivial@nongnu.org; Mon, 01 Feb 2021 07:27:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27896)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1l6YJ4-0002SE-Gd
+ for qemu-trivial@nongnu.org; Mon, 01 Feb 2021 07:27:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612182469;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VYGIOdWIV0PypYwUveXqIouhJQmoPoE/z2ry2h7Wx6I=;
+ b=G39r5ZXxqq2MOfymFTUeQ31+Rbn0KI8b7fKFF7TQu34otYa6HgeM9I3dm427S95QB3P2xp
+ JlL+cf/uT3HHvfQxiMXui1JPFCEYfJx0lAe/QI+IhxmQl/CAVhNOQNkIZKwcs/ANRwR+9X
+ zAO6r6B7QF1WGIg6u2Ocq50DHIC3RCU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-485-WFoHyZ07PMKL9kCgeUCUMw-1; Mon, 01 Feb 2021 07:27:48 -0500
+X-MC-Unique: WFoHyZ07PMKL9kCgeUCUMw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B6A0B9CC00;
+ Mon,  1 Feb 2021 12:27:46 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-115-51.ams2.redhat.com
+ [10.36.115.51])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 727215C1A3;
+ Mon,  1 Feb 2021 12:27:46 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 0B535113865F; Mon,  1 Feb 2021 13:27:45 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: "zhanghan (J)" <zhanghan64@huawei.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ alex.chen@huawei.com,
+ hunongda@huawei.com,  qemu-trivial@nongnu.org,  qemu-devel@nongnu.org,
+ zhang.zhanghailiang@huawei.com
+Subject: Re: [PATCH 0/4] Fix some style problems in qobject
+References: <20201228071129.24563-1-zhanghan64@huawei.com>
+ <20201228071129.24563-2-zhanghan64@huawei.com>
+ <791fabe6-cdab-2891-0dca-393ade874dfe@redhat.com>
+ <e9bf06bb-479c-2991-6d1c-b5410c650448@huawei.com>
+ <1b78ab9d-b1c6-5978-35bb-0892617ab2b3@huawei.com>
+Date: Mon, 01 Feb 2021 13:27:45 +0100
+In-Reply-To: <1b78ab9d-b1c6-5978-35bb-0892617ab2b3@huawei.com> (zhanghan's
+ message of "Mon, 1 Feb 2021 14:16:39 +0800")
+Message-ID: <871re0m0qm.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-Received-SPF: pass client-ip=5.189.157.229;
- envelope-from=qemu_oss@crudebyte.com; helo=kylie.crudebyte.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -55,30 +81,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2021 11:08:46 -0000
+X-List-Received-Date: Mon, 01 Feb 2021 12:27:52 -0000
 
-On Montag, 1. Februar 2021 11:08:10 CET Greg Kurz wrote:
-> On Sat, 30 Jan 2021 15:39:14 +0100
-> 
-> Christian Schoenebeck <qemu_oss@crudebyte.com> wrote:
-> > I already used this github URL for PRs before and will continue to use it
-> > in foreseeable future.
-> > 
-> > Signed-off-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
-> > ---
-> 
-> Reviewed-by: Greg Kurz <groug@kaod.org>
-> 
-> Unless you're planning to send a PR soon, I guess this can go
-> through the trivial tree.
+"zhanghan (J)" <zhanghan64@huawei.com> writes:
 
-Yes, I would appreciate if that's going through the trivial queue, as it will 
-indeed take a while for my next PR.
+> ping=EF=BC=9FThis patch set about code style problem in qobject  receives=
+ no replies.
+>
+> Did I miss any response?
 
-Thanks!
+The Christmas break ate your patches.  My apologies!
 
-Best regards,
-Christian Schoenebeck
-
+[...]
 
 
