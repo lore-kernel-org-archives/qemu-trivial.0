@@ -1,51 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6gmR-0003Iw-KX
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2021 16:30:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54906)
+	id 1l6rDK-0003FX-RL
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 03:39:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ryan@finnie.org>)
- id 1l6fP6-0007gk-3r; Mon, 01 Feb 2021 15:02:32 -0500
-Received: from feh.colobox.com ([209.177.154.210]:57842)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ryan@finnie.org>)
- id 1l6fP4-0008Fa-0o; Mon, 01 Feb 2021 15:02:31 -0500
-Received: from linda.snowman.lan (unknown [IPv6:2600:6c4e:97f:cf46::5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by feh.colobox.com (Postfix) with ESMTPSA id 38660440143;
- Mon,  1 Feb 2021 20:02:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=finnie.org; s=mail;
- t=1612209745; bh=EUY1j1vbrR0wwL9oFyA+kRr0jNraMTLHTnS4DlQEkLU=;
- h=From:To:Cc:Subject:Date:From;
- b=JFhw5S8OSRiCVY0B+G8L82TCF0EXdWeiVDz2eHyXAjPBWGanPKaz0Yo7iIKZj13Vx
- RwZ0N9t+9QrJQVYUMM9DcLsDSketyj5vj3q5skzUke9m3wMjtJ59Y163BRNwaIKE0K
- lnj1cxMol2UvI9MYd5G9271nXMl9Lu9zzu/QnJKAL6JPtZtcwS0u7igiBJ0bBrxe8t
- cnvJ3seqrUn7y898iTwG0HA8Lho1a69oZlqH1zu2EPA8BBOfKmhB6+SIyGOGU/0tvl
- a88jpBprCr7CVw3ZD37GJ2EGHaDLWHXl8j2a+JEQ08FP3gsdHspSeC+gJtm5h6ZECC
- iegvIgPBDU5XA==
-From: Ryan Finnie <ryan@finnie.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Ryan Finnie <ryan@finnie.org>
-Subject: [PATCH] Fix SPDX-License-Identifier typos
-Date: Mon,  1 Feb 2021 12:01:47 -0800
-Message-Id: <20210201200147.211914-1-ryan@finnie.org>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6rDH-0003FE-2y; Tue, 02 Feb 2021 03:39:07 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:37197)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6rDE-0004Bk-S5; Tue, 02 Feb 2021 03:39:06 -0500
+Received: by mail-wm1-x335.google.com with SMTP id m1so1502331wml.2;
+ Tue, 02 Feb 2021 00:39:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=7KR8RtDPhZ7WvgcThnbu5rf/VgNmNmDvFTyg63DYfis=;
+ b=oq1qWUK7UI2agPP0hgl4g8lz5B5PRaBnivuFtKJRQJJjZa3Ywk23KiRG+YfqRae50M
+ AVg5z6pwEivvkOMAQ70J7A+KlpQll3jfA4PhkWQWzyouY9rLjTB72k5v+E3PuVFpHv7m
+ zWctwXicnU5wZWp2rwJjgp1wd8nLNsXpjSJz8sCjFQ67vGMR6AovL6a96qZ0Ve0ZTPh+
+ UO6qHOmDbl46OalegA1Wrpw7OUd7jCB2ScWP6YmH/J6OCbc5xmzBdzSYuBSE7YkXIYXc
+ EEOiSf7WmDBOfcJvEF7wAYWd8tgqwvoOgz47UZ3GJ/413A8Va1h9A14o75h018ZaiQcq
+ rQ7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7KR8RtDPhZ7WvgcThnbu5rf/VgNmNmDvFTyg63DYfis=;
+ b=LGbbUZgZ3rQ6lavbTGeA998XefPKV02Of5uGOP2iF2CCGgUkMzJlIM3Od8D0pLP8h+
+ CFGHKZ/5qlUfK9LpOB1PwXD5hc68CPP8ICmtl+GYzIIq1j1GMQhC+AeA7ilyWgTguKgU
+ jJaciFT19/3vDO4JuextKzsU6m/taz9JHlYnyhyPJCbVcHeVue1C+kYW4sJ7x6rHUZMy
+ yOx2lQYWQOOB8gMZT84ZHMi8Rhd7MGGJSqlfpJXqROAZt1PG+WEsg14GQVDuJsEiHoHn
+ AXYbB24Y86qjgsy7lwZtfFbJBteD6JyVHv03rlWtuI5OfGPUVTY/5Rh0ISPmTcBXhant
+ 0G9w==
+X-Gm-Message-State: AOAM530iQ80JYjcbxSNyV8Zz1pcNzWBqfOthXeVRq8/y5lgFjzZ0/bh0
+ dNOF4Qbmb4/d23ekit59IEFWxw6BhpQ=
+X-Google-Smtp-Source: ABdhPJykmAKfIBIzhZIYjjPFeO5DcpoGdoGuRKtHWtzUhFY0q1aE9UBOY3yZnsEME7bqELoMolF1xA==
+X-Received: by 2002:a7b:c4d4:: with SMTP id g20mr2511256wmk.144.1612255142023; 
+ Tue, 02 Feb 2021 00:39:02 -0800 (PST)
+Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
+ [83.57.171.7])
+ by smtp.gmail.com with ESMTPSA id 9sm21704166wra.80.2021.02.02.00.39.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Feb 2021 00:39:01 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] Fix SPDX-License-Identifier typos
+To: Ryan Finnie <ryan@finnie.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20210201200147.211914-1-ryan@finnie.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c9e96c6b-1bbe-12e0-2a39-fa4f2d2816a6@amsat.org>
+Date: Tue, 2 Feb 2021 09:38:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
+In-Reply-To: <20210201200147.211914-1-ryan@finnie.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: clamav-milter 0.102.4 at feh
-X-Virus-Status: Clean
-Received-SPF: pass client-ip=209.177.154.210; envelope-from=ryan@finnie.org;
- helo=feh.colobox.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 01 Feb 2021 16:30:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -57,87 +81,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2021 20:02:32 -0000
+X-List-Received-Date: Tue, 02 Feb 2021 08:39:07 -0000
 
-Several SPDX headers contain "SPDX-License-Identifer" (note the
-missing "i" before "er"); fix these typos.
+On 2/1/21 9:01 PM, Ryan Finnie wrote:
+> Several SPDX headers contain "SPDX-License-Identifer" (note the
+> missing "i" before "er"); fix these typos.
+> 
+> Signed-off-by: Ryan Finnie <ryan@finnie.org>
+> Cc: qemu-trivial@nongnu.org
+> ---
+>  hw/misc/aspeed_xdma.c         | 2 +-
+>  hw/misc/sbsa_ec.c             | 2 +-
+>  hw/sd/aspeed_sdhci.c          | 2 +-
+>  include/hw/misc/aspeed_xdma.h | 2 +-
+>  include/hw/sd/aspeed_sdhci.h  | 2 +-
+>  5 files changed, 5 insertions(+), 5 deletions(-)
 
-Signed-off-by: Ryan Finnie <ryan@finnie.org>
-Cc: qemu-trivial@nongnu.org
----
- hw/misc/aspeed_xdma.c         | 2 +-
- hw/misc/sbsa_ec.c             | 2 +-
- hw/sd/aspeed_sdhci.c          | 2 +-
- include/hw/misc/aspeed_xdma.h | 2 +-
- include/hw/sd/aspeed_sdhci.h  | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
-index dca5585a75..533d237e3c 100644
---- a/hw/misc/aspeed_xdma.c
-+++ b/hw/misc/aspeed_xdma.c
-@@ -3,7 +3,7 @@
-  * Eddie James <eajames@linux.ibm.com>
-  *
-  * Copyright (C) 2019 IBM Corp
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
- #include "qemu/osdep.h"
-diff --git a/hw/misc/sbsa_ec.c b/hw/misc/sbsa_ec.c
-index 9a7d7f914a..83020fe9ac 100644
---- a/hw/misc/sbsa_ec.c
-+++ b/hw/misc/sbsa_ec.c
-@@ -7,7 +7,7 @@
-  * Copyright (c) 2020 Nuvia Inc
-  * Written by Graeme Gregory <graeme@nuviainc.com>
-  *
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
- #include "qemu/osdep.h"
-diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
-index 4f24b7d2f9..3299844de6 100644
---- a/hw/sd/aspeed_sdhci.c
-+++ b/hw/sd/aspeed_sdhci.c
-@@ -3,7 +3,7 @@
-  * Eddie James <eajames@linux.ibm.com>
-  *
-  * Copyright (C) 2019 IBM Corp
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
- #include "qemu/osdep.h"
-diff --git a/include/hw/misc/aspeed_xdma.h b/include/hw/misc/aspeed_xdma.h
-index 9869ef4728..a2dea96984 100644
---- a/include/hw/misc/aspeed_xdma.h
-+++ b/include/hw/misc/aspeed_xdma.h
-@@ -3,7 +3,7 @@
-  * Eddie James <eajames@linux.ibm.com>
-  *
-  * Copyright (C) 2019 IBM Corp.
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
- #ifndef ASPEED_XDMA_H
-diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
-index b093d1b861..057bc5f3d1 100644
---- a/include/hw/sd/aspeed_sdhci.h
-+++ b/include/hw/sd/aspeed_sdhci.h
-@@ -3,7 +3,7 @@
-  * Eddie James <eajames@linux.ibm.com>
-  *
-  * Copyright (C) 2019 IBM Corp
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
- #ifndef ASPEED_SDHCI_H
--- 
-2.25.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
