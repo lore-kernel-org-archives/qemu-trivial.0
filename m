@@ -1,73 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6v2n-0005e1-V3
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 07:44:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45656)
+	id 1l6vgK-0005bu-Eg
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 08:25:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1l6v2m-0005bq-QM
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 07:44:32 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:36662)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1l6v2l-0007U3-0Q
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 07:44:32 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id 6so20300002wri.3
- for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 04:44:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:date:in-reply-to
- :message-id:mime-version:content-transfer-encoding;
- bh=W2O3ko70QgQjwjAk9NdYNuI3WjnlXV2qEgCFBNxCLl8=;
- b=xCTIEKdsI5RSZMmUDYMI+eopLtG+osbD4M9kUjjlcYjfWYB+0VSDDWwycolAyy/InX
- qChl/yOL0V4zNnIwdwQ3MIGi9cpYxkNcReMSG4eBJlpGr2d4egOCfF1SVyATIPaIjqJo
- O1P969oLUN5MtS2YJbFWQjOttQcYgvqQXG9vyeRJ33X+iDDdtYKvqqg3wFEO5esn/n/W
- +W8kQLfrXTEzRe2fp7eR17p22FLEoxhTDCH9sQm/IRhyryIUF2akaQWzqkt1AWS7cDuM
- 65skUbsbVLvzdsXhKbI6OSf6CvE7B7ltBYiDzdZobF1YsIZnbI8FgFvxl0IFHANLMl4t
- ndcg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l6vgC-0005ZW-1p
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 08:25:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23931)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l6vg6-0008UN-01
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 08:25:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612272309;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=di2HVjjYqK+QCuhauDffqN2CeBz7Zcfx4hopJKJ2RtI=;
+ b=AHYBuEEj3nqwSv9+Y8LYgK7MRy2J74k7PXvUpXqCDK/OxzQ6cN7/kH43ICMs2q1k5LN1gf
+ wgz13LeMNOAn8hoBBuMAPiDnsG3Lt2odjsM7BWkHrL7vxV0mMXXKhCzrE2OXYq0iGNz3Y5
+ wS/XHtEPIE8kHCL+LVwV26uHdyZmiMI=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-439-SGWtEKx0OE6SmKm_CJjwyg-1; Tue, 02 Feb 2021 08:25:07 -0500
+X-MC-Unique: SGWtEKx0OE6SmKm_CJjwyg-1
+Received: by mail-wr1-f70.google.com with SMTP id n14so12581369wru.6
+ for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 05:25:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
- :in-reply-to:message-id:mime-version:content-transfer-encoding;
- bh=W2O3ko70QgQjwjAk9NdYNuI3WjnlXV2qEgCFBNxCLl8=;
- b=qB0pJYnwQc0jC2VABJPYKmw4wr4tfW9V8n+hZaCGqTy6blwTshLmPFb4U7nyHQgf9v
- ESdns5fCugZstFWh8QN1vxQ7K3u+VcSB2SyA3uo+KWV+M54My4Y08thW9A7GmWw+Fbi9
- a3mXl3obwlBOznXCjiEv6tx0d/X46s+ndy73ecMrk3DOeszu2VEaxPavONn0V3TMQq/g
- J6MQQjTIMHuNev3MxzzM1kOQVlXrw7iaxuHj4/UR0nfuNbv0Ei7JDUPPk/82xKD1guKR
- LKmatQBzwZN9G9aj1wfpFAH7GfwKWEJHc2iiAtbRvkm9PpVP250U4EAwqU+7tUrc2jaQ
- PYAA==
-X-Gm-Message-State: AOAM53249Ovoe/9p9E4o04u/1WxF54AJsf2T6yweDbz0evyJBtOcvLCO
- CZhWnWXNXtta7ekJZijDzNFTug==
-X-Google-Smtp-Source: ABdhPJxLjo0PQR0/C0cOoEhAO5x7f9VcET1/zNvf80zzBlBmc0e3GKC7F/b2T+StQjSpaurxJxNTIQ==
-X-Received: by 2002:a5d:49c1:: with SMTP id t1mr23727887wrs.56.1612269869637; 
- Tue, 02 Feb 2021 04:44:29 -0800 (PST)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id y63sm2832964wmd.21.2021.02.02.04.44.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Feb 2021 04:44:28 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id B77F01FF7E;
- Tue,  2 Feb 2021 12:44:27 +0000 (GMT)
-References: <20210202104911.879393-1-philmd@redhat.com>
-User-agent: mu4e 1.5.7; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=di2HVjjYqK+QCuhauDffqN2CeBz7Zcfx4hopJKJ2RtI=;
+ b=Cq78fcGGx6pMfikd4WxdB9CTfXMM4boad99OOMufLqPaDtJ/IqpEB+5y+dv3uJAvhM
+ 5SyKKcFZZqV0/YhQ5FxEBnD5Y4POdI8qYzbkGNd+RkGag673CD9HgBZuVFsA+vGEtDsU
+ t7ti+Td9MXs4mxNiFsBPG5XJQhw/gn+IM6KsOGItcldrW+k0/v4b2/tTYBr4hZyeeOCQ
+ W1FsP9SSqcIn6bqGGd8iLSt54l4xFrrRMRnpMJPqyrzAah0LMXFEukkSGz5969+vV/9+
+ vvoyjvq5lSV77KudxyQYxqnDSNFSYWuYGnV/98hIBLe95AJcABDfp17JrcMyjtPcHY/Z
+ gJ0Q==
+X-Gm-Message-State: AOAM530sjutgDHLV1TL9PXgX7wcfe9obzAAHIJIFndFWoj3BjyoiBTVV
+ l3pwyTIhX4P7zviBVpF8GY+2syZhHlkIWAgoF5jLZ6oQbtU2/Ia5Q7aqsIlL7l6F8csFPoqdTMB
+ IYMLJwQP8PYASDHh4cBHxLSpVKccJuNXT8Z4P2Fn2ImvO92YMURgZvY8R8qFb4hm7lLA=
+X-Received: by 2002:a5d:4391:: with SMTP id i17mr23674487wrq.57.1612272306467; 
+ Tue, 02 Feb 2021 05:25:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyLIxEIqpguEa5E5rGLAAtKmMWTv1BadiCmLk2kjGzc0DCOJV964jB52Mo2k5h7UPahLNeJiA==
+X-Received: by 2002:a5d:4391:: with SMTP id i17mr23674449wrq.57.1612272306002; 
+ Tue, 02 Feb 2021 05:25:06 -0800 (PST)
+Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
+ [83.57.171.7])
+ by smtp.gmail.com with ESMTPSA id m205sm2648529wmf.40.2021.02.02.05.25.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Feb 2021 05:25:05 -0800 (PST)
+Subject: Re: [PATCH] configure: Escape non-numbers in version_ge()
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>,
  qemu-trivial@nongnu.org
-Subject: Re: [PATCH] configure: Escape non-numbers in version_ge()
-Date: Tue, 02 Feb 2021 12:43:25 +0000
-In-reply-to: <20210202104911.879393-1-philmd@redhat.com>
-Message-ID: <87mtwmtz9w.fsf@linaro.org>
+References: <20210202104911.879393-1-philmd@redhat.com>
+ <87mtwmtz9w.fsf@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <551e39ae-461d-6a3f-9add-26f508e851d0@redhat.com>
+Date: Tue, 2 Feb 2021 14:25:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
+In-Reply-To: <87mtwmtz9w.fsf@linaro.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.386,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.155, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,68 +92,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Feb 2021 12:44:33 -0000
+X-List-Received-Date: Tue, 02 Feb 2021 13:25:17 -0000
 
+On 2/2/21 1:43 PM, Alex Bennée wrote:
+> 
+> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
+> 
+>> On Red Hat based distributions, the configure script emits various
+>> warnings:
+>>
+>>   # ./configure
+>>   Using './build' as the directory for build output
+>>   ./configure: line 212: test: 2-15: integer expression expected
+>>   ./configure: line 213: test: 2-15: integer expression expected
+>>   ./configure: line 212: test: el8: integer expression expected
+>>   ./configure: line 213: test: el8: integer expression expected
+>>
+>> This is produced by the gdb version check introduced in commit
+>> b1863ccc957 ("configure: gate our use of GDB to 8.3.1 or above"):
+>>
+>>     gdb_version=$($gdb_bin --version | head -n 1)
+>>     if version_ge ${gdb_version##* } 8.3.1; then
+>>         echo "HAVE_GDB_BIN=$gdb_bin" >> $config_host_mak
+>>     fi
+>>
+>> Because on RHEL/Fedora the minor version is not a plain number:
+>>
+>>   $ gdb --version | head -n 1
+>>   GNU gdb (GDB) Fedora 9.1-7.fc32
+>>
+>>   $ gdb --version | head -n 1
+>>   GNU gdb (GDB) Red Hat Enterprise Linux 8.2-15.el8
+>>
+>> Fix by only using the leading numbers, stripping the rest.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  configure | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/configure b/configure
+>> index e85d6baf8f8..21f6530a812 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -205,7 +205,7 @@ version_ge () {
+>>          local_first=${2-0}
+>>          # 'shift 2' if $2 is set, or 'shift' if $2 is not set
+>>          shift ${2:+2}
+>> -        local_ver1=$*
+>> +        local_ver1=$(echo $* | sed -E 's/(^[0-9]+).*/\1/')
+>>          set x $local_ver2
+>>          # the second argument finished, the first must be greater or equal
+>>          test $# = 1 && return 0
+> 
+> I already have a fix that was posted in:
+> 
+>   Subject: [PATCH  v2 7/8] configure: make version_ge more tolerant of shady version input
+>   Date: Fri, 22 Jan 2021 18:18:53 +0000
+>   Message-Id: <20210122181854.23105-8-alex.bennee@linaro.org>
+> 
+> About to feature in the pre-PR series I'm about to post.
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+Oh I missed it.
 
-> On Red Hat based distributions, the configure script emits various
-> warnings:
->
->   # ./configure
->   Using './build' as the directory for build output
->   ./configure: line 212: test: 2-15: integer expression expected
->   ./configure: line 213: test: 2-15: integer expression expected
->   ./configure: line 212: test: el8: integer expression expected
->   ./configure: line 213: test: el8: integer expression expected
->
-> This is produced by the gdb version check introduced in commit
-> b1863ccc957 ("configure: gate our use of GDB to 8.3.1 or above"):
->
->     gdb_version=3D$($gdb_bin --version | head -n 1)
->     if version_ge ${gdb_version##* } 8.3.1; then
->         echo "HAVE_GDB_BIN=3D$gdb_bin" >> $config_host_mak
->     fi
->
-> Because on RHEL/Fedora the minor version is not a plain number:
->
->   $ gdb --version | head -n 1
->   GNU gdb (GDB) Fedora 9.1-7.fc32
->
->   $ gdb --version | head -n 1
->   GNU gdb (GDB) Red Hat Enterprise Linux 8.2-15.el8
->
-> Fix by only using the leading numbers, stripping the rest.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/configure b/configure
-> index e85d6baf8f8..21f6530a812 100755
-> --- a/configure
-> +++ b/configure
-> @@ -205,7 +205,7 @@ version_ge () {
->          local_first=3D${2-0}
->          # 'shift 2' if $2 is set, or 'shift' if $2 is not set
->          shift ${2:+2}
-> -        local_ver1=3D$*
-> +        local_ver1=3D$(echo $* | sed -E 's/(^[0-9]+).*/\1/')
->          set x $local_ver2
->          # the second argument finished, the first must be greater or equ=
-al
->          test $# =3D 1 && return 0
+Thanks,
 
-I already have a fix that was posted in:
+Phil.
 
-  Subject: [PATCH  v2 7/8] configure: make version_ge more tolerant of shad=
-y version input
-  Date: Fri, 22 Jan 2021 18:18:53 +0000
-  Message-Id: <20210122181854.23105-8-alex.bennee@linaro.org>
-
-About to feature in the pre-PR series I'm about to post.
-
---=20
-Alex Benn=C3=A9e
 
