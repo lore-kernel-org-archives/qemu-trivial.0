@@ -1,74 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6rDK-0003FX-RL
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 03:39:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56870)
+	id 1l6tFL-0001Y8-Hr
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 05:49:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53866)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6rDH-0003FE-2y; Tue, 02 Feb 2021 03:39:07 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:37197)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6rDE-0004Bk-S5; Tue, 02 Feb 2021 03:39:06 -0500
-Received: by mail-wm1-x335.google.com with SMTP id m1so1502331wml.2;
- Tue, 02 Feb 2021 00:39:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=7KR8RtDPhZ7WvgcThnbu5rf/VgNmNmDvFTyg63DYfis=;
- b=oq1qWUK7UI2agPP0hgl4g8lz5B5PRaBnivuFtKJRQJJjZa3Ywk23KiRG+YfqRae50M
- AVg5z6pwEivvkOMAQ70J7A+KlpQll3jfA4PhkWQWzyouY9rLjTB72k5v+E3PuVFpHv7m
- zWctwXicnU5wZWp2rwJjgp1wd8nLNsXpjSJz8sCjFQ67vGMR6AovL6a96qZ0Ve0ZTPh+
- UO6qHOmDbl46OalegA1Wrpw7OUd7jCB2ScWP6YmH/J6OCbc5xmzBdzSYuBSE7YkXIYXc
- EEOiSf7WmDBOfcJvEF7wAYWd8tgqwvoOgz47UZ3GJ/413A8Va1h9A14o75h018ZaiQcq
- rQ7Q==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l6tFJ-0001XD-Pn
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 05:49:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28301)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l6tFG-0004nF-R6
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 05:49:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612262956;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=810wxp/9K6X+ioRQSFDs4FbQGo2HFJmLTPYdgC9Myro=;
+ b=TOZOaKzAfg6j30TzX0BY6p664AyaNpfFW4o6NTsRmymp/11RRKaFFbNXsb0WBrpqTp85v7
+ CxV2L2sapoWIX/s+Mn2NzjnkCeF7jWS16JRDF1yYuLf5Pkx6reJ5FFFjOVrdyO+/ETGT/s
+ tfpTXPbVfNP5iO25Ig7qgoZGDDLl3MI=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-475-lJFSwa3XO2uLB3gMy0vxsg-1; Tue, 02 Feb 2021 05:49:15 -0500
+X-MC-Unique: lJFSwa3XO2uLB3gMy0vxsg-1
+Received: by mail-wr1-f71.google.com with SMTP id e15so12263651wrm.13
+ for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 02:49:15 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=7KR8RtDPhZ7WvgcThnbu5rf/VgNmNmDvFTyg63DYfis=;
- b=LGbbUZgZ3rQ6lavbTGeA998XefPKV02Of5uGOP2iF2CCGgUkMzJlIM3Od8D0pLP8h+
- CFGHKZ/5qlUfK9LpOB1PwXD5hc68CPP8ICmtl+GYzIIq1j1GMQhC+AeA7ilyWgTguKgU
- jJaciFT19/3vDO4JuextKzsU6m/taz9JHlYnyhyPJCbVcHeVue1C+kYW4sJ7x6rHUZMy
- yOx2lQYWQOOB8gMZT84ZHMi8Rhd7MGGJSqlfpJXqROAZt1PG+WEsg14GQVDuJsEiHoHn
- AXYbB24Y86qjgsy7lwZtfFbJBteD6JyVHv03rlWtuI5OfGPUVTY/5Rh0ISPmTcBXhant
- 0G9w==
-X-Gm-Message-State: AOAM530iQ80JYjcbxSNyV8Zz1pcNzWBqfOthXeVRq8/y5lgFjzZ0/bh0
- dNOF4Qbmb4/d23ekit59IEFWxw6BhpQ=
-X-Google-Smtp-Source: ABdhPJykmAKfIBIzhZIYjjPFeO5DcpoGdoGuRKtHWtzUhFY0q1aE9UBOY3yZnsEME7bqELoMolF1xA==
-X-Received: by 2002:a7b:c4d4:: with SMTP id g20mr2511256wmk.144.1612255142023; 
- Tue, 02 Feb 2021 00:39:02 -0800 (PST)
-Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
+ bh=810wxp/9K6X+ioRQSFDs4FbQGo2HFJmLTPYdgC9Myro=;
+ b=a036wKO8M9zw1AsPCn6BhngmOsNU1XWbTgY6ei7QGtEPQpre8K2na9UJaXOD3hhUxi
+ kJpkVRDIfWAanjBLPykQo7bRwr1kLDFABbFxF+Fw12mP7kMjI3aKWSSVkGA3tUPy3y31
+ wCCL3mWXSdruke7MhnBcl5Djl7YAhET3Hp9DkFD3WZURuBLJr6DyZY/xEGzCBxtO1jMm
+ 8a8MfThoJUvuxOxWNEhNy7MN0HO29Rf+CwGX25ktCfqdZN18yIYHoyK4YTyotoadcAXP
+ bpI+4Glf0ONHp2WKMEqBQG/G2jEWVNYmXGLkXKFwq/hq0qJmdu02/rOjjXBvmnATXJA8
+ ZpEQ==
+X-Gm-Message-State: AOAM531B+GAgXknUqcV1KsB5SdPEQ5QKYCoY5hM6oKZAPjUk7bVD0QKk
+ iHYyS9Q0mrEMWS3rwuP0/OW9QDebvk8Vjm0yynJkLPRTRU8fF4QeSd7rrKAOfmp4GYM2wQvoYFy
+ DBelWSW4KgNWsNbri9Q==
+X-Received: by 2002:adf:e404:: with SMTP id g4mr22753051wrm.416.1612262954197; 
+ Tue, 02 Feb 2021 02:49:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxQxPqTSDYwGVplBMIqLnkYUj8GUcId3gYNhdRUrynVDOH+BZvSLM6qal70AIANGssvgKvbvQ==
+X-Received: by 2002:adf:e404:: with SMTP id g4mr22753011wrm.416.1612262953816; 
+ Tue, 02 Feb 2021 02:49:13 -0800 (PST)
+Received: from x1w.redhat.com (7.red-83-57-171.dynamicip.rima-tde.net.
  [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id 9sm21704166wra.80.2021.02.02.00.39.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Feb 2021 00:39:01 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] Fix SPDX-License-Identifier typos
-To: Ryan Finnie <ryan@finnie.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20210201200147.211914-1-ryan@finnie.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c9e96c6b-1bbe-12e0-2a39-fa4f2d2816a6@amsat.org>
-Date: Tue, 2 Feb 2021 09:38:58 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ by smtp.gmail.com with ESMTPSA id l11sm29712075wrt.23.2021.02.02.02.49.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Feb 2021 02:49:13 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] configure: Escape non-numbers in version_ge()
+Date: Tue,  2 Feb 2021 11:49:11 +0100
+Message-Id: <20210202104911.879393-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20210201200147.211914-1-ryan@finnie.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,22 +85,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Feb 2021 08:39:07 -0000
+X-List-Received-Date: Tue, 02 Feb 2021 10:49:22 -0000
 
-On 2/1/21 9:01 PM, Ryan Finnie wrote:
-> Several SPDX headers contain "SPDX-License-Identifer" (note the
-> missing "i" before "er"); fix these typos.
-> 
-> Signed-off-by: Ryan Finnie <ryan@finnie.org>
-> Cc: qemu-trivial@nongnu.org
-> ---
->  hw/misc/aspeed_xdma.c         | 2 +-
->  hw/misc/sbsa_ec.c             | 2 +-
->  hw/sd/aspeed_sdhci.c          | 2 +-
->  include/hw/misc/aspeed_xdma.h | 2 +-
->  include/hw/sd/aspeed_sdhci.h  | 2 +-
->  5 files changed, 5 insertions(+), 5 deletions(-)
+On Red Hat based distributions, the configure script emits various
+warnings:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+  # ./configure
+  Using './build' as the directory for build output
+  ./configure: line 212: test: 2-15: integer expression expected
+  ./configure: line 213: test: 2-15: integer expression expected
+  ./configure: line 212: test: el8: integer expression expected
+  ./configure: line 213: test: el8: integer expression expected
+
+This is produced by the gdb version check introduced in commit
+b1863ccc957 ("configure: gate our use of GDB to 8.3.1 or above"):
+
+    gdb_version=$($gdb_bin --version | head -n 1)
+    if version_ge ${gdb_version##* } 8.3.1; then
+        echo "HAVE_GDB_BIN=$gdb_bin" >> $config_host_mak
+    fi
+
+Because on RHEL/Fedora the minor version is not a plain number:
+
+  $ gdb --version | head -n 1
+  GNU gdb (GDB) Fedora 9.1-7.fc32
+
+  $ gdb --version | head -n 1
+  GNU gdb (GDB) Red Hat Enterprise Linux 8.2-15.el8
+
+Fix by only using the leading numbers, stripping the rest.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index e85d6baf8f8..21f6530a812 100755
+--- a/configure
++++ b/configure
+@@ -205,7 +205,7 @@ version_ge () {
+         local_first=${2-0}
+         # 'shift 2' if $2 is set, or 'shift' if $2 is not set
+         shift ${2:+2}
+-        local_ver1=$*
++        local_ver1=$(echo $* | sed -E 's/(^[0-9]+).*/\1/')
+         set x $local_ver2
+         # the second argument finished, the first must be greater or equal
+         test $# = 1 && return 0
+-- 
+2.26.2
 
 
