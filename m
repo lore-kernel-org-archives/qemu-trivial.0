@@ -1,72 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6w2K-0003rz-Aq
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 08:48:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59256)
+	id 1l6wds-00078W-7I
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 09:26:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6w2I-0003pE-Sg
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 08:48:06 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:35643)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6wdo-000752-OG; Tue, 02 Feb 2021 09:26:52 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:40643)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6w2H-0002CW-9R
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 08:48:06 -0500
-Received: by mail-ed1-x532.google.com with SMTP id g10so4694802eds.2
- for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 05:48:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=u6tYLc3QvI7oOyextRmlipyLgaS2zGToHBWZQm8Z1nA=;
- b=kzyD4CswHzRQpLhuZgq3STXVgLvuAQF6aBucPPmviECIhpgJKNZFKKnQgda5v5HW10
- CJW0gDluBszqd/TIV0eHJWrWIQbbknJL2mgBOwFAxEQumb6lOo4YwXe+sycbvXNFqGYH
- TfpfE/Y6p6L8KB+ciCFrpAy2ePDm23wGi7M0PwQE4ee2wU00erH3BEwboDyJ9p907MZm
- KxMgdGrXZB5623GU6u71MaIDqmeOu4YHml8V9GDRWaO2U0pXYsQMuvA8fuX1h6JvhjIx
- faEHn3P8t7Bw+92JbBuukwlIXkBq58tBLNme6AFctvdQkhnT6YaBLSQpDz7ldzHtmFC0
- n/AA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6wdn-0002mS-9Z; Tue, 02 Feb 2021 09:26:52 -0500
+Received: by mail-wr1-x429.google.com with SMTP id c12so20673528wrc.7;
+ Tue, 02 Feb 2021 06:26:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=r/qNb8iqW13I6zvP3bh0qRMsD1/YemJJvDsDIJV88ns=;
+ b=pZZVdASDw/2bWyWJip0qWSIXHuNdssugvHraTOa4yZLTdFzV4K+q7GmHsLlhwKnXvx
+ N5aVRUb0AUi3QcSYGrlDANTQaqAYZgf9xhgKZOTOEcRVHHaL5iPzOVHgZQeWoUW8EWNM
+ +gG1Udi9iH11EW2ydLTEC/YMiiF1TquuQZmsc4y8IggKP0abj9htW7tyDV0ZiFUvvZxo
+ Fyj8RYRqtjc6uTojUllF/eNfxqvrwgG/9ubncf1Aquu4mzakJlN02LePDgPm+54oYg81
+ MjonO/fYr2jBQYg04SpFs+cyMbl/JiB33YXoSlXQZIisMVnQzjYiHSIMHaVpiFZqzDPT
+ Xjtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=u6tYLc3QvI7oOyextRmlipyLgaS2zGToHBWZQm8Z1nA=;
- b=liA/abzFRBUvgyqz6IOkXeBlzjHEv/VYN7hrc+wgg6WOsD7Q25tbviG/G+cweNylKS
- TBZ+DbeXIuAYC+YI9mvoKX/tAP7A9Qld9fQx6RrTyIuzSAczTz1rQOGf6jqrvB6fmyU4
- 9jRrr3kF8PxP5r01vXH3QdEu8ZrZt0isZGpW6lCJ8NpenQNzBhbi/ILFg8TUW1jl2/dB
- js5cwijKbaBxG3chanvAC6/VLY+rQKKLgRtjfNSXmkKCKlJO3hIJ9zNq92N7FjDU/Nw1
- QkSD323bCC8B6n45/hYMqMP/guxxW/jgz9BTn8N+s6mFNUH2nCrDekAcMZV/ZhIAQpeW
- d9Fw==
-X-Gm-Message-State: AOAM531V/ZDM//JakVTy3g4SLOCVOa+fwLRV+ave7cJ4WS1ZLmb9sShR
- yAagxC0Yi7d1WGecNBDLZqV6vSXNb20Yd4YNr2CH/Q==
-X-Google-Smtp-Source: ABdhPJzAImkBMEuC8PQ6hAYFeucsr7/mj4sPBGbc5ENhKr0SlxGhFdbkGozohToEJbyH+wi7BD28EIROYl+FjlQBgSA=
-X-Received: by 2002:aa7:c88a:: with SMTP id p10mr23660437eds.204.1612273683889; 
- Tue, 02 Feb 2021 05:48:03 -0800 (PST)
-MIME-Version: 1.0
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=r/qNb8iqW13I6zvP3bh0qRMsD1/YemJJvDsDIJV88ns=;
+ b=L/VM7hg/h38kYMX19ES11zbXCHtZHQW93kq0SeDrjkaH5Qw8J4/49voFaecOzlbuwI
+ Vtzv+WHkHyuYcyFVxe7Be09fUshpTlKl4K03CzH3q0RuoB3ddyXOqNRHyCbh8e3BRUQp
+ ilX5zPM9vnmjRhSAwHPllKwL1xZFOT7qLPs7HqbQHA+ogrX89KxY3Nl1vUBoE3iXBkWq
+ reb8yWleZeCgUGeC//SjcIwg7NWiAibdYC0qQUUw9hq42Zo/bpIfII1kWobUyYMzG2Dx
+ An4nZ2QuWaMkETwO/k64zRakhMyAEZ4yzKd7HyX8T2gK5CYLoj54qmZd+epQUtTCb0Ax
+ Y47w==
+X-Gm-Message-State: AOAM532s2f2CK+EejZ7Id+HbqxjTI67I4o3Pwpoqx0BYhvDgI/xLEv6H
+ BAEHMqrehha1fexmdiBtCeTf2gMICls=
+X-Google-Smtp-Source: ABdhPJzUhiNMgFY+vGaqiDn48585jXkxqSyqYp2Y69/V/25vUo1ez4avkNWi1HOyABbZNmSqi4XAMA==
+X-Received: by 2002:adf:a2ca:: with SMTP id t10mr23759333wra.370.1612276008248; 
+ Tue, 02 Feb 2021 06:26:48 -0800 (PST)
+Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
+ [83.57.171.7])
+ by smtp.gmail.com with ESMTPSA id h23sm3503780wmi.26.2021.02.02.06.26.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Feb 2021 06:26:47 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [RFC PATCH 2/2] hw/arm/raspi: Restrict BCM2835 / BCM2836 SoC to
+ TCG
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Luc Michel <luc@lmichel.fr>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-arm <qemu-arm@nongnu.org>
 References: <20210131151410.318649-1-f4bug@amsat.org>
  <20210131151410.318649-3-f4bug@amsat.org>
  <20210201081826.yx34xjzbgsiwzcpd@sekoia-pc.home.lmichel.fr>
  <CAFEAcA8eDgsGY_Vq5SRuv9HxHY8Qz2j86A0PmKuHfj=H2wm7kQ@mail.gmail.com>
  <313440b0-95b8-a690-a7ed-65c8428d7c42@amsat.org>
-In-Reply-To: <313440b0-95b8-a690-a7ed-65c8428d7c42@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 13:47:52 +0000
-Message-ID: <CAFEAcA-9asbQXq8E1Jcqq=AcZw6kO8M9UKGbq=FSnB5iC+dAUg@mail.gmail.com>
-Subject: Re: [RFC PATCH 2/2] hw/arm/raspi: Restrict BCM2835 / BCM2836 SoC to
- TCG
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Luc Michel <luc@lmichel.fr>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Michael Tokarev <mjt@tls.msk.ru>, Andrew Baumann <Andrew.Baumann@microsoft.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- Laurent Vivier <laurent@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ <CAFEAcA-9asbQXq8E1Jcqq=AcZw6kO8M9UKGbq=FSnB5iC+dAUg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <8560a139-08b8-be47-f6f6-e3d3833687e4@amsat.org>
+Date: Tue, 2 Feb 2021 15:26:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-9asbQXq8E1Jcqq=AcZw6kO8M9UKGbq=FSnB5iC+dAUg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.155,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,25 +90,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Feb 2021 13:48:07 -0000
+X-List-Received-Date: Tue, 02 Feb 2021 14:26:53 -0000
 
-On Tue, 2 Feb 2021 at 13:29, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> On 2/2/21 1:28 PM, Peter Maydell wrote:
-> > At the moment we can reasonably
-> > say "only the 'virt' board and one of the Xilinx boards are
-> > security-critical".
->
-> What about the SBSA-ref?
+On 2/2/21 2:47 PM, Peter Maydell wrote:
+> On Tue, 2 Feb 2021 at 13:29, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> On 2/2/21 1:28 PM, Peter Maydell wrote:
+>>> At the moment we can reasonably
+>>> say "only the 'virt' board and one of the Xilinx boards are
+>>> security-critical".
+>>
+>> What about the SBSA-ref?
+> 
+> It doesn't work with KVM, and enforces it:
+> 
+>     if (kvm_enabled()) {
+>         error_report("sbsa-ref: KVM is not supported for this machine");
+>         exit(1);
+>     }
 
-It doesn't work with KVM, and enforces it:
-
-    if (kvm_enabled()) {
-        error_report("sbsa-ref: KVM is not supported for this machine");
-        exit(1);
-    }
-
-thanks
--- PMM
+Uh I didn't know... That simplifies even further the KVM-only
+build, thanks :)
 
