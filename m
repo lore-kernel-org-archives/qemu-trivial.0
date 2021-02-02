@@ -1,95 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6yi2-0006RX-3o
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 11:39:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55250)
+	id 1l6yre-0004xf-Ra
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 11:49:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57542)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1l6yhy-0006O3-V8
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 11:39:18 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:31277)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1l6yhw-0004tY-3C
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 11:39:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612283955;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=upnt39CyCVwBoTycKyW7rsDh22PJi9fn/RtxLu9lyuM=;
- b=XJIj4CVuOXIbXba3uXtKtrnaOq+uQ44BWiothUsTonfEyZyMDOa0wyaJllX1KM1j0rebSs
- NlRe+86rO/kD88PQ7gQREl3DxCPnGaQ2Hj933Hz4irAPL7Mnhg2XCCDqasiOG6JkOTsAj6
- GbrJ964JhnmSXAV8qWOtJl8Gq46V168=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-337-kXTkBCESPrSGOuZBk_zEdg-1; Tue, 02 Feb 2021 11:39:13 -0500
-X-MC-Unique: kXTkBCESPrSGOuZBk_zEdg-1
-Received: by mail-ej1-f69.google.com with SMTP id k3so10222655ejr.16
- for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 08:39:13 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6yra-0004vY-Q6
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 11:49:15 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:45086)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6yrY-0000rn-4w
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 11:49:14 -0500
+Received: by mail-ed1-x536.google.com with SMTP id t5so2602464eds.12
+ for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 08:49:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=dMdFc/ZPdE6IqyYDyHhRVdQb90fMPhMj3kfL4wEIXo8=;
+ b=m1Wa2JzgMevYoUfm1XRh5Lj7jwmLq5O4VwihKeCxy5QNCQlQvsHl4FknwI3dzIF3WE
+ b58amwJvno133AhPytzcXV61NnYuPE0H+1XE74VqvBqU94dnqcBfRe1n/r72K52Yk3gI
+ C3rhExEtBeHHPhsqU/8xbBgl1jstRy1bjr8ciII4K0Yw3U8cLGsbW+jMCteCL0VsO4Oq
+ qH0MS5Kqa0T3pITQDoPV81xQII8jotf2kcqLWwcQaAz8FiW7EdUShhOTbYdFBqyNOHVQ
+ +nYIl1cdiHsgD8vlZBfubi3YlS1Sd2HDG/VyqmcyOASPjy5wNhIj5b2siNFh3h9R7eL0
+ 6tpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=upnt39CyCVwBoTycKyW7rsDh22PJi9fn/RtxLu9lyuM=;
- b=e8uIg7tNS7xwwU103975qtRnvmTuGBqkU1KFHNIckxSpksvzmLxQ5oho38Gn24ax1Y
- o4ihpxYkeWJIte9aIi+Fy2ydmYvLHnpLwpUW2/CKUtESxlKvvuWknH8PB7TApfGYlSn6
- fQF4zMm0ODaJNnJAjBHX1NdClVDupyKmSTvywKqoJ7pK3V/PjZYkLPXGwP+lchopX5uQ
- i+FrX+mZp65i2nvnjwFp61VMQKzdcE0p6eYwmwpzy1h5erct7Dg6XFUPoDw8u3E7Adpc
- ENUNQ1Tb9tPmeeE5voe0eApCZrS34D2/rARsFr0On7w7ZCmuRFr6xofKLpsoxZX5vDu/
- oaKg==
-X-Gm-Message-State: AOAM532ZYGueTnI6jemX0cPG8A8iMErxkn90urnsWwJ0FGHVg7P+g8U2
- wMgjpchtvrXT4KsTmtpe6FCLfnz2TL1CoUlLkfaRLnchpDNwMC0m/aYlLKt4t+QJGmrs3FmAYje
- 5QpYFUfIS+rXyV0Mys8BfHSNuvqXqeKtgi4LKlSe15+YAPhsMv48dU6Qs7yCTuK4AHtFTvA==
-X-Received: by 2002:a17:906:c049:: with SMTP id
- bm9mr22307626ejb.535.1612283951927; 
- Tue, 02 Feb 2021 08:39:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz2tklvRYuU9l0qDykZvY93YU17wJ9cDOV5rFXjVQAhMAYZL/Panns/oGzBvmoCNoRhjmIqiA==
-X-Received: by 2002:a17:906:c049:: with SMTP id
- bm9mr22307596ejb.535.1612283951672; 
- Tue, 02 Feb 2021 08:39:11 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id b1sm3313895eju.15.2021.02.02.08.39.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Feb 2021 08:39:10 -0800 (PST)
-Subject: Re: [PATCH] hw/i386/xen: Remove dead code
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- xen-devel@lists.xenproject.org, Paul Durrant <paul@xen.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20210202155644.998812-1-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <13e06470-e13d-31ef-f7a7-9370a01d8b1c@redhat.com>
-Date: Tue, 2 Feb 2021 17:39:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=dMdFc/ZPdE6IqyYDyHhRVdQb90fMPhMj3kfL4wEIXo8=;
+ b=BrP47mJbA54iMQ31phywTV5q98mZjPN1LYbsbpLu6HkMx4dwkDTp7eQgEx0ykpMh9e
+ mAVn0LmQGcRfgF1UagRQONJyf/9dXKrzZKEtVqZEdhYWJfUvlMfkJXmbXFkisPKEHUQz
+ 0twIKjjeItq0QCFg4/en7iJmgvEPTFXzjTPbfa571uYgIbBYWJNS7BKBqjBmaKRKj9a9
+ +jKERbUAurr77AXRm5kj5Ugf5IcyksU5UngsVYqBT+r+3qDiaHzF0WBLsf98CWPs95ci
+ nkCDyNzkZ+ck2OWsl4dnE06orshcMZPpMyrWWJK7zNFcoC4t2U5anrQDwsDtOQ+GFlcI
+ igYg==
+X-Gm-Message-State: AOAM531T2ka0sSvlc+xTHvLi3yfm+w++YJK0fzydFBgvxcERl/Ko6vuX
+ HztlaFLufvwiOts5IntCVs5S15C4bgqzrqjDbq5r6w==
+X-Google-Smtp-Source: ABdhPJwsht8wONKy/fWUGSVGpq82mq9Ktd60LKQxT1vGl/tbz0TQfeM9pUkbc9zo4cfd3Jn1MKLBdkF3kG/An+pWXe8=
+X-Received: by 2002:a05:6402:3494:: with SMTP id
+ v20mr16606763edc.146.1612284550470; 
+ Tue, 02 Feb 2021 08:49:10 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20210202155644.998812-1-philmd@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.386,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.155, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210131184449.382425-1-f4bug@amsat.org>
+In-Reply-To: <20210131184449.382425-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Feb 2021 16:48:59 +0000
+Message-ID: <CAFEAcA-z3CfCCbvR=MMTcvB9A=Eig5uFLewvu=fYUkLhAcB5-w@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] hw/arm: Misc trivial fixes/cleanups
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, 
+ Laurent Vivier <laurent@vivier.eu>, Antony Pavlov <antonynpavlov@gmail.com>, 
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,51 +77,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Feb 2021 16:39:19 -0000
+X-List-Received-Date: Tue, 02 Feb 2021 16:49:15 -0000
 
-On 02/02/21 16:56, Philippe Mathieu-Daudé wrote:
-> 'drivers_blacklisted' is never accessed, remove it.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->   hw/i386/xen/xen_platform.c | 13 ++-----------
->   1 file changed, 2 insertions(+), 11 deletions(-)
-> 
-> diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
-> index 7c4db35debb..01ae1fb1618 100644
-> --- a/hw/i386/xen/xen_platform.c
-> +++ b/hw/i386/xen/xen_platform.c
-> @@ -60,7 +60,6 @@ struct PCIXenPlatformState {
->       MemoryRegion bar;
->       MemoryRegion mmio_bar;
->       uint8_t flags; /* used only for version_id == 2 */
-> -    int drivers_blacklisted;
->       uint16_t driver_product_version;
->   
->       /* Log from guest drivers */
-> @@ -245,18 +244,10 @@ static void platform_fixed_ioport_writeb(void *opaque, uint32_t addr, uint32_t v
->   
->   static uint32_t platform_fixed_ioport_readw(void *opaque, uint32_t addr)
->   {
-> -    PCIXenPlatformState *s = opaque;
-> -
->       switch (addr) {
->       case 0:
-> -        if (s->drivers_blacklisted) {
-> -            /* The drivers will recognise this magic number and refuse
-> -             * to do anything. */
-> -            return 0xd249;
-> -        } else {
-> -            /* Magic value so that you can identify the interface. */
-> -            return 0x49d2;
-> -        }
-> +        /* Magic value so that you can identify the interface. */
-> +        return 0x49d2;
->       default:
->           return 0xffff;
->       }
-> 
+On Sun, 31 Jan 2021 at 18:44, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> Trivial bugfixes and cleanup patches noticed while rebasing
+> my "Support disabling TCG on ARM (part 2)" series.
+>
+> Since v2:
+> - removed incorrect patches added in v2 =3D)
+> - more fixes for Versal board (CAN, RTC)
+>
+> Since v1:
+> - added patches to remove 64-bit specific features on 32-bit build.
+>
+> Philippe Mathieu-Daud=C3=A9 (6):
+>   hw/arm/stm32f405_soc: Add missing dependency on OR_IRQ
+>   hw/arm/exynos4210: Add missing dependency on OR_IRQ
+>   hw/arm/xlnx-versal: Versal SoC requires ZDMA
+>   hw/arm/xlnx-versal: Versal SoC requires ZynqMP peripherals
+>   hw/net/can: ZynqMP CAN device requires PTIMER
+>   hw/arm: Display CPU type in machine description
 
-Cc: qemu-trivial@nongnu.org
 
+
+Applied to target-arm.next, thanks.
+
+-- PMM
 
