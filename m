@@ -1,65 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6unf-00038O-Go
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 07:28:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43136)
+	id 1l6v2n-0005e1-V3
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 07:44:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45656)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6und-00034c-PP
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 07:28:53 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:41879)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1l6v2m-0005bq-QM
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 07:44:32 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:36662)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6unc-0000bn-1l
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 07:28:53 -0500
-Received: by mail-ed1-x536.google.com with SMTP id s5so9803507edw.8
- for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 04:28:51 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1l6v2l-0007U3-0Q
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 07:44:32 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id 6so20300002wri.3
+ for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 04:44:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=hYvDtVlpAIxKd2kqmX8DMzyrmJwQTbWMEa+7BWN3hVE=;
- b=Mz66wzwmLCaET4hP161id2q9WIDNgCT5c8r1KmZ1GSfNrIkd7Z11gwfYXxfMMIteO6
- uPlubjmJJ5BrIwSwpxVO6zi5Or8TpmByGNIjmT5ox05N3eLWN9bT6XbA+Rj3d7utJvog
- OGDq9JABeeGs7TZqOS+4DaWhDilbavi/cG7imXLwTUguT8UEBouvbR8RBpVxgUXssA3P
- 15Bh+Vdn7lmUQsGGOrhB8x06DmVeT7YKnk7sPDawS2AzQf8QhfiwB5DtwoAekjvAPOjP
- Q57N6XfmSauIppJmcT4z+DSmBKyCbX5rLPsqw2h3xkZcToJBL3tsEtkUXpuaclWX6gyJ
- 4vOA==
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=W2O3ko70QgQjwjAk9NdYNuI3WjnlXV2qEgCFBNxCLl8=;
+ b=xCTIEKdsI5RSZMmUDYMI+eopLtG+osbD4M9kUjjlcYjfWYB+0VSDDWwycolAyy/InX
+ qChl/yOL0V4zNnIwdwQ3MIGi9cpYxkNcReMSG4eBJlpGr2d4egOCfF1SVyATIPaIjqJo
+ O1P969oLUN5MtS2YJbFWQjOttQcYgvqQXG9vyeRJ33X+iDDdtYKvqqg3wFEO5esn/n/W
+ +W8kQLfrXTEzRe2fp7eR17p22FLEoxhTDCH9sQm/IRhyryIUF2akaQWzqkt1AWS7cDuM
+ 65skUbsbVLvzdsXhKbI6OSf6CvE7B7ltBYiDzdZobF1YsIZnbI8FgFvxl0IFHANLMl4t
+ ndcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=hYvDtVlpAIxKd2kqmX8DMzyrmJwQTbWMEa+7BWN3hVE=;
- b=QxyqIdnEMIoU9FfJqkSbTippO5iIjbCzwmvim1uIiiH4Ok3UtHfw3wM1hckZGxje+c
- 8GVRr+Qsuj7Lj9JH45FovuuoTvtGG+aqw9wiwJfV41CX5OfMbElffHupIoXAIrKUwlDN
- DdfRLTnwGznCQSSWfXuCfYoOZPrCaxoZib9ApsM6KnOmMy0cx+K9RASB42wdd/OWKv3f
- a2SbAlXamTrtoMQ2aqacJF3Uzb2zB1RzvmrLVZKRAGlOZuQerBUJ+SJpqUGlbvc/6GgO
- BDv1TQR2+gwvN3Fw7b3s78F20bI4JW5l5fMKUfAUmy+GC2nXHC3CqkZsPcPj/e0H1jmm
- vaHw==
-X-Gm-Message-State: AOAM530LOF7vYumaaEWhH6KcIx1YvITDwaLwUGGADNuOx4EBoQvYW1bF
- HpHuBVROplFSUZNi6CE7otW+5pO2YyN4U4Rs9NjWLQ==
-X-Google-Smtp-Source: ABdhPJwFSjA+EVAY6n9WDd5UX42kJeqHWbNGHST77Rr8jnodsq64NVR7v4ay2BCBfO1IZt8wjJ7BKBSTqbxAAISpC0o=
-X-Received: by 2002:a05:6402:31ac:: with SMTP id
- dj12mr23029427edb.44.1612268930443; 
- Tue, 02 Feb 2021 04:28:50 -0800 (PST)
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=W2O3ko70QgQjwjAk9NdYNuI3WjnlXV2qEgCFBNxCLl8=;
+ b=qB0pJYnwQc0jC2VABJPYKmw4wr4tfW9V8n+hZaCGqTy6blwTshLmPFb4U7nyHQgf9v
+ ESdns5fCugZstFWh8QN1vxQ7K3u+VcSB2SyA3uo+KWV+M54My4Y08thW9A7GmWw+Fbi9
+ a3mXl3obwlBOznXCjiEv6tx0d/X46s+ndy73ecMrk3DOeszu2VEaxPavONn0V3TMQq/g
+ J6MQQjTIMHuNev3MxzzM1kOQVlXrw7iaxuHj4/UR0nfuNbv0Ei7JDUPPk/82xKD1guKR
+ LKmatQBzwZN9G9aj1wfpFAH7GfwKWEJHc2iiAtbRvkm9PpVP250U4EAwqU+7tUrc2jaQ
+ PYAA==
+X-Gm-Message-State: AOAM53249Ovoe/9p9E4o04u/1WxF54AJsf2T6yweDbz0evyJBtOcvLCO
+ CZhWnWXNXtta7ekJZijDzNFTug==
+X-Google-Smtp-Source: ABdhPJxLjo0PQR0/C0cOoEhAO5x7f9VcET1/zNvf80zzBlBmc0e3GKC7F/b2T+StQjSpaurxJxNTIQ==
+X-Received: by 2002:a5d:49c1:: with SMTP id t1mr23727887wrs.56.1612269869637; 
+ Tue, 02 Feb 2021 04:44:29 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id y63sm2832964wmd.21.2021.02.02.04.44.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Feb 2021 04:44:28 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id B77F01FF7E;
+ Tue,  2 Feb 2021 12:44:27 +0000 (GMT)
+References: <20210202104911.879393-1-philmd@redhat.com>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] configure: Escape non-numbers in version_ge()
+Date: Tue, 02 Feb 2021 12:43:25 +0000
+In-reply-to: <20210202104911.879393-1-philmd@redhat.com>
+Message-ID: <87mtwmtz9w.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20210131151410.318649-1-f4bug@amsat.org>
- <20210131151410.318649-3-f4bug@amsat.org>
- <20210201081826.yx34xjzbgsiwzcpd@sekoia-pc.home.lmichel.fr>
-In-Reply-To: <20210201081826.yx34xjzbgsiwzcpd@sekoia-pc.home.lmichel.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 12:28:39 +0000
-Message-ID: <CAFEAcA8eDgsGY_Vq5SRuv9HxHY8Qz2j86A0PmKuHfj=H2wm7kQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 2/2] hw/arm/raspi: Restrict BCM2835 / BCM2836 SoC to
- TCG
-To: Luc Michel <luc@lmichel.fr>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Laurent Vivier <laurent@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -79,30 +80,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Feb 2021 12:28:54 -0000
+X-List-Received-Date: Tue, 02 Feb 2021 12:44:33 -0000
 
-On Mon, 1 Feb 2021 at 08:18, Luc Michel <luc@lmichel.fr> wrote:
-> On 16:14 Sun 31 Jan     , Philippe Mathieu-Daud=C3=A9 wrote:
-> > KVM requires the target cpu to be at least ARMv8 architecture
-> > (support on ARMv7 has been dropped in commit 82bf7ae84ce:
-> > "target/arm: Remove KVM support for 32-bit Arm hosts").
-> Wow, is there absolutely no way to do that then? What about using an
-> ARMv8 and starting in AArch32 mode? Is that possible with KVM? I guess
-> it might not be strictly identical as spawning the "real" CPU...
 
-"Support hardware-accelerated emulation of older v7 CPUs" is
-not a design goal of the virtualization extensions; you can't
-do it. KVM does support having a guest CPU which is AArch32 for EL1,
-but that will never be a v7 CPU, because it will be the same as
-the host CPU, which will always be v8.
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-In general I would prefer that we don't try to do stuff to
-make KVM kinda-sorta-work on random 32-bit boards by stuffing
-in a not-the-right-type CPU, because this increases our
-security boundary massively. At the moment we can reasonably
-say "only the 'virt' board and one of the Xilinx boards are
-security-critical".
+> On Red Hat based distributions, the configure script emits various
+> warnings:
+>
+>   # ./configure
+>   Using './build' as the directory for build output
+>   ./configure: line 212: test: 2-15: integer expression expected
+>   ./configure: line 213: test: 2-15: integer expression expected
+>   ./configure: line 212: test: el8: integer expression expected
+>   ./configure: line 213: test: el8: integer expression expected
+>
+> This is produced by the gdb version check introduced in commit
+> b1863ccc957 ("configure: gate our use of GDB to 8.3.1 or above"):
+>
+>     gdb_version=3D$($gdb_bin --version | head -n 1)
+>     if version_ge ${gdb_version##* } 8.3.1; then
+>         echo "HAVE_GDB_BIN=3D$gdb_bin" >> $config_host_mak
+>     fi
+>
+> Because on RHEL/Fedora the minor version is not a plain number:
+>
+>   $ gdb --version | head -n 1
+>   GNU gdb (GDB) Fedora 9.1-7.fc32
+>
+>   $ gdb --version | head -n 1
+>   GNU gdb (GDB) Red Hat Enterprise Linux 8.2-15.el8
+>
+> Fix by only using the leading numbers, stripping the rest.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  configure | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/configure b/configure
+> index e85d6baf8f8..21f6530a812 100755
+> --- a/configure
+> +++ b/configure
+> @@ -205,7 +205,7 @@ version_ge () {
+>          local_first=3D${2-0}
+>          # 'shift 2' if $2 is set, or 'shift' if $2 is not set
+>          shift ${2:+2}
+> -        local_ver1=3D$*
+> +        local_ver1=3D$(echo $* | sed -E 's/(^[0-9]+).*/\1/')
+>          set x $local_ver2
+>          # the second argument finished, the first must be greater or equ=
+al
+>          test $# =3D 1 && return 0
 
-thanks
--- PMM
+I already have a fix that was posted in:
+
+  Subject: [PATCH  v2 7/8] configure: make version_ge more tolerant of shad=
+y version input
+  Date: Fri, 22 Jan 2021 18:18:53 +0000
+  Message-Id: <20210122181854.23105-8-alex.bennee@linaro.org>
+
+About to feature in the pre-PR series I'm about to post.
+
+--=20
+Alex Benn=C3=A9e
 
