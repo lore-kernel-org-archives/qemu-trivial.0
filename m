@@ -1,66 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l6tsQ-0006Cx-Kj
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 06:29:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33186)
+	id 1l6ul0-0008S9-CP
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 07:26:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6tsP-0006Bs-4G
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 06:29:45 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:38529)
+ id 1l6uku-0008Qf-FB
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 07:26:04 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:40775)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6tsM-0006hM-US
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 06:29:44 -0500
-Received: by mail-ed1-x534.google.com with SMTP id s11so22507829edd.5
- for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 03:29:42 -0800 (PST)
+ id 1l6ukr-0007rY-Qh
+ for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 07:26:04 -0500
+Received: by mail-ej1-x634.google.com with SMTP id i8so13193171ejc.7
+ for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 04:26:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zALBmpnGgo0d/DDiUZKTAM0QqzlB5QbytAECdBFd0RQ=;
- b=tyeD8txQZtiDMk6lY0q9mMzIHAMQP0GTH41WWyItVXIkzjPmlKG26ZYrCWLjkRSJS+
- WBf3eg8hSKdEEJ0FAbPT5xTmhnyCpN18lhPjs9wpojzCroitW43rX3d6Ag3qlyPPTdHV
- BhpiUW1N+zZ3anEyU7EtqG2oy16/NJ1B3BGnzf5XXprtjCeC9JT5/dV7R8aBlMX8Qt4P
- vJ0XShlZrhF9X7G6q88bUTpiLJemDyKOKvrbMKMR5Cn0rRBVpZyS52Z7hNxhrXQBXf5j
- pYR0H9O/UhCIj8xMt1FNyEb6aq5CTQDG9cjCtbhXS6naBJbLGvXi7PaGCiaYAF7arZh/
- Sy/w==
+ :cc:content-transfer-encoding;
+ bh=c+G3TuuZdddZdLSCiu835Rng3C9zacytq1wS/2XqQGs=;
+ b=WD0UkueDxddiNwGrR4Li13eT6HazdV+08hsBCGr7OWeKjM88OcpAKDVzK2EKu50Wqz
+ DOVPj6xUY2WFgDoYNd5xp3FPzuMKc7OBItoY8J+oJQiPxQDoO8HRzNzNqVKeOxS205TZ
+ Ng69ptkB25NDbWyWYBDkOpUhzCS1pTlAt2RoSknB1IJKKfcJGsYQfsvlUpBidFCGBNBO
+ 5oAX8usOrJWRUe5xTEeLqg5buxCwXYjj64CyjkdgWMsFQJR0Y2LZ1vZ9k56f8DxOnWo5
+ WHsMPbe6R01O0Eg1tR243HL7Tip4H0v9NLQ50TvAvEHpAtVS75jDNUDuxvjtomPtI7/0
+ SabA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zALBmpnGgo0d/DDiUZKTAM0QqzlB5QbytAECdBFd0RQ=;
- b=JKS6RP4gCMPmOkDqskJ13JYvqIalZdQFwDanjiimHLzcTYWv8oyJQVG3OgvutQnOEq
- inZk+bv0JgpL2tcYP89+MXJ++DbDbIqguHAH48FY1NQNL218I1V01f9L3CFZP+7uXKom
- LEIbLjmIDXZPfGAZX3Pz9XYvHUZpKrU9qnyv+kmTZHSqNooaf7OyNKqlPQGdTBYBGFcR
- svUCFD+lou/L+tJnQo0n4eCvZUXstrJJMZvDepfEBVs3VGHzauVGsd4dPfHJW1upj863
- jM/+0W5uHKYJ6ekq3NILcwtcMZbxzyQrfi72LFq3R6luw9Jge9hADt2Pl/7Xqu+oAyyz
- yqOg==
-X-Gm-Message-State: AOAM532SeX0fa/5zDUk+R9VHDxvAGpkTa+OQFfUBKT03zsI2PEntlt3F
- TROfb6/0sk2WflUCNkiGWjL5ducEtvMsPG6SWgjLng==
-X-Google-Smtp-Source: ABdhPJyjZM4aFzH0q9v5g3/drSnmZO4253RheGqQ0avZ9Owh+e2UR2BXvY56tKWvEFUZyoCBeYZTPk74nqyVavjXvNs=
-X-Received: by 2002:a05:6402:3494:: with SMTP id
- v20mr15242663edc.146.1612265381036; 
- Tue, 02 Feb 2021 03:29:41 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=c+G3TuuZdddZdLSCiu835Rng3C9zacytq1wS/2XqQGs=;
+ b=s/sb5ypL0YNhPfcFp8QBlRUlXzK29v87Mehbito758oeaC4K73SNNz4S9krC0O2YTW
+ 7XiOxDVAyvYtooz0440XXJRCPtc/grtW+xOG2CszVHGVVEtTen4HzbQvQEccy9XdDmZF
+ t4vCNlyvKHZTzheitJnbGH4V9YKGkTC5oBsFL9YAzavcRIP1H0BA5l3YWqQmxDilYjaI
+ XMDDwH/IpfHKgcW6FLygo/S1r2KikF8GQzzm4G+AnOlSeZebvOapmINcdSLeGbTNAZ5r
+ CP4ht0dVwA2Zhhuilfh+CksXgmDHvrTH9mrfY374GPlUBZHNx3Ou5xz2t7YaQCbDSyZH
+ AIEQ==
+X-Gm-Message-State: AOAM530gpZqomyxGX/rZOeTEMVlcH9UZqoOiDfv9Ri2m0wi431meganZ
+ 8EUbJUX+pXtLlFkyLCRj3dKqUiwthNgy1Bb80pIXbw==
+X-Google-Smtp-Source: ABdhPJz/F9P4dymntHAHNyzhoex0P0d7gQnrLmzEzULTZN3oyItL4iR/4l6ytYhCldnOQsJdthEgsMeAs7mBbjZf9lw=
+X-Received: by 2002:a17:907:1b10:: with SMTP id
+ mp16mr22242179ejc.482.1612268760281; 
+ Tue, 02 Feb 2021 04:26:00 -0800 (PST)
 MIME-Version: 1.0
-References: <20210128143102.7834-1-michael.nawrocki@gtri.gatech.edu>
- <20210128143102.7834-2-michael.nawrocki@gtri.gatech.edu>
-In-Reply-To: <20210128143102.7834-2-michael.nawrocki@gtri.gatech.edu>
+References: <20210131151410.318649-1-f4bug@amsat.org>
+In-Reply-To: <20210131151410.318649-1-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 11:29:29 +0000
-Message-ID: <CAFEAcA9Wi+jSPEZa2Thft1Q899VW0YyHB8Cb+U86m+WbB-Ns=w@mail.gmail.com>
-Subject: Re: [PATCH 1/1] target/arm: Add raw_writefn to SCR_EL3 register
-To: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>
+Date: Tue, 2 Feb 2021 12:25:49 +0000
+Message-ID: <CAFEAcA9WEmiePw_SipgUZwGFNcMPi4ejoXDT5v3mhYQhxX_rcg@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/2] hw/arm/raspi: Restrict BCM2835 / BCM2836 SoC to
+ TCG
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Luc Michel <luc@lmichel.fr>, qemu-arm <qemu-arm@nongnu.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, 
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Laurent Vivier <laurent@vivier.eu>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,51 +78,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Feb 2021 11:29:45 -0000
+X-List-Received-Date: Tue, 02 Feb 2021 12:26:04 -0000
 
-On Thu, 28 Jan 2021 at 14:31, Mike Nawrocki
-<michael.nawrocki@gtri.gatech.edu> wrote:
+On Sun, 31 Jan 2021 at 15:14, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> Fixes an issue in migration where the reset value of SCR and the value
-> produced by scr_write via the writefn for SCR_EL3 mismatch.
+> Peter mentioned [*] KVM only support ARMv8 targets. Restrict the
+> non-ARMv8 machines to TCG.
 >
-> Signed-off-by: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
-> ---
->  target/arm/helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> While this is still not enough to boot a raspi3 image using KVM:
 >
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index d2ead3fcbd..e3c4fe76cb 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -5785,7 +5785,7 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
->      { .name = "SCR_EL3", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 0,
->        .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.scr_el3),
-> -      .resetvalue = 0, .writefn = scr_write },
-> +      .resetvalue = 0, .writefn = scr_write, .raw_writefn = raw_write },
->      { .name = "SCR",  .type = ARM_CP_ALIAS | ARM_CP_NEWEL,
->        .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 0,
->        .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
-> --
+>   $ qemu-system-aarch64 -M raspi3b -enable-kvm ...
+>   qemu-system-aarch64: ../../softmmu/physmem.c:745: cpu_address_space_ini=
+t: A=3D
+> ssertion `asidx =3D3D=3D3D 0 || !kvm_enabled()' failed.
+>   Aborted (core dumped)
 
-I think the problem here is not the lack of a raw_writefn,
-but that we're not handling the RES1 bits [5:4] in SCR_EL3 correctly.
-Specifically:
-
- * if the CPU is AArch64-only then the resetvalue for SCR_EL3 should
-   not be 0, but 0x30 (but if the CPU has AArch32 at all then it should
-   still be 0)
- * scr_write() should not be saying "force the FW and AW bits to 1 if
-   written as an AArch64 register". It can, but is not obliged to,
-   do this if the CPU is AArch64-only; it must not if the CPU has
-   AArch32, even if the register is being accessed via its AArch64 form.
-
-This is because RES1 has some complicated semantics for bits like
-this which are "RES1 only in some architectural contexts" (this is all
-defined in the Glossary entry in the v8A Arm ARM), which basically
-means that if AArch32 is supported then the bit has to be reads-as-written
-from the AArch64 side.
+Side note: this assertion isn't specific to the raspi3b -- it's
+caused because we don't correctly screen out "tried to use KVM
+on a CPU type with EL3 enabled", which should cause an error
+but instead gets far enough through CPU init to hit this assertion.
 
 thanks
 -- PMM
