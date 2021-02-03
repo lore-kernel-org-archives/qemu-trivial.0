@@ -1,75 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l77a1-0005iz-PB
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2021 21:07:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42412)
+	id 1l7JUO-0000Bm-Dx
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Feb 2021 09:50:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57470)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l77a0-0005hp-8L
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 21:07:40 -0500
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:41163)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l77Zx-0006WA-Nb
- for qemu-trivial@nongnu.org; Tue, 02 Feb 2021 21:07:40 -0500
-Received: by mail-pf1-x42c.google.com with SMTP id q20so15641196pfu.8
- for <qemu-trivial@nongnu.org>; Tue, 02 Feb 2021 18:07:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=JF1IIBxlGxtaUpmlCJzAC9NqV5dfkmVX+CtQ0/ucOVo=;
- b=r8RAO5EcE9fj0RK0rYuOLxHl5cZBKYfInQialXKUEc/oAFZNiSAdnMGkKgkgi3mFHV
- wxDWe31qWyKh73EvOGMs1DtU/HYmIgrJX+0IgPay6TdXn1lIo7arAqKXmjXaPD8ndjoL
- 28BDqHwLeE9SjDzh4SHzlAz+vZ05zi/K1fQz/ol4sj5W9X3bEAKY9VJP422kgyydY+JH
- VYN5m2AUuEBEJTFta+YONKM9xL/t3Df9zeZcg2NuLptiFXhaliUZB1FS7q9Y2Rv8BjHt
- DcKmOyDZ173agrx9iLaBuSxYpZiRQBqb4ydq61/GhjJS59vHHOBkvO/s823LBkz5Mwr4
- eTNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=JF1IIBxlGxtaUpmlCJzAC9NqV5dfkmVX+CtQ0/ucOVo=;
- b=ChxHKe2Fzl1UhJ3FgDJjM22PzA8Lley55M6UmULIRK9/xqGsrZAGBp4Thr7JHEygJK
- srzCXpNC/eXFSD7MRdZuCqHSiKa9dAw9iFxhKaSNV1b36w9UUErfBAniQR0heVnrupT2
- Ow5QmaTWYaY90l2gs09uwFKvZGEJUgQskFQw9NPEl8A95regz6KZwnCg6wpRgMVZKHm+
- L8pRAGCDl+iWNF+S7cUQoPKpxmAoqGnBjx21V8nxwcjDlKsxS/aKZ7ZV33QnY4/CLvne
- uefT3JJaqDeXX5t57asnoRYmgdvm17v7zhiqiM9TuJIBn8XBjzjI0a92Hksxk34WiAD+
- kzyg==
-X-Gm-Message-State: AOAM533KuF5NizP81cnq8Yz8s2uKgJnXO4w9ZKjGKGEhAD3GSY6fS0zb
- 4aaDI8BK7U6e1t4UbAR7u09uWA==
-X-Google-Smtp-Source: ABdhPJx6GHLOEwMppAqEmROgOW2LVk4KpmJb7gnqc37EViv2VBxzckDnltB1LXy0V6OI4ak+2rQn+A==
-X-Received: by 2002:a63:5c0a:: with SMTP id q10mr1077374pgb.277.1612318055861; 
- Tue, 02 Feb 2021 18:07:35 -0800 (PST)
-Received: from [192.168.3.43] (cpe-66-27-222-29.hawaii.res.rr.com.
- [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id 21sm255416pfh.56.2021.02.02.18.07.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Feb 2021 18:07:35 -0800 (PST)
-Subject: Re: [PATCH] target/avr/cpu: Use device_class_set_parent_realize()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Sarah Harris <S.E.Harris@kent.ac.uk>,
- Michael Rolnik <mrolnik@gmail.com>
-References: <20210201080348.438095-1-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <be4a4389-c5ee-73d3-9326-ef3f0a1dda52@linaro.org>
-Date: Tue, 2 Feb 2021 16:07:31 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20210201080348.438095-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
+ (Exim 4.90_1) (envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
+ id 1l7JUM-000079-3q; Wed, 03 Feb 2021 09:50:38 -0500
+Received: from unifiededge.gtri.gatech.edu ([130.207.205.170]:47262)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
+ id 1l7JUI-0003x1-DG; Wed, 03 Feb 2021 09:50:37 -0500
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Content-Transfer-Encoding: 7bit
+DKIM-Signature: v=1; a=rsa-sha256; d=gtri.gatech.edu; s=unifiededge;
+ c=simple/simple; t=1612363830; h=from:subject:to:date:message-id;
+ bh=rABu3avkqod/lsfnklxUG+JBM4kGsfV8rIjgX4daLNI=;
+ b=vwfCmDdLw0yDzEklpDh8AaftWbxIwf+8+QI7VUX5l3P2NhdgSsIVD1CAdwPfaJDhcg9ntM16eJ3
+ 7+U2AeEI5loy0GI9+tL3zQ199ksncTylgogPLdYfBi5aWlVLLfngqkjI4dh6FjghZmffUHQC8ui00
+ 4kWM5EKLdidgfvYCLHapJeZrBb7KmkI9XgVvAqWtkyTfzbptFFnLT8prh2qEwrvIBiIxpJ9Fdz4Qg
+ lwuFmBrbVkftzs4LP1sJ5dXS/3vuzkl855lYFMIWKypISAzsuoCxXg0dJ/GafRdhx5j7qXId/DOXY
+ D2Rj2O+lBAKHxHeK03VHPxt1NXcDlqdn0dag==
+Received: from tybee.core.gtri.org (10.41.1.49) by exedge07.gtri.dmz
+ (10.41.104.75) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.2.721.2; Wed, 3 Feb 2021
+ 09:50:30 -0500
+Received: from [10.43.17.128] (10.41.0.30) by tybee.core.gtri.org (10.41.1.49)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2106.2; Wed, 3 Feb
+ 2021 09:50:29 -0500
+Subject: Re: [PATCH 1/1] target/arm: Add raw_writefn to SCR_EL3 register
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Richard Henderson
+ <richard.henderson@linaro.org>
+References: <20210128143102.7834-1-michael.nawrocki@gtri.gatech.edu>
+ <20210128143102.7834-2-michael.nawrocki@gtri.gatech.edu>
+ <CAFEAcA9Wi+jSPEZa2Thft1Q899VW0YyHB8Cb+U86m+WbB-Ns=w@mail.gmail.com>
+From: Michael Nawrocki <michael.nawrocki@gtri.gatech.edu>
+Message-ID: <15dbbf3e-3386-583a-4813-4d1a93123d2a@gtri.gatech.edu>
+Date: Wed, 3 Feb 2021 09:50:28 -0500
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.7.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9Wi+jSPEZa2Thft1Q899VW0YyHB8Cb+U86m+WbB-Ns=w@mail.gmail.com>
+X-ClientProxiedBy: tybee.core.gtri.org (10.41.1.49) To tybee.core.gtri.org
+ (10.41.1.49)
+Received-SPF: pass client-ip=130.207.205.170;
+ envelope-from=Michael.Nawrocki@gtri.gatech.edu;
+ helo=unifiededge.gtri.gatech.edu
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.155,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-0.178, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,19 +66,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Feb 2021 02:07:40 -0000
+X-List-Received-Date: Wed, 03 Feb 2021 14:50:38 -0000
 
-On 1/31/21 10:03 PM, Philippe Mathieu-Daudé wrote:
-> Change generated automatically using the Coccinelle
-> patch included in commit bf853881690 ("qdev: use
-> device_class_set_parent_realize/unrealize/reset()")
+On 2/2/21 6:29 AM, Peter Maydell wrote:
+> On Thu, 28 Jan 2021 at 14:31, Mike Nawrocki
+> <michael.nawrocki@gtri.gatech.edu> wrote:
+>>
+>> Fixes an issue in migration where the reset value of SCR and the value
+>> produced by scr_write via the writefn for SCR_EL3 mismatch.
+>>
+>> Signed-off-by: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
+>> ---
+>>   target/arm/helper.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index d2ead3fcbd..e3c4fe76cb 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -5785,7 +5785,7 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+>>       { .name = "SCR_EL3", .state = ARM_CP_STATE_AA64,
+>>         .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 0,
+>>         .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.scr_el3),
+>> -      .resetvalue = 0, .writefn = scr_write },
+>> +      .resetvalue = 0, .writefn = scr_write, .raw_writefn = raw_write },
+>>       { .name = "SCR",  .type = ARM_CP_ALIAS | ARM_CP_NEWEL,
+>>         .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 0,
+>>         .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
+>> --
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  target/avr/cpu.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
+> I think the problem here is not the lack of a raw_writefn,
+> but that we're not handling the RES1 bits [5:4] in SCR_EL3 correctly.
+> Specifically:
+> 
+>   * if the CPU is AArch64-only then the resetvalue for SCR_EL3 should
+>     not be 0, but 0x30 (but if the CPU has AArch32 at all then it should
+>     still be 0)
+>   * scr_write() should not be saying "force the FW and AW bits to 1 if
+>     written as an AArch64 register". It can, but is not obliged to,
+>     do this if the CPU is AArch64-only; it must not if the CPU has
+>     AArch32, even if the register is being accessed via its AArch64 form.
+> 
+> This is because RES1 has some complicated semantics for bits like
+> this which are "RES1 only in some architectural contexts" (this is all
+> defined in the Glossary entry in the v8A Arm ARM), which basically
+> means that if AArch32 is supported then the bit has to be reads-as-written
+> from the AArch64 side.
+> 
+> thanks
+> -- PMM
+> 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I see what you mean. Does QEMU support AArch64-only CPU models, and if 
+so, is there a way to determine if the CPU has AArch32?
 
-r~
+Thanks,
+Mike
 
