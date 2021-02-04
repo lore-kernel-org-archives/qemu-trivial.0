@@ -1,60 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l7LUC-0007lv-Bi
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Feb 2021 11:58:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60964)
+	id 1l7bIv-0006O6-AS
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2021 04:52:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48916)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
- id 1l7LUA-0007hn-CA; Wed, 03 Feb 2021 11:58:34 -0500
-Received: from unifiededge.gtri.gatech.edu ([130.207.205.170]:45521)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1l7bIt-0006Mu-3Q; Thu, 04 Feb 2021 04:51:59 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:54060 helo=mta-01.yadro.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
- id 1l7LU8-0008Cc-QY; Wed, 03 Feb 2021 11:58:34 -0500
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-DKIM-Signature: v=1; a=rsa-sha256; d=gtri.gatech.edu; s=unifiededge;
- c=simple/simple; t=1612371510; h=from:subject:to:date:message-id;
- bh=HmErLV9RyMnvygHr0496qByGG110ay1smQCzlrVpi74=;
- b=GvNjGWeM1emiEjJlnxew+2dkLadO519Pvks/tVZOu54KxyX2B7IjZPlHV28Ijs5IuDS/y6zDQpk
- /x2EAQeIYz6KRJkwiFrhaMl6e+3xwW9hVf8vb/W3VJYdmKWpvmo5irhveymwCfqi7I04023B8Wm/Z
- xq2PazYDIY5cbtlLJ3UygpXhzzIr4qySim+Ilpcb2y8RhMu9Z7G2vA7QWOk3LqDA6pB08wxmMM79L
- Ef2jUFHLQDKSecMqeNjGtBDAhDrJr5c7gXRSy9cKvyKJBSUCMogXVrnl1gnUfqIwFO/45GSF5za3B
- Qudqwq5vODjHlgoaE++QhVRJlJ5xBJoL+NlQ==
-Received: from tybee.core.gtri.org (10.41.1.49) by exedge06.gtri.dmz
- (10.41.104.63) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.2.721.2; Wed, 3 Feb 2021
- 11:58:30 -0500
-Received: from [10.43.17.128] (10.41.0.30) by tybee.core.gtri.org (10.41.1.49)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2106.2; Wed, 3 Feb
- 2021 11:58:30 -0500
-Subject: Re: [PATCH 1/1] target/arm: Add raw_writefn to SCR_EL3 register
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Richard Henderson
- <richard.henderson@linaro.org>
-References: <20210128143102.7834-1-michael.nawrocki@gtri.gatech.edu>
- <20210128143102.7834-2-michael.nawrocki@gtri.gatech.edu>
- <CAFEAcA9Wi+jSPEZa2Thft1Q899VW0YyHB8Cb+U86m+WbB-Ns=w@mail.gmail.com>
- <15dbbf3e-3386-583a-4813-4d1a93123d2a@gtri.gatech.edu>
- <CAFEAcA_y2G62w13aK+8tKBGPYUyt8rUFKeXV8reovSaG6JV1TQ@mail.gmail.com>
-From: Michael Nawrocki <michael.nawrocki@gtri.gatech.edu>
-Message-ID: <ab3e5971-9abb-5b1a-f540-48fd3c6398b7@gtri.gatech.edu>
-Date: Wed, 3 Feb 2021 11:58:28 -0500
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1l7bIl-0005GO-Be; Thu, 04 Feb 2021 04:51:58 -0500
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id 3FD024124F;
+ Thu,  4 Feb 2021 09:51:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1612432306;
+ x=1614246707; bh=7oxOfChya2pP3wumcjlwjFp9dz+XbBxdRVEi82PfkV0=; b=
+ soGCmKjRCgLWhtH8i6j9LkvM+vDoLv/xhu2+m20rbr49RljZMzn8VBwEEJhm7hgv
+ bENsT0W1+61inJjL5ezUtrKqkaOtAv4098DpHtFdCkCfEfjrotuf2ndECBOKh3cs
+ C3rIaAaHhfyVGccPBucrYG+s6SLj442XLd+m0IfQtxc=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id waO__zykndef; Thu,  4 Feb 2021 12:51:46 +0300 (MSK)
+Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
+ [172.17.100.103])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id BBE5040416;
+ Thu,  4 Feb 2021 12:51:46 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
+ (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Thu, 4 Feb
+ 2021 12:51:46 +0300
+Date: Thu, 4 Feb 2021 12:51:45 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: <yaroshchuk2000@gmail.com>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, <dirty@apple.com>,
+ <pbonzini@redhat.com>
+Subject: Re: [PATCH v3] target/i386/hvf: add vmware-cpuid-freq cpu feature
+Message-ID: <YBvDseGDzp6xCTiu@SPB-NB-133.local>
+References: <20210114194703.134333-1-yaroshchuk2000@gmail.com>
+ <20210122150518.3551-1-yaroshchuk2000@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_y2G62w13aK+8tKBGPYUyt8rUFKeXV8reovSaG6JV1TQ@mail.gmail.com>
-X-ClientProxiedBy: parris.core.gtri.org (10.41.31.72) To tybee.core.gtri.org
- (10.41.1.49)
-Received-SPF: pass client-ip=130.207.205.170;
- envelope-from=Michael.Nawrocki@gtri.gatech.edu;
- helo=unifiededge.gtri.gatech.edu
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20210122150518.3551-1-yaroshchuk2000@gmail.com>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-03.corp.yadro.com (172.17.100.103)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-0.178, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -68,39 +70,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Feb 2021 16:58:34 -0000
+X-List-Received-Date: Thu, 04 Feb 2021 09:51:59 -0000
 
-On 2/3/21 10:04 AM, Peter Maydell wrote:
-> On Wed, 3 Feb 2021 at 14:50, Michael Nawrocki
-> <michael.nawrocki@gtri.gatech.edu> wrote:
->>
->> On 2/2/21 6:29 AM, Peter Maydell wrote:
->> I see what you mean. Does QEMU support AArch64-only CPU models, and if
->> so, is there a way to determine if the CPU has AArch32?
+On Fri, Jan 22, 2021 at 06:05:18PM +0300, yaroshchuk2000@gmail.com wrote:
+> From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
 > 
-> We don't have any currently, but in theory the support is there
-> and we'll likely end up adding some in future.
+> For `-accel hvf` cpu_x86_cpuid() is wrapped with hvf_cpu_x86_cpuid() to
+> add paravirtualization cpuid leaf 0x40000010
+> https://lkml.org/lkml/2008/10/1/246
 > 
-> More specifically, in this case what you want to know is "can
-> the guest ever see the AArch32 view of SCR_EL3", which is
-> "is there support for AArch32 at EL1 or above"?", which you can
-> check for in the EL1 field of ID_AA64PFR0.
+> Leaf 0x40000010, Timing Information:
+> EAX: (Virtual) TSC frequency in kHz.
+> EBX: (Virtual) Bus (local apic timer) frequency in kHz.
+> ECX, EDX: RESERVED (Per above, reserved fields are set to zero).
 > 
-> So you need a function similar to the existing isar_feature_aa64_aa32(),
-> but which cecks the EL1 field instead of the EL0 field (you could
-> call it isar_feature_aa64_aa32_el1()). Then you can test it with
->   cpu_isar_feature(aa64_aa32_el1, cpu).
+> On macOS TSC and APIC Bus frequencies can be readed by sysctl call with
+> names `machdep.tsc.frequency` and `hw.busfrequency`
 > 
-> NB that you must only call it when you know that the CPU has
-> AArch64, ie when arm_feature(env, ARM_FEATURE_AARCH64) is true.
+> This options is required for Darwin-XNU guest to be synchronized with
+> host
 > 
-> thanks
-> -- PMM
+> Leaf 0x40000000 not exposes HVF leaving hypervisor signature empty
+> 
+> Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
+> ---
+>  target/i386/hvf/hvf.c | 96 ++++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 95 insertions(+), 1 deletion(-)
 > 
 
-Thanks, that's very helpful. I submitted a patch v2 that I believe 
-encapsulates this discussion.
+I'd prefer to have generic expose-accel option for CPU and
+vmware-cpuid-freq=on would depend on expose-accel=on.
+
+Regardless of that,
+
+Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
 
 Thanks,
-Mike
+Roman
 
