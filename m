@@ -1,63 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l7bIv-0006O6-AS
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2021 04:52:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48916)
+	id 1l7fIV-0004JG-LY
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2021 09:07:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1l7bIt-0006Mu-3Q; Thu, 04 Feb 2021 04:51:59 -0500
-Received: from mta-02.yadro.com ([89.207.88.252]:54060 helo=mta-01.yadro.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1l7bIl-0005GO-Be; Thu, 04 Feb 2021 04:51:58 -0500
-Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id 3FD024124F;
- Thu,  4 Feb 2021 09:51:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
- in-reply-to:content-disposition:content-type:content-type
- :mime-version:references:message-id:subject:subject:from:from
- :date:date:received:received:received; s=mta-01; t=1612432306;
- x=1614246707; bh=7oxOfChya2pP3wumcjlwjFp9dz+XbBxdRVEi82PfkV0=; b=
- soGCmKjRCgLWhtH8i6j9LkvM+vDoLv/xhu2+m20rbr49RljZMzn8VBwEEJhm7hgv
- bENsT0W1+61inJjL5ezUtrKqkaOtAv4098DpHtFdCkCfEfjrotuf2ndECBOKh3cs
- C3rIaAaHhfyVGccPBucrYG+s6SLj442XLd+m0IfQtxc=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
- by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id waO__zykndef; Thu,  4 Feb 2021 12:51:46 +0300 (MSK)
-Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
- [172.17.100.103])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1l7fIT-0004F9-W4
+ for qemu-trivial@nongnu.org; Thu, 04 Feb 2021 09:07:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32329)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1l7fIQ-0002uW-Qb
+ for qemu-trivial@nongnu.org; Thu, 04 Feb 2021 09:07:49 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612447665;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JXLrg6FXTUJmEczswkO6b1Db2hBqTGiq4h34WsTDn2Q=;
+ b=BOF/z7JhG0B8t85kPTYzDJE4y9Oe56zT2kDc4p13mzPSIlk4jdnagIPoNfruxiHNKzemt4
+ s6UYSQnoicoNX5gEU9Gn94DlsAK5+eg0Tz55nk8hhMKGj9h45eaG/vsleZBmjNKRnf7nfl
+ KZXSpDDVnESoucBd75w/qVp5ce8KLrE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-388-fE2a5MV8OFyMWXyTI6yLqw-1; Thu, 04 Feb 2021 09:07:42 -0500
+X-MC-Unique: fE2a5MV8OFyMWXyTI6yLqw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id BBE5040416;
- Thu,  4 Feb 2021 12:51:46 +0300 (MSK)
-Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
- (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Thu, 4 Feb
- 2021 12:51:46 +0300
-Date: Thu, 4 Feb 2021 12:51:45 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: <yaroshchuk2000@gmail.com>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, <dirty@apple.com>,
- <pbonzini@redhat.com>
-Subject: Re: [PATCH v3] target/i386/hvf: add vmware-cpuid-freq cpu feature
-Message-ID: <YBvDseGDzp6xCTiu@SPB-NB-133.local>
-References: <20210114194703.134333-1-yaroshchuk2000@gmail.com>
- <20210122150518.3551-1-yaroshchuk2000@gmail.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9072C80402C;
+ Thu,  4 Feb 2021 14:07:41 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-90.ams2.redhat.com [10.36.112.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8017E5D9C9;
+ Thu,  4 Feb 2021 14:07:40 +0000 (UTC)
+Subject: Re: [PATCH] README: Add Documentation blurb
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20201104193032.1319248-1-jsnow@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <16d9f8d6-170d-633e-6c52-a6f3ee1de6fb@redhat.com>
+Date: Thu, 4 Feb 2021 15:07:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20210122150518.3551-1-yaroshchuk2000@gmail.com>
-X-Originating-IP: [172.17.204.212]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
- T-EXCH-03.corp.yadro.com (172.17.100.103)
-Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
- helo=mta-01.yadro.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201104193032.1319248-1-jsnow@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.182, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,42 +73,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Feb 2021 09:51:59 -0000
+X-List-Received-Date: Thu, 04 Feb 2021 14:07:50 -0000
 
-On Fri, Jan 22, 2021 at 06:05:18PM +0300, yaroshchuk2000@gmail.com wrote:
-> From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
+On 04/11/2020 20.30, John Snow wrote:
+> Add it in a prominent place: Right after figuring out what QEMU is,
+> users may wish to know how to use it more than they want to know how to
+> build their own version of it.
 > 
-> For `-accel hvf` cpu_x86_cpuid() is wrapped with hvf_cpu_x86_cpuid() to
-> add paravirtualization cpuid leaf 0x40000010
-> https://lkml.org/lkml/2008/10/1/246
-> 
-> Leaf 0x40000010, Timing Information:
-> EAX: (Virtual) TSC frequency in kHz.
-> EBX: (Virtual) Bus (local apic timer) frequency in kHz.
-> ECX, EDX: RESERVED (Per above, reserved fields are set to zero).
-> 
-> On macOS TSC and APIC Bus frequencies can be readed by sysctl call with
-> names `machdep.tsc.frequency` and `hw.busfrequency`
-> 
-> This options is required for Darwin-XNU guest to be synchronized with
-> host
-> 
-> Leaf 0x40000000 not exposes HVF leaving hypervisor signature empty
-> 
-> Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
+> Signed-off-by: John Snow <jsnow@redhat.com>
 > ---
->  target/i386/hvf/hvf.c | 96 ++++++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 95 insertions(+), 1 deletion(-)
+>   README.rst | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
 > 
+> diff --git a/README.rst b/README.rst
+> index 58b9f2dc15c4..758ea8fd2ff0 100644
+> --- a/README.rst
+> +++ b/README.rst
+> @@ -31,6 +31,17 @@ QEMU as a whole is released under the GNU General Public License,
+>   version 2. For full licensing details, consult the LICENSE file.
+>   
+>   
+> +Documentation
+> +=============
+> +
+> +Documentation can be found hosted online at
+> +`<https://www.qemu.org/documentation/>`_. The documentation for the
+> +current development version that is available at
+> +`<https://www.qemu.org/docs/master/>`_ is generated from the ``docs/``
 
-I'd prefer to have generic expose-accel option for CPU and
-vmware-cpuid-freq=on would depend on expose-accel=on.
+That URL is now redirecting to https://qemu.readthedocs.io/en/latest/ ... 
+could you maybe update your patch and resend?
 
-Regardless of that,
+  Thanks,
+   Thomas
 
-Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
-Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
-
-Thanks,
-Roman
 
