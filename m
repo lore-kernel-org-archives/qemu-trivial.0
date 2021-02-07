@@ -1,70 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l8Odd-0001uH-Ku
-	for mharc-qemu-trivial@gnu.org; Sat, 06 Feb 2021 09:32:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44142)
+	id 1l8djj-0004jc-3Q
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Feb 2021 01:39:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1l8Odb-0001tl-Ou
- for qemu-trivial@nongnu.org; Sat, 06 Feb 2021 09:32:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46284)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1l8OdY-0003rH-Tw
- for qemu-trivial@nongnu.org; Sat, 06 Feb 2021 09:32:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612621954;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CjWEnYh/RUZ4gWsrPq3+EoRDeJZRkyTI4Z4loK2cI2Y=;
- b=HnsoYopqZZeYdEIzOHNAmbppbElM85T6FdiKAzOPtwJIdynmrLxT3c/2uhykhmXCSpWxMS
- xCuu8qT2Twy5ZY8WCdRp7nGo/uAMYfEwXahvgWwSRNA/9NqN/bqbCscnCE644AiQ/gGGjz
- cWDB9yNoSOM6OSACRzlQpHIbxxCgeMg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-238-TxS6d_4PPuq7cTL45KHMlA-1; Sat, 06 Feb 2021 09:32:32 -0500
-X-MC-Unique: TxS6d_4PPuq7cTL45KHMlA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 42CBF801962;
- Sat,  6 Feb 2021 14:32:31 +0000 (UTC)
-Received: from [10.36.112.23] (ovpn-112-23.ams2.redhat.com [10.36.112.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 293F819CBC;
- Sat,  6 Feb 2021 14:32:26 +0000 (UTC)
-Subject: Re: [PATCH 1/2] pci: cleanup failover sanity check
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, jfreimann@redhat.com,
- Laurent Vivier <laurent@vivier.eu>, quintela@redhat.com
-References: <20210206123955.2196514-1-lvivier@redhat.com>
- <20210206123955.2196514-2-lvivier@redhat.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <ec94fd87-8bc0-ae85-8854-b7be326b07a5@redhat.com>
-Date: Sat, 6 Feb 2021 15:32:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1l8djg-0004jJ-PP; Sun, 07 Feb 2021 01:39:56 -0500
+Resent-Date: Sun, 07 Feb 2021 01:39:56 -0500
+Resent-Message-Id: <E1l8djg-0004jJ-PP@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21302)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1l8djd-0000zX-Ed; Sun, 07 Feb 2021 01:39:55 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1612679987; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=lFNySMvHGhETWi14XuRcyLfIkPw6XG/ISO3q6N/4su9tga0Wgc9miKedZ97GjlsoOTA/0F5CbwtXyDWPe1iYB4ezJtfPL8nPyDo3QeL9eRXC6dJjpvGsyUTcco1BwINXx9bNLPwiDov5LRg3DsrnTUr4Gb4oloWB87RvXu9KAnU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1612679987;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=xdDCURI6Tup4kBeFtixx7URTB9ESg/oQRMbfDbr+Cpk=; 
+ b=QItEE8VjuP2mHB3ZXpY0z+0Nzyxmpc+lDDOO4J2/JpeWFIkQ5qD9S/lr2yplal6LhGtjefBBdmWvTFl6kXwOY3T1uSkAB2Q8HrqGXHZyJyefv2gy8B1Ta87IOtBSeRdW1zr2MJrDR1okwIpxdXtDd4f2qSD1HBST+pa9O34XTdY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 16126799847791004.2847488084357;
+ Sat, 6 Feb 2021 22:39:44 -0800 (PST)
+In-Reply-To: <20210207063304.15227-1-niteesh.gs@gmail.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] block/iscsi: Use lock guards
+Message-ID: <161267998367.2182.10367100038583833395@c667a6b167f6>
 MIME-Version: 1.0
-In-Reply-To: <20210206123955.2196514-2-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lvivier@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=lvivier@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.353,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.105, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: niteesh.gs@gmail.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, niteesh.gs@gmail.com
+Date: Sat, 6 Feb 2021 22:39:44 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,46 +59,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 06 Feb 2021 14:32:39 -0000
+X-List-Received-Date: Sun, 07 Feb 2021 06:39:57 -0000
 
-On 06/02/2021 13:39, Laurent Vivier wrote:
-> Commit a1190ab628 has added a "allow_unplug_during_migration = true" at
-> the end of the main "if" block, so it is not needed to set it anymore
-> in the previous checking.
-> 
-> Remove it, to have only sub-ifs that check for needed conditions and exit
-> if one fails.
-> 
-> Fixes: 4f5b6a05a4e7 ("pci: add option for net failover")
-> Fixes: a1190ab628c0 ("migration: allow unplug during migration for failover devices")
-> Cc: jfreimann@redhat.com
-> Signed-off-by: Laurent Vivier <lvivier@virtlab415.virt.lab.eng.bos.redhat.com>
-
-Sorry, git misconfiguration, read:
-
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-
-> ---
->  hw/pci/pci.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 512e9042ffae..ecb7aa31fabd 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -2120,10 +2120,8 @@ static void pci_qdev_realize(DeviceState *qdev, Error **errp)
->              pci_qdev_unrealize(DEVICE(pci_dev));
->              return;
->          }
-> -        if (!(pci_dev->cap_present & QEMU_PCI_CAP_MULTIFUNCTION)
-> -            && (PCI_FUNC(pci_dev->devfn) == 0)) {
-> -            qdev->allow_unplug_during_migration = true;
-> -        } else {
-> +        if ((pci_dev->cap_present & QEMU_PCI_CAP_MULTIFUNCTION)
-> +            || (PCI_FUNC(pci_dev->devfn) != 0)) {
->              error_setg(errp, "failover: primary device must be in its own "
->                                "PCI slot");
->              pci_qdev_unrealize(DEVICE(pci_dev));
-> 
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDIwNzA2MzMwNC4xNTIy
+Ny0xLW5pdGVlc2guZ3NAZ21haWwuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhh
+dmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUg
+aW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMTAyMDcwNjMzMDQuMTUy
+MjctMS1uaXRlZXNoLmdzQGdtYWlsLmNvbQpTdWJqZWN0OiBbUEFUQ0hdIGJsb2NrL2lzY3NpOiBV
+c2UgbG9jayBndWFyZHMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0
+IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwg
+ZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpn
+aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVj
+a3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRh
+dGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6
+Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAgICAgICAgIHBh
+dGNoZXcvMjAyMTAyMDcwNjMzMDQuMTUyMjctMS1uaXRlZXNoLmdzQGdtYWlsLmNvbSAtPiBwYXRj
+aGV3LzIwMjEwMjA3MDYzMzA0LjE1MjI3LTEtbml0ZWVzaC5nc0BnbWFpbC5jb20KU3dpdGNoZWQg
+dG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo3ZWE5NTdlIGJsb2NrL2lzY3NpOiBVc2UgbG9jayBndWFy
+ZHMKCj09PSBPVVRQVVQgQkVHSU4gPT09CkVSUk9SOiBNaXNzaW5nIFNpZ25lZC1vZmYtYnk6IGxp
+bmUocykKCnRvdGFsOiAxIGVycm9ycywgMCB3YXJuaW5ncywgMTgyIGxpbmVzIGNoZWNrZWQKCkNv
+bW1pdCA3ZWE5NTdlZGFmN2UgKGJsb2NrL2lzY3NpOiBVc2UgbG9jayBndWFyZHMpIGhhcyBzdHls
+ZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZh
+bHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFU
+Q0ggaW4gTUFJTlRBSU5FUlMuCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRl
+ZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRj
+aGV3Lm9yZy9sb2dzLzIwMjEwMjA3MDYzMzA0LjE1MjI3LTEtbml0ZWVzaC5nc0BnbWFpbC5jb20v
+dGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0
+b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5k
+IHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
