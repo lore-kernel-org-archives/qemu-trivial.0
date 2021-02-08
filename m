@@ -1,64 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l8lCS-00088J-DK
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Feb 2021 09:38:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46212)
+	id 1l90eV-00066W-2F
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Feb 2021 02:08:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dominik.gloess@tum.de>)
- id 1l8cJ2-0006x6-8t; Sun, 07 Feb 2021 00:08:20 -0500
-Received: from postout1.mail.lrz.de ([2001:4ca0:0:103::81bb:ff89]:39621)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dominik.gloess@tum.de>)
- id 1l8cIx-00030N-Ey; Sun, 07 Feb 2021 00:08:19 -0500
-Received: from lxmhs51.srv.lrz.de (localhost [127.0.0.1])
- by postout1.mail.lrz.de (Postfix) with ESMTP id 4DYHGn34mJzyYk;
- Sun,  7 Feb 2021 06:08:01 +0100 (CET)
-Authentication-Results: postout.lrz.de (amavisd-new); dkim=pass (2048-bit key)
- reason="pass (just generated,
- assumed good)" header.d=tum.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tum.de; h=
- content-transfer-encoding:content-type:content-type:mime-version
- :x-mailer:message-id:date:date:subject:subject:from:from
- :received:received; s=postout; t=1612674480; bh=rGhMF1YHtiCQHc/v
- DlLqjDKuKUUAdQcfCfjbDjmCjG8=; b=ZbvHe0GQwh4qZ0nTdEjJj9khb7jHGyGP
- 7pKtsB6AKUPEBie4lxl3ZBUmxiEczDbKVKxkA3kuliN5RgJnBAslJ17qdGK5m5Pn
- KEh/kklT4CcM54sP8c+OXU5IxYFE44IDPLtKQMUpNbHXM7dY2Pr2fpklS/mLI6WM
- voUC/X+A1QgvBZOaAWt12xuade3rgnI/1eArhK5nPMPeHJXGyGqNjvlxdhZ96/Mf
- NSsKVrykQCFEBHrN6lXztI5rFxMDe1sBegB/TbVKyRDaUIrK1BjGMMa04dTLaXqh
- EET/CbDMBS7RpgyAdGQbV0MvNO9CG3xGBCRYtYLSCZWhMUtozbkiiA==
-X-Virus-Scanned: by amavisd-new at lrz.de in lxmhs51.srv.lrz.de
-X-Spam-Score: -2.879
-Received: from postout1.mail.lrz.de ([127.0.0.1])
- by lxmhs51.srv.lrz.de (lxmhs51.srv.lrz.de [127.0.0.1]) (amavisd-new,
- port 20024)
- with LMTP id 9elDdR2JVzxG; Sun,  7 Feb 2021 06:08:00 +0100 (CET)
-Received: from venus.. (p54b93a9a.dip0.t-ipconnect.de [84.185.58.154])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (Client did not present a certificate)
- by postout1.mail.lrz.de (Postfix) with ESMTPSA id 4DYHGm3dtczyYX;
- Sun,  7 Feb 2021 06:08:00 +0100 (CET)
-From: =?UTF-8?q?Dominik=20Gl=C3=B6=C3=9F?= <dominik.gloess@tum.de>
-To: qemu-devel@nongnu.org
-Cc: alex.bennee@linaro.org, qemu-trivial@nongnu.org,
- =?UTF-8?q?Dominik=20Gl=C3=B6=C3=9F?= <dominik.gloess@tum.de>
-Subject: [PATCH] target/i386: expose more MSRs to GDB
-Date: Sun,  7 Feb 2021 06:07:14 +0100
-Message-Id: <20210207050714.258627-1-dominik.gloess@tum.de>
-X-Mailer: git-send-email 2.30.0
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1l90dS-0005zN-14
+ for qemu-trivial@nongnu.org; Mon, 08 Feb 2021 02:07:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:60290)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1l90cw-0005lR-T4
+ for qemu-trivial@nongnu.org; Mon, 08 Feb 2021 02:06:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612767960;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+aGVgCiXudTFwfe5TjcdJKr4isbMJbfLUne003pWQrw=;
+ b=H2lZenqBi4rJuf9qF887c8hNO57Q3Ko0qEjSEB1ssB1qXoss5FXSYsZlduE8L3vQ7aU3Ay
+ 6a8xNOlJIhPJCngXaD4r6KlPfISrRTO89V3TOdE8/Mpn+BfM2TbmF65BgUpJeO4buEMqkt
+ /T116JJTSOaPAo9G8kH/EHJhu7TZMk4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-522-HIU-zF8sOjmEMlTnhv1EWg-1; Mon, 08 Feb 2021 02:05:58 -0500
+X-MC-Unique: HIU-zF8sOjmEMlTnhv1EWg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 20C73804023;
+ Mon,  8 Feb 2021 07:05:57 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-117.ams2.redhat.com [10.36.112.117])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E2BDC10016F7;
+ Mon,  8 Feb 2021 07:05:45 +0000 (UTC)
+Subject: Re: [PATCH 2/4] hw/block/fdc: Remove the check_media_rate property
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+ David Hildenbrand <david@redhat.com>, qemu-block@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210203171832.483176-1-thuth@redhat.com>
+ <20210203171832.483176-3-thuth@redhat.com>
+ <125f27d8-8987-99f7-321e-86e7365d5a07@redhat.com>
+ <fb4a2611-49f0-1292-a3c2-478666dfa65c@redhat.com>
+ <96906059-731d-1e48-5b60-98ed4df9c037@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <3b57740e-ad39-3e56-6262-7994376f74a9@redhat.com>
+Date: Mon, 8 Feb 2021 08:05:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <96906059-731d-1e48-5b60-98ed4df9c037@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4ca0:0:103::81bb:ff89;
- envelope-from=dominik.gloess@tum.de; helo=postout1.mail.lrz.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.569,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 07 Feb 2021 09:38:06 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,276 +80,125 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Feb 2021 05:08:20 -0000
+X-List-Received-Date: Mon, 08 Feb 2021 07:07:07 -0000
 
-This patch adds 7 more model-specific registers to be usable while remote
-debugging in gdb. Accessing these registers can for example be useful for
-tracing Linux Systemcalls.
+On 05/02/2021 21.15, John Snow wrote:
+> On 2/5/21 1:37 AM, Thomas Huth wrote:
+>> On 05/02/2021 01.40, John Snow wrote:
+>>> On 2/3/21 12:18 PM, Thomas Huth wrote:
+>>>> This was only required for the pc-1.0 and earlier machine types.
+>>>> Now that these have been removed, we can also drop the corresponding
+>>>> code from the FDC device.
+>>>>
+>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>> ---
+>>>>   hw/block/fdc.c             | 17 ++---------------
+>>>>   tests/qemu-iotests/172.out | 35 -----------------------------------
+>>>>   2 files changed, 2 insertions(+), 50 deletions(-)
+>>>>
+>>>> diff --git a/hw/block/fdc.c b/hw/block/fdc.c
+>>>> index 292ea87805..198940e737 100644
+>>>> --- a/hw/block/fdc.c
+>>>> +++ b/hw/block/fdc.c
+>>>> @@ -874,7 +874,6 @@ struct FDCtrl {
+>>>>           FloppyDriveType type;
+>>>>       } qdev_for_drives[MAX_FD];
+>>>>       int reset_sensei;
+>>>> -    uint32_t check_media_rate;
+>>>
+>>> I am a bit of a dunce when it comes to the compatibility properties... 
+>>> does this mess with the migration format?
+>>>
+>>> I guess it doesn't, since it's not in the VMSTATE declaration.
+>>>
+>>> Hmmmm, alright.
+>>
+>> I think that should be fine, yes.
+>>
+>>>>       FloppyDriveType fallback; /* type=auto failure fallback */
+>>>>       /* Timers state */
+>>>>       uint8_t timer0;
+>>>> @@ -1021,18 +1020,10 @@ static const VMStateDescription 
+>>>> vmstate_fdrive_media_changed = {
+>>>>       }
+>>>>   };
+>>>> -static bool fdrive_media_rate_needed(void *opaque)
+>>>> -{
+>>>> -    FDrive *drive = opaque;
+>>>> -
+>>>> -    return drive->fdctrl->check_media_rate;
+>>>> -}
+>>>> -
+>>>>   static const VMStateDescription vmstate_fdrive_media_rate = {
+>>>>       .name = "fdrive/media_rate",
+>>>>       .version_id = 1,
+>>>>       .minimum_version_id = 1,
+>>>> -    .needed = fdrive_media_rate_needed,
+>>>>       .fields = (VMStateField[]) {
+>>>>           VMSTATE_UINT8(media_rate, FDrive),
+>>>>           VMSTATE_END_OF_LIST()
+>>>> @@ -1689,8 +1680,7 @@ static void fdctrl_start_transfer(FDCtrl *fdctrl, 
+>>>> int direction)
+>>>>       /* Check the data rate. If the programmed data rate does not match
+>>>>        * the currently inserted medium, the operation has to fail. */
+>>>> -    if (fdctrl->check_media_rate &&
+>>>> -        (fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
+>>>> +    if ((fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
+>>>>           FLOPPY_DPRINTF("data rate mismatch (fdc=%d, media=%d)\n",
+>>>>                          fdctrl->dsr & FD_DSR_DRATEMASK, 
+>>>> cur_drv->media_rate);
+>>>>           fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_MA, 0x00);
+>>>> @@ -2489,8 +2479,7 @@ static void fdctrl_result_timer(void *opaque)
+>>>>           cur_drv->sect = (cur_drv->sect % cur_drv->last_sect) + 1;
+>>>>       }
+>>>>       /* READ_ID can't automatically succeed! */
+>>>> -    if (fdctrl->check_media_rate &&
+>>>> -        (fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
+>>>> +    if ((fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
+>>>>           FLOPPY_DPRINTF("read id rate mismatch (fdc=%d, media=%d)\n",
+>>>>                          fdctrl->dsr & FD_DSR_DRATEMASK, 
+>>>> cur_drv->media_rate);
+>>>>           fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_MA, 0x00);
+>>>> @@ -2895,8 +2884,6 @@ static Property isa_fdc_properties[] = {
+>>>>       DEFINE_PROP_UINT32("dma", FDCtrlISABus, dma, 2),
+>>>>       DEFINE_PROP_DRIVE("driveA", FDCtrlISABus, 
+>>>> state.qdev_for_drives[0].blk),
+>>>>       DEFINE_PROP_DRIVE("driveB", FDCtrlISABus, 
+>>>> state.qdev_for_drives[1].blk),
+>>>> -    DEFINE_PROP_BIT("check_media_rate", FDCtrlISABus, 
+>>>> state.check_media_rate,
+>>>> -                    0, true),
+>>>
+>>> Could you theoretically set this via QOM commands in QMP, and claim that 
+>>> this is a break in behavior?
+>>>
+>>> Though, it's ENTIRELY undocumented, so ... it's probably fine, I think. 
+>>> Probably. (Please soothe my troubled mind.)
+>>
+>> A user actually could mess with this property even on the command line, 
+>> e.g. by using:
+>>
+>>   qemu-system-x86_64 -global isa-fdc.check_media_rate=false
+>>
+>> ... but, as you said, it's completely undocumented, the property is really 
+>> just there for the internal use of machine type compatibility. We've done 
+>> such clean-ups in the past already, see e.g. c6026998eef382d7ad76 or 
+>> 2a4dbaf1c0db2453ab78f, so I think this should be fine. But if you 
+>> disagree, I could replace this by a patch that adds this property to the 
+>> list of deprecated features instead, so we could at least remove it after 
+>> it has been deprecated for two releases?
+>>
+> 
+> I don't think it's necessary, personally -- just wanted to make sure I knew 
+> the exact stakes here.
+> 
+> Reviewed-by: John Snow <jsnow@redhat.com>
+> Acked-by: John Snow <jsnow@redhat.com>
 
-Signed-off-by: Dominik Glöß <dominik.gloess@tum.de>
----
+Thanks! ... since the first patch has already been merged through Michael's 
+tree, could you then please take this patch here through your floppy / block 
+branch, John? Or maybe it could also go via qemu-trivial?
 
-Adding registers to GDB like this works fine for now. Should there
-arise the need to add more MSRs, a rework of the code that reads
-the xml file should be considered. Hard coding the amount of registers and
-matching the offsets in gdbstub and the xml seems prone to error.
+  Thomas
 
-This is similar to the patch by Elias Djossou to allow outputting the same
-registers via HMP. Both patches are however independent from each other.
-
-gdb-xml/i386-32bit.xml |   7 +++
- gdb-xml/i386-64bit.xml |   7 +++
- target/i386/cpu.c      |   4 +-
- target/i386/gdbstub.c  | 122 ++++++++++++++++++++++++++++++++++++-----
- 4 files changed, 125 insertions(+), 15 deletions(-)
-
-diff --git a/gdb-xml/i386-32bit.xml b/gdb-xml/i386-32bit.xml
-index 872fcea9c2..0e650c9027 100644
---- a/gdb-xml/i386-32bit.xml
-+++ b/gdb-xml/i386-32bit.xml
-@@ -61,6 +61,13 @@
-   <reg name="es_base" bitsize="32" type="int32"/-->
-   <reg name="fs_base" bitsize="32" type="int32"/>
-   <reg name="gs_base" bitsize="32" type="int32"/>
-+  <reg name="sysenter_cs" bitsize="32" type="int32"/>
-+  <reg name="sysenter_esp" bitsize="32" type="int32"/>
-+  <reg name="sysenter_eip" bitsize="32" type="int32"/>
-+  <reg name="star" bitsize="32" type="int32"/>
-+  <reg name="lstar" bitsize="32" type="int32"/>
-+  <reg name="cstar" bitsize="32" type="int32"/>
-+  <reg name="fmask" bitsize="32" type="int32"/>
-   <reg name="k_gs_base" bitsize="32" type="int32"/>
-
-   <flags id="i386_cr0" size="4">
-diff --git a/gdb-xml/i386-64bit.xml b/gdb-xml/i386-64bit.xml
-index 6d88969211..d7ca2d8586 100644
---- a/gdb-xml/i386-64bit.xml
-+++ b/gdb-xml/i386-64bit.xml
-@@ -74,6 +74,13 @@
-   <reg name="es_base" bitsize="64" type="int64"/-->
-   <reg name="fs_base" bitsize="64" type="int64"/>
-   <reg name="gs_base" bitsize="64" type="int64"/>
-+  <reg name="sysenter_cs" bitsize="64" type="int64"/>
-+  <reg name="sysenter_esp" bitsize="64" type="int64"/>
-+  <reg name="sysenter_eip" bitsize="64" type="int64"/>
-+  <reg name="star" bitsize="64" type="int64"/>
-+  <reg name="lstar" bitsize="64" type="int64"/>
-+  <reg name="cstar" bitsize="64" type="int64"/>
-+  <reg name="fmask" bitsize="64" type="int64"/>
-   <reg name="k_gs_base" bitsize="64" type="int64"/>
-
-   <!-- Control registers -->
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index ae89024d36..2b7be1c248 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -7321,10 +7321,10 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->gdb_arch_name = x86_gdb_arch_name;
- #ifdef TARGET_X86_64
-     cc->gdb_core_xml_file = "i386-64bit.xml";
--    cc->gdb_num_core_regs = 66;
-+    cc->gdb_num_core_regs = 73;
- #else
-     cc->gdb_core_xml_file = "i386-32bit.xml";
--    cc->gdb_num_core_regs = 50;
-+    cc->gdb_num_core_regs = 57;
- #endif
-     cc->disas_set_info = x86_disas_set_info;
-
-diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
-index 41e265fc67..5743ba39b3 100644
---- a/target/i386/gdbstub.c
-+++ b/target/i386/gdbstub.c
-@@ -46,7 +46,8 @@ static const int gpr_map32[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
-  */
- #define IDX_NB_IP       1
- #define IDX_NB_FLAGS    1
--#define IDX_NB_SEG      (6 + 3)
-+#define IDX_NB_SEG      6
-+#define IDX_NB_MSR      10
- #define IDX_NB_CTL      6
- #define IDX_NB_FP       16
- /*
-@@ -54,13 +55,14 @@ static const int gpr_map32[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
-  */
- #define IDX_NB_MXCSR    1
- /*
-- *          total ----> 8+1+1+9+6+16+8+1=50 or 16+1+1+9+6+16+16+1=66
-+ *          total ----> 8+1+1+6+10+6+16+8+1=57 or 16+1+1+6+10+6+16+16+1=73
-  */
-
- #define IDX_IP_REG      CPU_NB_REGS
- #define IDX_FLAGS_REG   (IDX_IP_REG + IDX_NB_IP)
- #define IDX_SEG_REGS    (IDX_FLAGS_REG + IDX_NB_FLAGS)
--#define IDX_CTL_REGS    (IDX_SEG_REGS + IDX_NB_SEG)
-+#define IDX_MSR_REGS    (IDX_SEG_REGS + IDX_NB_SEG)
-+#define IDX_CTL_REGS    (IDX_MSR_REGS + IDX_NB_MSR)
- #define IDX_FP_REGS     (IDX_CTL_REGS + IDX_NB_CTL)
- #define IDX_XMM_REGS    (IDX_FP_REGS + IDX_NB_FP)
- #define IDX_MXCSR_REG   (IDX_XMM_REGS + CPU_NB_REGS)
-@@ -143,25 +145,56 @@ int x86_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-         case IDX_SEG_REGS + 5:
-             return gdb_get_reg32(mem_buf, env->segs[R_GS].selector);
-
--        case IDX_SEG_REGS + 6:
-+        case IDX_MSR_REGS:
-             if ((env->hflags & HF_CS64_MASK) || GDB_FORCE_64) {
-                 return gdb_get_reg64(mem_buf, env->segs[R_FS].base);
-             }
-             return gdb_get_reg32(mem_buf, env->segs[R_FS].base);
-
--        case IDX_SEG_REGS + 7:
-+        case IDX_MSR_REGS + 1:
-             if ((env->hflags & HF_CS64_MASK) || GDB_FORCE_64) {
-                 return gdb_get_reg64(mem_buf, env->segs[R_GS].base);
-             }
-             return gdb_get_reg32(mem_buf, env->segs[R_GS].base);
-
--        case IDX_SEG_REGS + 8:
--#ifdef TARGET_X86_64
-+        case IDX_MSR_REGS + 2:
-+            if ((env->hflags & HF_CS64_MASK) || GDB_FORCE_64) {
-+                return gdb_get_reg64(mem_buf, env->sysenter_cs);
-+            }
-+            return gdb_get_reg32(mem_buf, env->sysenter_cs);
-+
-+        case IDX_MSR_REGS + 3:
-+            if ((env->hflags & HF_CS64_MASK) || GDB_FORCE_64) {
-+                return gdb_get_reg64(mem_buf, env->sysenter_esp);
-+            }
-+            return gdb_get_reg32(mem_buf, env->sysenter_esp);
-+
-+        case IDX_MSR_REGS + 4:
-             if ((env->hflags & HF_CS64_MASK) || GDB_FORCE_64) {
--                return gdb_get_reg64(mem_buf, env->kernelgsbase);
-+                return gdb_get_reg64(mem_buf, env->sysenter_eip);
-             }
--            return gdb_get_reg32(mem_buf, env->kernelgsbase);
-+            return gdb_get_reg32(mem_buf, env->sysenter_eip);
-+
-+        case IDX_MSR_REGS + 5:
-+            if ((env->hflags & HF_CS64_MASK) || GDB_FORCE_64) {
-+                return gdb_get_reg64(mem_buf, env->star);
-+            }
-+            return gdb_get_reg32(mem_buf, env->star);
-+
-+#ifdef TARGET_X86_64
-+        case IDX_MSR_REGS + 6:
-+            return gdb_get_reg64(mem_buf, env->fmask);
-+        case IDX_MSR_REGS + 7:
-+            return gdb_get_reg64(mem_buf, env->lstar);
-+        case IDX_MSR_REGS + 8:
-+            return gdb_get_reg64(mem_buf, env->cstar);
-+        case IDX_MSR_REGS + 9:
-+            return gdb_get_reg64(mem_buf, env->kernelgsbase);
- #else
-+        case IDX_MSR_REGS + 6:
-+        case IDX_MSR_REGS + 7:
-+        case IDX_MSR_REGS + 8:
-+        case IDX_MSR_REGS + 9:
-             return gdb_get_reg32(mem_buf, 0);
- #endif
-
-@@ -330,7 +363,7 @@ int x86_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-         case IDX_SEG_REGS + 5:
-             return x86_cpu_gdb_load_seg(cpu, R_GS, mem_buf);
-
--        case IDX_SEG_REGS + 6:
-+        case IDX_MSR_REGS:
-             if (env->hflags & HF_CS64_MASK) {
-                 env->segs[R_FS].base = ldq_p(mem_buf);
-                 return 8;
-@@ -338,7 +371,7 @@ int x86_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-             env->segs[R_FS].base = ldl_p(mem_buf);
-             return 4;
-
--        case IDX_SEG_REGS + 7:
-+        case IDX_MSR_REGS + 1:
-             if (env->hflags & HF_CS64_MASK) {
-                 env->segs[R_GS].base = ldq_p(mem_buf);
-                 return 8;
-@@ -346,16 +379,79 @@ int x86_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-             env->segs[R_GS].base = ldl_p(mem_buf);
-             return 4;
-
--        case IDX_SEG_REGS + 8:
-+        case IDX_MSR_REGS + 2:
-+            if (env->hflags & HF_CS64_MASK) {
-+                env->sysenter_cs = ldq_p(mem_buf);
-+                return 8;
-+            }
-+            env->sysenter_cs = ldl_p(mem_buf);
-+            return 4;
-+
-+        case IDX_MSR_REGS + 3:
-+            if (env->hflags & HF_CS64_MASK) {
-+                env->sysenter_esp = ldq_p(mem_buf);
-+                return 8;
-+            }
-+            env->sysenter_esp = ldl_p(mem_buf);
-+            return 4;
-+
-+        case IDX_MSR_REGS + 4:
-+            if (env->hflags & HF_CS64_MASK) {
-+                env->sysenter_eip = ldq_p(mem_buf);
-+                return 8;
-+            }
-+            env->sysenter_eip = ldl_p(mem_buf);
-+            return 4;
-+
-+        case IDX_MSR_REGS + 5:
-+            if (env->hflags & HF_CS64_MASK) {
-+                env->star = ldq_p(mem_buf);
-+                return 8;
-+            }
-+            env->star = ldl_p(mem_buf);
-+            return 4;
-+
- #ifdef TARGET_X86_64
-+        case IDX_MSR_REGS + 6:
-+            if (env->hflags & HF_CS64_MASK) {
-+                env->lstar = ldq_p(mem_buf);
-+                return 8;
-+            }
-+            env->lstar = ldl_p(mem_buf);
-+            return 4;
-+
-+        case IDX_MSR_REGS + 7:
-+            if (env->hflags & HF_CS64_MASK) {
-+                env->cstar = ldq_p(mem_buf);
-+                return 8;
-+            }
-+            env->cstar = ldl_p(mem_buf);
-+            return 4;
-+
-+        case IDX_MSR_REGS + 8:
-+            if (env->hflags & HF_CS64_MASK) {
-+                env->fmask = ldq_p(mem_buf);
-+                return 8;
-+            }
-+            env->fmask = ldl_p(mem_buf);
-+            return 4;
-+
-+        case IDX_MSR_REGS + 9:
-             if (env->hflags & HF_CS64_MASK) {
-                 env->kernelgsbase = ldq_p(mem_buf);
-                 return 8;
-             }
-             env->kernelgsbase = ldl_p(mem_buf);
--#endif
-             return 4;
-+#else
-+        case IDX_MSR_REGS + 6:
-+        case IDX_MSR_REGS + 7:
-+        case IDX_MSR_REGS + 8:
-+        case IDX_MSR_REGS + 9:
-+            return 4;
-+#endif
-
-+        /* The first 8 registers have been addressed in an if block above */
-         case IDX_FP_REGS + 8:
-             cpu_set_fpuc(env, ldl_p(mem_buf));
-             return 4;
---
-2.30.0
 
