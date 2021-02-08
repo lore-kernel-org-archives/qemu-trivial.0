@@ -1,78 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l96xl-0004pt-M0
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Feb 2021 08:52:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50166)
+	id 1l97dY-0003hB-GD
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Feb 2021 09:35:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l96wn-0004jJ-Mm; Mon, 08 Feb 2021 08:51:28 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:34377)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l96wY-0008NL-QH; Mon, 08 Feb 2021 08:51:18 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id g10so17256543wrx.1;
- Mon, 08 Feb 2021 05:51:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wECdu+wn/qig5FGpmkX3tVwNWLo0wfkHUfYY3YKcApI=;
- b=R/Xvz3D4nganBT/0wxmbzJlofCE7eIvF7dohmgVKAjfQZE5ZKT7u/aiBK/OEGw0Cpl
- anIH9rgUDGbdgTY+0Xc1WOAuzGaiHxMHxSfvrKzRPNAZoGdpB4zvuR6SJVxvb87kWysI
- d75lE2mnXdt9+XLPaiXm8T3yolQnAUCy6YXkIAtomFlfh+GydcSBDIy9fIpO9Iolqjqc
- PM//HCFx6y+IBktSAMXjMaf+50dLvX4f0aVOUp4Rol+LQviOi3eawXahfhjbijU7GhFo
- +O4EC3jGfAYpDwQuCJe9pawy7UwWdZZxEySOz/7x9w0PNUDfPKGVF3T2pa6XpKMdqvhb
- w8tw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=wECdu+wn/qig5FGpmkX3tVwNWLo0wfkHUfYY3YKcApI=;
- b=ZlvKDSXjD2iset7L2o7L4rOWq8GoWIHrT6e8JovAzVCJhZBpqiabAQpvl4u0e5rQ9B
- 5QaUGbUsiSDqfhmWsqLq6k3lr08tKTgSJC8unQNh7+brONf5AErL4gER1pSL2RL0i9XV
- HfGVD9tTqtE/LCxuOOmm5UEeTOPgywbynEIfRVlOl+HfeSphKnIPYbSqB1+LfuzHfKQX
- F+wGoNC77VU+TQwJrhEpR53Sjkz3Na9tOUQ2k1KtpqEOukuuAopDVzBhkZURbioQc3L2
- lg7QX2yLwtaFiW6A1HyiLrd7+qkCZmMFB1FuD9oCeTg7QIiLWjmh/rkwE+jh5TjosChG
- HnrQ==
-X-Gm-Message-State: AOAM533WFREEB4Kbb2KPbzp5Y0c4LIFsAdOMkikr54DfYxnAiyRBPlbC
- 0q2DeM5wEXChE/KO2MCHF0WiTWt0e6I=
-X-Google-Smtp-Source: ABdhPJxrAJItC2Oi/Kl/IKR4KiNL2zgt41g19t0vwWLD45JFFIf8q1PnWk25w5c1JzU+PU4YTDQw1g==
-X-Received: by 2002:adf:f112:: with SMTP id r18mr8459629wro.241.1612792265229; 
- Mon, 08 Feb 2021 05:51:05 -0800 (PST)
-Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id o13sm17613705wmh.2.2021.02.08.05.51.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Feb 2021 05:51:04 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 3/4] hw/lm32/Kconfig: Rename CONFIG_LM32 -> CONFIG_LM32_DEVICES
-Date: Mon,  8 Feb 2021 14:50:47 +0100
-Message-Id: <20210208135048.2601693-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210208135048.2601693-1-f4bug@amsat.org>
-References: <20210208135048.2601693-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <jfreimann@redhat.com>)
+ id 1l92Ax-0003mZ-H4
+ for qemu-trivial@nongnu.org; Mon, 08 Feb 2021 03:45:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49226)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jfreimann@redhat.com>)
+ id 1l92Ae-0006Lk-2b
+ for qemu-trivial@nongnu.org; Mon, 08 Feb 2021 03:45:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612773919;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=F05ndcAqzFPagk3guX25ww7RNWDXFgxYyc2o1JyZEeU=;
+ b=Ljb7PzIYjR3JNai9Ek3elsZIl2DQUOdv0yuHMzPNdgitTyghxA9cxopGM1TUYRtN3H74xx
+ q1Ka7xl2hA4TCGslkp4wgVoUEWljrXly5q54mbEuvET0mOGvH/rfhADS/YqRbvV1tFwl8F
+ uQgk7R6wMOgD3c7BTDTAhbStmN2fdp0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-111-exHI9aOQN4CwBmmvqYULUw-1; Mon, 08 Feb 2021 03:45:17 -0500
+X-MC-Unique: exHI9aOQN4CwBmmvqYULUw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B4A43801975;
+ Mon,  8 Feb 2021 08:45:16 +0000 (UTC)
+Received: from localhost (ovpn-112-179.ams2.redhat.com [10.36.112.179])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 38E881007612;
+ Mon,  8 Feb 2021 08:45:16 +0000 (UTC)
+Date: Mon, 8 Feb 2021 09:45:14 +0100
+From: Jens Freimann <jfreimann@redhat.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Cc: qemu-devel@nongnu.org, quintela@redhat.com,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH 2/2] virtio-net: add missing object_unref()
+Message-ID: <20210208084514.GE4035@linux.fritz.box>
+References: <20210206123955.2196514-1-lvivier@redhat.com>
+ <20210206123955.2196514-3-lvivier@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210206123955.2196514-3-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jfreimann@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=jfreimann@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.569,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 08 Feb 2021 09:35:16 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,81 +73,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Feb 2021 13:51:45 -0000
-X-List-Received-Date: Mon, 08 Feb 2021 13:51:45 -0000
+X-List-Received-Date: Mon, 08 Feb 2021 08:45:59 -0000
 
-We want to be able to use the 'LM32' config for architecture
-specific features. As CONFIG_LM32 is only used to select
-peripherals, rename it CONFIG_LM32_DEVICES.
+On Sat, Feb 06, 2021 at 01:39:55PM +0100, Laurent Vivier wrote:
+>failover_add_primary() calls qdev_device_add() and doesn't unref
+>the device. Because of that, when the device is unplugged a reference
+>is remaining and prevents the cleanup of the object.
+>
+>This prevents to be able to plugin back the failover primary device,
+>with errors like:
+>
+>  (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev0,bus=root.3,failover_pair_id=net0
+>  (qemu) device_del hostdev0
+>
+>We can check with "info qtree" and "info pci" that the device has been removed, and then:
+>
+>  (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev1,bus=root.3,failover_pair_id=net0
+>  Error: vfio 0000:41:00.0: device is already attached
+>  (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev0,bus=root.3,failover_pair_id=net0
+>  qemu-kvm: Duplicate ID 'hostdev0' for device
+>
+>Fixes: 21e8709b29cd ("failover: Remove primary_dev member")
+>Cc: quintela@redhat.com
+>Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+>---
+> hw/net/virtio-net.c | 2 ++
+> 1 file changed, 2 insertions(+)
+>
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/char/meson.build  | 4 ++--
- hw/intc/meson.build  | 2 +-
- hw/lm32/Kconfig      | 4 ++--
- hw/timer/meson.build | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+Reviewed-by: Jens Freimann <jfreimann@redhat.com>
 
-diff --git a/hw/char/meson.build b/hw/char/meson.build
-index 370f5d5ad17..6ab90e68568 100644
---- a/hw/char/meson.build
-+++ b/hw/char/meson.build
-@@ -8,8 +8,8 @@
- softmmu_ss.add(when: 'CONFIG_IPACK', if_true: files('ipoctal232.c'))
- softmmu_ss.add(when: 'CONFIG_ISA_BUS', if_true: files('parallel-isa.c'))
- softmmu_ss.add(when: 'CONFIG_ISA_DEBUG', if_true: files('debugcon.c'))
--softmmu_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_juart.c'))
--softmmu_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_uart.c'))
-+softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_juart.c'))
-+softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_uart.c'))
- softmmu_ss.add(when: 'CONFIG_MILKYMIST', if_true: files('milkymist-uart.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_uart.c'))
- softmmu_ss.add(when: 'CONFIG_PARALLEL', if_true: files('parallel.c'))
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index 7f2a0fed2e3..2b975b235f2 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -14,7 +14,7 @@
- softmmu_ss.add(when: 'CONFIG_I8259', if_true: files('i8259_common.c', 'i8259.c'))
- softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_avic.c', 'imx_gpcv2.c'))
- softmmu_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic_common.c'))
--softmmu_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_pic.c'))
-+softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_pic.c'))
- softmmu_ss.add(when: 'CONFIG_OPENPIC', if_true: files('openpic.c'))
- softmmu_ss.add(when: 'CONFIG_PL190', if_true: files('pl190.c'))
- softmmu_ss.add(when: 'CONFIG_PUV3', if_true: files('puv3_intc.c'))
-diff --git a/hw/lm32/Kconfig b/hw/lm32/Kconfig
-index 20c36edc402..518c84ed508 100644
---- a/hw/lm32/Kconfig
-+++ b/hw/lm32/Kconfig
-@@ -1,4 +1,4 @@
--config LM32
-+config LM32_DEVICES
-     bool
-     select PTIMER
- 
-@@ -14,5 +14,5 @@ config MILKYMIST
- 
- config LM32_EVR
-     bool
--    select LM32
-+    select LM32_DEVICES
-     select PFLASH_CFI02
-diff --git a/hw/timer/meson.build b/hw/timer/meson.build
-index a0fa3845d80..809a8988b9f 100644
---- a/hw/timer/meson.build
-+++ b/hw/timer/meson.build
-@@ -19,7 +19,7 @@
- softmmu_ss.add(when: 'CONFIG_I8254', if_true: files('i8254_common.c', 'i8254.c'))
- softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_epit.c'))
- softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpt.c'))
--softmmu_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_timer.c'))
-+softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_timer.c'))
- softmmu_ss.add(when: 'CONFIG_MILKYMIST', if_true: files('milkymist-sysctl.c'))
- softmmu_ss.add(when: 'CONFIG_MIPS_CPS', if_true: files('mips_gictimer.c'))
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('mss-timer.c'))
--- 
-2.26.2
+Thank you Laurent!
+
+regards,
+Jens 
 
 
