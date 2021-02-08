@@ -1,72 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l90eV-00066W-2F
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Feb 2021 02:08:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48172)
+	id 1l94rX-0005k1-HM
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Feb 2021 06:37:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46944)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1l90dS-0005zN-14
- for qemu-trivial@nongnu.org; Mon, 08 Feb 2021 02:07:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:60290)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1l90cw-0005lR-T4
- for qemu-trivial@nongnu.org; Mon, 08 Feb 2021 02:06:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612767960;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+aGVgCiXudTFwfe5TjcdJKr4isbMJbfLUne003pWQrw=;
- b=H2lZenqBi4rJuf9qF887c8hNO57Q3Ko0qEjSEB1ssB1qXoss5FXSYsZlduE8L3vQ7aU3Ay
- 6a8xNOlJIhPJCngXaD4r6KlPfISrRTO89V3TOdE8/Mpn+BfM2TbmF65BgUpJeO4buEMqkt
- /T116JJTSOaPAo9G8kH/EHJhu7TZMk4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-522-HIU-zF8sOjmEMlTnhv1EWg-1; Mon, 08 Feb 2021 02:05:58 -0500
-X-MC-Unique: HIU-zF8sOjmEMlTnhv1EWg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 20C73804023;
- Mon,  8 Feb 2021 07:05:57 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-117.ams2.redhat.com [10.36.112.117])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E2BDC10016F7;
- Mon,  8 Feb 2021 07:05:45 +0000 (UTC)
-Subject: Re: [PATCH 2/4] hw/block/fdc: Remove the check_media_rate property
-To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
- David Hildenbrand <david@redhat.com>, qemu-block@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210203171832.483176-1-thuth@redhat.com>
- <20210203171832.483176-3-thuth@redhat.com>
- <125f27d8-8987-99f7-321e-86e7365d5a07@redhat.com>
- <fb4a2611-49f0-1292-a3c2-478666dfa65c@redhat.com>
- <96906059-731d-1e48-5b60-98ed4df9c037@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <3b57740e-ad39-3e56-6262-7994376f74a9@redhat.com>
-Date: Mon, 8 Feb 2021 08:05:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l94rM-0005iV-FT
+ for qemu-trivial@nongnu.org; Mon, 08 Feb 2021 06:37:42 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:36748)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l94rE-00052J-T8
+ for qemu-trivial@nongnu.org; Mon, 08 Feb 2021 06:37:39 -0500
+Received: by mail-wr1-x433.google.com with SMTP id u14so16693677wri.3
+ for <qemu-trivial@nongnu.org>; Mon, 08 Feb 2021 03:37:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=o+9T4r0TCi3EB/RVY07CvBs5uobmRjxRJ/NckeQRa2M=;
+ b=sIAKhnRWbxtec9lx89+141c/cTWYv/oN1HjfVJhSWOj7WQMxxHg0MDEfrDzN4sI3x3
+ cHYoosI1bwRT+dJcLfg2NPWoFrdOUwD8jphqANzaMLSAGn4O2IKTIfuqtdh3RODJRcbl
+ AC8AGRX+gXgadL19aaCOMG7cRWVlKvG7G0X0Y2Hh+HBLccBk3foeNnGn9uYmxFKO3aeg
+ 65uHgxBZn5qGeBytxXScrLhaNZxkrdpMGT/19Gaxv8oalHZZ+3Jy1FnrXGhZ6fZw43OX
+ eu7yuRXbcOdDn9Oc3+3ZJ+GCUc+o6BHv1jrsZ2j9YaiSLYC2x/uvaXigWnEDYgr+r18a
+ ZAIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=o+9T4r0TCi3EB/RVY07CvBs5uobmRjxRJ/NckeQRa2M=;
+ b=r5zDXJRG1GPYyz0n/hNDsFsVxzjo7lBD3KkF1SVhh38oe8mEKRwPeZD2/VW3E0WoRL
+ I+9U4ufl9+VnSXFN8LU54GscdbBkZnyFArccteUrUUX8w3O0zNwbPj+dNcPGdz+M8849
+ +H+Ayfd/vsu4pACZcajiTkHM5sPbnuwyzZLmuwThqAs0aUWmIozqzvPKfBXtDgzbhMh3
+ ME45QIHApqEHTU9T0V1sXs+K11FjCRs/KbNAvMfA55hnYWboWoYMEuX7z+0/2i+nM1EI
+ gfoKu//T9gmgL0sFWddlQheeHLZLRsZQP0+/QfSna+nvOlLJcuRg5yfp1pd/MG7GvUI6
+ Ksjw==
+X-Gm-Message-State: AOAM530QdK7RByP9I6WMZxoSx5lbX1v4LFGkuX9WUs0pyI495/eLoMSk
+ NIkBLvS6bKCnzTl8jU4SF2QwjU5jrcXnTA==
+X-Google-Smtp-Source: ABdhPJxof+O6/4ovM4NcEL/z0MxCEi9XtWfmM0ofE/O3Lz8RUhxihg+deFd5qlTp7L5TsASEfLr2bw==
+X-Received: by 2002:adf:8523:: with SMTP id 32mr6332257wrh.275.1612784251181; 
+ Mon, 08 Feb 2021 03:37:31 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id p9sm28649900wrj.11.2021.02.08.03.37.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Feb 2021 03:37:30 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] MAINTAINERS: Add gdbstub.h to the "GDB stub" section
+Date: Mon,  8 Feb 2021 11:37:29 +0000
+Message-Id: <20210208113729.25170-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <96906059-731d-1e48-5b60-98ed4df9c037@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.569,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,125 +76,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Feb 2021 07:07:07 -0000
+X-List-Received-Date: Mon, 08 Feb 2021 11:37:48 -0000
 
-On 05/02/2021 21.15, John Snow wrote:
-> On 2/5/21 1:37 AM, Thomas Huth wrote:
->> On 05/02/2021 01.40, John Snow wrote:
->>> On 2/3/21 12:18 PM, Thomas Huth wrote:
->>>> This was only required for the pc-1.0 and earlier machine types.
->>>> Now that these have been removed, we can also drop the corresponding
->>>> code from the FDC device.
->>>>
->>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>>> ---
->>>>   hw/block/fdc.c             | 17 ++---------------
->>>>   tests/qemu-iotests/172.out | 35 -----------------------------------
->>>>   2 files changed, 2 insertions(+), 50 deletions(-)
->>>>
->>>> diff --git a/hw/block/fdc.c b/hw/block/fdc.c
->>>> index 292ea87805..198940e737 100644
->>>> --- a/hw/block/fdc.c
->>>> +++ b/hw/block/fdc.c
->>>> @@ -874,7 +874,6 @@ struct FDCtrl {
->>>>           FloppyDriveType type;
->>>>       } qdev_for_drives[MAX_FD];
->>>>       int reset_sensei;
->>>> -    uint32_t check_media_rate;
->>>
->>> I am a bit of a dunce when it comes to the compatibility properties... 
->>> does this mess with the migration format?
->>>
->>> I guess it doesn't, since it's not in the VMSTATE declaration.
->>>
->>> Hmmmm, alright.
->>
->> I think that should be fine, yes.
->>
->>>>       FloppyDriveType fallback; /* type=auto failure fallback */
->>>>       /* Timers state */
->>>>       uint8_t timer0;
->>>> @@ -1021,18 +1020,10 @@ static const VMStateDescription 
->>>> vmstate_fdrive_media_changed = {
->>>>       }
->>>>   };
->>>> -static bool fdrive_media_rate_needed(void *opaque)
->>>> -{
->>>> -    FDrive *drive = opaque;
->>>> -
->>>> -    return drive->fdctrl->check_media_rate;
->>>> -}
->>>> -
->>>>   static const VMStateDescription vmstate_fdrive_media_rate = {
->>>>       .name = "fdrive/media_rate",
->>>>       .version_id = 1,
->>>>       .minimum_version_id = 1,
->>>> -    .needed = fdrive_media_rate_needed,
->>>>       .fields = (VMStateField[]) {
->>>>           VMSTATE_UINT8(media_rate, FDrive),
->>>>           VMSTATE_END_OF_LIST()
->>>> @@ -1689,8 +1680,7 @@ static void fdctrl_start_transfer(FDCtrl *fdctrl, 
->>>> int direction)
->>>>       /* Check the data rate. If the programmed data rate does not match
->>>>        * the currently inserted medium, the operation has to fail. */
->>>> -    if (fdctrl->check_media_rate &&
->>>> -        (fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
->>>> +    if ((fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
->>>>           FLOPPY_DPRINTF("data rate mismatch (fdc=%d, media=%d)\n",
->>>>                          fdctrl->dsr & FD_DSR_DRATEMASK, 
->>>> cur_drv->media_rate);
->>>>           fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_MA, 0x00);
->>>> @@ -2489,8 +2479,7 @@ static void fdctrl_result_timer(void *opaque)
->>>>           cur_drv->sect = (cur_drv->sect % cur_drv->last_sect) + 1;
->>>>       }
->>>>       /* READ_ID can't automatically succeed! */
->>>> -    if (fdctrl->check_media_rate &&
->>>> -        (fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
->>>> +    if ((fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
->>>>           FLOPPY_DPRINTF("read id rate mismatch (fdc=%d, media=%d)\n",
->>>>                          fdctrl->dsr & FD_DSR_DRATEMASK, 
->>>> cur_drv->media_rate);
->>>>           fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_MA, 0x00);
->>>> @@ -2895,8 +2884,6 @@ static Property isa_fdc_properties[] = {
->>>>       DEFINE_PROP_UINT32("dma", FDCtrlISABus, dma, 2),
->>>>       DEFINE_PROP_DRIVE("driveA", FDCtrlISABus, 
->>>> state.qdev_for_drives[0].blk),
->>>>       DEFINE_PROP_DRIVE("driveB", FDCtrlISABus, 
->>>> state.qdev_for_drives[1].blk),
->>>> -    DEFINE_PROP_BIT("check_media_rate", FDCtrlISABus, 
->>>> state.check_media_rate,
->>>> -                    0, true),
->>>
->>> Could you theoretically set this via QOM commands in QMP, and claim that 
->>> this is a break in behavior?
->>>
->>> Though, it's ENTIRELY undocumented, so ... it's probably fine, I think. 
->>> Probably. (Please soothe my troubled mind.)
->>
->> A user actually could mess with this property even on the command line, 
->> e.g. by using:
->>
->>   qemu-system-x86_64 -global isa-fdc.check_media_rate=false
->>
->> ... but, as you said, it's completely undocumented, the property is really 
->> just there for the internal use of machine type compatibility. We've done 
->> such clean-ups in the past already, see e.g. c6026998eef382d7ad76 or 
->> 2a4dbaf1c0db2453ab78f, so I think this should be fine. But if you 
->> disagree, I could replace this by a patch that adds this property to the 
->> list of deprecated features instead, so we could at least remove it after 
->> it has been deprecated for two releases?
->>
-> 
-> I don't think it's necessary, personally -- just wanted to make sure I knew 
-> the exact stakes here.
-> 
-> Reviewed-by: John Snow <jsnow@redhat.com>
-> Acked-by: John Snow <jsnow@redhat.com>
+The F: patterns in the "GDB stub" section forgot gdbstub.h; add it.
 
-Thanks! ... since the first patch has already been merged through Michael's 
-tree, could you then please take this patch here through your floppy / block 
-branch, John? Or maybe it could also go via qemu-trivial?
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Noticed this because my recent patchset which touched gdbstub.h
+didn't cause check-maintainers to add the gdb stub maintainers
+automatically.
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-  Thomas
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 8d8b0bf966d..f5e27502435 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2336,6 +2336,7 @@ M: Alex Bennée <alex.bennee@linaro.org>
+ R: Philippe Mathieu-Daudé <philmd@redhat.com>
+ S: Maintained
+ F: gdbstub*
++F: include/exec/gdbstub.h
+ F: gdb-xml/
+ F: tests/tcg/multiarch/gdbstub/
+ 
+-- 
+2.20.1
 
 
