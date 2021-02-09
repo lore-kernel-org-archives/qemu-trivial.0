@@ -1,61 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l9QKT-0002zq-EO
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2021 05:33:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56828)
+	id 1l9QMF-000511-U5
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2021 05:34:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1l9QKR-0002wb-9U; Tue, 09 Feb 2021 05:33:07 -0500
-Received: from mta-02.yadro.com ([89.207.88.252]:41414 helo=mta-01.yadro.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1l9QKP-0004ee-Nt; Tue, 09 Feb 2021 05:33:07 -0500
-Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id ACF6A411FB;
- Tue,  9 Feb 2021 10:33:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
- in-reply-to:content-disposition:content-type:content-type
- :mime-version:references:message-id:subject:subject:from:from
- :date:date:received:received:received; s=mta-01; t=1612866782;
- x=1614681183; bh=Z1rX4ofjHHi6YocKMEYxlryyHtoT1Jr0DSWwPD6M6uI=; b=
- k3PLkx4iSOFLm8N+kXdvO7rDx/qsKJp2P7eH7fcJeN2MIGECO7hYCLm10oZxYJFj
- HYormNVL4z8TThd3raJkHIa1U7wbZcM31kgcXlxSsxBytc46nLbRy39/IeUBDuZM
- g39GOBDxqV19L+5JTYNf2AD7hNcBwlu0FbjhZUMPuBk=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
- by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LhqGGvzIZVIp; Tue,  9 Feb 2021 13:33:02 +0300 (MSK)
-Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
- [172.17.100.103])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id 89EC44128C;
- Tue,  9 Feb 2021 13:33:02 +0300 (MSK)
-Received: from localhost (172.17.128.60) by T-EXCH-03.corp.yadro.com
- (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Tue, 9 Feb
- 2021 13:33:02 +0300
-Date: Tue, 9 Feb 2021 13:33:01 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: <yaroshchuk2000@gmail.com>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] target/i386/hvf: add rdmsr 35H MSR_CORE_THREAD_COUNT
-Message-ID: <YCJk3dGc2xnJdFXG@SPB-NB-133.local>
-References: <20210113205323.33310-1-yaroshchuk2000@gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l9QME-00050B-AP
+ for qemu-trivial@nongnu.org; Tue, 09 Feb 2021 05:34:58 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:43114)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l9QMB-0005R0-Ss
+ for qemu-trivial@nongnu.org; Tue, 09 Feb 2021 05:34:58 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id y9so30378305ejp.10
+ for <qemu-trivial@nongnu.org>; Tue, 09 Feb 2021 02:34:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=iWIoga2rAheDo3uR/3PscI62+8jQ+somKc63+qovdqU=;
+ b=ItI7jfxSpOHNNQfddxUBJutbXIFHnnoBRhAKufG06DwKZt1PRNp0aXpXeD4KRsnqjc
+ U4JzNCRrh1gf5bZ48tA/eh3XxXfJs89c6VxDHn4sMDlDMeL376SCPJb2Tbz3kHBt9yIX
+ sUjwYE8b1u7JcbZdLi81w4qRMIliqDaJ92TtbkYiIOO5J7GfcIo3RP5pudo+sBquz70S
+ SFjLEI/XAXVyFpmmS1OVZiKE5+hFLlef1OGVx2s5X5mmw/dt7VXv7SvqrpX+E3yluKjE
+ G8kcx9iAITz23ZPTkAAWPTXg95mNZZ7KmzAbEW9Uq2M3DyIW/RbNAKfQVsM2CxXP27QR
+ LuDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=iWIoga2rAheDo3uR/3PscI62+8jQ+somKc63+qovdqU=;
+ b=VWB5alDmv/ySBN9WInGa1MhsbjPI3zhlOrdezN/dGCnuHcZPcNdXMKLzpED1C7vH9N
+ ldRvRYDwluaQl4cF/nOduviM7KMk+s39OrNU7CKW+zBQYOoocWCFV9xHdf0kUjQIF9DV
+ mnSKZ6W9qm+1ov+zpKkWRaP+5nPfr8zNRnoF2JwAtXA+lAu8Vm04Oi8TGHsTVDTxBTu7
+ yVZIzwq/QEOA3FomSlP+/589ZT1uFGaSI7falgyg4eSosbAGdAlcV1QjW/q0HehgkoT0
+ ziSPbD0O+KW7wGxnuZ8HuvzpXN4mBSJ0QqFbgemvRCRX6VcD9dbc9WSQevnq9bV8i2Gb
+ hWCA==
+X-Gm-Message-State: AOAM531n3krumib9VezdfZ5eYfJvgoJ2a7iBtepZgFIcqYrKRf1TCwkM
+ A+i6WllDIobeaKuDDrusPbp2OMP6G60UenKDEWPd+g==
+X-Google-Smtp-Source: ABdhPJxG9iMxYhElEFeJbahNsNVayn1vKoUqJyB1TyL0RvdjALBpCwUyu0swVsbmMSPOHoCqEhvlviNT3sOZ0lWBXAI=
+X-Received: by 2002:a17:907:98c3:: with SMTP id
+ kd3mr21768519ejc.482.1612866894091; 
+ Tue, 09 Feb 2021 02:34:54 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20210113205323.33310-1-yaroshchuk2000@gmail.com>
-X-Originating-IP: [172.17.128.60]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
- T-EXCH-03.corp.yadro.com (172.17.100.103)
-Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
- helo=mta-01.yadro.com
+References: <20210208113729.25170-1-peter.maydell@linaro.org>
+ <87czxabs54.fsf@linaro.org>
+In-Reply-To: <87czxabs54.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 Feb 2021 10:34:43 +0000
+Message-ID: <CAFEAcA-=KymVWUsSMn3WBNkmeeiAqj8fUE03BDpcKFo5mDgSoA@mail.gmail.com>
+Subject: Re: [PATCH] MAINTAINERS: Add gdbstub.h to the "GDB stub" section
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -68,34 +75,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Feb 2021 10:33:07 -0000
+X-List-Received-Date: Tue, 09 Feb 2021 10:34:58 -0000
 
-On Wed, Jan 13, 2021 at 11:53:23PM +0300, yaroshchuk2000@gmail.com wrote:
-> From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
-> 
-> Some guests (ex. Darwin-XNU) can attemp to read this MSR to retrieve and
-> validate CPU topology comparing it to ACPI MADT content
-> 
-> MSR description from Intel Manual:
-> 35H: MSR_CORE_THREAD_COUNT: Configured State of Enabled Processor Core
->   Count and Logical Processor Count
-> 
-> Bits 15:0 THREAD_COUNT The number of logical processors that are
->   currently enabled in the physical package
-> 
-> Bits 31:16 Core_COUNT The number of processor cores that are currently
->   enabled in the physical package
-> 
-> Bits 63:32 Reserved
-> 
-> Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
-> ---
->  target/i386/cpu.h         | 2 ++
->  target/i386/hvf/x86_emu.c | 5 +++++
->  2 files changed, 7 insertions(+)
-> 
+On Mon, 8 Feb 2021 at 13:34, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+>
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+> > The F: patterns in the "GDB stub" section forgot gdbstub.h; add it.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > Noticed this because my recent patchset which touched gdbstub.h
+> > didn't cause check-maintainers to add the gdb stub maintainers
+> > automatically.
+>
+> Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>
+> Do you want me to pull these into my tree (with your other set)?
 
-Queued, thanks!
+Yeah, that's probably best I guess.
 
--Roman
+thanks
+-- PMM
 
