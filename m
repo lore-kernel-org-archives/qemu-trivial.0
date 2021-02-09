@@ -1,71 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l9WDV-0007nF-Ja
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2021 11:50:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41856)
+	id 1l9Zox-00038f-CQ
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2021 15:41:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1l9WDU-0007lq-2G
- for qemu-trivial@nongnu.org; Tue, 09 Feb 2021 11:50:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41476)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1l9WDR-0006zk-4e
- for qemu-trivial@nongnu.org; Tue, 09 Feb 2021 11:50:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612889416;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rN9oijVzT8IZ/d5kgQHkocFMMkn7eeYFry4bcBZvw3M=;
- b=JwjA0Z8puHfglNhD44T6vVRyy/AWIdBLF49vIcJevnyeM+fyOjpKCdFaUUikbslpiRn6ol
- v7rzY7o6V4pfEzX4D5TSNuyUfMMJzkMjHPM0OUP5h82XBDkbh531ovxtqMa0SJsbjn5fwr
- BkWLtbi/4xtz7uM/KfT+oVpSqjmlHEk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-103-O1OkNVb1PHyyJ5EI-LG7Mw-1; Tue, 09 Feb 2021 11:50:14 -0500
-X-MC-Unique: O1OkNVb1PHyyJ5EI-LG7Mw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48E9E56AA6;
- Tue,  9 Feb 2021 16:50:13 +0000 (UTC)
-Received: from [10.36.112.23] (ovpn-112-23.ams2.redhat.com [10.36.112.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5435D60C04;
- Tue,  9 Feb 2021 16:50:01 +0000 (UTC)
-Subject: Re: [PATCH 2/2] virtio-net: add missing object_unref()
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, jfreimann@redhat.com,
- Laurent Vivier <laurent@vivier.eu>, quintela@redhat.com,
- "Michael S. Tsirkin" <mst@redhat.com>
-References: <20210206123955.2196514-1-lvivier@redhat.com>
- <20210206123955.2196514-3-lvivier@redhat.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <49622ba7-fdf4-8bbb-282e-747a7a13c34b@redhat.com>
-Date: Tue, 9 Feb 2021 17:50:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1l9Zom-00033R-6C
+ for qemu-trivial@nongnu.org; Tue, 09 Feb 2021 15:41:04 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:38425)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1l9Zok-00062A-0X
+ for qemu-trivial@nongnu.org; Tue, 09 Feb 2021 15:41:03 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id y134so4792952wmd.3
+ for <qemu-trivial@nongnu.org>; Tue, 09 Feb 2021 12:41:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=2z5OZFNx4Vm8A5YpZwRalneRFe5vOvnz27TZxNAMnnE=;
+ b=v5YpfYbEz0VkR12cRtgcn0746Jpsn0MCKyhj2GxyDBotNFfUW0GYGXdO5hNflOH97l
+ 7shk7dxHIGhE04BxDFpOzZG0S2VUdToo80kHl04htsAFKASKPushQzbs/2gmVP0D6hfJ
+ LmmDkDEUuD9JI00uNpgelmpnwhAUHqVnrXhym22neeQigBWI1MLmD9uAP7STDCvV1rxV
+ d+mNh2EnAubDMqDKA9oUgycfVq14fdvyGrDjbHc0fG8/x90uQSG77y2NcO4RTPamzTVP
+ YsDe4lrv1GTyMh8xHAI3EF5j5NHBrBwz0bxQebXbxUFYKOZ9Mr1dzYhMJi28Ho64iXUG
+ hPmQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=2z5OZFNx4Vm8A5YpZwRalneRFe5vOvnz27TZxNAMnnE=;
+ b=nj+Gpukjdk5UjJRyMCKqxHKIoMu279winoP0wccAhy/sSi+oGpzvb+dT/l5Ffsy/k8
+ +At0EwodBBKeyp+WreGGoYEG0qq5hE/hdzxKVM5KjaGBAcgNHFnEPH2pDE9Fu6TRkb1n
+ 63/Febnn7VmLwu57vhNW0bv+Je/PGs7b50L0k5Z6ujIUq92PfWmp7KqozlCj5sEagx38
+ THBHHLUElVDVbdJjsKXDvdTShTgV/9WwCYStxPotlygUcWFkKUYnJwJJHpOtRQAcbHmF
+ JFohxeaLhlf0Lvn+nQgM25SSd4Zej2uAclwIvEJej/FmMtsUrrVyf/r7cF6enQbyT92X
+ 7bAg==
+X-Gm-Message-State: AOAM533FV4agFafyBvrzLEa7luDN+89OlKSkPZzZD2hICQEpWLVx4/uW
+ 1B7lGiFRfE23DLIfB0b1zTEaww==
+X-Google-Smtp-Source: ABdhPJzoVDj7ZzP90So/dFwLs9HlpACkKiDraaZdH3AnG028fM5E7EujbAATKJjEzylka7au+4eibg==
+X-Received: by 2002:a1c:7507:: with SMTP id o7mr5203129wmc.165.1612903260282; 
+ Tue, 09 Feb 2021 12:41:00 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id a16sm39086044wrr.89.2021.02.09.12.40.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Feb 2021 12:40:58 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 70ACA1FF7E;
+ Tue,  9 Feb 2021 20:40:57 +0000 (GMT)
+References: <20210208113729.25170-1-peter.maydell@linaro.org>
+ <87czxabs54.fsf@linaro.org>
+ <CAFEAcA-=KymVWUsSMn3WBNkmeeiAqj8fUE03BDpcKFo5mDgSoA@mail.gmail.com>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@redhat.com>
+Subject: Re: [PATCH] MAINTAINERS: Add gdbstub.h to the "GDB stub" section
+Date: Tue, 09 Feb 2021 20:40:42 +0000
+In-reply-to: <CAFEAcA-=KymVWUsSMn3WBNkmeeiAqj8fUE03BDpcKFo5mDgSoA@mail.gmail.com>
+Message-ID: <8735y59dpi.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20210206123955.2196514-3-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lvivier@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=lvivier@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.57,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.265, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,48 +83,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Feb 2021 16:50:20 -0000
+X-List-Received-Date: Tue, 09 Feb 2021 20:41:05 -0000
 
-CC: Michael
 
-On 06/02/2021 13:39, Laurent Vivier wrote:
-> failover_add_primary() calls qdev_device_add() and doesn't unref
-> the device. Because of that, when the device is unplugged a reference
-> is remaining and prevents the cleanup of the object.
-> 
-> This prevents to be able to plugin back the failover primary device,
-> with errors like:
-> 
->   (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev0,bus=root.3,failover_pair_id=net0
->   (qemu) device_del hostdev0
-> 
-> We can check with "info qtree" and "info pci" that the device has been removed, and then:
-> 
->   (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev1,bus=root.3,failover_pair_id=net0
->   Error: vfio 0000:41:00.0: device is already attached
->   (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev0,bus=root.3,failover_pair_id=net0
->   qemu-kvm: Duplicate ID 'hostdev0' for device
-> 
-> Fixes: 21e8709b29cd ("failover: Remove primary_dev member")
-> Cc: quintela@redhat.com
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> ---
->  hw/net/virtio-net.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-> index 5150f295e8c5..1c5af08dc556 100644
-> --- a/hw/net/virtio-net.c
-> +++ b/hw/net/virtio-net.c
-> @@ -862,6 +862,8 @@ static void failover_add_primary(VirtIONet *n, Error **errp)
->          dev = qdev_device_add(opts, &err);
->          if (err) {
->              qemu_opts_del(opts);
-> +        } else {
-> +            object_unref(OBJECT(dev));
->          }
->      } else {
->          error_setg(errp, "Primary device not found");
-> 
+Peter Maydell <peter.maydell@linaro.org> writes:
 
+> On Mon, 8 Feb 2021 at 13:34, Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
+ote:
+>>
+>>
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>> > The F: patterns in the "GDB stub" section forgot gdbstub.h; add it.
+>> >
+>> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> > ---
+>> > Noticed this because my recent patchset which touched gdbstub.h
+>> > didn't cause check-maintainers to add the gdb stub maintainers
+>> > automatically.
+>>
+>> Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>
+>> Do you want me to pull these into my tree (with your other set)?
+>
+> Yeah, that's probably best I guess.
+
+Queued to gdbstub/next, thanks.
+
+--=20
+Alex Benn=C3=A9e
 
