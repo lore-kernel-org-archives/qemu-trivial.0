@@ -1,79 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l9OwC-0007BE-Qk
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2021 04:04:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36216)
+	id 1l9QKA-0002cQ-6a
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2021 05:32:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56746)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l9Ow6-00078v-54; Tue, 09 Feb 2021 04:03:54 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:44690)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l9Ovr-0000ZT-63; Tue, 09 Feb 2021 04:03:53 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id w1so29990795ejf.11;
- Tue, 09 Feb 2021 01:03:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=JCIiBSYHagxC/fBqwlJWxobyinW0byYmnh/jHNtho7Y=;
- b=qnvgqNODn/MjC+ieAK08YJe5jFOGd/cX3+G7hXhCcnSOdT2jQir6lryb/+uZOpb12X
- 2IhNOIWhkTfu52/hWPUcBlO7qtnYDG7JqrABgFtEA0QN/5w8H+ro/EPGQYA4T2Girjai
- EP1sK/KFWvfIYQR3ptxx7BvH8Pc3HIIRQHIeo535hIPuwS7GIvUjk/emko7eYPt4tnMq
- BS0Tnc4aZl6bOAnfVWnC7fh7BMp2I9OnFyrASVuVVkfYZqoKdyiPE2rvwTIooFMxxomK
- jAGOe5cSt70QN0bnYtpY/HtwNdbnau5tIL/py+i4zOXaOJeWooFgg3cGOFJF2GYky5lz
- EL/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=JCIiBSYHagxC/fBqwlJWxobyinW0byYmnh/jHNtho7Y=;
- b=qwhRC2F7oAlGdDtFwI9Kltju2lYbwIO2f2wPGPfEGdYNIP2mLw+HT7NGSMAY2Fqg2K
- ViBnXFhsVkAYsPnJmP1r5ekycNIXN9R2lV+urtpExyVa8HlGG2tuEhh1xBxFZePleR22
- 4XcSfkw81fXU395uymoqpLzuqJgU0hmNfbqNqF3idAjlVBAEZII6aouCjJh34z2F3dMD
- rspVJ24et0YN5gXaZbv/UvO28fuDL6fyKy8np2hl45f43RiWjrOq9rzBvcWrj6OexWQw
- Ub2VtiS0aJ6mtbsWHv0pqSbFuelIrCKw/WjEbeBb3IMG9VzrgDq6vW8lGkVLTtIx28S1
- lxjQ==
-X-Gm-Message-State: AOAM533232uZkSU9u2PZm8wdYj8PtvZRTVLBsZjN+4+g+mUsgXiAV59/
- T9yt5xTo0zk8OfSFGggeKVY=
-X-Google-Smtp-Source: ABdhPJxk6smrvIEShybT5yfndmuVlr2rzkmB21B7//wLcL4vNOE/iomfXayVEhysp+07L5d8fFeysQ==
-X-Received: by 2002:a17:906:b001:: with SMTP id
- v1mr21210807ejy.217.1612861416865; 
- Tue, 09 Feb 2021 01:03:36 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id q2sm11095282edv.93.2021.02.09.01.03.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Feb 2021 01:03:36 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v1 1/1] MAINTAINERS: Add a SiFIve machine section
-To: Bin Meng <bmeng.cn@gmail.com>, Alistair Francis
- <alistair.francis@wdc.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Palmer Dabbelt <palmer@dabbelt.com>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair23@gmail.com>
-References: <6bc077e5ae4a9512c8adf81ae194718f2f17c402.1612836645.git.alistair.francis@wdc.com>
- <CAEUhbmW5TzWVQFOv3PM6ZwY34cSPRjvfzN3sWxP+_6SDcJ93ZA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <81d9407d-94b3-724c-d64f-0829553abfdc@amsat.org>
-Date: Tue, 9 Feb 2021 10:03:34 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1l9QK9-0002cD-1k; Tue, 09 Feb 2021 05:32:49 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:41358 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1l9QK7-0004XF-2d; Tue, 09 Feb 2021 05:32:48 -0500
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id 315F5412E7;
+ Tue,  9 Feb 2021 10:32:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1612866756;
+ x=1614681157; bh=mMH9oc68+P8caVXKBQPjpOf4ecYesSWz8JCBY4Ce4f0=; b=
+ cu1IoEiI8vQ6lOBfs89+qfznkIA4qKc6XCUuOAm3xXPzyZj/u0hl5SyA6hIbO4Cm
+ EnUkcpqzdG8JmgjSQbExFGPQnFOwDYA7tGihAcwPTYrK56uszySntHAlg7GrDgue
+ tjEaAgBzqg7RSsDx/pD7nDgc4lNw15iWKcvlW3rJBlA=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id N7kiAKMR0C_u; Tue,  9 Feb 2021 13:32:36 +0300 (MSK)
+Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
+ [172.17.100.103])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id 817E541281;
+ Tue,  9 Feb 2021 13:32:35 +0300 (MSK)
+Received: from localhost (172.17.128.60) by T-EXCH-03.corp.yadro.com
+ (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Tue, 9 Feb
+ 2021 13:32:35 +0300
+Date: Tue, 9 Feb 2021 13:32:34 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: <yaroshchuk2000@gmail.com>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, <dirty@apple.com>,
+ <pbonzini@redhat.com>
+Subject: Re: [PATCH v3] target/i386/hvf: add vmware-cpuid-freq cpu feature
+Message-ID: <YCJkwsLxtWuIwqU0@SPB-NB-133.local>
+References: <20210114194703.134333-1-yaroshchuk2000@gmail.com>
+ <20210122150518.3551-1-yaroshchuk2000@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAEUhbmW5TzWVQFOv3PM6ZwY34cSPRjvfzN3sWxP+_6SDcJ93ZA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62c.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.265,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20210122150518.3551-1-yaroshchuk2000@gmail.com>
+X-Originating-IP: [172.17.128.60]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-03.corp.yadro.com (172.17.100.103)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,13 +70,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Feb 2021 09:03:57 -0000
+X-List-Received-Date: Tue, 09 Feb 2021 10:32:49 -0000
 
-On 2/9/21 3:14 AM, Bin Meng wrote:
-> On Tue, Feb 9, 2021 at 10:11 AM Alistair Francis
-> <alistair.francis@wdc.com> wrote:
+On Fri, Jan 22, 2021 at 06:05:18PM +0300, yaroshchuk2000@gmail.com wrote:
+> From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
 > 
-> nits: SiFIve => SiFive in the title
+> For `-accel hvf` cpu_x86_cpuid() is wrapped with hvf_cpu_x86_cpuid() to
+> add paravirtualization cpuid leaf 0x40000010
+> https://lkml.org/lkml/2008/10/1/246
+> 
+> Leaf 0x40000010, Timing Information:
+> EAX: (Virtual) TSC frequency in kHz.
+> EBX: (Virtual) Bus (local apic timer) frequency in kHz.
+> ECX, EDX: RESERVED (Per above, reserved fields are set to zero).
+> 
+> On macOS TSC and APIC Bus frequencies can be readed by sysctl call with
+> names `machdep.tsc.frequency` and `hw.busfrequency`
+> 
+> This options is required for Darwin-XNU guest to be synchronized with
+> host
+> 
+> Leaf 0x40000000 not exposes HVF leaving hypervisor signature empty
+> 
+> Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
+> ---
+>  target/i386/hvf/hvf.c | 96 ++++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 95 insertions(+), 1 deletion(-)
+> 
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Queued, thanks!
+
+-Roman
 
