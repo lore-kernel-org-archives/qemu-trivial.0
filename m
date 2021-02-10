@@ -1,67 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1l9tYs-0007mq-I4
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2021 12:45:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58352)
+	id 1l9wSy-00021T-W1
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2021 15:52:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40236)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1l9tYk-0007eR-VA
- for qemu-trivial@nongnu.org; Wed, 10 Feb 2021 12:45:52 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31924)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1l9tYa-00013N-Bf
- for qemu-trivial@nongnu.org; Wed, 10 Feb 2021 12:45:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612979138;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BZxSqmlJG2Scv7NK7OxzylGd6LnBR15diGzo7UDhz9s=;
- b=Wup5szjUzTfekFneW5PzFDtJXo8Om3ZLwgziL5IHGO3hlRX4Q15P792dfbkYNmOXBzWCbO
- Sds5a/4z4LlMjkEPkzJgjFr1lrVuPDRIWZ7htM2hBMXEsbM8iVeMeMcDaQBniUd0GVrBYi
- TzbR4StB8TZhPtu7hfy+/EWIOwFPYcg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-16-5BphYwvMPtWGRPdH0tEewQ-1; Wed, 10 Feb 2021 12:45:36 -0500
-X-MC-Unique: 5BphYwvMPtWGRPdH0tEewQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 30517195D561;
- Wed, 10 Feb 2021 17:45:35 +0000 (UTC)
-Received: from thinkpad.redhat.com (ovpn-112-23.ams2.redhat.com [10.36.112.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1DEE719809;
- Wed, 10 Feb 2021 17:45:32 +0000 (UTC)
-From: Laurent Vivier <lvivier@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- quintela@redhat.com, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, jfreimann@redhat.com,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PATCH v2 3/3] failover: really display a warning when the primary
- device is not found
-Date: Wed, 10 Feb 2021 18:45:18 +0100
-Message-Id: <20210210174518.2493928-4-lvivier@redhat.com>
-In-Reply-To: <20210210174518.2493928-1-lvivier@redhat.com>
-References: <20210210174518.2493928-1-lvivier@redhat.com>
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1l9wSt-0001yQ-Ss; Wed, 10 Feb 2021 15:52:00 -0500
+Received: from new3-smtp.messagingengine.com ([66.111.4.229]:48693)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1l9wSj-0004fe-Hb; Wed, 10 Feb 2021 15:51:59 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 1DD8658003B;
+ Wed, 10 Feb 2021 15:51:46 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Wed, 10 Feb 2021 15:51:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm2; bh=4kBlyHOnLjSz/Uo6jty/BoCcDYg
+ RaeOlVy+lhTNNrOQ=; b=leFYhIbhJCjfqONQ2WJK20DYjlMPsHv/Jm3ewB1R/fC
+ BDvrLmLcmFPQzSr4uAczncPBs2QS9QlTC1TEVUMVf97mZLFPGIRzJWBx6enzSdxI
+ 2YsO7/QrtWvdyzc9XrrXTh3LtA5FE9oO9x/2C+uhxnhS/lrZ0Chv7v6qZz3P0Rtd
+ SbgPR3Ln53N+fq5h9ebRCowCwAMKOQX48VL34xXXTWF2ylh8bRuQx5NUJp6sLgvd
+ oPf3yI002x8XvAbWFpqaptenWziXSG6xGL92FRvqRmlP4Arpp1QeNe079/ujH5qx
+ 85Pdf6/7/iRQlrWbbE+2nu8DwFd3XaV7yMQgXX6Cb7g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=4kBlyH
+ OnLjSz/Uo6jty/BoCcDYgRaeOlVy+lhTNNrOQ=; b=NnZw9EQRX6SCuNUwst2edj
+ s88DPFu5HZdPbURQ3ssx6njpMLYx1ZS+t099/VoT45aQFa/zlp0z58eQFzbK62+I
+ WoH0zOwUa48+Ym1lSwCUNCEQ1nCm0VqQ8RpXNHEE1JRJGByZ/HfIb0/W6CbC9n+7
+ 98XwHieNd82aJmqPRDGSXwQN9s1vKVwP2GaI385ot/0d0YwjHpRw6RcPDGDU+wvu
+ npUEvr5+KbHS3yYcZ6sbx8lCy3qnoH1oI6Yrl3Wdsz7wWOyHM3bYM6vGhPkEPvSy
+ AgnsYeskVKGlN7CpIsIM7gcn8EBs4RonP+eWJH4uNmwKMe0vZceXVGG79iknUSDw
+ ==
+X-ME-Sender: <xms:YUckYMdTQAUT-32ykbF22-jG4I1rvhWK7zYlQ0B7F3zhjdBP2_XetQ>
+ <xme:YUckYOOREh3MaTb1d9aYvKq3IE3uqx31U7lzVSQxrbC6TIEF7bNbtmf3F0GEO9K5R
+ z2MvG635moNw6iR1o8>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrheejgddufeekucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehgtderredttdejnecuhfhrohhmpefmlhgruhhs
+ ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
+ gvrhhnpeejgeduffeuieetkeeileekvdeuleetveejudeileduffefjeegfffhuddvudff
+ keenucfkphepkedtrdduieejrdelkedrudeltdenucevlhhushhtvghrufhiiigvpedtne
+ curfgrrhgrmhepmhgrihhlfhhrohhmpehithhssehirhhrvghlvghvrghnthdrughk
+X-ME-Proxy: <xmx:YUckYNhnnl6Jv0XXgxk3EagbBxrV5z00C6CNo2PZABeOdF-LKVFGpw>
+ <xmx:YUckYB-zwertRm63wQWqNjhQH3JZB_PLPUKuc80trdWqvTbXHl2g-w>
+ <xmx:YUckYIviPjrojoupNb4nc7UE-MhIzM2ryS1xPPXovWe6kT_ioiw2HA>
+ <xmx:YkckYGD2loh9GT5htjhORviq1H8RxEo8B9z6SfT6iRdeGTkAroVSlw>
+Received: from apples.localdomain (80-167-98-190-cable.dk.customer.tdc.net
+ [80.167.98.190])
+ by mail.messagingengine.com (Postfix) with ESMTPA id B459D24005D;
+ Wed, 10 Feb 2021 15:51:43 -0500 (EST)
+Date: Wed, 10 Feb 2021 21:51:41 +0100
+From: Klaus Jensen <its@irrelevant.dk>
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: Keith Busch <kbusch@kernel.org>, Kevin Wolf <kwolf@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, qemu-block@nongnu.org,
+ qemu-devel@nongnu.org, Minwoo Im <minwoo.im.dev@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Bin Meng <bin.meng@windriver.com>
+Subject: Re: [PATCH v3] hw/block: nvme: Fix a build error in nvme_get_feature()
+Message-ID: <YCRHXeLFZ+Mf/JQz@apples.localdomain>
+References: <1612956141-63712-1-git-send-email-bmeng.cn@gmail.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lvivier@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=lvivier@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="PEuokG28+hz/0Kvk"
+Content-Disposition: inline
+In-Reply-To: <1612956141-63712-1-git-send-email-bmeng.cn@gmail.com>
+Received-SPF: pass client-ip=66.111.4.229; envelope-from=its@irrelevant.dk;
+ helo=new3-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,65 +90,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Feb 2021 17:45:52 -0000
+X-List-Received-Date: Wed, 10 Feb 2021 20:52:03 -0000
 
-In failover_add_primary(), we search the id of the failover device by
-scanning the list of the devices in the opts list to find a device with
-a failover_pair_id equals to the id of the virtio-net device.
 
-If the failover_pair_id is not found, QEMU ignores the primary
-device silently (which also means it will not be hidden and
-it will be enabled directly at boot).
+--PEuokG28+hz/0Kvk
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-After that, we search the id in the opts list to do a qdev_device_add()
-with it. The device will be always found as otherwise we had exited
-before, and thus the warning is never displayed.
+On Feb 10 19:22, Bin Meng wrote:
+> From: Bin Meng <bin.meng@windriver.com>
+>=20
+> Current QEMU HEAD nvme.c does not compile with the default GCC 5.4
+> on a Ubuntu 16.04 host:
+>=20
+>   hw/block/nvme.c:3242:9: error: =E2=80=98result=E2=80=99 may be used uni=
+nitialized in this function [-Werror=3Dmaybe-uninitialized]
+>          trace_pci_nvme_getfeat_vwcache(result ? "enabled" : "disabled");
+>          ^
+>   hw/block/nvme.c:3150:14: note: =E2=80=98result=E2=80=99 was declared he=
+re
+>      uint32_t result;
+>               ^
+>=20
+> Explicitly initialize the result to fix it.
+>=20
+> Cc: qemu-trivial@nongnu.org
+> Fixes: aa5e55e3b07e ("hw/block/nvme: open code for volatile write cache")
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+>=20
 
-Fix that by moving the error report to the first exit condition.
-Also add a g_assert() to be sure the compiler will not complain
-about a possibly NULL pointer.
+Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
 
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
----
- hw/net/virtio-net.c | 20 +++++++++-----------
- 1 file changed, 9 insertions(+), 11 deletions(-)
+> ---
+>=20
+> Changes in v3:
+> - mention compiler and host information in the commit message
+>=20
+> Changes in v2:
+> - update function name in the commit message
+>=20
+>  hw/block/nvme.c | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/hw/block/nvme.c b/hw/block/nvme.c
+> index 5ce21b7..c122ac0 100644
+> --- a/hw/block/nvme.c
+> +++ b/hw/block/nvme.c
+> @@ -3228,6 +3228,7 @@ static uint16_t nvme_get_feature(NvmeCtrl *n, NvmeR=
+equest *req)
+>          result =3D ns->features.err_rec;
+>          goto out;
+>      case NVME_VOLATILE_WRITE_CACHE:
+> +        result =3D 0;
+>          for (i =3D 1; i <=3D n->num_namespaces; i++) {
+>              ns =3D nvme_ns(n, i);
+>              if (!ns) {
+> --=20
+> 2.7.4
+>=20
 
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index 1c5af08dc556..439f823b190c 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -855,21 +855,19 @@ static void failover_add_primary(VirtIONet *n, Error **errp)
- 
-     id = failover_find_primary_device_id(n);
-     if (!id) {
-+        error_setg(errp, "Primary device not found");
-+        error_append_hint(errp, "Virtio-net failover will not work. Make "
-+                          "sure primary device has parameter"
-+                          " failover_pair_id=%s\n", n->netclient_name);
-         return;
-     }
-     opts = qemu_opts_find(qemu_find_opts("device"), id);
--    if (opts) {
--        dev = qdev_device_add(opts, &err);
--        if (err) {
--            qemu_opts_del(opts);
--        } else {
--            object_unref(OBJECT(dev));
--        }
-+    g_assert(opts); /* cannot be NULL because id was found using opts list */
-+    dev = qdev_device_add(opts, &err);
-+    if (err) {
-+        qemu_opts_del(opts);
-     } else {
--        error_setg(errp, "Primary device not found");
--        error_append_hint(errp, "Virtio-net failover will not work. Make "
--                          "sure primary device has parameter"
--                          " failover_pair_id=<virtio-net-id>\n");
-+        object_unref(OBJECT(dev));
-     }
-     error_propagate(errp, err);
- }
--- 
-2.29.2
+--PEuokG28+hz/0Kvk
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmAkR1wACgkQTeGvMW1P
+Dek8pgf/fYWOnYn8U2EZO+7WlgUQM7xee59vY6HMTdYo0HZiF4mpFuIys9xV5deT
+ucCvFt2njG/IwrpqLbu97pV7T1JE+iz871rmw7kJPad8Mt3Zxwj7X5mH5/umZVyS
+T0tDGaoG43BPXogYkwGo0BwFwmgcqCSvWGMvGm85mKGjcN+Jyub9XJgl9CJLaHVS
+Vdgey+WgnckI6O2ZTY8Qm4N9jRr45/qvn6jXoviWH9+oX+Y54A1XyWStQy1uGhr4
+14X/kAyyyOLHQ0JInRCeRDBW9a6Ym3x9ioYDd9Jq6xu64wSpGj1l4zogYd061HLu
+W8RVAE3U+UdxnnjoNHjIwpbwg7Al5Q==
+=VdO9
+-----END PGP SIGNATURE-----
+
+--PEuokG28+hz/0Kvk--
 
