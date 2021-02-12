@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lAYt0-0004hJ-Ez
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Feb 2021 08:53:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50982)
+	id 1lAYt4-0004lq-GP
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Feb 2021 08:53:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51038)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1lAYsw-0004eD-DH
- for qemu-trivial@nongnu.org; Fri, 12 Feb 2021 08:53:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:42791)
+ id 1lAYt1-0004ib-NI
+ for qemu-trivial@nongnu.org; Fri, 12 Feb 2021 08:53:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26784)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1lAYst-0006fi-Kn
- for qemu-trivial@nongnu.org; Fri, 12 Feb 2021 08:53:26 -0500
+ id 1lAYsz-0006j0-Oy
+ for qemu-trivial@nongnu.org; Fri, 12 Feb 2021 08:53:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613138002;
+ s=mimecast20190719; t=1613138009;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZyKUyofWE67481aBG/vXPtlg6uti0I7CC265LmJLkCk=;
- b=IbFufK0aqtD37gQAuvhBnMSLH8szpoQpk+1prwaO/OVo36ke0OdUpy0NKp6B0X4jfhkQuL
- F/xb49nueyA+Nl45gOA5xYGTPzDmVHfbT9W9CcwxlIAOu+RWXhY7PhRUi1qdHyG3ZlHf9b
- 2i4BXYNXlCFi6YS+t3yzEvtaBuO2huQ=
+ bh=BZxSqmlJG2Scv7NK7OxzylGd6LnBR15diGzo7UDhz9s=;
+ b=TzaJ/KHO1tLALLcsWXe6WnsXm5kWj2qE0+kNlgEkL9Nyt6Mk0yhzXdSMhovn6+vPmsySzo
+ KA6qJXUxv+oycPbV3NN3msbl9bIa+6J5WtnnhDzZfNqoQ1LHl3hA6/mx98UiFZ69q6wQcD
+ 35uA6H74m0Iir+pD5tfjFWxp8RNfpgw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-200-ZQ5KVyguNpKvtg8PFlQDxQ-1; Fri, 12 Feb 2021 08:53:21 -0500
-X-MC-Unique: ZQ5KVyguNpKvtg8PFlQDxQ-1
+ us-mta-464-hyE8OQNBPPCM30GoXhM9cQ-1; Fri, 12 Feb 2021 08:53:27 -0500
+X-MC-Unique: hyE8OQNBPPCM30GoXhM9cQ-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C9269107ACC7;
- Fri, 12 Feb 2021 13:53:19 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5B55801962;
+ Fri, 12 Feb 2021 13:53:25 +0000 (UTC)
 Received: from thinkpad.redhat.com (ovpn-112-23.ams2.redhat.com [10.36.112.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2B8062C154;
- Fri, 12 Feb 2021 13:53:10 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2B94F2C154;
+ Fri, 12 Feb 2021 13:53:19 +0000 (UTC)
 From: Laurent Vivier <lvivier@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
@@ -41,9 +41,10 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
  benh@kernel.crashing.org, zhengxiang9@huawei.com, quintela@redhat.com,
  alex.williamson@redhat.com, jfreimann@redhat.com
-Subject: [PATCH v3 2/4] virtio-net: add missing object_unref()
-Date: Fri, 12 Feb 2021 14:52:48 +0100
-Message-Id: <20210212135250.2738750-3-lvivier@redhat.com>
+Subject: [PATCH v3 3/4] failover: really display a warning when the primary
+ device is not found
+Date: Fri, 12 Feb 2021 14:52:49 +0100
+Message-Id: <20210212135250.2738750-4-lvivier@redhat.com>
 In-Reply-To: <20210212135250.2738750-1-lvivier@redhat.com>
 References: <20210212135250.2738750-1-lvivier@redhat.com>
 MIME-Version: 1.0
@@ -75,45 +76,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Feb 2021 13:53:27 -0000
+X-List-Received-Date: Fri, 12 Feb 2021 13:53:33 -0000
 
-failover_add_primary() calls qdev_device_add() and doesn't unref
-the device. Because of that, when the device is unplugged a reference
-is remaining and prevents the cleanup of the object.
+In failover_add_primary(), we search the id of the failover device by
+scanning the list of the devices in the opts list to find a device with
+a failover_pair_id equals to the id of the virtio-net device.
 
-This prevents to be able to plugin back the failover primary device,
-with errors like:
+If the failover_pair_id is not found, QEMU ignores the primary
+device silently (which also means it will not be hidden and
+it will be enabled directly at boot).
 
-  (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev0,bus=root.3,failover_pair_id=net0
-  (qemu) device_del hostdev0
+After that, we search the id in the opts list to do a qdev_device_add()
+with it. The device will be always found as otherwise we had exited
+before, and thus the warning is never displayed.
 
-We can check with "info qtree" and "info pci" that the device has been removed, and then:
+Fix that by moving the error report to the first exit condition.
+Also add a g_assert() to be sure the compiler will not complain
+about a possibly NULL pointer.
 
-  (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev1,bus=root.3,failover_pair_id=net0
-  Error: vfio 0000:41:00.0: device is already attached
-  (qemu) device_add vfio-pci,host=0000:41:00.0,id=hostdev0,bus=root.3,failover_pair_id=net0
-  qemu-kvm: Duplicate ID 'hostdev0' for device
-
-Fixes: 21e8709b29cd ("failover: Remove primary_dev member")
-Cc: quintela@redhat.com
 Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 ---
- hw/net/virtio-net.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/net/virtio-net.c | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
 
 diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index 5150f295e8c5..1c5af08dc556 100644
+index 1c5af08dc556..439f823b190c 100644
 --- a/hw/net/virtio-net.c
 +++ b/hw/net/virtio-net.c
-@@ -862,6 +862,8 @@ static void failover_add_primary(VirtIONet *n, Error **errp)
-         dev = qdev_device_add(opts, &err);
-         if (err) {
-             qemu_opts_del(opts);
-+        } else {
-+            object_unref(OBJECT(dev));
-         }
+@@ -855,21 +855,19 @@ static void failover_add_primary(VirtIONet *n, Error **errp)
+ 
+     id = failover_find_primary_device_id(n);
+     if (!id) {
++        error_setg(errp, "Primary device not found");
++        error_append_hint(errp, "Virtio-net failover will not work. Make "
++                          "sure primary device has parameter"
++                          " failover_pair_id=%s\n", n->netclient_name);
+         return;
+     }
+     opts = qemu_opts_find(qemu_find_opts("device"), id);
+-    if (opts) {
+-        dev = qdev_device_add(opts, &err);
+-        if (err) {
+-            qemu_opts_del(opts);
+-        } else {
+-            object_unref(OBJECT(dev));
+-        }
++    g_assert(opts); /* cannot be NULL because id was found using opts list */
++    dev = qdev_device_add(opts, &err);
++    if (err) {
++        qemu_opts_del(opts);
      } else {
-         error_setg(errp, "Primary device not found");
+-        error_setg(errp, "Primary device not found");
+-        error_append_hint(errp, "Virtio-net failover will not work. Make "
+-                          "sure primary device has parameter"
+-                          " failover_pair_id=<virtio-net-id>\n");
++        object_unref(OBJECT(dev));
+     }
+     error_propagate(errp, err);
+ }
 -- 
 2.29.2
 
