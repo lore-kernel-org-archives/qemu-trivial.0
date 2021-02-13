@@ -1,17 +1,17 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lB0GN-0003Gk-U2
-	for mharc-qemu-trivial@gnu.org; Sat, 13 Feb 2021 14:07:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51108)
+	id 1lB0VI-0007hT-38
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Feb 2021 14:22:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lB0GM-0003GV-EG; Sat, 13 Feb 2021 14:07:26 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:32987)
+ id 1lB0VD-0007fw-Ia; Sat, 13 Feb 2021 14:22:47 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:36631)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lB0GK-0002oD-Po; Sat, 13 Feb 2021 14:07:26 -0500
+ id 1lB0VB-0003au-Mc; Sat, 13 Feb 2021 14:22:47 -0500
 Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MQuPJ-1lZ0tq04DX-00O0Pc; Sat, 13 Feb 2021 20:07:21 +0100
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MJEEf-1lRJ062D0d-00Kh1Y; Sat, 13 Feb 2021 20:22:41 +0100
 Subject: Re: [PATCH 1/1] linux-user/syscall: Fix do_ioctl_ifconf() for 64 bit
  targets.
 To: Stefan <stefan-guix@vodafonemail.de>, qemu-devel@nongnu.org,
@@ -19,8 +19,8 @@ To: Stefan <stefan-guix@vodafonemail.de>, qemu-devel@nongnu.org,
 Cc: qemu-stable@nongnu.org
 References: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <41550866-9e87-3738-2ad5-7ee22b488cf5@vivier.eu>
-Date: Sat, 13 Feb 2021 20:07:19 +0100
+Message-ID: <49958794-c093-820b-1ecc-13248727e9e0@vivier.eu>
+Date: Sat, 13 Feb 2021 20:22:40 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.0
 MIME-Version: 1.0
@@ -28,19 +28,18 @@ In-Reply-To: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:U3Ex93LVd6ywYVGbNDYAlzppaIjgfdG4e1QRHEpG369E9dgJoTq
- Xi1ME1voAvA7U4SlqCGddhaYYs6/SeJXCqmTnJpG/vTzCLJn6tm0Sr3xvf2mcUkA1z5FcCb
- 1TDaOXskX0nBDnRdpe6r72ocnBGAAVksGmUSbWm93DB7FYzF0C5anplFugUvnBO77YVj8Ea
- AjGY8uL2QBU4nLjip/0ag==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:vtT8nLUUEyU=:dJ1/Uy+juQdsucBJ6f5Ce4
- ll4JT9uYbuI+ChOaWwz+IeGUSLC8uBei2eNudhKf0n3ZOMwFTfkPtTiEJsilZMVctN6KvtOPL
- RckshaFAI8D7zgwbBmIJstiHXobKlpM4l4Kzpw3gJ0izO+pB2sb/fSc4QM18fUSMpp7rNNpMQ
- 0Pcl0OR9FxWP8lvuzl4dkloTNiryoaneRmVCrgYk/JV6FpE8uBuHkOZV56mpTaxG1MCuNjV5v
- VpglZ0Rb+j5BrDsCTqoJ5z63b1vrfXeTdcY2SNeaoJTw9cehujtXR3nktwJ1JmcVSQOmiLA9U
- RULgVONRKnVoB2xCS3hsKoDIDsUfGQfkpX3maTo+YvIGGmizBBbPJMS/P9NtfGxbgQDHzIUhM
- qChbDwfSvCK51aUP7274OK+we4Gwt0w1ZYcVhJ+VWMJ6diFeYyo2VMGh7yDcnVWh9vwmVOCld
- +fHpYaplEQ==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:cd3kVb/xqaXOD8RNEmhwqlV8Knrf21ApIZ94AKNSP7T1BWw+69V
+ m0Hs5I9iVxoKTcx4u4mwxvMNuxEMwdrnBGzvDtzlWtmJH8wWlwRy28Dp0wpVUXPw/bz4W8w
+ CCgvumKYFySjHpmwQL8E2CIdnf/I1KG7k9A/7nv57NHIbR7eUGQuRD59VfO8bxOPwwq3Kbr
+ i0CuPBkZUJ03wSLlMdxsA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Xf3TCoUcKAM=:2zYfOALIqreHNX+Rg3Apm8
+ twXlWu0U+hZsKPH4v8pBlyihBQ8/bC0RT3Y2AStyW1yW3pQCXoeagD+Rg8PSQfg2JNxfUsKm3
+ LbaSRGS3pk769Oa0CBQePTPnkCBVr2f5nWrSXZWrRdLOBgohvZ3Zs2HyEPOVbDT9pORgzYZ6b
+ z3BaIVdGPuSUCIA48CGa7IO7KzF5S2E9G8c49i2WvX1mStMTuU1YMgf1bEUcTEHqOZo2eIGmz
+ KZBW3J4GOthCHYKpLntwOQDUUNur6Vl1T4M+e1f/RFjWMpQnccX6Xp+SUkChMqlPBFTTvDqOn
+ mNIjQMxHASrWdU4AmIILXAUK7jFAhOKpf4I8US6rxWMHsPYpjXOjf73pOn+X0x3rxlceZOHq0
+ AGNhxyVHve6iT8KGS90bZMkSWJVet/KW5/HWHYGkR+u06SELFeLasf6TQ/C32
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,7 +59,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 Feb 2021 19:07:26 -0000
+X-List-Received-Date: Sat, 13 Feb 2021 19:22:48 -0000
 
 Le 09/01/2021 à 19:59, Stefan a écrit :
 > The sizeof(struct ifreq) is 40 for 64 bit and 32 for 32 bit architectures.
@@ -103,5 +102,8 @@ Le 09/01/2021 à 19:59, Stefan a écrit :
 >           target_ifc_len = host_ifconf->ifc_len;
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my linux-user-for-6.0 branch.
+
+Thanks,
+Laurent
 
