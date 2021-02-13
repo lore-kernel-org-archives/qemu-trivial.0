@@ -1,70 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lAZcl-0002c5-S1
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Feb 2021 09:40:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34146)
+	id 1lB0GN-0003Gk-U2
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Feb 2021 14:07:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jfreimann@redhat.com>)
- id 1lAZch-0002Vw-Fk
- for qemu-trivial@nongnu.org; Fri, 12 Feb 2021 09:40:43 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:28575)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jfreimann@redhat.com>)
- id 1lAZcd-0001yH-9W
- for qemu-trivial@nongnu.org; Fri, 12 Feb 2021 09:40:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613140836;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SuVsU7pojW7S48jHOx0pST86uvysNSACHN9SQg5bwhI=;
- b=ZAhLUmEiKn87sFQFyjIOe2ef5AyoavS0ieGy24R+ygPJZH0ro+uJ2VeRojmf22ZWxZ5fNd
- PYmqMkky/AGolfMh4Q8hIhrJUHVVCb0kQaKItF6DdVeSfFcUrAaqIQq4CwQt++rQto/yF4
- GFL8OI6i8XPZKusiCnTk3uehLcNNgYI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-506-igS48ofOPKeayybYuuY3xw-1; Fri, 12 Feb 2021 09:40:35 -0500
-X-MC-Unique: igS48ofOPKeayybYuuY3xw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19F98801962;
- Fri, 12 Feb 2021 14:40:34 +0000 (UTC)
-Received: from localhost (ovpn-113-71.ams2.redhat.com [10.36.113.71])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 944415D735;
- Fri, 12 Feb 2021 14:40:26 +0000 (UTC)
-Date: Fri, 12 Feb 2021 15:40:24 +0100
-From: Jens Freimann <jfreimann@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- qemu-trivial@nongnu.org, benh@kernel.crashing.org,
- zhengxiang9@huawei.com, quintela@redhat.com, alex.williamson@redhat.com
-Subject: Re: [PATCH v3 3/4] failover: really display a warning when the
- primary device is not found
-Message-ID: <YCaTWHb45o74cKUS@linux.fritz.box>
-References: <20210212135250.2738750-1-lvivier@redhat.com>
- <20210212135250.2738750-4-lvivier@redhat.com>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lB0GM-0003GV-EG; Sat, 13 Feb 2021 14:07:26 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:32987)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lB0GK-0002oD-Po; Sat, 13 Feb 2021 14:07:26 -0500
+Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MQuPJ-1lZ0tq04DX-00O0Pc; Sat, 13 Feb 2021 20:07:21 +0100
+Subject: Re: [PATCH 1/1] linux-user/syscall: Fix do_ioctl_ifconf() for 64 bit
+ targets.
+To: Stefan <stefan-guix@vodafonemail.de>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: qemu-stable@nongnu.org
+References: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <41550866-9e87-3738-2ad5-7ee22b488cf5@vivier.eu>
+Date: Sat, 13 Feb 2021 20:07:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210212135250.2738750-4-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jfreimann@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=jfreimann@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.569,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <60AA0765-53DD-43D1-A3D2-75F1778526F6@vodafonemail.de>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:U3Ex93LVd6ywYVGbNDYAlzppaIjgfdG4e1QRHEpG369E9dgJoTq
+ Xi1ME1voAvA7U4SlqCGddhaYYs6/SeJXCqmTnJpG/vTzCLJn6tm0Sr3xvf2mcUkA1z5FcCb
+ 1TDaOXskX0nBDnRdpe6r72ocnBGAAVksGmUSbWm93DB7FYzF0C5anplFugUvnBO77YVj8Ea
+ AjGY8uL2QBU4nLjip/0ag==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:vtT8nLUUEyU=:dJ1/Uy+juQdsucBJ6f5Ce4
+ ll4JT9uYbuI+ChOaWwz+IeGUSLC8uBei2eNudhKf0n3ZOMwFTfkPtTiEJsilZMVctN6KvtOPL
+ RckshaFAI8D7zgwbBmIJstiHXobKlpM4l4Kzpw3gJ0izO+pB2sb/fSc4QM18fUSMpp7rNNpMQ
+ 0Pcl0OR9FxWP8lvuzl4dkloTNiryoaneRmVCrgYk/JV6FpE8uBuHkOZV56mpTaxG1MCuNjV5v
+ VpglZ0Rb+j5BrDsCTqoJ5z63b1vrfXeTdcY2SNeaoJTw9cehujtXR3nktwJ1JmcVSQOmiLA9U
+ RULgVONRKnVoB2xCS3hsKoDIDsUfGQfkpX3maTo+YvIGGmizBBbPJMS/P9NtfGxbgQDHzIUhM
+ qChbDwfSvCK51aUP7274OK+we4Gwt0w1ZYcVhJ+VWMJ6diFeYyo2VMGh7yDcnVWh9vwmVOCld
+ +fHpYaplEQ==
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,36 +60,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Feb 2021 14:40:43 -0000
+X-List-Received-Date: Sat, 13 Feb 2021 19:07:26 -0000
 
-On Fri, Feb 12, 2021 at 02:52:49PM +0100, Laurent Vivier wrote:
->In failover_add_primary(), we search the id of the failover device by
->scanning the list of the devices in the opts list to find a device with
->a failover_pair_id equals to the id of the virtio-net device.
->
->If the failover_pair_id is not found, QEMU ignores the primary
->device silently (which also means it will not be hidden and
->it will be enabled directly at boot).
->
->After that, we search the id in the opts list to do a qdev_device_add()
->with it. The device will be always found as otherwise we had exited
->before, and thus the warning is never displayed.
->
->Fix that by moving the error report to the first exit condition.
->Also add a g_assert() to be sure the compiler will not complain
->about a possibly NULL pointer.
->
->Signed-off-by: Laurent Vivier <lvivier@redhat.com>
->---
-> hw/net/virtio-net.c | 20 +++++++++-----------
-> 1 file changed, 9 insertions(+), 11 deletions(-)
->
+Le 09/01/2021 à 19:59, Stefan a écrit :
+> The sizeof(struct ifreq) is 40 for 64 bit and 32 for 32 bit architectures.
+> This structure contains a union of other structures, of which struct ifmap
+> is the biggest for 64 bit architectures. Calling ioclt(…, SIOCGIFCONF, …)
+> fills a struct sockaddr of that union, and do_ioctl_ifconf() only considered
+> that struct sockaddr for the size of the union, which has the same size as
+> struct ifmap on 32 bit architectures. So do_ioctl_ifconf() assumed a wrong
+> size of 32 for struct ifreq instead of the correct size of 40 on 64 bit
+> architectures.
+> 
+> The fix makes do_ioctl_ifconf() handle struct ifmap as the biggest part of
+> the union, treating struct ifreq with the correct size.
+> 
+> Signed-off-by: Stefan <stefan-guix@vodafonemail.de>
+> ---
+>   linux-user/syscall.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index d182890ff0..15a6abadc1 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -4902,6 +4902,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
+>       struct ifconf *host_ifconf;
+>       uint32_t outbufsz;
+>       const argtype ifreq_arg_type[] = { MK_STRUCT(STRUCT_sockaddr_ifreq) };
+> +    const argtype ifreq_max_type[] = { MK_STRUCT(STRUCT_ifmap_ifreq) };
+>       int target_ifreq_size;
+>       int nb_ifreq;
+>       int free_buf = 0;
+> @@ -4925,7 +4926,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
+>   
+>       host_ifconf = (struct ifconf *)(unsigned long)buf_temp;
+>       target_ifc_buf = (abi_long)(unsigned long)host_ifconf->ifc_buf;
+> -    target_ifreq_size = thunk_type_size(ifreq_arg_type, 0);
+> +    target_ifreq_size = thunk_type_size(ifreq_max_type, 0);
+>   
+>       if (target_ifc_buf != 0) {
+>           target_ifc_len = host_ifconf->ifc_len;
+> 
 
-Thank you Laurent!
-
-Reviewed-by: Jens Freimann <jfreimann@redhat.com>
-
-regards,
-Jens
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
