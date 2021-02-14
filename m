@@ -1,53 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lB4bU-0005Sw-E9
-	for mharc-qemu-trivial@gnu.org; Sat, 13 Feb 2021 18:45:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37242)
+	id 1lBDLt-00011H-Gc
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Feb 2021 04:06:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43080)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lB4bH-0005Pn-Df; Sat, 13 Feb 2021 18:45:21 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:43813)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lB4bC-0004cj-7N; Sat, 13 Feb 2021 18:45:19 -0500
-Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MW9zm-1lMY1I2LDG-00XayV; Sun, 14 Feb 2021 00:45:06 +0100
-Subject: Re: [PATCH-for-5.2?] MAINTAINERS: Fix default-configs/ entries
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20201117114656.1222555-1-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <ac55cbf3-946d-9e51-7d33-b60a4119898d@vivier.eu>
-Date: Sun, 14 Feb 2021 00:45:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1lBDLr-00010e-LD; Sun, 14 Feb 2021 04:05:59 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:41117)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1lBDLn-0002qT-DF; Sun, 14 Feb 2021 04:05:59 -0500
+Received: by mail-ed1-x533.google.com with SMTP id v9so335512edw.8;
+ Sun, 14 Feb 2021 01:05:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kvRofmg7/YjJn9lYF62NfW0huM3PJn/GGhXb2sVcmi8=;
+ b=F+WOzJZdQkixMDuA19OsgTgf7qu+9lmeMcMkx3vczJ1833qCc4BccKCPBbLlgOWXa4
+ bQVNbDMebAoftkwOBKkNt6Oj+/7qMRhAI99NMpHw1a5E4pbEyfsTRsQI4m/Gip+qV4pi
+ JVnDeIL00UKuXKXdntTqfSUlFZXuZSuSAQ3Fa+ZevaewI9idJp/EAhZ7mtfAI6NQKxZt
+ xXSAIxnAl66GzWHv0C5wiK1PvesJ+FGm+bAxUWm46jC6w8ikLXkpKbnJVrVGSG1u3XkG
+ 2QVYRtjogDmNmBQmQRnDqqhwnvY3Zbf5mtn88uKbX3413OA83hDQ1eYZeOIE17r5wQkS
+ Ff+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kvRofmg7/YjJn9lYF62NfW0huM3PJn/GGhXb2sVcmi8=;
+ b=qYQcIkyY+lFasiLeGvVdFrrqtjL8Ub2swMbUP04N+7c2P3qG1ButKIx82lrnZcjYb3
+ h2VPJFIps6GeK6NzVXIeHdRcfERupMmPCri4zg+pWM7ZvW+9xauGOIfaKgUOCLSuKSJH
+ PPVyHXUNPnMKCiLTboZXvLTgzcKx9+E7tcZ2mNTRadIcq6YJxMTjXpR0jFq/NVowqCkY
+ tPDl5njsTCPVQkVJb8JA4OUDkoptctP6X8hJS91neFUW+z+sE40b+9sCh7wuYefvhGNh
+ j0kx6YMfCWMsT1MSSD5/ApojgznQ5+g61TezgGOBCJovgYd2/fg86XxbGsYLpT5nNo66
+ vB7w==
+X-Gm-Message-State: AOAM530es26lWzIKtevW1FGuR/O6q4uG4Gpjo1MGuR/vvVtztfiB+wcH
+ yu9yiTm7LYxROsbyZIrPDZ86HB9PXMlHb4/Ncrk=
+X-Google-Smtp-Source: ABdhPJzCRCSL4SEYI+SJ2Cnu6tXOnMkaHU0QprOqAG00R9c4Udvc3j5vHKeAOfZVLv3bINCa/0CpUM6z2Vo0ISZE00U=
+X-Received: by 2002:a05:6402:4389:: with SMTP id
+ o9mr10761131edc.164.1613293553075; 
+ Sun, 14 Feb 2021 01:05:53 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201117114656.1222555-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QvZJ5p5dhtGeIM98qo0sdm5u3GDbdr8Mdxowp923+zbewz0CyVT
- CqzY5Pi3//o79nzfohq0mBtdfm5Ce8b4n2AR89mGtqEt0ODKCBzP2YT/beuJLAbB/ogtn1b
- 4L7ulo9W/3B0I98sRfkRZb+fXpGjAAY11vAmnOSZyq1gyINagxTVdlV6c9WGbrL+aQW9WMr
- XKoHuPQnFqbRqwLLwLsEA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8xCiZBDzSt8=:K5GnqweXS5kcGij4J55xk1
- otaYAq8hSSuqi9javirc1r6DNUHQTnzh1srjhlOIdSDTXFjR69SYW19q9OntiUXCtCZDshY7S
- d0uG32YkoIqrfd9yG/iZvV1JsKDMZFi9SeYH0cdvxeOh6cjr/FiJHrINyt09hVMVEWilSSsvL
- puxb3vl4mDO+AcXvvIXD6hTxkRqrTbwmkUupRuVnIANgCZxqJpfU5Nr126qcyue0iQn7MOBTI
- XbgvgM24VmjKb1FSmRALuIUJ1tG3RP8HXLaqOLpu1GGZVETyrWLiv5hYyQP9HzJbq6VAu+1ve
- u2NOm/jcP0oiHOR297SBLJiqj69MFSQhYauUDPTZOLYy1FBK5lCdgj2IuA1hB9hXCxKKlCwjx
- U4E8cdWlz+rNa81ggaZbfq633eH+8f2QYaqX8onwkzxgq++TGt9OZEpijLx6I4OAGFMzrgwU4
- tFvlRJlkTujN+q+6u3k5kuwhFlrQpz2ZrWAizrC5RR0HNirj9pAF
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <5F96915D.2040102@huawei.com>
+ <CAJ+F1CJT7SDt63ZyUAVCZhoYJ=Ep4KXF7MbcQJREaDHrTZXBeA@mail.gmail.com>
+ <4a7adb06-c911-1d1b-631a-7cb06d39f89d@vivier.eu>
+In-Reply-To: <4a7adb06-c911-1d1b-631a-7cb06d39f89d@vivier.eu>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Sun, 14 Feb 2021 13:05:40 +0400
+Message-ID: <CAJ+F1C+HVRieOFBvgU=SbKKDmOfuv0w=56dnt2fesGaXbMo2rQ@mail.gmail.com>
+Subject: Re: [PATCH 0/4] qga: Fix some style problems
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: AlexChen <alex.chen@huawei.com>, qemu trival <qemu-trivial@nongnu.org>, 
+ Michael Tokarev <mjt@tls.msk.ru>, QEMU <qemu-devel@nongnu.org>
+Content-Type: multipart/alternative; boundary="0000000000002649a205bb482d37"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,114 +71,119 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 Feb 2021 23:45:31 -0000
+X-List-Received-Date: Sun, 14 Feb 2021 09:05:59 -0000
 
-Le 17/11/2020 à 12:46, Philippe Mathieu-Daudé a écrit :
-> Update the F: line after the Meson refactor.
-> 
-> Fixes: 1bb4cb1c338..73362fc0b0c ("default-configs: ...")
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  MAINTAINERS | 20 ++++++++++----------
->  1 file changed, 10 insertions(+), 10 deletions(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 2e018a0c1da..6378b5ae416 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -87,7 +87,7 @@ S390 general architecture support
->  M: Cornelia Huck <cohuck@redhat.com>
->  M: Thomas Huth <thuth@redhat.com>
->  S: Supported
-> -F: default-configs/s390x-softmmu.mak
-> +F: default-configs/*/s390x-softmmu.mak
->  F: gdb-xml/s390*.xml
->  F: hw/char/sclp*.[hc]
->  F: hw/char/terminal3270.c
-> @@ -226,7 +226,7 @@ R: Jiaxun Yang <jiaxun.yang@flygoat.com>
->  R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
->  S: Odd Fixes
->  F: target/mips/
-> -F: default-configs/*mips*
-> +F: default-configs/*/*mips*
->  F: disas/mips.c
->  F: docs/system/cpu-models-mips.rst.inc
->  F: hw/intc/mips_gic.c
-> @@ -250,7 +250,7 @@ S: Maintained
->  F: target/moxie/
->  F: disas/moxie.c
->  F: hw/moxie/
-> -F: default-configs/moxie-softmmu.mak
-> +F: default-configs/*/moxie-softmmu.mak
->  
->  NiosII TCG CPUs
->  M: Chris Wulff <crwulff@gmail.com>
-> @@ -260,7 +260,7 @@ F: target/nios2/
->  F: hw/nios2/
->  F: hw/intc/nios2_iic.c
->  F: disas/nios2.c
-> -F: default-configs/nios2-softmmu.mak
-> +F: default-configs/*/nios2-softmmu.mak
->  
->  OpenRISC TCG CPUs
->  M: Stafford Horne <shorne@gmail.com>
-> @@ -353,7 +353,7 @@ F: hw/xtensa/
->  F: tests/tcg/xtensa/
->  F: disas/xtensa.c
->  F: include/hw/xtensa/xtensa-isa.h
-> -F: default-configs/xtensa*.mak
-> +F: default-configs/*/xtensa*.mak
->  
->  TriCore TCG CPUs
->  M: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-> @@ -1018,7 +1018,7 @@ AVR MCUs
->  M: Michael Rolnik <mrolnik@gmail.com>
->  R: Sarah Harris <S.E.Harris@kent.ac.uk>
->  S: Maintained
-> -F: default-configs/avr-softmmu.mak
-> +F: default-configs/*/avr-softmmu.mak
->  F: hw/avr/
->  F: include/hw/char/avr_usart.h
->  F: hw/char/avr_usart.c
-> @@ -1047,7 +1047,7 @@ HP B160L
->  M: Richard Henderson <richard.henderson@linaro.org>
->  R: Helge Deller <deller@gmx.de>
->  S: Odd Fixes
-> -F: default-configs/hppa-softmmu.mak
-> +F: default-configs/*/hppa-softmmu.mak
->  F: hw/hppa/
->  F: pc-bios/hppa-firmware.img
->  
-> @@ -1420,7 +1420,7 @@ F: hw/s390x/
->  F: include/hw/s390x/
->  F: hw/watchdog/wdt_diag288.c
->  F: include/hw/watchdog/wdt_diag288.h
-> -F: default-configs/s390x-softmmu.mak
-> +F: default-configs/*/s390x-softmmu.mak
->  T: git https://github.com/cohuck/qemu.git s390-next
->  T: git https://github.com/borntraeger/qemu.git s390-next
->  L: qemu-s390x@nongnu.org
-> @@ -2792,13 +2792,13 @@ F: accel/tcg/user-exec*.c
->  BSD user
->  S: Orphan
->  F: bsd-user/
-> -F: default-configs/*-bsd-user.mak
-> +F: default-configs/targets/*-bsd-user.mak
->  
->  Linux user
->  M: Laurent Vivier <laurent@vivier.eu>
->  S: Maintained
->  F: linux-user/
-> -F: default-configs/*-linux-user.mak
-> +F: default-configs/targets/*linux-user.mak
->  F: scripts/qemu-binfmt-conf.sh
->  F: scripts/update-syscalltbl.sh
->  F: scripts/update-mips-syscall-args.sh
-> 
+--0000000000002649a205bb482d37
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Applied to my trivial-patches branch.
+Hi
 
-Thanks,
-Laurent
+On Sun, Feb 14, 2021 at 3:20 AM Laurent Vivier <laurent@vivier.eu> wrote:
 
+> Le 04/11/2020 =C3=A0 08:46, Marc-Andr=C3=A9 Lureau a =C3=A9crit :
+> >
+> >
+> > On Mon, Oct 26, 2020 at 1:16 PM AlexChen <alex.chen@huawei.com <mailto:
+> alex.chen@huawei.com>> wrote:
+> >
+> >     Fix some error style problems found by checkpatch.pl <
+> http://checkpatch.pl>.
+> >
+> >     alexchen (4):
+> >       qga: Add spaces around operator
+> >       qga: Delete redundant spaces
+> >       qga: Open brace '{' following struct go on the same
+> >       qga: switch and case should be at the same indent
+> >
+> >      qga/channel-win32.c  |  6 ++---
+> >      qga/commands-posix.c |  4 +--
+> >      qga/commands-win32.c | 28 ++++++++++-----------
+> >      qga/commands.c       |  4 +--
+> >      qga/main.c           | 59
+> ++++++++++++++++++++++----------------------
+> >      5 files changed, 50 insertions(+), 51 deletions(-)
+> >
+> >
+> > Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com <mailt=
+o:
+> marcandre.lureau@redhat.com>>
+>
+> Where are the patches?
+>
+> I don't find them in my mailbox and patchew didn't receive them:
+>
+> https://patchew.org/QEMU/5F96915D.2040102@huawei.com/
+>
+>
+It was received on the mailing list:
+https://lists.gnu.org/archive/html/qemu-devel/2020-10/index.html
+(I got them in my mailbox as well)
+
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--0000000000002649a205bb482d37
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi<br></div><br><div class=3D"gmail_quote=
+"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Feb 14, 2021 at 3:20 AM Lau=
+rent Vivier &lt;<a href=3D"mailto:laurent@vivier.eu">laurent@vivier.eu</a>&=
+gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
+px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Le 04=
+/11/2020 =C3=A0 08:46, Marc-Andr=C3=A9 Lureau a =C3=A9crit=C2=A0:<br>
+&gt; <br>
+&gt; <br>
+&gt; On Mon, Oct 26, 2020 at 1:16 PM AlexChen &lt;<a href=3D"mailto:alex.ch=
+en@huawei.com" target=3D"_blank">alex.chen@huawei.com</a> &lt;mailto:<a hre=
+f=3D"mailto:alex.chen@huawei.com" target=3D"_blank">alex.chen@huawei.com</a=
+>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Fix some error style problems found by <a href=3D"h=
+ttp://checkpatch.pl" rel=3D"noreferrer" target=3D"_blank">checkpatch.pl</a>=
+ &lt;<a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=3D"_blank">=
+http://checkpatch.pl</a>&gt;.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0alexchen (4):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0 qga: Add spaces around operator<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0 qga: Delete redundant spaces<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0 qga: Open brace &#39;{&#39; following struct=
+ go on the same<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0 qga: switch and case should be at the same i=
+ndent<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/channel-win32.c=C2=A0 |=C2=A0 6 ++---<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/commands-posix.c |=C2=A0 4 +--<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/commands-win32.c | 28 ++++++++++---------=
+--<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/commands.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
+=A0 4 +--<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/main.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0| 59 ++++++++++++++++++++++----------------------<br>
+&gt;=C2=A0 =C2=A0 =C2=A0=C2=A05 files changed, 50 insertions(+), 51 deletio=
+ns(-)<br>
+&gt; <br>
+&gt; <br>
+&gt; Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lu=
+reau@redhat.com" target=3D"_blank">marcandre.lureau@redhat.com</a> &lt;mail=
+to:<a href=3D"mailto:marcandre.lureau@redhat.com" target=3D"_blank">marcand=
+re.lureau@redhat.com</a>&gt;&gt;<br>
+<br>
+Where are the patches?<br>
+<br>
+I don&#39;t find them in my mailbox and patchew didn&#39;t receive them:<br=
+>
+<br>
+<a href=3D"https://patchew.org/QEMU/5F96915D.2040102@huawei.com/" rel=3D"no=
+referrer" target=3D"_blank">https://patchew.org/QEMU/5F96915D.2040102@huawe=
+i.com/</a><br>
+<br></blockquote><div><br></div>It was received on the mailing list: <a hre=
+f=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-10/index.html">http=
+s://lists.gnu.org/archive/html/qemu-devel/2020-10/index.html</a></div><div =
+class=3D"gmail_quote">(I got them in my mailbox as well)<br></div><br>-- <b=
+r><div dir=3D"ltr" class=3D"gmail_signature">Marc-Andr=C3=A9 Lureau<br></di=
+v></div>
+
+--0000000000002649a205bb482d37--
 
