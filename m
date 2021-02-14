@@ -1,63 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lBDLt-00011H-Gc
-	for mharc-qemu-trivial@gnu.org; Sun, 14 Feb 2021 04:06:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43080)
+	id 1lBFYZ-0000j8-2W
+	for mharc-qemu-trivial@gnu.org; Sun, 14 Feb 2021 06:27:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1lBDLr-00010e-LD; Sun, 14 Feb 2021 04:05:59 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:41117)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1lBFYV-0000hF-Ut
+ for qemu-trivial@nongnu.org; Sun, 14 Feb 2021 06:27:11 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:39283)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1lBDLn-0002qT-DF; Sun, 14 Feb 2021 04:05:59 -0500
-Received: by mail-ed1-x533.google.com with SMTP id v9so335512edw.8;
- Sun, 14 Feb 2021 01:05:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kvRofmg7/YjJn9lYF62NfW0huM3PJn/GGhXb2sVcmi8=;
- b=F+WOzJZdQkixMDuA19OsgTgf7qu+9lmeMcMkx3vczJ1833qCc4BccKCPBbLlgOWXa4
- bQVNbDMebAoftkwOBKkNt6Oj+/7qMRhAI99NMpHw1a5E4pbEyfsTRsQI4m/Gip+qV4pi
- JVnDeIL00UKuXKXdntTqfSUlFZXuZSuSAQ3Fa+ZevaewI9idJp/EAhZ7mtfAI6NQKxZt
- xXSAIxnAl66GzWHv0C5wiK1PvesJ+FGm+bAxUWm46jC6w8ikLXkpKbnJVrVGSG1u3XkG
- 2QVYRtjogDmNmBQmQRnDqqhwnvY3Zbf5mtn88uKbX3413OA83hDQ1eYZeOIE17r5wQkS
- Ff+A==
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1lBFYU-0006Yr-Au
+ for qemu-trivial@nongnu.org; Sun, 14 Feb 2021 06:27:11 -0500
+Received: by mail-wr1-x431.google.com with SMTP id v1so5187301wrd.6
+ for <qemu-trivial@nongnu.org>; Sun, 14 Feb 2021 03:27:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=fgpf2oSanHx19OymtjolGlxytQ4BcgHG1wsnBAtY3Pw=;
+ b=rWC/ltCcxLJOeYYM9N+/Q5H6tnNgrjNajpoqT0JbDAjUh1iwEyKlF3ciaukTnrFfHi
+ /tsFgrrTUaJV3yMm5/rquLLGDYySl67x89vWIX0E0+Ihf4pWEfz/VWTYjVnhOPf/XC8/
+ ufS2K3FwjDFF4VJ5A1t2BcaR1oIGS0O3cpTeAQa7cjeUE0d4l4nwvpSO5xcnH9RBF8u8
+ GrRWunhNrzd3xOHkjci7ClQoAXGZJJmD9MQS5oPhN/jNoQFf/LIx8ds7vgfOW/zEguFU
+ 7jVHguPZ3R7peQ4r+eV8bKgyEvhqS+Cd81vQ8jOPxItQ3/KGL52b5BvKZo26U18msW2U
+ r5uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kvRofmg7/YjJn9lYF62NfW0huM3PJn/GGhXb2sVcmi8=;
- b=qYQcIkyY+lFasiLeGvVdFrrqtjL8Ub2swMbUP04N+7c2P3qG1ButKIx82lrnZcjYb3
- h2VPJFIps6GeK6NzVXIeHdRcfERupMmPCri4zg+pWM7ZvW+9xauGOIfaKgUOCLSuKSJH
- PPVyHXUNPnMKCiLTboZXvLTgzcKx9+E7tcZ2mNTRadIcq6YJxMTjXpR0jFq/NVowqCkY
- tPDl5njsTCPVQkVJb8JA4OUDkoptctP6X8hJS91neFUW+z+sE40b+9sCh7wuYefvhGNh
- j0kx6YMfCWMsT1MSSD5/ApojgznQ5+g61TezgGOBCJovgYd2/fg86XxbGsYLpT5nNo66
- vB7w==
-X-Gm-Message-State: AOAM530es26lWzIKtevW1FGuR/O6q4uG4Gpjo1MGuR/vvVtztfiB+wcH
- yu9yiTm7LYxROsbyZIrPDZ86HB9PXMlHb4/Ncrk=
-X-Google-Smtp-Source: ABdhPJzCRCSL4SEYI+SJ2Cnu6tXOnMkaHU0QprOqAG00R9c4Udvc3j5vHKeAOfZVLv3bINCa/0CpUM6z2Vo0ISZE00U=
-X-Received: by 2002:a05:6402:4389:: with SMTP id
- o9mr10761131edc.164.1613293553075; 
- Sun, 14 Feb 2021 01:05:53 -0800 (PST)
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=fgpf2oSanHx19OymtjolGlxytQ4BcgHG1wsnBAtY3Pw=;
+ b=taabbvK/hlroBXokLMd8S5oUMuCjIztQBtSLuC+G7GkyriORprI3ycsuiNOaYLp4qM
+ OBBHib7p3L6yPnIm8KRHJ/l6uWNmikKChaNDBYrcAIidIikKKDvzEGWa+8Tze5ZHjyv1
+ QaEPqkpaiOg90wt2VeuRh8qS6OHrDSWOk3PWIamiNTIxpETATL/8VW4ler+xg1zlyttI
+ v31hRz6P1mLAm35lFSMH4Z7GSxUe74XO8yAnAJZCZJC5CyAnBbPkC7SNpPQHcv5a+iCt
+ 8H+ZHEMUdAevoH42ROEdcPhMF8vzYlIQaTqNEDoSLy6bIy/IrGCjAEtZ8kwXqBj2zvGg
+ CT4g==
+X-Gm-Message-State: AOAM533MLcQybemATRhQD+UrBKGBFkLufSbvDF0UCJvG+LnK0Xuous8g
+ vgTZWLvnTKYdP2rduAGR5pSBfQ==
+X-Google-Smtp-Source: ABdhPJwH/XOjgHceGfHEv/yaMSOjbNj2mcL2I8Jbwp5RUCfF7hUO+Bbda6PZ1qEdBmaapz0VeRHHNQ==
+X-Received: by 2002:adf:dc83:: with SMTP id r3mr13755198wrj.53.1613302028237; 
+ Sun, 14 Feb 2021 03:27:08 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id l1sm19081653wmi.48.2021.02.14.03.27.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 14 Feb 2021 03:27:07 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 509201FF7E;
+ Sun, 14 Feb 2021 11:27:06 +0000 (GMT)
+References: <20210131061930.14554-1-vfazio@xes-inc.com>
+User-agent: mu4e 1.5.8; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Vincent Fazio <vfazio@xes-inc.com>
+Cc: qemu-trivial@nongnu.org, laurent@vivier.eu, Vincent Fazio
+ <vfazio@gmail.com>, qemu-devel@nongnu.org
+Subject: Re: [PATCH] linux-user/elfload: do not assume MAP_FIXED_NOREPLACE
+ kernel support
+Date: Sun, 14 Feb 2021 11:24:57 +0000
+In-reply-to: <20210131061930.14554-1-vfazio@xes-inc.com>
+Message-ID: <87o8gmc2k5.fsf@linaro.org>
 MIME-Version: 1.0
-References: <5F96915D.2040102@huawei.com>
- <CAJ+F1CJT7SDt63ZyUAVCZhoYJ=Ep4KXF7MbcQJREaDHrTZXBeA@mail.gmail.com>
- <4a7adb06-c911-1d1b-631a-7cb06d39f89d@vivier.eu>
-In-Reply-To: <4a7adb06-c911-1d1b-631a-7cb06d39f89d@vivier.eu>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Sun, 14 Feb 2021 13:05:40 +0400
-Message-ID: <CAJ+F1C+HVRieOFBvgU=SbKKDmOfuv0w=56dnt2fesGaXbMo2rQ@mail.gmail.com>
-Subject: Re: [PATCH 0/4] qga: Fix some style problems
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: AlexChen <alex.chen@huawei.com>, qemu trival <qemu-trivial@nongnu.org>, 
- Michael Tokarev <mjt@tls.msk.ru>, QEMU <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary="0000000000002649a205bb482d37"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-ed1-x533.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,119 +81,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 Feb 2021 09:05:59 -0000
+X-List-Received-Date: Sun, 14 Feb 2021 11:27:12 -0000
 
---0000000000002649a205bb482d37
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi
+Vincent Fazio <vfazio@xes-inc.com> writes:
 
-On Sun, Feb 14, 2021 at 3:20 AM Laurent Vivier <laurent@vivier.eu> wrote:
+> From: Vincent Fazio <vfazio@gmail.com>
+>
+> Previously, pgd_find_hole_fallback assumed that if the build host's libc
+> had MAP_FIXED_NOREPLACE defined that the address returned by mmap would
+> match the requested address. This is not a safe assumption for Linux
+> kernels prior to 4.17
 
-> Le 04/11/2020 =C3=A0 08:46, Marc-Andr=C3=A9 Lureau a =C3=A9crit :
-> >
-> >
-> > On Mon, Oct 26, 2020 at 1:16 PM AlexChen <alex.chen@huawei.com <mailto:
-> alex.chen@huawei.com>> wrote:
-> >
-> >     Fix some error style problems found by checkpatch.pl <
-> http://checkpatch.pl>.
-> >
-> >     alexchen (4):
-> >       qga: Add spaces around operator
-> >       qga: Delete redundant spaces
-> >       qga: Open brace '{' following struct go on the same
-> >       qga: switch and case should be at the same indent
-> >
-> >      qga/channel-win32.c  |  6 ++---
-> >      qga/commands-posix.c |  4 +--
-> >      qga/commands-win32.c | 28 ++++++++++-----------
-> >      qga/commands.c       |  4 +--
-> >      qga/main.c           | 59
-> ++++++++++++++++++++++----------------------
-> >      5 files changed, 50 insertions(+), 51 deletions(-)
-> >
-> >
-> > Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com <mailt=
-o:
-> marcandre.lureau@redhat.com>>
+It doesn't as we have in osdep.h:
+
+  #ifndef MAP_FIXED_NOREPLACE
+  #define MAP_FIXED_NOREPLACE 0
+  #endif
+
+which is to say to assume if MAP_FIXED_NOREPLACE is defined the kernel
+should have given us what we want otherwise we do the check.
+
 >
-> Where are the patches?
+> Now, we always compare mmap's resultant address with the requested
+> address and no longer short-circuit based on MAP_FIXED_NOREPLACE.
 >
-> I don't find them in my mailbox and patchew didn't receive them:
+> Fixes: 2667e069e7b5 ("linux-user: don't use MAP_FIXED in pgd_find_hole_fa=
+llback")
+> Signed-off-by: Vincent Fazio <vfazio@gmail.com>
+> ---
+>  linux-user/elfload.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 >
-> https://patchew.org/QEMU/5F96915D.2040102@huawei.com/
->
->
-It was received on the mailing list:
-https://lists.gnu.org/archive/html/qemu-devel/2020-10/index.html
-(I got them in my mailbox as well)
+> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+> index 5f5f23d2e5..8d425f9ed0 100644
+> --- a/linux-user/elfload.c
+> +++ b/linux-user/elfload.c
+> @@ -2217,8 +2217,7 @@ static uintptr_t pgd_find_hole_fallback(uintptr_t g=
+uest_size, uintptr_t brk,
+>                                       PROT_NONE, flags, -1, 0);
+>              if (mmap_start !=3D MAP_FAILED) {
+>                  munmap(mmap_start, guest_size);
+> -                if (MAP_FIXED_NOREPLACE !=3D 0 ||
+> -                    mmap_start =3D=3D (void *) align_start) {
+> +                if (mmap_start =3D=3D (void *) align_start) {
+>                      return (uintptr_t) mmap_start + offset;
+>                  }
+>              }
+
 
 --=20
-Marc-Andr=C3=A9 Lureau
-
---0000000000002649a205bb482d37
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Hi<br></div><br><div class=3D"gmail_quote=
-"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Feb 14, 2021 at 3:20 AM Lau=
-rent Vivier &lt;<a href=3D"mailto:laurent@vivier.eu">laurent@vivier.eu</a>&=
-gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
-px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Le 04=
-/11/2020 =C3=A0 08:46, Marc-Andr=C3=A9 Lureau a =C3=A9crit=C2=A0:<br>
-&gt; <br>
-&gt; <br>
-&gt; On Mon, Oct 26, 2020 at 1:16 PM AlexChen &lt;<a href=3D"mailto:alex.ch=
-en@huawei.com" target=3D"_blank">alex.chen@huawei.com</a> &lt;mailto:<a hre=
-f=3D"mailto:alex.chen@huawei.com" target=3D"_blank">alex.chen@huawei.com</a=
->&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Fix some error style problems found by <a href=3D"h=
-ttp://checkpatch.pl" rel=3D"noreferrer" target=3D"_blank">checkpatch.pl</a>=
- &lt;<a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=3D"_blank">=
-http://checkpatch.pl</a>&gt;.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0alexchen (4):<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0 qga: Add spaces around operator<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0 qga: Delete redundant spaces<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0 qga: Open brace &#39;{&#39; following struct=
- go on the same<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0 qga: switch and case should be at the same i=
-ndent<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/channel-win32.c=C2=A0 |=C2=A0 6 ++---<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/commands-posix.c |=C2=A0 4 +--<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/commands-win32.c | 28 ++++++++++---------=
---<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/commands.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
-=A0 4 +--<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A0qga/main.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 59 ++++++++++++++++++++++----------------------<br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A05 files changed, 50 insertions(+), 51 deletio=
-ns(-)<br>
-&gt; <br>
-&gt; <br>
-&gt; Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lu=
-reau@redhat.com" target=3D"_blank">marcandre.lureau@redhat.com</a> &lt;mail=
-to:<a href=3D"mailto:marcandre.lureau@redhat.com" target=3D"_blank">marcand=
-re.lureau@redhat.com</a>&gt;&gt;<br>
-<br>
-Where are the patches?<br>
-<br>
-I don&#39;t find them in my mailbox and patchew didn&#39;t receive them:<br=
->
-<br>
-<a href=3D"https://patchew.org/QEMU/5F96915D.2040102@huawei.com/" rel=3D"no=
-referrer" target=3D"_blank">https://patchew.org/QEMU/5F96915D.2040102@huawe=
-i.com/</a><br>
-<br></blockquote><div><br></div>It was received on the mailing list: <a hre=
-f=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-10/index.html">http=
-s://lists.gnu.org/archive/html/qemu-devel/2020-10/index.html</a></div><div =
-class=3D"gmail_quote">(I got them in my mailbox as well)<br></div><br>-- <b=
-r><div dir=3D"ltr" class=3D"gmail_signature">Marc-Andr=C3=A9 Lureau<br></di=
-v></div>
-
---0000000000002649a205bb482d37--
+Alex Benn=C3=A9e
 
