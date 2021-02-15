@@ -1,78 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lBcRa-0000wQ-1G
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Feb 2021 06:53:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39958)
+	id 1lBiLT-0002aa-LT
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Feb 2021 13:11:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lBcRY-0000sQ-GT; Mon, 15 Feb 2021 06:53:32 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:34516)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lBcRW-0004RF-RB; Mon, 15 Feb 2021 06:53:32 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id n4so5530200wrx.1;
- Mon, 15 Feb 2021 03:53:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=BJhumdusHtFHBzsbOG/jymVEW3RVs2aWMPqbq1gytTg=;
- b=W953dX4hXxjrdJnxJ5cPi6CrVl8VwRnlpzv4+KOCOe5kirQkFwIWloUyJ3RtCIDoik
- LWgQyPtaMf82BaJX8sycxIrzTiGYEoIn+eiSG25mgr1L9P9gAOv8T8Fh27iPyJDtf9uC
- hJvSQXePlFV1C+voTnxN+SxAl6L6FdPCpBx+F1jng4p+Bna41heqsO6sX39+Gr7RngkO
- 52+r4P+AAUJKe5tQGaE2FiYUwXcBD3wz7JL+vIEJGYc1OEYURB8O3QV9dPfYS1lW/hNY
- nf0/qBFk+Ixt84s5T8/GR8tUU/P++W/f7NWS2Vs1ig46/CUGMe5uWmYneFZmzoXANatK
- Yocw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=BJhumdusHtFHBzsbOG/jymVEW3RVs2aWMPqbq1gytTg=;
- b=na2GKTGSMFRStPHKhtN0er21/K8CeqotlX6tSbbjfpbZL2IWl7NlbKJCtqOCeEXf5z
- N3q2MelxTxS0Vmp0egReGNi8+BVHEV4ZYghcQx6ayEPwAJf2ijo+bAW7AyNOe+WF1RR1
- dL7Kf5cT7GxN9LMkGxtc8OsP7GTFRVA9m6a1xMlfT+lEI9gejyzdlZ/hqx5O6LTbblt3
- jiA1ONacdEuxXMOSxsPNrAk5KgQtr56NY8VmLebcpi70bJe1JzCUzhCNjHklhSL2HvCR
- 9KUcuXsq1pwIz0LOm/NPM0/y5beXUdUdMlDdhJb+fupnNQQRPei838Yvy2GtEPJtecTI
- Wp4w==
-X-Gm-Message-State: AOAM530/214bFu8aAzEBFm+h4uNnZElSwwnqYe7Ts+qGMP5DIgj2eULw
- 08cNjhGqYt1Zwecfa6Hb6ejcW3KTjYY=
-X-Google-Smtp-Source: ABdhPJycocVoXtIO2IACis3Xu8oAddtFdBxNiLkq2c+sxLWfT9EzsEHUYv39pYdo2b8DML7b/J2RdQ==
-X-Received: by 2002:adf:ea48:: with SMTP id j8mr18416632wrn.197.1613390008663; 
- Mon, 15 Feb 2021 03:53:28 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id 64sm27620857wrc.50.2021.02.15.03.53.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Feb 2021 03:53:28 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v2 11/12] spitz: put some Spitz-family devices into the
- correct category
-To: Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org
-Cc: kuhn.chenqun@huawei.com, thuth@redhat.com, qemu-trivial@nongnu.org,
- zhang.zhanghailiang@huawei.com, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>
-References: <20201130083630.2520597-1-ganqixin@huawei.com>
- <20201130083630.2520597-12-ganqixin@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <1b09bc1a-7765-150c-1568-a9f3b2eb5c78@amsat.org>
-Date: Mon, 15 Feb 2021 12:53:27 +0100
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1lBiLN-0002ZR-SR
+ for qemu-trivial@nongnu.org; Mon, 15 Feb 2021 13:11:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:24448)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1lBiLL-0006s4-5x
+ for qemu-trivial@nongnu.org; Mon, 15 Feb 2021 13:11:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1613412690;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+a7EJVl7VAwI2E27JS7mCrW0f8AaQ5Uk0lgf9BaqFF0=;
+ b=R8pOQ4X31ZJewUjppUQJ/1akcrIFrYSW7guxEC3y+qULQCKf9/J066u3gIAsuP3x96kpgt
+ mbmeyXVCOHoQk5Bv3cLe1FyUQK3S+8Z02dC04z21ct910Of2y3pcGkphxEUtPDNbwFXlNl
+ 7CmrFNEL9MIWGiBKeLZ6NccINoHAUXY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-508-akHk-lKtOC6oAfAf5vdpuA-1; Mon, 15 Feb 2021 13:11:26 -0500
+X-MC-Unique: akHk-lKtOC6oAfAf5vdpuA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 189D8801975;
+ Mon, 15 Feb 2021 18:11:25 +0000 (UTC)
+Received: from [10.10.112.247] (ovpn-112-247.rdu2.redhat.com [10.10.112.247])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5EDB110023B2;
+ Mon, 15 Feb 2021 18:11:11 +0000 (UTC)
+Subject: Re: [PATCH 2/4] hw/block/fdc: Remove the check_media_rate property
+To: Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
+ David Hildenbrand <david@redhat.com>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20210203171832.483176-1-thuth@redhat.com>
+ <20210203171832.483176-3-thuth@redhat.com>
+ <125f27d8-8987-99f7-321e-86e7365d5a07@redhat.com>
+ <fb4a2611-49f0-1292-a3c2-478666dfa65c@redhat.com>
+ <96906059-731d-1e48-5b60-98ed4df9c037@redhat.com>
+ <3b57740e-ad39-3e56-6262-7994376f74a9@redhat.com>
+ <88f8ca2f-5121-8d40-81b1-d284737d588a@vivier.eu>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <4f6cd372-c306-e466-f760-a031aee4234b@redhat.com>
+Date: Mon, 15 Feb 2021 13:11:11 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20201130083630.2520597-12-ganqixin@huawei.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <88f8ca2f-5121-8d40-81b1-d284737d588a@vivier.eu>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -85,51 +83,124 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Feb 2021 11:53:33 -0000
+X-List-Received-Date: Mon, 15 Feb 2021 18:11:37 -0000
 
-Hi,
-
-On 11/30/20 9:36 AM, Gan Qixin wrote:
-> Some Spitz-family devices have no category, put them into the correct category.
+On 2/13/21 5:41 PM, Laurent Vivier wrote:
+> Le 08/02/2021 à 08:05, Thomas Huth a écrit :
+>> On 05/02/2021 21.15, John Snow wrote:
+>>> On 2/5/21 1:37 AM, Thomas Huth wrote:
+>>>> On 05/02/2021 01.40, John Snow wrote:
+>>>>> On 2/3/21 12:18 PM, Thomas Huth wrote:
+>>>>>> This was only required for the pc-1.0 and earlier machine types.
+>>>>>> Now that these have been removed, we can also drop the corresponding
+>>>>>> code from the FDC device.
+>>>>>>
+>>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>>>> ---
+>>>>>>    hw/block/fdc.c             | 17 ++---------------
+>>>>>>    tests/qemu-iotests/172.out | 35 -----------------------------------
+>>>>>>    2 files changed, 2 insertions(+), 50 deletions(-)
+>>>>>>
+>>>>>> diff --git a/hw/block/fdc.c b/hw/block/fdc.c
+>>>>>> index 292ea87805..198940e737 100644
+>>>>>> --- a/hw/block/fdc.c
+>>>>>> +++ b/hw/block/fdc.c
+>>>>>> @@ -874,7 +874,6 @@ struct FDCtrl {
+>>>>>>            FloppyDriveType type;
+>>>>>>        } qdev_for_drives[MAX_FD];
+>>>>>>        int reset_sensei;
+>>>>>> -    uint32_t check_media_rate;
+>>>>>
+>>>>> I am a bit of a dunce when it comes to the compatibility properties... does this mess with the
+>>>>> migration format?
+>>>>>
+>>>>> I guess it doesn't, since it's not in the VMSTATE declaration.
+>>>>>
+>>>>> Hmmmm, alright.
+>>>>
+>>>> I think that should be fine, yes.
+>>>>
+>>>>>>        FloppyDriveType fallback; /* type=auto failure fallback */
+>>>>>>        /* Timers state */
+>>>>>>        uint8_t timer0;
+>>>>>> @@ -1021,18 +1020,10 @@ static const VMStateDescription vmstate_fdrive_media_changed = {
+>>>>>>        }
+>>>>>>    };
+>>>>>> -static bool fdrive_media_rate_needed(void *opaque)
+>>>>>> -{
+>>>>>> -    FDrive *drive = opaque;
+>>>>>> -
+>>>>>> -    return drive->fdctrl->check_media_rate;
+>>>>>> -}
+>>>>>> -
+>>>>>>    static const VMStateDescription vmstate_fdrive_media_rate = {
+>>>>>>        .name = "fdrive/media_rate",
+>>>>>>        .version_id = 1,
+>>>>>>        .minimum_version_id = 1,
+>>>>>> -    .needed = fdrive_media_rate_needed,
+>>>>>>        .fields = (VMStateField[]) {
+>>>>>>            VMSTATE_UINT8(media_rate, FDrive),
+>>>>>>            VMSTATE_END_OF_LIST()
+>>>>>> @@ -1689,8 +1680,7 @@ static void fdctrl_start_transfer(FDCtrl *fdctrl, int direction)
+>>>>>>        /* Check the data rate. If the programmed data rate does not match
+>>>>>>         * the currently inserted medium, the operation has to fail. */
+>>>>>> -    if (fdctrl->check_media_rate &&
+>>>>>> -        (fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
+>>>>>> +    if ((fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
+>>>>>>            FLOPPY_DPRINTF("data rate mismatch (fdc=%d, media=%d)\n",
+>>>>>>                           fdctrl->dsr & FD_DSR_DRATEMASK, cur_drv->media_rate);
+>>>>>>            fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_MA, 0x00);
+>>>>>> @@ -2489,8 +2479,7 @@ static void fdctrl_result_timer(void *opaque)
+>>>>>>            cur_drv->sect = (cur_drv->sect % cur_drv->last_sect) + 1;
+>>>>>>        }
+>>>>>>        /* READ_ID can't automatically succeed! */
+>>>>>> -    if (fdctrl->check_media_rate &&
+>>>>>> -        (fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
+>>>>>> +    if ((fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
+>>>>>>            FLOPPY_DPRINTF("read id rate mismatch (fdc=%d, media=%d)\n",
+>>>>>>                           fdctrl->dsr & FD_DSR_DRATEMASK, cur_drv->media_rate);
+>>>>>>            fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_MA, 0x00);
+>>>>>> @@ -2895,8 +2884,6 @@ static Property isa_fdc_properties[] = {
+>>>>>>        DEFINE_PROP_UINT32("dma", FDCtrlISABus, dma, 2),
+>>>>>>        DEFINE_PROP_DRIVE("driveA", FDCtrlISABus, state.qdev_for_drives[0].blk),
+>>>>>>        DEFINE_PROP_DRIVE("driveB", FDCtrlISABus, state.qdev_for_drives[1].blk),
+>>>>>> -    DEFINE_PROP_BIT("check_media_rate", FDCtrlISABus, state.check_media_rate,
+>>>>>> -                    0, true),
+>>>>>
+>>>>> Could you theoretically set this via QOM commands in QMP, and claim that this is a break in
+>>>>> behavior?
+>>>>>
+>>>>> Though, it's ENTIRELY undocumented, so ... it's probably fine, I think. Probably. (Please soothe
+>>>>> my troubled mind.)
+>>>>
+>>>> A user actually could mess with this property even on the command line, e.g. by using:
+>>>>
+>>>>    qemu-system-x86_64 -global isa-fdc.check_media_rate=false
+>>>>
+>>>> ... but, as you said, it's completely undocumented, the property is really just there for the
+>>>> internal use of machine type compatibility. We've done such clean-ups in the past already, see
+>>>> e.g. c6026998eef382d7ad76 or 2a4dbaf1c0db2453ab78f, so I think this should be fine. But if you
+>>>> disagree, I could replace this by a patch that adds this property to the list of deprecated
+>>>> features instead, so we could at least remove it after it has been deprecated for two releases?
+>>>>
+>>>
+>>> I don't think it's necessary, personally -- just wanted to make sure I knew the exact stakes here.
+>>>
+>>> Reviewed-by: John Snow <jsnow@redhat.com>
+>>> Acked-by: John Snow <jsnow@redhat.com>
+>>
+>> Thanks! ... since the first patch has already been merged through Michael's tree, could you then
+>> please take this patch here through your floppy / block branch, John? Or maybe it could also go via
+>> qemu-trivial?
 > 
-> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-> ---
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/spitz.c | 2 ++
->  1 file changed, 2 insertions(+)
+> Applied to my trivial-patches branch.
 > 
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index 32bdeacfd3..0e5e8a4634 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -1218,6 +1218,7 @@ static void corgi_ssp_class_init(ObjectClass *klass, void *data)
->      k->realize = corgi_ssp_realize;
->      k->transfer = corgi_ssp_transfer;
->      dc->vmsd = &vmstate_corgi_ssp_regs;
-> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-
-OK.
-
->  }
->  
->  static const TypeInfo corgi_ssp_info = {
-> @@ -1247,6 +1248,7 @@ static void spitz_lcdtg_class_init(ObjectClass *klass, void *data)
->      k->realize = spitz_lcdtg_realize;
->      k->transfer = spitz_lcdtg_transfer;
->      dc->vmsd = &vmstate_spitz_lcdtg_regs;
-> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-
-This is not a display device, but a regulator to
-control the display backlight. DEVICE_CATEGORY_MISC
-seems more appropriate.
-
->  }
->  
->  static const TypeInfo spitz_lcdtg_info = {
+> Thanks,
+> Laurent
 > 
 
-Regards,
+Thank you, Laurent!
 
-Phil.
+--js
+
 
