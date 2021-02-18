@@ -1,78 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lCJaT-0007QT-NN
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Feb 2021 04:57:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43592)
+	id 1lCcJa-0006jc-Bz
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Feb 2021 00:57:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51734)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lCJaS-0007P2-F8
- for qemu-trivial@nongnu.org; Wed, 17 Feb 2021 04:57:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26474)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1lCcJY-0006iW-Ew
+ for qemu-trivial@nongnu.org; Thu, 18 Feb 2021 00:57:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44183)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lCJaQ-00007P-Pm
- for qemu-trivial@nongnu.org; Wed, 17 Feb 2021 04:57:36 -0500
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1lCcJR-0006Cc-BO
+ for qemu-trivial@nongnu.org; Thu, 18 Feb 2021 00:57:24 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613555854;
+ s=mimecast20190719; t=1613627835;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7s87ey3TG1QBVAYgtIYgPo9FMPaf7XkvVIbKiVyF+a8=;
- b=ZSeynu2T9+Bd+pM37RSCmAP9QbsW/UN45zZDqFdjkucLFK49RdrJhEyIxOlfqor3TDryQU
- pRxwvuwVJUyX4bUuXj3wDnyKK5vtHIJ5kfnqCaltTfWjQOvD7aRQJ3dW9OERQGNxa+RHdF
- jmsZTb7M6a/bcP5/4CdaX05KFAT5E+s=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-243-1sLTlN6AMjOM3u4kwL1eZg-1; Wed, 17 Feb 2021 04:57:30 -0500
-X-MC-Unique: 1sLTlN6AMjOM3u4kwL1eZg-1
-Received: by mail-ej1-f71.google.com with SMTP id p1so7779434ejo.4
- for <qemu-trivial@nongnu.org>; Wed, 17 Feb 2021 01:57:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7s87ey3TG1QBVAYgtIYgPo9FMPaf7XkvVIbKiVyF+a8=;
- b=mjIBBX6VadD3J7FUZ7bFG2BcR6NJBKVnD4sF6c3SKNtJkp4CLdAGYZFkTAXePmmpRp
- 4MMe+rwsVcmNK7ZnthKhABcdgDXYJmN6d+lWcYNI5UOjHQLBelRs5JaxYt+rx4Pow3PX
- I2E3zFn5vgxoTwbBguBQoJ/qmHKIJq6QYpJh9c6VJDYADnHPvLufpVEyYUHmlEHMPmPq
- J+Bq8bXxPbai3+NlJT2w0DVKH+rzuMPsuwDToeNoGQWsLe9j6t24W5GtOJeuWzapr9e0
- HwVltCaLEZpUwBWgifucptFtw3q9ao20Dy42vSkPBUz24HN1jARFuIMkl1bUJU466ss7
- Y4lQ==
-X-Gm-Message-State: AOAM533zwz/fIDfJzHyr+g7xelp5XEf5yD+pxvSlfUiL9JjXVmeRXiU1
- 4Hjw6eAiDq2ZoLgfrBfhWpAXzpUSAAaqopia7AGbYamEUNcqAIeQ69eyPuYPw8asKSCV910kbon
- KoH0uytqJ9Ya+oWK31w==
-X-Received: by 2002:a17:907:d0b:: with SMTP id
- gn11mr24595821ejc.144.1613555849197; 
- Wed, 17 Feb 2021 01:57:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx4IbyAH8M5PnUUWLVHDicAiXUIX8xmdo7tgcAIX90hLXIl3IaMIlwhpXf72F+CjyhmmNP0Uw==
-X-Received: by 2002:a17:907:d0b:: with SMTP id
- gn11mr24595798ejc.144.1613555848909; 
- Wed, 17 Feb 2021 01:57:28 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id n2sm822944ejl.1.2021.02.17.01.57.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Feb 2021 01:57:28 -0800 (PST)
-Subject: Re: [PATCH] fuzz-test: remove unneccessary debugging flags
-To: Alexander Bulekov <alxndr@bu.edu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20210216181316.794276-1-alxndr@bu.edu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <2d674c20-cc80-a008-04a9-dd92cf31ad53@redhat.com>
-Date: Wed, 17 Feb 2021 10:57:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ bh=vDN9EwCQgTbOWkkY7vvhcIU+Kr3p6EaDc7g5i2Za9vQ=;
+ b=Y50gaU5MKDq1GjgqB8m+BdKsQ+HYF37Tq7rlR1lBeRL90BaB6rLX1YNntbjBGXTTSIujAb
+ TYe+BOZoa+BWWSu5c7n97JRvm0KrxkBV97snnN+676k9LiCrd335Ngg6vQgkwwUx8CuLTO
+ 9pKtHlTycAXeecgM0jnvbDLRCNbfJ2U=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-373-fjFrPG_SMvWXZo7SWTeqbA-1; Thu, 18 Feb 2021 00:57:13 -0500
+X-MC-Unique: fjFrPG_SMvWXZo7SWTeqbA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 947CC81425C;
+ Thu, 18 Feb 2021 05:57:12 +0000 (UTC)
+Received: from [10.72.13.28] (ovpn-13-28.pek2.redhat.com [10.72.13.28])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1F4D36F921;
+ Thu, 18 Feb 2021 05:57:00 +0000 (UTC)
+Subject: Re: [PATCH v2 1/3] pci: cleanup failover sanity check
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, quintela@redhat.com,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, jfreimann@redhat.com,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+References: <20210210174518.2493928-1-lvivier@redhat.com>
+ <20210210174518.2493928-2-lvivier@redhat.com>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <526a2dac-2aac-fd0b-7396-6ab0ecd3c83a@redhat.com>
+Date: Thu, 18 Feb 2021 13:56:59 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210216181316.794276-1-alxndr@bu.edu>
+In-Reply-To: <20210210174518.2493928-2-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Language: en-US
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=jasowang@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -94,18 +79,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Feb 2021 09:57:36 -0000
+X-List-Received-Date: Thu, 18 Feb 2021 05:57:24 -0000
 
-On 2/16/21 7:13 PM, Alexander Bulekov wrote:
-> These flags cause the output to look strange for 'make check', and
-> they aren't needed to reproduce bugs, if they reappear.
-> 
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
+
+On 2021/2/11 上午1:45, Laurent Vivier wrote:
+> Commit a1190ab628 has added a "allow_unplug_during_migration = true" at
+> the end of the main "if" block, so it is not needed to set it anymore
+> in the previous checking.
+>
+> Remove it, to have only sub-ifs that check for needed conditions and exit
+> if one fails.
+>
+> Fixes: 4f5b6a05a4e7 ("pci: add option for net failover")
+> Fixes: a1190ab628c0 ("migration: allow unplug during migration for failover devices")
+> Cc: jfreimann@redhat.com
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> Reviewed-by: Jens Freimann <jfreimann@redhat.com>
 > ---
->  tests/qtest/fuzz-test.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>   hw/pci/pci.c | 6 ++----
+>   1 file changed, 2 insertions(+), 4 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Acked-by: Jason Wang <jasowang@redhat.com>
+
+
+>
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index 512e9042ffae..ecb7aa31fabd 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -2120,10 +2120,8 @@ static void pci_qdev_realize(DeviceState *qdev, Error **errp)
+>               pci_qdev_unrealize(DEVICE(pci_dev));
+>               return;
+>           }
+> -        if (!(pci_dev->cap_present & QEMU_PCI_CAP_MULTIFUNCTION)
+> -            && (PCI_FUNC(pci_dev->devfn) == 0)) {
+> -            qdev->allow_unplug_during_migration = true;
+> -        } else {
+> +        if ((pci_dev->cap_present & QEMU_PCI_CAP_MULTIFUNCTION)
+> +            || (PCI_FUNC(pci_dev->devfn) != 0)) {
+>               error_setg(errp, "failover: primary device must be in its own "
+>                                 "PCI slot");
+>               pci_qdev_unrealize(DEVICE(pci_dev));
 
 
