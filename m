@@ -1,73 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lCcNu-00039Z-Aw
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Feb 2021 01:01:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53438)
+	id 1lD1tx-0007aM-J5
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Feb 2021 04:16:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1lCcNn-00037l-CP
- for qemu-trivial@nongnu.org; Thu, 18 Feb 2021 01:01:48 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30226)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lD1tv-0007ZG-Fx
+ for qemu-trivial@nongnu.org; Fri, 19 Feb 2021 04:16:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48499)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1lCcNg-0008Jw-Q8
- for qemu-trivial@nongnu.org; Thu, 18 Feb 2021 01:01:47 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1lD1tr-0003UC-1T
+ for qemu-trivial@nongnu.org; Fri, 19 Feb 2021 04:16:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613628099;
+ s=mimecast20190719; t=1613726193;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8INPDyffZKUTlNdxYrYWOxncMtyXJuLhDjD8DmHtbrk=;
- b=eBnF9a8/Y/cN6y82W1hpPI9Tb8+SSnSUbg3/4y0y5YbGvZs7op43tZYRNfKZ7D01xNnuC4
- sMwZtkhGA7Gsf25Hd+w08cSvdY+utjKnCGEpObj0gDYu92xpLWFgYCp9mvCVyFk2E+rrUr
- rNfo8hmqruzQiBoIVPE3nIWXMkA2Q4o=
+ bh=buyzDmOSNA6CHfnj87ke8+wv/8v3McBlVPpTCTY5otc=;
+ b=RcEohCSDIO+9WtymbToCTky14WD1fXP294+anhPZ1nBLm6ARcGmTVXawXwm31UFr2uUZHK
+ lVQvYjGqYLwlOsnM7C90dDh1ASDAyGO6Y0zGQh5wf3CH38koohDAmuS1T8hs0pNQcZBlzs
+ sIE/gYqAm15iSmB/Ur/u+BlEmEcMvzE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-583-dxc9iknhOlq6oXYaI3ZWWA-1; Thu, 18 Feb 2021 01:01:37 -0500
-X-MC-Unique: dxc9iknhOlq6oXYaI3ZWWA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-593-9DSK-zAVM_-RuJf10AhX0w-1; Fri, 19 Feb 2021 04:16:32 -0500
+X-MC-Unique: 9DSK-zAVM_-RuJf10AhX0w-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E878D192AB79;
- Thu, 18 Feb 2021 06:01:35 +0000 (UTC)
-Received: from [10.72.13.28] (ovpn-13-28.pek2.redhat.com [10.72.13.28])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BFD655D9C2;
- Thu, 18 Feb 2021 06:01:26 +0000 (UTC)
-Subject: Re: [PATCH v2 3/3] failover: really display a warning when the
- primary device is not found
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, quintela@redhat.com,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, jfreimann@redhat.com,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-References: <20210210174518.2493928-1-lvivier@redhat.com>
- <20210210174518.2493928-4-lvivier@redhat.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <2eb9122a-700c-ed7f-c0c5-829dad009a85@redhat.com>
-Date: Thu, 18 Feb 2021 14:01:25 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2301780197B;
+ Fri, 19 Feb 2021 09:16:31 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-115-79.ams2.redhat.com
+ [10.36.115.79])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 54F45171FE;
+ Fri, 19 Feb 2021 09:16:22 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 089F2113860F; Fri, 19 Feb 2021 10:16:21 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org,  marcandre.lureau@redhat.com,  mst@redhat.com,
+ kraxel@redhat.com
+Subject: Re: [PATCH 0/2] g_return_if_fail(), g_return_val_if_fail() misuse
+References: <20210126124240.2081959-1-armbru@redhat.com>
+Date: Fri, 19 Feb 2021 10:16:21 +0100
+In-Reply-To: <20210126124240.2081959-1-armbru@redhat.com> (Markus Armbruster's
+ message of "Tue, 26 Jan 2021 13:42:38 +0100")
+Message-ID: <87zh00o1sq.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20210210174518.2493928-4-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=jasowang@redhat.com;
+Content-Type: text/plain
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,70 +73,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Feb 2021 06:01:48 -0000
+X-List-Received-Date: Fri, 19 Feb 2021 09:16:40 -0000
 
+I think this could go via qemu-trivial.
 
-On 2021/2/11 上午1:45, Laurent Vivier wrote:
-> In failover_add_primary(), we search the id of the failover device by
-> scanning the list of the devices in the opts list to find a device with
-> a failover_pair_id equals to the id of the virtio-net device.
+Markus Armbruster <armbru@redhat.com> writes:
+
+> Markus Armbruster (2):
+>   backends/dbus-vmstate: Fix short read error handling
+>   vhost_user_gpu: Drop dead check for g_malloc() failure
 >
-> If the failover_pair_id is not found, QEMU ignores the primary
-> device silently (which also means it will not be hidden and
-> it will be enabled directly at boot).
->
-> After that, we search the id in the opts list to do a qdev_device_add()
-> with it. The device will be always found as otherwise we had exited
-> before, and thus the warning is never displayed.
->
-> Fix that by moving the error report to the first exit condition.
-> Also add a g_assert() to be sure the compiler will not complain
-> about a possibly NULL pointer.
->
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-
-
-Acked-by: Jason Wang <jasowang@redhat.com>
-
-
-> ---
->   hw/net/virtio-net.c | 20 +++++++++-----------
->   1 file changed, 9 insertions(+), 11 deletions(-)
->
-> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-> index 1c5af08dc556..439f823b190c 100644
-> --- a/hw/net/virtio-net.c
-> +++ b/hw/net/virtio-net.c
-> @@ -855,21 +855,19 @@ static void failover_add_primary(VirtIONet *n, Error **errp)
->   
->       id = failover_find_primary_device_id(n);
->       if (!id) {
-> +        error_setg(errp, "Primary device not found");
-> +        error_append_hint(errp, "Virtio-net failover will not work. Make "
-> +                          "sure primary device has parameter"
-> +                          " failover_pair_id=%s\n", n->netclient_name);
->           return;
->       }
->       opts = qemu_opts_find(qemu_find_opts("device"), id);
-> -    if (opts) {
-> -        dev = qdev_device_add(opts, &err);
-> -        if (err) {
-> -            qemu_opts_del(opts);
-> -        } else {
-> -            object_unref(OBJECT(dev));
-> -        }
-> +    g_assert(opts); /* cannot be NULL because id was found using opts list */
-> +    dev = qdev_device_add(opts, &err);
-> +    if (err) {
-> +        qemu_opts_del(opts);
->       } else {
-> -        error_setg(errp, "Primary device not found");
-> -        error_append_hint(errp, "Virtio-net failover will not work. Make "
-> -                          "sure primary device has parameter"
-> -                          " failover_pair_id=<virtio-net-id>\n");
-> +        object_unref(OBJECT(dev));
->       }
->       error_propagate(errp, err);
->   }
+>  backends/dbus-vmstate.c     | 5 ++++-
+>  hw/display/vhost-user-gpu.c | 1 -
+>  2 files changed, 4 insertions(+), 2 deletions(-)
 
 
