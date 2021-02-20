@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDRUK-0007Eg-QP
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58856)
+	id 1lDRUL-0007FN-3Z
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRUH-00074O-6S; Sat, 20 Feb 2021 07:35:53 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:54909)
+ id 1lDRUH-000761-L3; Sat, 20 Feb 2021 07:35:53 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:50935)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRUF-0003Om-1Q; Sat, 20 Feb 2021 07:35:52 -0500
+ id 1lDRUD-0003MT-8P; Sat, 20 Feb 2021 07:35:53 -0500
 Received: from localhost.localdomain ([82.252.134.158]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N18MG-1lyRAk0IuI-012UgL; Sat, 20 Feb 2021 13:35:40 +0100
+ id 1MKszj-1lY9IK0OKL-00LDlm; Sat, 20 Feb 2021 13:35:37 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL 12/12] MAINTAINERS: Fix default-configs/ entries
-Date: Sat, 20 Feb 2021 13:35:25 +0100
-Message-Id: <20210220123525.1353731-13-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Gan Qixin <ganqixin@huawei.com>,
+ Pankaj Gupta <pankaj.gupta@cloud.ionos.com>, Thomas Huth <thuth@redhat.com>
+Subject: [PULL 07/12] nvdimm: put it into the 'storage' category
+Date: Sat, 20 Feb 2021 13:35:20 +0100
+Message-Id: <20210220123525.1353731-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210220123525.1353731-1-laurent@vivier.eu>
 References: <20210220123525.1353731-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:GMWVN9p4E1Ugcqb1732RUQMkEhfsk47oEwSLOiRrDPpZhxPPVvQ
- LHNy2TnRQIvY4SR7n6pdRnmJwzNpHpPoFdnW+IcilBY5BfGacSktZmMybD/bnXvEQY6z2lo
- NTPjqC0iabx5Uv2PXb7FnRZLcU8YTeETO9ePGyMIo2ELQRt4M+SIbuG9PteypcY7BoIv2Jc
- fYW7LyBiCezMkMJfDbblQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pq7tLwybG5o=:LeUFuyW6haQ6fkaY0MRVP2
- xEiPzZXYZzmUdL6FO99rbab40QNTy430nfyxwOdGBPLfANc3QfHsNeSW/wnxwoa/9+ylUxyjY
- /w7qcdeX2jXwLIGIgSCEj+HPb6RyFCbzc8D5TmtynbB7dpmutfGLfouClY1RIEZy3BCrJld2u
- JHI6Jy+2CJwl1NPS8nBFs0ZI4OgNQJi+UI7ak1OLzKn6WJUwKL2xywn7fOexc0PdANV5lFqEG
- PsMR9DbIUu56BLoLsucnEr56hpdLR72zazfpnm/zc+N2gRlNAWaMy1EPWa6Gjvc72hiPcTN2p
- 3kp4cGlPjepm2lddd48omQ0rLUdiXJVdw0B2vdHtEk3sbR7CXFhW0AE6delQHolF/0R/3dsG/
- k+eknfsbEWviKEZ6uzkppdTr6LCANUmigxB1aESYS2OwFfvNZXicitqHlhzgxi/XBqnxB+AON
- 4mFy9afpcQ==
+X-Provags-ID: V03:K1:WqdCScj5/hMZfWRJJscnfbcoHTtWeP/35q5p1Sr+B3O9zc4Ah64
+ N4v1hSQfXzbGmko8t5kEqqutCKL5rvZB81G+DrwWt0yxYfxt23j44+l2Efg+v3t4VSeX/+/
+ 6w0wtqueOW8NdFToimg6Xhf/y9EHyw7x0uK2q/5jzcPRnwNcWI74DfeCGlFkznmGZiycNqY
+ a7VhoZ2n5MSd7AhYyW2EQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EMPt7JR3gf0=:S8AqI1XqtLnnFZX8OG7Yuz
+ NkWZtKuxqZ1sYuBpJppi3g+wf5lyOmQ+UW4xZAJqaw29JNemPHhLkL1dYwddWxZvLUhHZdwrM
+ t88xU0FwyZw8XykjVXr6EmaK5+7ibhola49CqUijDy8uqjiWZIhZe1nOgv2/BYGnSBzZ2x+W4
+ N5AQCGHUTg/3Fkkt043eUCGVANAJYw28gKjvuRysEeG/NhtURLsbBBfPBE67AyDyUJ74p7zTE
+ rqx5BNGhOGSRCh2cWTMigNZ0SGBUQWiRoytYX8ccpaWC0Dk7Xk8t6sTtQ73fd1fdrsE2VNOSo
+ FHYikLIkte9gWDxKXKpfJVHFFgL6i6wSrYe4yIHWMIqF7mTZLeCn2XqTNlK+EYczrFM69pDGj
+ hjbFBsF0INuDFz6wbTtK7+uay0OwF7Co5cBx91a4aCPQJ4VC8GFIEJI0OAUmK
 Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -58,113 +56,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Feb 2021 12:35:53 -0000
+X-List-Received-Date: Sat, 20 Feb 2021 12:35:54 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Gan Qixin <ganqixin@huawei.com>
 
-Update the F: line after the Meson refactor.
+The category of the nvdimm device is not set, put it into the 'storage'
+category.
 
-Fixes: 1bb4cb1c338..73362fc0b0c ("default-configs: ...")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20201117114656.1222555-1-f4bug@amsat.org>
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+Reviewed-by: Pankaj Gupta <pankaj.gupta@cloud.ionos.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20201130083630.2520597-5-ganqixin@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ hw/mem/nvdimm.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f3d22d32d3de..c6f83ecd35d5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -87,7 +87,7 @@ S390 general architecture support
- M: Cornelia Huck <cohuck@redhat.com>
- M: Thomas Huth <thuth@redhat.com>
- S: Supported
--F: default-configs/s390x-softmmu.mak
-+F: default-configs/*/s390x-softmmu.mak
- F: gdb-xml/s390*.xml
- F: hw/char/sclp*.[hc]
- F: hw/char/terminal3270.c
-@@ -239,7 +239,7 @@ R: Jiaxun Yang <jiaxun.yang@flygoat.com>
- R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
- S: Odd Fixes
- F: target/mips/
--F: default-configs/*mips*
-+F: default-configs/*/*mips*
- F: disas/mips.c
- F: docs/system/cpu-models-mips.rst.inc
- F: hw/intc/mips_gic.c
-@@ -263,7 +263,7 @@ S: Maintained
- F: target/moxie/
- F: disas/moxie.c
- F: hw/moxie/
--F: default-configs/moxie-softmmu.mak
-+F: default-configs/*/moxie-softmmu.mak
+diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
+index e0a9d606e1bc..7397b6715652 100644
+--- a/hw/mem/nvdimm.c
++++ b/hw/mem/nvdimm.c
+@@ -245,6 +245,7 @@ static void nvdimm_class_init(ObjectClass *oc, void *data)
  
- NiosII TCG CPUs
- M: Chris Wulff <crwulff@gmail.com>
-@@ -272,7 +272,7 @@ S: Maintained
- F: target/nios2/
- F: hw/nios2/
- F: disas/nios2.c
--F: default-configs/nios2-softmmu.mak
-+F: default-configs/*/nios2-softmmu.mak
+     nvc->read_label_data = nvdimm_read_label_data;
+     nvc->write_label_data = nvdimm_write_label_data;
++    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
  
- OpenRISC TCG CPUs
- M: Stafford Horne <shorne@gmail.com>
-@@ -367,7 +367,7 @@ F: hw/xtensa/
- F: tests/tcg/xtensa/
- F: disas/xtensa.c
- F: include/hw/xtensa/xtensa-isa.h
--F: default-configs/xtensa*.mak
-+F: default-configs/*/xtensa*.mak
- 
- TriCore TCG CPUs
- M: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-@@ -1038,7 +1038,7 @@ AVR MCUs
- M: Michael Rolnik <mrolnik@gmail.com>
- R: Sarah Harris <S.E.Harris@kent.ac.uk>
- S: Maintained
--F: default-configs/avr-softmmu.mak
-+F: default-configs/*/avr-softmmu.mak
- F: hw/avr/
- F: include/hw/char/avr_usart.h
- F: hw/char/avr_usart.c
-@@ -1067,7 +1067,7 @@ HP B160L
- M: Richard Henderson <richard.henderson@linaro.org>
- R: Helge Deller <deller@gmx.de>
- S: Odd Fixes
--F: default-configs/hppa-softmmu.mak
-+F: default-configs/*/hppa-softmmu.mak
- F: hw/hppa/
- F: pc-bios/hppa-firmware.img
- 
-@@ -1458,7 +1458,7 @@ F: hw/s390x/
- F: include/hw/s390x/
- F: hw/watchdog/wdt_diag288.c
- F: include/hw/watchdog/wdt_diag288.h
--F: default-configs/s390x-softmmu.mak
-+F: default-configs/*/s390x-softmmu.mak
- F: tests/acceptance/machine_s390_ccw_virtio.py
- T: git https://gitlab.com/cohuck/qemu.git s390-next
- T: git https://github.com/borntraeger/qemu.git s390-next
-@@ -2887,13 +2887,13 @@ F: accel/tcg/user-exec*.c
- BSD user
- S: Orphan
- F: bsd-user/
--F: default-configs/*-bsd-user.mak
-+F: default-configs/targets/*-bsd-user.mak
- 
- Linux user
- M: Laurent Vivier <laurent@vivier.eu>
- S: Maintained
- F: linux-user/
--F: default-configs/*-linux-user.mak
-+F: default-configs/targets/*linux-user.mak
- F: scripts/qemu-binfmt-conf.sh
- F: scripts/update-syscalltbl.sh
- F: scripts/update-mips-syscall-args.sh
+ static TypeInfo nvdimm_info = {
 -- 
 2.29.2
 
