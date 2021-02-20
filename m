@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDRUL-0007FN-3Z
+	id 1lDRUL-0007G2-Bj
 	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58876)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58912)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRUH-000761-L3; Sat, 20 Feb 2021 07:35:53 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:50935)
+ id 1lDRUI-00079B-SB; Sat, 20 Feb 2021 07:35:54 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:38557)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRUD-0003MT-8P; Sat, 20 Feb 2021 07:35:53 -0500
+ id 1lDRUF-0003Op-Fy; Sat, 20 Feb 2021 07:35:54 -0500
 Received: from localhost.localdomain ([82.252.134.158]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MKszj-1lY9IK0OKL-00LDlm; Sat, 20 Feb 2021 13:35:37 +0100
+ id 1MXpQA-1lLH8F3QoG-00Y7wN; Sat, 20 Feb 2021 13:35:36 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>, Gan Qixin <ganqixin@huawei.com>,
- Pankaj Gupta <pankaj.gupta@cloud.ionos.com>, Thomas Huth <thuth@redhat.com>
-Subject: [PULL 07/12] nvdimm: put it into the 'storage' category
-Date: Sat, 20 Feb 2021 13:35:20 +0100
-Message-Id: <20210220123525.1353731-8-laurent@vivier.eu>
+ Pankaj Gupta <pankaj.gupta@cloud.ionos.com>
+Subject: [PULL 05/12] virtio-pmem: put it into the 'storage' category
+Date: Sat, 20 Feb 2021 13:35:18 +0100
+Message-Id: <20210220123525.1353731-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210220123525.1353731-1-laurent@vivier.eu>
 References: <20210220123525.1353731-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:WqdCScj5/hMZfWRJJscnfbcoHTtWeP/35q5p1Sr+B3O9zc4Ah64
- N4v1hSQfXzbGmko8t5kEqqutCKL5rvZB81G+DrwWt0yxYfxt23j44+l2Efg+v3t4VSeX/+/
- 6w0wtqueOW8NdFToimg6Xhf/y9EHyw7x0uK2q/5jzcPRnwNcWI74DfeCGlFkznmGZiycNqY
- a7VhoZ2n5MSd7AhYyW2EQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:EMPt7JR3gf0=:S8AqI1XqtLnnFZX8OG7Yuz
- NkWZtKuxqZ1sYuBpJppi3g+wf5lyOmQ+UW4xZAJqaw29JNemPHhLkL1dYwddWxZvLUhHZdwrM
- t88xU0FwyZw8XykjVXr6EmaK5+7ibhola49CqUijDy8uqjiWZIhZe1nOgv2/BYGnSBzZ2x+W4
- N5AQCGHUTg/3Fkkt043eUCGVANAJYw28gKjvuRysEeG/NhtURLsbBBfPBE67AyDyUJ74p7zTE
- rqx5BNGhOGSRCh2cWTMigNZ0SGBUQWiRoytYX8ccpaWC0Dk7Xk8t6sTtQ73fd1fdrsE2VNOSo
- FHYikLIkte9gWDxKXKpfJVHFFgL6i6wSrYe4yIHWMIqF7mTZLeCn2XqTNlK+EYczrFM69pDGj
- hjbFBsF0INuDFz6wbTtK7+uay0OwF7Co5cBx91a4aCPQJ4VC8GFIEJI0OAUmK
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:GpFRtxIXeQJlu0VxI2izQDOY4JZLNGVAHQuadfLk9EOjpRZRXlU
+ 5Q3JXQN+RMnawQNUV4FuomM/dtMwuJ+K0TTTKREtp4zKBCR6A4SbvsFIFhLD/DKGmTWe1hc
+ 3+ztpFyuWMa/D1OXQwk7o32sFBc4S8jC4M+KtX6dazK6hW0drJDKrG+8J45/MYQ80wdHg3Q
+ 2EGqOXeDmTBn6HDctmtKw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZxY6uF1c8FE=:mDBi2Z90HMLM1J9DSFpYrd
+ UMx3GIZBIjg2gQDxKLqroUQSEW6ydzG85djNYclurA9AYHVycgrhKNEzYV6842VGhQSGLFTK4
+ 9FozRtjn0T7Si2PIAw3ZBfl0D/34APsUI5Sg0WkGOB41aIH5lJyHR7UvXuy65HK38PFued6+5
+ FvHzH0kGNa0aoTrEES45IXb7wxBtXDaDFCut9IRWrRuKqgr5TTOxf6c1IaqlL/Xh0uyM1cMHH
+ igcGSmKqmE/sbUjrmNaV/MjEalaDQmr3cYXXbX+5+MBmdpRwKw6c/52eU6PF0VPoRWjXagQ5b
+ HYHXuOakNdym8YyVGsvceaf0hbauw7Z+g6RoRlf2Hu/xwQ6mCN6Q2Epk4drgRfmLWdF1ERJUf
+ TaAqOPoGgr6k4RKEvK1BTJMNVAtFEBnkW6L8lgI2cDHKMhNUGVB44q4RTtjXf
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -56,34 +56,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Feb 2021 12:35:54 -0000
+X-List-Received-Date: Sat, 20 Feb 2021 12:35:55 -0000
 
 From: Gan Qixin <ganqixin@huawei.com>
 
-The category of the nvdimm device is not set, put it into the 'storage'
+The category of the virtio-pmem device is not set, put it into the 'storage'
 category.
 
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 Reviewed-by: Pankaj Gupta <pankaj.gupta@cloud.ionos.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20201130083630.2520597-5-ganqixin@huawei.com>
+Message-Id: <20201130083630.2520597-3-ganqixin@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/mem/nvdimm.c | 1 +
+ hw/virtio/virtio-pmem.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
-index e0a9d606e1bc..7397b6715652 100644
---- a/hw/mem/nvdimm.c
-+++ b/hw/mem/nvdimm.c
-@@ -245,6 +245,7 @@ static void nvdimm_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
+index d83e973bf299..a3e0688a891b 100644
+--- a/hw/virtio/virtio-pmem.c
++++ b/hw/virtio/virtio-pmem.c
+@@ -179,6 +179,7 @@ static void virtio_pmem_class_init(ObjectClass *klass, void *data)
  
-     nvc->read_label_data = nvdimm_read_label_data;
-     nvc->write_label_data = nvdimm_write_label_data;
+     vpc->fill_device_info = virtio_pmem_fill_device_info;
+     vpc->get_memory_region = virtio_pmem_get_memory_region;
 +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
  }
  
- static TypeInfo nvdimm_info = {
+ static TypeInfo virtio_pmem_info = {
 -- 
 2.29.2
 
