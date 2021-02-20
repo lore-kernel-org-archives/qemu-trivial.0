@@ -1,42 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDRU7-0006wd-KC
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58786)
+	id 1lDRUH-00074A-4p
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58832)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRU5-0006rN-8A; Sat, 20 Feb 2021 07:35:41 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:34689)
+ id 1lDRUF-00070D-E1; Sat, 20 Feb 2021 07:35:51 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:41305)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRU1-0003DJ-RD; Sat, 20 Feb 2021 07:35:41 -0500
+ id 1lDRUC-0003MJ-MS; Sat, 20 Feb 2021 07:35:50 -0500
 Received: from localhost.localdomain ([82.252.134.158]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M1qfu-1lFePK2qgS-002JL9; Sat, 20 Feb 2021 13:35:31 +0100
+ id 1Miqzy-1ljV2i1uqa-00exXT; Sat, 20 Feb 2021 13:35:36 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
- John Snow <jsnow@redhat.com>
-Subject: [PULL 02/12] hw/block/fdc: Remove the check_media_rate property
-Date: Sat, 20 Feb 2021 13:35:15 +0100
-Message-Id: <20210220123525.1353731-3-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Gan Qixin <ganqixin@huawei.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 06/12] vmmouse: put it into the 'input' category
+Date: Sat, 20 Feb 2021 13:35:19 +0100
+Message-Id: <20210220123525.1353731-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210220123525.1353731-1-laurent@vivier.eu>
 References: <20210220123525.1353731-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:RWM60CcJi6YEFQXOYDRGjgef2sLIRKP7JinhJNJpikJ2XJOua18
- Kbw2wyQvKAAJDW40H5KuMNRGH6ZqGxF4NpthpnuAHjK5NXGYExtooOc7ZDSiu7DDOKUKP9o
- Fp8xO+DuxOcP7F20eRAPdnklrUciRv/C64/Kin4MCETJpquiMmE7GaHO96imMm0LiUzKU9b
- dJM8IqQpM25Joaz6AHfQA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:IhhxjFCJgSc=:0OMtphWgIZsHBc7b4bE0Zl
- bD9TGVseg/7jAKyb6EzGiYx+4qPYBBGfC26yIUia7jRiV9uYp3oZZd1H8kfcPToYItT+tIQe9
- FHFek6tRo6rjyVVCn6dacIRPBPx3fvoQV78ArOSmE/i/nTtpBOPT1gvinuMlH1pJH17nXj2CC
- oECP87odMkVjnXyyQV+y/Ho9TK+kvnzpEjM/G1EF9WBM2EcZeZSz2RRoNo7JC5dO32Mw8UoNo
- 22I0ny6DEXx3WZz7iOZePEcU8e50karJAaNxiNi1PhZAoQzxrJk2WRaGna08g0cB+jMgGs4Sd
- YZogzAzWAWH4DUKnAGdrGirwDWtwTiQHwOt1+CnLR6D8fT9xsHmWsqzskNqBeVlcgWoWU4k1r
- epngWGCSS3Xn8/MJTst6OTqNTJQ9kMWlJPl7rt3ok06Tj14JzlJkfcogBI2LQywSg5qXM5UV1
- tgbSvdC0cA==
+X-Provags-ID: V03:K1:H9EDVWpnCSs9ecR5x1Mujxt7elTnnL0JEQC7iBh9BT50gruihej
+ gwRhWCuqMcpQlGA2HW1+DBEGWlkSKEhDdCpXbyE7IBw/Beja4XKxd7mm9ZhlOCU7MMfQfO8
+ rAVU9WbU+DNzzYAgWyAbZhhJqd391uy9vYulwMMaCEav8Sic+PqMd6NkAmPBCa0euDpymyd
+ qY50o0AVjvuKYROMdgUGQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7r2APxRwze0=:IUyXa5Du5zAmD9m6/CGi51
+ 3eECKbJt56Iha56Uc+zxeB8rX1oBFLZj+830WDMO9g7KEvJMBulrxOcZeOtDx7M6ry4TYBPIY
+ Vm9Jnhfubzgv3H2RsAyYIs3V+q2JegcURw6Re6735ndW0N4fmBwZNXEwBN5XjwCZL60SINtsj
+ zjPFpIaVwYBnuDRYiETPR2WP+Scu/qgGwt62/90AgTWO+KSEJfcgkm6Fij+05J9eoEfdP5mJP
+ iwEufB9bI3fHxE0jpIRX4dCVQ6D29Jtp7N5/6Y/7I5wJgMgetBK2tUd2O6hONmgVd62S1IziQ
+ RgUGhazoK6SwhH2D/FLP48+FvFViI02yumcAoLr33Woy/zSz7ahMPKDQvTKrBHq8J4d4aE6Cl
+ FMVKiG2PaVN6NWGDJtVbrX7RH5OJh62YSSLx9y9nPcv+2CuGvXAw1Q+E5jfIp
 Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -57,368 +58,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Feb 2021 12:35:41 -0000
+X-List-Received-Date: Sat, 20 Feb 2021 12:35:51 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Gan Qixin <ganqixin@huawei.com>
 
-This was only required for the pc-1.0 and earlier machine types.
-Now that these have been removed, we can also drop the corresponding
-code from the FDC device.
+The category of the vmmouse device is not set, put it into the 'input'
+category.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: John Snow <jsnow@redhat.com>
-Acked-by: John Snow <jsnow@redhat.com>
-Message-Id: <20210203171832.483176-3-thuth@redhat.com>
+Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20201130083630.2520597-4-ganqixin@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/block/fdc.c             | 17 ++---------------
- tests/qemu-iotests/172.out | 35 -----------------------------------
- 2 files changed, 2 insertions(+), 50 deletions(-)
+ hw/i386/vmmouse.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/block/fdc.c b/hw/block/fdc.c
-index 292ea878052a..198940e73799 100644
---- a/hw/block/fdc.c
-+++ b/hw/block/fdc.c
-@@ -874,7 +874,6 @@ struct FDCtrl {
-         FloppyDriveType type;
-     } qdev_for_drives[MAX_FD];
-     int reset_sensei;
--    uint32_t check_media_rate;
-     FloppyDriveType fallback; /* type=auto failure fallback */
-     /* Timers state */
-     uint8_t timer0;
-@@ -1021,18 +1020,10 @@ static const VMStateDescription vmstate_fdrive_media_changed = {
-     }
- };
+diff --git a/hw/i386/vmmouse.c b/hw/i386/vmmouse.c
+index a3556438f0ff..df4798f50284 100644
+--- a/hw/i386/vmmouse.c
++++ b/hw/i386/vmmouse.c
+@@ -308,6 +308,7 @@ static void vmmouse_class_initfn(ObjectClass *klass, void *data)
+     dc->reset = vmmouse_reset;
+     dc->vmsd = &vmstate_vmmouse;
+     device_class_set_props(dc, vmmouse_properties);
++    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+ }
  
--static bool fdrive_media_rate_needed(void *opaque)
--{
--    FDrive *drive = opaque;
--
--    return drive->fdctrl->check_media_rate;
--}
--
- static const VMStateDescription vmstate_fdrive_media_rate = {
-     .name = "fdrive/media_rate",
-     .version_id = 1,
-     .minimum_version_id = 1,
--    .needed = fdrive_media_rate_needed,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT8(media_rate, FDrive),
-         VMSTATE_END_OF_LIST()
-@@ -1689,8 +1680,7 @@ static void fdctrl_start_transfer(FDCtrl *fdctrl, int direction)
- 
-     /* Check the data rate. If the programmed data rate does not match
-      * the currently inserted medium, the operation has to fail. */
--    if (fdctrl->check_media_rate &&
--        (fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
-+    if ((fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
-         FLOPPY_DPRINTF("data rate mismatch (fdc=%d, media=%d)\n",
-                        fdctrl->dsr & FD_DSR_DRATEMASK, cur_drv->media_rate);
-         fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_MA, 0x00);
-@@ -2489,8 +2479,7 @@ static void fdctrl_result_timer(void *opaque)
-         cur_drv->sect = (cur_drv->sect % cur_drv->last_sect) + 1;
-     }
-     /* READ_ID can't automatically succeed! */
--    if (fdctrl->check_media_rate &&
--        (fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
-+    if ((fdctrl->dsr & FD_DSR_DRATEMASK) != cur_drv->media_rate) {
-         FLOPPY_DPRINTF("read id rate mismatch (fdc=%d, media=%d)\n",
-                        fdctrl->dsr & FD_DSR_DRATEMASK, cur_drv->media_rate);
-         fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_MA, 0x00);
-@@ -2895,8 +2884,6 @@ static Property isa_fdc_properties[] = {
-     DEFINE_PROP_UINT32("dma", FDCtrlISABus, dma, 2),
-     DEFINE_PROP_DRIVE("driveA", FDCtrlISABus, state.qdev_for_drives[0].blk),
-     DEFINE_PROP_DRIVE("driveB", FDCtrlISABus, state.qdev_for_drives[1].blk),
--    DEFINE_PROP_BIT("check_media_rate", FDCtrlISABus, state.check_media_rate,
--                    0, true),
-     DEFINE_PROP_SIGNED("fdtypeA", FDCtrlISABus, state.qdev_for_drives[0].type,
-                         FLOPPY_DRIVE_TYPE_AUTO, qdev_prop_fdc_drive_type,
-                         FloppyDriveType),
-diff --git a/tests/qemu-iotests/172.out b/tests/qemu-iotests/172.out
-index 2cd4a8fd83ca..349ae51d6ce2 100644
---- a/tests/qemu-iotests/172.out
-+++ b/tests/qemu-iotests/172.out
-@@ -14,7 +14,6 @@ Testing:
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -44,7 +43,6 @@ Testing: -fda TEST_DIR/t.qcow2
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -84,7 +82,6 @@ Testing: -fdb TEST_DIR/t.qcow2
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -139,7 +136,6 @@ Testing: -fda TEST_DIR/t.qcow2 -fdb TEST_DIR/t.qcow2.2
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -195,7 +191,6 @@ Testing: -fdb
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -236,7 +231,6 @@ Testing: -drive if=floppy,file=TEST_DIR/t.qcow2
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -276,7 +270,6 @@ Testing: -drive if=floppy,file=TEST_DIR/t.qcow2,index=1
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -331,7 +324,6 @@ Testing: -drive if=floppy,file=TEST_DIR/t.qcow2 -drive if=floppy,file=TEST_DIR/t
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -392,7 +384,6 @@ Use -device floppy,unit=0,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -434,7 +425,6 @@ Use -device floppy,unit=1,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -478,7 +468,6 @@ Use -device floppy,unit=1,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -537,7 +526,6 @@ Testing: -drive if=none,file=TEST_DIR/t.qcow2 -device floppy,drive=none0
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -577,7 +565,6 @@ Testing: -drive if=none,file=TEST_DIR/t.qcow2 -device floppy,drive=none0,unit=1
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -617,7 +604,6 @@ Testing: -drive if=none,file=TEST_DIR/t.qcow2 -drive if=none,file=TEST_DIR/t.qco
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -678,7 +664,6 @@ Use -device floppy,unit=1,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -736,7 +721,6 @@ Use -device floppy,unit=0,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -808,7 +792,6 @@ Testing: -fda TEST_DIR/t.qcow2 -drive if=none,file=TEST_DIR/t.qcow2.2 -device fl
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -864,7 +847,6 @@ Testing: -fda TEST_DIR/t.qcow2 -drive if=none,file=TEST_DIR/t.qcow2.2 -device fl
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -920,7 +902,6 @@ Testing: -fdb TEST_DIR/t.qcow2 -drive if=none,file=TEST_DIR/t.qcow2.2 -device fl
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -976,7 +957,6 @@ Testing: -fdb TEST_DIR/t.qcow2 -drive if=none,file=TEST_DIR/t.qcow2.2 -device fl
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1041,7 +1021,6 @@ Testing: -drive if=floppy,file=TEST_DIR/t.qcow2 -drive if=none,file=TEST_DIR/t.q
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1097,7 +1076,6 @@ Testing: -drive if=floppy,file=TEST_DIR/t.qcow2 -drive if=none,file=TEST_DIR/t.q
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1161,7 +1139,6 @@ Use -device floppy,unit=0,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1219,7 +1196,6 @@ Use -device floppy,unit=0,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1277,7 +1253,6 @@ Use -device floppy,unit=1,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1335,7 +1310,6 @@ Use -device floppy,unit=1,drive=... instead.
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1391,7 +1365,6 @@ Testing: -drive if=none,file=TEST_DIR/t.qcow2 -global floppy.drive=none0 -device
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1473,7 +1446,6 @@ Testing: -device floppy
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1500,7 +1472,6 @@ Testing: -device floppy,drive-type=120
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1527,7 +1498,6 @@ Testing: -device floppy,drive-type=144
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1554,7 +1524,6 @@ Testing: -device floppy,drive-type=288
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1584,7 +1553,6 @@ Testing: -drive if=none,file=TEST_DIR/t.qcow2 -device floppy,drive=none0,drive-t
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1624,7 +1592,6 @@ Testing: -drive if=none,file=TEST_DIR/t.qcow2 -device floppy,drive=none0,drive-t
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1667,7 +1634,6 @@ Testing: -drive if=none,file=TEST_DIR/t.qcow2 -device floppy,drive=none0,logical
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
-@@ -1707,7 +1673,6 @@ Testing: -drive if=none,file=TEST_DIR/t.qcow2 -device floppy,drive=none0,physica
-             dma = 2 (0x2)
-             driveA = ""
-             driveB = ""
--            check_media_rate = true
-             fdtypeA = "auto"
-             fdtypeB = "auto"
-             fallback = "288"
+ static const TypeInfo vmmouse_info = {
 -- 
 2.29.2
 
