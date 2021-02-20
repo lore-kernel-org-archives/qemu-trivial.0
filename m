@@ -1,44 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDRUL-0007Gz-Im
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58918)
+	id 1lDRUM-0007KO-Ov
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRUJ-0007Bt-RY; Sat, 20 Feb 2021 07:35:55 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:48171)
+ id 1lDRUI-00078f-M8; Sat, 20 Feb 2021 07:35:54 -0500
+Received: from mout.kundenserver.de ([212.227.17.24]:58925)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRUF-0003NH-2R; Sat, 20 Feb 2021 07:35:55 -0500
+ id 1lDRUF-0003OS-Fq; Sat, 20 Feb 2021 07:35:54 -0500
 Received: from localhost.localdomain ([82.252.134.158]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MmD2M-1le0sH03yC-00iCfr; Sat, 20 Feb 2021 13:35:33 +0100
+ id 1MAgMY-1l6syp2FGS-00B4mZ; Sat, 20 Feb 2021 13:35:39 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Ryan Finnie <ryan@finnie.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PULL 03/12] Fix SPDX-License-Identifier typos
-Date: Sat, 20 Feb 2021 13:35:16 +0100
-Message-Id: <20210220123525.1353731-4-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 11/12] target/avr/cpu: Use device_class_set_parent_realize()
+Date: Sat, 20 Feb 2021 13:35:24 +0100
+Message-Id: <20210220123525.1353731-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210220123525.1353731-1-laurent@vivier.eu>
 References: <20210220123525.1353731-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:KOZ0nVRzrcJleXtU6EFPiPB9DPTpkqdtohovAcyiPr/Vx909Fqq
- rMgMFY2Ip6/9KQfOUCKhWxjAM9hEbfQBmKN/D11zf0R9iCI0ISweaaA13fi2CXCJAUGLxG9
- XXPJo5SylvODqlChy4hUN1F+V+vV9u8HKZpMsh5bOqzqyx6hcNoCnroiu9fbNXwm7JmjmJE
- NCLTj1wGzvMPd6zSm/VoA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:nGHONEtvAoo=:+NjN4ox90M5jpPpZmDIgux
- Vm3HS79XnWY1H3DUMOhlfbT3LKXhu+xGjo5oHXvuVWfrA5eoFeB3lM29H41OUJ3DyO305/J2d
- 0+Yp+qwydoyliA3bOnXSEFs/M3CRT8niTuvxZtLGJDodUFePlkwGMQ99iG9126gemy0IFFbB7
- 69eIyCjr1QGuDkcm8e+Zg6lcGpnPBm4HAtiDY90W0mvxpCbyFVhaQy/0tLkCRBtAxGhgNx3rg
- bVj41JURQlma9A2ogGMAyXZX9UsSn6iC5PSbBLm3fwTAcKK+PSak/k6QA8oSU6DwqCjAqvuye
- zlIbX7QZnWD60KjRc3nCJcUZgK2Rq8/MwHM3otHXCkPvrkjm0d74i6gGkvUPPPfq25ZXLTfyj
- tYSrJcLlrEkFKCdFjxypBWWciSxLCW3qzKjttjwrfIt+cpJZFFJGqcqhR31tggET63c/NopOb
- kaVmjFHZMQ==
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:c0W/25rmJIeB4TfIxifESZLNBhGhOtPboFTZ7G5fnG0jbvOQNkY
+ pwqVNui3ND8HrMLEzBwCtted6K9cBumI9uRVbBsKZUWTAxgYHWqxx6dOqiR46fRe5Z4ZT9D
+ 2a3bsIKNUi850yALLesh1gg1rucGhWaFATxQuScWnQtYukcQ/vVZo9MAdNlQ2Vcn392mQ+F
+ 5V5ICP/4+unBReVHgi4ag==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ueHF+mkdbmI=:Q8Whg/FnZs/rRMFQ9RhrFz
+ 3ls9epWzlMKmUIaIUnjGZyWaArVQQpD4ffZqtgh94f99yjEou6wxYiZ7N/xtxTXNNutLFr5s7
+ F09FY0UplqydV9vU1tHRD1YDCQSTkCsAAAZ6QA4qTZTBZBrvXTNKrXGyzFKLp2vaS3Bt72Fpd
+ yTR/GiQt03C8McLYVNls3NwixcXXH1LfMLpabA8DiKQIfNufWwRvDUbJgO+iL59stNcIhpJKI
+ IDBagfWnY8A4KKWRYjAOgMJdpWXq2eb8281U0qQGdiWP2+NBKNATEDt4DY8+RGXc/W4EJBh0S
+ Val/9fxuGrafoJ9OuerKDGBVlsznwotcWY6/4RbPwHDeJWQyvoTOGdWEPiSIMp6XsvQCLHy2y
+ vbSyK+BAiUT04cBiaAhUuKOvsVh6CW0jgteLU7gPn0U6b84YriAwArx1N2sk4SoGbrksU9Yp3
+ o1ekgV4Brw==
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -58,91 +59,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Feb 2021 12:35:56 -0000
+X-List-Received-Date: Sat, 20 Feb 2021 12:35:55 -0000
 
-From: Ryan Finnie <ryan@finnie.org>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Several SPDX headers contain "SPDX-License-Identifer" (note the
-missing "i" before "er"); fix these typos.
+Change generated automatically using the Coccinelle
+patch included in commit bf853881690 ("qdev: use
+device_class_set_parent_realize/unrealize/reset()")
 
-Signed-off-by: Ryan Finnie <ryan@finnie.org>
-Cc: qemu-trivial@nongnu.org
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20210201200147.211914-1-ryan@finnie.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20210201080348.438095-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/misc/aspeed_xdma.c         | 2 +-
- hw/misc/sbsa_ec.c             | 2 +-
- hw/sd/aspeed_sdhci.c          | 2 +-
- include/hw/misc/aspeed_xdma.h | 2 +-
- include/hw/sd/aspeed_sdhci.h  | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+ target/avr/cpu.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
-index dca5585a7566..533d237e3ce2 100644
---- a/hw/misc/aspeed_xdma.c
-+++ b/hw/misc/aspeed_xdma.c
-@@ -3,7 +3,7 @@
-  * Eddie James <eajames@linux.ibm.com>
-  *
-  * Copyright (C) 2019 IBM Corp
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index fa0f8e0e80e8..0f4596932baf 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -203,9 +203,7 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
+     CPUClass *cc = CPU_CLASS(oc);
+     AVRCPUClass *mcc = AVR_CPU_CLASS(oc);
  
- #include "qemu/osdep.h"
-diff --git a/hw/misc/sbsa_ec.c b/hw/misc/sbsa_ec.c
-index 9a7d7f914a97..83020fe9ac9b 100644
---- a/hw/misc/sbsa_ec.c
-+++ b/hw/misc/sbsa_ec.c
-@@ -7,7 +7,7 @@
-  * Copyright (c) 2020 Nuvia Inc
-  * Written by Graeme Gregory <graeme@nuviainc.com>
-  *
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
+-    mcc->parent_realize = dc->realize;
+-    dc->realize = avr_cpu_realizefn;
+-
++    device_class_set_parent_realize(dc, avr_cpu_realizefn, &mcc->parent_realize);
+     device_class_set_parent_reset(dc, avr_cpu_reset, &mcc->parent_reset);
  
- #include "qemu/osdep.h"
-diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
-index 4f24b7d2f942..3299844de6dc 100644
---- a/hw/sd/aspeed_sdhci.c
-+++ b/hw/sd/aspeed_sdhci.c
-@@ -3,7 +3,7 @@
-  * Eddie James <eajames@linux.ibm.com>
-  *
-  * Copyright (C) 2019 IBM Corp
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
- #include "qemu/osdep.h"
-diff --git a/include/hw/misc/aspeed_xdma.h b/include/hw/misc/aspeed_xdma.h
-index 9869ef472895..a2dea96984f3 100644
---- a/include/hw/misc/aspeed_xdma.h
-+++ b/include/hw/misc/aspeed_xdma.h
-@@ -3,7 +3,7 @@
-  * Eddie James <eajames@linux.ibm.com>
-  *
-  * Copyright (C) 2019 IBM Corp.
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
- #ifndef ASPEED_XDMA_H
-diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
-index b093d1b86123..057bc5f3d139 100644
---- a/include/hw/sd/aspeed_sdhci.h
-+++ b/include/hw/sd/aspeed_sdhci.h
-@@ -3,7 +3,7 @@
-  * Eddie James <eajames@linux.ibm.com>
-  *
-  * Copyright (C) 2019 IBM Corp
-- * SPDX-License-Identifer: GPL-2.0-or-later
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
- #ifndef ASPEED_SDHCI_H
+     cc->class_by_name = avr_cpu_class_by_name;
 -- 
 2.29.2
 
