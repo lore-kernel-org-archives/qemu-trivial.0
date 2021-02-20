@@ -1,43 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDRUJ-0007BC-Kc
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58864)
+	id 1lDRUK-0007Eg-QP
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2021 07:35:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRUH-00075Q-Fg; Sat, 20 Feb 2021 07:35:53 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:35919)
+ id 1lDRUH-00074O-6S; Sat, 20 Feb 2021 07:35:53 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:54909)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lDRUE-0003Mc-8H; Sat, 20 Feb 2021 07:35:53 -0500
+ id 1lDRUF-0003Om-1Q; Sat, 20 Feb 2021 07:35:52 -0500
 Received: from localhost.localdomain ([82.252.134.158]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N8X9L-1lr1a43V2H-014QU6; Sat, 20 Feb 2021 13:35:38 +0100
+ id 1N18MG-1lyRAk0IuI-012UgL; Sat, 20 Feb 2021 13:35:40 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Gan Qixin <ganqixin@huawei.com>,
- Stefan Berger <stefanb@linux.ibm.com>
-Subject: [PULL 08/12] tpm: put some tpm devices into the correct category
-Date: Sat, 20 Feb 2021 13:35:21 +0100
-Message-Id: <20210220123525.1353731-9-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PULL 12/12] MAINTAINERS: Fix default-configs/ entries
+Date: Sat, 20 Feb 2021 13:35:25 +0100
+Message-Id: <20210220123525.1353731-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210220123525.1353731-1-laurent@vivier.eu>
 References: <20210220123525.1353731-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:315G45u9ruNXWIg974Ogb+dqNU0/iZuh/lNtZGUGALgrUUuE4dJ
- 1R7NiR75M5NtB2A97tRIYT2bG1Uz9iSpt3khW8IqwCNfrqzTPpMijDEHudRQO85ZuxzCqPD
- 46IwYUKW63rxrHbhwb3VZbiUDsO81+LGgFBqIX305ovWJWS60LtMOvFzBT2bvXEQBWxH1Bv
- H7mXVfHCyL8U9gGzcI3JQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:V7XhFQZ8/zg=:yzI2+eRklNvXMURMipUpP9
- XUHujTQ8fPxFy/NvbNvIanF7fAuRlJg4mEodk8UJzXq/b071hG9/f7Ad1MalSQzjiqcT5Ar2z
- 3HKUYvPome/Okw3DkyRno34Axh1mwyh2OyC5dWsqmDKec2ib23zz39OtcvMLm7m1sju73AXBH
- LkSbX7BAZlOfmEbKHliCof8Rbrf9G1Nee5IttTUo4MOyBORG0H3QnLMcntYHURK91YxY4GzfX
- Hx2iNN1Qq0OZJF4BoXQY4o8gLEiKyrpfXAXya4oQ4zJ2KxVs2gmK9N70MwPvG6/kBhkMHFLD0
- p0KTCyBDGpmwxizSatqou6BJnk4QkQht3kLVQjIFOXtQ9XmfyB0evaiBWyJQdD2FnmY+/CwDR
- wTQbPJSY3qByImmnD48W6142ZC2DXjzcRXhFccvlxruo8FNgpax7KaTzC2UgkMKeSbv7G779y
- s1G1wvzE+Q==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:GMWVN9p4E1Ugcqb1732RUQMkEhfsk47oEwSLOiRrDPpZhxPPVvQ
+ LHNy2TnRQIvY4SR7n6pdRnmJwzNpHpPoFdnW+IcilBY5BfGacSktZmMybD/bnXvEQY6z2lo
+ NTPjqC0iabx5Uv2PXb7FnRZLcU8YTeETO9ePGyMIo2ELQRt4M+SIbuG9PteypcY7BoIv2Jc
+ fYW7LyBiCezMkMJfDbblQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pq7tLwybG5o=:LeUFuyW6haQ6fkaY0MRVP2
+ xEiPzZXYZzmUdL6FO99rbab40QNTy430nfyxwOdGBPLfANc3QfHsNeSW/wnxwoa/9+ylUxyjY
+ /w7qcdeX2jXwLIGIgSCEj+HPb6RyFCbzc8D5TmtynbB7dpmutfGLfouClY1RIEZy3BCrJld2u
+ JHI6Jy+2CJwl1NPS8nBFs0ZI4OgNQJi+UI7ak1OLzKn6WJUwKL2xywn7fOexc0PdANV5lFqEG
+ PsMR9DbIUu56BLoLsucnEr56hpdLR72zazfpnm/zc+N2gRlNAWaMy1EPWa6Gjvc72hiPcTN2p
+ 3kp4cGlPjepm2lddd48omQ0rLUdiXJVdw0B2vdHtEk3sbR7CXFhW0AE6delQHolF/0R/3dsG/
+ k+eknfsbEWviKEZ6uzkppdTr6LCANUmigxB1aESYS2OwFfvNZXicitqHlhzgxi/XBqnxB+AON
+ 4mFy9afpcQ==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -57,45 +58,113 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Feb 2021 12:35:54 -0000
+X-List-Received-Date: Sat, 20 Feb 2021 12:35:53 -0000
 
-From: Gan Qixin <ganqixin@huawei.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Some tpm devices have no category, put them into the correct category.
+Update the F: line after the Meson refactor.
 
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Message-Id: <20201130083630.2520597-8-ganqixin@huawei.com>
+Fixes: 1bb4cb1c338..73362fc0b0c ("default-configs: ...")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20201117114656.1222555-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/tpm/tpm_tis_isa.c    | 1 +
- hw/tpm/tpm_tis_sysbus.c | 1 +
- 2 files changed, 2 insertions(+)
+ MAINTAINERS | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/hw/tpm/tpm_tis_isa.c b/hw/tpm/tpm_tis_isa.c
-index 6fd876eebf14..10d8a14f19f6 100644
---- a/hw/tpm/tpm_tis_isa.c
-+++ b/hw/tpm/tpm_tis_isa.c
-@@ -150,6 +150,7 @@ static void tpm_tis_isa_class_init(ObjectClass *klass, void *data)
-     dc->reset = tpm_tis_isa_reset;
-     tc->request_completed = tpm_tis_isa_request_completed;
-     tc->get_version = tpm_tis_isa_get_tpm_version;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index f3d22d32d3de..c6f83ecd35d5 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -87,7 +87,7 @@ S390 general architecture support
+ M: Cornelia Huck <cohuck@redhat.com>
+ M: Thomas Huth <thuth@redhat.com>
+ S: Supported
+-F: default-configs/s390x-softmmu.mak
++F: default-configs/*/s390x-softmmu.mak
+ F: gdb-xml/s390*.xml
+ F: hw/char/sclp*.[hc]
+ F: hw/char/terminal3270.c
+@@ -239,7 +239,7 @@ R: Jiaxun Yang <jiaxun.yang@flygoat.com>
+ R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+ S: Odd Fixes
+ F: target/mips/
+-F: default-configs/*mips*
++F: default-configs/*/*mips*
+ F: disas/mips.c
+ F: docs/system/cpu-models-mips.rst.inc
+ F: hw/intc/mips_gic.c
+@@ -263,7 +263,7 @@ S: Maintained
+ F: target/moxie/
+ F: disas/moxie.c
+ F: hw/moxie/
+-F: default-configs/moxie-softmmu.mak
++F: default-configs/*/moxie-softmmu.mak
  
- static const TypeInfo tpm_tis_isa_info = {
-diff --git a/hw/tpm/tpm_tis_sysbus.c b/hw/tpm/tpm_tis_sysbus.c
-index 2c32aa709934..45e63efd6374 100644
---- a/hw/tpm/tpm_tis_sysbus.c
-+++ b/hw/tpm/tpm_tis_sysbus.c
-@@ -139,6 +139,7 @@ static void tpm_tis_sysbus_class_init(ObjectClass *klass, void *data)
-     dc->reset = tpm_tis_sysbus_reset;
-     tc->request_completed = tpm_tis_sysbus_request_completed;
-     tc->get_version = tpm_tis_sysbus_get_tpm_version;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
+ NiosII TCG CPUs
+ M: Chris Wulff <crwulff@gmail.com>
+@@ -272,7 +272,7 @@ S: Maintained
+ F: target/nios2/
+ F: hw/nios2/
+ F: disas/nios2.c
+-F: default-configs/nios2-softmmu.mak
++F: default-configs/*/nios2-softmmu.mak
  
- static const TypeInfo tpm_tis_sysbus_info = {
+ OpenRISC TCG CPUs
+ M: Stafford Horne <shorne@gmail.com>
+@@ -367,7 +367,7 @@ F: hw/xtensa/
+ F: tests/tcg/xtensa/
+ F: disas/xtensa.c
+ F: include/hw/xtensa/xtensa-isa.h
+-F: default-configs/xtensa*.mak
++F: default-configs/*/xtensa*.mak
+ 
+ TriCore TCG CPUs
+ M: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+@@ -1038,7 +1038,7 @@ AVR MCUs
+ M: Michael Rolnik <mrolnik@gmail.com>
+ R: Sarah Harris <S.E.Harris@kent.ac.uk>
+ S: Maintained
+-F: default-configs/avr-softmmu.mak
++F: default-configs/*/avr-softmmu.mak
+ F: hw/avr/
+ F: include/hw/char/avr_usart.h
+ F: hw/char/avr_usart.c
+@@ -1067,7 +1067,7 @@ HP B160L
+ M: Richard Henderson <richard.henderson@linaro.org>
+ R: Helge Deller <deller@gmx.de>
+ S: Odd Fixes
+-F: default-configs/hppa-softmmu.mak
++F: default-configs/*/hppa-softmmu.mak
+ F: hw/hppa/
+ F: pc-bios/hppa-firmware.img
+ 
+@@ -1458,7 +1458,7 @@ F: hw/s390x/
+ F: include/hw/s390x/
+ F: hw/watchdog/wdt_diag288.c
+ F: include/hw/watchdog/wdt_diag288.h
+-F: default-configs/s390x-softmmu.mak
++F: default-configs/*/s390x-softmmu.mak
+ F: tests/acceptance/machine_s390_ccw_virtio.py
+ T: git https://gitlab.com/cohuck/qemu.git s390-next
+ T: git https://github.com/borntraeger/qemu.git s390-next
+@@ -2887,13 +2887,13 @@ F: accel/tcg/user-exec*.c
+ BSD user
+ S: Orphan
+ F: bsd-user/
+-F: default-configs/*-bsd-user.mak
++F: default-configs/targets/*-bsd-user.mak
+ 
+ Linux user
+ M: Laurent Vivier <laurent@vivier.eu>
+ S: Maintained
+ F: linux-user/
+-F: default-configs/*-linux-user.mak
++F: default-configs/targets/*linux-user.mak
+ F: scripts/qemu-binfmt-conf.sh
+ F: scripts/update-syscalltbl.sh
+ F: scripts/update-mips-syscall-args.sh
 -- 
 2.29.2
 
