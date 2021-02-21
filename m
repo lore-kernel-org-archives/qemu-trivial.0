@@ -1,83 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDtBQ-0000iK-DQ
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 13:10:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42828)
+	id 1lDxeV-0001Iv-7e
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 17:56:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lDtBK-0000fo-PX; Sun, 21 Feb 2021 13:10:11 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:34856)
+ id 1lDxeS-0001GH-RQ; Sun, 21 Feb 2021 17:56:32 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:33245)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lDtBH-0007uL-HG; Sun, 21 Feb 2021 13:10:09 -0500
-Received: by mail-wm1-x334.google.com with SMTP id n10so12380706wmq.0;
- Sun, 21 Feb 2021 10:10:06 -0800 (PST)
+ id 1lDxeR-0000Xo-Bx; Sun, 21 Feb 2021 17:56:32 -0500
+Received: by mail-wr1-x429.google.com with SMTP id 7so17186236wrz.0;
+ Sun, 21 Feb 2021 14:56:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=8AS8HVtNS7aMtsCE9eAx8uIyqzgxOpubCAtr2EbERxw=;
- b=dpy6M71HCXXcEmRurKidd4Xw7lSU4XfjWjRe6qju6yMJoUPqN9zsa5JWu1NQl2z72Q
- RQtLo9FB6oynakADDg3sRaGO+l6pDnrnZuEWlS8iPgAlnQu16he3jAtgu20Drp1b7xxN
- TOqaJ+Q+eN6hXcyD+VdY7AxaudG9XvX5uUK+aLWKymSM2YalpcIkWEbL6bBz4me9hlKA
- wyVDc2RPd37RBOg8kFevRScs9pAjoHEybitxQgNeAojo0BuGsf50oi3xczQdGGjUD+yW
- 7v2/CQM7zVpysQD4HXW32b254D5MvEqmpbxnLHX+OBlOkr3Kw2u2kOYIQ0KKafq/YMSs
- DJbg==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VD+cjb3EnEENiAZZm9EnB2Oy0NBOH1rk1BQCyawm+7Y=;
+ b=khgHZR70A9AWYtabJ1UthOlvy/4E0Jhx1Ti2dyV8LqMHqmD86DXIGfeGi7nxnnA1UR
+ L5G1fSAcdbhfBMHvnbLos8izVxjYuen/cIac7ThK3VZ5mWotqK6p/FBvd1Zq7kJ8+pn5
+ QmBfFfFWaB1tA60NXBedv9MWmoNN33S0drdsVUmPtYmPsWdytA2DbKmeTSCGRZNBWbQg
+ ViG4yRlXMyzezh2E/wJnUap15Zvi7yFAw+0QDCeG8lCKWD/r3j7bgzFB0NfLcrgiW56X
+ 178A393t3jhP0YjdEeN1kU05DGcg0V/D/1FByHEWQiPsjMDmk4WYSpX/V8IN0tTISYQS
+ 9W9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=8AS8HVtNS7aMtsCE9eAx8uIyqzgxOpubCAtr2EbERxw=;
- b=Pte5BHIjR25LCqld740Jk4YC7tDstnuQocaCpVunD76QXcoNf+zwOYnHmPQUr0BAs5
- 9Bx40c2PcdpvwXDTKymZ1AXlTwK4GbekiYr5KqncNX1Z16TbyCw6+snLTsmOGMoXsSq3
- vya2A3bTrpTSB73TaDdV/1Iw+VJinL8HGLSOo9NfFcVnsZUwgJVGSnvg3kt9j0ibSets
- aC58O7zFPHpXqpxZtn0GtNACPvPplRmOCIe1P+4iOE5JtKn/A5D5qY0xU7jWJRt6+mTx
- JGF6pGcHBVO0u64wetgiBhprj5yh+roMhvKAdOvKx0z5nwbHV/ubBg/9QKTTsjE/AkNa
- 7VBw==
-X-Gm-Message-State: AOAM530HsJ581ytOHOFWzsQ/o2QMHUuA77sc/Q2HAMcxZUJaHVEgZT4T
- mMKO+UiHs/28RtU162FGB9HBW8QifmE=
-X-Google-Smtp-Source: ABdhPJxBlalUXaLD9z/wyfFHapWh1lBnClZsTD8aRrIQweS9bCogzV9kFst52zJDOo85zyVqFOYVaw==
-X-Received: by 2002:a1c:e446:: with SMTP id b67mr17093405wmh.65.1613931005350; 
- Sun, 21 Feb 2021 10:10:05 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=VD+cjb3EnEENiAZZm9EnB2Oy0NBOH1rk1BQCyawm+7Y=;
+ b=bsvPVZLwj/NkjADA1timZ86FMAVEqElOOSnxLxnUAo9842fiPZLgGUXQF9ktZp9NXR
+ Ksy93DP31zssSYYU+1BlTszJdHjGF1lynpXzTd6TX0nREfk5kt5BFgKPcZ/MTYZFhcfa
+ mBLncT8ZA7LEK5lrIhWjrnckTYaR6O5Z5/QhXwWNxZ1P7iHud6zb4BJoyVGzM0a7rlcU
+ 3uLnOrnlBBRAYdlIxhX4XcHOkAc3H4kPvF7UIKSOb6yP4g6vjsj4ZpO8M5RjWdRi3yXJ
+ BMhUjEuidhnlA+uMEgTpWhTRaLCKDL5P6XQxTlXzXAr+P2gO8ksuhpkptj2i1R0wX9Ez
+ oISA==
+X-Gm-Message-State: AOAM532mhrGmrIVZZsm7IYm7bIfbOLKNaMQI8pos/l8nLEirZJhog0u9
+ 4EXnEquhYEQj4fjpLJfoSlgEYaB3in8=
+X-Google-Smtp-Source: ABdhPJxuXja83AzRbxl8zCrU3qI7L4P4FY/qNdllgn0ha+Yv7+T1AXxZySi2oEL70kUFXapqhYx35Q==
+X-Received: by 2002:a05:6000:c9:: with SMTP id
+ q9mr19665002wrx.338.1613948189013; 
+ Sun, 21 Feb 2021 14:56:29 -0800 (PST)
+Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id o124sm22834752wmo.41.2021.02.21.10.10.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 21 Feb 2021 10:10:04 -0800 (PST)
+ by smtp.gmail.com with ESMTPSA id f7sm26490633wre.78.2021.02.21.14.56.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 21 Feb 2021 14:56:28 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 1/4] hw/sh4/Kconfig: Rename CONFIG_SH4 ->
- CONFIG_SH4_DEVICES
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- "open list:Block layer core" <qemu-block@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Michael Walle <michael@walle.cc>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20210208135048.2601693-1-f4bug@amsat.org>
- <20210208135048.2601693-2-f4bug@amsat.org>
- <CAFEAcA-CYk2XpngH_r3adYmb2t=39wfJA0pae8jmcOPCgofOvw@mail.gmail.com>
- <56febf1b-db70-d934-615d-88a9ff0cdaaf@amsat.org>
-Message-ID: <fdb6f3f8-114d-7f46-e5da-461a4a8a86e6@amsat.org>
-Date: Sun, 21 Feb 2021 19:10:03 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v2 0/3] hw/lm32: Kconfig cleanups
+Date: Sun, 21 Feb 2021 23:56:23 +0100
+Message-Id: <20210221225626.2589247-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <56febf1b-db70-d934-615d-88a9ff0cdaaf@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -92,49 +81,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Feb 2021 18:10:13 -0000
+X-List-Received-Date: Sun, 21 Feb 2021 22:56:33 -0000
 
-On 2/21/21 7:07 PM, Philippe Mathieu-Daudé wrote:
-> On 2/8/21 9:22 PM, Peter Maydell wrote:
->> On Mon, 8 Feb 2021 at 20:04, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>
->>> We want to be able to use the 'SH4' config for architecture
->>> specific features. As CONFIG_SH4 is only used to select
->>> peripherals, rename it CONFIG_SH4_DEVICES.
->>>
->>> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  hw/block/meson.build | 2 +-
->>>  hw/char/meson.build  | 2 +-
->>>  hw/intc/meson.build  | 2 +-
->>>  hw/sh4/Kconfig       | 6 +++---
->>>  hw/timer/meson.build | 2 +-
->>>  5 files changed, 7 insertions(+), 7 deletions(-)
->>
->> We could if we wished be more fine-grained about this, eg by
->> adding new CONFIG options for each device:
->>  CONFIG_TC58128
->>  CONFIG_SH_SERIAL
->>  CONFIG_SH_INTC
->>  CONFIG_SH_TIMER
->>  CONFIG_SH_PCI
->>
->> and then in hw/sh4/Kconfig
->>  * config SH7750:
->>    add 'select SH_SERIAL', 'select SH_INTC', 'select SH_TIMER'
->>  * config R2D:
->>    add 'select SH7750' (it's a pre-existing bug that it doesn't, since
->>    r2d.c has a call to sh7750_init(). Harmless at the moment because
->>    nothing actually uses CONFIG_SH7750 -- hw/sh4/meson.build always
->>    compiles sh7750.c and sh7750_regnames.c unconditionally...)
->>    add 'select SH_PCI' (and make hw/sh4/meson.build build sh_pci.c
->>    only if it is set...)
->>  * config SHIX
->>    add 'select TC58128'
-> 
-> OK.
-
-(Forgot to say in this case it makes sense because SH4 and RX targets
-share peripherals IP cores, so some models could be reused.)
+Hi Laurent,=0D
+=0D
+This series is fully reviewed. Since LM32 is not very=0D
+active, can this go via qemu-trivial@?=0D
+=0D
+Thanks,=0D
+=0D
+Phil.=0D
+=0D
+v2: Rebased=0D
+=0D
+Supersedes: <20210208135048.2601693-1-f4bug@amsat.org>=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  hw/lm32/Kconfig: Introduce CONFIG_LM32_EVR for lm32-evr/uclinux boards=0D
+  hw/lm32/Kconfig: Rename CONFIG_LM32 -> CONFIG_LM32_DEVICES=0D
+  hw/lm32/Kconfig: Have MILKYMIST select LM32_DEVICES=0D
+=0D
+ default-configs/devices/lm32-softmmu.mak |  2 +-=0D
+ hw/char/meson.build                      |  4 ++--=0D
+ hw/intc/meson.build                      |  2 +-=0D
+ hw/lm32/Kconfig                          | 10 +++++++---=0D
+ hw/lm32/meson.build                      |  2 +-=0D
+ hw/timer/meson.build                     |  2 +-=0D
+ 6 files changed, 13 insertions(+), 9 deletions(-)=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D
 
