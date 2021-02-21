@@ -1,52 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDs3o-0001Kb-Q3
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 11:58:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58236)
+	id 1lDsCP-0007h5-0H
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 12:07:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59702)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1lDs3U-0001H7-NR; Sun, 21 Feb 2021 11:58:01 -0500
-Resent-Date: Sun, 21 Feb 2021 11:58:00 -0500
-Resent-Message-Id: <E1lDs3U-0001H7-NR@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21347)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1lDs3S-0008SP-Lp; Sun, 21 Feb 2021 11:58:00 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1613926668; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=SyicYV4OIxERQ7FuVydaca5fv6PA0HhXSYZfp+zoKsJ/1AcBl1lBjC/lNLAi48X/oXmyNQvIR5xZVcs00zhke4Icav9i36ySgyh54s64LekgZronfWapwIV5jgjMwVp56ZCi8+I7uXSSU9uiuImJ9CjLy0wnb0bNllkRF8nqLMY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1613926668;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=wVq8BlhMLtTVsuMgLrpKwsHUIJ5zAjanFoVIw9YAvYA=; 
- b=lC71q8RITKjri6EPT6/q5Ty5oN4BxBaFsrE5bnQnvaActWpLJcbh/PFtJXCpNd4bHei08+Smf28bq4vF7yolrRzVMxVrnZw9OV6OxnKjd8kianpBngiOeHyCx1KtBy7BwJziSkl201mUXsj/cOCVpvkBUNMeUeN8HGmEcsKHuNE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1613926665639952.625148546582;
- Sun, 21 Feb 2021 08:57:45 -0800 (PST)
-In-Reply-To: <20210221165219.12744-1-zpmarvel@gmail.com>
-Reply-To: <qemu-devel@nongnu.org>
+ (Exim 4.90_1) (envelope-from <zpmarvel@gmail.com>)
+ id 1lDsC6-0007di-Ed; Sun, 21 Feb 2021 12:06:55 -0500
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d]:44578)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <zpmarvel@gmail.com>)
+ id 1lDsC4-0003aT-7o; Sun, 21 Feb 2021 12:06:54 -0500
+Received: by mail-io1-xd2d.google.com with SMTP id f6so10803185iop.11;
+ Sun, 21 Feb 2021 09:06:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references:reply-to
+ :mime-version:content-transfer-encoding;
+ bh=LcMCH5K6bzuAGaJFFYpTMp8uE6CD+DyUujsrFAj4wNc=;
+ b=bOosARO+32aBdORgcIeu3vEQuqYPX4BDVRiSELpBmbBNAhHu7EB3YyPkFSN6zENhfo
+ KCwvbpyuHAieiOTHhphAkSytR0slQgL1w6JAN1/ohtQbyq0dRD5oxap4MQ5mwD/y7Bqc
+ IGsUiVFGG9rtV6T8W9MHv7TG6R8o06vM2UIc26KiYdTEU/ukx9e+BsQVNARtYhNt3eH/
+ H2tW6aVDE8wG0Uay4lwb+vN2gz73wLKp7sgy/X06NOc6YnAXCrK/a+4ZVRaeae9oZr8K
+ 50dyFNO4g+cRkfQoHOF9w0JRgZxnh129RvTh8E0ByhOJQMjUj+MnPWvmBI5zkeSzspMj
+ HIlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:reply-to:mime-version:content-transfer-encoding;
+ bh=LcMCH5K6bzuAGaJFFYpTMp8uE6CD+DyUujsrFAj4wNc=;
+ b=Itt08xwhpTu5ULl+Zw1F40kdYH8pqw72zinIUMgGPiw96GX4AVqP1EHNy366o5BCju
+ M+/sSw6YZ7I05joLvqXSuM5/MN+fBp7+JclQHhh3HzydmiGIssrqdQxyTpSGVu6gPLio
+ DN+vpvH0uKnvQco0404/jY8+LCXdij8HMjaxMQwfCx1hLpGoRzLc1DyXMxaH0Yb3kLfr
+ cQSZNQIpFQu/GCHe56B0vx6nfK9IEWFb8fuzBeZxC/7tn3AmRxpA+i1LVmOayMCIDq6T
+ Iruhh7a8+jxLbmz95fFft4cL9sqk+hSW9VtAHhWKlGjOt9CvfVB+krN6pbh1wZtykHxd
+ qLaw==
+X-Gm-Message-State: AOAM532VUaKVo/96jKlJKHHuzH0TLJ3yVcgUQ4mxcoa3JN2OOCOUtW5a
+ m7Mf6afekKF7eAlCIr5mKzA=
+X-Google-Smtp-Source: ABdhPJxc4oXowhkQ1biCWKEioN+uSDhKJipYmgBG79Nk+IIbdMYf5vLl5XCfPthRQzDFF3HKlHwoeg==
+X-Received: by 2002:a6b:e504:: with SMTP id y4mr12541535ioc.153.1613927210740; 
+ Sun, 21 Feb 2021 09:06:50 -0800 (PST)
+Received: from gastly (c-67-177-215-41.hsd1.co.comcast.net. [67.177.215.41])
+ by smtp.gmail.com with ESMTPSA id e9sm11350983iob.43.2021.02.21.09.06.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 21 Feb 2021 09:06:50 -0800 (PST)
+Received: from zack by gastly with local (Exim 4.92)
+ (envelope-from <zpmarvel@gmail.com>)
+ id 1lDsC1-0003Su-DE; Sun, 21 Feb 2021 10:06:49 -0700
+From: Zack Marvel <zpmarvel@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-trivial@nongnu.org
 Subject: Re: [PATCH] ui/gtk: vte: fix sending multiple characeters
-Message-ID: <161392666438.21706.4757518764617915041@c667a6b167f6>
+Date: Sun, 21 Feb 2021 10:06:12 -0700
+Message-Id: <20210221170613.13183-1-zpmarvel@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <161392666438.21706.4757518764617915041@c667a6b167f6>
+References: <161392666438.21706.4757518764617915041@c667a6b167f6>
+Reply-To: qemu-devel@nongnu.org
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: zpmarvel@gmail.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, zpmarvel@gmail.com,
- kraxel@redhat.com
-Date: Sun, 21 Feb 2021 08:57:45 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2d;
+ envelope-from=zpmarvel@gmail.com; helo=mail-io1-xd2d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,34 +78,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Feb 2021 16:58:02 -0000
+X-List-Received-Date: Sun, 21 Feb 2021 17:06:57 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDIyMTE2NTIxOS4xMjc0
-NC0xLXpwbWFydmVsQGdtYWlsLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZl
-IHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGlu
-Zm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMjIxMTY1MjE5LjEyNzQ0
-LTEtenBtYXJ2ZWxAZ21haWwuY29tClN1YmplY3Q6IFtQQVRDSF0gdWkvZ3RrOiB2dGU6IGZpeCBz
-ZW5kaW5nIG11bHRpcGxlIGNoYXJhY2V0ZXJzCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMh
-L2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNv
-bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5y
-ZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQou
-L3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQg
-RU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4
-NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRh
-Z10gICAgICAgICBwYXRjaGV3LzIwMjEwMjIxMTY1MjE5LjEyNzQ0LTEtenBtYXJ2ZWxAZ21haWwu
-Y29tIC0+IHBhdGNoZXcvMjAyMTAyMjExNjUyMTkuMTI3NDQtMS16cG1hcnZlbEBnbWFpbC5jb20K
-U3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwowMzNlM2RlIHVpL2d0azogdnRlOiBmaXgg
-c2VuZGluZyBtdWx0aXBsZSBjaGFyYWNldGVycwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KRVJST1I6
-ICIoZm9vKikiIHNob3VsZCBiZSAiKGZvbyAqKSIKIzMyOiBGSUxFOiB1aS9ndGsuYzoxNzkwOgor
-ICAgIHVpbnQ4X3QqIHAgPSAodWludDhfdCopdGV4dDsKCnRvdGFsOiAxIGVycm9ycywgMCB3YXJu
-aW5ncywgMTcgbGluZXMgY2hlY2tlZAoKQ29tbWl0IDAzM2UzZGUzNzlhNyAodWkvZ3RrOiB2dGU6
-IGZpeCBzZW5kaW5nIG11bHRpcGxlIGNoYXJhY2V0ZXJzKSBoYXMgc3R5bGUgcHJvYmxlbXMsIHBs
-ZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMg
-cmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlO
-RVJTLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAx
-CgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8y
-MDIxMDIyMTE2NTIxOS4xMjc0NC0xLXpwbWFydmVsQGdtYWlsLmNvbS90ZXN0aW5nLmNoZWNrcGF0
-Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBh
-dGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0
-byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+Sorry for the noise. Fixed coding style issue.
+
+
 
