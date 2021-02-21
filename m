@@ -1,57 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDqWi-0004Ih-QG
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 10:20:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41136)
+	id 1lDqXS-0004yu-Ah
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 10:20:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lDqWT-0003wi-Hj
- for qemu-trivial@nongnu.org; Sun, 21 Feb 2021 10:19:49 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:37101)
+ id 1lDqXQ-0004vC-Ig
+ for qemu-trivial@nongnu.org; Sun, 21 Feb 2021 10:20:48 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:44198)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lDqWQ-0004bp-Em
- for qemu-trivial@nongnu.org; Sun, 21 Feb 2021 10:19:49 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id h25so5133613eds.4
- for <qemu-trivial@nongnu.org>; Sun, 21 Feb 2021 07:19:45 -0800 (PST)
+ id 1lDqXN-0004yf-Sj
+ for qemu-trivial@nongnu.org; Sun, 21 Feb 2021 10:20:48 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id g3so18691686edb.11
+ for <qemu-trivial@nongnu.org>; Sun, 21 Feb 2021 07:20:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=r3OO76eD9GG8cyNnTCv/4npaCM8tdHppYxn/MW39wtA=;
- b=oEyNc5lk0HpyeyCCI5az2IfK5H+d6yA1O9LI4KYjf0lzmer6gNHa2P9rtacJmMO7g2
- QyxNP5GD5IXK5OJ6yxPAxtU5tLpVFjvvEiouXunmmyMSr21SkEmW2kKXlwrnA4jqvQx0
- cG4zn1fqodhuz92JTdUS2o5rX6cEDtJhZUAj9jvEY98LZF5vIb0B0kCfUkbCA8vko2gL
- eXdPA1dduTDIti6TeBsoVPn7rd27uHaHjjqhEf9TMcVmvQi5agI3AAvDtvTf43il4BxW
- nastp8lgKOeM8DkLi7cT7Q76ANzSoqz850VCyVrvyopPIz+Bi0rIJ2OTcsZuJPmbsCtO
- m7iA==
+ :cc; bh=OfHarvDWY5VbLwrzh8DDcLCGIArEg5v/3WA8vYvBUu0=;
+ b=mATd59X23H92sQFkNNaKiWUd6nE/DLp2NTz5Uw2k1+d7a+x142MQieFEfYZhjVNU/g
+ N1HLOiY4dKwqfcu3SxCA6FpPrgQx0nuRF1bdMClwRnfI8R7PdSCdglXsRKcJZZ+f6O5p
+ k7x3Vb+tDz2eVFLKYSLK4HThfXqC3NEBXZhonmIhK2iAtYZt5XERgiukbii1NgDhKQcf
+ rzpR5jubyvcjNpi3TC98G0PihQAZoeoqWPL2ySUsuFHTlqgeEAOMoJEXDefkEtdCdTkn
+ 6EQE0zh3UjgnDLQWJG+th2nR9VQeGG19VFPewCTqzFkIIMwnWTDVteCp22PUsY1Ni+Es
+ 2nzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=r3OO76eD9GG8cyNnTCv/4npaCM8tdHppYxn/MW39wtA=;
- b=Gn0d6AOcpHNeYq7Kr1V/CK/VZ2yoN+XFvJE73BsfSmRhPknX2oCee+1/ua0YMLADkc
- HbLKyno69Z8CFBr1DvLQstufJBEHD4A+oYNPBx3B8OJCvLdTedWk85wyIAgNXqw7IuOL
- 2VRd5VkAE50ujcB+F8nOfcWK1dd9x21UDtRpZjcnxeiNF77fvsop+vyrTMBs4LRcLoU/
- pD3NNVjounRby6NN0j7nqh1daPbUQfiqzXyrIphrmlh90fKVwGTdiinL138BwoyYV7na
- wcNgK8ZzYfF4pG/j1tnFG+Y4BNqzWFEQigWt1kHZk4pBN6rt17uM1XjhEM0kERd7U3QX
- N8Ag==
-X-Gm-Message-State: AOAM533XcQD6nmKFfAe0tF7YR8ytuJ0gj173/ClA1sY5zLfKcb9WQbME
- VFyMdOBKjVyIblwwfzdwxC1S9tA4Cnl8xPKJrg0ZWw==
-X-Google-Smtp-Source: ABdhPJzi2fS5h976bQr1VW6wGadZ5j3g2clcMWRJ46mBQHdsEEGvvOp8K0dJZFzPV2D+7B3ZAL5n5T+z8Wdfn6NdOYQ=
-X-Received: by 2002:a05:6402:3494:: with SMTP id
- v20mr19079078edc.146.1613920784908; 
- Sun, 21 Feb 2021 07:19:44 -0800 (PST)
+ bh=OfHarvDWY5VbLwrzh8DDcLCGIArEg5v/3WA8vYvBUu0=;
+ b=el80H0QWKGP4ls7w/3dKi4DsltVDToRutp47LNnAN6qP1ffKc+81iOJcBtX4kBxs88
+ n0zeuifQ8wCHJSSYVeNkK5yIR2573wKQQpRin2foxEsO9xn018GuZVMOgfqnEeHH7vJx
+ ni7Zdzk1RtH+RWzlWbb3sR6ncqvuoBd7iPMyDp6/6JEL4T3JDHys27VbybDWIKSaE8d4
+ g7JWA6fztzDl+H4JELCD1MAAkLr+pr1yzuTKL8xYNp9cBtH9GKzjWFDRrb9FEWFFHe+E
+ KJy0p45UxLYoe6zetkGziBxj35aTZzVo1bjWE3emLxx7rSlgndCTMWUSgxFtY/1XpkY0
+ Rs5Q==
+X-Gm-Message-State: AOAM532qsIgu7t8RnqsXAo/mrv71a8vFwFpVnJT3+ejGnv/Q76/nxGab
+ On90thuNvQmjDg09EZxrJmcHU+xMfGaOrRrAesmUxQ==
+X-Google-Smtp-Source: ABdhPJyKLzG7YYe1K4IXYCNKI57UpYByBZ6kMVxBqd7oyhtFuamWksK/UAQ7tcksO4daaPV5NKhjK+yUR3hbsLCNWW8=
+X-Received: by 2002:aa7:c144:: with SMTP id r4mr6456963edp.251.1613920843428; 
+ Sun, 21 Feb 2021 07:20:43 -0800 (PST)
 MIME-Version: 1.0
-References: <20210221150430.6223-1-zpmarvel@gmail.com>
-In-Reply-To: <20210221150430.6223-1-zpmarvel@gmail.com>
+References: <20210220123525.1353731-1-laurent@vivier.eu>
+In-Reply-To: <20210220123525.1353731-1-laurent@vivier.eu>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 21 Feb 2021 15:19:33 +0000
-Message-ID: <CAFEAcA8BB=ka9nPv9-okHhHwXOAbfbaXs9OFn4bNkbU+b-H+FQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/char/pl011: fix receiving multiple chars
-To: Zack Marvel <zpmarvel@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Sun, 21 Feb 2021 15:20:32 +0000
+Message-ID: <CAFEAcA8eoJ-2ghhmqnh2vWMQH=cf1ysnbgfyHz2UP939LxRovA@mail.gmail.com>
+Subject: Re: [PULL 00/12] Trivial branch for 6.0 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -71,35 +70,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Feb 2021 15:19:49 -0000
+X-List-Received-Date: Sun, 21 Feb 2021 15:20:48 -0000
 
-On Sun, 21 Feb 2021 at 15:04, Zack Marvel <zpmarvel@gmail.com> wrote:
+On Sat, 20 Feb 2021 at 12:37, Laurent Vivier <laurent@vivier.eu> wrote:
 >
-> When using the GTK UI with libvte, multicharacter keystrokes are not
-> sent correctly (such as arrow keys). This is not an issue for e.g. the
-> SDL UI because qemu_chr_be_write is called with len=1 for each character
-> (SDL sends more than once keystroke).
+> The following changes since commit e90ef02389dc8b57eaea22b290244609d720a8bf:
 >
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1407808
+>   Merge remote-tracking branch 'remotes/armbru/tags/pull-qapi-2021-02-18' int=
+> o staging (2021-02-19 17:22:42 +0000)
 >
-> Signed-off-by: Zack Marvel <zpmarvel@gmail.com>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.0-pull-request
+>
+> for you to fetch changes up to 1cb428356beec30cd5067add76e51e01d0f6f680:
+>
+>   MAINTAINERS: Fix default-configs/ entries (2021-02-20 12:36:19 +0100)
+>
+> ----------------------------------------------------------------
+> Pull request trivial patches 20210220
 
-> @@ -300,7 +300,9 @@ static void pl011_put_fifo(void *opaque, uint32_t value)
->
->  static void pl011_receive(void *opaque, const uint8_t *buf, int size)
->  {
-> -    pl011_put_fifo(opaque, *buf);
-> +    for (int i = 0; i < size; i++) {
-> +        pl011_put_fifo(opaque, buf[i]);
-> +    }
->  }
 
-I think this is a bug in whatever is on the other end
-of the chardev connection. The pl011 can_receive routine
-only ever returns 0 or 1, so it is an error for the
-code calling its receive function to ever pass a
-size that is greater than 1.
 
-thanks
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/6.0
+for any user-visible changes.
+
 -- PMM
 
