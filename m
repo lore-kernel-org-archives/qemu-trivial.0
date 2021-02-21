@@ -1,72 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDrkW-0008J2-Ss
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 11:38:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54682)
+	id 1lDryJ-0006rN-VW
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 11:52:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zpmarvel@gmail.com>)
- id 1lDrkD-0008AB-Kl; Sun, 21 Feb 2021 11:38:06 -0500
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131]:46962)
+ id 1lDryI-0006po-Bd; Sun, 21 Feb 2021 11:52:38 -0500
+Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e]:42700)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <zpmarvel@gmail.com>)
- id 1lDrkC-0007vL-1O; Sun, 21 Feb 2021 11:38:05 -0500
-Received: by mail-il1-x131.google.com with SMTP id m20so8788930ilj.13;
- Sun, 21 Feb 2021 08:38:02 -0800 (PST)
+ id 1lDryF-0006PV-Dy; Sun, 21 Feb 2021 11:52:38 -0500
+Received: by mail-il1-x12e.google.com with SMTP id z18so8818968ile.9;
+ Sun, 21 Feb 2021 08:52:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=3YjKPhX0oflBmINtMtknp5iw/TvXXLniGcuPPnFL7vk=;
- b=AllwdyD6T01TKU/PslJJlx0zlQKerNq25C/FKpxHiEIwBxjo1KalwUuD1vugz6xUWi
- 9dom/0qewXJM+ybWTw401zDFV/Ohz5P8O1ipNO1vuHsr5j0vODSgMf2qXcRSg+YI3r+H
- BuBpxowWbFZz8k3TC9ssixhUq6u9I01DfuScQi2eS7EGJtMZ6q44BKjiA68MOYVD8zAl
- 9vAqZQvAORRTo+pA5bpp0jfaB7fqYtyx+00X1S4D02p3gzhlgLNnzcut9bJUy29mGAYo
- HMCUMhCVPM5jjf6ov418Hue+N8eR7U5TrO+7V+4FzNL8qvCnjEHYPyOyIsIgobyNmhsf
- Thig==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SROigO0Ul3kd1x/yf62ULzF4JTtHRTd7tuWSt0ApTHk=;
+ b=tn+79vPh+mnSEisFZuu56Jjh8o+pR6QMuPIvetoklk6MYwkLEsAcKKovpOV2QnuALQ
+ XqGb1oXaku52LHk3TVRyR/J8DZ2lZI1dJrnriTklui3zgEeQg1OnBqZtH2Tv7GwNo2Me
+ IhITZn1sm7zOID0jq27dyPLb9ELb/9Ajr4oGi1ch/WT0DI9VGUeSV03Yp6HILOoagcZx
+ ShRVMKvhaJlZhcDlx9bfvgCAp0lFjTlxNhCzsYQjp5Txko9PfGexSloE4aaHLumzPWuw
+ 7yLGpFsFoSFRLUXnl5Qoe/0ruzszNqDdvDOD0fNvh4NI0IjL28k8S0wXi/mJS2Dk1eAh
+ K1Hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=3YjKPhX0oflBmINtMtknp5iw/TvXXLniGcuPPnFL7vk=;
- b=Np56EC/Qn4vbRcWnVXeBS9md8vYewXLiSM3CGzEqjiUoFnV+q4t9SLlzE6mLu9/vR9
- oqWhFZ5Pd5fbuSucJffZzwhyF/pqwemkL1u5TmlwvykX42BTSU7V58nHvFiWVXmoJnnP
- zhEk4zsjuObJXTYd8UGSiotIguTIT/JvUV4Kt3CBIiFDjDeQZGZ4uJmrn0vqP1hoa6B6
- fgsf/uTHnYtj5ckIy1gdsSYiMPtQX59eClL0pzx+5xqajIXZR8I7sBllM4/v0ObtTWvi
- OWj4p7KZQt6jK1i5F+F8z36SkCKwgI8eXD4NNUmZKTKurvYohwcXhtq9OlydaXRhKyK6
- EC/A==
-X-Gm-Message-State: AOAM530t03si8I3Sr78YYBngnYVv109GT8WaTERPyJuOORzAP5bv6YJb
- ZYgBkHPVjHEIbB9+8QRxA3VspXOuD4kOZwnX
-X-Google-Smtp-Source: ABdhPJzRKJWCc1+2peTPUaRUWcbSKjS41b2H4G+PKgY8RG7aY9oMyCFGWDkBPn2MqnbhAk8E67ErDQ==
-X-Received: by 2002:a92:c8cd:: with SMTP id c13mr1714662ilq.238.1613925481329; 
- Sun, 21 Feb 2021 08:38:01 -0800 (PST)
-Received: from [192.168.88.57] (c-67-177-215-41.hsd1.co.comcast.net.
- [67.177.215.41])
- by smtp.gmail.com with ESMTPSA id g11sm11402181iom.23.2021.02.21.08.38.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 21 Feb 2021 08:38:00 -0800 (PST)
-Subject: Re: [PATCH] hw/char/pl011: fix receiving multiple chars
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210221150430.6223-1-zpmarvel@gmail.com>
- <CAFEAcA8BB=ka9nPv9-okHhHwXOAbfbaXs9OFn4bNkbU+b-H+FQ@mail.gmail.com>
+ bh=SROigO0Ul3kd1x/yf62ULzF4JTtHRTd7tuWSt0ApTHk=;
+ b=pjVeVxkOMVtPZohDivTQLnTbQHKxAa+kG/M7nxXFT+c4mF63tZYz0nSIouPm29TnZz
+ oqJrY86sHNm1n19gtrWN1M9TxoJnEBLBk69+7xopBttpkrkAcuxjglcDDNjH3rjG9KA6
+ oXUEuW/iPgIml+5UCA2IpZENuyftD6BPG++sFElOymuINspuJ7+coGx7fVs2peS0vyZy
+ ulhmMByRIdZGGPoWNhEGKSr/tMtelijSaHbFGUYQeMfSerhuA7ImUEq3ErQoWPoR1oiR
+ C1MtVM8k7m8QPY6xd9povaop3Qouotmsfq8X7+cqYYGIkBcCJaX0lBWo86aQxFPrcx6R
+ NFvA==
+X-Gm-Message-State: AOAM533cGOoV9IEMZPZ1/LKfWOPzIWgNynMr36yd/6537sn5cfbNkq9o
+ NSxXZpb+8224MXTKeWjJrjQ=
+X-Google-Smtp-Source: ABdhPJxobH5kA4AJXd+QXQg4B+8s61ESmlpqB2diZ5V9Dpcwi5lTUQ2TpfOq4NbKrs5+vX7fEPNiMQ==
+X-Received: by 2002:a05:6e02:1a6e:: with SMTP id
+ w14mr11634844ilv.3.1613926350318; 
+ Sun, 21 Feb 2021 08:52:30 -0800 (PST)
+Received: from gastly (c-67-177-215-41.hsd1.co.comcast.net. [67.177.215.41])
+ by smtp.gmail.com with ESMTPSA id f11sm10191990ilc.69.2021.02.21.08.52.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 21 Feb 2021 08:52:29 -0800 (PST)
+Received: from zack by gastly with local (Exim 4.92)
+ (envelope-from <zpmarvel@gmail.com>)
+ id 1lDry9-0003KH-Bn; Sun, 21 Feb 2021 09:52:29 -0700
 From: Zack Marvel <zpmarvel@gmail.com>
-Message-ID: <293978ea-bb78-066e-dbe8-f93b2165d28d@gmail.com>
-Date: Sun, 21 Feb 2021 09:37:59 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org,
+ Zack Marvel <zpmarvel@gmail.com>
+Subject: [PATCH] ui/gtk: vte: fix sending multiple characeters
+Date: Sun, 21 Feb 2021 09:52:19 -0700
+Message-Id: <20210221165219.12744-1-zpmarvel@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8BB=ka9nPv9-okHhHwXOAbfbaXs9OFn4bNkbU+b-H+FQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::131;
- envelope-from=zpmarvel@gmail.com; helo=mail-il1-x131.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12e;
+ envelope-from=zpmarvel@gmail.com; helo=mail-il1-x12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,45 +76,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Feb 2021 16:38:06 -0000
+X-List-Received-Date: Sun, 21 Feb 2021 16:52:38 -0000
 
-Peter,
+When using the GTK UI with libvte, multicharacter keystrokes are not
+sent correctly (such as arrow keys). gd_vc_in should check the
+CharBackend's can_receive instead of assuming multiple characters can be
+received. This is not an issue for e.g. the SDL UI because
+qemu_chr_be_write is called with len=1 for each character (SDL sends
+more than once keystroke).
 
-Thanks for the quick review. You're right, I misunderstood the API and 
-the bug is in ui/gtk.c.
+Buglink: https://bugs.launchpad.net/qemu/+bug/1407808
 
-Thanks,
-Zack M
+Signed-off-by: Zack Marvel <zpmarvel@gmail.com>
+---
+ ui/gtk.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-On 2/21/21 8:19 AM, Peter Maydell wrote:
-> On Sun, 21 Feb 2021 at 15:04, Zack Marvel <zpmarvel@gmail.com> wrote:
->>
->> When using the GTK UI with libvte, multicharacter keystrokes are not
->> sent correctly (such as arrow keys). This is not an issue for e.g. the
->> SDL UI because qemu_chr_be_write is called with len=1 for each character
->> (SDL sends more than once keystroke).
->>
->> Buglink: https://bugs.launchpad.net/qemu/+bug/1407808
->>
->> Signed-off-by: Zack Marvel <zpmarvel@gmail.com>
-> 
->> @@ -300,7 +300,9 @@ static void pl011_put_fifo(void *opaque, uint32_t value)
->>
->>   static void pl011_receive(void *opaque, const uint8_t *buf, int size)
->>   {
->> -    pl011_put_fifo(opaque, *buf);
->> +    for (int i = 0; i < size; i++) {
->> +        pl011_put_fifo(opaque, buf[i]);
->> +    }
->>   }
-> 
-> I think this is a bug in whatever is on the other end
-> of the chardev connection. The pl011 can_receive routine
-> only ever returns 0 or 1, so it is an error for the
-> code calling its receive function to ever pass a
-> size that is greater than 1.
-> 
-> thanks
-> -- PMM
-> 
+diff --git a/ui/gtk.c b/ui/gtk.c
+index 79dc240120..0311d7d64b 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -1786,7 +1786,16 @@ static gboolean gd_vc_in(VteTerminal *terminal, gchar *text, guint size,
+         }
+     }
+ 
+-    qemu_chr_be_write(vc->vte.chr, (uint8_t  *)text, (unsigned int)size);
++    int remaining = size;
++    uint8_t* p = (uint8_t*)text;
++    while (remaining > 0) {
++        int can_write = qemu_chr_be_can_write(vc->vte.chr);
++        int written = MIN(remaining, can_write);
++        qemu_chr_be_write(vc->vte.chr, p, written);
++
++        remaining -= written;
++        p += written;
++    }
+     return TRUE;
+ }
+ 
+-- 
+2.20.1
+
 
