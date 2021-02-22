@@ -1,76 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lDxen-0001gs-OE
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2021 17:56:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37500)
+	id 1lE6YD-0000w8-2n
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Feb 2021 03:26:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lDxeh-0001fX-Aj; Sun, 21 Feb 2021 17:56:47 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:52095)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lDxef-0000eK-RW; Sun, 21 Feb 2021 17:56:47 -0500
-Received: by mail-wm1-x332.google.com with SMTP id o82so11866578wme.1;
- Sun, 21 Feb 2021 14:56:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=na17oWuPKTj+SU6c6Dkqcg8IZxkfU6eQT/pu9RwQ//c=;
- b=QQ4RqeoxggM3NB1m6/I0B6UZbsoZk3fOqadHCCoRo2/J9+iRWesq+a9h1eowd0bmZN
- WFjFrdvIkKJ+GY09ruwNXb6VFd5N/ntsFvGgLUbDNZRCQHsidYD0nU/E3wY5L/Ft66To
- W7RgD7IziLh6z0y2EsPeJDnOIx4OXmlPqtBxQKRvR9tnPFDDkFmzmtAUeGzqwuIcveZn
- ZYxGINvlRjS+3+bZS3+yNhM2fZ3JtDmN8mWxDU5l5OQ9Vo6+4teM7QDhUgsquctIufvm
- dAvNqp9sDNj9JL8Azj5UkUhP6lkuOynZ2txEdMseNXaI9sLdKpZ6Yy7XFw3e2K5dU3pk
- eULw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lE6Y4-0000uR-IT
+ for qemu-trivial@nongnu.org; Mon, 22 Feb 2021 03:26:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:30608)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lE6Xy-00062V-43
+ for qemu-trivial@nongnu.org; Mon, 22 Feb 2021 03:26:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1613982383;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Kn6yn48zB1vOQFeES5SZdkSApSJl5+RMCNgA3zLHnuw=;
+ b=iQQiiw6gYJnQOlRjUURpXHXWb1owAOq2q4nguNPveYsZKZU1Yi3XEJn7ksELnfzIr7x3SO
+ sS5zOl1dkSvsbIUPI4v3mBBMYb3JjLPv7jSU5eCYfv5UQ9N47cja4IvqHyehRPvTtSRFqW
+ 3+MO7dvgov5pdaPvVmTQvEL9RtIaka0=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-384-rPWr3yYAOQiS_Dsd9UZxsw-1; Mon, 22 Feb 2021 03:26:21 -0500
+X-MC-Unique: rPWr3yYAOQiS_Dsd9UZxsw-1
+Received: by mail-wr1-f69.google.com with SMTP id q5so5745467wrs.20
+ for <qemu-trivial@nongnu.org>; Mon, 22 Feb 2021 00:26:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=na17oWuPKTj+SU6c6Dkqcg8IZxkfU6eQT/pu9RwQ//c=;
- b=PSILP11lBcIYxbH5jLcSc305RNgfUVb+I6kojx5paIcsBZIWPPb5y1K7suX46mftJk
- 4VjAFyXQ/rmcBJWz8q5rgTsCSYLCDZ+znRF0kmgksHrD0TnV7BhQecjpmh2OEah1p6aj
- vthXscsHQKmbjKBe+UTwBMKrXFwdHkRXyNLzLgswOtornd1eLsVQuzXMNyzBTsX+81+Y
- oZZygXM9Z8w2NRrBwypXrgyvQF8Un1KfpzFJHnjYznac3+Qls0pJ/lCEkLn+BXZdjIJ6
- 3/7xmElVdV4AvE3f0WSgq37bu1CCnzDEvhLdRsLUvXkfGEYT5M3psKZPqzMOcGila8v8
- o/Ug==
-X-Gm-Message-State: AOAM530JSVBvHQfUdtngnGc/Achj+BdO38FmNNTb7IP4h5nok8gA7N+U
- 54mBHGfBYqczxJgk9UuUZ1eewfK8eNI=
-X-Google-Smtp-Source: ABdhPJygzHh+hXjLeeJILafgE5N50QS77f6OFFmpK1YtRS1e24wAZKvVJSLgXcuq2k/3vqG0YoM8Lw==
-X-Received: by 2002:a7b:cc84:: with SMTP id p4mr16344255wma.150.1613948204046; 
- Sun, 21 Feb 2021 14:56:44 -0800 (PST)
-Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Kn6yn48zB1vOQFeES5SZdkSApSJl5+RMCNgA3zLHnuw=;
+ b=C567n4DYW9HqJ9WoNMiqLWUsC/jzKMmqR3Ht8ghGy9gE5p43bEN+sRYmsHNk5cc/Qb
+ KlsIPtthuL1n6fnQj2A+4ukjvKcz9jeaFUQ2cPKFgn2yCjLL35AZkhYjvq0jd6nj9NMD
+ YfnZNbNP3+7gc12eGU1kNHXB7+fhITGkDXtbGam7XDleP/tsqbbU+CCOVM012TNvz6qF
+ dQY7WCQjQVuI1v44g7CMXYF2SzWbhiskGNyfEeSzLpE0JXwVVGwS9xphXgfo7EPvvNov
+ RoB5v5IxsA0yHXGaBw3gmL4RcpS0/kOvSb3iUU5pQ8HzLnVpJaVunhStLSs8J3ZkxHZM
+ o89A==
+X-Gm-Message-State: AOAM5301jdVvSY8hw3NRaY4MxKNUsN46AJ7b9VwWBA82Lnr3egm2R8U5
+ B4FDnjxuAvhkfnAioC10iDT7REZP1E8Y44wXaGNVXLDnsf8NxjJnff6Siaiy5AFpgCpIqiCmhkJ
+ xtEF8FmKF9fE7Bv4Wa4qzB6Gm7zJyUD5Nb09IMZLpElE5JJOJUhiIt0PZTZxbxo1PzNs=
+X-Received: by 2002:a05:600c:d4:: with SMTP id
+ u20mr18974987wmm.163.1613982380259; 
+ Mon, 22 Feb 2021 00:26:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw02yWGWLPakMzYAfA65qbX2Fs1SN/lUX60amisy99BNFbWcNfJfEozn2iN1cLBJs97lCSRIw==
+X-Received: by 2002:a05:600c:d4:: with SMTP id
+ u20mr18974975wmm.163.1613982380090; 
+ Mon, 22 Feb 2021 00:26:20 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id m4sm10301974wrb.87.2021.02.21.14.56.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 14:56:43 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Michael Walle <michael@walle.cc>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 3/3] hw/lm32/Kconfig: Have MILKYMIST select LM32_DEVICES
-Date: Sun, 21 Feb 2021 23:56:26 +0100
-Message-Id: <20210221225626.2589247-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210221225626.2589247-1-f4bug@amsat.org>
-References: <20210221225626.2589247-1-f4bug@amsat.org>
+ by smtp.gmail.com with ESMTPSA id 6sm34893198wra.63.2021.02.22.00.26.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Feb 2021 00:26:19 -0800 (PST)
+Subject: Re: [PATCH] MAINTAINERS: Cover docs/igd-assign.txt in VFIO section
+To: qemu-devel@nongnu.org
+Cc: Alex Williamson <alex.williamson@redhat.com>, qemu-trivial@nongnu.org
+References: <20210202155611.998424-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <da2393b7-c0a8-8f59-5ee5-4a5569f9853c@redhat.com>
+Date: Mon, 22 Feb 2021 09:26:17 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210202155611.998424-1-philmd@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,51 +92,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Feb 2021 22:56:47 -0000
+X-List-Received-Date: Mon, 22 Feb 2021 08:26:34 -0000
 
-The Milkymist board requires more than the PTIMER. Directly
-select the LM32_DEVICES. This fixes:
+ping?
 
-  /usr/bin/ld:
-  libqemu-lm32-softmmu.fa.p/target_lm32_gdbstub.c.o: in function `lm32_cpu_gdb_read_register':
-  target/lm32/gdbstub.c:46: undefined reference to `lm32_pic_get_im'
-  target/lm32/gdbstub.c:48: undefined reference to `lm32_pic_get_ip'
-  libqemu-lm32-softmmu.fa.p/target_lm32_op_helper.c.o: in function `helper_wcsr_im':
-  target/lm32/op_helper.c:107: undefined reference to `lm32_pic_set_im'
-  libqemu-lm32-softmmu.fa.p/target_lm32_op_helper.c.o: in function `helper_wcsr_ip':
-  target/lm32/op_helper.c:114: undefined reference to `lm32_pic_set_ip'
-  libqemu-lm32-softmmu.fa.p/target_lm32_op_helper.c.o: in function `helper_wcsr_jtx':
-  target/lm32/op_helper.c:120: undefined reference to `lm32_juart_set_jtx'
-  libqemu-lm32-softmmu.fa.p/target_lm32_op_helper.c.o: in function `helper_wcsr_jrx':
-  target/lm32/op_helper.c:125: undefined reference to `lm32_juart_set_jrx'
-  libqemu-lm32-softmmu.fa.p/target_lm32_translate.c.o: in function `lm32_cpu_dump_state':
-  target/lm32/translate.c:1161: undefined reference to `lm32_pic_get_ip'
-  target/lm32/translate.c:1161: undefined reference to `lm32_pic_get_im'
-
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/lm32/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/lm32/Kconfig b/hw/lm32/Kconfig
-index 518c84ed508..8ac94205d71 100644
---- a/hw/lm32/Kconfig
-+++ b/hw/lm32/Kconfig
-@@ -6,11 +6,11 @@ config MILKYMIST
-     bool
-     # FIXME: disabling it results in compile-time errors
-     select MILKYMIST_TMU2 if OPENGL && X11
--    select PTIMER
-     select PFLASH_CFI01
-     select FRAMEBUFFER
-     select SD
-     select USB_OHCI
-+    select LM32_DEVICES
- 
- config LM32_EVR
-     bool
--- 
-2.26.2
+On 2/2/21 4:56 PM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index bcd88668bcd..838d0f14a59 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1768,6 +1768,7 @@ M: Alex Williamson <alex.williamson@redhat.com>
+>  S: Supported
+>  F: hw/vfio/*
+>  F: include/hw/vfio/
+> +F: docs/igd-assign.txt
+>  
+>  vfio-ccw
+>  M: Cornelia Huck <cohuck@redhat.com>
+> 
 
 
