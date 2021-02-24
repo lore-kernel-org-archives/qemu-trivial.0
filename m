@@ -1,66 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lEtxi-0001NX-1h
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Feb 2021 08:12:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48222)
+	id 1lEuG1-0000a3-Pa
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Feb 2021 08:31:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lEtxf-0001Lr-53
- for qemu-trivial@nongnu.org; Wed, 24 Feb 2021 08:12:15 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:45004)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lEtxW-0004Sg-I9
- for qemu-trivial@nongnu.org; Wed, 24 Feb 2021 08:12:14 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id w1so2943193ejf.11
- for <qemu-trivial@nongnu.org>; Wed, 24 Feb 2021 05:12:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Tzoa8C+Zlvv75pkQYDqXV0W8pQmKCJwDIVjozxFOjow=;
- b=sD/FR7WFlEl0v5zJLf4geRYmCc5qL5atTxrbPEG0Gn1hUl76fSP6u9gwY25JvWeOfh
- /yEmA3X0QlPueMPADvpcgtnOkOhyeIRMVACsLUmpudsICTzLuUkr3dCy77/xADHjFBwc
- xq6Sj/hZftl8oOO0tN4GtF6AFihrV+1wN4sj4JJFBl+qVB+lY/L44v0N7V44GOz/boxC
- xJhT9iyKReUp/Bbr6oNN2AzXMkikx3u653yXT9yAyNv/Lkm0dZOfnHoSw7fGVlMIZjwT
- RhambfrU59jM3KIp6dxi8p4Zh3PhEVtG4V3k3A25jI5YJOaROAopIiO8d0Rn+4vW9Fso
- JUJw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lEuFw-0000XW-4S
+ for qemu-trivial@nongnu.org; Wed, 24 Feb 2021 08:31:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:51196)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lEuFt-0003mT-P5
+ for qemu-trivial@nongnu.org; Wed, 24 Feb 2021 08:31:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614173464;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OMf3D3RU/1ovZVc0YpYwO+l+OWT57rA5QKZHxEOEOEg=;
+ b=HrcQvk4tRk7s1QHPWRGUZDgjEg8VGSd6NPlAYImGcAvSb4EQW8zPZWNoqLq9Bs0gC6H+n/
+ Ff1OWgERa7ia/dsJ0pQnaYi/048TLitS/BZN4Z88zR7/RGuRKl6uA6IhvmxiQtdmjX1MmS
+ 1Ahh2Tzw+LYibQA0iy+ytAWmcoR9o38=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-470-gLpJNiZYMY-i0jaoYNG1-A-1; Wed, 24 Feb 2021 08:31:00 -0500
+X-MC-Unique: gLpJNiZYMY-i0jaoYNG1-A-1
+Received: by mail-wr1-f71.google.com with SMTP id c9so1040365wrq.18
+ for <qemu-trivial@nongnu.org>; Wed, 24 Feb 2021 05:31:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Tzoa8C+Zlvv75pkQYDqXV0W8pQmKCJwDIVjozxFOjow=;
- b=MCYpm7Q0pxMJc/ZcsJ8H8ZlldbWJn8svGhh2oel3QZF4VI6cyey5FDytPThsmMwUUz
- Rs/XeUQIFOR8Vgnt8vcrlPFNtSjL4fj7pzXTADvj4atnRLO9N4IxnAKaIedZlqWw4GUd
- PVzILME9siAUlPQ0YCS9Srb6gaeOlCqmFXAjE+4WdCi5UXMVHSJ01LJ+la+8R/z6PkNv
- 1FI0kxX2oGA3WYqggkWOKddyGHcjWKVANLX3U8+QZJQwRDuBzdLPRNbRdbcD9oL05Z4/
- 7mjvzcZvxdU73SUr21aUdIBGNbLJDoqZ5WL80BuKvGWMLMxmEeQWzMgCMbpcNxm+qMjv
- mLjg==
-X-Gm-Message-State: AOAM5303dxtIGI3Dv/2BfdyYhLvXM0jOVDgag7DenTdr1nvux+bT/Haw
- YzGBTCY+eGLFVFmbjrCrrBIEmTjJ+QhJDYbhYpCt4Q==
-X-Google-Smtp-Source: ABdhPJxEF7BcR4+g1MWO5/LkP0n5ec4u9iDGQ85GqcezlAgjbrT0DBRL3CKxitMyhsu5sghKEHt2yVoOL5SP5CB4g4w=
-X-Received: by 2002:a17:906:1ecc:: with SMTP id
- m12mr12042016ejj.4.1614172323275; 
- Wed, 24 Feb 2021 05:12:03 -0800 (PST)
-MIME-Version: 1.0
-References: <20210224120923.3154325-1-philmd@redhat.com>
-In-Reply-To: <20210224120923.3154325-1-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 24 Feb 2021 13:11:52 +0000
-Message-ID: <CAFEAcA8OxLPeOb0TEAKSU-qJYntFPhmPeqooW5=C_55B8X+d_A@mail.gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=OMf3D3RU/1ovZVc0YpYwO+l+OWT57rA5QKZHxEOEOEg=;
+ b=V5I2c94/se0YCTo/LN1kRAiCOrJ3sUWvwsp55ccx319cykMXHWozK8qV1KcQCqjcxw
+ O4TNCgD7fxBlIYE6jJh3dNmaDu4kzhqmCqDh1wEy3Pu6KJCoFOb4p7n8xpnQZ8/mAXa3
+ qBmTEbHM5mj4N3C00PKXQti17deRrLMdQQ4O7/XvpkcNzTqYeHWl6a5lvqo4oL9fyTpk
+ U7jmCqDmi3Y9q5xnxspEKtRbwr8SLrj++g90lIP47UPlEU1+0lAoIRJ4p0qUb9C81Ab/
+ h3zVcwJU2pi+w/BpX+YXBo+iFEv7KF2sy4K5GV+x1M9+ugbVFvek4FO872sA5esFBris
+ VPWA==
+X-Gm-Message-State: AOAM5306vS/iHWnHWTSy0k/2MaW7udkvoDLq5je6cZYdR6fkVxhK5C5x
+ dAwrX8hgZDd50Fl+/Y6KMp/9YNPeP950X4sFC2z2mFq7x0JVfRYUwmCTQ5ZKRgxTs+nfAhZxYsC
+ EdwPav2pYA+ndqfOALA==
+X-Received: by 2002:a05:6000:89:: with SMTP id m9mr23443115wrx.3.1614173459082; 
+ Wed, 24 Feb 2021 05:30:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx++Yy3k0FJY1Y7GcEPT+NBhq2uAVQSL5WLT1qp8ugF/8m5E4qd6oWvvYbssq/RL8G7YYHtnA==
+X-Received: by 2002:a05:6000:89:: with SMTP id m9mr23443095wrx.3.1614173458871; 
+ Wed, 24 Feb 2021 05:30:58 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id j16sm3619776wra.17.2021.02.24.05.30.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 24 Feb 2021 05:30:58 -0800 (PST)
 Subject: Re: [PATCH] meson: Only generate trace files for selected targets
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>
+References: <20210224120923.3154325-1-philmd@redhat.com>
+ <CAFEAcA8OxLPeOb0TEAKSU-qJYntFPhmPeqooW5=C_55B8X+d_A@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <b59301fa-eec6-a2e2-4b7b-dfbfee3324a8@redhat.com>
+Date: Wed, 24 Feb 2021 14:30:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8OxLPeOb0TEAKSU-qJYntFPhmPeqooW5=C_55B8X+d_A@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,48 +93,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Feb 2021 13:12:15 -0000
+X-List-Received-Date: Wed, 24 Feb 2021 13:31:08 -0000
 
-On Wed, 24 Feb 2021 at 12:11, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> We don't need to generate trace files for targets we
-> are not building. Restrict the the ones selected.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  meson.build | 10 +---------
->  1 file changed, 1 insertion(+), 9 deletions(-)
->
-> diff --git a/meson.build b/meson.build
-> index 05a67c20d93..c9b0433667d 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -1826,15 +1826,6 @@
->    trace_events_subdirs +=3D [
->      'accel/tcg',
->      'hw/core',
-> -    'target/arm',
-> -    'target/hppa',
-> -    'target/i386',
-> -    'target/i386/kvm',
-> -    'target/mips',
-> -    'target/ppc',
-> -    'target/riscv',
-> -    'target/s390x',
-> -    'target/sparc',
->    ]
->  endif
->
-> @@ -2166,6 +2157,7 @@
->    t =3D target_arch[arch].apply(config_target, strict: false)
->    arch_srcs +=3D t.sources()
->    arch_deps +=3D t.dependencies()
-> +  trace_events_subdirs +=3D ['target' / arch]
+On 2/24/21 2:11 PM, Peter Maydell wrote:
+> On Wed, 24 Feb 2021 at 12:11, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>>
+>> We don't need to generate trace files for targets we
+>> are not building. Restrict the the ones selected.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  meson.build | 10 +---------
+>>  1 file changed, 1 insertion(+), 9 deletions(-)
+>>
+>> diff --git a/meson.build b/meson.build
+>> index 05a67c20d93..c9b0433667d 100644
+>> --- a/meson.build
+>> +++ b/meson.build
+>> @@ -1826,15 +1826,6 @@
+>>    trace_events_subdirs += [
+>>      'accel/tcg',
+>>      'hw/core',
+>> -    'target/arm',
+>> -    'target/hppa',
+>> -    'target/i386',
+>> -    'target/i386/kvm',
+>> -    'target/mips',
+>> -    'target/ppc',
+>> -    'target/riscv',
+>> -    'target/s390x',
+>> -    'target/sparc',
+>>    ]
+>>  endif
+>>
+>> @@ -2166,6 +2157,7 @@
+>>    t = target_arch[arch].apply(config_target, strict: false)
+>>    arch_srcs += t.sources()
+>>    arch_deps += t.dependencies()
+>> +  trace_events_subdirs += ['target' / arch]
+> 
+> This will catch all the 'target/foo' entries deleted above,
+> but what about 'target/i386/kvm' ?
 
-This will catch all the 'target/foo' entries deleted above,
-but what about 'target/i386/kvm' ?
+Yes, this doesn't work as expected... I just figured it was
+working in my build directories because the trace header
+previously generated are still present. I should have tested
+in an empty directory before posting.
 
-thanks
--- PMM
+Regards,
+
+Phil.
+
 
