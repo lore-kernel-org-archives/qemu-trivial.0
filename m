@@ -1,70 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lFLAT-0003nO-0R
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Feb 2021 13:15:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34372)
+	id 1lFLFI-0007Ex-Df
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Feb 2021 13:20:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lFLAQ-0003kY-SC; Thu, 25 Feb 2021 13:15:14 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:40370)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lFLAP-0006O9-17; Thu, 25 Feb 2021 13:15:14 -0500
-Received: by mail-ed1-x529.google.com with SMTP id w21so8102172edc.7;
- Thu, 25 Feb 2021 10:15:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=dl0mZd6ygProVAlJgebF4l0L1V53QkSvCL3swFpdz08=;
- b=QBgHrquIG1xd3uPWP1pioJbh31ygbBt0OnEBSLrW9CFcqlNnnSJP8kY+M4/I9rZKbQ
- ydXgKJL/z5GiaBydemlXXjCFsfXejSOP1m9Mn2yhTVraBs5KGZ49YNG3OQs97EN5DgCi
- MA0NOwArUnpXE23fdNEpDilJY63WY5QH9lNtk9Awa5mOLaoHxVVMds7G12nTRVZYcVVE
- XMRjBRghC5bULgTgjjbriWG+oYoSrCXer1KigrF1+cAbeEP7yHDV3jHWRF0VwYgN+yDi
- qqWZTfwrxjC4Pgp4HY6753BucAJTSNy0i0YiB4nIuokCfBVwHoM/X/Ru/IR2VNtrXi/n
- nP3w==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lFLFG-0007CN-HU
+ for qemu-trivial@nongnu.org; Thu, 25 Feb 2021 13:20:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38333)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lFLFC-00008g-Ki
+ for qemu-trivial@nongnu.org; Thu, 25 Feb 2021 13:20:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614277209;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=K9ksy8xl9ixiivlLqZ28C9ePMkW+YGg9cGZwNcxzbQY=;
+ b=die/WHWUzHHcb47GzWrwTK3ebaYGFmUa4HpeJkN3BlYrW8XViE+Rqb6OUcSsah5hG7AcC1
+ uNBoKYCgOuStPJ/LoQ3rHGDS/++I9Stm5Xy73f4w/q6i7uZh9pUMq0G6XdezkQiBfmnJjV
+ 37jmjWwW6rhkCjCys/pyk4KlUts8UqE=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-297-k5qzCyvOMq2h9GhB6oNsQQ-1; Thu, 25 Feb 2021 13:20:07 -0500
+X-MC-Unique: k5qzCyvOMq2h9GhB6oNsQQ-1
+Received: by mail-ej1-f71.google.com with SMTP id rh17so2847347ejb.19
+ for <qemu-trivial@nongnu.org>; Thu, 25 Feb 2021 10:20:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=dl0mZd6ygProVAlJgebF4l0L1V53QkSvCL3swFpdz08=;
- b=QylNYyqkiUkBUSgknJtBzStPXOrwzLuaQmwTHTb2/H0zbsSyhYppHSpA4JNVE4dfL4
- +qrNrWY8beNyjnF3USJu+FmQQR7Ebb5LlNeEbJjImPfFuu2ee1Yv5KnipeQepuXtq3A4
- MiM/F9+cbxg86Qd63m/SKA6fiNh/hrKgHPQerzRdGJZS/LEJGisadEqkZypTDsA5zslS
- hn3k68UhM9NQYJUZcYmJ5Aq+sZHNYx92f45sQJqvtS5NorTmQRnLn3HbUkalv5/jkkbY
- D8LXF0dMIxthbp1MhbrfCHMqKeBBJ6LzfJrrLhiTXlziztJY7oneb0g8L87ZM4LlavHp
- x/Og==
-X-Gm-Message-State: AOAM530B5HELhTv5EkkfHU14KKOfcJ67rFcjC4QlQ9UF/iT/2Kamn4qo
- S0Tydd4zJTzjzUkotVojVSnjZlgD0bo=
-X-Google-Smtp-Source: ABdhPJzD0UgHUzyVckvu4lU+lTwrwHmiKmYkXJqLQ4/kAqpVvv4zw28tKUmssjzCWYw77igo3VAyVQ==
-X-Received: by 2002:aa7:d315:: with SMTP id p21mr4290616edq.300.1614276910360; 
- Thu, 25 Feb 2021 10:15:10 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=K9ksy8xl9ixiivlLqZ28C9ePMkW+YGg9cGZwNcxzbQY=;
+ b=lSSpwFi0CZ1s5CcKKiWnxGz7eiAwGldaiS1kiC6/PDRrxDeTP+LGp1VZxS4kYxHWJ3
+ swmcqwKGpJvh5T+mphHucsbA8hnc2JqFwoU6ZFYtSskr/oVIcHnramJ4FV4CZoyd/bxv
+ afV63UeYLUHLikg9KmDPcupB4BiOwmCeUVNA+asJlqirOxzojwV1yVkGFs4ZWqqM2A8h
+ LVUS6joMYEZ6N5bm3y7zrjjoAy3rb1791eXyav4mTqtFKRUoWalf1qE4CA7oASoU20wE
+ oo7cNw58MjRdg/bvn12QN1vaqjglMEz1+6Tus8RZXLN/vWxaYs8IS0XMj70N/C5J6t+K
+ 5/iQ==
+X-Gm-Message-State: AOAM5323lsIEpm3cCE3tokTmbHjXNFvAW+zuzzSaw1N+Hc6QKM/ZqgVK
+ DJxK87OGITBgP0PZokHaBlmlGuVtTF9luu/5lNIImYM0Cb4Hb2izMcDiN5LorDWaKqN1mGoVvQC
+ R60+PsebIt0aUsGbkAw==
+X-Received: by 2002:aa7:da18:: with SMTP id r24mr4337339eds.371.1614277206232; 
+ Thu, 25 Feb 2021 10:20:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwMf2e7If0HNHQ4T5hvHvpXYHSBTkVxFQBpc5ebFvevw4r+jMwIyUjEboxIr/5FHEY2wsAqhA==
+X-Received: by 2002:aa7:da18:: with SMTP id r24mr4337312eds.371.1614277205965; 
+ Thu, 25 Feb 2021 10:20:05 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id ec18sm3414916ejb.24.2021.02.25.10.15.09
+ by smtp.gmail.com with ESMTPSA id c17sm721255edw.32.2021.02.25.10.20.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Feb 2021 10:15:09 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ Thu, 25 Feb 2021 10:20:05 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Taylor Simpson <tsimpson@quicinc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] target/hexagon/gen_tcg_funcs: Fix a typo
-Date: Thu, 25 Feb 2021 19:15:07 +0100
-Message-Id: <20210225181507.3624509-1-f4bug@amsat.org>
+Cc: David Gibson <david@gibson.dropbear.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ Greg Kurz <groug@kaod.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] exec/memory: Use struct Object typedef
+Date: Thu, 25 Feb 2021 19:20:03 +0100
+Message-Id: <20210225182003.3629342-1-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,76 +88,252 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Feb 2021 18:15:15 -0000
+X-List-Received-Date: Thu, 25 Feb 2021 18:20:14 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+We forward-declare Object typedef in "qemu/typedefs.h" since commit
+ca27b5eb7cd ("qom/object: Move Object typedef to 'qemu/typedefs.h'").
+Use it everywhere to make the code simpler.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- target/hexagon/gen_tcg_funcs.py | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ include/exec/memory.h      | 32 ++++++++++++++++----------------
+ include/hw/ppc/pnv_xscom.h |  2 +-
+ hw/ppc/pnv_xscom.c         |  2 +-
+ softmmu/memory.c           | 12 ++++++------
+ 4 files changed, 24 insertions(+), 24 deletions(-)
 
-diff --git a/target/hexagon/gen_tcg_funcs.py b/target/hexagon/gen_tcg_funcs.py
-index fe4d8e57303..db9f663a778 100755
---- a/target/hexagon/gen_tcg_funcs.py
-+++ b/target/hexagon/gen_tcg_funcs.py
-@@ -35,7 +35,7 @@ def gen_decl_ea_tcg(f, tag):
- def gen_free_ea_tcg(f):
-     f.write("    tcg_temp_free(EA);\n")
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index c6fb714e499..54ccf1a5f09 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -828,7 +828,7 @@ static inline bool MemoryRegionSection_eq(MemoryRegionSection *a,
+  * @size: size of the region; any subregions beyond this size will be clipped
+  */
+ void memory_region_init(MemoryRegion *mr,
+-                        struct Object *owner,
++                        Object *owner,
+                         const char *name,
+                         uint64_t size);
  
--def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
-+def genptr_decl_pair_writable(f, tag, regtype, regid, regno):
-     regN="%s%sN" % (regtype,regid)
-     f.write("    TCGv_i64 %s%sV = tcg_temp_local_new_i64();\n" % \
-         (regtype, regid))
-@@ -54,7 +54,7 @@ def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
-                              (regN, regN))
-         f.write("    }\n")
+@@ -876,7 +876,7 @@ void memory_region_unref(MemoryRegion *mr);
+  * @size: size of the region.
+  */
+ void memory_region_init_io(MemoryRegion *mr,
+-                           struct Object *owner,
++                           Object *owner,
+                            const MemoryRegionOps *ops,
+                            void *opaque,
+                            const char *name,
+@@ -898,7 +898,7 @@ void memory_region_init_io(MemoryRegion *mr,
+  * RAM memory region to be migrated; that is the responsibility of the caller.
+  */
+ void memory_region_init_ram_nomigrate(MemoryRegion *mr,
+-                                      struct Object *owner,
++                                      Object *owner,
+                                       const char *name,
+                                       uint64_t size,
+                                       Error **errp);
+@@ -920,7 +920,7 @@ void memory_region_init_ram_nomigrate(MemoryRegion *mr,
+  * The only difference is part of the RAM region can be remapped.
+  */
+ void memory_region_init_ram_shared_nomigrate(MemoryRegion *mr,
+-                                             struct Object *owner,
++                                             Object *owner,
+                                              const char *name,
+                                              uint64_t size,
+                                              bool share,
+@@ -946,7 +946,7 @@ void memory_region_init_ram_shared_nomigrate(MemoryRegion *mr,
+  * RAM memory region to be migrated; that is the responsibility of the caller.
+  */
+ void memory_region_init_resizeable_ram(MemoryRegion *mr,
+-                                       struct Object *owner,
++                                       Object *owner,
+                                        const char *name,
+                                        uint64_t size,
+                                        uint64_t max_size,
+@@ -979,7 +979,7 @@ void memory_region_init_resizeable_ram(MemoryRegion *mr,
+  * RAM memory region to be migrated; that is the responsibility of the caller.
+  */
+ void memory_region_init_ram_from_file(MemoryRegion *mr,
+-                                      struct Object *owner,
++                                      Object *owner,
+                                       const char *name,
+                                       uint64_t size,
+                                       uint64_t align,
+@@ -1005,7 +1005,7 @@ void memory_region_init_ram_from_file(MemoryRegion *mr,
+  * RAM memory region to be migrated; that is the responsibility of the caller.
+  */
+ void memory_region_init_ram_from_fd(MemoryRegion *mr,
+-                                    struct Object *owner,
++                                    Object *owner,
+                                     const char *name,
+                                     uint64_t size,
+                                     bool share,
+@@ -1030,7 +1030,7 @@ void memory_region_init_ram_from_fd(MemoryRegion *mr,
+  * RAM memory region to be migrated; that is the responsibility of the caller.
+  */
+ void memory_region_init_ram_ptr(MemoryRegion *mr,
+-                                struct Object *owner,
++                                Object *owner,
+                                 const char *name,
+                                 uint64_t size,
+                                 void *ptr);
+@@ -1058,7 +1058,7 @@ void memory_region_init_ram_ptr(MemoryRegion *mr,
+  * (For RAM device memory regions, migrating the contents rarely makes sense.)
+  */
+ void memory_region_init_ram_device_ptr(MemoryRegion *mr,
+-                                       struct Object *owner,
++                                       Object *owner,
+                                        const char *name,
+                                        uint64_t size,
+                                        void *ptr);
+@@ -1076,7 +1076,7 @@ void memory_region_init_ram_device_ptr(MemoryRegion *mr,
+  * @size: size of the region.
+  */
+ void memory_region_init_alias(MemoryRegion *mr,
+-                              struct Object *owner,
++                              Object *owner,
+                               const char *name,
+                               MemoryRegion *orig,
+                               hwaddr offset,
+@@ -1101,7 +1101,7 @@ void memory_region_init_alias(MemoryRegion *mr,
+  * @errp: pointer to Error*, to store an error if it happens.
+  */
+ void memory_region_init_rom_nomigrate(MemoryRegion *mr,
+-                                      struct Object *owner,
++                                      Object *owner,
+                                       const char *name,
+                                       uint64_t size,
+                                       Error **errp);
+@@ -1124,7 +1124,7 @@ void memory_region_init_rom_nomigrate(MemoryRegion *mr,
+  * @errp: pointer to Error*, to store an error if it happens.
+  */
+ void memory_region_init_rom_device_nomigrate(MemoryRegion *mr,
+-                                             struct Object *owner,
++                                             Object *owner,
+                                              const MemoryRegionOps *ops,
+                                              void *opaque,
+                                              const char *name,
+@@ -1183,7 +1183,7 @@ void memory_region_init_iommu(void *_iommu_mr,
+  * If you pass a non-NULL non-device @owner then we will assert.
+  */
+ void memory_region_init_ram(MemoryRegion *mr,
+-                            struct Object *owner,
++                            Object *owner,
+                             const char *name,
+                             uint64_t size,
+                             Error **errp);
+@@ -1210,7 +1210,7 @@ void memory_region_init_ram(MemoryRegion *mr,
+  * @errp: pointer to Error*, to store an error if it happens.
+  */
+ void memory_region_init_rom(MemoryRegion *mr,
+-                            struct Object *owner,
++                            Object *owner,
+                             const char *name,
+                             uint64_t size,
+                             Error **errp);
+@@ -1241,7 +1241,7 @@ void memory_region_init_rom(MemoryRegion *mr,
+  * @errp: pointer to Error*, to store an error if it happens.
+  */
+ void memory_region_init_rom_device(MemoryRegion *mr,
+-                                   struct Object *owner,
++                                   Object *owner,
+                                    const MemoryRegionOps *ops,
+                                    void *opaque,
+                                    const char *name,
+@@ -1254,7 +1254,7 @@ void memory_region_init_rom_device(MemoryRegion *mr,
+  *
+  * @mr: the memory region being queried.
+  */
+-struct Object *memory_region_owner(MemoryRegion *mr);
++Object *memory_region_owner(MemoryRegion *mr);
  
--def genptr_decl_writeble(f, tag, regtype, regid, regno):
-+def genptr_decl_writable(f, tag, regtype, regid, regno):
-     regN="%s%sN" % (regtype,regid)
-     f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
-         (regtype, regid))
-@@ -78,12 +78,12 @@ def genptr_decl(f, tag, regtype, regid, regno):
-             f.write("    const int %s = insn->regno[%d];\n" % \
-                 (regN, regno))
-         elif (regid in {"dd", "ee", "xx", "yy"}):
--            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
-         elif (regid in {"s", "t", "u", "v"}):
-             f.write("    TCGv %s%sV = hex_gpr[insn->regno[%d]];\n" % \
-                 (regtype, regid, regno))
-         elif (regid in {"d", "e", "x", "y"}):
--            genptr_decl_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_writable(f, tag, regtype, regid, regno)
-         else:
-             print("Bad register parse: ", regtype, regid)
-     elif (regtype == "P"):
-@@ -91,7 +91,7 @@ def genptr_decl(f, tag, regtype, regid, regno):
-             f.write("    TCGv %s%sV = hex_pred[insn->regno[%d]];\n" % \
-                 (regtype, regid, regno))
-         elif (regid in {"d", "e", "x"}):
--            genptr_decl_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_writable(f, tag, regtype, regid, regno)
-         else:
-             print("Bad register parse: ", regtype, regid)
-     elif (regtype == "C"):
-@@ -101,14 +101,14 @@ def genptr_decl(f, tag, regtype, regid, regno):
-             f.write("    const int %s = insn->regno[%d] + HEX_REG_SA0;\n" % \
-                 (regN, regno))
-         elif (regid == "dd"):
--            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
-         elif (regid == "s"):
-             f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
-                 (regtype, regid))
-             f.write("    const int %s%sN = insn->regno[%d] + HEX_REG_SA0;\n" % \
-                 (regtype, regid, regno))
-         elif (regid == "d"):
--            genptr_decl_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_writable(f, tag, regtype, regid, regno)
-         else:
-             print("Bad register parse: ", regtype, regid)
-     elif (regtype == "M"):
+ /**
+  * memory_region_size: get a memory region's size.
+diff --git a/include/hw/ppc/pnv_xscom.h b/include/hw/ppc/pnv_xscom.h
+index 8578f5a207d..2ff9f7a8d6f 100644
+--- a/include/hw/ppc/pnv_xscom.h
++++ b/include/hw/ppc/pnv_xscom.h
+@@ -139,7 +139,7 @@ int pnv_dt_xscom(PnvChip *chip, void *fdt, int root_offset,
+ void pnv_xscom_add_subregion(PnvChip *chip, hwaddr offset,
+                              MemoryRegion *mr);
+ void pnv_xscom_region_init(MemoryRegion *mr,
+-                           struct Object *owner,
++                           Object *owner,
+                            const MemoryRegionOps *ops,
+                            void *opaque,
+                            const char *name,
+diff --git a/hw/ppc/pnv_xscom.c b/hw/ppc/pnv_xscom.c
+index e9ae1569ffc..be7018e8ac5 100644
+--- a/hw/ppc/pnv_xscom.c
++++ b/hw/ppc/pnv_xscom.c
+@@ -308,7 +308,7 @@ void pnv_xscom_add_subregion(PnvChip *chip, hwaddr offset, MemoryRegion *mr)
+ }
+ 
+ void pnv_xscom_region_init(MemoryRegion *mr,
+-                           struct Object *owner,
++                           Object *owner,
+                            const MemoryRegionOps *ops,
+                            void *opaque,
+                            const char *name,
+diff --git a/softmmu/memory.c b/softmmu/memory.c
+index 874a8fccdee..91f1bf47c30 100644
+--- a/softmmu/memory.c
++++ b/softmmu/memory.c
+@@ -1581,7 +1581,7 @@ void memory_region_init_resizeable_ram(MemoryRegion *mr,
+ 
+ #ifdef CONFIG_POSIX
+ void memory_region_init_ram_from_file(MemoryRegion *mr,
+-                                      struct Object *owner,
++                                      Object *owner,
+                                       const char *name,
+                                       uint64_t size,
+                                       uint64_t align,
+@@ -1607,7 +1607,7 @@ void memory_region_init_ram_from_file(MemoryRegion *mr,
+ }
+ 
+ void memory_region_init_ram_from_fd(MemoryRegion *mr,
+-                                    struct Object *owner,
++                                    Object *owner,
+                                     const char *name,
+                                     uint64_t size,
+                                     bool share,
+@@ -1679,7 +1679,7 @@ void memory_region_init_alias(MemoryRegion *mr,
+ }
+ 
+ void memory_region_init_rom_nomigrate(MemoryRegion *mr,
+-                                      struct Object *owner,
++                                      Object *owner,
+                                       const char *name,
+                                       uint64_t size,
+                                       Error **errp)
+@@ -3205,7 +3205,7 @@ void mtree_info(bool flatview, bool dispatch_tree, bool owner, bool disabled)
+ }
+ 
+ void memory_region_init_ram(MemoryRegion *mr,
+-                            struct Object *owner,
++                            Object *owner,
+                             const char *name,
+                             uint64_t size,
+                             Error **errp)
+@@ -3229,7 +3229,7 @@ void memory_region_init_ram(MemoryRegion *mr,
+ }
+ 
+ void memory_region_init_rom(MemoryRegion *mr,
+-                            struct Object *owner,
++                            Object *owner,
+                             const char *name,
+                             uint64_t size,
+                             Error **errp)
+@@ -3253,7 +3253,7 @@ void memory_region_init_rom(MemoryRegion *mr,
+ }
+ 
+ void memory_region_init_rom_device(MemoryRegion *mr,
+-                                   struct Object *owner,
++                                   Object *owner,
+                                    const MemoryRegionOps *ops,
+                                    void *opaque,
+                                    const char *name,
 -- 
 2.26.2
 
