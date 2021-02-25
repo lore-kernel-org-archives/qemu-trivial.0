@@ -1,79 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lFL9G-00031b-Km
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Feb 2021 13:14:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33966)
+	id 1lFLAT-0003nO-0R
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Feb 2021 13:15:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lFL9B-000305-H6
- for qemu-trivial@nongnu.org; Thu, 25 Feb 2021 13:13:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38971)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lFL99-0005lW-0F
- for qemu-trivial@nongnu.org; Thu, 25 Feb 2021 13:13:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614276830;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=5Kp6aFRE7bomZV9AWpo+SEg7jc3npeue+paEFG1rUjA=;
- b=gLWjVzn6d1By5J0Zc/6lZQGp5Yu7/tvaf4/HRwX6QgTWJf71GiZq6dfFGmdsOvrUzSZGWt
- v/UXZX59OIgajA956cDw+q8iE1+zq8QoWT2PNVCAY3byanO0QvKsF62nobYUjo2gRjwsCZ
- cDKA9WkH0S/J2c/AbgNLhQZa29E7KqU=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-405-Tz7hupqrNiCgHaLk0DL6fg-1; Thu, 25 Feb 2021 13:13:48 -0500
-X-MC-Unique: Tz7hupqrNiCgHaLk0DL6fg-1
-Received: by mail-ed1-f72.google.com with SMTP id i4so3259055edt.11
- for <qemu-trivial@nongnu.org>; Thu, 25 Feb 2021 10:13:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lFLAQ-0003kY-SC; Thu, 25 Feb 2021 13:15:14 -0500
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:40370)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lFLAP-0006O9-17; Thu, 25 Feb 2021 13:15:14 -0500
+Received: by mail-ed1-x529.google.com with SMTP id w21so8102172edc.7;
+ Thu, 25 Feb 2021 10:15:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dl0mZd6ygProVAlJgebF4l0L1V53QkSvCL3swFpdz08=;
+ b=QBgHrquIG1xd3uPWP1pioJbh31ygbBt0OnEBSLrW9CFcqlNnnSJP8kY+M4/I9rZKbQ
+ ydXgKJL/z5GiaBydemlXXjCFsfXejSOP1m9Mn2yhTVraBs5KGZ49YNG3OQs97EN5DgCi
+ MA0NOwArUnpXE23fdNEpDilJY63WY5QH9lNtk9Awa5mOLaoHxVVMds7G12nTRVZYcVVE
+ XMRjBRghC5bULgTgjjbriWG+oYoSrCXer1KigrF1+cAbeEP7yHDV3jHWRF0VwYgN+yDi
+ qqWZTfwrxjC4Pgp4HY6753BucAJTSNy0i0YiB4nIuokCfBVwHoM/X/Ru/IR2VNtrXi/n
+ nP3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=5Kp6aFRE7bomZV9AWpo+SEg7jc3npeue+paEFG1rUjA=;
- b=gkisA9mZsn6su+aao9Dfl+gKT3Q9KoVk3CkyKnFxAjg5S/WkpVAfu8gbSuAWhG/TOo
- BWNVTZW4W/ITrNI9U/V/apQOHePG4fqGgMs+VxkCdLYuvIhI2ZBkJZZ/Ix2CmFVTYXN2
- TZ6RLQhAJljDO9Q0SZ7OzkP9ShhIkTSXLfFYCOaQDYoYHWFWq1XNX3TB5GjrY6r/6QLX
- XST2JQT0g0xmslWuiC1jk3VIaguiwPR9MkyE8xZ9yCVBvmtR5LWSXAVIuibnIjaYprix
- JNtczDAfokXzA41Iep3qRJFozs4IFDR1Y/OX2fMfXoTcXrUCMwyuC4CIOEyPAJjiQM2p
- BnJw==
-X-Gm-Message-State: AOAM532MT5G54jY/v3jhsbEmsBAlxjjEAf/vP99ZmsBJ6sKTj6taXQ+B
- 2dEw1CmGEFTK6dzD4xo1JBNXAjuCf/nW8K0vWnpTNC4QIOtyjXSAF46yFDK9LQNUxflB/UIUxMZ
- lnuk0qLD208j0KXTPtA==
-X-Received: by 2002:a17:906:af10:: with SMTP id
- lx16mr3973059ejb.192.1614276827187; 
- Thu, 25 Feb 2021 10:13:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxcOWQvxatySPc7KyXOKhPAQLarSUMWB+2bc7xXp/LvrOeg2AQ18lnKdjb0vTsTPysMpbARUQ==
-X-Received: by 2002:a17:906:af10:: with SMTP id
- lx16mr3973032ejb.192.1614276826877; 
- Thu, 25 Feb 2021 10:13:46 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=dl0mZd6ygProVAlJgebF4l0L1V53QkSvCL3swFpdz08=;
+ b=QylNYyqkiUkBUSgknJtBzStPXOrwzLuaQmwTHTb2/H0zbsSyhYppHSpA4JNVE4dfL4
+ +qrNrWY8beNyjnF3USJu+FmQQR7Ebb5LlNeEbJjImPfFuu2ee1Yv5KnipeQepuXtq3A4
+ MiM/F9+cbxg86Qd63m/SKA6fiNh/hrKgHPQerzRdGJZS/LEJGisadEqkZypTDsA5zslS
+ hn3k68UhM9NQYJUZcYmJ5Aq+sZHNYx92f45sQJqvtS5NorTmQRnLn3HbUkalv5/jkkbY
+ D8LXF0dMIxthbp1MhbrfCHMqKeBBJ6LzfJrrLhiTXlziztJY7oneb0g8L87ZM4LlavHp
+ x/Og==
+X-Gm-Message-State: AOAM530B5HELhTv5EkkfHU14KKOfcJ67rFcjC4QlQ9UF/iT/2Kamn4qo
+ S0Tydd4zJTzjzUkotVojVSnjZlgD0bo=
+X-Google-Smtp-Source: ABdhPJzD0UgHUzyVckvu4lU+lTwrwHmiKmYkXJqLQ4/kAqpVvv4zw28tKUmssjzCWYw77igo3VAyVQ==
+X-Received: by 2002:aa7:d315:: with SMTP id p21mr4290616edq.300.1614276910360; 
+ Thu, 25 Feb 2021 10:15:10 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id bo12sm3384102ejb.93.2021.02.25.10.13.45
+ by smtp.gmail.com with ESMTPSA id ec18sm3414916ejb.24.2021.02.25.10.15.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Feb 2021 10:13:46 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ Thu, 25 Feb 2021 10:15:09 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefano Garzarella <sgarzare@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] hw/elf_ops: Fix a typo
-Date: Thu, 25 Feb 2021 19:13:44 +0100
-Message-Id: <20210225181344.3623720-1-philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, Taylor Simpson <tsimpson@quicinc.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] target/hexagon/gen_tcg_funcs: Fix a typo
+Date: Thu, 25 Feb 2021 19:15:07 +0100
+Message-Id: <20210225181507.3624509-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,28 +77,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Feb 2021 18:13:59 -0000
+X-List-Received-Date: Thu, 25 Feb 2021 18:15:15 -0000
 
-g_mapped_file_new_from_fd()'s parameter is named 'writable'.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/elf_ops.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/hexagon/gen_tcg_funcs.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-index 8e8436831d2..304f266bf3b 100644
---- a/include/hw/elf_ops.h
-+++ b/include/hw/elf_ops.h
-@@ -417,7 +417,7 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+diff --git a/target/hexagon/gen_tcg_funcs.py b/target/hexagon/gen_tcg_funcs.py
+index fe4d8e57303..db9f663a778 100755
+--- a/target/hexagon/gen_tcg_funcs.py
++++ b/target/hexagon/gen_tcg_funcs.py
+@@ -35,7 +35,7 @@ def gen_decl_ea_tcg(f, tag):
+ def gen_free_ea_tcg(f):
+     f.write("    tcg_temp_free(EA);\n")
  
-     /*
-      * Since we want to be able to modify the mapped buffer, we set the
--     * 'writeble' parameter to 'true'. Modifications to the buffer are not
-+     * 'writable' parameter to 'true'. Modifications to the buffer are not
-      * written back to the file.
-      */
-     mapped_file = g_mapped_file_new_from_fd(fd, true, NULL);
+-def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
++def genptr_decl_pair_writable(f, tag, regtype, regid, regno):
+     regN="%s%sN" % (regtype,regid)
+     f.write("    TCGv_i64 %s%sV = tcg_temp_local_new_i64();\n" % \
+         (regtype, regid))
+@@ -54,7 +54,7 @@ def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
+                              (regN, regN))
+         f.write("    }\n")
+ 
+-def genptr_decl_writeble(f, tag, regtype, regid, regno):
++def genptr_decl_writable(f, tag, regtype, regid, regno):
+     regN="%s%sN" % (regtype,regid)
+     f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
+         (regtype, regid))
+@@ -78,12 +78,12 @@ def genptr_decl(f, tag, regtype, regid, regno):
+             f.write("    const int %s = insn->regno[%d];\n" % \
+                 (regN, regno))
+         elif (regid in {"dd", "ee", "xx", "yy"}):
+-            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
+         elif (regid in {"s", "t", "u", "v"}):
+             f.write("    TCGv %s%sV = hex_gpr[insn->regno[%d]];\n" % \
+                 (regtype, regid, regno))
+         elif (regid in {"d", "e", "x", "y"}):
+-            genptr_decl_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_writable(f, tag, regtype, regid, regno)
+         else:
+             print("Bad register parse: ", regtype, regid)
+     elif (regtype == "P"):
+@@ -91,7 +91,7 @@ def genptr_decl(f, tag, regtype, regid, regno):
+             f.write("    TCGv %s%sV = hex_pred[insn->regno[%d]];\n" % \
+                 (regtype, regid, regno))
+         elif (regid in {"d", "e", "x"}):
+-            genptr_decl_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_writable(f, tag, regtype, regid, regno)
+         else:
+             print("Bad register parse: ", regtype, regid)
+     elif (regtype == "C"):
+@@ -101,14 +101,14 @@ def genptr_decl(f, tag, regtype, regid, regno):
+             f.write("    const int %s = insn->regno[%d] + HEX_REG_SA0;\n" % \
+                 (regN, regno))
+         elif (regid == "dd"):
+-            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
+         elif (regid == "s"):
+             f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
+                 (regtype, regid))
+             f.write("    const int %s%sN = insn->regno[%d] + HEX_REG_SA0;\n" % \
+                 (regtype, regid, regno))
+         elif (regid == "d"):
+-            genptr_decl_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_writable(f, tag, regtype, regid, regno)
+         else:
+             print("Bad register parse: ", regtype, regid)
+     elif (regtype == "M"):
 -- 
 2.26.2
 
