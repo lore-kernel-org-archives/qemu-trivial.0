@@ -1,42 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lFYIP-0004fj-NY
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Feb 2021 03:16:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43908)
+	id 1lFbt4-00012F-LR
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Feb 2021 07:06:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1lFYIH-0004XP-QU; Fri, 26 Feb 2021 03:16:14 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2654)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1lFYID-0001N1-SC; Fri, 26 Feb 2021 03:16:13 -0500
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Dn2W40sKzz7qbw;
- Fri, 26 Feb 2021 16:14:24 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS408-HUB.china.huawei.com
- (10.3.19.208) with Microsoft SMTP Server id 14.3.498.0; Fri, 26 Feb 2021
- 16:15:50 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <thuth@redhat.com>, <lvivier@redhat.com>, <ganqixin@huawei.com>,
- <zhang.zhanghailiang@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>,
- "Markus Armbruster" <armbru@redhat.com>
-Subject: [PATCH v2] qtest: delete superfluous inclusions of qtest.h
-Date: Fri, 26 Feb 2021 16:14:14 +0800
-Message-ID: <20210226081414.205946-1-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.23.0
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1lFbt3-00011e-E8
+ for qemu-trivial@nongnu.org; Fri, 26 Feb 2021 07:06:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30458)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1lFbt0-0008Ky-Pv
+ for qemu-trivial@nongnu.org; Fri, 26 Feb 2021 07:06:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614341180;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=5sSUGjJl0N9rSE3mNsymbDryUSITyUiRDPA98/1ZvGo=;
+ b=TSUFGO5B1vRCZorB/TRzQwNxjBDyOpMQizcoUIZTUFZid2/jkJX18uWm4+Es6UtyBA27WD
+ kbss7DlCpI6h0mqJqrimRCa8nA3YtA4Dv/LsG4KRYK9TtD63P8GG8WKfgCuM0OYn8Zjpsb
+ R4z1hc3+tIU+qX3s5k/mR8y0jA/dE+s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-405-vrbIAKLDNrGyBGBYoGwk0g-1; Fri, 26 Feb 2021 07:06:17 -0500
+X-MC-Unique: vrbIAKLDNrGyBGBYoGwk0g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ADC3C1868404;
+ Fri, 26 Feb 2021 12:06:16 +0000 (UTC)
+Received: from localhost (unknown [10.36.110.12])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 667B8E2E2;
+ Fri, 26 Feb 2021 12:06:11 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Cc: jasowang@redhat.com,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] net: remove qemu_ether_ntoa()
+Date: Fri, 26 Feb 2021 16:06:07 +0400
+Message-Id: <20210226120607.675753-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=marcandre.lureau@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga07-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -49,319 +71,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Feb 2021 08:16:14 -0000
+X-List-Received-Date: Fri, 26 Feb 2021 12:06:25 -0000
 
-There are 23 files that include the "sysemu/qtest.h",
-but they do not use any qtest functions.
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+The function is not thread-safe and sets a bad example. It's used in a
+single place for tracing, so open-code the format string like other
+trace events with MAC addresses.
 
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
-v1->v2: Change the subject base on Markus's suggestion.
-Cc: Markus Armbruster <armbru@redhat.com>
----
- accel/tcg/cpu-exec.c            | 1 -
- blockdev.c                      | 1 -
- hw/9pfs/9p.c                    | 1 -
- hw/arm/armv7m.c                 | 1 -
- hw/arm/mainstone.c              | 1 -
- hw/arm/xlnx-zcu102.c            | 1 -
- hw/arm/z2.c                     | 1 -
- hw/i386/pc.c                    | 1 -
- hw/misc/ivshmem.c               | 1 -
- hw/ppc/ppc440_bamboo.c          | 1 -
- hw/ppc/prep.c                   | 1 -
- hw/ppc/sam460ex.c               | 1 -
- hw/ppc/spapr_caps.c             | 1 -
- hw/ppc/spapr_pci_vfio.c         | 1 -
- hw/ppc/spapr_vio.c              | 1 -
- hw/ppc/virtex_ml507.c           | 1 -
- hw/riscv/spike.c                | 1 -
- hw/rx/rx62n.c                   | 1 -
- net/net.c                       | 1 -
- softmmu/cpu-timers.c            | 1 -
- target/ppc/translate_init.c.inc | 1 -
- util/main-loop.c                | 1 -
- util/qemu-timer.c               | 1 -
- 23 files changed, 23 deletions(-)
+ include/qemu-common.h |  1 -
+ net/announce.c        |  8 +++++++-
+ util/cutils.c         | 13 -------------
+ net/trace-events      |  2 +-
+ 4 files changed, 8 insertions(+), 16 deletions(-)
 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 16e4fe3ccd..4db74fc71f 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -28,7 +28,6 @@
- #include "tcg/tcg.h"
- #include "qemu/atomic.h"
- #include "qemu/compiler.h"
--#include "sysemu/qtest.h"
- #include "qemu/timer.h"
- #include "qemu/rcu.h"
- #include "exec/tb-hash.h"
-diff --git a/blockdev.c b/blockdev.c
-index cd438e60e3..7463dd5b09 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -57,7 +57,6 @@
- #include "block/block_int.h"
- #include "block/trace.h"
- #include "sysemu/arch_init.h"
--#include "sysemu/qtest.h"
- #include "sysemu/runstate.h"
- #include "sysemu/replay.h"
- #include "qemu/cutils.h"
-diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-index 5a6e2c9d3d..134806db52 100644
---- a/hw/9pfs/9p.c
-+++ b/hw/9pfs/9p.c
-@@ -25,7 +25,6 @@
- #include "coth.h"
- #include "trace.h"
- #include "migration/blocker.h"
--#include "sysemu/qtest.h"
- #include "qemu/xxhash.h"
- #include <math.h>
- #include <linux/limits.h>
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 8224d4ade9..6dd10d8470 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -16,7 +16,6 @@
- #include "hw/loader.h"
- #include "hw/qdev-properties.h"
- #include "elf.h"
--#include "sysemu/qtest.h"
- #include "sysemu/reset.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-index 6bc643651b..8454b65458 100644
---- a/hw/arm/mainstone.c
-+++ b/hw/arm/mainstone.c
-@@ -22,7 +22,6 @@
- #include "hw/block/flash.h"
- #include "hw/sysbus.h"
- #include "exec/address-spaces.h"
--#include "sysemu/qtest.h"
- #include "cpu.h"
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 654621444e..209133bfca 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -132,7 +132,6 @@ void qemu_hexdump(FILE *fp, const char *prefix,
+  */
+ int parse_debug_env(const char *name, int max, int initial);
  
- /* Device addresses */
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index c9713638c5..a9db25eb99 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -22,7 +22,6 @@
- #include "hw/boards.h"
- #include "qemu/error-report.h"
- #include "qemu/log.h"
--#include "sysemu/qtest.h"
- #include "sysemu/device_tree.h"
- #include "qom/object.h"
- #include "net/can_emu.h"
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 308c4da956..5099bd8380 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -24,7 +24,6 @@
- #include "hw/audio/wm8750.h"
- #include "audio/audio.h"
- #include "exec/address-spaces.h"
--#include "sysemu/qtest.h"
- #include "cpu.h"
- #include "qom/object.h"
+-const char *qemu_ether_ntoa(const MACAddr *mac);
+ void page_size_init(void);
  
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 8aa85dec54..410db9ef96 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -58,7 +58,6 @@
- #include "sysemu/numa.h"
- #include "sysemu/kvm.h"
- #include "sysemu/xen.h"
--#include "sysemu/qtest.h"
- #include "sysemu/reset.h"
- #include "sysemu/runstate.h"
- #include "kvm/kvm_i386.h"
-diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
-index 603e992a7f..a1fa4878be 100644
---- a/hw/misc/ivshmem.c
-+++ b/hw/misc/ivshmem.c
-@@ -35,7 +35,6 @@
- #include "qom/object_interfaces.h"
- #include "chardev/char-fe.h"
- #include "sysemu/hostmem.h"
--#include "sysemu/qtest.h"
- #include "qapi/visitor.h"
+ /* returns non-zero if dump is in progress, otherwise zero is
+diff --git a/net/announce.c b/net/announce.c
+index 26f057f5ee..fc0c6baace 100644
+--- a/net/announce.c
++++ b/net/announce.c
+@@ -146,7 +146,13 @@ static void qemu_announce_self_iter(NICState *nic, void *opaque)
  
- #include "hw/misc/ivshmem.h"
-diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-index b156bcb999..b7539aa721 100644
---- a/hw/ppc/ppc440_bamboo.c
-+++ b/hw/ppc/ppc440_bamboo.c
-@@ -30,7 +30,6 @@
- #include "hw/ppc/ppc.h"
- #include "ppc405.h"
- #include "sysemu/sysemu.h"
--#include "sysemu/qtest.h"
- #include "sysemu/reset.h"
- #include "hw/sysbus.h"
- #include "hw/intc/ppc-uic.h"
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 7e72f6e4a9..f1b1efdcef 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -45,7 +45,6 @@
- #include "hw/qdev-properties.h"
- #include "sysemu/arch_init.h"
- #include "sysemu/kvm.h"
--#include "sysemu/qtest.h"
- #include "sysemu/reset.h"
- #include "exec/address-spaces.h"
- #include "trace.h"
-diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-index e459b43065..0c6baf77e8 100644
---- a/hw/ppc/sam460ex.c
-+++ b/hw/ppc/sam460ex.c
-@@ -30,7 +30,6 @@
- #include "ppc405.h"
- #include "hw/block/flash.h"
- #include "sysemu/sysemu.h"
--#include "sysemu/qtest.h"
- #include "sysemu/reset.h"
- #include "hw/sysbus.h"
- #include "hw/char/serial.h"
-diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
-index 9341e9782a..9ea7ddd1e9 100644
---- a/hw/ppc/spapr_caps.c
-+++ b/hw/ppc/spapr_caps.c
-@@ -33,7 +33,6 @@
- #include "cpu-models.h"
- #include "kvm_ppc.h"
- #include "migration/vmstate.h"
--#include "sysemu/qtest.h"
- #include "sysemu/tcg.h"
+     trace_qemu_announce_self_iter(timer->params.has_id ? timer->params.id : "_",
+                                   nic->ncs->name,
+-                                  qemu_ether_ntoa(&nic->conf->macaddr), skip);
++                                  nic->conf->macaddr.a[0],
++                                  nic->conf->macaddr.a[1],
++                                  nic->conf->macaddr.a[2],
++                                  nic->conf->macaddr.a[3],
++                                  nic->conf->macaddr.a[4],
++                                  nic->conf->macaddr.a[5],
++                                  skip);
  
- #include "hw/ppc/spapr.h"
-diff --git a/hw/ppc/spapr_pci_vfio.c b/hw/ppc/spapr_pci_vfio.c
-index ecb34aaade..e0547b1740 100644
---- a/hw/ppc/spapr_pci_vfio.c
-+++ b/hw/ppc/spapr_pci_vfio.c
-@@ -25,7 +25,6 @@
- #include "hw/pci/msix.h"
- #include "hw/vfio/vfio.h"
- #include "qemu/error-report.h"
--#include "sysemu/qtest.h"
+     if (!skip) {
+         len = announce_self_create(buf, nic->conf->macaddr.a);
+diff --git a/util/cutils.c b/util/cutils.c
+index 70c7d6efbd..b5460a72b4 100644
+--- a/util/cutils.c
++++ b/util/cutils.c
+@@ -847,19 +847,6 @@ int parse_debug_env(const char *name, int max, int initial)
+     return debug;
+ }
  
- bool spapr_phb_eeh_available(SpaprPhbState *sphb)
- {
-diff --git a/hw/ppc/spapr_vio.c b/hw/ppc/spapr_vio.c
-index 3cc9421526..ef06e0362c 100644
---- a/hw/ppc/spapr_vio.c
-+++ b/hw/ppc/spapr_vio.c
-@@ -31,7 +31,6 @@
- #include "sysemu/device_tree.h"
- #include "kvm_ppc.h"
- #include "migration/vmstate.h"
--#include "sysemu/qtest.h"
+-/*
+- * Helper to print ethernet mac address
+- */
+-const char *qemu_ether_ntoa(const MACAddr *mac)
+-{
+-    static char ret[18];
+-
+-    snprintf(ret, sizeof(ret), "%02x:%02x:%02x:%02x:%02x:%02x",
+-             mac->a[0], mac->a[1], mac->a[2], mac->a[3], mac->a[4], mac->a[5]);
+-
+-    return ret;
+-}
+-
+ /*
+  * Return human readable string for size @val.
+  * @val can be anything that uint64_t allows (no more than "16 EiB").
+diff --git a/net/trace-events b/net/trace-events
+index bfaff7891d..07d6203602 100644
+--- a/net/trace-events
++++ b/net/trace-events
+@@ -1,7 +1,7 @@
+ # See docs/devel/tracing.txt for syntax documentation.
  
- #include "hw/ppc/spapr.h"
- #include "hw/ppc/spapr_vio.h"
-diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-index b26ff17767..cb421570da 100644
---- a/hw/ppc/virtex_ml507.c
-+++ b/hw/ppc/virtex_ml507.c
-@@ -31,7 +31,6 @@
- #include "hw/char/serial.h"
- #include "hw/block/flash.h"
- #include "sysemu/sysemu.h"
--#include "sysemu/qtest.h"
- #include "sysemu/reset.h"
- #include "hw/boards.h"
- #include "sysemu/device_tree.h"
-diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-index 56986ecfe0..2c419b294e 100644
---- a/hw/riscv/spike.c
-+++ b/hw/riscv/spike.c
-@@ -40,7 +40,6 @@
- #include "chardev/char.h"
- #include "sysemu/arch_init.h"
- #include "sysemu/device_tree.h"
--#include "sysemu/qtest.h"
- #include "sysemu/sysemu.h"
+ # announce.c
+-qemu_announce_self_iter(const char *id, const char *name, const char *mac, int skip) "%s:%s:%s skip: %d"
++qemu_announce_self_iter(const char *id, const char *name, char mac0, char mac1, char mac2, char mac3, char mac4, char mac5, int skip) "%s:%s:%02x:%02x:%02x:%02x:%02x:%02x skip: %d"
+ qemu_announce_timer_del(bool free_named, bool free_timer, char *id) "free named: %d free timer: %d id: %s"
  
- static const struct MemmapEntry {
-diff --git a/hw/rx/rx62n.c b/hw/rx/rx62n.c
-index 17ec73fc7b..9c34ce14de 100644
---- a/hw/rx/rx62n.c
-+++ b/hw/rx/rx62n.c
-@@ -29,7 +29,6 @@
- #include "hw/sysbus.h"
- #include "hw/qdev-properties.h"
- #include "sysemu/sysemu.h"
--#include "sysemu/qtest.h"
- #include "cpu.h"
- #include "qom/object.h"
- 
-diff --git a/net/net.c b/net/net.c
-index fb7b7dcc25..6002ba50db 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -50,7 +50,6 @@
- #include "qapi/error.h"
- #include "qapi/opts-visitor.h"
- #include "sysemu/sysemu.h"
--#include "sysemu/qtest.h"
- #include "sysemu/runstate.h"
- #include "sysemu/sysemu.h"
- #include "net/filter.h"
-diff --git a/softmmu/cpu-timers.c b/softmmu/cpu-timers.c
-index 1eb7c675c1..cd38595245 100644
---- a/softmmu/cpu-timers.c
-+++ b/softmmu/cpu-timers.c
-@@ -30,7 +30,6 @@
- #include "qemu/error-report.h"
- #include "exec/exec-all.h"
- #include "sysemu/cpus.h"
--#include "sysemu/qtest.h"
- #include "qemu/main-loop.h"
- #include "qemu/option.h"
- #include "qemu/seqlock.h"
-diff --git a/target/ppc/translate_init.c.inc b/target/ppc/translate_init.c.inc
-index e7324e85cd..108ff2be2b 100644
---- a/target/ppc/translate_init.c.inc
-+++ b/target/ppc/translate_init.c.inc
-@@ -37,7 +37,6 @@
- #include "hw/qdev-properties.h"
- #include "hw/ppc/ppc.h"
- #include "mmu-book3s-v3.h"
--#include "sysemu/qtest.h"
- #include "qemu/cutils.h"
- #include "disas/capstone.h"
- #include "fpu/softfloat.h"
-diff --git a/util/main-loop.c b/util/main-loop.c
-index 6bfc7c46f5..5188ff6540 100644
---- a/util/main-loop.c
-+++ b/util/main-loop.c
-@@ -26,7 +26,6 @@
- #include "qapi/error.h"
- #include "qemu/cutils.h"
- #include "qemu/timer.h"
--#include "sysemu/qtest.h"
- #include "sysemu/cpu-timers.h"
- #include "sysemu/replay.h"
- #include "qemu/main-loop.h"
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index 81c28af517..f36c75e594 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -29,7 +29,6 @@
- #include "sysemu/cpu-timers.h"
- #include "sysemu/replay.h"
- #include "sysemu/cpus.h"
--#include "sysemu/qtest.h"
- 
- #ifdef CONFIG_POSIX
- #include <pthread.h>
+ # vhost-user.c
 -- 
-2.23.0
+2.29.0
 
 
