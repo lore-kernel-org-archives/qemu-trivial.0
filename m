@@ -1,64 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lFgSO-00044C-DY
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Feb 2021 11:59:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49982)
+	id 1lH02F-000778-3R
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Mar 2021 03:05:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dje@google.com>) id 1lFfsU-00060v-JL
- for qemu-trivial@nongnu.org; Fri, 26 Feb 2021 11:22:10 -0500
-Received: from mail-vk1-xa2c.google.com ([2607:f8b0:4864:20::a2c]:42098)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lH02D-00075H-AG; Tue, 02 Mar 2021 03:05:37 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:35601)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dje@google.com>) id 1lFfsP-0004F9-E1
- for qemu-trivial@nongnu.org; Fri, 26 Feb 2021 11:22:06 -0500
-Received: by mail-vk1-xa2c.google.com with SMTP id e3so2049349vkn.9
- for <qemu-trivial@nongnu.org>; Fri, 26 Feb 2021 08:22:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=aAy1GNCv3Zuuaueorh0TEO0DhMmEhORf18/5PPbD3ic=;
- b=Ur7RFVy0jkAtWYApvSJ0z/VoQp7CAWrX77/tWvYx/RGW7Vmq69Grw7/9dWRfLUq93w
- RWuiKoLVRB+WBxQfwGOVf91fpsFlvL4A3seoNaoPd1asmLMM0MegtniaHBuGiWqIpxyK
- Y4PxvCXk9jc3g6n2/xbL9nKcs6xR3zQ3BMM1lUhYCgWYFGrblF7uEsmJMWr2NQmq4sUa
- uOxqaKf0Vqn9/EsNko18tC0hSvLQ+OegmAPOQDguy0c2oOFkkcv7N3u4xg4gReezmzuZ
- PqP4OCWXqxcr5bPrRkej69ZVJPaTdc0l3ZvD/Xl+z3xZmdaED+eAqU0WXonPzPT5vTtq
- IKnA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lH02B-00046T-RG; Tue, 02 Mar 2021 03:05:37 -0500
+Received: by mail-ej1-x635.google.com with SMTP id dx17so5901909ejb.2;
+ Tue, 02 Mar 2021 00:05:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nm2moPnpz/dAK8p3yLwcugrMA1iGHP07uLqzqW3wl7g=;
+ b=aO8cd+03I/FNSXZlU8+yqZ5IDi5fHTmpwpIcw6eWnoy/z/pA26V1KTrYb87Fg3jLLL
+ ARaCAoISXHa3d8wQcwMlzARArlmFycSz04Fb6NDKg566zSi9DyaAlfM65uPkdqfvSfly
+ lkjSEMp14tVxWc/ItAlXd30z7KZkRAKN120Zo8w8VEEwG1XWGa/CDSRpLL2PFqGxQ8uU
+ yetTicITnMURw0T+8wudvzdnJxWLsRr8Mlrowy4/cPbNMAzBUseilS+Me2oBTqhOZLjV
+ WCvlsUslXclgEMzv5OyWUt6mV5o01Qph8EbTwCJdzaiAwvpweM1ew4VzPXx9ZZ17/EDz
+ WVdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=aAy1GNCv3Zuuaueorh0TEO0DhMmEhORf18/5PPbD3ic=;
- b=C4o2ieQZ8BSR/dG1TMi13rljnTmO4dVNN8ND5cxvoIjzq7d3on+wTETHvzJxtPQjw6
- sNyH6IM2mnk5s73zJjipl0skc4AKIckCoPV9DppZtqauJnJR/dHxmaKi41IHInEtkMqZ
- nLYFFEO6OnHr7KNqWywQkqEb94lr26OG4IHXJPP2JXsoevRSFK7OA5wgtZSSrOQJAKd4
- 2wliZgwBDC7gRfrXUrl6sU0uuCYJzyrb7Xilncg0c1rBHuFwjSKoIAhexKGAKGv3kcYQ
- XK+wPEMUVwwXXVV5XwKus02VUs+a+dBCLSPL8SRTr7wiWhjLAmiIh28RH0UQo5Fih+fd
- ODbw==
-X-Gm-Message-State: AOAM5326dsDRFAmcuCxVBdqhifGv5Kn7vmE3202SFdx9HzNaAlQuJ28N
- KQQh4i4VVDWDSA//NQ6VksiOhF3ggcS3ZabldajIGA==
-X-Google-Smtp-Source: ABdhPJzmrAi1ndgKM19LR9KGsCEvXehYMIQdeCu1Qc35pR5IrMzoMwdjspuJq/ebMsJDEAMaNqdP4rnKH0rOn6NJ0wo=
-X-Received: by 2002:a1f:7281:: with SMTP id n123mr2098268vkc.8.1614356519080; 
- Fri, 26 Feb 2021 08:21:59 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=nm2moPnpz/dAK8p3yLwcugrMA1iGHP07uLqzqW3wl7g=;
+ b=C06pC29qL6J/VFEkyI/t6uMqNTD9Byg7XqcCc6c/92caNOWsRL48EPd9eVNCIGW2lv
+ 0YTY7ZacZfNNaxwxTa4vzVryg9+Dpl0gIQxyhQnwJANRRVYC29l9BON+y4TEYksA2xvw
+ OxSLKpJtXT6oh+FUQpNlS/EKvcJqkI+vdq1y7nDguel6eRo2ABlfY9mzYafn3f5hEA5x
+ eyi85HySLQuoXeCsYyEep/mHKA6bj6ASDBVcArUVxLTAkZhfdKNVjO8GRzoeIZX5KJX8
+ EexkiGdEx1yRTof2R+MnsWBPogykYYhnQFRedq/1YgUY/tfnr7PFN5/SvSts+3WrW20w
+ 0ddw==
+X-Gm-Message-State: AOAM532113OT611laiC5Ls/oYvmHW1Aq0fb3vjWCDxkRMOcLqeDq46oc
+ o3JYEFh6aeJG5ZODbRvKsZm2WAwynHA=
+X-Google-Smtp-Source: ABdhPJxsn7jvh9bvbXsJ75dnGnTeNxE2w2wXwbMEwm3U+wFfuqTqM6YJTLjze8paLslQNP2wqhnJbg==
+X-Received: by 2002:a17:906:d8c6:: with SMTP id
+ re6mr8317413ejb.311.1614672333371; 
+ Tue, 02 Mar 2021 00:05:33 -0800 (PST)
+Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id q1sm16642158ejt.65.2021.03.02.00.05.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Mar 2021 00:05:32 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH] hw/isa/Kconfig: Add missing dependency VIA VT82C686 -> APM
+Date: Tue,  2 Mar 2021 09:05:31 +0100
+Message-Id: <20210302080531.913802-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20210226120607.675753-1-marcandre.lureau@redhat.com>
-In-Reply-To: <20210226120607.675753-1-marcandre.lureau@redhat.com>
-From: Doug Evans <dje@google.com>
-Date: Fri, 26 Feb 2021 08:21:21 -0800
-Message-ID: <CADPb22TSqOq7dxdnu=eMmeW-nPcPWn2T2RgyztyDA=jWE84HsQ@mail.gmail.com>
-Subject: Re: [PATCH] net: remove qemu_ether_ntoa()
-To: marcandre.lureau@redhat.com
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- Jason Wang <jasowang@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000dceaf705bc3faa0a"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2c;
- envelope-from=dje@google.com; helo=mail-vk1-xa2c.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 26 Feb 2021 11:59:10 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,252 +80,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Feb 2021 16:22:10 -0000
+X-List-Received-Date: Tue, 02 Mar 2021 08:05:37 -0000
 
---000000000000dceaf705bc3faa0a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+TYPE_VIA_PM calls apm_init() in via_pm_realize(), so
+requires APM to be selected.
 
-On Fri, Feb 26, 2021 at 4:06 AM <marcandre.lureau@redhat.com> wrote:
+Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/isa/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->
-> The function is not thread-safe and sets a bad example. It's used in a
-> single place for tracing, so open-code the format string like other
-> trace events with MAC addresses.
->
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  include/qemu-common.h |  1 -
->  net/announce.c        |  8 +++++++-
->  util/cutils.c         | 13 -------------
->  net/trace-events      |  2 +-
->  4 files changed, 8 insertions(+), 16 deletions(-)
->
-> diff --git a/include/qemu-common.h b/include/qemu-common.h
-> index 654621444e..209133bfca 100644
-> --- a/include/qemu-common.h
-> +++ b/include/qemu-common.h
-> @@ -132,7 +132,6 @@ void qemu_hexdump(FILE *fp, const char *prefix,
->   */
->  int parse_debug_env(const char *name, int max, int initial);
->
-> -const char *qemu_ether_ntoa(const MACAddr *mac);
->  void page_size_init(void);
->
->  /* returns non-zero if dump is in progress, otherwise zero is
-> diff --git a/net/announce.c b/net/announce.c
-> index 26f057f5ee..fc0c6baace 100644
-> --- a/net/announce.c
-> +++ b/net/announce.c
-> @@ -146,7 +146,13 @@ static void qemu_announce_self_iter(NICState *nic,
-> void *opaque)
->
->      trace_qemu_announce_self_iter(timer->params.has_id ? timer->params.i=
-d
-> : "_",
->                                    nic->ncs->name,
-> -                                  qemu_ether_ntoa(&nic->conf->macaddr),
-> skip);
-> +                                  nic->conf->macaddr.a[0],
-> +                                  nic->conf->macaddr.a[1],
-> +                                  nic->conf->macaddr.a[2],
-> +                                  nic->conf->macaddr.a[3],
-> +                                  nic->conf->macaddr.a[4],
-> +                                  nic->conf->macaddr.a[5],
-> +                                  skip);
->
->      if (!skip) {
->          len =3D announce_self_create(buf, nic->conf->macaddr.a);
-> diff --git a/util/cutils.c b/util/cutils.c
-> index 70c7d6efbd..b5460a72b4 100644
-> --- a/util/cutils.c
-> +++ b/util/cutils.c
-> @@ -847,19 +847,6 @@ int parse_debug_env(const char *name, int max, int
-> initial)
->      return debug;
->  }
->
-> -/*
-> - * Helper to print ethernet mac address
-> - */
-> -const char *qemu_ether_ntoa(const MACAddr *mac)
-> -{
-> -    static char ret[18];
-> -
-> -    snprintf(ret, sizeof(ret), "%02x:%02x:%02x:%02x:%02x:%02x",
-> -             mac->a[0], mac->a[1], mac->a[2], mac->a[3], mac->a[4],
-> mac->a[5]);
-> -
-> -    return ret;
-> -}
-> -
->  /*
->   * Return human readable string for size @val.
->   * @val can be anything that uint64_t allows (no more than "16 EiB").
-> diff --git a/net/trace-events b/net/trace-events
-> index bfaff7891d..07d6203602 100644
-> --- a/net/trace-events
-> +++ b/net/trace-events
-> @@ -1,7 +1,7 @@
->  # See docs/devel/tracing.txt for syntax documentation.
->
->  # announce.c
-> -qemu_announce_self_iter(const char *id, const char *name, const char
-> *mac, int skip) "%s:%s:%s skip: %d"
-> +qemu_announce_self_iter(const char *id, const char *name, char mac0, cha=
-r
-> mac1, char mac2, char mac3, char mac4, char mac5, int skip)
-> "%s:%s:%02x:%02x:%02x:%02x:%02x:%02x skip: %d"
->  qemu_announce_timer_del(bool free_named, bool free_timer, char *id) "fre=
-e
-> named: %d free timer: %d id: %s"
->
->  # vhost-user.c
-> --
-> 2.29.0
->
+diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+index c7f07854f7e..9c026d0c510 100644
+--- a/hw/isa/Kconfig
++++ b/hw/isa/Kconfig
+@@ -47,6 +47,7 @@ config VT82C686
+     select ACPI_SMBUS
+     select SERIAL_ISA
+     select FDC
++    select APM
+ 
+ config SMC37C669
+     bool
+-- 
+2.26.2
 
-
-It's pretty tedious to open code that.
-How about instead change qemu_ether_ntoa to being thread-safe?
-
-And, separately, add a bit of type safety and put eth addrs in a struct?
-
---000000000000dceaf705bc3faa0a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"fon=
-t-size:small">On Fri, Feb 26, 2021 at 4:06 AM &lt;<a href=3D"mailto:marcand=
-re.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt; wrote:<br></div><=
-/div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">From: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@=
-redhat.com" target=3D"_blank">marcandre.lureau@redhat.com</a>&gt;<br>
-<br>
-The function is not thread-safe and sets a bad example. It&#39;s used in a<=
-br>
-single place for tracing, so open-code the format string like other<br>
-trace events with MAC addresses.<br>
-<br>
-Cc: <a href=3D"mailto:qemu-trivial@nongnu.org" target=3D"_blank">qemu-trivi=
-al@nongnu.org</a><br>
-Signed-off-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lurea=
-u@redhat.com" target=3D"_blank">marcandre.lureau@redhat.com</a>&gt;<br>
----<br>
-=C2=A0include/qemu-common.h |=C2=A0 1 -<br>
-=C2=A0net/announce.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 8 +++++++-<br>
-=C2=A0util/cutils.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 13 -------------<br>
-=C2=A0net/trace-events=C2=A0 =C2=A0 =C2=A0 |=C2=A0 2 +-<br>
-=C2=A04 files changed, 8 insertions(+), 16 deletions(-)<br>
-<br>
-diff --git a/include/qemu-common.h b/include/qemu-common.h<br>
-index 654621444e..209133bfca 100644<br>
---- a/include/qemu-common.h<br>
-+++ b/include/qemu-common.h<br>
-@@ -132,7 +132,6 @@ void qemu_hexdump(FILE *fp, const char *prefix,<br>
-=C2=A0 */<br>
-=C2=A0int parse_debug_env(const char *name, int max, int initial);<br>
-<br>
--const char *qemu_ether_ntoa(const MACAddr *mac);<br>
-=C2=A0void page_size_init(void);<br>
-<br>
-=C2=A0/* returns non-zero if dump is in progress, otherwise zero is<br>
-diff --git a/net/announce.c b/net/announce.c<br>
-index 26f057f5ee..fc0c6baace 100644<br>
---- a/net/announce.c<br>
-+++ b/net/announce.c<br>
-@@ -146,7 +146,13 @@ static void qemu_announce_self_iter(NICState *nic, voi=
-d *opaque)<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0trace_qemu_announce_self_iter(timer-&gt;params.has_id ?=
- timer-&gt;<a href=3D"http://params.id" rel=3D"noreferrer" target=3D"_blank=
-">params.id</a> : &quot;_&quot;,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0nic-&gt;ncs-&gt;name,<b=
-r>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_ether_ntoa(&amp;nic-&gt;=
-conf-&gt;macaddr), skip);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 nic-&gt;conf-&gt;macaddr.a[0]=
-,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 nic-&gt;conf-&gt;macaddr.a[1]=
-,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 nic-&gt;conf-&gt;macaddr.a[2]=
-,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 nic-&gt;conf-&gt;macaddr.a[3]=
-,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 nic-&gt;conf-&gt;macaddr.a[4]=
-,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 nic-&gt;conf-&gt;macaddr.a[5]=
-,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 skip);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0if (!skip) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0len =3D announce_self_create(buf, nic-&gt=
-;conf-&gt;macaddr.a);<br>
-diff --git a/util/cutils.c b/util/cutils.c<br>
-index 70c7d6efbd..b5460a72b4 100644<br>
---- a/util/cutils.c<br>
-+++ b/util/cutils.c<br>
-@@ -847,19 +847,6 @@ int parse_debug_env(const char *name, int max, int ini=
-tial)<br>
-=C2=A0 =C2=A0 =C2=A0return debug;<br>
-=C2=A0}<br>
-<br>
--/*<br>
-- * Helper to print ethernet mac address<br>
-- */<br>
--const char *qemu_ether_ntoa(const MACAddr *mac)<br>
--{<br>
--=C2=A0 =C2=A0 static char ret[18];<br>
--<br>
--=C2=A0 =C2=A0 snprintf(ret, sizeof(ret), &quot;%02x:%02x:%02x:%02x:%02x:%0=
-2x&quot;,<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0mac-&gt;a[0], mac-&gt;a[1]=
-, mac-&gt;a[2], mac-&gt;a[3], mac-&gt;a[4], mac-&gt;a[5]);<br>
--<br>
--=C2=A0 =C2=A0 return ret;<br>
--}<br>
--<br>
-=C2=A0/*<br>
-=C2=A0 * Return human readable string for size @val.<br>
-=C2=A0 * @val can be anything that uint64_t allows (no more than &quot;16 E=
-iB&quot;).<br>
-diff --git a/net/trace-events b/net/trace-events<br>
-index bfaff7891d..07d6203602 100644<br>
---- a/net/trace-events<br>
-+++ b/net/trace-events<br>
-@@ -1,7 +1,7 @@<br>
-=C2=A0# See docs/devel/tracing.txt for syntax documentation.<br>
-<br>
-=C2=A0# announce.c<br>
--qemu_announce_self_iter(const char *id, const char *name, const char *mac,=
- int skip) &quot;%s:%s:%s skip: %d&quot;<br>
-+qemu_announce_self_iter(const char *id, const char *name, char mac0, char =
-mac1, char mac2, char mac3, char mac4, char mac5, int skip) &quot;%s:%s:%02=
-x:%02x:%02x:%02x:%02x:%02x skip: %d&quot;<br>
-=C2=A0qemu_announce_timer_del(bool free_named, bool free_timer, char *id) &=
-quot;free named: %d free timer: %d id: %s&quot;<br>
-<br>
-=C2=A0# vhost-user.c<br>
--- <br>
-2.29.0<br></blockquote><div><br></div><div><br></div><div><div class=3D"gma=
-il_default" style=3D"font-size:small">It&#39;s pretty tedious to open code =
-that.</div><div class=3D"gmail_default" style=3D"font-size:small">How about=
- instead change qemu_ether_ntoa to being thread-safe?</div></div><div class=
-=3D"gmail_default" style=3D"font-size:small"><br></div><div class=3D"gmail_=
-default" style=3D"font-size:small">And, separately, add a bit of type safet=
-y and put eth addrs in a struct?</div></div></div>
-
---000000000000dceaf705bc3faa0a--
 
