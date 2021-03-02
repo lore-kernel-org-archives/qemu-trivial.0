@@ -1,52 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lH3j6-0000IC-1I
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Mar 2021 07:02:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51440)
+	id 1lHCzZ-0000cn-LL
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Mar 2021 16:55:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lH3j2-0000GK-LW
- for qemu-trivial@nongnu.org; Tue, 02 Mar 2021 07:02:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47990)
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1lHCzX-0000Yq-ED
+ for qemu-trivial@nongnu.org; Tue, 02 Mar 2021 16:55:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44451)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lH3j0-00061G-FS
- for qemu-trivial@nongnu.org; Tue, 02 Mar 2021 07:02:03 -0500
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1lHCzU-0000es-Hp
+ for qemu-trivial@nongnu.org; Tue, 02 Mar 2021 16:55:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614686520;
+ s=mimecast20190719; t=1614722139;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=pVH+ttYswMrtxtkldERUIx14rE8u/cJYDiWVIKEZ+ZM=;
- b=gTOdhmXpHayZ4b9MZxsU7kOzIUvcUcF69syma/hZ/JKbb6nR76L+5rBKvshi7H0hLardeT
- ijtwHDctDcX5pe5UofY8CbQmBQ/8+RjagGjCKsc0MPQzx2VUYzN1o8HysocY24JWUCDghs
- slfBRcujZx1Qq8XvcIXUg2tEvdpt6yE=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UCFdCVs5sGxNB7MEfHRqBEYG7gQEXFQ8dLysohrk+oQ=;
+ b=PFCKboJIyagJ0m8t+zrSPHMFldZds6YMQfhD8ZbTVrluR65xfEd7flWjs3PdyY/5oU8Hcl
+ yzOwr2QdSOEbQIPuY8sXb1A+lSEH7SA1xigJmAkIW4zIl81mGL3jy1Ji1LhanO+hnljfdA
+ XZK0ExA7scV4c8wB3Wu8TKDEyJoy130=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-47-csdNyvABOSKx4JzBETzo0Q-1; Tue, 02 Mar 2021 07:01:58 -0500
-X-MC-Unique: csdNyvABOSKx4JzBETzo0Q-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-61-QA9U3Hc3NE2ahqR4uaWyFQ-1; Tue, 02 Mar 2021 16:55:38 -0500
+X-MC-Unique: QA9U3Hc3NE2ahqR4uaWyFQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C83966D4EC;
- Tue,  2 Mar 2021 12:01:57 +0000 (UTC)
-Received: from thuth.com (ovpn-112-57.ams2.redhat.com [10.36.112.57])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AC0CA1002388;
- Tue,  2 Mar 2021 12:01:53 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH v2] hw/usb/bus: Remove the "full-path" property
-Date: Tue,  2 Mar 2021 13:01:52 +0100
-Message-Id: <20210302120152.118042-1-thuth@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E97AA804023;
+ Tue,  2 Mar 2021 21:55:36 +0000 (UTC)
+Received: from omen.home.shazbot.org (ovpn-112-255.phx2.redhat.com
+ [10.3.112.255])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B2F726F7E8;
+ Tue,  2 Mar 2021 21:55:36 +0000 (UTC)
+Date: Tue, 2 Mar 2021 14:55:31 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] MAINTAINERS: Cover docs/igd-assign.txt in VFIO section
+Message-ID: <20210302145531.30489a44@omen.home.shazbot.org>
+In-Reply-To: <da2393b7-c0a8-8f59-5ee5-4a5569f9853c@redhat.com>
+References: <20210202155611.998424-1-philmd@redhat.com>
+ <da2393b7-c0a8-8f59-5ee5-4a5569f9853c@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=alex.williamson@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -67,59 +74,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Mar 2021 12:02:06 -0000
+X-List-Received-Date: Tue, 02 Mar 2021 21:55:43 -0000
 
-This property was only required for the pc-1.0 and earlier machine
-types. Since these have been removed now, we can delete the property
-as well.
+On Mon, 22 Feb 2021 09:26:17 +0100
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Remove the USB_DEV_FLAG_FULL_PATH constant completely
+> ping?
+>=20
+> On 2/2/21 4:56 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> > ---
+> >  MAINTAINERS | 1 +
+> >  1 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index bcd88668bcd..838d0f14a59 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -1768,6 +1768,7 @@ M: Alex Williamson <alex.williamson@redhat.com>
+> >  S: Supported
+> >  F: hw/vfio/*
+> >  F: include/hw/vfio/
+> > +F: docs/igd-assign.txt
+> > =20
+> >  vfio-ccw
+> >  M: Cornelia Huck <cohuck@redhat.com>
+> >  =20
+>=20
 
- hw/usb/bus.c     | 7 +------
- include/hw/usb.h | 1 -
- 2 files changed, 1 insertion(+), 7 deletions(-)
+Queued.  Thanks,
 
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-index 064f94e9c3..df7411fea8 100644
---- a/hw/usb/bus.c
-+++ b/hw/usb/bus.c
-@@ -19,8 +19,6 @@ static void usb_qdev_unrealize(DeviceState *qdev);
- static Property usb_props[] = {
-     DEFINE_PROP_STRING("port", USBDevice, port_path),
-     DEFINE_PROP_STRING("serial", USBDevice, serial),
--    DEFINE_PROP_BIT("full-path", USBDevice, flags,
--                    USB_DEV_FLAG_FULL_PATH, true),
-     DEFINE_PROP_BIT("msos-desc", USBDevice, flags,
-                     USB_DEV_FLAG_MSOS_DESC_ENABLE, true),
-     DEFINE_PROP_STRING("pcap", USBDevice, pcap_filename),
-@@ -596,11 +594,8 @@ static char *usb_get_dev_path(DeviceState *qdev)
- {
-     USBDevice *dev = USB_DEVICE(qdev);
-     DeviceState *hcd = qdev->parent_bus->parent;
--    char *id = NULL;
-+    char *id = qdev_get_dev_path(hcd);
- 
--    if (dev->flags & (1 << USB_DEV_FLAG_FULL_PATH)) {
--        id = qdev_get_dev_path(hcd);
--    }
-     if (id) {
-         char *ret = g_strdup_printf("%s/%s", id, dev->port->path);
-         g_free(id);
-diff --git a/include/hw/usb.h b/include/hw/usb.h
-index abfbfc5284..9f42394efa 100644
---- a/include/hw/usb.h
-+++ b/include/hw/usb.h
-@@ -216,7 +216,6 @@ struct USBEndpoint {
- };
- 
- enum USBDeviceFlags {
--    USB_DEV_FLAG_FULL_PATH,
-     USB_DEV_FLAG_IS_HOST,
-     USB_DEV_FLAG_MSOS_DESC_ENABLE,
-     USB_DEV_FLAG_MSOS_DESC_IN_USE,
--- 
-2.27.0
+Alex
 
 
