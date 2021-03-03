@@ -1,67 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lHCzZ-0000cn-LL
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Mar 2021 16:55:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33926)
+	id 1lHMii-0000D0-2X
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Mar 2021 03:19:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1lHCzX-0000Yq-ED
- for qemu-trivial@nongnu.org; Tue, 02 Mar 2021 16:55:43 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44451)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1lHCzU-0000es-Hp
- for qemu-trivial@nongnu.org; Tue, 02 Mar 2021 16:55:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614722139;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UCFdCVs5sGxNB7MEfHRqBEYG7gQEXFQ8dLysohrk+oQ=;
- b=PFCKboJIyagJ0m8t+zrSPHMFldZds6YMQfhD8ZbTVrluR65xfEd7flWjs3PdyY/5oU8Hcl
- yzOwr2QdSOEbQIPuY8sXb1A+lSEH7SA1xigJmAkIW4zIl81mGL3jy1Ji1LhanO+hnljfdA
- XZK0ExA7scV4c8wB3Wu8TKDEyJoy130=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-61-QA9U3Hc3NE2ahqR4uaWyFQ-1; Tue, 02 Mar 2021 16:55:38 -0500
-X-MC-Unique: QA9U3Hc3NE2ahqR4uaWyFQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E97AA804023;
- Tue,  2 Mar 2021 21:55:36 +0000 (UTC)
-Received: from omen.home.shazbot.org (ovpn-112-255.phx2.redhat.com
- [10.3.112.255])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B2F726F7E8;
- Tue,  2 Mar 2021 21:55:36 +0000 (UTC)
-Date: Tue, 2 Mar 2021 14:55:31 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] MAINTAINERS: Cover docs/igd-assign.txt in VFIO section
-Message-ID: <20210302145531.30489a44@omen.home.shazbot.org>
-In-Reply-To: <da2393b7-c0a8-8f59-5ee5-4a5569f9853c@redhat.com>
-References: <20210202155611.998424-1-philmd@redhat.com>
- <da2393b7-c0a8-8f59-5ee5-4a5569f9853c@redhat.com>
+ (Exim 4.90_1) (envelope-from <dme@dme.org>) id 1lHMif-0000CZ-Ku
+ for qemu-trivial@nongnu.org; Wed, 03 Mar 2021 03:18:57 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:35574)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dme@dme.org>) id 1lHMid-0006gM-VV
+ for qemu-trivial@nongnu.org; Wed, 03 Mar 2021 03:18:57 -0500
+Received: by mail-wr1-x433.google.com with SMTP id l12so22632482wry.2
+ for <qemu-trivial@nongnu.org>; Wed, 03 Mar 2021 00:18:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dme-org.20150623.gappssmtp.com; s=20150623;
+ h=to:cc:subject:in-reply-to:references:from:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=HVmepXob9ZmbChWjLZW0mKAsVatZgsD82ynPeBTwbrs=;
+ b=Ajxz6crYt++MLn+OYn1V1QcGFO2DLXDyLQSi4dZi0juOMzIOU2tcxQO4F65hQ9sSVi
+ 1xB7mii3hMyowm5T/LBq9PlvjpyX8RBH/nGHXqPlhsrBAtdN90h/iyzUhhH30yAkczNc
+ cZVpF/yBzC6qX3qtawnvVtgbpjqK5p1VEtC12C/05t+ZJgxjAe8PKpuPIfYoqlTwV+7u
+ dlFUr5z1JZ+nRKKxy1TI2lHqgP6G0iFv/Bg3F1LzrRlYog6OZ58kAPNyZo3glv1vQS4G
+ LqiTdTtflkMm0crB+lirvc9VJ4/vJVs9D2W+5XBwc/GW6BdW5hX2uAn7RvxKgAnzOTd+
+ DwkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:subject:in-reply-to:references:from:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=HVmepXob9ZmbChWjLZW0mKAsVatZgsD82ynPeBTwbrs=;
+ b=hV4GIgd2cwQj7XPkrHi/NIuSFWNPsObYs1jPF9W8BOM1n9iozGsTygmRpTWW/FAHOg
+ 00eLgDxD4ly02TPPJDstFmAqBBGbfikk/cvY+wnU35vm2WFbGJr8ynX950v17UR7dGFO
+ 0/tZ4ucazCfR1rDhUSzSYUdFRhx6thKTtM9EzaB2K3RVmOlE4smLMp7fiNkhvg4ifOef
+ 4BEiv+pFMv6sDmnLhiHQ3w83hCrUBq8Rctx7RmTqMMOeh+LB7WEDzBVTtiIKbhycDXc9
+ sImBx7TPjfsleM5UYES3XZkk7JGMrvKUsxpe5nH0WS68hlzdYvjhHj71wwXfVHDbbyad
+ D5vA==
+X-Gm-Message-State: AOAM531JRdZBk2QGddHJSKwQPDqujh/ttan5J6pz7QsCXXpVp5oU4tGb
+ l9Vc7a84g0UyMgNqwgxFu7lp1w==
+X-Google-Smtp-Source: ABdhPJxrQ4cZoTlw003L1bHOnI/dfUa2KLOa2FUxulV3W8Lore3VwTbVZ/11/lszj2WSW5APFxOAXA==
+X-Received: by 2002:adf:f584:: with SMTP id f4mr26544826wro.311.1614759533522; 
+ Wed, 03 Mar 2021 00:18:53 -0800 (PST)
+Received: from disaster-area.hh.sledj.net (disaster-area.hh.sledj.net.
+ [2001:8b0:bb71:7140:64::1])
+ by smtp.gmail.com with ESMTPSA id o14sm29334847wri.48.2021.03.03.00.18.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 03 Mar 2021 00:18:53 -0800 (PST)
+Received: from localhost (disaster-area.hh.sledj.net [local])
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 1dddac4b;
+ Wed, 3 Mar 2021 08:18:52 +0000 (UTC)
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>
+Subject: Re: [PATCH] hw/elf_ops: Fix a typo
+In-Reply-To: <20210225181344.3623720-1-philmd@redhat.com>
+References: <20210225181344.3623720-1-philmd@redhat.com>
+X-HGTTG: heart-of-gold
+From: David Edmondson <dme@dme.org>
+Date: Wed, 03 Mar 2021 08:18:51 +0000
+Message-ID: <m2sg5clkes.fsf@dme.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=alex.williamson@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: neutral client-ip=2a00:1450:4864:20::433;
+ envelope-from=dme@dme.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NEUTRAL=0.779, UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,36 +80,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Mar 2021 21:55:43 -0000
+X-List-Received-Date: Wed, 03 Mar 2021 08:18:58 -0000
 
-On Mon, 22 Feb 2021 09:26:17 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On Thursday, 2021-02-25 at 19:13:44 +01, Philippe Mathieu-Daud=C3=A9 wrote:
 
-> ping?
->=20
-> On 2/2/21 4:56 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> > ---
-> >  MAINTAINERS | 1 +
-> >  1 file changed, 1 insertion(+)
-> >=20
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index bcd88668bcd..838d0f14a59 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -1768,6 +1768,7 @@ M: Alex Williamson <alex.williamson@redhat.com>
-> >  S: Supported
-> >  F: hw/vfio/*
-> >  F: include/hw/vfio/
-> > +F: docs/igd-assign.txt
-> > =20
-> >  vfio-ccw
-> >  M: Cornelia Huck <cohuck@redhat.com>
-> >  =20
->=20
+> g_mapped_file_new_from_fd()'s parameter is named 'writable'.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Queued.  Thanks,
+Reviewed-by: David Edmondson <dme@dme.org>
 
-Alex
+> ---
+>  include/hw/elf_ops.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+> index 8e8436831d2..304f266bf3b 100644
+> --- a/include/hw/elf_ops.h
+> +++ b/include/hw/elf_ops.h
+> @@ -417,7 +417,7 @@ static int glue(load_elf, SZ)(const char *name, int f=
+d,
+>=20=20
+>      /*
+>       * Since we want to be able to modify the mapped buffer, we set the
+> -     * 'writeble' parameter to 'true'. Modifications to the buffer are n=
+ot
+> +     * 'writable' parameter to 'true'. Modifications to the buffer are n=
+ot
+>       * written back to the file.
+>       */
+>      mapped_file =3D g_mapped_file_new_from_fd(fd, true, NULL);
+> --=20
+> 2.26.2
 
+dme.
+--=20
+I've always been mad, I know I've been mad, like the most of us are.
 
