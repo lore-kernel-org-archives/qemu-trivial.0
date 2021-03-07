@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJ1rI-0006i1-Va
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Mar 2021 17:26:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45850)
+	id 1lJ1rS-0006tN-UQ
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Mar 2021 17:26:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45864)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lJ1rH-0006en-3B; Sun, 07 Mar 2021 17:26:43 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:40542)
+ id 1lJ1rM-0006pW-72; Sun, 07 Mar 2021 17:26:48 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:42591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lJ1rF-00071V-MQ; Sun, 07 Mar 2021 17:26:42 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- y124-20020a1c32820000b029010c93864955so2675384wmy.5; 
- Sun, 07 Mar 2021 14:26:40 -0800 (PST)
+ id 1lJ1rK-00072t-R7; Sun, 07 Mar 2021 17:26:47 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ b2-20020a7bc2420000b029010be1081172so2621102wmj.1; 
+ Sun, 07 Mar 2021 14:26:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=l+x3ilWAF4HBxRoA4j1jhis87Mqt2ccHGS29X/ly8xQ=;
- b=lJQbqDxyPL7OkfklQEPEdF4dkq2hcD7h7dD+9+TJj0NzweP2sOTO40MZkYuvOU3OCo
- ZwDaAT8XtuPDTaR6xXniwM9ubHVKhTVASIWMbaVq5nnwsip4YnGqFILk/iYPpeHybRJc
- xII+2OOtuCTQUwB60uIXF6ue/WUD4m4glRwd7pE7laAUMrcSMHmSmWbwKBNIwNW4uJwp
- zmMKRiSylhlmbiGu+kG7wQxT2NeaXM8Il03/hPJSosMmgmQ7ZC3Ql3cnQU4cbUO80q+P
- 7EgtKYVKJZYEK0i+eAcyOVqThiWHTpX+PEhQkiT27mMduzYPlAReruG2FgY1bvloSPQy
- 12/w==
+ bh=0BCq3Drp2YKmgjdsiPGLc9i+7eBAXIDTVaKRreDzvDM=;
+ b=ZOCdMAD0FzW8aTBJIhDc/isYkoXmf1d90CMtnqiCnakGiu3dEblkp21rP7wUPULtp5
+ eVC2b2X7buuSSiLDz8Kd6UTU9wtdOSAIOVVbBBFMAkPA1dSVP0D7mJ5fxMLGtrbzuyN0
+ ZFp7jtLpbh+XC+jqOsN3gXFCY9V4BPKx/cDb4QNE/5MM0tntsmWugj7B00DPUJuX70pv
+ CUompYNuab/zWBFsnaGywoX7fY/bbfWFPNRuqvIIVMa+YRTF1GEIG46GuoTwnb+P0TSU
+ lVSFPvjQuq86xIRfXDvBOK//KFS5xcun9wFcmIr+YiQViu7S5VTF5iU/fpBF9/1noE9l
+ UN9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=l+x3ilWAF4HBxRoA4j1jhis87Mqt2ccHGS29X/ly8xQ=;
- b=Rs3K/CqDanPujbJi5OrmtcovmXuC13yF+cZQnHr1awg4K5Y6IcsO+Eb9UFvI12n0wo
- HaovkHavrb4L5qpOX8X8OSfNKaLK82K+6KYedMTOZMkyTQIiZNsArtEYtsTt5+gziVtb
- ajhpi9zaR9GYkV7TDhZoD7yHG2izOWwGNsDeauixD/qmtT0JM08+uXDytxjyPW8m5geB
- ZE5gBFLakJzkLv8jdymin7M1/gIGB2v2bkKJCwySY4xWPdD7Xxr5j8qQDHtf0xzK94A+
- cqyAs4dIlhi21VyYuwPosJ8sUP/4CXFI40JY77wTYahBkMRiWBOWS2Nkq7hbsWMnfuiB
- K5eg==
-X-Gm-Message-State: AOAM533LOra2hlFTgEMfsen2t5MWHnh5cfBLVR7G7NUIgooXwXpC4erb
- r7QhVV1JYgnbQHbKrGQPnk17UvRcQGU=
-X-Google-Smtp-Source: ABdhPJyUhNO/SIB2PXWMtVRQU048vlvq05i9AeNOH5BfX+1XIiVkImWodcADLM3sSQm91Dmr1WSoaw==
-X-Received: by 2002:a1c:f702:: with SMTP id v2mr18811766wmh.131.1615155999449; 
- Sun, 07 Mar 2021 14:26:39 -0800 (PST)
+ bh=0BCq3Drp2YKmgjdsiPGLc9i+7eBAXIDTVaKRreDzvDM=;
+ b=SnhtMAu1RQ/KYmeX5byA1JtPuSBroQDluE0hTwp+IZ+yyaEwug3wbuJZkKYNtXXV3U
+ wxJ+pw/fDqc9qsgWRvI3CcbijI8FTA7D4bCJScVrj7EVPPg352kZ7GMCFgq/GQZhbHmm
+ G8aplZ1ALvSP5ifpqtXXKg83cT+h2C6cneYnijngR9e7x+K0qeUx4FLemtqtsF9NunWK
+ ij+kQRFGRYpW/C/BfueZgT1jfXtn9+IrJP2jDKJlRZiOLR4iJZsgZy27RQ6bp2BY3PZp
+ D1awXWJ6vn2HFNwQzT9MkLxuCnqsk7Bo9lL1+r6tJFDFkXUP9XNuHElwz+KN74G0pp2X
+ dmrg==
+X-Gm-Message-State: AOAM532jyj5tKVRYsyMw37IA5efSUeHXO+YKJP2EseyyrqMpztbAuffl
+ agOH60u6jkZKOhjaySiotWR4K777PKY=
+X-Google-Smtp-Source: ABdhPJzKzD+CBH2r3r8R7pZ5OgsuOXMSOBZDP3SbfQAZ4wu7O1KAPls9taxYfIgn4pxJ3U+oeL4VUA==
+X-Received: by 2002:a7b:ce19:: with SMTP id m25mr19442964wmc.74.1615156004792; 
+ Sun, 07 Mar 2021 14:26:44 -0800 (PST)
 Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id i3sm15276232wra.66.2021.03.07.14.26.38
+ by smtp.gmail.com with ESMTPSA id o13sm16337145wro.15.2021.03.07.14.26.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Mar 2021 14:26:39 -0800 (PST)
+ Sun, 07 Mar 2021 14:26:44 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -57,18 +57,18 @@ Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>
-Subject: [PATCH 2/4] hw/mips/malta: Get pflash MemoryRegion with
+Subject: [PATCH 3/4] hw/xtensa/xtfpga: Get pflash MemoryRegion with
  sysbus_mmio_get_region()
-Date: Sun,  7 Mar 2021 23:26:23 +0100
-Message-Id: <20210307222625.347268-3-f4bug@amsat.org>
+Date: Sun,  7 Mar 2021 23:26:24 +0100
+Message-Id: <20210307222625.347268-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210307222625.347268-1-f4bug@amsat.org>
 References: <20210307222625.347268-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -89,7 +89,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Mar 2021 22:26:43 -0000
+X-List-Received-Date: Sun, 07 Mar 2021 22:26:48 -0000
 
 TYPE_PFLASH_CFI01 is a TYPE_SYS_BUS_DEVICE which registers its romd
 MemoryRegion with sysbus_init_mmio(), so we can use the generic
@@ -98,22 +98,26 @@ pflash_cfi01_get_memory() helper.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/mips/malta.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/xtensa/xtfpga.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index 9afc0b427bf..43b985bccf9 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -1295,7 +1295,7 @@ void mips_malta_init(MachineState *machine)
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                65536,
-                                4, 0x0000, 0x0000, 0x0000, 0x0000, be);
--    bios = pflash_cfi01_get_memory(fl);
-+    bios = sysbus_mmio_get_region(SYS_BUS_DEVICE(fl), 0);
-     fl_idx++;
-     if (kernel_filename) {
-         ram_low_size = MIN(ram_size, 256 * MiB);
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index 7be53f1895b..1d15a9aae9f 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -460,10 +460,11 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+         }
+     } else {
+         if (flash) {
+-            MemoryRegion *flash_mr = pflash_cfi01_get_memory(flash);
++            MemoryRegion *flash_mr;
+             MemoryRegion *flash_io = g_malloc(sizeof(*flash_io));
+             uint32_t size = env->config->sysrom.location[0].size;
+ 
++            flash_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(flash), 0);
+             if (board->flash->size - board->flash->boot_base < size) {
+                 size = board->flash->size - board->flash->boot_base;
+             }
 -- 
 2.26.2
 
