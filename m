@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJ1rC-0006Vg-CK
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Mar 2021 17:26:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45820)
+	id 1lJ1rD-0006Yg-Or
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Mar 2021 17:26:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45834)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lJ1r6-0006VB-V0; Sun, 07 Mar 2021 17:26:32 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:46253)
+ id 1lJ1rC-0006X3-Sb; Sun, 07 Mar 2021 17:26:38 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:40550)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lJ1r5-0006z9-FY; Sun, 07 Mar 2021 17:26:32 -0500
-Received: by mail-wr1-x431.google.com with SMTP id a18so9397184wrc.13;
- Sun, 07 Mar 2021 14:26:30 -0800 (PST)
+ id 1lJ1rB-00070K-Iz; Sun, 07 Mar 2021 17:26:38 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ y124-20020a1c32820000b029010c93864955so2675318wmy.5; 
+ Sun, 07 Mar 2021 14:26:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MG38T2c0ah+ASOI2W2LgtqYlki8O07VU8DdrtJnD1+U=;
- b=EttU3y4RqXgiruFOPwDC0GnBvktMW+LHwSk2eE5kWFs0GVeVuOZ1utAfCnmKTxeXjO
- y15ZKF4OGZ5mTw/W6VimmTVDxsg6tPsJQnOMKx0z/Cj58THKTApl3NscRT05p88bkKHn
- /78cQrheMuFUibPq64eDXDExKz7NA4F2BbZ+45+FQUHLcmn6da+w9CTmvMq1zWW02+3x
- mTOY3wT4uDb0sIz4x9ZPWVxMFiUiY4Bny6EvA6Ypt09jW7Pcg1uBTUdWNPPjF5orOq80
- VDTvT/NPGGDBQkXvYlESYQyKGG/c9sCrFY985TMV2/vmXf9pEQfjg6QbH7hkI6NRIZYE
- /mTA==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=IXFyeqK1CTpX3BeruT6hgoEpNJU4XbuAmq1jWxI1ce0=;
+ b=sD9qbS0fWhWvt05Ei8vEt3U1rTE+JEYpE7xBlc2nN6PKRyBh7FwOysRoiav1YTgW3J
+ J9cJlej7hFd1VkgH7PNjKyhBNIZ6W5WVFL8AaNVBt6593fc+ChvTjFyd+mt0W/At3xe7
+ uCtqh1T9io/O6OLYooPIv1P4YwRS+AqogTtvigSXRZMf6hMcub//UqTQQXloCAlmM8Kx
+ RiF4a4H3PwotrmsUGTg2tHNtHQ53HRDi97rBBmee59O4XcxQD2JciGp6GBe+Ztm1olB3
+ 6QVOIcIjt0feq9YbEJO1p21kKhcHjSzNbK2TEUYNFpsPWSYQ5WxmSCREc25C/wc3Bxjb
+ xW9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=MG38T2c0ah+ASOI2W2LgtqYlki8O07VU8DdrtJnD1+U=;
- b=Y5KBCFoI89EMUdLuigN75VIw50LDo+Zp7fVSKuJtv3VCN/JmvtXXnNmzI1rDwanzP9
- 81kHFVvS50SLGwL1gOIpKruDijw980iwKCrz3DleXrLoTIXMDlrkDWCzYtXeiOy2R+bu
- Nfr1acvzgvx9J5tfb1NydNblJARL/mhm5I1nxqN91aPg1TKP9y4GrH+XksSFmZNd2f1q
- 6Se8yK8LtOnaKKBaleMa6jrixpNQ/NbcwdrnBwUtJxHvllrtb1EoYctNtwJVFTedzRIO
- ZTriZcakgVMuksvQhatP1xx6pCeU2XNnTNQnLw89D0T6R6bL5vsr0MAKkZr1sf8PQPS3
- z59A==
-X-Gm-Message-State: AOAM533wJkvIn9/vwZT2mqb0brerfNjoPzAoROMop3LoLcfvy1YqowGd
- I2kDN5sY2WY+k6aJdhod7ObACJNw19M=
-X-Google-Smtp-Source: ABdhPJzsRNu2EuRNnIlCClQwVyaAwzEcJWKi3txIlTbZGVIJT4vT9O6KYzxX4bIkNhpWQVsxSRWy7A==
-X-Received: by 2002:a5d:4485:: with SMTP id j5mr19324766wrq.339.1615155988705; 
- Sun, 07 Mar 2021 14:26:28 -0800 (PST)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=IXFyeqK1CTpX3BeruT6hgoEpNJU4XbuAmq1jWxI1ce0=;
+ b=ObuFbQZ/NGXXVYbG+GZPoxJoPgfZzD+hX01/tTTaWu5LKj4NsriEaWuTjs1VNGC7z6
+ RQspyrAemBUOCw/cU0jyhuKmm560JJWdQw5wR78XX3vRf/zlSxXrSJKRyYShbQGfrdDS
+ lBp/Got0XL2+cngnGV3udDZzOVZ5WSatrvm4DpFL+LVxJeNEvEiZVB1+6S/t+eTTqNx5
+ /yQpt/DvZuDaaT+J9voTWHwk3O3gRyMRmukwEBbi/Zk6FnBCikYj99vjsUh9M/juLaDN
+ zMiqVxGaGSnhqu3XTRnytEYeYYCCEUnobb9yEYe5/1sywNqHBc5sRhmSglpQJctHF7ln
+ frQA==
+X-Gm-Message-State: AOAM533M71jWSbWX/OSQXdVSsp8mcq4EaKV9DML4hBBctsoA5SwobpqN
+ vlFTdZSP1IXxkS4dwOkfMsEmqdXM4lU=
+X-Google-Smtp-Source: ABdhPJwEZI9+cwNyR2xYkhawW7HxyYUEpg+gjWEa6EjaudXqiA063myUhNzmeMjW8Mj2LQ3RBNOtiQ==
+X-Received: by 2002:a1c:1fc6:: with SMTP id f189mr19409691wmf.68.1615155994040; 
+ Sun, 07 Mar 2021 14:26:34 -0800 (PST)
 Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id v18sm11643832wrf.41.2021.03.07.14.26.26
+ by smtp.gmail.com with ESMTPSA id y18sm7651000wrw.39.2021.03.07.14.26.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Mar 2021 14:26:27 -0800 (PST)
+ Sun, 07 Mar 2021 14:26:33 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -56,15 +57,18 @@ Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>
-Subject: [PATCH 0/4] hw/block/pflash_cfi01: Remove pflash_cfi01_get_memory()
-Date: Sun,  7 Mar 2021 23:26:21 +0100
-Message-Id: <20210307222625.347268-1-f4bug@amsat.org>
+Subject: [PATCH 1/4] hw/i386/pc: Get pflash MemoryRegion with
+ sysbus_mmio_get_region()
+Date: Sun,  7 Mar 2021 23:26:22 +0100
+Message-Id: <20210307222625.347268-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210307222625.347268-1-f4bug@amsat.org>
+References: <20210307222625.347268-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -85,31 +89,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Mar 2021 22:26:37 -0000
+X-List-Received-Date: Sun, 07 Mar 2021 22:26:39 -0000
 
-TYPE_PFLASH_CFI01 is a TYPE_SYS_BUS_DEVICE which registers its romd=0D
-MemoryRegion with sysbus_init_mmio(), so we can use the generic=0D
-sysbus_mmio_get_region() to get the region, no need for a specific=0D
-pflash_cfi01_get_memory() helper.=0D
-=0D
-First replace the few pflash_cfi01_get_memory() uses by=0D
-sysbus_mmio_get_region(), then remove the now unused helper.=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (4):=0D
-  hw/i386/pc: Get pflash MemoryRegion with sysbus_mmio_get_region()=0D
-  hw/mips/malta: Get pflash MemoryRegion with sysbus_mmio_get_region()=0D
-  hw/xtensa/xtfpga: Get pflash MemoryRegion with=0D
-    sysbus_mmio_get_region()=0D
-  hw/block/pflash_cfi01: Remove pflash_cfi01_get_memory()=0D
-=0D
- include/hw/block/flash.h | 1 -=0D
- hw/block/pflash_cfi01.c  | 5 -----=0D
- hw/i386/pc_sysfw.c       | 2 +-=0D
- hw/mips/malta.c          | 2 +-=0D
- hw/xtensa/xtfpga.c       | 3 ++-=0D
- 5 files changed, 4 insertions(+), 9 deletions(-)=0D
-=0D
--- =0D
-2.26.2=0D
-=0D
+TYPE_PFLASH_CFI01 is a TYPE_SYS_BUS_DEVICE which registers its romd
+MemoryRegion with sysbus_init_mmio(), so we can use the generic
+sysbus_mmio_get_region() to get the region, no need for a specific
+pflash_cfi01_get_memory() helper.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/i386/pc_sysfw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+index 9fe72b370e8..caad9cbd5eb 100644
+--- a/hw/i386/pc_sysfw.c
++++ b/hw/i386/pc_sysfw.c
+@@ -297,7 +297,7 @@ static void pc_system_flash_map(PCMachineState *pcms,
+                         0x100000000ULL - total_size);
+ 
+         if (i == 0) {
+-            flash_mem = pflash_cfi01_get_memory(system_flash);
++            flash_mem = sysbus_mmio_get_region(SYS_BUS_DEVICE(system_flash), 0);
+             pc_isa_bios_init(rom_memory, flash_mem, size);
+ 
+             /* Encrypt the pflash boot ROM */
+-- 
+2.26.2
+
 
