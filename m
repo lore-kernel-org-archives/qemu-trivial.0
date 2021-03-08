@@ -1,72 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJB8O-0001Mj-Vo
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Mar 2021 03:21:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39648)
+	id 1lJCzT-0003wQ-Ns
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Mar 2021 05:19:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37506)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1lJB8N-0001MA-Eg; Mon, 08 Mar 2021 03:20:59 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:41269)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lJCzS-0003uw-8U; Mon, 08 Mar 2021 05:19:54 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:41638)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1lJB8L-0006Cp-Sw; Mon, 08 Mar 2021 03:20:59 -0500
-Received: by mail-ed1-x531.google.com with SMTP id b7so13289578edz.8;
- Mon, 08 Mar 2021 00:20:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lJCzQ-0001Nr-Nd; Mon, 08 Mar 2021 05:19:53 -0500
+Received: by mail-ed1-x535.google.com with SMTP id b7so13824001edz.8;
+ Mon, 08 Mar 2021 02:19:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=OhdlXApDsGaeJ3nJJ4SXvFIHQePH+AiYeTyvlGoKrCY=;
- b=jYOeHPQ4UAw2jRVsxTo/UPDU0whgY8PXDQ6Hu3wZm8ndZwV2xIbHXJbBMBxhS0HWNE
- /N4Kd7glq4qNvGG+OX3fCPpT4yaWfkWLrfnUyYD5uSSZyvMeifQgbnK8d2Jp2s2RbALS
- 9esB4WrcK0OCdfnrnoAE4fhMveR6lu6fsCUBCkCwCgfZOOaJ06GEZabtMhesc3p8iqiJ
- +GH29HGCI4/N9BmQC+4j4qFCf+To9ztqy3xAarc2VdcyrdOT/MlCbaWLz5DnQ/+eR0+g
- BVkBSCKJPnmpf+2UzjTx16X/MhHGxJ6TwAe7lpz4dA0rsL9K/8c1IiRgdy+JrgnP1qSE
- TAWw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=0ORILKYRo49fZNikJ3pyNQMiug7zjbzkGFX9KhB5Vng=;
+ b=Qvr5cmRRAM208VHTmGx/U6yxNeEulHKL+nDRApFvUXvNK2S1QxGSCZoz2AbepX7M3V
+ qgNdCBaxKOBoH3aj/OQW6RKKjSe2Uh2M2zLrtv+kDYE4KDpki76zDVUlS/iMRwM2ApPS
+ ydd4U/qWR3yfCfsTFuj5bshGDm9k0Bo5veGEZIYOiQqiNgXH9qq2B5Q61369bJrRkVT5
+ VMyUkB9F90EAS33Djs/RJBZeTTDVIU3DkwCsIqyVkzRpLAyFI8DL3YeGWys8jz9OBBck
+ PM0NspXxw89iHRIFum1HCUx+wGOrHedWOgeJ9EXq+Jo7Km9ijGOVN5Igk/siZsWDMjSq
+ H1/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=OhdlXApDsGaeJ3nJJ4SXvFIHQePH+AiYeTyvlGoKrCY=;
- b=KywrTgElVyDx35NroU2GcjpANfkxx3F6xSoixCVobz/EjB0+bxsg9jMM8J08X9l8Yg
- RvEwsNVh/12EFHe258BFN2DtPW62uiXmY8nZNSPy2IiHfynZOlsivRvxVipcMNWOH3li
- 3QmsNkEJu86asvM11ung5OS7p+g+DekiRs7rBNnN5rnTxbFWfmOIoDOLVffMuOnrSL+x
- atE/8yF0LAyhbjwaIUV1ki+iH7yqgphpkAvsuAf0uXCBwshBR94SYOe/rjcmNF2RBwGV
- fWGVcGLH2SijrdxzrvwOpQt3P7erI3CkFFlpKa/g3lYlsf6WugefCcyzAqxWw3eYCQrs
- IbVA==
-X-Gm-Message-State: AOAM533yLDhisdGivjyQQQP/oUSVbMY6vEAN3kfLPS89oQxqZKlmdL6u
- QSvDlnA+YLTDuc6XxfZ9Ay8+A+9u0v92+jJDJ9Y=
-X-Google-Smtp-Source: ABdhPJwriNrfLSnIxViPmUaI5c5s0w0XEq+lI2PaPAPIX4cmuO9zZGrBnKb/PNYXqoDpQ5XAEXGe/92k+S08qjWLfmU=
-X-Received: by 2002:a50:fe06:: with SMTP id f6mr20975482edt.349.1615191655191; 
- Mon, 08 Mar 2021 00:20:55 -0800 (PST)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=0ORILKYRo49fZNikJ3pyNQMiug7zjbzkGFX9KhB5Vng=;
+ b=i2vvmlsUvgdWrbVJgbD937vs12VCWQH30c3Fa9lljPVXgMtkWZ6HRwsordfRpUjua5
+ hs/UQnEuXu2dImvTN02iHFP6UktU6bG4XB7K09MthAZ4yIP4WV1NGIbtrJAa9tlEYjBH
+ A3mzNuGuL/6CRH38ig+iEvv4DhqJ2FKn4fuIh+QoLnjUmpOc+vRWDDbxpgfixMUcu03D
+ eU8y6InpTMEdBp6zpbqSXeyVJPiJqu4hp5rB2c9GRU1MoyhZUfEyrZ3oK0q1lRChtjxg
+ 4r7Xowjx0A3dXQ8//q0A3GoM6LU4Z83n6kYtCXuLNjAv+j/5n86b82XtYf/tP3ukaolv
+ 54tA==
+X-Gm-Message-State: AOAM5317qnokbHLfSncf8a/7bjRKMnA3b37rg5i8O3oQq924bKiPjRGi
+ LgFU6ZCPETz2md5tkLBjYLo=
+X-Google-Smtp-Source: ABdhPJxR18g57wWjgPX5jPsyvsW3pvIK9D+gt71M5V+CG1I9KRzCGXDtGN+Pfh3OgqXr58c2bwo12g==
+X-Received: by 2002:a05:6402:1853:: with SMTP id
+ v19mr21128625edy.179.1615198790586; 
+ Mon, 08 Mar 2021 02:19:50 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id r24sm6736711edw.11.2021.03.08.02.19.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Mar 2021 02:19:49 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2 0/3] hw/lm32: Kconfig cleanups
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20210221225626.2589247-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <7d6c1b8a-e450-110e-c8e9-94623fa44220@amsat.org>
+Date: Mon, 8 Mar 2021 11:19:48 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-References: <20210307222625.347268-1-f4bug@amsat.org>
- <20210307222625.347268-4-f4bug@amsat.org>
-In-Reply-To: <20210307222625.347268-4-f4bug@amsat.org>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Mon, 8 Mar 2021 00:20:43 -0800
-Message-ID: <CAMo8Bf+wg0yET+oo++dVSYxZwF+GoGQr5JXza5iQ4CiyWfF6Kw@mail.gmail.com>
-Subject: Re: [PATCH 3/4] hw/xtensa/xtfpga: Get pflash MemoryRegion with
- sysbus_mmio_get_region()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>, 
- Paolo Bonzini <pbonzini@redhat.com>, Qemu-block <qemu-block@nongnu.org>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Kevin Wolf <kwolf@redhat.com>,
- Max Reitz <mreitz@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=jcmvbkbc@gmail.com; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.999,
+In-Reply-To: <20210221225626.2589247-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -81,24 +83,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Mar 2021 08:20:59 -0000
+X-List-Received-Date: Mon, 08 Mar 2021 10:19:54 -0000
 
-On Sun, Mar 7, 2021 at 2:26 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
->
-> TYPE_PFLASH_CFI01 is a TYPE_SYS_BUS_DEVICE which registers its romd
-> MemoryRegion with sysbus_init_mmio(), so we can use the generic
-> sysbus_mmio_get_region() to get the region, no need for a specific
-> pflash_cfi01_get_memory() helper.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/xtensa/xtfpga.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+ping?
 
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
-
---=20
-Thanks.
--- Max
+On 2/21/21 11:56 PM, Philippe Mathieu-Daudé wrote:
+> Hi Laurent,
+> 
+> This series is fully reviewed. Since LM32 is not very
+> active, can this go via qemu-trivial@?
+> 
+> Thanks,
+> 
+> Phil.
+> 
+> v2: Rebased
+> 
+> Supersedes: <20210208135048.2601693-1-f4bug@amsat.org>
+> 
+> Philippe Mathieu-Daudé (3):
+>   hw/lm32/Kconfig: Introduce CONFIG_LM32_EVR for lm32-evr/uclinux boards
+>   hw/lm32/Kconfig: Rename CONFIG_LM32 -> CONFIG_LM32_DEVICES
+>   hw/lm32/Kconfig: Have MILKYMIST select LM32_DEVICES
+> 
+>  default-configs/devices/lm32-softmmu.mak |  2 +-
+>  hw/char/meson.build                      |  4 ++--
+>  hw/intc/meson.build                      |  2 +-
+>  hw/lm32/Kconfig                          | 10 +++++++---
+>  hw/lm32/meson.build                      |  2 +-
+>  hw/timer/meson.build                     |  2 +-
+>  6 files changed, 13 insertions(+), 9 deletions(-)
+> 
 
