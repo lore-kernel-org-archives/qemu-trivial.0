@@ -1,76 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJCzT-0003wQ-Ns
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Mar 2021 05:19:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37506)
+	id 1lJELK-0006Po-SK
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Mar 2021 06:46:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lJCzS-0003uw-8U; Mon, 08 Mar 2021 05:19:54 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:41638)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lJCzQ-0001Nr-Nd; Mon, 08 Mar 2021 05:19:53 -0500
-Received: by mail-ed1-x535.google.com with SMTP id b7so13824001edz.8;
- Mon, 08 Mar 2021 02:19:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=0ORILKYRo49fZNikJ3pyNQMiug7zjbzkGFX9KhB5Vng=;
- b=Qvr5cmRRAM208VHTmGx/U6yxNeEulHKL+nDRApFvUXvNK2S1QxGSCZoz2AbepX7M3V
- qgNdCBaxKOBoH3aj/OQW6RKKjSe2Uh2M2zLrtv+kDYE4KDpki76zDVUlS/iMRwM2ApPS
- ydd4U/qWR3yfCfsTFuj5bshGDm9k0Bo5veGEZIYOiQqiNgXH9qq2B5Q61369bJrRkVT5
- VMyUkB9F90EAS33Djs/RJBZeTTDVIU3DkwCsIqyVkzRpLAyFI8DL3YeGWys8jz9OBBck
- PM0NspXxw89iHRIFum1HCUx+wGOrHedWOgeJ9EXq+Jo7Km9ijGOVN5Igk/siZsWDMjSq
- H1/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=0ORILKYRo49fZNikJ3pyNQMiug7zjbzkGFX9KhB5Vng=;
- b=i2vvmlsUvgdWrbVJgbD937vs12VCWQH30c3Fa9lljPVXgMtkWZ6HRwsordfRpUjua5
- hs/UQnEuXu2dImvTN02iHFP6UktU6bG4XB7K09MthAZ4yIP4WV1NGIbtrJAa9tlEYjBH
- A3mzNuGuL/6CRH38ig+iEvv4DhqJ2FKn4fuIh+QoLnjUmpOc+vRWDDbxpgfixMUcu03D
- eU8y6InpTMEdBp6zpbqSXeyVJPiJqu4hp5rB2c9GRU1MoyhZUfEyrZ3oK0q1lRChtjxg
- 4r7Xowjx0A3dXQ8//q0A3GoM6LU4Z83n6kYtCXuLNjAv+j/5n86b82XtYf/tP3ukaolv
- 54tA==
-X-Gm-Message-State: AOAM5317qnokbHLfSncf8a/7bjRKMnA3b37rg5i8O3oQq924bKiPjRGi
- LgFU6ZCPETz2md5tkLBjYLo=
-X-Google-Smtp-Source: ABdhPJxR18g57wWjgPX5jPsyvsW3pvIK9D+gt71M5V+CG1I9KRzCGXDtGN+Pfh3OgqXr58c2bwo12g==
-X-Received: by 2002:a05:6402:1853:: with SMTP id
- v19mr21128625edy.179.1615198790586; 
- Mon, 08 Mar 2021 02:19:50 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id r24sm6736711edw.11.2021.03.08.02.19.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Mar 2021 02:19:49 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v2 0/3] hw/lm32: Kconfig cleanups
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20210221225626.2589247-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <7d6c1b8a-e450-110e-c8e9-94623fa44220@amsat.org>
-Date: Mon, 8 Mar 2021 11:19:48 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJELJ-0006Mc-4N
+ for qemu-trivial@nongnu.org; Mon, 08 Mar 2021 06:46:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:33096)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJELF-0007FS-N8
+ for qemu-trivial@nongnu.org; Mon, 08 Mar 2021 06:46:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615203987;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mocm1g2CVcnormkFNmtgvvMIonU291PFcLyn19HQgT8=;
+ b=YDyyWYS7V3TKLJKeeWpcYUdz19IIVTdj0A3Soh8aqRjJOorkQeXF+eUopJYWQo2sxQdwbW
+ dAMRk3I0BIOcHrt/XQVc7WTmDpvK6UJASCDK7lGSM2uZVeVguJkIQPKEY1sx743qBuCASs
+ kbE5WRscjvhScAVoS1r5IEHjaf9iAXU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-388-VEc-i5VFOCaCSaRxGJw9RQ-1; Mon, 08 Mar 2021 06:46:26 -0500
+X-MC-Unique: VEc-i5VFOCaCSaRxGJw9RQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0199B81431C;
+ Mon,  8 Mar 2021 11:46:25 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-198.ams2.redhat.com [10.36.113.198])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D445460C04;
+ Mon,  8 Mar 2021 11:46:23 +0000 (UTC)
+Subject: Re: [PATCH] migration: Remove time_t cast for OpenBSD
+To: Brad Smith <brad@comstyle.com>, qemu-devel@nongnu.org
+References: <YDNdAiOkEYOfmbhT@humpty.home.comstyle.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <7eaad721-9d2a-83ed-00fc-80c8ee37e156@redhat.com>
+Date: Mon, 8 Mar 2021 12:46:22 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210221225626.2589247-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <YDNdAiOkEYOfmbhT@humpty.home.comstyle.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,35 +75,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Mar 2021 10:19:54 -0000
+X-List-Received-Date: Mon, 08 Mar 2021 11:46:33 -0000
 
-ping?
+On 22/02/2021 08.28, Brad Smith wrote:
+> OpenBSD has supported 64-bit time_t across all archs since 5.5 released in 2014.
+> 
+> Remove a time_t cast that is no longer necessary.
+> 
+> 
+> Signed-off-by: Brad Smith <brad@comstyle.com>
+> 
+> diff --git a/migration/savevm.c b/migration/savevm.c
+> index 52e2d72e4b..9557f85ba9 100644
+> --- a/migration/savevm.c
+> +++ b/migration/savevm.c
+> @@ -2849,8 +2849,7 @@ bool save_snapshot(const char *name, bool overwrite, const char *vmstate,
+>       if (name) {
+>           pstrcpy(sn->name, sizeof(sn->name), name);
+>       } else {
+> -        /* cast below needed for OpenBSD where tv_sec is still 'long' */
+> -        localtime_r((const time_t *)&tv.tv_sec, &tm);
+> +        localtime_r(&tv.tv_sec, &tm);
+>           strftime(sn->name, sizeof(sn->name), "vm-%Y%m%d%H%M%S", &tm);
+>       }
 
-On 2/21/21 11:56 PM, Philippe Mathieu-Daudé wrote:
-> Hi Laurent,
-> 
-> This series is fully reviewed. Since LM32 is not very
-> active, can this go via qemu-trivial@?
-> 
-> Thanks,
-> 
-> Phil.
-> 
-> v2: Rebased
-> 
-> Supersedes: <20210208135048.2601693-1-f4bug@amsat.org>
-> 
-> Philippe Mathieu-Daudé (3):
->   hw/lm32/Kconfig: Introduce CONFIG_LM32_EVR for lm32-evr/uclinux boards
->   hw/lm32/Kconfig: Rename CONFIG_LM32 -> CONFIG_LM32_DEVICES
->   hw/lm32/Kconfig: Have MILKYMIST select LM32_DEVICES
-> 
->  default-configs/devices/lm32-softmmu.mak |  2 +-
->  hw/char/meson.build                      |  4 ++--
->  hw/intc/meson.build                      |  2 +-
->  hw/lm32/Kconfig                          | 10 +++++++---
->  hw/lm32/meson.build                      |  2 +-
->  hw/timer/meson.build                     |  2 +-
->  6 files changed, 13 insertions(+), 9 deletions(-)
-> 
+Please make sure to CC: the maintainers (see MAINTAINERS file). Done now.
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
