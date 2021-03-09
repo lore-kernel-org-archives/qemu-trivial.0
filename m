@@ -1,57 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJduM-0002xX-Vo
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 10:04:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58240)
+	id 1lJf8z-00012a-NY
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 11:23:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <a_lijiejun@163.com>)
- id 1lJbhi-0002sc-2u
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 07:43:14 -0500
-Received: from m13109.mail.163.com ([220.181.13.109]:30685)
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <a_lijiejun@163.com>)
- id 1lJbhb-0007T3-33
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 07:43:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=hIKQ9
- XTWwF2qAn/ZIOOIhZj+bRhaaf3Wa5aEmlZNmxQ=; b=gGG5pSb9XAb7MKpsxpnZ7
- 5cOkJIbLC7/69X2cDYW0l0lx/kP94q9Ucytnb7RD8G2W811+5zaskQcIRd/JWwNo
- rO9XikdWpNL6+iDogzvW2McLG97TLOF1s47HusA7KBUzV3gyquR7RxEKAChOJFg+
- UHCY59r6DEjIN3Pz60ROGo=
-Received: from a_lijiejun$163.com ( [121.201.121.142] ) by
- ajax-webmail-wmsvr109 (Coremail) ; Tue, 9 Mar 2021 20:27:06 +0800 (CST)
-X-Originating-IP: [121.201.121.142]
-Date: Tue, 9 Mar 2021 20:27:06 +0800 (CST)
-From: =?GBK?B?wO691L+h?= <a_lijiejun@163.com>
-To: =?GBK?Q?Philippe_Mathieu-Daud=A8=A6?= <philmd@redhat.com>
-Cc: kraxel@redhat.com, "QEMU Trivial" <qemu-trivial@nongnu.org>, 
- qemu-devel@nongnu.org
-Subject: Re:Re: [PATCH] virtio-gpu: Add spaces around operator
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.13 build 20210104(ab8c30b6)
- Copyright (c) 2002-2021 www.mailtech.cn 163com
-In-Reply-To: <c7918046-a99e-663e-355c-0b9b1c4d817c@redhat.com>
-References: <1615275756-129881-1-git-send-email-a_lijiejun@163.com>
- <c7918046-a99e-663e-355c-0b9b1c4d817c@redhat.com>
-X-CM-CTRLDATA: JHFKSmZvb3Rlcl9odG09MTk3ODo1Ng==
-Content-Type: multipart/alternative; 
- boundary="----=_Part_127007_152833634.1615292826979"
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lJf8T-0000qs-PX
+ for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 11:23:07 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:33503)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lJf8Q-0002xr-7L
+ for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 11:23:05 -0500
+Received: by mail-wr1-x431.google.com with SMTP id 7so16853596wrz.0
+ for <qemu-trivial@nongnu.org>; Tue, 09 Mar 2021 08:23:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=tBewBnTfMkgPBQhT3YpBMAvGkh7+L4IITUeQXmeYAZ0=;
+ b=iF84CXsn7f4Tpu3Ot2d1w/sBDfj5oDgAlNTTKQz0Qr7EgfBJscXHvlmoFTEIiwxPyO
+ CiVQXJxjXAN9b8VxL2zcsvoQ1lsYDkSCSbvl1QHY25UmiRGkHq81QuByZdwBdiG1Jy7O
+ qpzA0VOEA5LVxwa8ycQIlo98DO72C/w02vQCMKorXIZp8b+CN6yq/VS523HWKkvun1b4
+ a1UVPXT3emXlQE6SKliUzOnrpPn/9d2a/ZvOQoqig6xWBoi7q+m/lrncM3Jaz1HarMH4
+ XJDC9eScNKwYM/23au6fyVvjrCz9dJDfWyzAYW962C1uMNR/Od27+MiO1m0ju/N4Jc4S
+ j/zg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=tBewBnTfMkgPBQhT3YpBMAvGkh7+L4IITUeQXmeYAZ0=;
+ b=qLb5UQrrKl49HzaJrc+mnQMNr/EB87kzLfGXMD2GaCzHGZiYxmfs+/vCTrj0pC+cIv
+ fFd3JFLF54dwuBPFInk4jjrXNFyuHWTYOJL1AVNtQDAecqrFjfrbu2B8KWdmCsQUGCZz
+ yXGyyYXHMDTIjYUyyW+Fq7yA84dAV0lpzp6bVGhsnq1FdCaBDK1Q+ch3niwUcfk9adB5
+ NRkhhh8cSFXgMlmaat0EdjDPRatFHOpah8WEK2ZH4Mmj3Qe8JzsGDoebtJ6se6GEhMx+
+ uY5NM+p7Nb3GOrM4BB+OfkQ1ZSlFvFNGATX6MdXpuc/TyAfAEWtFdMsuQ9IX99HaOSY2
+ /Eaw==
+X-Gm-Message-State: AOAM531+AtP0OPTQJPiGOYfxnUyqzgqrSDPOjIffYa8mJ45320mbsWQY
+ wrUNi81kaqCNZzv2TiTjsJsx2w==
+X-Google-Smtp-Source: ABdhPJzvwzNXsBZksJiUiPxx9h1kf9tyjyKErsj0LGDpxYspEZ4lLse5c93mG5/WMprWNIB3s4Lu5w==
+X-Received: by 2002:a5d:6945:: with SMTP id r5mr28570053wrw.367.1615306980690; 
+ Tue, 09 Mar 2021 08:23:00 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id r7sm25345030wre.25.2021.03.09.08.23.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Mar 2021 08:23:00 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] qemu-common.h: Update copyright string to 2021
+Date: Tue,  9 Mar 2021 16:22:58 +0000
+Message-Id: <20210309162258.28633-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Message-ID: <168ecce2.896f.17816f48563.Coremail.a_lijiejun@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: bcGowADXUZSbaUdgeJcDAQ--.58413W
-X-CM-SenderInfo: pdboxyplhm30i6rwjhhfrp/xtbBohtQFFaD-GNzWgAAse
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
-Received-SPF: pass client-ip=220.181.13.109; envelope-from=a_lijiejun@163.com;
- helo=m13109.mail.163.com
-X-Spam_score_int: 36
-X-Spam_score: 3.6
-X-Spam_bar: +++
-X-Spam_report: (3.6 / 5.0 requ) BAYES_00=-1.9, CHARSET_FARAWAY_HEADER=3.2,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001, MIME_CHARSET_FARAWAY=2.45,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 09 Mar 2021 10:04:25 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,77 +73,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Mar 2021 12:43:14 -0000
+X-List-Received-Date: Tue, 09 Mar 2021 16:23:08 -0000
 
-------=_Part_127007_152833634.1615292826979
-Content-Type: text/plain; charset=GBK
-Content-Transfer-Encoding: base64
+Update the common copyright string that we use in
+-version reports, About dialogs, etc, to 2021.
 
-CgoKCgoKCgoKCgoKCgoKCgoKCkF0IDIwMjEtMDMtMDkgMTc6MDg6MDgsICJQaGlsaXBwZSBNYXRo
-aWV1LURhdWSopiIgPHBoaWxtZEByZWRoYXQuY29tPiB3cm90ZToKPihDYydpbmcgcWVtdS10cml2
-aWFsQCkKPgo+T24gMy85LzIxIDg6NDIgQU0sIGxpamllanVuIHdyb3RlOgo+PiBGaXggY29kZSBz
-dHlsZS4gT3BlcmF0b3IgbmVlZHMgc3BhY2VzIGZvcmVuZCBzaWRlcywgYW5kIGRlbGV0ZSBsaW5l
-IHNwYWNlLgo+Cgo+ImZvcmVuZCI/CgoKZG9uZSB3aXRoOgpGaXggY29kZSBzdHlsZS4gT3BlcmF0
-b3IgbmVlZHMgYWxpZ24gd2l0aCBlaWdodCBzcGFjZXMsIGFuZCBkZWxldGUgbGluZSBzcGFjZS4K
-Cgo+Cj5PdGhlcndpc2U6Cj5SZXZpZXdlZC1ieTogUGhpbGlwcGUgTWF0aGlldS1EYXVkqKYgPHBo
-aWxtZEByZWRoYXQuY29tPgo+Cj4+IAo+PiBTaWduZWQtb2ZmLWJ5OiBsaWppZWp1biA8YV9saWpp
-ZWp1bkAxNjMuY29tPgo+PiAtLS0KPj4gIGh3L2Rpc3BsYXkvdmlydGlvLWdwdS0zZC5jIHwgMyAr
-LS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMoLSkKPj4g
-Cj4+IGRpZmYgLS1naXQgYS9ody9kaXNwbGF5L3ZpcnRpby1ncHUtM2QuYyBiL2h3L2Rpc3BsYXkv
-dmlydGlvLWdwdS0zZC5jCj4+IGluZGV4IDllYjQ4OTAuLmQ5ODk2NDggMTAwNjQ0Cj4+IC0tLSBh
-L2h3L2Rpc3BsYXkvdmlydGlvLWdwdS0zZC5jCj4+ICsrKyBiL2h3L2Rpc3BsYXkvdmlydGlvLWdw
-dS0zZC5jCj4+IEBAIC00MzgsNyArNDM4LDcgQEAgdm9pZCB2aXJ0aW9fZ3B1X3ZpcmdsX3Byb2Nl
-c3NfY21kKFZpcnRJT0dQVSAqZywKPj4gICAgICAgICAgYnJlYWs7Cj4+ICAgICAgY2FzZSBWSVJU
-SU9fR1BVX0NNRF9SRVNPVVJDRV9GTFVTSDoKPj4gICAgICAgICAgdmlyZ2xfY21kX3Jlc291cmNl
-X2ZsdXNoKGcsIGNtZCk7Cj4+IC0gICAgICAgYnJlYWs7Cj4+ICsgICAgICAgIGJyZWFrOwo+PiAg
-ICAgIGNhc2UgVklSVElPX0dQVV9DTURfUkVTT1VSQ0VfVU5SRUY6Cj4+ICAgICAgICAgIHZpcmds
-X2NtZF9yZXNvdXJjZV91bnJlZihnLCBjbWQpOwo+PiAgICAgICAgICBicmVhazsKPj4gQEAgLTQ1
-Niw3ICs0NTYsNiBAQCB2b2lkIHZpcnRpb19ncHVfdmlyZ2xfcHJvY2Vzc19jbWQoVmlydElPR1BV
-ICpnLAo+PiAgICAgIGNhc2UgVklSVElPX0dQVV9DTURfR0VUX0NBUFNFVDoKPj4gICAgICAgICAg
-dmlyZ2xfY21kX2dldF9jYXBzZXQoZywgY21kKTsKPj4gICAgICAgICAgYnJlYWs7Cj4+IC0KPj4g
-ICAgICBjYXNlIFZJUlRJT19HUFVfQ01EX0dFVF9ESVNQTEFZX0lORk86Cj4+ICAgICAgICAgIHZp
-cnRpb19ncHVfZ2V0X2Rpc3BsYXlfaW5mbyhnLCBjbWQpOwo+PiAgICAgICAgICBicmVhazsKPj4g
-Cg==
-------=_Part_127007_152833634.1615292826979
-Content-Type: text/html; charset=GBK
-Content-Transfer-Encoding: base64
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/qemu-common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-PGRpdiBzdHlsZT0ibGluZS1oZWlnaHQ6MS43O2NvbG9yOiMwMDAwMDA7Zm9udC1zaXplOjE0cHg7
-Zm9udC1mYW1pbHk6QXJpYWwiPjxwIHN0eWxlPSJtYXJnaW46IDA7Ij48YnI+PC9wPjxwIHN0eWxl
-PSJtYXJnaW46IDA7Ij48YnI+PC9wPjxwIHN0eWxlPSJtYXJnaW46IDA7Ij48YnI+PC9wPjxwIHN0
-eWxlPSJtYXJnaW46IDA7Ij48YnI+PC9wPjxwIHN0eWxlPSJtYXJnaW46IDA7Ij48YnI+PC9wPjxk
-aXYgc3R5bGU9InBvc2l0aW9uOnJlbGF0aXZlO3pvb206MSI+PC9kaXY+PGRpdiBpZD0iZGl2TmV0
-ZWFzZU1haWxDYXJkIj48L2Rpdj48cCBzdHlsZT0ibWFyZ2luOiAwOyI+PGJyPjwvcD48cHJlPjxi
-cj5BdCAyMDIxLTAzLTA5IDE3OjA4OjA4LCAiUGhpbGlwcGUgTWF0aGlldS1EYXVkqKYiICZsdDtw
-aGlsbWRAcmVkaGF0LmNvbSZndDsgd3JvdGU6CiZndDsoQ2MnaW5nIHFlbXUtdHJpdmlhbEApCiZn
-dDsKJmd0O09uIDMvOS8yMSA4OjQyIEFNLCBsaWppZWp1biB3cm90ZToKJmd0OyZndDsgRml4IGNv
-ZGUgc3R5bGUuIE9wZXJhdG9yIG5lZWRzIHNwYWNlcyBmb3JlbmQgc2lkZXMsIGFuZCBkZWxldGUg
-bGluZSBzcGFjZS4KJmd0Owo8ZGl2PiZndDsiZm9yZW5kIj88L2Rpdj48ZGl2Pjxicj48L2Rpdj48
-ZGl2PmRvbmUgd2l0aDo8L2Rpdj48ZGl2PkZpeCBjb2RlIHN0eWxlLiBPcGVyYXRvciBuZWVkcyBh
-bGlnbiB3aXRoIGVpZ2h0IHNwYWNlcywgYW5kIGRlbGV0ZSBsaW5lIHNwYWNlLjwvZGl2PjxkaXY+
-PGJyPjwvZGl2PiZndDsKJmd0O090aGVyd2lzZToKJmd0O1Jldmlld2VkLWJ5OiBQaGlsaXBwZSBN
-YXRoaWV1LURhdWSopiAmbHQ7cGhpbG1kQHJlZGhhdC5jb20mZ3Q7CiZndDsKJmd0OyZndDsgCiZn
-dDsmZ3Q7IFNpZ25lZC1vZmYtYnk6IGxpamllanVuICZsdDthX2xpamllanVuQDE2My5jb20mZ3Q7
-CiZndDsmZ3Q7IC0tLQomZ3Q7Jmd0OyAgaHcvZGlzcGxheS92aXJ0aW8tZ3B1LTNkLmMgfCAzICst
-LQomZ3Q7Jmd0OyAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAyIGRlbGV0aW9ucygt
-KQomZ3Q7Jmd0OyAKJmd0OyZndDsgZGlmZiAtLWdpdCBhL2h3L2Rpc3BsYXkvdmlydGlvLWdwdS0z
-ZC5jIGIvaHcvZGlzcGxheS92aXJ0aW8tZ3B1LTNkLmMKJmd0OyZndDsgaW5kZXggOWViNDg5MC4u
-ZDk4OTY0OCAxMDA2NDQKJmd0OyZndDsgLS0tIGEvaHcvZGlzcGxheS92aXJ0aW8tZ3B1LTNkLmMK
-Jmd0OyZndDsgKysrIGIvaHcvZGlzcGxheS92aXJ0aW8tZ3B1LTNkLmMKJmd0OyZndDsgQEAgLTQz
-OCw3ICs0MzgsNyBAQCB2b2lkIHZpcnRpb19ncHVfdmlyZ2xfcHJvY2Vzc19jbWQoVmlydElPR1BV
-ICpnLAomZ3Q7Jmd0OyAgICAgICAgICBicmVhazsKJmd0OyZndDsgICAgICBjYXNlIFZJUlRJT19H
-UFVfQ01EX1JFU09VUkNFX0ZMVVNIOgomZ3Q7Jmd0OyAgICAgICAgICB2aXJnbF9jbWRfcmVzb3Vy
-Y2VfZmx1c2goZywgY21kKTsKJmd0OyZndDsgLSAgICAgICBicmVhazsKJmd0OyZndDsgKyAgICAg
-ICAgYnJlYWs7CiZndDsmZ3Q7ICAgICAgY2FzZSBWSVJUSU9fR1BVX0NNRF9SRVNPVVJDRV9VTlJF
-RjoKJmd0OyZndDsgICAgICAgICAgdmlyZ2xfY21kX3Jlc291cmNlX3VucmVmKGcsIGNtZCk7CiZn
-dDsmZ3Q7ICAgICAgICAgIGJyZWFrOwomZ3Q7Jmd0OyBAQCAtNDU2LDcgKzQ1Niw2IEBAIHZvaWQg
-dmlydGlvX2dwdV92aXJnbF9wcm9jZXNzX2NtZChWaXJ0SU9HUFUgKmcsCiZndDsmZ3Q7ICAgICAg
-Y2FzZSBWSVJUSU9fR1BVX0NNRF9HRVRfQ0FQU0VUOgomZ3Q7Jmd0OyAgICAgICAgICB2aXJnbF9j
-bWRfZ2V0X2NhcHNldChnLCBjbWQpOwomZ3Q7Jmd0OyAgICAgICAgICBicmVhazsKJmd0OyZndDsg
-LQomZ3Q7Jmd0OyAgICAgIGNhc2UgVklSVElPX0dQVV9DTURfR0VUX0RJU1BMQVlfSU5GTzoKJmd0
-OyZndDsgICAgICAgICAgdmlydGlvX2dwdV9nZXRfZGlzcGxheV9pbmZvKGcsIGNtZCk7CiZndDsm
-Z3Q7ICAgICAgICAgIGJyZWFrOwomZ3Q7Jmd0OyAKPC9wcmU+PC9kaXY+PGJyPjxicj48c3BhbiB0
-aXRsZT0ibmV0ZWFzZWZvb3RlciI+PHA+Jm5ic3A7PC9wPjwvc3Bhbj4=
-------=_Part_127007_152833634.1615292826979--
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 654621444ec..73bcf763ed8 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -13,7 +13,7 @@
+ #define TFR(expr) do { if ((expr) != -1) break; } while (errno == EINTR)
+ 
+ /* Copyright string for -version arguments, About dialogs, etc */
+-#define QEMU_COPYRIGHT "Copyright (c) 2003-2020 " \
++#define QEMU_COPYRIGHT "Copyright (c) 2003-2021 " \
+     "Fabrice Bellard and the QEMU Project developers"
+ 
+ /* Bug reporting information for --help arguments, About dialogs, etc */
+-- 
+2.20.1
 
 
