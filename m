@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJixp-000329-GN
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 15:28:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43950)
+	id 1lJj0G-000603-Bg
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 15:30:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lJixl-0002y6-Qf; Tue, 09 Mar 2021 15:28:18 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:57659)
+ id 1lJj0C-0005yV-Hw; Tue, 09 Mar 2021 15:30:49 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:48533)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lJixj-0000kw-5w; Tue, 09 Mar 2021 15:28:17 -0500
+ id 1lJj08-00024C-SG; Tue, 09 Mar 2021 15:30:48 -0500
 Received: from [192.168.100.1] ([82.142.6.26]) by mrelayeu.kundenserver.de
  (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MA7Su-1lUCI42iy2-00BeUI; Tue, 09 Mar 2021 21:28:10 +0100
-Subject: Re: [PATCH] hw/elf_ops: Fix a typo
+ 1MOzKk-1l7XEn1kmC-00PJcW; Tue, 09 Mar 2021 21:30:37 +0100
+Subject: Re: [PATCH] exec/memory: Use struct Object typedef
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefano Garzarella <sgarzare@redhat.com>
-References: <20210225181344.3623720-1-philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org, 
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20210225182003.3629342-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <e9a2eaa7-1689-41a2-c69f-ee616b7af00e@vivier.eu>
-Date: Tue, 9 Mar 2021 21:28:09 +0100
+Message-ID: <c347c47a-6054-e2f1-c50d-ea23b325654a@vivier.eu>
+Date: Tue, 9 Mar 2021 21:30:35 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210225181344.3623720-1-philmd@redhat.com>
+In-Reply-To: <20210225182003.3629342-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:s5e5x8u/If0bvj4bH5sk62dxRWPjErYoAURFcige9q2Exrko5up
- 5fDAXj9DZu2O2kMF60/orF7p8qjFn85OyEb0J49utxFJSN7PpvsPks0suOdFdI72oCCEssC
- s6K/HCBFUOea+cRhfjp6xJ/Y9FG0ZaaS45hkKUkw450ZugMx20Nozqchx/lTgrzwAR4xTjZ
- HKawyfPX2aTyjytLqehxw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iL2GQNw8x2w=:8gLpoA12ZOPYHDmgoyjWc+
- uXpvqQukGEIZJE6wMFqo8SOR73r6uuKmE46oP7SzVX5the41b3XZPTa9vazpdPgn9hFetFmjv
- yZu2CjD3NIRZoFrlzYKPn1g8BCP55tiswy+jYkSsG7WfgdSBLP/VdMEEYOYn53Dq6sbnDCNnI
- AvLCPjJ0VkkabqHSnVBl9861dqo1U+AKzqio7qgigte780KzfRWcXKToiL6f3EjJEWYEM1fMr
- lh5+45uWddDWLrLvvNUa5bi3ziMJM10svOCTpogEGR3vU1wpFNgQM0mwhVo6tv7I4/2ciugCp
- 8T6qUuABTp9tDA5yXVUKaW3c8Shyy1yiz+kbfs8SrDAGt5baNS4LdxwRAct7mDt/4orEvu1hr
- kuE2tR94gt0UyYMBwfZZI20MKXSIvd6zbxGz3RixphcQFLavN8TmWsNc4IxlC
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:e7LQ1VgVBqp3FWWZwmtQ2nSyVigxhh3nOsHw5K5OW75oj4hI28L
+ SkdgQN1nH81KiogPsgMsMLjh4TVOQyhaHAyyvVBDQzxN+yDq81ovrTKqZccvSdncpFYqfSq
+ /TxFTYViwog3V5O22HkXgvrbTOWUb+vy1Ag6WYH0Cg3p/oEv9EBnqeQoTy8YjLAMh0Mz1A5
+ W1HUtvxGMNC0YTIgHTZBQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4aR1tr4MJeE=:LcwUcQpxPefy9beX+l7Gi7
+ p8SC3daL554jk887mBiUpt5hsAk5XpQCya+/iMRNdpLu9drSkOzSt9Vtnw7vsmAS5ux3nSW7v
+ JY0JmgKs/ZEtRyqWHb2fkTEqsU0LvTs5o2hm9QXGEkLSO0+6V5MVeMcZQE2nUxxWa/qsdZOwk
+ kbY1vyznNDLDG9XC9wuTVR4mYEpDaFaJfVok9eLvSibBStkMU7xX99ii6phXcUX4UB1pZpxff
+ brvmnzvFqARieseOHo7OcXxYO8dLKip8Bbq8mMy4jlin1Wrng8Szzj624b7kk5MZIJQnYpRb9
+ 107LrY7BGegdBID5aFJb+wXC9ay2svSUzHANPzJY6tD65wkNAqDRZX514ut5Kfxc8w+UXjK31
+ VAnN65WzWh0lhuQXqaO5RdWEZHIMUTs+YNmLVVqGQlm/8F23BH2gmFiNuS67A
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -58,34 +61,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Mar 2021 20:28:19 -0000
+X-List-Received-Date: Tue, 09 Mar 2021 20:30:49 -0000
 
-Le 25/02/2021 à 19:13, Philippe Mathieu-Daudé a écrit :
-> g_mapped_file_new_from_fd()'s parameter is named 'writable'.
+Le 25/02/2021 à 19:20, Philippe Mathieu-Daudé a écrit :
+> We forward-declare Object typedef in "qemu/typedefs.h" since commit
+> ca27b5eb7cd ("qom/object: Move Object typedef to 'qemu/typedefs.h'").
+> Use it everywhere to make the code simpler.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  include/hw/elf_ops.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-> index 8e8436831d2..304f266bf3b 100644
-> --- a/include/hw/elf_ops.h
-> +++ b/include/hw/elf_ops.h
-> @@ -417,7 +417,7 @@ static int glue(load_elf, SZ)(const char *name, int fd,
->  
->      /*
->       * Since we want to be able to modify the mapped buffer, we set the
-> -     * 'writeble' parameter to 'true'. Modifications to the buffer are not
-> +     * 'writable' parameter to 'true'. Modifications to the buffer are not
->       * written back to the file.
->       */
->      mapped_file = g_mapped_file_new_from_fd(fd, true, NULL);
+>  include/exec/memory.h      | 32 ++++++++++++++++----------------
+>  include/hw/ppc/pnv_xscom.h |  2 +-
+>  hw/ppc/pnv_xscom.c         |  2 +-
+>  softmmu/memory.c           | 12 ++++++------
+>  4 files changed, 24 insertions(+), 24 deletions(-)
 > 
 
-Applied to my trivial-patches branch.
 
-Thanks,
-Laurent
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
 
