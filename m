@@ -1,71 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJiLl-0000jk-5q
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 14:49:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34782)
+	id 1lJim2-0004lU-Hr
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 15:16:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJiLj-0000dd-2R
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 14:48:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55535)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lJiLg-0000gu-A8
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 14:48:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615319335;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZbjjoYGyeamDwuZt0Cr/b29TlJGpAUVhTXlKi+Ew2zM=;
- b=TpKKnUbcnct/GAAfC55lJk1h913wZweddl3166TDv2ZEZduLZ6aegXFTGj7+tmTZotY0IS
- aTfXYZkdJHCy+iKdAxgX5QrgfTHDj82SLAyZTVtONdZGDSJDrWagyebFinSoug3G+tCxw7
- 6gfWhm4hwASy+8v0Ur5m8pHoC4OZ6/k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-478-RdTQUe2HP8uRKwZxEdOymQ-1; Tue, 09 Mar 2021 14:48:51 -0500
-X-MC-Unique: RdTQUe2HP8uRKwZxEdOymQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47207107465C;
- Tue,  9 Mar 2021 19:48:50 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-72.ams2.redhat.com [10.36.112.72])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8642860C13;
- Tue,  9 Mar 2021 19:48:41 +0000 (UTC)
-Subject: Re: [PATCH v2] MAINTAINERS: Fix the location of tools manuals
-To: Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-devel@nongnu.org, 
- Greg Kurz <groug@kaod.org>, Christian Schoenebeck <qemu_oss@crudebyte.com>
-Cc: peter.maydell@linaro.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, dgilbert@redhat.com, stefanha@redhat.com,
- QEMU Trivial <qemu-trivial@nongnu.org>, Qemu-block <qemu-block@nongnu.org>
-References: <20210204135425.1380280-1-wainersm@redhat.com>
- <516694bd-42fe-7929-811b-545f257c58bf@redhat.com>
- <dd85243c-860d-e915-295d-8292d0a2f36f@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <dd68974a-d2df-88ea-52fc-fb8def4b4ee3@redhat.com>
-Date: Tue, 9 Mar 2021 20:48:40 +0100
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lJim1-0004iN-89; Tue, 09 Mar 2021 15:16:09 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:39243)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lJilz-0003bU-5E; Tue, 09 Mar 2021 15:16:08 -0500
+Received: from [192.168.100.1] ([82.142.6.26]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mf0yy-1lyotK1kGA-00gUAG; Tue, 09 Mar 2021 21:16:04 +0100
+Subject: Re: [PATCH] qemu-common.h: Update copyright string to 2021
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+References: <20210309162258.28633-1-peter.maydell@linaro.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <db796044-87fa-6b4b-28c9-2d6fbf068da5@vivier.eu>
+Date: Tue, 9 Mar 2021 21:16:03 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <dd85243c-860d-e915-295d-8292d0a2f36f@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+In-Reply-To: <20210309162258.28633-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:zg+yNttqZ/UgmsQigkWWh6o0eBfzkJJWf3d8g10YMxPtVWmrYrr
+ 3SFSOxvmjkIxoTFzEv6bbO+G7CQ4NVLojuJWWNJemjc1QWOsRTj6f95bPLqZvg81rECM2lC
+ 18EBkvnX77NQC4QiIfBXxOZEUZ16o8X5f2zkLdKkR6QLYGxFNeahwNVHnWhIYLiErkG7QwO
+ 98VkJXcjLkyOgmQV0RMTg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fAXHUrZ4WnA=:5DKpmfle2BvHwmH18hGFTv
+ EoCV4yZznR6M0WvsG/LrmlAc0s6BZQOxpxrhgYjQaM5jszNvel/WeLHM5lQKCTeNwa3KqRNYD
+ KajkjMDNgigljWuCEZ7Bj3Jc64X9IHDpDrpsm3/HA5V2MP4JbpIO5/UpPDJL8LUl7uRuqsnZ3
+ Ywo2RsFkf6hJWmjDU74/PqAvEkkFfEnSW56uL5IXj/2Nmtt/KNkx4KZixRUW/brbFz2V4bPB4
+ cDYlMwoOu3MXl6pfm3b4rMgT/YZp0oKXuNfrWi/PKEhVSt1JA9yHc2/dDPoj50hPXK7/3IWI+
+ YDInDiCCVeUo4ja3cdyYUVRgxOqnjhXFvVHD6g4Ag2PymG+tFRWH7nWJeoXUr6CFMptbDIrVX
+ 9aNX2BHCjDoq28NSIy3D5UyS800e0Wrp3mphUnnb5eeXXtClwh1o1dCRJyNp/ySiuSv59aaiE
+ cvASevpr1w==
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,45 +58,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Mar 2021 19:48:59 -0000
+X-List-Received-Date: Tue, 09 Mar 2021 20:16:09 -0000
 
-On 09/03/2021 18.41, Wainer dos Santos Moschetta wrote:
-> Hi,
+Le 09/03/2021 à 17:22, Peter Maydell a écrit :
+> Update the common copyright string that we use in
+> -version reports, About dialogs, etc, to 2021.
 > 
-> Any issue that prevent this of being queued?
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/qemu-common.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/qemu-common.h b/include/qemu-common.h
+> index 654621444ec..73bcf763ed8 100644
+> --- a/include/qemu-common.h
+> +++ b/include/qemu-common.h
+> @@ -13,7 +13,7 @@
+>  #define TFR(expr) do { if ((expr) != -1) break; } while (errno == EINTR)
+>  
+>  /* Copyright string for -version arguments, About dialogs, etc */
+> -#define QEMU_COPYRIGHT "Copyright (c) 2003-2020 " \
+> +#define QEMU_COPYRIGHT "Copyright (c) 2003-2021 " \
+>      "Fabrice Bellard and the QEMU Project developers"
+>  
+>  /* Bug reporting information for --help arguments, About dialogs, etc */
+> 
 
-Maybe it's just not clear who should take the patch ... CC:-ing qemu-trivial 
-and qemu-block now, since I think it could go through the trivial or block tree.
-
-> On 2/4/21 10:59 AM, Philippe Mathieu-Daudé wrote:
->> On 2/4/21 2:54 PM, Wainer dos Santos Moschetta wrote:
->>> The qemu-img.rst, qemu-nbd.rst, virtfs-proxy-helper.rst, 
->>> qemu-trace-stap.rst,
->>> and virtiofsd.rst manuals were moved to docs/tools, so this update 
->>> MAINTAINERS
->>> accordingly.
->>>
->>> Fixes: a08b4a9fe6c ("docs: Move tools documentation to tools manual")
->>> Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
->>> ---
->>> v1: was "MAINTAINERS: Fix the location of virtiofsd.rst"
->>> v2: Fixed the location of all files [philmd]
->>>
->>>   MAINTAINERS | 10 +++++-----
->>>   1 file changed, 5 insertions(+), 5 deletions(-)
->>>
->>> diff --git a/MAINTAINERS b/MAINTAINERS
->>> index 00626941f1..174425a941 100644
->>> --- a/MAINTAINERS
->>> +++ b/MAINTAINERS
->>> @@ -1829,7 +1829,7 @@ S: Odd Fixes
->>>   F: hw/9pfs/
->>>   X: hw/9pfs/xen-9p*
->>>   F: fsdev/
->>> -F: docs/interop/virtfs-proxy-helper.rst
->>> +F: docs/tools/virtfs-proxy-helper.rst
-
-FWIW:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
