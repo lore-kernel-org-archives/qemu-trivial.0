@@ -1,63 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJcS4-00076f-6H
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 08:31:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49286)
+	id 1lJcTZ-0000Ri-Ua
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 08:32:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50248)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lJcS2-00073s-Rc
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 08:31:06 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:40567)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lJcRz-0004pm-LO
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 08:31:06 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id ci14so27570983ejc.7
- for <qemu-trivial@nongnu.org>; Tue, 09 Mar 2021 05:31:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Uh6c7+CuRro54PmfG9+edXZYQI4DvJM5hX/S9b/HXRQ=;
- b=tWUn+Unx8EQfoiSrfLpp6oNksmtsQ9Ks9979vyAZaxC4f4+nZFh/0fwiQ9Wq/W5K/7
- 7snh+XHRUtT0aHYKwkSxoJqj22OeBkbgLofLEL/j+iehUVCXnn/wIP4JlokBH0IzIU6t
- P3wZ9B62XknWwriCPsIApRdHxOLVPeuVbmMaz2NQP2ZEARY2SM8DFhJ+iP4kZaejaq6q
- xKMhxSnqQW1GhZje6hFOzFMkVXzTs0cI4rjeRuzPmM6G8dcXGuXXhTWJ+xihqS/xuKKd
- KRV+CsoOEMvn4XkXLMoB+NpZFGE2zBMSGxH/mo/MnhjPUQLWnuu+kgitEp8aAQb5P4gv
- Ow8A==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lJcTW-0000QH-NX
+ for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 08:32:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52240)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lJcTR-0005Xl-0n
+ for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 08:32:38 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615296749;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DzBLxZqS4+qQu3ArXedPzVa4NYGCPGwBgmxryNjwHRQ=;
+ b=WSVDWcql7Zc79ow3MN1dSpAzf8PPxr/TH6vlGj9LRCX6A+OEHuvI3Of3YTejf9JTGgdnTb
+ H1JXfUiC8XrTzXMfkoxDIGIZj9MsKcd1QNtOqsrfTcL0LENA/wCGO5/uTYhO8mfwF4KJUG
+ Ma/hUb+8SQt/twN6ZnD2M5jsJs1Hl0A=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-494-CnCk9U8QNcOE53nfsjExZg-1; Tue, 09 Mar 2021 08:32:28 -0500
+X-MC-Unique: CnCk9U8QNcOE53nfsjExZg-1
+Received: by mail-wm1-f69.google.com with SMTP id n25so1156615wmk.1
+ for <qemu-trivial@nongnu.org>; Tue, 09 Mar 2021 05:32:27 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Uh6c7+CuRro54PmfG9+edXZYQI4DvJM5hX/S9b/HXRQ=;
- b=PyHsebD5FArXe4+GoywzGd7+JMF01piV1IzgHjA2EcjZDB5q1i4mzjuYE329fUdj1l
- oPJu2t71+ZDyf4dfhEUotMO2nlGWTwGW7y/oJCBd9ve08dkythjihnJiswp06U4zjpUM
- r9FBJVvBNDv4hmz4z9OgJFA1lpXVQMPIYu4RuHFWFQEw+z0pmaTJMQNUmbBBfIjkjWWB
- 9qxVY/ZUtt5jYwtHwQWH46wsyGIfiOJUJXme6fgtEtGg7mr6bQMdNHMdte/ClbxRw4f7
- AC+P3BLmGYKgwfrLujXkkR3DcYeDnEzlNqIc0quQ7xYsAK8u1c3n25Rafw+eihqQTjYh
- H1vQ==
-X-Gm-Message-State: AOAM530KVLd8pMxy0AAOPtgJUXsyYxfKRGUOLGHvEaTnnnZV9BoWgkAV
- +66Q+//m8MUNPS6UzhZulzkNlsIGTF4FgqnPqUTbUg==
-X-Google-Smtp-Source: ABdhPJw23STRnbaB6W0AKZirdcx0rj9PYAuyjERiplaroMNjwl24ObhC6mB79aSl/jY8BOF/uzBy2pS8r/mcwafhnXU=
-X-Received: by 2002:a17:906:1ecc:: with SMTP id
- m12mr20188623ejj.4.1615296661722; 
- Tue, 09 Mar 2021 05:31:01 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=DzBLxZqS4+qQu3ArXedPzVa4NYGCPGwBgmxryNjwHRQ=;
+ b=Z296gxOSQgUMfjCgmQb0jkLiXQL0WmWVB7K18ng0DFHUPRevWe5AWfZmVhoTpaC/T1
+ ac7vgdWLzl1D8mdwhpkrZmQ4mzrHVjmj25YWX+T+MCgoRdg8nlodirCIrqYx+mWEF/Rq
+ SUJSHqSbYFk+da3tGORLHFQg46NfTDafD2Q4633ibF8vthX0K+eh5yav+jPB41LfPQdI
+ b9pzy1N3oHl/CSHSExkAMjXtkQjygbRTIvxlBGcYgS0mDawvuf8IRHxBzJlNZl4WpwYg
+ hWbpcR4Bdcw4WWsjXAMH6cQkWKXIh0JC/RW36VDUxmfuQVDQ+b3ymMM8XrrQQAFp26Hs
+ kpwQ==
+X-Gm-Message-State: AOAM530VN84p55dIAF5vy/374yXmI0IXVEx9Fg4LugJdvnXUGpLy6NL9
+ 2PNSlFSwIhL5qHPuTRdb/ryljIYJGblR1iwdWs2zx4tKWI7jhRsNDN6VpSv85TQjHEsmMFa7ijj
+ LdeUdC6pVR8/xi/BFiRm+CRE0weDyjoYN7fj6ICMzGZMWkq4DIel0hEvaWw7pYrPF5ig=
+X-Received: by 2002:a5d:4b83:: with SMTP id b3mr28484146wrt.76.1615296746687; 
+ Tue, 09 Mar 2021 05:32:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxfJIu9Unhpg7xHqWHGLMxdCRcrLqxMvnsrDbhMvyxTPRXMMzuVRY1p4Pun4NTUB/aSWP8mEg==
+X-Received: by 2002:a5d:4b83:: with SMTP id b3mr28484115wrt.76.1615296746438; 
+ Tue, 09 Mar 2021 05:32:26 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id m10sm4192296wmh.13.2021.03.09.05.32.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Mar 2021 05:32:26 -0800 (PST)
+Subject: Re: [PATCH] virtio-gpu: Adjust code space style
+To: lijiejun <a_lijiejun@163.com>, kraxel@redhat.com
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1615292050-108748-1-git-send-email-a_lijiejun@163.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <1808a180-d8ce-fb52-38c5-085ee9d9a26a@redhat.com>
+Date: Tue, 9 Mar 2021 14:32:24 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-References: <20210309111510.79495-1-mjt@msgid.tls.msk.ru>
-In-Reply-To: <20210309111510.79495-1-mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Mar 2021 13:30:44 +0000
-Message-ID: <CAFEAcA_0KRbyMu_PUhfxeVR5H+34duhTKCarW_JmCynU7i1p6g@mail.gmail.com>
-Subject: Re: [PATCH V2 trivial] Various spelling fixes
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <1615292050-108748-1-git-send-email-a_lijiejun@163.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,23 +90,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Mar 2021 13:31:07 -0000
+X-List-Received-Date: Tue, 09 Mar 2021 13:32:40 -0000
 
-On Tue, 9 Mar 2021 at 11:23, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> An assorted set of spelling fixes in various places.
->
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+On 3/9/21 1:14 PM, lijiejun wrote:
+> Fix code style. Operator needs align with eight spaces, and delete line space.
+> 
+> Signed-off-by: lijiejun <a_lijiejun@163.com>
 > ---
-> V1: https://lists.nongnu.org/archive/html/qemu-devel/2020-12/msg05959.html
-> Changes: incorporated suggestions by Stefan Weil and added his R-b.
->
-> Please note: this also patches one file in disas/
+>  hw/display/virtio-gpu-3d.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
 
