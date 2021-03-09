@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJjpB-0006lI-NR
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 16:23:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59504)
+	id 1lJjpz-0007Sa-VM
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 16:24:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59712)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lJjpA-0006ik-1d; Tue, 09 Mar 2021 16:23:28 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:58241)
+ id 1lJjpy-0007QA-K5; Tue, 09 Mar 2021 16:24:18 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:47615)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lJjp8-0008Kt-BY; Tue, 09 Mar 2021 16:23:27 -0500
+ id 1lJjpt-0000EN-Bg; Tue, 09 Mar 2021 16:24:18 -0500
 Received: from [192.168.100.1] ([82.142.6.26]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MD9Kp-1lSE873ATB-009BfU; Tue, 09 Mar 2021 22:23:10 +0100
-Subject: Re: [PATCH] linux-user/elfload: munmap proper address in
- pgd_find_hole_fallback
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MgwBv-1ly2nS39hd-00hKRY; Tue, 09 Mar 2021 22:23:59 +0100
+Subject: Re: [PATCH] linux-user/elfload: fix address calculation in fallback
+ scenario
 To: Vincent Fazio <vfazio@xes-inc.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Vincent Fazio <vfazio@gmail.com>
-References: <20210131061849.12615-1-vfazio@xes-inc.com>
+References: <20210131061948.15990-1-vfazio@xes-inc.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <9f9e1c00-dcfe-c14c-7d03-6d2d2ae6c799@vivier.eu>
-Date: Tue, 9 Mar 2021 22:23:09 +0100
+Message-ID: <741300f4-7a53-ad07-2bce-2a5583061c54@vivier.eu>
+Date: Tue, 9 Mar 2021 22:23:58 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210131061849.12615-1-vfazio@xes-inc.com>
+In-Reply-To: <20210131061948.15990-1-vfazio@xes-inc.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nRd+Gg0E13Vhe0lePKOKxTX+yoejoxipP3eBwInx+lwkM9yj3cQ
- X1hU4gFRZJYbfTxTbWlD9xWX6hNQAoqcZgSG3zZSMSccsez4333MHo3zEyjJfMPKqqDA3jm
- XnuACqch5OS7gMcug3aUQHEVs8ZOrGdZFAjr5fJXWf8C4uVK7HNpQgKhKUgkzRKMZZRtC3A
- VYXWTVEnnjXEOAPw8tTtQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:EhqQwHKNBLE=:YyB+a753t+D5wLWGilVTot
- HreBpvVrCd/7UW1MSWSgzsyuEoKFFVGHy9cQIblLRTCYyL6ugWuegRM5k6zuSmzKV3YvnJwjT
- Z/J+RGRj12dsOMmYYMhwoXk/Aw6e/IfxRLGV9k2ifms/+SzysCjASTfnpfMQNqy8QedqzGLZB
- uott2izSu45SiWNnP2rctN2O8Ec9E971F2JCwMbrc+guGGW/uqPP6DV4nKBzedVmZcOBsctLB
- TB9LqDADzkr4rgEtQtqdoirq8e5KfsNjzLzyCWYEZezu7mLN177MU2ir1Tayzr1wjZG3VaCYw
- OtQBbUwtcrjLZp0VHIWFi7KfMjIg13Q38OxLjclxBH+zf6UKP1WPMQuNmlY3LBG8GjF/b0Vd+
- bnM9rupKrYSNTy7y+C+sXjWP9j8Jt5s76F5pN3BLnWmmcJhKoun+ChLDOpkpTs0ADHeJOrLT5
- fKeqVpf9LA==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:aN7vfasOrAIfeva8C+C3AzxZdcDH0Im3t9vzgII+4dNLaYiUWCy
+ WOiPTYLtQsZbMikJRVuFkqec9Lg0E8FljswhMClJZVqRvOlQ3X7pyq3ZmUsWHdKDb9eOBy3
+ 2+hnkwJK9xjFZp3O2vdqPn98GoVVX3Zo+EIeAPL2kqfpeaV9s3ldUxG8zI6C3ePaTqHfjSN
+ dB3aH+jmGsw6Pq8Nvxatw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:nwJkclL6x+0=:ApunNwt92ern6SmcobUbUa
+ FYb1wmQ/RnGLAOvoObCFXx1fukFv2tRc958A/OdIpmpe1h3D9mKC44xSHnOk0/fldiWjQaMpn
+ gYkFVTOC6YheWIaqO+JHCBsDYNopMCka1JnJxgf8alroQ4u2FeyEW0f1eBRePTTyYtii5exGv
+ 8LqaJzbYrDTm6VRkIfAOln97z/JkvwbM8eW3D/4Z02y+THL6Mm8nmsnUosuRy0zeTSh7zMqnj
+ QxQzjo40sRK3scITC8kDJP7Alt5/85qNlQZQcmD4bGUPBEMk1ii7ROudqBuZQTOtzptMu5TLG
+ fZvy3iadgMD0kqDdPuxjKqD7zyzS8MW3D/xULtcpqUKPCjrHlgzZwnoAqTpkQdhm0UWrb7G//
+ CJTAoN6pF4FMe6X7oYdvx1aAzZAsMSSIA16jIHoaTeDE7BTXRV6qNlb808lyVsKryamVhva0H
+ wZez/+AcMg==
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -59,43 +59,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Mar 2021 21:23:28 -0000
+X-List-Received-Date: Tue, 09 Mar 2021 21:24:19 -0000
 
-Le 31/01/2021 à 07:18, Vincent Fazio a écrit :
+Le 31/01/2021 à 07:19, Vincent Fazio a écrit :
 > From: Vincent Fazio <vfazio@gmail.com>
 > 
-> Previously, if the build host's libc did not define MAP_FIXED_NOREPLACE
-> or if the running kernel didn't support that flag, it was possible for
-> pgd_find_hole_fallback to munmap an incorrect address which could lead to
-> SIGSEGV if the range happened to overlap with the mapped address of the
-> QEMU binary.
+> Previously, guest_loaddr was not taken into account when returning an
+> address from pgb_find_hole when /proc/self/maps was unavailable which
+> caused an improper guest_base address to be calculated.
 > 
->   mmap(0x1000, 22261224, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x7f889d331000
->   munmap(0x1000, 22261224)                = 0
->   --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0x84b817} ---
->   ++ killed by SIGSEGV +++
+> This could cause a SIGSEGV later in load_elf_image -> target_mmap for
+> ET_EXEC type images since the mmap MAP_FIXED flag is specified which
+> could clobber existing mappings at the address returnd by g2h().
 > 
-> Now, always munmap the address returned by mmap.
+>   mmap(0xd87000, 16846912, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE|0x100000, -1, 0) = 0xd87000
+>   munmap(0xd87000, 16846912)              = 0
+>   write(2, "Locating guest address space @ 0"..., 40Locating guest address space @ 0xd87000) = 40
+>   mmap(0x1187000, 16850944, PROT_NONE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x1187000
+>   --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_ACCERR, si_addr=0x2188310} ---
+>   +++ killed by SIGSEGV +++
 > 
-> Fixes: 2667e069e7b5 ("linux-user: don't use MAP_FIXED in pgd_find_hole_fallback")
+> Now, pgd_find_hole accounts for guest_loaddr in this scenario.
+> 
+> Fixes: ad592e37dfcc ("linux-user: provide fallback pgd_find_hole for bare chroots")
 > Signed-off-by: Vincent Fazio <vfazio@gmail.com>
 > ---
->  linux-user/elfload.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  linux-user/elfload.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
 > diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> index a64050713f..5f5f23d2e5 100644
+> index 8d425f9ed0..6d606b9442 100644
 > --- a/linux-user/elfload.c
 > +++ b/linux-user/elfload.c
-> @@ -2216,7 +2216,7 @@ static uintptr_t pgd_find_hole_fallback(uintptr_t guest_size, uintptr_t brk,
->              void * mmap_start = mmap((void *) align_start, guest_size,
->                                       PROT_NONE, flags, -1, 0);
->              if (mmap_start != MAP_FAILED) {
-> -                munmap((void *) align_start, guest_size);
-> +                munmap(mmap_start, guest_size);
->                  if (MAP_FIXED_NOREPLACE != 0 ||
->                      mmap_start == (void *) align_start) {
->                      return (uintptr_t) mmap_start + offset;
+> @@ -2242,7 +2242,8 @@ static uintptr_t pgb_find_hole(uintptr_t guest_loaddr, uintptr_t guest_size,
+>      brk = (uintptr_t)sbrk(0);
+>  
+>      if (!maps) {
+> -        return pgd_find_hole_fallback(guest_size, brk, align, offset);
+> +        ret = pgd_find_hole_fallback(guest_size, brk, align, offset);
+> +        return ret - guest_loaddr;
+>      }
+>  
+>      /* The first hole is before the first map entry. */
 > 
 
 Applied to my linux-user-for-6.0 branch.
