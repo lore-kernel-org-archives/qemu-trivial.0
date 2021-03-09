@@ -1,46 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJj0G-000603-Bg
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 15:30:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44634)
+	id 1lJj1R-0007OL-JU
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 15:32:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lJj0C-0005yV-Hw; Tue, 09 Mar 2021 15:30:49 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:48533)
+ id 1lJj1N-0007M7-Mu; Tue, 09 Mar 2021 15:32:01 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:46737)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lJj08-00024C-SG; Tue, 09 Mar 2021 15:30:48 -0500
+ id 1lJj1L-0002Xr-Cj; Tue, 09 Mar 2021 15:32:01 -0500
 Received: from [192.168.100.1] ([82.142.6.26]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MOzKk-1l7XEn1kmC-00PJcW; Tue, 09 Mar 2021 21:30:37 +0100
-Subject: Re: [PATCH] exec/memory: Use struct Object typedef
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N9Mh8-1lnEsk3348-015GYW; Tue, 09 Mar 2021 21:31:50 +0100
+Subject: Re: [PATCH] target/hexagon/gen_tcg_funcs: Fix a typo
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org, 
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20210225182003.3629342-1-philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, Taylor Simpson <tsimpson@quicinc.com>
+References: <20210225181507.3624509-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <c347c47a-6054-e2f1-c50d-ea23b325654a@vivier.eu>
-Date: Tue, 9 Mar 2021 21:30:35 +0100
+Message-ID: <fba1c87e-e89f-2d19-796c-3e2b5850fb25@vivier.eu>
+Date: Tue, 9 Mar 2021 21:31:49 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210225182003.3629342-1-philmd@redhat.com>
+In-Reply-To: <20210225181507.3624509-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:e7LQ1VgVBqp3FWWZwmtQ2nSyVigxhh3nOsHw5K5OW75oj4hI28L
- SkdgQN1nH81KiogPsgMsMLjh4TVOQyhaHAyyvVBDQzxN+yDq81ovrTKqZccvSdncpFYqfSq
- /TxFTYViwog3V5O22HkXgvrbTOWUb+vy1Ag6WYH0Cg3p/oEv9EBnqeQoTy8YjLAMh0Mz1A5
- W1HUtvxGMNC0YTIgHTZBQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:4aR1tr4MJeE=:LcwUcQpxPefy9beX+l7Gi7
- p8SC3daL554jk887mBiUpt5hsAk5XpQCya+/iMRNdpLu9drSkOzSt9Vtnw7vsmAS5ux3nSW7v
- JY0JmgKs/ZEtRyqWHb2fkTEqsU0LvTs5o2hm9QXGEkLSO0+6V5MVeMcZQE2nUxxWa/qsdZOwk
- kbY1vyznNDLDG9XC9wuTVR4mYEpDaFaJfVok9eLvSibBStkMU7xX99ii6phXcUX4UB1pZpxff
- brvmnzvFqARieseOHo7OcXxYO8dLKip8Bbq8mMy4jlin1Wrng8Szzj624b7kk5MZIJQnYpRb9
- 107LrY7BGegdBID5aFJb+wXC9ay2svSUzHANPzJY6tD65wkNAqDRZX514ut5Kfxc8w+UXjK31
- VAnN65WzWh0lhuQXqaO5RdWEZHIMUTs+YNmLVVqGQlm/8F23BH2gmFiNuS67A
+X-Provags-ID: V03:K1:ZhfMPSn+flO9xgZvUmDzS/A6ZXvIrfqxmi91U+Nv7TMmzd0Xaz7
+ /0zrLryrlPkBkxwSBFehdbk4tJJg1c00zFe/ltOqtVQx096N196Q34qecrnjPWoqXAdyMgA
+ qb1/LHfVTiiX5Z20bmgd108HLjjdYPICBk+VPzvImLry+xk0Ba+N2PXxI90NkeFi7pQ2uaN
+ HvE4g9MSsF2vtkhWKxrog==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:iYqQ7Mci/0U=:IjWurBtgqh+KdJohtpcNzS
+ 8tlYdJkQgANVq+MR6BeUSZztnHTepIeFSPWm+SQ9B+s1W73RV5bocTWHT++Xo9myvfdJL5LL2
+ 6h/D4YoNDulDGWvs3wfj4WSYI5l2L/wK03e9vEK/shgtGG0HzLZk/2XkujHoZkCZsYtassK+U
+ gQYGKXFwy20yl3mPm/8YdkxaNh0z0Ct7Ys2peUOAk+NtqDg6SU/NYqFgFJ2/IEbXoT5bzJXDm
+ Cxrg0hMU+dvp2Pq7iYMKD1MBa6MxoEZU88uJCBmsCgoxPq3RbtsvODs4hzkfFowSol0Jux4lu
+ +NM/KLgWg46oLf4TAn0qZDQn84zDJP+kYDwCcbdjDkZwOUEcNG0t6L2lHjY66/y1Qrf0COhvA
+ nMW+Wt9/i9JSSKJ/HW+8z3SGeor4o4FRIdrnzzR4uRxluVyQNd4AUGZtLtYeY
 Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -61,23 +58,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Mar 2021 20:30:49 -0000
+X-List-Received-Date: Tue, 09 Mar 2021 20:32:02 -0000
 
-Le 25/02/2021 à 19:20, Philippe Mathieu-Daudé a écrit :
-> We forward-declare Object typedef in "qemu/typedefs.h" since commit
-> ca27b5eb7cd ("qom/object: Move Object typedef to 'qemu/typedefs.h'").
-> Use it everywhere to make the code simpler.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Le 25/02/2021 à 19:15, Philippe Mathieu-Daudé a écrit :
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  include/exec/memory.h      | 32 ++++++++++++++++----------------
->  include/hw/ppc/pnv_xscom.h |  2 +-
->  hw/ppc/pnv_xscom.c         |  2 +-
->  softmmu/memory.c           | 12 ++++++------
->  4 files changed, 24 insertions(+), 24 deletions(-)
+>  target/hexagon/gen_tcg_funcs.py | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+> 
+> diff --git a/target/hexagon/gen_tcg_funcs.py b/target/hexagon/gen_tcg_funcs.py
+> index fe4d8e57303..db9f663a778 100755
+> --- a/target/hexagon/gen_tcg_funcs.py
+> +++ b/target/hexagon/gen_tcg_funcs.py
+> @@ -35,7 +35,7 @@ def gen_decl_ea_tcg(f, tag):
+>  def gen_free_ea_tcg(f):
+>      f.write("    tcg_temp_free(EA);\n")
+>  
+> -def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
+> +def genptr_decl_pair_writable(f, tag, regtype, regid, regno):
+>      regN="%s%sN" % (regtype,regid)
+>      f.write("    TCGv_i64 %s%sV = tcg_temp_local_new_i64();\n" % \
+>          (regtype, regid))
+> @@ -54,7 +54,7 @@ def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
+>                               (regN, regN))
+>          f.write("    }\n")
+>  
+> -def genptr_decl_writeble(f, tag, regtype, regid, regno):
+> +def genptr_decl_writable(f, tag, regtype, regid, regno):
+>      regN="%s%sN" % (regtype,regid)
+>      f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
+>          (regtype, regid))
+> @@ -78,12 +78,12 @@ def genptr_decl(f, tag, regtype, regid, regno):
+>              f.write("    const int %s = insn->regno[%d];\n" % \
+>                  (regN, regno))
+>          elif (regid in {"dd", "ee", "xx", "yy"}):
+> -            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
+> +            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
+>          elif (regid in {"s", "t", "u", "v"}):
+>              f.write("    TCGv %s%sV = hex_gpr[insn->regno[%d]];\n" % \
+>                  (regtype, regid, regno))
+>          elif (regid in {"d", "e", "x", "y"}):
+> -            genptr_decl_writeble(f, tag, regtype, regid, regno)
+> +            genptr_decl_writable(f, tag, regtype, regid, regno)
+>          else:
+>              print("Bad register parse: ", regtype, regid)
+>      elif (regtype == "P"):
+> @@ -91,7 +91,7 @@ def genptr_decl(f, tag, regtype, regid, regno):
+>              f.write("    TCGv %s%sV = hex_pred[insn->regno[%d]];\n" % \
+>                  (regtype, regid, regno))
+>          elif (regid in {"d", "e", "x"}):
+> -            genptr_decl_writeble(f, tag, regtype, regid, regno)
+> +            genptr_decl_writable(f, tag, regtype, regid, regno)
+>          else:
+>              print("Bad register parse: ", regtype, regid)
+>      elif (regtype == "C"):
+> @@ -101,14 +101,14 @@ def genptr_decl(f, tag, regtype, regid, regno):
+>              f.write("    const int %s = insn->regno[%d] + HEX_REG_SA0;\n" % \
+>                  (regN, regno))
+>          elif (regid == "dd"):
+> -            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
+> +            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
+>          elif (regid == "s"):
+>              f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
+>                  (regtype, regid))
+>              f.write("    const int %s%sN = insn->regno[%d] + HEX_REG_SA0;\n" % \
+>                  (regtype, regid, regno))
+>          elif (regid == "d"):
+> -            genptr_decl_writeble(f, tag, regtype, regid, regno)
+> +            genptr_decl_writable(f, tag, regtype, regid, regno)
+>          else:
+>              print("Bad register parse: ", regtype, regid)
+>      elif (regtype == "M"):
 > 
 
+Applied to my trivial-patches branch.
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Thanks,
+Laurent
 
 
