@@ -1,59 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJlFi-0004eK-LQ
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 17:54:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51188)
+	id 1lJlR9-0000TL-7U
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 18:06:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1lJlFh-0004e9-Bc
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 17:54:57 -0500
-Received: from 4.mo52.mail-out.ovh.net ([178.33.43.201]:46042)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>)
+ id 1lJlR7-0000SC-2J; Tue, 09 Mar 2021 18:06:45 -0500
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:58195)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1lJlFf-0000EC-HZ
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 17:54:57 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.173])
- by mo52.mail-out.ovh.net (Postfix) with ESMTPS id 9E9032471B1;
- Tue,  9 Mar 2021 23:54:51 +0100 (CET)
-Received: from kaod.org (37.59.142.95) by DAG8EX1.mxp5.local (172.16.2.71)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>)
+ id 1lJlR5-0005th-1P; Tue, 09 Mar 2021 18:06:44 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.163])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 2BD44950B73C;
+ Wed, 10 Mar 2021 00:06:38 +0100 (CET)
+Received: from kaod.org (37.59.142.96) by DAG8EX1.mxp5.local (172.16.2.71)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Tue, 9 Mar 2021
- 23:54:51 +0100
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Wed, 10 Mar
+ 2021 00:06:37 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-95G001fd8a561b-acc5-47cb-b49d-a348f01b07f7,
- 5BB0FC21D60CBA87691D752E0F3295FDC8BC83A3) smtp.auth=groug@kaod.org
+ (GARM-96R001b9624d3a-6216-41da-9f16-46ca54c5b320,
+ E3A1B1521FC7554C2CCDA0AC48C2D83995993578) smtp.auth=groug@kaod.org
 X-OVh-ClientIp: 78.197.208.248
-Date: Tue, 9 Mar 2021 23:54:49 +0100
+Date: Wed, 10 Mar 2021 00:06:36 +0100
 From: Greg Kurz <groug@kaod.org>
-To: Thomas Huth <thuth@redhat.com>
-CC: Wainer dos Santos Moschetta <wainersm@redhat.com>,
- <qemu-devel@nongnu.org>, Christian Schoenebeck <qemu_oss@crudebyte.com>,
- <peter.maydell@linaro.org>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
- <philmd@redhat.com>, <dgilbert@redhat.com>, <stefanha@redhat.com>, QEMU
- Trivial <qemu-trivial@nongnu.org>, Qemu-block <qemu-block@nongnu.org>
-Subject: Re: [PATCH v2] MAINTAINERS: Fix the location of tools manuals
-Message-ID: <20210309235449.138fb41a@bahia.lan>
-In-Reply-To: <dd68974a-d2df-88ea-52fc-fb8def4b4ee3@redhat.com>
-References: <20210204135425.1380280-1-wainersm@redhat.com>
- <516694bd-42fe-7929-811b-545f257c58bf@redhat.com>
- <dd85243c-860d-e915-295d-8292d0a2f36f@redhat.com>
- <dd68974a-d2df-88ea-52fc-fb8def4b4ee3@redhat.com>
+To: Laurent Vivier <laurent@vivier.eu>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, David Gibson
+ <david@gibson.dropbear.id.au>
+Subject: Re: [PATCH] docs/system: Document the removal of "compat" property
+ for POWER CPUs
+Message-ID: <20210310000636.15f20e52@bahia.lan>
+In-Reply-To: <e7281f1f-27b2-a464-d7bf-bbd2fb116168@vivier.eu>
+References: <161399328834.51902.14269239378658110394.stgit@bahia.lan>
+ <e7281f1f-27b2-a464-d7bf-bbd2fb116168@vivier.eu>
 X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [37.59.142.95]
-X-ClientProxiedBy: DAG8EX1.mxp5.local (172.16.2.71) To DAG8EX1.mxp5.local
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG8EX1.mxp5.local
  (172.16.2.71)
-X-Ovh-Tracer-GUID: 9c02ed1c-e9e5-42e9-b0df-dbbe99ab9a2b
-X-Ovh-Tracer-Id: 18211149521477999026
+X-Ovh-Tracer-GUID: 88978494-6e79-413c-a45b-1d37338d1fc9
+X-Ovh-Tracer-Id: 18409870853927508448
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudduiedgudeijecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvuffkjghfofggtgfgihesthhqredtredtjeenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepveelhfdtudffhfeiveehhfelgeellefgteffteekudegheejfffghefhfeeuudffnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgslhhotghksehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=178.33.43.201; envelope-from=groug@kaod.org;
- helo=4.mo52.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrudduiedgudeilecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvuffkjghfofggtgfgihesthhqredtredtjeenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepveelhfdtudffhfeiveehhfelgeellefgteffteekudegheejfffghefhfeeuudffnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepuggrvhhiugesghhisghsohhnrdgurhhophgsvggrrhdrihgurdgruh
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=groug@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,56 +63,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Mar 2021 22:54:57 -0000
+X-List-Received-Date: Tue, 09 Mar 2021 23:06:45 -0000
 
-On Tue, 9 Mar 2021 20:48:40 +0100
-Thomas Huth <thuth@redhat.com> wrote:
+On Tue, 9 Mar 2021 21:52:40 +0100
+Laurent Vivier <laurent@vivier.eu> wrote:
 
-> On 09/03/2021 18.41, Wainer dos Santos Moschetta wrote:
-> > Hi,
+> Le 22/02/2021 =C3=A0 12:28, Greg Kurz a =C3=A9crit=C2=A0:
+> > This is just an oversight.
 > >=20
-> > Any issue that prevent this of being queued?
+> > Fixes: f518be3aa35b ("target/ppc: Remove "compat" property of server cl=
+ass POWER CPUs")
+> > Cc: groug@kaod.org
+> > Signed-off-by: Greg Kurz <groug@kaod.org>
+> > ---
+> >  docs/system/removed-features.rst |    6 ++++++
+> >  1 file changed, 6 insertions(+)
+> >=20
+> > diff --git a/docs/system/removed-features.rst b/docs/system/removed-fea=
+tures.rst
+> > index c8481cafbd5c..04ffa90d48ca 100644
+> > --- a/docs/system/removed-features.rst
+> > +++ b/docs/system/removed-features.rst
+> > @@ -115,6 +115,12 @@ The RISC-V no MMU cpus have been removed. The two =
+CPUs: ``rv32imacu-nommu`` and
+> >  ``rv64imacu-nommu`` can no longer be used. Instead the MMU status can =
+be specified
+> >  via the CPU ``mmu`` option when using the ``rv32`` or ``rv64`` CPUs.
+> > =20
+> > +``compat`` property of server class POWER CPUs (removed in 6.0)
+> > +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> > +
+> > +The ``max-cpu-compat`` property of the ``pseries`` machine type should=
+ be used
+> > +instead.
+> > +
+> >  System emulator machines
+> >  ------------------------
+> > =20
 >=20
-> Maybe it's just not clear who should take the patch ... CC:-ing qemu-triv=
-ial=20
-> and qemu-block now, since I think it could go through the trivial or bloc=
-k tree.
->=20
-
-For the virtfs change:
-
-Acked-by: Greg Kurz <groug@kaod.org>
-
-> > On 2/4/21 10:59 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> >> On 2/4/21 2:54 PM, Wainer dos Santos Moschetta wrote:
-> >>> The qemu-img.rst, qemu-nbd.rst, virtfs-proxy-helper.rst,=20
-> >>> qemu-trace-stap.rst,
-> >>> and virtiofsd.rst manuals were moved to docs/tools, so this update=20
-> >>> MAINTAINERS
-> >>> accordingly.
-> >>>
-> >>> Fixes: a08b4a9fe6c ("docs: Move tools documentation to tools manual")
-> >>> Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-> >>> ---
-> >>> v1: was "MAINTAINERS: Fix the location of virtiofsd.rst"
-> >>> v2: Fixed the location of all files [philmd]
-> >>>
-> >>> =C2=A0 MAINTAINERS | 10 +++++-----
-> >>> =C2=A0 1 file changed, 5 insertions(+), 5 deletions(-)
-> >>>
-> >>> diff --git a/MAINTAINERS b/MAINTAINERS
-> >>> index 00626941f1..174425a941 100644
-> >>> --- a/MAINTAINERS
-> >>> +++ b/MAINTAINERS
-> >>> @@ -1829,7 +1829,7 @@ S: Odd Fixes
-> >>> =C2=A0 F: hw/9pfs/
-> >>> =C2=A0 X: hw/9pfs/xen-9p*
-> >>> =C2=A0 F: fsdev/
-> >>> -F: docs/interop/virtfs-proxy-helper.rst
-> >>> +F: docs/tools/virtfs-proxy-helper.rst
->=20
-> FWIW:
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 >=20
 
+I was thinking this was simple enough to go through the trivial tree. :)
 
