@@ -1,84 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lJcTZ-0000Ri-Ua
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 08:32:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50248)
+	id 1lJduM-0002xX-Vo
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Mar 2021 10:04:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lJcTW-0000QH-NX
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 08:32:40 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52240)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lJcTR-0005Xl-0n
- for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 08:32:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615296749;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DzBLxZqS4+qQu3ArXedPzVa4NYGCPGwBgmxryNjwHRQ=;
- b=WSVDWcql7Zc79ow3MN1dSpAzf8PPxr/TH6vlGj9LRCX6A+OEHuvI3Of3YTejf9JTGgdnTb
- H1JXfUiC8XrTzXMfkoxDIGIZj9MsKcd1QNtOqsrfTcL0LENA/wCGO5/uTYhO8mfwF4KJUG
- Ma/hUb+8SQt/twN6ZnD2M5jsJs1Hl0A=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-494-CnCk9U8QNcOE53nfsjExZg-1; Tue, 09 Mar 2021 08:32:28 -0500
-X-MC-Unique: CnCk9U8QNcOE53nfsjExZg-1
-Received: by mail-wm1-f69.google.com with SMTP id n25so1156615wmk.1
- for <qemu-trivial@nongnu.org>; Tue, 09 Mar 2021 05:32:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=DzBLxZqS4+qQu3ArXedPzVa4NYGCPGwBgmxryNjwHRQ=;
- b=Z296gxOSQgUMfjCgmQb0jkLiXQL0WmWVB7K18ng0DFHUPRevWe5AWfZmVhoTpaC/T1
- ac7vgdWLzl1D8mdwhpkrZmQ4mzrHVjmj25YWX+T+MCgoRdg8nlodirCIrqYx+mWEF/Rq
- SUJSHqSbYFk+da3tGORLHFQg46NfTDafD2Q4633ibF8vthX0K+eh5yav+jPB41LfPQdI
- b9pzy1N3oHl/CSHSExkAMjXtkQjygbRTIvxlBGcYgS0mDawvuf8IRHxBzJlNZl4WpwYg
- hWbpcR4Bdcw4WWsjXAMH6cQkWKXIh0JC/RW36VDUxmfuQVDQ+b3ymMM8XrrQQAFp26Hs
- kpwQ==
-X-Gm-Message-State: AOAM530VN84p55dIAF5vy/374yXmI0IXVEx9Fg4LugJdvnXUGpLy6NL9
- 2PNSlFSwIhL5qHPuTRdb/ryljIYJGblR1iwdWs2zx4tKWI7jhRsNDN6VpSv85TQjHEsmMFa7ijj
- LdeUdC6pVR8/xi/BFiRm+CRE0weDyjoYN7fj6ICMzGZMWkq4DIel0hEvaWw7pYrPF5ig=
-X-Received: by 2002:a5d:4b83:: with SMTP id b3mr28484146wrt.76.1615296746687; 
- Tue, 09 Mar 2021 05:32:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxfJIu9Unhpg7xHqWHGLMxdCRcrLqxMvnsrDbhMvyxTPRXMMzuVRY1p4Pun4NTUB/aSWP8mEg==
-X-Received: by 2002:a5d:4b83:: with SMTP id b3mr28484115wrt.76.1615296746438; 
- Tue, 09 Mar 2021 05:32:26 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id m10sm4192296wmh.13.2021.03.09.05.32.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Mar 2021 05:32:26 -0800 (PST)
-Subject: Re: [PATCH] virtio-gpu: Adjust code space style
-To: lijiejun <a_lijiejun@163.com>, kraxel@redhat.com
-Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1615292050-108748-1-git-send-email-a_lijiejun@163.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <1808a180-d8ce-fb52-38c5-085ee9d9a26a@redhat.com>
-Date: Tue, 9 Mar 2021 14:32:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <a_lijiejun@163.com>)
+ id 1lJbhi-0002sc-2u
+ for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 07:43:14 -0500
+Received: from m13109.mail.163.com ([220.181.13.109]:30685)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <a_lijiejun@163.com>)
+ id 1lJbhb-0007T3-33
+ for qemu-trivial@nongnu.org; Tue, 09 Mar 2021 07:43:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=hIKQ9
+ XTWwF2qAn/ZIOOIhZj+bRhaaf3Wa5aEmlZNmxQ=; b=gGG5pSb9XAb7MKpsxpnZ7
+ 5cOkJIbLC7/69X2cDYW0l0lx/kP94q9Ucytnb7RD8G2W811+5zaskQcIRd/JWwNo
+ rO9XikdWpNL6+iDogzvW2McLG97TLOF1s47HusA7KBUzV3gyquR7RxEKAChOJFg+
+ UHCY59r6DEjIN3Pz60ROGo=
+Received: from a_lijiejun$163.com ( [121.201.121.142] ) by
+ ajax-webmail-wmsvr109 (Coremail) ; Tue, 9 Mar 2021 20:27:06 +0800 (CST)
+X-Originating-IP: [121.201.121.142]
+Date: Tue, 9 Mar 2021 20:27:06 +0800 (CST)
+From: =?GBK?B?wO691L+h?= <a_lijiejun@163.com>
+To: =?GBK?Q?Philippe_Mathieu-Daud=A8=A6?= <philmd@redhat.com>
+Cc: kraxel@redhat.com, "QEMU Trivial" <qemu-trivial@nongnu.org>, 
+ qemu-devel@nongnu.org
+Subject: Re:Re: [PATCH] virtio-gpu: Add spaces around operator
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.13 build 20210104(ab8c30b6)
+ Copyright (c) 2002-2021 www.mailtech.cn 163com
+In-Reply-To: <c7918046-a99e-663e-355c-0b9b1c4d817c@redhat.com>
+References: <1615275756-129881-1-git-send-email-a_lijiejun@163.com>
+ <c7918046-a99e-663e-355c-0b9b1c4d817c@redhat.com>
+X-CM-CTRLDATA: JHFKSmZvb3Rlcl9odG09MTk3ODo1Ng==
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_127007_152833634.1615292826979"
 MIME-Version: 1.0
-In-Reply-To: <1615292050-108748-1-git-send-email-a_lijiejun@163.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+Message-ID: <168ecce2.896f.17816f48563.Coremail.a_lijiejun@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: bcGowADXUZSbaUdgeJcDAQ--.58413W
+X-CM-SenderInfo: pdboxyplhm30i6rwjhhfrp/xtbBohtQFFaD-GNzWgAAse
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Received-SPF: pass client-ip=220.181.13.109; envelope-from=a_lijiejun@163.com;
+ helo=m13109.mail.163.com
+X-Spam_score_int: 36
+X-Spam_score: 3.6
+X-Spam_bar: +++
+X-Spam_report: (3.6 / 5.0 requ) BAYES_00=-1.9, CHARSET_FARAWAY_HEADER=3.2,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001, MIME_CHARSET_FARAWAY=2.45,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 09 Mar 2021 10:04:25 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,16 +63,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Mar 2021 13:32:40 -0000
+X-List-Received-Date: Tue, 09 Mar 2021 12:43:14 -0000
 
-On 3/9/21 1:14 PM, lijiejun wrote:
-> Fix code style. Operator needs align with eight spaces, and delete line space.
-> 
-> Signed-off-by: lijiejun <a_lijiejun@163.com>
-> ---
->  hw/display/virtio-gpu-3d.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+------=_Part_127007_152833634.1615292826979
+Content-Type: text/plain; charset=GBK
+Content-Transfer-Encoding: base64
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+CgoKCgoKCgoKCgoKCgoKCgoKCkF0IDIwMjEtMDMtMDkgMTc6MDg6MDgsICJQaGlsaXBwZSBNYXRo
+aWV1LURhdWSopiIgPHBoaWxtZEByZWRoYXQuY29tPiB3cm90ZToKPihDYydpbmcgcWVtdS10cml2
+aWFsQCkKPgo+T24gMy85LzIxIDg6NDIgQU0sIGxpamllanVuIHdyb3RlOgo+PiBGaXggY29kZSBz
+dHlsZS4gT3BlcmF0b3IgbmVlZHMgc3BhY2VzIGZvcmVuZCBzaWRlcywgYW5kIGRlbGV0ZSBsaW5l
+IHNwYWNlLgo+Cgo+ImZvcmVuZCI/CgoKZG9uZSB3aXRoOgpGaXggY29kZSBzdHlsZS4gT3BlcmF0
+b3IgbmVlZHMgYWxpZ24gd2l0aCBlaWdodCBzcGFjZXMsIGFuZCBkZWxldGUgbGluZSBzcGFjZS4K
+Cgo+Cj5PdGhlcndpc2U6Cj5SZXZpZXdlZC1ieTogUGhpbGlwcGUgTWF0aGlldS1EYXVkqKYgPHBo
+aWxtZEByZWRoYXQuY29tPgo+Cj4+IAo+PiBTaWduZWQtb2ZmLWJ5OiBsaWppZWp1biA8YV9saWpp
+ZWp1bkAxNjMuY29tPgo+PiAtLS0KPj4gIGh3L2Rpc3BsYXkvdmlydGlvLWdwdS0zZC5jIHwgMyAr
+LS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMoLSkKPj4g
+Cj4+IGRpZmYgLS1naXQgYS9ody9kaXNwbGF5L3ZpcnRpby1ncHUtM2QuYyBiL2h3L2Rpc3BsYXkv
+dmlydGlvLWdwdS0zZC5jCj4+IGluZGV4IDllYjQ4OTAuLmQ5ODk2NDggMTAwNjQ0Cj4+IC0tLSBh
+L2h3L2Rpc3BsYXkvdmlydGlvLWdwdS0zZC5jCj4+ICsrKyBiL2h3L2Rpc3BsYXkvdmlydGlvLWdw
+dS0zZC5jCj4+IEBAIC00MzgsNyArNDM4LDcgQEAgdm9pZCB2aXJ0aW9fZ3B1X3ZpcmdsX3Byb2Nl
+c3NfY21kKFZpcnRJT0dQVSAqZywKPj4gICAgICAgICAgYnJlYWs7Cj4+ICAgICAgY2FzZSBWSVJU
+SU9fR1BVX0NNRF9SRVNPVVJDRV9GTFVTSDoKPj4gICAgICAgICAgdmlyZ2xfY21kX3Jlc291cmNl
+X2ZsdXNoKGcsIGNtZCk7Cj4+IC0gICAgICAgYnJlYWs7Cj4+ICsgICAgICAgIGJyZWFrOwo+PiAg
+ICAgIGNhc2UgVklSVElPX0dQVV9DTURfUkVTT1VSQ0VfVU5SRUY6Cj4+ICAgICAgICAgIHZpcmds
+X2NtZF9yZXNvdXJjZV91bnJlZihnLCBjbWQpOwo+PiAgICAgICAgICBicmVhazsKPj4gQEAgLTQ1
+Niw3ICs0NTYsNiBAQCB2b2lkIHZpcnRpb19ncHVfdmlyZ2xfcHJvY2Vzc19jbWQoVmlydElPR1BV
+ICpnLAo+PiAgICAgIGNhc2UgVklSVElPX0dQVV9DTURfR0VUX0NBUFNFVDoKPj4gICAgICAgICAg
+dmlyZ2xfY21kX2dldF9jYXBzZXQoZywgY21kKTsKPj4gICAgICAgICAgYnJlYWs7Cj4+IC0KPj4g
+ICAgICBjYXNlIFZJUlRJT19HUFVfQ01EX0dFVF9ESVNQTEFZX0lORk86Cj4+ICAgICAgICAgIHZp
+cnRpb19ncHVfZ2V0X2Rpc3BsYXlfaW5mbyhnLCBjbWQpOwo+PiAgICAgICAgICBicmVhazsKPj4g
+Cg==
+------=_Part_127007_152833634.1615292826979
+Content-Type: text/html; charset=GBK
+Content-Transfer-Encoding: base64
+
+PGRpdiBzdHlsZT0ibGluZS1oZWlnaHQ6MS43O2NvbG9yOiMwMDAwMDA7Zm9udC1zaXplOjE0cHg7
+Zm9udC1mYW1pbHk6QXJpYWwiPjxwIHN0eWxlPSJtYXJnaW46IDA7Ij48YnI+PC9wPjxwIHN0eWxl
+PSJtYXJnaW46IDA7Ij48YnI+PC9wPjxwIHN0eWxlPSJtYXJnaW46IDA7Ij48YnI+PC9wPjxwIHN0
+eWxlPSJtYXJnaW46IDA7Ij48YnI+PC9wPjxwIHN0eWxlPSJtYXJnaW46IDA7Ij48YnI+PC9wPjxk
+aXYgc3R5bGU9InBvc2l0aW9uOnJlbGF0aXZlO3pvb206MSI+PC9kaXY+PGRpdiBpZD0iZGl2TmV0
+ZWFzZU1haWxDYXJkIj48L2Rpdj48cCBzdHlsZT0ibWFyZ2luOiAwOyI+PGJyPjwvcD48cHJlPjxi
+cj5BdCAyMDIxLTAzLTA5IDE3OjA4OjA4LCAiUGhpbGlwcGUgTWF0aGlldS1EYXVkqKYiICZsdDtw
+aGlsbWRAcmVkaGF0LmNvbSZndDsgd3JvdGU6CiZndDsoQ2MnaW5nIHFlbXUtdHJpdmlhbEApCiZn
+dDsKJmd0O09uIDMvOS8yMSA4OjQyIEFNLCBsaWppZWp1biB3cm90ZToKJmd0OyZndDsgRml4IGNv
+ZGUgc3R5bGUuIE9wZXJhdG9yIG5lZWRzIHNwYWNlcyBmb3JlbmQgc2lkZXMsIGFuZCBkZWxldGUg
+bGluZSBzcGFjZS4KJmd0Owo8ZGl2PiZndDsiZm9yZW5kIj88L2Rpdj48ZGl2Pjxicj48L2Rpdj48
+ZGl2PmRvbmUgd2l0aDo8L2Rpdj48ZGl2PkZpeCBjb2RlIHN0eWxlLiBPcGVyYXRvciBuZWVkcyBh
+bGlnbiB3aXRoIGVpZ2h0IHNwYWNlcywgYW5kIGRlbGV0ZSBsaW5lIHNwYWNlLjwvZGl2PjxkaXY+
+PGJyPjwvZGl2PiZndDsKJmd0O090aGVyd2lzZToKJmd0O1Jldmlld2VkLWJ5OiBQaGlsaXBwZSBN
+YXRoaWV1LURhdWSopiAmbHQ7cGhpbG1kQHJlZGhhdC5jb20mZ3Q7CiZndDsKJmd0OyZndDsgCiZn
+dDsmZ3Q7IFNpZ25lZC1vZmYtYnk6IGxpamllanVuICZsdDthX2xpamllanVuQDE2My5jb20mZ3Q7
+CiZndDsmZ3Q7IC0tLQomZ3Q7Jmd0OyAgaHcvZGlzcGxheS92aXJ0aW8tZ3B1LTNkLmMgfCAzICst
+LQomZ3Q7Jmd0OyAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAyIGRlbGV0aW9ucygt
+KQomZ3Q7Jmd0OyAKJmd0OyZndDsgZGlmZiAtLWdpdCBhL2h3L2Rpc3BsYXkvdmlydGlvLWdwdS0z
+ZC5jIGIvaHcvZGlzcGxheS92aXJ0aW8tZ3B1LTNkLmMKJmd0OyZndDsgaW5kZXggOWViNDg5MC4u
+ZDk4OTY0OCAxMDA2NDQKJmd0OyZndDsgLS0tIGEvaHcvZGlzcGxheS92aXJ0aW8tZ3B1LTNkLmMK
+Jmd0OyZndDsgKysrIGIvaHcvZGlzcGxheS92aXJ0aW8tZ3B1LTNkLmMKJmd0OyZndDsgQEAgLTQz
+OCw3ICs0MzgsNyBAQCB2b2lkIHZpcnRpb19ncHVfdmlyZ2xfcHJvY2Vzc19jbWQoVmlydElPR1BV
+ICpnLAomZ3Q7Jmd0OyAgICAgICAgICBicmVhazsKJmd0OyZndDsgICAgICBjYXNlIFZJUlRJT19H
+UFVfQ01EX1JFU09VUkNFX0ZMVVNIOgomZ3Q7Jmd0OyAgICAgICAgICB2aXJnbF9jbWRfcmVzb3Vy
+Y2VfZmx1c2goZywgY21kKTsKJmd0OyZndDsgLSAgICAgICBicmVhazsKJmd0OyZndDsgKyAgICAg
+ICAgYnJlYWs7CiZndDsmZ3Q7ICAgICAgY2FzZSBWSVJUSU9fR1BVX0NNRF9SRVNPVVJDRV9VTlJF
+RjoKJmd0OyZndDsgICAgICAgICAgdmlyZ2xfY21kX3Jlc291cmNlX3VucmVmKGcsIGNtZCk7CiZn
+dDsmZ3Q7ICAgICAgICAgIGJyZWFrOwomZ3Q7Jmd0OyBAQCAtNDU2LDcgKzQ1Niw2IEBAIHZvaWQg
+dmlydGlvX2dwdV92aXJnbF9wcm9jZXNzX2NtZChWaXJ0SU9HUFUgKmcsCiZndDsmZ3Q7ICAgICAg
+Y2FzZSBWSVJUSU9fR1BVX0NNRF9HRVRfQ0FQU0VUOgomZ3Q7Jmd0OyAgICAgICAgICB2aXJnbF9j
+bWRfZ2V0X2NhcHNldChnLCBjbWQpOwomZ3Q7Jmd0OyAgICAgICAgICBicmVhazsKJmd0OyZndDsg
+LQomZ3Q7Jmd0OyAgICAgIGNhc2UgVklSVElPX0dQVV9DTURfR0VUX0RJU1BMQVlfSU5GTzoKJmd0
+OyZndDsgICAgICAgICAgdmlydGlvX2dwdV9nZXRfZGlzcGxheV9pbmZvKGcsIGNtZCk7CiZndDsm
+Z3Q7ICAgICAgICAgIGJyZWFrOwomZ3Q7Jmd0OyAKPC9wcmU+PC9kaXY+PGJyPjxicj48c3BhbiB0
+aXRsZT0ibmV0ZWFzZWZvb3RlciI+PHA+Jm5ic3A7PC9wPjwvc3Bhbj4=
+------=_Part_127007_152833634.1615292826979--
 
 
