@@ -1,55 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6eH-0003UY-4W
+	id 1lK6eH-0003Vq-Kb
 	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33320)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6e7-0003CF-NB; Wed, 10 Mar 2021 16:45:37 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:44459)
+ id 1lK6e6-0003Bh-PR; Wed, 10 Mar 2021 16:45:35 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:54173)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6e1-0004TD-EL; Wed, 10 Mar 2021 16:45:35 -0500
+ id 1lK6dz-0004SD-EQ; Wed, 10 Mar 2021 16:45:31 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M8hEd-1lODEx2LJp-004gQL; Wed, 10 Mar 2021 22:45:22 +0100
+ id 1N6szR-1loDlw2LFP-018Mn1; Wed, 10 Mar 2021 22:45:19 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Otubo <otubo@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 14/22] seccomp: Replace the word 'blacklist'
-Date: Wed, 10 Mar 2021 22:44:56 +0100
-Message-Id: <20210310214504.1183162-15-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, lijiejun <a_lijiejun@163.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 11/22] virtio-gpu: Adjust code space style
+Date: Wed, 10 Mar 2021 22:44:53 +0100
+Message-Id: <20210310214504.1183162-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:IXJGS9EI8WgLXbmOsxlnRBvT2P56A591zZZzaFDtFfZ4Js2MLGv
- WzWPCFw2AGFDcLcbiaDLjE3IfQdpfJmyqKhB6hes0AE6IG6USb47cDTLXpIw0Sf3u18k2tT
- hExGl54Qubc/EWNpc8N5W1KHznXZMFNiXkEo1XJbuS56M8+CBY9JA3cedgeWgcBYE5ervya
- 2V1a1NC8meCn119zxswZA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZcseplGej8o=:GpP4imbXUj1CRRqpZ8ormm
- 9oGGYEleqbVK8vkBmmrYJ7O8DgTaVhdkO4m3pX8LcYY/glCCMK6hSPOXW+17J+uEMa+fL1+kT
- MxP0g03U4dc2hyUOWmH8OX1TnwsdbhNPBMgH8b5LCjqcdNEdwFuAn+HuXLZZviczG623uB4l/
- Pc2mq3RjLxkWB7xSFAactEbFoff1VMuMNmgr+6arUmwmjBkeEUH0l/Z+aOqLTW12lPPoJBFce
- xiNVUvwOHGfwwOHRZJyuxwt10L2bZNov7v3wd1GbJBLdF+41uZ5P7aRvxEywTcG2gpAr6YjkO
- fWmOoL5+ZRy+/JOUtrJDwk+mjHmO19dbXNvEly/ZP+hKwuioGh3lpYh0jnGsRKdcYSINUTGuD
- 71yJc/pY/O5OdZLdyEEsOcjDyIjX5pGFYoZjcHcFJPYuAL1hwuMRR6eddnSHuHMZiKktm7ihz
- Gi3Fgs/+3g==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:jtIHLvM0rzoNyJNruV+OaDD9miqzPrBvpDAa3meYeWE2QCyAvai
+ BE+edA7l65OCnYH9RrrMwBRkIQmmoafpio5SDLrxCKBt/kpX8Uwnhn04p+M/FDk0D3Kfxzt
+ RJGqODDW2a8p8Uwr5+rk2QzSvWt9SdHSPshjD+zRnvlhWxfZFDvpUIUGndz1jNXA7x3/hgW
+ ydRTEYS3EEGqr6+31Q5PA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:gwvaEEdYeQ4=:q2EY8HjIijEeL0/1I3nlu4
+ 6O9UxTmnfPLav4pcladrJ7cAtvS7eME7YKzAp0MvZvDdzmX5jGn7oTyTWfjN4/W4HICC1nHbJ
+ pk17eCSrKqz1TKQGQ6GTx2etiWBH6wHNBR+9WDLsg3+PluCNxA7UsD0T0a8MKVElOkQU80P+z
+ UVNovNfKCLPdx97INpYVVR+wrEJ29149JErz2JBEjG9RMM/qlGfCiqf2SzSJanwmc7eiml2eu
+ BF+dBmy+9YBN4/Zkr1qNMbfgraqf1zXMgyK0khG04IJY5VSqvVUOeG3hSelKbTqbe4voEbwD8
+ bz4XOQxzaCgsDDpbLzI1AsP6N3FuqXj7c4VklbeP7T+l7zklfxR06d/XoQTBn1vOLRYoxPpB6
+ Gf1PZJA+S+hXzcGcSKLAw8IkZoonL5f4QlRt3RrCzQcr42E48J2KGwRbuZ62o
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,67 +56,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Mar 2021 21:45:38 -0000
+X-List-Received-Date: Wed, 10 Mar 2021 21:45:39 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: lijiejun <a_lijiejun@163.com>
 
-Follow the inclusive terminology from the "Conscious Language in your
-Open Source Projects" guidelines [*] and replace the word "blacklist"
-appropriately.
+Fix code style. Operator needs align with eight spaces, and delete line space.
 
-[*] https://github.com/conscious-lang/conscious-lang-docs/blob/main/faq.md
-
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Acked-by: Eduardo Otubo <otubo@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20210303184644.1639691-4-philmd@redhat.com>
+Signed-off-by: lijiejun <a_lijiejun@163.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <1615292050-108748-1-git-send-email-a_lijiejun@163.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- softmmu/qemu-seccomp.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ hw/display/virtio-gpu-3d.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/softmmu/qemu-seccomp.c b/softmmu/qemu-seccomp.c
-index 377ef6937ca5..9c29d9cf007e 100644
---- a/softmmu/qemu-seccomp.c
-+++ b/softmmu/qemu-seccomp.c
-@@ -45,8 +45,8 @@ const struct scmp_arg_cmp sched_setscheduler_arg[] = {
-     { .arg = 1, .op = SCMP_CMP_NE, .datum_a = SCHED_IDLE }
- };
- 
--static const struct QemuSeccompSyscall blacklist[] = {
--    /* default set of syscalls to blacklist */
-+static const struct QemuSeccompSyscall denylist[] = {
-+    /* default set of syscalls that should get blocked */
-     { SCMP_SYS(reboot),                 QEMU_SECCOMP_SET_DEFAULT },
-     { SCMP_SYS(swapon),                 QEMU_SECCOMP_SET_DEFAULT },
-     { SCMP_SYS(swapoff),                QEMU_SECCOMP_SET_DEFAULT },
-@@ -175,18 +175,18 @@ static int seccomp_start(uint32_t seccomp_opts, Error **errp)
-         goto seccomp_return;
-     }
- 
--    for (i = 0; i < ARRAY_SIZE(blacklist); i++) {
-+    for (i = 0; i < ARRAY_SIZE(denylist); i++) {
-         uint32_t action;
--        if (!(seccomp_opts & blacklist[i].set)) {
-+        if (!(seccomp_opts & denylist[i].set)) {
-             continue;
-         }
- 
--        action = qemu_seccomp_get_action(blacklist[i].set);
--        rc = seccomp_rule_add_array(ctx, action, blacklist[i].num,
--                                    blacklist[i].narg, blacklist[i].arg_cmp);
-+        action = qemu_seccomp_get_action(denylist[i].set);
-+        rc = seccomp_rule_add_array(ctx, action, denylist[i].num,
-+                                    denylist[i].narg, denylist[i].arg_cmp);
-         if (rc < 0) {
-             error_setg_errno(errp, -rc,
--                             "failed to add seccomp blacklist rules");
-+                             "failed to add seccomp denylist rules");
-             goto seccomp_return;
-         }
-     }
+diff --git a/hw/display/virtio-gpu-3d.c b/hw/display/virtio-gpu-3d.c
+index 9eb489077b17..d98964858e13 100644
+--- a/hw/display/virtio-gpu-3d.c
++++ b/hw/display/virtio-gpu-3d.c
+@@ -438,7 +438,7 @@ void virtio_gpu_virgl_process_cmd(VirtIOGPU *g,
+         break;
+     case VIRTIO_GPU_CMD_RESOURCE_FLUSH:
+         virgl_cmd_resource_flush(g, cmd);
+-       break;
++        break;
+     case VIRTIO_GPU_CMD_RESOURCE_UNREF:
+         virgl_cmd_resource_unref(g, cmd);
+         break;
+@@ -456,7 +456,6 @@ void virtio_gpu_virgl_process_cmd(VirtIOGPU *g,
+     case VIRTIO_GPU_CMD_GET_CAPSET:
+         virgl_cmd_get_capset(g, cmd);
+         break;
+-
+     case VIRTIO_GPU_CMD_GET_DISPLAY_INFO:
+         virtio_gpu_get_display_info(g, cmd);
+         break;
 -- 
 2.29.2
 
