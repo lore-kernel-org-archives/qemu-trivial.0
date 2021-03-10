@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6eI-0003Y3-EN
+	id 1lK6eI-0003Yh-M3
 	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33322)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6e7-0003CG-OT; Wed, 10 Mar 2021 16:45:37 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:59493)
+ id 1lK6eB-0003FT-C0; Wed, 10 Mar 2021 16:45:39 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:37851)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6dy-0004Rz-V9; Wed, 10 Mar 2021 16:45:35 -0500
+ id 1lK6e3-0004TV-Qd; Wed, 10 Mar 2021 16:45:39 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MNtny-1l4kY424Do-00OGfo; Wed, 10 Mar 2021 22:45:20 +0100
+ id 1Mr8SG-1m8Eh01aLO-00oEZi; Wed, 10 Mar 2021 22:45:24 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Thomas Huth <thuth@redhat.com>
-Subject: [PULL 12/22] ui: Replace the word 'whitelist'
-Date: Wed, 10 Mar 2021 22:44:54 +0100
-Message-Id: <20210310214504.1183162-13-laurent@vivier.eu>
+Subject: [PULL 16/22] tests/fp/fp-test: Replace the word 'blacklist'
+Date: Wed, 10 Mar 2021 22:44:58 +0100
+Message-Id: <20210310214504.1183162-17-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:L/vv0OoqUw5KlydYVcs6xppIXMa53CcIZ9qKVc6zKeZ1pL5tUKH
- kSqRDJ95csz1HqlcIhNOoCo+53FmkdQfzIf/yjB0YyrI8q8Oelglfn0KisTb5xFzDk46YvF
- zukcImXjfbMtXJwpAyjcUKHEgVGq7Zq3tmtA7PoDpp1kefmOYnScfi0Hegl33vqZZq+PaGQ
- TA7lm9crJ0bYUmqwA6VaQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9MikpEA61eY=:+pngVyoQht5OvdesxKOAJW
- K6s6un7LxbQgP0RnFmYZZm+H0X3wHPaHS/reELcZILfkeNPhJ6sMzkbc8vkr+tdGhuIDvqiJZ
- FP5xCJbJkYZFn+rrwThv859tYkMbn0FVaF4PP/tF2b4chRbprtJdGT0eSdiyfs41FJN3cy8iN
- dQEHkiml2bgMFxz3J2CH5uLOsGHRdO0ZKZG//5XvzJK4gv10+W4rlunwPiKy7Kmqt1CBcvQYo
- BvY1KncT38v9tVB4UVJ9rAOeft5gYjSZKQDK6XYOKwaZ6UaXPZq7WBF88FInTJ7o+8uW+h3wr
- QnHhuL4KLbulEo0zPkdGlD3FXvk2j5/6CbLObtpFZ5AUiEkipS4YBAUYiLaC2Tt8SAQ0G4eMx
- 4cAkWqN8qJHa08dOszmkXiy5uYpDp5E9JZMcmDTYaTd7K2noS+SsifMjOpj66hOhOBndi6LuS
- a0O7kdI9qg==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:A+Q/w2Ck9Mm8oiHHM5SogxE2dKCRGjoNHmFPTCi8o35kVlzcMjs
+ FM7K6a/sIsIOSniSWyAn2vpw+ECphvI3BmNQy3l9VfQMEm6mce6oIVQsbn71jWK1SOzVCqS
+ p7Z+BcCqHQfruBcmYPFbn3gs7bXwX96k2GogX4vLzKGlPmV8T6AQpIkt1bdp2zocnvLOvNT
+ sF3sz+eeHmHbCvu+KthGg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7Q5m8vQbm1E=:toMlx6VYrvo7s6QFGTIl5u
+ Zq8rZy+VA9eZ+OyGYQK8G7JGvgOsOtqGCXnMQJpM2MV3sPlKnvwbgIA37Ac45OfHpe0tiHt+s
+ YkFY0N9uPP8UzBrT71bjIpifWTqQc4cOn+F5HCpoEx/Oj5WTdk6cBWpKwOKU06073uymgfTvE
+ 3VR3iMx932XjeyAIqKOtrTVt5poTRoPNzPSQ4Ly1QkptFKztDrr5vRyCAivvdWO/Eh1cv6g5n
+ g+VNEdb7VYDqgXlrDZ7DBWtTB8Arhl0Aal6D0FOVEO5P+FeAI/McEulaghsAkg+GWlPwQGHYf
+ Mwi6r+cVVERrqIJ8ojTlgPkWKeaGThKDGAEDhEKHm++q5bRwsUAEuP8jxrJcPtjfWlzGpn48f
+ V5SW6OilQfvyevmqaqO5T8O2nI/85Pw60Huf+J6Fx42mjYAaPO8R6G5P/eAGdKiHFGq0oUd19
+ PLYXguWGPg==
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,62 +61,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Mar 2021 21:45:38 -0000
+X-List-Received-Date: Wed, 10 Mar 2021 21:45:39 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 Follow the inclusive terminology from the "Conscious Language in your
-Open Source Projects" guidelines [*] and replace the words "whitelist"
+Open Source Projects" guidelines [*] and replace the word "blacklist"
 appropriately.
 
 [*] https://github.com/conscious-lang/conscious-lang-docs/blob/main/faq.md
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20210303184644.1639691-2-philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20210303184644.1639691-6-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- ui/console.c       | 2 +-
- ui/vnc-auth-sasl.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ tests/fp/fp-test.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/ui/console.c b/ui/console.c
-index 171a7bf14b94..c2fdf975b6b3 100644
---- a/ui/console.c
-+++ b/ui/console.c
-@@ -1724,7 +1724,7 @@ bool dpy_gfx_check_format(QemuConsole *con,
-                 return false;
-             }
-         } else {
--            /* default is to whitelist native 32 bpp only */
-+            /* default is to allow native 32 bpp only */
-             if (format != qemu_default_pixman_format(32, true)) {
-                 return false;
-             }
-diff --git a/ui/vnc-auth-sasl.c b/ui/vnc-auth-sasl.c
-index f67111a3662a..df7dc08e9fc5 100644
---- a/ui/vnc-auth-sasl.c
-+++ b/ui/vnc-auth-sasl.c
-@@ -288,7 +288,7 @@ static int protocol_client_auth_sasl_step(VncState *vs, uint8_t *data, size_t le
-             goto authreject;
-         }
+diff --git a/tests/fp/fp-test.c b/tests/fp/fp-test.c
+index 06ffebd6db17..5a4cad8c8b23 100644
+--- a/tests/fp/fp-test.c
++++ b/tests/fp/fp-test.c
+@@ -123,7 +123,7 @@ static void not_implemented(void)
+     fprintf(stderr, "Not implemented.\n");
+ }
  
--        /* Check username whitelist ACL */
-+        /* Check the username access control list */
-         if (vnc_auth_sasl_check_access(vs) < 0) {
-             goto authreject;
+-static bool blacklisted(unsigned op, int rmode)
++static bool is_allowed(unsigned op, int rmode)
+ {
+     /* odd has not been implemented for any 80-bit ops */
+     if (rmode == softfloat_round_odd) {
+@@ -161,10 +161,10 @@ static bool blacklisted(unsigned op, int rmode)
+         case F32_TO_EXTF80:
+         case F64_TO_EXTF80:
+         case F128_TO_EXTF80:
+-            return true;
++            return false;
          }
-@@ -409,7 +409,7 @@ static int protocol_client_auth_sasl_start(VncState *vs, uint8_t *data, size_t l
-             goto authreject;
-         }
+     }
+-    return false;
++    return true;
+ }
  
--        /* Check username whitelist ACL */
-+        /* Check the username access control list */
-         if (vnc_auth_sasl_check_access(vs) < 0) {
-             goto authreject;
-         }
+ static void do_testfloat(int op, int rmode, bool exact)
+@@ -194,7 +194,7 @@ static void do_testfloat(int op, int rmode, bool exact)
+     verCases_writeFunctionName(stderr);
+     fputs("\n", stderr);
+ 
+-    if (blacklisted(op, rmode)) {
++    if (!is_allowed(op, rmode)) {
+         not_implemented();
+         return;
+     }
 -- 
 2.29.2
 
