@@ -1,54 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6eK-0003eW-N8
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33348)
+	id 1lK6eM-0003j3-A2
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33376)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6eA-0003Dt-TM; Wed, 10 Mar 2021 16:45:38 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:55577)
+ id 1lK6eC-0003HS-1w; Wed, 10 Mar 2021 16:45:40 -0500
+Received: from mout.kundenserver.de ([212.227.17.24]:49075)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6dz-0004So-GE; Wed, 10 Mar 2021 16:45:38 -0500
+ id 1lK6e5-0004U9-F2; Wed, 10 Mar 2021 16:45:39 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MEVqu-1lVb5f2Eji-00FzDW; Wed, 10 Mar 2021 22:45:21 +0100
+ id 1MvJjz-1lbdOZ3OYz-00rIq1; Wed, 10 Mar 2021 22:45:27 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 13/22] scripts/tracetool: Replace the word 'whitelist'
-Date: Wed, 10 Mar 2021 22:44:55 +0100
-Message-Id: <20210310214504.1183162-14-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PULL 19/22] hw/lm32/Kconfig: Rename CONFIG_LM32 ->
+ CONFIG_LM32_DEVICES
+Date: Wed, 10 Mar 2021 22:45:01 +0100
+Message-Id: <20210310214504.1183162-20-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Qpitq5CgkFUqaFtQMka6uBMZKo6QhrEm9G9ozTr/r5gz+Nkocrw
- z3PnTzGgFnVi/SIOPhVMRS+gV3DxSuO6TAdO+Kw05k5mb/edCkkjlRcKEB5gqSRJN2Vgp4o
- BFOgpdt/0vkL64teTtQIS4lS9Huxq6/JIOApg/GxCTYV/M3AufKi+zGG0eXt0Pplbrd2MNa
- maUKZzAN9xtg1U2fcDf1w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:oCZP1Vi+dZ8=:IWS4c70WFN2MeUGXx6Ov3j
- wcTqMHuH7xzvVyvzknJBivnhD4/ZVz/lnkGX9txfFD1SiE8lKv7AhcADNi1RDnXirzGjpVKq1
- JcZFK7SLDAooPk2AeWS+7fLk1ujPverSL66H1tmHt1t3fYtmUm0fZhX64xRn7e0CyuKs+RBUl
- KKeWV40ZOz0TDJauqc2gkfQo42PtNf9LeW1T2T5qo3o+9XaMBJ41jVLMnKP/MWBC17ISrTSLY
- 4G5dNou75xteIWRDw0C8l2RneUTITJWvVeS5xi7NItSq3rbvA5W+gopDnF1I//aXjhjfVT2F3
- tfd2M6I01AGbPEF1531G99W1FAxAGPYW9xorTRNHp/ZB91kCx+HgAPF+Tcy76wanbKz9KWMYo
- inOv/5KzemTdREHzZO1ezYcI+JkOC/uur76Qc2EJnI/TbkVYtXZG/E0+p8Yl27JWVFcnIHsaH
- GDM1bwv1cQ==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:a9WCaY+0nvu/siBpDQeu07bMY23HpZ82qMlhDL0DD15lHCKf26Y
+ Ycxgs7YNoAck2yRBceJSlSWLynUrwfrMbZI2t+00bka1WrG/P368kEYBvnrWQ2xobKO/GvE
+ pJuqmglK0Xy3YVPqOpCCh9k0mQTEjcnWxmI0lqO1YMADbHfBYxaataVBtEP2yIcQ6hjhELM
+ uuFOc4X+2SnSqNZMZUp3g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fHakgi4e9bI=:nlkfbfy90gpCYDMgQnHDUl
+ cpI0hFdbcXwiA2G951mP9JA1X09Bm0sT3KTVuonI2TtLsK3t+drCozHLBeOst5faesF2CXmMA
+ IVxB6FcvADbDOiSz71cvz5oY0uS6RkfoUYzTLkpH4SNGchsAQhY9cKVa6ZMRLZtaXRpzObxTd
+ 0LKYppgMPJ6M5DNM+XY9vwpKxpbFFkgj44/zELViqEs4WthAqsl8HrRMHNoj8jq1xrI1E7vAt
+ vklxdLufM+zktPiIPE3WdDWzHFNMDhcY+tN54XXBfMAG91z2oGCWQXltjEpfbtYwzsr/MbhzU
+ +WP57N+/OdXzaPTVATfe8iBcBrU9wm8X96bi25agglpv9G33sbwbRP7fzpA1aZvyUdZPTlj11
+ 8os/phRE0OHfQ2mnJj/QllR+bOfKv1/UfzmirzHYsALQDLz1PEhV48eoCGxi7bxRnN10ft1bR
+ a3zQMmeiDA==
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,41 +60,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Mar 2021 21:45:39 -0000
+X-List-Received-Date: Wed, 10 Mar 2021 21:45:40 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Follow the inclusive terminology from the "Conscious Language in your
-Open Source Projects" guidelines [*] and replace the words "whitelist"
-appropriately.
+We want to be able to use the 'LM32' config for architecture
+specific features. As CONFIG_LM32 is only used to select
+peripherals, rename it CONFIG_LM32_DEVICES.
 
-[*] https://github.com/conscious-lang/conscious-lang-docs/blob/main/faq.md
-
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <20210303184644.1639691-3-philmd@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210221225626.2589247-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- scripts/tracetool/__init__.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/char/meson.build  | 4 ++--
+ hw/intc/meson.build  | 2 +-
+ hw/lm32/Kconfig      | 4 ++--
+ hw/timer/meson.build | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/scripts/tracetool/__init__.py b/scripts/tracetool/__init__.py
-index 96b1cd69a52c..5bc94d95cfc7 100644
---- a/scripts/tracetool/__init__.py
-+++ b/scripts/tracetool/__init__.py
-@@ -100,7 +100,7 @@ def validate_type(name):
-         if bit == "const":
-             continue
-         if bit not in ALLOWED_TYPES:
--            raise ValueError("Argument type '%s' is not in whitelist. "
-+            raise ValueError("Argument type '%s' is not allowed. "
-                              "Only standard C types and fixed size integer "
-                              "types should be used. struct, union, and "
-                              "other complex pointer types should be "
+diff --git a/hw/char/meson.build b/hw/char/meson.build
+index afe9a0af88c1..7ba38dbd965f 100644
+--- a/hw/char/meson.build
++++ b/hw/char/meson.build
+@@ -8,8 +8,8 @@ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_serial.c'))
+ softmmu_ss.add(when: 'CONFIG_IPACK', if_true: files('ipoctal232.c'))
+ softmmu_ss.add(when: 'CONFIG_ISA_BUS', if_true: files('parallel-isa.c'))
+ softmmu_ss.add(when: 'CONFIG_ISA_DEBUG', if_true: files('debugcon.c'))
+-softmmu_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_juart.c'))
+-softmmu_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_uart.c'))
++softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_juart.c'))
++softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_uart.c'))
+ softmmu_ss.add(when: 'CONFIG_MILKYMIST', if_true: files('milkymist-uart.c'))
+ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_uart.c'))
+ softmmu_ss.add(when: 'CONFIG_PARALLEL', if_true: files('parallel.c'))
+diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+index b3d9345a0d2e..8df3656419e3 100644
+--- a/hw/intc/meson.build
++++ b/hw/intc/meson.build
+@@ -14,7 +14,7 @@ softmmu_ss.add(when: 'CONFIG_HEATHROW_PIC', if_true: files('heathrow_pic.c'))
+ softmmu_ss.add(when: 'CONFIG_I8259', if_true: files('i8259_common.c', 'i8259.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_avic.c', 'imx_gpcv2.c'))
+ softmmu_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic_common.c'))
+-softmmu_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_pic.c'))
++softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_pic.c'))
+ softmmu_ss.add(when: 'CONFIG_OPENPIC', if_true: files('openpic.c'))
+ softmmu_ss.add(when: 'CONFIG_PL190', if_true: files('pl190.c'))
+ softmmu_ss.add(when: 'CONFIG_PUV3', if_true: files('puv3_intc.c'))
+diff --git a/hw/lm32/Kconfig b/hw/lm32/Kconfig
+index 20c36edc402c..518c84ed5084 100644
+--- a/hw/lm32/Kconfig
++++ b/hw/lm32/Kconfig
+@@ -1,4 +1,4 @@
+-config LM32
++config LM32_DEVICES
+     bool
+     select PTIMER
+ 
+@@ -14,5 +14,5 @@ config MILKYMIST
+ 
+ config LM32_EVR
+     bool
+-    select LM32
++    select LM32_DEVICES
+     select PFLASH_CFI02
+diff --git a/hw/timer/meson.build b/hw/timer/meson.build
+index 26c2701fd78f..a2372629f001 100644
+--- a/hw/timer/meson.build
++++ b/hw/timer/meson.build
+@@ -19,7 +19,7 @@ softmmu_ss.add(when: 'CONFIG_HPET', if_true: files('hpet.c'))
+ softmmu_ss.add(when: 'CONFIG_I8254', if_true: files('i8254_common.c', 'i8254.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_epit.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpt.c'))
+-softmmu_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_timer.c'))
++softmmu_ss.add(when: 'CONFIG_LM32_DEVICES', if_true: files('lm32_timer.c'))
+ softmmu_ss.add(when: 'CONFIG_MILKYMIST', if_true: files('milkymist-sysctl.c'))
+ softmmu_ss.add(when: 'CONFIG_MIPS_CPS', if_true: files('mips_gictimer.c'))
+ softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('mss-timer.c'))
 -- 
 2.29.2
 
