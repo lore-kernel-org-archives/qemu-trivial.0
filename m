@@ -1,51 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6eG-0003TU-OR
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33304)
+	id 1lK6eH-0003UY-4W
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6e6-0003Bp-Vj; Wed, 10 Mar 2021 16:45:35 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:59397)
+ id 1lK6e7-0003CF-NB; Wed, 10 Mar 2021 16:45:37 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:44459)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6dz-0004Ss-GH; Wed, 10 Mar 2021 16:45:34 -0500
+ id 1lK6e1-0004TD-EL; Wed, 10 Mar 2021 16:45:35 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MpDa5-1m5ket1eTX-00qhPj; Wed, 10 Mar 2021 22:45:12 +0100
+ id 1M8hEd-1lODEx2LJp-004gQL; Wed, 10 Mar 2021 22:45:22 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Taylor Simpson <tsimpson@quicinc.com>
-Subject: [PULL 04/22] target/hexagon/gen_tcg_funcs: Fix a typo
-Date: Wed, 10 Mar 2021 22:44:46 +0100
-Message-Id: <20210310214504.1183162-5-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Otubo <otubo@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 14/22] seccomp: Replace the word 'blacklist'
+Date: Wed, 10 Mar 2021 22:44:56 +0100
+Message-Id: <20210310214504.1183162-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1HzP3T3i5x3/c3U0QIy+yUdr7gwAjaZFljgqVcu9j1yJDZqXcfS
- tL899QeJcbu4IqFP/8Hyhh3z1mcOYc70xagT4BaMDqt3AFpSkDAVRdJuRPQKkRpJ1c5b8yL
- rVHGY+3Zl0ByfUlnpZgc+4ASitvzW1QzfqPMbi2iKsBJPlJPXEkk19iIByoZVBZDoTW/fsn
- YcgU8xuS+W71wVjqIdCNg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:eiFzHUNU1rk=:s2IUdHCKg3+qW6nToRsJ2C
- eI+5epYVxfoeI2meTcF5X1RQRXzwebfB4FwTGNXsvf7eXvK5tBgFQSVYPYKiGt4H73jDVo5ud
- CnpiUdqTL+aC0T9Pz7Cd94Dk5tmtzlzYpa9QyDzSobhdwxvwIgT5DHjzLYSnEJuITx6E3PJ1b
- HuKkSASMLGh+RizUmHAYU79JczqOe2qv/eZI8uxYhLr/idc4Pj2+3GdmumaqN+dNO4Z8ncnN6
- VgJAQexnn0MH2JGsQtsz8n0Gkmxd0lb4e2MwdhvDcSQRvRm1POksFvrwPZGQk1EKK5D99b8W0
- 4B5ZT8nRZ8l+i08Uzrlqis1O4js9NLzTQg2lZeFsoUzGN3yWM/HEEUyR8dtxbXtP2IfplCILx
- f931dLEBTPiznB6MEMptKE2m0WrPQjX0h0LgnmxD272Z7O4uACnMi0z3ueA7DGMxA46Qmqino
- 6Nc+BIHf4A==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:IXJGS9EI8WgLXbmOsxlnRBvT2P56A591zZZzaFDtFfZ4Js2MLGv
+ WzWPCFw2AGFDcLcbiaDLjE3IfQdpfJmyqKhB6hes0AE6IG6USb47cDTLXpIw0Sf3u18k2tT
+ hExGl54Qubc/EWNpc8N5W1KHznXZMFNiXkEo1XJbuS56M8+CBY9JA3cedgeWgcBYE5ervya
+ 2V1a1NC8meCn119zxswZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZcseplGej8o=:GpP4imbXUj1CRRqpZ8ormm
+ 9oGGYEleqbVK8vkBmmrYJ7O8DgTaVhdkO4m3pX8LcYY/glCCMK6hSPOXW+17J+uEMa+fL1+kT
+ MxP0g03U4dc2hyUOWmH8OX1TnwsdbhNPBMgH8b5LCjqcdNEdwFuAn+HuXLZZviczG623uB4l/
+ Pc2mq3RjLxkWB7xSFAactEbFoff1VMuMNmgr+6arUmwmjBkeEUH0l/Z+aOqLTW12lPPoJBFce
+ xiNVUvwOHGfwwOHRZJyuxwt10L2bZNov7v3wd1GbJBLdF+41uZ5P7aRvxEywTcG2gpAr6YjkO
+ fWmOoL5+ZRy+/JOUtrJDwk+mjHmO19dbXNvEly/ZP+hKwuioGh3lpYh0jnGsRKdcYSINUTGuD
+ 71yJc/pY/O5OdZLdyEEsOcjDyIjX5pGFYoZjcHcFJPYuAL1hwuMRR6eddnSHuHMZiKktm7ihz
+ Gi3Fgs/+3g==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,79 +64,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 10 Mar 2021 21:45:38 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Taylor Simpson <tsimpson@quicinc.com>
-Message-Id: <20210225181507.3624509-1-f4bug@amsat.org>
+Follow the inclusive terminology from the "Conscious Language in your
+Open Source Projects" guidelines [*] and replace the word "blacklist"
+appropriately.
+
+[*] https://github.com/conscious-lang/conscious-lang-docs/blob/main/faq.md
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Acked-by: Eduardo Otubo <otubo@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20210303184644.1639691-4-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/hexagon/gen_tcg_funcs.py | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ softmmu/qemu-seccomp.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/target/hexagon/gen_tcg_funcs.py b/target/hexagon/gen_tcg_funcs.py
-index fe4d8e57303a..db9f663a778e 100755
---- a/target/hexagon/gen_tcg_funcs.py
-+++ b/target/hexagon/gen_tcg_funcs.py
-@@ -35,7 +35,7 @@ def gen_decl_ea_tcg(f, tag):
- def gen_free_ea_tcg(f):
-     f.write("    tcg_temp_free(EA);\n")
+diff --git a/softmmu/qemu-seccomp.c b/softmmu/qemu-seccomp.c
+index 377ef6937ca5..9c29d9cf007e 100644
+--- a/softmmu/qemu-seccomp.c
++++ b/softmmu/qemu-seccomp.c
+@@ -45,8 +45,8 @@ const struct scmp_arg_cmp sched_setscheduler_arg[] = {
+     { .arg = 1, .op = SCMP_CMP_NE, .datum_a = SCHED_IDLE }
+ };
  
--def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
-+def genptr_decl_pair_writable(f, tag, regtype, regid, regno):
-     regN="%s%sN" % (regtype,regid)
-     f.write("    TCGv_i64 %s%sV = tcg_temp_local_new_i64();\n" % \
-         (regtype, regid))
-@@ -54,7 +54,7 @@ def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
-                              (regN, regN))
-         f.write("    }\n")
+-static const struct QemuSeccompSyscall blacklist[] = {
+-    /* default set of syscalls to blacklist */
++static const struct QemuSeccompSyscall denylist[] = {
++    /* default set of syscalls that should get blocked */
+     { SCMP_SYS(reboot),                 QEMU_SECCOMP_SET_DEFAULT },
+     { SCMP_SYS(swapon),                 QEMU_SECCOMP_SET_DEFAULT },
+     { SCMP_SYS(swapoff),                QEMU_SECCOMP_SET_DEFAULT },
+@@ -175,18 +175,18 @@ static int seccomp_start(uint32_t seccomp_opts, Error **errp)
+         goto seccomp_return;
+     }
  
--def genptr_decl_writeble(f, tag, regtype, regid, regno):
-+def genptr_decl_writable(f, tag, regtype, regid, regno):
-     regN="%s%sN" % (regtype,regid)
-     f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
-         (regtype, regid))
-@@ -78,12 +78,12 @@ def genptr_decl(f, tag, regtype, regid, regno):
-             f.write("    const int %s = insn->regno[%d];\n" % \
-                 (regN, regno))
-         elif (regid in {"dd", "ee", "xx", "yy"}):
--            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
-         elif (regid in {"s", "t", "u", "v"}):
-             f.write("    TCGv %s%sV = hex_gpr[insn->regno[%d]];\n" % \
-                 (regtype, regid, regno))
-         elif (regid in {"d", "e", "x", "y"}):
--            genptr_decl_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_writable(f, tag, regtype, regid, regno)
-         else:
-             print("Bad register parse: ", regtype, regid)
-     elif (regtype == "P"):
-@@ -91,7 +91,7 @@ def genptr_decl(f, tag, regtype, regid, regno):
-             f.write("    TCGv %s%sV = hex_pred[insn->regno[%d]];\n" % \
-                 (regtype, regid, regno))
-         elif (regid in {"d", "e", "x"}):
--            genptr_decl_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_writable(f, tag, regtype, regid, regno)
-         else:
-             print("Bad register parse: ", regtype, regid)
-     elif (regtype == "C"):
-@@ -101,14 +101,14 @@ def genptr_decl(f, tag, regtype, regid, regno):
-             f.write("    const int %s = insn->regno[%d] + HEX_REG_SA0;\n" % \
-                 (regN, regno))
-         elif (regid == "dd"):
--            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
-         elif (regid == "s"):
-             f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
-                 (regtype, regid))
-             f.write("    const int %s%sN = insn->regno[%d] + HEX_REG_SA0;\n" % \
-                 (regtype, regid, regno))
-         elif (regid == "d"):
--            genptr_decl_writeble(f, tag, regtype, regid, regno)
-+            genptr_decl_writable(f, tag, regtype, regid, regno)
-         else:
-             print("Bad register parse: ", regtype, regid)
-     elif (regtype == "M"):
+-    for (i = 0; i < ARRAY_SIZE(blacklist); i++) {
++    for (i = 0; i < ARRAY_SIZE(denylist); i++) {
+         uint32_t action;
+-        if (!(seccomp_opts & blacklist[i].set)) {
++        if (!(seccomp_opts & denylist[i].set)) {
+             continue;
+         }
+ 
+-        action = qemu_seccomp_get_action(blacklist[i].set);
+-        rc = seccomp_rule_add_array(ctx, action, blacklist[i].num,
+-                                    blacklist[i].narg, blacklist[i].arg_cmp);
++        action = qemu_seccomp_get_action(denylist[i].set);
++        rc = seccomp_rule_add_array(ctx, action, denylist[i].num,
++                                    denylist[i].narg, denylist[i].arg_cmp);
+         if (rc < 0) {
+             error_setg_errno(errp, -rc,
+-                             "failed to add seccomp blacklist rules");
++                             "failed to add seccomp denylist rules");
+             goto seccomp_return;
+         }
+     }
 -- 
 2.29.2
 
