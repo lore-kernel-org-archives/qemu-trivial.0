@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6e7-0003Bu-BY
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33170)
+	id 1lK6eA-0003Cn-Hv
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6du-00035L-Iu; Wed, 10 Mar 2021 16:45:22 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:55883)
+ id 1lK6dv-00036D-As; Wed, 10 Mar 2021 16:45:23 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:34755)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6dp-0004L7-Uv; Wed, 10 Mar 2021 16:45:22 -0500
+ id 1lK6ds-0004M3-Mj; Wed, 10 Mar 2021 16:45:23 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MauFB-1lrVaG22yB-00cNYB; Wed, 10 Mar 2021 22:45:11 +0100
+ id 1MxmJs-1lfjSm08eE-00zG7S; Wed, 10 Mar 2021 22:45:14 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>, David Edmondson <dme@dme.org>
-Subject: [PULL 03/22] hw/elf_ops: Fix a typo
-Date: Wed, 10 Mar 2021 22:44:45 +0100
-Message-Id: <20210310214504.1183162-4-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>
+Subject: [PULL 06/22] vhost_user_gpu: Drop dead check for g_malloc() failure
+Date: Wed, 10 Mar 2021 22:44:48 +0100
+Message-Id: <20210310214504.1183162-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:oZYpL/O2epG42axZBYuhHFuNIxfmOJPDnxM/QNmRkTpraJwK8qr
- 4HNnR7AyYp6YpMWLTLJtRhLxMEJkmf11pKl/SnwlKinkVp8L20oAuG1SFwDZlu3391SZTcG
- G8bHVTm19mRGD+VvnB+oC8UF8i4BxgNvPYJi9Z9+DeEi2W+97gsfkpF/1009la8BJr5O1W/
- gLUaQ11OZBuyugtqRDQRQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:uCoz5OnCMjE=:2v9kWtJq0acGW8NtqKvRrh
- bEoMTC2UnSwVfRSpF/OJdCnUhGgXyP29V8tItiygA4z4xOVN8byzVv4t1fLA1tiUK9Xe4MO4G
- 4HkbtSMMOM5cMe3h3gL6lQFZDuO3euw+z1ahRG+s1wPl7WS11TrTZzeIWP8zGaFTPtuKSELbx
- u6UraQ3k+XzsGdTBPOnjLLGOVFXev86EmatQCsDpxYrfp7DTmmVofjdtkiG8UTj1mMOwug0WN
- NyfpA2rQ6p4OJZE3uvfsnJkaVWwge8NcC4Jcpo+XQleBWyBmfMmZ0i/8W9ajPh5ad7g/Um2nc
- UgmSwZCMr37EmRrF/bctGxLTU6/pazKKd/WhsRJwzpRJLF+jHhxLS5h9ap1pznDXbgOpxZmbX
- jX+f1ZYT+WMuAuyfTnD7QPzLJsJl+/iiI+SUobP7E2k8kgV3C3Il/vhCjf7V3lZqiT2CTtqJ9
- U1IzcH9G/w==
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:joF+7Op07AnlQ2ARWcILEwHspJJyNNJB14om5MzuapInB4JfnvA
+ k7FKzLTGb8yzljyN5Ob7TmUS3e3gH5XCqvt9vIxw43NbSHxh19XHi5YI72F2wPSIYW8R69K
+ jvV0bGiamwHkINVOfnCaZzjG0cfq90eQ36WsGVFt521XE0EZKvC7xHBin4JdeMTzM8w+/3s
+ t3a138Zs4GA2ltF4Pojzg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zjYCjs1DAWA=:sAR3mfqVmCh5R40lAGMHE4
+ ImGemp3jPig0XKObzYPh4cjoyKPxtEmyxyJDrIY8G/xTE10or4WR5kKrO7a/8tSeISHFDgn1f
+ d7N/G03sBCVs3UkhoKBjgLanMBdDjx3aib7mM89dwpTwsuFajAAMsV1w5r0xjzdUYR5TeSBro
+ pvpYYoGINfsnK3ocQbNI5cflqtFOkJQTJwgYnFHOMFmoHhLloWtqWTlv/zdzBu3xnr8myKn+/
+ KUlvPMlYRyx/kEZuJJ3j/znqtUCzIu1YPYaEH2qi46p3SYyxsEGaIBk7+yjgM5z5ne6e+1B/M
+ nKF7dxVMIM44nHvFhDcKe5VMydEx+QrN/8m8MbY8ncri+YaRaJYfFU4bpAW3eVciTT/QSS3+I
+ 8/+62FIS8DEtVBhQi+izbeDZywnzgGNlwEop5wOicevEJiBELm8+fAIS2TOBIeTXGLzsFPn7w
+ flaXwg73Sg==
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,32 +60,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 10 Mar 2021 21:45:23 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Markus Armbruster <armbru@redhat.com>
 
-g_mapped_file_new_from_fd()'s parameter is named 'writable'.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Reviewed-by: David Edmondson <dme@dme.org>
-Message-Id: <20210225181344.3623720-1-philmd@redhat.com>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20210126124240.2081959-3-armbru@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/hw/elf_ops.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/display/vhost-user-gpu.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-index 78409ab34a9f..6ee458e7bc3c 100644
---- a/include/hw/elf_ops.h
-+++ b/include/hw/elf_ops.h
-@@ -417,7 +417,7 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+diff --git a/hw/display/vhost-user-gpu.c b/hw/display/vhost-user-gpu.c
+index a01f9315e199..6cdaa1c73b9b 100644
+--- a/hw/display/vhost-user-gpu.c
++++ b/hw/display/vhost-user-gpu.c
+@@ -325,7 +325,6 @@ vhost_user_gpu_chr_read(void *opaque)
+     }
  
-     /*
-      * Since we want to be able to modify the mapped buffer, we set the
--     * 'writeble' parameter to 'true'. Modifications to the buffer are not
-+     * 'writable' parameter to 'true'. Modifications to the buffer are not
-      * written back to the file.
-      */
-     mapped_file = g_mapped_file_new_from_fd(fd, true, NULL);
+     msg = g_malloc(VHOST_USER_GPU_HDR_SIZE + size);
+-    g_return_if_fail(msg != NULL);
+ 
+     r = qemu_chr_fe_read_all(&g->vhost_chr,
+                              (uint8_t *)&msg->payload, size);
 -- 
 2.29.2
 
