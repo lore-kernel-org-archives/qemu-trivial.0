@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6eG-0003SW-Hd
+	id 1lK6eG-0003TU-OR
 	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33228)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33304)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6dz-0003Ax-FZ; Wed, 10 Mar 2021 16:45:29 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:54553)
+ id 1lK6e6-0003Bp-Vj; Wed, 10 Mar 2021 16:45:35 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:59397)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6dw-0004Qw-BU; Wed, 10 Mar 2021 16:45:27 -0500
+ id 1lK6dz-0004Ss-GH; Wed, 10 Mar 2021 16:45:34 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MZT2u-1lHN3y3g7q-00WZCQ; Wed, 10 Mar 2021 22:45:17 +0100
+ id 1MpDa5-1m5ket1eTX-00qhPj; Wed, 10 Mar 2021 22:45:12 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Alexander Bulekov <alxndr@bu.edu>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 09/22] fuzz-test: remove unneccessary debugging flags
-Date: Wed, 10 Mar 2021 22:44:51 +0100
-Message-Id: <20210310214504.1183162-10-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Taylor Simpson <tsimpson@quicinc.com>
+Subject: [PULL 04/22] target/hexagon/gen_tcg_funcs: Fix a typo
+Date: Wed, 10 Mar 2021 22:44:46 +0100
+Message-Id: <20210310214504.1183162-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nXAHKnyD6SEU07yBox29oftFF+awKGYOyZC4cuEaHH0+zp++TcV
- Rk4gRbUo438rwpyC3WXRMZNsGUJCstY4/juB9tDw2IktVY0iNAU88pqrpOtGFfbIwEhwIrY
- 8L1PQ/AFdxGYotzLPYxHFHP08VUCCXwBVtP/RAAu4xrGk0ZqIYc9goRMEg0vpd1L6cY9l/4
- WGABnHOPrH7N53w62HHgw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:OOOn84DPlhA=:h8ErCYu/jL3USHetXGL4dH
- nA8BL/AK58OHEv14bPaEXlTwdZTJNru8uSEZwnoAr3+eo27dRUAw47pugOOBs+xkpOvkag3t2
- wUyZwg5DUGTD2U0xpqXbEieobCe5SkpkOlMFQEBETyaPXaqMIxeY8mnA3y9OK4MmVXWEignKq
- AGl+a5Hz6TAMsmwfaI3l+Bo9NYTqRjkm28N57yZTb+XAO1N2eNTk25hEjKW+mWjNunXKbgfSG
- 2sKymrRlRC0qm1qrJVhkcK9mCGthoFAndxSWdKB63x+iKZwjyeBqdhhbdJFB63+NcHN8Yz1ns
- OLJPAPV89kZwIn2kWX9s5ezcE+i6pKOf52kz2U9v+eFCURhYNmbIsIiB3vbaRFYWCBipTWpmB
- rsCuSAiwy5hfgyI4zngr/c0ewL9rwqcwoRbuJ0rUOmClctVVMoVAZ4rKlXMMp786cp0t3D1V8
- myUbwQBCyQ==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:1HzP3T3i5x3/c3U0QIy+yUdr7gwAjaZFljgqVcu9j1yJDZqXcfS
+ tL899QeJcbu4IqFP/8Hyhh3z1mcOYc70xagT4BaMDqt3AFpSkDAVRdJuRPQKkRpJ1c5b8yL
+ rVHGY+3Zl0ByfUlnpZgc+4ASitvzW1QzfqPMbi2iKsBJPlJPXEkk19iIByoZVBZDoTW/fsn
+ YcgU8xuS+W71wVjqIdCNg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:eiFzHUNU1rk=:s2IUdHCKg3+qW6nToRsJ2C
+ eI+5epYVxfoeI2meTcF5X1RQRXzwebfB4FwTGNXsvf7eXvK5tBgFQSVYPYKiGt4H73jDVo5ud
+ CnpiUdqTL+aC0T9Pz7Cd94Dk5tmtzlzYpa9QyDzSobhdwxvwIgT5DHjzLYSnEJuITx6E3PJ1b
+ HuKkSASMLGh+RizUmHAYU79JczqOe2qv/eZI8uxYhLr/idc4Pj2+3GdmumaqN+dNO4Z8ncnN6
+ VgJAQexnn0MH2JGsQtsz8n0Gkmxd0lb4e2MwdhvDcSQRvRm1POksFvrwPZGQk1EKK5D99b8W0
+ 4B5ZT8nRZ8l+i08Uzrlqis1O4js9NLzTQg2lZeFsoUzGN3yWM/HEEUyR8dtxbXtP2IfplCILx
+ f931dLEBTPiznB6MEMptKE2m0WrPQjX0h0LgnmxD272Z7O4uACnMi0z3ueA7DGMxA46Qmqino
+ 6Nc+BIHf4A==
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,35 +60,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 10 Mar 2021 21:45:38 -0000
 
-From: Alexander Bulekov <alxndr@bu.edu>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-These flags cause the output to look strange for 'make check', and
-they aren't needed to reproduce bugs, if they reappear.
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20210216181316.794276-1-alxndr@bu.edu>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Taylor Simpson <tsimpson@quicinc.com>
+Message-Id: <20210225181507.3624509-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/qtest/fuzz-test.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ target/hexagon/gen_tcg_funcs.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/tests/qtest/fuzz-test.c b/tests/qtest/fuzz-test.c
-index cdb1100a0b81..6f161c93be71 100644
---- a/tests/qtest/fuzz-test.c
-+++ b/tests/qtest/fuzz-test.c
-@@ -39,8 +39,7 @@ static void test_lp1878642_pci_bus_get_irq_level_assert(void)
-     QTestState *s;
+diff --git a/target/hexagon/gen_tcg_funcs.py b/target/hexagon/gen_tcg_funcs.py
+index fe4d8e57303a..db9f663a778e 100755
+--- a/target/hexagon/gen_tcg_funcs.py
++++ b/target/hexagon/gen_tcg_funcs.py
+@@ -35,7 +35,7 @@ def gen_decl_ea_tcg(f, tag):
+ def gen_free_ea_tcg(f):
+     f.write("    tcg_temp_free(EA);\n")
  
-     s = qtest_init("-M pc-q35-5.0 "
--                   "-nographic -monitor none -serial none "
--                   "-d guest_errors -trace pci*");
-+                   "-nographic -monitor none -serial none");
+-def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
++def genptr_decl_pair_writable(f, tag, regtype, regid, regno):
+     regN="%s%sN" % (regtype,regid)
+     f.write("    TCGv_i64 %s%sV = tcg_temp_local_new_i64();\n" % \
+         (regtype, regid))
+@@ -54,7 +54,7 @@ def genptr_decl_pair_writeble(f, tag, regtype, regid, regno):
+                              (regN, regN))
+         f.write("    }\n")
  
-     qtest_outl(s, 0xcf8, 0x8400f841);
-     qtest_outl(s, 0xcfc, 0xebed205d);
+-def genptr_decl_writeble(f, tag, regtype, regid, regno):
++def genptr_decl_writable(f, tag, regtype, regid, regno):
+     regN="%s%sN" % (regtype,regid)
+     f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
+         (regtype, regid))
+@@ -78,12 +78,12 @@ def genptr_decl(f, tag, regtype, regid, regno):
+             f.write("    const int %s = insn->regno[%d];\n" % \
+                 (regN, regno))
+         elif (regid in {"dd", "ee", "xx", "yy"}):
+-            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
+         elif (regid in {"s", "t", "u", "v"}):
+             f.write("    TCGv %s%sV = hex_gpr[insn->regno[%d]];\n" % \
+                 (regtype, regid, regno))
+         elif (regid in {"d", "e", "x", "y"}):
+-            genptr_decl_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_writable(f, tag, regtype, regid, regno)
+         else:
+             print("Bad register parse: ", regtype, regid)
+     elif (regtype == "P"):
+@@ -91,7 +91,7 @@ def genptr_decl(f, tag, regtype, regid, regno):
+             f.write("    TCGv %s%sV = hex_pred[insn->regno[%d]];\n" % \
+                 (regtype, regid, regno))
+         elif (regid in {"d", "e", "x"}):
+-            genptr_decl_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_writable(f, tag, regtype, regid, regno)
+         else:
+             print("Bad register parse: ", regtype, regid)
+     elif (regtype == "C"):
+@@ -101,14 +101,14 @@ def genptr_decl(f, tag, regtype, regid, regno):
+             f.write("    const int %s = insn->regno[%d] + HEX_REG_SA0;\n" % \
+                 (regN, regno))
+         elif (regid == "dd"):
+-            genptr_decl_pair_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_pair_writable(f, tag, regtype, regid, regno)
+         elif (regid == "s"):
+             f.write("    TCGv %s%sV = tcg_temp_local_new();\n" % \
+                 (regtype, regid))
+             f.write("    const int %s%sN = insn->regno[%d] + HEX_REG_SA0;\n" % \
+                 (regtype, regid, regno))
+         elif (regid == "d"):
+-            genptr_decl_writeble(f, tag, regtype, regid, regno)
++            genptr_decl_writable(f, tag, regtype, regid, regno)
+         else:
+             print("Bad register parse: ", regtype, regid)
+     elif (regtype == "M"):
 -- 
 2.29.2
 
