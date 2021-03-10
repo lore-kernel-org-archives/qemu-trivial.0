@@ -1,45 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6eI-0003ZO-VL
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33338)
+	id 1lK6eJ-0003be-Nn
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33356)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6eA-0003CV-5p; Wed, 10 Mar 2021 16:45:38 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:60819)
+ id 1lK6eB-0003EZ-3J; Wed, 10 Mar 2021 16:45:39 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:57163)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6e3-0004TP-Qe; Wed, 10 Mar 2021 16:45:37 -0500
+ id 1lK6e1-0004T1-C7; Wed, 10 Mar 2021 16:45:38 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M8hEd-1lODEy0nx3-004gQL; Wed, 10 Mar 2021 22:45:25 +0100
+ id 1MOAmt-1l4TQw1lJB-00OXej; Wed, 10 Mar 2021 22:45:23 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 17/22] qemu-common.h: Update copyright string to 2021
-Date: Wed, 10 Mar 2021 22:44:59 +0100
-Message-Id: <20210310214504.1183162-18-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 15/22] qemu-options: Replace the word 'blacklist'
+Date: Wed, 10 Mar 2021 22:44:57 +0100
+Message-Id: <20210310214504.1183162-16-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:KwmlUpqRcQzY4R/tRkHoVqRPTyi5mx0LYp0jJgzzutNPwWS5Uzt
- AaYqTJOwos4Fle+E8G12vP7ajNv68BPqk+1GHBEH1pANhw1BH2sfIWlWROMinyp0kmp4oLe
- AAUx66CYW7k2LKV1wZQAUG8yCFxPtphZuPEyCp5BWDABpPTnTEEny5BBkLFo9a6t87eUPjd
- tOC7za23EY5/zCZLhe1iQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rNLk5RauKIU=:n6dyawkb6z9g40AC/2BqBU
- 482h3+nnv4KQmDKEQFpRudsgb+/BI425aSFYC/8xIc9iITpJe8olDhA8409uXZDNjvnuHofwe
- ZlJdK1+a0hDq6u3bYIcgmpz8wF4gAZC9eQ5kbp1p29AGdKGegcWhx4dh7JiYPaH0qgLw8bv+z
- q1H4U0kQIhWo1JZKzZ5qkYmKrH8Ql0r9PpXMlqbfN96CzwNf6YRIJOgqKQXOVWGpFeKfUa9z1
- PMAQqY7iCcEMWYxcNWkV2wdLKb2jRBIghW/Iea3tqLRUC2iQHzEFw2+Hn5PhbzdhqUTzn0zba
- lQmCOJy9yIlMZesSQch5XcU/YqpdDwwIgIwHXdA2JesG/nRCpP3XW29wO0iJ+UvpmA7uMXb3h
- 1lwhA+ASe8Oa6UThX2d2FLePg16cQmTWh1XZH36NWiiNjMf3CM+Vse3f58Kfbwb1StlXpufCs
- hzHzQYZNKQ==
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:kWnAYQYaet/ZldL1DFi/nwFUd7xildn1gGPJDlOWG25wYY8/Os4
+ XzZzU9QMMBFsq07r5i+u2udD2doSVul9lrMA5jvySxOys6a5P323XWMYifIF32g9AczRuSw
+ /E3cUGYz5vR2I0YHZFIiJdN56ASn/JqpR5iZaKArf8bRbwL6ErEGum3rZtfxNgwJdxvsbab
+ iI7NJLRbzcyCI4hcAeNUA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:mFCBEVc5Cj8=:lFy+5+ZAdVe3NaSDWS22r4
+ z7993fdUujOqeY3hHQwlKRFHQlOAv7/wARaDod8JJ4SF0IcBxe4rgQ47OGMv/hsR91UL57uJf
+ IukCb2Muldg/rQvn1fhUvArVfXuD6V/ch/LDle4pxLfGFvoENUJySf9mV09a1JALV2FyVQNDr
+ kGANvbvCSMMdtBjDuOLp39jMsIiUZ7r61T2s9T0Nx2Mlv9Frnpj7VcJ8FZycVnEBrTKU9yWla
+ ca4z0ER5MzxC8alt/qou9y23OjrHZT6FLV19IspZY3qaS2fH23+39PXS4t0uFHLGuvAT4SWV7
+ wmJVTUEF1xEcIjW3OFW86bXb0Pp4K8bl83N+P2q+kurPS1CSaskRDNquhm3mt7Rh5mPVgM6lk
+ DT/CGcAaOlOczwTSPKZPc7Oq9sNfPlNXcohLLVJdvsA0MIjIiq+EWUN27sENqpBKrpZ9g53kN
+ YECtylXM+Q==
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -59,35 +60,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Mar 2021 21:45:39 -0000
+X-List-Received-Date: Wed, 10 Mar 2021 21:45:40 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Update the common copyright string that we use in
--version reports, About dialogs, etc, to 2021.
+Follow the inclusive terminology from the "Conscious Language in your
+Open Source Projects" guidelines [*] and replace the word "blacklist"
+appropriately.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20210309162258.28633-1-peter.maydell@linaro.org>
+[*] https://github.com/conscious-lang/conscious-lang-docs/blob/main/faq.md
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20210303184644.1639691-5-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/qemu-common.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ qemu-options.hx | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/qemu-common.h b/include/qemu-common.h
-index 654621444ecf..73bcf763ed82 100644
---- a/include/qemu-common.h
-+++ b/include/qemu-common.h
-@@ -13,7 +13,7 @@
- #define TFR(expr) do { if ((expr) != -1) break; } while (errno == EINTR)
- 
- /* Copyright string for -version arguments, About dialogs, etc */
--#define QEMU_COPYRIGHT "Copyright (c) 2003-2020 " \
-+#define QEMU_COPYRIGHT "Copyright (c) 2003-2021 " \
-     "Fabrice Bellard and the QEMU Project developers"
- 
- /* Bug reporting information for --help arguments, About dialogs, etc */
+diff --git a/qemu-options.hx b/qemu-options.hx
+index c324633fcaad..622d3bfa5a7d 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -4299,12 +4299,12 @@ DEF("sandbox", HAS_ARG, QEMU_OPTION_sandbox, \
+     "                use 'obsolete' to allow obsolete system calls that are provided\n" \
+     "                    by the kernel, but typically no longer used by modern\n" \
+     "                    C library implementations.\n" \
+-    "                use 'elevateprivileges' to allow or deny QEMU process to elevate\n" \
+-    "                    its privileges by blacklisting all set*uid|gid system calls.\n" \
++    "                use 'elevateprivileges' to allow or deny the QEMU process ability\n" \
++    "                    to elevate privileges using set*uid|gid system calls.\n" \
+     "                    The value 'children' will deny set*uid|gid system calls for\n" \
+     "                    main QEMU process but will allow forks and execves to run unprivileged\n" \
+     "                use 'spawn' to avoid QEMU to spawn new threads or processes by\n" \
+-    "                     blacklisting *fork and execve\n" \
++    "                     blocking *fork and execve\n" \
+     "                use 'resourcecontrol' to disable process affinity and schedular priority\n",
+     QEMU_ARCH_ALL)
+ SRST
 -- 
 2.29.2
 
