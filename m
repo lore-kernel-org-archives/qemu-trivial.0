@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6e3-0003BK-I7
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33192)
+	id 1lK6e7-0003Bu-BY
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33170)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6dv-00036p-Tw; Wed, 10 Mar 2021 16:45:24 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:51985)
+ id 1lK6du-00035L-Iu; Wed, 10 Mar 2021 16:45:22 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:55883)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6ds-0004MR-Or; Wed, 10 Mar 2021 16:45:23 -0500
+ id 1lK6dp-0004L7-Uv; Wed, 10 Mar 2021 16:45:22 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MBmI6-1lRl4Q3uxQ-00C9jg; Wed, 10 Mar 2021 22:45:15 +0100
+ id 1MauFB-1lrVaG22yB-00cNYB; Wed, 10 Mar 2021 22:45:11 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 07/22] MAINTAINERS: Fix the location of tools manuals
-Date: Wed, 10 Mar 2021 22:44:49 +0100
-Message-Id: <20210310214504.1183162-8-laurent@vivier.eu>
+ Stefano Garzarella <sgarzare@redhat.com>, David Edmondson <dme@dme.org>
+Subject: [PULL 03/22] hw/elf_ops: Fix a typo
+Date: Wed, 10 Mar 2021 22:44:45 +0100
+Message-Id: <20210310214504.1183162-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5S3BHfmH+cZoCWU96j+1BtpSKXtNI6dbT54elfjsdSh/fumgHF3
- yt/DrDmwXalxwHlsN+LT7j7PrNvqnWuUeyWwWLBKuchrS4rp7+MzXZSdUL/3RI8j6rF2f2m
- b7L4TZKWICfiQ7GADoYXQ5eqK4i43iC+alKEy82QdgW9VcXVy8WsoSNs71SNDFE0/pF+4Dy
- +PdOxUZYHQ6z0LadqtuAg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gibBpayhKSM=:W+n62gAkJtQlMig62Ilgmy
- VGPow3u0OdPtL0Xrg6OWjgEw1vi/5rBr6b67bq0anH53OcLRtoFiQsA90NhlLwBCh76AefQhP
- APwqez9WT2zf6hS1jzqVxinSN4INcF/jUg/t5gHqIou058Wb7sEgOYvlGhaBG8KYiORlangbA
- 9yRQkUfCojcXRln3jlXV3jzdsxsGuBJ/4Bcs67qcwJNgujKdd8YYH+lgmS+Ou8yWbnaNQ/2jz
- n3VIF53JD+roiWKRW4lkRIWPecnSEgjCnLSg0hlKwQiRtbeWOwYZHWhHpvUv8oNtiLtTfDqWN
- uK/BzXjKBFT2EfHLEfBpnEyZg4NdhBjg4mfeeJKX+fQRDWt3PAq+4KxUNIHtP+Wa2pkH6StTg
- R1MvXFgEZl8mqF1RhDQxolaBHLDhuJpWVfMXDEqrEfNculNyefleAjhLscPM/QD/j3pAbuV3E
- tzF09s4Klw==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:oZYpL/O2epG42axZBYuhHFuNIxfmOJPDnxM/QNmRkTpraJwK8qr
+ 4HNnR7AyYp6YpMWLTLJtRhLxMEJkmf11pKl/SnwlKinkVp8L20oAuG1SFwDZlu3391SZTcG
+ G8bHVTm19mRGD+VvnB+oC8UF8i4BxgNvPYJi9Z9+DeEi2W+97gsfkpF/1009la8BJr5O1W/
+ gLUaQ11OZBuyugtqRDQRQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uCoz5OnCMjE=:2v9kWtJq0acGW8NtqKvRrh
+ bEoMTC2UnSwVfRSpF/OJdCnUhGgXyP29V8tItiygA4z4xOVN8byzVv4t1fLA1tiUK9Xe4MO4G
+ 4HkbtSMMOM5cMe3h3gL6lQFZDuO3euw+z1ahRG+s1wPl7WS11TrTZzeIWP8zGaFTPtuKSELbx
+ u6UraQ3k+XzsGdTBPOnjLLGOVFXev86EmatQCsDpxYrfp7DTmmVofjdtkiG8UTj1mMOwug0WN
+ NyfpA2rQ6p4OJZE3uvfsnJkaVWwge8NcC4Jcpo+XQleBWyBmfMmZ0i/8W9ajPh5ad7g/Um2nc
+ UgmSwZCMr37EmRrF/bctGxLTU6/pazKKd/WhsRJwzpRJLF+jHhxLS5h9ap1pznDXbgOpxZmbX
+ jX+f1ZYT+WMuAuyfTnD7QPzLJsJl+/iiI+SUobP7E2k8kgV3C3Il/vhCjf7V3lZqiT2CTtqJ9
+ U1IzcH9G/w==
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,74 +59,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Mar 2021 21:45:24 -0000
+X-List-Received-Date: Wed, 10 Mar 2021 21:45:23 -0000
 
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The qemu-img.rst, qemu-nbd.rst, virtfs-proxy-helper.rst, qemu-trace-stap.rst,
-and virtiofsd.rst manuals were moved to docs/tools, so this update MAINTAINERS
-accordingly.
+g_mapped_file_new_from_fd()'s parameter is named 'writable'.
 
-Fixes: a08b4a9fe6c ("docs: Move tools documentation to tools manual")
-Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20210204135425.1380280-1-wainersm@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Reviewed-by: David Edmondson <dme@dme.org>
+Message-Id: <20210225181344.3623720-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ include/hw/elf_ops.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f22d83c17823..ad28f37bc5ff 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1862,7 +1862,7 @@ S: Odd Fixes
- F: hw/9pfs/
- X: hw/9pfs/xen-9p*
- F: fsdev/
--F: docs/interop/virtfs-proxy-helper.rst
-+F: docs/tools/virtfs-proxy-helper.rst
- F: tests/qtest/virtio-9p-test.c
- T: git https://gitlab.com/gkurz/qemu.git 9p-next
- T: git https://github.com/cschoenebeck/qemu.git 9p.next
-@@ -1893,7 +1893,7 @@ S: Supported
- F: tools/virtiofsd/*
- F: hw/virtio/vhost-user-fs*
- F: include/hw/virtio/vhost-user-fs.h
--F: docs/interop/virtiofsd.rst
-+F: docs/tools/virtiofsd.rst
+diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+index 78409ab34a9f..6ee458e7bc3c 100644
+--- a/include/hw/elf_ops.h
++++ b/include/hw/elf_ops.h
+@@ -417,7 +417,7 @@ static int glue(load_elf, SZ)(const char *name, int fd,
  
- virtio-input
- M: Gerd Hoffmann <kraxel@redhat.com>
-@@ -2200,7 +2200,7 @@ F: block/
- F: hw/block/
- F: include/block/
- F: qemu-img*
--F: docs/interop/qemu-img.rst
-+F: docs/tools/qemu-img.rst
- F: qemu-io*
- F: tests/qemu-iotests/
- F: util/qemu-progress.c
-@@ -2656,7 +2656,7 @@ F: qapi/trace.json
- F: scripts/tracetool.py
- F: scripts/tracetool/
- F: scripts/qemu-trace-stap*
--F: docs/interop/qemu-trace-stap.rst
-+F: docs/tools/qemu-trace-stap.rst
- F: docs/devel/tracing.txt
- T: git https://github.com/stefanha/qemu.git tracing
- 
-@@ -3047,7 +3047,7 @@ F: include/block/nbd*
- F: qemu-nbd.*
- F: blockdev-nbd.c
- F: docs/interop/nbd.txt
--F: docs/interop/qemu-nbd.rst
-+F: docs/tools/qemu-nbd.rst
- T: git https://repo.or.cz/qemu/ericb.git nbd
- 
- NFS
+     /*
+      * Since we want to be able to modify the mapped buffer, we set the
+-     * 'writeble' parameter to 'true'. Modifications to the buffer are not
++     * 'writable' parameter to 'true'. Modifications to the buffer are not
+      * written back to the file.
+      */
+     mapped_file = g_mapped_file_new_from_fd(fd, true, NULL);
 -- 
 2.29.2
 
