@@ -1,69 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK2YZ-0006pN-Jt
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 12:23:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38166)
+	id 1lK6dw-00037j-Iu
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lK2YX-0006nw-Tf
- for qemu-trivial@nongnu.org; Wed, 10 Mar 2021 12:23:34 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:53525)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lK2YV-0005Me-Ej
- for qemu-trivial@nongnu.org; Wed, 10 Mar 2021 12:23:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615397010;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WCHS3dmZA+yPkKG1ZjaP/iWTDQ2xiyfhURRDEZIWU1U=;
- b=PeMiKE31gQxV5wncbhH73M+DrH7FEVxJKpSQA6mU8W24YuKjlNVorDpQiS5dBrJOapU9aR
- nxqsjXs6ZCdMO0QL+vVp1GeFkUcAbOcfTBlxtKB8SCYZjswV7L+JgjsgXv+ITyLJFNBsuy
- xL7+iD59IJmWeWw1c+lSHjMEIJp0ciU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-168-J--jOUC-OC6_dgL42fDd4Q-1; Wed, 10 Mar 2021 12:23:26 -0500
-X-MC-Unique: J--jOUC-OC6_dgL42fDd4Q-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2BE5A801596;
- Wed, 10 Mar 2021 17:23:25 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-19.ams2.redhat.com [10.36.112.19])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E8F5860CE9;
- Wed, 10 Mar 2021 17:23:16 +0000 (UTC)
-Subject: Re: [PATCH] baum: Fix crash when Braille output is not available
-To: Samuel Thibault <samuel.thibault@ens-lyon.org>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org
-References: <20210310160815.3411019-1-samuel.thibault@ens-lyon.org>
-Cc: Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <8624f8c8-d541-051a-13f6-f05d685fefde@redhat.com>
-Date: Wed, 10 Mar 2021 18:23:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lK6dp-00032s-CX; Wed, 10 Mar 2021 16:45:18 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:40621)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lK6dl-0004FK-Q4; Wed, 10 Mar 2021 16:45:17 -0500
+Received: from localhost.localdomain ([82.142.6.26]) by
+ mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1MQdMG-1l8bdS2pZW-00NjVm; Wed, 10 Mar 2021 22:45:08 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 00/22] Trivial branch for 6.0 patches
+Date: Wed, 10 Mar 2021 22:44:42 +0100
+Message-Id: <20210310214504.1183162-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-In-Reply-To: <20210310160815.3411019-1-samuel.thibault@ens-lyon.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.243,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:lSUKlv47sMVh6z1jJzwmMshxuPwmX5D4HPAkltqZgimoVeX9B6c
+ myXbhnpyXjncDMNXdupVA111SGrO9kzlJWD4Ni4UdClDxjypIbITSj4jpNGHVXXcK74ggg5
+ OPKNzl56mC3fuTZJlpbjF0MCoOYrZezNJvo6uu6kgBncQWuAvxM+dNeDcKmsRPToW1EQieY
+ dpN6A0kgLdsiOPZxR8aVA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:RJA2rbkwHmM=:jptZ8grRk39LANcyuSNtUP
+ AZHoMbphUC14oYswNem1zhKRvoi5mQvngcCQWLjE3J/FNgi1/FBoW14JF3z2XvcYhQRvT5E/R
+ GILKNGvY3kA25J6135GOCnPgfou4o0ChqcvHO1NxZ0nobssePLSodE3Q76UdcLn58RVKzy5G7
+ 18YpXeJ+IG5FasLPTp0ulbbI0mwE6nraDfaVR49g1jikWBLoYSrxTBS5nJDzK0lzsJgHNUI8J
+ sk/CtF29i/YFcOo1sthYHLR2dSfhVJF87LQGbpdxGnVd+UJbw9jF8gCsbRbL1niRA5IbPcuRm
+ 5xSAFEx0CvC3hA7Nr7Uwq6wN/RmpfBSogSPb6x/XcKqjGDOz0lYVcMaxDDDAmkbY5E5Z0DeRy
+ lBGVXDjB6n37DAj1E44EvvQMJrW6Iho1mdVvjSgOuirvKHSVJTs6yOMGOIUuh
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,38 +54,153 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Mar 2021 17:23:34 -0000
+X-List-Received-Date: Wed, 10 Mar 2021 21:45:20 -0000
 
-On 10/03/2021 17.08, Samuel Thibault wrote:
-> When Braille output is not available, the backend properly reports being
-> unable to be created, but 5f8e93c3e262 ("util/qemu-timer: Make timer_free()
-> imply timer_del()") made the timer_free() call now refuse any NULL
-> parameter. char_braille_finalize thus now has to be more careful with
-> calling it on baum->cellCount_timer.
-> 
-> Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
-> ---
->   chardev/baum.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/chardev/baum.c b/chardev/baum.c
-> index 5deca778bc..aca5bf12fb 100644
-> --- a/chardev/baum.c
-> +++ b/chardev/baum.c
-> @@ -631,7 +631,9 @@ static void char_braille_finalize(Object *obj)
->   {
->       BaumChardev *baum = BAUM_CHARDEV(obj);
->   
-> -    timer_free(baum->cellCount_timer);
-> +    if (baum->cellCount_timer) {
-> +        timer_free(baum->cellCount_timer);
-> +    }
->       if (baum->brlapi) {
->           brlapi__closeConnection(baum->brlapi);
->           g_free(baum->brlapi);
-
-I just tried to debug this problem, too, and came to the same conclusion.
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+The following changes since commit b2ae1009d7cca2701e17eae55ae2d44fd22c942a=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/mcayland/tags/qemu-sparc-20210307' =
+in=3D=0D
+to staging (2021-03-09 13:50:35 +0000)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  git://github.com/vivier/qemu.git tags/trivial-branch-for-6.0-pull-request=
+=0D
+=0D
+for you to fetch changes up to 538f049704e9b7a07eeaf326af772fdd30d89576:=0D
+=0D
+  sysemu: Let VMChangeStateHandler take boolean 'running' argument (2021-03=
+-0=3D=0D
+9 23:13:57 +0100)=0D
+=0D
+----------------------------------------------------------------=0D
+Pull request trivial patches 20210310=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Alexander Bulekov (1):=0D
+  fuzz-test: remove unneccessary debugging flags=0D
+=0D
+Eric Blake (1):=0D
+  scsi: Silence gcc warning=0D
+=0D
+Markus Armbruster (2):=0D
+  backends/dbus-vmstate: Fix short read error handling=0D
+  vhost_user_gpu: Drop dead check for g_malloc() failure=0D
+=0D
+Michael Tokarev (1):=0D
+  Various spelling fixes=0D
+=0D
+Peter Maydell (1):=0D
+  qemu-common.h: Update copyright string to 2021=0D
+=0D
+Philippe Mathieu-Daud=3DC3=3DA9 (13):=0D
+  hw/elf_ops: Fix a typo=0D
+  target/hexagon/gen_tcg_funcs: Fix a typo=0D
+  exec/memory: Use struct Object typedef=0D
+  ui: Replace the word 'whitelist'=0D
+  scripts/tracetool: Replace the word 'whitelist'=0D
+  seccomp: Replace the word 'blacklist'=0D
+  qemu-options: Replace the word 'blacklist'=0D
+  tests/fp/fp-test: Replace the word 'blacklist'=0D
+  hw/lm32/Kconfig: Introduce CONFIG_LM32_EVR for lm32-evr/uclinux boards=0D
+  hw/lm32/Kconfig: Rename CONFIG_LM32 -> CONFIG_LM32_DEVICES=0D
+  hw/lm32/Kconfig: Have MILKYMIST select LM32_DEVICES=0D
+  sysemu/runstate: Let runstate_is_running() return bool=0D
+  sysemu: Let VMChangeStateHandler take boolean 'running' argument=0D
+=0D
+Thomas Huth (1):=0D
+  net: Use id_generate() in the network subsystem, too=0D
+=0D
+Wainer dos Santos Moschetta (1):=0D
+  MAINTAINERS: Fix the location of tools manuals=0D
+=0D
+lijiejun (1):=0D
+  virtio-gpu: Adjust code space style=0D
+=0D
+ MAINTAINERS                              | 10 ++++----=0D
+ accel/xen/xen-all.c                      |  2 +-=0D
+ audio/audio.c                            |  2 +-=0D
+ backends/dbus-vmstate.c                  |  5 +++-=0D
+ block/block-backend.c                    |  2 +-=0D
+ default-configs/devices/lm32-softmmu.mak |  2 +-=0D
+ disas/nanomips.cpp                       |  2 +-=0D
+ gdbstub.c                                |  2 +-=0D
+ hw/block/pflash_cfi01.c                  |  2 +-=0D
+ hw/block/virtio-blk.c                    |  2 +-=0D
+ hw/char/meson.build                      |  4 +--=0D
+ hw/display/qxl.c                         |  2 +-=0D
+ hw/display/vhost-user-gpu.c              |  1 -=0D
+ hw/display/virtio-gpu-3d.c               |  3 +--=0D
+ hw/i386/kvm/clock.c                      |  2 +-=0D
+ hw/i386/kvm/i8254.c                      |  2 +-=0D
+ hw/i386/kvmvapic.c                       |  2 +-=0D
+ hw/i386/xen/xen-hvm.c                    |  2 +-=0D
+ hw/ide/core.c                            |  2 +-=0D
+ hw/intc/arm_gicv3_its_kvm.c              |  2 +-=0D
+ hw/intc/arm_gicv3_kvm.c                  |  2 +-=0D
+ hw/intc/meson.build                      |  2 +-=0D
+ hw/intc/spapr_xive_kvm.c                 |  2 +-=0D
+ hw/lm32/Kconfig                          | 10 +++++---=0D
+ hw/lm32/meson.build                      |  2 +-=0D
+ hw/misc/mac_via.c                        |  2 +-=0D
+ hw/misc/trace-events                     |  2 +-=0D
+ hw/net/allwinner-sun8i-emac.c            |  2 +-=0D
+ hw/net/e1000e_core.c                     |  2 +-=0D
+ hw/nvram/spapr_nvram.c                   |  2 +-=0D
+ hw/ppc/pnv_bmc.c                         |  2 +-=0D
+ hw/ppc/pnv_xscom.c                       |  2 +-=0D
+ hw/ppc/ppc.c                             |  2 +-=0D
+ hw/ppc/ppc_booke.c                       |  2 +-=0D
+ hw/s390x/tod-kvm.c                       |  2 +-=0D
+ hw/scsi/scsi-bus.c                       |  2 +-=0D
+ hw/scsi/scsi-disk.c                      |  1 +=0D
+ hw/timer/meson.build                     |  2 +-=0D
+ hw/usb/ccid-card-emulated.c              |  2 +-=0D
+ hw/usb/hcd-ehci.c                        |  2 +-=0D
+ hw/usb/hcd-ohci.c                        |  2 +-=0D
+ hw/usb/host-libusb.c                     |  2 +-=0D
+ hw/usb/redirect.c                        |  2 +-=0D
+ hw/vfio/migration.c                      |  2 +-=0D
+ hw/virtio/vhost.c                        |  2 +-=0D
+ hw/virtio/virtio-rng.c                   |  2 +-=0D
+ hw/virtio/virtio.c                       |  2 +-=0D
+ include/exec/memory.h                    | 32 ++++++++++++------------=0D
+ include/hw/elf_ops.h                     |  2 +-=0D
+ include/hw/ppc/pnv_xscom.h               |  2 +-=0D
+ include/hw/s390x/css.h                   |  2 +-=0D
+ include/qemu-common.h                    |  2 +-=0D
+ include/qemu/id.h                        |  1 +=0D
+ include/sysemu/runstate.h                | 12 ++++++---=0D
+ net/net.c                                |  8 +++---=0D
+ qemu-options.hx                          | 10 ++++----=0D
+ scripts/tracetool/__init__.py            |  2 +-=0D
+ softmmu/memory.c                         | 14 +++++------=0D
+ softmmu/qemu-seccomp.c                   | 16 ++++++------=0D
+ softmmu/runstate.c                       |  4 +--=0D
+ target/arm/kvm.c                         |  2 +-=0D
+ target/arm/kvm_arm.h                     |  2 +-=0D
+ target/hexagon/gen_tcg_funcs.py          | 14 +++++------=0D
+ target/i386/cpu.c                        |  2 +-=0D
+ target/i386/kvm/kvm.c                    |  2 +-=0D
+ target/i386/machine.c                    |  2 +-=0D
+ target/i386/sev.c                        |  2 +-=0D
+ target/i386/whpx/whpx-all.c              |  2 +-=0D
+ target/m68k/op_helper.c                  |  2 +-=0D
+ target/mips/kvm.c                        |  4 +--=0D
+ target/ppc/cpu-qom.h                     |  2 +-=0D
+ target/riscv/cpu.c                       |  2 +-=0D
+ tests/fp/fp-test.c                       |  8 +++---=0D
+ tests/qtest/fuzz-test.c                  |  3 +--=0D
+ ui/console.c                             |  2 +-=0D
+ ui/gtk.c                                 |  2 +-=0D
+ ui/spice-core.c                          |  2 +-=0D
+ ui/vnc-auth-sasl.c                       |  4 +--=0D
+ util/id.c                                |  1 +=0D
+ 79 files changed, 147 insertions(+), 134 deletions(-)=0D
+=0D
+--=3D20=0D
+2.29.2=0D
+=0D
 
