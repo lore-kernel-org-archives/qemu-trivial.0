@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6eJ-0003be-Nn
+	id 1lK6eJ-0003cR-UZ
 	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:45:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33356)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6eB-0003EZ-3J; Wed, 10 Mar 2021 16:45:39 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:57163)
+ id 1lK6eB-0003Gd-Qf; Wed, 10 Mar 2021 16:45:39 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:42857)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6e1-0004T1-C7; Wed, 10 Mar 2021 16:45:38 -0500
+ id 1lK6e2-0004TM-9C; Wed, 10 Mar 2021 16:45:39 -0500
 Received: from localhost.localdomain ([82.142.6.26]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MOAmt-1l4TQw1lJB-00OXej; Wed, 10 Mar 2021 22:45:23 +0100
+ id 1MKc0o-1l1SlW00cO-00KzQK; Wed, 10 Mar 2021 22:45:26 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 15/22] qemu-options: Replace the word 'blacklist'
-Date: Wed, 10 Mar 2021 22:44:57 +0100
-Message-Id: <20210310214504.1183162-16-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PULL 18/22] hw/lm32/Kconfig: Introduce CONFIG_LM32_EVR for
+ lm32-evr/uclinux boards
+Date: Wed, 10 Mar 2021 22:45:00 +0100
+Message-Id: <20210310214504.1183162-19-laurent@vivier.eu>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 References: <20210310214504.1183162-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:kWnAYQYaet/ZldL1DFi/nwFUd7xildn1gGPJDlOWG25wYY8/Os4
- XzZzU9QMMBFsq07r5i+u2udD2doSVul9lrMA5jvySxOys6a5P323XWMYifIF32g9AczRuSw
- /E3cUGYz5vR2I0YHZFIiJdN56ASn/JqpR5iZaKArf8bRbwL6ErEGum3rZtfxNgwJdxvsbab
- iI7NJLRbzcyCI4hcAeNUA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mFCBEVc5Cj8=:lFy+5+ZAdVe3NaSDWS22r4
- z7993fdUujOqeY3hHQwlKRFHQlOAv7/wARaDod8JJ4SF0IcBxe4rgQ47OGMv/hsR91UL57uJf
- IukCb2Muldg/rQvn1fhUvArVfXuD6V/ch/LDle4pxLfGFvoENUJySf9mV09a1JALV2FyVQNDr
- kGANvbvCSMMdtBjDuOLp39jMsIiUZ7r61T2s9T0Nx2Mlv9Frnpj7VcJ8FZycVnEBrTKU9yWla
- ca4z0ER5MzxC8alt/qou9y23OjrHZT6FLV19IspZY3qaS2fH23+39PXS4t0uFHLGuvAT4SWV7
- wmJVTUEF1xEcIjW3OFW86bXb0Pp4K8bl83N+P2q+kurPS1CSaskRDNquhm3mt7Rh5mPVgM6lk
- DT/CGcAaOlOczwTSPKZPc7Oq9sNfPlNXcohLLVJdvsA0MIjIiq+EWUN27sENqpBKrpZ9g53kN
- YECtylXM+Q==
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ct+iw0tX67eaWDqE2ug6gbDbBjow/TT/waBA/swxsUtlgvcFUkf
+ sp4Wpe1pm+z9KfkLtZMm5RXvIU/Or/DT5Ue604d4t9YFcfmk5Dz/IqE9wY2jcl3gKV+DbTd
+ Qddv48QsoEsgTER4vRYC5u0j9YE0b9wy8XkTkya5qN0Mk+No6pevGK198vo6JdePAZqFVGn
+ rMqHuftwx1fa4IsAx2GdA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:awrn5DEDePI=:KCBJxuv/kyvwBufu80I3D3
+ Rm+kcb/SK/GBWDH3zsdtVFXSvdLtce32BJDE18B+M1jIH7rHwYex4Wqvgqgs/xih12fJn2jr2
+ AlTqiH49Kfk+V68TYMWr9nV++PiDx5AnxzekivZrIcUuWEU/59kJWh8VloU1q+WewuO3dypUh
+ ol8lWu/kZ0fCehgqfjzLxpK/qmFSWhijG/3KzkPzJv5Jb1CbNMFAX4g8c3fAXCYGM05eZ72L0
+ 4Ey27g9g5sydUid8Bvl+m07ozFQ6oz66tRgCJd1LmR+G2Y/IYVKno1dJUpRW69ugkkHFtocpW
+ zDfHQPmpRXBRSBfoh6nehFCPRmVq8RlGPrhfYAgUsHTPSYiK5a2qMbSPekVWe6NZvZQAqDb/4
+ 4mmeJWRGU0LO55yu+25pvE8pzdZsJ0hPaG0wRAkV2ZA74DaFBGaEv3ensn7Hi1sSnfTsITkZ1
+ uTZbnC5TaQ==
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -62,43 +62,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 10 Mar 2021 21:45:40 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Follow the inclusive terminology from the "Conscious Language in your
-Open Source Projects" guidelines [*] and replace the word "blacklist"
-appropriately.
+We want to be able to use the 'LM32' config for architecture
+specific features. Introduce CONFIG_LM32_EVR to select the
+lm32-evr / lm32-uclinux boards.
 
-[*] https://github.com/conscious-lang/conscious-lang-docs/blob/main/faq.md
-
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20210303184644.1639691-5-philmd@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210221225626.2589247-2-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-options.hx | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ default-configs/devices/lm32-softmmu.mak | 2 +-
+ hw/lm32/Kconfig                          | 6 +++++-
+ hw/lm32/meson.build                      | 2 +-
+ 3 files changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index c324633fcaad..622d3bfa5a7d 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4299,12 +4299,12 @@ DEF("sandbox", HAS_ARG, QEMU_OPTION_sandbox, \
-     "                use 'obsolete' to allow obsolete system calls that are provided\n" \
-     "                    by the kernel, but typically no longer used by modern\n" \
-     "                    C library implementations.\n" \
--    "                use 'elevateprivileges' to allow or deny QEMU process to elevate\n" \
--    "                    its privileges by blacklisting all set*uid|gid system calls.\n" \
-+    "                use 'elevateprivileges' to allow or deny the QEMU process ability\n" \
-+    "                    to elevate privileges using set*uid|gid system calls.\n" \
-     "                    The value 'children' will deny set*uid|gid system calls for\n" \
-     "                    main QEMU process but will allow forks and execves to run unprivileged\n" \
-     "                use 'spawn' to avoid QEMU to spawn new threads or processes by\n" \
--    "                     blacklisting *fork and execve\n" \
-+    "                     blocking *fork and execve\n" \
-     "                use 'resourcecontrol' to disable process affinity and schedular priority\n",
-     QEMU_ARCH_ALL)
- SRST
+diff --git a/default-configs/devices/lm32-softmmu.mak b/default-configs/devices/lm32-softmmu.mak
+index 115b3e34c983..1bce3f6e8b64 100644
+--- a/default-configs/devices/lm32-softmmu.mak
++++ b/default-configs/devices/lm32-softmmu.mak
+@@ -8,5 +8,5 @@ CONFIG_SEMIHOSTING=y
+ 
+ # Boards:
+ #
+-CONFIG_LM32=y
++CONFIG_LM32_EVR=y
+ CONFIG_MILKYMIST=y
+diff --git a/hw/lm32/Kconfig b/hw/lm32/Kconfig
+index ed2e3060b040..20c36edc402c 100644
+--- a/hw/lm32/Kconfig
++++ b/hw/lm32/Kconfig
+@@ -1,7 +1,6 @@
+ config LM32
+     bool
+     select PTIMER
+-    select PFLASH_CFI02
+ 
+ config MILKYMIST
+     bool
+@@ -12,3 +11,8 @@ config MILKYMIST
+     select FRAMEBUFFER
+     select SD
+     select USB_OHCI
++
++config LM32_EVR
++    bool
++    select LM32
++    select PFLASH_CFI02
+diff --git a/hw/lm32/meson.build b/hw/lm32/meson.build
+index 8caf0a727ff8..42d6f8db3d97 100644
+--- a/hw/lm32/meson.build
++++ b/hw/lm32/meson.build
+@@ -1,6 +1,6 @@
+ lm32_ss = ss.source_set()
+ # LM32 boards
+-lm32_ss.add(when: 'CONFIG_LM32', if_true: files('lm32_boards.c'))
++lm32_ss.add(when: 'CONFIG_LM32_EVR', if_true: files('lm32_boards.c'))
+ lm32_ss.add(when: 'CONFIG_MILKYMIST', if_true: files('milkymist.c'))
+ 
+ hw_arch += {'lm32': lm32_ss}
 -- 
 2.29.2
 
