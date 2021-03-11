@@ -1,73 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lKQE6-0001FR-FU
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Mar 2021 13:40:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57886)
+	id 1lKQbY-0000Wu-B0
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Mar 2021 14:04:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1lKQE4-0001BU-Cd
- for qemu-trivial@nongnu.org; Thu, 11 Mar 2021 13:40:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:56298)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1lKQE1-0001N1-K2
- for qemu-trivial@nongnu.org; Thu, 11 Mar 2021 13:40:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615487992;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SXD7FDZuH7yd+HdrJqhPw9lCkX7jE89S4EHtpPwKs70=;
- b=XvcbmcrcHqHPI6EjgEW1E/uxmunBYC/opCz3O8Z//p28kMxrIirDPqaR5jWdXy65ql5fPB
- OnZqoZJERiE2hkmChfFQ++h1yq6L5vMkXP7F3+yWAYvR8doyh6QAR3J8NEGz/w+W45bqga
- QmSNSmFzh/33d6lP3GP4bFtuzDnZpkg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-440-cwULZmZQPgi9Hc45pBUSBA-1; Thu, 11 Mar 2021 13:39:50 -0500
-X-MC-Unique: cwULZmZQPgi9Hc45pBUSBA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 85D9C1923762;
- Thu, 11 Mar 2021 18:39:49 +0000 (UTC)
-Received: from redhat.com (ovpn-115-85.ams2.redhat.com [10.36.115.85])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A660D5B4A0;
- Thu, 11 Mar 2021 18:39:47 +0000 (UTC)
-Date: Thu, 11 Mar 2021 18:39:44 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>,
- qemu-devel@nongnu.org, Brad Smith <brad@comstyle.com>
-Subject: Re: [PATCH] migration: Remove time_t cast for OpenBSD
-Message-ID: <YEpj8MsBzqfRDTWo@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <YDNdAiOkEYOfmbhT@humpty.home.comstyle.com>
- <7eaad721-9d2a-83ed-00fc-80c8ee37e156@redhat.com>
- <26c9c34a-3872-c044-4b01-06d2eb4bfbb1@vivier.eu>
- <YEphaTV6uzhDEY7R@work-vm>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lKQbQ-0000TS-Pe
+ for qemu-trivial@nongnu.org; Thu, 11 Mar 2021 14:04:10 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:39414)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lKQbO-0006om-Ab
+ for qemu-trivial@nongnu.org; Thu, 11 Mar 2021 14:04:08 -0500
+Received: by mail-ej1-x629.google.com with SMTP id p7so37112877eju.6
+ for <qemu-trivial@nongnu.org>; Thu, 11 Mar 2021 11:04:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wPrPjCtHr/VVuVBVxvmWBB0IFWWKURKt2u5lBkFC14c=;
+ b=pItZojk+ozYF8Kq35MCsEWQ0E9NDuje4jhFIM9nkASEX8kLfoJJ8oEhzAIzIRLgvWe
+ KIX7nxq7FErCdl4BgiXBwkAvplpaatI6uAu/o8DyYYdLr50+2Af87eLcsFQrWDrdPI3t
+ w6/8gxNA6ORb/PIwiUydcIczZhjWH/h7Dvc1D4Hxv9cIo9J0NX1IODDyVipKxHpKq9Z/
+ D9fVLvoJr/BwDINog9rkFC5/Gn2cajX7XmHdmldh5YFwb8lvGgbvc8QW2WAkJ8+KS4y3
+ 8HNIW7O/dl2jmWNSj7ktEcI9qEGGX3Ln0G1Hg6je3mmjaeNWGZ+4gB3Y/kqGhhn5PSR3
+ 0irQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wPrPjCtHr/VVuVBVxvmWBB0IFWWKURKt2u5lBkFC14c=;
+ b=ksWXfdvOb+mkXjCwxlFt304RbiJtI1sdZnwEPvOFoyrSkqWpAlw8DieKHMRkbS0xOZ
+ Sgqt+LshCzkn/Uq+kU4iQZwSiSlhR2hlrCXrQwSBN/XRJDd9M1KUgO4m3Xikl9uapPDr
+ FKJNeaNTD6IymHCJTy6XQPWyOPfecO63985b6zVZPD1Jp6IUHNnKWMFXRgzpGltQ1bTZ
+ XgAP8ES1S8gec1Gm8DemdakE1kSOpNz3GYHACay6Bh7bM05wFWKu8AXmNUOwPf5Wj7kN
+ vaYP6dWck+o0e+rBZGvmq4czBYSOyPDBrxEc87hG2SS/O7iZqYqYDFuoat0epOtsqrZZ
+ 6zFQ==
+X-Gm-Message-State: AOAM532R8gd/IEIK4xW4pq6Gov0tENxjJadM4+8TMFVqUG3g17QSNMfB
+ fG0j3P4zR88epuV4xZpDhMXe8GL1Rl4lDQD1zOAxbw==
+X-Google-Smtp-Source: ABdhPJzCj/z+QX5tXSwEj1nz8e4NZ7UPdDsbzrH6S6gM4QJv4POwwQSimVcfLd8L22w71u+sSkT6SfMRWhu8aLtzCiE=
+X-Received: by 2002:a17:906:16ca:: with SMTP id
+ t10mr4575790ejd.85.1615489443305; 
+ Thu, 11 Mar 2021 11:04:03 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <YEphaTV6uzhDEY7R@work-vm>
-User-Agent: Mutt/2.0.5 (2021-01-21)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210310214504.1183162-1-laurent@vivier.eu>
+ <0a9adc53-f0ec-f3fe-ad1f-197ec89fd491@vivier.eu>
+In-Reply-To: <0a9adc53-f0ec-f3fe-ad1f-197ec89fd491@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Mar 2021 19:03:44 +0000
+Message-ID: <CAFEAcA-OcKZEFvpZk4hPXF8FWLq6qzWRq9e2hF31KfQ_gv_nhg@mail.gmail.com>
+Subject: Re: [PULL 00/22] Trivial branch for 6.0 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
+ QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,53 +72,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Mar 2021 18:40:00 -0000
+X-List-Received-Date: Thu, 11 Mar 2021 19:04:11 -0000
 
-On Thu, Mar 11, 2021 at 06:28:57PM +0000, Dr. David Alan Gilbert wrote:
-> * Laurent Vivier (laurent@vivier.eu) wrote:
-> > Le 08/03/2021 à 12:46, Thomas Huth a écrit :
-> > > On 22/02/2021 08.28, Brad Smith wrote:
-> > >> OpenBSD has supported 64-bit time_t across all archs since 5.5 released in 2014.
-> > >>
-> > >> Remove a time_t cast that is no longer necessary.
-> > >>
-> > >>
-> > >> Signed-off-by: Brad Smith <brad@comstyle.com>
-> > >>
-> > >> diff --git a/migration/savevm.c b/migration/savevm.c
-> > >> index 52e2d72e4b..9557f85ba9 100644
-> > >> --- a/migration/savevm.c
-> > >> +++ b/migration/savevm.c
-> > >> @@ -2849,8 +2849,7 @@ bool save_snapshot(const char *name, bool overwrite, const char *vmstate,
-> > >>       if (name) {
-> > >>           pstrcpy(sn->name, sizeof(sn->name), name);
-> > >>       } else {
-> > >> -        /* cast below needed for OpenBSD where tv_sec is still 'long' */
-> > >> -        localtime_r((const time_t *)&tv.tv_sec, &tm);
-> > >> +        localtime_r(&tv.tv_sec, &tm);
-> > >>           strftime(sn->name, sizeof(sn->name), "vm-%Y%m%d%H%M%S", &tm);
-> > >>       }
-> > > 
-> > 
-> > but the qemu_timeval from "include/sysemu/os-win32.h" still uses a long: is this file compiled for
-> > win32?
-> 
-> Yep this fails for me when built with x86_64-w64-mingw32- (it's fine
-> with i686-w64-mingw32- )
+On Wed, 10 Mar 2021 at 21:53, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> Peter,
+>
+> my "git publish" has failed at patch 20 with:
+>
+> Requested action aborted
+> Mails per session limit exceeded.
+>
+> I think my email provider has added new limits :(
+>
+> can you merge this PR without I have to resend it?
 
-We could just switch the code to use GDateTime from GLib and thus
-avoid portability issues. I think this should be equivalent:
+Yeah, the cover letter is the only bit that's critical to the
+process; the rest is just archive/information for other list
+subscribers about what went in.
 
-     g_autoptr(GDateTime) now = g_date_time_new_now_local();
-     g_autofree char *nowstr = g_date_time_format(now, "vm-%Y%m%d%H%M%s");
-     strncpy(sn->name, sizeof(sn->name), nowstr);
-
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+-- PMM
 
