@@ -1,52 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lK6lQ-0005ll-OJ
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Mar 2021 16:53:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35042)
+	id 1lKKI0-00067x-54
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Mar 2021 07:19:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6lN-0005k3-UQ; Wed, 10 Mar 2021 16:53:06 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:48075)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lK6lL-0007gz-6s; Wed, 10 Mar 2021 16:53:05 -0500
-Received: from [192.168.100.1] ([82.142.6.26]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MKuGD-1l1Bna3TWn-00LIkp; Wed, 10 Mar 2021 22:53:00 +0100
-Subject: Re: [PULL 00/22] Trivial branch for 6.0 patches
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-devel@nongnu.org
-References: <20210310214504.1183162-1-laurent@vivier.eu>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <0a9adc53-f0ec-f3fe-ad1f-197ec89fd491@vivier.eu>
-Date: Wed, 10 Mar 2021 22:52:58 +0100
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lKKHy-000650-IQ; Thu, 11 Mar 2021 07:19:38 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:36258)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lKKHx-0005f0-4Z; Thu, 11 Mar 2021 07:19:38 -0500
+Received: by mail-wr1-x430.google.com with SMTP id y16so1637708wrw.3;
+ Thu, 11 Mar 2021 04:19:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=gA139IVvOZJwFPTxiVB8roNjBljpbKqqmYHQuob7CMs=;
+ b=Leb7nriWIYI9IwliJoDEryV/VYC3lkYFXihP1aaP6v+CJbujKX5go16kL/jU4U6ABm
+ ebMahgUdOBCO0M7ktL/jBRPwu1HbhGVngvCRocFwyYvmSBBK4moFtFF5U/61qhyQ2DI8
+ lEjGfCze8+vdsJGaNVqTrD1jH1VkCLVjRrLo88xtLwi/I28j1JScjl3uVtuIeHA51bmP
+ QfXhaoe83eIEByt2NgJON9ujwPpUacLGYl8oEWIIY1Bi7n0loMXwWbtI2rVNL8IGVaL0
+ xfgpq15LD3vRifOInfvRvkwEj7m3KgOYgrxy0IIfri/+NaV+1EAGUsvubGIIIDiVrvR+
+ oMHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=gA139IVvOZJwFPTxiVB8roNjBljpbKqqmYHQuob7CMs=;
+ b=LF+M1M+Hg/3KXYcvf+DT1v9xPV+vnR3Ib0e/p8IUH+m59o4q4cWnGdJuXUcCadX0TN
+ aMPmBqfkEJvmf2eNzs1ZXHQjgYX1sXCcTV43oO4tcK7F4ZCnIt/T98LHBSlpgOFTj7VE
+ WZMmX5hEV1BYJ2Lvw9aDPPApUvcWmOnILgGN9mPl1FkQGvtG3Xj/UsRa8uCJ+uI2fMav
+ TUzBY98zImq4ukK5CBi7/QVXWBcTAwTV0yi9+2DGTsBW5lG4TGCU6vUZsRB0YJI7F0RO
+ Jw7JQM3mCg6pz+gXeu+YIyAgDisffazlSc6s4q53GvIYKaGb8vBiZC8b4yYO1R883rkB
+ r5+w==
+X-Gm-Message-State: AOAM532sQylXAfYz8vvZlfswdyUpKV2Xo23ozNFBzMfRRi+SorApT/wx
+ uk17hcrmt2D2ip57m4syO2I=
+X-Google-Smtp-Source: ABdhPJzlyrLxc4KuJeD1bsENfyWPWkXVcPwYoHFz3RS/LN2LrBspVyVP7p9CHzXB3i9ISSMXdpi+wA==
+X-Received: by 2002:adf:82af:: with SMTP id 44mr8160747wrc.279.1615465175511; 
+ Thu, 11 Mar 2021 04:19:35 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id z25sm3788484wmi.23.2021.03.11.04.19.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Mar 2021 04:19:35 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 3/3] memory: Make memory_region_to_absolute_addr() take a
+ const MemoryRegion
+To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>
+References: <20210305235414.2358144-1-f4bug@amsat.org>
+ <20210305235414.2358144-4-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b5e2547e-1c6b-93f4-d3f2-def8e79c8d41@amsat.org>
+Date: Thu, 11 Mar 2021 13:19:34 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
+In-Reply-To: <20210305235414.2358144-4-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9to1miQTg2dtmvPAszWWXQP+ZYZ/L0ZOUp6Of6YmldmjOAhTcvh
- 5yt2M9V7fCdrEWL/8ibTWmo+MutjBStc15BDK5jVKlN5GPNxbQUaeXWcY3HlRcHJI/xDjMo
- 8+MX6c1LLxHKoGQg3Fazh4YzzvTAHvCwVG1XqMXJecxhuVVI1Q/MdIyfUoN5c0S7BrZmOtV
- hjx2jFPDZvyRHlj2juweQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:V3zwHgB2XtA=:2vwk0G7YKimeAd+LOp0rJ3
- TVrrwdzUVJxSYXQAoD7zOdBS29sgdP/Ylgytj2A78DUTgdTPPAlGBiyMiVW5Z3Nok2uvY38V0
- HleCD4IIhkk9VupdPvFbEfEB5vQCE2fwwdLMz+aO9qzLpqe1DVbpjivMkqGfxmLVwSU/q3N8a
- 87iyxrrK+UjTSDXdEZ+uoUv2TR3lSagFxwmS7ZTMuu7o6anWdK+8pFwyHC4YVSkxfu7GunFe3
- mFSod3NrqpllSMMEBqhZ0tFTl2Iq6PxF84tPI+VoI5mlP78T1Mz/AUKABzz5aGpFIXUbMCzeF
- mZXmMOpyISPIwIM8bJBkiGgD9ZiRnkdGczLItbaD00/oGLu2czKKv2Ce+tdMgVwZma5RkcnW8
- XqwIh2bok5NlHkJ1UHkrhmcexS9jBIJZ46kXHPvDmDB/D9jVP/fa1NnAReutl+K7+O/Ki0iL2
- 1cV1QgVv2A==
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,166 +84,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Mar 2021 21:53:06 -0000
+X-List-Received-Date: Thu, 11 Mar 2021 12:19:38 -0000
 
-Peter,
+Cc'ing qemu-trivial@ for this single patch.
 
-my "git publish" has failed at patch 20 with:
-
-Requested action aborted
-Mails per session limit exceeded.
-
-I think my email provider has added new limits :(
-
-can you merge this PR without I have to resend it?
-
-Thanks,
-Laurent
-
-Le 10/03/2021 à 22:44, Laurent Vivier a écrit :
-> The following changes since commit b2ae1009d7cca2701e17eae55ae2d44fd22c942a:
+On 3/6/21 12:54 AM, Philippe Mathieu-Daudé wrote:
+> There is no reason to not have memory_region_to_absolute_addr()
+> work with a const MemoryRegion. Else we get:
 > 
->   Merge remote-tracking branch 'remotes/mcayland/tags/qemu-sparc-20210307' in=
-> to staging (2021-03-09 13:50:35 +0000)
+> softmmu/memory.c: error: passing argument 1 of ‘memory_region_to_absolute_addr’ discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+>  6666 |     myaddr = memory_region_to_absolute_addr(constmr, addr);
+>       |                                             ^~
+> softmmu/memory.c:410:60: note: expected ‘MemoryRegion *’ but argument is of type ‘const MemoryRegion *’
+>   410 | static hwaddr memory_region_to_absolute_addr(MemoryRegion *mr, hwaddr offset)
+>       |                                              ~~~~~~~~~~~~~~^~
 > 
-> are available in the Git repository at:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  softmmu/memory.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
->   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.0-pull-request
+> diff --git a/softmmu/memory.c b/softmmu/memory.c
+> index 991d9227a88..6d1e96ba37d 100644
+> --- a/softmmu/memory.c
+> +++ b/softmmu/memory.c
+> @@ -407,9 +407,10 @@ static inline uint64_t memory_region_shift_write_access(uint64_t *value,
+>      return tmp;
+>  }
+>  
+> -static hwaddr memory_region_to_absolute_addr(MemoryRegion *mr, hwaddr offset)
+> +static hwaddr memory_region_to_absolute_addr(const MemoryRegion *mr,
+> +                                             hwaddr offset)
+>  {
+> -    MemoryRegion *root;
+> +    const MemoryRegion *root;
+>      hwaddr abs_addr = offset;
+>  
+>      abs_addr += mr->addr;
 > 
-> for you to fetch changes up to 538f049704e9b7a07eeaf326af772fdd30d89576:
-> 
->   sysemu: Let VMChangeStateHandler take boolean 'running' argument (2021-03-0=
-> 9 23:13:57 +0100)
-> 
-> ----------------------------------------------------------------
-> Pull request trivial patches 20210310
-> 
-> ----------------------------------------------------------------
-> 
-> Alexander Bulekov (1):
->   fuzz-test: remove unneccessary debugging flags
-> 
-> Eric Blake (1):
->   scsi: Silence gcc warning
-> 
-> Markus Armbruster (2):
->   backends/dbus-vmstate: Fix short read error handling
->   vhost_user_gpu: Drop dead check for g_malloc() failure
-> 
-> Michael Tokarev (1):
->   Various spelling fixes
-> 
-> Peter Maydell (1):
->   qemu-common.h: Update copyright string to 2021
-> 
-> Philippe Mathieu-Daud=C3=A9 (13):
->   hw/elf_ops: Fix a typo
->   target/hexagon/gen_tcg_funcs: Fix a typo
->   exec/memory: Use struct Object typedef
->   ui: Replace the word 'whitelist'
->   scripts/tracetool: Replace the word 'whitelist'
->   seccomp: Replace the word 'blacklist'
->   qemu-options: Replace the word 'blacklist'
->   tests/fp/fp-test: Replace the word 'blacklist'
->   hw/lm32/Kconfig: Introduce CONFIG_LM32_EVR for lm32-evr/uclinux boards
->   hw/lm32/Kconfig: Rename CONFIG_LM32 -> CONFIG_LM32_DEVICES
->   hw/lm32/Kconfig: Have MILKYMIST select LM32_DEVICES
->   sysemu/runstate: Let runstate_is_running() return bool
->   sysemu: Let VMChangeStateHandler take boolean 'running' argument
-> 
-> Thomas Huth (1):
->   net: Use id_generate() in the network subsystem, too
-> 
-> Wainer dos Santos Moschetta (1):
->   MAINTAINERS: Fix the location of tools manuals
-> 
-> lijiejun (1):
->   virtio-gpu: Adjust code space style
-> 
->  MAINTAINERS                              | 10 ++++----
->  accel/xen/xen-all.c                      |  2 +-
->  audio/audio.c                            |  2 +-
->  backends/dbus-vmstate.c                  |  5 +++-
->  block/block-backend.c                    |  2 +-
->  default-configs/devices/lm32-softmmu.mak |  2 +-
->  disas/nanomips.cpp                       |  2 +-
->  gdbstub.c                                |  2 +-
->  hw/block/pflash_cfi01.c                  |  2 +-
->  hw/block/virtio-blk.c                    |  2 +-
->  hw/char/meson.build                      |  4 +--
->  hw/display/qxl.c                         |  2 +-
->  hw/display/vhost-user-gpu.c              |  1 -
->  hw/display/virtio-gpu-3d.c               |  3 +--
->  hw/i386/kvm/clock.c                      |  2 +-
->  hw/i386/kvm/i8254.c                      |  2 +-
->  hw/i386/kvmvapic.c                       |  2 +-
->  hw/i386/xen/xen-hvm.c                    |  2 +-
->  hw/ide/core.c                            |  2 +-
->  hw/intc/arm_gicv3_its_kvm.c              |  2 +-
->  hw/intc/arm_gicv3_kvm.c                  |  2 +-
->  hw/intc/meson.build                      |  2 +-
->  hw/intc/spapr_xive_kvm.c                 |  2 +-
->  hw/lm32/Kconfig                          | 10 +++++---
->  hw/lm32/meson.build                      |  2 +-
->  hw/misc/mac_via.c                        |  2 +-
->  hw/misc/trace-events                     |  2 +-
->  hw/net/allwinner-sun8i-emac.c            |  2 +-
->  hw/net/e1000e_core.c                     |  2 +-
->  hw/nvram/spapr_nvram.c                   |  2 +-
->  hw/ppc/pnv_bmc.c                         |  2 +-
->  hw/ppc/pnv_xscom.c                       |  2 +-
->  hw/ppc/ppc.c                             |  2 +-
->  hw/ppc/ppc_booke.c                       |  2 +-
->  hw/s390x/tod-kvm.c                       |  2 +-
->  hw/scsi/scsi-bus.c                       |  2 +-
->  hw/scsi/scsi-disk.c                      |  1 +
->  hw/timer/meson.build                     |  2 +-
->  hw/usb/ccid-card-emulated.c              |  2 +-
->  hw/usb/hcd-ehci.c                        |  2 +-
->  hw/usb/hcd-ohci.c                        |  2 +-
->  hw/usb/host-libusb.c                     |  2 +-
->  hw/usb/redirect.c                        |  2 +-
->  hw/vfio/migration.c                      |  2 +-
->  hw/virtio/vhost.c                        |  2 +-
->  hw/virtio/virtio-rng.c                   |  2 +-
->  hw/virtio/virtio.c                       |  2 +-
->  include/exec/memory.h                    | 32 ++++++++++++------------
->  include/hw/elf_ops.h                     |  2 +-
->  include/hw/ppc/pnv_xscom.h               |  2 +-
->  include/hw/s390x/css.h                   |  2 +-
->  include/qemu-common.h                    |  2 +-
->  include/qemu/id.h                        |  1 +
->  include/sysemu/runstate.h                | 12 ++++++---
->  net/net.c                                |  8 +++---
->  qemu-options.hx                          | 10 ++++----
->  scripts/tracetool/__init__.py            |  2 +-
->  softmmu/memory.c                         | 14 +++++------
->  softmmu/qemu-seccomp.c                   | 16 ++++++------
->  softmmu/runstate.c                       |  4 +--
->  target/arm/kvm.c                         |  2 +-
->  target/arm/kvm_arm.h                     |  2 +-
->  target/hexagon/gen_tcg_funcs.py          | 14 +++++------
->  target/i386/cpu.c                        |  2 +-
->  target/i386/kvm/kvm.c                    |  2 +-
->  target/i386/machine.c                    |  2 +-
->  target/i386/sev.c                        |  2 +-
->  target/i386/whpx/whpx-all.c              |  2 +-
->  target/m68k/op_helper.c                  |  2 +-
->  target/mips/kvm.c                        |  4 +--
->  target/ppc/cpu-qom.h                     |  2 +-
->  target/riscv/cpu.c                       |  2 +-
->  tests/fp/fp-test.c                       |  8 +++---
->  tests/qtest/fuzz-test.c                  |  3 +--
->  ui/console.c                             |  2 +-
->  ui/gtk.c                                 |  2 +-
->  ui/spice-core.c                          |  2 +-
->  ui/vnc-auth-sasl.c                       |  4 +--
->  util/id.c                                |  1 +
->  79 files changed, 147 insertions(+), 134 deletions(-)
-> 
-> --=20
-> 2.29.2
-> 
-> 
-
 
