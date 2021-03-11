@@ -1,77 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lKKI0-00067x-54
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Mar 2021 07:19:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48288)
+	id 1lKQ3h-0000oy-Ip
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Mar 2021 13:29:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lKKHy-000650-IQ; Thu, 11 Mar 2021 07:19:38 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:36258)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lKKHx-0005f0-4Z; Thu, 11 Mar 2021 07:19:38 -0500
-Received: by mail-wr1-x430.google.com with SMTP id y16so1637708wrw.3;
- Thu, 11 Mar 2021 04:19:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=gA139IVvOZJwFPTxiVB8roNjBljpbKqqmYHQuob7CMs=;
- b=Leb7nriWIYI9IwliJoDEryV/VYC3lkYFXihP1aaP6v+CJbujKX5go16kL/jU4U6ABm
- ebMahgUdOBCO0M7ktL/jBRPwu1HbhGVngvCRocFwyYvmSBBK4moFtFF5U/61qhyQ2DI8
- lEjGfCze8+vdsJGaNVqTrD1jH1VkCLVjRrLo88xtLwi/I28j1JScjl3uVtuIeHA51bmP
- QfXhaoe83eIEByt2NgJON9ujwPpUacLGYl8oEWIIY1Bi7n0loMXwWbtI2rVNL8IGVaL0
- xfgpq15LD3vRifOInfvRvkwEj7m3KgOYgrxy0IIfri/+NaV+1EAGUsvubGIIIDiVrvR+
- oMHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gA139IVvOZJwFPTxiVB8roNjBljpbKqqmYHQuob7CMs=;
- b=LF+M1M+Hg/3KXYcvf+DT1v9xPV+vnR3Ib0e/p8IUH+m59o4q4cWnGdJuXUcCadX0TN
- aMPmBqfkEJvmf2eNzs1ZXHQjgYX1sXCcTV43oO4tcK7F4ZCnIt/T98LHBSlpgOFTj7VE
- WZMmX5hEV1BYJ2Lvw9aDPPApUvcWmOnILgGN9mPl1FkQGvtG3Xj/UsRa8uCJ+uI2fMav
- TUzBY98zImq4ukK5CBi7/QVXWBcTAwTV0yi9+2DGTsBW5lG4TGCU6vUZsRB0YJI7F0RO
- Jw7JQM3mCg6pz+gXeu+YIyAgDisffazlSc6s4q53GvIYKaGb8vBiZC8b4yYO1R883rkB
- r5+w==
-X-Gm-Message-State: AOAM532sQylXAfYz8vvZlfswdyUpKV2Xo23ozNFBzMfRRi+SorApT/wx
- uk17hcrmt2D2ip57m4syO2I=
-X-Google-Smtp-Source: ABdhPJzlyrLxc4KuJeD1bsENfyWPWkXVcPwYoHFz3RS/LN2LrBspVyVP7p9CHzXB3i9ISSMXdpi+wA==
-X-Received: by 2002:adf:82af:: with SMTP id 44mr8160747wrc.279.1615465175511; 
- Thu, 11 Mar 2021 04:19:35 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id z25sm3788484wmi.23.2021.03.11.04.19.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Mar 2021 04:19:35 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 3/3] memory: Make memory_region_to_absolute_addr() take a
- const MemoryRegion
-To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>
-References: <20210305235414.2358144-1-f4bug@amsat.org>
- <20210305235414.2358144-4-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <b5e2547e-1c6b-93f4-d3f2-def8e79c8d41@amsat.org>
-Date: Thu, 11 Mar 2021 13:19:34 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1lKQ3f-0000no-D2
+ for qemu-trivial@nongnu.org; Thu, 11 Mar 2021 13:29:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21918)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1lKQ3a-0003tu-2O
+ for qemu-trivial@nongnu.org; Thu, 11 Mar 2021 13:29:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615487346;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Krq+JyQNtwrTnECSYNvI/8vGLITw7wKdKrxzYHJUZMs=;
+ b=g2nOTKEOBgi1IPprTrT8Lg4qjcChenaW5BDb68wsqrG1ugUEbUlH1ScW7WMRieBWRJRamG
+ OnNbGwKG/ixj8KQlV3+A8siEw1yAnZEffN8wrx7nKNCMPGBuEuA9yPlmqhxUFIYxbtIsA3
+ mqEUXZITiakcyYnOrCrVlKmHcQ4pLT0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-144-Pi_Z-hGuPLOsjcSm1ZE8UQ-1; Thu, 11 Mar 2021 13:29:04 -0500
+X-MC-Unique: Pi_Z-hGuPLOsjcSm1ZE8UQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5BAF51923761;
+ Thu, 11 Mar 2021 18:29:03 +0000 (UTC)
+Received: from work-vm (ovpn-115-29.ams2.redhat.com [10.36.115.29])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A63295C1C5;
+ Thu, 11 Mar 2021 18:29:00 +0000 (UTC)
+Date: Thu, 11 Mar 2021 18:28:57 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: Thomas Huth <thuth@redhat.com>, Brad Smith <brad@comstyle.com>,
+ qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Juan Quintela <quintela@redhat.com>
+Subject: Re: [PATCH] migration: Remove time_t cast for OpenBSD
+Message-ID: <YEphaTV6uzhDEY7R@work-vm>
+References: <YDNdAiOkEYOfmbhT@humpty.home.comstyle.com>
+ <7eaad721-9d2a-83ed-00fc-80c8ee37e156@redhat.com>
+ <26c9c34a-3872-c044-4b01-06d2eb4bfbb1@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <20210305235414.2358144-4-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <26c9c34a-3872-c044-4b01-06d2eb4bfbb1@vivier.eu>
+User-Agent: Mutt/2.0.5 (2021-01-21)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,42 +77,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Mar 2021 12:19:38 -0000
+X-List-Received-Date: Thu, 11 Mar 2021 18:29:15 -0000
 
-Cc'ing qemu-trivial@ for this single patch.
+* Laurent Vivier (laurent@vivier.eu) wrote:
+> Le 08/03/2021 ‡ 12:46, Thomas Huth a Ècrit†:
+> > On 22/02/2021 08.28, Brad Smith wrote:
+> >> OpenBSD has supported 64-bit time_t across all archs since 5.5 released in 2014.
+> >>
+> >> Remove a time_t cast that is no longer necessary.
+> >>
+> >>
+> >> Signed-off-by: Brad Smith <brad@comstyle.com>
+> >>
+> >> diff --git a/migration/savevm.c b/migration/savevm.c
+> >> index 52e2d72e4b..9557f85ba9 100644
+> >> --- a/migration/savevm.c
+> >> +++ b/migration/savevm.c
+> >> @@ -2849,8 +2849,7 @@ bool save_snapshot(const char *name, bool overwrite, const char *vmstate,
+> >> ††††† if (name) {
+> >> ††††††††† pstrcpy(sn->name, sizeof(sn->name), name);
+> >> ††††† } else {
+> >> -††††††† /* cast below needed for OpenBSD where tv_sec is still 'long' */
+> >> -††††††† localtime_r((const time_t *)&tv.tv_sec, &tm);
+> >> +††††††† localtime_r(&tv.tv_sec, &tm);
+> >> ††††††††† strftime(sn->name, sizeof(sn->name), "vm-%Y%m%d%H%M%S", &tm);
+> >> ††††† }
+> > 
+> 
+> but the qemu_timeval from "include/sysemu/os-win32.h" still uses a long: is this file compiled for
+> win32?
 
-On 3/6/21 12:54 AM, Philippe Mathieu-Daud√© wrote:
-> There is no reason to not have memory_region_to_absolute_addr()
-> work with a const MemoryRegion. Else we get:
+Yep this fails for me when built with x86_64-w64-mingw32- (it's fine
+with i686-w64-mingw32- )
+
+Dave
+
+> Thanks,
+> Laurent
 > 
-> softmmu/memory.c: error: passing argument 1 of ‚Äòmemory_region_to_absolute_addr‚Äô discards ‚Äòconst‚Äô qualifier from pointer target type [-Werror=discarded-qualifiers]
->  6666 |     myaddr = memory_region_to_absolute_addr(constmr, addr);
->       |                                             ^~
-> softmmu/memory.c:410:60: note: expected ‚ÄòMemoryRegion *‚Äô but argument is of type ‚Äòconst MemoryRegion *‚Äô
->   410 | static hwaddr memory_region_to_absolute_addr(MemoryRegion *mr, hwaddr offset)
->       |                                              ~~~~~~~~~~~~~~^~
-> 
-> Signed-off-by: Philippe Mathieu-Daud√© <f4bug@amsat.org>
-> ---
->  softmmu/memory.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/softmmu/memory.c b/softmmu/memory.c
-> index 991d9227a88..6d1e96ba37d 100644
-> --- a/softmmu/memory.c
-> +++ b/softmmu/memory.c
-> @@ -407,9 +407,10 @@ static inline uint64_t memory_region_shift_write_access(uint64_t *value,
->      return tmp;
->  }
->  
-> -static hwaddr memory_region_to_absolute_addr(MemoryRegion *mr, hwaddr offset)
-> +static hwaddr memory_region_to_absolute_addr(const MemoryRegion *mr,
-> +                                             hwaddr offset)
->  {
-> -    MemoryRegion *root;
-> +    const MemoryRegion *root;
->      hwaddr abs_addr = offset;
->  
->      abs_addr += mr->addr;
-> 
+-- 
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+
 
