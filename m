@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lKQbY-0000Wu-B0
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Mar 2021 14:04:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37660)
+	id 1lKeaU-0005dJ-Ml
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Mar 2021 05:00:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33672)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lKQbQ-0000TS-Pe
- for qemu-trivial@nongnu.org; Thu, 11 Mar 2021 14:04:10 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:39414)
+ id 1lKeaI-0005Zk-Im
+ for qemu-trivial@nongnu.org; Fri, 12 Mar 2021 05:00:00 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:42624)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lKQbO-0006om-Ab
- for qemu-trivial@nongnu.org; Thu, 11 Mar 2021 14:04:08 -0500
-Received: by mail-ej1-x629.google.com with SMTP id p7so37112877eju.6
- for <qemu-trivial@nongnu.org>; Thu, 11 Mar 2021 11:04:05 -0800 (PST)
+ id 1lKeaA-0001K7-DR
+ for qemu-trivial@nongnu.org; Fri, 12 Mar 2021 04:59:54 -0500
+Received: by mail-ej1-x635.google.com with SMTP id c10so52127071ejx.9
+ for <qemu-trivial@nongnu.org>; Fri, 12 Mar 2021 01:59:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wPrPjCtHr/VVuVBVxvmWBB0IFWWKURKt2u5lBkFC14c=;
- b=pItZojk+ozYF8Kq35MCsEWQ0E9NDuje4jhFIM9nkASEX8kLfoJJ8oEhzAIzIRLgvWe
- KIX7nxq7FErCdl4BgiXBwkAvplpaatI6uAu/o8DyYYdLr50+2Af87eLcsFQrWDrdPI3t
- w6/8gxNA6ORb/PIwiUydcIczZhjWH/h7Dvc1D4Hxv9cIo9J0NX1IODDyVipKxHpKq9Z/
- D9fVLvoJr/BwDINog9rkFC5/Gn2cajX7XmHdmldh5YFwb8lvGgbvc8QW2WAkJ8+KS4y3
- 8HNIW7O/dl2jmWNSj7ktEcI9qEGGX3Ln0G1Hg6je3mmjaeNWGZ+4gB3Y/kqGhhn5PSR3
- 0irQ==
+ :cc; bh=5dDQABMaTprCsRbhCVLhXU6zH90nj3FDfajnq6VWCrE=;
+ b=dta4TNXxiOdYby91NrmmntN/uWTVHMdSgpgR3SRpdnrrQa6gjdwFqT9Q45GGHz/RUD
+ HqxUF/ogqyXXCRL1XkdtBP29KRgR038wyujYAv5q30hk1Veyt/LavYPsoXncwcRBRGFi
+ AUmUr31h06uk3M6BdBSuC3xUbfFSKAUpqKVZOdh97u3f2e1Nz240ggil2GPIo3Uatsbt
+ scJica420LuENSpCz+HwvzmwspaSvrliROFnWPZWukpqJu5Z15wDNWRpp//FsFV6FAY/
+ hnKmuZ3wLuuWMJFl21/Np3gykGyHVKaaM4xx95xFUECaa8VdieuGXA5Z7JlRMxfXNX8s
+ pbIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=wPrPjCtHr/VVuVBVxvmWBB0IFWWKURKt2u5lBkFC14c=;
- b=ksWXfdvOb+mkXjCwxlFt304RbiJtI1sdZnwEPvOFoyrSkqWpAlw8DieKHMRkbS0xOZ
- Sgqt+LshCzkn/Uq+kU4iQZwSiSlhR2hlrCXrQwSBN/XRJDd9M1KUgO4m3Xikl9uapPDr
- FKJNeaNTD6IymHCJTy6XQPWyOPfecO63985b6zVZPD1Jp6IUHNnKWMFXRgzpGltQ1bTZ
- XgAP8ES1S8gec1Gm8DemdakE1kSOpNz3GYHACay6Bh7bM05wFWKu8AXmNUOwPf5Wj7kN
- vaYP6dWck+o0e+rBZGvmq4czBYSOyPDBrxEc87hG2SS/O7iZqYqYDFuoat0epOtsqrZZ
- 6zFQ==
-X-Gm-Message-State: AOAM532R8gd/IEIK4xW4pq6Gov0tENxjJadM4+8TMFVqUG3g17QSNMfB
- fG0j3P4zR88epuV4xZpDhMXe8GL1Rl4lDQD1zOAxbw==
-X-Google-Smtp-Source: ABdhPJzCj/z+QX5tXSwEj1nz8e4NZ7UPdDsbzrH6S6gM4QJv4POwwQSimVcfLd8L22w71u+sSkT6SfMRWhu8aLtzCiE=
-X-Received: by 2002:a17:906:16ca:: with SMTP id
- t10mr4575790ejd.85.1615489443305; 
- Thu, 11 Mar 2021 11:04:03 -0800 (PST)
+ bh=5dDQABMaTprCsRbhCVLhXU6zH90nj3FDfajnq6VWCrE=;
+ b=TGbA/WqUukyP/ebeZ9G3uC5ThKfWNGf5bQou88mAGHKkDR4iPExzPD9BGfGK4qu5os
+ veenufUF+8HjaMcGMF8QfbXJz5F8/im2tkNFNWgrBF1ai5u2PNuUFfUFRa1l57noFwCc
+ mNct3Bra7n7pRiLuP7Z2dvAEQ7r6SWuAxxIEFhsPICqFJzSlZHKjCOkHqNrLOp8LNOrS
+ PbFuyNcIedCyKTGNzdo3aGm5zxq86D/SrAIEdgzxS+ryesJzW9J1ZxRBvj53BEMUnL9S
+ BMGmtamZmYJ6DGQ8VMzltKQRmclFleM6Ni3AjCurFYtzIFZmzDGt3WAbd223Hxv9mUIu
+ yQVg==
+X-Gm-Message-State: AOAM532k4GJ1B0cbkncOi9DMqyakdqfi5++sDBKzOxvsQgSwMYIYq+rx
+ LansWHRkZcdtX9rvk8d3qJEsVhPSIjWWXVppO0MM1A==
+X-Google-Smtp-Source: ABdhPJxyFozcLZ7UC9+z1+0lVD3kd8GyDrSMqzvv5HLWbsotBD6mIoAclnyCppKXUwSxjIIfKBf34AcMehwNLSYCSnc=
+X-Received: by 2002:a17:906:c301:: with SMTP id
+ s1mr7481157ejz.382.1615543180863; 
+ Fri, 12 Mar 2021 01:59:40 -0800 (PST)
 MIME-Version: 1.0
 References: <20210310214504.1183162-1-laurent@vivier.eu>
- <0a9adc53-f0ec-f3fe-ad1f-197ec89fd491@vivier.eu>
-In-Reply-To: <0a9adc53-f0ec-f3fe-ad1f-197ec89fd491@vivier.eu>
+In-Reply-To: <20210310214504.1183162-1-laurent@vivier.eu>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Mar 2021 19:03:44 +0000
-Message-ID: <CAFEAcA-OcKZEFvpZk4hPXF8FWLq6qzWRq9e2hF31KfQ_gv_nhg@mail.gmail.com>
+Date: Fri, 12 Mar 2021 09:59:22 +0000
+Message-ID: <CAFEAcA-9GNdUZ3os2Dqi7ojkLKA6bzh-+rFH1XPcJHZjtMF=mA@mail.gmail.com>
 Subject: Re: [PULL 00/22] Trivial branch for 6.0 patches
 To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -72,24 +71,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Mar 2021 19:04:11 -0000
+X-List-Received-Date: Fri, 12 Mar 2021 10:00:02 -0000
 
-On Wed, 10 Mar 2021 at 21:53, Laurent Vivier <laurent@vivier.eu> wrote:
+On Wed, 10 Mar 2021 at 21:47, Laurent Vivier <laurent@vivier.eu> wrote:
 >
-> Peter,
+> The following changes since commit b2ae1009d7cca2701e17eae55ae2d44fd22c942a:
 >
-> my "git publish" has failed at patch 20 with:
+>   Merge remote-tracking branch 'remotes/mcayland/tags/qemu-sparc-20210307' in=
+> to staging (2021-03-09 13:50:35 +0000)
 >
-> Requested action aborted
-> Mails per session limit exceeded.
+> are available in the Git repository at:
 >
-> I think my email provider has added new limits :(
+>   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.0-pull-request
 >
-> can you merge this PR without I have to resend it?
+> for you to fetch changes up to 538f049704e9b7a07eeaf326af772fdd30d89576:
+>
+>   sysemu: Let VMChangeStateHandler take boolean 'running' argument (2021-03-0=
+> 9 23:13:57 +0100)
+>
+> ----------------------------------------------------------------
+> Pull request trivial patches 20210310
+>
+> ----------------------------------------------------------------
 
-Yeah, the cover letter is the only bit that's critical to the
-process; the rest is just archive/information for other list
-subscribers about what went in.
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/6.0
+for any user-visible changes.
 
 -- PMM
 
