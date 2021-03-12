@@ -1,55 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lKfcH-0007vo-3k
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Mar 2021 06:06:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52734)
+	id 1lKi4m-0005UF-MC
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Mar 2021 08:43:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lKfc5-0007sr-FS; Fri, 12 Mar 2021 06:05:51 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:41495)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lKfc3-0000JA-Ol; Fri, 12 Mar 2021 06:05:49 -0500
-Received: from [192.168.100.1] ([82.142.6.26]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M6EOc-1lMsXc3JrE-006bTu; Fri, 12 Mar 2021 12:05:41 +0100
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lKi4k-0005Q1-9Q; Fri, 12 Mar 2021 08:43:34 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:37466)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lKi4i-0005Aw-O3; Fri, 12 Mar 2021 08:43:34 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ f22-20020a7bc8d60000b029010c024a1407so15833965wml.2; 
+ Fri, 12 Mar 2021 05:43:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=KCJ75BGhEhOfVEFa9uKBURjUCyJ0UliRcUvh3NK2fc4=;
+ b=qkn5ETVqrbX+knqh3on3KGcfKTH1qC4OPCxbTeBBuaQoCh/GLquBgyKoX1SEoYj1LW
+ FYO8BzM9QMLsg/deGnPbG73Seah0sfFjz0HzSe7TyFxUvSKjoQCFq4hOcyWbr6k0WP8q
+ QOjcN0p4K+RZx/fp8/TtrGOsMbgMGzA7RlF6xjvmk0Gj/GVGdzZYZc0IyDcl4L1xuWHc
+ zBJkSuXyiaundrFqMos7ej3gC79puIOvpcEn1/M5+3nHDJ/qDNCkPBd5fYmTc2aV4xjT
+ aJW/bBZUpykimkQfx+0Yj8jNANoSqJ7dE+61YF5fIh8EDgjWlX77dYVkoksbnlDOg9qD
+ 6Siw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=KCJ75BGhEhOfVEFa9uKBURjUCyJ0UliRcUvh3NK2fc4=;
+ b=SgCL6TC+ChVrYW8wSKkAkhqCCnnZaubo42uymj1Zkxr4iRO+QDuzBSJ2T/PYJWRNTJ
+ A2FChh4K7bm8RsjgLOLGg+EswHdw8PnwWv7EMhsuuBdDZhGe07Ck81KmbHkDjSItpFoA
+ vECzY9+Vu9zzDbbMDMwUzfweGdukuIRcV557J2nS1qdd9HY5wZaTrUxcNfV2RtcGX7Zh
+ AG6IQvnoAiCt2XO3Kat03fVTiE6Wt3dEVYqKUqJ8FLSzt1Ocyo+qcQrjbGFyFwBPaVZZ
+ B9QTt4HBaN+NlyIhvFmCiNpYlX3+srF3pAVtD6qGF3x6Qr+6Ct+8ylP43Vb9r413EI+9
+ RHoQ==
+X-Gm-Message-State: AOAM531oDdwlVU6Qvo6oDgvuulfqM5aUagZMXRpqqo+vr2eluShrGIOk
+ 3jgBrrtnFK9YxhPq59WYm8UQCLgZ4Bs=
+X-Google-Smtp-Source: ABdhPJyjibBkf3VEiCIf+stCB5BwR6tTESMLEz8kXXlVYfI8lrDW0C+yP1xRxpPvxLhaqGcf3IRLdw==
+X-Received: by 2002:a1c:de05:: with SMTP id v5mr13123534wmg.25.1615556608692; 
+ Fri, 12 Mar 2021 05:43:28 -0800 (PST)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id i3sm8226630wra.66.2021.03.12.05.43.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 12 Mar 2021 05:43:28 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PULL 00/22] Trivial branch for 6.0 patches
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+To: Laurent Vivier <laurent@vivier.eu>,
  Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-devel@nongnu.org
 References: <20210310214504.1183162-1-laurent@vivier.eu>
  <0a9adc53-f0ec-f3fe-ad1f-197ec89fd491@vivier.eu>
  <13bb89f8-7ffd-b22b-d6ee-8b9eb88c9575@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <4f488d6d-4c93-1032-b293-42f4b3f4517c@vivier.eu>
-Date: Fri, 12 Mar 2021 12:05:36 +0100
+ <4f488d6d-4c93-1032-b293-42f4b3f4517c@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <77bd7942-a6b7-8948-dab6-cda06dd25ee2@amsat.org>
+Date: Fri, 12 Mar 2021 14:43:27 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <13bb89f8-7ffd-b22b-d6ee-8b9eb88c9575@amsat.org>
+In-Reply-To: <4f488d6d-4c93-1032-b293-42f4b3f4517c@vivier.eu>
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:lta737Jlb4CKikhV5f1iXCLV/hng7YKXTJMQ+UU84MMom+FeQXs
- 3hQmcT//0qZs6hUpakOOAoKdsMfyIgbEXGldDACWEjkHnKHdgZ3juho1GxjVNXn+0zPA0Cw
- +Xvi7pHnu07t++MEKx9a/o9pGi2cenJGkI0hxOzeH13uKiDhsNKPwPF0ioVq0/P7JWrdd2J
- hi9aWcDBe0k/mfsRhCwNA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:XhEt58hd0F8=:CkkSzB2RYcwBAiu5DWTcot
- o/dvWk3rKoAbedQ0d2sH3s+oyUvq40YohgGMPnTtLqf7KjFf9Ue4xgVFaEPipBtZGxLXknPsZ
- DG9+JAYHn+gYr82tDWej9N4nz561BtsxR244ZxbzNwb5Zq4u5tUbq4j836kLfgo0SkFD7Z0AO
- BeFK53YFXFcNfhDtFy9+txB+pvA4uHYfPyCE8EVY4JL6SWLYGO+aM9elZqN5TAS/9IAv/yT6c
- /sRZjtUb7BRS3TPlWdPORhAq248/dKBQkQrMqdxrW/4oKvUlV+9+eezFnTk7UnbyVD0wIVr+n
- Qc0IXMLm5EX2vap8Qhk/62aAdO66BG0/UeF6HgdaasugXa/BQpXGvZZOOWm3RXsb+DjUnm65P
- GgixIgjcPrNn5h6Uz1Z0HPwKqsfINe/oi6SWzKixjwbo61fPH96LEPKoUQIW29zzeyMTw6f7e
- ePmQGRzNuQ==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,32 +87,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Mar 2021 11:05:53 -0000
+X-List-Received-Date: Fri, 12 Mar 2021 13:43:34 -0000
 
-Le 12/03/2021 à 11:15, Philippe Mathieu-Daudé a écrit :
-> On 3/10/21 10:52 PM, Laurent Vivier wrote:
->> Peter,
+On 3/12/21 12:05 PM, Laurent Vivier wrote:
+> Le 12/03/2021 à 11:15, Philippe Mathieu-Daudé a écrit :
+>> On 3/10/21 10:52 PM, Laurent Vivier wrote:
+>>> Peter,
+>>>
+>>> my "git publish" has failed at patch 20 with:
+>>>
+>>> Requested action aborted
+>>> Mails per session limit exceeded.
+>>>
+>>> I think my email provider has added new limits :(
 >>
->> my "git publish" has failed at patch 20 with:
+>> With GMail I could pass from the 20/session limit
+>> to the 1000/day limit adding to ~/.gitconfig:
 >>
->> Requested action aborted
->> Mails per session limit exceeded.
+>> [sendemail]
+>>     smtpServer = smtp.gmail.com
+>>     smtpBatchSize = 1
+>>     smtpReloginDelay = 3
 >>
->> I think my email provider has added new limits :(
 > 
-> With GMail I could pass from the 20/session limit
-> to the 1000/day limit adding to ~/.gitconfig:
+> Thank you,
 > 
-> [sendemail]
->     smtpServer = smtp.gmail.com
->     smtpBatchSize = 1
->     smtpReloginDelay = 3
-> 
+> I've set smtpBatchSize to 19. We will see what will happen next time...
 
-Thank you,
+I started using 20, then 3 and finally 1. Not sure why now,
+but I remember I had to do this for some reason and it worked
+better using "batch" of 1 patch.
 
-I've set smtpBatchSize to 19. We will see what will happen next time...
+Also initially I was using smtpReloginDelay=1 but had to increase
+it up to 3sec.
 
-Thanks,
-Laurent
+Anyway this is specific to GMail.
 
