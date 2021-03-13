@@ -1,77 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lLAEh-0004di-Ls
-	for mharc-qemu-trivial@gnu.org; Sat, 13 Mar 2021 14:47:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56886)
+	id 1lLDkz-0002gg-4K
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Mar 2021 18:33:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lLAEh-0004cx-3t
- for qemu-trivial@nongnu.org; Sat, 13 Mar 2021 14:47:43 -0500
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f]:37946)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lLAEe-0006OT-Ej
- for qemu-trivial@nongnu.org; Sat, 13 Mar 2021 14:47:42 -0500
-Received: by mail-qk1-x72f.google.com with SMTP id f124so27940807qkj.5
- for <qemu-trivial@nongnu.org>; Sat, 13 Mar 2021 11:47:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=pgqlVMFohaF7iRRtOqmZSpltiWSkM5vINFATy7vMnzA=;
- b=Adho7pXl8fZJ3UYAUlXfkxLk5bx7fMf1X3SHJGmCQUR80TninQGrhVbhIG0A2m4C/j
- Aci8IODGUJvg41YBqsa/UEXcZ3DyFRnbL7wIUo9E5Rf9TiGxxrNSDm0TUrTv+Ox56yNa
- ON6u70PvzixGWg5zO8ktpe40p6tsR1x0TWwC8M0IgFoyRF97BuWUBObFRSTKsW2cJ6zw
- F//8s514zvylJMfTiOyrj3iUh1ogSRTMtL8VB2XCTYEZ9JvmMvmQlCVO1GYmpnlzBT16
- ZNTg007iUS9S0lHy0nSfxTXmngxKZDtufPeZOuBj3ocvA9ts1PcPhm2QkikuTguGSM/6
- aeGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=pgqlVMFohaF7iRRtOqmZSpltiWSkM5vINFATy7vMnzA=;
- b=HS/3jzEmZESb/i1t/9oeClCxxxFG/gzcpWRtZmjPO9cpfAhHIv5BdCmeHrnsN539pX
- n38DDhIcd13kfrZE3DWjoo2sI5F7rA4DwKW1VQgSf3XE9WxXLDG2KYJZYE2aVgzLKsu1
- XqjQwXBPZauLK1NO9/N6+qEByuEZNKpu3SP1U0KJeUy6FH2/Wvfgvuw4Ksy0NN2V+MtB
- gOzsw18TDoZwuJdnSJbD0yXYqLFHyYtHnEkKsvASCs01s10JOOszEoY3lQ3LqJFGdiHB
- Gxpmequl+mZGyq0H4Tg2m/kTudaQqN/U8nePHpSZCSy/xWSWgc5pMSdTADfNaukM/sKv
- 4YwQ==
-X-Gm-Message-State: AOAM533h4YkimLGxeE76PivM8eKsfzsw5pn/wSkpVrMKToYw+sep9hqa
- BpZepSnAciWE3MuIm4OMnPP+Cw==
-X-Google-Smtp-Source: ABdhPJyd7KtXiNcYPZE8IpDGrJJS9WZZnEVeYyrBAsLYwWEnr+AvuBquHS9rRtDtbvGRSDUSdH8ucw==
-X-Received: by 2002:a37:7ac3:: with SMTP id
- v186mr18006763qkc.211.1615664859501; 
- Sat, 13 Mar 2021 11:47:39 -0800 (PST)
-Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net.
- [187.189.51.144])
- by smtp.gmail.com with ESMTPSA id z196sm7478507qka.70.2021.03.13.11.47.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 13 Mar 2021 11:47:39 -0800 (PST)
-Subject: Re: [PATCH] hw/display/bcm2835_fb: Remove DeviceReset() call in
- DeviceRealize()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
-References: <20210313170131.2116837-1-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <895860ad-914d-c10f-73c7-7ae2bd356d8b@linaro.org>
-Date: Sat, 13 Mar 2021 13:47:29 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
+ id 1lLDkx-0002gW-Pd; Sat, 13 Mar 2021 18:33:15 -0500
+Received: from speedy.comstyle.com ([2607:f938:3000:8::2]:3457
+ helo=mail.comstyle.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_CHACHA20_POLY1305:256)
+ (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
+ id 1lLDku-0007z7-7h; Sat, 13 Mar 2021 18:33:15 -0500
+Received: from mail.comstyle.com (localhost [127.0.0.1])
+ by mail.comstyle.com (Postfix) with ESMTP id 4DyfDS32RQz8PbN;
+ Sat, 13 Mar 2021 18:35:04 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=comstyle.com; h=message-id
+ :date:mime-version:subject:to:cc:references:from:in-reply-to
+ :content-type:content-transfer-encoding; s=default; bh=vClRCeeTj
+ I1qXeTL/rp/vaRm6zA=; b=pwhSUWbInvZK16PmyrLa93GzaTR62JGk76qD96mnn
+ dLrRtB6uiHBeer5DgwruEagr50mC+OUxZzFXtjWly2G/M1qe2KsP0KM1z7+SEj15
+ xw/TQW6OXs3tbdTnp1xzS+K696kydvQRd6B2TvGUOeBiLdezNrBUZU4fhN7YWjzC
+ 2o=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=comstyle.com; h=message-id
+ :date:mime-version:subject:to:cc:references:from:in-reply-to
+ :content-type:content-transfer-encoding; q=dns; s=default; b=Yba
+ TD+PFq4CKbBMmGv7BCV9OHog8VjeDqSHcx07u/vaCDUhmKu8GU0/PKIHhjJDPl5O
+ ZZiIrWsIY3YXewbdRtRJk9KWReOirqcaAW6eUvncmov2Lkf+NM3qXE+2Gd1JFnYZ
+ a3bmSnZj0vPqW3vSdrXQupDV5m0Z6Ne/PBHKnbZc=
+Received: from [192.168.6.30]
+ (bras-base-toroon2719w-grc-43-174-88-243-61.dsl.bell.ca [174.88.243.61])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: brad)
+ by mail.comstyle.com (Postfix) with ESMTPSA id 4DyfDS1x27z8PbK;
+ Sat, 13 Mar 2021 18:35:04 -0500 (EST)
+Message-ID: <70bda12d-17fc-5e41-b723-e1409017a599@comstyle.com>
+Date: Sat, 13 Mar 2021 18:33:02 -0500
 MIME-Version: 1.0
-In-Reply-To: <20210313170131.2116837-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101
+ Thunderbird/87.0
+Subject: Re: [PATCH] migration: Remove time_t cast for OpenBSD
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72f;
- envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x72f.google.com
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
+References: <YDNdAiOkEYOfmbhT@humpty.home.comstyle.com>
+ <7eaad721-9d2a-83ed-00fc-80c8ee37e156@redhat.com>
+ <26c9c34a-3872-c044-4b01-06d2eb4bfbb1@vivier.eu> <YEphaTV6uzhDEY7R@work-vm>
+ <YEpj8MsBzqfRDTWo@redhat.com>
+From: Brad Smith <brad@comstyle.com>
+In-Reply-To: <YEpj8MsBzqfRDTWo@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f938:3000:8::2;
+ envelope-from=brad@comstyle.com; helo=mail.comstyle.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,19 +72,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 Mar 2021 19:47:43 -0000
+X-List-Received-Date: Sat, 13 Mar 2021 23:33:16 -0000
 
-On 3/13/21 11:01 AM, Philippe Mathieu-Daudé wrote:
-> When QDev objects have their DeviceReset handler set, they
-> shouldn't worry about calling it at realization stage (it
-> is handled by hw/core/qdev.c::device_set_realized).
-> 
-> Remove the pointless/confusing bcm2835_fb_reset() call.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
-> ---
+On 3/11/2021 1:39 PM, Daniel P. Berrang=C3=A9 wrote:
+> On Thu, Mar 11, 2021 at 06:28:57PM +0000, Dr. David Alan Gilbert wrote:
+>> * Laurent Vivier (laurent@vivier.eu) wrote:
+>>> Le 08/03/2021 =C3=A0 12:46, Thomas Huth a =C3=A9crit=C2=A0:
+>>>> On 22/02/2021 08.28, Brad Smith wrote:
+>>>>> OpenBSD has supported 64-bit time_t across all archs since 5.5 rele=
+ased in 2014.
+>>>>>
+>>>>> Remove a time_t cast that is no longer necessary.
+>>>>>
+>>>>>
+>>>>> Signed-off-by: Brad Smith <brad@comstyle.com>
+>>>>>
+>>>>> diff --git a/migration/savevm.c b/migration/savevm.c
+>>>>> index 52e2d72e4b..9557f85ba9 100644
+>>>>> --- a/migration/savevm.c
+>>>>> +++ b/migration/savevm.c
+>>>>> @@ -2849,8 +2849,7 @@ bool save_snapshot(const char *name, bool ove=
+rwrite, const char *vmstate,
+>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (name) {
+>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pstrcpy(sn->=
+name, sizeof(sn->name), name);
+>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
+>>>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* cast below needed fo=
+r OpenBSD where tv_sec is still 'long' */
+>>>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 localtime_r((const time=
+_t *)&tv.tv_sec, &tm);
+>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 localtime_r(&tv.tv_sec,=
+ &tm);
+>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 strftime(sn-=
+>name, sizeof(sn->name), "vm-%Y%m%d%H%M%S", &tm);
+>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> but the qemu_timeval from "include/sysemu/os-win32.h" still uses a lo=
+ng: is this file compiled for
+>>> win32?
+>> Yep this fails for me when built with x86_64-w64-mingw32- (it's fine
+>> with i686-w64-mingw32- )
+> We could just switch the code to use GDateTime from GLib and thus
+> avoid portability issues. I think this should be equivalent:
+>
+>       g_autoptr(GDateTime) now =3D g_date_time_new_now_local();
+>       g_autofree char *nowstr =3D g_date_time_format(now, "vm-%Y%m%d%H%=
+M%s");
+>       strncpy(sn->name, sizeof(sn->name), nowstr);
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-r~
+Which way do you guys want to go? Something like above, remove the commen=
+t
+or some variation on the comment but not mentioning OpenBSD since it is n=
+o
+longer relevant?
 
