@@ -1,74 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lL7oK-0005Tx-Ip
-	for mharc-qemu-trivial@gnu.org; Sat, 13 Mar 2021 12:12:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55120)
+	id 1lL80F-0007qy-IM
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Mar 2021 12:24:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lL7oC-0005Oo-5d; Sat, 13 Mar 2021 12:12:12 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:51713)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lL808-0007pg-Tl
+ for qemu-trivial@nongnu.org; Sat, 13 Mar 2021 12:24:34 -0500
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731]:46935)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lL7oA-00023a-OU; Sat, 13 Mar 2021 12:12:11 -0500
-Received: by mail-wm1-x329.google.com with SMTP id l19so5590426wmh.1;
- Sat, 13 Mar 2021 09:12:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5dbGGreB+KCx7HwQpBslacsaletNg0zMJJsmt+JNjp4=;
- b=FgMdz9L9lddRk7JgJZfBg5ECP3K8vEfWeIkS9K0ION/aJYACja1SXmohGGkAD0dSEk
- vv5+S6SUMQ6+uNIymzPFipqCxYA8WyFh4Wb8tWNeDnj1irGNKx5zlrb244sYlS6gYeYo
- G0i2bQvbFMb7G+2ZmoeGv8rWNnevSYyaFExhDRUcLJQdN4qJeMRHzL0h0cM1vtHEwZNy
- piyMCOG8XUwQQg0X2nh3AYEbcIoVqoubhz6CeGCcwZ9HO8p0TD7oYIehvxvzI/b5BtAA
- 6S0qF95G0M1JvPIPFWyvr5kVn2Aq6PWQDFmhtHCIeIx5+ggXtrLddXVZGn6/5GmgkTm2
- 7Y8g==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lL801-000559-3z
+ for qemu-trivial@nongnu.org; Sat, 13 Mar 2021 12:24:31 -0500
+Received: by mail-qk1-x731.google.com with SMTP id a9so27661441qkn.13
+ for <qemu-trivial@nongnu.org>; Sat, 13 Mar 2021 09:24:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=hszrK5X1zKFPcgVtNADuTzMFuaYAiaXIMIPUe65dQ1c=;
+ b=kWRtJU1CfgOxtF/8mlp79trUJpUnhoRP19Dy6OCrCVg8O+s8QWGaa9cF5yeO582JuF
+ 6XlURCtOVuTBJ4xS/lrXQAb0rWgg/fDrJ7eJO+bvGnwtjpdHqBVt74l92O39w+eTLnoL
+ TOkWylwkR+K7f0m8yzbd9qTMQBYm3oR/rZysKg9n0I9125VtB5bY++6+CulldPR/p9XE
+ pB+AVvBc01VTOYeSSVxx/JDKXIEiRG6rVOfyW4Vt/tyZ/v/d9+S+ToTfo029kFZXrrP3
+ y8eLaHIcM2GaltzDSs9yq8J6Z1n0Gd5/oyYTaTHGSg2uuTjd3AoVOy40gQFRiXfvBLam
+ mAIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=5dbGGreB+KCx7HwQpBslacsaletNg0zMJJsmt+JNjp4=;
- b=MINTNwkx2WEYgSopQhTqAuVAq777GUjSFQdBXVb8elvdKe/g6Ak0nq4iC6Wk55i9fo
- MaAU7chfLtTCSKengZeMS+LaibKBEhlhRyxgfU0cqdR9jbGAqg3pm1RDzCpGItz9BayN
- u3yCVu2cIEI2fTdgw1uO8vNUhpC40Z/jvjbfTOgKtRPE2Er7jRA7Qjblk9HZ7BsARq+Q
- n2mGlsyOBRQRWSX3zLqfpm3P7oN6/qQXr6Q66NjTc7s6z1+xGYZ01QiIfrPBgZxJcuAa
- EQjqjfCRJuLal3WftSQxhziPFVYOQdji+c0HvP9OCPMzQ8M80KQitNvwcDRB1xohgGTd
- wz7g==
-X-Gm-Message-State: AOAM530RHkA0n04zcgUFR3+PojHwoS7jhCCFAGrOUdm0ZoWtTh26YSjw
- PUoj3vipk9Qz0hL+oCyAhSncAZFYVeFQ2A==
-X-Google-Smtp-Source: ABdhPJyCBOWddp9IlWH3WjqhQibz5XPPWsX5uxu+F7EzR2SzZEfLx1uo/oycKdCeDLUQ37LXq0vb7g==
-X-Received: by 2002:a7b:c396:: with SMTP id s22mr18320333wmj.38.1615655528577; 
- Sat, 13 Mar 2021 09:12:08 -0800 (PST)
-Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id u17sm4923221wmq.3.2021.03.13.09.12.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 13 Mar 2021 09:12:08 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Andrzej Zaborowski <balrogg@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Rob Herring <robh@kernel.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 3/3] hw/usb: Constify VMStateDescription
-Date: Sat, 13 Mar 2021 18:11:50 +0100
-Message-Id: <20210313171150.2122409-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210313171150.2122409-1-f4bug@amsat.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=hszrK5X1zKFPcgVtNADuTzMFuaYAiaXIMIPUe65dQ1c=;
+ b=p1uyFcH1CyeHWt/n6KoLosPJhFsKYthG459cDbVY5TXy/qmak/I6pdX+ojKmAqMmxO
+ fRmT806kG5n9DpNFvNyi/JP0cLjBe0nR8ZJv9/AEx6/hryJ3soRLTey80jNeBiuavOEv
+ H0uzNryR/ofDjrOc+PE4ywEgSoy9qG4ef606dbIByaI0jCCbj3hQrJJjp1UjBqwT3VAM
+ pZyO9FdVWw3vBwNIRmCxa2ZkhXCBb5L0YM+bJmNdOEwW6K/kGzIrA0OF9krs1l14i9th
+ denLdava3Ip88CLEmbSAPUq3vVzH9nDzy983zBnp2p3ui338ETLuOdP3+r4zHqDvn+0R
+ 4ZpQ==
+X-Gm-Message-State: AOAM530rypN6kqs3lmrKfTCXwGHgmScJnzt37kMyD+UzI7DKVbFZwOW5
+ 91bzKoNFUgUeBOl1OeW6VEbIag==
+X-Google-Smtp-Source: ABdhPJwF0prQSbFnVEdq5Ijn3i9w9GNTmEZnEwszivkErHQDmTCTmXKl0kbfsaFR0YGqmIwbsMfQbQ==
+X-Received: by 2002:a05:620a:2216:: with SMTP id
+ m22mr18650156qkh.73.1615656262314; 
+ Sat, 13 Mar 2021 09:24:22 -0800 (PST)
+Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net.
+ [187.189.51.144])
+ by smtp.gmail.com with ESMTPSA id j24sm7013084qka.67.2021.03.13.09.24.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 13 Mar 2021 09:24:21 -0800 (PST)
+Subject: Re: [PATCH 0/3] hw: Constify VMStateDescription
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Rob Herring <robh@kernel.org>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>
 References: <20210313171150.2122409-1-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <a8ae61ec-6b2b-c28c-3aa8-943121503322@linaro.org>
+Date: Sat, 13 Mar 2021 11:24:18 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210313171150.2122409-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::731;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x731.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,68 +84,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 Mar 2021 17:12:16 -0000
+X-List-Received-Date: Sat, 13 Mar 2021 17:24:34 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/usb/ccid-card-passthru.c   | 2 +-
- hw/usb/dev-smartcard-reader.c | 8 ++++----
- 2 files changed, 5 insertions(+), 5 deletions(-)
+On 3/13/21 11:11 AM, Philippe Mathieu-Daudé wrote:
+> Philippe Mathieu-Daudé (3):
+>    hw/arm: Constify VMStateDescription
+>    hw/display/qxl: Constify VMStateDescription
+>    hw/usb: Constify VMStateDescription
 
-diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
-index c1a90fcc7a5..7212d0d7fb5 100644
---- a/hw/usb/ccid-card-passthru.c
-+++ b/hw/usb/ccid-card-passthru.c
-@@ -374,7 +374,7 @@ static void passthru_realize(CCIDCardState *base, Error **errp)
-     card->atr_length = sizeof(DEFAULT_ATR);
- }
- 
--static VMStateDescription passthru_vmstate = {
-+static const VMStateDescription passthru_vmstate = {
-     .name = "ccid-card-passthru",
-     .version_id = 1,
-     .minimum_version_id = 1,
-diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
-index 80109fa5516..b3845ccdc14 100644
---- a/hw/usb/dev-smartcard-reader.c
-+++ b/hw/usb/dev-smartcard-reader.c
-@@ -1365,7 +1365,7 @@ static int ccid_pre_save(void *opaque)
-     return 0;
- }
- 
--static VMStateDescription bulk_in_vmstate = {
-+static const VMStateDescription bulk_in_vmstate = {
-     .name = "CCID BulkIn state",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -1377,7 +1377,7 @@ static VMStateDescription bulk_in_vmstate = {
-     }
- };
- 
--static VMStateDescription answer_vmstate = {
-+static const VMStateDescription answer_vmstate = {
-     .name = "CCID Answer state",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -1388,7 +1388,7 @@ static VMStateDescription answer_vmstate = {
-     }
- };
- 
--static VMStateDescription usb_device_vmstate = {
-+static const VMStateDescription usb_device_vmstate = {
-     .name = "usb_device",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -1400,7 +1400,7 @@ static VMStateDescription usb_device_vmstate = {
-     }
- };
- 
--static VMStateDescription ccid_vmstate = {
-+static const VMStateDescription ccid_vmstate = {
-     .name = "usb-ccid",
-     .version_id = 1,
-     .minimum_version_id = 1,
--- 
-2.26.2
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
+r~
 
