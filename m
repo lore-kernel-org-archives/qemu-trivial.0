@@ -1,45 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lKjQu-00037W-Vx
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Mar 2021 10:10:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57880)
+	id 1lL7e1-0003aK-6l
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Mar 2021 12:01:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1lKfsK-0006vk-3L; Fri, 12 Mar 2021 06:22:36 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3935)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1lKfsG-0002u0-S2; Fri, 12 Mar 2021 06:22:35 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Dxjyq2P01zNlsR;
- Fri, 12 Mar 2021 19:20:03 +0800 (CST)
-Received: from DESKTOP-8RFUVS3.china.huawei.com (10.174.185.179) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 12 Mar 2021 19:22:11 +0800
-From: Zenghui Yu <yuzenghui@huawei.com>
-To: <elena.ufimtseva@oracle.com>, <jag.raman@oracle.com>,
- <john.g.johnson@oracle.com>
-CC: <berrange@redhat.com>, <philmd@redhat.com>, <mjt@tls.msk.ru>,
- <laurent@vivier.eu>, <wanghaibin.wang@huawei.com>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, Zenghui Yu <yuzenghui@huawei.com>
-Subject: [PATCH v3] multi-process: Initialize variables declared with g_auto*
-Date: Fri, 12 Mar 2021 19:21:43 +0800
-Message-ID: <20210312112143.1369-1-yuzenghui@huawei.com>
-X-Mailer: git-send-email 2.23.0.windows.1
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lL7dy-0003VA-SE; Sat, 13 Mar 2021 12:01:38 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:42766)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lL7dx-0004nZ-Cp; Sat, 13 Mar 2021 12:01:38 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ b2-20020a7bc2420000b029010be1081172so16949485wmj.1; 
+ Sat, 13 Mar 2021 09:01:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1zohvJ6sxOOfnWcGj8WNa9DGoLyrIMi2NDlIWklnQZ0=;
+ b=OM6pQwt/kkccbZR3cVt4ymTr8LOkJ8w7VVGXpd73Hm4EJmFvQodROi/Q7d/R8JrxWr
+ +ehjto8shw4J/qM6FSPAkFlg0rbBYX4YvpP9Kv3fwuRt7CKmBqUCTu3p29KG/xjScHQE
+ 6npQ4Tn2Tbn8lKFOjMElKMSsFDOwB+pDjpmq3S9lSsO1XRQehwygrTiUAEFsZFDVu4MO
+ hCGEwK+n3De6xEYE3RMXlxxBSipkEQup0/J1BihMn1n3pAtwUGcrUV/zfSXIe0bxN/YI
+ Uhpqv9bok9fFDcb/6M9QdKt1ziqZ0ATVLhFOzcGSIhgExZf2cCLwhAzyKQct68LJLzcV
+ mdTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=1zohvJ6sxOOfnWcGj8WNa9DGoLyrIMi2NDlIWklnQZ0=;
+ b=G9bAKyZm6OPyJDdI4bEnRZi2KiYerjyLnJJvzE00vJphq5OTmreDES/QjJ2TRSx4lK
+ uQ1IdCNbQ8xj3Jr+ntsrlegYC8vqk+g+dP1mZNXSuusaRMAsaunZazCGxtv7skrpYE0j
+ Eyga+li4269HN31b5HQDyz0PY013QPZRZJ4MV/qe8KJZ/mqEMCqI1S9C0N8fWj9v/+AO
+ gxDVii28aCU/ymZj5QiI7/J5xelBZ02Nt0GkZ9REqw3K0wc7ypP1AUw+kKx/lFP84v6k
+ 9chk8OW6QCVSF0EJBCwQn4Qe6JaOm3L92plgzjxQTYficR6SE3mKCWZjHdHxmdncTklE
+ gz4Q==
+X-Gm-Message-State: AOAM532dn3AFeJXOy9gH2XAkYjmaLUNPcXUaIh+CZH4ALZWYRCfz+Dk2
+ XRaFAmELvAH2z1iji99JcpVEsFlFft+r5Q==
+X-Google-Smtp-Source: ABdhPJx6sVPibfoGBxIEe2KVQLhSQoQ5bmSGpN3Jj4zad1dNH2ixwWo4HL8kjZZaVNHvqSKMbbycfw==
+X-Received: by 2002:a1c:e041:: with SMTP id x62mr18173662wmg.95.1615654893887; 
+ Sat, 13 Mar 2021 09:01:33 -0800 (PST)
+Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id x13sm12537825wrt.75.2021.03.13.09.01.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 13 Mar 2021 09:01:33 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
+Subject: [PATCH] hw/display/bcm2835_fb: Remove DeviceReset() call in
+ DeviceRealize()
+Date: Sat, 13 Mar 2021 18:01:31 +0100
+Message-Id: <20210313170131.2116837-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.185.179]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=yuzenghui@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 12 Mar 2021 10:10:29 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -51,74 +81,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Mar 2021 11:22:36 -0000
+X-List-Received-Date: Sat, 13 Mar 2021 17:01:39 -0000
 
-Quote docs/devel/style.rst (section "Automatic memory deallocation"):
+When QDev objects have their DeviceReset handler set, they
+shouldn't worry about calling it at realization stage (it
+is handled by hw/core/qdev.c::device_set_realized).
 
-* Variables declared with g_auto* MUST always be initialized,
-  otherwise the cleanup function will use uninitialized stack memory
+Remove the pointless/confusing bcm2835_fb_reset() call.
 
-Initialize @name properly to get rid of the compilation error (using
-gcc-7.3.0 on CentOS):
-
-../hw/remote/proxy.c: In function 'pci_proxy_dev_realize':
-/usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: 'name' may be used uninitialized in this function [-Werror=maybe-uninitialized]
-   g_free (*pp);
-   ^~~~~~~~~~~~
-../hw/remote/proxy.c:350:30: note: 'name' was declared here
-             g_autofree char *name;
-                              ^~~~
-
-Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
-Reviewed-by: Jagannathan Raman <jag.raman@oracle.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-* From v2:
-  - Add OS distro and compiler version into commit message
-  - Add Philippe's R-b
-  - Cc: qemu-trivial@nongnu.org
+ hw/display/bcm2835_fb.c | 2 --
+ 1 file changed, 2 deletions(-)
 
- hw/remote/memory.c | 5 ++---
- hw/remote/proxy.c  | 3 +--
- 2 files changed, 3 insertions(+), 5 deletions(-)
-
-diff --git a/hw/remote/memory.c b/hw/remote/memory.c
-index 32085b1e05..d97947d4b8 100644
---- a/hw/remote/memory.c
-+++ b/hw/remote/memory.c
-@@ -42,10 +42,9 @@ void remote_sysmem_reconfig(MPQemuMsg *msg, Error **errp)
+diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+index 2be77bdd3a0..445e8636770 100644
+--- a/hw/display/bcm2835_fb.c
++++ b/hw/display/bcm2835_fb.c
+@@ -424,8 +424,6 @@ static void bcm2835_fb_realize(DeviceState *dev, Error **errp)
+     s->dma_mr = MEMORY_REGION(obj);
+     address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_FB "-memory");
  
-     remote_sysmem_reset();
- 
--    for (region = 0; region < msg->num_fds; region++) {
--        g_autofree char *name;
-+    for (region = 0; region < msg->num_fds; region++, suffix++) {
-+        g_autofree char *name = g_strdup_printf("remote-mem-%u", suffix);
-         subregion = g_new(MemoryRegion, 1);
--        name = g_strdup_printf("remote-mem-%u", suffix++);
-         memory_region_init_ram_from_fd(subregion, NULL,
-                                        name, sysmem_info->sizes[region],
-                                        true, msg->fds[region],
-diff --git a/hw/remote/proxy.c b/hw/remote/proxy.c
-index 4fa4be079d..6dda705fc2 100644
---- a/hw/remote/proxy.c
-+++ b/hw/remote/proxy.c
-@@ -347,13 +347,12 @@ static void probe_pci_info(PCIDevice *dev, Error **errp)
-                    PCI_BASE_ADDRESS_SPACE_IO : PCI_BASE_ADDRESS_SPACE_MEMORY;
- 
-         if (size) {
--            g_autofree char *name;
-+            g_autofree char *name = g_strdup_printf("bar-region-%d", i);
-             pdev->region[i].dev = pdev;
-             pdev->region[i].present = true;
-             if (type == PCI_BASE_ADDRESS_SPACE_MEMORY) {
-                 pdev->region[i].memory = true;
-             }
--            name = g_strdup_printf("bar-region-%d", i);
-             memory_region_init_io(&pdev->region[i].mr, OBJECT(pdev),
-                                   &proxy_mr_ops, &pdev->region[i],
-                                   name, size);
+-    bcm2835_fb_reset(dev);
+-
+     s->con = graphic_console_init(dev, 0, &vgafb_ops, s);
+     qemu_console_resize(s->con, s->config.xres, s->config.yres);
+ }
 -- 
-2.19.1
+2.26.2
 
 
