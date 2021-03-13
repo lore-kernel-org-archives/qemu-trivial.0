@@ -1,66 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lL7e1-0003aK-6l
-	for mharc-qemu-trivial@gnu.org; Sat, 13 Mar 2021 12:01:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49906)
+	id 1lL7o3-0005DB-5t
+	for mharc-qemu-trivial@gnu.org; Sat, 13 Mar 2021 12:12:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lL7dy-0003VA-SE; Sat, 13 Mar 2021 12:01:38 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:42766)
+ id 1lL7nx-00056z-E6; Sat, 13 Mar 2021 12:11:58 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:40848)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lL7dx-0004nZ-Cp; Sat, 13 Mar 2021 12:01:38 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- b2-20020a7bc2420000b029010be1081172so16949485wmj.1; 
- Sat, 13 Mar 2021 09:01:35 -0800 (PST)
+ id 1lL7nv-0001uQ-Vy; Sat, 13 Mar 2021 12:11:57 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ y124-20020a1c32820000b029010c93864955so17632316wmy.5; 
+ Sat, 13 Mar 2021 09:11:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=1zohvJ6sxOOfnWcGj8WNa9DGoLyrIMi2NDlIWklnQZ0=;
- b=OM6pQwt/kkccbZR3cVt4ymTr8LOkJ8w7VVGXpd73Hm4EJmFvQodROi/Q7d/R8JrxWr
- +ehjto8shw4J/qM6FSPAkFlg0rbBYX4YvpP9Kv3fwuRt7CKmBqUCTu3p29KG/xjScHQE
- 6npQ4Tn2Tbn8lKFOjMElKMSsFDOwB+pDjpmq3S9lSsO1XRQehwygrTiUAEFsZFDVu4MO
- hCGEwK+n3De6xEYE3RMXlxxBSipkEQup0/J1BihMn1n3pAtwUGcrUV/zfSXIe0bxN/YI
- Uhpqv9bok9fFDcb/6M9QdKt1ziqZ0ATVLhFOzcGSIhgExZf2cCLwhAzyKQct68LJLzcV
- mdTQ==
+ bh=YUEARRun798+nh7MINi50vXMqDU+cTmUPB2cqCr7TCU=;
+ b=TAOYj8E5L4hYB0STOiauw0k5ue2hv3kAyvz8n8QFezr2fKxq6rg0tG4i6OLndqDWWV
+ 2t4CNP5qxF8AnuApR1ESnk2X8DQHuTpusEdnMwxGWorDInxQmS8tTZyzaeJbNSI61ru8
+ Kuvf58pcNbBpeAoeM4vVS/cuj7zvDen3NDSgGxgaaHlQmZ0CqS089L+DGdV32YdAze8C
+ O7QI56ZRaFNjChCXDIkA6oU59r2l9eCpN67spgecN4x8h0pC1z3pqn9VYEfkfYUlnuZc
+ Jx4LGHK3SYmNqxfK0LUv8wTBaEObHBlLaFSnx9F1W+uKIKSw1QOaxq/3PHmkkj9xg8yo
+ djwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=1zohvJ6sxOOfnWcGj8WNa9DGoLyrIMi2NDlIWklnQZ0=;
- b=G9bAKyZm6OPyJDdI4bEnRZi2KiYerjyLnJJvzE00vJphq5OTmreDES/QjJ2TRSx4lK
- uQ1IdCNbQ8xj3Jr+ntsrlegYC8vqk+g+dP1mZNXSuusaRMAsaunZazCGxtv7skrpYE0j
- Eyga+li4269HN31b5HQDyz0PY013QPZRZJ4MV/qe8KJZ/mqEMCqI1S9C0N8fWj9v/+AO
- gxDVii28aCU/ymZj5QiI7/J5xelBZ02Nt0GkZ9REqw3K0wc7ypP1AUw+kKx/lFP84v6k
- 9chk8OW6QCVSF0EJBCwQn4Qe6JaOm3L92plgzjxQTYficR6SE3mKCWZjHdHxmdncTklE
- gz4Q==
-X-Gm-Message-State: AOAM532dn3AFeJXOy9gH2XAkYjmaLUNPcXUaIh+CZH4ALZWYRCfz+Dk2
- XRaFAmELvAH2z1iji99JcpVEsFlFft+r5Q==
-X-Google-Smtp-Source: ABdhPJx6sVPibfoGBxIEe2KVQLhSQoQ5bmSGpN3Jj4zad1dNH2ixwWo4HL8kjZZaVNHvqSKMbbycfw==
-X-Received: by 2002:a1c:e041:: with SMTP id x62mr18173662wmg.95.1615654893887; 
- Sat, 13 Mar 2021 09:01:33 -0800 (PST)
+ bh=YUEARRun798+nh7MINi50vXMqDU+cTmUPB2cqCr7TCU=;
+ b=OfqsYt/iEvpWfoQHXHZX0fGg4mAlIoYXJRjOwmOSbSXowoYbWFZPzUQTu3cmcttahc
+ AwQHqurbj2Rttzc9xqGTPpfi5x8aXJkbNzCBHnJK6s662GSrDCOA2zVhOBkP8w7GzHNG
+ JIX+LfW8pOXH909dWle3C13aL0FVKCNeaj0A2E0hEpfrbydtDGDGqflPUXaTOt6hYRKV
+ m6Now/rWuVxoPbuIPYPzxY3Xehfp8H5GYxWHE8WpYwfzriVuKLNcuWy4W6SNhxCA0vfu
+ w8LWTNfSocWsjC2Lq2U5xceQlUppjzJoiUzeMFBut6CpxqdemhYyvPKoIRMlNPO2Vm/R
+ oSRA==
+X-Gm-Message-State: AOAM532RAZBnQtoteT0P+atD4asCZ+HZNj8SVkrsPMI5Vy+g7p8YQhSW
+ 9BhLEneZr6IzvvnvJzPktVRUDnlekKrifQ==
+X-Google-Smtp-Source: ABdhPJxLJbwEg/9WG397aUihh/bANLY91f/oluZrJupjFtAOWrTktNy7RKm1Kw0l51xbN3OsSUUrWg==
+X-Received: by 2002:a1c:3b42:: with SMTP id i63mr18843594wma.124.1615655513158; 
+ Sat, 13 Mar 2021 09:11:53 -0800 (PST)
 Received: from localhost.localdomain (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id x13sm12537825wrt.75.2021.03.13.09.01.32
+ by smtp.gmail.com with ESMTPSA id o188sm7470325wme.7.2021.03.13.09.11.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 13 Mar 2021 09:01:33 -0800 (PST)
+ Sat, 13 Mar 2021 09:11:52 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Subject: [PATCH] hw/display/bcm2835_fb: Remove DeviceReset() call in
- DeviceRealize()
-Date: Sat, 13 Mar 2021 18:01:31 +0100
-Message-Id: <20210313170131.2116837-1-f4bug@amsat.org>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Rob Herring <robh@kernel.org>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 0/3] hw: Constify VMStateDescription
+Date: Sat, 13 Mar 2021 18:11:47 +0100
+Message-Id: <20210313171150.2122409-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -81,33 +80,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 Mar 2021 17:01:39 -0000
+X-List-Received-Date: Sat, 13 Mar 2021 17:12:01 -0000
 
-When QDev objects have their DeviceReset handler set, they
-shouldn't worry about calling it at realization stage (it
-is handled by hw/core/qdev.c::device_set_realized).
-
-Remove the pointless/confusing bcm2835_fb_reset() call.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/display/bcm2835_fb.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-index 2be77bdd3a0..445e8636770 100644
---- a/hw/display/bcm2835_fb.c
-+++ b/hw/display/bcm2835_fb.c
-@@ -424,8 +424,6 @@ static void bcm2835_fb_realize(DeviceState *dev, Error **errp)
-     s->dma_mr = MEMORY_REGION(obj);
-     address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_FB "-memory");
- 
--    bcm2835_fb_reset(dev);
--
-     s->con = graphic_console_init(dev, 0, &vgafb_ops, s);
-     qemu_console_resize(s->con, s->config.xres, s->config.yres);
- }
--- 
-2.26.2
-
+VMStateDescription isn't supposed to be modified.=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  hw/arm: Constify VMStateDescription=0D
+  hw/display/qxl: Constify VMStateDescription=0D
+  hw/usb: Constify VMStateDescription=0D
+=0D
+ hw/arm/highbank.c             | 2 +-=0D
+ hw/arm/pxa2xx_pic.c           | 2 +-=0D
+ hw/arm/spitz.c                | 4 ++--=0D
+ hw/arm/strongarm.c            | 2 +-=0D
+ hw/arm/z2.c                   | 4 ++--=0D
+ hw/display/qxl.c              | 8 ++++----=0D
+ hw/dma/pxa2xx_dma.c           | 4 ++--=0D
+ hw/misc/mst_fpga.c            | 2 +-=0D
+ hw/usb/ccid-card-passthru.c   | 2 +-=0D
+ hw/usb/dev-smartcard-reader.c | 8 ++++----=0D
+ 10 files changed, 19 insertions(+), 19 deletions(-)=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D
 
