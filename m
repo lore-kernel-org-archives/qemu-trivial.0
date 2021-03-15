@@ -1,96 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lLlQw-0000U3-VQ
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Mar 2021 07:30:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38314)
+	id 1lLm2B-0006qM-DJ
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Mar 2021 08:09:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47428)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lLlQq-0000Ss-Oe
- for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 07:30:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57888)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lLlQo-0005Dm-8q
- for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 07:30:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615807839;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cP0BACdI23ahBtG0WzSoXD8RnBI0wEAFglPKu/uN4OM=;
- b=UjV7OlBxcVXMyn032yzJi3KuZt7wuIJAN8JgU78zGobAX6gFBxJF/n1wHfq3ga+iyeo3WL
- Byj1dhmDyUgoRy+PMM8k6xyBulPbRcjPnNtOJ84npfvaYU2fg10zUH6dXSsPW0CZ0JRCLX
- SejocdoL1Sw0mnLV4saCF2Ohreg/CIs=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-467-QbSEazXqMROWMxS8KR2Fag-1; Mon, 15 Mar 2021 07:30:35 -0400
-X-MC-Unique: QbSEazXqMROWMxS8KR2Fag-1
-Received: by mail-ej1-f72.google.com with SMTP id fy8so11816240ejb.19
- for <qemu-trivial@nongnu.org>; Mon, 15 Mar 2021 04:30:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lLm29-0006nt-5f
+ for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 08:09:17 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:33699)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lLm24-0001Yo-UK
+ for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 08:09:16 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id jt13so65805697ejb.0
+ for <qemu-trivial@nongnu.org>; Mon, 15 Mar 2021 05:09:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=EVI+7dtPeVI4Zc11XL2oUj9+lNG5jQ1jWHycmnb5yFE=;
+ b=N8EeBtei8UjH4RKNSFYfpv+MIILlAVf29DJ+uzDtlcPOedv01q+91ctW09DecQ6uzi
+ C/oEPpD+2Vy58ouiJekLGtUZJwuXpqQ9fTnVucY5nvPO84GcZC3naqW8LbgZxmUuPkQu
+ oVYV8jz3jgU8lRATrpRVrkrI6GeOJL37m8O5ym6CNydCQ1BUGRSKBYGfZroeBIHfYivh
+ KVRfnF8cOf3L8S/RqW71/Xmw5Qydy8sCd+w8SnY7agKFVgfdE9ecCYCqLDuom6qfnK0W
+ gesUHmvmucGzPlHJJTeXD/H0qF4mzqpI4sjTViZcLKEstyJ96td1vS59n4pRCvGN2o1Y
+ y15w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=cP0BACdI23ahBtG0WzSoXD8RnBI0wEAFglPKu/uN4OM=;
- b=Mxb72Fv3mLOngMQ/WQJOMd3yalNJVaXaLIEN4dHaZJrHjXIuu6JMf3P5UkJMLNwPVH
- o+XD+6ZegWpGb811xLqeX5qK7qJYkZbWh7EP8qViOaon5BjVweMp8Xnh6YnLcGA8COLw
- dSzhICXjigi/EPCuGVpKisvZRU04d/h5AlLkxfOpSBe2iMXzmUBy7uIaNx8nvJ2T8zzt
- jZ3884PoVi9v4W5HtF1SzAhW4+tH0ayc7hDS+1IlTAuzZskeHXw0hfwIOZyK5yPtRfRZ
- WDhM9Qs3ipGvA/Pi4FVlRM5g9pIC5Rv6FoOMGUV0ZwB8/BixdxOYj1/c2r3FkJhlP2Jc
- 4PHA==
-X-Gm-Message-State: AOAM531k5s1HVkn9YegP7iyujxWaXWuoP8DJukI12umqdGpJhGzxnFMJ
- OWuWEnQ/5BumVkVZgMYKRhoLQyYpu349Ac3zHcNKyXiBhIRuB6/Skggop2KLkfdyVDXJiHNONhj
- WQrxaXVVtnMQEco4vkg==
-X-Received: by 2002:a17:906:f44:: with SMTP id
- h4mr22465224ejj.204.1615807834422; 
- Mon, 15 Mar 2021 04:30:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJynvA5k6/x1t1rCXzhSthvxfNELyPrE+adW7TxlJ7O7fEhuH+0SRwwj+ajv81wozbXkC6c40A==
-X-Received: by 2002:a17:906:f44:: with SMTP id
- h4mr22465168ejj.204.1615807833866; 
- Mon, 15 Mar 2021 04:30:33 -0700 (PDT)
-Received: from ?IPv6:2001:b07:add:ec09:c399:bc87:7b6c:fb2a?
- ([2001:b07:add:ec09:c399:bc87:7b6c:fb2a])
- by smtp.gmail.com with ESMTPSA id y2sm7275394ejf.30.2021.03.15.04.30.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Mar 2021 04:30:33 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=EVI+7dtPeVI4Zc11XL2oUj9+lNG5jQ1jWHycmnb5yFE=;
+ b=K1us3xIVtPW4CqU4PgnqiC5yofD3jQ48uoLjg8HpbgdHxoe3i8xeTSxSO3uKB+YtSt
+ JARtwXQzoPJfo9RJTb/2/b9tVNaQ1AsZm8qeSTTM1yqVSvRvMv0/eU5SQg2dcOJuHR2Q
+ 7joU+AeJOvUSpGM6eNNJyhDARYObUpmZiPEW4ozoCZ7fw+9FxOvQ/F/wvb6xL8WaH9lC
+ GmTKOOkS3RnClTIH07rPhALb6t9mlMid9KpL8qZQAuuNnRxGJiR1ww4si6tXPcwckCtw
+ gU33krOcUyLjaIzgvomqgq7oIcEHG6udt2BCAzd/K1fTcIPGl+YlrX3hp5rnbC+2JRno
+ DBZw==
+X-Gm-Message-State: AOAM5321DCEfs4W5QlaAs2xBRzAj7zRw6saVoeYeJfzRTqbKUWPsAbkr
+ klaom/sQGiqfMKkSmjdD4gF5BBxcSPrsmZrUcj6jbA==
+X-Google-Smtp-Source: ABdhPJz+/fI7MZBQ0NMMFKZP+hXsIHFUQemiFs+DSAUboezBnounE3NH5ecBSsU3Y9gbDx1BvoOUlLZbpLMdubhkxG4=
+X-Received: by 2002:a17:906:c301:: with SMTP id
+ s1mr22719900ejz.382.1615810149948; 
+ Mon, 15 Mar 2021 05:09:09 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210307222625.347268-1-f4bug@amsat.org>
+ <6f13948a-1a33-1eb3-90d0-106afbb2caf8@redhat.com>
+In-Reply-To: <6f13948a-1a33-1eb3-90d0-106afbb2caf8@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 15 Mar 2021 12:08:58 +0000
+Message-ID: <CAFEAcA_nMogdN-Q7Z7S=5BY6RWKDq0jnHya5BaoUe+6n8oKWYQ@mail.gmail.com>
 Subject: Re: [PATCH 0/4] hw/block/pflash_cfi01: Remove
  pflash_cfi01_get_memory()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>,
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Max Reitz <mreitz@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, 
+ Qemu-block <qemu-block@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Max Reitz <mreitz@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
  Aurelien Jarno <aurelien@aurel32.net>
-References: <20210307222625.347268-1-f4bug@amsat.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <6f13948a-1a33-1eb3-90d0-106afbb2caf8@redhat.com>
-Date: Mon, 15 Mar 2021 12:30:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
-MIME-Version: 1.0
-In-Reply-To: <20210307222625.347268-1-f4bug@amsat.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -103,37 +83,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Mar 2021 11:30:46 -0000
+X-List-Received-Date: Mon, 15 Mar 2021 12:09:18 -0000
 
-On 07/03/21 23:26, Philippe Mathieu-Daudé wrote:
-> TYPE_PFLASH_CFI01 is a TYPE_SYS_BUS_DEVICE which registers its romd
-> MemoryRegion with sysbus_init_mmio(), so we can use the generic
-> sysbus_mmio_get_region() to get the region, no need for a specific
-> pflash_cfi01_get_memory() helper.
-> 
-> First replace the few pflash_cfi01_get_memory() uses by
-> sysbus_mmio_get_region(), then remove the now unused helper.
+On Mon, 15 Mar 2021 at 11:34, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 07/03/21 23:26, Philippe Mathieu-Daud=C3=A9 wrote:
+> > TYPE_PFLASH_CFI01 is a TYPE_SYS_BUS_DEVICE which registers its romd
+> > MemoryRegion with sysbus_init_mmio(), so we can use the generic
+> > sysbus_mmio_get_region() to get the region, no need for a specific
+> > pflash_cfi01_get_memory() helper.
+> >
+> > First replace the few pflash_cfi01_get_memory() uses by
+> > sysbus_mmio_get_region(), then remove the now unused helper.
+>
+> Why is this an improvement?  You're replacing nice and readable code
+> with an implementation-dependent function whose second argument is a
+> magic number.  The right patch would _add_ more of these helpers, not
+> remove them.
 
-Why is this an improvement?  You're replacing nice and readable code 
-with an implementation-dependent function whose second argument is a 
-magic number.  The right patch would _add_ more of these helpers, not 
-remove them.
+I agree that sysbus_mmio_get_region()'s use of arbitrary
+integers is unfortunate (we should look at improving that
+to use usefully named regions I guess), but I don't see
+why pflash_cfi01 should expose its MemoryRegion to users
+in a different way to every other sysbus device.
 
-Paolo
-
-> Philippe Mathieu-Daudé (4):
->    hw/i386/pc: Get pflash MemoryRegion with sysbus_mmio_get_region()
->    hw/mips/malta: Get pflash MemoryRegion with sysbus_mmio_get_region()
->    hw/xtensa/xtfpga: Get pflash MemoryRegion with
->      sysbus_mmio_get_region()
->    hw/block/pflash_cfi01: Remove pflash_cfi01_get_memory()
-> 
->   include/hw/block/flash.h | 1 -
->   hw/block/pflash_cfi01.c  | 5 -----
->   hw/i386/pc_sysfw.c       | 2 +-
->   hw/mips/malta.c          | 2 +-
->   hw/xtensa/xtfpga.c       | 3 ++-
->   5 files changed, 4 insertions(+), 9 deletions(-)
-> 
-
+thanks
+-- PMM
 
