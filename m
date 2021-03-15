@@ -1,64 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lLDkz-0002gg-4K
-	for mharc-qemu-trivial@gnu.org; Sat, 13 Mar 2021 18:33:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56870)
+	id 1lLg5U-0004ae-08
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Mar 2021 01:48:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
- id 1lLDkx-0002gW-Pd; Sat, 13 Mar 2021 18:33:15 -0500
-Received: from speedy.comstyle.com ([2607:f938:3000:8::2]:3457
- helo=mail.comstyle.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_CHACHA20_POLY1305:256)
- (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
- id 1lLDku-0007z7-7h; Sat, 13 Mar 2021 18:33:15 -0500
-Received: from mail.comstyle.com (localhost [127.0.0.1])
- by mail.comstyle.com (Postfix) with ESMTP id 4DyfDS32RQz8PbN;
- Sat, 13 Mar 2021 18:35:04 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=comstyle.com; h=message-id
- :date:mime-version:subject:to:cc:references:from:in-reply-to
- :content-type:content-transfer-encoding; s=default; bh=vClRCeeTj
- I1qXeTL/rp/vaRm6zA=; b=pwhSUWbInvZK16PmyrLa93GzaTR62JGk76qD96mnn
- dLrRtB6uiHBeer5DgwruEagr50mC+OUxZzFXtjWly2G/M1qe2KsP0KM1z7+SEj15
- xw/TQW6OXs3tbdTnp1xzS+K696kydvQRd6B2TvGUOeBiLdezNrBUZU4fhN7YWjzC
- 2o=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=comstyle.com; h=message-id
- :date:mime-version:subject:to:cc:references:from:in-reply-to
- :content-type:content-transfer-encoding; q=dns; s=default; b=Yba
- TD+PFq4CKbBMmGv7BCV9OHog8VjeDqSHcx07u/vaCDUhmKu8GU0/PKIHhjJDPl5O
- ZZiIrWsIY3YXewbdRtRJk9KWReOirqcaAW6eUvncmov2Lkf+NM3qXE+2Gd1JFnYZ
- a3bmSnZj0vPqW3vSdrXQupDV5m0Z6Ne/PBHKnbZc=
-Received: from [192.168.6.30]
- (bras-base-toroon2719w-grc-43-174-88-243-61.dsl.bell.ca [174.88.243.61])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: brad)
- by mail.comstyle.com (Postfix) with ESMTPSA id 4DyfDS1x27z8PbK;
- Sat, 13 Mar 2021 18:35:04 -0500 (EST)
-Message-ID: <70bda12d-17fc-5e41-b723-e1409017a599@comstyle.com>
-Date: Sat, 13 Mar 2021 18:33:02 -0500
+ (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
+ id 1lLg5S-0004Zh-9U
+ for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 01:48:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:58274)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
+ id 1lLg5Q-0001n8-Nl
+ for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 01:48:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615787295;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RfrE5wFC+tipqvZEl8jzBYyW95VrV+Gs+ydEX0hOVv8=;
+ b=ftf+iSbv7A5eE9VJEkTWDI2mAYMRAx753Ng6CxM+IuqyPHRUyvLmy7f8+2538QU6dcU2Kk
+ 1huFP87oXdy9sZ2yUOxvjGbSCFZMPFzOFso026RouSt0xgffjwk4hGRUCrxzz66As+1jZt
+ F+Lk53yJ0Lev/gR5xBW/qDRivoTe42Q=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-599-Catb8Q6qN_ikw4nfezCtGg-1; Mon, 15 Mar 2021 01:48:12 -0400
+X-MC-Unique: Catb8Q6qN_ikw4nfezCtGg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 23AF481744F;
+ Mon, 15 Mar 2021 05:48:10 +0000 (UTC)
+Received: from lws.brq.redhat.com (unknown [10.40.193.51])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3D2EA6A857;
+ Mon, 15 Mar 2021 05:48:06 +0000 (UTC)
+Date: Mon, 15 Mar 2021 06:48:04 +0100
+From: Miroslav Rezanina <mrezanin@redhat.com>
+To: Zenghui Yu <yuzenghui@huawei.com>
+Cc: elena.ufimtseva@oracle.com, jag.raman@oracle.com,
+ john.g.johnson@oracle.com, berrange@redhat.com,
+ qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org,
+ laurent@vivier.eu, wanghaibin.wang@huawei.com, philmd@redhat.com
+Subject: Re: [PATCH v3] multi-process: Initialize variables declared with
+ g_auto*
+Message-ID: <20210315054804.6yxv6dvypipwa7wu@lws.brq.redhat.com>
+References: <20210312112143.1369-1-yuzenghui@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101
- Thunderbird/87.0
-Subject: Re: [PATCH] migration: Remove time_t cast for OpenBSD
-Content-Language: en-US
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial
- <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
-References: <YDNdAiOkEYOfmbhT@humpty.home.comstyle.com>
- <7eaad721-9d2a-83ed-00fc-80c8ee37e156@redhat.com>
- <26c9c34a-3872-c044-4b01-06d2eb4bfbb1@vivier.eu> <YEphaTV6uzhDEY7R@work-vm>
- <YEpj8MsBzqfRDTWo@redhat.com>
-From: Brad Smith <brad@comstyle.com>
-In-Reply-To: <YEpj8MsBzqfRDTWo@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f938:3000:8::2;
- envelope-from=brad@comstyle.com; helo=mail.comstyle.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+In-Reply-To: <20210312112143.1369-1-yuzenghui@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mrezanin@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mrezanin@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -72,56 +76,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 Mar 2021 23:33:16 -0000
+X-List-Received-Date: Mon, 15 Mar 2021 05:48:18 -0000
 
-On 3/11/2021 1:39 PM, Daniel P. Berrang=C3=A9 wrote:
-> On Thu, Mar 11, 2021 at 06:28:57PM +0000, Dr. David Alan Gilbert wrote:
->> * Laurent Vivier (laurent@vivier.eu) wrote:
->>> Le 08/03/2021 =C3=A0 12:46, Thomas Huth a =C3=A9crit=C2=A0:
->>>> On 22/02/2021 08.28, Brad Smith wrote:
->>>>> OpenBSD has supported 64-bit time_t across all archs since 5.5 rele=
-ased in 2014.
->>>>>
->>>>> Remove a time_t cast that is no longer necessary.
->>>>>
->>>>>
->>>>> Signed-off-by: Brad Smith <brad@comstyle.com>
->>>>>
->>>>> diff --git a/migration/savevm.c b/migration/savevm.c
->>>>> index 52e2d72e4b..9557f85ba9 100644
->>>>> --- a/migration/savevm.c
->>>>> +++ b/migration/savevm.c
->>>>> @@ -2849,8 +2849,7 @@ bool save_snapshot(const char *name, bool ove=
-rwrite, const char *vmstate,
->>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (name) {
->>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pstrcpy(sn->=
-name, sizeof(sn->name), name);
->>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->>>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* cast below needed fo=
-r OpenBSD where tv_sec is still 'long' */
->>>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 localtime_r((const time=
-_t *)&tv.tv_sec, &tm);
->>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 localtime_r(&tv.tv_sec,=
- &tm);
->>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 strftime(sn-=
->name, sizeof(sn->name), "vm-%Y%m%d%H%M%S", &tm);
->>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>> but the qemu_timeval from "include/sysemu/os-win32.h" still uses a lo=
-ng: is this file compiled for
->>> win32?
->> Yep this fails for me when built with x86_64-w64-mingw32- (it's fine
->> with i686-w64-mingw32- )
-> We could just switch the code to use GDateTime from GLib and thus
-> avoid portability issues. I think this should be equivalent:
->
->       g_autoptr(GDateTime) now =3D g_date_time_new_now_local();
->       g_autofree char *nowstr =3D g_date_time_format(now, "vm-%Y%m%d%H%=
-M%s");
->       strncpy(sn->name, sizeof(sn->name), nowstr);
+On Fri, Mar 12, 2021 at 07:21:43PM +0800, Zenghui Yu wrote:
+> Quote docs/devel/style.rst (section "Automatic memory deallocation"):
+> 
+> * Variables declared with g_auto* MUST always be initialized,
+>   otherwise the cleanup function will use uninitialized stack memory
+> 
+> Initialize @name properly to get rid of the compilation error (using
+> gcc-7.3.0 on CentOS):
+> 
+> ../hw/remote/proxy.c: In function 'pci_proxy_dev_realize':
+> /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: 'name' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>    g_free (*pp);
+>    ^~~~~~~~~~~~
+> ../hw/remote/proxy.c:350:30: note: 'name' was declared here
+>              g_autofree char *name;
+>                               ^~~~
+> 
+> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+> Reviewed-by: Jagannathan Raman <jag.raman@oracle.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> * From v2:
+>   - Add OS distro and compiler version into commit message
+>   - Add Philippe's R-b
+>   - Cc: qemu-trivial@nongnu.org
+> 
+>  hw/remote/memory.c | 5 ++---
+>  hw/remote/proxy.c  | 3 +--
+>  2 files changed, 3 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/remote/memory.c b/hw/remote/memory.c
+> index 32085b1e05..d97947d4b8 100644
+> --- a/hw/remote/memory.c
+> +++ b/hw/remote/memory.c
+> @@ -42,10 +42,9 @@ void remote_sysmem_reconfig(MPQemuMsg *msg, Error **errp)
+>  
+>      remote_sysmem_reset();
+>  
+> -    for (region = 0; region < msg->num_fds; region++) {
+> -        g_autofree char *name;
+> +    for (region = 0; region < msg->num_fds; region++, suffix++) {
+> +        g_autofree char *name = g_strdup_printf("remote-mem-%u", suffix);
+>          subregion = g_new(MemoryRegion, 1);
+> -        name = g_strdup_printf("remote-mem-%u", suffix++);
+>          memory_region_init_ram_from_fd(subregion, NULL,
+>                                         name, sysmem_info->sizes[region],
+>                                         true, msg->fds[region],
+> diff --git a/hw/remote/proxy.c b/hw/remote/proxy.c
+> index 4fa4be079d..6dda705fc2 100644
+> --- a/hw/remote/proxy.c
+> +++ b/hw/remote/proxy.c
+> @@ -347,13 +347,12 @@ static void probe_pci_info(PCIDevice *dev, Error **errp)
+>                     PCI_BASE_ADDRESS_SPACE_IO : PCI_BASE_ADDRESS_SPACE_MEMORY;
+>  
+>          if (size) {
+> -            g_autofree char *name;
+> +            g_autofree char *name = g_strdup_printf("bar-region-%d", i);
+>              pdev->region[i].dev = pdev;
+>              pdev->region[i].present = true;
+>              if (type == PCI_BASE_ADDRESS_SPACE_MEMORY) {
+>                  pdev->region[i].memory = true;
+>              }
+> -            name = g_strdup_printf("bar-region-%d", i);
+>              memory_region_init_io(&pdev->region[i].mr, OBJECT(pdev),
+>                                    &proxy_mr_ops, &pdev->region[i],
+>                                    name, size);
+> -- 
+> 2.19.1
+> 
+> 
 
-Which way do you guys want to go? Something like above, remove the commen=
-t
-or some variation on the comment but not mentioning OpenBSD since it is n=
-o
-longer relevant?
+Missing declaration without initialization in hw/s390x/s390-pci-vfio.c
+othwerwise correct. Will you send v4 with missing initialization or
+should I send then as another patch?
+
+Mirek
+
 
