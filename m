@@ -1,49 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lLoYt-0004d9-4o
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Mar 2021 10:51:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33484)
+	id 1lLobT-0006pb-N4
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Mar 2021 10:53:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lLoYq-0004bb-5R
- for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 10:51:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23309)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lLobR-0006mh-Jz
+ for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 10:53:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26922)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lLoYm-0003Dn-IM
- for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 10:51:11 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lLobO-0004nM-LL
+ for qemu-trivial@nongnu.org; Mon, 15 Mar 2021 10:53:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615819867;
+ s=mimecast20190719; t=1615820029;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GJemy7oUIVsOsbNq26yr/2upJRAapzYpYvI4Jy2ex7U=;
- b=NtMle+3834ezZHNjjTasrLejjjU/1JagJuniCdiNwA0o1EYqNFrk+pDch5kqbLxOSq3hb5
- 2Dn2vHmWA0O3M5egSRM+9WKMmRzktmnFEHWuXcgDNTfOiQO3aSEsDM9iSJ38Z3hI9wELF1
- 16XprXN6yGgOU38QQd5BiR3vokFLdvA=
+ bh=b3+aRkw1RhCxgnl1JDfuuaGjnhS7BH6kq6CwWUuFdRs=;
+ b=IxsfF9CPp2arHeasP9jesmJbNzaFIi7t290CfYWqJxA+3qNlv/aLgto2WbVjZc//glSy1g
+ ahOvswAff3pLFa6gEu7+qEffALoFEx7qR1JR1hL3IQLdkHE/4q8b7NGr9PlKfncrdV4zvX
+ SQzoPbqx1GWYAKrJuYs+fasHJ9GUYfc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-450-WJpfr1z2P9-PzDgnMq1uPQ-1; Mon, 15 Mar 2021 10:51:04 -0400
-X-MC-Unique: WJpfr1z2P9-PzDgnMq1uPQ-1
+ us-mta-480-b6udnjWcNpCVfbgZuJNKEg-1; Mon, 15 Mar 2021 10:53:46 -0400
+X-MC-Unique: b6udnjWcNpCVfbgZuJNKEg-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 39D17108BD09;
- Mon, 15 Mar 2021 14:51:03 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B061D80006E;
+ Mon, 15 Mar 2021 14:53:44 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-72.ams2.redhat.com [10.36.112.72])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5A219614F5;
- Mon, 15 Mar 2021 14:51:02 +0000 (UTC)
-Subject: Re: [PATCH 1/2] util/compatfd.c: Fixed style issues
-To: Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-devel@nongnu.org
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3F23F614ED;
+ Mon, 15 Mar 2021 14:53:43 +0000 (UTC)
+Subject: Re: [PATCH 2/2] util/compatfd.c: Replaced a malloc call with g_malloc.
+To: Markus Armbruster <armbru@redhat.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20210315105814.5188-1-ma.mandourr@gmail.com>
- <20210315105814.5188-2-ma.mandourr@gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>
+ <20210315105814.5188-3-ma.mandourr@gmail.com>
+ <210a44d9-ab4c-5863-1556-d5a7c368adc2@redhat.com>
+ <CAD-LL6g9Aha-PZpBPiNK09JkDavL0dM8cwKzcysj2MUxwQQ6Mg@mail.gmail.com>
+ <87im5sfq9m.fsf@dusky.pond.sub.org>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <ce1f990d-8b7b-218a-293e-ed1ed1e85409@redhat.com>
-Date: Mon, 15 Mar 2021 15:51:01 +0100
+Message-ID: <5d7e1480-ca56-b830-d51d-32d51eab18be@redhat.com>
+Date: Mon, 15 Mar 2021 15:53:42 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210315105814.5188-2-ma.mandourr@gmail.com>
+In-Reply-To: <87im5sfq9m.fsf@dusky.pond.sub.org>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
@@ -51,7 +56,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
@@ -74,42 +79,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Mar 2021 14:51:12 -0000
+X-List-Received-Date: Mon, 15 Mar 2021 14:53:53 -0000
 
-On 15/03/2021 11.58, Mahmoud Mandour wrote:
-> Fixed two styling issues that caused checkpatch.pl errors.
+On 15/03/2021 15.25, Markus Armbruster wrote:
+> Mahmoud, it's generally a good idea to cc: people who commented on a
+> previous iteration of the same patch.  In this case, Thomas.  I'm doing
+> that for you now.
 > 
-> Signed-off-by: Mahmoud Mandour <ma.mandourr@gmail.com>
-> ---
->   util/compatfd.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+> Mahmoud Mandour <ma.mandourr@gmail.com> writes:
 > 
-> diff --git a/util/compatfd.c b/util/compatfd.c
-> index ee47dd8089..174f394533 100644
-> --- a/util/compatfd.c
-> +++ b/util/compatfd.c
-> @@ -20,8 +20,7 @@
->   #include <sys/syscall.h>
->   #endif
->   
-> -struct sigfd_compat_info
-> -{
-> +struct sigfd_compat_info {
->       sigset_t mask;
->       int fd;
->   };
-> @@ -53,8 +52,9 @@ static void *sigwait_compat(void *opaque)
->   
->                   len = write(info->fd, (char *)&buffer + offset,
->                               sizeof(buffer) - offset);
-> -                if (len == -1 && errno == EINTR)
-> +                if (len == -1 && errno == EINTR) {
->                       continue;
-> +                }
->   
->                   if (len <= 0) {
->                       return NULL;
+>> On Mon, Mar 15, 2021 at 1:13 PM Philippe Mathieu-Daudé <philmd@redhat.com>
+>> wrote:
+>>
+>>> Hi Mahmoud,
+>>>
+>>> On 3/15/21 11:58 AM, Mahmoud Mandour wrote:
+>>>> Replaced a call to malloc() and its respective call to free()
+>>>> with g_malloc() and g_free().
+>>>>
+>>>> g_malloc() is preferred more than g_try_* functions, which
+>>>> return NULL on error, when the size of the requested
+>>>> allocation  is small. This is because allocating few
+>>>> bytes should not be a problem in a healthy system.
+>>>> Otherwise, the system is already in a critical state.
+>>>>
+>>>> Subsequently, removed NULL-checking after g_malloc().
+>>>>
+>>>> Signed-off-by: Mahmoud Mandour <ma.mandourr@gmail.com>
+>>>> ---
+>>>>   util/compatfd.c | 8 ++------
+>>>>   1 file changed, 2 insertions(+), 6 deletions(-)
+>>>>
+>>>> diff --git a/util/compatfd.c b/util/compatfd.c
+>>>> index 174f394533..a8ec525c6c 100644
+>>>> --- a/util/compatfd.c
+>>>> +++ b/util/compatfd.c
+>>>> @@ -72,14 +72,10 @@ static int qemu_signalfd_compat(const sigset_t *mask)
+>>>>       QemuThread thread;
+>>>>       int fds[2];
+>>>>
+>>>> -    info = malloc(sizeof(*info));
+>>>> -    if (info == NULL) {
+>>>> -        errno = ENOMEM;
+>>>> -        return -1;
+>>>> -    }
+>>>> +    info = g_malloc(sizeof(*info));
+>>>
+>>> Watch out...
+>>>
+>>> https://developer.gnome.org/glib/stable/glib-Memory-Allocation.html
+>>>
+>>>    If any call to allocate memory using functions g_new(), g_new0(),
+>>>    g_renew(), g_malloc(), g_malloc0(), g_malloc0_n(), g_realloc(),
+>>>    and g_realloc_n() fails, the application is terminated.
+>>>
+>>> So with your change instead of handling ENOMEM the QEMU process is
+>>> simply killed.
+>>>
+>>> Don't you want to use g_try_new(struct sigfd_compat_info, 1) here
+>>> instead?
+>>>
+>>>>
+>>>>       if (pipe(fds) == -1) {
+>>>> -        free(info);
+>>>> +        g_free(info);
+>>>>           return -1;
+>>>>       }
+>>>>
+>>>>
+>>>
+>>>
+>> Hello Mr. Philippe,
+>>
+>> That's originally what I did and I sent a patch that uses a g_try_*
+>> variant, and was
+>> instructed by Mr. Thomas Huth that it was better to use g_malloc instead
+
+No need to say "Mr." here ... we're not that formal on this mailing list 
+here :-)
+
+>> because this is a small allocation and the process is better killed if such
+>> an allocation fails because the system is already in a very critical state
+>> if it does not handle a small allocation well.
 > 
+> You even explained this in the commit message.  Appreciated.
+> 
+>> You can find Mr. Thomas reply to my previous patch here:
+>> Re: [PATCH 5/8] util/compatfd.c: Replaced a malloc with GLib's variant
+>> (gnu.org)
+>> <https://lists.gnu.org/archive/html/qemu-devel/2021-03/msg05067.html>
+>>
+>> You can instruct me on what to do further.
+> 
+> I figure this patch is fine.  Thomas?
+
+Yes, looks good now, thanks for the update, Mahmoud!
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
