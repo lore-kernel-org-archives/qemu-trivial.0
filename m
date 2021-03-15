@@ -1,62 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lLjWS-0007l9-Qy
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Mar 2021 05:28:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38440)
+	id 1lLjkj-0002W5-I5
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Mar 2021 05:43:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lLjWQ-0007je-QE; Mon, 15 Mar 2021 05:28:22 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:42553)
+ id 1lLjki-0002Vv-GG; Mon, 15 Mar 2021 05:43:08 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:54132)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lLjWP-0006mM-0l; Mon, 15 Mar 2021 05:28:22 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- b2-20020a7bc2420000b029010be1081172so19013466wmj.1; 
- Mon, 15 Mar 2021 02:28:20 -0700 (PDT)
+ id 1lLjkh-0007TS-1a; Mon, 15 Mar 2021 05:43:08 -0400
+Received: by mail-wm1-x330.google.com with SMTP id g20so7706671wmk.3;
+ Mon, 15 Mar 2021 02:43:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=3gE21AGus4Y8yIWR45Z/yuQMO8pdjey0F7sBwoUOX6Y=;
- b=l7is9P38Q+ReFoO7+fkZ14Kpqb5zd6jOjb29Ihh4SU15WJyIrEDht9Q2uAWh3FI6Dx
- dAp+tFHtpROrvmKPqhkJBOPE1XlUp5vDpvpQ9LFkRmxBMzy14zrtShnroLl9DIbsl9z1
- HXkHR7ygV5nahIOrqt6WT5/Y5c/SHl/F0s7t9weqYFNcZ8JxhP0TX8N79tjVrLvsSMfJ
- WKlfgVX2jNCFoZx0hM9Qe58/eYlci5TutrEWrHLKKvs7/v78hycs4n8gXgoLP5Lleu/z
- sQIyjAcr4ftsgauJf44w3ojueNJKCnP9dLLhQV/Xqj4bmuqfP3WXBYpmxQ8hSbMhCdqT
- 78TQ==
+ bh=rwQ4dQZ+buiXd7NYgH4hrsjQB7KlouHJfeE4xlks0h0=;
+ b=fXDuKPLOAFVntXsLxCfR+o1HQSVotVT1qNEf2thkPrPN47vmsugqbhtwYx47a1S1dM
+ XDt+vP5k2UgFmOXkd0fC/KJsOJUOIfeP8EyvueTjnphgp5FRJX4MqhC7b9wYDUpbHeXm
+ u4qfBfmKR2SlAjvZoY8QnHVbo9AYsxvhud4dmAKiqgRzJWzGhsvZAfO45Zx/pqjhDiec
+ 6T0Jm+rHsZjlvZvbvuUSiNgao2bCfJd7toqT0XbNlIrNi9cehWrrcrjq23xQlK8+Si5Z
+ 9EJEEXYr3I/R0ZmlYxb9Zs8rjbFoXYs6BxEtTL7X7ST8s87CXuqk/FmJPOPaMr2QDmYS
+ Gz8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=3gE21AGus4Y8yIWR45Z/yuQMO8pdjey0F7sBwoUOX6Y=;
- b=FLf8kh4C1F+5SDA5ZabM7QfdjvP/dVXQ2v2UAzzkijfhnqoWDpLCp2mXMRMe0siL1P
- tX+gNKleZ/xg7NGAfzcwWYvrWQZwJ9ZtqMckstrHbzBH2AuHV5mrX7DREOzunKeYQBax
- LUEqdf/rvgtFnRExmQRIg7WTBk4FJqIoa/NQYybo4/WdoE4AGcVZgoDdrn/QMtlXc0yO
- 8VQu3YpmAa206MuNd7JyLVRfVo6VutqOAiza9iXp4RhBtNGT525bUm+JLQ4LqQfFSsQe
- 9y1OmSpvW29Ztnlj/PSurGae9bovNymkF+x7kFhP/F03QwZLkVUshez3vyI762lshjON
- ofFA==
-X-Gm-Message-State: AOAM533cuR6iLVjC/IOH975c2AzlihZL+fejA7TZN//YSiNnvxk+UwP2
- jAidHxllLI1cJawvLV5w7dAMa604wrOj5A==
-X-Google-Smtp-Source: ABdhPJwVeZg8S18I0c8J473rk7L9o1BgANv3mqo9WRAqR+v0lEHTHBOsJLP4cPUhFGJ6PY5i8Ug1zg==
-X-Received: by 2002:a1c:e389:: with SMTP id a131mr25201121wmh.78.1615800498423; 
- Mon, 15 Mar 2021 02:28:18 -0700 (PDT)
+ bh=rwQ4dQZ+buiXd7NYgH4hrsjQB7KlouHJfeE4xlks0h0=;
+ b=CHQgBhuRN4347zdH1NDqf+9ygdXAk1m7pW3feO/0Po02UPSz25kCE5L1IOoAj9R84z
+ F5EIEjYFOZMpVVUgXWQTQEPfp0ObadUr1dMzMR2HGlsEU1fX4ys8wuz93CntRO4PnW7h
+ 2X1a0JxUOe94TgRi6HfxlrhxynWA9HWd2LtnmdMpF5sZxqLXJ6BJ2NzfaXUonEnedZ5R
+ XkPhgkzRnc6Kh0nMAqMVr2gNvnyUC0VIk07qj6Kv6+0XFo7C2IFHnkhf9RULRQx0H6Jr
+ Hb/ixwVpO10i2wDeU4MFlJ1+kvLJ9FXamaFCB+NyUbvcVRI0Tjf0ewB0BYwPJFeQUqcb
+ FWIQ==
+X-Gm-Message-State: AOAM531FhjD49NoEfaTvPoAHA4OEqiIRsu4gfiqv42XLSHxJlzjRLAv0
+ Ej3QXkc8pLhs9DKzoEEqURk=
+X-Google-Smtp-Source: ABdhPJxPX3wyiw6xuIOsDXXEH0WXQniqJhb2/xoFNH1KfAnEdPD/pc9NwnDXjuSUb/Ufg0YKuf9MqQ==
+X-Received: by 2002:a7b:cbc4:: with SMTP id n4mr9049191wmi.153.1615801385211; 
+ Mon, 15 Mar 2021 02:43:05 -0700 (PDT)
 Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id u3sm17524178wrt.82.2021.03.15.02.28.17
+ by smtp.gmail.com with ESMTPSA id i17sm17754655wrp.77.2021.03.15.02.43.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Mar 2021 02:28:17 -0700 (PDT)
+ Mon, 15 Mar 2021 02:43:04 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] Hexagon (target/hexagon) fix typo in comment
-To: Taylor Simpson <tsimpson@quicinc.com>, qemu-devel@nongnu.org
-Cc: richard.henderson@linaro.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1615784115-26559-1-git-send-email-tsimpson@quicinc.com>
+Subject: Re: [PATCH] Hexagon (target/hexagon) remove unnecessary semicolons
+To: Taylor Simpson <tsimpson@quicinc.com>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: richard.henderson@linaro.org
+References: <1615784100-26459-1-git-send-email-tsimpson@quicinc.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <3ee6512a-62be-72ff-2b29-12285f0168e0@amsat.org>
-Date: Mon, 15 Mar 2021 10:28:16 +0100
+Message-ID: <b68140b5-d2bc-8019-6ded-d7b2abe02926@amsat.org>
+Date: Mon, 15 Mar 2021 10:43:03 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <1615784115-26559-1-git-send-email-tsimpson@quicinc.com>
+In-Reply-To: <1615784100-26459-1-git-send-email-tsimpson@quicinc.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -82,33 +82,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Mar 2021 09:28:23 -0000
+X-List-Received-Date: Mon, 15 Mar 2021 09:43:08 -0000
 
 On 3/15/21 5:55 AM, Taylor Simpson wrote:
-> Signed-of-by: Taylor Simpson <tsimpson@quicinc.com>
+> Address feedback from Richard Henderson <<richard.henderson@linaro.org>
+> 
 
-'git-commit -s' flag add the S-o-b line automatically ;)
-
-Otherwise:
+Reported-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+> Signed-off-by: Taylor Simpson <tsimpson@quicinc.com>
 > ---
->  target/hexagon/op_helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/hexagon/gen_tcg.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/target/hexagon/op_helper.c b/target/hexagon/op_helper.c
-> index 9f19007..7361a07 100644
-> --- a/target/hexagon/op_helper.c
-> +++ b/target/hexagon/op_helper.c
-> @@ -297,7 +297,7 @@ int32_t HELPER(fcircadd)(int32_t RxV, int32_t offset, int32_t M, int32_t CS)
->  }
->  
->  /*
-> - * Hexagon FP operations return ~0 insteat of NaN
-> + * Hexagon FP operations return ~0 instead of NaN
->   * The hex_check_sfnan/hex_check_dfnan functions perform this check
->   */
->  static float32 hex_check_sfnan(float32 x)
+> diff --git a/target/hexagon/gen_tcg.h b/target/hexagon/gen_tcg.h
+> index e044dea..a30048e 100644
+> --- a/target/hexagon/gen_tcg.h
+> +++ b/target/hexagon/gen_tcg.h
+> @@ -83,9 +83,9 @@
+>  #define fGEN_TCG_L2_loadrub_pr(SHORTCODE)      SHORTCODE
+>  #define fGEN_TCG_L2_loadrub_pi(SHORTCODE)      SHORTCODE
+>  #define fGEN_TCG_L2_loadrb_pr(SHORTCODE)       SHORTCODE
+> -#define fGEN_TCG_L2_loadrb_pi(SHORTCODE)       SHORTCODE;
+> +#define fGEN_TCG_L2_loadrb_pi(SHORTCODE)       SHORTCODE
+>  #define fGEN_TCG_L2_loadruh_pr(SHORTCODE)      SHORTCODE
+> -#define fGEN_TCG_L2_loadruh_pi(SHORTCODE)      SHORTCODE;
+> +#define fGEN_TCG_L2_loadruh_pi(SHORTCODE)      SHORTCODE
+>  #define fGEN_TCG_L2_loadrh_pr(SHORTCODE)       SHORTCODE
+>  #define fGEN_TCG_L2_loadrh_pi(SHORTCODE)       SHORTCODE
+>  #define fGEN_TCG_L2_loadri_pr(SHORTCODE)       SHORTCODE
 > 
 
 
