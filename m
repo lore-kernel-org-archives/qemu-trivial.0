@@ -1,76 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lMZHb-0002uj-3x
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Mar 2021 12:44:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38918)
+	id 1lMcAK-0007Kb-1C
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Mar 2021 15:49:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lMZHZ-0002rX-Mm; Wed, 17 Mar 2021 12:44:29 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:36578)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lMZHX-0000ov-AD; Wed, 17 Mar 2021 12:44:29 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id k8so2516209wrc.3;
- Wed, 17 Mar 2021 09:44:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=gAkkjgFfGytFx/lWr3Lt8yIxc2bkArlU6S4EA+hRPso=;
- b=rfnAw3jIWpo87hMNkutcqJVSGfS4w0x9WXFx8EHVu9Upi2sSfq9zc5FKWM/eCJvl7x
- DyIqlrppRCs28AReNwytrZlWn+x+qpW8QUPqvlVpLU6VDzQD7Aevun+dCxqCXMrhzSa5
- HIy2sJBNilvLjkjIxNZZEg2odX1UMwktQFdiUO9WzViNGOPIi/5DZP403GKMumYcSc+i
- B0O8dbEYIjznzGe5UHNIHVAIjeq8SN1mTsnN2kw3Sqf+D4W9xfF7/K6mB7qh983JL3p2
- uQHNUVQv6FD47xNIHC/PczF/5dt0HLdgl3wNwvltqvxSjYQ/PX3xGHXdpHYaW727xXCj
- /ZQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gAkkjgFfGytFx/lWr3Lt8yIxc2bkArlU6S4EA+hRPso=;
- b=jbB1N50sV21ptHNXLGpDov8rZrlEqLvP1mng+whojMv3EVJX0IUdK8wUbzJ0hMD0t7
- luQQIxh5HGdr7clkea0xUC/hsC7DtMuw4axIOpihJZ9IviKeYBzZ+lwRy5XA/z2G+/N0
- FFs9hctrgrX7LUo/CWrRiGKjjRLBguWKYUeFhH1IIZ0pvLHOLuYoZY8TCoTR1G3sntnH
- 4rmXM9fJ8F5Cnn0IP8cC1GGdH89+au+XzJdBp46xyDX+iwtTuOMhHaRVj4E9jVt6i1WJ
- CiXly5P6cb+9ixcT9m2IEdT0+r4vLlkuXW0vpc77hWst2ESbH8w8cyyeutoT4B3VjjAo
- Hwaw==
-X-Gm-Message-State: AOAM530O9iXDbQQMfqa2sv/kafj5mvgfZQnLuAWIhNWj9LbXcBARKfzf
- 2bS2Ulb/nTODF4WKkOgeyBRwr6vix3k5OA==
-X-Google-Smtp-Source: ABdhPJyfk69aXHwflFjrYKuJEWzUGwzoIrZitQXRVisad3HvYVJybip52VfIhGc6nuwL7f28tbqzmw==
-X-Received: by 2002:adf:c752:: with SMTP id b18mr5273516wrh.233.1615999464921; 
- Wed, 17 Mar 2021 09:44:24 -0700 (PDT)
-Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id c8sm2930096wmb.34.2021.03.17.09.44.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Mar 2021 09:44:24 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [RFC PATCH] support.md: add a link to matrix bridge to IRC
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, thuth@redhat.com,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210317160259.14098-1-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <bfd35b1f-0d1b-ad18-a4ff-86632f61412a@amsat.org>
-Date: Wed, 17 Mar 2021 17:44:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ (Exim 4.90_1) (envelope-from <wainersm@redhat.com>)
+ id 1lMcAC-0007JJ-PN
+ for qemu-trivial@nongnu.org; Wed, 17 Mar 2021 15:49:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55970)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wainersm@redhat.com>)
+ id 1lMcAA-0007r5-5W
+ for qemu-trivial@nongnu.org; Wed, 17 Mar 2021 15:49:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616010541;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Nh7bp1dxG50t8JPkaiM3bJBFCIsbw9qWDmuDRzMLzLo=;
+ b=YFhri8lZlgmdGTwKvKVINQEM/kIS0i6QmxdE9e5Waeg+DPyffQVbpVHe7I/4iSQLyut3+0
+ MGEd9bkYynoYHJWabEyKFLeP8xXbcmKbmXF1y820uyrLqepvLrZdq59ruA593vGDNHXJ5T
+ LggTRxovg1JUFBp/4AaPH9OrgHWdXvU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-133-yGFi8jCcPL263R8pDWWtKA-1; Wed, 17 Mar 2021 15:48:57 -0400
+X-MC-Unique: yGFi8jCcPL263R8pDWWtKA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8981A801596;
+ Wed, 17 Mar 2021 19:48:56 +0000 (UTC)
+Received: from wainer-laptop.localdomain.com (ovpn-116-126.gru2.redhat.com
+ [10.97.116.126])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B9DE05D9C0;
+ Wed, 17 Mar 2021 19:48:53 +0000 (UTC)
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	thuth@redhat.com,
+	pbonzini@redhat.com
+Subject: [PATCH] docs/devel/testing.rst: Fix referencies to unit tests
+Date: Wed, 17 Mar 2021 16:48:49 -0300
+Message-Id: <20210317194849.2262346-1-wainersm@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210317160259.14098-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wainersm@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=wainersm@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,18 +71,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Mar 2021 16:44:30 -0000
+X-List-Received-Date: Wed, 17 Mar 2021 19:49:08 -0000
 
-On 3/17/21 5:02 PM, Alex Bennée wrote:
-> We want users to be able to use newer tooling and not be stuck with
-> IRC like the rest of the fossils. As the #QEMU channel is bridged by
-> the matrix.org server lets point there as well. At least it's not
-> Slack.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  support.md | 10 ++++++----
->  1 file changed, 6 insertions(+), 4 deletions(-)
+With the recent move of the unit tests to tests/unit directory some
+instructions under the "Unit tests" section became imprecise, which
+are fixed by this change.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Related-to: da668aa15b99 (tests: Move unit tests into a separate directory)
+Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+---
+ docs/devel/testing.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 1434a50cc4..1da4c4e4c4 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -34,17 +34,17 @@ If you are writing new code in QEMU, consider adding a unit test, especially
+ for utility modules that are relatively stateless or have few dependencies. To
+ add a new unit test:
+ 
+-1. Create a new source file. For example, ``tests/foo-test.c``.
++1. Create a new source file. For example, ``tests/unit/foo-test.c``.
+ 
+ 2. Write the test. Normally you would include the header file which exports
+    the module API, then verify the interface behaves as expected from your
+    test. The test code should be organized with the glib testing framework.
+    Copying and modifying an existing test is usually a good idea.
+ 
+-3. Add the test to ``tests/meson.build``. The unit tests are listed in a
++3. Add the test to ``tests/unit/meson.build``. The unit tests are listed in a
+    dictionary called ``tests``.  The values are any additional sources and
+    dependencies to be linked with the test.  For a simple test whose source
+-   is in ``tests/foo-test.c``, it is enough to add an entry like::
++   is in ``tests/unit/foo-test.c``, it is enough to add an entry like::
+ 
+      {
+        ...
+-- 
+2.29.2
+
 
