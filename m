@@ -1,55 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lMwhB-0003cB-0F
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Mar 2021 13:44:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52386)
+	id 1lMwo5-0000EB-V3
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Mar 2021 13:51:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55812)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wainersm@redhat.com>)
- id 1lMwh8-0003bd-2G
- for qemu-trivial@nongnu.org; Thu, 18 Mar 2021 13:44:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42645)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <wainersm@redhat.com>)
- id 1lMwh4-0006Kx-BQ
- for qemu-trivial@nongnu.org; Thu, 18 Mar 2021 13:44:25 -0400
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1lMwo3-00008I-MB
+ for qemu-trivial@nongnu.org; Thu, 18 Mar 2021 13:51:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59184)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1lMwnu-0000ws-LX
+ for qemu-trivial@nongnu.org; Thu, 18 Mar 2021 13:51:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616089460;
+ s=mimecast20190719; t=1616089883;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=qTwI36Q6JbTwzyWHvJuVO2c36ymuAdbZ5HZ2XTNHxW4=;
- b=fTR6XvjMc0Bafv4lA5y/A1DRNV3PKGlsJL1eqgUAC2CLeoRuKEPn9rxWguQpMqUann3kAd
- BocMiXpqEKiiFOaqXyvZZNIXkgwB4nI+Z+rAtBlJlsidd/61ARSEV+GREOSOoT3igVPWmh
- TQd1SVVfbDEuOzY8RPl9AHjCKrsGNkU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-551-ecuC54hXMIu3MG3yluGwrA-1; Thu, 18 Mar 2021 13:44:17 -0400
-X-MC-Unique: ecuC54hXMIu3MG3yluGwrA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BA5B4881280;
- Thu, 18 Mar 2021 17:44:15 +0000 (UTC)
-Received: from wainer-laptop.localdomain.com (ovpn-116-126.gru2.redhat.com
- [10.97.116.126])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3DE4E60CD7;
- Thu, 18 Mar 2021 17:44:11 +0000 (UTC)
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, thuth@redhat.com, pbonzini@redhat.com,
- jsnow@redhat.com
-Subject: [PATCH v2] docs/devel/testing.rst: Fix references to unit tests
-Date: Thu, 18 Mar 2021 14:44:07 -0300
-Message-Id: <20210318174407.2299930-1-wainersm@redhat.com>
+ in-reply-to:in-reply-to:references:references;
+ bh=ZLrySQOLEYLsKV5NF3SpeTIN8SG+7u9DfeWiXT/JzVw=;
+ b=gsyOPPcyxMGAY+U5YDsHH6Wpq+QT1nnLeKk5wLw9J42ZwczuHFt0jCM+j4uh4Ev1b4wWY8
+ bIbakYtTFcXO5TqGVFSpx0Jy2l5MFl8r21kjsM9ZpZUH2qrlywYd2L5U+Q5EaK7EPPneqf
+ ahCuiWZgnUBQeqwWMtmjeozuyJvOJZM=
+Received: from mail-vs1-f69.google.com (mail-vs1-f69.google.com
+ [209.85.217.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-107-YI4dQnLMPf69yE8Sp58QPw-1; Thu, 18 Mar 2021 13:51:21 -0400
+X-MC-Unique: YI4dQnLMPf69yE8Sp58QPw-1
+Received: by mail-vs1-f69.google.com with SMTP id s63so10827786vss.18
+ for <qemu-trivial@nongnu.org>; Thu, 18 Mar 2021 10:51:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZLrySQOLEYLsKV5NF3SpeTIN8SG+7u9DfeWiXT/JzVw=;
+ b=WHxO5E72LXof6kWPf7Enh+W4poNNCrPXAyQCPo9YZUIvUSGn2mIOL7mBBXqbME0far
+ HqQtXnr+YivpCd/LR/kO5NyPQYt93SgjZP0ARHYyRceiFdV6xNZ3eBMRhBQfyrlyAOMi
+ yjALjXRB6tMO1ic4peJSro1Vf4862lLSf84jnPIsfYz25/42NkWqUef2S1m3H87AaiTp
+ thRee5/4cpxO/h/G2FDxrhbBJKW+7j2NG/kx+xTIz4OfLVUh2rewvD8J5kKuE6H/UHFm
+ OhJ/HOqcBhYAEj3CXeU9WL+6EbLcsjg05/LRqGcteGBYOcVnXW+pfzSRkW9XJPbQdmbN
+ dokA==
+X-Gm-Message-State: AOAM533Nqb4OfZc4fLCKdRVqDhiGf5qhC5YOxyOT/yGqN46dpXxVfnXl
+ Lih0n0FZ6Z27WKgeH7+ZELdCBd/cjqPyqfJdg6e2ay7cv9KGq3hFTJ8L8Acv0t4OkIiEMjNppz4
+ Iy5RdYvwiJxr6056kvk3JbZ2lkVrU5n9gAA==
+X-Received: by 2002:ab0:3388:: with SMTP id y8mr3234894uap.113.1616089881383; 
+ Thu, 18 Mar 2021 10:51:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymxKozgua9JvqoRC7ToVgSa0jsjSFBqWJwyaXI+R0324dOPpjcRqcHScg0LpCwfo7UYt1Sql1q4UmDTfxpKLE=
+X-Received: by 2002:ab0:3388:: with SMTP id y8mr3234886uap.113.1616089881224; 
+ Thu, 18 Mar 2021 10:51:21 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+References: <20210318174407.2299930-1-wainersm@redhat.com>
+In-Reply-To: <20210318174407.2299930-1-wainersm@redhat.com>
+From: Willian Rampazzo <wrampazz@redhat.com>
+Date: Thu, 18 Mar 2021 14:50:55 -0300
+Message-ID: <CAKJDGDZeADLuQs-h4rqsgoLSohriJCv2VkUE2xoOOW2Je3PQwA@mail.gmail.com>
+Subject: Re: [PATCH v2] docs/devel/testing.rst: Fix references to unit tests
+To: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ John Snow <jsnow@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wainersm@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=wainersm@redhat.com;
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=wrampazz@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -70,49 +82,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Mar 2021 17:44:26 -0000
+X-List-Received-Date: Thu, 18 Mar 2021 17:51:36 -0000
 
-With the recent move of the unit tests to tests/unit directory some
-instructions under the "Unit tests" section became imprecise, which
-are fixed by this change.
+On Thu, Mar 18, 2021 at 2:49 PM Wainer dos Santos Moschetta
+<wainersm@redhat.com> wrote:
+>
+> With the recent move of the unit tests to tests/unit directory some
+> instructions under the "Unit tests" section became imprecise, which
+> are fixed by this change.
+>
+> Fixes: da668aa15b99 ("tests: Move unit tests into a separate directory")
+> Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> ---
+> v1->v2:
+>  * Fixed typo on subject [jsnow]
+>  * Replaced Related-to with Fixes [jsnow]
+>
+>  docs/devel/testing.rst | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
 
-Fixes: da668aa15b99 ("tests: Move unit tests into a separate directory")
-Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
-v1->v2:
- * Fixed typo on subject [jsnow]
- * Replaced Related-to with Fixes [jsnow]
-
- docs/devel/testing.rst | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index 1434a50cc4..1da4c4e4c4 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -34,17 +34,17 @@ If you are writing new code in QEMU, consider adding a unit test, especially
- for utility modules that are relatively stateless or have few dependencies. To
- add a new unit test:
- 
--1. Create a new source file. For example, ``tests/foo-test.c``.
-+1. Create a new source file. For example, ``tests/unit/foo-test.c``.
- 
- 2. Write the test. Normally you would include the header file which exports
-    the module API, then verify the interface behaves as expected from your
-    test. The test code should be organized with the glib testing framework.
-    Copying and modifying an existing test is usually a good idea.
- 
--3. Add the test to ``tests/meson.build``. The unit tests are listed in a
-+3. Add the test to ``tests/unit/meson.build``. The unit tests are listed in a
-    dictionary called ``tests``.  The values are any additional sources and
-    dependencies to be linked with the test.  For a simple test whose source
--   is in ``tests/foo-test.c``, it is enough to add an entry like::
-+   is in ``tests/unit/foo-test.c``, it is enough to add an entry like::
- 
-      {
-        ...
--- 
-2.29.2
+Reviewed-by: Willian Rampazzo <willianr@redhat.com>
 
 
