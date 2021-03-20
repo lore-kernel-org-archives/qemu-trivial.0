@@ -1,88 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lNf3g-0002XO-Bo
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Mar 2021 13:06:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60730)
+	id 1lNf4e-0003M6-BA
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Mar 2021 13:07:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lNf3e-0002U1-7g
- for qemu-trivial@nongnu.org; Sat, 20 Mar 2021 13:06:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:25300)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lNf3b-00074P-6i
- for qemu-trivial@nongnu.org; Sat, 20 Mar 2021 13:06:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616259993;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dkI9l3f+FlH7vevFK+TVLMOyEs/A1FxcjP/kdlkbnZw=;
- b=Y+h/Gms5K+PyU/FDUwjA/t9jcw1xOsbiKFMXZyZIaKPBR7spC1Sg92OCSVeusOQ+LZfWyq
- CqNQlZ9ypyCoKFbPfIt/tGprkmlhMLciy1F48vPPpOqTSaUNmCyLV8RIOpET95xEG+5zjx
- r/ndROhCCbUfdf9HLhlY4s7p42wvoyI=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-370-2luum53xPpOIu0GkC0fpAA-1; Sat, 20 Mar 2021 13:06:29 -0400
-X-MC-Unique: 2luum53xPpOIu0GkC0fpAA-1
-Received: by mail-ed1-f70.google.com with SMTP id h5so24766842edf.17
- for <qemu-trivial@nongnu.org>; Sat, 20 Mar 2021 10:06:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1lNf4a-0003Ki-Bi; Sat, 20 Mar 2021 13:07:36 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:39927)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1lNf4Y-0007P1-Ol; Sat, 20 Mar 2021 13:07:36 -0400
+Received: by mail-ej1-x632.google.com with SMTP id ce10so14581196ejb.6;
+ Sat, 20 Mar 2021 10:07:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=fqY4D/uz8Gfx6j8oaXiYh5fGPY2y2sLm5P6geStiptY=;
+ b=egP3VYCMDlky81lhDo8A7xHGMVk0+7Im+NggU8JpBucWlVpGRQO5ypYkbOXgUcxkIv
+ sRworhdpoaehNdCcdZU6iIjGIsajh143P+Xe6aY92Axp4Npjg2Qu8TE+Y6MeeqzDIqN4
+ d903Nb+v9sdOJUyhNCElM0YCXG+/WrKx6yTeMxm6peuCZ3CcWTEvrDo7CZB1jIfhAMlx
+ dZP6B6X/nEpyzh7Kn6WfIcnka3s/RDEiUgc8sDiyH0EF7U7VnHaUihRxiuMed4E8Y0o2
+ ksogqxrmgItlas/osiBfYrYUj+1ypRkGlGmrfkEgIvM6Ov/L8ibSINdpQQr7+I9eNDRd
+ eyAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=dkI9l3f+FlH7vevFK+TVLMOyEs/A1FxcjP/kdlkbnZw=;
- b=mtY9IPGP5X+cs9a8+P4pif2k8eINr270qa5EpG30CRfItAQ38Gqr4oZHjx3DbMl1SZ
- k+1kLB7WR2guKFjbnbHY4U3s+WweRi5f3y3RYWf9CG6WsyJPERsJtz31gzYAHnPCRZtX
- 17SNnsf23+upoG/DQ9kKklX8s9gbowFkFArOeMmsFgrknfTdH9BsUdDq5Xhmyyrxpv9p
- 5Q+b3fKH+sBpbZprHLIerhlVpFvQ5+IaBVCFG5nCDgE3x2mu4EYKQWtf4LJY9R+ggUKs
- Zz8hhjnFtSp6yWnjPJya9PsVSY3Ne/1tgFyFzKahlPhZNg+x0jAs4n85yT+KP9bcF9LV
- 1x2Q==
-X-Gm-Message-State: AOAM533b+3rsmr0MGl3rmxJHOMeItzFD461LWkKfvxN0WxXa99NF/y0K
- 9sv3Ys9u79ldaHtRf4/QMCCcmv/GR5x1NJMMallqagcoPCBCg+LoS+z2fai05YLRKQTuwQV5Xd0
- epvE7H8b+zTh45YqdCg==
-X-Received: by 2002:a05:6402:440d:: with SMTP id
- y13mr16513925eda.316.1616259988222; 
- Sat, 20 Mar 2021 10:06:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzKlwSgcbcIznLDhJVFA8j33axw7gxPwmhfexqpAKgp6YNYYMimTW3uTWVW7/2zZp/jhMlxeQ==
-X-Received: by 2002:a05:6402:440d:: with SMTP id
- y13mr16513904eda.316.1616259988012; 
- Sat, 20 Mar 2021 10:06:28 -0700 (PDT)
+ bh=fqY4D/uz8Gfx6j8oaXiYh5fGPY2y2sLm5P6geStiptY=;
+ b=WvgbDSqZWGQF4J8PWkRYUjuBtC66/GREIz0oOgMkwPfxikgH3zatcpKEZd/G3Jm9Vj
+ q2JreroXYxt4e7hBpy0dnu3Lm7SbfPXPNUZRwXfCiBTmTpt/UOpIE94556ja9vk1IHuy
+ +Ou02tEeOqs4QHabvGzUOySBHrGqjb4I3dk2mHwvy9GUPLiW08qPEc7kuWNSFxYr/1Cs
+ RE68o3zZBSb/Y6yTNM4fmynpOiUGGgexal9vGedwuGJMnQJcyLsnuVyfRIdJQuFYiHrM
+ jom4ogaK9+7eIeH2JtW2YDCVVLhF1JEMx6yYT8cSelsIaT0otPpOLHm2NvRQqAPhwznd
+ XFcQ==
+X-Gm-Message-State: AOAM5320LOlz83Cl7s5wuNKbQXEfxUOEl/ZuNvi7PPK/v5fIc0DzbR/M
+ uQ8ltw+z2wLB7kGxtgX9BWs=
+X-Google-Smtp-Source: ABdhPJzzY58CxZytP5gMURR+QV247vmSzxpTq0DIG6wRLOjlG9aU9l71ZFDylRr/teD48t9nat4X9A==
+X-Received: by 2002:a17:907:2bd7:: with SMTP id
+ gv23mr10742984ejc.351.1616260052017; 
+ Sat, 20 Mar 2021 10:07:32 -0700 (PDT)
 Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
  ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id cy5sm6505171edb.46.2021.03.20.10.06.26
+ by smtp.googlemail.com with ESMTPSA id n16sm6571885edr.42.2021.03.20.10.07.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 20 Mar 2021 10:06:27 -0700 (PDT)
+ Sat, 20 Mar 2021 10:07:31 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
 Subject: Re: [PATCH] meson: Propagate gnutls dependency to migration
+From: Paolo Bonzini <pbonzini@redhat.com>
 To: Jessica Clarke <jrtc27@jrtc27.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Juan Quintela <quintela@redhat.com>
 References: <20210320164730.33285-1-jrtc27@jrtc27.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <87f34651-8726-398e-31bb-3df7e8fac0dd@redhat.com>
-Date: Sat, 20 Mar 2021 18:06:26 +0100
+ <87f34651-8726-398e-31bb-3df7e8fac0dd@redhat.com>
+Message-ID: <f13f65ab-b921-112a-a4b8-9b14d1fa2b2e@redhat.com>
+Date: Sat, 20 Mar 2021 18:07:30 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210320164730.33285-1-jrtc27@jrtc27.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <87f34651-8726-398e-31bb-3df7e8fac0dd@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=paolo.bonzini@gmail.com; helo=mail-ej1-x632.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -95,35 +83,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Mar 2021 17:06:38 -0000
+X-List-Received-Date: Sat, 20 Mar 2021 17:07:36 -0000
 
-On 20/03/21 17:47, Jessica Clarke wrote:
-> Commit 3eacf70bb5a83e4775ad8003cbca63a40f70c8c2 neglected to fix this
-> for softmmu configs, which pull in migration's use of gnutls.
+On 20/03/21 18:06, Paolo Bonzini wrote:
+> On 20/03/21 17:47, Jessica Clarke wrote:
+>> Commit 3eacf70bb5a83e4775ad8003cbca63a40f70c8c2 neglected to fix this
+>> for softmmu configs, which pull in migration's use of gnutls.
+>>
+>> Signed-off-by: Jessica Clarke <jrtc27@jrtc27.com>
+>> ---
+>>   migration/meson.build | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/migration/meson.build b/migration/meson.build
+>> index 9645f44005..6fa2f8745d 100644
+>> --- a/migration/meson.build
+>> +++ b/migration/meson.build
+>> @@ -24,7 +24,7 @@ softmmu_ss.add(files(
+>>     'savevm.c',
+>>     'socket.c',
+>>     'tls.c',
+>> -))
+>> +), gnutls)
+>>   softmmu_ss.add(when: ['CONFIG_RDMA', rdma], if_true: files('rdma.c'))
+>>   softmmu_ss.add(when: 'CONFIG_LIVE_BLOCK_MIGRATION', if_true: 
+>> files('block.c'))
+>>
 > 
-> Signed-off-by: Jessica Clarke <jrtc27@jrtc27.com>
-> ---
->   migration/meson.build | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/migration/meson.build b/migration/meson.build
-> index 9645f44005..6fa2f8745d 100644
-> --- a/migration/meson.build
-> +++ b/migration/meson.build
-> @@ -24,7 +24,7 @@ softmmu_ss.add(files(
->     'savevm.c',
->     'socket.c',
->     'tls.c',
-> -))
-> +), gnutls)
->   
->   softmmu_ss.add(when: ['CONFIG_RDMA', rdma], if_true: files('rdma.c'))
->   softmmu_ss.add(when: 'CONFIG_LIVE_BLOCK_MIGRATION', if_true: files('block.c'))
-> 
+> Hi, can you explain in the commit message the compilation failure that 
+> is being fixed here?
 
-Hi, can you explain in the commit message the compilation failure that 
-is being fixed here?
+I suppose it's migration/tls.c?
 
 Paolo
-
 
