@@ -1,87 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lP3pA-0001vf-JF
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Mar 2021 09:45:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39226)
+	id 1lP7EG-00082o-VG
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Mar 2021 13:23:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55846)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lP3oz-0001tR-3s
- for qemu-trivial@nongnu.org; Wed, 24 Mar 2021 09:45:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41179)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lP3ow-0005BN-4J
- for qemu-trivial@nongnu.org; Wed, 24 Mar 2021 09:45:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1616593510;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sNX3cUEJEvvitchZ4JiICyTbhnRmdCtN6N6kmuEXzAQ=;
- b=FwlKqVqc5RiESlq8zHrE3EoE+dQTmPE/T/lMZBugUlRJ4dgKKd3A2cTwlc5JQCYgNOm6mo
- 0iCQXa7xqoUOCAQX8h1D+ktGITlSTJ/DPT2mfIqYFfLdo8lNzLkHOczAjFaQCB15yAxO8E
- yFrDev7ll4RcOyAWa5L3F63THTFbjEs=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-530-vhtDnALWM42vyAAM9aJLQA-1; Wed, 24 Mar 2021 09:45:05 -0400
-X-MC-Unique: vhtDnALWM42vyAAM9aJLQA-1
-Received: by mail-wr1-f71.google.com with SMTP id 75so1101881wrl.3
- for <qemu-trivial@nongnu.org>; Wed, 24 Mar 2021 06:45:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lP7EF-00082c-57; Wed, 24 Mar 2021 13:23:35 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:45962)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lP7ED-0007XR-Ir; Wed, 24 Mar 2021 13:23:34 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ r10-20020a05600c35cab029010c946c95easo1633841wmq.4; 
+ Wed, 24 Mar 2021 10:23:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=iBHZAX2dXF7tsxOkqd7OAaB5ezrAWC1wP7e6j9Ka9IE=;
+ b=js+uFQiMSf+eFfFThJvU8hqcIAfpC4+BFGswzP8GMgMLJpiM3tp+FmYQdg66bRe+BN
+ z/A7O7Bo/iGil4DDWT5B2v7G5Tom0z1DGzTqtdmh6Hlp1B+iJnlxbAYsPuenOXp4qZ/k
+ ZXxe7P3pxM4PeEZuJpAeBVoJq+DChTVdq/UlSXt3WKubEJmh9MKWiLNpE88jwUMI+3FC
+ SqPRQIQHavMBPNGSmMYAhv0xSfE8Lo13cA1wP7/Ek4p16L6QkvqVqCn0D70gH2WjKAnw
+ PcTEyHKW6ynOi+t+jsiiZLwv0O3C8J3t5IO4+BzG1gEP13Ay2Ipx7Fmv5aQGNFumVNDn
+ exiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=sNX3cUEJEvvitchZ4JiICyTbhnRmdCtN6N6kmuEXzAQ=;
- b=uGhz+lHwqiS1R4wqGL0dzCVv5xeere7gKNQtTfyLRZu/+OiBpBqe3Iu8chkI4coQj2
- ZYPZgPL0UoXVOgXTEz2mTO2TOzdx+m98NXGa4WrkBiPSXoujr5rtQQPBU46fzhmwrBo0
- RNl0MjHJuE/c4+ZaRZ1vf8Fffs4qCheU08zh98qRb2K6HAI6RDJoFi43IWq9oK2GL9xa
- hWG1mM5gwR0qW5ve2MqTQ578dArItOwcfQSQXjZfNBVNvk0gHkSDUe21f6pwGx2DBJdO
- 7fC3sfhKfSIrGyVKrsVtsiVkgWVdrB3w+UDKdnGdQvv0bflYXnJhAgqDM4Jz17jOOF19
- J9QA==
-X-Gm-Message-State: AOAM530Xh5c02rj1ZDG11ckYPRHBUxNggnQ6XvUFGS48hO5/jbidRHt6
- 8e/c3jRi4+2PJAnarCtBQWilxETCy2r0t904da6+/J1shWLxXCyrLDfiR7dkV0sIN5+NP58Y67V
- 6k6POJ+52QqcAxRK2gQ==
-X-Received: by 2002:a05:600c:203:: with SMTP id 3mr3013421wmi.88.1616593503454; 
- Wed, 24 Mar 2021 06:45:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdKwGMdMJ6Z7fj8XISovW3Ng8H3ajrRgtYCYoVBSYBWWDKemE3QuKziSl7K0rTjfnDziKVWw==
-X-Received: by 2002:a05:600c:203:: with SMTP id 3mr3013401wmi.88.1616593503159; 
- Wed, 24 Mar 2021 06:45:03 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id e17sm3488513wra.65.2021.03.24.06.45.00
+ bh=iBHZAX2dXF7tsxOkqd7OAaB5ezrAWC1wP7e6j9Ka9IE=;
+ b=fFuQMtEQx67SPikWyDPewuDtaF4eW68e9SPn+fACuXe3oe1DRfrjEGDozqNqeH770v
+ 3azs0TXr7rWNPcpseDghAHJ+xhF2X3BA+6cHzgf5oexFoooUqLQkV+PV9oU0IGXAo/hH
+ y6r00WaFY2PekyOxX/EthlkG30AIrBAEftw3P+pZahD6D6O27dVwcLhvoTzTdtSvg4C4
+ gV2MWNlaaExUgY4Au+HTOfVscwh3gG+X2zyMz+xCuXx3ddhAd1/hqD0C9ESd3Y3qsvJd
+ PfUCO/jpk8vY4eIK34CrLhhOj/CQtMV6GVm4LG9uQbKpsm3e+YOXCU/NauBAkxgscNrH
+ 79CQ==
+X-Gm-Message-State: AOAM530t5iRKgmRXaFnpVFSr/RgW73WO3Ys5o5OjUamn6qGK/jpd5QgE
+ oSlyxQ5sCg63MvJLFj8Hlkg=
+X-Google-Smtp-Source: ABdhPJwpXnD9K8HbE2o4UXEXl+VNYWJ5E6OMRGQTtri3K2T3VTJyG6Bq7VZvzE1/dJkDUHrjtCQM/g==
+X-Received: by 2002:a7b:c195:: with SMTP id y21mr3975020wmi.178.1616606611206; 
+ Wed, 24 Mar 2021 10:23:31 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id z66sm3365467wmc.4.2021.03.24.10.23.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Mar 2021 06:45:01 -0700 (PDT)
-Subject: Re: [PATCH v2] meson: Propagate gnutls dependency to migration
-To: Jessica Clarke <jrtc27@jrtc27.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>
-References: <20210320164730.33285-1-jrtc27@jrtc27.com>
- <20210320171221.37437-1-jrtc27@jrtc27.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <a803e5f6-61d6-3656-ca62-d2399aefc09b@redhat.com>
-Date: Wed, 24 Mar 2021 14:45:00 +0100
+ Wed, 24 Mar 2021 10:23:30 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2 05/12] mc146818rtc: put it into the 'misc' category
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, kuhn.chenqun@huawei.com,
+ Gan Qixin <ganqixin@huawei.com>, zhang.zhanghailiang@huawei.com,
+ "Michael S . Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>
+References: <20201130083630.2520597-1-ganqixin@huawei.com>
+ <20201130083630.2520597-6-ganqixin@huawei.com>
+ <8c45ab34-2534-d5ad-ca0b-43b49a681e55@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <65fe4d98-7f79-191e-34c5-c3e5021d2f36@amsat.org>
+Date: Wed, 24 Mar 2021 18:23:28 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210320171221.37437-1-jrtc27@jrtc27.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <8c45ab34-2534-d5ad-ca0b-43b49a681e55@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,50 +86,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Mar 2021 13:45:18 -0000
+X-List-Received-Date: Wed, 24 Mar 2021 17:23:35 -0000
 
-On 20/03/21 18:12, Jessica Clarke wrote:
-> Commit 3eacf70bb5a83e4775ad8003cbca63a40f70c8c2 neglected to fix this
-> for softmmu configs, which pull in migration's use of gnutls.
+On 12/21/20 12:53 PM, Thomas Huth wrote:
+> On 30/11/2020 09.36, Gan Qixin wrote:
+>> The category of the mc146818rtc device is not set, put it into the 'misc'
+>> category.
+>>
+>> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+>> ---
+>> Cc: Michael S. Tsirkin <mst@redhat.com>
+>> ---
+>>  hw/rtc/mc146818rtc.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+>> index 7a38540cb9..39edca0996 100644
+>> --- a/hw/rtc/mc146818rtc.c
+>> +++ b/hw/rtc/mc146818rtc.c
+>> @@ -1039,6 +1039,7 @@ static void rtc_class_initfn(ObjectClass *klass, void *data)
+>>      dc->vmsd = &vmstate_rtc;
+>>      isa->build_aml = rtc_build_aml;
+>>      device_class_set_props(dc, mc146818rtc_properties);
+>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>>  }
 > 
-> This fixes the following compilation failure on Arm-based Macs:
+> I wonder whether this device should be user_creatable at all (e.g. it uses a
+> hard-coded IO port)... Anyway setting the category certainly does not hurt,
+> thus:
 > 
->    In file included from migration/multifd.c:23:
->    In file included from migration/tls.h:25:
->    In file included from include/io/channel-tls.h:26:
->    In file included from include/crypto/tlssession.h:24:
->    include/crypto/tlscreds.h:28:10: fatal error: 'gnutls/gnutls.h' file not found
->    #include <gnutls/gnutls.h>
->             ^~~~~~~~~~~~~~~~~
->    1 error generated.
-> 
-> (as well as for channel.c and tls.c)
-> 
-> Signed-off-by: Jessica Clarke <jrtc27@jrtc27.com>
-> ---
-> Changes in v2:
->   * Added error to commit message
-> 
->   migration/meson.build | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/migration/meson.build b/migration/meson.build
-> index 9645f44005..6fa2f8745d 100644
-> --- a/migration/meson.build
-> +++ b/migration/meson.build
-> @@ -24,7 +24,7 @@ softmmu_ss.add(files(
->     'savevm.c',
->     'socket.c',
->     'tls.c',
-> -))
-> +), gnutls)
->   
->   softmmu_ss.add(when: ['CONFIG_RDMA', rdma], if_true: files('rdma.c'))
->   softmmu_ss.add(when: 'CONFIG_LIVE_BLOCK_MIGRATION', if_true: files('block.c'))
-> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Queued, thanks.
-
-Paolo
-
+Can this go via qemu-trivial?
 
