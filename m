@@ -1,74 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lPrTH-0005qt-Jb
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Mar 2021 14:46:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38370)
+	id 1lQ162-0005NY-2O
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Mar 2021 01:02:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56222)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lPrTG-0005pD-F0; Fri, 26 Mar 2021 14:46:10 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:43555)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lPrTF-0003Vp-1V; Fri, 26 Mar 2021 14:46:10 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id x7so6570301wrw.10;
- Fri, 26 Mar 2021 11:46:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kuDF9j2QYgI2orYzVwMQfFkUExXm5JdUdAnU54c4cv0=;
- b=haMjWYKGPe5eCEh+ctJmn53XUdIhHahXlyDYuZiR2yNJfpOZXhZ8oRs/JTvEP8Mse7
- zaCcpbqozFH2szQEuPY3eH+UyC1XQ8ZQF/9ET4vKrYtcX0DfHZc3sWpCW8FTHO2a3Yem
- +nm2AC5JWmDbOkNqa5z7dy60f5rabewZ+BPFYPH0h51Zjd9MQaiaTvwDPEQfzrJqLUOT
- 8zwxAcdhTnYQPSCPrbjtB8w30DnSVvzwjVrMbZtZ7/3OFXHczYU80Um4aD3FMjdErVmB
- GoGKchIGAezDt/tn4gRpHY/lxbzu3rhE2hrOfr2oDk7H0qsI8klhwTAhiFnrI/lQ2mT9
- qsKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=kuDF9j2QYgI2orYzVwMQfFkUExXm5JdUdAnU54c4cv0=;
- b=C36wTtiIFiEsF8pFhcDcey4ddzouTp4rm2ifRtQ0xkkNNsdKOfCB6wg9WYB8W0MmzB
- hBUYS7upbNPTjkuZEnBnENpfMoHnQW7PtXkRwmT32TRMJorUm6xioXAAno6FOTLH7yT4
- WQmXrZWjA0o8UoE0K44SR57j3TlJqpSOy22dxrJLNk/SkqdqEnaCwJWHTiM9UzwRVLJO
- SZQ/vnZQQ2az0IfbjhadpLVDnsJesE+DflOJjNzx7Gjam+/3ES0r+16p3/yVGGbnCsW9
- ZrqfL8ZxwH5TCo1Dz2bQG8fI/WZ8MRxAe8OUnNEE5QYQqFA0+8UAoSk5tZlAcIyXW+c5
- IjGQ==
-X-Gm-Message-State: AOAM533qgoH9B3dlSpzu9EphHg8GeRp6VZNL4VXz16QulKGsMVHtr0Xh
- 9+moriONacZ+1u1LOiWKtFw=
-X-Google-Smtp-Source: ABdhPJy/bVnYjmJ3Hm7ZNh/9dSCi7i8LxsqIyYeqqA24RISF8ITC4cejxBhTvrH3I1lmlTF6pB6/tg==
-X-Received: by 2002:a5d:564a:: with SMTP id j10mr15662680wrw.120.1616784364394; 
- Fri, 26 Mar 2021 11:46:04 -0700 (PDT)
-Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id i4sm11054705wmq.12.2021.03.26.11.46.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Mar 2021 11:46:03 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw: Remove superfluous includes of hw/hw.h
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
-References: <20210326151848.2217216-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <b27cdc2d-544a-ae26-ea1a-41a9a0ac6154@amsat.org>
-Date: Fri, 26 Mar 2021 19:46:02 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lQ160-0005NG-5Y
+ for qemu-trivial@nongnu.org; Sat, 27 Mar 2021 01:02:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40535)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lQ15w-0005K7-PV
+ for qemu-trivial@nongnu.org; Sat, 27 Mar 2021 01:02:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1616821363;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=qwQ0DuTYqBQQQBfH/kcFPl+oEInmcqITU34UhDGr0h0=;
+ b=G95mq6r/5nyaCd0SVDjwMj6WmMhqt3/fBlW5AEhPETPuOPlp4e7c2AvYNQ4zHBESu/vgVA
+ Q9QX+yGXfrXjfk/iYu+eG3dnGZ7YIjOggB3vLqJ57e6VIbGtF0RDv6eIjNXBamQ7s7jwU5
+ O9I4TPKy+0ZvoRVgeu42RdU1Y+8wZNQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-557-1gxD1KUwOJSehLbyG72MHg-1; Sat, 27 Mar 2021 01:02:40 -0400
+X-MC-Unique: 1gxD1KUwOJSehLbyG72MHg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C8542180FCA0;
+ Sat, 27 Mar 2021 05:02:39 +0000 (UTC)
+Received: from thuth.com (ovpn-112-12.ams2.redhat.com [10.36.112.12])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 11ABD61F59;
+ Sat, 27 Mar 2021 05:02:38 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] hw: Do not include hw/irq.h if it is not necessary
+Date: Sat, 27 Mar 2021 06:02:36 +0100
+Message-Id: <20210327050236.2232347-1-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210326151848.2217216-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,41 +66,172 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Mar 2021 18:46:10 -0000
+X-List-Received-Date: Sat, 27 Mar 2021 05:02:48 -0000
 
-On 3/26/21 4:18 PM, Thomas Huth wrote:
-> The include/hw/hw.h header only has a prototype for hw_error(),
-> so it does not make sense to include this in files that do not
-> use this function.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/arm/musicpal.c                  | 1 -
->  hw/char/sifive_uart.c              | 1 -
->  hw/display/next-fb.c               | 1 -
->  hw/dma/sifive_pdma.c               | 1 -
->  hw/dma/xlnx_csu_dma.c              | 1 -
->  hw/hppa/lasi.c                     | 1 -
->  hw/input/lasips2.c                 | 1 -
->  hw/m68k/mcf_intc.c                 | 1 -
->  hw/m68k/next-kbd.c                 | 1 -
->  hw/m68k/q800.c                     | 1 -
->  hw/m68k/virt.c                     | 1 -
->  hw/misc/mchp_pfsoc_dmc.c           | 1 -
->  hw/misc/mchp_pfsoc_ioscb.c         | 1 -
->  hw/misc/mchp_pfsoc_sysreg.c        | 1 -
->  hw/misc/sifive_e_prci.c            | 1 -
->  hw/misc/sifive_test.c              | 1 -
->  hw/rx/rx-gdbsim.c                  | 1 -
->  hw/rx/rx62n.c                      | 1 -
->  hw/vfio/pci-quirks.c               | 1 -
->  include/hw/char/avr_usart.h        | 1 -
->  include/hw/misc/avr_power.h        | 1 -
->  include/hw/misc/stm32f4xx_exti.h   | 1 -
->  include/hw/misc/stm32f4xx_syscfg.h | 1 -
->  include/hw/pci-host/i440fx.h       | 1 -
->  include/hw/timer/avr_timer16.h     | 1 -
->  25 files changed, 25 deletions(-)
+Many files include hw/irq.h without needing it. Remove the superfluous
+include statements.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/arm/msf2-soc.c           | 1 -
+ hw/i386/kvm/ioapic.c        | 1 -
+ hw/i386/xen/xen_platform.c  | 1 -
+ hw/m68k/q800.c              | 1 -
+ hw/m68k/virt.c              | 1 -
+ hw/misc/led.c               | 1 -
+ hw/misc/virt_ctrl.c         | 1 -
+ hw/ppc/prep.c               | 1 -
+ hw/riscv/microchip_pfsoc.c  | 1 -
+ hw/sd/cadence_sdhci.c       | 1 -
+ hw/timer/sse-counter.c      | 1 -
+ hw/usb/xlnx-usb-subsystem.c | 1 -
+ 12 files changed, 12 deletions(-)
+
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index d2c29e82d1..5cfe7caf83 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -27,7 +27,6 @@
+ #include "qapi/error.h"
+ #include "exec/address-spaces.h"
+ #include "hw/char/serial.h"
+-#include "hw/irq.h"
+ #include "hw/arm/msf2-soc.h"
+ #include "hw/misc/unimp.h"
+ #include "sysemu/sysemu.h"
+diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+index dfc3c98005..71a563181e 100644
+--- a/hw/i386/kvm/ioapic.c
++++ b/hw/i386/kvm/ioapic.c
+@@ -13,7 +13,6 @@
+ #include "qemu/osdep.h"
+ #include "monitor/monitor.h"
+ #include "hw/i386/x86.h"
+-#include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/i386/ioapic_internal.h"
+ #include "hw/i386/apic_internal.h"
+diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
+index 01ae1fb161..bf4f20e92b 100644
+--- a/hw/i386/xen/xen_platform.c
++++ b/hw/i386/xen/xen_platform.c
+@@ -27,7 +27,6 @@
+ #include "qapi/error.h"
+ #include "hw/ide.h"
+ #include "hw/pci/pci.h"
+-#include "hw/irq.h"
+ #include "hw/xen/xen_common.h"
+ #include "migration/vmstate.h"
+ #include "hw/xen/xen-legacy-backend.h"
+diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+index 1c7f7aa07f..d1ab1ff77d 100644
+--- a/hw/m68k/q800.c
++++ b/hw/m68k/q800.c
+@@ -27,7 +27,6 @@
+ #include "sysemu/sysemu.h"
+ #include "cpu.h"
+ #include "hw/boards.h"
+-#include "hw/irq.h"
+ #include "hw/or-irq.h"
+ #include "elf.h"
+ #include "hw/loader.h"
+diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+index 18e6f11041..9469f82800 100644
+--- a/hw/m68k/virt.c
++++ b/hw/m68k/virt.c
+@@ -13,7 +13,6 @@
+ #include "sysemu/sysemu.h"
+ #include "cpu.h"
+ #include "hw/boards.h"
+-#include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "elf.h"
+ #include "hw/loader.h"
+diff --git a/hw/misc/led.c b/hw/misc/led.c
+index f552b8b648..f6d6d68bce 100644
+--- a/hw/misc/led.c
++++ b/hw/misc/led.c
+@@ -10,7 +10,6 @@
+ #include "migration/vmstate.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/misc/led.h"
+-#include "hw/irq.h"
+ #include "trace.h"
+ 
+ #define LED_INTENSITY_PERCENT_MAX   100
+diff --git a/hw/misc/virt_ctrl.c b/hw/misc/virt_ctrl.c
+index 2ea01bd7a1..3552d7a09a 100644
+--- a/hw/misc/virt_ctrl.c
++++ b/hw/misc/virt_ctrl.c
+@@ -5,7 +5,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
+ #include "migration/vmstate.h"
+diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+index f1b1efdcef..af4ccb9f43 100644
+--- a/hw/ppc/prep.c
++++ b/hw/ppc/prep.c
+@@ -38,7 +38,6 @@
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
+-#include "hw/irq.h"
+ #include "hw/loader.h"
+ #include "hw/rtc/mc146818rtc.h"
+ #include "hw/isa/pc87312.h"
+diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+index c4146b7a6b..01537b30eb 100644
+--- a/hw/riscv/microchip_pfsoc.c
++++ b/hw/riscv/microchip_pfsoc.c
+@@ -41,7 +41,6 @@
+ #include "qemu/cutils.h"
+ #include "qapi/error.h"
+ #include "hw/boards.h"
+-#include "hw/irq.h"
+ #include "hw/loader.h"
+ #include "hw/sysbus.h"
+ #include "chardev/char.h"
+diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
+index 0b371c843d..c89538b491 100644
+--- a/hw/sd/cadence_sdhci.c
++++ b/hw/sd/cadence_sdhci.c
+@@ -26,7 +26,6 @@
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+ #include "migration/vmstate.h"
+-#include "hw/irq.h"
+ #include "hw/sd/cadence_sdhci.h"
+ #include "sdhci-internal.h"
+ 
+diff --git a/hw/timer/sse-counter.c b/hw/timer/sse-counter.c
+index 0384051f15..16c0e8ad15 100644
+--- a/hw/timer/sse-counter.c
++++ b/hw/timer/sse-counter.c
+@@ -33,7 +33,6 @@
+ #include "trace.h"
+ #include "hw/timer/sse-counter.h"
+ #include "hw/sysbus.h"
+-#include "hw/irq.h"
+ #include "hw/registerfields.h"
+ #include "hw/clock.h"
+ #include "hw/qdev-clock.h"
+diff --git a/hw/usb/xlnx-usb-subsystem.c b/hw/usb/xlnx-usb-subsystem.c
+index 568257370c..c760c3058a 100644
+--- a/hw/usb/xlnx-usb-subsystem.c
++++ b/hw/usb/xlnx-usb-subsystem.c
+@@ -24,7 +24,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/sysbus.h"
+-#include "hw/irq.h"
+ #include "hw/register.h"
+ #include "qemu/bitops.h"
+ #include "qemu/log.h"
+-- 
+2.27.0
+
 
