@@ -1,64 +1,124 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lQXme-0006QA-VC
-	for mharc-qemu-trivial@gnu.org; Sun, 28 Mar 2021 11:57:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55736)
+	id 1lQZy3-0001Vb-GD
+	for mharc-qemu-trivial@gnu.org; Sun, 28 Mar 2021 14:16:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49604)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lQXmd-0006Pn-Fv; Sun, 28 Mar 2021 11:56:59 -0400
-Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130]:35404)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lQXma-0002X8-8G; Sun, 28 Mar 2021 11:56:59 -0400
-Received: by mail-il1-x130.google.com with SMTP id 19so9250882ilj.2;
- Sun, 28 Mar 2021 08:56:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=EqZDgqvOpom/QjixPlUt9SKFnZeMeN6SZ1VG7qMkSfg=;
- b=RhXdMQXNvHUPj1k+Mfb49wt7x0dEFS54CTB8WwssZGXpgedD+mP1jfYu0V8pIogs/P
- f3cvlSTX6yh+ewSaW6fNjfGqrMuw2zNKOWt3UiZZox0/RvUJiheSgTVxlIfm0d22clvO
- YsH2Q9jHH7Y8kDll++1BPR/OOfeEvJHMzatvsYwlyLWYKtCTbyTmcBMIaqrzA24UruK7
- af89LD7jQomHTCkDsiHzK/DDhwC3aCkJwzyHtUIqUie2dbhMmWfAMaH/S9fzarHStrMY
- I+5lMREgklop1+WEtOuY/ElgRbmBLIUhCdoG4L3UFfUFCptYE21dLYZemXNxSq0nroDj
- eOCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=EqZDgqvOpom/QjixPlUt9SKFnZeMeN6SZ1VG7qMkSfg=;
- b=RhOjFXWJHOzhrpnMw6AVESZyrMDth9zmOpSbEm4YMT0du/UHhGC4zrp8VnRWmbPycL
- FFvVyjcjgTslnxY9Tk/DrwKEATBo0Q6EGhLUSMLrrM6S/jU5ChrnHucS9fEdU9C12BWs
- Ycdkx6M3JchfNWXc+Z2eIAS2KGOwRn1A+bHFkhvWtndLjCOo+19epclEMGRRMMpyzpkM
- 7FbjctRRIemkk7SXVp2Ri1Xx0DLfZEFWhMTZFAwVsQsL7uylqvBBuX353AJOPXrCHZqs
- 86FGHfN++iubrPx8pnQDg6+zfqxoanmhqMMXtAy7YloUUozh02Q1Vm8wdv2Qu5dFoFtL
- Zmug==
-X-Gm-Message-State: AOAM533ZKctL24fakuxuLYnw8FdLwwP2aD7iN4cQrHaed2sFwM/w7rvU
- j4LE1WyxAJd/WunpjPA7uSh4S79E7GzDK4VfSUY=
-X-Google-Smtp-Source: ABdhPJy+q1OTdUch0sjjEJZVh8SibVvYHIbGxC3EgKwqvWgtPl9EsOB6Gw2IbJmwJ4pPjHiJnUZkCN7iSjQaBvf0YhU=
-X-Received: by 2002:a05:6e02:1989:: with SMTP id
- g9mr12454623ilf.40.1616947014506; 
- Sun, 28 Mar 2021 08:56:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <frf@ghgsat.com>)
+ id 1lQZkO-0007ZG-Uq; Sun, 28 Mar 2021 14:02:49 -0400
+Received: from mail-eopbgr670089.outbound.protection.outlook.com
+ ([40.107.67.89]:64000 helo=CAN01-TO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <frf@ghgsat.com>)
+ id 1lQZkJ-0007Wy-Eb; Sun, 28 Mar 2021 14:02:47 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NClVAFIVrMlUgL5Qxu4sObDqVcKh5T1gwa76Zx37SFDkapzQmSYY4GJiKXa0x4J0oPDH2Skngh3DVcPyk5aFzoypYqOkLiI+QCkmWJhPPfYtCSslTFyhZLqrXGI1vEYOGuf4IONf+tokm6/obOdOUjSwX1a1t4BlW+ekQnGjzdtUJp3KV7Vk/vM4tN4TtSZD1q68bHh2ttMOx2IW84J6lz4/Rp/ciFLXGuIasHxYuaecnaUXVjf0FSlmuybofULQO5LqbzB9i0u2Wa2fnVWwRhqnnlG/mU5pjtMsDxdzGNsqlwHVMp7a/x0VxaaDnqUuwpBb4gR0FNR6CEo0bF+qIg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Z5DHiXvdxXKoQW8kqm0nH0TF+DHVT+jn/0L7Pd8nKyE=;
+ b=h4sca5WR3tcgl6lo6LW18lhdwVyHZRgPh3zMD2OSn8f+1lPUpGdLdWo1vBn76lm224mTpRI9pVttABiGOakUY7QcPoWupfXrYiEsavX/ASDlKlfswW5Sv+pfC2uZzGRe8hUWSS0F3J/HXzgXrmz33qLZqbUsf94YkucdGBr4a0uFbBxvf/rjC0VwkUlufVqEugaHcGZgK/3BFkCSM6KY+3+rEipl4PkRDDlwxr5bPWf2KF+nJd2UpdehpvW8s+D4M/viVQlswr69mMEuRWBh35aa2huN0+cGU+ZHVsZi5TxiKDLdhGocc+Pd9vaUaI2yo7THRF+hQLHV5IglBTN3cw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=ghgsat.com; dmarc=pass action=none header.from=ghgsat.com;
+ dkim=pass header.d=ghgsat.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ghgsat.onmicrosoft.com; s=selector1-ghgsat-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Z5DHiXvdxXKoQW8kqm0nH0TF+DHVT+jn/0L7Pd8nKyE=;
+ b=PR9iXJxIbyE+6BGq0Z5gy8LCOX95u9zgYc2+39Enx7uGJJ6GTQj0pWIxUg+0MrvR5+PmfV454aVucmwkULFFbtpepVCFmuJEwybfZatI9zHk9zVEAmI4EyF8eWU5xpUPVoR41eaZ3TpuOPgZ3azATlxl9SYSw1+rKCCOKmf+Fl4=
+Authentication-Results: nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=none action=none header.from=ghgsat.com;
+Received: from YQXPR01MB2437.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:c00:42::21)
+ by QB1PR01MB2706.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:c00:32::27)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3977.32; Sun, 28 Mar
+ 2021 18:02:37 +0000
+Received: from YQXPR01MB2437.CANPRD01.PROD.OUTLOOK.COM
+ ([fe80::c57c:c897:7829:56f1]) by YQXPR01MB2437.CANPRD01.PROD.OUTLOOK.COM
+ ([fe80::c57c:c897:7829:56f1%7]) with mapi id 15.20.3977.033; Sun, 28 Mar 2021
+ 18:02:37 +0000
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Fortier?= <frf@ghgsat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Fortier?= <frf@ghgsat.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+Subject: [PATCH] linux-user: NETLINK_LIST_MEMBERSHIPS: Allow bad ptr if its
+ length is 0
+Date: Sun, 28 Mar 2021 14:01:35 -0400
+Message-Id: <20210328180135.88449-1-frf@ghgsat.com>
+X-Mailer: git-send-email 2.25.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [70.80.230.242]
+X-ClientProxiedBy: YTXPR0101CA0049.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:b00:1::26) To YQXPR01MB2437.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:c00:42::21)
 MIME-Version: 1.0
-References: <20210328054833.2351597-1-thuth@redhat.com>
-In-Reply-To: <20210328054833.2351597-1-thuth@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Sun, 28 Mar 2021 11:56:23 -0400
-Message-ID: <CAKmqyKNOD7tfqqAv8Y=hNLyRpVXPa0=bPEvnAfhfjo3ED4eFjA@mail.gmail.com>
-Subject: Re: [PATCH] hw: Do not include qemu/log.h if it is not necessary
-To: Thomas Huth <thuth@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::130;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x130.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from FRED-ubuntu.ghgsat.com (70.80.230.242) by
+ YTXPR0101CA0049.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b00:1::26) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3977.32 via Frontend
+ Transport; Sun, 28 Mar 2021 18:02:36 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 95fcd963-348e-4d15-1976-08d8f213aba0
+X-MS-TrafficTypeDiagnostic: QB1PR01MB2706:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <QB1PR01MB2706DD8AA873E4ADB19F556FC97F9@QB1PR01MB2706.CANPRD01.PROD.OUTLOOK.COM>
+X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: vXaKqclJj02ALjwDCr0c8T0pIEeeWffzRxxNBsjD/pPeWC6ngyeEprHFJ63qbtk4SSeMB2wiIzFzWDZIfk2QyKgLViZpYTVjVt/00QuFSfylNPl4qmYY5Wh3dk+OQixMSyShu2uh16ReOFTFj62dyacBonjSJYzL7VZKmYNlB8s7JedAAP5g1cepBFd4XH6XN1ulUe2d2dThl79Nq5ZSbQLcOhzORQWKwPPe/4s7jiUJPIN1XozelGNrq7SF36Ny2p1pGJx8gms56ttEtrpJw+25Ud1CS+m2fpuVP8RcBaEH1uXpL2pyuDzs2OaB7kVM5vtPQeYmpqZCjt3lIAUWO1oYSH9Ka6W01sjR2BAn1dxIAeinDr6T36cuSGLL1D9lBSQamD+b4NA4LHM0x4DNvwC+MuUcuFyip9D4zuH+Od757JpJbl1ffxWXLGzFpOTYjn6z42V1V5mo+pFnjc11eQ741aba8+I2ZUZTbiMYzlu3CqrSE5Aui2tF/B1+unm4DFybvJCReKhWr9k4tteQrYEwPIrIJY9E8BlOOUwFQhIANl8YT7iurRrO//uWxnNThdKr4KqrpsQrfnUZChCM7i+n044oKV2Hh1kffyn7PWrobTUDTC7H2t/efTsYyAUj4gh6RRy0NvYGbflbf0KKD1eFA6mkHdyobwwMXnSl8xA=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:YQXPR01MB2437.CANPRD01.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(136003)(376002)(396003)(366004)(39830400003)(346002)(7696005)(52116002)(5660300002)(16526019)(956004)(4326008)(186003)(6916009)(8676002)(1076003)(38100700001)(54906003)(83380400001)(316002)(4744005)(2616005)(8936002)(6486002)(66476007)(478600001)(66946007)(26005)(36756003)(2906002)(66556008)(86362001)(66574015);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: =?utf-8?B?QjNNOEovRUpXdXpWcW5yQUdUanJRZ2dBMVFsT216SzdFNFBKY3hqRDFUM3dE?=
+ =?utf-8?B?TjlZQVRmUlc0aGtoN3RPaUhwNUtxem12eDFqd0VPL29VL3JucDJGVW5UT2p0?=
+ =?utf-8?B?dFhKcnMyazhxUDBPWTV3RGptVFoxU2c3NW95My8vVFJLY0U5Ti9OSWlqMnJi?=
+ =?utf-8?B?akVrZW9FVWxxT3lPeEhyeHBweVFHeWc2ZVB2cGNvTzZVZVl1NXhQeVJYdWFT?=
+ =?utf-8?B?dkRwamE4V1FweTJ6OU4yTkRuVWRxM0lpU3VlVHdDbHJ6aFhtRDV3WS9JVE91?=
+ =?utf-8?B?eUZxR0pMdjc5REFOeUNTVUY4Z0ZUZDFBUnBDN01mMC9lK3pDUXNObUZVRWc2?=
+ =?utf-8?B?cXQ4NUJPcnFtK0FabDFwZnNMMUNqYlJ3U0VaR2YyT0VPZFRPVDI5U3BCOXFV?=
+ =?utf-8?B?SDYwTXZJV2RzemtMQWsvYkYvR3NmRHFROHh2STFsSE9kbDhjUHR0K1EydEVE?=
+ =?utf-8?B?Qmc5UUlCQlROZFA1TU9FeUNDNmJSOFpBci8vb2VRNnZBSXUvSFh6d040UkZz?=
+ =?utf-8?B?ZFFaQXVlUHlNeC9PSllTUjZmN3dnQlFFT1RZTnc2RXU3bFZPYTFydHhpSytL?=
+ =?utf-8?B?RmNYZVNvMFczQVpLcm5MVUFSb3JqQ0k5eW4wNzkrZFhKa3QwYjViTEpVcUVq?=
+ =?utf-8?B?YnFEOEdHd2RmQWZDV0Z5bWJNVjhFMnJHaHdNWWtkN3B5Wk0xeTR4WXdsWDdY?=
+ =?utf-8?B?b1VjZldyOTB5ZzdXMkpCazFGL3l2ZmZiMUErQ0Q3VmhTbFZHbkJiUXJzK09M?=
+ =?utf-8?B?NFYxYWZZSnFaam5HZmRQQWI2NTdMY2F2S2I0N2V5dzZVSEhFcXFqYm1FdE5s?=
+ =?utf-8?B?L2VqZ2ZJblF1SnZCbnpmVXUyWW1HZGtLVEFwRGNpa1RXZS9IUWwzbWlyaENa?=
+ =?utf-8?B?S3FKbEI0RDJlbW4zSUFQRThpUldTS1pSeWxzOUpLaTlrZ0Nmb29EL3FLTUdS?=
+ =?utf-8?B?ZzVnNllFajYwdnEzanQwYU11eFdhTzRvb0tiRjJERHQwY0M1VDhLeEd0TnhW?=
+ =?utf-8?B?Q0Y4WEJGSkRlKzM1VkdxVlkvaWNyeEtnWXB6djMyTEN4VXY2bXNZU1JlM043?=
+ =?utf-8?B?V3ZIbVo1TktOY2p0NUJ1YWpSVm44ZHdiWVZFL1U3ZDlTNmU4TTljV0VSOHc5?=
+ =?utf-8?B?TkVqa2JGM2FUdnZLU051bnJ2Y2U5RHdIcElWclBUVDNkT0tTYTh2OWpwcmtI?=
+ =?utf-8?B?cFhseWtRYWhsWTczVE1yblNEZVRDU2RXSWc2M1FkL2oydUF5RDRGRmtNZEd0?=
+ =?utf-8?B?elc0cURQSkN0Y0w1Skh1aFVzRFR4a042TGt3bGJuMDZhN3FpY1lXaFVaY0xo?=
+ =?utf-8?B?N0FEeVI5Sk1oeTFTRVhEczlNU0xJODVhZ081RXl1OUNXME5zYVE3eFUzVEhW?=
+ =?utf-8?B?WW1QbjRmZ216MzVUL1lVR3IzUTRuejkxK0tydlo2WHdGYWY4OXZMWkdnWU9R?=
+ =?utf-8?B?Zi9sQzh0UlhtM2VrbGhVS2lwcjJZbjNPWjVoTDJyandZQkxFTFhqTWg4TCtk?=
+ =?utf-8?B?enFLSklycDBuakRWRy94TzdzY1hYVDBydUF3ZU9QRm82RWEwN0VHNmVVUGhU?=
+ =?utf-8?Q?vAHXjysFsPV+FW8ZkX2gpLpoddu6nF/y9agA5yXnTY49Vb?=
+X-OriginatorOrg: ghgsat.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 95fcd963-348e-4d15-1976-08d8f213aba0
+X-MS-Exchange-CrossTenant-AuthSource: YQXPR01MB2437.CANPRD01.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Mar 2021 18:02:37.2500 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: bfd043dd-f09f-4b66-9b18-72d4ded19a21
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WFbyoaf7wlFhvDaJXXCfUOTGheBTom9adimdBcp8322X84BHPx+OF6BoJAY29kKo
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: QB1PR01MB2706
+Received-SPF: pass client-ip=40.107.67.89; envelope-from=frf@ghgsat.com;
+ helo=CAN01-TO1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 28 Mar 2021 14:16:52 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,687 +130,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 28 Mar 2021 15:56:59 -0000
+X-List-Received-Date: Sun, 28 Mar 2021 18:02:51 -0000
 
-On Sun, Mar 28, 2021 at 1:48 AM Thomas Huth <thuth@redhat.com> wrote:
->
-> Many files include qemu/log.h without needing it. Remove the superfluous
-> include statements.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+getsockopt(fd, SOL_NETLINK, NETLINK_LIST_MEMBERSHIPS, *optval, *optlen)
+syscall allows optval to be NULL/invalid if optlen points to a size of
+zero. This allows userspace to query the length of the array they should
+use to get the full membership list before allocating memory for said
+list, then re-calling getsockopt with proper optval/optlen arguments.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Notable users of this pattern include systemd-networkd, which in the
+(albeit old) version 237 tested, cannot start without this fix.
 
-Alistair
+Signed-off-by: Frédéric Fortier <frf@ghgsat.com>
+---
+ linux-user/syscall.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  hw/arm/aspeed.c                     | 1 -
->  hw/arm/aspeed_ast2600.c             | 1 -
->  hw/arm/aspeed_soc.c                 | 1 -
->  hw/arm/exynos4210.c                 | 1 -
->  hw/arm/xlnx-versal-virt.c           | 1 -
->  hw/arm/xlnx-versal.c                | 1 -
->  hw/i2c/mpc_i2c.c                    | 1 -
->  hw/intc/imx_gpcv2.c                 | 1 -
->  hw/intc/ompic.c                     | 1 -
->  hw/intc/openpic.c                   | 1 -
->  hw/ipmi/isa_ipmi_bt.c               | 1 -
->  hw/ipmi/isa_ipmi_kcs.c              | 1 -
->  hw/mips/fuloong2e.c                 | 1 -
->  hw/mips/loongson3_virt.c            | 1 -
->  hw/misc/imx7_snvs.c                 | 1 -
->  hw/misc/imx_ccm.c                   | 1 -
->  hw/misc/imx_rngc.c                  | 1 -
->  hw/misc/pvpanic-isa.c               | 1 -
->  hw/misc/pvpanic-pci.c               | 1 -
->  hw/net/xgmac.c                      | 1 -
->  hw/ppc/pnv.c                        | 1 -
->  hw/ppc/pnv_pnor.c                   | 1 -
->  hw/ppc/ppc405_boards.c              | 1 -
->  hw/ppc/ppc405_uc.c                  | 1 -
->  hw/ppc/ppc_booke.c                  | 1 -
->  hw/ppc/virtex_ml507.c               | 1 -
->  hw/riscv/microchip_pfsoc.c          | 1 -
->  hw/riscv/numa.c                     | 1 -
->  hw/riscv/sifive_e.c                 | 1 -
->  hw/riscv/sifive_u.c                 | 1 -
->  hw/riscv/spike.c                    | 1 -
->  hw/riscv/virt.c                     | 1 -
->  hw/sd/cadence_sdhci.c               | 1 -
->  hw/ssi/xilinx_spi.c                 | 1 -
->  hw/tricore/tc27x_soc.c              | 1 -
->  hw/usb/chipidea.c                   | 1 -
->  hw/usb/hcd-dwc3.c                   | 1 -
->  hw/usb/imx-usb-phy.c                | 1 -
->  hw/usb/xlnx-usb-subsystem.c         | 1 -
->  hw/usb/xlnx-versal-usb2-ctrl-regs.c | 1 -
->  hw/xen/xen-legacy-backend.c         | 1 -
->  net/dump.c                          | 1 -
->  net/filter-replay.c                 | 1 -
->  semihosting/arm-compat-semi.c       | 1 -
->  target/arm/op_helper.c              | 1 -
->  target/hexagon/cpu.c                | 1 -
->  target/hexagon/decode.c             | 1 -
->  target/hexagon/genptr.c             | 1 -
->  target/lm32/lm32-semi.c             | 1 -
->  target/riscv/op_helper.c            | 1 -
->  target/s390x/interrupt.c            | 1 -
->  51 files changed, 51 deletions(-)
->
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index a17b75f494..c3345fce53 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -22,7 +22,6 @@
->  #include "hw/misc/tmp105.h"
->  #include "hw/misc/led.h"
->  #include "hw/qdev-properties.h"
-> -#include "qemu/log.h"
->  #include "sysemu/block-backend.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/loader.h"
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index bc87e754a3..504aabf173 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -14,7 +14,6 @@
->  #include "hw/misc/unimp.h"
->  #include "hw/arm/aspeed_soc.h"
->  #include "hw/char/serial.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qemu/error-report.h"
->  #include "hw/i2c/aspeed_i2c.h"
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 057d053c84..516277800c 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -17,7 +17,6 @@
->  #include "hw/misc/unimp.h"
->  #include "hw/arm/aspeed_soc.h"
->  #include "hw/char/serial.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qemu/error-report.h"
->  #include "hw/i2c/aspeed_i2c.h"
-> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-> index ced2769b10..5c7a51bbad 100644
-> --- a/hw/arm/exynos4210.c
-> +++ b/hw/arm/exynos4210.c
-> @@ -23,7 +23,6 @@
->
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
-> -#include "qemu/log.h"
->  #include "cpu.h"
->  #include "hw/cpu/a9mpcore.h"
->  #include "hw/irq.h"
-> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-> index 8482cd6196..73e8268b35 100644
-> --- a/hw/arm/xlnx-versal-virt.c
-> +++ b/hw/arm/xlnx-versal-virt.c
-> @@ -10,7 +10,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "sysemu/device_tree.h"
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index 79609692e4..fb776834f7 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -12,7 +12,6 @@
->  #include "qemu/osdep.h"
->  #include "qemu/units.h"
->  #include "qapi/error.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "hw/sysbus.h"
->  #include "net/net.h"
-> diff --git a/hw/i2c/mpc_i2c.c b/hw/i2c/mpc_i2c.c
-> index 720d2331e9..845392505f 100644
-> --- a/hw/i2c/mpc_i2c.c
-> +++ b/hw/i2c/mpc_i2c.c
-> @@ -20,7 +20,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/i2c/i2c.h"
->  #include "hw/irq.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "hw/sysbus.h"
->  #include "migration/vmstate.h"
-> diff --git a/hw/intc/imx_gpcv2.c b/hw/intc/imx_gpcv2.c
-> index 17007a4078..237d5f97eb 100644
-> --- a/hw/intc/imx_gpcv2.c
-> +++ b/hw/intc/imx_gpcv2.c
-> @@ -12,7 +12,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/intc/imx_gpcv2.h"
->  #include "migration/vmstate.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->
->  #define GPC_PU_PGC_SW_PUP_REQ       0x0f8
-> diff --git a/hw/intc/ompic.c b/hw/intc/ompic.c
-> index 1731a10683..1f10314807 100644
-> --- a/hw/intc/ompic.c
-> +++ b/hw/intc/ompic.c
-> @@ -7,7 +7,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qapi/error.h"
->  #include "hw/irq.h"
-> diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-> index 65970e1b37..9b4c17854d 100644
-> --- a/hw/intc/openpic.c
-> +++ b/hw/intc/openpic.c
-> @@ -47,7 +47,6 @@
->  #include "qapi/error.h"
->  #include "qemu/bitops.h"
->  #include "qapi/qmp/qerror.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qemu/timer.h"
->  #include "qemu/error-report.h"
-> diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
-> index b7c2ad557b..02625eb94e 100644
-> --- a/hw/ipmi/isa_ipmi_bt.c
-> +++ b/hw/ipmi/isa_ipmi_bt.c
-> @@ -23,7 +23,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qapi/error.h"
->  #include "hw/irq.h"
-> diff --git a/hw/ipmi/isa_ipmi_kcs.c b/hw/ipmi/isa_ipmi_kcs.c
-> index 7dd6bf0040..3b23ad08b3 100644
-> --- a/hw/ipmi/isa_ipmi_kcs.c
-> +++ b/hw/ipmi/isa_ipmi_kcs.c
-> @@ -23,7 +23,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qapi/error.h"
->  #include "hw/irq.h"
-> diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-> index 4f61f2c873..1851eb0944 100644
-> --- a/hw/mips/fuloong2e.c
-> +++ b/hw/mips/fuloong2e.c
-> @@ -33,7 +33,6 @@
->  #include "hw/mips/bootloader.h"
->  #include "hw/mips/cpudevs.h"
->  #include "hw/pci/pci.h"
-> -#include "qemu/log.h"
->  #include "hw/loader.h"
->  #include "hw/ide/pci.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
-> index b15071defc..f9c0873a98 100644
-> --- a/hw/mips/loongson3_virt.c
-> +++ b/hw/mips/loongson3_virt.c
-> @@ -54,7 +54,6 @@
->  #include "sysemu/qtest.h"
->  #include "sysemu/reset.h"
->  #include "sysemu/runstate.h"
-> -#include "qemu/log.h"
->  #include "qemu/error-report.h"
->
->  #define PM_CNTL_MODE          0x10
-> diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
-> index 45972a5920..ee7698bd9c 100644
-> --- a/hw/misc/imx7_snvs.c
-> +++ b/hw/misc/imx7_snvs.c
-> @@ -14,7 +14,6 @@
->
->  #include "qemu/osdep.h"
->  #include "hw/misc/imx7_snvs.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "sysemu/runstate.h"
->
-> diff --git a/hw/misc/imx_ccm.c b/hw/misc/imx_ccm.c
-> index 08a50ee4c8..9403c5daa3 100644
-> --- a/hw/misc/imx_ccm.c
-> +++ b/hw/misc/imx_ccm.c
-> @@ -13,7 +13,6 @@
->
->  #include "qemu/osdep.h"
->  #include "hw/misc/imx_ccm.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->
->  #ifndef DEBUG_IMX_CCM
-> diff --git a/hw/misc/imx_rngc.c b/hw/misc/imx_rngc.c
-> index 4c270df2db..632c03779c 100644
-> --- a/hw/misc/imx_rngc.c
-> +++ b/hw/misc/imx_rngc.c
-> @@ -14,7 +14,6 @@
->  #include "qemu/osdep.h"
->  #include "qemu/main-loop.h"
->  #include "qemu/module.h"
-> -#include "qemu/log.h"
->  #include "qemu/guest-random.h"
->  #include "hw/irq.h"
->  #include "hw/misc/imx_rngc.h"
-> diff --git a/hw/misc/pvpanic-isa.c b/hw/misc/pvpanic-isa.c
-> index 27113abd6c..7b66d58acc 100644
-> --- a/hw/misc/pvpanic-isa.c
-> +++ b/hw/misc/pvpanic-isa.c
-> @@ -13,7 +13,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "sysemu/runstate.h"
->
-> diff --git a/hw/misc/pvpanic-pci.c b/hw/misc/pvpanic-pci.c
-> index d629639d8f..af8cbe2830 100644
-> --- a/hw/misc/pvpanic-pci.c
-> +++ b/hw/misc/pvpanic-pci.c
-> @@ -12,7 +12,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "sysemu/runstate.h"
->
-> diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
-> index 00859a7d50..0ab6ae91aa 100644
-> --- a/hw/net/xgmac.c
-> +++ b/hw/net/xgmac.c
-> @@ -29,7 +29,6 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/sysbus.h"
->  #include "migration/vmstate.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "net/net.h"
->  #include "qom/object.h"
-> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-> index 77af846cdf..6faf1fe473 100644
-> --- a/hw/ppc/pnv.c
-> +++ b/hw/ppc/pnv.c
-> @@ -32,7 +32,6 @@
->  #include "sysemu/device_tree.h"
->  #include "sysemu/hw_accel.h"
->  #include "target/ppc/cpu.h"
-> -#include "qemu/log.h"
->  #include "hw/ppc/fdt.h"
->  #include "hw/ppc/ppc.h"
->  #include "hw/ppc/pnv.h"
-> diff --git a/hw/ppc/pnv_pnor.c b/hw/ppc/pnv_pnor.c
-> index 4b455de1ea..5ef1cf2afb 100644
-> --- a/hw/ppc/pnv_pnor.c
-> +++ b/hw/ppc/pnv_pnor.c
-> @@ -10,7 +10,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/error-report.h"
-> -#include "qemu/log.h"
->  #include "qemu/units.h"
->  #include "sysemu/block-backend.h"
->  #include "sysemu/blockdev.h"
-> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-> index 8f77887fb1..f4e804cdb5 100644
-> --- a/hw/ppc/ppc405_boards.c
-> +++ b/hw/ppc/ppc405_boards.c
-> @@ -39,7 +39,6 @@
->  #include "sysemu/reset.h"
->  #include "sysemu/block-backend.h"
->  #include "hw/boards.h"
-> -#include "qemu/log.h"
->  #include "qemu/error-report.h"
->  #include "hw/loader.h"
->  #include "exec/address-spaces.h"
-> diff --git a/hw/ppc/ppc405_uc.c b/hw/ppc/ppc405_uc.c
-> index fe047074a1..e632c408bd 100644
-> --- a/hw/ppc/ppc405_uc.c
-> +++ b/hw/ppc/ppc405_uc.c
-> @@ -34,7 +34,6 @@
->  #include "qemu/timer.h"
->  #include "sysemu/reset.h"
->  #include "sysemu/sysemu.h"
-> -#include "qemu/log.h"
->  #include "exec/address-spaces.h"
->  #include "hw/intc/ppc-uic.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/ppc/ppc_booke.c b/hw/ppc/ppc_booke.c
-> index 974c0c8a75..10b643861f 100644
-> --- a/hw/ppc/ppc_booke.c
-> +++ b/hw/ppc/ppc_booke.c
-> @@ -28,7 +28,6 @@
->  #include "qemu/timer.h"
->  #include "sysemu/reset.h"
->  #include "sysemu/runstate.h"
-> -#include "qemu/log.h"
->  #include "hw/loader.h"
->  #include "kvm_ppc.h"
->
-> diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-> index cb421570da..3a57604ac0 100644
-> --- a/hw/ppc/virtex_ml507.c
-> +++ b/hw/ppc/virtex_ml507.c
-> @@ -38,7 +38,6 @@
->  #include "elf.h"
->  #include "qapi/error.h"
->  #include "qemu/error-report.h"
-> -#include "qemu/log.h"
->  #include "qemu/option.h"
->  #include "exec/address-spaces.h"
->
-> diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
-> index 01537b30eb..6cbd17ebf2 100644
-> --- a/hw/riscv/microchip_pfsoc.c
-> +++ b/hw/riscv/microchip_pfsoc.c
-> @@ -36,7 +36,6 @@
->
->  #include "qemu/osdep.h"
->  #include "qemu/error-report.h"
-> -#include "qemu/log.h"
->  #include "qemu/units.h"
->  #include "qemu/cutils.h"
->  #include "qapi/error.h"
-> diff --git a/hw/riscv/numa.c b/hw/riscv/numa.c
-> index 4f92307102..7fe92d402f 100644
-> --- a/hw/riscv/numa.c
-> +++ b/hw/riscv/numa.c
-> @@ -18,7 +18,6 @@
->
->  #include "qemu/osdep.h"
->  #include "qemu/units.h"
-> -#include "qemu/log.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "hw/boards.h"
-> diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
-> index f939bcf9ea..97e8b0b0a2 100644
-> --- a/hw/riscv/sifive_e.c
-> +++ b/hw/riscv/sifive_e.c
-> @@ -29,7 +29,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "hw/boards.h"
-> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index 7b59942369..698637e8e1 100644
-> --- a/hw/riscv/sifive_u.c
-> +++ b/hw/riscv/sifive_u.c
-> @@ -35,7 +35,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "qapi/visitor.h"
-> diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-> index ec7cb2f707..fe0806a476 100644
-> --- a/hw/riscv/spike.c
-> +++ b/hw/riscv/spike.c
-> @@ -24,7 +24,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "hw/boards.h"
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index c0dc69ff33..95a11adaa2 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -20,7 +20,6 @@
->
->  #include "qemu/osdep.h"
->  #include "qemu/units.h"
-> -#include "qemu/log.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "hw/boards.h"
-> diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
-> index c89538b491..56b8bae1c3 100644
-> --- a/hw/sd/cadence_sdhci.c
-> +++ b/hw/sd/cadence_sdhci.c
-> @@ -23,7 +23,6 @@
->  #include "qemu/osdep.h"
->  #include "qemu/bitops.h"
->  #include "qemu/error-report.h"
-> -#include "qemu/log.h"
->  #include "qapi/error.h"
->  #include "migration/vmstate.h"
->  #include "hw/sd/cadence_sdhci.h"
-> diff --git a/hw/ssi/xilinx_spi.c b/hw/ssi/xilinx_spi.c
-> index 49ff275593..b2819a7ff0 100644
-> --- a/hw/ssi/xilinx_spi.c
-> +++ b/hw/ssi/xilinx_spi.c
-> @@ -27,7 +27,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/sysbus.h"
->  #include "migration/vmstate.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qemu/fifo8.h"
->
-> diff --git a/hw/tricore/tc27x_soc.c b/hw/tricore/tc27x_soc.c
-> index 8af079e6b2..dea9ba3cca 100644
-> --- a/hw/tricore/tc27x_soc.c
-> +++ b/hw/tricore/tc27x_soc.c
-> @@ -26,7 +26,6 @@
->  #include "qemu/units.h"
->  #include "hw/misc/unimp.h"
->  #include "exec/address-spaces.h"
-> -#include "qemu/log.h"
->  #include "cpu.h"
->
->  #include "hw/tricore/tc27x_soc.h"
-> diff --git a/hw/usb/chipidea.c b/hw/usb/chipidea.c
-> index 3dcd22ccba..b1c85404d6 100644
-> --- a/hw/usb/chipidea.c
-> +++ b/hw/usb/chipidea.c
-> @@ -12,7 +12,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/usb/hcd-ehci.h"
->  #include "hw/usb/chipidea.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->
->  enum {
-> diff --git a/hw/usb/hcd-dwc3.c b/hw/usb/hcd-dwc3.c
-> index d547d0538d..279263489e 100644
-> --- a/hw/usb/hcd-dwc3.c
-> +++ b/hw/usb/hcd-dwc3.c
-> @@ -31,7 +31,6 @@
->  #include "hw/sysbus.h"
->  #include "hw/register.h"
->  #include "qemu/bitops.h"
-> -#include "qemu/log.h"
->  #include "qom/object.h"
->  #include "migration/vmstate.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/usb/imx-usb-phy.c b/hw/usb/imx-usb-phy.c
-> index e705a03a1f..5d7a549e34 100644
-> --- a/hw/usb/imx-usb-phy.c
-> +++ b/hw/usb/imx-usb-phy.c
-> @@ -13,7 +13,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/usb/imx-usb-phy.h"
->  #include "migration/vmstate.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->
->  static const VMStateDescription vmstate_imx_usbphy = {
-> diff --git a/hw/usb/xlnx-usb-subsystem.c b/hw/usb/xlnx-usb-subsystem.c
-> index c760c3058a..d8deeb6ced 100644
-> --- a/hw/usb/xlnx-usb-subsystem.c
-> +++ b/hw/usb/xlnx-usb-subsystem.c
-> @@ -26,7 +26,6 @@
->  #include "hw/sysbus.h"
->  #include "hw/register.h"
->  #include "qemu/bitops.h"
-> -#include "qemu/log.h"
->  #include "qom/object.h"
->  #include "qapi/error.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/usb/xlnx-versal-usb2-ctrl-regs.c b/hw/usb/xlnx-versal-usb2-ctrl-regs.c
-> index 9eaa59ebb8..1c094aa1a6 100644
-> --- a/hw/usb/xlnx-versal-usb2-ctrl-regs.c
-> +++ b/hw/usb/xlnx-versal-usb2-ctrl-regs.c
-> @@ -32,7 +32,6 @@
->  #include "hw/irq.h"
->  #include "hw/register.h"
->  #include "qemu/bitops.h"
-> -#include "qemu/log.h"
->  #include "qom/object.h"
->  #include "migration/vmstate.h"
->  #include "hw/usb/xlnx-versal-usb2-ctrl-regs.h"
-> diff --git a/hw/xen/xen-legacy-backend.c b/hw/xen/xen-legacy-backend.c
-> index b61a4855b7..dd8ae1452d 100644
-> --- a/hw/xen/xen-legacy-backend.c
-> +++ b/hw/xen/xen-legacy-backend.c
-> @@ -27,7 +27,6 @@
->  #include "hw/sysbus.h"
->  #include "hw/boards.h"
->  #include "hw/qdev-properties.h"
-> -#include "qemu/log.h"
->  #include "qemu/main-loop.h"
->  #include "qapi/error.h"
->  #include "hw/xen/xen-legacy-backend.h"
-> diff --git a/net/dump.c b/net/dump.c
-> index 4d538d82a6..a07ba62401 100644
-> --- a/net/dump.c
-> +++ b/net/dump.c
-> @@ -28,7 +28,6 @@
->  #include "qapi/error.h"
->  #include "qemu/error-report.h"
->  #include "qemu/iov.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qemu/timer.h"
->  #include "qapi/visitor.h"
-> diff --git a/net/filter-replay.c b/net/filter-replay.c
-> index eef8443059..54690676ef 100644
-> --- a/net/filter-replay.c
-> +++ b/net/filter-replay.c
-> @@ -13,7 +13,6 @@
->  #include "clients.h"
->  #include "qemu/error-report.h"
->  #include "qemu/iov.h"
-> -#include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "qemu/timer.h"
->  #include "qapi/visitor.h"
-> diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-> index fe079ca93a..f9c87245b8 100644
-> --- a/semihosting/arm-compat-semi.c
-> +++ b/semihosting/arm-compat-semi.c
-> @@ -37,7 +37,6 @@
->  #include "semihosting/semihost.h"
->  #include "semihosting/console.h"
->  #include "semihosting/common-semi.h"
-> -#include "qemu/log.h"
->  #include "qemu/timer.h"
->  #ifdef CONFIG_USER_ONLY
->  #include "qemu.h"
-> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-> index 65cb37d088..78b831f181 100644
-> --- a/target/arm/op_helper.c
-> +++ b/target/arm/op_helper.c
-> @@ -17,7 +17,6 @@
->   * License along with this library; if not, see <http://www.gnu.org/licenses/>.
->   */
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/main-loop.h"
->  #include "cpu.h"
->  #include "exec/helper-proto.h"
-> diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
-> index b0b3040dd1..543fceb41c 100644
-> --- a/target/hexagon/cpu.c
-> +++ b/target/hexagon/cpu.c
-> @@ -16,7 +16,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "qemu/qemu-print.h"
->  #include "cpu.h"
->  #include "internal.h"
-> diff --git a/target/hexagon/decode.c b/target/hexagon/decode.c
-> index c9bacaa1ee..9bcc8c9f32 100644
-> --- a/target/hexagon/decode.c
-> +++ b/target/hexagon/decode.c
-> @@ -16,7 +16,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "iclass.h"
->  #include "attribs.h"
->  #include "genptr.h"
-> diff --git a/target/hexagon/genptr.c b/target/hexagon/genptr.c
-> index 7481f4c1dd..cea1f221e2 100644
-> --- a/target/hexagon/genptr.c
-> +++ b/target/hexagon/genptr.c
-> @@ -17,7 +17,6 @@
->
->  #define QEMU_GENERATE
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "cpu.h"
->  #include "internal.h"
->  #include "tcg/tcg-op.h"
-> diff --git a/target/lm32/lm32-semi.c b/target/lm32/lm32-semi.c
-> index 6a11a6299a..661a770249 100644
-> --- a/target/lm32/lm32-semi.c
-> +++ b/target/lm32/lm32-semi.c
-> @@ -13,7 +13,6 @@
->  #include "qemu/osdep.h"
->  #include "cpu.h"
->  #include "exec/helper-proto.h"
-> -#include "qemu/log.h"
->  #include "exec/softmmu-semi.h"
->
->  enum {
-> diff --git a/target/riscv/op_helper.c b/target/riscv/op_helper.c
-> index 1eddcb94de..f0bbd73ca5 100644
-> --- a/target/riscv/op_helper.c
-> +++ b/target/riscv/op_helper.c
-> @@ -18,7 +18,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "cpu.h"
->  #include "qemu/main-loop.h"
->  #include "exec/exec-all.h"
-> diff --git a/target/s390x/interrupt.c b/target/s390x/interrupt.c
-> index 4cdbbc8849..9b4d08f2be 100644
-> --- a/target/s390x/interrupt.c
-> +++ b/target/s390x/interrupt.c
-> @@ -8,7 +8,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu/log.h"
->  #include "cpu.h"
->  #include "kvm_s390x.h"
->  #include "internal.h"
-> --
-> 2.27.0
->
->
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 1e508576c7..9b7556a9a2 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -3025,7 +3025,7 @@ get_timeout:
+                 return -TARGET_EINVAL;
+             }
+             results = lock_user(VERIFY_WRITE, optval_addr, len, 1);
+-            if (!results) {
++            if (!results && len > 0) {
+                 return -TARGET_EFAULT;
+             }
+             lv = len;
+-- 
+2.25.1
+
 
