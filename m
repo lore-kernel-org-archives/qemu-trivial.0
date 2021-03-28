@@ -1,77 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lQDoP-0007kK-58
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Mar 2021 14:37:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47982)
+	id 1lQJXv-0003iU-A3
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Mar 2021 20:44:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lQDoD-0007fz-6e; Sat, 27 Mar 2021 14:37:18 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:37495)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lQJXt-0003hQ-As; Sat, 27 Mar 2021 20:44:49 -0400
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31]:37472)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lQDo5-0006NE-9R; Sat, 27 Mar 2021 14:37:14 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id x16so8759168wrn.4;
- Sat, 27 Mar 2021 11:37:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lQJXr-0008CM-El; Sat, 27 Mar 2021 20:44:49 -0400
+Received: by mail-io1-xd31.google.com with SMTP id b10so9205952iot.4;
+ Sat, 27 Mar 2021 17:44:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=QxNO4XDvkT9FMi+UP4pSAZyqhg7ONEmD8dffWxx44Os=;
- b=qsybwEIIGMudad86HfngMyud+3zjsSVubmpSz+96TZfAS/BXE4+0I0SYss82dpkBwE
- ERHuJ2uHG8FJ1+wQhgXdky9R/XwF9z8Eh8LrXmLy6SIUDX6gfujG9NmyAxpbgkO6vN03
- FJzVDNw3nzyZWgMtijwb8F8Lujsj1ZOi9ion1iuvSSMKU6tvjvcGP0VIym1u681cJs8e
- rM7LtU0au0Q1La2IiBGNgKUIvh3pVfsBD0XyYpddTWVx1+ReDmQt7Znh/KkZlCgfClDk
- 73recon9vIfjXGeKxvnSOiVrURWBUqDDwxPtzZsAHrbEEY88HAC9hlCjQ6Hss919Azax
- bXAQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=yuEOd0/IjLXX0tImksVacQxMi6pEpqUZZB76nEduh+s=;
+ b=Bz+YY8SWFLGSAw0/VXe/TtMspqyJGE1ZbQ/BV4LBNZlscyEBU9FdM88nvLdLfD67Gm
+ zZWkKgiWynjtj2VkDuGAZk2bUSq+RatmxTj8MKZFRncBnpzcBuylLdGKHaFNbNvHCVGm
+ NlPRU4yjhCpMbSHceShSVAc3sM5ui1BfO5M134yZRRO7HQraSazf5Ej5vkLL1I64dyjh
+ uKnZLzbuDkGlYLxo4dGUobhM1baFYr7GShKKhRV4ySj17j4CRvF+K77lkUpzQEw9DSGA
+ 2JdiIA+vJgGR/GiRF5lUWG0ItwtsWHb0ZH54j7N0zwKjxlahswcIbQyCe/qTWINSQolj
+ T6LQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=QxNO4XDvkT9FMi+UP4pSAZyqhg7ONEmD8dffWxx44Os=;
- b=PtoUQ7aE6xwBjbEsEa94j7dRr+eEqObJ7Z17UUpYVxlzDEzyjJHn9FItPKXTf3cJ3Z
- Wx6iQFhetWt8P3emUgmKj3mviE9d5ILpLrJEuN0m/Os5HffSTp7PyeowSmaz17Cmglk8
- CQ+yiQ0QNbeEZXodwYz/wcq7Vut2LCDWb4t6alnmK/uNd0LAKblxC3KK6LlLGpyGNqZB
- 8BPkUdJIPnsbm6stQ3iQrpRF/VDBFy7GFx+5IysWGJPX65RO+KJKd2By4imDQb1203bK
- kMWa7JznxUmZok5uTqYK4ffqSsy91bsDwuire89Qsqvoem/5OhAtTr2KsczWjvL8XEUd
- KN7g==
-X-Gm-Message-State: AOAM532rA44Z6L9umFkuQhHkZ+IqJeFHkcraKDDNf5ZQbKGhUeOZIOJh
- 2KHokGACOC032T+ug4E9oYK3zWqTHHxtBw==
-X-Google-Smtp-Source: ABdhPJyrH1jhcJ/OAvTPDlVlBw1H1OW4v9+RhuYbUA5uUYeevkpuYaSdSJWmMjHCa45uuPucnqAzCA==
-X-Received: by 2002:adf:b30f:: with SMTP id j15mr20677270wrd.132.1616870226743; 
- Sat, 27 Mar 2021 11:37:06 -0700 (PDT)
-Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id c131sm17876991wma.37.2021.03.27.11.37.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 27 Mar 2021 11:37:06 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw: Do not include hw/sysbus.h if it is not necessary
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-References: <20210327082804.2259480-1-thuth@redhat.com>
- <f9c5e949-1790-31ae-54c7-ccfdc3c16ae9@amsat.org>
- <f20613c8-2a01-68b8-e4da-0387e0f63e1b@redhat.com>
- <39afc328-73bc-2168-52a7-44914a87a799@amsat.org>
-Message-ID: <b6e70ae9-cfbf-62e9-86f0-5cd98384d976@amsat.org>
-Date: Sat, 27 Mar 2021 19:37:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=yuEOd0/IjLXX0tImksVacQxMi6pEpqUZZB76nEduh+s=;
+ b=ndFtVSTsnpdFWAuyHCdJkjIOaYbN8tam3yWFZmpOABTTOBo243K98GGg9TsveGqk+r
+ KyeV9n1lgdkb9MQQo7EQ41T+OSnuhZ2vNIJw7WdG0mvr1/GA7N6oJQ/IjFS+tcYBDYMB
+ j4hPsx2kEj2TfbXjHrgncqCGsBE3KpZX3QqMGQgisb0TaIRJ6r0TXtNq0FqFh+LNq5Vs
+ chwFeTGk1n2ZqqSKJeCrKXjSHi51/Vgtu5OQx+jwpOWgQrt+TmETr7qZLw4FWDaLupGP
+ Bh+HIkRSs8a31/Ym8y7dOt5xClDsXK8XtP18hzu9RyfWYjqWf8a409sN5h8hlMAh9bi6
+ EH6w==
+X-Gm-Message-State: AOAM53386Wof+FnCSsLAK/UgwnaWrwkIJqL9X5RLkOtK5qI+DNUo2Kz8
+ Zk2E0y03S5Q55aTV9F5q2pjUgMdnG49569GTtTw=
+X-Google-Smtp-Source: ABdhPJxIWeQD2GszkSwlyW79SMSQNucYEVcOW8Hy751eSwoDSaqUuGh9gLZ51vZned0lIEpP//O6w8yGaufLjux8Dmg=
+X-Received: by 2002:a05:6638:224e:: with SMTP id
+ m14mr18662497jas.8.1616892284838; 
+ Sat, 27 Mar 2021 17:44:44 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <39afc328-73bc-2168-52a7-44914a87a799@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+References: <20210327050236.2232347-1-thuth@redhat.com>
+In-Reply-To: <20210327050236.2232347-1-thuth@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Sat, 27 Mar 2021 20:44:16 -0400
+Message-ID: <CAKmqyKN8pA-x_y2TkS31xryDoMe2Yhyd0=FZpmyqMYaQ5z9dwA@mail.gmail.com>
+Subject: Re: [PATCH] hw: Do not include hw/irq.h if it is not necessary
+To: Thomas Huth <thuth@redhat.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d31;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd31.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,30 +70,180 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Mar 2021 18:37:22 -0000
+X-List-Received-Date: Sun, 28 Mar 2021 00:44:49 -0000
 
-On 3/27/21 7:35 PM, Philippe Mathieu-Daudé wrote:
-> On 3/27/21 7:19 PM, Thomas Huth wrote:
->> On 27/03/2021 15.54, Philippe Mathieu-Daudé wrote:
->>> Hi Thomas,
->>>
+On Sat, Mar 27, 2021 at 1:02 AM Thomas Huth <thuth@redhat.com> wrote:
+>
+> Many files include hw/irq.h without needing it. Remove the superfluous
+> include statements.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
->>> 6 more candidates?
->>
->> No, since those use TYPE_SYS_BUS_DEVICE and thus require hw/sysbus.h.
-> 
-> Ah indeed, this line matches your patch changes:
-> 
-> $ git grep -l '#include "hw/sysbus.h"' hw \
->    | xargs git grep -L sysbus_ \
->    | xargs git grep -L 'SysBusDevice\s\+\w' \
->    | xargs grep -L SYS_BUS_DEVICE
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-I missed the 'git' while copy/pasting, I meant:
+Alistair
 
-     | xargs git grep -L SYS_BUS_DEVICE
-
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> 
+> ---
+>  hw/arm/msf2-soc.c           | 1 -
+>  hw/i386/kvm/ioapic.c        | 1 -
+>  hw/i386/xen/xen_platform.c  | 1 -
+>  hw/m68k/q800.c              | 1 -
+>  hw/m68k/virt.c              | 1 -
+>  hw/misc/led.c               | 1 -
+>  hw/misc/virt_ctrl.c         | 1 -
+>  hw/ppc/prep.c               | 1 -
+>  hw/riscv/microchip_pfsoc.c  | 1 -
+>  hw/sd/cadence_sdhci.c       | 1 -
+>  hw/timer/sse-counter.c      | 1 -
+>  hw/usb/xlnx-usb-subsystem.c | 1 -
+>  12 files changed, 12 deletions(-)
+>
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> index d2c29e82d1..5cfe7caf83 100644
+> --- a/hw/arm/msf2-soc.c
+> +++ b/hw/arm/msf2-soc.c
+> @@ -27,7 +27,6 @@
+>  #include "qapi/error.h"
+>  #include "exec/address-spaces.h"
+>  #include "hw/char/serial.h"
+> -#include "hw/irq.h"
+>  #include "hw/arm/msf2-soc.h"
+>  #include "hw/misc/unimp.h"
+>  #include "sysemu/sysemu.h"
+> diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+> index dfc3c98005..71a563181e 100644
+> --- a/hw/i386/kvm/ioapic.c
+> +++ b/hw/i386/kvm/ioapic.c
+> @@ -13,7 +13,6 @@
+>  #include "qemu/osdep.h"
+>  #include "monitor/monitor.h"
+>  #include "hw/i386/x86.h"
+> -#include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/i386/ioapic_internal.h"
+>  #include "hw/i386/apic_internal.h"
+> diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
+> index 01ae1fb161..bf4f20e92b 100644
+> --- a/hw/i386/xen/xen_platform.c
+> +++ b/hw/i386/xen/xen_platform.c
+> @@ -27,7 +27,6 @@
+>  #include "qapi/error.h"
+>  #include "hw/ide.h"
+>  #include "hw/pci/pci.h"
+> -#include "hw/irq.h"
+>  #include "hw/xen/xen_common.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/xen/xen-legacy-backend.h"
+> diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+> index 1c7f7aa07f..d1ab1ff77d 100644
+> --- a/hw/m68k/q800.c
+> +++ b/hw/m68k/q800.c
+> @@ -27,7 +27,6 @@
+>  #include "sysemu/sysemu.h"
+>  #include "cpu.h"
+>  #include "hw/boards.h"
+> -#include "hw/irq.h"
+>  #include "hw/or-irq.h"
+>  #include "elf.h"
+>  #include "hw/loader.h"
+> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> index 18e6f11041..9469f82800 100644
+> --- a/hw/m68k/virt.c
+> +++ b/hw/m68k/virt.c
+> @@ -13,7 +13,6 @@
+>  #include "sysemu/sysemu.h"
+>  #include "cpu.h"
+>  #include "hw/boards.h"
+> -#include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "elf.h"
+>  #include "hw/loader.h"
+> diff --git a/hw/misc/led.c b/hw/misc/led.c
+> index f552b8b648..f6d6d68bce 100644
+> --- a/hw/misc/led.c
+> +++ b/hw/misc/led.c
+> @@ -10,7 +10,6 @@
+>  #include "migration/vmstate.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/misc/led.h"
+> -#include "hw/irq.h"
+>  #include "trace.h"
+>
+>  #define LED_INTENSITY_PERCENT_MAX   100
+> diff --git a/hw/misc/virt_ctrl.c b/hw/misc/virt_ctrl.c
+> index 2ea01bd7a1..3552d7a09a 100644
+> --- a/hw/misc/virt_ctrl.c
+> +++ b/hw/misc/virt_ctrl.c
+> @@ -5,7 +5,6 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> -#include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/sysbus.h"
+>  #include "migration/vmstate.h"
+> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+> index f1b1efdcef..af4ccb9f43 100644
+> --- a/hw/ppc/prep.c
+> +++ b/hw/ppc/prep.c
+> @@ -38,7 +38,6 @@
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu/log.h"
+> -#include "hw/irq.h"
+>  #include "hw/loader.h"
+>  #include "hw/rtc/mc146818rtc.h"
+>  #include "hw/isa/pc87312.h"
+> diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+> index c4146b7a6b..01537b30eb 100644
+> --- a/hw/riscv/microchip_pfsoc.c
+> +++ b/hw/riscv/microchip_pfsoc.c
+> @@ -41,7 +41,6 @@
+>  #include "qemu/cutils.h"
+>  #include "qapi/error.h"
+>  #include "hw/boards.h"
+> -#include "hw/irq.h"
+>  #include "hw/loader.h"
+>  #include "hw/sysbus.h"
+>  #include "chardev/char.h"
+> diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
+> index 0b371c843d..c89538b491 100644
+> --- a/hw/sd/cadence_sdhci.c
+> +++ b/hw/sd/cadence_sdhci.c
+> @@ -26,7 +26,6 @@
+>  #include "qemu/log.h"
+>  #include "qapi/error.h"
+>  #include "migration/vmstate.h"
+> -#include "hw/irq.h"
+>  #include "hw/sd/cadence_sdhci.h"
+>  #include "sdhci-internal.h"
+>
+> diff --git a/hw/timer/sse-counter.c b/hw/timer/sse-counter.c
+> index 0384051f15..16c0e8ad15 100644
+> --- a/hw/timer/sse-counter.c
+> +++ b/hw/timer/sse-counter.c
+> @@ -33,7 +33,6 @@
+>  #include "trace.h"
+>  #include "hw/timer/sse-counter.h"
+>  #include "hw/sysbus.h"
+> -#include "hw/irq.h"
+>  #include "hw/registerfields.h"
+>  #include "hw/clock.h"
+>  #include "hw/qdev-clock.h"
+> diff --git a/hw/usb/xlnx-usb-subsystem.c b/hw/usb/xlnx-usb-subsystem.c
+> index 568257370c..c760c3058a 100644
+> --- a/hw/usb/xlnx-usb-subsystem.c
+> +++ b/hw/usb/xlnx-usb-subsystem.c
+> @@ -24,7 +24,6 @@
+>
+>  #include "qemu/osdep.h"
+>  #include "hw/sysbus.h"
+> -#include "hw/irq.h"
+>  #include "hw/register.h"
+>  #include "qemu/bitops.h"
+>  #include "qemu/log.h"
+> --
+> 2.27.0
+>
+>
 
