@@ -1,65 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lRgU6-0008Uy-Dd
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Mar 2021 15:26:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39286)
+	id 1lRsTS-00010e-L8
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Apr 2021 04:14:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35374)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
- id 1lRgU2-0008Pe-KD; Wed, 31 Mar 2021 15:26:31 -0400
-Received: from speedy.comstyle.com ([2607:f938:3000:8::2]:9327
- helo=mail.comstyle.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_CHACHA20_POLY1305:256)
- (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
- id 1lRgU0-0000EZ-DK; Wed, 31 Mar 2021 15:26:30 -0400
-Received: from mail.comstyle.com (localhost [127.0.0.1])
- by mail.comstyle.com (Postfix) with ESMTP id 4F9bvV1mrKz8PbN;
- Wed, 31 Mar 2021 15:28:22 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=comstyle.com; h=message-id
- :date:mime-version:subject:from:to:cc:references:in-reply-to
- :content-type:content-transfer-encoding; s=default; bh=FuJEVLJ7H
- uvvvgEu5mkGbrF4fv8=; b=R+E2Vjd9sY5FXNVi6xg/308pe0SW9Mjh6R/pzLB1I
- xds9hYnsMDGaHi+6iIFoXC/cqHLgR+/K63vSJXxKuWYOSTP/7tLRcanUMT8ycmor
- yxc5fbN71D6dbCXwiVPp4B2p0Z5Vv965k5X0pT88MQopImduWS4TiBdRMzF9iE0P
- yk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=comstyle.com; h=message-id
- :date:mime-version:subject:from:to:cc:references:in-reply-to
- :content-type:content-transfer-encoding; q=dns; s=default; b=E7s
- O3FleYI1Vs6cZr+3KlBnWAOUkvPXFbMZ/wLyYXG+NJQzYq5H/kgn5mHUMysXOYjZ
- cubUgbw24gChgTGc06rCOOHPgCXBipO85Ab/p3mSA9hwQb9KYVH/uXyslBMGzyq+
- GRKSStjqbmiyrWj1NKtu5deJ2v1JqMLeWzSp9T+k=
-Received: from localhost
- (bras-base-toroon2719w-grc-39-142-114-123-227.dsl.bell.ca [142.114.123.227])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: brad)
- by mail.comstyle.com (Postfix) with ESMTPSA id 4F9bvV0NZ5z8PbK;
- Wed, 31 Mar 2021 15:28:22 -0400 (EDT)
-Message-ID: <31adf621-ab77-3ac3-5995-501ac87426b3@comstyle.com>
-Date: Wed, 31 Mar 2021 15:26:16 -0400
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101
- Thunderbird/88.0
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lRsTN-0000vH-Nr
+ for qemu-trivial@nongnu.org; Thu, 01 Apr 2021 04:14:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50663)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lRsTK-0008Pz-Dh
+ for qemu-trivial@nongnu.org; Thu, 01 Apr 2021 04:14:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1617264871;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9HCo3EVttw54/+ofQrNs1s0gYoj0ueFZ5VZ5MMWpDvM=;
+ b=cjPOHEP7qOAqnXkNFBqTtlilJilqflTc+vEhCs2982GAT2yVgZLTSWmLGxNoL3oxp0wZPj
+ zPTpFGYA8TqwuWnw/gfEf+w5RIbtioSG67o/Ol3fOV3D39CeZ+b5GGU/Oz37hyPV1Mqz2M
+ ibt7nHeFFq1JCvm9fUp06+2sjr9wf50=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-188-t_0JPwqJO4ymuMFy4833ZA-1; Thu, 01 Apr 2021 04:14:29 -0400
+X-MC-Unique: t_0JPwqJO4ymuMFy4833ZA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB5D6801814;
+ Thu,  1 Apr 2021 08:14:28 +0000 (UTC)
+Received: from redhat.com (ovpn-114-106.ams2.redhat.com [10.36.114.106])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B76265F705;
+ Thu,  1 Apr 2021 08:14:26 +0000 (UTC)
+Date: Thu, 1 Apr 2021 09:14:24 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Brad Smith <brad@comstyle.com>
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ qemu-devel@nongnu.org
 Subject: Re: [PATCH] migration: Remove time_t cast for OpenBSD
-Content-Language: en-US
-From: Brad Smith <brad@comstyle.com>
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial
- <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
+Message-ID: <YGWA4MSRe9JUmGqC@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <YDNdAiOkEYOfmbhT@humpty.home.comstyle.com>
  <7eaad721-9d2a-83ed-00fc-80c8ee37e156@redhat.com>
- <26c9c34a-3872-c044-4b01-06d2eb4bfbb1@vivier.eu> <YEphaTV6uzhDEY7R@work-vm>
- <YEpj8MsBzqfRDTWo@redhat.com>
+ <26c9c34a-3872-c044-4b01-06d2eb4bfbb1@vivier.eu>
+ <YEphaTV6uzhDEY7R@work-vm> <YEpj8MsBzqfRDTWo@redhat.com>
  <70bda12d-17fc-5e41-b723-e1409017a599@comstyle.com>
-In-Reply-To: <70bda12d-17fc-5e41-b723-e1409017a599@comstyle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f938:3000:8::2;
- envelope-from=brad@comstyle.com; helo=mail.comstyle.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <31adf621-ab77-3ac3-5995-501ac87426b3@comstyle.com>
+MIME-Version: 1.0
+In-Reply-To: <31adf621-ab77-3ac3-5995-501ac87426b3@comstyle.com>
+User-Agent: Mutt/2.0.5 (2021-01-21)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,67 +83,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Mar 2021 19:26:32 -0000
+X-List-Received-Date: Thu, 01 Apr 2021 08:14:38 -0000
 
-On 3/13/2021 6:33 PM, Brad Smith wrote:
-> On 3/11/2021 1:39 PM, Daniel P. Berrang=C3=A9 wrote:
->> On Thu, Mar 11, 2021 at 06:28:57PM +0000, Dr. David Alan Gilbert wrote=
-:
->>> * Laurent Vivier (laurent@vivier.eu) wrote:
->>>> Le 08/03/2021 =C3=A0 12:46, Thomas Huth a =C3=A9crit=C2=A0:
->>>>> On 22/02/2021 08.28, Brad Smith wrote:
->>>>>> OpenBSD has supported 64-bit time_t across all archs since 5.5=20
->>>>>> released in 2014.
->>>>>>
->>>>>> Remove a time_t cast that is no longer necessary.
->>>>>>
->>>>>>
->>>>>> Signed-off-by: Brad Smith <brad@comstyle.com>
->>>>>>
->>>>>> diff --git a/migration/savevm.c b/migration/savevm.c
->>>>>> index 52e2d72e4b..9557f85ba9 100644
->>>>>> --- a/migration/savevm.c
->>>>>> +++ b/migration/savevm.c
->>>>>> @@ -2849,8 +2849,7 @@ bool save_snapshot(const char *name, bool=20
->>>>>> overwrite, const char *vmstate,
->>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (name) {
->>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pstrcpy(sn-=
->name, sizeof(sn->name), name);
->>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->>>>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* cast below needed f=
-or OpenBSD where tv_sec is=20
->>>>>> still 'long' */
->>>>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 localtime_r((const tim=
-e_t *)&tv.tv_sec, &tm);
->>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 localtime_r(&tv.tv_sec=
-, &tm);
->>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 strftime(sn=
-->name, sizeof(sn->name),=20
->>>>>> "vm-%Y%m%d%H%M%S", &tm);
->>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>> but the qemu_timeval from "include/sysemu/os-win32.h" still uses a=20
->>>> long: is this file compiled for
->>>> win32?
->>> Yep this fails for me when built with x86_64-w64-mingw32- (it's fine
->>> with i686-w64-mingw32- )
->> We could just switch the code to use GDateTime from GLib and thus
->> avoid portability issues. I think this should be equivalent:
->>
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_autoptr(GDateTime) now =3D g_date_tim=
-e_new_now_local();
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_autofree char *nowstr =3D g_date_time=
-_format(now,=20
->> "vm-%Y%m%d%H%M%s");
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 strncpy(sn->name, sizeof(sn->name), now=
-str);
->
-> Which way do you guys want to go? Something like above, remove the=20
-> comment
-> or some variation on the comment but not mentioning OpenBSD since it=20
-> is no
-> longer relevant?
+On Wed, Mar 31, 2021 at 03:26:16PM -0400, Brad Smith wrote:
+> On 3/13/2021 6:33 PM, Brad Smith wrote:
+> > On 3/11/2021 1:39 PM, Daniel P. Berrangé wrote:
+> > > On Thu, Mar 11, 2021 at 06:28:57PM +0000, Dr. David Alan Gilbert wrote:
+> > > > * Laurent Vivier (laurent@vivier.eu) wrote:
+> > > > > Le 08/03/2021 à 12:46, Thomas Huth a écrit :
+> > > > > > On 22/02/2021 08.28, Brad Smith wrote:
+> > > > > > > OpenBSD has supported 64-bit time_t across all archs
+> > > > > > > since 5.5 released in 2014.
+> > > > > > > 
+> > > > > > > Remove a time_t cast that is no longer necessary.
+> > > > > > > 
+> > > > > > > 
+> > > > > > > Signed-off-by: Brad Smith <brad@comstyle.com>
+> > > > > > > 
+> > > > > > > diff --git a/migration/savevm.c b/migration/savevm.c
+> > > > > > > index 52e2d72e4b..9557f85ba9 100644
+> > > > > > > --- a/migration/savevm.c
+> > > > > > > +++ b/migration/savevm.c
+> > > > > > > @@ -2849,8 +2849,7 @@ bool save_snapshot(const char
+> > > > > > > *name, bool overwrite, const char *vmstate,
+> > > > > > >       if (name) {
+> > > > > > >           pstrcpy(sn->name, sizeof(sn->name), name);
+> > > > > > >       } else {
+> > > > > > > -        /* cast below needed for OpenBSD where
+> > > > > > > tv_sec is still 'long' */
+> > > > > > > -        localtime_r((const time_t *)&tv.tv_sec, &tm);
+> > > > > > > +        localtime_r(&tv.tv_sec, &tm);
+> > > > > > >           strftime(sn->name, sizeof(sn->name),
+> > > > > > > "vm-%Y%m%d%H%M%S", &tm);
+> > > > > > >       }
+> > > > > but the qemu_timeval from "include/sysemu/os-win32.h" still
+> > > > > uses a long: is this file compiled for
+> > > > > win32?
+> > > > Yep this fails for me when built with x86_64-w64-mingw32- (it's fine
+> > > > with i686-w64-mingw32- )
+> > > We could just switch the code to use GDateTime from GLib and thus
+> > > avoid portability issues. I think this should be equivalent:
+> > > 
+> > >       g_autoptr(GDateTime) now = g_date_time_new_now_local();
+> > >       g_autofree char *nowstr = g_date_time_format(now,
+> > > "vm-%Y%m%d%H%M%s");
+> > >       strncpy(sn->name, sizeof(sn->name), nowstr);
+> > 
+> > Which way do you guys want to go? Something like above, remove the
+> > comment
+> > or some variation on the comment but not mentioning OpenBSD since it is
+> > no
+> > longer relevant?
+> 
+> Anyone?
 
+Personally I always favour using GLib APIs if there's an applicable one,
+since it eliminates portability problems - or rather offloads them to
+the GLib maintainers, who have already solved them generally.
 
-Anyone?
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
