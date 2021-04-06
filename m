@@ -1,67 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lS0uB-0002pd-KQ
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Apr 2021 13:14:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45916)
+	id 1lTi0T-0008PD-KT
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Apr 2021 05:28:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46618)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
- id 1lS0u8-0002lx-23; Thu, 01 Apr 2021 13:14:48 -0400
-Received: from speedy.comstyle.com ([2607:f938:3000:8::2]:39712
- helo=mail.comstyle.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_CHACHA20_POLY1305:256)
- (Exim 4.90_1) (envelope-from <brad@comstyle.com>)
- id 1lS0u5-0003Ww-Cm; Thu, 01 Apr 2021 13:14:47 -0400
-Received: from mail.comstyle.com (localhost [127.0.0.1])
- by mail.comstyle.com (Postfix) with ESMTP id 4FB8x70Lt2z8PbN;
- Thu,  1 Apr 2021 13:16:43 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=comstyle.com; h=message-id
- :date:mime-version:subject:to:cc:references:from:in-reply-to
- :content-type:content-transfer-encoding; s=default; bh=b3PgkQvKL
- IbYIjquzNaI+l4+o3I=; b=rqUy2+3g+FMRWVXpeexa5uYkYfVesN2JDyxzawCaw
- gxXF9Mf3A/bhA6aVckX7VIgzX4k0nEoroOCr5HCA4tmyo1RPwSaHvYeF1vVf34+x
- fvYw0RJfC7u791O2fb1BLC7yqA8pr/+H+37OR5yvMPWb01Px7QW0wQXaappKkzNj
- No=
-DomainKey-Signature: a=rsa-sha1; c=nofws; d=comstyle.com; h=message-id
- :date:mime-version:subject:to:cc:references:from:in-reply-to
- :content-type:content-transfer-encoding; q=dns; s=default; b=oYx
- SzbYB+b16X5lNXayWCDbJjOlsEhCunzbsPs6jxnNb6TY0AtHP2buEisU5TH0P7Gd
- KmsnpvvuHNfOXs7tml21mYqec+oggtDGnGYFqXcnRxVvPjfITP2gjnMV6sBuR3d9
- 13v8yA1w1xfn7V0jxUj/DJV9oUMK77VxIp4tlDN8=
-Received: from localhost
- (bras-base-toroon2719w-grc-39-142-114-123-227.dsl.bell.ca [142.114.123.227])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: brad)
- by mail.comstyle.com (Postfix) with ESMTPSA id 4FB8x668Flz8PbK;
- Thu,  1 Apr 2021 13:16:42 -0400 (EDT)
-Message-ID: <529d0edb-86f2-2972-d23b-7b3ae7691d3f@comstyle.com>
-Date: Thu, 1 Apr 2021 13:14:37 -0400
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1lTi0R-0008Nk-8v; Tue, 06 Apr 2021 05:28:19 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:33068
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1lTi0O-0005P8-MC; Tue, 06 Apr 2021 05:28:18 -0400
+Received: from macbook02.fritz.box (p5b1511bf.dip0.t-ipconnect.de
+ [91.21.17.191])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 53201DA0491;
+ Tue,  6 Apr 2021 11:28:12 +0200 (CEST)
+To: Bin Meng <bmeng.cn@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Alistair Francis <alistair23@gmail.com>
+References: <20210326062140.367861-1-bmeng.cn@gmail.com>
+ <CAEUhbmW-RaG-yy_YmL_cFQ-vUS=9_Mw3CmvBCTrkTAiKi8Y2TA@mail.gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
+Subject: Re: [PATCH] nsis: Install *.elf images
+Message-ID: <ce9214bb-d68b-defe-8af1-84373727b396@weilnetz.de>
+Date: Tue, 6 Apr 2021 11:28:09 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.9.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101
- Thunderbird/88.0
-Subject: Re: [PATCH] migration: Remove time_t cast for OpenBSD
-Content-Language: en-US
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>,
- qemu-devel@nongnu.org
-References: <YDNdAiOkEYOfmbhT@humpty.home.comstyle.com>
- <7eaad721-9d2a-83ed-00fc-80c8ee37e156@redhat.com>
- <26c9c34a-3872-c044-4b01-06d2eb4bfbb1@vivier.eu> <YEphaTV6uzhDEY7R@work-vm>
- <YEpj8MsBzqfRDTWo@redhat.com>
- <70bda12d-17fc-5e41-b723-e1409017a599@comstyle.com>
- <31adf621-ab77-3ac3-5995-501ac87426b3@comstyle.com>
- <YGWA4MSRe9JUmGqC@redhat.com>
-From: Brad Smith <brad@comstyle.com>
-In-Reply-To: <YGWA4MSRe9JUmGqC@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <CAEUhbmW-RaG-yy_YmL_cFQ-vUS=9_Mw3CmvBCTrkTAiKi8Y2TA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f938:3000:8::2;
- envelope-from=brad@comstyle.com; helo=mail.comstyle.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,73 +53,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Apr 2021 17:14:48 -0000
+X-List-Received-Date: Tue, 06 Apr 2021 09:28:19 -0000
 
-On 4/1/2021 4:14 AM, Daniel P. Berrang=C3=A9 wrote:
-> On Wed, Mar 31, 2021 at 03:26:16PM -0400, Brad Smith wrote:
->> On 3/13/2021 6:33 PM, Brad Smith wrote:
->>> On 3/11/2021 1:39 PM, Daniel P. Berrang=C3=A9 wrote:
->>>> On Thu, Mar 11, 2021 at 06:28:57PM +0000, Dr. David Alan Gilbert wro=
-te:
->>>>> * Laurent Vivier (laurent@vivier.eu) wrote:
->>>>>> Le 08/03/2021 =C3=A0 12:46, Thomas Huth a =C3=A9crit=C2=A0:
->>>>>>> On 22/02/2021 08.28, Brad Smith wrote:
->>>>>>>> OpenBSD has supported 64-bit time_t across all archs
->>>>>>>> since 5.5 released in 2014.
->>>>>>>>
->>>>>>>> Remove a time_t cast that is no longer necessary.
->>>>>>>>
->>>>>>>>
->>>>>>>> Signed-off-by: Brad Smith <brad@comstyle.com>
->>>>>>>>
->>>>>>>> diff --git a/migration/savevm.c b/migration/savevm.c
->>>>>>>> index 52e2d72e4b..9557f85ba9 100644
->>>>>>>> --- a/migration/savevm.c
->>>>>>>> +++ b/migration/savevm.c
->>>>>>>> @@ -2849,8 +2849,7 @@ bool save_snapshot(const char
->>>>>>>> *name, bool overwrite, const char *vmstate,
->>>>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (name) {
->>>>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pstrcpy(s=
-n->name, sizeof(sn->name), name);
->>>>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->>>>>>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* cast below needed=
- for OpenBSD where
->>>>>>>> tv_sec is still 'long' */
->>>>>>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 localtime_r((const t=
-ime_t *)&tv.tv_sec, &tm);
->>>>>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 localtime_r(&tv.tv_s=
-ec, &tm);
->>>>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 strftime(=
-sn->name, sizeof(sn->name),
->>>>>>>> "vm-%Y%m%d%H%M%S", &tm);
->>>>>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->>>>>> but the qemu_timeval from "include/sysemu/os-win32.h" still
->>>>>> uses a long: is this file compiled for
->>>>>> win32?
->>>>> Yep this fails for me when built with x86_64-w64-mingw32- (it's fin=
-e
->>>>> with i686-w64-mingw32- )
->>>> We could just switch the code to use GDateTime from GLib and thus
->>>> avoid portability issues. I think this should be equivalent:
->>>>
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_autoptr(GDateTime) now =3D g_date_t=
-ime_new_now_local();
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_autofree char *nowstr =3D g_date_ti=
-me_format(now,
->>>> "vm-%Y%m%d%H%M%s");
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 strncpy(sn->name, sizeof(sn->name), n=
-owstr);
->>> Which way do you guys want to go? Something like above, remove the
->>> comment
->>> or some variation on the comment but not mentioning OpenBSD since it =
-is
->>> no
->>> longer relevant?
->> Anyone?
-> Personally I always favour using GLib APIs if there's an applicable one=
-,
-> since it eliminates portability problems - or rather offloads them to
-> the GLib maintainers, who have already solved them generally.
+Am 06.04.21 um 11:04 schrieb Bin Meng:
 
-Can you please submit a proper diff and I'll drop this?
+> On Fri, Mar 26, 2021 at 2:22 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+>> As of today, the QEMU Windows installer does not include the
+>> following two RISC-V BIOS images:
+>>
+>> - opensbi-riscv64-generic-fw_dynamic.elf
+>> - opensbi-riscv32-generic-fw_dynamic.elf
+>>
+>> Update the installer script to include them.
+>>
+>> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+>>
+>> ---
+>> Based on:
+>> https://repo.or.cz/qemu/ar7.git/commit/657a6a90b69da971afdc71501c30275=
+ba307ff6c
+>>
+>> The above commit does not land on QEMU master. I am not sure what
+>> the process is, sending it here for comments.
+>>
+>>   qemu.nsi | 2 ++
+>>   1 file changed, 2 insertions(+)
+> Ping?
+
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+This is a small uncritical fix which can be merged via QEMU trivial.
+
+As Philippe already mentioned, a more advanced solution would only=20
+install the required binaries, but typically the NSIS installer is built =
+
+with all system emulations, so it requires all available blobs.=20
+Thererfore the current solution is fine for now.
+
+Regards,
+
+Stefan
+
+
+
 
