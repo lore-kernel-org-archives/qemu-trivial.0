@@ -1,64 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lTjGc-0003MN-V3
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Apr 2021 06:49:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37464)
+	id 1lTmFx-0004fy-Ha
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Apr 2021 10:00:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lTjGb-0003LI-SX
- for qemu-trivial@nongnu.org; Tue, 06 Apr 2021 06:49:05 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:34372)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lTjGL-0005wN-Hl
- for qemu-trivial@nongnu.org; Tue, 06 Apr 2021 06:49:05 -0400
-Received: by mail-ej1-x632.google.com with SMTP id b7so21195036ejv.1
- for <qemu-trivial@nongnu.org>; Tue, 06 Apr 2021 03:48:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9l89O94e5XxYokmPTnjI3FGTeWRxmYILQ1nvY+3lCcc=;
- b=JZp2D851oaFUmOATi8RAltm8hHNjeNVT8yEkbjWhZxiWGCaRhl5re2SmWjgFUe7iSP
- PyIie/8ZCa7UCo/iqTP7pRcKoZ+RZjF0Y3mpTEjpPKTpZuo9vVHpgrkY5bYcJMoRsiBc
- T0wsC+/+gq3htY3yqDp1iwu+NJlej2cg+aDZ07dPG0s0D1QgPWSL9vlU6tZ9jAwGfuDz
- YgvDOws8SaCOcnisqwMTHfn+iew4/VGGUPWs8zBxPGIzCcYhtGAs+CcAeyFqt/eshZ5e
- aOlsjMOtHQrvO26TyUz9VooC4PpP6uDbCditRZygQ6yuUwtGPZ2qvb4tCWdWh/Ht6+SE
- dutw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9l89O94e5XxYokmPTnjI3FGTeWRxmYILQ1nvY+3lCcc=;
- b=rjSWXvvN+U3yStmyQwjzCcG+liOpVFElp7snyTnac5Ig0/YeGWLkDPdLisx5F2HwjX
- ffseTvKzJVRDlvPE1foMANmJobyFDGDc+IlCgk7lDK/siztTxlydR07JMKUTH6RVqWww
- cs+DNna59eF+GRjWtB5Jujd2bIHz06swbnXgqR75ex21uKP/wxn+BpTGnVMqgXvVbi/u
- d5PV0z4XZipNtPSm/4bj4W3HMnbbUllciBgqMYHjMf2B7ZZSWqleZvjGPFZbAXFDBlZa
- eR9n+IidlMFqlc/nK9npqpz4O1N0NnQ8R4+R5ad7YbTFGnSf6Xb941cmM30A7xg8wDlq
- 6oLg==
-X-Gm-Message-State: AOAM532ZbOOF6+ORFwgNvcrh6OYqCp+iz9rdXBwhU2OCsaJl05ONRO1q
- 9RwT861fECDqr45rD/uAo5PzUZemYKP8mSiAGnXZt41qx/cIRA==
-X-Google-Smtp-Source: ABdhPJzCWCePjOJn6yaCgS294NFyFmgdnl8+3gJdajTE5GebNV5J4kt9XExuq/2GhYyqeMEVi/khxCgUJ/WuB9Hud/s=
-X-Received: by 2002:a17:906:1dd3:: with SMTP id
- v19mr33046810ejh.4.1617706128139; 
- Tue, 06 Apr 2021 03:48:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1lTmFu-0004eX-D6; Tue, 06 Apr 2021 10:00:34 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4843)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1lTmFs-0003F8-3T; Tue, 06 Apr 2021 10:00:34 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4FF8Hd2dmrz19KlP;
+ Tue,  6 Apr 2021 21:58:05 +0800 (CST)
+Received: from [10.174.185.179] (10.174.185.179) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.498.0; Tue, 6 Apr 2021 22:00:06 +0800
+Subject: Re: [PATCH v3] multi-process: Initialize variables declared with
+ g_auto*
+To: <elena.ufimtseva@oracle.com>, <jag.raman@oracle.com>,
+ <john.g.johnson@oracle.com>, <stefanha@redhat.com>
+CC: <berrange@redhat.com>, <philmd@redhat.com>, <mjt@tls.msk.ru>,
+ <laurent@vivier.eu>, <wanghaibin.wang@huawei.com>, <qemu-devel@nongnu.org>,
+ <qemu-trivial@nongnu.org>
+References: <20210312112143.1369-1-yuzenghui@huawei.com>
+From: Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <d4a03c50-12db-f44c-7d6a-d2baba77f164@huawei.com>
+Date: Tue, 6 Apr 2021 22:00:03 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-References: <84v98zkb09.wl-Peter.Chubb@data61.csiro.au>
-In-Reply-To: <84v98zkb09.wl-Peter.Chubb@data61.csiro.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Apr 2021 10:48:10 +0000
-Message-ID: <CAFEAcA8OZy+mMnmQfYPkj-EYbt8_yodaKuOQGGYXDvOPmK5_Tw@mail.gmail.com>
-Subject: Re: Remove myself as i.mx31 maintainer
-To: "Chubb, Peter (Data61, Eveleigh)" <Peter.Chubb@data61.csiro.au>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210312112143.1369-1-yuzenghui@huawei.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.174.185.179]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=yuzenghui@huawei.com;
+ helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,21 +55,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Apr 2021 10:49:06 -0000
+X-List-Received-Date: Tue, 06 Apr 2021 14:00:34 -0000
 
-On Tue, 6 Apr 2021 at 10:42, Chubb, Peter (Data61, Eveleigh)
-<Peter.Chubb@data61.csiro.au> wrote:
->
->
-> Remove Peter Chubb as i/MX31 maintainer.
->
-> I'm leaving my current job and will no longer have access to the
-> hardware to test or maintain this port.
->
-> Signed-off-by: Peter Chubb <peter.chubb@data61.csiro.au>
+[+Stefan]
 
+On 2021/3/12 19:21, Zenghui Yu wrote:
+> Quote docs/devel/style.rst (section "Automatic memory deallocation"):
+> 
+> * Variables declared with g_auto* MUST always be initialized,
+>    otherwise the cleanup function will use uninitialized stack memory
+> 
+> Initialize @name properly to get rid of the compilation error (using
+> gcc-7.3.0 on CentOS):
+> 
+> ../hw/remote/proxy.c: In function 'pci_proxy_dev_realize':
+> /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: 'name' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>     g_free (*pp);
+>     ^~~~~~~~~~~~
+> ../hw/remote/proxy.c:350:30: note: 'name' was declared here
+>               g_autofree char *name;
+>                                ^~~~
+> 
+> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+> Reviewed-by: Jagannathan Raman <jag.raman@oracle.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Applied to target-arm.next. Thanks for your work on QEMU !
+Message-Id: <20210312112143.1369-1-yuzenghui@huawei.com>
 
--- PMM
+Ping for 6.0, thanks.
 
