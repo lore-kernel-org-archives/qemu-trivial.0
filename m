@@ -1,86 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lUW2I-0000P2-CI
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Apr 2021 10:53:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51952)
+	id 1lUZTI-00075r-AE
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Apr 2021 14:33:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52866)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lUW2G-0000MC-Af
- for qemu-trivial@nongnu.org; Thu, 08 Apr 2021 10:53:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30282)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lUW2D-0000Xt-V6
- for qemu-trivial@nongnu.org; Thu, 08 Apr 2021 10:53:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1617893608;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TsfSnsG+JlNwYeYVghuV8BXej27O43KqihMa8JpMyFs=;
- b=jRgZPPkdJhPvwE+bRPbQ2SXWUU4lC3cK7OdFhp/Yxtzrq97jWApSKbR0+fzYtpbf+VzJDv
- JS9s42htUhX4qY1X4RIGcAMeYXPYrYBH/3Y7RPnptYWYSN9Y9z4whV/ed1CZg8PDV1Wmd6
- eKPETEob0iNTdNEfImkoX0BIS0w6/i8=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-5-PVhWcjGnN4Wk0oVxbcEklg-1; Thu, 08 Apr 2021 10:53:26 -0400
-X-MC-Unique: PVhWcjGnN4Wk0oVxbcEklg-1
-Received: by mail-ej1-f72.google.com with SMTP id gv58so976775ejc.6
- for <qemu-trivial@nongnu.org>; Thu, 08 Apr 2021 07:53:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lUZTG-00074a-NZ
+ for qemu-trivial@nongnu.org; Thu, 08 Apr 2021 14:33:38 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:42858)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lUZTC-0001pH-AR
+ for qemu-trivial@nongnu.org; Thu, 08 Apr 2021 14:33:38 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id g35so2005014pgg.9
+ for <qemu-trivial@nongnu.org>; Thu, 08 Apr 2021 11:33:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=WgwC6+hFz+TB3NYM6gJhEjKyEs4qCMPETynqq+oMI90=;
+ b=EmSSTWyRhagPmB4HheTS5kAyfM6XI24okBFT+svJ8KELdW+JEjHHc9xryV4VQukJhV
+ 4YwCppmm/KLoG2CVBwz2FTlwv5//Sai+H4Cdj5ItdY3ibLPTKiW0TOxLc0DoHn3+ajdZ
+ 8VMj6JFTpHhjdnG195ZEHjBksIwND8XGMfH18RV73RwqjPCwovhYP6Q9kOjPTZZpED63
+ MnQfqQXrksG56RW5m81nfefRhQjPz7Kf+k5TD+DHEv6V7jhkofgolzmVtpI9TCXuLXtp
+ WLXcIbXIuFgxlfECAixzQfMTaDPIpjZ+sb1Leue5VdCS0btraxvp5B8iThtxWIGHs6of
+ FA6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=TsfSnsG+JlNwYeYVghuV8BXej27O43KqihMa8JpMyFs=;
- b=L2YspDcylEcqA79f8CVEaqhSK9nU33opmdHMKy0XahhJfvEuRDWT57cCybEjsx11Xz
- L2EbsnvfuxRUtlLcikGtrcqJVuzXSo4kWN1kzq+0ZaQodzAOHh5hbu2jMqTapAKIpvmJ
- TjUYgXzb99jj1z3jNFGU+s6qqWKXfO0wkpOKTCdyDnj4fIa3V0ca6R1+cW1u0e0FQq/Q
- Ddx4wHSr5FdWjth8mZOFu1EN5GXCzbQ3RCRZTTKsTorivqSvC3peeXkVIZ9X70j2d54W
- Pg++TxHP1zBhhHMuVv2URax8TuV02rlEdZDknudEC8mCG8COamTqaePVXXZ10ebs8maF
- D6Jw==
-X-Gm-Message-State: AOAM533EZWJQeqET6W024DHvPt5DlOspFtxdUFdTFApake47WeMqnJpI
- /nmcwpAHSV8eSxYT9edRSOEj4PkLbAfn1FK9ebGRiaHJoX+8SxHWoQagESAgzF+Z9c8+rEJ34wE
- g4SrEmY85gs8MqcO4Kg==
-X-Received: by 2002:a17:907:118c:: with SMTP id
- uz12mr3244211ejb.308.1617893605634; 
- Thu, 08 Apr 2021 07:53:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxTw/m33M6jTA02qZ4VuTp3yJchz5VQOyJJDG6ciS65BLoPUunE9DtRZJmvNpUWwWM0bOA1kA==
-X-Received: by 2002:a17:907:118c:: with SMTP id
- uz12mr3244180ejb.308.1617893605363; 
- Thu, 08 Apr 2021 07:53:25 -0700 (PDT)
-Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
- [88.21.201.17])
- by smtp.gmail.com with ESMTPSA id f21sm4352240edq.55.2021.04.08.07.53.24
+ bh=WgwC6+hFz+TB3NYM6gJhEjKyEs4qCMPETynqq+oMI90=;
+ b=JsSoAoF4yWpXnI9z+4IXSuuhvwOkBqU7D5Hdp7TTWcwIAbaymWSrKEuhzSd8O2dN4h
+ UxHoxLynX7Z7i+n5mY5hbsX2NNxA3ZN/Bjyt6NVyzZvXQZwCxYpu5G6la8xTBujsQKWW
+ d1EpRWXacDEcAvXT3pUIxvoINUiAnzYQzUsJXcCH/zP/EWUBce77VG+1LgjuR2ZFzO0k
+ bDCdZPUa5IRj9TmsKxP0D3svlffhuf5gtTF8g9yYU3FFEFlZQeAb5Bkhpl03gCoDGWka
+ f0DvFsmzDVsf8DamANO5poAVXHZqEjJcAWMbR8Czcnm59biSDkDg8pmiWu+bGhqOfyPN
+ EfRg==
+X-Gm-Message-State: AOAM5322+0fmB0vRzdJtXRblT44Q+pi8mvsafx0ZPoKLUX1eELSY9YwC
+ NHzP50jRxBRqeKgKSGxeJ4f74g==
+X-Google-Smtp-Source: ABdhPJwtjUcHE1s2tBeINH5eFatV/aZtDToNEE6YmWCtXBNlgo37UTQgvDcOWFIUDYX1i7OxS3DGTw==
+X-Received: by 2002:a63:eb50:: with SMTP id b16mr9127532pgk.270.1617906810785; 
+ Thu, 08 Apr 2021 11:33:30 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.131.83])
+ by smtp.gmail.com with ESMTPSA id w134sm168281pfd.173.2021.04.08.11.33.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Apr 2021 07:53:24 -0700 (PDT)
+ Thu, 08 Apr 2021 11:33:30 -0700 (PDT)
 Subject: Re: [PATCH] vmstate: Constify some VMStateDescriptions
 To: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, wanghaibin.wang@huawei.com
 References: <20210408140706.23412-1-zhukeqian1@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ae3656dc-bb31-7881-b87d-c04de07df4d9@redhat.com>
-Date: Thu, 8 Apr 2021 16:53:23 +0200
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <65ecfe1d-4a88-e432-7689-390c76e64d45@linaro.org>
+Date: Thu, 8 Apr 2021 11:33:28 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ Thunderbird/78.7.1
 MIME-Version: 1.0
 In-Reply-To: <20210408140706.23412-1-zhukeqian1@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -94,19 +81,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Apr 2021 14:53:32 -0000
+X-List-Received-Date: Thu, 08 Apr 2021 18:33:39 -0000
 
-On 4/8/21 4:07 PM, Keqian Zhu wrote:
+On 4/8/21 7:07 AM, Keqian Zhu wrote:
 > Constify vmstate_ecc_state and vmstate_x86_cpu.
 > 
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu<zhukeqian1@huawei.com>
 > ---
->  hw/block/ecc.c           | 2 +-
->  include/hw/block/flash.h | 2 +-
->  target/i386/cpu.h        | 2 +-
->  target/i386/machine.c    | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
+>   hw/block/ecc.c           | 2 +-
+>   include/hw/block/flash.h | 2 +-
+>   target/i386/cpu.h        | 2 +-
+>   target/i386/machine.c    | 2 +-
+>   4 files changed, 4 insertions(+), 4 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
+r~
 
