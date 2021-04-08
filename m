@@ -1,41 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lUVJl-0003fJ-LU
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Apr 2021 10:07:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39856)
+	id 1lUW2I-0000P2-CI
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Apr 2021 10:53:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51952)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1lUVJk-0003c7-0U; Thu, 08 Apr 2021 10:07:32 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4973)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lUW2G-0000MC-Af
+ for qemu-trivial@nongnu.org; Thu, 08 Apr 2021 10:53:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30282)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1lUVJg-0001FD-UN; Thu, 08 Apr 2021 10:07:31 -0400
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FGNLp00BNzyNj8;
- Thu,  8 Apr 2021 22:05:05 +0800 (CST)
-Received: from DESKTOP-5IS4806.china.huawei.com (10.174.184.42) by
- DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.498.0; Thu, 8 Apr 2021 22:07:07 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>, "Richard
- Henderson" <richard.henderson@linaro.org>, Peter Maydell
- <peter.maydell@linaro.org>, <wanghaibin.wang@huawei.com>
-Subject: [PATCH] vmstate: Constify some VMStateDescriptions
-Date: Thu, 8 Apr 2021 22:07:06 +0800
-Message-ID: <20210408140706.23412-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lUW2D-0000Xt-V6
+ for qemu-trivial@nongnu.org; Thu, 08 Apr 2021 10:53:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1617893608;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TsfSnsG+JlNwYeYVghuV8BXej27O43KqihMa8JpMyFs=;
+ b=jRgZPPkdJhPvwE+bRPbQ2SXWUU4lC3cK7OdFhp/Yxtzrq97jWApSKbR0+fzYtpbf+VzJDv
+ JS9s42htUhX4qY1X4RIGcAMeYXPYrYBH/3Y7RPnptYWYSN9Y9z4whV/ed1CZg8PDV1Wmd6
+ eKPETEob0iNTdNEfImkoX0BIS0w6/i8=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-5-PVhWcjGnN4Wk0oVxbcEklg-1; Thu, 08 Apr 2021 10:53:26 -0400
+X-MC-Unique: PVhWcjGnN4Wk0oVxbcEklg-1
+Received: by mail-ej1-f72.google.com with SMTP id gv58so976775ejc.6
+ for <qemu-trivial@nongnu.org>; Thu, 08 Apr 2021 07:53:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=TsfSnsG+JlNwYeYVghuV8BXej27O43KqihMa8JpMyFs=;
+ b=L2YspDcylEcqA79f8CVEaqhSK9nU33opmdHMKy0XahhJfvEuRDWT57cCybEjsx11Xz
+ L2EbsnvfuxRUtlLcikGtrcqJVuzXSo4kWN1kzq+0ZaQodzAOHh5hbu2jMqTapAKIpvmJ
+ TjUYgXzb99jj1z3jNFGU+s6qqWKXfO0wkpOKTCdyDnj4fIa3V0ca6R1+cW1u0e0FQq/Q
+ Ddx4wHSr5FdWjth8mZOFu1EN5GXCzbQ3RCRZTTKsTorivqSvC3peeXkVIZ9X70j2d54W
+ Pg++TxHP1zBhhHMuVv2URax8TuV02rlEdZDknudEC8mCG8COamTqaePVXXZ10ebs8maF
+ D6Jw==
+X-Gm-Message-State: AOAM533EZWJQeqET6W024DHvPt5DlOspFtxdUFdTFApake47WeMqnJpI
+ /nmcwpAHSV8eSxYT9edRSOEj4PkLbAfn1FK9ebGRiaHJoX+8SxHWoQagESAgzF+Z9c8+rEJ34wE
+ g4SrEmY85gs8MqcO4Kg==
+X-Received: by 2002:a17:907:118c:: with SMTP id
+ uz12mr3244211ejb.308.1617893605634; 
+ Thu, 08 Apr 2021 07:53:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxTw/m33M6jTA02qZ4VuTp3yJchz5VQOyJJDG6ciS65BLoPUunE9DtRZJmvNpUWwWM0bOA1kA==
+X-Received: by 2002:a17:907:118c:: with SMTP id
+ uz12mr3244180ejb.308.1617893605363; 
+ Thu, 08 Apr 2021 07:53:25 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id f21sm4352240edq.55.2021.04.08.07.53.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 08 Apr 2021 07:53:24 -0700 (PDT)
+Subject: Re: [PATCH] vmstate: Constify some VMStateDescriptions
+To: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, wanghaibin.wang@huawei.com
+References: <20210408140706.23412-1-zhukeqian1@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <ae3656dc-bb31-7881-b87d-c04de07df4d9@redhat.com>
+Date: Thu, 8 Apr 2021 16:53:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.184.42]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhukeqian1@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210408140706.23412-1-zhukeqian1@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -48,70 +94,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Apr 2021 14:07:32 -0000
+X-List-Received-Date: Thu, 08 Apr 2021 14:53:32 -0000
 
-Constify vmstate_ecc_state and vmstate_x86_cpu.
+On 4/8/21 4:07 PM, Keqian Zhu wrote:
+> Constify vmstate_ecc_state and vmstate_x86_cpu.
+> 
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> ---
+>  hw/block/ecc.c           | 2 +-
+>  include/hw/block/flash.h | 2 +-
+>  target/i386/cpu.h        | 2 +-
+>  target/i386/machine.c    | 2 +-
+>  4 files changed, 4 insertions(+), 4 deletions(-)
 
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
----
- hw/block/ecc.c           | 2 +-
- include/hw/block/flash.h | 2 +-
- target/i386/cpu.h        | 2 +-
- target/i386/machine.c    | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/hw/block/ecc.c b/hw/block/ecc.c
-index 1a182367ee..6e0d63842c 100644
---- a/hw/block/ecc.c
-+++ b/hw/block/ecc.c
-@@ -78,7 +78,7 @@ void ecc_reset(ECCState *s)
- }
- 
- /* Save/restore */
--VMStateDescription vmstate_ecc_state = {
-+const VMStateDescription vmstate_ecc_state = {
-     .name = "ecc-state",
-     .version_id = 0,
-     .minimum_version_id = 0,
-diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-index 7dde0adcee..86d8363bb0 100644
---- a/include/hw/block/flash.h
-+++ b/include/hw/block/flash.h
-@@ -74,6 +74,6 @@ typedef struct {
- 
- uint8_t ecc_digest(ECCState *s, uint8_t sample);
- void ecc_reset(ECCState *s);
--extern VMStateDescription vmstate_ecc_state;
-+extern const VMStateDescription vmstate_ecc_state;
- 
- #endif
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 570f916878..1bc300ce85 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -1786,7 +1786,7 @@ struct X86CPU {
- 
- 
- #ifndef CONFIG_USER_ONLY
--extern VMStateDescription vmstate_x86_cpu;
-+extern const VMStateDescription vmstate_x86_cpu;
- #endif
- 
- int x86_cpu_pending_interrupt(CPUState *cs, int interrupt_request);
-diff --git a/target/i386/machine.c b/target/i386/machine.c
-index 137604ddb8..f6f094f1c9 100644
---- a/target/i386/machine.c
-+++ b/target/i386/machine.c
-@@ -1396,7 +1396,7 @@ static const VMStateDescription vmstate_msr_tsx_ctrl = {
-     }
- };
- 
--VMStateDescription vmstate_x86_cpu = {
-+const VMStateDescription vmstate_x86_cpu = {
-     .name = "cpu",
-     .version_id = 12,
-     .minimum_version_id = 11,
--- 
-2.19.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
