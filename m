@@ -1,69 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lU74X-0005wS-DG
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Apr 2021 08:14:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52142)
+	id 1lUUby-0000lj-Ut
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Apr 2021 09:22:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56720)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lU74Q-0005vd-Uw; Wed, 07 Apr 2021 08:14:08 -0400
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35]:40875)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lUUbw-0000lL-W5; Thu, 08 Apr 2021 09:22:17 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:44971)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lU74M-0001p9-BB; Wed, 07 Apr 2021 08:14:06 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id 82so9283599yby.7;
- Wed, 07 Apr 2021 05:14:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lUUbo-0001oN-AM; Thu, 08 Apr 2021 09:22:16 -0400
+Received: by mail-ej1-x631.google.com with SMTP id e14so2981516ejz.11;
+ Thu, 08 Apr 2021 06:22:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=DgOzSJc2Deh7khhf5ekqHRxj62tX7qQhU5j+XRynfPM=;
- b=dMoPBs2oOhc+MSUnBOOfgUmo500QNEgt/XkShkpM2YjOA2RWhDHRzqtz0KXaQVky6S
- k3A5KgvG9fEcWQM5Da36z1cWO+/5IcJiorJBgg1M1xdzF0YmTprHbo4mzFP9YLN1h306
- So5HiabZ0u2cdMrFJjkpIWVTTvYKGaujC0GgKeqpv+/hfWdkpnymj3J6FNWs20yTaQ2W
- n1gyxhuZAg4MdcxWONxjYh51EJxvhKda2syYcGsWoWZa1fZIdkEoPRAZmAZFcAtNXDjW
- fVTVBsC1EdV5JT0bnU98COSg2+apWnlg6Jzgs9Viz2EThu6RMW3WwIKKbL8xdJFVrN4Z
- QpBg==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=JF2hSLjAY2xSm80HdC5NkwNPMt85sNS0qkjU9YTDDp0=;
+ b=FbwV5NcgDqj6IcQaPtKViIhgSP0Va09gWQL9+lkNakL0mzB3kHj9Se78C/Tt8Yyc1h
+ vol05Qd8BcX7GScAI1DvHbJM29NLWO/nLQG79xHdqZ+eewXZHvuu/kk88lD7riZ/vEad
+ ogbqpwgIh1/9aGv03aJ59+PmU80r6nZN2LKmh8dX3pSpvxLyj1wd5euT2BdKMkKEJsv9
+ Yxnfx40EJccyFPa77GeEKjgoQP7ZytL/afedwvQysJNBmWXFIkkZBcnfRExnWBU/ZB9C
+ 2/wC+tB8wqK7gSF0/eOnl4wVTUNzy7lzJ039j229Z7XfjJeDWc55pDJLwAgKWGfWjeIe
+ 7f+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=DgOzSJc2Deh7khhf5ekqHRxj62tX7qQhU5j+XRynfPM=;
- b=M0SLSzg8sCwE+kXmEdugIk0q9iXf0SerUj+J5NJmuVHCwmrJvWsspQwBYWVqI71onu
- RExQ9/yJE2cCWaKGXMyappcT9GxtTqWrPSyAGW6KcaVhx4oDf/GkoK9+W6zqq/rZPOZu
- a1daFt9cM/DQNuocKvh8ATTwmUwlv7hxDCp/s3KrvqD53CT+Xx7eqHKjnsPkMBbhUmaQ
- nTcU9MbI/lRG76/RMrcH/tNcU5sJE44+lWvRy/Rdm4We7fx0o8YdZKHTWgVBg20Obfi3
- c+UDU+09uUf42/B20+NepnVQZdXvSAai87bYoEfnBIhNOWAKgLvVi1dGazeyo01NgOY5
- guRA==
-X-Gm-Message-State: AOAM5337LknH69jZR9GcyeVg/fHBUAa217zBWUbnuqccwYtJ5PdUj5kt
- Mn/oDbWGSA+X9ooi5FF8sWk7Ibyz0V1ImzSKHN0=
-X-Google-Smtp-Source: ABdhPJyxIiYNzn5fA+Xs1LElRb2p1E49UT6UYWBZ59aR3sLYig7HOkFKt4IIgIP/kKTu1z7n87fc+/1/HKUYvaPRLIQ=
-X-Received: by 2002:a25:4154:: with SMTP id o81mr4200085yba.239.1617797640298; 
- Wed, 07 Apr 2021 05:14:00 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JF2hSLjAY2xSm80HdC5NkwNPMt85sNS0qkjU9YTDDp0=;
+ b=ZTp7+F5YK/Hg5DqYt1Cyl0hQ9xbdiCTF48Z0FC7cvFrcj8OK9G88QrnTy7pN+IsXvY
+ rcsDkqkCpa8pANm3UT6i5Itwz6NwVs5XqMwOpts1yYR2YGXM2xUMBjgzLqjDquP7sjxl
+ LKqoJG50mGrQr1fLr+UiHY4BCJuBggO3gBccuylopKQlFp3apfxwAXhSb/S9kRXFl+cm
+ E2QKAvMw6md6EkH4bgOGCR1VMO4weuh2cVyrxkJR977MFnY8M9WGW0K2VB0gcbAoiPYI
+ 2ljCaZ+TEKx6MmLJ8bVa8Hr8/urldKSbapFe30KMcMedkS3JixzA3mj6nT1TiSB+KyeU
+ 0gNw==
+X-Gm-Message-State: AOAM53350a6VyzkEgt1dEi/5UjA630pT9Fjp23Gji+Fi/LqKTf0oBdBV
+ 7Zl1EOGe8g9Hh2oEqNFr6RE=
+X-Google-Smtp-Source: ABdhPJxyC4rFvT/gEGo31lLUlLMs2UciAI0TOl2izUr2/gb36JLAL4Nt/W4EKffBcw77XZCRzxM/qQ==
+X-Received: by 2002:a17:906:3487:: with SMTP id
+ g7mr10112392ejb.222.1617888126132; 
+ Thu, 08 Apr 2021 06:22:06 -0700 (PDT)
+Received: from [192.168.1.36] (17.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.17])
+ by smtp.gmail.com with ESMTPSA id pj18sm7678999ejb.101.2021.04.08.06.22.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 08 Apr 2021 06:22:05 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 0/3] hw: Constify VMStateDescription
+To: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Rob Herring <robh@kernel.org>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20210313171150.2122409-1-f4bug@amsat.org>
+ <bd47e690-dab6-e8db-2d8c-aa729c41abad@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <4b8eca8f-fad2-1adf-6997-686803dfa723@amsat.org>
+Date: Thu, 8 Apr 2021 15:22:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <20210326062140.367861-1-bmeng.cn@gmail.com>
- <CAEUhbmW-RaG-yy_YmL_cFQ-vUS=9_Mw3CmvBCTrkTAiKi8Y2TA@mail.gmail.com>
- <ce9214bb-d68b-defe-8af1-84373727b396@weilnetz.de>
- <cc5220ec-f694-3302-92c4-0107fd5af500@vivier.eu>
-In-Reply-To: <cc5220ec-f694-3302-92c4-0107fd5af500@vivier.eu>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Wed, 7 Apr 2021 20:13:49 +0800
-Message-ID: <CAEUhbmX9+=6+J1a0vyzTCWXfrQqjf205W0S=+UZCaxVz+URXRA@mail.gmail.com>
-Subject: Re: [PATCH] nsis: Install *.elf images
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: Stefan Weil <sw@weilnetz.de>, Peter Maydell <peter.maydell@linaro.org>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Alistair Francis <alistair23@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb35.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+In-Reply-To: <bd47e690-dab6-e8db-2d8c-aa729c41abad@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,58 +85,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Apr 2021 12:14:10 -0000
+X-List-Received-Date: Thu, 08 Apr 2021 13:22:17 -0000
 
-Hi Stefan,
+On 3/15/21 10:05 AM, Keqian Zhu wrote:
+> Hi Philippe,
+> 
+> It seems that vmstate_ecc_state and vmstate_x86_cpu can also be constified.
+> Found by <git grep "VMStateDescription" | grep -v "const">.
 
-On Wed, Apr 7, 2021 at 8:06 PM Laurent Vivier <laurent@vivier.eu> wrote:
->
-> Le 06/04/2021 =C3=A0 11:28, Stefan Weil a =C3=A9crit :
-> > Am 06.04.21 um 11:04 schrieb Bin Meng:
-> >
-> >> On Fri, Mar 26, 2021 at 2:22 PM Bin Meng <bmeng.cn@gmail.com> wrote:
-> >>> As of today, the QEMU Windows installer does not include the
-> >>> following two RISC-V BIOS images:
-> >>>
-> >>> - opensbi-riscv64-generic-fw_dynamic.elf
-> >>> - opensbi-riscv32-generic-fw_dynamic.elf
-> >>>
-> >>> Update the installer script to include them.
-> >>>
-> >>> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-> >>>
-> >>> ---
-> >>> Based on:
-> >>> https://repo.or.cz/qemu/ar7.git/commit/657a6a90b69da971afdc71501c3027=
-5ba307ff6c
-> >>>
-> >>> The above commit does not land on QEMU master. I am not sure what
-> >>> the process is, sending it here for comments.
-> >>>
-> >>>   qemu.nsi | 2 ++
-> >>>   1 file changed, 2 insertions(+)
-> >> Ping?
-> >
-> >
-> > Reviewed-by: Stefan Weil <sw@weilnetz.de>
-> >
-> > This is a small uncritical fix which can be merged via QEMU trivial.
->
-> If it is merged via QEMU trivial, it will be after the 6.0 release.
-> If it's needed for 6.0 it's better to go via the maintainer tree (W32,W64=
-) [1]
+Correct (I only searched for the static ones).
 
-I think this should go in 6.0.
+Do you mind sending a patch?
 
-But as I mentioned that the patch is based on
-https://repo.or.cz/qemu/ar7.git/commit/657a6a90b69da971afdc71501c30275ba307=
-ff6c
-
-which is not in the QEMU mainline yet.
-
-Is QEMU Windows installer fork (https://repo.or.cz/qemu/ar7.git/) not
-supposed to merge back to QEMU mainline?
-
-Regards,
-Bin
+> 
+> Thanks,
+> Keqian
+> 
+> On 2021/3/14 1:11, Philippe Mathieu-Daudé wrote:
+>> VMStateDescription isn't supposed to be modified.
 
