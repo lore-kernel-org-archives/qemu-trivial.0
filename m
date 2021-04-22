@@ -1,37 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lZZip-0007Qw-4F
+	id 1lZZip-0007RG-Bo
 	for mharc-qemu-trivial@gnu.org; Thu, 22 Apr 2021 09:50:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48540)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52686)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <serge.guelton@telecom-bretagne.eu>)
- id 1lZUme-0006yM-QO; Thu, 22 Apr 2021 04:34:00 -0400
-Received: from smtp2-g21.free.fr ([2a01:e0c:1:1599::11]:2470)
+ (Exim 4.90_1) (envelope-from <robert.hu@linux.intel.com>)
+ id 1lZUul-0001oe-8W; Thu, 22 Apr 2021 04:42:24 -0400
+Received: from mga05.intel.com ([192.55.52.43]:16699)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <serge.guelton@telecom-bretagne.eu>)
- id 1lZUmc-0001yY-GC; Thu, 22 Apr 2021 04:34:00 -0400
-Received: from localhost (unknown [IPv6:2a01:e0a:923:3150:6f60:5f78:f08b:c504])
- (Authenticated sender: sergesanspaille@free.fr)
- by smtp2-g21.free.fr (Postfix) with ESMTPSA id A8DAE200407;
- Thu, 22 Apr 2021 10:33:40 +0200 (CEST)
-From: Serge Guelton <sguelton@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, philmd@redhat.com,
- serge-sans-paille <sguelton@redhat.com>
-Subject: [PATCH] Fix typo in CFI build documentation
-Date: Thu, 22 Apr 2021 10:33:35 +0200
-Message-Id: <1619080415-4888-1-git-send-email-sguelton@redhat.com>
+ (Exim 4.90_1) (envelope-from <robert.hu@linux.intel.com>)
+ id 1lZUua-0006ic-PA; Thu, 22 Apr 2021 04:42:22 -0400
+IronPort-SDR: FwfY1z9qqkH6io3mvV4q8JVn1Dp599o9jpKqArIFow9l8xv0MQfVf/NPywm0Yt4Uy+C9t7tA9s
+ FbGiJnHEp2eg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="281180125"
+X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="281180125"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2021 01:42:07 -0700
+IronPort-SDR: A4IJSmeMoGI5J+XWiEt0FbeoLivV/wUGohddWGjN6OEO5982eB2EYlu8fQQ3Qbpt0ynvLMzHo7
+ SNPfvA3c+bFA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="463877380"
+Received: from sqa-gate.sh.intel.com (HELO robert-ivt.tsp.org)
+ ([10.239.48.212])
+ by orsmga001.jf.intel.com with ESMTP; 22 Apr 2021 01:42:04 -0700
+From: Robert Hoo <robert.hu@linux.intel.com>
+To: mjt@tls.msk.ru,
+	laurent@vivier.eu,
+	qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, robert.hu@intel.com,
+ Robert Hoo <robert.hu@linux.intel.com>
+Subject: [Trivial] docs: More precisely describe memory-backend-*::id's user
+Date: Thu, 22 Apr 2021 16:42:02 +0800
+Message-Id: <1619080922-83527-1-git-send-email-robert.hu@linux.intel.com>
 X-Mailer: git-send-email 1.8.3.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: permerror client-ip=2a01:e0c:1:1599::11;
- envelope-from=serge.guelton@telecom-bretagne.eu; helo=smtp2-g21.free.fr
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
- T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+Received-SPF: none client-ip=192.55.52.43;
+ envelope-from=robert.hu@linux.intel.com; helo=mga05.intel.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Thu, 22 Apr 2021 09:50:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
@@ -45,38 +53,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Apr 2021 08:34:01 -0000
+X-List-Received-Date: Thu, 22 Apr 2021 08:42:24 -0000
 
-From: serge-sans-paille <sguelton@redhat.com>
+'id' of memory-backend-{file,ram} is not only for '-numa''s reference, but
+also other parameters like '-device nvdimm'.
+More clearly call out this to avoid misinterpretation.
 
-Signed-off-by: Serge Guelton <sguelton@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Robert Hoo <robert.hu@linux.intel.com>
 ---
- docs/devel/control-flow-integrity.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ qemu-options.hx | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/control-flow-integrity.rst
-index d89d707..e6b73a4 100644
---- a/docs/devel/control-flow-integrity.rst
-+++ b/docs/devel/control-flow-integrity.rst
-@@ -39,7 +39,7 @@ later).
- Given the use of LTO, a version of AR that supports LLVM IR is required.
- The easies way of doing this is by selecting the AR provided by LLVM::
+diff --git a/qemu-options.hx b/qemu-options.hx
+index fd21002..635dc8a 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -4508,11 +4508,11 @@ SRST
+         the guest RAM with huge pages.
  
-- AR=llvm-ar-9 CC=clang-9 CXX=lang++-9 /path/to/configure --enable-cfi
-+ AR=llvm-ar-9 CC=clang-9 CXX=clang++-9 /path/to/configure --enable-cfi
+         The ``id`` parameter is a unique ID that will be used to
+-        reference this memory region when configuring the ``-numa``
+-        argument.
++        reference this memory region in other parameters, e.g. ``-numa``,
++        ``-device nvdimm``, etc.
  
- CFI is enabled on every binary produced.
+         The ``size`` option provides the size of the memory region, and
+-        accepts common suffixes, eg ``500M``.
++        accepts common suffixes, e.g. ``500M``.
  
-@@ -131,7 +131,7 @@ lld with version 11+.
- In other words, to compile with fuzzing and CFI, clang 11+ is required, and
- lld needs to be used as a linker::
- 
-- AR=llvm-ar-11 CC=clang-11 CXX=lang++-11 /path/to/configure --enable-cfi \
-+ AR=llvm-ar-11 CC=clang-11 CXX=clang++-11 /path/to/configure --enable-cfi \
-                            -enable-fuzzing --extra-ldflags="-fuse-ld=lld"
- 
- and then, compile the fuzzers as usual.
+         The ``mem-path`` provides the path to either a shared memory or
+         huge page filesystem mount.
 -- 
 1.8.3.1
 
