@@ -1,47 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lZZip-0007RG-Bo
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Apr 2021 09:50:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52686)
+	id 1la5M3-0003tI-TT
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Apr 2021 19:36:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <robert.hu@linux.intel.com>)
- id 1lZUul-0001oe-8W; Thu, 22 Apr 2021 04:42:24 -0400
-Received: from mga05.intel.com ([192.55.52.43]:16699)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <robert.hu@linux.intel.com>)
- id 1lZUua-0006ic-PA; Thu, 22 Apr 2021 04:42:22 -0400
-IronPort-SDR: FwfY1z9qqkH6io3mvV4q8JVn1Dp599o9jpKqArIFow9l8xv0MQfVf/NPywm0Yt4Uy+C9t7tA9s
- FbGiJnHEp2eg==
-X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="281180125"
-X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="281180125"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Apr 2021 01:42:07 -0700
-IronPort-SDR: A4IJSmeMoGI5J+XWiEt0FbeoLivV/wUGohddWGjN6OEO5982eB2EYlu8fQQ3Qbpt0ynvLMzHo7
- SNPfvA3c+bFA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="463877380"
-Received: from sqa-gate.sh.intel.com (HELO robert-ivt.tsp.org)
- ([10.239.48.212])
- by orsmga001.jf.intel.com with ESMTP; 22 Apr 2021 01:42:04 -0700
-From: Robert Hoo <robert.hu@linux.intel.com>
-To: mjt@tls.msk.ru,
-	laurent@vivier.eu,
-	qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, robert.hu@intel.com,
- Robert Hoo <robert.hu@linux.intel.com>
-Subject: [Trivial] docs: More precisely describe memory-backend-*::id's user
-Date: Thu, 22 Apr 2021 16:42:02 +0800
-Message-Id: <1619080922-83527-1-git-send-email-robert.hu@linux.intel.com>
-X-Mailer: git-send-email 1.8.3.1
-Received-SPF: none client-ip=192.55.52.43;
- envelope-from=robert.hu@linux.intel.com; helo=mga05.intel.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1la5M2-0003sh-DI; Fri, 23 Apr 2021 19:36:58 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:44017)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1la5M0-0007gQ-U9; Fri, 23 Apr 2021 19:36:58 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ p10-20020a1c544a0000b02901387e17700fso2002502wmi.2; 
+ Fri, 23 Apr 2021 16:36:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SYGlQayWmd2E9SkzHPVRB+o26E4LvvaDIWzQKpcwkNo=;
+ b=QHqvBD7JqO/pFI++a//VPkdqKlFTwe2b6Ps2pp6hGHLun210StyBiWvvxx6v9cKfoU
+ PqeERxViFgI76IeoOCDPEqlAhiSv1xGWwSwJNAHsQ10HTPxf46DxYJk9+tLsLWQbx7lr
+ QgpEGwMcv0QjONMtuksWxLzBGFWQIFPiLbYEjjnOjYjoFRd7I3Iqt87FMAvnJQ9G99tC
+ GCahLmCk3J9/uxbC1R65Dm5HFl751gjNxkQeKQ+6H5VPEPNMjtNrMazuLWxtq0elHcb4
+ 2tCnnIlzQxjMtk3iWNXeumKJYZYHkKBtBhgMsBHWqCTXskNH8OOmvNvXYQCDuzVAL2U1
+ WdJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=SYGlQayWmd2E9SkzHPVRB+o26E4LvvaDIWzQKpcwkNo=;
+ b=btuEi4/LqmLjt/U3IK4ZaalxUxcwhgMUqMCsW7Nxf0rOJG1mK9mEMFq2JGbMpVLNaA
+ IiXiT4sjWSKIVctESGHtjkyTZu6jZyPn/UrCLjyA1ZfWhdlgHrlfGvPKHN5mg/+xRRDC
+ 4mA8bjr2vwmS8uKctVek0/Q0+zLwgLyIt3w6pJBDVpwwIOpgABTbvRYormekCEFIftTb
+ e3ZZ54mwKXnuQhc3I4W0McqlVpfaYXNBDg+35PbA9PDAL9yIQSTWAyD97wzQGqeQjHZK
+ Bx6JJxnGdmlBibFjbmF9BtnCKK5qJryuOInHLpYpytBBrPCrMu0q/SM4+aqoAe2tf8EV
+ l2vQ==
+X-Gm-Message-State: AOAM530yhjOPfUmbl2jPL5K64ukBjkvA9URFUb1gOFOGpM6hS03RO1K2
+ mEq5M4i7JO8VHX0mkvB5QXFg8mKKlyB7ng==
+X-Google-Smtp-Source: ABdhPJwfw4xqMorIrpIdPif15HkdAPLP/99tD/C67dmG1bmWkBjpKs3VJDv/DvFk9xLXGktxHxgHNg==
+X-Received: by 2002:a1c:2b44:: with SMTP id r65mr7843222wmr.57.1619221014556; 
+ Fri, 23 Apr 2021 16:36:54 -0700 (PDT)
+Received: from x1w.redhat.com (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id b15sm10766413wrt.57.2021.04.23.16.36.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 23 Apr 2021 16:36:53 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 0/2] hw: Qdev'ify reset() for mc146818rtc & etraxfs_timer
+Date: Sat, 24 Apr 2021 01:36:50 +0200
+Message-Id: <20210423233652.3042941-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 22 Apr 2021 09:50:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -53,37 +79,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Apr 2021 08:42:24 -0000
+X-List-Received-Date: Fri, 23 Apr 2021 23:36:58 -0000
 
-'id' of memory-backend-{file,ram} is not only for '-numa''s reference, but
-also other parameters like '-device nvdimm'.
-More clearly call out this to avoid misinterpretation.
-
-Signed-off-by: Robert Hoo <robert.hu@linux.intel.com>
----
- qemu-options.hx | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/qemu-options.hx b/qemu-options.hx
-index fd21002..635dc8a 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4508,11 +4508,11 @@ SRST
-         the guest RAM with huge pages.
- 
-         The ``id`` parameter is a unique ID that will be used to
--        reference this memory region when configuring the ``-numa``
--        argument.
-+        reference this memory region in other parameters, e.g. ``-numa``,
-+        ``-device nvdimm``, etc.
- 
-         The ``size`` option provides the size of the memory region, and
--        accepts common suffixes, eg ``500M``.
-+        accepts common suffixes, e.g. ``500M``.
- 
-         The ``mem-path`` provides the path to either a shared memory or
-         huge page filesystem mount.
--- 
-1.8.3.1
-
+Remove qemu_register_reset() when a qdev type has a qbus parent.=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (2):=0D
+  hw/timer/etraxfs_timer: Qdev'ify reset()=0D
+  hw/rtc/mc146818rtc: Qdev'ify reset()=0D
+=0D
+ hw/rtc/mc146818rtc.c     | 35 +++++++++++++++--------------------=0D
+ hw/timer/etraxfs_timer.c |  6 +++---=0D
+ 2 files changed, 18 insertions(+), 23 deletions(-)=0D
+=0D
+-- =0D
+2.26.3=0D
+=0D
 
