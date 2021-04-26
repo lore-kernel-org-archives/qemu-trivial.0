@@ -1,58 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lb0z9-00078t-QO
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Apr 2021 09:09:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32824)
+	id 1lb1KE-00041U-R0
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Apr 2021 09:30:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgenfv@gmail.com>) id 1lax5P-0005Kr-VF
- for qemu-trivial@nongnu.org; Mon, 26 Apr 2021 04:59:23 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:38622)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1lb1KD-000406-La; Mon, 26 Apr 2021 09:30:57 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:39705)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgenfv@gmail.com>) id 1lax5O-0005Nj-94
- for qemu-trivial@nongnu.org; Mon, 26 Apr 2021 04:59:23 -0400
-Received: by mail-wr1-x433.google.com with SMTP id k14so5051143wrv.5
- for <qemu-trivial@nongnu.org>; Mon, 26 Apr 2021 01:59:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1lb1KB-0001Ob-RH; Mon, 26 Apr 2021 09:30:57 -0400
+Received: by mail-ej1-x630.google.com with SMTP id zl7so4767359ejb.6;
+ Mon, 26 Apr 2021 06:30:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KilglWAaPsdiXcjfzKmnwxnFdqjFFALhZp4O9A7RhRQ=;
- b=Y41cYuJ+YCWw+tn8skIvocvTGr778GtCANj0gbkJ1lzoAwwB9lO+l12qWEpbnEVjac
- W2yD6yyHbL7d/76cH+A3+OWbUy2J/eaMkDw7Fa1kbf+YMyP2dksGILZBtUQD8+lVDfvq
- AkbcWJjA4l9kwGDjESfzTSDheLoSKoCxU48DBYPOiD0FILfCXohP7rGztiIDYIykaZbX
- YPy8K0WC9fPpbd//w5tIMEaBeQVg67LrWmrD2RQnKEDb1qh0wzNvM4C/MCdQEB4J2ZVb
- Ms/u/K+RkLJWqqVkGXRCpARB/F/aMjQjio6yJHYYM8/BTiEx7ya4OmDWxzgK7uVh0/fg
- prXg==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=FIscxo3PP9kGGRxEdLKDNVwK/IjbND0Oxh+dBQqbsw0=;
+ b=tCUeQAtcsJDs+KuHsyVjuHRuDONDl5jn3nJNdhmjCojVYCzHjCy2w5tTpBsRhCTaoW
+ 1lHeXsfcPMzgTWo0+ocdtpT2rftvI1Ysie75P9dKa7x5jHZJkOGjrAb4w5qZkURs0dA1
+ 8I7sroSoD5LX5SBrB0CFsxIvs1K3Ow3O9AEJuFHwDsfEmpREYokWtwsoXcVv5oFyFn58
+ Qx99UEIONNn6CqD7ZSzEmOCtvpUlksdz/Fvdk6/swXzMX1+dfGTRxKPnw7Vm9gpGbhAY
+ T9DfomuXEpvUhPCb4GTuh5O+0GNil6bBtzdEJP8yxiZAPb+1arlGtiXrI4aiCunL9vbb
+ trBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KilglWAaPsdiXcjfzKmnwxnFdqjFFALhZp4O9A7RhRQ=;
- b=Yq96FqQODqQWK7PUe5PWXmzW5RJGFVMMc636pwgPRTR1vsEt3WVTBgE51tW6i5mmER
- aQZ7qY7QCQlsYk+RRO1J3VqXXkLkW+TDtPz65xeKvxtV051eB7+mguGTqlo6Fd5gKq/V
- e3GejzrWWqvpynZ/RYcqDHrVk8dtutV0gtwf5zKwp1zoqm/6Bjs+ASxYO0y+kiIwM2/y
- GIr+zNJOWzVbw+QoxgjKYiKP2UzAzUBJSEr9nzyxvTsV1ZICKbeKp4REnOtbN3hkW7kF
- fTwOYboUMRitP6pXluXJqBTbZb3ZNMGsaP27aavSD24V3S1p20itJ+bl16rtfMr4yW/2
- RexQ==
-X-Gm-Message-State: AOAM532k2W6REnWwYGh82MAj2oiG0XW4U8vj8K8k3nUPvUjbflxEYYf+
- x22KcQHFKwlAKSZH7zVNP8esvSc0yjWwN9vC
-X-Google-Smtp-Source: ABdhPJyyy02UVFvPLpUEZyruR9qm2EriKOjtIyS/pIP7MYNqzOPm6s0z/OOOy0EJPUQoi9GxAulhFA==
-X-Received: by 2002:a5d:4a02:: with SMTP id m2mr11379832wrq.188.1619427558035; 
- Mon, 26 Apr 2021 01:59:18 -0700 (PDT)
-Received: from ubuntu.localdomain (host-92-0-155-74.as13285.net. [92.0.155.74])
- by smtp.gmail.com with ESMTPSA id j7sm3404605wmi.21.2021.04.26.01.59.17
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=FIscxo3PP9kGGRxEdLKDNVwK/IjbND0Oxh+dBQqbsw0=;
+ b=QA/mEoi4zk37fOamz5DJCYkRvMZ9tKyEN5GzdBD2nWfhZWcJCrDF0YM7mg5Uz1K545
+ ZxudwC9k5riVlbRZzE/3PxUGeg2XE4yZOa/6k5WKUBS6K/1lwHn2cwSfV+L5/wiST3Xw
+ Ve4+084VRTF1or1NbTfc8qIsyx4i/qJSLhyJe+zTOZqjyLXmrjwBql8v79lSTkmkLmDJ
+ WixE0vZPg4Cbvp4t4JB4nkvI38wOjOi3Nmq1QssOeIqCmGeCe4BFPOBgkcQDsIuj5wtd
+ U3KmnbHkcH4TQCFGKq6A5LeR1PiGrj6DtWCAI7pV0s+atPD1NzgD0M9FEMvxyJHzYvYq
+ 708g==
+X-Gm-Message-State: AOAM532xn5I6veIMit26m5+ok+/7lUfUV1HsXemzDVVp+CgTY9uOZlzO
+ voJcrsloaLj0tOxG/WY0p1w=
+X-Google-Smtp-Source: ABdhPJy+vT2bQrR2KZWZXB7ycYG8dfnlcwvF1up+SMdDZtRQAby1Qcn8jOkcGkL1oSnjgLmD5RNuiQ==
+X-Received: by 2002:a17:906:ecb8:: with SMTP id
+ qh24mr19243805ejb.162.1619443853704; 
+ Mon, 26 Apr 2021 06:30:53 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id x7sm1404845eds.11.2021.04.26.06.30.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Apr 2021 01:59:17 -0700 (PDT)
-From: Edge NFV <edgenfv@gmail.com>
-To: qemu-trivial@nongnu.org
-Cc: edgenfv@gmail.com
-Subject: [PATCH] make vfio and DAX cache work together by skipping virtio fs
- cache section during vfio memory region add
-Date: Mon, 26 Apr 2021 01:58:29 -0700
-Message-Id: <20210426085829.133859-1-edgenfv@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ Mon, 26 Apr 2021 06:30:52 -0700 (PDT)
+Date: Mon, 26 Apr 2021 14:30:51 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Zenghui Yu <yuzenghui@huawei.com>
+Cc: elena.ufimtseva@oracle.com, jag.raman@oracle.com,
+ john.g.johnson@oracle.com, stefanha@redhat.com, berrange@redhat.com,
+ qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org,
+ laurent@vivier.eu, wanghaibin.wang@huawei.com, philmd@redhat.com,
+ qemu-stable@nongnu.org
+Subject: Re: [PATCH v3] multi-process: Initialize variables declared with
+ g_auto*
+Message-ID: <YIbAi/3hOPLMi8LE@stefanha-x1.localdomain>
+References: <20210312112143.1369-1-yuzenghui@huawei.com>
+ <d4a03c50-12db-f44c-7d6a-d2baba77f164@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=edgenfv@gmail.com; helo=mail-wr1-x433.google.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="RjVyKqY+SXkpmSo4"
+Content-Disposition: inline
+In-Reply-To: <d4a03c50-12db-f44c-7d6a-d2baba77f164@huawei.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=stefanha@gmail.com; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -61,7 +70,6 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 26 Apr 2021 09:09:08 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,34 +81,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Apr 2021 08:59:24 -0000
+X-List-Received-Date: Mon, 26 Apr 2021 13:30:57 -0000
 
-Signed-off-by: Edge NFV <edgenfv@gmail.com>
----
- hw/vfio/common.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index ae5654fcdb..83e15bf7a3 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -668,6 +668,15 @@ static void vfio_listener_region_add(MemoryListener *listener,
-                 int128_get64(int128_sub(section->size, int128_one())));
-         return;
-     }
-+    
-+    /* Do not add virtio fs cache section */                  
-+    if (!strcmp(memory_region_name(section->mr), "virtio-fs-cache")) {
-+        trace_vfio_listener_region_add_skip(
-+                section->offset_within_address_space,
-+                section->offset_within_address_space +
-+                int128_get64(int128_sub(section->size, int128_one())));
-+        return;
-+    }  
- 
-     if (unlikely((section->offset_within_address_space &
-                   ~qemu_real_host_page_mask) !=
--- 
-2.25.1
+--RjVyKqY+SXkpmSo4
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Tue, Apr 06, 2021 at 10:00:03PM +0800, Zenghui Yu wrote:
+> [+Stefan]
+>=20
+> On 2021/3/12 19:21, Zenghui Yu wrote:
+> > Quote docs/devel/style.rst (section "Automatic memory deallocation"):
+> >=20
+> > * Variables declared with g_auto* MUST always be initialized,
+> >    otherwise the cleanup function will use uninitialized stack memory
+> >=20
+> > Initialize @name properly to get rid of the compilation error (using
+> > gcc-7.3.0 on CentOS):
+> >=20
+> > ../hw/remote/proxy.c: In function 'pci_proxy_dev_realize':
+> > /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: 'name' may =
+be used uninitialized in this function [-Werror=3Dmaybe-uninitialized]
+> >     g_free (*pp);
+> >     ^~~~~~~~~~~~
+> > ../hw/remote/proxy.c:350:30: note: 'name' was declared here
+> >               g_autofree char *name;
+> >                                ^~~~
+> >=20
+> > Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+> > Reviewed-by: Jagannathan Raman <jag.raman@oracle.com>
+> > Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+>=20
+> Message-Id: <20210312112143.1369-1-yuzenghui@huawei.com>
+>=20
+> Ping for 6.0, thanks.
+
+I'm sorry I missed this email! QEMU 6.0.0-rc4 has already been tagged
+and the final release is tomorrow. Only critical patches are applied at
+this stage of the release process.
+
+My understanding is that this patch silences a gcc 7.3.0 warning. The
+warning is bogus since both code paths always initialize the variable.
+You should still be able to compile successfully using ./configure
+--disable-werror.
+
+I guess this issue was hit on CentOS 7 since CentOS 8 ships a newer
+version of gcc. Debian stable also ships a newer gcc. That probably
+explains why this issue has not been encountered by others. I don't
+think the patch is absolutely critical for QEMU 6.0 although I regret
+not having merged it earlier in the release process. Sorry again.
+
+I have queued this patch for QEMU 6.1 and CCed it for -stable for
+inclusion in QEMU 6.0.1.
+
+If you think this patch is critical for QEMU 6.0, please get in contact
+with myself and Peter Maydel ("pm215"), preferrably on #qemu
+irc.oftc.net IRC as soon as possible.
+
+Thanks, applied to my block-next tree:
+https://gitlab.com/stefanha/qemu/commits/block-next
+
+Stefan
+
+--RjVyKqY+SXkpmSo4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmCGwIsACgkQnKSrs4Gr
+c8iAnwf/RBbJPZ/22/5aGUYbS01irs6HM6RY2/XYkjMSyBasXcN21AoyJxyyRsQ7
+zsiwcZNrTogZMe1dNQiu5VNr1s5ySlyoUI4wMGnZlSJIES0yBiks1IiZDylONzxj
+A3JZOQ4TmbEs5T4VO3xh33Wzu8hI/HAEEBwZYTbsRnpY+dFVb/4iUImIg4O8snJ6
+tJfcDvOlwgY3LY4Ue+pbvvYPoHPcI2DMjC8VHfRQGQC3av3fKUXe1GlD0R4L2TFD
+rZuOtMY8tir1o3Yl1RcFWn38ABh9In/h05Whankyd8WXiuBTMhET9RuM70p3Ym6s
+DRHGbb6P15A3i8iP7fZn/Cj+PKMvEg==
+=9SN/
+-----END PGP SIGNATURE-----
+
+--RjVyKqY+SXkpmSo4--
 
