@@ -1,62 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lb1Lt-0005sG-RG
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Apr 2021 09:32:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40352)
+	id 1lb1sV-0001NZ-BG
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Apr 2021 10:06:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47546)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1lb1Ls-0005pj-46
- for qemu-trivial@nongnu.org; Mon, 26 Apr 2021 09:32:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:26763)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lb1sU-0001NP-GD
+ for qemu-trivial@nongnu.org; Mon, 26 Apr 2021 10:06:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20533)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1lb1Lo-0002Jd-K0
- for qemu-trivial@nongnu.org; Mon, 26 Apr 2021 09:32:39 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lb1sR-0005qJ-OL
+ for qemu-trivial@nongnu.org; Mon, 26 Apr 2021 10:06:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1619443955;
+ s=mimecast20190719; t=1619445978;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/mSZ2gXT4lsGprxb52cGb3p/ETNv0Po5qG+u8IyKWmc=;
- b=MLum+kIW26n/j5iQ0zZp4E1Z4zFmDkWhR2LbffTXGApkmx4LhJABNgHkY1PsmfmKIoNWHX
- Cku61ofwkZcjkbQxWCgpRmSd3M5nBr/1LlS4bIMyHy1LeWqG+Lxtxd+3movFnAsvDZ8AnY
- Lz8T3dbMxjAto2V0thGfp1sVsb55g5I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-50-iXK-HB9BMO-6RcN-8L6UEw-1; Mon, 26 Apr 2021 09:32:31 -0400
-X-MC-Unique: iXK-HB9BMO-6RcN-8L6UEw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 74AD7802B5B;
- Mon, 26 Apr 2021 13:32:30 +0000 (UTC)
-Received: from [10.36.112.156] (ovpn-112-156.ams2.redhat.com [10.36.112.156])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 742DB10027A5;
- Mon, 26 Apr 2021 13:32:23 +0000 (UTC)
-Subject: Re: [PATCH] make vfio and DAX cache work together by skipping virtio
- fs cache section during vfio memory region add
-To: Edge NFV <edgenfv@gmail.com>
-References: <20210426054513.132980-1-edgenfv@gmail.com>
- <20210426054513.132980-2-edgenfv@gmail.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
- Alex Williamson <alex.williamson@redhat.com>
-Message-ID: <027ed12c-c5ec-6e5e-64d4-831424a35285@redhat.com>
-Date: Mon, 26 Apr 2021 15:32:22 +0200
+ bh=vxaX7w5P9mVOxpVbfKSgieoj/iDSR4kJWx0mVNfzgWs=;
+ b=Tv1XHwBVkqgCfsqoTTZRpZrnMrBNF9WBdJzZknPGX2Y8TVDr0HMZSKbYvnCmeq8019wvnq
+ 2C4yGcmBQa7Pk9W97FmV7GGGoMpYgIpajV06ZL1CUK5Eptu3iBI1IaWVL8dbSimuQ9ZbiN
+ /+rm/6TtqvqjeJUeD6CS+mkE9iUYLVw=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-603-ECHnnWNWOHKBqQY6cFeJwA-1; Mon, 26 Apr 2021 10:06:15 -0400
+X-MC-Unique: ECHnnWNWOHKBqQY6cFeJwA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ g199-20020a1c9dd00000b02901355dd71edaso3110288wme.7
+ for <qemu-trivial@nongnu.org>; Mon, 26 Apr 2021 07:06:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=vxaX7w5P9mVOxpVbfKSgieoj/iDSR4kJWx0mVNfzgWs=;
+ b=BFmVzEAWyxcaaZ8KhUPMU1PA+UWhNnhpzz3X10Wty7DpR+RZfMX0gTxS+RQ+CvI2+9
+ ThEEPcUOoGTbbdc6nnb7HwuPMS7hqUn7utZux9g/42DDC+m7QzAPg2Iv1dpDQ3bdPVjm
+ hjMI8zvwVHCu9TfNCrkMWK9YMVCUfbgzArb6NQ8g1+16XUFu/KHerlPVndfY/Q89D9hT
+ 4B9ZXzwuSCdf69vBl61dfYX5aj6E4X5oQG5ZEa1bUV7zRcuydN6XbHUjgqn3CicIzMut
+ tdd2gwlS1wjKcNMNSLPpk4yhzpWWc8hNRft8MZYutGNHBl3cLZQmIArPXBghhpa7Lqpc
+ WjrA==
+X-Gm-Message-State: AOAM530RMe4D7GziyTs8ixl8sICvGNktKqWiahcOXZHNhovE5+/hSif0
+ tXHfRuTE61riidVDDTarg7Go+PhQ4OAZ38tdyNVlSoy/7y/1uhao4BdjghohjBvXtBt1LG1OmbA
+ ZmtEfyVGVeCXVahgPTw==
+X-Received: by 2002:a1c:720d:: with SMTP id n13mr20328497wmc.89.1619445974703; 
+ Mon, 26 Apr 2021 07:06:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkzzoqhrK1PJuOCUmnmfmq+1jU0YO/URoqWzvOWgkA+QHeV7JcaFNo6EWwY+2yWIe3t5ydfQ==
+X-Received: by 2002:a1c:720d:: with SMTP id n13mr20328472wmc.89.1619445974427; 
+ Mon, 26 Apr 2021 07:06:14 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id q19sm20482226wmc.44.2021.04.26.07.06.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Apr 2021 07:06:13 -0700 (PDT)
+Subject: Re: [PATCH] cutils: Fix memleak in get_relocated_path()
+To: Zhenzhong Duan <zhenzhong.duan@intel.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+ Stefano Garzarella <sgarzare@redhat.com>
+References: <20210426223042.119554-1-zhenzhong.duan@intel.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <0cf13eb3-e28b-31d4-82d1-d99636cbcaf9@redhat.com>
+Date: Mon, 26 Apr 2021 16:06:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210426054513.132980-2-edgenfv@gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20210426223042.119554-1-zhenzhong.duan@intel.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lvivier@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=lvivier@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -65,7 +79,7 @@ X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.219,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,53 +92,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Apr 2021 13:32:40 -0000
+X-List-Received-Date: Mon, 26 Apr 2021 14:06:22 -0000
 
-On 26/04/2021 07:45, Edge NFV wrote:
-> Signed-off-by: Edge NFV <edgenfv@gmail.com>
+Hi,
 
-You must use your real name for a patch submission:
-
-https://wiki.qemu.org/Contribute/SubmitAPatch#Patch_emails_must_include_a_Signed-off-by:_line
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/SubmittingPatches?id=f6f94e2ab1b33f0082ac22d71f66385a60d8157f#n297
-
-And CC: maintainer of the file:
-
-$ ./scripts/get_maintainer.pl -f hw/vfio/common.c
-Alex Williamson <alex.williamson@redhat.com> (supporter:VFIO)
-qemu-devel@nongnu.org (open list:All patches CC here)
-
-If you want to submit it to qemu-trivial, don't send a separate mail, but cc: also
-qemu-trivial.
-
-Thanks,
-Laurent
-
+On 4/27/21 12:30 AM, Zhenzhong Duan wrote:
+> Valgrind complains definitely loss in get_relocated_path(), because
+> GString is leaked in get_relocated_path() when returning with gchar *.
+> Use g_string_free(, false) to free GString while preserving gchar *.
+> 
+> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
 > ---
->  hw/vfio/common.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
+>  util/cutils.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-> index ae5654fcdb..83e15bf7a3 100644
-> --- a/hw/vfio/common.c
-> +++ b/hw/vfio/common.c
-> @@ -668,6 +668,15 @@ static void vfio_listener_region_add(MemoryListener *listener,
->                  int128_get64(int128_sub(section->size, int128_one())));
->          return;
+> diff --git a/util/cutils.c b/util/cutils.c
+> index ee908486da..f58c2157d2 100644
+> --- a/util/cutils.c
+> +++ b/util/cutils.c
+> @@ -1055,5 +1055,5 @@ char *get_relocated_path(const char *dir)
+>          assert(G_IS_DIR_SEPARATOR(dir[-1]));
+>          g_string_append(result, dir - 1);
 >      }
-> +    
-> +    /* Do not add virtio fs cache section */                  
-> +    if (!strcmp(memory_region_name(section->mr), "virtio-fs-cache")) {
-> +        trace_vfio_listener_region_add_skip(
-> +                section->offset_within_address_space,
-> +                section->offset_within_address_space +
-> +                int128_get64(int128_sub(section->size, int128_one())));
-> +        return;
-> +    }  
->  
->      if (unlikely((section->offset_within_address_space &
->                    ~qemu_real_host_page_mask) !=
+> -    return result->str;
+> +    return g_string_free(result, FALSE);
+>  }
 > 
+
+Thanks for your patch, but Stefano sent the same fix 2 weeks ago:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg798279.html
+
+It should be merged once the development tree opens again (we are
+now 'freezed' before the v6.0.0 release).
+
+You might want to send your Review-by or Tested-by tag to Stefano's
+patch.
+
+Regards,
+
+Phil.
 
 
