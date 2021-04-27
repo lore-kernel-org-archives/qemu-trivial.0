@@ -1,67 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lbBUK-0004Ft-1P
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Apr 2021 20:22:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60818)
+	id 1lbBa9-0008TU-Kc
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Apr 2021 20:28:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dev.devaqemu@gmail.com>)
- id 1lb7Uj-0007QC-IW; Mon, 26 Apr 2021 16:06:13 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:37569)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dev.devaqemu@gmail.com>)
- id 1lb7Uf-0001Ng-Np; Mon, 26 Apr 2021 16:06:13 -0400
-Received: by mail-wr1-x434.google.com with SMTP id j5so56203284wrn.4;
- Mon, 26 Apr 2021 13:06:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=PuhuR3UqIjFb4yXds2SdFCLnbq4LjC/3ZCGuCZSVLxE=;
- b=UlTnEb/0o3ipOyCz1v/eOvrtnfrkpJVqOEwqIu+lQmSqBF6GF7th0g/Gi9k4RL2R6W
- uZJSRsIJ+Dqm+0rEBzkJjrlA2w9AMd0+5F+gENxtzJGAeEd8OGIwEovgjsFSbOMEfSD8
- MqwbIVYbnmNrq7o20gnupqlV3yhLICPpEjv9iq4ZF61RVZY+SnN25WRTLKObeRbgiMk9
- zCBoTCfol2DHEDMpaJC56DcNBP2TTy173Pd21vLStkN/Oyy6y2+KSP01GNkVlcpW/KSj
- YGVgMM/+LqaL1NTRdC3IhuOeQMvmwGh7EfiuGsPmjV6+xJBYR89v5ZmU+3Gt8E7G4heM
- Efng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=PuhuR3UqIjFb4yXds2SdFCLnbq4LjC/3ZCGuCZSVLxE=;
- b=GMvQdNh/sysMscEvVo342Eqw4FLqiqh8mRHS76MWSQfwivcYzI+JBS1xDFVu+VG2Rd
- FXefsGr19Y/lYY6+5wco/tpUkwRBRZ7xr+1zB8QuLF1sLORpTm8w1DYY1gPD25cKbKSM
- QWv1m5Ux3W6M4f91IZMokCsTFC78qUuLBSzxd022Ob6D8BpnCpUPz3YsnGBPu4GpQ8c+
- 3gSxU89Ksv75cOrONWyt9qixsk/veRDF3UIeBa4Wq/JFrNNftAoae9WHk/bCQwo1OJ/r
- ksw/04Xhw2u1X8eKF6PvAUs/9unrAYXjh+LfARtu1sBluURcQ7MwUp8/LUz6fZw0++2F
- c5tg==
-X-Gm-Message-State: AOAM5323ihheBATCL7BPgsPJ7X9oXPJnMO9LfpAAAC8a+HN5rebW23vD
- hiQHzi8TmjAyb1RpOTTCRzNmG0Ab6w6KJA==
-X-Google-Smtp-Source: ABdhPJznmNXCiQJK9g8sX3XvFURb8phM4qCOFJ8LX5nHAzxPFnl0MrgOHYtfkFaSy3B4kokZWaamiw==
-X-Received: by 2002:adf:f506:: with SMTP id q6mr25231359wro.65.1619467563425; 
- Mon, 26 Apr 2021 13:06:03 -0700 (PDT)
-Received: from ubuntu.localdomain (host-92-0-155-74.as13285.net. [92.0.155.74])
- by smtp.gmail.com with ESMTPSA id y11sm1396792wro.37.2021.04.26.13.06.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Apr 2021 13:06:02 -0700 (PDT)
-From: Dev Audsin <dev.devaqemu@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com, qemu-trivial@nongnu.org, dgilber@redhat.com,
- dev.devaqemu@gmail.com
-Subject: 
-Date: Mon, 26 Apr 2021 13:05:52 -0700
-Message-Id: <20210426200553.145976-1-dev.devaqemu@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lbBa7-0008QB-7B; Mon, 26 Apr 2021 20:28:03 -0400
+Resent-Date: Mon, 26 Apr 2021 20:28:03 -0400
+Resent-Message-Id: <E1lbBa7-0008QB-7B@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21304)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lbBa4-0002st-Gw; Mon, 26 Apr 2021 20:28:02 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1619483271; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=PistK79IWyNwFJZ+UKgLf8InUQwnr7KIv9hi4/UckgWf8uuldqHX1imEosj5PiJYUZKyv61NvL+Kb5jH3GGgIt9PngjfY99PcCd9Fs8oDsjo7jIr7fWZcbaAT1KiuaBgRxogf6CB0K1LQup/lZ9qmYqlMIxzVUnmv6PJII5NCrw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1619483271;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=q3XaUyw2LnMllJAQOyunmaVZF/zd7ErElS0L9dVJmxQ=; 
+ b=DdjbgAkvZ27fmMv1Mn0RgSkTs7930hV8S7Zcc//OQL4z2btklelkZupG491QygRpOUCpL2rLU+A4l3RyCBToJTDeYhifTAmmB7Ha0b/GXndmvJXHfeorIt3ymppZdDr10t2F7CmFiGqhDTGmPjFtyWk76bx8sNkWqdUV78swQKA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1619483268210137.9999609406176;
+ Mon, 26 Apr 2021 17:27:48 -0700 (PDT)
+In-Reply-To: <20210426200553.145976-2-dev.devaqemu@gmail.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] skip virtio fs cache section to enable NIC passthrough
+Message-ID: <161948326671.17047.16287286996009216616@72b6d80f974b>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=dev.devaqemu@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: dev.devaqemu@gmail.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alex.williamson@redhat.com,
+ dgilber@redhat.com, dev.devaqemu@gmail.com
+Date: Mon, 26 Apr 2021 17:27:48 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 26 Apr 2021 20:21:58 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,13 +60,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Apr 2021 20:06:14 -0000
+X-List-Received-Date: Tue, 27 Apr 2021 00:28:03 -0000
 
-
-virtio-fs with DAX is currently not compatible with NIC Pass through.
-When a SR-IOV VF attaches to a qemu process, vfio will try to pin the entire DAX Window but it is empty when the guest boots and will fail.
-A method to make VFIO and DAX to work together is to make vfio skip DAX cache.
-Currently DAX cache need to be set to 0, for the SR-IOV VF to be attached to Kata containers.
-Enabling both SR-IOV VF and DAX work together will potentially improve performance for workloads which are I/O and network intensive
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDQyNjIwMDU1My4xNDU5
+NzYtMi1kZXYuZGV2YXFlbXVAZ21haWwuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRv
+IGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1v
+cmUgaW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMTA0MjYyMDA1NTMu
+MTQ1OTc2LTItZGV2LmRldmFxZW11QGdtYWlsLmNvbQpTdWJqZWN0OiBbUEFUQ0hdIHNraXAgdmly
+dGlvIGZzIGNhY2hlIHNlY3Rpb24gdG8gZW5hYmxlIE5JQyBwYXNzdGhyb3VnaAoKPT09IFRFU1Qg
+U0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251
+bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNv
+bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFs
+Z29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNl
+Li4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0
+ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9q
+ZWN0L3FlbXUKICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIxMDQyNjIwMDU1My4xNDU5
+NzYtMi1kZXYuZGV2YXFlbXVAZ21haWwuY29tIC0+IHBhdGNoZXcvMjAyMTA0MjYyMDA1NTMuMTQ1
+OTc2LTItZGV2LmRldmFxZW11QGdtYWlsLmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rl
+c3QnCjEyMGExYjAgc2tpcCB2aXJ0aW8gZnMgY2FjaGUgc2VjdGlvbiB0byBlbmFibGUgTklDIHBh
+c3N0aHJvdWdoCgo9PT0gT1VUUFVUIEJFR0lOID09PQpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxk
+IG5ldmVyIHVzZSB0YWJzCiMyMzogRklMRTogaHcvdmZpby9jb21tb24uYzo1NDA6CisgICAgXkkg
+ICAoIW1lbW9yeV9yZWdpb25faXNfcmFtKHNlY3Rpb24tPm1yKSAmJiQKCnRvdGFsOiAxIGVycm9y
+cywgMCB3YXJuaW5ncywgOSBsaW5lcyBjaGVja2VkCgpDb21taXQgMTIwYTFiMGVjOWRlIChza2lw
+IHZpcnRpbyBmcyBjYWNoZSBzZWN0aW9uIHRvIGVuYWJsZSBOSUMgcGFzc3Rocm91Z2gpIGhhcyBz
+dHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJl
+IGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNL
+UEFUQ0ggaW4gTUFJTlRBSU5FUlMuCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4
+aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9w
+YXRjaGV3Lm9yZy9sb2dzLzIwMjEwNDI2MjAwNTUzLjE0NTk3Ni0yLWRldi5kZXZhcWVtdUBnbWFp
+bC5jb20vdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0
+ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFz
+ZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
