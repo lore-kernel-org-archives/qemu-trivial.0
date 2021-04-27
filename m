@@ -1,59 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lbFHI-0001Qz-L4
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Apr 2021 00:24:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60742)
+	id 1lbHpE-0000Rw-27
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Apr 2021 03:08:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44482)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <uenobk@gmail.com>)
- id 1lbD42-0002S5-HY; Mon, 26 Apr 2021 22:03:02 -0400
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34]:33475)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <uenobk@gmail.com>)
- id 1lbD40-0003Nk-Lw; Mon, 26 Apr 2021 22:03:02 -0400
-Received: by mail-yb1-xb34.google.com with SMTP id p3so46753730ybk.0;
- Mon, 26 Apr 2021 19:02:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to:cc;
- bh=x6ev/h+An1WJYWDmxr1+5dtgNa7FqFnjJ2Zvo68ft4s=;
- b=MyIiY24jjqKhk/6sdIVNtWxOWWHuDaS7EO/JC1Apcta+iy3P/1sJIcgyWeIs5RKDJz
- 7g8UpzwCON284mG1hkERyeKDU+loaXdhDGUamu43Ea7J/HCw505cL73KIggGguVpPEZu
- Kkj/09yHvaBmtKBS2Carp57A+UGWg1EBBCy4VAol7mEEAOIsAcq/ALTsv2qxR6gIF1co
- vZuuaUXuiFjW6XFI80l1uwTdEFuCtaPEoJGI12jtDfLtIDXOwhJRNCtYMKY6FZPrJkgP
- J61UxHwZV2PBxFbxSZjNaOkp/anewWkF72zlg9XdFIZo+apSffxmGckyvxvm1Vh/hH06
- sCyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
- bh=x6ev/h+An1WJYWDmxr1+5dtgNa7FqFnjJ2Zvo68ft4s=;
- b=rTfHznDH7V/J8fInJTMHQteCVfYHAjYe/MP1SqQYiPux6iDoM8UlEb5punlRup0iFB
- 08hr+mLcli3lvEA6Nfw/q6S946Zvq4gmyX2+knzBsqZT6pq91Youk04BIH20f6WvbPsS
- tKve75vinppfZL5jlYfBC29ElbSc+feXJNKFi7LDO2OvYc+5Z2Jjf0jGowEYutVG/OLK
- DVuyJzV4Wr/louhsWPNAns80yDsC9y+36duLIIxavwy+stIsMf8TgVfUssN1CghVs7h0
- npKiEogmyfjXBmsoXRKrBw7tdqqeBA5nCfj0/6jiMUrSQ1CA1QkV3HirXwMA/h6i/dPB
- 19Vg==
-X-Gm-Message-State: AOAM530nTvqM7cV38NV0+wKezx2nkhNjRfZUWZX/Gx6f3Phb4UFRSehR
- H6b5TuQ18gjpmnp6mMj+EjXTJRUsrh8s1Njjdg+fusxY/VVn5HGT
-X-Google-Smtp-Source: ABdhPJyn4L3YDN6eJ7RwOjws7HVhtOyrYpawpJOOt+mZJxGFeYX7E3BgbhfcWkS0qfvnt7hCIvpdRC5TsWJVhDAABNs=
-X-Received: by 2002:a5b:44e:: with SMTP id s14mr30066311ybp.11.1619488977191; 
- Mon, 26 Apr 2021 19:02:57 -0700 (PDT)
-MIME-Version: 1.0
-From: Katsuhiro Ueno <uenobk@gmail.com>
-Date: Tue, 27 Apr 2021 11:02:46 +0900
-Message-ID: <CA+pCdY3iG+pKKQqEVknnWF-W0wK36S4U1jxPvxmGAPp6FFvz1Q@mail.gmail.com>
-Subject: [PATCH] hw/input/hid: Add support for keys of jp106 keyboard.
+ (Exim 4.90_1) (envelope-from <someguy@effective-light.com>)
+ id 1lbHH7-0006DO-1c; Tue, 27 Apr 2021 02:32:50 -0400
+Received: from mta-09-3.privateemail.com ([68.65.122.19]:13991)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <someguy@effective-light.com>)
+ id 1lbHH1-0006o4-G5; Tue, 27 Apr 2021 02:32:48 -0400
+Received: from MTA-09.privateemail.com (localhost [127.0.0.1])
+ by MTA-09.privateemail.com (Postfix) with ESMTP id 8DC4B60104;
+ Tue, 27 Apr 2021 02:32:32 -0400 (EDT)
+Received: from hal-station.. (unknown [10.20.151.204])
+ by MTA-09.privateemail.com (Postfix) with ESMTPA id 10A1160076;
+ Tue, 27 Apr 2021 02:32:31 -0400 (EDT)
+From: effective-light <someguy@effective-light.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
- envelope-from=uenobk@gmail.com; helo=mail-yb1-xb34.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Cc: laurent@vivier.eu, qemu-trivial@nongnu.org,
+ effective-light <someguy@effective-light.com>
+Subject: [PATCH] linux-user: make process_pending_signals thread-safe
+Date: Tue, 27 Apr 2021 02:32:17 -0400
+Message-Id: <20210427063217.60753-1-someguy@effective-light.com>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Virus-Scanned: ClamAV using ClamSMTP
+Received-SPF: pass client-ip=68.65.122.19;
+ envelope-from=someguy@effective-light.com; helo=MTA-09-3.privateemail.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 27 Apr 2021 00:24:51 -0400
+X-Mailman-Approved-At: Tue, 27 Apr 2021 03:08:02 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,32 +47,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Apr 2021 02:03:02 -0000
+X-List-Received-Date: Tue, 27 Apr 2021 06:32:54 -0000
 
-Add support for the following keys: KATAKANAHIRAGANA, HENKAN, MUHENKAN,
-RO, and YEN.  Before this commit, these keys did not work as expected
-when a jp106 keyboard was connected to the guest as a usb-kbd device.
+Use pthread_sigmask instead of sigprocmask inside process_pending_signals
+to ensure that race conditions aren't possible.
 
-Signed-off-by: Katsuhiro Ueno <uenobk@gmail.com>
+Signed-off-by: Hamza Mahfooz <someguy@effective-light.com>
 ---
- hw/input/hid.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ linux-user/signal.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/input/hid.c b/hw/input/hid.c
-index e1d2e46083..8aab0521f4 100644
---- a/hw/input/hid.c
-+++ b/hw/input/hid.c
-@@ -51,8 +51,8 @@ static const uint8_t hid_usage_keys[0x100] = {
-     0x45, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e,
-     0xe8, 0xe9, 0x71, 0x72, 0x73, 0x00, 0x00, 0x00,
-     0x00, 0x00, 0x00, 0x85, 0x00, 0x00, 0x00, 0x00,
--    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
--    0x00, 0x00, 0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65,
-+    0x88, 0x00, 0x00, 0x87, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x8a, 0x00, 0x8b, 0x00, 0x89, 0xe7, 0x65,
-
-     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index 7eecec46c4..81ff753c01 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -1005,9 +1005,8 @@ void process_pending_signals(CPUArchState *cpu_env)
+     sigset_t *blocked_set;
+ 
+     while (qatomic_read(&ts->signal_pending)) {
+-        /* FIXME: This is not threadsafe.  */
+         sigfillset(&set);
+-        sigprocmask(SIG_SETMASK, &set, 0);
++        pthread_sigmask(SIG_SETMASK, &set, 0);
+ 
+     restart_scan:
+         sig = ts->sync_signal.pending;
 -- 
-2.24.3 (Apple Git-128)
+2.31.1
+
 
