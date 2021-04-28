@@ -1,41 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lbHpE-0000Rw-27
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Apr 2021 03:08:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44482)
+	id 1lbl7N-0007EQ-4w
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Apr 2021 10:24:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <someguy@effective-light.com>)
- id 1lbHH7-0006DO-1c; Tue, 27 Apr 2021 02:32:50 -0400
-Received: from mta-09-3.privateemail.com ([68.65.122.19]:13991)
+ (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
+ id 1lbl7L-0007EC-Eb; Wed, 28 Apr 2021 10:24:43 -0400
+Received: from wforward1-smtp.messagingengine.com ([64.147.123.30]:57105)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <someguy@effective-light.com>)
- id 1lbHH1-0006o4-G5; Tue, 27 Apr 2021 02:32:48 -0400
-Received: from MTA-09.privateemail.com (localhost [127.0.0.1])
- by MTA-09.privateemail.com (Postfix) with ESMTP id 8DC4B60104;
- Tue, 27 Apr 2021 02:32:32 -0400 (EDT)
-Received: from hal-station.. (unknown [10.20.151.204])
- by MTA-09.privateemail.com (Postfix) with ESMTPA id 10A1160076;
- Tue, 27 Apr 2021 02:32:31 -0400 (EDT)
-From: effective-light <someguy@effective-light.com>
+ (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
+ id 1lbl7I-0007e6-Jr; Wed, 28 Apr 2021 10:24:43 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
+ by mailforward.west.internal (Postfix) with ESMTP id C9809B64;
+ Wed, 28 Apr 2021 10:24:35 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Wed, 28 Apr 2021 10:24:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:date:from
+ :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=HQQ7SpOqqpIwy1otx
+ y1mWGf90mk55isIJKpzIEWUu1w=; b=O+5/nHzHlRhTl3zn3jPZx5Ni81cln3oao
+ vlOjqg6LWgvXJrqOv8obs4fRaPxz2cPnvQXpHhSsJht3lZcjlUf1MSaK0iclkiUF
+ PrAhdUPFdQczW7hfLE2ifucktETeVqwE23oVIkfz7W6teKVNkMwWExUxj9oFiizs
+ d3+tuqhNAptxyeK+MXLL+5XAJsPSYGcoBYGaK4TmsT1P2Png2jja/qV+W2X3dNdM
+ ENpqomCe0HBJrOeyYZ5IwPlTzKlKKFfPCqaU16ZBlu59t1ScQZK0rFUEv/vVrDCx
+ lXMhsv6CEQjEk6n2ku+J/28OujVljr2mMVXFEQi3QXe5rtl4Wrv8g==
+X-ME-Sender: <xms:InCJYDrxundC7WYciFjOmv2ygrpJ74plT-1tgE3QNiT86yqRcU3wgw>
+ <xme:InCJYNrtwORwdx_yk2wjh8CKyGszyCTLjkQ12WUX8kL-biEnYSlvX9qngaQbTxwA2
+ yOC0iKheOpqdbgNaME>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrvddvvddgheduucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhephffvufffkffoggfgsedtkeertdertddtnecuhfhrohhmpeffrghvihguucfg
+ ughmohhnughsohhnuceouggrvhhiugdrvggumhhonhgushhonhesohhrrggtlhgvrdgtoh
+ hmqeenucggtffrrghtthgvrhhnpeduhfetvdfhgfeltddtgeelheetveeufeegteevtddu
+ iedvgeejhfdukeegteehheenucfkphepkedurddukeejrddviedrvdefkeenucevlhhush
+ htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegurghvihgurdgvughm
+ ohhnughsohhnsehorhgrtghlvgdrtghomh
+X-ME-Proxy: <xmx:InCJYAN6LwT4F_kI-ZrSJDsYSOal9EHWCwOLABuSbw5efip584eLXA>
+ <xmx:InCJYG4Rfck2DvMzNI4VuZbwFJTvMLIMgIkQOv9owGXXOV6tFyRLNw>
+ <xmx:InCJYC4EldmNbbTlIWMexAUYRyxGTgAazj-35dUTwHF2DNTm86TwQQ>
+ <xmx:I3CJYPz9HB7OH-lak-hCi56L6NnX36Ww0D5UBexpmEW3ItPFvTAyRZq_yO0>
+Received: from disaster-area.hh.sledj.net (disaster-area.hh.sledj.net
+ [81.187.26.238]) by mail.messagingengine.com (Postfix) with ESMTPA;
+ Wed, 28 Apr 2021 10:24:33 -0400 (EDT)
+Received: from localhost (disaster-area.hh.sledj.net [local])
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id b1bbd0bf;
+ Wed, 28 Apr 2021 14:24:31 +0000 (UTC)
+From: David Edmondson <david.edmondson@oracle.com>
 To: qemu-devel@nongnu.org
-Cc: laurent@vivier.eu, qemu-trivial@nongnu.org,
- effective-light <someguy@effective-light.com>
-Subject: [PATCH] linux-user: make process_pending_signals thread-safe
-Date: Tue, 27 Apr 2021 02:32:17 -0400
-Message-Id: <20210427063217.60753-1-someguy@effective-light.com>
-X-Mailer: git-send-email 2.31.1
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ kvm@vger.kernel.org, David Edmondson <david.edmondson@oracle.com>
+Subject: [PATCH] accel: kvm: clarify that extra exit data is hexadecimal
+Date: Wed, 28 Apr 2021 15:24:31 +0100
+Message-Id: <20210428142431.266879-1-david.edmondson@oracle.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: ClamAV using ClamSMTP
-Received-SPF: pass client-ip=68.65.122.19;
- envelope-from=someguy@effective-light.com; helo=MTA-09-3.privateemail.com
+Received-SPF: softfail client-ip=64.147.123.30;
+ envelope-from=david.edmondson@oracle.com;
+ helo=wforward1-smtp.messagingengine.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_SOFTFAIL=0.665, UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 27 Apr 2021 03:08:02 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,32 +77,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Apr 2021 06:32:54 -0000
+X-List-Received-Date: Wed, 28 Apr 2021 14:24:43 -0000
 
-Use pthread_sigmask instead of sigprocmask inside process_pending_signals
-to ensure that race conditions aren't possible.
+When dumping the extra exit data provided by KVM, make it clear that
+the data is hexadecimal.
 
-Signed-off-by: Hamza Mahfooz <someguy@effective-light.com>
+At the same time, zero-pad the output.
+
+Signed-off-by: David Edmondson <david.edmondson@oracle.com>
 ---
- linux-user/signal.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ accel/kvm/kvm-all.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 7eecec46c4..81ff753c01 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -1005,9 +1005,8 @@ void process_pending_signals(CPUArchState *cpu_env)
-     sigset_t *blocked_set;
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index b6d9f92f15..93d7cbfeaf 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2269,7 +2269,7 @@ static int kvm_handle_internal_error(CPUState *cpu, struct kvm_run *run)
+         int i;
  
-     while (qatomic_read(&ts->signal_pending)) {
--        /* FIXME: This is not threadsafe.  */
-         sigfillset(&set);
--        sigprocmask(SIG_SETMASK, &set, 0);
-+        pthread_sigmask(SIG_SETMASK, &set, 0);
- 
-     restart_scan:
-         sig = ts->sync_signal.pending;
+         for (i = 0; i < run->internal.ndata; ++i) {
+-            fprintf(stderr, "extra data[%d]: %"PRIx64"\n",
++            fprintf(stderr, "extra data[%d]: 0x%016"PRIx64"\n",
+                     i, (uint64_t)run->internal.data[i]);
+         }
+     }
 -- 
-2.31.1
+2.30.2
 
 
