@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcVzn-00049t-KE
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:28:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57928)
+	id 1lcW0Q-0004sE-9M
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:28:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58192)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcVzc-00043R-RH; Fri, 30 Apr 2021 12:27:54 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:42449)
+ id 1lcW0O-0004on-Dr; Fri, 30 Apr 2021 12:28:40 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:40967)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcVzX-0005Ez-Jq; Fri, 30 Apr 2021 12:27:50 -0400
+ id 1lcW0M-0005b3-B5; Fri, 30 Apr 2021 12:28:40 -0400
 Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
  (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MmUYD-1lCUd52B29-00iWrt; Fri, 30 Apr 2021 18:27:42 +0200
-Subject: Re: [PATCH] hw: Do not include hw/sysbus.h if it is not necessary
+ 1MJmX3-1lsGfj0Oan-00K4le; Fri, 30 Apr 2021 18:28:34 +0200
+Subject: Re: [PATCH] hw: Do not include hw/irq.h if it is not necessary
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-References: <20210327082804.2259480-1-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <20210327050236.2232347-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <b5be58cf-7229-df29-d14d-6e8dc604b8f5@vivier.eu>
-Date: Fri, 30 Apr 2021 18:27:41 +0200
+Message-ID: <7d8e38e3-503c-e3a7-7b5d-81cfdac0581e@vivier.eu>
+Date: Fri, 30 Apr 2021 18:28:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210327082804.2259480-1-thuth@redhat.com>
+In-Reply-To: <20210327050236.2232347-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8DjDElMEsAg8uS+Gsz30+yCBJ5DghgY3r3RQZWAxAevaEy6hhNI
- Y4bi7woo9R+a3u0YTycpTWwC8ps6yr2yJDP7mSlltD9Qfq/yd/Tk81S79mCfjg6isAPtOms
- wRgPjHN67piYPRozo0I0l6WF/NkY6Ru97n0dJc/MFKjHDoO93q4zLfmq1t2XmUZacpxCkDO
- VVRZZ8BijfzbXWNume3+w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:spNRIhRTzXw=:6i98ulHz0A/VK2/VjKER7M
- EixNu2peYfbGdbqv0eVCcWxEyXLV/+2pEihK/hu1HSuIOcwHA2Mh43um9m5NjHxzvfDOHjMl4
- 0XDBrCTbKIcgxgc3rBjIgvKZ79Z1TR2wGcgT78mUnziMSdIDY7zwkIvjJZVUcea5T6UOdkcMg
- O8hcwfgKIo2z+C/spOzW2M8djuUcGS8b6jMBxyye9ZmapRcvGgydYHirzSSvaA8jGxE3czAJh
- FNOkV8FlFQxviQZjZ6UMe9E0Wvcrf4+EgNkvYp5k6cF0s8kY2QZr6M95r8adtgQE4+NzLvmsZ
- FyKzoi41k+G/IfuncskhWpwExgd2mJFzHEdwHANQocdT/ALX1ymkCDjpgRGAQSU3zY7YoTNIh
- VX889/B3Uq4YFe5pQ92eyOFII/GtSoQh3OJMxj8KiRwbRd5zLwSf0rOstjnZ2z6q8PdEQMUUM
- GgrWQc/gVkviPJRv94Pi0hR9zWn/flEkgg+1FpGP1P0yAAz2TWSonxnSZsJHTbKXmkPKmxTfs
- qImRYFJcv02zDnU1MUscYI=
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:+XMRQxl0SxIEzWWfXC31QBLW3iEg+KQtkTDUme5sMyWohHwjL5V
+ ZSAwijGYPbR6V65zN66naRY7tVXQboCfkI6spiKZsiOLz0wB37tUHy5rdsPepgMgh07nr8L
+ ThkoNKmo1YQJYqb9qbee2CRuiVhtXdempdhBbjqHlnhT83mT3lCJXvnGRHpKQu4LtqT4fp9
+ FbPdkQDiGoz1cQIyR8yuA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:j85wof2egzg=:GdDSaT1eGq7LVQDxbFdX84
+ ppuT657tL4Vx0DhYxUjNC7dzX8O3t61n82chGZJ82HWBejWtwsAiHQBh2v5/lYFjem4gZNOdK
+ y5BfzIwQ9LADbLijyxasQl5GWdq7VJ7fp+2LW99WAqJyVUMtDKoXFfl4eK+awUuRvW6Kwyc+G
+ qKfXOZuNVMH5AwlNE+ptrbEIk9dWfF2OUdpsxv78NIFL1wf1wp+KdSfuaNJbKPHukmJVv0Q9q
+ ag9qZya3dBWtyuUDNWJrR9wB3M0ZnEkTKFQAB9FCoVaT3P66p0xT9UPISURTYPrhu5NA7uJPE
+ eJiNH2axahulPxy8brn0sbaiVynYYEWbLMay9tYg19COSPAhlaIPGiMVtDabllHH38vlEpHWQ
+ 4u+PG2jSZeSRopYHXRsUSQWoEKf0hc9qz1eHuf5NV5cnlhZYWaLCH3QKfk0cRTJ05H43rfApU
+ 96BwBKdhk3Oz68TLKICEs9xQhh96vpIrZGo/uVRidcL0/4xNu4PzO3PFlSWGJvAx/oz3Pq6iL
+ MWKU0b0kNPQHObbFyVMIUw=
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -59,367 +59,172 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 16:28:00 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 16:28:41 -0000
 
-Le 27/03/2021 à 09:28, Thomas Huth a écrit :
-> Many files include hw/sysbus.h without needing it. Remove the superfluous
+Le 27/03/2021 à 06:02, Thomas Huth a écrit :
+> Many files include hw/irq.h without needing it. Remove the superfluous
 > include statements.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/arm/cubieboard.c         | 1 -
->  hw/arm/orangepi.c           | 1 -
->  hw/char/riscv_htif.c        | 1 -
->  hw/char/sifive_uart.c       | 1 -
->  hw/char/virtio-serial-bus.c | 1 -
->  hw/core/generic-loader.c    | 1 -
->  hw/core/guest-loader.c      | 1 -
->  hw/ide/ahci_internal.h      | 1 -
->  hw/input/lasips2.c          | 1 -
->  hw/intc/arm_gic_kvm.c       | 1 -
->  hw/intc/arm_gicv3.c         | 1 -
->  hw/intc/arm_gicv3_kvm.c     | 1 -
->  hw/intc/s390_flic_kvm.c     | 1 -
->  hw/isa/lpc_ich9.c           | 1 -
->  hw/isa/piix4.c              | 1 -
->  hw/moxie/moxiesim.c         | 1 -
->  hw/nios2/generic_nommu.c    | 1 -
->  hw/nubus/nubus-bus.c        | 1 -
->  hw/nvram/spapr_nvram.c      | 1 -
->  hw/rx/rx-gdbsim.c           | 1 -
->  hw/s390x/s390-ccw.c         | 1 -
->  hw/s390x/virtio-ccw.c       | 1 -
->  hw/timer/mips_gictimer.c    | 1 -
->  hw/usb/xen-usb.c            | 1 -
->  hw/vfio/ap.c                | 1 -
->  hw/vfio/ccw.c               | 1 -
->  hw/xen/xen-bus-helper.c     | 1 -
->  27 files changed, 27 deletions(-)
+>  hw/arm/msf2-soc.c           | 1 -
+>  hw/i386/kvm/ioapic.c        | 1 -
+>  hw/i386/xen/xen_platform.c  | 1 -
+>  hw/m68k/q800.c              | 1 -
+>  hw/m68k/virt.c              | 1 -
+>  hw/misc/led.c               | 1 -
+>  hw/misc/virt_ctrl.c         | 1 -
+>  hw/ppc/prep.c               | 1 -
+>  hw/riscv/microchip_pfsoc.c  | 1 -
+>  hw/sd/cadence_sdhci.c       | 1 -
+>  hw/timer/sse-counter.c      | 1 -
+>  hw/usb/xlnx-usb-subsystem.c | 1 -
+>  12 files changed, 12 deletions(-)
 > 
-> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> index 9d0d728180..3ec30ca5af 100644
-> --- a/hw/arm/cubieboard.c
-> +++ b/hw/arm/cubieboard.c
-> @@ -20,7 +20,6 @@
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> index d2c29e82d1..5cfe7caf83 100644
+> --- a/hw/arm/msf2-soc.c
+> +++ b/hw/arm/msf2-soc.c
+> @@ -27,7 +27,6 @@
 >  #include "qapi/error.h"
->  #include "cpu.h"
->  #include "sysemu/sysemu.h"
-> -#include "hw/sysbus.h"
->  #include "hw/boards.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/arm/allwinner-a10.h"
-> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> index 40cdb5c6d2..b8d38c9e8d 100644
-> --- a/hw/arm/orangepi.c
-> +++ b/hw/arm/orangepi.c
-> @@ -22,7 +22,6 @@
 >  #include "exec/address-spaces.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
-> -#include "hw/sysbus.h"
->  #include "hw/boards.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/arm/allwinner-h3.h"
-> diff --git a/hw/char/riscv_htif.c b/hw/char/riscv_htif.c
-> index ba1af1cfc4..ddae738d56 100644
-> --- a/hw/char/riscv_htif.c
-> +++ b/hw/char/riscv_htif.c
-> @@ -23,7 +23,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/log.h"
-> -#include "hw/sysbus.h"
->  #include "hw/char/riscv_htif.h"
 >  #include "hw/char/serial.h"
->  #include "chardev/char.h"
-> diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
-> index ee7adb8e30..fe12666789 100644
-> --- a/hw/char/sifive_uart.c
-> +++ b/hw/char/sifive_uart.c
-> @@ -19,7 +19,6 @@
+> -#include "hw/irq.h"
+>  #include "hw/arm/msf2-soc.h"
+>  #include "hw/misc/unimp.h"
+>  #include "sysemu/sysemu.h"
+> diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+> index dfc3c98005..71a563181e 100644
+> --- a/hw/i386/kvm/ioapic.c
+> +++ b/hw/i386/kvm/ioapic.c
+> @@ -13,7 +13,6 @@
 >  #include "qemu/osdep.h"
+>  #include "monitor/monitor.h"
+>  #include "hw/i386/x86.h"
+> -#include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/i386/ioapic_internal.h"
+>  #include "hw/i386/apic_internal.h"
+> diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
+> index 01ae1fb161..bf4f20e92b 100644
+> --- a/hw/i386/xen/xen_platform.c
+> +++ b/hw/i386/xen/xen_platform.c
+> @@ -27,7 +27,6 @@
 >  #include "qapi/error.h"
->  #include "qemu/log.h"
-> -#include "hw/sysbus.h"
->  #include "chardev/char.h"
->  #include "chardev/char-fe.h"
->  #include "hw/irq.h"
-> diff --git a/hw/char/virtio-serial-bus.c b/hw/char/virtio-serial-bus.c
-> index b20038991a..dd6bc27b3b 100644
-> --- a/hw/char/virtio-serial-bus.c
-> +++ b/hw/char/virtio-serial-bus.c
-> @@ -28,7 +28,6 @@
->  #include "qemu/error-report.h"
->  #include "qemu/queue.h"
->  #include "hw/qdev-properties.h"
-> -#include "hw/sysbus.h"
->  #include "trace.h"
->  #include "hw/virtio/virtio-serial.h"
->  #include "hw/virtio/virtio-access.h"
-> diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
-> index 2b2a7b5e9a..d14f932eea 100644
-> --- a/hw/core/generic-loader.c
-> +++ b/hw/core/generic-loader.c
-> @@ -32,7 +32,6 @@
->  
->  #include "qemu/osdep.h"
->  #include "hw/core/cpu.h"
-> -#include "hw/sysbus.h"
->  #include "sysemu/dma.h"
->  #include "sysemu/reset.h"
->  #include "hw/boards.h"
-> diff --git a/hw/core/guest-loader.c b/hw/core/guest-loader.c
-> index bde44e27b4..d3f9d1a06e 100644
-> --- a/hw/core/guest-loader.c
-> +++ b/hw/core/guest-loader.c
-> @@ -26,7 +26,6 @@
->  
->  #include "qemu/osdep.h"
->  #include "hw/core/cpu.h"
-> -#include "hw/sysbus.h"
->  #include "sysemu/dma.h"
->  #include "hw/loader.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/ide/ahci_internal.h b/hw/ide/ahci_internal.h
-> index 7f32e87731..109de9e2d1 100644
-> --- a/hw/ide/ahci_internal.h
-> +++ b/hw/ide/ahci_internal.h
-> @@ -26,7 +26,6 @@
->  
->  #include "hw/ide/ahci.h"
->  #include "hw/ide/internal.h"
-> -#include "hw/sysbus.h"
+>  #include "hw/ide.h"
 >  #include "hw/pci/pci.h"
->  
->  #define AHCI_MEM_BAR_SIZE         0x1000
-> diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
-> index 60afb94c78..275737842e 100644
-> --- a/hw/input/lasips2.c
-> +++ b/hw/input/lasips2.c
-> @@ -26,7 +26,6 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/input/ps2.h"
->  #include "hw/input/lasips2.h"
-> -#include "hw/sysbus.h"
->  #include "exec/hwaddr.h"
->  #include "sysemu/sysemu.h"
->  #include "trace.h"
-> diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
-> index 9494185cf4..49f79a8674 100644
-> --- a/hw/intc/arm_gic_kvm.c
-> +++ b/hw/intc/arm_gic_kvm.c
-> @@ -23,7 +23,6 @@
->  #include "qapi/error.h"
->  #include "qemu/module.h"
->  #include "cpu.h"
-> -#include "hw/sysbus.h"
->  #include "migration/blocker.h"
->  #include "sysemu/kvm.h"
->  #include "kvm_arm.h"
-> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-> index 66eaa97198..d63f8af604 100644
-> --- a/hw/intc/arm_gicv3.c
-> +++ b/hw/intc/arm_gicv3.c
-> @@ -18,7 +18,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/module.h"
-> -#include "hw/sysbus.h"
->  #include "hw/intc/arm_gicv3.h"
->  #include "gicv3_internal.h"
->  
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index 65a4c880a3..5c09f00dec 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -22,7 +22,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "hw/intc/arm_gicv3_common.h"
-> -#include "hw/sysbus.h"
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
->  #include "sysemu/kvm.h"
-> diff --git a/hw/intc/s390_flic_kvm.c b/hw/intc/s390_flic_kvm.c
-> index b3fb9f8395..d1c8fb8016 100644
-> --- a/hw/intc/s390_flic_kvm.c
-> +++ b/hw/intc/s390_flic_kvm.c
-> @@ -17,7 +17,6 @@
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
->  #include "qapi/error.h"
-> -#include "hw/sysbus.h"
->  #include "sysemu/kvm.h"
->  #include "hw/s390x/s390_flic.h"
->  #include "hw/s390x/adapter.h"
-> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-> index 3963b73520..160bea447a 100644
-> --- a/hw/isa/lpc_ich9.c
-> +++ b/hw/isa/lpc_ich9.c
-> @@ -34,7 +34,6 @@
->  #include "qapi/visitor.h"
->  #include "qemu/range.h"
->  #include "hw/isa/isa.h"
-> -#include "hw/sysbus.h"
+> -#include "hw/irq.h"
+>  #include "hw/xen/xen_common.h"
 >  #include "migration/vmstate.h"
->  #include "hw/irq.h"
->  #include "hw/isa/apm.h"
-> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-> index a50d97834c..d2d9196039 100644
-> --- a/hw/isa/piix4.c
-> +++ b/hw/isa/piix4.c
-> @@ -29,7 +29,6 @@
->  #include "hw/southbridge/piix.h"
->  #include "hw/pci/pci.h"
->  #include "hw/isa/isa.h"
-> -#include "hw/sysbus.h"
->  #include "hw/intc/i8259.h"
->  #include "hw/dma/i8257.h"
->  #include "hw/timer/i8254.h"
-> diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
-> index f7b57fcae1..196b730589 100644
-> --- a/hw/moxie/moxiesim.c
-> +++ b/hw/moxie/moxiesim.c
-> @@ -29,7 +29,6 @@
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
-> -#include "hw/sysbus.h"
->  #include "net/net.h"
->  #include "sysemu/reset.h"
->  #include "sysemu/sysemu.h"
-> diff --git a/hw/nios2/generic_nommu.c b/hw/nios2/generic_nommu.c
-> index 19899e2c1e..b70a42dc2f 100644
-> --- a/hw/nios2/generic_nommu.c
-> +++ b/hw/nios2/generic_nommu.c
-> @@ -31,7 +31,6 @@
->  #include "qemu-common.h"
->  #include "cpu.h"
->  
-> -#include "hw/sysbus.h"
->  #include "hw/char/serial.h"
->  #include "hw/boards.h"
->  #include "exec/memory.h"
-> diff --git a/hw/nubus/nubus-bus.c b/hw/nubus/nubus-bus.c
-> index 942a6d5342..5c13452308 100644
-> --- a/hw/nubus/nubus-bus.c
-> +++ b/hw/nubus/nubus-bus.c
-> @@ -10,7 +10,6 @@
->  
->  #include "qemu/osdep.h"
->  #include "hw/nubus/nubus.h"
-> -#include "hw/sysbus.h"
->  #include "qapi/error.h"
->  
->  
-> diff --git a/hw/nvram/spapr_nvram.c b/hw/nvram/spapr_nvram.c
-> index 01f7752014..3bb4654c58 100644
-> --- a/hw/nvram/spapr_nvram.c
-> +++ b/hw/nvram/spapr_nvram.c
-> @@ -33,7 +33,6 @@
->  #include "sysemu/device_tree.h"
->  #include "sysemu/sysemu.h"
->  #include "sysemu/runstate.h"
-> -#include "hw/sysbus.h"
->  #include "migration/vmstate.h"
->  #include "hw/nvram/chrp_nvram.h"
->  #include "hw/ppc/spapr.h"
-> diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
-> index 8c611b0a59..9b82feff52 100644
-> --- a/hw/rx/rx-gdbsim.c
-> +++ b/hw/rx/rx-gdbsim.c
-> @@ -22,7 +22,6 @@
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
-> -#include "hw/sysbus.h"
->  #include "hw/loader.h"
->  #include "hw/rx/rx62n.h"
->  #include "sysemu/sysemu.h"
-> diff --git a/hw/s390x/s390-ccw.c b/hw/s390x/s390-ccw.c
-> index b497571863..242491a1ae 100644
-> --- a/hw/s390x/s390-ccw.c
-> +++ b/hw/s390x/s390-ccw.c
-> @@ -15,7 +15,6 @@
->  #include <libgen.h>
->  #include "qapi/error.h"
->  #include "qemu/module.h"
-> -#include "hw/sysbus.h"
->  #include "hw/s390x/css.h"
->  #include "hw/s390x/css-bridge.h"
->  #include "hw/s390x/s390-ccw.h"
-> diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
-> index 06c0605681..1351aa3db7 100644
-> --- a/hw/s390x/virtio-ccw.c
-> +++ b/hw/s390x/virtio-ccw.c
-> @@ -17,7 +17,6 @@
->  #include "hw/virtio/virtio.h"
->  #include "migration/qemu-file-types.h"
->  #include "hw/virtio/virtio-net.h"
-> -#include "hw/sysbus.h"
->  #include "qemu/bitops.h"
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
-> diff --git a/hw/timer/mips_gictimer.c b/hw/timer/mips_gictimer.c
-> index bc44cd934e..2b0696d4ac 100644
-> --- a/hw/timer/mips_gictimer.c
-> +++ b/hw/timer/mips_gictimer.c
-> @@ -7,7 +7,6 @@
->   */
->  
->  #include "qemu/osdep.h"
-> -#include "hw/sysbus.h"
->  #include "qemu/timer.h"
->  #include "hw/timer/mips_gictimer.h"
->  
-> diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
-> index 4d266d7bb4..0f7369e7ed 100644
-> --- a/hw/usb/xen-usb.c
-> +++ b/hw/usb/xen-usb.c
-> @@ -26,7 +26,6 @@
->  #include "qemu/config-file.h"
->  #include "qemu/main-loop.h"
->  #include "qemu/option.h"
-> -#include "hw/sysbus.h"
->  #include "hw/usb.h"
 >  #include "hw/xen/xen-legacy-backend.h"
->  #include "monitor/qdev.h"
-> diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
-> index 9571c2f91f..f9dbec37da 100644
-> --- a/hw/vfio/ap.c
-> +++ b/hw/vfio/ap.c
-> @@ -14,7 +14,6 @@
->  #include <linux/vfio.h>
->  #include <sys/ioctl.h>
->  #include "qapi/error.h"
-> -#include "hw/sysbus.h"
->  #include "hw/vfio/vfio.h"
->  #include "hw/vfio/vfio-common.h"
->  #include "hw/s390x/ap-device.h"
-> diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
-> index b2df708e4b..e752c845e9 100644
-> --- a/hw/vfio/ccw.c
-> +++ b/hw/vfio/ccw.c
-> @@ -20,7 +20,6 @@
->  #include <sys/ioctl.h>
+> diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+> index 1c7f7aa07f..d1ab1ff77d 100644
+> --- a/hw/m68k/q800.c
+> +++ b/hw/m68k/q800.c
+> @@ -27,7 +27,6 @@
+>  #include "sysemu/sysemu.h"
+>  #include "cpu.h"
+>  #include "hw/boards.h"
+> -#include "hw/irq.h"
+>  #include "hw/or-irq.h"
+>  #include "elf.h"
+>  #include "hw/loader.h"
+> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> index 18e6f11041..9469f82800 100644
+> --- a/hw/m68k/virt.c
+> +++ b/hw/m68k/virt.c
+> @@ -13,7 +13,6 @@
+>  #include "sysemu/sysemu.h"
+>  #include "cpu.h"
+>  #include "hw/boards.h"
+> -#include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "elf.h"
+>  #include "hw/loader.h"
+> diff --git a/hw/misc/led.c b/hw/misc/led.c
+> index f552b8b648..f6d6d68bce 100644
+> --- a/hw/misc/led.c
+> +++ b/hw/misc/led.c
+> @@ -10,7 +10,6 @@
+>  #include "migration/vmstate.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/misc/led.h"
+> -#include "hw/irq.h"
+>  #include "trace.h"
 >  
->  #include "qapi/error.h"
-> -#include "hw/sysbus.h"
->  #include "hw/vfio/vfio.h"
->  #include "hw/vfio/vfio-common.h"
->  #include "hw/s390x/s390-ccw.h"
-> diff --git a/hw/xen/xen-bus-helper.c b/hw/xen/xen-bus-helper.c
-> index b459bb9396..5a1e12b374 100644
-> --- a/hw/xen/xen-bus-helper.c
-> +++ b/hw/xen/xen-bus-helper.c
-> @@ -6,7 +6,6 @@
+>  #define LED_INTENSITY_PERCENT_MAX   100
+> diff --git a/hw/misc/virt_ctrl.c b/hw/misc/virt_ctrl.c
+> index 2ea01bd7a1..3552d7a09a 100644
+> --- a/hw/misc/virt_ctrl.c
+> +++ b/hw/misc/virt_ctrl.c
+> @@ -5,7 +5,6 @@
 >   */
 >  
 >  #include "qemu/osdep.h"
-> -#include "hw/sysbus.h"
->  #include "hw/xen/xen.h"
->  #include "hw/xen/xen-bus.h"
->  #include "hw/xen/xen-bus-helper.h"
+> -#include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/sysbus.h"
+>  #include "migration/vmstate.h"
+> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+> index f1b1efdcef..af4ccb9f43 100644
+> --- a/hw/ppc/prep.c
+> +++ b/hw/ppc/prep.c
+> @@ -38,7 +38,6 @@
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu/log.h"
+> -#include "hw/irq.h"
+>  #include "hw/loader.h"
+>  #include "hw/rtc/mc146818rtc.h"
+>  #include "hw/isa/pc87312.h"
+> diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+> index c4146b7a6b..01537b30eb 100644
+> --- a/hw/riscv/microchip_pfsoc.c
+> +++ b/hw/riscv/microchip_pfsoc.c
+> @@ -41,7 +41,6 @@
+>  #include "qemu/cutils.h"
+>  #include "qapi/error.h"
+>  #include "hw/boards.h"
+> -#include "hw/irq.h"
+>  #include "hw/loader.h"
+>  #include "hw/sysbus.h"
+>  #include "chardev/char.h"
+> diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
+> index 0b371c843d..c89538b491 100644
+> --- a/hw/sd/cadence_sdhci.c
+> +++ b/hw/sd/cadence_sdhci.c
+> @@ -26,7 +26,6 @@
+>  #include "qemu/log.h"
+>  #include "qapi/error.h"
+>  #include "migration/vmstate.h"
+> -#include "hw/irq.h"
+>  #include "hw/sd/cadence_sdhci.h"
+>  #include "sdhci-internal.h"
+>  
+> diff --git a/hw/timer/sse-counter.c b/hw/timer/sse-counter.c
+> index 0384051f15..16c0e8ad15 100644
+> --- a/hw/timer/sse-counter.c
+> +++ b/hw/timer/sse-counter.c
+> @@ -33,7 +33,6 @@
+>  #include "trace.h"
+>  #include "hw/timer/sse-counter.h"
+>  #include "hw/sysbus.h"
+> -#include "hw/irq.h"
+>  #include "hw/registerfields.h"
+>  #include "hw/clock.h"
+>  #include "hw/qdev-clock.h"
+> diff --git a/hw/usb/xlnx-usb-subsystem.c b/hw/usb/xlnx-usb-subsystem.c
+> index 568257370c..c760c3058a 100644
+> --- a/hw/usb/xlnx-usb-subsystem.c
+> +++ b/hw/usb/xlnx-usb-subsystem.c
+> @@ -24,7 +24,6 @@
+>  
+>  #include "qemu/osdep.h"
+>  #include "hw/sysbus.h"
+> -#include "hw/irq.h"
+>  #include "hw/register.h"
+>  #include "qemu/bitops.h"
+>  #include "qemu/log.h"
 > 
 
 Applied to my trivial-patches branch.
