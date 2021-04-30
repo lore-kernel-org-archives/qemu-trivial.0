@@ -1,51 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcWC9-0005hH-H9
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:40:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32856)
+	id 1lcWIF-0001Zm-Mh
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:47:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34254)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcWC7-0005c4-Fb; Fri, 30 Apr 2021 12:40:47 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:44745)
+ id 1lcWI7-0001UZ-0q; Fri, 30 Apr 2021 12:47:02 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:56471)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcWC5-0008Bv-F4; Fri, 30 Apr 2021 12:40:47 -0400
+ id 1lcWI0-0000dp-7S; Fri, 30 Apr 2021 12:46:58 -0400
 Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MJW5G-1lrzhs1pMm-00JtqL; Fri, 30 Apr 2021 18:40:20 +0200
-Subject: Re: [PATCH v2 05/12] mc146818rtc: put it into the 'misc' category
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-trivial@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, zhang.zhanghailiang@huawei.com,
- "Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- Gan Qixin <ganqixin@huawei.com>, kuhn.chenqun@huawei.com
-References: <20201130083630.2520597-1-ganqixin@huawei.com>
- <20201130083630.2520597-6-ganqixin@huawei.com>
- <8c45ab34-2534-d5ad-ca0b-43b49a681e55@redhat.com>
- <65fe4d98-7f79-191e-34c5-c3e5021d2f36@amsat.org>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MUooJ-1m3ECm0iyf-00Qmhu; Fri, 30 Apr 2021 18:46:49 +0200
+Subject: Re: [PATCH v1] scripts: fix generation update-binfmts templates
+To: Silvano Cirujano Cuesta <silvano.cirujano-cuesta@siemens.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20210323123457.23747-1-silvano.cirujano-cuesta@siemens.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <93f06ce8-b51e-9804-739a-4c89f2e1d2c4@vivier.eu>
-Date: Fri, 30 Apr 2021 18:40:18 +0200
+Message-ID: <3fe1825b-e5e4-dfd8-b4ce-038bb7aed800@vivier.eu>
+Date: Fri, 30 Apr 2021 18:46:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <65fe4d98-7f79-191e-34c5-c3e5021d2f36@amsat.org>
+In-Reply-To: <20210323123457.23747-1-silvano.cirujano-cuesta@siemens.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:pzikn9uHNeP+Ngr+yQ6XyA/EHUW+KGf7MrGy/ltYTCB17BRYCn+
- BnQ/bfxZUYWd09Wh25MffbzYQKVizDACzKwJgruwQqelyxs7PxII8QoSXGNqBqXCrR0po9q
- q6shoIgkrIHdYQ/EXNtclDYTentn74WG8Qlw2E6+VPrJHkQHYfiQcAdDUlvTOvw/TySUTR2
- KBYI1LSJinsUdcqOglGug==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Tqt6PT2LqGc=:S69MjH1hroDTgRNqaOagWR
- I/jpME5H6dwcmHAwVjNMfFngXs8m/tgx1eMnJqM4cgLhYw4ScsGyA/EX1Z2ue6+K7jMxNta1l
- gK2xWqiwxFwblA/+2ugj6HBYuKLw+kza5tUOmuj/n7sbOCvcTi0j4S3Cwna7RyIMFTP1/Ptas
- DfKD8j6ltwWWTE4ZN1420fyTdd5TN5VeCw1C7XRS+SBcHnztL7UdxG4w33A5mLZqrS8dSRmkm
- QJCW+1oE9TP91JAkQC0bbfoVvvJ4krYe0bzkvRZ0cO0Cjkz9U2K0yeDQFJqunBHe5xOW71FO2
- ezQ19gzPElDoeq1ggvg9iQPkrEk0pfoxeivPVJPvevuOf1KQWjTUdwg4iasn2B8tq2DEATTr3
- nW+Q6N1InH/qPbTHb9Ixb/a59RKEwfgZQu/6XHPMmGdeWx/9I3iPVDFj6RiHsmo/rMndNTvcC
- aM6V8gB26RTleaNvz21PEBM5DANF8dtZRtjSplWynzVrtdaUWFfXQsRLEP9ghf8HpoM/mVzhW
- 6+8r/2LNy04TE/EU923aao=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:nWbW0Cqhp2CqZdSj5dEgb6zj8SVoUK0yUgNUhtYOXekdKfbuXjW
+ TP0E8UMlcVCqJ6knOpu0Pvmc+19OIQ5asMkkO34ikiela6E23Dcponjgz0rs+USuGwoQFNT
+ 3CKEe58pvyj8FMKzp8LIxzAoDuEj+b52vnMd/Xnv4a3DeWgAbUGYPmjuAOawB4ZATLhrzxd
+ RNFulPUObbVLG3RPVMI+g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:C5yx/s1BWBo=:fraLRFjBrD3fAEHKRwPgzq
+ IN0PLhzH4vPMADgrQThwCLBXPaSGWyVVl1y83ZdvY9592a0ZXln4jz8+xAs3JndwPh98eXdkI
+ nrIqc6mp8KA9WXIMc1trLg5ccE/uNB0BanhLqwNC+HnIpebUFN04d8VgrOXaZwr+FN9OaGYLb
+ oN6BA3ld3sXKPDmG6lpe6+hkX6QKNGpCyKsI5b8RlEYenvlCAXxm/uZQHL/avks1J+I0JJhoR
+ XwkvUMgCy8acBHOBA3hcs/3jnLeTR45zeC41zqY4N9lEStNfkGS9hBr/Emz48fT1keByFOyVN
+ esw/16bBWOuTHVI57TZYZRiShJnSz5lPJGSgRMAdVL6+AGAypRFSZo32Ba6bONsYz/UfO6Lt/
+ czr90VNCYsOPzeSbfV9RhWb60PD2tBTic5tcvmu2+Txl9jpSsdYOFRweXe+KTWAhJajXx6p8L
+ 4Wp7SZ0wtVyXrNFzzy15PjdYJa0W/xACNQPsDnML//wd+LkNZhFl+/DdFjorGGsoX5LLR8ek2
+ 6NbOHI49rJdhj59fCZ+FFw=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -65,44 +60,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 16:40:47 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 16:47:05 -0000
 
-Le 24/03/2021 à 18:23, Philippe Mathieu-Daudé a écrit :
-> On 12/21/20 12:53 PM, Thomas Huth wrote:
->> On 30/11/2020 09.36, Gan Qixin wrote:
->>> The category of the mc146818rtc device is not set, put it into the 'misc'
->>> category.
->>>
->>> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
->>> ---
->>> Cc: Michael S. Tsirkin <mst@redhat.com>
->>> ---
->>>  hw/rtc/mc146818rtc.c | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
->>> index 7a38540cb9..39edca0996 100644
->>> --- a/hw/rtc/mc146818rtc.c
->>> +++ b/hw/rtc/mc146818rtc.c
->>> @@ -1039,6 +1039,7 @@ static void rtc_class_initfn(ObjectClass *klass, void *data)
->>>      dc->vmsd = &vmstate_rtc;
->>>      isa->build_aml = rtc_build_aml;
->>>      device_class_set_props(dc, mc146818rtc_properties);
->>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
->>>  }
->>
->> I wonder whether this device should be user_creatable at all (e.g. it uses a
->> hard-coded IO port)... Anyway setting the category certainly does not hurt,
->> thus:
->>
->> Reviewed-by: Thomas Huth <thuth@redhat.com>
+Le 23/03/2021 à 13:34, Silvano Cirujano Cuesta a écrit :
+> This patch fixes the update-binfmts templates being used in the script
+> scripts/qemu-binfmt-conf.sh when the option --debian is used.
 > 
-> Can this go via qemu-trivial?
+> Fixed issues are:
+> - Typo in flag 'credentials' (previously 'credential').
+> - Missing flags 'preserve' and 'fix_binary'.
+> 
+> Reference: https://manpages.debian.org/buster/binfmt-support/update-binfmts.8.en.html#FORMAT_FILES
+> 
+> Signed-off-by: Silvano Cirujano Cuesta <silvano.cirujano-cuesta@siemens.com>
+> ---
+>  scripts/qemu-binfmt-conf.sh | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
+> index 573b5dc6ac..7de996d536 100755
+> --- a/scripts/qemu-binfmt-conf.sh
+> +++ b/scripts/qemu-binfmt-conf.sh
+> @@ -294,7 +294,9 @@ package qemu-$cpu
+>  interpreter $qemu
+>  magic $magic
+>  mask $mask
+> -credential $CREDENTIAL
+> +credentials $CREDENTIAL
+> +preserve $PRESERVE_ARG0
+> +fix_binary $PERSISTENT
+>  EOF
+>  }
+>  
 > 
 
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
