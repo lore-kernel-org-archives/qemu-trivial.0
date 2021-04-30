@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcSyT-0006Ot-Ec
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 09:14:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36886)
+	id 1lcSzx-0008Te-9m
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 09:16:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcSyO-0006HC-08; Fri, 30 Apr 2021 09:14:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:39899)
+ id 1lcSzm-0008PI-8l; Fri, 30 Apr 2021 09:15:53 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:36025)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcSyK-0004hr-Jr; Fri, 30 Apr 2021 09:14:23 -0400
+ id 1lcSzi-0005ZR-Sr; Fri, 30 Apr 2021 09:15:49 -0400
 Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MEFnR-1lkTrH1sM1-00AD4r; Fri, 30 Apr 2021 15:14:06 +0200
-Subject: Re: [PATCH 1/3] hw/arm/pxa2xx: Declare PCMCIA bus with Kconfig
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MJmbB-1lsDco48kb-00K7Q3; Fri, 30 Apr 2021 15:15:32 +0200
+Subject: Re: [PATCH 2/3] hw/ide: Add Kconfig dependency MICRODRIVE -> PCMCIA
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
  qemu-block@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
  Miroslav Rezanina <mrezanin@redhat.com>, John Snow <jsnow@redhat.com>
 References: <20210424222057.3434459-1-f4bug@amsat.org>
- <20210424222057.3434459-2-f4bug@amsat.org>
+ <20210424222057.3434459-3-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <c633ed22-28c4-a5f7-34e0-522995cc5adb@vivier.eu>
-Date: Fri, 30 Apr 2021 15:14:05 +0200
+Message-ID: <2d261477-1c80-2bf4-b9a7-c4a8c6f96204@vivier.eu>
+Date: Fri, 30 Apr 2021 15:15:30 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210424222057.3434459-2-f4bug@amsat.org>
+In-Reply-To: <20210424222057.3434459-3-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:cb75OXii5nnz9kzimH28LH3UYVVE6IQIoaC8HvWXMVE9VIzWgAT
- EUmtj7YV41o24neIlzmyT+1pVL6QdwzYTRiC8rA0kp6lddP/ylvp8EkwICqgYX2+sPt3H+l
- z5fGsGnal17FvKDbtQpbE3tW1FzLm+iRPHmRKu1ASXDxLRQONMjn0bujAqj7R+WLDld6NEo
- 8MEOxCMcMyMQP3q87EhRA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GN41FDAxJUY=:+oFR9fFzv1xklwRvlKWciL
- R24ABM2oMPF9yuLUZt5NstXJO+JGFXZ58HFJeLY+MrrlmtZQR3O8vP8+4j/VGnBk7LdpRT7Bf
- L7UrKcgqfTiwEdkXg22ZUjnATuGwPJRy6VQWAA6SVLzIbigR/I7EuQBhkz4JIPQo+TnaML1my
- eaVm3z6I1dTqK+lQFsTAEjPWOoSndUO2adgwfQfPAXYdc/dgB0OnhJ/W/9WXElUepvQVRlTcv
- itJhREccca5S9d6HXzGi88V6/EL189Pk961IfXwpNfqV1GEygXxE7NLxInmxu8SaCwEqc8qQL
- TMYO+NNT6WnR51iXM2K8DtnK6UOEpJN1IqN7mbvOS9JRGZD6+9x6h8/NjqljEtnpCwnDv1SQ3
- iTBbw/CxqrFapa/wyEl6dl8uU0EhNKUPzYz6C51tznvG6md6GN8qRG2niQ0qXBYTChROp4P/C
- e+fnsIMwNAbYpDYz7Zr4i/dKgdSgcU2o1ie8axmC6UbtRsDVR7kalqdpjDL1A4AG13nt9TY+C
- qAVWjTNHRgt2Pp8Bycw/2k=
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:RwoVAG/kMqlrAUiGUgtxmkMw2dLGS9jKgk+F10RwzZgcWr334RP
+ OYLNJp9uItOEUAoiyt52LZG2j3Kktl+NYwrc+3aeyGljgL+Z/aJongdSfV/mid/zOWVHsIQ
+ gJJz4k99P+BZ0SSim8RZUEloRQ4O1WNa0GEB8N3e7p0rg/DOl6KMWV7WzONxL2wwSdUi14H
+ w1Wn6yNjdUuBKYZEXoSFg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:J3+friCS7MI=:F28/MohQFr7c/3o5kjxOlW
+ 99Ts07lo83e+85emw9gHf2u7cbHzVs/ECH1MBTsU8+GP1PiMmE80hpATkPegcnDgWYx+bwoeN
+ W5eKPcuczzv0ttEmBtTE7ZWr3k/lPN4Gnrt74yson8n/0By8oV67OsJCKnwPlZi2sQ7lrb3tl
+ EKsjOEv+kYAvLrgie6eXOwnQiF7lCFBokdBca7fy2ls7sfrdZoTe0S0ndJGxVohbw7JUBT3ty
+ z2Fx5a3TzVCVAfLbqqyjfJragfNuvnaE35qkjkctRORg6ymuz9iGFdDkEFM16ztowhXJseU+U
+ OrIQUAmFEAIYIHckvc0qxpthY3wCbl8a4/zunImdoixYqNei2X0F2FvgYVnaplJ5sbg3SH8D/
+ fcYoI5E2+4o9fua01rFyV73JNptH7uW7cM8VZgD6Dom5zwEXWwXt1FXEt1oaYG8A/mRs8yp83
+ mi7FVZwnKX4L8q/KWSrWWKLwsBt3x0wkoD6uNy/24oH/XRNX6d3fvXkE8ckmu7VZ2rX1Vu9AG
+ tMJO+xSehM//a9BNYh9MY4=
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -63,29 +63,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 13:14:25 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 13:15:59 -0000
 
 Le 25/04/2021 à 00:20, Philippe Mathieu-Daudé a écrit :
-> The Intel XScale PXA chipsets provide a PCMCIA controller,
-> which expose a PCMCIA (IDE) bus. Express this dependency using
-> the Kconfig 'select' expression.
+> The Microdrive Compact Flash can be plugged on a PCMCIA bus.
+> Express the dependency using the 'depends on' Kconfig expression.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/arm/Kconfig | 1 +
+>  hw/ide/Kconfig | 1 +
 >  1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 8c37cf00da7..b887f6a5b17 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -142,6 +142,7 @@ config PXA2XX
->      select SD
->      select SSI
->      select USB_OHCI
-> +    select PCMCIA
+> diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
+> index 5d9106b1ac2..8e2c8934549 100644
+> --- a/hw/ide/Kconfig
+> +++ b/hw/ide/Kconfig
+> @@ -41,6 +41,7 @@ config IDE_VIA
+>  config MICRODRIVE
+>      bool
+>      select IDE_QDEV
+> +    depends on PCMCIA
 >  
->  config GUMSTIX
+>  config AHCI
 >      bool
 > 
 
