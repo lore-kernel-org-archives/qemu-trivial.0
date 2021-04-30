@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcWl2-0005dB-Dt
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 13:16:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40420)
+	id 1lcWrF-0002gv-G4
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 13:23:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41736)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcWkz-0005ak-Ow; Fri, 30 Apr 2021 13:16:49 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:34773)
+ id 1lcWrE-0002dn-88; Fri, 30 Apr 2021 13:23:16 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:50949)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcWkx-0007Y7-9b; Fri, 30 Apr 2021 13:16:49 -0400
+ id 1lcWrC-0001XY-9k; Fri, 30 Apr 2021 13:23:15 -0400
 Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MCb2L-1lm7831vHf-009d9h; Fri, 30 Apr 2021 19:16:44 +0200
-Subject: Re: [PATCH] docs/system: Document the removal of "compat" property
- for POWER CPUs
-To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-stable <qemu-stable@nongnu.org>
-References: <161399328834.51902.14269239378658110394.stgit@bahia.lan>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MbSTX-1l1XHD3BlJ-00bpKf; Fri, 30 Apr 2021 19:23:11 +0200
+Subject: Re: [PATCH v1] scripts: fix generation update-binfmts templates
+To: Silvano Cirujano Cuesta <silvano.cirujano-cuesta@siemens.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20210323123457.23747-1-silvano.cirujano-cuesta@siemens.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <43426d7d-9c97-4351-107e-a0db86760c45@vivier.eu>
-Date: Fri, 30 Apr 2021 19:16:43 +0200
+Message-ID: <436af2d7-322b-914e-5dac-3d5ed2b2f770@vivier.eu>
+Date: Fri, 30 Apr 2021 19:23:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <161399328834.51902.14269239378658110394.stgit@bahia.lan>
+In-Reply-To: <20210323123457.23747-1-silvano.cirujano-cuesta@siemens.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:gEu43DWuUUyjLgYZ4kpqPOyKIgTmT3HatW1OjabE6BDzPrbHcyC
- WNHV7BUMm/zw7ipDQaStgMBUU/DiUyE2ZflBRMFe7ShWuq20oDpLFllab4LS3eOmQQqOXzW
- xdjF0YkHwsa03XV6o3nFcKf1kMK7Ev+5qaBSbfrBzUwmDvF8UKh97IiIgqOuLhP47yka9BG
- jyCwfPu8zsW41eLHhdyNQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:64MuyvCyG2M=:jBEnugHGcAQRJcoudlhOCY
- ot5B1mc42ERso7OqMhJsIh1Zmc6hxGsYHlim7799pZSXPCXa7aV4xnQa9cvAw1zZkfeQVPWnw
- JbdM9eM9NhaZaxBQei1yrbUjHo32k3eecUUUHoiZex4nzD5dIeRvqW9IWP0WOoWY3U6iyyI0H
- CyP8ml2ZF3BMbWIjzbfs+jdTCMBSj6IwIdRNviIrGvEAO6R0W+GmijeaaKZqOHV+2VyI9KBaH
- DuifeftFj5lC2J4DhnEChHolDarh9i8wYH+vnGfvIJnzET+Uv/bW8Dn2bxlTJhPqoXH7rAuol
- PZ8tLc0C76ticpNR+pTpy4pM1SW9/0Mzw3a/lv287xH6Q1k/8ipBP5u+4/T4DqbaAoXRO7TgZ
- 4hu6CX1G+oZIdjmP5u5S8FU9gAr6aVK2Ckojso/3KVGFz9cxQeV/cRMoCQDbYwWHwvqeqzCRN
- 61SQYdfRgq+IHJIYilbBB5nVl/VaD/Pdl4S1d8jNCo9hP7/O9dsS47+6mFcVTrTuBxXjHNTtR
- aTO48OF+Si5WxqirhGHNXs=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:NFyQ3HpTLj4i8SrKtE0h25GkusBUB8NDbKm1xid68as9iWp65Fm
+ RNM/YvW+j2p2k4MgKr6hFniaDD1obdmOg7tW4dqj6JbhSNb8bTZjohuS+suBWHNWp0SDBH9
+ t+59kbzGwShuuC2OXp95lCFFaU9Gi01kwhcgG4mzeGV1GYIGsvmPVI3rU6AiQFpKBsUIdJv
+ bsBLE1wJIkknyd6nUQOzA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:HgD6AcgG9Ik=:0FOg48JMzSUXCVJvQnxcvE
+ L9ohouHkkVpj4I9kPKGHjkkAdYF2Z0lP98NB2jK6dSxnpJ2ChXf8/oKZUtdeDOYgD5eLPoBqw
+ iuM9oRiYwxL7dgDE2/Xh1W+3Jax8KnWkwxBEA9vtSbmwnZ/OmmYSMALXAloApriOH1Vx49qAK
+ XyVe66S1TkdbEJZyKRRINuXXQ9eoUVC9Q5uIg156jI8gG/1yPqAb4VVJ5NY65fu6KhFAsHJ73
+ BM7wSt7Nf3HSFsABBaDCEKvWAR/08U5eQ8fL6sPNWZ/wmOfvumMkGcFo4bcsBiAHCDmujochW
+ SjYW23UKiaUqAwHBFFk/iELWFxJBv/oocEx22IyJBIU7B7IPG2VhdUBsZ/+eMe5tIfquPJ8CV
+ CuQr1ixOIkjQWCExH82Q1iBaeIo+Y3cR334yIkMfii0XQDKriGRec2CjrxEO0aUGOVFSzk7iT
+ kT9hS08iKsO0y7C5ohqI5XQBgz+CjrPLoP5Tw7iERmXSc4TwtxW4UC0IAu6+nra75hZ6YtfFs
+ 8Fe+LsmFZsu3b5hfb46N6E=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,46 +60,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 17:16:51 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 17:23:16 -0000
 
-Le 22/02/2021 à 12:28, Greg Kurz a écrit :
-> This is just an oversight.
+Le 23/03/2021 à 13:34, Silvano Cirujano Cuesta a écrit :
+> This patch fixes the update-binfmts templates being used in the script
+> scripts/qemu-binfmt-conf.sh when the option --debian is used.
 > 
-> Fixes: f518be3aa35b ("target/ppc: Remove "compat" property of server class POWER CPUs")
-> Cc: groug@kaod.org
-> Signed-off-by: Greg Kurz <groug@kaod.org>
+> Fixed issues are:
+> - Typo in flag 'credentials' (previously 'credential').
+> - Missing flags 'preserve' and 'fix_binary'.
+> 
+> Reference: https://manpages.debian.org/buster/binfmt-support/update-binfmts.8.en.html#FORMAT_FILES
+> 
+> Signed-off-by: Silvano Cirujano Cuesta <silvano.cirujano-cuesta@siemens.com>
 > ---
->  docs/system/removed-features.rst |    6 ++++++
->  1 file changed, 6 insertions(+)
+>  scripts/qemu-binfmt-conf.sh | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 > 
-> diff --git a/docs/system/removed-features.rst b/docs/system/removed-features.rst
-> index c8481cafbd5c..04ffa90d48ca 100644
-> --- a/docs/system/removed-features.rst
-> +++ b/docs/system/removed-features.rst
-> @@ -115,6 +115,12 @@ The RISC-V no MMU cpus have been removed. The two CPUs: ``rv32imacu-nommu`` and
->  ``rv64imacu-nommu`` can no longer be used. Instead the MMU status can be specified
->  via the CPU ``mmu`` option when using the ``rv32`` or ``rv64`` CPUs.
->  
-> +``compat`` property of server class POWER CPUs (removed in 6.0)
-> +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-> +
-> +The ``max-cpu-compat`` property of the ``pseries`` machine type should be used
-> +instead.
-> +
->  System emulator machines
->  ------------------------
+> diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
+> index 573b5dc6ac..7de996d536 100755
+> --- a/scripts/qemu-binfmt-conf.sh
+> +++ b/scripts/qemu-binfmt-conf.sh
+> @@ -294,7 +294,9 @@ package qemu-$cpu
+>  interpreter $qemu
+>  magic $magic
+>  mask $mask
+> -credential $CREDENTIAL
+> +credentials $CREDENTIAL
+> +preserve $PRESERVE_ARG0
+> +fix_binary $PERSISTENT
+>  EOF
+>  }
 >  
 > 
-> 
-> 
-
-Better late than never:
 
 Applied to my trivial-patches branch.
 
-+cc stable
-
 Thanks,
 Laurent
-
 
