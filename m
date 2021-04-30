@@ -1,47 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcVsy-0005pV-RA
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:21:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56088)
+	id 1lcVya-0002pS-Fq
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:26:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57472)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcVsw-0005jz-Ff; Fri, 30 Apr 2021 12:20:58 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58549)
+ id 1lcVyZ-0002mr-G7; Fri, 30 Apr 2021 12:26:47 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:38183)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcVsu-0002YS-Fe; Fri, 30 Apr 2021 12:20:58 -0400
+ id 1lcVyV-0004l4-LT; Fri, 30 Apr 2021 12:26:47 -0400
 Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
  (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N79hs-1lUzS32noi-017UHB; Fri, 30 Apr 2021 18:20:51 +0200
-Subject: Re: [PATCH v2] ui: Fix memory leak in qemu_xkeymap_mapping_table()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Daniel P . Berrange" <berrange@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-References: <20210430155009.259755-1-philmd@redhat.com>
+ 1MN5Nt-1ltLtz44ov-00IywC; Fri, 30 Apr 2021 18:26:39 +0200
+Subject: Re: [PATCH] hw: Remove superfluous includes of hw/hw.h
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
+References: <20210326151848.2217216-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <6f9b71ba-f028-0d52-d94a-f48c206a319a@vivier.eu>
-Date: Fri, 30 Apr 2021 18:20:50 +0200
+Message-ID: <f5de7f4c-7479-687f-01c1-2750f0d886f4@vivier.eu>
+Date: Fri, 30 Apr 2021 18:26:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210430155009.259755-1-philmd@redhat.com>
+In-Reply-To: <20210326151848.2217216-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JrgrsAe+sa7p5Z4/udF1D+3oPo4YMmrPOIRdIT3rcnJA/s9sMkE
- QD0vVtjyHC3Y3wUF8+VPvtBAYKPDQ/8I2y8YXogtwH9iccO7qi5DJwq9NsrSXDYeBF2hUVn
- oLkfTknPAydtc9dI2hwmoA0/jiaQXd96QdkJHXWawyqjS6Er7EyENWuUvvMD8MnbLjgM3po
- N1eEoxLdbnCl6ThebsbmQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:vJ+EEN1YrDA=:SRecnOnUby+Xsd42CCPpoL
- PJbAfhOyvhaoEZKCMYCm4Vc1SnoMpCB1ZU4icRTYOBuxdPOQtlj6hc3nszodqsjgZEgkYEra+
- SvkjMd2Fo5K+5l+MoGOv6N7BhWSsIpl2qCn0p9ifWh6dcclPRd5D6glMdeK31tHCVGpKBl+Vq
- h9KZ49lFe8SR9EivG7veYa/uR1OkbxYJOz71t4A3HPThenZaMe7q7xitO/eYjlwQ4tjaCAILp
- +daT1qOBIrhE1IstYJUJ5kNF2We0It/GVJhq26AuRjurroAFgcmGV8FPWKNGIQXBUR2y0bHUJ
- 75jtYCkjecaJuNYy5oRpzTVPtteo+aHoo4mfVEkN4+u2a5vQUlq+VR4E5gdH+xQOzOvG706/8
- lv42TqHS1F1LveySv+3Ev3QngG1ovJ8melkq71c1/5ieGiIJbF5ys4Xudoz9AANCJjVxBVqkD
- VKquapNYafS2M9Yf+E1LAwY7f3/D6GsUeId27EDEqUOBfx4pybLowgSkzZ1M1ykVtho3m+bw8
- LeeuE2OquIWAj0TYVGvDlY=
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:TRc2K7w26OvqLJpfcRCEPrc3020w/kEyUejNNApf0/m6MuEOLwf
+ PSKb9tRJlBnYnuKWnXhzsci7V35WcVSlYotnEwn3+K0vhHhgX68PCxq84r3WZ4dbD9UfIM7
+ EtZE6sfP80VKz3DYqwiu8oVZcpBElCwfvzTw0cLwvNUjn6xvoVHikxpsbnnL4oAj2b3+VXU
+ /7E72Li5rWKtBS5RSYzMw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:G/Lropu1WRs=:vXcGCM/yQGjYco6B+oI/Cp
+ lnLkVIeRo2EodtKdiMY3YGVF744cBl4xsokMk67CwZ4V5ihpyi2KN6GiZoAAodREu2FtFBsCa
+ JHVl7sBz3eUGDrlA0zDBKY9JYO9Q5QdE85uPnVIbWXaNlRKMUX99ue2sz1JcpX9DVwnwOooFd
+ AZtWlXfIEKt5gONw+lqFTiXYauDUzTN26F1dut2MhWNOKPdOpNQnPZ0456XrTCW8EhOULQvNC
+ Rxy01OzAkJ7HeolIid1VEk/S8WeIr05FWJFMRssG+g8cY5Gogxr3n18FnVYx39yTJwhuPJj0I
+ ePdpOET+GSEsPuKnhz5eTdssX90IaH5Me/xbmJP7OzrZBZL5x/G4/TcHmTd7G/JWkBHUzJ8sR
+ QYM/8+qSGxUGsIAvvjt0Pia1qKEiGm4Xr7Bcpu3hRHRq0phd4qIy3QFxH1WPL81O4r2yO91qV
+ uVq/dWVyR2MJTq2ZRqltFcuug3vCCp6cetjAcq81zoHK6MDAN6M9AjCc1O7o9cG+DmFv2pGAR
+ AKCU/wTWt47XnSnxrEndaQ=
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -61,75 +59,342 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 16:20:59 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 16:26:47 -0000
 
-Le 30/04/2021 à 17:50, Philippe Mathieu-Daudé a écrit :
-> Refactor qemu_xkeymap_mapping_table() to have a single exit point,
-> so we can easily free the memory allocated by XGetAtomName().
+Le 26/03/2021 à 16:18, Thomas Huth a écrit :
+> The include/hw/hw.h header only has a prototype for hw_error(),
+> so it does not make sense to include this in files that do not
+> use this function.
 > 
-> This fixes when running a binary configured with --enable-sanitizers:
-> 
->   Direct leak of 22 byte(s) in 1 object(s) allocated from:
->       #0 0x561344a7473f in malloc (qemu-system-x86_64+0x1dab73f)
->       #1 0x7fa4d9dc08aa in XGetAtomName (/lib64/libX11.so.6+0x2a8aa)
-> 
-> Fixes: 2ec78706d18 ("ui: convert GTK and SDL1 frontends to keycodemapdb")
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  ui/x_keymap.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
+>  hw/arm/musicpal.c                  | 1 -
+>  hw/char/sifive_uart.c              | 1 -
+>  hw/display/next-fb.c               | 1 -
+>  hw/dma/sifive_pdma.c               | 1 -
+>  hw/dma/xlnx_csu_dma.c              | 1 -
+>  hw/hppa/lasi.c                     | 1 -
+>  hw/input/lasips2.c                 | 1 -
+>  hw/m68k/mcf_intc.c                 | 1 -
+>  hw/m68k/next-kbd.c                 | 1 -
+>  hw/m68k/q800.c                     | 1 -
+>  hw/m68k/virt.c                     | 1 -
+>  hw/misc/mchp_pfsoc_dmc.c           | 1 -
+>  hw/misc/mchp_pfsoc_ioscb.c         | 1 -
+>  hw/misc/mchp_pfsoc_sysreg.c        | 1 -
+>  hw/misc/sifive_e_prci.c            | 1 -
+>  hw/misc/sifive_test.c              | 1 -
+>  hw/rx/rx-gdbsim.c                  | 1 -
+>  hw/rx/rx62n.c                      | 1 -
+>  hw/vfio/pci-quirks.c               | 1 -
+>  include/hw/char/avr_usart.h        | 1 -
+>  include/hw/misc/avr_power.h        | 1 -
+>  include/hw/misc/stm32f4xx_exti.h   | 1 -
+>  include/hw/misc/stm32f4xx_syscfg.h | 1 -
+>  include/hw/pci-host/i440fx.h       | 1 -
+>  include/hw/timer/avr_timer16.h     | 1 -
+>  25 files changed, 25 deletions(-)
 > 
-> diff --git a/ui/x_keymap.c b/ui/x_keymap.c
-> index 555086fb6bd..2ce7b899615 100644
-> --- a/ui/x_keymap.c
-> +++ b/ui/x_keymap.c
-> @@ -56,6 +56,7 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
->  {
->      XkbDescPtr desc;
->      const gchar *keycodes = NULL;
-> +    const guint16 *map;
+> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+> index 9cebece2de..7d67dc7254 100644
+> --- a/hw/arm/musicpal.c
+> +++ b/hw/arm/musicpal.c
+> @@ -19,7 +19,6 @@
+>  #include "sysemu/sysemu.h"
+>  #include "hw/boards.h"
+>  #include "hw/char/serial.h"
+> -#include "hw/hw.h"
+>  #include "qemu/timer.h"
+>  #include "hw/ptimer.h"
+>  #include "hw/qdev-properties.h"
+> diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
+> index 3a00ba7f00..ee7adb8e30 100644
+> --- a/hw/char/sifive_uart.c
+> +++ b/hw/char/sifive_uart.c
+> @@ -22,7 +22,6 @@
+>  #include "hw/sysbus.h"
+>  #include "chardev/char.h"
+>  #include "chardev/char-fe.h"
+> -#include "hw/hw.h"
+>  #include "hw/irq.h"
+>  #include "hw/char/sifive_uart.h"
 >  
->      /* There is no easy way to determine what X11 server
->       * and platform & keyboard driver is in use. Thus we
-> @@ -83,21 +84,21 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
->      if (check_for_xwin(dpy)) {
->          trace_xkeymap_keymap("xwin");
->          *maplen = qemu_input_map_xorgxwin_to_qcode_len;
-> -        return qemu_input_map_xorgxwin_to_qcode;
-> +        map = qemu_input_map_xorgxwin_to_qcode;
->      } else if (check_for_xquartz(dpy)) {
->          trace_xkeymap_keymap("xquartz");
->          *maplen = qemu_input_map_xorgxquartz_to_qcode_len;
-> -        return qemu_input_map_xorgxquartz_to_qcode;
-> +        map = qemu_input_map_xorgxquartz_to_qcode;
->      } else if ((keycodes && g_str_has_prefix(keycodes, "evdev")) ||
->                 (XKeysymToKeycode(dpy, XK_Page_Up) == 0x70)) {
->          trace_xkeymap_keymap("evdev");
->          *maplen = qemu_input_map_xorgevdev_to_qcode_len;
-> -        return qemu_input_map_xorgevdev_to_qcode;
-> +        map = qemu_input_map_xorgevdev_to_qcode;
->      } else if ((keycodes && g_str_has_prefix(keycodes, "xfree86")) ||
->                 (XKeysymToKeycode(dpy, XK_Page_Up) == 0x63)) {
->          trace_xkeymap_keymap("kbd");
->          *maplen = qemu_input_map_xorgkbd_to_qcode_len;
-> -        return qemu_input_map_xorgkbd_to_qcode;
-> +        map = qemu_input_map_xorgkbd_to_qcode;
->      } else {
->          trace_xkeymap_keymap("NULL");
->          g_warning("Unknown X11 keycode mapping '%s'.\n"
-> @@ -109,6 +110,10 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
->                    "  - xprop -root\n"
->                    "  - xdpyinfo\n",
->                    keycodes ? keycodes : "<null>");
-> -        return NULL;
-> +        map = NULL;
->      }
-> +    if (keycodes) {
-> +        XFree((void *)keycodes);
-> +    }
-> +    return map;
->  }
+> diff --git a/hw/display/next-fb.c b/hw/display/next-fb.c
+> index e2d895109d..cc134c2d5b 100644
+> --- a/hw/display/next-fb.c
+> +++ b/hw/display/next-fb.c
+> @@ -24,7 +24,6 @@
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "ui/console.h"
+> -#include "hw/hw.h"
+>  #include "hw/boards.h"
+>  #include "hw/loader.h"
+>  #include "framebuffer.h"
+> diff --git a/hw/dma/sifive_pdma.c b/hw/dma/sifive_pdma.c
+> index e1f6fedbda..9b2ac2017d 100644
+> --- a/hw/dma/sifive_pdma.c
+> +++ b/hw/dma/sifive_pdma.c
+> @@ -24,7 +24,6 @@
+>  #include "qemu/bitops.h"
+>  #include "qemu/log.h"
+>  #include "qapi/error.h"
+> -#include "hw/hw.h"
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/sysbus.h"
+> diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
+> index 98324dadcd..797b4fed8f 100644
+> --- a/hw/dma/xlnx_csu_dma.c
+> +++ b/hw/dma/xlnx_csu_dma.c
+> @@ -21,7 +21,6 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/log.h"
+>  #include "qapi/error.h"
+> -#include "hw/hw.h"
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/sysbus.h"
+> diff --git a/hw/hppa/lasi.c b/hw/hppa/lasi.c
+> index 1a85657948..a8f5defcd0 100644
+> --- a/hw/hppa/lasi.c
+> +++ b/hw/hppa/lasi.c
+> @@ -15,7 +15,6 @@
+>  #include "qapi/error.h"
+>  #include "cpu.h"
+>  #include "trace.h"
+> -#include "hw/hw.h"
+>  #include "hw/irq.h"
+>  #include "sysemu/sysemu.h"
+>  #include "sysemu/runstate.h"
+> diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
+> index 0786e57338..60afb94c78 100644
+> --- a/hw/input/lasips2.c
+> +++ b/hw/input/lasips2.c
+> @@ -24,7 +24,6 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/log.h"
+>  #include "hw/qdev-properties.h"
+> -#include "hw/hw.h"
+>  #include "hw/input/ps2.h"
+>  #include "hw/input/lasips2.h"
+>  #include "hw/sysbus.h"
+> diff --git a/hw/m68k/mcf_intc.c b/hw/m68k/mcf_intc.c
+> index cf02f57a71..4cd30188c0 100644
+> --- a/hw/m68k/mcf_intc.c
+> +++ b/hw/m68k/mcf_intc.c
+> @@ -11,7 +11,6 @@
+>  #include "qemu/module.h"
+>  #include "qemu/log.h"
+>  #include "cpu.h"
+> -#include "hw/hw.h"
+>  #include "hw/irq.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/m68k/mcf.h"
+> diff --git a/hw/m68k/next-kbd.c b/hw/m68k/next-kbd.c
+> index c11b5281f1..bee40e25bc 100644
+> --- a/hw/m68k/next-kbd.c
+> +++ b/hw/m68k/next-kbd.c
+> @@ -30,7 +30,6 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/log.h"
+>  #include "exec/address-spaces.h"
+> -#include "hw/hw.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/m68k/next-cube.h"
+>  #include "ui/console.h"
+> diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+> index 4d2e866eec..1c7f7aa07f 100644
+> --- a/hw/m68k/q800.c
+> +++ b/hw/m68k/q800.c
+> @@ -26,7 +26,6 @@
+>  #include "qemu/datadir.h"
+>  #include "sysemu/sysemu.h"
+>  #include "cpu.h"
+> -#include "hw/hw.h"
+>  #include "hw/boards.h"
+>  #include "hw/irq.h"
+>  #include "hw/or-irq.h"
+> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> index e9a5d4c69b..18e6f11041 100644
+> --- a/hw/m68k/virt.c
+> +++ b/hw/m68k/virt.c
+> @@ -12,7 +12,6 @@
+>  #include "qemu-common.h"
+>  #include "sysemu/sysemu.h"
+>  #include "cpu.h"
+> -#include "hw/hw.h"
+>  #include "hw/boards.h"
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+> diff --git a/hw/misc/mchp_pfsoc_dmc.c b/hw/misc/mchp_pfsoc_dmc.c
+> index 15cf3d7725..43d8e970ab 100644
+> --- a/hw/misc/mchp_pfsoc_dmc.c
+> +++ b/hw/misc/mchp_pfsoc_dmc.c
+> @@ -24,7 +24,6 @@
+>  #include "qemu/bitops.h"
+>  #include "qemu/log.h"
+>  #include "qapi/error.h"
+> -#include "hw/hw.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/misc/mchp_pfsoc_dmc.h"
+>  
+> diff --git a/hw/misc/mchp_pfsoc_ioscb.c b/hw/misc/mchp_pfsoc_ioscb.c
+> index 8b0d1cacd7..f4fd55a0e5 100644
+> --- a/hw/misc/mchp_pfsoc_ioscb.c
+> +++ b/hw/misc/mchp_pfsoc_ioscb.c
+> @@ -24,7 +24,6 @@
+>  #include "qemu/bitops.h"
+>  #include "qemu/log.h"
+>  #include "qapi/error.h"
+> -#include "hw/hw.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/misc/mchp_pfsoc_ioscb.h"
+>  
+> diff --git a/hw/misc/mchp_pfsoc_sysreg.c b/hw/misc/mchp_pfsoc_sysreg.c
+> index 248a313345..89571eded5 100644
+> --- a/hw/misc/mchp_pfsoc_sysreg.c
+> +++ b/hw/misc/mchp_pfsoc_sysreg.c
+> @@ -24,7 +24,6 @@
+>  #include "qemu/bitops.h"
+>  #include "qemu/log.h"
+>  #include "qapi/error.h"
+> -#include "hw/hw.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/misc/mchp_pfsoc_sysreg.h"
+>  
+> diff --git a/hw/misc/sifive_e_prci.c b/hw/misc/sifive_e_prci.c
+> index 8ec4ee4b41..a8702c6a5d 100644
+> --- a/hw/misc/sifive_e_prci.c
+> +++ b/hw/misc/sifive_e_prci.c
+> @@ -23,7 +23,6 @@
+>  #include "qapi/error.h"
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+> -#include "hw/hw.h"
+>  #include "hw/misc/sifive_e_prci.h"
+>  
+>  static uint64_t sifive_e_prci_read(void *opaque, hwaddr addr, unsigned int size)
+> diff --git a/hw/misc/sifive_test.c b/hw/misc/sifive_test.c
+> index 2deb2072cc..56df45bfe5 100644
+> --- a/hw/misc/sifive_test.c
+> +++ b/hw/misc/sifive_test.c
+> @@ -24,7 +24,6 @@
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+>  #include "sysemu/runstate.h"
+> -#include "hw/hw.h"
+>  #include "hw/misc/sifive_test.h"
+>  
+>  static uint64_t sifive_test_read(void *opaque, hwaddr addr, unsigned int size)
+> diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
+> index b1d7c2488f..8c611b0a59 100644
+> --- a/hw/rx/rx-gdbsim.c
+> +++ b/hw/rx/rx-gdbsim.c
+> @@ -22,7 +22,6 @@
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+>  #include "cpu.h"
+> -#include "hw/hw.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/loader.h"
+>  #include "hw/rx/rx62n.h"
+> diff --git a/hw/rx/rx62n.c b/hw/rx/rx62n.c
+> index 9c34ce14de..31ddccf2cd 100644
+> --- a/hw/rx/rx62n.c
+> +++ b/hw/rx/rx62n.c
+> @@ -23,7 +23,6 @@
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+> -#include "hw/hw.h"
+>  #include "hw/rx/rx62n.h"
+>  #include "hw/loader.h"
+>  #include "hw/sysbus.h"
+> diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+> index b90cf3d37c..e21a6ede11 100644
+> --- a/hw/vfio/pci-quirks.c
+> +++ b/hw/vfio/pci-quirks.c
+> @@ -22,7 +22,6 @@
+>  #include "qapi/error.h"
+>  #include "qapi/visitor.h"
+>  #include <sys/ioctl.h>
+> -#include "hw/hw.h"
+>  #include "hw/nvram/fw_cfg.h"
+>  #include "hw/qdev-properties.h"
+>  #include "pci.h"
+> diff --git a/include/hw/char/avr_usart.h b/include/hw/char/avr_usart.h
+> index bb57532403..62eaa1528e 100644
+> --- a/include/hw/char/avr_usart.h
+> +++ b/include/hw/char/avr_usart.h
+> @@ -24,7 +24,6 @@
+>  
+>  #include "hw/sysbus.h"
+>  #include "chardev/char-fe.h"
+> -#include "hw/hw.h"
+>  #include "qom/object.h"
+>  
+>  /* Offsets of registers. */
+> diff --git a/include/hw/misc/avr_power.h b/include/hw/misc/avr_power.h
+> index 707df030b1..388e421aa7 100644
+> --- a/include/hw/misc/avr_power.h
+> +++ b/include/hw/misc/avr_power.h
+> @@ -26,7 +26,6 @@
+>  #define HW_MISC_AVR_POWER_H
+>  
+>  #include "hw/sysbus.h"
+> -#include "hw/hw.h"
+>  #include "qom/object.h"
+>  
+>  
+> diff --git a/include/hw/misc/stm32f4xx_exti.h b/include/hw/misc/stm32f4xx_exti.h
+> index 24b6fa7724..ea6b0097b0 100644
+> --- a/include/hw/misc/stm32f4xx_exti.h
+> +++ b/include/hw/misc/stm32f4xx_exti.h
+> @@ -26,7 +26,6 @@
+>  #define HW_STM_EXTI_H
+>  
+>  #include "hw/sysbus.h"
+> -#include "hw/hw.h"
+>  #include "qom/object.h"
+>  
+>  #define EXTI_IMR   0x00
+> diff --git a/include/hw/misc/stm32f4xx_syscfg.h b/include/hw/misc/stm32f4xx_syscfg.h
+> index 8c31feccd3..6f8ca49228 100644
+> --- a/include/hw/misc/stm32f4xx_syscfg.h
+> +++ b/include/hw/misc/stm32f4xx_syscfg.h
+> @@ -26,7 +26,6 @@
+>  #define HW_STM_SYSCFG_H
+>  
+>  #include "hw/sysbus.h"
+> -#include "hw/hw.h"
+>  #include "qom/object.h"
+>  
+>  #define SYSCFG_MEMRMP  0x00
+> diff --git a/include/hw/pci-host/i440fx.h b/include/hw/pci-host/i440fx.h
+> index 24fd53942c..7fcfd9485c 100644
+> --- a/include/hw/pci-host/i440fx.h
+> +++ b/include/hw/pci-host/i440fx.h
+> @@ -11,7 +11,6 @@
+>  #ifndef HW_PCI_I440FX_H
+>  #define HW_PCI_I440FX_H
+>  
+> -#include "hw/hw.h"
+>  #include "hw/pci/pci_bus.h"
+>  #include "hw/pci-host/pam.h"
+>  #include "qom/object.h"
+> diff --git a/include/hw/timer/avr_timer16.h b/include/hw/timer/avr_timer16.h
+> index 0536254337..a1a032a24d 100644
+> --- a/include/hw/timer/avr_timer16.h
+> +++ b/include/hw/timer/avr_timer16.h
+> @@ -30,7 +30,6 @@
+>  
+>  #include "hw/sysbus.h"
+>  #include "qemu/timer.h"
+> -#include "hw/hw.h"
+>  #include "qom/object.h"
+>  
+>  enum NextInterrupt {
 > 
 
 Applied to my trivial-patches branch.
