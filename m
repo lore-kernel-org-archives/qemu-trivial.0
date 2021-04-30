@@ -1,52 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcWcQ-0006AJ-AY
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 13:07:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38922)
+	id 1lcWl2-0005dB-Dt
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 13:16:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcWcN-00067m-1b; Fri, 30 Apr 2021 13:07:55 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:59535)
+ id 1lcWkz-0005ak-Ow; Fri, 30 Apr 2021 13:16:49 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:34773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcWcK-0003l6-TR; Fri, 30 Apr 2021 13:07:54 -0400
+ id 1lcWkx-0007Y7-9b; Fri, 30 Apr 2021 13:16:49 -0400
 Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MeD1l-1l3CCL3bbL-00bHBg; Fri, 30 Apr 2021 19:07:47 +0200
-Subject: Re: [PATCH] baum: Fix crash when Braille output is not available
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MCb2L-1lm7831vHf-009d9h; Fri, 30 Apr 2021 19:16:44 +0200
+Subject: Re: [PATCH] docs/system: Document the removal of "compat" property
+ for POWER CPUs
+To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-stable <qemu-stable@nongnu.org>
+References: <161399328834.51902.14269239378658110394.stgit@bahia.lan>
 From: Laurent Vivier <laurent@vivier.eu>
-To: Thomas Huth <thuth@redhat.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20210310160815.3411019-1-samuel.thibault@ens-lyon.org>
- <8624f8c8-d541-051a-13f6-f05d685fefde@redhat.com>
- <60cd5c4c-26f6-87f6-81b1-e9fcc1440659@vivier.eu>
-Message-ID: <cdc1b3cd-5518-45b7-cbee-5c36e0f42473@vivier.eu>
-Date: Fri, 30 Apr 2021 19:07:45 +0200
+Message-ID: <43426d7d-9c97-4351-107e-a0db86760c45@vivier.eu>
+Date: Fri, 30 Apr 2021 19:16:43 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <60cd5c4c-26f6-87f6-81b1-e9fcc1440659@vivier.eu>
+In-Reply-To: <161399328834.51902.14269239378658110394.stgit@bahia.lan>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:oRhqVxU1Cmlm+kR0Xsb6QMjD4dU44gtcjXTjADQ2IzBg93nZUaJ
- o0SStsY7yZeeTtA7WgS4WX6ZI5sEmiPHmAOanjeFWO9JU7d3/op0JARyIMfA2Muf2ckQMXD
- mMmqIct3Z8XRiWILZcZ1Yp/6h9WW7+buPgpEKtl4kg4Jh1LbVR7H1bVYj/4Yf+3I89IKfYI
- WdJtGE4AeoNOBQL6tHqdg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+hqClVkEnjE=:aYWKrw4WC+QioYx+g3xzZQ
- ydS0n+D+Jdd16LbVBe3le23+GSRmm8pqjnbR8wpvaf51fgA169rPXJffH24VH6HpuNXkmlAtX
- evD1reqxe3Vsx4P0A72E9CSA5CdBdJe1dDXHyAzmuQvRtVPv2cayNqDHGPyJpBen+6sWadGtL
- WCL1E3XNmo1izc8obCcZek2zyG7OqQElV8+2X1GiQjq616zICp4r/7yRVVbLMC8U44EtAj9n2
- J3Kr/GeK8jwt8lTE3FNGrtC+yqOILjJ5RNQ2Ng10YtMyTdiCYdi1+LEiL1mHoP3F0l9xQ8rYH
- S9wAaMsE/KNjJNJHvtbplPlzyg80Y1frqtpifGgOYXHHL6EJk5B+XlbBjkO4TrIPDRD9Cuzac
- 9QQUsnZRPMei3kmvOKGD9XaAEjHhdFx+zxDYtZLvfhmr9Y1jSdjdIi8fGO0wL/SsoQyOYGdMt
- xjgs0KbvkvdQXlIIwMv3xEdlldnmVsGPE/CBbELzdls4lhLmo4ok2qq2G465o4hcXJbfEei0/
- OaJcKjdRSaPZNCwS8faArA=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:gEu43DWuUUyjLgYZ4kpqPOyKIgTmT3HatW1OjabE6BDzPrbHcyC
+ WNHV7BUMm/zw7ipDQaStgMBUU/DiUyE2ZflBRMFe7ShWuq20oDpLFllab4LS3eOmQQqOXzW
+ xdjF0YkHwsa03XV6o3nFcKf1kMK7Ev+5qaBSbfrBzUwmDvF8UKh97IiIgqOuLhP47yka9BG
+ jyCwfPu8zsW41eLHhdyNQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:64MuyvCyG2M=:jBEnugHGcAQRJcoudlhOCY
+ ot5B1mc42ERso7OqMhJsIh1Zmc6hxGsYHlim7799pZSXPCXa7aV4xnQa9cvAw1zZkfeQVPWnw
+ JbdM9eM9NhaZaxBQei1yrbUjHo32k3eecUUUHoiZex4nzD5dIeRvqW9IWP0WOoWY3U6iyyI0H
+ CyP8ml2ZF3BMbWIjzbfs+jdTCMBSj6IwIdRNviIrGvEAO6R0W+GmijeaaKZqOHV+2VyI9KBaH
+ DuifeftFj5lC2J4DhnEChHolDarh9i8wYH+vnGfvIJnzET+Uv/bW8Dn2bxlTJhPqoXH7rAuol
+ PZ8tLc0C76ticpNR+pTpy4pM1SW9/0Mzw3a/lv287xH6Q1k/8ipBP5u+4/T4DqbaAoXRO7TgZ
+ 4hu6CX1G+oZIdjmP5u5S8FU9gAr6aVK2Ckojso/3KVGFz9cxQeV/cRMoCQDbYwWHwvqeqzCRN
+ 61SQYdfRgq+IHJIYilbBB5nVl/VaD/Pdl4S1d8jNCo9hP7/O9dsS47+6mFcVTrTuBxXjHNTtR
+ aTO48OF+Si5WxqirhGHNXs=
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -66,52 +60,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 17:07:56 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 17:16:51 -0000
 
-Le 30/04/2021 à 19:01, Laurent Vivier a écrit :
-> Le 10/03/2021 à 18:23, Thomas Huth a écrit :
->> On 10/03/2021 17.08, Samuel Thibault wrote:
->>> When Braille output is not available, the backend properly reports being
->>> unable to be created, but 5f8e93c3e262 ("util/qemu-timer: Make timer_free()
->>> imply timer_del()") made the timer_free() call now refuse any NULL
->>> parameter. char_braille_finalize thus now has to be more careful with
->>> calling it on baum->cellCount_timer.
->>>
->>> Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
->>> ---
->>>   chardev/baum.c | 4 +++-
->>>   1 file changed, 3 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/chardev/baum.c b/chardev/baum.c
->>> index 5deca778bc..aca5bf12fb 100644
->>> --- a/chardev/baum.c
->>> +++ b/chardev/baum.c
->>> @@ -631,7 +631,9 @@ static void char_braille_finalize(Object *obj)
->>>   {
->>>       BaumChardev *baum = BAUM_CHARDEV(obj);
->>>   -    timer_free(baum->cellCount_timer);
->>> +    if (baum->cellCount_timer) {
->>> +        timer_free(baum->cellCount_timer);
->>> +    }
->>>       if (baum->brlapi) {
->>>           brlapi__closeConnection(baum->brlapi);
->>>           g_free(baum->brlapi);
->>
->> I just tried to debug this problem, too, and came to the same conclusion.
->>
->> Reviewed-by: Thomas Huth <thuth@redhat.com>
->>
->>
+Le 22/02/2021 à 12:28, Greg Kurz a écrit :
+> This is just an oversight.
 > 
-> Applied to my trivial-patches branch.
+> Fixes: f518be3aa35b ("target/ppc: Remove "compat" property of server class POWER CPUs")
+> Cc: groug@kaod.org
+> Signed-off-by: Greg Kurz <groug@kaod.org>
+> ---
+>  docs/system/removed-features.rst |    6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/docs/system/removed-features.rst b/docs/system/removed-features.rst
+> index c8481cafbd5c..04ffa90d48ca 100644
+> --- a/docs/system/removed-features.rst
+> +++ b/docs/system/removed-features.rst
+> @@ -115,6 +115,12 @@ The RISC-V no MMU cpus have been removed. The two CPUs: ``rv32imacu-nommu`` and
+>  ``rv64imacu-nommu`` can no longer be used. Instead the MMU status can be specified
+>  via the CPU ``mmu`` option when using the ``rv32`` or ``rv64`` CPUs.
+>  
+> +``compat`` property of server class POWER CPUs (removed in 6.0)
+> +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> +
+> +The ``max-cpu-compat`` property of the ``pseries`` machine type should be used
+> +instead.
+> +
+>  System emulator machines
+>  ------------------------
+>  
+> 
+> 
 > 
 
-Unapplied from my branch because of:
+Better late than never:
 
-https://lists.gnu.org/archive/html/qemu-devel/2021-03/msg03457.html
+Applied to my trivial-patches branch.
 
-[missed it because all the thread was not cc'ed to trivial]
++cc stable
 
 Thanks,
 Laurent
+
 
