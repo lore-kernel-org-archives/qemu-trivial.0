@@ -1,45 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcVbI-0007l9-2V
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:02:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52326)
+	id 1lcVdy-0001AH-JW
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:05:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcVbD-0007jY-5Y; Fri, 30 Apr 2021 12:02:39 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:42071)
+ id 1lcVdo-000155-Uy; Fri, 30 Apr 2021 12:05:22 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:53557)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcVb8-0005OF-2V; Fri, 30 Apr 2021 12:02:36 -0400
+ id 1lcVdk-000684-UX; Fri, 30 Apr 2021 12:05:20 -0400
 Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MXY2Z-1m4sWL03pP-00Z3JK; Fri, 30 Apr 2021 18:02:26 +0200
-Subject: Re: [PATCH v2] Fix typo in CFI build documentation
-To: Serge Guelton <sguelton@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, philmd@redhat.com
-References: <20210430150745.GA1401713@sguelton.remote.csb>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MKKIZ-1lrhH81RSZ-00LlcI; Fri, 30 Apr 2021 18:05:09 +0200
+Subject: Re: [PATCH v2] ui: Fix memory leak in qemu_xkeymap_mapping_table()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Daniel P . Berrange" <berrange@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20210430155009.259755-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <72c36ee1-0ac2-ddd4-04df-3c0c5dca8451@vivier.eu>
-Date: Fri, 30 Apr 2021 18:02:24 +0200
+Message-ID: <e1d3fe58-acad-3923-6614-2a69860864cb@vivier.eu>
+Date: Fri, 30 Apr 2021 18:05:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210430150745.GA1401713@sguelton.remote.csb>
+In-Reply-To: <20210430155009.259755-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EeKvir8zx7fofgILZIGhbo/aga3wKMK2LObaVkRkY+fwY4fIRpZ
- YOOo2vv1NiVDre6Jo6l0L3XNWHzhUmY1Vp7M3lET0gFL2YxW2eXQcZ8CRTMjk/u5IyslYL1
- hw7bQwSp7gLRIC4GA0QNcchAH/FoCRvWAV3B2TNyUIQcACZoD2EbkQQNNN/pP2z7/DYgTxu
- ZYDPqz/qz6UXNKPbG4VOQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:z19el3uIuQo=:+3vodWCuCf8xgzBGJRELQg
- bLsMqVubM6a/7elrB1O+IFA9r7VVZZkEV92LlcVFutpDB2Ow+5Lx7uNtSRY9lTZ0EguCwLRD8
- cXcnrWOlsPySnNWwWNMasyFc2+PngZmaK3P0A/lG/khzOEId8KNIAyL8YqjapzWtQ3LHloTfU
- /baDmbVjDxQZnzRVLpKdn8Up5Ghmw9mNJ3kguciDew+NrNg513kLNQIHJkae3/Lc0GfzPtbQI
- yHsfF+srmWIpih0ZJzibRtb6IRcqLRtrCcLcSBZxCDOcTi3nb9W5FBLlUACnh5IfW0f5Cv05Q
- 6piLE+XKrDiYJyCNRPCamRiQwK7IdsqBQ4y1xR3oFGykgaXMpI19pytxU2oqDcngoCDiSKJsx
- yKvW3NfXenlQGEp52Qia0NhWdbnUJm2q26t6stOzj5cZD2j9lLzvEuIV9KD+DD4/tI1S5KiZj
- OmSUWHjyEALNJCiZ6ohoAxcfUfgy3A5IFRZ8kYXe9sl/916ktV2xd1i6mkfU9pSRnOj+kAXft
- kb6Oo9o0aHpVc31rklUKzg=
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:i+Yna9ZMEteGs/MzzLqpQd6RJc9rwuUzdxqx8Q93icJTOBLi4+Q
+ 8ZxbPD1bnspnK/9qTFfd2pLf33u8bQ0eGfzYQxxGfD5qxU/m9Ebsb49aGu/IcppmhnT6i2U
+ o5Q4COZZxETaMakGy9tQCF7nZ4K9TdRMoVLFs+cAieeHAOlD9pWy6PaAg6oM93qoOdXhRWn
+ Y9utm/7AFT9z9x1luACUw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2QYC+Gzzo9I=:rnG+wh/DiR1waqEr7kSekf
+ zw2xI4gy345iJ4rgjaNGJq9MlTTtUQbRn+qvyewPO2hizzCZY14cZAC82Q+5QAi0haDnvwzZ0
+ mi0QiNvD09mEef1po1xNXW7zpe0lMDD4XCPmLBl6Q5eiSpQrP/JXLn+sTiQtD0zh/or6KD5yT
+ Ltbl3mII+mUBSKtTJyi0YYwVZzGlWV5FhOM0oGRl8tRaE/qV7KXkzpkR7/0IVI3n6p/T/yYfZ
+ F8MCkT+8ftktGaK5Qpq3Vr8+3dJhEXWJOVAh9XwITseZHVxLRVAZCw3q2ExjjapdW+ugVf5RB
+ 2Q2XjKbMGxSOXuUiCH0DTD8x4kJiEQPJsyRokD9vdroH6cKnIs6Nl5FFUOHTjxXn5SGSH/1rf
+ Xp+p7Q/G1evfO6nLw8zyzcqPrK1EEUVvnQrjt7X10kA52tIr7nWp0UujPUAhBjDLyjFLKvSaf
+ Dv8vr4AAs3pj72oDZDPZ2TOFJHe0AX2u7CPs/QDGhn0YR6ZN8SOaCmJx1nWQYiOATbZ5rPIDy
+ LOOaZr8tznLAr66tVTgijg=
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -59,42 +61,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 16:02:41 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 16:05:25 -0000
 
-Le 30/04/2021 à 17:07, Serge Guelton a écrit :
-> Signed-off-by: Serge Guelton <sguelton@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Le 30/04/2021 à 17:50, Philippe Mathieu-Daudé a écrit :
+> Refactor qemu_xkeymap_mapping_table() to have a single exit point,
+> so we can easily free the memory allocated by XGetAtomName().
+> 
+> This fixes when running a binary configured with --enable-sanitizers:
+> 
+>   Direct leak of 22 byte(s) in 1 object(s) allocated from:
+>       #0 0x561344a7473f in malloc (qemu-system-x86_64+0x1dab73f)
+>       #1 0x7fa4d9dc08aa in XGetAtomName (/lib64/libX11.so.6+0x2a8aa)
+> 
+> Fixes: 2ec78706d18 ("ui: convert GTK and SDL1 frontends to keycodemapdb")
+> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  docs/devel/control-flow-integrity.rst | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/control-flow-integrity.rst
-> index d89d707..e6b73a4 100644
-> --- a/docs/devel/control-flow-integrity.rst
-> +++ b/docs/devel/control-flow-integrity.rst
-> @@ -39,7 +39,7 @@ later).
->  Given the use of LTO, a version of AR that supports LLVM IR is required.
->  The easies way of doing this is by selecting the AR provided by LLVM::
->  
-> - AR=llvm-ar-9 CC=clang-9 CXX=lang++-9 /path/to/configure --enable-cfi
-> + AR=llvm-ar-9 CC=clang-9 CXX=clang++-9 /path/to/configure --enable-cfi
->  
->  CFI is enabled on every binary produced.
->  
-> @@ -131,7 +131,7 @@ lld with version 11+.
->  In other words, to compile with fuzzing and CFI, clang 11+ is required, and
->  lld needs to be used as a linker::
->  
-> - AR=llvm-ar-11 CC=clang-11 CXX=lang++-11 /path/to/configure --enable-cfi \
-> + AR=llvm-ar-11 CC=clang-11 CXX=clang++-11 /path/to/configure --enable-cfi \
->                             -enable-fuzzing --extra-ldflags="-fuse-ld=lld"
->  
->  and then, compile the fuzzers as usual.
-> 
+>  ui/x_keymap.c | 15 ++++++++++-----
+>  1 file changed, 10 insertions(+), 5 deletions(-)
+>
 
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
