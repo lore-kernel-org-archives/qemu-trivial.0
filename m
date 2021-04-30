@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcWQb-0002sU-T1
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:55:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35990)
+	id 1lcWSH-0004tU-2g
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 12:57:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36394)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcWQa-0002n4-3s; Fri, 30 Apr 2021 12:55:44 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:51721)
+ id 1lcWSF-0004pZ-KT; Fri, 30 Apr 2021 12:57:27 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:59799)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lcWQW-0001iL-Pd; Fri, 30 Apr 2021 12:55:43 -0400
+ id 1lcWSD-0001w1-Uo; Fri, 30 Apr 2021 12:57:27 -0400
 Received: from [192.168.100.1] ([82.142.15.170]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N9M1q-1lXAlu11rY-015JvK; Fri, 30 Apr 2021 18:55:26 +0200
-Subject: Re: [PATCH] Hexagon (target/hexagon) remove unnecessary semicolons
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MGi2e-1lqDYy0g6M-00DoAt; Fri, 30 Apr 2021 18:57:18 +0200
+Subject: Re: [PATCH] Hexagon (target/hexagon) fix typo in comment
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Taylor Simpson <tsimpson@quicinc.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: richard.henderson@linaro.org
-References: <1615784100-26459-1-git-send-email-tsimpson@quicinc.com>
- <b68140b5-d2bc-8019-6ded-d7b2abe02926@amsat.org>
+ Taylor Simpson <tsimpson@quicinc.com>, qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, richard.henderson@linaro.org
+References: <1615784115-26559-1-git-send-email-tsimpson@quicinc.com>
+ <3ee6512a-62be-72ff-2b29-12285f0168e0@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <183f643c-fad2-b0d4-5d8d-b2d2b2e04209@vivier.eu>
-Date: Fri, 30 Apr 2021 18:55:25 +0200
+Message-ID: <356d87a4-2b81-0dea-ea3d-c0758064e279@vivier.eu>
+Date: Fri, 30 Apr 2021 18:57:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <b68140b5-d2bc-8019-6ded-d7b2abe02926@amsat.org>
+In-Reply-To: <3ee6512a-62be-72ff-2b29-12285f0168e0@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:HFQWk9NArUH7IpgKgGNDDXBLgF3edmXak1nGnegUB7f4r9DKtrg
- xDbNhKAmG73Ln0Ewgn4SUYeu+MRbfbZPu6mrXicdgWuxE/OSKZSd2UuIXlpgHI2OmuCgbkh
- Ih2Bgj0YINjR9agJidGJ4auU9g21ZDx1ja9GohdtHOxDtn+oZFTG6IU36fTlbmkVMxS937A
- 6bXsqw9Qe9Oq4aIsnnyNA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:uVmaj18Wdgg=:OA9aIOqm2HGhgdjjbu1QX3
- i2XxItYEP3D5j8GNqJjngsHtliu0tZQPNS1vE4POA8lp+uFc4BDVLRuqR0DqDArCCyjBSFqfP
- JbfZ1lEoXcRxO0SrYhZ05Z8WRLZbLvwKivs4s0GhOEkgmFn7g41qmUkkPUXyAu3ZNyHxVBVUs
- xmLgoU+I5QblvRIJ+YOmIlMw41YnNuza0CHU8ezPV9wG7+K1O9LffVrVke77cWfV8GXwhHDm5
- aSuJiMVEocrzklcDLmlYcRrtUI2Gqo8l9L5piBIXSOJLrV2cbXY6oZoVWgLz84Nla/ofCWvCz
- d+C9T1VdsvXr2LtbHcTBVEUWq6uzK8BV2WvObeY23LMJaNgn5JfiC8weIop1u9Nh0zm7s2bIK
- 6BrOtZwfPgfMeyjNlhet+lsWsi4OPVKMTB5PdC3cHE8vZqqbw/IOFbQygwva/GtoOU6S9Fz6P
- 73ggcrY6fsdt532Hsbk59UjTw/4lYSbVmLUeCuMNzInRLgy+bIMJ6BGsbjMRBjPLpTjRV9S6o
- 1qjXy/sWvrFHDr9F511Fe8=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:OR11rA5ROrBeEPIJCpuYVnNpdoB08IZL26+dL62fs1ucGToAVNI
+ Y3bnR0JvKTKObBEbeIU2Ahj0zfBtxSt1g8acZsTaJSap/HWyuYuCLWKLg5HhDqNra4pv9Y9
+ RjO7yfhbhxbA2Z0KVq5edwmSArFxcHh5YLL3raB4dK/9HP0NUjLADr9CiVB7We1IaVUz/KO
+ iDYlyiNbnzejQ+xh2ynxw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:JhzY7dwDrAE=:qV3aaOhbcL7FO/WTxvKneH
+ HLBDvlJ+mSDc7g5uM9QuJRCAKVYu6qd5E5NyusamncO4/hduhz/sDdK4LatdgKAQSoUjLsxWM
+ U+5jd+oLZsA7rmextSrWd4/xfPdY/XykJfRo3ArXVTvAvdMa93qxAhtOvn/aEQZvbJ34g2LLf
+ LEbcasUiEnjTzmVySy/wG2ntuNcY0Dtn0tKVw+DG963b+t9AcmO33DDdiMSK1vJQeT/V2bxbM
+ Mz6+0hPxSYZ/fxI2CcZ1lNcP/iDcjIOaZJkObe29uCifRKCJSK6bacaqMB/15FlyTQwKy+Aty
+ FXPgR/d9eqaVXmy7vZYuaeqBHhILFRAOh9dkFGDAmBdHJLDDpQZ68IkjnoaqZlIcufonFjjX2
+ nJPOE93OcQ3585I3MzHiWz8S5h4TueYW2yE7Z4gG2QPQOydPVZ55IY3a3R+HCm3JZxLa6Sx+b
+ t0BeiyNAad76eWQoUlYEPJzYRfeObfKm7QDqrvkhafjretlUAA7z9BPOAwrBKViSYO/q82oJx
+ iibkTvgO5nXZeVZ4nsUj4E=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,42 +61,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 16:55:44 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 16:57:27 -0000
 
-Le 15/03/2021 à 10:43, Philippe Mathieu-Daudé a écrit :
+Le 15/03/2021 à 10:28, Philippe Mathieu-Daudé a écrit :
 > On 3/15/21 5:55 AM, Taylor Simpson wrote:
->> Address feedback from Richard Henderson <<richard.henderson@linaro.org>
->>
+>> Signed-of-by: Taylor Simpson <tsimpson@quicinc.com>
 > 
-> Reported-by: Richard Henderson <richard.henderson@linaro.org>
+> 'git-commit -s' flag add the S-o-b line automatically ;)
+> 
+> Otherwise:
 > Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > 
->> Signed-off-by: Taylor Simpson <tsimpson@quicinc.com>
 >> ---
->>  target/hexagon/gen_tcg.h | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>  target/hexagon/op_helper.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> diff --git a/target/hexagon/gen_tcg.h b/target/hexagon/gen_tcg.h
->> index e044dea..a30048e 100644
->> --- a/target/hexagon/gen_tcg.h
->> +++ b/target/hexagon/gen_tcg.h
->> @@ -83,9 +83,9 @@
->>  #define fGEN_TCG_L2_loadrub_pr(SHORTCODE)      SHORTCODE
->>  #define fGEN_TCG_L2_loadrub_pi(SHORTCODE)      SHORTCODE
->>  #define fGEN_TCG_L2_loadrb_pr(SHORTCODE)       SHORTCODE
->> -#define fGEN_TCG_L2_loadrb_pi(SHORTCODE)       SHORTCODE;
->> +#define fGEN_TCG_L2_loadrb_pi(SHORTCODE)       SHORTCODE
->>  #define fGEN_TCG_L2_loadruh_pr(SHORTCODE)      SHORTCODE
->> -#define fGEN_TCG_L2_loadruh_pi(SHORTCODE)      SHORTCODE;
->> +#define fGEN_TCG_L2_loadruh_pi(SHORTCODE)      SHORTCODE
->>  #define fGEN_TCG_L2_loadrh_pr(SHORTCODE)       SHORTCODE
->>  #define fGEN_TCG_L2_loadrh_pi(SHORTCODE)       SHORTCODE
->>  #define fGEN_TCG_L2_loadri_pr(SHORTCODE)       SHORTCODE
+>> diff --git a/target/hexagon/op_helper.c b/target/hexagon/op_helper.c
+>> index 9f19007..7361a07 100644
+>> --- a/target/hexagon/op_helper.c
+>> +++ b/target/hexagon/op_helper.c
+>> @@ -297,7 +297,7 @@ int32_t HELPER(fcircadd)(int32_t RxV, int32_t offset, int32_t M, int32_t CS)
+>>  }
+>>  
+>>  /*
+>> - * Hexagon FP operations return ~0 insteat of NaN
+>> + * Hexagon FP operations return ~0 instead of NaN
+>>   * The hex_check_sfnan/hex_check_dfnan functions perform this check
+>>   */
+>>  static float32 hex_check_sfnan(float32 x)
 >>
 > 
 > 
 
-Applied to my trivial-patches branch.
+Applied to my trivial-patches branch (with the fixed S-o-b)
 
 Thanks,
 Laurent
