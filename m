@@ -1,46 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcXjq-0000Mi-KX
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 14:19:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53000)
+	id 1lcbMu-0007He-GY
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 18:12:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36364)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mail@nh2.me>)
- id 1lcXji-0000JK-Au; Fri, 30 Apr 2021 14:19:35 -0400
-Received: from mail.nh2.me ([116.202.188.98]:58451)
+ (Exim 4.90_1) (envelope-from <cennedee@protonmail.com>)
+ id 1lcamt-0007jj-OH; Fri, 30 Apr 2021 17:35:03 -0400
+Received: from mail-40137.protonmail.ch ([185.70.40.137]:58355)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mail@nh2.me>)
- id 1lcXjd-0008Lz-0C; Fri, 30 Apr 2021 14:19:33 -0400
-Subject: Re: [PATCH] net/slirp: Fix incorrect permissions on samba >= 2.0.5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=nh2.me; s=mail;
- t=1619806763; bh=LulrvU14HVCiKrjE4s0AH/ldm5wtr8Ww1U++dtPzdtc=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To;
- b=jBnKKMKNk4fN6Q4yZjgk0Msowz+s//LsF41p4VEn3V+0ahhaVcoEh3+GQm0lJ61I1
- 9q3tRq5eM8JXtf/iHy+Ouw6ruh5vl2T+ftLqz5E9gxyBIzJv4vfziUoWuai3zXlNej
- NMOzKRvZD8TnUYhFJhuk5xuIXyaKgVzIcYEEs/W2ljrDLBGFUhx+vMQBmTeEkl+VqR
- EMoltsSCBFhmkwxLGQVmw7Q5vQcjvstFKk5Unpp/wOm1rO1HlgJqx2PPI9CHwD+MIr
- ZQDzo3A0IgALj9oWUhk4SRztGAm9xOB7BTCo/jhZqSxJSFZQpUdXHW+Y3QIvnBAJRa
- XGBS9AMjXAwGw==
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- qemu-stable <qemu-stable@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <c2b98872-4649-c291-bfb2-0fd5b3d40ac4@nh2.me>
- <CAFEAcA-TxOys5d=SAqwqU749j3-UoBf+WsWpMYZW_35w1r2ypQ@mail.gmail.com>
-From: =?UTF-8?Q?Niklas_Hamb=c3=bcchen?= <mail@nh2.me>
-Message-ID: <55c9d253-8f4c-cd06-77b4-fbbb26cda619@nh2.me>
-Date: Fri, 30 Apr 2021 20:19:21 +0200
+ (Exim 4.90_1) (envelope-from <cennedee@protonmail.com>)
+ id 1lcamq-0000m2-LE; Fri, 30 Apr 2021 17:35:03 -0400
+Date: Fri, 30 Apr 2021 21:34:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+ s=protonmail; t=1619818490;
+ bh=/UTzgRglq2koKH0w/UaBTvK78WfrbfeSRziifYBYPzY=;
+ h=Date:To:From:Cc:Reply-To:Subject:From;
+ b=RvgEKSMg5kmpomKF9knhF0kId3h4w5waPyAPY+RHcBN5CIWHml75u2Npms+ACZLN7
+ QgTsViL4AO5sqt2dEAomx0A00Y6cAc8UlbJgMVdpRfPW2zKAmWW3QfDQE6S/wi64Ct
+ vJluYIyyrzWfshv6jWz7WprNPRnJa4rH0EYmqLXg=
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+From: cennedee <cennedee@protonmail.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Juan Quintela <quintela@redhat.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ "mreitz@redhat.com" <mreitz@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ John Snow <jsnow@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Reply-To: cennedee <cennedee@protonmail.com>
+Subject: [PATCH] Add missing coroutine_fn function signature to functions
+Message-ID: <8y2vfZuyQoZPUsO-9E_Vl_x5LG4S3-ewrNqvmbgOTUHPglYpU2A0-jjdIh78JySlGCqhHgfXXezC_HGTIbSdlsqcT9YzUKr0b_FKp1OLk00=@protonmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-TxOys5d=SAqwqU749j3-UoBf+WsWpMYZW_35w1r2ypQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=116.202.188.98; envelope-from=mail@nh2.me;
- helo=mail.nh2.me
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=185.70.40.137;
+ envelope-from=cennedee@protonmail.com; helo=mail-40137.protonmail.ch
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 30 Apr 2021 18:12:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -52,20 +54,102 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Apr 2021 18:19:37 -0000
+X-List-Received-Date: Fri, 30 Apr 2021 21:35:04 -0000
 
-On 4/30/21 7:29 PM, Peter Maydell wrote:
-> If we add 'force user=whoever' to the [global] section, is it then
-> unnecessary to also specify it in the [qemu] section ?
+From 447601c28d5ed0b1208a0560390f760e75ce5613 Mon Sep 17 00:00:00 2001
+From: Cenne Dee <cennedee+qemu-devel@protonmail.com>
+Date: Fri, 30 Apr 2021 15:52:28 -0400
+Subject: [PATCH] Add missing coroutine_fn function signature to functions
 
-I believe it is, yes.
+Patch adds the signature for all relevant functions ending with _co
+or those that use them.
 
-Source: https://www.samba.org/~ab/output/htmldocs/manpages-3/smb.conf.5.html#id2506183
+Signed-off-by: Cenne Dee <cennedee+qemu-devel@protonmail.com>
+---
+ block/block-gen.h             | 2 +-
+ migration/migration.c         | 2 +-
+ monitor/hmp.c                 | 2 +-
+ scsi/qemu-pr-helper.c         | 2 +-
+ tests/unit/test-thread-pool.c | 4 ++--
+ 5 files changed, 6 insertions(+), 6 deletions(-)
 
-> All S parameters can also be specified in the [global] section - in which case they will define the default behavior for all services.
+diff --git a/block/block-gen.h b/block/block-gen.h
+index f80cf48..4963372 100644
+--- a/block/block-gen.h
++++ b/block/block-gen.h
+@@ -36,7 +36,7 @@ typedef struct BdrvPollCo {
+     Coroutine *co; /* Keep pointer here for debugging */
+ } BdrvPollCo;
 
-And `force user (S)` in those docs is an "S parameter".
+-static inline int bdrv_poll_co(BdrvPollCo *s)
++static inline int coroutine_fn bdrv_poll_co(BdrvPollCo *s)
+ {
+     assert(!qemu_in_coroutine());
 
-My patch does not remove the one in [qemu] because I found it somewhat nice to have the settings for "who owns management dirs like 'locks'" and "who owns the files inside the [qemu] share" both be stated explicitly.
-It makes it a bit more obvious what's going on.
+diff --git a/migration/migration.c b/migration/migration.c
+index 8ca0341..1acade8 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -539,7 +539,7 @@ static void process_incoming_migration_bh(void *opaque)
+     migration_incoming_state_destroy();
+ }
+
+-static void process_incoming_migration_co(void *opaque)
++static void coroutine_fn process_incoming_migration_co(void *opaque)
+ {
+     MigrationIncomingState *mis =3D migration_incoming_get_current();
+     PostcopyState ps;
+diff --git a/monitor/hmp.c b/monitor/hmp.c
+index 6c0b33a..0a16d61 100644
+--- a/monitor/hmp.c
++++ b/monitor/hmp.c
+@@ -1068,7 +1068,7 @@ typedef struct HandleHmpCommandCo {
+     bool done;
+ } HandleHmpCommandCo;
+
+-static void handle_hmp_command_co(void *opaque)
++static void coroutine_fn handle_hmp_command_co(void *opaque)
+ {
+     HandleHmpCommandCo *data =3D opaque;
+     data->cmd->cmd(data->mon, data->qdict);
+diff --git a/scsi/qemu-pr-helper.c b/scsi/qemu-pr-helper.c
+index 7b9389b..7c1ed2a 100644
+--- a/scsi/qemu-pr-helper.c
++++ b/scsi/qemu-pr-helper.c
+@@ -175,7 +175,7 @@ static int do_sgio_worker(void *opaque)
+     return status;
+ }
+
+-static int do_sgio(int fd, const uint8_t *cdb, uint8_t *sense,
++static int coroutine_fn do_sgio(int fd, const uint8_t *cdb, uint8_t *sense=
+,
+                     uint8_t *buf, int *sz, int dir)
+ {
+     ThreadPool *pool =3D aio_get_thread_pool(qemu_get_aio_context());
+diff --git a/tests/unit/test-thread-pool.c b/tests/unit/test-thread-pool.c
+index 70dc631..21fc118 100644
+--- a/tests/unit/test-thread-pool.c
++++ b/tests/unit/test-thread-pool.c
+@@ -72,7 +72,7 @@ static void test_submit_aio(void)
+     g_assert_cmpint(data.ret, =3D=3D, 0);
+ }
+
+-static void co_test_cb(void *opaque)
++static void coroutine_fn co_test_cb(void *opaque)
+ {
+     WorkerTestData *data =3D opaque;
+
+@@ -90,7 +90,7 @@ static void co_test_cb(void *opaque)
+     /* The test continues in test_submit_co, after aio_poll... */
+ }
+
+-static void test_submit_co(void)
++static void coroutine_fn test_submit_co(void)
+ {
+     WorkerTestData data;
+     Coroutine *co =3D qemu_coroutine_create(co_test_cb, &data);
+--
+2.31.1
+
+
 
