@@ -1,61 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lcf3j-0005Ic-QP
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 22:08:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52118)
+	id 1lcfNx-0007cr-SC
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Apr 2021 22:29:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54064)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <katsuu@gmail.com>)
- id 1lcf3i-0005IT-Oe; Fri, 30 Apr 2021 22:08:42 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:33548)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <katsuu@gmail.com>)
- id 1lcf3h-0003Hf-8Y; Fri, 30 Apr 2021 22:08:42 -0400
-Received: by mail-ed1-x535.google.com with SMTP id g10so239066edb.0;
- Fri, 30 Apr 2021 19:08:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=IQ1HyKjMmBYKB1SMhz+mNCbW0/KH0qETd4EbXQvJS5I=;
- b=JWjHMH9q9yqTd15AWmu/1SlKYcLdu0OreaNUy9KpxwTZEoTUpiPX7djmfJ1ViTW2NY
- GfXXrX9iBVAXOmMOtoF9N2cMN86Kc1a38IbrsY7B5JpGhDTWEAwMN6OQ6H8MnHaV4ygO
- Hcu0kTdB8bNGtdt+3A4Xj1JmeOSaExu3idqdda/q2Pr19WxheWUoIVYXUNCDI+pce4C0
- 0ciI3zPI528QlV4bA/QgK0TjBl+tyRdFDC9UNMugmaqPKY9jJuBvVKXwjbmODadZQPT/
- lgT6DUal8FUq8/hhnHGgivRm9LGXNA3Hs18tshKf36lR3VbC2v5r6GfGP/xB4+TCfcb+
- Hvow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=IQ1HyKjMmBYKB1SMhz+mNCbW0/KH0qETd4EbXQvJS5I=;
- b=G7q6ourotkTLkvwdvDsYInN93yyyJ+u1yJ5J+WmziayxJEHoysHhMyIc01FFpgETo7
- U137ZC8k3yVgjH2My5A3hJ8J7P+m6rL3q8bbNBlG8ESfbqZ4vSFY4DiLx4ZMeSM30ioO
- fYnbByITZB0RJE9yoVuy6Y4VjtlD/rJf98XMSWtUDZbTodD58GmZ6M0lNK2TXs6Nioqa
- GkwRY/UIcgtpYUlulYfQQmhYutXRzQFZFBWR3UFO8Htrfq4XLpHpLuVGb+fGD9guozBd
- +fyMRurg//zWPjTSoT1GhHTAV0gRq8wTtjQXDdUvBeb77iCDPvXTxkpa7Y5cjkvLqBbn
- RxEA==
-X-Gm-Message-State: AOAM5318vOtwp16Au5eTO33wrF3KYmmr4fO6OmJ3E3R1PVV6viJXAnIf
- u1B8zI3e0p/56EK05BNTj/DoSW1IinB2qH+Y8Pc=
-X-Google-Smtp-Source: ABdhPJyh9wNXCKcm9JcnL/HHQURB/rhUtT4f0QtkbeOHprO6BrsoM8QYXMy4FIxegkwJJXVmZ/l1xLLCGhwUak0XsAk=
-X-Received: by 2002:a05:6402:142:: with SMTP id s2mr9308949edu.2.1619834918412; 
- Fri, 30 Apr 2021 19:08:38 -0700 (PDT)
-MIME-Version: 1.0
-References: <CA+pCdY09+OQfXq3YmRNuQE59ACOq7Py2q4hqOwgq4PnepCXhTA@mail.gmail.com>
- <2571b8c3-3e2b-f90e-6077-05232a52c711@redhat.com>
-In-Reply-To: <2571b8c3-3e2b-f90e-6077-05232a52c711@redhat.com>
-From: Katsuhiro Ueno <uenobk@gmail.com>
-Date: Sat, 1 May 2021 11:08:22 +0900
-Message-ID: <CANrJRqLyfijWWbrAwpQLrWuH1-hmraGnx2EQO4GaTH6D1TVxEQ@mail.gmail.com>
-Subject: Re: [PATCH] meson: Set implicit_include_directories to false
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+ (Exim 4.90_1) (envelope-from <robert.hu@linux.intel.com>)
+ id 1lcfNv-0007Xp-KU; Fri, 30 Apr 2021 22:29:35 -0400
+Received: from mga05.intel.com ([192.55.52.43]:54865)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <robert.hu@linux.intel.com>)
+ id 1lcfNt-0007MK-Ku; Fri, 30 Apr 2021 22:29:35 -0400
+IronPort-SDR: oq42WJHtT79GkCTDEhncbG66xnwmQKcHnX6xqVqzrb28RKoJxaTSxUZMqX4j9J+douAvac/dbh
+ HOly5lXLyZ/w==
+X-IronPort-AV: E=McAfee;i="6200,9189,9970"; a="282760717"
+X-IronPort-AV: E=Sophos;i="5.82,264,1613462400"; d="scan'208";a="282760717"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Apr 2021 19:29:30 -0700
+IronPort-SDR: WfZLHPNjRyIYa4f6z6sFHz7HSC4jUo7ccP+ga+IMGDlMGwBKZ94Od+Ndf3HijFR/RN2hwPoZr4
+ rzFsquFctPRA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,264,1613462400"; d="scan'208";a="620405252"
+Received: from sqa-gate.sh.intel.com (HELO robert-ivt.tsp.org)
+ ([10.239.48.212])
+ by fmsmga005.fm.intel.com with ESMTP; 30 Apr 2021 19:29:29 -0700
+Message-ID: <52be4506d86b899f185278373fc2e031000a7ab8.camel@linux.intel.com>
+Subject: Re: [Trivial] docs: More precisely describe memory-backend-*::id's
+ user
+From: Robert Hoo <robert.hu@linux.intel.com>
+To: mjt@tls.msk.ru, laurent@vivier.eu, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, robert.hu@intel.com
+Date: Sat, 01 May 2021 10:29:28 +0800
+In-Reply-To: <1619080922-83527-1-git-send-email-robert.hu@linux.intel.com>
+References: <1619080922-83527-1-git-send-email-robert.hu@linux.intel.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=katsuu@gmail.com; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Mailer: Evolution 3.28.5 (3.28.5-8.el7) 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Received-SPF: none client-ip=192.55.52.43;
+ envelope-from=robert.hu@linux.intel.com; helo=mga05.intel.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -68,48 +55,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 May 2021 02:08:43 -0000
+X-List-Received-Date: Sat, 01 May 2021 02:29:35 -0000
 
-2021-04-30 16:48 Paolo Bonzini <pbonzini@redhat.com>:
->
-> On 29/04/21 04:43, Katsuhiro Ueno wrote:
-> > Without this, libvixl cannot be compiled with macOS 11.3 SDK due to
-> > include file name conflict (usr/include/c++/v1/version conflicts with
-> > VERSION).
-> >
-> > Signed-off-by: Katsuhiro Ueno <uenobk@gmail.com>
-> > ---
-> >   meson.build | 1 +
-> >   1 file changed, 1 insertion(+)
-> >
-> > diff --git a/meson.build b/meson.build
-> > index c6f4b0cf5e..d007bff8c3 100644
-> > --- a/meson.build
-> > +++ b/meson.build
-> > @@ -2129,6 +2129,7 @@ common_all = common_ss.apply(config_all, strict: false)
-> >   common_all = static_library('common',
-> >                               build_by_default: false,
-> >                               sources: common_all.sources() + genh,
-> > +                            implicit_include_directories: false,
-> >                               dependencies: common_all.dependencies(),
-> >                               name_suffix: 'fa')
-> >
->
-> Can you include the difference in the include paths (the -I and -iquote
-> arguments)?  There are many cases in which we rely on having the current
-> source directory in the build path, for example all inclusions of "trace.h".
+Ping for review ...
+Thanks.
 
-This only removes -I.. (current (top-level) source directory) from the
-arguments. The meson manual says that it also removes -I. (current
-(top-level) build directory) but -I. is still in the arguments (I am
-not sure why). This does not change any -iquote argument.
+On Thu, 2021-04-22 at 16:42 +0800, Robert Hoo wrote:
+> 'id' of memory-backend-{file,ram} is not only for '-numa''s
+> reference, but
+> also other parameters like '-device nvdimm'.
+> More clearly call out this to avoid misinterpretation.
+> 
+> Signed-off-by: Robert Hoo <robert.hu@linux.intel.com>
+> ---
+>  qemu-options.hx | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index fd21002..635dc8a 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -4508,11 +4508,11 @@ SRST
+>          the guest RAM with huge pages.
+>  
+>          The ``id`` parameter is a unique ID that will be used to
+> -        reference this memory region when configuring the ``-numa``
+> -        argument.
+> +        reference this memory region in other parameters, e.g. ``-
+> numa``,
+> +        ``-device nvdimm``, etc.
+>  
+>          The ``size`` option provides the size of the memory region,
+> and
+> -        accepts common suffixes, eg ``500M``.
+> +        accepts common suffixes, e.g. ``500M``.
+>  
+>          The ``mem-path`` provides the path to either a shared memory
+> or
+>          huge page filesystem mount.
 
-As far as I know, this does not affect the inclusions of "trace.h"
-because each "trace.h" is in the same directory as the files that
-include it, and the top-level build directory, which has the "trace"
-directory containing generated "trace-*.h" files, is still in the
-include path.
-
---
-Katsuhiro Ueno
 
