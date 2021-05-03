@@ -1,44 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ldU4L-0003JO-J4
-	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54706)
+	id 1ldU4Q-0003LC-RM
+	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54724)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4H-0003GS-4S; Mon, 03 May 2021 04:36:41 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:32905)
+ id 1ldU4J-0003IE-TB; Mon, 03 May 2021 04:36:43 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:58577)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4D-0000hP-Mb; Mon, 03 May 2021 04:36:40 -0400
+ id 1ldU4D-0000hu-NF; Mon, 03 May 2021 04:36:43 -0400
 Received: from quad ([82.142.20.222]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MCbVD-1llQIH0IBn-009jhC; Mon, 03
- May 2021 10:36:30 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1M4alK-1lbpNG15nS-001jTL; Mon, 03
+ May 2021 10:36:32 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, Serge Guelton <sguelton@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 05/23] Fix typo in CFI build documentation
-Date: Mon,  3 May 2021 10:36:05 +0200
-Message-Id: <20210503083623.139700-6-laurent@vivier.eu>
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 08/23] hw/display/qxl: Constify VMStateDescription
+Date: Mon,  3 May 2021 10:36:08 +0200
+Message-Id: <20210503083623.139700-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
 References: <20210503083623.139700-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:MhKl9xDxiVNjdZediBurNQrwtJLpk3QPi0++Cm6B7KozdVuMJn/
- iGnZ7bCzOE1WpHUTKrG68hm5Ukyu0peQ2ZuMw+RHzKNU8RNSmIlxNFE0IctqxP4z2WZhfrV
- 9+U1TXXljxoK883MwvjmZ67gIB9yThpROlRecuwHcItHvkRSocAxRKrlbGagO7isZEvXa9M
- 83JZ47/oGnQokcRei0dPQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lCfRp8/mxWc=:W0mM4EZxR5SNTiNYBtV9gB
- TlAVZBtA0dLDYIgZzPX4xx6u8vvEdAN4QBRi9ynqjBYYfrHn70pTa1L8YqUBO1xlFXcbtI/TE
- uNNzlXvnSPsVwQzXId/6cBknPU8NONGD9YqHHJTQj8EApFLzxs77wCOix/XEmrfK7mPo796V6
- 4A4hhUugxZl+g2utaskf9Y7PquojURXA/Vq+6Dd2yry6rKMylGmUp0S5jvgl3Ox/xGmpWGU0J
- XK2CAvXjzcQBA9Wpf5CiS2SdNgiOQ3Pg04cXwe5ZYQUfy0CYVmLvRf2ZaYxUPY+AEsJ8v9s/R
- 98m30v5qJU3OMwFH0cM+K9zojIXemaQpB/onCOg2Un1dH3jKKjtbn4PklG/OX/Y/jbznVBA3F
- Md97mQb4jHfXmQLG5YfS1w7LzZakC6xKmoB8TZEC3/qBGbqnBpPgZgsy+OjlGo31X7AKMQCuW
- x0YYwAphBlofGmIl3iMF+1oOvXYI0zkaxBur3v/zVTV8qZK0SHqsaiQKOV9vzA/VVR7mfk8dd
- pMEpWlaf0GppXhA/FqgNXA=
+X-Provags-ID: V03:K1:3SNDRugjWWZ8THMSzwhF+K6Ngpfa9XU1MtrJRIDhbXT1+1m99fu
+ wwwX/QJ9NBIoDBOMjMGPwYJWhzt4g671ozfml6x0H/12hQ4H2YrZMaxH30TQ6dMFqHhkg+n
+ Y6U4W9Mpz+5S8BcM1VIt1pzEZ8ls/J4CoMtTz27vfHHhDnDKMbrnZ5kI6dBvlSML3srGPrB
+ 9xvXv8+qlkowx6xTXq2ww==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9nDD3REuhOM=:tkgIqfyzZHxTZwTZaguQpZ
+ /1EJMAOMQbYKGF8It97VF54adEZp/9LNuXZoA3b+HiohaM0rBMLAuHF9ZB/5R7i5lfhY9NY12
+ Nzbrif+DrcdwV3j3vgf8+5jQPsk+a+XvxvWtvfK+ouxqE7UzsFTl49cbYNy6k8o5yIFgROa+d
+ 49l/H8uBoJfSImSFARPiBD9V38HtUKIOqUZlqHWF1HS2a7YpbQV8KfswZDmGnF/icFwq8t4AY
+ y/AoLS2PIe74C9RMH1zaY1FH74GFfM2AUr9sr2f4YJJIMtTXSha+6j02YJMxMNM4Mh9Z6XWtU
+ JTlNPbHPdmAA23WywNU6RHD7QFh2QIAdu3SJlerjvMjuLGVQMuZautqBoIcNNZUwPMjYeN0kI
+ sWmwKu+WM4zSeJ+t2EJ8wGSHhzTGmEPwIFuXICeMl0/JhRlTt3M3o7rKCDf8KV5NEn5X59aMg
+ zHVkCJn5BRMOEU6UHz950s3LLCvtSrBAF99t+rbmvgDBPOo9wGZrA/40oHv1wFh5Nlx8FbFL/
+ qeW0eBgWIPPVtizvpK2lKI=
 Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -59,40 +60,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 May 2021 08:36:41 -0000
+X-List-Received-Date: Mon, 03 May 2021 08:36:44 -0000
 
-From: Serge Guelton <sguelton@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Signed-off-by: Serge Guelton <sguelton@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20210430150745.GA1401713@sguelton.remote.csb>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20210313171150.2122409-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/devel/control-flow-integrity.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/display/qxl.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/control-flow-integrity.rst
-index d89d70733d88..e6b73a4fe1a5 100644
---- a/docs/devel/control-flow-integrity.rst
-+++ b/docs/devel/control-flow-integrity.rst
-@@ -39,7 +39,7 @@ later).
- Given the use of LTO, a version of AR that supports LLVM IR is required.
- The easies way of doing this is by selecting the AR provided by LLVM::
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index 93907e82a332..2ba75637ec30 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -2384,7 +2384,7 @@ static bool qxl_monitors_config_needed(void *opaque)
+ }
  
-- AR=llvm-ar-9 CC=clang-9 CXX=lang++-9 /path/to/configure --enable-cfi
-+ AR=llvm-ar-9 CC=clang-9 CXX=clang++-9 /path/to/configure --enable-cfi
  
- CFI is enabled on every binary produced.
+-static VMStateDescription qxl_memslot = {
++static const VMStateDescription qxl_memslot = {
+     .name               = "qxl-memslot",
+     .version_id         = QXL_SAVE_VERSION,
+     .minimum_version_id = QXL_SAVE_VERSION,
+@@ -2396,7 +2396,7 @@ static VMStateDescription qxl_memslot = {
+     }
+ };
  
-@@ -131,7 +131,7 @@ lld with version 11+.
- In other words, to compile with fuzzing and CFI, clang 11+ is required, and
- lld needs to be used as a linker::
+-static VMStateDescription qxl_surface = {
++static const VMStateDescription qxl_surface = {
+     .name               = "qxl-surface",
+     .version_id         = QXL_SAVE_VERSION,
+     .minimum_version_id = QXL_SAVE_VERSION,
+@@ -2414,7 +2414,7 @@ static VMStateDescription qxl_surface = {
+     }
+ };
  
-- AR=llvm-ar-11 CC=clang-11 CXX=lang++-11 /path/to/configure --enable-cfi \
-+ AR=llvm-ar-11 CC=clang-11 CXX=clang++-11 /path/to/configure --enable-cfi \
-                            -enable-fuzzing --extra-ldflags="-fuse-ld=lld"
+-static VMStateDescription qxl_vmstate_monitors_config = {
++static const VMStateDescription qxl_vmstate_monitors_config = {
+     .name               = "qxl/monitors-config",
+     .version_id         = 1,
+     .minimum_version_id = 1,
+@@ -2425,7 +2425,7 @@ static VMStateDescription qxl_vmstate_monitors_config = {
+     },
+ };
  
- and then, compile the fuzzers as usual.
+-static VMStateDescription qxl_vmstate = {
++static const VMStateDescription qxl_vmstate = {
+     .name               = "qxl",
+     .version_id         = QXL_SAVE_VERSION,
+     .minimum_version_id = QXL_SAVE_VERSION,
 -- 
 2.31.1
 
