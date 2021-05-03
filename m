@@ -1,44 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ldU4K-0003J6-Ji
-	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54668)
+	id 1ldU4L-0003JO-J4
+	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4G-0003GE-2A; Mon, 03 May 2021 04:36:41 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:57753)
+ id 1ldU4H-0003GS-4S; Mon, 03 May 2021 04:36:41 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:32905)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4D-0000hr-KV; Mon, 03 May 2021 04:36:39 -0400
+ id 1ldU4D-0000hP-Mb; Mon, 03 May 2021 04:36:40 -0400
 Received: from quad ([82.142.20.222]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MnaTt-1lBXJP3umz-00jcwe; Mon, 03
- May 2021 10:36:27 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MCbVD-1llQIH0IBn-009jhC; Mon, 03
+ May 2021 10:36:30 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, David Edmondson <david.edmondson@oracle.com>,
+ qemu-trivial@nongnu.org, Serge Guelton <sguelton@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 01/23] accel: kvm: clarify that extra exit data is hexadecimal
-Date: Mon,  3 May 2021 10:36:01 +0200
-Message-Id: <20210503083623.139700-2-laurent@vivier.eu>
+Subject: [PULL 05/23] Fix typo in CFI build documentation
+Date: Mon,  3 May 2021 10:36:05 +0200
+Message-Id: <20210503083623.139700-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
 References: <20210503083623.139700-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:k19JPG9/7Vvu6zVm2DiO1/UGS80Nfw8rq7UgJ8HZrt+dKrp/TXV
- dl9Vef0eaictX31ZTa1zeuG/TX5bUkRecbWdrYkXhATgrIkPrDKrGFb30ff/tIvCiMTenOV
- wucQ2dm1huY6ey797gxgRIqzE7sJxsDf9uNPnr4rnnsd+LnuJHzI3/BFenSdZAjVmpjf8SU
- VNe9hgOz1bB2q2iqaqwsA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BXo17AdKBVo=:o1MnQEH3qc0VbyHNDpceKK
- rCtPesyvtQ6rivurQSWWryyEY0ZXYDY4vttWQm8vlPQjTliNQjE8SsCKQIek6Q5nYBkWK6dYx
- 2gMnn7USUuceUcDFLiQbP6gKjHjglA1pOGAQuROkFHcAJd86ed4VVFPSdSBzo3LwjgEAHzA2E
- Vq6/zvI/D4/2oISKXP+C3rbR+fVxS0O289UrbF0SGVbxm9TDl1jTpalDYOeqgTPKrN8mIZCCx
- fvsrbA4sJSg9lMbn6kbMN5LBbctlju63AwyaAqgKKNxgRSZh8F3MGeuwCG5I177TIhxbw1xmH
- Pen0VYQhjruP6KT0D0zfEMVw+wWZN52om2M4ijqZ44fgc9klJ8C3ykVXyRWGedlPKfXPcC6XR
- /l471+zf5GbR4riLneL4/IRfGLrOr3ciMMmjb0OJ2XN3B8TfmbKKo8nWdqUoa0+IauZSj0T0o
- 6kuzqDkY7RXl/it/O0Qpb/7NbPQF2ILUmyz1YDwB1h5tW34iWdQYR2GoWYEPPaEw/DpxSKDnQ
- EjmlJ/XHOTTvIi3XNjtrQU=
+X-Provags-ID: V03:K1:MhKl9xDxiVNjdZediBurNQrwtJLpk3QPi0++Cm6B7KozdVuMJn/
+ iGnZ7bCzOE1WpHUTKrG68hm5Ukyu0peQ2ZuMw+RHzKNU8RNSmIlxNFE0IctqxP4z2WZhfrV
+ 9+U1TXXljxoK883MwvjmZ67gIB9yThpROlRecuwHcItHvkRSocAxRKrlbGagO7isZEvXa9M
+ 83JZ47/oGnQokcRei0dPQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lCfRp8/mxWc=:W0mM4EZxR5SNTiNYBtV9gB
+ TlAVZBtA0dLDYIgZzPX4xx6u8vvEdAN4QBRi9ynqjBYYfrHn70pTa1L8YqUBO1xlFXcbtI/TE
+ uNNzlXvnSPsVwQzXId/6cBknPU8NONGD9YqHHJTQj8EApFLzxs77wCOix/XEmrfK7mPo796V6
+ 4A4hhUugxZl+g2utaskf9Y7PquojURXA/Vq+6Dd2yry6rKMylGmUp0S5jvgl3Ox/xGmpWGU0J
+ XK2CAvXjzcQBA9Wpf5CiS2SdNgiOQ3Pg04cXwe5ZYQUfy0CYVmLvRf2ZaYxUPY+AEsJ8v9s/R
+ 98m30v5qJU3OMwFH0cM+K9zojIXemaQpB/onCOg2Un1dH3jKKjtbn4PklG/OX/Y/jbznVBA3F
+ Md97mQb4jHfXmQLG5YfS1w7LzZakC6xKmoB8TZEC3/qBGbqnBpPgZgsy+OjlGo31X7AKMQCuW
+ x0YYwAphBlofGmIl3iMF+1oOvXYI0zkaxBur3v/zVTV8qZK0SHqsaiQKOV9vzA/VVR7mfk8dd
+ pMEpWlaf0GppXhA/FqgNXA=
 Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -61,34 +61,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 03 May 2021 08:36:41 -0000
 
-From: David Edmondson <david.edmondson@oracle.com>
+From: Serge Guelton <sguelton@redhat.com>
 
-When dumping the extra exit data provided by KVM, make it clear that
-the data is hexadecimal.
-
-At the same time, zero-pad the output.
-
-Signed-off-by: David Edmondson <david.edmondson@oracle.com>
+Signed-off-by: Serge Guelton <sguelton@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20210428142431.266879-1-david.edmondson@oracle.com>
+Message-Id: <20210430150745.GA1401713@sguelton.remote.csb>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- accel/kvm/kvm-all.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/devel/control-flow-integrity.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index b6d9f92f1513..93d7cbfeaf88 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2269,7 +2269,7 @@ static int kvm_handle_internal_error(CPUState *cpu, struct kvm_run *run)
-         int i;
+diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/control-flow-integrity.rst
+index d89d70733d88..e6b73a4fe1a5 100644
+--- a/docs/devel/control-flow-integrity.rst
++++ b/docs/devel/control-flow-integrity.rst
+@@ -39,7 +39,7 @@ later).
+ Given the use of LTO, a version of AR that supports LLVM IR is required.
+ The easies way of doing this is by selecting the AR provided by LLVM::
  
-         for (i = 0; i < run->internal.ndata; ++i) {
--            fprintf(stderr, "extra data[%d]: %"PRIx64"\n",
-+            fprintf(stderr, "extra data[%d]: 0x%016"PRIx64"\n",
-                     i, (uint64_t)run->internal.data[i]);
-         }
-     }
+- AR=llvm-ar-9 CC=clang-9 CXX=lang++-9 /path/to/configure --enable-cfi
++ AR=llvm-ar-9 CC=clang-9 CXX=clang++-9 /path/to/configure --enable-cfi
+ 
+ CFI is enabled on every binary produced.
+ 
+@@ -131,7 +131,7 @@ lld with version 11+.
+ In other words, to compile with fuzzing and CFI, clang 11+ is required, and
+ lld needs to be used as a linker::
+ 
+- AR=llvm-ar-11 CC=clang-11 CXX=lang++-11 /path/to/configure --enable-cfi \
++ AR=llvm-ar-11 CC=clang-11 CXX=clang++-11 /path/to/configure --enable-cfi \
+                            -enable-fuzzing --extra-ldflags="-fuse-ld=lld"
+ 
+ and then, compile the fuzzers as usual.
 -- 
 2.31.1
 
