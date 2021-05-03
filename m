@@ -1,50 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ldU50-0003bJ-J6
-	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:37:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54842)
+	id 1ldU5A-0003lB-5p
+	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:37:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54916)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4T-0003OU-LC; Mon, 03 May 2021 04:36:53 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:52119)
+ id 1ldU4f-0003Vp-57; Mon, 03 May 2021 04:37:07 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:47383)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4I-0000l4-1u; Mon, 03 May 2021 04:36:53 -0400
+ id 1ldU4J-0000l9-P0; Mon, 03 May 2021 04:37:01 -0400
 Received: from quad ([82.142.20.222]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1N6sSV-1lUqLc3N79-018JTS; Mon, 03
- May 2021 10:36:36 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MLRDv-1luKGJ3c7H-00IQqI; Mon, 03
+ May 2021 10:36:33 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 13/23] hw: Do not include hw/irq.h if it is not necessary
-Date: Mon,  3 May 2021 10:36:13 +0200
-Message-Id: <20210503083623.139700-14-laurent@vivier.eu>
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 09/23] hw/usb: Constify VMStateDescription
+Date: Mon,  3 May 2021 10:36:09 +0200
+Message-Id: <20210503083623.139700-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
 References: <20210503083623.139700-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:rlrBx81wL3KTeKUP6/g1BLkp9fv+MPODuBpCnPbR9Axgoiqg//N
- dESAeoTGqGC/MfFVwX7Bcfa5iiQ/4tHZA1/rUwUP5LO/gjgEj1ezDt3+2z4q5WWjqRAJVKv
- qBh9nO7E2uACVod6CEfMTNwFfy6S5FpA/9dol1sy3vg93rtaiqIqza+zKtAZ8nt0yZY3mQ+
- sJMhQYAU4bdbhRYZL0HEA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BCoM4Nl+kAY=:3HkADyjtVEzh4nFgihdndl
- gdQNa7hHr3Le2YDUgNw1b6VGcQ0Mlchk9pBbVN4Nj17b51Jzgz2goA6D00TB/YK/yChf/57Q3
- hOkl8uk8FJ1CB6PvibVMFOvnQVP3oTt3fY/QL1TkPcHJtZCHTjk980nBuVqezBjKaKk/dx2VJ
- LG6UDKiQm16yaBm6XzbVUWAbaxTON4GLaHKOEZD4ryCSGfgvGnIyHrrlMU8BnLc4pWKZj+yZR
- W3Qdy3bge0YOzAI5lZhuQQbRzL1+1wcnVNmmFT3wTfW7PS5a7FY4B+8OXv2AP2PMTXD7AXtsM
- ZhbMMA9c4DhyIGrRVqD7Fyz9ANsxXrZ/8XHf8CnbFT6B+o9I2NdyTKvWG6HvbURuQA0ykDsZ3
- hzI1IZ7GJwDwqRqyTzq+p/QhqrubcCHiPyVeCrhJ/4gf7sB13dgURvrT1D2fJljVc+nAb67Eh
- joMlsuF+dZue3C3YAKzJCBqVAOGjjQsNdr6wLt6T1+YhjB4yjEXbhJCWH3bqSpFjijiLXeFlj
- cMZyXkX2G9Xlfg2iXwWzgo=
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:Qe6mKLxyZmJid49+QJ4W5Vp7KrgM1+M2fbjFyt2c2M2/VqqJc3B
+ 3bzOXIMYgSVQ+5j6l+4ZcQ/RxA3+g8Ke3BCGbz9YzhHa9I9Ef3x+Kc4h7ymL3SvgW9iZhIO
+ ly6pp738jedYqauZYqPockRbt+Jr08sidtJVDDN8UrGv3R7hN7P3WrORBl6/MGfIJOQbQK9
+ +gFZNEsOH95eR79uvVQUg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Ihz6sBSf2mQ=:inu45iwHoq8cIkYdA8q5ba
+ zzLX5/WAO9zbq9t4FwvpkZk7THAdExi+ZdkcEuXOjhvnx5MQ5VQoO+qEqXA4HiYb8r8nKxex4
+ sAv8OUC0G2oodgeI6UCY/F3MJOqUTNgi0I6rqu7W7mOhY0FMTdF0j2lYWZ6Ox2IaqjFuNoOGX
+ P8T4JqDG39B1lZOBfFlxg0dhCxMocnqSZdbzYytr6d9aNVEkA+m6zZxgncHl2DLPCPfijANJ4
+ juCk5M9aMt3FtPm0EsCR2EMnX7R2wCQxzAHqyiltIJCBd10ZEx3qcmyjiAwnqSp+2KUtoN1y0
+ 6wVvf9JNtHjstFt8yFh/6jI74UFKdLXZ/sinTDc3IwR9pIeYkVPyCmcVLp/cCefZhQ2/m/Cx4
+ luKSC8buatZFt05pjAvQj1VMucem03Xm03ZnZ3R5sZLjlXG9sTQiOULx0aV+PtNfxh2PgtYcd
+ IrXl4YSZQCxllWiMgi+mhuKrOGZgrZpBrxG1VDcDHheJIrU476wcprpSnQus4jzyGTAQdlqwt
+ 878TnQ6xY1Nw7MWpl3UxJU=
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -58,176 +60,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 May 2021 08:36:56 -0000
+X-List-Received-Date: Mon, 03 May 2021 08:37:12 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Many files include hw/irq.h without needing it. Remove the superfluous
-include statements.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20210327050236.2232347-1-thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20210313171150.2122409-4-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/arm/msf2-soc.c           | 1 -
- hw/i386/kvm/ioapic.c        | 1 -
- hw/i386/xen/xen_platform.c  | 1 -
- hw/m68k/q800.c              | 1 -
- hw/m68k/virt.c              | 1 -
- hw/misc/led.c               | 1 -
- hw/misc/virt_ctrl.c         | 1 -
- hw/ppc/prep.c               | 1 -
- hw/riscv/microchip_pfsoc.c  | 1 -
- hw/sd/cadence_sdhci.c       | 1 -
- hw/timer/sse-counter.c      | 1 -
- hw/usb/xlnx-usb-subsystem.c | 1 -
- 12 files changed, 12 deletions(-)
+ hw/usb/ccid-card-passthru.c   | 2 +-
+ hw/usb/dev-smartcard-reader.c | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index d2c29e82d13a..5cfe7caf8349 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -27,7 +27,6 @@
- #include "qapi/error.h"
- #include "exec/address-spaces.h"
- #include "hw/char/serial.h"
--#include "hw/irq.h"
- #include "hw/arm/msf2-soc.h"
- #include "hw/misc/unimp.h"
- #include "sysemu/sysemu.h"
-diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
-index dfc3c9800574..71a563181e03 100644
---- a/hw/i386/kvm/ioapic.c
-+++ b/hw/i386/kvm/ioapic.c
-@@ -13,7 +13,6 @@
- #include "qemu/osdep.h"
- #include "monitor/monitor.h"
- #include "hw/i386/x86.h"
--#include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "hw/i386/ioapic_internal.h"
- #include "hw/i386/apic_internal.h"
-diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
-index 01ae1fb16184..bf4f20e92b6f 100644
---- a/hw/i386/xen/xen_platform.c
-+++ b/hw/i386/xen/xen_platform.c
-@@ -27,7 +27,6 @@
- #include "qapi/error.h"
- #include "hw/ide.h"
- #include "hw/pci/pci.h"
--#include "hw/irq.h"
- #include "hw/xen/xen_common.h"
- #include "migration/vmstate.h"
- #include "hw/xen/xen-legacy-backend.h"
-diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
-index 1c7f7aa07f07..d1ab1ff77d5c 100644
---- a/hw/m68k/q800.c
-+++ b/hw/m68k/q800.c
-@@ -27,7 +27,6 @@
- #include "sysemu/sysemu.h"
- #include "cpu.h"
- #include "hw/boards.h"
--#include "hw/irq.h"
- #include "hw/or-irq.h"
- #include "elf.h"
- #include "hw/loader.h"
-diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index 18e6f11041da..9469f82800c9 100644
---- a/hw/m68k/virt.c
-+++ b/hw/m68k/virt.c
-@@ -13,7 +13,6 @@
- #include "sysemu/sysemu.h"
- #include "cpu.h"
- #include "hw/boards.h"
--#include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "elf.h"
- #include "hw/loader.h"
-diff --git a/hw/misc/led.c b/hw/misc/led.c
-index f552b8b6483c..f6d6d68bce59 100644
---- a/hw/misc/led.c
-+++ b/hw/misc/led.c
-@@ -10,7 +10,6 @@
- #include "migration/vmstate.h"
- #include "hw/qdev-properties.h"
- #include "hw/misc/led.h"
--#include "hw/irq.h"
- #include "trace.h"
+diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
+index c1a90fcc7a52..7212d0d7fb5e 100644
+--- a/hw/usb/ccid-card-passthru.c
++++ b/hw/usb/ccid-card-passthru.c
+@@ -374,7 +374,7 @@ static void passthru_realize(CCIDCardState *base, Error **errp)
+     card->atr_length = sizeof(DEFAULT_ATR);
+ }
  
- #define LED_INTENSITY_PERCENT_MAX   100
-diff --git a/hw/misc/virt_ctrl.c b/hw/misc/virt_ctrl.c
-index 2ea01bd7a1f0..3552d7a09abd 100644
---- a/hw/misc/virt_ctrl.c
-+++ b/hw/misc/virt_ctrl.c
-@@ -5,7 +5,6 @@
-  */
+-static VMStateDescription passthru_vmstate = {
++static const VMStateDescription passthru_vmstate = {
+     .name = "ccid-card-passthru",
+     .version_id = 1,
+     .minimum_version_id = 1,
+diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
+index bc3d94092a23..f7043075be58 100644
+--- a/hw/usb/dev-smartcard-reader.c
++++ b/hw/usb/dev-smartcard-reader.c
+@@ -1365,7 +1365,7 @@ static int ccid_pre_save(void *opaque)
+     return 0;
+ }
  
- #include "qemu/osdep.h"
--#include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index f1b1efdcef9f..af4ccb9f431f 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -38,7 +38,6 @@
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "qemu/log.h"
--#include "hw/irq.h"
- #include "hw/loader.h"
- #include "hw/rtc/mc146818rtc.h"
- #include "hw/isa/pc87312.h"
-diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
-index c4146b7a6b38..01537b30ebc9 100644
---- a/hw/riscv/microchip_pfsoc.c
-+++ b/hw/riscv/microchip_pfsoc.c
-@@ -41,7 +41,6 @@
- #include "qemu/cutils.h"
- #include "qapi/error.h"
- #include "hw/boards.h"
--#include "hw/irq.h"
- #include "hw/loader.h"
- #include "hw/sysbus.h"
- #include "chardev/char.h"
-diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
-index 0b371c843d8e..c89538b491f7 100644
---- a/hw/sd/cadence_sdhci.c
-+++ b/hw/sd/cadence_sdhci.c
-@@ -26,7 +26,6 @@
- #include "qemu/log.h"
- #include "qapi/error.h"
- #include "migration/vmstate.h"
--#include "hw/irq.h"
- #include "hw/sd/cadence_sdhci.h"
- #include "sdhci-internal.h"
+-static VMStateDescription bulk_in_vmstate = {
++static const VMStateDescription bulk_in_vmstate = {
+     .name = "CCID BulkIn state",
+     .version_id = 1,
+     .minimum_version_id = 1,
+@@ -1377,7 +1377,7 @@ static VMStateDescription bulk_in_vmstate = {
+     }
+ };
  
-diff --git a/hw/timer/sse-counter.c b/hw/timer/sse-counter.c
-index 0384051f1511..16c0e8ad15db 100644
---- a/hw/timer/sse-counter.c
-+++ b/hw/timer/sse-counter.c
-@@ -33,7 +33,6 @@
- #include "trace.h"
- #include "hw/timer/sse-counter.h"
- #include "hw/sysbus.h"
--#include "hw/irq.h"
- #include "hw/registerfields.h"
- #include "hw/clock.h"
- #include "hw/qdev-clock.h"
-diff --git a/hw/usb/xlnx-usb-subsystem.c b/hw/usb/xlnx-usb-subsystem.c
-index 568257370cb0..c760c3058a42 100644
---- a/hw/usb/xlnx-usb-subsystem.c
-+++ b/hw/usb/xlnx-usb-subsystem.c
-@@ -24,7 +24,6 @@
+-static VMStateDescription answer_vmstate = {
++static const VMStateDescription answer_vmstate = {
+     .name = "CCID Answer state",
+     .version_id = 1,
+     .minimum_version_id = 1,
+@@ -1388,7 +1388,7 @@ static VMStateDescription answer_vmstate = {
+     }
+ };
  
- #include "qemu/osdep.h"
- #include "hw/sysbus.h"
--#include "hw/irq.h"
- #include "hw/register.h"
- #include "qemu/bitops.h"
- #include "qemu/log.h"
+-static VMStateDescription usb_device_vmstate = {
++static const VMStateDescription usb_device_vmstate = {
+     .name = "usb_device",
+     .version_id = 1,
+     .minimum_version_id = 1,
+@@ -1400,7 +1400,7 @@ static VMStateDescription usb_device_vmstate = {
+     }
+ };
+ 
+-static VMStateDescription ccid_vmstate = {
++static const VMStateDescription ccid_vmstate = {
+     .name = "usb-ccid",
+     .version_id = 1,
+     .minimum_version_id = 1,
 -- 
 2.31.1
 
