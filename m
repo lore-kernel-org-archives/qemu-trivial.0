@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ldU5I-0003s3-JL
-	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:37:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54974)
+	id 1ldU5J-0003tp-8S
+	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:37:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54982)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4m-0003X4-Rr; Mon, 03 May 2021 04:37:13 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:41957)
+ id 1ldU4m-0003X7-Sf; Mon, 03 May 2021 04:37:13 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:52045)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4R-0000q7-4Q; Mon, 03 May 2021 04:37:07 -0400
+ id 1ldU4P-0000pR-WA; Mon, 03 May 2021 04:37:10 -0400
 Received: from quad ([82.142.20.222]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MORVA-1lvgdZ1yEI-00PvCJ; Mon, 03
- May 2021 10:36:43 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MadGG-1l1PE63ApW-00c6SJ; Mon, 03
+ May 2021 10:36:44 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, Gan Qixin <ganqixin@huawei.com>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PULL 19/23] mc146818rtc: put it into the 'misc' category
-Date: Mon,  3 May 2021 10:36:19 +0200
-Message-Id: <20210503083623.139700-20-laurent@vivier.eu>
+ qemu-trivial@nongnu.org,
+ Silvano Cirujano Cuesta <silvano.cirujano-cuesta@siemens.com>
+Subject: [PULL 21/23] scripts: fix generation update-binfmts templates
+Date: Mon,  3 May 2021 10:36:21 +0200
+Message-Id: <20210503083623.139700-22-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
 References: <20210503083623.139700-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:zhIPSCsIhPKYap5Pzy33dyqIaw7KS0ms6Jc6UpocJxhqkIfly4g
- gQs+CuNYlsXVHxB6wUuwKO5cFcyO9RtvV2WAX6lnUIIVphb3VDCg6FvoBK5VcvKUWZ0Dgrc
- vEx5E7/Hlq4zvWFa4a5o1acXftAh3Kkf+fKTacAUtYHC8UrK5bWlSBNuaEHNn1DEbfb4LKO
- HjoRgzKpVr7iygB8DHN7g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Ajyf4CgFvCI=:yZ7L7LCWQLwEB2XQ6oQiM8
- ieunG/7aX0Jl0RQxCLzlggH9lG4PhjoRe2rpooPFt8lFz/zBBWv+cw2kI4RpijAQcmrvCiZXE
- ZDDmqiPP6uNyPcwNGTaFvEvLFSuGdjyyXTgg0uOMsa5Pv6BkyZU3WnP6FKNYD5TETN9Dh4Ik/
- 6ZEBo6IyPcLdC2NTZFASDJIrPg1au7UgyVyyx+GpN2wdgrT9kfm/omrRlDk5nUbaXWKGSbCzF
- 1n5EdWBz+yBVk8sUBG1X+VzRV2PwJXyNWb6HLwNrFpEyojD840z/GkZRYN4oeakNZFte2JI3n
- FmaE2y5trxzGtHcT/AX1mZ6fZh3HubWtH5yz05hzfelPGzE76sXNMlYUypbxOWQTdniKSzY7J
- FX0yu7bc+yrANg3fe2uWan7n9O3kOCsa/XWNCRW5yiBcs/aMgXkMmQYYS/PBzpLiMcIUiH3pn
- wfzwRvmdMjDNDIS07s3tuDgOOB8ovSJgLRsPtZ6rVhGFgiPkFWRL2LVd1YeNPpexHGZaR2Q0/
- HmeuRARd7cc0qCJ0JH7Wc0=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:C9S02Azy/MpCQTQE12Fm3UlpmXSGJy22c0KOovYK3HFRrPJbKv1
+ wNROMVcRKmIEIW/QH5nXsWZD5Ma1Lt4lNlhWDpiFfwM7dY5Glvt9RMT5OYZzqm2d3PdvnL9
+ POgLZIjpz21ELN6k5AXlVmNlka1k8YkDmpkoaAAar1ZOkFMJ6DMZCLnPUTgE/f6uwUmbJ7l
+ Vw3UDVX0SIJrw6o7Mn0dQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:phpKFlqu1q4=:sIE7u90Vz2ZY8MPAmZtTnK
+ 0iUZH58db+gKwBQZ5NuE9mxoIj6I5IVZstF3Bt76ECgfOuRasIgT6y+nxCKxS/+7sDf8j6h3s
+ 4NvDmuOVQxzvfJ73l9Hn1AwyQQLLqFRWJrG7NcjFoa1P1IzxElyJ+969++IwX2XS1ICE2KL6O
+ 07d6ZwL6tgtxybpuaOI5ZjJNhFmJTM3aHUdYjAy5D1tY0rLjwx2TAbco5cSYVjb5PposfJ/38
+ wrOOlc+IBuw68W6GjT/WncUwouoQOtotQn7fZXXFNTTzLg/QRKLtj+rCAvtmHn/Lx6C//cRg7
+ jVXRMXfSqONddyyac7+DIGnQMuwx4qPk3eC4udCDVCKIjy0uI7Jw7H7tQEpNSsekXUYq85YvV
+ v5Hyo97PBQt+8pPn7F4Ied5PaG30k3cfKWKXcERw7z3AV/DfeXZ8sxbUdm2HoU7b30GZl9/BP
+ /AdH4XzKmTPgSBSf5tB/jSW6BeX/3VC2lk0qRYyDxpaFL6hqRIjgG+q0F+hdiuJL0mBAyZvqZ
+ xuE19/UUTyvfxdY4XJAILU=
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,31 +60,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 03 May 2021 08:37:16 -0000
 
-From: Gan Qixin <ganqixin@huawei.com>
+From: Silvano Cirujano Cuesta <silvano.cirujano-cuesta@siemens.com>
 
-The category of the mc146818rtc device is not set, put it into the 'misc'
-category.
+This patch fixes the update-binfmts templates being used in the script
+scripts/qemu-binfmt-conf.sh when the option --debian is used.
 
-Signed-off-by: Gan Qixin <ganqixin@huawei.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20201130083630.2520597-6-ganqixin@huawei.com>
+Fixed issues are:
+- Typo in flag 'credentials' (previously 'credential').
+- Missing flags 'preserve' and 'fix_binary'.
+
+Reference: https://manpages.debian.org/buster/binfmt-support/update-binfmts.8.en.html#FORMAT_FILES
+
+Signed-off-by: Silvano Cirujano Cuesta <silvano.cirujano-cuesta@siemens.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20210323123457.23747-1-silvano.cirujano-cuesta@siemens.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/rtc/mc146818rtc.c | 1 +
- 1 file changed, 1 insertion(+)
+ scripts/qemu-binfmt-conf.sh | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
-index 36a2dbf62f9c..3d2d3854e716 100644
---- a/hw/rtc/mc146818rtc.c
-+++ b/hw/rtc/mc146818rtc.c
-@@ -1039,6 +1039,7 @@ static void rtc_class_initfn(ObjectClass *klass, void *data)
-     dc->vmsd = &vmstate_rtc;
-     isa->build_aml = rtc_build_aml;
-     device_class_set_props(dc, mc146818rtc_properties);
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
+index 573b5dc6acd7..7de996d536ea 100755
+--- a/scripts/qemu-binfmt-conf.sh
++++ b/scripts/qemu-binfmt-conf.sh
+@@ -294,7 +294,9 @@ package qemu-$cpu
+ interpreter $qemu
+ magic $magic
+ mask $mask
+-credential $CREDENTIAL
++credentials $CREDENTIAL
++preserve $PRESERVE_ARG0
++fix_binary $PERSISTENT
+ EOF
  }
  
- static const TypeInfo mc146818rtc_info = {
 -- 
 2.31.1
 
