@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ldU4Q-0003LC-RM
-	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54724)
+	id 1ldU4R-0003M4-51
+	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4J-0003IE-TB; Mon, 03 May 2021 04:36:43 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:58577)
+ id 1ldU4J-0003Hi-OP; Mon, 03 May 2021 04:36:43 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:54749)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4D-0000hu-NF; Mon, 03 May 2021 04:36:43 -0400
+ id 1ldU4E-0000i7-If; Mon, 03 May 2021 04:36:43 -0400
 Received: from quad ([82.142.20.222]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M4alK-1lbpNG15nS-001jTL; Mon, 03
- May 2021 10:36:32 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1M7am5-1leITu49bZ-0084Ca; Mon, 03
+ May 2021 10:36:28 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Warner Losh <imp@bsdimp.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 08/23] hw/display/qxl: Constify VMStateDescription
-Date: Mon,  3 May 2021 10:36:08 +0200
-Message-Id: <20210503083623.139700-9-laurent@vivier.eu>
+Subject: [PULL 02/23] hw/arm/pxa2xx: Declare PCMCIA bus with Kconfig
+Date: Mon,  3 May 2021 10:36:02 +0200
+Message-Id: <20210503083623.139700-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
 References: <20210503083623.139700-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3SNDRugjWWZ8THMSzwhF+K6Ngpfa9XU1MtrJRIDhbXT1+1m99fu
- wwwX/QJ9NBIoDBOMjMGPwYJWhzt4g671ozfml6x0H/12hQ4H2YrZMaxH30TQ6dMFqHhkg+n
- Y6U4W9Mpz+5S8BcM1VIt1pzEZ8ls/J4CoMtTz27vfHHhDnDKMbrnZ5kI6dBvlSML3srGPrB
- 9xvXv8+qlkowx6xTXq2ww==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9nDD3REuhOM=:tkgIqfyzZHxTZwTZaguQpZ
- /1EJMAOMQbYKGF8It97VF54adEZp/9LNuXZoA3b+HiohaM0rBMLAuHF9ZB/5R7i5lfhY9NY12
- Nzbrif+DrcdwV3j3vgf8+5jQPsk+a+XvxvWtvfK+ouxqE7UzsFTl49cbYNy6k8o5yIFgROa+d
- 49l/H8uBoJfSImSFARPiBD9V38HtUKIOqUZlqHWF1HS2a7YpbQV8KfswZDmGnF/icFwq8t4AY
- y/AoLS2PIe74C9RMH1zaY1FH74GFfM2AUr9sr2f4YJJIMtTXSha+6j02YJMxMNM4Mh9Z6XWtU
- JTlNPbHPdmAA23WywNU6RHD7QFh2QIAdu3SJlerjvMjuLGVQMuZautqBoIcNNZUwPMjYeN0kI
- sWmwKu+WM4zSeJ+t2EJ8wGSHhzTGmEPwIFuXICeMl0/JhRlTt3M3o7rKCDf8KV5NEn5X59aMg
- zHVkCJn5BRMOEU6UHz950s3LLCvtSrBAF99t+rbmvgDBPOo9wGZrA/40oHv1wFh5Nlx8FbFL/
- qeW0eBgWIPPVtizvpK2lKI=
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:gfatMJYP889OOCgB2QKlHfn7uO9ShSegbRZX37obyyqKxX/sLWJ
+ o7jwhhp62frdEOkS8k6ArWwOKnOKIGTuuWA5pnGF8gEARryYsL3h1YlmESUgWRaeRbUXGvN
+ bQ6ZU9DA/0QwmhuDmHjO3xg8detWWSXp6sUqSVdZeR34FZeJIEERW/utLqraoIH2XRuGzXw
+ VIBZbuO5A4nuX9vgP1fTw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:D+H5w2tZp8M=:R8KyCY47C57ClaIR3Xew4k
+ mVk3PK9L1CIA6ER9aZLsZrKgWDmCLHA5eRugCUeiVKrmAVLSSPZrZUetd6ZepmN9xczM4KgiF
+ rkDnTyYkYWqPZ+mZTDFl0bL/jsXYZFB5e0aDvkJL64QcLLib/SDd3Q+onSaHFxKu6Kh23NgkS
+ FhAURti9ywfG77w8aB1Z9RzoF83n3KueG+++9kU8YqwuzJzYglWkB39mVLN3BnCNlR8NMFCxd
+ UU65CfrCHq/6p6M/0GZZ0McZRsDWMlR1ckIHIAr6mMwo9mMPH0n9z4lImXm/8BVRGUN3xq3ea
+ 3ZqjMg3vrmIlcnRiYKcZToPon7+FycDyqruExFe3SMB0FTr8yJfZnbzLufZVcwZJaqDGwCZce
+ iXA96euc2jTah6mB9gA/Bz/B5p5hvqpZVFLin3r045Uvj4ttCYDhMdKbpsKUMOEKWQnKRrslP
+ 9V8AC8PJuDrLjO5Jv+7KmdSh0t4FMdW8KIMBVt6PCzuDAK0/ciJHlwOPd8zFLxjgy19SIh+qG
+ KujI1i3Ga3oGTAjSSme6HM=
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -64,54 +65,32 @@ X-List-Received-Date: Mon, 03 May 2021 08:36:44 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+The Intel XScale PXA chipsets provide a PCMCIA controller,
+which expose a PCMCIA bus. Express this dependency using
+the Kconfig 'select' expression.
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20210313171150.2122409-3-f4bug@amsat.org>
+Message-Id: <20210424222057.3434459-2-f4bug@amsat.org>
+[lv: remove "(IDE)"]
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/display/qxl.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-index 93907e82a332..2ba75637ec30 100644
---- a/hw/display/qxl.c
-+++ b/hw/display/qxl.c
-@@ -2384,7 +2384,7 @@ static bool qxl_monitors_config_needed(void *opaque)
- }
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 8c37cf00da74..b887f6a5b17d 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -142,6 +142,7 @@ config PXA2XX
+     select SD
+     select SSI
+     select USB_OHCI
++    select PCMCIA
  
- 
--static VMStateDescription qxl_memslot = {
-+static const VMStateDescription qxl_memslot = {
-     .name               = "qxl-memslot",
-     .version_id         = QXL_SAVE_VERSION,
-     .minimum_version_id = QXL_SAVE_VERSION,
-@@ -2396,7 +2396,7 @@ static VMStateDescription qxl_memslot = {
-     }
- };
- 
--static VMStateDescription qxl_surface = {
-+static const VMStateDescription qxl_surface = {
-     .name               = "qxl-surface",
-     .version_id         = QXL_SAVE_VERSION,
-     .minimum_version_id = QXL_SAVE_VERSION,
-@@ -2414,7 +2414,7 @@ static VMStateDescription qxl_surface = {
-     }
- };
- 
--static VMStateDescription qxl_vmstate_monitors_config = {
-+static const VMStateDescription qxl_vmstate_monitors_config = {
-     .name               = "qxl/monitors-config",
-     .version_id         = 1,
-     .minimum_version_id = 1,
-@@ -2425,7 +2425,7 @@ static VMStateDescription qxl_vmstate_monitors_config = {
-     },
- };
- 
--static VMStateDescription qxl_vmstate = {
-+static const VMStateDescription qxl_vmstate = {
-     .name               = "qxl",
-     .version_id         = QXL_SAVE_VERSION,
-     .minimum_version_id = QXL_SAVE_VERSION,
+ config GUMSTIX
+     bool
 -- 
 2.31.1
 
