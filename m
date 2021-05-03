@@ -1,45 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ldU4I-0003H3-9B
-	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54650)
+	id 1ldU4K-0003J6-Ji
+	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4F-0003FI-JV; Mon, 03 May 2021 04:36:39 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:44301)
+ id 1ldU4G-0003GE-2A; Mon, 03 May 2021 04:36:41 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:57753)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4D-0000hx-LA; Mon, 03 May 2021 04:36:39 -0400
+ id 1ldU4D-0000hr-KV; Mon, 03 May 2021 04:36:39 -0400
 Received: from quad ([82.142.20.222]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MWixU-1m66m11wls-00X3JR; Mon, 03
- May 2021 10:36:33 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MnaTt-1lBXJP3umz-00jcwe; Mon, 03
+ May 2021 10:36:27 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 10/23] ui: Fix memory leak in qemu_xkeymap_mapping_table()
-Date: Mon,  3 May 2021 10:36:10 +0200
-Message-Id: <20210503083623.139700-11-laurent@vivier.eu>
+ qemu-trivial@nongnu.org, David Edmondson <david.edmondson@oracle.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 01/23] accel: kvm: clarify that extra exit data is hexadecimal
+Date: Mon,  3 May 2021 10:36:01 +0200
+Message-Id: <20210503083623.139700-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
 References: <20210503083623.139700-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:IcjDGF21BmgUbOnL3MDeHVJm+J47UmjXlE5erQbpG+Xe+k+VQ4t
- FrBc685P46/qP5TajRMaurv6XZNN7YF4KuoIbgCg/9lzDSLOSnxFtPtRrdjjehNlip3FYqs
- qu22iJhtcZ3t2XMkI+GSjongYX1CihSxBUaG14l4Guh9ruFG/9YzRwGSpbZQry/15ZzEBQ1
- HwVweZzQ0ZJELlRNT5kdA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:vcgjhDfF+3k=:8ytKojUygY9t7Uk8iwViQw
- AEXDqhMumuyGvrMtDtOmyqv0FGeZ1oxbABe5lnt6d/EXhx3rUqFRa/FOA4wiNEuTwpKFszQSP
- N9Gr1Yw+8eoWMjDLX6GUaBF0cz3tQcH2FCy5dhtZ8P5l9hedKZSPgCCKbC7k312hLuu73US8w
- DwOcw1zNEtXGZTE4PmbUKxwGl1ogdh5PCGwoBPihMP2Kx79+poTCHCEhIsvZ+Fk1gso0HPQTh
- zI69vC3RdgpnI7ckZrY8MgCq/DRLwntbjqTF7SI3OYZ05Jg4V2pYjv56IN5VdzjbuAf1OITEf
- 6Nd+ZG+KMIFzbhl8wrqs8Xi0m4lvc4L4KD7c6PXz8Kq0VHYgZB8zxlzKUZMZKEqrqD86furQ6
- IaqoQWfyMaCPtOK0L4a3gbIJptegGLNkXdg036GzzXPGACUxlgNGcPPLeLXp5+WrEY58K2qqE
- YE9m20vCoqTYxhJIDEa0OfBIZAs4uGkRWo18GBVTj6n18msuat7OJcRj+7+jLgfkiXD77J9tL
- D40fQUgt2tqCMDel3rS1Sw=
+X-Provags-ID: V03:K1:k19JPG9/7Vvu6zVm2DiO1/UGS80Nfw8rq7UgJ8HZrt+dKrp/TXV
+ dl9Vef0eaictX31ZTa1zeuG/TX5bUkRecbWdrYkXhATgrIkPrDKrGFb30ff/tIvCiMTenOV
+ wucQ2dm1huY6ey797gxgRIqzE7sJxsDf9uNPnr4rnnsd+LnuJHzI3/BFenSdZAjVmpjf8SU
+ VNe9hgOz1bB2q2iqaqwsA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BXo17AdKBVo=:o1MnQEH3qc0VbyHNDpceKK
+ rCtPesyvtQ6rivurQSWWryyEY0ZXYDY4vttWQm8vlPQjTliNQjE8SsCKQIek6Q5nYBkWK6dYx
+ 2gMnn7USUuceUcDFLiQbP6gKjHjglA1pOGAQuROkFHcAJd86ed4VVFPSdSBzo3LwjgEAHzA2E
+ Vq6/zvI/D4/2oISKXP+C3rbR+fVxS0O289UrbF0SGVbxm9TDl1jTpalDYOeqgTPKrN8mIZCCx
+ fvsrbA4sJSg9lMbn6kbMN5LBbctlju63AwyaAqgKKNxgRSZh8F3MGeuwCG5I177TIhxbw1xmH
+ Pen0VYQhjruP6KT0D0zfEMVw+wWZN52om2M4ijqZ44fgc9klJ8C3ykVXyRWGedlPKfXPcC6XR
+ /l471+zf5GbR4riLneL4/IRfGLrOr3ciMMmjb0OJ2XN3B8TfmbKKo8nWdqUoa0+IauZSj0T0o
+ 6kuzqDkY7RXl/it/O0Qpb/7NbPQF2ILUmyz1YDwB1h5tW34iWdQYR2GoWYEPPaEw/DpxSKDnQ
+ EjmlJ/XHOTTvIi3XNjtrQU=
 Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -60,79 +59,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 May 2021 08:36:39 -0000
+X-List-Received-Date: Mon, 03 May 2021 08:36:41 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: David Edmondson <david.edmondson@oracle.com>
 
-Refactor qemu_xkeymap_mapping_table() to have a single exit point,
-so we can easily free the memory allocated by XGetAtomName().
+When dumping the extra exit data provided by KVM, make it clear that
+the data is hexadecimal.
 
-This fixes when running a binary configured with --enable-sanitizers:
+At the same time, zero-pad the output.
 
-  Direct leak of 22 byte(s) in 1 object(s) allocated from:
-      #0 0x561344a7473f in malloc (qemu-system-x86_64+0x1dab73f)
-      #1 0x7fa4d9dc08aa in XGetAtomName (/lib64/libX11.so.6+0x2a8aa)
-
-Fixes: 2ec78706d18 ("ui: convert GTK and SDL1 frontends to keycodemapdb")
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20210430155009.259755-1-philmd@redhat.com>
+Signed-off-by: David Edmondson <david.edmondson@oracle.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20210428142431.266879-1-david.edmondson@oracle.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- ui/x_keymap.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ accel/kvm/kvm-all.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/ui/x_keymap.c b/ui/x_keymap.c
-index 555086fb6bd5..2ce7b899615f 100644
---- a/ui/x_keymap.c
-+++ b/ui/x_keymap.c
-@@ -56,6 +56,7 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
- {
-     XkbDescPtr desc;
-     const gchar *keycodes = NULL;
-+    const guint16 *map;
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index b6d9f92f1513..93d7cbfeaf88 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2269,7 +2269,7 @@ static int kvm_handle_internal_error(CPUState *cpu, struct kvm_run *run)
+         int i;
  
-     /* There is no easy way to determine what X11 server
-      * and platform & keyboard driver is in use. Thus we
-@@ -83,21 +84,21 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
-     if (check_for_xwin(dpy)) {
-         trace_xkeymap_keymap("xwin");
-         *maplen = qemu_input_map_xorgxwin_to_qcode_len;
--        return qemu_input_map_xorgxwin_to_qcode;
-+        map = qemu_input_map_xorgxwin_to_qcode;
-     } else if (check_for_xquartz(dpy)) {
-         trace_xkeymap_keymap("xquartz");
-         *maplen = qemu_input_map_xorgxquartz_to_qcode_len;
--        return qemu_input_map_xorgxquartz_to_qcode;
-+        map = qemu_input_map_xorgxquartz_to_qcode;
-     } else if ((keycodes && g_str_has_prefix(keycodes, "evdev")) ||
-                (XKeysymToKeycode(dpy, XK_Page_Up) == 0x70)) {
-         trace_xkeymap_keymap("evdev");
-         *maplen = qemu_input_map_xorgevdev_to_qcode_len;
--        return qemu_input_map_xorgevdev_to_qcode;
-+        map = qemu_input_map_xorgevdev_to_qcode;
-     } else if ((keycodes && g_str_has_prefix(keycodes, "xfree86")) ||
-                (XKeysymToKeycode(dpy, XK_Page_Up) == 0x63)) {
-         trace_xkeymap_keymap("kbd");
-         *maplen = qemu_input_map_xorgkbd_to_qcode_len;
--        return qemu_input_map_xorgkbd_to_qcode;
-+        map = qemu_input_map_xorgkbd_to_qcode;
-     } else {
-         trace_xkeymap_keymap("NULL");
-         g_warning("Unknown X11 keycode mapping '%s'.\n"
-@@ -109,6 +110,10 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
-                   "  - xprop -root\n"
-                   "  - xdpyinfo\n",
-                   keycodes ? keycodes : "<null>");
--        return NULL;
-+        map = NULL;
+         for (i = 0; i < run->internal.ndata; ++i) {
+-            fprintf(stderr, "extra data[%d]: %"PRIx64"\n",
++            fprintf(stderr, "extra data[%d]: 0x%016"PRIx64"\n",
+                     i, (uint64_t)run->internal.data[i]);
+         }
      }
-+    if (keycodes) {
-+        XFree((void *)keycodes);
-+    }
-+    return map;
- }
 -- 
 2.31.1
 
