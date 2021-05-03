@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ldU4Y-0003Ut-ET
-	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:37:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54778)
+	id 1ldU4X-0003Tv-Ro
+	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4P-0003K2-Ue; Mon, 03 May 2021 04:36:50 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:39409)
+ id 1ldU4Q-0003L1-Np; Mon, 03 May 2021 04:36:50 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:50971)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4D-0000ht-OB; Mon, 03 May 2021 04:36:49 -0400
+ id 1ldU4G-0000jg-1T; Mon, 03 May 2021 04:36:50 -0400
 Received: from quad ([82.142.20.222]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MUY9w-1m3uut2XWi-00QRbF; Mon, 03
- May 2021 10:36:31 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MPowd-1lyhyT0Sah-00Mqh8; Mon, 03
+ May 2021 10:36:34 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 07/23] hw/arm: Constify VMStateDescription
-Date: Mon,  3 May 2021 10:36:07 +0200
-Message-Id: <20210503083623.139700-8-laurent@vivier.eu>
+ qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PULL 11/23] hw: Remove superfluous includes of hw/hw.h
+Date: Mon,  3 May 2021 10:36:11 +0200
+Message-Id: <20210503083623.139700-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
 References: <20210503083623.139700-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ivi013dKKJ1uMAg2aq0pbcE/RD1n0m56RxxBSSmeN0ONBpLzmPF
- 96xDqQkSYxhK5+GLZ5TRUo/yvXCItZ5DZQ5y/k9RQlnzpKrWsSKqi1/4IiTNfKDPBIuboW3
- /J70Yll+aSw78QZtk4vDDbrWyw27LJ4wF1tAiXTITgKlpgAOpwb4eOE+5QtPM9KuFfYR8Y/
- yWSo11ERZaNgg/YnavTSw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:dkFCMOX449g=:9sEP10TszZfzAWzKvudmKp
- eORSmu0qZSSmm03B+dwV/M4K05s3ffvYlbDpl9Aspi8OmqeBx/WQsBzmJIx2Le6pqxKkm36n4
- 7wubuJaF/9aai4BjwvNM26hOsCcHOxBTb5dt9xIMmhEWGNVJPPDXuK2QOCAFJuzJqL8zR8Yr2
- rW67jaHMZZ8cSDBQgmGH1hjIOluDB0B2++k5JKaNN91QJR2l0Rb9Bvk1xWi7WsrGw0b66KVlx
- Ac0GX0BL0oxrwHsBHelRNyOs7MqwC8tjzcUeF6mdthiCd6UQTaVEaMqH+OefALSPlhnkAJcMM
- 1CZS2LzJb9+LDdaI0lBX9H2n24Q965bSbTNl+QHELUwc3LiavyPzfYY9CGW5ZN8xrEU8nVn4t
- E7/YRhWtIWlv8g/6ZQioAOxUQJSPw6nTam1lXkHezWRA6/jFpxSP2zBUidgsJNifQW7TD3Uz9
- zzGJOAdOc69edReHiHEupDMb0+4u1I7RUlqHPmLxOt/DIMpXLsGTZwkliWMk+16iIjzME4OEk
- Ihdn1rbIJ8/arGkxR4Bj3g=
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:qJJcNkkoNDU0b17yiRgPKwXfpJgvZy81hUIw2fiu/sSlD5M2Iok
+ 2wUgo+byFsh3rUieISg1+od0eeHbOvbV+Ewc02ou8QBmJk6ov7eZ/2YdLVYLSBcvoqmf8Cy
+ kQR/Y0wwyNqT8C4hzKsEdm+Y5Vle6bzFmp7pKfN1cEXHPlvgVbB2qN53FQ/hI853102hB1h
+ NXsHYWTguSk8aFzSjU/vg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wJIgmlEO6IQ=:vbUsUc5nYHbGaIWX25EZZr
+ tWxUb1XFDghLQGfknznCeMYM6CJiQ18wGjz8PH7wqdagDnggxnqKEvMlHEkzZn0ZNHT0Z1Mff
+ gK15eW5WfWdab6Jmg5LdtoFjirs+5sNxUU6coK9xPnGk4q1srBbzZpCDGkeBlYiKRipNx9xhR
+ MlqUwOvddxeQJhddUcEnw3FHVlJ7QGnfAXyt4NDXJmYsxZ4SQnafgvNejVXUGxUpI2Z3wQAUC
+ GxiKIMecz92HThp3VbHWCj0RBTGrQUksY1j3CQ29GhFtnetEeE5EsqtZ3DG2jfJGdXhyaC/Cm
+ htw4FwvbZ+MwnDQ1nrblptkN7fCX8T3Z+2XZQA4YiDnHkhvhxpl9mcO7vB9+nYIllQswDz1i4
+ SBszL1Wd4bHqoQx5H+5W+hgF7fcYSYsRIz5w7HziYDUaPZAbIQCnYIYzk3g3qtt/31/tBXz3U
+ 4qAnsrrUxwIYKfG1zKmip0u9WsLfja7DuVXKXMuXLOgxEF0q3LpNr9fBsnG3zn1L0YHB0Wv8/
+ ZP0WbpJ4gd/cmxnLlAbQ5U=
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,142 +59,346 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 May 2021 08:36:50 -0000
+X-List-Received-Date: Mon, 03 May 2021 08:36:51 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20210313171150.2122409-2-f4bug@amsat.org>
+The include/hw/hw.h header only has a prototype for hw_error(),
+so it does not make sense to include this in files that do not
+use this function.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210326151848.2217216-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/arm/highbank.c   | 2 +-
- hw/arm/pxa2xx_pic.c | 2 +-
- hw/arm/spitz.c      | 4 ++--
- hw/arm/strongarm.c  | 2 +-
- hw/arm/z2.c         | 4 ++--
- hw/dma/pxa2xx_dma.c | 4 ++--
- hw/misc/mst_fpga.c  | 2 +-
- 7 files changed, 10 insertions(+), 10 deletions(-)
+ hw/arm/musicpal.c                  | 1 -
+ hw/char/sifive_uart.c              | 1 -
+ hw/display/next-fb.c               | 1 -
+ hw/dma/sifive_pdma.c               | 1 -
+ hw/dma/xlnx_csu_dma.c              | 1 -
+ hw/hppa/lasi.c                     | 1 -
+ hw/input/lasips2.c                 | 1 -
+ hw/m68k/mcf_intc.c                 | 1 -
+ hw/m68k/next-kbd.c                 | 1 -
+ hw/m68k/q800.c                     | 1 -
+ hw/m68k/virt.c                     | 1 -
+ hw/misc/mchp_pfsoc_dmc.c           | 1 -
+ hw/misc/mchp_pfsoc_ioscb.c         | 1 -
+ hw/misc/mchp_pfsoc_sysreg.c        | 1 -
+ hw/misc/sifive_e_prci.c            | 1 -
+ hw/misc/sifive_test.c              | 1 -
+ hw/rx/rx-gdbsim.c                  | 1 -
+ hw/rx/rx62n.c                      | 1 -
+ hw/vfio/pci-quirks.c               | 1 -
+ include/hw/char/avr_usart.h        | 1 -
+ include/hw/misc/avr_power.h        | 1 -
+ include/hw/misc/stm32f4xx_exti.h   | 1 -
+ include/hw/misc/stm32f4xx_syscfg.h | 1 -
+ include/hw/pci-host/i440fx.h       | 1 -
+ include/hw/timer/avr_timer16.h     | 1 -
+ 25 files changed, 25 deletions(-)
 
-diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index bf886268c57d..5afdd28b35c1 100644
---- a/hw/arm/highbank.c
-+++ b/hw/arm/highbank.c
-@@ -170,7 +170,7 @@ struct HighbankRegsState {
-     uint32_t regs[NUM_REGS];
- };
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index 9cebece2de0b..7d67dc72542e 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -19,7 +19,6 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/boards.h"
+ #include "hw/char/serial.h"
+-#include "hw/hw.h"
+ #include "qemu/timer.h"
+ #include "hw/ptimer.h"
+ #include "hw/qdev-properties.h"
+diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
+index 3a00ba7f006c..ee7adb8e3083 100644
+--- a/hw/char/sifive_uart.c
++++ b/hw/char/sifive_uart.c
+@@ -22,7 +22,6 @@
+ #include "hw/sysbus.h"
+ #include "chardev/char.h"
+ #include "chardev/char-fe.h"
+-#include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "hw/char/sifive_uart.h"
  
--static VMStateDescription vmstate_highbank_regs = {
-+static const VMStateDescription vmstate_highbank_regs = {
-     .name = "highbank-regs",
-     .version_id = 0,
-     .minimum_version_id = 0,
-diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
-index cf6cb2a373ac..ed032fed548d 100644
---- a/hw/arm/pxa2xx_pic.c
-+++ b/hw/arm/pxa2xx_pic.c
-@@ -301,7 +301,7 @@ DeviceState *pxa2xx_pic_init(hwaddr base, ARMCPU *cpu)
-     return dev;
- }
+diff --git a/hw/display/next-fb.c b/hw/display/next-fb.c
+index e2d895109dbe..cc134c2d5beb 100644
+--- a/hw/display/next-fb.c
++++ b/hw/display/next-fb.c
+@@ -24,7 +24,6 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "ui/console.h"
+-#include "hw/hw.h"
+ #include "hw/boards.h"
+ #include "hw/loader.h"
+ #include "framebuffer.h"
+diff --git a/hw/dma/sifive_pdma.c b/hw/dma/sifive_pdma.c
+index e1f6fedbda73..9b2ac2017d9d 100644
+--- a/hw/dma/sifive_pdma.c
++++ b/hw/dma/sifive_pdma.c
+@@ -24,7 +24,6 @@
+ #include "qemu/bitops.h"
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+-#include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
+diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
+index 98324dadcd4c..797b4fed8f5f 100644
+--- a/hw/dma/xlnx_csu_dma.c
++++ b/hw/dma/xlnx_csu_dma.c
+@@ -21,7 +21,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+-#include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
+diff --git a/hw/hppa/lasi.c b/hw/hppa/lasi.c
+index 1a8565794846..a8f5defcd01e 100644
+--- a/hw/hppa/lasi.c
++++ b/hw/hppa/lasi.c
+@@ -15,7 +15,6 @@
+ #include "qapi/error.h"
+ #include "cpu.h"
+ #include "trace.h"
+-#include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/runstate.h"
+diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
+index 0786e5733880..60afb94c780e 100644
+--- a/hw/input/lasips2.c
++++ b/hw/input/lasips2.c
+@@ -24,7 +24,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "hw/qdev-properties.h"
+-#include "hw/hw.h"
+ #include "hw/input/ps2.h"
+ #include "hw/input/lasips2.h"
+ #include "hw/sysbus.h"
+diff --git a/hw/m68k/mcf_intc.c b/hw/m68k/mcf_intc.c
+index cf02f57a7117..4cd30188c053 100644
+--- a/hw/m68k/mcf_intc.c
++++ b/hw/m68k/mcf_intc.c
+@@ -11,7 +11,6 @@
+ #include "qemu/module.h"
+ #include "qemu/log.h"
+ #include "cpu.h"
+-#include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "hw/sysbus.h"
+ #include "hw/m68k/mcf.h"
+diff --git a/hw/m68k/next-kbd.c b/hw/m68k/next-kbd.c
+index c11b5281f199..bee40e25bca0 100644
+--- a/hw/m68k/next-kbd.c
++++ b/hw/m68k/next-kbd.c
+@@ -30,7 +30,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "exec/address-spaces.h"
+-#include "hw/hw.h"
+ #include "hw/sysbus.h"
+ #include "hw/m68k/next-cube.h"
+ #include "ui/console.h"
+diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+index 4d2e866eec7f..1c7f7aa07f07 100644
+--- a/hw/m68k/q800.c
++++ b/hw/m68k/q800.c
+@@ -26,7 +26,6 @@
+ #include "qemu/datadir.h"
+ #include "sysemu/sysemu.h"
+ #include "cpu.h"
+-#include "hw/hw.h"
+ #include "hw/boards.h"
+ #include "hw/irq.h"
+ #include "hw/or-irq.h"
+diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+index e9a5d4c69b97..18e6f11041da 100644
+--- a/hw/m68k/virt.c
++++ b/hw/m68k/virt.c
+@@ -12,7 +12,6 @@
+ #include "qemu-common.h"
+ #include "sysemu/sysemu.h"
+ #include "cpu.h"
+-#include "hw/hw.h"
+ #include "hw/boards.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+diff --git a/hw/misc/mchp_pfsoc_dmc.c b/hw/misc/mchp_pfsoc_dmc.c
+index 15cf3d77252c..43d8e970abc0 100644
+--- a/hw/misc/mchp_pfsoc_dmc.c
++++ b/hw/misc/mchp_pfsoc_dmc.c
+@@ -24,7 +24,6 @@
+ #include "qemu/bitops.h"
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+-#include "hw/hw.h"
+ #include "hw/sysbus.h"
+ #include "hw/misc/mchp_pfsoc_dmc.h"
  
--static VMStateDescription vmstate_pxa2xx_pic_regs = {
-+static const VMStateDescription vmstate_pxa2xx_pic_regs = {
-     .name = "pxa2xx_pic",
-     .version_id = 0,
-     .minimum_version_id = 0,
-diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-index 6b3bf9828bcb..b45a929cbd9e 100644
---- a/hw/arm/spitz.c
-+++ b/hw/arm/spitz.c
-@@ -1134,7 +1134,7 @@ static bool is_version_0(void *opaque, int version_id)
-     return version_id == 0;
- }
+diff --git a/hw/misc/mchp_pfsoc_ioscb.c b/hw/misc/mchp_pfsoc_ioscb.c
+index 8b0d1cacd7ef..f4fd55a0e5c7 100644
+--- a/hw/misc/mchp_pfsoc_ioscb.c
++++ b/hw/misc/mchp_pfsoc_ioscb.c
+@@ -24,7 +24,6 @@
+ #include "qemu/bitops.h"
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+-#include "hw/hw.h"
+ #include "hw/sysbus.h"
+ #include "hw/misc/mchp_pfsoc_ioscb.h"
  
--static VMStateDescription vmstate_sl_nand_info = {
-+static const VMStateDescription vmstate_sl_nand_info = {
-     .name = "sl-nand",
-     .version_id = 0,
-     .minimum_version_id = 0,
-@@ -1170,7 +1170,7 @@ static const TypeInfo sl_nand_info = {
-     .class_init    = sl_nand_class_init,
- };
+diff --git a/hw/misc/mchp_pfsoc_sysreg.c b/hw/misc/mchp_pfsoc_sysreg.c
+index 248a3133455c..89571eded53f 100644
+--- a/hw/misc/mchp_pfsoc_sysreg.c
++++ b/hw/misc/mchp_pfsoc_sysreg.c
+@@ -24,7 +24,6 @@
+ #include "qemu/bitops.h"
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+-#include "hw/hw.h"
+ #include "hw/sysbus.h"
+ #include "hw/misc/mchp_pfsoc_sysreg.h"
  
--static VMStateDescription vmstate_spitz_kbd = {
-+static const VMStateDescription vmstate_spitz_kbd = {
-     .name = "spitz-keyboard",
-     .version_id = 1,
-     .minimum_version_id = 0,
-diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
-index c7ca54bceaa4..e3e3ea61634f 100644
---- a/hw/arm/strongarm.c
-+++ b/hw/arm/strongarm.c
-@@ -207,7 +207,7 @@ static int strongarm_pic_post_load(void *opaque, int version_id)
-     return 0;
- }
+diff --git a/hw/misc/sifive_e_prci.c b/hw/misc/sifive_e_prci.c
+index 8ec4ee4b41fc..a8702c6a5d44 100644
+--- a/hw/misc/sifive_e_prci.c
++++ b/hw/misc/sifive_e_prci.c
+@@ -23,7 +23,6 @@
+ #include "qapi/error.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-#include "hw/hw.h"
+ #include "hw/misc/sifive_e_prci.h"
  
--static VMStateDescription vmstate_strongarm_pic_regs = {
-+static const VMStateDescription vmstate_strongarm_pic_regs = {
-     .name = "strongarm_pic",
-     .version_id = 0,
-     .minimum_version_id = 0,
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 5099bd83802e..9c1e876207b3 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -162,7 +162,7 @@ static void zipit_lcd_realize(SSIPeripheral *dev, Error **errp)
-     z->pos = 0;
- }
+ static uint64_t sifive_e_prci_read(void *opaque, hwaddr addr, unsigned int size)
+diff --git a/hw/misc/sifive_test.c b/hw/misc/sifive_test.c
+index 2deb2072cc8e..56df45bfe592 100644
+--- a/hw/misc/sifive_test.c
++++ b/hw/misc/sifive_test.c
+@@ -24,7 +24,6 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "sysemu/runstate.h"
+-#include "hw/hw.h"
+ #include "hw/misc/sifive_test.h"
  
--static VMStateDescription vmstate_zipit_lcd_state = {
-+static const VMStateDescription vmstate_zipit_lcd_state = {
-     .name = "zipit-lcd",
-     .version_id = 2,
-     .minimum_version_id = 2,
-@@ -268,7 +268,7 @@ static uint8_t aer915_recv(I2CSlave *slave)
-     return retval;
- }
+ static uint64_t sifive_test_read(void *opaque, hwaddr addr, unsigned int size)
+diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
+index b1d7c2488ff3..8c611b0a59ea 100644
+--- a/hw/rx/rx-gdbsim.c
++++ b/hw/rx/rx-gdbsim.c
+@@ -22,7 +22,6 @@
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+-#include "hw/hw.h"
+ #include "hw/sysbus.h"
+ #include "hw/loader.h"
+ #include "hw/rx/rx62n.h"
+diff --git a/hw/rx/rx62n.c b/hw/rx/rx62n.c
+index 9c34ce14de64..31ddccf2cdbb 100644
+--- a/hw/rx/rx62n.c
++++ b/hw/rx/rx62n.c
+@@ -23,7 +23,6 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+-#include "hw/hw.h"
+ #include "hw/rx/rx62n.h"
+ #include "hw/loader.h"
+ #include "hw/sysbus.h"
+diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+index b90cf3d37c30..e21a6ede1140 100644
+--- a/hw/vfio/pci-quirks.c
++++ b/hw/vfio/pci-quirks.c
+@@ -22,7 +22,6 @@
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+ #include <sys/ioctl.h>
+-#include "hw/hw.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "hw/qdev-properties.h"
+ #include "pci.h"
+diff --git a/include/hw/char/avr_usart.h b/include/hw/char/avr_usart.h
+index bb5753240367..62eaa1528eff 100644
+--- a/include/hw/char/avr_usart.h
++++ b/include/hw/char/avr_usart.h
+@@ -24,7 +24,6 @@
  
--static VMStateDescription vmstate_aer915_state = {
-+static const VMStateDescription vmstate_aer915_state = {
-     .name = "aer915",
-     .version_id = 1,
-     .minimum_version_id = 1,
-diff --git a/hw/dma/pxa2xx_dma.c b/hw/dma/pxa2xx_dma.c
-index b3707ff3de25..fa896f7edf77 100644
---- a/hw/dma/pxa2xx_dma.c
-+++ b/hw/dma/pxa2xx_dma.c
-@@ -525,7 +525,7 @@ static bool is_version_0(void *opaque, int version_id)
-     return version_id == 0;
- }
+ #include "hw/sysbus.h"
+ #include "chardev/char-fe.h"
+-#include "hw/hw.h"
+ #include "qom/object.h"
  
--static VMStateDescription vmstate_pxa2xx_dma_chan = {
-+static const VMStateDescription vmstate_pxa2xx_dma_chan = {
-     .name = "pxa2xx_dma_chan",
-     .version_id = 1,
-     .minimum_version_id = 1,
-@@ -540,7 +540,7 @@ static VMStateDescription vmstate_pxa2xx_dma_chan = {
-     },
- };
+ /* Offsets of registers. */
+diff --git a/include/hw/misc/avr_power.h b/include/hw/misc/avr_power.h
+index 707df030b187..388e421aa7ba 100644
+--- a/include/hw/misc/avr_power.h
++++ b/include/hw/misc/avr_power.h
+@@ -26,7 +26,6 @@
+ #define HW_MISC_AVR_POWER_H
  
--static VMStateDescription vmstate_pxa2xx_dma = {
-+static const VMStateDescription vmstate_pxa2xx_dma = {
-     .name = "pxa2xx_dma",
-     .version_id = 1,
-     .minimum_version_id = 0,
-diff --git a/hw/misc/mst_fpga.c b/hw/misc/mst_fpga.c
-index edfc35d5f0f9..2aaadfa96681 100644
---- a/hw/misc/mst_fpga.c
-+++ b/hw/misc/mst_fpga.c
-@@ -222,7 +222,7 @@ static void mst_fpga_init(Object *obj)
-     sysbus_init_mmio(sbd, &s->iomem);
- }
+ #include "hw/sysbus.h"
+-#include "hw/hw.h"
+ #include "qom/object.h"
  
--static VMStateDescription vmstate_mst_fpga_regs = {
-+static const VMStateDescription vmstate_mst_fpga_regs = {
-     .name = "mainstone_fpga",
-     .version_id = 0,
-     .minimum_version_id = 0,
+ 
+diff --git a/include/hw/misc/stm32f4xx_exti.h b/include/hw/misc/stm32f4xx_exti.h
+index 24b6fa7724b1..ea6b0097b0eb 100644
+--- a/include/hw/misc/stm32f4xx_exti.h
++++ b/include/hw/misc/stm32f4xx_exti.h
+@@ -26,7 +26,6 @@
+ #define HW_STM_EXTI_H
+ 
+ #include "hw/sysbus.h"
+-#include "hw/hw.h"
+ #include "qom/object.h"
+ 
+ #define EXTI_IMR   0x00
+diff --git a/include/hw/misc/stm32f4xx_syscfg.h b/include/hw/misc/stm32f4xx_syscfg.h
+index 8c31feccd379..6f8ca49228b6 100644
+--- a/include/hw/misc/stm32f4xx_syscfg.h
++++ b/include/hw/misc/stm32f4xx_syscfg.h
+@@ -26,7 +26,6 @@
+ #define HW_STM_SYSCFG_H
+ 
+ #include "hw/sysbus.h"
+-#include "hw/hw.h"
+ #include "qom/object.h"
+ 
+ #define SYSCFG_MEMRMP  0x00
+diff --git a/include/hw/pci-host/i440fx.h b/include/hw/pci-host/i440fx.h
+index 24fd53942cab..7fcfd9485c0f 100644
+--- a/include/hw/pci-host/i440fx.h
++++ b/include/hw/pci-host/i440fx.h
+@@ -11,7 +11,6 @@
+ #ifndef HW_PCI_I440FX_H
+ #define HW_PCI_I440FX_H
+ 
+-#include "hw/hw.h"
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci-host/pam.h"
+ #include "qom/object.h"
+diff --git a/include/hw/timer/avr_timer16.h b/include/hw/timer/avr_timer16.h
+index 053625433789..a1a032a24dc8 100644
+--- a/include/hw/timer/avr_timer16.h
++++ b/include/hw/timer/avr_timer16.h
+@@ -30,7 +30,6 @@
+ 
+ #include "hw/sysbus.h"
+ #include "qemu/timer.h"
+-#include "hw/hw.h"
+ #include "qom/object.h"
+ 
+ enum NextInterrupt {
 -- 
 2.31.1
 
