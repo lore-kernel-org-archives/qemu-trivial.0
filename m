@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ldU4X-0003SW-D3
+	id 1ldU4X-0003TH-LK
 	for mharc-qemu-trivial@gnu.org; Mon, 03 May 2021 04:36:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54754)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4K-0003JA-SK; Mon, 03 May 2021 04:36:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:53643)
+ id 1ldU4Q-0003Ke-CK; Mon, 03 May 2021 04:36:50 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:55263)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ldU4F-0000j0-Sa; Mon, 03 May 2021 04:36:44 -0400
+ id 1ldU4G-0000kI-GZ; Mon, 03 May 2021 04:36:50 -0400
 Received: from quad ([82.142.20.222]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MnJUy-1lBoID1hOm-00jLxl; Mon, 03
- May 2021 10:36:29 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1Mo77T-1lEHP33xrH-00pg9y; Mon, 03
+ May 2021 10:36:31 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-trivial@nongnu.org, Keqian Zhu <zhukeqian1@huawei.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 04/23] hw/pcmcia: Do not register PCMCIA type if not required
-Date: Mon,  3 May 2021 10:36:04 +0200
-Message-Id: <20210503083623.139700-5-laurent@vivier.eu>
+Subject: [PULL 06/23] vmstate: Constify some VMStateDescriptions
+Date: Mon,  3 May 2021 10:36:06 +0200
+Message-Id: <20210503083623.139700-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
 References: <20210503083623.139700-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QSVs3guaTC/fSNKjEa2M+zJEy92l4M3+drIcVr+64YuKoQXALkO
- pfY4u5AV0fEFjjgXAZi5aCVvQEIzJV6Zxbn90TC44ddPnGMsp3z+JviXkb5MbTdIGjvz1b1
- 8u5ZQZOsd928GIXD1cQfme+zt+/8MXDhRfS+SGlSuUW8xZ1CjintGupmSDAmh3dPDSBRmjT
- jvrOF/K+c96ofca7KaXcA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:SMt0/wT1Kog=:Zj7R06Vo0QC53mrvztlPaR
- U4QTYc/5fFXcT1lw6JnVWuiA7ZGER7SJPopwzP0qiYL15g4lXVYfrOZlbLJNxfvdbIeenqQfR
- +++xpcHgSrRO+x4CmHEw59pXgW3zFPM7jwYz1box05MK8LIrjcLUPOHJFXitl1ERJPMjEJThN
- H8AKkcQSbY9FRDT1iuISnF3MyYJ5RkL1kV655nBmFwRk0A0tVP71mOQLSPGcjSqm0hZOLkNg4
- 0Jwi6oW7zLBPTftjgYjjRk2VBG+lEiyWlkZflkv9oiG7IBim0Z+rKyEXUDpZ75CTZNrRT3aPo
- No6zp/vP4yTjm4tjC/K3U4twhzyEuwBKpI6Ph/QBBOSqVqIrxrKEiZ2GJd4Qev7m3WlWxlQQ+
- iHUMpwr6T2pJtK98lzzN+5hzJxoa/vUD+DtyAtE3ZQGSzQow229RY6BB2g3EJZjB/m6XfTJ1+
- iPGt8Aa6s5OmMcnrEvMQy3HO3dlDFiEp4t7EdFgQFSoJf4HCLSvKhbls0FIPb24Sw5UeV6oJ+
- 4TtAn7t0irPi205XYt3M4o=
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:nOEPfaFhzVvOw7YbHmknBBvFzIUbULsyJT2Mb7BNnddNmhft3PP
+ tNn8NOZSOfU/erVAXGALajuhbrP0JGqQXj5LmRpLx+cqpN+M/adkFFIQ7UaWq/63kw54VCH
+ 3MfRnyc196kRXBr3g3o5qV3egD3Yzrre+Zwd6+kyktx1Wx+pwfaR0iMqfhNwi7jiBJAalzC
+ /uzYkmccDDH9XWiILWybA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:iNQu44QAzoY=:HUc04ZWAG745Z70XlUTSnf
+ TA9aLRn79/R33jjEC8GqIENsGTDAH+5R6ioI3MZNTABRoaCCYsakH8lKyyXHvUPWysEUUoHP+
+ zcuWzPR43ZfPC+s780re29UwWuNgzl4AA9o3eJ+wxRceP5FVzQHHQ7jN2XtXyb1Id5ck10/H6
+ WIAdg9TxTJJoEIFucHGCqmMsvYyYzAwjjahomHCohQTRQ5lQQh7BMg1HB4ysqJ+BrCarMKz16
+ 3l9FxfYWv1zpqpfouw+ldHHVf9Lm1RQbvGs62ecQjiVK4ay85tWmDpIdAP2TW24cf0RefDj/H
+ LfJxate/knD7E0LToibaz4JfkeEVCGyEwAWSJbndASH1Zund+dDEaqlrNjOXHB9wwt+X5daqy
+ g2+PHLHWzOCn5rpYMGp6I+3v+9YXeWfRXFnPIBlCvks6dDfnx1Y/sorheDD8V/9/eEnTCCZxH
+ uODWQP9OG3AE5kkYi0XekrJ2+++oyK7V2r7rVBl2q7ZwDSSz6A+Y3gdrV6fhavd9vBe55g5JX
+ 8/MmtalWc/bz0Bt0Gw/hN4=
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,31 +60,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 May 2021 08:36:50 -0000
+X-List-Received-Date: Mon, 03 May 2021 08:36:51 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Keqian Zhu <zhukeqian1@huawei.com>
 
-If the Kconfig 'PCMCIA' value is not selected, it is pointless
-to build the PCMCIA core components.
+Constify vmstate_ecc_state and vmstate_x86_cpu.
 
-(Currently only one machine of the ARM targets requires this).
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20210424222057.3434459-4-f4bug@amsat.org>
+Message-Id: <20210408140706.23412-1-zhukeqian1@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/pcmcia/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/block/ecc.c           | 2 +-
+ include/hw/block/flash.h | 2 +-
+ target/i386/cpu.h        | 2 +-
+ target/i386/machine.c    | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/pcmcia/meson.build b/hw/pcmcia/meson.build
-index ab50bd325d6c..51f2512b8ed0 100644
---- a/hw/pcmcia/meson.build
-+++ b/hw/pcmcia/meson.build
-@@ -1,2 +1,2 @@
--softmmu_ss.add(files('pcmcia.c'))
-+softmmu_ss.add(when: 'CONFIG_PCMCIA', if_true: files('pcmcia.c'))
- softmmu_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx.c'))
+diff --git a/hw/block/ecc.c b/hw/block/ecc.c
+index 1a182367ee63..6e0d63842c14 100644
+--- a/hw/block/ecc.c
++++ b/hw/block/ecc.c
+@@ -78,7 +78,7 @@ void ecc_reset(ECCState *s)
+ }
+ 
+ /* Save/restore */
+-VMStateDescription vmstate_ecc_state = {
++const VMStateDescription vmstate_ecc_state = {
+     .name = "ecc-state",
+     .version_id = 0,
+     .minimum_version_id = 0,
+diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
+index 7dde0adcee78..86d8363bb09e 100644
+--- a/include/hw/block/flash.h
++++ b/include/hw/block/flash.h
+@@ -74,6 +74,6 @@ typedef struct {
+ 
+ uint8_t ecc_digest(ECCState *s, uint8_t sample);
+ void ecc_reset(ECCState *s);
+-extern VMStateDescription vmstate_ecc_state;
++extern const VMStateDescription vmstate_ecc_state;
+ 
+ #endif
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 570f916878f9..1bc300ce85de 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -1786,7 +1786,7 @@ struct X86CPU {
+ 
+ 
+ #ifndef CONFIG_USER_ONLY
+-extern VMStateDescription vmstate_x86_cpu;
++extern const VMStateDescription vmstate_x86_cpu;
+ #endif
+ 
+ int x86_cpu_pending_interrupt(CPUState *cs, int interrupt_request);
+diff --git a/target/i386/machine.c b/target/i386/machine.c
+index 137604ddb898..f6f094f1c938 100644
+--- a/target/i386/machine.c
++++ b/target/i386/machine.c
+@@ -1396,7 +1396,7 @@ static const VMStateDescription vmstate_msr_tsx_ctrl = {
+     }
+ };
+ 
+-VMStateDescription vmstate_x86_cpu = {
++const VMStateDescription vmstate_x86_cpu = {
+     .name = "cpu",
+     .version_id = 12,
+     .minimum_version_id = 11,
 -- 
 2.31.1
 
