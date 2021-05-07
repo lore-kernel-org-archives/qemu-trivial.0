@@ -1,64 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1leLUE-0003Ny-Au
-	for mharc-qemu-trivial@gnu.org; Wed, 05 May 2021 13:39:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34738)
+	id 1lf35w-000609-QL
+	for mharc-qemu-trivial@gnu.org; Fri, 07 May 2021 12:12:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1leLU8-0003NM-Ga
- for qemu-trivial@nongnu.org; Wed, 05 May 2021 13:38:59 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:41715)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1leLU2-0002LJ-IC
- for qemu-trivial@nongnu.org; Wed, 05 May 2021 13:38:56 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id zg3so4132984ejb.8
- for <qemu-trivial@nongnu.org>; Wed, 05 May 2021 10:38:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Pj2AYyiSCZQYjZyQjKAfF4g8SHFCLO5vLVe4udmq9Ps=;
- b=LfWGWBe+9ctlqWDs2BKdQtwxFFmmZWBwjlZ8mpqg0Kb0jmctwWp0+9uSu6K9rcgzpc
- K8rTl1uOTcqNviMiJbQKNTRp5VWbIkN2cjfc3cP7Xq8sWVpL9uuC7s9zMWlY4zDTRjKz
- SuQ0bgL1bVBjh7fhCQeWBntVDh9m2Hq9EgAeQmllWFxdvc9PDA0Fx0eC29pd88OS6Ijt
- Tz4+Hta1eAAaznkPP2nyu5GWgJ/E+nbXc+63RtvDCFVkM8CQtHF4Kb+K3T5IqfWDCaGI
- yLVJRz4eLwat6iOMkRGKV9T4W4IUGP8spFHMSF6L5rbKSgX0kQAUqMGhU7Glv+xy2Np6
- rlNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Pj2AYyiSCZQYjZyQjKAfF4g8SHFCLO5vLVe4udmq9Ps=;
- b=tzDuV0+y5PxWO+W/qmS+khTTADjZv+Hfz0ph15xC+849furpZY/9VXUuv/FI2CUoJ1
- 80QLfMAeVu2JKlQ3xsJnqyPbL0UsabDMTJc9tTe4iCvtGb6QjzhY1fdcU6POoCoKkCGf
- aGhcGTYbmIix+bnNhnFzmRpfsDzWABXoDdmdyxEnnoM/Ag8zrmipdor49EWMCxU++TS6
- 2D1B9VBHavR7+wdJ9F49ufkOyi7evqkTR04Fv8EiPawl3tsGAPq+S8wzWqWILfpWMeyf
- aHzoyHXUjyWChvBpgsabLXChIFC9Y6WwBvPukaCPytlf55yHElY8Mgaegxt2hblFvcDv
- KnjA==
-X-Gm-Message-State: AOAM531CV8asq5CDrQXCYYu6wpUbnp7oZEEwtV43vg0DbseqQVipHWN4
- CP73GeFJ4SiwVlXAZ7Hh5z71BZYp0kDOr+x0pC0r3Q==
-X-Google-Smtp-Source: ABdhPJxZKNxvqbIs5pnHlN/IOLTQp3uPcMeXRJeV0YNvSD4o7m4Qj2sO6QIWwJcg+sDOtBFw4KubQqRFP73KJCIl4AU=
-X-Received: by 2002:a17:906:3115:: with SMTP id
- 21mr21871790ejx.482.1620236328383; 
- Wed, 05 May 2021 10:38:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1lf35o-0005z1-Fq
+ for qemu-trivial@nongnu.org; Fri, 07 May 2021 12:12:48 -0400
+Received: from us-smtp-delivery-44.mimecast.com ([207.211.30.44]:47490)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1lf35m-0005ot-6J
+ for qemu-trivial@nongnu.org; Fri, 07 May 2021 12:12:43 -0400
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-365-26bNcMCoNnSPibWcMQdsaA-1; Fri, 07 May 2021 12:12:31 -0400
+X-MC-Unique: 26bNcMCoNnSPibWcMQdsaA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 81FCD6D588;
+ Fri,  7 May 2021 16:12:30 +0000 (UTC)
+Received: from bahia.lan (ovpn-112-195.ams2.redhat.com [10.36.112.195])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D4B705D741;
+ Fri,  7 May 2021 16:12:29 +0000 (UTC)
+Subject: [PATCH] virtiofsd: Fix check of chown()'s return value
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org
+Date: Fri, 07 May 2021 18:12:28 +0200
+Message-ID: <162040394890.714971.15502455176528384778.stgit@bahia.lan>
+User-Agent: StGit/0.21
 MIME-Version: 1.0
-References: <20210503083623.139700-1-laurent@vivier.eu>
-In-Reply-To: <20210503083623.139700-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 5 May 2021 18:37:41 +0100
-Message-ID: <CAFEAcA-0ixPa9RojrqumN_gUyiu3awWjpkCRV3+MWuj0Q0PweQ@mail.gmail.com>
-Subject: Re: [PULL 00/23] Trivial branch for 6.1 patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: kaod.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: softfail client-ip=207.211.30.44; envelope-from=groug@kaod.org;
+ helo=us-smtp-delivery-44.mimecast.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,33 +54,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 May 2021 17:38:59 -0000
+X-List-Received-Date: Fri, 07 May 2021 16:12:48 -0000
 
-On Mon, 3 May 2021 at 09:41, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 53c5433e84e8935abed8e91d4a2eb813168a0ecf:
->
->   Merge remote-tracking branch 'remotes/rth-gitlab/tags/pull-tcg-20210501' into staging (2021-05-02 12:02:46 +0100)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.1-pull-request
->
-> for you to fetch changes up to 9197b5d4b5f163455c891baec531ae73f5d3a73a:
->
->   hw/rx/rx-gdbsim: Do not accept invalid memory size (2021-05-03 10:07:41 +0200)
->
-> ----------------------------------------------------------------
-> Trivial patches pull request 20210503
->
-> ----------------------------------------------------------------
->
+Otherwise you always get this warning when using --socket-group=3Dusers
+
+ vhost socket failed to set group to users (100)
+
+While here, print out the error if chown() fails.
+
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ tools/virtiofsd/fuse_virtio.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/virtiofsd/fuse_virtio.c b/tools/virtiofsd/fuse_virtio.c
+index 3e13997406bf..638d3ffe2f8a 100644
+--- a/tools/virtiofsd/fuse_virtio.c
++++ b/tools/virtiofsd/fuse_virtio.c
+@@ -978,9 +978,9 @@ static int fv_create_listen_socket(struct fuse_session =
+*se)
+     if (se->vu_socket_group) {
+         struct group *g =3D getgrnam(se->vu_socket_group);
+         if (g) {
+-            if (!chown(se->vu_socket_path, -1, g->gr_gid)) {
++            if (chown(se->vu_socket_path, -1, g->gr_gid) =3D=3D -1) {
+                 fuse_log(FUSE_LOG_WARNING,
+-                         "vhost socket failed to set group to %s (%d)\n",
++                         "vhost socket failed to set group to %s (%d): %m\=
+n",
+                          se->vu_socket_group, g->gr_gid);
+             }
+         }
 
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/6.1
-for any user-visible changes.
-
--- PMM
 
