@@ -1,84 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lfeBr-0005gf-8S
-	for mharc-qemu-trivial@gnu.org; Sun, 09 May 2021 03:49:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38710)
+	id 1lfnyx-0007h9-Q0
+	for mharc-qemu-trivial@gnu.org; Sun, 09 May 2021 14:16:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43318)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lfeBp-0005fb-DS
- for qemu-trivial@nongnu.org; Sun, 09 May 2021 03:49:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21516)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lfeBl-0000nY-Tz
- for qemu-trivial@nongnu.org; Sun, 09 May 2021 03:49:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1620546560;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RqhovYHfD0QFWo7kAdOSHgjRICRWeS/tTIpUn6CTEJg=;
- b=jBCkVY0wlewvSpIoqLOzqLTI/bYXPISvgveogTwTo5tbHKvESc7s5A85/RShAC63LVKYhu
- 6pdHA9iXdX+31K3VHngxcotr27lXt8uWro24hIfAYPPxS/wJ4bLkNn8LITPCI7qa8UsP5G
- yP0Jhqjr8sRvdpX5ejHI7RGe8Z3hiPw=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-521-ky3P4QMqOZGamV_gpqIuPA-1; Sun, 09 May 2021 03:49:18 -0400
-X-MC-Unique: ky3P4QMqOZGamV_gpqIuPA-1
-Received: by mail-wm1-f72.google.com with SMTP id
- j136-20020a1c238e0000b029014675462236so1756408wmj.7
- for <qemu-trivial@nongnu.org>; Sun, 09 May 2021 00:49:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1lfnyv-0007gh-Q9
+ for qemu-trivial@nongnu.org; Sun, 09 May 2021 14:16:45 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:33373)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1lfnyu-0007FJ-6b
+ for qemu-trivial@nongnu.org; Sun, 09 May 2021 14:16:45 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ o26-20020a1c4d1a0000b0290146e1feccdaso8673162wmh.0
+ for <qemu-trivial@nongnu.org>; Sun, 09 May 2021 11:16:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=YLBJl6ZuIQzPy8HS1eTa2lIwQhoJAFI+uv+WhmfTixc=;
+ b=yib7YD+I8Tl/TXQKIu3/Y7qBNdVunTi2X/UDixyHfkNznNH26HtNd/Mvox+zZtFmNr
+ iz33SrPAnea+8C1fK61wnsY1pRDnHt9raSrGp/5IxUNvtmWziv70EHyF+Ebg6Wyh79mQ
+ 6m92CYg83y4L706ZhlGLBjEUy2ng9NuLSK2Pg6n7VC/gbdGTbORBYQsGlzcsBynIOwgM
+ pjKvpMv0SH4/kxCD+JX5iHjBclrYu8Nb1apG1qyx2nkCiCHlfFF0rlhxN+lCXcqkdVJk
+ Q1w5FjRJagQqt23eFFE3rs6N5Tk7iVXKVMW6Ja9FZzlW/rsl2jBq7j6dDTUhrfJGGZCk
+ UEVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=RqhovYHfD0QFWo7kAdOSHgjRICRWeS/tTIpUn6CTEJg=;
- b=sTVgtICtOSkcRghPkAoQfx0fP7DzQ4bbd294GN5gA5tOgz/s5nvaPUZhM3zfb2U2p4
- 84YemJp7yMRDiO6LQ9pKVtQX86ZDKd5KNc8Ggg55T9z75QD9bw42ey31FXlznJAp/Js2
- ZS5h9GNeuow2n23JyM8MyF0l5BLA2UsgG8jDnc4DlLqXihKTWwYPC1e6MbQIt3rCPlil
- 8UHBWtPGpQ8oD7NCGDkapAeVJPH1boC5Czvg1fKuy9/UMPswONPRVxouyy8QK/vMxLzq
- HDk1vDEaVOPWE0tRsgF91BoaA27Dl0hCXGXid++ARGuwVMAgUX3e6IAo+Wrkgn3GdSE/
- GqDQ==
-X-Gm-Message-State: AOAM531jobh/zCn+HaFXZqcqXtG3w223VGnRcoNyoqqlld3HPAsJBjhQ
- B1VgzUU4Emu/LNkkBDHPhjZEmKBfI1Imli2y9GDxmxrHsoGnJvSaGx6ecHdFnACNl23YNRwc+ii
- Qy77RY5untKa+isxhbQ==
-X-Received: by 2002:a1c:804a:: with SMTP id b71mr20014747wmd.82.1620546557535; 
- Sun, 09 May 2021 00:49:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyNxPiR5xKWxs7L7xegw4bF6vshO9sbmrnKbtc1jwBbpPVxPd2bGx4pG8cOdBTS8qqtcOReDA==
-X-Received: by 2002:a1c:804a:: with SMTP id b71mr20014730wmd.82.1620546557254; 
- Sun, 09 May 2021 00:49:17 -0700 (PDT)
-Received: from [192.168.43.238] (26.red-95-127-155.staticip.rima-tde.net.
- [95.127.155.26])
- by smtp.gmail.com with ESMTPSA id c187sm10389488wmf.23.2021.05.09.00.49.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 09 May 2021 00:49:16 -0700 (PDT)
-Subject: Re: [PATCH trivial] vnc: spelling fix (enable->enabled)
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-References: <20210508092558.351102-1-mjt@msgid.tls.msk.ru>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6d83efa3-12ea-8f27-fc2a-81c033570ebd@redhat.com>
-Date: Sun, 9 May 2021 09:49:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=YLBJl6ZuIQzPy8HS1eTa2lIwQhoJAFI+uv+WhmfTixc=;
+ b=EAlQsugQKn/Yd4hhC2cFfvQktcSF+69Kbl34UrtP3zLxyn+SX3AxN/CI5zggx5WMG9
+ QZB6yPLuOfvoWdkjWnKM62LVaGYdh8yl9kZ2doovpN2mqSHTuhID/31e5yLOAnWOst3J
+ hNCr4VcwuSnREK4U+X2HxS9i9OEyEvTBYhZu1ODwes+f2OEcjPnriRl20KemlkkEesEl
+ 0187K+uHLetAPOCf/6KiQquAeQItBD3c26FuhVnRnY8DgkianwLgZx/4ssABty+e+K1x
+ wtsgpksHuCk6Lzet3byP720TKg7eC1IM+lD3/1dDhBn5zl5ZUhLI/u+zL0gUwqiKJv6M
+ 2Utw==
+X-Gm-Message-State: AOAM5327xLkoaGlRDRPt0+Q36UvRhPKv7zafC4rSjUaE6E+BhniaIaNg
+ iXEROAtJRieWjIXljZREul37Sg==
+X-Google-Smtp-Source: ABdhPJwLqOUICg2u8odhNpQ7vpR3/nbRalVHm+hJVAS18QddZzdw6b7WaPff6HPXYmiFEE8S5Tq90A==
+X-Received: by 2002:a7b:c7d0:: with SMTP id z16mr21915296wmk.22.1620584201555; 
+ Sun, 09 May 2021 11:16:41 -0700 (PDT)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id 3sm16106840wms.30.2021.05.09.11.16.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 09 May 2021 11:16:39 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 1EC601FF7E;
+ Sun,  9 May 2021 19:16:38 +0100 (BST)
+References: <FITkUaiC5DeyCU3e1T6EisgkkQ8Fnrwf2WZTBGE@cp4-web-031.plabs.ch>
+ <f3e79a92-802d-b9d0-048a-cf8d80309388@linaro.org>
+ <d18gk-AF0Wjro1nZkvwjmqlM5mzXO9j68Pp5aELgxzTnI6SMj8tuekbHJ8--baeNWr_zeWw-6BLzTm07cz1T_oxwFuxyAtmgGiV-XYpLL88=@remexre.xyz>
+User-agent: mu4e 1.5.13; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Nathan Ringo <nathan@remexre.xyz>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [PATCH v2] This makes it easier to figure out whether a
+ particular instruction was actually translated.
+Date: Sun, 09 May 2021 19:15:41 +0100
+In-reply-to: <d18gk-AF0Wjro1nZkvwjmqlM5mzXO9j68Pp5aELgxzTnI6SMj8tuekbHJ8--baeNWr_zeWw-6BLzTm07cz1T_oxwFuxyAtmgGiV-XYpLL88=@remexre.xyz>
+Message-ID: <87lf8nhiwq.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20210508092558.351102-1-mjt@msgid.tls.msk.ru>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.698,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,21 +84,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 09 May 2021 07:49:25 -0000
+X-List-Received-Date: Sun, 09 May 2021 18:16:46 -0000
 
-On 5/8/21 11:25 AM, Michael Tokarev wrote:
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> 
-> diff --git a/ui/vnc.c b/ui/vnc.c
-> index 456db47d71..2bea46b2b3 100644
-> --- a/ui/vnc.c
-> +++ b/ui/vnc.c
-> @@ -598,3 +598,3 @@ bool vnc_display_reload_certs(const char *id, Error **errp)
->      if (!vd->tlscreds) {
-> -        error_setg(errp, "vnc tls is not enable");
-> +        error_setg(errp, "vnc tls is not enabled");
->          return false;
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Nathan Ringo <nathan@remexre.xyz> writes:
 
+> I'm mostly looking at AArch64, so they're the same there :) I'm using
+> this to collect code coverage information, so I have the disassembly,
+> and it's slightly easier to report it that way;
+
+Have you considered collecting this information with TCG plugins? That
+way you can instrument what was actually instrumented directly.
+
+> if you think it'd be
+> more useful on other architectures to report the byte range instead,
+> it'd be an easy change to my scripts.
+>
+> Also, noticed I accidentally deleted the first line of the commit
+> message when I updated the patch... I can fix that if you want me to
+> switch the size metric.
+
+
+--=20
+Alex Benn=C3=A9e
 
