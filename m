@@ -1,51 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lg6oY-0003N4-Rf
-	for mharc-qemu-trivial@gnu.org; Mon, 10 May 2021 10:23:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36196)
+	id 1lgJCK-00022U-SG
+	for mharc-qemu-trivial@gnu.org; Mon, 10 May 2021 23:36:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42782)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1lg6oX-0003Jl-C4
- for qemu-trivial@nongnu.org; Mon, 10 May 2021 10:23:17 -0400
-Received: from us-smtp-delivery-44.mimecast.com ([205.139.111.44]:26082)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1lg6oV-0007SG-ET
- for qemu-trivial@nongnu.org; Mon, 10 May 2021 10:23:17 -0400
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-376-28UniGKtOkKqYsPFje6OZg-1; Mon, 10 May 2021 10:23:04 -0400
-X-MC-Unique: 28UniGKtOkKqYsPFje6OZg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 729681922037;
- Mon, 10 May 2021 14:23:02 +0000 (UTC)
-Received: from bahia.lan (ovpn-112-152.ams2.redhat.com [10.36.112.152])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8D1D15D705;
- Mon, 10 May 2021 14:23:01 +0000 (UTC)
-Date: Mon, 10 May 2021 16:23:00 +0200
-From: Greg Kurz <groug@kaod.org>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] virtiofsd: Fix check of chown()'s return value
-Message-ID: <20210510162300.546af5cb@bahia.lan>
-In-Reply-To: <YJlAN+eLMASsJxsL@work-vm>
-References: <162040394890.714971.15502455176528384778.stgit@bahia.lan>
- <YJlAN+eLMASsJxsL@work-vm>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lgJCK-00022I-8k; Mon, 10 May 2021 23:36:40 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:40501)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lgJCI-0001Pi-JT; Mon, 10 May 2021 23:36:40 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id n2so27602586ejy.7;
+ Mon, 10 May 2021 20:36:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=NjafwwthRg7lYpPNh+BZ1yo/tnN+GLqHjZ78rXy2DQ4=;
+ b=FgOe8U6ZbE2k8bPO+t9r/h8FWluTEjMCK1iY+8MpCmsLuQVxINzzYLAOc6h6vE3iQ7
+ K4pXhptd+G29LBFENW6mIJ3Ghi27ga9283VCJCyBOkl0IxVa5BHQYsews7ZCO2PPpqqY
+ 6N6jGB7ipReBR3Tp+eJfB32/dZPUPmBCc9guERIS/VitcSO04uhe3yjYDzmX+ChlewgY
+ Ju4w9cTMAMWuPsqL+6ytF0/rkMNDy5mxNAMWh2dTOzKZpBETaTXXpEci8lrJ8KGHxQr7
+ 8LVsT06tcr1VJK4q+anuhGH5paY8KKWpGJ7dHY3gfbMezJ8iewHb50BC+tC6L2KqIsIk
+ wC8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=NjafwwthRg7lYpPNh+BZ1yo/tnN+GLqHjZ78rXy2DQ4=;
+ b=IXF/9mX/h4k9FI+wiOfjyhH78rWrjhKGrYbpgHQRieWFbR+dQQ/zxaFXVbu2glivTN
+ blIcPka8F9RpuT8a+TdkGcMiy7rVQKKq0nOW/QpoKM9K1nwsIBUb+4z3C43N2g9u2Bkr
+ hOpUNXf3UzI5tmSN1sjgt0YYtJSNr9TIrwCt11pjfiZ5kAKqHtN8quDeQKLsC6zMram6
+ Jp73QSrsH+JZFJct12Nwe3qAQD8cV1TZjkLByttKupIxtJloWf9hXO+67r+ipX06Shx+
+ +DBtDte63t+4MdfYd4Kq1Kr9deGIRzXwyP/HQbinGIAKidFMtTymlZbhnn0Lpfj1cd5I
+ Jheg==
+X-Gm-Message-State: AOAM532iwzxtHG/bb3RkidaQGTLRnFuLGYQs2GqVWwtmZUi9xoddrbre
+ Sk9I8iwXuON2NfvU+7T7LAi87jBPoPSIQQ==
+X-Google-Smtp-Source: ABdhPJzO5mQaaV4B5vfx8KgE9Ie4hU2KLHTFNs89zCLX04BGDoWftaEyT3oCAYIX3YJubbZ/DgMgJw==
+X-Received: by 2002:a17:906:edcf:: with SMTP id
+ sb15mr28797181ejb.202.1620704196045; 
+ Mon, 10 May 2021 20:36:36 -0700 (PDT)
+Received: from [192.168.1.36] (39.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.39])
+ by smtp.gmail.com with ESMTPSA id re26sm10541829ejb.3.2021.05.10.20.36.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 10 May 2021 20:36:35 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] hw/pci-host: Do not build gpex-acpi.c if GPEX is not
+ selected
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Xingang Wang <wangxingang5@huawei.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Jiahui Cen <cenjiahui@huawei.com>,
+ Yubo Miao <miaoyubo@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210425182124.3735214-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <29fc7f06-7043-598e-98fb-dae99273e5ea@amsat.org>
+Date: Tue, 11 May 2021 05:36:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=groug@kaod.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: kaod.org
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: softfail client-ip=205.139.111.44; envelope-from=groug@kaod.org;
- helo=us-smtp-delivery-44.mimecast.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+In-Reply-To: <20210425182124.3735214-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -58,52 +86,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 May 2021 14:23:17 -0000
+X-List-Received-Date: Tue, 11 May 2021 03:36:40 -0000
 
-On Mon, 10 May 2021 15:16:23 +0100
-"Dr. David Alan Gilbert" <dgilbert@redhat.com> wrote:
+Cc'ing qemu-trivial (patch reviewed).
 
-> * Greg Kurz (groug@kaod.org) wrote:
-> > Otherwise you always get this warning when using --socket-group=3Dusers
-> >=20
-> >  vhost socket failed to set group to users (100)
-> >=20
-> > While here, print out the error if chown() fails.
-> >=20
-> > Signed-off-by: Greg Kurz <groug@kaod.org>
->=20
-> probably needs a fixes:  but yes.
->=20
-
-Fixes: f6698f2b03b0 ("tools/virtiofsd: add support for --socket-group")
-
-> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
->=20
-> > ---
-> >  tools/virtiofsd/fuse_virtio.c |    4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >=20
-> > diff --git a/tools/virtiofsd/fuse_virtio.c b/tools/virtiofsd/fuse_virti=
-o.c
-> > index 3e13997406bf..638d3ffe2f8a 100644
-> > --- a/tools/virtiofsd/fuse_virtio.c
-> > +++ b/tools/virtiofsd/fuse_virtio.c
-> > @@ -978,9 +978,9 @@ static int fv_create_listen_socket(struct fuse_sess=
-ion *se)
-> >      if (se->vu_socket_group) {
-> >          struct group *g =3D getgrnam(se->vu_socket_group);
-> >          if (g) {
-> > -            if (!chown(se->vu_socket_path, -1, g->gr_gid)) {
-> > +            if (chown(se->vu_socket_path, -1, g->gr_gid) =3D=3D -1) {
-> >                  fuse_log(FUSE_LOG_WARNING,
-> > -                         "vhost socket failed to set group to %s (%d)\=
-n",
-> > +                         "vhost socket failed to set group to %s (%d):=
- %m\n",
-> >                           se->vu_socket_group, g->gr_gid);
-> >              }
-> >          }
-> >=20
-> >=20
-
+On 4/25/21 8:21 PM, Philippe Mathieu-Daudé wrote:
+> Since its introduction in commit 5b85eabe68f ("acpi: add
+> acpi_dsdt_add_gpex") we build gpex-acpi.c if ACPI is selected,
+> even if the GPEX_HOST device isn't build. Add the missing
+> Kconfig dependency.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> The gpex*.c files aren't covered by any MAINTAINERS section:
+> 
+> $ ./scripts/get_maintainer.pl -f hw/pci-host/gpex.c -f hw/pci-host/gpex-acpi.c
+> get_maintainer.pl: No maintainers found, printing recent contributors.
+> get_maintainer.pl: Do not blindly cc: them on patches!  Use common sense.
+> 
+> Markus Armbruster <armbru@redhat.com> (commit_signer:2/2=100%)
+> Paolo Bonzini <pbonzini@redhat.com> (commit_signer:2/2=100%)
+> Alistair Francis <alistair.francis@wdc.com> (commit_signer:1/2=50%)
+> "Philippe Mathieu-Daudé" <philmd@redhat.com> (commit_signer:1/2=50%)
+> "Michael S. Tsirkin" <mst@redhat.com> (commit_signer:14/8=100%)
+> Jiahui Cen <cenjiahui@huawei.com> (commit_signer:6/8=75%)
+> Igor Mammedov <imammedo@redhat.com> (commit_signer:4/8=50%)
+> Gerd Hoffmann <kraxel@redhat.com> (commit_signer:2/8=25%)
+> Yubo Miao <miaoyubo@huawei.com> (commit_signer:2/8=25%)
+> qemu-devel@nongnu.org (open list:All patches CC here)
+> ---
+>  hw/pci-host/meson.build | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/pci-host/meson.build b/hw/pci-host/meson.build
+> index 87a896973e7..d52dce77cbd 100644
+> --- a/hw/pci-host/meson.build
+> +++ b/hw/pci-host/meson.build
+> @@ -3,7 +3,7 @@
+>  pci_ss.add(when: 'CONFIG_PCI_BONITO', if_true: files('bonito.c'))
+>  pci_ss.add(when: 'CONFIG_PCI_EXPRESS_DESIGNWARE', if_true: files('designware.c'))
+>  pci_ss.add(when: 'CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', if_true: files('gpex.c'))
+> -pci_ss.add(when: 'CONFIG_ACPI', if_true: files('gpex-acpi.c'))
+> +pci_ss.add(when: ['CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', 'CONFIG_ACPI'], if_true: files('gpex-acpi.c'))
+>  pci_ss.add(when: 'CONFIG_PCI_EXPRESS_Q35', if_true: files('q35.c'))
+>  pci_ss.add(when: 'CONFIG_PCI_EXPRESS_XILINX', if_true: files('xilinx-pcie.c'))
+>  pci_ss.add(when: 'CONFIG_PCI_I440FX', if_true: files('i440fx.c'))
+> 
 
