@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhDoW-0005Jk-OB
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 12:03:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34578)
+	id 1lhDt0-0003sC-F2
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 12:08:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhDoN-0005Bv-L1; Thu, 13 May 2021 12:03:45 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:49109)
+ id 1lhDsy-0003oR-NL; Thu, 13 May 2021 12:08:28 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:60317)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhDoH-0004rm-Vc; Thu, 13 May 2021 12:03:43 -0400
+ id 1lhDsw-0007If-Tz; Thu, 13 May 2021 12:08:28 -0400
 Received: from [192.168.100.1] ([82.142.31.78]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MadC8-1l6VL32CUc-00c8NW; Thu, 13 May 2021 18:03:11 +0200
-Subject: Re: [PATCH v3 0/2] hw: Convert mc146818rtc & etraxfs_timer to 3-phase
- reset interface
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20210502163931.552675-1-f4bug@amsat.org>
- <89ae6ce0-7959-0d74-2f14-f5943a74bec2@amsat.org>
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MwxNF-1lJNIu0Oxn-00yQjN; Thu, 13 May 2021 18:08:19 +0200
+Subject: Re: [PATCH] cutils: fix memory leak in get_relocated_path()
+To: Markus Armbruster <armbru@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>
+References: <20210412170255.231406-1-sgarzare@redhat.com>
+ <20210510155738.a4jk42yb2vqubblj@steredhat>
+ <878s4lbziv.fsf@dusky.pond.sub.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <7421b58c-d777-3295-4139-cbc95a63ce2b@vivier.eu>
-Date: Thu, 13 May 2021 18:03:09 +0200
+Message-ID: <f08af7dd-b654-e226-3ab6-873c107e4041@vivier.eu>
+Date: Thu, 13 May 2021 18:08:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <89ae6ce0-7959-0d74-2f14-f5943a74bec2@amsat.org>
+In-Reply-To: <878s4lbziv.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:KTdAXCCoYRYJUj0gn/Nco4GyTvaSLHOVituXyPu9uy92kN1oXq9
- nmuNXQo1TVWpbkwSKd6XXrfpRbA/pJ6dDqDOBlafMf1Qs+xLEk5IMTYgYU6/o3X3ZldXELi
- 3Fbd7cuKU/MS7JDIeAVVu6sweuMmxbNN/17NdCn5cjhDFWSLATS5SfohAMI0h/vcPn9dD0o
- tsMS0Q9Y3GHdpszhGYaJw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:k26zp04H2c4=:MQr6JkLUs1/JivhfqJvBu0
- Sj2gv1I8KUcltssFPVJQ8EhQZXHEeLGa0Wqco8OnyvygQRtVGxR/huvBjuG/10P8Huv6d+sBW
- CLq52eFhiXgEfvMhGqCQIS37q+4sZ0c55Q/fatyi3P3y504xpCD5d+Tu4R4K3abOlbpsMffZb
- /bkb+/ua2aTIA3s/ZjowBQ3qwRz9Ppo9tGCO4YWzMQWHNDBwvYF/mDPS+lxVKKM1OvUbwz3CJ
- omFcHo5VY5fzd94uOf3k3eJsNd3aJawRHJx+wEDQIakhvt2o/PP3J+L/iwfJtQWIZDO6UIEcj
- xFrOnumVj31swA7TGxuZwtIvA+0MROl/1o+s3hJk6X0S7pIZRHXPibYRvxzDd8D0DjFxrVnFN
- ZA27eX9AJPiNVwB65d91u3qYqrEiVPT5Xp3vX6kNP3F0u0cdub3y3XzOOZ6+zT706gcA31KoU
- cFDf/ugl6xFWzjGQNnlRryOwJeJ9gIB+bp0W3v5+vQly58GoaGjcFt3HTwgZSeocxZaQvEfVB
- LayF6jM0nhr8in/t/XHnDg=
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:RuNTEJsC3yuVvznSzDgUVel0rcp9sQ4HSgyARDjxSw/6eNZPO2E
+ ZzE+yBvcnmBCUVUbJhCNQMmcdGSbXPfmLKD2fFcYOWFvJly0iK/5O/Gg0mpz8yVtr1ZCXQf
+ FlCtAbxikU7O6nh30xcMtkb2djDLC1IacEJZg1hVtQsEZgtEehgzdt/mNSCpKjAwb7HCJ0s
+ UTpl+cSf21O51icMIzutg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TlGABPrKKr0=:AceMKO+oXRl8nroCmKgGpv
+ 1BqmLz8OPd2XIQ4SCmXIdBkVyAjL7Xgcq3TPEmZCpxce78h1uaMXw6MTjeDqZ1Y0BWnaIFLqW
+ Fnz7U7mQFISir5eC6/6LRyuyze6FIMZfV6bFTAdVXC1kquG8aCnsT060HB6iaCpCoJAmKr7TN
+ n5/RyoCy15X7cSTzfHah0G45jTnySVOkxNeFhFqNyc7ZErj0A5WV+K+SsCQTdC6QmleQUkSlK
+ UMX+GrcFoyBSJERS+or8g1KKTzKBO2Ucz6yW/sXZsGNEUMnf2O2kwSQVktxivCnHvd5bxFO2L
+ pSDz8FixzXPuXqjs3r4ZOfhiJkbruRERhmmqQ2MJHBOn/f+7nxd9dZq0Nq/37y2zXPPy+9PAX
+ sM+uQRJvmvv7D/NLlmJnzh2VU9OYU8ZyCFNNac9A58Ukfr9978b2gzYOgwBfoQ28RGT2wlUbj
+ y1Oo7U+yJbI689FqIkvNsV90BoiruU+m31+dQy5zldINXKFu84PygAIs1AuODbInvvs8eLdio
+ NOwSLl+/ZpzcxkGsis+zCM=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,41 +65,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 16:03:49 -0000
+X-List-Received-Date: Thu, 13 May 2021 16:08:29 -0000
 
-Le 11/05/2021 à 05:29, Philippe Mathieu-Daudé a écrit :
-> Hi Laurent,
+Le 11/05/2021 à 07:38, Markus Armbruster a écrit :
+> Stefano Garzarella <sgarzare@redhat.com> writes:
 > 
-> I addressed your comments from v1, and this series is
-> now reviewed. Can it get merged via your qemu-trivial tree?
-
-Yes, but next time cc: trivial to be sure ;)
+>> Ping :-)
+>>
+>> Should I resend for 6.1?
+> 
+> I'm cc'ing qemu-trivial.
+> 
+> For good measure:
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
+> 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
-> On 5/2/21 6:39 PM, Philippe Mathieu-Daudé wrote:
->> Remove qemu_register_reset() when a qdev type has a qbus parent,
->> implementing the 3-phase Resettable interface.
->>
->> Since v2:
->> - Lower IRQ in 'hold' phase, not 'exit' one (Edgar)
->>
->> Since v1:
->> - Use 3-phase reset interface instead of qdev one (Laurent)
->>
->> Supersedes: <20210423233652.3042941-1-f4bug@amsat.org>
->>
->> Philippe Mathieu-Daudé (2):
->>   hw/timer/etraxfs_timer: Convert to 3-phase reset (Resettable
->>     interface)
->>   hw/rtc/mc146818rtc: Convert to 3-phase reset (Resettable interface)
->>
->>  hw/rtc/mc146818rtc.c     | 42 +++++++++++++++++++++-------------------
->>  hw/timer/etraxfs_timer.c | 14 +++++++++++---
->>  2 files changed, 33 insertions(+), 23 deletions(-)
->>
-
 
