@@ -1,67 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lgrCA-0001O7-4F
-	for mharc-qemu-trivial@gnu.org; Wed, 12 May 2021 11:54:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54752)
+	id 1lh4Zf-0006jz-K3
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 02:11:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1lgrC6-0001L0-TA
- for qemu-trivial@nongnu.org; Wed, 12 May 2021 11:54:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21789)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1lgrC2-0005YC-CF
- for qemu-trivial@nongnu.org; Wed, 12 May 2021 11:54:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1620834877;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=1tRQr4eGMFBC8FpU5wWR6ca7KPUlkomsukZgJWDbW8I=;
- b=Huog//r18hEEpl4mGqVtHOjVdBILmv4TKtQsjn9cVdFm67gh2uhprf6ul6X0gzamGlu4Xy
- 3rM4weWsRQdmSjzOM+4XOpzCKT28OAFVUHEh0DFAECevFs+YwdZT03Bfq6SserCbIUUW9n
- 6jT2lSZIDfziUpJIQ5mODcTvHObtaAg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-548-ywgs9rAPN9OJOjThgQwoZQ-1; Wed, 12 May 2021 11:54:35 -0400
-X-MC-Unique: ywgs9rAPN9OJOjThgQwoZQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28702800D62;
- Wed, 12 May 2021 15:54:34 +0000 (UTC)
-Received: from localhost (ovpn-115-51.ams2.redhat.com [10.36.115.51])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 56B395C232;
- Wed, 12 May 2021 15:54:30 +0000 (UTC)
-Date: Wed, 12 May 2021 16:54:29 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, Jason Wang <jasowang@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH 0/3] hw/virtio: Constify VirtIOFeature
-Message-ID: <YJv6NV2T62naWuAo@stefanha-x1.localdomain>
-References: <20210511104157.2880306-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <katsuu@gmail.com>)
+ id 1lh4Zd-0006ii-Lx; Thu, 13 May 2021 02:11:53 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:43593)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <katsuu@gmail.com>)
+ id 1lh4Zc-0007ai-5e; Thu, 13 May 2021 02:11:53 -0400
+Received: by mail-ed1-x533.google.com with SMTP id s6so29678045edu.10;
+ Wed, 12 May 2021 23:11:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YeYrCRqXI8zMLb1ULg0TwMpV+gm7WgDzm4xxyHMWg9E=;
+ b=PbrIhwjJ5Dps2g0WBHCfl65/pluLORF/skYhkbpl4fWWInXnmHRoHEtMFnPy5JNY25
+ mRwon/nOeGlzJyfpRB8h34McVbjbCiEFE3Ze87VRTWrhaBkOmfbezq2PVFC9KV3FUov0
+ Iht+3U/NoW6zA7RcnQBK4wNVmsjPpC6qNezwwy3ohZyTGIXEN8z8wg0/WZ3DR+80rmMa
+ /Vo4TUsQyvZdqR32UglezeQq+uIr6dV8LOPXvqqF3g/4znCi4iCvjHFJME5/6oxGsFQr
+ RxYrGyz4cTd38+blY0PFQdESAtsJraizh5ysJHK3+obAio3baOlwlk5Z5IMi6WmtuKGw
+ DzUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YeYrCRqXI8zMLb1ULg0TwMpV+gm7WgDzm4xxyHMWg9E=;
+ b=jwEV/UMCf07m6q8M7bAsls28MZad95Biq913RBG83dDZ4LR+/qk81uORE85FDckwBU
+ zGUVmcu2y4ifQMF6aQW+73psLNuZ8fSUd+RAH25xuMpwG9GK6q+E9XeQq6fykgVYF+9N
+ vtsSiKfMUbIA8WrhPUUbdajMaPeqFQ4z3UyV5VB8v/Hmc/twHspCDmhtzSP8sP4oDtFN
+ z48Ph50fm1FEeVFkNqzERZEXsL5+lNzHpYUwTgGh4CaBTbMCSmbdstF3bn7UX+87IaHi
+ Yox+WFMCwmPH+xN6CB8HOnSv454hqzAFKrNh5+aTu/GW1hxUprCXNkYEZK7C3s58iGa+
+ PcIQ==
+X-Gm-Message-State: AOAM533VCc9GWgY8gR3iMjXyAFM1+vPH64FLaM5QRtVu/Et8jrG4U66W
+ t2DMBnzHxKJjuaQlzlIyXA+lKAeWEhzZx5oTRHwOlAg9
+X-Google-Smtp-Source: ABdhPJxLlG3S8mhV0wLuJWC043CoFLE32fj8ilqs5pJRAB7YKZW+e1VgRP1SBww1wY1wrURvw/GYlQ2huIdq3s0ku6w=
+X-Received: by 2002:a05:6402:270b:: with SMTP id
+ y11mr47877738edd.332.1620886308776; 
+ Wed, 12 May 2021 23:11:48 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210511104157.2880306-1-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="7MgSMe2+oIs6E1F1"
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <CA+pCdY3iG+pKKQqEVknnWF-W0wK36S4U1jxPvxmGAPp6FFvz1Q@mail.gmail.com>
+In-Reply-To: <CA+pCdY3iG+pKKQqEVknnWF-W0wK36S4U1jxPvxmGAPp6FFvz1Q@mail.gmail.com>
+From: Katsuhiro Ueno <uenobk@gmail.com>
+Date: Thu, 13 May 2021 15:11:32 +0900
+Message-ID: <CANrJRq+XjSjRqweBqDak8V9vi7cyNPiv8-g-irHbr6VAzo0a9w@mail.gmail.com>
+Subject: Re: [PATCH] hw/input/hid: Add support for keys of jp106 keyboard.
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=katsuu@gmail.com; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,50 +68,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 May 2021 15:54:43 -0000
+X-List-Received-Date: Thu, 13 May 2021 06:11:54 -0000
 
---7MgSMe2+oIs6E1F1
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Ping.
 
-On Tue, May 11, 2021 at 12:41:54PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> Trivial patches to keep VirtIOFeature arrays read-only
-> (better safe than sorry).
->=20
-> Philippe Mathieu-Daud=E9 (3):
->   hw/virtio: Pass virtio_feature_get_config_size() a const argument
->   virtio-blk: Constify VirtIOFeature feature_sizes[]
->   virtio-net: Constify VirtIOFeature feature_sizes[]
->=20
->  include/hw/virtio/virtio.h | 2 +-
->  hw/block/virtio-blk.c      | 2 +-
->  hw/net/virtio-net.c        | 2 +-
->  hw/virtio/virtio.c         | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
->=20
-> --=20
-> 2.26.3
->=20
->=20
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---7MgSMe2+oIs6E1F1
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEyBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmCb+jUACgkQnKSrs4Gr
-c8gYdAf4iZc1kiurdTm42HmCH5liuEh83XHCJ4WdBo4lPAxs2zKtf0ek3zGlq0+X
-gnO9y1AUWROSJ9oWnN4k7NO0qugRJ+/cdiScxxMYrMHb8NKByT38yzdvJ75qSBng
-OB8R2G3lZoG8MlMY/NElUeterZGqhoZpeCgNdSFNUn5cx+ljPjUuUvhRhOBGI4S2
-wZtxnO63N2B80IzXMTlPo41F/xmUN6UO2EQcjkg7sU7x0sWwpPkKRj6IENTWbeZs
-34/tpK5XfchAf+Z5BA5NuqZi5hmzLMRYdLcz8kpFUvJZdlNmJNFpc9undPlr+4vf
-NcX5nIrpZXla1Mm/ClCImC2w+bPQ
-=0oU7
------END PGP SIGNATURE-----
-
---7MgSMe2+oIs6E1F1--
-
+2021-04-27 11:02 Katsuhiro Ueno <uenobk@gmail.com>:
+>
+> Add support for the following keys: KATAKANAHIRAGANA, HENKAN, MUHENKAN,
+> RO, and YEN.  Before this commit, these keys did not work as expected
+> when a jp106 keyboard was connected to the guest as a usb-kbd device.
+>
+> Signed-off-by: Katsuhiro Ueno <uenobk@gmail.com>
+> ---
+>  hw/input/hid.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/input/hid.c b/hw/input/hid.c
+> index e1d2e46083..8aab0521f4 100644
+> --- a/hw/input/hid.c
+> +++ b/hw/input/hid.c
+> @@ -51,8 +51,8 @@ static const uint8_t hid_usage_keys[0x100] = {
+>      0x45, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e,
+>      0xe8, 0xe9, 0x71, 0x72, 0x73, 0x00, 0x00, 0x00,
+>      0x00, 0x00, 0x00, 0x85, 0x00, 0x00, 0x00, 0x00,
+> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> -    0x00, 0x00, 0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65,
+> +    0x88, 0x00, 0x00, 0x87, 0x00, 0x00, 0x00, 0x00,
+> +    0x00, 0x8a, 0x00, 0x8b, 0x00, 0x89, 0xe7, 0x65,
+>
+>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> --
+> 2.24.3 (Apple Git-128)
 
