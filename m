@@ -1,71 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhEl0-0001lg-75
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:04:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47456)
+	id 1lhElK-0002qA-E4
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:04:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lhEkx-0001e3-Nf; Thu, 13 May 2021 13:04:15 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:37857)
+ id 1lhElJ-0002m6-4Q; Thu, 13 May 2021 13:04:37 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:38429)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lhEkv-0006W7-UC; Thu, 13 May 2021 13:04:15 -0400
-Received: by mail-ej1-x633.google.com with SMTP id w3so40867371ejc.4;
- Thu, 13 May 2021 10:04:13 -0700 (PDT)
+ id 1lhElH-0006oR-Fa; Thu, 13 May 2021 13:04:36 -0400
+Received: by mail-ej1-x629.google.com with SMTP id b25so40784893eju.5;
+ Thu, 13 May 2021 10:04:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=j5RHZ9DrXt8/gDGNIrKUTqrxlNQ7eGxzhteGedTkRY8=;
- b=VXrzrFPJ2dvavSD/u62vVs7+eQNp92qPMpKbvLsFWR6EJWGqSL/TAeo/EmJNPhSbJk
- 830QpHLz+wFRN+nHnhGzAXAmSeVsxUCV+phpqRSo2JtH3YFaTbTXkd+/OOcDpexQTzDX
- tG68nyJvU748V41qQNIFb0YwaKUNKa0MukDo1eG9P3nhJFH6yX2Bz1V50YujkctaCfIE
- KUjhZAQDDI93WLVw5etyLzejj75vQ6z8Mb6jH1IlXMTBO2tVfabH8L8F5Kt7kM3lr4IQ
- 3HtN1nni/F3QnZl9pv2Ln8wRlNl4X4hf1Sl7HVCP7yaPd+tX867Hq1T63oKdyEN7zulX
- VMAw==
+ bh=06C34SLwerixM0UnCWH4Cv8sH0GOCCCWKl1/5MV0V/I=;
+ b=lxnpOQHaJYnf/G0odB1sEf/5F2ow0hTeuBMGztOR8h7Tn6db+d/iDgIF8twYkaM5Mo
+ 2tWOHlNGmfxv5llt+ps5TARW1H4635FDO7KHxHTcsbDeGn3E0O3u1AbmTzu6V44FPGw+
+ 4wN7F4RP4/8BdAr7fdTwRdgBE0zr5Yq91wTcrFfvYFz6S8hba3vIhJtXsOtVT3yG+zXT
+ igwCQap2rj2fTYNJpRmOYfo08Ik5roTaM5+bXpmaz43Vq5UtrgqK06Go8cSMcHH2HKJB
+ V/odTjLK4ivGGs+rCzspJBQuyTcPkrOsT9GJLLo/Y0gvujv3ihPRVs2ZaIYnnefCYqsY
+ OASg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=j5RHZ9DrXt8/gDGNIrKUTqrxlNQ7eGxzhteGedTkRY8=;
- b=rh3TcV2/2VvH2HCZ4x18vka2STqRLouNx9Vib8QO/4ZmBswxu+mUpYbqf6aJPCoFVC
- 1oml3uYEiVbUAWf8fVWGCfYOBYiQCsWsH+iEgDZ8qpXV5FAZHzjo6o9fow4TyPZfsxtT
- SKVrTRz5sKwScLNUnSVgy69idVh5gYEmt6yDP4ShKL99fshtCBd7Ekd2q9DmrAO0Iic9
- lN34xFYF+eq+imwzRVqaAaEMGxM9DVQ3NSJjvmCi8XJHDvMZCS4QK1SA2+RonT73YfdY
- oOSc7meaMDkpJrUumBmfmZDU7VFrSWSEfZp6J29tw0oJVojL0Dn7p0IGRMD+n9CpyJy8
- aUjA==
-X-Gm-Message-State: AOAM5314IhlQajOCsdyBn20nZOJG8gSIhL+WrnpMe0raCzfKD07K671W
- pMZn68EZD/4BFlMMyabm/84=
-X-Google-Smtp-Source: ABdhPJwXjKte0RQUmGkcr2IfffSXDNsTLbPgAP7xYPsJg91iEcEjJdHnsluU6JpBrdaks6X23uYBaA==
-X-Received: by 2002:a17:907:a044:: with SMTP id
- gz4mr45035112ejc.55.1620925451783; 
- Thu, 13 May 2021 10:04:11 -0700 (PDT)
+ bh=06C34SLwerixM0UnCWH4Cv8sH0GOCCCWKl1/5MV0V/I=;
+ b=tUFAKYj4nZsIITEU8jcj5xauR1VtrJHKP0OZlHQEzUFPDkzuX5qOvbxydm672sFnWX
+ bu3kYPebl1ZM9i7tgTj8bm12aWzw62CaigVom5Ltr8zQLM9AKv6P1SVf2eCqGvpngMC6
+ O2f3LBBF7Dj9aPIG5k7MlQjahSdNLXBlsNxpQ6WQkaqk+6MF8eBpjKTsNjVrW1YCuYZi
+ LgFtyFEfvzTEP+MiFbhCZenmddhbbtrpzhH6ZbdjPtZ/RPUBS0A3fEDU1xKoczw3muV6
+ EfyBgGjMkvPwiBRqGE/K5ep7Bo8a2hCBhd3jy+t7QtrB2GK/rhQFA7YGtxnUJYDBgaYl
+ Z1xg==
+X-Gm-Message-State: AOAM530pw4dgkcaGiLiAkWtMIMAHO7ReiF8w9FllVSSfuFSobV8T5wGc
+ JUIU5exa9oMwIdWBORmBWKiAXxfR0qna3g==
+X-Google-Smtp-Source: ABdhPJwe7phgYR73zsqm1nhLcTLtwaBw2e5x+u3yKDrDLpFOT+JCOzOAtwntAuVq2rmBW2saUCJaaQ==
+X-Received: by 2002:a17:907:209b:: with SMTP id
+ pv27mr44963796ejb.475.1620925473519; 
+ Thu, 13 May 2021 10:04:33 -0700 (PDT)
 Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id k9sm2244440eje.102.2021.05.13.10.04.10
+ by smtp.gmail.com with ESMTPSA id n2sm2781858edi.32.2021.05.13.10.04.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 May 2021 10:04:11 -0700 (PDT)
+ Thu, 13 May 2021 10:04:32 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] target/avr: Ignore unimplemented WDR opcode
-To: Fred Konrad <konrad@adacore.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- Michael Rolnik <mrolnik@gmail.com>
-References: <20210502190900.604292-1-f4bug@amsat.org>
- <36dd1481-d89e-5f1c-5715-9275df83b722@adacore.com>
+Subject: Re: [PATCH] hw/avr/atmega.c: use the avr51 cpu for atmega1280
+To: Joaquin de Andres <me@xcancerberox.com.ar>,
+ Fred Konrad <konrad@adacore.com>, qemu-devel@nongnu.org
+Cc: Michael Rolnik <mrolnik@gmail.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1619637319-22299-1-git-send-email-frederic.konrad@adacore.com>
+ <7970a6ec-f5ac-bcc9-9184-d8450b64b116@amsat.org>
+ <27cc1bc5-ee71-abf6-fd8f-58ec44e1767f@xcancerberox.com.ar>
+ <d8b05f93-ef5f-1697-439b-8961cb446cdf@adacore.com>
+ <b61dabc3-e5e6-5bab-503c-53dd32a11aff@xcancerberox.com.ar>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e37dded2-7ed3-3878-7540-d693d8a45abb@amsat.org>
-Date: Thu, 13 May 2021 19:04:09 +0200
+Message-ID: <4f22587c-1eb1-deab-fdb6-c53e36537e36@amsat.org>
+Date: Thu, 13 May 2021 19:04:31 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <36dd1481-d89e-5f1c-5715-9275df83b722@adacore.com>
+In-Reply-To: <b61dabc3-e5e6-5bab-503c-53dd32a11aff@xcancerberox.com.ar>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -86,71 +87,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 17:04:16 -0000
+X-List-Received-Date: Thu, 13 May 2021 17:04:37 -0000
 
 Cc'ing qemu-trivial@
 
-On 5/5/21 3:35 PM, Fred Konrad wrote:
-> Le 5/2/21 à 9:09 PM, Philippe Mathieu-Daudé a écrit :
->> Running the WDR opcode triggers a segfault:
+On 5/5/21 4:00 PM, Joaquin de Andres wrote:
+> On 5/5/21 3:33 PM, Fred Konrad wrote:
 >>
->>    $ cat > foo.S << EOF
->>    > __start:
->>    >     wdr
->>    > EOF
->>    $ avr-gcc -nostdlib -nostartfiles -mmcu=avr6 foo.S -o foo.elf
->>    $ qemu-system-avr -serial mon:stdio -nographic -no-reboot \
->>      -M mega -bios foo.elf -d in_asm --singlestep
->>    IN:
->>    0x00000000:  WDR
->>    Segmentation fault (core dumped)
 >>
->>    (gdb) bt
->>       #0  0x00005555add0b23a in gdb_get_cpu_pid (cpu=0x5555af5a4af0)
->> at ../gdbstub.c:718
->>       #1  0x00005555add0b2dd in gdb_get_cpu_process
->> (cpu=0x5555af5a4af0) at ../gdbstub.c:743
->>       #2  0x00005555add0e477 in gdb_set_stop_cpu (cpu=0x5555af5a4af0)
->> at ../gdbstub.c:2742
->>       #3  0x00005555adc99b96 in cpu_handle_guest_debug
->> (cpu=0x5555af5a4af0) at ../softmmu/cpus.c:306
->>       #4  0x00005555adcc66ab in rr_cpu_thread_fn (arg=0x5555af5a4af0)
->> at ../accel/tcg/tcg-accel-ops-rr.c:224
->>       #5  0x00005555adefaf12 in qemu_thread_start
->> (args=0x5555af5d9870) at ../util/qemu-thread-posix.c:521
->>       #6  0x00007f692d940ea5 in start_thread () from
->> /lib64/libpthread.so.0
->>       #7  0x00007f692d6699fd in clone () from /lib64/libc.so.6
+>> Le 4/30/21 à 12:27 PM, Joaquin de Andres a écrit :
+>>> On 4/28/21 9:17 PM, Philippe Mathieu-Daudé wrote:
+>>>> Cc'ing Joaquín.
+>>>>
+>>>> On 4/28/21 9:15 PM, Frederic Konrad wrote:
+>>>>> According to the as documentation:
+>>>>>   (https://sourceware.org/binutils/docs-2.36/as/AVR-Options.html)
+>>>>>
+>>>>> "Instruction set avr51 is for the enhanced AVR core with exactly 128K
+>>>>>   program memory space (MCU types: atmega128, atmega128a, atmega1280,
+>>>>>   atmega1281, atmega1284, atmega1284p, atmega128rfa1, atmega128rfr2,
+>>>>>   atmega1284rfr2, at90can128, at90usb1286, at90usb1287, m3000)."
+>>>>>
+>>>>> But when compiling a program for atmega1280 or avr51 and trying to
+>>>>> execute
+>>>>> it:
+>>>>>
+>>>>> $ cat > test.S << EOF
+>>>>>> loop:
+>>>>>>      rjmp loop
+>>>>>> EOF
+>>>>> $ avr-gcc -nostdlib -nostartfiles -mmcu=atmega1280 test.S -o test.elf
+>>>>> $ qemu-system-avr -serial mon:stdio -nographic -no-reboot -M mega \
+>>>>>                    -bios test.elf
+>>>>> qemu-system-avr: Current machine: Arduino Mega (ATmega1280) with
+>>>>> 'avr6' CPU
+>>>>> qemu-system-avr: ELF image 'test.elf' is for 'avr51' CPU
+>>>>>
+>>>>> So this fixes the atmega1280 class to use an avr51 CPU.
+>>>>>
+>>>>> Signed-off-by: Frederic Konrad <frederic.konrad@adacore.com>
+>>>>> ---
+>>>>>   hw/avr/atmega.c | 2 +-
+>>>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>>
+>>>>> diff --git a/hw/avr/atmega.c b/hw/avr/atmega.c
+>>>>> index 44c6afebbb..e3ea5702f5 100644
+>>>>> --- a/hw/avr/atmega.c
+>>>>> +++ b/hw/avr/atmega.c
+>>>>> @@ -402,7 +402,7 @@ static void atmega1280_class_init(ObjectClass
+>>>>> *oc, void *data)
+>>>>>   {
+>>>>>       AtmegaMcuClass *amc = ATMEGA_MCU_CLASS(oc);
+>>>>>   -    amc->cpu_type = AVR_CPU_TYPE_NAME("avr6");
+>>>>> +    amc->cpu_type = AVR_CPU_TYPE_NAME("avr51");
+>>>>>       amc->flash_size = 128 * KiB;
+>>>>>       amc->eeprom_size = 4 * KiB;
+>>>>>       amc->sram_size = 8 * KiB;
+>>>>>
+>>>>
+>>> Good catch!
+>>>
 >>
->> Since the watchdog peripheral is not implemented, simply
->> log the opcode as unimplemented and keep going.
+>> Thanks, does that count as a reviewed-by :)?
 >>
->> Reported-by: Fred Konrad <konrad@adacore.com>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   target/avr/helper.c | 6 +-----
->>   1 file changed, 1 insertion(+), 5 deletions(-)
 >>
->> diff --git a/target/avr/helper.c b/target/avr/helper.c
->> index 35e10195940..981c29da453 100644
->> --- a/target/avr/helper.c
->> +++ b/target/avr/helper.c
->> @@ -188,11 +188,7 @@ void helper_break(CPUAVRState *env)
->>     void helper_wdr(CPUAVRState *env)
->>   {
->> -    CPUState *cs = env_cpu(env);
->> -
->> -    /* WD is not implemented yet, placeholder */
->> -    cs->exception_index = EXCP_DEBUG;
->> -    cpu_loop_exit(cs);
->> +    qemu_log_mask(LOG_UNIMP, "WDG reset (not implemented)\n");
->>   }
+> Yes! sorry.
 > 
-> Seems ok to me, at least better than having a segfault.
 > 
-> Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
-> 
->>     /*
->>
+> Reviewed-by: Joaquin de Andres <me@xcancerberox.com.ar>
 > 
 
