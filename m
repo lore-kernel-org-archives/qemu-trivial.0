@@ -1,61 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lh4Zf-0006jz-K3
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 02:11:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35000)
+	id 1lh6AD-0004WS-CI
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 03:53:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <katsuu@gmail.com>)
- id 1lh4Zd-0006ii-Lx; Thu, 13 May 2021 02:11:53 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:43593)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <katsuu@gmail.com>)
- id 1lh4Zc-0007ai-5e; Thu, 13 May 2021 02:11:53 -0400
-Received: by mail-ed1-x533.google.com with SMTP id s6so29678045edu.10;
- Wed, 12 May 2021 23:11:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YeYrCRqXI8zMLb1ULg0TwMpV+gm7WgDzm4xxyHMWg9E=;
- b=PbrIhwjJ5Dps2g0WBHCfl65/pluLORF/skYhkbpl4fWWInXnmHRoHEtMFnPy5JNY25
- mRwon/nOeGlzJyfpRB8h34McVbjbCiEFE3Ze87VRTWrhaBkOmfbezq2PVFC9KV3FUov0
- Iht+3U/NoW6zA7RcnQBK4wNVmsjPpC6qNezwwy3ohZyTGIXEN8z8wg0/WZ3DR+80rmMa
- /Vo4TUsQyvZdqR32UglezeQq+uIr6dV8LOPXvqqF3g/4znCi4iCvjHFJME5/6oxGsFQr
- RxYrGyz4cTd38+blY0PFQdESAtsJraizh5ysJHK3+obAio3baOlwlk5Z5IMi6WmtuKGw
- DzUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YeYrCRqXI8zMLb1ULg0TwMpV+gm7WgDzm4xxyHMWg9E=;
- b=jwEV/UMCf07m6q8M7bAsls28MZad95Biq913RBG83dDZ4LR+/qk81uORE85FDckwBU
- zGUVmcu2y4ifQMF6aQW+73psLNuZ8fSUd+RAH25xuMpwG9GK6q+E9XeQq6fykgVYF+9N
- vtsSiKfMUbIA8WrhPUUbdajMaPeqFQ4z3UyV5VB8v/Hmc/twHspCDmhtzSP8sP4oDtFN
- z48Ph50fm1FEeVFkNqzERZEXsL5+lNzHpYUwTgGh4CaBTbMCSmbdstF3bn7UX+87IaHi
- Yox+WFMCwmPH+xN6CB8HOnSv454hqzAFKrNh5+aTu/GW1hxUprCXNkYEZK7C3s58iGa+
- PcIQ==
-X-Gm-Message-State: AOAM533VCc9GWgY8gR3iMjXyAFM1+vPH64FLaM5QRtVu/Et8jrG4U66W
- t2DMBnzHxKJjuaQlzlIyXA+lKAeWEhzZx5oTRHwOlAg9
-X-Google-Smtp-Source: ABdhPJxLlG3S8mhV0wLuJWC043CoFLE32fj8ilqs5pJRAB7YKZW+e1VgRP1SBww1wY1wrURvw/GYlQ2huIdq3s0ku6w=
-X-Received: by 2002:a05:6402:270b:: with SMTP id
- y11mr47877738edd.332.1620886308776; 
- Wed, 12 May 2021 23:11:48 -0700 (PDT)
-MIME-Version: 1.0
-References: <CA+pCdY3iG+pKKQqEVknnWF-W0wK36S4U1jxPvxmGAPp6FFvz1Q@mail.gmail.com>
-In-Reply-To: <CA+pCdY3iG+pKKQqEVknnWF-W0wK36S4U1jxPvxmGAPp6FFvz1Q@mail.gmail.com>
-From: Katsuhiro Ueno <uenobk@gmail.com>
-Date: Thu, 13 May 2021 15:11:32 +0900
-Message-ID: <CANrJRq+XjSjRqweBqDak8V9vi7cyNPiv8-g-irHbr6VAzo0a9w@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lh6AB-0004PS-1v; Thu, 13 May 2021 03:53:43 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:43845)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lh6A9-000510-8C; Thu, 13 May 2021 03:53:42 -0400
+Received: from [192.168.100.1] ([82.142.31.78]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N1xdf-1lWC4U2fxB-012HDn; Thu, 13 May 2021 09:53:35 +0200
 Subject: Re: [PATCH] hw/input/hid: Add support for keys of jp106 keyboard.
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=katsuu@gmail.com; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+To: Katsuhiro Ueno <uenobk@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+References: <CA+pCdY3iG+pKKQqEVknnWF-W0wK36S4U1jxPvxmGAPp6FFvz1Q@mail.gmail.com>
+ <CANrJRq+XjSjRqweBqDak8V9vi7cyNPiv8-g-irHbr6VAzo0a9w@mail.gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <0532d1d6-1ddb-2c9c-6d16-dae5dacc86d1@vivier.eu>
+Date: Thu, 13 May 2021 09:53:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
+MIME-Version: 1.0
+In-Reply-To: <CANrJRq+XjSjRqweBqDak8V9vi7cyNPiv8-g-irHbr6VAzo0a9w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:StStDuQt3h8LlCvxmiJJ1+sFGuLuE4WC6b8J9YAJOqZ09ZIRLnu
+ t+Wx3fx0p4GCj3i0W9shiQ5olXU308TCfqGYwu/+05s7/ZClWmfCoF6vnZKDvKd619TT7Wl
+ EdirWGBusr0FNnucTKf6BnnZWz4TyzCMWC61mwdEig1Hr2mKC+bmYujrmQ71TL0gUL8zsHn
+ qon51sqQBhhsQsq8Hyhtg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GGa1UAa+ghM=:/dJOIHjR33iLrE34mZYrWZ
+ p7D3Iy08xFjG5+dGTbT4PD/SM5diUGIQNZxxv3uhjO0Hc7wslTtIuVUminYFwl9ebxQmYbNiA
+ sHsSJB+aqyDNd25j2Dz2HyCKB6ZAPu24Ahgm7HvbwqsOn+781BF8Gq7KFM1IV6ZHa9UDjL/M9
+ L08BRZEU/OR97pZ1ZsdpsmiLjb0ko2neMrzD7v7UfFaQ/2/uw8GAW8lfOEuPhs/Y78Hehaeld
+ QwDN00C9weOTR7TdoUdf5kdjZChEn/J9wPShw8tzZjwRn50sb6xw6Lqh4jBcFXRM6d6LLCLLy
+ Z3tw2XVzkCbpNElsPzt81qjt8eCTjbwDUFgUqmYpgzPf6UsJn4I8gHqJi1GiJYkJKfaDQG6EK
+ CalwZmSChkDTwmw09CWSOz2BrAqJmjePtOzaSDGTIVFTfHfXSVI/zdZnkukRZ9GXS3YA0+kxG
+ qyxh1J1qfwS3QSSFC2Gqc7OJWGVYIR1rBKXduZKWoZrqYhXa/7/Asb89wmvF/uSUt67/4I0QH
+ zGwuDYdd4DQHwf0eQyKYpI=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -68,36 +60,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 06:11:54 -0000
+X-List-Received-Date: Thu, 13 May 2021 07:53:43 -0000
 
-Ping.
+Le 13/05/2021 à 08:11, Katsuhiro Ueno a écrit :
+> Ping.
 
-2021-04-27 11:02 Katsuhiro Ueno <uenobk@gmail.com>:
->
-> Add support for the following keys: KATAKANAHIRAGANA, HENKAN, MUHENKAN,
-> RO, and YEN.  Before this commit, these keys did not work as expected
-> when a jp106 keyboard was connected to the guest as a usb-kbd device.
->
-> Signed-off-by: Katsuhiro Ueno <uenobk@gmail.com>
-> ---
->  hw/input/hid.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/input/hid.c b/hw/input/hid.c
-> index e1d2e46083..8aab0521f4 100644
-> --- a/hw/input/hid.c
-> +++ b/hw/input/hid.c
-> @@ -51,8 +51,8 @@ static const uint8_t hid_usage_keys[0x100] = {
->      0x45, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e,
->      0xe8, 0xe9, 0x71, 0x72, 0x73, 0x00, 0x00, 0x00,
->      0x00, 0x00, 0x00, 0x85, 0x00, 0x00, 0x00, 0x00,
-> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> -    0x00, 0x00, 0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65,
-> +    0x88, 0x00, 0x00, 0x87, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x8a, 0x00, 0x8b, 0x00, 0x89, 0xe7, 0x65,
->
->      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> --
-> 2.24.3 (Apple Git-128)
+cc Gerd
+
+> 2021-04-27 11:02 Katsuhiro Ueno <uenobk@gmail.com>:
+>>
+>> Add support for the following keys: KATAKANAHIRAGANA, HENKAN, MUHENKAN,
+>> RO, and YEN.  Before this commit, these keys did not work as expected
+>> when a jp106 keyboard was connected to the guest as a usb-kbd device.
+>>
+>> Signed-off-by: Katsuhiro Ueno <uenobk@gmail.com>
+>> ---
+>>  hw/input/hid.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/input/hid.c b/hw/input/hid.c
+>> index e1d2e46083..8aab0521f4 100644
+>> --- a/hw/input/hid.c
+>> +++ b/hw/input/hid.c
+>> @@ -51,8 +51,8 @@ static const uint8_t hid_usage_keys[0x100] = {
+>>      0x45, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e,
+>>      0xe8, 0xe9, 0x71, 0x72, 0x73, 0x00, 0x00, 0x00,
+>>      0x00, 0x00, 0x00, 0x85, 0x00, 0x00, 0x00, 0x00,
+>> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>> -    0x00, 0x00, 0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65,
+>> +    0x88, 0x00, 0x00, 0x87, 0x00, 0x00, 0x00, 0x00,
+>> +    0x00, 0x8a, 0x00, 0x8b, 0x00, 0x89, 0xe7, 0x65,
+>>
+>>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>> --
+>> 2.24.3 (Apple Git-128)
+> 
+
 
