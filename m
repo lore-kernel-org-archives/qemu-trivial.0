@@ -1,53 +1,99 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lh6AD-0004WS-CI
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 03:53:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57348)
+	id 1lhC0m-0001fQ-ST
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 10:08:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lh6AB-0004PS-1v; Thu, 13 May 2021 03:53:43 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:43845)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1lhC0h-0001bK-Vn; Thu, 13 May 2021 10:08:19 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:52134)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lh6A9-000510-8C; Thu, 13 May 2021 03:53:42 -0400
-Received: from [192.168.100.1] ([82.142.31.78]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N1xdf-1lWC4U2fxB-012HDn; Thu, 13 May 2021 09:53:35 +0200
-Subject: Re: [PATCH] hw/input/hid: Add support for keys of jp106 keyboard.
-To: Katsuhiro Ueno <uenobk@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
-References: <CA+pCdY3iG+pKKQqEVknnWF-W0wK36S4U1jxPvxmGAPp6FFvz1Q@mail.gmail.com>
- <CANrJRq+XjSjRqweBqDak8V9vi7cyNPiv8-g-irHbr6VAzo0a9w@mail.gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <0532d1d6-1ddb-2c9c-6d16-dae5dacc86d1@vivier.eu>
-Date: Thu, 13 May 2021 09:53:34 +0200
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1lhC0g-00065L-6J; Thu, 13 May 2021 10:08:19 -0400
+Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 14DE4oLK115537; Thu, 13 May 2021 10:08:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=JgcmVxxCv4qvSr41irx7+Gp0RnVSQ7P6QfZjJ7+7Jq0=;
+ b=Iax0vlFzB+DNYz20vJi2Qr/ZR4TonOvgmDYQLUlql9K08yDHFPAd61JiP5IA7GHohKg5
+ JuNb3dv/xXjPH/+d6X/tbxGCzZSjkBDPTcZ8HV/zTrUYRcu/OZJaSIM+2itB7L69d6s/
+ qNq1gquZlyqPfSjdzc/by1DCe5o3yIO4UEHl8gNursl4fcnPn+7398Mp99wFlKcWo+aJ
+ YhR6VmVpcfDF8LMV0Nm5FvXKGFo+0QwviF1U/25WAJBo463fc4Fmk9KJICHCmNqv/eyY
+ wGzTdUsq0OnvxcyuE43wwqzb1ZnDFB6OAU0kqzzpJbnhf33X94j2mMr5KNlDPhmO1n4b PQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 38h4u49hgv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 13 May 2021 10:08:15 -0400
+Received: from m0098417.ppops.net (m0098417.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 14DE5CCm117648;
+ Thu, 13 May 2021 10:08:15 -0400
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.11])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 38h4u49hgk-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 13 May 2021 10:08:15 -0400
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+ by ppma03dal.us.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 14DE7A3u020512;
+ Thu, 13 May 2021 14:08:14 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
+ [9.57.198.26]) by ppma03dal.us.ibm.com with ESMTP id 38dj99xmpj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 13 May 2021 14:08:14 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
+ [9.57.199.111])
+ by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 14DE8Dnf13173432
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 13 May 2021 14:08:14 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CE1C0AC064;
+ Thu, 13 May 2021 14:08:13 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C0811AC05F;
+ Thu, 13 May 2021 14:08:13 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
+ Thu, 13 May 2021 14:08:13 +0000 (GMT)
+Subject: Re: [PATCH] backends/tpm: Replace qemu_mutex_lock calls with
+ QEMU_LOCK_GUARD
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-trivial@nongnu.org,
+ Christophe de Dinechin <dinechin@redhat.com>
+References: <20210512070713.3286188-1-philmd@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <8f8954d2-248e-95f3-fd84-0d4deb42b9af@linux.ibm.com>
+Date: Thu, 13 May 2021 10:08:13 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <CANrJRq+XjSjRqweBqDak8V9vi7cyNPiv8-g-irHbr6VAzo0a9w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+In-Reply-To: <20210512070713.3286188-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:StStDuQt3h8LlCvxmiJJ1+sFGuLuE4WC6b8J9YAJOqZ09ZIRLnu
- t+Wx3fx0p4GCj3i0W9shiQ5olXU308TCfqGYwu/+05s7/ZClWmfCoF6vnZKDvKd619TT7Wl
- EdirWGBusr0FNnucTKf6BnnZWz4TyzCMWC61mwdEig1Hr2mKC+bmYujrmQ71TL0gUL8zsHn
- qon51sqQBhhsQsq8Hyhtg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GGa1UAa+ghM=:/dJOIHjR33iLrE34mZYrWZ
- p7D3Iy08xFjG5+dGTbT4PD/SM5diUGIQNZxxv3uhjO0Hc7wslTtIuVUminYFwl9ebxQmYbNiA
- sHsSJB+aqyDNd25j2Dz2HyCKB6ZAPu24Ahgm7HvbwqsOn+781BF8Gq7KFM1IV6ZHa9UDjL/M9
- L08BRZEU/OR97pZ1ZsdpsmiLjb0ko2neMrzD7v7UfFaQ/2/uw8GAW8lfOEuPhs/Y78Hehaeld
- QwDN00C9weOTR7TdoUdf5kdjZChEn/J9wPShw8tzZjwRn50sb6xw6Lqh4jBcFXRM6d6LLCLLy
- Z3tw2XVzkCbpNElsPzt81qjt8eCTjbwDUFgUqmYpgzPf6UsJn4I8gHqJi1GiJYkJKfaDQG6EK
- CalwZmSChkDTwmw09CWSOz2BrAqJmjePtOzaSDGTIVFTfHfXSVI/zdZnkukRZ9GXS3YA0+kxG
- qyxh1J1qfwS3QSSFC2Gqc7OJWGVYIR1rBKXduZKWoZrqYhXa/7/Asb89wmvF/uSUt67/4I0QH
- zGwuDYdd4DQHwf0eQyKYpI=
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: x6rGQYS_nLZOs6pBsb2ikA47a8uL7way
+X-Proofpoint-ORIG-GUID: IoPBa7q7XNXovpOG6KJT8jw7gqv3PsHQ
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-05-13_08:2021-05-12,
+ 2021-05-13 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 priorityscore=1501
+ impostorscore=0 bulkscore=0 lowpriorityscore=0 suspectscore=0 spamscore=0
+ mlxlogscore=999 phishscore=0 clxscore=1011 malwarescore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
+ definitions=main-2105130105
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,41 +106,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 07:53:43 -0000
+X-List-Received-Date: Thu, 13 May 2021 14:08:22 -0000
 
-Le 13/05/2021 à 08:11, Katsuhiro Ueno a écrit :
-> Ping.
 
-cc Gerd
+On 5/12/21 3:07 AM, Philippe Mathieu-Daudé wrote:
+> Simplify the tpm_emulator_ctrlcmd() handler by replacing a pair of
+> qemu_mutex_lock/qemu_mutex_unlock calls by the WITH_QEMU_LOCK_GUARD
+> macro.
+>
+> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+> Reviewed-by: Christophe de Dinechin <dinechin@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-> 2021-04-27 11:02 Katsuhiro Ueno <uenobk@gmail.com>:
->>
->> Add support for the following keys: KATAKANAHIRAGANA, HENKAN, MUHENKAN,
->> RO, and YEN.  Before this commit, these keys did not work as expected
->> when a jp106 keyboard was connected to the guest as a usb-kbd device.
->>
->> Signed-off-by: Katsuhiro Ueno <uenobk@gmail.com>
->> ---
->>  hw/input/hid.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/input/hid.c b/hw/input/hid.c
->> index e1d2e46083..8aab0521f4 100644
->> --- a/hw/input/hid.c
->> +++ b/hw/input/hid.c
->> @@ -51,8 +51,8 @@ static const uint8_t hid_usage_keys[0x100] = {
->>      0x45, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e,
->>      0xe8, 0xe9, 0x71, 0x72, 0x73, 0x00, 0x00, 0x00,
->>      0x00, 0x00, 0x00, 0x85, 0x00, 0x00, 0x00, 0x00,
->> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->> -    0x00, 0x00, 0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65,
->> +    0x88, 0x00, 0x00, 0x87, 0x00, 0x00, 0x00, 0x00,
->> +    0x00, 0x8a, 0x00, 0x8b, 0x00, 0x89, 0xe7, 0x65,
->>
->>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->> --
->> 2.24.3 (Apple Git-128)
-> 
+Thanks for doing this. I suppose you will send it via a PR?
+
+   Stefan
+
 
 
