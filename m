@@ -1,72 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhElK-0002qA-E4
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:04:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47594)
+	id 1lhEmO-00059v-93
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:05:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47838)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lhElJ-0002m6-4Q; Thu, 13 May 2021 13:04:37 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:38429)
+ id 1lhEmM-00054i-Q1; Thu, 13 May 2021 13:05:42 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:46871)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lhElH-0006oR-Fa; Thu, 13 May 2021 13:04:36 -0400
-Received: by mail-ej1-x629.google.com with SMTP id b25so40784893eju.5;
- Thu, 13 May 2021 10:04:34 -0700 (PDT)
+ id 1lhEmL-0007Uq-AT; Thu, 13 May 2021 13:05:42 -0400
+Received: by mail-ed1-x533.google.com with SMTP id r11so7728264edt.13;
+ Thu, 13 May 2021 10:05:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=06C34SLwerixM0UnCWH4Cv8sH0GOCCCWKl1/5MV0V/I=;
- b=lxnpOQHaJYnf/G0odB1sEf/5F2ow0hTeuBMGztOR8h7Tn6db+d/iDgIF8twYkaM5Mo
- 2tWOHlNGmfxv5llt+ps5TARW1H4635FDO7KHxHTcsbDeGn3E0O3u1AbmTzu6V44FPGw+
- 4wN7F4RP4/8BdAr7fdTwRdgBE0zr5Yq91wTcrFfvYFz6S8hba3vIhJtXsOtVT3yG+zXT
- igwCQap2rj2fTYNJpRmOYfo08Ik5roTaM5+bXpmaz43Vq5UtrgqK06Go8cSMcHH2HKJB
- V/odTjLK4ivGGs+rCzspJBQuyTcPkrOsT9GJLLo/Y0gvujv3ihPRVs2ZaIYnnefCYqsY
- OASg==
+ bh=dUEgMt9UPJhaSSQ7qZ8X1JPD62r0VTjrlULljv0MlCA=;
+ b=b9iadGwcpFMYW/NZ46L5eCeW3LJm4X57hvxldHV/mpZNdYc4RtiqU4aIggHEbHNwaW
+ bbLN+IPd0nJijuucanjbilM0jiYddXK9UcqR3xs8YZCw1r6X9IyoSBHaG2C/Z/ZeoLES
+ Uf7Om+PW/Dr9rzJuK41WFArU0Z00E4mgHC8BXSwypiwPhlxnAU6S+3Lve6moFpy3RSnA
+ 5J+1aUrOc7WpJlX0TdHoCo71epaezLyHGMEid7kXUGriNZBw3RQ7DlrqAj7+7GH0ue2w
+ IKyfXrr91RYSyIQy9DZNZIlr4ttKoBuDZvXxaseEG61i4xQLNi8TfLqQdB4gJ/CNAU2/
+ T1SA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=06C34SLwerixM0UnCWH4Cv8sH0GOCCCWKl1/5MV0V/I=;
- b=tUFAKYj4nZsIITEU8jcj5xauR1VtrJHKP0OZlHQEzUFPDkzuX5qOvbxydm672sFnWX
- bu3kYPebl1ZM9i7tgTj8bm12aWzw62CaigVom5Ltr8zQLM9AKv6P1SVf2eCqGvpngMC6
- O2f3LBBF7Dj9aPIG5k7MlQjahSdNLXBlsNxpQ6WQkaqk+6MF8eBpjKTsNjVrW1YCuYZi
- LgFtyFEfvzTEP+MiFbhCZenmddhbbtrpzhH6ZbdjPtZ/RPUBS0A3fEDU1xKoczw3muV6
- EfyBgGjMkvPwiBRqGE/K5ep7Bo8a2hCBhd3jy+t7QtrB2GK/rhQFA7YGtxnUJYDBgaYl
- Z1xg==
-X-Gm-Message-State: AOAM530pw4dgkcaGiLiAkWtMIMAHO7ReiF8w9FllVSSfuFSobV8T5wGc
- JUIU5exa9oMwIdWBORmBWKiAXxfR0qna3g==
-X-Google-Smtp-Source: ABdhPJwe7phgYR73zsqm1nhLcTLtwaBw2e5x+u3yKDrDLpFOT+JCOzOAtwntAuVq2rmBW2saUCJaaQ==
-X-Received: by 2002:a17:907:209b:: with SMTP id
- pv27mr44963796ejb.475.1620925473519; 
- Thu, 13 May 2021 10:04:33 -0700 (PDT)
+ bh=dUEgMt9UPJhaSSQ7qZ8X1JPD62r0VTjrlULljv0MlCA=;
+ b=ozA0oOFj0eL7EmXpg9JOkCbFHAt3Ynsff8AJGmscfoZwXsRchOsJmCsZKJWGmYYelC
+ MTIyUDob/x+wO6x+jR0HUgrvjwmW+rUlkdoPXqX5yJ8Jvi7/tzF8ETV0k+fU3wezwi45
+ lD8x/stZ/VQC5VTAW3ZgWWsrI7/27vhO8ZitiTBHVOrrZ9C03Imh337qEMeqWV6AaJZm
+ en1mV0jro+oKc6tp2i33iN+T5ZBgxt9pXU/R4jHljBE/n/Q3XhYaBHlKBj1CrZ4GCCy1
+ ScQVR3Xo5iVFaKaUpooCrCJYaapsWv1bIoCjbL6uHucdjBuq8lZmjmpaFIhOAuyVmziN
+ jWCQ==
+X-Gm-Message-State: AOAM531oka/nIe5jSy4XLHcW1+enjmtnGINudv8d+4U5jm+rttZbzKS3
+ vvTITJ26Tjl3eG8CGUxtpxB8KfMMg2bvfQ==
+X-Google-Smtp-Source: ABdhPJxb/yRvURXJNyM+cYMhzwF+P5m9ymlAqm7KbTUg8849ZMQ2i++P96EYyJERMZeR3jeLTg+ZPw==
+X-Received: by 2002:aa7:c6ca:: with SMTP id b10mr36256335eds.221.1620925539571; 
+ Thu, 13 May 2021 10:05:39 -0700 (PDT)
 Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id n2sm2781858edi.32.2021.05.13.10.04.32
+ by smtp.gmail.com with ESMTPSA id p22sm2711003edr.4.2021.05.13.10.05.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 May 2021 10:04:32 -0700 (PDT)
+ Thu, 13 May 2021 10:05:39 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw/avr/atmega.c: use the avr51 cpu for atmega1280
-To: Joaquin de Andres <me@xcancerberox.com.ar>,
- Fred Konrad <konrad@adacore.com>, qemu-devel@nongnu.org
-Cc: Michael Rolnik <mrolnik@gmail.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1619637319-22299-1-git-send-email-frederic.konrad@adacore.com>
- <7970a6ec-f5ac-bcc9-9184-d8450b64b116@amsat.org>
- <27cc1bc5-ee71-abf6-fd8f-58ec44e1767f@xcancerberox.com.ar>
- <d8b05f93-ef5f-1697-439b-8961cb446cdf@adacore.com>
- <b61dabc3-e5e6-5bab-503c-53dd32a11aff@xcancerberox.com.ar>
+Subject: Re: [PATCH] target/sh4: Return error if
+ CPUClass::get_phys_page_debug() fails
+To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>
+References: <20210505161046.1397608-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4f22587c-1eb1-deab-fdb6-c53e36537e36@amsat.org>
-Date: Thu, 13 May 2021 19:04:31 +0200
+Message-ID: <d49c89f9-02fc-ba4f-a195-a8f9143c4d46@amsat.org>
+Date: Thu, 13 May 2021 19:05:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <b61dabc3-e5e6-5bab-503c-53dd32a11aff@xcancerberox.com.ar>
+In-Reply-To: <20210505161046.1397608-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -87,73 +83,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 17:04:37 -0000
+X-List-Received-Date: Thu, 13 May 2021 17:05:43 -0000
 
 Cc'ing qemu-trivial@
 
-On 5/5/21 4:00 PM, Joaquin de Andres wrote:
-> On 5/5/21 3:33 PM, Fred Konrad wrote:
->>
->>
->> Le 4/30/21 à 12:27 PM, Joaquin de Andres a écrit :
->>> On 4/28/21 9:17 PM, Philippe Mathieu-Daudé wrote:
->>>> Cc'ing Joaquín.
->>>>
->>>> On 4/28/21 9:15 PM, Frederic Konrad wrote:
->>>>> According to the as documentation:
->>>>>   (https://sourceware.org/binutils/docs-2.36/as/AVR-Options.html)
->>>>>
->>>>> "Instruction set avr51 is for the enhanced AVR core with exactly 128K
->>>>>   program memory space (MCU types: atmega128, atmega128a, atmega1280,
->>>>>   atmega1281, atmega1284, atmega1284p, atmega128rfa1, atmega128rfr2,
->>>>>   atmega1284rfr2, at90can128, at90usb1286, at90usb1287, m3000)."
->>>>>
->>>>> But when compiling a program for atmega1280 or avr51 and trying to
->>>>> execute
->>>>> it:
->>>>>
->>>>> $ cat > test.S << EOF
->>>>>> loop:
->>>>>>      rjmp loop
->>>>>> EOF
->>>>> $ avr-gcc -nostdlib -nostartfiles -mmcu=atmega1280 test.S -o test.elf
->>>>> $ qemu-system-avr -serial mon:stdio -nographic -no-reboot -M mega \
->>>>>                    -bios test.elf
->>>>> qemu-system-avr: Current machine: Arduino Mega (ATmega1280) with
->>>>> 'avr6' CPU
->>>>> qemu-system-avr: ELF image 'test.elf' is for 'avr51' CPU
->>>>>
->>>>> So this fixes the atmega1280 class to use an avr51 CPU.
->>>>>
->>>>> Signed-off-by: Frederic Konrad <frederic.konrad@adacore.com>
->>>>> ---
->>>>>   hw/avr/atmega.c | 2 +-
->>>>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>>>
->>>>> diff --git a/hw/avr/atmega.c b/hw/avr/atmega.c
->>>>> index 44c6afebbb..e3ea5702f5 100644
->>>>> --- a/hw/avr/atmega.c
->>>>> +++ b/hw/avr/atmega.c
->>>>> @@ -402,7 +402,7 @@ static void atmega1280_class_init(ObjectClass
->>>>> *oc, void *data)
->>>>>   {
->>>>>       AtmegaMcuClass *amc = ATMEGA_MCU_CLASS(oc);
->>>>>   -    amc->cpu_type = AVR_CPU_TYPE_NAME("avr6");
->>>>> +    amc->cpu_type = AVR_CPU_TYPE_NAME("avr51");
->>>>>       amc->flash_size = 128 * KiB;
->>>>>       amc->eeprom_size = 4 * KiB;
->>>>>       amc->sram_size = 8 * KiB;
->>>>>
->>>>
->>> Good catch!
->>>
->>
->> Thanks, does that count as a reviewed-by :)?
->>
->>
-> Yes! sorry.
+On 5/5/21 6:10 PM, Philippe Mathieu-Daudé wrote:
+> If the get_physical_address() call fails, the SH4 get_phys_page_debug()
+> handler returns an uninitialized address. Instead return -1, which
+> correspond to "no page found" (see cpu_get_phys_page_debug() doc
+> string).
 > 
+> This fixes a warning emitted when building with CFLAGS=-O3
+> (using GCC 10.2.1 20201125):
 > 
-> Reviewed-by: Joaquin de Andres <me@xcancerberox.com.ar>
+>   target/sh4/helper.c: In function ‘superh_cpu_get_phys_page_debug’:
+>   target/sh4/helper.c:446:12: warning: ‘physical’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+>     446 |     return physical;
+>         |            ^~~~~~~~
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  target/sh4/helper.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/sh4/helper.c b/target/sh4/helper.c
+> index bd8e034f174..2d622081e85 100644
+> --- a/target/sh4/helper.c
+> +++ b/target/sh4/helper.c
+> @@ -441,9 +441,12 @@ hwaddr superh_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+>      target_ulong physical;
+>      int prot;
+>  
+> -    get_physical_address(&cpu->env, &physical, &prot, addr, MMU_DATA_LOAD);
+> +    if (get_physical_address(&cpu->env, &physical, &prot, addr, MMU_DATA_LOAD)
+> +            == MMU_OK) {
+> +        return physical;
+> +    }
+>  
+> -    return physical;
+> +    return -1;
+>  }
+>  
+>  void cpu_load_tlb(CPUSH4State * env)
 > 
 
