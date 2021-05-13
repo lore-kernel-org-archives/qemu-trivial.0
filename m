@@ -1,83 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhE4Q-0005ha-BU
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 12:20:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39016)
+	id 1lhEPv-00066V-Nb
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 12:42:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhE4O-0005cd-Tv
- for qemu-trivial@nongnu.org; Thu, 13 May 2021 12:20:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50522)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lhE4M-0006DR-4G
- for qemu-trivial@nongnu.org; Thu, 13 May 2021 12:20:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1620922813;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=nmblD/IV3Gv2eK11z3q3zt0LycvGlgfOv6QbUmJ389k=;
- b=Vogzqi8CeBPOhNYuVhWaGhevq/mxRHFESqitGHMqf3JZNWmw7XxNm7ukZfeMAF0RFxY6Ly
- k38F0QS4+8hXO9NzJWfihOkfsq6txR3ugkZs3mDJglQn3Sz3UQz7mo1ezWOPpfldg79sBL
- PNL/jH4u/vLh6rr/3tDIqVd5N+POV6I=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-162-a55ngpYwOASs6jP_xrM21Q-1; Thu, 13 May 2021 12:20:11 -0400
-X-MC-Unique: a55ngpYwOASs6jP_xrM21Q-1
-Received: by mail-ed1-f70.google.com with SMTP id
- i17-20020a50fc110000b0290387c230e257so14908752edr.0
- for <qemu-trivial@nongnu.org>; Thu, 13 May 2021 09:20:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lhEPo-0005zb-3k; Thu, 13 May 2021 12:42:24 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:41574)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lhEPl-0002bG-T3; Thu, 13 May 2021 12:42:23 -0400
+Received: by mail-ej1-x636.google.com with SMTP id k10so9531148ejj.8;
+ Thu, 13 May 2021 09:42:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=XaUewCuYdDkkPYVD7Il5c/sB1jFlTRrCYYYPV7aDMKw=;
+ b=Fd+bZMgklPEGNf6bXce4SmFDB1DgNMIj+73YwJO8a0emfXOekwvlF8K+5aGJFEEi+3
+ iIhwKcK4mD3XhY8kpf9odz1yZwe6rk6kTIKZTi/rLt7wKxeojJRmrLz/M0FMWWyk6Es4
+ In+4tqfzhmDIZwxB3ciNjqhRyKZcAwujpy5Lw/R2oH/XGp6z+gKHK9vxAFBg1YQjQGi4
+ bDW77UJ5N3p6gNVDD2Q7SK/QllmTLoXNnhK17Pjix+G3ROINMrV0+9F+/KwQnpK2I5dy
+ noqs3Bmx3KAGLAc9bbmB+vqPAr4ioaBf2v0EUJIjAxlVhKH1qjNqqpdL4S6I5GgFFgsv
+ 0uFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=nmblD/IV3Gv2eK11z3q3zt0LycvGlgfOv6QbUmJ389k=;
- b=dd5y2B09nzzjfWaazc+j7TZspwsR/L6/H4nGu0o0F3Ves++2QfQK32dQnbsNTXHDg+
- cDumrfYEUiFvZJeKCtqaweMDpJwtnQa5T7EQRpmQ85PpBU3NFEfWiwODqMLuVvwFs9Jj
- gMl4fqjhTDq6NOjQcSP4t0tUgpTF/Cc56cSRWwrLA89795HzP/G+zfIdPsuelHvx7gwr
- 9YMS3182iTQMY1qDXe80rlgWGAs39KAbYEZDDPXufSjWvofQWRmBB299CXJT6cKZNOW0
- fhCD7vA7CDMgpFfnlablRWjqJJY4c1qDSrxQi0p4bUXnnbdiGAiWOXCPELObyEftgamQ
- SOcA==
-X-Gm-Message-State: AOAM532ShMHciYCF0mdehVxACQbFgLmTcLms52CCs38bzDVnfa0Zjdyz
- /CfsIjvQMv16IfzWzItf9KDDptEzofWP8BWDLCA0MIpFXp3u6lAZeglWS95EZMw6wX9+yXYTPfa
- bcrZWljG4dOOOpQq3HQ==
-X-Received: by 2002:a17:906:31c6:: with SMTP id
- f6mr44798529ejf.446.1620922810236; 
- Thu, 13 May 2021 09:20:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkCju0LJndMLsl/q9gO1Rv3uWoIpOwiAZBV5Yu0WCSLQBwfC1+4EiZStJXM2MexC4rTwp29g==
-X-Received: by 2002:a17:906:31c6:: with SMTP id
- f6mr44798512ejf.446.1620922810099; 
- Thu, 13 May 2021 09:20:10 -0700 (PDT)
-Received: from x1w.redhat.com (31.red-83-51-215.dynamicip.rima-tde.net.
+ bh=XaUewCuYdDkkPYVD7Il5c/sB1jFlTRrCYYYPV7aDMKw=;
+ b=YueLwtzUI9LZLXUrWvK8Vn5dbkpt/do9OelfYuSBd/UC+cJrvJwQivVvqiLvuvpnjB
+ ZPpVFOd4SB9n5/1mB3kvYl+djB4A98ettSCWi4HcClJKhzrPABc9iFw+Nj2G4lZ62iIX
+ 2MigXZog06cHfXth4/ioGmLnkN692bFJ9DWUt3ytP9GuTxqYLCunz9BcflwUgN/LiZpP
+ rrWAlNKz6IKpevw9PtnxzUWXZSwu14XsObbbxuioRnkRhpNNk0cKzBo9ySX7UlhGJGt7
+ TwLeZPkO0UZ+Al6BHbL70yk4OnXge6fsiaJxsqzOAm/cvIngKqY/5kSq0ZhQew4YVqu5
+ n66A==
+X-Gm-Message-State: AOAM531jVDYTQGxyayWjoJxzm0+dR/01DcqKp8lK6inzKiJ73hZc5hgU
+ u9GspsfnV3FwjVKR81JQ9t4=
+X-Google-Smtp-Source: ABdhPJzbtUXD4xr831YzfBeGTT4vTOTat2Dw+adXXueJtros0LDY+v/SzuWQvzZIqZ8tlK1wEo1PyA==
+X-Received: by 2002:a17:906:6854:: with SMTP id
+ a20mr43286894ejs.329.1620924137349; 
+ Thu, 13 May 2021 09:42:17 -0700 (PDT)
+Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id r15sm2515434edp.62.2021.05.13.09.20.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 May 2021 09:20:09 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-trivial@nongnu.org,
- Thomas Huth <thuth@redhat.com>, Bandan Das <bsd@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] tests/qtest/fuzz: Fix build failure
-Date: Thu, 13 May 2021 18:20:08 +0200
-Message-Id: <20210513162008.3922223-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.3
+ by smtp.gmail.com with ESMTPSA id m13sm479827edc.60.2021.05.13.09.42.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 May 2021 09:42:16 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v3 0/2] hw: Convert mc146818rtc & etraxfs_timer to 3-phase
+ reset interface
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <20210502163931.552675-1-f4bug@amsat.org>
+ <89ae6ce0-7959-0d74-2f14-f5943a74bec2@amsat.org>
+ <7421b58c-d777-3295-4139-cbc95a63ce2b@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6de80350-cbdb-caa5-f968-db7781c05b2e@amsat.org>
+Date: Thu, 13 May 2021 18:42:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <7421b58c-d777-3295-4139-cbc95a63ce2b@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -90,35 +88,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 16:20:17 -0000
+X-List-Received-Date: Thu, 13 May 2021 16:42:26 -0000
 
-On Fedora 32, using clang (version 10.0.1-3.fc32) we get:
+On 5/13/21 6:03 PM, Laurent Vivier wrote:
+> Le 11/05/2021 à 05:29, Philippe Mathieu-Daudé a écrit :
+>> Hi Laurent,
+>>
+>> I addressed your comments from v1, and this series is
+>> now reviewed. Can it get merged via your qemu-trivial tree?
+> 
+> Yes, but next time cc: trivial to be sure ;)
 
-  tests/qtest/fuzz/fuzz.c:237:5: error: implicit declaration of function 'qemu_init' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-      qemu_init(result.we_wordc, result.we_wordv, NULL);
-      ^
+OK, thank you :)
 
-qemu_init() is declared in "sysemu/sysemu.h", include this
-header to fix.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- tests/qtest/fuzz/fuzz.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/tests/qtest/fuzz/fuzz.c b/tests/qtest/fuzz/fuzz.c
-index 04b70e114bf..5f77c849837 100644
---- a/tests/qtest/fuzz/fuzz.c
-+++ b/tests/qtest/fuzz/fuzz.c
-@@ -16,6 +16,7 @@
- #include <wordexp.h>
- 
- #include "qemu/datadir.h"
-+#include "sysemu/sysemu.h"
- #include "sysemu/qtest.h"
- #include "sysemu/runstate.h"
- #include "qemu/main-loop.h"
--- 
-2.26.3
-
+> 
+> Applied to my trivial-patches branch.
+> 
+> Thanks,
+> Laurent
 
