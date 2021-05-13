@@ -1,49 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhFzi-0006ho-Ut
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 14:23:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35732)
+	id 1lhHgA-0004nP-JT
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 16:11:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56724)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
- id 1lhFzc-0006d0-Ss; Thu, 13 May 2021 14:23:28 -0400
-Received: from mailout07.t-online.de ([194.25.134.83]:55540)
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
+ id 1lhHg8-0004mW-QG; Thu, 13 May 2021 16:11:28 -0400
+Received: from relay68.bu.edu ([128.197.228.73]:45666)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
- id 1lhFzT-0001bx-Hi; Thu, 13 May 2021 14:23:28 -0400
-Received: from fwd19.aul.t-online.de (fwd19.aul.t-online.de [172.20.27.65])
- by mailout07.t-online.de (Postfix) with SMTP id 73BE548FE9;
- Thu, 13 May 2021 20:23:11 +0200 (CEST)
-Received: from [192.168.211.200]
- (VrypukZr8hgbKGyhQXt1h23VkHDuwbbnB5XFoilpvDD-9pcAxGT33gmHMQROdJ0ZK3@[79.208.18.63])
- by fwd19.t-online.de
- with (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384 encrypted)
- esmtp id 1lhFzG-1VPP2O0; Thu, 13 May 2021 20:23:06 +0200
-Subject: Re: [PATCH] hw/input/ps2: Use ps2_raise_irq() instead of open coding
- it
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20210513171244.3940519-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>
-Message-ID: <709e2305-39b4-d727-f551-ed38c059290a@t-online.de>
-Date: Thu, 13 May 2021 20:23:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
+ id 1lhHg6-0003Xn-TU; Thu, 13 May 2021 16:11:28 -0400
+X-Envelope-From: alxndr@bu.edu
+X-BU-AUTH: mozz.bu.edu [128.197.127.33]
+Received: from BU-AUTH (localhost.localdomain [127.0.0.1]) (authenticated
+ bits=0)
+ by relay68.bu.edu (8.14.3/8.14.3) with ESMTP id 14DKA4V2005816
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
+ Thu, 13 May 2021 16:10:08 -0400
+Date: Thu, 13 May 2021 16:10:04 -0400
+From: Alexander Bulekov <alxndr@bu.edu>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, Bandan Das <bsd@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [PATCH] tests/qtest/fuzz: Fix build failure
+Message-ID: <20210513201004.do4hebp3jk6ruxlp@mozz.bu.edu>
+References: <20210513162008.3922223-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210513171244.3940519-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-ID: VrypukZr8hgbKGyhQXt1h23VkHDuwbbnB5XFoilpvDD-9pcAxGT33gmHMQROdJ0ZK3
-X-TOI-EXPURGATEID: 150726::1620930186-0000782A-9055CC5E/0/0 CLEAN NORMAL
-X-TOI-MSGID: b3adbde5-8d9a-4975-94fd-91279f273b53
-Received-SPF: none client-ip=194.25.134.83; envelope-from=vr_qemu@t-online.de;
- helo=mailout07.t-online.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210513162008.3922223-1-philmd@redhat.com>
+Received-SPF: pass client-ip=128.197.228.73; envelope-from=alxndr@bu.edu;
+ helo=relay68.bu.edu
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, HK_RANDOM_ENVFROM=0.998,
+ HK_RANDOM_FROM=0.998, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -56,58 +51,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 18:23:32 -0000
+X-List-Received-Date: Thu, 13 May 2021 20:11:29 -0000
 
-> Inspired-by: Volker Rümelin <vr_qemu@t-online.de>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   hw/input/ps2.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-> index 72cdb80ae1c..02d7e5da723 100644
-> --- a/hw/input/ps2.c
-> +++ b/hw/input/ps2.c
-> @@ -213,7 +213,7 @@ void ps2_raise_irq(PS2State *s)
->   void ps2_queue(PS2State *s, int b)
->   {
->       ps2_queue_noirq(s, b);
-> -    s->update_irq(s->update_arg, 1);
-> +    ps2_raise_irq(s);
->   }
->   
->   void ps2_queue_2(PS2State *s, int b1, int b2)
-> @@ -224,7 +224,7 @@ void ps2_queue_2(PS2State *s, int b1, int b2)
->   
->       ps2_queue_noirq(s, b1);
->       ps2_queue_noirq(s, b2);
-> -    s->update_irq(s->update_arg, 1);
-> +    ps2_raise_irq(s);
->   }
->   
->   void ps2_queue_3(PS2State *s, int b1, int b2, int b3)
-> @@ -236,7 +236,7 @@ void ps2_queue_3(PS2State *s, int b1, int b2, int b3)
->       ps2_queue_noirq(s, b1);
->       ps2_queue_noirq(s, b2);
->       ps2_queue_noirq(s, b3);
-> -    s->update_irq(s->update_arg, 1);
-> +    ps2_raise_irq(s);
->   }
->   
->   void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
-> @@ -249,7 +249,7 @@ void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
->       ps2_queue_noirq(s, b2);
->       ps2_queue_noirq(s, b3);
->       ps2_queue_noirq(s, b4);
-> -    s->update_irq(s->update_arg, 1);
-> +    ps2_raise_irq(s);
->   }
->   
->   /* keycode is the untranslated scancode in the current scancode set. */
 
-Hi Philippe,
 
-can you read my local qemu repository? :-)
+On 210513 1820, Philippe Mathieu-Daudé wrote:
+> On Fedora 32, using clang (version 10.0.1-3.fc32) we get:
+> 
+>   tests/qtest/fuzz/fuzz.c:237:5: error: implicit declaration of function 'qemu_init' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+>       qemu_init(result.we_wordc, result.we_wordv, NULL);
+>       ^
+> 
+> qemu_init() is declared in "sysemu/sysemu.h", include this
+> header to fix.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Reviewed-by: Volker Rümelin <vr_qemu@t-online.de>
+Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
+
+Thank you
 
