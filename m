@@ -1,74 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhEmO-00059v-93
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:05:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47838)
+	id 1lhEtQ-0006Lt-Aw
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:13:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lhEmM-00054i-Q1; Thu, 13 May 2021 13:05:42 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:46871)
+ id 1lhEtJ-0006JO-6X; Thu, 13 May 2021 13:12:53 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:34712)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lhEmL-0007Uq-AT; Thu, 13 May 2021 13:05:42 -0400
-Received: by mail-ed1-x533.google.com with SMTP id r11so7728264edt.13;
- Thu, 13 May 2021 10:05:40 -0700 (PDT)
+ id 1lhEtF-00032t-MY; Thu, 13 May 2021 13:12:50 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id l7so31849093edb.1;
+ Thu, 13 May 2021 10:12:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=dUEgMt9UPJhaSSQ7qZ8X1JPD62r0VTjrlULljv0MlCA=;
- b=b9iadGwcpFMYW/NZ46L5eCeW3LJm4X57hvxldHV/mpZNdYc4RtiqU4aIggHEbHNwaW
- bbLN+IPd0nJijuucanjbilM0jiYddXK9UcqR3xs8YZCw1r6X9IyoSBHaG2C/Z/ZeoLES
- Uf7Om+PW/Dr9rzJuK41WFArU0Z00E4mgHC8BXSwypiwPhlxnAU6S+3Lve6moFpy3RSnA
- 5J+1aUrOc7WpJlX0TdHoCo71epaezLyHGMEid7kXUGriNZBw3RQ7DlrqAj7+7GH0ue2w
- IKyfXrr91RYSyIQy9DZNZIlr4ttKoBuDZvXxaseEG61i4xQLNi8TfLqQdB4gJ/CNAU2/
- T1SA==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/l1vSGEiJ7pZLCdjOLk0Fo0Jde9DV8raYEKhS8kK0n4=;
+ b=UCuXATJrpEf6Tqty49vUtWYai1jZMQx1i2smCXijmf7FkPCd3aZf/vG8Hvana7MNI3
+ aZxYPJYac0jgNDZaeIzIKZRXk2Zjccq5slRFK9DAW7uGrUk3Mv3JMJ7DfD1y6mpDOf9+
+ YqSPNIX4tcq7IFslmcVsh0GHcTmWW15croSSJHEqHFNbUiI8xieThjnzxFIvTDXQWQ93
+ us6kMR/DPArmPn0egiBYo+YoEzkJHY+dc0ocB90WQYqKT42GxY/fKIf7Ksfc+RKAZiGu
+ UcW48BmZ0oCdl11S0LUbRgjvBMBX+ibdVthCcusp/McaZb6eaDMg6lnz6aOP7TljO7RE
+ opEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=dUEgMt9UPJhaSSQ7qZ8X1JPD62r0VTjrlULljv0MlCA=;
- b=ozA0oOFj0eL7EmXpg9JOkCbFHAt3Ynsff8AJGmscfoZwXsRchOsJmCsZKJWGmYYelC
- MTIyUDob/x+wO6x+jR0HUgrvjwmW+rUlkdoPXqX5yJ8Jvi7/tzF8ETV0k+fU3wezwi45
- lD8x/stZ/VQC5VTAW3ZgWWsrI7/27vhO8ZitiTBHVOrrZ9C03Imh337qEMeqWV6AaJZm
- en1mV0jro+oKc6tp2i33iN+T5ZBgxt9pXU/R4jHljBE/n/Q3XhYaBHlKBj1CrZ4GCCy1
- ScQVR3Xo5iVFaKaUpooCrCJYaapsWv1bIoCjbL6uHucdjBuq8lZmjmpaFIhOAuyVmziN
- jWCQ==
-X-Gm-Message-State: AOAM531oka/nIe5jSy4XLHcW1+enjmtnGINudv8d+4U5jm+rttZbzKS3
- vvTITJ26Tjl3eG8CGUxtpxB8KfMMg2bvfQ==
-X-Google-Smtp-Source: ABdhPJxb/yRvURXJNyM+cYMhzwF+P5m9ymlAqm7KbTUg8849ZMQ2i++P96EYyJERMZeR3jeLTg+ZPw==
-X-Received: by 2002:aa7:c6ca:: with SMTP id b10mr36256335eds.221.1620925539571; 
- Thu, 13 May 2021 10:05:39 -0700 (PDT)
-Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=/l1vSGEiJ7pZLCdjOLk0Fo0Jde9DV8raYEKhS8kK0n4=;
+ b=X2y13qIHX1f8pQKgGFce3cLhJz2X7U+RwBDGUO2Iqd9w3a6d7terlCBycCY7filu9A
+ axdRStuuM5AsuqMGiZBV1sut4VKBE+1899lrVLM4y8bT1cV8+8v3gFFCpxxuwPh2L1Ww
+ 8m9QDm4UAYBNXLKj6dp3+Czic69U5MCOKhx+c7F5dv8EDbuj3Zybr8TwNp8SZk/9zeN+
+ ej4jp0rigJrngAjwdKujQt4u1ETkm5FmtgK71AZfFBFFHnYg4vbd4OUOFAHJLZw7cyet
+ Zv8kojffZ3eolIePQBZneCiZS/xW5wVYVdurBlrNgTFHPTlfn78oTvjLnLKyZZgJdeH+
+ g05Q==
+X-Gm-Message-State: AOAM531pdqRXrJxdbngYQPqGJiwcmvYwKg6MpmFMh9hOUHbeu6xH6eqt
+ z+S5BZRZ7tdAz+OS7VRyiEeGQ6dHXMHCQg==
+X-Google-Smtp-Source: ABdhPJysbxDRCUlTUBLPmSlsj+lOMRGc/o3fzkjAiNDuRH6wO6lg5aAGZL2IFNzm2XMypzrdEXFr4w==
+X-Received: by 2002:aa7:d9ca:: with SMTP id v10mr52277751eds.272.1620925966650; 
+ Thu, 13 May 2021 10:12:46 -0700 (PDT)
+Received: from x1w.redhat.com (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id p22sm2711003edr.4.2021.05.13.10.05.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 May 2021 10:05:39 -0700 (PDT)
+ by smtp.gmail.com with ESMTPSA id bw26sm2116597ejb.119.2021.05.13.10.12.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 13 May 2021 10:12:46 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] target/sh4: Return error if
- CPUClass::get_phys_page_debug() fails
-To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
-References: <20210505161046.1397608-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d49c89f9-02fc-ba4f-a195-a8f9143c4d46@amsat.org>
-Date: Thu, 13 May 2021 19:05:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?q?Volker=20R=C3=BCmelin?= <vr_qemu@t-online.de>
+Subject: [PATCH] hw/input/ps2: Use ps2_raise_irq() instead of open coding it
+Date: Thu, 13 May 2021 19:12:44 +0200
+Message-Id: <20210513171244.3940519-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-In-Reply-To: <20210505161046.1397608-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -83,47 +78,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 17:05:43 -0000
+X-List-Received-Date: Thu, 13 May 2021 17:12:58 -0000
 
-Cc'ing qemu-trivial@
+Inspired-by: Volker Rümelin <vr_qemu@t-online.de>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/input/ps2.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-On 5/5/21 6:10 PM, Philippe Mathieu-Daudé wrote:
-> If the get_physical_address() call fails, the SH4 get_phys_page_debug()
-> handler returns an uninitialized address. Instead return -1, which
-> correspond to "no page found" (see cpu_get_phys_page_debug() doc
-> string).
-> 
-> This fixes a warning emitted when building with CFLAGS=-O3
-> (using GCC 10.2.1 20201125):
-> 
->   target/sh4/helper.c: In function ‘superh_cpu_get_phys_page_debug’:
->   target/sh4/helper.c:446:12: warning: ‘physical’ may be used uninitialized in this function [-Wmaybe-uninitialized]
->     446 |     return physical;
->         |            ^~~~~~~~
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  target/sh4/helper.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/sh4/helper.c b/target/sh4/helper.c
-> index bd8e034f174..2d622081e85 100644
-> --- a/target/sh4/helper.c
-> +++ b/target/sh4/helper.c
-> @@ -441,9 +441,12 @@ hwaddr superh_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
->      target_ulong physical;
->      int prot;
->  
-> -    get_physical_address(&cpu->env, &physical, &prot, addr, MMU_DATA_LOAD);
-> +    if (get_physical_address(&cpu->env, &physical, &prot, addr, MMU_DATA_LOAD)
-> +            == MMU_OK) {
-> +        return physical;
-> +    }
->  
-> -    return physical;
-> +    return -1;
->  }
->  
->  void cpu_load_tlb(CPUSH4State * env)
-> 
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index 72cdb80ae1c..02d7e5da723 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -213,7 +213,7 @@ void ps2_raise_irq(PS2State *s)
+ void ps2_queue(PS2State *s, int b)
+ {
+     ps2_queue_noirq(s, b);
+-    s->update_irq(s->update_arg, 1);
++    ps2_raise_irq(s);
+ }
+ 
+ void ps2_queue_2(PS2State *s, int b1, int b2)
+@@ -224,7 +224,7 @@ void ps2_queue_2(PS2State *s, int b1, int b2)
+ 
+     ps2_queue_noirq(s, b1);
+     ps2_queue_noirq(s, b2);
+-    s->update_irq(s->update_arg, 1);
++    ps2_raise_irq(s);
+ }
+ 
+ void ps2_queue_3(PS2State *s, int b1, int b2, int b3)
+@@ -236,7 +236,7 @@ void ps2_queue_3(PS2State *s, int b1, int b2, int b3)
+     ps2_queue_noirq(s, b1);
+     ps2_queue_noirq(s, b2);
+     ps2_queue_noirq(s, b3);
+-    s->update_irq(s->update_arg, 1);
++    ps2_raise_irq(s);
+ }
+ 
+ void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
+@@ -249,7 +249,7 @@ void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
+     ps2_queue_noirq(s, b2);
+     ps2_queue_noirq(s, b3);
+     ps2_queue_noirq(s, b4);
+-    s->update_irq(s->update_arg, 1);
++    ps2_raise_irq(s);
+ }
+ 
+ /* keycode is the untranslated scancode in the current scancode set. */
+-- 
+2.26.3
+
 
