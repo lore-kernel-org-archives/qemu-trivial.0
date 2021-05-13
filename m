@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhDyK-0004zW-Bx
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 12:14:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37304)
+	id 1lhE0p-0008ME-2i
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 12:16:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhDyG-0004y4-VT; Thu, 13 May 2021 12:13:58 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:58213)
+ id 1lhE0m-0008Kf-Cm; Thu, 13 May 2021 12:16:32 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:59239)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhDyC-00031B-V2; Thu, 13 May 2021 12:13:56 -0400
+ id 1lhE0j-0004I5-AG; Thu, 13 May 2021 12:16:32 -0400
 Received: from [192.168.100.1] ([82.142.31.78]) by mrelayeu.kundenserver.de
  (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MTAW9-1m4Zzx1UfH-00UbFA; Thu, 13 May 2021 18:13:22 +0200
-Subject: Re: [PATCH] hw/pci-host: Do not build gpex-acpi.c if GPEX is not
- selected
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ 1Mlejs-1lHYAt19pi-00ihB6; Thu, 13 May 2021 18:16:17 +0200
+Subject: Re: [PATCH] multi-process: Avoid logical AND of mutually exclusive
+ tests
+To: Thomas Huth <thuth@redhat.com>, Jagannathan Raman <jag.raman@oracle.com>, 
  qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Xingang Wang <wangxingang5@huawei.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Jiahui Cen <cenjiahui@huawei.com>,
- Yubo Miao <miaoyubo@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20210425182124.3735214-1-f4bug@amsat.org>
- <29fc7f06-7043-598e-98fb-dae99273e5ea@amsat.org>
+Cc: elena.ufimtseva@oracle.com, john.g.johnson@oracle.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>, berrange@redhat.com,
+ stefanha@redhat.com
+References: <1620402803-9237-1-git-send-email-jag.raman@oracle.com>
+ <5798d062-ee75-1a71-4ba7-3801ed61beb6@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <c37b6438-0f04-0ab2-3e4e-c386256424af@vivier.eu>
-Date: Thu, 13 May 2021 18:13:20 +0200
+Message-ID: <cb034443-de79-3f9d-96ba-6fffb6f877e9@vivier.eu>
+Date: Thu, 13 May 2021 18:16:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <29fc7f06-7043-598e-98fb-dae99273e5ea@amsat.org>
+In-Reply-To: <5798d062-ee75-1a71-4ba7-3801ed61beb6@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:sVH3/sYr97DVT8AryU/Lgls9mWzY3xS9I3nKwVD5UGl/F/bIhqx
- 7uUHVG+HnTI10cYeaIfkl0cj2ii+bDsb4EVxU05T1iBiRSaPBcz4QF8NTjYUnbRXy3d/jOu
- s3FWxicaXajXBb7lwyIMBOt9g3RqUApt/lsDpYtcRhrmHvMwWHdJ86FdIxW0MaUshT5s/Yc
- P3Pd7KH4WW6cGnTKhWq1Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:vblcubMTc30=:w9ug9H5GpNhdx01n59NIIC
- 4xO7/lvLK9H55ILrpt13nat+rL2NmZ5XnJCAyifUqpMpteAAMa+27pzsJxEa0IFw1OX3jqEqB
- xD2Tu4EH3qNTR/bdlIHo8t+omXUPwSVM5/cCX32OjIxzMyYfXET/okkVGuFj1y8my72rHGEG3
- Z/MKRpdVDhZA/o/n9/RGbkbH4+CTFFU30ru/0wMGzHcZJJ6IgFSHi419i/1KcG3Y0Lm4Fd48B
- Th1Drnz7wjIicbg+NGI8zbc6RePj9SaBX9rla4M5SJql7cG5wVobtHRj44Re3+oyr0Xyu0V3g
- k38NYfukOVc0/TfdZTXZZdX/J0I95i//JgNyM0cXjpguxK7FZKdZjhf5m/rVrz9JXQDDNnGg6
- tlPnNJN5m77RaLUOMyemB3Ee7G5XHu+ZK8bdYEu/1jH+2BY0xYO8LhrzegWoHsWLMzlPOSbKt
- iGC0zjJV2icE6F4I5kYmtct79Z69pnTdL5jFPp8dr1ay5YA+K01j6RXhCRFEI/eTq6oRyAs3B
- jKSrStX/D7XyjoN0S7Xmuw=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:2eKgv+YsYsyz8BaxjL8HUl1DnGfntFj83+BnPFYrDuezHGEjpsO
+ 6vKw8NZqkLw8x7B3OxIA1Lsn2RD2vcLbHpPVxGeoL3kCsAGluxXrJIcoORr8/aNYqqPnZLA
+ tHKJOnmmM9NnLAbeSGMa8nyy2YHGF6QvM66daFdJVuezA1ZyHUEIBQMlGK5uG4Q9miSBI4e
+ prYI0jduN+igSoFbUO1kg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9RK7vRCUogw=:VHGvmm1x3bjNHC0lw+SyvK
+ pXymlSWpT3RzkTAEpXfhGjgLVlsY5EWN3bgDMxtvrgqt2jfA6O5M4JKOfq9c1O+t8kJKR7+Zu
+ EFgksicSeHKL6Zw4Tiz+dbBENqmVgPa1i6/XQAbMBllRRHfCTkO53h7STSVwgvaXilqXm4BdA
+ 6ZVryIt6XVz3BfvAb7pjbY+KOJ6bBSWgGRB43z8C8aINE1Zbq09qZ9qWZSDGXwjG1NHS1p6sU
+ 8JCANj2LCmjUOm0fnMEUa5yw/+Z3J0DGVuvo3WY981dSIorWpc5Wa5JupfTjoBPkPesQ1rEsY
+ jxWv7oIcOXTUAcYvUU8LTH+UqFKhEnhRi8KVU1zIN1NKbONfJ7Qt5HlPsAedP8xl9rkaJGcpQ
+ m83oIroVDEaSwK6bb/2QEV80sD9h8J6la8F8M/uuJpbrwcAc72o0UlVVenb7jxgGBV3tEeixL
+ ukYbtW05vIyNpuDdhuTEf4NpD5mJ/XcacCyj682CNAtDlaO1yaE3R+4GpephZd/PSlTcKVYzy
+ atRYEhWd+DD+AFtWoN7nhU=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -66,58 +64,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 16:13:58 -0000
+X-List-Received-Date: Thu, 13 May 2021 16:16:33 -0000
 
-Le 11/05/2021 à 05:36, Philippe Mathieu-Daudé a écrit :
-> Cc'ing qemu-trivial (patch reviewed).
+Le 08/05/2021 à 06:34, Thomas Huth a écrit :
+> On 07/05/2021 17.53, Jagannathan Raman wrote:
+>> Fixes an if statement that performs a logical AND of mutually exclusive
+>> tests
+>>
+>> Reported-by: Thomas Huth <thuth@redhat.com>
+> 
+> I just spotted the bug ticket on Launchpad :-) So whoever picks this patch up, please add this instead:
+> 
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1926995
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
 
-> On 4/25/21 8:21 PM, Philippe Mathieu-Daudé wrote:
->> Since its introduction in commit 5b85eabe68f ("acpi: add
->> acpi_dsdt_add_gpex") we build gpex-acpi.c if ACPI is selected,
->> even if the GPEX_HOST device isn't build. Add the missing
->> Kconfig dependency.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Signed-off-by: Jagannathan Raman <jag.raman@oracle.com>
 >> ---
->> The gpex*.c files aren't covered by any MAINTAINERS section:
+>>   hw/remote/mpqemu-link.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> $ ./scripts/get_maintainer.pl -f hw/pci-host/gpex.c -f hw/pci-host/gpex-acpi.c
->> get_maintainer.pl: No maintainers found, printing recent contributors.
->> get_maintainer.pl: Do not blindly cc: them on patches!  Use common sense.
->>
->> Markus Armbruster <armbru@redhat.com> (commit_signer:2/2=100%)
->> Paolo Bonzini <pbonzini@redhat.com> (commit_signer:2/2=100%)
->> Alistair Francis <alistair.francis@wdc.com> (commit_signer:1/2=50%)
->> "Philippe Mathieu-Daudé" <philmd@redhat.com> (commit_signer:1/2=50%)
->> "Michael S. Tsirkin" <mst@redhat.com> (commit_signer:14/8=100%)
->> Jiahui Cen <cenjiahui@huawei.com> (commit_signer:6/8=75%)
->> Igor Mammedov <imammedo@redhat.com> (commit_signer:4/8=50%)
->> Gerd Hoffmann <kraxel@redhat.com> (commit_signer:2/8=25%)
->> Yubo Miao <miaoyubo@huawei.com> (commit_signer:2/8=25%)
->> qemu-devel@nongnu.org (open list:All patches CC here)
->> ---
->>  hw/pci-host/meson.build | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/pci-host/meson.build b/hw/pci-host/meson.build
->> index 87a896973e7..d52dce77cbd 100644
->> --- a/hw/pci-host/meson.build
->> +++ b/hw/pci-host/meson.build
->> @@ -3,7 +3,7 @@
->>  pci_ss.add(when: 'CONFIG_PCI_BONITO', if_true: files('bonito.c'))
->>  pci_ss.add(when: 'CONFIG_PCI_EXPRESS_DESIGNWARE', if_true: files('designware.c'))
->>  pci_ss.add(when: 'CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', if_true: files('gpex.c'))
->> -pci_ss.add(when: 'CONFIG_ACPI', if_true: files('gpex-acpi.c'))
->> +pci_ss.add(when: ['CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', 'CONFIG_ACPI'], if_true: files('gpex-acpi.c'))
->>  pci_ss.add(when: 'CONFIG_PCI_EXPRESS_Q35', if_true: files('q35.c'))
->>  pci_ss.add(when: 'CONFIG_PCI_EXPRESS_XILINX', if_true: files('xilinx-pcie.c'))
->>  pci_ss.add(when: 'CONFIG_PCI_I440FX', if_true: files('i440fx.c'))
->>
+>> diff --git a/hw/remote/mpqemu-link.c b/hw/remote/mpqemu-link.c
+>> index 9ce3152..e67a5de 100644
+>> --- a/hw/remote/mpqemu-link.c
+>> +++ b/hw/remote/mpqemu-link.c
+>> @@ -218,7 +218,7 @@ uint64_t mpqemu_msg_send_and_await_reply(MPQemuMsg *msg, PCIProxyDev *pdev,
+>>     bool mpqemu_msg_valid(MPQemuMsg *msg)
+>>   {
+>> -    if (msg->cmd >= MPQEMU_CMD_MAX && msg->cmd < 0) {
+>> +    if (msg->cmd >= MPQEMU_CMD_MAX || msg->cmd < 0) {
+>>           return false;
+>>       }
+> 
 > 
 
 
