@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhEuW-0007pU-6i
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:14:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49442)
+	id 1lhF8V-0008O3-1d
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:28:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhEuT-0007ka-3v; Thu, 13 May 2021 13:14:05 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:52491)
+ id 1lhF8T-0008JL-19; Thu, 13 May 2021 13:28:33 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:48081)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhEuN-0003cF-BS; Thu, 13 May 2021 13:14:04 -0400
+ id 1lhF8P-0003gC-NU; Thu, 13 May 2021 13:28:32 -0400
 Received: from [192.168.100.1] ([82.142.31.78]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mc02T-1l58n428tj-00dTzK; Thu, 13 May 2021 19:13:09 +0200
-Subject: Re: [PATCH] hw/avr/atmega.c: use the avr51 cpu for atmega1280
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MybX9-1lHlcU01SH-00yysG; Thu, 13 May 2021 19:27:39 +0200
+Subject: Re: [PATCH] target/avr: Ignore unimplemented WDR opcode
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Joaquin de Andres <me@xcancerberox.com.ar>, Fred Konrad
- <konrad@adacore.com>, qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Rolnik <mrolnik@gmail.com>
-References: <1619637319-22299-1-git-send-email-frederic.konrad@adacore.com>
- <7970a6ec-f5ac-bcc9-9184-d8450b64b116@amsat.org>
- <27cc1bc5-ee71-abf6-fd8f-58ec44e1767f@xcancerberox.com.ar>
- <d8b05f93-ef5f-1697-439b-8961cb446cdf@adacore.com>
- <b61dabc3-e5e6-5bab-503c-53dd32a11aff@xcancerberox.com.ar>
- <4f22587c-1eb1-deab-fdb6-c53e36537e36@amsat.org>
+ Fred Konrad <konrad@adacore.com>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Michael Rolnik <mrolnik@gmail.com>,
+ Joaquin de Andres <me@xcancerberox.com.ar>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20210502190900.604292-1-f4bug@amsat.org>
+ <36dd1481-d89e-5f1c-5715-9275df83b722@adacore.com>
+ <e37dded2-7ed3-3878-7540-d693d8a45abb@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <fe24f3e3-9a51-b87b-fef0-78b0e7658e2f@vivier.eu>
-Date: Thu, 13 May 2021 19:13:07 +0200
+Message-ID: <84914648-70cc-0221-e7fe-3f0d74ec3dbe@vivier.eu>
+Date: Thu, 13 May 2021 19:27:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <4f22587c-1eb1-deab-fdb6-c53e36537e36@amsat.org>
+In-Reply-To: <e37dded2-7ed3-3878-7540-d693d8a45abb@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:P9BAOIWngQhgHJC2iGO5yEELhaQQZEodgUlJAxOvycetvZRKeQz
- mFy7Kq3ZDxb7/kI+AC0n+fOML0BlPflYyUvIEsdv2jyYV1uk8De8CXQzLoHsTPmY8QXvsK1
- U4U9c9gFFTxE/XmqrUrONw71QkK/MqsIpEno5T0rdxAdpfvSW9WicPzjYpnVwcKfypXTFVd
- q7ybUvQgUQn+Dq6YwbkCw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0iys/8OhKAw=:Vy5r0RS2C9XqR4vYhj2L16
- w8MebqRCXmYMuOlgGPGjx2+5Q95sQGMcv45iL0EADdBVpvt3RFUBIUVjjBEh9Z2iMREDb2KME
- inV1nYhFbB2yRjL5xaNBRnKZWiy4M1dzNQvPJ8urF1g50dn1z1e0M5IIouZe0zhkyoVCofNNV
- eA7nJDPXlO2KqzEJOpouaqa/Iw+KnS30oBXcdD7FtLWKW+/XfhBU7mblUdogGSxCCQNwTjmLf
- Gw7EEPFR0Znz4nl0KPd9VjQOT9IDVwZW/7gZ+COOTnIlAHUhvym3lbrabRkuKLBNxux2ep5Nn
- yzt3gj8buOeW1UK72qdj8lXjnA0Jzba7W8kbOLDapaaQycQdFebA7x1kcTl6xzh+RZpCZghHH
- sPErvkB7Eyp0e+/suDegmv9GQ6lcIXxJwYeWlnz3NsdjB5RCjH9o7/lX2nPIKr20hxGYRSY4+
- 7VruxCVyTpYorbOKmGrK1aWf8M6iDzGMSmVq6woRxNRjSNZudwENlfLrYw3xsDNh+YakH972g
- klq5SjHehL2cFa9Njd+qoY=
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ry401a9UUNyDp1PU4mqT7S4GsE3i7P+QLnpNbldBusgteDB5oRg
+ ELRHDNrQRCIATATFOqM5Az1VTrmpQnXF/P60OmQOyrvSNV77Q5IX/Kxmyhx+Ba9yWUwkdHc
+ QuzxNdmxI0L1+hWYJOQmfTN6v+yT8aTSBYwHyg8veoTA6RLF491C8Sfmh3VG8ErZUKhfznt
+ WFjWDODm4m3SK394Kma2A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:kSFfvjukpTo=:fyW+lOpNrCNoDl5jc/rQd/
+ ohs8AM4AbtmEWLlzOCDIH9WiwgBpqhSEEG3qpIHBILrYTGdV80GgsHN17kVdCqP/yOK2waHaY
+ pB60RJ3p8IfH0BrvU2xTGQt83M83/OG46ZXUO1rf3KErR9u5PSzTTw7ziDip8wMJBK21fJuvI
+ TZhY2DG3ahRao5nhjPZCq3oue7fnokjRPm8wcNJjhJ4MQSPLPeQAKCftzBHMk+zNU9DfbTRRj
+ p3fp74xM9kAmxqL11m9nD9oUYtWaNkOJtVNdHEsB6pNMpYUpL5OFDtzv4WB/tRcGh7YdBoFkm
+ Y5MqQO8WCWNJO8ysValSO961rQJPCHgyMiPlzwelx9VNE1U05ve2qWfFjVgXDmUhS3OcnZVwe
+ OQwCB2cwMpNUaaZC43G6eYjORfPVW606tTjIPD2XmQjEIKV7sO6V5jYNVO0y9foOwdw9PyUBt
+ RfbfJvqQS0LFd7bRwyQ6AqOUfhwCo0z7WWaEUT7EPR1ybmpnkcGBV0KQMklvg3fqSH7xzWlOa
+ 7Ftu1RMg3DN0skyuk62Q38=
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -66,7 +65,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 17:14:05 -0000
+X-List-Received-Date: Thu, 13 May 2021 17:28:33 -0000
 
 Le 13/05/2021 à 19:04, Philippe Mathieu-Daudé a écrit :
 > Cc'ing qemu-trivial@
@@ -76,72 +75,69 @@ Applied to my trivial-patches branch.
 Thanks,
 Laurent
 
-> On 5/5/21 4:00 PM, Joaquin de Andres wrote:
->> On 5/5/21 3:33 PM, Fred Konrad wrote:
+> On 5/5/21 3:35 PM, Fred Konrad wrote:
+>> Le 5/2/21 à 9:09 PM, Philippe Mathieu-Daudé a écrit :
+>>> Running the WDR opcode triggers a segfault:
 >>>
+>>>    $ cat > foo.S << EOF
+>>>    > __start:
+>>>    >     wdr
+>>>    > EOF
+>>>    $ avr-gcc -nostdlib -nostartfiles -mmcu=avr6 foo.S -o foo.elf
+>>>    $ qemu-system-avr -serial mon:stdio -nographic -no-reboot \
+>>>      -M mega -bios foo.elf -d in_asm --singlestep
+>>>    IN:
+>>>    0x00000000:  WDR
+>>>    Segmentation fault (core dumped)
 >>>
->>> Le 4/30/21 à 12:27 PM, Joaquin de Andres a écrit :
->>>> On 4/28/21 9:17 PM, Philippe Mathieu-Daudé wrote:
->>>>> Cc'ing Joaquín.
->>>>>
->>>>> On 4/28/21 9:15 PM, Frederic Konrad wrote:
->>>>>> According to the as documentation:
->>>>>>   (https://sourceware.org/binutils/docs-2.36/as/AVR-Options.html)
->>>>>>
->>>>>> "Instruction set avr51 is for the enhanced AVR core with exactly 128K
->>>>>>   program memory space (MCU types: atmega128, atmega128a, atmega1280,
->>>>>>   atmega1281, atmega1284, atmega1284p, atmega128rfa1, atmega128rfr2,
->>>>>>   atmega1284rfr2, at90can128, at90usb1286, at90usb1287, m3000)."
->>>>>>
->>>>>> But when compiling a program for atmega1280 or avr51 and trying to
->>>>>> execute
->>>>>> it:
->>>>>>
->>>>>> $ cat > test.S << EOF
->>>>>>> loop:
->>>>>>>      rjmp loop
->>>>>>> EOF
->>>>>> $ avr-gcc -nostdlib -nostartfiles -mmcu=atmega1280 test.S -o test.elf
->>>>>> $ qemu-system-avr -serial mon:stdio -nographic -no-reboot -M mega \
->>>>>>                    -bios test.elf
->>>>>> qemu-system-avr: Current machine: Arduino Mega (ATmega1280) with
->>>>>> 'avr6' CPU
->>>>>> qemu-system-avr: ELF image 'test.elf' is for 'avr51' CPU
->>>>>>
->>>>>> So this fixes the atmega1280 class to use an avr51 CPU.
->>>>>>
->>>>>> Signed-off-by: Frederic Konrad <frederic.konrad@adacore.com>
->>>>>> ---
->>>>>>   hw/avr/atmega.c | 2 +-
->>>>>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>>>>
->>>>>> diff --git a/hw/avr/atmega.c b/hw/avr/atmega.c
->>>>>> index 44c6afebbb..e3ea5702f5 100644
->>>>>> --- a/hw/avr/atmega.c
->>>>>> +++ b/hw/avr/atmega.c
->>>>>> @@ -402,7 +402,7 @@ static void atmega1280_class_init(ObjectClass
->>>>>> *oc, void *data)
->>>>>>   {
->>>>>>       AtmegaMcuClass *amc = ATMEGA_MCU_CLASS(oc);
->>>>>>   -    amc->cpu_type = AVR_CPU_TYPE_NAME("avr6");
->>>>>> +    amc->cpu_type = AVR_CPU_TYPE_NAME("avr51");
->>>>>>       amc->flash_size = 128 * KiB;
->>>>>>       amc->eeprom_size = 4 * KiB;
->>>>>>       amc->sram_size = 8 * KiB;
->>>>>>
->>>>>
->>>> Good catch!
->>>>
+>>>    (gdb) bt
+>>>       #0  0x00005555add0b23a in gdb_get_cpu_pid (cpu=0x5555af5a4af0)
+>>> at ../gdbstub.c:718
+>>>       #1  0x00005555add0b2dd in gdb_get_cpu_process
+>>> (cpu=0x5555af5a4af0) at ../gdbstub.c:743
+>>>       #2  0x00005555add0e477 in gdb_set_stop_cpu (cpu=0x5555af5a4af0)
+>>> at ../gdbstub.c:2742
+>>>       #3  0x00005555adc99b96 in cpu_handle_guest_debug
+>>> (cpu=0x5555af5a4af0) at ../softmmu/cpus.c:306
+>>>       #4  0x00005555adcc66ab in rr_cpu_thread_fn (arg=0x5555af5a4af0)
+>>> at ../accel/tcg/tcg-accel-ops-rr.c:224
+>>>       #5  0x00005555adefaf12 in qemu_thread_start
+>>> (args=0x5555af5d9870) at ../util/qemu-thread-posix.c:521
+>>>       #6  0x00007f692d940ea5 in start_thread () from
+>>> /lib64/libpthread.so.0
+>>>       #7  0x00007f692d6699fd in clone () from /lib64/libc.so.6
 >>>
->>> Thanks, does that count as a reviewed-by :)?
+>>> Since the watchdog peripheral is not implemented, simply
+>>> log the opcode as unimplemented and keep going.
 >>>
+>>> Reported-by: Fred Konrad <konrad@adacore.com>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>>   target/avr/helper.c | 6 +-----
+>>>   1 file changed, 1 insertion(+), 5 deletions(-)
 >>>
->> Yes! sorry.
+>>> diff --git a/target/avr/helper.c b/target/avr/helper.c
+>>> index 35e10195940..981c29da453 100644
+>>> --- a/target/avr/helper.c
+>>> +++ b/target/avr/helper.c
+>>> @@ -188,11 +188,7 @@ void helper_break(CPUAVRState *env)
+>>>     void helper_wdr(CPUAVRState *env)
+>>>   {
+>>> -    CPUState *cs = env_cpu(env);
+>>> -
+>>> -    /* WD is not implemented yet, placeholder */
+>>> -    cs->exception_index = EXCP_DEBUG;
+>>> -    cpu_loop_exit(cs);
+>>> +    qemu_log_mask(LOG_UNIMP, "WDG reset (not implemented)\n");
+>>>   }
 >>
+>> Seems ok to me, at least better than having a segfault.
 >>
->> Reviewed-by: Joaquin de Andres <me@xcancerberox.com.ar>
+>> Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
+>>
+>>>     /*
+>>>
 >>
 > 
-
 
 
