@@ -1,57 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhF8V-0008O3-1d
-	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 13:28:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52358)
+	id 1lhFzi-0006ho-Ut
+	for mharc-qemu-trivial@gnu.org; Thu, 13 May 2021 14:23:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35732)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhF8T-0008JL-19; Thu, 13 May 2021 13:28:33 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:48081)
+ (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
+ id 1lhFzc-0006d0-Ss; Thu, 13 May 2021 14:23:28 -0400
+Received: from mailout07.t-online.de ([194.25.134.83]:55540)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhF8P-0003gC-NU; Thu, 13 May 2021 13:28:32 -0400
-Received: from [192.168.100.1] ([82.142.31.78]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MybX9-1lHlcU01SH-00yysG; Thu, 13 May 2021 19:27:39 +0200
-Subject: Re: [PATCH] target/avr: Ignore unimplemented WDR opcode
+ (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
+ id 1lhFzT-0001bx-Hi; Thu, 13 May 2021 14:23:28 -0400
+Received: from fwd19.aul.t-online.de (fwd19.aul.t-online.de [172.20.27.65])
+ by mailout07.t-online.de (Postfix) with SMTP id 73BE548FE9;
+ Thu, 13 May 2021 20:23:11 +0200 (CEST)
+Received: from [192.168.211.200]
+ (VrypukZr8hgbKGyhQXt1h23VkHDuwbbnB5XFoilpvDD-9pcAxGT33gmHMQROdJ0ZK3@[79.208.18.63])
+ by fwd19.t-online.de
+ with (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384 encrypted)
+ esmtp id 1lhFzG-1VPP2O0; Thu, 13 May 2021 20:23:06 +0200
+Subject: Re: [PATCH] hw/input/ps2: Use ps2_raise_irq() instead of open coding
+ it
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Fred Konrad <konrad@adacore.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Michael Rolnik <mrolnik@gmail.com>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20210502190900.604292-1-f4bug@amsat.org>
- <36dd1481-d89e-5f1c-5715-9275df83b722@adacore.com>
- <e37dded2-7ed3-3878-7540-d693d8a45abb@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <84914648-70cc-0221-e7fe-3f0d74ec3dbe@vivier.eu>
-Date: Thu, 13 May 2021 19:27:37 +0200
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20210513171244.3940519-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>
+Message-ID: <709e2305-39b4-d727-f551-ed38c059290a@t-online.de>
+Date: Thu, 13 May 2021 20:23:05 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <e37dded2-7ed3-3878-7540-d693d8a45abb@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+In-Reply-To: <20210513171244.3940519-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ry401a9UUNyDp1PU4mqT7S4GsE3i7P+QLnpNbldBusgteDB5oRg
- ELRHDNrQRCIATATFOqM5Az1VTrmpQnXF/P60OmQOyrvSNV77Q5IX/Kxmyhx+Ba9yWUwkdHc
- QuzxNdmxI0L1+hWYJOQmfTN6v+yT8aTSBYwHyg8veoTA6RLF491C8Sfmh3VG8ErZUKhfznt
- WFjWDODm4m3SK394Kma2A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kSFfvjukpTo=:fyW+lOpNrCNoDl5jc/rQd/
- ohs8AM4AbtmEWLlzOCDIH9WiwgBpqhSEEG3qpIHBILrYTGdV80GgsHN17kVdCqP/yOK2waHaY
- pB60RJ3p8IfH0BrvU2xTGQt83M83/OG46ZXUO1rf3KErR9u5PSzTTw7ziDip8wMJBK21fJuvI
- TZhY2DG3ahRao5nhjPZCq3oue7fnokjRPm8wcNJjhJ4MQSPLPeQAKCftzBHMk+zNU9DfbTRRj
- p3fp74xM9kAmxqL11m9nD9oUYtWaNkOJtVNdHEsB6pNMpYUpL5OFDtzv4WB/tRcGh7YdBoFkm
- Y5MqQO8WCWNJO8ysValSO961rQJPCHgyMiPlzwelx9VNE1U05ve2qWfFjVgXDmUhS3OcnZVwe
- OQwCB2cwMpNUaaZC43G6eYjORfPVW606tTjIPD2XmQjEIKV7sO6V5jYNVO0y9foOwdw9PyUBt
- RfbfJvqQS0LFd7bRwyQ6AqOUfhwCo0z7WWaEUT7EPR1ybmpnkcGBV0KQMklvg3fqSH7xzWlOa
- 7Ftu1RMg3DN0skyuk62Q38=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
+Content-Language: en-US
+X-ID: VrypukZr8hgbKGyhQXt1h23VkHDuwbbnB5XFoilpvDD-9pcAxGT33gmHMQROdJ0ZK3
+X-TOI-EXPURGATEID: 150726::1620930186-0000782A-9055CC5E/0/0 CLEAN NORMAL
+X-TOI-MSGID: b3adbde5-8d9a-4975-94fd-91279f273b53
+Received-SPF: none client-ip=194.25.134.83; envelope-from=vr_qemu@t-online.de;
+ helo=mailout07.t-online.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -65,79 +56,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 May 2021 17:28:33 -0000
+X-List-Received-Date: Thu, 13 May 2021 18:23:32 -0000
 
-Le 13/05/2021 à 19:04, Philippe Mathieu-Daudé a écrit :
-> Cc'ing qemu-trivial@
+> Inspired-by: Volker Rümelin <vr_qemu@t-online.de>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   hw/input/ps2.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+> index 72cdb80ae1c..02d7e5da723 100644
+> --- a/hw/input/ps2.c
+> +++ b/hw/input/ps2.c
+> @@ -213,7 +213,7 @@ void ps2_raise_irq(PS2State *s)
+>   void ps2_queue(PS2State *s, int b)
+>   {
+>       ps2_queue_noirq(s, b);
+> -    s->update_irq(s->update_arg, 1);
+> +    ps2_raise_irq(s);
+>   }
+>   
+>   void ps2_queue_2(PS2State *s, int b1, int b2)
+> @@ -224,7 +224,7 @@ void ps2_queue_2(PS2State *s, int b1, int b2)
+>   
+>       ps2_queue_noirq(s, b1);
+>       ps2_queue_noirq(s, b2);
+> -    s->update_irq(s->update_arg, 1);
+> +    ps2_raise_irq(s);
+>   }
+>   
+>   void ps2_queue_3(PS2State *s, int b1, int b2, int b3)
+> @@ -236,7 +236,7 @@ void ps2_queue_3(PS2State *s, int b1, int b2, int b3)
+>       ps2_queue_noirq(s, b1);
+>       ps2_queue_noirq(s, b2);
+>       ps2_queue_noirq(s, b3);
+> -    s->update_irq(s->update_arg, 1);
+> +    ps2_raise_irq(s);
+>   }
+>   
+>   void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
+> @@ -249,7 +249,7 @@ void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
+>       ps2_queue_noirq(s, b2);
+>       ps2_queue_noirq(s, b3);
+>       ps2_queue_noirq(s, b4);
+> -    s->update_irq(s->update_arg, 1);
+> +    ps2_raise_irq(s);
+>   }
+>   
+>   /* keycode is the untranslated scancode in the current scancode set. */
 
-Applied to my trivial-patches branch.
+Hi Philippe,
 
-Thanks,
-Laurent
+can you read my local qemu repository? :-)
 
-> On 5/5/21 3:35 PM, Fred Konrad wrote:
->> Le 5/2/21 à 9:09 PM, Philippe Mathieu-Daudé a écrit :
->>> Running the WDR opcode triggers a segfault:
->>>
->>>    $ cat > foo.S << EOF
->>>    > __start:
->>>    >     wdr
->>>    > EOF
->>>    $ avr-gcc -nostdlib -nostartfiles -mmcu=avr6 foo.S -o foo.elf
->>>    $ qemu-system-avr -serial mon:stdio -nographic -no-reboot \
->>>      -M mega -bios foo.elf -d in_asm --singlestep
->>>    IN:
->>>    0x00000000:  WDR
->>>    Segmentation fault (core dumped)
->>>
->>>    (gdb) bt
->>>       #0  0x00005555add0b23a in gdb_get_cpu_pid (cpu=0x5555af5a4af0)
->>> at ../gdbstub.c:718
->>>       #1  0x00005555add0b2dd in gdb_get_cpu_process
->>> (cpu=0x5555af5a4af0) at ../gdbstub.c:743
->>>       #2  0x00005555add0e477 in gdb_set_stop_cpu (cpu=0x5555af5a4af0)
->>> at ../gdbstub.c:2742
->>>       #3  0x00005555adc99b96 in cpu_handle_guest_debug
->>> (cpu=0x5555af5a4af0) at ../softmmu/cpus.c:306
->>>       #4  0x00005555adcc66ab in rr_cpu_thread_fn (arg=0x5555af5a4af0)
->>> at ../accel/tcg/tcg-accel-ops-rr.c:224
->>>       #5  0x00005555adefaf12 in qemu_thread_start
->>> (args=0x5555af5d9870) at ../util/qemu-thread-posix.c:521
->>>       #6  0x00007f692d940ea5 in start_thread () from
->>> /lib64/libpthread.so.0
->>>       #7  0x00007f692d6699fd in clone () from /lib64/libc.so.6
->>>
->>> Since the watchdog peripheral is not implemented, simply
->>> log the opcode as unimplemented and keep going.
->>>
->>> Reported-by: Fred Konrad <konrad@adacore.com>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>   target/avr/helper.c | 6 +-----
->>>   1 file changed, 1 insertion(+), 5 deletions(-)
->>>
->>> diff --git a/target/avr/helper.c b/target/avr/helper.c
->>> index 35e10195940..981c29da453 100644
->>> --- a/target/avr/helper.c
->>> +++ b/target/avr/helper.c
->>> @@ -188,11 +188,7 @@ void helper_break(CPUAVRState *env)
->>>     void helper_wdr(CPUAVRState *env)
->>>   {
->>> -    CPUState *cs = env_cpu(env);
->>> -
->>> -    /* WD is not implemented yet, placeholder */
->>> -    cs->exception_index = EXCP_DEBUG;
->>> -    cpu_loop_exit(cs);
->>> +    qemu_log_mask(LOG_UNIMP, "WDG reset (not implemented)\n");
->>>   }
->>
->> Seems ok to me, at least better than having a segfault.
->>
->> Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
->>
->>>     /*
->>>
->>
-> 
-
+Reviewed-by: Volker Rümelin <vr_qemu@t-online.de>
 
