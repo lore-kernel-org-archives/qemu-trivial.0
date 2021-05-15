@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhr9a-0006RZ-OK
+	id 1lhr9a-0006SZ-UH
 	for mharc-qemu-trivial@gnu.org; Sat, 15 May 2021 06:04:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34002)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34038)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhr9R-000667-RW; Sat, 15 May 2021 06:04:07 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:60377)
+ id 1lhr9T-00066l-Bg; Sat, 15 May 2021 06:04:07 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:58307)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhr9O-0006YS-7X; Sat, 15 May 2021 06:04:05 -0400
+ id 1lhr9P-0006Ym-Og; Sat, 15 May 2021 06:04:07 -0400
 Received: from quad ([82.142.31.78]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1N63NW-1lSOg00bE0-016Rv7; Sat, 15
- May 2021 12:03:48 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mzz6m-1lK7T12Lhe-00x3SJ; Sat, 15
+ May 2021 12:03:49 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
  Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PULL 12/16] hw/pci-host: Do not build gpex-acpi.c if GPEX is not
- selected
-Date: Sat, 15 May 2021 12:03:31 +0200
-Message-Id: <20210515100335.1245468-13-laurent@vivier.eu>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>
+Subject: [PULL 14/16] target/sh4: Return error if
+ CPUClass::get_phys_page_debug() fails
+Date: Sat, 15 May 2021 12:03:33 +0200
+Message-Id: <20210515100335.1245468-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210515100335.1245468-1-laurent@vivier.eu>
 References: <20210515100335.1245468-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EgN/WUvV4VTzQjZhA5mUEZiJsExSyb0cGXbJor54drZyPAHltLM
- TBwgjUfR2O4epHirvg4QrFlrFjTVlVIqOSQ4qp+Va5H7YZD2t1xKA9DuFzpdVV+ThaLmZAs
- 9BVDHPe415s4IuXl/L2i1ezCLmshEEvXkaOIWnPmgHj76brQaLs5yP+hd7B7CyMTmfRxHHE
- n66G2Exuk0hOJy397pmtA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:c+0ig8MZqzc=:5tcSisSm8VDE7AssfRhpLj
- y2WUv+fPT47QGWEYWRg307s72EfLjGxlvvisyXc+FfjbMlQhpNH6QwjDOEOJ7xDT1tWTfiBKx
- NrIRdy24RvKGttOXrp3jrpbVnmM0y5zDK6Ui4M3W9tPJFYwlADO0pV9PgHRoGMQ50RTt3aDPu
- fL/fSJcX2KCTaQHdJnHbFEqZT71Qzm11+PW/GAb0h/wxsXL8KhfGMAymDLIBGVZM+cH9n3NLe
- kl712jWdQzmwF4lYWL6DQOSp68Q76LjK/dW5TFdjxSw13UZVD1mDDI2ia6vh7FuTC0+YekX7X
- ycDJ8moidx/i8kUrV4sI7qUiTLxEvHefy/M61LpjxIbm8K9PTGXbhRk0r9PzinDV8oNGe2If6
- B5QFpEG2e47gSAI1kvTJ1SSRz8ZTB9fJy2EmtjCsN9PA7yyuR6QwFGbOU+3MSNvTjl7yOdu85
- hNMkDRNIpVi7tl/UMoARdMKGJfjnhfmUsoFfoSr5X3Y6IKhf5AECqLBJwg3/eyu4i5OyEIUli
- +13uBjjoHEezGZcRlSC7mU=
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:G2RRtHqXg2nfmeg0dzZCcikoI1mLa1mvwB2QWIkX5JJ8ZvBRyzJ
+ sk1p2m5V3TIPb8GvG2vGWKcV/oMufR41JmS+0BuV/y9Pp5a6Ss76FevqeibhZ+GExzq+Q2Q
+ 09sw8GnNp9UGtBmV+1OG1ucO5AbRUJPDvF8FYT34q0SvT06GPcbHKPplpl+0tYxLpOYDruV
+ aI5HSWDxOKWcR5b2s8W8w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TjMyK4ziKYs=:S7GPmj1WEUY8OKkuJG6/jD
+ r/X90ApzOG7dTtiOi5Loui6uKMvRxc+upbmJma4LQWtArGme7Go7xr1e3QAyG17e6+niB0/6+
+ 0lGLkrorYCtt6675O5DujNx+zk2/ykbOWy7UrSqp1L9clNoGehb8J5DH2olneKin0KNLUH+eh
+ HxFRws54qiyqCBJ9UCmlEDeKyQ+sZ88fACsnppQFvBn9hVnIwlFayJTiTCmDvYmMBuHeP1XkD
+ 2z4cnmsfBcYc1/S+NH/w2ht3nMgJjjfDftk1UXFLv035lOyMByNERVAZhoXAgJvQykbNbIdoT
+ 5pMRhB7s9KDCzolVofL8mlQ8HlF8XZ3++DgEAr/5BRl2fdPS/BFrCg98ZeAiaxl3yIJU0AQ2F
+ RiB9UdDKX9L/oTkTwmiJNbInmOwacL/bsW9Zv7SS9aL7tfbVkvOXRtE3+vboD/40DQ6K4Ny8F
+ TvM4YDHi9gLE6JdkquLvkAFKBZ9ULXlHorGS9vHqwIObpZDVXK8E5oyRIikIelR4XPraVAGW3
+ K0mwhdK0AlQPA6rlRDrKF4=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -62,37 +62,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 May 2021 10:04:07 -0000
+X-List-Received-Date: Sat, 15 May 2021 10:04:08 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Since its introduction in commit 5b85eabe68f ("acpi: add
-acpi_dsdt_add_gpex") we build gpex-acpi.c if ACPI is selected,
-even if the GPEX_HOST device isn't build. Add the missing
-Kconfig dependency.
+If the get_physical_address() call fails, the SH4 get_phys_page_debug()
+handler returns an uninitialized address. Instead return -1, which
+correspond to "no page found" (see cpu_get_phys_page_debug() doc
+string).
+
+This fixes a warning emitted when building with CFLAGS=-O3
+(using GCC 10.2.1 20201125):
+
+  target/sh4/helper.c: In function ‘superh_cpu_get_phys_page_debug’:
+  target/sh4/helper.c:446:12: warning: ‘physical’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+    446 |     return physical;
+        |            ^~~~~~~~
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-Id: <20210425182124.3735214-1-f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+Message-Id: <20210505161046.1397608-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/pci-host/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/sh4/helper.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/hw/pci-host/meson.build b/hw/pci-host/meson.build
-index 34b3538bebf6..1698d3a1920a 100644
---- a/hw/pci-host/meson.build
-+++ b/hw/pci-host/meson.build
-@@ -3,7 +3,7 @@ pci_ss.add(when: 'CONFIG_PAM', if_true: files('pam.c'))
- pci_ss.add(when: 'CONFIG_PCI_BONITO', if_true: files('bonito.c'))
- pci_ss.add(when: 'CONFIG_PCI_EXPRESS_DESIGNWARE', if_true: files('designware.c'))
- pci_ss.add(when: 'CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', if_true: files('gpex.c'))
--pci_ss.add(when: 'CONFIG_ACPI', if_true: files('gpex-acpi.c'))
-+pci_ss.add(when: ['CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', 'CONFIG_ACPI'], if_true: files('gpex-acpi.c'))
- pci_ss.add(when: 'CONFIG_PCI_EXPRESS_Q35', if_true: files('q35.c'))
- pci_ss.add(when: 'CONFIG_PCI_EXPRESS_XILINX', if_true: files('xilinx-pcie.c'))
- pci_ss.add(when: 'CONFIG_PCI_I440FX', if_true: files('i440fx.c'))
+diff --git a/target/sh4/helper.c b/target/sh4/helper.c
+index bd8e034f174d..2d622081e85a 100644
+--- a/target/sh4/helper.c
++++ b/target/sh4/helper.c
+@@ -441,9 +441,12 @@ hwaddr superh_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+     target_ulong physical;
+     int prot;
+ 
+-    get_physical_address(&cpu->env, &physical, &prot, addr, MMU_DATA_LOAD);
++    if (get_physical_address(&cpu->env, &physical, &prot, addr, MMU_DATA_LOAD)
++            == MMU_OK) {
++        return physical;
++    }
+ 
+-    return physical;
++    return -1;
+ }
+ 
+ void cpu_load_tlb(CPUSH4State * env)
 -- 
 2.31.1
 
