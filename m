@@ -1,52 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhr9Y-0006FE-1Z
-	for mharc-qemu-trivial@gnu.org; Sat, 15 May 2021 06:04:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33940)
+	id 1lhr9Z-0006KZ-8W
+	for mharc-qemu-trivial@gnu.org; Sat, 15 May 2021 06:04:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhr9J-00061F-6D; Sat, 15 May 2021 06:03:58 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:56337)
+ id 1lhr9K-00062R-PO; Sat, 15 May 2021 06:04:00 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:56187)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhr9E-0006SD-LA; Sat, 15 May 2021 06:03:56 -0400
+ id 1lhr9J-0006V7-46; Sat, 15 May 2021 06:03:58 -0400
 Received: from quad ([82.142.31.78]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MeTwY-1l7Prq1Mwe-00aS8T; Sat, 15
- May 2021 12:03:46 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MFsd7-1li8g30TNv-00HMwA; Sat, 15
+ May 2021 12:03:44 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
  Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>
-Subject: [PULL 11/16] hw/mem/meson: Fix linking sparse-mem device with fuzzer
-Date: Sat, 15 May 2021 12:03:30 +0200
-Message-Id: <20210515100335.1245468-12-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
+Subject: [PULL 08/16] hw/timer/etraxfs_timer: Convert to 3-phase reset
+ (Resettable interface)
+Date: Sat, 15 May 2021 12:03:27 +0200
+Message-Id: <20210515100335.1245468-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210515100335.1245468-1-laurent@vivier.eu>
 References: <20210515100335.1245468-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:rG0nZGNhMImR4A9ianrVpPGs4B32ER585wwcosGaFY+HOYcq7OM
- bE/oB8IdSzfVF4t9GNCOtIcIVl6gIegjUMv7ZfeWvxGhdXlK9lGHSnpCMN5ijHcGAFvUPLt
- Y9f3sDbZmyWNCXSzExsmCXcUR1hPWc3eJxjg+Ms0oE3pOoskxU4XjRSIhQ7MhmK76gOom4H
- yDRpAmwfP7rtbz9njjp5w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FEFbDzrr9Tw=:bPipkksH6fk5o7dnVksqOL
- I8Vf46cPcH66Ths7PrkeVe6Eu+vqvzW/44PhG74bXMcvZ8tv7tJb7s9lOlt+najzbjCajLv47
- 1LWNHu5nLxr3CQv3+/Q+d3utJWb2TOftyKu6xObXHou8Ceby9yvYMxP6OFzQ13XzUQt4utmSR
- kPGdsCH6E5mIa4Z3xszDxwET/jcAy8B96zdf5tTBmECxxbsLMU1X/AgCH10YO35N04kb4OdLF
- 2yOpzxDIGvo9FT1lF3wljZj62tUNHtqXxTK1NanvQdB0mswtPDYLM51YTOGEEWIKMkEojOm6S
- dQQsTScgKIO30Q6zJp5ucrWKnw36w056l9MkZt4hr0PDNKWXj9Oe96DtTWuT0XN9ngbnukFZB
- 7ZNA6cAFYRnvsQhipwP2SaNByjYKizvxBB5D9oxl35vbrOVULmbVQldJPpXq5NDMoBn7BXNnU
- kIyOSP9j1z9DLApZIpGjzHNQtmK9BOlm0osly6WIG9YbOfNQAJGeLju55xgT7bmeCoaEU3jxj
- E7QZKg9H2oztBaR5ci1lu8=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:yqgfvg3KKGDk3mIT/ECmJpdyRQVSmirasttAUsDRh9iI+7cQrIm
+ SXaOMbhYQc98D/2noTTSY0MH6R7xyAuN4Kd8vDnnmwDq9UkmGdOQLkZvlGMtR45w1zIFWh+
+ zcr3l5sPXIArzSv0wvj6FiaP2FWyO2rAX+Ea2cMgLoo5vk7rFdYj3fFT5PxNOC7azsTQzTM
+ G52DgCjRNE29mvkWxXrGg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8+5LOmKOGt4=:cEPMLYU43xDtaJsZ9S3J6K
+ lQIy/DxZm1wajCNW9kR/AhKuj1L4I6nuZDQHXR2YnWukpfDkvvcjK8+6hpG+jW6oKB5V1x2XI
+ IcvYtecGdmng+AhD23OyfpQQT/oFth6o8mwMX6rDB5htB3uAg79Lhwc+NeKqowr7bQ4u/hNPR
+ UtWRlYePC/CqlUzJ4dk0KqXVOcDsiiw5Q6/UW3o5hSrPVvnDNIIoV/p6VBADqXi7+YCgyiirL
+ 5c4p0I0k8QCv0/ygWcPBbbOakKzFv1+hYaHDGxK5oWiQuf97+YN0GdoByIj2irtQmmdwFnYKL
+ 3gogJD1NqH6TYSFXBfeD3X5Hw9Fa09pAT8rcZaox5jBXxb4lzOsQVNKxhAzPj7mtfi9tAf0bN
+ 0vKP8pKFgImMQUOXc1N72csx+1gm6X7pbRGssrgFEVHXQV81df8mFZ4FuejA0yFvicV4wqtVe
+ XMMiQdkNB13ynpWpKZ/Jo8bPlqQ2pOWjiTuxelCiwa4VGPSRIpWfX2VgeRcieUmekoFUozTyG
+ AVAc/g2KioAJ2KNtvum9DU=
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,46 +61,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 May 2021 10:04:04 -0000
+X-List-Received-Date: Sat, 15 May 2021 10:04:02 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-sparse-mem.c is added to the 'mem_ss' source set, which itself
-is conditionally added to softmmu_ss if CONFIG_MEM_DEVICE is
-selected.
-But if CONFIG_MEM_DEVICE isn't selected, we get a link failure
-even if CONFIG_FUZZ is selected:
+TYPE_ETRAX_FS_TIMER is a sysbus device, so its DeviceClass::reset()
+handler is called automatically when its qbus parent is reset
+(we don't need to register it manually).
 
-  /usr/bin/ld: tests_qtest_fuzz_generic_fuzz.c.o: in function `generic_pre_fuzz':
-  tests/qtest/fuzz/generic_fuzz.c:826: undefined reference to `sparse_mem_init'
-  clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+Convert the generic reset to a enter/hold resettable ones, and
+remove the qemu_register_reset() call.
 
-Fix by adding sparse-mem.c directly to the softmmu_ss set.
-
-Fixes: 230376d285b ("memory: add a sparse memory device for fuzzing")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
-Message-Id: <20210406133944.4193691-1-philmd@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Message-Id: <20210502163931.552675-2-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/mem/meson.build | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/timer/etraxfs_timer.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
-diff --git a/hw/mem/meson.build b/hw/mem/meson.build
-index ef79e046787c..3c8fdef9f9e9 100644
---- a/hw/mem/meson.build
-+++ b/hw/mem/meson.build
-@@ -1,8 +1,9 @@
- mem_ss = ss.source_set()
- mem_ss.add(files('memory-device.c'))
--mem_ss.add(when: 'CONFIG_FUZZ', if_true: files('sparse-mem.c'))
- mem_ss.add(when: 'CONFIG_DIMM', if_true: files('pc-dimm.c'))
- mem_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_mc.c'))
- mem_ss.add(when: 'CONFIG_NVDIMM', if_true: files('nvdimm.c'))
+diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
+index 5379006086fb..4ba662190de3 100644
+--- a/hw/timer/etraxfs_timer.c
++++ b/hw/timer/etraxfs_timer.c
+@@ -309,9 +309,9 @@ static const MemoryRegionOps timer_ops = {
+     }
+ };
  
- softmmu_ss.add_all(when: 'CONFIG_MEM_DEVICE', if_true: mem_ss)
+-static void etraxfs_timer_reset(void *opaque)
++static void etraxfs_timer_reset_enter(Object *obj, ResetType type)
+ {
+-    ETRAXTimerState *t = opaque;
++    ETRAXTimerState *t = ETRAX_TIMER(obj);
+ 
+     ptimer_transaction_begin(t->ptimer_t0);
+     ptimer_stop(t->ptimer_t0);
+@@ -325,6 +325,12 @@ static void etraxfs_timer_reset(void *opaque)
+     t->rw_wd_ctrl = 0;
+     t->r_intr = 0;
+     t->rw_intr_mask = 0;
++}
 +
-+softmmu_ss.add(when: 'CONFIG_FUZZ', if_true: files('sparse-mem.c'))
++static void etraxfs_timer_reset_hold(Object *obj)
++{
++    ETRAXTimerState *t = ETRAX_TIMER(obj);
++
+     qemu_irq_lower(t->irq);
+ }
+ 
+@@ -343,14 +349,16 @@ static void etraxfs_timer_realize(DeviceState *dev, Error **errp)
+     memory_region_init_io(&t->mmio, OBJECT(t), &timer_ops, t,
+                           "etraxfs-timer", 0x5c);
+     sysbus_init_mmio(sbd, &t->mmio);
+-    qemu_register_reset(etraxfs_timer_reset, t);
+ }
+ 
+ static void etraxfs_timer_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
+ 
+     dc->realize = etraxfs_timer_realize;
++    rc->phases.enter = etraxfs_timer_reset_enter;
++    rc->phases.hold = etraxfs_timer_reset_hold;
+ }
+ 
+ static const TypeInfo etraxfs_timer_info = {
 -- 
 2.31.1
 
