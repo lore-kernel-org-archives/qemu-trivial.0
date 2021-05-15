@@ -1,55 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lhr9F-0005xh-Gi
-	for mharc-qemu-trivial@gnu.org; Sat, 15 May 2021 06:03:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33876)
+	id 1lhr9K-000624-FA
+	for mharc-qemu-trivial@gnu.org; Sat, 15 May 2021 06:04:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhr9C-0005r3-VU; Sat, 15 May 2021 06:03:51 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:40397)
+ id 1lhr9D-0005s2-CX; Sat, 15 May 2021 06:03:51 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:47889)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lhr99-0006O2-G8; Sat, 15 May 2021 06:03:50 -0400
+ id 1lhr99-0006O0-C6; Sat, 15 May 2021 06:03:51 -0400
 Received: from quad ([82.142.31.78]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1N3Kc8-1lYTUc2vCc-010PW7; Sat, 15
- May 2021 12:03:40 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1N7zJl-1lTmer0cM7-0154DC; Sat, 15
+ May 2021 12:03:42 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PULL 03/16] virtio-blk: Constify VirtIOFeature feature_sizes[]
-Date: Sat, 15 May 2021 12:03:22 +0200
-Message-Id: <20210515100335.1245468-4-laurent@vivier.eu>
+ Michael Tokarev <mjt@tls.msk.ru>, Greg Kurz <groug@kaod.org>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+Subject: [PULL 05/16] virtiofsd: Fix check of chown()'s return value
+Date: Sat, 15 May 2021 12:03:24 +0200
+Message-Id: <20210515100335.1245468-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210515100335.1245468-1-laurent@vivier.eu>
 References: <20210515100335.1245468-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9hsZWkOkDIxZzI1MB9M8jN7watGfigavbQE7+h/fcvuh1qfLfPM
- mttQBh97vnrAjL4tTbZdKu7eKmbz8Xk5e/RKrid3IRCkS/SxbBOSNUbADt43jPIxcVdZM7/
- naAeeEH7yrpEZhwW+PIIGWxQmqic0+kA9CKLKYkOl0uBOp6BU99WFRCKetttS3Or9CaQCvF
- BVaypqvAN3uy7aW3ZOzhg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6eM4hRaTKjY=:oQczKcuZE3nSGtC0blaxhV
- D2DgxpAe0eGFt1X8+qWeHORfYukaJRdxMSdEAK7F4O6glQL03423CKdJyWx7+ohxao+MqXG37
- urUjiCwwSWyEduuGkyLgZfowDcpU3kKWvaEU7iGp0+A1PJUeUCLz8Ezy6+HvJ/XlE3oIhim1z
- yvKB2p0/KMgWWL25+6BCBUzZlM8zDQsaOZdt//yydKElQN0WMdZPoj8n8P3nXs3ND4oP4UwXW
- wUUai3lDgGbyxQaSuILMoLsfCH8zhKXiDepNLhT6AxHop4/5zoA+a5Zw2fPf6n+y6Pe8Rz13F
- 56gBxaQ6NlyxTyLthXTuVXGGwlgN/6TaPI8yLrvqqrGc18jkhOH57PMicgedtYtMTbNeYoh/k
- DiDp/sr1z0Ll+K8Cg2RYd345XRV6h+zcC7HDA7iuEmNFUeezL4RxLd1FSy89JaessquGQZ1IE
- a27RO2NbAlg+0w+M1USJZMjrwfBJxAq4esjPEQfDBamUkRy+8ESBmgMCzA/+3BbdFr79t/Be9
- 38/hu83Kug9UQTANP1nDJA=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:yMxAyluc3nKt4dIdebDpTE4Kw1UVmdbj91ORM8n/HuB4pJxHw4u
+ fYZSGk1xnjVGTzwtxjMaa+1x+33zKtSqwBMtPKmyKej9YiDIFQRoVv/XWNf5j3Ugx5qtfre
+ 5dh84ctIcoJoC69UQH3GrIuk9FaKusStJqZO4Km3Ma0jvCz73q3TcfQKg0pwZJByWyt2bM8
+ jX8A9W5XiFMBo7RKYIOLg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Q1N6ik1CI8c=:RfHtMHc5c2lUiva9QArLIN
+ OB8XUhF2YJzC5J9ffNo56NV9VASKzqZeylgspVEAqjKs5ilaEw3VhW7KQN9UeDzFVhM3PjVIr
+ F0sA6OmJth+xUoOVPNZdVV7TolYqQqgNzMDK5B9QWBbcltM1ImmmOnSvuwhtUZz/+0Mv5qMh3
+ kvxGw30uG+GioIAtS2I3d7vxWxSIaI/C1OmggyQpIl9/NEYYoYQeRNy84XFGYpdpNEMqYnaax
+ F1I4fhYYbdAE2I8JRCEbE9u+kfP4+MmUdf6X0ghd1y5LtjCpajXa/0EFX7yiblu14m1iOZgzu
+ h1yQ0uGc7+b5/EXcbawIgoeZNy+IgndvHEeVfoByLDM3pBTp4YlZl5udmTmn8b49I9c9iTaA/
+ U845lyobWiqh3fAUHILoK+ogqR0i7t4pvtn1UAhyh8T+hOGZMPEz6EFPEBS8sNiIN9mHr8Me2
+ LS6x/5p92QuoTnhFgc752XLK2O5M1lbgkexA6xtYwBG5YOttPZNaZQNuZJQzInRgf4xnFrHfN
+ 7923WIZVeojhiW9hG4O8ug=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -64,32 +60,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 15 May 2021 10:03:51 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Greg Kurz <groug@kaod.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Jason Wang <jasowang@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20210511104157.2880306-3-philmd@redhat.com>
+Otherwise you always get this warning when using --socket-group=users
+
+ vhost socket failed to set group to users (100)
+
+While here, print out the error if chown() fails.
+
+Fixes: f6698f2b03b0 ("tools/virtiofsd: add support for --socket-group")
+Signed-off-by: Greg Kurz <groug@kaod.org>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Message-Id: <162040394890.714971.15502455176528384778.stgit@bahia.lan>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/block/virtio-blk.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tools/virtiofsd/fuse_virtio.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index d28979efb8d7..f139cd7cc9cc 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -40,7 +40,7 @@
-  * Starting from the discard feature, we can use this array to properly
-  * set the config size depending on the features enabled.
-  */
--static VirtIOFeature feature_sizes[] = {
-+static const VirtIOFeature feature_sizes[] = {
-     {.flags = 1ULL << VIRTIO_BLK_F_DISCARD,
-      .end = endof(struct virtio_blk_config, discard_sector_alignment)},
-     {.flags = 1ULL << VIRTIO_BLK_F_WRITE_ZEROES,
+diff --git a/tools/virtiofsd/fuse_virtio.c b/tools/virtiofsd/fuse_virtio.c
+index 1170f375a57a..9efdbd8ffd0a 100644
+--- a/tools/virtiofsd/fuse_virtio.c
++++ b/tools/virtiofsd/fuse_virtio.c
+@@ -1024,9 +1024,9 @@ static int fv_create_listen_socket(struct fuse_session *se)
+     if (se->vu_socket_group) {
+         struct group *g = getgrnam(se->vu_socket_group);
+         if (g) {
+-            if (!chown(se->vu_socket_path, -1, g->gr_gid)) {
++            if (chown(se->vu_socket_path, -1, g->gr_gid) == -1) {
+                 fuse_log(FUSE_LOG_WARNING,
+-                         "vhost socket failed to set group to %s (%d)\n",
++                         "vhost socket failed to set group to %s (%d): %m\n",
+                          se->vu_socket_group, g->gr_gid);
+             }
+         }
 -- 
 2.31.1
 
