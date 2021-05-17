@@ -1,67 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1liWBQ-0003yw-A3
-	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 01:52:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52932)
+	id 1liXN6-0004n7-24
+	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 03:09:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liWBN-0003xu-J7; Mon, 17 May 2021 01:52:49 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:45031)
+ id 1liXN4-0004hK-0o; Mon, 17 May 2021 03:08:58 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:51988)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liWBM-0002Rs-3S; Mon, 17 May 2021 01:52:49 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- y184-20020a1ce1c10000b02901769b409001so1407912wmg.3; 
- Sun, 16 May 2021 22:52:47 -0700 (PDT)
+ id 1liXN2-00076D-GX; Mon, 17 May 2021 03:08:57 -0400
+Received: by mail-wm1-x334.google.com with SMTP id u133so2937605wmg.1;
+ Mon, 17 May 2021 00:08:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=FMnps2qubYYWD3YRuRkPtfN0t7AsJAs5vvzOFy1DvdY=;
- b=F/Y+ntKgjUt0RaOy0qIBz0Kl+eh7/LEsll+Q2/dymOn426vS6ef2AT9CIQtd9UvoDA
- wd8F13Z0JImKx8vOCwFMdD2J5g/VLXaX+2Ex/t1mFdyPgXtK7cPuh3CmRF2VI5KGjJgC
- 3+C5wLCBVOEowa8lPRk5KP7Setfuy9cn2eJjkED9mQOLbWtMAGcBpe75BFfgvkaYjDt+
- R8TI8BmtEG6Jz3EdBDoox7nJPjh64aZxB4ocDV4EGUKDqCkxPZCY9rr1Ea56/Jt4QuSd
- qe5y+ZKVJyc/wpFLqRvgmBb+4uZa79Ff7C75TxWyxLfYRKQytB6S4nbNzyOaLrEsB/zD
- 3pQQ==
+ bh=QpA+CuwG8DCNtlhazAhB5cYz5NbzRFS82o4f2r4JdEs=;
+ b=BC06Cd0FWxbdlGVHQhOV7dGFLYY2ZRNeKSujwZFvYPR/CFa4HWfDrNrrY+UhH8TfOA
+ fQwaA9zwXdENeWD/EMBltvJ/mOFYebYONIM0RmMigbwLq3esOOOpT0CPqle56syDMHMH
+ iHRVyAoMQw9FnUIxW/wAMtjLKx5a/gyiSCQ8oBxgZiY8DVKaO8wQXJkR5hb7GtU+ciz4
+ iHXcgtUAXDDyEbG8W/0Sk5wNvePjNps609u3z+mGFLJZriExW0fy/7J1ampjKsOvpnqO
+ 9smGrxOnCaOnaxW7/d+giwkRSPWYtF82ZeZ6W+aV8sMjiOKpJnJGHUkxw1HOEsa+9sk/
+ Hbzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=FMnps2qubYYWD3YRuRkPtfN0t7AsJAs5vvzOFy1DvdY=;
- b=CK7kJm/KCBvPhOxPY2uIBBEKMK/OWTR5/SI/02tC9MiPdGESV3vvYnG+6OEHLSgSuj
- CSrhdgOYzJngCdExd9db49iMekpswVbWGxDSjOGNb8ZdGDSL+M7Z4886Wniehtirjttb
- Ny9t72CJhsOFWmuqNY3mxN3I60DhV86EMJxYBJ7KmgeoFXA84Xig1gdtYmS4r0RM0icr
- B81dD4DjtOU+CKaVqjMmtDeXgAzTs6x6AbSRSNkrl2kQRs5xX+9dxcDSuULLlM13SvbP
- J1VmoplsLmvcSKgS7C7bpYCTUXkh3MJ1i7uDPZ85kEUj6Mae9oDy0JY5ND1sHm/cRugR
- HgNA==
-X-Gm-Message-State: AOAM533URuJOxyEQ7vgM5CpHYr5tNGmoRIo/KZaB2dkJdrjdlURdGswM
- 0FVv2cdiovL7pRiuoxN2O8p6gjPGjyPDAA==
-X-Google-Smtp-Source: ABdhPJyrNL5uOkz6yaezCYiRQWpTtA6wQPXm7mbZA0sdxyT0Lkm4Nvin8nn2l27sEp6RVzEyV6PdLA==
-X-Received: by 2002:a05:600c:154f:: with SMTP id
- f15mr20495545wmg.81.1621230765739; 
- Sun, 16 May 2021 22:52:45 -0700 (PDT)
+ bh=QpA+CuwG8DCNtlhazAhB5cYz5NbzRFS82o4f2r4JdEs=;
+ b=m01gIRGJ+8UIWQxxLBXT5i+TCPUBwhdgernombJ1IHDnWYTM2mE1JbISHJJST1TocS
+ sVVYQMVxNyQsV14Se6kU7+di8FZgMs4IAeL/OSlDEwPR1W+H5PmAF/PozP9tX/y0IynI
+ 0379AHRlUIOfc6J/4rF8S6q4JLa+sKOwu1sXYZMUNkPaxzhLjV929bUSQGxC04AINc3v
+ zp5z/Ch9b2Ag+bN5IyPM8sh/LcFtv6v2f7AwE3bEvXajmpE2mFtHga7E24FDk2meCiY1
+ u+xBclvqKwoHUNBT34482SrHE0Z3rYmYD1P6AKu2Ed+VhsKPpep0lz06FDaRexsCD/Hz
+ XGdQ==
+X-Gm-Message-State: AOAM530R8KyAET34yqjhR0aiiyPF8hj5ZGp1CrURkCe4xGoCmfy6iz7Q
+ Lcxhiu7p+jiqCrxYlS3Fe0+zj2sGOdpDNg==
+X-Google-Smtp-Source: ABdhPJyYD9xZW0wANpzCjFEYz3PpQNrdAkk0bevYdoInsHmYIY4snZhzb+M6i5juKoFZlxNQ6YZBcg==
+X-Received: by 2002:a1c:4d17:: with SMTP id o23mr21754289wmh.102.1621235333931; 
+ Mon, 17 May 2021 00:08:53 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id m6sm15551972wrp.29.2021.05.16.22.52.44
+ by smtp.gmail.com with ESMTPSA id t2sm2651779wrx.54.2021.05.17.00.08.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 May 2021 22:52:45 -0700 (PDT)
+ Mon, 17 May 2021 00:08:53 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+Cc: qemu-riscv@nongnu.org, Bin Meng <bin.meng@windriver.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-trivial@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH v2] linux-user/syscall: Constify bitmask_transtbl fcntl/mmap
- flags_tlb[]
-Date: Mon, 17 May 2021 07:52:43 +0200
-Message-Id: <20210517055243.830491-1-f4bug@amsat.org>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] target/riscv: Remove obsolete 'CPU unmigratable' comment
+Date: Mon, 17 May 2021 09:08:51 +0200
+Message-Id: <20210517070851.857841-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -82,40 +81,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 May 2021 05:52:49 -0000
+X-List-Received-Date: Mon, 17 May 2021 07:08:58 -0000
 
-Keep bitmask_transtbl in .rodata by marking the arrays const.
+The RISCV CPU is migratable since commit f7697f0e629
+("target/riscv: Add basic vmstate description of CPU"),
+so remove an obsolete comment which is now incorrect.
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Reported-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- linux-user/syscall.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/riscv/cpu.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 95d79ddc437..64f486743a9 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -365,7 +365,7 @@ _syscall5(int, sys_statx, int, dirfd, const char *, pathname, int, flags,
- _syscall2(int, membarrier, int, cmd, int, flags)
- #endif
- 
--static bitmask_transtbl fcntl_flags_tbl[] = {
-+static const bitmask_transtbl fcntl_flags_tbl[] = {
-   { TARGET_O_ACCMODE,   TARGET_O_WRONLY,    O_ACCMODE,   O_WRONLY,    },
-   { TARGET_O_ACCMODE,   TARGET_O_RDWR,      O_ACCMODE,   O_RDWR,      },
-   { TARGET_O_CREAT,     TARGET_O_CREAT,     O_CREAT,     O_CREAT,     },
-@@ -6062,7 +6062,7 @@ static const StructEntry struct_termios_def = {
-     .print = print_termios,
- };
- 
--static bitmask_transtbl mmap_flags_tbl[] = {
-+static const bitmask_transtbl mmap_flags_tbl[] = {
-     { TARGET_MAP_SHARED, TARGET_MAP_SHARED, MAP_SHARED, MAP_SHARED },
-     { TARGET_MAP_PRIVATE, TARGET_MAP_PRIVATE, MAP_PRIVATE, MAP_PRIVATE },
-     { TARGET_MAP_FIXED, TARGET_MAP_FIXED, MAP_FIXED, MAP_FIXED },
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index 3191fd00822..d459e8427e2 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -638,7 +638,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
+     cc->disas_set_info = riscv_cpu_disas_set_info;
+ #ifndef CONFIG_USER_ONLY
+     cc->get_phys_page_debug = riscv_cpu_get_phys_page_debug;
+-    /* For now, mark unmigratable: */
+     cc->vmsd = &vmstate_riscv_cpu;
+     cc->write_elf64_note = riscv_cpu_write_elf64_note;
+     cc->write_elf32_note = riscv_cpu_write_elf32_note;
 -- 
 2.26.3
 
