@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1liSI0-0004vS-8A
-	for mharc-qemu-trivial@gnu.org; Sun, 16 May 2021 21:43:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41510)
+	id 1liSV6-0002Pb-UO
+	for mharc-qemu-trivial@gnu.org; Sun, 16 May 2021 21:56:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1liSHw-0004t8-B1; Sun, 16 May 2021 21:43:20 -0400
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30]:46817)
+ id 1liSV2-0002Lj-6Z; Sun, 16 May 2021 21:56:52 -0400
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35]:43529)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1liSHu-0000hK-QB; Sun, 16 May 2021 21:43:20 -0400
-Received: by mail-yb1-xb30.google.com with SMTP id y2so6395739ybq.13;
- Sun, 16 May 2021 18:43:17 -0700 (PDT)
+ id 1liSV0-0001fh-2K; Sun, 16 May 2021 21:56:51 -0400
+Received: by mail-yb1-xb35.google.com with SMTP id e190so6436868ybb.10;
+ Sun, 16 May 2021 18:56:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=g3xw0qSyOxOPiAGbQQC+ISBldTL9MV88oQhTnn3ElAE=;
- b=VDnOQZJM3bCyrVNkFjbHJ+vfYP7nSvgIaGT13jmO/zydG4mDYJ+fZ+He1wCLVjoniL
- BwDeLz2yccKslMPevMwkOKEg4WP2+tZCcFCtCn/2V6nHcY2OC3od+uOTgRC13MpdRURg
- xTgWY7DVDM8vhtRUnmDcvdDaxRTQYS1rHmpq3dVotuR7K9N3F0IYYUn9c9ISEC+BJgzT
- /r4GWIbq/MUssPPx683o0ZRYqZ3hfV6hSX5x5bzdHLbbLq4kEP6N+80Ja2F1ZssuHaaQ
- Nwqy7aH5IbSZMvNYzOFa/s0kj6d775DqmLG48pcarazC3/MgeyDTPTgpac53iH65XV+J
- uRdg==
+ bh=MdUDeR4rnuS357cVYHKdFK/P4yJxsmHWbyyMRd5YlfQ=;
+ b=qHstk+/8bDPk0TAP4B2Rb6rk6KZMT5WQzSFszow62/MCekNJsO3uQYqmcFMIM2Mch/
+ c3FnYG/SL3tSlI3wWhATPbemsPfpMa63tfB9eOMg9HgK7vtFBccJwwG1xRxaVD4g4+hW
+ 7vVPKWAXDYO9F5+ymJmhgYRozbUKBWQh0o6Rx0i1j3pto8loRvd6UOapsia9uk7krEAn
+ n4H+pWrQ3ntOyKixs9yQLIDfSG8rJmVt9YYixgsboWRLY5ksR3G+piD3ys0AGNMI/D73
+ GID6mlr86EW4xsnT5Ugu8cHDuGmZ69IlrqZ+QCYsIyoSqga971hJiHnprw8T/gsNul86
+ exxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=g3xw0qSyOxOPiAGbQQC+ISBldTL9MV88oQhTnn3ElAE=;
- b=Ls75FV4v9cxVkcCJwRApnMtQgLfFnvPQK4crvwC+k2zxWl05Y50Nv2HvJlFPANec8G
- BCsXaXzIFtaiyJ6jjFDPgLxg6hKCQt6wZmzvxaKkDEdHiFzQy+idIuz0iHoatDnYVTCk
- g612zSjvrZu6dc9wWa8qrv3gVFra7bM0lDW7MYhGpbqpfGxKAG3owOHYXXuT+sqlF/rA
- Y6jfnZ7Df63y5UGQovgg1a1bzDgL/XSeehRBd/KJIGCiRPXbfiCu8GD7hU6ayem2RvUt
- BtQRsWuQU1nmiakuxvGA4V3NOcOvWnYv3vvF75RgAE+uDOkU7I9NTkRgrrnKUKQTxdrK
- zKfA==
-X-Gm-Message-State: AOAM5322HVyePFZ27hwRFc1NjYqtYXF5W0It8pMNW20pjXl/BKeqGUFk
- OMWhZF5Pb3sw1t5KMeAbRzisy47AShKcQ3m3VIY=
-X-Google-Smtp-Source: ABdhPJz6opUAMYXo1yJkCeI1g1LAK+xrJdHFkI5FCna3MLwZF2IYAcckp/NT1NwtO7ur/YjUvADNKJ3OehVhJPTb4e8=
-X-Received: by 2002:a05:6902:1543:: with SMTP id
- r3mr46361856ybu.332.1621215796958; 
- Sun, 16 May 2021 18:43:16 -0700 (PDT)
+ bh=MdUDeR4rnuS357cVYHKdFK/P4yJxsmHWbyyMRd5YlfQ=;
+ b=DoGBjTSFayE/lBOVvhTcJldoGjpUm/mBSNbQy6vYzsyl0HWSwYVeJ9N+F24ktIKqlw
+ P1W+FfUbjxTlWCYCL9tVbsfxBplO7xs+2nXA24j68EOVl+Fzt8kkjOAGFuTsGDuew6rz
+ 7Sh5rqz1wdQ5JFgmiuB4JaDp/F/ijcWSfolBeCXcig4mjWH4+ncnhdy9eJ1Qbj64OczC
+ hEPkKyRXod741iLG84Sz1vwTa3l3+zpCF5MShlcgc1JaFSeL9IP7c7nIQ1c0cNYsEt6G
+ hlQEOp78mLWLtUxmuoq+wlk0fwshvz+ohwq1FuRAtnrk5tnXsoi3izoj8MiduSzryV2S
+ GSAQ==
+X-Gm-Message-State: AOAM531XwT0sbhWgMp6Yk3dBNk/L5pG8vqQt8M9fKsq27tva+W1mD+aF
+ oiAhLD+aAwd/2jvarHYq2/pvNhPtpJadEGsGOUk=
+X-Google-Smtp-Source: ABdhPJwp4pqAE3F7V/6SCKHRPpoGLEPR5uRUWeN7JKZR1UxJEIbgllVxcA2d9m0yRRWmwNvCa9ok6ejB/rU5D8f6J0E=
+X-Received: by 2002:a25:e645:: with SMTP id d66mr48300489ybh.314.1621216608760; 
+ Sun, 16 May 2021 18:56:48 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210516205034.694788-1-f4bug@amsat.org>
-In-Reply-To: <20210516205034.694788-1-f4bug@amsat.org>
+References: <20210513171244.3940519-1-f4bug@amsat.org>
+In-Reply-To: <20210513171244.3940519-1-f4bug@amsat.org>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 17 May 2021 09:43:05 +0800
-Message-ID: <CAEUhbmWV2HBxk_5_YwdFXM_JauC0svy5QmMwvfpo_Eokxj6hcw@mail.gmail.com>
-Subject: Re: [PATCH] misc: Correct relative include path
+Date: Mon, 17 May 2021 09:56:37 +0800
+Message-ID: <CAEUhbmXBcs9s6qfR_eTKgAfHvKaqc97T844HSR_BPEUtWDv5uw@mail.gmail.com>
+Subject: Re: [PATCH] hw/input/ps2: Use ps2_raise_irq() instead of open coding
+ it
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>, 
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>
+ =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb35.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -72,21 +72,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 May 2021 01:43:21 -0000
+X-List-Received-Date: Mon, 17 May 2021 01:56:52 -0000
 
-On Mon, May 17, 2021 at 4:50 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Fri, May 14, 2021 at 1:26 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 >
-> Headers should be included from the 'include/' directory,
-> not from the root directory.
->
+> Inspired-by: Volker R=C3=BCmelin <vr_qemu@t-online.de>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/i386/acpi-common.h     | 6 +++---
->  include/monitor/monitor.h | 2 +-
->  hw/gpio/aspeed_gpio.c     | 2 +-
->  hw/intc/ppc-uic.c         | 2 +-
->  4 files changed, 6 insertions(+), 6 deletions(-)
+>  hw/input/ps2.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 >
 
 Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
