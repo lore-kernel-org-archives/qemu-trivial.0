@@ -1,70 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lid28-0000YJ-VL
-	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 09:11:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34768)
+	id 1lidNV-0004z5-Cz
+	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 09:33:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lid27-0000Wq-VY
- for qemu-trivial@nongnu.org; Mon, 17 May 2021 09:11:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29972)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lidNU-0004yj-9i
+ for qemu-trivial@nongnu.org; Mon, 17 May 2021 09:33:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:22168)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lid26-0006qT-AY
- for qemu-trivial@nongnu.org; Mon, 17 May 2021 09:11:43 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lidNS-0004Sd-03
+ for qemu-trivial@nongnu.org; Mon, 17 May 2021 09:33:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621257101;
+ s=mimecast20190719; t=1621258425;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0KZDBDdaTBZCZ4OZbD2Q67Qucxj3mSvEfsMAq9+a7VY=;
- b=jKkswDW9SY7SXdMxzS7RO8x1+5p4a2zL97+KJwSVJh2FyDv0sW2TChrI+XmYYJoi4/0mSb
- rRsIhOBFTiqdyTMO2ecbRly5WxE1jZ8CewmaKF4Z+eM3jolpnDtqTzPk18NXyxfPdy1ZwX
- xBvzTPHkBOZljyBvwLc7M+ICZxfJ4qg=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-491-V5hSvXKTNAmvaiI7LHfJFw-1; Mon, 17 May 2021 09:11:40 -0400
-X-MC-Unique: V5hSvXKTNAmvaiI7LHfJFw-1
-Received: by mail-ej1-f69.google.com with SMTP id
- h18-20020a1709063992b02903d59b32b039so831304eje.12
- for <qemu-trivial@nongnu.org>; Mon, 17 May 2021 06:11:39 -0700 (PDT)
+ bh=euIVBQ6wnPZrqi4rTjb8PfjzamxBzpTgrt3zYHC2hHA=;
+ b=DlfyunHCeC/2qeRBTbU/LxkC1wTNhCrNGXRSsvF+vKqkcB5hQF8tCBsnqkN1Yboqlbrx0U
+ IcxItABzBxOVyq4p8isqMJjovQ03mjFkYeJTPLIEz4K5Zb3QcB3eBqlC41WJFJT/acf2gT
+ 1Q26SGu5lieLny40huzdSkIcr657LRU=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-503-7zVYllO8NAKM6iq72r8jqQ-1; Mon, 17 May 2021 09:33:43 -0400
+X-MC-Unique: 7zVYllO8NAKM6iq72r8jqQ-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ w1-20020aa7da410000b029038d323eeee3so1852543eds.8
+ for <qemu-trivial@nongnu.org>; Mon, 17 May 2021 06:33:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0KZDBDdaTBZCZ4OZbD2Q67Qucxj3mSvEfsMAq9+a7VY=;
- b=Gj1J8+ISfoQUs0OaQv5NykjdT5U27S+3hOqH2vUdYeVGdEVtmVjrLEynXZ+MKgzKZm
- rViqMBOPufeT/7zzmBV3VxPVxnaz2p2ml4ZZxWyzDt7VBBPe3ZAOcJfviCj5YWRA8GPY
- b8X7LXci31qmvCKaUOu1dbH+qcDIlNzikwwzLIwIFSuYZy5UZcrTL834MbU9N6OoKlur
- uEAzdRdQiV9Viwn1bkL7UDcNBPyKWIMFB+IwDkOBkkziHgxiwvcxUPVPbQaeFLjGL3IY
- zgtauRE1WfdM+IP/DSreUeB0ZWwOusKiWWHlVxjGC9HHdhfWucCdf3kKKbGXTk9YzvcT
- IYBA==
-X-Gm-Message-State: AOAM532cY4cXaMTywEww638P4TK2Ptz47cyqdUjZR0wfxTlOURQNAufG
- xRGQDxMBdJGV1oXWgtYi0ixWXUWPRXqH91oXmnDScYHHqhqM/TSUV8OFxJ6mn1JyirFUeMmWyE1
- gJPnidnnmPtjkCOIVMjnnkv1KuKy/Jp4Lyq2tnHuu5hB41WYDJyQVOIvo/XYlvw1Pq5c=
-X-Received: by 2002:a17:906:3b92:: with SMTP id
- u18mr29071508ejf.450.1621257098334; 
- Mon, 17 May 2021 06:11:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJ+wMDUpX4maduDT13SMy/DazKZf2ELdt8RLuqI3cMpJaxAYi7L94sE1Hx7oQPNzq0Ll3Lbw==
-X-Received: by 2002:a17:906:3b92:: with SMTP id
- u18mr29071488ejf.450.1621257098171; 
- Mon, 17 May 2021 06:11:38 -0700 (PDT)
+ bh=euIVBQ6wnPZrqi4rTjb8PfjzamxBzpTgrt3zYHC2hHA=;
+ b=T9b6vmlb3OCTzW9oKfaxOvlma2enNqv8HGfs5fUmO9AHKuIS5WFjQtn7nLGVeTQguF
+ sKbAtZRcqqUrtsL9S8Fz+y3/bT8V8MXJOOCZGBt83xiWxsa/DRg9WNC7BTqmK3giHkEh
+ HlAvRocMNSaC06+Y6E/aQVg0hvFgfBgtfewzyz/ngvWZv3aXuzBoOvzQ8TbUt2UckYz2
+ l21JCx0rre9BuZULv0FDMq8ErpxNsKjGhTQgeARNEbck3DyVT0p79EL11yucWZ5wZux1
+ eAQchxycRE7v6saecEMEDEy4ZUWH5CftpDcF81KuT+V5J5eP62+x3XNS9m5JY4PuNzfm
+ FNtg==
+X-Gm-Message-State: AOAM532XT0TsV/VMgI42fN+tIzEO2x5Te4f7PfuLHkqonwoBOWZKE2Kq
+ qIyyIBS+sXOzEfqjJdOA9K5UVVwm4oP/+GbDF64ShARvvDkBtuFm8zJcnHFcMJHURsQGTTC2B8D
+ hUv0roYYf182VKI6dkw==
+X-Received: by 2002:a05:6402:40d2:: with SMTP id
+ z18mr24785edb.81.1621258422589; 
+ Mon, 17 May 2021 06:33:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwZnmi+uYgZwC02wegDXpeqRNmeZ/L2nMDobm631RHvCqXYRBd1CJ79Cn7qE5toVLa53jTkkw==
+X-Received: by 2002:a05:6402:40d2:: with SMTP id
+ z18mr24752edb.81.1621258422352; 
+ Mon, 17 May 2021 06:33:42 -0700 (PDT)
 Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id d17sm1429510ejp.90.2021.05.17.06.11.37
+ by smtp.gmail.com with ESMTPSA id c10sm3908622eds.90.2021.05.17.06.33.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 May 2021 06:11:37 -0700 (PDT)
-Subject: Re: [PATCH v2] vhost-vdpa: Remove redundant declaration of
- address_space_memory
-To: Xie Yongji <xieyongji@bytedance.com>, mst@redhat.com, jasowang@redhat.com
-Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210517123246.999-1-xieyongji@bytedance.com>
+ Mon, 17 May 2021 06:33:42 -0700 (PDT)
+Subject: Re: [PATCH] replication: move include out of root directory
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org,
+ Wen Congyang <wencongyang2@huawei.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>
+References: <20210517121909.2625099-1-pbonzini@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d00aed97-cc58-0c8a-dc7d-9ae8945c3af4@redhat.com>
-Date: Mon, 17 May 2021 15:11:37 +0200
+Message-ID: <73a1d9f2-f2e9-128f-c871-c419d74daca9@redhat.com>
+Date: Mon, 17 May 2021 15:33:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210517123246.999-1-xieyongji@bytedance.com>
+In-Reply-To: <20210517121909.2625099-1-pbonzini@redhat.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -94,44 +95,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 May 2021 13:11:44 -0000
+X-List-Received-Date: Mon, 17 May 2021 13:33:48 -0000
 
-Cc'ing qemu-trivial@
-
-On 5/17/21 2:32 PM, Xie Yongji wrote:
-> The symbol address_space_memory are already declared in
-> include/exec/address-spaces.h. So let's add this header file
-> and remove the redundant declaration in include/hw/virtio/vhost-vdpa.h.
+On 5/17/21 2:19 PM, Paolo Bonzini wrote:
+> The replication.h file is included from migration/colo.c and tests/unit/test-replication.c,
+> so it should be in include/.
 > 
-> Signed-off-by: Xie Yongji <xieyongji@bytedance.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 > ---
->  hw/virtio/vhost-vdpa.c         | 1 +
->  include/hw/virtio/vhost-vdpa.h | 1 -
->  2 files changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
-> index 8f2fb9f10b2a..ee51863d280b 100644
-> --- a/hw/virtio/vhost-vdpa.c
-> +++ b/hw/virtio/vhost-vdpa.c
-> @@ -18,6 +18,7 @@
->  #include "hw/virtio/vhost-backend.h"
->  #include "hw/virtio/virtio-net.h"
->  #include "hw/virtio/vhost-vdpa.h"
-> +#include "exec/address-spaces.h"
->  #include "qemu/main-loop.h"
->  #include "cpu.h"
->  #include "trace.h"
-> diff --git a/include/hw/virtio/vhost-vdpa.h b/include/hw/virtio/vhost-vdpa.h
-> index 28ca65018ed7..ae9ee7adb2d0 100644
-> --- a/include/hw/virtio/vhost-vdpa.h
-> +++ b/include/hw/virtio/vhost-vdpa.h
-> @@ -21,5 +21,4 @@ typedef struct vhost_vdpa {
->      struct vhost_dev *dev;
->  } VhostVDPA;
->  
-> -extern AddressSpace address_space_memory;
->  #endif
-> 
+>  block/replication.c                          | 2 +-
+>  replication.h => include/block/replication.h | 4 ++--
+>  migration/colo.c                             | 2 +-
+>  replication.c                                | 2 +-
+>  tests/unit/test-replication.c                | 2 +-
+>  5 files changed, 6 insertions(+), 6 deletions(-)
+>  rename replication.h => include/block/replication.h (98%)
+
+Including the following hunk:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+-- >8 --
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7877710e372..34c60d9284f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3257,8 +3257,9 @@ Replication
+ M: Wen Congyang <wencongyang2@huawei.com>
+ M: Xie Changlong <xiechanglong.d@gmail.com>
+ S: Supported
+-F: replication*
++F: replication.c
+ F: block/replication.c
++F: include/block/replication.h
+ F: tests/unit/test-replication.c
+ F: docs/block-replication.txt
+
+---
 
 
