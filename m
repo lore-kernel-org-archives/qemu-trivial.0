@@ -1,89 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1libdW-0001GH-U5
-	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 07:42:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40898)
+	id 1lic4m-0003sL-K1
+	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 08:10:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1libdT-0001Bi-Hp
- for qemu-trivial@nongnu.org; Mon, 17 May 2021 07:42:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:28279)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1libdO-0002bk-2Q
- for qemu-trivial@nongnu.org; Mon, 17 May 2021 07:42:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621251723;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=LFljbWd4DU7XTa5qfHxcQh0G6vZ/b6k9LAWhOT9skGs=;
- b=E7TZGb0ICHy7kKqRicGSrHVEcFNnnm3TkCfngXFeKmB8Gw3r0OTq3cQ3UR8kjI4bTzLf6D
- kDxGKhu0n1agO7/LH7/KKmSp1QHl8nxQHOuWw/19kYj2H7mTtBCR0FxR1q79Nt4cO94uOc
- Fx8GRGbr6FY8S4yDZXSpxBoSJeVZKBU=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-118-5l3Z4uofNl25ojB91AfHFg-1; Mon, 17 May 2021 07:42:00 -0400
-X-MC-Unique: 5l3Z4uofNl25ojB91AfHFg-1
-Received: by mail-ej1-f72.google.com with SMTP id
- y12-20020a170906558cb02903d65e5767ebso640977ejp.0
- for <qemu-trivial@nongnu.org>; Mon, 17 May 2021 04:42:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lic4c-0003j1-5l; Mon, 17 May 2021 08:10:14 -0400
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c]:37653)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lic4Z-0002m1-EI; Mon, 17 May 2021 08:10:13 -0400
+Received: by mail-yb1-xb2c.google.com with SMTP id b13so6813287ybk.4;
+ Mon, 17 May 2021 05:10:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=TTMX92ThkZi1b50KEZ641MSphuPX9+e/CHcmKvDSzr8=;
+ b=Mw5YDE/R/eapm9eldH+eDBjLLCCu73oW2swQoqm6cop0uePmFoEMJgOz8v4CzblZzL
+ 3JmLzco72JJcFXNKq3aHbRflKfVYgu4vKrOsmP1itsqPsCFzOxUXEpDQSE9/B46eefun
+ SO4RgAFK1Jiav6l161lnsbW5K2isFFZiSCJwjjM7o+HJICvYPI7woJkN/KwbkIvz59Wj
+ YT/dqwpxA3iq58QZOCZBfLDqdAn/2LO1B+J6eWlWTe2aPTSQ5wL6AaMYdy6WpmLq9q86
+ RbxzrBRi7bI9s29Vw6xEyFiNkJRHdFBR3IJXlf9s/KXCQmfpTsqcFN44U3d4H8RV7E1W
+ CfOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=LFljbWd4DU7XTa5qfHxcQh0G6vZ/b6k9LAWhOT9skGs=;
- b=kc0CJaoQa8O/MFxi/K3gaC0rlkru+YnnFgU8U5+CBwv/LoCvdrZmE5iUEg67r7Yk35
- GVh7GcosyX3388E1CfYR4jlsgOBkcal0rZ5u4LZZHU+yNyLaP1fri10ouk1Fq1io+BGV
- gjyv3Nx0NqFfziv3H6T6hi3W8T/MLmfyG8sgZKxDeggkJDjX5kxFgI5Qx9O6zNPeJxnX
- 2i+QrqNI5WoLF1YsyqCVPbzXZDZ6Ox0y3JioVFQCjuTmFdlGuRxgtcs5n4lik8IYMUee
- LykDVEgF5XUimx11tRA9nB0LR4iWD7bcX/9anqRKkHBEFNHcFnFCX7kPK944t/tMMWdD
- iEmQ==
-X-Gm-Message-State: AOAM530Djpg63XTYuFi1wNHlcbryEWbSnXCpOMDyLbmhBxjFFAgGU6Nu
- R6jNaLUDGBbWyiMHc700vCAyxth9DEgN8FCCwVo7NwNS9bEKBjnlYaWbGQiHSULZtbYf83HvXI0
- zubrkInVY6TpAnhrlOg==
-X-Received: by 2002:a17:906:ad81:: with SMTP id
- la1mr330103ejb.346.1621251719202; 
- Mon, 17 May 2021 04:41:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPoe/SEshZ5pruI9QrHfN9MJZJzK8M5zJp/i9wZsA5ap0f5Xe2CeQCfW5dFu8Uiakvshs+4A==
-X-Received: by 2002:a17:906:ad81:: with SMTP id
- la1mr330087ejb.346.1621251718975; 
- Mon, 17 May 2021 04:41:58 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:63a7:c72e:ea0e:6045?
- ([2001:b07:6468:f312:63a7:c72e:ea0e:6045])
- by smtp.gmail.com with ESMTPSA id b19sm10642396edd.66.2021.05.17.04.41.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 May 2021 04:41:58 -0700 (PDT)
-Subject: Re: [PATCH] meson: Set implicit_include_directories to false
-To: Katsuhiro Ueno <uenobk@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <CA+pCdY09+OQfXq3YmRNuQE59ACOq7Py2q4hqOwgq4PnepCXhTA@mail.gmail.com>
- <2571b8c3-3e2b-f90e-6077-05232a52c711@redhat.com>
- <CANrJRqLyfijWWbrAwpQLrWuH1-hmraGnx2EQO4GaTH6D1TVxEQ@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <8f6be65f-b3d9-c5fd-38a8-c52f9275430f@redhat.com>
-Date: Mon, 17 May 2021 13:41:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=TTMX92ThkZi1b50KEZ641MSphuPX9+e/CHcmKvDSzr8=;
+ b=To8qZBCUTo0sORyOgSmWCQRTLCVcd+bEJKOx59s4TJh8XQe7n6LnUIkFu9Wyv1GBs2
+ N0FAdUxlU30GYfFjKp5FYgRUAV3VD3W7Q2cW8wFRogoKRLMUBhzE+0163jGLDMEzqBDW
+ 46lpI81jxr0zsvsrwK+sslHIGA6wBz5sQOWEJkCW6Gtzj10u0Xhk3fRbC4eFs8qEqUil
+ E2ObZlMRwIQhsqKSKUpv8LaCher/3wi38zdZxqRNNIi8WaTgS4nhl9OK3drHV7Ol3S4D
+ m7EHJn1s9chFt2cHX4l2gbeJmTImCgPT4nkv+xy7Gmj/NtQb4saZd4MfwrU9UtYbvnJc
+ pZAg==
+X-Gm-Message-State: AOAM533SScXUavtvBJjiQvR61s1rvQo+WhKImroJBlaTT0NPe9UX/KB2
+ l+xRq5URj43Bzlcdz0fm0gYqQ1TsDd3NFcFZJ1Y=
+X-Google-Smtp-Source: ABdhPJxB0QF1Da1kH6DCjbczS+cgbb/6oKAk481smyDiwqrPAeHbTk11fGmo9FaIhgdX2d1nKEPvsh9+x32VPFLnUKo=
+X-Received: by 2002:a25:99c1:: with SMTP id q1mr79110372ybo.517.1621253409707; 
+ Mon, 17 May 2021 05:10:09 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CANrJRqLyfijWWbrAwpQLrWuH1-hmraGnx2EQO4GaTH6D1TVxEQ@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20210517070851.857841-1-f4bug@amsat.org>
+In-Reply-To: <20210517070851.857841-1-f4bug@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Mon, 17 May 2021 20:09:59 +0800
+Message-ID: <CAEUhbmVQir88gewKdk6myPHMxKx49q0HSYhLZFE+uYkHioEJ=Q@mail.gmail.com>
+Subject: Re: [PATCH] target/riscv: Remove obsolete 'CPU unmigratable' comment
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Bin Meng <bin.meng@windriver.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Palmer Dabbelt <palmer@dabbelt.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -97,56 +75,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 May 2021 11:42:13 -0000
+X-List-Received-Date: Mon, 17 May 2021 12:10:18 -0000
 
-On 01/05/21 04:08, Katsuhiro Ueno wrote:
-> 2021-04-30 16:48 Paolo Bonzini <pbonzini@redhat.com>:
->>
->> On 29/04/21 04:43, Katsuhiro Ueno wrote:
->>> Without this, libvixl cannot be compiled with macOS 11.3 SDK due to
->>> include file name conflict (usr/include/c++/v1/version conflicts with
->>> VERSION).
->>>
->>> Signed-off-by: Katsuhiro Ueno <uenobk@gmail.com>
->>> ---
->>>    meson.build | 1 +
->>>    1 file changed, 1 insertion(+)
->>>
->>> diff --git a/meson.build b/meson.build
->>> index c6f4b0cf5e..d007bff8c3 100644
->>> --- a/meson.build
->>> +++ b/meson.build
->>> @@ -2129,6 +2129,7 @@ common_all = common_ss.apply(config_all, strict: false)
->>>    common_all = static_library('common',
->>>                                build_by_default: false,
->>>                                sources: common_all.sources() + genh,
->>> +                            implicit_include_directories: false,
->>>                                dependencies: common_all.dependencies(),
->>>                                name_suffix: 'fa')
->>>
->>
->> Can you include the difference in the include paths (the -I and -iquote
->> arguments)?  There are many cases in which we rely on having the current
->> source directory in the build path, for example all inclusions of "trace.h".
-> 
-> This only removes -I.. (current (top-level) source directory) from the
-> arguments. The meson manual says that it also removes -I. (current
-> (top-level) build directory) but -I. is still in the arguments (I am
-> not sure why). This does not change any -iquote argument.
-> 
-> As far as I know, this does not affect the inclusions of "trace.h"
-> because each "trace.h" is in the same directory as the files that
-> include it, and the top-level build directory, which has the "trace"
-> directory containing generated "trace-*.h" files, is still in the
-> include path.
+On Mon, May 17, 2021 at 3:08 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> The RISCV CPU is migratable since commit f7697f0e629
+> ("target/riscv: Add basic vmstate description of CPU"),
+> so remove an obsolete comment which is now incorrect.
+>
+> Reported-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  target/riscv/cpu.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
 
-Queued, thanks.  It looks like "implicit" only refers to the directory 
-that meson.build lies in.
-
-It would be nicer to have _all_ targets in meson.build have 
-implicit_include_directories: false, since we would have the same 
-problem for other C++ sources, but that can be done later.
-
-Paolo
-
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
 
