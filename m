@@ -1,70 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lif07-0006Wq-Qz
-	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 11:17:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42452)
+	id 1liflC-0001LD-4S
+	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 12:06:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54990)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1lif05-0006Nn-GH
- for qemu-trivial@nongnu.org; Mon, 17 May 2021 11:17:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41286)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lifl3-0001HG-OF
+ for qemu-trivial@nongnu.org; Mon, 17 May 2021 12:06:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51969)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1liezk-0005iY-7F
- for qemu-trivial@nongnu.org; Mon, 17 May 2021 11:17:45 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lifky-0003C4-9k
+ for qemu-trivial@nongnu.org; Mon, 17 May 2021 12:06:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621264632;
+ s=mimecast20190719; t=1621267571;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GwtsGjloVAQ+r3BXAAEo6nsUh5bZB+MR83DxynqFGtQ=;
- b=AoGad+wjWtN33UtPkDZELcG+vE/6qPfPNrrX5t9kDeIdfcEWS1MSUPiXKnhOiBFtC8NTi1
- EPafNCnQC94HbcwSX95knwqnYAsaZGclXxE6jsSTJABfmUHqLT0u1miVI7zDolWhE7Gpy2
- i0L6H6+Rstt23Q7LZJYUsZTqoJNanlI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-260-jbn-1Kb3NuywIDI8zskahQ-1; Mon, 17 May 2021 11:17:10 -0400
-X-MC-Unique: jbn-1Kb3NuywIDI8zskahQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0754B801107;
- Mon, 17 May 2021 15:17:10 +0000 (UTC)
-Received: from steredhat.redhat.com (ovpn-115-84.ams2.redhat.com
- [10.36.115.84])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5033C5C5E1;
- Mon, 17 May 2021 15:17:08 +0000 (UTC)
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ bh=46941Y2DOx0TAHcnHKhcAOik62oFB2CPIeh0R7NlCIY=;
+ b=aqodAjbVsTLNV/CwQngFnjWr80gvwxUZ2S1pJrFZTP7Zh6cvO9Mpp4yHfyViXo/8bx4Dnh
+ rpB3XmcGtncg3tHqufHOwxwmu3MscP7Cz6eTaH5h+0V1QC+nCQA2UdDKcHEyvTGGLbNnqz
+ TNxyCVK91Fve+QJarho7eQWZo9DPoTE=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-249-C_i7dbX3MRud8JW6Tdw4JQ-1; Mon, 17 May 2021 12:06:09 -0400
+X-MC-Unique: C_i7dbX3MRud8JW6Tdw4JQ-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ ba15-20020a0564021acfb029038d3b33d7ffso1494021edb.23
+ for <qemu-trivial@nongnu.org>; Mon, 17 May 2021 09:06:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=46941Y2DOx0TAHcnHKhcAOik62oFB2CPIeh0R7NlCIY=;
+ b=oMSrU20yeKYeRRXeimmK+rjpCVhaMwYu1Sj6VDGt79nTButI9soUhxAkIocVJ2iTf8
+ t3MUfhNIVPskjlfGXCLQBHO+u1W3h2HJp5gQafHPoGx/mutMtfhvqTLAGYeNvHhk6xWR
+ 2Ghi7stRdKztNe6Egfhljd6jppPGoh9NkOROWhCrJ+q4iI8x+pD3OLSWv7llzE3c6PL+
+ +3DbvDw5yfuAc1uwuLk9RMRyUsY0wUyFXBr1dAIwbICOkz6+5NF05VgdQWCGVQSnKDEz
+ PqdUXk3ENEr5zMIR/WjJ9TXBdOCmZzwUOVH9ZlQE0HCzZGx6R0cEv8UVuzWgG1h+aTJS
+ G4Eg==
+X-Gm-Message-State: AOAM533mzrTydnMti/adB+wPq2pmhalfpsStoWJuX4A2EMWTzAQQ0ch6
+ zkWaQMESTfigaclNaNDwC2QXYfsAhZheRyRCqoS8e7lz1Kn8UD0UqTyr1qH1RDGzFbIyfKl8ZC1
+ Klvlh0LIeL7/ClXRGisnOyT0Hb9CFqS+r6Hj/y1BzZrowR21v5cOlh5Up17wbz4cWjVM=
+X-Received: by 2002:a17:906:5584:: with SMTP id
+ y4mr663748ejp.120.1621267567525; 
+ Mon, 17 May 2021 09:06:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyVZ6JWmOCKuPaf6xCwt1bvlEUXa4kU63XUUGmgyCPPVraaHYxAoEBK2pH5pOfol8Xde2Uedw==
+X-Received: by 2002:a17:906:5584:: with SMTP id
+ y4mr663716ejp.120.1621267567308; 
+ Mon, 17 May 2021 09:06:07 -0700 (PDT)
+Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
+ [83.51.215.31])
+ by smtp.gmail.com with ESMTPSA id cw12sm2583918ejc.17.2021.05.17.09.06.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 May 2021 09:06:06 -0700 (PDT)
+Subject: Re: [PATCH 0/5] docs: fix references to files converted to rST
+To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  "Daniel P . Berrange" <berrange@redhat.com>,
  Cornelia Huck <cohuck@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: [PATCH 2/5] docs: fix references to docs/devel/atomics.rst
-Date: Mon, 17 May 2021 17:16:59 +0200
-Message-Id: <20210517151702.109066-3-sgarzare@redhat.com>
-In-Reply-To: <20210517151702.109066-1-sgarzare@redhat.com>
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
 References: <20210517151702.109066-1-sgarzare@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <d7d9eb04-1986-36e0-436f-46d2f54135e0@redhat.com>
+Date: Mon, 17 May 2021 18:06:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20210517151702.109066-1-sgarzare@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sgarzare@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=sgarzare@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -77,86 +96,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 May 2021 15:17:45 -0000
+X-List-Received-Date: Mon, 17 May 2021 16:06:23 -0000
 
-Commit 15e8699f00 ("atomics: convert to reStructuredText") converted
-docs/devel/atomics.txt to docs/devel/atomics.rst.
+On 5/17/21 5:16 PM, Stefano Garzarella wrote:
+> Trivial patches that fix references to old files in docs/ converted
+> to rST.
+> 
+> Broken references found running:
+> 
+>     for f in $(git grep -oh "docs.*txt")
+>     do
+>         test -f "$f" || echo "$f not exists"
+>     done
+> 
+> Stefano Garzarella (5):
+>   docs: fix references to docs/devel/tracing.rst
+>   docs: fix references to docs/devel/atomics.rst
+>   docs: fix references to docs/devel/build-system.rst
+>   docs: fix references to docs/specs/tpm.rst
+>   docs: fix references to docs/devel/s390-dasd-ipl.rst
 
-We still have several references to the old file, so let's fix them
-with the following command:
-
-  sed -i s/atomics.txt/atomics.rst/ $(git grep -l docs/devel/atomics.txt)
-
-Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
----
- docs/devel/lockcnt.txt   | 2 +-
- include/qemu/atomic.h    | 4 ++--
- include/qemu/atomic128.h | 2 +-
- tcg/README               | 2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/docs/devel/lockcnt.txt b/docs/devel/lockcnt.txt
-index 2d85462fe3..a3fb3bc5d8 100644
---- a/docs/devel/lockcnt.txt
-+++ b/docs/devel/lockcnt.txt
-@@ -145,7 +145,7 @@ can also be more efficient in two ways:
- - on some platforms, one can implement QemuLockCnt to hold the lock
-   and the mutex in a single word, making the fast path no more expensive
-   than simply managing a counter using atomic operations (see
--  docs/devel/atomics.txt).  This can be very helpful if concurrent access to
-+  docs/devel/atomics.rst).  This can be very helpful if concurrent access to
-   the data structure is expected to be rare.
- 
- 
-diff --git a/include/qemu/atomic.h b/include/qemu/atomic.h
-index 8f4b3a80fb..3ccf84fd46 100644
---- a/include/qemu/atomic.h
-+++ b/include/qemu/atomic.h
-@@ -8,7 +8,7 @@
-  * This work is licensed under the terms of the GNU GPL, version 2 or later.
-  * See the COPYING file in the top-level directory.
-  *
-- * See docs/devel/atomics.txt for discussion about the guarantees each
-+ * See docs/devel/atomics.rst for discussion about the guarantees each
-  * atomic primitive is meant to provide.
-  */
- 
-@@ -432,7 +432,7 @@
-  * sequentially consistent operations.
-  *
-  * As long as they are used as paired operations they are safe to
-- * use. See docs/devel/atomics.txt for more discussion.
-+ * use. See docs/devel/atomics.rst for more discussion.
-  */
- 
- #ifndef qatomic_mb_read
-diff --git a/include/qemu/atomic128.h b/include/qemu/atomic128.h
-index ad2bcf45b4..adb9a1a260 100644
---- a/include/qemu/atomic128.h
-+++ b/include/qemu/atomic128.h
-@@ -6,7 +6,7 @@
-  * This work is licensed under the terms of the GNU GPL, version 2 or later.
-  * See the COPYING file in the top-level directory.
-  *
-- * See docs/devel/atomics.txt for discussion about the guarantees each
-+ * See docs/devel/atomics.rst for discussion about the guarantees each
-  * atomic primitive is meant to provide.
-  */
- 
-diff --git a/tcg/README b/tcg/README
-index 0cf9e2727c..8510d823e3 100644
---- a/tcg/README
-+++ b/tcg/README
-@@ -461,7 +461,7 @@ when MTTCG is enabled.
- The guest translators should generate this opcode for all guest instructions
- which have ordering side effects.
- 
--Please see docs/devel/atomics.txt for more information on memory barriers.
-+Please see docs/devel/atomics.rst for more information on memory barriers.
- 
- ********* 64-bit guest on 32-bit host support
- 
--- 
-2.31.1
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
