@@ -1,65 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1liSV6-0002Pb-UO
-	for mharc-qemu-trivial@gnu.org; Sun, 16 May 2021 21:56:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44032)
+	id 1liWBQ-0003yw-A3
+	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 01:52:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52932)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1liSV2-0002Lj-6Z; Sun, 16 May 2021 21:56:52 -0400
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35]:43529)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1liWBN-0003xu-J7; Mon, 17 May 2021 01:52:49 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:45031)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1liSV0-0001fh-2K; Sun, 16 May 2021 21:56:51 -0400
-Received: by mail-yb1-xb35.google.com with SMTP id e190so6436868ybb.10;
- Sun, 16 May 2021 18:56:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1liWBM-0002Rs-3S; Mon, 17 May 2021 01:52:49 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ y184-20020a1ce1c10000b02901769b409001so1407912wmg.3; 
+ Sun, 16 May 2021 22:52:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=MdUDeR4rnuS357cVYHKdFK/P4yJxsmHWbyyMRd5YlfQ=;
- b=qHstk+/8bDPk0TAP4B2Rb6rk6KZMT5WQzSFszow62/MCekNJsO3uQYqmcFMIM2Mch/
- c3FnYG/SL3tSlI3wWhATPbemsPfpMa63tfB9eOMg9HgK7vtFBccJwwG1xRxaVD4g4+hW
- 7vVPKWAXDYO9F5+ymJmhgYRozbUKBWQh0o6Rx0i1j3pto8loRvd6UOapsia9uk7krEAn
- n4H+pWrQ3ntOyKixs9yQLIDfSG8rJmVt9YYixgsboWRLY5ksR3G+piD3ys0AGNMI/D73
- GID6mlr86EW4xsnT5Ugu8cHDuGmZ69IlrqZ+QCYsIyoSqga971hJiHnprw8T/gsNul86
- exxw==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=FMnps2qubYYWD3YRuRkPtfN0t7AsJAs5vvzOFy1DvdY=;
+ b=F/Y+ntKgjUt0RaOy0qIBz0Kl+eh7/LEsll+Q2/dymOn426vS6ef2AT9CIQtd9UvoDA
+ wd8F13Z0JImKx8vOCwFMdD2J5g/VLXaX+2Ex/t1mFdyPgXtK7cPuh3CmRF2VI5KGjJgC
+ 3+C5wLCBVOEowa8lPRk5KP7Setfuy9cn2eJjkED9mQOLbWtMAGcBpe75BFfgvkaYjDt+
+ R8TI8BmtEG6Jz3EdBDoox7nJPjh64aZxB4ocDV4EGUKDqCkxPZCY9rr1Ea56/Jt4QuSd
+ qe5y+ZKVJyc/wpFLqRvgmBb+4uZa79Ff7C75TxWyxLfYRKQytB6S4nbNzyOaLrEsB/zD
+ 3pQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=MdUDeR4rnuS357cVYHKdFK/P4yJxsmHWbyyMRd5YlfQ=;
- b=DoGBjTSFayE/lBOVvhTcJldoGjpUm/mBSNbQy6vYzsyl0HWSwYVeJ9N+F24ktIKqlw
- P1W+FfUbjxTlWCYCL9tVbsfxBplO7xs+2nXA24j68EOVl+Fzt8kkjOAGFuTsGDuew6rz
- 7Sh5rqz1wdQ5JFgmiuB4JaDp/F/ijcWSfolBeCXcig4mjWH4+ncnhdy9eJ1Qbj64OczC
- hEPkKyRXod741iLG84Sz1vwTa3l3+zpCF5MShlcgc1JaFSeL9IP7c7nIQ1c0cNYsEt6G
- hlQEOp78mLWLtUxmuoq+wlk0fwshvz+ohwq1FuRAtnrk5tnXsoi3izoj8MiduSzryV2S
- GSAQ==
-X-Gm-Message-State: AOAM531XwT0sbhWgMp6Yk3dBNk/L5pG8vqQt8M9fKsq27tva+W1mD+aF
- oiAhLD+aAwd/2jvarHYq2/pvNhPtpJadEGsGOUk=
-X-Google-Smtp-Source: ABdhPJwp4pqAE3F7V/6SCKHRPpoGLEPR5uRUWeN7JKZR1UxJEIbgllVxcA2d9m0yRRWmwNvCa9ok6ejB/rU5D8f6J0E=
-X-Received: by 2002:a25:e645:: with SMTP id d66mr48300489ybh.314.1621216608760; 
- Sun, 16 May 2021 18:56:48 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=FMnps2qubYYWD3YRuRkPtfN0t7AsJAs5vvzOFy1DvdY=;
+ b=CK7kJm/KCBvPhOxPY2uIBBEKMK/OWTR5/SI/02tC9MiPdGESV3vvYnG+6OEHLSgSuj
+ CSrhdgOYzJngCdExd9db49iMekpswVbWGxDSjOGNb8ZdGDSL+M7Z4886Wniehtirjttb
+ Ny9t72CJhsOFWmuqNY3mxN3I60DhV86EMJxYBJ7KmgeoFXA84Xig1gdtYmS4r0RM0icr
+ B81dD4DjtOU+CKaVqjMmtDeXgAzTs6x6AbSRSNkrl2kQRs5xX+9dxcDSuULLlM13SvbP
+ J1VmoplsLmvcSKgS7C7bpYCTUXkh3MJ1i7uDPZ85kEUj6Mae9oDy0JY5ND1sHm/cRugR
+ HgNA==
+X-Gm-Message-State: AOAM533URuJOxyEQ7vgM5CpHYr5tNGmoRIo/KZaB2dkJdrjdlURdGswM
+ 0FVv2cdiovL7pRiuoxN2O8p6gjPGjyPDAA==
+X-Google-Smtp-Source: ABdhPJyrNL5uOkz6yaezCYiRQWpTtA6wQPXm7mbZA0sdxyT0Lkm4Nvin8nn2l27sEp6RVzEyV6PdLA==
+X-Received: by 2002:a05:600c:154f:: with SMTP id
+ f15mr20495545wmg.81.1621230765739; 
+ Sun, 16 May 2021 22:52:45 -0700 (PDT)
+Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
+ [83.51.215.31])
+ by smtp.gmail.com with ESMTPSA id m6sm15551972wrp.29.2021.05.16.22.52.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 16 May 2021 22:52:45 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Bin Meng <bmeng.cn@gmail.com>
+Subject: [PATCH v2] linux-user/syscall: Constify bitmask_transtbl fcntl/mmap
+ flags_tlb[]
+Date: Mon, 17 May 2021 07:52:43 +0200
+Message-Id: <20210517055243.830491-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-References: <20210513171244.3940519-1-f4bug@amsat.org>
-In-Reply-To: <20210513171244.3940519-1-f4bug@amsat.org>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 17 May 2021 09:56:37 +0800
-Message-ID: <CAEUhbmXBcs9s6qfR_eTKgAfHvKaqc97T844HSR_BPEUtWDv5uw@mail.gmail.com>
-Subject: Re: [PATCH] hw/input/ps2: Use ps2_raise_irq() instead of open coding
- it
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb35.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,17 +82,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 May 2021 01:56:52 -0000
+X-List-Received-Date: Mon, 17 May 2021 05:52:49 -0000
 
-On Fri, May 14, 2021 at 1:26 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> Inspired-by: Volker R=C3=BCmelin <vr_qemu@t-online.de>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/input/ps2.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
+Keep bitmask_transtbl in .rodata by marking the arrays const.
 
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ linux-user/syscall.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 95d79ddc437..64f486743a9 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -365,7 +365,7 @@ _syscall5(int, sys_statx, int, dirfd, const char *, pathname, int, flags,
+ _syscall2(int, membarrier, int, cmd, int, flags)
+ #endif
+ 
+-static bitmask_transtbl fcntl_flags_tbl[] = {
++static const bitmask_transtbl fcntl_flags_tbl[] = {
+   { TARGET_O_ACCMODE,   TARGET_O_WRONLY,    O_ACCMODE,   O_WRONLY,    },
+   { TARGET_O_ACCMODE,   TARGET_O_RDWR,      O_ACCMODE,   O_RDWR,      },
+   { TARGET_O_CREAT,     TARGET_O_CREAT,     O_CREAT,     O_CREAT,     },
+@@ -6062,7 +6062,7 @@ static const StructEntry struct_termios_def = {
+     .print = print_termios,
+ };
+ 
+-static bitmask_transtbl mmap_flags_tbl[] = {
++static const bitmask_transtbl mmap_flags_tbl[] = {
+     { TARGET_MAP_SHARED, TARGET_MAP_SHARED, MAP_SHARED, MAP_SHARED },
+     { TARGET_MAP_PRIVATE, TARGET_MAP_PRIVATE, MAP_PRIVATE, MAP_PRIVATE },
+     { TARGET_MAP_FIXED, TARGET_MAP_FIXED, MAP_FIXED, MAP_FIXED },
+-- 
+2.26.3
+
 
