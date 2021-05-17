@@ -1,66 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1liXN6-0004n7-24
-	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 03:09:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38384)
+	id 1liaIH-00088P-PI
+	for mharc-qemu-trivial@gnu.org; Mon, 17 May 2021 06:16:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46444)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liXN4-0004hK-0o; Mon, 17 May 2021 03:08:58 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:51988)
+ id 1liaIA-00086o-6B; Mon, 17 May 2021 06:16:06 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:50778)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1liXN2-00076D-GX; Mon, 17 May 2021 03:08:57 -0400
-Received: by mail-wm1-x334.google.com with SMTP id u133so2937605wmg.1;
- Mon, 17 May 2021 00:08:55 -0700 (PDT)
+ id 1liaI6-0007r6-U7; Mon, 17 May 2021 06:16:05 -0400
+Received: by mail-wm1-x331.google.com with SMTP id t206so3271607wmf.0;
+ Mon, 17 May 2021 03:16:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=QpA+CuwG8DCNtlhazAhB5cYz5NbzRFS82o4f2r4JdEs=;
- b=BC06Cd0FWxbdlGVHQhOV7dGFLYY2ZRNeKSujwZFvYPR/CFa4HWfDrNrrY+UhH8TfOA
- fQwaA9zwXdENeWD/EMBltvJ/mOFYebYONIM0RmMigbwLq3esOOOpT0CPqle56syDMHMH
- iHRVyAoMQw9FnUIxW/wAMtjLKx5a/gyiSCQ8oBxgZiY8DVKaO8wQXJkR5hb7GtU+ciz4
- iHXcgtUAXDDyEbG8W/0Sk5wNvePjNps609u3z+mGFLJZriExW0fy/7J1ampjKsOvpnqO
- 9smGrxOnCaOnaxW7/d+giwkRSPWYtF82ZeZ6W+aV8sMjiOKpJnJGHUkxw1HOEsa+9sk/
- Hbzg==
+ bh=OM0Xw/rV3yz+iBzh8iF1sG1Ag1cNd5+jV+6HvnOVkoc=;
+ b=Xns4kAXusJgsWLVnVkea5mmIYjfZp1KE5gIIe2WznJKGr2ZcDlFze5jr8Yb1MDr7pi
+ 4CPqWpvOKhA67u5uuDy+weoRC4MLDm6vMFsjmwiuwX2BBIpdVFoQCpF6IH7Y+11nF4DU
+ NBfCp14JgxBkkcnb6mt+Q8Y/sNa+GX5orJNMc7lLP7t1kHvGvl3HB5iiuxFKhxKLHuh7
+ Bpjkct3zNSUq9si1ibd1kzB+8LQXe+imKauyX39eCmHfLHNTtTKZisYuN74Q2UcrAT9J
+ iARLQYPqZ0OQNKOfzwd1BooX2HiWrRZI3uRfehGlEdd/5f7cUaDL+vuX/z6n4M9yf0AS
+ E52w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=QpA+CuwG8DCNtlhazAhB5cYz5NbzRFS82o4f2r4JdEs=;
- b=m01gIRGJ+8UIWQxxLBXT5i+TCPUBwhdgernombJ1IHDnWYTM2mE1JbISHJJST1TocS
- sVVYQMVxNyQsV14Se6kU7+di8FZgMs4IAeL/OSlDEwPR1W+H5PmAF/PozP9tX/y0IynI
- 0379AHRlUIOfc6J/4rF8S6q4JLa+sKOwu1sXYZMUNkPaxzhLjV929bUSQGxC04AINc3v
- zp5z/Ch9b2Ag+bN5IyPM8sh/LcFtv6v2f7AwE3bEvXajmpE2mFtHga7E24FDk2meCiY1
- u+xBclvqKwoHUNBT34482SrHE0Z3rYmYD1P6AKu2Ed+VhsKPpep0lz06FDaRexsCD/Hz
- XGdQ==
-X-Gm-Message-State: AOAM530R8KyAET34yqjhR0aiiyPF8hj5ZGp1CrURkCe4xGoCmfy6iz7Q
- Lcxhiu7p+jiqCrxYlS3Fe0+zj2sGOdpDNg==
-X-Google-Smtp-Source: ABdhPJyYD9xZW0wANpzCjFEYz3PpQNrdAkk0bevYdoInsHmYIY4snZhzb+M6i5juKoFZlxNQ6YZBcg==
-X-Received: by 2002:a1c:4d17:: with SMTP id o23mr21754289wmh.102.1621235333931; 
- Mon, 17 May 2021 00:08:53 -0700 (PDT)
+ bh=OM0Xw/rV3yz+iBzh8iF1sG1Ag1cNd5+jV+6HvnOVkoc=;
+ b=cQSpM/PluDEO9NccEjK4EE1NN6YoOUi/f95OKRcl9wcWAuC3tRbY5Dx2dlZLjT4EiK
+ gFW2CFYSSzE3cQ398iTdy4HHXwMa0k08f34/CTZI0L5n6KhQ63vaz7/DHzDcB2bSkV0/
+ CMINM23JB6Fslrko3ggdqUdXRSaLKiw38Oyk/mEHGlcmOkHid+y4sRnTEUwdM2FeLKbp
+ r7ToLUkhHnXKUsdaRzk9hVcumS4v7JJhxvcV1ZGJlXWbqpQM97RM35102qNTSO+BVrHh
+ XbKHPxHlBCP9gMA6FudO9pBAxy2RAgpcF6Ispnae7P9V/TdROx89jxkMIdSAcpweddsQ
+ h0mg==
+X-Gm-Message-State: AOAM533mPAqy5sUjHbSI/0Hcb7hCg4QsDe1iEIjl1HeOcq98Bl7PNeRU
+ GHdLw7/mWZZrsYq+plDpQ7K9/f4qnNC0WQ==
+X-Google-Smtp-Source: ABdhPJxcY0LF0/ydnchdb/i+FyKysS3nMJ49mijOFoH+wQsvPshJ6zJX0ee8fqsIEo7fVan8xjz6Xg==
+X-Received: by 2002:a1c:1f84:: with SMTP id f126mr5462185wmf.140.1621246560935; 
+ Mon, 17 May 2021 03:16:00 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id t2sm2651779wrx.54.2021.05.17.00.08.52
+ by smtp.gmail.com with ESMTPSA id a129sm3482221wmh.20.2021.05.17.03.15.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 May 2021 00:08:53 -0700 (PDT)
+ Mon, 17 May 2021 03:16:00 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, Bin Meng <bin.meng@windriver.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-trivial@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH] target/riscv: Remove obsolete 'CPU unmigratable' comment
-Date: Mon, 17 May 2021 09:08:51 +0200
-Message-Id: <20210517070851.857841-1-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] target/hppa: Remove unused 'memory.h' header
+Date: Mon, 17 May 2021 12:15:58 +0200
+Message-Id: <20210517101558.1040191-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -81,30 +77,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 May 2021 07:08:58 -0000
+X-List-Received-Date: Mon, 17 May 2021 10:16:07 -0000
 
-The RISCV CPU is migratable since commit f7697f0e629
-("target/riscv: Add basic vmstate description of CPU"),
-so remove an obsolete comment which is now incorrect.
-
-Reported-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/riscv/cpu.c | 1 -
+ target/hppa/cpu.h | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 3191fd00822..d459e8427e2 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -638,7 +638,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
-     cc->disas_set_info = riscv_cpu_disas_set_info;
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_debug = riscv_cpu_get_phys_page_debug;
--    /* For now, mark unmigratable: */
-     cc->vmsd = &vmstate_riscv_cpu;
-     cc->write_elf64_note = riscv_cpu_write_elf64_note;
-     cc->write_elf32_note = riscv_cpu_write_elf32_note;
+diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+index 61178fa6a2a..748270bfa31 100644
+--- a/target/hppa/cpu.h
++++ b/target/hppa/cpu.h
+@@ -22,7 +22,6 @@
+ 
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+-#include "exec/memory.h"
+ 
+ /* PA-RISC 1.x processors have a strong memory model.  */
+ /* ??? While we do not yet implement PA-RISC 2.0, those processors have
 -- 
 2.26.3
 
