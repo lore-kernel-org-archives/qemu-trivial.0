@@ -1,68 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1litIV-00026Y-Qu
-	for mharc-qemu-trivial@gnu.org; Tue, 18 May 2021 02:33:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50530)
+	id 1liu4j-0007Bs-Nf
+	for mharc-qemu-trivial@gnu.org; Tue, 18 May 2021 03:23:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60850)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1litIS-00021V-Vb; Tue, 18 May 2021 02:33:41 -0400
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31]:41545)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1litII-0000iC-Bc; Tue, 18 May 2021 02:33:40 -0400
-Received: by mail-io1-xd31.google.com with SMTP id n10so8333200ion.8;
- Mon, 17 May 2021 23:33:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=7i+hLaKPb5dREm4JlA/uMq9TMKG+OVVottv84+2WRbA=;
- b=Slt+bHOkAwm8RauoaNdDrciRMrr13R4JjyIhEHCUGXbeGeZOfEziLcqH/nVpOQyJtF
- CAcuIKUO+wBbrEmhlxH4f7wvU2u7LOE/WaXuO7PcgS4FMMxf7cYLdYpmbuIiSK4+9AS1
- tTqgnnlgeBzyIyIQBlmRJC72eekThE9bW4ufbixVfDym8Cmm0rRHXQX/M85VyJT+czxh
- sNcIzhI1zdpac22xnF5ZTt2H7SgeKufqpY6mqfmYstzClOGB2DDMmnnLVze1/Nx02Yy/
- oYDWYeIB2HGrhv+B/xz/JjFsN8WnNzK7keZp4gdUouaWkhCgvZrU9WNw1Ovjj2K3KOVy
- G/fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=7i+hLaKPb5dREm4JlA/uMq9TMKG+OVVottv84+2WRbA=;
- b=jiP/YfKC95qz4yCRLBxsdUulX0H8qoV8OYVCVD/ePgVS87x2cfijuX9LUnaJ9lCN6q
- By/oq0SzaTxXSaAQ4jZ+98cv7wndmhfFXIvuGxWqJxNkROiciDya7SAiz3MFopBTV/Z1
- ce0wrlePrErrBeMucAjdtw1W+7/L7LXgq8q49yC4O49oRFGNPP5fmH7b7bKUwKbAOg8R
- BSmyKUIrXApBNkcEeIWX+OU6xdhG8JHThpXQBtxIT9JCLmsCiIlFbza89d1EbBzit9T6
- pLcHB4dafSMPEa9Z6i0+hQZxQKHx2tSvqtrEV3H8nEgT7HScxon2bInI4zxQ09gfggM8
- uWlQ==
-X-Gm-Message-State: AOAM5322O/7ZNp4HgZa+nXRYGuak/JQf/998Tqik5mgo9eJVif6gW+7g
- j0YJWKV4jV7QBq0rXc4uMzTsLat9/o7NSLHmvQo=
-X-Google-Smtp-Source: ABdhPJw3++MfmypaeHrI0jg5Nc8/TiGXmCmSZW3mTIOOEOiuqfx+8T2Ek4rxZRmJE7m8H0S9jAOVhNWvdN02ITMBn/I=
-X-Received: by 2002:a05:6602:242b:: with SMTP id
- g11mr2977913iob.105.1621319608246; 
- Mon, 17 May 2021 23:33:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1liu4e-0007BU-Sl
+ for qemu-trivial@nongnu.org; Tue, 18 May 2021 03:23:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29694)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1liu4Z-0006sg-E0
+ for qemu-trivial@nongnu.org; Tue, 18 May 2021 03:23:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621322601;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=xZrOVK7W11LS1brAT+Ae3P8xkUfUc+ru/O3rnNycrfU=;
+ b=B0tzXtgKd4GCKvr2ze6PQq6QErM50BVKgjG9o5Tycz1n4E/RTcQUYXcAZ7ThuOxAxR9816
+ 7+9vZUpEbu0xg2YL230Q5kw2hBVDH6FbFJWA1tImEDHPcGWL2qu5xS+qv+J7hQGO/koG7A
+ AP768ZmgZ85wX4woxSjiVgOShNRPNRA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-559-9yz_DkCENCOMsuQ0IcQtmg-1; Tue, 18 May 2021 03:23:17 -0400
+X-MC-Unique: 9yz_DkCENCOMsuQ0IcQtmg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 89A6A107ACC7;
+ Tue, 18 May 2021 07:23:16 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-114-17.ams2.redhat.com
+ [10.36.114.17])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2C5E0505AB;
+ Tue, 18 May 2021 07:23:16 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id ABB35113861E; Tue, 18 May 2021 09:23:14 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Dmitry Voronetskiy <davoronetskiy@gmail.com>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Dmitry Voronetskiy
+ <vda1999@yandex.ru>
+Subject: Re: [PATCH] Signed-off-by: Dmitry Voronetskiy <vda1999@yandex.ru>
+References: <20210517084055.24792-1-davoronetskiy@gmail.com>
+Date: Tue, 18 May 2021 09:23:14 +0200
+In-Reply-To: <20210517084055.24792-1-davoronetskiy@gmail.com> (Dmitry
+ Voronetskiy's message of "Mon, 17 May 2021 11:40:55 +0300")
+Message-ID: <877djwtsil.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-References: <20210516205333.696094-1-f4bug@amsat.org>
-In-Reply-To: <20210516205333.696094-1-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 18 May 2021 16:33:02 +1000
-Message-ID: <CAKmqyKNE71tnXwuXP_3MRybeFEmfMS=6KoJ8w4GaH-y3zE_buQ@mail.gmail.com>
-Subject: Re: [PATCH v2] target/riscv: Do not include 'pmp.h' in user emulation
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, Bin Meng <bin.meng@windriver.com>, 
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d31;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd31.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,40 +73,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 May 2021 06:33:42 -0000
+X-List-Received-Date: Tue, 18 May 2021 07:23:29 -0000
 
-On Mon, May 17, 2021 at 6:53 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> Physical Memory Protection is a system feature.
-> Avoid polluting the user-mode emulation by its definitions.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Dmitry Voronetskiy <davoronetskiy@gmail.com> writes:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> From: Dmitry Voronetskiy <vda1999@yandex.ru>
+>
+> the value passed to strerror should be positive
 
-Alistair
+Your commit message is out of order :)
 
-> ---
->  target/riscv/cpu.h | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-> index 7e879fb9ca5..0619b491a42 100644
-> --- a/target/riscv/cpu.h
-> +++ b/target/riscv/cpu.h
-> @@ -97,7 +97,9 @@ enum {
->
->  typedef struct CPURISCVState CPURISCVState;
->
-> +#if !defined(CONFIG_USER_ONLY)
->  #include "pmp.h"
-> +#endif
->
->  #define RV_VLEN_MAX 256
->
-> --
-> 2.26.3
->
->
+With that fixed:
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+
+How did you track these down?
+
 
