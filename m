@@ -1,61 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1liwof-0003dt-Od
-	for mharc-qemu-trivial@gnu.org; Tue, 18 May 2021 06:19:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45648)
+	id 1ljJtJ-0006Xe-VK
+	for mharc-qemu-trivial@gnu.org; Wed, 19 May 2021 06:57:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34356)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1liwoc-0003Zd-OD
- for qemu-trivial@nongnu.org; Tue, 18 May 2021 06:19:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31464)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ljJtH-0006U0-JT
+ for qemu-trivial@nongnu.org; Wed, 19 May 2021 06:57:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57154)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1liwoa-0004xZ-Ik
- for qemu-trivial@nongnu.org; Tue, 18 May 2021 06:19:06 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ljJtG-0007PI-1t
+ for qemu-trivial@nongnu.org; Wed, 19 May 2021 06:57:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621333144;
+ s=mimecast20190719; t=1621421845;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MQIQRZp84IINtVtIIj2CwxESswI4vlUr/Sh6a+qKSRg=;
- b=L5XxFPcpGCpqnki51Vn9y10/xxKm3Hk0P8EBzDAfDXi9M1XE0JSZxRVNPfGn5J42muDeC7
- 8yZzX/NQpugLkivVemJzC/s2TPvqlkjfktLyDMG6fst3nuKqksNcTbDNyXXqeU7KTxjngA
- JPZXWAFY5qgKcdvPOxUmgWF/jPpktEA=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=EMukV+H6ute7yPbC4D4U84ZYfZzkJ/h/i8+IbMfTDOU=;
+ b=Q2UXcNxUqrs+f7iGV1gVGCQ62dUuyAqEOC+je8NcF7RowFYjR9i5HIpJhghLrUM9A4pKYp
+ Fb6gFeT8PSHfVZM8z7lV8dLu+xsNi74p8eCbrWBX9E3s6FhMfEHXqUDqlc08Ayq9DhEouP
+ 7g5xFuovo1pbmovWR4aTDZ23KyfEqpE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-328-FDnK348dOn-4pDyncJha8A-1; Tue, 18 May 2021 06:19:02 -0400
-X-MC-Unique: FDnK348dOn-4pDyncJha8A-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-545-sLJ7uGAsO7eJ2bgE1YrzgA-1; Wed, 19 May 2021 06:57:23 -0400
+X-MC-Unique: sLJ7uGAsO7eJ2bgE1YrzgA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 711291020C41;
- Tue, 18 May 2021 10:19:01 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-114-0.ams2.redhat.com
- [10.36.114.0])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2DDB910016F2;
- Tue, 18 May 2021 10:19:01 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 91566180079B; Tue, 18 May 2021 12:18:59 +0200 (CEST)
-Date: Tue, 18 May 2021 12:18:59 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: Katsuhiro Ueno <uenobk@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/input/hid: Add support for keys of jp106 keyboard.
-Message-ID: <20210518101859.zj4vxqletnzjn4mt@sirius.home.kraxel.org>
-References: <CA+pCdY3iG+pKKQqEVknnWF-W0wK36S4U1jxPvxmGAPp6FFvz1Q@mail.gmail.com>
- <CANrJRq+XjSjRqweBqDak8V9vi7cyNPiv8-g-irHbr6VAzo0a9w@mail.gmail.com>
- <0532d1d6-1ddb-2c9c-6d16-dae5dacc86d1@vivier.eu>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B10DF1034B22;
+ Wed, 19 May 2021 10:57:22 +0000 (UTC)
+Received: from thuth.com (ovpn-112-85.ams2.redhat.com [10.36.112.85])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 70CDF690EF;
+ Wed, 19 May 2021 10:57:21 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] configure: Avoid error messages about missing *-config-*.h
+ files
+Date: Wed, 19 May 2021 12:57:19 +0200
+Message-Id: <20210519105719.290435-1-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <0532d1d6-1ddb-2c9c-6d16-dae5dacc86d1@vivier.eu>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -63,7 +56,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,17 +69,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 May 2021 10:19:07 -0000
+X-List-Received-Date: Wed, 19 May 2021 10:57:27 -0000
 
-On Thu, May 13, 2021 at 09:53:34AM +0200, Laurent Vivier wrote:
-> Le 13/05/2021 ‡ 08:11, Katsuhiro Ueno a Ècrit†:
-> > Ping.
-> 
-> cc Gerd
+When compiling with --disable-system there is a harmless yet still
+annoying error message at the end of the "configure" step:
 
-Added to usb queue.
+ sed: can't read *-config-devices.h: No such file or directory
 
-thanks,
-  Gerd
+When only building the tools or docs, without any emulator at all,
+there is even an additional message about missing *-config-target.h
+files.
+
+Fix it by checking whether any of these files are available before
+using them.
+
+Fixes: e0447a834d ("configure: Poison all current target-specific #defines")
+Reported-by: Philippe Mathieu-Daud√© <f4bug@amsat.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ configure | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/configure b/configure
+index 963e35b9a7..a8a9e78c61 100755
+--- a/configure
++++ b/configure
+@@ -6458,10 +6458,14 @@ fi
+ 
+ # Create list of config switches that should be poisoned in common code...
+ # but filter out CONFIG_TCG and CONFIG_USER_ONLY which are special.
+-sed -n -e '/CONFIG_TCG/d' -e '/CONFIG_USER_ONLY/d' \
+-    -e '/^#define / { s///; s/ .*//; s/^/#pragma GCC poison /p; }' \
+-    *-config-devices.h *-config-target.h | \
+-    sort -u > config-poison.h
++target_configs_h=$(ls *-config-devices.h *-config-target.h 2>/dev/null)
++if test -n "$target_configs_h" ; then
++    sed -n -e '/CONFIG_TCG/d' -e '/CONFIG_USER_ONLY/d' \
++        -e '/^#define / { s///; s/ .*//; s/^/#pragma GCC poison /p; }' \
++        $target_configs_h | sort -u > config-poison.h
++else
++    touch config-poison.h
++fi
+ 
+ # Save the configure command line for later reuse.
+ cat <<EOD >config.status
+-- 
+2.27.0
 
 
