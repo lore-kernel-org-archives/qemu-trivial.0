@@ -1,43 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ljp4q-0001wP-E1
-	for mharc-qemu-trivial@gnu.org; Thu, 20 May 2021 16:15:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57420)
+	id 1lk2UE-0001PN-T2
+	for mharc-qemu-trivial@gnu.org; Fri, 21 May 2021 06:34:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matheus.ferst@eldorado.org.br>)
- id 1ljoyp-0006Jf-Np
- for qemu-trivial@nongnu.org; Thu, 20 May 2021 16:09:15 -0400
-Received: from [201.28.113.2] (port=60634 helo=outlook.eldorado.org.br)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <matheus.ferst@eldorado.org.br>) id 1ljoyo-0002a9-Bz
- for qemu-trivial@nongnu.org; Thu, 20 May 2021 16:09:15 -0400
-Received: from power9a ([10.10.71.235]) by outlook.eldorado.org.br with
- Microsoft SMTPSVC(8.5.9600.16384); Thu, 20 May 2021 16:51:56 -0300
-Received: from eldorado.org.br (unknown [10.10.70.45])
- by power9a (Postfix) with ESMTP id 649B98013E1;
- Thu, 20 May 2021 16:51:56 -0300 (-03)
-From: matheus.ferst@eldorado.org.br
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lk2UD-0001KR-6i
+ for qemu-trivial@nongnu.org; Fri, 21 May 2021 06:34:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56157)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lk2UA-00080g-8d
+ for qemu-trivial@nongnu.org; Fri, 21 May 2021 06:34:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621593269;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=y2zUMjfiqJQZLSQRM+1tfkQFEDkIuExBkp9si0rOSRA=;
+ b=RhMGxoo/SrmmVd7dzhBHJvtTeA+oRfJ2uRI6ByL/k0niw9ihqoDfqPndWLOlI/ucQWl/pe
+ BL/DTAqOD7Ti0OnZ9csg01XRnb8QsIx7/ToD66qtkMkDuqqKNmcr6z9NgW7azWRR9jv5Vw
+ /QO2BINlriZHPhTYFS9DhJfL/GxO/w8=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-544-gOUxBscgPxKCzp8RNwJMxQ-1; Fri, 21 May 2021 06:34:26 -0400
+X-MC-Unique: gOUxBscgPxKCzp8RNwJMxQ-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ n2-20020adfb7420000b029010e47b59f31so9189625wre.9
+ for <qemu-trivial@nongnu.org>; Fri, 21 May 2021 03:34:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=y2zUMjfiqJQZLSQRM+1tfkQFEDkIuExBkp9si0rOSRA=;
+ b=PE8xUhdGtzlzKa+xsAxckKfw/vQJW+HHz9citIFJzu9rD6GMBEbWYXtFrGzqffxhNI
+ CvF06OB/gStH9gNaZ0pXL7BoF2qpE6m7WpfgRbuRsXuwouVl3/ph2OuMlJGEijI+boBe
+ OIb7Js5bUjHzVM5j1RtrFeZmZV339ntVUqlu2M9SNJumnVxe65c2NbEZtrwDJ981v+v3
+ 8SxIo7HlUXELEDSSDp605cyk0D1Qtnxz9Vk01Jc/I+Pr6lfdSpPaSiile6Qhe7/EmyWH
+ EzinM1bUOmGsnDsvH+D+1xqys3sHPm+s8VCzNZH5JfZcZTtWhTJM+6u5+UaQfERHLndq
+ bBiw==
+X-Gm-Message-State: AOAM530bUI/CnJ5zfMVuE3545ReOoE8puQvJtVtt3r7Iz6cuaH6hBwnO
+ rThQHqlhoh0wMHisd9Jr/0wDFdRlzoYfvXgzy46fb1qEHGgq0srId8FzvQjjx+FaR5Yf4qUi+Fj
+ lDW3fbElO2gOEZVs19A==
+X-Received: by 2002:adf:d231:: with SMTP id k17mr8607268wrh.78.1621593265725; 
+ Fri, 21 May 2021 03:34:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzACT4oQx/HMD5anNqL5Z5wMDFPKbgoePMCG57Qc1HWr3R0IRttxi6d/QCoJGm154sHsK6Vrg==
+X-Received: by 2002:adf:d231:: with SMTP id k17mr8607258wrh.78.1621593265586; 
+ Fri, 21 May 2021 03:34:25 -0700 (PDT)
+Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
+ [83.51.215.31])
+ by smtp.gmail.com with ESMTPSA id o8sm1624630wrs.60.2021.05.21.03.34.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 May 2021 03:34:25 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
-	Matheus Ferst <matheus.ferst@eldorado.org.br>
-Subject: [PATCH] scripts/checkpatch.pl: process .c.inc and .h.inc files as C
- source
-Date: Thu, 20 May 2021 16:51:42 -0300
-Message-Id: <20210520195142.941261-1-matheus.ferst@eldorado.org.br>
-X-Mailer: git-send-email 2.25.1
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] meson: Fix 'interpretor' typo
+Date: Fri, 21 May 2021 12:34:23 +0200
+Message-Id: <20210521103423.2780345-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-OriginalArrivalTime: 20 May 2021 19:51:56.0587 (UTC)
- FILETIME=[96D5E7B0:01D74DB1]
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 201.28.113.2 (failed)
-Received-SPF: pass client-ip=201.28.113.2;
- envelope-from=matheus.ferst@eldorado.org.br; helo=outlook.eldorado.org.br
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.39,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 20 May 2021 16:15:27 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,41 +86,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 May 2021 20:09:15 -0000
+X-List-Received-Date: Fri, 21 May 2021 10:34:33 -0000
 
-From: Matheus Ferst <matheus.ferst@eldorado.org.br>
+Fix a typo from commit fa2f7b0b9b7 ("meson: Warn when TCI is
+selected but TCG backend is available").
 
-Change the regex used to determine whether a file should be processed as
-C source to include .c.inc and .h.inc extensions.
-
-Signed-off-by: Matheus Ferst <matheus.ferst@eldorado.org.br>
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- scripts/checkpatch.pl | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 3d185cceac..bbcd25ae05 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -12,7 +12,7 @@ use Term::ANSIColor qw(:constants);
- my $P = $0;
- $P =~ s@.*/@@g;
- 
--our $SrcFile    = qr{\.(?:h|c|cpp|s|S|pl|py|sh)$};
-+our $SrcFile    = qr{\.(?:(h|c)(\.inc)?|cpp|s|S|pl|py|sh)$};
- 
- my $V = '0.31';
- 
-@@ -1671,7 +1671,7 @@ sub process {
- 		}
- 
- # check we are in a valid C source file if not then ignore this hunk
--		next if ($realfile !~ /\.(h|c|cpp)$/);
-+		next if ($realfile !~ /\.((h|c)(\.inc)?|cpp)$/);
- 
- # Block comment styles
- 
+diff --git a/meson.build b/meson.build
+index 1559e8d873a..230a0e4b558 100644
+--- a/meson.build
++++ b/meson.build
+@@ -247,7 +247,7 @@
+       error('Unsupported CPU @0@, try --enable-tcg-interpreter'.format(cpu))
+     endif
+   elif get_option('tcg_interpreter')
+-    warning('Use of the TCG interpretor is not recommended on this host')
++    warning('Use of the TCG interpreter is not recommended on this host')
+     warning('architecture. There is a native TCG execution backend available')
+     warning('which provides substantially better performance and reliability.')
+     warning('It is strongly recommended to remove the --enable-tcg-interpreter')
 -- 
-2.25.1
+2.26.3
 
 
