@@ -1,122 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lk6gj-0000jB-Ep
-	for mharc-qemu-trivial@gnu.org; Fri, 21 May 2021 11:03:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59176)
+	id 1lkj4k-0005ic-7L
+	for mharc-qemu-trivial@gnu.org; Sun, 23 May 2021 04:03:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luis.pires@eldorado.org.br>)
- id 1lk54B-0008Sw-1T; Fri, 21 May 2021 09:19:51 -0400
-Received: from mail-bn1nam07on2096.outbound.protection.outlook.com
- ([40.107.212.96]:44270 helo=NAM02-BN1-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lkj4i-0005gs-6h
+ for qemu-trivial@nongnu.org; Sun, 23 May 2021 04:03:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34625)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luis.pires@eldorado.org.br>)
- id 1lk549-0003gZ-7f; Fri, 21 May 2021 09:19:50 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ld6dST/YPBm3dmmo5kPmecVL4gN2bfsyeNveleABGSMydoeOSst9whbqgRT7/ldviqLAkifiT+kaYRNLkruNYpUm7nDK3TFePNnP3kKTfEMi7g4TC7yxldNxW6agcHo2nOWqUQkbSnpLJVVbvbhztxoQIpidneNVYbdXsliUjUkmvAyaNyab8mEmICzt0LbmDsjLTzMtda/gJ+6YXcEx6XkK0/WLCUgTqJJ8iL5PxAglad2ce6OPOwgUQNDLZ4JZXKi8DHcUCQEeuGGJucY9Rbm11dqyfdcduzAHAar7kELYGhOKRRa1g7t4xGU1dLbHXZuguD/I4iM+UrzJ+dtQVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=q81PNOpydaduClHmdRQLMvDlyIpB8H0/fKyk4EzsLjs=;
- b=O+ViJnGrSOuBQY/MyXlhbDIDIOZuBfewsPmsK/mBP1f+lYAXcx7S8VONeJ8ZEE4bH7yjs7RugjFon2dbEJOGY78dRDOeSXGJnlZzO7dcd5aleBADRLNegHtWvulKvfnCHlTv40NL5N66LIxJhI1NUxftV1h7b/sd9tCVpm9OabOO8EKRfnUAXdruyoWSkwRtZ9U/IoqFmNF2LZ53OlK3opbYvtiwd+X+6T2fzL77w/WdypV5JJMPTsyC8W8TIm0UJp0jb02PuJqROeuhiVdKlerC7kznDUG0rQD26V9GsKFeaKcbSM4dfyqA5H6hbFMewjaig7JV70XRoMNwQIjq2w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=eldorado.org.br; dmarc=pass action=none
- header.from=eldorado.org.br; dkim=pass header.d=eldorado.org.br; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=eldorado.org.br;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=q81PNOpydaduClHmdRQLMvDlyIpB8H0/fKyk4EzsLjs=;
- b=eQYTMugowx7mXolDfGeigBlcIX13sNsIAA503NaLknjQCPf6KdkwMae3UgkwXJJYHrQsd8/obbrhk9x5Um/egcnRLlRVQey48ea9KUxRoCQlWP+wfBLHe5Zn8/FysRsyv/Q3MV2zbJk0zNxuzyuS+4CHCHcmiQ0mzO5yd50om/fHkSvui+cUoRdB7EyAupcoWqabl1+deQ30dxAHgK9GQg2jRQNXRXUK+bFNF5JSFVTTEhAfLHGYXR0J80kMQ+EIVsSQNGcPfuiKJ+ffd1QdDheKV17RnsS+VVDT701qY9Gyi4GGHngvY4PBs3DbBm8nHrc+FNBS6d0UqkIvyvjSxQ==
-Received: from CP2PR80MB3668.lamprd80.prod.outlook.com (2603:10d6:102:31::10)
- by CP0PR80MB4979.lamprd80.prod.outlook.com (2603:10d6:103:26::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4150.26; Fri, 21 May
- 2021 13:19:45 +0000
-Received: from CP2PR80MB3668.lamprd80.prod.outlook.com
- ([fe80::dccd:868e:fcb8:72c3]) by CP2PR80MB3668.lamprd80.prod.outlook.com
- ([fe80::dccd:868e:fcb8:72c3%2]) with mapi id 15.20.4129.033; Fri, 21 May 2021
- 13:19:45 +0000
-From: Luis Fernando Fujita Pires <luis.pires@eldorado.org.br>
-To: Matheus Kowalczuk Ferst <matheus.ferst@eldorado.org.br>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, Matheus Kowalczuk
- Ferst <matheus.ferst@eldorado.org.br>
-Subject: RE: [PATCH] scripts/checkpatch.pl: process .c.inc and .h.inc files as
- C source
-Thread-Topic: [PATCH] scripts/checkpatch.pl: process .c.inc and .h.inc files
- as C source
-Thread-Index: AQHXTbGhpGcdkYFLGkiXYWJlBXkga6rt7B2A
-Date: Fri, 21 May 2021 13:19:45 +0000
-Message-ID: <CP2PR80MB3668FEA34CD5D69348F3F75CDA299@CP2PR80MB3668.lamprd80.prod.outlook.com>
-References: <20210520195142.941261-1-matheus.ferst@eldorado.org.br>
-In-Reply-To: <20210520195142.941261-1-matheus.ferst@eldorado.org.br>
-Accept-Language: pt-BR, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: eldorado.org.br; dkim=none (message not signed)
- header.d=none;eldorado.org.br; dmarc=none action=none
- header.from=eldorado.org.br;
-x-originating-ip: [177.9.76.236]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: b10b07c0-ce32-4299-9454-08d91c5b1a52
-x-ms-traffictypediagnostic: CP0PR80MB4979:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <CP0PR80MB49794653A8AAE10DDB7E81C6DA299@CP0PR80MB4979.lamprd80.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1728;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: fh5RfU9+jtu19FsF0CDjSjLgzhLQbYdlAn/xLMHIGYM1urOoasb/6pkWebGBW882bQMLQMbk7JsBGKyl7MKhv0RDIHY6RsLhkPkhwWW6Bb6DA6xyPm3EgQ1ebYCx3Ui3RwnY/0hnKDzyV0u/0XzJFI9qkTG2+No/Sw1M5OgCYB0pxjVhrpZrvYeKTccqDMLbk9s+7ir1gAPOOggXVKqXBw5wscCPeqpkcOEb21jhkbJoAVmAGmDu22QuHx6G29JtNTMa6uWMhgQekYKZXQ0r47OIPDcirvM7pOoe65FkWbFzOXwU3AgLDaLQpxp4PmqgROGY7k6UMNCTVtlRk2CctVdEhYdKJmhwm39jOHayCarGAB5yxtUuOoALj86iuUT9kjGWbAwUi3fwzLsLeOs957zu2QJz0jc2WgXuYsms906D2Q6Y759nDwFA44g6jmo9aewC/bVE23W2qXq+8LchXpKto9D0/97A3hn00Y7zMpUd2A3EninITyWu6v1MCHxscIm9Xjiz9dCLOeTJGRhlI7ORhYvEdwhfq+Wyar6ncwO4wElcUpePSUl47jefhc5Cc+Um+oWH91MdgcPiZGey8/JAh1lDiDOLdMvcivuLcmYVvIMFFNSIbvc4jwhRdba04y9zr+v5ItlwRY0BNrSBXQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CP2PR80MB3668.lamprd80.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(396003)(39840400004)(346002)(136003)(376002)(76116006)(33656002)(186003)(66946007)(66476007)(110136005)(8936002)(54906003)(7696005)(66556008)(66446008)(83380400001)(478600001)(26005)(107886003)(64756008)(38100700002)(122000001)(316002)(9686003)(450100002)(558084003)(2906002)(6506007)(86362001)(52536014)(55016002)(71200400001)(5660300002)(4326008)(8676002)(142923001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?cAnT0o7YI0MP2qdfOXF6AU8GVbJAfTrR8dUV1moyAfVdhz8WZwwYvlZKaaqz?=
- =?us-ascii?Q?hwkzdJjxZfhNVcCfKDCIPTzuBcFVUIZ+nQIikItByAUoFBP79E44YtQCGpSs?=
- =?us-ascii?Q?k+N4CaRWvBh8xzW8n4pUT3jcezKoo+ieKgyqP7M21uaH5jF6J3UwuDtM8ji4?=
- =?us-ascii?Q?Auas6u8ygDU0plgvvpa6nlJHiHebxY2YcYdQSAZ0tt8k7XCU1amwXdEFN6YJ?=
- =?us-ascii?Q?Jx5wn8/owzvmzcJ3KwHkcGRGLZkjaS1jLHn/d9XmA5hHwng7yQJXYljBMOe4?=
- =?us-ascii?Q?euuKGj76I38MsYKTkMVBhVwYE0QoD97HorzhlVBaWZA/DR8+9LIRUfa76vHQ?=
- =?us-ascii?Q?icTuNhuC62ajsvcJDB64elf/cNk4yb7Ik8eJ6/Fe1pkueLm9QLqWRf+FajRt?=
- =?us-ascii?Q?6aPTgn90JaM+7F7nV5kFiQ4PZOm9WZ7nM/p5i+oP759uaNa6Xaa9ZG/rg9Sv?=
- =?us-ascii?Q?gaWLoXTjrGXTEDrFtMBSaOxEp55R6NGvdZQe8xwDwLDmeuf1rnbni2OOHwdx?=
- =?us-ascii?Q?N+tl0J6ZkW+Werfl2kFQun6epj5hiUrtTGItTC/cLIpE53OHZoC1I8rZk+07?=
- =?us-ascii?Q?nuZqbO8CXlcFog8+AcdC2jLG60rWzOeF9dKh1DEEVNiGfIoR0CnSum6FNlDW?=
- =?us-ascii?Q?O4AvRAw20h717UeHlZ+9C/nksWHpd8OEBNevL7x9+4wvo+VfDtJw5yEcfPMq?=
- =?us-ascii?Q?rfmWmrUv5UKhB4DyL20qOIjuN5fS0xcmLd0LhWzsyC0M7dfytqePNnjJYDQc?=
- =?us-ascii?Q?L4tAq2ZxBbZDAKTkFF3HQIOlzTQUh85XgVnRLZFoTNBLUPRgRXLwvfXvHYJW?=
- =?us-ascii?Q?pHOsfkNxRsYi2FaRRaoGAI9nLf05OKeci9u3knt/xBCFubkLwnuowOWVB+Ox?=
- =?us-ascii?Q?sD4GUoBToAcZkviyax7yBzjpDsIV4Q89SJMf+J96r87EozUl+S83Ut/49Goq?=
- =?us-ascii?Q?XRLCdMMQW9Z/4AcafUiSilvgeSJ4H7PaGgUQc+GlRZIehOo/KduaAMLZYKzR?=
- =?us-ascii?Q?r41X2fZUsXG+TCdfdGE4b5HNY384HAXan7ydENtQIMJzlqwelPbZsvzZx6Rs?=
- =?us-ascii?Q?JBVQ0zX8IKjxWR8vXJKjMVwisF4LNR8xyX5Coq1zmTIDj6BC0+3HOpcqhts5?=
- =?us-ascii?Q?+ZlvGy0l1C0HSOgCtWNyiGsp+0AOOFvi0fgd2SOByRZqny9TdRZSmiuN2z1J?=
- =?us-ascii?Q?S1guPXYrZ0KCORARM0TIS7af4mggi4ceKllgV7ZngTWxuE1rym2bXp9Blj9f?=
- =?us-ascii?Q?+NByiXsmy95sw4FD9VJMCq7Jnujy2OX2DunAzUOekgVSiBnizgSwo3Eom1zG?=
- =?us-ascii?Q?/Vc=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lkj4e-0000mv-O1
+ for qemu-trivial@nongnu.org; Sun, 23 May 2021 04:03:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621756978;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GEUjU14OJxOMpMwYbGCpZd0GXP6hP6CTz55rfv47wT4=;
+ b=PbqQugg7OTVpJqbCettYo8ZMqPKbZM3HHEHwtgGAQvf6DPC1OaPur2s4b+VW2Hr9XEt0AD
+ 6YEz0k1gyBlsS6MYv/SnrJqBSkuGHd60YIqy/f4V59+l7KUa+DQnauyi9SBYj7f6Pod0j0
+ BjEdkwtoMjxoj+jHolffBuSKFTB9LSw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-370-kpbO6Mt_MI20cKBmZHmz8w-1; Sun, 23 May 2021 04:02:55 -0400
+X-MC-Unique: kpbO6Mt_MI20cKBmZHmz8w-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ 2-20020adf94020000b0290110481f75ddso11264794wrq.21
+ for <qemu-trivial@nongnu.org>; Sun, 23 May 2021 01:02:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=GEUjU14OJxOMpMwYbGCpZd0GXP6hP6CTz55rfv47wT4=;
+ b=ogkC95qXjopcTKUeooTTJkbMARQ9M7jUoi7kK34fbbk1INn9Ze6TP0Vg3HT/em4BZO
+ NM/suHryupuDaVVh/7Yp1bkGYaBh4j9Ec6JOD/m9MUq7AYhP/OBCn0d9w+D8H5VlFCdu
+ U67Ik1wUxG09UQt3saCXIVRobS18TFLOFnUihGrmFtxVnjI4SapD0ZbIu1ijD/X1M8uP
+ u7Bh+aBBoLI7+js/JTtDesUNR9J8MLQB15542MjRJ2aXQ9TFyzVCHpwH1NsIt6Q231tl
+ jhz1SmPoPNxP8vygmDbnTK+ghv5WQAeBD9VM/u3s521eRbyRJyYaJT4XvLXVs/FnVgRe
+ T37A==
+X-Gm-Message-State: AOAM5339uuj18l7fixb3OLcRAVhxXHD84XA4mmG3W392rP3nlI0UKzul
+ 0iD13UQqEnaMB9A8u2V7C51nuiOxctBYEFKyGl7wxw9i1QfUmbh08+8oTV09Kv+GvBOSFDQMy/D
+ xtVJWGErmyWmA6hjnWw==
+X-Received: by 2002:a5d:638e:: with SMTP id p14mr16517640wru.299.1621756974534; 
+ Sun, 23 May 2021 01:02:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwFsgeHhs1g0HxaVfY+0WdBQZ4JD4TO7cyXc2t+vYO0kEaDNDv6V4AgMk2ARTVcOmKzj+am4A==
+X-Received: by 2002:a5d:638e:: with SMTP id p14mr16517616wru.299.1621756974218; 
+ Sun, 23 May 2021 01:02:54 -0700 (PDT)
+Received: from redhat.com ([2a10:8006:fcda:0:90d:c7e7:9e26:b297])
+ by smtp.gmail.com with ESMTPSA id u8sm4295848wmq.29.2021.05.23.01.02.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 23 May 2021 01:02:53 -0700 (PDT)
+Date: Sun, 23 May 2021 04:02:50 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hw/virtio: Document *_should_notify() are called within
+ rcu_read_lock()
+Message-ID: <20210523040228-mutt-send-email-mst@kernel.org>
+References: <20210520064900.2413612-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: eldorado.org.br
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CP2PR80MB3668.lamprd80.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b10b07c0-ce32-4299-9454-08d91c5b1a52
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 May 2021 13:19:45.7637 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b9397c69-e827-4afc-a365-ab275e41638f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: u3yTTLwpo/48l+ZOaJ+cPxYpsLA0HW7Y9kc4LfVjNsxjxAq1/A4BzwjBzF2/UBJBlpkeWKFu/HlWf/96Eale0Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CP0PR80MB4979
-Received-SPF: pass client-ip=40.107.212.96;
- envelope-from=luis.pires@eldorado.org.br;
- helo=NAM02-BN1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210520064900.2413612-1-philmd@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 21 May 2021 11:03:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -128,19 +88,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 May 2021 13:19:51 -0000
+X-List-Received-Date: Sun, 23 May 2021 08:03:04 -0000
 
-From: Matheus Ferst <matheus.ferst@eldorado.org.br>
->=20
-> Change the regex used to determine whether a file should be processed as =
-C
-> source to include .c.inc and .h.inc extensions.
->=20
-> Signed-off-by: Matheus Ferst <matheus.ferst@eldorado.org.br>
+On Thu, May 20, 2021 at 08:49:00AM +0200, Philippe Mathieu-Daudé wrote:
+> Such comments make reviewing this file somehow easier.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+ok but
+
 > ---
->  scripts/checkpatch.pl | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/virtio/virtio.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+> index e02544b2df7..2b4c6c4b875 100644
+> --- a/hw/virtio/virtio.c
+> +++ b/hw/virtio/virtio.c
+> @@ -2449,6 +2449,7 @@ static void virtio_set_isr(VirtIODevice *vdev, int value)
+>      }
+>  }
+>  
+> +/* Called within rcu_read_lock().  */
+>  static bool virtio_split_should_notify(VirtIODevice *vdev, VirtQueue *vq)
+>  {
+>      uint16_t old, new;
+> @@ -2485,6 +2486,7 @@ static bool vring_packed_need_event(VirtQueue *vq, bool wrap,
+>      return vring_need_event(off, new, old);
+>  }
+>  
+> +/* Called within rcu_read_lock().  */
+>  static bool virtio_packed_should_notify(VirtIODevice *vdev, VirtQueue *vq)
+>  {
+>      VRingPackedDescEvent e;
 
-Reviewed-by: Luis Pires <luis.pires@eldorado.org.br>
+
+one space before */ please, not two.
+
+> -- 
+> 2.26.3
 
 
