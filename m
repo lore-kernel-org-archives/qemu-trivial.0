@@ -1,39 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ll0d5-0003iz-94
-	for mharc-qemu-trivial@gnu.org; Sun, 23 May 2021 22:47:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45712)
+	id 1llDp2-0003qx-LY
+	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 12:52:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <someguy@effective-light.com>)
- id 1ll0d1-0003id-QL; Sun, 23 May 2021 22:47:39 -0400
-Received: from mta-12-4.privateemail.com ([198.54.127.107]:17814)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <someguy@effective-light.com>)
- id 1ll0d0-0007qw-49; Sun, 23 May 2021 22:47:39 -0400
-Received: from mta-12.privateemail.com (localhost [127.0.0.1])
- by mta-12.privateemail.com (Postfix) with ESMTP id 42ED580063;
- Sun, 23 May 2021 22:47:23 -0400 (EDT)
-Received: from hal-station.. (unknown [10.20.151.249])
- by mta-12.privateemail.com (Postfix) with ESMTPA id AD4448005F;
- Sun, 23 May 2021 22:47:22 -0400 (EDT)
-From: Hamza Mahfooz <someguy@effective-light.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Hamza Mahfooz <someguy@effective-light.com>
-Subject: [PATCH] linux-user: make process_pending_signals thread-safe
-Date: Sun, 23 May 2021 22:46:55 -0400
-Message-Id: <20210524024655.11115-1-someguy@effective-light.com>
-X-Mailer: git-send-email 2.31.1
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1llDp0-0003kZ-L5; Mon, 24 May 2021 12:52:54 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:42558)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1llDoy-0008Vp-SW; Mon, 24 May 2021 12:52:54 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id x8so29234063wrq.9;
+ Mon, 24 May 2021 09:52:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Nkgsk24SyJzDyN5JtfS6I/kbjd8RlzgveFJeWIQ8VH0=;
+ b=fMtjRuHODyt8LwO681/dl8nTECHa+jc7zopSPMc6rxU0ki4iu6iSuYmIA+eIT1rOUd
+ 2tYwlZBW4/j6/ax5soY2IQZxwrdF9s/QJteKI5ra7DpRnFKVAI7ob1yYFK82Uhn1GGoj
+ L3kNFgJBEh6k9/oF9rEIi2TA5k+hcTkMndWX7iJjNOOv8gwwrawA3h+Hp8uXpeCLVCve
+ XP7vadqX5WaUboDXu3WCOumxwn/AsdXdoHkad/tmtSlQrPT0x96QCWZUJ6CozNXapggz
+ lfgqwdAKKb58Si4Q0R318E6b7WZILQlYbhhM4ezLNGzwf/rihABdz7nR0KVXSHuRiWnh
+ ksKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=Nkgsk24SyJzDyN5JtfS6I/kbjd8RlzgveFJeWIQ8VH0=;
+ b=DHBudUeGUpEVzLUGBCHdhtCliBZOMtImOv1Mvk6Cr2pewVZGwSJ2LUIgwGDWUk+o4V
+ V5RAT4rds85nxpq7Hz9X5ijxKyNZEY767iDopb/3P/HxJo31muIXiGnCPNq//oVO54P1
+ DBbqXBHA1r92wWhUynar4e1oFzdnPoGMBohm9dYi7wL9mbFEiqIYNmXw6ikB5lkM6AP/
+ 5wEhSmyvVFsT0qldS0QELkRhe4eyCht4N6s20jbNGQEPx5PrgubmVPK9wma9yeHfP2Kc
+ jWPdKEsM+yXM4FDPCobs+2ORc3GRVWG4M1AGm35oyO0ypch3lUxXEv4tTKb/ao7ei6TR
+ DD0w==
+X-Gm-Message-State: AOAM531pDr2Ok8/DDIa/Tsm9BIUfN2Lx8FffUB9E1GcsxUR6AeuxMNXF
+ nX4U7jszzmXFFmfU9dTJBmv73vmR8EMigg==
+X-Google-Smtp-Source: ABdhPJyu/pKtg0rn2AFbm5HvKpPFhKhoDT3/mVXedjC3/lmC79JiVFXL3Tk7xWg5tGkZGkDOSVT3eA==
+X-Received: by 2002:adf:ee89:: with SMTP id b9mr22708889wro.139.1621875170125; 
+ Mon, 24 May 2021 09:52:50 -0700 (PDT)
+Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
+ [83.51.215.31])
+ by smtp.gmail.com with ESMTPSA id s7sm28511wmh.35.2021.05.24.09.52.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 May 2021 09:52:49 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] plugins: Add missing 'qemu/qht.h' header
+Date: Mon, 24 May 2021 18:52:26 +0200
+Message-Id: <20210524165226.3785324-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Virus-Scanned: ClamAV using ClamSMTP
-Received-SPF: pass client-ip=198.54.127.107;
- envelope-from=someguy@effective-light.com; helo=MTA-12-4.privateemail.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -46,32 +78,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 May 2021 02:47:40 -0000
+X-List-Received-Date: Mon, 24 May 2021 16:52:55 -0000
 
-Use pthread_sigmask instead of sigprocmask inside process_pending_signals
-to ensure that race conditions aren't possible.
+When building a plugin we get:
 
-Signed-off-by: Hamza Mahfooz <someguy@effective-light.com>
+  cc ... -c ../plugins/api.c
+  In file included from ../plugins/api.c:43:
+  ../plugins/plugin.h:45:16: error: field 'dyn_cb_arr_ht' has incomplete type
+       struct qht dyn_cb_arr_ht;
+                  ^~~~~~~~~~~~~
+
+Since we expect all headers to be self-contained, add the missing
+"qemu/qht.h" to avoid other developers to hit the same problem.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- linux-user/signal.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ plugins/plugin.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 7eecec46c4..81ff753c01 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -1005,9 +1005,8 @@ void process_pending_signals(CPUArchState *cpu_env)
-     sigset_t *blocked_set;
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index 1aa29dcaddf..55017e35819 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -13,6 +13,7 @@
+ #define _PLUGIN_INTERNAL_H_
  
-     while (qatomic_read(&ts->signal_pending)) {
--        /* FIXME: This is not threadsafe.  */
-         sigfillset(&set);
--        sigprocmask(SIG_SETMASK, &set, 0);
-+        pthread_sigmask(SIG_SETMASK, &set, 0);
+ #include <gmodule.h>
++#include "qemu/qht.h"
  
-     restart_scan:
-         sig = ts->sync_signal.pending;
+ #define QEMU_PLUGIN_MIN_VERSION 0
+ 
 -- 
-2.31.1
+2.26.3
 
 
