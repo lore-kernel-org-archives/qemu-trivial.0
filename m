@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llDp2-0003qx-LY
-	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 12:52:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47652)
+	id 1llE9j-0002DZ-5G
+	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 13:14:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llDp0-0003kZ-L5; Mon, 24 May 2021 12:52:54 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:42558)
+ id 1llE9d-000277-Vl; Mon, 24 May 2021 13:14:15 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:37842)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llDoy-0008Vp-SW; Mon, 24 May 2021 12:52:54 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id x8so29234063wrq.9;
- Mon, 24 May 2021 09:52:51 -0700 (PDT)
+ id 1llE9S-0007q0-Gq; Mon, 24 May 2021 13:14:05 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id q5so29293044wrs.4;
+ Mon, 24 May 2021 10:14:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Nkgsk24SyJzDyN5JtfS6I/kbjd8RlzgveFJeWIQ8VH0=;
- b=fMtjRuHODyt8LwO681/dl8nTECHa+jc7zopSPMc6rxU0ki4iu6iSuYmIA+eIT1rOUd
- 2tYwlZBW4/j6/ax5soY2IQZxwrdF9s/QJteKI5ra7DpRnFKVAI7ob1yYFK82Uhn1GGoj
- L3kNFgJBEh6k9/oF9rEIi2TA5k+hcTkMndWX7iJjNOOv8gwwrawA3h+Hp8uXpeCLVCve
- XP7vadqX5WaUboDXu3WCOumxwn/AsdXdoHkad/tmtSlQrPT0x96QCWZUJ6CozNXapggz
- lfgqwdAKKb58Si4Q0R318E6b7WZILQlYbhhM4ezLNGzwf/rihABdz7nR0KVXSHuRiWnh
- ksKw==
+ bh=DCP7Rkl74fvr8YdkDRqRx/SGO4Zze6JHMull36L2FNY=;
+ b=VmhVnwnBzqp0QGrpi2n9G4oibNZ51KVe2gpKBO7Ut0dBYYN/l8wdqkl56c0FfKz6nU
+ 4sBeYLOMYm9n37JOHmzvW/a6IUea/xf13+LbRrMkpBijMOdgQ2nzw+68rFhRWTbfWZyH
+ NJtLSfxHC/HehX9dADCeuAU1/3PVEjy29bBJmve8wrKIXXSqkV8sYxx/eFptu5Yg33Bc
+ 35znJ26G9cddSFHcmJtr34Dergenb+GzVCPT6HIHnnFz0qJ8j8m074Qlb1WohmVomYVL
+ lB/ko009D5uA7BdHMrVNOEuU/ekO0J8r6laYpw77rP3vx8evJCz0RtbYG3qbtEnAUDBw
+ qmBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=Nkgsk24SyJzDyN5JtfS6I/kbjd8RlzgveFJeWIQ8VH0=;
- b=DHBudUeGUpEVzLUGBCHdhtCliBZOMtImOv1Mvk6Cr2pewVZGwSJ2LUIgwGDWUk+o4V
- V5RAT4rds85nxpq7Hz9X5ijxKyNZEY767iDopb/3P/HxJo31muIXiGnCPNq//oVO54P1
- DBbqXBHA1r92wWhUynar4e1oFzdnPoGMBohm9dYi7wL9mbFEiqIYNmXw6ikB5lkM6AP/
- 5wEhSmyvVFsT0qldS0QELkRhe4eyCht4N6s20jbNGQEPx5PrgubmVPK9wma9yeHfP2Kc
- jWPdKEsM+yXM4FDPCobs+2ORc3GRVWG4M1AGm35oyO0ypch3lUxXEv4tTKb/ao7ei6TR
- DD0w==
-X-Gm-Message-State: AOAM531pDr2Ok8/DDIa/Tsm9BIUfN2Lx8FffUB9E1GcsxUR6AeuxMNXF
- nX4U7jszzmXFFmfU9dTJBmv73vmR8EMigg==
-X-Google-Smtp-Source: ABdhPJyu/pKtg0rn2AFbm5HvKpPFhKhoDT3/mVXedjC3/lmC79JiVFXL3Tk7xWg5tGkZGkDOSVT3eA==
-X-Received: by 2002:adf:ee89:: with SMTP id b9mr22708889wro.139.1621875170125; 
- Mon, 24 May 2021 09:52:50 -0700 (PDT)
+ bh=DCP7Rkl74fvr8YdkDRqRx/SGO4Zze6JHMull36L2FNY=;
+ b=JItMOr1Q+YF5AGgcA+17cpdaRm3igE06sJX40Z/NYMTE8Z6rKo5tcvmkUw6MwEt99K
+ sAnW3w/sN8atdxS5ZKwxhnIqO4a8Ju5Slt6w866bwjXSMswZOJt9dbC23v+cjL7T1M3b
+ 2lYow7z/k7yNSrnTvuMQJi2FhSVcZF69cS4iBEIldCoP3UnPafJYzgZuDa8Z6akekKuW
+ gYVAKP9ofNPUIUKqVB3nGH0uIyh8QJMoZqmZJ39MJ9vA5U6yKqvsxwUl9w4x2CnUVoCf
+ FweC+QX8shD8055MHq3KU7vdQ2FbMT7EM/sWgir63+y9R7ht7J7xpChrjROpx7BNPjMh
+ ZCYQ==
+X-Gm-Message-State: AOAM533AqTbdXfj3xfyfM/x5EAP6IqUL2y5qnorQcCNeE76kf46zVNQq
+ Gsmh6IyFZ4nnWDs0SAmG0Apaynz4MFVv6w==
+X-Google-Smtp-Source: ABdhPJxo9Drs2hxlsd8KUGVeWxqZrhLde+o/qN7Yj7CzSrc3Hs7GjjjgJUyWYe/bHQr/lTf2+pMUBw==
+X-Received: by 2002:a5d:4e91:: with SMTP id e17mr24006465wru.396.1621876439531; 
+ Mon, 24 May 2021 10:13:59 -0700 (PDT)
 Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id s7sm28511wmh.35.2021.05.24.09.52.49
+ by smtp.gmail.com with ESMTPSA id p6sm8408159wma.4.2021.05.24.10.13.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 May 2021 09:52:49 -0700 (PDT)
+ Mon, 24 May 2021 10:13:59 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] plugins: Add missing 'qemu/qht.h' header
-Date: Mon, 24 May 2021 18:52:26 +0200
-Message-Id: <20210524165226.3785324-1-f4bug@amsat.org>
+Subject: [PATCH] hw/mem/pc-dimm: Hint it is not usable on non-NUMA machines
+Date: Mon, 24 May 2021 19:13:52 +0200
+Message-Id: <20210524171352.3796151-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -78,36 +78,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 May 2021 16:52:55 -0000
+X-List-Received-Date: Mon, 24 May 2021 17:14:17 -0000
 
-When building a plugin we get:
+When trying to use the pc-dimm device on a non-NUMA machine, we get:
 
-  cc ... -c ../plugins/api.c
-  In file included from ../plugins/api.c:43:
-  ../plugins/plugin.h:45:16: error: field 'dyn_cb_arr_ht' has incomplete type
-       struct qht dyn_cb_arr_ht;
-                  ^~~~~~~~~~~~~
+  $ qemu-system-arm -M none -cpu max -S -device pc-dimm
+  Segmentation fault (core dumped)
 
-Since we expect all headers to be self-contained, add the missing
-"qemu/qht.h" to avoid other developers to hit the same problem.
+  (gdb) bt
+  #0  pc_dimm_realize (dev=0x555556da3e90, errp=0x7fffffffcd10) at hw/mem/pc-dimm.c:184
+  #1  0x0000555555fe1f8f in device_set_realized (obj=0x555556da3e90, value=true, errp=0x7fffffffce18) at hw/core/qdev.c:761
+  #2  0x0000555555feb4a9 in property_set_bool (obj=0x555556da3e90, v=0x555556e54420, name=0x5555563c3c41 "realized", opaque=0x555556a704f0, errp=0x7fffffffce18) at qom/object.c:2257
+
+Use a friendler error message instead:
+
+  $ qemu-system-arm -M none -cpu max -S -device pc-dimm
+  qemu-system-arm: -device pc-dimm: NUMA is not supported by this machine-type
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- plugins/plugin.h | 1 +
- 1 file changed, 1 insertion(+)
+ hw/mem/pc-dimm.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/plugins/plugin.h b/plugins/plugin.h
-index 1aa29dcaddf..55017e35819 100644
---- a/plugins/plugin.h
-+++ b/plugins/plugin.h
-@@ -13,6 +13,7 @@
- #define _PLUGIN_INTERNAL_H_
+diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+index a3a2560301c..e8851a0c3b1 100644
+--- a/hw/mem/pc-dimm.c
++++ b/hw/mem/pc-dimm.c
+@@ -181,8 +181,13 @@ static void pc_dimm_realize(DeviceState *dev, Error **errp)
+     PCDIMMDevice *dimm = PC_DIMM(dev);
+     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
+     MachineState *ms = MACHINE(qdev_get_machine());
+-    int nb_numa_nodes = ms->numa_state->num_nodes;
++    int nb_numa_nodes;
  
- #include <gmodule.h>
-+#include "qemu/qht.h"
- 
- #define QEMU_PLUGIN_MIN_VERSION 0
- 
++    if (!ms->numa_state) {
++        error_setg(errp, "NUMA is not supported by this machine-type");
++        return;
++    }
++    nb_numa_nodes = ms->numa_state->num_nodes;
+     if (!dimm->hostmem) {
+         error_setg(errp, "'" PC_DIMM_MEMDEV_PROP "' property is not set");
+         return;
 -- 
 2.26.3
 
