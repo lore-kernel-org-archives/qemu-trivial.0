@@ -1,68 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llFHh-00014i-04
-	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 14:26:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39758)
+	id 1llLBD-0003Z8-SV
+	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 20:44:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35516)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1llFHg-00012x-Ei
- for qemu-trivial@nongnu.org; Mon, 24 May 2021 14:26:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45323)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1llFHe-0007F6-Jr
- for qemu-trivial@nongnu.org; Mon, 24 May 2021 14:26:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621880793;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/WSLnUN65lFfDHA+mKKKcVWZDhw28mJSnvQNLHyWyRA=;
- b=PU92FW5l8iOHXy2Z1oX552eBQhZrTEh9Zc2YexlTDLswpIDJ3MQIx5Uzb2dUlSqfKBXOWo
- Y07gyqYcGEMFNZh8tT3yLi9KMvdLkYKAcGk6fwLtRL6jhhGafZx+oZwDcMdRfgSW8l+b9G
- RaFfNtWcWficAOTIrmP2GDgWCZEAxio=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-484-FMLItTiwO62krxE2i4B6Vw-1; Mon, 24 May 2021 14:26:30 -0400
-X-MC-Unique: FMLItTiwO62krxE2i4B6Vw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D20A801107;
- Mon, 24 May 2021 18:26:29 +0000 (UTC)
-Received: from [10.10.116.202] (ovpn-116-202.rdu2.redhat.com [10.10.116.202])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 163B72ED6C;
- Mon, 24 May 2021 18:26:27 +0000 (UTC)
-Subject: Re: [PATCH] docs: fix broken reference
-To: qemu-trivial@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20210511192950.2061326-1-jsnow@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <40ae55ed-a1f3-68ff-118d-c3b270f3d85b@redhat.com>
-Date: Mon, 24 May 2021 14:26:27 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
+ id 1llJUf-0006SE-BY; Mon, 24 May 2021 18:56:17 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:47074)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
+ id 1llJUd-00063t-4F; Mon, 24 May 2021 18:56:17 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id d20so1095261pls.13;
+ Mon, 24 May 2021 15:56:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7UOaen0v9fpi+6ELlwd0Bu+zOepIwS7irPoRt0OH48U=;
+ b=lAeNBatWX33Fto1TTq9DsXVUzaR8km8NItXFQioqIqd+iKaxdwzN+zRc0p/Vo31uM2
+ r4taaGkd3PJzbKnD4OQmOxZUrxsFFCSjQQs5P6pZbgW9vqY7T37I0lQxC1WAYg79lYA0
+ xUklZUj+YhQaiBfNxltaIIFNPW8UN++JxPi3fxUL56otb/+pSyHPoud3DC+/EB7daQpc
+ GmGJNRbO2K1lXc9xY7PsEUco5GhxVcLgDnAKB+NbZsik/bV4hsQcce6mExXk4aXbGdPN
+ 2o/YXwCEIbs+ryr3zfhpnRbC1DLsIdHFHTwUjfLACCIMNkkNdKdCmfG80V6wHrB0voyw
+ QbAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7UOaen0v9fpi+6ELlwd0Bu+zOepIwS7irPoRt0OH48U=;
+ b=dw6Pp4O9Uo7gW0h/ElJYPiRJkWfYg1PDlpn/4lPzseGVotyXM8BvcM/fjKTF4rAB2G
+ ljN+D08RgdTVWESjoxwCv0F9iNn5xeVbk5/LF6QCORJ+xt6VoEUIUvpuKwesfbhmikfJ
+ tWUe0PBJD6mEZm7RQqjfhB7pA2z2VTsOpqfCQUtGZcSAatRN1+eOE0msHyxZ3UJYufQi
+ QK92AKO8qK3XQRzojm+skaOMFAN2i3WXIqBUXV+4Xk7cri5JqXtPDcfcPwBVWJCcfMbY
+ tdG0QCYkWAnNa22KqY1p5WBUE0ufamoRH5C5jaOlpAfwXCCLA5CNnc0+bJzJvBBJNH7X
+ yNvg==
+X-Gm-Message-State: AOAM533IDch48WdUvp+rlGg/CbjQI1BUiEDbIqS8vsVBsZTtBw9krsbY
+ YBOcrDFs8ZoVGKDIPCFWHA4l1sbBbjqgew==
+X-Google-Smtp-Source: ABdhPJyf3m1S7lGVWPve/6ZzRU8ey5BNABWE3t2Q31Q4hKeKuZWNN9GECza6hc7p05Eu0lEA9duBYA==
+X-Received: by 2002:a17:902:ea84:b029:f0:a36a:489c with SMTP id
+ x4-20020a170902ea84b02900f0a36a489cmr27947257plb.38.1621896972664; 
+ Mon, 24 May 2021 15:56:12 -0700 (PDT)
+Received: from swjoshi-Precision-7920-Tower.hsd1.wa.comcast.net
+ ([2601:600:8680:7470:ca3d:eee7:b3e3:ee1c])
+ by smtp.gmail.com with ESMTPSA id t1sm12286075pgq.47.2021.05.24.15.56.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 May 2021 15:56:12 -0700 (PDT)
+From: Swetha Joshi <swethajoshi139@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Swetha <swjoshi@microsoft.com>
+Subject: [PATCH] Adding ifdefs to call the respective routines only when their
+ configs are enabled
+Date: Mon, 24 May 2021 15:56:08 -0700
+Message-Id: <20210524225608.3191809-1-swethajoshi139@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210511192950.2061326-1-jsnow@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=swethajoshi139@gmail.com; helo=mail-pl1-x62b.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 24 May 2021 20:44:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,50 +77,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 May 2021 18:26:36 -0000
+X-List-Received-Date: Mon, 24 May 2021 22:56:18 -0000
 
-ping
+From: Swetha <swjoshi@microsoft.com>
 
-On 5/11/21 3:29 PM, John Snow wrote:
-> Long story short, we need a space here for the reference to work
-> correctly.
-> 
-> 
-> Longer story:
-> 
-> Without the space, kerneldoc generates a line like this:
-> 
-> one of :c:type:`MemoryListener.region_add\(\) <MemoryListener>`,:c:type:`MemoryListener.region_del\(\)
-> 
-> Sphinx does not process the role information correctly, so we get this
-> (my pseudo-notation) construct:
-> 
-> <text>,:c:type:</text>
-> <reference target="MemoryListener">MemoryListener.region_del()</reference>
-> 
-> which does not reference the desired entity, and leaves some extra junk
-> in the rendered output. See
-> https://qemu-project.gitlab.io/qemu/devel/memory.html#c.MemoryListener
-> member log_start for an example of the broken output as it looks today.
-> 
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> ---
->   include/exec/memory.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index 5728a681b27..3b9ca696061 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -571,7 +571,7 @@ struct MemoryListener {
->        * @log_start:
->        *
->        * Called during an address space update transaction, after
-> -     * one of #MemoryListener.region_add(),#MemoryListener.region_del() or
-> +     * one of #MemoryListener.region_add(), #MemoryListener.region_del() or
->        * #MemoryListener.region_nop(), if dirty memory logging clients have
->        * become active since the last transaction.
->        *
-> 
+Signed-off-by: Swetha <swjoshi@microsoft.com>
+---
+ target/arm/kvm64.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index dff85f6db9..724ce78265 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -1403,7 +1403,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+     hwaddr paddr;
+     Object *obj = qdev_get_machine();
+     VirtMachineState *vms = VIRT_MACHINE(obj);
++    bool acpi_enabled = false;
++#ifdef CONFIG_ARM_VIRT
+     bool acpi_enabled = virt_is_acpi_enabled(vms);
++    #endif /* CONFIG_ARM_VIRT */
+ 
+     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+ 
+@@ -1426,12 +1429,13 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+              */
+             if (code == BUS_MCEERR_AR) {
+                 kvm_cpu_synchronize_state(c);
+-                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+-                    kvm_inject_arm_sea(c);
+-                } else {
+-                    error_report("failed to record the error");
+-                    abort();
++#ifdef CONFIG_ACPI_APEI
++                if (acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
++                  error_report("failed to record the error");
++                  abort();
+                 }
++#endif /* CONFIG_ACPI_APEI */
++                kvm_inject_arm_sea(c);
+             }
+             return;
+         }
+-- 
+2.25.1
 
 
