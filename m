@@ -1,71 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llE9j-0002DZ-5G
-	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 13:14:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51972)
+	id 1llEpF-0002lp-3A
+	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 13:57:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32854)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llE9d-000277-Vl; Mon, 24 May 2021 13:14:15 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:37842)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llE9S-0007q0-Gq; Mon, 24 May 2021 13:14:05 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id q5so29293044wrs.4;
- Mon, 24 May 2021 10:14:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DCP7Rkl74fvr8YdkDRqRx/SGO4Zze6JHMull36L2FNY=;
- b=VmhVnwnBzqp0QGrpi2n9G4oibNZ51KVe2gpKBO7Ut0dBYYN/l8wdqkl56c0FfKz6nU
- 4sBeYLOMYm9n37JOHmzvW/a6IUea/xf13+LbRrMkpBijMOdgQ2nzw+68rFhRWTbfWZyH
- NJtLSfxHC/HehX9dADCeuAU1/3PVEjy29bBJmve8wrKIXXSqkV8sYxx/eFptu5Yg33Bc
- 35znJ26G9cddSFHcmJtr34Dergenb+GzVCPT6HIHnnFz0qJ8j8m074Qlb1WohmVomYVL
- lB/ko009D5uA7BdHMrVNOEuU/ekO0J8r6laYpw77rP3vx8evJCz0RtbYG3qbtEnAUDBw
- qmBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=DCP7Rkl74fvr8YdkDRqRx/SGO4Zze6JHMull36L2FNY=;
- b=JItMOr1Q+YF5AGgcA+17cpdaRm3igE06sJX40Z/NYMTE8Z6rKo5tcvmkUw6MwEt99K
- sAnW3w/sN8atdxS5ZKwxhnIqO4a8Ju5Slt6w866bwjXSMswZOJt9dbC23v+cjL7T1M3b
- 2lYow7z/k7yNSrnTvuMQJi2FhSVcZF69cS4iBEIldCoP3UnPafJYzgZuDa8Z6akekKuW
- gYVAKP9ofNPUIUKqVB3nGH0uIyh8QJMoZqmZJ39MJ9vA5U6yKqvsxwUl9w4x2CnUVoCf
- FweC+QX8shD8055MHq3KU7vdQ2FbMT7EM/sWgir63+y9R7ht7J7xpChrjROpx7BNPjMh
- ZCYQ==
-X-Gm-Message-State: AOAM533AqTbdXfj3xfyfM/x5EAP6IqUL2y5qnorQcCNeE76kf46zVNQq
- Gsmh6IyFZ4nnWDs0SAmG0Apaynz4MFVv6w==
-X-Google-Smtp-Source: ABdhPJxo9Drs2hxlsd8KUGVeWxqZrhLde+o/qN7Yj7CzSrc3Hs7GjjjgJUyWYe/bHQr/lTf2+pMUBw==
-X-Received: by 2002:a5d:4e91:: with SMTP id e17mr24006465wru.396.1621876439531; 
- Mon, 24 May 2021 10:13:59 -0700 (PDT)
-Received: from localhost.localdomain (31.red-83-51-215.dynamicip.rima-tde.net.
- [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id p6sm8408159wma.4.2021.05.24.10.13.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 May 2021 10:13:59 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/mem/pc-dimm: Hint it is not usable on non-NUMA machines
-Date: Mon, 24 May 2021 19:13:52 +0200
-Message-Id: <20210524171352.3796151-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.3
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1llEpD-0002g9-EG
+ for qemu-trivial@nongnu.org; Mon, 24 May 2021 13:57:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45853)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1llEpB-0006wi-KP
+ for qemu-trivial@nongnu.org; Mon, 24 May 2021 13:57:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621879029;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NmF6lhR9PeNjL1T/ol5eDiiMu0J1DgBAp5Io0f2uUTk=;
+ b=cRPx0l9TyEFuviWFaP+goBDtpMkRDVZ/7Qy8tnxO3NKJ6ySQ20TuD+iksgEs1mLNjoL/YX
+ 7zSbGH7t2AvbZWikfd3PRTdD0I3h+av4Ovh5vqH1y4KebXtfoWk3Le+Imgz4QwSral64rV
+ dSexi+hpUuv4Im0QpujV/N57gBj/7B4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-279-zfs7rSRzOUyXtyl3potT3g-1; Mon, 24 May 2021 13:57:07 -0400
+X-MC-Unique: zfs7rSRzOUyXtyl3potT3g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 349E9187656C;
+ Mon, 24 May 2021 17:57:06 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A19356A8EF;
+ Mon, 24 May 2021 17:57:00 +0000 (UTC)
+Date: Mon, 24 May 2021 19:56:58 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hw/mem/pc-dimm: Hint it is not usable on non-NUMA machines
+Message-ID: <20210524195658.033b19e6@redhat.com>
+In-Reply-To: <20210524171352.3796151-1-f4bug@amsat.org>
+References: <20210524171352.3796151-1-f4bug@amsat.org>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -78,48 +72,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 May 2021 17:14:17 -0000
+X-List-Received-Date: Mon, 24 May 2021 17:57:11 -0000
 
-When trying to use the pc-dimm device on a non-NUMA machine, we get:
+On Mon, 24 May 2021 19:13:52 +0200
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-  $ qemu-system-arm -M none -cpu max -S -device pc-dimm
-  Segmentation fault (core dumped)
+> When trying to use the pc-dimm device on a non-NUMA machine, we get:
+>=20
+>   $ qemu-system-arm -M none -cpu max -S -device pc-dimm
+>   Segmentation fault (core dumped)
+>=20
+>   (gdb) bt
+>   #0  pc_dimm_realize (dev=3D0x555556da3e90, errp=3D0x7fffffffcd10) at hw=
+/mem/pc-dimm.c:184
+>   #1  0x0000555555fe1f8f in device_set_realized (obj=3D0x555556da3e90, va=
+lue=3Dtrue, errp=3D0x7fffffffce18) at hw/core/qdev.c:761
+>   #2  0x0000555555feb4a9 in property_set_bool (obj=3D0x555556da3e90, v=3D=
+0x555556e54420, name=3D0x5555563c3c41 "realized", opaque=3D0x555556a704f0, =
+errp=3D0x7fffffffce18) at qom/object.c:2257
+>=20
+> Use a friendler error message instead:
+>=20
+>   $ qemu-system-arm -M none -cpu max -S -device pc-dimm
+>   qemu-system-arm: -device pc-dimm: NUMA is not supported by this machine=
+-type
 
-  (gdb) bt
-  #0  pc_dimm_realize (dev=0x555556da3e90, errp=0x7fffffffcd10) at hw/mem/pc-dimm.c:184
-  #1  0x0000555555fe1f8f in device_set_realized (obj=0x555556da3e90, value=true, errp=0x7fffffffce18) at hw/core/qdev.c:761
-  #2  0x0000555555feb4a9 in property_set_bool (obj=0x555556da3e90, v=0x555556e54420, name=0x5555563c3c41 "realized", opaque=0x555556a704f0, errp=0x7fffffffce18) at qom/object.c:2257
+it's not that pc-dimm inherently depends on numa, so maybe something like t=
+his would be better:
 
-Use a friendler error message instead:
+@@ -183,12 +182,17 @@ static void pc_dimm_realize(DeviceState *dev, Error *=
+*errp)
+...
++    if (ms->numa_state) {
++        int nb_numa_nodes =3D ms->numa_state->num_nodes;
++
++        if ((nb_numa_nodes > 0) &&
++            (dimm->node >=3D nb_numa_nodes)) ||
++           (!nb_numa_nodes && dimm->node)) {
++               error_setg(errp, "'DIMM property " PC_DIMM_NODE_PROP " has =
+value %"
++                          PRIu32 "' which exceeds the number of numa nodes=
+: %d",
++                          dimm->node, nb_numa_nodes ? nb_numa_nodes : 1);
++            return;
++        }
++     } else if (dimm->node > 0)
++         error_setg(errp, "machine doesn't support numa");
+=20
 
-  $ qemu-system-arm -M none -cpu max -S -device pc-dimm
-  qemu-system-arm: -device pc-dimm: NUMA is not supported by this machine-type
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/mem/pc-dimm.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index a3a2560301c..e8851a0c3b1 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -181,8 +181,13 @@ static void pc_dimm_realize(DeviceState *dev, Error **errp)
-     PCDIMMDevice *dimm = PC_DIMM(dev);
-     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-     MachineState *ms = MACHINE(qdev_get_machine());
--    int nb_numa_nodes = ms->numa_state->num_nodes;
-+    int nb_numa_nodes;
- 
-+    if (!ms->numa_state) {
-+        error_setg(errp, "NUMA is not supported by this machine-type");
-+        return;
-+    }
-+    nb_numa_nodes = ms->numa_state->num_nodes;
-     if (!dimm->hostmem) {
-         error_setg(errp, "'" PC_DIMM_MEMDEV_PROP "' property is not set");
-         return;
--- 
-2.26.3
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/mem/pc-dimm.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+> index a3a2560301c..e8851a0c3b1 100644
+> --- a/hw/mem/pc-dimm.c
+> +++ b/hw/mem/pc-dimm.c
+> @@ -181,8 +181,13 @@ static void pc_dimm_realize(DeviceState *dev, Error =
+**errp)
+>      PCDIMMDevice *dimm =3D PC_DIMM(dev);
+>      PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
+>      MachineState *ms =3D MACHINE(qdev_get_machine());
+> -    int nb_numa_nodes =3D ms->numa_state->num_nodes;
+> +    int nb_numa_nodes;
+> =20
+> +    if (!ms->numa_state) {
+> +        error_setg(errp, "NUMA is not supported by this machine-type");
+> +        return;
+> +    }
+> +    nb_numa_nodes =3D ms->numa_state->num_nodes;
+>      if (!dimm->hostmem) {
+>          error_setg(errp, "'" PC_DIMM_MEMDEV_PROP "' property is not set"=
+);
+>          return;
 
 
