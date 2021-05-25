@@ -1,74 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llQoX-00072m-Qz
-	for mharc-qemu-trivial@gnu.org; Tue, 25 May 2021 02:45:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59182)
+	id 1llRnf-0004gW-Oo
+	for mharc-qemu-trivial@gnu.org; Tue, 25 May 2021 03:48:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42964)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llQoW-000724-0B; Tue, 25 May 2021 02:45:16 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:52964)
+ id 1llRne-0004f8-Vu; Tue, 25 May 2021 03:48:26 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:43898)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1llQoU-00033v-By; Tue, 25 May 2021 02:45:15 -0400
-Received: by mail-wm1-x332.google.com with SMTP id z130so16069126wmg.2;
- Mon, 24 May 2021 23:45:13 -0700 (PDT)
+ id 1llRnd-0000GO-HT; Tue, 25 May 2021 03:48:26 -0400
+Received: by mail-wr1-x432.google.com with SMTP id p7so27354116wru.10;
+ Tue, 25 May 2021 00:48:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Ebn63hHqkjlgUmZfp5AMlLroqpj8MQllW+Oasfs+1PA=;
- b=NwslT851irPFNUEmcGPEdoGTT2QSf/GgP51R1kykySOHttZimmW+QFdB1j4GwLc4xE
- 8lemsJj4/lYSq6cme3+OjMYy89SkvviXQY2epf3yZCaQnuy/cABMgzOEZpYzZVpXxyut
- V/H+hSgDkdLxVuii1ku3EgxWKm2gBvz2tTu7a8zT5VMie1PTyxP5ef6Krg/ZIpKNdi9L
- xmrbV4e4tzGt1YJ+JOkvinipD72nD0Vj93ADncw5o3+tRNAm2SeFupwLRmoicfBbezCy
- 1+S0Q6ukyhg2nQ+pWHIy+w86mJBkeI9ZzxMFXhaiIVOKunQDPAIwgr+B+aoYz+ILZ+cU
- 97gQ==
+ bh=FBHjsXO0z1azVZ65FN6XntwbN3YERIwZumL7PVTmfYI=;
+ b=NMxqDHolf867IutGuUI/NHMsHStEqwRuGtBcWcXs6jkT37vDipA69apjQtnasx7lIr
+ 0WkUBtq9OmrJ6SW/0vgdgq5ghFd6LQaV30A2kE1iAQLNVWiK0vlZu2dzBaWVjT2Cp/tY
+ WhmVdzU47hwaqi5vehbzTN/CPf0VZ+KMes1xv8hd0aOzQJs/jqnYkqP1SF4WdtRULCNj
+ 6qb1ytJ7HjiiJ2W1PpXiINjDrNhwJ0UvDLSQz6/L5DTfC6SmEoBjvXVdbxK4Y5Vd2yG8
+ biz0JTG4yrG2WgElJRoq51gF9Z/g2BUcPQJpLU1yJDAE3rMLiqMw2gb281GjXqh6LpW8
+ BEkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Ebn63hHqkjlgUmZfp5AMlLroqpj8MQllW+Oasfs+1PA=;
- b=gTzFE50oa/L8Oy2MeZemAPMp5yuYaqsSROXJlWYDrvnR0uDHdMeZTtqXxkb2YYuuOh
- +GWYhy3ZJWN1nVANyoi6qvrcGtpvGkowsybce3rqxiTie2oPf79km2EMaqmKOben0rcm
- L9zQLzTdyR+49D+pHpIrYrxHx966jJ//LZ6TpU7vSHfEAHTy/yFtZnizGhZqrgsRCWUj
- bXgOPoL6GyARBgWxyEr9ycGEjiXbSWb/m0IU/gH43R2Gb7yoPlonDyj153IUvsdXEdP6
- FMKDFC83rtESRBLpstoK9WbkC7Ej22qTFybtvib2Ivif7bCV41IEQBUYA9JMc3JIxrmP
- QBtw==
-X-Gm-Message-State: AOAM530ajgcavpOdQk9gE99RxSjILImzoxFzKzwcqQNrl778Kj+hM7L1
- B8ym1CCpvOZumZXWQ3TB5Sk=
-X-Google-Smtp-Source: ABdhPJwE3XG53EGe+6pMrlFmbtzHNel2uBMUGR5i2Ks+rfoCCG/HGS2c8d2y+8BeMVDLzBu5rJ/H8g==
-X-Received: by 2002:a05:600c:350a:: with SMTP id
- h10mr23438862wmq.119.1621925112197; 
- Mon, 24 May 2021 23:45:12 -0700 (PDT)
+ bh=FBHjsXO0z1azVZ65FN6XntwbN3YERIwZumL7PVTmfYI=;
+ b=YjkEirIp3/m25BrY4CLdZ8d55d9SxEg49X7eu9FU2B4SbH3F3SV3PcG3llIA/+rkaj
+ sCBXLiRpypK3slA71wDrd/m0jLCu3tPChR7+h2k5zB2ELjPGUgah4w/JoK3v13mmKH9D
+ CE8G5vhB9B6/gaVuNXnsGyKdHU5mi0yYnpCFQCzJT/MYsymRVtb8r463R/bLi2Vi/bZb
+ a1UVlDXYKef7WubMvixSJRlV/5sE/8uW2ZibalBO2BOr19gb7jqQl+Efp/SWw7XdFHrF
+ RX8pnqu26/9g6bfxUgV060t22dxQGRYU+xISAxALffyyFU8QMf4stUo6SOsKsuwIA/WT
+ wW1w==
+X-Gm-Message-State: AOAM532S3gBS99igLfpsjVr2ZbYoMK591jcFAqEYMjg9dbF9TZ6rW79a
+ Ouy9CPYPShn/8JIyeUd+eDSTtRAjebTYxA==
+X-Google-Smtp-Source: ABdhPJwSEO5dSuoECN66mDHjng3XK98bFpjGw8dUGCp7VU/pLpmWKTIapBU/9DV1Jj9fpiDKtodMAw==
+X-Received: by 2002:a5d:59ae:: with SMTP id p14mr25690808wrr.214.1621928903856; 
+ Tue, 25 May 2021 00:48:23 -0700 (PDT)
 Received: from [192.168.1.36] (31.red-83-51-215.dynamicip.rima-tde.net.
  [83.51.215.31])
- by smtp.gmail.com with ESMTPSA id p5sm15573577wrd.25.2021.05.24.23.45.11
+ by smtp.gmail.com with ESMTPSA id w12sm14453683wrt.16.2021.05.25.00.48.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 May 2021 23:45:11 -0700 (PDT)
+ Tue, 25 May 2021 00:48:23 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
- when their configs are enabled
-To: Swetha Joshi <swethajoshi139@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, Leif Lindholm <leif@nuviainc.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
- <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+Subject: Re: [PATCH] hw/input/ps2: Use ps2_raise_irq() instead of open coding
+ it
+To: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Volker_R=c3=bcmelin?=
+ <vr_qemu@t-online.de>
+References: <20210513171244.3940519-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <59ce1ae3-fb76-aea4-d631-f3668a2d2386@amsat.org>
-Date: Tue, 25 May 2021 08:45:10 +0200
+Message-ID: <5ee136e9-3d4b-058d-fcc4-cb56023ee230@amsat.org>
+Date: Tue, 25 May 2021 09:48:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+In-Reply-To: <20210513171244.3940519-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -89,72 +83,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 May 2021 06:45:16 -0000
+X-List-Received-Date: Tue, 25 May 2021 07:48:27 -0000
 
-On 5/25/21 5:20 AM, Richard Henderson wrote:
-> On 5/24/21 7:58 PM, Swetha Joshi wrote:
->> Signed-off-by: Swetha Joshi <swethajoshi139@gmail.com>
->> ---
->>   target/arm/kvm64.c | 12 ++++++++----
->>   1 file changed, 8 insertions(+), 4 deletions(-)
-> 
-> You're still missing the commit message.
-> 
->>
->> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
->> index dff85f6db9..47a4d9d831 100644
->> --- a/target/arm/kvm64.c
->> +++ b/target/arm/kvm64.c
->> @@ -1403,7 +1403,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int
->> code, void *addr)
->>       hwaddr paddr;
->>       Object *obj = qdev_get_machine();
->>       VirtMachineState *vms = VIRT_MACHINE(obj);
->> -    bool acpi_enabled = virt_is_acpi_enabled(vms);
->> +    bool acpi_enabled = false;
+ping? (patch reviewed)
 
-Oh, IIUC this is an user request to build QEMU *with* KVM but
-*without* the Virt machine? Presumably sbsa-ref or Xilinx
-Versal/ZynqMP?
-
-Interesting, I never tested that config. Swetha, do you mind
-providing more information on the use case?
-
-Thanks,
-
-Phil.
-
->> +#ifdef CONFIG_ARM_VIRT
->> +    acpi_enabled = virt_is_acpi_enabled(vms);
->> +#endif /* CONFIG_ARM_VIRT */
->>         assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
->>   @@ -1426,12 +1429,13 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c,
->> int code, void *addr)
->>                */
->>               if (code == BUS_MCEERR_AR) {
->>                   kvm_cpu_synchronize_state(c);
->> -                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA,
->> paddr)) {
->> -                    kvm_inject_arm_sea(c);
->> -                } else {
->> +#ifdef CONFIG_ACPI_APEI
->> +                if (acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA,
->> paddr)) {
->>                       error_report("failed to record the error");
->>                       abort();
->>                   }
->> +#endif /* CONFIG_ACPI_APEI */
->> +                kvm_inject_arm_sea(c);
->>               }
+On 5/13/21 7:12 PM, Philippe Mathieu-Daudé wrote:
+> Inspired-by: Volker Rümelin <vr_qemu@t-online.de>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/input/ps2.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> Otherwise the actual patch looks ok.
+> diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+> index 72cdb80ae1c..02d7e5da723 100644
+> --- a/hw/input/ps2.c
+> +++ b/hw/input/ps2.c
+> @@ -213,7 +213,7 @@ void ps2_raise_irq(PS2State *s)
+>  void ps2_queue(PS2State *s, int b)
+>  {
+>      ps2_queue_noirq(s, b);
+> -    s->update_irq(s->update_arg, 1);
+> +    ps2_raise_irq(s);
+>  }
+>  
+>  void ps2_queue_2(PS2State *s, int b1, int b2)
+> @@ -224,7 +224,7 @@ void ps2_queue_2(PS2State *s, int b1, int b2)
+>  
+>      ps2_queue_noirq(s, b1);
+>      ps2_queue_noirq(s, b2);
+> -    s->update_irq(s->update_arg, 1);
+> +    ps2_raise_irq(s);
+>  }
+>  
+>  void ps2_queue_3(PS2State *s, int b1, int b2, int b3)
+> @@ -236,7 +236,7 @@ void ps2_queue_3(PS2State *s, int b1, int b2, int b3)
+>      ps2_queue_noirq(s, b1);
+>      ps2_queue_noirq(s, b2);
+>      ps2_queue_noirq(s, b3);
+> -    s->update_irq(s->update_arg, 1);
+> +    ps2_raise_irq(s);
+>  }
+>  
+>  void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
+> @@ -249,7 +249,7 @@ void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
+>      ps2_queue_noirq(s, b2);
+>      ps2_queue_noirq(s, b3);
+>      ps2_queue_noirq(s, b4);
+> -    s->update_irq(s->update_arg, 1);
+> +    ps2_raise_irq(s);
+>  }
+>  
+>  /* keycode is the untranslated scancode in the current scancode set. */
 > 
-> I'm a bit surprised that you need the second hunk.  I would have
-> expected the entire block to be optimized away with the 'acpi_enabled =
-> false' being propagated into the outermost IF.
-> 
-> 
-> r~
-> 
-
 
