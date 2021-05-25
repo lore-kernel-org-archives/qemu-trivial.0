@@ -1,51 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llLFn-0005jN-Un
-	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 20:49:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50852)
+	id 1llMFx-0005k4-4x
+	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 21:53:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1llLFm-0005iz-C7; Mon, 24 May 2021 20:49:02 -0400
-Resent-Date: Mon, 24 May 2021 20:49:02 -0400
-Resent-Message-Id: <E1llLFm-0005iz-C7@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21394)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1llLFk-0000dx-4m; Mon, 24 May 2021 20:49:02 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1621903732; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=kLeoQpSYnPY3IRjuKla6Szxk4o9woHqHTgfO4S6DvGtsipZY8o58AwyR0wez0WGkW+USFDTitao1P6T8Mp5CtpsxbpxuIcPwMUidrvYqkhIL89bE5fCp9V63iHUV1CjWtIbo6sCx9qYuE2CBo7YUUtkDBumjJIlktRyhpgMdfBk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1621903732;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=LoWvn9qm8RG+zujQN3SqfGBMKLm6e47nYjn0zJhF7sk=; 
- b=c0cYpkg25+rjA2anOCpSZ42izt8cBsPlq9Pw26g9jvXbxEbIiXhw6srN/MQ2YRVWeStkNOIdqW+zVq88wtUi0HiShnS0R3iiKuABMYUEplcKBEDj18tiFCNpuUpN/CUO2Igrs+kAtIV/73n0lPPZly68OQPNAmYtbL8K3sNL7Q8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1621903730689594.3664916048383;
- Mon, 24 May 2021 17:48:50 -0700 (PDT)
-In-Reply-To: <20210524225608.3191809-1-swethajoshi139@gmail.com>
-Reply-To: <qemu-devel@nongnu.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1llMFu-0005c5-VO
+ for qemu-trivial@nongnu.org; Mon, 24 May 2021 21:53:14 -0400
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:51936)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1llMFt-0003qY-BG
+ for qemu-trivial@nongnu.org; Mon, 24 May 2021 21:53:14 -0400
+Received: by mail-pj1-x1034.google.com with SMTP id k5so15919011pjj.1
+ for <qemu-trivial@nongnu.org>; Mon, 24 May 2021 18:53:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Z//ZdmQPdvPSCHUDAaZ6ZgNYu/ZvQQN6wVUK8vFK3VI=;
+ b=EVYr7fX8soRG1lDRacDt9suAzoCzehnkl2btZKfvFI8jN3WLimHnx2xK7NRRzbP4kB
+ 83wGgb1gzzwD/6L70/3Cjbl56KxMttADh6TJuMjNXb9e+UIlIx/Ran5fJKynB/Q9Abeg
+ XP676olnF5Go/+oik5dXgXRd3eT8FWmPaQ6s6tSc8dEcuECmT97ObCPCgl828kXjMS40
+ yt0WaJvuaifR3Q+O1XvppqmDZlQ74Sn7vsLDvjIdxxcWNnteYaTHSuEtahoQ8nXROOJN
+ PjAqkUFR5YGVOTiR+dQsY2GEBmkmHZbKgNBXurdzpPG4u1m+jE23FqZ4AOV3QR37bJgw
+ 1UCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Z//ZdmQPdvPSCHUDAaZ6ZgNYu/ZvQQN6wVUK8vFK3VI=;
+ b=jv1sOUunrFYWt5AkKypGBH5TN/+oOiUgPb35SG5he7coj0Mcs4ANHVUWfWhxxMU07k
+ d7zRX80yvegl+64lL6vHCLvJCvnv618b9yi8jEpH8hjslHvhfiNT+aCNmZKpK8K1AbU7
+ dCkp99T+bivmv6/fga6mROe6DKfhV6jdOngH9aQn5hXDLDx6u2M0RBKBs5R6aE6MNjWQ
+ GIukdeeDNXPjqzXpRI+rGKVnNlrN5KQfnvRPeyt9ldBpDXi9Z4ynYRaCTlL/M/ebcQbX
+ jdHf5B4akTiXbd+328fmDWfr98w4ZMrCfMOFli0uzagZk7x7q1/7Xe1NlR2a0FZ3wlJA
+ 2a0w==
+X-Gm-Message-State: AOAM5309wZ43AO4127HugK9d/CbIS7jO5r9THRMWENDbNYWUF5BlXsB/
+ 8Ukc064CAaLST44dNyUL96gZ+g==
+X-Google-Smtp-Source: ABdhPJyH6e7zLumN4tLPYzNm9ir6e/vQicnjYUOZ0YIi61z/t2f/jnBWIbCsxxW1FYNuXCAqOLPlmQ==
+X-Received: by 2002:a17:902:d711:b029:f0:b127:8105 with SMTP id
+ w17-20020a170902d711b02900f0b1278105mr28514824ply.20.1621907589622; 
+ Mon, 24 May 2021 18:53:09 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
+ by smtp.gmail.com with ESMTPSA id
+ g141sm10449701pfb.210.2021.05.24.18.53.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 24 May 2021 18:53:09 -0700 (PDT)
 Subject: Re: [PATCH] Adding ifdefs to call the respective routines only when
  their configs are enabled
-Message-ID: <162190372969.18674.2618006233204206235@0addf061776e>
+To: Swetha Joshi <swethajoshi139@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Swetha <swjoshi@microsoft.com>
+References: <20210524225608.3191809-1-swethajoshi139@gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <8fbdab13-ed0e-047a-7a67-2e30471a46b1@linaro.org>
+Date: Mon, 24 May 2021 18:53:07 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: swethajoshi139@gmail.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, swjoshi@microsoft.com
-Date: Mon, 24 May 2021 17:48:50 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210524225608.3191809-1-swethajoshi139@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -59,39 +82,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 May 2021 00:49:02 -0000
+X-List-Received-Date: Tue, 25 May 2021 01:53:15 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDUyNDIyNTYwOC4zMTkx
-ODA5LTEtc3dldGhham9zaGkxMzlAZ21haWwuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1z
-IHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9y
-Cm1vcmUgaW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMTA1MjQyMjU2
-MDguMzE5MTgwOS0xLXN3ZXRoYWpvc2hpMTM5QGdtYWlsLmNvbQpTdWJqZWN0OiBbUEFUQ0hdIEFk
-ZGluZyBpZmRlZnMgdG8gY2FsbCB0aGUgcmVzcGVjdGl2ZSByb3V0aW5lcyBvbmx5IHdoZW4gdGhl
-aXIgY29uZmlncyBhcmUgZW5hYmxlZAoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4v
-YmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcg
-LS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1l
-cyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3Jp
-cHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9
-PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJv
-bSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAg
-ICAgICAgcGF0Y2hldy8yMDIxMDUyNDIyNTYwOC4zMTkxODA5LTEtc3dldGhham9zaGkxMzlAZ21h
-aWwuY29tIC0+IHBhdGNoZXcvMjAyMTA1MjQyMjU2MDguMzE5MTgwOS0xLXN3ZXRoYWpvc2hpMTM5
-QGdtYWlsLmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjE4Y2FiMzkgQWRkaW5n
-IGlmZGVmcyB0byBjYWxsIHRoZSByZXNwZWN0aXZlIHJvdXRpbmVzIG9ubHkgd2hlbiB0aGVpciBj
-b25maWdzIGFyZSBlbmFibGVkCgo9PT0gT1VUUFVUIEJFR0lOID09PQpFUlJPUjogc3VzcGVjdCBj
-b2RlIGluZGVudCBmb3IgY29uZGl0aW9uYWwgc3RhdGVtZW50cyAoMTYsIDE4KQojMzg6IEZJTEU6
-IHRhcmdldC9hcm0va3ZtNjQuYzoxNDMzOgorICAgICAgICAgICAgICAgIGlmIChhY3BpX2doZXNf
-cmVjb3JkX2Vycm9ycyhBQ1BJX0hFU1RfU1JDX0lEX1NFQSwgcGFkZHIpKSB7CisgICAgICAgICAg
-ICAgICAgICBlcnJvcl9yZXBvcnQoImZhaWxlZCB0byByZWNvcmQgdGhlIGVycm9yIik7Cgp0b3Rh
-bDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDI4IGxpbmVzIGNoZWNrZWQKCkNvbW1pdCAxOGNhYjM5
-YmNkNDYgKEFkZGluZyBpZmRlZnMgdG8gY2FsbCB0aGUgcmVzcGVjdGl2ZSByb3V0aW5lcyBvbmx5
-IHdoZW4gdGhlaXIgY29uZmlncyBhcmUgZW5hYmxlZCkgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVh
-c2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJl
-cG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVS
-Uy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoK
-ClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAy
-MTA1MjQyMjU2MDguMzE5MTgwOS0xLXN3ZXRoYWpvc2hpMTM5QGdtYWlsLmNvbS90ZXN0aW5nLmNo
-ZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5
-IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVk
-YmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+On 5/24/21 3:56 PM, Swetha Joshi wrote:
+> From: Swetha <swjoshi@microsoft.com>
+> 
+> Signed-off-by: Swetha <swjoshi@microsoft.com>
+
+What are you trying to accomplish?
+That's what belongs in the commit message that you omitted.
+
+> +    bool acpi_enabled = false;
+> +#ifdef CONFIG_ARM_VIRT
+>       bool acpi_enabled = virt_is_acpi_enabled(vms);
+
+Of course this doesn't compile, having declared acpi_enabled twice.  So you 
+have clearly not tested this patch sufficiently.
+
+The cc to qemu-trivial is unwarranted.
+
+
+r~
 
