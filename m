@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llWwz-0007xp-Nh
-	for mharc-qemu-trivial@gnu.org; Tue, 25 May 2021 09:18:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50578)
+	id 1llWx3-00080N-RT
+	for mharc-qemu-trivial@gnu.org; Tue, 25 May 2021 09:18:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39112)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwhr00@gmail.com>) id 1llNOH-0006dx-Fc
- for qemu-trivial@nongnu.org; Mon, 24 May 2021 23:05:57 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:46757)
+ (Exim 4.90_1) (envelope-from <kwhr00@gmail.com>) id 1llTdy-0007SZ-8I
+ for qemu-trivial@nongnu.org; Tue, 25 May 2021 05:46:34 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:37567)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <kwhr00@gmail.com>) id 1llNOC-0001Tx-D8
- for qemu-trivial@nongnu.org; Mon, 24 May 2021 23:05:57 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- l18-20020a1c79120000b0290181c444b2d0so5381421wme.5
- for <qemu-trivial@nongnu.org>; Mon, 24 May 2021 20:05:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kwhr00@gmail.com>) id 1llTdv-0000KB-M2
+ for qemu-trivial@nongnu.org; Tue, 25 May 2021 05:46:33 -0400
+Received: by mail-wr1-x436.google.com with SMTP id q5so31455083wrs.4
+ for <qemu-trivial@nongnu.org>; Tue, 25 May 2021 02:46:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:from:date:message-id:subject:to:cc;
- bh=YqCJnwE7IWC8ZRzBkEwU2H0R1owf6i82Zf+UnLuvLPg=;
- b=hBn9bOGmpluTCJ/XopmfAxy85twx3WE+Gim0vJ/HsD8F94IN3b41cEKYVR8pGJDDn+
- TBaXW6PvHreMD5hiyIRVE9GilV/5H5VUewgyV3CHssx6I/AK6qv5jTuCZiilXTxccDBs
- zyRffmoDt2kvBXGQ+u2eZay7r1xarZJ8MsDut4uDs4il51nGY9aSWDjzTqc8QlQSoqd5
- kCzkp09f1mWX+P/IEyq9HYc3WO/SqcpGh/uYZ+8fnSvNORGwm2R3tZxxS9CBr2JsMp0i
- g6x6WsMxGhODns6OE+9cyo9juMhjDSElPWULZjN2Oko4dEQUWD16fmKS4xYkMg1cFP1I
- zAyQ==
+ bh=6AF0NWrKHZig9WLhVf4Fn8k365LH4FZZuaL5y32vImY=;
+ b=ZoAIH/WHXRCSo12qqiIVMN7Nvw9XHmugoaAJr8+AEkTxjhKhaeh3Lbn40grzPk/cSi
+ Nh1A/Y4JsMeL8q6086VlmEFuwzGsGPGWXiFNqn8zaaIpENDeJJ0cKARVJMjN9AyiRdtV
+ 4H7ZmhVNK66RK+dExN8JdQ6Tfu25p6oWpz5L9Q2nNGGcdg6c5rMYK9W/J4LplQD2U53k
+ q+Rmsgc9qt4TS8zmIlkYnhe5Pr7NXd5SsORCQKNLUwAI9w3M+VUR+sovC2RvJXCeonAI
+ QcZ5Af0/oT8AsVHoH/JP4Ks7tBmcMXBtF/0zrOjdVEb0ViptDGZ9zr/LLEBpJJLENinv
+ 16LQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
- bh=YqCJnwE7IWC8ZRzBkEwU2H0R1owf6i82Zf+UnLuvLPg=;
- b=tjXjKxFVywMlcO+S033ltkdeUYFbQMz4SSGjkufUgirM7lXSeOFliOJqwxFTV4Me7i
- mObzIdcqsf7i9nXxflD3kQE6IRpkQA9z6+zqdZ33cYWDX2h6aKPNvoJ1Q4CeaRNbfzKD
- tLcwL7bijKUlVXCIEJ+Fy/RJPLvLNZIlUozLg37PfeljWMzXIby5QuILIb0G1EcyDtP3
- pzqUrGIQkEoYfPX78jwrztbW+g1LasT25bPsmIRu2pjrwREmes6QYuS4xMFi+lRdBY9h
- nLJVG9hjQs45W+8clbInCeVlCbZFJwJ0CXAF+w6ZlDm071X7YiliIcLfzRCJs1fZZTIO
- kYog==
-X-Gm-Message-State: AOAM530Vn3NCVIRRZ8kvfTMnFAbFQEee8ANy/NinAjLWw8W/eiLQCsof
- JUY6pv1bnNVpP3ZJzi9ivoeZQuqAsftuxQcMC1/M/ypNGNA=
-X-Google-Smtp-Source: ABdhPJzNxUofomok4FcYL81OnVa+Yu1Yp9t9ALGWMWvKQnP2t39V9kGx7Zc8XMA2GL83LLDsc6RmnIsFj5iwOBO2kYY=
-X-Received: by 2002:a05:600c:154a:: with SMTP id
- f10mr22613689wmg.31.1621911948185; 
- Mon, 24 May 2021 20:05:48 -0700 (PDT)
+ bh=6AF0NWrKHZig9WLhVf4Fn8k365LH4FZZuaL5y32vImY=;
+ b=kUktE8sodecQJnY9MnuQfSJ2adxW2QP0Ho9Tzl10Lt1ANQLSnNh7JFt5LziMIscwdd
+ k1XBAaciIfWut0xLgKnZpOmkWlpri/95g+6goVtyEdU6qaiU+X9UN2J0hUT3S+jXk1si
+ bO9z4K6fqoCnf5phW/D5wD6VWjZhYw4h7Kf5eMxYtwYoIJ3SlESihYYjMsfEE4xm25Gf
+ oOSNu+Gs9NqNL0QMcSQkRL7I2+Wj6A+4Gu33fSKWwLHUNRv1cTR2RK+8pIL/XRyjTKBI
+ THToUibcAcLMnc/XgkM3R0sll1DcqmcsUpXUjX1R9BuHGiOsKdta2aLESO+/tIHirXF9
+ HLmg==
+X-Gm-Message-State: AOAM532fDsLIhIzDimLm7A7jh6wPcYBswe5Tf+QcMAdtW0MWosjZG4kp
+ Ae1Zw3KuSjDWwM4zSLs27A5h0vdCn05Ejkqj41Qe0YQk8sk=
+X-Google-Smtp-Source: ABdhPJyy+C7V3keICCSEaCVf1jsD0hFYC1UmaNdtmGPbUv31asML/c5Tw8Ss5arhoxUkDAmBeRy5xbi+rBp89FETTF0=
+X-Received: by 2002:adf:db42:: with SMTP id f2mr26450119wrj.5.1621935990033;
+ Tue, 25 May 2021 02:46:30 -0700 (PDT)
 MIME-Version: 1.0
 From: Yasuo Kuwahara <kwhr00@gmail.com>
-Date: Tue, 25 May 2021 12:05:37 +0900
-Message-ID: <CAHfJ0vTnA5_H1CEKHQ9eJe0hzT5SuqhMEQAJuAZhSFJz2mYjeQ@mail.gmail.com>
-Subject: [PATCH] tcg/aarh64/tcg-target.c.inc: correction of rotate bit number
+Date: Tue, 25 May 2021 18:46:19 +0900
+Message-ID: <CAHfJ0vSXnmnTLmT0kR=a8ACRdw_UsLYOhStzUzgVEHoH8U-7sA@mail.gmail.com>
+Subject: [PATCH] tcg/aarch64/tcg-target.c.inc: correction of rotate bit number
 To: qemu-trivial@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000008751e005c31ecd75"
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=kwhr00@gmail.com; helo=mail-wm1-x32f.google.com
+Content-Type: multipart/alternative; boundary="00000000000088d10f05c32466e7"
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=kwhr00@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -56,7 +54,7 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 25 May 2021 09:18:23 -0400
+X-Mailman-Approved-At: Tue, 25 May 2021 09:18:24 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,9 +66,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 May 2021 03:05:57 -0000
+X-List-Received-Date: Tue, 25 May 2021 09:46:34 -0000
 
---0000000000008751e005c31ecd75
+--00000000000088d10f05c32466e7
 Content-Type: text/plain; charset="UTF-8"
 
 The last argument of tcg_out_extr() must be in the range 0-31 if ext==0.
@@ -128,7 +126,7 @@ TCGType ext,
 
 2.24.3
 
---0000000000008751e005c31ecd75
+--00000000000088d10f05c32466e7
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -282,5 +280,5 @@ sian:normal;font-stretch:normal;font-size:11px;line-height:normal;font-fami=
 ly:Menlo;color:rgb(0,0,0)"><span class=3D"gmail-s1" style=3D"font-variant-l=
 igatures:no-common-ligatures"><br></span></p></div>
 
---0000000000008751e005c31ecd75--
+--00000000000088d10f05c32466e7--
 
