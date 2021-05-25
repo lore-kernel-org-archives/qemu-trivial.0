@@ -1,71 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llLBD-0003Z8-SV
-	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 20:44:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35516)
+	id 1llLFn-0005jN-Un
+	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 20:49:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1llJUf-0006SE-BY; Mon, 24 May 2021 18:56:17 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:47074)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1llJUd-00063t-4F; Mon, 24 May 2021 18:56:17 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id d20so1095261pls.13;
- Mon, 24 May 2021 15:56:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7UOaen0v9fpi+6ELlwd0Bu+zOepIwS7irPoRt0OH48U=;
- b=lAeNBatWX33Fto1TTq9DsXVUzaR8km8NItXFQioqIqd+iKaxdwzN+zRc0p/Vo31uM2
- r4taaGkd3PJzbKnD4OQmOxZUrxsFFCSjQQs5P6pZbgW9vqY7T37I0lQxC1WAYg79lYA0
- xUklZUj+YhQaiBfNxltaIIFNPW8UN++JxPi3fxUL56otb/+pSyHPoud3DC+/EB7daQpc
- GmGJNRbO2K1lXc9xY7PsEUco5GhxVcLgDnAKB+NbZsik/bV4hsQcce6mExXk4aXbGdPN
- 2o/YXwCEIbs+ryr3zfhpnRbC1DLsIdHFHTwUjfLACCIMNkkNdKdCmfG80V6wHrB0voyw
- QbAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7UOaen0v9fpi+6ELlwd0Bu+zOepIwS7irPoRt0OH48U=;
- b=dw6Pp4O9Uo7gW0h/ElJYPiRJkWfYg1PDlpn/4lPzseGVotyXM8BvcM/fjKTF4rAB2G
- ljN+D08RgdTVWESjoxwCv0F9iNn5xeVbk5/LF6QCORJ+xt6VoEUIUvpuKwesfbhmikfJ
- tWUe0PBJD6mEZm7RQqjfhB7pA2z2VTsOpqfCQUtGZcSAatRN1+eOE0msHyxZ3UJYufQi
- QK92AKO8qK3XQRzojm+skaOMFAN2i3WXIqBUXV+4Xk7cri5JqXtPDcfcPwBVWJCcfMbY
- tdG0QCYkWAnNa22KqY1p5WBUE0ufamoRH5C5jaOlpAfwXCCLA5CNnc0+bJzJvBBJNH7X
- yNvg==
-X-Gm-Message-State: AOAM533IDch48WdUvp+rlGg/CbjQI1BUiEDbIqS8vsVBsZTtBw9krsbY
- YBOcrDFs8ZoVGKDIPCFWHA4l1sbBbjqgew==
-X-Google-Smtp-Source: ABdhPJyf3m1S7lGVWPve/6ZzRU8ey5BNABWE3t2Q31Q4hKeKuZWNN9GECza6hc7p05Eu0lEA9duBYA==
-X-Received: by 2002:a17:902:ea84:b029:f0:a36a:489c with SMTP id
- x4-20020a170902ea84b02900f0a36a489cmr27947257plb.38.1621896972664; 
- Mon, 24 May 2021 15:56:12 -0700 (PDT)
-Received: from swjoshi-Precision-7920-Tower.hsd1.wa.comcast.net
- ([2601:600:8680:7470:ca3d:eee7:b3e3:ee1c])
- by smtp.gmail.com with ESMTPSA id t1sm12286075pgq.47.2021.05.24.15.56.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 May 2021 15:56:12 -0700 (PDT)
-From: Swetha Joshi <swethajoshi139@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Swetha <swjoshi@microsoft.com>
-Subject: [PATCH] Adding ifdefs to call the respective routines only when their
- configs are enabled
-Date: Mon, 24 May 2021 15:56:08 -0700
-Message-Id: <20210524225608.3191809-1-swethajoshi139@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1llLFm-0005iz-C7; Mon, 24 May 2021 20:49:02 -0400
+Resent-Date: Mon, 24 May 2021 20:49:02 -0400
+Resent-Message-Id: <E1llLFm-0005iz-C7@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21394)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1llLFk-0000dx-4m; Mon, 24 May 2021 20:49:02 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1621903732; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=kLeoQpSYnPY3IRjuKla6Szxk4o9woHqHTgfO4S6DvGtsipZY8o58AwyR0wez0WGkW+USFDTitao1P6T8Mp5CtpsxbpxuIcPwMUidrvYqkhIL89bE5fCp9V63iHUV1CjWtIbo6sCx9qYuE2CBo7YUUtkDBumjJIlktRyhpgMdfBk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1621903732;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=LoWvn9qm8RG+zujQN3SqfGBMKLm6e47nYjn0zJhF7sk=; 
+ b=c0cYpkg25+rjA2anOCpSZ42izt8cBsPlq9Pw26g9jvXbxEbIiXhw6srN/MQ2YRVWeStkNOIdqW+zVq88wtUi0HiShnS0R3iiKuABMYUEplcKBEDj18tiFCNpuUpN/CUO2Igrs+kAtIV/73n0lPPZly68OQPNAmYtbL8K3sNL7Q8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1621903730689594.3664916048383;
+ Mon, 24 May 2021 17:48:50 -0700 (PDT)
+In-Reply-To: <20210524225608.3191809-1-swethajoshi139@gmail.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] Adding ifdefs to call the respective routines only when
+ their configs are enabled
+Message-ID: <162190372969.18674.2618006233204206235@0addf061776e>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=swethajoshi139@gmail.com; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: swethajoshi139@gmail.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, swjoshi@microsoft.com
+Date: Mon, 24 May 2021 17:48:50 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 24 May 2021 20:44:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,50 +59,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 May 2021 22:56:18 -0000
+X-List-Received-Date: Tue, 25 May 2021 00:49:02 -0000
 
-From: Swetha <swjoshi@microsoft.com>
-
-Signed-off-by: Swetha <swjoshi@microsoft.com>
----
- target/arm/kvm64.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
-
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index dff85f6db9..724ce78265 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -1403,7 +1403,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-     hwaddr paddr;
-     Object *obj = qdev_get_machine();
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-+    bool acpi_enabled = false;
-+#ifdef CONFIG_ARM_VIRT
-     bool acpi_enabled = virt_is_acpi_enabled(vms);
-+    #endif /* CONFIG_ARM_VIRT */
- 
-     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
- 
-@@ -1426,12 +1429,13 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-              */
-             if (code == BUS_MCEERR_AR) {
-                 kvm_cpu_synchronize_state(c);
--                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
--                    kvm_inject_arm_sea(c);
--                } else {
--                    error_report("failed to record the error");
--                    abort();
-+#ifdef CONFIG_ACPI_APEI
-+                if (acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
-+                  error_report("failed to record the error");
-+                  abort();
-                 }
-+#endif /* CONFIG_ACPI_APEI */
-+                kvm_inject_arm_sea(c);
-             }
-             return;
-         }
--- 
-2.25.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDUyNDIyNTYwOC4zMTkx
+ODA5LTEtc3dldGhham9zaGkxMzlAZ21haWwuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1z
+IHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9y
+Cm1vcmUgaW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMTA1MjQyMjU2
+MDguMzE5MTgwOS0xLXN3ZXRoYWpvc2hpMTM5QGdtYWlsLmNvbQpTdWJqZWN0OiBbUEFUQ0hdIEFk
+ZGluZyBpZmRlZnMgdG8gY2FsbCB0aGUgcmVzcGVjdGl2ZSByb3V0aW5lcyBvbmx5IHdoZW4gdGhl
+aXIgY29uZmlncyBhcmUgZW5hYmxlZAoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4v
+YmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcg
+LS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1l
+cyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3Jp
+cHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9
+PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJv
+bSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAg
+ICAgICAgcGF0Y2hldy8yMDIxMDUyNDIyNTYwOC4zMTkxODA5LTEtc3dldGhham9zaGkxMzlAZ21h
+aWwuY29tIC0+IHBhdGNoZXcvMjAyMTA1MjQyMjU2MDguMzE5MTgwOS0xLXN3ZXRoYWpvc2hpMTM5
+QGdtYWlsLmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjE4Y2FiMzkgQWRkaW5n
+IGlmZGVmcyB0byBjYWxsIHRoZSByZXNwZWN0aXZlIHJvdXRpbmVzIG9ubHkgd2hlbiB0aGVpciBj
+b25maWdzIGFyZSBlbmFibGVkCgo9PT0gT1VUUFVUIEJFR0lOID09PQpFUlJPUjogc3VzcGVjdCBj
+b2RlIGluZGVudCBmb3IgY29uZGl0aW9uYWwgc3RhdGVtZW50cyAoMTYsIDE4KQojMzg6IEZJTEU6
+IHRhcmdldC9hcm0va3ZtNjQuYzoxNDMzOgorICAgICAgICAgICAgICAgIGlmIChhY3BpX2doZXNf
+cmVjb3JkX2Vycm9ycyhBQ1BJX0hFU1RfU1JDX0lEX1NFQSwgcGFkZHIpKSB7CisgICAgICAgICAg
+ICAgICAgICBlcnJvcl9yZXBvcnQoImZhaWxlZCB0byByZWNvcmQgdGhlIGVycm9yIik7Cgp0b3Rh
+bDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDI4IGxpbmVzIGNoZWNrZWQKCkNvbW1pdCAxOGNhYjM5
+YmNkNDYgKEFkZGluZyBpZmRlZnMgdG8gY2FsbCB0aGUgcmVzcGVjdGl2ZSByb3V0aW5lcyBvbmx5
+IHdoZW4gdGhlaXIgY29uZmlncyBhcmUgZW5hYmxlZCkgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVh
+c2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJl
+cG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVS
+Uy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoK
+ClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAy
+MTA1MjQyMjU2MDguMzE5MTgwOS0xLXN3ZXRoYWpvc2hpMTM5QGdtYWlsLmNvbS90ZXN0aW5nLmNo
+ZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5
+IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVk
+YmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 
