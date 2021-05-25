@@ -1,63 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llMta-0006Nd-RZ
-	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 22:34:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41242)
+	id 1llNHD-0004Ts-NS
+	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 22:58:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1llMtX-0006IZ-FQ; Mon, 24 May 2021 22:34:11 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:38569)
+ id 1llNHC-0004TS-39; Mon, 24 May 2021 22:58:38 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:38449)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1llMtV-0002fB-NY; Mon, 24 May 2021 22:34:11 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id
- cu11-20020a17090afa8bb029015d5d5d2175so12362888pjb.3; 
- Mon, 24 May 2021 19:34:08 -0700 (PDT)
+ id 1llNH3-00047b-2w; Mon, 24 May 2021 22:58:37 -0400
+Received: by mail-pg1-x533.google.com with SMTP id 6so21562513pgk.5;
+ Mon, 24 May 2021 19:58:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=I7bhSMjdX4k1QqylFVmICkYFB8VtzxihGRidXvxfttQ=;
- b=S+neCCofqfgGd1hhGOISrodnMyh2TU/890o/cJKi57/dv6XtsWIynpu1kHaL8Tp+4q
- mQIsIL1ycLxOmU4FoYCco4ilA3zQlfLuPIJCy2iCYY33pnU3iMAxhqHkpNgySVLYBeKB
- F3Ikq87Hs3eweU4CnBurtrB/x3Z9kDEqoL60JMXfR9TZBQNo7OVpPIEFsAvP+R6C4ubB
- YoulmYIa0fJ1jqgTDBv4LRXRCJUyrti4KRzRMadwfyWmSl+SfX8EoGYCsEDdgt/n1xIO
- GwCWax1gV86Ro+so6OOegZkjSiicsyTWfCh7hmpIVKYw5Na8bS2y17/fkRTSSy5cPk9c
- BiJQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Jit/wPPIC3Z5mpQMOwthL3yURlI1RAkSsp9Z+Zu19vg=;
+ b=QQh1Pw8NDTP5yHJrlsTpmBm0SW23k/MOb/zgOApERwehNgz03o95YPcI/i9h538eva
+ tgOkaY5X1GOR5GerDuAiUhT6+Wd8mYOK7mdyFb88x/HNpXNTzTzyUVxbLX9ND29xP06P
+ 5Sc9VYjIGes8X1hKBhIzy+zNx+UsLsyxZ+FyY2EBTu9xAEjSMvK+/4N0owPUZIGNOKYE
+ fr5d0r2rrEe5sPQia9J42tytiHXznuYn5ym8rXWFvffTaee8hAMNwnrByW6MRhQBYUa7
+ h9rjRVEHcGEfqQMt49h7u93B/BeyWNgySSFQsTbjCOPwXH08pslzTYRLFZmtJmiST4Dr
+ SW0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=I7bhSMjdX4k1QqylFVmICkYFB8VtzxihGRidXvxfttQ=;
- b=ISRbQe8j2A4GgAP9x9L9RvAGnfZjjvmvjhD5XTB+1SGHV+mujPQ/I0UunvUpApcfTQ
- t763Cys0BBzLufg1yQMIvdpO2SFdLTBP8kSWXEZgA8rXKkzCumtKGeAa8ie8EvzN2CxA
- K5wYk0/umG4sz7Z9Cc+JZzrIOixw+ElQ5zCCZbmsvgbrWu45nRBVy9rKPmx2u/sUackJ
- gjNco6TRtLZ1CYFJUSZAd0gS2LgsjE3AJG3PuIWirXvpDXH4ef3Xt7/Hl6uMuaPI52p6
- H/ZD9b8hqHkEJJ3WXHJ1Q6BmA4iRlY6nNScF7MlXNDRDjPO/dUUCtllpaUn/+4x1MdBH
- 986g==
-X-Gm-Message-State: AOAM533zi0pkqCmXMJgakGiUgsgwyCZDPxPdSK+Dui51Xt0Lwqc5pGig
- 88FW6WnI+IgbVZonjXDfnFTGTCVIiau20w==
-X-Google-Smtp-Source: ABdhPJywj5phGqTJw/MOwy1YaO7jHycdED7VwOEkkGqG1J4wi45DV3Mp3lXyQRwbYeAAv0UeGIkSrw==
-X-Received: by 2002:a17:90a:4b8d:: with SMTP id
- i13mr2465019pjh.34.1621910047739; 
- Mon, 24 May 2021 19:34:07 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Jit/wPPIC3Z5mpQMOwthL3yURlI1RAkSsp9Z+Zu19vg=;
+ b=Vot/XhceVpAAnCk1ngsUkQsBAqRF03nNzy3TrlcgrAMxPS8DOSs2Tn5Yvsyoswkg/+
+ kn3oaeuat9XJ3XEbmOkWJo3iLQXG2Lvwg7ayB8nC9DZkVBuWvvtA5vOuV4XlV1wwhGOr
+ zWgrfwk70UNItEb2cKfiUpAGHuEg/Jn5lhuhThyAe6N3FjS+70Ie/YDI/ujK3wQ4QlxO
+ GQLdZErRWfeHZwAXbCYJpaUj2lYF5lNtlDwxuB9WS6ywoKMOeuIyzEHIgEkP4seDCdFH
+ 5ODiBzx1bgklS3K8FYd6uKCIvXvF6+1t0w8AsIuyLRqsSGwCkKAN33N0e1lEsxlFOiFI
+ kxEA==
+X-Gm-Message-State: AOAM533cNU6+ou6U5UzS2tz27OxUnw8RXkwY6asAIyU+0K5Tc/7YSUuz
+ notb9GZWwFU+wX07gaiuEphszAE7QTsROw==
+X-Google-Smtp-Source: ABdhPJxiN7uZHoPZsKnoYbCjhtdZH/+7OSgP77pvDFDhvlBxUsSx5WYwAycY8PWqWBbBRGqhjXGZwQ==
+X-Received: by 2002:a63:54d:: with SMTP id 74mr16707653pgf.169.1621911507298; 
+ Mon, 24 May 2021 19:58:27 -0700 (PDT)
 Received: from swjoshi-Precision-7920-Tower.hsd1.wa.comcast.net
  ([2601:600:8680:7470:ca3d:eee7:b3e3:ee1c])
- by smtp.gmail.com with ESMTPSA id u11sm11711107pfk.198.2021.05.24.19.34.07
+ by smtp.gmail.com with ESMTPSA id 66sm13058608pgj.9.2021.05.24.19.58.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 May 2021 19:34:07 -0700 (PDT)
+ Mon, 24 May 2021 19:58:26 -0700 (PDT)
 From: Swetha Joshi <swethajoshi139@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	Swetha Joshi <swethajoshi139@gmail.com>
-Subject: [PATCH_V2 2/2] Removed double declaration
-Date: Mon, 24 May 2021 19:33:46 -0700
-Message-Id: <20210525023346.3206241-2-swethajoshi139@gmail.com>
+Subject: [PATCH_V3] Adding ifdefs to call the respective routines only when
+ their configs are enabled
+Date: Mon, 24 May 2021 19:58:23 -0700
+Message-Id: <20210525025823.3208218-1-swethajoshi139@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210525023346.3206241-1-swethajoshi139@gmail.com>
-References: <20210525023346.3206241-1-swethajoshi139@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=swethajoshi139@gmail.com; helo=mail-pj1-x1033.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=swethajoshi139@gmail.com; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -78,38 +75,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 May 2021 02:34:11 -0000
+X-List-Received-Date: Tue, 25 May 2021 02:58:38 -0000
 
+Signed-off-by: Swetha Joshi <swethajoshi139@gmail.com>
 ---
- target/arm/kvm64.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ target/arm/kvm64.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 724ce78265..47a4d9d831 100644
+index dff85f6db9..47a4d9d831 100644
 --- a/target/arm/kvm64.c
 +++ b/target/arm/kvm64.c
-@@ -1405,8 +1405,8 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+@@ -1403,7 +1403,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+     hwaddr paddr;
+     Object *obj = qdev_get_machine();
      VirtMachineState *vms = VIRT_MACHINE(obj);
-     bool acpi_enabled = false;
- #ifdef CONFIG_ARM_VIRT
 -    bool acpi_enabled = virt_is_acpi_enabled(vms);
--    #endif /* CONFIG_ARM_VIRT */
++    bool acpi_enabled = false;
++#ifdef CONFIG_ARM_VIRT
 +    acpi_enabled = virt_is_acpi_enabled(vms);
 +#endif /* CONFIG_ARM_VIRT */
  
      assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
  
-@@ -1431,8 +1431,8 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+@@ -1426,12 +1429,13 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+              */
+             if (code == BUS_MCEERR_AR) {
                  kvm_cpu_synchronize_state(c);
- #ifdef CONFIG_ACPI_APEI
-                 if (acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
--                  error_report("failed to record the error");
--                  abort();
-+                    error_report("failed to record the error");
-+                    abort();
+-                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+-                    kvm_inject_arm_sea(c);
+-                } else {
++#ifdef CONFIG_ACPI_APEI
++                if (acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+                     error_report("failed to record the error");
+                     abort();
                  }
- #endif /* CONFIG_ACPI_APEI */
-                 kvm_inject_arm_sea(c);
++#endif /* CONFIG_ACPI_APEI */
++                kvm_inject_arm_sea(c);
+             }
+             return;
+         }
 -- 
 2.25.1
 
