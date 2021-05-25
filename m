@@ -1,73 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llMFx-0005k4-4x
-	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 21:53:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33662)
+	id 1llMta-0006MR-KF
+	for mharc-qemu-trivial@gnu.org; Mon, 24 May 2021 22:34:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41238)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llMFu-0005c5-VO
- for qemu-trivial@nongnu.org; Mon, 24 May 2021 21:53:14 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:51936)
+ (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
+ id 1llMtW-0006Hb-Uj; Mon, 24 May 2021 22:34:10 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:44706)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llMFt-0003qY-BG
- for qemu-trivial@nongnu.org; Mon, 24 May 2021 21:53:14 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id k5so15919011pjj.1
- for <qemu-trivial@nongnu.org>; Mon, 24 May 2021 18:53:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Z//ZdmQPdvPSCHUDAaZ6ZgNYu/ZvQQN6wVUK8vFK3VI=;
- b=EVYr7fX8soRG1lDRacDt9suAzoCzehnkl2btZKfvFI8jN3WLimHnx2xK7NRRzbP4kB
- 83wGgb1gzzwD/6L70/3Cjbl56KxMttADh6TJuMjNXb9e+UIlIx/Ran5fJKynB/Q9Abeg
- XP676olnF5Go/+oik5dXgXRd3eT8FWmPaQ6s6tSc8dEcuECmT97ObCPCgl828kXjMS40
- yt0WaJvuaifR3Q+O1XvppqmDZlQ74Sn7vsLDvjIdxxcWNnteYaTHSuEtahoQ8nXROOJN
- PjAqkUFR5YGVOTiR+dQsY2GEBmkmHZbKgNBXurdzpPG4u1m+jE23FqZ4AOV3QR37bJgw
- 1UCA==
+ (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
+ id 1llMtT-0002d5-GC; Mon, 24 May 2021 22:34:10 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id 29so10438871pgu.11;
+ Mon, 24 May 2021 19:34:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7UOaen0v9fpi+6ELlwd0Bu+zOepIwS7irPoRt0OH48U=;
+ b=DTodlyh54NPrGIYrXpCFw0MWXyLHHd2pD0qIDyXFPYK0EBADF3XavNv77Pe8CdJmr6
+ JL+UZeAvAG+t8yF+9rgZhXQl1n9k4O3lO0p1VZ+SOs/VVuU5IOD+8hIJZgdwU5LvAyki
+ P+bnh8M286XGcrsmn3E0gQj5iJ42oKkPlxaU1Hgn9HCDTNgIMZuJ2YtOsBhrtRjVryja
+ ZnBYIyVw9/uBJUKM+taZ/2RhbIbTbj2Yv3l/pFUjDslNUqI8+gbXMDhEYc3pdymN8rJ/
+ 6gRZ+uHFM8dTNdDOmLj3O9u9yKVQUa6JRkbXtJ9WcokP/kPVl6I9RRz5AQ+IqZcnKvP2
+ uW7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Z//ZdmQPdvPSCHUDAaZ6ZgNYu/ZvQQN6wVUK8vFK3VI=;
- b=jv1sOUunrFYWt5AkKypGBH5TN/+oOiUgPb35SG5he7coj0Mcs4ANHVUWfWhxxMU07k
- d7zRX80yvegl+64lL6vHCLvJCvnv618b9yi8jEpH8hjslHvhfiNT+aCNmZKpK8K1AbU7
- dCkp99T+bivmv6/fga6mROe6DKfhV6jdOngH9aQn5hXDLDx6u2M0RBKBs5R6aE6MNjWQ
- GIukdeeDNXPjqzXpRI+rGKVnNlrN5KQfnvRPeyt9ldBpDXi9Z4ynYRaCTlL/M/ebcQbX
- jdHf5B4akTiXbd+328fmDWfr98w4ZMrCfMOFli0uzagZk7x7q1/7Xe1NlR2a0FZ3wlJA
- 2a0w==
-X-Gm-Message-State: AOAM5309wZ43AO4127HugK9d/CbIS7jO5r9THRMWENDbNYWUF5BlXsB/
- 8Ukc064CAaLST44dNyUL96gZ+g==
-X-Google-Smtp-Source: ABdhPJyH6e7zLumN4tLPYzNm9ir6e/vQicnjYUOZ0YIi61z/t2f/jnBWIbCsxxW1FYNuXCAqOLPlmQ==
-X-Received: by 2002:a17:902:d711:b029:f0:b127:8105 with SMTP id
- w17-20020a170902d711b02900f0b1278105mr28514824ply.20.1621907589622; 
- Mon, 24 May 2021 18:53:09 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
- by smtp.gmail.com with ESMTPSA id
- g141sm10449701pfb.210.2021.05.24.18.53.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 May 2021 18:53:09 -0700 (PDT)
-Subject: Re: [PATCH] Adding ifdefs to call the respective routines only when
- their configs are enabled
-To: Swetha Joshi <swethajoshi139@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Swetha <swjoshi@microsoft.com>
-References: <20210524225608.3191809-1-swethajoshi139@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <8fbdab13-ed0e-047a-7a67-2e30471a46b1@linaro.org>
-Date: Mon, 24 May 2021 18:53:07 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ bh=7UOaen0v9fpi+6ELlwd0Bu+zOepIwS7irPoRt0OH48U=;
+ b=tZB76+K87NN+exhA0OLzFclYm2BfGZ/DOPmL5Zq/tb08G77nQEeDrXBqIVgCuHntH6
+ lOtlG4b7QxYUrXypKdQ47D/0SSkUTHQKzmAtZpkL/uBBRVaGOEhD7aj7q8x03Li8WbI7
+ eiBqn9MY6vUgHgCKd7mAyClmnKbyEZ/sK60vlKvFco5CYbbN1FpUYNAXX8e12LY2qKAW
+ Ydsp8V8ebHy84c/B/VmlF8SefBrobFubs5+I3UlC0AWoP8dLLhYKD6S0tMR9seARomZL
+ mTJgkWe6QWgiQZL+wb6PuARFykVsFyAlUGNf7MYe7JoyBzf2ZyH0lv2Rx3ontzLIseHo
+ Fjyg==
+X-Gm-Message-State: AOAM532DuSSvUIT/3YJI2memQSBmHxJcz4j2kHFDsn+BtzOGGRQ9hsT/
+ 2WmDWbXtBYBGB9Dyj/C5sxn8GirDmq9EbQ==
+X-Google-Smtp-Source: ABdhPJyAxYhxw/Ccn83rB4A8ONz6Kxkbw1xoggVO242umETppt7uyea9JhHnG32TVLLRf9pqAhsQwA==
+X-Received: by 2002:a65:4382:: with SMTP id m2mr16665530pgp.354.1621910043408; 
+ Mon, 24 May 2021 19:34:03 -0700 (PDT)
+Received: from swjoshi-Precision-7920-Tower.hsd1.wa.comcast.net
+ ([2601:600:8680:7470:ca3d:eee7:b3e3:ee1c])
+ by smtp.gmail.com with ESMTPSA id u11sm11711107pfk.198.2021.05.24.19.34.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 May 2021 19:34:02 -0700 (PDT)
+From: Swetha Joshi <swethajoshi139@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Swetha <swjoshi@microsoft.com>
+Subject: [PATCH_V2 1/2] Adding ifdefs to call the respective routines only
+ when their configs are enabled
+Date: Mon, 24 May 2021 19:33:45 -0700
+Message-Id: <20210525023346.3206241-1-swethajoshi139@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210524225608.3191809-1-swethajoshi139@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=swethajoshi139@gmail.com; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -82,25 +75,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 May 2021 01:53:15 -0000
+X-List-Received-Date: Tue, 25 May 2021 02:34:11 -0000
 
-On 5/24/21 3:56 PM, Swetha Joshi wrote:
-> From: Swetha <swjoshi@microsoft.com>
-> 
-> Signed-off-by: Swetha <swjoshi@microsoft.com>
+From: Swetha <swjoshi@microsoft.com>
 
-What are you trying to accomplish?
-That's what belongs in the commit message that you omitted.
+Signed-off-by: Swetha <swjoshi@microsoft.com>
+---
+ target/arm/kvm64.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-> +    bool acpi_enabled = false;
-> +#ifdef CONFIG_ARM_VIRT
->       bool acpi_enabled = virt_is_acpi_enabled(vms);
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index dff85f6db9..724ce78265 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -1403,7 +1403,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+     hwaddr paddr;
+     Object *obj = qdev_get_machine();
+     VirtMachineState *vms = VIRT_MACHINE(obj);
++    bool acpi_enabled = false;
++#ifdef CONFIG_ARM_VIRT
+     bool acpi_enabled = virt_is_acpi_enabled(vms);
++    #endif /* CONFIG_ARM_VIRT */
+ 
+     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+ 
+@@ -1426,12 +1429,13 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+              */
+             if (code == BUS_MCEERR_AR) {
+                 kvm_cpu_synchronize_state(c);
+-                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+-                    kvm_inject_arm_sea(c);
+-                } else {
+-                    error_report("failed to record the error");
+-                    abort();
++#ifdef CONFIG_ACPI_APEI
++                if (acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
++                  error_report("failed to record the error");
++                  abort();
+                 }
++#endif /* CONFIG_ACPI_APEI */
++                kvm_inject_arm_sea(c);
+             }
+             return;
+         }
+-- 
+2.25.1
 
-Of course this doesn't compile, having declared acpi_enabled twice.  So you 
-have clearly not tested this patch sufficiently.
-
-The cc to qemu-trivial is unwarranted.
-
-
-r~
 
