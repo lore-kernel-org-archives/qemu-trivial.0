@@ -1,77 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1llgy6-0006Pb-TC
-	for mharc-qemu-trivial@gnu.org; Tue, 25 May 2021 20:00:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36748)
+	id 1lltYI-0002LK-88
+	for mharc-qemu-trivial@gnu.org; Wed, 26 May 2021 09:26:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47696)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llgy5-0006PT-PW
- for qemu-trivial@nongnu.org; Tue, 25 May 2021 20:00:13 -0400
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:40886)
+ (Exim 4.90_1)
+ (envelope-from <bounce+e150fe.c2f2fe-qemu-trivial=nongnu.org@mg.ionbox.in>)
+ id 1lltDS-0006Fc-Hv
+ for qemu-trivial@nongnu.org; Wed, 26 May 2021 09:04:54 -0400
+Received: from so254-33.mailgun.net ([198.61.254.33]:56712)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1llgy4-00012e-0f
- for qemu-trivial@nongnu.org; Tue, 25 May 2021 20:00:13 -0400
-Received: by mail-pj1-x1036.google.com with SMTP id
- ml1-20020a17090b3601b029015f9b1ebce0so4891333pjb.5
- for <qemu-trivial@nongnu.org>; Tue, 25 May 2021 17:00:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=lVudDLAXdAZrOOsNaLJ0JzXaZV4JquBy8xBoufTYbO0=;
- b=Aextghinh2T1vwbAcktpRp33DeFE5MlQER5Zrp8d1Q36aLnjOugxuFJ1+Iwoj1yAGk
- h4PHSNhpX3r/SMLrUWANx/0eIthnIVlP6w6ywq3UzdIz9R2fiPkHpnTykPbm3Jqg9tQ2
- DzOykKbfuvTlhJPC48CCRKAcOLKpx/GAQ4y8VLJMFuLThTnuwES27yC91eQE/bSYZo6Y
- 1FEXEURVY6znlmeAa/mz2mS8l1wEU7JE5Y17CLSXIPOZTLXc4ElXh4sPfdRhYmzLKftq
- D9Vbem/WhQseF1ip/wSRGwiUlebe3uZKnpPcylP17sTmAwx7BlPSx2qM35ZEkGRdaGqO
- kGPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lVudDLAXdAZrOOsNaLJ0JzXaZV4JquBy8xBoufTYbO0=;
- b=Ad8yc3syi0cjA9ZLRwsgmRVQR8NISsmRP6caYFN+ay6anPAMRD3FmlKOvHlthV3h3j
- Fq6IkpS3cdO3t3xZ+XSl1IIdD5pIY+UR6LOK6S1J+57jAhNFPOlfALuKUPfWHDLQg63J
- mDeit9XNQem+SyMPh/w22jT7b/nSnWnL6+qFASERAmUPnJN9xbAtF1TF7CzFKzkWlDU+
- LquUkr3IDa47xfokx/kaTOKX2CYy94VA50lZPG6F/z8kW2sHSx6sa8UyaQ5sb7gGpWlX
- 2aRXJA9+1JuWkq3qpYmV0P83RytvTy4RaY8qLWJhKgYoaYCMzOr6ljW7O/6zSy2XIoTQ
- bD8Q==
-X-Gm-Message-State: AOAM530fkMhq5QjfAglFf0dUGKdAmHVsrgIaRZHvVIlDhlDGNI9OnZ0d
- 6UfqoE7tSJV2Nz+OQYTVE2gNmA==
-X-Google-Smtp-Source: ABdhPJwOFQokfpsfP6u68Cc1ll4jxVdQEftcOSnNiqUr/XhDPaKS32tFhtq/4ztGzSr1jMXiogaL6w==
-X-Received: by 2002:a17:902:7e06:b029:f2:14b5:aa08 with SMTP id
- b6-20020a1709027e06b02900f214b5aa08mr32854595plm.79.1621987210178; 
- Tue, 25 May 2021 17:00:10 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-70-228.tukw.qwest.net. [174.21.70.228])
- by smtp.gmail.com with ESMTPSA id
- y190sm15493993pgd.24.2021.05.25.17.00.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 May 2021 17:00:09 -0700 (PDT)
-Subject: Re: [PATCH] tcg/aarch64/tcg-target.c.inc: correction of rotate bit
- number
-To: Yasuo Kuwahara <kwhr00@gmail.com>, qemu-trivial@nongnu.org,
- qemu-devel <qemu-devel@nongnu.org>
-References: <CAHfJ0vSXnmnTLmT0kR=a8ACRdw_UsLYOhStzUzgVEHoH8U-7sA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <216dd18c-ebf9-e97c-5950-3acf44121e18@linaro.org>
-Date: Tue, 25 May 2021 17:00:08 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ (Exim 4.90_1)
+ (envelope-from <bounce+e150fe.c2f2fe-qemu-trivial=nongnu.org@mg.ionbox.in>)
+ id 1lltDK-0005uz-0b
+ for qemu-trivial@nongnu.org; Wed, 26 May 2021 09:04:54 -0400
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.ionbox.in; q=dns/txt;
+ s=mailo; t=1622034290; h=Content-Transfer-Encoding: MIME-Version:
+ Message-Id: Date: Subject: Cc: To: From: Sender;
+ bh=OLNcZu1I595pRaKIOEt4LMrGX1wH+bVkTb4YHXgQoQY=;
+ b=PrbGGtxFX1WrTA9ui95ZbH3P5m/j93A58aUkmUvqhnxdwTpsIXj2dvtGpTAu3ctn1QnDZIqQ
+ P+/O2zwzBu7XqQ1tTZER5Vff0eeO8aR0kqr2tbtFPooUuccqYQE9yOqA2orR3zJwW6lkRr+e
+ VUOZ7LumHtve+yFvQTEjzKMYnGpuH4A87yM3gDd1T9H8k+vEtPWuTfoJuU+d055MQeTZPpYy
+ Xo+E6Mjn12la75rn3q/yapWVU/xaSJ3Djmwlb1ILmAjkGjhEFIErI54VU/V+c6JZRpROJOQO
+ 7NVdNsEYt08yuV2FPctjZAvlqn4x/kxTu279GNqak+8iOY9z45uLBA==
+X-Mailgun-Sending-Ip: 198.61.254.33
+X-Mailgun-Sid: WyI5MTBmZiIsICJxZW11LXRyaXZpYWxAbm9uZ251Lm9yZyIsICJjMmYyZmUiXQ==
+Received: from mail.ionbox.in (id1.ionbox.in [117.53.47.8]) by
+ smtp-out-n03.prod.us-west-2.postgun.com with SMTP id
+ 60ae474867d156359a2cfd6d (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Wed, 26 May 2021 13:04:08 GMT
+Sender: j1=ionbox.in@mg.ionbox.in
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon)
+ with ESMTPSA id AD64A82CAC; Wed, 26 May 2021 20:04:03 +0700 (WIB)
+From: James <j1@ionbox.in>
+To: qemu-trivial@nongnu.org
+Cc: James <j1@ionbox.in>
+Subject: [PATCH] ui/gtk: Scale OpenGL content on GTK frontend on HiDPI
+Date: Wed, 26 May 2021 23:03:18 +1000
+Message-Id: <20210526130317.2903551-1-j1@ionbox.in>
 MIME-Version: 1.0
-In-Reply-To: <CAHfJ0vSXnmnTLmT0kR=a8ACRdw_UsLYOhStzUzgVEHoH8U-7sA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
+Received-SPF: pass client-ip=198.61.254.33;
+ envelope-from=bounce+e150fe.c2f2fe-qemu-trivial=nongnu.org@mg.ionbox.in;
+ helo=so254-33.mailgun.net
+X-Spam_score_int: 0
+X-Spam_score: -0.0
+X-Spam_bar: /
+X-Spam_report: (-0.0 / 5.0 requ) BAYES_20=-0.001, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 26 May 2021 09:26:23 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,74 +62,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 May 2021 00:00:14 -0000
+X-List-Received-Date: Wed, 26 May 2021 13:04:54 -0000
 
-On 5/25/21 2:46 AM, Yasuo Kuwahara wrote:
-> The last argument of tcg_out_extr() must be in the range 0-31 if ext==0.
-> 
-> Before the fix, when m==0 it becomes 32 and it crashes with an Illegal 
-> instruction in Apple Silicon.
-> 
-> After the fix, it will be 0. If m is in the range 1-31, it is the same as before.
-> 
-> 
-> Signed-off-by: Yasuo Kuwahara <kwhr00@gmail.com <mailto:kwhr00@gmail.com>>
-> 
-> ---
-> 
-> tcg/aarch64/tcg-target.c.inc | 5 ++---
-> 
-> 1 file changed, 2 insertions(+), 3 deletions(-)
+This patch will make Qemu's GTK frontend scales the rendered OpenGL content
+by an integer scaling factor given by GDK. Without this patch, guest's
+content will be rendered at bottom left corner when both HiDPI scaling and
+OpenGL is enabled.
 
-(1) All patches go to qemu-devel, as per
-     https://wiki.qemu.org/Contribute/SubmitAPatch
-     Many maintainers including myself don't monitor qemu-trivial.
+Signed-off-by: James <j1@ionbox.in>
+---
+ ui/gtk-egl.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-(2) Something is wrong with your mailer and it is adding extra
-     newlines, which means the patch does not apply.  However,
-     because the patch is so simple, I have applied it by hand.
-
-Queued to tcg-next, thanks.
-
-
-r~
-
-> 
-> 
-> diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
-> 
-> index f07ba98aa4..5bd366f2d4 100644
-> 
-> --- a/tcg/aarch64/tcg-target.c.inc
-> 
-> +++ b/tcg/aarch64/tcg-target.c.inc
-> 
-> @@ -1291,9 +1291,8 @@ static inline void tcg_out_rotr(TCGContext *s, TCGType ext,
-> 
-> static inline void tcg_out_rotl(TCGContext *s, TCGType ext,
-> 
-> TCGReg rd, TCGReg rn, unsigned int m)
-> 
-> {
-> 
-> -int bits = ext ? 64 : 32;
-> 
-> -int max = bits - 1;
-> 
-> -tcg_out_extr(s, ext, rd, rn, rn, bits - (m & max));
-> 
-> +int max = ext ? 63 : 31;
-> 
-> +tcg_out_extr(s, ext, rd, rn, rn, -m & max);
-> 
-> }
-> 
-> static inline void tcg_out_dep(TCGContext *s, TCGType ext, TCGReg rd,
-> 
-> --
-> 
-> 2.24.3
-> 
-> 
+diff --git a/ui/gtk-egl.c b/ui/gtk-egl.c
+index 2a2e6d3a17..a6b24c1e2d 100644
+--- a/ui/gtk-egl.c
++++ b/ui/gtk-egl.c
+@@ -62,7 +62,7 @@ void gd_egl_init(VirtualConsole *vc)
+ void gd_egl_draw(VirtualConsole *vc)
+ {
+     GdkWindow *window;
+-    int ww, wh;
++    int ww, wh, wsf;
+ 
+     if (!vc->gfx.gls) {
+         return;
+@@ -71,6 +71,7 @@ void gd_egl_draw(VirtualConsole *vc)
+     window = gtk_widget_get_window(vc->gfx.drawing_area);
+     ww = gdk_window_get_width(window);
+     wh = gdk_window_get_height(window);
++    wsf = gdk_window_get_scale_factor(window);
+ 
+     if (vc->gfx.scanout_mode) {
+         gd_egl_scanout_flush(&vc->gfx.dcl, 0, 0, vc->gfx.w, vc->gfx.h);
+@@ -84,7 +85,7 @@ void gd_egl_draw(VirtualConsole *vc)
+         eglMakeCurrent(qemu_egl_display, vc->gfx.esurface,
+                        vc->gfx.esurface, vc->gfx.ectx);
+ 
+-        surface_gl_setup_viewport(vc->gfx.gls, vc->gfx.ds, ww, wh);
++        surface_gl_setup_viewport(vc->gfx.gls, vc->gfx.ds, ww * wsf, wh * wsf);
+         surface_gl_render_texture(vc->gfx.gls, vc->gfx.ds);
+ 
+         eglSwapBuffers(qemu_egl_display, vc->gfx.esurface);
+-- 
+2.25.1
 
 
