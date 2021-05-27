@@ -1,54 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lmB09-00035I-0e
-	for mharc-qemu-trivial@gnu.org; Thu, 27 May 2021 04:04:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56626)
+	id 1lmD5L-0003bL-Kb
+	for mharc-qemu-trivial@gnu.org; Thu, 27 May 2021 06:17:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58766)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <bounce+e150fe.c2f2fe-qemu-trivial=nongnu.org@mg.ionbox.in>)
- id 1lmB07-00033A-Fp
- for qemu-trivial@nongnu.org; Thu, 27 May 2021 04:04:19 -0400
-Received: from m43-9.mailgun.net ([69.72.43.9]:45922)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lmD59-0003Uu-L2
+ for qemu-trivial@nongnu.org; Thu, 27 May 2021 06:17:40 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:36663)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1)
- (envelope-from <bounce+e150fe.c2f2fe-qemu-trivial=nongnu.org@mg.ionbox.in>)
- id 1lmB02-0002x5-OQ
- for qemu-trivial@nongnu.org; Thu, 27 May 2021 04:04:18 -0400
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.ionbox.in; q=dns/txt;
- s=mailo; t=1622102655; h=Content-Transfer-Encoding: MIME-Version:
- Message-Id: Date: Subject: Cc: To: From: Sender;
- bh=MGkbXwPhQIpmYO1AY/Pk+zemXAjZ1PHMv4PjKMdiMwc=;
- b=BFerZXhtsbLN4/Qe1AegiRRnJC96EgRYc2U85gITAPkyj5p2uz1wi2FKcKSvGqNHpZIV7TCL
- 4v/4KY3O6XQ408zdZRtB1uhORQfoNaruyIWcdTHCRsFNmjT55ONveYUEkFMPPQJtbF6amyjU
- sTr8G3G/1s4JaThSxju4hk5zVLlz+ggHK52+JlhZF4Fja5PB9d1Tq1yzZwbB7DTLU3H2Iwnn
- duOk8Wb1NMIiB/I2L5F0BzlwdGCYWgcZnUezTyvO83IGf7997jtS5o6PP+osYv0UT43VJ8YT
- ozjuvC5qqGUWieXess/xHLClE1MiAHOLNq8jta17USQPCCDx4pgbyw==
-X-Mailgun-Sending-Ip: 69.72.43.9
-X-Mailgun-Sid: WyI5MTBmZiIsICJxZW11LXRyaXZpYWxAbm9uZ251Lm9yZyIsICJjMmYyZmUiXQ==
-Received: from mail.ionbox.in (id1.ionbox.in [117.53.47.8]) by
- smtp-out-n03.prod.us-east-1.postgun.com with SMTP id
- 60af52698dd30e785f77e200 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
- Thu, 27 May 2021 08:03:53 GMT
-Sender: j1=ionbox.in@mg.ionbox.in
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon)
- with ESMTPSA id AAB0982CC9; Thu, 27 May 2021 15:03:46 +0700 (WIB)
-From: James <j1@ionbox.in>
-To: qemu-trivial@nongnu.org
-Cc: James <j1@ionbox.in>
-Subject: [PATCH] ui/gtk: Add an option to disable automatic guest resize
-Date: Thu, 27 May 2021 18:02:45 +1000
-Message-Id: <20210527080244.3160053-1-j1@ionbox.in>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lmD4z-0000pH-0r
+ for qemu-trivial@nongnu.org; Thu, 27 May 2021 06:17:39 -0400
+Received: by mail-ej1-x634.google.com with SMTP id e12so714703ejt.3
+ for <qemu-trivial@nongnu.org>; Thu, 27 May 2021 03:17:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=VSTSTaRAyRm4bQIpYIBj7B8Ir3wehYFEmAzYB6Ak1+g=;
+ b=KXErUrG6mMI5qL36h10PGqqPc044jcxv0YwpNcC/wOMxVI/f5DvU50Ot+NnK/ausPv
+ RQcu5+wtB8jbZEQGn3INuhS5nrOisghaiEP2tGWy9zxiH7gCq+hbns53aKnFoRDQrjkY
+ d0H6hIJiX+hbaYa6p5803pNhZ9G8B750TS47tK16R6oO/b0udZYW8KA7CE7twwxBdIUA
+ XpcyUGjlMovjtDjC49+wvqMKHgBpv7fH+/p174WHbe6axPLwr1v7E6exj+pEBj5UW/7d
+ k5vbpLv5w3/L/sVHX3IVpQPj+az06R2CQs/Lm75uAeuCjMBt66WUiUtJAyU01Qt1i+XS
+ Nw4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=VSTSTaRAyRm4bQIpYIBj7B8Ir3wehYFEmAzYB6Ak1+g=;
+ b=X5Kre9tvn4FOPgWO5VYseUEoa8YhyteEDgHljiwuCc9hLKeMfpguiis/awFOH5NBzc
+ dN4U6w4QBFJ83MWOlTLD/X9Z3lPpF56oluy7BO2P9iEXDxGfTHGFgN5xt+wVZZ2brGHq
+ B1wR871z5vZgeYOODYRTagaXuXeRWwpzMlV4saxWYaoEw8U0lFUeMUqxRDGii56fRgn1
+ bJP20AcbTIUy47CRM3dvsEgdYUP4LpHVYzeah4EkOyxZSOash6hCNwaWYS4AT8JT7lj3
+ w4QB5nbLJYhYZdRn9i4jwTS2EpN1UGPS27G99STXs/HDNK/BJ3RespgorZLfFNo7nqiu
+ IYeA==
+X-Gm-Message-State: AOAM530RaCmfLs86OxH9ryswx4XWhweqF+ZBjVP604SYKAQbvFY6NPR4
+ jkZhWawXYWezCsdXlLVQ+5pi2Ksdb3HCxYXHx0SOxA==
+X-Google-Smtp-Source: ABdhPJy/KhsI4FYe1CZrdR6P1RZin3+aCjSe62t3qSNnzQYkRs3/o40J2qJHnAZNH7TOaZEnu13Knt2YkDA7QPEaP5E=
+X-Received: by 2002:a17:906:9bd6:: with SMTP id
+ de22mr2968148ejc.382.1622110641569; 
+ Thu, 27 May 2021 03:17:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
-Received-SPF: pass client-ip=69.72.43.9;
- envelope-from=bounce+e150fe.c2f2fe-qemu-trivial=nongnu.org@mg.ionbox.in;
- helo=m43-9.mailgun.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20210524024655.11115-1-someguy@effective-light.com>
+In-Reply-To: <20210524024655.11115-1-someguy@effective-light.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 May 2021 11:16:56 +0100
+Message-ID: <CAFEAcA_Z-fe1pT8=-TCFxVkpBpXpKXD+vKi1i=CBFLg4ANYE1A@mail.gmail.com>
+Subject: Re: [PATCH] linux-user: make process_pending_signals thread-safe
+To: Hamza Mahfooz <someguy@effective-light.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,83 +71,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 May 2021 08:04:19 -0000
+X-List-Received-Date: Thu, 27 May 2021 10:17:40 -0000
 
-This patch added an option in the GTK frontend to disable automatic guest
-resize when the host window is resized. The purpose of this is to prevent
-resolution change loop when zooming in and/or changing guest resolution.
+On Mon, 24 May 2021 at 03:48, Hamza Mahfooz <someguy@effective-light.com> wrote:
+>
+> Use pthread_sigmask instead of sigprocmask inside process_pending_signals
+> to ensure that race conditions aren't possible.
+>
+> Signed-off-by: Hamza Mahfooz <someguy@effective-light.com>
+> ---
+>  linux-user/signal.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/linux-user/signal.c b/linux-user/signal.c
+> index 7eecec46c4..81ff753c01 100644
+> --- a/linux-user/signal.c
+> +++ b/linux-user/signal.c
+> @@ -1005,9 +1005,8 @@ void process_pending_signals(CPUArchState *cpu_env)
+>      sigset_t *blocked_set;
+>
+>      while (qatomic_read(&ts->signal_pending)) {
+> -        /* FIXME: This is not threadsafe.  */
+>          sigfillset(&set);
+> -        sigprocmask(SIG_SETMASK, &set, 0);
+> +        pthread_sigmask(SIG_SETMASK, &set, 0);
 
-This patch does not include an option to disable automatic guest resize from
-command line, but I can add one if desired. As a result, I've set the option
-to be enabled by default.
+We use sigprocmask() in plenty more places than this one in linux-user,
+so it seems unlikely that the FIXME comment is simply noting that we've
+used sigprocmask() rather than pthread_sigmask(). Indeed, the comment
+dates back to before this function called sigprocmask() at all (the
+sigprocmask() call was added in commit 3d3efba020da which just preserves
+the FIXME comment.
 
-Signed-off-by: James <j1@ionbox.in>
----
- include/ui/gtk.h |  1 +
- ui/gtk.c         | 21 +++++++++++++++++----
- 2 files changed, 18 insertions(+), 4 deletions(-)
+So I think we cannot remove this FIXME comment like this: we need to
+more carefully analyze the code/dig through the history to identify
+what race condition/threadsafety issue the comment is attempting to
+point out, because it's not "we didn't use pthread_sigmask()".
 
-diff --git a/include/ui/gtk.h b/include/ui/gtk.h
-index 9516670ebc..6d61543226 100644
---- a/include/ui/gtk.h
-+++ b/include/ui/gtk.h
-@@ -111,6 +111,7 @@ struct GtkDisplayState {
-     GtkWidget *zoom_fit_item;
-     GtkWidget *grab_item;
-     GtkWidget *grab_on_hover_item;
-+    GtkWidget *update_on_resize_item;
- 
-     int nb_vcs;
-     VirtualConsole vc[MAX_VCS];
-diff --git a/ui/gtk.c b/ui/gtk.c
-index 98046f577b..f1a2b67906 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -671,12 +671,15 @@ static gboolean gd_window_close(GtkWidget *widget, GdkEvent *event,
- 
- static void gd_set_ui_info(VirtualConsole *vc, gint width, gint height)
- {
-+    GtkDisplayState *s = vc->s;
-     QemuUIInfo info;
- 
--    memset(&info, 0, sizeof(info));
--    info.width = width;
--    info.height = height;
--    dpy_set_ui_info(vc->gfx.dcl.con, &info);
-+    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(s->update_on_resize_item))) {
-+        memset(&info, 0, sizeof(info));
-+        info.width = width;
-+        info.height = height;
-+        dpy_set_ui_info(vc->gfx.dcl.con, &info);
-+    }
- }
- 
- #if defined(CONFIG_OPENGL)
-@@ -2114,6 +2117,12 @@ static GtkWidget *gd_create_menu_view(GtkDisplayState *s)
-     separator = gtk_separator_menu_item_new();
-     gtk_menu_shell_append(GTK_MENU_SHELL(view_menu), separator);
- 
-+    s->update_on_resize_item = gtk_check_menu_item_new_with_mnemonic(_("Update Guest Resolution On Resize"));
-+    gtk_menu_shell_append(GTK_MENU_SHELL(view_menu), s->update_on_resize_item);
-+
-+    separator = gtk_separator_menu_item_new();
-+    gtk_menu_shell_append(GTK_MENU_SHELL(view_menu), separator);
-+
-     /* gfx */
-     for (vc = 0;; vc++) {
-         con = qemu_console_lookup_by_index(vc);
-@@ -2267,6 +2276,10 @@ static void gtk_display_init(DisplayState *ds, DisplayOptions *opts)
-         opts->u.gtk.grab_on_hover) {
-         gtk_menu_item_activate(GTK_MENU_ITEM(s->grab_on_hover_item));
-     }
-+
-+    /* Follow old behaviour. */
-+    gtk_menu_item_activate(GTK_MENU_ITEM(s->update_on_resize_item));
-+
-     gd_clipboard_init(s);
- }
- 
--- 
-2.25.1
+(As it happens, on Linux/glibc sigprocmask() is implemented as simply
+calling pthread_sigmask():
+https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/sigprocmask.c;h=9dfd8076d12aff9014fa40f7e93111760a1a8bad;hb=HEAD
+If we do want to change from sigprocmask() to pthread_sigmask(), we
+should be consistent about doing that, not just change this call only.)
 
+thanks
+-- PMM
 
