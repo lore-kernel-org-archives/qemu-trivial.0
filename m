@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lmbwC-00084T-1e
+	id 1lmbwC-00084q-7p
 	for mharc-qemu-trivial@gnu.org; Fri, 28 May 2021 08:50:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45728)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45740)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luis.pires@eldorado.org.br>)
- id 1lmbw4-00082l-Sk; Fri, 28 May 2021 08:49:57 -0400
+ id 1lmbw7-00083I-03
+ for qemu-trivial@nongnu.org; Fri, 28 May 2021 08:49:59 -0400
 Received: from [201.28.113.2] (port=24622 helo=outlook.eldorado.org.br)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luis.pires@eldorado.org.br>)
- id 1lmbw3-00007X-3Z; Fri, 28 May 2021 08:49:56 -0400
+ (envelope-from <luis.pires@eldorado.org.br>) id 1lmbw5-00007X-J3
+ for qemu-trivial@nongnu.org; Fri, 28 May 2021 08:49:58 -0400
 Received: from power9a ([10.10.71.235]) by outlook.eldorado.org.br with
- Microsoft SMTPSVC(8.5.9600.16384); Fri, 28 May 2021 09:35:43 -0300
+ Microsoft SMTPSVC(8.5.9600.16384); Fri, 28 May 2021 09:32:43 -0300
 Received: from eldorado.org.br (unknown [10.10.70.45])
- by power9a (Postfix) with ESMTP id 0C5918013E3;
- Fri, 28 May 2021 09:35:43 -0300 (-03)
+ by power9a (Postfix) with ESMTP id 1B6098013E3;
+ Fri, 28 May 2021 09:32:43 -0300 (-03)
 From: Luis Pires <luis.pires@eldorado.org.br>
 To: qemu-devel@nongnu.org
 Cc: alex.bennee@linaro.org, qemu-trivial@nongnu.org,
  Luis Pires <luis.pires@eldorado.org.br>
-Subject: [PATCH RESEND 1/1] docs/devel: Add a single top-level header to
- MTTCG's doc
-Date: Fri, 28 May 2021 09:35:26 -0300
-Message-Id: <20210528123526.144065-1-luis.pires@eldorado.org.br>
+Subject: [PATCH 1/2] docs/devel: Add a single top-level header to MTTCG's doc
+Date: Fri, 28 May 2021 09:32:30 -0300
+Message-Id: <20210528123230.143901-1-luis.pires@eldorado.org.br>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-OriginalArrivalTime: 28 May 2021 12:35:43.0216 (UTC)
- FILETIME=[F9986F00:01D753BD]
+X-OriginalArrivalTime: 28 May 2021 12:32:43.0229 (UTC)
+ FILETIME=[8E5098D0:01D753BD]
 X-Host-Lookup-Failed: Reverse DNS lookup failed for 201.28.113.2 (failed)
 Received-SPF: pass client-ip=201.28.113.2;
  envelope-from=luis.pires@eldorado.org.br; helo=outlook.eldorado.org.br
