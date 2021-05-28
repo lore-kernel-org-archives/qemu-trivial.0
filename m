@@ -1,75 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lmcz5-0003m1-59
-	for mharc-qemu-trivial@gnu.org; Fri, 28 May 2021 09:57:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60138)
+	id 1lme2Y-0002ZD-II
+	for mharc-qemu-trivial@gnu.org; Fri, 28 May 2021 11:04:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52086)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
- id 1lmWc3-0005hX-Dr; Fri, 28 May 2021 03:08:55 -0400
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743]:45741)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1lme2X-0002Xw-69
+ for qemu-trivial@nongnu.org; Fri, 28 May 2021 11:04:45 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:35547)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
- id 1lmWc1-0004Oi-NZ; Fri, 28 May 2021 03:08:55 -0400
-Received: by mail-qk1-x743.google.com with SMTP id i5so3190751qkf.12;
- Fri, 28 May 2021 00:08:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=mHcZc0fhbo/ogWUziOMjVXe+punIc2PZi7tzwZxT/8A=;
- b=keBwd0DYQHhRUxcEUpDxBy0+CJZC4xwuaEogJaOZ39W4PnpesLo7GUA3iNVBLVenaa
- gG+dFs9wt08UOwsf8lR7sQOQWjEv2pqcRXsnrbiUls8VkIKUDbLc86mkR7QNTmShAmSY
- ITHnbdyBVfU1wZ0hzNkGIrnAHTqMbTSO5ZnyCyrNrOXMc/8XuRu3Acq0gBdu3q22Jl6g
- G7taXLYHB1nOPLgILM8CzFPUWZzS4PjtQF3co861aDuqnErdd6DcwcQ2VMoWEocCYV2Y
- 3wp2faqHsojDAsK3bqz+LLcNeBhLaAzoTyEeuFk6sGp9lTkbQhz5KDNd+X8sAZDa6PBS
- Asdw==
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1lme2V-0003bQ-Gv
+ for qemu-trivial@nongnu.org; Fri, 28 May 2021 11:04:44 -0400
+Received: by mail-wr1-x432.google.com with SMTP id m18so3634786wrv.2
+ for <qemu-trivial@nongnu.org>; Fri, 28 May 2021 08:04:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=7MBybLcU/BPuXa38tVgLj7WefWdY7dawobNrCW9qb7o=;
+ b=h7VO991rHWGQGV8yfJoOHdFRH8wU0+3AFeIL1Zhce+XOq+gW4FdIkAcz+hcLG93z49
+ ld0e8WwjMHSB4/FSImilVTQvlGQqQJ7N/EXMd9+1bBfRhHocb1bO9M+UhTP0b6QxVTLy
+ B/ALMHnlglaKhg1FJv1YxH20FKxWhi+2QFeRc90Y/tRXjdwVTIyZZ0DbCK5hhmN+ohAI
+ oEskJQvTpBaaf70HbTiIRtfX5RUTV8zTod3+SOPxNqTg3sUZZRX86jWYxSo81t0wzj9z
+ EFsYJpQrK0PUxdRJuDcCBKH6Bdo9L0hErzNu1vmbDA5T7YZohYwdEVYNEmrkuH4GOLF/
+ c20w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=mHcZc0fhbo/ogWUziOMjVXe+punIc2PZi7tzwZxT/8A=;
- b=s8ywyhI3rPRPN4Rx1wnM1nphWWnd+mGs3RN0ryiiEFYzpC692aSuqSo731s6B1DO0S
- yqTY5wRH+bX8l+JCodCX33+OZeHDHStjsGxxZMkknuEL+VY38jSzK6XrjAcP1KgPiuWv
- Y/pvnsW5vka2v3M/mp7RdT07zPEXAr/X3Sg75pn06RX/2FPH4u8Eh7g0+EgX5M33g4St
- 89U8j5uryfRhSa2oXDxc2oXszObwwrehEG0BMPfF/paNZ8yXZEk//OgEHo4Xiwzl3y05
- 98pQZuiY/32iGLI4Yew3ZEPwsNIwFCnVP0Qu2Bi7GF7lm+UuzhNX1JkCVPshP/B4VZja
- ODEQ==
-X-Gm-Message-State: AOAM532rQG3dwfxqbisar10RViglsPQMPTeckjwvlW3wH68bL9xw5cDq
- KLmNQpOrdonvxpOtTe/3DPoHvmvEVFc1AQjv+as=
-X-Google-Smtp-Source: ABdhPJx/m28F1ILvSjlej//2LcLmjnSTaAgsg5DmOzlI1JYmko3SUfCD0i3KFwglMHwIBviI1/eG//WKdihkUU+nWk8=
-X-Received: by 2002:a37:a6c2:: with SMTP id p185mr2502460qke.191.1622185731762; 
- Fri, 28 May 2021 00:08:51 -0700 (PDT)
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=7MBybLcU/BPuXa38tVgLj7WefWdY7dawobNrCW9qb7o=;
+ b=CVs5DZlaP2hwlDoHePP8HMKUgp7inqp5O5Limzorn1eyf32dYkt5MJknStHzdMAMHV
+ rxy4J7MknmLhKsfoyu/aPFCiqaYRX5f6dj/yKdCHT6iIsA0kzB3OKRRqg4XMzz6uCi+c
+ kJBhNuYMwrLTQYd520JDaeXsrD9HT/02SfyVP1f43eb1TgDBwXtssmF6lZBPbgNw5m3Z
+ NH/Iq7/NVWrqQxWRLfBmIYY51P9WTKlEtuo/CQH8tp7R1RT1y4tc6fYGaQittC6kUjmS
+ nN/sHteMW+hgu/F2O9hELMSocEZHjKFhXeRS/p8odawyfsq44asY7/pUeKVcbDzT54cD
+ pMNg==
+X-Gm-Message-State: AOAM531oGl65Rw7exnvA0+d2z2szXlOPCDAW2l1Y/0iq3iN7yhI7PlKw
+ hl+QfQVl6lxhWpQXuBR0cxkNtA==
+X-Google-Smtp-Source: ABdhPJzJ1Kd0IK5p4xeyJ1aqPE8yV/4hh6IUiLDrtK8Sqo0EzVcWX+FBRUHv93EsnfnJgbKJ9ltBKg==
+X-Received: by 2002:adf:ec48:: with SMTP id w8mr9044130wrn.176.1622214280407; 
+ Fri, 28 May 2021 08:04:40 -0700 (PDT)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id l8sm4429979wrf.0.2021.05.28.08.04.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 May 2021 08:04:39 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 880601FF7E;
+ Fri, 28 May 2021 16:04:38 +0100 (BST)
+References: <20210528123526.144065-1-luis.pires@eldorado.org.br>
+User-agent: mu4e 1.5.13; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Luis Pires <luis.pires@eldorado.org.br>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH RESEND 1/1] docs/devel: Add a single top-level header to
+ MTTCG's doc
+Date: Fri, 28 May 2021 16:04:24 +0100
+In-reply-to: <20210528123526.144065-1-luis.pires@eldorado.org.br>
+Message-ID: <87k0ni292x.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
- <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
- <CAFEAcA8RbVafdjn2hkXifAPUF=wxZup20PqPcRpQ1ivtnWCxww@mail.gmail.com>
- <CALf2nm+LFqM2=vDs8=YfyxQSUT-0xxaCiVmcQzrKoOa+zaTtdg@mail.gmail.com>
- <CAFEAcA-oX0JR80UYzYKvczHsfxWG6oH3Pg4pbM6ByDe57XEHHw@mail.gmail.com>
- <CALf2nmKhPaWJa944dR+kFAQ1hCLXF0XPwXaHTqJQ-C6EW7ACKg@mail.gmail.com>
- <CAFEAcA9E4s3dST0GJkdg24DDAn90WU1FEmXwoKD6oQmNSB1vVA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9E4s3dST0GJkdg24DDAn90WU1FEmXwoKD6oQmNSB1vVA@mail.gmail.com>
-From: Dongjiu Geng <gengdongjiu1@gmail.com>
-Date: Fri, 28 May 2021 15:08:41 +0800
-Message-ID: <CABSBigR1L9sE36eYA0Mq4smx1E9A4umTOKTe_x97foSMkryRnw@mail.gmail.com>
-Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
- when their configs are enabled
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Swetha Joshi <swethajoshi139@gmail.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::743;
- envelope-from=gengdongjiu1@gmail.com; helo=mail-qk1-x743.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 28 May 2021 09:57:06 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,31 +80,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 May 2021 07:08:55 -0000
+X-List-Received-Date: Fri, 28 May 2021 15:04:45 -0000
 
-Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2021=E5=B9=B45=E6=9C=8827=
-=E6=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8A=E5=8D=882:19=E5=86=99=E9=81=93=EF=BC=
-=9A
->
-> On Wed, 26 May 2021 at 18:32, Swetha Joshi <swethajoshi139@gmail.com> wro=
-te:
-> >
-> > Hello,
-> >
-> > One of the qemu machines we use has KVM enabled, but we don't want the =
-CONFIG_ARM_VIRT enabled as it pulls in emulation of a variety of physical h=
-ardware that we don't need. The compilation errors I mentioned are not in t=
-he qemu mainline per say but we see them in one of the qemu derived machine=
-s we use.
->
-> Sure, but unless you can give me a recipe for reproducing the
-> build failure in mainline I can't really help...
 
-Hi Swetha=EF=BC=8C
-     Yes,  Can you give a method that how to reproduce the build
-failure issues? Thanks
+Luis Pires <luis.pires@eldorado.org.br> writes:
 
+> Without a single top-level header in the .rst file, the index ended
+> up linking to all of the top-level headers separately. Now the index
+> links to the top-level header at the beginning of the document and
+> any inner headers are correctly linked as sub-items in the index.
 >
-> thanks
-> -- PMM
+> Signed-off-by: Luis Pires <luis.pires@eldorado.org.br>
+
+Queued to testing/next for want of a better tree. thanks.
+
+> ---
+>  docs/devel/multi-thread-tcg.rst | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tc=
+g.rst
+> index 92a9eba13c..5b446ee08b 100644
+> --- a/docs/devel/multi-thread-tcg.rst
+> +++ b/docs/devel/multi-thread-tcg.rst
+> @@ -4,8 +4,9 @@
+>    This work is licensed under the terms of the GNU GPL, version 2 or
+>    later. See the COPYING file in the top-level directory.
+>=20=20
+> -Introduction
+> -=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> +Multi-threaded TCG
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>=20=20
+>  This document outlines the design for multi-threaded TCG (a.k.a MTTCG)
+>  system-mode emulation. user-mode emulation has always mirrored the
+
+
+--=20
+Alex Benn=C3=A9e
 
