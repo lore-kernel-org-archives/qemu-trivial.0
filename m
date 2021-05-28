@@ -1,41 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lmbwC-00084q-7p
-	for mharc-qemu-trivial@gnu.org; Fri, 28 May 2021 08:50:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45740)
+	id 1lmcz5-0003m1-59
+	for mharc-qemu-trivial@gnu.org; Fri, 28 May 2021 09:57:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luis.pires@eldorado.org.br>)
- id 1lmbw7-00083I-03
- for qemu-trivial@nongnu.org; Fri, 28 May 2021 08:49:59 -0400
-Received: from [201.28.113.2] (port=24622 helo=outlook.eldorado.org.br)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luis.pires@eldorado.org.br>) id 1lmbw5-00007X-J3
- for qemu-trivial@nongnu.org; Fri, 28 May 2021 08:49:58 -0400
-Received: from power9a ([10.10.71.235]) by outlook.eldorado.org.br with
- Microsoft SMTPSVC(8.5.9600.16384); Fri, 28 May 2021 09:32:43 -0300
-Received: from eldorado.org.br (unknown [10.10.70.45])
- by power9a (Postfix) with ESMTP id 1B6098013E3;
- Fri, 28 May 2021 09:32:43 -0300 (-03)
-From: Luis Pires <luis.pires@eldorado.org.br>
-To: qemu-devel@nongnu.org
-Cc: alex.bennee@linaro.org, qemu-trivial@nongnu.org,
- Luis Pires <luis.pires@eldorado.org.br>
-Subject: [PATCH 1/2] docs/devel: Add a single top-level header to MTTCG's doc
-Date: Fri, 28 May 2021 09:32:30 -0300
-Message-Id: <20210528123230.143901-1-luis.pires@eldorado.org.br>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
+ id 1lmWc3-0005hX-Dr; Fri, 28 May 2021 03:08:55 -0400
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743]:45741)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
+ id 1lmWc1-0004Oi-NZ; Fri, 28 May 2021 03:08:55 -0400
+Received: by mail-qk1-x743.google.com with SMTP id i5so3190751qkf.12;
+ Fri, 28 May 2021 00:08:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=mHcZc0fhbo/ogWUziOMjVXe+punIc2PZi7tzwZxT/8A=;
+ b=keBwd0DYQHhRUxcEUpDxBy0+CJZC4xwuaEogJaOZ39W4PnpesLo7GUA3iNVBLVenaa
+ gG+dFs9wt08UOwsf8lR7sQOQWjEv2pqcRXsnrbiUls8VkIKUDbLc86mkR7QNTmShAmSY
+ ITHnbdyBVfU1wZ0hzNkGIrnAHTqMbTSO5ZnyCyrNrOXMc/8XuRu3Acq0gBdu3q22Jl6g
+ G7taXLYHB1nOPLgILM8CzFPUWZzS4PjtQF3co861aDuqnErdd6DcwcQ2VMoWEocCYV2Y
+ 3wp2faqHsojDAsK3bqz+LLcNeBhLaAzoTyEeuFk6sGp9lTkbQhz5KDNd+X8sAZDa6PBS
+ Asdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=mHcZc0fhbo/ogWUziOMjVXe+punIc2PZi7tzwZxT/8A=;
+ b=s8ywyhI3rPRPN4Rx1wnM1nphWWnd+mGs3RN0ryiiEFYzpC692aSuqSo731s6B1DO0S
+ yqTY5wRH+bX8l+JCodCX33+OZeHDHStjsGxxZMkknuEL+VY38jSzK6XrjAcP1KgPiuWv
+ Y/pvnsW5vka2v3M/mp7RdT07zPEXAr/X3Sg75pn06RX/2FPH4u8Eh7g0+EgX5M33g4St
+ 89U8j5uryfRhSa2oXDxc2oXszObwwrehEG0BMPfF/paNZ8yXZEk//OgEHo4Xiwzl3y05
+ 98pQZuiY/32iGLI4Yew3ZEPwsNIwFCnVP0Qu2Bi7GF7lm+UuzhNX1JkCVPshP/B4VZja
+ ODEQ==
+X-Gm-Message-State: AOAM532rQG3dwfxqbisar10RViglsPQMPTeckjwvlW3wH68bL9xw5cDq
+ KLmNQpOrdonvxpOtTe/3DPoHvmvEVFc1AQjv+as=
+X-Google-Smtp-Source: ABdhPJx/m28F1ILvSjlej//2LcLmjnSTaAgsg5DmOzlI1JYmko3SUfCD0i3KFwglMHwIBviI1/eG//WKdihkUU+nWk8=
+X-Received: by 2002:a37:a6c2:: with SMTP id p185mr2502460qke.191.1622185731762; 
+ Fri, 28 May 2021 00:08:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-OriginalArrivalTime: 28 May 2021 12:32:43.0229 (UTC)
- FILETIME=[8E5098D0:01D753BD]
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 201.28.113.2 (failed)
-Received-SPF: pass client-ip=201.28.113.2;
- envelope-from=luis.pires@eldorado.org.br; helo=outlook.eldorado.org.br
-X-Spam_score_int: -10
-X-Spam_score: -1.1
+References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
+ <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+ <CAFEAcA8RbVafdjn2hkXifAPUF=wxZup20PqPcRpQ1ivtnWCxww@mail.gmail.com>
+ <CALf2nm+LFqM2=vDs8=YfyxQSUT-0xxaCiVmcQzrKoOa+zaTtdg@mail.gmail.com>
+ <CAFEAcA-oX0JR80UYzYKvczHsfxWG6oH3Pg4pbM6ByDe57XEHHw@mail.gmail.com>
+ <CALf2nmKhPaWJa944dR+kFAQ1hCLXF0XPwXaHTqJQ-C6EW7ACKg@mail.gmail.com>
+ <CAFEAcA9E4s3dST0GJkdg24DDAn90WU1FEmXwoKD6oQmNSB1vVA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9E4s3dST0GJkdg24DDAn90WU1FEmXwoKD6oQmNSB1vVA@mail.gmail.com>
+From: Dongjiu Geng <gengdongjiu1@gmail.com>
+Date: Fri, 28 May 2021 15:08:41 +0800
+Message-ID: <CABSBigR1L9sE36eYA0Mq4smx1E9A4umTOKTe_x97foSMkryRnw@mail.gmail.com>
+Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
+ when their configs are enabled
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Swetha Joshi <swethajoshi139@gmail.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::743;
+ envelope-from=gengdongjiu1@gmail.com; helo=mail-qk1-x743.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 28 May 2021 09:57:06 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,35 +81,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 May 2021 12:49:59 -0000
+X-List-Received-Date: Fri, 28 May 2021 07:08:55 -0000
 
-Without a single top-level header in the .rst file, the index ended
-up linking to all of the top-level headers separately. Now the index
-links to the top-level header at the beginning of the document and
-any inner headers are correctly linked as sub-items in the index.
+Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2021=E5=B9=B45=E6=9C=8827=
+=E6=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8A=E5=8D=882:19=E5=86=99=E9=81=93=EF=BC=
+=9A
+>
+> On Wed, 26 May 2021 at 18:32, Swetha Joshi <swethajoshi139@gmail.com> wro=
+te:
+> >
+> > Hello,
+> >
+> > One of the qemu machines we use has KVM enabled, but we don't want the =
+CONFIG_ARM_VIRT enabled as it pulls in emulation of a variety of physical h=
+ardware that we don't need. The compilation errors I mentioned are not in t=
+he qemu mainline per say but we see them in one of the qemu derived machine=
+s we use.
+>
+> Sure, but unless you can give me a recipe for reproducing the
+> build failure in mainline I can't really help...
 
-Signed-off-by: Luis Pires <luis.pires@eldorado.org.br>
----
- docs/devel/multi-thread-tcg.rst | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Hi Swetha=EF=BC=8C
+     Yes,  Can you give a method that how to reproduce the build
+failure issues? Thanks
 
-diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
-index 92a9eba13c..5b446ee08b 100644
---- a/docs/devel/multi-thread-tcg.rst
-+++ b/docs/devel/multi-thread-tcg.rst
-@@ -4,8 +4,9 @@
-   This work is licensed under the terms of the GNU GPL, version 2 or
-   later. See the COPYING file in the top-level directory.
- 
--Introduction
--============
-+==================
-+Multi-threaded TCG
-+==================
- 
- This document outlines the design for multi-threaded TCG (a.k.a MTTCG)
- system-mode emulation. user-mode emulation has always mirrored the
--- 
-2.25.1
-
+>
+> thanks
+> -- PMM
 
