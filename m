@@ -1,74 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lndf2-0004Jx-Ap
-	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 04:52:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45866)
+	id 1lneTi-0005se-0m
+	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 05:44:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lndez-0004IV-KC; Mon, 31 May 2021 04:52:33 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:38575)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lndev-0004Kx-KP; Mon, 31 May 2021 04:52:33 -0400
-Received: by mail-wr1-x432.google.com with SMTP id j14so10080389wrq.5;
- Mon, 31 May 2021 01:52:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rNl47LhHVWQl/5LBYkiYrfamF0E7dcwMkZODSCsUUUk=;
- b=ornP9fvLkOmlHty7+9HIdmUA9TcZNcZQhW2kJV6UUfP63EOe1H2uyyLRqGhH9lvtr6
- osnwMr7r58mfgpIzAjLmSt4NZX3Ts0sRD2oSwNSzU5FQaNdujVeLs8wNstMNRK7Sfg0+
- kGRSgzlrSo4X/jFe9AnAv4SO0d0CFUk84ComfUMPhGdTg3SlxpEsjKpISzVxmjKiJHFV
- 0rLySe2TSB3/fvum0UnxJFNQ+7zyYohmvq2OLpruSMpS3rHUWMuodFb8MWVQSxyp79sW
- qSGEHJEwTbqH+WMfjKTzyoj2UKBm4nYFE+ACzEoC9s+1BnfkZG0muDs9rcKztiuWm4/L
- o1WQ==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lneTg-0005ri-IA
+ for qemu-trivial@nongnu.org; Mon, 31 May 2021 05:44:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23078)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lneTd-0002ii-VN
+ for qemu-trivial@nongnu.org; Mon, 31 May 2021 05:44:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1622454292;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=d7ei2Yef+nrEanID5IIIu3q7Yv5FZ4NajSOONXvN5gM=;
+ b=VFEIsBwkm8guGNRqG9PIgy3uA0E3dsDoeuRrocFlBkYWh7/2Nb/ecs5tklnORyEaI5i9/+
+ TMkqqxjAlotiXXe3V7uDVK2vyAaUMu6ooGyrSwpkBPYzqyLp/ORR4Kc/zmQ1SrUCW6bVd8
+ dD/UrHhmsqLAMMOvT3HpaLktAYgK+Yg=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-55-P4fuAaoaMeOsBemXPwTMcA-1; Mon, 31 May 2021 05:44:51 -0400
+X-MC-Unique: P4fuAaoaMeOsBemXPwTMcA-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ z4-20020adfe5440000b0290114f89c9931so1538853wrm.17
+ for <qemu-trivial@nongnu.org>; Mon, 31 May 2021 02:44:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=rNl47LhHVWQl/5LBYkiYrfamF0E7dcwMkZODSCsUUUk=;
- b=Wp0WCl7eE265gZOKyEXhvdZjRxYATaUJ9XYvhnwKDGyMiP+b/yYMw7Jzubr54pT7jk
- qHeTkEFEq3851ZYyCx9dvfj9do9Z8CGxHbgpi0bjTBsN9AbwgpZj0+m2vdf+1T9iJheY
- Bf2EqsOQe5gSiq/JoGVXskRqYJpVY5Fq0ay76aqS0V91U5SFTSomf5faBuS1vJsiBtIW
- N8uHu/BePgpgHjIKOXFMiclLWqrA5D+/A3zZwmjAS1f0XKhLZ+bHRob01oOa5WBjNeDt
- KoH3FdCdtqcUHZVFMl7FSjbAIxAbcO7s0+/BUiUcELlkjW0TTUX44MCBdDqovp2kvAi+
- UZiw==
-X-Gm-Message-State: AOAM532DdF1d/8WxNNITIdnqGCOMVojlDo7234g0e3d9dt0jrQSviUT8
- qYmdReXK9WYc6SCYt0EVtv4q8nWxZe52FQ==
-X-Google-Smtp-Source: ABdhPJyRU7W5KFPoNph6km8BU8Ey9wqqxMnf7bMmBtLwG3ImH/UttffOiLwcnMhUpvy06Q4o7wyvzg==
-X-Received: by 2002:adf:d209:: with SMTP id j9mr10073098wrh.328.1622451147357; 
- Mon, 31 May 2021 01:52:27 -0700 (PDT)
+ bh=d7ei2Yef+nrEanID5IIIu3q7Yv5FZ4NajSOONXvN5gM=;
+ b=AmUnKYOeC59XQceklxFm/FVIU53aK8RniNpxE3tq0t0iExV0br8Xrki7XUsdQ1PvHY
+ 3hA95bzQk4XDwHZ1V8IyGtxiti3wLI16mIvjPMZsMe5fYDkVrQvvYchMA3WfxEcUFQoD
+ HY7uV7LCw5INanunqFgHxjZO0G2VJULRIfdVR1l1druDe0aITulmwlSoOKSMP2wZfaqL
+ gtshIrlID9EyqfLvuK/kOfVlDv2aAn3SSVsEctCaGw7FGXAbcVCak3ehCtG5Aqi6IaRp
+ 2nR9A5lP3+EfC+eQNiRgPBgBPltwiY2PnaMsq8ODGutMIcbei9C9YPyk7Hj2dbJJ21se
+ xyfw==
+X-Gm-Message-State: AOAM530tX6XVFpcc6YyQT1mLbrJWnw+C5Ga6k3KJ0pei71M85Sb7/OZo
+ shq0J4l7fgOU/MO1kD/miMoMDxduSir9EcDMsiR7KQLNyzfrWP+nLPpLfMTCOFddTJS2Oy3Z9Mp
+ VCiGX/mgjXhtixptH3eWeKip1BU6Hnz6ql6ebQQNHZrXxM0yVdj+FSRyRGpGHkne/nSA=
+X-Received: by 2002:adf:ce01:: with SMTP id p1mr8685344wrn.63.1622454289677;
+ Mon, 31 May 2021 02:44:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwC8j8pHReddEYDvypvAVHC+oxdKDrw5YPOsOfVYVqC6dfMMoNHVihIW7OuX95ELzzzG2bVNw==
+X-Received: by 2002:adf:ce01:: with SMTP id p1mr8685315wrn.63.1622454289260;
+ Mon, 31 May 2021 02:44:49 -0700 (PDT)
 Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
  [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id z12sm18188563wmc.5.2021.05.31.01.52.26
+ by smtp.gmail.com with ESMTPSA id q11sm17365214wrx.80.2021.05.31.02.44.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 May 2021 01:52:26 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] hw/display/macfb: Classify the "nubus-macfb" as display
- device
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>
-References: <20210531073255.46286-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <99ae8529-b26c-7f32-88aa-d6708d5c79ed@amsat.org>
-Date: Mon, 31 May 2021 10:52:26 +0200
+ Mon, 31 May 2021 02:44:48 -0700 (PDT)
+Subject: Re: [PATCH] qobject: Fix maybe uninitialized in qdict_array_split
+To: Janosch Frank <frankja@linux.ibm.com>, qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, cohuck@redhat.com, borntraeger@de.ibm.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210518130638.54529-1-frankja@linux.ibm.com>
+ <b4aebccf-db62-74da-ebd0-8ca24ea22f59@linux.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <97b11fa8-fd32-9f73-612b-dc4209e5b32e@redhat.com>
+Date: Mon, 31 May 2021 11:44:48 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <20210531073255.46286-1-thuth@redhat.com>
+In-Reply-To: <b4aebccf-db62-74da-ebd0-8ca24ea22f59@linux.ibm.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.618,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.37,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.618, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -82,17 +93,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 May 2021 08:52:33 -0000
+X-List-Received-Date: Mon, 31 May 2021 09:44:56 -0000
 
-On 5/31/21 9:32 AM, Thomas Huth wrote:
-> The "nubus-macfb" currently shows up as uncategorized device in
-> the output of "-device help". Put it into the display category
-> to fix this ugliness.
+On 5/31/21 11:21 AM, Janosch Frank wrote:
+> On 5/18/21 3:06 PM, Janosch Frank wrote:
+>> Lets make the compiler happy.
+>>
+>> Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/display/macfb.c | 1 +
->  1 file changed, 1 insertion(+)
+> Ping
+> My build is still breaking on Ubuntu because of this.
+> 
+>> ---
+>>  qobject/block-qdict.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
+>> index 1487cc5dd8..b26524429c 100644
+>> --- a/qobject/block-qdict.c
+>> +++ b/qobject/block-qdict.c
+>> @@ -224,7 +224,7 @@ void qdict_array_split(QDict *src, QList **dst)
+>>      for (i = 0; i < UINT_MAX; i++) {
+>>          QObject *subqobj;
+>>          bool is_subqdict;
+>> -        QDict *subqdict;
+>> +        QDict *subqdict = NULL;
+>>          char indexstr[32], prefix[32];
+>>          size_t snprintf_ret;
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Slightly clearer:
+
+-- >8 --
+diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
+index 1487cc5dd8b..8d0f00bc3ce 100644
+--- a/qobject/block-qdict.c
++++ b/qobject/block-qdict.c
+@@ -224,7 +224,6 @@ void qdict_array_split(QDict *src, QList **dst)
+     for (i = 0; i < UINT_MAX; i++) {
+         QObject *subqobj;
+         bool is_subqdict;
+-        QDict *subqdict;
+         char indexstr[32], prefix[32];
+         size_t snprintf_ret;
+
+@@ -249,14 +248,16 @@ void qdict_array_split(QDict *src, QList **dst)
+         }
+
+         if (is_subqdict) {
++            QDict *subqdict = NULL;
++
+             qdict_extract_subqdict(src, &subqdict, prefix);
+             assert(qdict_size(subqdict) > 0);
++            qlist_append_obj(*dst, QOBJECT(subqdict));
+         } else {
+             qobject_ref(subqobj);
+             qdict_del(src, indexstr);
++            qlist_append_obj(*dst, subqobj);
+         }
+-
+-        qlist_append_obj(*dst, subqobj ?: QOBJECT(subqdict));
+     }
+ }
+---
+
+Anyhow,
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Cc'ing qemu-trivial@
+
 
