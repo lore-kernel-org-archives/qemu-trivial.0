@@ -1,60 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lncQ8-0001om-7B
-	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 03:33:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58966)
+	id 1lnd2c-0005SW-Gg
+	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 04:12:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38244)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lncQ6-0001ny-NY
- for qemu-trivial@nongnu.org; Mon, 31 May 2021 03:33:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27795)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lnd2a-0005Qe-6h; Mon, 31 May 2021 04:12:52 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:32773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lncQ3-0003RB-JV
- for qemu-trivial@nongnu.org; Mon, 31 May 2021 03:33:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622446381;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=5jmnHOWvn+pt2+p5G2jCNsjy2jOigKF3n+UFORfkt28=;
- b=eJ4XUUn5Oj8co9mKZAQmExtgiEODGd7EYXVGGKQDMB0zi3fj+kq0z3Khes3txJvO9cEacD
- Tjzm8r1PJ5uTHq9m15wgLpjCsM6N0/M5pk/N9xRaSlS2pH9zX/upUMgBRhk/qKfjvfADZx
- JxSkdfWmlATeHP6kGvZCm6k/0vtHGTU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-260-FlkdP9seN-6Sdzh5K3yLQg-1; Mon, 31 May 2021 03:33:00 -0400
-X-MC-Unique: FlkdP9seN-6Sdzh5K3yLQg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 261868015F8;
- Mon, 31 May 2021 07:32:59 +0000 (UTC)
-Received: from thuth.com (ovpn-112-38.ams2.redhat.com [10.36.112.38])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F36765D9C0;
- Mon, 31 May 2021 07:32:57 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH] hw/display/macfb: Classify the "nubus-macfb" as display device
-Date: Mon, 31 May 2021 09:32:55 +0200
-Message-Id: <20210531073255.46286-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1lnd2V-0004M1-Ra; Mon, 31 May 2021 04:12:51 -0400
+Received: from [192.168.100.1] ([82.142.27.18]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MxVbb-1lU0mW0PEH-00xoCa; Mon, 31 May 2021 10:12:41 +0200
+Subject: Re: [PATCH] hw/display/macfb: Classify the "nubus-macfb" as display
+ device
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20210531073255.46286-1-thuth@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <97f211b8-5a9b-dd08-d18e-6b7c4009429a@vivier.eu>
+Date: Mon, 31 May 2021 10:12:40 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20210531073255.46286-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.37,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Provags-ID: V03:K1:uDdJflZ77h2KrhGtaKD9wJotCl0zTM5S5vufr+QfRpD2CIGEMPn
+ UukC7/1UjBjmNWbJUNY8p1V9OWfy/Jnj+5V6Xfx2KDQE7jWOvazUFQvg2wbOscAcDcQhL6a
+ sFnBzg1x1ir2a0kuRRB+H+VVlrad1TueM1NQqL7k75iSqUvH6SbZ/wTZdwBCeQQT9hNRDmK
+ zz6bqkjHW5xZHidwFNj9A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9LmL27Yvfhs=:wbshM2ihcPkEXj5qFow+Y+
+ qON6okP3MbLiHKMYBA/grgo9mpVkD/cmZqvMPgF2pCBqukfqpAmgHWqdUnyxL+/y6yz5ktlFy
+ GgRDaX2d8H6MluLpiPUxRL5a0WqBvRX0ENXhtyK3xVeyGNr52ftjLgVfEoYee4RfNv81hk/8n
+ um5uTrsRlBGY8PYL4pRH1/Y25qvrBVfd5ITmE+dIf86Djm2FoL7lgnBKi7WXXge1qKEe/01K0
+ cy8XDY9yGe7K8Ko8XNmhitfGaWPGetd98wRudApUyduRX7QFZ9vzoh+22pf1Rv2cRJs5MAd+3
+ GTR3mDzSP4NRw9KgaImlv1/U/JlUHcQEYggRtLn+cDC6dKyrYKX3evXZu/s2Khd/w+EMtGYIE
+ oMTNIMQZ5UsrZQltjqjJG33akjCudcX/XKOzlSTGL3tnhi35dsfWSyiVBgGlfosrX5b3Fjd65
+ Lb3mb3b7Z0mkcgq1p3ZU0CnCawxp7/nsq2RuimlFP8w2sJTJCu71im6z73RxeZuKDhjqnBG72
+ +rUbxVJMrjowTtIPVzQcwo=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.618,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,30 +59,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 May 2021 07:33:06 -0000
+X-List-Received-Date: Mon, 31 May 2021 08:12:53 -0000
 
-The "nubus-macfb" currently shows up as uncategorized device in
-the output of "-device help". Put it into the display category
-to fix this ugliness.
+Le 31/05/2021 à 09:32, Thomas Huth a écrit :
+> The "nubus-macfb" currently shows up as uncategorized device in
+> the output of "-device help". Put it into the display category
+> to fix this ugliness.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/display/macfb.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/display/macfb.c b/hw/display/macfb.c
+> index ff8bdb846b..d8183b9bbd 100644
+> --- a/hw/display/macfb.c
+> +++ b/hw/display/macfb.c
+> @@ -450,6 +450,7 @@ static void macfb_nubus_class_init(ObjectClass *klass, void *data)
+>      dc->desc = "Nubus Macintosh framebuffer";
+>      dc->reset = macfb_nubus_reset;
+>      dc->vmsd = &vmstate_macfb;
+> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+>      device_class_set_props(dc, macfb_nubus_properties);
+>  }
+>  
+> 
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/display/macfb.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/hw/display/macfb.c b/hw/display/macfb.c
-index ff8bdb846b..d8183b9bbd 100644
---- a/hw/display/macfb.c
-+++ b/hw/display/macfb.c
-@@ -450,6 +450,7 @@ static void macfb_nubus_class_init(ObjectClass *klass, void *data)
-     dc->desc = "Nubus Macintosh framebuffer";
-     dc->reset = macfb_nubus_reset;
-     dc->vmsd = &vmstate_macfb;
-+    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-     device_class_set_props(dc, macfb_nubus_properties);
- }
- 
--- 
-2.27.0
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
