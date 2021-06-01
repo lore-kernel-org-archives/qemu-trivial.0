@@ -1,104 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lniZL-00055P-Pb
-	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 10:07:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39266)
+	id 1lnuvL-0003xR-VZ
+	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 23:18:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34370)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frankja@linux.ibm.com>)
- id 1lnevk-0000FR-6R; Mon, 31 May 2021 06:13:56 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:19082
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frankja@linux.ibm.com>)
- id 1lnevi-0003X3-6t; Mon, 31 May 2021 06:13:55 -0400
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 14VA4m0J038375; Mon, 31 May 2021 06:13:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=jL9QWAgYL/36vtHz7YZUH7OYnZs62kmcvcJB3OIE6i4=;
- b=lXUIoCbP55ydmT8BsTYWZeva/04REncuzEQ/8WybuT5D4ucupyLjKlllSWjVCE5KXkeb
- OF9veoN5RedZVMBIBWu7y7INi9kOuUwzU4mQnC17hnR5N9bWd5RJ+GMZeBo32aQaaPma
- I2MKhNGqGyUA9mZTtUwD0RSQzqYjsJhNeK+J4w5zSo7dtu31S+36yEuEPA/r5t60MCyt
- Mbe/HDf4nI1l6qop5odsJKcY+ReD8xeobwg+8alQ+NtNqPYTogvCe/Z5TbaC/FMlaMJD
- DIQ+enN11JPpszGvoLYu/3oyACRGiFEmTb3KpO/1KUtqOuMoC3i2lP9C44tZ1iaO0sae lw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 38vw6xs28a-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 31 May 2021 06:13:52 -0400
-Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 14VA4mVe038305;
- Mon, 31 May 2021 06:13:52 -0400
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0b-001b2d01.pphosted.com with ESMTP id 38vw6xs277-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 31 May 2021 06:13:51 -0400
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 14VACgKp014355;
- Mon, 31 May 2021 10:13:50 GMT
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
- (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
- by ppma06ams.nl.ibm.com with ESMTP id 38ucvh8xyv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 31 May 2021 10:13:50 +0000
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com
- (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
- by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 14VADmiR33947974
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 31 May 2021 10:13:48 GMT
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 02E52A405C;
- Mon, 31 May 2021 10:13:48 +0000 (GMT)
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A1FBAA4054;
- Mon, 31 May 2021 10:13:47 +0000 (GMT)
-Received: from localhost.localdomain (unknown [9.145.89.221])
- by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Mon, 31 May 2021 10:13:47 +0000 (GMT)
-Subject: Re: [PATCH] qobject: Fix maybe uninitialized in qdict_array_split
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, pbonzini@redhat.com,
- cohuck@redhat.com, borntraeger@de.ibm.com
-References: <20210518130638.54529-1-frankja@linux.ibm.com>
- <b4aebccf-db62-74da-ebd0-8ca24ea22f59@linux.ibm.com>
- <97b11fa8-fd32-9f73-612b-dc4209e5b32e@redhat.com>
-From: Janosch Frank <frankja@linux.ibm.com>
-Message-ID: <f45f4858-7c90-1fab-e30c-3909ce68b1e7@linux.ibm.com>
-Date: Mon, 31 May 2021 12:13:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <email@aabouzied.com>)
+ id 1lntV4-0005S8-2B
+ for qemu-trivial@nongnu.org; Mon, 31 May 2021 21:47:22 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:38821)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <email@aabouzied.com>)
+ id 1lntV1-0005fI-Og
+ for qemu-trivial@nongnu.org; Mon, 31 May 2021 21:47:21 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ t4-20020a1c77040000b029019d22d84ebdso490255wmi.3
+ for <qemu-trivial@nongnu.org>; Mon, 31 May 2021 18:47:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=aabouzied-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9hVzdzbb8GVsVCXn3Me44FSGiP/knRo1iN1KKR+WEpE=;
+ b=fkNtQVOcP0nmZOJ18bh64/KKxFNZ/b4qada8RcRrwreiSedGUZIK4oMSA2MQ514qoK
+ brDvlJxiKroR5lqNXfzYG+lvOB7qVET6cUVxEPxbuCBge9VnuHWBh0qhcBHSrbh4lDYz
+ IG+PYLIUXIVudqahtX/TU6lu1EWpJxuze9f2zxdcKchazIl/IpzQhvg2bCd/YjAUc0GE
+ V04bBsby1mQaIb1B7FhKMg+X3qB+kjqNG0Odh1gkA73OTlLwCltij7kPVEcjElkV5S16
+ XNf8iaKlNzPSQYeU8Py51qDwOte3KWTU4gpWjN4Ccw5onxq6kQ7kYzhUtDsDNRvmQNjr
+ 1f0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9hVzdzbb8GVsVCXn3Me44FSGiP/knRo1iN1KKR+WEpE=;
+ b=XkV28Qvy5/PYEyW5IPzF2aAVUBcLU8okt3ntlCi1rtHF6FxhNKkM2VGBWtEsfMNH5Q
+ A51J/1Xh/6+bEuW1YEUYChifHwMySaUJZp6Ib23l2ewTSpHpkZl11TX3v5d2N9U0RXeC
+ Yusn/Di0q6cuGV8LUBP4GrPgj9JdOXpL/hvpp0CFKPqsMtFhlz2xoNKBuaxCDuExnSHW
+ Q3ClIHojYgqZvzqojkTcUYZY48V/Ksrmp8o6ifZVZ6nrwlLmyI1lMKvjf0uG3jLObR+I
+ 19IbyZpWwRJNRlvKvZK7ShtvUJNO+VuHc9uhEzm5MbjLsnPFWHx4xqEwPCqI740y7H2i
+ AThQ==
+X-Gm-Message-State: AOAM533SZd6B4hUq634E/MncKVkEEFcR0ZTmUFATzbThx61oQsReVqra
+ YBsNsDMhMcf1nIuszFCzpPqLJw==
+X-Google-Smtp-Source: ABdhPJwr5e6sAMfVHe1hY+0bKaHTrG+9rm9VizLOv3u7dlIQzce3gBqbcUcAXMq+ToS45MbEO/z/Eg==
+X-Received: by 2002:a05:600c:2dd0:: with SMTP id
+ e16mr23357405wmh.135.1622512037300; 
+ Mon, 31 May 2021 18:47:17 -0700 (PDT)
+Received: from pythagoras.localdomain ([154.187.234.222])
+ by smtp.gmail.com with ESMTPSA id f5sm1483266wrf.22.2021.05.31.18.47.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 31 May 2021 18:47:16 -0700 (PDT)
+From: email@aabouzied.com
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Ahmed Abouzied <email@aabouzied.com>
+Subject: [PATCH] Add display suboptions to man pages
+Date: Tue,  1 Jun 2021 03:43:13 +0200
+Message-Id: <20210601014312.17981-1-email@aabouzied.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <97b11fa8-fd32-9f73-612b-dc4209e5b32e@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 11Z4nlcMBl4eNSf2uLeHpC3V02mXpAJg
-X-Proofpoint-ORIG-GUID: xeK3yLW6op7IZFpPFz1skdZ8HGaP7_gH
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-05-31_07:2021-05-31,
- 2021-05-31 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 mlxlogscore=999
- clxscore=1011 impostorscore=0 lowpriorityscore=0 spamscore=0 mlxscore=0
- priorityscore=1501 bulkscore=0 adultscore=0 malwarescore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
- definitions=main-2105310072
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=frankja@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.618,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: none client-ip=2a00:1450:4864:20::32f;
+ envelope-from=email@aabouzied.com; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 31 May 2021 10:07:01 -0400
+X-Mailman-Approved-At: Mon, 31 May 2021 23:18:34 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,82 +77,208 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 May 2021 10:13:56 -0000
+X-List-Received-Date: Tue, 01 Jun 2021 01:47:22 -0000
 
-On 5/31/21 11:44 AM, Philippe Mathieu-Daudé wrote:
-> On 5/31/21 11:21 AM, Janosch Frank wrote:
->> On 5/18/21 3:06 PM, Janosch Frank wrote:
->>> Lets make the compiler happy.
->>>
->>> Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
->>
->> Ping
->> My build is still breaking on Ubuntu because of this.
->>
->>> ---
->>>  qobject/block-qdict.c | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
->>> index 1487cc5dd8..b26524429c 100644
->>> --- a/qobject/block-qdict.c
->>> +++ b/qobject/block-qdict.c
->>> @@ -224,7 +224,7 @@ void qdict_array_split(QDict *src, QList **dst)
->>>      for (i = 0; i < UINT_MAX; i++) {
->>>          QObject *subqobj;
->>>          bool is_subqdict;
->>> -        QDict *subqdict;
->>> +        QDict *subqdict = NULL;
->>>          char indexstr[32], prefix[32];
->>>          size_t snprintf_ret;
-> 
-> Slightly clearer:>
-> -- >8 --
-> diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
-> index 1487cc5dd8b..8d0f00bc3ce 100644
-> --- a/qobject/block-qdict.c
-> +++ b/qobject/block-qdict.c
-> @@ -224,7 +224,6 @@ void qdict_array_split(QDict *src, QList **dst)
->      for (i = 0; i < UINT_MAX; i++) {
->          QObject *subqobj;
->          bool is_subqdict;
-> -        QDict *subqdict;
->          char indexstr[32], prefix[32];
->          size_t snprintf_ret;
-> 
-> @@ -249,14 +248,16 @@ void qdict_array_split(QDict *src, QList **dst)
->          }
-> 
->          if (is_subqdict) {
-> +            QDict *subqdict = NULL;
-> +
->              qdict_extract_subqdict(src, &subqdict, prefix);
->              assert(qdict_size(subqdict) > 0);
-> +            qlist_append_obj(*dst, QOBJECT(subqdict));
->          } else {
->              qobject_ref(subqobj);
->              qdict_del(src, indexstr);
-> +            qlist_append_obj(*dst, subqobj);
->          }
-> -
-> -        qlist_append_obj(*dst, subqobj ?: QOBJECT(subqdict));
->      }
->  }
-> ---
+From: Ahmed Abouzied <email@aabouzied.com>
 
-If you want post that snippet yourself, go ahead.
-After all I only fixed a symptom without a closer look into the code.
+Updates man pages with the suboptions for the `-display`.
 
-> 
-> Anyhow,
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> 
-> Cc'ing qemu-trivial@
-> 
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/128
+Buglink: https://bugs.launchpad.net/qemu/+bug/1620660
 
-If not I'll take it, test on s390 and send a v2 with qemu-trivial and
-you in CC.
+Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
+---
 
+This is just a trivial update for the man pages. It's the first time I
+get to know QEMU source code. I didn't know which maintainer to CC here.
+The `scripts/get_maintainer.pl` script didn't show any maintainers for
+this file. I did CC the trivial mailing list because this is a very
+small change.
 
-Thanks for having a look!
+Please let me know if the patch format is incorrect or something and
+I'll fix it.
+
+Looking forward to getting back feedback.
+
+Thanks
+
+---
+ qemu-options.hx | 71 ++++++++++++++++++++++++++-----------------------
+ 1 file changed, 37 insertions(+), 34 deletions(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 14258784b3..587cd7786d 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -227,15 +227,15 @@ DEF("numa", HAS_ARG, QEMU_OPTION_numa,
+     QEMU_ARCH_ALL)
+ SRST
+ ``-numa node[,mem=size][,cpus=firstcpu[-lastcpu]][,nodeid=node][,initiator=initiator]``
+-  \ 
++  \
+ ``-numa node[,memdev=id][,cpus=firstcpu[-lastcpu]][,nodeid=node][,initiator=initiator]``
+   \
+ ``-numa dist,src=source,dst=destination,val=distance``
+-  \ 
++  \
+ ``-numa cpu,node-id=node[,socket-id=x][,core-id=y][,thread-id=z]``
+-  \ 
++  \
+ ``-numa hmat-lb,initiator=node,target=node,hierarchy=hierarchy,data-type=tpye[,latency=lat][,bandwidth=bw]``
+-  \ 
++  \
+ ``-numa hmat-cache,node-id=node,size=size,level=level[,associativity=str][,policy=str][,line=size]``
+     Define a NUMA node and assign RAM and VCPUs to it. Set the NUMA
+     distance from a source node to a destination node. Set the ACPI
+@@ -430,7 +430,7 @@ DEF("global", HAS_ARG, QEMU_OPTION_global,
+     QEMU_ARCH_ALL)
+ SRST
+ ``-global driver.prop=value``
+-  \ 
++  \
+ ``-global driver=driver,property=property,value=value``
+     Set default value of driver's property prop to value, e.g.:
+ 
+@@ -976,9 +976,9 @@ SRST
+ ``-hda file``
+   \
+ ``-hdb file``
+-  \ 
++  \
+ ``-hdc file``
+-  \ 
++  \
+ ``-hdd file``
+     Use file as hard disk 0, 1, 2 or 3 image (see the :ref:`disk images`
+     chapter in the System Emulation Users Guide).
+@@ -1468,7 +1468,7 @@ DEF("fsdev", HAS_ARG, QEMU_OPTION_fsdev,
+ 
+ SRST
+ ``-fsdev local,id=id,path=path,security_model=security_model [,writeout=writeout][,readonly=on][,fmode=fmode][,dmode=dmode] [,throttling.option=value[,throttling.option=value[,...]]]``
+-  \ 
++  \
+ ``-fsdev proxy,id=id,socket=socket[,writeout=writeout][,readonly=on]``
+   \
+ ``-fsdev proxy,id=id,sock_fd=sock_fd[,writeout=writeout][,readonly=on]``
+@@ -1589,9 +1589,9 @@ DEF("virtfs", HAS_ARG, QEMU_OPTION_virtfs,
+ 
+ SRST
+ ``-virtfs local,path=path,mount_tag=mount_tag ,security_model=security_model[,writeout=writeout][,readonly=on] [,fmode=fmode][,dmode=dmode][,multidevs=multidevs]``
+-  \ 
++  \
+ ``-virtfs proxy,socket=socket,mount_tag=mount_tag [,writeout=writeout][,readonly=on]``
+-  \ 
++  \
+ ``-virtfs proxy,sock_fd=sock_fd,mount_tag=mount_tag [,writeout=writeout][,readonly=on]``
+   \
+ ``-virtfs synth,mount_tag=mount_tag``
+@@ -1819,11 +1819,22 @@ SRST
+     old style -sdl/-curses/... options. Use ``-display help`` to list
+     the available display types. Valid values for type are
+ 
+-    ``sdl``
++    ``spice-app[,gl=on|off]``
++        Start QEMU as a Spice server and launch the default Spice client
++        application. The Spice server will redirect the serial consoles
++        and QEMU monitors. (Since 4.0)
++
++    ``sdl[,alt_grab=on|off][,ctrl_grab=on|off][,window_close=on|off][,gl=on|core|es|off]``
++
+         Display video output via SDL (usually in a separate graphics
+         window; see the SDL documentation for other possibilities).
+ 
+-    ``curses``
++    ``gtk[,grab_on_hover=on|off][,gl=on|off]``
++        Display video output in a GTK window. This interface provides
++        drop-down menus and other UI elements to configure and control
++        the VM during runtime.
++
++    ``curses [,charset=<encoding>]``
+         Display video output via curses. For graphics device models
+         which support a text mode, QEMU can display this output using a
+         curses/ncurses interface. Nothing is displayed when the graphics
+@@ -1834,6 +1845,14 @@ SRST
+         ``charset=CP850`` for IBM CP850 encoding. The default is
+         ``CP437``.
+ 
++    ``vnc=<display>[,<optarges>]``
++        Start a VNC server on display <arg>
++
++    ``egl-headless[,rendernode<file>]``
++        Offload all OpenGL operations to a local DRI device. For any
++        graphical display, this display needs to be paired with either
++        VNC or SPICE displays.
++
+     ``none``
+         Do not display video output. The guest will still see an
+         emulated graphics card, but its output will not be displayed to
+@@ -1842,24 +1861,8 @@ SRST
+         also changes the destination of the serial and parallel port
+         data.
+ 
+-    ``gtk``
+-        Display video output in a GTK window. This interface provides
+-        drop-down menus and other UI elements to configure and control
+-        the VM during runtime.
+-
+-    ``vnc``
+-        Start a VNC server on display <arg>
+-
+-    ``egl-headless``
+-        Offload all OpenGL operations to a local DRI device. For any
+-        graphical display, this display needs to be paired with either
+-        VNC or SPICE displays.
+ 
+-    ``spice-app``
+-        Start QEMU as a Spice server and launch the default Spice client
+-        application. The Spice server will redirect the serial consoles
+-        and QEMU monitors. (Since 4.0)
+-ERST
++    ERST
+ 
+ DEF("nographic", 0, QEMU_OPTION_nographic,
+     "-nographic      disable graphical output and redirect serial I/Os to console\n",
+@@ -3799,10 +3802,10 @@ DEF("mon", HAS_ARG, QEMU_OPTION_mon, \
+     "-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]\n", QEMU_ARCH_ALL)
+ SRST
+ ``-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]``
+-    Setup monitor on chardev name. ``mode=control`` configures 
++    Setup monitor on chardev name. ``mode=control`` configures
+     a QMP monitor (a JSON RPC-style protocol) and it is not the
+     same as HMP, the human monitor that has a "(qemu)" prompt.
+-    ``pretty`` is only valid when ``mode=control``, 
++    ``pretty`` is only valid when ``mode=control``,
+     turning on JSON pretty printing to ease
+     human reading and debugging.
+ ERST
+@@ -3863,7 +3866,7 @@ DEF("overcommit", HAS_ARG, QEMU_OPTION_overcommit,
+     QEMU_ARCH_ALL)
+ SRST
+ ``-overcommit mem-lock=on|off``
+-  \ 
++  \
+ ``-overcommit cpu-pm=on|off``
+     Run qemu with hints about host resource overcommit. The default is
+     to assume that host overcommits all resources.
+@@ -4249,7 +4252,7 @@ DEF("incoming", HAS_ARG, QEMU_OPTION_incoming, \
+     QEMU_ARCH_ALL)
+ SRST
+ ``-incoming tcp:[host]:port[,to=maxport][,ipv4=on|off][,ipv6=on|off]``
+-  \ 
++  \
+ ``-incoming rdma:host:port[,ipv4=on|off][,ipv6=on|off]``
+     Prepare for incoming migration, listen on a given tcp port.
+ 
+@@ -4998,7 +5001,7 @@ SRST
+                [...]
+ 
+     ``-object secret,id=id,data=string,format=raw|base64[,keyid=secretid,iv=string]``
+-      \ 
++      \
+     ``-object secret,id=id,file=filename,format=raw|base64[,keyid=secretid,iv=string]``
+         Defines a secret to store a password, encryption key, or some
+         other sensitive data. The sensitive data can either be passed
+-- 
+2.25.1
+
 
