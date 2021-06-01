@@ -1,71 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lnuvL-0003xR-VZ
-	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 23:18:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34370)
+	id 1lnvAy-00071J-Ib
+	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 23:34:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33170)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <email@aabouzied.com>)
- id 1lntV4-0005S8-2B
- for qemu-trivial@nongnu.org; Mon, 31 May 2021 21:47:22 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:38821)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lnvAw-00070d-IR; Mon, 31 May 2021 23:34:42 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:36548)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <email@aabouzied.com>)
- id 1lntV1-0005fI-Og
- for qemu-trivial@nongnu.org; Mon, 31 May 2021 21:47:21 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- t4-20020a1c77040000b029019d22d84ebdso490255wmi.3
- for <qemu-trivial@nongnu.org>; Mon, 31 May 2021 18:47:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=aabouzied-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9hVzdzbb8GVsVCXn3Me44FSGiP/knRo1iN1KKR+WEpE=;
- b=fkNtQVOcP0nmZOJ18bh64/KKxFNZ/b4qada8RcRrwreiSedGUZIK4oMSA2MQ514qoK
- brDvlJxiKroR5lqNXfzYG+lvOB7qVET6cUVxEPxbuCBge9VnuHWBh0qhcBHSrbh4lDYz
- IG+PYLIUXIVudqahtX/TU6lu1EWpJxuze9f2zxdcKchazIl/IpzQhvg2bCd/YjAUc0GE
- V04bBsby1mQaIb1B7FhKMg+X3qB+kjqNG0Odh1gkA73OTlLwCltij7kPVEcjElkV5S16
- XNf8iaKlNzPSQYeU8Py51qDwOte3KWTU4gpWjN4Ccw5onxq6kQ7kYzhUtDsDNRvmQNjr
- 1f0Q==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lnvAv-0006yu-16; Mon, 31 May 2021 23:34:42 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ n17-20020a7bc5d10000b0290169edfadac9so592065wmk.1; 
+ Mon, 31 May 2021 20:34:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=a/4wZk6eepGU3q1c8giw7C2nDAQVMmOn9kozWz7BdN8=;
+ b=GcsnPdo45DdDo3dpzsssLhzuNrwhlztQpn0wCxG2WOqU8wxvNonUIFjRfh8Kw/UwDR
+ /aVGQCb5CoZXWrnT+NS2o++77qXiRPxP+4TLEPrTBHglMlNq+ueiZT5FXAzW/LVJ4/y8
+ gzx7f6mcK5MBoAEfpBSJI/8NQ7ZTRnGDD3YYNM2xZVYdm9PWUA26YQaR/dQx5oB4/CjM
+ 8U4T8dlA6/XpySwLGd2jXBc71Jv4Ae7895kfWZ5hbW5OlMAjcFyqmms7ZYG03wHUuc2R
+ 9ppi34DI55c5L+YHJSIdKULfeNfUd5eUAGbf/q8NOJEmiCsVU06c/Xn9r6+H21FebKr5
+ ksAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=9hVzdzbb8GVsVCXn3Me44FSGiP/knRo1iN1KKR+WEpE=;
- b=XkV28Qvy5/PYEyW5IPzF2aAVUBcLU8okt3ntlCi1rtHF6FxhNKkM2VGBWtEsfMNH5Q
- A51J/1Xh/6+bEuW1YEUYChifHwMySaUJZp6Ib23l2ewTSpHpkZl11TX3v5d2N9U0RXeC
- Yusn/Di0q6cuGV8LUBP4GrPgj9JdOXpL/hvpp0CFKPqsMtFhlz2xoNKBuaxCDuExnSHW
- Q3ClIHojYgqZvzqojkTcUYZY48V/Ksrmp8o6ifZVZ6nrwlLmyI1lMKvjf0uG3jLObR+I
- 19IbyZpWwRJNRlvKvZK7ShtvUJNO+VuHc9uhEzm5MbjLsnPFWHx4xqEwPCqI740y7H2i
- AThQ==
-X-Gm-Message-State: AOAM533SZd6B4hUq634E/MncKVkEEFcR0ZTmUFATzbThx61oQsReVqra
- YBsNsDMhMcf1nIuszFCzpPqLJw==
-X-Google-Smtp-Source: ABdhPJwr5e6sAMfVHe1hY+0bKaHTrG+9rm9VizLOv3u7dlIQzce3gBqbcUcAXMq+ToS45MbEO/z/Eg==
-X-Received: by 2002:a05:600c:2dd0:: with SMTP id
- e16mr23357405wmh.135.1622512037300; 
- Mon, 31 May 2021 18:47:17 -0700 (PDT)
-Received: from pythagoras.localdomain ([154.187.234.222])
- by smtp.gmail.com with ESMTPSA id f5sm1483266wrf.22.2021.05.31.18.47.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 May 2021 18:47:16 -0700 (PDT)
-From: email@aabouzied.com
+ bh=a/4wZk6eepGU3q1c8giw7C2nDAQVMmOn9kozWz7BdN8=;
+ b=D3O1FUS8EGlbVQHpMygTEAYSNxkRziOouLAzQTSDCS7CMdhU1x6ex3aSu6I1zBdiGU
+ jfxVFP+03paX/Fu7vv2Wm8Umr7YhKAxWSi+yaRF6eA+5xOEfrnLISEJi5rSp/yyrrhsF
+ QmeL2czjc9OB0jpOy9BBOl7A7U/0vimZRScccOJO5iz1LM/tjY/RCwMoCkuC+yqB6cHk
+ PfyfSfxKi4vKwLCcV2YmPPqfGHtOdIy+xywIzuXLyCzi6MYTVAhSsEj4Hbh0VWpkK0R6
+ TxwlbSxclHHSOURsqVEzqfVuvo+xQSZQl9OiBAmT0+ZjE5CS3s1/E7NrBT+V7uuzqK9d
+ kz+g==
+X-Gm-Message-State: AOAM533psJHIzO7/O2CVqMdCFdBupUhufp81Wep/G2iDyoTJ0s9nBBDu
+ 30TeFyT9xqxmqPFNcRcc60M=
+X-Google-Smtp-Source: ABdhPJzWrvZNqUSk6s/cvjS5W3VLuHPOA+lzskqutgJhbYb06nZ27pykNdnghAkyHj9Thvu4sTRZ+Q==
+X-Received: by 2002:a7b:c4da:: with SMTP id g26mr1994279wmk.64.1622518478781; 
+ Mon, 31 May 2021 20:34:38 -0700 (PDT)
+Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.235])
+ by smtp.gmail.com with ESMTPSA id g21sm1674986wrb.46.2021.05.31.20.34.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 May 2021 20:34:37 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] target/hppa: Remove unused 'memory.h' header
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Ahmed Abouzied <email@aabouzied.com>
-Subject: [PATCH] Add display suboptions to man pages
-Date: Tue,  1 Jun 2021 03:43:13 +0200
-Message-Id: <20210601014312.17981-1-email@aabouzied.com>
-X-Mailer: git-send-email 2.25.1
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+References: <20210517101558.1040191-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <ef946ba8-70f7-f6d5-24ad-01151da78131@amsat.org>
+Date: Tue, 1 Jun 2021 05:34:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
+In-Reply-To: <20210517101558.1040191-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2a00:1450:4864:20::32f;
- envelope-from=email@aabouzied.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.591,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 31 May 2021 23:18:34 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,208 +82,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Jun 2021 01:47:22 -0000
+X-List-Received-Date: Tue, 01 Jun 2021 03:34:42 -0000
 
-From: Ahmed Abouzied <email@aabouzied.com>
+Laurent, can you take this reviewed patch via qemu-trivial?
 
-Updates man pages with the suboptions for the `-display`.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/128
-Buglink: https://bugs.launchpad.net/qemu/+bug/1620660
-
-Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
----
-
-This is just a trivial update for the man pages. It's the first time I
-get to know QEMU source code. I didn't know which maintainer to CC here.
-The `scripts/get_maintainer.pl` script didn't show any maintainers for
-this file. I did CC the trivial mailing list because this is a very
-small change.
-
-Please let me know if the patch format is incorrect or something and
-I'll fix it.
-
-Looking forward to getting back feedback.
-
-Thanks
-
----
- qemu-options.hx | 71 ++++++++++++++++++++++++++-----------------------
- 1 file changed, 37 insertions(+), 34 deletions(-)
-
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 14258784b3..587cd7786d 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -227,15 +227,15 @@ DEF("numa", HAS_ARG, QEMU_OPTION_numa,
-     QEMU_ARCH_ALL)
- SRST
- ``-numa node[,mem=size][,cpus=firstcpu[-lastcpu]][,nodeid=node][,initiator=initiator]``
--  \ 
-+  \
- ``-numa node[,memdev=id][,cpus=firstcpu[-lastcpu]][,nodeid=node][,initiator=initiator]``
-   \
- ``-numa dist,src=source,dst=destination,val=distance``
--  \ 
-+  \
- ``-numa cpu,node-id=node[,socket-id=x][,core-id=y][,thread-id=z]``
--  \ 
-+  \
- ``-numa hmat-lb,initiator=node,target=node,hierarchy=hierarchy,data-type=tpye[,latency=lat][,bandwidth=bw]``
--  \ 
-+  \
- ``-numa hmat-cache,node-id=node,size=size,level=level[,associativity=str][,policy=str][,line=size]``
-     Define a NUMA node and assign RAM and VCPUs to it. Set the NUMA
-     distance from a source node to a destination node. Set the ACPI
-@@ -430,7 +430,7 @@ DEF("global", HAS_ARG, QEMU_OPTION_global,
-     QEMU_ARCH_ALL)
- SRST
- ``-global driver.prop=value``
--  \ 
-+  \
- ``-global driver=driver,property=property,value=value``
-     Set default value of driver's property prop to value, e.g.:
- 
-@@ -976,9 +976,9 @@ SRST
- ``-hda file``
-   \
- ``-hdb file``
--  \ 
-+  \
- ``-hdc file``
--  \ 
-+  \
- ``-hdd file``
-     Use file as hard disk 0, 1, 2 or 3 image (see the :ref:`disk images`
-     chapter in the System Emulation Users Guide).
-@@ -1468,7 +1468,7 @@ DEF("fsdev", HAS_ARG, QEMU_OPTION_fsdev,
- 
- SRST
- ``-fsdev local,id=id,path=path,security_model=security_model [,writeout=writeout][,readonly=on][,fmode=fmode][,dmode=dmode] [,throttling.option=value[,throttling.option=value[,...]]]``
--  \ 
-+  \
- ``-fsdev proxy,id=id,socket=socket[,writeout=writeout][,readonly=on]``
-   \
- ``-fsdev proxy,id=id,sock_fd=sock_fd[,writeout=writeout][,readonly=on]``
-@@ -1589,9 +1589,9 @@ DEF("virtfs", HAS_ARG, QEMU_OPTION_virtfs,
- 
- SRST
- ``-virtfs local,path=path,mount_tag=mount_tag ,security_model=security_model[,writeout=writeout][,readonly=on] [,fmode=fmode][,dmode=dmode][,multidevs=multidevs]``
--  \ 
-+  \
- ``-virtfs proxy,socket=socket,mount_tag=mount_tag [,writeout=writeout][,readonly=on]``
--  \ 
-+  \
- ``-virtfs proxy,sock_fd=sock_fd,mount_tag=mount_tag [,writeout=writeout][,readonly=on]``
-   \
- ``-virtfs synth,mount_tag=mount_tag``
-@@ -1819,11 +1819,22 @@ SRST
-     old style -sdl/-curses/... options. Use ``-display help`` to list
-     the available display types. Valid values for type are
- 
--    ``sdl``
-+    ``spice-app[,gl=on|off]``
-+        Start QEMU as a Spice server and launch the default Spice client
-+        application. The Spice server will redirect the serial consoles
-+        and QEMU monitors. (Since 4.0)
-+
-+    ``sdl[,alt_grab=on|off][,ctrl_grab=on|off][,window_close=on|off][,gl=on|core|es|off]``
-+
-         Display video output via SDL (usually in a separate graphics
-         window; see the SDL documentation for other possibilities).
- 
--    ``curses``
-+    ``gtk[,grab_on_hover=on|off][,gl=on|off]``
-+        Display video output in a GTK window. This interface provides
-+        drop-down menus and other UI elements to configure and control
-+        the VM during runtime.
-+
-+    ``curses [,charset=<encoding>]``
-         Display video output via curses. For graphics device models
-         which support a text mode, QEMU can display this output using a
-         curses/ncurses interface. Nothing is displayed when the graphics
-@@ -1834,6 +1845,14 @@ SRST
-         ``charset=CP850`` for IBM CP850 encoding. The default is
-         ``CP437``.
- 
-+    ``vnc=<display>[,<optarges>]``
-+        Start a VNC server on display <arg>
-+
-+    ``egl-headless[,rendernode<file>]``
-+        Offload all OpenGL operations to a local DRI device. For any
-+        graphical display, this display needs to be paired with either
-+        VNC or SPICE displays.
-+
-     ``none``
-         Do not display video output. The guest will still see an
-         emulated graphics card, but its output will not be displayed to
-@@ -1842,24 +1861,8 @@ SRST
-         also changes the destination of the serial and parallel port
-         data.
- 
--    ``gtk``
--        Display video output in a GTK window. This interface provides
--        drop-down menus and other UI elements to configure and control
--        the VM during runtime.
--
--    ``vnc``
--        Start a VNC server on display <arg>
--
--    ``egl-headless``
--        Offload all OpenGL operations to a local DRI device. For any
--        graphical display, this display needs to be paired with either
--        VNC or SPICE displays.
- 
--    ``spice-app``
--        Start QEMU as a Spice server and launch the default Spice client
--        application. The Spice server will redirect the serial consoles
--        and QEMU monitors. (Since 4.0)
--ERST
-+    ERST
- 
- DEF("nographic", 0, QEMU_OPTION_nographic,
-     "-nographic      disable graphical output and redirect serial I/Os to console\n",
-@@ -3799,10 +3802,10 @@ DEF("mon", HAS_ARG, QEMU_OPTION_mon, \
-     "-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]\n", QEMU_ARCH_ALL)
- SRST
- ``-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]``
--    Setup monitor on chardev name. ``mode=control`` configures 
-+    Setup monitor on chardev name. ``mode=control`` configures
-     a QMP monitor (a JSON RPC-style protocol) and it is not the
-     same as HMP, the human monitor that has a "(qemu)" prompt.
--    ``pretty`` is only valid when ``mode=control``, 
-+    ``pretty`` is only valid when ``mode=control``,
-     turning on JSON pretty printing to ease
-     human reading and debugging.
- ERST
-@@ -3863,7 +3866,7 @@ DEF("overcommit", HAS_ARG, QEMU_OPTION_overcommit,
-     QEMU_ARCH_ALL)
- SRST
- ``-overcommit mem-lock=on|off``
--  \ 
-+  \
- ``-overcommit cpu-pm=on|off``
-     Run qemu with hints about host resource overcommit. The default is
-     to assume that host overcommits all resources.
-@@ -4249,7 +4252,7 @@ DEF("incoming", HAS_ARG, QEMU_OPTION_incoming, \
-     QEMU_ARCH_ALL)
- SRST
- ``-incoming tcp:[host]:port[,to=maxport][,ipv4=on|off][,ipv6=on|off]``
--  \ 
-+  \
- ``-incoming rdma:host:port[,ipv4=on|off][,ipv6=on|off]``
-     Prepare for incoming migration, listen on a given tcp port.
- 
-@@ -4998,7 +5001,7 @@ SRST
-                [...]
- 
-     ``-object secret,id=id,data=string,format=raw|base64[,keyid=secretid,iv=string]``
--      \ 
-+      \
-     ``-object secret,id=id,file=filename,format=raw|base64[,keyid=secretid,iv=string]``
-         Defines a secret to store a password, encryption key, or some
-         other sensitive data. The sensitive data can either be passed
--- 
-2.25.1
-
+On 5/17/21 12:15 PM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  target/hppa/cpu.h | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+> index 61178fa6a2a..748270bfa31 100644
+> --- a/target/hppa/cpu.h
+> +++ b/target/hppa/cpu.h
+> @@ -22,7 +22,6 @@
+>  
+>  #include "cpu-qom.h"
+>  #include "exec/cpu-defs.h"
+> -#include "exec/memory.h"
+>  
+>  /* PA-RISC 1.x processors have a strong memory model.  */
+>  /* ??? While we do not yet implement PA-RISC 2.0, those processors have
+> 
 
