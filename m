@@ -1,75 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lnvAy-00071J-Ib
-	for mharc-qemu-trivial@gnu.org; Mon, 31 May 2021 23:34:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33170)
+	id 1lnwgJ-0002Hx-3r
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Jun 2021 01:11:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lnvAw-00070d-IR; Mon, 31 May 2021 23:34:42 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:36548)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lnvAv-0006yu-16; Mon, 31 May 2021 23:34:42 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- n17-20020a7bc5d10000b0290169edfadac9so592065wmk.1; 
- Mon, 31 May 2021 20:34:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=a/4wZk6eepGU3q1c8giw7C2nDAQVMmOn9kozWz7BdN8=;
- b=GcsnPdo45DdDo3dpzsssLhzuNrwhlztQpn0wCxG2WOqU8wxvNonUIFjRfh8Kw/UwDR
- /aVGQCb5CoZXWrnT+NS2o++77qXiRPxP+4TLEPrTBHglMlNq+ueiZT5FXAzW/LVJ4/y8
- gzx7f6mcK5MBoAEfpBSJI/8NQ7ZTRnGDD3YYNM2xZVYdm9PWUA26YQaR/dQx5oB4/CjM
- 8U4T8dlA6/XpySwLGd2jXBc71Jv4Ae7895kfWZ5hbW5OlMAjcFyqmms7ZYG03wHUuc2R
- 9ppi34DI55c5L+YHJSIdKULfeNfUd5eUAGbf/q8NOJEmiCsVU06c/Xn9r6+H21FebKr5
- ksAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=a/4wZk6eepGU3q1c8giw7C2nDAQVMmOn9kozWz7BdN8=;
- b=D3O1FUS8EGlbVQHpMygTEAYSNxkRziOouLAzQTSDCS7CMdhU1x6ex3aSu6I1zBdiGU
- jfxVFP+03paX/Fu7vv2Wm8Umr7YhKAxWSi+yaRF6eA+5xOEfrnLISEJi5rSp/yyrrhsF
- QmeL2czjc9OB0jpOy9BBOl7A7U/0vimZRScccOJO5iz1LM/tjY/RCwMoCkuC+yqB6cHk
- PfyfSfxKi4vKwLCcV2YmPPqfGHtOdIy+xywIzuXLyCzi6MYTVAhSsEj4Hbh0VWpkK0R6
- TxwlbSxclHHSOURsqVEzqfVuvo+xQSZQl9OiBAmT0+ZjE5CS3s1/E7NrBT+V7uuzqK9d
- kz+g==
-X-Gm-Message-State: AOAM533psJHIzO7/O2CVqMdCFdBupUhufp81Wep/G2iDyoTJ0s9nBBDu
- 30TeFyT9xqxmqPFNcRcc60M=
-X-Google-Smtp-Source: ABdhPJzWrvZNqUSk6s/cvjS5W3VLuHPOA+lzskqutgJhbYb06nZ27pykNdnghAkyHj9Thvu4sTRZ+Q==
-X-Received: by 2002:a7b:c4da:: with SMTP id g26mr1994279wmk.64.1622518478781; 
- Mon, 31 May 2021 20:34:38 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id g21sm1674986wrb.46.2021.05.31.20.34.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 May 2021 20:34:37 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] target/hppa: Remove unused 'memory.h' header
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-References: <20210517101558.1040191-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <ef946ba8-70f7-f6d5-24ad-01151da78131@amsat.org>
-Date: Tue, 1 Jun 2021 05:34:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1lnwgH-0002He-22
+ for qemu-trivial@nongnu.org; Tue, 01 Jun 2021 01:11:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51313)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1lnwgA-00085W-Rk
+ for qemu-trivial@nongnu.org; Tue, 01 Jun 2021 01:11:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1622524260;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=XN4zQl2j+2AFxyvOGHKMSewWMfDMaTV7vNrfGfLuZI0=;
+ b=c2xLB7vLAWq+gaM+RlKnJgCKRFZSKNWnPmJZbc+3tsI/4kZKPQcbzCuAC0wouQtRtWwTQc
+ tFUZG0GUZpMb9+QuSju+XyOyrgxvJpO6c+08ABRanKEDCfe5faPezccWFFQNUYK3CdQjdz
+ TBRHUXSYqvaGPBx5KWLl59wiQCtU3UI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-39-cJoYj1MmMU6WX-RO--GnSQ-1; Tue, 01 Jun 2021 01:10:58 -0400
+X-MC-Unique: cJoYj1MmMU6WX-RO--GnSQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9C237801B13;
+ Tue,  1 Jun 2021 05:10:57 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-84.ams2.redhat.com
+ [10.36.112.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3D98E690EF;
+ Tue,  1 Jun 2021 05:10:57 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id A5A5818000A0; Tue,  1 Jun 2021 07:10:55 +0200 (CEST)
+Date: Tue, 1 Jun 2021 07:10:55 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: email@aabouzied.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] Add display suboptions to man pages
+Message-ID: <20210601051055.xbqfoaz2kot4p4bi@sirius.home.kraxel.org>
+References: <20210601014312.17981-1-email@aabouzied.com>
 MIME-Version: 1.0
-In-Reply-To: <20210517101558.1040191-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.591,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210601014312.17981-1-email@aabouzied.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,27 +71,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Jun 2021 03:34:42 -0000
+X-List-Received-Date: Tue, 01 Jun 2021 05:11:10 -0000
 
-Laurent, can you take this reviewed patch via qemu-trivial?
+  Hi,
 
-On 5/17/21 12:15 PM, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  target/hppa/cpu.h | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-> index 61178fa6a2a..748270bfa31 100644
-> --- a/target/hppa/cpu.h
-> +++ b/target/hppa/cpu.h
-> @@ -22,7 +22,6 @@
+>  SRST
+>  ``-numa node[,mem=size][,cpus=firstcpu[-lastcpu]][,nodeid=node][,initiator=initiator]``
+> -  \ 
+> +  \
+
+Seems some unrelated (whitespace?) changes sneaked in.
+
+> @@ -1819,11 +1819,22 @@ SRST
+>      old style -sdl/-curses/... options. Use ``-display help`` to list
+>      the available display types. Valid values for type are
 >  
->  #include "cpu-qom.h"
->  #include "exec/cpu-defs.h"
-> -#include "exec/memory.h"
->  
->  /* PA-RISC 1.x processors have a strong memory model.  */
->  /* ??? While we do not yet implement PA-RISC 2.0, those processors have
-> 
+> -    ``sdl``
+> +    ``spice-app[,gl=on|off]``
+> +        Start QEMU as a Spice server and launch the default Spice client
+> +        application. The Spice server will redirect the serial consoles
+> +        and QEMU monitors. (Since 4.0)
+> +
+> +    ``sdl[,alt_grab=on|off][,ctrl_grab=on|off][,window_close=on|off][,gl=on|core|es|off]``
+> +
+>          Display video output via SDL (usually in a separate graphics
+>          window; see the SDL documentation for other possibilities).
+
+alt-grab and ctrl-grab are deprecated and should not be added here.
+please use dash not underscore (i.e. "window-close") here and elsewhere.
+
+> +    ``vnc=<display>[,<optarges>]``
+> +        Start a VNC server on display <arg>
+
+No.  Works for compatibility reasons, but vnc has its own "-vnc" switch
+which should be used instead.
+
+> -ERST
+> +    ERST
+
+I think indenting this breaks the scripts processing the file ...
+
+>  ``-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]``
+> -    Setup monitor on chardev name. ``mode=control`` configures 
+> +    Setup monitor on chardev name. ``mode=control`` configures
+
+More unrelated changes ...
+
+take care,
+  Gerd
+
 
