@@ -1,75 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1loORZ-0007ve-KF
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jun 2021 06:49:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55052)
+	id 1loRAW-000601-I3
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jun 2021 09:44:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1loORU-0007s2-Nh; Wed, 02 Jun 2021 06:49:44 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:44802)
+ (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
+ id 1loRAU-0005vq-3i; Wed, 02 Jun 2021 09:44:22 -0400
+Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41]:42691)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1loORS-0005Db-SP; Wed, 02 Jun 2021 06:49:44 -0400
-Received: by mail-ed1-x529.google.com with SMTP id u24so2317500edy.11;
- Wed, 02 Jun 2021 03:49:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
+ id 1loRAS-0005oM-9O; Wed, 02 Jun 2021 09:44:21 -0400
+Received: by mail-qv1-xf41.google.com with SMTP id u33so1288726qvf.9;
+ Wed, 02 Jun 2021 06:44:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=/a/QxillmK8IagSazCnhheRahAu5/+NIpmn3/8xaZvI=;
- b=oC0KXUw+O/pKQnjJ3xe7D+gF5VWnNxMF+klRX2zMRyZE+baJxs9HZkcC3INoNhiUNx
- HZRuhvDTyQqWl7P9gOa1hO9WkQqEBjoGJNy4uUFy461SN8z3B2n02d5FY4qz/R095750
- fybHie4c7eRQrRHnZZC3hhO0qZriQgBWJLMwG7PC9b2G0OVwE2VsSprzIXNV9hVooyao
- 3iX6iVB+F4kKMp+w5JWkWWQPq9LKbkV1CYYu+mk+2dzVbFDJ7/otlcWxVCWpYNBOrDst
- TlcEof8K36EOgJdx7bSiwNrFVEY6v2L0zlwvFIresj6rNPMmUA+NoNXMqNyizt9CsTsB
- KXNQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=129Pl9OSeUE3s5KLE+dbt5S1ITWq22ra9ssXImBVUdk=;
+ b=R7WLlCg809KsuGwbbWqQm/Ad6sqwzSKUBVX3BbtrUgKeXhAuF43MqFuViwFvzD+isf
+ I9DmsCTXR2mLWcEsBxMLxM7CQWMuxrf7ZaNOnSSlHVpOJSuRU5hHeGsoaynmNbu2OEnJ
+ vH5BHjdtCTZNdWrKFajAucg+e5U1rXn/ZUI8GGRsP8qfrg/WbIB+ULKybmWrQ3Nu9k5g
+ 5olYn60rz9eEvQJRCHKrqhciTKf3L3ofCbEnAHkduj39/Q9EXOjIzjsenvfptAgdqkgw
+ mdk2n+tuQdGdvjLiJTmeMZvka/zsPUBzjlSCxgw4H5qAUBuurKv87DOQZVoLrhOuqYC4
+ Sv/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/a/QxillmK8IagSazCnhheRahAu5/+NIpmn3/8xaZvI=;
- b=MZcBMKQ8Oek/yiGh0W5RzlppbLbtRd7FNAhMDCWBkYDL8a/6blqFLffeGXRS7fxNa7
- ewDQZY9RTEQXVF9YHPOnQ0YPHEcMfo6qBEv5p5lrgemfPy64srEL97w/8udmro3Jv0Ss
- sp/v2qopoL5HLfP3Gu+9Ceuff+KcPjscECko5qlZyV7vDojQgB+B/ZfJIFStZeD42mVE
- lbZgnvGrmzGsOsUTv7GsYNdXvGJC2TrwMeN5N3SGI40nz38cL6kFNzUAPRrlm/qa79dQ
- 749hcfIipxLO3tZDfIb9z9RXsjmkXIxz+LIcdlmd7zQ4Vmjj2qidQe5zHOaOS+zvfddY
- e10A==
-X-Gm-Message-State: AOAM5325SkMeGgh2QAAUzPrJZGiVKxw6qet8U/OgECSzNjRYb+M2S7Kn
- HpR1RZKH5D9udDoQCdrrFxO/OeNVmHuqkQ==
-X-Google-Smtp-Source: ABdhPJy1tu5BvlTmtQrmd3uaSKb+votEfqbTPjh4mwj3aHloeDcOI+djB4uNN12JKHC1fmhlOnAkKA==
-X-Received: by 2002:a05:6402:1153:: with SMTP id
- g19mr37537064edw.179.1622630980029; 
- Wed, 02 Jun 2021 03:49:40 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id l19sm6579900eja.62.2021.06.02.03.49.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jun 2021 03:49:39 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] memory: Display MemoryRegion name in read/write ops trace
- events
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210307074833.143106-1-f4bug@amsat.org>
- <8892fbd6-a63c-ef02-78f3-935e4f95dbb1@amsat.org>
-Message-ID: <2def176e-8707-78cc-b524-3fd47456261f@amsat.org>
-Date: Wed, 2 Jun 2021 12:49:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=129Pl9OSeUE3s5KLE+dbt5S1ITWq22ra9ssXImBVUdk=;
+ b=s5MbzSBncq8kF3HAbsJVX3BWQ90nw6A1HczXu6JYvEmkgjgpTYpfFPWE5EVZS2x1b/
+ tA1bfe0gflSgcWbpT8cb/OUPk2ycPTJuZBa5CVKaEO72mZuOv7GCkAvzyhKSfpfXck6u
+ wSGdufS1B7CNGeaoJ3grIhE/AmViBjI5sauDKwxupMoNgp8ypRJyGmZHFPepFDo9kzCD
+ CUG/bZiupanq5uzE//Udi1WeaN7dkExKEJd6xHyr/68qTZyeTqeBu99PYSMlZu/8U4dv
+ gPcN6eImUV4rTr9R4beHGxGZI7Qvf3pvsfrvFynKzuBFTu9CwBFJ68MWGevV0qweszN1
+ EVjA==
+X-Gm-Message-State: AOAM531llYX3qPw+NTKOhSaWcYRvSPAeUcMVchOIP2GMt9nIMtWupgEz
+ dp/CIhS/DuEK7gdqTc3sb7BOM1YBawbCc/lJiLs=
+X-Google-Smtp-Source: ABdhPJzJ1IM7GvIyLG2Ec1ojxpdCcaNeISEKLqwd4bbo2Rzlq6f99UZSFiK5sQc53lMQvxveefSd+iKMgGhS5saljQw=
+X-Received: by 2002:a0c:c184:: with SMTP id n4mr28431158qvh.36.1622641458215; 
+ Wed, 02 Jun 2021 06:44:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <8892fbd6-a63c-ef02-78f3-935e4f95dbb1@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.613,
+References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
+ <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+ <CAFEAcA8RbVafdjn2hkXifAPUF=wxZup20PqPcRpQ1ivtnWCxww@mail.gmail.com>
+ <CALf2nm+LFqM2=vDs8=YfyxQSUT-0xxaCiVmcQzrKoOa+zaTtdg@mail.gmail.com>
+ <CAFEAcA-oX0JR80UYzYKvczHsfxWG6oH3Pg4pbM6ByDe57XEHHw@mail.gmail.com>
+ <CALf2nmKhPaWJa944dR+kFAQ1hCLXF0XPwXaHTqJQ-C6EW7ACKg@mail.gmail.com>
+ <CAFEAcA9E4s3dST0GJkdg24DDAn90WU1FEmXwoKD6oQmNSB1vVA@mail.gmail.com>
+ <CABSBigR1L9sE36eYA0Mq4smx1E9A4umTOKTe_x97foSMkryRnw@mail.gmail.com>
+ <CALf2nmLOqtwacgrQ91TTz9_QRUmFS9ZNii2Kk7-tQ7LNp9vw2Q@mail.gmail.com>
+In-Reply-To: <CALf2nmLOqtwacgrQ91TTz9_QRUmFS9ZNii2Kk7-tQ7LNp9vw2Q@mail.gmail.com>
+From: Dongjiu Geng <gengdongjiu1@gmail.com>
+Date: Wed, 2 Jun 2021 21:44:07 +0800
+Message-ID: <CABSBigTga9Xc+RJMN-F=fb_z22Wyh9beoVjRb6o+RA=KDV1ujg@mail.gmail.com>
+Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
+ when their configs are enabled
+To: Swetha Joshi <swethajoshi139@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f41;
+ envelope-from=gengdongjiu1@gmail.com; helo=mail-qv1-xf41.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -84,83 +82,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jun 2021 10:49:45 -0000
+X-List-Received-Date: Wed, 02 Jun 2021 13:44:22 -0000
 
-Cc'ing qemu-trivial@
+Swetha Joshi <swethajoshi139@gmail.com> =E4=BA=8E2021=E5=B9=B45=E6=9C=8829=
+=E6=97=A5=E5=91=A8=E5=85=AD =E4=B8=8A=E5=8D=883:41=E5=86=99=E9=81=93=EF=BC=
+=9A
+>
+> I apologize for the delay, here are the repro steps:
+> 1. Remove CONFIG_ARM_VIRT=3Dy from arm-softmmu.mak
+> 2. In .gitlab-ci.yml, crossbuild.yml and in tests/vm/Makefile.include, in=
+ all the places where we disable kvm using -disable-kvm, replace this with =
+-enable-kvm
+> 3. Build
 
-On 3/18/21 4:39 PM, Philippe Mathieu-Daudé wrote:
-> ping?
-> 
-> On 3/7/21 8:48 AM, Philippe Mathieu-Daudé wrote:
->> MemoryRegion names is cached on first call to memory_region_name(),
->> so displaying the name is trace events is cheap. Add it for read /
->> write ops.
+According to your steps, I can not see such errors=EF=BC=8Calso your change=
+ is
+odd. I suggested you do not this change until you indeed encounter
+errors
+
+diff --git a/default-configs/devices/arm-softmmu.mak
+b/default-configs/devices/arm-softmmu.mak
+index 0500156a0c..f47ab0f3b1 100644
+--- a/default-configs/devices/arm-softmmu.mak
++++ b/default-configs/devices/arm-softmmu.mak
+@@ -6,7 +6,6 @@ CONFIG_ARM_V7M=3Dy
+ # CONFIG_PCI_DEVICES=3Dn
+ # CONFIG_TEST_DEVICES=3Dn
+
+-CONFIG_ARM_VIRT=3Dy
+ CONFIG_CUBIEBOARD=3Dy
+ CONFIG_EXYNOS4=3Dy
+ CONFIG_HIGHBANK=3Dy
+diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
+index e94d95ec54..95387c3e5a 100644
+--- a/tests/vm/Makefile.include
++++ b/tests/vm/Makefile.include
+@@ -110,7 +110,7 @@ vm-build-%: $(IMAGES_DIR)/%.img
+                "  VM-BUILD $*")
+
+ vm-boot-serial-%: $(IMAGES_DIR)/%.img
+-       qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -nographic \
++       qemu-system-x86_64 -disable-kvm -m 4G -smp 2 -nographic \
+                -drive if=3Dnone,id=3Dvblk,cache=3Dwriteback,file=3D"$<" \
+                -netdev user,id=3Dvnet \
+                -device virtio-blk-pci,drive=3Dvblk \
+
+
+>
+> You should see errors pointing to these routines: virt_is_acpi_enabled, a=
+cpi_ghes_record_errors
+>
+> Thanks,
+> Swetha.
+>
+> On Fri, May 28, 2021 at 12:08 AM Dongjiu Geng <gengdongjiu1@gmail.com> wr=
+ote:
 >>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  softmmu/memory.c     | 12 ++++++++----
->>  softmmu/trace-events |  4 ++--
->>  2 files changed, 10 insertions(+), 6 deletions(-)
+>> Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2021=E5=B9=B45=E6=9C=
+=8827=E6=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8A=E5=8D=882:19=E5=86=99=E9=81=93=
+=EF=BC=9A
+>> >
+>> > On Wed, 26 May 2021 at 18:32, Swetha Joshi <swethajoshi139@gmail.com> =
+wrote:
+>> > >
+>> > > Hello,
+>> > >
+>> > > One of the qemu machines we use has KVM enabled, but we don't want t=
+he CONFIG_ARM_VIRT enabled as it pulls in emulation of a variety of physica=
+l hardware that we don't need. The compilation errors I mentioned are not i=
+n the qemu mainline per say but we see them in one of the qemu derived mach=
+ines we use.
+>> >
+>> > Sure, but unless you can give me a recipe for reproducing the
+>> > build failure in mainline I can't really help...
 >>
->> diff --git a/softmmu/memory.c b/softmmu/memory.c
->> index 874a8fccdee..d4d9ab8828e 100644
->> --- a/softmmu/memory.c
->> +++ b/softmmu/memory.c
->> @@ -444,7 +444,8 @@ static MemTxResult  memory_region_read_accessor(MemoryRegion *mr,
->>          trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
->>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
->>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
->> -        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size);
->> +        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
->> +                                     memory_region_name(mr));
->>      }
->>      memory_region_shift_read_access(value, shift, mask, tmp);
->>      return MEMTX_OK;
->> @@ -466,7 +467,8 @@ static MemTxResult memory_region_read_with_attrs_accessor(MemoryRegion *mr,
->>          trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
->>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
->>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
->> -        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size);
->> +        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
->> +                                     memory_region_name(mr));
->>      }
->>      memory_region_shift_read_access(value, shift, mask, tmp);
->>      return r;
->> @@ -486,7 +488,8 @@ static MemTxResult memory_region_write_accessor(MemoryRegion *mr,
->>          trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
->>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
->>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
->> -        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size);
->> +        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
->> +                                      memory_region_name(mr));
->>      }
->>      mr->ops->write(mr->opaque, addr, tmp, size);
->>      return MEMTX_OK;
->> @@ -506,7 +509,8 @@ static MemTxResult memory_region_write_with_attrs_accessor(MemoryRegion *mr,
->>          trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
->>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
->>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
->> -        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size);
->> +        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
->> +                                      memory_region_name(mr));
->>      }
->>      return mr->ops->write_with_attrs(mr->opaque, addr, tmp, size, attrs);
->>  }
->> diff --git a/softmmu/trace-events b/softmmu/trace-events
->> index b80ca042e1f..359fb37cc8d 100644
->> --- a/softmmu/trace-events
->> +++ b/softmmu/trace-events
->> @@ -9,8 +9,8 @@ cpu_in(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
->>  cpu_out(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
->>  
->>  # memory.c
->> -memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
->> -memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
->> +memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
->> +memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
->>  memory_region_subpage_read(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
->>  memory_region_subpage_write(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
->>  memory_region_ram_device_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
+>> Hi Swetha=EF=BC=8C
+>>      Yes,  Can you give a method that how to reproduce the build
+>> failure issues? Thanks
 >>
-> 
+>> >
+>> > thanks
+>> > -- PMM
+>
+>
+>
+> --
+> Regards
+>
+> Swetha Joshi.
 
