@@ -1,87 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1loOQK-0006Ec-To
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jun 2021 06:48:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54756)
+	id 1loORZ-0007ve-KF
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jun 2021 06:49:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55052)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1loOQK-0006Ca-1y
- for qemu-trivial@nongnu.org; Wed, 02 Jun 2021 06:48:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58167)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1loOQF-0004dR-MQ
- for qemu-trivial@nongnu.org; Wed, 02 Jun 2021 06:48:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622630903;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=W4d+N5hSTUJBk3b5rNPJNcq/N8hJwu9KhEYYd83L8j8=;
- b=Nl6S2PJdGDu/GLv62rUvYHfG5nOMdNBHl3/Iplu9qh9vKHpKRq2PEgaFHaqAVrDctzURDr
- 8ZlonwN+VT6wHvZSnBAGG556Gyxf1bIBoaW7rLWAv2iEN9tsqzG3FW4vh1VaM8nKCYeb8c
- nZVB4+bv6hmihLZPt3FuB3zpkzAyN9g=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-206-0wxonjzHO_GU5N5oq8u6zQ-1; Wed, 02 Jun 2021 06:48:22 -0400
-X-MC-Unique: 0wxonjzHO_GU5N5oq8u6zQ-1
-Received: by mail-ed1-f72.google.com with SMTP id
- c12-20020aa7d60c0000b029038fccdf4390so1162300edr.9
- for <qemu-trivial@nongnu.org>; Wed, 02 Jun 2021 03:48:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1loORU-0007s2-Nh; Wed, 02 Jun 2021 06:49:44 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:44802)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1loORS-0005Db-SP; Wed, 02 Jun 2021 06:49:44 -0400
+Received: by mail-ed1-x529.google.com with SMTP id u24so2317500edy.11;
+ Wed, 02 Jun 2021 03:49:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=/a/QxillmK8IagSazCnhheRahAu5/+NIpmn3/8xaZvI=;
+ b=oC0KXUw+O/pKQnjJ3xe7D+gF5VWnNxMF+klRX2zMRyZE+baJxs9HZkcC3INoNhiUNx
+ HZRuhvDTyQqWl7P9gOa1hO9WkQqEBjoGJNy4uUFy461SN8z3B2n02d5FY4qz/R095750
+ fybHie4c7eRQrRHnZZC3hhO0qZriQgBWJLMwG7PC9b2G0OVwE2VsSprzIXNV9hVooyao
+ 3iX6iVB+F4kKMp+w5JWkWWQPq9LKbkV1CYYu+mk+2dzVbFDJ7/otlcWxVCWpYNBOrDst
+ TlcEof8K36EOgJdx7bSiwNrFVEY6v2L0zlwvFIresj6rNPMmUA+NoNXMqNyizt9CsTsB
+ KXNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=W4d+N5hSTUJBk3b5rNPJNcq/N8hJwu9KhEYYd83L8j8=;
- b=ZBGBuFz9It1gjQXjRv7wV3a7/Nyas2PeePZps2+lgnZJKNmSLKPEHx6hVunHHqwcEa
- n7Jbafb3HiGz5zshz4zhPXBnIN6eO7C5NwTGqZtX85daA//mxbQlpLzynFnRqLIVDT1t
- dyFL/2gYDHSipjg2pE7ZfFY65Zo2lL5crED0x5ps+vRveoPifKb1kV6HoKK3qQ8v1kf9
- DFa/zEBTIa1NjQx9Q6llUDWFmwRbvpcFakt7OAuRi6+Ixbws6vJRn7SFq/eTtx4MUWUJ
- 0MjqoIshUc/3/YR2xAJ5C9PU/WPvNs7+p0aemjZw9Kdx0jNJueXBteb1Z9fmUeOZA5ZV
- Dyyw==
-X-Gm-Message-State: AOAM531ELcl2bisbYDNYcp+fhZq7I9NLjkWPwnDU63dyO2e/puLc5Zen
- PIur2NeAcVJn3AwsO8rMUpxvIRrMlmkIH+mJpFd2bl8EzHkzhXVjirajlD/Cpti+BKvf6BPKANa
- DuXbtMsOPO0THC5g8TmjZb+G3tK4L2mkcnUuUe6P9LH34Vk1LgMQxZqJsh6dqmBtR6Wg=
-X-Received: by 2002:aa7:d0d4:: with SMTP id u20mr31625668edo.228.1622630900317; 
- Wed, 02 Jun 2021 03:48:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyn6y/v7hS3WgMuIEL6X1PGmb0SdB2TcpUqGR2iHAUm98v3JjKgACvdssyI0ei4O7Bpp4yb/g==
-X-Received: by 2002:aa7:d0d4:: with SMTP id u20mr31625649edo.228.1622630900119; 
- Wed, 02 Jun 2021 03:48:20 -0700 (PDT)
+ bh=/a/QxillmK8IagSazCnhheRahAu5/+NIpmn3/8xaZvI=;
+ b=MZcBMKQ8Oek/yiGh0W5RzlppbLbtRd7FNAhMDCWBkYDL8a/6blqFLffeGXRS7fxNa7
+ ewDQZY9RTEQXVF9YHPOnQ0YPHEcMfo6qBEv5p5lrgemfPy64srEL97w/8udmro3Jv0Ss
+ sp/v2qopoL5HLfP3Gu+9Ceuff+KcPjscECko5qlZyV7vDojQgB+B/ZfJIFStZeD42mVE
+ lbZgnvGrmzGsOsUTv7GsYNdXvGJC2TrwMeN5N3SGI40nz38cL6kFNzUAPRrlm/qa79dQ
+ 749hcfIipxLO3tZDfIb9z9RXsjmkXIxz+LIcdlmd7zQ4Vmjj2qidQe5zHOaOS+zvfddY
+ e10A==
+X-Gm-Message-State: AOAM5325SkMeGgh2QAAUzPrJZGiVKxw6qet8U/OgECSzNjRYb+M2S7Kn
+ HpR1RZKH5D9udDoQCdrrFxO/OeNVmHuqkQ==
+X-Google-Smtp-Source: ABdhPJy1tu5BvlTmtQrmd3uaSKb+votEfqbTPjh4mwj3aHloeDcOI+djB4uNN12JKHC1fmhlOnAkKA==
+X-Received: by 2002:a05:6402:1153:: with SMTP id
+ g19mr37537064edw.179.1622630980029; 
+ Wed, 02 Jun 2021 03:49:40 -0700 (PDT)
 Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
  [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id l11sm8396436ejd.103.2021.06.02.03.48.19
+ by smtp.gmail.com with ESMTPSA id l19sm6579900eja.62.2021.06.02.03.49.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jun 2021 03:48:19 -0700 (PDT)
-Subject: Re: [PATCH] target/i386/sev: Ensure sev_fw_errlist is sync with
- update-linux-headers
-To: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
-Cc: Connor Kuehl <ckuehl@redhat.com>, Brijesh Singh <brijesh.singh@amd.com>,
- Tom Lendacky <thomas.lendacky@amd.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210219180131.2061072-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <665ebe97-fbe2-2273-0a02-1a94351c1e1c@redhat.com>
-Date: Wed, 2 Jun 2021 12:48:18 +0200
+ Wed, 02 Jun 2021 03:49:39 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] memory: Display MemoryRegion name in read/write ops trace
+ events
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210307074833.143106-1-f4bug@amsat.org>
+ <8892fbd6-a63c-ef02-78f3-935e4f95dbb1@amsat.org>
+Message-ID: <2def176e-8707-78cc-b524-3fd47456261f@amsat.org>
+Date: Wed, 2 Jun 2021 12:49:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <20210219180131.2061072-1-philmd@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <8892fbd6-a63c-ef02-78f3-935e4f95dbb1@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.613, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.613,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -95,52 +84,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jun 2021 10:48:32 -0000
+X-List-Received-Date: Wed, 02 Jun 2021 10:49:45 -0000
 
-This patch was supposed to go via Eduardo's tree but he
-missed it, can it go via qemu-trivial instead?
+Cc'ing qemu-trivial@
 
-On 2/19/21 7:01 PM, Philippe Mathieu-Daudé wrote:
-> Ensure sev_fw_errlist[] is updated after running
-> the update-linux-headers.sh script.
+On 3/18/21 4:39 PM, Philippe Mathieu-Daudé wrote:
+> ping?
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
-> Based-on: <20210218151633.215374-1-ckuehl@redhat.com>
-> ---
->  target/i386/sev.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+> On 3/7/21 8:48 AM, Philippe Mathieu-Daudé wrote:
+>> MemoryRegion names is cached on first call to memory_region_name(),
+>> so displaying the name is trace events is cheap. Add it for read /
+>> write ops.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  softmmu/memory.c     | 12 ++++++++----
+>>  softmmu/trace-events |  4 ++--
+>>  2 files changed, 10 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/softmmu/memory.c b/softmmu/memory.c
+>> index 874a8fccdee..d4d9ab8828e 100644
+>> --- a/softmmu/memory.c
+>> +++ b/softmmu/memory.c
+>> @@ -444,7 +444,8 @@ static MemTxResult  memory_region_read_accessor(MemoryRegion *mr,
+>>          trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
+>>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
+>>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
+>> -        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size);
+>> +        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
+>> +                                     memory_region_name(mr));
+>>      }
+>>      memory_region_shift_read_access(value, shift, mask, tmp);
+>>      return MEMTX_OK;
+>> @@ -466,7 +467,8 @@ static MemTxResult memory_region_read_with_attrs_accessor(MemoryRegion *mr,
+>>          trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
+>>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
+>>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
+>> -        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size);
+>> +        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
+>> +                                     memory_region_name(mr));
+>>      }
+>>      memory_region_shift_read_access(value, shift, mask, tmp);
+>>      return r;
+>> @@ -486,7 +488,8 @@ static MemTxResult memory_region_write_accessor(MemoryRegion *mr,
+>>          trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
+>>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
+>>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
+>> -        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size);
+>> +        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
+>> +                                      memory_region_name(mr));
+>>      }
+>>      mr->ops->write(mr->opaque, addr, tmp, size);
+>>      return MEMTX_OK;
+>> @@ -506,7 +509,8 @@ static MemTxResult memory_region_write_with_attrs_accessor(MemoryRegion *mr,
+>>          trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
+>>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
+>>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
+>> -        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size);
+>> +        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
+>> +                                      memory_region_name(mr));
+>>      }
+>>      return mr->ops->write_with_attrs(mr->opaque, addr, tmp, size, attrs);
+>>  }
+>> diff --git a/softmmu/trace-events b/softmmu/trace-events
+>> index b80ca042e1f..359fb37cc8d 100644
+>> --- a/softmmu/trace-events
+>> +++ b/softmmu/trace-events
+>> @@ -9,8 +9,8 @@ cpu_in(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
+>>  cpu_out(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
+>>  
+>>  # memory.c
+>> -memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
+>> -memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
+>> +memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
+>> +memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
+>>  memory_region_subpage_read(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
+>>  memory_region_subpage_write(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
+>>  memory_region_ram_device_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
+>>
 > 
-> diff --git a/target/i386/sev.c b/target/i386/sev.c
-> index 37690ae809c..92c69a23769 100644
-> --- a/target/i386/sev.c
-> +++ b/target/i386/sev.c
-> @@ -87,7 +87,7 @@ typedef struct __attribute__((__packed__)) SevInfoBlock {
->  static SevGuestState *sev_guest;
->  static Error *sev_mig_blocker;
->  
-> -static const char *const sev_fw_errlist[] = {
-> +static const char *const sev_fw_errlist[SEV_RET_MAX] = {
->      [SEV_RET_SUCCESS]                = "",
->      [SEV_RET_INVALID_PLATFORM_STATE] = "Platform state is invalid",
->      [SEV_RET_INVALID_GUEST_STATE]    = "Guest state is invalid",
-> @@ -114,6 +114,8 @@ static const char *const sev_fw_errlist[] = {
->      [SEV_RET_RESOURCE_LIMIT]         = "Required firmware resource depleted",
->      [SEV_RET_SECURE_DATA_INVALID]    = "Part-specific integrity check failure",
->  };
-> +/* Ensure sev_fw_errlist[] is updated after running update-linux-headers.sh */
-> +QEMU_BUILD_BUG_ON(SEV_RET_SECURE_DATA_INVALID + 1 != SEV_RET_MAX);
->  
->  #define SEV_FW_MAX_ERROR      ARRAY_SIZE(sev_fw_errlist)
->  
-> @@ -160,6 +162,7 @@ fw_error_to_str(int code)
->      if (code < 0 || code >= SEV_FW_MAX_ERROR) {
->          return "unknown error";
->      }
-> +    assert(sev_fw_errlist[code]);
->  
->      return sev_fw_errlist[code];
->  }
-> 
-
 
