@@ -1,75 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1loRAW-000601-I3
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jun 2021 09:44:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43002)
+	id 1loULg-0001uf-PS
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jun 2021 13:08:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41888)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
- id 1loRAU-0005vq-3i; Wed, 02 Jun 2021 09:44:22 -0400
-Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41]:42691)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1loULf-0001tP-3L; Wed, 02 Jun 2021 13:08:07 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:39427)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gengdongjiu1@gmail.com>)
- id 1loRAS-0005oM-9O; Wed, 02 Jun 2021 09:44:21 -0400
-Received: by mail-qv1-xf41.google.com with SMTP id u33so1288726qvf.9;
- Wed, 02 Jun 2021 06:44:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1loULd-0007OJ-GW; Wed, 02 Jun 2021 13:08:06 -0400
+Received: by mail-ej1-x634.google.com with SMTP id l1so4928509ejb.6;
+ Wed, 02 Jun 2021 10:08:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=129Pl9OSeUE3s5KLE+dbt5S1ITWq22ra9ssXImBVUdk=;
- b=R7WLlCg809KsuGwbbWqQm/Ad6sqwzSKUBVX3BbtrUgKeXhAuF43MqFuViwFvzD+isf
- I9DmsCTXR2mLWcEsBxMLxM7CQWMuxrf7ZaNOnSSlHVpOJSuRU5hHeGsoaynmNbu2OEnJ
- vH5BHjdtCTZNdWrKFajAucg+e5U1rXn/ZUI8GGRsP8qfrg/WbIB+ULKybmWrQ3Nu9k5g
- 5olYn60rz9eEvQJRCHKrqhciTKf3L3ofCbEnAHkduj39/Q9EXOjIzjsenvfptAgdqkgw
- mdk2n+tuQdGdvjLiJTmeMZvka/zsPUBzjlSCxgw4H5qAUBuurKv87DOQZVoLrhOuqYC4
- Sv/w==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JGPis0AW+aaH4wBbSop936myvgD2dj3LgszAZSmfYV8=;
+ b=RHfTLCVu6mWIFdLUE8yzTZn4nY+/VHYjsoY9lWtLMCtgxUmV7/f7Ae/8EeViEjL91z
+ 4MKyZl4p380USIjAZ0uJTOpWZuY6WNNyYGIsPPB4ngCUsITyL34KgJGKXWFii26SOOwG
+ K1coHH4kD2upBUJpcd/vVmstcmxVhcvGplXskf0FrqmNDD8Nu/mkImpte4M5CFLefXKL
+ 2lzgHaN11ib26n19CuHP0lykDfvbzXpVnuTOaxpzXS05Mje9sw7CVPp0AwRbGbTA84Md
+ 7z1wB8yXOX7k7LsUL7cyvz/KkbLfdKtzRBd5X/JAPcKl3NEETQws9HCKAYCCphAOxkls
+ s/XA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=129Pl9OSeUE3s5KLE+dbt5S1ITWq22ra9ssXImBVUdk=;
- b=s5MbzSBncq8kF3HAbsJVX3BWQ90nw6A1HczXu6JYvEmkgjgpTYpfFPWE5EVZS2x1b/
- tA1bfe0gflSgcWbpT8cb/OUPk2ycPTJuZBa5CVKaEO72mZuOv7GCkAvzyhKSfpfXck6u
- wSGdufS1B7CNGeaoJ3grIhE/AmViBjI5sauDKwxupMoNgp8ypRJyGmZHFPepFDo9kzCD
- CUG/bZiupanq5uzE//Udi1WeaN7dkExKEJd6xHyr/68qTZyeTqeBu99PYSMlZu/8U4dv
- gPcN6eImUV4rTr9R4beHGxGZI7Qvf3pvsfrvFynKzuBFTu9CwBFJ68MWGevV0qweszN1
- EVjA==
-X-Gm-Message-State: AOAM531llYX3qPw+NTKOhSaWcYRvSPAeUcMVchOIP2GMt9nIMtWupgEz
- dp/CIhS/DuEK7gdqTc3sb7BOM1YBawbCc/lJiLs=
-X-Google-Smtp-Source: ABdhPJzJ1IM7GvIyLG2Ec1ojxpdCcaNeISEKLqwd4bbo2Rzlq6f99UZSFiK5sQc53lMQvxveefSd+iKMgGhS5saljQw=
-X-Received: by 2002:a0c:c184:: with SMTP id n4mr28431158qvh.36.1622641458215; 
- Wed, 02 Jun 2021 06:44:18 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=JGPis0AW+aaH4wBbSop936myvgD2dj3LgszAZSmfYV8=;
+ b=ZxuuOiOMNSdpES3/Z4jEjBSu7DTEEmJl49U8VLiwDjZkSczNedMWU5E/KQJ3nIaukH
+ ZyXn9OSrSQD3OJLgtCF4YEx4u9knOjWKL7e/i1EdqOeuOzEx4ikA3sg1H2AqR6ohiQWz
+ 3CZBuzMbAOh1ffouUEp8GrFjHgdqqPFIW8aDL22O1btSNLze0OVSDrN3CgyRjIGPSChT
+ 5/R2YaKg/zAhJPtOrDUeyK0PWue5reLN0TbKSQqhmm21JymcvNdX2NdWIdzxmiQOOmpo
+ REoFw55/0dk8uvCoj5nlJCuH437NLHsIfrsc4rDYv9Zy4A/vn9U4hkDLV3sHcl2+BWLC
+ QHzA==
+X-Gm-Message-State: AOAM530Z8QRog11LFk5tud/ZVl1wgHnEjYuXLxSFJAHBYP4dPxEGKTdU
+ kBrT/KTXZVmBC5m+jmqA8nsq960VxiGYDA==
+X-Google-Smtp-Source: ABdhPJwTreU1kY/nXSvCFBvP94OYqA41D6OeqbwB8f3yifGkCgoQArl/PMU0+dIDEsEbBmCqSoOOoQ==
+X-Received: by 2002:a17:906:278f:: with SMTP id
+ j15mr28531334ejc.388.1622653683221; 
+ Wed, 02 Jun 2021 10:08:03 -0700 (PDT)
+Received: from x1w.redhat.com (235.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.235])
+ by smtp.gmail.com with ESMTPSA id h7sm298407ejp.24.2021.06.02.10.08.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 02 Jun 2021 10:08:01 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 0/3] trivial: Fix some typos
+Date: Wed,  2 Jun 2021 19:07:56 +0200
+Message-Id: <20210602170759.2500248-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
- <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
- <CAFEAcA8RbVafdjn2hkXifAPUF=wxZup20PqPcRpQ1ivtnWCxww@mail.gmail.com>
- <CALf2nm+LFqM2=vDs8=YfyxQSUT-0xxaCiVmcQzrKoOa+zaTtdg@mail.gmail.com>
- <CAFEAcA-oX0JR80UYzYKvczHsfxWG6oH3Pg4pbM6ByDe57XEHHw@mail.gmail.com>
- <CALf2nmKhPaWJa944dR+kFAQ1hCLXF0XPwXaHTqJQ-C6EW7ACKg@mail.gmail.com>
- <CAFEAcA9E4s3dST0GJkdg24DDAn90WU1FEmXwoKD6oQmNSB1vVA@mail.gmail.com>
- <CABSBigR1L9sE36eYA0Mq4smx1E9A4umTOKTe_x97foSMkryRnw@mail.gmail.com>
- <CALf2nmLOqtwacgrQ91TTz9_QRUmFS9ZNii2Kk7-tQ7LNp9vw2Q@mail.gmail.com>
-In-Reply-To: <CALf2nmLOqtwacgrQ91TTz9_QRUmFS9ZNii2Kk7-tQ7LNp9vw2Q@mail.gmail.com>
-From: Dongjiu Geng <gengdongjiu1@gmail.com>
-Date: Wed, 2 Jun 2021 21:44:07 +0800
-Message-ID: <CABSBigTga9Xc+RJMN-F=fb_z22Wyh9beoVjRb6o+RA=KDV1ujg@mail.gmail.com>
-Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
- when their configs are enabled
-To: Swetha Joshi <swethajoshi139@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f41;
- envelope-from=gengdongjiu1@gmail.com; helo=mail-qv1-xf41.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,92 +79,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jun 2021 13:44:22 -0000
+X-List-Received-Date: Wed, 02 Jun 2021 17:08:07 -0000
 
-Swetha Joshi <swethajoshi139@gmail.com> =E4=BA=8E2021=E5=B9=B45=E6=9C=8829=
-=E6=97=A5=E5=91=A8=E5=85=AD =E4=B8=8A=E5=8D=883:41=E5=86=99=E9=81=93=EF=BC=
-=9A
->
-> I apologize for the delay, here are the repro steps:
-> 1. Remove CONFIG_ARM_VIRT=3Dy from arm-softmmu.mak
-> 2. In .gitlab-ci.yml, crossbuild.yml and in tests/vm/Makefile.include, in=
- all the places where we disable kvm using -disable-kvm, replace this with =
--enable-kvm
-> 3. Build
-
-According to your steps, I can not see such errors=EF=BC=8Calso your change=
- is
-odd. I suggested you do not this change until you indeed encounter
-errors
-
-diff --git a/default-configs/devices/arm-softmmu.mak
-b/default-configs/devices/arm-softmmu.mak
-index 0500156a0c..f47ab0f3b1 100644
---- a/default-configs/devices/arm-softmmu.mak
-+++ b/default-configs/devices/arm-softmmu.mak
-@@ -6,7 +6,6 @@ CONFIG_ARM_V7M=3Dy
- # CONFIG_PCI_DEVICES=3Dn
- # CONFIG_TEST_DEVICES=3Dn
-
--CONFIG_ARM_VIRT=3Dy
- CONFIG_CUBIEBOARD=3Dy
- CONFIG_EXYNOS4=3Dy
- CONFIG_HIGHBANK=3Dy
-diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
-index e94d95ec54..95387c3e5a 100644
---- a/tests/vm/Makefile.include
-+++ b/tests/vm/Makefile.include
-@@ -110,7 +110,7 @@ vm-build-%: $(IMAGES_DIR)/%.img
-                "  VM-BUILD $*")
-
- vm-boot-serial-%: $(IMAGES_DIR)/%.img
--       qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -nographic \
-+       qemu-system-x86_64 -disable-kvm -m 4G -smp 2 -nographic \
-                -drive if=3Dnone,id=3Dvblk,cache=3Dwriteback,file=3D"$<" \
-                -netdev user,id=3Dvnet \
-                -device virtio-blk-pci,drive=3Dvblk \
-
-
->
-> You should see errors pointing to these routines: virt_is_acpi_enabled, a=
-cpi_ghes_record_errors
->
-> Thanks,
-> Swetha.
->
-> On Fri, May 28, 2021 at 12:08 AM Dongjiu Geng <gengdongjiu1@gmail.com> wr=
-ote:
->>
->> Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2021=E5=B9=B45=E6=9C=
-=8827=E6=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8A=E5=8D=882:19=E5=86=99=E9=81=93=
-=EF=BC=9A
->> >
->> > On Wed, 26 May 2021 at 18:32, Swetha Joshi <swethajoshi139@gmail.com> =
-wrote:
->> > >
->> > > Hello,
->> > >
->> > > One of the qemu machines we use has KVM enabled, but we don't want t=
-he CONFIG_ARM_VIRT enabled as it pulls in emulation of a variety of physica=
-l hardware that we don't need. The compilation errors I mentioned are not i=
-n the qemu mainline per say but we see them in one of the qemu derived mach=
-ines we use.
->> >
->> > Sure, but unless you can give me a recipe for reproducing the
->> > build failure in mainline I can't really help...
->>
->> Hi Swetha=EF=BC=8C
->>      Yes,  Can you give a method that how to reproduce the build
->> failure issues? Thanks
->>
->> >
->> > thanks
->> > -- PMM
->
->
->
-> --
-> Regards
->
-> Swetha Joshi.
+Fix few typos:=0D
+. Uncoditional -> Unconditional=0D
+. havn't -> haven't=0D
+. stdin -> stdio=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  misc: Fix "havn't" typo=0D
+  target/mips: Fix 'Uncoditional' typo=0D
+  scripts/oss-fuzz: Fix typo in documentation=0D
+=0D
+ hw/usb/desc-msos.c                             | 2 +-=0D
+ target/mips/tcg/translate.c                    | 6 +++---=0D
+ target/s390x/translate.c                       | 6 ++++--=0D
+ tcg/tcg-op.c                                   | 2 +-=0D
+ tcg/arm/tcg-target.c.inc                       | 6 ++++--=0D
+ tcg/sparc/tcg-target.c.inc                     | 6 ++++--=0D
+ scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py | 2 +-=0D
+ 7 files changed, 18 insertions(+), 12 deletions(-)=0D
+=0D
+-- =0D
+2.26.3=0D
+=0D
 
