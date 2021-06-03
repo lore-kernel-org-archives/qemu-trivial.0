@@ -1,89 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lonDl-0006vT-68
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Jun 2021 09:17:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45236)
+	id 1loqyZ-0002dj-NS
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Jun 2021 13:17:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lonDj-0006v7-En
- for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 09:17:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25457)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lonDe-0002Yl-Sj
- for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 09:17:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622726225;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=yUzeIfr4SFlW9ASWWhoJMByrd7I4fnsaQBETGdNzQg4=;
- b=RtIvN2/iZOyBCPfBO10C4NEJwSHW+jem8wB/XOqKWj29gtQdbeG4jwKwQ6b2huUnOXcOvC
- e3F58iD13JIbYbwFNtRBFFvoJ70ZzN95mf1vK8iUzyJXN3Ds3a7mYxZqsvvWbbydXEogct
- +yqtWElNSrlVc2rgqRjCurQABxVDAlo=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-41-J_7iXn1hP9uFqvTndwai0g-1; Thu, 03 Jun 2021 09:17:04 -0400
-X-MC-Unique: J_7iXn1hP9uFqvTndwai0g-1
-Received: by mail-ed1-f70.google.com with SMTP id
- x8-20020aa7d3880000b029038fe468f5f4so3228259edq.10
- for <qemu-trivial@nongnu.org>; Thu, 03 Jun 2021 06:17:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
+ id 1loqyY-0002cK-0F; Thu, 03 Jun 2021 13:17:46 -0400
+Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34]:40522)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
+ id 1loqyQ-000806-9M; Thu, 03 Jun 2021 13:17:45 -0400
+Received: by mail-oo1-xc34.google.com with SMTP id
+ j17-20020a0568200231b029024900620310so306863oob.7; 
+ Thu, 03 Jun 2021 10:17:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qSmifdAWM+Db1pndhrYbyeas1hm2jHDz4udQE32WrIQ=;
+ b=T01PuImhvu68zYXVYO53wv7/6wIToV7RHYRSj68Haii5ex7wxLQbG2q9sSAsBUWOlZ
+ r88MapFubgrEDwlbcYDMTnLv5M+0RmYUsClyQhDHYIRpybsYRe1x36yZVEez+jcfAX1Z
+ ZV/Q9QnqL1si5060iESqHlKmcuRqoslSZx9IbOlddWfNVGo4M9Y4017Hb6rs/wRJCNDL
+ KPdGIzvqBCFZUdvLIHe9aaD2bhi8buRw9Lu/apVfeuW1Xe0n85Aw1f6b8qh5wqeGeyoX
+ 4fnUOpoDXdNUvb/U4WyVCYQ/Cinp9QZXikyc+SRLWGWNYn3KiZpIJUCkSjJcHbJ4nHMU
+ FIUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=yUzeIfr4SFlW9ASWWhoJMByrd7I4fnsaQBETGdNzQg4=;
- b=KQc8krO0/EYBhx9WZCNziHgQFyX4l5l9AfiOZP4byfMyoa7UYrsCGAkeo9qW92s052
- Nh+TYco3WiriuyC8+ZdrCELIffQr7Y0PcrLMvd1tYrV2cIfyH3t6O8YgCucGee8LVE6m
- I9ALpI5V0IoZWuyrgtA8yv3zk1fVknd8C4/xZcn/YBn04dwpIjE/2IsI6BJ+jlKNy5L8
- Ptei5/ts5PYh/XvE9WxkveqrnNUc67qESspd/Cy8HBmE+PEZEyedL7kLy3DVt9bDStph
- uLV7COOhukn1pWwLQ5uAnARvoTlXDFe0zJYZ5QWqqb0ikcY1SUI24qLcLSupqJ89Pcmm
- 2Z+w==
-X-Gm-Message-State: AOAM531kPNEDTOkdjEuHXDo0DYAX5+IOoOWA+67QSe6GUpQsmsnbjoOX
- PtQuR2qWPLNI0XKtTB53X6z7AL5XdAXFopY3ttDxPQ7XuvG7lHqzCEXMR4HqKUH/y0Wi09Tke7I
- G8T4Gp0g0PCPcXfwo/ewMVbA4+3numAKTSMEkCdYE3uzQUmyUdKD7VJii/5uBQrrYBiw=
-X-Received: by 2002:a05:6402:848:: with SMTP id
- b8mr44500339edz.159.1622726221311; 
- Thu, 03 Jun 2021 06:17:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwxiFBF4aBrUgqMa7CufTv9rO04v/VFhskwef1Oo9J5lLi3gg9zeICR2uN9gIuvUg2AV/v4DA==
-X-Received: by 2002:a05:6402:848:: with SMTP id
- b8mr44500254edz.159.1622726220650; 
- Thu, 03 Jun 2021 06:17:00 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id v1sm1472088ejw.117.2021.06.03.06.16.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Jun 2021 06:17:00 -0700 (PDT)
-Subject: Re: [PATCH v2] vhost-vdpa: Remove redundant declaration of
- address_space_memory
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-To: mst@redhat.com
-Cc: qemu-devel@nongnu.org, jasowang@redhat.com,
- Xie Yongji <xieyongji@bytedance.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210517123246.999-1-xieyongji@bytedance.com>
- <d00aed97-cc58-0c8a-dc7d-9ae8945c3af4@redhat.com>
-Message-ID: <f2a8e69d-75b1-6be0-f588-afe67cda3af9@redhat.com>
-Date: Thu, 3 Jun 2021 15:16:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qSmifdAWM+Db1pndhrYbyeas1hm2jHDz4udQE32WrIQ=;
+ b=HsnZeNR0zoDwN1Z6wIFCAcMElppUm+PfoiFWVf14r6dXs3gEl384rRUdMIg8Rx/DU6
+ 8rbEOli+zAkSrYXsJWmzDddOvv4Dqj4+mpH3r1QPoUULJW90HMsRZAF5i9sEUEVY3qYw
+ D/OKke9lXbaCfcwyAMIul+7HsxvbaBrw3rmp1dRtTAL9YlgSpmtYYZLo6aj6ySw3CCq6
+ ThP3NZKUlYKoU7F/fLmrZZUrhtJHV+/uPNu55PBqw/mBQK5m8fSmxizZYtRKfKIql+ny
+ cfO0yfnI+XSCwDrrTp91NIkkIsS7p3c53gg2rh3K60zedHTM+tFG64kQ3Av4vnP+LtJS
+ t9nw==
+X-Gm-Message-State: AOAM532V2rBooZE8YNcWlizXeg2FUO2zbqktrlQRuEhj+e8DlSOvTFhb
+ jNnfXO6+WwoD6qEDs/EepyPlFx2nSxMlf8CwzRc=
+X-Google-Smtp-Source: ABdhPJzc1yeYTsvScbJX3TxPJg4LpBmbsPaJYRR9t4LyH2UXUw+WywUcoNYhSZeBZEh3u4EqTYZUDlS8oUNzjUTfoDo=
+X-Received: by 2002:a4a:d442:: with SMTP id p2mr231407oos.89.1622740655711;
+ Thu, 03 Jun 2021 10:17:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <d00aed97-cc58-0c8a-dc7d-9ae8945c3af4@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.37,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.603, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
+ <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
+ <CAFEAcA8RbVafdjn2hkXifAPUF=wxZup20PqPcRpQ1ivtnWCxww@mail.gmail.com>
+ <CALf2nm+LFqM2=vDs8=YfyxQSUT-0xxaCiVmcQzrKoOa+zaTtdg@mail.gmail.com>
+ <CAFEAcA-oX0JR80UYzYKvczHsfxWG6oH3Pg4pbM6ByDe57XEHHw@mail.gmail.com>
+ <CALf2nmKhPaWJa944dR+kFAQ1hCLXF0XPwXaHTqJQ-C6EW7ACKg@mail.gmail.com>
+ <CAFEAcA9E4s3dST0GJkdg24DDAn90WU1FEmXwoKD6oQmNSB1vVA@mail.gmail.com>
+ <CABSBigR1L9sE36eYA0Mq4smx1E9A4umTOKTe_x97foSMkryRnw@mail.gmail.com>
+ <CALf2nmLOqtwacgrQ91TTz9_QRUmFS9ZNii2Kk7-tQ7LNp9vw2Q@mail.gmail.com>
+ <CABSBigTga9Xc+RJMN-F=fb_z22Wyh9beoVjRb6o+RA=KDV1ujg@mail.gmail.com>
+In-Reply-To: <CABSBigTga9Xc+RJMN-F=fb_z22Wyh9beoVjRb6o+RA=KDV1ujg@mail.gmail.com>
+From: Swetha Joshi <swethajoshi139@gmail.com>
+Date: Thu, 3 Jun 2021 10:17:25 -0700
+Message-ID: <CALf2nmKTPN1aAqfkn7OqjZ_ghE29r1sH8OKSjtW8fHRc6LVR-Q@mail.gmail.com>
+Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
+ when their configs are enabled
+To: Dongjiu Geng <gengdongjiu1@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000058a6c705c3dfc081"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c34;
+ envelope-from=swethajoshi139@gmail.com; helo=mail-oo1-xc34.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,50 +82,225 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Jun 2021 13:17:11 -0000
+X-List-Received-Date: Thu, 03 Jun 2021 17:17:46 -0000
 
-Hi Michael,
+--00000000000058a6c705c3dfc081
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Could you queue this patch via your 'vhost' tree?
+Basically, you need to remove CONFIG_VIRT_ARM=3Dy from arm-soft memu.mak an=
+d
+then enable KVM, I might have missed some places where you need to enable
+kvm.
 
-On 5/17/21 3:11 PM, Philippe Mathieu-Daudé wrote:
-> Cc'ing qemu-trivial@
-> 
-> On 5/17/21 2:32 PM, Xie Yongji wrote:
->> The symbol address_space_memory are already declared in
->> include/exec/address-spaces.h. So let's add this header file
->> and remove the redundant declaration in include/hw/virtio/vhost-vdpa.h.
->>
->> Signed-off-by: Xie Yongji <xieyongji@bytedance.com>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  hw/virtio/vhost-vdpa.c         | 1 +
->>  include/hw/virtio/vhost-vdpa.h | 1 -
->>  2 files changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
->> index 8f2fb9f10b2a..ee51863d280b 100644
->> --- a/hw/virtio/vhost-vdpa.c
->> +++ b/hw/virtio/vhost-vdpa.c
->> @@ -18,6 +18,7 @@
->>  #include "hw/virtio/vhost-backend.h"
->>  #include "hw/virtio/virtio-net.h"
->>  #include "hw/virtio/vhost-vdpa.h"
->> +#include "exec/address-spaces.h"
->>  #include "qemu/main-loop.h"
->>  #include "cpu.h"
->>  #include "trace.h"
->> diff --git a/include/hw/virtio/vhost-vdpa.h b/include/hw/virtio/vhost-vdpa.h
->> index 28ca65018ed7..ae9ee7adb2d0 100644
->> --- a/include/hw/virtio/vhost-vdpa.h
->> +++ b/include/hw/virtio/vhost-vdpa.h
->> @@ -21,5 +21,4 @@ typedef struct vhost_vdpa {
->>      struct vhost_dev *dev;
->>  } VhostVDPA;
->>  
->> -extern AddressSpace address_space_memory;
->>  #endif
->>
-> 
+On Wed, Jun 2, 2021 at 6:44 AM Dongjiu Geng <gengdongjiu1@gmail.com> wrote:
 
+> Swetha Joshi <swethajoshi139@gmail.com> =E4=BA=8E2021=E5=B9=B45=E6=9C=882=
+9=E6=97=A5=E5=91=A8=E5=85=AD =E4=B8=8A=E5=8D=883:41=E5=86=99=E9=81=93=EF=BC=
+=9A
+> >
+> > I apologize for the delay, here are the repro steps:
+> > 1. Remove CONFIG_ARM_VIRT=3Dy from arm-softmmu.mak
+> > 2. In .gitlab-ci.yml, crossbuild.yml and in tests/vm/Makefile.include,
+> in all the places where we disable kvm using -disable-kvm, replace this
+> with -enable-kvm
+> > 3. Build
+>
+> According to your steps, I can not see such errors=EF=BC=8Calso your chan=
+ge is
+> odd. I suggested you do not this change until you indeed encounter
+> errors
+>
+> diff --git a/default-configs/devices/arm-softmmu.mak
+> b/default-configs/devices/arm-softmmu.mak
+> index 0500156a0c..f47ab0f3b1 100644
+> --- a/default-configs/devices/arm-softmmu.mak
+> +++ b/default-configs/devices/arm-softmmu.mak
+> @@ -6,7 +6,6 @@ CONFIG_ARM_V7M=3Dy
+>  # CONFIG_PCI_DEVICES=3Dn
+>  # CONFIG_TEST_DEVICES=3Dn
+>
+> -CONFIG_ARM_VIRT=3Dy
+>  CONFIG_CUBIEBOARD=3Dy
+>  CONFIG_EXYNOS4=3Dy
+>  CONFIG_HIGHBANK=3Dy
+> diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
+> index e94d95ec54..95387c3e5a 100644
+> --- a/tests/vm/Makefile.include
+> +++ b/tests/vm/Makefile.include
+> @@ -110,7 +110,7 @@ vm-build-%: $(IMAGES_DIR)/%.img
+>                 "  VM-BUILD $*")
+>
+>  vm-boot-serial-%: $(IMAGES_DIR)/%.img
+> -       qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -nographic \
+> +       qemu-system-x86_64 -disable-kvm -m 4G -smp 2 -nographic \
+>                 -drive if=3Dnone,id=3Dvblk,cache=3Dwriteback,file=3D"$<" =
+\
+>                 -netdev user,id=3Dvnet \
+>                 -device virtio-blk-pci,drive=3Dvblk \
+>
+>
+> >
+> > You should see errors pointing to these routines: virt_is_acpi_enabled,
+> acpi_ghes_record_errors
+> >
+> > Thanks,
+> > Swetha.
+> >
+> > On Fri, May 28, 2021 at 12:08 AM Dongjiu Geng <gengdongjiu1@gmail.com>
+> wrote:
+> >>
+> >> Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2021=E5=B9=B45=E6=9C=
+=8827=E6=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8A=E5=8D=882:19=E5=86=99=E9=81=93=
+=EF=BC=9A
+> >> >
+> >> > On Wed, 26 May 2021 at 18:32, Swetha Joshi <swethajoshi139@gmail.com=
+>
+> wrote:
+> >> > >
+> >> > > Hello,
+> >> > >
+> >> > > One of the qemu machines we use has KVM enabled, but we don't want
+> the CONFIG_ARM_VIRT enabled as it pulls in emulation of a variety of
+> physical hardware that we don't need. The compilation errors I mentioned
+> are not in the qemu mainline per say but we see them in one of the qemu
+> derived machines we use.
+> >> >
+> >> > Sure, but unless you can give me a recipe for reproducing the
+> >> > build failure in mainline I can't really help...
+> >>
+> >> Hi Swetha=EF=BC=8C
+> >>      Yes,  Can you give a method that how to reproduce the build
+> >> failure issues? Thanks
+> >>
+> >> >
+> >> > thanks
+> >> > -- PMM
+> >
+> >
+> >
+> > --
+> > Regards
+> >
+> > Swetha Joshi.
+>
+--=20
+Regards
+
+Swetha Joshi.
+
+--00000000000058a6c705c3dfc081
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Basically, you need to remove CONFIG_VIRT_ARM=3Dy from ar=
+m-soft memu.mak and then enable KVM, I might have missed some places where =
+you need to enable kvm.=C2=A0</div><div><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun 2, 2021 at 6:44 AM Dongjiu Ge=
+ng &lt;<a href=3D"mailto:gengdongjiu1@gmail.com">gengdongjiu1@gmail.com</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left:1e=
+x;border-left-color:rgb(204,204,204)">Swetha Joshi &lt;<a href=3D"mailto:sw=
+ethajoshi139@gmail.com" target=3D"_blank">swethajoshi139@gmail.com</a>&gt; =
+=E4=BA=8E2021=E5=B9=B45=E6=9C=8829=E6=97=A5=E5=91=A8=E5=85=AD =E4=B8=8A=E5=
+=8D=883:41=E5=86=99=E9=81=93=EF=BC=9A<br>
+&gt;<br>
+&gt; I apologize for the delay, here are the repro steps:<br>
+&gt; 1. Remove CONFIG_ARM_VIRT=3Dy from arm-softmmu.mak<br>
+&gt; 2. In .gitlab-ci.yml, crossbuild.yml and in tests/vm/Makefile.include,=
+ in all the places where we disable kvm using -disable-kvm, replace this wi=
+th -enable-kvm<br>
+&gt; 3. Build<br>
+<br>
+According to your steps, I can not see such errors=EF=BC=8Calso your change=
+ is<br>
+odd. I suggested you do not this change until you indeed encounter<br>
+errors<br>
+<br>
+diff --git a/default-configs/devices/arm-softmmu.mak<br>
+b/default-configs/devices/arm-softmmu.mak<br>
+index 0500156a0c..f47ab0f3b1 100644<br>
+--- a/default-configs/devices/arm-softmmu.mak<br>
++++ b/default-configs/devices/arm-softmmu.mak<br>
+@@ -6,7 +6,6 @@ CONFIG_ARM_V7M=3Dy<br>
+=C2=A0# CONFIG_PCI_DEVICES=3Dn<br>
+=C2=A0# CONFIG_TEST_DEVICES=3Dn<br>
+<br>
+-CONFIG_ARM_VIRT=3Dy<br>
+=C2=A0CONFIG_CUBIEBOARD=3Dy<br>
+=C2=A0CONFIG_EXYNOS4=3Dy<br>
+=C2=A0CONFIG_HIGHBANK=3Dy<br>
+diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include<br>
+index e94d95ec54..95387c3e5a 100644<br>
+--- a/tests/vm/Makefile.include<br>
++++ b/tests/vm/Makefile.include<br>
+@@ -110,7 +110,7 @@ vm-build-%: $(IMAGES_DIR)/%.img<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;=C2=A0 VM-BUI=
+LD $*&quot;)<br>
+<br>
+=C2=A0vm-boot-serial-%: $(IMAGES_DIR)/%.img<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -no=
+graphic \<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0qemu-system-x86_64 -disable-kvm -m 4G -smp 2 -n=
+ographic \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -drive if=3Dnone,id=
+=3Dvblk,cache=3Dwriteback,file=3D&quot;$&lt;&quot; \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -netdev user,id=3Dv=
+net \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -device virtio-blk-=
+pci,drive=3Dvblk \<br>
+<br>
+<br>
+&gt;<br>
+&gt; You should see errors pointing to these routines: virt_is_acpi_enabled=
+, acpi_ghes_record_errors<br>
+&gt;<br>
+&gt; Thanks,<br>
+&gt; Swetha.<br>
+&gt;<br>
+&gt; On Fri, May 28, 2021 at 12:08 AM Dongjiu Geng &lt;<a href=3D"mailto:ge=
+ngdongjiu1@gmail.com" target=3D"_blank">gengdongjiu1@gmail.com</a>&gt; wrot=
+e:<br>
+&gt;&gt;<br>
+&gt;&gt; Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" targ=
+et=3D"_blank">peter.maydell@linaro.org</a>&gt; =E4=BA=8E2021=E5=B9=B45=E6=
+=9C=8827=E6=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8A=E5=8D=882:19=E5=86=99=E9=81=
+=93=EF=BC=9A<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; On Wed, 26 May 2021 at 18:32, Swetha Joshi &lt;<a href=3D"mai=
+lto:swethajoshi139@gmail.com" target=3D"_blank">swethajoshi139@gmail.com</a=
+>&gt; wrote:<br>
+&gt;&gt; &gt; &gt;<br>
+&gt;&gt; &gt; &gt; Hello,<br>
+&gt;&gt; &gt; &gt;<br>
+&gt;&gt; &gt; &gt; One of the qemu machines we use has KVM enabled, but we =
+don&#39;t want the CONFIG_ARM_VIRT enabled as it pulls in emulation of a va=
+riety of physical hardware that we don&#39;t need. The compilation errors I=
+ mentioned are not in the qemu mainline per say but we see them in one of t=
+he qemu derived machines we use.<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; Sure, but unless you can give me a recipe for reproducing the=
+<br>
+&gt;&gt; &gt; build failure in mainline I can&#39;t really help...<br>
+&gt;&gt;<br>
+&gt;&gt; Hi Swetha=EF=BC=8C<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 Yes,=C2=A0 Can you give a method that how to r=
+eproduce the build<br>
+&gt;&gt; failure issues? Thanks<br>
+&gt;&gt;<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; thanks<br>
+&gt;&gt; &gt; -- PMM<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; --<br>
+&gt; Regards<br>
+&gt;<br>
+&gt; Swetha Joshi.<br>
+</blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
+data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Regards<div><br></div><=
+div>Swetha Joshi.</div></div></div>
+
+--00000000000058a6c705c3dfc081--
 
