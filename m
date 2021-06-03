@@ -1,64 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lojVB-0006Qx-5e
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Jun 2021 05:18:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50744)
+	id 1loknQ-0006V4-1o
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Jun 2021 06:41:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lojV9-0006Pu-4w
- for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 05:18:55 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:46906)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lojV7-0002LA-A6
- for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 05:18:54 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id b9so8127615ejc.13
- for <qemu-trivial@nongnu.org>; Thu, 03 Jun 2021 02:18:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DqVQzqcTJHgEovXWufo2ZLAulEmw6zmTSYrtNAcDa/8=;
- b=WE4sZyn2CubqkHSFxvSAmkpHJLbp8m0w12ZQ9tI/Z7SAgU+YFyeoULnWEUmXm/VDxZ
- 8pTrg3IHiuRS1QQ4LlmOwMe1W7y/M8E+vpTHykEXzEqt7UZ+6eAysVZ/XWPbO+uTE8Bz
- +IrZaxWh7js4QaCliU3Q2UYAuNp3/Y6NXXHqXP+SIQRpUUK8SSg0PHQlVk7p5pKMANHw
- AfDo4biJVEi/pVBDjgpGxq3TanNJ524eslpfyv8Eo0jZXfW12lng8MLmHQUbzvR6yi2a
- mvesH/1h6NPh7R0hZI8Lop6Peio+GYAvI7fQ/51grvj2NhatjdhIt2ky9Ii1z6/2fueQ
- 0cxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=DqVQzqcTJHgEovXWufo2ZLAulEmw6zmTSYrtNAcDa/8=;
- b=sCNfkjoMN2Z/W49X3PKEiDWt/hX7Bybv4D/F3rR+4oo397bxJfAzH2VD3tsggcPAh2
- Kls00/EO390M9obi6w55QfrzD7phgoGKfUCs4Iv/RDAsjh/eEaW2qdIw8oibudaVnTZy
- DJVBYYk3G+u0xZRqynTq8uOEYuc9S/0nO0vq5gV/tAOtlAxOYjaS+btuHwHJ5hnupopO
- opDvyjo5UWuPamLxLRIzGJ6qmePQ0p5d4Fb4grmSV/lLHIvXq8FT5Z4puMI1PZwZ63yO
- 8H4iB+LQksSfLP3Tf3ZRwdcv+OdL5oM14s6Vi3lGWlW2dzDVUUCt9sLn/SiiLpJdDnQf
- i+gA==
-X-Gm-Message-State: AOAM531T2yXK5vF/v46O5dyEVQorOU11bpZJe4mjA5fbZcCE4KGsjE15
- WDn/nvHdYiBqFDJ9sQ8cTVV7TcZitavw81LoyF3oUg==
-X-Google-Smtp-Source: ABdhPJxz8ZKwsPjqjwy87fEOwdOeDNCrGruNISpfi2MQH39qMIkuvFjsMBJb4wcCQgBmTCjYq505m8vLrLV9xepNZbU=
-X-Received: by 2002:a17:907:9047:: with SMTP id
- az7mr25813394ejc.4.1622711931280; 
- Thu, 03 Jun 2021 02:18:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1loknN-0006Tr-UE
+ for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 06:41:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39945)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1loknL-0007mj-2x
+ for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 06:41:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1622716905;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=sbIvOZJvevPMmTKzmmPEtMU7HrEXrnqUb5rUpcwA4S8=;
+ b=R23wh6ZyT01kvIwQpxWfexkJ3YwJq53A3blxPXnCAdl8A+90K1hy7EQ/Jwn7YLi0CRc9Ws
+ +s4ab/9rrxwQo2uRt50NfPIcH90BIJKxuJcBlRm/KG8Lb9U6HkrRYMgHgpssw4uXM+czg5
+ xzogo+y2pljSkve+h09KDiYHJDi+zfU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-496-1Ou1gJoBPLugHUDJPIQD8g-1; Thu, 03 Jun 2021 06:41:44 -0400
+X-MC-Unique: 1Ou1gJoBPLugHUDJPIQD8g-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 168148018A7;
+ Thu,  3 Jun 2021 10:41:43 +0000 (UTC)
+Received: from thuth.com (ovpn-112-76.ams2.redhat.com [10.36.112.76])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 77F375D9F0;
+ Thu,  3 Jun 2021 10:41:41 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Jon Doron <arilou@gmail.com>, Roman Kagan <rkagan@virtuozzo.com>,
+ "Maciej S . Szmigiero" <maciej.szmigiero@oracle.com>
+Subject: [PATCH 0/2] Improve vmstate_vmbus_dev handling
+Date: Thu,  3 Jun 2021 12:41:37 +0200
+Message-Id: <20210603104139.556512-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20210503161422.15028-1-dgouttegattat@incenp.org>
-In-Reply-To: <20210503161422.15028-1-dgouttegattat@incenp.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Jun 2021 10:18:18 +0100
-Message-ID: <CAFEAcA9xmF4V_r1HburngKXWKJgU6vFoKkpJ8QbsRSi3wG_sOQ@mail.gmail.com>
-Subject: Re: [PATCH] docs: Fix installation of man pages with Sphinx 4.x
-To: Damien Goutte-Gattat <dgouttegattat@incenp.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.37,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,29 +68,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Jun 2021 09:18:55 -0000
+X-List-Received-Date: Thu, 03 Jun 2021 10:41:50 -0000
 
-On Mon, 3 May 2021 at 17:14, Damien Goutte-Gattat
-<dgouttegattat@incenp.org> wrote:
->
-> The 4.x branch of Sphinx introduces a breaking change, as generated man
-> pages are now written to subdirectories corresponding to the manual
-> section they belong to. This results in `make install` erroring out when
-> attempting to install the man pages, because they are not where it
-> expects to find them.
->
-> This patch restores the behavior of Sphinx 3.x regarding man pages.
->
-> Signed-off-by: Damien Goutte-Gattat <dgouttegattat@incenp.org>
-> ---
->  docs/conf.py | 1 +
->  1 file changed, 1 insertion(+)
->
-> FYI: For more information about this behavior change of Sphinx, see the
-> relevant issue: <https://github.com/sphinx-doc/sphinx/issues/7996>.
+I accidentally came accross vmstate_vmbus_dev and noticed that
+it is currently not used at all ... wire it up and make it
+static, since it is only used in one file.
 
-Thanks for this fix; sorry we didn't pick the patch up earlier.
-I'm going to take it via my target-arm tree.
+Thomas Huth (2):
+  hw/hyperv/vmbus: Wire up vmstate_vmbus_dev
+  hw/hyperv/vmbus: Make vmstate_vmbus_dev static
 
--- PMM
+ hw/hyperv/vmbus.c         | 29 +++++++++++++++--------------
+ include/hw/hyperv/vmbus.h |  3 ---
+ 2 files changed, 15 insertions(+), 17 deletions(-)
+
+-- 
+2.27.0
+
 
