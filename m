@@ -1,91 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1loho0-0008Ro-Hr
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Jun 2021 03:30:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57200)
+	id 1lojVB-0006Qx-5e
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Jun 2021 05:18:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lohnz-0008Ql-8w
- for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 03:30:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46610)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lohnx-00076q-DZ
- for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 03:30:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622705412;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XhkhzH0Ec7rOMKGs0jDelj2yQw1bK6lXAx/cskk/K00=;
- b=VllEenCqpgHAA3WedEi7VaWlTqvpSavyuzPKSkkvxYK7lDksmiiPiwwq0ICvPPtcqcty3M
- ppcMYEDJxo65qpZzGDI6+ZDH5r//0MnSggXuNcUcGYkbYbQgV+XVRuMEkviV7VreZQmPlu
- RTiOnuCbG9vJD5MfyDsr4kMLe49vCNg=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-292-2v8j9rUpMbyDvfMa9exVOQ-1; Thu, 03 Jun 2021 03:30:10 -0400
-X-MC-Unique: 2v8j9rUpMbyDvfMa9exVOQ-1
-Received: by mail-ej1-f70.google.com with SMTP id
- b8-20020a170906d108b02903fa10388224so1613423ejz.18
- for <qemu-trivial@nongnu.org>; Thu, 03 Jun 2021 00:30:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lojV9-0006Pu-4w
+ for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 05:18:55 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:46906)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lojV7-0002LA-A6
+ for qemu-trivial@nongnu.org; Thu, 03 Jun 2021 05:18:54 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id b9so8127615ejc.13
+ for <qemu-trivial@nongnu.org>; Thu, 03 Jun 2021 02:18:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=DqVQzqcTJHgEovXWufo2ZLAulEmw6zmTSYrtNAcDa/8=;
+ b=WE4sZyn2CubqkHSFxvSAmkpHJLbp8m0w12ZQ9tI/Z7SAgU+YFyeoULnWEUmXm/VDxZ
+ 8pTrg3IHiuRS1QQ4LlmOwMe1W7y/M8E+vpTHykEXzEqt7UZ+6eAysVZ/XWPbO+uTE8Bz
+ +IrZaxWh7js4QaCliU3Q2UYAuNp3/Y6NXXHqXP+SIQRpUUK8SSg0PHQlVk7p5pKMANHw
+ AfDo4biJVEi/pVBDjgpGxq3TanNJ524eslpfyv8Eo0jZXfW12lng8MLmHQUbzvR6yi2a
+ mvesH/1h6NPh7R0hZI8Lop6Peio+GYAvI7fQ/51grvj2NhatjdhIt2ky9Ii1z6/2fueQ
+ 0cxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=XhkhzH0Ec7rOMKGs0jDelj2yQw1bK6lXAx/cskk/K00=;
- b=hHkDteHvUon0PeE/A1r+7vD9UTNpQL5kQSMSdHopamvdfvC5HQaquLGP8W0tCFaLfL
- BYcqzackISvLZLfNZAHj+HONQ5plNvr4+qSMty79SsD+Z8i8yU8YlN/gwB2L2bfng/c2
- +vlV65/4FS58ingF38P2zhnhyJusBQ8+wMN5PwPX/QY0QNts98PBHkQN2Xe9pu0BynHC
- 11Q0GOgwB9/XyTQDmpOaMFPBFdLyxOw+hxm5btKa2PzaoIkdgW0suAdW8P75n3kve/V2
- hx/61BYdTumLBOU3V+HIcL5xu6XnQ60aM0AaVT65i6KhczWtZCrQJCzhmQwy0IM9KSXX
- P2YA==
-X-Gm-Message-State: AOAM533298bKGiYj/NFlz5e/VEmP6N60OhF9VytAZB2GFm8/hchHB39C
- 0FynSTQvu1Nxf5TA6qW/C3GQenBAxSVZOBPQ0PuUODrpBHC/RLPSOjc6z5JMOKk/nHytsqq7fCN
- 3HxR5VYkeyKRIIaDrhvY8+EN+ysUFTfQdQXwOUE6ILPYc0fX0tb6gQ/9RgHnh/CbMzok=
-X-Received: by 2002:a17:906:55d6:: with SMTP id
- z22mr38156183ejp.355.1622705409080; 
- Thu, 03 Jun 2021 00:30:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwZVgm94jugx2PCmQxFOhL2yW22dR24ypAEnE4LFdMISZQoZPL6HVANT4LcYPXvHfJ15a+PEg==
-X-Received: by 2002:a17:906:55d6:: with SMTP id
- z22mr38156156ejp.355.1622705408698; 
- Thu, 03 Jun 2021 00:30:08 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id l14sm311156edb.58.2021.06.03.00.30.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Jun 2021 00:30:08 -0700 (PDT)
-Subject: Re: [PATCH] target/i386/sev: Ensure sev_fw_errlist is sync with
- update-linux-headers
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: qemu-devel@nongnu.org, Connor Kuehl <ckuehl@redhat.com>,
- Brijesh Singh <brijesh.singh@amd.com>, Tom Lendacky
- <thomas.lendacky@amd.com>, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210219180131.2061072-1-philmd@redhat.com>
- <665ebe97-fbe2-2273-0a02-1a94351c1e1c@redhat.com>
- <20210602142212.siv7c33hsxiik36y@habkost.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <cae5fd02-953e-c0b3-83db-3f2e534006c8@redhat.com>
-Date: Thu, 3 Jun 2021 09:30:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=DqVQzqcTJHgEovXWufo2ZLAulEmw6zmTSYrtNAcDa/8=;
+ b=sCNfkjoMN2Z/W49X3PKEiDWt/hX7Bybv4D/F3rR+4oo397bxJfAzH2VD3tsggcPAh2
+ Kls00/EO390M9obi6w55QfrzD7phgoGKfUCs4Iv/RDAsjh/eEaW2qdIw8oibudaVnTZy
+ DJVBYYk3G+u0xZRqynTq8uOEYuc9S/0nO0vq5gV/tAOtlAxOYjaS+btuHwHJ5hnupopO
+ opDvyjo5UWuPamLxLRIzGJ6qmePQ0p5d4Fb4grmSV/lLHIvXq8FT5Z4puMI1PZwZ63yO
+ 8H4iB+LQksSfLP3Tf3ZRwdcv+OdL5oM14s6Vi3lGWlW2dzDVUUCt9sLn/SiiLpJdDnQf
+ i+gA==
+X-Gm-Message-State: AOAM531T2yXK5vF/v46O5dyEVQorOU11bpZJe4mjA5fbZcCE4KGsjE15
+ WDn/nvHdYiBqFDJ9sQ8cTVV7TcZitavw81LoyF3oUg==
+X-Google-Smtp-Source: ABdhPJxz8ZKwsPjqjwy87fEOwdOeDNCrGruNISpfi2MQH39qMIkuvFjsMBJb4wcCQgBmTCjYq505m8vLrLV9xepNZbU=
+X-Received: by 2002:a17:907:9047:: with SMTP id
+ az7mr25813394ejc.4.1622711931280; 
+ Thu, 03 Jun 2021 02:18:51 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210602142212.siv7c33hsxiik36y@habkost.net>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.371,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.613, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20210503161422.15028-1-dgouttegattat@incenp.org>
+In-Reply-To: <20210503161422.15028-1-dgouttegattat@incenp.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Jun 2021 10:18:18 +0100
+Message-ID: <CAFEAcA9xmF4V_r1HburngKXWKJgU6vFoKkpJ8QbsRSi3wG_sOQ@mail.gmail.com>
+Subject: Re: [PATCH] docs: Fix installation of man pages with Sphinx 4.x
+To: Damien Goutte-Gattat <dgouttegattat@incenp.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -99,55 +71,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Jun 2021 07:30:15 -0000
+X-List-Received-Date: Thu, 03 Jun 2021 09:18:55 -0000
 
-On 6/2/21 4:22 PM, Eduardo Habkost wrote:
-> On Wed, Jun 02, 2021 at 12:48:18PM +0200, Philippe Mathieu-Daudé wrote:
->> This patch was supposed to go via Eduardo's tree but he
->> missed it, can it go via qemu-trivial instead?
-> 
-> My apologies, again.  I'm still behind on my qemu-devel backlog,
-> and this was still buried in my inbox.
-> 
->>
->> On 2/19/21 7:01 PM, Philippe Mathieu-Daudé wrote:
->>> Ensure sev_fw_errlist[] is updated after running
->>> the update-linux-headers.sh script.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>> ---
->>> Based-on: <20210218151633.215374-1-ckuehl@redhat.com>
->>> ---
->>>  target/i386/sev.c | 5 ++++-
->>>  1 file changed, 4 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/target/i386/sev.c b/target/i386/sev.c
->>> index 37690ae809c..92c69a23769 100644
->>> --- a/target/i386/sev.c
->>> +++ b/target/i386/sev.c
->>> @@ -87,7 +87,7 @@ typedef struct __attribute__((__packed__)) SevInfoBlock {
->>>  static SevGuestState *sev_guest;
->>>  static Error *sev_mig_blocker;
->>>  
->>> -static const char *const sev_fw_errlist[] = {
->>> +static const char *const sev_fw_errlist[SEV_RET_MAX] = {
->>>      [SEV_RET_SUCCESS]                = "",
->>>      [SEV_RET_INVALID_PLATFORM_STATE] = "Platform state is invalid",
->>>      [SEV_RET_INVALID_GUEST_STATE]    = "Guest state is invalid",
->>> @@ -114,6 +114,8 @@ static const char *const sev_fw_errlist[] = {
->>>      [SEV_RET_RESOURCE_LIMIT]         = "Required firmware resource depleted",
->>>      [SEV_RET_SECURE_DATA_INVALID]    = "Part-specific integrity check failure",
->>>  };
->>> +/* Ensure sev_fw_errlist[] is updated after running update-linux-headers.sh */
->>> +QEMU_BUILD_BUG_ON(SEV_RET_SECURE_DATA_INVALID + 1 != SEV_RET_MAX);
-> 
-> A mechanism to notify us when sev_fw_errlist needs to be updated
-> would be useful, but I'm not sure I agree with this change.
-> I expect update-linux-headers patches always consist of 100%
-> automated changes.  This patch would require a manual update of
-> target/i386/sev.c to be included in the same commit as
-> the header update.
+On Mon, 3 May 2021 at 17:14, Damien Goutte-Gattat
+<dgouttegattat@incenp.org> wrote:
+>
+> The 4.x branch of Sphinx introduces a breaking change, as generated man
+> pages are now written to subdirectories corresponding to the manual
+> section they belong to. This results in `make install` erroring out when
+> attempting to install the man pages, because they are not where it
+> expects to find them.
+>
+> This patch restores the behavior of Sphinx 3.x regarding man pages.
+>
+> Signed-off-by: Damien Goutte-Gattat <dgouttegattat@incenp.org>
+> ---
+>  docs/conf.py | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> FYI: For more information about this behavior change of Sphinx, see the
+> relevant issue: <https://github.com/sphinx-doc/sphinx/issues/7996>.
 
-OK :(
+Thanks for this fix; sorry we didn't pick the patch up earlier.
+I'm going to take it via my target-arm tree.
 
+-- PMM
 
