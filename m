@@ -1,41 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lorAn-0006JD-8N
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Jun 2021 13:30:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59990)
+	id 1lp2LS-0003pI-O7
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Jun 2021 01:26:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59192)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1lorAl-0006GL-SL; Thu, 03 Jun 2021 13:30:23 -0400
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231]:46733)
+ id 1lp2LQ-0003mN-Jm; Fri, 04 Jun 2021 01:26:08 -0400
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f]:45880)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1lorAk-00083W-0y; Thu, 03 Jun 2021 13:30:23 -0400
-Received: by mail-oi1-x231.google.com with SMTP id c13so1494686oib.13;
- Thu, 03 Jun 2021 10:30:21 -0700 (PDT)
+ id 1lp2LO-0000W8-NE; Fri, 04 Jun 2021 01:26:08 -0400
+Received: by mail-ot1-x32f.google.com with SMTP id
+ t10-20020a05683022eab0290304ed8bc759so7993787otc.12; 
+ Thu, 03 Jun 2021 22:26:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pKkVLuhrzeOnyydHupQnlnuJakoccLmuIMSdJnpq4mo=;
- b=PLdMz9lrXO1zGAO50lgceWjkIyuddG/DaHvIWJsvLdxLQfOk32ia2qNeT5ByoZHghJ
- S9G4TGbZAAT4/HM5emZ2ZZlZBYSUSGBcIOhxPbixrg8ocLcY+BHh4qtJ8lnUybK8oCFO
- IWlBqkyCwMe5Gnbt0nMQ/Vxu8oZDWto7OQ0qGnOzHJdDnByCzJxZvPFeB2POEsxnvz2R
- 3LsHK4KM6N2UhQQ5lDfxaNOfhrXWfGuUtzxtSlS8Y5Kf443JD7EWFeoPvUmV3EPj2Dn9
- fMyXZZASQ9E0BUV2gACcYZtEc3lEj3SYqi76ahCDjwAEURd8BrEu+kZlEOgT7GK6RcFn
- bBTA==
+ :cc; bh=Y7hs2ThLCcd4EXAQewgtqhiDgTLsjP/tp3SDQW/lQQA=;
+ b=egaioL8n4oRhwvu4OQmstqy/u8mgm2IB9K2QN6UntckxP+4Rltc37QNfbBCuWgdkL/
+ z1QOgNbo3JDVGvmSZgxaBWJ+RFSbzmwqLcyNIZZcac9+522yew+qocQII5UanvNPge7G
+ uSKVU+4oUnz7mbNMrtzMDMazfjF5x9le0xhCWYdBHMfY7LgSYjHKj+sg/XABRhdS/XP+
+ TePUl4i/RDvDS9A9Sj5qY83zcvLAwiR7X/qzBOCYy5lhEIWA+oLHIgqIr6co58SjD/3g
+ YE4yzjRuNxt1gmzRmlP1MHojb2MDwzicLGN3tL93p6gs2yLJJt7U84pEdHwQBzPaGFJN
+ FaCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=pKkVLuhrzeOnyydHupQnlnuJakoccLmuIMSdJnpq4mo=;
- b=NE5qqZPORZMqD1bnZwQddAZ1UOzoC1EAs9nUKP5dfJ+TpT5dE4niP//8u2zVX6jfJW
- 4CavCJVIgcT1ngXb/fY18g4buD2IlggFqzXqbzWs4hfQvPZ5cEyiEpJpmmRQ948w4jTT
- JLIwGja9/NcX3R64iCrR1Oucqq7MjGyCDBXqx32nfroh01LQKTgmnHKc3WsIYpV9VS46
- BhNyh5nMkLkyUAbyFJodsT9ShU1P/Z0LcHDXnz0RZeSmQ5P9oL6MZlXxucZsUBs2OXcG
- Bf4O/YDNuj6c/mx9ss+wo3KBfDwCElbyDT1uCXcl5PNqdB3Ieu6jgYC3xoqTqo1vdafe
- +08g==
-X-Gm-Message-State: AOAM533ZDiTuYXI8kMoCAm1VsGT1LHkT5UGnnVfqbb0V84qoHt6uigpq
- Sbc6xoGGGAKqlhAswaIkNl0m8DqrcG5tqty/Hwo=
-X-Google-Smtp-Source: ABdhPJxAuVYJMLzCvBrgbx3lXCG4ycVrJq2Eldv3ogXv+qbvpBitVRngT+Mihx6LW/HKzpAZ/91NDvRz+Y198leOlrY=
-X-Received: by 2002:aca:2417:: with SMTP id n23mr7948955oic.111.1622741420436; 
- Thu, 03 Jun 2021 10:30:20 -0700 (PDT)
+ bh=Y7hs2ThLCcd4EXAQewgtqhiDgTLsjP/tp3SDQW/lQQA=;
+ b=TD1A3EJXL5BDQWqpTC0wRyr+Wtc7chKMBNVAnEx0dZICaDuy1x0VBx7/BWAVA9gN/B
+ wNUKx3/R7JBAKA2xTpIxf9XX08fsY6zOedaCKFx35X7BbeHb4BB0pXBYXMkDjHh2AxVT
+ 4NDZ4THv7ysIrFWbUcrl114r/2Uaq39Yig08UFBo+CuDbSGzltJEl9mzeo5GGfPkRLiA
+ ieB/TRClGRM4jRUNzPxMYG8dT+ETCOg9lF4vcXIoURwDcgggR80LQ00MWvrL+A79uIMk
+ EOtE6zO4qtTC9867PtO56MDrEQWZCxToQ7hAvoDFXcBh75Su07cg53wJ3QYVMOmto/wJ
+ Tsgg==
+X-Gm-Message-State: AOAM533buznDxdb6JaJ75UE2siqRQrL7cUfya/sUy/cVh+xZVHvZm+OY
+ 3uma08vEr7HeDx5iMO/C9a4SrT0gCflK294EXO8=
+X-Google-Smtp-Source: ABdhPJwVpIRTzGWVubOKbFFzOWFPbb7Zb4XP9+a7R5IsbpYMV7x2wyEdUw6qMMQ4ICrZD6zjiwguTtXlYYNIybgO1k0=
+X-Received: by 2002:a9d:554b:: with SMTP id h11mr2347232oti.4.1622784364724;
+ Thu, 03 Jun 2021 22:26:04 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
  <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
@@ -47,10 +48,11 @@ References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
  <CABSBigR1L9sE36eYA0Mq4smx1E9A4umTOKTe_x97foSMkryRnw@mail.gmail.com>
  <CALf2nmLOqtwacgrQ91TTz9_QRUmFS9ZNii2Kk7-tQ7LNp9vw2Q@mail.gmail.com>
  <CAFEAcA8oAtjVom+BXtcgao4O252ipmFzv-iNTSzDaJChcQkr9g@mail.gmail.com>
-In-Reply-To: <CAFEAcA8oAtjVom+BXtcgao4O252ipmFzv-iNTSzDaJChcQkr9g@mail.gmail.com>
+ <CALf2nmKgaZiBOfEWpMt4Yq-NyCYrsFNPwb1hZ0adwoXUs4T6pA@mail.gmail.com>
+In-Reply-To: <CALf2nmKgaZiBOfEWpMt4Yq-NyCYrsFNPwb1hZ0adwoXUs4T6pA@mail.gmail.com>
 From: Swetha Joshi <swethajoshi139@gmail.com>
-Date: Thu, 3 Jun 2021 10:30:09 -0700
-Message-ID: <CALf2nmKgaZiBOfEWpMt4Yq-NyCYrsFNPwb1hZ0adwoXUs4T6pA@mail.gmail.com>
+Date: Thu, 3 Jun 2021 22:25:53 -0700
+Message-ID: <CALf2nmLLZ5smxqYJyA+_MPunaQqaM7-Ub9CVurTE1pM0ErOS+w@mail.gmail.com>
 Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
  when their configs are enabled
 To: Peter Maydell <peter.maydell@linaro.org>
@@ -58,9 +60,9 @@ Cc: Dongjiu Geng <gengdongjiu1@gmail.com>,
  QEMU Developers <qemu-devel@nongnu.org>, 
  QEMU Trivial <qemu-trivial@nongnu.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000ed710205c3dfedad"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
- envelope-from=swethajoshi139@gmail.com; helo=mail-oi1-x231.google.com
+Content-Type: multipart/alternative; boundary="0000000000009b438505c3e9ed69"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32f;
+ envelope-from=swethajoshi139@gmail.com; helo=mail-ot1-x32f.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -81,54 +83,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Jun 2021 17:30:24 -0000
+X-List-Received-Date: Fri, 04 Jun 2021 05:26:09 -0000
 
---000000000000ed710205c3dfedad
+--0000000000009b438505c3e9ed69
 Content-Type: text/plain; charset="UTF-8"
 
-Oh okay, thank you. I will test this by eod today!
+Hello, I have tested this patch with our qemu and it works, thank you.
 
+What are the next steps for this patch? So is it approved and ready to go
+in mainline?
 
-On Thu, Jun 3, 2021 at 10:22 AM Peter Maydell <peter.maydell@linaro.org>
+Thanks,
+Swetha.
+
+On Thu, Jun 3, 2021 at 10:30 AM Swetha Joshi <swethajoshi139@gmail.com>
 wrote:
 
-> On Fri, 28 May 2021 at 20:41, Swetha Joshi <swethajoshi139@gmail.com>
+>
+> Oh okay, thank you. I will test this by eod today!
+>
+>
+> On Thu, Jun 3, 2021 at 10:22 AM Peter Maydell <peter.maydell@linaro.org>
 > wrote:
-> >
-> > I apologize for the delay, here are the repro steps:
-> > 1. Remove CONFIG_ARM_VIRT=y from arm-softmmu.mak
-> > 2. In .gitlab-ci.yml, crossbuild.yml and in tests/vm/Makefile.include,
-> in all the places where we disable kvm using -disable-kvm, replace this
-> with -enable-kvm
-> > 3. Build
 >
-> Thanks; I reproduced the link errors and have sent a patchset
-> that I hope fixes this:
-> https://patchew.org/QEMU/20210603171259.27962-1-peter.maydell@linaro.org/
+>> On Fri, 28 May 2021 at 20:41, Swetha Joshi <swethajoshi139@gmail.com>
+>> wrote:
+>> >
+>> > I apologize for the delay, here are the repro steps:
+>> > 1. Remove CONFIG_ARM_VIRT=y from arm-softmmu.mak
+>> > 2. In .gitlab-ci.yml, crossbuild.yml and in tests/vm/Makefile.include,
+>> in all the places where we disable kvm using -disable-kvm, replace this
+>> with -enable-kvm
+>> > 3. Build
+>>
+>> Thanks; I reproduced the link errors and have sent a patchset
+>> that I hope fixes this:
+>> https://patchew.org/QEMU/20210603171259.27962-1-peter.maydell@linaro.org/
+>>
+>> If you could test that it works for you that would be great.
+>>
+>> -- PMM
+>>
+> --
+> Regards
 >
-> If you could test that it works for you that would be great.
->
-> -- PMM
+> Swetha Joshi.
 >
 -- 
 Regards
 
 Swetha Joshi.
 
---000000000000ed710205c3dfedad
+--0000000000009b438505c3e9ed69
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div><br></div><div dir=3D"auto">Oh okay, thank you. I will test this by eo=
-d today!=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto"><br><div =
-class=3D"gmail_quote" dir=3D"auto"><div dir=3D"ltr" class=3D"gmail_attr">On=
- Thu, Jun 3, 2021 at 10:22 AM Peter Maydell &lt;<a href=3D"mailto:peter.may=
-dell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquo=
-te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-widt=
-h:1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb(204,20=
-4,204)">On Fri, 28 May 2021 at 20:41, Swetha Joshi &lt;<a href=3D"mailto:sw=
-ethajoshi139@gmail.com" target=3D"_blank">swethajoshi139@gmail.com</a>&gt; =
-wrote:<br>
+<div dir=3D"auto">Hello, I have tested this patch with our qemu and it work=
+s, thank you.</div><div dir=3D"auto"><br></div><div dir=3D"auto">What are t=
+he next steps for this patch? So is it approved and ready to go in mainline=
+?</div><div dir=3D"auto"><br></div><div dir=3D"auto">Thanks,</div><div dir=
+=3D"auto">Swetha.=C2=A0</div><div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Thu, Jun 3, 2021 at 10:30 AM Swetha Joshi =
+&lt;<a href=3D"mailto:swethajoshi139@gmail.com">swethajoshi139@gmail.com</a=
+>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
+ 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left:1=
+ex;border-left-color:rgb(204,204,204)"><div><br></div><div dir=3D"auto">Oh =
+okay, thank you. I will test this by eod today!=C2=A0</div><div dir=3D"auto=
+"><br></div><div dir=3D"auto"><br><div class=3D"gmail_quote" dir=3D"auto"><=
+div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jun 3, 2021 at 10:22 AM Peter =
+Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">p=
+eter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-=
+style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)">On Fri, 28=
+ May 2021 at 20:41, Swetha Joshi &lt;<a href=3D"mailto:swethajoshi139@gmail=
+.com" target=3D"_blank">swethajoshi139@gmail.com</a>&gt; wrote:<br>
 &gt;<br>
 &gt; I apologize for the delay, here are the repro steps:<br>
 &gt; 1. Remove CONFIG_ARM_VIRT=3Dy from arm-softmmu.mak<br>
@@ -146,9 +174,12 @@ naro.org/" rel=3D"noreferrer" target=3D"_blank">https://patchew.org/QEMU/20=
 If you could test that it works for you that would be great.<br>
 <br>
 -- PMM<br>
+</blockquote></div></div>-- <br><div dir=3D"ltr" data-smartmail=3D"gmail_si=
+gnature"><div dir=3D"ltr">Regards<div><br></div><div>Swetha Joshi.</div></d=
+iv></div>
 </blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
 data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Regards<div><br></div><=
 div>Swetha Joshi.</div></div></div>
 
---000000000000ed710205c3dfedad--
+--0000000000009b438505c3e9ed69--
 
