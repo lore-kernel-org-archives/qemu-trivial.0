@@ -1,44 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lp5kH-0006XT-8T
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Jun 2021 05:04:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37610)
+	id 1lpBPW-0002wU-LE
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Jun 2021 11:06:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lp5kF-0006Vr-ON
- for qemu-trivial@nongnu.org; Fri, 04 Jun 2021 05:03:59 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f]:43978)
+ (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
+ id 1lpBPV-0002up-Nk; Fri, 04 Jun 2021 11:06:57 -0400
+Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32]:40599)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lp5kA-0001YJ-OB
- for qemu-trivial@nongnu.org; Fri, 04 Jun 2021 05:03:59 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id v12so4302859plo.10
- for <qemu-trivial@nongnu.org>; Fri, 04 Jun 2021 02:03:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
+ id 1lpBPQ-00006L-On; Fri, 04 Jun 2021 11:06:57 -0400
+Received: by mail-oo1-xc32.google.com with SMTP id
+ j17-20020a0568200231b029024900620310so1032943oob.7; 
+ Fri, 04 Jun 2021 08:06:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uMXi9vHXpchxUon/pDdTEr1IO0c6b/Xo3Am4EQsqEB4=;
- b=FryNAoGKkQDLCNAazAJdd8f0K7jSxi7Zeb0WrhKGp6n61H6XSYXwTwV3/RHwiMgw0V
- b3LbpnMRK25Vvc20NN5j2I/fzyY7NOjDNsxvYVbvn5ALTsdBNsKGO2L0h5W8AUSAc3ZK
- StMGDm1A5rsCtlc2+iSFhtBvmKJzEULREplBOHHBlOD83R9HJuToY/uPJJpeN6f4MXk2
- sISjJI5ryYUaOgb+X6N0C9uxOAI7eam9gTXGnjWpXkHvDn7L47ZqeoTjpSs32/chkT3+
- piO0Re87MN0mFJSu30JLQhqdpbMnDqtyPZWR/BNrakhzXqkmNj0w3NW1u2LLDy8v7H34
- LHJQ==
+ :cc; bh=TjjX2Rnv95rJTzf3m9Yuf2udKchqjycu38PflHn6i+g=;
+ b=bFYEC4yHLiexoM6CxYI8cbXzh7yXcC/kQaOdTI7X51xofE2rveMWb2hbPiUK0CapEO
+ UzFeTAssGz1h3o30ROq7eGJT1CpDgPSl2KkLpVHXA2K1H6aIDFERJWMTqGgA8MeLG9Mw
+ 9UqPyVHHFGL0brY86Go2AZJc/WTwel8hm39xuVQNAbaLgVWrHiyEUCwTCLTvEGxLABXC
+ 3WGyVkYUneg8bM9WcOM89KzDs9UiZZ0O9pq4+uCnOOOX4DboXrXT/3G8Ne7/Y1MjcZoq
+ qwt/n83C3uiIKL5VU1gXihLchH2v6VWwd5HgEzV2kC1vYqGd60wM2+M9OIirtifCm8TS
+ vnCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=uMXi9vHXpchxUon/pDdTEr1IO0c6b/Xo3Am4EQsqEB4=;
- b=Kcnm0ffsOysn2aPrIFXkz86CJ4Md6KiXm+WB5QWBHVxaGHDwOcDQWF63IcJSzjd/Cq
- zY37rkvXBWh9KbS59nLbdhMEMahSDwGM+8dx2BYE7glLw1bATHKfejTRHb2aGINOxn6B
- O4meGcXKHkn+Ztr17rwoLeThyCAvuHogqppKwipCIvhIrYZWSalyIP041xBsuGRZ37F5
- thVgI9swqK3vRywKqELa97Ncgjumg11kUhE0bn6+he43GUwCFPDufMLbUvnzQJ8E6R4+
- 2pWbsz4vrElgaY1+oibzCu9ZhrcbKD8RXzR+6sAEp2ZWF6KEl4f1JoDNSmlsijJbRXl3
- 0JNg==
-X-Gm-Message-State: AOAM532NUjVchS5pP9FJsmXPwnSYu/hzr1pRpggQL/3YZ58feGqS9ZQB
- yQBz0PT6g8X/4rpmTvrw2dCDulISoYJnKB57ZE2o/A==
-X-Google-Smtp-Source: ABdhPJxREXPcn8pd0hBe7FkMk1MWJSUjjx8yeuP/812HVYhhwIKrKot/0JF8ioOqIqOQvrBDm8gybAJfE7Q1st8wVa8=
-X-Received: by 2002:a17:902:c403:b029:106:7793:3fcc with SMTP id
- k3-20020a170902c403b029010677933fccmr3290089plk.81.1622797433383; Fri, 04 Jun
- 2021 02:03:53 -0700 (PDT)
+ bh=TjjX2Rnv95rJTzf3m9Yuf2udKchqjycu38PflHn6i+g=;
+ b=B2eg9h+stzqjVNEpPSU8pulCBc81QVxDKXmi820aR7MxTxd+/6aN5zsWsnmxpC52PB
+ tNNbDW9ZjxqQ9tfsHVCrzTS6wKhhJfVpDJgSMAwzMyRSCHlA1TWm3OZF+3ijKRoKpM6h
+ seSWgzeboCMQ5UuXMY8bX5lOc/Cr23YOjZWW7L4vy9AYqkgrIjW40ZfGOMlhh5R+fEjJ
+ J03CdVoK1Apmsp0wVyv9PUlkBUju1Msyurt2na1BduhKYidWJ2V3gQtn6cYM2+K1LZAT
+ ScEin/uEuaDvThBqSI+BLqs6IDCKeJ/F5lcBWtwe4w6fsFkeUGBdu9VBF1Lzl81HL/NG
+ tCPw==
+X-Gm-Message-State: AOAM532LdfAWpPJgjc6Wfx/Ms+YkLwr4y4tQdpyNCujoaktEksTc/y3Z
+ bJYlFUOeVz0rBSP6o3k5EF8E0Y+/9YcbhZfUx+U=
+X-Google-Smtp-Source: ABdhPJx+3xntftUBlLr9FKrCBHZ46/kuIsX08yA74WAEpV7MtKji/ovRmNaVjJHo1xwV22h1hth1VrL03+0kTBjMOcQ=
+X-Received: by 2002:a05:6820:386:: with SMTP id
+ r6mr3951873ooj.25.1622819211043; 
+ Fri, 04 Jun 2021 08:06:51 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
  <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
@@ -52,25 +51,27 @@ References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
  <CAFEAcA8oAtjVom+BXtcgao4O252ipmFzv-iNTSzDaJChcQkr9g@mail.gmail.com>
  <CALf2nmKgaZiBOfEWpMt4Yq-NyCYrsFNPwb1hZ0adwoXUs4T6pA@mail.gmail.com>
  <CALf2nmLLZ5smxqYJyA+_MPunaQqaM7-Ub9CVurTE1pM0ErOS+w@mail.gmail.com>
-In-Reply-To: <CALf2nmLLZ5smxqYJyA+_MPunaQqaM7-Ub9CVurTE1pM0ErOS+w@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Jun 2021 10:03:19 +0100
-Message-ID: <CAFEAcA9GM72tvOLDZfW=TmvV=DN1cAeXJ_MScWb3oivAR7X9LQ@mail.gmail.com>
+ <CAFEAcA9GM72tvOLDZfW=TmvV=DN1cAeXJ_MScWb3oivAR7X9LQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9GM72tvOLDZfW=TmvV=DN1cAeXJ_MScWb3oivAR7X9LQ@mail.gmail.com>
+From: Swetha Joshi <swethajoshi139@gmail.com>
+Date: Fri, 4 Jun 2021 08:06:38 -0700
+Message-ID: <CALf2nmJ-uRf=8Bq2hotai7MOD9uRVUQ0YHS667AjfVKJDYd4Qg@mail.gmail.com>
 Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
  when their configs are enabled
-To: Swetha Joshi <swethajoshi139@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Dongjiu Geng <gengdongjiu1@gmail.com>,
  QEMU Developers <qemu-devel@nongnu.org>, 
  QEMU Trivial <qemu-trivial@nongnu.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: multipart/alternative; boundary="0000000000009be5d505c3f20ab6"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c32;
+ envelope-from=swethajoshi139@gmail.com; helo=mail-oo1-xc32.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -85,17 +86,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Jun 2021 09:04:00 -0000
+X-List-Received-Date: Fri, 04 Jun 2021 15:06:58 -0000
 
-On Fri, 4 Jun 2021 at 06:26, Swetha Joshi <swethajoshi139@gmail.com> wrote:
+--0000000000009be5d505c3f20ab6
+Content-Type: text/plain; charset="UTF-8"
+
+Can y oh I let me know once it goes in mainline? Thanks!
+
+On Fri, Jun 4, 2021 at 2:03 AM Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On Fri, 4 Jun 2021 at 06:26, Swetha Joshi <swethajoshi139@gmail.com>
+> wrote:
+> >
+> > Hello, I have tested this patch with our qemu and it works, thank you.
 >
-> Hello, I have tested this patch with our qemu and it works, thank you.
+> Thanks for testing.
+>
+> > What are the next steps for this patch? So is it approved and ready to
+> go in mainline?
+>
+> It will go in once it has been code-reviewed.
+>
+> -- PMM
+>
+-- 
+Regards
 
-Thanks for testing.
+Swetha Joshi.
 
-> What are the next steps for this patch? So is it approved and ready to go in mainline?
+--0000000000009be5d505c3f20ab6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-It will go in once it has been code-reviewed.
+<div dir=3D"auto">Can y oh I let me know once it goes in mainline? Thanks!=
+=C2=A0</div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
+mail_attr">On Fri, Jun 4, 2021 at 2:03 AM Peter Maydell &lt;<a href=3D"mail=
+to:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
+er-left-width:1px;border-left-style:solid;padding-left:1ex;border-left-colo=
+r:rgb(204,204,204)">On Fri, 4 Jun 2021 at 06:26, Swetha Joshi &lt;<a href=
+=3D"mailto:swethajoshi139@gmail.com" target=3D"_blank">swethajoshi139@gmail=
+.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hello, I have tested this patch with our qemu and it works, thank you.=
+<br>
+<br>
+Thanks for testing.<br>
+<br>
+&gt; What are the next steps for this patch? So is it approved and ready to=
+ go in mainline?<br>
+<br>
+It will go in once it has been code-reviewed.<br>
+<br>
+-- PMM<br>
+</blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
+data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Regards<div><br></div><=
+div>Swetha Joshi.</div></div></div>
 
--- PMM
+--0000000000009be5d505c3f20ab6--
 
