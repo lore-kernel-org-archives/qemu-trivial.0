@@ -1,42 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lp2LS-0003pI-O7
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Jun 2021 01:26:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59192)
+	id 1lp5kH-0006XT-8T
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Jun 2021 05:04:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1lp2LQ-0003mN-Jm; Fri, 04 Jun 2021 01:26:08 -0400
-Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f]:45880)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lp5kF-0006Vr-ON
+ for qemu-trivial@nongnu.org; Fri, 04 Jun 2021 05:03:59 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f]:43978)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1lp2LO-0000W8-NE; Fri, 04 Jun 2021 01:26:08 -0400
-Received: by mail-ot1-x32f.google.com with SMTP id
- t10-20020a05683022eab0290304ed8bc759so7993787otc.12; 
- Thu, 03 Jun 2021 22:26:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lp5kA-0001YJ-OB
+ for qemu-trivial@nongnu.org; Fri, 04 Jun 2021 05:03:59 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id v12so4302859plo.10
+ for <qemu-trivial@nongnu.org>; Fri, 04 Jun 2021 02:03:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Y7hs2ThLCcd4EXAQewgtqhiDgTLsjP/tp3SDQW/lQQA=;
- b=egaioL8n4oRhwvu4OQmstqy/u8mgm2IB9K2QN6UntckxP+4Rltc37QNfbBCuWgdkL/
- z1QOgNbo3JDVGvmSZgxaBWJ+RFSbzmwqLcyNIZZcac9+522yew+qocQII5UanvNPge7G
- uSKVU+4oUnz7mbNMrtzMDMazfjF5x9le0xhCWYdBHMfY7LgSYjHKj+sg/XABRhdS/XP+
- TePUl4i/RDvDS9A9Sj5qY83zcvLAwiR7X/qzBOCYy5lhEIWA+oLHIgqIr6co58SjD/3g
- YE4yzjRuNxt1gmzRmlP1MHojb2MDwzicLGN3tL93p6gs2yLJJt7U84pEdHwQBzPaGFJN
- FaCw==
+ :cc; bh=uMXi9vHXpchxUon/pDdTEr1IO0c6b/Xo3Am4EQsqEB4=;
+ b=FryNAoGKkQDLCNAazAJdd8f0K7jSxi7Zeb0WrhKGp6n61H6XSYXwTwV3/RHwiMgw0V
+ b3LbpnMRK25Vvc20NN5j2I/fzyY7NOjDNsxvYVbvn5ALTsdBNsKGO2L0h5W8AUSAc3ZK
+ StMGDm1A5rsCtlc2+iSFhtBvmKJzEULREplBOHHBlOD83R9HJuToY/uPJJpeN6f4MXk2
+ sISjJI5ryYUaOgb+X6N0C9uxOAI7eam9gTXGnjWpXkHvDn7L47ZqeoTjpSs32/chkT3+
+ piO0Re87MN0mFJSu30JLQhqdpbMnDqtyPZWR/BNrakhzXqkmNj0w3NW1u2LLDy8v7H34
+ LHJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Y7hs2ThLCcd4EXAQewgtqhiDgTLsjP/tp3SDQW/lQQA=;
- b=TD1A3EJXL5BDQWqpTC0wRyr+Wtc7chKMBNVAnEx0dZICaDuy1x0VBx7/BWAVA9gN/B
- wNUKx3/R7JBAKA2xTpIxf9XX08fsY6zOedaCKFx35X7BbeHb4BB0pXBYXMkDjHh2AxVT
- 4NDZ4THv7ysIrFWbUcrl114r/2Uaq39Yig08UFBo+CuDbSGzltJEl9mzeo5GGfPkRLiA
- ieB/TRClGRM4jRUNzPxMYG8dT+ETCOg9lF4vcXIoURwDcgggR80LQ00MWvrL+A79uIMk
- EOtE6zO4qtTC9867PtO56MDrEQWZCxToQ7hAvoDFXcBh75Su07cg53wJ3QYVMOmto/wJ
- Tsgg==
-X-Gm-Message-State: AOAM533buznDxdb6JaJ75UE2siqRQrL7cUfya/sUy/cVh+xZVHvZm+OY
- 3uma08vEr7HeDx5iMO/C9a4SrT0gCflK294EXO8=
-X-Google-Smtp-Source: ABdhPJwVpIRTzGWVubOKbFFzOWFPbb7Zb4XP9+a7R5IsbpYMV7x2wyEdUw6qMMQ4ICrZD6zjiwguTtXlYYNIybgO1k0=
-X-Received: by 2002:a9d:554b:: with SMTP id h11mr2347232oti.4.1622784364724;
- Thu, 03 Jun 2021 22:26:04 -0700 (PDT)
+ bh=uMXi9vHXpchxUon/pDdTEr1IO0c6b/Xo3Am4EQsqEB4=;
+ b=Kcnm0ffsOysn2aPrIFXkz86CJ4Md6KiXm+WB5QWBHVxaGHDwOcDQWF63IcJSzjd/Cq
+ zY37rkvXBWh9KbS59nLbdhMEMahSDwGM+8dx2BYE7glLw1bATHKfejTRHb2aGINOxn6B
+ O4meGcXKHkn+Ztr17rwoLeThyCAvuHogqppKwipCIvhIrYZWSalyIP041xBsuGRZ37F5
+ thVgI9swqK3vRywKqELa97Ncgjumg11kUhE0bn6+he43GUwCFPDufMLbUvnzQJ8E6R4+
+ 2pWbsz4vrElgaY1+oibzCu9ZhrcbKD8RXzR+6sAEp2ZWF6KEl4f1JoDNSmlsijJbRXl3
+ 0JNg==
+X-Gm-Message-State: AOAM532NUjVchS5pP9FJsmXPwnSYu/hzr1pRpggQL/3YZ58feGqS9ZQB
+ yQBz0PT6g8X/4rpmTvrw2dCDulISoYJnKB57ZE2o/A==
+X-Google-Smtp-Source: ABdhPJxREXPcn8pd0hBe7FkMk1MWJSUjjx8yeuP/812HVYhhwIKrKot/0JF8ioOqIqOQvrBDm8gybAJfE7Q1st8wVa8=
+X-Received: by 2002:a17:902:c403:b029:106:7793:3fcc with SMTP id
+ k3-20020a170902c403b029010677933fccmr3290089plk.81.1622797433383; Fri, 04 Jun
+ 2021 02:03:53 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
  <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
@@ -49,26 +51,26 @@ References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
  <CALf2nmLOqtwacgrQ91TTz9_QRUmFS9ZNii2Kk7-tQ7LNp9vw2Q@mail.gmail.com>
  <CAFEAcA8oAtjVom+BXtcgao4O252ipmFzv-iNTSzDaJChcQkr9g@mail.gmail.com>
  <CALf2nmKgaZiBOfEWpMt4Yq-NyCYrsFNPwb1hZ0adwoXUs4T6pA@mail.gmail.com>
-In-Reply-To: <CALf2nmKgaZiBOfEWpMt4Yq-NyCYrsFNPwb1hZ0adwoXUs4T6pA@mail.gmail.com>
-From: Swetha Joshi <swethajoshi139@gmail.com>
-Date: Thu, 3 Jun 2021 22:25:53 -0700
-Message-ID: <CALf2nmLLZ5smxqYJyA+_MPunaQqaM7-Ub9CVurTE1pM0ErOS+w@mail.gmail.com>
+ <CALf2nmLLZ5smxqYJyA+_MPunaQqaM7-Ub9CVurTE1pM0ErOS+w@mail.gmail.com>
+In-Reply-To: <CALf2nmLLZ5smxqYJyA+_MPunaQqaM7-Ub9CVurTE1pM0ErOS+w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Jun 2021 10:03:19 +0100
+Message-ID: <CAFEAcA9GM72tvOLDZfW=TmvV=DN1cAeXJ_MScWb3oivAR7X9LQ@mail.gmail.com>
 Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
  when their configs are enabled
-To: Peter Maydell <peter.maydell@linaro.org>
+To: Swetha Joshi <swethajoshi139@gmail.com>
 Cc: Dongjiu Geng <gengdongjiu1@gmail.com>,
  QEMU Developers <qemu-devel@nongnu.org>, 
  QEMU Trivial <qemu-trivial@nongnu.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000009b438505c3e9ed69"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32f;
- envelope-from=swethajoshi139@gmail.com; helo=mail-ot1-x32f.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -83,103 +85,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Jun 2021 05:26:09 -0000
+X-List-Received-Date: Fri, 04 Jun 2021 09:04:00 -0000
 
---0000000000009b438505c3e9ed69
-Content-Type: text/plain; charset="UTF-8"
-
-Hello, I have tested this patch with our qemu and it works, thank you.
-
-What are the next steps for this patch? So is it approved and ready to go
-in mainline?
-
-Thanks,
-Swetha.
-
-On Thu, Jun 3, 2021 at 10:30 AM Swetha Joshi <swethajoshi139@gmail.com>
-wrote:
-
+On Fri, 4 Jun 2021 at 06:26, Swetha Joshi <swethajoshi139@gmail.com> wrote:
 >
-> Oh okay, thank you. I will test this by eod today!
->
->
-> On Thu, Jun 3, 2021 at 10:22 AM Peter Maydell <peter.maydell@linaro.org>
-> wrote:
->
->> On Fri, 28 May 2021 at 20:41, Swetha Joshi <swethajoshi139@gmail.com>
->> wrote:
->> >
->> > I apologize for the delay, here are the repro steps:
->> > 1. Remove CONFIG_ARM_VIRT=y from arm-softmmu.mak
->> > 2. In .gitlab-ci.yml, crossbuild.yml and in tests/vm/Makefile.include,
->> in all the places where we disable kvm using -disable-kvm, replace this
->> with -enable-kvm
->> > 3. Build
->>
->> Thanks; I reproduced the link errors and have sent a patchset
->> that I hope fixes this:
->> https://patchew.org/QEMU/20210603171259.27962-1-peter.maydell@linaro.org/
->>
->> If you could test that it works for you that would be great.
->>
->> -- PMM
->>
-> --
-> Regards
->
-> Swetha Joshi.
->
--- 
-Regards
+> Hello, I have tested this patch with our qemu and it works, thank you.
 
-Swetha Joshi.
+Thanks for testing.
 
---0000000000009b438505c3e9ed69
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> What are the next steps for this patch? So is it approved and ready to go in mainline?
 
-<div dir=3D"auto">Hello, I have tested this patch with our qemu and it work=
-s, thank you.</div><div dir=3D"auto"><br></div><div dir=3D"auto">What are t=
-he next steps for this patch? So is it approved and ready to go in mainline=
-?</div><div dir=3D"auto"><br></div><div dir=3D"auto">Thanks,</div><div dir=
-=3D"auto">Swetha.=C2=A0</div><div><br><div class=3D"gmail_quote"><div dir=
-=3D"ltr" class=3D"gmail_attr">On Thu, Jun 3, 2021 at 10:30 AM Swetha Joshi =
-&lt;<a href=3D"mailto:swethajoshi139@gmail.com">swethajoshi139@gmail.com</a=
->&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
- 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left:1=
-ex;border-left-color:rgb(204,204,204)"><div><br></div><div dir=3D"auto">Oh =
-okay, thank you. I will test this by eod today!=C2=A0</div><div dir=3D"auto=
-"><br></div><div dir=3D"auto"><br><div class=3D"gmail_quote" dir=3D"auto"><=
-div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jun 3, 2021 at 10:22 AM Peter =
-Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">p=
-eter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_=
-quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-=
-style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)">On Fri, 28=
- May 2021 at 20:41, Swetha Joshi &lt;<a href=3D"mailto:swethajoshi139@gmail=
-.com" target=3D"_blank">swethajoshi139@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; I apologize for the delay, here are the repro steps:<br>
-&gt; 1. Remove CONFIG_ARM_VIRT=3Dy from arm-softmmu.mak<br>
-&gt; 2. In .gitlab-ci.yml, crossbuild.yml and in tests/vm/Makefile.include,=
- in all the places where we disable kvm using -disable-kvm, replace this wi=
-th -enable-kvm<br>
-&gt; 3. Build<br>
-<br>
-Thanks; I reproduced the link errors and have sent a patchset<br>
-that I hope fixes this:<br>
-<a href=3D"https://patchew.org/QEMU/20210603171259.27962-1-peter.maydell@li=
-naro.org/" rel=3D"noreferrer" target=3D"_blank">https://patchew.org/QEMU/20=
-210603171259.27962-1-peter.maydell@linaro.org/</a><br>
-<br>
-If you could test that it works for you that would be great.<br>
-<br>
--- PMM<br>
-</blockquote></div></div>-- <br><div dir=3D"ltr" data-smartmail=3D"gmail_si=
-gnature"><div dir=3D"ltr">Regards<div><br></div><div>Swetha Joshi.</div></d=
-iv></div>
-</blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
-data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Regards<div><br></div><=
-div>Swetha Joshi.</div></div></div>
+It will go in once it has been code-reviewed.
 
---0000000000009b438505c3e9ed69--
+-- PMM
 
