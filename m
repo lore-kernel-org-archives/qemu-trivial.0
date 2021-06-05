@@ -1,80 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lpBPW-0002wU-LE
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Jun 2021 11:06:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56614)
+	id 1lpYwf-0001dj-P6
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Jun 2021 12:14:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1lpBPV-0002up-Nk; Fri, 04 Jun 2021 11:06:57 -0400
-Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32]:40599)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <swethajoshi139@gmail.com>)
- id 1lpBPQ-00006L-On; Fri, 04 Jun 2021 11:06:57 -0400
-Received: by mail-oo1-xc32.google.com with SMTP id
- j17-20020a0568200231b029024900620310so1032943oob.7; 
- Fri, 04 Jun 2021 08:06:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TjjX2Rnv95rJTzf3m9Yuf2udKchqjycu38PflHn6i+g=;
- b=bFYEC4yHLiexoM6CxYI8cbXzh7yXcC/kQaOdTI7X51xofE2rveMWb2hbPiUK0CapEO
- UzFeTAssGz1h3o30ROq7eGJT1CpDgPSl2KkLpVHXA2K1H6aIDFERJWMTqGgA8MeLG9Mw
- 9UqPyVHHFGL0brY86Go2AZJc/WTwel8hm39xuVQNAbaLgVWrHiyEUCwTCLTvEGxLABXC
- 3WGyVkYUneg8bM9WcOM89KzDs9UiZZ0O9pq4+uCnOOOX4DboXrXT/3G8Ne7/Y1MjcZoq
- qwt/n83C3uiIKL5VU1gXihLchH2v6VWwd5HgEzV2kC1vYqGd60wM2+M9OIirtifCm8TS
- vnCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TjjX2Rnv95rJTzf3m9Yuf2udKchqjycu38PflHn6i+g=;
- b=B2eg9h+stzqjVNEpPSU8pulCBc81QVxDKXmi820aR7MxTxd+/6aN5zsWsnmxpC52PB
- tNNbDW9ZjxqQ9tfsHVCrzTS6wKhhJfVpDJgSMAwzMyRSCHlA1TWm3OZF+3ijKRoKpM6h
- seSWgzeboCMQ5UuXMY8bX5lOc/Cr23YOjZWW7L4vy9AYqkgrIjW40ZfGOMlhh5R+fEjJ
- J03CdVoK1Apmsp0wVyv9PUlkBUju1Msyurt2na1BduhKYidWJ2V3gQtn6cYM2+K1LZAT
- ScEin/uEuaDvThBqSI+BLqs6IDCKeJ/F5lcBWtwe4w6fsFkeUGBdu9VBF1Lzl81HL/NG
- tCPw==
-X-Gm-Message-State: AOAM532LdfAWpPJgjc6Wfx/Ms+YkLwr4y4tQdpyNCujoaktEksTc/y3Z
- bJYlFUOeVz0rBSP6o3k5EF8E0Y+/9YcbhZfUx+U=
-X-Google-Smtp-Source: ABdhPJx+3xntftUBlLr9FKrCBHZ46/kuIsX08yA74WAEpV7MtKji/ovRmNaVjJHo1xwV22h1hth1VrL03+0kTBjMOcQ=
-X-Received: by 2002:a05:6820:386:: with SMTP id
- r6mr3951873ooj.25.1622819211043; 
- Fri, 04 Jun 2021 08:06:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <maciej.szmigiero@oracle.com>)
+ id 1lpYjp-0007af-CC; Sat, 05 Jun 2021 12:01:29 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:12108)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <maciej.szmigiero@oracle.com>)
+ id 1lpYjl-0008Te-Tj; Sat, 05 Jun 2021 12:01:29 -0400
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 155Fu7Tc020849; Sat, 5 Jun 2021 16:01:20 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : subject : to :
+ cc : references : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=YtnzqbrSR+t2OqYB5yYM2icd3UEn1gAs3mbYpb55KQ8=;
+ b=MntmWr2V99orG6Bc3LXy/vCqCEnx2xVuGO5Yoc7/rZOKi6hPZ9F+z2Lbsmr/uWC6kP9H
+ TJiKnlCV8IP761IOFSLzXXCzXxJXzEWyDEznSKtMOdbA0IZooCePm/owtcklMZXZ/vSk
+ YBRjG6+nlnNx0cKJjuLMPn2nFqzDPup/151axxCY3G86wlx8Z/amg1eE5G91epoL2Lfc
+ 6i+paaV0+PjaoLmvlLdiLcTUkexUFHoISd0+c5VEMD/rHGTyIPnte7sBpAoAzSGutjEr
+ Hg4nas4rhfMAeatxZ6fh0A+rgNX0YIUq5PgsefLtn9FNJzQM4E27r0SdzOCQ2tnQK0A8 kQ== 
+Received: from oracle.com (userp3030.oracle.com [156.151.31.80])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3900vrg50m-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 05 Jun 2021 16:01:20 +0000
+Received: from userp3030.oracle.com (userp3030.oracle.com [127.0.0.1])
+ by pps.podrdrct (8.16.0.36/8.16.0.36) with SMTP id 155FujWq072255;
+ Sat, 5 Jun 2021 16:01:19 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 38yxcsmp14-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 05 Jun 2021 16:01:19 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 155G1IRw024334;
+ Sat, 5 Jun 2021 16:01:18 GMT
+Received: from [10.175.188.167] (/10.175.188.167)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sat, 05 Jun 2021 09:01:17 -0700
+From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
+Subject: Re: [PATCH 0/2] Improve vmstate_vmbus_dev handling
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Jon Doron <arilou@gmail.com>, Roman Kagan <rkagan@virtuozzo.com>,
+ qemu-devel@nongnu.org
+References: <20210603104139.556512-1-thuth@redhat.com>
+Message-ID: <29f1529e-5865-db7e-698d-e7a046f012a3@oracle.com>
+Date: Sat, 5 Jun 2021 18:01:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-References: <20210525025823.3208218-1-swethajoshi139@gmail.com>
- <331a819e-1745-4d4b-cc4a-82521a58186a@linaro.org>
- <CAFEAcA8RbVafdjn2hkXifAPUF=wxZup20PqPcRpQ1ivtnWCxww@mail.gmail.com>
- <CALf2nm+LFqM2=vDs8=YfyxQSUT-0xxaCiVmcQzrKoOa+zaTtdg@mail.gmail.com>
- <CAFEAcA-oX0JR80UYzYKvczHsfxWG6oH3Pg4pbM6ByDe57XEHHw@mail.gmail.com>
- <CALf2nmKhPaWJa944dR+kFAQ1hCLXF0XPwXaHTqJQ-C6EW7ACKg@mail.gmail.com>
- <CAFEAcA9E4s3dST0GJkdg24DDAn90WU1FEmXwoKD6oQmNSB1vVA@mail.gmail.com>
- <CABSBigR1L9sE36eYA0Mq4smx1E9A4umTOKTe_x97foSMkryRnw@mail.gmail.com>
- <CALf2nmLOqtwacgrQ91TTz9_QRUmFS9ZNii2Kk7-tQ7LNp9vw2Q@mail.gmail.com>
- <CAFEAcA8oAtjVom+BXtcgao4O252ipmFzv-iNTSzDaJChcQkr9g@mail.gmail.com>
- <CALf2nmKgaZiBOfEWpMt4Yq-NyCYrsFNPwb1hZ0adwoXUs4T6pA@mail.gmail.com>
- <CALf2nmLLZ5smxqYJyA+_MPunaQqaM7-Ub9CVurTE1pM0ErOS+w@mail.gmail.com>
- <CAFEAcA9GM72tvOLDZfW=TmvV=DN1cAeXJ_MScWb3oivAR7X9LQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9GM72tvOLDZfW=TmvV=DN1cAeXJ_MScWb3oivAR7X9LQ@mail.gmail.com>
-From: Swetha Joshi <swethajoshi139@gmail.com>
-Date: Fri, 4 Jun 2021 08:06:38 -0700
-Message-ID: <CALf2nmJ-uRf=8Bq2hotai7MOD9uRVUQ0YHS667AjfVKJDYd4Qg@mail.gmail.com>
-Subject: Re: [PATCH_V3] Adding ifdefs to call the respective routines only
- when their configs are enabled
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Dongjiu Geng <gengdongjiu1@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000009be5d505c3f20ab6"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c32;
- envelope-from=swethajoshi139@gmail.com; helo=mail-oo1-xc32.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210603104139.556512-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10006
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ bulkscore=0 mlxscore=0
+ spamscore=0 adultscore=0 mlxlogscore=999 suspectscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
+ definitions=main-2106050116
+X-Proofpoint-ORIG-GUID: 5QwytzCJ2PGUUOz2g-Cv27WLcMO_9Mg3
+X-Proofpoint-GUID: 5QwytzCJ2PGUUOz2g-Cv27WLcMO_9Mg3
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=maciej.szmigiero@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.59, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 05 Jun 2021 12:14:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -86,63 +86,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Jun 2021 15:06:58 -0000
+X-List-Received-Date: Sat, 05 Jun 2021 16:01:29 -0000
 
---0000000000009be5d505c3f20ab6
-Content-Type: text/plain; charset="UTF-8"
+Hi Thomas,
 
-Can y oh I let me know once it goes in mainline? Thanks!
+On 03.06.2021 12:41, Thomas Huth wrote:
+> I accidentally came accross vmstate_vmbus_dev and noticed that
+> it is currently not used at all ... wire it up and make it
+> static, since it is only used in one file.
+> 
+> Thomas Huth (2):
+>    hw/hyperv/vmbus: Wire up vmstate_vmbus_dev
+>    hw/hyperv/vmbus: Make vmstate_vmbus_dev static
+> 
+>   hw/hyperv/vmbus.c         | 29 +++++++++++++++--------------
+>   include/hw/hyperv/vmbus.h |  3 ---
+>   2 files changed, 15 insertions(+), 17 deletions(-)
+> 
 
-On Fri, Jun 4, 2021 at 2:03 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
+I think the idea is to embed vmstate_vmbus_dev into a child device
+VMStateDescription using VMSTATE_STRUCT() - since particular VMBus
+devices aren't merged yet there are currently no users of it.
 
-> On Fri, 4 Jun 2021 at 06:26, Swetha Joshi <swethajoshi139@gmail.com>
-> wrote:
-> >
-> > Hello, I have tested this patch with our qemu and it works, thank you.
->
-> Thanks for testing.
->
-> > What are the next steps for this patch? So is it approved and ready to
-> go in mainline?
->
-> It will go in once it has been code-reviewed.
->
-> -- PMM
->
--- 
-Regards
+This is similar how USB devices VMState is organized - see
+vmstate_usb_device and VMSTATE_USB_DEVICE() macro.
 
-Swetha Joshi.
-
---0000000000009be5d505c3f20ab6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Can y oh I let me know once it goes in mainline? Thanks!=
-=C2=A0</div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
-mail_attr">On Fri, Jun 4, 2021 at 2:03 AM Peter Maydell &lt;<a href=3D"mail=
-to:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
-er-left-width:1px;border-left-style:solid;padding-left:1ex;border-left-colo=
-r:rgb(204,204,204)">On Fri, 4 Jun 2021 at 06:26, Swetha Joshi &lt;<a href=
-=3D"mailto:swethajoshi139@gmail.com" target=3D"_blank">swethajoshi139@gmail=
-.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Hello, I have tested this patch with our qemu and it works, thank you.=
-<br>
-<br>
-Thanks for testing.<br>
-<br>
-&gt; What are the next steps for this patch? So is it approved and ready to=
- go in mainline?<br>
-<br>
-It will go in once it has been code-reviewed.<br>
-<br>
--- PMM<br>
-</blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
-data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Regards<div><br></div><=
-div>Swetha Joshi.</div></div></div>
-
---0000000000009be5d505c3f20ab6--
+Thanks,
+Maciej
 
