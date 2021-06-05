@@ -1,49 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lpboB-0004qv-Hs
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Jun 2021 15:18:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43758)
+	id 1lpbs9-0000Ox-59
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Jun 2021 15:22:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44066)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lpboA-0004qS-6Y; Sat, 05 Jun 2021 15:18:10 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:58005)
+ id 1lpbs7-0000Oj-PB; Sat, 05 Jun 2021 15:22:15 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:50591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lpbo7-00010k-32; Sat, 05 Jun 2021 15:18:10 -0400
+ id 1lpbs6-0003Zv-7A; Sat, 05 Jun 2021 15:22:15 -0400
 Received: from [192.168.100.1] ([82.142.12.38]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MRBac-1m3qsG0t1w-00N6y1; Sat, 05 Jun 2021 21:18:00 +0200
-Subject: Re: [PATCH] target/nios2: fix page-fit instruction count
-To: Richard Henderson <richard.henderson@linaro.org>,
- Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>, qemu-devel@nongnu.org
-Cc: marex@denx.de, pbonzini@redhat.com, crwulff@gmail.com,
- qemu-trivial <qemu-trivial@nongnu.org>
-References: <162072241046.823357.10485774346114851009.stgit@pasha-ThinkPad-X280>
- <7ff230df-8173-1dae-3750-a40b0588f13d@ispras.ru>
- <aa23def1-fdf1-905c-94fc-954fea420762@linaro.org>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MkHIV-1l51hr0vur-00kfKb; Sat, 05 Jun 2021 21:22:10 +0200
+Subject: Re: [PATCH] hw/display/macfb: Classify the "nubus-macfb" as display
+ device
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20210531073255.46286-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <19ffcdb7-8266-7c67-aef8-e7173d3bd976@vivier.eu>
-Date: Sat, 5 Jun 2021 21:17:58 +0200
+Message-ID: <6602eb6a-fa5f-8c7d-9658-d6fbcc3d6aa6@vivier.eu>
+Date: Sat, 5 Jun 2021 21:22:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <aa23def1-fdf1-905c-94fc-954fea420762@linaro.org>
+In-Reply-To: <20210531073255.46286-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:7RkHgN7uO0YxxzT34ZsRlWVypIaw4uwq7t6wtxKqVAHOGRgs6ZS
- Mhwli8BnJwGLhmZAtxvXGnqpf61ifmnsjZziRRswowLnPdxJ6XDG2rmm1OVi3lvV4lN4QRJ
- ZvzRALKNQpvMDNaqU2BsYI2ltpix4m4NTz6aeoiJV+7iAi8ENtN2R72k7WM5YDdk/FIZnL8
- CVCGOXxvl268gv5Rl6rTw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kJPyT16/YrM=:kMuKMnwZ45ANJjy1JaFNuj
- DqTpsPysQmLtPDU7HrmJ1nI9YdfNXsDaxSQ98OuAKEXd4ztvIl1S5PSdXRFhGnwcOtA/5wAMX
- 3r4z8w9guI9EhDA1nUPesXwRucLFn1Y/12iirzDAl09RwIFNuRnoetz1GapwHAnI3ZC2ne0RJ
- iygy4lU7J/IfMkC7ynIeX8Q/rcyQECfmJ9K8ecgD1OZEL50rtsiSiD6vO/sQ25MWubu0ZOhL1
- AuegwFNNsxcP80NRwhxlhYB/xMmZY4Q0cAZ6aN1kOl0SAd0a1QnTMn7s9Hrji5rokzK+kUHFH
- AW4xT2jFe8IoVpvHgGWXZ/4N1IWiOB7tIANnExPe81A0fPCWEbIBcpB+O+kR+qrf2O+acfgB9
- UuL192GkfVHCFyVlxl8aW8Bzvo+MLkJA5HFjYGYfXiGUurM5J9+Ff5QIJ+nFf9pvL7wNRCbWq
- EcKS7TamISGIG/AphcFbxhVhu0vgHU7rVv4XsxXRyjBX2k7lzMuXpb/8eXIXPqdCumVYZDCLz
- fc2+4apC8X0sJyp4a0FZGw=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:q8Vc1Cuji3HejJm8DD+OH+Qh6um+ow6tYV+5R7lZtef7Fhg7Rui
+ +Tn0m9XI+XzWL3fNRQ2s7/Rst+9+nE/Yyng6aN6VmKL1ePvjl7Ij2loA31y0g9+KNd4qKpb
+ tzCGpJbP0pCPV+TrMSZGdNvrINXmCpGl6Hnp8PZPGv1sL5TGju3w6r5i7Z69LlaRBHXTD0o
+ UHNARyvnMHqfXYTLdl/uA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:cEb4ugzFvAc=:WsieSwESoy3ypV3d3DoixS
+ l1t6LlGIMkLECSlG0GVkRQzTCMAW464El6h2ChmHMLz8vQ0UTkrwntyzGGAtRcxC/ftiF+zVi
+ SgQu5i4OyluATaaLhftG5fYWQtZrdzbjxtSw9vewGeGTRe4FH4JXeDHzblx3LWRQdo6aMzM0Z
+ oWSRTTcWV06pxfMSmDJn9fgMncYwkPIuVfCtrSJrluHG/+80MZ0kXSHkXicw+Qjzzw4fhB4P6
+ EUzXwpXOflTLajxLarFmdxPlK42I3I309+nPz+icHvyotdw22b+GsuFX1lQX238VKJzowtoam
+ 848wBoroMwSOerVLSs9HwmRbeLIJt7WDYB01RIrpZKUJjAkTHI0W4sjV/PZkJq2ieNIHlDZ4N
+ /TqgM4Puh/D9/vXmXSaKlipSgCnhvJQx/odctP0ww3spXxtCLV+mTzelxbATytxnxbBN+xdO6
+ pl1pPZKvNpIA1xWV11EE4FZDFWSPG7m72dE945jGRi/opQKq07DkQLeTUoC3FR7vm6CsYIYYc
+ cMtgNc/Evm3JkBPDrsoS7Q=
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -24
 X-Spam_score: -2.5
@@ -63,50 +60,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Jun 2021 19:18:10 -0000
+X-List-Received-Date: Sat, 05 Jun 2021 19:22:16 -0000
 
-Le 25/05/2021 à 16:28, Richard Henderson a écrit :
-> Laurent, how about through trivial?
+Le 31/05/2021 à 09:32, Thomas Huth a écrit :
+> The "nubus-macfb" currently shows up as uncategorized device in
+> the output of "-device help". Put it into the display category
+> to fix this ugliness.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/display/macfb.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/display/macfb.c b/hw/display/macfb.c
+> index ff8bdb846b..d8183b9bbd 100644
+> --- a/hw/display/macfb.c
+> +++ b/hw/display/macfb.c
+> @@ -450,6 +450,7 @@ static void macfb_nubus_class_init(ObjectClass *klass, void *data)
+>      dc->desc = "Nubus Macintosh framebuffer";
+>      dc->reset = macfb_nubus_reset;
+>      dc->vmsd = &vmstate_macfb;
+> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+>      device_class_set_props(dc, macfb_nubus_properties);
+>  }
+>  
+> 
+
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
-> 
-> r~
-> 
-> On 5/24/21 11:40 PM, Pavel Dovgalyuk wrote:
->> ping
->>
->> On 11.05.2021 11:40, Pavel Dovgalyuk wrote:
->>> This patch fixes calculation of number of the instructions
->>> that fit the current page. It prevents creation of the translation
->>> blocks that cross the page boundaries. It is required for deterministic
->>> exception generation in icount mode.
->>>
->>> Signed-off-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
->>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->>> ---
->>>   target/nios2/translate.c |    2 +-
->>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/target/nios2/translate.c b/target/nios2/translate.c
->>> index 9824544eb3..399f22d938 100644
->>> --- a/target/nios2/translate.c
->>> +++ b/target/nios2/translate.c
->>> @@ -829,7 +829,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
->>>       /* Set up instruction counts */
->>>       num_insns = 0;
->>>       if (max_insns > 1) {
->>> -        int page_insns = (TARGET_PAGE_SIZE - (tb->pc & TARGET_PAGE_MASK)) / 4;
->>> +        int page_insns = (TARGET_PAGE_SIZE - (tb->pc & ~TARGET_PAGE_MASK)) / 4;
->>>           if (max_insns > page_insns) {
->>>               max_insns = page_insns;
->>>           }
->>>
->>
-> 
-> 
-
 
