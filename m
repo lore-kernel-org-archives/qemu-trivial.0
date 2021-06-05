@@ -1,80 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lpYwf-0001dj-P6
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Jun 2021 12:14:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44260)
+	id 1lpaQw-00010r-HH
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Jun 2021 13:50:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maciej.szmigiero@oracle.com>)
- id 1lpYjp-0007af-CC; Sat, 05 Jun 2021 12:01:29 -0400
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32]:12108)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maciej.szmigiero@oracle.com>)
- id 1lpYjl-0008Te-Tj; Sat, 05 Jun 2021 12:01:29 -0400
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 155Fu7Tc020849; Sat, 5 Jun 2021 16:01:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : subject : to :
- cc : references : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=corp-2020-01-29;
- bh=YtnzqbrSR+t2OqYB5yYM2icd3UEn1gAs3mbYpb55KQ8=;
- b=MntmWr2V99orG6Bc3LXy/vCqCEnx2xVuGO5Yoc7/rZOKi6hPZ9F+z2Lbsmr/uWC6kP9H
- TJiKnlCV8IP761IOFSLzXXCzXxJXzEWyDEznSKtMOdbA0IZooCePm/owtcklMZXZ/vSk
- YBRjG6+nlnNx0cKJjuLMPn2nFqzDPup/151axxCY3G86wlx8Z/amg1eE5G91epoL2Lfc
- 6i+paaV0+PjaoLmvlLdiLcTUkexUFHoISd0+c5VEMD/rHGTyIPnte7sBpAoAzSGutjEr
- Hg4nas4rhfMAeatxZ6fh0A+rgNX0YIUq5PgsefLtn9FNJzQM4E27r0SdzOCQ2tnQK0A8 kQ== 
-Received: from oracle.com (userp3030.oracle.com [156.151.31.80])
- by mx0b-00069f02.pphosted.com with ESMTP id 3900vrg50m-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 05 Jun 2021 16:01:20 +0000
-Received: from userp3030.oracle.com (userp3030.oracle.com [127.0.0.1])
- by pps.podrdrct (8.16.0.36/8.16.0.36) with SMTP id 155FujWq072255;
- Sat, 5 Jun 2021 16:01:19 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3030.oracle.com with ESMTP id 38yxcsmp14-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 05 Jun 2021 16:01:19 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 155G1IRw024334;
- Sat, 5 Jun 2021 16:01:18 GMT
-Received: from [10.175.188.167] (/10.175.188.167)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Sat, 05 Jun 2021 09:01:17 -0700
-From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
-Subject: Re: [PATCH 0/2] Improve vmstate_vmbus_dev handling
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Jon Doron <arilou@gmail.com>, Roman Kagan <rkagan@virtuozzo.com>,
- qemu-devel@nongnu.org
-References: <20210603104139.556512-1-thuth@redhat.com>
-Message-ID: <29f1529e-5865-db7e-698d-e7a046f012a3@oracle.com>
-Date: Sat, 5 Jun 2021 18:01:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ (Exim 4.90_1) (envelope-from <email@aabouzied.com>)
+ id 1lpaQu-00010X-32
+ for qemu-trivial@nongnu.org; Sat, 05 Jun 2021 13:50:04 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:42998)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <email@aabouzied.com>)
+ id 1lpaQo-0007Hf-CO
+ for qemu-trivial@nongnu.org; Sat, 05 Jun 2021 13:50:03 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id c5so12498687wrq.9
+ for <qemu-trivial@nongnu.org>; Sat, 05 Jun 2021 10:49:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=aabouzied-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BWHGYOMOGXj9Bfk4fh/SWSYr0ToL9M8g89Z+9rCbxeM=;
+ b=YzIWl2fH+v0S2yTE4CbLSMe/uEu0pnSn1qS0m6eg9dRiDJDFLdv/xc0CJ+1l0u/3LZ
+ S+8pYRUlCxfwX5Tg6bCOwUZIQSLmCWJ9Hu7i3xV5tYsbs9lONUs2qiR1C3erXT0f5ATR
+ mfMuh4envN29I1jzjn5o2qMdSahrHzfB842BCu3Vb8kN/jdr5t2Jma1Y8giOgjHcuRKJ
+ +0/vj4o1ArIoJYt7LAwai88lULK5O4cPxbV23rBzC7F6t1kWcAjZX1eP9a2L8caOZGUy
+ 1Icl4KVeLXB5pInQf8q5IbJ5LuUkpqQRFtslRMgsx4Avpe96j3PQh+szvmrL3r+Ldpla
+ 4WAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BWHGYOMOGXj9Bfk4fh/SWSYr0ToL9M8g89Z+9rCbxeM=;
+ b=CJk2Wkh2qo027FzgpMhEX3gOxBOiCAOH8+EEmUikdEJOQ/p+YdBDR12eGzr9lYlrje
+ goAteoML5THt3zl87KoX1idvwd5rWa+YjVT/WqbJJd4KvRm2Pzm2MwqoWU0gY0yO9rGc
+ p3lBYDWnVKD1TRuaoE6v2/KE7p42xuBKIk/JHrUnsfxsTrXc/6c6FLkcIp8ZXHpsTZic
+ 0m0W05K34VAEQQZNJj/CqZX6TMyl5zKFuFJs3xAVD+116x73uz9gr/CGmhcqIVDXjWhy
+ IhFg1G4IBBMcTFmulQPiB5yLB+vt6MT9uX3p53G7e+HH4QuHripRt00YSF71s4AZug0H
+ H83w==
+X-Gm-Message-State: AOAM530wSzizWGwLhZPQnYkD4u97EOS72Oa17JYwFAbgnzZ/dSSJw+LQ
+ lS2aVQbBohIveL23MkwHcdK7Lw==
+X-Google-Smtp-Source: ABdhPJyLdFZY4iLJe6qFfgEn9hpxjPzJ5SZkGpzBo8cyujiffDmhln829v7+1ZhVcj+UWFCtS1exiw==
+X-Received: by 2002:a5d:6952:: with SMTP id r18mr9285115wrw.392.1622915395742; 
+ Sat, 05 Jun 2021 10:49:55 -0700 (PDT)
+Received: from pythagoras.localdomain ([154.177.90.187])
+ by smtp.gmail.com with ESMTPSA id v7sm11812056wrf.82.2021.06.05.10.49.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 05 Jun 2021 10:49:55 -0700 (PDT)
+From: Ahmed Abouzied <email@aabouzied.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, thuth@redhat.com,
+ Ahmed Abouzied <email@aabouzied.com>
+Subject: [PATCH 1/2] Remove leading underscores from QEMU defines
+Date: Sat,  5 Jun 2021 19:49:38 +0200
+Message-Id: <20210605174938.13782-1-email@aabouzied.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210603104139.556512-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10006
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- bulkscore=0 mlxscore=0
- spamscore=0 adultscore=0 mlxlogscore=999 suspectscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
- definitions=main-2106050116
-X-Proofpoint-ORIG-GUID: 5QwytzCJ2PGUUOz2g-Cv27WLcMO_9Mg3
-X-Proofpoint-GUID: 5QwytzCJ2PGUUOz2g-Cv27WLcMO_9Mg3
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=maciej.szmigiero@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.59, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2a00:1450:4864:20::42a;
+ envelope-from=email@aabouzied.com; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 05 Jun 2021 12:14:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -86,31 +74,178 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Jun 2021 16:01:29 -0000
+X-List-Received-Date: Sat, 05 Jun 2021 17:50:04 -0000
 
-Hi Thomas,
+Leading underscores followed by a capital letter or underscore are
+reserved by the C standard.
 
-On 03.06.2021 12:41, Thomas Huth wrote:
-> I accidentally came accross vmstate_vmbus_dev and noticed that
-> it is currently not used at all ... wire it up and make it
-> static, since it is only used in one file.
-> 
-> Thomas Huth (2):
->    hw/hyperv/vmbus: Wire up vmstate_vmbus_dev
->    hw/hyperv/vmbus: Make vmstate_vmbus_dev static
-> 
->   hw/hyperv/vmbus.c         | 29 +++++++++++++++--------------
->   include/hw/hyperv/vmbus.h |  3 ---
->   2 files changed, 15 insertions(+), 17 deletions(-)
-> 
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/369
 
-I think the idea is to embed vmstate_vmbus_dev into a child device
-VMStateDescription using VMSTATE_STRUCT() - since particular VMBus
-devices aren't merged yet there are currently no users of it.
+Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
+---
+ include/fpu/softfloat-helpers.h             | 4 ++--
+ include/hw/usb/dwc2-regs.h                  | 4 ++--
+ include/hw/usb/xlnx-usb-subsystem.h         | 4 ++--
+ include/hw/usb/xlnx-versal-usb2-ctrl-regs.h | 4 ++--
+ include/qemu/plugin-memory.h                | 4 ++--
+ include/qemu/selfmap.h                      | 4 ++--
+ include/user/syscall-trace.h                | 4 ++--
+ plugins/plugin.h                            | 4 ++--
+ tests/qtest/fuzz/qos_fuzz.h                 | 4 ++--
+ tests/tcg/minilib/minilib.h                 | 4 ++--
+ 10 files changed, 20 insertions(+), 20 deletions(-)
 
-This is similar how USB devices VMState is organized - see
-vmstate_usb_device and VMSTATE_USB_DEVICE() macro.
+diff --git a/include/fpu/softfloat-helpers.h b/include/fpu/softfloat-helpers.h
+index 34f4cf92ae..a98d759cd3 100644
+--- a/include/fpu/softfloat-helpers.h
++++ b/include/fpu/softfloat-helpers.h
+@@ -48,8 +48,8 @@ this code that are retained.
+ ===============================================================================
+ */
+ 
+-#ifndef _SOFTFLOAT_HELPERS_H_
+-#define _SOFTFLOAT_HELPERS_H_
++#ifndef SOFTFLOAT_HELPERS_H
++#define SOFTFLOAT_HELPERS_H
+ 
+ #include "fpu/softfloat-types.h"
+ 
+diff --git a/include/hw/usb/dwc2-regs.h b/include/hw/usb/dwc2-regs.h
+index 40af23a0ba..a7eb531485 100644
+--- a/include/hw/usb/dwc2-regs.h
++++ b/include/hw/usb/dwc2-regs.h
+@@ -39,8 +39,8 @@
+  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
+-#ifndef __DWC2_HW_H__
+-#define __DWC2_HW_H__
++#ifndef DWC2_HW_H
++#define DWC2_HW_H
+ 
+ #define HSOTG_REG(x)	(x)
+ 
+diff --git a/include/hw/usb/xlnx-usb-subsystem.h b/include/hw/usb/xlnx-usb-subsystem.h
+index 739bef7f45..999e423951 100644
+--- a/include/hw/usb/xlnx-usb-subsystem.h
++++ b/include/hw/usb/xlnx-usb-subsystem.h
+@@ -22,8 +22,8 @@
+  * THE SOFTWARE.
+  */
+ 
+-#ifndef _XLNX_VERSAL_USB_SUBSYSTEM_H_
+-#define _XLNX_VERSAL_USB_SUBSYSTEM_H_
++#ifndef XLNX_VERSAL_USB_SUBSYSTEM_H
++#define XLNX_VERSAL_USB_SUBSYSTEM_H
+ 
+ #include "hw/usb/xlnx-versal-usb2-ctrl-regs.h"
+ #include "hw/usb/hcd-dwc3.h"
+diff --git a/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h b/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
+index 975a717627..b76dce0419 100644
+--- a/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
++++ b/include/hw/usb/xlnx-versal-usb2-ctrl-regs.h
+@@ -23,8 +23,8 @@
+  * THE SOFTWARE.
+  */
+ 
+-#ifndef _XLNX_USB2_REGS_H_
+-#define _XLNX_USB2_REGS_H_
++#ifndef XLNX_USB2_REGS_H
++#define XLNX_USB2_REGS_H
+ 
+ #define TYPE_XILINX_VERSAL_USB2_CTRL_REGS "xlnx.versal-usb2-ctrl-regs"
+ 
+diff --git a/include/qemu/plugin-memory.h b/include/qemu/plugin-memory.h
+index fbbe99474b..b36def27d7 100644
+--- a/include/qemu/plugin-memory.h
++++ b/include/qemu/plugin-memory.h
+@@ -6,8 +6,8 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+-#ifndef _PLUGIN_MEMORY_H_
+-#define _PLUGIN_MEMORY_H_
++#ifndef PLUGIN_MEMORY_H
++#define PLUGIN_MEMORY_H
+ 
+ struct qemu_plugin_hwaddr {
+     bool is_io;
+diff --git a/include/qemu/selfmap.h b/include/qemu/selfmap.h
+index 8382c4c779..80cf920fba 100644
+--- a/include/qemu/selfmap.h
++++ b/include/qemu/selfmap.h
+@@ -6,8 +6,8 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+-#ifndef _SELFMAP_H_
+-#define _SELFMAP_H_
++#ifndef SELFMAP_H
++#define SELFMAP_H
+ 
+ typedef struct {
+     unsigned long start;
+diff --git a/include/user/syscall-trace.h b/include/user/syscall-trace.h
+index 42e3b48b03..614cfacfa5 100644
+--- a/include/user/syscall-trace.h
++++ b/include/user/syscall-trace.h
+@@ -7,8 +7,8 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+-#ifndef _SYSCALL_TRACE_H_
+-#define _SYSCALL_TRACE_H_
++#ifndef SYSCALL_TRACE_H
++#define SYSCALL_TRACE_H
+ 
+ #include "trace/trace-root.h"
+ 
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index 55017e3581..b13677d0dc 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -9,8 +9,8 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+-#ifndef _PLUGIN_INTERNAL_H_
+-#define _PLUGIN_INTERNAL_H_
++#ifndef PLUGIN_INTERNAL_H
++#define PLUGIN_INTERNAL_H
+ 
+ #include <gmodule.h>
+ #include "qemu/qht.h"
+diff --git a/tests/qtest/fuzz/qos_fuzz.h b/tests/qtest/fuzz/qos_fuzz.h
+index 477f11b02b..63d8459b71 100644
+--- a/tests/qtest/fuzz/qos_fuzz.h
++++ b/tests/qtest/fuzz/qos_fuzz.h
+@@ -10,8 +10,8 @@
+  * See the COPYING file in the top-level directory.
+  */
+ 
+-#ifndef _QOS_FUZZ_H_
+-#define _QOS_FUZZ_H_
++#ifndef QOS_FUZZ_H
++#define QOS_FUZZ_H
+ 
+ #include "tests/qtest/fuzz/fuzz.h"
+ #include "tests/qtest/libqos/qgraph.h"
+diff --git a/tests/tcg/minilib/minilib.h b/tests/tcg/minilib/minilib.h
+index e23361380a..17d0f2f314 100644
+--- a/tests/tcg/minilib/minilib.h
++++ b/tests/tcg/minilib/minilib.h
+@@ -9,8 +9,8 @@
+  * SPDX-License-Identifier: GPL-2.0-only
+  */
+ 
+-#ifndef _MINILIB_H_
+-#define _MINILIB_H_
++#ifndef MINILIB_H
++#define MINILIB_H
+ 
+ /*
+  * Provided by the individual arch
+-- 
+2.25.1
 
-Thanks,
-Maciej
 
