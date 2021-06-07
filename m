@@ -1,52 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lqKS1-0004FO-BN
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:58:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53688)
+	id 1lqKSp-0006AN-2W
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:59:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53836)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRi-00040M-Un; Mon, 07 Jun 2021 14:57:59 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:60763)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1lqKSl-00067F-Rf
+ for qemu-trivial@nongnu.org; Mon, 07 Jun 2021 14:59:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:26936)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRZ-0005rV-07; Mon, 07 Jun 2021 14:57:58 -0400
-Received: from quad ([82.142.12.38]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M5Q2f-1lpV5y37X3-001Rur; Mon, 07
- Jun 2021 20:57:40 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 08/11] target/hppa: Remove unused 'memory.h' header
-Date: Mon,  7 Jun 2021 20:57:27 +0200
-Message-Id: <20210607185730.346641-9-laurent@vivier.eu>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210607185730.346641-1-laurent@vivier.eu>
-References: <20210607185730.346641-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1lqKSf-0006U7-Mf
+ for qemu-trivial@nongnu.org; Mon, 07 Jun 2021 14:59:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623092336;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=/2iz8TMifcSG3zxZ53J28uLPK5ZLr+GblniXuJuf7es=;
+ b=FcBRDHR3UBhEP9C6lyCmWL1R1A2Nk6nabHHzMwvu/+dWFe+nZ+PoDfcAmqMQCFtITR0Imn
+ qu2yBDrtknzWeaAciUmZFEysHOebrCFYdhpmc4vcMGZjCBKIhd9ow9VN1JSAQG1RaUro2M
+ WlGHfzCOH5nVUfF9uy5B+ATB9WZizb8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-448-ZKN39_KBO4aUCZCGpxKbKg-1; Mon, 07 Jun 2021 14:58:55 -0400
+X-MC-Unique: ZKN39_KBO4aUCZCGpxKbKg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5A1F3800D62;
+ Mon,  7 Jun 2021 18:58:54 +0000 (UTC)
+Received: from work-vm (ovpn-114-228.ams2.redhat.com [10.36.114.228])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7580C60C04;
+ Mon,  7 Jun 2021 18:58:50 +0000 (UTC)
+Date: Mon, 7 Jun 2021 19:58:47 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] docs/tools/virtiofsd: Fix bad rst syntax
+Message-ID: <YL5sZ8xprsuG/S0D@work-vm>
+References: <20210607180015.924571-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5/ZTWBZ9zAd0mzTGRurjdrlH7asa+gUjGnBVnooo+27LlUvYP7v
- LBO++eJFfsbNZoIElngccompMTldzS+JZZ+rQ10D13dZFoHSyoYSjodtv3MMGPgRyhUBFRW
- 3Yn4eUUCi5pkfBBJdchn5lAO+VJzNEWQolbTzeyk8yF67xRNdKsb/5yDFyzWU2ntV7+39OX
- BANbV6ztHeHjhUBzTQpXg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:KNAJpkMwrk0=:GsMR7edSKFwW+hEp2mjdzl
- 85qohKRPYrejAyFlpbCeybaqnPWw9YRk9woAO/mVFJuWlIFDsbnKRRNVq9dgMoccHw9OMNZjX
- wmF6GTURGovLjAbGzq+Gj2VBlzXDHbYqJ1QJFYqVpM7v63GJUjWSX1T3JjN3qxe933BtRS23m
- Js3QIueuu7nPdIRDhL59j0Lnav7U3uy+f6b12K55M+ptZvp5URLcVIT3mOeQBjKxP/imGgPYC
- o2hwxY4wbZNP3ScCJyXHes392QCxkmvhHW2vSvgFYjs2t2mg+0GRFhUAmD1TjvqVzPWliyHm5
- lm6NX8rzpUcs03fCsFix0GbSUdhkosP9Rpd8WgmfyOoz/BQxkMiF5fN1f/+cLD0oGkAnCkNpa
- wyQp7U4w7769JILvrSLZAybEVltcV6Ivm2D7U7tToUS30DQ6Fq1DAadyGRAkktvMhl/b4Gnxx
- c8CQV36oa6lthdeivqYmhp2jQsmjyd31hfsqLC+xrdKRy4axelqrIZZoGAre/mhBACbeAN7SE
- jrYNUZMLrYxzbstET5AN74=
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210607180015.924571-1-thuth@redhat.com>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,31 +72,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jun 2021 18:58:05 -0000
+X-List-Received-Date: Mon, 07 Jun 2021 18:59:05 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+* Thomas Huth (thuth@redhat.com) wrote:
+> For literal blocks, there has to be an empty line after the two colons,
+> and the block itself should be indented.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20210517101558.1040191-1-f4bug@amsat.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- target/hppa/cpu.h | 1 -
- 1 file changed, 1 deletion(-)
+Thanks,
 
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index 61178fa6a2a5..748270bfa31e 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -22,7 +22,6 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
--#include "exec/memory.h"
- 
- /* PA-RISC 1.x processors have a strong memory model.  */
- /* ??? While we do not yet implement PA-RISC 2.0, those processors have
+
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+
+> ---
+>  docs/tools/virtiofsd.rst | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+> 
+> diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
+> index 265a39b0cf..4911e797cb 100644
+> --- a/docs/tools/virtiofsd.rst
+> +++ b/docs/tools/virtiofsd.rst
+> @@ -239,7 +239,7 @@ xattr-mapping Examples
+>  
+>  ::
+>  
+> --o xattrmap=":prefix:all::user.virtiofs.::bad:all:::"
+> + -o xattrmap=":prefix:all::user.virtiofs.::bad:all:::"
+>  
+>  
+>  This uses two rules, using : as the field separator;
+> @@ -250,7 +250,8 @@ the host set.
+>  This is equivalent to the 'map' rule:
+>  
+>  ::
+> --o xattrmap=":map::user.virtiofs.:"
+> +
+> + -o xattrmap=":map::user.virtiofs.:"
+>  
+>  2) Prefix 'trusted.' attributes, allow others through
+>  
+> @@ -277,7 +278,8 @@ through.
+>  This is equivalent to the 'map' rule:
+>  
+>  ::
+> --o xattrmap="/map/trusted./user.virtiofs./"
+> +
+> + -o xattrmap="/map/trusted./user.virtiofs./"
+>  
+>  3) Hide 'security.' attributes, and allow everything else
+>  
+> -- 
+> 2.27.0
+> 
 -- 
-2.31.1
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
