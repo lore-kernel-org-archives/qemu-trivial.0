@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lqKRv-00046l-IR
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:58:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53686)
+	id 1lqKRw-00048Q-F3
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:58:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRg-0003zZ-J7; Mon, 07 Jun 2021 14:57:56 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:49381)
+ id 1lqKRm-00041d-HM; Mon, 07 Jun 2021 14:58:03 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:38239)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRd-0005tv-Ah; Mon, 07 Jun 2021 14:57:56 -0400
+ id 1lqKRY-0005rD-5w; Mon, 07 Jun 2021 14:58:00 -0400
 Received: from quad ([82.142.12.38]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MsqIi-1lWahY2Cm8-00t964; Mon, 07
- Jun 2021 20:57:40 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MDhV1-1lg7RK36wR-00ApZL; Mon, 07
+ Jun 2021 20:57:33 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Luis Pires <luis.pires@eldorado.org.br>
-Subject: [PULL 09/11] target/mips: Fix 'Uncoditional' typo
-Date: Mon,  7 Jun 2021 20:57:28 +0200
-Message-Id: <20210607185730.346641-10-laurent@vivier.eu>
+ Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>
+Subject: [PULL 01/11] target/riscv: Do not include 'pmp.h' in user emulation
+Date: Mon,  7 Jun 2021 20:57:20 +0200
+Message-Id: <20210607185730.346641-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210607185730.346641-1-laurent@vivier.eu>
 References: <20210607185730.346641-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/eqKLFFWMtqvP7f34pFrlSEeeprZqU1BSJNzfJBGsKB9W6QP6h6
- HI7QQeJ9LLMd3luS+zv2r/JsZ7DAfngEpThAkCCbf8bXs/ZoHRHLXh1gVHETbGQ5TgOb7E+
- F/powcSGk7hzn8zhMXO5V47UVOGFnidU/L/Nbkz0mgxph66Uk0wt52UmcYIIOYeksJR8P+E
- +d4je0oIBom7bWk0hhEWA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5pLnGTTIw4Q=:Qelr1qLYzkqqauKb+uW3YD
- sRBwKojDAZAE5M4gPG+ygeq4W6lHKZ78JUvAev1XYYOL6BEKB//A7xSIBK6tmZxXbvdyD+zOL
- n9mKHoa6tTG3dIUVJL6KbsNveV7JLKSgzDVLOdoaEbAFvamc5ol2NKudYeXlgMiXc+HNzPXDK
- WS7CKRwQxWVFdz2IAiBOfupw9QjwX/VUjBfAxoyyereOgAZezX9YJyR8+asctXkCWyLT74SWy
- Y1ghJN8duaJvZpi7AyfJgCeA6Q3jSxdjCYBK8LuZR4LOVl11LS8yszsgcq7AAAApJSbwcbyOm
- In5Z9kX2AZY6dIBUGq1ivSCjnclXOKGLMtf5z3iZXTx1FFitTHWL2Y+0tL34+KwrMG3gryxDH
- kPHTZgASIXZVGCNbWxh0zUiR5PjnizsEjYys8txhfqedwQ2ux4fgDkQJdNut/BvVxzAYZqvnI
- ZQSKPyCW420JwQu1nx9Xf3P1SEuBBmzA1Kt4QRL/BVuOi4u3jl1UJs3OnFHR7pMH1Qu/OVYOL
- Busw0/H5u2iqd1ZHtJ0RAo=
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:QbBK+DAwqqb5iS6m76eXQ5QRQ7wkFI5GTnLMrBXPPjaONlCmtae
+ cfsMU1oUCwqw+I8vv+SMSbU6U/3pZN0xw90biY5CTJI3Sfbvq1r4RF+avrPR1PBaeGXBAUf
+ pkK3QV+1K4dV0B14RdIhfPemcD5sjMzksaPeYXiNmabvFTOboeVp6EcMaMihy+bJiXid4ZE
+ nmUK8vU1Y/2SWA9eNJNTg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:bLliPhQbR1A=:aTB7GfM+xTbyFyHCoLmN44
+ bizWkT1izq/oRe2tg9lbDGubszLHtAqDUvOQMg2ZMPv1UEgQclnhDDSToezgp9SxXrFTLJP71
+ GLCgd3k7AOZrGNKA9A3mmRixAWlZfT6Mgc3LWhSsnYvNUFOV+trdigJ4EN8m+HMqLlCx+3+av
+ w2xBiPjggsXDWlHCTvt2TlYzdGxSRgvFOADQe3PLeaO0A3Bv+OIw/DoWcNaAQ9mTp2M5lscl8
+ 1U7eJQ2aSYgRLPQP0txauoc6Qv0tmE9itjvbGhUkE0jOhx1j+woYhzS+xAO64qcUVLUScnoYj
+ 6CM7A1m5La0ofEkW/Ye7kksTaEmIgaZoRCGMJ+y9z1SgOIYlm7S7CK3AxY4Or3Mq1CN2hHKiI
+ yYqONzScN652OOCRgKDbPepoFofKJNc6fheg15g6SaWbMmV8ApvSG6MweJbHPCbKGI/W39YrF
+ NvHoeJufM1+MS50RDCeP4woJeTXsY1nLOoMUmrR/9JFuykRdeEfaozuAggnMXU/5zxV1snfUm
+ 30A8IkkaAWa1NWj26kfQCI=
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,51 +59,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jun 2021 18:58:01 -0000
+X-List-Received-Date: Mon, 07 Jun 2021 18:58:07 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Fix Uncoditional -> Unconditional typo.
+Physical Memory Protection is a system feature.
+Avoid polluting the user-mode emulation by its definitions.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Luis Pires <luis.pires@eldorado.org.br>
-Message-Id: <20210602170759.2500248-3-f4bug@amsat.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Message-Id: <20210516205333.696094-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/mips/tcg/translate.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target/riscv/cpu.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
-index c03a8ae1fed8..797eba443470 100644
---- a/target/mips/tcg/translate.c
-+++ b/target/mips/tcg/translate.c
-@@ -12238,7 +12238,7 @@ static void gen_compute_compact_branch(DisasContext *ctx, uint32_t opc,
-     }
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index 7e879fb9ca58..0619b491a423 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -97,7 +97,9 @@ enum {
  
-     if (bcond_compute == 0) {
--        /* Uncoditional compact branch */
-+        /* Unconditional compact branch */
-         switch (opc) {
-         case OPC_JIALC:
-             tcg_gen_movi_tl(cpu_gpr[31], ctx->base.pc_next + 4 + m16_lowbit);
-@@ -19092,7 +19092,7 @@ static void gen_compute_imm_branch(DisasContext *ctx, uint32_t opc,
-     ctx->base.is_jmp = DISAS_NORETURN;
+ typedef struct CPURISCVState CPURISCVState;
  
-     if (cond == TCG_COND_ALWAYS) {
--        /* Uncoditional compact branch */
-+        /* Unconditional compact branch */
-         gen_goto_tb(ctx, 0, ctx->btarget);
-     } else {
-         /* Conditional compact branch */
-@@ -19201,7 +19201,7 @@ static void gen_compute_compact_branch_nm(DisasContext *ctx, uint32_t opc,
-     }
++#if !defined(CONFIG_USER_ONLY)
+ #include "pmp.h"
++#endif
  
-     if (bcond_compute == 0) {
--        /* Uncoditional compact branch */
-+        /* Unconditional compact branch */
-         switch (opc) {
-         case OPC_BC:
-             gen_goto_tb(ctx, 0, ctx->btarget);
+ #define RV_VLEN_MAX 256
+ 
 -- 
 2.31.1
 
