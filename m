@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lqKRw-00048Q-F3
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:58:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53694)
+	id 1lqKRz-0004Ch-A3
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:58:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRm-00041d-HM; Mon, 07 Jun 2021 14:58:03 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:38239)
+ id 1lqKRm-00041e-J2; Mon, 07 Jun 2021 14:58:03 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:45197)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRY-0005rD-5w; Mon, 07 Jun 2021 14:58:00 -0400
+ id 1lqKRd-0005ty-Cx; Mon, 07 Jun 2021 14:58:02 -0400
 Received: from quad ([82.142.12.38]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MDhV1-1lg7RK36wR-00ApZL; Mon, 07
- Jun 2021 20:57:33 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MqK6l-1l3mTO112x-00nTmJ; Mon, 07
+ Jun 2021 20:57:41 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>
-Subject: [PULL 01/11] target/riscv: Do not include 'pmp.h' in user emulation
-Date: Mon,  7 Jun 2021 20:57:20 +0200
-Message-Id: <20210607185730.346641-2-laurent@vivier.eu>
+ Alexander Bulekov <alxndr@bu.edu>
+Subject: [PULL 10/11] scripts/oss-fuzz: Fix typo in documentation
+Date: Mon,  7 Jun 2021 20:57:29 +0200
+Message-Id: <20210607185730.346641-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210607185730.346641-1-laurent@vivier.eu>
 References: <20210607185730.346641-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QbBK+DAwqqb5iS6m76eXQ5QRQ7wkFI5GTnLMrBXPPjaONlCmtae
- cfsMU1oUCwqw+I8vv+SMSbU6U/3pZN0xw90biY5CTJI3Sfbvq1r4RF+avrPR1PBaeGXBAUf
- pkK3QV+1K4dV0B14RdIhfPemcD5sjMzksaPeYXiNmabvFTOboeVp6EcMaMihy+bJiXid4ZE
- nmUK8vU1Y/2SWA9eNJNTg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:bLliPhQbR1A=:aTB7GfM+xTbyFyHCoLmN44
- bizWkT1izq/oRe2tg9lbDGubszLHtAqDUvOQMg2ZMPv1UEgQclnhDDSToezgp9SxXrFTLJP71
- GLCgd3k7AOZrGNKA9A3mmRixAWlZfT6Mgc3LWhSsnYvNUFOV+trdigJ4EN8m+HMqLlCx+3+av
- w2xBiPjggsXDWlHCTvt2TlYzdGxSRgvFOADQe3PLeaO0A3Bv+OIw/DoWcNaAQ9mTp2M5lscl8
- 1U7eJQ2aSYgRLPQP0txauoc6Qv0tmE9itjvbGhUkE0jOhx1j+woYhzS+xAO64qcUVLUScnoYj
- 6CM7A1m5La0ofEkW/Ye7kksTaEmIgaZoRCGMJ+y9z1SgOIYlm7S7CK3AxY4Or3Mq1CN2hHKiI
- yYqONzScN652OOCRgKDbPepoFofKJNc6fheg15g6SaWbMmV8ApvSG6MweJbHPCbKGI/W39YrF
- NvHoeJufM1+MS50RDCeP4woJeTXsY1nLOoMUmrR/9JFuykRdeEfaozuAggnMXU/5zxV1snfUm
- 30A8IkkaAWa1NWj26kfQCI=
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:I9xFAEYF+3TsFN2VupcjDmCP9XvMvQpe6BpzprfP7VLNa91dcsO
+ 59XDXfBb1G0WGvCqKIYyrnhjK/PPyKnIv25MXhNcEaEQd8VqzZxhqbFgTMpAor5JlTQl6rb
+ JlB+2VIytq56eXrdOhQAWmCJC3roPyQYGx7L83ugvqvWMaTSry/3f7hLUDFPKFavVIseoRP
+ xIpO3gTKBLchtoGMaVqmg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:L+wD6ylS7i0=:62x8guH/5HMWFHSNZnHB58
+ wwyCpORxejsj8Bgio6y+EDZc69Rp2ubnVw1DCS6OGUxDd7ms2heD0AzU4SUUc+E9F4Sbej02U
+ kRpGz5AFsnFyZ1wWrYnAYPUzmomvpZX0weviZuiTxyB+/fY4i4mPNLpnv78eOCEs7F68K8BS/
+ 1hk2XEG+uIhCd9m9v38W88WZG+0NNGL2UgtZhHTtC9aiK4Blpt5ekhc290wGtXtb/c0zUXQb1
+ giyVm9ClvB1MopAliXUoeiIPUg+CPedpM6bGm4MevpxcrQkLui5RKi7sWLAm47ahS5o1HA3Rr
+ kb4+uqs9FOIKq9zmNgDXTs94YgZg/p0Ms2vJ/Lg5cKmJ0cL1fD5M2fNaGYWkV9fLa04lmBhBH
+ 3YfUk2/vTNaDqCR3zBlPf58lYzAP3gzBFULOcyvWPNSeXkENHacRdrgXIXMHIvtUGcBqoAfcP
+ PjGM6RNCitxOeInzkIwC+diIy2C2y6eGOFPcFgge7Rjb/Zq5CGqzjSXTOnNGtu7bFAQZDSGXP
+ WFhO5GrfdeD9kYS39xuPCE=
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,32 +64,28 @@ X-List-Received-Date: Mon, 07 Jun 2021 18:58:07 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Physical Memory Protection is a system feature.
-Avoid polluting the user-mode emulation by its definitions.
+While we only use stdin, the chardev is named 'stdio'.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20210516205333.696094-1-f4bug@amsat.org>
+Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
+Message-Id: <20210602170759.2500248-4-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/riscv/cpu.h | 2 ++
- 1 file changed, 2 insertions(+)
+ scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index 7e879fb9ca58..0619b491a423 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -97,7 +97,9 @@ enum {
+diff --git a/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py b/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
+index 890e1def856b..b154a25508f7 100755
+--- a/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
++++ b/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
+@@ -14,7 +14,7 @@
+         /path/to/crash 2> qtest_log_output
+ scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py qtest_log_output > qtest_trace
+ ./i386-softmmu/qemu-fuzz-i386 -machine q35,accel=qtest \
+-        -qtest stdin < qtest_trace
++        -qtest stdio < qtest_trace
  
- typedef struct CPURISCVState CPURISCVState;
- 
-+#if !defined(CONFIG_USER_ONLY)
- #include "pmp.h"
-+#endif
- 
- #define RV_VLEN_MAX 256
+ ### Details ###
  
 -- 
 2.31.1
