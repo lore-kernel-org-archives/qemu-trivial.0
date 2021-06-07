@@ -1,44 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lqKRU-0003k4-Ix
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:57:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53558)
+	id 1lqKRd-0003xL-VX
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:57:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53600)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRS-0003fO-SR; Mon, 07 Jun 2021 14:57:42 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:36973)
+ id 1lqKRZ-0003st-Fr; Mon, 07 Jun 2021 14:57:50 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:54449)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRR-0005mr-0L; Mon, 07 Jun 2021 14:57:42 -0400
+ id 1lqKRX-0005r3-LT; Mon, 07 Jun 2021 14:57:49 -0400
 Received: from quad ([82.142.12.38]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MoOIi-1l1qOo1rC4-00orki; Mon, 07
- Jun 2021 20:57:38 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MkpOZ-1l4qnh0kSl-00mNJD; Mon, 07
+ Jun 2021 20:57:42 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>,
- Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 06/11] target/nios2: fix page-fit instruction count
-Date: Mon,  7 Jun 2021 20:57:25 +0200
-Message-Id: <20210607185730.346641-7-laurent@vivier.eu>
+ qemu-trivial@nongnu.org, Xie Yongji <xieyongji@bytedance.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>
+Subject: [PULL 11/11] vhost-vdpa: Remove redundant declaration of
+ address_space_memory
+Date: Mon,  7 Jun 2021 20:57:30 +0200
+Message-Id: <20210607185730.346641-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210607185730.346641-1-laurent@vivier.eu>
 References: <20210607185730.346641-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Qti/glrBGreblZP2l7D4vt7BXufqSCEhA2CneSHO3YIK3wSgHJ7
- 1hhvqbI0PdpLXR1CX7UMXCEoQPoICXGbR0wPVeXr+32+bU1SSzsIHyh7C+4xxReNbObIV4s
- Pu0Ff/OzGc/LAlixaaSH1513vp7Njthqa0LEnruNT9nniCSPLTguQXqTYTG8sL/HFN+yW/U
- ZtAz7MXolds2PYFUyZswg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:X2IhJ3l9ZmU=:sIsIGbTeg6AI84OFu6nF9l
- sdO23cXN3Us5M4u9eNjuFj0C9wG/c9bukLXjqHXYpZ93vhSirM6EHX7rgZP2sSB2cRCCYZiW/
- XiVAW2S5qsybm8kWZdJXY85YIlnj4iEZSJgBfb9h1YFtg2fSXGWRlhdFDwZJVdqNAk5GuONrP
- Clc7ETsr9TXM6kEBUvwDh8HQfNnJozDaVGlzWUA2JC9nNQoDLpQ/ErKIwJBgeBQUTsVlyt5Ra
- /MVq5k42ZUcgfd1NnAU+R+s0pErGieFDcWvhJ/5v3d3G2/jmA2rBGwaBPwd77DnW5IdI9rxMJ
- 5N66ZjWcrurAv+SW8R6v2bIfUKIRVDLLKSv2gDw5HMARwABmt5C0Dp+rvKqPBbMhxocuuI1LR
- YTXF32GyfAdb+YUm4p3Wvxx00J+K/8bt+gSAIwaIEgeJPc6bFqEI6Hv91ZLkwJbBCjb7LXQi8
- 5HjM2nTNVe5TXuNTOxlKA+VvYOlmT0s2yfWjBh2F3zEYtnNatkHbejqU8a9deOjdAGu0n0TAZ
- SpIDlHIQGBC75R1dew+1uk=
+X-Provags-ID: V03:K1:+v8rA2j1TSMGgb5AoUeRwyrc0fkuy0oOkqepYIkULWKDgsrcfCY
+ fh4kzddffD9rZxvXq39Qtrqto2uLpxCydLqex+UUEJXWfncTjormHPnAogFo+shlj17R1jB
+ BnSsBAYBD/O/Dlg//YKeWy5P5NMMxmMxCoXW0bLrzkCqOyMB1zzrTEf6R7NJjHK/7t0iSs1
+ eDgODFspXAPKJIhNAVR6Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uFo91fTMo7g=:/RLajVqPBBEkob9siHuGtT
+ 52gphaI3vm9bMoP2YT0YPKGXkZTPhuTafu5b2jhOYebmoHmop8T6hENJobs78bGB874nZZPqj
+ gMbTGiSP+e3Z06/6Alay04IzSEQlIuVT/eWykE4Dlc2eMcfWYlumyt5/2zHn4pH0/6rEYRMcJ
+ w3kfwDMT15L2j1o1eIS5pwKsIohgeZWH/G2ISXUkmIqhCAqeAgjuwjV4pChMQYVZD4YkKGsHZ
+ T+Rof553ykwacP0VW3dibeNtdoZCnGu6k03Lx1I7Jv2A4ot1IBG/rKjjk+lPfIP7wXa0CYfKq
+ jVfWgy6/avDdHs3hwu4X5R1J3eqUDh94vFG6ehmDvz/v7Bokro67WeRdwuiJVcpoQvnvS0te6
+ IUW/eVt7z57g8PJTgUGNpAJPpbg45PG5jknolTVRx+F2rdMgbqB59cq4gVICYoEnJJ5Dgwu7o
+ OSh2kCCyBTWNtGIkREdbd7V+XVif9tp7dj+P46EHd6sUINLvTj9HbedbvKX4aHhcpRow3rbGE
+ HD5OKZ4AsRUqIB51o6fMuQ=
 Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -58,36 +60,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jun 2021 18:57:43 -0000
+X-List-Received-Date: Mon, 07 Jun 2021 18:57:51 -0000
 
-From: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
+From: Xie Yongji <xieyongji@bytedance.com>
 
-This patch fixes calculation of number of the instructions
-that fit the current page. It prevents creation of the translation
-blocks that cross the page boundaries. It is required for deterministic
-exception generation in icount mode.
+The symbol address_space_memory are already declared in
+include/exec/address-spaces.h. So let's add this header file
+and remove the redundant declaration in include/hw/virtio/vhost-vdpa.h.
 
-Signed-off-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <162072241046.823357.10485774346114851009.stgit@pasha-ThinkPad-X280>
+Signed-off-by: Xie Yongji <xieyongji@bytedance.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20210517123246.999-1-xieyongji@bytedance.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/nios2/translate.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/virtio/vhost-vdpa.c         | 1 +
+ include/hw/virtio/vhost-vdpa.h | 1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index 9824544eb37c..399f22d93862 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -829,7 +829,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int max_insns)
-     /* Set up instruction counts */
-     num_insns = 0;
-     if (max_insns > 1) {
--        int page_insns = (TARGET_PAGE_SIZE - (tb->pc & TARGET_PAGE_MASK)) / 4;
-+        int page_insns = (TARGET_PAGE_SIZE - (tb->pc & ~TARGET_PAGE_MASK)) / 4;
-         if (max_insns > page_insns) {
-             max_insns = page_insns;
-         }
+diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+index 8f2fb9f10b2a..ee51863d280b 100644
+--- a/hw/virtio/vhost-vdpa.c
++++ b/hw/virtio/vhost-vdpa.c
+@@ -18,6 +18,7 @@
+ #include "hw/virtio/vhost-backend.h"
+ #include "hw/virtio/virtio-net.h"
+ #include "hw/virtio/vhost-vdpa.h"
++#include "exec/address-spaces.h"
+ #include "qemu/main-loop.h"
+ #include "cpu.h"
+ #include "trace.h"
+diff --git a/include/hw/virtio/vhost-vdpa.h b/include/hw/virtio/vhost-vdpa.h
+index 28ca65018ed7..ae9ee7adb2d0 100644
+--- a/include/hw/virtio/vhost-vdpa.h
++++ b/include/hw/virtio/vhost-vdpa.h
+@@ -21,5 +21,4 @@ typedef struct vhost_vdpa {
+     struct vhost_dev *dev;
+ } VhostVDPA;
+ 
+-extern AddressSpace address_space_memory;
+ #endif
 -- 
 2.31.1
 
