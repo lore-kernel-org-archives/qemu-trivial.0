@@ -1,56 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lq9lO-0006cT-8k
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 03:33:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41968)
+	id 1lqAcE-0004B3-2B
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 04:28:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lq9lL-0006ba-T1; Mon, 07 Jun 2021 03:33:31 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:52381)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lq9lJ-0005Us-FM; Mon, 07 Jun 2021 03:33:31 -0400
-Received: from [192.168.100.1] ([82.142.12.38]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MSckp-1lwR9s16M5-00SvTW; Mon, 07 Jun 2021 09:33:13 +0200
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lqAcC-0004Aq-JY; Mon, 07 Jun 2021 04:28:08 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:40768)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lqAcB-0007sL-2V; Mon, 07 Jun 2021 04:28:08 -0400
+Received: by mail-wr1-x431.google.com with SMTP id y7so11915391wrh.7;
+ Mon, 07 Jun 2021 01:28:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ZBJGCFU0GEjR2FrLYDCxkgn4dbe1u6049BAtCKii+4k=;
+ b=c5pUZ1knLcr9+n4uxNh3Wj14Gdcpa+KarGgZ4grily57N3k9wJNtLMQ0ypY3o6nM3O
+ TkqVJtG/3sT3VRfHZfvCzbbOwURHKzQlcrjrLNh/ErXloABia521/aER3ExdY/V6+i+6
+ GtAfcR+9xoKRLSyqN9DN9NtJ5xjd4x/zTy9M2BSctiQtjN4qX68bXhPnk4LHPCYmZcrA
+ Ac4lM4gW1ald0Sh0ESPekr3ziRrPCxVvZhmIOGvUZWtBT+uZIKooxFwdmgquaaLmEyDe
+ bxnJfE5ka3U2t2Yzr8EFMtQgbPbk+gVXj/FNdoc64SAdEW6TOT1/ymObGRu9/ATYpGQC
+ 59yQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ZBJGCFU0GEjR2FrLYDCxkgn4dbe1u6049BAtCKii+4k=;
+ b=QuItUVUyejyKHFOyLWJaNOswtBaEJwkRHp7juPk97lsB96MfNa0Hslp5g6oFEy4j++
+ mGysNICZ5Kv48SkYTJmB5G38S5Pp1f1Kx3IHrzqJAHvMGHWUv6Yj/t98uVTFufhkhv7R
+ p2Kejj6+ABEVLsDqEbHZerfTXcrGTTYSb2szvcczXkNhJ4ZB4xFMGVr+cR5c8wZJJSf1
+ nSmxANdZ/dq2wqNKbbu+9tVb588oJlG8H/4OimqzEabLf0AcOwA+S20KDPTLo/y/b3wV
+ YcRbLjPOAV1ho9yZ9fMQ2FwlCeWVZC0E/fESxjOyGBn2cN+8Q7voPracyEPu9bYD1dNI
+ 348A==
+X-Gm-Message-State: AOAM530nOfvir2glKuLcZU1MQ4F404E6CDjC8irJslxlo7qRn/6auq5P
+ uId6zrYVNFy1aCsHzN6o0dU=
+X-Google-Smtp-Source: ABdhPJxPllPRvav0pjVoIOa8apk4Klu63XKt0DsZBLiX954cYd0Wz83tLEcZVGjtifM3V2WET8zNXA==
+X-Received: by 2002:adf:eeca:: with SMTP id a10mr15521110wrp.184.1623054484757; 
+ Mon, 07 Jun 2021 01:28:04 -0700 (PDT)
+Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.235])
+ by smtp.gmail.com with ESMTPSA id h9sm9158990wmm.33.2021.06.07.01.28.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 07 Jun 2021 01:28:04 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH] memory: Display MemoryRegion name in read/write ops trace
  events
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20210307074833.143106-1-f4bug@amsat.org>
  <8892fbd6-a63c-ef02-78f3-935e4f95dbb1@amsat.org>
  <2def176e-8707-78cc-b524-3fd47456261f@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <c4b050f9-8d36-28a5-b5fe-343bbbe0efdb@vivier.eu>
-Date: Mon, 7 Jun 2021 09:33:12 +0200
+ <c4b050f9-8d36-28a5-b5fe-343bbbe0efdb@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <dadd0b69-e613-a0f6-5f81-a62159b41493@amsat.org>
+Date: Mon, 7 Jun 2021 10:28:02 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <2def176e-8707-78cc-b524-3fd47456261f@amsat.org>
+In-Reply-To: <c4b050f9-8d36-28a5-b5fe-343bbbe0efdb@vivier.eu>
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:WPrFgPurXPB81l1CUCwBlATPJfY8s0RxJzuk5IaIW1a6YXFvZbm
- ED4+zrQidQ3cMbK/zGmmFDWAJVyajl47x5WyG7Lkd0SH+GtOLoMwxj1S87ZXsGOBRTfmszC
- e82uaF8y1ncOeVCKK40fAHFztHhpj7y/k138p1qqKBRNN6q1YcxIqJoulWMda3JUm+4JmZG
- fyqNjVVtUBC0kIBXodYvQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YhuwSP+CgKY=:TpI2P074qdTMwLWYXVJjHq
- 5l4ZpVP8xSANHCKHPbCQVyrH6lkn6HK/6aovN49ZzqX/+hi9VbJ7/ZXu6jUMDvaP8nOx2vYF1
- 5F8PUE7M5EFqRwGk6dG17D7rJ7/11iJ5FB72pH66aosfkQwfSqphEgxdrNn3AV4nL4XjdwBLt
- tvymrbVbjSlMdCWz8nuqTHfqSuP5uRmKJd+rv/IzeY23IbMatJktHA8OeF6BPNW6jZJIslLxx
- ZKtDgYnlCvebtc8WJU1oaVZ+9NGXjiyXtqAw1H8d1gvxa926MF4fY3ZTSYS49FgRIsvBfrxib
- NJ6JHUeUwi622aTfudFuUbO9MzOx4pqTLcwN7S68izJlR69N3BqG3EVMZS5ImaztyNS71BUtq
- 72bTDgVvaFiNt3/MTgvS0RPE10VknxH8bl99cw+UserWw5g+9oL5SCDe3zfX0JPPG82wHyB10
- TmgdN5X586W9rF8jYIONE/oqLRL3LLe6LYHM/E6rZLvnK3zDn60aRY/gH396KE1Ag2XDBCRN+
- jrwvwDW1s2f2GOChc3yugY=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,93 +85,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jun 2021 07:33:32 -0000
+X-List-Received-Date: Mon, 07 Jun 2021 08:28:08 -0000
 
-Le 02/06/2021 à 12:49, Philippe Mathieu-Daudé a écrit :
-> Cc'ing qemu-trivial@
-> 
-> On 3/18/21 4:39 PM, Philippe Mathieu-Daudé wrote:
->> ping?
+On 6/7/21 9:33 AM, Laurent Vivier wrote:
+> Le 02/06/2021 à 12:49, Philippe Mathieu-Daudé a écrit :
+>> Cc'ing qemu-trivial@
 >>
->> On 3/7/21 8:48 AM, Philippe Mathieu-Daudé wrote:
->>> MemoryRegion names is cached on first call to memory_region_name(),
-
-It is cached on first call but now that it is used in the trace function, does it mean it will be
-always allocated in memory?
-
-Thanks,
-Laurent
-
->>> so displaying the name is trace events is cheap. Add it for read /
->>> write ops.
+>> On 3/18/21 4:39 PM, Philippe Mathieu-Daudé wrote:
+>>> ping?
 >>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  softmmu/memory.c     | 12 ++++++++----
->>>  softmmu/trace-events |  4 ++--
->>>  2 files changed, 10 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/softmmu/memory.c b/softmmu/memory.c
->>> index 874a8fccdee..d4d9ab8828e 100644
->>> --- a/softmmu/memory.c
->>> +++ b/softmmu/memory.c
->>> @@ -444,7 +444,8 @@ static MemTxResult  memory_region_read_accessor(MemoryRegion *mr,
->>>          trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
->>>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
->>>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
->>> -        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size);
->>> +        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
->>> +                                     memory_region_name(mr));
->>>      }
->>>      memory_region_shift_read_access(value, shift, mask, tmp);
->>>      return MEMTX_OK;
->>> @@ -466,7 +467,8 @@ static MemTxResult memory_region_read_with_attrs_accessor(MemoryRegion *mr,
->>>          trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
->>>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
->>>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
->>> -        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size);
->>> +        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
->>> +                                     memory_region_name(mr));
->>>      }
->>>      memory_region_shift_read_access(value, shift, mask, tmp);
->>>      return r;
->>> @@ -486,7 +488,8 @@ static MemTxResult memory_region_write_accessor(MemoryRegion *mr,
->>>          trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
->>>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
->>>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
->>> -        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size);
->>> +        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
->>> +                                      memory_region_name(mr));
->>>      }
->>>      mr->ops->write(mr->opaque, addr, tmp, size);
->>>      return MEMTX_OK;
->>> @@ -506,7 +509,8 @@ static MemTxResult memory_region_write_with_attrs_accessor(MemoryRegion *mr,
->>>          trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
->>>      } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
->>>          hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
->>> -        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size);
->>> +        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
->>> +                                      memory_region_name(mr));
->>>      }
->>>      return mr->ops->write_with_attrs(mr->opaque, addr, tmp, size, attrs);
->>>  }
->>> diff --git a/softmmu/trace-events b/softmmu/trace-events
->>> index b80ca042e1f..359fb37cc8d 100644
->>> --- a/softmmu/trace-events
->>> +++ b/softmmu/trace-events
->>> @@ -9,8 +9,8 @@ cpu_in(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
->>>  cpu_out(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
->>>  
->>>  # memory.c
->>> -memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
->>> -memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
->>> +memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
->>> +memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
->>>  memory_region_subpage_read(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
->>>  memory_region_subpage_write(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
->>>  memory_region_ram_device_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
->>>
->>
+>>> On 3/7/21 8:48 AM, Philippe Mathieu-Daudé wrote:
+>>>> MemoryRegion names is cached on first call to memory_region_name(),
 > 
+> It is cached on first call but now that it is used in the trace function, does it mean it will be
+> always allocated in memory?
 
+Yes, this is how memory_region_name() works:
+
+const char *memory_region_name(const MemoryRegion *mr)
+{
+    if (!mr->name) {
+        ((MemoryRegion *)mr)->name =
+            g_strdup(object_get_canonical_path_component(OBJECT(mr)));
+    }
+    return mr->name;
+}
+
+
+> 
+> Thanks,
+> Laurent
 
