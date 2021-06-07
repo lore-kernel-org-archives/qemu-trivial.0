@@ -1,54 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lpc4T-0002fp-Gx
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Jun 2021 15:35:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45614)
+	id 1lq8pR-0001fd-3N
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 02:33:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32932)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lpc4S-0002fX-94; Sat, 05 Jun 2021 15:35:00 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:37009)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lq8pL-0001fP-2b
+ for qemu-trivial@nongnu.org; Mon, 07 Jun 2021 02:33:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40585)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lpc4Q-0003Ji-Db; Sat, 05 Jun 2021 15:35:00 -0400
-Received: from [192.168.100.1] ([82.142.12.38]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MC3H1-1lfU811u9d-00CUgo; Sat, 05 Jun 2021 21:34:52 +0200
-Subject: Re: [PATCH v2] vhost-vdpa: Remove redundant declaration of
- address_space_memory
-To: Xie Yongji <xieyongji@bytedance.com>, mst@redhat.com, philmd@redhat.com,
- jasowang@redhat.com
-Cc: qemu-devel@nongnu.org, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20210517123246.999-1-xieyongji@bytedance.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <97d7c8f7-2b49-cb86-57e4-de6e4377bc91@vivier.eu>
-Date: Sat, 5 Jun 2021 21:34:51 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lq8pB-0002FC-C5
+ for qemu-trivial@nongnu.org; Mon, 07 Jun 2021 02:33:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623047603;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YlPff1dO2jUNuXIXizOUeFds6VUcCs9RiqiyleaepgY=;
+ b=Rd9U7K+ua5gRPB9wJ5v8j78EmKv++k++oCLIcMjYDIA0qY44qsgNUEQVrlNu8TJEQjR6MQ
+ 6bxQlo/70tcpeToiN2avIGcw1CobssAczIyucENDGvPZrMJEziOX/pvZA7yuzrEfLCMaQX
+ sbYUnrXOOAUyeSX+KICvoxyDccphmfs=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-235-v_t2ZuH_MAO5KoSIgwYK0A-1; Mon, 07 Jun 2021 02:32:57 -0400
+X-MC-Unique: v_t2ZuH_MAO5KoSIgwYK0A-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ n14-20020a5d484e0000b029011993ecb409so5558461wrs.1
+ for <qemu-trivial@nongnu.org>; Sun, 06 Jun 2021 23:32:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=YlPff1dO2jUNuXIXizOUeFds6VUcCs9RiqiyleaepgY=;
+ b=PRNkrlkvyfSVUJbJewKbn+ocaz1ROvnN4DJj9Z9E4b2aSSSr5ltQvNGcG0SUT2gCOt
+ 7w3SqT7owZ2e/0QwJlhBezlAKyeGLPACZMkAbgrJ7A5iQGkFwZ/PpwcTUQPYvno1cJpa
+ pncwXkp0WvxEerm2onH6uuEw0RW0U4ZNDdt3JFNR9doQmS0cniYfslT+7OncDas4zqR5
+ 9UJ63BDJuWK0ul1QpEIJBDO+KlBR+BLyVvK7IdWN7rFNxG4o7Hd2rJ6Cw+AOsEqsZlAw
+ 01KrbF25++HuzYxTYHOLI9R9kjLPJwnEoA16gf7qY16vbugso07WdOyVrrZnb2hcnI2v
+ crnA==
+X-Gm-Message-State: AOAM530uqj1/ygAB1ghq2rnwzHk7NxZIe/Keb3Kl3Irk6GqybjTol/h9
+ rfx+Qou/Ou+lY/0rytQkbLAgI3M1/yk7ORnVl/ge6ugj/WjD+QM8PFxeakiHE8EpJ5UcsrtM31j
+ tqK4Z9842m8lnRDJAzA==
+X-Received: by 2002:a1c:a917:: with SMTP id s23mr10932135wme.55.1623047576454; 
+ Sun, 06 Jun 2021 23:32:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxc91uNx/kY6F9jPoMvmz8nQV/rKluaaR7eaPgvNnsm4wLjMcOooLESzbfDFq3tvN0ptSu7Ow==
+X-Received: by 2002:a1c:a917:: with SMTP id s23mr10932118wme.55.1623047576241; 
+ Sun, 06 Jun 2021 23:32:56 -0700 (PDT)
+Received: from thuth.remote.csb (pd957536e.dip0.t-ipconnect.de.
+ [217.87.83.110])
+ by smtp.gmail.com with ESMTPSA id 62sm16128648wrm.1.2021.06.06.23.32.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 06 Jun 2021 23:32:55 -0700 (PDT)
+Subject: Re: [PATCH 1/2] Remove leading underscores from QEMU defines
+To: Ahmed Abouzied <email@aabouzied.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20210605174938.13782-1-email@aabouzied.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <909aa479-9e58-1672-ac34-108815688dd2@redhat.com>
+Date: Mon, 7 Jun 2021 08:32:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210517123246.999-1-xieyongji@bytedance.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8L+08pMH0ruyPoxUOX8wok7v5NVebnTX6ykvMZunZXSMjFWZfTU
- RdLv4FVLG3Zti1YUUsttOO5cNLk7PujNhlelJH+nYe/3AS5Dvh/ygOzgbWvIfupBrS/k/XP
- 6w7I/WEVu/zfrEhcpLuJJ3Kyma+oWy9gHjB/ApkwS+AxuUOR8yclnUSf3lpS6m+MQC8WnkY
- 2sOlIut+iMGgSYXiLH8EQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7cjGslOw46E=:FINERTml6XV7PuGwigcwgW
- Y9S+2Ehgc/AYJhDGYWk6LjSYvIB3CZgZfGTKMCi+1KuC3/ai8R4zh0mfFaBQNTGWZ1fmTuksO
- 3hOtd1kZpBknf7c2vT99HMtUTUGF/0SJrJDPHnmOO2+MnOG5ZwDmA0p8ex9Lr/7dU/pm7+5IS
- wBnIby3KYuCB3BAEl+izBrUJlgOpElujygJp/Gq0Kg0Snwyy0eLo/fse8k9ncDpBYUuSCO2uA
- XrHzlG1ddnHPIA5LyLOAsyAUKRozqnk/0YrgrBftIJ5+2Wwq/hmbBDf2rSl5eeVMOYpUwgWpt
- 319K9yXO1ke6XypFEMopQBUR2pnFDOrmJ1VueXwrhzdgAYfpsJ8xT+eUZKvCJ4XOn6wsjszfZ
- NSQTKeCRwvCwkmCojAwfrP9kt0txhN3vK8bHeKObHHEujfqIIMlMloMgjDJHzfkSt0FFYx5tG
- kuVrj4AK7as+ITmCeQdFaa2ybDjbWNWRJzR5thqJLfrRAt9KDPgWpxaLGm/bjICi7gJD7dSKn
- 84ElpupAKfc3dlCV4V82nk=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.59,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210605174938.13782-1-email@aabouzied.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,46 +92,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Jun 2021 19:35:00 -0000
+X-List-Received-Date: Mon, 07 Jun 2021 06:33:38 -0000
 
-Le 17/05/2021 à 14:32, Xie Yongji a écrit :
-> The symbol address_space_memory are already declared in
-> include/exec/address-spaces.h. So let's add this header file
-> and remove the redundant declaration in include/hw/virtio/vhost-vdpa.h.
+On 05/06/2021 19.49, Ahmed Abouzied wrote:
+> Leading underscores followed by a capital letter or underscore are
+> reserved by the C standard.
 > 
-> Signed-off-by: Xie Yongji <xieyongji@bytedance.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/369
+> 
+> Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
 > ---
->  hw/virtio/vhost-vdpa.c         | 1 +
->  include/hw/virtio/vhost-vdpa.h | 1 -
->  2 files changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
-> index 8f2fb9f10b2a..ee51863d280b 100644
-> --- a/hw/virtio/vhost-vdpa.c
-> +++ b/hw/virtio/vhost-vdpa.c
-> @@ -18,6 +18,7 @@
->  #include "hw/virtio/vhost-backend.h"
->  #include "hw/virtio/virtio-net.h"
->  #include "hw/virtio/vhost-vdpa.h"
-> +#include "exec/address-spaces.h"
->  #include "qemu/main-loop.h"
->  #include "cpu.h"
->  #include "trace.h"
-> diff --git a/include/hw/virtio/vhost-vdpa.h b/include/hw/virtio/vhost-vdpa.h
-> index 28ca65018ed7..ae9ee7adb2d0 100644
-> --- a/include/hw/virtio/vhost-vdpa.h
-> +++ b/include/hw/virtio/vhost-vdpa.h
-> @@ -21,5 +21,4 @@ typedef struct vhost_vdpa {
->      struct vhost_dev *dev;
->  } VhostVDPA;
->  
-> -extern AddressSpace address_space_memory;
->  #endif
-> 
+>   include/fpu/softfloat-helpers.h             | 4 ++--
+>   include/hw/usb/dwc2-regs.h                  | 4 ++--
+>   include/hw/usb/xlnx-usb-subsystem.h         | 4 ++--
+>   include/hw/usb/xlnx-versal-usb2-ctrl-regs.h | 4 ++--
+>   include/qemu/plugin-memory.h                | 4 ++--
+>   include/qemu/selfmap.h                      | 4 ++--
+>   include/user/syscall-trace.h                | 4 ++--
+>   plugins/plugin.h                            | 4 ++--
+>   tests/qtest/fuzz/qos_fuzz.h                 | 4 ++--
+>   tests/tcg/minilib/minilib.h                 | 4 ++--
+>   10 files changed, 20 insertions(+), 20 deletions(-)
 
-Applied to my trivial-patches branch.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Thanks,
-Laurent
 
