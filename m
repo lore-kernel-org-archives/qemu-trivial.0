@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lqKRz-0004Ch-A3
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:58:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53698)
+	id 1lqKRr-000436-H1
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jun 2021 14:58:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRm-00041e-J2; Mon, 07 Jun 2021 14:58:03 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:45197)
+ id 1lqKRd-0003wj-BR; Mon, 07 Jun 2021 14:57:54 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:48269)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lqKRd-0005ty-Cx; Mon, 07 Jun 2021 14:58:02 -0400
+ id 1lqKRb-0005sb-13; Mon, 07 Jun 2021 14:57:53 -0400
 Received: from quad ([82.142.12.38]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MqK6l-1l3mTO112x-00nTmJ; Mon, 07
- Jun 2021 20:57:41 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MHGPA-1ld71X0cls-00DK0q; Mon, 07
+ Jun 2021 20:57:39 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alexander Bulekov <alxndr@bu.edu>
-Subject: [PULL 10/11] scripts/oss-fuzz: Fix typo in documentation
-Date: Mon,  7 Jun 2021 20:57:29 +0200
-Message-Id: <20210607185730.346641-11-laurent@vivier.eu>
+ qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PULL 07/11] hw/display/macfb: Classify the "nubus-macfb" as display
+ device
+Date: Mon,  7 Jun 2021 20:57:26 +0200
+Message-Id: <20210607185730.346641-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210607185730.346641-1-laurent@vivier.eu>
 References: <20210607185730.346641-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:I9xFAEYF+3TsFN2VupcjDmCP9XvMvQpe6BpzprfP7VLNa91dcsO
- 59XDXfBb1G0WGvCqKIYyrnhjK/PPyKnIv25MXhNcEaEQd8VqzZxhqbFgTMpAor5JlTQl6rb
- JlB+2VIytq56eXrdOhQAWmCJC3roPyQYGx7L83ugvqvWMaTSry/3f7hLUDFPKFavVIseoRP
- xIpO3gTKBLchtoGMaVqmg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:L+wD6ylS7i0=:62x8guH/5HMWFHSNZnHB58
- wwyCpORxejsj8Bgio6y+EDZc69Rp2ubnVw1DCS6OGUxDd7ms2heD0AzU4SUUc+E9F4Sbej02U
- kRpGz5AFsnFyZ1wWrYnAYPUzmomvpZX0weviZuiTxyB+/fY4i4mPNLpnv78eOCEs7F68K8BS/
- 1hk2XEG+uIhCd9m9v38W88WZG+0NNGL2UgtZhHTtC9aiK4Blpt5ekhc290wGtXtb/c0zUXQb1
- giyVm9ClvB1MopAliXUoeiIPUg+CPedpM6bGm4MevpxcrQkLui5RKi7sWLAm47ahS5o1HA3Rr
- kb4+uqs9FOIKq9zmNgDXTs94YgZg/p0Ms2vJ/Lg5cKmJ0cL1fD5M2fNaGYWkV9fLa04lmBhBH
- 3YfUk2/vTNaDqCR3zBlPf58lYzAP3gzBFULOcyvWPNSeXkENHacRdrgXIXMHIvtUGcBqoAfcP
- PjGM6RNCitxOeInzkIwC+diIy2C2y6eGOFPcFgge7Rjb/Zq5CGqzjSXTOnNGtu7bFAQZDSGXP
- WFhO5GrfdeD9kYS39xuPCE=
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:tt0sc0LtYllA4S0x/3XzCfB9OK25thfRDOssunvbP1YPrAfwu35
+ xNWTHFOTtQWOCAdgyR7vpHB8eVtLC4/PS9bqn/ovVh/bXQNF8sx8qdO0Qm6mjZvY87d8pyn
+ B8VhZrVkmrQAGUSnvHhZBA0mJdAy8J2kNCMPlq4QxsDCfu7jPR5GA5S3wtJR4jsJLn1BJ5j
+ FAovq/ea/pohFxJBytY8A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ikvEsHSB+/A=:iDqJJPwszZDLAyT+VrFYF2
+ vK79gTB1Y7kjjqu/yKoI2KMAVgmIbZeycwqiETstKcO67QjrPdo26Os2sy+3tQWerzEBvtWNN
+ /R4WzALW1ovlwU2sFXcULanF8th86ZHS9KrndpOyZLbT605sZGZDlwtCzOAdv1Wj7g6pDup1a
+ /hE8J22Pe8lN/xcVHor5DMz4bhymJGZyJYTC1OIrrkzHLVeEMNzDAQ0XtUFNnlFDolrWRQYZ2
+ 6H3VMvXzqUnmZzMxIm4v3daLl5a2uNwBft3HUKlP/L0FC36bKJN3bfAWvLKGXtd2DUThzexme
+ fRoRBTAqA3ubhHFOHWF/7z4p/JSuNj/BV0UwRd8Qkg55G98B9mpIY4PA/h3E8gXoUY72HnkfD
+ kNSsohZ+nL9A24e/Ha4mf308572hUVFlTaZObkM6P4RUTvl65vcc0oseXDBtWm1pYGBWwWnft
+ flN9MwppfSAbZlQFxvr2ehkiDAEKlnXjUxRQtE/8zkrdn5S72Qjw7Z3P4bTOk1U7swtSCaF/h
+ +t+M9kkhsm83CwRa2qrRB8=
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -60,32 +59,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jun 2021 18:58:07 -0000
+X-List-Received-Date: Mon, 07 Jun 2021 18:57:55 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
 
-While we only use stdin, the chardev is named 'stdio'.
+The "nubus-macfb" currently shows up as uncategorized device in
+the output of "-device help". Put it into the display category
+to fix this ugliness.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
-Message-Id: <20210602170759.2500248-4-f4bug@amsat.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210531073255.46286-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/display/macfb.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py b/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
-index 890e1def856b..b154a25508f7 100755
---- a/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
-+++ b/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
-@@ -14,7 +14,7 @@
-         /path/to/crash 2> qtest_log_output
- scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py qtest_log_output > qtest_trace
- ./i386-softmmu/qemu-fuzz-i386 -machine q35,accel=qtest \
--        -qtest stdin < qtest_trace
-+        -qtest stdio < qtest_trace
- 
- ### Details ###
+diff --git a/hw/display/macfb.c b/hw/display/macfb.c
+index ff8bdb846b97..d8183b9bbde6 100644
+--- a/hw/display/macfb.c
++++ b/hw/display/macfb.c
+@@ -450,6 +450,7 @@ static void macfb_nubus_class_init(ObjectClass *klass, void *data)
+     dc->desc = "Nubus Macintosh framebuffer";
+     dc->reset = macfb_nubus_reset;
+     dc->vmsd = &vmstate_macfb;
++    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+     device_class_set_props(dc, macfb_nubus_properties);
+ }
  
 -- 
 2.31.1
