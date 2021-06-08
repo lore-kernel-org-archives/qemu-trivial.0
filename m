@@ -1,65 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lqX6k-0000pG-0x
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Jun 2021 04:29:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35130)
+	id 1lqXHi-0005UH-Sm
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Jun 2021 04:40:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37226)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1lqX6i-0000jR-F2
- for qemu-trivial@nongnu.org; Tue, 08 Jun 2021 04:29:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37562)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1lqX6f-0007fK-Gy
- for qemu-trivial@nongnu.org; Tue, 08 Jun 2021 04:29:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623140944;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=toVaYFdeyBGUKp34Tb0FAVjIgxPUdAEg8GJsPVcsq3E=;
- b=OidOoc5sf5ce4d8g8M6E8DgLwAdLAFwcZLo02YetYWaWvIRpZUvn/vtRPJfFs0wWwoOqO9
- zkGlTUG+Ua+2DyoIIsTqoI7i8ufG1yhPbqxcCT7eutsbl9A1v3lqCYKlQxshZNKujHxVfd
- LyGMPdEqoDTpIjsq+ppx8Dx9voKgbDE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-1-cnZZkM_uPZm7J2jzbG300Q-1; Tue, 08 Jun 2021 04:29:02 -0400
-X-MC-Unique: cnZZkM_uPZm7J2jzbG300Q-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B4AE41854E26;
- Tue,  8 Jun 2021 08:29:01 +0000 (UTC)
-Received: from localhost (ovpn-114-153.ams2.redhat.com [10.36.114.153])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6027819C66;
- Tue,  8 Jun 2021 08:29:01 +0000 (UTC)
-Date: Tue, 8 Jun 2021 09:29:00 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] docs/tools/virtiofsd: Fix bad rst syntax
-Message-ID: <YL8qTAOnK+oaU2to@stefanha-x1.localdomain>
-References: <20210607180015.924571-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lqXHg-0005Qg-7H
+ for qemu-trivial@nongnu.org; Tue, 08 Jun 2021 04:40:29 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:43623)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lqXHZ-0005cW-Mn
+ for qemu-trivial@nongnu.org; Tue, 08 Jun 2021 04:40:27 -0400
+Received: by mail-ed1-x531.google.com with SMTP id s6so23574071edu.10
+ for <qemu-trivial@nongnu.org>; Tue, 08 Jun 2021 01:40:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xG+VIN36W4AZwAJtcYTsqAwGYYWdQVJltWSv5S9nsr8=;
+ b=WvWtiyvn90tAJg9+gdNET4l7AF4Y/rroanooPspxiJgb1CcxPAaU3uOnEF3Zn2V8QX
+ DBK1r/lsjYrxrC7zW8pgHDkjRENKuydtmAOcpT6L1XWfPHd9l/26BKjxp8tKI+ktBeIu
+ Sj4oTm8NiT5ZOZHdCzc2eGakPVYOsj7TI1eh+GyGZiuZXyxrCMsgVMuy3ePIT3aZfJyX
+ SFVbbgLT5GWLGDGo2rEYGQ8XR0SpGxKMHLrXreLYx94jcD0PEjrtbZqjucNsoixXYrEz
+ YUO3qQvmf5FF83mo1opaBm0lgiqdpdJsD9dYASNjAWLhx5/ZVic6l7yHUvUo0rnG+6Ct
+ ndvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xG+VIN36W4AZwAJtcYTsqAwGYYWdQVJltWSv5S9nsr8=;
+ b=r0Uwq4didghSbn5R95L1G2p0ryA8cY6jz1Mguw4MWofzVFStKqUcgqDwLkJ9TY1tAn
+ Q5b4JLm5Wl0pzHajGpB9+Rnb86KbXqPLRhLxQs/37EeHJTt6sVnhCLKYtLZ4uHLcTZcw
+ q8/IeZexSgl66bxx0Ab8BLOkEvjcrJyLUSl76Pp9eQO5pu9HbwPZNzoi2w+Xrpx9/xqa
+ vZmbRBsv36Ra4TP4FNbL7WtqL5u5FUtFPPe6q6tNGY/M2ydY3CT4KP/q1S4Ma5dE45jr
+ J+PZuhVXIJIgZPPuOqXRdpzx+7bbO+wBpw2V5glec2+I3+VzCLpBmcgjYHeR4WOrtW83
+ VnCA==
+X-Gm-Message-State: AOAM5333mLCz4cW3WolPaXayrofWIulNk3gG4eP7AGZ591Q+M9Ac+3yt
+ cyy8LiHZGipqB2GTG2/l/4EtUJkap+0j14ZlFccuSQ==
+X-Google-Smtp-Source: ABdhPJxAt9thdlKIqn0c9RItEBEfnekIxy2iu0mGaT8PM7hm5G8fbF1xhIx2rUe3/TjYEznCvLYJH/GJaUi/ltZJDIg=
+X-Received: by 2002:aa7:d755:: with SMTP id a21mr24657357eds.146.1623141619203; 
+ Tue, 08 Jun 2021 01:40:19 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210607180015.924571-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="C/c1MqVoFkQS0tVb"
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20210607185730.346641-1-laurent@vivier.eu>
+In-Reply-To: <20210607185730.346641-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Jun 2021 09:39:45 +0100
+Message-ID: <CAFEAcA_y-At8tWadkdK5i45TzeGGU+M_5awnx6ad1Cbqrwuv=g@mail.gmail.com>
+Subject: Re: [PULL 00/11] Trivial branch for 6.1 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,39 +70,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Jun 2021 08:29:09 -0000
+X-List-Received-Date: Tue, 08 Jun 2021 08:40:29 -0000
 
---C/c1MqVoFkQS0tVb
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Mon, 7 Jun 2021 at 20:00, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 6f398e533f5e259b4f937f4aa9de970f7201d166:
+>
+>   Merge remote-tracking branch 'remotes/rth-gitlab/tags/pull-tcg-20210604' into staging (2021-06-05 11:25:52 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.1-pull-request
+>
+> for you to fetch changes up to df77d45a51412ca84abd7f1490b48c1bccf07057:
+>
+>   vhost-vdpa: Remove redundant declaration of address_space_memory (2021-06-05 21:33:46 +0200)
+>
+> ----------------------------------------------------------------
+> Trivial branch pull request 20210607
+>
+> ----------------------------------------------------------------
 
-On Mon, Jun 07, 2021 at 08:00:15PM +0200, Thomas Huth wrote:
-> For literal blocks, there has to be an empty line after the two colons,
-> and the block itself should be indented.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  docs/tools/virtiofsd.rst | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Applied, thanks.
 
---C/c1MqVoFkQS0tVb
-Content-Type: application/pgp-signature; name="signature.asc"
+Please update the changelog at https://wiki.qemu.org/ChangeLog/6.1
+for any user-visible changes.
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmC/KkwACgkQnKSrs4Gr
-c8ggPwf/VXu9j+x2fkm3AV5oSVK5eFUJhGMlqkX8cobEwnNLSBrBpFKiKn9Xtjhk
-Peihjy3RUUtKh3Co7PvDrRQ6AogSeh/tVW/ECLM3NJpeX8oD8xAcEmPOKQNirMSB
-BOagAdZBVeLzn4bMtG6g7J5iQVeQPuIIa7eAoTREEVmyRYJ8En6Bxmn492vDLDTy
-pK79Ky1O66lRFiyyl/cm6t4TaBT5GUPskexS2HMdFyQZWkW54NxZ4TjHFtvP4kZZ
-eZjG16CR9vdNLa7xLdC+Op/FKQpctuOWA9D3IXpfLLf1DmrYnzkRthiq6JOx1hHJ
-yOv6gXuzBxvxUzp+6Y3t33FR2awYvQ==
-=VwuN
------END PGP SIGNATURE-----
-
---C/c1MqVoFkQS0tVb--
-
+-- PMM
 
