@@ -1,87 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lqVK6-00018I-Qj
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Jun 2021 02:34:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41928)
+	id 1lqWmt-0003e1-6R
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Jun 2021 04:08:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59090)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lqVK4-00012d-RN
- for qemu-trivial@nongnu.org; Tue, 08 Jun 2021 02:34:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47250)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1lqWmr-0003bf-Ca
+ for qemu-trivial@nongnu.org; Tue, 08 Jun 2021 04:08:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29151)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lqVK3-0002Lm-5o
- for qemu-trivial@nongnu.org; Tue, 08 Jun 2021 02:34:48 -0400
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1lqWmo-0002k4-Fu
+ for qemu-trivial@nongnu.org; Tue, 08 Jun 2021 04:08:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623134086;
+ s=mimecast20190719; t=1623139713;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9t+//wXTlgop/Z03yZFjOGzC5k4x/poh5TNc11yD0h8=;
- b=If8wwriIpCjP+hbRKrkFwuM0q6I3j1PwpfUEkO0a5tSEjU35sOGx71DyG/FHOEeySWgTft
- e2ZTGBUEPc6PtgmoJd/4j7/5bVpyYtHBWy7kTCNANHiwCT2AFBJMciulPM9kIRb+/lcLHv
- FJ/RCaxip4awfXhd5q7p3WZW3ev3DSw=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-253-7TfzTNqQMHyYzgxc-2SGgw-1; Tue, 08 Jun 2021 02:34:45 -0400
-X-MC-Unique: 7TfzTNqQMHyYzgxc-2SGgw-1
-Received: by mail-wr1-f71.google.com with SMTP id
- n2-20020adfb7420000b029010e47b59f31so8880602wre.9
- for <qemu-trivial@nongnu.org>; Mon, 07 Jun 2021 23:34:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=9t+//wXTlgop/Z03yZFjOGzC5k4x/poh5TNc11yD0h8=;
- b=d5z27Pzzy9zAJXzBnhb8cuMZKaUgpVDKHosTHIe+hbzMjfE6yKbtUfP7ZSqCLwHmVO
- jxFMn32FXzdMdZAzQfnKGwEPFZWZiF9O5IY1upwUNdIx+Lw/rPeEbf3TE1KvwiPqQqnR
- QpswqEuuPCI7r9X0I4yN72La3I3i9c2GB8D/LiRKZVETMevo1/XyDROZTx6e8QXF+gKe
- h7oHkfmxLmZYqy/R/jRLDwwF9qdIN6JPPdDr+2/UgLGEgtn1kAJrrnyweEbN4rSgmDKn
- ux9LVCDEtWMSffItyQ/si3v/ySl91JsQBga538ZwfQrc8WUDL3pyFRmjoGnNpg8oonTs
- bHrw==
-X-Gm-Message-State: AOAM5322bQEZlr7fpuSttNv2heQMWZJMrEwVMkMuy42Pt5gydAsxJOI8
- XvOL+5dC5H9vOyo/XwcJNFs+gis2maiQ+aTlpr5MdKUwdG3we+Yt1r5ZG56MhTPQCXnTMyznsUK
- J0g/9j5HYd+Zzuk3+HQ==
-X-Received: by 2002:a05:600c:2046:: with SMTP id
- p6mr2463300wmg.19.1623134084195; 
- Mon, 07 Jun 2021 23:34:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBSjWECOFuVscr5fW4hRXciQIRtW9NS5XHTioNbWNrcqSyT5TvUHjFC2sNqCupNcGqS0Zuew==
-X-Received: by 2002:a05:600c:2046:: with SMTP id
- p6mr2463290wmg.19.1623134084087; 
- Mon, 07 Jun 2021 23:34:44 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id y189sm17215966wmy.25.2021.06.07.23.34.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Jun 2021 23:34:43 -0700 (PDT)
-Subject: Re: [PATCH] docs/interop/live-block-operations: Do not hard-code the
- QEMU binary name
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
-References: <20210607172311.915385-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <0094f2fa-5925-4706-dfa8-8771fae74cf4@redhat.com>
-Date: Tue, 8 Jun 2021 08:34:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ bh=/o9iV0kkYpaxlmL0kC14H5JBkKCHBvJFu/0rTf32Nxc=;
+ b=Noqah5mtTX3eC2TcnDHhJ1s8S1Qg2qA4CLh4vrRQV+N3B6d9lrNmQJiGsNCQktrgPOlkWo
+ OvBKDnuT19QcSiFMpk0AgkdeF+mT7Qh0DSreDdMoblf8OTbzj1Kya+pVddk9zXtdm1g7eL
+ TdMEVMSHKOWG47cycTODqzBR1JayOYw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-281-OyaiDL0ONNK7EGl6GGRmbw-1; Tue, 08 Jun 2021 04:08:31 -0400
+X-MC-Unique: OyaiDL0ONNK7EGl6GGRmbw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EC0FF81DF1B;
+ Tue,  8 Jun 2021 08:08:30 +0000 (UTC)
+Received: from localhost (ovpn-114-153.ams2.redhat.com [10.36.114.153])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8C42210013C1;
+ Tue,  8 Jun 2021 08:08:30 +0000 (UTC)
+Date: Tue, 8 Jun 2021 09:08:29 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] docs/tools/virtiofsd.rst: Do not hard-code the QEMU
+ binary name
+Message-ID: <YL8lfZWOGDN8XQ5a@stefanha-x1.localdomain>
+References: <20210607174250.920226-1-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210607172311.915385-1-thuth@redhat.com>
+In-Reply-To: <20210607174250.920226-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="+Z75Uy5bLwYbGpfc"
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,19 +73,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Jun 2021 06:34:49 -0000
+X-List-Received-Date: Tue, 08 Jun 2021 08:08:37 -0000
 
-On 6/7/21 7:23 PM, Thomas Huth wrote:
+--+Z75Uy5bLwYbGpfc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Jun 07, 2021 at 07:42:50PM +0200, Thomas Huth wrote:
 > In downstream, we want to use a different name for the QEMU binary,
 > and some people might also use the docs for non-x86 binaries, that's
 > why we already created the |qemu_system| placeholder in the past.
-> Use it now in the live-block-operations doc, too.
-> 
+> Use it now in the virtiofsd doc, too.
+>=20
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  docs/interop/live-block-operations.rst | 32 +++++++++++++++-----------
->  1 file changed, 18 insertions(+), 14 deletions(-)
+>  docs/tools/virtiofsd.rst | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--+Z75Uy5bLwYbGpfc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmC/JX0ACgkQnKSrs4Gr
+c8gquwf+MKSWGfVWMrNoXbDDINCcypz8qAFqUheWAHSP08SeehFGH4V0onvb7M2L
+vdND1qn+xVJrFrkKk3EGj58iCpSNIJuynSEBBMJqqtnp6VatvHuIMEpyWRTf9wzC
+D0gwQUZxqVl51xZxpDqgBF58QmRW8m3k81JL5aNzAXGwJP5w4Vgfn00bTw8K+KzN
+ZAl2pPteJXfRwO2FEKXYpWhzxBqX6YnCIztvwzU0SIWeT8hvskS5MlrLAt6bN00z
+/qlbmO5YC6lHB0O8BSodm/S4XKCD8Zt0CQ6e6bAe4tVYiOld/PZ5T0YpRP5uAgZD
+fdzu2RN7R+RPtXkNZO0ftX2jnjFldg==
+=GAXc
+-----END PGP SIGNATURE-----
+
+--+Z75Uy5bLwYbGpfc--
 
 
