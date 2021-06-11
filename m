@@ -1,84 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lrezq-0005az-SQ
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Jun 2021 07:06:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38084)
+	id 1lrf5i-0000aj-P9
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Jun 2021 07:12:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lrezp-0005Yt-5C
- for qemu-trivial@nongnu.org; Fri, 11 Jun 2021 07:06:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38960)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1lrf5g-0000aL-Oq; Fri, 11 Jun 2021 07:12:44 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:43272
+ helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lrezk-0002OY-Gc
- for qemu-trivial@nongnu.org; Fri, 11 Jun 2021 07:06:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623409591;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Z0xDiPXFFjStcUvDTfMCQL5J0pVkNoaY5Tg5Foz7DtE=;
- b=bYwJwj8v/lZT8HUUXe6Wdd8i6chgOPGtNFHGfPdqi6HJACIbMxbgse3600m+gkMc99AmfP
- tK6E39Yr04eYHb6Wr8+9TBo52SGt6/0MlDtyqEl4K/3q4bY/HkvMlugKrQbsPfG2rSmOPt
- X2CAwahNaQ6o30fpCiaJbTUDAxIPcMQ=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-399-A0NMW2aePiG0Yd-ahsFNpA-1; Fri, 11 Jun 2021 07:06:30 -0400
-X-MC-Unique: A0NMW2aePiG0Yd-ahsFNpA-1
-Received: by mail-wr1-f72.google.com with SMTP id
- e9-20020a5d6d090000b0290119e91be97dso2479938wrq.1
- for <qemu-trivial@nongnu.org>; Fri, 11 Jun 2021 04:06:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Z0xDiPXFFjStcUvDTfMCQL5J0pVkNoaY5Tg5Foz7DtE=;
- b=s7gJfO7kFFKq5/coNFkM05SXKp9BFpCr7pU7R1idjW8I4Jz71lKBUFV5pcbcdyHyaJ
- JfGQK7As3o2LZOlqVBVpSBLOKOaVuTvyT/ZL8/CghhJqzJ9YnqzZ4UUW+ALydweIOwQW
- FeU3zOIBhzuBa+pCy1ze1F3WmrvBZLHkMWjyZG8P+CqreHHhL2TOZ8WSe9sBJRzZuZzr
- u0kw7adL6XG5DOWxanPKxYzZnguf4p0J2LrP+FJenBbSPHMLBRPjW8AjA9Nd0sQGLow9
- 8/BIVyvILkAo/b0oD/ewDRz2+atA50sXgw9QHpLTQrRnrUMjmVxTjj3jkq/eCgjIQAdB
- ZasQ==
-X-Gm-Message-State: AOAM531pYB1lHVQS75PaG2fnUhOWkVOvzmy0iEqjP5ImI6EhBZB9m/go
- muVcBhLy2AYJGGvyWVt5V3kwSugn+Aqf1SmIDM8zvkgzKS9zKus2lzM1CspF9//CL16CVgsO1v5
- LflqUj2GBcBtxwskWzA==
-X-Received: by 2002:adf:cf02:: with SMTP id o2mr3345394wrj.365.1623409589647; 
- Fri, 11 Jun 2021 04:06:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzreZ59hqPbwc8oqHVLP6i1f51fnLdxV2g7sZ6d2ukGMbyhZO2x7DKrA0mc9wBdbFpIXdMxvg==
-X-Received: by 2002:adf:cf02:: with SMTP id o2mr3345383wrj.365.1623409589481; 
- Fri, 11 Jun 2021 04:06:29 -0700 (PDT)
-Received: from [192.168.1.36] (235.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.235])
- by smtp.gmail.com with ESMTPSA id q11sm6436675wrx.80.2021.06.11.04.06.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 11 Jun 2021 04:06:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1lrf5Z-0006LI-P2; Fri, 11 Jun 2021 07:12:43 -0400
+Received: from edv-macbook-pro.fritz.box (p57b42637.dip0.t-ipconnect.de
+ [87.180.38.55])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 91776DA06E4;
+ Fri, 11 Jun 2021 13:12:30 +0200 (CEST)
 Subject: Re: [PATCH] util/oslib-win32: Fix fatal assertion in qemu_try_memalign
-To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
 References: <20210611105846.347954-1-sw@weilnetz.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <dd332a3f-888e-a238-9ee1-f1651b630fe4@redhat.com>
-Date: Fri, 11 Jun 2021 13:06:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ <dd332a3f-888e-a238-9ee1-f1651b630fe4@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <a8310616-403b-5f4c-71c9-8163da08d762@weilnetz.de>
+Date: Fri, 11 Jun 2021 13:12:26 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.10.2
 MIME-Version: 1.0
-In-Reply-To: <20210611105846.347954-1-sw@weilnetz.de>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <dd332a3f-888e-a238-9ee1-f1651b630fe4@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.199,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,44 +51,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Jun 2021 11:06:41 -0000
+X-List-Received-Date: Fri, 11 Jun 2021 11:12:45 -0000
 
-On 6/11/21 12:58 PM, Stefan Weil wrote:
-> The function is called with alignment == 0 which caused an assertion.
-> Use the code from oslib_posix.c to fix that regression (introduced
-> by commit ed6f53f9ca9).
-> 
+Am 11.06.21 um 13:06 schrieb Philippe Mathieu-Daudé:
 
-Oops.
+> On 6/11/21 12:58 PM, Stefan Weil wrote:
+>> The function is called with alignment == 0 which caused an assertion.
+>> Use the code from oslib_posix.c to fix that regression (introduced
+>> by commit ed6f53f9ca9).
+>>
+> Oops.
+>
+> Can we replace '(introduced by commit ed6f53f9ca9)' by:
+> Fixes: ed6f53f9ca9 ("util/oslib: Assert qemu_try_memalign() alignment is
+> a power of 2")
+>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Can we replace '(introduced by commit ed6f53f9ca9)' by:
-Fixes: ed6f53f9ca9 ("util/oslib: Assert qemu_try_memalign() alignment is
-a power of 2")
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Sure, that's fine for me, too. I think the text can be changed without a 
+v2 of the patch.
 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  util/oslib-win32.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/util/oslib-win32.c b/util/oslib-win32.c
-> index ca99356fdf..7b318ea835 100644
-> --- a/util/oslib-win32.c
-> +++ b/util/oslib-win32.c
-> @@ -57,7 +57,11 @@ void *qemu_try_memalign(size_t alignment, size_t size)
->      void *ptr;
->  
->      g_assert(size != 0);
-> -    g_assert(is_power_of_2(alignment));
-> +    if (alignment < sizeof(void *)) {
-> +        alignment = sizeof(void *);
-> +    } else {
-> +        g_assert(is_power_of_2(alignment));
-> +    }
->      ptr = _aligned_malloc(size, alignment);
->      trace_qemu_memalign(alignment, size, ptr);
->      return ptr;
-> 
+Stefan
+
 
 
