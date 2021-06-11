@@ -1,83 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lrH0U-0005WB-82
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Jun 2021 05:29:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36676)
+	id 1lresW-0000EB-Qx
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Jun 2021 06:59:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lrH0T-0005Sh-1r
- for qemu-trivial@nongnu.org; Thu, 10 Jun 2021 05:29:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:44028)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1lresU-0000D3-93; Fri, 11 Jun 2021 06:59:06 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:43196
+ helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lrH0P-0005Hi-O2
- for qemu-trivial@nongnu.org; Thu, 10 Jun 2021 05:29:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623317380;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=H0gNvtmbbb7KNE1PLgn1t0NbsyPs5daRuSHxqgJsDyQ=;
- b=UKdRPgTJDKjvWSCMJRwQWdONHKw/0jxODeV7TB24vB+cjzGGpIArMWt7pNIli81hCSB0WH
- qui7xWx1a1hlRr+N1nP/MKMEE6DhjhTAYJCgLd2O1jMSnrMFPsUnhT11ogXokW+DkCdJqf
- McW6DPzDtYHDhTZtQj3gbj0FUP91omc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-444-esXHiPfvPsKZ1o9_20WpZQ-1; Thu, 10 Jun 2021 05:29:39 -0400
-X-MC-Unique: esXHiPfvPsKZ1o9_20WpZQ-1
-Received: by mail-wm1-f71.google.com with SMTP id
- v25-20020a1cf7190000b0290197a4be97b7so2823430wmh.9
- for <qemu-trivial@nongnu.org>; Thu, 10 Jun 2021 02:29:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=H0gNvtmbbb7KNE1PLgn1t0NbsyPs5daRuSHxqgJsDyQ=;
- b=D9ggwQWXdFQd1Gxr48wyXlFiVxSXhOKjNXWaSZ8pSyQOC16EsdhYoD1K6nQLqqxiAS
- /FkzSqAGJheZPbMC9c131IHoaXQjXRidB9ekLnoA4c6GOFZ63bHLu24RUUBGjXoq6xx8
- 9x5U0sT0Xy8uvD1gp/Sn6goBB1QVusg/MYO1Scq09QsWewniErZIJbDXgh/TB5lxEvUm
- hl6NT5k3s5788108Ru0uHHfIAm/5wzOopKcOB+FW24AN0obQTJhg2pfxLQ+UkurH/XVC
- Bo4rmJJkc+3QEme0lFZDC0F15t3nUcXs0Zh7+CSiT1/7K7ZFY+nf5X72LJP5FRI8QZaf
- sM0Q==
-X-Gm-Message-State: AOAM532lnLxdFfdvAQGZp7AOcTxPviSEguK3C2JKNFiTF9ZYsQM5uX/6
- xYdmylnK+spn/T4SjIg9ijDMXLiJG63IuWAkoJpst+t7pOecoD69P5FFZPlc/EztxU0f0MFXmBn
- Dz+VbeVE32NpZtKF8fsUKUrKc/DqBIUmDOYWPVshYboeKJbZIfmvF77opn/sf+g770w==
-X-Received: by 2002:a5d:570d:: with SMTP id a13mr4177399wrv.239.1623317377948; 
- Thu, 10 Jun 2021 02:29:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2RSpLCf/6Cf4P1G2e8+PIP0viLz7BcgSRo7xSDErJAW1NFyM4bSCOJuqQFECY1T01E7IMZA==
-X-Received: by 2002:a5d:570d:: with SMTP id a13mr4177374wrv.239.1623317377725; 
- Thu, 10 Jun 2021 02:29:37 -0700 (PDT)
-Received: from thuth.remote.csb (pd9e839fb.dip0.t-ipconnect.de.
- [217.232.57.251])
- by smtp.gmail.com with ESMTPSA id x18sm2835183wrw.19.2021.06.10.02.29.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Jun 2021 02:29:37 -0700 (PDT)
-Subject: Re: [PATCH] qemu-option: Drop dead assertion
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210610085026.436081-1-armbru@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <deea178f-ea30-e2ca-4d0e-61a8c02b3b67@redhat.com>
-Date: Thu, 10 Jun 2021 11:29:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1lresR-00069b-VL; Fri, 11 Jun 2021 06:59:05 -0400
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 1938BDA07C2;
+ Fri, 11 Jun 2021 12:59:00 +0200 (CEST)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id 8D5C3460056; Fri, 11 Jun 2021 12:58:59 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH] util/oslib-win32: Fix fatal assertion in qemu_try_memalign
+Date: Fri, 11 Jun 2021 12:58:46 +0200
+Message-Id: <20210611105846.347954-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <20210610085026.436081-1-armbru@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.199,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -91,52 +46,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Jun 2021 09:29:45 -0000
+X-List-Received-Date: Fri, 11 Jun 2021 10:59:06 -0000
 
-On 10/06/2021 10.50, Markus Armbruster wrote:
-> Commit c6ecec43b2 "qemu-option: Check return value instead of @err
-> where convenient" simplified
-> 
->      opts = qemu_opts_create(list, qdict_get_try_str(qdict, "id"), 1,
->                              &local_err);
->      if (local_err) {
->          error_propagate(errp, local_err);
->          return NULL;
->      }
-> 
-> to
-> 
->      opts = qemu_opts_create(list, qdict_get_try_str(qdict, "id"), 1, errp);
->      if (!opts) {
->          return NULL;
->      }
-> 
-> but neglected to delete
-> 
->      assert(opts != NULL);
-> 
-> Do that now.
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->   util/qemu-option.c | 2 --
->   1 file changed, 2 deletions(-)
-> 
-> diff --git a/util/qemu-option.c b/util/qemu-option.c
-> index 4944015a25..3fa0b13378 100644
-> --- a/util/qemu-option.c
-> +++ b/util/qemu-option.c
-> @@ -1028,8 +1028,6 @@ QemuOpts *qemu_opts_from_qdict(QemuOptsList *list, const QDict *qdict,
->           return NULL;
->       }
->   
-> -    assert(opts != NULL);
-> -
->       for (entry = qdict_first(qdict);
->            entry;
->            entry = qdict_next(qdict, entry)) {
-> 
+The function is called with alignment == 0 which caused an assertion.
+Use the code from oslib_posix.c to fix that regression (introduced
+by commit ed6f53f9ca9).
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ util/oslib-win32.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/util/oslib-win32.c b/util/oslib-win32.c
+index ca99356fdf..7b318ea835 100644
+--- a/util/oslib-win32.c
++++ b/util/oslib-win32.c
+@@ -57,7 +57,11 @@ void *qemu_try_memalign(size_t alignment, size_t size)
+     void *ptr;
+ 
+     g_assert(size != 0);
+-    g_assert(is_power_of_2(alignment));
++    if (alignment < sizeof(void *)) {
++        alignment = sizeof(void *);
++    } else {
++        g_assert(is_power_of_2(alignment));
++    }
+     ptr = _aligned_malloc(size, alignment);
+     trace_qemu_memalign(alignment, size, ptr);
+     return ptr;
+-- 
+2.30.2
 
 
