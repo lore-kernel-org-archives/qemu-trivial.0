@@ -1,44 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lrf5i-0000aj-P9
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Jun 2021 07:12:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39722)
+	id 1ls57S-0003pR-Ka
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Jun 2021 11:00:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1lrf5g-0000aL-Oq; Fri, 11 Jun 2021 07:12:44 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:43272
- helo=mail.v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1lrf5Z-0006LI-P2; Fri, 11 Jun 2021 07:12:43 -0400
-Received: from edv-macbook-pro.fritz.box (p57b42637.dip0.t-ipconnect.de
- [87.180.38.55])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 91776DA06E4;
- Fri, 11 Jun 2021 13:12:30 +0200 (CEST)
-Subject: Re: [PATCH] util/oslib-win32: Fix fatal assertion in qemu_try_memalign
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-References: <20210611105846.347954-1-sw@weilnetz.de>
- <dd332a3f-888e-a238-9ee1-f1651b630fe4@redhat.com>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <a8310616-403b-5f4c-71c9-8163da08d762@weilnetz.de>
-Date: Fri, 11 Jun 2021 13:12:26 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.10.2
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ls57N-0003oa-Gy; Sat, 12 Jun 2021 11:00:13 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:34516)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ls57L-0004iG-Bg; Sat, 12 Jun 2021 11:00:12 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ u5-20020a7bc0450000b02901480e40338bso7563347wmc.1; 
+ Sat, 12 Jun 2021 08:00:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=V1tHPWc7IoUl8aeLrAnszpR4W9O8ua1Vcngeui0rTRw=;
+ b=C0bFPpjy4iReiVnSoBSjKNUBQWjaQmpZC9uAQCch9QpaG/HlY+du8JFdhtmbHg4G8D
+ CsrwXbcX3uarXt761UphXOxIei2xSa+sWpO0YWZe9pYxZg2wSkrjnpSaR8IV9lC2A9Id
+ 2PM1RdUXXXM8aww+dHLcjIV55QCSeZkqtBpdu1H4ong9HO09kVqEYHXtT0fdRi8FaXne
+ 1KOOJBa0sH/36oKwGpx8ZfmaQzfXPLZJjqrpG4BGbMnaLQXFTAq2DDuJckukKr3UEGMK
+ 3CPC7XF5/PZSL5nCzWCy8QSMVVWAfWRui43+LsNOu4TrNzr0D6j4E6wgn/Rm+eJ7VNXo
+ N6Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=V1tHPWc7IoUl8aeLrAnszpR4W9O8ua1Vcngeui0rTRw=;
+ b=Nrf68icmEy2MvRelDis5Ee7VbvJdkyRRGcLMY18WrSRTnn/RX7osdQXosy5xHtpOQM
+ oPHJvZDlPnGE/nnYWXk4/TrEXhJAPKe0hDN/f5yXR8vmjac2ehlYLxCKTjcCihxxgAdN
+ U1pCnFQxuZAXbt1W6R8KX2Ow+UEEWNtVL4DtgckySbZPdtpdOVosbuIEQK0YTXva6kJe
+ VIyQRemR4lU7T6GpRftCQd1lKMUvrUcpsoY5S7KtqGF566lHQxx10+k4sRNCKtDP7yvk
+ ytondlc/c+FnSHh4vOOrCgNhWDZruhSKQ5LvV7gyJafVLJ5rlYH+zHq8HLb7+oED2JFn
+ uopg==
+X-Gm-Message-State: AOAM53396JPiL0tX2WmOfEWotUkRkW6kIGCeqDOZSHL7utDX1axDbQMO
+ 4XxP6hp7+9Q0eR5usIzrV0epv5bpr5xxqw==
+X-Google-Smtp-Source: ABdhPJxpioCeR6eN+a1A64LTB7ZuSP+ohc9xNKKHss7wK7q4el16Arb6CSB9Z/0krFjnzQU92uswhA==
+X-Received: by 2002:a1c:a54b:: with SMTP id o72mr8465747wme.124.1623510008056; 
+ Sat, 12 Jun 2021 08:00:08 -0700 (PDT)
+Received: from x1w.redhat.com (235.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.235])
+ by smtp.gmail.com with ESMTPSA id p23sm7697946wmi.26.2021.06.12.08.00.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 12 Jun 2021 08:00:07 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Bandan Das <bsd@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
+ Stefan Hajnoczi <stefanha@redhat.com>, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] fuzz: Display hexadecimal value with '0x' prefix
+Date: Sat, 12 Jun 2021 17:00:04 +0200
+Message-Id: <20210612150004.1489198-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <dd332a3f-888e-a238-9ee1-f1651b630fe4@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -51,28 +81,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Jun 2021 11:12:45 -0000
+X-List-Received-Date: Sat, 12 Jun 2021 15:00:14 -0000
 
-Am 11.06.21 um 13:06 schrieb Philippe Mathieu-Daudé:
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ tests/qtest/fuzz/generic_fuzz.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> On 6/11/21 12:58 PM, Stefan Weil wrote:
->> The function is called with alignment == 0 which caused an assertion.
->> Use the code from oslib_posix.c to fix that regression (introduced
->> by commit ed6f53f9ca9).
->>
-> Oops.
->
-> Can we replace '(introduced by commit ed6f53f9ca9)' by:
-> Fixes: ed6f53f9ca9 ("util/oslib: Assert qemu_try_memalign() alignment is
-> a power of 2")
->
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-
-Sure, that's fine for me, too. I think the text can be changed without a 
-v2 of the patch.
-
-Stefan
-
+diff --git a/tests/qtest/fuzz/generic_fuzz.c b/tests/qtest/fuzz/generic_fuzz.c
+index cea7d4058e8..1307299df52 100644
+--- a/tests/qtest/fuzz/generic_fuzz.c
++++ b/tests/qtest/fuzz/generic_fuzz.c
+@@ -841,7 +841,7 @@ static void generic_pre_fuzz(QTestState *s)
+ 
+     g_hash_table_iter_init(&iter, fuzzable_memoryregions);
+     while (g_hash_table_iter_next(&iter, (gpointer)&mr, NULL)) {
+-        printf("  * %s (size %lx)\n",
++        printf("  * %s (size 0x%lx)\n",
+                object_get_canonical_path_component(&(mr->parent_obj)),
+                (uint64_t)mr->size);
+     }
+-- 
+2.31.1
 
 
