@@ -1,56 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lsPWT-00030k-IK
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Jun 2021 08:47:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57382)
+	id 1lsUXd-00073n-0B
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Jun 2021 14:09:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lsPWR-0002z2-66; Sun, 13 Jun 2021 08:47:27 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:54075)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lsPWP-0003ml-EC; Sun, 13 Jun 2021 08:47:26 -0400
-Received: from [192.168.100.1] ([82.142.19.46]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M7auJ-1lxbeH3k21-0086uF; Sun, 13 Jun 2021 14:47:13 +0200
-Subject: Re: [PATCH v2] fuzz: Display hexadecimal value with '0x' prefix
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-trivial@nongnu.org, Alexander Bulekov <alxndr@bu.edu>,
- Bandan Das <bsd@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20210612195842.1595999-1-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <e947c86c-bd9b-6d91-d0f0-b8ce8833f295@vivier.eu>
-Date: Sun, 13 Jun 2021 14:47:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <davoronetskiy@gmail.com>)
+ id 1lsUXb-00073K-LL; Sun, 13 Jun 2021 14:08:59 -0400
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132]:34332)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <davoronetskiy@gmail.com>)
+ id 1lsUXa-0007s3-59; Sun, 13 Jun 2021 14:08:59 -0400
+Received: by mail-lf1-x132.google.com with SMTP id f30so17179958lfj.1;
+ Sun, 13 Jun 2021 11:08:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZsBlRsiDpaW9+FfpUJAOcJMhAi8Jpx2OfNELQoy+pxs=;
+ b=rARtDg5H7TobQH3hZdIbCJJQ6iglubgdmorucQ+vefu2U9aAHTNzBUqFTqWcQb0Wuk
+ PX2bGjt2BvM76DyWp/K21RtJlvTz6KxiU+WhqejR3bUj3gejN5KWgQyLS0hggoA4AlPR
+ jcrRj9QmF2Lgu9IcB21pvALoZspsJheYay3FRWe4DFKb7Y4N5rCPUhBEzE7dZAcjmLzo
+ 6Luk6gsImgkhHJh/ST1LnqEbwhfhJ+ItV4gvfX8vV0r1L3S8avM3EJhTgFmSArmWj01B
+ rEG6uJ9l9uFpFz/6/1ymHJd6Z0YGhxv/nnF4mZeV1RkRHft1Rs9GxujRyXQnEsLsakJ9
+ 0kXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZsBlRsiDpaW9+FfpUJAOcJMhAi8Jpx2OfNELQoy+pxs=;
+ b=UGKRLESb8WcLDzEBYztWqysu1AePd2J8CvyFdvJPshIEkLPxpp3/xTeMI0RyUi9mmJ
+ j7QuwN2MYwHV1vLZFvK3SrHiqBEkyEuZx6HMiv6+mV3JsUPOvXbd1lL15NRSBgx6tmXA
+ 1RJJtp/0nPDl0cNmV4zsL1INkLYL7hd2hUOkKs/EzsK608i6OW0+yHZ2gK6i5nTmdqFo
+ Y+dIypdl4D/F+0kVPk0pEcMh0jAGkxy5k2GsW1ZqUwGFl8Dp/vHuANeOKs2SRcuRRtRJ
+ UeTsrlPZ9Zn9g6m+YkWZbk8pm1i1uxHrY5XNmsRltgi8zOiIbVYiohNKA7ALrv379lQy
+ f3+A==
+X-Gm-Message-State: AOAM530PMM/XaJHhHxwU7Pui4LmO8uR5ZEg9jBH5KskpZnyt0swbPbyA
+ gygYdaZc2OJhGSgPtaxuTgDd5YIdoN2HJz8r
+X-Google-Smtp-Source: ABdhPJzm2ZAjBWFXoBg8ploGrlIZyTQvE1PIPhlYGxAT6YpLACMzNVzbkBby989EbxBqNIJ6lg+rzQ==
+X-Received: by 2002:ac2:420e:: with SMTP id y14mr1834633lfh.542.1623607735088; 
+ Sun, 13 Jun 2021 11:08:55 -0700 (PDT)
+Received: from localhost.localdomain ([46.39.249.124])
+ by smtp.gmail.com with ESMTPSA id 10sm1347004lfq.160.2021.06.13.11.08.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 13 Jun 2021 11:08:54 -0700 (PDT)
+From: Dmitry Voronetskiy <davoronetskiy@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Dmitry Voronetskiy <davoronetskiy@gmail.com>
+Subject: [PATCH] target/i386/tcg/sysemu/bpt_helper.c: typo since
+ cpu_breakpoint and cpu_watchpoint are in a union,
+ the code should access only one of them
+Date: Sun, 13 Jun 2021 21:08:38 +0300
+Message-Id: <20210613180838.21349-1-davoronetskiy@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210612195842.1595999-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:O9ZrO2uIQRQF4OBTX7aBAnH6dfD/sTWq819yiIMHI1O+GFdzugq
- Z6h25jhgx1v3P2XqVO123YInw0EWXLV/rprq5XmaB3IZTZHGmOBc3z1lG1Crg+UG2TxR6kx
- bVfBwpi5xodnLS/sRg//1AWGDfigmEFm8zATzM2E6tYiyjjWA53JyChg4bubK3zxFCAKyO0
- WxdRaABikaSTjvnFbMe0w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7qKzFYOEnpE=:RXXy/Dh5IWftt/mMuY3+HM
- Cto8nNFKrrEEyaSEVeeuHfJMsHcIaXYElf6Vbp1vKB0FNWPLZDVa0M3jun3AD7Oj+S5hdEaCg
- jGf1cejuc6c2tK4Oq4+1sotzsOfIvjp2o5ImTmq7DAcPZPcKeklVPEgn3aj+5pfBzgBwRQVBQ
- ttU+3WpPQ8iFp0T1n1YNcbo7dP9b9+0n9AJlk2eBhqbkWhEeRA73H7/9tinKckv5sfel244gd
- UUR55l3aer4UtmhcPWJHdnMPQRrf+IcUZknvsoJ95NvyPWg5D9sGBhxhCMqJbCbjp+AY0ImzO
- jvo540OuM9oRVCqfkiXDtkYs1WrMzQqgxQ+XCJIbbeLOJturgxAbrxy0sb2R9rJbhuTK//YZc
- 78eV+V9RPafxb83mMpw36SN8bZdkWVdIf5kH10EDOHPCG2QBtgUvFCA1WpqTipqRRLVoYwg33
- rjSEFqWoOhBQ5mtBkdKGwEKna+A+v/9TSkoe5Km8n5+Toe84qEQmfO4Af1gahozW2xqUaBy0U
- gWVAw0MQKHAP9/tZuEUC6A=
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=davoronetskiy@gmail.com; helo=mail-lf1-x132.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.144,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,38 +74,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 13 Jun 2021 12:47:27 -0000
+X-List-Received-Date: Sun, 13 Jun 2021 18:09:00 -0000
 
-Le 12/06/2021 à 21:58, Philippe Mathieu-Daudé a écrit :
-> Use memory_region_size() to get the MemoryRegion size,
-> and display it with the '0x' prefix.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
-> v2:
-> - Use PRIx64 (lvivier)
-> - Use memory_region_size()
-> ---
->  tests/qtest/fuzz/generic_fuzz.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/tests/qtest/fuzz/generic_fuzz.c b/tests/qtest/fuzz/generic_fuzz.c
-> index cea7d4058e8..6c675227174 100644
-> --- a/tests/qtest/fuzz/generic_fuzz.c
-> +++ b/tests/qtest/fuzz/generic_fuzz.c
-> @@ -841,9 +841,9 @@ static void generic_pre_fuzz(QTestState *s)
->  
->      g_hash_table_iter_init(&iter, fuzzable_memoryregions);
->      while (g_hash_table_iter_next(&iter, (gpointer)&mr, NULL)) {
-> -        printf("  * %s (size %lx)\n",
-> +        printf("  * %s (size 0x%" PRIx64 ")\n",
->                 object_get_canonical_path_component(&(mr->parent_obj)),
-> -               (uint64_t)mr->size);
-> +               memory_region_size(mr));
->      }
->  
->      if (!g_hash_table_size(fuzzable_memoryregions)) {
-> 
+Signed-off-by: Dmitry Voronetskiy <davoronetskiy@gmail.com>
+---
+ target/i386/tcg/sysemu/bpt_helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+diff --git a/target/i386/tcg/sysemu/bpt_helper.c b/target/i386/tcg/sysemu/bpt_helper.c
+index 9bdf7e170b..de284dbdcb 100644
+--- a/target/i386/tcg/sysemu/bpt_helper.c
++++ b/target/i386/tcg/sysemu/bpt_helper.c
+@@ -109,9 +109,9 @@ static void hw_breakpoint_remove(CPUX86State *env, int index)
+ 
+     case DR7_TYPE_DATA_WR:
+     case DR7_TYPE_DATA_RW:
+-        if (env->cpu_breakpoint[index]) {
++        if (env->cpu_watchpoint[index]) {
+             cpu_watchpoint_remove_by_ref(cs, env->cpu_watchpoint[index]);
+-            env->cpu_breakpoint[index] = NULL;
++            env->cpu_watchpoint[index] = NULL;
+         }
+         break;
+ 
+-- 
+2.25.1
+
 
