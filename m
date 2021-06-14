@@ -1,72 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lsnnh-000188-Rb
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Jun 2021 10:42:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40512)
+	id 1lso7g-0002O1-O6
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Jun 2021 11:03:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1lsnng-00017n-QU
- for qemu-trivial@nongnu.org; Mon, 14 Jun 2021 10:42:52 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:34737)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lso7f-0002LP-6i; Mon, 14 Jun 2021 11:03:31 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:44749)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1lsnnf-0003fE-39
- for qemu-trivial@nongnu.org; Mon, 14 Jun 2021 10:42:52 -0400
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lso7a-0005Dq-6r; Mon, 14 Jun 2021 11:03:30 -0400
 Received: by mail-wm1-x32a.google.com with SMTP id
- u5-20020a7bc0450000b02901480e40338bso58578wmc.1
- for <qemu-trivial@nongnu.org>; Mon, 14 Jun 2021 07:42:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ECdCjep+exRjL8EyrEnPOHozC3bO4JnEMpjKGLksv7w=;
- b=p+cvOKVc367KO/Y819uCbsbB8RwiHK6FyMEDc9EUdyN3TuAqPhy2C09HooVzTelvM+
- LByk+PvJevXi+SilqBOnW1pqh0irik2x4Z0cld70EL0tpF8ImVf8eW5Zup4yzf9X2YiE
- PtYXFq51GVUoyiHfLjsdamXUYFf2HP+9HffBDbuFhS5h43LHQyIdU6zkG2mRj5TMTrpv
- t4ZwyaRwwRQi6BdTIWj71d3hrAgPXwMyUEtBhdyWQRvMFeAFArgBSo9avzf4cWgltXJH
- eZRMLKfl0kfQySS0CkBILC84MW+ZI/KpINoxj8YbihN84SI2udmUDO4NJEe2Gqo4HP13
- Ag1A==
+ m41-20020a05600c3b29b02901b9e5d74f02so166409wms.3; 
+ Mon, 14 Jun 2021 08:03:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=nPilWeX4Q/XwbpuRQ6BJZhLRkRqu22D11UgWcv2Br0g=;
+ b=hsJfvmWxX+/VpKZwtA7z+JqS5/ZgyZDibx14b4q7abnSMcROvoYzoLr9gGTxk1mFAf
+ cc82IrNgrhehnpojrbS/RGKOwGudBdUYUylGdHbulBGi4lHUyUC3RQ7XkEu4UBjy8Siw
+ LzccyczJBPKyxUbO5nqULDwNQH/tkDWvwBwx3kuOlOti0efZnBgnPuAQ9kBSoOuXEGmc
+ R7USshuAi3oeW6BMmGNrhG4ojhJMZC7t/uO4ZQgFBkcjkD51zH7/IxDbblyLqceU8GO2
+ wNY/Jg5VWTppSnFb+K9I3eMKIO2+jJyErv/msVicYlj7LnqBlJDU48ynLBV0nHPMe4hb
+ RdVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=ECdCjep+exRjL8EyrEnPOHozC3bO4JnEMpjKGLksv7w=;
- b=ZPtrU2FslS2g+SGBnj7NFJ7MxrlBCNST6kjQatckNR0PKFqso5Cb8NaIbC+KhwH5n+
- w9D7qCdRiUqIp8FEL5lajvSr0iIo0vpUdoRFX7hJnfI4/cgHgeMGHHRkhq7kCPwmIuTl
- 1ZSZwN5qB/XQsmFCfVSqZ/1asHzj/2wwPNrxPhdMJ/Q+lpAZwuslc0CwHbOHnGo2Ahmn
- VuQAI1sERZSfjIpmdKfDVfYcEreifIPjCRAMO55xIPQN6xPHqyfR88gSMedgbDVjsZuP
- jefjL2cZMtKKKzYtAJOof1Xu3QEb0uWhsAK8atPR+6hiI5rT1lULN933iXCKztdhNcUa
- n1XQ==
-X-Gm-Message-State: AOAM530+rgiS0wr6COAgTIggjo34oSFBhaE9P9fENsn4Zz/8zfYIZRq4
- CWnFkg2w7l1QX64DEd/DMPSj0A==
-X-Google-Smtp-Source: ABdhPJycLlmqHpodz26exmaF99Yy8mAiLLXSt6s5NFOS8/5oAQ7+m6DhBKBpj4AIMrEydZkP/guZyA==
+ bh=nPilWeX4Q/XwbpuRQ6BJZhLRkRqu22D11UgWcv2Br0g=;
+ b=VOJE0TI87AXsSgoonddhX2z5XBoX5sdO81okMbx7mcy0jybj6jQAww/l9G5TRs1Kya
+ Gytfy5B+WR+sGFb3V5JDxHraa0yMRPObigh1Dlj25Na5HX3bB8VWQ9NYwCfYQJgmrV8I
+ oYNsjFsE17c5zYzat3fN4sp7T9gjV3kx9KDNUbwnC3tOKC5e/P8KepFk3MXvQoj6KA12
+ w43NAuLOMYIntadUBpRsJA6kInx0ItzGRSetJ7o9+aMRF5fE0HNU2AftMhQD02QyQQY/
+ TUA7BVdB0/n0vX+XZgeUHu0JkitnJP9SlWybhaEjqpHddHxn/UuZH2Q/Kyc9xkQQQZCc
+ yKjg==
+X-Gm-Message-State: AOAM530IFsFHZWcMoAxepZ/0542O4jhWbq7r62JknAXF/dTTY9azVK4w
+ z6HP00/K26zy5+EhWHP/mBo=
+X-Google-Smtp-Source: ABdhPJxy5BKKhEYdyg8Zivu3q1HygJliPxGoiIVXA5RczKiG3C6IgNBgYKe7BPqNGI6oHc+ea7ntBw==
 X-Received: by 2002:a05:600c:4ecc:: with SMTP id
- g12mr33712963wmq.40.1623681769583; 
- Mon, 14 Jun 2021 07:42:49 -0700 (PDT)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id u18sm13128922wmj.15.2021.06.14.07.42.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 07:42:48 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 7B6BB1FF7E;
- Mon, 14 Jun 2021 15:42:47 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2] linux-user/trace-events: fix minor typo in format string
-Date: Mon, 14 Jun 2021 15:42:45 +0100
-Message-Id: <20210614144245.17660-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ g12mr33809816wmq.40.1623683004200; 
+ Mon, 14 Jun 2021 08:03:24 -0700 (PDT)
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id l16sm20887213wmj.47.2021.06.14.08.03.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Jun 2021 08:03:23 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2] linux-user/trace-events: fix minor typo in format
+ string
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+References: <20210614144245.17660-1-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <19ad42a0-1105-2380-24dc-65c0d67edbd5@amsat.org>
+Date: Mon, 14 Jun 2021 17:03:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210614144245.17660-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.489,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -81,31 +85,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Jun 2021 14:42:53 -0000
+X-List-Received-Date: Mon, 14 Jun 2021 15:03:31 -0000
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+On 6/14/21 4:42 PM, Alex Bennée wrote:
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
+> ---
+> v2
+>   - fix typo in summary :-O
+> ---
+>  linux-user/trace-events | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
----
-v2
-  - fix typo in summary :-O
----
- linux-user/trace-events | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/linux-user/trace-events b/linux-user/trace-events
-index 1ec0d11ee3..e7d2f54e94 100644
---- a/linux-user/trace-events
-+++ b/linux-user/trace-events
-@@ -11,7 +11,7 @@ user_do_rt_sigreturn(void *env, uint64_t frame_addr) "env=%p frame_addr=0x%"PRIx
- user_do_sigreturn(void *env, uint64_t frame_addr) "env=%p frame_addr=0x%"PRIx64
- user_force_sig(void *env, int target_sig, int host_sig) "env=%p signal %d (host %d)"
- user_handle_signal(void *env, int target_sig) "env=%p signal %d"
--user_host_signal(void *env, int host_sig, int target_sig) "env=%p signal %d (target %d("
-+user_host_signal(void *env, int host_sig, int target_sig) "env=%p signal %d (target %d)"
- user_queue_signal(void *env, int target_sig) "env=%p signal %d"
- user_s390x_restore_sigregs(void *env, uint64_t sc_psw_addr, uint64_t env_psw_addr) "env=%p frame psw.addr 0x%"PRIx64 " current psw.addr 0x%"PRIx64
- 
--- 
-2.20.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
