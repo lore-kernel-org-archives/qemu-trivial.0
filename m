@@ -1,67 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lsUXd-00073n-0B
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Jun 2021 14:09:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42096)
+	id 1lsf7G-0008Ih-M3
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Jun 2021 01:26:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46236)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <davoronetskiy@gmail.com>)
- id 1lsUXb-00073K-LL; Sun, 13 Jun 2021 14:08:59 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132]:34332)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lsf7F-0008Hg-Mp; Mon, 14 Jun 2021 01:26:29 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:38621)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <davoronetskiy@gmail.com>)
- id 1lsUXa-0007s3-59; Sun, 13 Jun 2021 14:08:59 -0400
-Received: by mail-lf1-x132.google.com with SMTP id f30so17179958lfj.1;
- Sun, 13 Jun 2021 11:08:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lsf7E-0003vx-5I; Mon, 14 Jun 2021 01:26:29 -0400
+Received: by mail-wr1-x436.google.com with SMTP id c9so13011672wrt.5;
+ Sun, 13 Jun 2021 22:26:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
+ h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ZsBlRsiDpaW9+FfpUJAOcJMhAi8Jpx2OfNELQoy+pxs=;
- b=rARtDg5H7TobQH3hZdIbCJJQ6iglubgdmorucQ+vefu2U9aAHTNzBUqFTqWcQb0Wuk
- PX2bGjt2BvM76DyWp/K21RtJlvTz6KxiU+WhqejR3bUj3gejN5KWgQyLS0hggoA4AlPR
- jcrRj9QmF2Lgu9IcB21pvALoZspsJheYay3FRWe4DFKb7Y4N5rCPUhBEzE7dZAcjmLzo
- 6Luk6gsImgkhHJh/ST1LnqEbwhfhJ+ItV4gvfX8vV0r1L3S8avM3EJhTgFmSArmWj01B
- rEG6uJ9l9uFpFz/6/1ymHJd6Z0YGhxv/nnF4mZeV1RkRHft1Rs9GxujRyXQnEsLsakJ9
- 0kXQ==
+ bh=nhR+JGOKSUCLxBZNtaVPLvIbdzNaBysFi3i6WyCcL84=;
+ b=Lxc8sYkXMX4J3LXUGzyQpmlqQL2U7J+4oVsG9HIgaSdDehgoT5l225c8ciWXraE31C
+ uZp46/ymCl1FJzmgtMC4ugtT7v4Y3VrnDaK0diT1pL6Oa/o8zU0Yijx7JJarJLsQjyac
+ nW5fmxalUeqljtBwuV4SuRqiRBqt643sC+gCB/xYomAkuuWPIfcBzQb6erc1qD3IiYAy
+ QNljuuVOBH5nTuc00T6ehPBhmIxCN0WfyRZsjDppIfSjjjuITgq6CtePcVsO++tw93q4
+ OdIBpg9kDTNNBbw0/4vlGJImg247+TfOmUMIda3clatNWTuZvkyYZtN96I+UDphCNkuu
+ pTwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZsBlRsiDpaW9+FfpUJAOcJMhAi8Jpx2OfNELQoy+pxs=;
- b=UGKRLESb8WcLDzEBYztWqysu1AePd2J8CvyFdvJPshIEkLPxpp3/xTeMI0RyUi9mmJ
- j7QuwN2MYwHV1vLZFvK3SrHiqBEkyEuZx6HMiv6+mV3JsUPOvXbd1lL15NRSBgx6tmXA
- 1RJJtp/0nPDl0cNmV4zsL1INkLYL7hd2hUOkKs/EzsK608i6OW0+yHZ2gK6i5nTmdqFo
- Y+dIypdl4D/F+0kVPk0pEcMh0jAGkxy5k2GsW1ZqUwGFl8Dp/vHuANeOKs2SRcuRRtRJ
- UeTsrlPZ9Zn9g6m+YkWZbk8pm1i1uxHrY5XNmsRltgi8zOiIbVYiohNKA7ALrv379lQy
- f3+A==
-X-Gm-Message-State: AOAM530PMM/XaJHhHxwU7Pui4LmO8uR5ZEg9jBH5KskpZnyt0swbPbyA
- gygYdaZc2OJhGSgPtaxuTgDd5YIdoN2HJz8r
-X-Google-Smtp-Source: ABdhPJzm2ZAjBWFXoBg8ploGrlIZyTQvE1PIPhlYGxAT6YpLACMzNVzbkBby989EbxBqNIJ6lg+rzQ==
-X-Received: by 2002:ac2:420e:: with SMTP id y14mr1834633lfh.542.1623607735088; 
- Sun, 13 Jun 2021 11:08:55 -0700 (PDT)
-Received: from localhost.localdomain ([46.39.249.124])
- by smtp.gmail.com with ESMTPSA id 10sm1347004lfq.160.2021.06.13.11.08.52
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=nhR+JGOKSUCLxBZNtaVPLvIbdzNaBysFi3i6WyCcL84=;
+ b=lh9K1qA+cxvDlo1bMwmWcKpsGMQiEQkVz/6Fl1JjLtSxq2vLNLvOVaVy4i+B3AqR6O
+ BwYVMR0VbeKbaqFLhCXoZh5OVjYDvcRlnzKmzopNZ+oy0ZcHCVFrQ/whhLRCFIjH8JBS
+ vFlcjzj7a7yRc1hw427MTtUHK0+xqSt2wr995lPAOrbsXNoGEwCtHj8+KlZe68qrx1sp
+ 3qfpflGXOk61EDxkz5pGAjYUKE7PWg/CTDHqMvLtvduWB0BRY1A1bv6zplBDkeF+jsRc
+ +3BvqrfB7bqfg1YAsbePDcWOhZ9v8RXR+zkFjmaRjCIWhmDaUG0P8xpp0d/9THmciQVn
+ oPOg==
+X-Gm-Message-State: AOAM533iWRZKmqj5ZtNMwes0VYZDV+g2VkioHGl612hZA87NjF9c1RNG
+ /NmUWbRK1PZQWV9H6hEev4USkBzkPEjaEg==
+X-Google-Smtp-Source: ABdhPJw3HUv9ezhqJMztn8CGPwQQR7yHH0NexG6zy3pKkZekmbTCGzUKMvOapW+F7T56GgW4D0knSg==
+X-Received: by 2002:adf:f305:: with SMTP id i5mr17225899wro.29.1623648385618; 
+ Sun, 13 Jun 2021 22:26:25 -0700 (PDT)
+Received: from x1w.. (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id i2sm11848444wmo.40.2021.06.13.22.26.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 13 Jun 2021 11:08:54 -0700 (PDT)
-From: Dmitry Voronetskiy <davoronetskiy@gmail.com>
+ Sun, 13 Jun 2021 22:26:25 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Dmitry Voronetskiy <davoronetskiy@gmail.com>
-Subject: [PATCH] target/i386/tcg/sysemu/bpt_helper.c: typo since
- cpu_breakpoint and cpu_watchpoint are in a union,
- the code should access only one of them
-Date: Sun, 13 Jun 2021 21:08:38 +0300
-Message-Id: <20210613180838.21349-1-davoronetskiy@gmail.com>
-X-Mailer: git-send-email 2.25.1
+Cc: qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ Lukas Straub <lukasstraub2@web.de>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Leonardo Bras <leobras.c@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [RFC PATCH] migration: Add missing dependency on GNUTLS
+Date: Mon, 14 Jun 2021 07:26:23 +0200
+Message-Id: <20210614052623.1657103-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=davoronetskiy@gmail.com; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,30 +81,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 13 Jun 2021 18:09:00 -0000
+X-List-Received-Date: Mon, 14 Jun 2021 05:26:30 -0000
 
-Signed-off-by: Dmitry Voronetskiy <davoronetskiy@gmail.com>
+Commit 7de2e856533 made migration/qemu-file-channel.c include
+"io/channel-tls.h" but forgot to add the new GNUTLS dependency
+on Meson, leading to build failure on OSX:
+
+  [2/35] Compiling C object libmigration.fa.p/migration_qemu-file-channel.c.o
+  FAILED: libmigration.fa.p/migration_qemu-file-channel.c.o
+  cc -Ilibmigration.fa.p -I. -I.. -Iqapi [ ... ] -o libmigration.fa.p/migration_qemu-file-channel.c.o -c ../migration/qemu-file-channel.c
+  In file included from ../migration/qemu-file-channel.c:29:
+  In file included from include/io/channel-tls.h:26:
+  In file included from include/crypto/tlssession.h:24:
+  include/crypto/tlscreds.h:28:10: fatal error: 'gnutls/gnutls.h' file not found
+  #include <gnutls/gnutls.h>
+           ^~~~~~~~~~~~~~~~~
+  1 error generated.
+
+Reported-by: Stefan Weil <sw@weilnetz.de>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/407
+Fixes: 7de2e856533 ("yank: Unregister function when using TLS migration")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/i386/tcg/sysemu/bpt_helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+RFC: Not tested on OSX. Stefan, do you know why this isn't covered
+     on Cirrus-CI?  https://cirrus-ci.com/build/4876003651616768
+---
+ migration/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/i386/tcg/sysemu/bpt_helper.c b/target/i386/tcg/sysemu/bpt_helper.c
-index 9bdf7e170b..de284dbdcb 100644
---- a/target/i386/tcg/sysemu/bpt_helper.c
-+++ b/target/i386/tcg/sysemu/bpt_helper.c
-@@ -109,9 +109,9 @@ static void hw_breakpoint_remove(CPUX86State *env, int index)
+diff --git a/migration/meson.build b/migration/meson.build
+index f8714dcb154..5b5a3f7b337 100644
+--- a/migration/meson.build
++++ b/migration/meson.build
+@@ -8,7 +8,7 @@
+   'qemu-file.c',
+   'yank_functions.c',
+ )
+-softmmu_ss.add(migration_files)
++softmmu_ss.add(migration_files, gnutls)
  
-     case DR7_TYPE_DATA_WR:
-     case DR7_TYPE_DATA_RW:
--        if (env->cpu_breakpoint[index]) {
-+        if (env->cpu_watchpoint[index]) {
-             cpu_watchpoint_remove_by_ref(cs, env->cpu_watchpoint[index]);
--            env->cpu_breakpoint[index] = NULL;
-+            env->cpu_watchpoint[index] = NULL;
-         }
-         break;
- 
+ softmmu_ss.add(files(
+   'block-dirty-bitmap.c',
 -- 
-2.25.1
+2.31.1
 
 
