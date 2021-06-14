@@ -1,84 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lsrnB-0007Pc-UZ
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Jun 2021 14:58:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37406)
+	id 1lsrvk-00065p-U3
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Jun 2021 15:07:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39248)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lsrnB-0007Mv-1Q
- for qemu-trivial@nongnu.org; Mon, 14 Jun 2021 14:58:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:60892)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lsrn8-0000RV-1D
- for qemu-trivial@nongnu.org; Mon, 14 Jun 2021 14:58:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623697113;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mgsgITJ2FDnxJMUfC5CNvti1i/dOG1OAwpipUT260ZA=;
- b=O1doG681oU1yH+DFrBRNOMI6nNQAecqjb+KxsY+0gRDllQ3caYAnLay3X+vfFayQhcmBKU
- EhqUmVwfl65tUCBax/Ihc8wGrrhaCae3K8VCQxY8AeSU2+w1dQsz/EBVQIIG4ZRJkrUUr4
- Odg3VURBAgSa8VWj+6jZft8EQSXweV4=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-134-cfv3OxCsMGaHIt_zfOCaHA-1; Mon, 14 Jun 2021 14:58:31 -0400
-X-MC-Unique: cfv3OxCsMGaHIt_zfOCaHA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- x9-20020adfffc90000b02901178add5f60so7463130wrs.5
- for <qemu-trivial@nongnu.org>; Mon, 14 Jun 2021 11:58:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lsrvj-00065W-Cq
+ for qemu-trivial@nongnu.org; Mon, 14 Jun 2021 15:07:27 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:46907)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lsrvh-00067K-Mo
+ for qemu-trivial@nongnu.org; Mon, 14 Jun 2021 15:07:27 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id s15so7001323edt.13
+ for <qemu-trivial@nongnu.org>; Mon, 14 Jun 2021 12:07:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xrKcEgnbt1zkv06av8gffTuX/xWGXbYLlCu4r/xNRXE=;
+ b=U6rizPhrNO5AFo6kc1kSu0VuMK/Y0oVc4LLmEkuuoGb1Wa33u0Mq1EIjyVMNuxSBnV
+ 3QXLiRJWg9aTD6pZWDppAD0no0XA3JvDjzbOuJSwxIzgLb5bFU3wnI2LD9YguQln/ZfV
+ hyEa78ECrvNdcEX7wEU6oBDG7RQz+VJP0Wk3sDWuRQIZeuopAP/FnucZJ6MAT9laRvSC
+ G9aI8d5aJryJgqqqDerhg1xP9sHB/OUkBo/eJykS++D8icUD8tcnCTepX2k1w81YcqUF
+ 9dRJGpItiGEqkXizeF2b7/RO2jYclGgKpu3qlVLC0p3Ii2EMjnLngwcs7hoPdRgbbZtf
+ k9tA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mgsgITJ2FDnxJMUfC5CNvti1i/dOG1OAwpipUT260ZA=;
- b=q0nMIPYxU1coI+FpsKe0/Cn9o5mSQ+f92mg9iPvz/ace7kiVyzskR+bLI2FG7j1xNe
- 5aWQO7kLWpRwu1SaTg13BmcOIS3lSA5p/geI6rzr5yi6TGqCRjHgzV84De0H5I0K95jt
- XxxsSvRO/nvGlG+KGmxxTLXaltQxI8tNvYz6julFNS3HyWZz6S+Xjq3OXUM+YHH6MzNY
- 9ifU70+gRzo1PyXd+F1VJigXkFDWkug3kA/leflVockZ6FaDnv9/rf2EW0OFqZKErEVO
- kNshpRojlKHnl1MK+OkS55OrJIalKVjXTytaV8AL1Ju6R5O7xYFR9aME91gqM+7EiI7X
- qqfQ==
-X-Gm-Message-State: AOAM533iEMclvRFCZLSwylxJuX5MqCBfyuTyROh7r9RoS9OjZNhbYSr3
- EHlOmRfRXL1wMllaV0xa53+iEJui/0q7uXDokDgIqfpHJywn8YtKu46e+exo/WMcvLnJhPgeL/n
- o41GtcAKBiLeoyt90JA==
-X-Received: by 2002:adf:f54a:: with SMTP id j10mr19810803wrp.383.1623697110525; 
- Mon, 14 Jun 2021 11:58:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyc6YLxS/6Z0X6wlbAqjhxjWfh6HAVT6NrIpeeMZB/EAcWSxC/rdtfCWZ3QgG6/PgP+jSr7FA==
-X-Received: by 2002:adf:f54a:: with SMTP id j10mr19810782wrp.383.1623697110227; 
- Mon, 14 Jun 2021 11:58:30 -0700 (PDT)
-Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id q5sm17523542wrm.15.2021.06.14.11.58.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Jun 2021 11:58:29 -0700 (PDT)
-Subject: Re: [PATCH] net: Replace TAB indentations with spaces
-To: Ahmed Abouzied <email@aabouzied.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, thuth@redhat.com
-References: <20210614183849.20622-1-email@aabouzied.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <35dd9f29-0cd4-f418-2e40-ea784ede05f3@redhat.com>
-Date: Mon, 14 Jun 2021 20:58:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xrKcEgnbt1zkv06av8gffTuX/xWGXbYLlCu4r/xNRXE=;
+ b=nBKG6r8OxPs2oEGp02TO5ozih9yMAuzO4AGUP+cKfYnabefkUMC9TblT9zIGuoI6iz
+ FlAinRStWFZx0EdxRRG9N1+ZJar01SLo4B/5QmHU21JM1w6GaJilwt7oP9+XmcExZS95
+ GwEt9kYIPZsd2PylegWW+8D9bkCiJDttaeZ+hYlf771sNZYLElqn1IrkOkWZxUTelQBq
+ I4NHomoYZyRYQ2OLIW9VcKpm4C/tc4FDNj51EKw8LnPq+Rr+zdSzc8MTq8aZhu+xc/L5
+ HF7ALLtF4VDBDWgB7rjru1mqXtiaWLrVD+l3xHbHn65dNf67PCmmflP8rhSbT0TbzWIn
+ ItMA==
+X-Gm-Message-State: AOAM531aGyUmjW4uwWfkSgBip2C+Q2qwLoFB5lquMBP6HWBJJYMwM8bV
+ JXhpwb5qOTSHQjy8CKbkVr6dFCq/Py0p/5dhr5W/Ug==
+X-Google-Smtp-Source: ABdhPJyUeWDGpF8CROyEpGE0nqAre54/hcOT/LUiI635dHBh5UX52HhAA2LDigzFHNq2tbK1AvTDk3w7Efg4u+7qfmI=
+X-Received: by 2002:aa7:d755:: with SMTP id a21mr19015747eds.146.1623697643842; 
+ Mon, 14 Jun 2021 12:07:23 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210614183849.20622-1-email@aabouzied.com>
 In-Reply-To: <20210614183849.20622-1-email@aabouzied.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.489, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 14 Jun 2021 20:06:49 +0100
+Message-ID: <CAFEAcA_h2wQF4nDMhu3WT9AzCEMV3jCkDpuuorTREYaGoKaEwQ@mail.gmail.com>
+Subject: Re: [PATCH] net: Replace TAB indentations with spaces
+To: Ahmed Abouzied <email@aabouzied.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,12 +70,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Jun 2021 18:58:37 -0000
+X-List-Received-Date: Mon, 14 Jun 2021 19:07:27 -0000
 
-On 6/14/21 8:38 PM, Ahmed Abouzied wrote:
+On Mon, 14 Jun 2021 at 19:56, Ahmed Abouzied <email@aabouzied.com> wrote:
+>
 > Replaces TABs with spaces, making sure to have a consistent coding style
 > of 4 space indentations in the net subsystem.
-> 
+>
 > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/377
 > Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
 > ---
@@ -110,8 +90,22 @@ On 6/14/21 8:38 PM, Ahmed Abouzied wrote:
 >  net/tap-linux.h               |   10 +-
 >  8 files changed, 883 insertions(+), 883 deletions(-)
 
-Looking at this change with 'git show --ignore-all-space'
-I see no difference, thus:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
+> index dcd3fc4948..ba20afefc4 100644
+> --- a/hw/net/pcnet.c
+> +++ b/hw/net/pcnet.c
+> @@ -370,7 +370,7 @@ static inline void pcnet_rmd_load(PCNetState *s, struct pcnet_RMD *rmd,
+>              uint32_t rbadr;
+>              int16_t buf_length;
+>              int16_t msg_length;
+> -       } rda;
+> +    } rda;
+>          s->phys_mem_read(s->dma_opaque, addr, (void *)&rda, sizeof(rda), 0);
+>          rmd->rbadr = le32_to_cpu(rda.rbadr) & 0xffffff;
+>          rmd->buf_length = le16_to_cpu(rda.buf_length);
 
+Indent seems to not be right in this hunk ?
+
+thanks
+-- PMM
 
