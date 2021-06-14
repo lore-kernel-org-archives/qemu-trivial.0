@@ -1,74 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lsmeB-00004u-ID
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Jun 2021 09:28:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53614)
+	id 1lsmfv-0001kP-TA
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Jun 2021 09:30:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lsmeA-0008W8-9B; Mon, 14 Jun 2021 09:28:58 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:39517)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lsmfu-0001jJ-BX
+ for qemu-trivial@nongnu.org; Mon, 14 Jun 2021 09:30:46 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:41783)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lsme8-0000Xv-TY; Mon, 14 Jun 2021 09:28:58 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- l18-20020a1ced120000b029014c1adff1edso13057503wmh.4; 
- Mon, 14 Jun 2021 06:28:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ckjG6ejSdo9drlW9OhdRmdSs2L91z0XXqFpXH7PrOww=;
- b=X7OAmvymQcopojaalSKvFbwdTAjg4QzEIn6A2CGTIC18lZi/k8W4kyESA5ionux2f2
- Q3QMzfNJ96Z82cb6fh1u3+uU+bgnC73kI7K/FqX5G8IcAoxytiI4GTcwgQnVzp/lT0Fe
- bPuHAF8iBdf4ClsxN+nJUUC5n9s+tnxsEgMCc3hsUks5mQbY2W5QAjH6KgrnD16UzG30
- xN6iow5NIPz7LzmT1GKQdHOZRC7tXNF7h+6P5hnTE+6NoCFn/khquPbsOi4kzfmRZIIi
- 56eb5AqTfiZJV6vVRRWQCEeHR/E4y7awXmubpZyin0poIcn7XLFM10qKqFnagRY/W6oD
- 7ldA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lsmfs-0001jf-U2
+ for qemu-trivial@nongnu.org; Mon, 14 Jun 2021 09:30:46 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id ho18so16706808ejc.8
+ for <qemu-trivial@nongnu.org>; Mon, 14 Jun 2021 06:30:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=4b9Wkd0O7OX6il3ZzHzl28vJKwk5ztLG9V1Wp8jiSW0=;
+ b=zsRFLQdsl2LXWXgoqndLgfvAmgq32yvNFKBxchA+M3BxJadyZV8YI7nhg6UM2zDrV0
+ hBSGk6PoPGwkkZy9r44noWCbT5af289jrKKy7LKXowcHGnlLwf13H2sM6yCGZUqv0xXN
+ ce7PvOQLlI0LvxdvGeYqNNQwhZzOB5S2X82Px+t4lS5dwnrslHJaN6kF7oBhm/Bv7fLY
+ ksQUaEn3XGsQaZ77idgZWvwAje/7TJQaT9E+z9wKq6F+N2vKldkhex0x7jd4TMXVz6qT
+ WmNjTrTz5ISyFhMReFlYdTxCvyMQBnM0qjDk3/5b6eoizpNl6V92eXhrL/MFsBr9Gxnm
+ mmQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ckjG6ejSdo9drlW9OhdRmdSs2L91z0XXqFpXH7PrOww=;
- b=DFMCMwhPYOEyjwVEQ+5Vw39RPuZrGBAFcYWzV25XNGOZ3EuSPH7KZnKxIXHJMiIcuc
- juS2M7qhM/IjZzJeXmSN2uJTNFhui7AfU8FgXgX6q6cojI17WUgwdD1oWDb76n3sevOV
- gz0K4WJcyk+pi69NztwP0yadab6ix6o3NkiwZa8hWVPaVX3yADwRF3dQZEzQAt6aS51D
- 0hAXnwvyTa8gC4FIebrDB2DO4h3dLPrfp1fGlpOsfyQ6v9IzYzh6hrN1EB0zcip0uy71
- AdSmvOoCObfRvATVpPWE7p8crFpIwKYkkYrDYJD6ojSzPvOEGCDdHKQqgekc7bl9Xvcw
- cJ1g==
-X-Gm-Message-State: AOAM531lDKt95ZQy2G3B0Cyh3AvmpIegfgt+5N4JhN0lhsP6693/3H8Y
- +uSjvDW7ZRN6GMbcGQPJjJfLwECfmi16yQ==
-X-Google-Smtp-Source: ABdhPJzQ/d2T9+nrkNC/I1tckxXF5sWzp9NFTspOY8s615sW7giIewuO1BtmQvG8XuKzuB2k67LZ1g==
-X-Received: by 2002:a7b:c005:: with SMTP id c5mr16666906wmb.113.1623677335086; 
- Mon, 14 Jun 2021 06:28:55 -0700 (PDT)
-Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id r18sm16233044wro.62.2021.06.14.06.28.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Jun 2021 06:28:54 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] linux-user/trace-events: fix minor type in format string
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>
-References: <20210614132536.1657-1-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <2f55a021-afa0-082e-b70d-bfc1a7299e02@amsat.org>
-Date: Mon, 14 Jun 2021 15:28:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=4b9Wkd0O7OX6il3ZzHzl28vJKwk5ztLG9V1Wp8jiSW0=;
+ b=SIVeNEBqlNSPW3Xu/uU5kDey1zHa0nJOij4U5vnxlCDe3qRwKgfArXY+33h3YHSU+M
+ fDWr+tmSGCT8D1aMZqj9f1bkVz/h/wN8WLiABXUOwILoBJFVxWjGeWa8M1kI/lFr6Fj7
+ vppDaWZOIRrK0AYHHcZsytkdRu/tArrC4y+klVwKz+ynkqJNwzLTYAD4YPEl0M8LowhS
+ 2o4HoyeQNLpBkf/z5nmKiZV6KBL2cSXtaGDoaBnyRq0LOIi/EHLcwmgqujhEDQ5CiRWP
+ Azx3jcPwmO7MMW2kDbReo11SFKmQG8uyQH93KTZA0cMH4kZe887JEYJaLMeY8NMpcQIn
+ vjiA==
+X-Gm-Message-State: AOAM5321pcKmTAQy965AyGORB652UxLpnd4KfdKxQIHVKDQPw9XXeOhP
+ 21B6lILN6eLxoVYvZTTubJKgcgLzEKcuR1lUkme+Ow==
+X-Google-Smtp-Source: ABdhPJzgdM7CNJJzsWV0eZozqvMAzp2FRyXOc5Y7yeMPFu+pEfmkeXhnKeoW/lXHk51Lz9VRTWvtRSCP9+zSCXBOcrU=
+X-Received: by 2002:a17:906:a458:: with SMTP id
+ cb24mr15392863ejb.482.1623677443236; 
+ Mon, 14 Jun 2021 06:30:43 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210614132536.1657-1-alex.bennee@linaro.org>
 In-Reply-To: <20210614132536.1657-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 14 Jun 2021 14:30:08 +0100
+Message-ID: <CAFEAcA8e0oVDdoAa_zpQQq++dujdWs9BkGTqEMd9Fgn0BjZecw@mail.gmail.com>
+Subject: Re: [PATCH] linux-user/trace-events: fix minor type in format string
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.489,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -83,13 +73,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Jun 2021 13:28:58 -0000
+X-List-Received-Date: Mon, 14 Jun 2021 13:30:46 -0000
 
-On 6/14/21 3:25 PM, Alex Bennée wrote:
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  linux-user/trace-events | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On Mon, 14 Jun 2021 at 14:27, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Typo in subject line: should be "typo" :-)
+
+-- PMM
 
