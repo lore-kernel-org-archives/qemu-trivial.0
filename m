@@ -1,74 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lt5dP-0001f4-3r
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Jun 2021 05:45:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58914)
+	id 1lt8p4-0000YY-4V
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Jun 2021 09:09:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1lt5dM-0001af-Me
- for qemu-trivial@nongnu.org; Tue, 15 Jun 2021 05:45:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47784)
+ (Exim 4.90_1) (envelope-from <frankja@linux.ibm.com>)
+ id 1lt8p1-0000T7-HT; Tue, 15 Jun 2021 09:09:39 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:25074
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1lt5dJ-0004EQ-TG
- for qemu-trivial@nongnu.org; Tue, 15 Jun 2021 05:45:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623750320;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wPVJr5OHWBXcDqcCM1rti2fIf2kaAeJ7t+ZHtXtQD/w=;
- b=BabLc/5C5XJIevgpiASYUkmFEF4Rf6xQEqBvMrNeyDSN0T4l/B/Fwy0c6Sek07ztzu+3f6
- UzNtNlf9XW+SUGS5tIibUGwiOg+RkeWvY8acjwI8l7GjEQ3iYrtKJh7Qy78gBkpc8XY6IM
- 8AIXLqnA7eKY7LquK4IEYb1kVCZP9TA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-603-VS8bQdXdO1eZjL-XKbKjGg-1; Tue, 15 Jun 2021 05:45:16 -0400
-X-MC-Unique: VS8bQdXdO1eZjL-XKbKjGg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 15A9080293F;
- Tue, 15 Jun 2021 09:45:15 +0000 (UTC)
-Received: from redhat.com (ovpn-114-213.ams2.redhat.com [10.36.114.213])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 346BD60622;
- Tue, 15 Jun 2021 09:45:10 +0000 (UTC)
-Date: Tue, 15 Jun 2021 10:45:07 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Leonardo Bras <leobras.c@gmail.com>, Lukas Straub <lukasstraub2@web.de>,
- Juan Quintela <quintela@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [RFC PATCH] migration: Add missing dependency on GNUTLS
-Message-ID: <YMh2o6Gfywx/OmcF@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20210614052623.1657103-1-f4bug@amsat.org>
- <CAFEAcA9HCGizgTFNMZ3N2xECYgGmwxFhg=T_oGTdC=xULcwFZQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <frankja@linux.ibm.com>)
+ id 1lt8oz-0001EN-7u; Tue, 15 Jun 2021 09:09:39 -0400
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 15FD3Y7E066774; Tue, 15 Jun 2021 09:09:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-type :
+ content-transfer-encoding; s=pp1;
+ bh=bHe4RLp6cbL4m8zFIq9L4dwowhjQd3Y0R9Jab8v9fJY=;
+ b=DXx1WCX1Ao7g2no16D+M2XG1METtCygnvxzZPCwz4O0+SKTsadwMXud/ZSS/QyXdNarO
+ XikiOnpUVviCH47bsENpk7+xxyf6i14c9N+ROYmHqO43mmzQCndkVM1SHf1HYsKZgeT6
+ W808Fizio9CI8mO6Q61oRnccJ9RSVHsCEGL+6DnuMWsW/t6Ux0z0quF1/GJh1ZYWY7iW
+ Fw2IastzosAPJC08C8HD7fZMuwGjNQ5NIRHSJOC55JlQjzAkWI0QGi4Y0J5Hwq6zYTUX
+ wPOf2+lkbwWpAlbKeVIt15t+x7aQGEJd8/jxVJtQ6FQy8MKXceX6rnTt57HY6/AEJ3kk 9A== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 396sexxpyu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 15 Jun 2021 09:09:33 -0400
+Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 15FD3mj8067407;
+ Tue, 15 Jun 2021 09:09:32 -0400
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 396sexxpwt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 15 Jun 2021 09:09:32 -0400
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 15FD32pt032691;
+ Tue, 15 Jun 2021 13:09:30 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma06ams.nl.ibm.com with ESMTP id 394m6hsgr6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 15 Jun 2021 13:09:30 +0000
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+ [9.149.105.58])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 15FD9SvU20644288
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 15 Jun 2021 13:09:28 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 04DBF4C052;
+ Tue, 15 Jun 2021 13:09:28 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4B75A4C040;
+ Tue, 15 Jun 2021 13:09:27 +0000 (GMT)
+Received: from linux01.pok.stglabs.ibm.com (unknown [9.114.17.81])
+ by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Tue, 15 Jun 2021 13:09:27 +0000 (GMT)
+From: Janosch Frank <frankja@linux.ibm.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, philmd@redhat.com, pbonzini@redhat.com,
+ cohuck@redhat.com, borntraeger@de.ibm.com
+Subject: [PATCH v2] qobject: Fix maybe uninitialized in qdict_array_split
+Date: Tue, 15 Jun 2021 13:09:21 +0000
+Message-Id: <20210615130921.55008-1-frankja@linux.ibm.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9HCGizgTFNMZ3N2xECYgGmwxFhg=T_oGTdC=xULcwFZQ@mail.gmail.com>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: AQMCeemBHdWlz0KCviIak7_4U8Vkgve5
+X-Proofpoint-ORIG-GUID: 7IFJl87Ld6ubFa7o8LF6GA7GzOKgGO6G
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-06-15_04:2021-06-14,
+ 2021-06-15 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 spamscore=0
+ lowpriorityscore=0 mlxscore=0 priorityscore=1501 bulkscore=0
+ mlxlogscore=975 adultscore=0 clxscore=1015 malwarescore=0 impostorscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104190000 definitions=main-2106150085
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=frankja@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -82,48 +101,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Jun 2021 09:45:24 -0000
+X-List-Received-Date: Tue, 15 Jun 2021 13:09:39 -0000
 
-On Tue, Jun 15, 2021 at 10:39:08AM +0100, Peter Maydell wrote:
-> On Mon, 14 Jun 2021 at 06:28, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
-> >
-> > Commit 7de2e856533 made migration/qemu-file-channel.c include
-> > "io/channel-tls.h" but forgot to add the new GNUTLS dependency
-> > on Meson, leading to build failure on OSX:
-> >
-> >   [2/35] Compiling C object libmigration.fa.p/migration_qemu-file-channel.c.o
-> >   FAILED: libmigration.fa.p/migration_qemu-file-channel.c.o
-> >   cc -Ilibmigration.fa.p -I. -I.. -Iqapi [ ... ] -o libmigration.fa.p/migration_qemu-file-channel.c.o -c ../migration/qemu-file-channel.c
-> >   In file included from ../migration/qemu-file-channel.c:29:
-> >   In file included from include/io/channel-tls.h:26:
-> >   In file included from include/crypto/tlssession.h:24:
-> >   include/crypto/tlscreds.h:28:10: fatal error: 'gnutls/gnutls.h' file not found
-> >   #include <gnutls/gnutls.h>
-> >            ^~~~~~~~~~~~~~~~~
-> >   1 error generated.
-> >
-> > Reported-by: Stefan Weil <sw@weilnetz.de>
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/407
-> > Fixes: 7de2e856533 ("yank: Unregister function when using TLS migration")
-> > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> 
-> Is there really no way to get Meson to handle this kind
-> of thing properly (ie "just put all the include paths in the CFLAGS
-> for every compilation") rather than requiring us to add dependency
-> markers all over the meson.build files every time we add some
-> extra #include somewhere ? This is demonstrably horribly fragile
-> the way we have it at the moment :-(
+Lets make the compiler happy.
+Found on gcc version 10.3.0 (Ubuntu 10.3.0-1ubuntu1)
 
-A better way to fix this might be to figure out a change to make the
-crypto struct definitions be private in the .c file, since the public
-callers should not need to see them. That would let us remove the
-#include for gnutls from the header.
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ qobject/block-qdict.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Regards,
-Daniel
+diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
+index 1487cc5dd8..8d0f00bc3c 100644
+--- a/qobject/block-qdict.c
++++ b/qobject/block-qdict.c
+@@ -224,7 +224,6 @@ void qdict_array_split(QDict *src, QList **dst)
+     for (i = 0; i < UINT_MAX; i++) {
+         QObject *subqobj;
+         bool is_subqdict;
+-        QDict *subqdict;
+         char indexstr[32], prefix[32];
+         size_t snprintf_ret;
+ 
+@@ -249,14 +248,16 @@ void qdict_array_split(QDict *src, QList **dst)
+         }
+ 
+         if (is_subqdict) {
++            QDict *subqdict = NULL;
++
+             qdict_extract_subqdict(src, &subqdict, prefix);
+             assert(qdict_size(subqdict) > 0);
++            qlist_append_obj(*dst, QOBJECT(subqdict));
+         } else {
+             qobject_ref(subqobj);
+             qdict_del(src, indexstr);
++            qlist_append_obj(*dst, subqobj);
+         }
+-
+-        qlist_append_obj(*dst, subqobj ?: QOBJECT(subqdict));
+     }
+ }
+ 
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.30.2
 
 
