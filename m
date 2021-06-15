@@ -1,69 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lt5Xw-0006Y5-OK
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Jun 2021 05:39:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57114)
+	id 1lt5dP-0001f4-3r
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Jun 2021 05:45:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58914)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lt5Xv-0006X5-7P
- for qemu-trivial@nongnu.org; Tue, 15 Jun 2021 05:39:47 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:36472)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lt5Xs-0007oe-Ok
- for qemu-trivial@nongnu.org; Tue, 15 Jun 2021 05:39:47 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id w21so50134776edv.3
- for <qemu-trivial@nongnu.org>; Tue, 15 Jun 2021 02:39:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=pulNoykRMx+z3icLctvOAVQt/tn9x/G9PH4lXKSPJ4w=;
- b=QSAlwC3RKE+NEaMuvht6sStMRShZQOLJivqB/E3LrR96AhJjTg0SSawzJTti9sVCcK
- mUAgyqDhkGaYfZ+PvJJYFvQzRaYI28A9AeOHgCxVmYzywqKu2mK7Scl3RxxJzWb+oflL
- N72B3n1jTaCq/xLQuIYNj6IBkXTWCLEzxNuykR7LVxaUsSHQKyOFVkHRpbYvd1+SwTht
- HNPgDGTSSRaEw5j+lWWd7WHPP8oF+XDmBVIxtYQWWDTRCldRjTizvWs2HjIgYTQZsZom
- MDJRQb5IsRoIBDLafcwqpwQMSrEMAfgtZECxwQQqaDj28tSeTw0P+9qDhO0EtGy+Sbjz
- 9ziQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=pulNoykRMx+z3icLctvOAVQt/tn9x/G9PH4lXKSPJ4w=;
- b=rN99cPPat+344S0aTDOUHObYjBm3yZ5d+LgT2CFQ3ALdaj5rJfo4iiy/VNpnsyG1c8
- hNExftoFdQxZqZEGjFAOJ6NnGZIJTXRqz1HS5dzduxph81jLtuCMRPr+UhX49NxRYhd0
- EY3uDyhnnYwsCMOzaNJwZmTsWAcYxJVyt+KlTS4j136sY8etXQ/dxYRY4gjeCbsKHY3e
- nCy4BBP9E5wWbo256m9NxswgUx50XIs5G4Vjbji9hieS19mfgPkgyZjRkst/2Lyg+ugw
- qUbe8UBAFG9aICXfc87E7sqpEvhc93imfWaSlNmTVu95CIPdeq7yanCwQ4T3RAKYqPvy
- teKg==
-X-Gm-Message-State: AOAM530Xnif4Bc2s9Di3dajFlzRR7WZ13te0LGOuTfXKg7YyQGzW9dzf
- D6UnwEd7o1cUHNNQdUe4e3Wj0x5ZZSpww270d9qq6g==
-X-Google-Smtp-Source: ABdhPJw4BtgHZRPaJkPaAK0URY5kK0+LgXahi8e9eo52CNWKnHCq7NO1dRKCMJGnbqdpoZ3FqyCd4j1/1/j87f+H1Fw=
-X-Received: by 2002:aa7:c857:: with SMTP id g23mr21847236edt.100.1623749982990; 
- Tue, 15 Jun 2021 02:39:42 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210614052623.1657103-1-f4bug@amsat.org>
-In-Reply-To: <20210614052623.1657103-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Jun 2021 10:39:08 +0100
-Message-ID: <CAFEAcA9HCGizgTFNMZ3N2xECYgGmwxFhg=T_oGTdC=xULcwFZQ@mail.gmail.com>
-Subject: Re: [RFC PATCH] migration: Add missing dependency on GNUTLS
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Leonardo Bras <leobras.c@gmail.com>, 
- Lukas Straub <lukasstraub2@web.de>, "Daniel P . Berrange" <berrange@redhat.com>,
- Juan Quintela <quintela@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Stefan Weil <sw@weilnetz.de>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lt5dM-0001af-Me
+ for qemu-trivial@nongnu.org; Tue, 15 Jun 2021 05:45:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47784)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lt5dJ-0004EQ-TG
+ for qemu-trivial@nongnu.org; Tue, 15 Jun 2021 05:45:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623750320;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wPVJr5OHWBXcDqcCM1rti2fIf2kaAeJ7t+ZHtXtQD/w=;
+ b=BabLc/5C5XJIevgpiASYUkmFEF4Rf6xQEqBvMrNeyDSN0T4l/B/Fwy0c6Sek07ztzu+3f6
+ UzNtNlf9XW+SUGS5tIibUGwiOg+RkeWvY8acjwI8l7GjEQ3iYrtKJh7Qy78gBkpc8XY6IM
+ 8AIXLqnA7eKY7LquK4IEYb1kVCZP9TA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-603-VS8bQdXdO1eZjL-XKbKjGg-1; Tue, 15 Jun 2021 05:45:16 -0400
+X-MC-Unique: VS8bQdXdO1eZjL-XKbKjGg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 15A9080293F;
+ Tue, 15 Jun 2021 09:45:15 +0000 (UTC)
+Received: from redhat.com (ovpn-114-213.ams2.redhat.com [10.36.114.213])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 346BD60622;
+ Tue, 15 Jun 2021 09:45:10 +0000 (UTC)
+Date: Tue, 15 Jun 2021 10:45:07 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Leonardo Bras <leobras.c@gmail.com>, Lukas Straub <lukasstraub2@web.de>,
+ Juan Quintela <quintela@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Subject: Re: [RFC PATCH] migration: Add missing dependency on GNUTLS
+Message-ID: <YMh2o6Gfywx/OmcF@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20210614052623.1657103-1-f4bug@amsat.org>
+ <CAFEAcA9HCGizgTFNMZ3N2xECYgGmwxFhg=T_oGTdC=xULcwFZQ@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9HCGizgTFNMZ3N2xECYgGmwxFhg=T_oGTdC=xULcwFZQ@mail.gmail.com>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.2,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,40 +82,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Jun 2021 09:39:47 -0000
+X-List-Received-Date: Tue, 15 Jun 2021 09:45:24 -0000
 
-On Mon, 14 Jun 2021 at 06:28, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Commit 7de2e856533 made migration/qemu-file-channel.c include
-> "io/channel-tls.h" but forgot to add the new GNUTLS dependency
-> on Meson, leading to build failure on OSX:
->
->   [2/35] Compiling C object libmigration.fa.p/migration_qemu-file-channel=
-.c.o
->   FAILED: libmigration.fa.p/migration_qemu-file-channel.c.o
->   cc -Ilibmigration.fa.p -I. -I.. -Iqapi [ ... ] -o libmigration.fa.p/mig=
-ration_qemu-file-channel.c.o -c ../migration/qemu-file-channel.c
->   In file included from ../migration/qemu-file-channel.c:29:
->   In file included from include/io/channel-tls.h:26:
->   In file included from include/crypto/tlssession.h:24:
->   include/crypto/tlscreds.h:28:10: fatal error: 'gnutls/gnutls.h' file no=
-t found
->   #include <gnutls/gnutls.h>
->            ^~~~~~~~~~~~~~~~~
->   1 error generated.
->
-> Reported-by: Stefan Weil <sw@weilnetz.de>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/407
-> Fixes: 7de2e856533 ("yank: Unregister function when using TLS migration")
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Tue, Jun 15, 2021 at 10:39:08AM +0100, Peter Maydell wrote:
+> On Mon, 14 Jun 2021 at 06:28, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+> >
+> > Commit 7de2e856533 made migration/qemu-file-channel.c include
+> > "io/channel-tls.h" but forgot to add the new GNUTLS dependency
+> > on Meson, leading to build failure on OSX:
+> >
+> >   [2/35] Compiling C object libmigration.fa.p/migration_qemu-file-channel.c.o
+> >   FAILED: libmigration.fa.p/migration_qemu-file-channel.c.o
+> >   cc -Ilibmigration.fa.p -I. -I.. -Iqapi [ ... ] -o libmigration.fa.p/migration_qemu-file-channel.c.o -c ../migration/qemu-file-channel.c
+> >   In file included from ../migration/qemu-file-channel.c:29:
+> >   In file included from include/io/channel-tls.h:26:
+> >   In file included from include/crypto/tlssession.h:24:
+> >   include/crypto/tlscreds.h:28:10: fatal error: 'gnutls/gnutls.h' file not found
+> >   #include <gnutls/gnutls.h>
+> >            ^~~~~~~~~~~~~~~~~
+> >   1 error generated.
+> >
+> > Reported-by: Stefan Weil <sw@weilnetz.de>
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/407
+> > Fixes: 7de2e856533 ("yank: Unregister function when using TLS migration")
+> > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> Is there really no way to get Meson to handle this kind
+> of thing properly (ie "just put all the include paths in the CFLAGS
+> for every compilation") rather than requiring us to add dependency
+> markers all over the meson.build files every time we add some
+> extra #include somewhere ? This is demonstrably horribly fragile
+> the way we have it at the moment :-(
 
-Is there really no way to get Meson to handle this kind
-of thing properly (ie "just put all the include paths in the CFLAGS
-for every compilation") rather than requiring us to add dependency
-markers all over the meson.build files every time we add some
-extra #include somewhere ? This is demonstrably horribly fragile
-the way we have it at the moment :-(
+A better way to fix this might be to figure out a change to make the
+crypto struct definitions be private in the .c file, since the public
+callers should not need to see them. That would let us remove the
+#include for gnutls from the header.
 
--- PMM
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+
 
