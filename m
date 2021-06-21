@@ -1,21 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lvGwC-0001Gs-9p
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Jun 2021 06:13:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38428)
+	id 1lvIsL-0001xB-A1
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Jun 2021 08:18:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35164)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lvGwA-0001BQ-Sz; Mon, 21 Jun 2021 06:13:50 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:46323)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1lvGw8-0007GK-Q6; Mon, 21 Jun 2021 06:13:50 -0400
-Received: from [192.168.100.1] ([82.142.1.74]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mk178-1lXBbI46i8-00kQqm; Mon, 21 Jun 2021 12:13:41 +0200
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lvIsJ-0001wy-O2; Mon, 21 Jun 2021 08:17:59 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:44758)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lvIsI-0007AZ-2h; Mon, 21 Jun 2021 08:17:59 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ h21-20020a1ccc150000b02901d4d33c5ca0so8517128wmb.3; 
+ Mon, 21 Jun 2021 05:17:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ijBWjW1KX72EWbYN0M9Qq+V29cpuviIl3XTmNV1vPrY=;
+ b=QMx2pJR8NVIxFCjhh5mUODOmZngO+LIhrJmeAJ2jzq6PXoZDDPAaizg2DquvyZ48xZ
+ 9VtBX3y38kXcBVnLE8lasp0QFwxqFnTr5lk+zukS3SVBrm4ivrP6AtFh1c/+JV0uYJpA
+ NGK34FUlQA3AOXZzCsJjnahoVYsSe4bcLkPMDeNqpKQ23DxTcyMnHipgspJf/79mFd8M
+ aCtilyj3SAazB16dsq0Xcw/63mkSPxeQ3cbeslQPXlHtsacnahpLGi0yV/LIt+k7frFP
+ Mu04yssGNUp28PiqBHvmY8TRR2u3QgPl7OQdvREo9Ccy9mdTIjgzyPe0AP940XDlT9qY
+ 0htg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ijBWjW1KX72EWbYN0M9Qq+V29cpuviIl3XTmNV1vPrY=;
+ b=XPZHFeKDKWCVsc7k/CrICglbesxSNaYxQ/f/DdicBOTx9FeM9Dt5gcfwKHwNyHr5sV
+ MtgCo9NZm+LRTI9QAW2aIv1UnxTGvkMHO+Q0hEEtsMTtJNH8m46lF6I3NJfRjF3sHKxu
+ o2hDQb2Q5xKIUEAsg2400JW42Nb51xCRRyLfJXuG+ulFGf1QhJECLtvN+3XJsH44ZPrE
+ Q+QhNl+0qEDutO0KBP4R/2tV/sEh28TLhuaTNrWDsHpwUYRZBrYTkc6taEm1c177rheG
+ vO5QwU5Z6hBMS6RYelRfrRSd/f34vydaWJy+ZSR86Ayp+zOz6cjtbCnAnKgzfEmmZefq
+ XLVg==
+X-Gm-Message-State: AOAM530g7LTDFXD/nyuM+ASsVk3KmyfGObCq7OlmQgOpzZg5AjtW3EMH
+ x6OFZFxZP+yYEDO5IAqsty8=
+X-Google-Smtp-Source: ABdhPJx8PUkBY3a67WbO+w9PzOn3P5AqQrwlzN+cy22CrhMWJDQ3MklSuBfu9ubNMm34W2YEHwB2Mw==
+X-Received: by 2002:a05:600c:24c:: with SMTP id
+ 12mr23820591wmj.174.1624277875964; 
+ Mon, 21 Jun 2021 05:17:55 -0700 (PDT)
+Received: from [192.168.43.238] (47.red-95-127-153.staticip.rima-tde.net.
+ [95.127.153.47])
+ by smtp.gmail.com with ESMTPSA id t128sm4535585wma.41.2021.06.21.05.17.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 21 Jun 2021 05:17:55 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH] memory: Display MemoryRegion name in read/write ops trace
  events
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20210307074833.143106-1-f4bug@amsat.org>
  <8892fbd6-a63c-ef02-78f3-935e4f95dbb1@amsat.org>
@@ -24,37 +58,27 @@ References: <20210307074833.143106-1-f4bug@amsat.org>
  <dadd0b69-e613-a0f6-5f81-a62159b41493@amsat.org>
  <a3660d89-0a2b-bb28-8a78-8d8078b71a01@vivier.eu>
  <ac9ed125-4efa-6068-9050-3dc367066de7@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <c1f1313c-6d32-c560-30e6-0acd8a6f2090@vivier.eu>
-Date: Mon, 21 Jun 2021 12:13:39 +0200
+ <c1f1313c-6d32-c560-30e6-0acd8a6f2090@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <89e922a4-a22d-89ea-f6db-3181e7c2e7ca@amsat.org>
+Date: Mon, 21 Jun 2021 14:17:53 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <ac9ed125-4efa-6068-9050-3dc367066de7@amsat.org>
+In-Reply-To: <c1f1313c-6d32-c560-30e6-0acd8a6f2090@vivier.eu>
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QvmmbzqnwrPht6ZtEYaud+oA0dq4yVojSSfcstB85+TdM1KQaAm
- bSi1QemFPU0ZQJilJgY7/i56e4G41eN0BHbA6lNCFOwukEdnXG+INwf5XiGow00CZijaKse
- JlaZGnlsjc+TSv2Og/DsbfpRJUTVXnGeDNUfPsoCjMeTXB6I7g8U6shUZAO4gnEhRO6f6YX
- 3kS8LQ+/bZs6B1EyzPhTA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rpCtNnGpv4E=:BRx7XE90geyK4HFtMM9WWA
- bwP7EHzQxAvtJDoQp/3F2z7alT61S8NPxntIZp8+o2ryDx6biyspRwGDIobBiR4jYZhITR8fm
- kWOHNHHRuqAkZ6DdVz+rQ5KttGNP4lLFPOHF65sGiokK2a+ye/BdqjAhLRGylIutG5Zcax66y
- J4KtjCeQJxUxtxGK3+F4PUR060rr2qag+nPLYD3WNIq5AKnxwagLXxJlW8MlFp6bSq2EhcZDO
- V4MmiRUp2kdKtWNo5l+A5oEkaq/1XBlY/SU08+NyX+C2mBIsRjGfJQW+1OKqB3GbIkD0L0Iu/
- lsbFMp23P6+sa6fX/WWIFVRCqsg/kowLParVxH0ssUI4WBlIbbYsrmufy2X/WwWPOtpQliz6a
- +/yaMniZBJS2znukitR3R6CvCrOitC+DUI6BL4WUOTnLxaZ98+NtGXxiJJDKrha0kOxVb1sW9
- JdDAOKqvNvsabQ08utqm9MRY3MBcLYB9QPKbMwzqvUG25QhWDyVvipUQ50pO6VzDnxbiU5c9b
- LIvGsh82WyV/QURBTsvMqs=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,50 +91,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Jun 2021 10:13:51 -0000
+X-List-Received-Date: Mon, 21 Jun 2021 12:18:00 -0000
 
-Le 21/06/2021 à 12:08, Philippe Mathieu-Daudé a écrit :
-> Hi Laurent,
-> 
-> On 6/7/21 1:29 PM, Laurent Vivier wrote:
->> Le 07/06/2021 à 10:28, Philippe Mathieu-Daudé a écrit :
->>> On 6/7/21 9:33 AM, Laurent Vivier wrote:
->>>> Le 02/06/2021 à 12:49, Philippe Mathieu-Daudé a écrit :
->>>>> Cc'ing qemu-trivial@
->>>>>
->>>>> On 3/18/21 4:39 PM, Philippe Mathieu-Daudé wrote:
->>>>>> ping?
->>>>>>
->>>>>> On 3/7/21 8:48 AM, Philippe Mathieu-Daudé wrote:
->>>>>>> MemoryRegion names is cached on first call to memory_region_name(),
->>>>
->>>> It is cached on first call but now that it is used in the trace function, does it mean it will be
->>>> always allocated in memory?
->>>
->>> Yes, this is how memory_region_name() works:
->>>
->>> const char *memory_region_name(const MemoryRegion *mr)
->>> {
->>>     if (!mr->name) {
->>>         ((MemoryRegion *)mr)->name =
->>>             g_strdup(object_get_canonical_path_component(OBJECT(mr)));
->>>     }
->>>     return mr->name;
->>> }
+On 6/21/21 12:13 PM, Laurent Vivier wrote:
+> Le 21/06/2021 à 12:08, Philippe Mathieu-Daudé a écrit :
+>> Hi Laurent,
 >>
->> OK, in fact I didn't see it was called from inside a "if
->> (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_XXX))" and was worrying about the memory for
->> the string always allocated.
+>> On 6/7/21 1:29 PM, Laurent Vivier wrote:
+>>> Le 07/06/2021 à 10:28, Philippe Mathieu-Daudé a écrit :
+>>>> On 6/7/21 9:33 AM, Laurent Vivier wrote:
+>>>>> Le 02/06/2021 à 12:49, Philippe Mathieu-Daudé a écrit :
+>>>>>> Cc'ing qemu-trivial@
+>>>
+>>> So it looks good.
 >>
->> So it looks good.
+>> Is there something else you expect me to do with this patch?
+>> Maybe you expect another R-b to take it, so I should keep
+>> pinging for review?
+>>
 > 
-> Is there something else you expect me to do with this patch?
-> Maybe you expect another R-b to take it, so I should keep
-> pinging for review?
+> No, I'm working on a linux-user pull request, once done I'll do a new trivial branch pull request.
+
+No hurry, I just wanted to know if there was something missing on my side :)
+
 > 
-
-No, I'm working on a linux-user pull request, once done I'll do a new trivial branch pull request.
-
-Thanks,
-Laurent
+> Thanks,
+> Laurent
+> 
 
