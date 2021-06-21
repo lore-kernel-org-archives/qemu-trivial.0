@@ -1,85 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lvGp5-0000q9-09
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Jun 2021 06:06:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37164)
+	id 1lvGqi-0005ox-0K
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Jun 2021 06:08:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lvGp1-0000kE-Fx
- for qemu-trivial@nongnu.org; Mon, 21 Jun 2021 06:06:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56053)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lvGoz-0002uZ-Vh
- for qemu-trivial@nongnu.org; Mon, 21 Jun 2021 06:06:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624269985;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XAMNCMMhbrJ2T96gQmYlohqSXYGyVVmUM7cG9LRhDNk=;
- b=K+qQL2ctS9P6Ka8zpKNfm2BeI+g8CsGVK416o+taRk2EAAcA+06rLwAmB0pQmV94LrnCQh
- MjfXIPBT4kAzLDknQV9ELOwsFhh/QuK7Af1A+ioQi5BkdvBUxRWg+NxIM/SuHA9XIBADeA
- GOwDjRuS7nyCnPWlAJ/i+hK0QyzFTq4=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-310-HlWHJT9DM-eO3QprQf6rhg-1; Mon, 21 Jun 2021 06:06:23 -0400
-X-MC-Unique: HlWHJT9DM-eO3QprQf6rhg-1
-Received: by mail-wr1-f70.google.com with SMTP id
- j2-20020a5d61820000b029011a6a8149b5so7808214wru.14
- for <qemu-trivial@nongnu.org>; Mon, 21 Jun 2021 03:06:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lvGqg-0005iS-9J; Mon, 21 Jun 2021 06:08:10 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:44951)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lvGqe-0003qw-Mr; Mon, 21 Jun 2021 06:08:10 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ h21-20020a1ccc150000b02901d4d33c5ca0so8240473wmb.3; 
+ Mon, 21 Jun 2021 03:08:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=22LJHUW7U6i/FWiUcyvyOKfzI0Sa30ISHPM6h5NhVPc=;
+ b=IXA4abe9Sx3+esg92aRcfd/QeU9gaP9ikCagSpdycKgksAggXqAM7J2vj07qSPNS1T
+ 52IqG5Ppv0ad+B1PWprwogM7fY1Wkai57K30cKCfqq8MXFK1pLFGyqyjYHlgydPc7vD+
+ iHDT4YOPq7TdioQQovoh1F1UE98dgk6PAYGp09zIpndDKUIB2//ducag1vvkK8DDSmY6
+ KSEP26pv/NTd26wsAH8GQVaqreaVA5qjqptI4G1vGAuuGSGxiB1j5NhjF0QgAlR+bE8i
+ O3pPy1HxKkaqk3ZKJjhwUVwaypYMmemklSiWyde4K3hQh7NoT6kjmMPmuvaU/9iwJcbe
+ O/Xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=XAMNCMMhbrJ2T96gQmYlohqSXYGyVVmUM7cG9LRhDNk=;
- b=mbCnyGaP50tewI22dFmbAetZfTN4PH6tsIxKeMHzDH7Y23GT0PBOxKHdOJLP+1ijue
- FgV9Tio03i2unXw0NSa+XjNvQ8uA5xthaV8jMfnfR4I+gGxgZJaJEuggyGtRWQ5ktDRB
- 7eQQNfsCqSFy43lM283y5CiyIDAD5MVqDyDFUwcVVzPNMlr0tVWpdgcGGZQJ0qn2zQy3
- 7yrz80z+CNiAtaMmugGlsF48oqIzf+fAnz+mY/fTZfijOuhV1r5UbKK5LIPzz33hgMKb
- WBmgOT0UM1G//H8RsT4qUGkgJrl/q7NSvwfSBqAAcpy6kmWljSHymUnOYen11DO/tB4K
- J/zA==
-X-Gm-Message-State: AOAM530wqxJXxKwBQa+X0ITr1MY7oURs5X/Dmxdkvz1m0RSVFRk+DvV4
- 1s1lPhVm9O/ikhxvqd9ec8SYyEZnqc/c1BTo10sfTv6EDF5xFykx44YUiKRRHX5Vi+eOD1cIgAA
- EMEsY2IIhJGOciZHavw==
-X-Received: by 2002:a5d:50c6:: with SMTP id f6mr27274701wrt.281.1624269982527; 
- Mon, 21 Jun 2021 03:06:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxiyabIv05U/g3Q/0fW8PBh8QDsGubAGcGpC4JneJiE0sza7UkLNhSmMm3Dx5Iwb/C/9zBNVQ==
-X-Received: by 2002:a5d:50c6:: with SMTP id f6mr27274677wrt.281.1624269982383; 
- Mon, 21 Jun 2021 03:06:22 -0700 (PDT)
+ bh=22LJHUW7U6i/FWiUcyvyOKfzI0Sa30ISHPM6h5NhVPc=;
+ b=qx99T/E1MComOOWtxK+C2qmE7FqCqSB4aUCdt95DXPtEKjj8TTg9jrgQaG1p2kCtPk
+ f0G6DQAaeMetoMP+krZmrqz6i0a5O4kWMoyc8xhmMIu1oJwohtTtuRJDa0Yj7S7qsCbK
+ GdCv3o3S8orr2S+HbP75YCI1c+2LlRXQ2Wtze/p5qONYNW+qkoy8BN+mce04e2R+kFQA
+ BS/EqFubX9KMVdS/jFHywyb63wxLPiZPQnerqhB9a0E6SFF3QFEKETNaH11rRm6tA9Dg
+ vQ3wEXi7Gzv5URq2WnjWk5ccdiN5ACaDa3DuveD/vxuwTa/OYz+wr+QKApREHZYnXuMO
+ 8zWA==
+X-Gm-Message-State: AOAM532/RA+k6b2UhXBjk76C718atsYurE6Mvqc+M4/sQLD/hq6vEDlb
+ ZmmY5BOnKTF7wr0UbFDNKeY=
+X-Google-Smtp-Source: ABdhPJyNLOBAOzlKpSRWjMamiWDlZwLd1MRNZwqASNAS4JpQeZ/O90UroORgETGHQ9mtyDTyBJc3uw==
+X-Received: by 2002:a05:600c:5112:: with SMTP id
+ o18mr25376783wms.15.1624270086703; 
+ Mon, 21 Jun 2021 03:08:06 -0700 (PDT)
 Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
  [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id l12sm17271269wro.32.2021.06.21.03.06.21
+ by smtp.gmail.com with ESMTPSA id n20sm15866274wmk.12.2021.06.21.03.08.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Jun 2021 03:06:21 -0700 (PDT)
-Subject: Re: [PATCH v2] hw/virtio: Document *_should_notify() are called
- within rcu_read_lock()
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20210523094040.3516968-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d3198f6b-3bce-1686-2123-e1c44479bdf9@redhat.com>
-Date: Mon, 21 Jun 2021 12:06:21 +0200
+ Mon, 21 Jun 2021 03:08:05 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] memory: Display MemoryRegion name in read/write ops trace
+ events
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20210307074833.143106-1-f4bug@amsat.org>
+ <8892fbd6-a63c-ef02-78f3-935e4f95dbb1@amsat.org>
+ <2def176e-8707-78cc-b524-3fd47456261f@amsat.org>
+ <c4b050f9-8d36-28a5-b5fe-343bbbe0efdb@vivier.eu>
+ <dadd0b69-e613-a0f6-5f81-a62159b41493@amsat.org>
+ <a3660d89-0a2b-bb28-8a78-8d8078b71a01@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <ac9ed125-4efa-6068-9050-3dc367066de7@amsat.org>
+Date: Mon, 21 Jun 2021 12:08:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <20210523094040.3516968-1-philmd@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <a3660d89-0a2b-bb28-8a78-8d8078b71a01@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.299,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -92,40 +89,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Jun 2021 10:06:27 -0000
+X-List-Received-Date: Mon, 21 Jun 2021 10:08:10 -0000
 
-ping?
+Hi Laurent,
 
-On 5/23/21 11:40 AM, Philippe Mathieu-Daudé wrote:
-> Such comments make reviewing this file somehow easier.
+On 6/7/21 1:29 PM, Laurent Vivier wrote:
+> Le 07/06/2021 à 10:28, Philippe Mathieu-Daudé a écrit :
+>> On 6/7/21 9:33 AM, Laurent Vivier wrote:
+>>> Le 02/06/2021 à 12:49, Philippe Mathieu-Daudé a écrit :
+>>>> Cc'ing qemu-trivial@
+>>>>
+>>>> On 3/18/21 4:39 PM, Philippe Mathieu-Daudé wrote:
+>>>>> ping?
+>>>>>
+>>>>> On 3/7/21 8:48 AM, Philippe Mathieu-Daudé wrote:
+>>>>>> MemoryRegion names is cached on first call to memory_region_name(),
+>>>
+>>> It is cached on first call but now that it is used in the trace function, does it mean it will be
+>>> always allocated in memory?
+>>
+>> Yes, this is how memory_region_name() works:
+>>
+>> const char *memory_region_name(const MemoryRegion *mr)
+>> {
+>>     if (!mr->name) {
+>>         ((MemoryRegion *)mr)->name =
+>>             g_strdup(object_get_canonical_path_component(OBJECT(mr)));
+>>     }
+>>     return mr->name;
+>> }
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
-> v2: only one space before end of comment (mst)
-> ---
->  hw/virtio/virtio.c | 2 ++
->  1 file changed, 2 insertions(+)
+> OK, in fact I didn't see it was called from inside a "if
+> (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_XXX))" and was worrying about the memory for
+> the string always allocated.
 > 
-> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-> index e02544b2df7..130e3568409 100644
-> --- a/hw/virtio/virtio.c
-> +++ b/hw/virtio/virtio.c
-> @@ -2449,6 +2449,7 @@ static void virtio_set_isr(VirtIODevice *vdev, int value)
->      }
->  }
->  
-> +/* Called within rcu_read_lock(). */
->  static bool virtio_split_should_notify(VirtIODevice *vdev, VirtQueue *vq)
->  {
->      uint16_t old, new;
-> @@ -2485,6 +2486,7 @@ static bool vring_packed_need_event(VirtQueue *vq, bool wrap,
->      return vring_need_event(off, new, old);
->  }
->  
-> +/* Called within rcu_read_lock(). */
->  static bool virtio_packed_should_notify(VirtIODevice *vdev, VirtQueue *vq)
->  {
->      VRingPackedDescEvent e;
-> 
+> So it looks good.
 
+Is there something else you expect me to do with this patch?
+Maybe you expect another R-b to take it, so I should keep
+pinging for review?
 
