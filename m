@@ -1,65 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lw23v-0006B3-7j
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Jun 2021 08:32:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50604)
+	id 1ly64W-0006uT-Tj
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Jun 2021 01:14:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1lw23t-00069Y-SB
- for qemu-trivial@nongnu.org; Wed, 23 Jun 2021 08:32:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45096)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1lw23r-0000Ph-DC
- for qemu-trivial@nongnu.org; Wed, 23 Jun 2021 08:32:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624451572;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=uYpwQSVp2FNqDfb06yKPNjwHrEd+M2Iqy31O4uk0lCA=;
- b=hLt3wMNR7gjXbRpvLL89fxJG55TLJfjrRamnr/QfiTjGSxqSY28dUt2wBoD78v0PlLdjKZ
- 5P6Bz1VzFZ9G602+MKM3BenfyP7GY0FV/WqIoDV7HLIA4nxXEsh/33R9LKPqrk/jklllAC
- 1CtrzHBpBIchg+c9oXMT5K7gNvke4+k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-57-gqlzct91MVeHHDbphq2rkQ-1; Wed, 23 Jun 2021 08:32:49 -0400
-X-MC-Unique: gqlzct91MVeHHDbphq2rkQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B294218D6A2A;
- Wed, 23 Jun 2021 12:32:47 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-38.ams2.redhat.com
- [10.36.112.38])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7A8A319D7C;
- Wed, 23 Jun 2021 12:32:47 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id C7266180060E; Wed, 23 Jun 2021 14:32:45 +0200 (CEST)
-Date: Wed, 23 Jun 2021 14:32:45 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Ahmed Abouzied <admin@aabouzied.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Ahmed Abouzied <email@aabouzied.com>
-Subject: Re: [PATCH v3] Add display suboptions to man pages
-Message-ID: <20210623123245.glx7hnfodzym4aja@sirius.home.kraxel.org>
-References: <20210601174117.661-1-email@aabouzied.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ly64U-0006os-J8; Tue, 29 Jun 2021 01:14:06 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:37384)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1ly64S-0001EM-N0; Tue, 29 Jun 2021 01:14:06 -0400
+Received: by mail-wr1-x429.google.com with SMTP id i94so24175372wri.4;
+ Mon, 28 Jun 2021 22:14:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ScbuV1uws/tcjQtyx9tP4Zkjz3punjNXoMsYbK2ktvg=;
+ b=uuO+Wq5kulf5ube1SbhzX5Pf+rL+rBeFWni7+FL6MdF6L2318dS6Zkm5yhvOoqcFpe
+ h55P5I/9OxYXmqu0FXCzSeaMWwXwAO3YtMdZ5cQodL5Z46fSgjhZ7QsmQei/ObAAobkZ
+ WQzIEETMR43nJkUL/u7K/xyxOqZt4PsMkFVv8eW8XhdUzdr/sV/L4Ny2EGdQeK1pt1er
+ tpOI/zU77tS4xvYxol6j5Opub81gVnPwn5x5Agnp91BxBETpWUgEYr1obdQ069JYarkp
+ t4anleqw7ceQL7MUBLVuLTXuzrhvlFR6LwVZwtymtuU4vXRvuXDA0hjGR4CUaOXq28Rl
+ LePQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=ScbuV1uws/tcjQtyx9tP4Zkjz3punjNXoMsYbK2ktvg=;
+ b=WSRFdlKiDCfzHAGCIxrIDNQNn1MmzXHBjz+KO+T7MVtvVjGvprrnU6agk2I0TeeXl8
+ JXRX2hVAdpt/KwU0Fk53O0I6Cxt0lEK7VIrNNDEKxCBsG8Z29orTzWbZo7GP77LOQy00
+ rAMvjSNI+lhxuEGDlX8Fzb/XQMg7QYgI4TpLBMqvYQLvRiW6IPNe94AKZqrqDQ/MxskQ
+ 97q1nbw19xYOf96CXeE7KetHUVeahNjX96wLiT7JYjUAEDkEBpRu7svrzygL1Fc1qW52
+ iUm6KqUaUv3R/r31mhtpeJWrvCMFelLN4S25M1eQFK+3GP+3FYOqrTPNBX/FHUfqetfP
+ X5FQ==
+X-Gm-Message-State: AOAM5306fIeoOuCrh9H3C/khs+MsqliIu58ixUxp7Tgf7DUQnjrZfV4w
+ FpoHE6cyxc76yHd0LMVGe0ni5v2VsdLReQ==
+X-Google-Smtp-Source: ABdhPJwFs9Pxtjo9wrFo2SOPv5SAfeFPKEyk1YdFYnV9pxAkYSURMX29dlDt5AAT51g4W/8t5h0kDA==
+X-Received: by 2002:adf:e449:: with SMTP id t9mr32206138wrm.40.1624943642499; 
+ Mon, 28 Jun 2021 22:14:02 -0700 (PDT)
+Received: from x1w.. (93.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id v18sm18860382wrv.24.2021.06.28.22.14.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Jun 2021 22:14:01 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Luis Pires <luis.pires@eldorado.org.br>
+Subject: [PATCH v2] misc: Fix "havn't" typo
+Date: Tue, 29 Jun 2021 07:14:00 +0200
+Message-Id: <20210629051400.2573253-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <20210601174117.661-1-email@aabouzied.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.373,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,23 +77,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Jun 2021 12:32:58 -0000
+X-List-Received-Date: Tue, 29 Jun 2021 05:14:06 -0000
 
-On Tue, Jun 01, 2021 at 07:41:18PM +0200, Ahmed Abouzied wrote:
-> From: Ahmed Abouzied <email@aabouzied.com>
-> 
-> Add display suboptions to man pages
-> 
->   Updates man pages with the suboptions for the `-display`.
-> 
->   Resolves: https://gitlab.com/qemu-project/qemu/-/issues/128
->   Buglink: https://bugs.launchpad.net/qemu/+bug/1620660
-> 
-> Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
+Fix "havn't (make)" -> "haven't (made)" typo.
 
-Added to UI patch queue.
+Reviewed-by: Luis Pires <luis.pires@eldorado.org.br>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/usb/desc-msos.c         | 2 +-
+ target/s390x/translate.c   | 6 ++++--
+ tcg/tcg-op.c               | 2 +-
+ tcg/arm/tcg-target.c.inc   | 6 ++++--
+ tcg/sparc/tcg-target.c.inc | 6 ++++--
+ 5 files changed, 14 insertions(+), 8 deletions(-)
 
-thanks,
-  Gerd
+diff --git a/hw/usb/desc-msos.c b/hw/usb/desc-msos.c
+index 3a5ad7c8d0f..836e38c67e1 100644
+--- a/hw/usb/desc-msos.c
++++ b/hw/usb/desc-msos.c
+@@ -181,7 +181,7 @@ static int usb_desc_msos_prop(const USBDesc *desc, uint8_t *dest)
+ 
+     if (desc->msos->Label) {
+         /*
+-         * Given as example in the specs.  Havn't figured yet where
++         * Given as example in the specs.  Haven't figured yet where
+          * this label shows up in the windows gui.
+          */
+         length += usb_desc_msos_prop_str(dest+length, MSOS_REG_SZ,
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index e243624d2a6..6ac797a8a94 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -6270,8 +6270,10 @@ static void extract_field(DisasFields *o, const DisasField *f, uint64_t insn)
+         abort();
+     }
+ 
+-    /* Validate that the "compressed" encoding we selected above is valid.
+-       I.e. we havn't make two different original fields overlap.  */
++    /*
++     * Validate that the "compressed" encoding we selected above is valid.
++     * I.e. we haven't made two different original fields overlap.
++     */
+     assert(((o->presentC >> f->indexC) & 1) == 0);
+     o->presentC |= 1 << f->indexC;
+     o->presentO |= 1 << f->indexO;
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index dcc2ed0bbc8..869dc6cdd29 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -2695,7 +2695,7 @@ void tcg_gen_goto_tb(unsigned idx)
+     /* We only support two chained exits.  */
+     tcg_debug_assert(idx <= TB_EXIT_IDXMAX);
+ #ifdef CONFIG_DEBUG_TCG
+-    /* Verify that we havn't seen this numbered exit before.  */
++    /* Verify that we haven't seen this numbered exit before.  */
+     tcg_debug_assert((tcg_ctx->goto_tb_issue_mask & (1 << idx)) == 0);
+     tcg_ctx->goto_tb_issue_mask |= 1 << idx;
+ #endif
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 51571432460..5882479f3d3 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -2444,8 +2444,10 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
+ 
+ static void tcg_target_init(TCGContext *s)
+ {
+-    /* Only probe for the platform and capabilities if we havn't already
+-       determined maximum values at compile time.  */
++    /*
++     * Only probe for the platform and capabilities if we haven't already
++     * determined maximum values at compile time.
++     */
+ #if !defined(use_idiv_instructions) || !defined(use_neon_instructions)
+     {
+         unsigned long hwcap = qemu_getauxval(AT_HWCAP);
+diff --git a/tcg/sparc/tcg-target.c.inc b/tcg/sparc/tcg-target.c.inc
+index a6ec94a094f..688827968b0 100644
+--- a/tcg/sparc/tcg-target.c.inc
++++ b/tcg/sparc/tcg-target.c.inc
+@@ -1690,8 +1690,10 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
+ 
+ static void tcg_target_init(TCGContext *s)
+ {
+-    /* Only probe for the platform and capabilities if we havn't already
+-       determined maximum values at compile time.  */
++    /*
++     * Only probe for the platform and capabilities if we haven't already
++     * determined maximum values at compile time.
++     */
+ #ifndef use_vis3_instructions
+     {
+         unsigned long hwcap = qemu_getauxval(AT_HWCAP);
+-- 
+2.31.1
 
 
