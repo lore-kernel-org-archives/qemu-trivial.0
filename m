@@ -1,66 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ly9Yf-0008Sa-Sq
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Jun 2021 04:57:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58514)
+	id 1lyVwp-0001Ta-KC
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jun 2021 04:51:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ly9Yf-0008SG-1v
- for qemu-trivial@nongnu.org; Tue, 29 Jun 2021 04:57:29 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:42528)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ly9Yd-0007qC-5P
- for qemu-trivial@nongnu.org; Tue, 29 Jun 2021 04:57:28 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id n25so3718717edw.9
- for <qemu-trivial@nongnu.org>; Tue, 29 Jun 2021 01:57:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=B6IueLWMuxDsD1oh+0U6X6Mbl458KZ6nboBwmqHHgfw=;
- b=HhMgs3Yf0T+4VXlJzrBmNIt4tnASm6lpePYOGc2+h6mJbJUcGu3OgMPqYvWPi1EU+t
- LcjqdyN1Pmf9ReKoBFzeDJF6rg7ClLYJ6BI1/9+fFIwkWp7HPvYa9j830J5JCnF2r1RS
- dGrFLbKbfKJmdykXTEpeuK/G3bVy2CynB+/U5x8XyglKLthGHi+EGelEs4qk9Y9HewDq
- LFbN9hZEbWNTmNT3sVbFrFj9esa2/9dDiicVaDVf1G5ARHhhPetrZ6VYj/iGvNJ68594
- dwSpiRP9WdWehuU2ZJDXzALodjeEDlKNxGxTOsOTUA2qNGuxtH139jgikcbBR+JfLBDm
- 0Etg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=B6IueLWMuxDsD1oh+0U6X6Mbl458KZ6nboBwmqHHgfw=;
- b=BwhcnqUEGaD07ExLvalUEPTKjHBMZo73KjsxSsAAKb52j7rVtLEV0CLG9ytUona127
- EbFqDzGVEahcEqAo4G3LIQXSYlFLfGN8X4TvUKt5KxYhnKCopjh7tkk5h1e3+wGTzWMw
- wy4I/pVVAMkitJzhGLuWbqhBYZZWlnSKoeglCKwG6A576MF8RUBqYl2Vy0k0YUJJnZGi
- 1O0lXb71Ur3qEYfsiMMTdNlzQRFFLjEaMqyRR8eBh8gYZXJRpFzE4OSpJbp/h46/SfC+
- 5FygAOcdZdv02/LtKVDJtCvm/IbOUVCJWzyjwjhMAGx4KHRWwDnflgxp+LdgqeR5YgYM
- avRA==
-X-Gm-Message-State: AOAM5311qfW0wBOsSGC0g1tLLqLbCD46M1g99JbGClEW/6sAttuGprzN
- bZheS7ItXUdpf68X4y9PwnjSw8SAFkM0revNihMtVQ==
-X-Google-Smtp-Source: ABdhPJwfM39pmflt9eDXq46MN1eHic36OeXQTyGa376vzZkz5B6G+/ndRqRrHL0MAz1b9k17ER46KodDPkRJQbQ0dOs=
-X-Received: by 2002:aa7:c644:: with SMTP id z4mr38472612edr.204.1624957045078; 
- Tue, 29 Jun 2021 01:57:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lyVwo-0001SK-3d
+ for qemu-trivial@nongnu.org; Wed, 30 Jun 2021 04:51:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20014)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lyVwl-0003ru-Jx
+ for qemu-trivial@nongnu.org; Wed, 30 Jun 2021 04:51:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1625043108;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=KOwakb4DbYF5Oj5MfGQL9K1iGVKbFN+e5xYjmd/dnvU=;
+ b=jIzPbTT284hib8kwwzE0RF897ibZA0uSUtBt8xt5220B6rptjNOBf8IDcEL93Q/w0E2TZu
+ 5eOhY5pEyB8Wm3Jyp1vM5RzANHDnzP3j4LbNfhhG9RidfFo+4L+BERFLwH5YUr/R0fsQE/
+ bjNpzQ9ILFumL8tq+E/B9W10D+6No3A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-363-D-SckNKTPNGMoBji1ZKFuA-1; Wed, 30 Jun 2021 04:51:47 -0400
+X-MC-Unique: D-SckNKTPNGMoBji1ZKFuA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3549A61364;
+ Wed, 30 Jun 2021 08:51:46 +0000 (UTC)
+Received: from thuth.com (ovpn-113-129.ams2.redhat.com [10.36.113.129])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6F1B060843;
+ Wed, 30 Jun 2021 08:51:41 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	kraxel@redhat.com
+Cc: qemu-trivial@nongnu.org,
+	pbonzini@redhat.com
+Subject: [PATCH] softmmu/vl: Remove obsolete comment about the "frame"
+ parameter
+Date: Wed, 30 Jun 2021 10:51:38 +0200
+Message-Id: <20210630085138.351920-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20210629051400.2573253-1-f4bug@amsat.org>
-In-Reply-To: <20210629051400.2573253-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 Jun 2021 09:56:48 +0100
-Message-ID: <CAFEAcA_f16C7niFiZwjXAwmYuC7F+v1q_3fXfLfmQ=+VDTfv1A@mail.gmail.com>
-Subject: Re: [PATCH v2] misc: Fix "havn't" typo
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Luis Pires <luis.pires@eldorado.org.br>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.435,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,20 +69,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Jun 2021 08:57:29 -0000
+X-List-Received-Date: Wed, 30 Jun 2021 08:51:54 -0000
 
-On Tue, 29 Jun 2021 at 06:15, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Fix "havn't (make)" -> "haven't (made)" typo.
->
-> Reviewed-by: Luis Pires <luis.pires@eldorado.org.br>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
+The frame parameter has been removed along with the support for
+SDL 1.2.
 
+Fixes: 09bd7ba9f5 ("Remove deprecated -no-frame option")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ softmmu/vl.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index d99e2cbdbf..cee6339580 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -1062,8 +1062,6 @@ static void parse_display(const char *p)
+          * sdl DisplayType needs hand-crafted parser instead of
+          * parse_display_qapi() due to some options not in
+          * DisplayOptions, specifically:
+-         *   - frame
+-         *     Already deprecated.
+          *   - ctrl_grab + alt_grab
+          *     Not clear yet what happens to them long-term.  Should
+          *     replaced by something better or deprecated and dropped.
+-- 
+2.27.0
 
-thanks
--- PMM
 
