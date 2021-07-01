@@ -1,63 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1lyVwp-0001Ta-KC
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jun 2021 04:51:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56330)
+	id 1lz4JQ-0005vR-94
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Jul 2021 17:33:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lyVwo-0001SK-3d
- for qemu-trivial@nongnu.org; Wed, 30 Jun 2021 04:51:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20014)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1lyVwl-0003ru-Jx
- for qemu-trivial@nongnu.org; Wed, 30 Jun 2021 04:51:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625043108;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=KOwakb4DbYF5Oj5MfGQL9K1iGVKbFN+e5xYjmd/dnvU=;
- b=jIzPbTT284hib8kwwzE0RF897ibZA0uSUtBt8xt5220B6rptjNOBf8IDcEL93Q/w0E2TZu
- 5eOhY5pEyB8Wm3Jyp1vM5RzANHDnzP3j4LbNfhhG9RidfFo+4L+BERFLwH5YUr/R0fsQE/
- bjNpzQ9ILFumL8tq+E/B9W10D+6No3A=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-363-D-SckNKTPNGMoBji1ZKFuA-1; Wed, 30 Jun 2021 04:51:47 -0400
-X-MC-Unique: D-SckNKTPNGMoBji1ZKFuA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3549A61364;
- Wed, 30 Jun 2021 08:51:46 +0000 (UTC)
-Received: from thuth.com (ovpn-113-129.ams2.redhat.com [10.36.113.129])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6F1B060843;
- Wed, 30 Jun 2021 08:51:41 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	kraxel@redhat.com
-Cc: qemu-trivial@nongnu.org,
-	pbonzini@redhat.com
-Subject: [PATCH] softmmu/vl: Remove obsolete comment about the "frame"
- parameter
-Date: Wed, 30 Jun 2021 10:51:38 +0200
-Message-Id: <20210630085138.351920-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <hubert.jasudowicz@gmail.com>)
+ id 1lz3ya-0000TV-Ht; Thu, 01 Jul 2021 17:12:00 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229]:34603)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <hubert.jasudowicz@gmail.com>)
+ id 1lz3yU-00039X-OZ; Thu, 01 Jul 2021 17:12:00 -0400
+Received: by mail-lj1-x229.google.com with SMTP id p24so10428944ljj.1;
+ Thu, 01 Jul 2021 14:11:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=A84c4hgUdxFtBSsh1SRChmmQpU42+UpUG3Lp/hwIx5E=;
+ b=k3ZCQUYOgpJ5uH/BFTWwjS7d9lvAClhJ1uyX7l+I1QnoM7UTMbkTAJQaV7ibVKt5h/
+ YXlWJ3UejJKkHUF2UXEvK/p3ncr98/68R23tKkrz0ooVd1dAt7epqGj+BeFvUKrhYWbx
+ iP5yAU/yO6VyCcApluJT449/+wmyrWqWphpU8GKi8Sh+Gj5sGo6mYXLZo1aY7xfbIZn1
+ UhPQb1MDfchJxSOx5dn3sl2+l1VZ61Gvs5t6lDxegIte1KjT7lPR+26hrGhWPc6YuTH/
+ GG/ZLV+UBPX9Jkk9A89vq0gqkWm9sg79dm4A+DMqbXHcZQ8dr4v89zHDENXYSf1Rz+HR
+ FJQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=A84c4hgUdxFtBSsh1SRChmmQpU42+UpUG3Lp/hwIx5E=;
+ b=BriC7pLpyqRsKEbWq3oYZxDt5ig0PWTJZYpYluBCQCyqyb9yAWlm7U28PpW1Z2GPdJ
+ 7GPkGTodEcy55tOA+6yIUl1DOymCyjd2XlM72SrnAESUlEWgt/QWqT+mnnDzA0GPsE70
+ /LL6Nx/bI3KnKEzkkk7eaytlmPZB2SBCA3pj/q7AjV7N2gbugTKaSg2OdziEY/y+tDFv
+ SrR20fReD6mvtJrV7chbJotudMAiibZGQF0pgaamlNxM0EXZbCBO96UVztTe3F6zpj+l
+ 2IYE6nWG/jUBbeIKoTD04RkYGsQy6TXUDVvsTIqOzoTCIciuorZJ+THTcWrXYv4nRk4C
+ e55g==
+X-Gm-Message-State: AOAM5329klvtBr650oanyLuq2XVuQEPYwRw9TC3XKz7U+WqFssNKwWlP
+ Ld8/cbCYPfgzX7rS9MLtVJvrrafXVXWFmUgR
+X-Google-Smtp-Source: ABdhPJy1gIhVJ9h4cQFkRS+MgwPVlsCX+TeNXquQMPcgC4aRLBKSDEmhS4rlve9siyLaGqxbOzi7uA==
+X-Received: by 2002:a2e:9c94:: with SMTP id x20mr1097247lji.435.1625173910365; 
+ Thu, 01 Jul 2021 14:11:50 -0700 (PDT)
+Received: from localhost ([2a02:a310:53e:fc00:4aa4:72ff:fea0:3796])
+ by smtp.gmail.com with ESMTPSA id b7sm74444lfe.151.2021.07.01.14.11.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Jul 2021 14:11:49 -0700 (PDT)
+From: Hubert Jasudowicz <hubert.jasudowicz@gmail.com>
+X-Google-Original-From: Hubert Jasudowicz <hubert.jasudowicz@cert.pl>
+To: qemu-devel@nongnu.org
+Cc: Hubert Jasudowicz <hubert.jasudowicz@gmail.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, virtio-fs@redhat.com,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] virtiofsd: Add missing newline in error message
+Date: Thu,  1 Jul 2021 23:11:48 +0200
+Message-Id: <e5914ad202a13e9c1bc2a5efa267ff3bd4f48db6.1625173475.git.hubert.jasudowicz@gmail.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.435,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=hubert.jasudowicz@gmail.com; helo=mail-lj1-x229.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 01 Jul 2021 17:33:30 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,31 +76,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jun 2021 08:51:54 -0000
+X-List-Received-Date: Thu, 01 Jul 2021 21:12:01 -0000
 
-The frame parameter has been removed along with the support for
-SDL 1.2.
+From: Hubert Jasudowicz <hubert.jasudowicz@gmail.com>
 
-Fixes: 09bd7ba9f5 ("Remove deprecated -no-frame option")
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Hubert Jasudowicz <hubert.jasudowicz@gmail.com>
 ---
- softmmu/vl.c | 2 --
- 1 file changed, 2 deletions(-)
+ tools/virtiofsd/fuse_virtio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index d99e2cbdbf..cee6339580 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -1062,8 +1062,6 @@ static void parse_display(const char *p)
-          * sdl DisplayType needs hand-crafted parser instead of
-          * parse_display_qapi() due to some options not in
-          * DisplayOptions, specifically:
--         *   - frame
--         *     Already deprecated.
-          *   - ctrl_grab + alt_grab
-          *     Not clear yet what happens to them long-term.  Should
-          *     replaced by something better or deprecated and dropped.
+diff --git a/tools/virtiofsd/fuse_virtio.c b/tools/virtiofsd/fuse_virtio.c
+index fa4aff9b0e..fc2564a603 100644
+--- a/tools/virtiofsd/fuse_virtio.c
++++ b/tools/virtiofsd/fuse_virtio.c
+@@ -917,7 +917,7 @@ static bool fv_socket_lock(struct fuse_session *se)
+     dir = qemu_get_local_state_pathname("run/virtiofsd");
+ 
+     if (g_mkdir_with_parents(dir, S_IRWXU) < 0) {
+-        fuse_log(FUSE_LOG_ERR, "%s: Failed to create directory %s: %s",
++        fuse_log(FUSE_LOG_ERR, "%s: Failed to create directory %s: %s\n",
+                  __func__, dir, strerror(errno));
+         return false;
+     }
 -- 
-2.27.0
+2.32.0
 
 
