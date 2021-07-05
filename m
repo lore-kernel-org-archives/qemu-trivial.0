@@ -1,87 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m0KFT-000147-Uz
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Jul 2021 04:46:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48154)
+	id 1m0OJB-0005ui-W3
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Jul 2021 09:06:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m0KFS-00013D-3N
- for qemu-trivial@nongnu.org; Mon, 05 Jul 2021 04:46:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39426)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1m0OJA-0005qQ-W2
+ for qemu-trivial@nongnu.org; Mon, 05 Jul 2021 09:06:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41268)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m0KFP-0001lH-Sz
- for qemu-trivial@nongnu.org; Mon, 05 Jul 2021 04:46:37 -0400
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1m0OJ9-0000Hn-Gt
+ for qemu-trivial@nongnu.org; Mon, 05 Jul 2021 09:06:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625474795;
+ s=mimecast20190719; t=1625490402;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=j8xk7bpSYjdTEYnCT/kpaRigJNTVc+IE8hJG3mXDyQE=;
- b=I4c932OheeCPLLcFvfpg/gP0WlBK4xHTziI2yrLkF1hXX1dBMNvrldHB2vOYqEionLh2ia
- tsa5Ecz1I6XY89BOKmYMAsSnBPgpbHiYSFUjQpQaRWb2Kd/FZOd/YeU4N2t9LvuS2tjZCU
- yPO1O/gezz+H0br1mM3Z3m3xn3Clkas=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-565-Zi9XDh8WO6yjm7hMxXuBwg-1; Mon, 05 Jul 2021 04:46:33 -0400
-X-MC-Unique: Zi9XDh8WO6yjm7hMxXuBwg-1
-Received: by mail-wm1-f69.google.com with SMTP id
- t12-20020a7bc3cc0000b02901f290c9c44eso5593723wmj.7
- for <qemu-trivial@nongnu.org>; Mon, 05 Jul 2021 01:46:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=j8xk7bpSYjdTEYnCT/kpaRigJNTVc+IE8hJG3mXDyQE=;
- b=uax2piiPXZO9SX/qG1r/LUDZzE9vdtv5Ge6o4Oij+sbUYBsHrsnWz6cqqvAP9aZeQp
- g7go1WO4beUzIgNB2Evk6f6UCjJNwhnGFhhXQ52Q65aRHV2gIxZuw7ko2FD9c68lvl7I
- qAKalGszfvcLaq8XOpYFiZPZhVmCBZW+06vu2mxfgSCE/dS9yxlpEssw7P6pk1fQDjAu
- oZ8K3XMGIYZbHGpYsY8/he3e5rJ7zXrXvGnGRQ3yd8FmiGDWFXF+8Ifr+0j+EQvrcAft
- M8KgHHUy57XsLJh/DU9YgIh5GQWgq29JccBLA0wTkeJA1PGDFlD2e7HTz5Z7AJkM44xF
- XH1g==
-X-Gm-Message-State: AOAM53373NHyQhDYS7evfk5G2T38puxsHW+5IO8yTl6sjYvuCHF9Dfuv
- XhiH4sKza65rcgFQ9FSNrsxr1SZJ1Tzl+zfyhAsJ2K29BY3lkCIZgKllJjW3o9mxgx7cRveRCyu
- Dcwm1OjBQExLb0Ib0tg==
-X-Received: by 2002:a1c:4b12:: with SMTP id y18mr14084802wma.111.1625474792746; 
- Mon, 05 Jul 2021 01:46:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxy87qWKuROi8VqWemysHe4hFt3SEjpv7KHJxSJ6sWuenpfZggMaV3WIj8Lp/Whp6ZodXsciA==
-X-Received: by 2002:a1c:4b12:: with SMTP id y18mr14084783wma.111.1625474792527; 
- Mon, 05 Jul 2021 01:46:32 -0700 (PDT)
-Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id n12sm11918585wrs.12.2021.07.05.01.46.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jul 2021 01:46:32 -0700 (PDT)
-Subject: Re: [PATCH] Makefile: Remove /usr/bin/env wrapper from the SHELL
- variable
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org, Richard Zak <richard.j.zak@gmail.com>,
- Eric Blake <eblake@redhat.com>
-References: <20210705082542.936856-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ce2ae677-559c-4e95-2913-4729f43e6110@redhat.com>
-Date: Mon, 5 Jul 2021 10:46:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ bh=HWD88MvHZOz9mpoQJSBU6k4lC7HHyLPTsIOIRcudWEI=;
+ b=DZiECWSlRsDhyJ8Z2hpY5F4rrtDudoENHlW47SI2bDgqo2RoYxGq9ddRInrBi9iRv/nNlw
+ 6hsjKI4QrHwRap28qRFK55xBwdUuPmrMsZy6XeILTtDyI8lx9tGT+c2VC3ym81XN4uXi7f
+ vzyzlJPlVLRk+kKZE5G8LDhamOK03EY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-268-77bSslaSNBSIDbqVOn3Y0g-1; Mon, 05 Jul 2021 09:06:41 -0400
+X-MC-Unique: 77bSslaSNBSIDbqVOn3Y0g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 252FC100C610;
+ Mon,  5 Jul 2021 13:06:40 +0000 (UTC)
+Received: from localhost (ovpn-114-164.ams2.redhat.com [10.36.114.164])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 254BC5D6A1;
+ Mon,  5 Jul 2021 13:06:32 +0000 (UTC)
+Date: Mon, 5 Jul 2021 14:06:32 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Hubert Jasudowicz <hubert.jasudowicz@gmail.com>
+Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ virtio-fs@redhat.com, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] virtiofsd: Add missing newline in error message
+Message-ID: <YOMD2MDCnAldXrpk@stefanha-x1.localdomain>
+References: <e5914ad202a13e9c1bc2a5efa267ff3bd4f48db6.1625173475.git.hubert.jasudowicz@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210705082542.936856-1-thuth@redhat.com>
+In-Reply-To: <e5914ad202a13e9c1bc2a5efa267ff3bd4f48db6.1625173475.git.hubert.jasudowicz@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="LL0/I8q/dx+943mx"
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
+X-Spam_score_int: -41
+X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.441,
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.442,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,19 +72,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Jul 2021 08:46:38 -0000
+X-List-Received-Date: Mon, 05 Jul 2021 13:06:45 -0000
 
-On 7/5/21 10:25 AM, Thomas Huth wrote:
-> The wrapper should not be needed here (it's not the shebang line of
-> a shell script), and it is causing trouble on Haiku where "env"
-> resides in a different directory.
-> 
-> Reported-by: Richard Zak <richard.j.zak@gmail.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+--LL0/I8q/dx+943mx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jul 01, 2021 at 11:11:48PM +0200, Hubert Jasudowicz wrote:
+> From: Hubert Jasudowicz <hubert.jasudowicz@gmail.com>
+>=20
+> Signed-off-by: Hubert Jasudowicz <hubert.jasudowicz@gmail.com>
 > ---
->  Makefile | 2 +-
+>  tools/virtiofsd/fuse_virtio.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--LL0/I8q/dx+943mx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmDjA9gACgkQnKSrs4Gr
+c8i+HwgAm0xd5X4oReKA7/EAR+jBmX6tGv0IzOXqoxZWR6CbrumSTRyumtKy3O+A
+6yhafUHsFqEXxrXH2b9HFQ3bpGGaAqeRBO36wWSRSCWYG1ApjjDA211RBwce1NxV
+8E2uJbRkoOhFXjsPIBJNnKCrxT3ICNVwTktxEqzMiLzku0+yvU8Hmd97eID8stTG
+QEB3RMiGJ6dDJpjuhe3uQCrArr4F5FtwWyViYaSdscoXhGrbgfYgDwSXbYissFiU
+I9Bq31mmnVNqyUAlZF/JtKoI1GhmShKbQbvWyCd1Wut6nWoALifai8UhzoemVbfM
+XzYHYOHpDTqUHOHH0CKlWvQTdOyWqg==
+=Qa93
+-----END PGP SIGNATURE-----
+
+--LL0/I8q/dx+943mx--
 
 
