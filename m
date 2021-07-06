@@ -1,76 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m0gO2-0004KB-Je
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 04:24:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51268)
+	id 1m0hoB-0001tC-OY
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 05:56:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40858)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m0gO1-0004IU-Kp; Tue, 06 Jul 2021 04:24:57 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:43958)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m0gNz-0008V0-T4; Tue, 06 Jul 2021 04:24:57 -0400
-Received: by mail-wr1-x430.google.com with SMTP id a13so24977906wrf.10;
- Tue, 06 Jul 2021 01:24:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=0ySQRSZ8jjmhlVxquqYSKh7mC06W+9D7QTTMmCG1iho=;
- b=LXy6k+Kxo7PpAZBm3+fh9s5EAgMsWstXOGW0cXQ1od5W4yJhrQNg4RAQp/AyLQ0ZWk
- 80RVkGJvvfFbGsIC+S/whXwtLAT3SpJqAFYjtBI2AxECEEjRiStqTrBpsjrYmqWHJosO
- RheGbP66p2FuEbTEU0I1wfJTfMlon2siBPo4W29pyfn6lBOrNNIRNMDXNtdL+I3GaJ1Z
- 5GB3yMK/g/BDk9vKojwTe16tSiZj4Xcn9507l6+ujsPO4FAP3jQWs70E5433xZnGCm7f
- wtlZUJQAXBpCM2pcPYUxRLFxGN/e7Xzk691PFLu1owyIM1EDq6fFDCJFjw/h92QlSbP9
- jTgw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m0hoA-0001rh-Qh
+ for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 05:56:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25028)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m0ho6-00078I-Qx
+ for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 05:56:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1625565356;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VL7sOlTaleWx9kDUQWI+9cTng1e8c7L8JxDVUCCyAEg=;
+ b=jBnf+JUjVQylxChFVsv7ybTDPnM9VeiyjbkzDIHqgU0f71aMl0y/UIiCEP/1CEtHrBmjEA
+ CTVIcN4o4U4oIdycKP2uoF+ebNr4m1P4qDMXXGQVrkvh6MuhJhNYYUJ2vE9pdgQwlDh1Gj
+ fr4yebFexfYD6K8/OAauS9IVpRcOkc0=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-573-AICsju4WM9Or9UbESTsaIA-1; Tue, 06 Jul 2021 05:55:55 -0400
+X-MC-Unique: AICsju4WM9Or9UbESTsaIA-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ p6-20020a5d45860000b02901258b6ae8a5so6984766wrq.15
+ for <qemu-trivial@nongnu.org>; Tue, 06 Jul 2021 02:55:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0ySQRSZ8jjmhlVxquqYSKh7mC06W+9D7QTTMmCG1iho=;
- b=H7VfpmwlylwGDcRCcvlrcfYf2aPe7vromzej9fxt97zBDB329uzK+hv5IE4Hud/Ymu
- RiXqfc/LL2hLqwwu4EkQC+5mBpvxso8167y9SWA6xCZJD6GDRksuiGwVE6C3h/9VFWG7
- n10qUVUalzEhZJRDsgkvwYu3bJoKhEzsywOfzZwv+wpNfpGZguX9nEB2iH1xDHYrIHCd
- kxv0vtqXLjVRH2Iqy74S1aTfFcj0AuxHcGR4AFK53+UDwGRdgS7ir/MFctuaoMnh95Mi
- Z6+NFaawwO9zF6Cx3xsNikyM2i1iog9zS9gVKBiNLlY0e++E13Fsg0hAlQtPvFEh0MeW
- Cfcg==
-X-Gm-Message-State: AOAM533fSTmgQFMFFihFBI76+AAfxNpHwTpbfaFHUqW7j/ovPt8TbtKS
- EjKrr/RX7M6T7q+dWFLOsGE=
-X-Google-Smtp-Source: ABdhPJzUQtQyA8rIqlaxLQLZSasS1vsyosz/kR5wiRi3xetMA5jLVI3kzopPGQ7NkDQDp7X8o0RnNQ==
-X-Received: by 2002:a5d:6786:: with SMTP id v6mr14645553wru.290.1625559892980; 
- Tue, 06 Jul 2021 01:24:52 -0700 (PDT)
+ bh=VL7sOlTaleWx9kDUQWI+9cTng1e8c7L8JxDVUCCyAEg=;
+ b=SfpCg6ogoCKMOF7R6FYVo+iRBvD/fmhh6s2Uq+Py9jOeDNldahfks0orW8O01LEpxm
+ VqkuTg2ly2uLZ5LNdHFUbV/qgvfwDgQYR4zfjxs2s3QsGL7Yv7XqmtXg1rfYmkB4soec
+ HRNye67TJDKRP262Za0tA1B7jq39YwvmueAumV6v6ySVWV6c3dbK67n4FhuKjP92P7ax
+ hHwjq+z005aKWGpzAM87ju6Y0kabQBLbspEtxk9mphqIRfvE445SAtUrLTeWqe9v3bGx
+ D7ix4eAlLPpTWNucBjXj2XIQxdr7T0Vy3Lv05/6riQrEfx0UajT0uz8w1n41CxYDm5ng
+ ABTQ==
+X-Gm-Message-State: AOAM533uKD/OG9nr8xjkqV4IoOrbkFunNVgjKDpzn8wYbRCNPIuBEKMq
+ MH8Uuq/3uzSRC3Q6BovvUu/hw2npNIhND6/him1uo44TDLxKBAtc8SRd5um0C7RQ5Qlr7p23IP/
+ WxF4JBDCKs/+YSfUOR7O1BNuxeo2rHUvD3qcsQKntccKeAjdYLQzEjRMhAIVnIntpt6g=
+X-Received: by 2002:a05:600c:358e:: with SMTP id
+ p14mr19296893wmq.136.1625565354233; 
+ Tue, 06 Jul 2021 02:55:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWCjvZdupiZbkHaaHMqlQbigV0pi33B/RNRmQx88HDabaO0wp6m3Agv7b2T5FpJ6L0BRyuQA==
+X-Received: by 2002:a05:600c:358e:: with SMTP id
+ p14mr19296861wmq.136.1625565353987; 
+ Tue, 06 Jul 2021 02:55:53 -0700 (PDT)
 Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
  [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id m29sm1949867wms.13.2021.07.06.01.24.52
+ by smtp.gmail.com with ESMTPSA id z7sm2262483wmi.1.2021.07.06.02.55.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 01:24:52 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] target/xtensa/xtensa-semi: Fix compilation problem on
- Haiku
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Max Filippov <jcmvbkbc@gmail.com>
-Cc: qemu-trivial@nongnu.org, Richard Zak <richard.j.zak@gmail.com>
-References: <20210706081822.1316551-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <dca82fe8-0cc1-d141-eafa-d3bc0934ceaa@amsat.org>
-Date: Tue, 6 Jul 2021 10:24:51 +0200
+ Tue, 06 Jul 2021 02:55:53 -0700 (PDT)
+Subject: Re: [PATCH] misc: Remove redundant new line in perror()
+To: Li Zhijian <lizhijian@cn.fujitsu.com>, qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, richard.henderson@linaro.org, dgilbert@redhat.com,
+ quintela@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210706094433.1766952-1-lizhijian@cn.fujitsu.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <adc664b6-f4c8-1804-357a-f3f0b94e8e24@redhat.com>
+Date: Tue, 6 Jul 2021 11:55:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210706081822.1316551-1-thuth@redhat.com>
+In-Reply-To: <20210706094433.1766952-1-lizhijian@cn.fujitsu.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.442,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,68 +94,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jul 2021 08:24:57 -0000
+X-List-Received-Date: Tue, 06 Jul 2021 09:56:03 -0000
 
-On 7/6/21 10:18 AM, Thomas Huth wrote:
-> The errno numbers are very large on Haiku, so the linking currently
-> fails there with a "final link failed: memory exhausted" error
-> message. We should not use the errno number as array indexes here,
-> thus convert the code to a switch-case statement instead. A clever
-> compiler should be able to optimize this code in a similar way
-> anway.
-> 
-> Reported-by: Richard Zak <richard.j.zak@gmail.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Cc'ing qemu-trivial@
+
+On 7/6/21 11:44 AM, Li Zhijian wrote:
+> Signed-off-by: Li Zhijian <lizhijian@cn.fujitsu.com>
 > ---
->  target/xtensa/xtensa-semi.c | 84 +++++++++++++++++--------------------
->  1 file changed, 39 insertions(+), 45 deletions(-)
+>  migration/rdma.c | 2 +-
+>  softmmu/cpus.c   | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
-> index 79f2b043f2..fa21b7e11f 100644
-> --- a/target/xtensa/xtensa-semi.c
-> +++ b/target/xtensa/xtensa-semi.c
-> @@ -95,59 +95,53 @@ enum {
->  
->  static uint32_t errno_h2g(int host_errno)
->  {
-
-> -        [EFBIG]         = TARGET_EFBIG,
-> -        [ENOSPC]        = TARGET_ENOSPC,
-> -        [ESPIPE]        = TARGET_ESPIPE,
-> -        [EROFS]         = TARGET_EROFS,
-> -        [EMLINK]        = TARGET_EMLINK,
-> -        [EPIPE]         = TARGET_EPIPE,
-> -        [EDOM]          = TARGET_EDOM,
-> -        [ERANGE]        = TARGET_ERANGE,
-> -        [ENOSYS]        = TARGET_ENOSYS,
-> +    case EFBIG:     return TARGET_EFBIG;
-> +    case ENOSPC:    return TARGET_ENOSPC;
-> +    case ESPIPE:    return TARGET_ESPIPE;
-> +    case EROFS:     return TARGET_EROFS;
-> +    case EMLINK:    return TARGET_EMLINK;
-> +    case EPIPE:     return TARGET_EPIPE;
-> +    case EDOM:      return TARGET_EDOM;
-> +    case ERANGE:    return TARGET_ERANGE;
-> +    case ENOSYS:    return TARGET_ENOSYS;
->  #ifdef ELOOP
-> -        [ELOOP]         = TARGET_ELOOP,
-> +    case ELOOP:     return TARGET_ELOOP;
->  #endif
->      };
->  
-> -    if (host_errno == 0) {
-> -        return 0;
-> -    } else if (host_errno > 0 && host_errno < ARRAY_SIZE(guest_errno) &&
-> -            guest_errno[host_errno]) {
-> -        return guest_errno[host_errno];
-> -    } else {
-> -        return TARGET_EINVAL;
-> -    }
-> +    return TARGET_EINVAL;
-
-Matter of aesthetic taste, I'd have use a 'default' case here ;)
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+> diff --git a/migration/rdma.c b/migration/rdma.c
+> index 7fb9646f6ef..e99e2e16a73 100644
+> --- a/migration/rdma.c
+> +++ b/migration/rdma.c
+> @@ -1133,7 +1133,7 @@ static int qemu_rdma_reg_whole_ram_blocks(RDMAContext *rdma)
+>                      IBV_ACCESS_REMOTE_WRITE
+>                      );
+>          if (!local->block[i].mr) {
+> -            perror("Failed to register local dest ram block!\n");
+> +            perror("Failed to register local dest ram block!");
+>              break;
+>          }
+>          rdma->total_registrations++;
+> diff --git a/softmmu/cpus.c b/softmmu/cpus.c
+> index c3caaeb26ec..071085f840b 100644
+> --- a/softmmu/cpus.c
+> +++ b/softmmu/cpus.c
+> @@ -325,7 +325,7 @@ static void sigbus_reraise(void)
+>          sigaddset(&set, SIGBUS);
+>          pthread_sigmask(SIG_UNBLOCK, &set, NULL);
+>      }
+> -    perror("Failed to re-raise SIGBUS!\n");
+> +    perror("Failed to re-raise SIGBUS!");
+>      abort();
 >  }
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
 
