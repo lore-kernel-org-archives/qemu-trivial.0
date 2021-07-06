@@ -1,84 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m0fZm-0001Ql-3z
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 03:33:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41850)
+	id 1m0gHx-00057v-3Q
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 04:18:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m0fZe-0001PX-Ud
- for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 03:32:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55747)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m0gHv-000566-UW
+ for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 04:18:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39988)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m0fZb-0004B3-6C
- for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 03:32:53 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m0gHo-0003aU-AZ
+ for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 04:18:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625556770;
+ s=mimecast20190719; t=1625559509;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wwdjxq0fIdVBg5EpmSPTCzctGDKnbANO6zEWljKS/iI=;
- b=YjFvXXqMagXdIdwFjPM0XEMClGtIXjkLFmCPqC1cNBmvWDvjcHQkK9GFI213O2cVPHU8OL
- 4ilZoR2R7YNkW2k7d+OR1l6TM8EJcsDYqBok2/P5+5Zh0M72dmvh4SS0+kbVfX8/49C4el
- TRPG09ybeEnmK0AT1tefB0hOFJV9FXw=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-574-eKFQ5yJfPRyRaUoyGpdNeA-1; Tue, 06 Jul 2021 03:32:49 -0400
-X-MC-Unique: eKFQ5yJfPRyRaUoyGpdNeA-1
-Received: by mail-wm1-f70.google.com with SMTP id
- z127-20020a1c7e850000b02901e46e4d52c0so766873wmc.6
- for <qemu-trivial@nongnu.org>; Tue, 06 Jul 2021 00:32:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wwdjxq0fIdVBg5EpmSPTCzctGDKnbANO6zEWljKS/iI=;
- b=FrQrpmkRwhCiGnrpue79gW6Xpgodk6JdWDM5mCt2sDO+OikKsCIPN+wt5aC7+WCV+r
- jmjyobR9QDhm4hk7hDL9FkERYH1nJtzkDJBlXhv2BxcAlyMt5bNY0cNBU5kuCy5Mow+H
- ybVHWcnJeh8/OCy3CIp0jzUipuj+Kq08Q1W4W0MohWg4lACGEnfDOYyoegJyZ+QyTEoz
- vOY75dBqfzn+0ff2+TQkQUSkmlGYbWD6uesOg/BeD3dhCbvtmiQMjrvNYTFDpcJTzWH3
- pZbhnF8n0McmgunwhWvfczLMrZ7U65sipKEQceR0CnyB3/g+mxqU4jGzcKdJ5uFnFTRF
- TNUg==
-X-Gm-Message-State: AOAM531RVMF2W8cRu34QfIaZJrhCmxwUXJvrS3gONbLg8Gjb+63moGwV
- mSb+tuVz9JNrEZ4URFUV6pIBvIHc9VexOR5GD7TUYC6aU4K6Q+GqHf+hcRNFiKSHHrqTeviBmzg
- 9VhF4SAfGfhMZxkscqg==
-X-Received: by 2002:a5d:448c:: with SMTP id j12mr20902664wrq.105.1625556768241; 
- Tue, 06 Jul 2021 00:32:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/sHM1vonLAQMos7+97ZaFB8JD8AL3AhckCwpodo+QDedNpgLEDTaqirJLT1uCQRyJx/lBjA==
-X-Received: by 2002:a5d:448c:: with SMTP id j12mr20902629wrq.105.1625556767940; 
- Tue, 06 Jul 2021 00:32:47 -0700 (PDT)
-Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id x187sm5897308wmb.47.2021.07.06.00.32.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 00:32:47 -0700 (PDT)
-Subject: Re: [PATCH] configure: Remove the OBJCC variable from config-host.mak
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org
-References: <20210706071934.1054496-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e16094bb-2bda-db40-8ad6-93faf19a8f9d@redhat.com>
-Date: Tue, 6 Jul 2021 09:32:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ content-transfer-encoding:content-transfer-encoding;
+ bh=/EJ4H8S9Tpye9ssLtSZJ9BxcV+Yo1xIbTT2RiIVlJxs=;
+ b=DOmvJw8TRRZK4k3LBTC4r1MLySJ2dEEUXjtV3AzatVIBL7NIAPj1Mxjjdn9mtmSKZ99SGu
+ Iv9rhbYtT6FJMbOKNT/dlb9ItXY9b7kn4HUgZpa1ZMCBI/RmNogib4oExuDnVp4N2ODwHG
+ Pg4P/uoz8pQw3iJzwuytWyM9CsPS64E=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-243-ylo18xB4O7aTwJiA8Pkkmw-1; Tue, 06 Jul 2021 04:18:28 -0400
+X-MC-Unique: ylo18xB4O7aTwJiA8Pkkmw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 34246C740B;
+ Tue,  6 Jul 2021 08:18:27 +0000 (UTC)
+Received: from thuth.com (ovpn-113-37.ams2.redhat.com [10.36.113.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0E41C60864;
+ Tue,  6 Jul 2021 08:18:24 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Max Filippov <jcmvbkbc@gmail.com>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Zak <richard.j.zak@gmail.com>
+Subject: [PATCH] target/xtensa/xtensa-semi: Fix compilation problem on Haiku
+Date: Tue,  6 Jul 2021 10:18:22 +0200
+Message-Id: <20210706081822.1316551-1-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210706071934.1054496-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.442,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,18 +70,125 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jul 2021 07:32:58 -0000
+X-List-Received-Date: Tue, 06 Jul 2021 08:18:40 -0000
 
-On 7/6/21 9:19 AM, Thomas Huth wrote:
-> The last user of this variable has been removed in commit
-> 660f793093 ("Makefile: inline the relevant parts of rules.mak"),
-> so we don't need this variable in config-host.mak anymore.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  configure | 1 -
->  1 file changed, 1 deletion(-)
+The errno numbers are very large on Haiku, so the linking currently
+fails there with a "final link failed: memory exhausted" error
+message. We should not use the errno number as array indexes here,
+thus convert the code to a switch-case statement instead. A clever
+compiler should be able to optimize this code in a similar way
+anway.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reported-by: Richard Zak <richard.j.zak@gmail.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ target/xtensa/xtensa-semi.c | 84 +++++++++++++++++--------------------
+ 1 file changed, 39 insertions(+), 45 deletions(-)
+
+diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
+index 79f2b043f2..fa21b7e11f 100644
+--- a/target/xtensa/xtensa-semi.c
++++ b/target/xtensa/xtensa-semi.c
+@@ -95,59 +95,53 @@ enum {
+ 
+ static uint32_t errno_h2g(int host_errno)
+ {
+-    static const uint32_t guest_errno[] = {
+-        [EPERM]         = TARGET_EPERM,
+-        [ENOENT]        = TARGET_ENOENT,
+-        [ESRCH]         = TARGET_ESRCH,
+-        [EINTR]         = TARGET_EINTR,
+-        [EIO]           = TARGET_EIO,
+-        [ENXIO]         = TARGET_ENXIO,
+-        [E2BIG]         = TARGET_E2BIG,
+-        [ENOEXEC]       = TARGET_ENOEXEC,
+-        [EBADF]         = TARGET_EBADF,
+-        [ECHILD]        = TARGET_ECHILD,
+-        [EAGAIN]        = TARGET_EAGAIN,
+-        [ENOMEM]        = TARGET_ENOMEM,
+-        [EACCES]        = TARGET_EACCES,
+-        [EFAULT]        = TARGET_EFAULT,
++    switch (host_errno) {
++    case 0:         return 0;
++    case EPERM:     return TARGET_EPERM;
++    case ENOENT:    return TARGET_ENOENT;
++    case ESRCH:     return TARGET_ESRCH;
++    case EINTR:     return TARGET_EINTR;
++    case EIO:       return TARGET_EIO;
++    case ENXIO:     return TARGET_ENXIO;
++    case E2BIG:     return TARGET_E2BIG;
++    case ENOEXEC:   return TARGET_ENOEXEC;
++    case EBADF:     return TARGET_EBADF;
++    case ECHILD:    return TARGET_ECHILD;
++    case EAGAIN:    return TARGET_EAGAIN;
++    case ENOMEM:    return TARGET_ENOMEM;
++    case EACCES:    return TARGET_EACCES;
++    case EFAULT:    return TARGET_EFAULT;
+ #ifdef ENOTBLK
+-        [ENOTBLK]       = TARGET_ENOTBLK,
++    case ENOTBLK:   return TARGET_ENOTBLK;
+ #endif
+-        [EBUSY]         = TARGET_EBUSY,
+-        [EEXIST]        = TARGET_EEXIST,
+-        [EXDEV]         = TARGET_EXDEV,
+-        [ENODEV]        = TARGET_ENODEV,
+-        [ENOTDIR]       = TARGET_ENOTDIR,
+-        [EISDIR]        = TARGET_EISDIR,
+-        [EINVAL]        = TARGET_EINVAL,
+-        [ENFILE]        = TARGET_ENFILE,
+-        [EMFILE]        = TARGET_EMFILE,
+-        [ENOTTY]        = TARGET_ENOTTY,
++    case EBUSY:     return TARGET_EBUSY;
++    case EEXIST:    return TARGET_EEXIST;
++    case EXDEV:     return TARGET_EXDEV;
++    case ENODEV:    return TARGET_ENODEV;
++    case ENOTDIR:   return TARGET_ENOTDIR;
++    case EISDIR:    return TARGET_EISDIR;
++    case EINVAL:    return TARGET_EINVAL;
++    case ENFILE:    return TARGET_ENFILE;
++    case EMFILE:    return TARGET_EMFILE;
++    case ENOTTY:    return TARGET_ENOTTY;
+ #ifdef ETXTBSY
+-        [ETXTBSY]       = TARGET_ETXTBSY,
++    case ETXTBSY:   return TARGET_ETXTBSY;
+ #endif
+-        [EFBIG]         = TARGET_EFBIG,
+-        [ENOSPC]        = TARGET_ENOSPC,
+-        [ESPIPE]        = TARGET_ESPIPE,
+-        [EROFS]         = TARGET_EROFS,
+-        [EMLINK]        = TARGET_EMLINK,
+-        [EPIPE]         = TARGET_EPIPE,
+-        [EDOM]          = TARGET_EDOM,
+-        [ERANGE]        = TARGET_ERANGE,
+-        [ENOSYS]        = TARGET_ENOSYS,
++    case EFBIG:     return TARGET_EFBIG;
++    case ENOSPC:    return TARGET_ENOSPC;
++    case ESPIPE:    return TARGET_ESPIPE;
++    case EROFS:     return TARGET_EROFS;
++    case EMLINK:    return TARGET_EMLINK;
++    case EPIPE:     return TARGET_EPIPE;
++    case EDOM:      return TARGET_EDOM;
++    case ERANGE:    return TARGET_ERANGE;
++    case ENOSYS:    return TARGET_ENOSYS;
+ #ifdef ELOOP
+-        [ELOOP]         = TARGET_ELOOP,
++    case ELOOP:     return TARGET_ELOOP;
+ #endif
+     };
+ 
+-    if (host_errno == 0) {
+-        return 0;
+-    } else if (host_errno > 0 && host_errno < ARRAY_SIZE(guest_errno) &&
+-            guest_errno[host_errno]) {
+-        return guest_errno[host_errno];
+-    } else {
+-        return TARGET_EINVAL;
+-    }
++    return TARGET_EINVAL;
+ }
+ 
+ typedef struct XtensaSimConsole {
+-- 
+2.27.0
 
 
