@@ -1,79 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m0skL-0004YY-H0
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 17:36:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59984)
+	id 1m0wE1-0005f3-08
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 21:19:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m0skK-0004XZ-0v; Tue, 06 Jul 2021 17:36:48 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:44981)
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1m0sOz-0000TM-53
+ for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 17:14:45 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:41764)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1m0skI-000630-Fg; Tue, 06 Jul 2021 17:36:47 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id t15so586426wry.11;
- Tue, 06 Jul 2021 14:36:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=/xyQ+8xWq9WNDxU0P4YSxCX5JZV2CK7DEzY6bJuna8s=;
- b=igFpbRdXB4/EwVwKqsGN1dG/3i72dH9w2y/JYYv8SSo8DYBt9aZG5meU5sJAfJj2iG
- ZmX4G+yp/87YySNubjG2/WjjJPpAYzE78zMpdTeQzVmZjGgK3mbx4mIpaKGbekywxoht
- AzVm3/gW79fLIGZ5LHEwb78BngEUsXoR4oAJSt4lTniMD/ZVBlcHf7poK2j1URRxFDjg
- wUFCV1vtRkBJZvRT08vzNbkQ6eFHCsrUpp1OsbfVrGRzXXIhotrPjNOj2EH8EHAh9dlQ
- VbznE2KkGcX3edXTNg2IqSHE+qx+CmRLEuJQ3CLwx78f0h+CMk+LmvFc8x/+sNM919Nv
- CnQA==
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1m0sOw-0004Re-7M
+ for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 17:14:44 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ oj10-20020a17090b4d8ab0290172f77377ebso293345pjb.0
+ for <qemu-trivial@nongnu.org>; Tue, 06 Jul 2021 14:14:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wExOrkbXE+k9ZzW4PHpFswTvMVslLSEWrRVPqGpkEPQ=;
+ b=OoQqHtKYy4y8XnAq4xz+KE0h5kIUCasmhylHledcVzh5NLJjPC8BUcQFK9l+2lIvEY
+ 1WffRJEIMB0YV31GJkvLOo28qLKf1MKQA9UywbgGRhGF49B5lBoGdDO6Fn3klxqVKoso
+ lvJF9jobLQrDFyRXu70SlD9Nwejo2sMzSU0Vh69h3OJDIABNC1sKoG7+AlaIg3WND0DD
+ PlPPnArg/DbcUVw0esJO650rDgX45YNq55vLS+j8jzguAzjASmjtqQdKvKlO7rwBmq6N
+ bAaTQE+7/fgvds9QpCGclLxPbGd/oZWgNi6n0gpdg2fj2k1VYlj0D3uNbjrvkURFe+j+
+ /CZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=/xyQ+8xWq9WNDxU0P4YSxCX5JZV2CK7DEzY6bJuna8s=;
- b=dSAo9/9WxQckA2tkEg1qgBf+3tlGy5n2gpgoHgm7wfEjxf4ubpCJzar5rk7+ICOO7H
- osYsl/GXHucB3JYA1DENCL68tTPJRKa0yLe+7nS4r4aqB/ydvYNzeOkW7rmJ3gGHxC2N
- KyOEAH7t/w6M7sKrMKpK6Lcmt12HRg/T8KELpMj9i1J/aKQfx6E7lqWOTgnV8vxR47qp
- ltRUR8r+TpUoD2kwpPc0VeiaGJKBvKs1vZqoefsDblVSZdzJEunPT7CRIPYOMDXS409P
- GN5w0Fh63qQ/c5OaNlmCwDuItbTSDzf3B7cx0aksfZTo6Xlm7FEq5hCKREoBf4ZNlBCX
- BO6g==
-X-Gm-Message-State: AOAM533BNhkJBM8/Wqh0MBeg+o4Kx+BmuOXOIXRm2fbIKoi1jtara3uq
- TjoQmnR7AmD3mbgPQ2G/KjShmaSi0ck=
-X-Google-Smtp-Source: ABdhPJwDCeDzZvA+ekifp0ojInNGpnzEB7eGu19zbOq53BVfr40fOrTbWri8Pri6aTH6atIwmkMC4g==
-X-Received: by 2002:a05:6000:12cf:: with SMTP id
- l15mr23911183wrx.24.1625607404129; 
- Tue, 06 Jul 2021 14:36:44 -0700 (PDT)
-Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id r13sm7602921wrt.38.2021.07.06.14.36.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 14:36:43 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [trivial PATCH 1/1] hw/intc: Improve formatting of MEMTX_ERROR
- guest error message
-To: Rebecca Cran <rebecca@nuviainc.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20210706211432.31902-1-rebecca@nuviainc.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8663abbf-8cee-e144-de6e-b5e80634935e@amsat.org>
-Date: Tue, 6 Jul 2021 23:36:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ bh=wExOrkbXE+k9ZzW4PHpFswTvMVslLSEWrRVPqGpkEPQ=;
+ b=pnfzGvv+ItwEsQbDX1xY/RElwHuDGZ7BwYZusPLBgoEPltSFPS6Nyoh/SgZGJ7GIEg
+ d+y29JNfTZwgRgJbZwvPJEMd4fUScnyIQfBcZ0AsGUqDS454SDQAhsJUXBCKj5HRGboN
+ z9nleV8Z/j/Da/rjrfWsol7eoYWxrXn6xe9D64egV9W5W1oGqd5uwJbcv/KLJZoJQC5d
+ lYvD5+pw7PRQBXIQMoMBk8/4QQbPmSPC5xLVRlsYp8nlLg1XCt7RHSdvhhHQouWZfq+A
+ Af5I19EV0P3D+bcEjPty7IdrVWc28KDIkMjnc4wJ6NpTqs6s4O6JI0CFME0Zd30JjrBD
+ CCfA==
+X-Gm-Message-State: AOAM532Xvsh6TkFu5vLfGOEfH5eok3Vxa52gRFvllYr+9oSZr16UUGS9
+ uV+h+PAADs+7So8KdOUUMEVa7A==
+X-Google-Smtp-Source: ABdhPJwZkUWiPVmnITfLmoY69tZBI8xSP8tPTudpRAWA6ZWtJPRpR181J1WT6IOqeB65QYEAYf76YQ==
+X-Received: by 2002:a17:90b:2512:: with SMTP id
+ ns18mr22460568pjb.215.1625606080012; 
+ Tue, 06 Jul 2021 14:14:40 -0700 (PDT)
+Received: from linbox.int.bluestop.org.com
+ (c-174-52-16-57.hsd1.ut.comcast.net. [174.52.16.57])
+ by smtp.gmail.com with ESMTPSA id e2sm20606290pgh.5.2021.07.06.14.14.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Jul 2021 14:14:39 -0700 (PDT)
+From: Rebecca Cran <rebecca@nuviainc.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+Cc: Rebecca Cran <rebecca@nuviainc.com>,
+	qemu-devel@nongnu.org
+Subject: [trivial PATCH 1/1] hw/intc: Improve formatting of MEMTX_ERROR guest
+ error message
+Date: Tue,  6 Jul 2021 15:14:32 -0600
+Message-Id: <20210706211432.31902-1-rebecca@nuviainc.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20210706211432.31902-1-rebecca@nuviainc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=rebecca@nuviainc.com; helo=mail-pj1-x1033.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 06 Jul 2021 21:19:38 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,16 +81,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jul 2021 21:36:48 -0000
+X-List-Received-Date: Tue, 06 Jul 2021 21:14:45 -0000
 
-On 7/6/21 11:14 PM, Rebecca Cran wrote:
-> Add a space in the message printed when gicr_read*/gicr_write* returns
-> MEMTX_ERROR in arm_gicv3_redist.c.
-> 
-> Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
-> ---
->  hw/intc/arm_gicv3_redist.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Add a space in the message printed when gicr_read*/gicr_write* returns
+MEMTX_ERROR in arm_gicv3_redist.c.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
+---
+ hw/intc/arm_gicv3_redist.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 8645220d6183..53da703ed843 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -453,7 +453,7 @@ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
+     if (r == MEMTX_ERROR) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: invalid guest read at offset " TARGET_FMT_plx
+-                      "size %u\n", __func__, offset, size);
++                      " size %u\n", __func__, offset, size);
+         trace_gicv3_redist_badread(gicv3_redist_affid(cs), offset,
+                                    size, attrs.secure);
+         /* The spec requires that reserved registers are RAZ/WI;
+@@ -510,7 +510,7 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
+     if (r == MEMTX_ERROR) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: invalid guest write at offset " TARGET_FMT_plx
+-                      "size %u\n", __func__, offset, size);
++                      " size %u\n", __func__, offset, size);
+         trace_gicv3_redist_badwrite(gicv3_redist_affid(cs), offset, data,
+                                     size, attrs.secure);
+         /* The spec requires that reserved registers are RAZ/WI;
+-- 
+2.26.2
+
 
