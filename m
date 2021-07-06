@@ -1,77 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m0fYv-0000Ud-S0
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 03:32:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41652)
+	id 1m0fZm-0001Ql-3z
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 03:33:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41850)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1m0fYr-0000T0-8B
- for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 03:32:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46964)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m0fZe-0001PX-Ud
+ for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 03:32:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55747)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1m0fYn-0003bX-Ae
- for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 03:32:04 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m0fZb-0004B3-6C
+ for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 03:32:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625556720;
+ s=mimecast20190719; t=1625556770;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cPWS48xyHJPcaLp1sBYohywsr40Y8GFu+h4AF/SahzU=;
- b=Fo1V8UY0t4p8bGyjnTS8iMTuidAysSdS7w0/BjpO2nZFL9nc6cweK0ijH9AUA4MgcoIiBX
- XQq2NTOt8Ieyr6tlUKZZiw8Pn6EGF7qA6D+6TAf7AInt2MWXzQSzaSzBUYeiPf1Kk1+EV7
- Ie+Mkd6/hvUlSgOca8LNWUILVUd+Jyw=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-8-GAHee0oEM8CvSIZPjd7maw-1; Tue, 06 Jul 2021 03:31:59 -0400
-X-MC-Unique: GAHee0oEM8CvSIZPjd7maw-1
-Received: by mail-wm1-f71.google.com with SMTP id
- z127-20020a1c7e850000b02901e46e4d52c0so766085wmc.6
- for <qemu-trivial@nongnu.org>; Tue, 06 Jul 2021 00:31:59 -0700 (PDT)
+ bh=wwdjxq0fIdVBg5EpmSPTCzctGDKnbANO6zEWljKS/iI=;
+ b=YjFvXXqMagXdIdwFjPM0XEMClGtIXjkLFmCPqC1cNBmvWDvjcHQkK9GFI213O2cVPHU8OL
+ 4ilZoR2R7YNkW2k7d+OR1l6TM8EJcsDYqBok2/P5+5Zh0M72dmvh4SS0+kbVfX8/49C4el
+ TRPG09ybeEnmK0AT1tefB0hOFJV9FXw=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-574-eKFQ5yJfPRyRaUoyGpdNeA-1; Tue, 06 Jul 2021 03:32:49 -0400
+X-MC-Unique: eKFQ5yJfPRyRaUoyGpdNeA-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ z127-20020a1c7e850000b02901e46e4d52c0so766873wmc.6
+ for <qemu-trivial@nongnu.org>; Tue, 06 Jul 2021 00:32:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=cPWS48xyHJPcaLp1sBYohywsr40Y8GFu+h4AF/SahzU=;
- b=asywnmZMLv8/8jUSh4ufQDFSOeJaEipWq2Kw5wCz0WKYoBzJZgfGeOdkKuE4WibrZ0
- JE6VTkoSOppmx1vjMRxZtAkHXHiKeeWI8UFrwQfdDEYmOXYi3/Jyo3Lb3B2uJFjZ5QEY
- /r/671iTbiaYlHnDgBUiqU2D+CrKZ56wFaCZTiNZd6UdEr40Odc09kvDqcNvG5C3Jaow
- q4c3pyV0zuBIEiC2dBmQA7pxpIeFkk2Ws5icMigrXjm1KxS5WDftGyd1R2nGbx18S6sR
- cdtCWuHTMVWEMg33kJyQE0mAGPJCl1fHrNACGU0+zMl49KBSYiuF1QAZKusLa2fZ2PH4
- lOwg==
-X-Gm-Message-State: AOAM533B4iMeEtR08L6FMWgQPAEuqsPpSEpm1bW3cRfUiSFn2yNSkiim
- d8zSelFIWT09mFJmTcerAdUZEpkcUzk5jiSKjfxhUq/o0Zgb+D0gxMUPvV6pS8jhkShgm9G817n
- iX2ggJX8m2PL+xTvgNQ==
-X-Received: by 2002:a7b:c34d:: with SMTP id l13mr3150190wmj.99.1625556718229; 
- Tue, 06 Jul 2021 00:31:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJztOf24+lpgNpDE4vlgF7YlTWPcztiWuTcSy/b1fJvgdNZM62EvLJmRQJ06YZZkSBAHo4uGIA==
-X-Received: by 2002:a7b:c34d:: with SMTP id l13mr3150168wmj.99.1625556718041; 
- Tue, 06 Jul 2021 00:31:58 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id w9sm15024137wmc.19.2021.07.06.00.31.57
+ bh=wwdjxq0fIdVBg5EpmSPTCzctGDKnbANO6zEWljKS/iI=;
+ b=FrQrpmkRwhCiGnrpue79gW6Xpgodk6JdWDM5mCt2sDO+OikKsCIPN+wt5aC7+WCV+r
+ jmjyobR9QDhm4hk7hDL9FkERYH1nJtzkDJBlXhv2BxcAlyMt5bNY0cNBU5kuCy5Mow+H
+ ybVHWcnJeh8/OCy3CIp0jzUipuj+Kq08Q1W4W0MohWg4lACGEnfDOYyoegJyZ+QyTEoz
+ vOY75dBqfzn+0ff2+TQkQUSkmlGYbWD6uesOg/BeD3dhCbvtmiQMjrvNYTFDpcJTzWH3
+ pZbhnF8n0McmgunwhWvfczLMrZ7U65sipKEQceR0CnyB3/g+mxqU4jGzcKdJ5uFnFTRF
+ TNUg==
+X-Gm-Message-State: AOAM531RVMF2W8cRu34QfIaZJrhCmxwUXJvrS3gONbLg8Gjb+63moGwV
+ mSb+tuVz9JNrEZ4URFUV6pIBvIHc9VexOR5GD7TUYC6aU4K6Q+GqHf+hcRNFiKSHHrqTeviBmzg
+ 9VhF4SAfGfhMZxkscqg==
+X-Received: by 2002:a5d:448c:: with SMTP id j12mr20902664wrq.105.1625556768241; 
+ Tue, 06 Jul 2021 00:32:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy/sHM1vonLAQMos7+97ZaFB8JD8AL3AhckCwpodo+QDedNpgLEDTaqirJLT1uCQRyJx/lBjA==
+X-Received: by 2002:a5d:448c:: with SMTP id j12mr20902629wrq.105.1625556767940; 
+ Tue, 06 Jul 2021 00:32:47 -0700 (PDT)
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id x187sm5897308wmb.47.2021.07.06.00.32.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 00:31:57 -0700 (PDT)
+ Tue, 06 Jul 2021 00:32:47 -0700 (PDT)
 Subject: Re: [PATCH] configure: Remove the OBJCC variable from config-host.mak
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org
 References: <20210706071934.1054496-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <61e0202e-aeea-f66b-bd76-615a66690df4@redhat.com>
-Date: Tue, 6 Jul 2021 09:31:56 +0200
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <e16094bb-2bda-db40-8ad6-93faf19a8f9d@redhat.com>
+Date: Tue, 6 Jul 2021 09:32:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
 In-Reply-To: <20210706071934.1054496-1-thuth@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -93,36 +91,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jul 2021 07:32:05 -0000
+X-List-Received-Date: Tue, 06 Jul 2021 07:32:58 -0000
 
-On 06/07/21 09:19, Thomas Huth wrote:
+On 7/6/21 9:19 AM, Thomas Huth wrote:
 > The last user of this variable has been removed in commit
 > 660f793093 ("Makefile: inline the relevant parts of rules.mak"),
 > so we don't need this variable in config-host.mak anymore.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-There's quite a few more: CXX, OBJCC, ARFLAGS, RANLIB, NM, PKG_CONFIG, 
-WINDRES if I didn't miss anything.
-
-Paolo
-
 > ---
->   configure | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/configure b/configure
-> index e799d908a3..068716a56c 100755
-> --- a/configure
-> +++ b/configure
-> @@ -5888,7 +5888,6 @@ if $iasl -h > /dev/null 2>&1; then
->     echo "CONFIG_IASL=$iasl" >> $config_host_mak
->   fi
->   echo "CXX=$cxx" >> $config_host_mak
-> -echo "OBJCC=$objcc" >> $config_host_mak
->   echo "AR=$ar" >> $config_host_mak
->   echo "ARFLAGS=$ARFLAGS" >> $config_host_mak
->   echo "AS=$as" >> $config_host_mak
-> 
+>  configure | 1 -
+>  1 file changed, 1 deletion(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
