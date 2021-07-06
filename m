@@ -1,63 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m0gHx-00057v-3Q
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 04:18:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50288)
+	id 1m0gO2-0004KB-Je
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 04:24:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m0gHv-000566-UW
- for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 04:18:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39988)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m0gHo-0003aU-AZ
- for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 04:18:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625559509;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=/EJ4H8S9Tpye9ssLtSZJ9BxcV+Yo1xIbTT2RiIVlJxs=;
- b=DOmvJw8TRRZK4k3LBTC4r1MLySJ2dEEUXjtV3AzatVIBL7NIAPj1Mxjjdn9mtmSKZ99SGu
- Iv9rhbYtT6FJMbOKNT/dlb9ItXY9b7kn4HUgZpa1ZMCBI/RmNogib4oExuDnVp4N2ODwHG
- Pg4P/uoz8pQw3iJzwuytWyM9CsPS64E=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-243-ylo18xB4O7aTwJiA8Pkkmw-1; Tue, 06 Jul 2021 04:18:28 -0400
-X-MC-Unique: ylo18xB4O7aTwJiA8Pkkmw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 34246C740B;
- Tue,  6 Jul 2021 08:18:27 +0000 (UTC)
-Received: from thuth.com (ovpn-113-37.ams2.redhat.com [10.36.113.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0E41C60864;
- Tue,  6 Jul 2021 08:18:24 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Max Filippov <jcmvbkbc@gmail.com>
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Zak <richard.j.zak@gmail.com>
-Subject: [PATCH] target/xtensa/xtensa-semi: Fix compilation problem on Haiku
-Date: Tue,  6 Jul 2021 10:18:22 +0200
-Message-Id: <20210706081822.1316551-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m0gO1-0004IU-Kp; Tue, 06 Jul 2021 04:24:57 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:43958)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1m0gNz-0008V0-T4; Tue, 06 Jul 2021 04:24:57 -0400
+Received: by mail-wr1-x430.google.com with SMTP id a13so24977906wrf.10;
+ Tue, 06 Jul 2021 01:24:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=0ySQRSZ8jjmhlVxquqYSKh7mC06W+9D7QTTMmCG1iho=;
+ b=LXy6k+Kxo7PpAZBm3+fh9s5EAgMsWstXOGW0cXQ1od5W4yJhrQNg4RAQp/AyLQ0ZWk
+ 80RVkGJvvfFbGsIC+S/whXwtLAT3SpJqAFYjtBI2AxECEEjRiStqTrBpsjrYmqWHJosO
+ RheGbP66p2FuEbTEU0I1wfJTfMlon2siBPo4W29pyfn6lBOrNNIRNMDXNtdL+I3GaJ1Z
+ 5GB3yMK/g/BDk9vKojwTe16tSiZj4Xcn9507l6+ujsPO4FAP3jQWs70E5433xZnGCm7f
+ wtlZUJQAXBpCM2pcPYUxRLFxGN/e7Xzk691PFLu1owyIM1EDq6fFDCJFjw/h92QlSbP9
+ jTgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=0ySQRSZ8jjmhlVxquqYSKh7mC06W+9D7QTTMmCG1iho=;
+ b=H7VfpmwlylwGDcRCcvlrcfYf2aPe7vromzej9fxt97zBDB329uzK+hv5IE4Hud/Ymu
+ RiXqfc/LL2hLqwwu4EkQC+5mBpvxso8167y9SWA6xCZJD6GDRksuiGwVE6C3h/9VFWG7
+ n10qUVUalzEhZJRDsgkvwYu3bJoKhEzsywOfzZwv+wpNfpGZguX9nEB2iH1xDHYrIHCd
+ kxv0vtqXLjVRH2Iqy74S1aTfFcj0AuxHcGR4AFK53+UDwGRdgS7ir/MFctuaoMnh95Mi
+ Z6+NFaawwO9zF6Cx3xsNikyM2i1iog9zS9gVKBiNLlY0e++E13Fsg0hAlQtPvFEh0MeW
+ Cfcg==
+X-Gm-Message-State: AOAM533fSTmgQFMFFihFBI76+AAfxNpHwTpbfaFHUqW7j/ovPt8TbtKS
+ EjKrr/RX7M6T7q+dWFLOsGE=
+X-Google-Smtp-Source: ABdhPJzUQtQyA8rIqlaxLQLZSasS1vsyosz/kR5wiRi3xetMA5jLVI3kzopPGQ7NkDQDp7X8o0RnNQ==
+X-Received: by 2002:a5d:6786:: with SMTP id v6mr14645553wru.290.1625559892980; 
+ Tue, 06 Jul 2021 01:24:52 -0700 (PDT)
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id m29sm1949867wms.13.2021.07.06.01.24.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Jul 2021 01:24:52 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] target/xtensa/xtensa-semi: Fix compilation problem on
+ Haiku
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Max Filippov <jcmvbkbc@gmail.com>
+Cc: qemu-trivial@nongnu.org, Richard Zak <richard.j.zak@gmail.com>
+References: <20210706081822.1316551-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <dca82fe8-0cc1-d141-eafa-d3bc0934ceaa@amsat.org>
+Date: Tue, 6 Jul 2021 10:24:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20210706081822.1316551-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.442,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,125 +83,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jul 2021 08:18:40 -0000
+X-List-Received-Date: Tue, 06 Jul 2021 08:24:57 -0000
 
-The errno numbers are very large on Haiku, so the linking currently
-fails there with a "final link failed: memory exhausted" error
-message. We should not use the errno number as array indexes here,
-thus convert the code to a switch-case statement instead. A clever
-compiler should be able to optimize this code in a similar way
-anway.
+On 7/6/21 10:18 AM, Thomas Huth wrote:
+> The errno numbers are very large on Haiku, so the linking currently
+> fails there with a "final link failed: memory exhausted" error
+> message. We should not use the errno number as array indexes here,
+> thus convert the code to a switch-case statement instead. A clever
+> compiler should be able to optimize this code in a similar way
+> anway.
+> 
+> Reported-by: Richard Zak <richard.j.zak@gmail.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  target/xtensa/xtensa-semi.c | 84 +++++++++++++++++--------------------
+>  1 file changed, 39 insertions(+), 45 deletions(-)
+> 
+> diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
+> index 79f2b043f2..fa21b7e11f 100644
+> --- a/target/xtensa/xtensa-semi.c
+> +++ b/target/xtensa/xtensa-semi.c
+> @@ -95,59 +95,53 @@ enum {
+>  
+>  static uint32_t errno_h2g(int host_errno)
+>  {
 
-Reported-by: Richard Zak <richard.j.zak@gmail.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- target/xtensa/xtensa-semi.c | 84 +++++++++++++++++--------------------
- 1 file changed, 39 insertions(+), 45 deletions(-)
+> -        [EFBIG]         = TARGET_EFBIG,
+> -        [ENOSPC]        = TARGET_ENOSPC,
+> -        [ESPIPE]        = TARGET_ESPIPE,
+> -        [EROFS]         = TARGET_EROFS,
+> -        [EMLINK]        = TARGET_EMLINK,
+> -        [EPIPE]         = TARGET_EPIPE,
+> -        [EDOM]          = TARGET_EDOM,
+> -        [ERANGE]        = TARGET_ERANGE,
+> -        [ENOSYS]        = TARGET_ENOSYS,
+> +    case EFBIG:     return TARGET_EFBIG;
+> +    case ENOSPC:    return TARGET_ENOSPC;
+> +    case ESPIPE:    return TARGET_ESPIPE;
+> +    case EROFS:     return TARGET_EROFS;
+> +    case EMLINK:    return TARGET_EMLINK;
+> +    case EPIPE:     return TARGET_EPIPE;
+> +    case EDOM:      return TARGET_EDOM;
+> +    case ERANGE:    return TARGET_ERANGE;
+> +    case ENOSYS:    return TARGET_ENOSYS;
+>  #ifdef ELOOP
+> -        [ELOOP]         = TARGET_ELOOP,
+> +    case ELOOP:     return TARGET_ELOOP;
+>  #endif
+>      };
+>  
+> -    if (host_errno == 0) {
+> -        return 0;
+> -    } else if (host_errno > 0 && host_errno < ARRAY_SIZE(guest_errno) &&
+> -            guest_errno[host_errno]) {
+> -        return guest_errno[host_errno];
+> -    } else {
+> -        return TARGET_EINVAL;
+> -    }
+> +    return TARGET_EINVAL;
 
-diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
-index 79f2b043f2..fa21b7e11f 100644
---- a/target/xtensa/xtensa-semi.c
-+++ b/target/xtensa/xtensa-semi.c
-@@ -95,59 +95,53 @@ enum {
- 
- static uint32_t errno_h2g(int host_errno)
- {
--    static const uint32_t guest_errno[] = {
--        [EPERM]         = TARGET_EPERM,
--        [ENOENT]        = TARGET_ENOENT,
--        [ESRCH]         = TARGET_ESRCH,
--        [EINTR]         = TARGET_EINTR,
--        [EIO]           = TARGET_EIO,
--        [ENXIO]         = TARGET_ENXIO,
--        [E2BIG]         = TARGET_E2BIG,
--        [ENOEXEC]       = TARGET_ENOEXEC,
--        [EBADF]         = TARGET_EBADF,
--        [ECHILD]        = TARGET_ECHILD,
--        [EAGAIN]        = TARGET_EAGAIN,
--        [ENOMEM]        = TARGET_ENOMEM,
--        [EACCES]        = TARGET_EACCES,
--        [EFAULT]        = TARGET_EFAULT,
-+    switch (host_errno) {
-+    case 0:         return 0;
-+    case EPERM:     return TARGET_EPERM;
-+    case ENOENT:    return TARGET_ENOENT;
-+    case ESRCH:     return TARGET_ESRCH;
-+    case EINTR:     return TARGET_EINTR;
-+    case EIO:       return TARGET_EIO;
-+    case ENXIO:     return TARGET_ENXIO;
-+    case E2BIG:     return TARGET_E2BIG;
-+    case ENOEXEC:   return TARGET_ENOEXEC;
-+    case EBADF:     return TARGET_EBADF;
-+    case ECHILD:    return TARGET_ECHILD;
-+    case EAGAIN:    return TARGET_EAGAIN;
-+    case ENOMEM:    return TARGET_ENOMEM;
-+    case EACCES:    return TARGET_EACCES;
-+    case EFAULT:    return TARGET_EFAULT;
- #ifdef ENOTBLK
--        [ENOTBLK]       = TARGET_ENOTBLK,
-+    case ENOTBLK:   return TARGET_ENOTBLK;
- #endif
--        [EBUSY]         = TARGET_EBUSY,
--        [EEXIST]        = TARGET_EEXIST,
--        [EXDEV]         = TARGET_EXDEV,
--        [ENODEV]        = TARGET_ENODEV,
--        [ENOTDIR]       = TARGET_ENOTDIR,
--        [EISDIR]        = TARGET_EISDIR,
--        [EINVAL]        = TARGET_EINVAL,
--        [ENFILE]        = TARGET_ENFILE,
--        [EMFILE]        = TARGET_EMFILE,
--        [ENOTTY]        = TARGET_ENOTTY,
-+    case EBUSY:     return TARGET_EBUSY;
-+    case EEXIST:    return TARGET_EEXIST;
-+    case EXDEV:     return TARGET_EXDEV;
-+    case ENODEV:    return TARGET_ENODEV;
-+    case ENOTDIR:   return TARGET_ENOTDIR;
-+    case EISDIR:    return TARGET_EISDIR;
-+    case EINVAL:    return TARGET_EINVAL;
-+    case ENFILE:    return TARGET_ENFILE;
-+    case EMFILE:    return TARGET_EMFILE;
-+    case ENOTTY:    return TARGET_ENOTTY;
- #ifdef ETXTBSY
--        [ETXTBSY]       = TARGET_ETXTBSY,
-+    case ETXTBSY:   return TARGET_ETXTBSY;
- #endif
--        [EFBIG]         = TARGET_EFBIG,
--        [ENOSPC]        = TARGET_ENOSPC,
--        [ESPIPE]        = TARGET_ESPIPE,
--        [EROFS]         = TARGET_EROFS,
--        [EMLINK]        = TARGET_EMLINK,
--        [EPIPE]         = TARGET_EPIPE,
--        [EDOM]          = TARGET_EDOM,
--        [ERANGE]        = TARGET_ERANGE,
--        [ENOSYS]        = TARGET_ENOSYS,
-+    case EFBIG:     return TARGET_EFBIG;
-+    case ENOSPC:    return TARGET_ENOSPC;
-+    case ESPIPE:    return TARGET_ESPIPE;
-+    case EROFS:     return TARGET_EROFS;
-+    case EMLINK:    return TARGET_EMLINK;
-+    case EPIPE:     return TARGET_EPIPE;
-+    case EDOM:      return TARGET_EDOM;
-+    case ERANGE:    return TARGET_ERANGE;
-+    case ENOSYS:    return TARGET_ENOSYS;
- #ifdef ELOOP
--        [ELOOP]         = TARGET_ELOOP,
-+    case ELOOP:     return TARGET_ELOOP;
- #endif
-     };
- 
--    if (host_errno == 0) {
--        return 0;
--    } else if (host_errno > 0 && host_errno < ARRAY_SIZE(guest_errno) &&
--            guest_errno[host_errno]) {
--        return guest_errno[host_errno];
--    } else {
--        return TARGET_EINVAL;
--    }
-+    return TARGET_EINVAL;
- }
- 
- typedef struct XtensaSimConsole {
--- 
-2.27.0
+Matter of aesthetic taste, I'd have use a 'default' case here ;)
 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+>  }
 
