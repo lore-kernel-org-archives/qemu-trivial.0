@@ -1,65 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m0i7m-0000mo-NA
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 06:16:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45174)
+	id 1m0pW7-0007CF-Fj
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 14:09:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49120)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1m0i7l-0000iV-Gv; Tue, 06 Jul 2021 06:16:17 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:35719)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1m0i7j-0001uj-Pb; Tue, 06 Jul 2021 06:16:17 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id gn32so33372187ejc.2;
- Tue, 06 Jul 2021 03:16:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tsh9az0vJIIQiTanBnUFVZwMAk8L2WxM9kkdKUVKNQ0=;
- b=RZAJkB1jqIMg0a+Dpuv2TwFu6Mi96TQmUTQ1yUd67LMrpYC037STW4MVu3GL6VmGq0
- pInVmmvluAf5PNw66MvNwadtf3sr8LC3EczUw+EJWAI6CMrZqdfbNnK0MF6CJGwzDknc
- fkAGw0fybUic66ahl2y9TJsEIf26LzsAX0dZJ/iASBYZ+WXoDi6QlG+p6vuyb1FYn5K8
- c1ox9+Ay9TBKCc6R1ngrYfwa4FY4/7ZRqRCsaswJwLEL/Ku6jMGoFtfMxL+WvL2by3DS
- pWjtNgLeXr8Yq7mbjAQvi6b+HUb5z2hf6NpnNs6pNjl85WkoEab6QS5LoxiB5DCLJEVU
- al6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tsh9az0vJIIQiTanBnUFVZwMAk8L2WxM9kkdKUVKNQ0=;
- b=ZvKZyouVB9VHggA57loSfiwasxzKDN2Pq95NE6cD1exhZzLWfjxZ9vOpZbDifjjbU9
- LMd3gcMHudFddscjKHYbGLiJaU3gYTDQqQMxA4BFBd6rcYFGqqjUqmPsihKbNECgY7ib
- I0e0IipbuleoT0EryuFDZiI+EdhvPchecM6uW0UQjLRIOU2+KAKS4TLrnhcPT77UKeuh
- XIfMkVyOnoAPXOkP/C5IUt5CF7otBkRAaLxLq71VXqGov2nELZK9ozB5XlibNcD5tOzT
- 6VEmKvpnO3xcn0gBQarKl0rGEmVmFy2xgWcKwANePVtlajaNTo/O+ooQsuoeIIUSG6vv
- 8y+g==
-X-Gm-Message-State: AOAM533c6dHUPotUDc0fvwMYY2MsBTZ+ghMrT6oEXWFf5fcZVvDcfSqd
- rIBj30JDaPYrEyw2Nyenzfko39d6Z+R8nPwAE4g=
-X-Google-Smtp-Source: ABdhPJw900DhpzxwPxrBoX9s1kyFGsolm4iRxyTDOEeeAjCW93vS3wI3iGoQaMa99yvd2FSMklcoEH3r1gF7Vb7Gocs=
-X-Received: by 2002:a17:906:660f:: with SMTP id
- b15mr17916757ejp.443.1625566573025; 
- Tue, 06 Jul 2021 03:16:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1m0pW6-0007Bu-3o; Tue, 06 Jul 2021 14:09:54 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:39864
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1m0pW3-0006ml-Ij; Tue, 06 Jul 2021 14:09:53 -0400
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 832AFDA0F37;
+ Tue,  6 Jul 2021 20:09:47 +0200 (CEST)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id 2054F460015; Tue,  6 Jul 2021 20:09:47 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH] target/avr: Fix compiler errors (-Werror=enum-conversion)
+Date: Tue,  6 Jul 2021 20:09:36 +0200
+Message-Id: <20210706180936.249912-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-References: <20210706081822.1316551-1-thuth@redhat.com>
-In-Reply-To: <20210706081822.1316551-1-thuth@redhat.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Tue, 6 Jul 2021 03:16:01 -0700
-Message-ID: <CAMo8BfKXDE=_q+4rx6At4VM20i+J_Tv6+PCG7D==Eo8Ubh2SHQ@mail.gmail.com>
-Subject: Re: [PATCH] target/xtensa/xtensa-semi: Fix compilation problem on
- Haiku
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Richard Zak <richard.j.zak@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=jcmvbkbc@gmail.com; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.999,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,26 +46,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jul 2021 10:16:18 -0000
+X-List-Received-Date: Tue, 06 Jul 2021 18:09:54 -0000
 
-On Tue, Jul 6, 2021 at 1:18 AM Thomas Huth <thuth@redhat.com> wrote:
->
-> The errno numbers are very large on Haiku, so the linking currently
-> fails there with a "final link failed: memory exhausted" error
-> message. We should not use the errno number as array indexes here,
-> thus convert the code to a switch-case statement instead. A clever
-> compiler should be able to optimize this code in a similar way
-> anway.
->
-> Reported-by: Richard Zak <richard.j.zak@gmail.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  target/xtensa/xtensa-semi.c | 84 +++++++++++++++++--------------------
->  1 file changed, 39 insertions(+), 45 deletions(-)
+../target/avr/translate.c: In function ‘gen_jmp_ez’:
+../target/avr/translate.c:1012:22: error: implicit conversion from ‘enum <anonymous>’ to ‘DisasJumpType’ [-Werror=enum-conversion]
+ 1012 |     ctx->base.is_jmp = DISAS_LOOKUP;
+      |                      ^
 
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
+-Werror=enum-conversion is not enabled by -Wall, but by -Weverything
+with clang for example.
+
+As other targets use similar define statements, I think that's a simple fix.
+
+Regards,
+Stefan
+
+
+ target/avr/translate.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/target/avr/translate.c b/target/avr/translate.c
+index c06ce45bc7..fcc839ac36 100644
+--- a/target/avr/translate.c
++++ b/target/avr/translate.c
+@@ -70,11 +70,9 @@ static const char reg_names[NUMBER_OF_CPU_REGISTERS][8] = {
+ };
+ #define REG(x) (cpu_r[x])
+ 
+-enum {
+-    DISAS_EXIT   = DISAS_TARGET_0,  /* We want return to the cpu main loop.  */
+-    DISAS_LOOKUP = DISAS_TARGET_1,  /* We have a variable condition exit.  */
+-    DISAS_CHAIN  = DISAS_TARGET_2,  /* We have a single condition exit.  */
+-};
++#define DISAS_EXIT   DISAS_TARGET_0  /* We want return to the cpu main loop.  */
++#define DISAS_LOOKUP DISAS_TARGET_1  /* We have a variable condition exit.  */
++#define DISAS_CHAIN  DISAS_TARGET_2  /* We have a single condition exit.  */
+ 
+ typedef struct DisasContext DisasContext;
+ 
 -- 
-Thanks.
--- Max
+2.30.2
+
 
