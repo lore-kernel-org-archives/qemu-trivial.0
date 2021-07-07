@@ -1,75 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m0wE1-0005f3-08
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jul 2021 21:19:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56142)
+	id 1m119i-00020w-1F
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Jul 2021 02:35:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1m0sOz-0000TM-53
- for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 17:14:45 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:41764)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1m0sOw-0004Re-7M
- for qemu-trivial@nongnu.org; Tue, 06 Jul 2021 17:14:44 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id
- oj10-20020a17090b4d8ab0290172f77377ebso293345pjb.0
- for <qemu-trivial@nongnu.org>; Tue, 06 Jul 2021 14:14:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wExOrkbXE+k9ZzW4PHpFswTvMVslLSEWrRVPqGpkEPQ=;
- b=OoQqHtKYy4y8XnAq4xz+KE0h5kIUCasmhylHledcVzh5NLJjPC8BUcQFK9l+2lIvEY
- 1WffRJEIMB0YV31GJkvLOo28qLKf1MKQA9UywbgGRhGF49B5lBoGdDO6Fn3klxqVKoso
- lvJF9jobLQrDFyRXu70SlD9Nwejo2sMzSU0Vh69h3OJDIABNC1sKoG7+AlaIg3WND0DD
- PlPPnArg/DbcUVw0esJO650rDgX45YNq55vLS+j8jzguAzjASmjtqQdKvKlO7rwBmq6N
- bAaTQE+7/fgvds9QpCGclLxPbGd/oZWgNi6n0gpdg2fj2k1VYlj0D3uNbjrvkURFe+j+
- /CZw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m119a-0001yb-6m
+ for qemu-trivial@nongnu.org; Wed, 07 Jul 2021 02:35:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30572)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m119V-0004CS-Or
+ for qemu-trivial@nongnu.org; Wed, 07 Jul 2021 02:35:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1625639719;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ntcv5fyXKuU2+pVKGqYkhlhRW/NOqddNpOo9H8/gjBg=;
+ b=BfN5fbbUYv6k1SAlGIRv6AkBto42XKeFJ3tN/70e61PD3DxOnkv5QEJoSo+WbbY5gWb10u
+ rU44+CrS2cIiVF6RkNRIf69vQbPTXltBxgCog89b/7Iyb1UTdh/D6zJB0gRCpRlTu38gmF
+ fW/U+cNkqqXCYrWeTWmXVWdhTaYiTSQ=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-325-_kHfjwe6NQaP41jdv3AgcA-1; Wed, 07 Jul 2021 02:35:17 -0400
+X-MC-Unique: _kHfjwe6NQaP41jdv3AgcA-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ r5-20020a05600c35c5b029020fcaed9f61so339027wmq.1
+ for <qemu-trivial@nongnu.org>; Tue, 06 Jul 2021 23:35:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=wExOrkbXE+k9ZzW4PHpFswTvMVslLSEWrRVPqGpkEPQ=;
- b=pnfzGvv+ItwEsQbDX1xY/RElwHuDGZ7BwYZusPLBgoEPltSFPS6Nyoh/SgZGJ7GIEg
- d+y29JNfTZwgRgJbZwvPJEMd4fUScnyIQfBcZ0AsGUqDS454SDQAhsJUXBCKj5HRGboN
- z9nleV8Z/j/Da/rjrfWsol7eoYWxrXn6xe9D64egV9W5W1oGqd5uwJbcv/KLJZoJQC5d
- lYvD5+pw7PRQBXIQMoMBk8/4QQbPmSPC5xLVRlsYp8nlLg1XCt7RHSdvhhHQouWZfq+A
- Af5I19EV0P3D+bcEjPty7IdrVWc28KDIkMjnc4wJ6NpTqs6s4O6JI0CFME0Zd30JjrBD
- CCfA==
-X-Gm-Message-State: AOAM532Xvsh6TkFu5vLfGOEfH5eok3Vxa52gRFvllYr+9oSZr16UUGS9
- uV+h+PAADs+7So8KdOUUMEVa7A==
-X-Google-Smtp-Source: ABdhPJwZkUWiPVmnITfLmoY69tZBI8xSP8tPTudpRAWA6ZWtJPRpR181J1WT6IOqeB65QYEAYf76YQ==
-X-Received: by 2002:a17:90b:2512:: with SMTP id
- ns18mr22460568pjb.215.1625606080012; 
- Tue, 06 Jul 2021 14:14:40 -0700 (PDT)
-Received: from linbox.int.bluestop.org.com
- (c-174-52-16-57.hsd1.ut.comcast.net. [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id e2sm20606290pgh.5.2021.07.06.14.14.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Jul 2021 14:14:39 -0700 (PDT)
-From: Rebecca Cran <rebecca@nuviainc.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Cc: Rebecca Cran <rebecca@nuviainc.com>,
-	qemu-devel@nongnu.org
-Subject: [trivial PATCH 1/1] hw/intc: Improve formatting of MEMTX_ERROR guest
- error message
-Date: Tue,  6 Jul 2021 15:14:32 -0600
-Message-Id: <20210706211432.31902-1-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
+ bh=ntcv5fyXKuU2+pVKGqYkhlhRW/NOqddNpOo9H8/gjBg=;
+ b=c3EBIT5aZHXKJTzs9acwP6GkACTN5qZR+w/CFhTwRCTBXnffs6ruYGoPOaLWo63OFB
+ 5uUb2lsg/9AOT1x1fdUAzyWVMBwwJid93X8m6KhjXHrDAjx194uDiZ6Dmk34ODQxnTUv
+ Zpk6BbBTWpNjI4xw7Dmspb/KOIhiwbZ3q9RejTshinT2VB9/DavBZ4RVW0JbkXjbfMFL
+ XF/wu9XA7C+N6tAn2XQDAN17wbXDC8jpFAjJi6TEUvNmNxFfAaWbu6AUuHy71Gr9cLfG
+ rJhbZK/wL0pS8B4z8U7hGqVhPJno0ykLQv6jIyCvLaWd/06UjyObMUmcXE4ToAabsODS
+ T/ng==
+X-Gm-Message-State: AOAM533FbpAl3QVY3/f4ygF22g2synmhACkd1V6zD0o+O0fyCclXvs5V
+ zofEc4EGiHhTsXKB6h0weBMa3KZl8+WtvYyxC+9tDHEi+oSXPIZxYZezR5hTpPXgLLwNZgJjD0O
+ VxC3r8ilWalDabCCxBbSCBURZLw3m0oBJQMXXvQVIabf77OF+UYHc67NoPCqpsauCAA==
+X-Received: by 2002:a05:600c:5105:: with SMTP id
+ o5mr13418078wms.42.1625639716658; 
+ Tue, 06 Jul 2021 23:35:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx+vIoeVuFxqq/UelwEEMWRB1/117anVUkSUk6T7gC0hdQaARkbPVJqUABVlZcifRzfTEaY4Q==
+X-Received: by 2002:a05:600c:5105:: with SMTP id
+ o5mr13418047wms.42.1625639716298; 
+ Tue, 06 Jul 2021 23:35:16 -0700 (PDT)
+Received: from thuth.remote.csb (pd9575ead.dip0.t-ipconnect.de.
+ [217.87.94.173])
+ by smtp.gmail.com with ESMTPSA id l9sm19372697wrp.14.2021.07.06.23.35.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Jul 2021 23:35:15 -0700 (PDT)
+Subject: Re: [PATCH] Fix libdaxctl option
+To: Miroslav Rezanina <mrezanin@redhat.com>, qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210707063124.81954-1-mrezanin@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <66a2e508-462b-a19f-3d04-1a55077aba89@redhat.com>
+Date: Wed, 7 Jul 2021 08:35:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=rebecca@nuviainc.com; helo=mail-pj1-x1033.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20210707063124.81954-1-mrezanin@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.442,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 06 Jul 2021 21:19:38 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,39 +93,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jul 2021 21:14:45 -0000
+X-List-Received-Date: Wed, 07 Jul 2021 06:35:27 -0000
 
-Add a space in the message printed when gicr_read*/gicr_write* returns
-MEMTX_ERROR in arm_gicv3_redist.c.
+On 07/07/2021 08.31, Miroslav Rezanina wrote:
+> For some reason, libdaxctl option setting was set to work in an opposite
+> way (--enable-libdaxctl disabled it and vice versa). Fixing this so
+> configuration works properly.
+> 
+> Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
+> ---
+>   configure | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/configure b/configure
+> index 650d9c0735..4f51528a77 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1531,9 +1531,9 @@ for opt do
+>     ;;
+>     --disable-keyring) secret_keyring="no"
+>     ;;
+> -  --enable-libdaxctl) libdaxctl=disabled
+> +  --enable-libdaxctl) libdaxctl="enabled"
+>     ;;
+> -  --disable-libdaxctl) libdaxctl=enabled
+> +  --disable-libdaxctl) libdaxctl="disabled"
+>     ;;
+>     --enable-fuse) fuse="enabled"
+>     ;;
+> 
 
-Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
----
- hw/intc/arm_gicv3_redist.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Fixes: 83ef16821a ("configure, meson: convert libdaxctl detection to meson")
 
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index 8645220d6183..53da703ed843 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -453,7 +453,7 @@ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
-     if (r == MEMTX_ERROR) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid guest read at offset " TARGET_FMT_plx
--                      "size %u\n", __func__, offset, size);
-+                      " size %u\n", __func__, offset, size);
-         trace_gicv3_redist_badread(gicv3_redist_affid(cs), offset,
-                                    size, attrs.secure);
-         /* The spec requires that reserved registers are RAZ/WI;
-@@ -510,7 +510,7 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
-     if (r == MEMTX_ERROR) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: invalid guest write at offset " TARGET_FMT_plx
--                      "size %u\n", __func__, offset, size);
-+                      " size %u\n", __func__, offset, size);
-         trace_gicv3_redist_badwrite(gicv3_redist_affid(cs), offset, data,
-                                     size, attrs.secure);
-         /* The spec requires that reserved registers are RAZ/WI;
--- 
-2.26.2
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
