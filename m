@@ -1,77 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m119i-00020w-1F
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Jul 2021 02:35:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36930)
+	id 1m12hJ-0007EP-Mb
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Jul 2021 04:14:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53592)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m119a-0001yb-6m
- for qemu-trivial@nongnu.org; Wed, 07 Jul 2021 02:35:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30572)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m12hI-0007D5-Ps
+ for qemu-trivial@nongnu.org; Wed, 07 Jul 2021 04:14:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34769)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m119V-0004CS-Or
- for qemu-trivial@nongnu.org; Wed, 07 Jul 2021 02:35:25 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m12gZ-0003vx-HK
+ for qemu-trivial@nongnu.org; Wed, 07 Jul 2021 04:14:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625639719;
+ s=mimecast20190719; t=1625645614;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ntcv5fyXKuU2+pVKGqYkhlhRW/NOqddNpOo9H8/gjBg=;
- b=BfN5fbbUYv6k1SAlGIRv6AkBto42XKeFJ3tN/70e61PD3DxOnkv5QEJoSo+WbbY5gWb10u
- rU44+CrS2cIiVF6RkNRIf69vQbPTXltBxgCog89b/7Iyb1UTdh/D6zJB0gRCpRlTu38gmF
- fW/U+cNkqqXCYrWeTWmXVWdhTaYiTSQ=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-325-_kHfjwe6NQaP41jdv3AgcA-1; Wed, 07 Jul 2021 02:35:17 -0400
-X-MC-Unique: _kHfjwe6NQaP41jdv3AgcA-1
-Received: by mail-wm1-f72.google.com with SMTP id
- r5-20020a05600c35c5b029020fcaed9f61so339027wmq.1
- for <qemu-trivial@nongnu.org>; Tue, 06 Jul 2021 23:35:17 -0700 (PDT)
+ bh=6aA7WbRS7MqzTvnYl7/nrZQHzywSWhxz4tp+MOsYAgo=;
+ b=GoJ9WkC27qkvyP9K9Bv6tsgGD1g9RECMy4OzjjCT2Nwy5m7UJI6WLzD+Esy1qqxrfcNBvS
+ mzcX4ebCgscV0gxer1qQMXyV/Ezuja1jPL7QKlKD38YCUu8wneRm27eu3lt+w+S6Cy4Rz0
+ Nz0N84H7tHIuk2T5P+TCreKATVUNLjw=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-514-TcQmPMTBMaaEGFwYdMwz9g-1; Wed, 07 Jul 2021 04:13:33 -0400
+X-MC-Unique: TcQmPMTBMaaEGFwYdMwz9g-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ i3-20020a05600c3543b02902075ed92710so2160121wmq.0
+ for <qemu-trivial@nongnu.org>; Wed, 07 Jul 2021 01:13:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=ntcv5fyXKuU2+pVKGqYkhlhRW/NOqddNpOo9H8/gjBg=;
- b=c3EBIT5aZHXKJTzs9acwP6GkACTN5qZR+w/CFhTwRCTBXnffs6ruYGoPOaLWo63OFB
- 5uUb2lsg/9AOT1x1fdUAzyWVMBwwJid93X8m6KhjXHrDAjx194uDiZ6Dmk34ODQxnTUv
- Zpk6BbBTWpNjI4xw7Dmspb/KOIhiwbZ3q9RejTshinT2VB9/DavBZ4RVW0JbkXjbfMFL
- XF/wu9XA7C+N6tAn2XQDAN17wbXDC8jpFAjJi6TEUvNmNxFfAaWbu6AUuHy71Gr9cLfG
- rJhbZK/wL0pS8B4z8U7hGqVhPJno0ykLQv6jIyCvLaWd/06UjyObMUmcXE4ToAabsODS
- T/ng==
-X-Gm-Message-State: AOAM533FbpAl3QVY3/f4ygF22g2synmhACkd1V6zD0o+O0fyCclXvs5V
- zofEc4EGiHhTsXKB6h0weBMa3KZl8+WtvYyxC+9tDHEi+oSXPIZxYZezR5hTpPXgLLwNZgJjD0O
- VxC3r8ilWalDabCCxBbSCBURZLw3m0oBJQMXXvQVIabf77OF+UYHc67NoPCqpsauCAA==
-X-Received: by 2002:a05:600c:5105:: with SMTP id
- o5mr13418078wms.42.1625639716658; 
- Tue, 06 Jul 2021 23:35:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+vIoeVuFxqq/UelwEEMWRB1/117anVUkSUk6T7gC0hdQaARkbPVJqUABVlZcifRzfTEaY4Q==
-X-Received: by 2002:a05:600c:5105:: with SMTP id
- o5mr13418047wms.42.1625639716298; 
- Tue, 06 Jul 2021 23:35:16 -0700 (PDT)
-Received: from thuth.remote.csb (pd9575ead.dip0.t-ipconnect.de.
- [217.87.94.173])
- by smtp.gmail.com with ESMTPSA id l9sm19372697wrp.14.2021.07.06.23.35.15
+ bh=6aA7WbRS7MqzTvnYl7/nrZQHzywSWhxz4tp+MOsYAgo=;
+ b=ukCP9FXWC0+CM90OJOdoNHsekD/GhL3LnV1o44QzvqSonn9TeOIsRW6rDbiNOVV9co
+ dwQZA//upRLUqklGNqZ1nnZ3lCbS4mdsjmj1jCVxBVBqmUssSpBIJNEldGZoVNHp+P2U
+ iDMGN4gpw2UTaXpjSGCHJlAZaOdDSmgL3Y1tioKXIvPZNHMq/Ydm591oUD+uvxuEHmTi
+ +iSqhx7kRoBnR380Y5bUy8D8K/Q7CLeeAxs7gg7CTngXsQ1ZRR0jE3fCZTlAXXrRVUq+
+ pDeSkIJu11VgzywZU7x6hLp/jg4gKN++AKqXRYgR9ScAem0dIx+dtvjIAYkUF/VdQ+LP
+ nXMA==
+X-Gm-Message-State: AOAM532uN4HNAbCdQM4En0ZGk77iPdvSe2ghrKnlsc0bedy1BsXaOif3
+ IqJkzaNpN9wZgIt4wDQcrYLo/yYjm6SvQ8j8fQq0DAukdP3NOlWP7sOYhGqKdP/IGImxzh2HE33
+ HJWf6TQsi6FAkFlbiaw==
+X-Received: by 2002:adf:ba43:: with SMTP id t3mr21103631wrg.184.1625645612517; 
+ Wed, 07 Jul 2021 01:13:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4c9iR7oXKAw5OCKVws4OQ+4UeIDdBnKgnNSjzTqe1mWstXzSfgwoe2XAKWYcNVJ2ApG7Uvw==
+X-Received: by 2002:adf:ba43:: with SMTP id t3mr21103609wrg.184.1625645612300; 
+ Wed, 07 Jul 2021 01:13:32 -0700 (PDT)
+Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.93])
+ by smtp.gmail.com with ESMTPSA id q1sm15423581wma.27.2021.07.07.01.13.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 23:35:15 -0700 (PDT)
+ Wed, 07 Jul 2021 01:13:31 -0700 (PDT)
 Subject: Re: [PATCH] Fix libdaxctl option
-To: Miroslav Rezanina <mrezanin@redhat.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
+To: Thomas Huth <thuth@redhat.com>, Miroslav Rezanina <mrezanin@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, pbonzini@redhat.com
 References: <20210707063124.81954-1-mrezanin@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <66a2e508-462b-a19f-3d04-1a55077aba89@redhat.com>
-Date: Wed, 7 Jul 2021 08:35:14 +0200
+ <66a2e508-462b-a19f-3d04-1a55077aba89@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <0d76b55d-3c13-c0d1-4aea-49eab97d839b@redhat.com>
+Date: Wed, 7 Jul 2021 10:13:31 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210707063124.81954-1-mrezanin@redhat.com>
+In-Reply-To: <66a2e508-462b-a19f-3d04-1a55077aba89@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -93,38 +93,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Jul 2021 06:35:27 -0000
+X-List-Received-Date: Wed, 07 Jul 2021 08:14:21 -0000
 
-On 07/07/2021 08.31, Miroslav Rezanina wrote:
-> For some reason, libdaxctl option setting was set to work in an opposite
-> way (--enable-libdaxctl disabled it and vice versa). Fixing this so
-> configuration works properly.
+On 7/7/21 8:35 AM, Thomas Huth wrote:
+> On 07/07/2021 08.31, Miroslav Rezanina wrote:
+>> For some reason, libdaxctl option setting was set to work in an opposite
+>> way (--enable-libdaxctl disabled it and vice versa). Fixing this so
+>> configuration works properly.
+>>
+>> Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
+>> ---
+>>   configure | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/configure b/configure
+>> index 650d9c0735..4f51528a77 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -1531,9 +1531,9 @@ for opt do
+>>     ;;
+>>     --disable-keyring) secret_keyring="no"
+>>     ;;
+>> -  --enable-libdaxctl) libdaxctl=disabled
+>> +  --enable-libdaxctl) libdaxctl="enabled"
+>>     ;;
+>> -  --disable-libdaxctl) libdaxctl=enabled
+>> +  --disable-libdaxctl) libdaxctl="disabled"
+>>     ;;
+>>     --enable-fuse) fuse="enabled"
+>>     ;;
+>>
 > 
-> Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
-> ---
->   configure | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> Fixes: 83ef16821a ("configure, meson: convert libdaxctl detection to
+> meson")
 > 
-> diff --git a/configure b/configure
-> index 650d9c0735..4f51528a77 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1531,9 +1531,9 @@ for opt do
->     ;;
->     --disable-keyring) secret_keyring="no"
->     ;;
-> -  --enable-libdaxctl) libdaxctl=disabled
-> +  --enable-libdaxctl) libdaxctl="enabled"
->     ;;
-> -  --disable-libdaxctl) libdaxctl=enabled
-> +  --disable-libdaxctl) libdaxctl="disabled"
->     ;;
->     --enable-fuse) fuse="enabled"
->     ;;
-> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Fixes: 83ef16821a ("configure, meson: convert libdaxctl detection to meson")
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 
