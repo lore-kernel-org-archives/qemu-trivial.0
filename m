@@ -1,86 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m12hJ-0007EP-Mb
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Jul 2021 04:14:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53592)
+	id 1m1QkP-0003BM-Vu
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Jul 2021 05:55:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m12hI-0007D5-Ps
- for qemu-trivial@nongnu.org; Wed, 07 Jul 2021 04:14:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34769)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m12gZ-0003vx-HK
- for qemu-trivial@nongnu.org; Wed, 07 Jul 2021 04:14:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1625645614;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6aA7WbRS7MqzTvnYl7/nrZQHzywSWhxz4tp+MOsYAgo=;
- b=GoJ9WkC27qkvyP9K9Bv6tsgGD1g9RECMy4OzjjCT2Nwy5m7UJI6WLzD+Esy1qqxrfcNBvS
- mzcX4ebCgscV0gxer1qQMXyV/Ezuja1jPL7QKlKD38YCUu8wneRm27eu3lt+w+S6Cy4Rz0
- Nz0N84H7tHIuk2T5P+TCreKATVUNLjw=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-514-TcQmPMTBMaaEGFwYdMwz9g-1; Wed, 07 Jul 2021 04:13:33 -0400
-X-MC-Unique: TcQmPMTBMaaEGFwYdMwz9g-1
-Received: by mail-wm1-f69.google.com with SMTP id
- i3-20020a05600c3543b02902075ed92710so2160121wmq.0
- for <qemu-trivial@nongnu.org>; Wed, 07 Jul 2021 01:13:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m1QkO-00034Y-4D
+ for qemu-trivial@nongnu.org; Thu, 08 Jul 2021 05:55:08 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:42679)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m1QkL-0005Zq-K7
+ for qemu-trivial@nongnu.org; Thu, 08 Jul 2021 05:55:07 -0400
+Received: by mail-ed1-x529.google.com with SMTP id m17so7642355edc.9
+ for <qemu-trivial@nongnu.org>; Thu, 08 Jul 2021 02:55:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4kL95hQeusGGcbtlWdnsw8Ntes8Hfu93UtZswW+5AOA=;
+ b=yZv4HKXIsK3SwqCqqd70yocaa/sE1taVawKi55cK3zMGAOFYDH0K2NvBjNgwY4x0TR
+ PzO48VoDln5WzKIL1sRk7ijCAadRz+nhEZlCfc2SpUfmfCTRUBLJIIzT5fM3d/7z/I9U
+ QtOBmG3H/UScdL1/7LG2KC0W/UC5EYsHyCZXUQVWZaATwDzML/9GzDu2AFy/HcEA/tg8
+ SMcfIe64NjOMVUEbaOrFRsKlO06qUHbyul7PxmztBjQ9MHhYjuUwTnSu+iDImiBc2Bl9
+ ZF7vOu2PXU8ME2pIJ7dEsWaM6/XnCn2hINLQ5CrYds8E1j8s0i6CdmDSBXXKpYtEw2N0
+ wIRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6aA7WbRS7MqzTvnYl7/nrZQHzywSWhxz4tp+MOsYAgo=;
- b=ukCP9FXWC0+CM90OJOdoNHsekD/GhL3LnV1o44QzvqSonn9TeOIsRW6rDbiNOVV9co
- dwQZA//upRLUqklGNqZ1nnZ3lCbS4mdsjmj1jCVxBVBqmUssSpBIJNEldGZoVNHp+P2U
- iDMGN4gpw2UTaXpjSGCHJlAZaOdDSmgL3Y1tioKXIvPZNHMq/Ydm591oUD+uvxuEHmTi
- +iSqhx7kRoBnR380Y5bUy8D8K/Q7CLeeAxs7gg7CTngXsQ1ZRR0jE3fCZTlAXXrRVUq+
- pDeSkIJu11VgzywZU7x6hLp/jg4gKN++AKqXRYgR9ScAem0dIx+dtvjIAYkUF/VdQ+LP
- nXMA==
-X-Gm-Message-State: AOAM532uN4HNAbCdQM4En0ZGk77iPdvSe2ghrKnlsc0bedy1BsXaOif3
- IqJkzaNpN9wZgIt4wDQcrYLo/yYjm6SvQ8j8fQq0DAukdP3NOlWP7sOYhGqKdP/IGImxzh2HE33
- HJWf6TQsi6FAkFlbiaw==
-X-Received: by 2002:adf:ba43:: with SMTP id t3mr21103631wrg.184.1625645612517; 
- Wed, 07 Jul 2021 01:13:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy4c9iR7oXKAw5OCKVws4OQ+4UeIDdBnKgnNSjzTqe1mWstXzSfgwoe2XAKWYcNVJ2ApG7Uvw==
-X-Received: by 2002:adf:ba43:: with SMTP id t3mr21103609wrg.184.1625645612300; 
- Wed, 07 Jul 2021 01:13:32 -0700 (PDT)
-Received: from [192.168.1.36] (93.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.93])
- by smtp.gmail.com with ESMTPSA id q1sm15423581wma.27.2021.07.07.01.13.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jul 2021 01:13:31 -0700 (PDT)
-Subject: Re: [PATCH] Fix libdaxctl option
-To: Thomas Huth <thuth@redhat.com>, Miroslav Rezanina <mrezanin@redhat.com>,
- qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, pbonzini@redhat.com
-References: <20210707063124.81954-1-mrezanin@redhat.com>
- <66a2e508-462b-a19f-3d04-1a55077aba89@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <0d76b55d-3c13-c0d1-4aea-49eab97d839b@redhat.com>
-Date: Wed, 7 Jul 2021 10:13:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4kL95hQeusGGcbtlWdnsw8Ntes8Hfu93UtZswW+5AOA=;
+ b=Hb2XuyWY4E3BRFQ8f0Ldb1TKMP2VXX0L8Sn1peOoH0kTIpU0jAUCr/Le86Aup/9Z7g
+ c+4bWObOmr/SdRxk+T06195jchx8ZLoW43/hOGvISIOZp7NWb63ok6qDRSnDihsl0v6i
+ c6WhoaiZZOuOtoD/JFayA6nM0tjTvgwa0Fve6/ylhQROIQyaBhw1mu7VUpABLQr2RkSW
+ B+DtYAsXqjEOYw+wkbbXkznBfSjzbwvSf/jGYq7zvVAR7UqhzyhJBDszP0m2/cz437c4
+ BCrDqN/CBIoCfdo+VAARgka5338hJx/hzYnRDoo1+Mafb8TQTKQe2zI+OiRYkMt9tCcz
+ vKug==
+X-Gm-Message-State: AOAM530m+ZAXJoZKnItHcx0YI5M6eU1t0SmclNEQ2Tu4qQNBcmfMG8rS
+ Nf9CFbrQIbNUG6Px+3kTMBZN45xlGazMWSgG3XC0eg==
+X-Google-Smtp-Source: ABdhPJxYi7LdkzXHKylKum3xTMy9T68Zz7/RV59B/nKmWt9sb98tfSwOF07vgWzf28N3r4bKGAZn43ArfsVqaNerawY=
+X-Received: by 2002:a05:6402:697:: with SMTP id
+ f23mr15554515edy.44.1625738104087; 
+ Thu, 08 Jul 2021 02:55:04 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <66a2e508-462b-a19f-3d04-1a55077aba89@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.442,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20210706211432.31902-1-rebecca@nuviainc.com>
+In-Reply-To: <20210706211432.31902-1-rebecca@nuviainc.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 8 Jul 2021 10:54:25 +0100
+Message-ID: <CAFEAcA-m+A4jpaaauDvN2FQgjfL9X30hzhVmWFJ0xJ78O7a__g@mail.gmail.com>
+Subject: Re: [trivial PATCH 1/1] hw/intc: Improve formatting of MEMTX_ERROR
+ guest error message
+To: Rebecca Cran <rebecca@nuviainc.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -93,42 +73,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Jul 2021 08:14:21 -0000
+X-List-Received-Date: Thu, 08 Jul 2021 09:55:08 -0000
 
-On 7/7/21 8:35 AM, Thomas Huth wrote:
-> On 07/07/2021 08.31, Miroslav Rezanina wrote:
->> For some reason, libdaxctl option setting was set to work in an opposite
->> way (--enable-libdaxctl disabled it and vice versa). Fixing this so
->> configuration works properly.
->>
->> Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
->> ---
->>   configure | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/configure b/configure
->> index 650d9c0735..4f51528a77 100755
->> --- a/configure
->> +++ b/configure
->> @@ -1531,9 +1531,9 @@ for opt do
->>     ;;
->>     --disable-keyring) secret_keyring="no"
->>     ;;
->> -  --enable-libdaxctl) libdaxctl=disabled
->> +  --enable-libdaxctl) libdaxctl="enabled"
->>     ;;
->> -  --disable-libdaxctl) libdaxctl=enabled
->> +  --disable-libdaxctl) libdaxctl="disabled"
->>     ;;
->>     --enable-fuse) fuse="enabled"
->>     ;;
->>
-> 
-> Fixes: 83ef16821a ("configure, meson: convert libdaxctl detection to
-> meson")
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+On Tue, 6 Jul 2021 at 22:14, Rebecca Cran <rebecca@nuviainc.com> wrote:
+>
+> Add a space in the message printed when gicr_read*/gicr_write* returns
+> MEMTX_ERROR in arm_gicv3_redist.c.
+>
+> Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
+> ---
+>  hw/intc/arm_gicv3_redist.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Applied to target-arm.next, thanks.
 
+-- PMM
 
