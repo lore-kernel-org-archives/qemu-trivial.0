@@ -1,66 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m1QkP-0003BM-Vu
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Jul 2021 05:55:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58796)
+	id 1m1Wn9-00009s-6o
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Jul 2021 12:22:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39408)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m1QkO-00034Y-4D
- for qemu-trivial@nongnu.org; Thu, 08 Jul 2021 05:55:08 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:42679)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m1QkL-0005Zq-K7
- for qemu-trivial@nongnu.org; Thu, 08 Jul 2021 05:55:07 -0400
-Received: by mail-ed1-x529.google.com with SMTP id m17so7642355edc.9
- for <qemu-trivial@nongnu.org>; Thu, 08 Jul 2021 02:55:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4kL95hQeusGGcbtlWdnsw8Ntes8Hfu93UtZswW+5AOA=;
- b=yZv4HKXIsK3SwqCqqd70yocaa/sE1taVawKi55cK3zMGAOFYDH0K2NvBjNgwY4x0TR
- PzO48VoDln5WzKIL1sRk7ijCAadRz+nhEZlCfc2SpUfmfCTRUBLJIIzT5fM3d/7z/I9U
- QtOBmG3H/UScdL1/7LG2KC0W/UC5EYsHyCZXUQVWZaATwDzML/9GzDu2AFy/HcEA/tg8
- SMcfIe64NjOMVUEbaOrFRsKlO06qUHbyul7PxmztBjQ9MHhYjuUwTnSu+iDImiBc2Bl9
- ZF7vOu2PXU8ME2pIJ7dEsWaM6/XnCn2hINLQ5CrYds8E1j8s0i6CdmDSBXXKpYtEw2N0
- wIRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4kL95hQeusGGcbtlWdnsw8Ntes8Hfu93UtZswW+5AOA=;
- b=Hb2XuyWY4E3BRFQ8f0Ldb1TKMP2VXX0L8Sn1peOoH0kTIpU0jAUCr/Le86Aup/9Z7g
- c+4bWObOmr/SdRxk+T06195jchx8ZLoW43/hOGvISIOZp7NWb63ok6qDRSnDihsl0v6i
- c6WhoaiZZOuOtoD/JFayA6nM0tjTvgwa0Fve6/ylhQROIQyaBhw1mu7VUpABLQr2RkSW
- B+DtYAsXqjEOYw+wkbbXkznBfSjzbwvSf/jGYq7zvVAR7UqhzyhJBDszP0m2/cz437c4
- BCrDqN/CBIoCfdo+VAARgka5338hJx/hzYnRDoo1+Mafb8TQTKQe2zI+OiRYkMt9tCcz
- vKug==
-X-Gm-Message-State: AOAM530m+ZAXJoZKnItHcx0YI5M6eU1t0SmclNEQ2Tu4qQNBcmfMG8rS
- Nf9CFbrQIbNUG6Px+3kTMBZN45xlGazMWSgG3XC0eg==
-X-Google-Smtp-Source: ABdhPJxYi7LdkzXHKylKum3xTMy9T68Zz7/RV59B/nKmWt9sb98tfSwOF07vgWzf28N3r4bKGAZn43ArfsVqaNerawY=
-X-Received: by 2002:a05:6402:697:: with SMTP id
- f23mr15554515edy.44.1625738104087; 
- Thu, 08 Jul 2021 02:55:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <olaf@aepfle.de>)
+ id 1m1Wn6-0008Uy-Jy; Thu, 08 Jul 2021 12:22:20 -0400
+Received: from mo4-p00-ob.smtp.rzone.de ([81.169.146.219]:22989)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <olaf@aepfle.de>)
+ id 1m1Wn3-0002un-7g; Thu, 08 Jul 2021 12:22:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1625761330;
+ s=strato-dkim-0002; d=aepfle.de;
+ h=Message-Id:Date:Subject:Cc:To:From:Cc:Date:From:Subject:Sender;
+ bh=6D5KRVSpEhClV6Mf0624Nr/TvTUusNkkQkJ6bcrT3bw=;
+ b=fn8zCC3GB4h+Xe2RyKitGY9yyJVKfLiu+PmTb8FKg9chSmpURkDSURWYQ25NjpsABh
+ hGgNOw/+Ybp4YHGqKx8ifOPZBOvZQlZC3tNtO+dYn3FnSUwghAxpZlPIT7ZSUAtB09n+
+ pRm/37rMQDABSaKV03rgOhDlt80vhT7TyJo2rAHKMBF3STE3JCGh7NMyrICYoy060sfk
+ jDvJuGx7F3M+AWqDmgAVudBaG4/0nSwl1l0he0czsazp5lXnyG9sp+raiZQgePXZcmEJ
+ Hm85ebotSE5057PBe9SfhK/Qv1tlZw6WJ+aLHjgghjLcO36o3lNqHw4eUxPtBKd2lhxm
+ MzKA==
+Authentication-Results: strato.com;
+    dkim=none
+X-RZG-AUTH: ":P2EQZWCpfu+qG7CngxMFH1J+3q8wa/QXkBR9MXjAuzpIG0mv9coXAgs3rVb2Qcstn6hLmi/A5ONQi+eEunNNoWD5g0T8"
+X-RZG-CLASS-ID: mo00
+Received: from sender by smtp.strato.de (RZmta 47.28.1 AUTH)
+ with ESMTPSA id 30791cx68GMAbLQ
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
+ (Client did not present a certificate);
+ Thu, 8 Jul 2021 18:22:10 +0200 (CEST)
+From: Olaf Hering <olaf@aepfle.de>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Olaf Hering <olaf@aepfle.de>, Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: [PATCH v1] migration: fix typo in mig_throttle_guest_down comment
+Date: Thu,  8 Jul 2021 18:21:59 +0200
+Message-Id: <20210708162159.18045-1-olaf@aepfle.de>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20210706211432.31902-1-rebecca@nuviainc.com>
-In-Reply-To: <20210706211432.31902-1-rebecca@nuviainc.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Jul 2021 10:54:25 +0100
-Message-ID: <CAFEAcA-m+A4jpaaauDvN2FQgjfL9X30hzhVmWFJ0xJ78O7a__g@mail.gmail.com>
-Subject: Re: [trivial PATCH 1/1] hw/intc: Improve formatting of MEMTX_ERROR
- guest error message
-To: Rebecca Cran <rebecca@nuviainc.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=81.169.146.219; envelope-from=olaf@aepfle.de;
+ helo=mo4-p00-ob.smtp.rzone.de
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,19 +60,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Jul 2021 09:55:08 -0000
+X-List-Received-Date: Thu, 08 Jul 2021 16:22:20 -0000
 
-On Tue, 6 Jul 2021 at 22:14, Rebecca Cran <rebecca@nuviainc.com> wrote:
->
-> Add a space in the message printed when gicr_read*/gicr_write* returns
-> MEMTX_ERROR in arm_gicv3_redist.c.
->
-> Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
-> ---
->  hw/intc/arm_gicv3_redist.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Fixes commit 3d0684b2ad82a5dde68e3f08b0d7786dccaf619c ("ram: Update
+all functions comments")
 
-Applied to target-arm.next, thanks.
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ migration/ram.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
--- PMM
+diff --git a/migration/ram.c b/migration/ram.c
+index 723af67c2e..88ff34f574 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -600,7 +600,7 @@ static size_t save_page_header(RAMState *rs, QEMUFile *f,  RAMBlock *block,
+ }
+ 
+ /**
+- * mig_throttle_guest_down: throotle down the guest
++ * mig_throttle_guest_down: throttle down the guest
+  *
+  * Reduce amount of guest cpu execution to hopefully slow down memory
+  * writes. If guest dirty memory rate is reduced below the rate at
 
