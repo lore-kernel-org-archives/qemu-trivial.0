@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m1mXM-00071x-Uc
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jul 2021 05:11:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46188)
+	id 1m1mZm-0000Mi-1q
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jul 2021 05:13:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1mXL-00071V-0X; Fri, 09 Jul 2021 05:11:07 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:34701)
+ id 1m1mZk-0000Lp-Cd; Fri, 09 Jul 2021 05:13:36 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:53263)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1mXI-0004cb-SS; Fri, 09 Jul 2021 05:11:06 -0400
+ id 1m1mZi-0005wE-J6; Fri, 09 Jul 2021 05:13:36 -0400
 Received: from [192.168.100.1] ([82.142.13.34]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MF3U0-1lvCxQ2mhU-00FWuu; Fri, 09 Jul 2021 11:11:00 +0200
-Subject: Re: [PATCH v2] hw/virtio: Document *_should_notify() are called
- within rcu_read_lock()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org
-References: <20210523094040.3516968-1-philmd@redhat.com>
- <d3198f6b-3bce-1686-2123-e1c44479bdf9@redhat.com>
- <5711b02d-5cc0-414c-eb5c-4e8a7f191088@redhat.com>
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1Moewz-1lMQGd1g0P-00p4ME; Fri, 09 Jul 2021 11:13:26 +0200
+Subject: Re: [PATCH] target/xtensa/xtensa-semi: Fix compilation problem on
+ Haiku
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Max Filippov <jcmvbkbc@gmail.com>
+Cc: qemu-trivial@nongnu.org, Richard Zak <richard.j.zak@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20210706081822.1316551-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <ed8c5bab-8921-c497-acd1-d7ceefd8ca7b@vivier.eu>
-Date: Fri, 9 Jul 2021 11:10:59 +0200
+Message-ID: <45ee3be4-4227-2ba6-c797-411c470ddbb9@vivier.eu>
+Date: Fri, 9 Jul 2021 11:13:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <5711b02d-5cc0-414c-eb5c-4e8a7f191088@redhat.com>
+In-Reply-To: <20210706081822.1316551-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:cXH6m8DZ4cEMFtX97neDUlyfL1uEHposv1ryVVWLeCqRFcQQo74
- C+GC42D1eYnbWJ2FmSPPneGjIkC98BxMsnROpGcJr3HUG7vYtZG/jyIcuu5uzlMW2foT0va
- BqjyU+/pwWx+XvdP55JcJh8WgP9uoFheO46n4CXDN5Pnb+7af7/MIX9oxvQ8WLFPqIT6Ezc
- Mc2jmWXhT3/gXbm8nlJjQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Xl9EDk8rP58=:JnaqghsudpT9XaYcP0y9kv
- tsU5nV1P/0X0NuAXGe092oCQ0ugNvaB7puNqOtrlDGtk2aUkQvAXQtdVKx2UukspUbjRynF8o
- B2TVTqjeTbEq/CmTCTr0bI0Bv73cTJvGgJ0HIl1znP7LJscH4Hc/lkRHDPt7QVHXCPrpChBIA
- 3SZVoQ4YRsJS+0IJui+I8RxcLN9NMovU8AVpYNXQzYSn2lyqS5mc0b/SZVTGhSmVh6UFTNVsv
- CqCvXrsk/98fJ19nkianJ4reBfEQLcAojtngAQx1dWRhorcjG98vApjgV3XljOSf4/zcwNq5n
- aOocJMwnSXPU2S8Px7SbvHvbZee5rmNjRP9+/NqRi+YWRZ6FHEANz5p+EivfABylIvI34NqM2
- q7Qp3QMKbGC/3Qfb4R/gp38J6RwqJ1WS/r4VF+NaBlNQgheco1tFsXV0TU0t4PyywRbP6gWFN
- dBjz0Nb1mXRr5FOxDi2MHlMvaaq1e0j7kub78P5JVqKE+tJp1vzNQokElA7GlZtWEs9EaeXVC
- gUvlpSWui7CoZoHxwdyyh78wYsVAyf4cjIz6hyr5vzPBsp+/2i8It1zakMQ+tKE4dIv34gwjc
- xE4F0FfbdVKB+4R2ZfwuVkQzPtkeDWUUciPkh9ayjTeH5OC8SbQkb1uouNmcVGWOVj+LJLVkc
- gJORjr+GN3noVdeZIaGgtwjVEKN3LDS9vY1++IU5rD+U/AXsBexl9kvRkBc12/VaBy/m7xR5H
- 7oUPP4Qn1bq5xWrb46pf4EqFE/rDctwM7qr3kt6FlIOG198zfTSw8mZX3gzTUWt7LLO9ge7iQ
- vR8HR4UtV1FlV6Gv60VPt9Rh1aPQI4X8kXmfd+YLJkKOCYDOR8WfHWi1/CI4CEMqvZBHoZp
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:a0/OZgC4+j5MVpFRmMwARILp2AtfYsV0kJXe0N+ZYMWSBF1Fj3A
+ ryXqf4ZmprBNfjRmUZxwA1sFokf2z8Jls+s0HW4RVBOoafH7BCH7fXAQLU+60YiOwJNmo5y
+ L51sWosumS0ZGaWJ6NctPLR21vdYltNC6Kjv1mdpOyqH/rfIcGPNNHkt6+TdFJTk/dv3hqE
+ u0sYteJ1RuwCRg+JRxKqQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sY5AdNninDw=:+cHVO/sfg7aDdZFHFdooVJ
+ XinywokpBdXoYqmOdp8tD/ruNfXqPbLQ0Fvo7TaXTk0hK7oV2tvkNrwR1WH+NZ+1H1sskqTsx
+ 1+2VYbZagDVbKLRd7+WMEhLYX/JmJtkgVp9hfixz8OP/mVchXKypAgFHum1vHMWhpSetYXgqi
+ 0ehB8ImmK6QenWYIJ3sphZIhBXvz/gC6wDp3iBwvMlCjd5a+/G32MG8YD+kV8LIzLiUbImV8W
+ jY/270sP7BnWCHI3Pn0k02+iqYr8S3IFhPJopmoXjgMPovqP2baylZBOcl7A7LreNSFExR83H
+ uXqBtyQ/RTaj3qExyikotfyCTD9I6bvUvUfoPUSgJ/xROpxW18Zt0o8+leh6gfeuAVn13UFIK
+ xYVv58tWLv/rUo64HuV1tr06K3I6GoxMs2ENsA3A4nj+D+ahkjDWODuzgj6rBrrGqLy5xidyF
+ gxGN6lUDovN9L7PnFODB5gKm28PH1GQM3ZvZYmsN0f+nEViwA6UXtroIcztOKakRc271EWb98
+ BvtfisyBvQ3beorAwnKAVi7882DvEOKiCTC6FfjCll8ZQFOGChY0LfJi/wzomlzTwZFfe2kJb
+ tdXC62pLaH/2X8xS5v5EQqOGuQfTKvxfZ6x4shEQZk5/UUbul7pLU6SbYIrx6OeOBOoeaSqB2
+ XViw1Jl+Fe1YDlb5T08n5ngHJ4NvyNbXTeleTiQuSSYDqxheXYAKJ6uGCzn6pGrKLhre78ViQ
+ 9bVJKWk7HSffhfqzX8z/2Rpc+V+aTZPruaTqumadVNfJUk6PcKQOKJYnWGuYaia6iyiBylmej
+ DzM3Ha4tMymJGi4E8htJUHIuTb8bHlZvFYIvXV3SXiq/6pBKCH7dsbbqXpB7UfRusW5fqjg
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,55 +66,130 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jul 2021 09:11:07 -0000
+X-List-Received-Date: Fri, 09 Jul 2021 09:13:36 -0000
 
-Le 06/07/2021 à 12:04, Philippe Mathieu-Daudé a écrit :
-> Hi Michael, since I asked a modification on v1, I suppose
-> this patch is somehow worth in documentation, so I'm
-> pinging again. It could go via qemu-trival if you ack it.
+Le 06/07/2021 à 10:18, Thomas Huth a écrit :
+> The errno numbers are very large on Haiku, so the linking currently
+> fails there with a "final link failed: memory exhausted" error
+> message. We should not use the errno number as array indexes here,
+> thus convert the code to a switch-case statement instead. A clever
+> compiler should be able to optimize this code in a similar way
+> anway.
 > 
-> On 6/21/21 12:06 PM, Philippe Mathieu-Daudé wrote:
->> ping?
+> Reported-by: Richard Zak <richard.j.zak@gmail.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  target/xtensa/xtensa-semi.c | 84 +++++++++++++++++--------------------
+>  1 file changed, 39 insertions(+), 45 deletions(-)
+> 
+> diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
+> index 79f2b043f2..fa21b7e11f 100644
+> --- a/target/xtensa/xtensa-semi.c
+> +++ b/target/xtensa/xtensa-semi.c
+> @@ -95,59 +95,53 @@ enum {
+>  
+>  static uint32_t errno_h2g(int host_errno)
+>  {
+> -    static const uint32_t guest_errno[] = {
+> -        [EPERM]         = TARGET_EPERM,
+> -        [ENOENT]        = TARGET_ENOENT,
+> -        [ESRCH]         = TARGET_ESRCH,
+> -        [EINTR]         = TARGET_EINTR,
+> -        [EIO]           = TARGET_EIO,
+> -        [ENXIO]         = TARGET_ENXIO,
+> -        [E2BIG]         = TARGET_E2BIG,
+> -        [ENOEXEC]       = TARGET_ENOEXEC,
+> -        [EBADF]         = TARGET_EBADF,
+> -        [ECHILD]        = TARGET_ECHILD,
+> -        [EAGAIN]        = TARGET_EAGAIN,
+> -        [ENOMEM]        = TARGET_ENOMEM,
+> -        [EACCES]        = TARGET_EACCES,
+> -        [EFAULT]        = TARGET_EFAULT,
+> +    switch (host_errno) {
+> +    case 0:         return 0;
+> +    case EPERM:     return TARGET_EPERM;
+> +    case ENOENT:    return TARGET_ENOENT;
+> +    case ESRCH:     return TARGET_ESRCH;
+> +    case EINTR:     return TARGET_EINTR;
+> +    case EIO:       return TARGET_EIO;
+> +    case ENXIO:     return TARGET_ENXIO;
+> +    case E2BIG:     return TARGET_E2BIG;
+> +    case ENOEXEC:   return TARGET_ENOEXEC;
+> +    case EBADF:     return TARGET_EBADF;
+> +    case ECHILD:    return TARGET_ECHILD;
+> +    case EAGAIN:    return TARGET_EAGAIN;
+> +    case ENOMEM:    return TARGET_ENOMEM;
+> +    case EACCES:    return TARGET_EACCES;
+> +    case EFAULT:    return TARGET_EFAULT;
+>  #ifdef ENOTBLK
+> -        [ENOTBLK]       = TARGET_ENOTBLK,
+> +    case ENOTBLK:   return TARGET_ENOTBLK;
+>  #endif
+> -        [EBUSY]         = TARGET_EBUSY,
+> -        [EEXIST]        = TARGET_EEXIST,
+> -        [EXDEV]         = TARGET_EXDEV,
+> -        [ENODEV]        = TARGET_ENODEV,
+> -        [ENOTDIR]       = TARGET_ENOTDIR,
+> -        [EISDIR]        = TARGET_EISDIR,
+> -        [EINVAL]        = TARGET_EINVAL,
+> -        [ENFILE]        = TARGET_ENFILE,
+> -        [EMFILE]        = TARGET_EMFILE,
+> -        [ENOTTY]        = TARGET_ENOTTY,
+> +    case EBUSY:     return TARGET_EBUSY;
+> +    case EEXIST:    return TARGET_EEXIST;
+> +    case EXDEV:     return TARGET_EXDEV;
+> +    case ENODEV:    return TARGET_ENODEV;
+> +    case ENOTDIR:   return TARGET_ENOTDIR;
+> +    case EISDIR:    return TARGET_EISDIR;
+> +    case EINVAL:    return TARGET_EINVAL;
+> +    case ENFILE:    return TARGET_ENFILE;
+> +    case EMFILE:    return TARGET_EMFILE;
+> +    case ENOTTY:    return TARGET_ENOTTY;
+>  #ifdef ETXTBSY
+> -        [ETXTBSY]       = TARGET_ETXTBSY,
+> +    case ETXTBSY:   return TARGET_ETXTBSY;
+>  #endif
+> -        [EFBIG]         = TARGET_EFBIG,
+> -        [ENOSPC]        = TARGET_ENOSPC,
+> -        [ESPIPE]        = TARGET_ESPIPE,
+> -        [EROFS]         = TARGET_EROFS,
+> -        [EMLINK]        = TARGET_EMLINK,
+> -        [EPIPE]         = TARGET_EPIPE,
+> -        [EDOM]          = TARGET_EDOM,
+> -        [ERANGE]        = TARGET_ERANGE,
+> -        [ENOSYS]        = TARGET_ENOSYS,
+> +    case EFBIG:     return TARGET_EFBIG;
+> +    case ENOSPC:    return TARGET_ENOSPC;
+> +    case ESPIPE:    return TARGET_ESPIPE;
+> +    case EROFS:     return TARGET_EROFS;
+> +    case EMLINK:    return TARGET_EMLINK;
+> +    case EPIPE:     return TARGET_EPIPE;
+> +    case EDOM:      return TARGET_EDOM;
+> +    case ERANGE:    return TARGET_ERANGE;
+> +    case ENOSYS:    return TARGET_ENOSYS;
+>  #ifdef ELOOP
+> -        [ELOOP]         = TARGET_ELOOP,
+> +    case ELOOP:     return TARGET_ELOOP;
+>  #endif
+>      };
+>  
+> -    if (host_errno == 0) {
+> -        return 0;
+> -    } else if (host_errno > 0 && host_errno < ARRAY_SIZE(guest_errno) &&
+> -            guest_errno[host_errno]) {
+> -        return guest_errno[host_errno];
+> -    } else {
+> -        return TARGET_EINVAL;
+> -    }
+> +    return TARGET_EINVAL;
+>  }
+>  
+>  typedef struct XtensaSimConsole {
+> 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
-
->> On 5/23/21 11:40 AM, Philippe Mathieu-Daudé wrote:
->>> Such comments make reviewing this file somehow easier.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>> ---
->>> v2: only one space before end of comment (mst)
->>> ---
->>>  hw/virtio/virtio.c | 2 ++
->>>  1 file changed, 2 insertions(+)
->>>
->>> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
->>> index e02544b2df7..130e3568409 100644
->>> --- a/hw/virtio/virtio.c
->>> +++ b/hw/virtio/virtio.c
->>> @@ -2449,6 +2449,7 @@ static void virtio_set_isr(VirtIODevice *vdev, int value)
->>>      }
->>>  }
->>>  
->>> +/* Called within rcu_read_lock(). */
->>>  static bool virtio_split_should_notify(VirtIODevice *vdev, VirtQueue *vq)
->>>  {
->>>      uint16_t old, new;
->>> @@ -2485,6 +2486,7 @@ static bool vring_packed_need_event(VirtQueue *vq, bool wrap,
->>>      return vring_need_event(off, new, old);
->>>  }
->>>  
->>> +/* Called within rcu_read_lock(). */
->>>  static bool virtio_packed_should_notify(VirtIODevice *vdev, VirtQueue *vq)
->>>  {
->>>      VRingPackedDescEvent e;
->>>
->>
-> 
-> 
 
 
