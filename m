@@ -1,59 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m1x79-0006gk-Jb
+	id 1m1x79-0006hK-PH
 	for mharc-qemu-trivial@gnu.org; Fri, 09 Jul 2021 16:28:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60520)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1x73-0006MY-O6; Fri, 09 Jul 2021 16:28:42 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:35843)
+ id 1m1x77-0006Zq-TI; Fri, 09 Jul 2021 16:28:45 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:60251)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1x71-0007X0-Pq; Fri, 09 Jul 2021 16:28:41 -0400
+ id 1m1x75-0007ZC-Q9; Fri, 09 Jul 2021 16:28:45 -0400
 Received: from quad ([82.142.13.34]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MWRZt-1lebal0N0V-00Xqe0; Fri, 09
- Jul 2021 22:28:32 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MLR5h-1llFRG2Ijb-00ISQK; Fri, 09
+ Jul 2021 22:28:29 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <thuth@redhat.com>,
- Richard Zak <richard.j.zak@gmail.com>,
+ Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 7/9] target/xtensa/xtensa-semi: Fix compilation problem on Haiku
-Date: Fri,  9 Jul 2021 22:28:22 +0200
-Message-Id: <20210709202824.578187-8-laurent@vivier.eu>
+ Luis Pires <luis.pires@eldorado.org.br>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 3/9] misc: Fix "havn't" typo
+Date: Fri,  9 Jul 2021 22:28:18 +0200
+Message-Id: <20210709202824.578187-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210709202824.578187-1-laurent@vivier.eu>
 References: <20210709202824.578187-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:MQSXHUsX0woclw4HIMUHiRVfSE/jYaJeaH1z0Cqytp1uvkj5Q05
- +iv3ONPMHC5ZWAb+xRWAon3KOLa9VHCaA7qdRTL1cy5rFBjwDk+vZqpHckyQw5gmjGCsdcS
- MAJrkLJnDjzN+7PdAQ2M96N3jkGtme9R2HO0+vjGeb1KgWVig3CzIjPvU206ozOGltmEOXf
- nXMYujbGWaQ2lxLEm09iA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:NJgHbCqVIaY=:7eMEc4PRIw7F+9L6yyW2y2
- l35OtEkLm97HBiOxX+snQLfVUeMdphDaY8d89i3G/Vt89USL0L1Ty+f1T/UBWIECklcdsjyvm
- BvbSGvPr1esRo10nTXBJoaiQqlcfc+BJpPrQUrhTOeczzg+PSq2Lhr+hQ2TGuKNw2MPdxXEO5
- 2u1l/iBwQbJ2HZblHWt3uS3bg9iXoEyExIUBpKhsXXbs/87bG2Qq9EaXcJuPSOkPyNeJ4uj4X
- SzxpMT4HwKKHlvlXB1HOsKJtZhJ/EOGBmQWGVjxn4wqICPcGsZygB9GYlrIKLtB69VgGVSJbB
- Vi57w7WimNZr6avivgZdxgNxckf4XISm6cr2tcAXhYIAg8MKXK/3BnaEkGzlpOk2j3RUHEjdg
- s11nfx9feDQhgh1osLGhLxa7Z4gKkq82N/0b68/wUA46audbgnQaywmcFTpahx0i9odZVPfav
- Pr80g3zs+JmD2Ca2QWIQOFAqJE+jpXQYZh2Eamgt9q5vueXbnsCWeaf6gs8AA54TvlMs2s3Qz
- 7nzPBUeDLG+kMYxQ3ZOZkIEJd0/Kj5aJQB8qqzXZqvgFaA2pEfOTwjxafhPdEDq4eb7N9nzso
- l0kHs/Th0afEjTQsFlaoAFqQPyPLxOpfjZ2766092B35H7+fpNNcpJZhRtSpCQbPsaHdx/znF
- Vmj5kGH7N3aoFqquHUcuXUZHtAdGA4asujuWv3jXFAmuKTL2OlJ9eTUPFT2/76SMDZrod8pXH
- zkUnmZuvLSUbUDdK7Fa93d2qLawPTTsT7AKzIDIpLk5BsrNcE77xsdzY9JqzuwcDFIVaU0K4b
- 9UsrFsaoL45oviX77sshV05vwpbO1GWPnfyD6lgvFveYCgq3A5lT8/QwQ6CNgRElPws2l7h
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:fiji7J95S0VPK22FvbcrUoEtqfg2bHGGldJ4mXbCkcnKOud9wHH
+ Hwown/70qQir91+ZBO9CHZ7CMSExUPD2EnlZsHh0G4qBak1Uc5S7MDlq4VPkn24rI8g5xKe
+ UzVuce2+EMYKcaQwpky5nc1dYsHlBXFsR6seWCsjhA+wGilFNgJcL+VA3+v6LcUV/uThHXC
+ ZRg5sbVRiY4WlKnPHWwhw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4Fbirk5JePc=:1nSig/NJeYwQ/z1A5aTaAY
+ Y0pAei8v3ZKkSY6bBPOUAhEbuabWIfCBaPeQbBp2wQv/WZOnhNQ9UpewRqDfsV3AvmuXLkLML
+ A0UHqdKvmdIkEUxxggofMt/KUYoMh3ReIaUidbK4s2MkNsFHgLSYPIp7GmxIMA8IhSY1Wb1HP
+ S5jsn7d98hHjExZq7oYtv37826w1jDPZ8ZimlUAsa3XbE60ir89UtOwLn/30xyaFEs8/KlwdT
+ WGVVP/rtSL/QcqHPgJMWdOIfbAYmo8lNzZf58+2XCodOp1DO5bTcL3S7tKhkV2QFa+BtcAw+H
+ U+RyzoAJV9N6/+VLzCepoMcVftr23tDSpr0SP1Ev5qGonzFAw5GjO73yZ54kM4Nuk2A45vZUj
+ oCJLIThWfUE2RLgMe69ZRc4D+vH4YOhELMaJsI53UDg5+IkpSpNuQQJRcjFsZmB5DYv4VTo6r
+ qX3q/vyMJlwNkWAxkVne/8AbCUf/XjcMyiDhEoaCq55mTLNnwZsbgh6kaxCBTNSMpVpc/eCH6
+ cXG6I3SfWBAlYbSrkbfuUNgrcbpAEb0/f8R5NH/Kcrq3hSldRn3a5JYtpHrXNT3TkIUMlOEgm
+ aoemFoZ/TXaoW9zu99rvm4tAJEJh7wqa9VgZIYabaJC0hxphefPxHp3LShP1hvGoEgTrqpgAd
+ EkPK6fMOax1RajYNx5JGoTwAeGxBFGSZJRbQrkIhQQPxnuLwCOKH4T3YBYBy9890KqxWtaB89
+ GAfawmZp/HFehTmhwgT6MAlSot+X5kF5oq+ypuvxjc1ZO0R8JB7MID+qn5KcAJIOz16AWIH93
+ FyBCuOrWSsNkWqDFGL7e8wKzqAfFmTWrU9KVjV7Ru0y5dVQ/92Tw88S/ijL/DSpr260duWL
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_BL=0.001,
- RCVD_IN_MSPIKE_L3=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,131 +64,102 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jul 2021 20:28:42 -0000
+X-List-Received-Date: Fri, 09 Jul 2021 20:28:46 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-The errno numbers are very large on Haiku, so the linking currently
-fails there with a "final link failed: memory exhausted" error
-message. We should not use the errno number as array indexes here,
-thus convert the code to a switch-case statement instead. A clever
-compiler should be able to optimize this code in a similar way
-anway.
+Fix "havn't (make)" -> "haven't (made)" typo.
 
-Reported-by: Richard Zak <richard.j.zak@gmail.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20210706081822.1316551-1-thuth@redhat.com>
+Reviewed-by: Luis Pires <luis.pires@eldorado.org.br>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20210629051400.2573253-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/xtensa/xtensa-semi.c | 84 +++++++++++++++++--------------------
- 1 file changed, 39 insertions(+), 45 deletions(-)
+ hw/usb/desc-msos.c         | 2 +-
+ target/s390x/translate.c   | 6 ++++--
+ tcg/arm/tcg-target.c.inc   | 6 ++++--
+ tcg/sparc/tcg-target.c.inc | 6 ++++--
+ tcg/tcg-op.c               | 2 +-
+ 5 files changed, 14 insertions(+), 8 deletions(-)
 
-diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
-index 79f2b043f233..fa21b7e11fc2 100644
---- a/target/xtensa/xtensa-semi.c
-+++ b/target/xtensa/xtensa-semi.c
-@@ -95,59 +95,53 @@ enum {
+diff --git a/hw/usb/desc-msos.c b/hw/usb/desc-msos.c
+index 3a5ad7c8d0f8..836e38c67e1e 100644
+--- a/hw/usb/desc-msos.c
++++ b/hw/usb/desc-msos.c
+@@ -181,7 +181,7 @@ static int usb_desc_msos_prop(const USBDesc *desc, uint8_t *dest)
  
- static uint32_t errno_h2g(int host_errno)
+     if (desc->msos->Label) {
+         /*
+-         * Given as example in the specs.  Havn't figured yet where
++         * Given as example in the specs.  Haven't figured yet where
+          * this label shows up in the windows gui.
+          */
+         length += usb_desc_msos_prop_str(dest+length, MSOS_REG_SZ,
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index 03dab9f3507a..8822603a6e7d 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -6270,8 +6270,10 @@ static void extract_field(DisasFields *o, const DisasField *f, uint64_t insn)
+         abort();
+     }
+ 
+-    /* Validate that the "compressed" encoding we selected above is valid.
+-       I.e. we havn't make two different original fields overlap.  */
++    /*
++     * Validate that the "compressed" encoding we selected above is valid.
++     * I.e. we haven't made two different original fields overlap.
++     */
+     assert(((o->presentC >> f->indexC) & 1) == 0);
+     o->presentC |= 1 << f->indexC;
+     o->presentO |= 1 << f->indexO;
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 7a761a602e2c..007ceee68e23 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -2407,8 +2407,10 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
+ 
+ static void tcg_target_init(TCGContext *s)
  {
--    static const uint32_t guest_errno[] = {
--        [EPERM]         = TARGET_EPERM,
--        [ENOENT]        = TARGET_ENOENT,
--        [ESRCH]         = TARGET_ESRCH,
--        [EINTR]         = TARGET_EINTR,
--        [EIO]           = TARGET_EIO,
--        [ENXIO]         = TARGET_ENXIO,
--        [E2BIG]         = TARGET_E2BIG,
--        [ENOEXEC]       = TARGET_ENOEXEC,
--        [EBADF]         = TARGET_EBADF,
--        [ECHILD]        = TARGET_ECHILD,
--        [EAGAIN]        = TARGET_EAGAIN,
--        [ENOMEM]        = TARGET_ENOMEM,
--        [EACCES]        = TARGET_EACCES,
--        [EFAULT]        = TARGET_EFAULT,
-+    switch (host_errno) {
-+    case 0:         return 0;
-+    case EPERM:     return TARGET_EPERM;
-+    case ENOENT:    return TARGET_ENOENT;
-+    case ESRCH:     return TARGET_ESRCH;
-+    case EINTR:     return TARGET_EINTR;
-+    case EIO:       return TARGET_EIO;
-+    case ENXIO:     return TARGET_ENXIO;
-+    case E2BIG:     return TARGET_E2BIG;
-+    case ENOEXEC:   return TARGET_ENOEXEC;
-+    case EBADF:     return TARGET_EBADF;
-+    case ECHILD:    return TARGET_ECHILD;
-+    case EAGAIN:    return TARGET_EAGAIN;
-+    case ENOMEM:    return TARGET_ENOMEM;
-+    case EACCES:    return TARGET_EACCES;
-+    case EFAULT:    return TARGET_EFAULT;
- #ifdef ENOTBLK
--        [ENOTBLK]       = TARGET_ENOTBLK,
-+    case ENOTBLK:   return TARGET_ENOTBLK;
- #endif
--        [EBUSY]         = TARGET_EBUSY,
--        [EEXIST]        = TARGET_EEXIST,
--        [EXDEV]         = TARGET_EXDEV,
--        [ENODEV]        = TARGET_ENODEV,
--        [ENOTDIR]       = TARGET_ENOTDIR,
--        [EISDIR]        = TARGET_EISDIR,
--        [EINVAL]        = TARGET_EINVAL,
--        [ENFILE]        = TARGET_ENFILE,
--        [EMFILE]        = TARGET_EMFILE,
--        [ENOTTY]        = TARGET_ENOTTY,
-+    case EBUSY:     return TARGET_EBUSY;
-+    case EEXIST:    return TARGET_EEXIST;
-+    case EXDEV:     return TARGET_EXDEV;
-+    case ENODEV:    return TARGET_ENODEV;
-+    case ENOTDIR:   return TARGET_ENOTDIR;
-+    case EISDIR:    return TARGET_EISDIR;
-+    case EINVAL:    return TARGET_EINVAL;
-+    case ENFILE:    return TARGET_ENFILE;
-+    case EMFILE:    return TARGET_EMFILE;
-+    case ENOTTY:    return TARGET_ENOTTY;
- #ifdef ETXTBSY
--        [ETXTBSY]       = TARGET_ETXTBSY,
-+    case ETXTBSY:   return TARGET_ETXTBSY;
- #endif
--        [EFBIG]         = TARGET_EFBIG,
--        [ENOSPC]        = TARGET_ENOSPC,
--        [ESPIPE]        = TARGET_ESPIPE,
--        [EROFS]         = TARGET_EROFS,
--        [EMLINK]        = TARGET_EMLINK,
--        [EPIPE]         = TARGET_EPIPE,
--        [EDOM]          = TARGET_EDOM,
--        [ERANGE]        = TARGET_ERANGE,
--        [ENOSYS]        = TARGET_ENOSYS,
-+    case EFBIG:     return TARGET_EFBIG;
-+    case ENOSPC:    return TARGET_ENOSPC;
-+    case ESPIPE:    return TARGET_ESPIPE;
-+    case EROFS:     return TARGET_EROFS;
-+    case EMLINK:    return TARGET_EMLINK;
-+    case EPIPE:     return TARGET_EPIPE;
-+    case EDOM:      return TARGET_EDOM;
-+    case ERANGE:    return TARGET_ERANGE;
-+    case ENOSYS:    return TARGET_ENOSYS;
- #ifdef ELOOP
--        [ELOOP]         = TARGET_ELOOP,
-+    case ELOOP:     return TARGET_ELOOP;
- #endif
-     };
+-    /* Only probe for the platform and capabilities if we havn't already
+-       determined maximum values at compile time.  */
++    /*
++     * Only probe for the platform and capabilities if we haven't already
++     * determined maximum values at compile time.
++     */
+ #if !defined(use_idiv_instructions) || !defined(use_neon_instructions)
+     {
+         unsigned long hwcap = qemu_getauxval(AT_HWCAP);
+diff --git a/tcg/sparc/tcg-target.c.inc b/tcg/sparc/tcg-target.c.inc
+index a6ec94a094fa..688827968b02 100644
+--- a/tcg/sparc/tcg-target.c.inc
++++ b/tcg/sparc/tcg-target.c.inc
+@@ -1690,8 +1690,10 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
  
--    if (host_errno == 0) {
--        return 0;
--    } else if (host_errno > 0 && host_errno < ARRAY_SIZE(guest_errno) &&
--            guest_errno[host_errno]) {
--        return guest_errno[host_errno];
--    } else {
--        return TARGET_EINVAL;
--    }
-+    return TARGET_EINVAL;
- }
- 
- typedef struct XtensaSimConsole {
+ static void tcg_target_init(TCGContext *s)
+ {
+-    /* Only probe for the platform and capabilities if we havn't already
+-       determined maximum values at compile time.  */
++    /*
++     * Only probe for the platform and capabilities if we haven't already
++     * determined maximum values at compile time.
++     */
+ #ifndef use_vis3_instructions
+     {
+         unsigned long hwcap = qemu_getauxval(AT_HWCAP);
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index 44d711c0fc4a..58a34b5147b5 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -2741,7 +2741,7 @@ void tcg_gen_goto_tb(unsigned idx)
+     /* We only support two chained exits.  */
+     tcg_debug_assert(idx <= TB_EXIT_IDXMAX);
+ #ifdef CONFIG_DEBUG_TCG
+-    /* Verify that we havn't seen this numbered exit before.  */
++    /* Verify that we haven't seen this numbered exit before.  */
+     tcg_debug_assert((tcg_ctx->goto_tb_issue_mask & (1 << idx)) == 0);
+     tcg_ctx->goto_tb_issue_mask |= 1 << idx;
+ #endif
 -- 
 2.31.1
 
