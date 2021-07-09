@@ -1,56 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m1x77-0006ZX-RX
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jul 2021 16:28:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60524)
+	id 1m1x79-0006gk-Jb
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jul 2021 16:28:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1x76-0006TL-7A; Fri, 09 Jul 2021 16:28:44 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:43447)
+ id 1m1x73-0006MY-O6; Fri, 09 Jul 2021 16:28:42 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:35843)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1x72-0007X5-BK; Fri, 09 Jul 2021 16:28:43 -0400
+ id 1m1x71-0007X0-Pq; Fri, 09 Jul 2021 16:28:41 -0400
 Received: from quad ([82.142.13.34]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MStKq-1lb3MK0T8A-00UGGz; Fri, 09
- Jul 2021 22:28:34 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MWRZt-1lebal0N0V-00Xqe0; Fri, 09
+ Jul 2021 22:28:32 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Mark Nelson <mdnelson8@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 9/9] util/guest-random: Fix size arg to tail memcpy
-Date: Fri,  9 Jul 2021 22:28:24 +0200
-Message-Id: <20210709202824.578187-10-laurent@vivier.eu>
+ Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <thuth@redhat.com>,
+ Richard Zak <richard.j.zak@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 7/9] target/xtensa/xtensa-semi: Fix compilation problem on Haiku
+Date: Fri,  9 Jul 2021 22:28:22 +0200
+Message-Id: <20210709202824.578187-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210709202824.578187-1-laurent@vivier.eu>
 References: <20210709202824.578187-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:AUse9cH1is9MEo3IktQmuLG8soA4mjG4Rk7m+Zn/OcPEpHKR+PO
- kkxiIiElz43QZOgvDAFKgjLMTfVpkJWxPm9wHdnxSvIR3pC6FpxvnOReOrBav2UIU20+GmE
- dH/O2o2JgrW07EpKGvv3X9bvPvCRY4TJDiLP01bWtEbKTeXKtXAs8kQfyojXBO5F6xJ+IxZ
- h+7XaOJijk4z9n07T3POQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:73VLRv3XisQ=:0z0ao/ne0UNIrwb+xEDVxG
- r/6lg+QLuHsnFvwJJLv9QQL8L6L/THxR2fmC5wW1dzTnnVhKU/PmFmG62AIjbDP7dGJHwirlQ
- ySnh0py1QXoIxjuO+OSqV0Z+ri8dzKU2Jj9u2lMqifVNRAjRnYIooKM8x6h41j3Et2eGi7Ic2
- VjJMZq00uzT7JGH3s841WstBJyV+K1tEyc76IW/PWtgFR+07Vwroo067kMY9RyDv7vCoQrUuG
- B54GCpN05FfXCjny5Wlz5oBdbJL2AI0bKkFlq+6zhrsSZEmJGW8mfmco59CSAl9aOK++fKAkb
- bGvzntlBLmJU0SZ9wOJCjtQ/ogmtmzjhFpP6jfe4o6mE/T19HF0X9Xpju/nswjTEl6k320WJ4
- H6ULORcJKrIn/DsUgErYXNuNfRTs06L1npeCzgVIGVtnV7hT33vtCPzC1FlxuE5bQYCiRhNWZ
- oK2T1IOYuUv4aIKFWP/ZfRwazfDAKiI8OBswGrppv+K7lEgpobAeEI33Sor6Y7bmlIB7S/rnX
- NlDm6DZkeTMYNvLzK7Y7kGpBbEX990YvQ9MN9DWpW/WgElyvmIAFzjnby8LMXXRwF+JbD6bYQ
- 9bD539eTvgoQRJKLkV7W3GbHwEvbWsXNtmvE943dpOK4I54VULOcOvhjbI68xS6UntOGsNtLw
- jBtry1OWRN41K8eLRRatF/C0L5c6u0VHG3Y4ku9HfmpypW9WB8r3OgNPJAfZ0CXV3t2RzO99t
- XXk9ByJEmfRsT5k3mNpIURv7pC8X+Pa30MvidahzZlJ6kiG+v65Ac4AVRuu0tuqvr54Brlzod
- lGEQ4F0ob/SPKrE6r19kEnKaK/3JESKA6JGYR4Sc2M+qo1yVEagwPRkHX4aOtJafNDsLjgG
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:MQSXHUsX0woclw4HIMUHiRVfSE/jYaJeaH1z0Cqytp1uvkj5Q05
+ +iv3ONPMHC5ZWAb+xRWAon3KOLa9VHCaA7qdRTL1cy5rFBjwDk+vZqpHckyQw5gmjGCsdcS
+ MAJrkLJnDjzN+7PdAQ2M96N3jkGtme9R2HO0+vjGeb1KgWVig3CzIjPvU206ozOGltmEOXf
+ nXMYujbGWaQ2lxLEm09iA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:NJgHbCqVIaY=:7eMEc4PRIw7F+9L6yyW2y2
+ l35OtEkLm97HBiOxX+snQLfVUeMdphDaY8d89i3G/Vt89USL0L1Ty+f1T/UBWIECklcdsjyvm
+ BvbSGvPr1esRo10nTXBJoaiQqlcfc+BJpPrQUrhTOeczzg+PSq2Lhr+hQ2TGuKNw2MPdxXEO5
+ 2u1l/iBwQbJ2HZblHWt3uS3bg9iXoEyExIUBpKhsXXbs/87bG2Qq9EaXcJuPSOkPyNeJ4uj4X
+ SzxpMT4HwKKHlvlXB1HOsKJtZhJ/EOGBmQWGVjxn4wqICPcGsZygB9GYlrIKLtB69VgGVSJbB
+ Vi57w7WimNZr6avivgZdxgNxckf4XISm6cr2tcAXhYIAg8MKXK/3BnaEkGzlpOk2j3RUHEjdg
+ s11nfx9feDQhgh1osLGhLxa7Z4gKkq82N/0b68/wUA46audbgnQaywmcFTpahx0i9odZVPfav
+ Pr80g3zs+JmD2Ca2QWIQOFAqJE+jpXQYZh2Eamgt9q5vueXbnsCWeaf6gs8AA54TvlMs2s3Qz
+ 7nzPBUeDLG+kMYxQ3ZOZkIEJd0/Kj5aJQB8qqzXZqvgFaA2pEfOTwjxafhPdEDq4eb7N9nzso
+ l0kHs/Th0afEjTQsFlaoAFqQPyPLxOpfjZ2766092B35H7+fpNNcpJZhRtSpCQbPsaHdx/znF
+ Vmj5kGH7N3aoFqquHUcuXUZHtAdGA4asujuWv3jXFAmuKTL2OlJ9eTUPFT2/76SMDZrod8pXH
+ zkUnmZuvLSUbUDdK7Fa93d2qLawPTTsT7AKzIDIpLk5BsrNcE77xsdzY9JqzuwcDFIVaU0K4b
+ 9UsrFsaoL45oviX77sshV05vwpbO1GWPnfyD6lgvFveYCgq3A5lT8/QwQ6CNgRElPws2l7h
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_BL=0.001,
+ RCVD_IN_MSPIKE_L3=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,38 +66,131 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jul 2021 20:28:44 -0000
+X-List-Received-Date: Fri, 09 Jul 2021 20:28:42 -0000
 
-From: Mark Nelson <mdnelson8@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
 
-We know that in the body of this if statement i is less than len, so
-we really should be copying len - i bytes not i - len bytes.
+The errno numbers are very large on Haiku, so the linking currently
+fails there with a "final link failed: memory exhausted" error
+message. We should not use the errno number as array indexes here,
+thus convert the code to a switch-case statement instead. A clever
+compiler should be able to optimize this code in a similar way
+anway.
 
-Fix this typo.
-
-Fixes: 8d8404f1564 ("util: Add qemu_guest_getrandom and associated routines")
-Signed-off-by: Mark Nelson <mdnelson8@gmail.com>
+Reported-by: Richard Zak <richard.j.zak@gmail.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Max Filippov <jcmvbkbc@gmail.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20210709120600.11080-1-mdnelson8@gmail.com>
+Message-Id: <20210706081822.1316551-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- util/guest-random.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/xtensa/xtensa-semi.c | 84 +++++++++++++++++--------------------
+ 1 file changed, 39 insertions(+), 45 deletions(-)
 
-diff --git a/util/guest-random.c b/util/guest-random.c
-index 086115bd6702..23643f86cc60 100644
---- a/util/guest-random.c
-+++ b/util/guest-random.c
-@@ -38,7 +38,7 @@ static int glib_random_bytes(void *buf, size_t len)
-     }
-     if (i < len) {
-         x = g_rand_int(rand);
--        __builtin_memcpy(buf + i, &x, i - len);
-+        __builtin_memcpy(buf + i, &x, len - i);
-     }
-     return 0;
+diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
+index 79f2b043f233..fa21b7e11fc2 100644
+--- a/target/xtensa/xtensa-semi.c
++++ b/target/xtensa/xtensa-semi.c
+@@ -95,59 +95,53 @@ enum {
+ 
+ static uint32_t errno_h2g(int host_errno)
+ {
+-    static const uint32_t guest_errno[] = {
+-        [EPERM]         = TARGET_EPERM,
+-        [ENOENT]        = TARGET_ENOENT,
+-        [ESRCH]         = TARGET_ESRCH,
+-        [EINTR]         = TARGET_EINTR,
+-        [EIO]           = TARGET_EIO,
+-        [ENXIO]         = TARGET_ENXIO,
+-        [E2BIG]         = TARGET_E2BIG,
+-        [ENOEXEC]       = TARGET_ENOEXEC,
+-        [EBADF]         = TARGET_EBADF,
+-        [ECHILD]        = TARGET_ECHILD,
+-        [EAGAIN]        = TARGET_EAGAIN,
+-        [ENOMEM]        = TARGET_ENOMEM,
+-        [EACCES]        = TARGET_EACCES,
+-        [EFAULT]        = TARGET_EFAULT,
++    switch (host_errno) {
++    case 0:         return 0;
++    case EPERM:     return TARGET_EPERM;
++    case ENOENT:    return TARGET_ENOENT;
++    case ESRCH:     return TARGET_ESRCH;
++    case EINTR:     return TARGET_EINTR;
++    case EIO:       return TARGET_EIO;
++    case ENXIO:     return TARGET_ENXIO;
++    case E2BIG:     return TARGET_E2BIG;
++    case ENOEXEC:   return TARGET_ENOEXEC;
++    case EBADF:     return TARGET_EBADF;
++    case ECHILD:    return TARGET_ECHILD;
++    case EAGAIN:    return TARGET_EAGAIN;
++    case ENOMEM:    return TARGET_ENOMEM;
++    case EACCES:    return TARGET_EACCES;
++    case EFAULT:    return TARGET_EFAULT;
+ #ifdef ENOTBLK
+-        [ENOTBLK]       = TARGET_ENOTBLK,
++    case ENOTBLK:   return TARGET_ENOTBLK;
+ #endif
+-        [EBUSY]         = TARGET_EBUSY,
+-        [EEXIST]        = TARGET_EEXIST,
+-        [EXDEV]         = TARGET_EXDEV,
+-        [ENODEV]        = TARGET_ENODEV,
+-        [ENOTDIR]       = TARGET_ENOTDIR,
+-        [EISDIR]        = TARGET_EISDIR,
+-        [EINVAL]        = TARGET_EINVAL,
+-        [ENFILE]        = TARGET_ENFILE,
+-        [EMFILE]        = TARGET_EMFILE,
+-        [ENOTTY]        = TARGET_ENOTTY,
++    case EBUSY:     return TARGET_EBUSY;
++    case EEXIST:    return TARGET_EEXIST;
++    case EXDEV:     return TARGET_EXDEV;
++    case ENODEV:    return TARGET_ENODEV;
++    case ENOTDIR:   return TARGET_ENOTDIR;
++    case EISDIR:    return TARGET_EISDIR;
++    case EINVAL:    return TARGET_EINVAL;
++    case ENFILE:    return TARGET_ENFILE;
++    case EMFILE:    return TARGET_EMFILE;
++    case ENOTTY:    return TARGET_ENOTTY;
+ #ifdef ETXTBSY
+-        [ETXTBSY]       = TARGET_ETXTBSY,
++    case ETXTBSY:   return TARGET_ETXTBSY;
+ #endif
+-        [EFBIG]         = TARGET_EFBIG,
+-        [ENOSPC]        = TARGET_ENOSPC,
+-        [ESPIPE]        = TARGET_ESPIPE,
+-        [EROFS]         = TARGET_EROFS,
+-        [EMLINK]        = TARGET_EMLINK,
+-        [EPIPE]         = TARGET_EPIPE,
+-        [EDOM]          = TARGET_EDOM,
+-        [ERANGE]        = TARGET_ERANGE,
+-        [ENOSYS]        = TARGET_ENOSYS,
++    case EFBIG:     return TARGET_EFBIG;
++    case ENOSPC:    return TARGET_ENOSPC;
++    case ESPIPE:    return TARGET_ESPIPE;
++    case EROFS:     return TARGET_EROFS;
++    case EMLINK:    return TARGET_EMLINK;
++    case EPIPE:     return TARGET_EPIPE;
++    case EDOM:      return TARGET_EDOM;
++    case ERANGE:    return TARGET_ERANGE;
++    case ENOSYS:    return TARGET_ENOSYS;
+ #ifdef ELOOP
+-        [ELOOP]         = TARGET_ELOOP,
++    case ELOOP:     return TARGET_ELOOP;
+ #endif
+     };
+ 
+-    if (host_errno == 0) {
+-        return 0;
+-    } else if (host_errno > 0 && host_errno < ARRAY_SIZE(guest_errno) &&
+-            guest_errno[host_errno]) {
+-        return guest_errno[host_errno];
+-    } else {
+-        return TARGET_EINVAL;
+-    }
++    return TARGET_EINVAL;
  }
+ 
+ typedef struct XtensaSimConsole {
 -- 
 2.31.1
 
