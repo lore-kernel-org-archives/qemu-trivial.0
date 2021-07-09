@@ -1,59 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m1mav-0002I0-Bj
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jul 2021 05:14:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46632)
+	id 1m1q6Z-000716-EM
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jul 2021 08:59:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1mau-0002F4-8Z; Fri, 09 Jul 2021 05:14:48 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:46107)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1mas-0006Sk-Kc; Fri, 09 Jul 2021 05:14:48 -0400
-Received: from [192.168.100.1] ([82.142.13.34]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MGgRW-1lxwqu1FKc-00DqHx; Fri, 09 Jul 2021 11:14:42 +0200
-Subject: Re: [PATCH v1] migration: fix typo in mig_throttle_guest_down comment
-To: Olaf Hering <olaf@aepfle.de>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>
-References: <20210708162159.18045-1-olaf@aepfle.de>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <996244ae-e6fb-4acc-5bad-b78b3f23c205@vivier.eu>
-Date: Fri, 9 Jul 2021 11:14:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <mdnelson8@gmail.com>)
+ id 1m1pHp-0001gk-1j; Fri, 09 Jul 2021 08:07:17 -0400
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b]:38525)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mdnelson8@gmail.com>)
+ id 1m1pHn-0005Mf-Gy; Fri, 09 Jul 2021 08:07:16 -0400
+Received: by mail-ot1-x32b.google.com with SMTP id
+ i5-20020a9d68c50000b02904b41fa91c97so4794716oto.5; 
+ Fri, 09 Jul 2021 05:07:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zQYdDYlCFYkwZsOZUYKcR3j8cEffEN4GEuOPkkmf/Jo=;
+ b=n9YSxJY8JAXi3cyxojmK8Ul1XBvKQNq5zm4zs9NZ+6V6iJuv77SA/UBLZ7uguYrHtp
+ qNNsVueGg/oC/Ppy+7QrO4IPOs6CJXfJJxMi4jxcGQvFrvJj3esAMwBCvuq2pPkSvRxh
+ D83p/0obxA5LnKsKyupZTO+x++yB67DSHrP7GV0IZKn7WNd84lBqliJVY1WrBwKk0lrF
+ VT2Y3qr+MFUR46XB8aPEwPooR9eT7t0KOO0R360+9+ucnYNNbzn+lAfO1rCRjdzgVr9l
+ 6qfecn5T7BNgsG90iLKF/aULVzShbt9RGFX/1fTyJUh2wHEJpvkkoqjbrWbCzwm95C4m
+ qlBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zQYdDYlCFYkwZsOZUYKcR3j8cEffEN4GEuOPkkmf/Jo=;
+ b=HD/bHFJCGRHEOzq+FP47Uyfbtyh9+KjSN5/FRp+gZs+99Ht4aEolv0SgFYij/5z+aO
+ C1NMpvId/Zwjl1Sxw9beLOdwSslH1coZLc9OHwbnlaH4iiRJJSbpCh7WTBv3AIlMzPXK
+ 7SqXY1bE0CZ7ypx5pWp8O5xXB5asy0nSscp+fz8Sn4BlcfUC9D/sKqe5nTk3Gja31VNR
+ dpUXvQ9zJz9989IiLGltGB3BfkoX9MoHm2PfIFEM8iQ+Y+Igdzpsu1XPbsocr+nTwTMa
+ IAu98fbhjqlCc9jD0InXoWd+jofde48OHZn1/VHbPKAHK4/0rfu0jjEIl/BlQfQ8tvqz
+ 5GxQ==
+X-Gm-Message-State: AOAM533JN29FTGtqIF64I/S5PNCT3LayDfdNPjlkkO8iL3Pw7OptP8GG
+ k80RMLwy9XdLQO5X2EekYfGb8qkJkOKIbw==
+X-Google-Smtp-Source: ABdhPJxqJLrtxTosZ4ewKpFWBlCFb27xWrxKOBCtBWY9TzPk90YshyyhnxnDA9begAHpp2bQSKX+kw==
+X-Received: by 2002:a9d:2214:: with SMTP id o20mr5793821ota.66.1625832432610; 
+ Fri, 09 Jul 2021 05:07:12 -0700 (PDT)
+Received: from ripper.. (cpe-72-133-92-246.sw.res.rr.com. [72.133.92.246])
+ by smtp.gmail.com with ESMTPSA id z19sm956544ooi.32.2021.07.09.05.07.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 09 Jul 2021 05:07:11 -0700 (PDT)
+From: Mark Nelson <mdnelson8@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org, qemu-trivial@nongnu.org,
+ Mark Nelson <mdnelson8@gmail.com>
+Subject: [PATCH] util/guest-random: Fix size arg to tail memcpy
+Date: Fri,  9 Jul 2021 07:06:00 -0500
+Message-Id: <20210709120600.11080-1-mdnelson8@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <20210708162159.18045-1-olaf@aepfle.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:CnYnvQ4Jcx0TKzDQpycu7DYbJDjhEXKUOks4Fz0bnAYB/Ort4AD
- DpnSLCRryiPA/lyKZkFvB7waH874yxR7MpvoHACcCcLgpuGS4GQpvncq9DldwBnwrLooTkN
- KQZkzySzpkj2AHOwJNxUhn5rzz3go1TZAJ2j0UmGzsLo6z9GxHR5sVgXBqIuuQUKt4BStKn
- slnbLPVb67eBst2h9ikAg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rSmzET2ujMI=:POxHnxh7IW5BILlJDFjvhy
- +DiZr///mWc/TNojkPpyf8Dz6yXX/Tos/va32XW6fvnXg0Xt4qX8tZZYGAwTEGkL9dU6AN8/f
- pdex46Bge2JiltyNDEZa+rsHZajg6VGmC//yvq9b1OqRW/P9Aqtom9nTxEZ7Rp6AV8D7TEPFo
- E89u1RO8KbhCxYFzIIO5w6julsYw3UwWpqrHENwStDPW720pFMSwfyfra3E59E491FBP+X1Jf
- 57nr5o+1E2zhwHYIEFMjLVc7PMprobD/uD9Nw2QJrClxeSDdby1oQl2yXYeqJaHnwpdFkqQmF
- hcvVyt8eDMLqacdpk967PUiB9Xt+9vx9J6eK92gFvpeJjFsHaWRnXCwA58NLBU1+VmM3fKLWq
- ifG4+E+oGT0+XC/iOkvQQjoI3v52JEHbC1M20wtY5GcqOJ/8eEuwX026p1H1egN9/Q/eJkgHf
- epaITXz+BsxHZ5rpLLDyhtTNunJLRQy4OpG1+eTiFabYEyHCxTGeS2vn9x+DoKytr16ZNw8MQ
- 1u4cG6rWuh/7pVS5uBYo1J6Jult5M5YVCWY6nYFqpWGvKyjiB+/zvoaZRkxjDseSbiZG4HmKo
- Jcopyrgp1T8caaaPzpxvnbP5bfo5E02sgtCX6hXxjneCB/nHlkTqROnCbWcQ2Wt1OwY+0xkQ8
- 2hTzWpmNHar+Hn89n5SSFPB6kthdjIxQxER/g5xM5gb9ZX9mHglkTcXsgDfPeLq+mx/J0LfWD
- EcQtxQ95AsIpTMVfJnSIUFDK7nZUFORNztYglc3Pmtdytxk8V0NlxTnrDAFHLSuuimW83wTuH
- 9t/am/eBNcB4bULWDUB25OnZQmykTb2MKf/4JvrFhcigdXQkUPKhcwOHG7x0xc8jkqkjJKu
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
+ envelope-from=mdnelson8@gmail.com; helo=mail-ot1-x32b.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 09 Jul 2021 08:59:40 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,34 +75,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jul 2021 09:14:48 -0000
+X-List-Received-Date: Fri, 09 Jul 2021 12:07:17 -0000
 
-Le 08/07/2021 à 18:21, Olaf Hering a écrit :
-> Fixes commit 3d0684b2ad82a5dde68e3f08b0d7786dccaf619c ("ram: Update
-> all functions comments")
-> 
-> Signed-off-by: Olaf Hering <olaf@aepfle.de>
-> ---
->  migration/ram.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/migration/ram.c b/migration/ram.c
-> index 723af67c2e..88ff34f574 100644
-> --- a/migration/ram.c
-> +++ b/migration/ram.c
-> @@ -600,7 +600,7 @@ static size_t save_page_header(RAMState *rs, QEMUFile *f,  RAMBlock *block,
->  }
->  
->  /**
-> - * mig_throttle_guest_down: throotle down the guest
-> + * mig_throttle_guest_down: throttle down the guest
->   *
->   * Reduce amount of guest cpu execution to hopefully slow down memory
->   * writes. If guest dirty memory rate is reduced below the rate at
-> 
+We know that in the body of this if statement i is less than len, so
+we really should be copying len - i bytes not i - len bytes.
 
-Applied to my trivial-patches branch.
+Fix this typo.
 
-Thanks,
-Laurent
+Signed-off-by: Mark Nelson <mdnelson8@gmail.com>
+---
+ util/guest-random.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/guest-random.c b/util/guest-random.c
+index 086115bd67..23643f86cc 100644
+--- a/util/guest-random.c
++++ b/util/guest-random.c
+@@ -38,7 +38,7 @@ static int glib_random_bytes(void *buf, size_t len)
+     }
+     if (i < len) {
+         x = g_rand_int(rand);
+-        __builtin_memcpy(buf + i, &x, i - len);
++        __builtin_memcpy(buf + i, &x, len - i);
+     }
+     return 0;
+ }
+-- 
+2.30.2
+
 
