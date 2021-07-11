@@ -1,57 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m1x79-0006hK-PH
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jul 2021 16:28:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60534)
+	id 1m2gsf-000144-Pt
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Jul 2021 17:20:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57274)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1x77-0006Zq-TI; Fri, 09 Jul 2021 16:28:45 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:60251)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1m1x75-0007ZC-Q9; Fri, 09 Jul 2021 16:28:45 -0400
-Received: from quad ([82.142.13.34]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MLR5h-1llFRG2Ijb-00ISQK; Fri, 09
- Jul 2021 22:28:29 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Luis Pires <luis.pires@eldorado.org.br>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 3/9] misc: Fix "havn't" typo
-Date: Fri,  9 Jul 2021 22:28:18 +0200
-Message-Id: <20210709202824.578187-4-laurent@vivier.eu>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210709202824.578187-1-laurent@vivier.eu>
-References: <20210709202824.578187-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m2gse-0000z8-1J
+ for qemu-trivial@nongnu.org; Sun, 11 Jul 2021 17:20:52 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:39550)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m2gsb-000632-3i
+ for qemu-trivial@nongnu.org; Sun, 11 Jul 2021 17:20:51 -0400
+Received: by mail-ed1-x536.google.com with SMTP id v1so24295442edt.6
+ for <qemu-trivial@nongnu.org>; Sun, 11 Jul 2021 14:20:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LpZV3fun63v2eOatoraszDgm/Jvu1rtiTMMVxKPews4=;
+ b=wRizJfPVD8yOcXE9GL737pfukGwztFM7GuI/B+3Zpg7I3FPwdbBm6Yc1luTKsd07SD
+ Lmm8TOaffph2c3AHXIwJi7El366ss3g6Uhzp7qRLo2ROlz9LUeN3ulX4x9oMSw8gTfaT
+ YY1D1KpvnNO1uNOq+2KOUIjdQyqBlaY0ubKk4Lfw0zkGKsAsD0uHORCnFNqtNkAyDOLB
+ sRUq87dHDL60BXNo3IQMItYnCj4lfVLMtrSSdFSIj0gCYe7YyPUk+agoTigLkvgGFNYu
+ qKgeooEF4/Hh+Mv5G26HZ/1ZT6CIvPY033LBWtWRZOxMvcm+G0lAF1PFkX5tMAnomWE7
+ H4UA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LpZV3fun63v2eOatoraszDgm/Jvu1rtiTMMVxKPews4=;
+ b=ATNbmIwG09W01Uounza3dsnDDKJsociSR18xcUCEK1QIQrZX+u2U3sUGWci+CM6M1m
+ pw9Da5lVu9s4AY1SWlNT33uRD3IkoGXdzYQRv8LLQrIpb8yCpeLLQqpJhAMPK7+LPETh
+ AOaMqaF92hYf27hvhBl7O2Cj0TRzsT6Mrnds4f4QRPi5vqLxIljQQUvE1SpABRoaADVZ
+ QCwgVPzwrZb6xP3aEKVQ5teeOa6EngFx9S4f19qiw9blZ24fDr8lsUgK+GJp9YYv/Ss4
+ Ic1WKzDsJShdsEfewJ3V72MLZSIcwN/A+Z94tndstQzRK8Gi+ThFhK+OhcMNA8YqYl3s
+ /g4w==
+X-Gm-Message-State: AOAM530QG8n8U2WKziknlolMtV5rp4oZ93G0KsSgk7pcJbS9X7McOZYV
+ mPYcS9Pox3JLgyFDh8vMpW7k2h6bl4XR/AY6DN+xew==
+X-Google-Smtp-Source: ABdhPJxFiBLELVmQaiK+Zr7hVQqkw6rMOWs2Kqfr9HTK/O9G1Ar9fWDAGov/hqiXKeo37ipe/+IAsr76wS+TvRpevPM=
+X-Received: by 2002:aa7:c857:: with SMTP id g23mr59366726edt.100.1626038447404; 
+ Sun, 11 Jul 2021 14:20:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:fiji7J95S0VPK22FvbcrUoEtqfg2bHGGldJ4mXbCkcnKOud9wHH
- Hwown/70qQir91+ZBO9CHZ7CMSExUPD2EnlZsHh0G4qBak1Uc5S7MDlq4VPkn24rI8g5xKe
- UzVuce2+EMYKcaQwpky5nc1dYsHlBXFsR6seWCsjhA+wGilFNgJcL+VA3+v6LcUV/uThHXC
- ZRg5sbVRiY4WlKnPHWwhw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:4Fbirk5JePc=:1nSig/NJeYwQ/z1A5aTaAY
- Y0pAei8v3ZKkSY6bBPOUAhEbuabWIfCBaPeQbBp2wQv/WZOnhNQ9UpewRqDfsV3AvmuXLkLML
- A0UHqdKvmdIkEUxxggofMt/KUYoMh3ReIaUidbK4s2MkNsFHgLSYPIp7GmxIMA8IhSY1Wb1HP
- S5jsn7d98hHjExZq7oYtv37826w1jDPZ8ZimlUAsa3XbE60ir89UtOwLn/30xyaFEs8/KlwdT
- WGVVP/rtSL/QcqHPgJMWdOIfbAYmo8lNzZf58+2XCodOp1DO5bTcL3S7tKhkV2QFa+BtcAw+H
- U+RyzoAJV9N6/+VLzCepoMcVftr23tDSpr0SP1Ev5qGonzFAw5GjO73yZ54kM4Nuk2A45vZUj
- oCJLIThWfUE2RLgMe69ZRc4D+vH4YOhELMaJsI53UDg5+IkpSpNuQQJRcjFsZmB5DYv4VTo6r
- qX3q/vyMJlwNkWAxkVne/8AbCUf/XjcMyiDhEoaCq55mTLNnwZsbgh6kaxCBTNSMpVpc/eCH6
- cXG6I3SfWBAlYbSrkbfuUNgrcbpAEb0/f8R5NH/Kcrq3hSldRn3a5JYtpHrXNT3TkIUMlOEgm
- aoemFoZ/TXaoW9zu99rvm4tAJEJh7wqa9VgZIYabaJC0hxphefPxHp3LShP1hvGoEgTrqpgAd
- EkPK6fMOax1RajYNx5JGoTwAeGxBFGSZJRbQrkIhQQPxnuLwCOKH4T3YBYBy9890KqxWtaB89
- GAfawmZp/HFehTmhwgT6MAlSot+X5kF5oq+ypuvxjc1ZO0R8JB7MID+qn5KcAJIOz16AWIH93
- FyBCuOrWSsNkWqDFGL7e8wKzqAfFmTWrU9KVjV7Ru0y5dVQ/92Tw88S/ijL/DSpr260duWL
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20210709202824.578187-1-laurent@vivier.eu>
+In-Reply-To: <20210709202824.578187-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 11 Jul 2021 22:20:08 +0100
+Message-ID: <CAFEAcA-W0CJzxnNT8XfYRxNqhOoPzwpi0Kc8j4qqtS+u=Ek9aA@mail.gmail.com>
+Subject: Re: [PULL 0/9] Trivial branch for 6.1 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -64,103 +70,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jul 2021 20:28:46 -0000
+X-List-Received-Date: Sun, 11 Jul 2021 21:20:52 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On Fri, 9 Jul 2021 at 21:32, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 05de778b5b8ab0b402996769117b88c7ea5c7c61:
+>
+>   Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2021-07-09 14:30:01 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.1-pull-request
+>
+> for you to fetch changes up to e28ffe90fde5702aa8716ac2fa1b4116cdcc9e61:
+>
+>   util/guest-random: Fix size arg to tail memcpy (2021-07-09 18:42:46 +0200)
+>
+> ----------------------------------------------------------------
+> Trivial patches pull request 20210709
+>
+> ----------------------------------------------------------------
 
-Fix "havn't (make)" -> "haven't (made)" typo.
 
-Reviewed-by: Luis Pires <luis.pires@eldorado.org.br>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20210629051400.2573253-1-f4bug@amsat.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/usb/desc-msos.c         | 2 +-
- target/s390x/translate.c   | 6 ++++--
- tcg/arm/tcg-target.c.inc   | 6 ++++--
- tcg/sparc/tcg-target.c.inc | 6 ++++--
- tcg/tcg-op.c               | 2 +-
- 5 files changed, 14 insertions(+), 8 deletions(-)
+Applied, thanks.
 
-diff --git a/hw/usb/desc-msos.c b/hw/usb/desc-msos.c
-index 3a5ad7c8d0f8..836e38c67e1e 100644
---- a/hw/usb/desc-msos.c
-+++ b/hw/usb/desc-msos.c
-@@ -181,7 +181,7 @@ static int usb_desc_msos_prop(const USBDesc *desc, uint8_t *dest)
- 
-     if (desc->msos->Label) {
-         /*
--         * Given as example in the specs.  Havn't figured yet where
-+         * Given as example in the specs.  Haven't figured yet where
-          * this label shows up in the windows gui.
-          */
-         length += usb_desc_msos_prop_str(dest+length, MSOS_REG_SZ,
-diff --git a/target/s390x/translate.c b/target/s390x/translate.c
-index 03dab9f3507a..8822603a6e7d 100644
---- a/target/s390x/translate.c
-+++ b/target/s390x/translate.c
-@@ -6270,8 +6270,10 @@ static void extract_field(DisasFields *o, const DisasField *f, uint64_t insn)
-         abort();
-     }
- 
--    /* Validate that the "compressed" encoding we selected above is valid.
--       I.e. we havn't make two different original fields overlap.  */
-+    /*
-+     * Validate that the "compressed" encoding we selected above is valid.
-+     * I.e. we haven't made two different original fields overlap.
-+     */
-     assert(((o->presentC >> f->indexC) & 1) == 0);
-     o->presentC |= 1 << f->indexC;
-     o->presentO |= 1 << f->indexO;
-diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-index 7a761a602e2c..007ceee68e23 100644
---- a/tcg/arm/tcg-target.c.inc
-+++ b/tcg/arm/tcg-target.c.inc
-@@ -2407,8 +2407,10 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
- 
- static void tcg_target_init(TCGContext *s)
- {
--    /* Only probe for the platform and capabilities if we havn't already
--       determined maximum values at compile time.  */
-+    /*
-+     * Only probe for the platform and capabilities if we haven't already
-+     * determined maximum values at compile time.
-+     */
- #if !defined(use_idiv_instructions) || !defined(use_neon_instructions)
-     {
-         unsigned long hwcap = qemu_getauxval(AT_HWCAP);
-diff --git a/tcg/sparc/tcg-target.c.inc b/tcg/sparc/tcg-target.c.inc
-index a6ec94a094fa..688827968b02 100644
---- a/tcg/sparc/tcg-target.c.inc
-+++ b/tcg/sparc/tcg-target.c.inc
-@@ -1690,8 +1690,10 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
- 
- static void tcg_target_init(TCGContext *s)
- {
--    /* Only probe for the platform and capabilities if we havn't already
--       determined maximum values at compile time.  */
-+    /*
-+     * Only probe for the platform and capabilities if we haven't already
-+     * determined maximum values at compile time.
-+     */
- #ifndef use_vis3_instructions
-     {
-         unsigned long hwcap = qemu_getauxval(AT_HWCAP);
-diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
-index 44d711c0fc4a..58a34b5147b5 100644
---- a/tcg/tcg-op.c
-+++ b/tcg/tcg-op.c
-@@ -2741,7 +2741,7 @@ void tcg_gen_goto_tb(unsigned idx)
-     /* We only support two chained exits.  */
-     tcg_debug_assert(idx <= TB_EXIT_IDXMAX);
- #ifdef CONFIG_DEBUG_TCG
--    /* Verify that we havn't seen this numbered exit before.  */
-+    /* Verify that we haven't seen this numbered exit before.  */
-     tcg_debug_assert((tcg_ctx->goto_tb_issue_mask & (1 << idx)) == 0);
-     tcg_ctx->goto_tb_issue_mask |= 1 << idx;
- #endif
--- 
-2.31.1
+Please update the changelog at https://wiki.qemu.org/ChangeLog/6.1
+for any user-visible changes.
 
+-- PMM
 
