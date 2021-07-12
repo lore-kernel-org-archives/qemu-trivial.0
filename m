@@ -1,63 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m2gsf-000144-Pt
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Jul 2021 17:20:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57274)
+	id 1m2yoN-0000Kb-Ss
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Jul 2021 12:29:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m2gse-0000z8-1J
- for qemu-trivial@nongnu.org; Sun, 11 Jul 2021 17:20:52 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:39550)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m2yoL-0000IO-M1
+ for qemu-trivial@nongnu.org; Mon, 12 Jul 2021 12:29:38 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:36719)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m2gsb-000632-3i
- for qemu-trivial@nongnu.org; Sun, 11 Jul 2021 17:20:51 -0400
-Received: by mail-ed1-x536.google.com with SMTP id v1so24295442edt.6
- for <qemu-trivial@nongnu.org>; Sun, 11 Jul 2021 14:20:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1m2yoJ-0003sB-87
+ for qemu-trivial@nongnu.org; Mon, 12 Jul 2021 12:29:37 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id x16so8609153plg.3
+ for <qemu-trivial@nongnu.org>; Mon, 12 Jul 2021 09:29:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LpZV3fun63v2eOatoraszDgm/Jvu1rtiTMMVxKPews4=;
- b=wRizJfPVD8yOcXE9GL737pfukGwztFM7GuI/B+3Zpg7I3FPwdbBm6Yc1luTKsd07SD
- Lmm8TOaffph2c3AHXIwJi7El366ss3g6Uhzp7qRLo2ROlz9LUeN3ulX4x9oMSw8gTfaT
- YY1D1KpvnNO1uNOq+2KOUIjdQyqBlaY0ubKk4Lfw0zkGKsAsD0uHORCnFNqtNkAyDOLB
- sRUq87dHDL60BXNo3IQMItYnCj4lfVLMtrSSdFSIj0gCYe7YyPUk+agoTigLkvgGFNYu
- qKgeooEF4/Hh+Mv5G26HZ/1ZT6CIvPY033LBWtWRZOxMvcm+G0lAF1PFkX5tMAnomWE7
- H4UA==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=XtmWpkq01X97gueXkOGca0rUJj7jLFPy9fArTJSIkGA=;
+ b=ALScJZfpSz939LnT30Tm5r7dq7tNdRA8RauQl+vogrF+C5TABvAEjO5+VjZ15n/fwi
+ sineEp/zYAGPPr4kuDDCyYkiV8fF8ZPHnqqUJ3Z6+okE1C/tTFq2CeH8WT1ds08XMZLE
+ pvxLBP/oIMFNEkYzpYczYi5VckJMAK+Oq+f6lApbba8my/TWUp62KRE4sXFfY0jGzL/T
+ mk7x+zRQetZtePspOXEnP829hvxpjwqJZfM0oi2GobTge9H+wWhU9KrslNiExHNeQ+Xq
+ VSkli1GBuOqup7xHzPcXF+kj1D3ejujdqfoDRAHqMdnjX30cOYfqdkRhzqZvl092E4uD
+ SjLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=LpZV3fun63v2eOatoraszDgm/Jvu1rtiTMMVxKPews4=;
- b=ATNbmIwG09W01Uounza3dsnDDKJsociSR18xcUCEK1QIQrZX+u2U3sUGWci+CM6M1m
- pw9Da5lVu9s4AY1SWlNT33uRD3IkoGXdzYQRv8LLQrIpb8yCpeLLQqpJhAMPK7+LPETh
- AOaMqaF92hYf27hvhBl7O2Cj0TRzsT6Mrnds4f4QRPi5vqLxIljQQUvE1SpABRoaADVZ
- QCwgVPzwrZb6xP3aEKVQ5teeOa6EngFx9S4f19qiw9blZ24fDr8lsUgK+GJp9YYv/Ss4
- Ic1WKzDsJShdsEfewJ3V72MLZSIcwN/A+Z94tndstQzRK8Gi+ThFhK+OhcMNA8YqYl3s
- /g4w==
-X-Gm-Message-State: AOAM530QG8n8U2WKziknlolMtV5rp4oZ93G0KsSgk7pcJbS9X7McOZYV
- mPYcS9Pox3JLgyFDh8vMpW7k2h6bl4XR/AY6DN+xew==
-X-Google-Smtp-Source: ABdhPJxFiBLELVmQaiK+Zr7hVQqkw6rMOWs2Kqfr9HTK/O9G1Ar9fWDAGov/hqiXKeo37ipe/+IAsr76wS+TvRpevPM=
-X-Received: by 2002:aa7:c857:: with SMTP id g23mr59366726edt.100.1626038447404; 
- Sun, 11 Jul 2021 14:20:47 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=XtmWpkq01X97gueXkOGca0rUJj7jLFPy9fArTJSIkGA=;
+ b=pFE34nrekgSdpV0biIN/BQ5tqb9ue+q0yUxSMMGtHjIFA/E3mUFn8+oPvfgvDlwvAJ
+ ZxwwmfOEVS2V5s7FDWizxnABLHSAtyM0GIv1sw8KPrhCKXrDZ/l6krJPESZQVBwQ22gE
+ kRghHd2HhJOCo1sxQqOhvqDgKKvw/9wT1awBuNHjrDnaPCpc5PDS1EFsz8xOtdM0M1Xy
+ iqFvo357ds/vxY5y8WKMaCTBmxSmwZSAFv9UVfQ+olWOABGQhBAsmBDe1UiHQzccmOL2
+ wW88Is75KifwxI2VMq1WwTOW5qQl9t6U34jtcOTO7d/u5XLAHHncOA07waHcEm8lpUoN
+ EjzA==
+X-Gm-Message-State: AOAM533PX2KMZxRmpkqg6RE2kiR/F63OI7qlAp4Ifo9t+mZhYXo5Gm1L
+ a8DuqvLS3XjFtHMvfs1cWvg/QPmt8iQaXw==
+X-Google-Smtp-Source: ABdhPJyhp2pFQlKoF167q88eUP3wwDyrnAMI/1MGpPpZVoKGYGtGq6c92VeR73QETC1mJIRrf69mEw==
+X-Received: by 2002:a17:90b:4b82:: with SMTP id
+ lr2mr46178111pjb.111.1626107372459; 
+ Mon, 12 Jul 2021 09:29:32 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.149.176])
+ by smtp.gmail.com with ESMTPSA id w9sm12859994pfu.112.2021.07.12.09.29.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Jul 2021 09:29:32 -0700 (PDT)
+Subject: Re: [PATCH] target/i386/tcg/sysemu/bpt_helper.c: typo since
+ cpu_breakpoint and cpu_watchpoint are in a union, the code should access only
+ one of them
+To: Dmitry Voronetskiy <davoronetskiy@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20210613180838.21349-1-davoronetskiy@gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <17761933-8df7-6edd-9c35-121e9b990398@linaro.org>
+Date: Mon, 12 Jul 2021 09:29:30 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210709202824.578187-1-laurent@vivier.eu>
-In-Reply-To: <20210709202824.578187-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 11 Jul 2021 22:20:08 +0100
-Message-ID: <CAFEAcA-W0CJzxnNT8XfYRxNqhOoPzwpi0Kc8j4qqtS+u=Ek9aA@mail.gmail.com>
-Subject: Re: [PULL 0/9] Trivial branch for 6.1 patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <20210613180838.21349-1-davoronetskiy@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.479,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,32 +82,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Jul 2021 21:20:52 -0000
+X-List-Received-Date: Mon, 12 Jul 2021 16:29:39 -0000
 
-On Fri, 9 Jul 2021 at 21:32, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 05de778b5b8ab0b402996769117b88c7ea5c7c61:
->
->   Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2021-07-09 14:30:01 +0100)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.1-pull-request
->
-> for you to fetch changes up to e28ffe90fde5702aa8716ac2fa1b4116cdcc9e61:
->
->   util/guest-random: Fix size arg to tail memcpy (2021-07-09 18:42:46 +0200)
->
-> ----------------------------------------------------------------
-> Trivial patches pull request 20210709
->
-> ----------------------------------------------------------------
+On 6/13/21 11:08 AM, Dmitry Voronetskiy wrote:
+> Signed-off-by: Dmitry Voronetskiy<davoronetskiy@gmail.com>
+> ---
+>   target/i386/tcg/sysemu/bpt_helper.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+I've got a small queue of other i386 tcg stuff, so I'll include this.
 
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/6.1
-for any user-visible changes.
-
--- PMM
+r~
 
