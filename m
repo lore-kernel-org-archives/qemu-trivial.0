@@ -1,90 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m3m8F-0000uA-3T
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Jul 2021 17:09:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53002)
+	id 1m3yks-000816-Jz
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Jul 2021 06:38:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tianrui-wei@outlook.com>)
- id 1m3kqI-0000FU-QB; Wed, 14 Jul 2021 15:46:50 -0400
-Received: from mail-me3aus01olkn2181.outbound.protection.outlook.com
- ([40.92.63.181]:57665 helo=AUS01-ME3-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m3ykq-00080p-V1
+ for qemu-trivial@nongnu.org; Thu, 15 Jul 2021 06:38:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:52221)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tianrui-wei@outlook.com>)
- id 1m3kqG-00021S-42; Wed, 14 Jul 2021 15:46:50 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=gAC+ak2tq3Ej2mD8D/CNt3SZHlzzMUJFm5AWJFU7E6ujXeTfbvPwxW9uTxWMOBZdPARZ8ZMLdWMaWlSMbyXR5GZZj7MTVnqlsICAOQJ9rq6OvBgYE59bEViFj4gWOZEB1dOxR+UAfcG8srOiUnKnt0ltdjcTcPzXVLDZIadXvtb44JiLlygi4uwpV97nMjYKs6zpIyUJHHx3Bl4sPt2xNCDesVptI9Ozr3jYs5pYW0R3Tiw0U3yGzFZ/MST/ULvaSIABoF8IN54YmJtJHb2mDEXCC/PnMLj1AtMCW/2G/gKnYn1kMGRVvjirXWWOJh1YkI35Sflea67mDP7cIu7IcQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=dQGKadhcWWzL1Me5oFZqBSyzOX+yN1qjqYxAgQB/o84=;
- b=bUiGy8olh9fdrMDdNzUzCGMLewhFQd2hQXGvW5YfzWBQy4FH/HcquMj+LZwQ4eKpHlrBJgFMH7EOdLFTHJXGNRGgJlHLgTb47zKKWdq0HeHzf5/4vubvuguz0F/bTwDSiz6hX0G5wvX16e4PX+3rUGni1CDO8URr3XNBowZOZmT0CnGXHKvLnjS2scRAMH02T8CkfKeVVxqUpw3d23xepXwJr53mJXtrsHQavCGT4Xp4RZyKm9JahCAjyI2knLGkQLg/48bGfCVrBSSytqtgjKGGpuBA/RbcRUyoK+fLwqILte0xVDFOLgi4FzVP6V5COSwIrk5ulJWlYGCkV9KLaQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=dQGKadhcWWzL1Me5oFZqBSyzOX+yN1qjqYxAgQB/o84=;
- b=C9CKWaY9P7iIKWfwZgbn//vHV1+0NdCKYuWSueZwhr2UW83PtSNE/rsu61T0Sp+VoyFoG6D3d+ZUnV5YQXpkpUQshMFkcJo3vuD7HLChrhTEESO4Z6GP5bjYbtd6O8yIKKUgi5gKCiYVty+pTlX6u5+UbhfyDHpfcQgOu76UBHR/+/dDL7Eot3EEmS5R+pAGWEcx4UpAnzAf1uOuDV9/su1Syax+UZx+MIGx2yCzmWhDcHz0eQ9Am7YGyzIr29SaC0vp2ApxEyN6MmwHc/TSFHXZfKs1HsOlqrGK3u3klRre4lloHiotBTVBziIpAh+NPa14z5dZwAm9A7zlZpMPIA==
-Received: from SY4PR01MB6798.ausprd01.prod.outlook.com (2603:10c6:10:137::12)
- by SYBPR01MB4812.ausprd01.prod.outlook.com (2603:10c6:10:5f::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.21; Wed, 14 Jul
- 2021 19:46:35 +0000
-Received: from SY4PR01MB6798.ausprd01.prod.outlook.com
- ([fe80::a44f:289d:7a25:339b]) by SY4PR01MB6798.ausprd01.prod.outlook.com
- ([fe80::a44f:289d:7a25:339b%4]) with mapi id 15.20.4331.023; Wed, 14 Jul 2021
- 19:46:35 +0000
-From: Tianrui Wei <tianrui-wei@outlook.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-trivial@nongnu.org, shannon.zhao@linaro.org,
- shlomo.pongratz@huawei.com, sergey.fedorov@linaro.org, philmd@redhat.com,
- f4bug@amsat.org, Jonathan Balkind <jbalkind@ucsb.edu>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH] hw/intc/arm_gicv3: Fix GICv3 redistributor security checking
-Date: Thu, 15 Jul 2021 03:46:16 +0800
-Message-ID: <SY4PR01MB6798FDE7B97E478254D6B955F6139@SY4PR01MB6798.ausprd01.prod.outlook.com>
-X-Mailer: git-send-email 2.32.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TMN: [dHh9EQt9tWWHoNPWGQY2mB6E055Y+a5c]
-X-ClientProxiedBy: HK0PR03CA0098.apcprd03.prod.outlook.com
- (2603:1096:203:b0::14) To SY4PR01MB6798.ausprd01.prod.outlook.com
- (2603:10c6:10:137::12)
-X-Microsoft-Original-Message-ID: <20210714194616.1145207-1-tianrui-wei@outlook.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1m3ykn-0001Bi-Pt
+ for qemu-trivial@nongnu.org; Thu, 15 Jul 2021 06:38:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1626345484;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=4mifRCI1XLbvgMdhqVwJREBK6wRrka+ufMQje24YWN4=;
+ b=PN3Q5HLULZxAiY2K00XGfo32yra5xbxFf1bsNrD1m8izL5NspT6E8Lonxsu/lWJGNUlswD
+ 6SObc5J6YF6YeFrCfdGJok2+wCNK5dd1R0ZQmrSzXElNVmP7+wh+P6TYLXkf70mP36L7TU
+ E4xypWTohgavw+i+odHAxACAVKz7DI4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-586-o58rALUOMvGbM5e0avNd2g-1; Thu, 15 Jul 2021 06:38:01 -0400
+X-MC-Unique: o58rALUOMvGbM5e0avNd2g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4876FC7400;
+ Thu, 15 Jul 2021 10:38:00 +0000 (UTC)
+Received: from thuth.com (ovpn-113-128.ams2.redhat.com [10.36.113.128])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E180719C59;
+ Thu, 15 Jul 2021 10:37:58 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] hw/net/vmxnet3: Do not abort if the guest is trying to use an
+ invalid TX queue
+Date: Thu, 15 Jul 2021 12:37:55 +0200
+Message-Id: <20210715103755.1035566-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from localhost.localdomain (180.160.46.166) by
- HK0PR03CA0098.apcprd03.prod.outlook.com (2603:1096:203:b0::14) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4331.22 via Frontend Transport; Wed, 14 Jul 2021 19:46:33 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: da83d54a-b1ff-4785-167a-08d947001672
-X-MS-TrafficTypeDiagnostic: SYBPR01MB4812:
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Pl+UaK9Nx0+iC2GfiVT3NYfKfjwxbmRhDAitFHf2incn/WHsoOniHPPak4e0KIjjqVCryLWfNKoFrIBbVInF+1rTue9fB+NS/1Q910p18k4QyDbtrVPK4fctYckRVQOhVaq+qBF+dz0EK0gFBjN+RGSvr/JXe7BPf5CvANtbsop6j8lmBGWGH03pZgCAmYR0hNw4fdAhKmfBHu+jHSa7uFRPeBXEY7QBS3s+u5nzWqEj6/YWKHu26cwWA3SqPpXlr1ZP8/bGluKHfogvvSBwRYtexh2lsBODV0uefFpjIMiIX84ogWyfyzvOtPzqhXCojBm1dVYXxCh74Oi6QS1WWoQfoDf9TnZffQiSMWyTstRlGnQ0PqaMchgYOd1RcexIoBLmw0jiAgWxA6XK/1s1PdaqAPZ8iMnIC0ifQGFfOYh2w3NS2Xdo86f78oK/Jgdo
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: Ncou5cGVa276ScpnXBEJF4J8cxPbGYa0wC8X4vXq0F28q17fvKpLYrbFL7NZegEE23PWEnPwsXMrb3hrAEj0Izbw5n2c+kfCpliqTT1Uq65F4mEduGg+G2vOf12cULP5TRuqTiahMTS8Yp0qQLM7VA==
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: da83d54a-b1ff-4785-167a-08d947001672
-X-MS-Exchange-CrossTenant-AuthSource: SY4PR01MB6798.ausprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jul 2021 19:46:35.8394 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SYBPR01MB4812
-Received-SPF: pass client-ip=40.92.63.181;
- envelope-from=tianrui-wei@outlook.com;
- helo=AUS01-ME3-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 14 Jul 2021 17:09:25 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -96,43 +68,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Jul 2021 19:46:51 -0000
+X-List-Received-Date: Thu, 15 Jul 2021 10:38:09 -0000
 
-For redistributor to send sgi, we must test NSACR bits in secure mode.
-However, current implementation inverts the security check, wrongly
-skipping this it when the CPU is in secure state, and only carrying out
-the check when the CPU is not secure or security is not implemented.
-This patch corrects this problem by correcting the inversion of CPU
-secure state checking. It has been tested to work with Linux version 5.11
-in both aarch64 and arm version of qemu.
+QEMU should never abort just because the guest is doing something odd.
+Let's simply log the error and ignore the bad transmit queue instead.
 
-According to “Arm Generic Interrupt Controller Architecture
-Specification GIC architecture version 3 and version 4,” p. 930, 2008.
-Chapter 12, page 530, when there is only one security state implemented,
-GICD.CTLR.DS is always 0, thus checking NSACR in non-secure state. When
-cpu is in secure state, ns = 0, thus the NSACR check is never performed.
-
-Signed-off-by: Tianrui Wei <tianrui-wei@outlook.com>
-Signed-off-by: Jonathan Balkind <jbalkind@ucsb.edu>
-Tested-by: Tianrui Wei <tianrui-wei@outlook.com>
+Buglink: https://bugs.launchpad.net/qemu/+bug/1926111
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/intc/arm_gicv3_redist.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/net/vmxnet3.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index 53da703ed8..84cfcfd18f 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -564,7 +564,7 @@ void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns)
+diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
+index eff299f629..f6bd8c53b1 100644
+--- a/hw/net/vmxnet3.c
++++ b/hw/net/vmxnet3.c
+@@ -23,6 +23,7 @@
+ #include "net/checksum.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/bswap.h"
++#include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "hw/pci/msix.h"
+ #include "hw/pci/msi.h"
+@@ -1093,8 +1094,12 @@ vmxnet3_io_bar0_write(void *opaque, hwaddr addr,
+         int tx_queue_idx =
+             VMW_MULTIREG_IDX_BY_ADDR(addr, VMXNET3_REG_TXPROD,
+                                      VMXNET3_REG_ALIGN);
+-        assert(tx_queue_idx <= s->txq_num);
+-        vmxnet3_process_tx_queue(s, tx_queue_idx);
++        if (tx_queue_idx <= s->txq_num) {
++            vmxnet3_process_tx_queue(s, tx_queue_idx);
++        } else {
++            qemu_log_mask(LOG_GUEST_ERROR, "vmxnet3: Illegal TX queue %d/%d\n",
++                          tx_queue_idx, s->txq_num);
++        }
          return;
      }
  
--    if (ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-+    if (!ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-         /* If security is enabled we must test the NSACR bits */
-         int nsaccess = gicr_ns_access(cs, irq);
- 
 -- 
-2.32.0
+2.27.0
 
 
