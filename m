@@ -1,76 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m43hO-000155-Fw
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Jul 2021 11:54:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43390)
+	id 1m4JHL-00083p-Jg
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Jul 2021 04:33:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60628)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m43hM-0000zw-RU
- for qemu-trivial@nongnu.org; Thu, 15 Jul 2021 11:54:53 -0400
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:42677)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m4JHJ-00082C-2p
+ for qemu-trivial@nongnu.org; Fri, 16 Jul 2021 04:33:02 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:36606)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1m43hL-0004H7-79
- for qemu-trivial@nongnu.org; Thu, 15 Jul 2021 11:54:52 -0400
-Received: by mail-pj1-x1036.google.com with SMTP id
- i16-20020a17090acf90b02901736d9d2218so4725907pju.1
- for <qemu-trivial@nongnu.org>; Thu, 15 Jul 2021 08:54:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1m4JHG-0007vb-1z
+ for qemu-trivial@nongnu.org; Fri, 16 Jul 2021 04:33:00 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id h2so11926691edt.3
+ for <qemu-trivial@nongnu.org>; Fri, 16 Jul 2021 01:32:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=GGmI+Zw1aXEB8/cRYJbilKahVX3Bw9TFiAFUFDF6nPE=;
- b=z7lOmw/R60eo44u2L1r8jaxOgUWJx/8Fs1M2vFQhtDNiBko0G3eYRSKMWcepxDArrN
- 7OlgWBboQL9VJj1nayb3Y3S08YLypjDLZlcJPGjoLh4PMiFHbefPNOXs+CNm/FUfVyj4
- y21oW8IEUwibZDdBkDonpBvaeB/eimziYMynDYv5l24krlh1s73ntyLDWWR7m1B9NRAR
- GdznSSCFAQR+V+/x4zMhz0OWgwqT/cLJM1QoZC1H1TQt2hqR6jBmoYRfOowpM472BCWK
- XoeDnyMrHQwIooWB9JbltKq31Do9JUhDoWD3P9wTVNMd+JWkGHJA5gM8EekaOZV2Vq/9
- 44Ew==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=BaN6Pg4jjCRiD6xfsS8Dp/x6pwe7CI/AwxlmE99e77Q=;
+ b=Pf8zSlwHL1hWY2cy5rA8H0Gv/ZiDhfRRmM/wsCCythm2yVfvs0Zpi95X6yNWIyuaP0
+ LCMtknpKsJZmPYhAIWHsmVYVM+O6s8dfdxvF09STw2ERfWSjRntd2cB45YR8jY6UB/gy
+ 236BlZlwwYsdxicEtNAeRe5Dcd4Kp9og0996isJICvF5slkM4KNB4OyqGWZAzFGXROsH
+ PXqu7bfo38bPDPQI/8ggATAdIfNAej9Ogya7kPf5xEpfOyu4NpxpyEGfX6gL/AplV64I
+ G7JLbenCBEY6JuSQt260pNaFuz0Vg1rTWVnaUTT8hI5enTE1jtGxLP3xpHZXO/2VCC7Q
+ o4gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=GGmI+Zw1aXEB8/cRYJbilKahVX3Bw9TFiAFUFDF6nPE=;
- b=djO5nq/ZfYS9P5SC2dvSY+Py/ZC3XA+BnfQRqDJxTrMKAPZVftEEhUv1OOd7yea/Vv
- 7jtoYfKDIc5JVHxjqpZUfbM4GM4WGh/F1mvyOEbKEPXWU58nUlMeidkxlX+nfD0Y6i31
- 1+r0BGJlFQznyLDap+ZsIP0/kg8lBorgd8RoL9g1f5Q1Nw1P8EGeY/yQUrfVJrfPkZvF
- 3yV1LyYCtjUQqlo5bI1W29x62KgWM8Gs3tZ/0WCj4bsuNgv7fzm8/W5Lc4kfe4NgLW8o
- D2nMINBHqt6uchv44IQnK28EEXh3USEZKuuUpiUiwuXlC4+skompQFYSXZbRBCB8u9Vb
- RZag==
-X-Gm-Message-State: AOAM530wHBfffxKkBjCeH4QoRzlqB/kjTvaOHy+rnuvB7FPTchpYYC/g
- qYow8XDO5tRA4eqqdDnc7oqVl92iHixnoA==
-X-Google-Smtp-Source: ABdhPJz4J3oTMsJX1T+huz8UrvjOz2rFQgjJwbHpDmMqa8V8eUBHYuEveorCC5YvxkGssQp+qnJ53A==
-X-Received: by 2002:a17:90a:8403:: with SMTP id
- j3mr5149893pjn.212.1626364489919; 
- Thu, 15 Jul 2021 08:54:49 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.149.176])
- by smtp.gmail.com with ESMTPSA id n4sm7164799pff.51.2021.07.15.08.54.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jul 2021 08:54:49 -0700 (PDT)
-Subject: Re: [PATCH] hw/net/vmxnet3: Do not abort if the guest is trying to
- use an invalid TX queue
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Cc: qemu-trivial@nongnu.org
-References: <20210715103755.1035566-1-thuth@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <07d133e2-6986-cd6f-0fa6-23041b180dde@linaro.org>
-Date: Thu, 15 Jul 2021 08:54:48 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=BaN6Pg4jjCRiD6xfsS8Dp/x6pwe7CI/AwxlmE99e77Q=;
+ b=eku09iODPTqHMkp+pC/bSoL0Cns/Jc8492sH0C7HxI8ul5SWEGHMXnf7Syx7rx2pvh
+ iWV1i+qaePiFoHK5l2qvq0rIMwzJVPRvHMWR+S4ZJsP9q3PmueqV0tdO+D52Ogip4ahb
+ x4IAtEVkNWhXtbV6aSVBWOrvebOMIXkfoCkhrid6yQ3Rxx2KTMJewc6HvqHR0DRJq7EU
+ yGXp3z1Z1BU1P7o2Da17kTsgePquIr38sFAkAAx9ll4RJSldc81nMlIowRQ2FYkOSXoA
+ TqPvLqqa6Bmqiz/tE4g9hDssOB54srLiLyBEfYhwEB/ZNoInBf00tq0V8qWbuEAHLQjT
+ RIDA==
+X-Gm-Message-State: AOAM531B8lBvgQUQG15AhHPlMB5IFPpULiNpgpsmHwr7D0/bTKf9M5qg
+ hpLWMmq1rk5yhYFeNHFwg3KXjW59voTtjlEVsfBMZA==
+X-Google-Smtp-Source: ABdhPJzaH6u+NiexdkMeKc1qtg+uzIV4WYLWdcr3dfDwhnFxZ2l6ISJKZA5MIOn+nZSfL5UXZh05Mqj4tsQbhvpXNp4=
+X-Received: by 2002:aa7:d809:: with SMTP id v9mr13242739edq.146.1626424375856; 
+ Fri, 16 Jul 2021 01:32:55 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210715103755.1035566-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+References: <SY4PR01MB6798FDE7B97E478254D6B955F6139@SY4PR01MB6798.ausprd01.prod.outlook.com>
+In-Reply-To: <SY4PR01MB6798FDE7B97E478254D6B955F6139@SY4PR01MB6798.ausprd01.prod.outlook.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 16 Jul 2021 09:32:15 +0100
+Message-ID: <CAFEAcA97bUkyHL+=LuToYgG-HWgppfbBc=BqO=BdboSWfF=Kcg@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc/arm_gicv3: Fix GICv3 redistributor security
+ checking
+To: Tianrui Wei <tianrui-wei@outlook.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Shannon Zhao <shannon.zhao@linaro.org>, 
+ Shlomo Pongratz <shlomo.pongratz@huawei.com>,
+ Sergey Fedorov <sergey.fedorov@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Jonathan Balkind <jbalkind@ucsb.edu>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,19 +79,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Jul 2021 15:54:53 -0000
+X-List-Received-Date: Fri, 16 Jul 2021 08:33:02 -0000
 
-On 7/15/21 3:37 AM, Thomas Huth wrote:
-> QEMU should never abort just because the guest is doing something odd.
-> Let's simply log the error and ignore the bad transmit queue instead.
-> 
-> Buglink:https://bugs.launchpad.net/qemu/+bug/1926111
-> Signed-off-by: Thomas Huth<thuth@redhat.com>
+On Wed, 14 Jul 2021 at 20:46, Tianrui Wei <tianrui-wei@outlook.com> wrote:
+>
+> For redistributor to send sgi, we must test NSACR bits in secure mode.
+> However, current implementation inverts the security check, wrongly
+> skipping this it when the CPU is in secure state, and only carrying out
+> the check when the CPU is not secure or security is not implemented.
+> This patch corrects this problem by correcting the inversion of CPU
+> secure state checking. It has been tested to work with Linux version 5.11
+> in both aarch64 and arm version of qemu.
+>
+> According to =E2=80=9CArm Generic Interrupt Controller Architecture
+> Specification GIC architecture version 3 and version 4,=E2=80=9D p. 930, =
+2008.
+> Chapter 12, page 530, when there is only one security state implemented,
+> GICD.CTLR.DS is always 0, thus checking NSACR in non-secure state. When
+> cpu is in secure state, ns =3D 0, thus the NSACR check is never performed=
+.
+>
+> Signed-off-by: Tianrui Wei <tianrui-wei@outlook.com>
+> Signed-off-by: Jonathan Balkind <jbalkind@ucsb.edu>
+> Tested-by: Tianrui Wei <tianrui-wei@outlook.com>
 > ---
->   hw/net/vmxnet3.c | 9 +++++++--
->   1 file changed, 7 insertions(+), 2 deletions(-)
+>  hw/intc/arm_gicv3_redist.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+> index 53da703ed8..84cfcfd18f 100644
+> --- a/hw/intc/arm_gicv3_redist.c
+> +++ b/hw/intc/arm_gicv3_redist.c
+> @@ -564,7 +564,7 @@ void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp=
+, int irq, bool ns)
+>          return;
+>      }
+>
+> -    if (ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
+> +    if (!ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
+>          /* If security is enabled we must test the NSACR bits */
+>          int nsaccess =3D gicr_ns_access(cs, irq);
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+So, before this change:
+ * if the access to ICC_SGI[01]R_EL1 attempting to kick off this SGI
+   is done in Secure state, we allow it
+ * if the GIC has security disabled (GICD_CTLR.DS is 1), we allow it
+ * if the access is from NonSecure and the GIC does not have security
+   disabled, we check the NSACR bits to see if we should allow it
 
-r~
+With this change, we check the NSACR bits for accesses from Secure
+state, and we don't check them for accesses from NonSecure.
+This doesn't seem to me to match what the spec requires: in version
+IHI0069G of the GICv3 spec, section 12.1.10, the tables show that
+only accesses from NonSecure are subject to NSACR checks. (This makes
+intuitive sense: the GICR_NSACR is the NonSecure Access Control
+Register and it is controls NonSecure accesses, not Secure accesses.)
+
+What bug are you trying to fix with this patch ?
+
+thanks
+-- PMM
 
