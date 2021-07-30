@@ -1,65 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m7xZX-0006Q2-S5
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Jul 2021 06:10:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36680)
+	id 1m9Qf2-0007wO-Pm
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Jul 2021 07:26:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48892)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m7xZV-0006MP-8F
- for qemu-trivial@nongnu.org; Mon, 26 Jul 2021 06:10:53 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:33399)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1m7xZT-00070c-NB
- for qemu-trivial@nongnu.org; Mon, 26 Jul 2021 06:10:53 -0400
-Received: by mail-ed1-x531.google.com with SMTP id z26so9881477edr.0
- for <qemu-trivial@nongnu.org>; Mon, 26 Jul 2021 03:10:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XJsxPOR99auVIhFBVkyYvbDulikkLn5sALZIPLzp3hM=;
- b=IrhTO+vaFpk6sIMup9jpFF1R0oS+1gKqxBDTYh2dH3X8AulN15fNkcmNGWocJZks/m
- wt+UeWqS8I0V/WTelZPXqepWX5PhKzc4XMNo6uTwDJ8JuDzxf4eGqkqK3UQZ8diu7KO2
- 6E847cUa0cAxq5khM6DeVv6FpF8s/mqCt+jm7h3FrbXHmM3LvBN58JQMAH5Pe38WQ36J
- VawG2tB9JBIlI5CkAr0Zd5ks/ExvXZpxODfIyyo9eNkocs6LRBkou2NGPWe/gS3sbPTg
- 5xsGZZJncGl/wHYZVSXhzyFLw/ulsNLygKVpsrCXOM24qPfxR+//s6KdCr8JoEKhyCPY
- GKBg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m9Qf0-0007vZ-Ax
+ for qemu-trivial@nongnu.org; Fri, 30 Jul 2021 07:26:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37477)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m9Qex-00072h-HQ
+ for qemu-trivial@nongnu.org; Fri, 30 Jul 2021 07:26:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1627644393;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=btWc/KMCgkQMoCUhrETnKpQeVzxqpi5jTEn3VB1YjS0=;
+ b=B/ThBsP1r42Btu+9nm8K4Z0lfWmDwzeQnqb5Hsu1kbFMYb2IekXRXmzkpif0irKro/2zDk
+ u0i+AHYfouT9fuSqz6esLMf5rRPtevBUAWZdcczRXBV1xA4EfdIvV4jck6OInM5O4DsmFD
+ +3I6Sjnnf59aisxj3yulMH0OxJFBQRM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-103-PJv1wIuBMzyIoV4Rk4bmsQ-1; Fri, 30 Jul 2021 07:26:32 -0400
+X-MC-Unique: PJv1wIuBMzyIoV4Rk4bmsQ-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ u26-20020adfb21a0000b029013e2b4a9d1eso3133090wra.4
+ for <qemu-trivial@nongnu.org>; Fri, 30 Jul 2021 04:26:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=XJsxPOR99auVIhFBVkyYvbDulikkLn5sALZIPLzp3hM=;
- b=dU0D+n1uq6RU9tDBlvl/jyZJzIHUQuLmKsqpPCH8ROf0feBWWbtPD0SiPM8LjfUzeQ
- 6V0qCm5O60tx39uU5BiQsCN5YyWHwsB9fZtE5LOulIqebqt0DjE1A8KcIz0AMBVQjWpv
- 35tWdM7sd8UQvWTrKRMRXMyNjbb+JmgtD3nXK+rHSoZUU+p0mU4OkAuBGdcg6DS/1MF0
- 2/gtSXCIYHDNmqWWexxP7+PtAHe/ELzanGpnBXv/n+MHEFUQbbYbajUNAMd4AxHWbiVn
- jBi/iW7SIqpVc/xEZhcQoAIrO/nwG3dDi6oqH8dOQ1F47/RS+YxgawcE6DJqv7Lb6OUN
- HV8w==
-X-Gm-Message-State: AOAM5323zx34eILpzkO8Y/xwqMftmAoVwxw6n8CeW4ExoXc7WUyoFpaG
- THqmrMkE2pG5U1dJIWXtSkq/CFpHc6MSltwenYAH8g==
-X-Google-Smtp-Source: ABdhPJzyBzwrktp5xggyN1U+as21d3mc29X/Q/599lKc71FRvd9rSruZ1j8eoNbuUKg9j5fFS29Rf90Th56CJ7/tOtM=
-X-Received: by 2002:a05:6402:1ca4:: with SMTP id
- cz4mr20440550edb.52.1627294249982; 
- Mon, 26 Jul 2021 03:10:49 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=btWc/KMCgkQMoCUhrETnKpQeVzxqpi5jTEn3VB1YjS0=;
+ b=NNHKJ85AdtNQSTvjUoaEtC3HxQNGVvxdDl/aXd3UHFxbLhPyKgDvkb2iB52+iD5xnf
+ qz/b4xURJepiGxr0awVcliN7ZK7Vuio4ORvlQGO7vCOquTkGxnmGEzgFpGBKNbWO4OLi
+ anPdPIZnRoiKCejPrmsO0P7Lj7OOjjyp2oLgl4GpK7ZLJvNlb+ZEfAkt0w3IzMrQaPS+
+ tf97glJb87Cx3mIppjCIJECh9PPjE6MXFByFe+AYQt/8UtXDpHIUYcWCHsabGXRgm8yV
+ /idOBkywIx/KCTdINmW6eC+eVsbOHclhugw8yyeq2l8BAohO/2NK4HTVW1enhXv94BoH
+ 9e/A==
+X-Gm-Message-State: AOAM530J9b6mwSEhckJbofm4jnr+68dh/svxtYWBMZUfwtYeDfF8atIX
+ ZD0qrNUUsVbybgVvW2xuuUbOYHker0R1EVa+egplsfazUwaMnDA71ur9fqDlNtD9N3d33XziTDf
+ 9dqcp2W++7OlQrZelAv6FRa2/7Vo3CivWm0SoaKqRQmYjGgVbNt01HbSUzWuyNU1yiFw=
+X-Received: by 2002:a1c:3505:: with SMTP id c5mr2425593wma.53.1627644391299;
+ Fri, 30 Jul 2021 04:26:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzknsC3rPA1NOJXpzqvC5E4LK3+ztR/e5llX5qyEZ1cnyeX1pybxn9KoSdULSEwNekW3oDXwQ==
+X-Received: by 2002:a1c:3505:: with SMTP id c5mr2425568wma.53.1627644391051;
+ Fri, 30 Jul 2021 04:26:31 -0700 (PDT)
+Received: from [192.168.1.36] (122.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.122])
+ by smtp.gmail.com with ESMTPSA id g15sm1295784wmh.44.2021.07.30.04.26.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 30 Jul 2021 04:26:30 -0700 (PDT)
+Subject: Re: [PATCH] hw/vfio: Fix typo in comments
+To: Cai Huoqing <caihuoqing@baidu.com>, alex.williamson@redhat.com
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210730012613.2198-1-caihuoqing@baidu.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <ebb42d43-f3b8-f55c-b0d5-55e60a881747@redhat.com>
+Date: Fri, 30 Jul 2021 13:26:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210719105257.3599-1-peter.maydell@linaro.org>
- <20210719150705.26db8ed4@redhat.com>
-In-Reply-To: <20210719150705.26db8ed4@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Jul 2021 11:10:08 +0100
-Message-ID: <CAFEAcA9-cP+HiK792cJX12cacGP7Mmu4kOGU=bApNwzXzDumbA@mail.gmail.com>
-Subject: Re: [PATCH] qemu-options.hx: Fix formatting of -machine
- memory-backend option
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210730012613.2198-1-caihuoqing@baidu.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.717,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.125, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,33 +91,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Jul 2021 10:10:53 -0000
+X-List-Received-Date: Fri, 30 Jul 2021 11:26:38 -0000
 
-On Mon, 19 Jul 2021 at 14:07, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> On Mon, 19 Jul 2021 11:52:57 +0100
-> Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> > The documentation of the -machine memory-backend has some minor
-> > formatting errors:
-> >  * Misindentation of the initial line meant that the whole option
-> >    section is incorrectly indented in the HTML output compared to
-> >    the other -machine options
-> >  * The examples weren't indented, which meant that they were formatted
-> >    as plain run-on text including outputting the "::" as text.
-> >  * The a) b) list has no rst-format markup so it is rendered as
-> >    a single run-on paragraph
-> >
-> > Fix the formatting.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
->
+On 7/30/21 3:26 AM, Cai Huoqing wrote:
+> Fix typo in comments:
+> *programatically  ==> programmatically
+> *disconecting  ==> disconnecting
+> *mulitple  ==> multiple
+> *timout  ==> timeout
+> *regsiter  ==> register
+> *forumula  ==> formula
+> 
+> Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
+> ---
+>  hw/vfio/igd.c        | 2 +-
+>  hw/vfio/pci-quirks.c | 2 +-
+>  hw/vfio/pci.c        | 6 +++---
+>  hw/vfio/platform.c   | 2 +-
+>  4 files changed, 6 insertions(+), 6 deletions(-)
 
-Thanks for the review; I'll take this via target-arm.next since I'm
-doing a pullreq for the next rc anyway, unless anybody would prefer
-otherwise.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
--- PMM
 
