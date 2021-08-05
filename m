@@ -1,86 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1m9SXr-0007PN-0d
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Jul 2021 09:27:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54634)
+	id 1mBk3G-00026B-1q
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Aug 2021 16:33:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m9SXp-0007OS-Po
- for qemu-trivial@nongnu.org; Fri, 30 Jul 2021 09:27:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:44024)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1m9SXh-0000yM-Dt
- for qemu-trivial@nongnu.org; Fri, 30 Jul 2021 09:27:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1627651631;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=A/A3McV4BbQguDgDZtklzUxZfJl50b5u1fiu7wrDVJ0=;
- b=WQCIzarfdNP0Pb4FQnN3POnvrZ6SsJ+r9nFniskdqHjPN7VjSD9djWj2UpiKHI2q5WKIde
- q2o34HIXFExicOOiqqlBBLgGrwLvDHNOcF5di9lAgSyXrroOH013Kgdtcwa5d9b9SRTFkk
- YIvPBYKGtapv2awrG/BkucJcWlRrtiA=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-264-pfPcYzONPMm32Z4ecXJNsA-1; Fri, 30 Jul 2021 09:27:10 -0400
-X-MC-Unique: pfPcYzONPMm32Z4ecXJNsA-1
-Received: by mail-wr1-f70.google.com with SMTP id
- r17-20020adfda510000b02901526f76d738so3237519wrl.0
- for <qemu-trivial@nongnu.org>; Fri, 30 Jul 2021 06:27:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <johannes.stoelp@googlemail.com>)
+ id 1mBjGp-0000KE-4n; Thu, 05 Aug 2021 15:43:11 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:51786)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <johannes.stoelp@googlemail.com>)
+ id 1mBjGn-0007Sk-Ft; Thu, 05 Aug 2021 15:43:10 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id u15so4071876wmj.1;
+ Thu, 05 Aug 2021 12:43:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=googlemail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZOApfbQ03KsgoK0wZ7x2pZx8wYHu2jq5lfkc8WbXtAs=;
+ b=UOR6wzj2VyF1b9iVY7ghWP35wzSQ96rb04zx7YtN2ImFSM8F2IJlGA32AiSwXGt5Lh
+ Iajqq6YRY7ia/vku4Zzt2s0YXgxCVq0ttIHaRPHJ1LSGhEY+FEp42qRa2qoLR4B3FAVb
+ MnrhPEwg65x7M+0cYq8OpnOlW5KhaTonsEybypwEDkWgtlovcNfeZSBdKd8OSV5cQq5w
+ 9AA65caJjMdnwNM7Vf/lkjP5IVFEDcpkzJwvRe5yAn0+aZJNuJUWKgjaa9Hrqq6yBJp2
+ hycYVNF+OET12usKvlHuK8V8NqdrF80vLeSayBLXuZh4QxvcP/Xi+BN9TjMTbI6Bb2Ik
+ AnkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=A/A3McV4BbQguDgDZtklzUxZfJl50b5u1fiu7wrDVJ0=;
- b=Urd3/qYmVyRdBHXbQA7U46IzSw01c8HDdb4kRYJzf3kBOzpoSS85dEmWQCC5fSnJNF
- CiTN7azdcbuiXEc20QMiPXogC1GZVyTSiyj7DF9gag38adUvISR989ps2MpuU5ZB4RVi
- eI8P70VkS3NuugVC7NJqAgg6U2fV0IdGxLkkjWeoJw41zAdLDQfZOZQ02DgHZlIn0zxm
- UcagIO5lW7ylAucB4J5h04cQubCOoxa0m3CTCyrHGFv07bTdeI1S9TEMu8lkrQBZQ03V
- A1K7jeLHOg5MiupNGzzxazsdGBc8NwTAR6+dlWsnVttgTted1A+pcdDWnsppeJrg1KPn
- ozsw==
-X-Gm-Message-State: AOAM532BzTexagz2N2sFbodSZmDWePQXIbYB6M09Ln1MbJ/+3OkFtMPT
- veNKFI5sfMLCVylypEut72Z4VqZxs0ju1kvr9pcM5k2r+MovvfBVndlZQmWgVM3EAU/D94Om/Op
- f+rX/P0TCSpudlhqKKRw7k4kbOPqLXDaDvS3//zrZolDs1+Xncu1wieXPaVtV9lnvrh0=
-X-Received: by 2002:a5d:51cd:: with SMTP id n13mr2999804wrv.185.1627651628851; 
- Fri, 30 Jul 2021 06:27:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxRgUQjlSH76oHF/7269Ty8BOgdDUAONEpfFArWZa4zvygE+YVtAQ/vk4rKch0EoSqQF/Op4w==
-X-Received: by 2002:a5d:51cd:: with SMTP id n13mr2999781wrv.185.1627651628601; 
- Fri, 30 Jul 2021 06:27:08 -0700 (PDT)
-Received: from [192.168.1.36] (122.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.122])
- by smtp.gmail.com with ESMTPSA id l7sm1633326wmj.9.2021.07.30.06.27.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 30 Jul 2021 06:27:07 -0700 (PDT)
-Subject: Re: [PATCH] intel_iommu: Fix typo in comments
-To: Cai Huoqing <caihuoqing@baidu.com>, mst@redhat.com, peterx@redhat.com,
- jasowang@redhat.com
-Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20210730014942.2311-1-caihuoqing@baidu.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6305f2ce-5d58-7eac-1568-05b64f45d96f@redhat.com>
-Date: Fri, 30 Jul 2021 15:27:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ bh=ZOApfbQ03KsgoK0wZ7x2pZx8wYHu2jq5lfkc8WbXtAs=;
+ b=lNxtsuePHp79A1+PAHtz2sb9zFJWmcpFn2a7Vyb9V6Q2QxnoQ/G+015IlCWeF5KUm3
+ o8Ut77s1Lb7m2DITcnio8xg7QLDrcR5KMp8MBB4WCz2aamZnjLcLBX55osjApFmkFsao
+ K89ncp59wqyK9TIxuE/RhIFeFVpWcFEuzHgebBY59heOXkAHJ9Kb7V/zJUAjhz/Z8ZDL
+ 2dFoQa5WCrBO531YsGQoiI/CpznE6Pdx31fp8xOgVzg+QWLemTro7jVxfjbfwyeX3HvE
+ J41fCkwrlIBnjf+csvtWyBS4hYyyFouiiTaO9L4aZOIO8DK5Ku+LT/j7B5H8Ilu1XLR6
+ dlfw==
+X-Gm-Message-State: AOAM531Z7ufDaUD+oOYD7sIEgcLzoKyl4b9wlvaWjbIMZAOx+6Q55zfK
+ rGsq9f0jLazu3n4aPSRwhaHG4cktSYNTng==
+X-Google-Smtp-Source: ABdhPJwywWZFiPfLmYwuNexoJMrWrEFakMqvw83azNjgkYk1ccfOqHrVtLnqmNzHolvlMLBgwjLyZg==
+X-Received: by 2002:a1c:238e:: with SMTP id j136mr6620725wmj.91.1628192587186; 
+ Thu, 05 Aug 2021 12:43:07 -0700 (PDT)
+Received: from endor.speedport.ip
+ (p200300c217088fca515abd37fd86c56e.dip0.t-ipconnect.de.
+ [2003:c2:1708:8fca:515a:bd37:fd86:c56e])
+ by smtp.gmail.com with ESMTPSA id g16sm8352405wro.63.2021.08.05.12.43.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Aug 2021 12:43:06 -0700 (PDT)
+From: johannst <johannes.stoelp@googlemail.com>
+X-Google-Original-From: johannst <johannes.stoelp@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	johannst <johannes.stoelp@gmail.com>
+Subject: [PATCH v0] kvm: unsigned datatype in ioctl wrapper
+Date: Thu,  5 Aug 2021 21:39:50 +0200
+Message-Id: <20210805193950.514357-1-johannes.stoelp@gmail.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-In-Reply-To: <20210730014942.2311-1-caihuoqing@baidu.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.717,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.125, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=johannes.stoelp@googlemail.com; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 05 Aug 2021 16:33:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,19 +77,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Jul 2021 13:27:22 -0000
+X-List-Received-Date: Thu, 05 Aug 2021 19:43:11 -0000
 
-On 7/30/21 3:49 AM, Cai Huoqing wrote:
-> Fix typo:
-> *Unknwon  ==> Unknown
-> *futher  ==> further
-> *configed  ==> configured
-> 
-> Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
-> ---
->  hw/i386/intel_iommu.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+Dear all,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+in my opinion the `type` argument in the kvm ioctl wrappers should be of
+type unsigned. Please correct me if I am wrong.
+
+-
+
+Due to the same reason as explained in the comment on the
+`irq_set_ioctl` field in `struct KVMState` (accel/kvm/kvm-all.c),
+the kvm ioctl wrapper should take `type` as an unsigned.
+
+Signed-off-by: johannst <johannes.stoelp@gmail.com>
+---
+ accel/kvm/kvm-all.c    | 8 ++++----
+ accel/kvm/trace-events | 8 ++++----
+ include/sysemu/kvm.h   | 8 ++++----
+ 3 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 0125c17edb..45cd6edce3 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2967,7 +2967,7 @@ int kvm_cpu_exec(CPUState *cpu)
+     return ret;
+ }
+ 
+-int kvm_ioctl(KVMState *s, int type, ...)
++int kvm_ioctl(KVMState *s, unsigned type, ...)
+ {
+     int ret;
+     void *arg;
+@@ -2985,7 +2985,7 @@ int kvm_ioctl(KVMState *s, int type, ...)
+     return ret;
+ }
+ 
+-int kvm_vm_ioctl(KVMState *s, int type, ...)
++int kvm_vm_ioctl(KVMState *s, unsigned type, ...)
+ {
+     int ret;
+     void *arg;
+@@ -3003,7 +3003,7 @@ int kvm_vm_ioctl(KVMState *s, int type, ...)
+     return ret;
+ }
+ 
+-int kvm_vcpu_ioctl(CPUState *cpu, int type, ...)
++int kvm_vcpu_ioctl(CPUState *cpu, unsigned type, ...)
+ {
+     int ret;
+     void *arg;
+@@ -3021,7 +3021,7 @@ int kvm_vcpu_ioctl(CPUState *cpu, int type, ...)
+     return ret;
+ }
+ 
+-int kvm_device_ioctl(int fd, int type, ...)
++int kvm_device_ioctl(int fd, unsigned type, ...)
+ {
+     int ret;
+     void *arg;
+diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
+index 399aaeb0ec..d78c2eff31 100644
+--- a/accel/kvm/trace-events
++++ b/accel/kvm/trace-events
+@@ -1,11 +1,11 @@
+ # See docs/devel/tracing.rst for syntax documentation.
+ 
+ # kvm-all.c
+-kvm_ioctl(int type, void *arg) "type 0x%x, arg %p"
+-kvm_vm_ioctl(int type, void *arg) "type 0x%x, arg %p"
+-kvm_vcpu_ioctl(int cpu_index, int type, void *arg) "cpu_index %d, type 0x%x, arg %p"
++kvm_ioctl(unsigned type, void *arg) "type 0x%x, arg %p"
++kvm_vm_ioctl(unsigned type, void *arg) "type 0x%x, arg %p"
++kvm_vcpu_ioctl(int cpu_index, unsigned type, void *arg) "cpu_index %d, type 0x%x, arg %p"
+ kvm_run_exit(int cpu_index, uint32_t reason) "cpu_index %d, reason %d"
+-kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
++kvm_device_ioctl(int fd, unsigned type, void *arg) "dev fd %d, type 0x%x, arg %p"
+ kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
+ kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
+ kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index a1ab1ee12d..6d6ed4acf9 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -251,11 +251,11 @@ int kvm_on_sigbus(int code, void *addr);
+ 
+ /* internal API */
+ 
+-int kvm_ioctl(KVMState *s, int type, ...);
++int kvm_ioctl(KVMState *s, unsigned type, ...);
+ 
+-int kvm_vm_ioctl(KVMState *s, int type, ...);
++int kvm_vm_ioctl(KVMState *s, unsigned type, ...);
+ 
+-int kvm_vcpu_ioctl(CPUState *cpu, int type, ...);
++int kvm_vcpu_ioctl(CPUState *cpu, unsigned type, ...);
+ 
+ /**
+  * kvm_device_ioctl - call an ioctl on a kvm device
+@@ -264,7 +264,7 @@ int kvm_vcpu_ioctl(CPUState *cpu, int type, ...);
+  *
+  * Returns: -errno on error, nonnegative on success
+  */
+-int kvm_device_ioctl(int fd, int type, ...);
++int kvm_device_ioctl(int fd, unsigned type, ...);
+ 
+ /**
+  * kvm_vm_check_attr - check for existence of a specific vm attribute
+-- 
+2.32.0
 
 
