@@ -1,78 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mC1XN-0006yS-0x
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Aug 2021 11:13:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37766)
+	id 1mC1ln-0007yK-6N
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Aug 2021 11:28:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qyliss@x220.qyliss.net>)
- id 1mC16l-0001tG-37; Fri, 06 Aug 2021 10:45:59 -0400
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:43821)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mC1lm-0007y6-5b; Fri, 06 Aug 2021 11:28:22 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:40345)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qyliss@x220.qyliss.net>)
- id 1mC16j-0007sa-3V; Fri, 06 Aug 2021 10:45:58 -0400
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.west.internal (Postfix) with ESMTP id 311503200903;
- Fri,  6 Aug 2021 10:39:38 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Fri, 06 Aug 2021 10:39:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alyssa.is; h=
- from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding; s=fm3; bh=B8f8367Kl5huY/JD0v77kydlYI
- oQ4fZ4yUiqomeQ2Hs=; b=DbrR9JwIbPsgI9UTh5IviihY5UAbs5Jv6xq1o9NLkt
- zoh/p6uCIepf6EMUO9Nz16JIaSFdWH0iMs3p8euJfeowi74ooIYC8uWOevak4lpm
- LSzFTg7CigkOGcN/SaoAtS5qT76c/MH9VTVoqclcpD1kaAF/E3IH4g56W3QxBJPT
- PXvD9oS2ktXLSb2JXw8PSlQ6/QcLKWPnGBOYQkBmUSNuorOji3vXicXwSHP/xq5H
- C81e53tUgizp8N0IzGeoi4/M1FrLh3B6ysOgymw0ArTtKPGCTP+caCX+Cq//Ac36
- 2pq7ccasxDVUYWHYK1scxjaWfwBWIaR8oqv21+Qdjdcg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=B8f8367Kl5huY/JD0
- v77kydlYIoQ4fZ4yUiqomeQ2Hs=; b=WePrGuUAS0gavo0Z7he+eMqoTfztwj0EN
- 9TqlHpTYubnrR5ThEsq/Lzt/ysFx0F54Zi6XnSqCw0IzXBjXECm48d8qG3UAFM66
- zJxGpigU0GSbuOkpZ9TGVNY2Q0PYHcMVaUxOZRNV2S0NfKE0RH9wqUNSYyaIH/BV
- +Mts0KSzlPmYFWvGlZzfMyz/MYpeao2blUXRmKLxjvN4bJxX2fhvP9BV4Fk3/pTU
- 3MszKOveFH9dSm/QswEvg5Z62odRbdZDwYmsZfRrJA5g01sKEpReczmMVD+Jd5Pn
- nWkk8KReFePurKVF/Loz6prQtDWZhHuqB2/3b3vWV90lcPcxXvHbg==
-X-ME-Sender: <xms:qUkNYS77ASzWZbAwHlKD-UGjbizXtl5o0x43ZlOTm_wdW-SbiEtnTw>
- <xme:qUkNYb5i4T7dP6SPFTyBi4fPfe-NO2w4mpmSP1L8Nlb8S_STr3f-NXOJ4fuqbqogK
- ie03mgZrEbLWrBqAg>
-X-ME-Received: <xmr:qUkNYRcXNgdzUvigUq2uE7PFDH0iuWxWLivDDz522v2XsDkV8E3Y7gdvfvG7_Li6HZ5lPpOedhQ4bul0hzXf3t7F8tNhr9k>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrjedugdejjecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffoggfgsedtkeertdertd
- dtnecuhfhrohhmpeetlhihshhsrgcutfhoshhsuceohhhisegrlhihshhsrgdrihhsqeen
- ucggtffrrghtthgvrhhnpeehvdffgffhteeijefgteeftdfghfdvheeuhedvjedugfeggf
- eljefgleefvefgfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhl
- fhhrohhmpehqhihlihhsshesgidvvddtrdhqhihlihhsshdrnhgvth
-X-ME-Proxy: <xmx:qUkNYfLq3So3Fn3JpO2fnk7sCxrwp6NsH88APC-wAmY53bVqb7_T7Q>
- <xmx:qUkNYWI57lB_WMnC5hX0iNFd0bQXb_dg_Cm5CTJLEnzHpP3ijUOjbw>
- <xmx:qUkNYQwXO-AsPtkea2yQ_thSHfNCUO8m0cg41UjbW_Un_PozSEXFaQ>
- <xmx:qUkNYYii2Ln48RNviqIAHXyY_qBI0WMqdaVz48B2dV-k91G-SUjlSA>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 6 Aug 2021 10:39:37 -0400 (EDT)
-Received: by x220.qyliss.net (Postfix, from userid 1000)
- id A1050233; Fri,  6 Aug 2021 14:39:34 +0000 (UTC)
-From: Alyssa Ross <hi@alyssa.is>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] vhost-user: add missing space in error message
-Date: Fri,  6 Aug 2021 14:39:26 +0000
-Message-Id: <20210806143926.315725-1-hi@alyssa.is>
-X-Mailer: git-send-email 2.32.0
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mC1lk-0004Dr-Jb; Fri, 06 Aug 2021 11:28:21 -0400
+Received: from [192.168.100.1] ([82.142.6.46]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M8C8J-1mGgbX2bdT-005Li2; Fri, 06 Aug 2021 17:28:12 +0200
+Subject: Re: [PATCH] vhost-user: add missing space in error message
+To: Alyssa Ross <hi@alyssa.is>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20210806143926.315725-1-hi@alyssa.is>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <49768442-1683-8268-4174-9be59d3577cd@vivier.eu>
+Date: Fri, 6 Aug 2021 17:28:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <20210806143926.315725-1-hi@alyssa.is>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: softfail client-ip=64.147.123.20;
- envelope-from=qyliss@x220.qyliss.net; helo=wout4-smtp.messagingengine.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+X-Provags-ID: V03:K1:JN+9brpZOFZspzlazEdpZu4uSt4jE+WB/TyP7DLo7nk6OkhFu1Q
+ Hwxy680qa6SR9aa4OfMXvBSTd3UsC5zSLlHA1bFyFrbvNOuByqAsthcO61jmsmLBDhiDWil
+ YimIcdco5Uv4SZ5egfh3z1ZJS84vx1MEMSj2Ovl/4NSPagKKNf6aJOME7fJK+/ewnPpH9YU
+ lsTz8g3gY1a3SFLswNwMQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:mv8yMHvOtTg=:IiNqDvNzrlJ23N3xIoZn5K
+ sZlqinA6/RZ6rGEBl71TJCU4MhJmzbGkXbk3gCBirJxyy8DzysD0NurfRqHTSb1dRLRnI3IHq
+ i4R0zvzFM6Ey8hQKYf5wcBRdUBjLaxOVhX3XUGE1RcOCTjzXvnR7ArN6ZLZmPZCTpOphwIX61
+ focbFshahhYECVLjpxpfvRc6EtekpERSjU1zakZ++h8yuWZQAIbcs2svgASpNzx16d+b97rFV
+ lirgU4h+7RXN79sVikqL2TP2+4Uk3yYkUx6lpXDokk0uzKxHWVFNcVi16CcGvGYJB4AQOZu0X
+ LFPdwO2XpayvGjRba3NTrhsB//nxHCKpKHCSjhJmwi0MNukqvaZtdmXGAtBQ0jHEOYbW63syW
+ dx2pzIjVcz+MemcJEbfFIehaCBymrDNLZq4wFciLRa0qq3Rq4A7KdsvDT+BM/Qv3f+jTEnuqS
+ 7LT0dedc7q6wC+0cQ8ANxz5NrSu0fi/le1aDDzJcB4xwuiSELYgKeVAUoKAWgICHqUWbJPP/Q
+ Otfp5B5p+cjxLzO+VcbZlNNEm1UDJcpNsugYIzyIExZJ37a5qLhoGR6a2AG6BDX2YsYrjI1GK
+ O+b41deurc3qo/YjnRjUEJ2i3T3I3udQEPDlXeS/Ztm4FGjgjbMaz3w9HeRXozbjrhOF6c8y4
+ g7KkU+zSCwLLSFvt1cgdLMpDp+LjrSySur9ml2v6jZfcbcfJwnePFazVO7NowLuyeVmrWRL2v
+ CbKft1vgwOF+A27F5n/39SfSA06wWMSshefJo4MtNEo58K4tC1bCML79U07tS8WPXLPpJW+E/
+ O4hhx2V7HSxL7F7kKfXQ8t2TPfZY1x5EceWABxzowhDoM1YjGoddabxfD622kNhm02F4PgE
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.619,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 06 Aug 2021 11:13:27 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,33 +63,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Aug 2021 14:45:59 -0000
+X-List-Received-Date: Fri, 06 Aug 2021 15:28:22 -0000
 
-This would previously give error messages like
+Le 06/08/2021 à 16:39, Alyssa Ross a écrit :
+> This would previously give error messages like
+> 
+>> Received unexpected msg type.Expected 0 received 1
+> 
+> Signed-off-by: Alyssa Ross <hi@alyssa.is>
+> ---
+>  hw/virtio/vhost-user.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
+> index 29ea2b4fce..ad9fc40271 100644
+> --- a/hw/virtio/vhost-user.c
+> +++ b/hw/virtio/vhost-user.c
+> @@ -429,7 +429,7 @@ static int process_message_reply(struct vhost_dev *dev,
+>      }
+>  
+>      if (msg_reply.hdr.request != msg->hdr.request) {
+> -        error_report("Received unexpected msg type."
+> +        error_report("Received unexpected msg type. "
+>                       "Expected %d received %d",
+>                       msg->hdr.request, msg_reply.hdr.request);
+>          return -1;
+> 
+> base-commit: bccabb3a5d60182645c7749e89f21a9ff307a9eb
+> 
 
-> Received unexpected msg type.Expected 0 received 1
-
-Signed-off-by: Alyssa Ross <hi@alyssa.is>
----
- hw/virtio/vhost-user.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
-index 29ea2b4fce..ad9fc40271 100644
---- a/hw/virtio/vhost-user.c
-+++ b/hw/virtio/vhost-user.c
-@@ -429,7 +429,7 @@ static int process_message_reply(struct vhost_dev *dev,
-     }
- 
-     if (msg_reply.hdr.request != msg->hdr.request) {
--        error_report("Received unexpected msg type."
-+        error_report("Received unexpected msg type. "
-                      "Expected %d received %d",
-                      msg->hdr.request, msg_reply.hdr.request);
-         return -1;
-
-base-commit: bccabb3a5d60182645c7749e89f21a9ff307a9eb
--- 
-2.32.0
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
