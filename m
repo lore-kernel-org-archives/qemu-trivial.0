@@ -1,74 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mDuw8-00008p-LS
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Aug 2021 16:34:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38342)
+	id 1mE54O-000806-3n
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Aug 2021 03:24:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48022)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lmichel@kalray.eu>) id 1mDoyM-0005N1-JR
- for qemu-trivial@nongnu.org; Wed, 11 Aug 2021 10:12:46 -0400
-Received: from mxout.security-mail.net ([85.31.212.42]:28864
- helo=fx302.security-mail.net)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lmichel@kalray.eu>) id 1mDoyJ-0001IL-RE
- for qemu-trivial@nongnu.org; Wed, 11 Aug 2021 10:12:45 -0400
-Received: from localhost (localhost [127.0.0.1])
- by fx302.security-mail.net (Postfix) with ESMTP id BD7453D3B013
- for <qemu-trivial@nongnu.org>; Wed, 11 Aug 2021 16:12:39 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kalray.eu;
- s=sec-sig-email; t=1628691159;
- bh=tOYaN2UbiEaoRiVkc8X/qDCOP/fo9Bm4P9G2MZwi1hE=;
- h=From:To:Cc:Subject:Date;
- b=PiyDpJFV5k0fyhMetg52bc3kvVWnXG7Q/ITsWxCes2dNuHlw/Xe5EEJt3ao371PCC
- w9kfecJ1n3AwNEDI88RIXNTNK5O7ThTOQ30CDe4Ck5WiY4rYOp+m5Z3K6KBx+s+63Z
- aCG1aLWRpSMt/vdjot3qJdJu8pUN6qpZWTqNKrsc=
-Received: from fx302 (localhost [127.0.0.1])
- by fx302.security-mail.net (Postfix) with ESMTP id 634E33D3B06B;
- Wed, 11 Aug 2021 16:12:39 +0200 (CEST)
-X-Virus-Scanned: E-securemail
-Secumail-id: <55b4.6113dad7.143d1.0>
-Received: from zimbra2.kalray.eu (unknown [217.181.231.53])
- by fx302.security-mail.net (Postfix) with ESMTPS id 14FDB3D3B013;
- Wed, 11 Aug 2021 16:12:39 +0200 (CEST)
-Received: from zimbra2.kalray.eu (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTPS id F020327E02A8;
- Wed, 11 Aug 2021 16:12:38 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id DA14627E02A3;
- Wed, 11 Aug 2021 16:12:38 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu DA14627E02A3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kalray.eu;
- s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1628691158;
- bh=oACWa9YHXQ8Ts/YPz7whKVIVY6zi1KAtwPkc47a9mgQ=;
- h=From:To:Date:Message-Id;
- b=KQNGXW7fmE1NhL5N/oVPY+AlO7SFTUFnYkm08olwDI/HWWyJbc5MnQgYTVGoGfybr
- kOkLwVYIsmmCaCpMb4OolhbVaXNioZRwD6cCUvE6KctZQvAsBM3qZQMbvGFPuIaEZq
- wv+y7D+1DY1E1Ugzty9Re6rHSfF9rhA2QrXur2ys=
-Received: from zimbra2.kalray.eu ([127.0.0.1])
- by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id fCMczIuZsNla; Wed, 11 Aug 2021 16:12:38 +0200 (CEST)
-Received: from nemesis.lin.mbt.kalray.eu (unknown [192.168.37.229])
- by zimbra2.kalray.eu (Postfix) with ESMTPSA id C9FAE27E0232;
- Wed, 11 Aug 2021 16:12:38 +0200 (CEST)
-From: Luc Michel <lmichel@kalray.eu>
-To: qemu-devel@nongnu.org
-Cc: Luc Michel <lmichel@kalray.eu>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH] accel/tcg: remove redundant TCG_KICK_PERIOD define
-Date: Wed, 11 Aug 2021 16:12:29 +0200
-Message-Id: <20210811141229.12470-1-lmichel@kalray.eu>
-X-Mailer: git-send-email 2.17.1
-X-Virus-Scanned: by Secumail
-Received-SPF: pass client-ip=85.31.212.42; envelope-from=lmichel@kalray.eu;
- helo=fx302.security-mail.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mE54M-0007wt-7r; Thu, 12 Aug 2021 03:24:02 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:39578)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mE54K-0004CQ-O3; Thu, 12 Aug 2021 03:24:01 -0400
+Received: by mail-wr1-x431.google.com with SMTP id b11so6860689wrx.6;
+ Thu, 12 Aug 2021 00:23:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=WU7ZnQYweTWdSoUhKKvL7Lb6aL6skCRnEPgwwHkzlAM=;
+ b=QIwoQD+wu9L5Wi7Qa2FrrstXK2RfYll8jKC+kefRK2VxfA1wadfekqkyF25j8aM9Ts
+ HVeIKwqQzbVfK2D5vDXabStik2rWQX9PgnmsxbezjK99jYpCrqVA/O/27wby37WzETxn
+ pwJUQpQ4QDV782WxsiYu3QiV/6NtDba4V9W+nJ8i3vmfy7IrwDUTdk6U8NmqoPNFQ75D
+ yzGwcdCvfakoYQjIorj2hPt8410mbNn9sxjFsDrCwNJRv0NB9ypAqvMrN8Rur0N9LHFS
+ 4Lvsv4xgYqcoPl/I4XLphk4M5wP42s+qzSCLE+C44cz5gVKCpaMlVW0U+bqBff+dZAbC
+ tRIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=WU7ZnQYweTWdSoUhKKvL7Lb6aL6skCRnEPgwwHkzlAM=;
+ b=bmiyAaKrdMZh1qfouoRQikS+HQAuBJTpzATeb/w1XyBTQsSZvD9l1SSPb0eUxI+FUV
+ m41ecY6SS3bQ4PYIYSxlfiTRf4ogtuDMcyTT01EZLQlluuCfRn85l/y0fTUlAfC3HWID
+ zGEhZ2C2dFT+2BoSntkhjb62lbroAJJ1mhHOWCelYSyH9aGZ6AjMiRIFIjFuPvGpyet6
+ Z06UP7lK/kJiakUDXJst1GXwQST7fGLeyHfmzy5Qch4sm35qknKOoVl35PHn3by9OFaX
+ OCDTvu+bgdAqGNHH2AjoyAhB4Yk4gHftFUA+TmlixHfh23vCLnC+OUouWeGn8M9q3RdU
+ WG4w==
+X-Gm-Message-State: AOAM532wy0SxaaWfBdLPNHoHGksvzr4sXmFA1gd16CM/w0PBKu9NbP48
+ cUysQ1BA4rknf0+veTTMnmw=
+X-Google-Smtp-Source: ABdhPJwtv8rygyU8G9e1tQwhzS1FJNl+F4EU7EN1pQO8PgWizqYeT7qk5r36F3vS2SOjaPjaUUBAyA==
+X-Received: by 2002:adf:cd86:: with SMTP id q6mr2284190wrj.385.1628753035636; 
+ Thu, 12 Aug 2021 00:23:55 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id n186sm9354483wme.40.2021.08.12.00.23.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Aug 2021 00:23:54 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH] accel/tcg: remove redundant TCG_KICK_PERIOD define
+To: Luc Michel <lmichel@kalray.eu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20210811141229.12470-1-lmichel@kalray.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b78c5462-304c-73f2-84f0-bfe944c7ebde@amsat.org>
+Date: Thu, 12 Aug 2021 09:23:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <20210811141229.12470-1-lmichel@kalray.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 11 Aug 2021 16:34:48 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,34 +82,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Aug 2021 14:12:46 -0000
+X-List-Received-Date: Thu, 12 Aug 2021 07:24:02 -0000
 
-The TCG_KICK_PERIOD macro is already defined in tcg-accel-ops-rr.h.
-Remove it from tcg-accel-ops-rr.c.
+On 8/11/21 4:12 PM, Luc Michel wrote:
+> The TCG_KICK_PERIOD macro is already defined in tcg-accel-ops-rr.h.
+> Remove it from tcg-accel-ops-rr.c.
+> 
+> Signed-off-by: Luc Michel <lmichel@kalray.eu>
+> ---
+>  accel/tcg/tcg-accel-ops-rr.c | 2 --
+>  1 file changed, 2 deletions(-)
 
-Signed-off-by: Luc Michel <lmichel@kalray.eu>
----
- accel/tcg/tcg-accel-ops-rr.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
-index c02c061ecb..a5fd26190e 100644
---- a/accel/tcg/tcg-accel-ops-rr.c
-+++ b/accel/tcg/tcg-accel-ops-rr.c
-@@ -58,12 +58,10 @@ void rr_kick_vcpu_thread(CPUState *unused)
-  */
- 
- static QEMUTimer *rr_kick_vcpu_timer;
- static CPUState *rr_current_cpu;
- 
--#define TCG_KICK_PERIOD (NANOSECONDS_PER_SECOND / 10)
--
- static inline int64_t rr_next_kick_time(void)
- {
-     return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + TCG_KICK_PERIOD;
- }
- 
--- 
-2.17.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
