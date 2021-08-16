@@ -1,42 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mFNn7-000145-I1
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Aug 2021 17:35:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47140)
+	id 1mFgij-00089T-2a
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Aug 2021 13:48:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55148)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <oguzersen@protonmail.com>)
- id 1mFMgQ-0001vi-L9; Sun, 15 Aug 2021 16:24:38 -0400
-Received: from mail-40141.protonmail.ch ([185.70.40.141]:18834)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <oguzersen@protonmail.com>)
- id 1mFMgO-0001Ol-9g; Sun, 15 Aug 2021 16:24:38 -0400
-Date: Sun, 15 Aug 2021 20:24:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
- s=protonmail; t=1629059071;
- bh=4pi7ZvjTxc1Zcxk6+V7rlZ4fRkMV036cXyGhACAAuCs=;
- h=Date:To:From:Cc:Reply-To:Subject:From;
- b=Pbe5ESFHqewKX3wTUGky9hLk7atiQpSK2vDSHSfbaTXgzh/fxulJ16oSEy/LDa44D
- i0kcSi/17+bRaOIkLg8QvUEcKx3Tv8wnhABbuxPQUMZZS3JT+Wx3V0CGD3h1w+ppUh
- GVwoL9ne2IHpDpZU5cNQAxIknLseZCcyW3nFaXzI=
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-From: =?utf-8?Q?O=C4=9Fuz_Ersen?= <oguzersen@protonmail.com>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Reply-To: =?utf-8?Q?O=C4=9Fuz_Ersen?= <oguzersen@protonmail.com>
-Subject: [PATCH] po: update turkish translation
-Message-ID: <lDpmNUjNrVETJ2QoHoYmSoRvKoEIVFbF4IZAa1R5PVzqPCTh7nmV_ERHQlgYtNJN1Ppagtvelbo4uhSihEd5bSqIxCvGQchEWVpP-ofn2kw=@protonmail.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mFgih-00086Z-E6
+ for qemu-trivial@nongnu.org; Mon, 16 Aug 2021 13:48:19 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d]:42818)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mFgie-0002eo-NU
+ for qemu-trivial@nongnu.org; Mon, 16 Aug 2021 13:48:19 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id w6so14561427plg.9
+ for <qemu-trivial@nongnu.org>; Mon, 16 Aug 2021 10:48:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=da5b6EAzCg1VuPVtZq3IevHtf3cSK+b+kn0mFeEIPn0=;
+ b=C+UUIjflW3Om2HumaBbiyG8rXNYBZaHwVGH/xqiuSUvHbpCT+zeMJ4ZbnHbOIQRRpN
+ s38gFefFYMmapS0i4NkDjQVDBciH6anGT55Xt2xtxh1wL6BkXuaj00p9T05iyFSMCsCU
+ PpAe9lsSoPPQpbXyMp9pOakAiWkbqpT+Kap5ygQQsV4QqVXQAo4l2Z5ncBM4ntYcZWk6
+ Z4b/cg4DNsA+L5TSmtfDA9BzbZO/7OCXDIqDJELuOEsjEnV0qlJrp+zxjS9Yn3aqzHXo
+ bJrIcdbA+tBcCpJOVDKGDj/sTOtcqGFwjGPc4K1X780nPAh69VYxGhE6K21WxGIA3JiW
+ +Fjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=da5b6EAzCg1VuPVtZq3IevHtf3cSK+b+kn0mFeEIPn0=;
+ b=ABzdOAyXfIOoroAdRzQpAtPOci+ys4I1H7DcL0wMdO8wTVFvYzYOEi8mckUPqs6QJx
+ +bHkD83kqg1HDqDGiVJHqWd/AUF3qOxMZ1qKW0I67MGNenO+MxmWnaFtGDrl//CaKXoG
+ gqb6KAGfm2yPCPiZ0bBLSvxtXjkdF1ACIUAR9zSSCyl+bfPuEgkQ7ysc/hvisZDNmU1U
+ FoSW6PJ43im9sz0TikhM+ncWTd2tUkdKXNqtx5pTuFO4ItP4clMJRW0tHHnJJzTCZ+EN
+ dnHzwrkz091sIkfmGomYjkGx/JcWAnOhStFBfztTkcmgxGcp8eSEkkJgoOYK+B2Nw/RJ
+ RthA==
+X-Gm-Message-State: AOAM530CWcabvNVpNc6iGuqkeU5dZX20yoHTixP/vFs4W07cnSiFe75J
+ 7W72Y0OF5kaZhEIH2VtcvzzVag==
+X-Google-Smtp-Source: ABdhPJx6KiO6+ZZ3R0Ru00cYaAjn88dm1ka2krGuE7HoVoL8JkNCcbwZvsk2UyiSa4XX6Ukj19iVrg==
+X-Received: by 2002:a17:902:e786:b029:12d:2a7:365f with SMTP id
+ cp6-20020a170902e786b029012d02a7365fmr10926plb.21.1629136095086; 
+ Mon, 16 Aug 2021 10:48:15 -0700 (PDT)
+Received: from [192.168.3.43] ([173.197.107.15])
+ by smtp.gmail.com with ESMTPSA id k130sm18245pfd.219.2021.08.16.10.48.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Aug 2021 10:48:14 -0700 (PDT)
+Subject: Re: [PATCH] accel/tcg: remove redundant TCG_KICK_PERIOD define
+To: Luc Michel <lmichel@kalray.eu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20210811141229.12470-1-lmichel@kalray.eu>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <04c9f979-fbf5-bdec-711b-595436e9b6f3@linaro.org>
+Date: Mon, 16 Aug 2021 07:48:11 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="b1_aMKC5t7Z8BE4sjXYpf1qyJRPBnFYlv0bws9dDr6CQU"
-Received-SPF: pass client-ip=185.70.40.141;
- envelope-from=oguzersen@protonmail.com; helo=mail-40141.protonmail.ch
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+In-Reply-To: <20210811141229.12470-1-lmichel@kalray.eu>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.71,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 15 Aug 2021 17:35:36 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,59 +80,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Aug 2021 20:24:39 -0000
+X-List-Received-Date: Mon, 16 Aug 2021 17:48:19 -0000
 
-This is a multi-part message in MIME format.
+On 8/11/21 4:12 AM, Luc Michel wrote:
+> The TCG_KICK_PERIOD macro is already defined in tcg-accel-ops-rr.h.
+> Remove it from tcg-accel-ops-rr.c.
+> 
+> Signed-off-by: Luc Michel<lmichel@kalray.eu>
+> ---
+>   accel/tcg/tcg-accel-ops-rr.c | 2 --
+>   1 file changed, 2 deletions(-)
 
---b1_aMKC5t7Z8BE4sjXYpf1qyJRPBnFYlv0bws9dDr6CQU
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Queued.
 
-Hi, this is a small patch to update Turkish translation, thanks.
-
---
-Best Regards
-O=C4=9Fuz Ersen
---b1_aMKC5t7Z8BE4sjXYpf1qyJRPBnFYlv0bws9dDr6CQU
-Content-Type: text/x-patch; name=0001-po-update-turkish-translation.patch
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename=0001-po-update-turkish-translation.patch
-
-RnJvbSBjMTEwOWMxNmU1ZDcyY2Y1NTk1NGE4MDlhZmRkZTkyYzNjMDE0ZjNhIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiA9P1VURi04P3E/Tz1DND05RnV6PTIwRXJzZW4/PSA8b2d1emVy
-c2VuQHByb3Rvbm1haWwuY29tPgpEYXRlOiBTdW4sIDE1IEF1ZyAyMDIxIDIyOjIyOjE4ICswMzAw
-ClN1YmplY3Q6IFtQQVRDSF0gcG86IHVwZGF0ZSB0dXJraXNoIHRyYW5zbGF0aW9uCk1JTUUtVmVy
-c2lvbjogMS4wCkNvbnRlbnQtVHlwZTogdGV4dC9wbGFpbjsgY2hhcnNldD1VVEYtOApDb250ZW50
-LVRyYW5zZmVyLUVuY29kaW5nOiA4Yml0CgpTaWduZWQtb2ZmLWJ5OiBPxJ91eiBFcnNlbiA8b2d1
-emVyc2VuQHByb3Rvbm1haWwuY29tPgotLS0KIHBvL3RyLnBvIHwgMjMgKysrKysrKysrKystLS0t
-LS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxMSBpbnNlcnRpb25zKCspLCAxMiBkZWxldGlvbnMo
-LSkKCmRpZmYgLS1naXQgYS9wby90ci5wbyBiL3BvL3RyLnBvCmluZGV4IDYzMmM3ZjM4NTEuLjI4
-NDVmMzc3OWMgMTAwNjQ0Ci0tLSBhL3BvL3RyLnBvCisrKyBiL3BvL3RyLnBvCkBAIC0xLDE0ICsx
-LDE1IEBACiAjIFR1cmtpc2ggdHJhbnNsYXRpb24gZm9yIFFFTVUuCiAjIFRoaXMgZmlsZSBpcyBw
-dXQgaW4gdGhlIHB1YmxpYyBkb21haW4uCiAjIE96YW4gw4dhxJ9sYXlhbiA8b3phbmNhZ0BnbWFp
-bC5jb20+LCAyMDEzLgorIyBPxJ91eiBFcnNlbiA8b2d1emVyc2VuQHByb3Rvbm1haWwuY29tPiwg
-MjAyMS4KICMKIG1zZ2lkICIiCiBtc2dzdHIgIiIKICJQcm9qZWN0LUlkLVZlcnNpb246IFFFTVUg
-MS40LjUwXG4iCiAiUmVwb3J0LU1zZ2lkLUJ1Z3MtVG86IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZ1xu
-IgogIlBPVC1DcmVhdGlvbi1EYXRlOiAyMDE4LTA3LTE4IDA3OjU2KzAyMDBcbiIKLSJQTy1SZXZp
-c2lvbi1EYXRlOiAyMDEzLTA0LTIyIDE4OjM1KzAzMDBcbiIKLSJMYXN0LVRyYW5zbGF0b3I6IE96
-YW4gw4dhxJ9sYXlhbiA8b3phbmNhZ0BnbWFpbC5jb20+XG4iCisiUE8tUmV2aXNpb24tRGF0ZTog
-MjAyMS0wOC0xNSAyMjoxNyswMzAwXG4iCisiTGFzdC1UcmFuc2xhdG9yOiBPxJ91eiBFcnNlbiA8
-b2d1emVyc2VuQHByb3Rvbm1haWwuY29tPlxuIgogIkxhbmd1YWdlLVRlYW06IFTDvHJrw6dlIDw+
-XG4iCiAiTGFuZ3VhZ2U6IHRyXG4iCiAiTUlNRS1WZXJzaW9uOiAxLjBcbiIKQEAgLTMzLDI0ICsz
-NCwyMiBAQCBtc2dpZCAiUG93ZXIgX0Rvd24iCiBtc2dzdHIgIl9LYXBhdCIKIAogbXNnaWQgIl9R
-dWl0IgotbXNnc3RyICIiCittc2dzdHIgIl/Dh8Sxa8SxxZ8iCiAKIG1zZ2lkICJfRnVsbHNjcmVl
-biIKLW1zZ3N0ciAiIgorbXNnc3RyICJfVGFtIEVrcmFuIgogCiBtc2dpZCAiX0NvcHkiCi1tc2dz
-dHIgIiIKK21zZ3N0ciAiS19vcHlhbGEiCiAKLSMsIGZ1enp5CiBtc2dpZCAiWm9vbSBfSW4iCi1t
-c2dzdHIgIllha8SxbmxhxZ8gdmUgU8SxxJ9fZMSxciIKK21zZ3N0ciAiX1lha8SxbmxhxZ8iCiAK
-LSMsIGZ1enp5CiBtc2dpZCAiWm9vbSBfT3V0IgotbXNnc3RyICJZYWvEsW5sYcWfIHZlIFPEscSf
-X2TEsXIiCittc2dzdHIgIl9VemFrbGHFnyIKIAogbXNnaWQgIkJlc3QgX0ZpdCIKLW1zZ3N0ciAi
-IgorbXNnc3RyICJfRW4gVXlndW4iCiAKIG1zZ2lkICJab29tIFRvIF9GaXQiCiBtc2dzdHIgIllh
-a8SxbmxhxZ8gdmUgU8SxxJ9fZMSxciIKQEAgLTY1LDEwICs2NCwxMCBAQCBtc2dpZCAiU2hvdyBf
-VGFicyIKIG1zZ3N0ciAiU2Vfa21lbGVyaSBHw7ZzdGVyIgogCiBtc2dpZCAiRGV0YWNoIFRhYiIK
-LW1zZ3N0ciAiIgorbXNnc3RyICJTZWttZXlpIEF5xLFyIgogCiBtc2dpZCAiU2hvdyBNZW51YmFy
-IgotbXNnc3RyICIiCittc2dzdHIgIk1lbsO8IMOHdWJ1xJ91bnUgR8O2c3RlciIKIAogbXNnaWQg
-Il9NYWNoaW5lIgogbXNnc3RyICJfTWFraW5lIgotLSAKMi4zMS4xCgo=
-
---b1_aMKC5t7Z8BE4sjXYpf1qyJRPBnFYlv0bws9dDr6CQU--
-
+r~
 
