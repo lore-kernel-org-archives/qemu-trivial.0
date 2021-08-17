@@ -1,73 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mFgij-00089T-2a
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Aug 2021 13:48:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55148)
+	id 1mFtU0-0003TO-7S
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Aug 2021 03:26:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mFgih-00086Z-E6
- for qemu-trivial@nongnu.org; Mon, 16 Aug 2021 13:48:19 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d]:42818)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mFgie-0002eo-NU
- for qemu-trivial@nongnu.org; Mon, 16 Aug 2021 13:48:19 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id w6so14561427plg.9
- for <qemu-trivial@nongnu.org>; Mon, 16 Aug 2021 10:48:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=da5b6EAzCg1VuPVtZq3IevHtf3cSK+b+kn0mFeEIPn0=;
- b=C+UUIjflW3Om2HumaBbiyG8rXNYBZaHwVGH/xqiuSUvHbpCT+zeMJ4ZbnHbOIQRRpN
- s38gFefFYMmapS0i4NkDjQVDBciH6anGT55Xt2xtxh1wL6BkXuaj00p9T05iyFSMCsCU
- PpAe9lsSoPPQpbXyMp9pOakAiWkbqpT+Kap5ygQQsV4QqVXQAo4l2Z5ncBM4ntYcZWk6
- Z4b/cg4DNsA+L5TSmtfDA9BzbZO/7OCXDIqDJELuOEsjEnV0qlJrp+zxjS9Yn3aqzHXo
- bJrIcdbA+tBcCpJOVDKGDj/sTOtcqGFwjGPc4K1X780nPAh69VYxGhE6K21WxGIA3JiW
- +Fjw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mFtTy-0003Qc-6L
+ for qemu-trivial@nongnu.org; Tue, 17 Aug 2021 03:25:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:48469)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mFtTw-0002v2-5J
+ for qemu-trivial@nongnu.org; Tue, 17 Aug 2021 03:25:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1629185155;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dQiWS+17fddQjqxqxwyUxh75iVOLOV3BUQ1Tr6ikgu4=;
+ b=PDC2sCoBoJNJ+MPYT6nwUmYBWjcKnpVt/Ui4bXzqwihT8ilscqXAAljL0GUBTWW0hLhcXR
+ DZ+OJHjqVoBPNG2WK9vlo5NZeojsB98ic9SSBW4xQJXmgHvGLxKih1Xmxkq3dNu/nFE3BV
+ OedDG2c8lktK0osKCWZmEc86GeaN9Us=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-438-a-nj5x0kPyKqf_QGxLzbdQ-1; Tue, 17 Aug 2021 03:25:53 -0400
+X-MC-Unique: a-nj5x0kPyKqf_QGxLzbdQ-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ r21-20020a1709067055b02904be5f536463so5650790ejj.0
+ for <qemu-trivial@nongnu.org>; Tue, 17 Aug 2021 00:25:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=da5b6EAzCg1VuPVtZq3IevHtf3cSK+b+kn0mFeEIPn0=;
- b=ABzdOAyXfIOoroAdRzQpAtPOci+ys4I1H7DcL0wMdO8wTVFvYzYOEi8mckUPqs6QJx
- +bHkD83kqg1HDqDGiVJHqWd/AUF3qOxMZ1qKW0I67MGNenO+MxmWnaFtGDrl//CaKXoG
- gqb6KAGfm2yPCPiZ0bBLSvxtXjkdF1ACIUAR9zSSCyl+bfPuEgkQ7ysc/hvisZDNmU1U
- FoSW6PJ43im9sz0TikhM+ncWTd2tUkdKXNqtx5pTuFO4ItP4clMJRW0tHHnJJzTCZ+EN
- dnHzwrkz091sIkfmGomYjkGx/JcWAnOhStFBfztTkcmgxGcp8eSEkkJgoOYK+B2Nw/RJ
- RthA==
-X-Gm-Message-State: AOAM530CWcabvNVpNc6iGuqkeU5dZX20yoHTixP/vFs4W07cnSiFe75J
- 7W72Y0OF5kaZhEIH2VtcvzzVag==
-X-Google-Smtp-Source: ABdhPJx6KiO6+ZZ3R0Ru00cYaAjn88dm1ka2krGuE7HoVoL8JkNCcbwZvsk2UyiSa4XX6Ukj19iVrg==
-X-Received: by 2002:a17:902:e786:b029:12d:2a7:365f with SMTP id
- cp6-20020a170902e786b029012d02a7365fmr10926plb.21.1629136095086; 
- Mon, 16 Aug 2021 10:48:15 -0700 (PDT)
-Received: from [192.168.3.43] ([173.197.107.15])
- by smtp.gmail.com with ESMTPSA id k130sm18245pfd.219.2021.08.16.10.48.13
+ bh=dQiWS+17fddQjqxqxwyUxh75iVOLOV3BUQ1Tr6ikgu4=;
+ b=lqJ7B56iMCjTkLDZYRMSC1sgOhTzpoFK/GPsjb7uKcRaOhTehhkAgOykL49Cby+WUg
+ xQ8U+Nm0qBunRY31dniMps3FJg5RIpBgS2UTmD0e5a5mpaUqx+iQ676zJQIuikhh9uJa
+ JBl0AFPQ/pE6vs8DK4qDqFgLTBJK9XDTq23MaymGk41BV0yLuovFrxQYpxEI1eRWsMXQ
+ P9ANDuHdcYO2ej0CuC9N3pvCYTPrz8QV+a6wpnmXpgIKGm7goxCzdWIsurUwIkUsFsuW
+ Xp+L/6O4iW2iYQ+d6Qg4t1+SwJhQnjBvcdWun1FxZw0xYKYKWXTlxfmGu6SttjRf7zbr
+ raJA==
+X-Gm-Message-State: AOAM533YKwTvRi2hBIzOqknbSsCMP3qWhZUd+d0/4gGQT9TfENZ1sp5A
+ 51/Q7URc3ouLoODqC8gLBvfiZS9I0PIq5OKym5HjhXCoxE9WgE51C1GqICk6sZVkEAl3nTw3ZDO
+ BNOpuR+zkQMMMqC735bxkzjSvg7WHPIhj3mgX8zOMapywvkBEeHyabJC4MLfeBLz2jw==
+X-Received: by 2002:a05:6402:b88:: with SMTP id
+ cf8mr2586931edb.281.1629185152633; 
+ Tue, 17 Aug 2021 00:25:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwACNlBN0nqKjjvgtcwKGJzCtzG533o3HEaEVIeTMDeB4NzSka40jkDOkkcT7fPr0KeLoCb+w==
+X-Received: by 2002:a05:6402:b88:: with SMTP id
+ cf8mr2586907edb.281.1629185152435; 
+ Tue, 17 Aug 2021 00:25:52 -0700 (PDT)
+Received: from thuth.remote.csb (pd9e83fdd.dip0.t-ipconnect.de.
+ [217.232.63.221])
+ by smtp.gmail.com with ESMTPSA id m15sm579084eds.92.2021.08.17.00.25.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Aug 2021 10:48:14 -0700 (PDT)
-Subject: Re: [PATCH] accel/tcg: remove redundant TCG_KICK_PERIOD define
-To: Luc Michel <lmichel@kalray.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20210811141229.12470-1-lmichel@kalray.eu>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <04c9f979-fbf5-bdec-711b-595436e9b6f3@linaro.org>
-Date: Mon, 16 Aug 2021 07:48:11 -1000
+ Tue, 17 Aug 2021 00:25:52 -0700 (PDT)
+Subject: Re: [PATCH v3] vga: don't abort when adding a duplicate isa-vga device
+To: "Jose R. Ziviani" <jziviani@suse.de>, qemu-devel@nongnu.org
+Cc: philmd@redhat.com, kraxel@redhat.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210816135504.9089-1-jziviani@suse.de>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <f047a8d8-93f5-3f62-0834-c036931090d2@redhat.com>
+Date: Tue, 17 Aug 2021 09:25:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.12.0
 MIME-Version: 1.0
-In-Reply-To: <20210811141229.12470-1-lmichel@kalray.eu>
+In-Reply-To: <20210816135504.9089-1-jziviani@suse.de>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.71,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -71
+X-Spam_score: -7.2
+X-Spam_bar: -------
+X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.698,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-3.71, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,18 +93,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Aug 2021 17:48:19 -0000
+X-List-Received-Date: Tue, 17 Aug 2021 07:25:58 -0000
 
-On 8/11/21 4:12 AM, Luc Michel wrote:
-> The TCG_KICK_PERIOD macro is already defined in tcg-accel-ops-rr.h.
-> Remove it from tcg-accel-ops-rr.c.
+On 16/08/2021 15.55, Jose R. Ziviani wrote:
+> If users try to add an isa-vga device that was already registered,
+> still in command line, qemu will crash:
 > 
-> Signed-off-by: Luc Michel<lmichel@kalray.eu>
+> $ qemu-system-mips64el -M pica61 -device isa-vga
+> RAMBlock "vga.vram" already registered, abort!
+> Aborted (core dumped)
+> 
+> That particular board registers the device automaticaly, so it's
+> not obvious that a VGA device already exists. This patch changes
+> this behavior by displaying a message and exiting without crashing.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/44
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
 > ---
->   accel/tcg/tcg-accel-ops-rr.c | 2 --
->   1 file changed, 2 deletions(-)
+> v2 to v3: Improved error message
+> v1 to v2: Use error_setg instead of error_report
+> 
+>   hw/display/vga-isa.c | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
+> 
+> diff --git a/hw/display/vga-isa.c b/hw/display/vga-isa.c
+> index 90851e730b..30d55b41c3 100644
+> --- a/hw/display/vga-isa.c
+> +++ b/hw/display/vga-isa.c
+> @@ -33,6 +33,7 @@
+>   #include "hw/loader.h"
+>   #include "hw/qdev-properties.h"
+>   #include "qom/object.h"
+> +#include "qapi/error.h"
+>   
+>   #define TYPE_ISA_VGA "isa-vga"
+>   OBJECT_DECLARE_SIMPLE_TYPE(ISAVGAState, ISA_VGA)
+> @@ -61,6 +62,15 @@ static void vga_isa_realizefn(DeviceState *dev, Error **errp)
+>       MemoryRegion *vga_io_memory;
+>       const MemoryRegionPortio *vga_ports, *vbe_ports;
+>   
+> +    /*
+> +     * make sure this device is not being added twice, if so
+> +     * exit without crashing qemu
+> +     */
+> +    if (qemu_ram_block_by_name("vga.vram")) {
+> +        error_setg(errp, "'isa-vga' device already registered");
+> +        return;
+> +    }
+> +
+>       s->global_vmstate = true;
+>       vga_common_init(s, OBJECT(dev));
+>       s->legacy_address_space = isa_address_space(isadev);
+> 
 
-Queued.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-r~
 
