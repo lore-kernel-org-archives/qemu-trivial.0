@@ -1,32 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mGMDe-0006Za-2r
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Aug 2021 10:07:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54068)
+	id 1mGMKL-0003bL-Sd
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Aug 2021 10:13:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55750)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1mGMDb-0006VL-GF; Wed, 18 Aug 2021 10:06:59 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:47797)
+ id 1mGMKK-0003aO-Cm; Wed, 18 Aug 2021 10:13:56 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:49073)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1mGMDZ-0002ZT-Ia; Wed, 18 Aug 2021 10:06:59 -0400
+ id 1mGMKI-0006Bx-Un; Wed, 18 Aug 2021 10:13:56 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 0D8374055A;
- Wed, 18 Aug 2021 17:06:54 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id E069EE9;
- Wed, 18 Aug 2021 17:06:53 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 3C07D4055A;
+ Wed, 18 Aug 2021 17:13:53 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 1B4E7E9;
+ Wed, 18 Aug 2021 17:13:53 +0300 (MSK)
+Received: (nullmailer pid 417766 invoked by uid 1000);
+ Wed, 18 Aug 2021 14:13:53 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH, trivial, for-6.1] spelling: sytem => system
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Message-ID: <fefb5f5c-82bc-05e2-b4c1-665e9d6896ff@msgid.tls.msk.ru>
-Date: Wed, 18 Aug 2021 17:06:53 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH, trivial, for-6.1] target/i386: spelling: occured=>occurred
+Date: Wed, 18 Aug 2021 17:13:52 +0300
+Message-Id: <20210818141352.417716-1-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=windows-1251; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -46,51 +45,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Aug 2021 14:06:59 -0000
+X-List-Received-Date: Wed, 18 Aug 2021 14:13:56 -0000
 
-Signed-off-By: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
-It is safe for 6.1
+ accel/kvm/kvm-all.c      | 2 +-
+ target/i386/cpu-sysemu.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-  block/file-posix.c              | 2 +-
-  tools/virtiofsd/fuse_lowlevel.h | 4 ++--
-  2 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/block/file-posix.c b/block/file-posix.c
-index cb9bffe047..1854bfa397 100644
---- a/block/file-posix.c
-+++ b/block/file-posix.c
-@@ -1705,7 +1705,7 @@ static int handle_aiocb_write_zeroes(void *opaque)
-               */
-              warn_report_once("Your file system is misbehaving: "
-                               "fallocate(FALLOC_FL_PUNCH_HOLE) returned EINVAL. "
--                             "Please report this bug to your file sytem "
-+                             "Please report this bug to your file system "
-                               "vendor.");
-          } else if (ret != -ENOTSUP) {
-              return ret;
-diff --git a/tools/virtiofsd/fuse_lowlevel.h b/tools/virtiofsd/fuse_lowlevel.h
-index 4b4e8c9724..c55c0ca2fc 100644
---- a/tools/virtiofsd/fuse_lowlevel.h
-+++ b/tools/virtiofsd/fuse_lowlevel.h
-@@ -1603,7 +1603,7 @@ int fuse_lowlevel_notify_inval_inode(struct fuse_session *se, fuse_ino_t ino,
-   * parent/name
-   *
-   * To avoid a deadlock this function must not be called in the
-- * execution path of a related filesytem operation or within any code
-+ * execution path of a related filesystem operation or within any code
-   * that could hold a lock that could be needed to execute such an
-   * operation. As of kernel 4.18, a "related operation" is a lookup(),
-   * symlink(), mknod(), mkdir(), unlink(), rename(), link() or create()
-@@ -1636,7 +1636,7 @@ int fuse_lowlevel_notify_inval_entry(struct fuse_session *se, fuse_ino_t parent,
-   * that the dentry has been deleted.
-   *
-   * To avoid a deadlock this function must not be called while
-- * executing a related filesytem operation or while holding a lock
-+ * executing a related filesystem operation or while holding a lock
-   * that could be needed to execute such an operation (see the
-   * description of fuse_lowlevel_notify_inval_entry() for more
-   * details).
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 0125c17edb..cace5ffe64 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2469,7 +2469,7 @@ static int kvm_init(MachineState *ms)
+             ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING, 0, ring_bytes);
+             if (ret) {
+                 error_report("Enabling of KVM dirty ring failed: %s. "
+-                             "Suggested mininum value is 1024.", strerror(-ret));
++                             "Suggested minimum value is 1024.", strerror(-ret));
+                 goto err;
+             }
+ 
+diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
+index 1078e3d157..37b7c562f5 100644
+--- a/target/i386/cpu-sysemu.c
++++ b/target/i386/cpu-sysemu.c
+@@ -335,7 +335,7 @@ void x86_cpu_get_crash_info_qom(Object *obj, Visitor *v,
+     GuestPanicInformation *panic_info;
+ 
+     if (!cs->crash_occurred) {
+-        error_setg(errp, "No crash occured");
++        error_setg(errp, "No crash occurred");
+         return;
+     }
+ 
 -- 
 2.30.2
 
