@@ -1,73 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mG5yn-0001vG-Vt
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Aug 2021 16:46:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43158)
+	id 1mGFeo-0003IU-Ce
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Aug 2021 03:06:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53848)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jziviani@suse.de>)
- id 1mG4B5-00048P-Jq; Tue, 17 Aug 2021 14:51:11 -0400
-Received: from smtp-out1.suse.de ([195.135.220.28]:55926)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jziviani@suse.de>)
- id 1mG4B3-00009B-UG; Tue, 17 Aug 2021 14:51:11 -0400
-Received: from imap1.suse-dmz.suse.de (imap1.suse-dmz.suse.de [192.168.254.73])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id B6F3E21FE6;
- Tue, 17 Aug 2021 18:51:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1629226266; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mGFef-0003Fa-Up
+ for qemu-trivial@nongnu.org; Wed, 18 Aug 2021 03:06:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:59978)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mGFeZ-0005xT-HY
+ for qemu-trivial@nongnu.org; Wed, 18 Aug 2021 03:06:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1629270382;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3R5gh2C51rvp0kjdBygGSfzXFoP4g9eLjc6eURbPkAc=;
- b=qu68zCI/Ar5X0+Wlk41PBr0iiZfWlUr+bBUATb1UbqJkCbMBzQuEQi2dMQSQ9mUJ42lqS8
- C51ZW1D7F5FeMIkkv3TT/VJczQ7vStkV77xI1ca7RurOBZxSb06QtoTVFVg+KZxJUVS/wi
- wkUHlftQJg33VzpmBOO8f8mRL5InTzk=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1629226266;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=3R5gh2C51rvp0kjdBygGSfzXFoP4g9eLjc6eURbPkAc=;
- b=QXNEO5O7urVtX8bL2jmvQQBFj/8f9zAprHWXja8sxU816+Opk1NAAmkgGg8ra3RpUr30Wo
- Ic1bf7IcowlVlwDQ==
-Received: from imap1.suse-dmz.suse.de (imap1.suse-dmz.suse.de [192.168.254.73])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap1.suse-dmz.suse.de (Postfix) with ESMTPS id E01C6136BF;
- Tue, 17 Aug 2021 18:51:04 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap1.suse-dmz.suse.de with ESMTPSA id GGrLKBgFHGHPBQAAGKfGzw
- (envelope-from <jziviani@suse.de>); Tue, 17 Aug 2021 18:51:04 +0000
-Date: Tue, 17 Aug 2021 15:51:02 -0300
-From: "Jose R. Ziviani" <jziviani@suse.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>, kraxel@redhat.com
-Subject: Re: [PATCH v3] vga: don't abort when adding a duplicate isa-vga device
-Message-ID: <YRwFFunps1sgKkHC@pizza>
-References: <20210816135504.9089-1-jziviani@suse.de>
- <f047a8d8-93f5-3f62-0834-c036931090d2@redhat.com>
- <cd2d673b-c9aa-1b9a-7025-9afb787f99b6@ilande.co.uk>
- <bc835acf-7a75-3270-019b-d24b7fab3413@redhat.com>
+ bh=A04eg1/ILTQ+zdDNR8lxr6kc1NxhWRJQ6/sPwFmmXsg=;
+ b=e5WCL56yJMP+rZt4hO3WwEVbsJGyYBisOUSk4aX3NdL30a99TdJGdP4M5e1aPd//WmYxPj
+ 96FXpgjVoNyjcYxKPjROWqzME7fXtjqxBOaOwxjEiOEXmsh+vN18LnyzGixLXT7JxERyTB
+ J9xOPqYY5Bm1C9wa/gwoeLdh7NUnPzs=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-296-P96m1TyQMPWLF1r52vFbHA-1; Wed, 18 Aug 2021 03:06:18 -0400
+X-MC-Unique: P96m1TyQMPWLF1r52vFbHA-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ v3-20020a1709063383b02905b4d1d1e27cso498847eja.19
+ for <qemu-trivial@nongnu.org>; Wed, 18 Aug 2021 00:06:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=A04eg1/ILTQ+zdDNR8lxr6kc1NxhWRJQ6/sPwFmmXsg=;
+ b=ohcSahFMwmC5a5e0fcRH4pQngVp0xt+EgdsjGSZNCJYYc/EXUU8mJ6mHtL+Fvn6/fF
+ kvwK1Mh8WKC4qcKwwSOQ+cw79KuRtVl9cJ+YgG8LMzMBIj9FMOmoFHwKSq9pkIz5rNiI
+ 5bpca4ZfWevRRIGF7z5iEPNhw4KkiZuOT1tzVrw57SIHAw0/4Ib1O5DvWaJijEfe1Yfw
+ gX/F6VCGNW/PgUq6zpyVRrD43M36qh0SG03fFawNLs48GwwP0G1ktI/Dm5XarYoryN8I
+ IYfRv2c79IA3wmzt89hSdHDG6EUMoK6hk6x+imS/eq5CeJTle90SAYK4VMP+cmMWPPQD
+ hZyw==
+X-Gm-Message-State: AOAM532cCwGmh/Sr15n+w3Z3wZcmQPcFefSqk6XJHls71JEmbAXbW4et
+ pXhYkcoAKD4V6P37e+8gUitduwp2pUkQ/YUEEUFpR5fYDJqHpTqHIiPFSZ6ZxHuQCbpbR+UFLdi
+ TwN7Qs1HiiDKYAdK8BQ==
+X-Received: by 2002:a17:906:2813:: with SMTP id
+ r19mr8273205ejc.150.1629270376838; 
+ Wed, 18 Aug 2021 00:06:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxSwz6qXKmKwrtnBp4pvw6ANKiNTlUz4bsFHRgXlPOkdov+23DwKaSWUNErNCRdUEBCNxNbDA==
+X-Received: by 2002:a17:906:2813:: with SMTP id
+ r19mr8273177ejc.150.1629270376540; 
+ Wed, 18 Aug 2021 00:06:16 -0700 (PDT)
+Received: from thuth.remote.csb (pd9e83070.dip0.t-ipconnect.de.
+ [217.232.48.112])
+ by smtp.gmail.com with ESMTPSA id m18sm2096254edr.18.2021.08.18.00.06.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Aug 2021 00:06:16 -0700 (PDT)
+Subject: Re: [PATCH v4] vga: don't abort when adding a duplicate isa-vga device
+To: "Jose R. Ziviani" <jziviani@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, philmd@redhat.com, kraxel@redhat.com,
+ mark.cave-ayland@ilande.co.uk
+References: <20210817192629.12755-1-jziviani@suse.de>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <0976e5be-8720-60e2-9f17-e2ae63249041@redhat.com>
+Date: Wed, 18 Aug 2021 09:06:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="AlsGQrilVXb1u51Z"
-Content-Disposition: inline
-In-Reply-To: <bc835acf-7a75-3270-019b-d24b7fab3413@redhat.com>
-Received-SPF: pass client-ip=195.135.220.28; envelope-from=jziviani@suse.de;
- helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210817192629.12755-1-jziviani@suse.de>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -54
+X-Spam_score: -5.5
+X-Spam_bar: -----
+X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.961, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 17 Aug 2021 16:46:35 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,113 +93,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Aug 2021 18:51:12 -0000
+X-List-Received-Date: Wed, 18 Aug 2021 07:06:31 -0000
 
+On 17/08/2021 21.26, Jose R. Ziviani wrote:
+> If users try to add an isa-vga device that was already registered,
+> still in command line, qemu will crash:
+> 
+> $ qemu-system-mips64el -M pica61 -device isa-vga
+> RAMBlock "vga.vram" already registered, abort!
+> Aborted (core dumped)
+> 
+> That particular board registers the device automaticaly, so it's
+> not obvious that a VGA device already exists. This patch changes
+> this behavior by displaying a message and exiting without crashing.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/44
+> Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+> ---
+> v3 to v4: Used object_resolve_path_type instead of qemu_ram_block_by_name
+>            and copied the message from virgl, to give the same user exp.
+> v2 to v3: Improved error message
+> v1 to v2: Use error_setg instead of error_report
+> 
+>   hw/display/vga-isa.c | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
+> 
+> diff --git a/hw/display/vga-isa.c b/hw/display/vga-isa.c
+> index 90851e730b..8cea84f2be 100644
+> --- a/hw/display/vga-isa.c
+> +++ b/hw/display/vga-isa.c
+> @@ -33,6 +33,7 @@
+>   #include "hw/loader.h"
+>   #include "hw/qdev-properties.h"
+>   #include "qom/object.h"
+> +#include "qapi/error.h"
+>   
+>   #define TYPE_ISA_VGA "isa-vga"
+>   OBJECT_DECLARE_SIMPLE_TYPE(ISAVGAState, ISA_VGA)
+> @@ -61,6 +62,15 @@ static void vga_isa_realizefn(DeviceState *dev, Error **errp)
+>       MemoryRegion *vga_io_memory;
+>       const MemoryRegionPortio *vga_ports, *vbe_ports;
+>   
+> +    /*
+> +     * make sure this device is not being added twice, if so
+> +     * exit without crashing qemu
+> +     */
+> +    if (object_resolve_path_type("", TYPE_ISA_VGA, NULL)) {
+> +        error_setg(errp, "at most one %s device is permitted", TYPE_ISA_VGA);
+> +        return;
+> +    }
+> +
+>       s->global_vmstate = true;
+>       vga_common_init(s, OBJECT(dev));
+>       s->legacy_address_space = isa_address_space(isadev);
+> 
 
---AlsGQrilVXb1u51Z
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-On Tue, Aug 17, 2021 at 10:07:55AM +0200, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 8/17/21 9:36 AM, Mark Cave-Ayland wrote:
-> > On 17/08/2021 08:25, Thomas Huth wrote:
-> >=20
-> >> On 16/08/2021 15.55, Jose R. Ziviani wrote:
-> >>> If users try to add an isa-vga device that was already registered,
-> >>> still in command line, qemu will crash:
-> >>>
-> >>> $ qemu-system-mips64el -M pica61 -device isa-vga
-> >>> RAMBlock "vga.vram" already registered, abort!
-> >>> Aborted (core dumped)
-> >>>
-> >>> That particular board registers the device automaticaly, so it's
-> >>> not obvious that a VGA device already exists. This patch changes
-> >>> this behavior by displaying a message and exiting without crashing.
-> >>>
-> >>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/44
-> >>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >>> Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
-> >>> ---
-> >>> v2 to v3: Improved error message
-> >>> v1 to v2: Use error_setg instead of error_report
-> >>>
-> >>> =C2=A0 hw/display/vga-isa.c | 10 ++++++++++
-> >>> =C2=A0 1 file changed, 10 insertions(+)
-> >>>
-> >>> diff --git a/hw/display/vga-isa.c b/hw/display/vga-isa.c
-> >>> index 90851e730b..30d55b41c3 100644
-> >>> --- a/hw/display/vga-isa.c
-> >>> +++ b/hw/display/vga-isa.c
-> >>> @@ -33,6 +33,7 @@
-> >>> =C2=A0 #include "hw/loader.h"
-> >>> =C2=A0 #include "hw/qdev-properties.h"
-> >>> =C2=A0 #include "qom/object.h"
-> >>> +#include "qapi/error.h"
-> >>> =C2=A0 #define TYPE_ISA_VGA "isa-vga"
-> >>> =C2=A0 OBJECT_DECLARE_SIMPLE_TYPE(ISAVGAState, ISA_VGA)
-> >>> @@ -61,6 +62,15 @@ static void vga_isa_realizefn(DeviceState *dev,
-> >>> Error **errp)
-> >>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MemoryRegion *vga_io_memory;
-> >>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const MemoryRegionPortio *vga_ports, *=
-vbe_ports;
-> >>> +=C2=A0=C2=A0=C2=A0 /*
-> >>> +=C2=A0=C2=A0=C2=A0=C2=A0 * make sure this device is not being added =
-twice, if so
-> >>> +=C2=A0=C2=A0=C2=A0=C2=A0 * exit without crashing qemu
-> >>> +=C2=A0=C2=A0=C2=A0=C2=A0 */
-> >>> +=C2=A0=C2=A0=C2=A0 if (qemu_ram_block_by_name("vga.vram")) {
-> >>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "'isa-vg=
-a' device already registered");
-> >>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
-> >>> +=C2=A0=C2=A0=C2=A0 }
-> >>> +
-> >>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->global_vmstate =3D true;
-> >>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vga_common_init(s, OBJECT(dev));
-> >>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->legacy_address_space =3D isa_addres=
-s_space(isadev);
-> >>>
-> >>
-> >> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> >=20
-> > Instead of checking for the presence of the vga.vram block, would it be
-> > better to use the standard object_resolve_path_type() method to check
-> > for the presence of the existing isa-vga device instead? See
-> > https://lists.gnu.org/archive/html/qemu-devel/2021-07/msg00717.html for
-> > how this was done for virgl.
->=20
-> I remembered there was a nicer way but couldn't find it.
-> If this patch were for 6.1, it was good enough. Now it
-> will be merged in 6.2, I prefer Mark's suggestion.
-> Jose, do you mind a v4?
->=20
-
-Hello people! Thanks for reviewing it.
-
-Sure, I'll send a v4. It's not for 6.1 anyway.
-
-Thank you very much
-
---AlsGQrilVXb1u51Z
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEVQB+DwLGVyv815sBaJ4wdCKKF5YFAmEcBRIACgkQaJ4wdCKK
-F5b6FBAAkiYRyCd0gdEZeYJTnR0fniDdBCpfrw8salyXg5GBtpIIbCvfXtKSRoHP
-qZ3EWBlA4ipw/Vq+LsFGh/nyHA+/QF1nGoM3oTR7wghPRxp6OgC9P8XMzLe2Jlup
-9lSKCXKKA+Up/jGp9i6UYaWJ9JRAfT/4lxWx4tgwaIxPKx0dxeixzVNlRZMMirX5
-utB82MAttbOYlw9r471CcEkAps4YlmCAfX8uLEbGycUNQ/9Vs82sUc5R64CmOgC8
-ynGayCzL2xMpju2IB2VZiAIaGlRXrB7BgaiyuVeJU1FUOk1MJWdL/UHYaNaa2tcV
-piZylflemQfGdqPCuZFycBc1nk5rxbaLZx8sIz1w5OSMjjYJ6sKrR/uc3aKe+lPw
-WU9TdMrAp78u0fJ4LpOhX+HMCOd5TFaxT6kyGnvIn0UAgGQlKXZ1VESFBYOuKtNM
-Yyw/GUlWVTs3FxmsjgH1PNi5adexGSb7F8CL/n3Cwt7q6eAvAifQ5OudFIk6P17A
-lG21OOXRVQYisUN8SCxF5c5JE+4MjuGdDZhxPB9ZIPAE2K1ogyxrlzrj7c18nQUV
-qg5nK0MxV8VUyRC9szIhAFKoXcUAX9MtZDHtHd9ki+y2iIMhJb+LAdyk6cYVSEWc
-oSY4VREQOjAFa2FuxKCVm9jcVT6Pm7U9A0CJ6JyYscQRQ3vShW4=
-=ANeb
------END PGP SIGNATURE-----
-
---AlsGQrilVXb1u51Z--
 
