@@ -1,48 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mGHla-0001qu-BD
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Aug 2021 05:21:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56620)
+	id 1mGJl7-00025a-6R
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Aug 2021 07:29:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1mGHlW-0001oD-EC; Wed, 18 Aug 2021 05:21:42 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:38644
- helo=mail.default.ilande.bv.iomart.io)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mGJl5-00024p-Hc
+ for qemu-trivial@nongnu.org; Wed, 18 Aug 2021 07:29:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:47625)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1mGHlU-0005SX-H7; Wed, 18 Aug 2021 05:21:42 -0400
-Received: from host86-179-247-14.range86-179.btcentralplus.com
- ([86.179.247.14] helo=[192.168.50.176])
- by mail.default.ilande.bv.iomart.io with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1mGHl5-000CXH-62; Wed, 18 Aug 2021 10:21:20 +0100
-To: "Jose R. Ziviani" <jziviani@suse.de>, qemu-devel@nongnu.org
-Cc: thuth@redhat.com, qemu-trivial@nongnu.org, kraxel@redhat.com,
- philmd@redhat.com
-References: <20210817192629.12755-1-jziviani@suse.de>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-ID: <651fdca9-04d2-2a2c-75fc-8ae7e1ff20f6@ilande.co.uk>
-Date: Wed, 18 Aug 2021 10:21:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mGJl2-0005oo-Dq
+ for qemu-trivial@nongnu.org; Wed, 18 Aug 2021 07:29:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1629286159;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=kqRYvlEJzFexAHHfD88+SXVkezxYieOn0iYqvz7Cc7w=;
+ b=d8FVxyYmhm6dSINGUgnCXFrWj47JNS2nuEk+fNoVItNhVC1q3RXamXmHGcPMN7AYj19PUn
+ FQUMgu7sE8okji/nGk5WAk2OwZ1Vzusosiv6Y636WPH0i1M/1UDPb398hW+/8kCo+f7gfL
+ 4H/TL72KC5xezMxh87TbPaAkG90KiFI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-584-sEvWfv0wNd6QU-cUlycLVQ-1; Wed, 18 Aug 2021 07:29:17 -0400
+X-MC-Unique: sEvWfv0wNd6QU-cUlycLVQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A8971082921;
+ Wed, 18 Aug 2021 11:29:17 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.132])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F14AF19D9B;
+ Wed, 18 Aug 2021 11:29:15 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>
+Subject: [PATCH for-6.2] docs/about/removed-features: Move some CLI options to
+ the right location
+Date: Wed, 18 Aug 2021 13:29:08 +0200
+Message-Id: <20210818112908.102205-1-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210817192629.12755-1-jziviani@suse.de>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 86.179.247.14
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v4] vga: don't abort when adding a duplicate isa-vga device
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.default.ilande.bv.iomart.io)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk;
- helo=mail.default.ilande.bv.iomart.io
-X-Spam_score_int: -38
-X-Spam_score: -3.9
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
 X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.961,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -55,65 +68,180 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Aug 2021 09:21:43 -0000
+X-List-Received-Date: Wed, 18 Aug 2021 11:29:23 -0000
 
-On 17/08/2021 20:26, Jose R. Ziviani wrote:
+Some of the removed CLI options have been added to the wrong section
+in the "Removed features" chapter - they've been put into the
+"Related binaries" section instead. Move them now into the correct
+"System emulator command line arguments" section.
 
-> If users try to add an isa-vga device that was already registered,
-> still in command line, qemu will crash:
-> 
-> $ qemu-system-mips64el -M pica61 -device isa-vga
-> RAMBlock "vga.vram" already registered, abort!
-> Aborted (core dumped)
-> 
-> That particular board registers the device automaticaly, so it's
-> not obvious that a VGA device already exists. This patch changes
-> this behavior by displaying a message and exiting without crashing.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/44
-> Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
-> ---
-> v3 to v4: Used object_resolve_path_type instead of qemu_ram_block_by_name
->            and copied the message from virgl, to give the same user exp.
-> v2 to v3: Improved error message
-> v1 to v2: Use error_setg instead of error_report
-> 
->   hw/display/vga-isa.c | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/hw/display/vga-isa.c b/hw/display/vga-isa.c
-> index 90851e730b..8cea84f2be 100644
-> --- a/hw/display/vga-isa.c
-> +++ b/hw/display/vga-isa.c
-> @@ -33,6 +33,7 @@
->   #include "hw/loader.h"
->   #include "hw/qdev-properties.h"
->   #include "qom/object.h"
-> +#include "qapi/error.h"
->   
->   #define TYPE_ISA_VGA "isa-vga"
->   OBJECT_DECLARE_SIMPLE_TYPE(ISAVGAState, ISA_VGA)
-> @@ -61,6 +62,15 @@ static void vga_isa_realizefn(DeviceState *dev, Error **errp)
->       MemoryRegion *vga_io_memory;
->       const MemoryRegionPortio *vga_ports, *vbe_ports;
->   
-> +    /*
-> +     * make sure this device is not being added twice, if so
-> +     * exit without crashing qemu
-> +     */
-> +    if (object_resolve_path_type("", TYPE_ISA_VGA, NULL)) {
-> +        error_setg(errp, "at most one %s device is permitted", TYPE_ISA_VGA);
-> +        return;
-> +    }
-> +
->       s->global_vmstate = true;
->       vga_common_init(s, OBJECT(dev));
->       s->legacy_address_space = isa_address_space(isadev);
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ docs/about/removed-features.rst | 137 ++++++++++++++------------------
+ 1 file changed, 61 insertions(+), 76 deletions(-)
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index cbfa1a8e31..032d68d141 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -146,12 +146,73 @@ Replaced by ``-rtc base=date``.
+ The "tls-creds" option should be used instead to point to a "tls-creds-x509"
+ object created using "-object".
+ 
++``-mem-path`` fallback to RAM (removed in 5.0)
++''''''''''''''''''''''''''''''''''''''''''''''
++
++If guest RAM allocation from file pointed by ``mem-path`` failed,
++QEMU was falling back to allocating from RAM, which might have resulted
++in unpredictable behavior since the backing file specified by the user
++as ignored. Currently, users are responsible for making sure the backing storage
++specified with ``-mem-path`` can actually provide the guest RAM configured with
++``-m`` and QEMU fails to start up if RAM allocation is unsuccessful.
++
+ ``-net ...,name=...`` (removed in 5.1)
+ ''''''''''''''''''''''''''''''''''''''
+ 
+ The ``name`` parameter of the ``-net`` option was a synonym
+ for the ``id`` parameter, which should now be used instead.
+ 
++``-numa node,mem=...`` (removed in 5.1)
++'''''''''''''''''''''''''''''''''''''''
++
++The parameter ``mem`` of ``-numa node`` was used to assign a part of guest RAM
++to a NUMA node. But when using it, it's impossible to manage a specified RAM
++chunk on the host side (like bind it to a host node, setting bind policy, ...),
++so the guest ends up with the fake NUMA configuration with suboptiomal
++performance.
++However since 2014 there is an alternative way to assign RAM to a NUMA node
++using parameter ``memdev``, which does the same as ``mem`` and adds
++means to actually manage node RAM on the host side. Use parameter ``memdev``
++with *memory-backend-ram* backend as replacement for parameter ``mem``
++to achieve the same fake NUMA effect or a properly configured
++*memory-backend-file* backend to actually benefit from NUMA configuration.
++New machine versions (since 5.1) will not accept the option but it will still
++work with old machine types. User can check the QAPI schema to see if the legacy
++option is supported by looking at MachineInfo::numa-mem-supported property.
++
++``-numa`` node (without memory specified) (removed 5.2)
++'''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++Splitting RAM by default between NUMA nodes had the same issues as ``mem``
++parameter with the difference that the role of the user plays QEMU using
++implicit generic or board specific splitting rule.
++Use ``memdev`` with *memory-backend-ram* backend or ``mem`` (if
++it's supported by used machine type) to define mapping explicitly instead.
++Users of existing VMs, wishing to preserve the same RAM distribution, should
++configure it explicitly using ``-numa node,memdev`` options. Current RAM
++distribution can be retrieved using HMP command ``info numa`` and if separate
++memory devices (pc|nv-dimm) are present use ``info memory-device`` and subtract
++device memory from output of ``info numa``.
++
++``-smp`` (invalid topologies) (removed 5.2)
++'''''''''''''''''''''''''''''''''''''''''''
++
++CPU topology properties should describe whole machine topology including
++possible CPUs.
++
++However, historically it was possible to start QEMU with an incorrect topology
++where *n* <= *sockets* * *cores* * *threads* < *maxcpus*,
++which could lead to an incorrect topology enumeration by the guest.
++Support for invalid topologies is removed, the user must ensure
++topologies described with -smp include all possible cpus, i.e.
++*sockets* * *cores* * *threads* = *maxcpus*.
++
++``-machine enforce-config-section=on|off`` (removed 5.2)
++''''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++The ``enforce-config-section`` property was replaced by the
++``-global migration.send-configuration={on|off}`` option.
++
+ ``-no-kvm`` (removed in 5.2)
+ ''''''''''''''''''''''''''''
+ 
+@@ -590,82 +651,6 @@ enforce that any failure to open the backing image (including if the
+ backing file is missing or an incorrect format was specified) is an
+ error when ``-u`` is not used.
+ 
+-Command line options
+---------------------
+-
+-``-smp`` (invalid topologies) (removed 5.2)
+-'''''''''''''''''''''''''''''''''''''''''''
+-
+-CPU topology properties should describe whole machine topology including
+-possible CPUs.
+-
+-However, historically it was possible to start QEMU with an incorrect topology
+-where *n* <= *sockets* * *cores* * *threads* < *maxcpus*,
+-which could lead to an incorrect topology enumeration by the guest.
+-Support for invalid topologies is removed, the user must ensure
+-topologies described with -smp include all possible cpus, i.e.
+-*sockets* * *cores* * *threads* = *maxcpus*.
+-
+-``-numa`` node (without memory specified) (removed 5.2)
+-'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+-
+-Splitting RAM by default between NUMA nodes had the same issues as ``mem``
+-parameter with the difference that the role of the user plays QEMU using
+-implicit generic or board specific splitting rule.
+-Use ``memdev`` with *memory-backend-ram* backend or ``mem`` (if
+-it's supported by used machine type) to define mapping explicitly instead.
+-Users of existing VMs, wishing to preserve the same RAM distribution, should
+-configure it explicitly using ``-numa node,memdev`` options. Current RAM
+-distribution can be retrieved using HMP command ``info numa`` and if separate
+-memory devices (pc|nv-dimm) are present use ``info memory-device`` and subtract
+-device memory from output of ``info numa``.
+-
+-``-numa node,mem=``\ *size* (removed in 5.1)
+-''''''''''''''''''''''''''''''''''''''''''''
+-
+-The parameter ``mem`` of ``-numa node`` was used to assign a part of
+-guest RAM to a NUMA node. But when using it, it's impossible to manage a specified
+-RAM chunk on the host side (like bind it to a host node, setting bind policy, ...),
+-so the guest ends up with the fake NUMA configuration with suboptiomal performance.
+-However since 2014 there is an alternative way to assign RAM to a NUMA node
+-using parameter ``memdev``, which does the same as ``mem`` and adds
+-means to actually manage node RAM on the host side. Use parameter ``memdev``
+-with *memory-backend-ram* backend as replacement for parameter ``mem``
+-to achieve the same fake NUMA effect or a properly configured
+-*memory-backend-file* backend to actually benefit from NUMA configuration.
+-New machine versions (since 5.1) will not accept the option but it will still
+-work with old machine types. User can check the QAPI schema to see if the legacy
+-option is supported by looking at MachineInfo::numa-mem-supported property.
+-
+-``-mem-path`` fallback to RAM (removed in 5.0)
+-''''''''''''''''''''''''''''''''''''''''''''''
+-
+-If guest RAM allocation from file pointed by ``mem-path`` failed,
+-QEMU was falling back to allocating from RAM, which might have resulted
+-in unpredictable behavior since the backing file specified by the user
+-as ignored. Currently, users are responsible for making sure the backing storage
+-specified with ``-mem-path`` can actually provide the guest RAM configured with
+-``-m`` and QEMU fails to start up if RAM allocation is unsuccessful.
+-
+-``-smp`` (invalid topologies) (removed 5.2)
+-'''''''''''''''''''''''''''''''''''''''''''
+-
+-CPU topology properties should describe whole machine topology including
+-possible CPUs.
+-
+-However, historically it was possible to start QEMU with an incorrect topology
+-where *n* <= *sockets* * *cores* * *threads* < *maxcpus*,
+-which could lead to an incorrect topology enumeration by the guest.
+-Support for invalid topologies is removed, the user must ensure
+-topologies described with -smp include all possible cpus, i.e.
+-*sockets* * *cores* * *threads* = *maxcpus*.
+-
+-``-machine enforce-config-section=on|off`` (removed 5.2)
+-''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+-
+-The ``enforce-config-section`` property was replaced by the
+-``-global migration.send-configuration={on|off}`` option.
+-
+ qemu-img amend to adjust backing file (removed in 6.1)
+ ''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ 
+-- 
+2.27.0
 
-
-ATB,
-
-Mark.
 
