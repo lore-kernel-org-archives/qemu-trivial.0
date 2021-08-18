@@ -1,56 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mGMNe-0004pF-Ms
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Aug 2021 10:17:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56472)
+	id 1mGMYH-0005h6-CX
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Aug 2021 10:28:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mGMNc-0004o5-Si; Wed, 18 Aug 2021 10:17:20 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:41579)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGMYG-0005fD-0H
+ for qemu-trivial@nongnu.org; Wed, 18 Aug 2021 10:28:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mGMNb-00082x-4r; Wed, 18 Aug 2021 10:17:20 -0400
-Received: from [192.168.100.1] ([82.142.22.194]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1McY0L-1mm7tP1yVZ-00cyrk; Wed, 18 Aug 2021 16:17:14 +0200
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mGMYE-0006Iv-Kd
+ for qemu-trivial@nongnu.org; Wed, 18 Aug 2021 10:28:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1629296897;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dSXUCoyCKzIPP6ljFNUFRGnS0EvH2cMhAXmcIjKh+ko=;
+ b=fuzJPEBtaTrp3ubDR2CoweP9EjM9HaChyLtHyKCJIzWOwNNJu2iayLii3r0bA7JS50ITsm
+ FNJ91N9YxsSB0xmY8rWtySqmi0/hdicsIpMlQeWpJXNzOj3Rk/v9GMLxi/s5B4WRma52hV
+ uL5Ao2cpQDMlSyn6JyDAA2slmo51Y5E=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-549-OnQdg7PoMFuCLoN6PIQOrQ-1; Wed, 18 Aug 2021 10:28:16 -0400
+X-MC-Unique: OnQdg7PoMFuCLoN6PIQOrQ-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ q4-20020a05600000c400b00156d811312aso648380wrx.3
+ for <qemu-trivial@nongnu.org>; Wed, 18 Aug 2021 07:28:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=dSXUCoyCKzIPP6ljFNUFRGnS0EvH2cMhAXmcIjKh+ko=;
+ b=Et+MVHF7oPyGkMBtCXTgPvh0Cn97DnpHpZcYJmquwHW5Se6QCm2N+iFexaKIOq9ANw
+ UmD6Kq0m4Rx9mHpPM5tsedb0vjkmutQkQUNTHFzBexZtjCnt2AmdTlJbbCWTWND0iSau
+ bl/Xz3FztbneFPw3YbrknP2FwCEwGRCmRXEv0mpSKWcp6ZcwacDhxi66vQTwr95M3LF+
+ boPhMU4KhPxQKr2225WVvqCdc4LxKHBEWp0NIxiCrlQCQkKAMl1WjZVoC9K+O5vTfvE1
+ ph5ej1m0PaR2TiJJc4gtBaJR6Iu9obOX0kBvkOcpzABnrgKex0jGu/pS0CoSDqBe0yWe
+ xKqQ==
+X-Gm-Message-State: AOAM531S2HQbNrn7vZ5mhD2ig0Z88QlNgEc2RMg1pqP+tfnKI0PLXN9m
+ pC00tAVLnGvsweB/SY4fLEsbuo4mg9EkN4Y4+Rzddeu8Vl4Vq0+QvUAF8uvzAECaiS+gbGG2fKB
+ nYfbu0gBrcfDeAsDMltExyfCPb4QQRbaFcDPAN5gUm+/gFZCZq4/nfwPJZIuXtNQsu/8=
+X-Received: by 2002:adf:f282:: with SMTP id k2mr10974783wro.255.1629296895187; 
+ Wed, 18 Aug 2021 07:28:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRv8Bt+bAZyvlP2N4p0f+6mOMoLMR439hsg5HQbwoGZNTt+C+T6XI4P2VrtoPLNNyz4zXj9A==
+X-Received: by 2002:adf:f282:: with SMTP id k2mr10974763wro.255.1629296895008; 
+ Wed, 18 Aug 2021 07:28:15 -0700 (PDT)
+Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
+ [83.52.55.163])
+ by smtp.gmail.com with ESMTPSA id a3sm6165682wrx.38.2021.08.18.07.28.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Aug 2021 07:28:14 -0700 (PDT)
 Subject: Re: [PATCH, trivial, for-6.1] spelling: sytem => system
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
 References: <fefb5f5c-82bc-05e2-b4c1-665e9d6896ff@msgid.tls.msk.ru>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <6d820930-1d67-bcb3-b7c8-29cf140cc448@vivier.eu>
-Date: Wed, 18 Aug 2021 16:17:13 +0200
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <931a2977-58ea-5e70-abf7-781ed75f80e3@redhat.com>
+Date: Wed, 18 Aug 2021 16:28:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
 In-Reply-To: <fefb5f5c-82bc-05e2-b4c1-665e9d6896ff@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:x4jjWLPUn//yeQpSYL6y9TxLKd22wAMoM1ZxjU/O583r9jLFYBR
- kGVU2oHi4aCHbeHh25FkVZr+DInVQTGw5G2I4eJtbKByDcbIllaHrvpainC97+JIX2dZBBN
- HAb+7CGTMFw7GM4gINU8ywPoUcmJtAmDZDXy+B/3xs36ugRX0Uzw3CciUh9B/9e849U512a
- 4ONrey3zIyd7n89r/OajQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:81RcKoN2G8M=:WR2b6Q6zohz8xog/1LHPqu
- mDlhdy6xoh1GcluGhf6ZYMhgDmGQeSJF7l4Qaso3jZRNYUn1QhNkjFzxu2kZcF/BIGJif3tu2
- s6Q6IhVZzohbAAxGP0v7+OQR/O78HFRkmgB4nJ2n3mG/n0rEopIXM7AREYXj3sqsswu9zOJIz
- 3AP38JR4TeGtnddmmODGGP703mSUaWHXvg2E7LfH5DPwuTbI2DuiZWzJm5/2jY5aYBFZGMGDG
- h61y58emGl3yE55P24Ccgb26jpBXgrnB9NWq+X1Nb00UtntP5Hwdc6K+tDujRzmcH+nElADrn
- hE5+kKEJmV2zCWD+USgW8odY1xc5aavxG5AKxyf3fXakkqNOts7o7HgUkDuJpwflw011CVCiv
- uiSMWpUH4MQ38LNgdS0zkKl3DEG4GGTCq7gpENoggIEy9eu2R4ta2NZJUYh6KZN5/22r4yrj1
- jy6hEeZGl6vtvtTdRRhcSn3YQr2G2aGfgHCc36ck77Vy/dCTAtP5kas4vQlWY8Wc20AaTS9fv
- VYlnb3NrTXywNkKT7ToS/TeNlNURLiXnKPtedK0+ikNXQjyqUZqGTa6fqqi3F9pZWN0ShJSud
- UugIcTtudj6TXWOJaBTC5mdBnbZPgrwR+Nk36ZanQGTnifca6u5TzyP0Kz/qKgRevnf52Fy1n
- 3zMb1RSHIIVv1R/OeMbWWzWU7dbUly24kmHBGlVaFbCrVQerLo//4pjUEQI+76inrpOPxR+rX
- wV+GidpAGfUlNb1R7RsCCeT9idH3seBTQ+p1xv/uOpwH+C+rmTs9z0NJGAUQrn599imYUv5bJ
- m1TPBD8YNzymLn/FTgaNQazoj0qq8TB/owM2FCHusOZgy1/cc9FvSZ5TSQIgO+qzsJKfQmg
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.961,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -54
+X-Spam_score: -5.5
+X-Spam_bar: -----
+X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.961, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,57 +90,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Aug 2021 14:17:21 -0000
+X-List-Received-Date: Wed, 18 Aug 2021 14:28:20 -0000
 
-Le 18/08/2021 à 16:06, Michael Tokarev a écrit :
+On 8/18/21 4:06 PM, Michael Tokarev wrote:
 > Signed-off-By: Michael Tokarev <mjt@tls.msk.ru>
 > ---
 > It is safe for 6.1
+
+But too late ;)
+
 > 
 >  block/file-posix.c              | 2 +-
 >  tools/virtiofsd/fuse_lowlevel.h | 4 ++--
 >  2 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/block/file-posix.c b/block/file-posix.c
-> index cb9bffe047..1854bfa397 100644
-> --- a/block/file-posix.c
-> +++ b/block/file-posix.c
-> @@ -1705,7 +1705,7 @@ static int handle_aiocb_write_zeroes(void *opaque)
->               */
->              warn_report_once("Your file system is misbehaving: "
->                               "fallocate(FALLOC_FL_PUNCH_HOLE) returned EINVAL. "
-> -                             "Please report this bug to your file sytem "
-> +                             "Please report this bug to your file system "
->                               "vendor.");
->          } else if (ret != -ENOTSUP) {
->              return ret;
-> diff --git a/tools/virtiofsd/fuse_lowlevel.h b/tools/virtiofsd/fuse_lowlevel.h
-> index 4b4e8c9724..c55c0ca2fc 100644
-> --- a/tools/virtiofsd/fuse_lowlevel.h
-> +++ b/tools/virtiofsd/fuse_lowlevel.h
-> @@ -1603,7 +1603,7 @@ int fuse_lowlevel_notify_inval_inode(struct fuse_session *se, fuse_ino_t ino,
->   * parent/name
->   *
->   * To avoid a deadlock this function must not be called in the
-> - * execution path of a related filesytem operation or within any code
-> + * execution path of a related filesystem operation or within any code
->   * that could hold a lock that could be needed to execute such an
->   * operation. As of kernel 4.18, a "related operation" is a lookup(),
->   * symlink(), mknod(), mkdir(), unlink(), rename(), link() or create()
-> @@ -1636,7 +1636,7 @@ int fuse_lowlevel_notify_inval_entry(struct fuse_session *se, fuse_ino_t parent,
->   * that the dentry has been deleted.
->   *
->   * To avoid a deadlock this function must not be called while
-> - * executing a related filesytem operation or while holding a lock
-> + * executing a related filesystem operation or while holding a lock
->   * that could be needed to execute such an operation (see the
->   * description of fuse_lowlevel_notify_inval_entry() for more
->   * details).
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-I think it's a bit late for 6.1... even if it's safe, it's not really critical and can wait.
-
-Thanks,
-Laurent
 
