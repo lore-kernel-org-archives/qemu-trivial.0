@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mHnka-00061b-MK
-	for mharc-qemu-trivial@gnu.org; Sun, 22 Aug 2021 09:43:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56952)
+	id 1mItmx-0003oa-TN
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Aug 2021 10:22:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mrom06@ya.ru>)
- id 1mHm30-0006HT-Gl; Sun, 22 Aug 2021 07:53:54 -0400
-Received: from forward102j.mail.yandex.net ([5.45.198.243]:52970)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mItmw-0003mi-6p
+ for qemu-trivial@nongnu.org; Wed, 25 Aug 2021 10:21:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39706)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mrom06@ya.ru>)
- id 1mHm2x-0004Fx-8g; Sun, 22 Aug 2021 07:53:54 -0400
-Received: from forward103q.mail.yandex.net (forward103q.mail.yandex.net
- [IPv6:2a02:6b8:c0e:50:0:640:b21c:d009])
- by forward102j.mail.yandex.net (Yandex) with ESMTP id 921BA4BE74CB;
- Sun, 22 Aug 2021 14:53:43 +0300 (MSK)
-Received: from vla1-bf865e4901fb.qloud-c.yandex.net
- (vla1-bf865e4901fb.qloud-c.yandex.net
- [IPv6:2a02:6b8:c0d:c86:0:640:bf86:5e49])
- by forward103q.mail.yandex.net (Yandex) with ESMTP id 8D19561E0002;
- Sun, 22 Aug 2021 14:53:43 +0300 (MSK)
-Received: from vla3-178a3f795968.qloud-c.yandex.net
- (vla3-178a3f795968.qloud-c.yandex.net [2a02:6b8:c15:2584:0:640:178a:3f79])
- by vla1-bf865e4901fb.qloud-c.yandex.net (mxback/Yandex) with ESMTP id
- 3jhBV2GEkk-rhIa9g7x; Sun, 22 Aug 2021 14:53:43 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ya.ru; s=mail;
- t=1629633223; bh=XPBTUXwtFpOmZpipx+mQxl2NFKDM8fkFSf/c/YGP4ko=;
- h=Message-ID:Date:Subject:To:From;
- b=Ba8/hmge+15zGzf696ulDOZGmCGOanU+Ao+IHqhtn/yUu6eOzWC2Ta4L2yZwNLvBY
- wEQUMOIBQhOQhrcqcPfRNAemWedbwKsQEpWLxVXJOYm65T+WTQJsyXcsKfiFrR9Ul0
- ENEScp/BKPkYqCN9VEGUpp2V+3tKbZ67sIU+fJ/8=
-Authentication-Results: vla1-bf865e4901fb.qloud-c.yandex.net;
- dkim=pass header.i=@ya.ru
-Received: by vla3-178a3f795968.qloud-c.yandex.net (smtp/Yandex) with ESMTPSA
- id 2apwDxZqGf-rgMaBMC3; Sun, 22 Aug 2021 14:53:42 +0300
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
- (Client certificate not present)
-From: Max <mrom06@ya.ru>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH] virtio-vga,
- stubs: Fix qemu failing on virio-vga with blobs on when qemu compiled
- with modules enabled
-Date: Sun, 22 Aug 2021 14:53:41 +0300
-Message-ID: <2325716.RMfIIZ1vQW@max>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mItmu-0006sc-Ec
+ for qemu-trivial@nongnu.org; Wed, 25 Aug 2021 10:21:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1629901315;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=TvGnJPU5Wbb8imQqQOMANo/AZ0oxg9H9ViHFBV4SBG0=;
+ b=LbbIOxjE66u41YdpPVnb50YyHh2tagzF7Whb+t6lLWElpNTmUtPmYNL5/GXkoalPEUjhSC
+ TO14mLQVZn+Te7v+Wk7S1BazwJftfZ9IfMrX4fqYnjgGAoxTrecGr5YVeYr8rk58twAfj9
+ Bj5buoRrAWKtTayLJiKo98qChN6WYO0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-447-SugC2KifPgqlCIkMrqTgyg-1; Wed, 25 Aug 2021 10:21:49 -0400
+X-MC-Unique: SugC2KifPgqlCIkMrqTgyg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 249CE801E72;
+ Wed, 25 Aug 2021 14:21:48 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.111])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6DB3C3CC7;
+ Wed, 25 Aug 2021 14:21:47 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] scripts: Remove the "show-fixed-bugs.sh" file
+Date: Wed, 25 Aug 2021 16:21:43 +0200
+Message-Id: <20210825142143.142037-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-Received-SPF: pass client-ip=5.45.198.243; envelope-from=mrom06@ya.ru;
- helo=forward102j.mail.yandex.net
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.745,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 22 Aug 2021 09:42:58 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,35 +66,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 Aug 2021 11:53:54 -0000
+X-List-Received-Date: Wed, 25 Aug 2021 14:21:58 -0000
 
-From f972dab518c6581a83f397c35b3d09b2ef6de674 Mon Sep 17 00:00:00 2001
-From: max <mrom06@ya.ru>
-Date: Sun, 22 Aug 2021 14:02:48 +0300
-Subject: [PATCH] virtio-vga, stubs: Fix qemu failing on virio-vga with blobs on when qemu compiled with modules enabled
+Since we are not using Launchpad anymore, there is no more need for
+this script.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/553
-Signed-off-by: max <mrom06@ya.ru>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- stubs/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ scripts/show-fixed-bugs.sh | 91 --------------------------------------
+ 1 file changed, 91 deletions(-)
+ delete mode 100755 scripts/show-fixed-bugs.sh
 
-diff --git a/stubs/meson.build b/stubs/meson.build
-index d3fa864..beb737f 100644
---- a/stubs/meson.build
-+++ b/stubs/meson.build
-@@ -53,7 +53,7 @@ if have_system
-   stub_ss.add(files('semihost.c'))
-   stub_ss.add(files('usb-dev-stub.c'))
-   stub_ss.add(files('xen-hw-stub.c'))
--  stub_ss.add(files('virtio-gpu-udmabuf.c'))
-+  stub_ss.add(when: 'CONFIG_LINUX', if_false: files('virtio-gpu-udmabuf.c'))
- else
-   stub_ss.add(files('qdev.c'))
- endif
+diff --git a/scripts/show-fixed-bugs.sh b/scripts/show-fixed-bugs.sh
+deleted file mode 100755
+index a095a4d6ba..0000000000
+--- a/scripts/show-fixed-bugs.sh
++++ /dev/null
+@@ -1,91 +0,0 @@
+-#!/bin/sh
+-
+-# This script checks the git log for URLs to the QEMU launchpad bugtracker
+-# and optionally checks whether the corresponding bugs are not closed yet.
+-
+-show_help () {
+-    echo "Usage:"
+-    echo "  -s <commit>  : Start searching at this commit"
+-    echo "  -e <commit>  : End searching at this commit"
+-    echo "  -c           : Check if bugs are still open"
+-    echo "  -b           : Open bugs in browser"
+-}
+-
+-while getopts "s:e:cbh" opt; do
+-   case "$opt" in
+-    s)  start="$OPTARG" ;;
+-    e)  end="$OPTARG" ;;
+-    c)  check_if_open=1 ;;
+-    b)  show_in_browser=1 ;;
+-    h)  show_help ; exit 0 ;;
+-    *)   echo "Use -h for help." ; exit 1 ;;
+-   esac
+-done
+-
+-if [ "x$start" = "x" ]; then
+-    start=$(git tag -l 'v[0-9]*\.[0-9]*\.0' | tail -n 2 | head -n 1)
+-fi
+-if [ "x$end" = "x" ]; then
+-    end=$(git tag -l  'v[0-9]*\.[0-9]*\.0' | tail -n 1)
+-fi
+-
+-if [ "x$start" = "x" ] || [ "x$end" = "x" ]; then
+-    echo "Could not determine start or end revision ... Please note that this"
+-    echo "script must be run from a checked out git repository of QEMU."
+-    exit 1
+-fi
+-
+-echo "Searching git log for bugs in the range $start..$end"
+-
+-urlstr='https://bugs.launchpad.net/\(bugs\|qemu/+bug\)/'
+-bug_urls=$(git log $start..$end \
+-  | sed -n '\,'"$urlstr"', s,\(.*\)\('"$urlstr"'\)\([0-9]*\).*,\2\4,p' \
+-  | sort -u)
+-
+-echo Found bug URLs:
+-for i in $bug_urls ; do echo " $i" ; done
+-
+-if [ "x$check_if_open" = "x1" ]; then
+-    echo
+-    echo "Checking which ones are still open..."
+-    for i in $bug_urls ; do
+-        if ! curl -s -L "$i" | grep "value status" | grep -q "Fix Released" ; then
+-            echo " $i"
+-            final_bug_urls="$final_bug_urls $i"
+-        fi
+-    done
+-else
+-    final_bug_urls=$bug_urls
+-fi
+-
+-if [ "x$final_bug_urls" = "x" ]; then
+-    echo "No open bugs found."
+-elif [ "x$show_in_browser" = "x1" ]; then
+-    # Try to determine which browser we should use
+-    if [ "x$BROWSER" != "x" ]; then
+-        bugbrowser="$BROWSER"
+-    elif command -v xdg-open >/dev/null 2>&1; then
+-        bugbrowser=xdg-open
+-    elif command -v gnome-open >/dev/null 2>&1; then
+-        bugbrowser=gnome-open
+-    elif [ "$(uname)" = "Darwin" ]; then
+-        bugbrowser=open
+-    elif command -v sensible-browser >/dev/null 2>&1; then
+-        bugbrowser=sensible-browser
+-    else
+-        echo "Please set the BROWSER variable to the browser of your choice."
+-        exit 1
+-    fi
+-    # Now show the bugs in the browser
+-    first=1
+-    for i in $final_bug_urls; do
+-        "$bugbrowser" "$i"
+-        if [ $first = 1 ]; then
+-            # if it is the first entry, give the browser some time to start
+-            # (to avoid messages like "Firefox is already running, but is
+-            # not responding...")
+-            sleep 4
+-            first=0
+-        fi
+-    done
+-fi
 -- 
-2.32.0
-
-
+2.27.0
 
 
