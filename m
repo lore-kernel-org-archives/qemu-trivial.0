@@ -1,55 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mIwgB-0001ZM-8P
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Aug 2021 13:27:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50606)
+	id 1mKRHW-0001D1-Ko
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Aug 2021 16:19:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mIwg9-0001Z0-V5; Wed, 25 Aug 2021 13:27:09 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:50821)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mIwg7-0001Xx-AS; Wed, 25 Aug 2021 13:27:09 -0400
-Received: from [192.168.100.1] ([82.142.22.194]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MUXlG-1mRdp616Dg-00QOu0; Wed, 25 Aug 2021 19:27:00 +0200
-Subject: Re: [PATCH] scripts: Remove the "show-fixed-bugs.sh" file
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20210825142143.142037-1-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <34fc4f09-2831-f6e8-1b70-40d39b3eb835@vivier.eu>
-Date: Wed, 25 Aug 2021 19:26:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <johannes.stoelp@googlemail.com>)
+ id 1mKRHV-0001CN-4t; Sun, 29 Aug 2021 16:19:53 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:38520)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <johannes.stoelp@googlemail.com>)
+ id 1mKRHT-0008Bu-Hy; Sun, 29 Aug 2021 16:19:52 -0400
+Received: by mail-wr1-x434.google.com with SMTP id u16so19410406wrn.5;
+ Sun, 29 Aug 2021 13:19:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=googlemail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=TRzehENWVenwx+2eKZxeEkedInooacXD9R1T/qNf11Y=;
+ b=Z2M2pOksye6DjLu4vMdJMBtb4FWz8FzyM170jG7p0No2Qj3MU/KCNRs0B1kAIqGX2i
+ ryRXtiigS0fopL21BWMxcz/rfA8a5yK+oKGKzhbNIxLZh/X2HsLoRAf0pPYDzM/fpXJc
+ 7SLo+2DlahJ1FRaFGiU7Kcnsqt0q9Wl/LLf8D9I3z2rybSGUe6eYkpmuKW3RYHPT56GU
+ SUURMNyX8SUM4IoJvWuhpE7ba+szWc1b2Mq3AlS965L2YUMXZMPhmxtwFo21322U6zLe
+ ue+ABs0wzBUcMqS5AgXHEb322BHBUM/DbrgYi81fJXG4pJKzps4iEaM7A1IA/0smfgmr
+ fIjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=TRzehENWVenwx+2eKZxeEkedInooacXD9R1T/qNf11Y=;
+ b=NaH7+/hADhSPfdo2CMkLZtNAeUITcvBEKxRAkxtDueUjSLKpPxpQcfksv04mSmfopR
+ PammV4/rvPr0RU8OaNI1XbdZ//6oSitA0nxNqWQWoNvPF0h8VFdWLhMtFrrWrQk5Xp3W
+ /TVJCIoD3QTsnqBjBVzIXUfEoQ1sVy/N+WdsxyIprFllLzeoN35Otqh1T3qL+S1ET5MH
+ VwKSIrkpUvdKrQCXkS3QBzqv4EIr7FodfNha6gtQbMaE2AtwIiOzR5ek2EdW8cdlBJP8
+ 870bKEw9zMyCbgfADgRljLBcqNGDFhUh40ma3Ns8EEacGtQoVcWeV5D3X5Uy0Qq48neV
+ rLrA==
+X-Gm-Message-State: AOAM5311jLzqtD/mWMzupQl3vBqD8LBezr2CimSCqvvTqhQZsWdQQmK9
+ qEh6tKOCFpyruDL2w+KenIit9lrMKJw=
+X-Google-Smtp-Source: ABdhPJwmyRIx0oHvXvZwZoCNkGlVDoHbHBRfwKJstqWCXakOlZHYB0hnrgPEr2yafHvzCvk761TV0A==
+X-Received: by 2002:adf:914e:: with SMTP id j72mr22712523wrj.218.1630268387517; 
+ Sun, 29 Aug 2021 13:19:47 -0700 (PDT)
+Received: from endor.speedport.ip
+ (p200300c21707a48b7f3f1b0e18124d09.dip0.t-ipconnect.de.
+ [2003:c2:1707:a48b:7f3f:1b0e:1812:4d09])
+ by smtp.gmail.com with ESMTPSA id x18sm13326817wrw.19.2021.08.29.13.19.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 29 Aug 2021 13:19:47 -0700 (PDT)
+From: Johannes Stoelp <johannes.stoelp@googlemail.com>
+X-Google-Original-From: Johannes Stoelp <johannes.stoelp@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: johannes.stoelp@gmail.com,
+	qemu-trivial@nongnu.org
+Subject: [PATCH v0] kvm: unsigned datatype in ioctl wrapper
+Date: Sun, 29 Aug 2021 22:19:29 +0200
+Message-Id: <20210829201929.79931-1-johannes.stoelp@gmail.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20210813173923.49278-1-johannes.stoelp@gmail.com>
+References: <20210813173923.49278-1-johannes.stoelp@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210825142143.142037-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9Ef0TtPlGYDv9Dyc4AWycbXgVJXXuGN8ftQ28fjcvwKATTAiqip
- BrrPqzY+ynL13yHBy/dVZIsv5LhxKw6j3bYSfLD1mxePbKkbroj5j4bVYkoxEndgabnJtxU
- D1VrvMuu4fKqC3mbK5RdlnlIfMcq5b0KwS5xKgjPQUsxNUJhRGQ6x7aty7gKEuYc2bajz1M
- nLWx5FaGvftbXJCmXW7tw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:T6RuxkfUJDE=:tjv6JN797TnUc4tclBIDFy
- sd4kqp3xe5kpyFgS4tpoJLiVIN7hrm/01zkNR8BV1WXFx8z/qFIzwhaD8ypEM1kPJU7xITKe3
- lCcNCxprX9QO8yLAHfUSdp2j2b2fu8WrOZWU434rpcgdFogDkCLEBErnzkwpCaPy+v7jX4bpH
- 6VAe+TDbLVyXtMU6HBYuP1WnilUArMSZwECRC401CWxXvzBtCec+nkegEIZY91JcYCyuu7Xrg
- cJ3QykiAx3n+9/speufd7S3otUlX17MZzah7F0+hBYVBL3RNozWK6ctty70Uou/jY/GIvpM5c
- ZhvHUVhF5MjZzAF5sy1THHPGSlyB2nUqGy2W2qa9jOv/A7AMCKTGQoinbZ25rLMiubwgFdJjd
- Q706OMfRETg5KErtSpQj2edRZI9wafckiZvN3nBBoLnwHFqVvm3nNoPAHs0eGuh76WrSUD6ZG
- CGzE8kWRXgEwV8IYbh1D86RG9dmZtTiKeBHU2RaJbNOqU+6yT5OWyaafQ/NSXdyz1GEuTASBg
- ncfj2mykmdw2prhVHvIky19Nwp39xY6DSZP7qrmzD2duZdpkaDerJIQkeDVChZgbU/T2JWM8S
- QRBqcDfNhXwoDqoY2jhxQPVTgKH6X/WIep5BiBYlixq0QpTv0Uv+nTufkUEOl2ki0cR7pkqpI
- zsgx6hvDBfQE9QuokPn0JakRPBDx2ollOLQmfdGSX81fB8ckD8N0/Qxsd6lX9nlVEwFA2LdKY
- icjO7ynmCXOvj9oeq7k42Sm2OOhtXOCFWjtrLA==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.24,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=johannes.stoelp@googlemail.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,19 +78,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Aug 2021 17:27:10 -0000
+X-List-Received-Date: Sun, 29 Aug 2021 20:19:53 -0000
 
-Le 25/08/2021 à 16:21, Thomas Huth a écrit :
-> Since we are not using Launchpad anymore, there is no more need for
-> this script.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  scripts/show-fixed-bugs.sh | 91 --------------------------------------
->  1 file changed, 91 deletions(-)
->  delete mode 100755 scripts/show-fixed-bugs.sh
-> 
+From: johannst <johannes.stoelp@gmail.com>
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Ping.
 
+https://patchew.org/QEMU/20210805193950.514357-1-johannes.stoelp@gmail.com/
+https://lore.kernel.org/qemu-devel/20210805193950.514357-1-johannes.stoelp@gmail.com/
+
+Thanks and best,
+Johannes
 
