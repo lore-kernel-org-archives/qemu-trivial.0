@@ -1,88 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mKhQe-0007Jr-Fe
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Aug 2021 09:34:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38934)
+	id 1mKjVI-0001eb-W8
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Aug 2021 11:47:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mKhQc-0007DV-85
- for qemu-trivial@nongnu.org; Mon, 30 Aug 2021 09:34:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:59926)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1mKjVH-0001cG-VR
+ for qemu-trivial@nongnu.org; Mon, 30 Aug 2021 11:47:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21051)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mKhQZ-0005KG-Ml
- for qemu-trivial@nongnu.org; Mon, 30 Aug 2021 09:34:22 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1mKjVE-00079M-NA
+ for qemu-trivial@nongnu.org; Mon, 30 Aug 2021 11:47:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1630330459;
+ s=mimecast20190719; t=1630338435;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Wh/Wb7lDYrsB480QD+uiafhPjZ+ojkQP+l82wGeNBlQ=;
- b=XGtK37/CNm2kHaQJUIdd7E94Ofc8MyGtFwHLVjEMwhsLTvhxlInEV3f/0xqclCfQGsw8Ah
- de2x4i0Q2ykujs/HFQneDSLxNrgVbMeCvStmk2A38/9qvVItzO+p4UI8DOk6D6P74rpqQu
- WicjOmjVyIGTMEIDAqfFrKutzNEJ324=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-448--z3sMxXfNweD66cjPEPGiw-1; Mon, 30 Aug 2021 09:34:17 -0400
-X-MC-Unique: -z3sMxXfNweD66cjPEPGiw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- k8-20020a5d5248000000b00157b9110fb5so521274wrc.11
- for <qemu-trivial@nongnu.org>; Mon, 30 Aug 2021 06:34:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Wh/Wb7lDYrsB480QD+uiafhPjZ+ojkQP+l82wGeNBlQ=;
- b=rvlqFklSkcMYubGpMu5NNetJU5O34ZXHA3pV5Q0MNRIuQyI5Zo5/44FSrH/Sv8dTFo
- KwcrHSYKBI3QR44M+jTSasKaLUqHnok2oKiJKsVBgKzjpoM/qUg+dvBCW1VdcnBs788d
- G7NAstJPU8gTS31kxg3hsVYjDlJSMcRtyfy+Rb9IQtQrslRmdTwYaJyMlvlff98sT7EB
- m+gBjHtm+RetjM8nfsIeQK0GTnD4aKH7VJTdRcpDd9xpQbpODqZDaZVfcXfuVRtVHZzu
- 4v+a4V+EtB/ls+ESGxMh+UXMDa4lmLC+0HATZUsQCuXsQZGe2npYX4SADFjlmXKUK2DB
- 0sIA==
-X-Gm-Message-State: AOAM532YHnc7RmV+H1KAfp2xz2XzMStKNLz6d0stUw1m95IuEMCM8NSz
- FM+INdqXS6rAZF6oX/rWtUL6ZM0N2gCHTOfiXV667HJC95cfrZH7dhu3Qcdf7+gSeDP7ftYVNVH
- BMTkC+LscSZI/cFP1SA==
-X-Received: by 2002:a7b:c255:: with SMTP id b21mr21913974wmj.44.1630330455969; 
- Mon, 30 Aug 2021 06:34:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVE5fIMGzamf55JNoBom1vxmno2N9dQIjkbRycK6I4MUDAxLpbomXjAkRkLZ5fq3ZEAjP2Tg==
-X-Received: by 2002:a7b:c255:: with SMTP id b21mr21913963wmj.44.1630330455839; 
- Mon, 30 Aug 2021 06:34:15 -0700 (PDT)
-Received: from [192.168.1.36] (163.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.163])
- by smtp.gmail.com with ESMTPSA id m3sm19652152wrg.45.2021.08.30.06.34.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Aug 2021 06:34:15 -0700 (PDT)
-Subject: Re: [PATCH 2/2] docs: add definitions of terms for CI/testing
-To: Willian Rampazzo <willianr@redhat.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>
-References: <20210820210946.291335-1-willianr@redhat.com>
- <20210820210946.291335-3-willianr@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <66629452-44dd-865e-1912-c6d89fbf202a@redhat.com>
-Date: Mon, 30 Aug 2021 15:34:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ bh=Cuetmihm1yANF0z2LYB1AEnlbKR2U+z84xNMqbhOC7I=;
+ b=VJjOLnoNT8EnbwRmqmS8MNVjWbKysNlRj/3E15IT8Qs4V0qYA7iJYzJzgVbX/iJf8HEK1B
+ S2kxTZ0u9gdoY/v0T9HStCnoJCA8PZy90ZgueZ6T0t5ksSwC7YIlg1tveG+7vEtlv9gHjb
+ p5d7DPVBjVMrQfum91LOczrrmoRX4PA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-525-7Uwe9vDjOnmsq9mbcBExBw-1; Mon, 30 Aug 2021 11:47:12 -0400
+X-MC-Unique: 7Uwe9vDjOnmsq9mbcBExBw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D67E22E77;
+ Mon, 30 Aug 2021 15:47:10 +0000 (UTC)
+Received: from redhat.com (ovpn-113-81.phx2.redhat.com [10.3.113.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 639936A900;
+ Mon, 30 Aug 2021 15:47:10 +0000 (UTC)
+Date: Mon, 30 Aug 2021 10:47:08 -0500
+From: Eric Blake <eblake@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: johannst <johannes.stoelp@googlemail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ johannst <johannes.stoelp@gmail.com>
+Subject: Re: [PATCH v0] kvm: unsigned datatype in ioctl wrapper
+Message-ID: <20210830154708.ah27fh34q5dgg3le@redhat.com>
+References: <20210805193950.514357-1-johannes.stoelp@gmail.com>
+ <CAFEAcA8TRQdj33Ycm=XzmuUUNApaXVgeDexfS+3Ycg6kLnpmyg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210820210946.291335-3-willianr@redhat.com>
+In-Reply-To: <CAFEAcA8TRQdj33Ycm=XzmuUUNApaXVgeDexfS+3Ycg6kLnpmyg@mail.gmail.com>
+User-Agent: NeoMutt/20210205-739-420e15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.932, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -95,27 +73,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Aug 2021 13:34:22 -0000
+X-List-Received-Date: Mon, 30 Aug 2021 15:47:20 -0000
 
-On 8/20/21 11:09 PM, Willian Rampazzo wrote:
-> To understand the current state of QEMU CI/testing and have a base to
-> discuss the plans for the future, it is important to define some usual
-> terms. This patch defines the terms for "Automated tests", "Unit
-> testing", "Functional testing", "System testing", "Flaky tests",
-> "Gating", and "Continuous Integration".
+On Sun, Aug 29, 2021 at 10:09:19PM +0100, Peter Maydell wrote:
+> On Thu, 5 Aug 2021 at 21:34, johannst <johannes.stoelp@googlemail.com> wrote:
+> >
+> > Dear all,
+> >
+> > in my opinion the `type` argument in the kvm ioctl wrappers should be of
+> > type unsigned. Please correct me if I am wrong.
 > 
-> The first patch was borrowed from
-> 20210812180403.4129067-1-berrange@redhat.com.
+> (Ccing Eric as our resident POSIX expert.)
+> 
+> > Due to the same reason as explained in the comment on the
+> > `irq_set_ioctl` field in `struct KVMState` (accel/kvm/kvm-all.c),
+> > the kvm ioctl wrapper should take `type` as an unsigned.
+> 
+> The reason in that comment:
+>     /* The man page (and posix) say ioctl numbers are signed int, but
+>      * they're not.  Linux, glibc and *BSD all treat ioctl numbers as
+>      * unsigned, and treating them as signed here can break things */
+> 
+> It would be more helpful to readers to state the reason directly
+> in the commit message, rather than requiring them to go and look
+> up a comment in some other file.
+> 
+> (That comment, incidentally, seems to be no longer completely
+> true: on my system the ioctl manpage says 'unsigned long', though
+> the glibc info docs say 'int', in contradiction to the ioctl.h
+> glibc actually ships...)
 
-^ These 2 lines belong to the cover and are irrelevant in this context.
+POSIX says of ioctl:
+https://pubs.opengroup.org/onlinepubs/9699919799/functions/ioctl.html
+ int ioctl(int fildes, int request, ... /* arg */);
 
-Cc'ing qemu-trivial@ otherwise (patch reviewed).
+But the standardization of ioctl() is extremely limited: POSIX only
+uses it for the now-deprecated STREAMS option (basically it was
+supposed to be the next-generation pty interface, but it never really
+caught on; Solaris supported it, but I don't think Linux ever has).
+And qemu doesn't really care about the STREAMS option; so our real
+source of authority for how ioctl behaves is not POSIX, but the
+kernel.
 
-> Signed-off-by: Willian Rampazzo <willianr@redhat.com>
-> ---
->  docs/devel/ci-definitions.rst | 121 ++++++++++++++++++++++++++++++++++
->  docs/devel/ci.rst             |   1 +
->  2 files changed, 122 insertions(+)
->  create mode 100644 docs/devel/ci-definitions.rst
+The fact that glibc uses unsigned long rather than int for the second
+argument is a strong argument in favor of using an unsigned type (on
+64-bit platforms, the kernel really is looking at 64 bits, even though
+POSIX says we are only passing in 32, and sign-extension is wrong),
+but on the other hand, I don't know if any ioctl requests CAN be sign
+extended (ideally, no ioctl request has bit 0x80000000 set, so that it
+doesn't matter if the userspace code was calling via a signed or
+unsigned type, or via the 32-bit POSIX signature instead of the actual
+kernel 'unsigned long' signature).
+
+> 
+> Of the various KVM_* ioctls we use via these functions, do
+> any actually have values that would result in invalid sign
+> extension here ? That is, is this fixing an existing bug, or is
+> it merely avoiding a potential future bug?
+
+My question as well.  If there is such a bug, calling it out in the
+commit message is essential; if the bug is just theoretical,
+mentioning that is still useful.
+
+> 
+> > Signed-off-by: johannst <johannes.stoelp@gmail.com>
+> > ---
+> >  accel/kvm/kvm-all.c    | 8 ++++----
+> >  accel/kvm/trace-events | 8 ++++----
+> >  include/sysemu/kvm.h   | 8 ++++----
+> >  3 files changed, 12 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> > index 0125c17edb..45cd6edce3 100644
+> > --- a/accel/kvm/kvm-all.c
+> > +++ b/accel/kvm/kvm-all.c
+> > @@ -2967,7 +2967,7 @@ int kvm_cpu_exec(CPUState *cpu)
+> >      return ret;
+> >  }
+> >
+> > -int kvm_ioctl(KVMState *s, int type, ...)
+> > +int kvm_ioctl(KVMState *s, unsigned type, ...)
+> 
+> The underlying ioctl() prototype (at least in my Linux /usr/include/sys/ioctl.h
+> and as documented in the ioctl(2) manpage) uses "unsigned long" for the
+> request argument; should we do the same ?
+
+Either we should match POSIX ('int') or Linux ('unsigned long'),
+'unsigned' matches neither.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
 
