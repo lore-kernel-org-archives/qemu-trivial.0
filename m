@@ -1,67 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mKlAY-0001q1-H9
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Aug 2021 13:34:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60334)
+	id 1mKmNF-0008WS-Mi
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Aug 2021 14:51:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45558)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mKlAX-0001nY-67
- for qemu-trivial@nongnu.org; Mon, 30 Aug 2021 13:34:01 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:33560)
+ (Exim 4.90_1) (envelope-from <carpeddiem@gmail.com>)
+ id 1mKmN9-0008Vr-Lh; Mon, 30 Aug 2021 14:51:09 -0400
+Received: from mail-io1-f41.google.com ([209.85.166.41]:35577)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mKlAU-0004Yd-2B
- for qemu-trivial@nongnu.org; Mon, 30 Aug 2021 13:34:00 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id x11so32946935ejv.0
- for <qemu-trivial@nongnu.org>; Mon, 30 Aug 2021 10:33:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UT8lSzlGl/B8N1X79Ob2xv+78u86UKZFIM+1gk+DwE4=;
- b=gEugG4B1wnj4mX2S+tgJAvladbxo4BAln/IooMH8Gac38xZU8+bIqttPA2rE86beBj
- MDwVzlfmpjSbBCovsqAwf5FBZWyJdrPrs95ME5nPAaPRhaKtgG0W/q03va/vUMtZKQF2
- b+QbNytHXEXlDsRA9TENFGX1aPbSmACHXl81+1dbOqKwRN2Mt72wv8dRN5IfQ0dfWMhi
- bXKixqRWFftk274N1YWV65xytQ1nOF+4rZFzs1f9lZQE9kvI8eSqiCNNlzjDzzhTnTAC
- OijBVik/nHq58x1gjKr0IOJhP2fo+PnQsgSulV59IkEp0Dz2Nj5O7+Uw9uRFrxkidWBx
- UXyw==
+ (Exim 4.90_1) (envelope-from <carpeddiem@gmail.com>)
+ id 1mKmN7-00054g-6v; Mon, 30 Aug 2021 14:51:06 -0400
+Received: by mail-io1-f41.google.com with SMTP id a15so21213646iot.2;
+ Mon, 30 Aug 2021 11:51:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=UT8lSzlGl/B8N1X79Ob2xv+78u86UKZFIM+1gk+DwE4=;
- b=m61NnhrUhc6jK2YFY7+qwXAmtsXG6pzu2klDqX9gGaECr+BL5TlAHqL1/5uXD3/oXR
- fcN5B5Fy7XHmQNe9Tj0H/+GhSTbtcc19Djj2Z5N70j8exsB2fpVSBkqj6KfmrfWcsNLT
- g0a9d9Xk/H0VrMAAlrdrcdndRqG80jT5UHot7IXZe5dSYrfmnTPB0/sop1sEVidQyE/J
- YDw7r082/tzqqsjmdhITkjdccPjHXdK3KYOUOJbJFYEdfYN3d/y0pJRcwvB8cywWkkGI
- cZbV39M5XxHWj1WswWAMb3LV98gBLVprd/K8Q+pvN+vtIUvL06/GfIPqf0eTWgWYQrKd
- LC8A==
-X-Gm-Message-State: AOAM532dS0VhDPGJVLkRSyG4aJkRgeVgZe9Jo3AxjtOO/YAgsjvW6K2/
- E6C0sO9irEJQrvRBuFxtkhhN/C6cYzNPHsacSTTh1g==
-X-Google-Smtp-Source: ABdhPJzb7GiO289gCafJuOl2S6goAz2cp8C1U74dauKHYyGhyt3CZwH6lHjww0WoMkdfVK1YUvDPR/js9wgTbBdWMko=
-X-Received: by 2002:a17:907:75d9:: with SMTP id
- jl25mr26162641ejc.4.1630344836074; 
- Mon, 30 Aug 2021 10:33:56 -0700 (PDT)
+ bh=jMn4gNdH35bROA1lED0zkD+n5Ctz/uq3n/fh9h0pueQ=;
+ b=KD1oYKKi9OspmzBToXLTUuEEwqbZ3UR/UEvnDv3ozFL27lpvBxLsNn2eyi8Z94SNJI
+ GqX6jPYGbKGg0TvAjN2ukSPuL9jfndO1P+VTKp9OwbU8HdFjvHRY83l24YSUmyAIKkqF
+ It3vI6jDsvu/zmiIbklnMKIQtEplm9hiO/bCcktTl8Uk3zA4sSpQCbkE3T57UaK8gk8i
+ Yvy2s881UOX8yZT6HE++2R+bD7Ye6nAx9mm8IlAIwqAjfKEoxX1wiCa54tzCyPuKLn8k
+ OACctkHHhpFu+YJhNivVT9ocv75lMsgtI73+h1YOjjE+msVRkc+KjRhPd8TJeWY6vjc1
+ Q2kw==
+X-Gm-Message-State: AOAM530hzzi1zdXFRFFMBkPsrwbJ6IdY18UaCzzaQMiiRn3UeG0/+l4y
+ nV96w37iCqNg4gZNqxtul07ZbfGVdRDj0uMujj8=
+X-Google-Smtp-Source: ABdhPJwnDHLowPfP3UKmNKOeeXDJhC92yrz5aKd29VB7W0AEBQRBuz3lCpXmKvN4j0slibJ68V+StVqmUkNll8KUoDc=
+X-Received: by 2002:a6b:fd05:: with SMTP id c5mr18857750ioi.102.1630349462852; 
+ Mon, 30 Aug 2021 11:51:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210805193950.514357-1-johannes.stoelp@gmail.com>
  <CAFEAcA8TRQdj33Ycm=XzmuUUNApaXVgeDexfS+3Ycg6kLnpmyg@mail.gmail.com>
  <20210830154708.ah27fh34q5dgg3le@redhat.com>
-In-Reply-To: <20210830154708.ah27fh34q5dgg3le@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Aug 2021 18:33:07 +0100
-Message-ID: <CAFEAcA-QW1_sLEArKY1jBJkmGdKQukgwe=O36p7gDpH2mFceqw@mail.gmail.com>
+ <CAFEAcA-QW1_sLEArKY1jBJkmGdKQukgwe=O36p7gDpH2mFceqw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-QW1_sLEArKY1jBJkmGdKQukgwe=O36p7gDpH2mFceqw@mail.gmail.com>
+From: Ed Maste <emaste@freebsd.org>
+Date: Mon, 30 Aug 2021 14:50:47 -0400
+Message-ID: <CAPyFy2CZNOL0=-F5_7rZt+oBEC36wwgNj9JQFJre3stZf+KTcw@mail.gmail.com>
 Subject: Re: [PATCH v0] kvm: unsigned datatype in ioctl wrapper
-To: Eric Blake <eblake@redhat.com>
-Cc: johannst <johannes.stoelp@googlemail.com>,
- QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, johannst <johannes.stoelp@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Eric Blake <eblake@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ johannst <johannes.stoelp@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+ johannst <johannes.stoelp@googlemail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=209.85.166.41; envelope-from=carpeddiem@gmail.com;
+ helo=mail-io1-f41.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,29 +64,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Aug 2021 17:34:01 -0000
+X-List-Received-Date: Mon, 30 Aug 2021 18:51:09 -0000
 
-On Mon, 30 Aug 2021 at 16:47, Eric Blake <eblake@redhat.com> wrote:
+On Mon, 30 Aug 2021 at 13:34, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> On Sun, Aug 29, 2021 at 10:09:19PM +0100, Peter Maydell wrote:
-> > Of the various KVM_* ioctls we use via these functions, do
-> > any actually have values that would result in invalid sign
-> > extension here ? That is, is this fixing an existing bug, or is
-> > it merely avoiding a potential future bug?
+> # As noted, this does not actually cause problems on Linux, because
+> # unlike FreeBSD, Linux knows what the f*ck it is doing, and just
+> # ignores the upper bits exactly because of possible sign confusion.
 >
-> My question as well.  If there is such a bug, calling it out in the
-> commit message is essential; if the bug is just theoretical,
-> mentioning that is still useful.
+> Whether that's still true a decade later I have no idea :-)
 
-I found this glibc bug from 2012, filed by some random guy named
-Linus Torvalds, and still open:
-https://sourceware.org/bugzilla/show_bug.cgi?id=14362
-where among other things he claims
-# As noted, this does not actually cause problems on Linux, because
-# unlike FreeBSD, Linux knows what the f*ck it is doing, and just
-# ignores the upper bits exactly because of possible sign confusion.
+It wasn't even true a decade ago -- FreeBSD has ignored the upper bits
+since 2005[1]. That change included a warning if upper bits were set,
+but the warning is now hidden behind a diagnostic option.
 
-Whether that's still true a decade later I have no idea :-)
-
--- PMM
+[1] URL: https://cgit.FreeBSD.org/src/commit/?id=9fc6aa0618a174f436fb1a26867c99cff4125b40
 
