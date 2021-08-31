@@ -1,70 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mKngn-0003Bi-Oo
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Aug 2021 16:15:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35164)
+	id 1mL6uc-0002Eh-0r
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Aug 2021 12:47:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55858)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mKnge-00039Y-AB
- for qemu-trivial@nongnu.org; Mon, 30 Aug 2021 16:15:20 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:38623)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mKngc-0003Q5-AW
- for qemu-trivial@nongnu.org; Mon, 30 Aug 2021 16:15:20 -0400
-Received: by mail-ej1-x633.google.com with SMTP id n27so33771815eja.5
- for <qemu-trivial@nongnu.org>; Mon, 30 Aug 2021 13:15:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gZHxqII6pE72vP1yX9i41mIgsKVp3Raa/v4NDJVfcxM=;
- b=qQ7la5ngyYE+rrBSYfuSlulO+sgiNAUuIrjrViyvC1IUDhVF7ffqeMrZLQFZsWJ4FW
- A2SoXkYmzh1qXSAfGjsefzEBfyKZJQNeQAO/S4K8+SVDh4/iIn3S7w5YSRVPzvKk8zu1
- IyQlAyLC7gifBvw5Z4j/VeOuWfcmNIqnp9uiW5ROd1FAREBKKNsFWcr+pGYqAHpr/3Yk
- 8pbVYSCnlA1ypcLUb32eH8oS9TSaFOaHqc/JpwemcjJIVsJYIjX8k8KaGS+fW8mWMbQ7
- PTUSa5Xx2aK/YgypCgb2MkSwCCg2/F/jF9BhlxQ45wXIlwFftcEBhnZmY7EAW8U8mXTn
- i4Ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gZHxqII6pE72vP1yX9i41mIgsKVp3Raa/v4NDJVfcxM=;
- b=N2tSoAJuHD8FtCH5ep8qI2uvBVg3/ZBlSJT2nrmQ4WmEIzGslqQk76xmlBSQTv9Xqn
- c6hfQDcPWok7PU19LRMIBcd66684y9d9/rRX19WLNhtj4iwxfoXWyqEuYGXJKOE6PSEO
- a8InQXv4ZlhuMLNPNLg9jf2u4lv09StmLvqCupRyhKBKF8JAP1dCdhboKTl0TnaEBeKF
- TrdKwHghri6zZd6TsyipftDJI6VxrBRP+O2mglLZu2xzbgPAPEu5bThng3V+qLIrhDbH
- 0XXZ4BnSE6fWEeQvjZc9Z86/0Icv0jzJ7NLSlDf8kWdULioWtBS6zL6ogz9iaajBlWdW
- yjbw==
-X-Gm-Message-State: AOAM530+glV2H47VWqp0tVCMlUwFDbaZDKGnIWOJ/aubS8MYi9qYaBa7
- +AFQEBIu+b/SDBkkAumLCeXL12C33tju5WpX8zQbyw==
-X-Google-Smtp-Source: ABdhPJxNbYcf3zDhoAE+d1zSPUTffTrsWA8fm1Cr92qAvtCcsPeoJ4lVHzWxUX7F6+54iN1FPzT7Q4b7GYt9LJR1IZ0=
-X-Received: by 2002:a17:907:923:: with SMTP id
- au3mr24792012ejc.482.1630354516646; 
- Mon, 30 Aug 2021 13:15:16 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210805193950.514357-1-johannes.stoelp@gmail.com>
- <CAFEAcA8TRQdj33Ycm=XzmuUUNApaXVgeDexfS+3Ycg6kLnpmyg@mail.gmail.com>
- <20210830154708.ah27fh34q5dgg3le@redhat.com>
- <CAFEAcA-QW1_sLEArKY1jBJkmGdKQukgwe=O36p7gDpH2mFceqw@mail.gmail.com>
- <CAMnW+q_6Vd0os7AEVVyM30m1kzev_3j8MWusXV1kp6jmUmRqcg@mail.gmail.com>
-In-Reply-To: <CAMnW+q_6Vd0os7AEVVyM30m1kzev_3j8MWusXV1kp6jmUmRqcg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Aug 2021 21:14:28 +0100
-Message-ID: <CAFEAcA-PSg6puCy95bskoFzq1a0F60O43cAkz=k73SXLZxO0nQ@mail.gmail.com>
-Subject: Re: [PATCH v0] kvm: unsigned datatype in ioctl wrapper
-To: Johannes S <johannes.stoelp@googlemail.com>
-Cc: Eric Blake <eblake@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+ (Exim 4.90_1) (envelope-from <willianr@redhat.com>)
+ id 1mL5hu-00030R-Iw
+ for qemu-trivial@nongnu.org; Tue, 31 Aug 2021 11:29:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27659)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <willianr@redhat.com>)
+ id 1mL5hs-0005zE-1f
+ for qemu-trivial@nongnu.org; Tue, 31 Aug 2021 11:29:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630423786;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=E9jFbXQSuovHMITYPbFGTVXrJUaHto7IFIyGiQEx8GU=;
+ b=h0cumiMCu0dKz89Yhe+UfIOWuit8zwaryhUIlqPOyuy915mSSm6tP+5QfolNqiGXHo9zvy
+ MusfuoJqK8vzAVbW6c7N4AWPRnZWosn6aXaJZrGRivmzRStScjU0+/nXgv6nFcVVRDC0A2
+ OICj0iSAmzK4KV9GO6XIFCsI0XQ6V38=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-571-KJIsHMNHPYKYCWH_jvKzxA-1; Tue, 31 Aug 2021 11:29:45 -0400
+X-MC-Unique: KJIsHMNHPYKYCWH_jvKzxA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3849800482;
+ Tue, 31 Aug 2021 15:29:43 +0000 (UTC)
+Received: from wrampazz.redhat.com (unknown [10.22.32.131])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2164B60CC9;
+ Tue, 31 Aug 2021 15:29:40 +0000 (UTC)
+From: Willian Rampazzo <willianr@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Cleber Rosa <crosa@redhat.com>,
  QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?Q?Johannes_St=C3=B6lp?= <johannes.stoelp@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v2 0/1] docs: add definitions of terms for CI/testing
+Date: Tue, 31 Aug 2021 12:29:38 -0300
+Message-Id: <20210831152939.97570-1-willianr@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=willianr@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=willianr@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 31 Aug 2021 12:46:57 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -76,17 +74,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Aug 2021 20:15:20 -0000
+X-List-Received-Date: Tue, 31 Aug 2021 15:29:50 -0000
 
-On Mon, 30 Aug 2021 at 20:37, Johannes S <johannes.stoelp@googlemail.com> wrote:
-> In my opinion we should use 'unsigned' data types here for the ioctl
-> request in the ioctl wrappers or would you prefer to keep the ioctl
-> wrapper definition as is today? What is you opinion?
+To understand the current state of QEMU CI/testing and have a base to=0D
+discuss the plans for the future, it is important to define some usual=0D
+terms. This patch defines the terms for "Automated tests", "Unit=0D
+testing", "Functional testing", "System testing", "Flaky tests",=0D
+"Gating", and "Continuous Integration".=0D
+=0D
+Signed-off-by: Willian Rampazzo <willianr@redhat.com>=0D
+=0D
+- Changes from v1:=0D
+  - Add Philippe R-b=0D
+  - Remove reference to Daniel's document split patch.=0D
+=0D
+Willian Rampazzo (1):=0D
+  docs: add definitions of terms for CI/testing=0D
+=0D
+ docs/devel/ci-definitions.rst | 121 ++++++++++++++++++++++++++++++++++=0D
+ docs/devel/ci.rst             |   1 +=0D
+ 2 files changed, 122 insertions(+)=0D
+ create mode 100644 docs/devel/ci-definitions.rst=0D
+=0D
+--=20=0D
+2.31.1=0D
+=0D
 
-I think I would vote for following the type used by the ioctl()
-function as declared in the headers for both Linux and the BSDs,
-and using 'unsigned long'.
-(We should change KVMState::irq_set_ioctl too, to match.)
-
--- PMM
 
