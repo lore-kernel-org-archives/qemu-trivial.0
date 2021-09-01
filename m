@@ -1,67 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mLWla-0000jT-Ov
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Sep 2021 16:23:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53504)
+	id 1mM8vu-00075w-P5
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Sep 2021 09:08:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <johannes.stoelp@googlemail.com>)
- id 1mLWlY-0000iF-LJ; Wed, 01 Sep 2021 16:23:24 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436]:40490)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <johannes.stoelp@googlemail.com>)
- id 1mLWlX-0005eP-2p; Wed, 01 Sep 2021 16:23:24 -0400
-Received: by mail-pf1-x436.google.com with SMTP id r13so732755pff.7;
- Wed, 01 Sep 2021 13:23:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=googlemail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Cc2dkFv4m3GWrhTqipor05lmSqPLVdF0dLohOouhlro=;
- b=kKHQ9wOhJP5qpRDBe6MqgTq3J5jXCikXvTGpBsknVVLqtBprU9nGViJtrmtqLQbjvo
- dS04sgoWMHHIBt3qJk+H+vQexpp52q4BeTRf2PT8o8eZRSCffw4wXBzBgPFxAeTxPbic
- lkmgg2jgUQGQ2XpBHVy9vgblS4mX/KfJaarj587kpdoZ0MFMnibW70w+LJZ03yXmuR8n
- 94GffF1bnujMGWF8S9K+e8o/2PHnp0PYyWqFIY6g4NlkhiWJTYLR8xcrFNw5Gf4KIS1Z
- nK88TAhzO48Ig6qle0B2bTR+MrR1Rs3MocKE9lIbtTl4yEQo/J9w6ZN0ou0qndW4Q+6D
- Mqvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Cc2dkFv4m3GWrhTqipor05lmSqPLVdF0dLohOouhlro=;
- b=dy4cve5ayxzA3OhhhWEvl7S/WCA16EU/J3Byip1gEkEaaAVzxiIdvy1larPoDq0hsS
- HR/tUUuOdQCBisY0S4QD9Joo7rSmcyowFWZnES5CPZOzzXcpm1G6jBL5Zmt5coB/WFI6
- ea20mlOXXcWYaRJo1txQlgygYh4kw/n1uwgqQefwDBreZglAfxzhki+dCmKbzFUgVTM9
- vhp7tK0abT1nixtiTknnJNaAaXWtRmCzWa1sd/nOLgQVxQwa2nn7BHfT4WNTxpy580WB
- fmLsZqRHWbil2v99KPddnrRtIqhu1GDbbfRbjv73Q2MOdyV0Y4gfbQKfVy9KxzkPGLvT
- yL1g==
-X-Gm-Message-State: AOAM532XOa8nJOXHclTYV780CfuhaYgg4J4hUy9l8aAM85U3wakiFdvH
- H1ekTqgfMbY+/zalfHmtqdEdNwahiLPq39YPyr4=
-X-Google-Smtp-Source: ABdhPJx/mV0yloWRVzCFbam8XzPyr8sPAsfkQIQ0RnErr/4KehQQx2XaKnyJc+qi112LnDIB7N2ba/XFb3bRPv56eBQ=
-X-Received: by 2002:aa7:82cf:0:b029:3c4:4daa:fd68 with SMTP id
- f15-20020aa782cf0000b02903c44daafd68mr1128606pfn.66.1630527800463; Wed, 01
- Sep 2021 13:23:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mM8vr-00074U-M0
+ for qemu-trivial@nongnu.org; Fri, 03 Sep 2021 09:08:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49854)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mM8vo-0001Kk-No
+ for qemu-trivial@nongnu.org; Fri, 03 Sep 2021 09:08:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630674511;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=aj5A8c+EWhE4Oxb00JW6s+eDdXBOGRUGlPPMDTt7L4w=;
+ b=cqwwHpmnofY+SpgGYViquwlvGXai2fvJLdyP6YGy+f3pJAbYaqOGDjvuVnj8aclmy3MLlx
+ rPO51mCJDVPRQO4THA0BTQAhcoT0ZEuwurP3UwUZvsM31VLPhAqDdcHT1czcypmj/OYaTe
+ lX/xrD5wEyu3lLVYQuKWyzNf2vxLtRM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-417-NlwgLQsAMv-imW4sTwpDRQ-1; Fri, 03 Sep 2021 09:08:28 -0400
+X-MC-Unique: NlwgLQsAMv-imW4sTwpDRQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C2034107ACC7;
+ Fri,  3 Sep 2021 13:08:27 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-13.ams2.redhat.com
+ [10.36.112.13])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D89C19C79;
+ Fri,  3 Sep 2021 13:08:27 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7A85B1138220; Wed,  1 Sep 2021 13:19:29 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org,  Eduardo Habkost <ehabkost@redhat.com>,  Daniel
+ P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] qdev: Complete qdev_init_gpio_out() documentation
+References: <20210819142731.2827912-1-philmd@redhat.com>
+Date: Wed, 01 Sep 2021 13:19:29 +0200
+In-Reply-To: <20210819142731.2827912-1-philmd@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 19 Aug 2021 16:27:31
+ +0200")
+Message-ID: <87k0k0bl1a.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20210805193950.514357-1-johannes.stoelp@gmail.com>
- <CAFEAcA8TRQdj33Ycm=XzmuUUNApaXVgeDexfS+3Ycg6kLnpmyg@mail.gmail.com>
- <20210830154708.ah27fh34q5dgg3le@redhat.com>
- <CAFEAcA-QW1_sLEArKY1jBJkmGdKQukgwe=O36p7gDpH2mFceqw@mail.gmail.com>
- <CAMnW+q_6Vd0os7AEVVyM30m1kzev_3j8MWusXV1kp6jmUmRqcg@mail.gmail.com>
- <CAFEAcA-PSg6puCy95bskoFzq1a0F60O43cAkz=k73SXLZxO0nQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA-PSg6puCy95bskoFzq1a0F60O43cAkz=k73SXLZxO0nQ@mail.gmail.com>
-From: Johannes S <johannes.stoelp@googlemail.com>
-Date: Wed, 1 Sep 2021 22:23:09 +0200
-Message-ID: <CAMnW+q_7MD0yd-fD1g1TSbYSo5HiV1jBeyzNJHaHOzHPrqTUgA@mail.gmail.com>
-Subject: Re: [PATCH v0] kvm: unsigned datatype in ioctl wrapper
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Eric Blake <eblake@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=johannes.stoelp@googlemail.com; helo=mail-pf1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.392,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,18 +78,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Sep 2021 20:23:25 -0000
+X-List-Received-Date: Fri, 03 Sep 2021 13:08:36 -0000
 
-On Mon, Aug 30, 2021 at 10:15 PM Peter Maydell <peter.maydell@linaro.org> wrote:
-> I think I would vote for following the type used by the ioctl()
-> function as declared in the headers for both Linux and the BSDs,
-> and using 'unsigned long'.
-> (We should change KVMState::irq_set_ioctl too, to match.)
+Cc: qemu-trivial
 
-I would agree to 'unsigned long', in that case I can generate a new patch.
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-And in theory if all libc implementations specify the ioctl request as
-'int' we could go back to 'int'.
+> qdev_init_gpio_out() states it "creates an array of anonymous
+> output GPIO lines" but doesn't document how this array is
+> released. Add a note that it is automatically free'd in qdev
+> instance_finalize().
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  include/hw/qdev-core.h | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index bafc311bfa1..555d4e444a5 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -597,6 +597,10 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_ha=
+ndler handler, int n);
+>   *
+>   * See qdev_connect_gpio_out() for how code that uses such a device
+>   * can connect to one of its output GPIO lines.
+> + *
+> + * There is no need to release the @pins allocated array because it
+> + * will be automatically released when @dev calls its instance_finalize(=
+)
+> + * handler.
+>   */
+>  void qdev_init_gpio_out(DeviceState *dev, qemu_irq *pins, int n);
+>  /**
 
-Johannes
 
