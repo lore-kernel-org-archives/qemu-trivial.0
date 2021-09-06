@@ -1,75 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mMejO-0005z9-AB
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Sep 2021 19:05:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43012)
+	id 1mNFUJ-000680-TJ
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Sep 2021 10:20:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mMejM-0005x5-Cs; Sat, 04 Sep 2021 19:05:48 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:42674)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mMejE-0007hQ-O3; Sat, 04 Sep 2021 19:05:47 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- k20-20020a05600c0b5400b002e87ad6956eso2090328wmr.1; 
- Sat, 04 Sep 2021 16:05:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=3HbMU+Bmh2tZcJKtiGVWKPW9syNmRkGskFP2WanvD9Q=;
- b=dSw5KtxqhWxWWG2fLojSpvbefOol5s2UNTbnH87McjVOLXwea3/0ti/b4toqrGGIaz
- 5G7oSRzXAPzWArtnATnIpYJ98UvUzRJjOsL5wZxqO8DMTXljgdx5XJZZAWhm2YjvA4+9
- Nk6DTHTlKR9MJIPQ8L96uMQsHIxZjb7+9gWijR6Hbsd5PewBwDcA+BUy5tg30gJIeOgC
- 2IKLG3pWN4IWOVUG5TwYcS/P3QqnJuaT202DkdLfAIgNwWz9G4Jn4neUOd66+49mpNus
- phF9Ee/KJdPZtERMGipyKajgh+1ppEE06XFBh2qHfPbZjnRs4zG383CyMiyoeKQBEaWA
- n9pA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mNFUH-000667-RH
+ for qemu-trivial@nongnu.org; Mon, 06 Sep 2021 10:20:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:54250)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mNFUE-0007wC-TS
+ for qemu-trivial@nongnu.org; Mon, 06 Sep 2021 10:20:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630938037;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dL8fqFL7Qspfu9BADAy4kZgpFoVsh95v7mrtNsmjcww=;
+ b=UXubKYrwhPOW2V0Te/uVKbfBfl51GJDJOeKmsLv2UbiezV1tFWMaiGnwinDek+cynYjeM9
+ qrZ6JAhbpDjawfyqn+twNQHWX+n590nxyxOQ5VU7Zzf+2mHZsgmkdSY781LYE0vk/kwsxr
+ MKWg9d5K+w7kafisRhvPopUXiWt/QnQ=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-140-h5ZjEy20O0GiAkbWBpA39Q-1; Mon, 06 Sep 2021 10:20:36 -0400
+X-MC-Unique: h5ZjEy20O0GiAkbWBpA39Q-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ p10-20020a5d68ca000000b001552bf8b9daso1238316wrw.22
+ for <qemu-trivial@nongnu.org>; Mon, 06 Sep 2021 07:20:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=3HbMU+Bmh2tZcJKtiGVWKPW9syNmRkGskFP2WanvD9Q=;
- b=JwXNIu7YdHYPKJKpf1KC4MGx0EGitvKDAmdx9aJosjqMJuIBoz6tqYx92dDeFRZcs3
- wABTjuUJo3YcILGfdRvCxBQGsCdei2S3z89qQUs9qCPUd69ATa033IfYyhkvXIi7pxZa
- RlqV0UCv3mcFWoA83AJskUKS4hm44LAGESN/BlZS/OcBOXggsVgThZHqwmeHM/E40EgO
- o6YZObSMbEYyGH8rohkHhI6VofQnjB9Ble4UvlM2R5JfdZ8ki8TEFixGJR+h4nBqyugu
- OzZiTbXjBRZJxYNm/R6XSLKo8otn8AXBIi7AzA6xZjBQ+fdR2JTUlbzKzpFy7snKYyEW
- 4lZQ==
-X-Gm-Message-State: AOAM533/ou7Y2MryOCZP7vLNUXQ+izCC7Fj6JazxMMYu3/GtbPAls0Nx
- 6UCoY6im0zfKJb3N30EhZCS6plwgF2c=
-X-Google-Smtp-Source: ABdhPJwGGbqo/ZZ2QhUVVgBtHR7nWuz0+d1I90tjz/29H22YMESFRvtoYGAEovAFFrwm5HQmUHisMQ==
-X-Received: by 2002:a7b:c0c7:: with SMTP id s7mr4795651wmh.66.1630796738682;
- Sat, 04 Sep 2021 16:05:38 -0700 (PDT)
+ bh=dL8fqFL7Qspfu9BADAy4kZgpFoVsh95v7mrtNsmjcww=;
+ b=EC7ZTygB5Ve9Flnz2UK86E5yggFBvCMbFx+l+dyfC3xGhWVARembC6swiA7pSy+ui2
+ DttrMZTDoYavzy1CPk9ktdDShvc2f8o+7V5y9fS6tUgkXvfk3zAH819JGt94C6WYVazu
+ VKUQUzWg03UT/uo6VjdzyliKM+AD8VBisbImji1lgRfV8oLB1RFMEhF/Vbh82AhMWtCN
+ Uq1kfYMnIVuATcd/n+ErA9UCeTW5b1zPXdVGboVDmSRzat6h+MuuHF+MlMHqLC9U9vir
+ 6pPgDNb9Rn6otoahQgnUEZNqfKk8kEd4ecX2u/VrfGbfqhjokum+KrtcUoGR+Uodrg3m
+ vKvQ==
+X-Gm-Message-State: AOAM531Lf2PPvo5HP1OTMH829yg2+Fb1SGmiRHOCHQTc5GmethflBSAo
+ +46cfJiiFJWZhSXUO3tU/bUILRpyMLFM5p8ozmD15W2g60kulIngpr+uHBVJxh3Jk9/obqjOTex
+ PTeEvXiEjlx7gzTUre1KKK+AbCCaKuzj/5OjUqIrPcabDDuqTEbOxCtabxmCCpTyvikc=
+X-Received: by 2002:a1c:f713:: with SMTP id v19mr11639204wmh.188.1630938035363; 
+ Mon, 06 Sep 2021 07:20:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUaysC9A72MdCR/bK4a3jjIfT57uINiDTEX3EMGl2EC2Ru2gNYWaRE5U7yBpq3vRyz9bkJ/w==
+X-Received: by 2002:a1c:f713:: with SMTP id v19mr11639178wmh.188.1630938035100; 
+ Mon, 06 Sep 2021 07:20:35 -0700 (PDT)
 Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
  [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id u17sm3014507wmm.33.2021.09.04.16.05.37
+ by smtp.gmail.com with ESMTPSA id f20sm7302087wml.38.2021.09.06.07.20.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 04 Sep 2021 16:05:37 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] MAINTAINERS: add myself as partial audio reviewer
-To: Christian Schoenebeck <qemu_oss@crudebyte.com>, qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <E1mMVca-0005ZJ-Lo@lizzy.crudebyte.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c6dfc6d5-9927-0f4f-a67d-cba7e3f7e875@amsat.org>
-Date: Sun, 5 Sep 2021 01:05:36 +0200
+ Mon, 06 Sep 2021 07:20:34 -0700 (PDT)
+Subject: Re: [PATCH 0/2] iothread: cleanup after adding a new parameter to
+ IOThread
+To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20210727145936.147032-1-sgarzare@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <8669491e-1cb1-a9af-ab5b-8e5824629691@redhat.com>
+Date: Mon, 6 Sep 2021 16:20:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <E1mMVca-0005ZJ-Lo@lizzy.crudebyte.com>
+In-Reply-To: <20210727145936.147032-1-sgarzare@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -52
-X-Spam_score: -5.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -54
+X-Spam_score: -5.5
 X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.832,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.391,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.332, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,18 +92,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Sep 2021 23:05:48 -0000
+X-List-Received-Date: Mon, 06 Sep 2021 14:20:42 -0000
 
-On 9/4/21 3:13 PM, Christian Schoenebeck wrote:
-> Volunteering as reviewer for some of the audio backends; namely
-> ALSA, CoreAudio and JACK.
+On 7/27/21 4:59 PM, Stefano Garzarella wrote:
+> We recently added a new parameter (aio-max-batch) to IOThread.
+> This series cleans up the code a bit, no functional changes.
 > 
-> Signed-off-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
-> ---
->  MAINTAINERS | 3 +++
->  1 file changed, 3 insertions(+)
+> Stefano Garzarella (2):
+>   iothread: rename PollParamInfo to IOThreadParamInfo
+>   iothread: use IOThreadParamInfo in iothread_[set|get]_param()
+> 
+>  iothread.c | 28 +++++++++++++++-------------
+>  1 file changed, 15 insertions(+), 13 deletions(-)
 
-Thanks!
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
