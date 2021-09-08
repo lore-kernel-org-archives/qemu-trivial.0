@@ -1,76 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mO44D-0005AK-Ka
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Sep 2021 16:21:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37454)
+	id 1mO5xL-0001hV-Dp
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Sep 2021 18:22:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mO44C-00059O-MP; Wed, 08 Sep 2021 16:21:08 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:41578)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mO44A-0000vY-NJ; Wed, 08 Sep 2021 16:21:08 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- u15-20020a05600c19cf00b002f6445b8f55so2472821wmq.0; 
- Wed, 08 Sep 2021 13:21:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=OvU3u7iar1YsozclIJ2YcFEQUVeJZGT+4JiPZZBDbdU=;
- b=ZRh5S5MPQduPg1EhNRTok7ClmIxSjqqOL6UTmEm5YcIP9AEcYIgU2Dqys0GACNY44X
- ZNy3R44BYw6GpQBHAefH7OOheb/30F8ijsyMLh02F2OWe2TzMotzDxB8kv0FTu9MAdg3
- PBh0mXO8C0Mh/8cmyb9op5LBEebGKJIgiBSp+dEUl8h1vtJPlupwbsJRWkOaMRPhOWcM
- Y9bJUpNNzYmj/QAaeEuoBrupEttJ5dXZgGi0+hqsoh7rRXsqgbGbVXYS+U/8kaQRBqwl
- R9RtKg9LBlb/9odL+vEDGk6c5pWf6Z4/BmnF4jjhQJ1PX3oWDNeprmhUx5xejKdrMkDi
- 67Ow==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mO5xI-0001gL-IF
+ for qemu-trivial@nongnu.org; Wed, 08 Sep 2021 18:22:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30301)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mO5xD-0006B5-VR
+ for qemu-trivial@nongnu.org; Wed, 08 Sep 2021 18:22:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631139721;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=sox0ErEJCzF5se9cHfEhb93bZQg1lpJOq2y21MBeWHA=;
+ b=CsdPRfbfDX/6U+Aik0OSORJWB6TsT949ixkEegwDXqrLk4NNlEnx2fHvhleDoR2yBSEAXU
+ 44vFqMBQAS6CU5/0eGAJboYYyLsOTHs0Y9zWrbY6YJ7A49gwhddcyuSPKjtE5x9vX+r5yP
+ Le/OABOymyBsMxHcIofQRAsKpRBRzDk=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-435-zbEirFfgM1-Oj3q_nOT5Uw-1; Wed, 08 Sep 2021 18:22:00 -0400
+X-MC-Unique: zbEirFfgM1-Oj3q_nOT5Uw-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ w25-20020a1cf6190000b0290252505ddd56so1439447wmc.3
+ for <qemu-trivial@nongnu.org>; Wed, 08 Sep 2021 15:22:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=OvU3u7iar1YsozclIJ2YcFEQUVeJZGT+4JiPZZBDbdU=;
- b=iUbkglCTnjkjgcRV5fJ3qH+mKmKYx85dTw8vuQoB+bV/7Uq4hzC25z66b0n0kK2ri5
- 2VLRVzsrpDQR+41IJcVGW3XHtGo85B4jULi9PxMbKMwuER72RxKduZk2lK6gFn45n23C
- bud3DJc7oOb6BXYHt5MBKp19IeUaKs0J0kltlXQsXhTVMW8XQ7tLZieVGL0/S/YCyVRy
- S9XU8LzWzGumtWXM27Rmxb2rTrVcE7xmavrWrgrivMjwzscvlpWHCKCnyPGIbmrROniY
- lkx93VKv3gMBCj7xwVwjbM+/ev3UN81g2IC3ucXV8xkxR+EtuvXvGM5d5kHJosi2v6lf
- hQBA==
-X-Gm-Message-State: AOAM531wJ9gnwXMcZ+jMZtG1mur0adU8MvQSUihdIwPFJDl/aASg9bVJ
- qIiPzru0ByatckcWrXpM1Ok=
-X-Google-Smtp-Source: ABdhPJxWIrzkJhcLtPyu6J06FqHSXLH37LY9Pvvtel4XyByLW0yCrJ4hEBwiAPeRGNQZqZCHht+UlA==
-X-Received: by 2002:a1c:3584:: with SMTP id c126mr43406wma.121.1631132464246; 
- Wed, 08 Sep 2021 13:21:04 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id j18sm137462wrd.56.2021.09.08.13.21.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Sep 2021 13:21:03 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH] tcg/arm: Fix tcg_out_vec_op function signature
-To: "Jose R. Ziviani" <jziviani@suse.de>, qemu-devel@nongnu.org,
- Miroslav Rezanina <mrezanin@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org
-References: <20210908185338.7927-1-jziviani@suse.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <71839203-0d36-1cac-9693-3b195c159b80@amsat.org>
-Date: Wed, 8 Sep 2021 22:21:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ bh=sox0ErEJCzF5se9cHfEhb93bZQg1lpJOq2y21MBeWHA=;
+ b=jG/FGw6LNXd+1+nPO6VNkzrNyPZcdE45aRTtxu5nt6j7fmhY22DjFrRtJGX8mi4S3s
+ vPBXs1d085XvkGq2Gd6XH3MGivWMuRZ1VSo4UIuko3gaQ7ZRDa1f84gkDtmJiiB4cyyA
+ k2H1S8kWhIZxufMj9Sxgo3OqgpCy0/JxZGayK/457VHcA5/ACvDxVCCPe+B1amUlwTrf
+ 9dlkwaL6XTRvPn2cohOtjkrcrKd2+crADsYlwS6e8NMY9S1ehvASIMXyCTuL4yHt4ijD
+ C1a31z/hzU5CIf6KAljT4AGRgQNGJH6d6yPI6qJVbtEQRK1nXtUcbg6X1obCrMd2O9yb
+ or/A==
+X-Gm-Message-State: AOAM5321MWu5DchC6nAnGixY9u1VwhQt7XC+Z/Wb+DaIj/+l4/cjN5rY
+ G/RBIG4iXMtf6pEqebOnmFPSSxz1kM4XxrzlBwPpT/gsG5MebflYa+qpzhlFZimg8TQ0W1b5xQK
+ TCviUf7a+bXJMVU4Vfw==
+X-Received: by 2002:a5d:58cf:: with SMTP id o15mr524050wrf.312.1631139719457; 
+ Wed, 08 Sep 2021 15:21:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxw87ledNau73FknFQ6WyYJvP/da0ZEunenrueghy0KHVvY6a1jgfQJT8IohmtFgXzXveCCzg==
+X-Received: by 2002:a5d:58cf:: with SMTP id o15mr524036wrf.312.1631139719280; 
+ Wed, 08 Sep 2021 15:21:59 -0700 (PDT)
+Received: from x1w.. (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
+ by smtp.gmail.com with ESMTPSA id z19sm3881594wma.0.2021.09.08.15.21.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 08 Sep 2021 15:21:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Ani Sinha <ani@anisinha.ca>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] hw/i386/acpi-build: Fix a typo
+Date: Thu,  9 Sep 2021 00:21:57 +0200
+Message-Id: <20210908222157.2377282-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <20210908185338.7927-1-jziviani@suse.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.922,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,41 +88,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Sep 2021 20:21:09 -0000
+X-List-Received-Date: Wed, 08 Sep 2021 22:22:10 -0000
 
-On 9/8/21 8:53 PM, Jose R. Ziviani wrote:
-> Commit 5e8892db93 fixed several function signatures but tcg_out_vec_op
-> for arm is missing. It causes a build error on armv6 and armv7:
-> 
-> tcg-target.c.inc:2718:42: error: argument 5 of type 'const TCGArg *'
-> {aka 'const unsigned int *'} declared as a pointer [-Werror=array-parameter=]
->    const TCGArg *args, const int *const_args)
->   ~~~~~~~~~~~~~~^~~~
-> ../tcg/tcg.c:120:41: note: previously declared as an array 'const TCGArg[16]'
-> {aka 'const unsigned int[16]'}
->    const TCGArg args[TCG_MAX_OP_ARGS],
->   ~~~~~~~~~~~~~~^~~~
-> 
-> Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
-> ---
->  tcg/arm/tcg-target.c.inc | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-> index 007ceee68e..e5b4f86841 100644
-> --- a/tcg/arm/tcg-target.c.inc
-> +++ b/tcg/arm/tcg-target.c.inc
-> @@ -2715,7 +2715,8 @@ static const ARMInsn vec_cmp0_insn[16] = {
->  
->  static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
->                             unsigned vecl, unsigned vece,
-> -                           const TCGArg *args, const int *const_args)
-> +                           const TCGArg args[TCG_MAX_OP_ARGS],
-> +                           const int const_args[TCG_MAX_OP_ARGS])
->  {
->      TCGType type = vecl + TCG_TYPE_V64;
->      unsigned q = vecl;
-> 
+Fix 'hotplugabble' -> 'hotpluggabble' typo.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ hw/i386/acpi-build.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index d1f5fa3b5a5..478263e12c9 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -1916,7 +1916,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+     PCMachineState *pcms = PC_MACHINE(machine);
+     int nb_numa_nodes = machine->numa_state->num_nodes;
+     NodeInfo *numa_info = machine->numa_state->nodes;
+-    ram_addr_t hotplugabble_address_space_size =
++    ram_addr_t hotpluggabble_address_space_size =
+         object_property_get_int(OBJECT(pcms), PC_MACHINE_DEVMEM_REGION_SIZE,
+                                 NULL);
+ 
+@@ -2022,10 +2022,10 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+      * Memory devices may override proximity set by this entry,
+      * providing _PXM method if necessary.
+      */
+-    if (hotplugabble_address_space_size) {
++    if (hotpluggabble_address_space_size) {
+         numamem = acpi_data_push(table_data, sizeof *numamem);
+         build_srat_memory(numamem, machine->device_memory->base,
+-                          hotplugabble_address_space_size, nb_numa_nodes - 1,
++                          hotpluggabble_address_space_size, nb_numa_nodes - 1,
+                           MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
+     }
+ 
+-- 
+2.31.1
+
 
