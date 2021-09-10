@@ -1,67 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mOL0U-0005YX-1v
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Sep 2021 10:26:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58084)
+	id 1mOfeO-00052W-0B
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Sep 2021 08:29:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1mOL0N-0005Xz-S7; Thu, 09 Sep 2021 10:26:20 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:39597)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mOfeM-0004z0-7l
+ for qemu-trivial@nongnu.org; Fri, 10 Sep 2021 08:28:58 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:35517)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1mOL0M-0004iI-80; Thu, 09 Sep 2021 10:26:19 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id r7so2921617edd.6;
- Thu, 09 Sep 2021 07:26:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=LQhHQo7TbvF9Uns6y6CZcNI5Rj8ePDOMGNWM3NJzUpE=;
- b=Zvgr+aXBYfAMGgDRrQDbK2Fu7ml/mLgudEeX6eDRkW2oeE028SP3OtToUWZA2FNm1t
- zYJR8cyQRC/g4Ow5joaqALM/t6Xcb1JpnkjcGD8YN3g7EuR6/F0zoce7QTfO/Qwb53DE
- MoKBRXGJqGIikqN7ZLKfpUuFuKsMpeJu2nvwkdQmu4sBtzoQo+ls/uAzOZnobfc2Y7Di
- Y9k1n0PegGLqA6u7/g3WVBSHmwLNhekf3PxjYd58yARooLxrkJwFKiUjPDOPjTredpls
- nO1pU5WvY5TfKlH2p6c0HOZfNbhMY/8NqhdIIVBdiiDKRg9soXK0x6wX32yb8pUua4xh
- HWuw==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mOfcR-00040H-3y
+ for qemu-trivial@nongnu.org; Fri, 10 Sep 2021 08:28:58 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id i23so2396748wrb.2
+ for <qemu-trivial@nongnu.org>; Fri, 10 Sep 2021 05:26:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=QHZNMUbqaI7z38U63M9bCLV3uukNmXmqkLmOEuX7MWc=;
+ b=VZuQcJYFH72s/ldTjifr8x5mWavzBgjMFw5px8WR+XsC7c9tTrgEITiDT8eTbxSqYK
+ ZYT3mskw1PZGmGJD9fIwYqjbcX8cGmQa5UQ/inHI+eO3q1duudstLtr/7ARYOlju+Hv6
+ iuo9VmxPGBfUnnFFInULTy60m+Wfnm0KeiiLZqXJLPV55f7Hicg+pRREmfK1t4Xq64DR
+ prOVXSKvyeh71m2JTZTj4tqYiFWJA38+uc+/f13rTtQIzr4j21ht/RYJWHOYDD5lVIWm
+ JH3BRCt/D1NvjkdZntsBxzALEif9xftNlKwBUU5YxTbJHCqpuKBfdRSvQAztQvKIyuIY
+ RKRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=LQhHQo7TbvF9Uns6y6CZcNI5Rj8ePDOMGNWM3NJzUpE=;
- b=fW3oDa2x8zm7pHmAbYqFQHCaqqt8Kl5KEZiqWJyN+gmnTUA2rmdGhZqd/24j4MOjYe
- wTt/cJCrajqeF8P4HCXDjj1+Yd84B0OEkRUDRokouwdaL3sXMNn7bJLXDg1DpPTTigMv
- UcyWb6BsE7P6nciqHVpExdq0NPyCmYTRvt0PU9Az5h5bwh97vqCwsATVikeOIF+5x6YK
- g1FBVi3oPyW7dh5+UfzZT7MZ3tE97mhPEZtcdO7nPjJBPOe+VqFmxLOnshO0qHDGyxWu
- wdMeI2kUzicp2STkQLSu9QyvFODYPhW6BvGk9xLL70cufIimfdfJXBfQHOf3pwrELBdz
- aCYA==
-X-Gm-Message-State: AOAM533BgSt5PBw7BXVJNNg0QEsChUgWOiLS80wYDgXO/QISMCRM4A9O
- 5LQSHEihRqOHREe/CJVRu+qzeGB2SZY=
-X-Google-Smtp-Source: ABdhPJzZ+UcbBz6uk2bmSPHC9b0BJAGdKQdYF+7wlAzhC6kQWrMrB2owt3Arf/dY6uFa9tfNMdINzw==
-X-Received: by 2002:a50:954c:: with SMTP id v12mr3465044eda.313.1631197575707; 
- Thu, 09 Sep 2021 07:26:15 -0700 (PDT)
-Received: from localhost.localdomain ([2001:b07:add:ec09:c399:bc87:7b6c:fb2a])
- by smtp.gmail.com with ESMTPSA id
- v8sm1035857ejy.79.2021.09.09.07.26.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Sep 2021 07:26:15 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] docs: link to archived Fedora code of conduct
-Date: Thu,  9 Sep 2021 16:26:07 +0200
-Message-Id: <20210909142607.388417-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.31.1
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=QHZNMUbqaI7z38U63M9bCLV3uukNmXmqkLmOEuX7MWc=;
+ b=lzaOKjO/pn8apw1znFizgCABxvpyrA9WN6TNU+3IQOdKZifKJy4BFVu19AjDOGfN3y
+ fPI5qKJs6hteOYsItK4PAOXz2BWuBPJvp+pGSZFq71kDwcr9OtrVS9pQxTyO9Kno5k+o
+ cPrlkF7Jzw0BdPslaRS5HyTkQsQdkj4RT5uYBCDhfE18LhUE9MqL5uIUygmj8hln0whP
+ cpVhpoBMD3MGTzsbpvklf8vB9oxabGDRDxmo9YzzYjRs45FfjABULCu09x/Qs5Q9FJ+M
+ rdECGh7ZssZFEkOOFqp2Bt5N38ryQ/RRMq2XA8Gyv/yx/q9CVbzOibaELibmw9FpUe1C
+ 9g2Q==
+X-Gm-Message-State: AOAM530jC/JK5WFM6SPAnSfW6fjuPeJkt7swX5FnE+4Ksz4tc6Wen1Uj
+ tgd8xebpGhYhkiV4muLzqymNWx7PwyCvloBa
+X-Google-Smtp-Source: ABdhPJwoMq7pDy46OvHOSJF1sd8bpi8ppOtqA8rKHObRtotHy/O7flrUziSJ/F1uJEuYJ42skq+fPg==
+X-Received: by 2002:adf:9d4b:: with SMTP id o11mr9448560wre.29.1631276816462; 
+ Fri, 10 Sep 2021 05:26:56 -0700 (PDT)
+Received: from [192.168.1.147] (149.164.14.37.dynamic.jazztel.es.
+ [37.14.164.149])
+ by smtp.gmail.com with ESMTPSA id o7sm4012716wmc.46.2021.09.10.05.26.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Sep 2021 05:26:56 -0700 (PDT)
+Subject: Re: [PATCH] tcg/arm: Fix tcg_out_vec_op function signature
+To: "Jose R. Ziviani" <jziviani@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+References: <20210908185338.7927-1-jziviani@suse.de>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <244b78cb-10dc-330c-467d-bea655deb727@linaro.org>
+Date: Fri, 10 Sep 2021 14:26:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=paolo.bonzini@gmail.com; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+In-Reply-To: <20210908185338.7927-1-jziviani@suse.de>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.349,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,31 +80,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Sep 2021 14:26:22 -0000
+X-List-Received-Date: Fri, 10 Sep 2021 12:28:58 -0000
 
-Fedora has switched to a different CoC.  QEMU's own code of conduct
-is based on the previous version and cites it as a source.  Replace
-the link with one to the Wayback Machine.
+On 9/8/21 8:53 PM, Jose R. Ziviani wrote:
+> Commit 5e8892db93 fixed several function signatures but tcg_out_vec_op
+> for arm is missing. It causes a build error on armv6 and armv7:
+> 
+> tcg-target.c.inc:2718:42: error: argument 5 of type 'const TCGArg *'
+> {aka 'const unsigned int *'} declared as a pointer [-Werror=array-parameter=]
+>     const TCGArg *args, const int *const_args)
+>    ~~~~~~~~~~~~~~^~~~
+> ../tcg/tcg.c:120:41: note: previously declared as an array 'const TCGArg[16]'
+> {aka 'const unsigned int[16]'}
+>     const TCGArg args[TCG_MAX_OP_ARGS],
+>    ~~~~~~~~~~~~~~^~~~
+> 
+> Signed-off-by: Jose R. Ziviani<jziviani@suse.de>
+> ---
+>   tcg/arm/tcg-target.c.inc | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- docs/devel/code-of-conduct.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Queued, thanks.
 
-diff --git a/docs/devel/code-of-conduct.rst b/docs/devel/code-of-conduct.rst
-index 277b5250d1..195444d1b4 100644
---- a/docs/devel/code-of-conduct.rst
-+++ b/docs/devel/code-of-conduct.rst
-@@ -55,6 +55,6 @@ Sources
- -------
- 
- This document is based on the `Fedora Code of Conduct
--<https://fedoraproject.org/code-of-conduct>`__ and the
--`Contributor Covenant version 1.3.0
-+<http://web.archive.org/web/20210429132536/https://docs.fedoraproject.org/en-US/project/code-of-conduct/>`__
-+(as of April 2021) and the `Contributor Covenant version 1.3.0
- <https://www.contributor-covenant.org/version/1/3/0/code-of-conduct/>`__.
--- 
-2.31.1
 
+r~
 
