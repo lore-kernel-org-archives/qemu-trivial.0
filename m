@@ -1,69 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mOrtj-0007B2-IR
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Sep 2021 21:33:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57754)
+	id 1mOyFk-00073d-8f
+	for mharc-qemu-trivial@gnu.org; Sat, 11 Sep 2021 04:20:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44216)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1mOrti-0007Ac-24
- for qemu-trivial@nongnu.org; Fri, 10 Sep 2021 21:33:38 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:34390)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1mOrte-0003V7-3H
- for qemu-trivial@nongnu.org; Fri, 10 Sep 2021 21:33:36 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id jg16so7886510ejc.1
- for <qemu-trivial@nongnu.org>; Fri, 10 Sep 2021 18:33:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=anisinha-ca.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ajXtqRq9irp5hWUhCXJXZ5NsjsCErlpr0AP+qDwEfaI=;
- b=PFjKk28/VPkE6/O7nZL37T9+IlhtGjEgu6/qomecie6gdnsVA6q3tHQTl255QJw7Ko
- TP7h3V23fsz+rKMi/Mn7LUdc2CVASg1xM7q2g7Bq4RzwyzxG0neeHHZrx7JtZwsiRKGF
- zM/cdXNbfCJa9f53Ilu08vcIdUIJhhIN0LGfEv0xt0GA8Ae4kjDWO1HoCqrFVqoD8Jhn
- ESo9/wptRS2IxfHkyx3LYrvEUxoWaMOVRUY4jffiHWIJu+7cH4jh8SJwLwuCNKODydge
- JJLIqNQo2ftAmwp6U8tXnPoaf3Pbwml5oIWcaQC53gHdKg5MlpdwnWWhbGzx9mGF4Wtp
- BZcA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mOyFi-00072W-1r
+ for qemu-trivial@nongnu.org; Sat, 11 Sep 2021 04:20:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23973)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mOyFf-0006ba-26
+ for qemu-trivial@nongnu.org; Sat, 11 Sep 2021 04:20:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631348440;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vx4nte4uvXOqJ0OSbI8JJD7U5Dv7AVbtB8G0DHVhvzA=;
+ b=GgghRYX21lj1e4pJ5EKNLJA31Ih4HaQpEsJwnmhnfqqAmTSZHLp7Ceb5plh2SaNL8PMFZ4
+ zl/e7qLwExM0ZnK3YYky1wW23jCkuBEK8Gmntj4bohACVbbCRiTSl066LXWmj7QwCGjNZ8
+ WypM0xqsMWKz0kzyLNj5EFhHVQPt1VY=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-471-vwNmqY38OUuawVJ-LZlBog-1; Sat, 11 Sep 2021 04:20:39 -0400
+X-MC-Unique: vwNmqY38OUuawVJ-LZlBog-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ n30-20020a05600c3b9e00b002fbbaada5d7so1765602wms.7
+ for <qemu-trivial@nongnu.org>; Sat, 11 Sep 2021 01:20:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ajXtqRq9irp5hWUhCXJXZ5NsjsCErlpr0AP+qDwEfaI=;
- b=5l0qdnr24WGvHsc0EUZHbFOM2tca05uArgYeHmaBtdQAZ8UdnKWISaAyKEhFjwN7iT
- /qR5lnBgHaQodX9KwtwKkbggtatmMsnYznjFpWagF9oy+QuvsZMmljDuuZvPzbLDw1xD
- JFduXJ3coPpaGnBjce4+MtX8swdxvUIAfUIV64CLV1OB0bD/5XMs1CVOaXBbHHHKD4EI
- Zqw4vfu1ie3g7zEOk3YIBy5TYlrKSzzM0W1xkjKovjrEqPWPxSyJvft31eT55cwMdA0I
- g9tf7dYuxYXVfnSxwHkr1lOCqgJf7U9/opyGzswawNcWjSTqmhdNkJDcITJM9MZnNMNd
- Azww==
-X-Gm-Message-State: AOAM532yFUKsaSAhU30vaUu+4gPgCw4y6YTrHPWDbn8mKgFee27R/juD
- vO6Fp1tc3RNkkMNw2pAnF6etvddPKhQtcGT0eEK02w==
-X-Google-Smtp-Source: ABdhPJwE6nuC0/Gxm1/G/rtr5DbchvUXV/lJDZA6eh/aiEZplodAU4jTeL7npom+llKVfGbMU/SnfAxkUFuR5xl2KB0=
-X-Received: by 2002:a17:906:4cc1:: with SMTP id
- q1mr482566ejt.415.1631324011656; 
- Fri, 10 Sep 2021 18:33:31 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vx4nte4uvXOqJ0OSbI8JJD7U5Dv7AVbtB8G0DHVhvzA=;
+ b=17cKGWPcvKXOvhwF16yUkIf+pqpgXhAnMmv4uA+kDDl0eUsgCbV2r1E1DCO/NtOwfP
+ aHklkcN041w6odZ4C6pRd7Pjp6yn63vMuBX5k1V13q08GzT9cjNf+WUDDPOxchSoXgYr
+ L054/XOKQm+sEVzJw8IoSTSkmSED7qACTxpcIxvi5q2gC81RJgXETeOM52NvaN5V965+
+ UoDkZyhWIcMB9u5pWtPIk2dzN4tFrZKdIjpV/goEqoCdiy/30MAyXH3tqa3gxHLzIbmE
+ C2FMC7JXRK+XyeyjhlQgbxJT3O7zFybXwJb34PoMgYUtWCHS8sQvJISP1CXLoC1nzmtq
+ XoDg==
+X-Gm-Message-State: AOAM532kX78HBZCm87Pe/7R9zdU7QsYEll2vrSZvDMJEmc+aQFv8GULp
+ wH2WhmUKhivBZdCyqsz9uN9+nD4dwEYxHnbmRoVArymK7ugGqziRtaFUwvnqQQHAUXBA0YgBm/8
+ E5YgUIaM2IYYrCsbG1Q==
+X-Received: by 2002:a5d:6792:: with SMTP id v18mr1934526wru.416.1631348438570; 
+ Sat, 11 Sep 2021 01:20:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzTKL2hgGfzpAuT/Gj6gUV1MSbAu/5Bda0VxeRQm0zomrVUhZlTHAfGvZqU2E+hEEeggu8xCQ==
+X-Received: by 2002:a5d:6792:: with SMTP id v18mr1934507wru.416.1631348438370; 
+ Sat, 11 Sep 2021 01:20:38 -0700 (PDT)
+Received: from x1w.. (21.red-83-52-55.dynamicip.rima-tde.net. [83.52.55.21])
+ by smtp.gmail.com with ESMTPSA id p5sm1075939wrd.25.2021.09.11.01.20.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 11 Sep 2021 01:20:37 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Ani Sinha <ani@anisinha.ca>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Volker=20R=C3=BCmelin?= <vr_qemu@t-online.de>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v2] hw/i386/acpi-build: Fix a typo
+Date: Sat, 11 Sep 2021 10:20:36 +0200
+Message-Id: <20210911082036.436139-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-References: <20210908222157.2377282-1-philmd@redhat.com>
- <d11a3da6-c26c-1f78-ff52-e965f214cba7@t-online.de>
- <a1988342-7304-ccc9-8a5a-7da0172569ff@redhat.com>
-In-Reply-To: <a1988342-7304-ccc9-8a5a-7da0172569ff@redhat.com>
-From: Ani Sinha <ani@anisinha.ca>
-Date: Sat, 11 Sep 2021 07:03:20 +0530
-Message-ID: <CAARzgwzr=mKp6nxsy6STs5Sy9NKCkA53pCLY7CoxhbdN4=4U3g@mail.gmail.com>
-Subject: Re: [PATCH] hw/i386/acpi-build: Fix a typo
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, 
- =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000003a8c9e05cbae3834"
-Received-SPF: none client-ip=2a00:1450:4864:20::62e;
- envelope-from=ani@anisinha.ca; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.392,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,55 +89,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 11 Sep 2021 01:33:38 -0000
+X-List-Received-Date: Sat, 11 Sep 2021 08:20:46 -0000
 
---0000000000003a8c9e05cbae3834
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Fix 'hotplugabble' -> 'hotpluggable' typo.
 
-On Sat, Sep 11, 2021 at 1:03 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-wrote:
+Reviewed-by: Ani Sinha <ani@anisinha.ca>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+v1 still had a typo =) (Volker Rümelin)
+---
+ hw/i386/acpi-build.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-> On 9/10/21 8:54 PM, Volker R=C3=BCmelin wrote:
-> >> Fix 'hotplugabble' -> 'hotpluggabble' typo.
-> >
-> > I'm convinced that the correct spelling is hotpluggable. Only the
-> > consonant g is doubled.
->
-> Lol I missed this part, thanks :>
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index d1f5fa3b5a5..dfaa47cdc20 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -1916,7 +1916,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+     PCMachineState *pcms = PC_MACHINE(machine);
+     int nb_numa_nodes = machine->numa_state->num_nodes;
+     NodeInfo *numa_info = machine->numa_state->nodes;
+-    ram_addr_t hotplugabble_address_space_size =
++    ram_addr_t hotpluggable_address_space_size =
+         object_property_get_int(OBJECT(pcms), PC_MACHINE_DEVMEM_REGION_SIZE,
+                                 NULL);
+ 
+@@ -2022,10 +2022,10 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+      * Memory devices may override proximity set by this entry,
+      * providing _PXM method if necessary.
+      */
+-    if (hotplugabble_address_space_size) {
++    if (hotpluggable_address_space_size) {
+         numamem = acpi_data_push(table_data, sizeof *numamem);
+         build_srat_memory(numamem, machine->device_memory->base,
+-                          hotplugabble_address_space_size, nb_numa_nodes - 1,
++                          hotpluggable_address_space_size, nb_numa_nodes - 1,
+                           MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
+     }
+ 
+-- 
+2.31.1
 
-
-Oops my apologies. I also did not notice the double b.
-
-
->
->
-
---0000000000003a8c9e05cbae3834
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Sat, Sep 11, 2021 at 1:03 AM Philippe Mathieu-Daud=C3=A9=
- &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left-width:1px;border-left-style:solid;padding-left:1ex;border-lef=
-t-color:rgb(204,204,204)">On 9/10/21 8:54 PM, Volker R=C3=BCmelin wrote:<br=
->
-&gt;&gt; Fix &#39;hotplugabble&#39; -&gt; &#39;hotpluggabble&#39; typo.<br>
-&gt; <br>
-&gt; I&#39;m convinced that the correct spelling is hotpluggable. Only the<=
-br>
-&gt; consonant g is doubled.<br>
-<br>
-Lol I missed this part, thanks :&gt;</blockquote><div dir=3D"auto"><br></di=
-v><div dir=3D"auto">Oops my apologies. I also did not notice the double b.<=
-/div><div dir=3D"auto"><br></div><blockquote class=3D"gmail_quote" style=3D=
-"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;pad=
-ding-left:1ex;border-left-color:rgb(204,204,204)" dir=3D"auto"><br>
-<br>
-</blockquote></div></div>
-
---0000000000003a8c9e05cbae3834--
 
