@@ -1,89 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mOmHg-0004td-2z
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Sep 2021 15:34:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52828)
+	id 1mOrtj-0007B2-IR
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Sep 2021 21:33:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57754)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mOmHe-0004tN-Jr
- for qemu-trivial@nongnu.org; Fri, 10 Sep 2021 15:33:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:54353)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mOmHa-0003bW-0o
- for qemu-trivial@nongnu.org; Fri, 10 Sep 2021 15:33:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631302432;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=slSXKJ7U9ML2UV7faA2E399tebxw1QwPjko8fh9996U=;
- b=A2HL/hQawJ2aqxhwDF2iufkhlFiJuLkzDDeTfU0SDmsf+YTyu2c2bUcaeYcOLgFXo9WibF
- 1+gbq8xzgQmysVnhOwh8DobNKRgPHwkbrLJv2J6QgFkRBsuj8N9/hhFQ0SGzYm6+/eJ0qU
- 7LwIQrHIlF/b1qKo/yfAyqa9Y7gEJW8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-33-kHrK5cX_NFipqt3JSr10Fg-1; Fri, 10 Sep 2021 15:33:51 -0400
-X-MC-Unique: kHrK5cX_NFipqt3JSr10Fg-1
-Received: by mail-wr1-f69.google.com with SMTP id
- s13-20020a5d69cd000000b00159d49442cbso868513wrw.13
- for <qemu-trivial@nongnu.org>; Fri, 10 Sep 2021 12:33:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1mOrti-0007Ac-24
+ for qemu-trivial@nongnu.org; Fri, 10 Sep 2021 21:33:38 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:34390)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1mOrte-0003V7-3H
+ for qemu-trivial@nongnu.org; Fri, 10 Sep 2021 21:33:36 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id jg16so7886510ejc.1
+ for <qemu-trivial@nongnu.org>; Fri, 10 Sep 2021 18:33:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=anisinha-ca.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ajXtqRq9irp5hWUhCXJXZ5NsjsCErlpr0AP+qDwEfaI=;
+ b=PFjKk28/VPkE6/O7nZL37T9+IlhtGjEgu6/qomecie6gdnsVA6q3tHQTl255QJw7Ko
+ TP7h3V23fsz+rKMi/Mn7LUdc2CVASg1xM7q2g7Bq4RzwyzxG0neeHHZrx7JtZwsiRKGF
+ zM/cdXNbfCJa9f53Ilu08vcIdUIJhhIN0LGfEv0xt0GA8Ae4kjDWO1HoCqrFVqoD8Jhn
+ ESo9/wptRS2IxfHkyx3LYrvEUxoWaMOVRUY4jffiHWIJu+7cH4jh8SJwLwuCNKODydge
+ JJLIqNQo2ftAmwp6U8tXnPoaf3Pbwml5oIWcaQC53gHdKg5MlpdwnWWhbGzx9mGF4Wtp
+ BZcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=slSXKJ7U9ML2UV7faA2E399tebxw1QwPjko8fh9996U=;
- b=sWYnZhCtGl4vGBeRcQTwX/HdNZ7rIYlVSiYPmPNlT2oCJ5jobRy3i4BSXDDavtLfm+
- woJL0NBnZK4wwDvcMjqo0aVn6qtImq5cQZp/JNuHdzYSBoGEJKHFhWHJ5KTgoW2BGhJ0
- rm2A6T+gXqqElO2M8d8VVWc5krHBoqk3wBdvSeraOtmQ5aDnAvM1aajGNOsth5dXsmgK
- vkd10jYNLFLLC3kgzbMk63ZJ/AQzREVcnH6/8XlkLutzvvKRYNMTJrClyBHGGqnpdDEc
- 0o6V4vr/DgClqreA/y0uk220eXI/+ENb3JtbAGDF5/boOgsMwuIZfGtV0IKr7NBwktj9
- W8Ig==
-X-Gm-Message-State: AOAM530YURhHsmWCXfzSBsyf3Zl490Ve3+xud2AE2yvPw+B8msyVCVzK
- MsTZ2+cEskQv/m+1gc4TJ7QMfGTpPMVVw2MTJCCPakaV7LnHTuIK96SDMWTLWc7M+KSN68uFKcM
- StEAkFMCu6vDCyv6Gqg==
-X-Received: by 2002:adf:e108:: with SMTP id t8mr11427775wrz.84.1631302430550; 
- Fri, 10 Sep 2021 12:33:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVldgQBme9X21NxOGC1240PEg0zs5viveDHkqA5TyZQSG8ecAt3FBgU29HG++AM5Av+Zyi3w==
-X-Received: by 2002:adf:e108:: with SMTP id t8mr11427751wrz.84.1631302430301; 
- Fri, 10 Sep 2021 12:33:50 -0700 (PDT)
-Received: from [192.168.1.36] (21.red-83-52-55.dynamicip.rima-tde.net.
- [83.52.55.21])
- by smtp.gmail.com with ESMTPSA id n4sm6393342wro.81.2021.09.10.12.33.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Sep 2021 12:33:49 -0700 (PDT)
-Subject: Re: [PATCH] hw/i386/acpi-build: Fix a typo
-To: =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Ani Sinha <ani@anisinha.ca>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ajXtqRq9irp5hWUhCXJXZ5NsjsCErlpr0AP+qDwEfaI=;
+ b=5l0qdnr24WGvHsc0EUZHbFOM2tca05uArgYeHmaBtdQAZ8UdnKWISaAyKEhFjwN7iT
+ /qR5lnBgHaQodX9KwtwKkbggtatmMsnYznjFpWagF9oy+QuvsZMmljDuuZvPzbLDw1xD
+ JFduXJ3coPpaGnBjce4+MtX8swdxvUIAfUIV64CLV1OB0bD/5XMs1CVOaXBbHHHKD4EI
+ Zqw4vfu1ie3g7zEOk3YIBy5TYlrKSzzM0W1xkjKovjrEqPWPxSyJvft31eT55cwMdA0I
+ g9tf7dYuxYXVfnSxwHkr1lOCqgJf7U9/opyGzswawNcWjSTqmhdNkJDcITJM9MZnNMNd
+ Azww==
+X-Gm-Message-State: AOAM532yFUKsaSAhU30vaUu+4gPgCw4y6YTrHPWDbn8mKgFee27R/juD
+ vO6Fp1tc3RNkkMNw2pAnF6etvddPKhQtcGT0eEK02w==
+X-Google-Smtp-Source: ABdhPJwE6nuC0/Gxm1/G/rtr5DbchvUXV/lJDZA6eh/aiEZplodAU4jTeL7npom+llKVfGbMU/SnfAxkUFuR5xl2KB0=
+X-Received: by 2002:a17:906:4cc1:: with SMTP id
+ q1mr482566ejt.415.1631324011656; 
+ Fri, 10 Sep 2021 18:33:31 -0700 (PDT)
+MIME-Version: 1.0
 References: <20210908222157.2377282-1-philmd@redhat.com>
  <d11a3da6-c26c-1f78-ff52-e965f214cba7@t-online.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <a1988342-7304-ccc9-8a5a-7da0172569ff@redhat.com>
-Date: Fri, 10 Sep 2021 21:33:48 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <d11a3da6-c26c-1f78-ff52-e965f214cba7@t-online.de>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -54
-X-Spam_score: -5.5
-X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.392,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.349, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <a1988342-7304-ccc9-8a5a-7da0172569ff@redhat.com>
+In-Reply-To: <a1988342-7304-ccc9-8a5a-7da0172569ff@redhat.com>
+From: Ani Sinha <ani@anisinha.ca>
+Date: Sat, 11 Sep 2021 07:03:20 +0530
+Message-ID: <CAARzgwzr=mKp6nxsy6STs5Sy9NKCkA53pCLY7CoxhbdN4=4U3g@mail.gmail.com>
+Subject: Re: [PATCH] hw/i386/acpi-build: Fix a typo
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>, qemu-devel@nongnu.org, 
+ qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000003a8c9e05cbae3834"
+Received-SPF: none client-ip=2a00:1450:4864:20::62e;
+ envelope-from=ani@anisinha.ca; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,14 +76,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Sep 2021 19:33:58 -0000
+X-List-Received-Date: Sat, 11 Sep 2021 01:33:38 -0000
 
-On 9/10/21 8:54 PM, Volker Rümelin wrote:
->> Fix 'hotplugabble' -> 'hotpluggabble' typo.
-> 
-> I'm convinced that the correct spelling is hotpluggable. Only the
-> consonant g is doubled.
+--0000000000003a8c9e05cbae3834
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Lol I missed this part, thanks :>
+On Sat, Sep 11, 2021 at 1:03 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
+com>
+wrote:
 
+> On 9/10/21 8:54 PM, Volker R=C3=BCmelin wrote:
+> >> Fix 'hotplugabble' -> 'hotpluggabble' typo.
+> >
+> > I'm convinced that the correct spelling is hotpluggable. Only the
+> > consonant g is doubled.
+>
+> Lol I missed this part, thanks :>
+
+
+Oops my apologies. I also did not notice the double b.
+
+
+>
+>
+
+--0000000000003a8c9e05cbae3834
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Sat, Sep 11, 2021 at 1:03 AM Philippe Mathieu-Daud=C3=A9=
+ &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left-width:1px;border-left-style:solid;padding-left:1ex;border-lef=
+t-color:rgb(204,204,204)">On 9/10/21 8:54 PM, Volker R=C3=BCmelin wrote:<br=
+>
+&gt;&gt; Fix &#39;hotplugabble&#39; -&gt; &#39;hotpluggabble&#39; typo.<br>
+&gt; <br>
+&gt; I&#39;m convinced that the correct spelling is hotpluggable. Only the<=
+br>
+&gt; consonant g is doubled.<br>
+<br>
+Lol I missed this part, thanks :&gt;</blockquote><div dir=3D"auto"><br></di=
+v><div dir=3D"auto">Oops my apologies. I also did not notice the double b.<=
+/div><div dir=3D"auto"><br></div><blockquote class=3D"gmail_quote" style=3D=
+"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;pad=
+ding-left:1ex;border-left-color:rgb(204,204,204)" dir=3D"auto"><br>
+<br>
+</blockquote></div></div>
+
+--0000000000003a8c9e05cbae3834--
 
