@@ -1,51 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQ36j-0003nB-L7
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Sep 2021 03:43:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44154)
+	id 1mQUHc-0008S4-Cq
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Sep 2021 08:45:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1mQ36h-0003lZ-2P; Tue, 14 Sep 2021 03:43:55 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2926)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mQUHb-0008Rq-Hd; Wed, 15 Sep 2021 08:44:59 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:41545)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1mQ36e-00083w-Bl; Tue, 14 Sep 2021 03:43:54 -0400
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.57])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4H7wGb1ZsqzbmWd;
- Tue, 14 Sep 2021 15:39:35 +0800 (CST)
-Received: from kwepeml500004.china.huawei.com (7.221.188.141) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 14 Sep 2021 15:43:38 +0800
-Received: from [10.174.187.138] (10.174.187.138) by
- kwepeml500004.china.huawei.com (7.221.188.141) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 14 Sep 2021 15:43:37 +0800
-Message-ID: <614052A9.4060107@huawei.com>
-Date: Tue, 14 Sep 2021 15:43:37 +0800
-From: Alex Chen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-CC: QEMU <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- <yebiaoxiang@huawei.com>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mQUHZ-0002en-Qx; Wed, 15 Sep 2021 08:44:59 -0400
+Received: from [192.168.100.1] ([82.142.27.6]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mqro7-1nCSGl2eLB-00mvNP; Wed, 15 Sep 2021 14:44:46 +0200
 Subject: Re: [PATCH V2] util: Remove redundant checks in the openpty()
-References: <5F9FE5B8.1030803@huawei.com>
-In-Reply-To: <5F9FE5B8.1030803@huawei.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- kwepeml500004.china.huawei.com (7.221.188.141)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187; envelope-from=alex.chen@huawei.com;
- helo=szxga01-in.huawei.com
-X-Spam_score_int: -61
-X-Spam_score: -6.2
-X-Spam_bar: ------
-X-Spam_report: (-6.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.969,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+To: Alex Chen <alex.chen@huawei.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, yebiaoxiang@huawei.com,
+ QEMU <qemu-devel@nongnu.org>
+References: <5F9FE5B8.1030803@huawei.com> <614052A9.4060107@huawei.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <0d0e66e0-1281-d739-da3c-6fb2d93f7a32@vivier.eu>
+Date: Wed, 15 Sep 2021 14:44:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <614052A9.4060107@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:29Qp9maMeG4wc7qdQzXOeuEs7njX5T6h6bhS12l0ZjeUdp2tp3a
+ +vm5CqRc58Be1FowRNERXjMlc2019lfmZJl0cPo5b6D5kutT+RtbhkO2EOyBd3rtEvPezhy
+ gUSS0oonsJ3uGQ5KoA6kIOTL9EBzGVS5jorPzDgW0nyg+F0a15ia5+ounTOmVOUjeSG85EE
+ g70Wp+USF/mLkQoZ558Vg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:t2IiWrq8ilk=:HCvnB+SApUqrBtPxNUAfY7
+ BkuIQW5PBd9PCGwHRxjqK0iYXnr3XMpSHlm8gs/Lc/Jd3gD0doEJ/yjGZep4R56F26dlE8qut
+ WGZJf1dN567uKw90/lpV8TYhNx5lsdGVfldvyeydTkLZ3pM/KLdDiWdQCb4Lnmx4qvWM91tQ0
+ qD1INFesRXQpDFf9SjhsDyQ/WMySdxAkgvuNIT2BH6A2ryOMsXGhLKv12RAHT0AMrxG4rcKnK
+ KBclUPGkmRZjXFlNfQqM2aekar1LATtA+sN7n7UhWMuHs+E85dvdlBEOUKPJ9y1WF3GWUWo2u
+ m32jBzsKElIK5gWMN+8yERuHUUwcPjiV4CFAsDDmcrpvpfDDs9DtQDeSxax3x16cgZ2oDu6MW
+ aBmvebAB7eVWINo4wBFuNMtwkdrvIMVCwTpXyejEVF6JzEIqfUDZ9RTOrpuNMzUeab3n2bZKp
+ owUCcMtyQH2V/BTIuClt+gdR1NiFYvAIxA1uLZ5gDReCfPsp5wIwO2zUIz7W+QBFYgUCyoz4G
+ /jVOf9fQQM8zWXvmm7bdnOmo5o61AGvDCtZgJOv9X0LfnOpz6gwWdlWU2IttsPJwtR9g8FqKS
+ KMVZ1nKA2aStGnvUrp/rfUUQhfKxWeMvS41rt+8wHLYHyV0lt3aINm3XNXt4rIaqfHZSuFqix
+ I7Fuf/RMi9/YUFTlku9AOOXbpKNvBzeY9n5nqfnD/xasReaqLBr8aEfRb2vJgoPo0TUh5T1zn
+ QF77w796SR9WXia0ZUaO/DaA4VUOUuUtRoFN6g==
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.698,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -58,49 +64,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Sep 2021 07:43:55 -0000
+X-List-Received-Date: Wed, 15 Sep 2021 12:44:59 -0000
 
-Hi all,
+Le 14/09/2021 à 09:43, Alex Chen a écrit :
+> Hi all,
+> 
+> This patch has been reviewed by Peter. who can help merge it?
+> 
+> Thanks,
+> Alex
+> 
+> On 2020/11/2 18:55, AlexChen wrote:
+>> As we can see from the following function call stack, amaster and aslave
+>> can not be NULL: char_pty_open() -> qemu_openpty_raw() -> openpty().
+>> In addition, according to the API specification for openpty():
+>> https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dTerminal-Pairs.html,
+>> the arguments name, termp and winp can all be NULL, but arguments amaster or aslave
+>> can not be NULL.
+>> Finally, amaster and aslave has been dereferenced at the beginning of the openpty().
+>> So the checks on amaster and aslave in the openpty() are redundant. Remove them.
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  util/qemu-openpty.c | 7 +++----
+>>  1 file changed, 3 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
+>> index eb17f5b0bc..427f43a769 100644
+>> --- a/util/qemu-openpty.c
+>> +++ b/util/qemu-openpty.c
+>> @@ -80,10 +80,9 @@ static int openpty(int *amaster, int *aslave, char *name,
+>>              (termp != NULL && tcgetattr(sfd, termp) < 0))
+>>                  goto err;
+>>
+>> -        if (amaster)
+>> -                *amaster = mfd;
+>> -        if (aslave)
+>> -                *aslave = sfd;
+>> +        *amaster = mfd;
+>> +        *aslave = sfd;
+>> +
+>>          if (winp)
+>>                  ioctl(sfd, TIOCSWINSZ, winp);
+>>
+> 
+> 
 
-This patch has been reviewed by Peter. who can help merge it?
+Applied to my trivial-patches branch.
 
 Thanks,
-Alex
-
-On 2020/11/2 18:55, AlexChen wrote:
-> As we can see from the following function call stack, amaster and aslave
-> can not be NULL: char_pty_open() -> qemu_openpty_raw() -> openpty().
-> In addition, according to the API specification for openpty():
-> https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dTerminal-Pairs.html,
-> the arguments name, termp and winp can all be NULL, but arguments amaster or aslave
-> can not be NULL.
-> Finally, amaster and aslave has been dereferenced at the beginning of the openpty().
-> So the checks on amaster and aslave in the openpty() are redundant. Remove them.
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  util/qemu-openpty.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
-> index eb17f5b0bc..427f43a769 100644
-> --- a/util/qemu-openpty.c
-> +++ b/util/qemu-openpty.c
-> @@ -80,10 +80,9 @@ static int openpty(int *amaster, int *aslave, char *name,
->              (termp != NULL && tcgetattr(sfd, termp) < 0))
->                  goto err;
-> 
-> -        if (amaster)
-> -                *amaster = mfd;
-> -        if (aslave)
-> -                *aslave = sfd;
-> +        *amaster = mfd;
-> +        *aslave = sfd;
-> +
->          if (winp)
->                  ioctl(sfd, TIOCSWINSZ, winp);
-> 
-
+Laurent
 
