@@ -1,68 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQVHi-0006Yq-Jt
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Sep 2021 09:49:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59532)
+	id 1mQVKc-0001EB-0c
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Sep 2021 09:52:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60544)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQVHf-0006VQ-T5
- for qemu-trivial@nongnu.org; Wed, 15 Sep 2021 09:49:08 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:45685)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQVHc-00036c-AB
- for qemu-trivial@nongnu.org; Wed, 15 Sep 2021 09:49:07 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id d21so3978628wra.12
- for <qemu-trivial@nongnu.org>; Wed, 15 Sep 2021 06:49:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=i0+0xOhX9dhCno/WLsEJZHNV498b4wM1+4uRynqwmas=;
- b=nwwMXZr9T4dXiwW+WeLvzb+RAZJ1sFz/B9+aAymusqH6SvTWHQvk/6m2D7ye1ZXp2D
- 2i50kRowydApMc5NwQUadxirhGMMrH7lSr0tTid21StyDV19adutZUcX7i75TOrlJeL2
- xpaFEDoGrdTegxzgD38sZSUujAkO+Lpbm4phVbZv7evgLeCinQYRlc7uLIX3fQ6I9cec
- fN13Nev3/4bV6eQt0f9UHCAk6wkSLZgiw5Rh9I2nPSLAcEH3xFkJxqcqcu4+uBIGZdY4
- ODd7X37YuPQdhPVeUiaWKexqAEX1Av4pE7PAadcKgb9g+opE7x2xiFdiNB716zibGEjh
- gh0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=i0+0xOhX9dhCno/WLsEJZHNV498b4wM1+4uRynqwmas=;
- b=QNdakeGdj2ids90uRESh6jUcff26X9DwYthq0rh8sOWY7Vd2Ct3S5YDFbgEa9T51mF
- tHQzlJmelMXO74nT9PaQv/mQnqh3GDruOPaTaZWGpnDAWeAN2OBtqM/EJD0n48s14KuB
- Z8xWJl+SdZLqHzPPom4uQ80SXRWMU6lcVqQ8vX17PA5s9zx3rDJAOLbELOaVNwwxpqpT
- sJFgUedoro3nI5A2sbyeHiqIGBZatcQebHzCnz9N22qUri5EiB+3G9T8FFNrDsJJ35TJ
- MdpIKOT5d2HuMbA5t9kFNh1/fUSXzl/S1KfRBtqYA9IleDXwpPBolY1GXviooiIYWiJ+
- 9J+g==
-X-Gm-Message-State: AOAM530cqm8K4f8+TfFJ6xaM6YrG6NoTBaOUKxt6ni5fCibV8IMW1zJ0
- 0f82hhzgQVelA9FF/Ys2ZUNtLtz9zW/nIgFhDpXHNA==
-X-Google-Smtp-Source: ABdhPJxrdTV9h683PXPy5b6/+wHrEi0wPVCJoqv6S/VYengt9vVIVjNCnmq7f8nUvx7YJyYdWvIbwF+nXnbzmcjsTLY=
-X-Received: by 2002:adf:fb91:: with SMTP id a17mr9622wrr.376.1631713742652;
- Wed, 15 Sep 2021 06:49:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mQVKa-0001Dw-L3; Wed, 15 Sep 2021 09:52:08 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:44507)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mQVKX-0004nA-N1; Wed, 15 Sep 2021 09:52:08 -0400
+Received: from [192.168.100.1] ([82.142.27.6]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MkEdF-1nAFLv22i9-00kjel; Wed, 15 Sep 2021 15:52:02 +0200
+Subject: Re: [PATCH, trivial, for-6.1] spelling: sytem => system
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <fefb5f5c-82bc-05e2-b4c1-665e9d6896ff@msgid.tls.msk.ru>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <4849c00e-3252-ef5a-24ae-a8d5df3e4a91@vivier.eu>
+Date: Wed, 15 Sep 2021 15:52:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210901121620.1320-1-programmingkidx@gmail.com>
- <9c8e7273-6b28-8598-f679-92c467fff06a@vivier.eu>
-In-Reply-To: <9c8e7273-6b28-8598-f679-92c467fff06a@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 15 Sep 2021 14:48:11 +0100
-Message-ID: <CAFEAcA9HCF1FwqsDwwOqYCajAfWQxJBut7aRVoEaNEYDZbo29g@mail.gmail.com>
-Subject: Re: [PATCH] Add qemu_vga.ndrv to build/pc-bios folder
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: John Arbuckle <programmingkidx@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <fefb5f5c-82bc-05e2-b4c1-665e9d6896ff@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:EX5CIlZcQ4NWfyhOl+PMrNXyXswVaHZo4Tt04AWWOk+hBz7lKTJ
+ y6Yd80PHLOhpXqOPDPJeqoiHYegzURg+HwlR5G3GjW6zY50/FusH0HKcvHaDn2PJrD6iIIh
+ lBuzF74HvP2SIfnt5kZnQJ43sF6xvNdsiCC1UIf9RonLSXvl0M59JbnpPh8UlvR+4ms29jR
+ CnhM7px12n+GQrwdlKgLQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:92m0gU95s7M=:p5gopXuMiTCup318HApUy+
+ PgyqgxqzXpk2Na9qHSYwY7TR6IHfLKVWXhMIVujmuVvgmh7AdicSGIjWYQFq5I4E+8+NnS1Lx
+ lBcS5/mbHhwrntvE66akY1jMx+ddZCOSoaU22FXmYFGNClNbnacsXlQHPIpddERG1b961//Yu
+ a2RHLrtZl5XPmAJKmCTREQczsqjQOhFWFKz8N9iDqkh2U5h/iqpux8xqSdtTaklNVDqC9jvFx
+ dPBk4L3NBAn401py5GV1PoapuT6tTDDLMMtRE++cbAGRvT6GdtwKUlqL/6Z2Ct9JCJzOz0h24
+ 8+X6u70Iq75YdgpdUaiG6JosYdnCq4+1j1770JVtDSkfOzmyRxCq0Y9DUAIiwwtJEY3cgtncD
+ JXcTZzJtt7TFBrfNpf/+dSG+FxschnJMsgRgp7wn7Ubs3YvyeWJIOyHiu56FC7Qbp2XzeqvUL
+ D61StDkoM1EX/+FAg29uk6oPDni2yMCZMw9PZ4IZ/Rp2SKwOdXteJdNdUlxtP1Z6xhrnb32m5
+ ypla60ByiNobXcuaez7M9UzOLBgx4/FbZVBpPpl3H5co8GXkkIQmCc72yboG8AESiAOcQ2PN3
+ hk23vGXHzLNI8g9t487ATwcSCqMd/K8oehWUgLnVIdhi0t5HcsMcCHv86vSkg6hPUqcK2BE3g
+ UNkIYbu6DNl79hFkMezL4oTsUOzTKrGKL2b5N3kUPuBMaPwIz3zqcfzRRfiLE/4sAwpkMStOf
+ oUIqHu8rnzfamXUB7NmwX2cN20iFW9ZjVpw9QA==
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.698,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,46 +62,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Sep 2021 13:49:08 -0000
+X-List-Received-Date: Wed, 15 Sep 2021 13:52:09 -0000
 
-On Wed, 15 Sept 2021 at 14:31, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> CC Mark
-> CC qemu-devel
->
-> Le 01/09/2021 =C3=A0 14:16, John Arbuckle a =C3=A9crit :
-> > Currently the file qemu_vga.ndrv is not copied into the /build/pc-bios =
-folder. This makes all video resolution choices disappear from a PowerPC Ma=
-c OS guest. This patch has the qemu_vga.ndrv file copied into the build/pc-=
-bios folder giving users back their video resolution choices.
-> >
-> > Signed-off-by: John Arbuckle <programmingkidx@gmail.com>
-> > ---
-> >  configure | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/configure b/configure
-> > index 9a79a004d7..281577e46f 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -5056,7 +5056,9 @@ for bios_file in \
-> >      $source_path/pc-bios/openbios-* \
-> >      $source_path/pc-bios/u-boot.* \
-> >      $source_path/pc-bios/edk2-*.fd.bz2 \
-> > -    $source_path/pc-bios/palcode-*
-> > +    $source_path/pc-bios/palcode-* \
-> > +    $source_path/pc-bios/qemu_vga.ndrv
-> > +
-> >  do
-> >      LINKS=3D"$LINKS pc-bios/$(basename $bios_file)"
+Le 18/08/2021 à 16:06, Michael Tokarev a écrit :
+> Signed-off-By: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+> It is safe for 6.1
+> 
+>  block/file-posix.c              | 2 +-
+>  tools/virtiofsd/fuse_lowlevel.h | 4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/block/file-posix.c b/block/file-posix.c
+> index cb9bffe047..1854bfa397 100644
+> --- a/block/file-posix.c
+> +++ b/block/file-posix.c
+> @@ -1705,7 +1705,7 @@ static int handle_aiocb_write_zeroes(void *opaque)
+>               */
+>              warn_report_once("Your file system is misbehaving: "
+>                               "fallocate(FALLOC_FL_PUNCH_HOLE) returned EINVAL. "
+> -                             "Please report this bug to your file sytem "
+> +                             "Please report this bug to your file system "
+>                               "vendor.");
+>          } else if (ret != -ENOTSUP) {
+>              return ret;
+> diff --git a/tools/virtiofsd/fuse_lowlevel.h b/tools/virtiofsd/fuse_lowlevel.h
+> index 4b4e8c9724..c55c0ca2fc 100644
+> --- a/tools/virtiofsd/fuse_lowlevel.h
+> +++ b/tools/virtiofsd/fuse_lowlevel.h
+> @@ -1603,7 +1603,7 @@ int fuse_lowlevel_notify_inval_inode(struct fuse_session *se, fuse_ino_t ino,
+>   * parent/name
+>   *
+>   * To avoid a deadlock this function must not be called in the
+> - * execution path of a related filesytem operation or within any code
+> + * execution path of a related filesystem operation or within any code
+>   * that could hold a lock that could be needed to execute such an
+>   * operation. As of kernel 4.18, a "related operation" is a lookup(),
+>   * symlink(), mknod(), mkdir(), unlink(), rename(), link() or create()
+> @@ -1636,7 +1636,7 @@ int fuse_lowlevel_notify_inval_entry(struct fuse_session *se, fuse_ino_t parent,
+>   * that the dentry has been deleted.
+>   *
+>   * To avoid a deadlock this function must not be called while
+> - * executing a related filesytem operation or while holding a lock
+> + * executing a related filesystem operation or while holding a lock
+>   * that could be needed to execute such an operation (see the
+>   * description of fuse_lowlevel_notify_inval_entry() for more
+>   * details).
 
-The code change here is right, but Mark suggested a
-commit message rewording:
 
-https://patchew.org/QEMU/20210831165020.84855-1-programmingkidx@gmail.com/
+Applied to my trivial-patches branch.
 
-With Mark's rewording, you can have a
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
--- PMM
+Thanks,
+Laurent
 
