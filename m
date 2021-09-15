@@ -1,63 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQULR-0003EN-5P
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Sep 2021 08:48:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41938)
+	id 1mQUn1-000183-NS
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Sep 2021 09:17:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49720)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQULP-0003BH-De; Wed, 15 Sep 2021 08:48:55 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:50021)
+ id 1mQUn0-00015p-AX; Wed, 15 Sep 2021 09:17:26 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:55317)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQULN-0004ny-73; Wed, 15 Sep 2021 08:48:55 -0400
+ id 1mQUmy-0003FN-Jw; Wed, 15 Sep 2021 09:17:26 -0400
 Received: from [192.168.100.1] ([82.142.27.6]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Ml72g-1nBbmt0eKq-00lYTK; Wed, 15 Sep 2021 14:48:47 +0200
-Subject: Re: [PATCH v2] hw/i386/acpi-build: Fix a typo
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1M9Fvl-1mWFwX1zD5-006QmR; Wed, 15 Sep 2021 15:17:18 +0200
+Subject: Re: [PATCH] qdev: Complete qdev_init_gpio_out() documentation
+To: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20210819142731.2827912-1-philmd@redhat.com>
+ <87k0k0bl1a.fsf@dusky.pond.sub.org>
 From: Laurent Vivier <laurent@vivier.eu>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20210911082036.436139-1-philmd@redhat.com>
- <420999a6-dfa5-a4e3-c95b-0854da15fc20@vivier.eu>
-Message-ID: <c2f4f543-c475-494f-b4a6-3cd92bbe7c81@vivier.eu>
-Date: Wed, 15 Sep 2021 14:48:45 +0200
+Message-ID: <8b99601c-dc2b-7489-e500-aad5b5a8c0a4@vivier.eu>
+Date: Wed, 15 Sep 2021 15:17:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <420999a6-dfa5-a4e3-c95b-0854da15fc20@vivier.eu>
+In-Reply-To: <87k0k0bl1a.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:OQp5lFj406DP4LxWqEy1zgIcVlqYt9+bFaOSeqFmWtvC778q0fC
- w3ntKUc/u/qnyssljD5W8r0HwIonqzwxwlw31lnFoJMVogg5SCxaJ05nRXJEx8UbNwAPtmB
- nA/jHi2cz7r8syefbJ82W9qkwRxyO05nirWbW8nU3aqECbm6nWCTBbUjArutoeZWKlZTMIL
- VD6thekYxWSijQ/NYXgSg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DcosyRwItnY=:pGNfpkM+r1pVCMNXrnsnD0
- lvdaUP4q/nfyNiXL1rkNbNSqGvtlHzDNjNbWGDtsytvO11PgdZnKvnWe9J7vzkg6MD6wrRdAm
- kTQVIxBN68iHhspWRRU9/SXKrpaQ4u+a3Ft5aj21dRF02eIDLZlw3CMd2ad8of+F0eikmNC22
- ZOsGkKL7Qu9Tjo7YouWkQVi2pnSTUVKTVUjOb8qyCl7Akf29hEb+lmJyYIioDB0HWcKWYKJO1
- 3xKm536vHZFbr54CtDjpxBKApi6+Af6gQf2ml/a/B6gzrU54Yu6A45Cf6kPEQ6/+wvXjGNNns
- GDqcz0VhOoQo9nm/h2giqs0EfaWXJpoVqSzbENnfC1/ApDBBtuVwgAkdd9dZv+CUNuZFFrUjK
- xs1N7o2kJckV385z2WwXX8iNrSG3wqd+1BZ/dAEJGF1goRZ8MpNqxj6NE1Dd31aEzIeB1q3tA
- MJ66YKHPXk2LXwf5RMbdAE33fu+7+aSpBTwDV8GmdE/YtL3ejd1w46bLJNZxTx2Gl+Rma3mfJ
- TK+1QfXWWOCtGhHxEPF7e9ngKa7gBkm+4pW17IKPofErfYR+2jLMOGPrEPmONmbpz0fXgzZSo
- e5xBDdTJM8CSi7vSO3d8S4C6IbPQCMhygKva8wbRR/wXoRv3enUBkof8idLr+kYgPTjXUdiQQ
- cF1QpHTrbQX3llcHzY5kNsa1b6H89Dan+56QNXOUIFwoWhR9YPAXrutX5kVnDWqeF9vLrMO8v
- 6CWDR5e6xOtoAlSbvPuyVdUiovNxMICb93VuhQ==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:BO36pgz7ix95R/JP8o6m/w0FDZxsbyV7KnYSBNyB9vbs+B7X2Lw
+ +br5LMwCpZzvfP7KVD5qeuDWcR3RmwccYG8F9NlxU3/dlrKk8YiKD/hpQTtoRc508YLKJfi
+ AzzqwgZ1FRo87O/z8a9LwH9pyRby8JGzV+dVyQjY46m18NJzWylYNRHmTg4eKcWXs+Tq9kZ
+ je/Lel+HdQcUlnLpJdaJA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:VwdTCwp9EL8=:B26kYXWejYovSvxKgGMraI
+ 7lXDR/0LHE3Xz7GyMd58Vtdv/YviNxd9WwwO/Ou+c7RLy8K90YoP7kDJnYowL1ldt8fnpnV5e
+ 9WEXbx+R8Fhfr/0cNX++XsPS3zIA6NU0IPLOtaYn++sSowFpKCdDR20+hoBU+jkU8dVEPSRg1
+ PrcguGY7eGBIVhURiM625/lWYRC9E15Xx3nVdXKH7CIOAcjOitDfTWQ8TBCldkHq9mbijmpOh
+ RGHxqEEEH08s4QK2mOLRQAe0f/ba9MKZCg5kODGUHLlGRtMCSGloCucfaTV0i/4h+bWL10aSX
+ hCY589vXa1ZBI1+kqMScved2F0RBzZHuT17Bpms8J8SVWy7RnViDag4GXNw1tiFLfGPocCVHb
+ 5YLg228qxQh5VUEmZaygtm/1Gc4b9RN9TgLVo0iYi2ZZR0vOFgUtGKZx8VtCNFqkTfSYdrupt
+ nWUnn6FllZ6uOKuYA7q47qixCtCisPg+XR/93kt5YvItEGzyrCmjq3Gl99Ts1CYX1I+XCs/EL
+ /iQy02jbVGZQjIUX1XqQek1AziOO22gk+D3k4b2287W0P6o11f036aVEJYvvVGwMJrgbMd6d5
+ NJGBJbFwYOOlitaa9XEAJFtZy2RO8Qq5erJXQfnkr4UI9JI9mfjU9MEBezJiaq+lV59wjoEnZ
+ sC24vAWxcEKCxK7IvWwsNCUcAGnWjJR0BaAFN9Asq0mm1lefYicAtaFMBqSAFFkh0ZKKRGx6c
+ IElaR5SyXtLlLPWvCdLLstv0gGAMmVH3mh5vsA==
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.698,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,51 +67,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Sep 2021 12:48:55 -0000
+X-List-Received-Date: Wed, 15 Sep 2021 13:17:26 -0000
 
-Le 15/09/2021 à 14:48, Laurent Vivier a écrit :
-> Le 11/09/2021 à 10:20, Philippe Mathieu-Daudé a écrit :
->> Fix 'hotplugabble' -> 'hotpluggable' typo.
+Le 01/09/2021 à 13:19, Markus Armbruster a écrit :
+> Cc: qemu-trivial
+> 
+> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
+> 
+>> qdev_init_gpio_out() states it "creates an array of anonymous
+>> output GPIO lines" but doesn't document how this array is
+>> released. Add a note that it is automatically free'd in qdev
+>> instance_finalize().
 >>
->> Reviewed-by: Ani Sinha <ani@anisinha.ca>
 >> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 >> ---
->> v1 still had a typo =) (Volker Rümelin)
->> ---
->>  hw/i386/acpi-build.c | 6 +++---
->>  1 file changed, 3 insertions(+), 3 deletions(-)
+>>  include/hw/qdev-core.h | 4 ++++
+>>  1 file changed, 4 insertions(+)
 >>
->> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->> index d1f5fa3b5a5..dfaa47cdc20 100644
->> --- a/hw/i386/acpi-build.c
->> +++ b/hw/i386/acpi-build.c
->> @@ -1916,7 +1916,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
->>      PCMachineState *pcms = PC_MACHINE(machine);
->>      int nb_numa_nodes = machine->numa_state->num_nodes;
->>      NodeInfo *numa_info = machine->numa_state->nodes;
->> -    ram_addr_t hotplugabble_address_space_size =
->> +    ram_addr_t hotpluggable_address_space_size =
->>          object_property_get_int(OBJECT(pcms), PC_MACHINE_DEVMEM_REGION_SIZE,
->>                                  NULL);
->>  
->> @@ -2022,10 +2022,10 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
->>       * Memory devices may override proximity set by this entry,
->>       * providing _PXM method if necessary.
->>       */
->> -    if (hotplugabble_address_space_size) {
->> +    if (hotpluggable_address_space_size) {
->>          numamem = acpi_data_push(table_data, sizeof *numamem);
->>          build_srat_memory(numamem, machine->device_memory->base,
->> -                          hotplugabble_address_space_size, nb_numa_nodes - 1,
->> +                          hotpluggable_address_space_size, nb_numa_nodes - 1,
->>                            MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
->>      }
->>  
->>
+>> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+>> index bafc311bfa1..555d4e444a5 100644
+>> --- a/include/hw/qdev-core.h
+>> +++ b/include/hw/qdev-core.h
+>> @@ -597,6 +597,10 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_handler handler, int n);
+>>   *
+>>   * See qdev_connect_gpio_out() for how code that uses such a device
+>>   * can connect to one of its output GPIO lines.
+>> + *
+>> + * There is no need to release the @pins allocated array because it
+>> + * will be automatically released when @dev calls its instance_finalize()
+>> + * handler.
+>>   */
+>>  void qdev_init_gpio_out(DeviceState *dev, qemu_irq *pins, int n);
+>>  /**
 > 
-> Applied to my linux-user-for-6.2 branch.
+> 
 
-I mean "trivial-patches"
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
