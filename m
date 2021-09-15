@@ -1,53 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQUn1-000183-NS
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Sep 2021 09:17:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49720)
+	id 1mQUxG-0003HJ-Jn
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Sep 2021 09:28:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52642)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQUn0-00015p-AX; Wed, 15 Sep 2021 09:17:26 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:55317)
+ id 1mQUxE-0003C4-H1; Wed, 15 Sep 2021 09:28:00 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:34961)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQUmy-0003FN-Jw; Wed, 15 Sep 2021 09:17:26 -0400
+ id 1mQUxC-0000T5-PU; Wed, 15 Sep 2021 09:28:00 -0400
 Received: from [192.168.100.1] ([82.142.27.6]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M9Fvl-1mWFwX1zD5-006QmR; Wed, 15 Sep 2021 15:17:18 +0200
-Subject: Re: [PATCH] qdev: Complete qdev_init_gpio_out() documentation
-To: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20210819142731.2827912-1-philmd@redhat.com>
- <87k0k0bl1a.fsf@dusky.pond.sub.org>
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MQusJ-1mEaR32tV9-00O0EO; Wed, 15 Sep 2021 15:27:54 +0200
+Subject: Re: [PATCH] Add qemu_vga.ndrv to build/pc-bios folder
+To: John Arbuckle <programmingkidx@gmail.com>
+References: <20210901121620.1320-1-programmingkidx@gmail.com>
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <8b99601c-dc2b-7489-e500-aad5b5a8c0a4@vivier.eu>
-Date: Wed, 15 Sep 2021 15:17:17 +0200
+Message-ID: <9c8e7273-6b28-8598-f679-92c467fff06a@vivier.eu>
+Date: Wed, 15 Sep 2021 15:27:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <87k0k0bl1a.fsf@dusky.pond.sub.org>
+In-Reply-To: <20210901121620.1320-1-programmingkidx@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:BO36pgz7ix95R/JP8o6m/w0FDZxsbyV7KnYSBNyB9vbs+B7X2Lw
- +br5LMwCpZzvfP7KVD5qeuDWcR3RmwccYG8F9NlxU3/dlrKk8YiKD/hpQTtoRc508YLKJfi
- AzzqwgZ1FRo87O/z8a9LwH9pyRby8JGzV+dVyQjY46m18NJzWylYNRHmTg4eKcWXs+Tq9kZ
- je/Lel+HdQcUlnLpJdaJA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:VwdTCwp9EL8=:B26kYXWejYovSvxKgGMraI
- 7lXDR/0LHE3Xz7GyMd58Vtdv/YviNxd9WwwO/Ou+c7RLy8K90YoP7kDJnYowL1ldt8fnpnV5e
- 9WEXbx+R8Fhfr/0cNX++XsPS3zIA6NU0IPLOtaYn++sSowFpKCdDR20+hoBU+jkU8dVEPSRg1
- PrcguGY7eGBIVhURiM625/lWYRC9E15Xx3nVdXKH7CIOAcjOitDfTWQ8TBCldkHq9mbijmpOh
- RGHxqEEEH08s4QK2mOLRQAe0f/ba9MKZCg5kODGUHLlGRtMCSGloCucfaTV0i/4h+bWL10aSX
- hCY589vXa1ZBI1+kqMScved2F0RBzZHuT17Bpms8J8SVWy7RnViDag4GXNw1tiFLfGPocCVHb
- 5YLg228qxQh5VUEmZaygtm/1Gc4b9RN9TgLVo0iYi2ZZR0vOFgUtGKZx8VtCNFqkTfSYdrupt
- nWUnn6FllZ6uOKuYA7q47qixCtCisPg+XR/93kt5YvItEGzyrCmjq3Gl99Ts1CYX1I+XCs/EL
- /iQy02jbVGZQjIUX1XqQek1AziOO22gk+D3k4b2287W0P6o11f036aVEJYvvVGwMJrgbMd6d5
- NJGBJbFwYOOlitaa9XEAJFtZy2RO8Qq5erJXQfnkr4UI9JI9mfjU9MEBezJiaq+lV59wjoEnZ
- sC24vAWxcEKCxK7IvWwsNCUcAGnWjJR0BaAFN9Asq0mm1lefYicAtaFMBqSAFFkh0ZKKRGx6c
- IElaR5SyXtLlLPWvCdLLstv0gGAMmVH3mh5vsA==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:t84YECzovwTIM0wNAfY6S46QQjrTFrY/H2AIQbdwbU0P8p+jC3h
+ lU3PvE7ldS9jvICbP5XWpEVv7BfY/WshNyfHUqyUfNdq9sR4Xe2ChJzKikyJRBhwDbp3avM
+ Ce4sbMvt8OjlfYFz1GMOT/mMKPSOefnQymFgxYQF27MsMKMjEzTcSRwO8lgoDb0c5PJ7R4N
+ nTHFQDCkeeiW2H1mRbuxw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:afhAxt42Zrs=:c9nRSshTF1VK1s02W8tQcN
+ p2/iGAtG+Han9l1N4FeKcD51IZHY/DeAHuFJcluMYW2OnRwPi6qB10ugmCx4ktl9Hv2kgRsn3
+ KCtUhuhZPfs0WI9ZYwWQb6cUwv0QPohbsiYywvcSLG0wsffhpUs1iCVYjTjXF8PXQgtsqa/A/
+ kgCYuEqNNRfOIvK0fZpCjDu12DlKN4UEScyOsqEEsvMR8iluCYowcEoPWO89/CskXh2onx2lg
+ gMKsBXuQ64XFDeRfIk1rLmXrrcD/UqW7D+ZFHepye56x6IgbOi/mkWGNwxgDRoBmhnrAqDJZq
+ ypp3w25Kby7mmdzqN8ZD0rQUBYaF467ef0CFyEfuO8FIwQWkJK2AO6vip0pxSqkO6VrxfmvuP
+ b3nEe3+kz36b3P7sHnfDWcUkJQNunmL7PyX57CVcxdafDmm9VfmxQGn3qSwtS+1N2mcXj6akI
+ m9FwvPryIl946iRtR4QNkxc0dRXSEN8xhSLubzEP6p5X+AqCGpep7PFyTNT40T2rNipceg5M1
+ kt0XiYRL2mpQ/7UNuZ6yA1W8JYzJ2uFTRsMJfwwyefQTOyhpmnp/XPCFhvLs8P3YvxEZsoijZ
+ H7um37o7XQACoRexk2NLfbXmT247bXPnJenaXHAt0xGmd0AHBtdqL38QFyXsxh53l1i2i2iJr
+ rjqNaSAeqZwq2QzWet35dLkepyqx7Y+U/qO/12Vd4PcTaYoSDNpHj4CQokZ63GMet9BFVXJaX
+ nxHo+Hx98qS0neXGCJW7IyHcTFM3YgMqYyiSlA==
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -35
 X-Spam_score: -3.6
@@ -67,43 +64,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Sep 2021 13:17:26 -0000
+X-List-Received-Date: Wed, 15 Sep 2021 13:28:00 -0000
 
-Le 01/09/2021 à 13:19, Markus Armbruster a écrit :
-> Cc: qemu-trivial
+CC Mark
+CC qemu-devel
+
+Le 01/09/2021 à 14:16, John Arbuckle a écrit :
+> Currently the file qemu_vga.ndrv is not copied into the /build/pc-bios folder. This makes all video resolution choices disappear from a PowerPC Mac OS guest. This patch has the qemu_vga.ndrv file copied into the build/pc-bios folder giving users back their video resolution choices.
 > 
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
+> Signed-off-by: John Arbuckle <programmingkidx@gmail.com>
+> ---
+>  configure | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 > 
->> qdev_init_gpio_out() states it "creates an array of anonymous
->> output GPIO lines" but doesn't document how this array is
->> released. Add a note that it is automatically free'd in qdev
->> instance_finalize().
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  include/hw/qdev-core.h | 4 ++++
->>  1 file changed, 4 insertions(+)
->>
->> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
->> index bafc311bfa1..555d4e444a5 100644
->> --- a/include/hw/qdev-core.h
->> +++ b/include/hw/qdev-core.h
->> @@ -597,6 +597,10 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_handler handler, int n);
->>   *
->>   * See qdev_connect_gpio_out() for how code that uses such a device
->>   * can connect to one of its output GPIO lines.
->> + *
->> + * There is no need to release the @pins allocated array because it
->> + * will be automatically released when @dev calls its instance_finalize()
->> + * handler.
->>   */
->>  void qdev_init_gpio_out(DeviceState *dev, qemu_irq *pins, int n);
->>  /**
-> 
+> diff --git a/configure b/configure
+> index 9a79a004d7..281577e46f 100755
+> --- a/configure
+> +++ b/configure
+> @@ -5056,7 +5056,9 @@ for bios_file in \
+>      $source_path/pc-bios/openbios-* \
+>      $source_path/pc-bios/u-boot.* \
+>      $source_path/pc-bios/edk2-*.fd.bz2 \
+> -    $source_path/pc-bios/palcode-*
+> +    $source_path/pc-bios/palcode-* \
+> +    $source_path/pc-bios/qemu_vga.ndrv
+> +
+>  do
+>      LINKS="$LINKS pc-bios/$(basename $bios_file)"
+>  done
 > 
 
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
 
