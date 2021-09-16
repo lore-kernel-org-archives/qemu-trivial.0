@@ -1,57 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQouV-000651-K9
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 06:46:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50482)
+	id 1mQozo-0003bY-OV
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 06:52:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51812)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQouN-00062H-S9; Thu, 16 Sep 2021 06:46:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:58719)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1mQozm-0003YB-Qx; Thu, 16 Sep 2021 06:51:59 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:40550
+ helo=mail.default.ilande.bv.iomart.io)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQouM-0002lR-1V; Thu, 16 Sep 2021 06:46:23 -0400
-Received: from [192.168.100.1] ([82.142.27.6]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MiMIY-1n55HF3eP0-00fSh1; Thu, 16 Sep 2021 12:25:36 +0200
-Subject: Re: [PATCH v2] qobject: Fix maybe uninitialized in qdict_array_split
-To: Janosch Frank <frankja@linux.ibm.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, cohuck@redhat.com,
- philmd@redhat.com, borntraeger@de.ibm.com
-References: <20210615130921.55008-1-frankja@linux.ibm.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <39062092-83c3-251b-c583-35ec7a2a9a00@vivier.eu>
-Date: Thu, 16 Sep 2021 12:25:34 +0200
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1mQozk-0007Xa-3h; Thu, 16 Sep 2021 06:51:58 -0400
+Received: from host109-153-76-56.range109-153.btcentralplus.com
+ ([109.153.76.56] helo=[192.168.50.176])
+ by mail.default.ilande.bv.iomart.io with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1mQoza-0000I0-M1; Thu, 16 Sep 2021 11:51:50 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20210916084002.1918445-1-f4bug@amsat.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <d7b78e5f-f283-fcb5-964d-306420bf1088@ilande.co.uk>
+Date: Thu, 16 Sep 2021 11:51:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-In-Reply-To: <20210615130921.55008-1-frankja@linux.ibm.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+In-Reply-To: <20210916084002.1918445-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9of9/63qCdibC4smp6BCfEe6m55apDCOcyI0kT8wj1xDxt59zqx
- uOVckJVh8LIZWnEfO4u48KgO92fnPiKOsyqKt5pknNPvbPfuxg87FhjFe2EPb72IqoxDOf4
- h7GA55tHyrsdXdPncOaa2b3WIKDjcb7uTPoBDy9x95w6E1s64Jd5SXC1EYKnjZfuEVgZY9M
- mSWxDRN1ShRJCqsUjNQZw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:dUqRKBLwYt0=:baZJAWDBnJKxdl2FINAm0z
- zEne9UpLcXM8uuD1sZCeuHHBcMg86/YVabX1yqwtIUpZoEHWHvPegbIbMKqmvW6LU3jyvZ2K4
- yy+7e5kBi4anh47loougRad5DZRj9HmL/mq3dO9voN3SsyQgbBt97U3C/YOqcA1Oa1M41M3/b
- b53TRA0ZPVLokDlQnLebGTZCKdDcY/jz2C5USQvAkkVru6fbz+uUmFFEkiS7w9BidZCWRjp+F
- tdshbP4UNKzrGXvjDHB0yKcPqyvygvzdBc2+PM8aRySOznLUknsTExbwYaSd5Hvp4+X40vru7
- i4zZ3o0+VVP3U6347qhpPG2Li3yiwZ2/WYWJ02mbwlonZxbXyVQieyWd/Sm82ITFGPkDRWWIo
- DIVKq/UfACramLcvgcnj1B0RoIr7/e3abYMIp3/gasv3lTeiM6E+joCUW4tejBMiI2HKW6C3M
- pp1POP042alobN1wgTtnRtMfALkV9IBRk0GCz+kaVHpqO4rlVmAjC9/0spGEUcvsI/NuRsPX5
- QzAVWtGrmjx6tIloTSYiCtg9SvmCotrfcC2j/C7MQ4bhV4N8WrsOsqFpSZsyoXyIYqZcwaGVd
- ytBQErhpPlcZR92j2lKMqp9+LTRPBD9ZxXTlg56k3g+S3hnd9T+BvSeyHwH0VnUZYmN2Xkzix
- j7cGWw3RqEsn6gGU0TXOYcvaoBma/Q7I/punQFxh3gd/j74CzSMBJMAqNT58LBuoyYe5yZDy6
- +FFHmiItP7l+yZV1S7G7dQjSjnm8oymDQZRUFYMvdrHmANavNV51h876ZFrjPoh3VzgXXqdrQ
- SIVhN26
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -35
-X-Spam_score: -3.6
+X-SA-Exim-Connect-IP: 109.153.76.56
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH] target/sparc: Make sparc_cpu_dump_state() static
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.bv.iomart.io)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk;
+ helo=mail.default.ilande.bv.iomart.io
+X-Spam_score_int: -33
+X-Spam_score: -3.4
 X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.698,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.488,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -64,55 +55,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 10:46:24 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 10:51:59 -0000
 
-Le 15/06/2021 à 15:09, Janosch Frank a écrit :
-> Lets make the compiler happy.
-> Found on gcc version 10.3.0 (Ubuntu 10.3.0-1ubuntu1)
+On 16/09/2021 09:40, Philippe Mathieu-Daudé wrote:
+
+> The sparc_cpu_dump_state() function is only called within
+> the same file. Make it static.
 > 
-> Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  qobject/block-qdict.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+>   target/sparc/cpu.h | 1 -
+>   target/sparc/cpu.c | 2 +-
+>   2 files changed, 1 insertion(+), 2 deletions(-)
 > 
-> diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
-> index 1487cc5dd8..8d0f00bc3c 100644
-> --- a/qobject/block-qdict.c
-> +++ b/qobject/block-qdict.c
-> @@ -224,7 +224,6 @@ void qdict_array_split(QDict *src, QList **dst)
->      for (i = 0; i < UINT_MAX; i++) {
->          QObject *subqobj;
->          bool is_subqdict;
-> -        QDict *subqdict;
->          char indexstr[32], prefix[32];
->          size_t snprintf_ret;
->  
-> @@ -249,14 +248,16 @@ void qdict_array_split(QDict *src, QList **dst)
->          }
->  
->          if (is_subqdict) {
-> +            QDict *subqdict = NULL;
-> +
+> diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+> index ff8ae73002a..1f40d768d8b 100644
+> --- a/target/sparc/cpu.h
+> +++ b/target/sparc/cpu.h
+> @@ -571,7 +571,6 @@ extern const VMStateDescription vmstate_sparc_cpu;
+>   #endif
+>   
+>   void sparc_cpu_do_interrupt(CPUState *cpu);
+> -void sparc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+>   hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>   int sparc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+>   int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+> index 5a8a4ce7506..21dd27796d0 100644
+> --- a/target/sparc/cpu.c
+> +++ b/target/sparc/cpu.c
+> @@ -612,7 +612,7 @@ static void cpu_print_cc(FILE *f, uint32_t cc)
+>   #define REGS_PER_LINE 8
+>   #endif
+>   
+> -void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+> +static void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+>   {
+>       SPARCCPU *cpu = SPARC_CPU(cs);
+>       CPUSPARCState *env = &cpu->env;
 
-I think the "= NULL" is not needed with the v2 as the setter (qdict_extract_subqdict()) and
-the user (qlist_append_obj()) are in the same block now.
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
->              qdict_extract_subqdict(src, &subqdict, prefix);
->              assert(qdict_size(subqdict) > 0);
-> +            qlist_append_obj(*dst, QOBJECT(subqdict));
->          } else {
->              qobject_ref(subqobj);
->              qdict_del(src, indexstr);
-> +            qlist_append_obj(*dst, subqobj);
->          }
-> -
-> -        qlist_append_obj(*dst, subqobj ?: QOBJECT(subqdict));
->      }
->  }
->  
-> 
 
-Thanks,
-Laurent
+ATB,
+
+Mark.
 
