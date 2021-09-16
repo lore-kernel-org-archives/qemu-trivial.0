@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQom3-00010p-Uz
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 06:37:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48228)
+	id 1mQopE-0005qO-Gt
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 06:41:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48902)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQom2-0000wv-Pl; Thu, 16 Sep 2021 06:37:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:53175)
+ id 1mQopC-0005m7-M9; Thu, 16 Sep 2021 06:41:02 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:44635)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQom1-0003wY-7f; Thu, 16 Sep 2021 06:37:46 -0400
+ id 1mQop9-0006eI-UY; Thu, 16 Sep 2021 06:41:02 -0400
 Received: from [192.168.100.1] ([82.142.27.6]) by mrelayeu.kundenserver.de
  (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N62mG-1my2Rr1Dqq-016MId; Thu, 16 Sep 2021 11:58:23 +0200
-Subject: Re: [PATCH] hw/vfio: Fix typo in comments
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Cai Huoqing <caihuoqing@baidu.com>, alex.williamson@redhat.com
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-References: <20210730012613.2198-1-caihuoqing@baidu.com>
- <ebb42d43-f3b8-f55c-b0d5-55e60a881747@redhat.com>
+ 1Mv3M8-1micFY2nnk-00qy8O; Thu, 16 Sep 2021 12:06:20 +0200
+Subject: Re: [PATCH RESEND 1/1] multi-process: fix usage information
+To: Dongli Zhang <dongli.zhang@oracle.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: elena.ufimtseva@oracle.com, jag.raman@oracle.com, mjt@tls.msk.ru,
+ john.g.johnson@oracle.com
+References: <20210713004718.20381-1-dongli.zhang@oracle.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <ea4bfccc-1293-dad2-0209-91d4b39188a2@vivier.eu>
-Date: Thu, 16 Sep 2021 11:58:21 +0200
+Message-ID: <dae38fa9-b774-b81b-bce0-ff962e84b6e3@vivier.eu>
+Date: Thu, 16 Sep 2021 12:06:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <ebb42d43-f3b8-f55c-b0d5-55e60a881747@redhat.com>
+In-Reply-To: <20210713004718.20381-1-dongli.zhang@oracle.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:H2Nt1+ucJJE7WvXeLOZujm+jIb9uTJBBuRnzBGQhOXsNt9aFZhd
- f+zghGPBfz5Fp0UK5hfiJe0MuGVnlaA0TazCJ11WJuK6Mc8SIgAggp1/xxSyVNrs8cfzHAX
- VYwLF0HpqHZX6eGZmmnKOg/oNVLcT0EA7wXLcDVhOT7Tiqh9cVHudCwhYmoAlU342MvNZ7f
- 3HtlKY0amklxdXB5zcbzQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rx9kGhBWkuo=:TL5n5rJO7TVx7yjdEtR5Dr
- ZGq+77ZLua+bk6P6ul3PHlD5FzZvMhES+SDaxz2aXhiATulNEMO+GxRvcMuOo/GX3QhYM2EVQ
- KpknfsFEwlDU30q80mqp77W6J7iqkh17/EJ73IJrJmjQV5m4fjbWj5UbMNk6z3DRi6WqZH5mW
- 14VuX9eIkF75NQ49okncuH3Y5DjzZfKc+sJUh4eyjjXzQ0DHIc63I8JnVlCThivQC8QfNPKhJ
- ofrOlQcd40K2kSQus3T9fnUEiaO8aiKjI/CwqL8bSLC1TC8awnsC+O1AHfBOZuJ89tgIY4n/f
- Ebt3tJX1oI5uVH02QgnbTq3N6wg0tex+ZtlpzHBfvoAerXgkyrFF9zzVAl+IJerpqaLpDJ7lR
- THbCokPqVQcJyTvl7dAqAJ80iDKI9ajLjxj0aZfoNIjho62jQ7QHI3qnOE9G+JEwo+etuau55
- T+Jq/4SM/7daCsvMTm4jl1pXy3cyPkxCLEymb/bJEX16UsE7mHRyrhzjNTF5XPYTPiVLOggFA
- Z1d4JzXX6UcEAM10f9CcV3wkfkyiYBgRzrnOSDVMJKhOzXMFifWUMdcp53YCydDmwXfKrEd9H
- rMDjeTqu5yWJsSYUNRgrtmxAUUVWcmsoPnI5vr7pgY7EY8mu5tFU6ZURRAYBPBhXOSyZVPdty
- xRfih2wglmxS4wVXUF2pHb34uSlwXkvAziEhFauV/XpDbl+1NNmHPL6kTYeoAAAKm3PeDhcpv
- YjRY50Jen6fOmbpE1cbgGl0X0u6eJR+spWPSyoRCL+4cVWoYO/Axbcjia87nBllYyAy2WLZ2I
- wl5bleb
+X-Provags-ID: V03:K1:cljIZFqySIgreF29A9GrcTYNUhQtGG1hmaupsypSVIck7lu5t3t
+ Ygsr8V8inohn0OreZRCxYUAAVFUBpyxJbskcXDoSL/i5QzTpoiAwDrlD+E1mXR5edzBD1W/
+ 2opUCHH5vUoc09uT9ERKjz/RjxEaAMbIRHJHrhaDPvQNPiIl5hzbOgt6WN5vER+E6/c2nNB
+ 04pUE8D5jB/Km0G/QC5Gw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8JRi2jGYc8o=:u/ysYoViRMC/zUkt+z+vXZ
+ 1wDgLJM3454w6zMKspsUAY/68KJ68iRQoiTsTn66vOsyh8bNMapbAcZC7U6vOCHTtW+C1XiB2
+ yBKkA+jQOOtvYE9gXgzzVps+5Q7lh9ykjLleQoFVJU/P4H7MWO11v3nQtlZmH4tVCe9aQSFe6
+ hpeaw9xCHUG3QiwiSdCrgESvxrPy1PwMTcW6+lkDhgad/NjHYotgEzB6W9FaXCnkUFDfOElPu
+ MOsDjcwtk8VLue4EILpNgqoN81fZYKy/uhR8k1qgQFEeffuKeqP0R4GlaMExLfegT1DZFifO+
+ sEvTcs0on8VHbidqKgTS3oGulAX3wcwq3ROW7IVQG0fbH6sFt0S2DQE0FILC37/EDyuGDPn0R
+ l8yY6vFvgzxeUIhNwsLo45HTvxt3QcniY07iySF4OGWkXu12ZAEGfDAhtZAJk9H3l16ZVYUTH
+ 6K6L9QNJNrFI6tC2QfIn89Sq+e1YtcZctHMUsWQj2zMg0qfQ3o/9xZ+pnltWQl6HRXBFtIGaO
+ Aqq1JYF/OdKhDi5d61J6ZlgDuTJv2LdeicFZBQH71hvOdHXpjUSujAtPM4VGqZIGCYRz5bBAN
+ P7xyWK8Ppel1q62zW+8V6491SeCK/Qo2S+ep5t/Tl5YUi2iMs4VcG3BGuK/0IZwDBiu/Q2YI2
+ ZNdMcQiZqIxtw6x6N1zlJkHdKcyP5rMGtijiGdU3ZxAKa5R8bTpRa2lBShX0UKNrhXmmkW8Me
+ wsM1SosR6iSEqWpovFy+gPAwTOPROQP6qEBl+R9khhsiIQqmO8ghOKG5Yu2rnQp3WAnjpk+Hg
+ xQL7BLX
 Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -35
@@ -65,33 +65,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 10:37:47 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 10:41:03 -0000
 
-Le 30/07/2021 à 13:26, Philippe Mathieu-Daudé a écrit :
-> On 7/30/21 3:26 AM, Cai Huoqing wrote:
->> Fix typo in comments:
->> *programatically  ==> programmatically
->> *disconecting  ==> disconnecting
->> *mulitple  ==> multiple
->> *timout  ==> timeout
->> *regsiter  ==> register
->> *forumula  ==> formula
->>
->> Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
->> ---
->>  hw/vfio/igd.c        | 2 +-
->>  hw/vfio/pci-quirks.c | 2 +-
->>  hw/vfio/pci.c        | 6 +++---
->>  hw/vfio/platform.c   | 2 +-
->>  4 files changed, 6 insertions(+), 6 deletions(-)
+Le 13/07/2021 à 02:47, Dongli Zhang a écrit :
+> From source code, the 'devid' of x-remote-object should be one of devices
+> in remote QEMU process.
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+> Reviewed-by: Jagannathan Raman <jag.raman@oracle.com>
+> ---
+> Resend to be applied as trivial patch.
 > 
+> I have verified by reading the code and playing with below orchestrator.
+> https://github.com/finallyjustice/sample/blob/master/kvm/multiprocess/orchestrator.py
+> 
+>  docs/system/multi-process.rst | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/docs/system/multi-process.rst b/docs/system/multi-process.rst
+> index 46bb0cafc2..210531ee17 100644
+> --- a/docs/system/multi-process.rst
+> +++ b/docs/system/multi-process.rst
+> @@ -45,7 +45,7 @@ Following is a description of command-line used to launch mpqemu.
+>        -device lsi53c895a,id=lsi0                                         \
+>        -drive id=drive_image2,file=/build/ol7-nvme-test-1.qcow2           \
+>        -device scsi-hd,id=drive2,drive=drive_image2,bus=lsi0.0,scsi-id=0  \
+> -      -object x-remote-object,id=robj1,devid=lsi1,fd=4,
+> +      -object x-remote-object,id=robj1,devid=lsi0,fd=4,
+>  
+>  * QEMU:
+>  
 > 
 
-
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
