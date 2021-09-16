@@ -1,49 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQs6M-0000lJ-3v
+	id 1mQs6M-0000n1-Id
 	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49574)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49584)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs6A-0000ao-7Y; Thu, 16 Sep 2021 10:10:47 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:46855)
+ id 1mQs6A-0000ap-Rg; Thu, 16 Sep 2021 10:10:47 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:57871)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs62-0005rH-8t; Thu, 16 Sep 2021 10:10:45 -0400
+ id 1mQs63-0005rK-5Y; Thu, 16 Sep 2021 10:10:46 -0400
 Received: from quad ([82.142.27.6]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MV5KC-1mIasz2PCg-00S3CB; Thu, 16
- Sep 2021 16:10:31 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MMnru-1mAJ9J3WvE-00IjXR; Thu, 16
+ Sep 2021 16:10:34 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Ani Sinha <ani@anisinha.ca>
-Subject: [PULL 02/10] hw/i386/acpi-build: Fix a typo
-Date: Thu, 16 Sep 2021 16:10:18 +0200
-Message-Id: <20210916141026.1174822-3-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 06/10] target/i386: spelling: occured=>occurred,
+ mininum=>minimum
+Date: Thu, 16 Sep 2021 16:10:22 +0200
+Message-Id: <20210916141026.1174822-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
 References: <20210916141026.1174822-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:KNx/rCS/bZzp7BV07Drg8AKK9aroGsX2XEkkDn6TWGoYkGSPYp3
- y0KWXdta+otkAgdmRdU66W0FqbpZJ61rXbLSBICAswHg2sO53g1ZoN6h1YaJFiCDKx9Gz0H
- XPQY45bxvaumx+ambmEZvMf45ZqshuXQSvLgMKk/d3lZnkP6CSx7+LrGQbzuFR/QOOZakQi
- iDYzk4TmYP9x9P3zMUPcg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:r2MjFjCFOa4=:kKduPJFLL0Fxclhgdef1fi
- +Joa8gkeZH3ah3uUJQblralX8qaJ1aQDHpvLIw9hk48n59KFDD7Qsc57/fuv+AJPZzv9YIhY0
- mW3hZtJn2BeFW03Xrpqa0dMpf5HejZXe67kc/YRLUgJgViz/MSBALxbrxjiE8QoUQ8LSXA5jf
- +wqNuRG3Jklv9KNmwzX5gKfi9OMGQhPeas/XYg8Q7q68DQOVr7ouFA3aLLNKshL2NnY7KnN6Z
- 03mMrtWzKLlixk/DLGEg4JsPXWru4dAK+9xFKvpW4yP0P0M3nBE6w7Q7Y+MaQ9Ib/jPgdBb5O
- dXEPcwFOtWC6q7ldiOE7XcttLrg3nRhhRlGllny1BxN4w5dmBBApc9RKD+w1HTSIX83P0eCOz
- Vbb3MiyBCcIHv78ei4Blnf6s33HtSQqLca/HQfuZFu0epf7OUIjUuH8l2N91w4g7OGtogzEiL
- 35pt/2lPHTfD5H6JdL1oDHMkrm+XDw63RyTibpKqfsc2Nsu7mxsEPszTKhJTrz5xRBmQs5LsF
- 3Lcul0/I5QtYWBBT3B0o0gn85SkB/KaWue8IBs34kv2ZxP7uJw+GrRwOZ+RWQ+dmPmyASLac8
- c7Aw0HpEg/QYa4lxcNlZfuyesEYG/ieF4xPIPutfk0SFsmlRAay74c463SrU5g3kkAi/rgRvq
- fdkAmxWDV7Bwdj3aD9+AxkLjgWi1/LxKzAHW/u+Oa6iTpAMx3mroa/0oMy2CnOjC3HwXl42ZD
- PK2Y55YQa4zDe/Dn5CKzJiAt1LQrHHODKlT1yw==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:q12Zwxsk4WKAO2JqcRHb4/GkOO6guq2y7RSOyzvkjkwwwEMYvcz
+ Wjv28Y7OC8knmySCPX3xPARMU9yY5bKhEg9ToGuSmx5jXy8hAKo5UKLrtgXDOQbmQCWTvNQ
+ 9rbbGTKFI6rhLc1ocEtcQ3RJc5HyzRhsUR1I4SWymQlpQ6v23q/7fAjorC8QpTwQV39whPR
+ wjYO8QUKRSEcjLAZigqJA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8j424mu0bLI=:qxdyNdmkDKkdhQJqKHZKXG
+ MZULPecokB3XT+nS4DpPTv5YBs71lN64uVNj78Evv71t9cU33AwOkwnxmgE7D6xnPF7AXVYss
+ f9tNeFwPFq47Sr5czp55njyWLB4/ABw1VYn0GrZrSW1wBz6oaq81fc2TaGGhzSVBDSz0KCHHR
+ R+pE8uQ0ir7kpGecWZ10G18zgLQgOWb8m03TUN7ZmMgAM+FlRcLcMUa++iQHlF6znhpKL2lAl
+ /Ta21jM+EhCKem4kfmhPDnvXJbi9iZS742C61X2XCyqLkSompVB1puL9GbdlfLvTYONgfYj6d
+ IYThtHBM3HZjLgPli53HZRJxZMOvT6RhXC7E6ojU20pAJNUbJtHHAnchK8TF+/uyzCtLYJjgp
+ 7zB66yG2Yje9+upZDAytqNpnZHaO+VFGZQoBMBqeatkAS22BkBC+4fCHJOsg8gxR/jkqsO545
+ hZ2wBV7tK/nY5t6bcsUSBReWsxw4DdGAFfpQRpr02QTcWqRB5hAPoLQSmf9NxAjyn0497mwEb
+ 507mbWLEgHoH1Bpr2Sx7PPu8LeqHGcXElobIkcx3tjb6AXu+QB6V5F3PTEYUTl6+0SL4NMKOJ
+ GWbInDOE+LHv9oNkkbJPD+NRw2qIPcwF+fyWwSPhJqwulXNOFsNqQEsePpbQLRssoXw7npMJO
+ lLqG7QVDpnHe8JD0gGV9Y725qBCnp4mGvPK3YAGUdRQ/lgc39K1+10P0GAgdWdk2L3oZlNrjC
+ KqKamiWdXYI8UwgT8EQ0+9ZjynpJTNHpiBdP0g==
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -62,44 +60,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 14:10:47 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 14:10:49 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
 
-Fix 'hotplugabble' -> 'hotpluggable' typo.
-
-Reviewed-by: Ani Sinha <ani@anisinha.ca>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20210911082036.436139-1-philmd@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Message-Id: <20210818141352.417716-1-mjt@msgid.tls.msk.ru>
+[lv: add mininum=>minimum in subject]
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/i386/acpi-build.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ accel/kvm/kvm-all.c      | 2 +-
+ target/i386/cpu-sysemu.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index d1f5fa3b5a51..dfaa47cdc20b 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -1916,7 +1916,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-     PCMachineState *pcms = PC_MACHINE(machine);
-     int nb_numa_nodes = machine->numa_state->num_nodes;
-     NodeInfo *numa_info = machine->numa_state->nodes;
--    ram_addr_t hotplugabble_address_space_size =
-+    ram_addr_t hotpluggable_address_space_size =
-         object_property_get_int(OBJECT(pcms), PC_MACHINE_DEVMEM_REGION_SIZE,
-                                 NULL);
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 0125c17edb8d..cace5ffe6442 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2469,7 +2469,7 @@ static int kvm_init(MachineState *ms)
+             ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING, 0, ring_bytes);
+             if (ret) {
+                 error_report("Enabling of KVM dirty ring failed: %s. "
+-                             "Suggested mininum value is 1024.", strerror(-ret));
++                             "Suggested minimum value is 1024.", strerror(-ret));
+                 goto err;
+             }
  
-@@ -2022,10 +2022,10 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-      * Memory devices may override proximity set by this entry,
-      * providing _PXM method if necessary.
-      */
--    if (hotplugabble_address_space_size) {
-+    if (hotpluggable_address_space_size) {
-         numamem = acpi_data_push(table_data, sizeof *numamem);
-         build_srat_memory(numamem, machine->device_memory->base,
--                          hotplugabble_address_space_size, nb_numa_nodes - 1,
-+                          hotpluggable_address_space_size, nb_numa_nodes - 1,
-                           MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
+diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
+index 1078e3d157f0..37b7c562f53c 100644
+--- a/target/i386/cpu-sysemu.c
++++ b/target/i386/cpu-sysemu.c
+@@ -335,7 +335,7 @@ void x86_cpu_get_crash_info_qom(Object *obj, Visitor *v,
+     GuestPanicInformation *panic_info;
+ 
+     if (!cs->crash_occurred) {
+-        error_setg(errp, "No crash occured");
++        error_setg(errp, "No crash occurred");
+         return;
      }
  
 -- 
