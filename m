@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQs6N-0000qY-Bp
+	id 1mQs6N-0000sf-RD
 	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49552)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49586)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs66-0000ZI-KR; Thu, 16 Sep 2021 10:10:42 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:39605)
+ id 1mQs6A-0000aq-T1; Thu, 16 Sep 2021 10:10:47 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:43165)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs62-0005r0-UA; Thu, 16 Sep 2021 10:10:41 -0400
+ id 1mQs65-0005tB-4z; Thu, 16 Sep 2021 10:10:46 -0400
 Received: from quad ([82.142.27.6]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MFslN-1mgZx130kp-00HQ5m; Thu, 16
- Sep 2021 16:10:32 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1Msqty-1mkkQX38mW-00tBLd; Thu, 16
+ Sep 2021 16:10:37 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 04/10] spelling: sytem => system
-Date: Thu, 16 Sep 2021 16:10:20 +0200
-Message-Id: <20210916141026.1174822-5-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Stefan Weil <sw@weilnetz.de>,
+ Michael Rolnik <mrolnik@gmail.com>
+Subject: [PULL 09/10] target/avr: Fix compiler errors (-Werror=enum-conversion)
+Date: Thu, 16 Sep 2021 16:10:25 +0200
+Message-Id: <20210916141026.1174822-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
 References: <20210916141026.1174822-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:S7/+crBdyyQ5u09XJHisvfHvINmoXiWVNXe/yYDWLyPTA7Y0SSC
- FJlQLXjMHiyOHSejBUhTDGS9IemReB+cnMIAzBePwhErU6wabU/T1Zm5Hx5SYP1IrcHgeMT
- RdLgSk5jL8xJY50B5WKM9jr5ynhUzjd6RRH2zfxJJCU7l3bde3KaYbSaRkNhpEv6k6xEoj/
- gJHV8yruLI1g5HqN6GuvA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:xiB6yxkWzIg=:hwyKdnYzFl7Zdw9aJ7m8Ul
- 6aOQrPLw/4ZKqUTUJbvWKcIkg3lhwD7ARlKA+O6tNrLh6r0ENszZ8bZo30GSbMfL1o5c5k77z
- n8rpMjOFa8ROuktLSTQsD53zFCaGnamIfhuhHjIv92a9x7w6kBSF6d5strLH73aHYekRgHtvd
- 7c/Nip74mJbicJEsV6m/uM66UmnHT/2WbtJKmVL6R8zEb8t0jt6cP8sdSdH0jD34+0bsIgUzy
- Cwtqe9rpUiiOLpso9hKIWucGvq8LZLl43HkbYELg50EaPdGTPd+j2uafNXzmZE5mDUEuIzt6z
- XIBbvYJCGpRJNpDB739v6UhAgpghGhhAWl705XvgUNiruMpWC8/TphDl5dNKluIXxdJAzA7C6
- rvCaNC9aoN73m4WkjMd9JKKVnmX9tcQ6xB/8CpzsXmmLCzADBT9Wu4e5bBeb6WWwyGYMBkU89
- /eVvB8VR1zpK06Z3s/MkdeF3m+rbD+3KvXPqgHOD2d310aqkUOPkPhNdUBVpfmAbYejXwRlKd
- zIRkBJuHCuLK8UieuY8tv7j+KBS+i4zQFBxr3KIo7uiV+ci7DAhI6W9bsh//QnbMjwi4wmEIR
- +KRgNZ5mxBn55aliV9MOD8Yn8zXguxNwxL9uZE81CK81I5UXYI6bjk16iD6dw4zV6x++s8HYG
- oijDDw1pfntcx6fYPkF73M2FhHyyuXabuQV0xmXXCV4nfLC2juCzMkyIyiaBeaDhpqV739nDU
- S6X1MY+eGXmjbc60Q9lsXtRvHtm4DOz/dt4D6A==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:LyOkoG+asRnw83iBmSDISuopuy0rKxuaVsygE66lfD1NbRoAt7O
+ CK5uqsqfN+hpVzCnellWtW3VkF8cuo9Zldr40InIuHj3mIMgTJTr88cE2lhqjvwi6flgTWR
+ S1BF6xENsfcsHt8iS4N5xzWGksTbmojp49YcUBoJvPRukJbfNdUJdQCma7hSHUOxMcu7LLb
+ 7LSZ+nfTmEoINjQxjzACw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:/5MQYTTCwJ4=:cyrC/6kKcQuB1wqvCkZXYI
+ l/jKElGlWYgs7OzKTWQAawLXTxCMkDIwzvl2OZ51GFg57DDM0NOWO0yZ/BAm00qDArSiM3u6u
+ NWbesw8e0YUMb7WbkJxmqRzW/a0N8gHyfE1DK5BtYQJ/SkBYgyVEdfRd5q9+G+DFwz/lCu/T5
+ QquZ7eXiBe48wQ79026AAW1HmvzSWQkfr7+hUl8C/sxzYCQx1rPRqFfxw5FrAe+NybhGTbSXL
+ FzzcI8qR0rmw8Uh+lcxoljxazAB9JTQpyyoJNMSfZnsk7ry33Y15mPOXszSKmNR8JoJzuwp2u
+ xtoiNFBUjScZm1gUEZ3EnqLvUglNua0BrDamkTM/ti7CZIqFjHJsvrnYhHo87cxckMu8WVLzH
+ 7gwWNRAQ6O3PiSFD/ObVC7KnEKxJUduHXN+o79Ipc5/hdyZoa6XYxkh7ABwrhhj7vvxH1J6bP
+ iPPXe4GIzau72qg7QARR29+nYwEpOL9qM7YTpns9foVWAN1j4q0Rzxny/3HgaRaOR7XLmrkxx
+ z2rTMs7hYYyU2ADDEdojzxuDs7hBdVtRKPLezkMMoCStSAKX2eyr5jZ36DdDYyhv20Iw90vNE
+ sOjSjzbaJjp8xMfUkg31LOLFibzzvvpWiM8NfncslW19kWbt1vfmsVYh3wqtYU2BHXMAPzdq+
+ OjXReoakBT1ylI/RmVZEJR7eHywKfuJ29A/vccgo0AQNyoiHZ873ExTZbv5ZCpeWsiSFHhQCW
+ UE2CLZWqAUWhNL8+edCfuJRcDBqbF0F8VXPzOg==
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -61,55 +61,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 14:10:44 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 14:10:49 -0000
 
-From: Michael Tokarev <mjt@tls.msk.ru>
+From: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-By: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <fefb5f5c-82bc-05e2-b4c1-665e9d6896ff@msgid.tls.msk.ru>
+../target/avr/translate.c: In function ‘gen_jmp_ez’:
+../target/avr/translate.c:1012:22: error: implicit conversion from ‘enum <anonymous>’ to ‘DisasJumpType’ [-Werror=enum-conversion]
+ 1012 |     ctx->base.is_jmp = DISAS_LOOKUP;
+      |                      ^
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Michael Rolnik <mrolnik@gmail.com>
+Message-Id: <20210706180936.249912-1-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- block/file-posix.c              | 2 +-
- tools/virtiofsd/fuse_lowlevel.h | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ target/avr/translate.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/block/file-posix.c b/block/file-posix.c
-index cb9bffe0471c..1854bfa397b6 100644
---- a/block/file-posix.c
-+++ b/block/file-posix.c
-@@ -1705,7 +1705,7 @@ static int handle_aiocb_write_zeroes(void *opaque)
-              */
-             warn_report_once("Your file system is misbehaving: "
-                              "fallocate(FALLOC_FL_PUNCH_HOLE) returned EINVAL. "
--                             "Please report this bug to your file sytem "
-+                             "Please report this bug to your file system "
-                              "vendor.");
-         } else if (ret != -ENOTSUP) {
-             return ret;
-diff --git a/tools/virtiofsd/fuse_lowlevel.h b/tools/virtiofsd/fuse_lowlevel.h
-index 4b4e8c9724fe..c55c0ca2fc1c 100644
---- a/tools/virtiofsd/fuse_lowlevel.h
-+++ b/tools/virtiofsd/fuse_lowlevel.h
-@@ -1603,7 +1603,7 @@ int fuse_lowlevel_notify_inval_inode(struct fuse_session *se, fuse_ino_t ino,
-  * parent/name
-  *
-  * To avoid a deadlock this function must not be called in the
-- * execution path of a related filesytem operation or within any code
-+ * execution path of a related filesystem operation or within any code
-  * that could hold a lock that could be needed to execute such an
-  * operation. As of kernel 4.18, a "related operation" is a lookup(),
-  * symlink(), mknod(), mkdir(), unlink(), rename(), link() or create()
-@@ -1636,7 +1636,7 @@ int fuse_lowlevel_notify_inval_entry(struct fuse_session *se, fuse_ino_t parent,
-  * that the dentry has been deleted.
-  *
-  * To avoid a deadlock this function must not be called while
-- * executing a related filesytem operation or while holding a lock
-+ * executing a related filesystem operation or while holding a lock
-  * that could be needed to execute such an operation (see the
-  * description of fuse_lowlevel_notify_inval_entry() for more
-  * details).
+diff --git a/target/avr/translate.c b/target/avr/translate.c
+index 1111e08b83f3..438e7b13c18d 100644
+--- a/target/avr/translate.c
++++ b/target/avr/translate.c
+@@ -70,11 +70,9 @@ static const char reg_names[NUMBER_OF_CPU_REGISTERS][8] = {
+ };
+ #define REG(x) (cpu_r[x])
+ 
+-enum {
+-    DISAS_EXIT   = DISAS_TARGET_0,  /* We want return to the cpu main loop.  */
+-    DISAS_LOOKUP = DISAS_TARGET_1,  /* We have a variable condition exit.  */
+-    DISAS_CHAIN  = DISAS_TARGET_2,  /* We have a single condition exit.  */
+-};
++#define DISAS_EXIT   DISAS_TARGET_0  /* We want return to the cpu main loop.  */
++#define DISAS_LOOKUP DISAS_TARGET_1  /* We have a variable condition exit.  */
++#define DISAS_CHAIN  DISAS_TARGET_2  /* We have a single condition exit.  */
+ 
+ typedef struct DisasContext DisasContext;
+ 
 -- 
 2.31.1
 
