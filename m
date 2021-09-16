@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQs6M-0000n1-Id
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49584)
+	id 1mQs6N-0000qY-Bp
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs6A-0000ap-Rg; Thu, 16 Sep 2021 10:10:47 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:57871)
+ id 1mQs66-0000ZI-KR; Thu, 16 Sep 2021 10:10:42 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:39605)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs63-0005rK-5Y; Thu, 16 Sep 2021 10:10:46 -0400
+ id 1mQs62-0005r0-UA; Thu, 16 Sep 2021 10:10:41 -0400
 Received: from quad ([82.142.27.6]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MMnru-1mAJ9J3WvE-00IjXR; Thu, 16
- Sep 2021 16:10:34 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MFslN-1mgZx130kp-00HQ5m; Thu, 16
+ Sep 2021 16:10:32 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 06/10] target/i386: spelling: occured=>occurred,
- mininum=>minimum
-Date: Thu, 16 Sep 2021 16:10:22 +0200
-Message-Id: <20210916141026.1174822-7-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 04/10] spelling: sytem => system
+Date: Thu, 16 Sep 2021 16:10:20 +0200
+Message-Id: <20210916141026.1174822-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
 References: <20210916141026.1174822-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:q12Zwxsk4WKAO2JqcRHb4/GkOO6guq2y7RSOyzvkjkwwwEMYvcz
- Wjv28Y7OC8knmySCPX3xPARMU9yY5bKhEg9ToGuSmx5jXy8hAKo5UKLrtgXDOQbmQCWTvNQ
- 9rbbGTKFI6rhLc1ocEtcQ3RJc5HyzRhsUR1I4SWymQlpQ6v23q/7fAjorC8QpTwQV39whPR
- wjYO8QUKRSEcjLAZigqJA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8j424mu0bLI=:qxdyNdmkDKkdhQJqKHZKXG
- MZULPecokB3XT+nS4DpPTv5YBs71lN64uVNj78Evv71t9cU33AwOkwnxmgE7D6xnPF7AXVYss
- f9tNeFwPFq47Sr5czp55njyWLB4/ABw1VYn0GrZrSW1wBz6oaq81fc2TaGGhzSVBDSz0KCHHR
- R+pE8uQ0ir7kpGecWZ10G18zgLQgOWb8m03TUN7ZmMgAM+FlRcLcMUa++iQHlF6znhpKL2lAl
- /Ta21jM+EhCKem4kfmhPDnvXJbi9iZS742C61X2XCyqLkSompVB1puL9GbdlfLvTYONgfYj6d
- IYThtHBM3HZjLgPli53HZRJxZMOvT6RhXC7E6ojU20pAJNUbJtHHAnchK8TF+/uyzCtLYJjgp
- 7zB66yG2Yje9+upZDAytqNpnZHaO+VFGZQoBMBqeatkAS22BkBC+4fCHJOsg8gxR/jkqsO545
- hZ2wBV7tK/nY5t6bcsUSBReWsxw4DdGAFfpQRpr02QTcWqRB5hAPoLQSmf9NxAjyn0497mwEb
- 507mbWLEgHoH1Bpr2Sx7PPu8LeqHGcXElobIkcx3tjb6AXu+QB6V5F3PTEYUTl6+0SL4NMKOJ
- GWbInDOE+LHv9oNkkbJPD+NRw2qIPcwF+fyWwSPhJqwulXNOFsNqQEsePpbQLRssoXw7npMJO
- lLqG7QVDpnHe8JD0gGV9Y725qBCnp4mGvPK3YAGUdRQ/lgc39K1+10P0GAgdWdk2L3oZlNrjC
- KqKamiWdXYI8UwgT8EQ0+9ZjynpJTNHpiBdP0g==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:S7/+crBdyyQ5u09XJHisvfHvINmoXiWVNXe/yYDWLyPTA7Y0SSC
+ FJlQLXjMHiyOHSejBUhTDGS9IemReB+cnMIAzBePwhErU6wabU/T1Zm5Hx5SYP1IrcHgeMT
+ RdLgSk5jL8xJY50B5WKM9jr5ynhUzjd6RRH2zfxJJCU7l3bde3KaYbSaRkNhpEv6k6xEoj/
+ gJHV8yruLI1g5HqN6GuvA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xiB6yxkWzIg=:hwyKdnYzFl7Zdw9aJ7m8Ul
+ 6aOQrPLw/4ZKqUTUJbvWKcIkg3lhwD7ARlKA+O6tNrLh6r0ENszZ8bZo30GSbMfL1o5c5k77z
+ n8rpMjOFa8ROuktLSTQsD53zFCaGnamIfhuhHjIv92a9x7w6kBSF6d5strLH73aHYekRgHtvd
+ 7c/Nip74mJbicJEsV6m/uM66UmnHT/2WbtJKmVL6R8zEb8t0jt6cP8sdSdH0jD34+0bsIgUzy
+ Cwtqe9rpUiiOLpso9hKIWucGvq8LZLl43HkbYELg50EaPdGTPd+j2uafNXzmZE5mDUEuIzt6z
+ XIBbvYJCGpRJNpDB739v6UhAgpghGhhAWl705XvgUNiruMpWC8/TphDl5dNKluIXxdJAzA7C6
+ rvCaNC9aoN73m4WkjMd9JKKVnmX9tcQ6xB/8CpzsXmmLCzADBT9Wu4e5bBeb6WWwyGYMBkU89
+ /eVvB8VR1zpK06Z3s/MkdeF3m+rbD+3KvXPqgHOD2d310aqkUOPkPhNdUBVpfmAbYejXwRlKd
+ zIRkBJuHCuLK8UieuY8tv7j+KBS+i4zQFBxr3KIo7uiV+ci7DAhI6W9bsh//QnbMjwi4wmEIR
+ +KRgNZ5mxBn55aliV9MOD8Yn8zXguxNwxL9uZE81CK81I5UXYI6bjk16iD6dw4zV6x++s8HYG
+ oijDDw1pfntcx6fYPkF73M2FhHyyuXabuQV0xmXXCV4nfLC2juCzMkyIyiaBeaDhpqV739nDU
+ S6X1MY+eGXmjbc60Q9lsXtRvHtm4DOz/dt4D6A==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,45 +61,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 14:10:49 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 14:10:44 -0000
 
 From: Michael Tokarev <mjt@tls.msk.ru>
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Message-Id: <20210818141352.417716-1-mjt@msgid.tls.msk.ru>
-[lv: add mininum=>minimum in subject]
+Signed-off-By: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <fefb5f5c-82bc-05e2-b4c1-665e9d6896ff@msgid.tls.msk.ru>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- accel/kvm/kvm-all.c      | 2 +-
- target/i386/cpu-sysemu.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ block/file-posix.c              | 2 +-
+ tools/virtiofsd/fuse_lowlevel.h | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 0125c17edb8d..cace5ffe6442 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2469,7 +2469,7 @@ static int kvm_init(MachineState *ms)
-             ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING, 0, ring_bytes);
-             if (ret) {
-                 error_report("Enabling of KVM dirty ring failed: %s. "
--                             "Suggested mininum value is 1024.", strerror(-ret));
-+                             "Suggested minimum value is 1024.", strerror(-ret));
-                 goto err;
-             }
- 
-diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
-index 1078e3d157f0..37b7c562f53c 100644
---- a/target/i386/cpu-sysemu.c
-+++ b/target/i386/cpu-sysemu.c
-@@ -335,7 +335,7 @@ void x86_cpu_get_crash_info_qom(Object *obj, Visitor *v,
-     GuestPanicInformation *panic_info;
- 
-     if (!cs->crash_occurred) {
--        error_setg(errp, "No crash occured");
-+        error_setg(errp, "No crash occurred");
-         return;
-     }
- 
+diff --git a/block/file-posix.c b/block/file-posix.c
+index cb9bffe0471c..1854bfa397b6 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -1705,7 +1705,7 @@ static int handle_aiocb_write_zeroes(void *opaque)
+              */
+             warn_report_once("Your file system is misbehaving: "
+                              "fallocate(FALLOC_FL_PUNCH_HOLE) returned EINVAL. "
+-                             "Please report this bug to your file sytem "
++                             "Please report this bug to your file system "
+                              "vendor.");
+         } else if (ret != -ENOTSUP) {
+             return ret;
+diff --git a/tools/virtiofsd/fuse_lowlevel.h b/tools/virtiofsd/fuse_lowlevel.h
+index 4b4e8c9724fe..c55c0ca2fc1c 100644
+--- a/tools/virtiofsd/fuse_lowlevel.h
++++ b/tools/virtiofsd/fuse_lowlevel.h
+@@ -1603,7 +1603,7 @@ int fuse_lowlevel_notify_inval_inode(struct fuse_session *se, fuse_ino_t ino,
+  * parent/name
+  *
+  * To avoid a deadlock this function must not be called in the
+- * execution path of a related filesytem operation or within any code
++ * execution path of a related filesystem operation or within any code
+  * that could hold a lock that could be needed to execute such an
+  * operation. As of kernel 4.18, a "related operation" is a lookup(),
+  * symlink(), mknod(), mkdir(), unlink(), rename(), link() or create()
+@@ -1636,7 +1636,7 @@ int fuse_lowlevel_notify_inval_entry(struct fuse_session *se, fuse_ino_t parent,
+  * that the dentry has been deleted.
+  *
+  * To avoid a deadlock this function must not be called while
+- * executing a related filesytem operation or while holding a lock
++ * executing a related filesystem operation or while holding a lock
+  * that could be needed to execute such an operation (see the
+  * description of fuse_lowlevel_notify_inval_entry() for more
+  * details).
 -- 
 2.31.1
 
