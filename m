@@ -1,56 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQs6Q-0000xD-5d
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:11:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49654)
+	id 1mQxhD-00026H-Kd
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 16:09:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40978)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs6J-0000dp-4b; Thu, 16 Sep 2021 10:10:56 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:32837)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs6D-0005zb-HX; Thu, 16 Sep 2021 10:10:52 -0400
-Received: from quad ([82.142.27.6]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MysFQ-1mmNFk1wzi-00vwV9; Thu, 16
- Sep 2021 16:10:38 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PULL 10/10] target/sparc: Make sparc_cpu_dump_state() static
-Date: Thu, 16 Sep 2021 16:10:26 +0200
-Message-Id: <20210916141026.1174822-11-laurent@vivier.eu>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
-References: <20210916141026.1174822-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQxh9-000255-MP
+ for qemu-trivial@nongnu.org; Thu, 16 Sep 2021 16:09:20 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:33461)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mQxh8-0002yX-1V
+ for qemu-trivial@nongnu.org; Thu, 16 Sep 2021 16:09:19 -0400
+Received: by mail-wr1-x436.google.com with SMTP id t18so11458274wrb.0
+ for <qemu-trivial@nongnu.org>; Thu, 16 Sep 2021 13:09:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ppSC+/+Jpx8UR/QL3oTEu0FnuI55Fdz4BkNPfXRhnjk=;
+ b=wZ8lh2gQ+b5shgJAyzS4/dzCFt0fcD6J60kh8qafm9neLry7rW/UzfqM1GROhE53G9
+ uVgYTSfPjr1TfOvil4RB6z477BkOdtwngzWL8opR60ckESzo09Apc6UlyMFtmt3WRuNL
+ LkVz3NuEMm4FEjYfmfAn6dMwOX+e7dJSYwbhi6jxfNcGB2OJPVWx1DTj3UBcBzPRtx8N
+ YCOa7XHiXa5TtTP8HW67DoD6Le9NXLa6bb1KOIKVGqRJRkTSs+CKyX0Lfl5U65CMIpDg
+ HZ91zBaqi+52roJuUYcfWXD6BIzv2avDjfYMX9jJxmULv5XfV14U5f+HjP8J03cL6z5o
+ 3GNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ppSC+/+Jpx8UR/QL3oTEu0FnuI55Fdz4BkNPfXRhnjk=;
+ b=c7SfkHneBWKNDYXdQeV3ZRtSVuZmfTIQAC1dUMDS88mcqj4msijv00QdnfcrO7XjAe
+ YOjPe3I1l7aUYyNWn/9y0q6MiACwxh97X1KNDYqRdUq7aKj6RWw8MugHVi7zPf+OpdY6
+ XSGBWO5qBTANTg4Cb+7LGQbnzCjZItZWqWmEe5tdy/9RiQP78FHzO0rQ1XRf4+U95OJe
+ KrD5oG6iia1pPGQQWlKgVZD4YsAlsFFnF/LbMo4VV7DAeD9cDH/Fjgn2nDYhIqT9NfRQ
+ WQF97XVj1YzHm8zg8ki640fDvzcPKv9ZnCxKHeLIxyPAWpi6CSVQEcSaph70pMIpXN8V
+ 6h4g==
+X-Gm-Message-State: AOAM5328+F6ECzhvwMvgYY57AAhvYk2g7luTDg/RIb9iBbpFuku9WmmM
+ nNbluOs+l5Xdr2qoi2seBFvjULrURLssoUM24kSGog==
+X-Google-Smtp-Source: ABdhPJxgr/xpIjeD5ZZrGULm3j8i3pgHyQZmod3emZRE//ZQvHJOahNby2XKP6EqPBVYRwQojZs5HevnXUmFEeXUd4I=
+X-Received: by 2002:adf:fb91:: with SMTP id a17mr7923921wrr.376.1631822956195; 
+ Thu, 16 Sep 2021 13:09:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:diivNTPMv+cTN/boy9Azc/F6yegMMnjFXsXplk8BROYlbdbFjjA
- ACv7HHVcpod8PLJqT3eQ9XUc0MCbvjLpvZHF7JzIU92JfY9eO3qVFItj7EsN3RWdjSTZII6
- f7N+k4auXGn670tGK7YGnG4472RzgLHc0WLWTqaKbSTdrwoJdUoX07yLzipb1NuKHzKLVwe
- p+HVGLEP2I/P9XWjgWS6g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:oXNzOEwwRMI=:y08SQ7tVQ+dqdP0fob/Mlf
- G+iUBCa/RF6OAF+LOJkQbegunE05qzGNQgVRrtbZEz2nv5OtIsHNC/1XkDTaMkAMvVCLnNyk3
- rurOoOQKfYR7EdUA+aQYflECkRQbWT+p6qwLg74F5DIAtg9mGAPXz60hYYRyzfPLhR0CK/j5y
- qW+n8LMJYVIuAxCRhDGRkwD+TOj0KYJeGgZQ6x9BwPpEiFmY5mccAvpiAyzU4NFf+puKL45bv
- Ez4aX93fEPCA5EImqw75v/lKg0uwLZgo5/GbEHL1sFMjhKXjg04LhDfVsWOUDTA3gdBD8Ok5f
- 3KUMRU7O5w8fWRk0u9n4H4neTfzp+efg3Qaw0cKPrCniT+S81aXaTu6Hz6VZMLjwDoUTW/1Om
- vkdVkUTcA/wBg3d/6tUSTbhWLXWj3BT69iewUWn1uZqRDpHy3wkVjYzy941xfoTpD2hhx+CxY
- bG+2tuVhKCffVAjeRMH3jBS8VnOKS9w6t36ECx+zvhlzmN4UN5Z0D3E/lRFnq80hkHmm1xIE8
- zwTnpR5B+wOa1sypQnSwayctxfecBWGj8y9LNl67bSbGsJOtSoSScjoGVnHjcQjpbMzFNmMVO
- CDyBrHlfSvv/v4L9to6VK2cECGlPzJR0dqQVgqnceFyRMwpugxb2CtWpFGaYJIQ67WkgMxRaF
- AOwKF48yjA8rpRYpTyQxVvjT7VK5yeoX6hEmGtn9pzFBM3swl/dvYNjBO7O8pKIGjZOkYLbbg
- CXgOSBn5iIgOz7d8MTfbNcicFuEk7ZvAup+iqg==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20210916141026.1174822-1-laurent@vivier.eu>
+In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Sep 2021 21:08:25 +0100
+Message-ID: <CAFEAcA9Q-_T+wMyi+EmfjdnFMhdN70vcCy4_tG0s4h1eDZb=QA@mail.gmail.com>
+Subject: Re: [PULL 00/10] Trivial branch for 6.2 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,49 +70,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 14:10:56 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 20:09:20 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On Thu, 16 Sept 2021 at 15:19, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 831aaf24967a49d7750090b9dcfd6bf356f16529:
+>
+>   Merge remote-tracking branch 'remotes/marcandre/tags/misc-pull-request' into staging (2021-09-14 18:14:56 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.2-pull-request
+>
+> for you to fetch changes up to 9ac200acce8c27ef44da31246f337a2454e54e0d:
+>
+>   target/sparc: Make sparc_cpu_dump_state() static (2021-09-16 14:52:46 +0200)
+>
+> ----------------------------------------------------------------
+> Trivial patches pull request 20210916
+>
+> ----------------------------------------------------------------
 
-The sparc_cpu_dump_state() function is only called within
-the same file. Make it static.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-Id: <20210916084002.1918445-1-f4bug@amsat.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- target/sparc/cpu.c | 2 +-
- target/sparc/cpu.h | 1 -
- 2 files changed, 1 insertion(+), 2 deletions(-)
+Applied, thanks.
 
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index da6b30ec747a..2bf67fb99d60 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -610,7 +610,7 @@ static void cpu_print_cc(FILE *f, uint32_t cc)
- #define REGS_PER_LINE 8
- #endif
- 
--void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-+static void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
- {
-     SPARCCPU *cpu = SPARC_CPU(cs);
-     CPUSPARCState *env = &cpu->env;
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index ff8ae73002a3..1f40d768d8b5 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -571,7 +571,6 @@ extern const VMStateDescription vmstate_sparc_cpu;
- #endif
- 
- void sparc_cpu_do_interrupt(CPUState *cpu);
--void sparc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
- hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int sparc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
--- 
-2.31.1
+Please update the changelog at https://wiki.qemu.org/ChangeLog/6.2
+for any user-visible changes.
 
+-- PMM
 
