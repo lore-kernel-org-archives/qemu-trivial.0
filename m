@@ -1,55 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQs68-0000a9-Lh
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49512)
+	id 1mQs6B-0000bH-Ki
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49510)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs63-0000YB-6m; Thu, 16 Sep 2021 10:10:39 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:40843)
+ id 1mQs63-0000Y9-4w; Thu, 16 Sep 2021 10:10:39 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:52565)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs60-0005qL-Sa; Thu, 16 Sep 2021 10:10:38 -0400
+ id 1mQs60-0005qg-Oz; Thu, 16 Sep 2021 10:10:38 -0400
 Received: from quad ([82.142.27.6]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MGA0o-1mhOth1TFk-00GasX; Thu, 16
- Sep 2021 16:10:33 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mgf8s-1n7u0i0kG4-00hAGr; Thu, 16
+ Sep 2021 16:10:32 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
- John Arbuckle <programmingkidx@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 05/10] configure: add missing pc-bios/qemu_vga.ndrv symlink in
- build tree
-Date: Thu, 16 Sep 2021 16:10:21 +0200
-Message-Id: <20210916141026.1174822-6-laurent@vivier.eu>
+Subject: [PULL 03/10] qdev: Complete qdev_init_gpio_out() documentation
+Date: Thu, 16 Sep 2021 16:10:19 +0200
+Message-Id: <20210916141026.1174822-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
 References: <20210916141026.1174822-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9BA2pgzc5u9CNywlhK+tSwD/iueJ87rLuGvMtGZqFFfA4xELrih
- vlsz2ZosEiLehJq9TOhnBrYvizYfH3v4vRii1FC/L7FjnXBMaeq/FYDXiJkD2BDmBJ6T+B4
- xmI+cf+5/sLXvJQewp9Bwn+etorA01ixbEEzv0O8/6TKwbzueSfKndEvA0NtMQagpI1U7AQ
- 0tSt30IF05y5V+M447ZdA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:roFIoukUcnM=:Iz40SEJt8KqJTE0WCNTRgj
- nMupeU3WBoB2l+KKBumKtCH5HG5YcFmQGg+pn+eI20nSN9L6+vcznAXFdT6GNnAkN5SC6jgoZ
- 6YuEaGW3PQepOWfTB4m/RLBRUXjTxR25S5IT/p9jn2lEciLTnWzOKBRu+a0Pp2VE0938UZwWQ
- iJNztyBc4oOTqtPRdog9BG67wzlt7ajOk0GLgPztaOMOO/OQauNQ2iHv6SJE2j+rcHf2cvHLX
- x+Usn/40JOxs30LxZg7bhvjY7p7F8tqksN3vulVmqx0q2xzUQAnAbPAzw8IzCkdRn4u5PpEAl
- gUnHYpHjToLqHpuD3/uFOdCPZR/M1ULdJkYuluRqSV7lGRafe0cMCD/8ZwHxvIcqPKvrTgfPX
- 0OAKj/zE5QPxRCBdZodYuwzA/I3gRqlhkRey/ZUzz9wrs+gNVBhqI3lLh4OTB9yd//RA3u9HC
- fJ8wv8M/paGCkw/H+Jn4etn4cp6LoUXfyL7VGJbY5rCgLgfewLhW1tkfwzBX8JkgGYDfPkD/c
- Vp24YZlMUusGCAS2CYfLEU5CP0/RhIVt21wEITazL/8HEcFBGv/vtZYcAAvCVvCoYDRDw6wLl
- ek/Nt+jeK0hJCaaMTbYKIJcwXMgLn9Swvcg4/p65PJg4HN17yHYc4Q0ptSbQ17J86X/IbGATN
- HnTf/gFydeKnu0EMaxNkB9n2Gp6c4lOG02xc5bAEgWjHgOYYCfnJ0/xQmEQlsyzrSMYUwIoTu
- HSCc2TYxkIs1ogpynb7SKkFdYFXkBMNhM9VWgg==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:GZJrsP6kufVP8PIjyrUuEN9PI3SUddyaiHpfN8gf4VU8RSDOQCF
+ JFwJv3f9Fco6k69+imjAlLKMglpvqtN6mLd3XSvloCB2D7xRfxqVtp7shNy9YmCDw4avlfe
+ n4rHB/l/58nxJSsN353PhjOtYcykplmcABqI6ND7GUcC9Os3Rgo9anYZlGPiyEcZFhwzdmc
+ EhV+Po+Ro6Issdgsb6MyQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EuZUTzNfUmU=:Y53JEfeYe1xxAC5NUkJUIL
+ K/ZycGEs/gegRUWEykNaYgWx90ByDDKmENcep835sD6aPBojnZ9pD4KQuJvon7mXjGxzQ36qP
+ FV39thpHMxSzlsVqYGrQaAn9vohJdON4FdamKC5/uQzRhWn9q5g4GAF+pHj7YUkgfrEoy5QLK
+ oj6hV/Kx9WQ9OXoxIkteUUENeQKK8tfNDV3pChBKwOwlmSo1r3CbvqPVXA44ct/h9Lw56QPep
+ mKIQeVAKlfuv0rvieEOJ1JbrYn+9BnYpxyrjcYqEMVYNIcPQ8SZN/2SojiCUZ7lIPRrplymUM
+ xzP1nuVFbX4iq3sMzBjiZKAJe1yxxZF37mKoO+mUJHTvk5qn7qEw/ahhX8SUzPPG/oJtW8PK7
+ MHJmZYf6GQT5wySNr/IufkY9T8EKoZm78wN8WNI3JI6Y8zsrvmXROfS7QegkWWPphmhoobrFZ
+ 4SYDl4UeMRxlV+WsCN5gTBYJJawnrOcRqYtiizdHL4X7H6uIaI4S7bg81n3bEOkVJLdwmStNW
+ oRS2unrzQFwhFkUjWQzEj0MOSGgAuqPzIdr0sQV4GQhOXD0fwI4uZBQXjfjeTQloM23+fCajW
+ qoFDduKranRVxSFBfIBL1l9Pwr5NSx20nCuocW8vR3CSStgtTCcah4NkR58erEgu5gYpaMpFf
+ D4hgAIXl7jdaNjQZXRBN0sHjsOGoGQXF+xOG3a5ffbZOdqZ3bAY8UMeFhMbZHFtpe6BEy8/yh
+ CxYLQT+liy/Rnm24Avu9Wzm3kyI749ccG/PezA==
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,38 +63,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 14:10:40 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 14:10:41 -0000
 
-From: John Arbuckle <programmingkidx@gmail.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Ensure that a link to pc-bios/qemu_vga.ndrv is added to the build tree,
-otherwise the optional MacOS client driver will not be loaded by OpenBIOS
-when launching QEMU directly from the build directory.
+qdev_init_gpio_out() states it "creates an array of anonymous
+output GPIO lines" but doesn't document how this array is
+released. Add a note that it is automatically free'd in qdev
+instance_finalize().
 
-Signed-off-by: John Arbuckle <programmingkidx@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20210831165020.84855-1-programmingkidx@gmail.com>
-[lv: commit message rewording as suggested by Mark]
+Message-Id: <20210819142731.2827912-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ include/hw/qdev-core.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/configure b/configure
-index da2501489f34..1043ccce4f99 100755
---- a/configure
-+++ b/configure
-@@ -5052,7 +5052,9 @@ for bios_file in \
-     $source_path/pc-bios/openbios-* \
-     $source_path/pc-bios/u-boot.* \
-     $source_path/pc-bios/edk2-*.fd.bz2 \
--    $source_path/pc-bios/palcode-*
-+    $source_path/pc-bios/palcode-* \
-+    $source_path/pc-bios/qemu_vga.ndrv
-+
- do
-     LINKS="$LINKS pc-bios/$(basename $bios_file)"
- done
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index 762f9584dde1..34c8a7506a1b 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -598,6 +598,10 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_handler handler, int n);
+  *
+  * See qdev_connect_gpio_out() for how code that uses such a device
+  * can connect to one of its output GPIO lines.
++ *
++ * There is no need to release the @pins allocated array because it
++ * will be automatically released when @dev calls its instance_finalize()
++ * handler.
+  */
+ void qdev_init_gpio_out(DeviceState *dev, qemu_irq *pins, int n);
+ /**
 -- 
 2.31.1
 
