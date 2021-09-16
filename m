@@ -1,52 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQs61-0000Xb-57
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49486)
+	id 1mQs68-0000a9-Lh
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs5z-0000WY-Oo; Thu, 16 Sep 2021 10:10:35 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:57531)
+ id 1mQs63-0000YB-6m; Thu, 16 Sep 2021 10:10:39 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:40843)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs5x-0005nD-0H; Thu, 16 Sep 2021 10:10:35 -0400
+ id 1mQs60-0005qL-Sa; Thu, 16 Sep 2021 10:10:38 -0400
 Received: from quad ([82.142.27.6]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1N3KDM-1mqpF91k4w-010I5D; Thu, 16
- Sep 2021 16:10:29 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MGA0o-1mhOth1TFk-00GasX; Thu, 16
+ Sep 2021 16:10:33 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 00/10] Trivial branch for 6.2 patches
-Date: Thu, 16 Sep 2021 16:10:16 +0200
-Message-Id: <20210916141026.1174822-1-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ John Arbuckle <programmingkidx@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 05/10] configure: add missing pc-bios/qemu_vga.ndrv symlink in
+ build tree
+Date: Thu, 16 Sep 2021 16:10:21 +0200
+Message-Id: <20210916141026.1174822-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
+References: <20210916141026.1174822-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:Wpq0bRMF3+P84rb+hJlwu9x/zcLHnK/WIAjQkObOb7JQYS3h86g
- uwFKcgzv8I4JL8g9UgZTApd9qkfgW+14qKS02mVtpfASu1fI9r2x7dQWeeTiJCIjfUpDLN2
- +VfwVK1iLTdC1q/pDgeEjSaP/8rFcBJ/Zp9ygjgVaAOrWxjeZ+8a00Xqr+49VBtJ/UCjn9D
- LMkO6qFFNZrdRX+lJAV5g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1eJwSLzp7Ic=:S8i95Pck8d1Q0xnqO5pUhg
- /gTsUIGLil1qpGOMpDhbYjQbs+u7NtpZtnlIvFhI/e3TniwUbfbTbgzX2OXdcKCRl3AErJE0x
- Uivm3vCd0pzQuh5+v2mAhk66I0MetBxhefknFc57/yy5yqq3NNxseNa9G67026tHqWNmLfmlK
- kgdIbdsp8BDsjNXkZSzyL17mN8I4GKVJrwMIFkrs+yVn1Kiid6zbK0/8vrt6HaF0ShEWtvXoq
- tvT9mmnD5UqRTTuK5qfF+CATJymfawZ/eHBSybR4htpFMMeWQaKHSdSKAnl8J+RSTNOSZkYgI
- DjRwMrN6qbAIsB4kQ9yv3UjZogvg6bBwBecZrJFzcsfJSM50cq89GVrHMYBUg1C+CZPzX7uhr
- v/gTW3mjdlmvuSMHPyzVucCzfHie1QevPd/JQHtE3R7dTc7G+PtJGEi6c/v/fJYz2kSvQDBTP
- GH556nngD9nsCvyti7SBTbs3j8IveZfr+H4s2THcrzFrJOowju9N4+zBsJX5CgdXmqhkh0Ua/
- NRv0vxQN8DV8rvHGWTXnib0Nn7ZUxZgWrsNldOhz90KLcBCqosHjB2Km9RTtws67W8BAWBTGq
- 6tWqPgoMV/+4yfjtADtbZXZRgQgUwz6O2gw9uraytvESZPjz8IhX/AsuHgFkWFXitfBfhoX4Q
- mf7X85i4e06BWQAAQRIvZbAeJkRe6zAY981UYNa6PFj2opId1Pf6PAwiNCAdkExpSRskzs54l
- kidPRvwic1+/JjdxIC9saXJdUU2FrczGthLgDw==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:9BA2pgzc5u9CNywlhK+tSwD/iueJ87rLuGvMtGZqFFfA4xELrih
+ vlsz2ZosEiLehJq9TOhnBrYvizYfH3v4vRii1FC/L7FjnXBMaeq/FYDXiJkD2BDmBJ6T+B4
+ xmI+cf+5/sLXvJQewp9Bwn+etorA01ixbEEzv0O8/6TKwbzueSfKndEvA0NtMQagpI1U7AQ
+ 0tSt30IF05y5V+M447ZdA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:roFIoukUcnM=:Iz40SEJt8KqJTE0WCNTRgj
+ nMupeU3WBoB2l+KKBumKtCH5HG5YcFmQGg+pn+eI20nSN9L6+vcznAXFdT6GNnAkN5SC6jgoZ
+ 6YuEaGW3PQepOWfTB4m/RLBRUXjTxR25S5IT/p9jn2lEciLTnWzOKBRu+a0Pp2VE0938UZwWQ
+ iJNztyBc4oOTqtPRdog9BG67wzlt7ajOk0GLgPztaOMOO/OQauNQ2iHv6SJE2j+rcHf2cvHLX
+ x+Usn/40JOxs30LxZg7bhvjY7p7F8tqksN3vulVmqx0q2xzUQAnAbPAzw8IzCkdRn4u5PpEAl
+ gUnHYpHjToLqHpuD3/uFOdCPZR/M1ULdJkYuluRqSV7lGRafe0cMCD/8ZwHxvIcqPKvrTgfPX
+ 0OAKj/zE5QPxRCBdZodYuwzA/I3gRqlhkRey/ZUzz9wrs+gNVBhqI3lLh4OTB9yd//RA3u9HC
+ fJ8wv8M/paGCkw/H+Jn4etn4cp6LoUXfyL7VGJbY5rCgLgfewLhW1tkfwzBX8JkgGYDfPkD/c
+ Vp24YZlMUusGCAS2CYfLEU5CP0/RhIVt21wEITazL/8HEcFBGv/vtZYcAAvCVvCoYDRDw6wLl
+ ek/Nt+jeK0hJCaaMTbYKIJcwXMgLn9Swvcg4/p65PJg4HN17yHYc4Q0ptSbQ17J86X/IbGATN
+ HnTf/gFydeKnu0EMaxNkB9n2Gp6c4lOG02xc5bAEgWjHgOYYCfnJ0/xQmEQlsyzrSMYUwIoTu
+ HSCc2TYxkIs1ogpynb7SKkFdYFXkBMNhM9VWgg==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -59,70 +62,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 14:10:36 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 14:10:40 -0000
 
-The following changes since commit 831aaf24967a49d7750090b9dcfd6bf356f16529=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/marcandre/tags/misc-pull-request' i=
-nto staging (2021-09-14 18:14:56 +0100)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  git://github.com/vivier/qemu.git tags/trivial-branch-for-6.2-pull-request=
-=0D
-=0D
-for you to fetch changes up to 9ac200acce8c27ef44da31246f337a2454e54e0d:=0D
-=0D
-  target/sparc: Make sparc_cpu_dump_state() static (2021-09-16 14:52:46 +02=
-00)=0D
-=0D
-----------------------------------------------------------------=0D
-Trivial patches pull request 20210916=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-AlexChen (1):=0D
-  util: Remove redundant checks in the openpty()=0D
-=0D
-Cai Huoqing (2):=0D
-  intel_iommu: Fix typo in comments=0D
-  hw/vfio: Fix typo in comments=0D
-=0D
-John Arbuckle (1):=0D
-  configure: add missing pc-bios/qemu_vga.ndrv symlink in build tree=0D
-=0D
-Michael Tokarev (2):=0D
-  spelling: sytem =3D> system=0D
-  target/i386: spelling: occured=3D>occurred, mininum=3D>minimum=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (3):=0D
-  hw/i386/acpi-build: Fix a typo=0D
-  qdev: Complete qdev_init_gpio_out() documentation=0D
-  target/sparc: Make sparc_cpu_dump_state() static=0D
-=0D
-Stefan Weil (1):=0D
-  target/avr: Fix compiler errors (-Werror=3Denum-conversion)=0D
-=0D
- accel/kvm/kvm-all.c             | 2 +-=0D
- block/file-posix.c              | 2 +-=0D
- configure                       | 4 +++-=0D
- hw/i386/acpi-build.c            | 6 +++---=0D
- hw/i386/intel_iommu.c           | 8 ++++----=0D
- hw/vfio/igd.c                   | 2 +-=0D
- hw/vfio/pci-quirks.c            | 2 +-=0D
- hw/vfio/pci.c                   | 6 +++---=0D
- hw/vfio/platform.c              | 2 +-=0D
- include/hw/qdev-core.h          | 4 ++++=0D
- target/avr/translate.c          | 8 +++-----=0D
- target/i386/cpu-sysemu.c        | 2 +-=0D
- target/sparc/cpu.c              | 2 +-=0D
- target/sparc/cpu.h              | 1 -=0D
- tools/virtiofsd/fuse_lowlevel.h | 4 ++--=0D
- util/qemu-openpty.c             | 7 +++----=0D
- 16 files changed, 32 insertions(+), 30 deletions(-)=0D
-=0D
--- =0D
-2.31.1=0D
-=0D
+From: John Arbuckle <programmingkidx@gmail.com>
+
+Ensure that a link to pc-bios/qemu_vga.ndrv is added to the build tree,
+otherwise the optional MacOS client driver will not be loaded by OpenBIOS
+when launching QEMU directly from the build directory.
+
+Signed-off-by: John Arbuckle <programmingkidx@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20210831165020.84855-1-programmingkidx@gmail.com>
+[lv: commit message rewording as suggested by Mark]
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ configure | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index da2501489f34..1043ccce4f99 100755
+--- a/configure
++++ b/configure
+@@ -5052,7 +5052,9 @@ for bios_file in \
+     $source_path/pc-bios/openbios-* \
+     $source_path/pc-bios/u-boot.* \
+     $source_path/pc-bios/edk2-*.fd.bz2 \
+-    $source_path/pc-bios/palcode-*
++    $source_path/pc-bios/palcode-* \
++    $source_path/pc-bios/qemu_vga.ndrv
++
+ do
+     LINKS="$LINKS pc-bios/$(basename $bios_file)"
+ done
+-- 
+2.31.1
+
 
