@@ -1,66 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQm4B-0001iu-G9
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 03:44:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36754)
+	id 1mQmwN-0003CM-AP
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 04:40:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47794)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1mQm4A-0001i0-3M
- for qemu-trivial@nongnu.org; Thu, 16 Sep 2021 03:44:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41504)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1mQm46-0005Nq-EV
- for qemu-trivial@nongnu.org; Thu, 16 Sep 2021 03:44:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631778253;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wn+nhpg2TTS5xbETIvwCun9JyvZlQMDRvn6pXiV0kds=;
- b=X4ANH6LYfiNCuZF6YJd+zfTtiMl1S0QazO5EJlLu8iigccZaOsYRS7dH//Dg/ZAEZOgCwJ
- hf6JlWau+XjUKJlI+U7Cabq6g5wxH7q7xGEjTcYW6eMBfb9z4b6Csgk6U296jugYugias7
- 9fp0XUzvErUAselDylNsSH32+vuVu4E=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-100-6PCD7awVM86kLXRSs9BmTw-1; Thu, 16 Sep 2021 03:44:11 -0400
-X-MC-Unique: 6PCD7awVM86kLXRSs9BmTw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB5798E3C1F;
- Thu, 16 Sep 2021 07:43:30 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.102])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0DD5226E51;
- Thu, 16 Sep 2021 07:43:28 +0000 (UTC)
-Date: Thu, 16 Sep 2021 09:43:27 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
- qemu-block@nongnu.org, Qing Wang <qinwang@redhat.com>
-Subject: Re: [PATCH] qemu-storage-daemon: Only display FUSE help when FUSE is
- built-in
-Message-ID: <YUL1n5CLLQdmLfCr@redhat.com>
-References: <20210816180442.2000642-1-philmd@redhat.com>
- <152eb50e-621f-cbac-4748-dc689aa08635@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mQmwG-0003AB-W0; Thu, 16 Sep 2021 04:40:13 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:41874)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mQmwD-0003Bg-3r; Thu, 16 Sep 2021 04:40:11 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ g19-20020a1c9d13000000b003075062d4daso3936999wme.0; 
+ Thu, 16 Sep 2021 01:40:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=o9v9aZyaxH/kp+xO8nJbkSPAYjr8v/bDGPQl+vTnQ2A=;
+ b=eGnKiFJG84w7eXN2zTkhgkw3upbL3FlsTujm1MJweSXvJI9S7rQZp/whGK/5RQUYzw
+ Adt9hOz1zBPr9vSrn62OrHmXXEiszukg5u39LyorqOfrhhW374We3g6c7mvvt+R1SMr1
+ atNhxpQys82nkePYGovmLEf0k2ht8EVgcfv9WpScmP3z9B7Nk8vlTAchmWZjZkdRdNk2
+ GrFhHPvGkVC5E891Ojmg9nazljMzmM7PXB4Hm1uHFhwMRwr3ZbOWV4Dd3MLDO9o9BfF+
+ SxK0aVKwflBrXiUrnAfO4Z5aZB2O7C2XVMW8Mj9JUfzHUJUyPIgqUuXzoXsUtqD8wOGI
+ SUdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=o9v9aZyaxH/kp+xO8nJbkSPAYjr8v/bDGPQl+vTnQ2A=;
+ b=vWEdgu+X9fxLbLm/DcbseICFlD72ZZZtsOFMlQs8AS19CAhcNjxInE2zB6N+75+6jO
+ mPI6tEDtCDpaIZZuwnkxo7JO8paHe7HWxZcXl22YBHcTRtQaqehiBZJVEcKpGBqiD9CV
+ +kPxJq85vldM4QOval72aieG77C9x9wVu8ZMP2gnHY5d75ayRWUb1fJbIFSn/S8Qr9o9
+ 314lnG4VDMTlsId763Pfi9N/XiDEsC3I2aTGo1+ICmBdGlvqwQ7BEt0DcU7kSYWmNRJr
+ /gbwb9qGFDmoSKLbNdmS4MT7zxPJkY32hevq/QqnkIweS1ahnqIrmi9OVu0YWFX5wLjD
+ 1qQg==
+X-Gm-Message-State: AOAM53229x+GlqkQSMc8/lt5oyCfNCy/NdaZed4QN5fw3iF1NZLyvQ/K
+ wD9hL9wJKVwK2VgldL1z+wQuri9tB+g=
+X-Google-Smtp-Source: ABdhPJzlBU4yTC1QNtSCPHsWwAAs7S1eDaq8zcFVKQLaEWhN0+FFjjgbxkIsSgVmTXszLzT1YHAeKw==
+X-Received: by 2002:a05:600c:5126:: with SMTP id
+ o38mr3886055wms.64.1631781604475; 
+ Thu, 16 Sep 2021 01:40:04 -0700 (PDT)
+Received: from x1w.redhat.com (14.red-83-35-25.dynamicip.rima-tde.net.
+ [83.35.25.14])
+ by smtp.gmail.com with ESMTPSA id b204sm4805905wmb.3.2021.09.16.01.40.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Sep 2021 01:40:04 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] target/sparc: Make sparc_cpu_dump_state() static
+Date: Thu, 16 Sep 2021 10:40:02 +0200
+Message-Id: <20210916084002.1918445-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <152eb50e-621f-cbac-4748-dc689aa08635@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kwolf@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.39,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,33 +80,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 07:44:18 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 08:40:14 -0000
 
-Am 15.09.2021 um 23:36 hat Philippe Mathieu-Daudé geschrieben:
-> ping & Cc'ing qemu-trivial@ (reviewed twice) ...
-> 
-> On 8/16/21 8:04 PM, Philippe Mathieu-Daudé wrote:
-> > When configuring QEMU with --disable-fuse, the qemu-storage-daemon
-> > still reports FUSE command line options in its help:
-> > 
-> >   $ qemu-storage-daemon -h
-> >   Usage: qemu-storage-daemon [options]
-> >   QEMU storage daemon
-> > 
-> >     --export [type=]fuse,id=<id>,node-name=<node-name>,mountpoint=<file>
-> >              [,growable=on|off][,writable=on|off]
-> >                            export the specified block node over FUSE
-> > 
-> > Remove this help message when FUSE is disabled, to avoid:
-> > 
-> >   $ qemu-storage-daemon --export fuse
-> >   qemu-storage-daemon: --export fuse: Invalid parameter 'fuse'
-> > 
-> > Reported-by: Qing Wang <qinwang@redhat.com>
-> > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+The sparc_cpu_dump_state() function is only called within
+the same file. Make it static.
 
-Thanks, applied to the block branch.
+Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+---
+ target/sparc/cpu.h | 1 -
+ target/sparc/cpu.c | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-Kevin
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index ff8ae73002a..1f40d768d8b 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -571,7 +571,6 @@ extern const VMStateDescription vmstate_sparc_cpu;
+ #endif
+ 
+ void sparc_cpu_do_interrupt(CPUState *cpu);
+-void sparc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+ hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ int sparc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index 5a8a4ce7506..21dd27796d0 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -612,7 +612,7 @@ static void cpu_print_cc(FILE *f, uint32_t cc)
+ #define REGS_PER_LINE 8
+ #endif
+ 
+-void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
++static void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+ {
+     SPARCCPU *cpu = SPARC_CPU(cs);
+     CPUSPARCState *env = &cpu->env;
+-- 
+2.31.1
 
 
