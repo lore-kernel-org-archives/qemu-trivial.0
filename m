@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQs6N-0000sf-RD
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:10:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49586)
+	id 1mQs6O-0000tQ-1Z
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 10:11:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs6A-0000aq-T1; Thu, 16 Sep 2021 10:10:47 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:43165)
+ id 1mQs6B-0000bU-LU; Thu, 16 Sep 2021 10:10:47 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:49827)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mQs65-0005tB-4z; Thu, 16 Sep 2021 10:10:46 -0400
+ id 1mQs69-0005wQ-6H; Thu, 16 Sep 2021 10:10:47 -0400
 Received: from quad ([82.142.27.6]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1Msqty-1mkkQX38mW-00tBLd; Thu, 16
- Sep 2021 16:10:37 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mnqfc-1nF5I43YcM-00pNzv; Thu, 16
+ Sep 2021 16:10:31 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Stefan Weil <sw@weilnetz.de>,
- Michael Rolnik <mrolnik@gmail.com>
-Subject: [PULL 09/10] target/avr: Fix compiler errors (-Werror=enum-conversion)
-Date: Thu, 16 Sep 2021 16:10:25 +0200
-Message-Id: <20210916141026.1174822-10-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, AlexChen <alex.chen@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 01/10] util: Remove redundant checks in the openpty()
+Date: Thu, 16 Sep 2021 16:10:17 +0200
+Message-Id: <20210916141026.1174822-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
 References: <20210916141026.1174822-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LyOkoG+asRnw83iBmSDISuopuy0rKxuaVsygE66lfD1NbRoAt7O
- CK5uqsqfN+hpVzCnellWtW3VkF8cuo9Zldr40InIuHj3mIMgTJTr88cE2lhqjvwi6flgTWR
- S1BF6xENsfcsHt8iS4N5xzWGksTbmojp49YcUBoJvPRukJbfNdUJdQCma7hSHUOxMcu7LLb
- 7LSZ+nfTmEoINjQxjzACw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:/5MQYTTCwJ4=:cyrC/6kKcQuB1wqvCkZXYI
- l/jKElGlWYgs7OzKTWQAawLXTxCMkDIwzvl2OZ51GFg57DDM0NOWO0yZ/BAm00qDArSiM3u6u
- NWbesw8e0YUMb7WbkJxmqRzW/a0N8gHyfE1DK5BtYQJ/SkBYgyVEdfRd5q9+G+DFwz/lCu/T5
- QquZ7eXiBe48wQ79026AAW1HmvzSWQkfr7+hUl8C/sxzYCQx1rPRqFfxw5FrAe+NybhGTbSXL
- FzzcI8qR0rmw8Uh+lcxoljxazAB9JTQpyyoJNMSfZnsk7ry33Y15mPOXszSKmNR8JoJzuwp2u
- xtoiNFBUjScZm1gUEZ3EnqLvUglNua0BrDamkTM/ti7CZIqFjHJsvrnYhHo87cxckMu8WVLzH
- 7gwWNRAQ6O3PiSFD/ObVC7KnEKxJUduHXN+o79Ipc5/hdyZoa6XYxkh7ABwrhhj7vvxH1J6bP
- iPPXe4GIzau72qg7QARR29+nYwEpOL9qM7YTpns9foVWAN1j4q0Rzxny/3HgaRaOR7XLmrkxx
- z2rTMs7hYYyU2ADDEdojzxuDs7hBdVtRKPLezkMMoCStSAKX2eyr5jZ36DdDYyhv20Iw90vNE
- sOjSjzbaJjp8xMfUkg31LOLFibzzvvpWiM8NfncslW19kWbt1vfmsVYh3wqtYU2BHXMAPzdq+
- OjXReoakBT1ylI/RmVZEJR7eHywKfuJ29A/vccgo0AQNyoiHZ873ExTZbv5ZCpeWsiSFHhQCW
- UE2CLZWqAUWhNL8+edCfuJRcDBqbF0F8VXPzOg==
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:qoiRJHOUX7QGvRdFzYCsWoV5JSgbkFmd1uvlhYZ4uobbg8F61AC
+ wT/fqPpp7eQHf0LdVAJzfZ2s8WlM0+kmCuOQFpTBLE6IjutgrtPVpICawEbX5KGbsPzERSj
+ 7x8aapFGuLzyU1OVvA52gP+72NNCo6U1IWrAOnnm+4k5q7NEg57u5p6RwlgLxdBYT6wtzAd
+ e4yJLxl58RZXmZqHAGj0Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ij9S7WU/4ks=:Y1REnu62Ht9HBlwJ2+Q8SK
+ iUu5qg7GmPzPUrKWKVuV5U5nw/W9+TUAZv3f1ck29Hhc/SjLSuUIJCh2fpRtUxRMF1CEiWAu2
+ /PtcqryapPHcWdOpCxZ5FXGLnZWQEzU6yRDFFyF/CS5x//hPlAdxkzu/B20dVFVZuHHICWopm
+ yx3YO+NvVCGkbtvjR0ldDBat8Kfv+VhHMuyXFoBIDw+80prJkwXpULifogfuwbOPuduYblKtR
+ LHmsyrhDeu3iOdaJDzvhOt2D61UnzmGehA01X6NB00LO0UCyA/ydalpZ/ImbGm2wxJh9awtIK
+ fTjaSVCao/3Z7a4RxhDWkM15+3yfmk/vAzrS5vztoCS/gkHEMmkbGpAc6NAY9Elf3EbuTv7tS
+ RMLivOq8kdNIA6n3tsCaHMEzkWt9bAHY9qXd+RabDBwhxUGpiGNad1hPxZsu3xIcf8Dj8dbsn
+ wFrRWzosuW53rQ3DBX2/s9JSAK1lkAjrUrLxUOHZI1iHyK+O/3YMfcYvy86t4fSbwnGRyPVXW
+ VqtiScncoC3SNJm7xtldUmI4Afk1cRMTnsqdYPRhjdNqYs++VCPEr5DwzMljf2+RdEuRhcI4o
+ DkIxTN8tdPkCxG1RiMuw7B2wZV5ORF5VfErme0Y0NWkHE+rR1jitP1WMucOKHAXRtsG+XRx3q
+ K9YWqDtdE9rctTeYajzElyVLfR11uq3Bgg2ycc2NXt7UfO0U3Zrzq8aiyHabsS5o/hTHWg+sa
+ Q1VvYK64JIBYmov7kE1GiHTcIS7QCPWDaqeFKg==
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -61,41 +62,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 14:10:49 -0000
+X-List-Received-Date: Thu, 16 Sep 2021 14:10:51 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: AlexChen <alex.chen@huawei.com>
 
-../target/avr/translate.c: In function ‘gen_jmp_ez’:
-../target/avr/translate.c:1012:22: error: implicit conversion from ‘enum <anonymous>’ to ‘DisasJumpType’ [-Werror=enum-conversion]
- 1012 |     ctx->base.is_jmp = DISAS_LOOKUP;
-      |                      ^
+As we can see from the following function call stack, amaster and aslave
+can not be NULL: char_pty_open() -> qemu_openpty_raw() -> openpty().
+In addition, according to the API specification for openpty():
+https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dTerminal-Pairs.html,
+the arguments name, termp and winp can all be NULL, but arguments amaster or aslave
+can not be NULL.
+Finally, amaster and aslave has been dereferenced at the beginning of the openpty().
+So the checks on amaster and aslave in the openpty() are redundant. Remove them.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Michael Rolnik <mrolnik@gmail.com>
-Message-Id: <20210706180936.249912-1-sw@weilnetz.de>
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Alex Chen <alex.chen@huawei.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <5F9FE5B8.1030803@huawei.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/avr/translate.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ util/qemu-openpty.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/target/avr/translate.c b/target/avr/translate.c
-index 1111e08b83f3..438e7b13c18d 100644
---- a/target/avr/translate.c
-+++ b/target/avr/translate.c
-@@ -70,11 +70,9 @@ static const char reg_names[NUMBER_OF_CPU_REGISTERS][8] = {
- };
- #define REG(x) (cpu_r[x])
+diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
+index eb17f5b0bcec..427f43a76973 100644
+--- a/util/qemu-openpty.c
++++ b/util/qemu-openpty.c
+@@ -80,10 +80,9 @@ static int openpty(int *amaster, int *aslave, char *name,
+             (termp != NULL && tcgetattr(sfd, termp) < 0))
+                 goto err;
  
--enum {
--    DISAS_EXIT   = DISAS_TARGET_0,  /* We want return to the cpu main loop.  */
--    DISAS_LOOKUP = DISAS_TARGET_1,  /* We have a variable condition exit.  */
--    DISAS_CHAIN  = DISAS_TARGET_2,  /* We have a single condition exit.  */
--};
-+#define DISAS_EXIT   DISAS_TARGET_0  /* We want return to the cpu main loop.  */
-+#define DISAS_LOOKUP DISAS_TARGET_1  /* We have a variable condition exit.  */
-+#define DISAS_CHAIN  DISAS_TARGET_2  /* We have a single condition exit.  */
- 
- typedef struct DisasContext DisasContext;
+-        if (amaster)
+-                *amaster = mfd;
+-        if (aslave)
+-                *aslave = sfd;
++        *amaster = mfd;
++        *aslave = sfd;
++
+         if (winp)
+                 ioctl(sfd, TIOCSWINSZ, winp);
  
 -- 
 2.31.1
