@@ -1,63 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mQxhD-00026H-Kd
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Sep 2021 16:09:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40978)
+	id 1mRCko-0007nW-EH
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Sep 2021 08:14:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37120)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQxh9-000255-MP
- for qemu-trivial@nongnu.org; Thu, 16 Sep 2021 16:09:20 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:33461)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mQxh8-0002yX-1V
- for qemu-trivial@nongnu.org; Thu, 16 Sep 2021 16:09:19 -0400
-Received: by mail-wr1-x436.google.com with SMTP id t18so11458274wrb.0
- for <qemu-trivial@nongnu.org>; Thu, 16 Sep 2021 13:09:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ppSC+/+Jpx8UR/QL3oTEu0FnuI55Fdz4BkNPfXRhnjk=;
- b=wZ8lh2gQ+b5shgJAyzS4/dzCFt0fcD6J60kh8qafm9neLry7rW/UzfqM1GROhE53G9
- uVgYTSfPjr1TfOvil4RB6z477BkOdtwngzWL8opR60ckESzo09Apc6UlyMFtmt3WRuNL
- LkVz3NuEMm4FEjYfmfAn6dMwOX+e7dJSYwbhi6jxfNcGB2OJPVWx1DTj3UBcBzPRtx8N
- YCOa7XHiXa5TtTP8HW67DoD6Le9NXLa6bb1KOIKVGqRJRkTSs+CKyX0Lfl5U65CMIpDg
- HZ91zBaqi+52roJuUYcfWXD6BIzv2avDjfYMX9jJxmULv5XfV14U5f+HjP8J03cL6z5o
- 3GNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ppSC+/+Jpx8UR/QL3oTEu0FnuI55Fdz4BkNPfXRhnjk=;
- b=c7SfkHneBWKNDYXdQeV3ZRtSVuZmfTIQAC1dUMDS88mcqj4msijv00QdnfcrO7XjAe
- YOjPe3I1l7aUYyNWn/9y0q6MiACwxh97X1KNDYqRdUq7aKj6RWw8MugHVi7zPf+OpdY6
- XSGBWO5qBTANTg4Cb+7LGQbnzCjZItZWqWmEe5tdy/9RiQP78FHzO0rQ1XRf4+U95OJe
- KrD5oG6iia1pPGQQWlKgVZD4YsAlsFFnF/LbMo4VV7DAeD9cDH/Fjgn2nDYhIqT9NfRQ
- WQF97XVj1YzHm8zg8ki640fDvzcPKv9ZnCxKHeLIxyPAWpi6CSVQEcSaph70pMIpXN8V
- 6h4g==
-X-Gm-Message-State: AOAM5328+F6ECzhvwMvgYY57AAhvYk2g7luTDg/RIb9iBbpFuku9WmmM
- nNbluOs+l5Xdr2qoi2seBFvjULrURLssoUM24kSGog==
-X-Google-Smtp-Source: ABdhPJxgr/xpIjeD5ZZrGULm3j8i3pgHyQZmod3emZRE//ZQvHJOahNby2XKP6EqPBVYRwQojZs5HevnXUmFEeXUd4I=
-X-Received: by 2002:adf:fb91:: with SMTP id a17mr7923921wrr.376.1631822956195; 
- Thu, 16 Sep 2021 13:09:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mRCkj-0007js-2U
+ for qemu-trivial@nongnu.org; Fri, 17 Sep 2021 08:14:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23619)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mRCkU-0002el-Bm
+ for qemu-trivial@nongnu.org; Fri, 17 Sep 2021 08:14:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631880824;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=BQ9LOHcVL6pMO9RURYwTiSX6yYYsfgGPQdwzQBlnO4I=;
+ b=gvqktLlD3J3X0rEG+j6maFVipa0zSEUG4gctQ4eSZ8bZSzzurStaPMAwb3QqQq3hvM/iuW
+ Ij+XZPEK/qBf3j+6wYtDTqR/6zs65f/s0S9Pqq7vdtfpYsTZq8UhSaOeW5CiNtPKo7IHKZ
+ 5bu9FzY6kpwu29GxNhripeh6GxeQz+Y=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-238-rpbCsAgHMue8mxLHn55n8Q-1; Fri, 17 Sep 2021 08:13:43 -0400
+X-MC-Unique: rpbCsAgHMue8mxLHn55n8Q-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 834D6800FF4;
+ Fri, 17 Sep 2021 12:13:42 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-14.ams2.redhat.com
+ [10.36.112.14])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F3AB86A257;
+ Fri, 17 Sep 2021 12:13:20 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 729F0113865F; Fri, 17 Sep 2021 14:13:19 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org,  dgilbert@redhat.com,  pbonzini@redhat.com,
+ kraxel@redhat.com
+Subject: Re: [PATCH 0/2] hmp: Unbreak "change vnc", tidy up set_password's doc
+References: <20210909081219.308065-1-armbru@redhat.com>
+Date: Fri, 17 Sep 2021 14:13:19 +0200
+In-Reply-To: <20210909081219.308065-1-armbru@redhat.com> (Markus Armbruster's
+ message of "Thu, 9 Sep 2021 10:12:17 +0200")
+Message-ID: <87ilyzs8m8.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20210916141026.1174822-1-laurent@vivier.eu>
-In-Reply-To: <20210916141026.1174822-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Sep 2021 21:08:25 +0100
-Message-ID: <CAFEAcA9Q-_T+wMyi+EmfjdnFMhdN70vcCy4_tG0s4h1eDZb=QA@mail.gmail.com>
-Subject: Re: [PULL 00/10] Trivial branch for 6.2 patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.392,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -70,32 +73,8 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Sep 2021 20:09:20 -0000
+X-List-Received-Date: Fri, 17 Sep 2021 12:14:01 -0000
 
-On Thu, 16 Sept 2021 at 15:19, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 831aaf24967a49d7750090b9dcfd6bf356f16529:
->
->   Merge remote-tracking branch 'remotes/marcandre/tags/misc-pull-request' into staging (2021-09-14 18:14:56 +0100)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-for-6.2-pull-request
->
-> for you to fetch changes up to 9ac200acce8c27ef44da31246f337a2454e54e0d:
->
->   target/sparc: Make sparc_cpu_dump_state() static (2021-09-16 14:52:46 +0200)
->
-> ----------------------------------------------------------------
-> Trivial patches pull request 20210916
->
-> ----------------------------------------------------------------
+Routing to qemu-trivial.
 
-
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/6.2
-for any user-visible changes.
-
--- PMM
 
