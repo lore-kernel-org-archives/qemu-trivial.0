@@ -1,58 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mTQCN-0008RM-EJ
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Sep 2021 10:59:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58524)
+	id 1mTQDT-00019S-5h
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Sep 2021 11:00:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58860)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mTQCJ-0008PZ-HJ; Thu, 23 Sep 2021 10:59:39 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:49963)
+ id 1mTQDQ-00015k-4G; Thu, 23 Sep 2021 11:00:48 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:48405)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mTQCH-0000tM-A3; Thu, 23 Sep 2021 10:59:39 -0400
+ id 1mTQDM-0001rz-Dy; Thu, 23 Sep 2021 11:00:47 -0400
 Received: from [192.168.100.1] ([82.142.21.142]) by mrelayeu.kundenserver.de
  (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MUGuZ-1mLY5x0GLD-00RM8w; Thu, 23 Sep 2021 16:59:30 +0200
-Subject: Re: [PATCH v2] docs/nvdimm: Update nvdimm option value in machine
- example
-To: Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
- xiaoguangrong.eric@gmail.com, lvivier@redhat.com, stefanha@redhat.com,
- pankaj.gupta@ionos.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20210923103015.135262-1-pankaj.gupta.linux@gmail.com>
+ 1MTzve-1mLH1z3qyY-00R19F; Thu, 23 Sep 2021 17:00:38 +0200
+Subject: Re: [PATCH] hw/loader: Restrict PC_ROM_* definitions to hw/i386/pc
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20210917185949.2244956-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <64a8d3ab-ec39-1273-bcc0-29be962950d4@vivier.eu>
-Date: Thu, 23 Sep 2021 16:59:28 +0200
+Message-ID: <d9193d22-a4c7-65bc-fefa-f8abb02deb07@vivier.eu>
+Date: Thu, 23 Sep 2021 17:00:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210923103015.135262-1-pankaj.gupta.linux@gmail.com>
+In-Reply-To: <20210917185949.2244956-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:K1hUOvSZOqG0GueIzd0Y1laTPcysku526SmrXxGlvYJJyaA5czm
- aUp4hbht0Z4GJ+++JE6XOLGIJ5U7v+Byy7QguQmyqN4Lt02LR16LjaY//OAupYq3VO4muIM
- jxLzM7ZCSYEsWTUec1/WkqPqyAQLMQAnPJD5o2jgJkhmEDgQfViOT31rq2UYK28faPbo6eM
- Q34+g05hKGXoPw9s+qs/A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:qH4QaH4xrY8=:Hg8+2TJY8tosiML50SFKox
- KqCJBHevt8J2yneTd0lNTiXB37a0fMwDqtdSMDJYjZSb6Hu8ItuKu6wGStIdBWPqC3gPks4jT
- gAuDfgpRYSfr55tpuqKVkDeNGvawq2Zz/fEWqLSPRWJh/RAwJowST07yR1e/GXnlIPRqBBqci
- jRAWMJLtQG/vgdETh8drQPg0eunLs7ZJX72nXoqDL+ytTIzpuALQeiHiRJzHCC/fSUpi/hZiP
- YB/WbwvVddsjrV+TtfI0A7kJe8ZKwSLJcyVa1fHeaYmcf/ZXvseVi5QZF+xT4xQS2djXNnG95
- fhTcAiCOsjslsMYTwEG8LFa1ZgrZ/+MMhXQX3ssLYthJjKTX7zLvTbZIk5tvU7q23DklTeQnO
- BCvxR1hhJE9Dr4PxEGJvVn5A38GJl08bUE3FfTTnEhZLHLS0gXMus1aUo/P3ehwv5HzWWIinL
- F2ng0uHobxwyGBTeAd6kn1JwFh++zsEWQ/jz9h4o0Ude5ZwMnNuub22/JCjoyJeDekWWOolRh
- QUF+iOjcYG1ciV9Ds1M5XFP8MAB+0heM4+zocvcllRNu/QXtnOho9sY0a7kYXtDVtq1086CRH
- +KcTIsWEY7Rr+vWsC9yCl1jBfd5h1mNtPWDlFWf/x/TYMYyUDAcErJjOqi8fIf39Pcr/ogZUG
- L+6ju4SCQM91NNkdKC2Xe6TbeJimfbc21oBOWm9+PEZxrTOAaocrSEdEve+y5Qz40BY+gtxRI
- q5BxJhUCODNu2CpdndfvInqTFtCvjRNQaUrk7Q==
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:00Kop89YZIQy/FpBBM4YhA9//IYYcQRGFSEatfkrYf44hBkyzut
+ 1tAgAUY3zOFp0GB3WH90nprR1mRBvnSwolkxZn3K1nqorJLPqvtl3s7Q0ZdtKjAwkS0EOcv
+ z13yRNnrValqjAEE2u7WBM81vi0sHCjVGCysTfQImL3K+z5by7fAT9ObMAuoc0L670JUSup
+ 8pcy48nTqAa/oSmJR6PHw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9w+j3rXzHd4=:haIblm71p5Uu9JNv5ZGLh3
+ KKuEPZ2AryDmhbbmwfVxqYBOKCl48FFp0zGxEP1MjS9HmXwuDEYQzlVQrstmk2pjEDzxOF7eq
+ QbIzRMJ6wv4JEd30eGokxoPKEtDbSTNBQV/1O5FN4OGY/iipVXpPjqcZTqL7gigDlNXBwOlJH
+ GVPc7KMM8e6hxefi2VIyf1XRHY116rjpNbYl8VmU+V/n7r94cEPgYOfTuqNR/f3mFFkyTtEnE
+ aX9FDIfOm1Vzn+R1ZEshWfgud/ki8DKkArGvkYKXdc0yL8nO44hLHVymwXcs3SmQGMQ1HqjTs
+ mnczVTNL/sLZQzrqdzNJ7tilWuS+DVMXUDbnQmpIN/wOauPjkz6+1BZ5R6wEytuhFCxrq46Nd
+ ckraD3Ag8ArRE4hakRhB5CE+rF0kjMXzpX+bd/kz3UfhT2K0whSRfIzErRi2mnu5EonvOsnzl
+ bXfbnP6RdjF78+0L85w5zcEIgUC1t91w5K4Ms9B1iYK0pZ2MbKGHx9WMpBgUbkf0W/E/8j0N1
+ a/DCnAsp/ujdXkAynfN0kffugtiqir5lA7n9SlRrfBqkzKlVt6pn5eNFLD3zvjcUAJuFhVfdF
+ MDt2mhPzS4nqmntEfSrBXG9liM6HfuY0ToUK+1FeXsARQVvRmO3RgT/oFihqW9IiTnwliVQaf
+ KNIYVbcJXhZV1CcHtLa+zYhTuIVLQpJAeYqxmZshYomUu4uX7mqfF/LGohhR9zaStoQy7nwJ5
+ CZhwNpX1Wv6koy1tGezkqFA2aMoy/L4lqz7ORw==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -65,37 +67,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Sep 2021 14:59:39 -0000
+X-List-Received-Date: Thu, 23 Sep 2021 15:00:49 -0000
 
-Le 23/09/2021 à 12:30, Pankaj Gupta a écrit :
-> Update nvdimm option value in example command from "-machine pc,nvdimm"
-> to "-machine pc,nvdimm=on" as former complains with the below error:
+Le 17/09/2021 à 20:59, Philippe Mathieu-Daudé a écrit :
+> The PC_ROM_* definitions are only used by the PC machine,
+> and are irrelevant to the other architectures / machines.
+> Reduce their scope by moving them to hw/i386/pc.c.
 > 
-> "qemu-system-x86_64: -machine pc,nvdimm: Expected '=' after parameter 'nvdimm'"
-> 
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-> Signed-off-by: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  docs/nvdimm.txt | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/hw/loader.h | 6 ------
+>  hw/i386/pc.c        | 6 ++++++
+>  2 files changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/docs/nvdimm.txt b/docs/nvdimm.txt
-> index 0aae682be3..fd7773dc5a 100644
-> --- a/docs/nvdimm.txt
-> +++ b/docs/nvdimm.txt
-> @@ -15,7 +15,7 @@ backend (i.e. memory-backend-file and memory-backend-ram). A simple
->  way to create a vNVDIMM device at startup time is done via the
->  following command line options:
+> diff --git a/include/hw/loader.h b/include/hw/loader.h
+> index cbfc1848737..81104cb02fe 100644
+> --- a/include/hw/loader.h
+> +++ b/include/hw/loader.h
+> @@ -336,12 +336,6 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+>  #define rom_add_blob_fixed_as(_f, _b, _l, _a, _as)      \
+>      rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, _as, true)
 >  
-> - -machine pc,nvdimm
-> + -machine pc,nvdimm=on
->   -m $RAM_SIZE,slots=$N,maxmem=$MAX_SIZE
->   -object memory-backend-file,id=mem1,share=on,mem-path=$PATH,size=$NVDIMM_SIZE,readonly=off
->   -device nvdimm,id=nvdimm1,memdev=mem1,unarmed=off
+> -#define PC_ROM_MIN_VGA     0xc0000
+> -#define PC_ROM_MIN_OPTION  0xc8000
+> -#define PC_ROM_MAX         0xe0000
+> -#define PC_ROM_ALIGN       0x800
+> -#define PC_ROM_SIZE        (PC_ROM_MAX - PC_ROM_MIN_VGA)
+> -
+>  int rom_add_vga(const char *file);
+>  int rom_add_option(const char *file, int32_t bootindex);
+>  
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 7e523b913ca..557d49c9f8f 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -843,6 +843,12 @@ void xen_load_linux(PCMachineState *pcms)
+>      x86ms->fw_cfg = fw_cfg;
+>  }
+>  
+> +#define PC_ROM_MIN_VGA     0xc0000
+> +#define PC_ROM_MIN_OPTION  0xc8000
+> +#define PC_ROM_MAX         0xe0000
+> +#define PC_ROM_ALIGN       0x800
+> +#define PC_ROM_SIZE        (PC_ROM_MAX - PC_ROM_MIN_VGA)
+> +
+>  void pc_memory_init(PCMachineState *pcms,
+>                      MemoryRegion *system_memory,
+>                      MemoryRegion *rom_memory,
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
