@@ -1,67 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mTLzz-0005bl-Rm
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Sep 2021 06:30:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58938)
+	id 1mTQCN-0008RM-EJ
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Sep 2021 10:59:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
- id 1mTLzu-0005Z2-Oo; Thu, 23 Sep 2021 06:30:35 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:52032)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pankaj.gupta.linux@gmail.com>)
- id 1mTLzt-0005Ar-8h; Thu, 23 Sep 2021 06:30:34 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id dw14so4148290pjb.1;
- Thu, 23 Sep 2021 03:30:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y0LVBfFctC45wGutn9FkRommMJ/f7Xgr3xw2hOA3/6Q=;
- b=np85ghUSqcHZhKsWgew8WL/cX+8IBDOxUtdLBEZvkat68QFrOYoL2AfDp2hKv+pZw2
- UQsQ/5Xn19rR7St3LzJAnGGtvYZDznRyVGjrkhk0dSjuSjqJx34FMwg/Jh4nfg0ztqD9
- IvSQp+/QSwIxDF1Qc05YuUd+1urNKkC1Du6dwU3jpavLHIrvvZq4hBnoQBYBmcjkfJlP
- qWyPJ5IVNVK/6pYFFqtXSQgXgZwI0HFVMQNaAZJhib1G1pW95ais65RIkvn0P9zG3Umw
- NuEZd3wSIqGyfo3JAl23Q896+IPNgikAJP8hEPa9+BT3GMX1cyvHIVD2m3doKYPihInt
- X+6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y0LVBfFctC45wGutn9FkRommMJ/f7Xgr3xw2hOA3/6Q=;
- b=1SjEd9EifuQyXXi+9iBhwOMOvCzqHjlYlzZnDH1cdFCoN0DoLxYJfhSYeXidz+P8TF
- /jg27cHaRUdA7e+V4JOGy9zXRJoLfyHZdVEaIwBnSQt9C0Jo++qzF2e5Tyx9vImm6NAV
- yOeyxS2ZjXpVScYE0STcgnLXCIgMHwRd+64TEoga4r0A84hbiAdYezWwNNzn9mZ55ey0
- VWW3LB7ad9HIMPbxFCE/YACdt1iVaZtJ2B+Eh/m0+8JlsBf+210rMaVAB2D2pLQuzmih
- G/OqF/e5AmqIhTZTDQA8trxKEUZQNWqDgD/tCu7F9WGmvihjU2IMwUkFqPa7wFm3jwWS
- lcKA==
-X-Gm-Message-State: AOAM5300yP5H6Shkb3KlttajxeLaRq1NzwCpVIDEaiweP8KDOH7+i6RC
- mfvefrRXMkMgY7Z6uTALlnQ=
-X-Google-Smtp-Source: ABdhPJyEKDM8koYk7LRv0bknHW99vAB8C9HmdE5ddGWuMCu8fzihkoWwgvedwMftoW5Qxwz0shyNvQ==
-X-Received: by 2002:a17:902:b68b:b0:13a:1239:b8d9 with SMTP id
- c11-20020a170902b68b00b0013a1239b8d9mr3245949pls.25.1632393031318; 
- Thu, 23 Sep 2021 03:30:31 -0700 (PDT)
-Received: from lb01399.pb.local ([2405:201:5506:80a4:42e:ff20:b88b:632e])
- by smtp.gmail.com with ESMTPSA id p52sm5208050pfw.132.2021.09.23.03.30.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Sep 2021 03:30:30 -0700 (PDT)
-From: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
-To: xiaoguangrong.eric@gmail.com, pankaj.gupta.linux@gmail.com,
- lvivier@redhat.com, stefanha@redhat.com, pankaj.gupta@ionos.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2] docs/nvdimm: Update nvdimm option value in machine example
-Date: Thu, 23 Sep 2021 12:30:15 +0200
-Message-Id: <20210923103015.135262-1-pankaj.gupta.linux@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mTQCJ-0008PZ-HJ; Thu, 23 Sep 2021 10:59:39 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:49963)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mTQCH-0000tM-A3; Thu, 23 Sep 2021 10:59:39 -0400
+Received: from [192.168.100.1] ([82.142.21.142]) by mrelayeu.kundenserver.de
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MUGuZ-1mLY5x0GLD-00RM8w; Thu, 23 Sep 2021 16:59:30 +0200
+Subject: Re: [PATCH v2] docs/nvdimm: Update nvdimm option value in machine
+ example
+To: Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
+ xiaoguangrong.eric@gmail.com, lvivier@redhat.com, stefanha@redhat.com,
+ pankaj.gupta@ionos.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20210923103015.135262-1-pankaj.gupta.linux@gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <64a8d3ab-ec39-1273-bcc0-29be962950d4@vivier.eu>
+Date: Thu, 23 Sep 2021 16:59:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <20210923103015.135262-1-pankaj.gupta.linux@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=pankaj.gupta.linux@gmail.com; helo=mail-pj1-x102e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:K1hUOvSZOqG0GueIzd0Y1laTPcysku526SmrXxGlvYJJyaA5czm
+ aUp4hbht0Z4GJ+++JE6XOLGIJ5U7v+Byy7QguQmyqN4Lt02LR16LjaY//OAupYq3VO4muIM
+ jxLzM7ZCSYEsWTUec1/WkqPqyAQLMQAnPJD5o2jgJkhmEDgQfViOT31rq2UYK28faPbo6eM
+ Q34+g05hKGXoPw9s+qs/A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:qH4QaH4xrY8=:Hg8+2TJY8tosiML50SFKox
+ KqCJBHevt8J2yneTd0lNTiXB37a0fMwDqtdSMDJYjZSb6Hu8ItuKu6wGStIdBWPqC3gPks4jT
+ gAuDfgpRYSfr55tpuqKVkDeNGvawq2Zz/fEWqLSPRWJh/RAwJowST07yR1e/GXnlIPRqBBqci
+ jRAWMJLtQG/vgdETh8drQPg0eunLs7ZJX72nXoqDL+ytTIzpuALQeiHiRJzHCC/fSUpi/hZiP
+ YB/WbwvVddsjrV+TtfI0A7kJe8ZKwSLJcyVa1fHeaYmcf/ZXvseVi5QZF+xT4xQS2djXNnG95
+ fhTcAiCOsjslsMYTwEG8LFa1ZgrZ/+MMhXQX3ssLYthJjKTX7zLvTbZIk5tvU7q23DklTeQnO
+ BCvxR1hhJE9Dr4PxEGJvVn5A38GJl08bUE3FfTTnEhZLHLS0gXMus1aUo/P3ehwv5HzWWIinL
+ F2ng0uHobxwyGBTeAd6kn1JwFh++zsEWQ/jz9h4o0Ude5ZwMnNuub22/JCjoyJeDekWWOolRh
+ QUF+iOjcYG1ciV9Ds1M5XFP8MAB+0heM4+zocvcllRNu/QXtnOho9sY0a7kYXtDVtq1086CRH
+ +KcTIsWEY7Rr+vWsC9yCl1jBfd5h1mNtPWDlFWf/x/TYMYyUDAcErJjOqi8fIf39Pcr/ogZUG
+ L+6ju4SCQM91NNkdKC2Xe6TbeJimfbc21oBOWm9+PEZxrTOAaocrSEdEve+y5Qz40BY+gtxRI
+ q5BxJhUCODNu2CpdndfvInqTFtCvjRNQaUrk7Q==
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,33 +65,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Sep 2021 10:30:36 -0000
+X-List-Received-Date: Thu, 23 Sep 2021 14:59:39 -0000
 
-Update nvdimm option value in example command from "-machine pc,nvdimm"
-to "-machine pc,nvdimm=on" as former complains with the below error:
+Le 23/09/2021 à 12:30, Pankaj Gupta a écrit :
+> Update nvdimm option value in example command from "-machine pc,nvdimm"
+> to "-machine pc,nvdimm=on" as former complains with the below error:
+> 
+> "qemu-system-x86_64: -machine pc,nvdimm: Expected '=' after parameter 'nvdimm'"
+> 
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
+> ---
+>  docs/nvdimm.txt | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/docs/nvdimm.txt b/docs/nvdimm.txt
+> index 0aae682be3..fd7773dc5a 100644
+> --- a/docs/nvdimm.txt
+> +++ b/docs/nvdimm.txt
+> @@ -15,7 +15,7 @@ backend (i.e. memory-backend-file and memory-backend-ram). A simple
+>  way to create a vNVDIMM device at startup time is done via the
+>  following command line options:
+>  
+> - -machine pc,nvdimm
+> + -machine pc,nvdimm=on
+>   -m $RAM_SIZE,slots=$N,maxmem=$MAX_SIZE
+>   -object memory-backend-file,id=mem1,share=on,mem-path=$PATH,size=$NVDIMM_SIZE,readonly=off
+>   -device nvdimm,id=nvdimm1,memdev=mem1,unarmed=off
+> 
 
-"qemu-system-x86_64: -machine pc,nvdimm: Expected '=' after parameter 'nvdimm'"
+Applied to my trivial-patches branch.
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Signed-off-by: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
----
- docs/nvdimm.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/docs/nvdimm.txt b/docs/nvdimm.txt
-index 0aae682be3..fd7773dc5a 100644
---- a/docs/nvdimm.txt
-+++ b/docs/nvdimm.txt
-@@ -15,7 +15,7 @@ backend (i.e. memory-backend-file and memory-backend-ram). A simple
- way to create a vNVDIMM device at startup time is done via the
- following command line options:
- 
-- -machine pc,nvdimm
-+ -machine pc,nvdimm=on
-  -m $RAM_SIZE,slots=$N,maxmem=$MAX_SIZE
-  -object memory-backend-file,id=mem1,share=on,mem-path=$PATH,size=$NVDIMM_SIZE,readonly=off
-  -device nvdimm,id=nvdimm1,memdev=mem1,unarmed=off
--- 
-2.25.1
-
+Thanks,
+Laurent
 
