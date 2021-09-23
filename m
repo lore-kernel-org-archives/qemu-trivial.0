@@ -1,66 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mSnwO-0004on-06
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Sep 2021 18:08:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34512)
+	id 1mTJZJ-0001tl-C1
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Sep 2021 03:54:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54896)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mSnwL-0004lL-F5; Tue, 21 Sep 2021 18:08:37 -0400
-Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b]:41540)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mSnwK-0000ev-1P; Tue, 21 Sep 2021 18:08:37 -0400
-Received: by mail-il1-x12b.google.com with SMTP id d11so453253ilc.8;
- Tue, 21 Sep 2021 15:08:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=goAcV8ftIW9kvS6Mlzot+5X3s27jLf/rS8li3SgMy/w=;
- b=Xe1asyoN9fjAR6WrMA9IUdnf9PSBNHrn+3AfvrG4jOEjPSS8uxtLGpMZLRc9JnY8Qh
- BI3KDPRlcD8XJkcCYqZ7jYEK33lRLVYf24d9u130h/IQlmDY7Ym571p+mju6feJE8bVA
- sp/uVfaxZJoA/xYL49PynXjs/SOeR4EJKv4ZmLRT+tydOed7BzIyLsRyLiCh90VNuE8u
- yhhpeeaLZITTLjWh/cGgYQRaaI9FCjyFqL04t2sc9oZGciZN7darKG7Z+YsLHqmqfkFb
- 4hRlJ9ljI7kb0/Y1M61tjgntZD+aEKyN3mIKrTp6yfTuPzEeS97jj4tbi6ZgvKSsMxuw
- xM+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=goAcV8ftIW9kvS6Mlzot+5X3s27jLf/rS8li3SgMy/w=;
- b=Ppq1QVHcXpztsiiz9ooANXLm3Q9zi0liU1CjhK1QkqMh+dOMuGuSq86KEexgQke1L4
- xs84pdnghKkR6+sUGM2UZHPmyvwmw2Yv0/pAmT0prlwcKhSlLF0mvY5PeG49xoe7/31u
- d8dvxy3cGoAnrU2q8g94JmTwcDosbaEgqpICK9zlcLaAYFTrJfP40b51nRDfKGnIEPX/
- Pls7Qloh7vOH94cML7h5g0MxNvZ0k6iq5PjUS22pj3tS0H/XRsl/yAXAe+t+t/gA8c4m
- 0zxS6iDUl/vY+nTalGkifWpNcnpGBGaGx5gGkAZCIdm3uNeVMmkje1VkN8baui2vQ9Dh
- OGpw==
-X-Gm-Message-State: AOAM533S4C4WLN8N9RF6wGpcU/p3eKgzaBKmIW1yreLuwHGscvmhwJYb
- GQyoCeBYx/1AAsV1MMmPYOSX/YMQ6CNfCyslzK8=
-X-Google-Smtp-Source: ABdhPJzzEM17VUT7RZEe5HgsLGY4BEunD4pe+boJPnj+ynQ+dASQR08rECFvWckdOMxZX7LS4tQfqh1Zov63RNyroFM=
-X-Received: by 2002:a05:6e02:964:: with SMTP id
- q4mr23700634ilt.290.1632262113639; 
- Tue, 21 Sep 2021 15:08:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mTJZF-0001rS-UH; Thu, 23 Sep 2021 03:54:54 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:38791)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mTJZC-0006gL-LQ; Thu, 23 Sep 2021 03:54:53 -0400
+Received: from [192.168.100.1] ([82.142.21.142]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MNKuI-1mEWVd299O-00Oo1Z; Thu, 23 Sep 2021 09:54:43 +0200
+Subject: Re: [PATCH] hw/loader: Restrict PC_ROM_* definitions to hw/i386/pc
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20210917185949.2244956-1-philmd@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <06575b5a-2b3b-99f9-4810-6fd3ae3d568a@vivier.eu>
+Date: Thu, 23 Sep 2021 09:54:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210917190136.2246440-1-philmd@redhat.com>
-In-Reply-To: <20210917190136.2246440-1-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 22 Sep 2021 08:08:07 +1000
-Message-ID: <CAKmqyKMpS8HerZHfu2y55bT68VKsme7y+iv0uP3M5-2pG=d9wA@mail.gmail.com>
-Subject: Re: [PATCH] hw/loader: Remove unused rom_add_file_as() definition
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Alistair Francis <alistair@alistair23.me>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12b;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x12b.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+In-Reply-To: <20210917185949.2244956-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:kYS5MSsvu62nBEiV0icCqO5CwvIQBPKToD2BY8VH6nT7RLVawMQ
+ dEhWWQs664eYHFTL1EP+BNbcmuLb/6IxXBlXKbPun4D1pijtPzM3L7ehUGdbIUZrUT8BZZK
+ 5Hl16cFzlksOeGBh7O5vdk2wfNKag++imsF05RaCr7augUeF9R5z7mGC+6slwGME9RwZ3v6
+ Xp70vTbgnesDBqRCs6Jwg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jLcYNE3QssE=:cWmKHK5oNRuePSnnMaQS6s
+ ak0QrpER/Yh67gjXmyNLKfhX7bkjL7hc6t7Bw7c8SpVyR2F8ljI+MASSfv1VTj1Kmv0n8l42a
+ YZL9YTqb8/DjPVuYfDhIkounKRfqsjDnW4neaKXaZLQ+3C970OdIlWYG305NpuX2Y7n3Aj/qv
+ PHbOK+wVZNXr8I2LaJ9WXohIZcpqC6kw3EBRn1ZMHh9qtFvuK6+rHFvn61/MoaE7NExpplgtJ
+ QEVoqu3ZLIwzJAHnLe/lmTkt/78o4MWoz3KLHNL/A0l1jsYc1zUfiTIZf89o4Y1xggV3PQ+g3
+ ubKfYLYN9aGoPocV7u9GW2vwgQAj7BLbSWSBkW9C7/4MFqfkAJ+Ku34z653+fjQJJRZj7X1q0
+ NdJMhs1zSubxybZ++Uf1tLfrgM/zaItM+DBAToJOZhfxHuj7BkH8nnDK9i8RX1G0qjQXzRsIk
+ nfdImR8pd9O318HKHIWv2YokMgVtI4GAZLUbXBUYvTgO31SsjmMWUsKdY7IYVutDbSyB0Z+vb
+ XJhhVvuBNdbA1saCfCbCv8SLAK7JKCf9EvQS+5jLFpqemcwRjCqqEtmpkbxlBZKuEcQJ73/1U
+ NnLZf02Qv9dfQOgN1Bbuhi506SjfTLzuPybu3m479rdopqsZgtCSZOI6cbElZV2Y9PkI0fju7
+ xhs4BTgZf2VB3j3ltOmpZ5FLdiKvhISsib8Pd9N7duG3bXmnu1EfWzD+v+co7ReAYhu79kNTN
+ f1vsCJsK4BDBWH3JzXsIFgX+nreViifcMKWU6A==
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,41 +67,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Sep 2021 22:08:37 -0000
+X-List-Received-Date: Thu, 23 Sep 2021 07:54:55 -0000
 
-On Sat, Sep 18, 2021 at 5:02 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> rom_add_file_as() is not used anywhere, remove it.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-Looks fine, although I'm not convinced removing this gets us anything.
-It might be used in the future and doesn't add too much cruft.
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+Le 17/09/2021 à 20:59, Philippe Mathieu-Daudé a écrit :
+> The PC_ROM_* definitions are only used by the PC machine,
+> and are irrelevant to the other architectures / machines.
+> Reduce their scope by moving them to hw/i386/pc.c.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  include/hw/loader.h | 2 --
->  1 file changed, 2 deletions(-)
->
+>  include/hw/loader.h | 6 ------
+>  hw/i386/pc.c        | 6 ++++++
+>  2 files changed, 6 insertions(+), 6 deletions(-)
+> 
 > diff --git a/include/hw/loader.h b/include/hw/loader.h
-> index cbfc1848737..c52a1df8b68 100644
+> index cbfc1848737..81104cb02fe 100644
 > --- a/include/hw/loader.h
 > +++ b/include/hw/loader.h
-> @@ -329,8 +329,6 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
->      rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, NULL, true)
->  #define rom_add_file_mr(_f, _mr, _i)            \
->      rom_add_file(_f, NULL, 0, _i, false, _mr, NULL)
-> -#define rom_add_file_as(_f, _as, _i)            \
-> -    rom_add_file(_f, NULL, 0, _i, false, NULL, _as)
->  #define rom_add_file_fixed_as(_f, _a, _i, _as)          \
->      rom_add_file(_f, NULL, _a, _i, false, NULL, _as)
+> @@ -336,12 +336,6 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
 >  #define rom_add_blob_fixed_as(_f, _b, _l, _a, _as)      \
-> --
-> 2.31.1
->
->
+>      rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, _as, true)
+>  
+> -#define PC_ROM_MIN_VGA     0xc0000
+> -#define PC_ROM_MIN_OPTION  0xc8000
+> -#define PC_ROM_MAX         0xe0000
+> -#define PC_ROM_ALIGN       0x800
+> -#define PC_ROM_SIZE        (PC_ROM_MAX - PC_ROM_MIN_VGA)
+> -
+>  int rom_add_vga(const char *file);
+>  int rom_add_option(const char *file, int32_t bootindex);
+>  
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 7e523b913ca..557d49c9f8f 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -843,6 +843,12 @@ void xen_load_linux(PCMachineState *pcms)
+>      x86ms->fw_cfg = fw_cfg;
+>  }
+>  
+> +#define PC_ROM_MIN_VGA     0xc0000
+> +#define PC_ROM_MIN_OPTION  0xc8000
+> +#define PC_ROM_MAX         0xe0000
+> +#define PC_ROM_ALIGN       0x800
+> +#define PC_ROM_SIZE        (PC_ROM_MAX - PC_ROM_MIN_VGA)
+> +
+>  void pc_memory_init(PCMachineState *pcms,
+>                      MemoryRegion *system_memory,
+>                      MemoryRegion *rom_memory,
+> 
+
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
