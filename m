@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mUacY-0001wG-F6
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Sep 2021 16:19:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41468)
+	id 1mUcD0-0007LR-Er
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Sep 2021 18:01:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUacW-0001uc-KA; Sun, 26 Sep 2021 16:19:32 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:43898)
+ id 1mUcCs-0007KU-FP; Sun, 26 Sep 2021 18:01:11 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:46057)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUacV-0008Mq-51; Sun, 26 Sep 2021 16:19:32 -0400
-Received: by mail-wr1-x433.google.com with SMTP id x20so1137322wrg.10;
- Sun, 26 Sep 2021 13:19:30 -0700 (PDT)
+ id 1mUcCq-0000Nw-5Z; Sun, 26 Sep 2021 18:01:09 -0400
+Received: by mail-wr1-x434.google.com with SMTP id d21so46228645wra.12;
+ Sun, 26 Sep 2021 15:01:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=03DgaG1RzzgeU081YWoropruPxlpXxg483HBoJjh5V0=;
- b=Rqy29ISSKKday8M+ISB1MTJV6dnh14LEcnMi2/9128Zd3dpp7Wnk8nPTjre4NQI661
- QYoJlnHUZjhqggSCKzKTclXEXU+rONiI2v0Tzxfc4MFLCO05XppTFHfRoZ4A58bz3Aip
- 1Zc2kbQsO7DYZGGxTGY3wcvNCz6qLoT/yyvepoA9/wzHJCnBTBcnjpmyveXMqhAEqjrF
- t1vR71htD31bN+LXGQMXldRIF1slGsFy/Re2OTOq6l7iAiaJcjKCPOAzVCs1npVzB8eb
- XLLXxAo3cHDyF+4JY5nmaiKR2UG8R03hfo2tB88zvSr5lcMA/NwiSBBWRr60HA5YHBJp
- vE0A==
+ bh=Hk516RwLtnA+J+S1W9+zxqbCKy6xKPg380zaTXEsGVw=;
+ b=aoG4gnmM1fg2WAdBKyVSRHoqDsUaup4PHYQ2ksLIUYPM0NG/e6gwsfB6ZO6QXbKEMb
+ 4XEDKBPDa8iyrmGPth9VTVoqiTt1n/LvKQnFTce0pgAIPcRcgxnWWz7oo7WHBV0U8gl2
+ 6vNJcNBMOJ1yVsE/WBV+0R/hlVHh6LnDytgKk+QB2Ff0cV4V17lwIp1Jps0lXpQF9Ivh
+ KNQ0tbneCQVQv8WqJXNOdzbRJ3QJjo38ytQe7/duOaQzMKcSMdTLVxZFgDkRcEwdW/1A
+ VfhdaGZkb8m8x/SEhihW/ICkwhboCWBSI+ekBCW3TnNfJPW+X10UXJTLXHhpBgu7JvSX
+ 2Lug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=03DgaG1RzzgeU081YWoropruPxlpXxg483HBoJjh5V0=;
- b=jb1LKKTs2OQkVNhHNXuO26Ee8tcc8p9Li9295B91VE6M2r8t0xg08ws6KaYYd/3X0A
- wZdNNVC9Rq9196MW8xDilG25jG/vklQpE0sZM7j2UqCm89y02aIVFiM9Gh5v53xuH6bb
- 4QMDKBNPtWqq4xVpLBe5iKOriawFshoJskiCDyYfh1iIlxULZI8V0cVo5nioVsIpVnN8
- oOl/MyYJ0I0gXrelulxzsFG7tVtwuooiMECPbibNXFes5+LedPgCjxN2CyNwNicRSM81
- WzTjE2VTHR+ZtAp1ZDsp5nlmLr4wsi5GAXmKMbHg7yz3xvtiKlSzu8WU2B+CaW/u5CIU
- sA5g==
-X-Gm-Message-State: AOAM532Vb1U18lqXyNSEYBjlLBXZHPEzP/fe+pnZiAvxatKO/VauiNgD
- o2wU4YYO1vmx98q/pAa5Ifz81/SWfRA=
-X-Google-Smtp-Source: ABdhPJzqnWtXE0r+xJ8cGD0e7s/rzXL5Tqgjyy9y2GML9q0UNxQUe7EF8AWL3LdfU/IIsy7vbeJSJA==
-X-Received: by 2002:a7b:c923:: with SMTP id h3mr12786849wml.28.1632687568147; 
- Sun, 26 Sep 2021 13:19:28 -0700 (PDT)
+ bh=Hk516RwLtnA+J+S1W9+zxqbCKy6xKPg380zaTXEsGVw=;
+ b=tKT/rTXbmPM8BGns0NsQUSlyYW3osO6eBJA0N2wiLrFxkmbpbcA+9VdcXp9sUM+uaS
+ 0kHRyUgIOnMlbAnruhK462S98vb/NzgPuh7LFmcfD8ofmMwpE1DatpWH103/XzX3AC9h
+ 0eO6N+OmNdF1y3O29gY4hgwaEamSU0mVrnT8VyeeqK1oIaFMk9+5eKcqLtjcanY9A0pu
+ vvaMdFvsMqiqNHlbnJGwHfuGkjvNvA6p81auaJ339YiJY0aj2piX0vsIGXN+WydxLMcr
+ ulDqEbwmh4VaFuyOi9Iepsmo34vcVOvEjQoKgj9Pev+xGhuxmG+L3fpXApSyieZJGQ8G
+ tZ2A==
+X-Gm-Message-State: AOAM533V5QWvHFzomOf7kZtK/f4nS1HJF7olxFij85UA+5C0pvg2J0Rn
+ sxazIGnCf08CxKHmYIZgpYS9b0+QFG0=
+X-Google-Smtp-Source: ABdhPJxH2G8thzBIprgr9LruAqq5HGxvY+hirOAWBhQls/TYXKC7Zn8LQran++FstJgPQgMEwSQxyg==
+X-Received: by 2002:adf:e646:: with SMTP id b6mr24377479wrn.153.1632693665810; 
+ Sun, 26 Sep 2021 15:01:05 -0700 (PDT)
 Received: from x1w.. (118.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.118])
  by smtp.gmail.com with ESMTPSA id
- t126sm18457894wma.4.2021.09.26.13.19.27
+ r9sm14560752wru.2.2021.09.26.15.01.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Sep 2021 13:19:27 -0700 (PDT)
+ Sun, 26 Sep 2021 15:01:05 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Jagannathan Raman <jag.raman@oracle.com>, qemu-trivial@nongnu.org,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- John G Johnson <john.g.johnson@oracle.com>,
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Warner Losh <imp@bsdimp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Kyle Evans <kevans@freebsd.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/remote/proxy: Categorize Wireless devices as 'Network' ones
-Date: Sun, 26 Sep 2021 22:19:26 +0200
-Message-Id: <20210926201926.1690896-1-f4bug@amsat.org>
+Subject: [PATCH 0/2] user-mode: Avoid processing unnecessary meson rules
+Date: Mon, 27 Sep 2021 00:01:01 +0200
+Message-Id: <20210926220103.1721355-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -79,30 +79,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Sep 2021 20:19:33 -0000
+X-List-Received-Date: Sun, 26 Sep 2021 22:01:14 -0000
 
-QEMU doesn't distinct network devices per link layer (Ethernet,
-Wi-Fi, CAN, ...). Categorize PCI Wireless cards as Network
-devices.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/remote/proxy.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/hw/remote/proxy.c b/hw/remote/proxy.c
-index 499f540c947..bad164299dd 100644
---- a/hw/remote/proxy.c
-+++ b/hw/remote/proxy.c
-@@ -324,6 +324,7 @@ static void probe_pci_info(PCIDevice *dev, Error **errp)
-         set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
-         break;
-     case PCI_BASE_CLASS_NETWORK:
-+    case PCI_BASE_CLASS_WIRELESS:
-         set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
-         break;
-     case PCI_BASE_CLASS_INPUT:
--- 
-2.31.1
-
+Only process linux-user/meson.build on Linux (respectively on BSD).=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (2):=0D
+  bsd-user: Only process meson rules on BSD host=0D
+  linux-user: Only process meson rules on Linux host=0D
+=0D
+ bsd-user/meson.build   | 4 ++++=0D
+ linux-user/meson.build | 4 ++++=0D
+ 2 files changed, 8 insertions(+)=0D
+=0D
+-- =0D
+2.31.1=0D
+=0D
 
