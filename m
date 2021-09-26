@@ -1,77 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mUdGA-0008QV-2D
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Sep 2021 19:08:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35704)
+	id 1mUdcp-00026i-3L
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Sep 2021 19:32:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mUdG8-0008Mu-7l
- for qemu-trivial@nongnu.org; Sun, 26 Sep 2021 19:08:36 -0400
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35]:46658)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mUdcn-00024m-3i
+ for qemu-trivial@nongnu.org; Sun, 26 Sep 2021 19:32:01 -0400
+Received: from mail-ua1-x931.google.com ([2607:f8b0:4864:20::931]:39637)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mUdG6-0003kb-0y
- for qemu-trivial@nongnu.org; Sun, 26 Sep 2021 19:08:35 -0400
-Received: by mail-qv1-xf35.google.com with SMTP id gs10so10034400qvb.13
- for <qemu-trivial@nongnu.org>; Sun, 26 Sep 2021 16:08:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=WFPKgVbRPd6LuBZiMidW9WWN0ZLrrkNW00YLNTCJKsE=;
- b=oV06Wk58172UhmlPrzOp/BnutzG+t4gV/ik1RHEYE62m0poM0zvwH1D/WqMdCcwjgk
- H9A56kyGHsLPCEUCm4V/P7KhZ/xTvcSQchaqRNGnwOy+p3DKqCdf7vVQ1MX1DGn9JHRs
- 09fCzg7w+dEq8U8t7Kl2CvZicPCRCLmr4xSrL+6xi7L2lI/1Mp4Iot5fKnT6Jnv62wh0
- IzWNUEuglIFU6MtgVtaUGnp7Aq3Fok04FxlMi+Z/aB8PC1Ktgyc4nyANZ9afetbGd+LS
- lYubKSdPs5Ah0x81rMWALA1+eKjAM7CjBy2Jd4XTei2VxYn4wHZT+mObeB96jwSVUHV+
- 5JAA==
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mUdcl-0002Nr-J8
+ for qemu-trivial@nongnu.org; Sun, 26 Sep 2021 19:32:00 -0400
+Received: by mail-ua1-x931.google.com with SMTP id 20so2849104uaj.6
+ for <qemu-trivial@nongnu.org>; Sun, 26 Sep 2021 16:31:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=a6YOBMqTVipWsoYEeEQM9mP/a1fJtueUL5NfPY84QzE=;
+ b=CyxZz6ZUu7KKYkf+FBEoHwa6aDC4Et7u4F42lAVIwAeiAi+Jpz5BkLr3DvFGY7FQUC
+ VmzedoBfk2d89Pb8ixgNJvvQIYbGCJJIIbk9zEiNuh2C92X6S3MZBnvi2lQ5MoqTuX3M
+ p+9wOT3Rmnl9+UqOP3DB/w4pNcjB8YimuoO/BOs95tME4qMQ6dUdAB+If1LwxkKtYJBc
+ sLg55c9ycwnZUM+IGWP2OR+/MCDknjT6o+YP1hU58ef5Mr2VC1NP6ATD1Grd3ft5FIRx
+ lefEK1IzyqOr/CmP9cPgEcDUaO3YOBU34+wpo5pKRiqehHvZRAjSo9tYJghlKftPyllK
+ bYSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WFPKgVbRPd6LuBZiMidW9WWN0ZLrrkNW00YLNTCJKsE=;
- b=7pJ8i1U4CL0ysttDIpZGL6dKhltmHN/KCw1rkY+t2/4dA7+h2BNaau5+fp7xgxv6aQ
- 0+oC01Xdj5cqGvuEUWL8uOWuU/dAxHx8gZKNajq8C4syUVqy3/E+WQQ4DXslFgDWtH6J
- vSzIGE8BvMCRnTiftr1OqJn3auTj7V7lBfs52PltvWwmFc8bAH3TAYcKpDA9iQqCwahz
- phfgBjpbA7kuSTbk9FVtM6zJeBH1XVvqyNwCLzDcJoafY4Oa6pf9i612ZJgJKM7UsuaM
- 1ahLfHGbsl4GxVYeXkjNLYJS+GP871/T1egaHzv0kQqn6ecdVkV+B0YICndI18S9hEcl
- iRbg==
-X-Gm-Message-State: AOAM530DlYcq70EuR9fIwQbJNQh7QiwwAv2K3TUlKI/2lnwvYYt/8Ili
- ZxUF/6XTgRtVoo0QJhqWD308RQ==
-X-Google-Smtp-Source: ABdhPJx/K0rep6NcSI3QK1igrSpIEmh0wEXLyNbrkdKGG3aeJ9R9a4IpiZBTJZhKB0lPv92r5jVPlA==
-X-Received: by 2002:a0c:aac2:: with SMTP id g2mr21257398qvb.41.1632697713025; 
- Sun, 26 Sep 2021 16:08:33 -0700 (PDT)
-Received: from [192.168.3.43] (cpe-24-31-215-130.sc.res.rr.com.
- [24.31.215.130])
- by smtp.gmail.com with ESMTPSA id u12sm9643277qtw.73.2021.09.26.16.08.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 26 Sep 2021 16:08:32 -0700 (PDT)
-Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Warner Losh <imp@bsdimp.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Kyle Evans <kevans@freebsd.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=a6YOBMqTVipWsoYEeEQM9mP/a1fJtueUL5NfPY84QzE=;
+ b=Z7wXoyxctkKF0Pz8Ik+C8CwLoq4V/AOeKdysRtVE0EHvDZVsIiskcROJO56il+IuXo
+ xJI+9qTQ41pV4FGcPyc1Hwd09rccmMBb9y+k/PPzMk4QRYfikgfyRIvSrvoQd1lH52Ks
+ Td0KV4TCDlDrEq31sG+K2fI3OBLSwWqVsmGU2sDCJUk6Xo+UsESqVXhTrPg0BCLEbYQb
+ xFH7W7Ufel3guNdzJ3I9puU3AdOjWkYSf9N5QV1TrNrFQlcF4HmvUciaYJMXqzyvjyfm
+ Kjg/5PzGJl8eRzTkfWVhBv0qGVWxMbBC6E25xnhTZACv9eqMIBPv3C7YgSgHZFExw1Hc
+ D4Tw==
+X-Gm-Message-State: AOAM5336NNXmWV5Vqyniu/NpUKy4UuUL3Rs3NfrNVPUfOehny8eEL6/k
+ OhY+w28h53mxbzsf7OlGMXDoKRGYoK/su8uZBFSC+w==
+X-Google-Smtp-Source: ABdhPJzXjqhzicPuZ5WyJ9JpLFn+pRmskkbtdHYP6D8NBYPmmFy4cbtvdHG+y8nQ33v89mvAAwk6QiNv3ztp7cEExcs=
+X-Received: by 2002:ab0:5b5d:: with SMTP id v29mr8864904uae.85.1632699116937; 
+ Sun, 26 Sep 2021 16:31:56 -0700 (PDT)
+MIME-Version: 1.0
 References: <20210926220103.1721355-1-f4bug@amsat.org>
  <20210926220103.1721355-2-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e43cf822-c23d-1ddf-398e-71f78ea05b43@linaro.org>
-Date: Sun, 26 Sep 2021 19:08:30 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <20210926220103.1721355-2-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f35;
- envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf35.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.478,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <e43cf822-c23d-1ddf-398e-71f78ea05b43@linaro.org>
+In-Reply-To: <e43cf822-c23d-1ddf-398e-71f78ea05b43@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Sun, 26 Sep 2021 17:31:45 -0600
+Message-ID: <CANCZdfqm-+a2AqXx0+Rw7jETP8VuC0Eq4QJzs3uyoU9U_d3ZUw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
+ Kyle Evans <kevans@freebsd.org>
+Content-Type: multipart/alternative; boundary="000000000000e3f44005ccee62ae"
+Received-SPF: none client-ip=2607:f8b0:4864:20::931;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x931.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,26 +72,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Sep 2021 23:08:36 -0000
+X-List-Received-Date: Sun, 26 Sep 2021 23:32:01 -0000
 
-On 9/26/21 6:01 PM, Philippe Mathieu-Daudé wrote:
-> Reported-by: Warner Losh <imp@bsdimp.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   bsd-user/meson.build | 4 ++++
->   1 file changed, 4 insertions(+)
-> 
-> diff --git a/bsd-user/meson.build b/bsd-user/meson.build
-> index 03695493408..a7607e1c884 100644
-> --- a/bsd-user/meson.build
-> +++ b/bsd-user/meson.build
-> @@ -1,3 +1,7 @@
-> +if not config_host.has_key('CONFIG_BSD')
-> +  subdir_done()
-> +endif
+--000000000000e3f44005ccee62ae
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Why here and not in the parent meson.build?
+On Sun, Sep 26, 2021 at 5:08 PM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
+> On 9/26/21 6:01 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > Reported-by: Warner Losh <imp@bsdimp.com>
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > ---
+> >   bsd-user/meson.build | 4 ++++
+> >   1 file changed, 4 insertions(+)
+> >
+> > diff --git a/bsd-user/meson.build b/bsd-user/meson.build
+> > index 03695493408..a7607e1c884 100644
+> > --- a/bsd-user/meson.build
+> > +++ b/bsd-user/meson.build
+> > @@ -1,3 +1,7 @@
+> > +if not config_host.has_key('CONFIG_BSD')
+> > +  subdir_done()
+> > +endif
+>
+> Why here and not in the parent meson.build?
+>
 
-r~
+I have the same question... I never know where to 'filter' when it comes to
+meson...
+
+Waner
+
+--000000000000e3f44005ccee62ae
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Sun, Sep 26, 2021 at 5:08 PM Richa=
+rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
+nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">On 9/26/21 6:01 PM, Philippe Mathieu-Daud=C3=A9 wrote:<br=
+>
+&gt; Reported-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com" target=
+=3D"_blank">imp@bsdimp.com</a>&gt;<br>
+&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug=
+@amsat.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0bsd-user/meson.build | 4 ++++<br>
+&gt;=C2=A0 =C2=A01 file changed, 4 insertions(+)<br>
+&gt; <br>
+&gt; diff --git a/bsd-user/meson.build b/bsd-user/meson.build<br>
+&gt; index 03695493408..a7607e1c884 100644<br>
+&gt; --- a/bsd-user/meson.build<br>
+&gt; +++ b/bsd-user/meson.build<br>
+&gt; @@ -1,3 +1,7 @@<br>
+&gt; +if not config_host.has_key(&#39;CONFIG_BSD&#39;)<br>
+&gt; +=C2=A0 subdir_done()<br>
+&gt; +endif<br>
+<br>
+Why here and not in the parent meson.build?<br></blockquote><div><br></div>=
+<div>I have the same question... I never know where to &#39;filter&#39; whe=
+n it comes to meson...</div><div><br></div><div>Waner=C2=A0</div></div></di=
+v>
+
+--000000000000e3f44005ccee62ae--
 
