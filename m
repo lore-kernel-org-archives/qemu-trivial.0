@@ -1,69 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mUYOl-0003jo-QS
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Sep 2021 13:57:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53060)
+	id 1mUacY-0001wG-F6
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Sep 2021 16:19:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUYOj-0003bj-R6; Sun, 26 Sep 2021 13:57:09 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:44682)
+ id 1mUacW-0001uc-KA; Sun, 26 Sep 2021 16:19:32 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:43898)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUYOh-0007Qq-DV; Sun, 26 Sep 2021 13:57:09 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id d6so44901974wrc.11;
- Sun, 26 Sep 2021 10:57:06 -0700 (PDT)
+ id 1mUacV-0008Mq-51; Sun, 26 Sep 2021 16:19:32 -0400
+Received: by mail-wr1-x433.google.com with SMTP id x20so1137322wrg.10;
+ Sun, 26 Sep 2021 13:19:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jvqRK4Z3bdPv/1YidtRVaHsIt5mmLgAbnxJvc6rWeOY=;
- b=cIn7FVQh4RMmE1zr384PbkA3Wi06HLIFp3QYRDMUUOgesCR6HszXWE7xPedMuadbAP
- Y5321Imtl+QWLbWbrDvUS+AEoVA9plMRRLUKt+ENF+BLrIKxZPeUD/JZE/t6rnezjoQK
- nAqudy74ASh177PkUxNsxjjJmbFSF55jG8c+XaeNg4xqQK2IMxXeLas7O+8oztXM9H+o
- ampaDFV9+6CIF+UiFpVKqCrLFaGGtzRNPOngZvK03Xs9uJDUw6Wo40g6TlfGbj/hSz6y
- y2KkIUOOAqUdvEMo7DyU0I7CBw4PM49UUE8YVglwukwrX7lgTu9viiydgLP+yHmFz67T
- 3zHw==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=03DgaG1RzzgeU081YWoropruPxlpXxg483HBoJjh5V0=;
+ b=Rqy29ISSKKday8M+ISB1MTJV6dnh14LEcnMi2/9128Zd3dpp7Wnk8nPTjre4NQI661
+ QYoJlnHUZjhqggSCKzKTclXEXU+rONiI2v0Tzxfc4MFLCO05XppTFHfRoZ4A58bz3Aip
+ 1Zc2kbQsO7DYZGGxTGY3wcvNCz6qLoT/yyvepoA9/wzHJCnBTBcnjpmyveXMqhAEqjrF
+ t1vR71htD31bN+LXGQMXldRIF1slGsFy/Re2OTOq6l7iAiaJcjKCPOAzVCs1npVzB8eb
+ XLLXxAo3cHDyF+4JY5nmaiKR2UG8R03hfo2tB88zvSr5lcMA/NwiSBBWRr60HA5YHBJp
+ vE0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=jvqRK4Z3bdPv/1YidtRVaHsIt5mmLgAbnxJvc6rWeOY=;
- b=b/RiIpkdzp/fUeTsN5B6WLQU4x4Ht5HjfBeO5+DODCjvgPz4FWPf/QHgjD6Qv5Y+ZD
- 4kzUUjTO9W/Ps/luXIyCrEHrgX+l2wj9pvktUCYqrCvYBSfbcaWca6Yn4YTAZ2Qo4ruI
- 62tveP3lELz0BEg7mW7Udl711rMP8e1ONtJJURSVrDI5j17ZFX7JU3rKu7+PVmvcAJBr
- KKAcR/Md+IS/6hefKCgzw/OXKX4SKg/SHaS7f6m8e2vYL+Hcd5zahClbPVGop4IQMqgE
- 7L1g7Py/gGLz/m+3unka4rXEXcVqyB6hWYlo0KKk2hvvUCHhP1nbYmvpZDnAASpaDAT4
- RNBA==
-X-Gm-Message-State: AOAM532iQAuWSWoSuOLCHZs8jeh94ZjGbCXP0k7ok/y7wtbhee6MxzsT
- 0ZrcO/P5pbfjqJKDjNT6RPXsUpNYmrc=
-X-Google-Smtp-Source: ABdhPJzWFaeXI2saIAKE36Kv6vIhdV77FZdm4oDd973pjzBRub5olz1xPpNpAmF08NjPS3aRXNRFKw==
-X-Received: by 2002:a5d:63d2:: with SMTP id c18mr22599828wrw.311.1632679025490; 
- Sun, 26 Sep 2021 10:57:05 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=03DgaG1RzzgeU081YWoropruPxlpXxg483HBoJjh5V0=;
+ b=jb1LKKTs2OQkVNhHNXuO26Ee8tcc8p9Li9295B91VE6M2r8t0xg08ws6KaYYd/3X0A
+ wZdNNVC9Rq9196MW8xDilG25jG/vklQpE0sZM7j2UqCm89y02aIVFiM9Gh5v53xuH6bb
+ 4QMDKBNPtWqq4xVpLBe5iKOriawFshoJskiCDyYfh1iIlxULZI8V0cVo5nioVsIpVnN8
+ oOl/MyYJ0I0gXrelulxzsFG7tVtwuooiMECPbibNXFes5+LedPgCjxN2CyNwNicRSM81
+ WzTjE2VTHR+ZtAp1ZDsp5nlmLr4wsi5GAXmKMbHg7yz3xvtiKlSzu8WU2B+CaW/u5CIU
+ sA5g==
+X-Gm-Message-State: AOAM532Vb1U18lqXyNSEYBjlLBXZHPEzP/fe+pnZiAvxatKO/VauiNgD
+ o2wU4YYO1vmx98q/pAa5Ifz81/SWfRA=
+X-Google-Smtp-Source: ABdhPJzqnWtXE0r+xJ8cGD0e7s/rzXL5Tqgjyy9y2GML9q0UNxQUe7EF8AWL3LdfU/IIsy7vbeJSJA==
+X-Received: by 2002:a7b:c923:: with SMTP id h3mr12786849wml.28.1632687568147; 
+ Sun, 26 Sep 2021 13:19:28 -0700 (PDT)
 Received: from x1w.. (118.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.118])
  by smtp.gmail.com with ESMTPSA id
- a72sm18919583wme.5.2021.09.26.10.57.04
+ t126sm18457894wma.4.2021.09.26.13.19.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Sep 2021 10:57:05 -0700 (PDT)
+ Sun, 26 Sep 2021 13:19:27 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-trivial@nongnu.org,
+Cc: Jagannathan Raman <jag.raman@oracle.com>, qemu-trivial@nongnu.org,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ John G Johnson <john.g.johnson@oracle.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 3/3] hw/i386/amd_iommu: Add description/category to
- TYPE_AMD_IOMMU_PCI
-Date: Sun, 26 Sep 2021 19:56:48 +0200
-Message-Id: <20210926175648.1649075-4-f4bug@amsat.org>
+Subject: [PATCH] hw/remote/proxy: Categorize Wireless devices as 'Network' ones
+Date: Sun, 26 Sep 2021 22:19:26 +0200
+Message-Id: <20210926201926.1690896-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210926175648.1649075-1-f4bug@amsat.org>
-References: <20210926175648.1649075-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -84,41 +79,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Sep 2021 17:57:10 -0000
+X-List-Received-Date: Sun, 26 Sep 2021 20:19:33 -0000
 
-TYPE_AMD_IOMMU_PCI is user-creatable but not well described.
-Implement its class_init() handler to add it to the 'Misc
-devices' category, and add a description.
+QEMU doesn't distinct network devices per link layer (Ethernet,
+Wi-Fi, CAN, ...). Categorize PCI Wireless cards as Network
+devices.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/i386/amd_iommu.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/remote/proxy.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index 9014690ba3a..9242a0d3ed8 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -1621,10 +1621,19 @@ static const TypeInfo amdvi_sysbus = {
-     .class_init = amdvi_sysbus_class_init
- };
- 
-+static void amdvi_pci_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "AMD IOMMU (AMD-Vi) DMA Remapping device";
-+}
-+
- static const TypeInfo amdvi_pci = {
-     .name = TYPE_AMD_IOMMU_PCI,
-     .parent = TYPE_PCI_DEVICE,
-     .instance_size = sizeof(AMDVIPCIState),
-+    .class_init = amdvi_pci_class_init,
-     .interfaces = (InterfaceInfo[]) {
-         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-         { },
+diff --git a/hw/remote/proxy.c b/hw/remote/proxy.c
+index 499f540c947..bad164299dd 100644
+--- a/hw/remote/proxy.c
++++ b/hw/remote/proxy.c
+@@ -324,6 +324,7 @@ static void probe_pci_info(PCIDevice *dev, Error **errp)
+         set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+         break;
+     case PCI_BASE_CLASS_NETWORK:
++    case PCI_BASE_CLASS_WIRELESS:
+         set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
+         break;
+     case PCI_BASE_CLASS_INPUT:
 -- 
 2.31.1
 
