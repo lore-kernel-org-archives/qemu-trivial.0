@@ -1,80 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mThhI-0005n9-D1
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Sep 2021 05:40:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41558)
+	id 1mUYOX-00038E-Qu
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Sep 2021 13:56:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mThhH-0005i6-1a; Fri, 24 Sep 2021 05:40:47 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:36561)
+ id 1mUYOV-000372-3e; Sun, 26 Sep 2021 13:56:55 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:40638)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mThhE-0007Sd-Cp; Fri, 24 Sep 2021 05:40:46 -0400
-Received: by mail-wr1-x435.google.com with SMTP id g16so25535146wrb.3;
- Fri, 24 Sep 2021 02:40:43 -0700 (PDT)
+ id 1mUYOT-0007F4-N6; Sun, 26 Sep 2021 13:56:54 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id s21so5032234wra.7;
+ Sun, 26 Sep 2021 10:56:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=hyZE3nDTgOENPleOcICsAXRzDia9rRVIxphyjqCmuCc=;
- b=SkyJIPwUtLvJ+DsNSPO+QmjrSRIZhzenbp6gElMXAfbF7hEyk8Y6HrASKZkeliSY8m
- 2kcaqL7hXvjf29bB0W51Tu0ApZopoFg7ESg7qcMZzP+TsuPX9wFOQGMpTRZeaIHRWfhE
- FdC3n++tVGerb3wx52kd3apEuTE7+g2K4aEF2pdVbMjpUqDOsKMc4SmFcM2iPSR17e6z
- 4/iFVXknqJ3F2T4OfXGCngPLL/dATfQeh5cB/kmtBhDhTSenbTE+64j3/QIzNLw9eusf
- RMX8BesNHXJiFjyifAsUQDLqQUJ8oQdxLb3XJWTUVKODrhHlGdht/x4pIIt8twYfjvJv
- VkSg==
+ bh=kSqLI5yBxvBKqbdGccVj5k6FQVox4keI57BA3Nee2BE=;
+ b=anPYD4grZK+NZRZJx6DuWxvS2XPq2uVxg/E6TmnbEsfCYOf5+SuiGvvAP/vh2Zh/H2
+ /K/r5fSGrbCVSRrF/G+RnIjh61e05RzpOEQbkOJgONguMRj3LqAfvPSmaTddbFhH++F7
+ hc4fLNYHR0lieSXhBwdldT7LDdAxJHgvon2pqsbusLphg8VWPp3ud/dNwN/QMb8eL/6q
+ VrkMfrG7Cso0MciAtmsRbYFwQHbVevUIlFiLDjrxE9/WfQafgSW+aczL3gI/rk6R7bhF
+ 1/4/NjCuQr7VSrMOEoL1rnxTKyyhePAUdvo0mHHWniNuRxI3E5phNQslvxAvzNMr4VCZ
+ CpSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=hyZE3nDTgOENPleOcICsAXRzDia9rRVIxphyjqCmuCc=;
- b=hviIcXcFVZB6VPsj9/qah7DVK9eZ8X3ReuRY0v2Dy6tiJ2KSXbkUhtLmGHFuHYx4pA
- N7nCktUwooyMxc80GEFjNWm/x5AYa8dH6Zg5zDv5QxpVc5AX6JwASuC6AovVxOkLmqHj
- yjdQSwrxgZYTb5IDfH9SpH3mY8fcKWR99en6O7uEHrrEjJ8WYksCuMGbYgkDGuOvSTR1
- NHM2/0756ypSg9uvt8zhaK93FvdWh/qzk3GO9NcZIIedqwSkNMbwtKfOoqkn0YbcbFip
- w2YfjLGpwk+TcQ18V90tLzQnRbOfAFDxpceTR32WwHKnRiemEpr9sN6BFPZH3/dBtxaC
- hZTg==
-X-Gm-Message-State: AOAM531Id8nV/sLzCOUwgkmutbx90IS8okGI1vLMI5BU7NOAkRr2rLN1
- nK/+ieZL1cxRQRgMhYzFByQ=
-X-Google-Smtp-Source: ABdhPJwb2TjkH0t/fyeHCaSEl7F3o6cJR7Z//F3sX1Zoybrg/nnFqfOF+gfeWB6U0UpDxXV+rU5hiw==
-X-Received: by 2002:a05:600c:22d4:: with SMTP id
- 20mr999876wmg.177.1632476442554; 
- Fri, 24 Sep 2021 02:40:42 -0700 (PDT)
-Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id f1sm7966000wrc.66.2021.09.24.02.40.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Sep 2021 02:40:41 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=kSqLI5yBxvBKqbdGccVj5k6FQVox4keI57BA3Nee2BE=;
+ b=RUopWjV5ezazMXQdb8CPjVVKemmf9uDhzCLeQdcMpDnRDgb+8ftbDTyJKx0+hOkE7p
+ bB7yDAxKAZge+J8wcAlIUlrJEhbCoposVQD1j/e9Pi/e2LwCQ4v/jz0LBuRHqSjiapz2
+ eGW5K8VS19UeIJ1LC084iaBj1pVH3NQpEYtCkdlv1iSSlehM8Qg8AUDZPGrsBufXDrez
+ SeQkElgHs0SOxaNks5cXxsMSczfmUNVmJIxkPmzKkHwJyXYFgzkIw5RPT24XYESA+QOg
+ 7MkU6TyRke60MGSVomtO8JA5gFX5jsdVRrA5SzpNl5pgRjy9O0KHPTrCXi0/rxVtUGgz
+ jJ0g==
+X-Gm-Message-State: AOAM530vw359ut8NRTe8NeI56q9KWCxnJ56DSq3VwdBOC7+PsMepdj+Q
+ hLzaY9DMgaxf3iKLRpqD3baJfh9RFIA=
+X-Google-Smtp-Source: ABdhPJywN0BEcx71kgK22yvrYgWV7yiCX1d5OHTPvmjVfmoaFDTD5MOyZmAkkzJRGbpQfG6Hhh29jA==
+X-Received: by 2002:a5d:6991:: with SMTP id g17mr7976831wru.218.1632679011148; 
+ Sun, 26 Sep 2021 10:56:51 -0700 (PDT)
+Received: from x1w.. (118.red-83-35-24.dynamicip.rima-tde.net. [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id
+ u6sm16920597wrp.0.2021.09.26.10.56.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 26 Sep 2021 10:56:50 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <012da8f3-1399-8eb9-d588-65e02e90183e@amsat.org>
-Date: Fri, 24 Sep 2021 11:40:40 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH-for-6.2 0/2] disas/nios2: Simplify endianess conversion
-Content-Language: en-US
-To: Laurent Vivier <laurent@vivier.eu>, Chris Wulff <crwulff@gmail.com>,
- Marek Vasut <marex@denx.de>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, qemu-devel@nongnu.org
-References: <20210807110939.95853-1-f4bug@amsat.org>
- <a99e29c5-0aed-2a7c-cbdd-ebaecc99a448@amsat.org>
- <aa70868b-78b0-838a-55cd-3a7399fc041f@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <aa70868b-78b0-838a-55cd-3a7399fc041f@vivier.eu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 0/3] hw/i386/amd_iommu: Add description/category to
+ TYPE_AMD_IOMMU_PCI
+Date: Sun, 26 Sep 2021 19:56:45 +0200
+Message-Id: <20210926175648.1649075-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -89,40 +82,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Sep 2021 09:40:47 -0000
+X-List-Received-Date: Sun, 26 Sep 2021 17:56:55 -0000
 
-Hi Cris and Marek, could you help me get this series merged?
-
-On 9/23/21 17:14, Laurent Vivier wrote:
-> Le 18/09/2021 à 11:19, Philippe Mathieu-Daudé a écrit :
->> Cc'ing qemu-trivial@ (series fully reviewed).
->>
-> 
-> An Acked-by from one of NiosII maintainers would be welcome.
-> 
-> Thanks,
-> Laurent
-> 
->> On 8/7/21 13:09, Philippe Mathieu-Daudé wrote:
->>> After chatting with Richard Henderson and Paolo Bonzini, we
->>> concluded the load/store API is mature enough to have target
->>> code endianess-agnostic.
->>> Thus we could remove the TARGET_WORDS_BIGENDIAN definition from
->>> target-specific code (restricting it to the binary format loaders).
->>>
->>> While experimenting, I noticed the Nios2 disassembler is an easy
->>> win. MIPS will follow shortly.
->>>
->>> Philippe Mathieu-Daudé (2):
->>>    disas/nios2: Fix style in print_insn_nios2()
->>>    disas/nios2: Simplify endianess conversion
->>>
->>>   include/disas/dis-asm.h |  3 +-
->>>   disas/nios2.c           | 71 ++++++++++++++++-------------------------
->>>   target/nios2/cpu.c      |  6 +---
->>>   3 files changed, 29 insertions(+), 51 deletions(-)
->>>
->>
-> 
-> 
+Trivial patches, sanitizing some amdvi* names, and adding=0D
+a description/category to the TYPE_AMD_IOMMU_PCI device.=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  hw/i386/amd_iommu: Rename amdviPCI TypeInfo=0D
+  hw/i386/amd_iommu: Rename SysBus specific functions as=0D
+    amdvi_sysbus_X()=0D
+  hw/i386/amd_iommu: Add description/category to TYPE_AMD_IOMMU_PCI=0D
+=0D
+ hw/i386/amd_iommu.c | 41 +++++++++++++++++++++++++----------------=0D
+ 1 file changed, 25 insertions(+), 16 deletions(-)=0D
+=0D
+-- =0D
+2.31.1=0D
+=0D
 
