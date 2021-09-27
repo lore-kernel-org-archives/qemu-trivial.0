@@ -1,73 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mUnJb-0005Bo-3M
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Sep 2021 05:52:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57708)
+	id 1mUnJv-0005Uw-QM
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Sep 2021 05:53:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mUnJX-000521-Lz
- for qemu-trivial@nongnu.org; Mon, 27 Sep 2021 05:52:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42350)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mUnJp-0005Lx-83; Mon, 27 Sep 2021 05:53:05 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:34439)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mUnJT-00040N-A4
- for qemu-trivial@nongnu.org; Mon, 27 Sep 2021 05:52:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632736361;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/HuHCzIXLbImGMIBrGVjSKpkxWrHVXc+4xP7Huq7qAI=;
- b=JA/1MA7C2+Qlhdnjtf++zIucJcRHf/qk2Ui3/9a/fhSF/Z3q3DaTKt1Kl6bmrNMk02WWeH
- jITfWmb/QC7a1LoxWtxbWpvXQAbD4TCnq0Nx8zOzaE7Nyr+87evnUnkmJa1ydUZlpRk3w7
- b6v3m7uulyfcvVw4SqDSg257JxO5p3M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-321-eE2U1Zc8OA6gdeuWetuA8w-1; Mon, 27 Sep 2021 05:52:37 -0400
-X-MC-Unique: eE2U1Zc8OA6gdeuWetuA8w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 41249180830B;
- Mon, 27 Sep 2021 09:52:36 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.156])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 49F7760657;
- Mon, 27 Sep 2021 09:52:34 +0000 (UTC)
-Date: Mon, 27 Sep 2021 10:52:31 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,
- Paolo Bonzini <pbonzini@redhat.com>, Warner Losh <imp@bsdimp.com>
-Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
-Message-ID: <YVGUX6FZlFBhhgwn@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20210926220103.1721355-1-f4bug@amsat.org>
- <20210926220103.1721355-2-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mUnJl-0004H3-Ua; Mon, 27 Sep 2021 05:53:04 -0400
+Received: from quad ([82.142.21.142]) by mrelayeu.kundenserver.de (mreue009
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MxUfh-1mjqHx1HyL-00xrMp; Mon, 27
+ Sep 2021 11:52:56 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 2/5] hw/loader: Restrict PC_ROM_* definitions to hw/i386/pc
+Date: Mon, 27 Sep 2021 11:52:49 +0200
+Message-Id: <20210927095252.2374148-3-laurent@vivier.eu>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210927095252.2374148-1-laurent@vivier.eu>
+References: <20210927095252.2374148-1-laurent@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <20210926220103.1721355-2-f4bug@amsat.org>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:kvXIkTMs5+i+HOrg0WV/nFmJ5xhRTcf22bLqre8Fax7m4j/iLS/
+ +B6gAQq0Ha5m/GzJ1ZtQsNzNpWJbhszQx8sSfXR1MixPdPVoycJwzK9fGb0jv7mRiJ8rRvs
+ timCoDUk07TvzS9nCpGQVLkADbi+QyrMn2WDytvFg5KG/3/kK7JGVa0C57CBg9Rm2LtVPuY
+ I8vTeC6xvjQrT1thh9dOQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:rlIvtZAPNIY=:4FgaRclfLkWl5RHkuzJnVy
+ LmqOTY9OSoDsT3ho7scGNhGfzQdgUWeRd+jLs6eZLIqW12o6mb0u920ZvTdvkF2U4QCo5fa9o
+ zSnNvseYsicBKih2DqSYpTc1geq0ch/kvydiNRXUy0ahxO/lZf00OdDETp33dMdLjTUNqREkt
+ QUnuFmRLLDHg655Sp9NJhue0wgna1IqqiQ3751y7R+MLKFZ3pPmysCGlxEDV1D/9vra0ufojE
+ riW8nYvEQRpN5MIoDLoL9kO39tz6XOukiNnsU59RAukyNAyfWHpYTWspSVep54xdy6KkrQFJc
+ Lkxh2p+tm7BJM0+3fJnEPmL6xyhUOAWcTQFlrzaf4R0ljqySqV2Rk+jrzAXlA+LYkbSQsXnFa
+ SAX2+0BKkgLWYmyL3STbMkv5HDXw+97+6oW2dSPCrtrhBo3EI3mPFgvqQu4jZ053RcDc+MLTW
+ g/ddgzhYd2pXpYnKfUexTmVQ015A9MfP9fb/46P5u7Fqo4LfwitTxr4nilOePfdTryB/D/IYd
+ b+ZZazLGvhMZvUr/N+mqCtjIO+kcaiYOaJHoNFbWkJvlD+JlJRRPFKhs+gBSYhKlyexWPDHcE
+ L6ev9n44Fy+flgY8hgGKnB0Y+d4bNqkn7loHptc7zY8lTHPGx7fL3XSiYROjxI2PuQ1wPwEJN
+ FrFZZecVojhI+V5TqxQ30LpLL/Kx21S8YO/uYi5+XnTOcMINpcxKizvTTvSyBhA8a242lX3Rq
+ 5G8VeaMpuANm4sqhZ0OwrA3ROZSOje+3j1JHAg==
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,75 +61,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Sep 2021 09:52:47 -0000
+X-List-Received-Date: Mon, 27 Sep 2021 09:53:06 -0000
 
-On Mon, Sep 27, 2021 at 12:01:02AM +0200, Philippe Mathieu-Daudé wrote:
-> Reported-by: Warner Losh <imp@bsdimp.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  bsd-user/meson.build | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/bsd-user/meson.build b/bsd-user/meson.build
-> index 03695493408..a7607e1c884 100644
-> --- a/bsd-user/meson.build
-> +++ b/bsd-user/meson.build
-> @@ -1,3 +1,7 @@
-> +if not config_host.has_key('CONFIG_BSD')
-> +  subdir_done()
-> +endif
-> +
->  bsd_user_ss.add(files(
->    'bsdload.c',
->    'elfload.c',
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-If we look at the big picture across the root meson.build, and this
-meson.build we have
+The PC_ROM_* definitions are only used by the PC machine,
+and are irrelevant to the other architectures / machines.
+Reduce their scope by moving them to hw/i386/pc.c.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20210917185949.2244956-1-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/i386/pc.c        | 6 ++++++
+ include/hw/loader.h | 6 ------
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-  bsd_user_ss = ss.source_set()
-
-  ...
-
-  bsd_user_ss.add(files(
-    'bsdload.c',
-    'elfload.c',
-    'main.c',
-    'mmap.c',
-    'signal.c',
-    'strace.c',
-    'syscall.c',
-    'uaccess.c',
-  ))
-
-  ...
-
-  bsd_user_ss.add(files('gdbstub.c'))
-  specific_ss.add_all(when: 'CONFIG_BSD_USER', if_true: bsd_user_ss)
-
-
-So without this change, we're already correctly dropping bsd_user_ss
-in its entirity, when not on BSD.
-
-With this change, we're dropping some, but not all, of bsd_user_ss
-files - gdbstub.c remains.
-
-So this change on its own doesn't make a whole lot of sense.
-
-If we look at linux-user/meson.build though things are more complex.
-There we have alot of sub-dirs, and meson.biuld in those dirs adds
-generators for various files. So conceivably skipping linux-user
-will mean we won't auto-generate files we don't need on non-Linux.
-
-With that in mind, I think it makes conceptual sense to have this
-bsd-user/meson.build change, for the purpose of design consistency,
-even if it doesn't have any real world benefit for bsd-user today.
-
-Regards,
-Daniel
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 7e523b913caa..557d49c9f8f1 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -843,6 +843,12 @@ void xen_load_linux(PCMachineState *pcms)
+     x86ms->fw_cfg = fw_cfg;
+ }
+ 
++#define PC_ROM_MIN_VGA     0xc0000
++#define PC_ROM_MIN_OPTION  0xc8000
++#define PC_ROM_MAX         0xe0000
++#define PC_ROM_ALIGN       0x800
++#define PC_ROM_SIZE        (PC_ROM_MAX - PC_ROM_MIN_VGA)
++
+ void pc_memory_init(PCMachineState *pcms,
+                     MemoryRegion *system_memory,
+                     MemoryRegion *rom_memory,
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index cbfc1848737c..81104cb02fed 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -336,12 +336,6 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ #define rom_add_blob_fixed_as(_f, _b, _l, _a, _as)      \
+     rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, _as, true)
+ 
+-#define PC_ROM_MIN_VGA     0xc0000
+-#define PC_ROM_MIN_OPTION  0xc8000
+-#define PC_ROM_MAX         0xe0000
+-#define PC_ROM_ALIGN       0x800
+-#define PC_ROM_SIZE        (PC_ROM_MAX - PC_ROM_MIN_VGA)
+-
+ int rom_add_vga(const char *file);
+ int rom_add_option(const char *file, int32_t bootindex);
+ 
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.31.1
 
 
