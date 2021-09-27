@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mUnLn-0007vk-Lo
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Sep 2021 05:55:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58186)
+	id 1mUnYb-0006It-7I
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Sep 2021 06:08:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mUnLi-0007rO-Bp
- for qemu-trivial@nongnu.org; Mon, 27 Sep 2021 05:55:02 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:43683)
+ id 1mUnYZ-0006FC-DQ
+ for qemu-trivial@nongnu.org; Mon, 27 Sep 2021 06:08:19 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:40687)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mUnLf-0005pS-Qx
- for qemu-trivial@nongnu.org; Mon, 27 Sep 2021 05:55:02 -0400
-Received: by mail-wr1-x432.google.com with SMTP id x20so6065471wrg.10
- for <qemu-trivial@nongnu.org>; Mon, 27 Sep 2021 02:54:57 -0700 (PDT)
+ id 1mUnYX-000899-Gd
+ for qemu-trivial@nongnu.org; Mon, 27 Sep 2021 06:08:19 -0400
+Received: by mail-wr1-x436.google.com with SMTP id s21so10832192wra.7
+ for <qemu-trivial@nongnu.org>; Mon, 27 Sep 2021 03:08:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=jhw/SVDuUwd/aFiSKD2igaFIywXAwoWZZ37t7zIoWm0=;
- b=gmsglJ2oHZHlId005mxc7vcHYg6S6hldqL2bogvCPHEBhUdu3uEam2EANS/5Ln6i5H
- y+2IARo4sFgo2qkamqLbIggdDPFCwUz+MBOS+Rz1kM295DMUoP/QK96tEWDDlC3ahqod
- xC4cc8YjhS7hYv3wAYaEwMJJgYCS507DQqNxezS9ZRzcrwosE53jjNE5oiDRXpn+/ZXn
- 4lDCjUFtZnUvEQE5siSO23HHVf0uVtpFu5jGjETYSncqLa5ZaQqkMpjALXANCpdCrRhz
- SjbgOIHfmJvqNphCRMJ64lI43iX66EjnoUuhf4Q/OY7XKuihz/TSWU5srW0XhVVSPHba
- aJbw==
+ bh=J8q1dmv8ByfrswwLW/lDF2Zza3LpzQLATB8uhMs/KDU=;
+ b=dV1GNm9jYFD3RIXiZMwhrWo3UOYaV4ryPHW34IXRtreubXwEEJB3lBZNdgUxXDtK/G
+ PvNeCavW3qPFS6k82IhdsDlNgJyH80d6+2N9L1wjphDX5Mm5JBsx2auexqXxRvODcVYJ
+ /MR+05fT3SdSsE/B+T1H3l+YRlAVNlRoB/IXzqdHyxnElGpD5CPG3tlDCY3HepJPG14+
+ 4WXQLHYxbM4xXkOuzgHI+GBH8bWPGZFlVaUbrU9jV9vgbxNnb/6pRoGCwCg51WUYZ0gv
+ PM3xfoJrQvxE9XcNowwprfJWD0W9n9NMHxJomDUNM7N1p0w6MHWhN41atGw0tS6A2/ZB
+ cBlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=jhw/SVDuUwd/aFiSKD2igaFIywXAwoWZZ37t7zIoWm0=;
- b=Ay7bvG1brtI3s4rlE2pfkXVIhySTdvY2dFOgZvcA4GozP/gdZwHTGz2gHgyqEv0pHp
- IBBAhtUKWdRF2PYWiuYl+gdlNsZk3DpiHTDgc407r0GvLujOkXCCefgW6Gllqfsqi/0g
- lu1MhqUB8t89Yjkedexjoq4l+HrPaIbwCYl3DfKXqxzyJe5tykezj82J33sX1p+rgcnn
- b6vqfwz4n5JqZfBL4or1yeCBFgwdjwkkV0jNqRRm+licJdGU1J+TBrGaVzBAcbpXqna3
- w/d/yxOssBNQUm5nEjthKnS2zJgVlhEvm3wmJTQM4sNA20vI2Mq098qC6lHmkn32mkvM
- Y8Nw==
-X-Gm-Message-State: AOAM533cW3ILR2A9zd9usZSc/RzS0QFHWxXe116YbbuSuyTbW7TK4Nj5
- 32RDVMOVlW2VUmlWT7e6Jw9sndyKor566PtVmjtCPg==
-X-Google-Smtp-Source: ABdhPJyFkhD+x0oFNbwhQuU5NTd917l/eEfev2dH3pM2XFO8bRf6LZ+NaKqjF/xS8tXmHlAn4Agz2fk8rqeaqCWrrHE=
-X-Received: by 2002:adf:f185:: with SMTP id h5mr27448151wro.302.1632736495977; 
- Mon, 27 Sep 2021 02:54:55 -0700 (PDT)
+ bh=J8q1dmv8ByfrswwLW/lDF2Zza3LpzQLATB8uhMs/KDU=;
+ b=dPfa3iWhLns/QikReNuK7lZnHBVoi0agCZSXJAx9JsGM3zizBa1rDYbtbIX45yonkx
+ 0ERo6fopxuMtZWITA9H7+asUDqSqZL41l+jwcjjY5bBQfByZLGHoY6G2e0cMJAEiXfjx
+ 923KBntlCFTRf72CZRIi8TF7tMraKt+i+/8FXQNITr9jMDlLRBxyaQhUKNJ7i9DLaE3B
+ 3ReQFewUWK2HKwMk+ml+o4J8tsrs1NSKQoK9LQ0HdSeGc03ABfKpsdjh6CAFvG+iHqoF
+ foPV2Yi+n2EEXemH1EcsdYEtJRFYibh++xDecQvwqHVKftnbOLFiKiMBDU33aHfbUTy8
+ KOgA==
+X-Gm-Message-State: AOAM531SX+o04Rz5CG+dYAwJezYgl5xRG4LNi/HxI3Wlw9qrg/PzMcFj
+ rq1uhXjj9gCz4t1kMAiv/M/xK2G5ovw20RzhpHcsEw==
+X-Google-Smtp-Source: ABdhPJxvC9vSjvJyPiIeBsQqDM7TAo01I7J8ksRozunD7IyL8oAJBG4egKYq+eddhBRnAwPtzdU+iv6km014siwiib4=
+X-Received: by 2002:a5d:59a4:: with SMTP id p4mr27029990wrr.149.1632737295525; 
+ Mon, 27 Sep 2021 03:08:15 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210926220103.1721355-1-f4bug@amsat.org>
  <20210926220103.1721355-2-f4bug@amsat.org>
- <CAFEAcA_pRwZz=cK7=EjTsffhfhkXA-WvfecYWQ16sHYW+yQJBA@mail.gmail.com>
- <CAAdtpL7DesxBWZkjZdrWtSVNuqzqthPR-MMdCCd4LMg+Rnudww@mail.gmail.com>
-In-Reply-To: <CAAdtpL7DesxBWZkjZdrWtSVNuqzqthPR-MMdCCd4LMg+Rnudww@mail.gmail.com>
+ <YVGUX6FZlFBhhgwn@redhat.com>
+In-Reply-To: <YVGUX6FZlFBhhgwn@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Sep 2021 10:54:02 +0100
-Message-ID: <CAFEAcA-+VJgRJjBCaVQak0kq4ruku64riNOESFAse3+ZJdWq0w@mail.gmail.com>
+Date: Mon, 27 Sep 2021 11:07:22 +0100
+Message-ID: <CAFEAcA_FRAHy1Hq2QxO2DWkrLZbW_4g=zzCoac18rRNf2CD0kw@mail.gmail.com>
 Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, 
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Kyle Evans <kevans@freebsd.org>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, 
  Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
  Warner Losh <imp@bsdimp.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -78,50 +78,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Sep 2021 09:55:02 -0000
+X-List-Received-Date: Mon, 27 Sep 2021 10:08:19 -0000
 
-On Mon, 27 Sept 2021 at 10:40, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On Mon, 27 Sept 2021 at 10:59, Daniel P. Berrang=C3=A9 <berrange@redhat.com=
 > wrote:
->
-> On Mon, Sep 27, 2021 at 11:15 AM Peter Maydell <peter.maydell@linaro.org>=
- wrote:
-> > On Sun, 26 Sept 2021 at 23:04, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=
-.org> wrote:
-> > > Reported-by: Warner Losh <imp@bsdimp.com>
-> > > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> > > ---
-> > >  bsd-user/meson.build | 4 ++++
-> > >  1 file changed, 4 insertions(+)
-> > >
-> > > diff --git a/bsd-user/meson.build b/bsd-user/meson.build
-> > > index 03695493408..a7607e1c884 100644
-> > > --- a/bsd-user/meson.build
-> > > +++ b/bsd-user/meson.build
-> > > @@ -1,3 +1,7 @@
-> > > +if not config_host.has_key('CONFIG_BSD')
-> > > +  subdir_done()
-> > > +endif
-> > > +
-> > >  bsd_user_ss.add(files(
-> > >    'bsdload.c',
-> > >    'elfload.c',
-> >
-> >
-> > So, what's the reason for this change?
->
-> https://lore.kernel.org/qemu-devel/CANCZdfprC16ezJQCWJmYEApX6eym9nxSOqAtB=
-AGr+cziS4r2qw@mail.gmail.com/
->
-> linux-user/meson.build is evaluated on bsd, and bsd-user/meson.build on L=
-inux.
+> If we look at linux-user/meson.build though things are more complex.
+> There we have alot of sub-dirs, and meson.biuld in those dirs adds
+> generators for various files. So conceivably skipping linux-user
+> will mean we won't auto-generate files we don't need on non-Linux.
 
-True, but "meson.build is evaluated but just does nothing or
-adds files to a sourceset that isn't used" is pretty common
-(hw/pci/meson.build is evaluated even if we're not building
-a system with PCI support, for example). If there's a reason
-why bsd-user and linux-user are special we should explain it,
-I think.
+The top level meson.build doesn't call process on the
+syscall_nr_generators[] list unless we're building linux-user
+targets, so I don't think we will auto-generate anything we
+don't need.
 
-thanks
 -- PMM
 
