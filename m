@@ -1,59 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mUn7T-0008DX-JL
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Sep 2021 05:40:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55464)
+	id 1mUnJb-0005Bo-3M
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Sep 2021 05:52:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUn7R-0008BW-MX; Mon, 27 Sep 2021 05:40:17 -0400
-Received: from mail-ot1-f49.google.com ([209.85.210.49]:36596)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mUn7Q-000267-2m; Mon, 27 Sep 2021 05:40:17 -0400
-Received: by mail-ot1-f49.google.com with SMTP id
- 5-20020a9d0685000000b0054706d7b8e5so23612545otx.3; 
- Mon, 27 Sep 2021 02:40:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=zaZg/t40mjkyzSNOSb9G2D+cFjxOwLo8MDuDBAhNlxQ=;
- b=PjSY9S82ihJ2Lrwg+wLbCV8kPvJhidg+5SZfqUlg8R5yrDuBXYYZYdgeyQ/KxJqSni
- 0HxOgjRkaj39+59RCi7+aKv84/2pedQOsmhSoNhlJnxvyrIlZlCXThbcR9fIY2kuRPPj
- mLckyMhtNNmvnBjbjaY/z+bVXdC/zZxCJpgXuBd67/sXYjcCHb7St+LlnTj3P1AQz5KN
- jY8MIYlGanGapc4CnqXvM5o3Y6HNnVhYMaisJjMAS6ORR2jgkfYSS3UTnoGaIzPv5RLZ
- yE91EsOWwpI9E8DsK3fI77FB6RFH/rIWfQMx9MamqkjZucycxK7bmVpGmd54SN7b845s
- W08w==
-X-Gm-Message-State: AOAM531EUjVlE2A4T6nHweSL+uJN2xRISwD/JpQsxsB0o+gohFRXyFL8
- UIOyJHoK4rNQq8P3RcB7/RlP5GB5Y/inc1cu038=
-X-Google-Smtp-Source: ABdhPJwDS56AQvsYISoj8O/rkvGDDywW3wLA+kXYsU3PSjffgFqHwJpDCIN9ByEeQebb4HrPSZbWlQ98/FrIKKaDiqY=
-X-Received: by 2002:a9d:6487:: with SMTP id g7mr16024950otl.13.1632735614159; 
- Mon, 27 Sep 2021 02:40:14 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mUnJX-000521-Lz
+ for qemu-trivial@nongnu.org; Mon, 27 Sep 2021 05:52:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42350)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1mUnJT-00040N-A4
+ for qemu-trivial@nongnu.org; Mon, 27 Sep 2021 05:52:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1632736361;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/HuHCzIXLbImGMIBrGVjSKpkxWrHVXc+4xP7Huq7qAI=;
+ b=JA/1MA7C2+Qlhdnjtf++zIucJcRHf/qk2Ui3/9a/fhSF/Z3q3DaTKt1Kl6bmrNMk02WWeH
+ jITfWmb/QC7a1LoxWtxbWpvXQAbD4TCnq0Nx8zOzaE7Nyr+87evnUnkmJa1ydUZlpRk3w7
+ b6v3m7uulyfcvVw4SqDSg257JxO5p3M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-321-eE2U1Zc8OA6gdeuWetuA8w-1; Mon, 27 Sep 2021 05:52:37 -0400
+X-MC-Unique: eE2U1Zc8OA6gdeuWetuA8w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 41249180830B;
+ Mon, 27 Sep 2021 09:52:36 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.156])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 49F7760657;
+ Mon, 27 Sep 2021 09:52:34 +0000 (UTC)
+Date: Mon, 27 Sep 2021 10:52:31 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Kyle Evans <kevans@freebsd.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, Warner Losh <imp@bsdimp.com>
+Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
+Message-ID: <YVGUX6FZlFBhhgwn@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20210926220103.1721355-1-f4bug@amsat.org>
  <20210926220103.1721355-2-f4bug@amsat.org>
- <CAFEAcA_pRwZz=cK7=EjTsffhfhkXA-WvfecYWQ16sHYW+yQJBA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_pRwZz=cK7=EjTsffhfhkXA-WvfecYWQ16sHYW+yQJBA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Mon, 27 Sep 2021 11:40:02 +0200
-Message-ID: <CAAdtpL7DesxBWZkjZdrWtSVNuqzqthPR-MMdCCd4LMg+Rnudww@mail.gmail.com>
-Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
- Warner Losh <imp@bsdimp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.210.49;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ot1-f49.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+MIME-Version: 1.0
+In-Reply-To: <20210926220103.1721355-2-f4bug@amsat.org>
+User-Agent: Mutt/2.0.7 (2021-05-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -66,49 +80,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Sep 2021 09:40:18 -0000
+X-List-Received-Date: Mon, 27 Sep 2021 09:52:47 -0000
 
-On Mon, Sep 27, 2021 at 11:15 AM Peter Maydell <peter.maydell@linaro.org> w=
-rote:
-> On Sun, 26 Sept 2021 at 23:04, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> > Reported-by: Warner Losh <imp@bsdimp.com>
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> > ---
-> >  bsd-user/meson.build | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> >
-> > diff --git a/bsd-user/meson.build b/bsd-user/meson.build
-> > index 03695493408..a7607e1c884 100644
-> > --- a/bsd-user/meson.build
-> > +++ b/bsd-user/meson.build
-> > @@ -1,3 +1,7 @@
-> > +if not config_host.has_key('CONFIG_BSD')
-> > +  subdir_done()
-> > +endif
-> > +
-> >  bsd_user_ss.add(files(
-> >    'bsdload.c',
-> >    'elfload.c',
->
->
-> So, what's the reason for this change?
+On Mon, Sep 27, 2021 at 12:01:02AM +0200, Philippe Mathieu-Daudé wrote:
+> Reported-by: Warner Losh <imp@bsdimp.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  bsd-user/meson.build | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/bsd-user/meson.build b/bsd-user/meson.build
+> index 03695493408..a7607e1c884 100644
+> --- a/bsd-user/meson.build
+> +++ b/bsd-user/meson.build
+> @@ -1,3 +1,7 @@
+> +if not config_host.has_key('CONFIG_BSD')
+> +  subdir_done()
+> +endif
+> +
+>  bsd_user_ss.add(files(
+>    'bsdload.c',
+>    'elfload.c',
 
-https://lore.kernel.org/qemu-devel/CANCZdfprC16ezJQCWJmYEApX6eym9nxSOqAtBAG=
-r+cziS4r2qw@mail.gmail.com/
+If we look at the big picture across the root meson.build, and this
+meson.build we have
 
-linux-user/meson.build is evaluated on bsd, and bsd-user/meson.build on Lin=
-ux.
 
-> The commit messages and
-> the cover letter don't really explain it. Is this fixing a bug
-> (if so what?), a precaution to avoid possible future bugs,
-> fixing a performance issue with how long meson takes to run (if
-> so, how much effect does this have), or something else?
+  bsd_user_ss = ss.source_set()
 
-I'll wait for feedback from Paolo, then work on the explanation.
+  ...
+
+  bsd_user_ss.add(files(
+    'bsdload.c',
+    'elfload.c',
+    'main.c',
+    'mmap.c',
+    'signal.c',
+    'strace.c',
+    'syscall.c',
+    'uaccess.c',
+  ))
+
+  ...
+
+  bsd_user_ss.add(files('gdbstub.c'))
+  specific_ss.add_all(when: 'CONFIG_BSD_USER', if_true: bsd_user_ss)
+
+
+So without this change, we're already correctly dropping bsd_user_ss
+in its entirity, when not on BSD.
+
+With this change, we're dropping some, but not all, of bsd_user_ss
+files - gdbstub.c remains.
+
+So this change on its own doesn't make a whole lot of sense.
+
+If we look at linux-user/meson.build though things are more complex.
+There we have alot of sub-dirs, and meson.biuld in those dirs adds
+generators for various files. So conceivably skipping linux-user
+will mean we won't auto-generate files we don't need on non-Linux.
+
+With that in mind, I think it makes conceptual sense to have this
+bsd-user/meson.build change, for the purpose of design consistency,
+even if it doesn't have any real world benefit for bsd-user today.
 
 Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
-Phil.
 
