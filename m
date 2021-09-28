@@ -1,69 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mV8m4-0007CS-CJ
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Sep 2021 04:47:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36216)
+	id 1mV98S-0006Lh-T7
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Sep 2021 05:10:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mV8m2-0007B8-Ne
- for qemu-trivial@nongnu.org; Tue, 28 Sep 2021 04:47:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23125)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mV98Q-0006KX-UF; Tue, 28 Sep 2021 05:10:46 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:48719)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1mV8ly-000879-Um
- for qemu-trivial@nongnu.org; Tue, 28 Sep 2021 04:47:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632818853;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=80jLAKBm3CErgmEIAbcO5mPYxEa65xSuWaZnaGvRyfY=;
- b=bIye3PZD/7QLrjerOhIfgwyLGQo3ALZwN5bAO1OfcjO4HagjtfnxU4XwbdDboR9WEWMuaP
- sl0CoCmTLwuxZRpxKdPMtyCtAHlIDifwH5yrAEpKQJ7fN3RgsmJ1HggatA+qzJplhBzObZ
- nLpzbiUBnXvXI/OPMyTsy+Wii13JrT4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-254-O67nrEgOP3yf7WnAUl1_Wg-1; Tue, 28 Sep 2021 04:47:31 -0400
-X-MC-Unique: O67nrEgOP3yf7WnAUl1_Wg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AEBD11006AA2;
- Tue, 28 Sep 2021 08:47:30 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.52])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E15A060657;
- Tue, 28 Sep 2021 08:47:29 +0000 (UTC)
-Date: Tue, 28 Sep 2021 09:47:27 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mV98P-0002ZG-6o; Tue, 28 Sep 2021 05:10:46 -0400
+Received: from [192.168.100.1] ([82.142.21.142]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N3sZs-1mvNEO2Ttg-00zkDp; Tue, 28 Sep 2021 11:10:40 +0200
 Subject: Re: [PATCH] qemu-options: -chardev reconnect=seconds duplicated in
  help, tidy up
-Message-ID: <YVLWn3EgubG/5fDG@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
 References: <20210928071449.1416022-1-armbru@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <0d9c1647-c292-042a-67df-c6b74ce91f64@vivier.eu>
+Date: Tue, 28 Sep 2021 11:10:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
 In-Reply-To: <20210928071449.1416022-1-armbru@redhat.com>
-User-Agent: Mutt/2.0.7 (2021-05-04)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:jzoVAp0rnS2e4IhgwzQa+Vmss6/3y3exuaxdWJilWDgxTBof++X
+ w+Qt7hopClsyMllgiYfRdvEdBfraJ+LzTT60/eek5St3D08zKgePNZMJhYMHyrTJ07+rtQm
+ 2kWI+Wq1Nr77Ej89YpujUTxaX6MRslCZ650Q57mb3Gsoy/GRvwGYIFAcemnce3tB3a+MGGT
+ Oc/pmBn0rvIUY5GxQoIEg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:vLZGORYPEwQ=:YMcHGtfMbC2b5gP0GnXVCl
+ L23KLzFaHgEFk2zcVEIlHWzEXRLkXo0Hj8mPN3LQRM904yXp1dl4kQy/w3INqZo2AIE1/+nw3
+ rzuZm1WiQKB+/XPKhN+Bm+oZ4qsnSrm8WZdfEgLNu8+9FDQI5drxZZUQXJb9GGpjYxwa2pqLK
+ eQFW7K933JEZLwTZlZul+q3WUkT6BvZWpCUql2A61kk8XTBY7VHw4ZOgoJZmw3KzhGEbxtTXd
+ mW3AVkb7RdPRnuaT/gI6NpN1hRzziJqXQ542KWqzWVuO8rl/7tOTh3ssZpC9Hqabx8rlB5GIY
+ Qyz4nBMelsVCLW4S+7TYc/0MYS4QT8QqriLx+Oa9iOK4GMXw/bTdeVyvga0BA4w3STTRzzmpW
+ KcgIS6Ii+5GhIUs+h3k66Yo7ulTsLOYA3JdgYjK+svq4XUybdm4UATkQo7lY1SiMWWJAOv2rC
+ chb7rHg1xIpDe1lZNJoNd75OwMthIh1cWMbzOtqYXujrBZ01rEq+ywu482j4PatDEqiZyqus3
+ n6Zo2pabevrOkyH74eh4pTUJfJpoY/uIcNjTWjVxBA/vmtktj5tcDMIa03jwnaygYPau4zDlf
+ +vLSZvTTuOO0vrfngWMeTE1VNgU8WvOJHJoM17H8ClsXUK03JzjYkZ/Ob+4tboB7b4EW0EEUj
+ Gg+8RPOq+zHMZcEV1gdh9RcpDqxEKQY91Z37WVM8ef7TkHiCVU39E97IqQ9BsdIHX9m9JUe1G
+ TAqswcic/heEAYV0ZmHg1klhemtJYb1Mrq1Eug==
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.136,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,23 +63,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Sep 2021 08:47:38 -0000
+X-List-Received-Date: Tue, 28 Sep 2021 09:10:47 -0000
 
-On Tue, Sep 28, 2021 at 09:14:49AM +0200, Markus Armbruster wrote:
+Le 28/09/2021 à 09:14, Markus Armbruster a écrit :
 > Fixes: 5dd1f02b4bc2f2c2ef3a2adfd8a412c8c8769085
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
 >  qemu-options.hx | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 8f603cc7e6..27e7b9a77c 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -3188,7 +3188,7 @@ DEFHEADING(Character device options:)
+>  DEF("chardev", HAS_ARG, QEMU_OPTION_chardev,
+>      "-chardev help\n"
+>      "-chardev null,id=id[,mux=on|off][,logfile=PATH][,logappend=on|off]\n"
+> -    "-chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off][,reconnect=seconds]\n"
+> +    "-chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off]\n"
+>      "         [,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds][,mux=on|off]\n"
+>      "         [,logfile=PATH][,logappend=on|off][,tls-creds=ID][,tls-authz=ID] (tcp)\n"
+>      "-chardev socket,id=id,path=path[,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds]\n"
+> 
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Applied to my trivial-patches branch.
 
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Thanks,
+Laurent
 
