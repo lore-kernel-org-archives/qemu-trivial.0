@@ -1,50 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mVDOs-0000tY-1v
+	id 1mVDOs-0000u9-AW
 	for mharc-qemu-trivial@gnu.org; Tue, 28 Sep 2021 09:44:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47238)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48550)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mV9T5-0007dA-38; Tue, 28 Sep 2021 05:32:07 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2543)
+ id 1mVBVL-0002Pi-8B; Tue, 28 Sep 2021 07:42:35 -0400
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3141)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mV9T2-00048N-N9; Tue, 28 Sep 2021 05:32:06 -0400
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.56])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4HJZ4L2Zt3zVfjT;
- Tue, 28 Sep 2021 17:30:42 +0800 (CST)
+ id 1mVBVI-0002Da-JP; Tue, 28 Sep 2021 07:42:34 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.57])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4HJcv138rkz8yvD;
+ Tue, 28 Sep 2021 19:37:49 +0800 (CST)
 Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 17:32:00 +0800
-Received: from DESKTOP-TMVL5KK.china.huawei.com (10.174.187.128) by
+ 15.1.2308.8; Tue, 28 Sep 2021 19:42:25 +0800
+Received: from [10.174.187.128] (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.8; Tue, 28 Sep 2021 17:31:59 +0800
-From: Yanan Wang <wangyanan55@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- "Andrew Jones" <drjones@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- <wanghaibin.wang@huawei.com>, Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH 1/2] qemu-options: Tweak [, maxcpus=cpus] to [,
- maxcpus=maxcpus]
-Date: Tue, 28 Sep 2021 17:31:56 +0800
-Message-ID: <20210928093157.14620-2-wangyanan55@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
-In-Reply-To: <20210928093157.14620-1-wangyanan55@huawei.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2308.8; Tue, 28 Sep 2021 19:42:25 +0800
+Subject: Re: [PATCH 2/2] qemu-options: Add missing "sockets=2" to CLI "-smp 2"
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+CC: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
+ <wanghaibin.wang@huawei.com>, Andrew Jones <drjones@redhat.com>, "Laurent
+ Vivier" <laurent@vivier.eu>
 References: <20210928093157.14620-1-wangyanan55@huawei.com>
+ <20210928093157.14620-3-wangyanan55@huawei.com>
+ <9728083c-059c-3990-f651-3fbdce86491c@redhat.com>
+ <0508934a-f4d5-a7ed-310a-065aa823fb08@huawei.com>
+ <YVL2JDoQ2XNvmo+H@redhat.com>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <acac6e0a-c91f-af9b-fd11-2f078de79c91@huawei.com>
+Date: Tue, 28 Sep 2021 19:42:24 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
+In-Reply-To: <YVL2JDoQ2XNvmo+H@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
 X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+X-ClientProxiedBy: dggeme709-chm.china.huawei.com (10.1.199.105) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -67
+X-Spam_score: -6.8
+X-Spam_bar: ------
+X-Spam_report: (-6.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.562,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Tue, 28 Sep 2021 09:43:58 -0400
@@ -59,31 +66,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Sep 2021 09:32:08 -0000
+X-List-Received-Date: Tue, 28 Sep 2021 11:42:35 -0000
 
-In qemu-option.hx, there is "-smp [[cpus=]n][,maxcpus=cpus]..." in the
-DEF part, and "-smp [[cpus=]n][,maxcpus=maxcpus]..." in the RST part.
-Obviously the later is right, let's fix the previous one.
 
-Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
----
- qemu-options.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 2021/9/28 19:01, Daniel P. Berrangé wrote:
+> On Tue, Sep 28, 2021 at 06:58:20PM +0800, wangyanan (Y) wrote:
+>> On 2021/9/28 18:46, Philippe Mathieu-Daudé wrote:
+>>> On 9/28/21 11:31, Yanan Wang wrote:
+>>>> There is one example of -smp CLI in qemu-options.hx currently
+>>>> using "-smp 2" and assuming that there will be 2 sockets.
+>>>> However now the actually calculation logic of missing sockets
+>>>> and cores is not immutable, we should use more explicit CLIs
+>>>> like "-smp 2,sockets=2" if we want multiple sockets.
+>>>>
+>>>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+>>>> ---
+>>>>    qemu-options.hx | 2 +-
+>>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/qemu-options.hx b/qemu-options.hx
+>>>> index dcd9595650..ff8917c5e1 100644
+>>>> --- a/qemu-options.hx
+>>>> +++ b/qemu-options.hx
+>>>> @@ -395,7 +395,7 @@ SRST
+>>>>            -m 2G \
+>>>>            -object memory-backend-ram,size=1G,id=m0 \
+>>>>            -object memory-backend-ram,size=1G,id=m1 \
+>>>> -        -smp 2 \
+>>>> +        -smp 2,sockets=2,maxcpus=2 \
+>>> Is the addition of "maxcpus=2" intentional?
+>> Yes, but it's not necessary IMO. I just wanted to keep consistency
+>> with other numa config examples in the Doc. Should I remove it ?
+> I think it makes sense to be explicit, because the numa config
+> works in terms of maxcpus when splitting cpus between nodes
+The statement of this numa config example actually assume that
+there will be 2 cpus totally. Although based on behavior of the
+smp parser we will get maxcpus=2, I also tend to keep it explicitly.
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 5c1b0311c0..dcd9595650 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -200,7 +200,7 @@ SRST
- ERST
- 
- DEF("smp", HAS_ARG, QEMU_OPTION_smp,
--    "-smp [[cpus=]n][,maxcpus=cpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
-+    "-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
-     "                set the number of CPUs to 'n' [default=1]\n"
-     "                maxcpus= maximum number of total CPUs, including\n"
-     "                offline CPUs for hotplug, etc\n"
--- 
-2.19.1
+But I should update subject of this patch and the commit message.
+
+Thanks,
+Yanan
 
 
