@@ -1,56 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mV98S-0006Lh-T7
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Sep 2021 05:10:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41946)
+	id 1mVAXX-0006dk-Bz
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Sep 2021 06:40:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32966)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mV98Q-0006KX-UF; Tue, 28 Sep 2021 05:10:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:48719)
+ (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
+ id 1mVAXK-0006bv-Bx; Tue, 28 Sep 2021 06:40:37 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:40052)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mV98P-0002ZG-6o; Tue, 28 Sep 2021 05:10:46 -0400
-Received: from [192.168.100.1] ([82.142.21.142]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N3sZs-1mvNEO2Ttg-00zkDp; Tue, 28 Sep 2021 11:10:40 +0200
-Subject: Re: [PATCH] qemu-options: -chardev reconnect=seconds duplicated in
- help, tidy up
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20210928071449.1416022-1-armbru@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <0d9c1647-c292-042a-67df-c6b74ce91f64@vivier.eu>
-Date: Tue, 28 Sep 2021 11:10:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
+ id 1mVAXI-0001WN-6N; Tue, 28 Sep 2021 06:40:33 -0400
+Received: from [192.168.15.226] (unknown [195.68.53.70])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 276732077F;
+ Tue, 28 Sep 2021 10:40:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1632825627;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VeYW+5Kmw2ExDP0Tw7mCMKnZ4pZNj6wMZk+Z8wenOVs=;
+ b=5JsLOYwimlAq4+NO5585hR+JOisQD9Y3XO6a8/puEnIpILifvs5PpCuu9lkCFLNufNFvWg
+ lUGHBwxzxqv68gJXdKoz69+70ay4mzY96FUL55jMm5z9Rtd3pxAmbH4Rw9g6EtMU+RZ22q
+ 0G9Fs8CJpsNrOYPYfcFXgksyVnB/CBI=
+Message-ID: <55d7b2c8-56fa-b157-be2c-df43f7548fe6@greensocs.com>
+Date: Tue, 28 Sep 2021 12:40:24 +0200
 MIME-Version: 1.0
-In-Reply-To: <20210928071449.1416022-1-armbru@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:jzoVAp0rnS2e4IhgwzQa+Vmss6/3y3exuaxdWJilWDgxTBof++X
- w+Qt7hopClsyMllgiYfRdvEdBfraJ+LzTT60/eek5St3D08zKgePNZMJhYMHyrTJ07+rtQm
- 2kWI+Wq1Nr77Ej89YpujUTxaX6MRslCZ650Q57mb3Gsoy/GRvwGYIFAcemnce3tB3a+MGGT
- Oc/pmBn0rvIUY5GxQoIEg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:vLZGORYPEwQ=:YMcHGtfMbC2b5gP0GnXVCl
- L23KLzFaHgEFk2zcVEIlHWzEXRLkXo0Hj8mPN3LQRM904yXp1dl4kQy/w3INqZo2AIE1/+nw3
- rzuZm1WiQKB+/XPKhN+Bm+oZ4qsnSrm8WZdfEgLNu8+9FDQI5drxZZUQXJb9GGpjYxwa2pqLK
- eQFW7K933JEZLwTZlZul+q3WUkT6BvZWpCUql2A61kk8XTBY7VHw4ZOgoJZmw3KzhGEbxtTXd
- mW3AVkb7RdPRnuaT/gI6NpN1hRzziJqXQ542KWqzWVuO8rl/7tOTh3ssZpC9Hqabx8rlB5GIY
- Qyz4nBMelsVCLW4S+7TYc/0MYS4QT8QqriLx+Oa9iOK4GMXw/bTdeVyvga0BA4w3STTRzzmpW
- KcgIS6Ii+5GhIUs+h3k66Yo7ulTsLOYA3JdgYjK+svq4XUybdm4UATkQo7lY1SiMWWJAOv2rC
- chb7rHg1xIpDe1lZNJoNd75OwMthIh1cWMbzOtqYXujrBZ01rEq+ywu482j4PatDEqiZyqus3
- n6Zo2pabevrOkyH74eh4pTUJfJpoY/uIcNjTWjVxBA/vmtktj5tcDMIa03jwnaygYPau4zDlf
- +vLSZvTTuOO0vrfngWMeTE1VNgU8WvOJHJoM17H8ClsXUK03JzjYkZ/Ob+4tboB7b4EW0EEUj
- Gg+8RPOq+zHMZcEV1gdh9RcpDqxEKQY91Z37WVM8ef7TkHiCVU39E97IqQ9BsdIHX9m9JUe1G
- TAqswcic/heEAYV0ZmHg1klhemtJYb1Mrq1Eug==
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -49
-X-Spam_score: -5.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH 1/2] qemu-options: Tweak [, maxcpus=cpus] to [,
+ maxcpus=maxcpus]
+Content-Language: en-US-large
+To: Yanan Wang <wangyanan55@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: wanghaibin.wang@huawei.com, Andrew Jones <drjones@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>
+References: <20210928093157.14620-1-wangyanan55@huawei.com>
+ <20210928093157.14620-2-wangyanan55@huawei.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+In-Reply-To: <20210928093157.14620-2-wangyanan55@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=5.135.226.135;
+ envelope-from=damien.hedde@greensocs.com; helo=beetle.greensocs.com
+X-Spam_score_int: -51
+X-Spam_score: -5.2
 X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.136,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.136,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -63,32 +61,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Sep 2021 09:10:47 -0000
+X-List-Received-Date: Tue, 28 Sep 2021 10:40:41 -0000
 
-Le 28/09/2021 à 09:14, Markus Armbruster a écrit :
-> Fixes: 5dd1f02b4bc2f2c2ef3a2adfd8a412c8c8769085
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+
+
+On 9/28/21 11:31, Yanan Wang wrote:
+> In qemu-option.hx, there is "-smp [[cpus=]n][,maxcpus=cpus]..." in the
+> DEF part, and "-smp [[cpus=]n][,maxcpus=maxcpus]..." in the RST part.
+> Obviously the later is right, let's fix the previous one.
+> 
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
 > ---
->  qemu-options.hx | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+
+>   qemu-options.hx | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/qemu-options.hx b/qemu-options.hx
-> index 8f603cc7e6..27e7b9a77c 100644
+> index 5c1b0311c0..dcd9595650 100644
 > --- a/qemu-options.hx
 > +++ b/qemu-options.hx
-> @@ -3188,7 +3188,7 @@ DEFHEADING(Character device options:)
->  DEF("chardev", HAS_ARG, QEMU_OPTION_chardev,
->      "-chardev help\n"
->      "-chardev null,id=id[,mux=on|off][,logfile=PATH][,logappend=on|off]\n"
-> -    "-chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off][,reconnect=seconds]\n"
-> +    "-chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off]\n"
->      "         [,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds][,mux=on|off]\n"
->      "         [,logfile=PATH][,logappend=on|off][,tls-creds=ID][,tls-authz=ID] (tcp)\n"
->      "-chardev socket,id=id,path=path[,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds]\n"
+> @@ -200,7 +200,7 @@ SRST
+>   ERST
+>   
+>   DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+> -    "-smp [[cpus=]n][,maxcpus=cpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
+> +    "-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
+>       "                set the number of CPUs to 'n' [default=1]\n"
+>       "                maxcpus= maximum number of total CPUs, including\n"
+>       "                offline CPUs for hotplug, etc\n"
 > 
-
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
 
