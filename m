@@ -1,86 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mVTF0-00079p-6S
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 02:38:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36444)
+	id 1mVZFK-0003n0-71
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 09:03:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mVTEy-00079Y-8J
- for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 02:38:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44533)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mVTEr-0005U8-Dj
- for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 02:38:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632897521;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=IohUFWpC7htNTe643FaqWcZ7soDbCX2FDXsb6QdxlIg=;
- b=Js3xJrvZRswiA2joRWyfjIfnFT6I/bEo/ye3fgQnSzfzMv2zyOAOcG9az/bDlammWHuo4Y
- TP6I1WZfCTrQ3V0/M7tG+QjXmvyN4onPz6NNHu9gX2ox3y+BQ8RU3sKpMDL5FdD90M72mI
- BUQ4LaMqu7BTTmoFqwVUSu3qz6tCj0k=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-105-kIY6FiveN62zKf7ERlxwwQ-1; Wed, 29 Sep 2021 02:38:38 -0400
-X-MC-Unique: kIY6FiveN62zKf7ERlxwwQ-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 129-20020a1c1987000000b0030cd1616fbfso2278375wmz.3
- for <qemu-trivial@nongnu.org>; Tue, 28 Sep 2021 23:38:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mVZFC-0003iF-Me
+ for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 09:03:30 -0400
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f]:39491)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mVZF9-0004NP-1G
+ for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 09:03:30 -0400
+Received: by mail-ot1-x32f.google.com with SMTP id
+ j11-20020a9d190b000000b00546fac94456so2742272ota.6
+ for <qemu-trivial@nongnu.org>; Wed, 29 Sep 2021 06:03:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LyetlMXJuiaLe3ru8UBdniu3ZM3POgnzNt97yDI2Myc=;
+ b=Ozjsagm9sGN3D+tKsv5km4XvUYnILhwzuoJPBYMzSGJmgpBm4rPWsVEe2eXLQ6HMgs
+ zhm7G/xNMNt7gbM7Os5b531AA9JCpEyAExEdVEND31Zpvw021bMQIsaU9F3ABDtcA4+O
+ +fbNelEiCIDCWaW6NDiR1BXTQsuKCWwDEkWpIIOQbJHfaatmVvJftItfzwo1mnxhufsM
+ VjRFruTjwM9ZOQmlOIgCGRQq95l1/K6YcBw+8eJ/pUhlSHzkpCkGuK407zwQA0vbWfzN
+ mFRDOrMz+N4ng3lO57Wnx3LPVrE2tKbj+GOSf/Dkj3nLh8fadwvYruXMoxmmFiSO4Xeq
+ WVWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:to:cc:references:from:subject:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=IohUFWpC7htNTe643FaqWcZ7soDbCX2FDXsb6QdxlIg=;
- b=vv0OI6HZL/nPXR3rPoa8NEyY8a9wG89MUXcoXq7ZKYxa+ryRhXfuyDCXiMCyQiySuW
- TITJ0tyw7hT9EKCCXTlWK4CFxCZLRwnBknCVVESH5SMLlNbMEl+aJT5gGnNuURTJj052
- zhPcv7s+cMSwGEt9N1/rAPnK+mKH02jKdyChrM2XTSMf9VpUuKVzwxOAOC+hXc6Rvg+9
- DmwmAhEaQbmAmDJ7Tsk79Xzl2mRqOjLL38r6zjDAHaz3gfgFEilSG8YEaglYWE8DI23J
- ynxP3BrPF23VXSsP3FQNXC6FpvNa9JF3PjczVsgC4+5pRjJg7l3kBpzZ1BDK8xhfg3X5
- JH4g==
-X-Gm-Message-State: AOAM533LxoSW4ls6VZG5Y+3vCHZalrL6EvHo0MJeCui05Vpyx0fjzKUB
- TNEbiRnxzoEoKhIz0c1ninhJhGZZb5LFUKmkTn+q6qUEsUrN76kKC53a730lTQ8njTXwjlj+Mha
- WX1dzeARxTDKAsLj4eA==
-X-Received: by 2002:a05:6000:18a7:: with SMTP id
- b7mr4900603wri.13.1632897517474; 
- Tue, 28 Sep 2021 23:38:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx9ZFVNJsgsMgp1Dzdn83MyjM54BhT+tLfsveJgN25bNgDo12ZnMj+8vPzruvwX5J/TSRWN+g==
-X-Received: by 2002:a05:6000:18a7:: with SMTP id
- b7mr4900591wri.13.1632897517301; 
- Tue, 28 Sep 2021 23:38:37 -0700 (PDT)
-Received: from thuth.remote.csb (p549bb2bd.dip0.t-ipconnect.de.
- [84.155.178.189])
- by smtp.gmail.com with ESMTPSA id u2sm1189888wrr.35.2021.09.28.23.38.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Sep 2021 23:38:36 -0700 (PDT)
-To: ~farzon <farzon@farzon.org>, qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: jsnow@redhat.com, Qemu-block <qemu-block@nongnu.org>
-References: <163289496240.21137.12482905136173817428-0@git.sr.ht>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH qemu] issue 371: convert tabs to spaces for the block
- subsystem.
-Message-ID: <29f9e4dd-fdfe-4ca1-0058-34cd5b433617@redhat.com>
-Date: Wed, 29 Sep 2021 08:38:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ bh=LyetlMXJuiaLe3ru8UBdniu3ZM3POgnzNt97yDI2Myc=;
+ b=bFREfD7hNw4OvL47SM5/DEA+6BcorY8o45DCbmwFTUC4CVpXRCIgpDOTD7FxF9iRTo
+ UYWvF9sCa5Bhsdh5CMP7zEGooHmURv/+9oSlZ3BP5w2kIADokzKdCj4EgorNlk27IjY5
+ STz9B1t+0anKh/WoSAF/p9Yiy/4672Tr6YBxbCqzkXzjQGMpwSYa9eOr6ZT5q2QPWon4
+ tWADJCFzOgaf4QSaT7y0pas9TEHbomg5psgxcggX2ehD/i5nVLov0nruvzcgWGvtNfuX
+ eVyuF8u/s5pVDcVgZKz3qeSgbehBpzFfaiRBjmHy4YDUDd1n475uX9C4691g1Pt2mmbj
+ CsVQ==
+X-Gm-Message-State: AOAM531VxLc1D9Z/aSIl9DA4B5+5icpWuDXnoqXptOSSBblQGpxsxODl
+ RV6e0QpJoTA1QflHsuclalYlM7Nu8sCM2A==
+X-Google-Smtp-Source: ABdhPJy8D30FHCfG00txPsB05K2Cs+P28l9Uq7OH/cTzrVJfq/gy8ERrJ/kipjLjHvUUMcc4dkTpmw==
+X-Received: by 2002:a9d:719a:: with SMTP id o26mr10227193otj.278.1632920603924; 
+ Wed, 29 Sep 2021 06:03:23 -0700 (PDT)
+Received: from localhost.localdomain ([172.58.171.248])
+ by smtp.gmail.com with ESMTPSA id l8sm431715oii.57.2021.09.29.06.03.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Sep 2021 06:03:23 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: ysato@users.sourceforge.jp,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] target/sh4: Use lookup_symbol in sh4_tr_disas_log
+Date: Wed, 29 Sep 2021 09:03:16 -0400
+Message-Id: <20210929130316.121330-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <163289496240.21137.12482905136173817428-0@git.sr.ht>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.562, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -93,50 +75,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Sep 2021 06:38:52 -0000
+X-List-Received-Date: Wed, 29 Sep 2021 13:03:31 -0000
 
-On 29/09/2021 07.30, ~farzon wrote:
-> From: Farzon Lotfi <farzonl@icloud.com>
+The correct thing to do has been present but commented
+out since the initial commit of the sh4 translator.
 
-  Hi!
+Fixes: fdf9b3e831e
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/sh4/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks for your contribution! However, there are some more rules that need 
-to be followed to get a patch accepted in the QEMU project:
-
-Please provide a proper patch description for your changes (something like: 
-"QEMU coding style mandates spaces for indentation, so the TABs should get 
-replaced in these files" or something similar should do it here).
-
-Then it would be nice to have a "Resolves:" line in here, too:
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/371
-
-That way, the issue gets closed automatically once the patch has been 
-accepted. Then please also drop the "issue 371:" from the subject line.
-
-See also:
-https://wiki.qemu.org/Contribute/SubmitAPatch#Write_a_meaningful_commit_message
-
-And finally, the most important one: You need to supply a "Signed-off-by:" 
-line at the end of the patch description to make it clear that your patch 
-follows the Developer Certificat of Origin. See also:
-
-https://wiki.qemu.org/Contribute/SubmitAPatch#Patch_emails_must_include_a_Signed-off-by:_line
-
->   15 files changed, 639 insertions(+), 639 deletions(-)
-
-I think the patch is rather big already. Could you please split it up in 
-three patches instead:
-
-- One for block/ and include/block
-- One for hw/block/ and include/hw/block
-- One for hw/ide/ and include/hw/ide
-
-Please also make sure to CC: qemu-block@nongnu.org on these patches (I 
-recommend to use the scripts/get_maintainer.pl script to get the right list 
-of people to put into the CC: list of the patches).
-
-  HTH,
-   Thomas
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index cf5fe9243d..d363050272 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -2344,7 +2344,7 @@ static void sh4_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+ 
+ static void sh4_tr_disas_log(const DisasContextBase *dcbase, CPUState *cs)
+ {
+-    qemu_log("IN:\n");  /* , lookup_symbol(dcbase->pc_first)); */
++    qemu_log("IN: %s\n", lookup_symbol(dcbase->pc_first));
+     log_target_disas(cs, dcbase->pc_first, dcbase->tb->size);
+ }
+ 
+-- 
+2.25.1
 
 
