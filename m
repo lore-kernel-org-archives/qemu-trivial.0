@@ -1,83 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mVaGY-0003wm-65
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 10:08:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55160)
+	id 1mVaj0-0002YH-69
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 10:38:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mVaGW-0003rE-IL; Wed, 29 Sep 2021 10:08:56 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:36793)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mVaGV-00060c-4u; Wed, 29 Sep 2021 10:08:56 -0400
-Received: by mail-wr1-x432.google.com with SMTP id h15so2898508wrc.3;
- Wed, 29 Sep 2021 07:08:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=svrRv0XyORDGMpmxqjDfblXW/06vbWjyctuzECFZxVc=;
- b=KEbI4PpdnAJAkEhASUh8fCyioDUJeeYjO22/5kk/gatLjuXW2OxtvD/AjI6uTjaFyN
- FjzjclyiiY9TMN16LTjgVhEuzB0kox5zR9JR4PvdEaHKdLTCb1t8PTMFxbLq78UDYv+w
- Elz9zkyuWecQ1uFDxDmKjqZObiRDqiZErBmfY0zosgnHetBVwM7WFz7Rt6Byi3qJ5qsg
- L8yZeaFNNEyrntxLtuG0REhcjG4W3n43/cQkP8psgG7eRDkVsnpE7/etHtGEwxN+5CAs
- wNJydd9qzUOtr3D9ZGPiARe1jJxbqYs05oJYOnaISQv99y7pGGnO39OmwzrDFF48ZzFv
- FIZQ==
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mVaix-0002Wp-L2
+ for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 10:38:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:37752)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1mVait-0002xq-FV
+ for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 10:38:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1632926293;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=gPptCaPb+3Tk3HUBd+J/guZ2dfz52kYwK8bl+wzvJI8=;
+ b=iI4nllDgUhmVKB4UVuwy0tQtzPTfNlSZ4sey87RJZ+ce/Hfl91K4NwrDeV7Nrf7UzuqSpm
+ IVfvF7J4nBCNjRc88hYM4LPTkoJE8GUxHroRe1Pk6XPXPuoB0Y4keMjjxUTDKUSCvz9M0a
+ ynLiCyqjJ+HQ+0fSAn146OhnS0nkano=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-119-fkbD4qwCNh6ZO_zoPc68zg-1; Wed, 29 Sep 2021 10:38:11 -0400
+X-MC-Unique: fkbD4qwCNh6ZO_zoPc68zg-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ s12-20020a05640217cc00b003cde58450f1so2651197edy.9
+ for <qemu-trivial@nongnu.org>; Wed, 29 Sep 2021 07:38:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=svrRv0XyORDGMpmxqjDfblXW/06vbWjyctuzECFZxVc=;
- b=GKTbHpt7e4ZtyzpYP6a8v9cIVLDZREt4HPZVQL2UuZquczYNZRMu8X0gPudnF6ec97
- tV5Q3rcBfKNHc1Rc0fQ/MHLeJxNCdCYIop4Yl8ctq4Fc987Cw3p0aUBVuqtdkBXeSWve
- RtaVQuLVBT60GbPfvx4IF6soKsAexYkU/YFraNQwQ3S/LM4RJ8VlPqHE0qWsSTRpPTyE
- uWkk4XqldoWvsAZwsvZFdTMpftAVb+wkA6ttBLHbvHKNEBoOqA6sN9z2wJqxaSqgXHTj
- OQJOR7l9zINvfm0ywOpob2zDuF99IYYP5mntTCCNccRrizT6N6HIJoxelZoJqn7yxjT2
- VHdg==
-X-Gm-Message-State: AOAM5335KregSufHdPI+Or6+qS1zWoSgJ3ECkL5plMZmwJ4RTezVTLPM
- giaIDx1wX+vZ7g+0YMafN2c=
-X-Google-Smtp-Source: ABdhPJyUuoHPR12MezR6X6ntcJJfVDokKgmpmb7Urrbyc4KG85LZAUTxqECeJeX8e27uWsnNYbnByQ==
-X-Received: by 2002:a05:6000:8e:: with SMTP id m14mr12308wrx.308.1632924533309; 
- Wed, 29 Sep 2021 07:08:53 -0700 (PDT)
-Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id s2sm25097wru.3.2021.09.29.07.08.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Sep 2021 07:08:52 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <f3e89488-0d05-657a-34f7-060a7250517d@amsat.org>
-Date: Wed, 29 Sep 2021 16:08:51 +0200
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=gPptCaPb+3Tk3HUBd+J/guZ2dfz52kYwK8bl+wzvJI8=;
+ b=7pyRnZNq0+r47r+9wW/HiAVtIMf0vq5SDBIRfe24LkX2cgyAHHOH2A+VPtTqWejqWf
+ xpR+obXdrGlB4QOrPl14tX/P62kpRyNPcg14aDfP7XZxDQ/tjhZhkEPAJTpOCoHIRDL8
+ WzKqxEygsgLVvw0apnSGVN4oqdcR0xiUyG6G9sp6j00MmZbWhF99gbtlJhLKQblf3i56
+ SEuupi4eTUWVmZax/9Hy5ygxSqdcZvq2ESCMFpkLCgQbSrbzZs2qsPa/H2v5WzZk0Jz7
+ jHNP6Rr65dIQplkt7mFDpq/gr32Le+cyI1/ceKTSNQ3zDGWx7V/lJmjAqWluvnv0W0b1
+ T6CA==
+X-Gm-Message-State: AOAM532GwLlN10b53dDYq9mTgEK0o7sYNRBLBZMGOZwbNkk+XtLnPbSo
+ NhA9Frmxne3cGVJ3YlXljrr3RlBSiO2avo6gR0TeyXTFYr9oe/7tQu6P3Sk9d1r5FQUAQxm+4C2
+ Ry19kXPuRZtDNntOj8g==
+X-Received: by 2002:a17:906:919:: with SMTP id i25mr34483ejd.171.1632926290541; 
+ Wed, 29 Sep 2021 07:38:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuF+T83Mfb+C0OJBtFrZLUmItdoSIiumQuYZKF04JDrwZYxH0+A+eEMSrKrfn66sRtG7Kb7w==
+X-Received: by 2002:a17:906:919:: with SMTP id i25mr34463ejd.171.1632926290358; 
+ Wed, 29 Sep 2021 07:38:10 -0700 (PDT)
+Received: from gator.home (cst2-174-28.cust.vodafone.cz. [31.30.174.28])
+ by smtp.gmail.com with ESMTPSA id my11sm17692ejc.80.2021.09.29.07.38.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Sep 2021 07:38:09 -0700 (PDT)
+Date: Wed, 29 Sep 2021 16:38:07 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Yanan Wang <wangyanan55@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, wanghaibin.wang@huawei.com
+Subject: Re: [PATCH v2 1/2] qemu-options: Tweak [,maxcpus=cpus] to
+ [,maxcpus=maxcpus]
+Message-ID: <20210929143807.iztxqypswpkknzlt@gator.home>
+References: <20210928121134.21064-1-wangyanan55@huawei.com>
+ <20210928121134.21064-2-wangyanan55@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH] target/i386: Include 'hw/i386/apic.h' locally
-Content-Language: en-US
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <r.bolshakov@yadro.com>, Cameron Esfahani <dirty@apple.com>,
- Kamil Rytarowski <kamil@netbsd.org>, Reinoud Zandijk <reinoud@netbsd.org>,
- Colin Xu <colin.xu@intel.com>, haxm-team@intel.com,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- Wenchao Wang <wenchao.wang@intel.com>
-References: <20210902152243.386118-1-f4bug@amsat.org>
- <a4cba848-e668-7cf1-fe93-b5da3a4ac6dc@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <a4cba848-e668-7cf1-fe93-b5da3a4ac6dc@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-3.03,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210928121134.21064-2-wangyanan55@huawei.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -91,18 +90,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Sep 2021 14:08:57 -0000
+X-List-Received-Date: Wed, 29 Sep 2021 14:38:20 -0000
 
-On 9/16/21 00:05, Paolo Bonzini wrote:
-> On 02/09/21 17:22, Philippe Mathieu-Daudé wrote:
->> Instead of including a sysemu-specific header in "cpu.h"
->> (which is shared with user-mode emulations), include it
->> locally when required.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
+On Tue, Sep 28, 2021 at 08:11:33PM +0800, Yanan Wang wrote:
+> In qemu-option.hx, there is "-smp [[cpus=]n][,maxcpus=cpus]..." in the
+> DEF part, and "-smp [[cpus=]n][,maxcpus=maxcpus]..." in the RST part.
+> Obviously the later is right, let's fix the previous one.
 > 
-> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+> ---
+>  qemu-options.hx | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 5c1b0311c0..dcd9595650 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -200,7 +200,7 @@ SRST
+>  ERST
+>  
+>  DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+> -    "-smp [[cpus=]n][,maxcpus=cpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
+> +    "-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
+>      "                set the number of CPUs to 'n' [default=1]\n"
+>      "                maxcpus= maximum number of total CPUs, including\n"
+>      "                offline CPUs for hotplug, etc\n"
+> -- 
+> 2.19.1
+>
 
-Thank you, Cc'ing qemu-trivial@ :)
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+
 
