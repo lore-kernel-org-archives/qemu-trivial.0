@@ -1,68 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mVZFK-0003n0-71
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 09:03:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38168)
+	id 1mVZrY-0007xL-38
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 09:43:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mVZFC-0003iF-Me
- for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 09:03:30 -0400
-Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f]:39491)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mVZrT-0007sT-Er; Wed, 29 Sep 2021 09:43:04 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:40886)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mVZF9-0004NP-1G
- for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 09:03:30 -0400
-Received: by mail-ot1-x32f.google.com with SMTP id
- j11-20020a9d190b000000b00546fac94456so2742272ota.6
- for <qemu-trivial@nongnu.org>; Wed, 29 Sep 2021 06:03:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mVZrQ-0005Pf-K8; Wed, 29 Sep 2021 09:43:03 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id s21so4344119wra.7;
+ Wed, 29 Sep 2021 06:42:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=LyetlMXJuiaLe3ru8UBdniu3ZM3POgnzNt97yDI2Myc=;
- b=Ozjsagm9sGN3D+tKsv5km4XvUYnILhwzuoJPBYMzSGJmgpBm4rPWsVEe2eXLQ6HMgs
- zhm7G/xNMNt7gbM7Os5b531AA9JCpEyAExEdVEND31Zpvw021bMQIsaU9F3ABDtcA4+O
- +fbNelEiCIDCWaW6NDiR1BXTQsuKCWwDEkWpIIOQbJHfaatmVvJftItfzwo1mnxhufsM
- VjRFruTjwM9ZOQmlOIgCGRQq95l1/K6YcBw+8eJ/pUhlSHzkpCkGuK407zwQA0vbWfzN
- mFRDOrMz+N4ng3lO57Wnx3LPVrE2tKbj+GOSf/Dkj3nLh8fadwvYruXMoxmmFiSO4Xeq
- WVWg==
+ bh=7VgzNLKaII0sjGEZ3whMicXvjXKoiFDGa0uE27fN5Us=;
+ b=dndS0oVR/ro6ZbRGqO49AYAZxpIweGsuEivJA6cvBUH1+Ae8If1pRB5u0SLLr7RVbj
+ qkeZ7yWaFli8FegO/FHB3EC4bRT2Km0Aq3Eg+dvby2UhjXD5yra299bwFckBgLLXKsaw
+ ckdM/7xzPtExq3Hgq8U5I+yyFnbJFNDOdNbsYvRlu+TL26+eBUAOozhU0UXKn597rePW
+ UFwA5rtEm+c0+FYqpBqOG8YgNZKC4SKaPnaueH0+/7dh+kym8LQ2FB0SlJrwsVPzSxgR
+ 9msHbyFredzaRCpAyZbsTGEdhUbH81HYhirutEqRZEuUMPtVUrBOWDFiu6Yv8+msT1/b
+ PV8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=LyetlMXJuiaLe3ru8UBdniu3ZM3POgnzNt97yDI2Myc=;
- b=bFREfD7hNw4OvL47SM5/DEA+6BcorY8o45DCbmwFTUC4CVpXRCIgpDOTD7FxF9iRTo
- UYWvF9sCa5Bhsdh5CMP7zEGooHmURv/+9oSlZ3BP5w2kIADokzKdCj4EgorNlk27IjY5
- STz9B1t+0anKh/WoSAF/p9Yiy/4672Tr6YBxbCqzkXzjQGMpwSYa9eOr6ZT5q2QPWon4
- tWADJCFzOgaf4QSaT7y0pas9TEHbomg5psgxcggX2ehD/i5nVLov0nruvzcgWGvtNfuX
- eVyuF8u/s5pVDcVgZKz3qeSgbehBpzFfaiRBjmHy4YDUDd1n475uX9C4691g1Pt2mmbj
- CsVQ==
-X-Gm-Message-State: AOAM531VxLc1D9Z/aSIl9DA4B5+5icpWuDXnoqXptOSSBblQGpxsxODl
- RV6e0QpJoTA1QflHsuclalYlM7Nu8sCM2A==
-X-Google-Smtp-Source: ABdhPJy8D30FHCfG00txPsB05K2Cs+P28l9Uq7OH/cTzrVJfq/gy8ERrJ/kipjLjHvUUMcc4dkTpmw==
-X-Received: by 2002:a9d:719a:: with SMTP id o26mr10227193otj.278.1632920603924; 
- Wed, 29 Sep 2021 06:03:23 -0700 (PDT)
-Received: from localhost.localdomain ([172.58.171.248])
- by smtp.gmail.com with ESMTPSA id l8sm431715oii.57.2021.09.29.06.03.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Sep 2021 06:03:23 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: ysato@users.sourceforge.jp,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] target/sh4: Use lookup_symbol in sh4_tr_disas_log
-Date: Wed, 29 Sep 2021 09:03:16 -0400
-Message-Id: <20210929130316.121330-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ bh=7VgzNLKaII0sjGEZ3whMicXvjXKoiFDGa0uE27fN5Us=;
+ b=dOQPs/ug8Xo2cyHim8piqEeRUeOfFmE0AlJNOq6atPN5BfT5R5HDqmvMfgsRyTniur
+ I/HBktIEA84Js5pDSbzQHrz/XiyvUmKM7GDQPvL205IqPwCklttHzHstQLJM04Q1+ZS6
+ RzHg5IgyPeukxFY8Gvp966sY8V023XzLGmA9+X8iOt4XE/eW8uc3q+dng5EDdM7yeHfl
+ ejKgidyKJVhIsh82mWUxsNDtXOHTgUUdTOCqmMZVPlKi3i44ig+lFkV6dZB+B+5gr/2T
+ LKK1mpkUopZUgB9D8QNB3qh+Un6daIQLmpvTEpMva2eZXoshangdDI/FY8eW25EH4I/t
+ uU4A==
+X-Gm-Message-State: AOAM532tLNt4iW2UDPInwruQHLGatG/JyY6jciMURu8zQZeJw9OHrmCR
+ ZiL1ukoZIqm3bkfYklBufbvnBtzLwYo=
+X-Google-Smtp-Source: ABdhPJyDnrXOoVLg8/AdwtOWBESF9hljt6IlzN1hAv0uijryFbSJ0OpDXcQ0ftx17OoHfaMeoWhyGw==
+X-Received: by 2002:adf:f507:: with SMTP id q7mr7035805wro.7.1632922978594;
+ Wed, 29 Sep 2021 06:42:58 -0700 (PDT)
+Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id c14sm2220354wrd.50.2021.09.29.06.42.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Sep 2021 06:42:57 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <6d180a5b-8b52-e7c1-4483-1a7972427e1e@amsat.org>
+Date: Wed, 29 Sep 2021 15:42:56 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH] target/sh4: Use lookup_symbol in sh4_tr_disas_log
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, ysato@users.sourceforge.jp
+References: <20210929130316.121330-1-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20210929130316.121330-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32f;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-3.03,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,31 +82,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Sep 2021 13:03:31 -0000
+X-List-Received-Date: Wed, 29 Sep 2021 13:43:06 -0000
 
-The correct thing to do has been present but commented
-out since the initial commit of the sh4 translator.
+On 9/29/21 15:03, Richard Henderson wrote:
+> The correct thing to do has been present but commented
+> out since the initial commit of the sh4 translator.
+> 
+> Fixes: fdf9b3e831e
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/sh4/translate.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Fixes: fdf9b3e831e
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/sh4/translate.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index cf5fe9243d..d363050272 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -2344,7 +2344,7 @@ static void sh4_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
- 
- static void sh4_tr_disas_log(const DisasContextBase *dcbase, CPUState *cs)
- {
--    qemu_log("IN:\n");  /* , lookup_symbol(dcbase->pc_first)); */
-+    qemu_log("IN: %s\n", lookup_symbol(dcbase->pc_first));
-     log_target_disas(cs, dcbase->pc_first, dcbase->tb->size);
- }
- 
--- 
-2.25.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
