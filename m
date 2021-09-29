@@ -1,83 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mVajQ-0003Cm-66
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 10:38:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35592)
+	id 1mVazl-0001o2-7j
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 10:55:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mVajO-00039N-Bt
- for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 10:38:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26007)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mVazk-0001nq-J7; Wed, 29 Sep 2021 10:55:40 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:38533)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1mVajM-0003N7-TJ
- for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 10:38:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632926324;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=VHOqifya4sK2klQSyY/VDUTq1lVM/gXqENpKHyQVMs0=;
- b=UzCXsmp3Gly+g/qHEFcW/ZGt/68RP7Lhovdz5UhfrtrxdT26AVddKSLtcCzmc+ADwy7v5+
- k58Fs5BqeByIKhVQcA6QSGRauHP0wmoGdsU+nhTL+DsNg9LTXRzVAPZgNet/BPw//PDYKz
- 49Kwc9DkX5QyKuCTle9zAyk032fX6t4=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-391-ntjNJKyZOfO51LNH5Jenuw-1; Wed, 29 Sep 2021 10:38:42 -0400
-X-MC-Unique: ntjNJKyZOfO51LNH5Jenuw-1
-Received: by mail-ed1-f72.google.com with SMTP id
- 1-20020a508741000000b003da559ba1eeso2642042edv.13
- for <qemu-trivial@nongnu.org>; Wed, 29 Sep 2021 07:38:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=VHOqifya4sK2klQSyY/VDUTq1lVM/gXqENpKHyQVMs0=;
- b=SeFnYakVX2Rk5rmHefytcTvOuoTrtuc4ew6NbVPhQ8ajYoiL9YlqST22NIMtPnTFHp
- K9GkUNmIZSc1o9ZQUT6mrFPt3ijrsJEpcCJojdSDN8VZOixlIAEZ36LiDx49qoeHF6uX
- pVGW+AIGumUCvJzFZKxKksKyi8CNlDQKT+Lqnjf5hHtNLEArV3zsNL+hSAMc051KYSzi
- 4Cx7IFOcg0FwMPPTf+ZeuxwxAy0mDt9WJhmea3HOYPUwXN/ZvI+WnvV9IEFlyt5bpILr
- f+d5ivkXe79+mrUo1rT1Hm0rqa5EwWlizfsswziG/gnCRGn87Z2jDgwZ8ByIqbrvVJ2c
- 8nKw==
-X-Gm-Message-State: AOAM533wYcgzOfPBGMYFmJKzzVuj3qwmVTqe4qmP014FwseCRcezUf13
- 44VllWJ4TCVhB7eAhtG5OL3/clZG4motAvnyjlhxR1HLAESSKWtQx+2XwnvezUM4TcgQRPK36YC
- eRZGwuyFd/E/4BbFI7A==
-X-Received: by 2002:a17:906:a59:: with SMTP id x25mr50018ejf.33.1632926321053; 
- Wed, 29 Sep 2021 07:38:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXjmN1uWDy1Ejunn+EHCR+ZvV2W8nQCegz8Z6Ul/R142Mep78/BmTKUWkT5EgFOO8i1mxnqg==
-X-Received: by 2002:a17:906:a59:: with SMTP id x25mr49995ejf.33.1632926320877; 
- Wed, 29 Sep 2021 07:38:40 -0700 (PDT)
-Received: from gator.home (cst2-174-28.cust.vodafone.cz. [31.30.174.28])
- by smtp.gmail.com with ESMTPSA id b2sm8781ejj.124.2021.09.29.07.38.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Sep 2021 07:38:40 -0700 (PDT)
-Date: Wed, 29 Sep 2021 16:38:38 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Yanan Wang <wangyanan55@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, wanghaibin.wang@huawei.com
-Subject: Re: [PATCH v2 2/2] qemu-options: Add missing "sockets=2,maxcpus=2"
- to CLI "-smp 2"
-Message-ID: <20210929143838.ppxvide4jfdt5rd6@gator.home>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mVazi-0000Wm-FH; Wed, 29 Sep 2021 10:55:40 -0400
+Received: from [192.168.100.1] ([82.142.21.142]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MEVBa-1mcgP01Qio-00G2GJ; Wed, 29 Sep 2021 16:55:24 +0200
+Subject: Re: [PATCH v2 1/2] qemu-options: Tweak [, maxcpus=cpus] to [,
+ maxcpus=maxcpus]
+To: Yanan Wang <wangyanan55@huawei.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: wanghaibin.wang@huawei.com, Andrew Jones <drjones@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>
 References: <20210928121134.21064-1-wangyanan55@huawei.com>
- <20210928121134.21064-3-wangyanan55@huawei.com>
+ <20210928121134.21064-2-wangyanan55@huawei.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <acc0eef9-a109-fd03-94c2-c7a901de1013@vivier.eu>
+Date: Wed, 29 Sep 2021 16:55:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210928121134.21064-3-wangyanan55@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210928121134.21064-2-wangyanan55@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:Y3LpZmABDaLD7J2LMYW/3Wcq+IIjSJ0Id4ktYY7pOGvFdVBv7Vl
+ H4MwsLvWECXaXPThn3i5Yb52+P0FqEtGovsR9svFT8bN1rDV86OttU2lIUmPSQeNLcTCwOu
+ dAIzfYhmzRU2rdvaMv6/P7oner3kRs11Htd8bqZVroPzrE4Nfv557W4mY0SzWPDb1ktsQSS
+ ijRE+ZF5RxFJuiXsWgPSA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:XeywGmFzrLY=:RJ0a0E2XFxyzAyhQyUIm9K
+ AIIGkxoPcO7iLFWgn/ZZg9nMXYaGKXZ3zFQhn0ysjGGTipHdVhPeD9kD90wmFoG1a1/bs6l7w
+ J7L/6ZLhp1sa5zowBvhq5BE0+85nBLne67dP8OUQWpmej3DaJe+XxnoQIGCKNEY9U20wEL60m
+ 807zzvtLaGIe5HaEFci4Rw32vVJgM7Z4pRqJbpRRMeoszsXdjs/yrvAHTwbUW8nc18DBXsEoY
+ aJyiX9yOdDBVybr3XY97hKPpH08B6u35VGWN4iCi02kYAymRaZHnEMuzmQ6WB0Yd1Vl5wl7iB
+ MfAcD9yPW0ttTa4N2woj0O3nbLJQW6JIhtQ+UGY53Gq7XuLBrsVf2aE3Xwcsatq+LcPC5MjYL
+ 2wYPc55NLEK3tafaGKCU1HIrC3Q1xH2uy2NgG+gV3yJGRO/msh8UOvRWLalVNFTWF/bkbg0Wv
+ yi8bHDGa77WtlDycDtlYjGK+NvSu0U2GX9y/sgVTjcF+zZor8+U+un2hkzqFD6P1gWzfbCwSu
+ p3Vn8a7xt2tLStVFxhw6ta84Az38bO2zfxSwp+Uq3D/H9ruBL7PAz4awNDWR3cEJ2ln1vYNUQ
+ yZn0iGNVNZvfJblysyYmfAt4nU1eHxA1Nj/yc3rkx3ozilMuToEKioieYAR2vQyvYDm0g/VEa
+ LVZmwaLgXX/EsP8Rjh01sSDOFvj1uIvghNJxJRFlInHjwSfi9+k10DY+Z8eGrXVrxvhQSRTr5
+ Ln4T5K2TEe5yiEgG6jXvIbIxn+25+2gRWiGJig==
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.03,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -90,42 +66,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Sep 2021 14:38:46 -0000
+X-List-Received-Date: Wed, 29 Sep 2021 14:55:40 -0000
 
-On Tue, Sep 28, 2021 at 08:11:34PM +0800, Yanan Wang wrote:
-> There is one numa config example in qemu-options.hx currently
-> using "-smp 2" and assuming that there will be 2 sockets and
-> 2 cpus totally. However now the actual calculation logic of
-> missing sockets and cores is not immutable and is considered
-> liable to change. Although we will get maxcpus=2 finally based
-> on current parser, it's always stable to specify it explicitly.
-> 
-> So "-smp 2,sockets=2,maxcpus=2" will be optimal when we expect
-> multiple sockets and 2 cpus totally.
+Le 28/09/2021 à 14:11, Yanan Wang a écrit :
+> In qemu-option.hx, there is "-smp [[cpus=]n][,maxcpus=cpus]..." in the
+> DEF part, and "-smp [[cpus=]n][,maxcpus=maxcpus]..." in the RST part.
+> Obviously the later is right, let's fix the previous one.
 > 
 > Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-> Reviewed-by: Philippe Mathieu-Daude <philmd@redhat.com>
+> Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
 > ---
 >  qemu-options.hx | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/qemu-options.hx b/qemu-options.hx
-> index dcd9595650..ff8917c5e1 100644
+> index 5c1b0311c0..dcd9595650 100644
 > --- a/qemu-options.hx
 > +++ b/qemu-options.hx
-> @@ -395,7 +395,7 @@ SRST
->          -m 2G \
->          -object memory-backend-ram,size=1G,id=m0 \
->          -object memory-backend-ram,size=1G,id=m1 \
-> -        -smp 2 \
-> +        -smp 2,sockets=2,maxcpus=2 \
->          -numa node,nodeid=0,memdev=m0 \
->          -numa node,nodeid=1,memdev=m1,initiator=0 \
->          -numa cpu,node-id=0,socket-id=0 \
-> -- 
-> 2.19.1
->
+> @@ -200,7 +200,7 @@ SRST
+>  ERST
+>  
+>  DEF("smp", HAS_ARG, QEMU_OPTION_smp,
+> -    "-smp [[cpus=]n][,maxcpus=cpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
+> +    "-smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,cores=cores][,threads=threads]\n"
+>      "                set the number of CPUs to 'n' [default=1]\n"
+>      "                maxcpus= maximum number of total CPUs, including\n"
+>      "                offline CPUs for hotplug, etc\n"
+> 
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Applied to my trivial-patches branch.
 
+Thanks,
+Laurent
 
