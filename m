@@ -1,88 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mVhZ0-0008BL-U0
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 17:56:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40328)
+	id 1mViXt-0003Un-CN
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 18:59:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51212)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mVhYy-0008Ac-94
- for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 17:56:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33895)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1mViXr-0003UG-Tb; Wed, 29 Sep 2021 18:59:23 -0400
+Received: from mail-b.sr.ht ([173.195.146.151]:38682)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1mVhYv-0006ph-Bs
- for qemu-trivial@nongnu.org; Wed, 29 Sep 2021 17:56:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632952584;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lLQsTdulw+5jwiqASL8F5vvvT6YsSpmb40XhW1+sUTA=;
- b=fEMg6Yv6mhCMg7H8UEM5RUYp41ArWzaGLxNrIqaBB2LTagjY29NQJUVuC08jHwzj8Y05r1
- sVHSiY9+L6Wti6CO6zkfi6g6H/HkqaWKPazdPjLeEGxOEXpQYcn5yDdAa7K73pXY45sv4j
- tC5artM+AGgzj5VWP9vhviW+hrIu0hk=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-246-AiNh6UyCPF2TAy2K8U4IGw-1; Wed, 29 Sep 2021 17:56:23 -0400
-X-MC-Unique: AiNh6UyCPF2TAy2K8U4IGw-1
-Received: by mail-ed1-f70.google.com with SMTP id
- u17-20020a50d511000000b003daa3828c13so3949529edi.12
- for <qemu-trivial@nongnu.org>; Wed, 29 Sep 2021 14:56:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=lLQsTdulw+5jwiqASL8F5vvvT6YsSpmb40XhW1+sUTA=;
- b=AF2JpNn0KroKGUDts0rZfOxiwiWsldRJ4yxeiqNRSz2clPl/MBfTvSrcvL9H0K5nus
- UElT1n7ir+n7I1pu4rB2LgyQBaiFBBXr2lD+XGqid9+fanSuZi2vI0ey9D0jsixN+5ok
- ctkMpwp1zKnHrd23HJWWz4FLdpjtM/vwV6XGOlqX83t4RpNDERzmXTSGG+euR/ykT5eO
- MQy0xw7/fTdWtLXzrOp8Es48hejXLUvWct9k21z0QIimdEPJ2NLqnlxK57jYclsijyGe
- REw+xdNaMN8HOHBM7eIrLd99Zg6U7mqQemXGDnUdx3OGLQ0qnFGXPR0EaETmOuxl655s
- 5MLA==
-X-Gm-Message-State: AOAM531aMXXscsbUSG5sv8FQTMS1AvWNqea/rosnh3MnxXJBbfgmXo8i
- o0klol57WfmzoaX1RRLKJvCeZVowStqInVpIadpXifK8jonJjLsFs0NO/RGr9IVypLmpN5laXIE
- k3cLALZ+7JFeuQBU7kw==
-X-Received: by 2002:a50:dace:: with SMTP id s14mr2770847edj.369.1632952581925; 
- Wed, 29 Sep 2021 14:56:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwxt02FT4s7ia2NJuh8uN4A8JtvHKcLZHBWOEaQtWmkmmO1fRHN4q3k0qbYi1t9fcinYAJ6jw==
-X-Received: by 2002:a50:dace:: with SMTP id s14mr2770801edj.369.1632952581596; 
- Wed, 29 Sep 2021 14:56:21 -0700 (PDT)
-Received: from redhat.com ([2.55.134.220])
- by smtp.gmail.com with ESMTPSA id bq4sm570543ejb.43.2021.09.29.14.56.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Sep 2021 14:56:20 -0700 (PDT)
-Date: Wed, 29 Sep 2021 17:56:17 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, haxm-team@intel.com,
- Eduardo Habkost <ehabkost@redhat.com>,
- Reinoud Zandijk <reinoud@netbsd.org>, qemu-trivial@nongnu.org,
- Sunil Muthuswamy <sunilmut@microsoft.com>, Colin Xu <colin.xu@intel.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Kamil Rytarowski <kamil@netbsd.org>, Wenchao Wang <wenchao.wang@intel.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, kvm@vger.kernel.org,
- Paolo Bonzini <pbonzini@redhat.com>, Cameron Esfahani <dirty@apple.com>
-Subject: Re: [PATCH v3] target/i386: Include 'hw/i386/apic.h' locally
-Message-ID: <20210929175605-mutt-send-email-mst@kernel.org>
-References: <20210929163124.2523413-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1mViXq-0001TF-0W; Wed, 29 Sep 2021 18:59:23 -0400
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id EF24111EEC5;
+ Wed, 29 Sep 2021 22:59:19 +0000 (UTC)
+From: ~farzon <farzon@git.sr.ht>
+Date: Wed, 29 Sep 2021 01:30:50 -0400
+Subject: [PATCH qemu v2] QEMU coding style mandates spaces for indentation.
+ This change replaces TABs in block files.
+Message-ID: <163295635969.12353.14555479457179645848-0@git.sr.ht>
+X-Mailer: git.sr.ht
+Reply-to: ~farzon <farzon@farzon.org>
+To: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-devel@nongnu.org, jsnow@redhat.com, thuth@redhat.com,
+ Stefan Hajnoczi <stefanha@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <20210929163124.2523413-1-f4bug@amsat.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -95,223 +46,190 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Sep 2021 21:56:29 -0000
+X-List-Received-Date: Wed, 29 Sep 2021 22:59:24 -0000
 
-On Wed, Sep 29, 2021 at 06:31:24PM +0200, Philippe Mathieu-Daudé wrote:
-> Instead of including a sysemu-specific header in "cpu.h"
-> (which is shared with user-mode emulations), include it
-> locally when required.
-> 
-> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Farzon Lotfi <hi@farzon.org>
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/371
 
-> ---
->  target/i386/cpu.h                    | 4 ----
->  hw/i386/kvmvapic.c                   | 1 +
->  hw/i386/x86.c                        | 1 +
->  target/i386/cpu-dump.c               | 1 +
->  target/i386/cpu-sysemu.c             | 1 +
->  target/i386/cpu.c                    | 1 +
->  target/i386/gdbstub.c                | 4 ++++
->  target/i386/hax/hax-all.c            | 1 +
->  target/i386/helper.c                 | 1 +
->  target/i386/hvf/hvf.c                | 1 +
->  target/i386/hvf/x86_emu.c            | 1 +
->  target/i386/nvmm/nvmm-all.c          | 1 +
->  target/i386/tcg/sysemu/misc_helper.c | 1 +
->  target/i386/tcg/sysemu/seg_helper.c  | 1 +
->  target/i386/whpx/whpx-all.c          | 1 +
->  15 files changed, 17 insertions(+), 4 deletions(-)
-> 
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index c2954c71ea0..4411718bb7a 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -2045,10 +2045,6 @@ typedef X86CPU ArchCPU;
->  #include "exec/cpu-all.h"
->  #include "svm.h"
->  
-> -#if !defined(CONFIG_USER_ONLY)
-> -#include "hw/i386/apic.h"
-> -#endif
-> -
->  static inline void cpu_get_tb_cpu_state(CPUX86State *env, target_ulong *pc,
->                                          target_ulong *cs_base, uint32_t *flags)
->  {
-> diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
-> index 43f8a8f679e..7333818bdd1 100644
-> --- a/hw/i386/kvmvapic.c
-> +++ b/hw/i386/kvmvapic.c
-> @@ -16,6 +16,7 @@
->  #include "sysemu/hw_accel.h"
->  #include "sysemu/kvm.h"
->  #include "sysemu/runstate.h"
-> +#include "hw/i386/apic.h"
->  #include "hw/i386/apic_internal.h"
->  #include "hw/sysbus.h"
->  #include "hw/boards.h"
-> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-> index 00448ed55aa..e0218f8791f 100644
-> --- a/hw/i386/x86.c
-> +++ b/hw/i386/x86.c
-> @@ -43,6 +43,7 @@
->  #include "target/i386/cpu.h"
->  #include "hw/i386/topology.h"
->  #include "hw/i386/fw_cfg.h"
-> +#include "hw/i386/apic.h"
->  #include "hw/intc/i8259.h"
->  #include "hw/rtc/mc146818rtc.h"
->  
-> diff --git a/target/i386/cpu-dump.c b/target/i386/cpu-dump.c
-> index 02b635a52cf..0158fd2bf28 100644
-> --- a/target/i386/cpu-dump.c
-> +++ b/target/i386/cpu-dump.c
-> @@ -22,6 +22,7 @@
->  #include "qemu/qemu-print.h"
->  #ifndef CONFIG_USER_ONLY
->  #include "hw/i386/apic_internal.h"
-> +#include "hw/i386/apic.h"
->  #endif
->  
->  /***********************************************************/
-> diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
-> index 37b7c562f53..4e8a6973d08 100644
-> --- a/target/i386/cpu-sysemu.c
-> +++ b/target/i386/cpu-sysemu.c
-> @@ -30,6 +30,7 @@
->  #include "hw/qdev-properties.h"
->  
->  #include "exec/address-spaces.h"
-> +#include "hw/i386/apic.h"
->  #include "hw/i386/apic_internal.h"
->  
->  #include "cpu-internal.h"
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index 6b029f1bdf1..52422cbf21b 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -33,6 +33,7 @@
->  #include "standard-headers/asm-x86/kvm_para.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/i386/topology.h"
-> +#include "hw/i386/apic.h"
->  #ifndef CONFIG_USER_ONLY
->  #include "exec/address-spaces.h"
->  #include "hw/boards.h"
-> diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
-> index 098a2ad15a9..5438229c1a9 100644
-> --- a/target/i386/gdbstub.c
-> +++ b/target/i386/gdbstub.c
-> @@ -21,6 +21,10 @@
->  #include "cpu.h"
->  #include "exec/gdbstub.h"
->  
-> +#ifndef CONFIG_USER_ONLY
-> +#include "hw/i386/apic.h"
-> +#endif
-> +
->  #ifdef TARGET_X86_64
->  static const int gpr_map[16] = {
->      R_EAX, R_EBX, R_ECX, R_EDX, R_ESI, R_EDI, R_EBP, R_ESP,
-> diff --git a/target/i386/hax/hax-all.c b/target/i386/hax/hax-all.c
-> index bf65ed6fa92..cd89e3233a9 100644
-> --- a/target/i386/hax/hax-all.c
-> +++ b/target/i386/hax/hax-all.c
-> @@ -32,6 +32,7 @@
->  #include "sysemu/reset.h"
->  #include "sysemu/runstate.h"
->  #include "hw/boards.h"
-> +#include "hw/i386/apic.h"
->  
->  #include "hax-accel-ops.h"
->  
-> diff --git a/target/i386/helper.c b/target/i386/helper.c
-> index 533b29cb91b..874beda98ae 100644
-> --- a/target/i386/helper.c
-> +++ b/target/i386/helper.c
-> @@ -26,6 +26,7 @@
->  #ifndef CONFIG_USER_ONLY
->  #include "sysemu/hw_accel.h"
->  #include "monitor/monitor.h"
-> +#include "hw/i386/apic.h"
->  #endif
->  
->  void cpu_sync_bndcs_hflags(CPUX86State *env)
-> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-> index 4ba6e82fab3..50058a24f2a 100644
-> --- a/target/i386/hvf/hvf.c
-> +++ b/target/i386/hvf/hvf.c
-> @@ -70,6 +70,7 @@
->  #include <sys/sysctl.h>
->  
->  #include "hw/i386/apic_internal.h"
-> +#include "hw/i386/apic.h"
->  #include "qemu/main-loop.h"
->  #include "qemu/accel.h"
->  #include "target/i386/cpu.h"
-> diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c
-> index 7c8203b21fb..fb3e88959d4 100644
-> --- a/target/i386/hvf/x86_emu.c
-> +++ b/target/i386/hvf/x86_emu.c
-> @@ -45,6 +45,7 @@
->  #include "x86_flags.h"
->  #include "vmcs.h"
->  #include "vmx.h"
-> +#include "hw/i386/apic.h"
->  
->  void hvf_handle_io(struct CPUState *cpu, uint16_t port, void *data,
->                     int direction, int size, uint32_t count);
-> diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
-> index a488b00e909..944bdb49663 100644
-> --- a/target/i386/nvmm/nvmm-all.c
-> +++ b/target/i386/nvmm/nvmm-all.c
-> @@ -22,6 +22,7 @@
->  #include "qemu/queue.h"
->  #include "migration/blocker.h"
->  #include "strings.h"
-> +#include "hw/i386/apic.h"
->  
->  #include "nvmm-accel-ops.h"
->  
-> diff --git a/target/i386/tcg/sysemu/misc_helper.c b/target/i386/tcg/sysemu/misc_helper.c
-> index 9ccaa054c4c..b1d3096e9c9 100644
-> --- a/target/i386/tcg/sysemu/misc_helper.c
-> +++ b/target/i386/tcg/sysemu/misc_helper.c
-> @@ -24,6 +24,7 @@
->  #include "exec/cpu_ldst.h"
->  #include "exec/address-spaces.h"
->  #include "tcg/helper-tcg.h"
-> +#include "hw/i386/apic.h"
->  
->  void helper_outb(CPUX86State *env, uint32_t port, uint32_t data)
->  {
-> diff --git a/target/i386/tcg/sysemu/seg_helper.c b/target/i386/tcg/sysemu/seg_helper.c
-> index bf3444c26b0..34f2c65d47f 100644
-> --- a/target/i386/tcg/sysemu/seg_helper.c
-> +++ b/target/i386/tcg/sysemu/seg_helper.c
-> @@ -24,6 +24,7 @@
->  #include "exec/cpu_ldst.h"
->  #include "tcg/helper-tcg.h"
->  #include "../seg_helper.h"
-> +#include "hw/i386/apic.h"
->  
->  #ifdef TARGET_X86_64
->  void helper_syscall(CPUX86State *env, int next_eip_addend)
-> diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-> index 3e925b9da70..9ab844fd05d 100644
-> --- a/target/i386/whpx/whpx-all.c
-> +++ b/target/i386/whpx/whpx-all.c
-> @@ -20,6 +20,7 @@
->  #include "qemu/main-loop.h"
->  #include "hw/boards.h"
->  #include "hw/i386/ioapic.h"
-> +#include "hw/i386/apic.h"
->  #include "hw/i386/apic_internal.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
-> -- 
-> 2.31.1
+Signed-off-by: Farzon Lotfi <hi@farzon.org>
+---
+ block/bochs.c       | 10 +++++-----
+ block/file-posix.c  |  8 ++++----
+ block/file-win32.c  | 20 ++++++++++----------
+ block/parallels.c   | 10 +++++-----
+ block/qcow.c        | 10 +++++-----
+ include/block/nbd.h |  2 +-
+ 6 files changed, 30 insertions(+), 30 deletions(-)
 
+diff --git a/block/bochs.c b/block/bochs.c
+index 2f010ab40a..01b84625c0 100644
+--- a/block/bochs.c
++++ b/block/bochs.c
+@@ -293,14 +293,14 @@ static void bochs_close(BlockDriverState *bs)
+ }
+=20
+ static BlockDriver bdrv_bochs =3D {
+-    .format_name	=3D "bochs",
+-    .instance_size	=3D sizeof(BDRVBochsState),
+-    .bdrv_probe		=3D bochs_probe,
+-    .bdrv_open		=3D bochs_open,
++    .format_name    =3D "bochs",
++    .instance_size  =3D sizeof(BDRVBochsState),
++    .bdrv_probe     =3D bochs_probe,
++    .bdrv_open      =3D bochs_open,
+     .bdrv_child_perm     =3D bdrv_default_perms,
+     .bdrv_refresh_limits =3D bochs_refresh_limits,
+     .bdrv_co_preadv =3D bochs_co_preadv,
+-    .bdrv_close		=3D bochs_close,
++    .bdrv_close     =3D bochs_close,
+     .is_format          =3D true,
+ };
+=20
+diff --git a/block/file-posix.c b/block/file-posix.c
+index d81e15efa4..9fc065506d 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -127,7 +127,7 @@
+ #define FTYPE_FILE   0
+ #define FTYPE_CD     1
+=20
+-#define MAX_BLOCKSIZE	4096
++#define MAX_BLOCKSIZE   4096
+=20
+ /* Posix file locking bytes. Libvirt takes byte 0, we start from higher byte=
+s,
+  * leaving a few more bytes for its future use. */
+@@ -3647,7 +3647,7 @@ static BlockDriver bdrv_host_device =3D {
+     .bdrv_attach_aio_context =3D raw_aio_attach_aio_context,
+=20
+     .bdrv_co_truncate       =3D raw_co_truncate,
+-    .bdrv_getlength	=3D raw_getlength,
++    .bdrv_getlength =3D raw_getlength,
+     .bdrv_get_info =3D raw_get_info,
+     .bdrv_get_allocated_file_size
+                         =3D raw_get_allocated_file_size,
+@@ -3750,7 +3750,7 @@ static BlockDriver bdrv_host_cdrom =3D {
+     .protocol_name      =3D "host_cdrom",
+     .instance_size      =3D sizeof(BDRVRawState),
+     .bdrv_needs_filename =3D true,
+-    .bdrv_probe_device	=3D cdrom_probe_device,
++    .bdrv_probe_device  =3D cdrom_probe_device,
+     .bdrv_parse_filename =3D cdrom_parse_filename,
+     .bdrv_file_open     =3D cdrom_open,
+     .bdrv_close         =3D raw_close,
+@@ -3881,7 +3881,7 @@ static BlockDriver bdrv_host_cdrom =3D {
+     .protocol_name      =3D "host_cdrom",
+     .instance_size      =3D sizeof(BDRVRawState),
+     .bdrv_needs_filename =3D true,
+-    .bdrv_probe_device	=3D cdrom_probe_device,
++    .bdrv_probe_device  =3D cdrom_probe_device,
+     .bdrv_parse_filename =3D cdrom_parse_filename,
+     .bdrv_file_open     =3D cdrom_open,
+     .bdrv_close         =3D raw_close,
+diff --git a/block/file-win32.c b/block/file-win32.c
+index b97c58d642..f80e62faf1 100644
+--- a/block/file-win32.c
++++ b/block/file-win32.c
+@@ -743,9 +743,9 @@ static QemuOptsList raw_create_opts =3D {
+ };
+=20
+ BlockDriver bdrv_file =3D {
+-    .format_name	=3D "file",
+-    .protocol_name	=3D "file",
+-    .instance_size	=3D sizeof(BDRVRawState),
++    .format_name    =3D "file",
++    .protocol_name  =3D "file",
++    .instance_size  =3D sizeof(BDRVRawState),
+     .bdrv_needs_filename =3D true,
+     .bdrv_parse_filename =3D raw_parse_filename,
+     .bdrv_file_open     =3D raw_open,
+@@ -763,7 +763,7 @@ BlockDriver bdrv_file =3D {
+     .bdrv_aio_flush     =3D raw_aio_flush,
+=20
+     .bdrv_co_truncate   =3D raw_co_truncate,
+-    .bdrv_getlength	=3D raw_getlength,
++    .bdrv_getlength =3D raw_getlength,
+     .bdrv_get_allocated_file_size
+                         =3D raw_get_allocated_file_size,
+=20
+@@ -915,14 +915,14 @@ done:
+ }
+=20
+ static BlockDriver bdrv_host_device =3D {
+-    .format_name	=3D "host_device",
+-    .protocol_name	=3D "host_device",
+-    .instance_size	=3D sizeof(BDRVRawState),
++    .format_name    =3D "host_device",
++    .protocol_name  =3D "host_device",
++    .instance_size  =3D sizeof(BDRVRawState),
+     .bdrv_needs_filename =3D true,
+     .bdrv_parse_filename =3D hdev_parse_filename,
+-    .bdrv_probe_device	=3D hdev_probe_device,
+-    .bdrv_file_open	=3D hdev_open,
+-    .bdrv_close		=3D raw_close,
++    .bdrv_probe_device  =3D hdev_probe_device,
++    .bdrv_file_open =3D hdev_open,
++    .bdrv_close     =3D raw_close,
+     .bdrv_refresh_limits =3D hdev_refresh_limits,
+=20
+     .bdrv_aio_preadv    =3D raw_aio_preadv,
+diff --git a/block/parallels.c b/block/parallels.c
+index 6ebad2a2bb..629d8aae2b 100644
+--- a/block/parallels.c
++++ b/block/parallels.c
+@@ -916,11 +916,11 @@ static void parallels_close(BlockDriverState *bs)
+ }
+=20
+ static BlockDriver bdrv_parallels =3D {
+-    .format_name	=3D "parallels",
+-    .instance_size	=3D sizeof(BDRVParallelsState),
+-    .bdrv_probe		=3D parallels_probe,
+-    .bdrv_open		=3D parallels_open,
+-    .bdrv_close		=3D parallels_close,
++    .format_name    =3D "parallels",
++    .instance_size  =3D sizeof(BDRVParallelsState),
++    .bdrv_probe     =3D parallels_probe,
++    .bdrv_open      =3D parallels_open,
++    .bdrv_close     =3D parallels_close,
+     .bdrv_child_perm          =3D bdrv_default_perms,
+     .bdrv_co_block_status     =3D parallels_co_block_status,
+     .bdrv_has_zero_init       =3D bdrv_has_zero_init_1,
+diff --git a/block/qcow.c b/block/qcow.c
+index f8919a44d1..f3327dbcae 100644
+--- a/block/qcow.c
++++ b/block/qcow.c
+@@ -1178,11 +1178,11 @@ static const char *const qcow_strong_runtime_opts[] =
+=3D {
+ };
+=20
+ static BlockDriver bdrv_qcow =3D {
+-    .format_name	=3D "qcow",
+-    .instance_size	=3D sizeof(BDRVQcowState),
+-    .bdrv_probe		=3D qcow_probe,
+-    .bdrv_open		=3D qcow_open,
+-    .bdrv_close		=3D qcow_close,
++    .format_name    =3D "qcow",
++    .instance_size  =3D sizeof(BDRVQcowState),
++    .bdrv_probe     =3D qcow_probe,
++    .bdrv_open      =3D qcow_open,
++    .bdrv_close     =3D qcow_close,
+     .bdrv_child_perm        =3D bdrv_default_perms,
+     .bdrv_reopen_prepare    =3D qcow_reopen_prepare,
+     .bdrv_co_create         =3D qcow_co_create,
+diff --git a/include/block/nbd.h b/include/block/nbd.h
+index 78d101b774..4a39955ee3 100644
+--- a/include/block/nbd.h
++++ b/include/block/nbd.h
+@@ -223,7 +223,7 @@ enum {
+     NBD_CMD_BLOCK_STATUS =3D 7,
+ };
+=20
+-#define NBD_DEFAULT_PORT	10809
++#define NBD_DEFAULT_PORT    10809
+=20
+ /* Maximum size of a single READ/WRITE data buffer */
+ #define NBD_MAX_BUFFER_SIZE (32 * 1024 * 1024)
+--=20
+2.32.0
 
