@@ -1,81 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mVcTG-0000ZF-0m
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 12:30:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34682)
+	id 1mVcU6-0001EC-9g
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Sep 2021 12:31:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34910)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mVcT7-0000XI-Br; Wed, 29 Sep 2021 12:30:07 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:43784)
+ id 1mVcU1-0001A1-Ho; Wed, 29 Sep 2021 12:31:01 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:36354)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mVcT4-0003eC-El; Wed, 29 Sep 2021 12:30:05 -0400
-Received: by mail-wr1-x430.google.com with SMTP id x20so5264188wrg.10;
- Wed, 29 Sep 2021 09:30:01 -0700 (PDT)
+ id 1mVcTz-0004ZL-MV; Wed, 29 Sep 2021 12:31:00 -0400
+Received: by mail-wr1-x435.google.com with SMTP id h15so3684299wrc.3;
+ Wed, 29 Sep 2021 09:30:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=ZIL2fzsmyD973C3LK1fCqDkEUFPat/dEOaChN1UH7jk=;
- b=WolWiv42bMY/oHLejn4em0YDf8/c6hwLWre46b16soX2Oc3kXytF8SbAfqowDDgOF5
- ju7ucfWUUBpKx+1ircpHkIt9oAr95pTq5CRMv1ip1Ew+AYQIbNkQXVwr86XR9SKDCcgy
- 0hzHcEFGX2R8U2JuXlMJUuJtbjSa582rXP4bnUtLeigHiU8kzl6TRZmECUkE9kosh4Wp
- wQeD4BS9PIKxbhMLxODJbU6FnKRok/AvVrneUDMW7o6KqPUj/7YPaJU7GpXEeos1aRY3
- Ff136iGJ+PtaPYLi218B2mYlM/AfrNA68jnsrDPnvYqu08qYlF5GwNhhHawE5HXFs9Zf
- vAJQ==
+ bh=mc0p2V+4e9u0RQdTnp/cg9+KLmU6XIVOX4G50p95VSs=;
+ b=AHsw5ohw7cEyeZRk5M2LIESvfthqLQpOeaemC3ssnjLnNF2T+tZ2Nk1icpQT0i06gs
+ aPe9dgYb2mJHB9AmPl1geiQ4UFLANQmd1EV1qraL1fTFFRtt3UQ9KuKGDsAvA+z5ViBV
+ jetn3OUC8ZLVLzm5pf43mSHCE5T8dS725wShk3mfZh3pQtiOvoh2wKS0Dai/S0yJsm03
+ a9z5uzFRURoDvyTKj7839yO8I2Smeb770xgabGzogTaPbaQ2TOaXUCmo2WJErHuJVwt2
+ jcIjXTTw4Hbze2bUJmvZuSoT1S7V8u5yNY+92EyRO77zs88ft61Xce7RJmEzPAQ+TPIN
+ KMTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=ZIL2fzsmyD973C3LK1fCqDkEUFPat/dEOaChN1UH7jk=;
- b=X/DdWCuKR85Q+JDpbjn75JzpySai08znyhMI91BEQrfHuCxsAjGbnXMF+pIlPIpVva
- wTQOcV/yXYGJMZwV1xk8kriYkXJHrazxtUujHPjMQdg4tr+jM5Q7fq0ApFicwqQBfUwW
- ZZgWGegwExOxsLi2ryxTBVJX6gKSJA6+/2v8DTThJnZVctDZ13uYq+tQ6T76YOxi3vH8
- jIkF0kjfY+jr1gtv+uToVM0fu7Js+pv1+GFueZdvhxVDd4Rr43yr7cLGgipoeHD/G+Jv
- cSi+Xb4yq6ZcwRfyZO6UyVdqhQ7yR+WjDtb4KJE0zvDOv2QOQbCPauik4n/XDdO0z+/I
- UdDg==
-X-Gm-Message-State: AOAM533dl3ezWhx8rxkOKMbbmubZJSY+QslbLF0QRvWs3zGQiLU2x5Ul
- 33DGMvM4M0iUomJgIUsv+iI=
-X-Google-Smtp-Source: ABdhPJyr2JDd3KWc00tPxqANAMzR6P2py5oRDv9PVX0RQORnHl9S/wpl3amXphivDc6lWRKFMB8stw==
-X-Received: by 2002:a5d:6d02:: with SMTP id e2mr994900wrq.198.1632933000633;
- Wed, 29 Sep 2021 09:30:00 -0700 (PDT)
+ bh=mc0p2V+4e9u0RQdTnp/cg9+KLmU6XIVOX4G50p95VSs=;
+ b=RSjyMfGApe3jylNAk6WuIW0YD6wI34byuAI6Jg6sMf3OEHNjSOB1DWSIlWVGMU2nlH
+ wD3qoAHKw5zf62EaGdf4y2LBXUOVdqWGZwQkZiotAbjp0/cgLorRIV1uMcJqloEb52KA
+ MDyza5h7YUI8/owGeL94p0FcpJ+JjKhv0KcvReDsNmTXWBlypQtfJOGH5pbMW5juUfxz
+ jmfmRLcnwYtew9lWHj7Ua0/VoZltSZjOpxM1aVkvRP0sO4a73akBLCPC52en2d6rbNmw
+ L4KuCrvAbiIdZW0aLIT9w0OTwlX4MXhoF4Nj67f8u38SGBao7r9yWca4PWdqXHtTq1o1
+ hsmA==
+X-Gm-Message-State: AOAM533Dhb7XwRPkIIrL19VcRpAXGo0/7mYLP8T9xvcvA1Bvjsnt/AkE
+ nMl3L3hdNajzN/kB4keQN5GFcMUcIGE=
+X-Google-Smtp-Source: ABdhPJxOtAvhG6zGp6bfZip6tzCd5iX6n4VLqiZyj/4qKmlM8VfW3QKvNaclWZIou608tMYA81dTeA==
+X-Received: by 2002:a5d:4a41:: with SMTP id v1mr962025wrs.324.1632933057570;
+ Wed, 29 Sep 2021 09:30:57 -0700 (PDT)
 Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
  [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id d2sm360747wrc.32.2021.09.29.09.29.59
+ by smtp.gmail.com with ESMTPSA id v20sm367260wra.73.2021.09.29.09.30.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Sep 2021 09:30:00 -0700 (PDT)
+ Wed, 29 Sep 2021 09:30:57 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <63229ef1-6f77-8aa4-89a7-7759140a60db@amsat.org>
-Date: Wed, 29 Sep 2021 18:29:58 +0200
+Message-ID: <af9fd393-3373-883d-0118-b0fa0ffcb03f@amsat.org>
+Date: Wed, 29 Sep 2021 18:30:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.1.0
-Subject: Re: [PATCH] target/i386: Include 'hw/i386/apic.h' locally
+Subject: Re: [PATCH v2] target/i386: Include 'hw/i386/apic.h' locally
 Content-Language: en-US
-To: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial
- <qemu-trivial@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- Kamil Rytarowski <kamil@netbsd.org>, Paolo Bonzini <pbonzini@redhat.com>,
- haxm-team@intel.com, Colin Xu <colin.xu@intel.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, Reinoud Zandijk
- <reinoud@netbsd.org>, Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, Cameron Esfahani <dirty@apple.com>,
+ Kamil Rytarowski <kamil@netbsd.org>, haxm-team@intel.com,
+ Colin Xu <colin.xu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Reinoud Zandijk <reinoud@netbsd.org>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
  Wenchao Wang <wenchao.wang@intel.com>
-References: <20210902152243.386118-1-f4bug@amsat.org>
- <a4cba848-e668-7cf1-fe93-b5da3a4ac6dc@redhat.com>
- <f3e89488-0d05-657a-34f7-060a7250517d@amsat.org>
- <f9e3c54f-a7cb-a043-f7fd-9d9d0dd61c16@vivier.eu>
- <6fa5f79c-8d3b-9534-26d6-ebe1ba937491@vivier.eu>
- <01ea5ea0-a61c-7bea-e1a6-639e3b9a2988@amsat.org>
- <93245807-dfa9-be11-ccda-4601b09b204e@vivier.eu>
+References: <20210929162540.2520208-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <93245807-dfa9-be11-ccda-4601b09b204e@vivier.eu>
+In-Reply-To: <20210929162540.2520208-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
 X-Spam_bar: ----
@@ -96,49 +90,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Sep 2021 16:30:09 -0000
+X-List-Received-Date: Wed, 29 Sep 2021 16:31:03 -0000
 
-On 9/29/21 18:23, Laurent Vivier wrote:
-> Le 29/09/2021 à 18:06, Philippe Mathieu-Daudé a écrit :
->> On 9/29/21 17:16, Laurent Vivier wrote:
->>> Le 29/09/2021 à 17:00, Laurent Vivier a écrit :
->>>> Le 29/09/2021 à 16:08, Philippe Mathieu-Daudé a écrit :
->>>>> On 9/16/21 00:05, Paolo Bonzini wrote:
->>>>>> On 02/09/21 17:22, Philippe Mathieu-Daudé wrote:
->>>>>>> Instead of including a sysemu-specific header in "cpu.h"
->>>>>>> (which is shared with user-mode emulations), include it
->>>>>>> locally when required.
->>>>>>>
->>>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>>>>> ---
->>>>>>
->>>>>> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
->>>>>
->>>>> Thank you, Cc'ing qemu-trivial@ :)
->>>>>
->>>>
->>>> Applied to my trivial-patches branch.
->>>>
->>>
->>> We have a problem:
->>>
->>> .../target/i386/tcg/sysemu/seg_helper.c:145:9: error: implicit declaration of function
->>> 'apic_poll_irq' [-Werror=implicit-function-declaration]
->>>   145 |         apic_poll_irq(cpu->apic_state);
->>>       |         ^~~~~~~~~~~~~
->>> .../target/i386/tcg/sysemu/seg_helper.c:145:9: error: nested extern declaration of 'apic_poll_irq'
->>> [-Werror=nested-externs]
->>
->> Hmm I'll check what changed since I sent that. It was working the day
->> Paolo Acked, because have the patch rebased / tested on top of commit
->> c99e34e537f ("Merge remote-tracking branch
->> 'remotes/vivier2/tags/linux-user-for-6.2-pull-request' into staging").
->>
->> I should have rebased/retested today before Cc'ing you, sorry.
->>
+On 9/29/21 18:25, Philippe Mathieu-Daudé wrote:
+> Instead of including a sysemu-specific header in "cpu.h"
+> (which is shared with user-mode emulations), include it
+> locally when required.
 > 
-> On top of c99e34e537f I have the same error...
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  target/i386/cpu.h                    | 4 ----
+>  hw/i386/kvmvapic.c                   | 1 +
+>  hw/i386/x86.c                        | 1 +
+>  target/i386/cpu-dump.c               | 1 +
+>  target/i386/cpu-sysemu.c             | 1 +
+>  target/i386/cpu.c                    | 1 +
+>  target/i386/gdbstub.c                | 4 ++++
+>  target/i386/hax/hax-all.c            | 1 +
+>  target/i386/helper.c                 | 1 +
+>  target/i386/hvf/hvf.c                | 1 +
+>  target/i386/hvf/x86_emu.c            | 1 +
+>  target/i386/nvmm/nvmm-all.c          | 1 +
+>  target/i386/tcg/seg_helper.c         | 4 ++++
+>  target/i386/tcg/sysemu/misc_helper.c | 1 +
+>  target/i386/tcg/sysemu/seg_helper.c  | 1 +
+>  target/i386/whpx/whpx-all.c          | 1 +
+>  16 files changed, 21 insertions(+), 4 deletions(-)
 
-The problem is 0792e6c88d4 ("target/i386: Move
-x86_cpu_exec_interrupt() under sysemu/ folder").
+> diff --git a/target/i386/tcg/seg_helper.c b/target/i386/tcg/seg_helper.c
+> index baa905a0cd6..76b4ad918a7 100644
+> --- a/target/i386/tcg/seg_helper.c
+> +++ b/target/i386/tcg/seg_helper.c
+> @@ -28,6 +28,10 @@
+>  #include "helper-tcg.h"
+>  #include "seg_helper.h"
+>  
+> +#ifndef CONFIG_USER_ONLY
+> +#include "hw/i386/apic.h"
+> +#endif
+> +
+
+Self-NAck (incorrectly rebased on top of commit 0792e6c88d4
+("target/i386: Move x86_cpu_exec_interrupt() under sysemu/ folder").
+
+> diff --git a/target/i386/tcg/sysemu/seg_helper.c b/target/i386/tcg/sysemu/seg_helper.c
+> index bf3444c26b0..34f2c65d47f 100644
+> --- a/target/i386/tcg/sysemu/seg_helper.c
+> +++ b/target/i386/tcg/sysemu/seg_helper.c
+> @@ -24,6 +24,7 @@
+>  #include "exec/cpu_ldst.h"
+>  #include "tcg/helper-tcg.h"
+>  #include "../seg_helper.h"
+> +#include "hw/i386/apic.h"
 
