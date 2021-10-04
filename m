@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mXJNN-0000rH-Lg
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Oct 2021 04:31:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52332)
+	id 1mXJNO-0000sl-3d
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Oct 2021 04:31:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mXJNL-0000kz-Qd; Mon, 04 Oct 2021 04:31:07 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:51613)
+ id 1mXJNL-0000kj-Ob; Mon, 04 Oct 2021 04:31:07 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:38759)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mXJNJ-0003PL-Rc; Mon, 04 Oct 2021 04:31:07 -0400
+ id 1mXJNG-0003Nd-At; Mon, 04 Oct 2021 04:31:07 -0400
 Received: from quad ([82.142.3.114]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MidPj-1n2mRf24Ix-00fjqG; Mon, 04
- Oct 2021 10:31:00 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MJnnV-1mDqY43stt-00K5xC; Mon, 04
+ Oct 2021 10:30:58 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 4/5] target/sh4: Use lookup_symbol in sh4_tr_disas_log
-Date: Mon,  4 Oct 2021 10:30:54 +0200
-Message-Id: <20211004083055.3288583-5-laurent@vivier.eu>
+Subject: [PULL 1/5] qemu-options: -chardev reconnect=seconds duplicated in
+ help, tidy up
+Date: Mon,  4 Oct 2021 10:30:51 +0200
+Message-Id: <20211004083055.3288583-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211004083055.3288583-1-laurent@vivier.eu>
 References: <20211004083055.3288583-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:4uI2WHJk9zyqMIbJrZ9W7KItDwGSsCuYd+MssQ7tlhIWre6M5AV
- FxGokRYjXOUJN8IkIp/ubMvF/qTtcyH/HkcNauBoLSpAXR6VpCB5WmVQykDawu1Cg+amK6B
- gEAWYIN3nbtZ3A3bcj2vurkcag/6lI9ZEed6IgWQW6YXI3ALbAd5q/dPLpfdeSTlIEfDgyU
- OSBI6P/blIaN8IyAX/Lew==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wJoxhJ4bvkU=:NxIgQnvRuxUVZq94gkj/3R
- 1s0uyMuwgdup0L2dl7CuE3UQZeKvfNkF4r9Srp4zkrd/uDPpweRuF5ctzZjHjMCUyn/wDVRw2
- RNZI6Ad+XAa9uB+6fUYfttfe79WmG6014RCGThZ57vMsSXn6M0YSGM0gy9CMxBhgM9ykc7dRE
- 5cnwRCcDnU+RJnrZNWZFcMKGI78CaTDKoolChrGGDxFN4kghT6F1/CbceCjMUr5o4U9HjP4pU
- 4QnOiSnbUtqRn9xhnLH9eN+eb5WKMvpWJeS/2I8fIupFIeeFwMZjquIUdKmQlfs11saBngvXD
- aSarjtRPKEd/clzYyvvnR8YX+DqukgEFlA0R0J6ycEILRPDk+84dplcqHDeFcS5HCXi823a3B
- jO/smKItspJpnke5d4gi+iZ60HNErc430HTqIGhrcxvD+FPvlJfrRNNrYhTNF+7L6dVDH5CEs
- m0CaoqZxKPN/naxkzgmhWpG4FnwkoujZ8nHvHJr2VBryAQp3UoWvqqIkRErwFznHufEUfJl1q
- tUOy1mVAumCFmhle67kFGDncoeCmTHA+lIPQdhEAPz0ThaNCjaDqvuiwK8hnCx/rB1wZ/4Hpb
- UV5o9I4ULsYph5R7F8jxdkrPJFaiQkTd1Vp2SFSnUMgKFSHlZ52F1YOPj0/YB9Stoc/pqxtpu
- nCsEUipIo3qQZvT5UZtU/5OmsqeseTvqkK9xjvdE/Z5gIFxqhkFChIH8Tg4GJUgeasLEuF9BB
- 3+UI03p46bDeaJjuKobxGoJcP6WzfuOmQHP4Vw==
+X-Provags-ID: V03:K1:NSwFYyndxpo26bv4xZYDLbAPPU6t3+ozi2a00x5tWkWhFwsi+bV
+ ufaZVujMHh/vI+WzPcCr0tV3+s7dfsr35f25WXY8DFzeT7HoHbjmYNopSe3pYiW/zO1Qf96
+ Bqd9oVCn/SNBSe287weWlLuRZ7naaU25d21qXOTdGIrKAE89Yj4j6MZzI13XGTMqd+k02zD
+ b7B1SfszRVrfuZjN9Pfvg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zyDxUT+i+FE=:6/F23uucpGlWCpninbGW32
+ 1CH0QRgl4MAjkoVqQPfbMj8/fL2x0iYqofoe2MCSxoQ2Zyr5pFV3Giai/42/6BCr0oCt8sHFh
+ XLLPeClIZQ7V7q6o0NFyOpNPkpeqK5D1EgMLSBEYMkSpsv3CH6tzggdHuLtmVrrSXC+DK6//q
+ r27YprjsDYUKie5WgiUPzCfNfKgvOatZ7nknuRU+zRQxqRt5igrBFUOl2faX7uedKDFzkd8Ln
+ eR5u6iWkuhtt56cPDK77/cBzlGWoMATjg54uPM2onk/tZq8Xi7nwMyMahEEfKqf6GQnXSrdo6
+ Gtppx4zvP3EdUYrDy2VwSTJ18EBKdQ5QKHjvescZdoVRuYHO2lnI5BYzbfIQaoocStOzHAtlW
+ CepfOPws3lM3PMb1w3G0+lnUVPj3ivAUWwhJY+jeSffu6CcaKNSmrfNUEqC3ylT+9HAynjv8m
+ UwJ39bFHj9CttnfgbX9Yw/5gnResfg2JKYXx3ArWdpipuhUSsrlyku0V0HCina6BZZesOL7+w
+ hl/l6LMEfZIChGC9Vlvpv06JcneMn6gpdmrAcd0+tiI7eTnp1tC09Q8XlerYHpjJf4ugXKVdv
+ oKUubtjzhz0rR3V1/F6cxu12nM9jjm5W2Ekc+2R+MZv3UotbGyxHpaDez5iJkIUXrg5plXWI4
+ Onnwc6SYqAyjJYrDELZ4WvtGlhyJhwc+h2GUq/4gzZ9JOPnkpGDjIBe+pmykKhMpbkRIUt0MV
+ rbztc6XyakNHihoIqbCZTiEai2tofFHIuTGGwQ==
 Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: 0
-X-Spam_score: -0.0
-X-Spam_bar: /
-X-Spam_report: (-0.0 / 5.0 requ) RCVD_IN_DNSWL_NONE=-0.0001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -64,33 +65,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 04 Oct 2021 08:31:08 -0000
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Markus Armbruster <armbru@redhat.com>
 
-The correct thing to do has been present but commented
-out since the initial commit of the sh4 translator.
-
-Fixes: fdf9b3e831e
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20210929130316.121330-1-richard.henderson@linaro.org>
+Fixes: 5dd1f02b4bc2f2c2ef3a2adfd8a412c8c8769085
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-Id: <20210928071449.1416022-1-armbru@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/sh4/translate.c | 2 +-
+ qemu-options.hx | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index cf5fe9243d6c..d36305027240 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -2344,7 +2344,7 @@ static void sh4_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
- 
- static void sh4_tr_disas_log(const DisasContextBase *dcbase, CPUState *cs)
- {
--    qemu_log("IN:\n");  /* , lookup_symbol(dcbase->pc_first)); */
-+    qemu_log("IN: %s\n", lookup_symbol(dcbase->pc_first));
-     log_target_disas(cs, dcbase->pc_first, dcbase->tb->size);
- }
- 
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 8ef178180db6..4f2dc91e0b27 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3202,7 +3202,7 @@ DEFHEADING(Character device options:)
+ DEF("chardev", HAS_ARG, QEMU_OPTION_chardev,
+     "-chardev help\n"
+     "-chardev null,id=id[,mux=on|off][,logfile=PATH][,logappend=on|off]\n"
+-    "-chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off][,reconnect=seconds]\n"
++    "-chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off]\n"
+     "         [,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds][,mux=on|off]\n"
+     "         [,logfile=PATH][,logappend=on|off][,tls-creds=ID][,tls-authz=ID] (tcp)\n"
+     "-chardev socket,id=id,path=path[,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds]\n"
 -- 
 2.31.1
 
