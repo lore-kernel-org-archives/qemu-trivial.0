@@ -1,50 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mXJNL-0000kx-SG
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Oct 2021 04:31:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52306)
+	id 1mXJNN-0000rH-Lg
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Oct 2021 04:31:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52332)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mXJNK-0000gh-HQ; Mon, 04 Oct 2021 04:31:06 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:49593)
+ id 1mXJNL-0000kz-Qd; Mon, 04 Oct 2021 04:31:07 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:51613)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mXJNF-0003L4-Uj; Mon, 04 Oct 2021 04:31:06 -0400
+ id 1mXJNJ-0003PL-Rc; Mon, 04 Oct 2021 04:31:07 -0400
 Received: from quad ([82.142.3.114]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M9ZRc-1mTzzZ19CG-005ZsV; Mon, 04
- Oct 2021 10:30:57 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MidPj-1n2mRf24Ix-00fjqG; Mon, 04
+ Oct 2021 10:31:00 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 0/5] Trivial branch for 6.2 patches
-Date: Mon,  4 Oct 2021 10:30:50 +0200
-Message-Id: <20211004083055.3288583-1-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 4/5] target/sh4: Use lookup_symbol in sh4_tr_disas_log
+Date: Mon,  4 Oct 2021 10:30:54 +0200
+Message-Id: <20211004083055.3288583-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20211004083055.3288583-1-laurent@vivier.eu>
+References: <20211004083055.3288583-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:BeVORiIhymKoqdIdkp+PCT3HJZGHEheWyE/4nL9XQQ2sDU+O5RL
- SzMHrWxxn2kGkJikiKtoJToD9COXKoRwN9udNnmdSZetjery9miAWIC1wVGcr986Y/Aqw1/
- GNLxba1KqJFFiSTOfh6mrm42MFksqqX4WUMqbBlXJrp8jW7M/VCplmU0evf9NIpQpxa+25i
- vMTNCQLeukVSVGjo6j+4w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:F8xLk/Ws/eI=:OOYBkRDr0WMqtl9V/6woT2
- CSzeo+HLmbFdNfS9U4QB3E8AKQXWflOBAHBvp9Ee1/kSsACGPYs/CWA42LmwsMAqommuuw1hl
- A/OOu2XpCydEOgfHrsnOfmdA8WfNf8SrKptzrjk2P+tlgu3tCA8/JP65ldbmOhlGyEZy9SeM9
- n7Vty6EbRjdc9ldGDJI4Y6V3hRzJYhlJcWYTAXOOjG2fWvjQB2yx3Ijd8DgR00gouQF/+X/C8
- Q8cBD9hCN1LwNiE72X7X11AcXXJtKxtVdqHdYeyIm12J96q1zNqlMkVcm6/E7YG45FfRF2tOI
- 2IfAH7wLe8Im2Cu/zKsdjwEFxaZqnz1iPxW55tbnbaw0fFzZxguzmqjX5eava1tzKhjoSmIby
- wu3A/AfarNH6fY4ZMscsxyPnPSTCgbdbbxIBxURpOVDDCJrrNaHb2rAdekg9y4zomxARnK4oJ
- 9D+VWlk9XbyTGbzQ9imeoJZGR5Wv6/zjjp3hp1iow0IMCKKnI0ylyrM43A05xuKBBUNJGUr95
- O88iQ0lb6lse+e2th/OByNc41gy7gIsMmCgZ40npzUGsCz4ngR93MTu3Ww2DqHusSBbYy3GcB
- 0d5yfWJ9y5KSHckqzb/U238x6z8XcRuvZUex6Lotq/FaLPqhUIldzazsOt3SFucEfjifXlqdv
- 3amhRyQczj0qzFiWAqP8M9qyNre5wwQN/dQ5NzwlAESAjfRVwzPnYoaLYr5yWwGzwWywZUtd5
- uQq1oOX4p86zWv1BI11HNK4qbvJyGWyvV0/baQ==
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:4uI2WHJk9zyqMIbJrZ9W7KItDwGSsCuYd+MssQ7tlhIWre6M5AV
+ FxGokRYjXOUJN8IkIp/ubMvF/qTtcyH/HkcNauBoLSpAXR6VpCB5WmVQykDawu1Cg+amK6B
+ gEAWYIN3nbtZ3A3bcj2vurkcag/6lI9ZEed6IgWQW6YXI3ALbAd5q/dPLpfdeSTlIEfDgyU
+ OSBI6P/blIaN8IyAX/Lew==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wJoxhJ4bvkU=:NxIgQnvRuxUVZq94gkj/3R
+ 1s0uyMuwgdup0L2dl7CuE3UQZeKvfNkF4r9Srp4zkrd/uDPpweRuF5ctzZjHjMCUyn/wDVRw2
+ RNZI6Ad+XAa9uB+6fUYfttfe79WmG6014RCGThZ57vMsSXn6M0YSGM0gy9CMxBhgM9ykc7dRE
+ 5cnwRCcDnU+RJnrZNWZFcMKGI78CaTDKoolChrGGDxFN4kghT6F1/CbceCjMUr5o4U9HjP4pU
+ 4QnOiSnbUtqRn9xhnLH9eN+eb5WKMvpWJeS/2I8fIupFIeeFwMZjquIUdKmQlfs11saBngvXD
+ aSarjtRPKEd/clzYyvvnR8YX+DqukgEFlA0R0J6ycEILRPDk+84dplcqHDeFcS5HCXi823a3B
+ jO/smKItspJpnke5d4gi+iZ60HNErc430HTqIGhrcxvD+FPvlJfrRNNrYhTNF+7L6dVDH5CEs
+ m0CaoqZxKPN/naxkzgmhWpG4FnwkoujZ8nHvHJr2VBryAQp3UoWvqqIkRErwFznHufEUfJl1q
+ tUOy1mVAumCFmhle67kFGDncoeCmTHA+lIPQdhEAPz0ThaNCjaDqvuiwK8hnCx/rB1wZ/4Hpb
+ UV5o9I4ULsYph5R7F8jxdkrPJFaiQkTd1Vp2SFSnUMgKFSHlZ52F1YOPj0/YB9Stoc/pqxtpu
+ nCsEUipIo3qQZvT5UZtU/5OmsqeseTvqkK9xjvdE/Z5gIFxqhkFChIH8Tg4GJUgeasLEuF9BB
+ 3+UI03p46bDeaJjuKobxGoJcP6WzfuOmQHP4Vw==
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+X-Spam_score_int: 0
+X-Spam_score: -0.0
+X-Spam_bar: /
+X-Spam_report: (-0.0 / 5.0 requ) RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -59,48 +62,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Oct 2021 08:31:06 -0000
+X-List-Received-Date: Mon, 04 Oct 2021 08:31:08 -0000
 
-The following changes since commit 30bd1db58b09c12b68c35f041f919014b885482d=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/bonzini/tags/for-upstream' into sta=
-ging (2021-10-03 08:45:19 -0400)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  git://github.com/vivier/qemu.git tags/trivial-branch-for-6.2-pull-request=
-=0D
-=0D
-for you to fetch changes up to daf0db06308b55c518312abc39a4bf74413ac007:=0D
-=0D
-  hw/remote/proxy: Categorize Wireless devices as 'Network' ones (2021-10-0=
-4 09:47:26 +0200)=0D
-=0D
-----------------------------------------------------------------=0D
-Pull request trivial-patches 2021104=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Markus Armbruster (1):=0D
-  qemu-options: -chardev reconnect=3Dseconds duplicated in help, tidy up=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (1):=0D
-  hw/remote/proxy: Categorize Wireless devices as 'Network' ones=0D
-=0D
-Richard Henderson (1):=0D
-  target/sh4: Use lookup_symbol in sh4_tr_disas_log=0D
-=0D
-Yanan Wang (2):=0D
-  qemu-options: Tweak [, maxcpus=3Dcpus] to [, maxcpus=3Dmaxcpus]=0D
-  qemu-options: Add missing "sockets=3D2, maxcpus=3D2" to CLI "-smp 2"=0D
-=0D
- hw/remote/proxy.c      | 1 +=0D
- qemu-options.hx        | 6 +++---=0D
- target/sh4/translate.c | 2 +-=0D
- 3 files changed, 5 insertions(+), 4 deletions(-)=0D
-=0D
--- =0D
-2.31.1=0D
-=0D
+From: Richard Henderson <richard.henderson@linaro.org>
+
+The correct thing to do has been present but commented
+out since the initial commit of the sh4 translator.
+
+Fixes: fdf9b3e831e
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210929130316.121330-1-richard.henderson@linaro.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ target/sh4/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index cf5fe9243d6c..d36305027240 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -2344,7 +2344,7 @@ static void sh4_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+ 
+ static void sh4_tr_disas_log(const DisasContextBase *dcbase, CPUState *cs)
+ {
+-    qemu_log("IN:\n");  /* , lookup_symbol(dcbase->pc_first)); */
++    qemu_log("IN: %s\n", lookup_symbol(dcbase->pc_first));
+     log_target_disas(cs, dcbase->pc_first, dcbase->tb->size);
+ }
+ 
+-- 
+2.31.1
+
 
