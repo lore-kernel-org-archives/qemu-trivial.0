@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mXJNO-0000sl-3d
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Oct 2021 04:31:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52328)
+	id 1mXJNR-000141-CN
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Oct 2021 04:31:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mXJNL-0000kj-Ob; Mon, 04 Oct 2021 04:31:07 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:38759)
+ id 1mXJNQ-0000zz-7a; Mon, 04 Oct 2021 04:31:12 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:55057)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mXJNG-0003Nd-At; Mon, 04 Oct 2021 04:31:07 -0400
+ id 1mXJNO-0003T6-F8; Mon, 04 Oct 2021 04:31:11 -0400
 Received: from quad ([82.142.3.114]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MJnnV-1mDqY43stt-00K5xC; Mon, 04
- Oct 2021 10:30:58 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MP2zs-1mAGBV14Dk-00PIch; Mon, 04
+ Oct 2021 10:31:01 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Jagannathan Raman <jag.raman@oracle.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 1/5] qemu-options: -chardev reconnect=seconds duplicated in
- help, tidy up
-Date: Mon,  4 Oct 2021 10:30:51 +0200
-Message-Id: <20211004083055.3288583-2-laurent@vivier.eu>
+Subject: [PULL 5/5] hw/remote/proxy: Categorize Wireless devices as 'Network'
+ ones
+Date: Mon,  4 Oct 2021 10:30:55 +0200
+Message-Id: <20211004083055.3288583-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211004083055.3288583-1-laurent@vivier.eu>
 References: <20211004083055.3288583-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:NSwFYyndxpo26bv4xZYDLbAPPU6t3+ozi2a00x5tWkWhFwsi+bV
- ufaZVujMHh/vI+WzPcCr0tV3+s7dfsr35f25WXY8DFzeT7HoHbjmYNopSe3pYiW/zO1Qf96
- Bqd9oVCn/SNBSe287weWlLuRZ7naaU25d21qXOTdGIrKAE89Yj4j6MZzI13XGTMqd+k02zD
- b7B1SfszRVrfuZjN9Pfvg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zyDxUT+i+FE=:6/F23uucpGlWCpninbGW32
- 1CH0QRgl4MAjkoVqQPfbMj8/fL2x0iYqofoe2MCSxoQ2Zyr5pFV3Giai/42/6BCr0oCt8sHFh
- XLLPeClIZQ7V7q6o0NFyOpNPkpeqK5D1EgMLSBEYMkSpsv3CH6tzggdHuLtmVrrSXC+DK6//q
- r27YprjsDYUKie5WgiUPzCfNfKgvOatZ7nknuRU+zRQxqRt5igrBFUOl2faX7uedKDFzkd8Ln
- eR5u6iWkuhtt56cPDK77/cBzlGWoMATjg54uPM2onk/tZq8Xi7nwMyMahEEfKqf6GQnXSrdo6
- Gtppx4zvP3EdUYrDy2VwSTJ18EBKdQ5QKHjvescZdoVRuYHO2lnI5BYzbfIQaoocStOzHAtlW
- CepfOPws3lM3PMb1w3G0+lnUVPj3ivAUWwhJY+jeSffu6CcaKNSmrfNUEqC3ylT+9HAynjv8m
- UwJ39bFHj9CttnfgbX9Yw/5gnResfg2JKYXx3ArWdpipuhUSsrlyku0V0HCina6BZZesOL7+w
- hl/l6LMEfZIChGC9Vlvpv06JcneMn6gpdmrAcd0+tiI7eTnp1tC09Q8XlerYHpjJf4ugXKVdv
- oKUubtjzhz0rR3V1/F6cxu12nM9jjm5W2Ekc+2R+MZv3UotbGyxHpaDez5iJkIUXrg5plXWI4
- Onnwc6SYqAyjJYrDELZ4WvtGlhyJhwc+h2GUq/4gzZ9JOPnkpGDjIBe+pmykKhMpbkRIUt0MV
- rbztc6XyakNHihoIqbCZTiEai2tofFHIuTGGwQ==
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ijj8Jguyg4AO06sBIh6TEiMLxTsX3qu1gUgUmyVRsRntAWq3wf+
+ 2cJ4rly7J2y9brIHA1cg9545GvX6CLV8/DGR2ho9wL6f3YzBJO/oxLgKWtv9qiiqc4ev2aj
+ PLIHFbSyNLSk9Z5heTsm3f73rYz0Nu2R1p4Rgnab8fsgXR/hZoc2qJPrYIzzq3sMdMN19OR
+ ZEsObnODoI/zFzIjNWMoA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:myX44dPtxZc=:xN9SQD+/N6YJD6Qy7+ekal
+ Ga3fuHtfnF+xbExoZb4LbsLmZbvtPa4LMBi5/qAcyNkhJdfxD7dgGx7dmbAB64YdDdWFL4YLz
+ GGXZXI3lCDWBFD7pyr5A8Yalkv3B2sV7+Y4YToIZ7IMleL9tXwkbmO9WfqYKLM/mLspGJND4p
+ y9Vvs/Njwvmo4RePD9POe8dX44EX/E3EyPJCAe7Qyt2HXn8dWYiWVZZxZwnRVu0iam4QSvzma
+ xlGkPeVb/Eq9AsLZH/R7aPsUj5+oIdbYXW522iB8YVdfusro97S7cH9FlaW1JMFhuGjWqKYI7
+ rPIfnZGQewtVrAux4vud1YCg7gQHlMA/aqn2JLIJc4JsyjhvSkE+1jPXgCIHfopx0/VDX7Gkm
+ hiulpWZAxUbZi9U/wwS4k2ikZNsLQu/+aZn6JAJaaJuUEdZzmnpoNEBrvlzVrJFhB2K6wxVEj
+ xXwK7a82JTckvATbDhQDdI2Ak9TJDEPvKCKQGloVNJXHmk8vHMqCirEzL6ccz2qrxQ+reoneP
+ ijxEyxudnqmN0fCpZP71BJvg2egwTmd3r6+pSlLYdeQC0ZYe13H9Cq4KgqaFLlpqV6gj98w75
+ 8WAjuyejlGh39Jl5NCwD15HUC/x4WRrCOEwCXpvUdA7teuguG8fTu/hbjoKFU9WxTF9WbiZNe
+ HKPXQ2CXtFlYiUaKTcwm7oE35q4Yc/V3W2VXB47gFe5CFur5Cb3F/vBUXUMcflvwkHDJUUCga
+ lrzaWi93kqen+fbKxt+OwR5zQ85wcoqxME2AHQ==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -63,32 +64,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Oct 2021 08:31:08 -0000
+X-List-Received-Date: Mon, 04 Oct 2021 08:31:12 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Fixes: 5dd1f02b4bc2f2c2ef3a2adfd8a412c8c8769085
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20210928071449.1416022-1-armbru@redhat.com>
+QEMU doesn't distinct network devices per link layer (Ethernet,
+Wi-Fi, CAN, ...). Categorize PCI Wireless cards as Network
+devices.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Jagannathan Raman <jag.raman@oracle.com>
+Message-Id: <20210926201926.1690896-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-options.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/remote/proxy.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 8ef178180db6..4f2dc91e0b27 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -3202,7 +3202,7 @@ DEFHEADING(Character device options:)
- DEF("chardev", HAS_ARG, QEMU_OPTION_chardev,
-     "-chardev help\n"
-     "-chardev null,id=id[,mux=on|off][,logfile=PATH][,logappend=on|off]\n"
--    "-chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off][,reconnect=seconds]\n"
-+    "-chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off]\n"
-     "         [,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds][,mux=on|off]\n"
-     "         [,logfile=PATH][,logappend=on|off][,tls-creds=ID][,tls-authz=ID] (tcp)\n"
-     "-chardev socket,id=id,path=path[,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds]\n"
+diff --git a/hw/remote/proxy.c b/hw/remote/proxy.c
+index 499f540c947d..bad164299dd4 100644
+--- a/hw/remote/proxy.c
++++ b/hw/remote/proxy.c
+@@ -324,6 +324,7 @@ static void probe_pci_info(PCIDevice *dev, Error **errp)
+         set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+         break;
+     case PCI_BASE_CLASS_NETWORK:
++    case PCI_BASE_CLASS_WIRELESS:
+         set_bit(DEVICE_CATEGORY_NETWORK, dc->categories);
+         break;
+     case PCI_BASE_CLASS_INPUT:
 -- 
 2.31.1
 
