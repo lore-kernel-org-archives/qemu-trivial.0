@@ -1,84 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mXq62-0000Am-5v
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Oct 2021 15:27:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43568)
+	id 1mXrG3-0007PX-6W
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Oct 2021 16:41:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mXq60-000088-Mq; Tue, 05 Oct 2021 15:27:24 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:38522)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mXq5z-0003bM-69; Tue, 05 Oct 2021 15:27:24 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id u18so939297wrg.5;
- Tue, 05 Oct 2021 12:27:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=gjGbZQFATwhF+BES3nhgMC8T008nZ3OInRqvg+24qlo=;
- b=UrohL+upv4vlrkwkvaFauYBW9yeI+t5LBdA74nxK6EUFBjQFfxSjZESHmsOL9VLdQQ
- m9syZF7vkkjdVm/nDeF/BYFoXmCpb1sMrewykOtb/hEFj29x4/Kg2VMLREKcpAHYTn1C
- 74avyLnpMeYxn0pNnZD6ffe71lVglJSgko83XgSyKjJAD4Ycl3ysLSiNEOvqh6JIMZh/
- FZhEHGg+lieSd4QLk3BGoHv3u/H2U2F2NQXLaiaqdIf+Bk4iYz0di7QqP8GemttuUgi5
- KcMMNOVowG5GuyXgbmmPs6JVTYqcPZg8JClLX58HPyuXDSYm2+v1nlMlrscpSL7VcPMP
- 9ngw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=gjGbZQFATwhF+BES3nhgMC8T008nZ3OInRqvg+24qlo=;
- b=dLtERjkAPOiJ4NiCKSUMIQk/ZAZ2Zgh4Mx50HhwRqwe1HFxxcKX2vU59EcRDc+l0WZ
- E71uUyRkSNHwRpCaiDaleIrZR6cTYPVENVyIJVJQ1g0qA/UOYAaro5stdJGiBku/tDNw
- R6QOVAbEUu98Mj9afb6m425N6jB2JLQ1iidtguTIxC22ci3JgGijM62isLFLA7kGxFkb
- jAnYLHmO9pEkMsXQ8Gcy1CTlDsqH1q2EO29L0hYhfG8vcKXilZHLkxLCt7ofAIxAA2by
- LDfX6nnVwVUCtfUjJPaW0sfVOfeJcxodL4oZeJYDc0o9UMdn2B3BXKo99iJehmuvyBlZ
- nqBw==
-X-Gm-Message-State: AOAM531QwisSDShiMib8RGedWLuyH9+c9R73MixVZuwDqETGpYvFYhwv
- aiHFo9BABWkcZW7z6oEwXSg=
-X-Google-Smtp-Source: ABdhPJxGvGzHYlon9ExqeHoSmKdWMwW1h9D3Y2v58vJK0sc8Pe5g8O3IcFEmry7YN9RlXZA+NbsL0A==
-X-Received: by 2002:a1c:4484:: with SMTP id r126mr5381571wma.150.1633462041536; 
- Tue, 05 Oct 2021 12:27:21 -0700 (PDT)
-Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
- [83.35.24.118])
- by smtp.gmail.com with ESMTPSA id p18sm7312497wrt.96.2021.10.05.12.27.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Oct 2021 12:27:20 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <79bc4067-1ed0-0b06-e847-2875c75ffb9f@amsat.org>
-Date: Tue, 5 Oct 2021 21:27:18 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH v3] target/i386: Include 'hw/i386/apic.h' locally
-Content-Language: en-US
-To: Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
- qemu-trivial@nongnu.org, haxm-team@intel.com,
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mXrG1-0007PC-3N; Tue, 05 Oct 2021 16:41:49 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:40793)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mXrFz-0005iw-DO; Tue, 05 Oct 2021 16:41:48 -0400
+Received: from [192.168.100.1] ([82.142.3.114]) by mrelayeu.kundenserver.de
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MjSPq-1nE1ks1KtG-00kwR4; Tue, 05 Oct 2021 22:41:24 +0200
+Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, Kamil Rytarowski <kamil@netbsd.org>,
- Reinoud Zandijk <reinoud@netbsd.org>, Colin Xu <colin.xu@intel.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
- Wenchao Wang <wenchao.wang@intel.com>
-References: <20210929163124.2523413-1-f4bug@amsat.org>
- <20211005105745-mutt-send-email-mst@kernel.org>
- <fb4d7f19-8bb5-781d-4a41-9641625a2019@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <fb4d7f19-8bb5-781d-4a41-9641625a2019@vivier.eu>
-Content-Type: text/plain; charset=UTF-8
+ Warner Losh <imp@bsdimp.com>
+References: <20210926220103.1721355-1-f4bug@amsat.org>
+ <20210926220103.1721355-2-f4bug@amsat.org> <YVGUX6FZlFBhhgwn@redhat.com>
+ <a34e4f8a-36c5-4b87-52b0-f622a78b8d70@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <f38b33f2-57ff-da66-9d91-679ab5a821f7@vivier.eu>
+Date: Tue, 5 Oct 2021 22:41:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <a34e4f8a-36c5-4b87-52b0-f622a78b8d70@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+X-Provags-ID: V03:K1:noBP2QQ7HaA89+WEJDYwzjswp0ca2R369c2tF8OX7XkC3PFxOuH
+ V0iNcwKZS6zvfpP8LY9OZ8ajSem1cLlnTIuOR1B6+543+bUGVkIOhCtji95bMJfMT2Z0hQr
+ /KR3z2JK8EUTymeeqt6gScOrSUusR0DUl+U/hnZbXvOSx+TDBud1rTEs0K1VUX8dpwpqJ6o
+ BVvlTHIMks9t3zv5SZsEw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:upEen/eyM78=:yiajRisN9vvugw2qCBOXjW
+ uZIvJ8YI1AEevp33KFQMU4xbINQFdy82jRnc/R8u5RoGgp0VjxzhM+GKkK1FTi1LZXR3ZbWBk
+ wP80kMkRHtUhmXluiePRjzHm7Q7hTFKLEvmUOhmtz2h6kLMKLbX18Q9FgYjnWKgsHvJSeLzY9
+ HLKaqwh/bgRqwZLOr9k2b5i/yJRiRN0MVmG5zjcpzM+gMdnFpa1XXnGf3gMogXUsXccaK7ndW
+ Cf6lLdQzkOJtMVzrlwkeltSVs1lIfhP4pTknUsLEt6Qm6ZD6yXTOkRNIl0PhWw6/XOhDCMlPY
+ X1i+Im8HlQTUJPSQBjlXdklrOiecRe8Fr2NcdDG/ie7pkwvZvqCSqnvWxSfr3ai2CEr4LLgU4
+ vjp8UV/f8WerKnin92Sb4R4EJA6XukTYzCJMYipZvp8OGIeH2FLXkvEHY9Uv4zjhon2jw/Joj
+ fe5Sc92zFU5M5JhI2GMGpM+RoPVxrCeioikxXXJRBCZLVyx4Aji4CJUdoVuGcGp4XTSNLw9Ow
+ 8lv+N35Vw3dm4ccsfuF54r5OeuA8/yrq2EKTDwL/PaU/FWAINYMgXyA1/ZXj/w8isS1PxZUCj
+ DRisDmP7FUjaq1obOx7XbTNFgfnBqToYajH/ePMlUxo62bC4/Q60ZjhtLuq+lX27IiWuQMLzZ
+ WQmbu1wzoLlhNeilhV++x6IsBLc3HdeMMBKL0U7FxT4zTomYCKI0qs3zO3pDJ2PN/eEbgDirF
+ eFfIsB4bUpDlw3TyoIGMVwQH4t7OvaR4IlAokw==
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,24 +68,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Oct 2021 19:27:25 -0000
+X-List-Received-Date: Tue, 05 Oct 2021 20:41:49 -0000
 
-On 10/5/21 18:45, Laurent Vivier wrote:
-> Le 05/10/2021 à 16:57, Michael S. Tsirkin a écrit :
->> On Wed, Sep 29, 2021 at 06:31:24PM +0200, Philippe Mathieu-Daudé wrote:
->>> Instead of including a sysemu-specific header in "cpu.h"
->>> (which is shared with user-mode emulations), include it
->>> locally when required.
->>>
->>> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Le 05/10/2021 à 21:26, Paolo Bonzini a écrit :
+> On 27/09/21 11:52, Daniel P. Berrangé wrote:
+>>    bsd_user_ss.add(files('gdbstub.c'))
+>>    specific_ss.add_all(when: 'CONFIG_BSD_USER', if_true: bsd_user_ss)
 >>
->> Acked-by: Michael S. Tsirkin <mst@redhat.com>
 >>
->> which tree? trivial I guess?
+>> So without this change, we're already correctly dropping bsd_user_ss
+>> in its entirity, when not on BSD.
+>>
+>> With this change, we're dropping some, but not all, of bsd_user_ss
+>> files - gdbstub.c remains.
+>>
+>> So this change on its own doesn't make a whole lot of sense.
 > 
-> Yes, but for me the patch was not correct because there is no need to update target/i386/cpu-dump.c
-> But perhaps I misunderstood the answer from Philippe?
+> Agreed; that said, the gdbstub.c files added by
+> 
+>   bsd_user_ss.add(files('gdbstub.c'))
+>   linux_user_ss.add(files('gdbstub.c', 'thunk.c'))
+> 
+> are unnecessary because there is already
+> 
+>   specific_ss.add(files('cpu.c', 'disas.c', 'gdbstub.c'), capstone)
+> 
+> So, with those two instances of gdbstub.c removed, both patches are
+> 
+>   Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> 
 
-You understood correctly, this series requires a respin.
+I can take them if a v2 is sent updated accordingly...
+
+Thanks,
+Laurent
+
 
