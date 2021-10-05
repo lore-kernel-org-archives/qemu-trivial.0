@@ -1,89 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mXq4q-0007DT-LZ
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Oct 2021 15:26:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43192)
+	id 1mXq62-0000Am-5v
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Oct 2021 15:27:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mXq4l-0007BZ-M1
- for qemu-trivial@nongnu.org; Tue, 05 Oct 2021 15:26:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44611)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mXq4k-0002Yt-27
- for qemu-trivial@nongnu.org; Tue, 05 Oct 2021 15:26:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633461965;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=m5jk+QUI9u/Z1JVrt4UKSQOuZwKP9YZjAEm+eEYfjwY=;
- b=N7KyvCLfUlNODvIRwbbeaFRoaT2TbaBwkCWN15BXqgnXMZg0qUuKUFKc4lRQCshmhbGqhF
- vxkjMPH7VkRxSMvSFZBiruiKuepe7gOzu4M/ALXXrwocaSqYWQNdCvpIzIiF03Aggek4X2
- Gf3c8BMZB+Utjheu12fFohpGmbj7j5c=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-399-IglZjujKNv2PHUsYpPNwsA-1; Tue, 05 Oct 2021 15:26:04 -0400
-X-MC-Unique: IglZjujKNv2PHUsYpPNwsA-1
-Received: by mail-ed1-f70.google.com with SMTP id
- r21-20020a50c015000000b003db1c08edd3so210586edb.15
- for <qemu-trivial@nongnu.org>; Tue, 05 Oct 2021 12:26:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mXq60-000088-Mq; Tue, 05 Oct 2021 15:27:24 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:38522)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mXq5z-0003bM-69; Tue, 05 Oct 2021 15:27:24 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id u18so939297wrg.5;
+ Tue, 05 Oct 2021 12:27:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=m5jk+QUI9u/Z1JVrt4UKSQOuZwKP9YZjAEm+eEYfjwY=;
- b=QjnnP4Sz0Muv7F7iznENzjqG2q9JniTnLb5PxD2QHoaCDbewgZt0j5UKZAiY/xdmfL
- DHsxwGfVX+7u32TwWhI7lDIyuSkdRB5BvaedX+JkVu1+1Kn1MSTFHPIRGThzFry9kp9F
- d9f5Fr62DoT8Ss0xwgaOx12V+B/lN6Cc9ko5Qd61S8anLV8+yfDEIQ1ivlMyq/dHrBNO
- C99CBZ/ZY/HEQsjK0X3IJSQcKXH3P7NTed/eGVXkBE0yvn5jtIAGIVza96lFINc3Bf8B
- 8+LsAnElKDpjlnF2xGej8fx+9PNzRq/kYdD8dUonicHrk8jr1w+3WdWDSbzVzrz7SEjM
- OmKg==
-X-Gm-Message-State: AOAM533ZtT9K4byo4/qF//rssH+7wKzFvAmkr4bo+5woSXA+VnDJACXj
- W4QXRaFojc5mBUF0+KckvSA8XHizbkMb8Fg5EtGMUP9zK6W1XrSB45tFa4zkYUWmaw+LZ2c9iB1
- KtgB0npB2T+0o+8M/Rg==
-X-Received: by 2002:a50:da4e:: with SMTP id a14mr28755695edk.154.1633461963120; 
- Tue, 05 Oct 2021 12:26:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyy9qC3RCXwkNsGPPGPBE5Y6TCM4vuvnsSSpCarlirzShuunnlxe+WgjrRSNJavsT+WZg2ACw==
-X-Received: by 2002:a50:da4e:: with SMTP id a14mr28755667edk.154.1633461962883; 
- Tue, 05 Oct 2021 12:26:02 -0700 (PDT)
-Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id jt24sm8282114ejb.59.2021.10.05.12.26.01
+ bh=gjGbZQFATwhF+BES3nhgMC8T008nZ3OInRqvg+24qlo=;
+ b=UrohL+upv4vlrkwkvaFauYBW9yeI+t5LBdA74nxK6EUFBjQFfxSjZESHmsOL9VLdQQ
+ m9syZF7vkkjdVm/nDeF/BYFoXmCpb1sMrewykOtb/hEFj29x4/Kg2VMLREKcpAHYTn1C
+ 74avyLnpMeYxn0pNnZD6ffe71lVglJSgko83XgSyKjJAD4Ycl3ysLSiNEOvqh6JIMZh/
+ FZhEHGg+lieSd4QLk3BGoHv3u/H2U2F2NQXLaiaqdIf+Bk4iYz0di7QqP8GemttuUgi5
+ KcMMNOVowG5GuyXgbmmPs6JVTYqcPZg8JClLX58HPyuXDSYm2+v1nlMlrscpSL7VcPMP
+ 9ngw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=gjGbZQFATwhF+BES3nhgMC8T008nZ3OInRqvg+24qlo=;
+ b=dLtERjkAPOiJ4NiCKSUMIQk/ZAZ2Zgh4Mx50HhwRqwe1HFxxcKX2vU59EcRDc+l0WZ
+ E71uUyRkSNHwRpCaiDaleIrZR6cTYPVENVyIJVJQ1g0qA/UOYAaro5stdJGiBku/tDNw
+ R6QOVAbEUu98Mj9afb6m425N6jB2JLQ1iidtguTIxC22ci3JgGijM62isLFLA7kGxFkb
+ jAnYLHmO9pEkMsXQ8Gcy1CTlDsqH1q2EO29L0hYhfG8vcKXilZHLkxLCt7ofAIxAA2by
+ LDfX6nnVwVUCtfUjJPaW0sfVOfeJcxodL4oZeJYDc0o9UMdn2B3BXKo99iJehmuvyBlZ
+ nqBw==
+X-Gm-Message-State: AOAM531QwisSDShiMib8RGedWLuyH9+c9R73MixVZuwDqETGpYvFYhwv
+ aiHFo9BABWkcZW7z6oEwXSg=
+X-Google-Smtp-Source: ABdhPJxGvGzHYlon9ExqeHoSmKdWMwW1h9D3Y2v58vJK0sc8Pe5g8O3IcFEmry7YN9RlXZA+NbsL0A==
+X-Received: by 2002:a1c:4484:: with SMTP id r126mr5381571wma.150.1633462041536; 
+ Tue, 05 Oct 2021 12:27:21 -0700 (PDT)
+Received: from [192.168.1.36] (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id p18sm7312497wrt.96.2021.10.05.12.27.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Oct 2021 12:26:02 -0700 (PDT)
-Message-ID: <a34e4f8a-36c5-4b87-52b0-f622a78b8d70@redhat.com>
-Date: Tue, 5 Oct 2021 21:26:01 +0200
+ Tue, 05 Oct 2021 12:27:20 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <79bc4067-1ed0-0b06-e847-2875c75ffb9f@amsat.org>
+Date: Tue, 5 Oct 2021 21:27:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.1.0
-Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Warner Losh <imp@bsdimp.com>
-References: <20210926220103.1721355-1-f4bug@amsat.org>
- <20210926220103.1721355-2-f4bug@amsat.org> <YVGUX6FZlFBhhgwn@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <YVGUX6FZlFBhhgwn@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v3] target/i386: Include 'hw/i386/apic.h' locally
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
+ qemu-trivial@nongnu.org, haxm-team@intel.com,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, Kamil Rytarowski <kamil@netbsd.org>,
+ Reinoud Zandijk <reinoud@netbsd.org>, Colin Xu <colin.xu@intel.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Wenchao Wang <wenchao.wang@intel.com>
+References: <20210929163124.2523413-1-f4bug@amsat.org>
+ <20211005105745-mutt-send-email-mst@kernel.org>
+ <fb4d7f19-8bb5-781d-4a41-9641625a2019@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <fb4d7f19-8bb5-781d-4a41-9641625a2019@vivier.eu>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.066,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,36 +91,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Oct 2021 19:26:11 -0000
+X-List-Received-Date: Tue, 05 Oct 2021 19:27:25 -0000
 
-On 27/09/21 11:52, Daniel P. Berrangé wrote:
->    bsd_user_ss.add(files('gdbstub.c'))
->    specific_ss.add_all(when: 'CONFIG_BSD_USER', if_true: bsd_user_ss)
+On 10/5/21 18:45, Laurent Vivier wrote:
+> Le 05/10/2021 à 16:57, Michael S. Tsirkin a écrit :
+>> On Wed, Sep 29, 2021 at 06:31:24PM +0200, Philippe Mathieu-Daudé wrote:
+>>> Instead of including a sysemu-specific header in "cpu.h"
+>>> (which is shared with user-mode emulations), include it
+>>> locally when required.
+>>>
+>>> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+>>
+>> which tree? trivial I guess?
 > 
-> 
-> So without this change, we're already correctly dropping bsd_user_ss
-> in its entirity, when not on BSD.
-> 
-> With this change, we're dropping some, but not all, of bsd_user_ss
-> files - gdbstub.c remains.
-> 
-> So this change on its own doesn't make a whole lot of sense.
+> Yes, but for me the patch was not correct because there is no need to update target/i386/cpu-dump.c
+> But perhaps I misunderstood the answer from Philippe?
 
-Agreed; that said, the gdbstub.c files added by
-
-   bsd_user_ss.add(files('gdbstub.c'))
-   linux_user_ss.add(files('gdbstub.c', 'thunk.c'))
-
-are unnecessary because there is already
-
-   specific_ss.add(files('cpu.c', 'disas.c', 'gdbstub.c'), capstone)
-
-So, with those two instances of gdbstub.c removed, both patches are
-
-   Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-
-Thanks,
-
-Paolo
-
+You understood correctly, this series requires a respin.
 
