@@ -1,65 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mXnaJ-0001j3-B8
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Oct 2021 12:46:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45744)
+	id 1mXpB1-0007Db-Eb
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Oct 2021 14:28:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mXnaH-0001cs-G8; Tue, 05 Oct 2021 12:46:29 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:48745)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mXnaF-0005Qh-87; Tue, 05 Oct 2021 12:46:29 -0400
-Received: from [192.168.100.1] ([82.142.3.114]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1Mgvan-1mzSpO3vO1-00hNKP; Tue, 05 Oct 2021 18:46:00 +0200
-Subject: Re: [PATCH v3] target/i386: Include 'hw/i386/apic.h' locally
-To: "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- Kamil Rytarowski <kamil@netbsd.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Reinoud Zandijk <reinoud@netbsd.org>, Colin Xu <colin.xu@intel.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, haxm-team@intel.com,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- Wenchao Wang <wenchao.wang@intel.com>
-References: <20210929163124.2523413-1-f4bug@amsat.org>
- <20211005105745-mutt-send-email-mst@kernel.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <fb4d7f19-8bb5-781d-4a41-9641625a2019@vivier.eu>
-Date: Tue, 5 Oct 2021 18:45:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1mXpAw-0007AH-P0
+ for qemu-trivial@nongnu.org; Tue, 05 Oct 2021 14:28:27 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:37788)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1mXpAr-0004eH-OS
+ for qemu-trivial@nongnu.org; Tue, 05 Oct 2021 14:28:24 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ j10-20020a1c230a000000b0030d523b6693so4106612wmj.2
+ for <qemu-trivial@nongnu.org>; Tue, 05 Oct 2021 11:28:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=balllrdYxCknSFzBJRCz5b43G8sYD6gnObCb987LYKk=;
+ b=Y9HUydSfwPN1DaeeypW2uHSD9STf2l98adUNp8658YLUp0mx6o9tyfHdd/cr1rx3wC
+ +FCM/6iKHTkAcrZGbFlrIsR+UY3cv+jqbpVsrC26WgdnTblRwWBQgNarQJ999fhL2rfv
+ kV7nVM2vNXOo828srFhqgpt0EsuBeabh2Q+UfrM/NM7ZdEj1W8Ri6LyqgauEsG75PsW1
+ foHh8qcKaA8jfuILJz+eplRASzNgPxA2evCM0VXa75SdaO8dyPNyPDqDO8TW5LBJRj3O
+ zULGHXslJVrvgsRLQLb+4s32O0aDuzqxecy1Do2T1iAzUGZZaWI2d4uJ+eF+DVUFGd+E
+ 0XrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=balllrdYxCknSFzBJRCz5b43G8sYD6gnObCb987LYKk=;
+ b=NaAvTF72lDPk0xhdd/TMzqEPJ/kbmqQ3ZqgLCy6v+M5kTiQtbgQdWXgtLZAWXsANwh
+ eqH8OW74+e8vjIt0azxm1gRJQxxW8j3XkPGyWulgmGAxDgGF/QjJ2nUjO/H3QibbeE9j
+ IpT52Eazz07c5Koiscmv2O7ZBX2IhMZJAifBH96nfTcSey/WHDUwQoNR6KLRhT6dRa8F
+ cDyaPaxklvALrc9flozH5GAR/jebFFdvE2j2StYTXgIx0iaEmrxdC0n8egMHVa+Dm14Y
+ qIpl3jcvzoLOKmf58+JenNHtom9cDVLB1GS3OiXAuGlgsvHU0fR47ZsNN5vE9Sku3tOs
+ EU0w==
+X-Gm-Message-State: AOAM532d8Lx8cGhOqb/PkJLB/1ma3t8q4ueRQCZS8hFTO72Ds8Gb3psS
+ 9pIzWCnpaLhvYJ7T9FGoUxAIAA==
+X-Google-Smtp-Source: ABdhPJyvFrYqpfxc7eOYVNhh73PAQokO2KHzRVkdY/0DxVQey1444GqukclexDdqPWur2iH4ZpgX1Q==
+X-Received: by 2002:a05:600c:3b26:: with SMTP id
+ m38mr5019999wms.176.1633458500175; 
+ Tue, 05 Oct 2021 11:28:20 -0700 (PDT)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id r19sm2482597wmp.43.2021.10.05.11.28.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 Oct 2021 11:28:19 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id A56CD1FF96;
+ Tue,  5 Oct 2021 19:28:18 +0100 (BST)
+References: <20210926220103.1721355-1-f4bug@amsat.org>
+ <20210926220103.1721355-2-f4bug@amsat.org>
+ <CAFEAcA_pRwZz=cK7=EjTsffhfhkXA-WvfecYWQ16sHYW+yQJBA@mail.gmail.com>
+ <CAAdtpL7DesxBWZkjZdrWtSVNuqzqthPR-MMdCCd4LMg+Rnudww@mail.gmail.com>
+User-agent: mu4e 1.7.0; emacs 28.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Kyle Evans <kevans@freebsd.org>, Richard
+ Henderson <richard.henderson@linaro.org>, Laurent Vivier
+ <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>, Warner Losh
+ <imp@bsdimp.com>, qemu-devel@nongnu.org
+Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
+Date: Tue, 05 Oct 2021 19:28:08 +0100
+In-reply-to: <CAAdtpL7DesxBWZkjZdrWtSVNuqzqthPR-MMdCCd4LMg+Rnudww@mail.gmail.com>
+Message-ID: <87a6jnfhrx.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20211005105745-mutt-send-email-mst@kernel.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Fh7x502ZHzeM5nANZSLh8iW+6H7qUav5X6hW2rcbV6n2x/xBD2n
- fJ0VhgdKzknLRvH9nRbWiDlENyC5aBF5LClx0+BxGkStOTk4p14lMWqllfm7nH7ENV4vlCM
- t21kN0/JGSSUrLRygLUhe4iuMHSM0V6L39PaVWIGpowwD/U1r2xswHNsZwZw1PsQGsG36mM
- q9VILcqmahY11V2EVabPQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gWfMJSm8NhA=:l8/Y6fPeHQhKTXxfljGzfy
- kfXtEKKsKERmRbhadleijE6MViu+Vb8h/NKiiuspdHiTdaS8MgATrnjDrmp1vnO/R73NOS8fM
- iwPoDrdeYYmxtcfgmRwsF9SywvRbiSAcBEvyl5LG3CYB7Y00txc0Zmllwy0FGTElTnB/58VfM
- 4QfsO4ObTp6RqxrrhQK1azbM6Ww0bXT0m/5i/ToP0olqxsqSbZ7cCcFWcO6fb6Nav2C6mz6sc
- GACG+U9oxj8WJOu2u7EGDgpBSfNqOAcAhyWitrm2JCZP2+7YdUoIk2ZsLdkVLzdtZ3N6RCeEF
- y5mkcub5jzfb4Rl58pz/FLC6OY3BcqfGEIXNYsy/V1F/3AgjgS8jLIlk/ycrM0Tfvm118AL11
- rV8W7BVIdwtPsDDdGBLic5i8fCO2KiILWCzPHhvw1lEXqWKzOsFoTidR2ps+TPBgz1nYLPAUH
- Akjhaj+ayoPpotWCUkO+MqfBz3WAMFcyiNe0r+8WBP1udntczc6hcpvsmF/aHSFu5ruQjnb0X
- tam6iOcpB4/p8rdOWOWDmSblT3gbNcaZlJMT1oiyZLUrLwdwss4zSaJl9xqE63X7X3roqFXfw
- xM6+jZ1Cxqyl48B/Hkl0OpT9VbCfnYN2WJztcx4Z5a04H0ahJFbJb4pf/LarWCYsR7t4GscOC
- xO9G/pjAVO+xuywbbqNFZLxNwwya3ZT4Ol74Rv3w0UhdL9MkeD2Ev6zZll3nKq0zw1LEdmcPN
- MgFmWZewAf5RQCzruI4DasNqB0Ag7jzZoCsk2A==
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,235 +88,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Oct 2021 16:46:29 -0000
+X-List-Received-Date: Tue, 05 Oct 2021 18:28:27 -0000
 
-Le 05/10/2021 à 16:57, Michael S. Tsirkin a écrit :
-> On Wed, Sep 29, 2021 at 06:31:24PM +0200, Philippe Mathieu-Daudé wrote:
->> Instead of including a sysemu-specific header in "cpu.h"
->> (which is shared with user-mode emulations), include it
->> locally when required.
+
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+
+> On Mon, Sep 27, 2021 at 11:15 AM Peter Maydell <peter.maydell@linaro.org>=
+ wrote:
+>> On Sun, 26 Sept 2021 at 23:04, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org> wrote:
+>> > Reported-by: Warner Losh <imp@bsdimp.com>
+>> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> > ---
+>> >  bsd-user/meson.build | 4 ++++
+>> >  1 file changed, 4 insertions(+)
+>> >
+>> > diff --git a/bsd-user/meson.build b/bsd-user/meson.build
+>> > index 03695493408..a7607e1c884 100644
+>> > --- a/bsd-user/meson.build
+>> > +++ b/bsd-user/meson.build
+>> > @@ -1,3 +1,7 @@
+>> > +if not config_host.has_key('CONFIG_BSD')
+>> > +  subdir_done()
+>> > +endif
+>> > +
+>> >  bsd_user_ss.add(files(
+>> >    'bsdload.c',
+>> >    'elfload.c',
 >>
->> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> 
-> Acked-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> which tree? trivial I guess?
-
-Yes, but for me the patch was not correct because there is no need to update target/i386/cpu-dump.c
-But perhaps I misunderstood the answer from Philippe?
-
-Thanks
-Laurent
-
-> 
->> ---
->>  target/i386/cpu.h                    | 4 ----
->>  hw/i386/kvmvapic.c                   | 1 +
->>  hw/i386/x86.c                        | 1 +
->>  target/i386/cpu-dump.c               | 1 +
->>  target/i386/cpu-sysemu.c             | 1 +
->>  target/i386/cpu.c                    | 1 +
->>  target/i386/gdbstub.c                | 4 ++++
->>  target/i386/hax/hax-all.c            | 1 +
->>  target/i386/helper.c                 | 1 +
->>  target/i386/hvf/hvf.c                | 1 +
->>  target/i386/hvf/x86_emu.c            | 1 +
->>  target/i386/nvmm/nvmm-all.c          | 1 +
->>  target/i386/tcg/sysemu/misc_helper.c | 1 +
->>  target/i386/tcg/sysemu/seg_helper.c  | 1 +
->>  target/i386/whpx/whpx-all.c          | 1 +
->>  15 files changed, 17 insertions(+), 4 deletions(-)
 >>
->> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
->> index c2954c71ea0..4411718bb7a 100644
->> --- a/target/i386/cpu.h
->> +++ b/target/i386/cpu.h
->> @@ -2045,10 +2045,6 @@ typedef X86CPU ArchCPU;
->>  #include "exec/cpu-all.h"
->>  #include "svm.h"
->>  
->> -#if !defined(CONFIG_USER_ONLY)
->> -#include "hw/i386/apic.h"
->> -#endif
->> -
->>  static inline void cpu_get_tb_cpu_state(CPUX86State *env, target_ulong *pc,
->>                                          target_ulong *cs_base, uint32_t *flags)
->>  {
->> diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
->> index 43f8a8f679e..7333818bdd1 100644
->> --- a/hw/i386/kvmvapic.c
->> +++ b/hw/i386/kvmvapic.c
->> @@ -16,6 +16,7 @@
->>  #include "sysemu/hw_accel.h"
->>  #include "sysemu/kvm.h"
->>  #include "sysemu/runstate.h"
->> +#include "hw/i386/apic.h"
->>  #include "hw/i386/apic_internal.h"
->>  #include "hw/sysbus.h"
->>  #include "hw/boards.h"
->> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
->> index 00448ed55aa..e0218f8791f 100644
->> --- a/hw/i386/x86.c
->> +++ b/hw/i386/x86.c
->> @@ -43,6 +43,7 @@
->>  #include "target/i386/cpu.h"
->>  #include "hw/i386/topology.h"
->>  #include "hw/i386/fw_cfg.h"
->> +#include "hw/i386/apic.h"
->>  #include "hw/intc/i8259.h"
->>  #include "hw/rtc/mc146818rtc.h"
->>  
->> diff --git a/target/i386/cpu-dump.c b/target/i386/cpu-dump.c
->> index 02b635a52cf..0158fd2bf28 100644
->> --- a/target/i386/cpu-dump.c
->> +++ b/target/i386/cpu-dump.c
->> @@ -22,6 +22,7 @@
->>  #include "qemu/qemu-print.h"
->>  #ifndef CONFIG_USER_ONLY
->>  #include "hw/i386/apic_internal.h"
->> +#include "hw/i386/apic.h"
->>  #endif
->>  
->>  /***********************************************************/
->> diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
->> index 37b7c562f53..4e8a6973d08 100644
->> --- a/target/i386/cpu-sysemu.c
->> +++ b/target/i386/cpu-sysemu.c
->> @@ -30,6 +30,7 @@
->>  #include "hw/qdev-properties.h"
->>  
->>  #include "exec/address-spaces.h"
->> +#include "hw/i386/apic.h"
->>  #include "hw/i386/apic_internal.h"
->>  
->>  #include "cpu-internal.h"
->> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
->> index 6b029f1bdf1..52422cbf21b 100644
->> --- a/target/i386/cpu.c
->> +++ b/target/i386/cpu.c
->> @@ -33,6 +33,7 @@
->>  #include "standard-headers/asm-x86/kvm_para.h"
->>  #include "hw/qdev-properties.h"
->>  #include "hw/i386/topology.h"
->> +#include "hw/i386/apic.h"
->>  #ifndef CONFIG_USER_ONLY
->>  #include "exec/address-spaces.h"
->>  #include "hw/boards.h"
->> diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
->> index 098a2ad15a9..5438229c1a9 100644
->> --- a/target/i386/gdbstub.c
->> +++ b/target/i386/gdbstub.c
->> @@ -21,6 +21,10 @@
->>  #include "cpu.h"
->>  #include "exec/gdbstub.h"
->>  
->> +#ifndef CONFIG_USER_ONLY
->> +#include "hw/i386/apic.h"
->> +#endif
->> +
->>  #ifdef TARGET_X86_64
->>  static const int gpr_map[16] = {
->>      R_EAX, R_EBX, R_ECX, R_EDX, R_ESI, R_EDI, R_EBP, R_ESP,
->> diff --git a/target/i386/hax/hax-all.c b/target/i386/hax/hax-all.c
->> index bf65ed6fa92..cd89e3233a9 100644
->> --- a/target/i386/hax/hax-all.c
->> +++ b/target/i386/hax/hax-all.c
->> @@ -32,6 +32,7 @@
->>  #include "sysemu/reset.h"
->>  #include "sysemu/runstate.h"
->>  #include "hw/boards.h"
->> +#include "hw/i386/apic.h"
->>  
->>  #include "hax-accel-ops.h"
->>  
->> diff --git a/target/i386/helper.c b/target/i386/helper.c
->> index 533b29cb91b..874beda98ae 100644
->> --- a/target/i386/helper.c
->> +++ b/target/i386/helper.c
->> @@ -26,6 +26,7 @@
->>  #ifndef CONFIG_USER_ONLY
->>  #include "sysemu/hw_accel.h"
->>  #include "monitor/monitor.h"
->> +#include "hw/i386/apic.h"
->>  #endif
->>  
->>  void cpu_sync_bndcs_hflags(CPUX86State *env)
->> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
->> index 4ba6e82fab3..50058a24f2a 100644
->> --- a/target/i386/hvf/hvf.c
->> +++ b/target/i386/hvf/hvf.c
->> @@ -70,6 +70,7 @@
->>  #include <sys/sysctl.h>
->>  
->>  #include "hw/i386/apic_internal.h"
->> +#include "hw/i386/apic.h"
->>  #include "qemu/main-loop.h"
->>  #include "qemu/accel.h"
->>  #include "target/i386/cpu.h"
->> diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c
->> index 7c8203b21fb..fb3e88959d4 100644
->> --- a/target/i386/hvf/x86_emu.c
->> +++ b/target/i386/hvf/x86_emu.c
->> @@ -45,6 +45,7 @@
->>  #include "x86_flags.h"
->>  #include "vmcs.h"
->>  #include "vmx.h"
->> +#include "hw/i386/apic.h"
->>  
->>  void hvf_handle_io(struct CPUState *cpu, uint16_t port, void *data,
->>                     int direction, int size, uint32_t count);
->> diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
->> index a488b00e909..944bdb49663 100644
->> --- a/target/i386/nvmm/nvmm-all.c
->> +++ b/target/i386/nvmm/nvmm-all.c
->> @@ -22,6 +22,7 @@
->>  #include "qemu/queue.h"
->>  #include "migration/blocker.h"
->>  #include "strings.h"
->> +#include "hw/i386/apic.h"
->>  
->>  #include "nvmm-accel-ops.h"
->>  
->> diff --git a/target/i386/tcg/sysemu/misc_helper.c b/target/i386/tcg/sysemu/misc_helper.c
->> index 9ccaa054c4c..b1d3096e9c9 100644
->> --- a/target/i386/tcg/sysemu/misc_helper.c
->> +++ b/target/i386/tcg/sysemu/misc_helper.c
->> @@ -24,6 +24,7 @@
->>  #include "exec/cpu_ldst.h"
->>  #include "exec/address-spaces.h"
->>  #include "tcg/helper-tcg.h"
->> +#include "hw/i386/apic.h"
->>  
->>  void helper_outb(CPUX86State *env, uint32_t port, uint32_t data)
->>  {
->> diff --git a/target/i386/tcg/sysemu/seg_helper.c b/target/i386/tcg/sysemu/seg_helper.c
->> index bf3444c26b0..34f2c65d47f 100644
->> --- a/target/i386/tcg/sysemu/seg_helper.c
->> +++ b/target/i386/tcg/sysemu/seg_helper.c
->> @@ -24,6 +24,7 @@
->>  #include "exec/cpu_ldst.h"
->>  #include "tcg/helper-tcg.h"
->>  #include "../seg_helper.h"
->> +#include "hw/i386/apic.h"
->>  
->>  #ifdef TARGET_X86_64
->>  void helper_syscall(CPUX86State *env, int next_eip_addend)
->> diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
->> index 3e925b9da70..9ab844fd05d 100644
->> --- a/target/i386/whpx/whpx-all.c
->> +++ b/target/i386/whpx/whpx-all.c
->> @@ -20,6 +20,7 @@
->>  #include "qemu/main-loop.h"
->>  #include "hw/boards.h"
->>  #include "hw/i386/ioapic.h"
->> +#include "hw/i386/apic.h"
->>  #include "hw/i386/apic_internal.h"
->>  #include "qemu/error-report.h"
->>  #include "qapi/error.h"
->> -- 
->> 2.31.1
-> 
-> 
+>> So, what's the reason for this change?
+>
+> https://lore.kernel.org/qemu-devel/CANCZdfprC16ezJQCWJmYEApX6eym9nxSOqAtB=
+AGr+cziS4r2qw@mail.gmail.com/
+>
+> linux-user/meson.build is evaluated on bsd, and bsd-user/meson.build on L=
+inux.
+>
+>> The commit messages and
+>> the cover letter don't really explain it. Is this fixing a bug
+>> (if so what?), a precaution to avoid possible future bugs,
+>> fixing a performance issue with how long meson takes to run (if
+>> so, how much effect does this have), or something else?
+>
+> I'll wait for feedback from Paolo, then work on the explanation.
 
+Ping Paolo?
+
+--=20
+Alex Benn=C3=A9e
 
