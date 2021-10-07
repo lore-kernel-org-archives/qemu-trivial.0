@@ -1,64 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mY00z-00029E-TK
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Oct 2021 02:02:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33120)
+	id 1mYPZG-000822-Q4
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Oct 2021 05:19:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34014)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mY00y-00027c-Fp; Wed, 06 Oct 2021 02:02:52 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:35053)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mYPZF-000802-Rj
+ for qemu-trivial@nongnu.org; Thu, 07 Oct 2021 05:19:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39992)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mY00w-0003F7-Sa; Wed, 06 Oct 2021 02:02:52 -0400
-Received: from [192.168.100.1] ([82.142.3.114]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MG90u-1mZ2jN21oi-00GV3T; Wed, 06 Oct 2021 08:02:25 +0200
-Subject: Re: [PATCH 1/2] bsd-user: Only process meson rules on BSD host
-To: Warner Losh <imp@bsdimp.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Kyle Evans <kevans@freebsd.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-References: <20210926220103.1721355-1-f4bug@amsat.org>
- <20210926220103.1721355-2-f4bug@amsat.org> <YVGUX6FZlFBhhgwn@redhat.com>
- <a34e4f8a-36c5-4b87-52b0-f622a78b8d70@redhat.com>
- <f38b33f2-57ff-da66-9d91-679ab5a821f7@vivier.eu>
- <CANCZdfqQMaaKQUP2+Kuq453bs5k6GvP3i1272uqwFhvyZHjf2A@mail.gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <55c1bfaf-4b0d-f433-6a72-46330006798b@vivier.eu>
-Date: Wed, 6 Oct 2021 08:02:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mYPZD-0004Bt-1F
+ for qemu-trivial@nongnu.org; Thu, 07 Oct 2021 05:19:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1633598393;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=D8cU27lq5klMAETnyUf7daQLc2+dsGARPgDFfJ3w2IQ=;
+ b=VZEQBGXaHXRuK+6I0HdZzOwm8rm2jPnObAD6gI8V3GPLzHwVvxYFS97TBDQjkgDfQ2shM2
+ UrQjvTrdVFtzP2w66mMV9Nd+P9j0jFmrAZLv5tZDNiQg4ruJBUygvY5JW/pu+7VtQ+B9Ya
+ XK+3a3gWTlsosLOGebSCHblMn8WD4ZM=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-529-zZTNPsSGNU2A-HZb-Lcj2w-1; Thu, 07 Oct 2021 05:19:52 -0400
+X-MC-Unique: zZTNPsSGNU2A-HZb-Lcj2w-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ k16-20020a5d6290000000b00160753b430fso4190967wru.11
+ for <qemu-trivial@nongnu.org>; Thu, 07 Oct 2021 02:19:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=D8cU27lq5klMAETnyUf7daQLc2+dsGARPgDFfJ3w2IQ=;
+ b=KJg9sGAaD/afmWOn3TVpIO/1FX8vLgItniQpm3b/dDufb8bdZYkpelpt0uf/CCeJFJ
+ WPWw7+v98GT8adKsTVmJJWoyOnsRtE2FYSsj2TGQREej6vQHHqLABtIPEJOUf3DeKB86
+ uRne2FVEBt6CiU+rNhiB3emLN4Yo/7/QV9+ZUt9OQJd4JXQSUFWW5DFodJnc4iy2VLRt
+ EDU2GvzvvvvExLF9gsIg/zH9UU0ccPlEIMxVdyPu0cN8JsSQSsg0Y8aUnnkJ8r7ra8Ng
+ lAv4jGWNCpAIHq6+fODlfQWxdVR5wnRGstx2JtdzugNGeRe/nKji0Zm3MFewzIGq9087
+ 52rA==
+X-Gm-Message-State: AOAM532Xn9tiSe/Muz5u7942hn4BcTmaBJo8CKCXWwvyhFxXOlchFfqG
+ F0abWMjeNorXKks6oc3ivncwE1JKkzAegeA5IA1AFZFZvfQgRq3QD0Fs06Rx4tIGdf5XMHrMGxz
+ vZI53y/yxim7S++Gpjw==
+X-Received: by 2002:a1c:19c4:: with SMTP id 187mr3338371wmz.149.1633598391351; 
+ Thu, 07 Oct 2021 02:19:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzkhWFwluJccazTpjGz54OjIEM9xAXrw1Z0CsIEsUEhxehwJlKPisTk8X34W7qzHgFxsjQ7wQ==
+X-Received: by 2002:a1c:19c4:: with SMTP id 187mr3338357wmz.149.1633598391174; 
+ Thu, 07 Oct 2021 02:19:51 -0700 (PDT)
+Received: from x1w.redhat.com (118.red-83-35-24.dynamicip.rima-tde.net.
+ [83.35.24.118])
+ by smtp.gmail.com with ESMTPSA id o1sm10435677wmq.26.2021.10.07.02.19.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Oct 2021 02:19:50 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] MAINTAINERS: Add myself as reviewer of the 'Memory API'
+Date: Thu,  7 Oct 2021 11:19:49 +0200
+Message-Id: <20211007091949.319404-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <CANCZdfqQMaaKQUP2+Kuq453bs5k6GvP3i1272uqwFhvyZHjf2A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:U2FgbbyG/Rqhwbk2iaurzU+7YmDVgCyUdF8DvjT/0b/EH1fXuiP
- AaXnkSVuzmrOxlajbIDmCsi9dM7mxwRvHnYphUVDVtpQ1Z/MrfQhKpG6n/0+ooaP8VER5z/
- oniwmIp/ieaY9q4hBvo1rJAIIBoDzzQK7HdQWQ34TGG85jsrYn0jgKyd74zml6mdtcE6Fz8
- lKSdXaO0RRYmb+TNayi4g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Swmo7+Qceqo=:Zem9wz1yV6LAO3hEn/244L
- cviRn7Pp3/DWVMrY74+U4OkDLs39peu59TJ+2pZgW7iWOMFQREUOMQKeMLJolgsDFvNskB/bT
- 6VRNjYk3uZFCyb2wqmOdcGXWpwWuRCXVfTxG8weg/A1kIlvn0iD+bvlw+NOIcCV0/F4HC/+HI
- kbHQZ/3RY6O6+2pd/mht392NxrhhIBz66EXCXt+jvWOPVduTvXsnD5BKspg7J84IQKTXcGcnR
- uApj1fDOhg/AQVJ8Vb3tAtWmaVqmsEmYhGtu2di4bQWk/pfl09YF47Uuqy2JBBQsk1i9KM3dn
- a4jjVYWNXz3wtC/a+hq/GgJPXwjy6xG6dNm5iC/L9qUB5lH8M+ew704fpEK9xZ8V7qbMGzt77
- sEwIeFnfovLRTtu1rDehfMedlxvauDq5d3/g2uphehX2gnkkbkjYKRrlon2p6OBgEmJOjw/zC
- Ez5i7AfiFybHGIc0TnR2Ek36p22lO7HlFcjAMqXgblRKv438jC38StFnU7ksfmxavGwvV3OQl
- DAUdppn63fJ2DItiGHwU8iUy99jkqkTfoz5+5LQWadhkOdw3Xl5Xxa8sz7heMR+7ukywm9A8L
- iUxZ64ldWzoLINe8ZncdGS90/YoZlDOZrxiPgTfl0L0wE5KvG/1Xx9qkZrc+cztQtTmspos+u
- SVV7tQQf34mvLTO7Ta9v/+ABu7a4MuI8Hxh3EBMLpsgNDZpSB7BML8A/gIi5fUtcC7Zi3S6/Z
- zpS39emMffn/vLUYfBI1sAmAcppBQLF+oD2V2w==
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,52 +86,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Oct 2021 06:02:52 -0000
+X-List-Received-Date: Thu, 07 Oct 2021 09:19:58 -0000
 
-Le 05/10/2021 à 22:46, Warner Losh a écrit :
-> 
-> 
-> On Tue, Oct 5, 2021 at 2:41 PM Laurent Vivier <laurent@vivier.eu <mailto:laurent@vivier.eu>> wrote:
-> 
->     Le 05/10/2021 à 21:26, Paolo Bonzini a écrit :
->     > On 27/09/21 11:52, Daniel P. Berrangé wrote:
->     >>    bsd_user_ss.add(files('gdbstub.c'))
->     >>    specific_ss.add_all(when: 'CONFIG_BSD_USER', if_true: bsd_user_ss)
->     >>
->     >>
->     >> So without this change, we're already correctly dropping bsd_user_ss
->     >> in its entirity, when not on BSD.
->     >>
->     >> With this change, we're dropping some, but not all, of bsd_user_ss
->     >> files - gdbstub.c remains.
->     >>
->     >> So this change on its own doesn't make a whole lot of sense.
->     >
->     > Agreed; that said, the gdbstub.c files added by
->     >
->     >   bsd_user_ss.add(files('gdbstub.c'))
->     >   linux_user_ss.add(files('gdbstub.c', 'thunk.c'))
->     >
->     > are unnecessary because there is already
->     >
->     >   specific_ss.add(files('cpu.c', 'disas.c', 'gdbstub.c'), capstone)
->     >
->     > So, with those two instances of gdbstub.c removed, both patches are
->     >
->     >   Acked-by: Paolo Bonzini <pbonzini@redhat.com <mailto:pbonzini@redhat.com>>
->     >
-> 
->     I can take them if a v2 is sent updated accordingly...
-> 
-> 
-> I'd planned on rolling them into the bsd-user patch set that I'd been working on
-> that is almost ready to go in (this is I think the only remaining issue with the patch
-> train, though I need to double check threads). I'd planned on doing that tomorrow,
-> but would be happy to coordinate with you since one of them does touch linux-user.
+Having developed interest with the Memory API,
+volunteer to review the patches.
 
-You can take both.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-Thanks,
-Laurent
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 50435b8d2f5..32b668e92fc 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2502,6 +2502,7 @@ Memory API
+ M: Paolo Bonzini <pbonzini@redhat.com>
+ M: Peter Xu <peterx@redhat.com>
+ M: David Hildenbrand <david@redhat.com>
++R: Philippe Mathieu-Daudé <philmd@redhat.com>
+ S: Supported
+ F: include/exec/ioport.h
+ F: include/exec/memop.h
+-- 
+2.31.1
 
 
