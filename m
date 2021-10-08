@@ -1,89 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mYPxZ-00048T-7v
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Oct 2021 05:45:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38162)
+	id 1mYpct-0000gi-9F
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Oct 2021 09:09:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40936)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mYPxY-00046Q-9U
- for qemu-trivial@nongnu.org; Thu, 07 Oct 2021 05:45:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:27596)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1mYPxW-0002lv-Lv
- for qemu-trivial@nongnu.org; Thu, 07 Oct 2021 05:45:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1633599901;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AJ+w+xZmuWyVT22Ibz0IJ05eFaWqMnSz+pdsdeo6N2o=;
- b=ZQYonlKJ1xGrQDwmHbAm0KZXEB3IEdRpk+zevZnRg11zXE61/4GU2P25zQf7YvRNr2NwyY
- w32ZdF012VmCaWEXe9e55RNXO5KTl8ik7XTM7ploQJPafIQEUfE1feuppPY6o2uXUMMwbP
- 8ttxrO0RXwE9zI8MfkTeN3FuRcjypYw=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-308-INgZvfGSNM6CJoq93_khNw-1; Thu, 07 Oct 2021 05:44:54 -0400
-X-MC-Unique: INgZvfGSNM6CJoq93_khNw-1
-Received: by mail-wr1-f69.google.com with SMTP id
- y12-20020a056000168c00b00160da4de2c7so1135862wrd.5
- for <qemu-trivial@nongnu.org>; Thu, 07 Oct 2021 02:44:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
+ id 1mYpcp-0000Zd-Op; Fri, 08 Oct 2021 09:09:23 -0400
+Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35]:42788)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
+ id 1mYpco-0002Rm-G6; Fri, 08 Oct 2021 09:09:23 -0400
+Received: by mail-io1-xd35.google.com with SMTP id 5so10641056iov.9;
+ Fri, 08 Oct 2021 06:09:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=vaXnxleU7OKVGJ65ZzcxDq+r9wVMDIOIXaHaLsMQFOc=;
+ b=q4xGLDzZ3ZKQMkiNrVWTkT5bWZkvUxtke00/pqP1q4TA/hlwHpRctpv0KAImoTrgUR
+ e4jrg9137vl5er0dkJF9ksfBuWo1OqY12Oum/IsXzIwU+tCFUVY6u4HVM7FWzv9zRmjD
+ bRUqRLkXM1j20P9HK1aQGyMX8FyzDnPlDP/IlicID1G1k2WcrsAs2x6opqrpNGMv4cPn
+ zo4Q5GVTRPdtUavUAPuJ+ur1loJ+VUwD+dU94+eVxojdtJvhVV0+wC/qRNzOgyhnpFh5
+ 6otn26DQtbl6zV7I/UikoQKTxV71mRzxgpBkmXX0t56feAgIUdYotUI4ii7YWK07JYNM
+ lLNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=AJ+w+xZmuWyVT22Ibz0IJ05eFaWqMnSz+pdsdeo6N2o=;
- b=WrMVwpd7moGJwzvmb194cQ+bdMZZT3LhWQu3gSMK345qVd5gNshDzbqTiMuwStQSkj
- vcosm/ZEGa+lcLLidaDnf6TaDEZAUrtCW/uUI59oyHqt0rjKFQmoSXFIUzkd4Cne5mzZ
- OfgL0TnrnEl1eLHWQNOzYsIxyMlPC3xyxY4H45d6nu37o67WcLo/mtGlmjKHfba/eKGT
- hRt4jQVr/Kip4pb0m6qzZ3SOz1OPWt+2ZQ3cw/RTEqUBaq3sRcBriGBDhudaqDfRdkH9
- VFKevEcuvSAJyaeMpQ+fzFGPXr460U8Xpj0yviE+yOwnV3xS752VzknDiY90Vol6Clfh
- e3KA==
-X-Gm-Message-State: AOAM533VWwzrBqM/3TBkelvZRyr+glDOUV/1nf8sh2HqTn6DvzM5HyML
- i4J3lHCNNFec2MLnlvNZflHpEQzWmqTD2GPqTOtvFiCCYWcrCxKipSpCYQcbC4VVjTWyloyv13O
- c9GDdF2txxKZZy17e8Q==
-X-Received: by 2002:a05:6000:15c9:: with SMTP id
- y9mr2349049wry.361.1633599892902; 
- Thu, 07 Oct 2021 02:44:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx/wgo5wFSWvtOIe54EYu22i1vDpzzxR/0q9lsC3WWwa1rSaekIViRPvoNxnNK6bk+DZLIqsg==
-X-Received: by 2002:a05:6000:15c9:: with SMTP id
- y9mr2349026wry.361.1633599892727; 
- Thu, 07 Oct 2021 02:44:52 -0700 (PDT)
-Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id v16sm1945569wrq.39.2021.10.07.02.44.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Oct 2021 02:44:52 -0700 (PDT)
-Message-ID: <0656624b-7d8d-dffa-a8af-91dee72952b1@redhat.com>
-Date: Thu, 7 Oct 2021 11:44:51 +0200
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=vaXnxleU7OKVGJ65ZzcxDq+r9wVMDIOIXaHaLsMQFOc=;
+ b=irdAN/1culp3m1xF+Mo4697L04QX2GxpI9bEcpZPIukxldbV33sHlYzQa+so9X9Raq
+ 9ujBs+cP36HHKLvg7iq8Cq0/D0SmcjZ5m2aHNBLAnwx8Pa5WCqUkrW0B0b0thqPbggZt
+ 0K40SM9V+4EIOyK2iYepnt77HtQGMMt0FCwJowwMSO4gOFG7wVhqePG16DlJfytRw/90
+ 4VY1vcbCEiDtuWYYetT18nuZR/FUogB5y+H9hz7V3YEaT/NDEvdHBqvrorLuweSadKdW
+ wzqEHKWKaoDljDmyeQJDMkH6sDDDU0DSi3I0/4CR9BsGzJNkyIm3SpnH+a+xInCGid67
+ 94RA==
+X-Gm-Message-State: AOAM531g+G6S/4+7XtyxWT1cHbDblkzGXaJ1hAlI5tsUsAqT5yKBSsWl
+ miWBMcKSsPCHQCOeQ84oq0SThzXgZTEc3wslWH8=
+X-Google-Smtp-Source: ABdhPJzOlEf64zDX+rS9UsoXIB+sRTuPSWtsVadT/8WMIaM8oj/XLrqAT7Lrr3QEs+juDaAo+39VGD+PWyxXlppx/MI=
+X-Received: by 2002:a05:6638:37a7:: with SMTP id
+ w39mr7743453jal.19.1633698560605; 
+ Fri, 08 Oct 2021 06:09:20 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH] MAINTAINERS: Add myself as reviewer of the 'Memory API'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>
-References: <20211007091949.319404-1-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20211007091949.319404-1-philmd@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.964, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20211007093108.323223-1-philmd@redhat.com>
+In-Reply-To: <20211007093108.323223-1-philmd@redhat.com>
+From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Date: Fri, 8 Oct 2021 16:09:09 +0300
+Message-ID: <CAC_L=vU-WH9qEbJN2B_4BSnCS=sUoN8eZk+iLY3hKzhPvpMDMw@mail.gmail.com>
+Subject: Re: [PATCH] MAINTAINERS: Add myself as reviewer of 'Machine core' API
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu devel list <qemu-devel@nongnu.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d35;
+ envelope-from=marcel.apfelbaum@gmail.com; helo=mail-io1-xd35.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,31 +72,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Oct 2021 09:45:04 -0000
+X-List-Received-Date: Fri, 08 Oct 2021 13:09:24 -0000
 
-On 07/10/21 11:19, Philippe Mathieu-Daudé wrote:
-> Having developed interest with the Memory API,
-> volunteer to review the patches.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Hi Philippe,
+
+On Thu, Oct 7, 2021 at 12:32 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> In order to help Eduardo and Marcel with the machine
+> core API, add myself as reviewer. That will also help
+> me to learn more about this subsystem :)
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->   MAINTAINERS | 1 +
->   1 file changed, 1 insertion(+)
-> 
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+>
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 50435b8d2f5..32b668e92fc 100644
+> index 50435b8d2f5..b0a7bf36aa4 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -2502,6 +2502,7 @@ Memory API
->   M: Paolo Bonzini <pbonzini@redhat.com>
->   M: Peter Xu <peterx@redhat.com>
->   M: David Hildenbrand <david@redhat.com>
-> +R: Philippe Mathieu-Daudé <philmd@redhat.com>
->   S: Supported
->   F: include/exec/ioport.h
->   F: include/exec/memop.h
-> 
+> @@ -1617,6 +1617,7 @@ F: pc-bios/bios-microvm.bin
+>  Machine core
+>  M: Eduardo Habkost <ehabkost@redhat.com>
+>  M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+> +R: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Queued, thanks.
+Reviewed by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Thanks,
+Marcel
 
+>  S: Supported
+>  F: cpu.c
+>  F: hw/core/cpu.c
+> --
+> 2.31.1
+>
 
