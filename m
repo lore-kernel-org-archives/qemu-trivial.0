@@ -1,69 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1maiyq-0004c1-F3
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Oct 2021 14:27:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37566)
+	id 1makHp-0008Gr-5z
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Oct 2021 15:51:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52482)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1maiyk-0004Xq-FR
- for qemu-trivial@nongnu.org; Wed, 13 Oct 2021 14:27:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50687)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1makHm-0008D1-I5; Wed, 13 Oct 2021 15:51:34 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:50440)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1maiyZ-0006rP-92
- for qemu-trivial@nongnu.org; Wed, 13 Oct 2021 14:27:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634149658;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=gY9Awd9YT7S8jY/EksDuIvrRzLXCwfr6jy62mTr8JGg=;
- b=bU7trSxFLiywMtskOuA1mZFDZ/36siTAgAk2kmg8beZSn+aWIZdmjayt1vlBSR06B8QYSK
- oBnb/PgtOYFoQm8hU7E5isBDuWJaQifjhTIhsFOLTGp0elEsX9B6dx8Dy60ExgsavTIjoz
- aJPp8JkORb5MSn2lDyGKEN0zpajnEYw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-549-schWPuU6Pyyuw3b6TUSS0A-1; Wed, 13 Oct 2021 14:27:35 -0400
-X-MC-Unique: schWPuU6Pyyuw3b6TUSS0A-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DBCB61808310;
- Wed, 13 Oct 2021 18:27:33 +0000 (UTC)
-Received: from eperezma.remote.csb (unknown [10.39.195.253])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D58395D6BA;
- Wed, 13 Oct 2021 18:27:31 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 1/1] util: Make some iova_tree parameters const
-Date: Wed, 13 Oct 2021 20:27:13 +0200
-Message-Id: <20211013182713.888753-2-eperezma@redhat.com>
-In-Reply-To: <20211013182713.888753-1-eperezma@redhat.com>
-References: <20211013182713.888753-1-eperezma@redhat.com>
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1makHk-0000NZ-3L; Wed, 13 Oct 2021 15:51:34 -0400
+Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 19DIIngm031065; 
+ Wed, 13 Oct 2021 15:51:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=AhIZK2lF1Hgd/knXBmKluOwsZBhcneoNR94AgCQVS38=;
+ b=q53xRlR6qmEkfcOK+iBGHdEf2dC23TTPK1GFqG5hLg84Oq+k5F32I3XlnAK7/P9f24cs
+ t/m1ZU01NUjsf34gqMSe17dQbKy4fwSqetruH5usWkJOLSxumIpdGJdGId+md+Q9Mame
+ 3mNwYDuOmtcp1KE5kXdvukb6vHYp+BhZFM1t5pM2UBNGukv2ZZXxRqIpUIwtg8W+YD9v
+ xGmDXWyf6ILHEs/fMHSE14/yVKlZTK7hGQlfAFezsCLXvsZCjNbr7+4+sw5xvquL/nhx
+ JWeEhXVb6cxoV6ZA/ozFur+wuCJQhw7AXqsD9LJ+XRLvVyiEmj5xHiMNxUSYbOmVmbdV /g== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3bnrnd3ek4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 13 Oct 2021 15:51:28 -0400
+Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 19DJlnJn029543;
+ Wed, 13 Oct 2021 15:51:28 -0400
+Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
+ [169.53.41.122])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3bnrnd3ejr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 13 Oct 2021 15:51:28 -0400
+Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
+ by ppma04dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 19DJfSpK030271;
+ Wed, 13 Oct 2021 19:51:27 GMT
+Received: from b01cxnp23032.gho.pok.ibm.com (b01cxnp23032.gho.pok.ibm.com
+ [9.57.198.27]) by ppma04dal.us.ibm.com with ESMTP id 3bkeq7vvt4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 13 Oct 2021 19:51:27 +0000
+Received: from b01ledav001.gho.pok.ibm.com (b01ledav001.gho.pok.ibm.com
+ [9.57.199.106])
+ by b01cxnp23032.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 19DJpQxn53608862
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 13 Oct 2021 19:51:26 GMT
+Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C3ED728058;
+ Wed, 13 Oct 2021 19:51:26 +0000 (GMT)
+Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id ACFA628059;
+ Wed, 13 Oct 2021 19:51:26 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav001.gho.pok.ibm.com (Postfix) with ESMTP;
+ Wed, 13 Oct 2021 19:51:26 +0000 (GMT)
+From: Stefan Berger <stefanb@linux.ibm.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, marcandre.lureau@redhat.com
+Cc: Stefan Berger <stefanb@linux.ibm.com>
+Subject: [PATCH] docs: tpm: Clarify command line parameters for vTPM migration
+ across network
+Date: Wed, 13 Oct 2021 15:51:22 -0400
+Message-Id: <20211013195122.3859734-1-stefanb@linux.ibm.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: YdJ1F0kDQAYhTZA_S9G45fP2t9GHAUIn
+X-Proofpoint-ORIG-GUID: UwrH7-F-0gaaeWLqfpBeRLjh_YfJgHhR
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
+ definitions=2021-10-13_07,2021-10-13_02,2020-04-07_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0
+ mlxlogscore=999 adultscore=0 spamscore=0 lowpriorityscore=0 bulkscore=0
+ mlxscore=0 suspectscore=0 phishscore=0 impostorscore=0 clxscore=1011
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2109230001 definitions=main-2110130116
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,122 +97,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Oct 2021 18:27:52 -0000
+X-List-Received-Date: Wed, 13 Oct 2021 19:51:34 -0000
 
-As qemu guidelines:
-Unless a pointer is used to modify the pointed-to storage, give it the
-"const" attribute.
+Clarify the command line parameters for vTPM migration acros the network
+fro the case of shared storage and non-shared storage.
 
-In the particular case of iova_tree_find it allows to enforce what is
-requested by its comment, since the compiler would shout in case of
-modifying or freeing the const-qualified returned pointer.
-
-Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
-Acked-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
 ---
- include/qemu/iova-tree.h |  8 ++++----
- hw/i386/intel_iommu.c    |  2 +-
- util/iova-tree.c         | 12 ++++++------
- 3 files changed, 11 insertions(+), 11 deletions(-)
+ docs/specs/tpm.rst | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
-index b66cf93c4b..8249edd764 100644
---- a/include/qemu/iova-tree.h
-+++ b/include/qemu/iova-tree.h
-@@ -59,7 +59,7 @@ IOVATree *iova_tree_new(void);
-  *
-  * Return: 0 if succeeded, or <0 if error.
-  */
--int iova_tree_insert(IOVATree *tree, DMAMap *map);
-+int iova_tree_insert(IOVATree *tree, const DMAMap *map);
+diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
+index 3be190343a..6c43a43bd9 100644
+--- a/docs/specs/tpm.rst
++++ b/docs/specs/tpm.rst
+@@ -482,7 +482,8 @@ VM migration across the network:
+  - QEMU command line parameters should be identical apart from the
+    '-incoming' option on the destination side
  
- /**
-  * iova_tree_remove:
-@@ -74,7 +74,7 @@ int iova_tree_insert(IOVATree *tree, DMAMap *map);
-  *
-  * Return: 0 if succeeded, or <0 if error.
-  */
--int iova_tree_remove(IOVATree *tree, DMAMap *map);
-+int iova_tree_remove(IOVATree *tree, const DMAMap *map);
+- - swtpm command line parameters should be identical
++ - swtpm command line parameters can be identical if storage is not
++   shared, and should be different for shared storage
  
- /**
-  * iova_tree_find:
-@@ -92,7 +92,7 @@ int iova_tree_remove(IOVATree *tree, DMAMap *map);
-  * user is responsible to make sure the pointer is valid (say, no
-  * concurrent deletion in progress).
-  */
--DMAMap *iova_tree_find(IOVATree *tree, DMAMap *map);
-+const DMAMap *iova_tree_find(const IOVATree *tree, const DMAMap *map);
- 
- /**
-  * iova_tree_find_address:
-@@ -105,7 +105,7 @@ DMAMap *iova_tree_find(IOVATree *tree, DMAMap *map);
-  *
-  * Return: same as iova_tree_find().
-  */
--DMAMap *iova_tree_find_address(IOVATree *tree, hwaddr iova);
-+const DMAMap *iova_tree_find_address(const IOVATree *tree, hwaddr iova);
- 
- /**
-  * iova_tree_foreach:
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 75f075547f..33a8af9191 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -1105,7 +1105,7 @@ static int vtd_page_walk_one(IOMMUTLBEvent *event, vtd_page_walk_info *info)
-         .translated_addr = entry->translated_addr,
-         .perm = entry->perm,
-     };
--    DMAMap *mapped = iova_tree_find(as->iova_tree, &target);
-+    const DMAMap *mapped = iova_tree_find(as->iova_tree, &target);
- 
-     if (event->type == IOMMU_NOTIFIER_UNMAP && !info->notify_unmap) {
-         trace_vtd_page_walk_one_skip_unmap(entry->iova, entry->addr_mask);
-diff --git a/util/iova-tree.c b/util/iova-tree.c
-index 7990692cbd..23ea35b7a4 100644
---- a/util/iova-tree.c
-+++ b/util/iova-tree.c
-@@ -42,14 +42,14 @@ IOVATree *iova_tree_new(void)
-     return iova_tree;
- }
- 
--DMAMap *iova_tree_find(IOVATree *tree, DMAMap *map)
-+const DMAMap *iova_tree_find(const IOVATree *tree, const DMAMap *map)
- {
-     return g_tree_lookup(tree->tree, map);
- }
- 
--DMAMap *iova_tree_find_address(IOVATree *tree, hwaddr iova)
-+const DMAMap *iova_tree_find_address(const IOVATree *tree, hwaddr iova)
- {
--    DMAMap map = { .iova = iova, .size = 0 };
-+    const DMAMap map = { .iova = iova, .size = 0 };
- 
-     return iova_tree_find(tree, &map);
- }
-@@ -60,7 +60,7 @@ static inline void iova_tree_insert_internal(GTree *gtree, DMAMap *range)
-     g_tree_insert(gtree, range, range);
- }
- 
--int iova_tree_insert(IOVATree *tree, DMAMap *map)
-+int iova_tree_insert(IOVATree *tree, const DMAMap *map)
- {
-     DMAMap *new;
- 
-@@ -96,9 +96,9 @@ void iova_tree_foreach(IOVATree *tree, iova_tree_iterator iterator)
-     g_tree_foreach(tree->tree, iova_tree_traverse, iterator);
- }
- 
--int iova_tree_remove(IOVATree *tree, DMAMap *map)
-+int iova_tree_remove(IOVATree *tree, const DMAMap *map)
- {
--    DMAMap *overlap;
-+    const DMAMap *overlap;
- 
-     while ((overlap = iova_tree_find(tree, map))) {
-         g_tree_remove(tree->tree, overlap);
+ VM Snapshotting:
+  - QEMU command line parameters should be identical
 -- 
-2.27.0
+2.31.1
 
 
