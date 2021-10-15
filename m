@@ -1,89 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mbHZ0-0000Wj-Lf
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Oct 2021 03:23:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40596)
+	id 1mbJXm-0003TD-Od
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Oct 2021 05:30:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1mbHYx-0000W3-9q
- for qemu-trivial@nongnu.org; Fri, 15 Oct 2021 03:23:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58226)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1mbJXb-0003P9-9p
+ for qemu-trivial@nongnu.org; Fri, 15 Oct 2021 05:30:19 -0400
+Received: from us-smtp-delivery-44.mimecast.com ([207.211.30.44]:32466)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1mbHYu-0000MT-RX
- for qemu-trivial@nongnu.org; Fri, 15 Oct 2021 03:23:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1634282605;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8w3hLQ3U0yuSbQTfOJUBp7nL8dLGwRx51haQLk5FUW0=;
- b=fCXxD87ESt3GyQfHEZHYuM6HU1X/Trw1zufu2P+VMSTegEIwjI6xz/o46YIjbkbhqku4NF
- yd3MOcjoqIAWSLpVh1cCMYFLp8ml1ZBmRO7SVUMJenCVnNmYm/7se/TalMmM5wgmHHhLZL
- 3+GYQcr5fVTu8uFv0w3vvZ/tYQUuO04=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-210-Iw1mn41UOgC5wuNuP3_8GQ-1; Fri, 15 Oct 2021 03:23:24 -0400
-X-MC-Unique: Iw1mn41UOgC5wuNuP3_8GQ-1
-Received: by mail-ed1-f69.google.com with SMTP id
- x5-20020a50f185000000b003db0f796903so7398162edl.18
- for <qemu-trivial@nongnu.org>; Fri, 15 Oct 2021 00:23:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=8w3hLQ3U0yuSbQTfOJUBp7nL8dLGwRx51haQLk5FUW0=;
- b=z0eo/0nljVzJgCRug6eMAbcNSC/eFaEXLOkKTYSHT4X10j6zERzFz+U2m07bHS2KrP
- /qtINix0GMwjImizGrz5WoGj4bvXu96NNJJR/iRhAmo6EerySjNyMSK/KSVguZvAFHlt
- W5ZLq/Tt7zu0c08TUEuSr0YpQGNWbX1TDwWH8KlPsQlQjAxbcL0F5JfnB/FqgQmGqHfV
- hZjxfmEmLpcdw9Jw7iSVnMMkzKREbwCTreEnIWQRO1sywwvo1g9Klqf8kjaQCzac05Tz
- opE/pWxKhr10OBZScq+N25hiuJQaKkpRC2sqocZdctMrN2RLY6Qiz5l1Y9hgMnOwIhbj
- yijw==
-X-Gm-Message-State: AOAM532SsPYOezdijOFK4OzRg8tjymKskIr63otINL3vFu0zqIqp9GNE
- j90APzbalIVAhr8PcQlreA3paBBkmmIO2Yh46+FOu2sUItnbls5XuYi8dsCDhHInH6grwnKEq5L
- jBC+7ESgzfnSEDVL0PA==
-X-Received: by 2002:a17:906:a3c4:: with SMTP id
- ca4mr4673981ejb.529.1634282603494; 
- Fri, 15 Oct 2021 00:23:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy7o+aog4/f6XryFDXyMtPqbjup/I/ghyzaMWYE5PQGQ9ikDAmpJ4BrKc8JJtsx9m0m5okTfw==
-X-Received: by 2002:a17:906:a3c4:: with SMTP id
- ca4mr4673957ejb.529.1634282603222; 
- Fri, 15 Oct 2021 00:23:23 -0700 (PDT)
-Received: from steredhat (host-79-34-250-211.business.telecomitalia.it.
- [79.34.250.211])
- by smtp.gmail.com with ESMTPSA id w8sm3879240edx.25.2021.10.15.00.23.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Oct 2021 00:23:22 -0700 (PDT)
-Date: Fri, 15 Oct 2021 09:23:20 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Luc Michel <lmichel@kalray.eu>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1mbJXZ-0004lu-Aq
+ for qemu-trivial@nongnu.org; Fri, 15 Oct 2021 05:30:14 -0400
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-319-FUM94JT3PJ-SbnupE7ElXg-1; Fri, 15 Oct 2021 05:30:03 -0400
+X-MC-Unique: FUM94JT3PJ-SbnupE7ElXg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 182D110A8E01;
+ Fri, 15 Oct 2021 09:30:02 +0000 (UTC)
+Received: from bahia.huguette (unknown [10.39.195.34])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7C79B10016F4;
+ Fri, 15 Oct 2021 09:29:45 +0000 (UTC)
+Subject: [PATCH] softmmu/physmem.c: Fix typo in comment
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  qemu-trivial@nongnu.org
-Subject: Re: [PATCH v2] hw/elf_ops.h: switch to ssize_t for elf loader return
- type
-Message-ID: <20211015072320.roy3er3g6uxa6hry@steredhat>
-References: <20211014194325.19917-1-lmichel@kalray.eu>
+Date: Fri, 15 Oct 2021 11:29:44 +0200
+Message-ID: <163429018454.1146856.3429437540871060739.stgit@bahia.huguette>
+User-Agent: StGit/0.23
 MIME-Version: 1.0
-In-Reply-To: <20211014194325.19917-1-lmichel@kalray.eu>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sgarzare@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=groug@kaod.org
 X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=sgarzare@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Mimecast-Originator: kaod.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: softfail client-ip=207.211.30.44; envelope-from=groug@kaod.org;
+ helo=us-smtp-delivery-44.mimecast.com
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, HEXHASH_WORD=1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,28 +60,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Oct 2021 07:23:31 -0000
+X-List-Received-Date: Fri, 15 Oct 2021 09:30:20 -0000
 
-On Thu, Oct 14, 2021 at 09:43:25PM +0200, Luc Michel wrote:
->Until now, int was used as the return type for all the ELF
->loader related functions. The returned value is the sum of all loaded
->program headers "MemSize" fields.
->
->Because of the overflow check in elf_ops.h, trying to load an ELF bigger
->than INT_MAX will fail. Switch to ssize_t to remove this limitation.
->
->Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->Signed-off-by: Luc Michel <lmichel@kalray.eu>
->---
->v2:
->  - Turn load_elf ret local variable to ssize_t [Stefano]
->  - Add Phil's R-B
->---
-> include/hw/elf_ops.h | 27 ++++++++++----------
-> include/hw/loader.h  | 60 ++++++++++++++++++++++----------------------
-> hw/core/loader.c     | 60 +++++++++++++++++++++++---------------------
-> 3 files changed, 75 insertions(+), 72 deletions(-)
+Fix the comment to match what the code is doing, as explained in
+the changelog of commit 86cf9e154632cb28d749db0ea47946fba8cf3f09
+that introduced the change:
 
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+    Commit 9458a9a1df1a4c719e24512394d548c1fc7abd22 added synchronization
+    of vCPU and migration operations through calling run_on_cpu operation.
+    However, in replay mode this synchronization is unneeded, because
+    I/O and vCPU threads are already synchronized.
+    This patch disables such synchronization for record/replay mode.
+
+
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ softmmu/physmem.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index f67ad2998121..555c907f6743 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -2633,7 +2633,7 @@ static void tcg_log_global_after_sync(MemoryListener =
+*listener)
+          * In record/replay mode this causes a deadlock, because
+          * run_on_cpu waits for rr mutex. Therefore no races are possible
+          * in this case and no need for making run_on_cpu when
+-         * record/replay is not enabled.
++         * record/replay is enabled.
+          */
+         cpuas =3D container_of(listener, CPUAddressSpace, tcg_as_listener)=
+;
+         run_on_cpu(cpuas->cpu, do_nothing, RUN_ON_CPU_NULL);
+
 
 
