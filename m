@@ -1,43 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcOV8-000435-Li
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Oct 2021 05:00:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40980)
+	id 1mcPvq-0006gx-6d
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Oct 2021 06:31:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
- id 1mcOUz-00041k-Cy; Mon, 18 Oct 2021 05:00:06 -0400
-Received: from mga09.intel.com ([134.134.136.24]:31409)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
- id 1mcOUu-0004MU-Ov; Mon, 18 Oct 2021 05:00:00 -0400
-X-IronPort-AV: E=McAfee;i="6200,9189,10140"; a="228084845"
-X-IronPort-AV: E=Sophos;i="5.85,381,1624345200"; d="scan'208";a="228084845"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Oct 2021 01:59:51 -0700
-X-IronPort-AV: E=Sophos;i="5.85,381,1624345200"; d="scan'208";a="443325876"
-Received: from unknown (HELO localhost.localdomain) ([10.239.13.19])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Oct 2021 01:59:49 -0700
-From: Zhang Chen <chen.zhang@intel.com>
-To: Xie Changlong <xiechanglong.d@gmail.com>,
- Wen Congyang <wencongyang2@huawei.com>, qemu-trivial@nongnu.org
-Cc: Zhang Chen <chen.zhang@intel.com>, qemu-dev <qemu-devel@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>, Lukas Straub <lukasstraub2@web.de>
-Subject: [PATCH] docs/block-replication.txt: Fix replication top-id command
- demo
-Date: Mon, 18 Oct 2021 16:50:44 +0800
-Message-Id: <20211018085044.2788276-1-chen.zhang@intel.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mcPvp-0006fJ-96; Mon, 18 Oct 2021 06:31:49 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:46883)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mcPvn-00076x-R1; Mon, 18 Oct 2021 06:31:49 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ l38-20020a05600c1d2600b0030d80c3667aso8047743wms.5; 
+ Mon, 18 Oct 2021 03:31:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=WG/Rk1Ctg/ci8FRuHetaosRMHsslP/YDyNl7bRleTUg=;
+ b=ds2pRLUhPL96L0F+tXp+8JPT3nLciH4COZ633zi4NwafqBI6Vcpbp8lgbMgV+1g5hd
+ /JLLTPKLF+zT4gBYfm0H5vdstUTuVD++LTKGSjdDhc0+CWfGa9L2YOCiI/vg+tOag14m
+ DGxW+rKMEn3O+DiugIIo5f+bWXrzx/xG4YJ5WPB6X+UWR4MRb9DQy6KGg9i767C7uziZ
+ yV3NJKp8q/mj5reIJywfxXUls1tuIiLyBy9PDJK8CCvmDFXtDVZlS/xrGdNodXY2YJML
+ snCZT1ACcD4mi6wQ4g42vxumDDwwbRV+BK3zUBM2Nl05WpXcO0dFZGvsFq+SjvsR75E0
+ HSYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=WG/Rk1Ctg/ci8FRuHetaosRMHsslP/YDyNl7bRleTUg=;
+ b=uZXLAk4ZqzHKGeUQSE8d+H60ni0QLTFj+eIJCrtUWeTWEo9ZBHo86CI5VyAH2Pcyud
+ VoO6IJEL2i3t3DTwc0dgEvu1WiUx4xpNKKj2xS8vO+WHcZ3FKTs1fHqJlNsmCh2OTkKF
+ CKllGgTfiDOd30SU4okETxvZqLVWN/rEWrUYMCYNmNyJblV1Nrxnk2VvdE7lCF1akZxH
+ d1hMw7qwVGkvn5gJC/rlNnly2sn93voHC28WQUrXHWEhXXZLskOeXyj6ZcPpXYAzF9WJ
+ FFvsVHmZIrj5s3RCbS7KgXAc96TDS0P3cuV0bzjM9xMWrBZpuKcNEb4dW4+Sm5BnZhOa
+ UROw==
+X-Gm-Message-State: AOAM533gvcRTV5WGJHJy/grQBZ/ub5KtP0MpZegx6KKlfu0SRUQRR8Xi
+ 82dJdjfKqJCXHUZqFzeCcZ4=
+X-Google-Smtp-Source: ABdhPJxZYhX4kfX091k0GtIIZI+FqHJmYXJIwqCKpGsxctNpeUsnGm8k1Ns6EVocYdAE8yYIW7vZTw==
+X-Received: by 2002:a1c:7918:: with SMTP id l24mr14979282wme.137.1634553105608; 
+ Mon, 18 Oct 2021 03:31:45 -0700 (PDT)
+Received: from [192.168.1.36] (213.red-81-36-146.dynamicip.rima-tde.net.
+ [81.36.146.213])
+ by smtp.gmail.com with ESMTPSA id m14sm1484941wms.25.2021.10.18.03.31.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 Oct 2021 03:31:45 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <9c8f7ca7-522b-522a-8fc9-cd5e8897cf2d@amsat.org>
+Date: Mon, 18 Oct 2021 12:31:44 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH 0/3] hw/nvram: Fix Memory Leaks in Xilinx eFUSE
+Content-Language: en-US
+To: Tong Ho <tong.ho@xilinx.com>, qemu-arm@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: alistair@alistair23.me, qemu-devel@nongnu.org, peter.maydell@linaro.org
+References: <20211015203532.2463705-1-tong.ho@xilinx.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20211015203532.2463705-1-tong.ho@xilinx.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=134.134.136.24; envelope-from=chen.zhang@intel.com;
- helo=mga09.intel.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -50,31 +84,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Oct 2021 09:00:08 -0000
+X-List-Received-Date: Mon, 18 Oct 2021 10:31:49 -0000
 
-This demo not correct, the original childs1 can't pass the
-the bdrv_is_root_node check in replcation_start().
-Keep consistent with docs/COLO-FT.txt
+Cc'ing qemu-trivial@
 
-Signed-off-by: Zhang Chen <chen.zhang@intel.com>
----
- docs/block-replication.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 10/15/21 22:35, Tong Ho wrote:
+> This series fixes memory leaks in Xilinx eFUSE devices for
+> the Versal and ZynqMP product families.
+> 
+> The leaks result from failing to free memory allocated
+> by object_get_canonical_path().
+> 
+> Tong Ho (3):
+>   hw/nvram: Fix Memory Leak in Xilinx eFuse QOM
+>   hw/nvram: Fix Memory Leak in Xilinx Versal eFuse device
+>   hw/nvram: Fix Memory Leak in Xilinx ZynqMP eFuse device
+> 
+>  hw/nvram/xlnx-efuse.c             |  9 ++++++---
+>  hw/nvram/xlnx-versal-efuse-ctrl.c | 20 +++++++++++++++-----
+>  hw/nvram/xlnx-zynqmp-efuse.c      | 18 ++++++++++++------
+>  3 files changed, 33 insertions(+), 14 deletions(-)
+> 
 
-diff --git a/docs/block-replication.txt b/docs/block-replication.txt
-index 108e9166a8..66ad540676 100644
---- a/docs/block-replication.txt
-+++ b/docs/block-replication.txt
-@@ -179,7 +179,7 @@ Primary:
- 
- Secondary:
-   -drive if=none,driver=raw,file.filename=1.raw,id=colo1 \
--  -drive if=none,id=childs1,driver=replication,mode=secondary,top-id=childs1
-+  -drive if=none,id=childs1,driver=replication,mode=secondary,top-id=top-disk1
-          file.file.filename=active_disk.qcow2,\
-          file.driver=qcow2,\
-          file.backing.file.filename=hidden_disk.qcow2,\
--- 
-2.25.1
+Series:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
