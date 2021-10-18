@@ -1,77 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcPvq-0006gx-6d
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Oct 2021 06:31:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34602)
+	id 1mcSxG-0006Yk-07
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Oct 2021 09:45:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mcPvp-0006fJ-96; Mon, 18 Oct 2021 06:31:49 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:46883)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mcPvn-00076x-R1; Mon, 18 Oct 2021 06:31:49 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- l38-20020a05600c1d2600b0030d80c3667aso8047743wms.5; 
- Mon, 18 Oct 2021 03:31:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=WG/Rk1Ctg/ci8FRuHetaosRMHsslP/YDyNl7bRleTUg=;
- b=ds2pRLUhPL96L0F+tXp+8JPT3nLciH4COZ633zi4NwafqBI6Vcpbp8lgbMgV+1g5hd
- /JLLTPKLF+zT4gBYfm0H5vdstUTuVD++LTKGSjdDhc0+CWfGa9L2YOCiI/vg+tOag14m
- DGxW+rKMEn3O+DiugIIo5f+bWXrzx/xG4YJ5WPB6X+UWR4MRb9DQy6KGg9i767C7uziZ
- yV3NJKp8q/mj5reIJywfxXUls1tuIiLyBy9PDJK8CCvmDFXtDVZlS/xrGdNodXY2YJML
- snCZT1ACcD4mi6wQ4g42vxumDDwwbRV+BK3zUBM2Nl05WpXcO0dFZGvsFq+SjvsR75E0
- HSYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=WG/Rk1Ctg/ci8FRuHetaosRMHsslP/YDyNl7bRleTUg=;
- b=uZXLAk4ZqzHKGeUQSE8d+H60ni0QLTFj+eIJCrtUWeTWEo9ZBHo86CI5VyAH2Pcyud
- VoO6IJEL2i3t3DTwc0dgEvu1WiUx4xpNKKj2xS8vO+WHcZ3FKTs1fHqJlNsmCh2OTkKF
- CKllGgTfiDOd30SU4okETxvZqLVWN/rEWrUYMCYNmNyJblV1Nrxnk2VvdE7lCF1akZxH
- d1hMw7qwVGkvn5gJC/rlNnly2sn93voHC28WQUrXHWEhXXZLskOeXyj6ZcPpXYAzF9WJ
- FFvsVHmZIrj5s3RCbS7KgXAc96TDS0P3cuV0bzjM9xMWrBZpuKcNEb4dW4+Sm5BnZhOa
- UROw==
-X-Gm-Message-State: AOAM533gvcRTV5WGJHJy/grQBZ/ub5KtP0MpZegx6KKlfu0SRUQRR8Xi
- 82dJdjfKqJCXHUZqFzeCcZ4=
-X-Google-Smtp-Source: ABdhPJxZYhX4kfX091k0GtIIZI+FqHJmYXJIwqCKpGsxctNpeUsnGm8k1Ns6EVocYdAE8yYIW7vZTw==
-X-Received: by 2002:a1c:7918:: with SMTP id l24mr14979282wme.137.1634553105608; 
- Mon, 18 Oct 2021 03:31:45 -0700 (PDT)
-Received: from [192.168.1.36] (213.red-81-36-146.dynamicip.rima-tde.net.
- [81.36.146.213])
- by smtp.gmail.com with ESMTPSA id m14sm1484941wms.25.2021.10.18.03.31.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Oct 2021 03:31:45 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <9c8f7ca7-522b-522a-8fc9-cd5e8897cf2d@amsat.org>
-Date: Mon, 18 Oct 2021 12:31:44 +0200
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1mcSxB-0006VQ-Dm
+ for qemu-trivial@nongnu.org; Mon, 18 Oct 2021 09:45:25 -0400
+Received: from us-smtp-delivery-44.mimecast.com ([205.139.111.44]:34466)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1mcSx9-0007jf-Ct
+ for qemu-trivial@nongnu.org; Mon, 18 Oct 2021 09:45:24 -0400
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-220-CyGRPhX_PfuRsHwvtGOs8w-1; Mon, 18 Oct 2021 09:45:11 -0400
+X-MC-Unique: CyGRPhX_PfuRsHwvtGOs8w-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 780989F92A;
+ Mon, 18 Oct 2021 13:45:10 +0000 (UTC)
+Received: from bahia.huguette (unknown [10.39.192.124])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F1867908B;
+ Mon, 18 Oct 2021 13:45:09 +0000 (UTC)
+Subject: [PATCH] README: Fix some documentation URLs
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Mon, 18 Oct 2021 15:45:08 +0200
+Message-ID: <163456470882.196333.17366490695504718038.stgit@bahia.huguette>
+User-Agent: StGit/0.23
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH 0/3] hw/nvram: Fix Memory Leaks in Xilinx eFUSE
-Content-Language: en-US
-To: Tong Ho <tong.ho@xilinx.com>, qemu-arm@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: alistair@alistair23.me, qemu-devel@nongnu.org, peter.maydell@linaro.org
-References: <20211015203532.2463705-1-tong.ho@xilinx.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211015203532.2463705-1-tong.ho@xilinx.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: kaod.org
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: softfail client-ip=205.139.111.44; envelope-from=groug@kaod.org;
+ helo=us-smtp-delivery-44.mimecast.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,29 +54,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Oct 2021 10:31:49 -0000
+X-List-Received-Date: Mon, 18 Oct 2021 13:45:26 -0000
 
-Cc'ing qemu-trivial@
+All of these pages live in the wiki, not in the main web site.
 
-On 10/15/21 22:35, Tong Ho wrote:
-> This series fixes memory leaks in Xilinx eFUSE devices for
-> the Versal and ZynqMP product families.
-> 
-> The leaks result from failing to free memory allocated
-> by object_get_canonical_path().
-> 
-> Tong Ho (3):
->   hw/nvram: Fix Memory Leak in Xilinx eFuse QOM
->   hw/nvram: Fix Memory Leak in Xilinx Versal eFuse device
->   hw/nvram: Fix Memory Leak in Xilinx ZynqMP eFuse device
-> 
->  hw/nvram/xlnx-efuse.c             |  9 ++++++---
->  hw/nvram/xlnx-versal-efuse-ctrl.c | 20 +++++++++++++++-----
->  hw/nvram/xlnx-zynqmp-efuse.c      | 18 ++++++++++++------
->  3 files changed, 33 insertions(+), 14 deletions(-)
-> 
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ README.rst |   14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-Series:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+diff --git a/README.rst b/README.rst
+index 79b19f1481e1..23795b837740 100644
+--- a/README.rst
++++ b/README.rst
+@@ -59,9 +59,9 @@ of other UNIX targets. The simple steps to build QEMU are=
+:
+=20
+ Additional information can also be found online via the QEMU website:
+=20
+-* `<https://qemu.org/Hosts/Linux>`_
+-* `<https://qemu.org/Hosts/Mac>`_
+-* `<https://qemu.org/Hosts/W32>`_
++* `<https://wiki.qemu.org/Hosts/Linux>`_
++* `<https://wiki.qemu.org/Hosts/Mac>`_
++* `<https://wiki.qemu.org/Hosts/W32>`_
+=20
+=20
+ Submitting patches
+@@ -84,8 +84,8 @@ the Developers Guide.
+ Additional information on submitting patches can be found online via
+ the QEMU website
+=20
+-* `<https://qemu.org/Contribute/SubmitAPatch>`_
+-* `<https://qemu.org/Contribute/TrivialPatches>`_
++* `<https://wiki.qemu.org/Contribute/SubmitAPatch>`_
++* `<https://wiki.qemu.org/Contribute/TrivialPatches>`_
+=20
+ The QEMU website is also maintained under source control.
+=20
+@@ -144,7 +144,7 @@ reported via GitLab.
+=20
+ For additional information on bug reporting consult:
+=20
+-* `<https://qemu.org/Contribute/ReportABug>`_
++* `<https://wiki.qemu.org/Contribute/ReportABug>`_
+=20
+=20
+ ChangeLog
+@@ -168,4 +168,4 @@ main methods being email and IRC
+ Information on additional methods of contacting the community can be
+ found online via the QEMU website:
+=20
+-* `<https://qemu.org/Contribute/StartHere>`_
++* `<https://wiki.qemu.org/Contribute/StartHere>`_
+
 
 
