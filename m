@@ -1,60 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mclGy-0001vH-91
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 05:19:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52898)
+	id 1mcmEy-0004DF-Hm
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 06:21:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mclGr-0001sb-Jp; Tue, 19 Oct 2021 05:18:57 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:44561)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1mcmEw-00047f-OB
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 06:21:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:40539)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mclGo-0005Bt-Mb; Tue, 19 Oct 2021 05:18:56 -0400
-Received: from [192.168.100.1] ([82.142.24.54]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MOQu6-1mLmsT2gmc-00PuAW; Tue, 19 Oct 2021 11:18:47 +0200
-Subject: Re: [PATCH v2 1/6] docs: rSTify the "TrivialPatches" wiki
-To: Kashyap Chamarthy <kchamart@redhat.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
- qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
-References: <20211019090344.3054300-1-kchamart@redhat.com>
- <20211019090344.3054300-2-kchamart@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <322f1d0e-e349-5554-9112-65a01f97c2e7@vivier.eu>
-Date: Tue, 19 Oct 2021 11:18:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1mcmEt-0005HI-6K
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 06:21:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1634638858;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2pbnPZY3+TFZq2TV6rE/MWm72YicZVMPUpuBSA+dHb4=;
+ b=ac3ULT7as7CFr/kreM/cvrHcyvrNg9aJ7y06/4P0btCgXI/x5UrO9yHX/0+tN7TCvsmTVv
+ 9FDK2gIj+Yl1mtZDedXPUYdvcwsV3BlmQQE59+sxzQ1k8lUJw4EGBC0Sib08z1CXtal2iy
+ YBBmafQLptBegvWNNoaQxauGIRnBXj0=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-540-lKsLlPbFOpmRianPmAG6wA-1; Tue, 19 Oct 2021 06:20:56 -0400
+X-MC-Unique: lKsLlPbFOpmRianPmAG6wA-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ u17-20020a50d511000000b003daa3828c13so17128946edi.12
+ for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 03:20:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=2pbnPZY3+TFZq2TV6rE/MWm72YicZVMPUpuBSA+dHb4=;
+ b=d6DpW+0TQicj/5DhQW6Mo3csf1m7eEWqMuq9NBTVNtuv60L5xbqSvzP9PL5/uB1aQw
+ MeCD0fjvmydibmSHkTXxWkfQ1U+99fDr/IVbHgYgu6Lc1qQZbYuGKWfNdh1vFPhlxlzq
+ mlxFJL2wLdnbrB2VdRHw1x0rxcZNAGE54WWjI0W2mc/8Wex87lOo9yHDOQ9nyFzjyJ0R
+ MXHOxY57LtZtYR7c0MCXjQEkoxuQHNTaxk69GL2f7/UUXvySL0xWN09Vp89uaLsrrPd8
+ lDHli8/I5QmC8ObS6c+0ft9HaZb7cvUxu2/Q9nE2iyJ9uBv9fmTbu0IozPzswQJ4crJj
+ HU+g==
+X-Gm-Message-State: AOAM531CgOOpeFa91v0Q0dc0mSieOBAiSHKUM08Pl4OpU4eNGvzSUJ3L
+ ZTea/4Eo2pLOZHO6wi8a/nseMpacQ0mAfB0kcNTgT3ANVmz8XHEARDW3TjyAAZUdfbwmdLekt5G
+ rAl4wCU36ow9hhiTSXg==
+X-Received: by 2002:a17:906:6403:: with SMTP id
+ d3mr35351441ejm.37.1634638854705; 
+ Tue, 19 Oct 2021 03:20:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw3g/ek8HXGczPn9NjWx61w4/u98iMOhx/+iKI46+h+QbKuGYJyFMh7FiYOz3hFPVj1GBhYkQ==
+X-Received: by 2002:a17:906:6403:: with SMTP id
+ d3mr35351431ejm.37.1634638854515; 
+ Tue, 19 Oct 2021 03:20:54 -0700 (PDT)
+Received: from ?IPV6:2001:b07:6468:f312:8e02:b072:96b1:56d0?
+ ([2001:b07:6468:f312:8e02:b072:96b1:56d0])
+ by smtp.gmail.com with ESMTPSA id di4sm11154000edb.34.2021.10.19.03.20.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 Oct 2021 03:20:54 -0700 (PDT)
+Message-ID: <164d5ec6-b29a-eb8a-9bce-3b690039522e@redhat.com>
+Date: Tue, 19 Oct 2021 12:20:53 +0200
 MIME-Version: 1.0
-In-Reply-To: <20211019090344.3054300-2-kchamart@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH] po: update turkish translation
+To: Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?O=c4=9fuz_Ersen?=
+ <oguzersen@protonmail.com>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+References: <lDpmNUjNrVETJ2QoHoYmSoRvKoEIVFbF4IZAa1R5PVzqPCTh7nmV_ERHQlgYtNJN1Ppagtvelbo4uhSihEd5bSqIxCvGQchEWVpP-ofn2kw=@protonmail.com>
+ <57904976-7779-7519-f1e4-f7e800c1145f@vivier.eu>
+From: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <57904976-7779-7519-f1e4-f7e800c1145f@vivier.eu>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/X/oyhsINLTlDke3wjMPCsiEHCXg5dsY/6qBkRtPQJHHpnUjwLa
- 6oFijZhX6UYjLg2BnI3rnqpq8t9YSAnFo3CsOocY1sPoIMBOb6NSRF+/2RvmnvMeCHcq13i
- a00HdVg7aWG12g3iwMhr6C8SmhrBfbaC2fTlsA+z8AgNGBSKLmmTRxwb123GVMA+6uh6WaW
- e6IgJNwN8u1DCSsYv2iig==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:uj5NJYqp52Y=:BGN7Ixtnj5VkypgMzVwiNy
- rY4QNOo+kqe+oQatGdmqmjDTfQAV2f2sPi22FcKqnKdit+ncAtXZo1Vkoaq7Tx39hrRNMn96Q
- 0JvMgEUsO5LEGlpwMxAt5/CJm4zKtmpohNONjqVcjrCDP1qj2yefsxkhQ9N2jPHiEa1bOY964
- KkjwdCeSO3jO+QkHEfrfOpN0zaXHbxLxXrtH5u7OY4pkLAx3ymXRulg808HMasCsyeRTBuWRn
- dkWKAyvUmPJeU7bO3tHif1HYks6y+UhTwR0nICArO6lCEN7CmR1EcbDN3maFE8ivvDgxYy39p
- BsZzSwxoUzVvM3AOaIZX4fcOGuY0blblQwWp/b3gaRMq4EcgQ0oSR35/t588Jj+FHUkjru2yr
- Ny+JlS8cixrfx472LmEChENrS9r3qycJobxlL5Ytru21Lonprs72dmyJ/mD6vVZnfFrl7irVT
- /eqI3SdrJSIYaYLlE+JC9Wp5/4S6Rlj2VLVFk4c01uTzXY/GBO27NXTwD16wpU2wJw7uV7IKS
- iqhPEJOK0v34NT/NTe5z8OKdfD0hQIgbyTMvwywbhjZrTVOLck4NidqCfHZeCJPVqBhePOhe0
- kj+eJb7cVXlemXVf1uB4/Qif614ylybHUUp+XqeR+xoJgiRAI9jhVWWRCvWHIhX619yXhpYe5
- VQCCcvRyv+ptoUaHpM512vQrSAYh/th++vNO+mllX43LBu/SPs6PTJU8XzQmn4q+TEJSmzSAK
- 4hbxI5FBmfaEVxUQd53ld0fAGdq5u1gFIPR/Mg==
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,92 +97,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 09:18:57 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 10:21:03 -0000
 
-Le 19/10/2021 à 11:03, Kashyap Chamarthy a écrit :
-> The original wiki is here[1].  I converted by copying the wiki source
-> into a .wiki file and convert to rST using `pandoc`:
+On 23/09/21 17:26, Laurent Vivier wrote:
+> Le 15/08/2021 à 22:24, Oğuz Ersen a écrit :
+>> Hi, this is a small patch to update Turkish translation, thanks.
+>>
+> Please don't send patch as an attachment, use "git send-email" or "git publish" if you can.
 > 
->         $ pandoc -f Mediawiki -t rst trivial-patches.wiki -o trivial-patches.rst
+> https://wiki.qemu.org/Contribute/SubmitAPatch#Do_not_send_as_an_attachment
 > 
-> Update the active maintainer names to reflect current reality.
+> With the help of Google Translate:
 > 
-> [1] https://wiki.qemu.org/Contribute/TrivialPatches
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 > 
-> Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
-> ---
-> I've only retained Laurent's name as per Philip's review here:
-> https://lists.nongnu.org/archive/html/qemu-devel/2021-09/msg05624.html
+> There is a typo that can be fixed during merge:
+> 
+>>   msgid "_Copy"
+>> -msgstr ""
+>> +msgstr "K_opyala"
+> 
+> s/K_opyala/_Kopyala/
 
-Thank you Kashyap.
+This was intentional, because "K" was already used by the translation 
+for "Show Tabs" ("Se_kmeleri Göster").  However, it is possible to keep 
+"_Kopyala" if you modify "Show Tabs" instead:
 
-so you should also remove Michael's repo (corpit.ru).
+diff --git a/po/tr.po b/po/tr.po
+index 2845f3779c..f4f0425c43 100644
+--- a/po/tr.po
++++ b/po/tr.po
+@@ -61,7 +61,7 @@ msgid "_Grab Input"
+  msgstr "Girdiyi _Yakala"
 
-Thanks,
-Laurent
+  msgid "Show _Tabs"
+-msgstr "Se_kmeleri Göster"
++msgstr "_Sekmeleri Göster"
 
-> ---
->  docs/devel/trivial-patches.rst | 51 ++++++++++++++++++++++++++++++++++
->  1 file changed, 51 insertions(+)
->  create mode 100644 docs/devel/trivial-patches.rst
-> 
-> diff --git a/docs/devel/trivial-patches.rst b/docs/devel/trivial-patches.rst
-> new file mode 100644
-> index 0000000000..7df0f901f5
-> --- /dev/null
-> +++ b/docs/devel/trivial-patches.rst
-> @@ -0,0 +1,51 @@
-> +Trivial Patches
-> +===============
-> +
-> +Overview
-> +--------
-> +
-> +Trivial patches that change just a few lines of code sometimes languish
-> +on the mailing list even though they require only a small amount of
-> +review. This is often the case for patches that do not fall under an
-> +actively maintained subsystem and therefore fall through the cracks.
-> +
-> +The trivial patches team take on the task of reviewing and building pull
-> +requests for patches that:
-> +
-> +- Do not fall under an actively maintained subsystem.
-> +- Are single patches or short series (max 2-4 patches).
-> +- Only touch a few lines of code.
-> +
-> +**You should hint that your patch is a candidate by CCing
-> +qemu-trivial@nongnu.org.**
-> +
-> +Repositories
-> +------------
-> +
-> +Since the trivial patch team rotates maintainership there is only one
-> +active repository at a time:
-> +
-> +- git://git.corpit.ru/qemu.git trivial-patches - `browse <http://git.corpit.ru/?p=qemu.git;a=shortlog;h=refs/heads/trivial-patches>`__
-> +- git://github.com/vivier/qemu.git trivial-patches - `browse <https://github.com/vivier/qemu/tree/trivial-patches>`__
-> +
-> +Workflow
-> +--------
-> +
-> +The trivial patches team rotates the duty of collecting trivial patches
-> +amongst its members. A team member's job is to:
-> +
-> +1. Identify trivial patches on the development mailing list.
-> +2. Review trivial patches, merge them into a git tree, and reply to state
-> +   that the patch is queued.
-> +3. Send pull requests to the development mailing list once a week.
-> +
-> +A single team member can be on duty as long as they like. The suggested
-> +time is 1 week before handing off to the next member.
-> +
-> +Team
-> +----
-> +
-> +If you would like to join the trivial patches team, contact Laurent
-> +Vivier. The current team includes:
-> +
-> +- `Laurent Vivier <mailto:laurent@vivier.eu>`__
-> 
+  msgid "Detach Tab"
+  msgstr "Sekmeyi Ayır"
+
+
+Can you squash this in the commit in your trivial-patches branch?
+
+Paolo
 
 
