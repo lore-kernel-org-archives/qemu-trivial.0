@@ -1,64 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcsFE-0000Qn-8C
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 12:45:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45938)
+	id 1mcsFR-0000ds-9h
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 12:45:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsF1-0000Il-BE
- for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:31 -0400
-Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e]:45722)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEw-0000Bw-5p
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:26 -0400
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:36602)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEq-0000OE-Aw
- for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:30 -0400
-Received: by mail-il1-x12e.google.com with SMTP id i6so1834767ila.12
- for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 09:45:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEj-0000HE-EI
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:24 -0400
+Received: by mail-io1-xd34.google.com with SMTP id e144so21146635iof.3
+ for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 09:45:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qKieTplX001DlDmVejwLqaD5XvOKcD6CG4SPfQbfG6E=;
- b=wo6hNFMJjIqJ0JmYZ/PBZcPDC/yYKXot5f+ltJwA5Wxv1AsQ7U7IKBB8yeIALeSw3o
- x3506neGEEeHjdordw3eBEnKk0nwBeHi0mPigvhtGVyKF+6f5XQI44ndXVgg1t5+vQEU
- r1coXPLo4OlMvdOAQtMtSa6CAPyHe0vb9qyS64gpgP2c8oRkF+8eoAILS+nu+0DYzl6E
- ljIdCxlsT0DeIqBMEZa/DGmVCQJCToxWuPUcI/equ4L11Z6XNEjGPuMlpcFcTg3JZp+/
- iK08VrObMVovtwa+9YQfF5625e6kYCVpE+yax/MmuaR58tRDpYuM6aKSN94F0g/XMWnV
- d1Lw==
+ bh=NAOR1xdlj+WVz0/eC/F+PLm/lzyts9sAm9QAoPvWdyM=;
+ b=UmfUbmTN/kWpXarVj+lgqIYHQFjgTVhZDp8yCriXUny78jIUjxW7n6SRXhOn6g6ytQ
+ DnYrge95kExwb7A6lN2vU6IB+TAEevPY/aDzk/OneW5mexnaZflWzHlHfkF5P1AiInaJ
+ I2QeridW7ZDFcBEWuOvYcyAWqrZ31/+7PF+LQ5S3IWkbcte+2fA+HD6/RGgJmlgwG5Gd
+ HcU+pMHdWGzkPB/jrq04wxnxGWC2+3SJmDBjBzPx9wG2uSGb0SHv0W9kqiM4pFvq5fxb
+ 4XpHDjakc3/CxccMUwpwoWw8aSUfUY3rfDOt9RFujln4CY+67ECnqpybxlf7st6YZDCx
+ VOzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qKieTplX001DlDmVejwLqaD5XvOKcD6CG4SPfQbfG6E=;
- b=dysP6ajtFBTTdIKNHXHDGZpe13w0WzsyBFnTlDkC9wkTIq5mezBN/Mcp1iVTlUn95Q
- BvC+w9PTeMs55m9XtAg28RoLOpU/BRr3hsQLdMRsIgmKGAvo26do2BPAc0T4ot5Vagf5
- O0aqzrtBsf/oxk1mXr2rNkTIYA6itQOSDOnPjmRjkDbsWF8iSc+YVHrLDyAPIQGOg3bc
- zzI3SqRJH+oNlj82pJ9btte0fGyK7LOAJ70YSC5vQkQC4PBSb+vFxaLncZAvAoxh3J7x
- jdYssEG6x35Y6+WAmHLJbr9PX9cBJEwxVKNjTLCrZFnx1GoMgVPd5cuPz8GZOmnIJCOP
- wsuA==
-X-Gm-Message-State: AOAM533Vk1YxYmuqlr3my03rIxmJ7xy7MYH0cAPrrXbAMpYxs6BoJddp
- ISDY6Qpz5TavHownWXhIJmpfPA==
-X-Google-Smtp-Source: ABdhPJyUSXtH3JHmSFLU5EZDdacivs8SJPNH7V9lmO4EAVlXXhbY4m3RLwOzYqshEaFRKUezhNE5CA==
-X-Received: by 2002:a92:c7a1:: with SMTP id f1mr17646486ilk.263.1634661918807; 
- Tue, 19 Oct 2021 09:45:18 -0700 (PDT)
+ bh=NAOR1xdlj+WVz0/eC/F+PLm/lzyts9sAm9QAoPvWdyM=;
+ b=TP7TRT8gC3npqmaixuakN25W2v0Bt/9hkJih6Z111UrvFEWXQEf9QFgJluSd8Q4zdU
+ iuGoUaRn4PnTGeTR/EC1AYgn6mBSjkjXDhfe8UMvd3NnBK9JjlCRhJG7TLlmxnxo2Qiq
+ sq0mgTxuIbG9/1lzWjBRlcsdt+BND6X6ZfGUkjkaezGJzXyw9s8l+czuBES15ZjsqqBo
+ fTvD7yifigMU6PX+RMROh1kwtQ926xD+c1Bu59K4xAMMH4H6ewqaNizPx3gWO3IC2APi
+ CYu0TRK+7oYYJEI2rZ1gu9CpMAtspy/ddMmnWNjGrzmpiqhVLPHnJSPZ3xcePxu0btat
+ j7vw==
+X-Gm-Message-State: AOAM533LDs7fzYUpH7xAOmhX790nDJ5VB7tsG+EoXp120VSKjj3okBV4
+ iBQsBPbYe5RLRnpS5b6SJPKICQ==
+X-Google-Smtp-Source: ABdhPJwdOgj3ldNBvNQKiV8FTNhaGdD8q3y0izLOb8laN3RIjsiRpcgB47nJG+vZ9mwGafsi2MKwuA==
+X-Received: by 2002:a05:6602:2b8f:: with SMTP id
+ r15mr19697380iov.93.1634661912360; 
+ Tue, 19 Oct 2021 09:45:12 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id q7sm1133951ilv.48.2021.10.19.09.45.18
+ by smtp.gmail.com with ESMTPSA id q7sm1133951ilv.48.2021.10.19.09.45.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Oct 2021 09:45:18 -0700 (PDT)
+ Tue, 19 Oct 2021 09:45:11 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
- Michael Tokarev <mjt@tls.msk.ru>, Stacey Son <sson@FreeBSD.org>
-Subject: [PATCH 12/24] bsd-user/arm/target_arch_sigtramp.h: Signal Trampoline
- for arm
-Date: Tue, 19 Oct 2021 10:44:35 -0600
-Message-Id: <20211019164447.16359-13-imp@bsdimp.com>
+ Michael Tokarev <mjt@tls.msk.ru>, Sean Bruno <sbruno@FreeBSD.org>,
+ Stacey Son <sson@FreeBSD.org>
+Subject: [PATCH 06/24] bsd-user/arm/target_arch_cpu.h: Dummy target_cpu_loop
+ implementation
+Date: Tue, 19 Oct 2021 10:44:29 -0600
+Message-Id: <20211019164447.16359-7-imp@bsdimp.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20211019164447.16359-1-imp@bsdimp.com>
 References: <20211019164447.16359-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::12e;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x12e.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d34;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd34.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -77,76 +79,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 16:45:33 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 16:45:26 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 16:45:26 -0000
 
-Copy of the signal trampoline code for arm, as well as setup_sigtramp to
-write it to the stack.
+Add a boiler plate CPU loop that does nothing except return an error for
+all traps.
 
+Signed-off-by: Sean Bruno <sbruno@FreeBSD.org>
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 ---
- bsd-user/arm/target_arch_sigtramp.h | 52 +++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_sigtramp.h
+ bsd-user/arm/target_arch_cpu.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/bsd-user/arm/target_arch_sigtramp.h b/bsd-user/arm/target_arch_sigtramp.h
-new file mode 100644
-index 0000000000..ed53d336ed
---- /dev/null
-+++ b/bsd-user/arm/target_arch_sigtramp.h
-@@ -0,0 +1,52 @@
-+/*
-+ *  arm sysarch() system call emulation
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef _TARGET_ARCH_SIGTRAMP_H_
-+#define _TARGET_ARCH_SIGTRAMP_H_
-+
-+/* Compare to arm/arm/locore.S ENTRY_NP(sigcode) */
-+static inline abi_long setup_sigtramp(abi_ulong offset, unsigned sigf_uc,
-+        unsigned sys_sigreturn)
+diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
+index c71ec000b3..94c9109c3f 100644
+--- a/bsd-user/arm/target_arch_cpu.h
++++ b/bsd-user/arm/target_arch_cpu.h
+@@ -35,6 +35,28 @@ static inline void target_cpu_init(CPUARMState *env,
+     }
+ }
+ 
++static inline void target_cpu_loop(CPUARMState *env)
 +{
-+    int i;
-+    uint32_t sys_exit = TARGET_FREEBSD_NR_exit;
-+    /*
-+     * The code has to load r7 manually rather than using
-+     * "ldr r7, =SYS_return to make sure the size of the
-+     * code is correct.
-+     */
-+    uint32_t sigtramp_code[] = {
-+    /* 1 */ 0xE1A0000D,                  /* mov r0, sp */
-+    /* 2 */ 0xE2800000 + sigf_uc,        /* add r0, r0, #SIGF_UC */
-+    /* 3 */ 0xE59F700C,                  /* ldr r7, [pc, #12] */
-+    /* 4 */ 0xEF000000 + sys_sigreturn,  /* swi (SYS_sigreturn) */
-+    /* 5 */ 0xE59F7008,                  /* ldr r7, [pc, #8] */
-+    /* 6 */ 0xEF000000 + sys_exit,       /* swi (SYS_exit)*/
-+    /* 7 */ 0xEAFFFFFA,                  /* b . -16 */
-+    /* 8 */ sys_sigreturn,
-+    /* 9 */ sys_exit
-+    };
++    int trapnr;
++    target_siginfo_t info;
++    CPUState *cs = env_cpu(env);
 +
-+    for (i = 0; i < 9; i++) {
-+        tswap32s(&sigtramp_code[i]);
-+    }
-+
-+    return memcpy_to_target(offset, sigtramp_code, TARGET_SZSIGCODE);
++    for (;;) {
++        cpu_exec_start(cs);
++        trapnr = cpu_exec(cs);
++        cpu_exec_end(cs);
++        process_queued_cpu_work(cs);
++        switch (trapnr) {
++        default:
++            fprintf(stderr, "qemu: unhandled CPU exception 0x%x - aborting\n",
++                    trapnr);
++            cpu_dump_state(cs, stderr, 0);
++            abort();
++        } /* switch() */
++        process_pending_signals(env);
++    } /* for (;;) */
 +}
-+#endif /* _TARGET_ARCH_SIGTRAMP_H_ */
++
+ static inline void target_cpu_clone_regs(CPUARMState *env, target_ulong newsp)
+ {
+     if (newsp) {
 -- 
 2.32.0
 
