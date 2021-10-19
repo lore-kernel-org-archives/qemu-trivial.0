@@ -1,70 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcsEi-0008KI-2W
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 12:45:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45574)
+	id 1mcsEj-0008M2-Eg
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 12:45:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEh-0008I9-41
- for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:11 -0400
-Received: from mail-io1-xd2e.google.com ([2607:f8b0:4864:20::d2e]:35485)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEe-0000B2-93
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEg-0008Hg-TS
  for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:10 -0400
-Received: by mail-io1-xd2e.google.com with SMTP id h196so21163475iof.2
- for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 09:45:07 -0700 (PDT)
+Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30]:41502)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEb-00008a-W4
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:10 -0400
+Received: by mail-io1-xd30.google.com with SMTP id b188so16221707iof.8
+ for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 09:45:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=A0UUskACfV2zCuBONtYOvwkg8JEg6xz8QNgav6wf0dw=;
- b=pjl7hvfSTkv+8GXaH66+yD6m0n8QUBIJTiOBJORyk1Gf0UpDkF6s5nxPjp9TvOn3gx
- MxYNjurTEe+WxiHuNLTkiW9MAAhNlYL+XG6OeZegQdFYoBwPUjQzDOvc+CCiveB3FO00
- w0Ni+Nyi8IwJU3ibRNuxp+2Zk/3D29FIdmDhMuSBdDTfkPaQ4/mbvyrjhaA1JVaPN2Mi
- whvLcYb+gBRJNSgudNuFK0QrGWT69mbsgwHCBULrdAaifSy6J5rcvUbncuynKfvu+oGY
- z4U0zQ4HA5P/Te/EH3Hoh5aZVYc62E0z9NRDwlvEBH8VVJzvWgWNE8g95W+ujzPqwg7x
- r27A==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rWqt0w9nIvtuJKPGlQZh/j+NHfSlj1plNPQmtP76IXE=;
+ b=IMQNB5CbCn0q06lAZ/fjqBFoi8Ws3ZOMhqlRxG//A2Jk3QYxMw9Oijzgs6Nmb3+9fh
+ WWuY9N+TaRVlaseHv/fBirr+l8oPV2yDncGqPqM9octbvfbCdnU8EMSkV7kq0qXMPpdO
+ c9usm59SX/iM65rWzRrF08mjaq3uWiZK4AvYG22or70i9lE4z5qtnEu2NqhPlrjWphY3
+ /Q6Y3JbistAfT1Nzc4eZnomO3FYTOBo0gpj0yxnBwpPXkqcRToTRpq6q3D+GSUT7dmqY
+ douN4UsCzyuswhsc8JuRuZ9idI1/CHyk0OKZ2yH1XlhahtF3AldTIBrNM4MJQNrXi7RV
+ 7qSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=A0UUskACfV2zCuBONtYOvwkg8JEg6xz8QNgav6wf0dw=;
- b=cYPZD+9LWk7D2fmOGGMOZ+bpvdHToKMPCAisVZq0ojXsBl9AqhKTnN3jOPrEHIIryk
- Y7Ghespk7wmsUb/E0hIfUBNTi8ptNmi+hDHt6/WuMBuf9jQCqzVcaFL9pOlTB3w8LXBW
- oXCzX37eBw6jLg0lLGolhtAaJs3V4SGL6sfwl+BJng6L1gvyNMojRSXG/lbb15IwOksd
- AyG9v/7Xg1tX8B/lohWsYe92AZsVM4z0bELu0KVkitavQND7wfMB9hymjxu3lkm0HgDW
- gedfyoCSgKoJq+itydPhTFa96W3oQrIjb8pkhr++n1s9wBjkxjJTAADPdUmRCeyiUia0
- W2aA==
-X-Gm-Message-State: AOAM531Oz01rs+LqRb6G2jT9q/4pdu4i5OCtrtizdV2rc5s934hDKKR4
- Bv43jgy6SQdpsKvJ7a4KLMgI0Q==
-X-Google-Smtp-Source: ABdhPJxiaPB2ipe9zaj3AnJTZEEqgn01+1unrEyCAIfW141UjqXUCZNEhfQADCfBqgWAD5PjAdVAzg==
-X-Received: by 2002:a05:6602:1514:: with SMTP id
- g20mr20084425iow.9.1634661906534; 
- Tue, 19 Oct 2021 09:45:06 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rWqt0w9nIvtuJKPGlQZh/j+NHfSlj1plNPQmtP76IXE=;
+ b=lB6tqgPp827/ymltDlezkd4lIoLwUQlqkdltMVN3kLYb4k38+VfdBuDkK3ysHu9zJa
+ zOaEOYXaheZ0WbCPErmkisZmMvDvJgG/xGSAfrQ9nRcvE1mQrkjCpT8lgNwfKOB4IoWU
+ kNTtL87MrhqJpAbRlvr3dr/5YjwxkGxqAYEHtMVOp/eY3k8aL+t1tMWfVIT0B/fIazXD
+ Yakpn0z2hGog1Z+4zOQiBTb4M5HUlBrZ6MmoXmiQ8Dg6yiSXDouakeWtSEBTv3VotTQz
+ akUMpldw1bAXM2EIlk9fprtMoYKFHdqiwOtMOTK9SbDn0YuDgwTlw9gPlIQNoY46frfi
+ KNag==
+X-Gm-Message-State: AOAM533D6Kuezend1X6efeMuaNx9NO/8AMCrTQ7c4x7icG32xzPQyon6
+ TLU+nj/csv3JPR2bJlea1ThROSLGyaPXqw==
+X-Google-Smtp-Source: ABdhPJyNRIa++mgRdnVuZigD04N4m6nLVCxLc4rQNXVSNcJ16DYeC66TAXa5CSGsQMcJk943CRPA0w==
+X-Received: by 2002:a02:ce82:: with SMTP id y2mr4930765jaq.121.1634661903805; 
+ Tue, 19 Oct 2021 09:45:03 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id q7sm1133951ilv.48.2021.10.19.09.45.05
+ by smtp.gmail.com with ESMTPSA id q7sm1133951ilv.48.2021.10.19.09.45.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Oct 2021 09:45:06 -0700 (PDT)
+ Tue, 19 Oct 2021 09:45:03 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
- Michael Tokarev <mjt@tls.msk.ru>, Stacey Son <sson@FreeBSD.org>
-Subject: [PATCH 02/24] bsd-user/arm/target_syscall.h: Add copyright and update
- name
-Date: Tue, 19 Oct 2021 10:44:25 -0600
-Message-Id: <20211019164447.16359-3-imp@bsdimp.com>
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH 00/24] bsd-user: arm (32-bit) support
+Date: Tue, 19 Oct 2021 10:44:23 -0600
+Message-Id: <20211019164447.16359-1-imp@bsdimp.com>
 X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20211019164447.16359-1-imp@bsdimp.com>
-References: <20211019164447.16359-1-imp@bsdimp.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2e;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd2e.google.com
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: none client-ip=2607:f8b0:4864:20::d30;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd30.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,56 +77,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 19 Oct 2021 16:45:11 -0000
 
-The preferred name for the 32-bit arm is now armv7. Update the name to
-reflect that. In addition, add Stacey's copyright to this file and
-update the include guards to the new convention.
+This series of patches brings in 32-bit arm support for bsd-user.  It implements
+all the bits needed to do image activation, signal handling, stack management
+and threading. This allows us to get to the "Hello World" level and also to
+satisfy all linking requirements. I've sliced up the current bsd-user fork
+versions of all this code into what I hope are right-sized reviewable chunks.
 
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
-Signed-off-by: Warner Losh <imp@bsdimp.com>
----
- bsd-user/arm/target_syscall.h | 27 +++++++++++++++++++++++----
- 1 file changed, 23 insertions(+), 4 deletions(-)
+make checkpatch has a couple of complaints about the comments for the signal
+trampoline:
+WARNING: Block comments use a leading /* on a separate line
++    /* 8 */ sys_sigreturn,
 
-diff --git a/bsd-user/arm/target_syscall.h b/bsd-user/arm/target_syscall.h
-index ef4b37f017..a5f2bb4e01 100644
---- a/bsd-user/arm/target_syscall.h
-+++ b/bsd-user/arm/target_syscall.h
-@@ -1,5 +1,24 @@
--#ifndef BSD_USER_ARCH_SYSCALL_H_
--#define BSD_USER_ARCH_SYSCALL_H_
-+/*
-+ *  arm cpu system call stubs
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef _TARGET_ARCH_SYSCALL_H_
-+#define _TARGET_ARCH_SYSCALL_H_
- 
- struct target_pt_regs {
-     abi_long uregs[17];
-@@ -31,6 +50,6 @@ struct target_pt_regs {
- #define TARGET_FREEBSD_ARM_GET_TP       3
- 
- #define TARGET_HW_MACHINE       "arm"
--#define TARGET_HW_MACHINE_ARCH  "armv6"
-+#define TARGET_HW_MACHINE_ARCH  "armv7"
- 
--#endif /* !BSD_USER_ARCH_SYSCALL_H_ */
-+#endif /* !_TARGET_ARCH_SYSCALL_H_ */
+WARNING: Block comments use a leading /* on a separate line
++    /* 9 */ sys_exit
+
+that I think should be ignored.
+
+Warner Losh (24):
+  bsd-user/arm/target_arch_sysarch.h: Use consistent include guards
+  bsd-user/arm/target_syscall.h: Add copyright and update name
+  bsd-user/arm/target_arch_cpu.c: Target specific TLS routines
+  bsd-user/arm/target_arch_cpu.h: CPU Loop definitions
+  bsd-user/arm/target_arch_cpu.h: Implement target_cpu_clone_regs
+  bsd-user/arm/target_arch_cpu.h: Dummy target_cpu_loop implementation
+  bsd-user/arm/target_arch_cpu.h: Implment trivial EXCP exceptions
+  bsd-user/arm/target_arch_cpu.h: Implement data abort exceptions
+  bsd-user/arm/target_arch_cpu.h: Implement system call dispatch
+  bsd-user/arm/target_arch_reg.h: Implement core dump register copying
+  bsd-user/arm/target_arch_vmparam.h: Parameters for arm address space
+  bsd-user/arm/target_arch_sigtramp.h: Signal Trampoline for arm
+  bsd-user/arm/target_arch_thread.h: Routines to create and switch to a
+    thread
+  bsd-user/arm/target_arch_elf.h: arm defines for ELF
+  bsd-user/arm/target_arch_elf.h: arm get hwcap
+  bsd-user/arm/target_arch_elf.h: arm get_hwcap2 impl
+  bsd-user/arm/target_arch_signal.h: arm specific signal registers and
+    stack
+  bsd-user/arm/target_arch_signal.h: arm machine context for signals
+  bsd-user/arm/target_arch_signal.h: arm user context and trapframe for
+    signals
+  bsd-user/arm/target_arch_signal.h: arm set_sigtramp_args
+  bsd-user/arm/target_arch_signal.h: arm get_mcontext
+  bsd-user/arm/target_arch_signal.h: arm set_mcontext
+  bsd-user/arm/target_arch_signal.h: arm get_ucontext_sigreturn
+  bsd-user: add arm target build
+
+ bsd-user/arm/target_arch.h          |  28 +++
+ bsd-user/arm/target_arch_cpu.c      |  39 +++++
+ bsd-user/arm/target_arch_cpu.h      | 206 ++++++++++++++++++++++
+ bsd-user/arm/target_arch_elf.h      | 128 ++++++++++++++
+ bsd-user/arm/target_arch_reg.h      |  60 +++++++
+ bsd-user/arm/target_arch_signal.h   | 253 ++++++++++++++++++++++++++++
+ bsd-user/arm/target_arch_sigtramp.h |  52 ++++++
+ bsd-user/arm/target_arch_sysarch.h  |   6 +-
+ bsd-user/arm/target_arch_thread.h   |  71 ++++++++
+ bsd-user/arm/target_arch_vmparam.h  |  48 ++++++
+ bsd-user/arm/target_syscall.h       |  27 ++-
+ configs/targets/arm-bsd-user.mak    |   2 +
+ 12 files changed, 913 insertions(+), 7 deletions(-)
+ create mode 100644 bsd-user/arm/target_arch.h
+ create mode 100644 bsd-user/arm/target_arch_cpu.c
+ create mode 100644 bsd-user/arm/target_arch_cpu.h
+ create mode 100644 bsd-user/arm/target_arch_elf.h
+ create mode 100644 bsd-user/arm/target_arch_reg.h
+ create mode 100644 bsd-user/arm/target_arch_signal.h
+ create mode 100644 bsd-user/arm/target_arch_sigtramp.h
+ create mode 100644 bsd-user/arm/target_arch_thread.h
+ create mode 100644 bsd-user/arm/target_arch_vmparam.h
+ create mode 100644 configs/targets/arm-bsd-user.mak
+
 -- 
 2.32.0
 
