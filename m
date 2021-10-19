@@ -1,64 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcsEn-0008Si-MS
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 12:45:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45628)
+	id 1mcsEp-0008Va-5W
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 12:45:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45666)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEk-0008PB-NW
- for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:15 -0400
-Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f]:39516)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEm-0008RH-Pf
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:16 -0400
+Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e]:35794)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEg-0000E6-M8
- for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:14 -0400
-Received: by mail-io1-xd2f.google.com with SMTP id o184so9133342iof.6
- for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 09:45:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEc-0000AG-IS
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:16 -0400
+Received: by mail-il1-x12e.google.com with SMTP id k3so19075447ilu.2
+ for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 09:45:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=b40iFL2DSmEskWiJcrwrYMjZgS+Ai6esoPKmcvNusOQ=;
- b=PthhKvALBwNpz24mmRD5KlXAhOaXu8nkf2hH+Qyp7hBQDal3WijMjjIqcrBCYxQoa6
- 0xWbyeUQQWYROZwgCq6DREG/PNpFn1hMutog6r+Th+gluw7pPiWxJkx5eUmIOsMhSPIp
- AZjlsRceD3CfEhefCk5SfNK2GhAdZz7VLfJpwzyO2DGRu8x9stFDllKBDNwz4xZ5+jDu
- 9CpuZvSXr2IjAfFDM7xQGoS8DZPT9eWIByhUzv1xW+K9eF3W97/UG+Ihc+rK6FThc65m
- XzEeWH8MJggTL42zj1WsNYJ/C3GX6cjm8gdv2pKYUCe8ZTLVuieCmkaqWv8cTwuGq5Qk
- S5sA==
+ bh=1RJ4bYCKRLbbeOm2Xoes9tKh+W8zRGO3Dbj9Y1y5Eeo=;
+ b=H08R7LralMorM84z482c6GQdwivd+D2tGmWgr0++9SdPSEPgL+peRi3ZjnfQoF5t0i
+ fc2Iy1YfeA4gzTslsHLQOJCMDPLCzUug1pxY8ukhNebfAM5mL4IbCGsuxT1wqcmN8paf
+ zPXP+1PHbTAk//ogpKH9ghQEXsvWo+qaNgq4W9866agBi8fdP7qm2Cly7JvWgCaOlS1A
+ yqpbsArVbWpg8iExCzBdFZ/PfkNJfb9Ts8QgmVY6NRDz1VbmtdY4iV9zLNFnXKTczXAl
+ zZoXHeKhVe3RavwcStScaiTGF12iXCrU2+H1+MBMlZ54zrN8kYI1NtvDNwE5B6dyUVfA
+ 44lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=b40iFL2DSmEskWiJcrwrYMjZgS+Ai6esoPKmcvNusOQ=;
- b=c8ZWCHe2Qswp/iHp03TmqNG1DlBmCR0OGzvLq99uOiHyMGaF1YTUCOslVnblMMA9Il
- fuwUBZtmR0aDHVUu3RMw5W0YIBORMEgsyAUXb48q/HkxTldx1AML8O98ianW/xE1UYP9
- T0YOmmyhqFZnQ6hcSkta49TvTmmp9jVRg1wGuH7q8OfsE2Npmz2n09OjDFgqoqzV99/U
- q9BvIAfpb+NJi5O0ykgFu4QfKsySHiWlrY7jUhtxzEFy/Sj5PfNAjcnNhU81CPzYKYll
- +B/8k4UDFYUfTohqC3Bcd01k+LUBw0pt5uwLUFklUD/lgtntG7U21dQGntYtrSB20DNG
- tBOQ==
-X-Gm-Message-State: AOAM531Az3RCeGHF17dsUcl//yTSaq6C7p3Td31PxtVps5/Gm+k0IJch
- EEljjyXfPbXHVRGXX1SCe6aMjA==
-X-Google-Smtp-Source: ABdhPJyNtzvir8+ZQTICD1FaJi98dIyurI6FPBio9Bcb/V8trMvExcE9lbIHN9A7QeuRUPExIedHEA==
-X-Received: by 2002:a02:9149:: with SMTP id b9mr5031271jag.46.1634661909543;
- Tue, 19 Oct 2021 09:45:09 -0700 (PDT)
+ bh=1RJ4bYCKRLbbeOm2Xoes9tKh+W8zRGO3Dbj9Y1y5Eeo=;
+ b=GhGFkZ3pyThQeww2OwGIajqHZZlar6n7cDq8tgbM2Wgy5J9d7P3jOGZxWi+13Y2+DG
+ EuFYn7wdHKSHm1xUzRFRl8lNWTD3H3iCGCdkmH1XlAFj+v7ZnNj12wJbK9h9NzOPiu4V
+ kJlcm08X9nhAYnoZ3QL6AMkpB9ZwSaGUlZ7036kmEIBm5eFoFzhbJ1n5CPWa6m0pKZ4W
+ UAaQe6ZNroSEnB91w+KeIBhv57U/E2NrYQukkj3VPSFqvdD0lb9nnI2TjeTFXIwgeZUE
+ 9oUhg94YxBeLs8o/GTdVX/0KsldcX3qMONwGFd73GMDYNzQsFZ+zbiv3+Y63A8Vfdt59
+ ZPww==
+X-Gm-Message-State: AOAM531sthsVOcgwja7UpaNIGRjudyAfjwVcDNYh3fYptmhLYvGwPAfM
+ OOEA3JfutNaAVg4i/81R/3apGA==
+X-Google-Smtp-Source: ABdhPJzVsZkl+FHfsBGSjTYIE0oi7p2PTYgnxsF0jIAHKxtRtqEakeRNSkbL30uDk6tDXsFzQcFQ/g==
+X-Received: by 2002:a05:6e02:1847:: with SMTP id
+ b7mr19148589ilv.129.1634661905376; 
+ Tue, 19 Oct 2021 09:45:05 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id q7sm1133951ilv.48.2021.10.19.09.45.07
+ by smtp.gmail.com with ESMTPSA id q7sm1133951ilv.48.2021.10.19.09.45.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Oct 2021 09:45:08 -0700 (PDT)
+ Tue, 19 Oct 2021 09:45:04 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
- Michael Tokarev <mjt@tls.msk.ru>, Olivier Houchard <cognet@ci0.org>,
- Stacey Son <sson@FreeBSD.org>
-Subject: [PATCH 04/24] bsd-user/arm/target_arch_cpu.h: CPU Loop definitions
-Date: Tue, 19 Oct 2021 10:44:27 -0600
-Message-Id: <20211019164447.16359-5-imp@bsdimp.com>
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH 01/24] bsd-user/arm/target_arch_sysarch.h: Use consistent
+ include guards
+Date: Tue, 19 Oct 2021 10:44:24 -0600
+Message-Id: <20211019164447.16359-2-imp@bsdimp.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20211019164447.16359-1-imp@bsdimp.com>
 References: <20211019164447.16359-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2f;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd2f.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::12e;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x12e.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -77,67 +78,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 16:45:16 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 16:45:17 -0000
 
-target_arch_cpu.h is for CPU loop definitions. Create the file and
-define target_cpu_init and target_cpu_reset for arm.
+As part of upstreaming, the include guards have been made more
+consistent. Update this file to use the new guards.
 
-Signed-off-by: Olivier Houchard <cognet@ci0.org>
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 ---
- bsd-user/arm/target_arch_cpu.h | 42 ++++++++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_cpu.h
+ bsd-user/arm/target_arch_sysarch.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
-new file mode 100644
-index 0000000000..0f3538196d
---- /dev/null
-+++ b/bsd-user/arm/target_arch_cpu.h
-@@ -0,0 +1,42 @@
-+/*
-+ *  arm cpu init and loop
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef _TARGET_ARCH_CPU_H_
-+#define _TARGET_ARCH_CPU_H_
-+
-+#include "target_arch.h"
-+
-+#define TARGET_DEFAULT_CPU_MODEL "any"
-+
-+static inline void target_cpu_init(CPUARMState *env,
-+        struct target_pt_regs *regs)
-+{
-+    int i;
-+
-+    cpsr_write(env, regs->uregs[16], 0xffffffff, CPSRWriteRaw);
-+    for (i = 0; i < 16; i++) {
-+        env->regs[i] = regs->uregs[i];
-+    }
-+}
-+
-+static inline void target_cpu_reset(CPUArchState *cpu)
-+{
-+}
-+
-+#endif /* !_TARGET_ARCH_CPU_H */
+diff --git a/bsd-user/arm/target_arch_sysarch.h b/bsd-user/arm/target_arch_sysarch.h
+index 632a5cd453..8cc6bff207 100644
+--- a/bsd-user/arm/target_arch_sysarch.h
++++ b/bsd-user/arm/target_arch_sysarch.h
+@@ -17,8 +17,8 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#ifndef BSD_USER_ARCH_SYSARCH_H_
+-#define BSD_USER_ARCH_SYSARCH_H_
++#ifndef _TARGET_ARCH_SYSARCH_H_
++#define _TARGET_ARCH_SYSARCH_H_
+ 
+ #include "target_syscall.h"
+ #include "target_arch.h"
+@@ -75,4 +75,4 @@ static inline void do_freebsd_arch_print_sysarch(
+     }
+ }
+ 
+-#endif /*!BSD_USER_ARCH_SYSARCH_H_ */
++#endif /*!_TARGET_ARCH_SYSARCH_H_ */
 -- 
 2.32.0
 
