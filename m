@@ -1,57 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcjqX-000851-Ho
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:47:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59256)
+	id 1mcjsK-0001y1-45
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:49:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mcjqV-0007zM-SQ; Tue, 19 Oct 2021 03:47:39 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:57945)
+ id 1mcjsH-0001sR-0o; Tue, 19 Oct 2021 03:49:29 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:52165)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mcjqU-0001JC-6B; Tue, 19 Oct 2021 03:47:39 -0400
+ id 1mcjsF-0002sM-5K; Tue, 19 Oct 2021 03:49:28 -0400
 Received: from [192.168.100.1] ([82.142.24.54]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1McpeM-1nBWhK10V8-00ZuzB; Tue, 19 Oct 2021 09:47:32 +0200
-Subject: Re: [PATCH] softmmu/physmem.c: Fix typo in comment
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M91Tq-1mfThS32D0-0067Yd; Tue, 19 Oct 2021 09:49:24 +0200
+Subject: Re: [PATCH] README: Fix some documentation URLs
 To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>
-References: <163429018454.1146856.3429437540871060739.stgit@bahia.huguette>
+Cc: qemu-trivial@nongnu.org
+References: <163456470882.196333.17366490695504718038.stgit@bahia.huguette>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <e0196d8b-77f8-0af3-8286-a1ec4c535830@vivier.eu>
-Date: Tue, 19 Oct 2021 09:47:30 +0200
+Message-ID: <2e0305e0-00e9-5f6a-fdfe-4a5b91a9c2bb@vivier.eu>
+Date: Tue, 19 Oct 2021 09:49:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <163429018454.1146856.3429437540871060739.stgit@bahia.huguette>
+In-Reply-To: <163456470882.196333.17366490695504718038.stgit@bahia.huguette>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:wmF9ofYxbTdp/ce56/HQ3cnyyU+EzcZOW1b6kb0mBqZidQ5bzbY
- g0MyUmjRp85q81/ONMPrcTRSkTzU+qea2HLFBs8cq7YqXFu0MGoWZndeh9Bjn0ZSsD4P+Pu
- H9XumO4xNiDNlxlakM+gfYLzeXyAo2cWSneDzznR0YH687TkcG1pZb37+Ww1RCetYxbuUIH
- XndegE26Rt4x/etg2sx7g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:NuGSIAd7zh4=:seheQNCytEX/JDiL7McP7S
- L+icPqMFClnOUkiR9xyxkrmVN3kBfyhrED8PZ+XA/HYvis2mbiAc6s6RYLvjKtgLSeC6qOcB8
- XeQxFsRbolY6Y1RFA/JVL5Hl74HrtzAiqRs9kl0H6C+ZnBFZzi8g019NQ3a25rVCpAipurhq3
- cViKnaMWa1HA/NNBgAwr9IngSVrsyeY5ifDyWtcXGFQmmOXePtP3kfsDFMbUW2fg3pi/YQY5b
- qG+H7ZZHOYxhmVzFax/t8ZsBWF/7ke3wXjpe4fiF/lNq3Amtp+JrK/sLyqIzzxM6O94Lkrzt+
- Ob7hbRu/OS2tdoU5p1jre+qQFj7ynN/S8cGaxLaBWmtmNUc7yK2n9XBMqRUN0ZKlAS34r7m20
- bM+xh1WwXQ4ZtmSuD11s3hIHhoALwXEKB2hMeoL/GvhKWl+xnX2Q3O3PYeL3uwHJJzlH3JBRW
- zgQFH1N3Od8FAclJIBJsMTbse9bCCPPKCpW7XhL4SbwKfru5yjg3y+Di+mygBdTzuQ6YwloXb
- YmLzZRSujjlampKZl0wfog1UeAA6XWExQRJsK2yOZJZDbNlMc6EGrVnLbOpez+VnJNF18+06L
- 93M1blfC+bkuUGCobGt/yq3H9vZsJCk9iooBBBlNW15ik15io4A7iLcYUqFd+UJ8SRyw0vS+S
- tvo4HoBahkLymdiA7lp4nxk0rwg2joVxNCdkzthC3zQWSqsG/Uwoc6BdlhQFIhESkdNjdvFiu
- Lbea5P5hTrlfBZ7k3R1uwFzds9BzHdKGsKh3jA==
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:bzqB/0LfG+yhTnuMi2SR0attfBLxRy+76PJ244ZbuDtM1AjXIq9
+ f+kz2McCw0eF3N75wO+Yd7x+79IsYt8wI9LnB3TQSzEJ1dvh3R3eDvMrBwnkqtYVb6Koisd
+ cfDlubJ/K/I/PyXeNA4C75XoUtn677f8iYb2AWPjJsAQxI6Hn5NGNSs437/uB2y8TcwhY0B
+ +2Et3UIVTIZ5OFfrdRFig==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:iTPkwN41Oys=:XK8rBGyPG2Lor4AgBVWmYi
+ 2glbxBl4Ss9Dl4/iwmlFMeuAmi7ywKak1JkUXRHrmtzgPyu3Vk6J+CH/sPA+ssqz+RavsdoSC
+ aCsyWoeC5tpb/NxYkGPQb7Bfq23Otm3T0czJhmHOm3r3Nwb7SacfHUzBvLIQKwKCB7R5O3mRr
+ qlSroYqmAfmmOk12hZW44AmJqCwBFzlyRQ3qO/iDCgmWBy7ttzGbYmxr8u0rW1NXLa2Tf/8qu
+ aCZoTHa3IFNVr6uGWXUTsXkVhMY1yOdUoKDYJDxCNWbwQ258iQs4gxIqUs9B62MRa+Hun0swZ
+ w8U7cTvW0a66ciAN4pKDakfsrt+kGPuUWvyNbGSgB+cgpDDVt2jgJjaMSykZhdzrsmJDQL0PX
+ QztJoqGFo0ssm8MTFOhY7plqnGaVMMkSpyuC8VckqKDp//SeJUnf5PqSZ7zfOg/HLCWwYmLmC
+ ucl9bhOVBRJxQeblZC0gyF2diYNfhapCQZU+dHJXsEf0zVJm8qPRfNFNIS6oAPYroaHv+Dpy+
+ WC5IEeMoepIBYBKbMje+Hsh7fOjTW3FreKIm0ExWDtLDI6dzVlNWpJRwb4e9X54YO8SeQixrv
+ IxpemAg5TUwslcoWM2EU7w674lSymrHrmg5iFusIVOu/X7WZY7SakCzRSUnCly732KOaihLRq
+ bP2jB1xSbQCoaICmfie6RxxwUfQPmadxF2bm6FU6YRLfy5LI6/M2EWnaIBfzLZ5zUwwWVjcMu
+ nkw5rH9wwffKHKSY7v4ZFU8uqmtUOCduj6AiTw==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -64,45 +62,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 07:47:40 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 07:49:29 -0000
 
-Le 15/10/2021 à 11:29, Greg Kurz a écrit :
-> Fix the comment to match what the code is doing, as explained in
-> the changelog of commit 86cf9e154632cb28d749db0ea47946fba8cf3f09
-> that introduced the change:
-> 
->     Commit 9458a9a1df1a4c719e24512394d548c1fc7abd22 added synchronization
->     of vCPU and migration operations through calling run_on_cpu operation.
->     However, in replay mode this synchronization is unneeded, because
->     I/O and vCPU threads are already synchronized.
->     This patch disables such synchronization for record/replay mode.
-> 
+Le 18/10/2021 à 15:45, Greg Kurz a écrit :
+> All of these pages live in the wiki, not in the main web site.
 > 
 > Signed-off-by: Greg Kurz <groug@kaod.org>
 > ---
->  softmmu/physmem.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  README.rst |   14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
 > 
-> diff --git a/softmmu/physmem.c b/softmmu/physmem.c
-> index f67ad2998121..555c907f6743 100644
-> --- a/softmmu/physmem.c
-> +++ b/softmmu/physmem.c
-> @@ -2633,7 +2633,7 @@ static void tcg_log_global_after_sync(MemoryListener *listener)
->           * In record/replay mode this causes a deadlock, because
->           * run_on_cpu waits for rr mutex. Therefore no races are possible
->           * in this case and no need for making run_on_cpu when
-> -         * record/replay is not enabled.
-> +         * record/replay is enabled.
->           */
->          cpuas = container_of(listener, CPUAddressSpace, tcg_as_listener);
->          run_on_cpu(cpuas->cpu, do_nothing, RUN_ON_CPU_NULL);
+> diff --git a/README.rst b/README.rst
+> index 79b19f1481e1..23795b837740 100644
+> --- a/README.rst
+> +++ b/README.rst
+> @@ -59,9 +59,9 @@ of other UNIX targets. The simple steps to build QEMU are:
+>  
+>  Additional information can also be found online via the QEMU website:
+>  
+> -* `<https://qemu.org/Hosts/Linux>`_
+> -* `<https://qemu.org/Hosts/Mac>`_
+> -* `<https://qemu.org/Hosts/W32>`_
+> +* `<https://wiki.qemu.org/Hosts/Linux>`_
+> +* `<https://wiki.qemu.org/Hosts/Mac>`_
+> +* `<https://wiki.qemu.org/Hosts/W32>`_
+>  
+>  
+>  Submitting patches
+> @@ -84,8 +84,8 @@ the Developers Guide.
+>  Additional information on submitting patches can be found online via
+>  the QEMU website
+>  
+> -* `<https://qemu.org/Contribute/SubmitAPatch>`_
+> -* `<https://qemu.org/Contribute/TrivialPatches>`_
+> +* `<https://wiki.qemu.org/Contribute/SubmitAPatch>`_
+> +* `<https://wiki.qemu.org/Contribute/TrivialPatches>`_
+>  
+>  The QEMU website is also maintained under source control.
+>  
+> @@ -144,7 +144,7 @@ reported via GitLab.
+>  
+>  For additional information on bug reporting consult:
+>  
+> -* `<https://qemu.org/Contribute/ReportABug>`_
+> +* `<https://wiki.qemu.org/Contribute/ReportABug>`_
+>  
+>  
+>  ChangeLog
+> @@ -168,4 +168,4 @@ main methods being email and IRC
+>  Information on additional methods of contacting the community can be
+>  found online via the QEMU website:
+>  
+> -* `<https://qemu.org/Contribute/StartHere>`_
+> +* `<https://wiki.qemu.org/Contribute/StartHere>`_
 > 
 > 
 > 
-Applied to my trivial-patches branch.
 
-Thanks,
-Laurent
-
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Tested-by: Laurent Vivier <laurent@vivier.eu>
 
