@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcjzh-00038f-TA
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:57:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34652)
+	id 1mckPL-0006VH-3g
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 04:23:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41864)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mcjze-00035Y-Ae; Tue, 19 Oct 2021 03:57:08 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:58269)
+ id 1mckPJ-0006Ui-C7; Tue, 19 Oct 2021 04:23:37 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:46527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mcjzb-0000va-Sg; Tue, 19 Oct 2021 03:57:06 -0400
+ id 1mckPH-0001sz-H1; Tue, 19 Oct 2021 04:23:37 -0400
 Received: from [192.168.100.1] ([82.142.24.54]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1Mm9NA-1n3F7a396W-00iFx2; Tue, 19 Oct 2021 09:56:58 +0200
-Subject: Re: [PATCH 0/2] analyze-migration.py: trivial fixes
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Cleber Rosa <crosa@redhat.com>
-References: <20211015131645.501281-1-lvivier@redhat.com>
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MEFfB-1mTA923cNJ-00AEYV; Tue, 19 Oct 2021 10:23:18 +0200
+Subject: Re: [PATCH] hw/core/machine: Add the missing delimiter in
+ cpu_slot_to_string()
+To: Yanan Wang <wangyanan55@huawei.com>, qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>, wanghaibin.wang@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20211008075040.18028-1-wangyanan55@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <3db7ddcd-9e4d-5d23-1479-2aa46d2becce@vivier.eu>
-Date: Tue, 19 Oct 2021 09:56:56 +0200
+Message-ID: <57481b57-13cf-ee9d-b9ef-205b9e3de610@vivier.eu>
+Date: Tue, 19 Oct 2021 10:23:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20211015131645.501281-1-lvivier@redhat.com>
+In-Reply-To: <20211008075040.18028-1-wangyanan55@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1apv2kCUtZH9J6G7LovSkyIfkvWCaggxLGYf5Q7Mf7OxxBivVly
- 0bHtktuAn8C0eOJrM5HeBsI1PvXu0iXk/fLjf+0q1DhkzoFbzuAIJvPvd5sOsTiIRnBv3DX
- 0ba7b7RuKv2hx5MR1L4e/7IUm3/YvDz13TKSYVpg0PZcyyBWUoCtejLCqa3aeLCenfWKzqt
- WbTk74956E93j+UGiS3TA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kwQbR2hF3jc=:lZX9RyrupegJYPmfAmxMLm
- YH25sqqwOnsmHHD/aWNbla2CsJ0DlPBrd33sWsQunEpI6zulTdcFmETnTjr+3xFe6+w1yc9XY
- qJKWYKM0Yxfj95L2ivibwVib+9uq787eFxenOaZVzrmJoLxYzJJPyF3gC9k+KU+vucHplWtdf
- xKM46UyLIU22J9aVKQAbwigOpAe5drjPUKeBAnxCVDr6TKSlnVAwgGDg+ZQeQ8zIaYjKBktf9
- an4Dfc3EzDZNQINkWxTYai7wxeClJ526R5uJyETdWcWViXgFiSSFDG5QLe7QAdwdtOgCon69B
- bCx1FIuOW5J3BPN8pzSCtUtUEC8jeqVJLp1xjAFwjzjf4DjPVTCLs0+qEsQev8zKzdZtfd7hj
- 7EKk7XRo+OWW3LE+/ZovnNLRIfWiG9bfy/7+EObH2pdFEVPmU2dXOk8gdsT0062ciYWttaOND
- 6H6fic1EtEsUpKjCW6YPsFmyd/f1SRIfL3iT0VUr92WA5aRYPPqIMgULL10fM3Gt+SQgaH+R9
- VkMghjOkguYt0L8j1UCWNK8go3KEzM1bHsArpK12OaqNE2bpYENcsF/qmtom3mlKU0tdYWj3q
- NyJJHyqPjPz6OxmxyQV8OfEFWFeicW5alDE9hMB6Z3b2hlDYLIqKHm+qVSJPE/VFuf5fugOc2
- c2w71mjjugOCfVcvZhgerx5Njx1m9bY6nshRJ9PgZYw8khvWJD2vkSrCikvMF21zuNASFGwLT
- gakEKIoqgkl3q0WlBvLCnPUlr3rdYaTTM20HXg==
+X-Provags-ID: V03:K1:T8MP2TxgPnzEajvvyZUaRFA6LUoTxNUlgzHWZasfikHc+DlhBtd
+ MjjyW0TgWRuvL0onoTmhSjd5IkM9PMyjL7LhafyTm9kMPchZjiwBtDQSIYyR6E/I2ko5vQ3
+ Fo+HwKFzvTfgaZoJ49vI6P0YC5O/W89OjRW951ei1TwpnkMRmqltBFo1CptPa6TS8u8qkhw
+ xBgPYG6OB3QXDAJpAerhw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wahtiqAGp7Y=:XA/agic6LvCNFYh0gMpp3/
+ C/Pxn8ESi9QF0d0xX5xYzcY2SJfD0i5hEvQEAddmif90F8TBNSDEDqazkUyj7mIhvhoc0dAnb
+ OqlfZNzIX3IxXqTOk3r9+SGjAUn1/OpF9xi9qd0zgAcJEyqZgnDnBlPAxvLD2ATjq9kOd9www
+ k2AEmJV4Hz2g1DmstSFQ+COpuwzyPK1rq7XeDpbDjh/l8JXQGUC1+g7DVq15/fSEqIjHUiQFB
+ 8H3QYCCtA961asLNRMOdj1lwSMXuEOMuqCy1dyBNtWSz31Yb0c/gNkcU0Bxl0gOkBiwMcZv8C
+ wBNjtgAFkboJMSZSt0SVsf7DhL/4vk27blq3RF0sqtiPcfh8RZuJxB3iDz5SXOMdzD7IZCxjL
+ 1pQ3fo7PYE/hlG1szeLO7Es0CI+KyEuKfFBy8IM8nB76T7D3CgokntfusdYrQrUw/anRy1gxb
+ qcW8NLArNMf4tCLhnXKou5jWL44F2cbxAuDGWGru+2IRzW/FVM4Ma3Sz4IIaOFaTMoIvboDFL
+ 6KalIEnkEMFhMVYTx/w57GQwC/cQm7uaG0GlLtj2rc6FZwMWQgQWS/2xzZ2uvogV+akqifzWq
+ 7pQc+AuxEk6dFrO8XD2/uXDUCOAG2MKqGxKWVhsxy7OYex7pABFj634Xsn0gFFHraHBCBGNTp
+ osAFthNaB8lLKpCD9+N/5teeT5YighTbfgR6CPNsyMdB8449IXM9Sy6HQ4XQWUjEqChI4x4zf
+ yG9fyUA/ADaY7iY53eYVpJSCxk8CE2UMqUJLgw==
 Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -63,29 +66,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 07:57:08 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 08:23:38 -0000
 
-Le 15/10/2021 à 15:16, Laurent Vivier a écrit :
-> This script is not used a lot but it helps to debug migration,
-> so it's annoying when we need it and it doesn't work...
+Le 08/10/2021 à 09:50, Yanan Wang a écrit :
+> The expected output string from cpu_slot_to_string() ought to be
+> like "socket-id: *, die-id: *, core-id: *, thread-id: *", so add
+> the missing ", " before "die-id". This affects the readability
+> of the error message.
 > 
-> The first patch fix an error message that is erroneous and thus
-> doesn't help at all.
+> Fixes: 176d2cda0d ("i386/cpu: Consolidate die-id validity in smp context")
+> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
+> ---
+>  hw/core/machine.c | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> The second fixes a problem introduced by python3 and preventing
-> to run the extract mode.
-> 
-> Laurent Vivier (2):
->   analyze-migration.py: fix a long standing typo
->   analyze-migration.py: fix extract contents ('-x') errors
-> 
->  scripts/analyze-migration.py | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index b8d95eec32..0a23ae3106 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -1157,6 +1157,9 @@ static char *cpu_slot_to_string(const CPUArchId *cpu)
+>          g_string_append_printf(s, "socket-id: %"PRId64, cpu->props.socket_id);
+>      }
+>      if (cpu->props.has_die_id) {
+> +        if (s->len) {
+> +            g_string_append_printf(s, ", ");
+> +        }
+>          g_string_append_printf(s, "die-id: %"PRId64, cpu->props.die_id);
+>      }
+>      if (cpu->props.has_core_id) {
 > 
 
-
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
