@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcjjo-0002iH-PS
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:40:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56684)
+	id 1mcjmx-0000ZV-J7
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:44:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mcjjm-0002fa-25; Tue, 19 Oct 2021 03:40:42 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:48291)
+ id 1mcjmu-0000VO-8I; Tue, 19 Oct 2021 03:43:56 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:37893)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mcjjk-0002xi-63; Tue, 19 Oct 2021 03:40:41 -0400
+ id 1mcjmr-0006dZ-GG; Tue, 19 Oct 2021 03:43:55 -0400
 Received: from [192.168.100.1] ([82.142.24.54]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1Ml6i4-1mzwX02SU8-00lWkC; Tue, 19 Oct 2021 09:40:34 +0200
-Subject: Re: [PATCH] po: update turkish translation
-To: =?UTF-8?Q?O=c4=9fuz_Ersen?= <oguzersen@protonmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <lDpmNUjNrVETJ2QoHoYmSoRvKoEIVFbF4IZAa1R5PVzqPCTh7nmV_ERHQlgYtNJN1Ppagtvelbo4uhSihEd5bSqIxCvGQchEWVpP-ofn2kw=@protonmail.com>
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MWhxY-1mEQZ03kFs-00X31z; Tue, 19 Oct 2021 09:43:39 +0200
+Subject: Re: [PATCH-for-6.2 0/2] disas/nios2: Simplify endianess conversion
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Marek Vasut <marex@denx.de>, Thomas Huth <thuth@redhat.com>,
+ Chris Wulff <crwulff@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20210807110939.95853-1-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <78735ae3-1cb3-f808-b93f-8bea765eb6c4@vivier.eu>
-Date: Tue, 19 Oct 2021 09:40:33 +0200
+Message-ID: <de933f9c-c3df-b5db-1107-15aa3e3c7213@vivier.eu>
+Date: Tue, 19 Oct 2021 09:43:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <lDpmNUjNrVETJ2QoHoYmSoRvKoEIVFbF4IZAa1R5PVzqPCTh7nmV_ERHQlgYtNJN1Ppagtvelbo4uhSihEd5bSqIxCvGQchEWVpP-ofn2kw=@protonmail.com>
+In-Reply-To: <20210807110939.95853-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ewTi7kmBTKUgfj+rB67JjjTXcz+QnEkBCe8fjpCNDFlEYgN96/d
- DEKsKTvsaJqvujNH8Tn1gkLdVAvtuP8onPVFMUWaLJgkcY4/ZvOoDi5iIRTz4w6U2tjWi6r
- jQbeVP4YiWGFTkze0FjaQj5gNgtbtMm3gzCB57zyxl+BMGcbGfplkzaPZ+m20h8iMTSpZFQ
- C8nNcgByYG9pt84u6aknA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PuXWFsx4r6s=:EXuoikskeL3yTDcLtNhV/w
- g1FjpHePo/WrJqij/gndFiv8jfLnDpgHqnzWrdZZA2uEn6hcDx3UvXW7yQHZ4XH5F6aQ/tVfe
- TJc/tNFqYoTzV4GjTDghPAVHA6BTpyMQGBi8jlpgv5ky12P3yIqJqci4UD42bxD2o68iC/FsY
- RQ4LdPhvS4XuCH7SDlC5P3oRAwc0DzBzqxzUO6v8dmCVDEoE7Ujm/zmlCg9TrgdtTf/6bGw4s
- CWsit3VMB3s0+9aVe4cz7pZv3WN2PDkk5OOkP3wyX2ItIAj3gQb8LI7pQSjGrTXvMPVXTfEtt
- RPSIsPp13y0wH/MuoZ4QHFN4KMIyZKiPTpUAeTC8ZhIcxPmp243rvy15j8B2ekhjZNo4nq9wd
- ZrghS4i2CrRryAiVbE+1+fSYc8764APBO36hiBzAFjOuCBe0aooWYw3us83+t/1mDgDMhjeE3
- 5EsVhe42SL0D+IKpCB8cTDmhRfzb5WG36KgMeOXupxDg8/6zquyCNL8savhXCkQme2qpIHBo4
- n3Pgnn3qytIFFuEza1iF2M1jcE6JjiH/aNF3YSA/0lqgq8Q/c1PqomXKe7NOzwSdA5FnxO7vu
- H+US5lHglBQGPBvGgWSmU2maDlYN0Lr7n7/htnn6SZuVcqoEmLg3LwDNvfsZAExT6VKldfy00
- f5FtTQVosm81rllev7oSFQJsONbgNd7bWMPj96Y80ElcRjNsdpEd9aYUYkwmFXPFluVlwvbUO
- xxHhueKjjLwOiNuTltKxkeROHB1ktEkhBdOskA==
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:abHWmoeFV0Aae/u0KhZN6v9gFhzs+7bc2HEdTYxUmIf4bjqyqtk
+ ocIlmJcRtcSe3ML2edi2rf24+1RMMhmvXUNlt9eslNgCA9wb1I3OwFJ3uRzp3RfKbbXlt1b
+ XNfFC3lFgrmLHl/QP/3OKphaby3Pbny4uXV/tCJF1fg+aAQ7XoqPJDG0hD2NxbsagyHsyaf
+ /P3AWgtP0je3MKalEjWAg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7GTKhKgfD6o=:agtrVfo+ngy6M/MdG1s+zk
+ 4fLGwAU9UKBZ0tTcfz3tBz7do98xAxvc+epUvtGPgWe/sXp6KtcqHDY1+kf4i4cKTZ4rf6tNK
+ nbBz5QgGRit5GwIOA4UnC2vOpQMwG9KsbKTOAcfusbuOx0eVe44DfzS3RrVJKDF7EUKJrhClE
+ Ja6PbUEAuZZOM6xN3l8ELkuezVDQaJPKUER9p2Zz3XZO1yqtBSpFffXd9MBPxekaS8PEECXMV
+ tNMkkD6QD5SKvMKrsNs/2s8j1SGSEG4j5x/So0gQhDDHoG3k/k3vCtuy+nsxso257+XSBUQD5
+ OuwC5C8X0wkmtZW+fXPozQlXyjI/ryJOUyGtG84pMI8RGBGuDs2SOqbBRYhYtjgUKlkQzXA9o
+ MraIR/I9sXHvVkj0LaoD0W78gZlmAp/jvW3N6F0tlixc1wE5F/U+90W9C+QN4itdBNcFX+h4b
+ 3z2glSomNxXtKoiDm8rGkZZcHSvM95an5Fo7y0eiKRjHaXK3BToUZzvHV6v6JY/tuw5UjBYTr
+ JGY2/r6LnYMVnngchk1G7JiUY5OyhsA5xyo/T+tIEAOfNsX96HWBAgQfnpD++ODN48kFjRaRF
+ kbrHqjR7mm3I8FjHWOQf2On3UBiEwO3nJyU90kzYCFolEiPzytlr5nrMkfnscdIPasgVG4wEv
+ NUSnHyVCWAO/pLtdc8sqbaL2C9hF+CmdtrJ2Sb5dnWoQEmSTS445DK0jc6EgnE/wfkilq1dEP
+ 7p/6TMeegrT5WQl+twcwDSVbB10j2OEiHXXQFg==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -63,16 +67,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 07:40:42 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 07:43:56 -0000
 
-Le 15/08/2021 à 22:24, Oğuz Ersen a écrit :
-> Hi, this is a small patch to update Turkish translation, thanks.
+Le 07/08/2021 à 13:09, Philippe Mathieu-Daudé a écrit :
+> After chatting with Richard Henderson and Paolo Bonzini, we
+> concluded the load/store API is mature enough to have target
+> code endianess-agnostic.
+> Thus we could remove the TARGET_WORDS_BIGENDIAN definition from
+> target-specific code (restricting it to the binary format loaders).
 > 
-> --
-> Best Regards
-> Oğuz Ersen
+> While experimenting, I noticed the Nios2 disassembler is an easy
+> win. MIPS will follow shortly.
 > 
-
+> Philippe Mathieu-Daudé (2):
+>   disas/nios2: Fix style in print_insn_nios2()
+>   disas/nios2: Simplify endianess conversion
+> 
+>  include/disas/dis-asm.h |  3 +-
+>  disas/nios2.c           | 71 ++++++++++++++++-------------------------
+>  target/nios2/cpu.c      |  6 +---
+>  3 files changed, 29 insertions(+), 51 deletions(-)
+> 
 
 Applied to my trivial-patches branch.
 
