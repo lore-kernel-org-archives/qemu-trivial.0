@@ -1,53 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcjmx-0000ZV-J7
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:44:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58400)
+	id 1mcjoj-000467-Tu
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:45:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58918)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mcjmu-0000VO-8I; Tue, 19 Oct 2021 03:43:56 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:37893)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1mcjof-00043X-Pb
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 03:45:47 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:58675)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mcjmr-0006dZ-GG; Tue, 19 Oct 2021 03:43:55 -0400
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1mcjoe-0008CC-5E
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 03:45:45 -0400
 Received: from [192.168.100.1] ([82.142.24.54]) by mrelayeu.kundenserver.de
  (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MWhxY-1mEQZ03kFs-00X31z; Tue, 19 Oct 2021 09:43:39 +0200
-Subject: Re: [PATCH-for-6.2 0/2] disas/nios2: Simplify endianess conversion
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Marek Vasut <marex@denx.de>, Thomas Huth <thuth@redhat.com>,
- Chris Wulff <crwulff@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20210807110939.95853-1-f4bug@amsat.org>
+ 1MidPj-1nF4Zl262J-00fjZI for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021
+ 09:45:42 +0200
+Subject: Re: [PATCH] MAINTAINERS: Add myself as reviewer of 'Machine core' API
+To: qemu-trivial@nongnu.org
+References: <20211007093108.323223-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <de933f9c-c3df-b5db-1107-15aa3e3c7213@vivier.eu>
-Date: Tue, 19 Oct 2021 09:43:37 +0200
+Message-ID: <0955996d-a8b5-740a-3706-57347001d3b8@vivier.eu>
+Date: Tue, 19 Oct 2021 09:45:41 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210807110939.95853-1-f4bug@amsat.org>
+In-Reply-To: <20211007093108.323223-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:abHWmoeFV0Aae/u0KhZN6v9gFhzs+7bc2HEdTYxUmIf4bjqyqtk
- ocIlmJcRtcSe3ML2edi2rf24+1RMMhmvXUNlt9eslNgCA9wb1I3OwFJ3uRzp3RfKbbXlt1b
- XNfFC3lFgrmLHl/QP/3OKphaby3Pbny4uXV/tCJF1fg+aAQ7XoqPJDG0hD2NxbsagyHsyaf
- /P3AWgtP0je3MKalEjWAg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7GTKhKgfD6o=:agtrVfo+ngy6M/MdG1s+zk
- 4fLGwAU9UKBZ0tTcfz3tBz7do98xAxvc+epUvtGPgWe/sXp6KtcqHDY1+kf4i4cKTZ4rf6tNK
- nbBz5QgGRit5GwIOA4UnC2vOpQMwG9KsbKTOAcfusbuOx0eVe44DfzS3RrVJKDF7EUKJrhClE
- Ja6PbUEAuZZOM6xN3l8ELkuezVDQaJPKUER9p2Zz3XZO1yqtBSpFffXd9MBPxekaS8PEECXMV
- tNMkkD6QD5SKvMKrsNs/2s8j1SGSEG4j5x/So0gQhDDHoG3k/k3vCtuy+nsxso257+XSBUQD5
- OuwC5C8X0wkmtZW+fXPozQlXyjI/ryJOUyGtG84pMI8RGBGuDs2SOqbBRYhYtjgUKlkQzXA9o
- MraIR/I9sXHvVkj0LaoD0W78gZlmAp/jvW3N6F0tlixc1wE5F/U+90W9C+QN4itdBNcFX+h4b
- 3z2glSomNxXtKoiDm8rGkZZcHSvM95an5Fo7y0eiKRjHaXK3BToUZzvHV6v6JY/tuw5UjBYTr
- JGY2/r6LnYMVnngchk1G7JiUY5OyhsA5xyo/T+tIEAOfNsX96HWBAgQfnpD++ODN48kFjRaRF
- kbrHqjR7mm3I8FjHWOQf2On3UBiEwO3nJyU90kzYCFolEiPzytlr5nrMkfnscdIPasgVG4wEv
- NUSnHyVCWAO/pLtdc8sqbaL2C9hF+CmdtrJ2Sb5dnWoQEmSTS445DK0jc6EgnE/wfkilq1dEP
- 7p/6TMeegrT5WQl+twcwDSVbB10j2OEiHXXQFg==
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:XKDx0v7TIQzJ7Gxhj5MPQajlo4nT303ChJz2TCg3VLwIq2lxEzP
+ q3cgxiajPi3vEQEvwwUp6WgZoxXS1aTsiGBVdZBrLuEKDbjZo15gmLXzJM5laoAJVE0ACTM
+ 5/3ncd3TLDBce+UKQtjnN1VPzZ43va7QCiEsH2qnZc20Zke5jTqopTMqIpaKhLVSOOvlrLe
+ 35m5u7vEaJVx//x+fZTdA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:YcCC8dnwDzQ=:j7Rmt4vNOYJiduxFvIjiUJ
+ vl12TI06/livBm9t4Fzcf0Aj8zDkynZ7jyVwRjsPEs9gu/g5cEC5yzXaEQAE4rw8iQCQownTd
+ IX+Yav5mmYol8W24OXZ3W5TSGnWZdwwwa9WlLB1jlHJiDmc1huJC9WaKNfzsMZbZ5JqaKLCq1
+ tcmDpywVvtdOG2XJJjiFBIqMKKopZYfpBcbfF3ggRlh5f9Eiap8wJ5IGlAaUqMwOJ+UlC34lw
+ NP/L2Au54ec+nW06dzPKn7zggPaLUnCaE4LJbLCpqbVRaZK59ok59ez/UEOsc3xqa47UUBiVS
+ D3A22Q7eiFUtIkIiuJ0IsZMY0gd+nJqiCC3Fe6vt0fCA+Y6xtnvdcnT1SDDVkEgzjPqyohI8W
+ B9DOAs9RoBHeQP0QkHsQnarxZxw015Ac5mZiSb6RY7hrpxiUyrukRFHWh8y7qEtLhvSag/X0G
+ mAkht4fuT8DVywAbU2pDc7obu8P60OqiNbxzg7QZnxizNZVbGUq6tll3wKPRdhYPI7ZDCUDlD
+ OVzEniWwZClBwfM1sCVXf5EZYWfodaMEPpEQx8P+8CWosRVda50+KJpSMTq5xDH77OmdlDPMC
+ 7NVTX4gThsUBn18hnyoJpLusOOizdZs9ThJjsXKIltvuC8yAg81y1sNvi4u7PIp5UB5TTCNGI
+ lrjpeTAA6mfTqsXcgCMHo3IlTJTp/+jDMx+jB9nwGVx076uR5Cx0GDHbx1JEAiWmeIm/xRkgF
+ 5qnietFFT0Tq8Zy4+7l4Dml90cecCXFbVdDteQ==
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -67,27 +62,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 07:43:56 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 07:45:47 -0000
 
-Le 07/08/2021 à 13:09, Philippe Mathieu-Daudé a écrit :
-> After chatting with Richard Henderson and Paolo Bonzini, we
-> concluded the load/store API is mature enough to have target
-> code endianess-agnostic.
-> Thus we could remove the TARGET_WORDS_BIGENDIAN definition from
-> target-specific code (restricting it to the binary format loaders).
+Le 07/10/2021 à 11:31, Philippe Mathieu-Daudé a écrit :
+> In order to help Eduardo and Marcel with the machine
+> core API, add myself as reviewer. That will also help
+> me to learn more about this subsystem :)
 > 
-> While experimenting, I noticed the Nios2 disassembler is an easy
-> win. MIPS will follow shortly.
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Philippe Mathieu-Daudé (2):
->   disas/nios2: Fix style in print_insn_nios2()
->   disas/nios2: Simplify endianess conversion
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 50435b8d2f5..b0a7bf36aa4 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1617,6 +1617,7 @@ F: pc-bios/bios-microvm.bin
+>  Machine core
+>  M: Eduardo Habkost <ehabkost@redhat.com>
+>  M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+> +R: Philippe Mathieu-Daudé <philmd@redhat.com>
+>  S: Supported
+>  F: cpu.c
+>  F: hw/core/cpu.c
 > 
->  include/disas/dis-asm.h |  3 +-
->  disas/nios2.c           | 71 ++++++++++++++++-------------------------
->  target/nios2/cpu.c      |  6 +---
->  3 files changed, 29 insertions(+), 51 deletions(-)
-> 
+
+To increase your stats...
 
 Applied to my trivial-patches branch.
 
