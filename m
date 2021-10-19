@@ -1,77 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcZgF-0004zv-EZ
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Oct 2021 16:56:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40542)
+	id 1mcjjo-0002iH-PS
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:40:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mcZgD-0004z0-0x
- for qemu-trivial@nongnu.org; Mon, 18 Oct 2021 16:56:21 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:39604)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mcZg9-00060d-IW
- for qemu-trivial@nongnu.org; Mon, 18 Oct 2021 16:56:20 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id t21so4093775plr.6
- for <qemu-trivial@nongnu.org>; Mon, 18 Oct 2021 13:56:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mFROUQGxPajjJDyyiBZuUAKFIjagCvXcTxAhyZrxrzI=;
- b=Y7icMjUfsNxzV1SS23D0bzqeTEdnX8n91dPF5KL1Sp9Kpp0pDiO13YWd36GT/2OGAu
- jtQyefWQTWqOR0k0+MhYE+fKJ9Kb2w9xZVM8PnaH9zR8jqXux1LqhfUXLWAXyDiLTQcb
- JtCt8X/31ddc05kPGg6oxVnZstDlvWYRU0XSHxpFWW0ElZvXErULmlysUS74wxfOqANO
- 5suXpXH3bSAwAo0Z7wHWLsubjWtrzl5StpQ5rrbPnK7On+dWYsmjTJHLuyV5rqIGruHg
- bdcsIs24VrjYELl8klNrwK1w/7KTzTyqeO6gIjyCzqUyrwGvYhQ3H3tlMfPTKsV5Y7hn
- I0FA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mFROUQGxPajjJDyyiBZuUAKFIjagCvXcTxAhyZrxrzI=;
- b=Ych8k+EZclL13ZT1YpkJOJcFNXBJoYOnPpvXTfQUaPmrMbWfVFoTo+nW1Q/1xUnabH
- dxqFZNE+n7WtGhqRdnwsdxjSWN/t3bS9p3GByd5NVVW6KCgA24Kav4H1slVOn2Umrf4W
- ax9Y2oJexcQ9HxaMLNx6YiS6sto/nA+mW//gxeYW0a1B2y/KOm3MEjYVBCjcRDVOw+EP
- Ugk8aVySjVD5DzSSRtYGA/4uo4G3LycOmPj/ieM+iNIh5OYn1z/UmOBe1LaC8pAhrs7a
- 5D1WBK8gXmuFx2/8jYyZkNXTiY172yxmSqbFKyi/ERIHD17OzNwlhthrgDDKzWXRgciQ
- 3kpg==
-X-Gm-Message-State: AOAM530u22PlWYxlO2nrK8Z5IT8y+DQUpB9gwIHQAIUVQxhr/c8aFlye
- 4qYk4WOCfEY7xEwm1rVP88NeNRptHhY=
-X-Google-Smtp-Source: ABdhPJymNPFRAFgebz9KoBJ3VQJ/9yrb2ht0+LoZbMSwV6rMkG7ThVngH+Wg1COUNj6Q71KJ0t6Hwg==
-X-Received: by 2002:a17:90a:e64a:: with SMTP id
- ep10mr1427035pjb.124.1634590576161; 
- Mon, 18 Oct 2021 13:56:16 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.134.125])
- by smtp.gmail.com with ESMTPSA id c9sm13571171pgq.58.2021.10.18.13.56.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Oct 2021 13:56:15 -0700 (PDT)
-Subject: Re: [PATCH v2] hw/elf_ops.h: switch to ssize_t for elf loader return
- type
-To: Luc Michel <lmichel@kalray.eu>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Stefano Garzarella <sgarzare@redhat.com>,
- qemu-trivial@nongnu.org
-References: <20211014194325.19917-1-lmichel@kalray.eu>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ca79c888-71dd-b9d9-d5d0-49dc235c99ec@linaro.org>
-Date: Mon, 18 Oct 2021 13:56:13 -0700
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mcjjm-0002fa-25; Tue, 19 Oct 2021 03:40:42 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:48291)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mcjjk-0002xi-63; Tue, 19 Oct 2021 03:40:41 -0400
+Received: from [192.168.100.1] ([82.142.24.54]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1Ml6i4-1mzwX02SU8-00lWkC; Tue, 19 Oct 2021 09:40:34 +0200
+Subject: Re: [PATCH] po: update turkish translation
+To: =?UTF-8?Q?O=c4=9fuz_Ersen?= <oguzersen@protonmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <lDpmNUjNrVETJ2QoHoYmSoRvKoEIVFbF4IZAa1R5PVzqPCTh7nmV_ERHQlgYtNJN1Ppagtvelbo4uhSihEd5bSqIxCvGQchEWVpP-ofn2kw=@protonmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <78735ae3-1cb3-f808-b93f-8bea765eb6c4@vivier.eu>
+Date: Tue, 19 Oct 2021 09:40:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20211014194325.19917-1-lmichel@kalray.eu>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+In-Reply-To: <lDpmNUjNrVETJ2QoHoYmSoRvKoEIVFbF4IZAa1R5PVzqPCTh7nmV_ERHQlgYtNJN1Ppagtvelbo4uhSihEd5bSqIxCvGQchEWVpP-ofn2kw=@protonmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:ewTi7kmBTKUgfj+rB67JjjTXcz+QnEkBCe8fjpCNDFlEYgN96/d
+ DEKsKTvsaJqvujNH8Tn1gkLdVAvtuP8onPVFMUWaLJgkcY4/ZvOoDi5iIRTz4w6U2tjWi6r
+ jQbeVP4YiWGFTkze0FjaQj5gNgtbtMm3gzCB57zyxl+BMGcbGfplkzaPZ+m20h8iMTSpZFQ
+ C8nNcgByYG9pt84u6aknA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:PuXWFsx4r6s=:EXuoikskeL3yTDcLtNhV/w
+ g1FjpHePo/WrJqij/gndFiv8jfLnDpgHqnzWrdZZA2uEn6hcDx3UvXW7yQHZ4XH5F6aQ/tVfe
+ TJc/tNFqYoTzV4GjTDghPAVHA6BTpyMQGBi8jlpgv5ky12P3yIqJqci4UD42bxD2o68iC/FsY
+ RQ4LdPhvS4XuCH7SDlC5P3oRAwc0DzBzqxzUO6v8dmCVDEoE7Ujm/zmlCg9TrgdtTf/6bGw4s
+ CWsit3VMB3s0+9aVe4cz7pZv3WN2PDkk5OOkP3wyX2ItIAj3gQb8LI7pQSjGrTXvMPVXTfEtt
+ RPSIsPp13y0wH/MuoZ4QHFN4KMIyZKiPTpUAeTC8ZhIcxPmp243rvy15j8B2ekhjZNo4nq9wd
+ ZrghS4i2CrRryAiVbE+1+fSYc8764APBO36hiBzAFjOuCBe0aooWYw3us83+t/1mDgDMhjeE3
+ 5EsVhe42SL0D+IKpCB8cTDmhRfzb5WG36KgMeOXupxDg8/6zquyCNL8savhXCkQme2qpIHBo4
+ n3Pgnn3qytIFFuEza1iF2M1jcE6JjiH/aNF3YSA/0lqgq8Q/c1PqomXKe7NOzwSdA5FnxO7vu
+ H+US5lHglBQGPBvGgWSmU2maDlYN0Lr7n7/htnn6SZuVcqoEmLg3LwDNvfsZAExT6VKldfy00
+ f5FtTQVosm81rllev7oSFQJsONbgNd7bWMPj96Y80ElcRjNsdpEd9aYUYkwmFXPFluVlwvbUO
+ xxHhueKjjLwOiNuTltKxkeROHB1ktEkhBdOskA==
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,31 +63,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Oct 2021 20:56:21 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 07:40:42 -0000
 
-On 10/14/21 12:43 PM, Luc Michel wrote:
-> Until now, int was used as the return type for all the ELF
-> loader related functions. The returned value is the sum of all loaded
-> program headers "MemSize" fields.
+Le 15/08/2021 à 22:24, Oğuz Ersen a écrit :
+> Hi, this is a small patch to update Turkish translation, thanks.
 > 
-> Because of the overflow check in elf_ops.h, trying to load an ELF bigger
-> than INT_MAX will fail. Switch to ssize_t to remove this limitation.
+> --
+> Best Regards
+> Oğuz Ersen
 > 
-> Reviewed-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
-> Signed-off-by: Luc Michel<lmichel@kalray.eu>
-> ---
-> v2:
->    - Turn load_elf ret local variable to ssize_t [Stefano]
->    - Add Phil's R-B
-> ---
->   include/hw/elf_ops.h | 27 ++++++++++----------
->   include/hw/loader.h  | 60 ++++++++++++++++++++++----------------------
->   hw/core/loader.c     | 60 +++++++++++++++++++++++---------------------
->   3 files changed, 75 insertions(+), 72 deletions(-)
-
-I'm going to queue this to target-arm.next, as there doesn't seem to be another more 
-obvious tree.
 
 
-r~
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
