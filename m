@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcsFg-0000kX-Dl
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 12:46:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46046)
+	id 1mcsFl-0000lj-0F
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 12:46:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46042)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsF7-0000M0-KF
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsF7-0000Ly-HA
  for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:38 -0400
-Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30]:36601)
+Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32]:40561)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEu-0000Sc-Ny
- for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:37 -0400
-Received: by mail-io1-xd30.google.com with SMTP id e144so21147622iof.3
- for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 09:45:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mcsEt-0000RY-G7
+ for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 12:45:34 -0400
+Received: by mail-io1-xd32.google.com with SMTP id x1so21100754iof.7
+ for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021 09:45:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ZhJExKbUH25tHb+0wa/214Ve4XCy7t/TwI/sIw4xvj0=;
- b=0WuR7yBmH0wfDZJClWwRTArnIAGnhGpEj8Eq1tBMZhuhXEqvyd8CKroPMhMQw5FtnS
- gWENydyxvCdtg/v+jzOhaVYOAfkrpT0rYdbJGeHHOFnsrV6Cue/A6UVGbo8PHffD1teQ
- BiV7+1nm6xZCJeum+NaRl8rYipm6awkusGRiYxnhyv9ekKPa8ul4BSbrbnlcZnx9yO4P
- bb2+ZVUMpsdBhbZr3QjOLNvXi40VQFP/5FYQTiJmSkkBF55sIExMiRcVv4k8fhtMlasO
- H35jO5oLQPB/mAZ4wRmfFkKu4eIY+Oo2FiEf//NRPjOfCRvnT/6qxOtMZdW68gVfkFNl
- 7TZA==
+ bh=6nGgWFIo7ezMIOimV7TlzBVMBOdct1aOJnGR3rJ9Fvg=;
+ b=0v2Ng0BPQe1xYP1PwUgwzNZndxEYQmBB7pc7E0QtyfqcCcl9+ezKQAfx9+o2VM4weD
+ d4o0AAX+lIuv0Uvu70g6PmXc95TBjCDQD5ZPb+nTU5X8QNP44qWn2Kad4l2Zxy4NJSUr
+ Xqw02KLlV3nNI5qnkvKCeeKV3ZSXPdVHJP6ZyFl+Br0keesMZ3PZGIWpo+RR8gS8CFn3
+ rH2gfmTWvp705wocBLiiNtoasu7arseqZv4MONfqcf8vBg+2KW9h57OCnWC+K4p61pul
+ Z9tUvU9xm2wyQ+B2t6NvuKvHXTMo72CiF7WZwRkBu72oMf9GNbkDMcjEWrBaAN8bTjlU
+ pRXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZhJExKbUH25tHb+0wa/214Ve4XCy7t/TwI/sIw4xvj0=;
- b=1B+4HnZYHPd2Tujj6WV6We9hGXua36bvNkuEQefTHi3u5u8a44ypLTXZWNCbtjGTmW
- TVpNkIuDqUAw9r5A9cWiVAOfIGl6fFUQYCremi8qG1zprVIpTe7KZPK+Vf5BCVjI9fAS
- R1RkIPPfl324J25YUgDQHfJ97GuUljWDdTAQfTT7PQFnlOvnlLaMcDN/ZrX68eReuWRQ
- DnuQKFavO3RHvIv1Vnm/1+uakCxxzre43e/fZTpzDgAd7D8GudH/LXiAisvQpgCz+o7h
- fp4VzpDSCU0eRvbQFuQiv6FNGHtY2BdD9TKfx05fE9lUPkLzgPJA1OZzURvIlF0ig3rc
- 28PA==
-X-Gm-Message-State: AOAM531H36n4JZ0blgTA88pxx3pKdIre10IHhWpLn72zeDPrBBU5429h
- u3bGosZj/4edz/TgHU+8DYHECw==
-X-Google-Smtp-Source: ABdhPJx+lH1fb1dyAxa9Cpi+uqhByJMyzOTqg1qZ88ZsE4bwqwdWSdd4QRW/P6mzMxNzGk4u2boz0A==
-X-Received: by 2002:a02:b60a:: with SMTP id h10mr4950048jam.50.1634661923550; 
- Tue, 19 Oct 2021 09:45:23 -0700 (PDT)
+ bh=6nGgWFIo7ezMIOimV7TlzBVMBOdct1aOJnGR3rJ9Fvg=;
+ b=m0bkL86HCeMr986ya1mtgxEh8OnqQC8cgdI90D4Sz4EiMcprUHwaAA1ITtUBgLu3Ie
+ umhtxg+vd1/WjtmyGrBxbxHhoZVKl57p71Zxw3NbYeFf3CgFu/6gq49B7ldBifkXGSQG
+ zT2pULFdBm5ytPvRo0BMTVU1mxDruEeLFE9Jq+5x0TN7fGOB0GU1aMko54OufknXho2C
+ eYZ1uXDMqWlUTTpf0Tq4TozaJDY/6swYPcYckyQuRJG5+D48yZmEO3aFz+cOYSHADA0U
+ uv+kbHI9nh8ecrFdDsZpPjhrQZjjNRsTcXtvYTRqBdnGVmORM9hAc9by4pDUzN+53pLo
+ dQfw==
+X-Gm-Message-State: AOAM5325dlzSRak4fKTLZbeEBkBNqaCFDK5u1vzZzN4k+8PFXKMZN0q8
+ MEY1HmebOAGrYdWKvPYpRsM06mUxK5ZOPQ==
+X-Google-Smtp-Source: ABdhPJwDLa3EVQZjgY2Rz9rCTYOEr4+G83kb9l2234VtZ8zSJ4P4bg9kUgbbftdYdA31QIJBqikvcQ==
+X-Received: by 2002:a05:6638:1390:: with SMTP id
+ w16mr5112894jad.1.1634661922565; 
+ Tue, 19 Oct 2021 09:45:22 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id q7sm1133951ilv.48.2021.10.19.09.45.22
+ by smtp.gmail.com with ESMTPSA id q7sm1133951ilv.48.2021.10.19.09.45.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Oct 2021 09:45:23 -0700 (PDT)
+ Tue, 19 Oct 2021 09:45:22 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
- Michael Tokarev <mjt@tls.msk.ru>, Stacey Son <sson@FreeBSD.org>
-Subject: [PATCH 17/24] bsd-user/arm/target_arch_signal.h: arm specific signal
- registers and stack
-Date: Tue, 19 Oct 2021 10:44:40 -0600
-Message-Id: <20211019164447.16359-18-imp@bsdimp.com>
+ Michael Tokarev <mjt@tls.msk.ru>, Klye Evans <kevans@FreeBSD.org>
+Subject: [PATCH 16/24] bsd-user/arm/target_arch_elf.h: arm get_hwcap2 impl
+Date: Tue, 19 Oct 2021 10:44:39 -0600
+Message-Id: <20211019164447.16359-17-imp@bsdimp.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20211019164447.16359-1-imp@bsdimp.com>
 References: <20211019164447.16359-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d30;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd30.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d32;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd32.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -77,80 +77,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 16:45:38 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 16:45:39 -0000
 
-Defines for registers and stack layout related to signals.
+Implement the extended HW capabilities for HWCAP2.
 
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
+Signed-off-by: Klye Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 ---
- bsd-user/arm/target_arch_signal.h | 57 +++++++++++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_signal.h
+ bsd-user/arm/target_arch_elf.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
-new file mode 100644
-index 0000000000..973183d99c
---- /dev/null
-+++ b/bsd-user/arm/target_arch_signal.h
-@@ -0,0 +1,57 @@
-+/*
-+ *  arm signal definitions
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef _TARGET_ARCH_SIGNAL_H_
-+#define _TARGET_ARCH_SIGNAL_H_
+diff --git a/bsd-user/arm/target_arch_elf.h b/bsd-user/arm/target_arch_elf.h
+index 02d25b8926..4a0215d02e 100644
+--- a/bsd-user/arm/target_arch_elf.h
++++ b/bsd-user/arm/target_arch_elf.h
+@@ -32,6 +32,7 @@
+ #define ELF_EXEC_PAGESIZE       4096
+ 
+ #define ELF_HWCAP get_elf_hwcap()
++#define ELF_HWCAP2 get_elf_hwcap2()
+ 
+ #define GET_FEATURE(feat, hwcap) \
+     do { if (arm_feature(&cpu->env, feat)) { hwcaps |= hwcap; } } while (0)
+@@ -64,6 +65,14 @@ enum {
+     ARM_HWCAP_ARM_EVTSTRM   = 1 << 21,
+ };
+ 
++enum {
++    ARM_HWCAP2_ARM_AES      = 1 << 0,
++    ARM_HWCAP2_ARM_PMULL    = 1 << 1,
++    ARM_HWCAP2_ARM_SHA1     = 1 << 2,
++    ARM_HWCAP2_ARM_SHA2     = 1 << 3,
++    ARM_HWCAP2_ARM_CRC32    = 1 << 4,
++};
 +
-+#include "cpu.h"
+ static uint32_t get_elf_hwcap(void)
+ {
+     ARMCPU *cpu = ARM_CPU(thread_cpu);
+@@ -100,6 +109,19 @@ static uint32_t get_elf_hwcap(void)
+     return hwcaps;
+ }
+ 
++static uint32_t get_elf_hwcap2(void)
++{
++    ARMCPU *cpu = ARM_CPU(thread_cpu);
++    uint32_t hwcaps = 0;
 +
-+#define TARGET_REG_R0   0
-+#define TARGET_REG_R1   1
-+#define TARGET_REG_R2   2
-+#define TARGET_REG_R3   3
-+#define TARGET_REG_R4   4
-+#define TARGET_REG_R5   5
-+#define TARGET_REG_R6   6
-+#define TARGET_REG_R7   7
-+#define TARGET_REG_R8   8
-+#define TARGET_REG_R9   9
-+#define TARGET_REG_R10  10
-+#define TARGET_REG_R11  11
-+#define TARGET_REG_R12  12
-+#define TARGET_REG_R13  13
-+#define TARGET_REG_R14  14
-+#define TARGET_REG_R15  15
-+#define TARGET_REG_CPSR 16
-+#define TARGET__NGREG   17
-+/* Convenience synonyms */
-+#define TARGET_REG_FP   TARGET_REG_R11
-+#define TARGET_REG_SP   TARGET_REG_R13
-+#define TARGET_REG_LR   TARGET_REG_R14
-+#define TARGET_REG_PC   TARGET_REG_R15
++    GET_FEATURE_ID(aa32_aes, ARM_HWCAP2_ARM_AES);
++    GET_FEATURE_ID(aa32_pmull, ARM_HWCAP2_ARM_PMULL);
++    GET_FEATURE_ID(aa32_sha1, ARM_HWCAP2_ARM_SHA1);
++    GET_FEATURE_ID(aa32_sha2, ARM_HWCAP2_ARM_SHA2);
++    GET_FEATURE_ID(aa32_crc32, ARM_HWCAP2_ARM_CRC32);
++    return hwcaps;
++}
 +
-+#define TARGET_INSN_SIZE    4       /* arm instruction size */
-+
-+/* Size of the signal trampolin code. See _sigtramp(). */
-+#define TARGET_SZSIGCODE    ((abi_ulong)(9 * TARGET_INSN_SIZE))
-+
-+/* compare to arm/include/_limits.h */
-+#define TARGET_MINSIGSTKSZ  (1024 * 4)                  /* min sig stack size */
-+#define TARGET_SIGSTKSZ     (TARGET_MINSIGSTKSZ + 32768)  /* recommended size */
-+
-+#endif /* !_TARGET_ARCH_SIGNAL_H_ */
+ #undef GET_FEATURE
+ #undef GET_FEATURE_ID
+ 
 -- 
 2.32.0
 
