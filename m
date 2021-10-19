@@ -1,55 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mcjoj-000467-Tu
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:45:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58918)
+	id 1mcjqX-000851-Ho
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Oct 2021 03:47:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1mcjof-00043X-Pb
- for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 03:45:47 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58675)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mcjqV-0007zM-SQ; Tue, 19 Oct 2021 03:47:39 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:57945)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1mcjoe-0008CC-5E
- for qemu-trivial@nongnu.org; Tue, 19 Oct 2021 03:45:45 -0400
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mcjqU-0001JC-6B; Tue, 19 Oct 2021 03:47:39 -0400
 Received: from [192.168.100.1] ([82.142.24.54]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MidPj-1nF4Zl262J-00fjZI for <qemu-trivial@nongnu.org>; Tue, 19 Oct 2021
- 09:45:42 +0200
-Subject: Re: [PATCH] MAINTAINERS: Add myself as reviewer of 'Machine core' API
-To: qemu-trivial@nongnu.org
-References: <20211007093108.323223-1-philmd@redhat.com>
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1McpeM-1nBWhK10V8-00ZuzB; Tue, 19 Oct 2021 09:47:32 +0200
+Subject: Re: [PATCH] softmmu/physmem.c: Fix typo in comment
+To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>
+References: <163429018454.1146856.3429437540871060739.stgit@bahia.huguette>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <0955996d-a8b5-740a-3706-57347001d3b8@vivier.eu>
-Date: Tue, 19 Oct 2021 09:45:41 +0200
+Message-ID: <e0196d8b-77f8-0af3-8286-a1ec4c535830@vivier.eu>
+Date: Tue, 19 Oct 2021 09:47:30 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20211007093108.323223-1-philmd@redhat.com>
+In-Reply-To: <163429018454.1146856.3429437540871060739.stgit@bahia.huguette>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XKDx0v7TIQzJ7Gxhj5MPQajlo4nT303ChJz2TCg3VLwIq2lxEzP
- q3cgxiajPi3vEQEvwwUp6WgZoxXS1aTsiGBVdZBrLuEKDbjZo15gmLXzJM5laoAJVE0ACTM
- 5/3ncd3TLDBce+UKQtjnN1VPzZ43va7QCiEsH2qnZc20Zke5jTqopTMqIpaKhLVSOOvlrLe
- 35m5u7vEaJVx//x+fZTdA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YcCC8dnwDzQ=:j7Rmt4vNOYJiduxFvIjiUJ
- vl12TI06/livBm9t4Fzcf0Aj8zDkynZ7jyVwRjsPEs9gu/g5cEC5yzXaEQAE4rw8iQCQownTd
- IX+Yav5mmYol8W24OXZ3W5TSGnWZdwwwa9WlLB1jlHJiDmc1huJC9WaKNfzsMZbZ5JqaKLCq1
- tcmDpywVvtdOG2XJJjiFBIqMKKopZYfpBcbfF3ggRlh5f9Eiap8wJ5IGlAaUqMwOJ+UlC34lw
- NP/L2Au54ec+nW06dzPKn7zggPaLUnCaE4LJbLCpqbVRaZK59ok59ez/UEOsc3xqa47UUBiVS
- D3A22Q7eiFUtIkIiuJ0IsZMY0gd+nJqiCC3Fe6vt0fCA+Y6xtnvdcnT1SDDVkEgzjPqyohI8W
- B9DOAs9RoBHeQP0QkHsQnarxZxw015Ac5mZiSb6RY7hrpxiUyrukRFHWh8y7qEtLhvSag/X0G
- mAkht4fuT8DVywAbU2pDc7obu8P60OqiNbxzg7QZnxizNZVbGUq6tll3wKPRdhYPI7ZDCUDlD
- OVzEniWwZClBwfM1sCVXf5EZYWfodaMEPpEQx8P+8CWosRVda50+KJpSMTq5xDH77OmdlDPMC
- 7NVTX4gThsUBn18hnyoJpLusOOizdZs9ThJjsXKIltvuC8yAg81y1sNvi4u7PIp5UB5TTCNGI
- lrjpeTAA6mfTqsXcgCMHo3IlTJTp/+jDMx+jB9nwGVx076uR5Cx0GDHbx1JEAiWmeIm/xRkgF
- 5qnietFFT0Tq8Zy4+7l4Dml90cecCXFbVdDteQ==
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:wmF9ofYxbTdp/ce56/HQ3cnyyU+EzcZOW1b6kb0mBqZidQ5bzbY
+ g0MyUmjRp85q81/ONMPrcTRSkTzU+qea2HLFBs8cq7YqXFu0MGoWZndeh9Bjn0ZSsD4P+Pu
+ H9XumO4xNiDNlxlakM+gfYLzeXyAo2cWSneDzznR0YH687TkcG1pZb37+Ww1RCetYxbuUIH
+ XndegE26Rt4x/etg2sx7g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:NuGSIAd7zh4=:seheQNCytEX/JDiL7McP7S
+ L+icPqMFClnOUkiR9xyxkrmVN3kBfyhrED8PZ+XA/HYvis2mbiAc6s6RYLvjKtgLSeC6qOcB8
+ XeQxFsRbolY6Y1RFA/JVL5Hl74HrtzAiqRs9kl0H6C+ZnBFZzi8g019NQ3a25rVCpAipurhq3
+ cViKnaMWa1HA/NNBgAwr9IngSVrsyeY5ifDyWtcXGFQmmOXePtP3kfsDFMbUW2fg3pi/YQY5b
+ qG+H7ZZHOYxhmVzFax/t8ZsBWF/7ke3wXjpe4fiF/lNq3Amtp+JrK/sLyqIzzxM6O94Lkrzt+
+ Ob7hbRu/OS2tdoU5p1jre+qQFj7ynN/S8cGaxLaBWmtmNUc7yK2n9XBMqRUN0ZKlAS34r7m20
+ bM+xh1WwXQ4ZtmSuD11s3hIHhoALwXEKB2hMeoL/GvhKWl+xnX2Q3O3PYeL3uwHJJzlH3JBRW
+ zgQFH1N3Od8FAclJIBJsMTbse9bCCPPKCpW7XhL4SbwKfru5yjg3y+Di+mygBdTzuQ6YwloXb
+ YmLzZRSujjlampKZl0wfog1UeAA6XWExQRJsK2yOZJZDbNlMc6EGrVnLbOpez+VnJNF18+06L
+ 93M1blfC+bkuUGCobGt/yq3H9vZsJCk9iooBBBlNW15ik15io4A7iLcYUqFd+UJ8SRyw0vS+S
+ tvo4HoBahkLymdiA7lp4nxk0rwg2joVxNCdkzthC3zQWSqsG/Uwoc6BdlhQFIhESkdNjdvFiu
+ Lbea5P5hTrlfBZ7k3R1uwFzds9BzHdKGsKh3jA==
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -62,36 +64,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Oct 2021 07:45:47 -0000
+X-List-Received-Date: Tue, 19 Oct 2021 07:47:40 -0000
 
-Le 07/10/2021 à 11:31, Philippe Mathieu-Daudé a écrit :
-> In order to help Eduardo and Marcel with the machine
-> core API, add myself as reviewer. That will also help
-> me to learn more about this subsystem :)
+Le 15/10/2021 à 11:29, Greg Kurz a écrit :
+> Fix the comment to match what the code is doing, as explained in
+> the changelog of commit 86cf9e154632cb28d749db0ea47946fba8cf3f09
+> that introduced the change:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>     Commit 9458a9a1df1a4c719e24512394d548c1fc7abd22 added synchronization
+>     of vCPU and migration operations through calling run_on_cpu operation.
+>     However, in replay mode this synchronization is unneeded, because
+>     I/O and vCPU threads are already synchronized.
+>     This patch disables such synchronization for record/replay mode.
+> 
+> 
+> Signed-off-by: Greg Kurz <groug@kaod.org>
 > ---
->  MAINTAINERS | 1 +
->  1 file changed, 1 insertion(+)
+>  softmmu/physmem.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 50435b8d2f5..b0a7bf36aa4 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1617,6 +1617,7 @@ F: pc-bios/bios-microvm.bin
->  Machine core
->  M: Eduardo Habkost <ehabkost@redhat.com>
->  M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-> +R: Philippe Mathieu-Daudé <philmd@redhat.com>
->  S: Supported
->  F: cpu.c
->  F: hw/core/cpu.c
+> diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+> index f67ad2998121..555c907f6743 100644
+> --- a/softmmu/physmem.c
+> +++ b/softmmu/physmem.c
+> @@ -2633,7 +2633,7 @@ static void tcg_log_global_after_sync(MemoryListener *listener)
+>           * In record/replay mode this causes a deadlock, because
+>           * run_on_cpu waits for rr mutex. Therefore no races are possible
+>           * in this case and no need for making run_on_cpu when
+> -         * record/replay is not enabled.
+> +         * record/replay is enabled.
+>           */
+>          cpuas = container_of(listener, CPUAddressSpace, tcg_as_listener);
+>          run_on_cpu(cpuas->cpu, do_nothing, RUN_ON_CPU_NULL);
 > 
-
-To increase your stats...
-
+> 
+> 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
+
 
