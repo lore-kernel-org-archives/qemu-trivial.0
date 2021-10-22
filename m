@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mdbsd-0006bm-Jf
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Oct 2021 13:29:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34206)
+	id 1mdrwY-0001t2-G6
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Oct 2021 06:38:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52658)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
- id 1mdbsb-0006a1-Il; Thu, 21 Oct 2021 13:29:25 -0400
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f]:38532)
+ id 1mdrwW-0001qG-C7; Fri, 22 Oct 2021 06:38:32 -0400
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b]:35527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
- id 1mdbsZ-0006mt-86; Thu, 21 Oct 2021 13:29:25 -0400
-Received: by mail-lj1-x22f.google.com with SMTP id n7so1181090ljp.5;
- Thu, 21 Oct 2021 10:29:21 -0700 (PDT)
+ id 1mdrwT-00007t-QL; Fri, 22 Oct 2021 06:38:31 -0400
+Received: by mail-lf1-x12b.google.com with SMTP id p16so2400214lfa.2;
+ Fri, 22 Oct 2021 03:38:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=BrP1Aa7hFNHKUpyDn/H8g3LyZcFS1ZXxyktAofS60SM=;
- b=nsDXZbS6MZzpYDFpXhVJHEYeUqvBJoC6hfHuamTGNE9F7fdzqNjIlor7ibXbQIof8b
- DG1ZnYMWum5tOd7tbVrjxcEWrtdLte2BpjSedsE84GV8KPzIlFoBWzfvQBfbQwDeFCLm
- kISUCHidxvJrmQe3NoYQISUCAxr5AqkY0JsvfBv1/a22cpa9DsrkbRkSoI7sVtUbIhKY
- sHoPeolbZLACcz8URK6JMSNOqb5bMsmW7DAPb79IIO5IZhSJnecu9iyFZ+ibYAbcy/TF
- ICh4duyrrW5P0N0iVOsu28vMB2ezTD8Y6Di6FvrArDNuPLAGq057MCS2RVUqFljgf9Oe
- ePGg==
+ bh=4Dlcwtqr+zlOEtOxbxwh8vyGEEfN4+aDPfcwb1tqsxw=;
+ b=GeLFyYNHWmUP1QSdTPrl7JvYQgYEJUQ7YCdTMi6gz2xZmDe2rfWOe0TQVg6xY0hyiC
+ RH8LoB9ZFjCr+PdC9Pc5VtdL6NaencU1A6JwOXC5uYcs3A+UOITMI/mwPZ8pt77dTGP2
+ evBCE9oUSPl/j8REiaZL25+k79SZXhs2P+495BAMVP2BeE0/Km59tvUcffJ9ej5g0EHO
+ 7RKR9f7jKZK11UaqrspAxo6miSMhJerEi5Y9smAmDYOEqMeTpObb0CF12r+HHE2V4Afg
+ pXolhgGZk/kVPD9oIog6HJbDHsEPZh8hcLG+z2pFY08dOkORsnGjiQSkatIux9KYoWQD
+ v0jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=BrP1Aa7hFNHKUpyDn/H8g3LyZcFS1ZXxyktAofS60SM=;
- b=wZ6RLXTo3o3unzIn+7Qu/lo0EH5heQYDgbXsNh1v5l5C63V1cmM23GE01HHRZTYvJ7
- ivvuHGoSS1LajkYdKD9eGvfYzkUirKKoPl/YYzXsN66pmJBPfryUaUQ9mF/+iCUP9xSX
- BBTcow9Rn8kyBFeCrQ0/C+cHsp6GW2gd73gZMW0AHL5hhRKhpEffHlIN+6cbtEfb5NAE
- 198ZHBWqb4ImAHD0/2bu8EtTJ37oR+oqHi85eqyhtt0TxQ4aVAIYNfKXCMaiFav+QRbC
- wafwQhJIDk+/GJdC6I7IrnX52VW1DqmPBtmc14Bxd8gt57OBhEyEGZ09jYTp/V+evZrZ
- q3dw==
-X-Gm-Message-State: AOAM530wJ5LfxDtJFeCrWXd0nfae4R93CSWYilusu1DbBW4lln2yaCk9
- 8oQ9Z/WMll4iCELVviZ9nCxVSYzUyNcMKA==
-X-Google-Smtp-Source: ABdhPJzbZYvH8Mv2fdT/DlrCEqGtAarBZNpkaNKDoH6plswYCoq6eCWq7v/XrRsQ4A/8eZtihoSI4Q==
-X-Received: by 2002:a2e:a4a7:: with SMTP id g7mr7295642ljm.255.1634837360082; 
- Thu, 21 Oct 2021 10:29:20 -0700 (PDT)
-Received: from UNIT-808.labs.intellij.net ([91.132.204.20])
- by smtp.gmail.com with ESMTPSA id n19sm509046lfu.207.2021.10.21.10.29.15
+ bh=4Dlcwtqr+zlOEtOxbxwh8vyGEEfN4+aDPfcwb1tqsxw=;
+ b=RWdyIYgF/xC3lh6s3z+L6YJ6Vw+wn7M9gw22x0JGLF5Qxc/yDGxDsYqHMOb3ifcNOV
+ ewia+m8cyAGm6ZPC4V5rrd8iVuE9Aw3wzP+vZ1Kin4sclJrc0Um8A5wVEERcqqqm1pF7
+ pf7mpBnpp6ovkulaTk2+J/HYB5iWOgfji/r7LrqsokRF0k42GbLTyAZ0qFKKGOd19w+Z
+ lFcTGYUM7Qf0I+fX2wx3Sjpy8B6dnsAorjup+RQW014GKn2YXyo64Yv6aBo2ZwKp+JmI
+ yelk9rD3L+g8DelMlsd77VHCDRry402J0fMKWjYA6x+ITYvtQkdfTuC4imvBk+TQqJyo
+ XMDA==
+X-Gm-Message-State: AOAM532RdG8uKEHrebpWB7bw+xxWFIzs61EKedM3vp63d2mquHYFgUSq
+ tBP6jyfLiTmU8S42ZTMdafIaGlrPmuunuA==
+X-Google-Smtp-Source: ABdhPJzbnvWvNVwrH15kMoM+Bx3e2r5epy/PzDT2mfSa0LatkwzAHoRFXxLa2exGYODPsw08A2uCJw==
+X-Received: by 2002:ac2:5c12:: with SMTP id r18mr10574000lfp.251.1634899106866; 
+ Fri, 22 Oct 2021 03:38:26 -0700 (PDT)
+Received: from localhost.localdomain ([77.234.205.3])
+ by smtp.gmail.com with ESMTPSA id z13sm860178ljk.70.2021.10.22.03.38.26
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 21 Oct 2021 10:29:19 -0700 (PDT)
+ Fri, 22 Oct 2021 03:38:26 -0700 (PDT)
 From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, r.bolshakov@yadro.com, agraf@suse.de,
  suse@csgraf.de, Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
-Subject: [PATCH] isa-applesmc: provide OSK forwarding on Apple hosts
-Date: Thu, 21 Oct 2021 20:28:45 +0300
-Message-Id: <20211021172845.69316-1-yaroshchuk2000@gmail.com>
+Subject: [PATCH v2] isa-applesmc: provide OSK forwarding on Apple hosts
+Date: Fri, 22 Oct 2021 13:38:01 +0300
+Message-Id: <20211022103801.19620-1-yaroshchuk2000@gmail.com>
 X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
- envelope-from=yaroshchuk2000@gmail.com; helo=mail-lj1-x22f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=yaroshchuk2000@gmail.com; helo=mail-lf1-x12b.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -73,18 +73,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Oct 2021 17:29:25 -0000
+X-List-Received-Date: Fri, 22 Oct 2021 10:38:32 -0000
 
-On Apple hosts we can read AppleSMC OSK directly from SMC
-and forward this value to QEMU
+On Apple hosts we can read AppleSMC OSK key directly from host's
+SMC and forward this value to QEMU Guest.
+
+Usage:
+`-device isa-applesmc,hostosk=on`
+
+Apple licence allows use and run up to two additional copies
+or instances of macOS operating within virtual operating system
+environments on each Apple-branded computer that is already running
+the Apple Software, for purposes of:
+- software development
+- testing during software development
+- using macOS Server
+- personal, non-commercial use
+
+Guest macOS requires AppleSMC with correct OSK. The most legal
+way to pass it to the Guest is to forward the key from host SMC
+without any value exposion.
+
+Based on http://osxbook.com/book/bonus/chapter7/tpmdrmmyth/
 
 Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
 ---
- hw/misc/applesmc.c | 129 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 129 insertions(+)
+ hw/misc/applesmc.c | 144 ++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 143 insertions(+), 1 deletion(-)
 
 diff --git a/hw/misc/applesmc.c b/hw/misc/applesmc.c
-index 1b9acaf1d3..d4a6d1eaab 100644
+index 1b9acaf1d3..6986ab0028 100644
 --- a/hw/misc/applesmc.c
 +++ b/hw/misc/applesmc.c
 @@ -38,6 +38,10 @@
@@ -102,11 +120,11 @@ index 1b9acaf1d3..d4a6d1eaab 100644
      uint8_t data_len;
      uint8_t data_pos;
      uint8_t data[255];
-+    char *oskdirect;
++    char *hostosk_flag;
      char *osk;
      QLIST_HEAD(, AppleSMCData) data_def;
  };
-@@ -312,6 +317,124 @@ static const MemoryRegionOps applesmc_err_io_ops = {
+@@ -312,9 +317,133 @@ static const MemoryRegionOps applesmc_err_io_ops = {
      },
  };
  
@@ -129,49 +147,52 @@ index 1b9acaf1d3..d4a6d1eaab 100644
 +    uint8_t     bytes[32];
 +};
 +
-+static void applesmc_direct_read_osk(DeviceState *dev, Error **errp)
++static int applesmc_read_host_osk(char **host_osk)
 +{
-+    AppleSMCState           *s = APPLE_SMC(dev);
-+    io_service_t            realsmc = IO_OBJECT_NULL;
-+    io_connect_t            realsmc_connect = IO_OBJECT_NULL;
++    assert(host_osk != NULL);
++
++    io_service_t            hostsmc_service = IO_OBJECT_NULL;
++    io_connect_t            hostsmc_connect = IO_OBJECT_NULL;
 +    size_t                  out_size = sizeof(struct AppleSMCParam);
 +    IOReturn                status = kIOReturnError;
 +    struct AppleSMCParam    in = {0};
 +    struct AppleSMCParam    out = {0};
-+    char                    *osk_buffer;
 +
 +    /* OSK key size + '\0' */
-+    osk_buffer = g_malloc0(65);
-+    osk_buffer[64] = '\0';
++    *host_osk = g_malloc0(65);
++    (*host_osk)[64] = '\0';
 +
-+    realsmc = IOServiceGetMatchingService(kIOMasterPortDefault,
++    hostsmc_service = IOServiceGetMatchingService(kIOMasterPortDefault,
 +                                          IOServiceMatching("AppleSMC"));
-+    if (realsmc == IO_OBJECT_NULL) {
++    if (hostsmc_service == IO_OBJECT_NULL) {
 +        warn_report("host AppleSMC device is unreachable");
-+        goto osk_buffer_free;
++        goto error_osk_buffer_free;
 +    }
 +
-+    status = IOServiceOpen(realsmc, mach_task_self(), 1, &realsmc_connect);
-+    if (status != kIOReturnSuccess || realsmc_connect == IO_OBJECT_NULL) {
++    status = IOServiceOpen(hostsmc_service,
++                           mach_task_self(),
++                           1,
++                           &hostsmc_connect);
++    if (status != kIOReturnSuccess || hostsmc_connect == IO_OBJECT_NULL) {
 +        warn_report("host AppleSMC device is unreachable");
-+        goto osk_buffer_free;
++        goto error_osk_buffer_free;
 +    }
 +
 +    status = IOConnectCallMethod(
-+        realsmc_connect,
++        hostsmc_connect,
 +        SMC_CLIENT_OPEN,
 +        NULL, 0, NULL, 0, NULL, NULL, NULL, NULL
 +    );
 +    if (status != kIOReturnSuccess) {
 +        warn_report("host AppleSMC device is unreachable");
-+        goto ioservice_close;
++        goto error_ioservice_close;
 +    }
 +
 +    in.key = ('OSK0');
 +    in.data_size = sizeof(out.bytes);
 +    in.command = SMC_READ_KEY;
 +    status = IOConnectCallStructMethod(
-+        realsmc_connect,
++        hostsmc_connect,
 +        SMC_HANDLE_EVENT,
 +        &in,
 +        sizeof(struct AppleSMCParam),
@@ -181,13 +202,15 @@ index 1b9acaf1d3..d4a6d1eaab 100644
 +
 +    if (status != kIOReturnSuccess) {
 +        warn_report("unable to read OSK0 from host AppleSMC device");
-+        goto ioconnect_close;
++        goto error_ioconnect_close;
 +    }
-+    strncpy(osk_buffer, (const char *) out.bytes, 32);
++    strncpy(*host_osk, (const char *) out.bytes, 32);
 +
 +    in.key = ('OSK1');
++    in.data_size = sizeof(out.bytes);
++    in.command = SMC_READ_KEY;
 +    status = IOConnectCallStructMethod(
-+        realsmc_connect,
++        hostsmc_connect,
 +        SMC_HANDLE_EVENT,
 +        &in,
 +        sizeof(struct AppleSMCParam),
@@ -196,58 +219,70 @@ index 1b9acaf1d3..d4a6d1eaab 100644
 +    );
 +    if (status != kIOReturnSuccess) {
 +        warn_report("unable to read OSK1 from host AppleSMC device");
-+        goto ioconnect_close;
++        goto error_ioconnect_close;
 +    }
-+    strncpy(osk_buffer + 32, (const char *) out.bytes, 32);
-+
-+    s->osk = osk_buffer;
++    strncpy((*host_osk) + 32, (const char *) out.bytes, 32);
 +
 +    IOConnectCallMethod(
-+        realsmc_connect,
++        hostsmc_connect,
 +        SMC_CLIENT_CLOSE,
 +        NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
-+    IOServiceClose(realsmc_connect);
-+    return;
++    IOServiceClose(hostsmc_connect);
++    return 0;
 +
-+ioconnect_close:
++error_ioconnect_close:
 +    IOConnectCallMethod(
-+        realsmc_connect,
++        hostsmc_connect,
 +        SMC_CLIENT_CLOSE,
 +        NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
-+ioservice_close:
-+    IOServiceClose(realsmc_connect);
++error_ioservice_close:
++    IOServiceClose(hostsmc_connect);
 +
-+osk_buffer_free:
-+    g_free(osk_buffer);
++error_osk_buffer_free:
++    g_free(*host_osk);
++    return -1;
 +}
 +#else
-+static void applesmc_direct_read_osk(DeviceState *dev, Error **errp)
++static int applesmc_read_host_osk(char **output_key)
 +{
-+    warn_report("isa-applesmc.oskdirect ignored: "
++    warn_report("isa-applesmc.hostosk ignored: "
 +                "unsupported on non-Apple hosts");
++    return -1;
 +}
 +#endif
 +
  static void applesmc_isa_realize(DeviceState *dev, Error **errp)
  {
-     AppleSMCState *s = APPLE_SMC(dev);
-@@ -331,6 +454,11 @@ static void applesmc_isa_realize(DeviceState *dev, Error **errp)
+-    AppleSMCState *s = APPLE_SMC(dev);
++    AppleSMCState   *s = APPLE_SMC(dev);
++    char            *host_osk;
+ 
+     memory_region_init_io(&s->io_data, OBJECT(s), &applesmc_data_io_ops, s,
+                           "applesmc-data", 1);
+@@ -331,6 +460,18 @@ static void applesmc_isa_realize(DeviceState *dev, Error **errp)
      isa_register_ioport(&s->parent_obj, &s->io_err,
                          s->iobase + APPLESMC_ERR_PORT);
  
-+    /* Use key retrieved directly from real SMC has higher priority */
-+    if (s->oskdirect && !strcmp("on", s->oskdirect)) {
-+        applesmc_direct_read_osk(dev, errp);
++    /* Key retrieved from host SMC overwrites provided OSK string */
++    if (s->hostosk_flag
++        && !strcmp("on", s->hostosk_flag)
++        && !applesmc_read_host_osk(&host_osk)) {
++        if (s->osk) {
++            warn_report("provided isa-applesmc.osk "
++                        "is overwritten with host OSK");
++            g_free(s->osk);
++        }
++        s->osk = host_osk;
 +    }
 +
      if (!s->osk || (strlen(s->osk) != 64)) {
          warn_report("Using AppleSMC with invalid key");
          s->osk = default_osk;
-@@ -344,6 +472,7 @@ static Property applesmc_isa_properties[] = {
+@@ -344,6 +485,7 @@ static Property applesmc_isa_properties[] = {
      DEFINE_PROP_UINT32(APPLESMC_PROP_IO_BASE, AppleSMCState, iobase,
                         APPLESMC_DEFAULT_IOBASE),
      DEFINE_PROP_STRING("osk", AppleSMCState, osk),
-+    DEFINE_PROP_STRING("oskdirect", AppleSMCState, oskdirect),
++    DEFINE_PROP_STRING("hostosk", AppleSMCState, hostosk_flag),
      DEFINE_PROP_END_OF_LIST(),
  };
  
