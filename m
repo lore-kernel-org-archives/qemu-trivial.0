@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1meLo0-0005JT-CR
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:31:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56946)
+	id 1meLo1-0005MC-Tz
+	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:31:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLno-0005Cm-OR; Sat, 23 Oct 2021 14:31:33 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:56289)
+ id 1meLnq-0005DX-9B; Sat, 23 Oct 2021 14:31:34 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:36341)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLnm-0006Vr-2t; Sat, 23 Oct 2021 14:31:32 -0400
+ id 1meLnn-0006X9-Le; Sat, 23 Oct 2021 14:31:33 -0400
 Received: from quad ([82.142.24.54]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MmlCY-1n4MsV1wqk-00jrTS; Sat, 23
- Oct 2021 20:31:25 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1Mw99Y-1muugE43Fs-00s4y4; Sat, 23
+ Oct 2021 20:31:27 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?O=C4=9Fuz=20Ersen?= <oguzersen@protonmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 01/11] po: update turkish translation
-Date: Sat, 23 Oct 2021 20:31:13 +0200
-Message-Id: <20211023183123.813116-2-laurent@vivier.eu>
+Subject: [PULL 04/11] MAINTAINERS: Add myself as reviewer of 'Machine core' API
+Date: Sat, 23 Oct 2021 20:31:16 +0200
+Message-Id: <20211023183123.813116-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211023183123.813116-1-laurent@vivier.eu>
 References: <20211023183123.813116-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:q42VG5CpW34qgtqnsD3n0pcV2PKrltN3ceYw+vxEnAkdMd28jOM
- G8MNbI9NZfKsKUGzy/deqsyeWZEZBLd7+SRw0wMox4rHH9j2QRYRyDl8e2XEZwCdxtXWo84
- fYEkuE66sU6YOa8hFcznVKyO02TC5GiMpGFKrvBnX5gziTclYnNIqxAEmJ4OtOpebm47inc
- 15H3SCZm2T3U12KKL4Kvw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:UelQeXauHDY=:1SW5WqoutapakELsUZjrb/
- wsN0n3u6e+HhprkDZeWD7oKYTiB0pvJQVbQQAEDyHsTDMpyBHJjhAqrdwKnIx+kzkgt16lWFI
- wu8rSIQ8GsxTS9x1KkATcSQk/fVVf7oFz7nIEI4wCtngytjatjga3MO6TcUHbCjeQjgb82hHO
- BrRE7KW3r9PL95kMWBWi3qe4wQrStovUgfAQK0Zn0lbSLzWTmdjM26KcnQM8znK1g/aeGzvaB
- yDEcc80uNFtXMoynW3UCu4SYF4xyGljmrkcTpjGdIMOZhSyN6b+0OBWP8dkCHewQW2oe0Ql4V
- 5V+qSF0e6elKKH1AehvQk83Q7FnGC5+P5GeIb3CbTXs4re/X0JjrpEYeqD7gM/UKwnnc62Q+S
- kAXlpF8+LHgUtq2L13PDrXPCf1Tdll5ZD2a99oVwnOP8lAIypV/XrsZxshIJMVdy3oGQz8InP
- qzJMSbqaep0Nr1tHDwuJYIjGrumtp5r38oT47MpJBzhw9VngFabB4iVfzdv1ANuOR/29E1MjS
- rkBCuJ/4bwe8+EArzuZilVmbEgWCL0YvwycCLAvIotXPMzrby7fu5v+bSmt5dm7UoaPJgaSUV
- fnIBqJG+G1zKeIKj9LvgHvfklpcdqky6akRh+jGL6b+tzmpk7O/rYjgo37XCATP7vtaDQH9yv
- 9puPBTYJUf7UgKzqAM4hP/qNVHjEO/2U1jcZJDGiztEPXp2q2U7gT8KFoFUYWyU16tG0=
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:BvcAaw+R/IwhQ4xfQkGCnhA5wh/x5okd9ZFDYBS3QRl8/mHhl6q
+ ffJeq12APrx2mcYaKuNUUwVRchX5wfuDZMzPMZeQeZlET3SbdgmBqtxhau9wUQDMwYZEum8
+ VJ/8JmqZP73TUhGgpd4iRTxhe1gzInDoDGlulQ30Ou9RRwey109E7nWb3q4u+vy6NFxsgAt
+ 5BBRfbF+dfMmZIXBw1zdg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:3o8ni+6GUSw=:d8dCzrCjqKLIYW9yu79q1f
+ AV98GARjT2extYWcw67fQG+H4/C/iFKgnDuAO0OzestQlzBtoiP5gK9bwe3UfnN4qn3NO2SVf
+ iyMQz1KtOR/k6RvVQoBNukFYNnuVfQ0QG44jIORamE5E+Kbg8r+hIxR8K89hbeBQdaoo3oqm2
+ iDE2x/woih2zVbv1ZLXir73SesJ1fxa/ZWaYEKP5JH8EgREwrvzBb4Gt7e16R++S+PvnP8yDN
+ dk1fXu2b9+OoqPKqGr8ZHldaWglmuh4CNCX9OeJU5bIgFfr7jEOiEIrqnAkFi39nTUrvkOfG9
+ M06sdpKWWabRM4nqbNii5VTXZZaqkf2I+OJFXbh0TqGJKeQh/OEpTfpunR5RTk/3GP41Q27el
+ dpYXCfhAcCP11wjun9fZiZWbYofiy8zsYdO67Kjg8JVP8jPyQe+vqyQonLUBxCwF5a/dCfYuR
+ HMCocwSp9KOa46x9DmK5/s4gIaYGc9oqDCHt0brVx1/OCMyQTDqfSRUT9C2JM7h6VxO76pn1E
+ TR+joYRwrFSrUlDwxAbqjTpBF6nV8+E4+139XxTElnLG9D+r2RXV1A941Y6gmdEEssjh/RCEc
+ Y2GCtduqvt4wyj4D4gPq/JI9aTs7tIv8eZNiKb2A2ZlkCVEA/pvtMYznegQxhSvRLzYSITi/b
+ 7Io9f/cvcix0QPSoNZZ6v2Lk2PcqLMzYmVi5JvSqhpfBmLOp8KR4tSFtz9viD3zENBf0=
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -61,89 +61,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Oct 2021 18:31:34 -0000
+X-List-Received-Date: Sat, 23 Oct 2021 18:31:36 -0000
 
-From: Oğuz Ersen <oguzersen@protonmail.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Message-Id: <lDpmNUjNrVETJ2QoHoYmSoRvKoEIVFbF4IZAa1R5PVzqPCTh7nmV_ERHQlgYtNJN1Ppagtvelbo4uhSihEd5bSqIxCvGQchEWVpP-ofn2kw=@protonmail.com>
-Signed-off-by: Oğuz Ersen <oguzersen@protonmail.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-[lv,pb: s/K_opyala/_Kopyala/;s/Se_kmeleri/_Sekmeleri/]
+In order to help Eduardo and Marcel with the machine
+core API, add myself as reviewer. That will also help
+me to learn more about this subsystem :)
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Message-Id: <20211007093108.323223-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- po/tr.po | 25 ++++++++++++-------------
- 1 file changed, 12 insertions(+), 13 deletions(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/po/tr.po b/po/tr.po
-index 632c7f385132..f4f0425c4319 100644
---- a/po/tr.po
-+++ b/po/tr.po
-@@ -1,14 +1,15 @@
- # Turkish translation for QEMU.
- # This file is put in the public domain.
- # Ozan Çağlayan <ozancag@gmail.com>, 2013.
-+# Oğuz Ersen <oguzersen@protonmail.com>, 2021.
- #
- msgid ""
- msgstr ""
- "Project-Id-Version: QEMU 1.4.50\n"
- "Report-Msgid-Bugs-To: qemu-devel@nongnu.org\n"
- "POT-Creation-Date: 2018-07-18 07:56+0200\n"
--"PO-Revision-Date: 2013-04-22 18:35+0300\n"
--"Last-Translator: Ozan Çağlayan <ozancag@gmail.com>\n"
-+"PO-Revision-Date: 2021-08-15 22:17+0300\n"
-+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
- "Language-Team: Türkçe <>\n"
- "Language: tr\n"
- "MIME-Version: 1.0\n"
-@@ -33,24 +34,22 @@ msgid "Power _Down"
- msgstr "_Kapat"
- 
- msgid "_Quit"
--msgstr ""
-+msgstr "_Çıkış"
- 
- msgid "_Fullscreen"
--msgstr ""
-+msgstr "_Tam Ekran"
- 
- msgid "_Copy"
--msgstr ""
-+msgstr "_Kopyala"
- 
--#, fuzzy
- msgid "Zoom _In"
--msgstr "Yakınlaş ve Sığ_dır"
-+msgstr "_Yakınlaş"
- 
--#, fuzzy
- msgid "Zoom _Out"
--msgstr "Yakınlaş ve Sığ_dır"
-+msgstr "_Uzaklaş"
- 
- msgid "Best _Fit"
--msgstr ""
-+msgstr "_En Uygun"
- 
- msgid "Zoom To _Fit"
- msgstr "Yakınlaş ve Sığ_dır"
-@@ -62,13 +61,13 @@ msgid "_Grab Input"
- msgstr "Girdiyi _Yakala"
- 
- msgid "Show _Tabs"
--msgstr "Se_kmeleri Göster"
-+msgstr "_Sekmeleri Göster"
- 
- msgid "Detach Tab"
--msgstr ""
-+msgstr "Sekmeyi Ayır"
- 
- msgid "Show Menubar"
--msgstr ""
-+msgstr "Menü Çubuğunu Göster"
- 
- msgid "_Machine"
- msgstr "_Makine"
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4e77d03651bb..894dc4310526 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1617,6 +1617,7 @@ F: pc-bios/bios-microvm.bin
+ Machine core
+ M: Eduardo Habkost <ehabkost@redhat.com>
+ M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
++R: Philippe Mathieu-Daudé <philmd@redhat.com>
+ S: Supported
+ F: cpu.c
+ F: hw/core/cpu.c
 -- 
 2.31.1
 
