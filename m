@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1meLo3-0005Pv-Or
+	id 1meLo3-0005Qs-VG
 	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:31:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57008)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLnw-0005Gc-1Z; Sat, 23 Oct 2021 14:31:41 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:45897)
+ id 1meLnx-0005H7-RY; Sat, 23 Oct 2021 14:31:43 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:60345)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLnr-0006Zo-S0; Sat, 23 Oct 2021 14:31:39 -0400
+ id 1meLns-0006Zw-Ap; Sat, 23 Oct 2021 14:31:40 -0400
 Received: from quad ([82.142.24.54]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MAOeB-1mYcW01XqN-00BthL; Sat, 23
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1N2Unv-1mpBUr3Y23-013rKZ; Sat, 23
  Oct 2021 20:31:31 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 11/11] analyze-migration.py: fix extract contents ('-x') errors
-Date: Sat, 23 Oct 2021 20:31:23 +0200
-Message-Id: <20211023183123.813116-12-laurent@vivier.eu>
+Subject: [PULL 10/11] analyze-migration.py: fix a long standing typo
+Date: Sat, 23 Oct 2021 20:31:22 +0200
+Message-Id: <20211023183123.813116-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211023183123.813116-1-laurent@vivier.eu>
 References: <20211023183123.813116-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:CarLG2sdS3W7idOI9tEpAj1vPolrYUWKi5sgCd+ep0jBCVUjNGB
- jJ8jdY7NffvHY6iY7Mw3R0PNTQJn2vdFLy6s4bObMnjShrdzblgrWpmYVOSHvbnShIWAyyq
- KrMeM5Pu0SpuiOyDHyFGX3RAYxKU+ecMYBZXAoMq6PJQlRD8/tc2N8VzpDsLIorLbMICoER
- ZRBE+czLpcOT0ZBaEMd4w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:MMtDmQYFf9A=:g1EcDkUnbGVR+dCJjcsLe7
- ohKx5boA2wM7A9AUe0Jcbvm0fx4TEPHF4QOfL5N4J+WqJ0aUtMerstKWFdxDvYliTE3TaFBT5
- hN5h6IEgCC0ZYDTKtX/qGbKK6EMLVj/y1P0QaDlXYCaBZpUt428Nhq9BnzvZL9XDZXnq1qcjX
- M8Jjb9J9Ok5OHmdUtEv27BrLomAidZBS8B9M8W+JWkLqsNb2yyTt647mlRBekrvMCiMIn+Aki
- XMa+VjWeQgbbBLF/e+kyKvsh0J0zWuUnfSiH0oz9U6+dbFnFytLhG9aPXXXtRFl0uMw974/IL
- +Y5XtF/WvcQDKYDr0YEvM7+6a7cRYD5j+5rLI6fTtZnmt1qZ+DMhsBzGXSr3bo8n3MRzwI30D
- Ge4+1/tNjDnm2z/QE/+weHYJU86OzRf7qwXRtzPH7Mh94TJb/FH+3klOzPC15y07Rhx4ue3XI
- y7go1PH2G4XPc1F0e6klFKT0P+N4qGnN8dXsFf0LpeT+cIwHmeLR7I2veotZNOJMeytOw1hwb
- JbeA/U3SHtNhxBmR0/ZDXvx6aoxlARU1YvH8xrG9uC0umKWMDS2B4fUZywqOUzrpdTPt7ZvpE
- 5yhUBoNWiPwlWDxy6aSjYBCWm/rNcTOEI3lXlX8TlU85jDpKXjHjFAufNfiG2Cse3IFDPpDNi
- oDKA+AJSw/eiqV/jfDBsJmu/mjr1xQYstfe+RejvKuhfTl+tUo8/MM2aym9KVJ2pgXiY=
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:gh06F+74oA6StfovsGBNpmNQWQNQxicljU8ZhpCb/oP1DHJDoK8
+ MJfwckMAxCUOI8d071lZlFdpLMp8DyfM3eMjOkp56sl/ZKRSGcLgTnJMC1EVZ7kfuhV8JlJ
+ hRLK65hClCdsOsBYGXMjZK2nXicKeqEcQsWt2OLE2SBohDyM8zNU9g/E1sfGh5Gj0wInpEt
+ ZmG5y1NuS2KkJ+f3rBS/A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:/0Jaj9Cwajk=:+3LF5aEWV44siaLIWI8Ky0
+ bjRNbcr0yP7+EWA2Lt40Vi8vDpCTn7H7NsIpuOYcWSdJXCtyiaF+zugClcbQaTQiuyOnTdXRM
+ w4/Dav0QX7pGFkr8f6IxyFy5bTdB6LTIDB4C90TtPzlJVEfUNb34I/jpYsrmU4ZFf5koeIJeN
+ 4rNVg1FtXu57c75bLUbZorvDK3/B2dYK80aGIlPVWQn13awL4I92BQ/1FM6qG2dWgNqp+UAqQ
+ xE4hV2QgzEOtuI2HPQXm+uMBLO/MoYIYV0HFn9mpEbx6+1S5tIJ/bjJviFPuPLpcL9HZPqSlI
+ TmrY0QRu+rQTlPXc0w6feszmf7UKkJInZjJk2E4BWWCXWN/ea8IZMBR1BOW15C2MQ4LTI90bK
+ m3xCsfcH6i0Jm02Xa8UfoDp2qv2PeunNWg2r35pTeNtGyCi04bWoakVBO7YHHMJPjyUoiZ9jS
+ +p3VGvkuWJgK/2ZmuAhhQwgIUezPzrFR81V5g1kh4rjCmBedbkbNrXYNyxTbAUYXu6fLV+N57
+ jP/x8rD6h/SVRGqA58pE5q/v7xIJ3GQgyXymm6ucw2m9/rMn4WA1czUXUVLLmjDWtryvmxVUc
+ 9EoKmj+7CHLpn4mP+DYxyBRfG9LA+voPQdv7p/DQpTGZ2v2H+bjtdIkvjTqufK/SmMSLM1+yH
+ jvXvNr55pz2Z8TAkjP5q+BaB+cKFickbdqljZ/qK1N+qCFd6nPvYaIIU3Q/3Bqc7sIuY=
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -61,59 +61,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Oct 2021 18:31:43 -0000
+X-List-Received-Date: Sat, 23 Oct 2021 18:31:44 -0000
 
 From: Laurent Vivier <lvivier@redhat.com>
 
-When we try to use 'analyze-migration.py -x' with python3,
-we have the following errors:
+The parameters of '-d' can be either 'state' or 'desc', not 'dump'
+as it is reported in the error message.
 
-  Traceback (most recent call last):
-    File "scripts/analyze-migration.py", line 593, in <module>
-      f.write(jsonenc.encode(dump.vmsd_desc))
-  TypeError: a bytes-like object is required, not 'str'
-
-  Traceback (most recent call last):
-    File "scripts/analyze-migration.py", line 601, in <module>
-      f.write(jsonenc.encode(dict))
-  TypeError: a bytes-like object is required, not 'str'
-
-This happens because the file 'f' is open in binary mode while
-jsonenc.encode() returns a string.
-
-The results are human-readable files, 'desc.json' and 'state.json',
-so there is no reason to use the binary mode.
-
+Fixes: b17425701d66 ("Add migration stream analyzation script")
 Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20211015131645.501281-3-lvivier@redhat.com>
+Message-Id: <20211015131645.501281-2-lvivier@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- scripts/analyze-migration.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ scripts/analyze-migration.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/analyze-migration.py b/scripts/analyze-migration.py
-index 9d239d309f33..b82a1b0c58c4 100755
+index d7177b212c86..9d239d309f33 100755
 --- a/scripts/analyze-migration.py
 +++ b/scripts/analyze-migration.py
-@@ -588,7 +588,7 @@ def default(self, o):
- 
+@@ -610,4 +610,4 @@ def default(self, o):
      dump.read(desc_only = True)
-     print("desc.json")
--    f = open("desc.json", "wb")
-+    f = open("desc.json", "w")
-     f.truncate()
-     f.write(jsonenc.encode(dump.vmsd_desc))
-     f.close()
-@@ -596,7 +596,7 @@ def default(self, o):
-     dump.read(write_memory = True)
-     dict = dump.getDict()
-     print("state.json")
--    f = open("state.json", "wb")
-+    f = open("state.json", "w")
-     f.truncate()
-     f.write(jsonenc.encode(dict))
-     f.close()
+     print(jsonenc.encode(dump.vmsd_desc))
+ else:
+-    raise Exception("Please specify either -x, -d state or -d dump")
++    raise Exception("Please specify either -x, -d state or -d desc")
 -- 
 2.31.1
 
