@@ -1,55 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1meLoI-0005fp-FN
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:32:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57066)
+	id 1meLoE-0005bH-JT
+	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:31:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57038)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLo1-0005Kj-6C; Sat, 23 Oct 2021 14:31:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:55043)
+ id 1meLny-0005HB-C3; Sat, 23 Oct 2021 14:31:43 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:37841)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLny-0006er-0G; Sat, 23 Oct 2021 14:31:44 -0400
+ id 1meLnv-0006d8-Ug; Sat, 23 Oct 2021 14:31:42 -0400
 Received: from quad ([82.142.24.54]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1N4A1h-1mnWng3XA9-0101Zx; Sat, 23
- Oct 2021 20:31:30 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MWAf4-1mCGFb4BpK-00XZJq; Sat, 23
+ Oct 2021 20:31:26 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Tong Ho <tong.ho@xilinx.com>,
- "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
+Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 08/11] hw/nvram: Fix Memory Leak in Xilinx ZynqMP eFuse device
-Date: Sat, 23 Oct 2021 20:31:20 +0200
-Message-Id: <20211023183123.813116-9-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>
+Subject: [PULL 02/11] disas/nios2: Fix style in print_insn_nios2()
+Date: Sat, 23 Oct 2021 20:31:14 +0200
+Message-Id: <20211023183123.813116-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211023183123.813116-1-laurent@vivier.eu>
 References: <20211023183123.813116-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:NwSi9Ss8j1VXdmTgo13aOsmLR+XhahedXiwgM/x3gOJG9e4tLOU
- FgsE5D5grYr0n9qiY6RVjsBewwuuUA2IFlOIZV/V1d3QMQcgAVGKIgc28GNGjHuqOtjIxvi
- +omzsPJfvq/hi+X9WsLEZOowXoE1BeRNXRrKcH+zVCPdgLywP/NwDQCmVIqY9j2b8jgqG0A
- mL+QqAebwqbCejmYlD3rA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:XWEbJ8JYNfs=:NUNIszOwJIvOhxuB19LFoW
- w9B1LBRoXArRUWpykKpAosjapAptZbPhxHgFFujX8mY2OYd7arsgMCWtB32YNDak5iLDwUXUQ
- K7oCdZXBaY9gB/KpU+4VLGYRAkOT6YoaB26HJ6AqXC2ei7ULoi0cMxlghK/JI9gfTRjZ0TBUO
- ABkF2V1BpXzgSiCswZAb27Yc3anZmYY4xDhJ7CONhZilADCzvfyNZXq+nr9wMrNphmnzjw6gu
- g2wJesHE9IXMis0P0HaP4TInQTcghPX6CsEZMFMAauh8sguI9arq+BlJj0hbERjFdw4c+gI06
- BhReDAwZkTGnvz/onbsWo1VwA77YqvYICJQapRGXhLdAsJ4jTsOJhquFDYfftWC7bHWupfeRM
- ix3KrGfP/1sYo+inm/9bO/lrIhMQiEokv0mnmOPSU8LzlaLnu1L+YGnokz01EIRN1GnfF1AaM
- 7/KDeXO6+0ABjHsp7M3JV3O3cMJVj/d8fLnMDXzRqKF2iWOfKqvRS2XVC5CtXWMbGECvZJ7EW
- 4MlfN9WZDBgZGDQYyM+gcRbOSyU4C0M1YF/IBdfClTEoUMsJpoXH9KJXLCnwvUOJvCxfMn9cq
- TEs0j1Thk4tLEx0BB5DvqohrKnFOlffcMGKI/JQViT2mIGCcJj5neVMOxsWFauwysH7XBDwil
- h2Sc4l4azgQxTvFRGaD3sUxl68xhWnpEi4aIaFz0l0G1AlBVGKBRRrCLuIev043HPx5E=
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:J2imc0LOif9UCAQ+mHsql75U60CbN8h+9UQl51APvZ1v6491qtc
+ IRNML1HKxtcM/JA5erO+CibWZXITubto78V4LQyKWAZ/vPicPer9yEdeAINaN2huA1WxhUL
+ 543X2t39XPbYzNFstXzN/ddTfJBDn87HLZbSs9ICRLbtLSSjgwooqnz29cfg6V6Fa9FAxD8
+ yqkjGMIs2L0rkuXVR9EGg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:CKLP98HpyR8=:1+SbtK2Ft5C1Xvom8IoISY
+ 7s7Jq3EsrL/AtyH3S/V0QV+w+J2av1E2l3t1EqUiHx7B2BQrJ5xAPbVJxBt5yO4eiQIYNdwdk
+ AGgZhnNY6HrcenogRDCjN2rZCo28EsWJicPdOpJjyvcgwIgsDkgELsKL/VOlTFVrImqyGLfc7
+ KArhAzvPtJUhzWkIsqvzJatlDuwCdE0ICpafewv34bYD70nGcKsMDPaP5zbHs4Soa4heV0Gwy
+ RcvLXrW8OHwYzbW7I5BvKFx0lxSciQ3mRIznYUe+e/jM1SJf5MXJ98+bpp83MiBU9u1hHGohF
+ JxqyYbJKaGvCULioZkBqYoLHXQhqoQiCdOIdPsQs2cjnafs0oRdpJwNdd68N/Z63gBdzq/Zoo
+ gPhqX9TGbU/0DNR3M0HQAbx/IZNS6jgbYEP/GBYiFtPcrTyRrqGk5GJ1poCnaUpje5qZxe1M9
+ jGhqu3dKatec+g+E0tcvFFOFZP5CchfvYtxQ8wS9oxvX/U2ZxXgQeHwR063eceZ17OH5u7h7B
+ 2yTxVYMYE3FlVZGvchyAIOoYpdHjJ4ZArWmpmsvHU5ORze5d+IviSKwrxBFaT3FOhzGsAm8jw
+ mRn+imyLhjYoPNsZ3Xk7yKRA4q/TnJvAK4D6AeYjE3emxUlAvHwsEAzWSDYtwZI5vwk9vitcZ
+ 5r8kgEcrEx3Df52kENabrd0CQ+EW5NvxKmRk4vgDMfQmZiOAgtv1M8rTS90PwkRaqnHA=
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -63,85 +61,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Oct 2021 18:31:46 -0000
+X-List-Received-Date: Sat, 23 Oct 2021 18:31:44 -0000
 
-From: Tong Ho <tong.ho@xilinx.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Signed-off-by: Tong Ho <tong.ho@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20211015203532.2463705-4-tong.ho@xilinx.com>
+We are going to modify this function, fix its style first.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20210807110939.95853-2-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/nvram/xlnx-zynqmp-efuse.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ disas/nios2.c | 55 +++++++++++++++++++++++++--------------------------
+ 1 file changed, 27 insertions(+), 28 deletions(-)
 
-diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
-index 1f87dbf988d1..228ba0bbfaf1 100644
---- a/hw/nvram/xlnx-zynqmp-efuse.c
-+++ b/hw/nvram/xlnx-zynqmp-efuse.c
-@@ -434,11 +434,12 @@ static void zynqmp_efuse_pgm_addr_postw(RegisterInfo *reg, uint64_t val64)
-     if (!errmsg) {
-         ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_ERROR, 0);
-     } else {
-+        g_autofree char *path = object_get_canonical_path(OBJECT(s));
-+
-         ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_ERROR, 1);
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s - eFuse write error: %s; addr=0x%x\n",
--                      object_get_canonical_path(OBJECT(s)),
--                      errmsg, (unsigned)val64);
-+                      path, errmsg, (unsigned)val64);
-     }
- 
-     ARRAY_FIELD_DP32(s->regs, EFUSE_ISR, PGM_DONE, 1);
-@@ -448,6 +449,7 @@ static void zynqmp_efuse_pgm_addr_postw(RegisterInfo *reg, uint64_t val64)
- static void zynqmp_efuse_rd_addr_postw(RegisterInfo *reg, uint64_t val64)
+diff --git a/disas/nios2.c b/disas/nios2.c
+index c3e82140c798..d124902ae3e1 100644
+--- a/disas/nios2.c
++++ b/disas/nios2.c
+@@ -3482,38 +3482,37 @@ static int
+ print_insn_nios2 (bfd_vma address, disassemble_info *info,
+ 		  enum bfd_endian endianness)
  {
-     XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(reg->opaque);
-+    g_autofree char *path = NULL;
- 
-     /*
-      * Grant reads only to allowed bits; reference sources:
-@@ -538,10 +540,10 @@ static void zynqmp_efuse_rd_addr_postw(RegisterInfo *reg, uint64_t val64)
-     return;
- 
-  denied:
-+    path = object_get_canonical_path(OBJECT(s));
-     qemu_log_mask(LOG_GUEST_ERROR,
-                   "%s: Denied efuse read from array %u, row %u\n",
--                  object_get_canonical_path(OBJECT(s)),
--                  efuse_ary, efuse_row);
-+                  path, efuse_ary, efuse_row);
- 
-     s->regs[R_EFUSE_RD_DATA] = 0;
- 
-@@ -731,9 +733,11 @@ static void zynqmp_efuse_reg_write(void *opaque, hwaddr addr,
-     s = XLNX_ZYNQMP_EFUSE(dev);
- 
-     if (addr != A_WR_LOCK && s->regs[R_WR_LOCK]) {
-+        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+-  bfd_byte buffer[INSNLEN];
+-  int status;
+-
+-  status = (*info->read_memory_func) (address, buffer, INSNLEN, info);
+-  if (status == 0)
+-    {
+-      unsigned long insn;
+-      if (endianness == BFD_ENDIAN_BIG)
+-	insn = (unsigned long) bfd_getb32 (buffer);
+-      else
+-	insn = (unsigned long) bfd_getl32 (buffer);
+-      return nios2_disassemble (address, insn, info);
++    bfd_byte buffer[INSNLEN];
++    int status;
 +
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s[reg_0x%02lx]: Attempt to write locked register.\n",
--                      object_get_canonical_path(OBJECT(s)), (long)addr);
-+                      path, (long)addr);
-     } else {
-         register_write_memory(opaque, addr, data, size);
-     }
-@@ -784,8 +788,10 @@ static void zynqmp_efuse_realize(DeviceState *dev, Error **errp)
-     XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(dev);
- 
-     if (!s->efuse) {
-+        g_autofree char *path = object_get_canonical_path(OBJECT(s));
-+
-         error_setg(errp, "%s.efuse: link property not connected to XLNX-EFUSE",
--                   object_get_canonical_path(OBJECT(dev)));
-+                   path);
-         return;
++    status = (*info->read_memory_func)(address, buffer, INSNLEN, info);
++    if (status == 0) {
++        unsigned long insn;
++        if (endianness == BFD_ENDIAN_BIG) {
++            insn = (unsigned long) bfd_getb32(buffer);
++        } else {
++            insn = (unsigned long) bfd_getl32(buffer);
++        }
++        return nios2_disassemble(address, insn, info);
      }
  
+-  /* We might have a 16-bit R2 instruction at the end of memory.  Try that.  */
+-  if (info->mach == bfd_mach_nios2r2)
+-    {
+-      status = (*info->read_memory_func) (address, buffer, 2, info);
+-      if (status == 0)
+-	{
+-	  unsigned long insn;
+-	  if (endianness == BFD_ENDIAN_BIG)
+-	    insn = (unsigned long) bfd_getb16 (buffer);
+-	  else
+-	    insn = (unsigned long) bfd_getl16 (buffer);
+-	  return nios2_disassemble (address, insn, info);
+-	}
++    /* We might have a 16-bit R2 instruction at the end of memory. Try that. */
++    if (info->mach == bfd_mach_nios2r2) {
++        status = (*info->read_memory_func)(address, buffer, 2, info);
++        if (status == 0) {
++            unsigned long insn;
++            if (endianness == BFD_ENDIAN_BIG) {
++                insn = (unsigned long) bfd_getb16(buffer);
++            } else {
++                insn = (unsigned long) bfd_getl16(buffer);
++            }
++            return nios2_disassemble(address, insn, info);
++        }
+     }
+ 
+-  /* If we got here, we couldn't read anything.  */
+-  (*info->memory_error_func) (status, address, info);
+-  return -1;
++    /* If we got here, we couldn't read anything.  */
++    (*info->memory_error_func)(status, address, info);
++    return -1;
+ }
+ 
+ /* These two functions are the main entry points, accessed from
 -- 
 2.31.1
 
