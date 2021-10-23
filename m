@@ -1,69 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mdxD6-0005DN-P0
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Oct 2021 12:16:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40172)
+	id 1meGpa-0002ly-7R
+	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 09:13:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42464)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
- id 1mdxD5-0005Aq-DQ; Fri, 22 Oct 2021 12:15:59 -0400
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d]:36551)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yaroshchuk2000@gmail.com>)
- id 1mdxD2-0005T8-UR; Fri, 22 Oct 2021 12:15:59 -0400
-Received: by mail-lf1-x12d.google.com with SMTP id g36so1698556lfv.3;
- Fri, 22 Oct 2021 09:15:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=EvDCHWnksCSisypyIi5MkBKJA+rl9od5gVKT6Ixycns=;
- b=I/CJJtN+1Bp4VPRUJ091hKT3d8VQCQOyucO1I1PlAbRZkv2O25l2crC0+0W/Qg6Eo5
- TZYwiFnM3mvXUvPfOiQAwP0PATTjy8XtZ+ANuLbGR+VShsib0jchzCyg4OmqspDR7Gdl
- X01aAtp50DD0ks1vBWVDtd2OMM4djfy1hl2Ztv9vZX+fYDaqweURml51c/FX2Sv+kN2w
- cUdWvp2t22DdhGhFIhYlvY88ZznuMMLw7/uDRYn0IoAdwdbb2TPnV8V8kKkVTWnyhWO6
- +FVsThXwrifx7crRLkTfETLt39O7It7Ozm2O6y4ZiDtAQF0DBHB+1cYWhrSxMGA+DIzn
- WSyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=EvDCHWnksCSisypyIi5MkBKJA+rl9od5gVKT6Ixycns=;
- b=w0Cg2MWaNIZqSeBjbbXlo4Hmfyuofk+fNZNbf03Wf2bdiT5IkLJK+dv1H0LXLjzbi7
- hc33DN8WuaRnuU5tuGo9+jXKjQdFBU3IJrEcHvzdYtvD2/vBfLc1LQtMiP+yvAD8m0/f
- NqctyeN3SmpTbvDgb3Tf0kbFX5/vOqP9vUUlhYzR58DidzqDn20W4lX0VJ/kvKIwyjKr
- Jqe9vtUWXQ8Y2m6CZ3/SgD4jIKz0Jvlnuo+BV4JqPPbHueTv1sofbUdhXmc+MTrbm7e/
- 4EJXlCx/P/IRAd4bwPYMbheAdMLu6HkBVt2F4UHZArRo6LUxduKzhoROVKgIAgLBruet
- fL8g==
-X-Gm-Message-State: AOAM532he+/k+0QurVfxekdeH8CvosLd7IUdqNx1lqDSh07U6wf5KDzt
- qtG1svdQJb9Mz5Qram/JgegJkKCnCJrNZw==
-X-Google-Smtp-Source: ABdhPJxSN9p/Zrm81huqjOZnlzxAtI5PmsMPppapAw9BiSSa31I5ekuWdQX+4I86zjx75X9fAXW6yw==
-X-Received: by 2002:a05:6512:3107:: with SMTP id
- n7mr581341lfb.179.1634919354400; 
- Fri, 22 Oct 2021 09:15:54 -0700 (PDT)
-Received: from localhost.localdomain ([77.234.205.3])
- by smtp.gmail.com with ESMTPSA id o26sm933909ljg.92.2021.10.22.09.15.53
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 22 Oct 2021 09:15:54 -0700 (PDT)
-From: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, r.bolshakov@yadro.com, agraf@suse.de,
- suse@csgraf.de, f4bug@amsat.org, laurent@vivier.eu,
- Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
-Subject: [PATCH v4] isa-applesmc: provide OSK forwarding on Apple hosts
-Date: Fri, 22 Oct 2021 19:14:48 +0300
-Message-Id: <20211022161448.81579-1-yaroshchuk2000@gmail.com>
-X-Mailer: git-send-email 2.23.0
+ (Exim 4.90_1) (envelope-from <kevans@freebsd.org>)
+ id 1meBUn-0005zS-OY; Sat, 23 Oct 2021 03:31:15 -0400
+Received: from mx2.freebsd.org ([96.47.72.81]:48599)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kevans@freebsd.org>)
+ id 1meBUj-0003Ka-Jo; Sat, 23 Oct 2021 03:31:13 -0400
+Received: from mx1.freebsd.org (mx1.freebsd.org [IPv6:2610:1c1:1:606c::19:1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits)
+ client-signature RSA-PSS (4096 bits))
+ (Client CN "mx1.freebsd.org", Issuer "R3" (verified OK))
+ by mx2.freebsd.org (Postfix) with ESMTPS id D485B98FFA;
+ Sat, 23 Oct 2021 07:31:08 +0000 (UTC)
+ (envelope-from kevans@freebsd.org)
+Received: from smtp.freebsd.org (smtp.freebsd.org [96.47.72.83])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256
+ client-signature RSA-PSS (4096 bits) client-digest SHA256)
+ (Client CN "smtp.freebsd.org", Issuer "R3" (verified OK))
+ by mx1.freebsd.org (Postfix) with ESMTPS id 4HbtDr5K9Kz3F1K;
+ Sat, 23 Oct 2021 07:31:08 +0000 (UTC)
+ (envelope-from kevans@freebsd.org)
+Received: from mail-qt1-f175.google.com (mail-qt1-f175.google.com
+ [209.85.160.175])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Client CN "smtp.gmail.com", Issuer "GTS CA 1D4" (verified OK))
+ (Authenticated sender: kevans)
+ by smtp.freebsd.org (Postfix) with ESMTPSA id 96C40A260;
+ Sat, 23 Oct 2021 07:31:08 +0000 (UTC)
+ (envelope-from kevans@freebsd.org)
+Received: by mail-qt1-f175.google.com with SMTP id n2so5620568qta.2;
+ Sat, 23 Oct 2021 00:31:08 -0700 (PDT)
+X-Gm-Message-State: AOAM531wfIKKxtT5ckIG8ibUq2n5ouyvO1jrYekyhTZKEj1B12gAFT4f
+ agA/T20MbuvA5ZB3QnPYOvdb3CECEFmDub7gOVA=
+X-Google-Smtp-Source: ABdhPJwTgG/rUhuIPO+c1wtSJbHn1gDCH044Iqek2hyhG8k5P3kFSUMnh3rJh1sGcu9/17WHMxN9EDYzV83Imalv7+U=
+X-Received: by 2002:ac8:5747:: with SMTP id 7mr4852246qtx.11.1634974268185;
+ Sat, 23 Oct 2021 00:31:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=yaroshchuk2000@gmail.com; helo=mail-lf1-x12d.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20211019164447.16359-1-imp@bsdimp.com>
+ <20211019164447.16359-4-imp@bsdimp.com>
+In-Reply-To: <20211019164447.16359-4-imp@bsdimp.com>
+From: Kyle Evans <kevans@freebsd.org>
+Date: Sat, 23 Oct 2021 02:30:57 -0500
+X-Gmail-Original-Message-ID: <CACNAnaEhoeTMXRggQZmv3S+jSy4CpytLWLZW5cxkg5L67Y=mpg@mail.gmail.com>
+Message-ID: <CACNAnaEhoeTMXRggQZmv3S+jSy4CpytLWLZW5cxkg5L67Y=mpg@mail.gmail.com>
+Subject: Re: [PATCH 03/24] bsd-user/arm/target_arch_cpu.c: Target specific TLS
+ routines
+To: Warner Losh <imp@bsdimp.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, 
+ Kyle Evans <kevans@freebsd.org>, Michael Tokarev <mjt@tls.msk.ru>,
+ Stacey Son <sson@freebsd.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=96.47.72.81; envelope-from=kevans@freebsd.org;
+ helo=mx2.freebsd.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 23 Oct 2021 09:12:57 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,231 +76,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Oct 2021 16:15:59 -0000
+X-List-Received-Date: Sat, 23 Oct 2021 07:31:17 -0000
 
-On Apple hosts we can read AppleSMC OSK key directly from host's
-SMC and forward this value to QEMU Guest.
+On Tue, Oct 19, 2021 at 11:45 AM Warner Losh <imp@bsdimp.com> wrote:
+>
+> Target specific TLS routines to get and set the TLS values.
+>
+> Signed-off-by: Klye Evans <kevans@FreeBSD.org>
 
-Usage:
-`-device isa-applesmc,hostosk=on`
+s/Klye/Kyle/ :-)
 
-Apple licence allows use and run up to two additional copies
-or instances of macOS operating within virtual operating system
-environments on each Apple-branded computer that is already running
-the Apple Software, for purposes of:
-- software development
-- testing during software development
-- using macOS Server
-- personal, non-commercial use
+> Signed-off-by: Stacey Son <sson@FreeBSD.org>
+> Signed-off-by: Warner Losh <imp@bsdimp.com>
+> ---
+>  bsd-user/arm/target_arch.h     | 28 ++++++++++++++++++++++++
+>  bsd-user/arm/target_arch_cpu.c | 39 ++++++++++++++++++++++++++++++++++
+>  2 files changed, 67 insertions(+)
+>  create mode 100644 bsd-user/arm/target_arch.h
+>  create mode 100644 bsd-user/arm/target_arch_cpu.c
+>
+> diff --git a/bsd-user/arm/target_arch.h b/bsd-user/arm/target_arch.h
+> new file mode 100644
+> index 0000000000..93cfaea098
+> --- /dev/null
+> +++ b/bsd-user/arm/target_arch.h
+> @@ -0,0 +1,28 @@
+> +/*
+> + * ARM 32-bit specific prototypes for bsd-user
+> + *
+> + *  Copyright (c) 2013 Stacey D. Son
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License as published by
+> + *  the Free Software Foundation; either version 2 of the License, or
+> + *  (at your option) any later version.
+> + *
+> + *  This program is distributed in the hope that it will be useful,
+> + *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *  GNU General Public License for more details.
+> + *
+> + *  You should have received a copy of the GNU General Public License
+> + *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef _TARGET_ARCH_H_
+> +#define _TARGET_ARCH_H_
+> +
+> +#include "qemu.h"
+> +
+> +void target_cpu_set_tls(CPUARMState *env, target_ulong newtls);
+> +target_ulong target_cpu_get_tls(CPUARMState *env);
+> +
+> +#endif /* !_TARGET_ARCH_H_ */
+> diff --git a/bsd-user/arm/target_arch_cpu.c b/bsd-user/arm/target_arch_cpu.c
+> new file mode 100644
+> index 0000000000..02bf9149d5
+> --- /dev/null
+> +++ b/bsd-user/arm/target_arch_cpu.c
+> @@ -0,0 +1,39 @@
+> +/*
+> + *  arm cpu related code
+> + *
+> + *  Copyright (c) 2013 Stacey D. Son
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License as published by
+> + *  the Free Software Foundation; either version 2 of the License, or
+> + *  (at your option) any later version.
+> + *
+> + *  This program is distributed in the hope that it will be useful,
+> + *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *  GNU General Public License for more details.
+> + *
+> + *  You should have received a copy of the GNU General Public License
+> + *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +#include "target_arch.h"
+> +
+> +void target_cpu_set_tls(CPUARMState *env, target_ulong newtls)
+> +{
+> +    if (access_secure_reg(env)) {
+> +        env->cp15.tpidrurw_s = newtls;
+> +        env->cp15.tpidruro_s = newtls;
+> +        return;
+> +    }
+> +
+> +    env->cp15.tpidr_el[0] = newtls;
+> +    env->cp15.tpidrro_el[0] = newtls;
+> +}
+> +
+> +target_ulong target_cpu_get_tls(CPUARMState *env)
+> +{
+> +    if (access_secure_reg(env)) {
+> +        return env->cp15.tpidruro_s;
+> +    }
+> +    return env->cp15.tpidrro_el[0];
+> +}
+> --
+> 2.32.0
+>
 
-Guest macOS requires AppleSMC with correct OSK. The most legal
-way to pass it to the Guest is to forward the key from host SMC
-without any value exposion.
+Modulo typo:
 
-Based on https://web.archive.org/web/20200103161737/osxbook.com/book/bonus/chapter7/tpmdrmmyth/
-
-Signed-off-by: Vladislav Yaroshchuk <yaroshchuk2000@gmail.com>
----
- hw/misc/applesmc.c | 155 ++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 154 insertions(+), 1 deletion(-)
-
-diff --git a/hw/misc/applesmc.c b/hw/misc/applesmc.c
-index 1b9acaf1d3..6bdec0063b 100644
---- a/hw/misc/applesmc.c
-+++ b/hw/misc/applesmc.c
-@@ -37,6 +37,11 @@
- #include "qemu/module.h"
- #include "qemu/timer.h"
- #include "qom/object.h"
-+#include "qapi/error.h"
-+
-+#if defined(__APPLE__)
-+#include <IOKit/IOKitLib.h>
-+#endif
- 
- /* #define DEBUG_SMC */
- 
-@@ -108,6 +113,7 @@ struct AppleSMCState {
-     uint8_t data_len;
-     uint8_t data_pos;
-     uint8_t data[255];
-+    bool hostosk_flag;
-     char *osk;
-     QLIST_HEAD(, AppleSMCData) data_def;
- };
-@@ -312,9 +318,136 @@ static const MemoryRegionOps applesmc_err_io_ops = {
-     },
- };
- 
-+#if defined(__APPLE__)
-+/*
-+ * Based on
-+ * https://web.archive.org/web/20200103161737/osxbook.com/book/bonus/chapter7/tpmdrmmyth/
-+ */
-+enum {
-+    SMC_CLIENT_OPEN      = 0,
-+    SMC_CLIENT_CLOSE     = 1,
-+    SMC_HANDLE_EVENT     = 2,
-+    SMC_READ_KEY         = 5
-+};
-+
-+struct AppleSMCParam {
-+    uint32_t    key;
-+    uint8_t     pad0[22];
-+    IOByteCount data_size;
-+    uint8_t     pad1[10];
-+    uint8_t     command;
-+    uint32_t    pad2;
-+    uint8_t     bytes[32];
-+};
-+
-+static bool applesmc_read_host_osk(char **host_osk, Error **errp)
-+{
-+    assert(host_osk != NULL);
-+
-+    io_service_t            hostsmc_service = IO_OBJECT_NULL;
-+    io_connect_t            hostsmc_connect = IO_OBJECT_NULL;
-+    size_t                  out_size = sizeof(struct AppleSMCParam);
-+    IOReturn                status = kIOReturnError;
-+    struct AppleSMCParam    in = {0};
-+    struct AppleSMCParam    out = {0};
-+
-+    /* OSK key size + '\0' */
-+    *host_osk = g_malloc0(65);
-+    (*host_osk)[64] = '\0';
-+
-+    hostsmc_service = IOServiceGetMatchingService(kIOMasterPortDefault,
-+                                          IOServiceMatching("AppleSMC"));
-+    if (hostsmc_service == IO_OBJECT_NULL) {
-+        error_setg(errp, "Unable to get host-AppleSMC service");
-+        goto error_osk_buffer_free;
-+    }
-+
-+    status = IOServiceOpen(hostsmc_service,
-+                           mach_task_self(),
-+                           1,
-+                           &hostsmc_connect);
-+    if (status != kIOReturnSuccess || hostsmc_connect == IO_OBJECT_NULL) {
-+        error_setg(errp, "Unable to open host-AppleSMC service");
-+        goto error_osk_buffer_free;
-+    }
-+
-+    status = IOConnectCallMethod(
-+        hostsmc_connect,
-+        SMC_CLIENT_OPEN,
-+        NULL, 0, NULL, 0, NULL, NULL, NULL, NULL
-+    );
-+    if (status != kIOReturnSuccess) {
-+        error_setg(errp, "Unable to connect to host-AppleSMC");
-+        goto error_ioservice_close;
-+    }
-+
-+    in.key = ('OSK0');
-+    in.data_size = sizeof(out.bytes);
-+    in.command = SMC_READ_KEY;
-+    status = IOConnectCallStructMethod(
-+        hostsmc_connect,
-+        SMC_HANDLE_EVENT,
-+        &in,
-+        sizeof(struct AppleSMCParam),
-+        &out,
-+        &out_size
-+    );
-+
-+    if (status != kIOReturnSuccess) {
-+        error_setg(errp, "Unable to read OSK0 from host-AppleSMC");
-+        goto error_ioconnect_close;
-+    }
-+    strncpy(*host_osk, (const char *) out.bytes, 32);
-+
-+    in.key = ('OSK1');
-+    in.data_size = sizeof(out.bytes);
-+    in.command = SMC_READ_KEY;
-+    status = IOConnectCallStructMethod(
-+        hostsmc_connect,
-+        SMC_HANDLE_EVENT,
-+        &in,
-+        sizeof(struct AppleSMCParam),
-+        &out,
-+        &out_size
-+    );
-+    if (status != kIOReturnSuccess) {
-+        error_setg(errp, "Unable to read OSK1 from host-AppleSMC");
-+        goto error_ioconnect_close;
-+    }
-+    strncpy((*host_osk) + 32, (const char *) out.bytes, 32);
-+
-+    IOConnectCallMethod(
-+        hostsmc_connect,
-+        SMC_CLIENT_CLOSE,
-+        NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
-+    IOServiceClose(hostsmc_connect);
-+    return true;
-+
-+error_ioconnect_close:
-+    IOConnectCallMethod(
-+        hostsmc_connect,
-+        SMC_CLIENT_CLOSE,
-+        NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
-+error_ioservice_close:
-+    IOServiceClose(hostsmc_connect);
-+
-+error_osk_buffer_free:
-+    g_free(*host_osk);
-+    return false;
-+}
-+#else
-+static bool applesmc_read_host_osk(char **output_key, Error **errp)
-+{
-+    error_setg(errp, "isa-applesmc.hostosk ignored: "
-+                     "unsupported on non-Apple hosts");
-+    return false;
-+}
-+#endif
-+
- static void applesmc_isa_realize(DeviceState *dev, Error **errp)
- {
--    AppleSMCState *s = APPLE_SMC(dev);
-+    AppleSMCState   *s = APPLE_SMC(dev);
-+    Error           *err = NULL;
- 
-     memory_region_init_io(&s->io_data, OBJECT(s), &applesmc_data_io_ops, s,
-                           "applesmc-data", 1);
-@@ -331,6 +464,25 @@ static void applesmc_isa_realize(DeviceState *dev, Error **errp)
-     isa_register_ioport(&s->parent_obj, &s->io_err,
-                         s->iobase + APPLESMC_ERR_PORT);
- 
-+    if (s->hostosk_flag) {
-+        /*
-+         * Property 'hostosk' has higher priority than 'osk'
-+         * and shadows it.
-+         * Free user-provided 'osk' property value
-+         */
-+        if (s->osk) {
-+            warn_report("isa-applesmc.osk is shadowed "
-+                        "by isa-applesmc.hostosk");
-+            g_free(s->osk);
-+        }
-+
-+        if (!applesmc_read_host_osk(&s->osk, &err)) {
-+            /* On host OSK retrieval error report a warning */
-+            error_report_err(err);
-+            s->osk = default_osk;
-+        }
-+    }
-+
-     if (!s->osk || (strlen(s->osk) != 64)) {
-         warn_report("Using AppleSMC with invalid key");
-         s->osk = default_osk;
-@@ -344,6 +496,7 @@ static Property applesmc_isa_properties[] = {
-     DEFINE_PROP_UINT32(APPLESMC_PROP_IO_BASE, AppleSMCState, iobase,
-                        APPLESMC_DEFAULT_IOBASE),
-     DEFINE_PROP_STRING("osk", AppleSMCState, osk),
-+    DEFINE_PROP_BOOL("hostosk", AppleSMCState, hostosk_flag, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
--- 
-2.23.0
-
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 
