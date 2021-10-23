@@ -1,62 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1meGpi-0002s5-Dm
+	id 1meGpi-0002sJ-JL
 	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 09:13:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42536)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42848)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kevans@freebsd.org>)
- id 1meBVF-0006Cp-CA; Sat, 23 Oct 2021 03:31:41 -0400
-Received: from mx2.freebsd.org ([2610:1c1:1:606c::19:2]:49143)
+ id 1meBWi-00073y-0D; Sat, 23 Oct 2021 03:33:12 -0400
+Received: from mx2.freebsd.org ([96.47.72.81]:50242)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kevans@freebsd.org>)
- id 1meBVB-0003Xw-G9; Sat, 23 Oct 2021 03:31:40 -0400
+ id 1meBWe-0004pc-VP; Sat, 23 Oct 2021 03:33:10 -0400
 Received: from mx1.freebsd.org (mx1.freebsd.org [96.47.72.80])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits)
  client-signature RSA-PSS (4096 bits))
  (Client CN "mx1.freebsd.org", Issuer "R3" (verified OK))
- by mx2.freebsd.org (Postfix) with ESMTPS id 5E04899801;
- Sat, 23 Oct 2021 07:31:35 +0000 (UTC)
+ by mx2.freebsd.org (Postfix) with ESMTPS id C0ABC9973A;
+ Sat, 23 Oct 2021 07:33:06 +0000 (UTC)
  (envelope-from kevans@freebsd.org)
-Received: from smtp.freebsd.org (smtp.freebsd.org [96.47.72.83])
+Received: from smtp.freebsd.org (smtp.freebsd.org
+ [IPv6:2610:1c1:1:606c::24b:4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256
  client-signature RSA-PSS (4096 bits) client-digest SHA256)
  (Client CN "smtp.freebsd.org", Issuer "R3" (verified OK))
- by mx1.freebsd.org (Postfix) with ESMTPS id 4HbtFM1lXGz3F1f;
- Sat, 23 Oct 2021 07:31:35 +0000 (UTC)
+ by mx1.freebsd.org (Postfix) with ESMTPS id 4HbtH64jP5z3F8l;
+ Sat, 23 Oct 2021 07:33:06 +0000 (UTC)
  (envelope-from kevans@freebsd.org)
-Received: from mail-qk1-f174.google.com (mail-qk1-f174.google.com
- [209.85.222.174])
+Received: from mail-qk1-f177.google.com (mail-qk1-f177.google.com
+ [209.85.222.177])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (Client CN "smtp.gmail.com", Issuer "GTS CA 1D4" (verified OK))
  (Authenticated sender: kevans)
- by smtp.freebsd.org (Postfix) with ESMTPSA id 1DA14A456;
- Sat, 23 Oct 2021 07:31:35 +0000 (UTC)
+ by smtp.freebsd.org (Postfix) with ESMTPSA id 82BA9A59B;
+ Sat, 23 Oct 2021 07:33:06 +0000 (UTC)
  (envelope-from kevans@freebsd.org)
-Received: by mail-qk1-f174.google.com with SMTP id j12so6835378qkk.5;
- Sat, 23 Oct 2021 00:31:35 -0700 (PDT)
-X-Gm-Message-State: AOAM533f7KsgnsMIaNHwGEPGjs9Ubxa36MG0n7Y3MnPUr1vIrrqWV6cV
- /hRuJQ7Iv3NUZfiT0Mf+n9t3Lc016yj9wOfAPs4=
-X-Google-Smtp-Source: ABdhPJyjVQ43d91Nrp+FKPK8UbXPxkOQNfUTZqPSfKmKKQGAYQiIMf0aQvC6XVGy+Q82eP7A+mypoafA0RvouaYYQ7Y=
-X-Received: by 2002:a37:a956:: with SMTP id s83mr3760568qke.244.1634974294733; 
- Sat, 23 Oct 2021 00:31:34 -0700 (PDT)
+Received: by mail-qk1-f177.google.com with SMTP id j12so6837380qkk.5;
+ Sat, 23 Oct 2021 00:33:06 -0700 (PDT)
+X-Gm-Message-State: AOAM532RM1yZuTzOKImiEefaNMw+A3IUZ6pcaiR50w4Z6UpwhLGrwJgw
+ 8pCnsKuA+vXg3RLcAl8/Md4iSNGdl5QS7twnp4E=
+X-Google-Smtp-Source: ABdhPJw/IFVLcz8M3/qcaFujdxkDeFu4j7Sbjp8Zz52NQ8fBwWp4lqvQWlHcDcudfPtI/UE9tDahrobmQE56BDlKJG4=
+X-Received: by 2002:ae9:df82:: with SMTP id t124mr3602912qkf.69.1634974386253; 
+ Sat, 23 Oct 2021 00:33:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20211019164447.16359-1-imp@bsdimp.com>
- <20211019164447.16359-5-imp@bsdimp.com>
-In-Reply-To: <20211019164447.16359-5-imp@bsdimp.com>
+ <20211019164447.16359-7-imp@bsdimp.com>
+In-Reply-To: <20211019164447.16359-7-imp@bsdimp.com>
 From: Kyle Evans <kevans@freebsd.org>
-Date: Sat, 23 Oct 2021 02:31:23 -0500
-X-Gmail-Original-Message-ID: <CACNAnaGdg8BjE5SJ1aAmV=DvKuRQ+eRkiZ+Am=SWHNLT4orNjg@mail.gmail.com>
-Message-ID: <CACNAnaGdg8BjE5SJ1aAmV=DvKuRQ+eRkiZ+Am=SWHNLT4orNjg@mail.gmail.com>
-Subject: Re: [PATCH 04/24] bsd-user/arm/target_arch_cpu.h: CPU Loop definitions
+Date: Sat, 23 Oct 2021 02:32:55 -0500
+X-Gmail-Original-Message-ID: <CACNAnaEyty9ZewFHBajDqrQDujaKjuQjR3T+_XX2L=e2-i618g@mail.gmail.com>
+Message-ID: <CACNAnaEyty9ZewFHBajDqrQDujaKjuQjR3T+_XX2L=e2-i618g@mail.gmail.com>
+Subject: Re: [PATCH 06/24] bsd-user/arm/target_arch_cpu.h: Dummy
+ target_cpu_loop implementation
 To: Warner Losh <imp@bsdimp.com>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org, 
  Kyle Evans <kevans@freebsd.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Olivier Houchard <cognet@ci0.org>, Stacey Son <sson@freebsd.org>
+ Sean Bruno <sbruno@freebsd.org>, Stacey Son <sson@freebsd.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2610:1c1:1:606c::19:2;
- envelope-from=kevans@freebsd.org; helo=mx2.freebsd.org
+Received-SPF: pass client-ip=96.47.72.81; envelope-from=kevans@freebsd.org;
+ helo=mx2.freebsd.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -75,69 +77,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Oct 2021 07:31:41 -0000
+X-List-Received-Date: Sat, 23 Oct 2021 07:33:12 -0000
 
 On Tue, Oct 19, 2021 at 11:45 AM Warner Losh <imp@bsdimp.com> wrote:
 >
-> target_arch_cpu.h is for CPU loop definitions. Create the file and
-> define target_cpu_init and target_cpu_reset for arm.
+> Add a boiler plate CPU loop that does nothing except return an error for
+> all traps.
 >
-> Signed-off-by: Olivier Houchard <cognet@ci0.org>
+> Signed-off-by: Sean Bruno <sbruno@FreeBSD.org>
 > Signed-off-by: Stacey Son <sson@FreeBSD.org>
 > Signed-off-by: Warner Losh <imp@bsdimp.com>
 > ---
->  bsd-user/arm/target_arch_cpu.h | 42 ++++++++++++++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
->  create mode 100644 bsd-user/arm/target_arch_cpu.h
+>  bsd-user/arm/target_arch_cpu.h | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
 >
 > diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
-> new file mode 100644
-> index 0000000000..0f3538196d
-> --- /dev/null
+> index c71ec000b3..94c9109c3f 100644
+> --- a/bsd-user/arm/target_arch_cpu.h
 > +++ b/bsd-user/arm/target_arch_cpu.h
-> @@ -0,0 +1,42 @@
-> +/*
-> + *  arm cpu init and loop
-> + *
-> + *  Copyright (c) 2013 Stacey D. Son
-> + *
-> + *  This program is free software; you can redistribute it and/or modify
-> + *  it under the terms of the GNU General Public License as published by
-> + *  the Free Software Foundation; either version 2 of the License, or
-> + *  (at your option) any later version.
-> + *
-> + *  This program is distributed in the hope that it will be useful,
-> + *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *  GNU General Public License for more details.
-> + *
-> + *  You should have received a copy of the GNU General Public License
-> + *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#ifndef _TARGET_ARCH_CPU_H_
-> +#define _TARGET_ARCH_CPU_H_
-> +
-> +#include "target_arch.h"
-> +
-> +#define TARGET_DEFAULT_CPU_MODEL "any"
-> +
-> +static inline void target_cpu_init(CPUARMState *env,
-> +        struct target_pt_regs *regs)
+> @@ -35,6 +35,28 @@ static inline void target_cpu_init(CPUARMState *env,
+>      }
+>  }
+>
+> +static inline void target_cpu_loop(CPUARMState *env)
 > +{
-> +    int i;
+> +    int trapnr;
+> +    target_siginfo_t info;
+> +    CPUState *cs = env_cpu(env);
 > +
-> +    cpsr_write(env, regs->uregs[16], 0xffffffff, CPSRWriteRaw);
-> +    for (i = 0; i < 16; i++) {
-> +        env->regs[i] = regs->uregs[i];
-> +    }
+> +    for (;;) {
+> +        cpu_exec_start(cs);
+> +        trapnr = cpu_exec(cs);
+> +        cpu_exec_end(cs);
+> +        process_queued_cpu_work(cs);
+> +        switch (trapnr) {
+> +        default:
+> +            fprintf(stderr, "qemu: unhandled CPU exception 0x%x - aborting\n",
+> +                    trapnr);
+> +            cpu_dump_state(cs, stderr, 0);
+> +            abort();
+> +        } /* switch() */
+> +        process_pending_signals(env);
+> +    } /* for (;;) */
 > +}
 > +
-> +static inline void target_cpu_reset(CPUArchState *cpu)
-> +{
-> +}
-> +
-> +#endif /* !_TARGET_ARCH_CPU_H */
+>  static inline void target_cpu_clone_regs(CPUARMState *env, target_ulong newsp)
+>  {
+>      if (newsp) {
 > --
 > 2.32.0
 >
