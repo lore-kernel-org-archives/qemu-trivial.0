@@ -1,50 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1meLo2-0005NF-4m
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:31:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56970)
+	id 1meLo3-0005Pv-Or
+	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:31:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLnq-0005Cx-29; Sat, 23 Oct 2021 14:31:34 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:54297)
+ id 1meLnw-0005Gc-1Z; Sat, 23 Oct 2021 14:31:41 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:45897)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLno-0006Xr-7y; Sat, 23 Oct 2021 14:31:33 -0400
+ id 1meLnr-0006Zo-S0; Sat, 23 Oct 2021 14:31:39 -0400
 Received: from quad ([82.142.24.54]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M8hph-1maD422au1-004oIr; Sat, 23
- Oct 2021 20:31:27 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MAOeB-1mYcW01XqN-00BthL; Sat, 23
+ Oct 2021 20:31:31 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>,
- David Hildenbrand <david@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 05/11] softmmu/physmem.c: Fix typo in comment
-Date: Sat, 23 Oct 2021 20:31:17 +0200
-Message-Id: <20211023183123.813116-6-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 11/11] analyze-migration.py: fix extract contents ('-x') errors
+Date: Sat, 23 Oct 2021 20:31:23 +0200
+Message-Id: <20211023183123.813116-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211023183123.813116-1-laurent@vivier.eu>
 References: <20211023183123.813116-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:y8oI+oP3VZBJGE7Vh5vENUQtDo2GgcjKJ7Zk2XTisExJFLPOyV+
- R5TI9b4LUtPzIDYDFaKiAvNuOuNAyRgj3jBeEvIYLhZ15WDGEudEzB/z7RTak56vNtbVkFO
- fIRghNvV9hR/QP3wNwJpsg6Ge9+WMQbgg3yNj0Xm8C9tI8dxSilBs3A0napWEYewegEf5tf
- HnIoOcgpp+Qhw5iLXrAhg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:UMVT3kHt2GE=:1x3C4wPoi7Mf96+2V4dHUH
- vQNURsYVSHsuaSU1nmm3Ss35OaxWFURQnDLh1Fl60deN+v3KHE82UBwFp4oYPUQX9lBeECyII
- d8wQYReEolsNeUk9ReOjwzzd86CPA741Ir6bRreg2lNFOOiaFs0aWw/rqNlQKw+9l3KGvEm79
- 39muCwgKfrB8QcN7DZaOmU2dqg1+1aAZ96MyafQyMOB2vQZZfWz5EXKHjSxRSZWkLvYoOWNIC
- uqDZ6x7VmwsYIlRz2bUzj1xe4b/CNvAnVK2JPOTggDd0DygJYRxi4cunBp+ifJX5anEhQDJ8j
- PZUL6M7jGYuy8goGFmr8HsKQdY6u3R8g9zv8u1MMfh8uDfHQTmC3av2zShokSp4TA8h+X0dL9
- ty2RU/imE6dwVXkdWsTH8ZKpA8FryNLy3Qvo+X8RJmBBlw1NUXClrK5of8UYb+wksAbMwsDg1
- PqJDT5vdQxt6rLRhShOahy1XzReUmTbe+FJKimJcm2BlZmvGv+rF2aPkA7QLkdw98CWtmylyY
- z0GGE2/tXfzn+BN8fHlrD6LEDVVgP9iA5RAD4OWPQE6KqENzbiblE8NrIG//RUZFeHmcc/17N
- bd9O6U/IqoWUK7Q3Sr7/+1DbhdQA/TTVX2a1qxze095jIJ7mb2vJKrtOhTgn0/WzXA0QSBpD/
- 9iLxaJoRQ7JRipTRbG5lDwQU2Mbv4qN0+o70WIjPrwrvLO9tTn1Mtwm/CZjtx5VB5Q3g=
+X-Provags-ID: V03:K1:CarLG2sdS3W7idOI9tEpAj1vPolrYUWKi5sgCd+ep0jBCVUjNGB
+ jJ8jdY7NffvHY6iY7Mw3R0PNTQJn2vdFLy6s4bObMnjShrdzblgrWpmYVOSHvbnShIWAyyq
+ KrMeM5Pu0SpuiOyDHyFGX3RAYxKU+ecMYBZXAoMq6PJQlRD8/tc2N8VzpDsLIorLbMICoER
+ ZRBE+czLpcOT0ZBaEMd4w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:MMtDmQYFf9A=:g1EcDkUnbGVR+dCJjcsLe7
+ ohKx5boA2wM7A9AUe0Jcbvm0fx4TEPHF4QOfL5N4J+WqJ0aUtMerstKWFdxDvYliTE3TaFBT5
+ hN5h6IEgCC0ZYDTKtX/qGbKK6EMLVj/y1P0QaDlXYCaBZpUt428Nhq9BnzvZL9XDZXnq1qcjX
+ M8Jjb9J9Ok5OHmdUtEv27BrLomAidZBS8B9M8W+JWkLqsNb2yyTt647mlRBekrvMCiMIn+Aki
+ XMa+VjWeQgbbBLF/e+kyKvsh0J0zWuUnfSiH0oz9U6+dbFnFytLhG9aPXXXtRFl0uMw974/IL
+ +Y5XtF/WvcQDKYDr0YEvM7+6a7cRYD5j+5rLI6fTtZnmt1qZ+DMhsBzGXSr3bo8n3MRzwI30D
+ Ge4+1/tNjDnm2z/QE/+weHYJU86OzRf7qwXRtzPH7Mh94TJb/FH+3klOzPC15y07Rhx4ue3XI
+ y7go1PH2G4XPc1F0e6klFKT0P+N4qGnN8dXsFf0LpeT+cIwHmeLR7I2veotZNOJMeytOw1hwb
+ JbeA/U3SHtNhxBmR0/ZDXvx6aoxlARU1YvH8xrG9uC0umKWMDS2B4fUZywqOUzrpdTPt7ZvpE
+ 5yhUBoNWiPwlWDxy6aSjYBCWm/rNcTOEI3lXlX8TlU85jDpKXjHjFAufNfiG2Cse3IFDPpDNi
+ oDKA+AJSw/eiqV/jfDBsJmu/mjr1xQYstfe+RejvKuhfTl+tUo8/MM2aym9KVJ2pgXiY=
 Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) RCVD_IN_DNSWL_NONE=-0.0001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -59,41 +61,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Oct 2021 18:31:34 -0000
+X-List-Received-Date: Sat, 23 Oct 2021 18:31:43 -0000
 
-From: Greg Kurz <groug@kaod.org>
+From: Laurent Vivier <lvivier@redhat.com>
 
-Fix the comment to match what the code is doing, as explained in
-the changelog of commit 86cf9e154632cb28d749db0ea47946fba8cf3f09
-that introduced the change:
+When we try to use 'analyze-migration.py -x' with python3,
+we have the following errors:
 
-    Commit 9458a9a1df1a4c719e24512394d548c1fc7abd22 added synchronization
-    of vCPU and migration operations through calling run_on_cpu operation.
-    However, in replay mode this synchronization is unneeded, because
-    I/O and vCPU threads are already synchronized.
-    This patch disables such synchronization for record/replay mode.
+  Traceback (most recent call last):
+    File "scripts/analyze-migration.py", line 593, in <module>
+      f.write(jsonenc.encode(dump.vmsd_desc))
+  TypeError: a bytes-like object is required, not 'str'
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: David Hildenbrand <david@redhat.com>
-Message-Id: <163429018454.1146856.3429437540871060739.stgit@bahia.huguette>
+  Traceback (most recent call last):
+    File "scripts/analyze-migration.py", line 601, in <module>
+      f.write(jsonenc.encode(dict))
+  TypeError: a bytes-like object is required, not 'str'
+
+This happens because the file 'f' is open in binary mode while
+jsonenc.encode() returns a string.
+
+The results are human-readable files, 'desc.json' and 'state.json',
+so there is no reason to use the binary mode.
+
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20211015131645.501281-3-lvivier@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- softmmu/physmem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ scripts/analyze-migration.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/softmmu/physmem.c b/softmmu/physmem.c
-index f67ad2998121..555c907f6743 100644
---- a/softmmu/physmem.c
-+++ b/softmmu/physmem.c
-@@ -2633,7 +2633,7 @@ static void tcg_log_global_after_sync(MemoryListener *listener)
-          * In record/replay mode this causes a deadlock, because
-          * run_on_cpu waits for rr mutex. Therefore no races are possible
-          * in this case and no need for making run_on_cpu when
--         * record/replay is not enabled.
-+         * record/replay is enabled.
-          */
-         cpuas = container_of(listener, CPUAddressSpace, tcg_as_listener);
-         run_on_cpu(cpuas->cpu, do_nothing, RUN_ON_CPU_NULL);
+diff --git a/scripts/analyze-migration.py b/scripts/analyze-migration.py
+index 9d239d309f33..b82a1b0c58c4 100755
+--- a/scripts/analyze-migration.py
++++ b/scripts/analyze-migration.py
+@@ -588,7 +588,7 @@ def default(self, o):
+ 
+     dump.read(desc_only = True)
+     print("desc.json")
+-    f = open("desc.json", "wb")
++    f = open("desc.json", "w")
+     f.truncate()
+     f.write(jsonenc.encode(dump.vmsd_desc))
+     f.close()
+@@ -596,7 +596,7 @@ def default(self, o):
+     dump.read(write_memory = True)
+     dict = dump.getDict()
+     print("state.json")
+-    f = open("state.json", "wb")
++    f = open("state.json", "w")
+     f.truncate()
+     f.write(jsonenc.encode(dict))
+     f.close()
 -- 
 2.31.1
 
