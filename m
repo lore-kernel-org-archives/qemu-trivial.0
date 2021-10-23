@@ -1,51 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1meLo9-0005Vf-H9
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:31:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56980)
+	id 1meLoD-0005Yg-OX
+	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 14:31:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57040)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLnr-0005EC-7w; Sat, 23 Oct 2021 14:31:35 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:39255)
+ id 1meLny-0005HG-GK; Sat, 23 Oct 2021 14:31:43 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:39041)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1meLnp-0006Xx-3K; Sat, 23 Oct 2021 14:31:34 -0400
+ id 1meLnv-0006dH-VM; Sat, 23 Oct 2021 14:31:42 -0400
 Received: from quad ([82.142.24.54]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1N6bPS-1mkUfc1MVi-01804E; Sat, 23
- Oct 2021 20:31:30 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1McpaE-1nEEma27d4-00a07O; Sat, 23
+ Oct 2021 20:31:26 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 09/11] README: Fix some documentation URLs
-Date: Sat, 23 Oct 2021 20:31:21 +0200
-Message-Id: <20211023183123.813116-10-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>
+Subject: [PULL 03/11] disas/nios2: Simplify endianess conversion
+Date: Sat, 23 Oct 2021 20:31:15 +0200
+Message-Id: <20211023183123.813116-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211023183123.813116-1-laurent@vivier.eu>
 References: <20211023183123.813116-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5izw5EsDHrbMdDYzse6zcZydMtlEL3iEpqvu0DOXI1ywbNhdfJZ
- /2zy69k7fHFl8ZupNVInLoPegejhLb4fVIZsWl53Womkr+y6S8dtiT2veEeuEY2YX/Y/6Cb
- +8/Q4IWC/ACat/G0IoaKAckia3UMd4BmWgLSppevF2u8ETOqCBFzokjJMeuW04Bd7vzCB+s
- 4zNvjICSVy+khDRYc/CBg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:bmbfWlDUQGk=:nBkb7Dfk9nr1XEc1MKChHb
- eHB5HGVBOHGVCnFmJI0XKl2YH805mXpckMWLHSzeesC84KnDnEO47deDBYwSLPtShUH0Fv9mP
- 9cmbRDrxhX7fsDO21S07SvqSeQZDWcVZv81Sd//CppkW7U+WBWGZP4xUJ1E39Nsp6eWQzR248
- 5Q+kmCFOIJuZBju0o+Tnd/1LHPegczdw9ByKrQnlfHt7tfztEfSo0f2ix862BJquhvGd46/vv
- KtHeYB23VV9enBU5yg4/yzTjNhJtTXbgd4FQis0Z0/s9AM3HE9+n+R40mAWG21+76T428JfMJ
- EZKwdKmhDlw0RInkfmNovqqE8+8wB8A+qc7ZoalFnYal9C/6cK0CBGmQtJdB7JlfHZ5VIEOFh
- TYk84QXSde9k01wrup52DbjgMCQsHjpqbF/PUXS6E8E2UjvEdweS5+7XABl4lPPX1p2ajY3m7
- 3Cx9ru7n1E4pTa5/bBerL2qILLstjQ8Qa5BDAZ+vgCl33SChkN6reVa/Gshr+LWYJ7mNiOBVg
- 8NZu+3XLZqNPfsSTs8y4JBIoDPieGaHivzzZaALB7UW6BsocGlNYmD/5h/IzN9Zi6izHtToho
- cTaUdaAZ5nggwizSYFSqKc2XxMkwWa4WpJtdyYHNoOorpM/ZvBLP0dIwAQj3z777gyXQYSL8+
- J7dROGQVVTeu2t2aVyiTjFxRhfJ0CITaqVa/vgd1CHmso4R314kPtc8xzza9kBBJq1jQ=
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:riQ16zf5RV25qJFl9Nk4jao47KG07vr3rF+mqJXDYXBWy47jscK
+ +TV/TkwPQxd4F6LSddgDdGD+2ne8W4X1jUVk8cA8RS9aUJePc6QkBekP7zZkqPeBCvwBjpf
+ L3Q5y3QVaEyvyCZBh45EM3l6m+7k/vgbcLKjkwWksncpqehdAncTa2mXuiTKfOSCTWwDhPw
+ ei7qCsOSXDiaZpBv2WghQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1AqNrkvikGw=:7HkOkUKuebtSuUotmK2L6L
+ Drhh8g6PN5Iumlk0UHfH/dz2Dz3l/cOh+pBfjycas+Cmuez4rZlGPPAKy0zMk2WoIjnb1M+5T
+ pRCG3JK2jNnFajJ63Ho/DInsuyBPr5w3gZKIAf3+41AeRd7duo2iiE5MOhp64/0+n/jSqB+59
+ Eg2CRfibFxlGbE9DDMwPgQfFA6U5fP150JORXYtr2X0ZyLRtaSIClPTrlOHrZVfs2ST0S8xTR
+ mzDFozAV+9OWAsJF5xOmC2u1TI+E8wBzK7eCbl8p9Fo18qhYN3LiK7BUVXjDKzAxZL8juJsWH
+ n3rMmDN66UWBmAgFClKY7nc013WjyW+m2YUzOLyeUY0DoGmfdGzJnXKlG0f4dx/W68ZilmlX7
+ CLcss576onzqgLQUAljnDPJb49qMp2pVjQNMQpFaX1ykX46OkDJm3Lyy7iecvE2icX/Dyvdxp
+ zfvlEHoOLdB6KlBasgvMYoyGUhKKj6bXqm4ew6z4oU2ppsBkE33K+flZ7WG2W6ekf/OjmOMjY
+ zi/mkv1U6Vs7JOndjmZ4caOxL83cQZPPV9NE19fXNYyoeg5qG7PyZz7nw72zwfiu/6AlKmZfW
+ h347jAPXADhwjZnqeyVnNNoJTuXib4lfHa2a0E0kgF5OId5IAy5yVPVKgdlmL45ciNFUq0c2V
+ h9ptStbvAQQkIGiJkV4i5zozbhFO3Q2jMV9B+wFLJEzUz3hD/qASsGHnVGtlLXajkkBo=
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -59,64 +61,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Oct 2021 18:31:36 -0000
+X-List-Received-Date: Sat, 23 Oct 2021 18:31:44 -0000
 
-From: Greg Kurz <groug@kaod.org>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-All of these pages live in the wiki, not in the main web site.
+Since commit 12b6e9b27d4 ("disas: Clean up CPUDebug initialization")
+the disassemble_info->bfd_endian enum is set for all targets in
+target_disas(). We can directly call print_insn_nios2() and simplify.
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Tested-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <163456470882.196333.17366490695504718038.stgit@bahia.huguette>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20210807110939.95853-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- README.rst | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ disas/nios2.c           | 22 +++-------------------
+ include/disas/dis-asm.h |  3 +--
+ target/nios2/cpu.c      |  6 +-----
+ 3 files changed, 5 insertions(+), 26 deletions(-)
 
-diff --git a/README.rst b/README.rst
-index 79b19f1481e1..23795b837740 100644
---- a/README.rst
-+++ b/README.rst
-@@ -59,9 +59,9 @@ of other UNIX targets. The simple steps to build QEMU are:
+diff --git a/disas/nios2.c b/disas/nios2.c
+index d124902ae3e1..98ac07d72e9d 100644
+--- a/disas/nios2.c
++++ b/disas/nios2.c
+@@ -3478,9 +3478,7 @@ nios2_disassemble (bfd_vma address, unsigned long opcode,
+    instruction word at the address given, and prints the disassembled
+    instruction on the stream info->stream using info->fprintf_func. */
  
- Additional information can also be found online via the QEMU website:
+-static int
+-print_insn_nios2 (bfd_vma address, disassemble_info *info,
+-		  enum bfd_endian endianness)
++int print_insn_nios2(bfd_vma address, disassemble_info *info)
+ {
+     bfd_byte buffer[INSNLEN];
+     int status;
+@@ -3488,7 +3486,7 @@ print_insn_nios2 (bfd_vma address, disassemble_info *info,
+     status = (*info->read_memory_func)(address, buffer, INSNLEN, info);
+     if (status == 0) {
+         unsigned long insn;
+-        if (endianness == BFD_ENDIAN_BIG) {
++        if (info->endian == BFD_ENDIAN_BIG) {
+             insn = (unsigned long) bfd_getb32(buffer);
+         } else {
+             insn = (unsigned long) bfd_getl32(buffer);
+@@ -3501,7 +3499,7 @@ print_insn_nios2 (bfd_vma address, disassemble_info *info,
+         status = (*info->read_memory_func)(address, buffer, 2, info);
+         if (status == 0) {
+             unsigned long insn;
+-            if (endianness == BFD_ENDIAN_BIG) {
++            if (info->endian == BFD_ENDIAN_BIG) {
+                 insn = (unsigned long) bfd_getb16(buffer);
+             } else {
+                 insn = (unsigned long) bfd_getl16(buffer);
+@@ -3514,17 +3512,3 @@ print_insn_nios2 (bfd_vma address, disassemble_info *info,
+     (*info->memory_error_func)(status, address, info);
+     return -1;
+ }
+-
+-/* These two functions are the main entry points, accessed from
+-   disassemble.c.  */
+-int
+-print_insn_big_nios2 (bfd_vma address, disassemble_info *info)
+-{
+-  return print_insn_nios2 (address, info, BFD_ENDIAN_BIG);
+-}
+-
+-int
+-print_insn_little_nios2 (bfd_vma address, disassemble_info *info)
+-{
+-  return print_insn_nios2 (address, info, BFD_ENDIAN_LITTLE);
+-}
+diff --git a/include/disas/dis-asm.h b/include/disas/dis-asm.h
+index 524f29196d9d..08e1beec854f 100644
+--- a/include/disas/dis-asm.h
++++ b/include/disas/dis-asm.h
+@@ -455,8 +455,7 @@ int print_insn_crisv32          (bfd_vma, disassemble_info*);
+ int print_insn_crisv10          (bfd_vma, disassemble_info*);
+ int print_insn_microblaze       (bfd_vma, disassemble_info*);
+ int print_insn_ia64             (bfd_vma, disassemble_info*);
+-int print_insn_big_nios2        (bfd_vma, disassemble_info*);
+-int print_insn_little_nios2     (bfd_vma, disassemble_info*);
++int print_insn_nios2(bfd_vma, disassemble_info*);
+ int print_insn_xtensa           (bfd_vma, disassemble_info*);
+ int print_insn_riscv32          (bfd_vma, disassemble_info*);
+ int print_insn_riscv64          (bfd_vma, disassemble_info*);
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+index 947bb09bc1ed..58ecd27d757e 100644
+--- a/target/nios2/cpu.c
++++ b/target/nios2/cpu.c
+@@ -147,11 +147,7 @@ static void nios2_cpu_disas_set_info(CPUState *cpu, disassemble_info *info)
+ {
+     /* NOTE: NiosII R2 is not supported yet. */
+     info->mach = bfd_arch_nios2;
+-#ifdef TARGET_WORDS_BIGENDIAN
+-    info->print_insn = print_insn_big_nios2;
+-#else
+-    info->print_insn = print_insn_little_nios2;
+-#endif
++    info->print_insn = print_insn_nios2;
+ }
  
--* `<https://qemu.org/Hosts/Linux>`_
--* `<https://qemu.org/Hosts/Mac>`_
--* `<https://qemu.org/Hosts/W32>`_
-+* `<https://wiki.qemu.org/Hosts/Linux>`_
-+* `<https://wiki.qemu.org/Hosts/Mac>`_
-+* `<https://wiki.qemu.org/Hosts/W32>`_
- 
- 
- Submitting patches
-@@ -84,8 +84,8 @@ the Developers Guide.
- Additional information on submitting patches can be found online via
- the QEMU website
- 
--* `<https://qemu.org/Contribute/SubmitAPatch>`_
--* `<https://qemu.org/Contribute/TrivialPatches>`_
-+* `<https://wiki.qemu.org/Contribute/SubmitAPatch>`_
-+* `<https://wiki.qemu.org/Contribute/TrivialPatches>`_
- 
- The QEMU website is also maintained under source control.
- 
-@@ -144,7 +144,7 @@ reported via GitLab.
- 
- For additional information on bug reporting consult:
- 
--* `<https://qemu.org/Contribute/ReportABug>`_
-+* `<https://wiki.qemu.org/Contribute/ReportABug>`_
- 
- 
- ChangeLog
-@@ -168,4 +168,4 @@ main methods being email and IRC
- Information on additional methods of contacting the community can be
- found online via the QEMU website:
- 
--* `<https://qemu.org/Contribute/StartHere>`_
-+* `<https://wiki.qemu.org/Contribute/StartHere>`_
+ static int nios2_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
 -- 
 2.31.1
 
