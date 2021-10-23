@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1meGpi-0002sJ-JL
+	id 1meGpi-0002sl-R2
 	for mharc-qemu-trivial@gnu.org; Sat, 23 Oct 2021 09:13:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42848)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kevans@freebsd.org>)
- id 1meBWi-00073y-0D; Sat, 23 Oct 2021 03:33:12 -0400
-Received: from mx2.freebsd.org ([96.47.72.81]:50242)
+ id 1meBTy-0005kU-4R; Sat, 23 Oct 2021 03:30:22 -0400
+Received: from mx2.freebsd.org ([96.47.72.81]:47681)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kevans@freebsd.org>)
- id 1meBWe-0004pc-VP; Sat, 23 Oct 2021 03:33:10 -0400
-Received: from mx1.freebsd.org (mx1.freebsd.org [96.47.72.80])
+ id 1meBTv-0002tK-9Q; Sat, 23 Oct 2021 03:30:21 -0400
+Received: from mx1.freebsd.org (mx1.freebsd.org [IPv6:2610:1c1:1:606c::19:1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits)
  client-signature RSA-PSS (4096 bits))
  (Client CN "mx1.freebsd.org", Issuer "R3" (verified OK))
- by mx2.freebsd.org (Postfix) with ESMTPS id C0ABC9973A;
- Sat, 23 Oct 2021 07:33:06 +0000 (UTC)
+ by mx2.freebsd.org (Postfix) with ESMTPS id 650EC995B2;
+ Sat, 23 Oct 2021 07:30:17 +0000 (UTC)
  (envelope-from kevans@freebsd.org)
 Received: from smtp.freebsd.org (smtp.freebsd.org
  [IPv6:2610:1c1:1:606c::24b:4])
@@ -23,39 +23,40 @@ Received: from smtp.freebsd.org (smtp.freebsd.org
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256
  client-signature RSA-PSS (4096 bits) client-digest SHA256)
  (Client CN "smtp.freebsd.org", Issuer "R3" (verified OK))
- by mx1.freebsd.org (Postfix) with ESMTPS id 4HbtH64jP5z3F8l;
- Sat, 23 Oct 2021 07:33:06 +0000 (UTC)
+ by mx1.freebsd.org (Postfix) with ESMTPS id 4HbtCs1yD8z3F0r;
+ Sat, 23 Oct 2021 07:30:17 +0000 (UTC)
  (envelope-from kevans@freebsd.org)
-Received: from mail-qk1-f177.google.com (mail-qk1-f177.google.com
- [209.85.222.177])
+Received: from mail-qk1-f173.google.com (mail-qk1-f173.google.com
+ [209.85.222.173])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (Client CN "smtp.gmail.com", Issuer "GTS CA 1D4" (verified OK))
  (Authenticated sender: kevans)
- by smtp.freebsd.org (Postfix) with ESMTPSA id 82BA9A59B;
- Sat, 23 Oct 2021 07:33:06 +0000 (UTC)
+ by smtp.freebsd.org (Postfix) with ESMTPSA id 2492EA729;
+ Sat, 23 Oct 2021 07:30:17 +0000 (UTC)
  (envelope-from kevans@freebsd.org)
-Received: by mail-qk1-f177.google.com with SMTP id j12so6837380qkk.5;
- Sat, 23 Oct 2021 00:33:06 -0700 (PDT)
-X-Gm-Message-State: AOAM532RM1yZuTzOKImiEefaNMw+A3IUZ6pcaiR50w4Z6UpwhLGrwJgw
- 8pCnsKuA+vXg3RLcAl8/Md4iSNGdl5QS7twnp4E=
-X-Google-Smtp-Source: ABdhPJw/IFVLcz8M3/qcaFujdxkDeFu4j7Sbjp8Zz52NQ8fBwWp4lqvQWlHcDcudfPtI/UE9tDahrobmQE56BDlKJG4=
-X-Received: by 2002:ae9:df82:: with SMTP id t124mr3602912qkf.69.1634974386253; 
- Sat, 23 Oct 2021 00:33:06 -0700 (PDT)
+Received: by mail-qk1-f173.google.com with SMTP id y10so6722056qkp.9;
+ Sat, 23 Oct 2021 00:30:17 -0700 (PDT)
+X-Gm-Message-State: AOAM531xiFdGX5eCR5NgmGm6rzpxWXzUM2prtxZy61MCLh6eTY75XzE7
+ b9ba8HQwTONGgFd5ueW2JQtT1X/LmHEiksMvDMk=
+X-Google-Smtp-Source: ABdhPJybqbEsp1eIKCV09d3L9PAtiA6LZf+E6GxVhSShGqTntIg/TjAM1OrwFp0pODrYtZS+4f1p0u3h6PCGUVotrV4=
+X-Received: by 2002:a05:620a:424f:: with SMTP id
+ w15mr3797331qko.258.1634974216773; 
+ Sat, 23 Oct 2021 00:30:16 -0700 (PDT)
 MIME-Version: 1.0
 References: <20211019164447.16359-1-imp@bsdimp.com>
- <20211019164447.16359-7-imp@bsdimp.com>
-In-Reply-To: <20211019164447.16359-7-imp@bsdimp.com>
+ <20211019164447.16359-3-imp@bsdimp.com>
+In-Reply-To: <20211019164447.16359-3-imp@bsdimp.com>
 From: Kyle Evans <kevans@freebsd.org>
-Date: Sat, 23 Oct 2021 02:32:55 -0500
-X-Gmail-Original-Message-ID: <CACNAnaEyty9ZewFHBajDqrQDujaKjuQjR3T+_XX2L=e2-i618g@mail.gmail.com>
-Message-ID: <CACNAnaEyty9ZewFHBajDqrQDujaKjuQjR3T+_XX2L=e2-i618g@mail.gmail.com>
-Subject: Re: [PATCH 06/24] bsd-user/arm/target_arch_cpu.h: Dummy
- target_cpu_loop implementation
+Date: Sat, 23 Oct 2021 02:30:06 -0500
+X-Gmail-Original-Message-ID: <CACNAnaF+c6DtEGbf9BxG_MyzAG3x5a8SDVqgE8+eHKeKwSNvBg@mail.gmail.com>
+Message-ID: <CACNAnaF+c6DtEGbf9BxG_MyzAG3x5a8SDVqgE8+eHKeKwSNvBg@mail.gmail.com>
+Subject: Re: [PATCH 02/24] bsd-user/arm/target_syscall.h: Add copyright and
+ update name
 To: Warner Losh <imp@bsdimp.com>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org, 
  Kyle Evans <kevans@freebsd.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Sean Bruno <sbruno@freebsd.org>, Stacey Son <sson@freebsd.org>
+ Stacey Son <sson@freebsd.org>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=96.47.72.81; envelope-from=kevans@freebsd.org;
  helo=mx2.freebsd.org
@@ -77,53 +78,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Oct 2021 07:33:12 -0000
+X-List-Received-Date: Sat, 23 Oct 2021 07:30:22 -0000
 
 On Tue, Oct 19, 2021 at 11:45 AM Warner Losh <imp@bsdimp.com> wrote:
 >
-> Add a boiler plate CPU loop that does nothing except return an error for
-> all traps.
+> The preferred name for the 32-bit arm is now armv7. Update the name to
+> reflect that. In addition, add Stacey's copyright to this file and
+> update the include guards to the new convention.
 >
-> Signed-off-by: Sean Bruno <sbruno@FreeBSD.org>
 > Signed-off-by: Stacey Son <sson@FreeBSD.org>
 > Signed-off-by: Warner Losh <imp@bsdimp.com>
 > ---
->  bsd-user/arm/target_arch_cpu.h | 22 ++++++++++++++++++++++
->  1 file changed, 22 insertions(+)
+>  bsd-user/arm/target_syscall.h | 27 +++++++++++++++++++++++----
+>  1 file changed, 23 insertions(+), 4 deletions(-)
 >
-> diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
-> index c71ec000b3..94c9109c3f 100644
-> --- a/bsd-user/arm/target_arch_cpu.h
-> +++ b/bsd-user/arm/target_arch_cpu.h
-> @@ -35,6 +35,28 @@ static inline void target_cpu_init(CPUARMState *env,
->      }
->  }
+> diff --git a/bsd-user/arm/target_syscall.h b/bsd-user/arm/target_syscall.h
+> index ef4b37f017..a5f2bb4e01 100644
+> --- a/bsd-user/arm/target_syscall.h
+> +++ b/bsd-user/arm/target_syscall.h
+> @@ -1,5 +1,24 @@
+> -#ifndef BSD_USER_ARCH_SYSCALL_H_
+> -#define BSD_USER_ARCH_SYSCALL_H_
+> +/*
+> + *  arm cpu system call stubs
+> + *
+> + *  Copyright (c) 2013 Stacey D. Son
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License as published by
+> + *  the Free Software Foundation; either version 2 of the License, or
+> + *  (at your option) any later version.
+> + *
+> + *  This program is distributed in the hope that it will be useful,
+> + *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *  GNU General Public License for more details.
+> + *
+> + *  You should have received a copy of the GNU General Public License
+> + *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef _TARGET_ARCH_SYSCALL_H_
+> +#define _TARGET_ARCH_SYSCALL_H_
 >
-> +static inline void target_cpu_loop(CPUARMState *env)
-> +{
-> +    int trapnr;
-> +    target_siginfo_t info;
-> +    CPUState *cs = env_cpu(env);
-> +
-> +    for (;;) {
-> +        cpu_exec_start(cs);
-> +        trapnr = cpu_exec(cs);
-> +        cpu_exec_end(cs);
-> +        process_queued_cpu_work(cs);
-> +        switch (trapnr) {
-> +        default:
-> +            fprintf(stderr, "qemu: unhandled CPU exception 0x%x - aborting\n",
-> +                    trapnr);
-> +            cpu_dump_state(cs, stderr, 0);
-> +            abort();
-> +        } /* switch() */
-> +        process_pending_signals(env);
-> +    } /* for (;;) */
-> +}
-> +
->  static inline void target_cpu_clone_regs(CPUARMState *env, target_ulong newsp)
->  {
->      if (newsp) {
+>  struct target_pt_regs {
+>      abi_long uregs[17];
+> @@ -31,6 +50,6 @@ struct target_pt_regs {
+>  #define TARGET_FREEBSD_ARM_GET_TP       3
+>
+>  #define TARGET_HW_MACHINE       "arm"
+> -#define TARGET_HW_MACHINE_ARCH  "armv6"
+> +#define TARGET_HW_MACHINE_ARCH  "armv7"
+>
+> -#endif /* !BSD_USER_ARCH_SYSCALL_H_ */
+> +#endif /* !_TARGET_ARCH_SYSCALL_H_ */
 > --
 > 2.32.0
 >
