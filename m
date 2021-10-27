@@ -1,60 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mfMBx-0000eq-Nx
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Oct 2021 09:08:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59600)
+	id 1mfaLz-0006VB-G0
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Oct 2021 00:15:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mfMBs-0000dx-I6; Tue, 26 Oct 2021 09:08:34 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:43869)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mfMBq-0008Tn-KG; Tue, 26 Oct 2021 09:08:32 -0400
-Received: from [192.168.100.1] ([82.142.14.190]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MDPuq-1mUs3R2DCQ-00ATBR; Tue, 26 Oct 2021 15:08:11 +0200
-Message-ID: <16c8e1d8-aefc-5a45-4f02-5ead4f67d4a7@vivier.eu>
-Date: Tue, 26 Oct 2021 15:08:09 +0200
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mfaLs-0006Sq-2D; Wed, 27 Oct 2021 00:15:49 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:40494)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mfaLl-0003tC-Bz; Wed, 27 Oct 2021 00:15:46 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id e4so1767276wrc.7;
+ Tue, 26 Oct 2021 21:15:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=DBOXOA7PL7QbcyVM/gdsNC0oGoQL4dt90HL6w85Y1p0=;
+ b=cCvKswuajZMeu2ueQotxZvLYuKaSQVesSKQl1n1e0HrFt4KxOv2/wHnagUiHiMkQg1
+ /bVI6vXubG3CZqFtXdSVKXYIb/3nvlWdzU68qWkC8I93Q8ZrV6LYYJW009S4ngZ3l18+
+ nlCQll1ME/WxsaPm9rUqUXoEvB3SZ0nzkQDMN3jAQ7g30eMeRoZcW771UVdSPZvAqN1a
+ cX3j4nFu65Twuq3fclGxWnQBRnFudnLZoBfP3lN65bXx71IUFsgRgvXjBsVJnGWINRq9
+ 783ah4u45oZnJfxsJ9PqWinEqmooJwbh1Mw4qEwhd8Grs2hBm/QcQxyhu3aQiDCslySN
+ epKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=DBOXOA7PL7QbcyVM/gdsNC0oGoQL4dt90HL6w85Y1p0=;
+ b=3B6YiUfeYuqzK1NOQWt8DS8+z6jddCDMKQPn7tjgR7PmnbA7QkbX3I2AS/NhvUwmG7
+ H1iwzUv5idnqJTVyysIr01ytlfUxeCBgUFDSZEePdLMJKMemCUTW1DijbYt5UVRSOz3Q
+ /BoGjjojIWDp7rM1ZCGET5qvDxmcGhOWacvBemOzmFapqxzuuxHV/YsNbJ8DjF8Ru7+0
+ Clh+JVWduIxp51+T2w6IJOFLY43QtWzJYwW6QMMFtPsDZqLQJp5RVBDt1ncrt7znWw6c
+ Eb9g9xlTbqU+kNM8xu/ONfbtt+jBfwQn3d5/o2qnHAvKfv++oFnGabhDv3weJ4H67f2l
+ /saQ==
+X-Gm-Message-State: AOAM532vTK+jMTsiBhIhl9cEiL3HUei5dvj6X63tX6j/OIa+ogCe+2aM
+ U/Gs9CSmu6H+Y0UcupnBA4kwYoM6b1A=
+X-Google-Smtp-Source: ABdhPJw5oNd2LhGklTjSruWnSchbPpXnwcaGOrHcGQH4v1XlA7GoqzvM4I1RxXQ7IwuJxNWkSNrrQA==
+X-Received: by 2002:a05:6000:1449:: with SMTP id
+ v9mr37774240wrx.137.1635308139331; 
+ Tue, 26 Oct 2021 21:15:39 -0700 (PDT)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id u16sm538989wrt.97.2021.10.26.21.15.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 Oct 2021 21:15:38 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <ff832553-d5cc-ded3-1364-2413d38af0b2@amsat.org>
+Date: Wed, 27 Oct 2021 06:15:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH] hw/core/machine: Add the missing delimiter in
- cpu_slot_to_string()
-Content-Language: fr
-To: "wangyanan (Y)" <wangyanan55@huawei.com>, qemu-devel@nongnu.org
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- wanghaibin.wang@huawei.com, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20211008075040.18028-1-wangyanan55@huawei.com>
- <57481b57-13cf-ee9d-b9ef-205b9e3de610@vivier.eu>
- <e28ce319-9fba-0e2c-9e62-5783612e14db@huawei.com>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <e28ce319-9fba-0e2c-9e62-5783612e14db@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: Re: [PATCH] MAINTAINERS: Split HPPA TCG vs HPPA machines/hardware
+Content-Language: en-US
+To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Helge Deller <deller@gmx.de>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20211004083835.3802961-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20211004083835.3802961-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JBoj/FAbKC1sFpxOSfWTx03ZF1i5TI1NX4Xe0oYq5NJLyGctHni
- NPPeQ3HeJAQDp9xRGKDI1niiTOtJ7bkIpSpDLOFfcoA6iErCSCL1zWmKuQHtaa3nCMzkD6I
- 8s2mEfai/HbTQDBY0YV1HcD2a32PFSejQQLbxICfTgJobUEim53rZht6PuKKXni44CLsCGk
- Sa92vBRCIeK9qnzYlrYzg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:qL/GOYC6Qh4=:RMji2AYMXfQnmFkXZXECJy
- VoRPDemtxy/h/jULqkMZs+1zIy/HKxvjpK/ufDW97EJNKvav2fy+H8NNSpGYGra/1frzy+u2V
- dl+O8/luanHMp0VCu9QagOz1jMTHRmoYz9sgvP9rWPTmqNDNbIEwjl2md/Mi3UZAFGjkXtz3j
- ghyEcz/Hj7ZqmAthtP2NinAYcfWoaBIVEIx9gevqvIB7kHAnIfvnohpRIUXWnxlyMJfVoyAyq
- eZJAdeLyUgO/m1ZyWQq6le6NHB2Y73DPjFPu1PCgBgV/NbgbuXe8totNdi88XKIzxK/2JmfNb
- UB4aYwDdAee9TcX5iznecAJGPddulbwxxTYpN69umm/YmtvNE2KABNymPBqp4INyAJe95tWDM
- tr1SPR7k/sZXvSAAjT8BoqBhhfXSYSch8Ztjd0zcjX9kl0hx9nHI0wPneGADp5AJpJUvRMvkS
- 0XTKEIts9qqsVRWFtM/XV/x4XWkIhwlAUNPVnlwJqDjM77uwj9PPH0hEQDySWMJ6UgzAgmFM9
- 2oVPY0dZfj3bLpgZRVNSgRCUzTyWeI98DY/Cl8KP0QSZhsqshoY9ko80qj9mcVZENuWZF74j+
- oOUFi0Xe0U2uh4/+xOX2RG9PU4PjTGEWjVG0EkbqUBrY6KBnhyXDdt9bwXZ62X9TyQrxqKMZI
- c7yrauCd57DzsYxL+H7WafTv3Y8hyTJKKsDUCIds7xZJy+tu8iyzB9cEV4iBGtgssauQ=
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.215,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.215,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -67,49 +84,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Oct 2021 13:08:34 -0000
+X-List-Received-Date: Wed, 27 Oct 2021 04:15:51 -0000
 
-Le 26/10/2021 à 14:55, wangyanan (Y) a écrit :
+Cc'ing qemu-trivial@ (patch reviewed)
+
+On 10/4/21 10:38, Philippe Mathieu-Daudé wrote:
+> Hardware emulated models don't belong to the TCG MAINTAINERS
+> section. Move them to the 'HP-PARISC Machines' section.
 > 
-> On 2021/10/19 16:23, Laurent Vivier wrote:
->> Le 08/10/2021 à 09:50, Yanan Wang a écrit :
->>> The expected output string from cpu_slot_to_string() ought to be
->>> like "socket-id: *, die-id: *, core-id: *, thread-id: *", so add
->>> the missing ", " before "die-id". This affects the readability
->>> of the error message.
->>>
->>> Fixes: 176d2cda0d ("i386/cpu: Consolidate die-id validity in smp context")
->>> Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
->>> ---
->>>   hw/core/machine.c | 3 +++
->>>   1 file changed, 3 insertions(+)
->>>
->>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>> index b8d95eec32..0a23ae3106 100644
->>> --- a/hw/core/machine.c
->>> +++ b/hw/core/machine.c
->>> @@ -1157,6 +1157,9 @@ static char *cpu_slot_to_string(const CPUArchId *cpu)
->>>           g_string_append_printf(s, "socket-id: %"PRId64, cpu->props.socket_id);
->>>       }
->>>       if (cpu->props.has_die_id) {
->>> +        if (s->len) {
->>> +            g_string_append_printf(s, ", ");
->>> +        }
->>>           g_string_append_printf(s, "die-id: %"PRId64, cpu->props.die_id);
->>>       }
->>>       if (cpu->props.has_core_id) {
->>>
->> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
->> .
-> Thanks! Will you take this one in the trivial branch ?
-
-
-yes, sorry, I missed that one in my last collect. Thank you for the heads-up.
-
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
-
-
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  MAINTAINERS | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 50435b8d2f5..002620c6cad 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -205,10 +205,7 @@ HPPA (PA-RISC) TCG CPUs
+>  M: Richard Henderson <richard.henderson@linaro.org>
+>  S: Maintained
+>  F: target/hppa/
+> -F: hw/hppa/
+>  F: disas/hppa.c
+> -F: hw/net/*i82596*
+> -F: include/hw/net/lasi_82596.h
+>  
+>  M68K TCG CPUs
+>  M: Laurent Vivier <laurent@vivier.eu>
+> @@ -1098,6 +1095,8 @@ R: Helge Deller <deller@gmx.de>
+>  S: Odd Fixes
+>  F: configs/devices/hppa-softmmu/default.mak
+>  F: hw/hppa/
+> +F: hw/net/*i82596*
+> +F: include/hw/net/lasi_82596.h
+>  F: pc-bios/hppa-firmware.img
+>  
+>  M68K Machines
+> 
 
