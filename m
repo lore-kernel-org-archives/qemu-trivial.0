@@ -1,76 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mfbDi-0002b7-IX
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Oct 2021 01:11:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55560)
+	id 1mfe6K-0004GG-9c
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Oct 2021 04:16:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56702)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mfbDg-0002aD-Sn; Wed, 27 Oct 2021 01:11:24 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:42795)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mfbDf-0001k2-He; Wed, 27 Oct 2021 01:11:24 -0400
-Received: by mail-wr1-x432.google.com with SMTP id v17so1916196wrv.9;
- Tue, 26 Oct 2021 22:11:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Wlqk/rgJ4av10dltdxEejokYCVR+Jp6LglG32f2Sw8U=;
- b=Lcl/Vd2M83cwEGq0mT0wTp+NJnLesLCppQaFJC69nUYvCium5BQVwVzzaQx7MSyerx
- 6weir8aaAjXj2ANKweBS3hZYqzVrUi+XGhapMChLayxopDBu9YgRddBW9e/jxNegJl2d
- gLVPwkI0VArEls+dypo6FBUotwlXnO7gEjCChreo1egRgweIZ5piUC/Rmzgceb19KviW
- GWu4byzUH/V8HShUD+qSzUSdkO96lVBW6za/j7W/BeozjSnZwoftzixBkmYL15RjDSMa
- P1ZMvVnlgse+2EUcMbvGkIgJUgM1PnqlJplszRZZlzLFJ695QROsx6czZDXCMINev7Ve
- rsRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Wlqk/rgJ4av10dltdxEejokYCVR+Jp6LglG32f2Sw8U=;
- b=udU2CK0SEGhnEbsjXT+BtXF4/x9aB1zIn8Y8OzRah2rr/napBb+dQjyTV16iXX36rS
- COTZqBvsX5dsZKjk70pGtyPIlElz5AmBUsBGhAVtAH46SYKXng15TtIsHlTVqDxK234p
- T5BYzLAYPqklCsFyxyA8AdrROmqnckn7WxvWYKxs7/kIG7EdiO8+j4Z1WOGbA9dM0EEq
- Qq+mm4FfZnXEQUHcFER1+9OXFV4hzSMVSAQFDkRf4IQ9lYZH9Fi3aLf/e1ulNFljVjhk
- 0kJ5WiFmkjD5cedsjmgiKlxZXcBupQBpkUhsfI8K+0IMl+PRUlkdXUDnm7+mlI1/2v2v
- wX+w==
-X-Gm-Message-State: AOAM531H+LYqMySf8K/YoqvE2DBBijf6FZo0Q9se/dJpfVy/tAqQOhFB
- X+1S7fLy+Fx9z00ECBtQoKJ/3td//1s=
-X-Google-Smtp-Source: ABdhPJxOikzuhb/cxUMEfaXIDhDyhmNXi/7FwsTchaYyksAGuam3RqNcIwbtMIYJs5JAi3ZGi9gU/A==
-X-Received: by 2002:adf:a48e:: with SMTP id g14mr37456648wrb.327.1635311481670; 
- Tue, 26 Oct 2021 22:11:21 -0700 (PDT)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id k7sm8408wrn.16.2021.10.26.22.11.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Oct 2021 22:11:20 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <e4da8e9f-7874-0852-792e-645eb7b0d078@amsat.org>
-Date: Wed, 27 Oct 2021 07:11:19 +0200
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mfe6J-0004F6-Be; Wed, 27 Oct 2021 04:15:59 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:60781)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mfe6F-0007Vw-4Z; Wed, 27 Oct 2021 04:15:57 -0400
+Received: from [192.168.100.1] ([82.142.14.190]) by mrelayeu.kundenserver.de
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M8QiW-1mbGNp3Qqe-004XEa; Wed, 27 Oct 2021 10:15:41 +0200
+Message-ID: <fba478af-d444-18e2-d66a-d3f011fc9c2c@vivier.eu>
+Date: Wed, 27 Oct 2021 10:15:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH 0/3] hw/input/lasips2: QOM'ify the Lasi PS/2
-Content-Language: en-US
-To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Sven Schnelle <svens@stackframe.org>, Helge Deller <deller@gmx.de>,
+Subject: Re: [PATCH] MAINTAINERS: Split HPPA TCG vs HPPA machines/hardware
+Content-Language: fr
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Helge Deller <deller@gmx.de>,
  Richard Henderson <richard.henderson@linaro.org>
-References: <20210920064048.2729397-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20210920064048.2729397-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=UTF-8
+References: <20211004083835.3802961-1-f4bug@amsat.org>
+ <ff832553-d5cc-ded3-1364-2413d38af0b2@amsat.org>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <ff832553-d5cc-ded3-1364-2413d38af0b2@amsat.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.215,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Provags-ID: V03:K1:RXwkRdrAOc/njsm1uwXY4msbk444+8CemtGEAf7wzmX3h/2MKFl
+ eNNRm6iFQdVAAWSgd0nbR+JtgLq+Pd4YH6XnfBVU+dO+vilKJByV/uH5atkawAr90x8Oz7e
+ pRKaRcbxyE+fFbKxpcNiGP8Ls2HNTvUo/hGpHwEC41nxFJRcmsfT6I0ThBnDnt26FqwWRIy
+ JYRS/1BXEw1TB6K0BXhGA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lH27LU1DBIE=:NRBb6qwX2RrfaaDMdpMk4u
+ qX2LUTNsXvvovIx3upAwHr3KHWlO6dW1iRdyT2H6acZXhcq3YQVU9kQ4hVBbc6kcdGiNprPoG
+ fwenB3MSjDiB4YNPBNlGPfidnTOWxuCwCtZuoMeS2fOvg9G9NBFh3jNc4s6a5ik6eec295dT2
+ XKFvs5lJvDVA0Yu0XU0WeAsKiBIv2KS1ktc8806PlCz28P/B+mesh2BExr3KAi390hjZ2CdQs
+ dPTgfDLExnjZ+lk0Vt5x7GQ+wqWOaeGjqlm/ybI3KjBoXgjokpa2nLIWRJWYxnRE006s/nHHA
+ CvNM3Ugk/ZJsT/wSAMjyiT4/sq/uCNFfEdQMDntQGoLjnV2fMby3LQR5qKPaYgW+9LlOHbuV6
+ tU5hUSIiWOh4V5uo1ZtFXmMqSH7tSxLth6hm27Mxh8SjeEAz+ywqm+eFOzc3m5Uf4nVCJgJ2n
+ fSz2lBtqdQDHz93gRIAO7pw3cgOigH/zqXe7s0Vq6/l5wP5rbxUC3ByqYs0rYmvnj+X0wB/Y0
+ 5IuXc7o0PrpWeoaoU8+eUUmnclmGS2suiCnss8XsQbKMMzNofVZ6ITjEi1rzuBckLnzf5HS9o
+ V/4rhnOJjK9OlxlCncf+rIBffst7zBV/Eo+l3ighMG9/2cp51VDLpEZC8KE2UcodRCzMDJiJQ
+ Wdjnr1QuTsTR0A7nzd3QC6hzDGUboWfTtx1hhr5aOx4cmu4TsLWBdFbQtJktCzul6lkg=
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.215,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,22 +64,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Oct 2021 05:11:25 -0000
+X-List-Received-Date: Wed, 27 Oct 2021 08:15:59 -0000
 
-Cc'ing qemu-trivial@ (fully reviewed).
+Le 27/10/2021 à 06:15, Philippe Mathieu-Daudé a écrit :
+> Cc'ing qemu-trivial@ (patch reviewed)
+> 
+> On 10/4/21 10:38, Philippe Mathieu-Daudé wrote:
+>> Hardware emulated models don't belong to the TCG MAINTAINERS
+>> section. Move them to the 'HP-PARISC Machines' section.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   MAINTAINERS | 5 ++---
+>>   1 file changed, 2 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 50435b8d2f5..002620c6cad 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -205,10 +205,7 @@ HPPA (PA-RISC) TCG CPUs
+>>   M: Richard Henderson <richard.henderson@linaro.org>
+>>   S: Maintained
+>>   F: target/hppa/
+>> -F: hw/hppa/
+>>   F: disas/hppa.c
+>> -F: hw/net/*i82596*
+>> -F: include/hw/net/lasi_82596.h
+>>   
+>>   M68K TCG CPUs
+>>   M: Laurent Vivier <laurent@vivier.eu>
+>> @@ -1098,6 +1095,8 @@ R: Helge Deller <deller@gmx.de>
+>>   S: Odd Fixes
+>>   F: configs/devices/hppa-softmmu/default.mak
+>>   F: hw/hppa/
+>> +F: hw/net/*i82596*
+>> +F: include/hw/net/lasi_82596.h
+>>   F: pc-bios/hppa-firmware.img
+>>   
+>>   M68K Machines
+>>
+> 
 
-On 9/20/21 08:40, Philippe Mathieu-Daudé wrote:
-> Slowly nuking non-QOM devices: Lasi PS/2's turn.
-> 
-> Philippe Mathieu-Daudé (3):
->   hw/input/lasips2: Fix typos in function names
->   hw/input/lasips2: Move LASIPS2State declaration to
->     'hw/input/lasips2.h'
->   hw/input/lasips2: QOM'ify the Lasi PS/2
-> 
->  include/hw/input/lasips2.h | 31 ++++++++++++++++--
->  hw/hppa/lasi.c             | 10 +++++-
->  hw/input/lasips2.c         | 64 +++++++++++++++++++-------------------
->  3 files changed, 70 insertions(+), 35 deletions(-)
-> 
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
+
 
