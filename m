@@ -1,77 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mg974-0001QG-2s
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 13:22:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44396)
+	id 1mg99z-0003Mc-Gc
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 13:25:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45064)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg972-0001PT-Ie
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:22:48 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633]:46749)
+ id 1mg99y-0003LA-Kd
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:25:50 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d]:39537)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg96y-0007HK-2d
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:22:48 -0400
-Received: by mail-pl1-x633.google.com with SMTP id p18so1616205plf.13
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 10:22:43 -0700 (PDT)
+ id 1mg99t-0007f2-DH
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:25:50 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id b1so3110868pfm.6
+ for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 10:25:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=orGd6kVK2mgu5i+UebOJ7JYTxsu/wDVDYyN2p87bg+8=;
- b=PfQ/hL3upcOX36hElFnH5YBj8S3VzTFgN3f4778lnwhLPXcweBkl68d6wMLF7VWfPN
- FWgTKUmZS2cQPLHvWBu6AecxKThhZPxsQIiH4bcMVjDD53RMTG5I5LhUbqiX/OGmuJaj
- ZHvBYsoa//Bt9IUshz7rLsB1i16b72zHzWA6r8ICNDcCdr0E3qvPjzdiooWoFF90vyOT
- k+kIHOIKltJ7p38qStUpQng/Jq2okLbbaUtjAESQlHPn/b4sIxW1aC0mO6nHtzt28iMG
- G/emT2kDLoPIp/HeLFaAc8hPIz/ROhMi7aLdMHYfVbWRoMpjtokrPHPkBf7TD71uO7LO
- mrtg==
+ bh=wYfYpTTCMZIpQcyjBxhBDpF4DcIZOv0AYwhSLZ19T+Q=;
+ b=Y7y+C5hZBy4IZDUGO/Q1BS+HOtX/M+EC7SQl6ibRtco/S5wY214art5nKv5f6tk1P6
+ MjmUulqwByFGRFKbGS+frMLP95x4ys3ApeA37J1XIt98MD2VH5zYK+oSQ1jGJT9w3tq8
+ 06daqPB53ISzHcg20UMLpohRmdcIagO+j9nfKGbTyUJIuuWs695Dkhsd7rdFYYg20Dmf
+ Wo1C4AavU9SvY3B04G096ioVeqLCgeVqK9i7UAPhNI6lkz5RHljEchGg4fU9Z0NDEESj
+ 9OA2tCMELSU1Z1Uy58Eu2Sxv+FnUO4bWSTOPI8/nYQPlZNBdwLXjL1XqLx5Pu7HmVdPz
+ +Uag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=orGd6kVK2mgu5i+UebOJ7JYTxsu/wDVDYyN2p87bg+8=;
- b=zVx9r3zMJZMl9FZfrtSJGz1dLR2bzay9eZ/5FUP3okEPNkrhat7gibXB52QtvjM06O
- ruV1mo6sFaHHtaun4T8M/cCTr9mSEsOrEgNE7ryLVdMgMEY50orarTEaVeIO4Dbaq2na
- gwaVrKV65mF2G4HIQdq4GVwNREvb5hwRnEJEfEQolJm9KP6xLVjShCchxJEdffJYrzQR
- xNdUP09+MVp9NCyuNaVq/FIVHn6kdC0UoMeEjIQvixDHEzpdxvTGxo+GqbEddU1acWH4
- pZjxYdSm1QBEmOT06UHUOZ7VgG9C2gw9OVMENqBdHj/GL4YBOANjxwz4J50JhJ0qwv6R
- 3Gpw==
-X-Gm-Message-State: AOAM530kAlh47e96O3CJ3i4Q1kSwPRCOUtCsMTtQobDhLdeQ8ZwbHFgY
- Pc9zKbVwZASUw7KokwLHDc9/XQ==
-X-Google-Smtp-Source: ABdhPJxifKM1JdZVLOHB79MLHkUbeirUAebcloNOHGOnl62lA7Jz6MplzUOzREYVYRvMa8VFUqCSXw==
-X-Received: by 2002:a17:90b:1e45:: with SMTP id
- pi5mr2453356pjb.146.1635441762201; 
- Thu, 28 Oct 2021 10:22:42 -0700 (PDT)
+ bh=wYfYpTTCMZIpQcyjBxhBDpF4DcIZOv0AYwhSLZ19T+Q=;
+ b=cQxXVm9cU1UrKd4K02kceDo3fR0M99Jw53iNLYgTwDDLHTPx66J145BsEW4HErtygJ
+ LDGmBkdAEOzuQy5VDFgCnplHfOwrLgYAoJTysmYr4dJmos7Zj2pcs9FbkL2zYDXOV454
+ vDghu39g1zv2jdoLoa9rPmRAnnRBdBwcPLeFtgY45or8V1POHmByTKgEYwyBqkQsDWGl
+ Hn32tdqC/eqCOtUhy6/3ay9hRqZHkMsT0fLSTJU+9MHLAbwuKwtIXM8ubilY2TKVm1hf
+ R0UBF18I+vJDm9qjNkK+sXqgkSCDMgxEnZp8A8yQ3h3xyppd9JHL1JWgL3yuC3qMdXlP
+ jK4w==
+X-Gm-Message-State: AOAM533Pu/JOq0jBgE2unDPDsu3emNd9FxkdNtmgTs3vXUROr0SqPMLL
+ lja9PUVPnR8THn3Yryi7MzC1lA==
+X-Google-Smtp-Source: ABdhPJwWh9lhJWsQPgg7hVhhFtrYkUFvfzwwUxPgpBUvqzNGCRC3bEKBhRaxF7UCjvlyv1gH4JBCcg==
+X-Received: by 2002:a05:6a00:1709:b0:47e:493e:ca5f with SMTP id
+ h9-20020a056a00170900b0047e493eca5fmr4839715pfc.60.1635441944105; 
+ Thu, 28 Oct 2021 10:25:44 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id s2sm3857078pfe.215.2021.10.28.10.22.41
+ by smtp.gmail.com with ESMTPSA id m2sm3158947pgd.70.2021.10.28.10.25.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Oct 2021 10:22:41 -0700 (PDT)
-Subject: Re: [PATCH 19/24] bsd-user/arm/target_arch_signal.h: arm user context
- and trapframe for signals
+ Thu, 28 Oct 2021 10:25:43 -0700 (PDT)
+Subject: Re: [PATCH 20/24] bsd-user/arm/target_arch_signal.h: arm
+ set_sigtramp_args
 To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
 Cc: Stacey Son <sson@FreeBSD.org>, qemu-trivial@nongnu.org,
  Kyle Evans <kevans@freebsd.org>, Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <laurent@vivier.eu>
 References: <20211019164447.16359-1-imp@bsdimp.com>
- <20211019164447.16359-20-imp@bsdimp.com>
+ <20211019164447.16359-21-imp@bsdimp.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <63da2085-b7f7-52ac-6673-b91c211b4c62@linaro.org>
-Date: Thu, 28 Oct 2021 10:22:39 -0700
+Message-ID: <446e589d-7c49-f5fc-3891-195ba5a37c0f@linaro.org>
+Date: Thu, 28 Oct 2021 10:25:41 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211019164447.16359-20-imp@bsdimp.com>
+In-Reply-To: <20211019164447.16359-21-imp@bsdimp.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.847,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.847,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,75 +84,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Oct 2021 17:22:48 -0000
+X-List-Received-Date: Thu, 28 Oct 2021 17:25:50 -0000
 
 On 10/19/21 9:44 AM, Warner Losh wrote:
-> Arm specific user context structures for signal handling and the closely
-> related trap frame.
-> 
-> Signed-off-by: Stacey Son <sson@FreeBSD.org>
-> Signed-off-by: Warner Losh <imp@bsdimp.com>
-> ---
->   bsd-user/arm/target_arch_signal.h | 38 +++++++++++++++++++++++++++++++
->   1 file changed, 38 insertions(+)
-> 
-> diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
-> index 9fee58ca9c..67355ff28f 100644
-> --- a/bsd-user/arm/target_arch_signal.h
-> +++ b/bsd-user/arm/target_arch_signal.h
-> @@ -90,4 +90,42 @@ typedef struct target_mcontext {
->       } __fpu;
->   } target_mcontext_t;
->   
-> +typedef struct target_ucontext {
-> +    target_sigset_t     uc_sigmask;
-> +    target_mcontext_t   uc_mcontext;
-> +    abi_ulong           uc_link;
-> +    target_stack_t      uc_stack;
-> +    int32_t             uc_flags;
-> +    int32_t             __spare__[4];
-> +} target_ucontext_t;
+> +    regs->regs[TARGET_REG_PC] = ka->_sa_handler;
 
-This is from the common <sys/_ucontext.h>.  Is there any way we can share that here in 
-qemu as well?
-
-> +struct target_sigframe {
-> +    target_siginfo_t    sf_si;  /* saved siginfo */
-> +    target_ucontext_t   sf_uc;  /* saved ucontext */
-> +};
-
-You're missing the storage for
-
-   mcontext_vfp_t  sf_vfp
-
-the address of which goes in mcontext_t.mc_vfp_ptr (which isn't in the version of 
-mcontext_t from patch 18).
-
-> +/* compare to sys/arm/include/frame.h */
-> +struct target_trapframe {
-> +    abi_ulong tf_spsr; /* Zero on arm26 */
-> +    abi_ulong tf_r0;
-> +    abi_ulong tf_r1;
-> +    abi_ulong tf_r2;
-> +    abi_ulong tf_r3;
-> +    abi_ulong tf_r4;
-> +    abi_ulong tf_r5;
-> +    abi_ulong tf_r6;
-> +    abi_ulong tf_r7;
-> +    abi_ulong tf_r8;
-> +    abi_ulong tf_r9;
-> +    abi_ulong tf_r10;
-> +    abi_ulong tf_r11;
-> +    abi_ulong tf_r12;
-> +    abi_ulong tf_usr_sp;
-> +    abi_ulong tf_usr_lr;
-> +    abi_ulong tf_svc_sp; /* Not used on arm26 */
-> +    abi_ulong tf_svc_lr; /* Not used on arm26 */
-> +    abi_ulong tf_pc;
-> +};
-
-This is not used by the user abi for signals.  It is a kernel structure for its own 
-internal trap handling.  Why are you including it?
+Surely there should be some handling of thumb addresses here.
 
 
 r~
