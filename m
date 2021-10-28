@@ -1,77 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mg86u-0007od-Mk
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 12:18:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56984)
+	id 1mg8Zz-0002SO-K9
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 12:48:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg86p-0007mF-5Y
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 12:18:32 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c]:42892)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mg8Zx-0002MJ-Nm
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 12:48:37 -0400
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b]:46801)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg86m-0000Pi-Ui
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 12:18:30 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id t7so6857643pgl.9
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 09:18:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Bn9ZApLw5RmSOHXv+vS42sOOTg9U6Qd63aH3LyvgGT8=;
- b=z6tku0uKZNK5A5+9s139Gluk1FV9yDBTEiGkezggOXJkxpK/7HSxzelSheEVGvjiOv
- DgQnkpsJzIafeyYUPzzK4k6Wsk3/OMk7nLeW5ioupDY+ZmIMYvGQdSwAjHeCGkzEoF/e
- CXSDZ/lODyTd1UuYOei3uZ1EtpJemqjO+BDd6KoEwzZjKR8Um6N5y1hPh0LrGHEeTHsZ
- QttI/KhnRruhqIwURbD5VN354LuordvcFNpu/xPqROiiwNFLM/KGySsbX8BKA/0Jv0SQ
- 5GEf5TCqDFvhXZkrmrwkJN1t5HyOPG5sgwe9ppc1VLfrnbpUcLPWteAtJUjk6V+rLmoV
- ijUQ==
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mg8Zv-0003NN-Nz
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 12:48:37 -0400
+Received: by mail-ua1-x92b.google.com with SMTP id x3so12721754uar.13
+ for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 09:48:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=dfIgzIXlYymggwsCQ4DvFxMXkRyE0+MfLIBarLFYcZg=;
+ b=nhePTZ/H13jtTfvBvg/PlLyPDhWl3AIMGa/PbvkymFHUQG7/ySe8fjgl0+AzNJgQl0
+ EFHW9vvH6mAdil0283IBNAWUz7pov7ZsVUy8IJD8M11jiQjDu7mI9yGBWpl7xZa+d1Sn
+ D2ag2G08MkJQQpuuR3KaO2oIwYnzG39ezqhSEvgA11/EruIQyVhxSWnWEFzIWioyNBaj
+ cHFXaTl4iBgy6fBL6k69/RKDtFN3NX9pucrgY9Y11B6i+6tOR0ZHkJMTvyWBZwVukGV5
+ jvcWrKGAJcky1OU3tsq7ndSCtWMepu7GwaVmoG/hbAAFX0YaJ2LlQLZdm1zYEY8NfZIt
+ DG6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Bn9ZApLw5RmSOHXv+vS42sOOTg9U6Qd63aH3LyvgGT8=;
- b=70PHDqAM4UNqYM2uTIz7MqU07P3caeg7vYnmxSH5HzTjzsf+4nf74mpv5jLJrjRDAg
- 8CdcqlVbs6w83eqJWRofHAt9Kk0TBmcMGTc9A5eeNhgqH8XB3bc7ljYETJ+FRKxOEmlG
- 5NoLeqrlKHIlslfemugjkK0UNQiRxdM7DFgqKYsBFCmur9Na/0QcWr8fheT6eML7M2Nc
- TXVFML+RFW9UPPokYEzh/0r5xsv06/Su7EISNJFy9hzHSFjOfpUUx+RpJi7avlbCh5SX
- FcPlYc3R4HvpnsLCW/enuA2FayTPeEBe08TDXz06UG6zfx6Pp6qmYpHImDBOTRYRXj/5
- 21GQ==
-X-Gm-Message-State: AOAM532NADeFEbcj6K+hpkxpcLps9NrlzhyyiE7BSOZkVQw173hpOgpx
- byX/097et7jYkg0RQV6N33nwrQ==
-X-Google-Smtp-Source: ABdhPJxOXaQUlwjvV6yR9y8+DLIBPaQ0Qq4P+KToqCqRK8W80LJj5qSN2+ZJQd25eSdr9qN6dlqHnQ==
-X-Received: by 2002:a05:6a00:815:b0:44d:2193:f688 with SMTP id
- m21-20020a056a00081500b0044d2193f688mr5433133pfk.4.1635437907421; 
- Thu, 28 Oct 2021 09:18:27 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id m186sm3808081pfb.165.2021.10.28.09.18.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Oct 2021 09:18:26 -0700 (PDT)
-Subject: Re: [PATCH 17/24] bsd-user/arm/target_arch_signal.h: arm specific
- signal registers and stack
-To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
-Cc: Stacey Son <sson@FreeBSD.org>, qemu-trivial@nongnu.org,
- Kyle Evans <kevans@freebsd.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=dfIgzIXlYymggwsCQ4DvFxMXkRyE0+MfLIBarLFYcZg=;
+ b=bU71bSizATfbpp9iKeviP/xzVSAjBz0AN4il5GCKKXnQlGGslEY90Dh5jfEM46qghp
+ rV+pxaxu3RFPccfMkf8WfThEhAcKEtvIPThnGHzKYDvHyxx4fvb1c1vHGKBxvbG7orqn
+ 0B2MKNxh5RIX9m7zsa5I0AARlqvQQU1bv6aFlKhrmNb85epMOxirqnUzFp8d/hssTe3p
+ JIW2gVTeMI/Uw97HekU2bGpT2dgIFwcaJE6EM2EysYsy9iVsfWDmt1HQCKT6TBP39xsA
+ 3r7hdUBB2ADQ5vuc5tbQ5KUYqY9yDnbHSwgvT9KbXMuhYsCdbf0Dy4qTSTTiu4CD+Zpz
+ BOMg==
+X-Gm-Message-State: AOAM530jw/tJqqppX/ajxp+eu0riAYlQIpOdHMQYgnhbUDcd6BMsmZId
+ snIY7Ywzj3RrxbM6bmOSQtabI7+/6MCZW/t38trYNQ==
+X-Google-Smtp-Source: ABdhPJw6nnTBk7ZmxCl1rGFVRror1FamHMqPaYPLgjDIuEfA7BpGEPAHVTE/78MMymnfpQhA3tXyGgg/yd1T+0TKWII=
+X-Received: by 2002:a05:6102:5494:: with SMTP id
+ bk20mr6254599vsb.6.1635439713629; 
+ Thu, 28 Oct 2021 09:48:33 -0700 (PDT)
+MIME-Version: 1.0
 References: <20211019164447.16359-1-imp@bsdimp.com>
  <20211019164447.16359-18-imp@bsdimp.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d1dc2f64-22bb-c29f-1fec-a9f44c0e295e@linaro.org>
-Date: Thu, 28 Oct 2021 09:18:24 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <20211019164447.16359-18-imp@bsdimp.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.847,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <d1dc2f64-22bb-c29f-1fec-a9f44c0e295e@linaro.org>
+In-Reply-To: <d1dc2f64-22bb-c29f-1fec-a9f44c0e295e@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Thu, 28 Oct 2021 10:48:22 -0600
+Message-ID: <CANCZdfo_anCnfHXv_gUe3C9HEK1OOjOKHpeewEOnXsvFX-bO=A@mail.gmail.com>
+Subject: Re: [PATCH 17/24] bsd-user/arm/target_arch_signal.h: arm specific
+ signal registers and stack
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Stacey Son <sson@freebsd.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Kyle Evans <kevans@freebsd.org>, 
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
+Content-Type: multipart/alternative; boundary="0000000000002eca3905cf6c7bbc"
+Received-SPF: none client-ip=2607:f8b0:4864:20::92b;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x92b.google.com
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,15 +73,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Oct 2021 16:18:32 -0000
+X-List-Received-Date: Thu, 28 Oct 2021 16:48:38 -0000
 
-On 10/19/21 9:44 AM, Warner Losh wrote:
-> +#define TARGET_INSN_SIZE    4       /* arm instruction size */
+--0000000000002eca3905cf6c7bbc
+Content-Type: text/plain; charset="UTF-8"
 
-What is this for?  arm max insn size?
+On Thu, Oct 28, 2021 at 10:18 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> On 10/19/21 9:44 AM, Warner Losh wrote:
+> > +#define TARGET_INSN_SIZE    4       /* arm instruction size */
+>
+> What is this for?  arm max insn size?
+>
 
-r~
+It's used a few lines below:
+
++#define TARGET_SZSIGCODE    ((abi_ulong)(9 * TARGET_INSN_SIZE))
+
+which is a fancy way of getting the sizeof the sigtramp handler that's
+copied onto the stack and used in the setup.
+It's then used in bsd-user/arm/target_arch_signal.h because it doesn't have
+visibility to target_arch_sigtramp.h's
+namespace to get the size.
+
+It's likely a 'todo' cleanup to make this less hard-coded.
+
+Warner
+
+
+> Otherwise,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
+> r~
+>
+
+--0000000000002eca3905cf6c7bbc
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 28, 2021 at 10:18 AM Rich=
+ard Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.h=
+enderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex">On 10/19/21 9:44 AM, Warner Losh wrote:<br>
+&gt; +#define TARGET_INSN_SIZE=C2=A0 =C2=A0 4=C2=A0 =C2=A0 =C2=A0 =C2=A0/* =
+arm instruction size */<br>
+<br>
+What is this for?=C2=A0 arm max insn size?<br></blockquote><div><br></div><=
+div>It&#39;s used a few lines below:</div><div><br></div><div>+#define TARG=
+ET_SZSIGCODE=C2=A0 =C2=A0 ((abi_ulong)(9 * TARGET_INSN_SIZE))<br></div><div=
+><br></div><div>which is a fancy way of getting the sizeof the sigtramp han=
+dler=C2=A0that&#39;s copied onto the stack and used in the setup.</div><div=
+>It&#39;s then used in bsd-user/arm/target_arch_signal.h because it doesn&#=
+39;t have visibility to target_arch_sigtramp.h&#39;s</div><div>namespace to=
+ get the size.</div><div><br></div><div>It&#39;s likely a &#39;todo&#39; cl=
+eanup to make this less hard-coded.</div><div><br></div><div>Warner</div><d=
+iv>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+Otherwise,<br>
+Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
+<br>
+r~<br>
+</blockquote></div></div>
+
+--0000000000002eca3905cf6c7bbc--
 
