@@ -1,66 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mg9Kn-0006L1-0z
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 13:37:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47426)
+	id 1mg9b5-0006QE-Sm
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 13:53:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50562)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mg9Kl-0006Jj-Jx
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:36:59 -0400
-Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930]:44712)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mg9b4-0006Iz-4D
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:53:50 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:35618)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mg9Kj-00042s-L8
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:36:59 -0400
-Received: by mail-ua1-x930.google.com with SMTP id e5so12970175uam.11
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 10:36:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2T3Eq2UaBRLnX/73RKe2agGyLB7Fwv1Ve04t91Gz3gg=;
- b=05ivaMR9Zi5/H60rpqv4cFUwL9qMJw0I2aqC+F6Kp5XjD6agmeDhy4DA+Jn26rgtzr
- EhKGkq7Ht8lBc+2MG7sjAjI6OgH5RyQ4l20TfyZJed2PheLvdvi/2lt1C4A+qmYVbdch
- r0IWruC9vYxjp7+I9Bw34rGvYa2zT3dA7SOHBmGKLgRwnvl35VkehNav+UDUlMWePfcB
- dfy9tqd+XB2/eFvgU3cHuekOA1rrzYEYfveWIttJQQKCzWiZaxSb7mwQNLa4FcVc0MU1
- zmWE9rfxK8b6l6Cv5kf8USLl9k8Km0922EyVA0uFyeXhM35Nv04xY/+/AMUbmNxd/l3b
- 6AxA==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mg9ay-0002Ih-3C
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:53:48 -0400
+Received: by mail-pl1-x631.google.com with SMTP id n18so5003177plc.2
+ for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 10:53:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=tVEFbbebEavpAjA+40ChiTwoU3XdNKynKWf/fcSYhdU=;
+ b=Gi1MCdoGTGHCyV8fS7Nt6kXoKl+i0KPlnBAOV69z1+7is6eBolbh9lxYQBK6f0vrjS
+ kbsDtwmkOy/B0KDWyUBFKJgVtoYWgoNQ0Rcs/QN2r0Ammt1+GQKWok13ZZEDJJluKXVZ
+ yDEHU8tU7gzmAnFisDM/0OFUW+F5hipIBQf/xt4TM//H7L78M3DirjvjihjIjPcWIgdT
+ Z4wHYoRu06EZXeHe7nykWgwdA6bQ98QVWSEPZP6UOwOq7CyUBJwUQZiBkA8rtk3BhlWI
+ SAucL1+WJDUA5I7JCBEbeJn499/KQJm39lyE488LVtowz2WmW7uBV+cpKzGrwO6JhT8E
+ fkHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2T3Eq2UaBRLnX/73RKe2agGyLB7Fwv1Ve04t91Gz3gg=;
- b=CXas2xUXcQ89jKC0xUR6b5ioD7nCO8ZIYST7ZDdQS41V08Jg1eDuT+aDOTCgWmKbB5
- qiovQddFal93t2KIlq0ePJP6F9zDBEShEK/CvbsV21H0ucTO5NT7ErpyWd3UKUWnRV+r
- BfFDCsCLRepvCxxIGDhJOZcNvzCMaVPkgBwNoc0vQeMwpTV4N2dF9SWZFNgjez+yYOI3
- 9hMr1I/BJMrz715F8LLh//b+gHEaa8Z7VoTHfNXhqW/QrBYj1aNpuvyX/3blTfFcQqGq
- IjFAUxZFGkBqL2K0VLtxByNj8GswmTDAdqHCiG18+wqjfPZpxlwuxa9QmmQ0By3+EQrS
- 5qgw==
-X-Gm-Message-State: AOAM532mlwhCWqAcg9LMj6QX6zNlASBQ9Hlwe4L8NCtrOLMZSoil2AeF
- dw8E+/zWkaGOJXeOKE0Q2pUTcpTcmq8GYvy+KzUlKA==
-X-Google-Smtp-Source: ABdhPJz1KmmXcdmQmUy95WiDxF5wWSsx84M14vaxdv0a5IjU4+ve6l0+LdUZ63YU0MCLlfdmQSoNArYZikZhEKJ70e0=
-X-Received: by 2002:a05:6102:3232:: with SMTP id
- x18mr6096997vsf.42.1635442615046; 
- Thu, 28 Oct 2021 10:36:55 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=tVEFbbebEavpAjA+40ChiTwoU3XdNKynKWf/fcSYhdU=;
+ b=Td9dN4za+ECPSIPEiWqNl5BwGN2HrN6u/PDgNHhF8dKbwbyLIMHH/xNcBp3Cb8bM24
+ NqO4hvRswlRIO7JPPtdjaHFwW+iLIhbxazSNJSa2X2IoKK8vkbwzCMK2gJUiDj/lyQrI
+ 11gDPv/+x3t/gaHUgxA3+TZf642B7zkrLITTQpHlfeoyE2umA813MurDJsepCMI3007x
+ V6DgaZ00chmzhRtMti0qDL4E0u9NjTu0BFFxSqYkaHWMi9edn869hbotQM4t/NueF4fQ
+ Z6mss0SQM9N/hlz9TuagjRBHFqiks1a6N0lJradN3dDYnF4ZXAfm4ZA9+4bmAlgnZG09
+ SdQQ==
+X-Gm-Message-State: AOAM532mIRMKx/nOJxrQyR6ZAsdNgeYwPssjR/yoj9LdcZm2ppLuvA0F
+ MU5EU4W+wqH3WVwHsvLsEAKDNg==
+X-Google-Smtp-Source: ABdhPJzVYZ1usxe0AVN2PHlbU33UosNCAubzxQDhbcSqEnf8klnVRvF2aOQeCyMYkt6+lqVmwKKA4w==
+X-Received: by 2002:a17:90b:4d09:: with SMTP id
+ mw9mr6064847pjb.100.1635443622309; 
+ Thu, 28 Oct 2021 10:53:42 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
+ by smtp.gmail.com with ESMTPSA id g22sm4442303pfc.202.2021.10.28.10.53.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Oct 2021 10:53:41 -0700 (PDT)
+Subject: Re: [PATCH 22/24] bsd-user/arm/target_arch_signal.h: arm set_mcontext
+To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
+Cc: Stacey Son <sson@FreeBSD.org>, qemu-trivial@nongnu.org,
+ Klye Evans <kevans@FreeBSD.org>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>
 References: <20211019164447.16359-1-imp@bsdimp.com>
- <20211019164447.16359-5-imp@bsdimp.com>
- <426f6425-ad4f-41c3-a034-90cec903b0a1@linaro.org>
-In-Reply-To: <426f6425-ad4f-41c3-a034-90cec903b0a1@linaro.org>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 28 Oct 2021 11:36:44 -0600
-Message-ID: <CANCZdfoLyv3uM7MSNQepUu37Yx9NnhA5LdSNMWm=YkeQkv+VqA@mail.gmail.com>
-Subject: Re: [PATCH 04/24] bsd-user/arm/target_arch_cpu.h: CPU Loop definitions
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Stacey Son <sson@freebsd.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, Kyle Evans <kevans@freebsd.org>, 
- Olivier Houchard <cognet@ci0.org>, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: multipart/alternative; boundary="0000000000001eec9d05cf6d284c"
-Received-SPF: none client-ip=2607:f8b0:4864:20::930;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x930.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ <20211019164447.16359-23-imp@bsdimp.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <344ac222-daa9-c752-8c6a-21773efb8656@linaro.org>
+Date: Thu, 28 Oct 2021 10:53:39 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
+MIME-Version: 1.0
+In-Reply-To: <20211019164447.16359-23-imp@bsdimp.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.847,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,89 +83,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Oct 2021 17:36:59 -0000
+X-List-Received-Date: Thu, 28 Oct 2021 17:53:50 -0000
 
---0000000000001eec9d05cf6d284c
-Content-Type: text/plain; charset="UTF-8"
+On 10/19/21 9:44 AM, Warner Losh wrote:
+> +    regs->regs[15] = tswap32(gr[TARGET_REG_PC]);
+> +    cpsr = tswap32(gr[TARGET_REG_CPSR]);
+> +    cpsr_write(regs, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
 
-On Thu, Oct 28, 2021 at 9:14 AM Richard Henderson <
-richard.henderson@linaro.org> wrote:
+Hmm.  What's the expected behaviour if the saved CPSR state does not match the PC state 
+wrt thumb?
 
-> On 10/19/21 9:44 AM, Warner Losh wrote:
-> > +    cpsr_write(env, regs->uregs[16], 0xffffffff, CPSRWriteRaw);
->
-> This looks a bit suspicious.
-> Over in linux-user we use
->
->      cpsr_write(env, regs->uregs[16], CPSR_USER | CPSR_EXEC,
->                 CPSRWriteByInstr);
->
-> Are you setting something special in pt_regs that would warrant writing
-> supervisor bits of
-> CPSR?  In addition, CPSRWriteRaw won't rebuild hflags, which means that
-> changes to Thumb
-> state won't be recognized properly.
->
+I'm ok if this should fail in spectacular ways, I just wanna know.
 
-Now that you highlight it, the code I posted looks wrong. The above code
-makes better
-sense to me. I'll make the change in our bsd-user fork and run it through
-the FreeBSD
-test harness that we have. I'll see if it introduces any regressions. Today
-I have an
-environment that I maintain by hand that runs ~5900 tests, of which
-bsd-user's
-qemu-arm passes like ~5500. My long term goal is to get that integrated
-first into the
-bsd-user fork's CI and later into the optional FreeBSD CI in qemu project.
-In addition,
-I'll be tagging 'testing qemu-user' in the testing environment so we can
-exclude things
-not emulated and/or mark known problems with a bug pointer. The test takes
-about
-3 hours to run in emulation is the only thing I'm worried about...
+I *think* what will happen at the moment is that qemu will go into a whacky state in which 
+the translator will read and interpret unaligned data.
 
-Warner
+I have a pending patch set for arm to raise unaligned exceptions for mis-aligned pc.  For 
+arm32 mode, this is fine, and we'll raise the exception.  But for thumb mode, this is 
+architecturally impossible, and the translator will assert.
 
---0000000000001eec9d05cf6d284c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The assert is going to be a problem.  There are a couple of options:
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 28, 2021 at 9:14 AM Richa=
-rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
-nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">On 10/19/21 9:44 AM, Warner Losh wrote:<br>
-&gt; +=C2=A0 =C2=A0 cpsr_write(env, regs-&gt;uregs[16], 0xffffffff, CPSRWri=
-teRaw);<br>
-<br>
-This looks a bit suspicious.<br>
-Over in linux-user we use<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0cpsr_write(env, regs-&gt;uregs[16], CPSR_USER | CPSR_EX=
-EC,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 CPSRWriteByInstr);<=
-br>
-<br>
-Are you setting something special in pt_regs that would warrant writing sup=
-ervisor bits of <br>
-CPSR?=C2=A0 In addition, CPSRWriteRaw won&#39;t rebuild hflags, which means=
- that changes to Thumb <br>
-state won&#39;t be recognized properly.<br></blockquote><div><br></div><div=
->Now that you highlight it, the code I posted looks wrong. The above code m=
-akes better</div><div>sense to me. I&#39;ll make the change in our bsd-user=
- fork and run it through the FreeBSD</div><div>test harness that we have. I=
-&#39;ll see if it introduces any regressions. Today I have an</div><div>env=
-ironment that I maintain by hand that runs ~5900 tests, of which bsd-user&#=
-39;s</div><div>qemu-arm passes like ~5500. My long term goal is to get that=
- integrated first into the</div><div>bsd-user fork&#39;s CI and later into =
-the optional FreeBSD CI in qemu project. In addition,</div><div>I&#39;ll be=
- tagging &#39;testing qemu-user&#39; in the testing environment so we can e=
-xclude things</div><div>not emulated and/or mark known problems with a bug =
-pointer. The test takes about</div><div>3 hours to run in emulation is the =
-only thing I&#39;m worried about...</div><div><br></div><div>Warner</div><d=
-iv><br></div></div></div>
+(1) TARGET_REG_PC wins: unset PC[0] and adjust CPSR[T] to match.
 
---0000000000001eec9d05cf6d284c--
+(2) CPSR_T wins: unset pc[0] if CPSR[T] is set, unchanged otherwise.  (In the Arm ARM 
+psueodcode, pc[0] is hardwired to 0 in thumb mode.)
+
+(3) Don't worry about matching PC[0] and CPSR[T], but do prevent an impossible situation 
+and unset PC[0] always.  If PC[1] is set, and CPSR[T] is unset, then we'll raise unaligned 
+when the cpu restarts.
+
+And, finally, you're missing the mc_vfp_* handling.
+
+
+r~
 
