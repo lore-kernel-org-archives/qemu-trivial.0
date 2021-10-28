@@ -1,71 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mg7Li-0005JP-TO
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 11:29:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44436)
+	id 1mg7Qq-0001js-K8
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 11:35:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45566)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg7Lh-0005I8-GO
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 11:29:49 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:43979)
+ id 1mg7Qp-0001jc-7l
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 11:35:07 -0400
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431]:40670)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg7Lf-0002P0-8R
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 11:29:49 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id
- k2-20020a17090ac50200b001a218b956aaso5043017pjt.2
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 08:29:46 -0700 (PDT)
+ id 1mg7Qm-00038C-9W
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 11:35:06 -0400
+Received: by mail-pf1-x431.google.com with SMTP id x7so1325275pfh.7
+ for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 08:35:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EvlqDW9p2ZxLPiuy/99YP1Q+zRzG2xMO9G2FMIdjc2I=;
- b=avU+msRTMcNP9n26HEq7vtkMxCpqIdYEEfxc1SK51f8m1HmLE8QLBQ3vsBZGBLcNj2
- lA4xR6XbfKuSPbmp6ZpKetwyCNYjwxnsfdz4WcO+AZZKZEoxh1wczT92fnOuOdQ4o0nU
- Ae8bjpfYHlmm8yRqe2q3FJaVvXP7ACWVtheHZuYreBqiVM3hO9fArqNSoHltnecsCETE
- DSmQ867l7XzryGCBDRgZuHoKtcvIcr89C5DbUPsDwtwmRKmh3eK+4lSLVKscJlLTmYVS
- hO8NOF/28YvtP9+2l9CqyBmFEhmqSWoR2ZPynDz62ToSaYlyyBfejD0f0w7njNBAX3pK
- J6nw==
+ bh=pbzpAyqEqEU6lw6rIowAcMbDEVJa5p6g6GIFcPtXGaA=;
+ b=dgWmsMbsyBLQyzI8UV9kx5CsBqHi5a6Fz9817M78IshB9z6WF4N3z9dJzI8hWiyo6h
+ FSK17bzVGt/mjovhqe9V6+Hw5hQTwxulC9Wd2wZ4vdEaozT0GZv9z9HKr+NL1s1NLZCk
+ zcDMzFwSa2sASciFlCusSER1rVXgSX8Rpx0LzsrcJY7ie4cpvU+4fn7mXVwCxzdCpjfw
+ NTplsDOx8siZYC+eikoobOfc4Q0m2PJk9PBI/BSCCwLpjgJUHOc4DEXbCQYnm5jKGncb
+ jmiFqCIp9QzN9fJ1dVrhbQsdwq/T74s5cnV/84jSWSwoST57fn23Pc96J4/Hj6PW6wI4
+ fTZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=EvlqDW9p2ZxLPiuy/99YP1Q+zRzG2xMO9G2FMIdjc2I=;
- b=cZBjVmN4pV6tBigiDlGCu8RQg2xJPg5juzxMcl/vqisO+rW3T2s3G906C5PdiWv+JO
- J31iDzYmjN6JSThBX7yywQzjb2JGqD+9lEwGdMNgoHV9L5QP1OWhxoeM8KCzv10YwOlD
- fQYaGLkXVtx1zMR8v/BYotJQ9ZT/YEf0eWC8xS/GNzvU2fcJfrTxG7h0Ikg/TFdTzrzI
- zDdEnSysb+qDLHLFmqDePXq7RLmaonDlfEFFqw4BVhrgSG1PWTlDMSPBC1+YzSgOoDh5
- XKcqm5XKwzTVj/EWLhkNwkOxezYTLPI76gxEqPMkYIkpoCYT6GTTa/Jc/jRfdpfSBgwa
- 9QWA==
-X-Gm-Message-State: AOAM533nHNvalm4dp8RlGZxYCoaJ6JOQFvIpmqB/lcPYGgKLDpQqbBrJ
- V4J9nPoXSZkLTKQAq9qUmiJv+Q==
-X-Google-Smtp-Source: ABdhPJxa4fSheL/N7gPAdHARY7BKOH9iZlpoWNv7SuDBNDovH5Rlnn025nhmJpHtXvmTsUT6ngorMQ==
-X-Received: by 2002:a17:902:8549:b0:141:6804:5fb7 with SMTP id
- d9-20020a170902854900b0014168045fb7mr4591765plo.39.1635434985516; 
- Thu, 28 Oct 2021 08:29:45 -0700 (PDT)
+ bh=pbzpAyqEqEU6lw6rIowAcMbDEVJa5p6g6GIFcPtXGaA=;
+ b=UQzgck29oNyVaA0UEDI/WI60NOdzNQm2Vk02QqqfOI0auPGqS2XIgetopgeHIWjykN
+ i9nSeEuEsIy/6O8ZVyWM3aWMVw+KG+WNtdmiqN/kbx+qB5RnAXuEHUYeCtd8uVJmeTnY
+ VkN08sx00R0+dgcMX9yJ22ygrg87WvnRbnIU5s01DrfDkbpN49tGKmka2bUI+MIkwqgP
+ eNVIVmsHIJ9mjxR/qh4quEIKuEbsC+Unp5905Y6NnSpjEfOo+k97bbLYuWe6cW7UywYg
+ sFG+TBKdls+w7Ikbn+mAUARAc5qs+ut291YRZ57YRTgfASifT4zBzX3/y9lS87RNR5Yr
+ iuKw==
+X-Gm-Message-State: AOAM532PoKwAum371HmPA3YE5IRCz9rKb5g2ZhRZTUqrrTWNKlFFMWN9
+ Xi2fUjqATDhzHBYlmRrvX+87+w==
+X-Google-Smtp-Source: ABdhPJxOSidAlZcNsZKd/WBmWQkO0KzO53yqevLujbsPpjJVW2xcmor85xl6Y8ykj2Rx2+D+m5rOpw==
+X-Received: by 2002:a63:fe03:: with SMTP id p3mr3737262pgh.289.1635435302710; 
+ Thu, 28 Oct 2021 08:35:02 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id k14sm3112869pga.65.2021.10.28.08.29.44
+ by smtp.gmail.com with ESMTPSA id d12sm2704229pfl.141.2021.10.28.08.35.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Oct 2021 08:29:44 -0700 (PDT)
-Subject: Re: [PATCH 08/24] bsd-user/arm/target_arch_cpu.h: Implement data
- abort exceptions
+ Thu, 28 Oct 2021 08:35:02 -0700 (PDT)
+Subject: Re: [PATCH 09/24] bsd-user/arm/target_arch_cpu.h: Implement system
+ call dispatch
 To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
 Cc: Stacey Son <sson@FreeBSD.org>, qemu-trivial@nongnu.org,
- Klye Evans <kevans@FreeBSD.org>, Olivier Houchard <cognet@ci0.org>,
- Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>
+ Klye Evans <kevans@FreeBSD.org>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>
 References: <20211019164447.16359-1-imp@bsdimp.com>
- <20211019164447.16359-9-imp@bsdimp.com>
+ <20211019164447.16359-10-imp@bsdimp.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e1b16626-1b3f-0867-43ee-ee085a881c21@linaro.org>
-Date: Thu, 28 Oct 2021 08:29:42 -0700
+Message-ID: <152e8afa-fc89-5666-e234-a2af6bca6acb@linaro.org>
+Date: Thu, 28 Oct 2021 08:35:00 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211019164447.16359-9-imp@bsdimp.com>
+In-Reply-To: <20211019164447.16359-10-imp@bsdimp.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
 X-Spam_score_int: -48
 X-Spam_score: -4.9
 X-Spam_bar: ----
@@ -85,24 +83,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Oct 2021 15:29:49 -0000
+X-List-Received-Date: Thu, 28 Oct 2021 15:35:07 -0000
 
 On 10/19/21 9:44 AM, Warner Losh wrote:
-> Implement EXCP_PREFETCH_ABORT AND EXCP_DATA_ABORT. Both of these data
-> exceptions cause a SIGSEGV.
-> 
-> Signed-off-by: Klye Evans<kevans@FreeBSD.org>
-> Signed-off-by: Olivier Houchard<cognet@ci0.org>
-> Signed-off-by: Stacey Son<sson@FreeBSD.org>
-> Signed-off-by: Warner Losh<imp@bsdimp.com>
-> ---
->   bsd-user/arm/target_arch_cpu.h | 11 +++++++++++
->   1 file changed, 11 insertions(+)
+> +                env->eabi = 1; /* FreeBSD is eabi only now */
 
-Short-term:
+Surely this should be set target_cpu_init.  Even then it'd be just for completeness.  This 
+is the kind of thing that shouldn't have escaped linux-user, as it's otherwise unused.
+
+Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-I hope to have the patches that make this obsolete go in this week.
 
 
 r~
