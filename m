@@ -1,76 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mg9b5-0006QE-Sm
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 13:53:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50562)
+	id 1mg9dU-0001FU-Lx
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 13:56:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51048)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg9b4-0006Iz-4D
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:53:50 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:35618)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mg9dS-0001Cm-Qc
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:56:18 -0400
+Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d]:33453)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg9ay-0002Ih-3C
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:53:48 -0400
-Received: by mail-pl1-x631.google.com with SMTP id n18so5003177plc.2
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 10:53:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tVEFbbebEavpAjA+40ChiTwoU3XdNKynKWf/fcSYhdU=;
- b=Gi1MCdoGTGHCyV8fS7Nt6kXoKl+i0KPlnBAOV69z1+7is6eBolbh9lxYQBK6f0vrjS
- kbsDtwmkOy/B0KDWyUBFKJgVtoYWgoNQ0Rcs/QN2r0Ammt1+GQKWok13ZZEDJJluKXVZ
- yDEHU8tU7gzmAnFisDM/0OFUW+F5hipIBQf/xt4TM//H7L78M3DirjvjihjIjPcWIgdT
- Z4wHYoRu06EZXeHe7nykWgwdA6bQ98QVWSEPZP6UOwOq7CyUBJwUQZiBkA8rtk3BhlWI
- SAucL1+WJDUA5I7JCBEbeJn499/KQJm39lyE488LVtowz2WmW7uBV+cpKzGrwO6JhT8E
- fkHw==
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mg9dQ-0003I4-B6
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 13:56:18 -0400
+Received: by mail-vk1-xa2d.google.com with SMTP id d130so3419152vke.0
+ for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 10:56:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YufxuHKCoPkSZge0E5ciSU/zgYYhE5iYk4XDfnY5eic=;
+ b=3VfAaedUbjecPrPZMICFGRzYBLn7swMMRbdKqvE7xbT2WBl1ew9avsqsSh5ztakuGR
+ qi4MDjBkqCAoJAmrHzwKpWIDcmvuNMJoTA7b9vc03YwsSeR/4LVyM1mICUQme7lmorr+
+ 13+532EnsZ71/DZJqbLr7L+qB70amPnVCJB9U523RDIL07oXL62VJpYTknit12utALCK
+ PQRCBDe+WlpunAOMuV+cvfDftoJQjtBVQ3+hIGGPt/GH+4yYwa1W+9UByrJ0pmbU7qu5
+ Zmd2GPzSGfuguj/wEB3zO5WRAEAUrN0b+QaG3CXT4KWrWlzQdxRaZKVpwhFDCgtILYjf
+ JtVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=tVEFbbebEavpAjA+40ChiTwoU3XdNKynKWf/fcSYhdU=;
- b=Td9dN4za+ECPSIPEiWqNl5BwGN2HrN6u/PDgNHhF8dKbwbyLIMHH/xNcBp3Cb8bM24
- NqO4hvRswlRIO7JPPtdjaHFwW+iLIhbxazSNJSa2X2IoKK8vkbwzCMK2gJUiDj/lyQrI
- 11gDPv/+x3t/gaHUgxA3+TZf642B7zkrLITTQpHlfeoyE2umA813MurDJsepCMI3007x
- V6DgaZ00chmzhRtMti0qDL4E0u9NjTu0BFFxSqYkaHWMi9edn869hbotQM4t/NueF4fQ
- Z6mss0SQM9N/hlz9TuagjRBHFqiks1a6N0lJradN3dDYnF4ZXAfm4ZA9+4bmAlgnZG09
- SdQQ==
-X-Gm-Message-State: AOAM532mIRMKx/nOJxrQyR6ZAsdNgeYwPssjR/yoj9LdcZm2ppLuvA0F
- MU5EU4W+wqH3WVwHsvLsEAKDNg==
-X-Google-Smtp-Source: ABdhPJzVYZ1usxe0AVN2PHlbU33UosNCAubzxQDhbcSqEnf8klnVRvF2aOQeCyMYkt6+lqVmwKKA4w==
-X-Received: by 2002:a17:90b:4d09:: with SMTP id
- mw9mr6064847pjb.100.1635443622309; 
- Thu, 28 Oct 2021 10:53:42 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id g22sm4442303pfc.202.2021.10.28.10.53.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Oct 2021 10:53:41 -0700 (PDT)
-Subject: Re: [PATCH 22/24] bsd-user/arm/target_arch_signal.h: arm set_mcontext
-To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
-Cc: Stacey Son <sson@FreeBSD.org>, qemu-trivial@nongnu.org,
- Klye Evans <kevans@FreeBSD.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>
-References: <20211019164447.16359-1-imp@bsdimp.com>
- <20211019164447.16359-23-imp@bsdimp.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <344ac222-daa9-c752-8c6a-21773efb8656@linaro.org>
-Date: Thu, 28 Oct 2021 10:53:39 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YufxuHKCoPkSZge0E5ciSU/zgYYhE5iYk4XDfnY5eic=;
+ b=T2B8o1AevnuioUlwwobYPHU7R5NO/nbpFAtCUKlX8wrUlbjuQ5LYvE9R9993uFWHyt
+ mS5bIVyRtZF090w53bW+9blNKSe2o1OuNmhGbEME9SndN7HKUrwoPkuQJ6wOOcyc9cvs
+ XRpwkP5fs8SwTqmYoC845FyceoH4HSlP7L0J9iw8VdkxiFMM3BB6L34LL4jabqtrxZl3
+ cMZDnlOg42raxyuRcaED9huUfiIx1r4pCZiNETQwB0l5YmRgs6LOkmcZD6ayZYFxMfYT
+ NWTwnOEhJceJh6lK+UVg7CfrhdC5AkWCV8khmo75Egs6XqcTNHyHx2M+6XRMrgfyixGB
+ E/xA==
+X-Gm-Message-State: AOAM5325LPV8SwhQiWkDgiTFfW5deAUk275TGPfQ4MlnaMHdJ1tKdd+D
+ vKsEZU8pQheGtCNpztTBpjbkPG42gbWw2xvX9vrfmA==
+X-Google-Smtp-Source: ABdhPJw5ewDo3UEm2LIEzWoqMQYeqNmGzhoGsWwqSfHytVJojKkpujhyfJihUvtkcJ7Z8+6gc3Sv6uJIjwrJyr84ht4=
+X-Received: by 2002:a05:6122:2e8:: with SMTP id
+ b8mr5537371vko.23.1635443774454; 
+ Thu, 28 Oct 2021 10:56:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20211019164447.16359-23-imp@bsdimp.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.847,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20211019164447.16359-1-imp@bsdimp.com>
+ <20211019164447.16359-10-imp@bsdimp.com>
+ <152e8afa-fc89-5666-e234-a2af6bca6acb@linaro.org>
+In-Reply-To: <152e8afa-fc89-5666-e234-a2af6bca6acb@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Thu, 28 Oct 2021 11:56:03 -0600
+Message-ID: <CANCZdfph7CSPN7KtAT4yGJ7V0wu2BzSVmHmthEEHO1UcXHHHxA@mail.gmail.com>
+Subject: Re: [PATCH 09/24] bsd-user/arm/target_arch_cpu.h: Implement system
+ call dispatch
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Stacey Son <sson@freebsd.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Klye Evans <kevans@freebsd.org>, 
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
+Content-Type: multipart/alternative; boundary="0000000000003a123805cf6d6dc8"
+Received-SPF: none client-ip=2607:f8b0:4864:20::a2d;
+ envelope-from=wlosh@bsdimp.com; helo=mail-vk1-xa2d.google.com
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,38 +73,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Oct 2021 17:53:50 -0000
+X-List-Received-Date: Thu, 28 Oct 2021 17:56:19 -0000
 
-On 10/19/21 9:44 AM, Warner Losh wrote:
-> +    regs->regs[15] = tswap32(gr[TARGET_REG_PC]);
-> +    cpsr = tswap32(gr[TARGET_REG_CPSR]);
-> +    cpsr_write(regs, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
+--0000000000003a123805cf6d6dc8
+Content-Type: text/plain; charset="UTF-8"
 
-Hmm.  What's the expected behaviour if the saved CPSR state does not match the PC state 
-wrt thumb?
+On Thu, Oct 28, 2021 at 9:35 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-I'm ok if this should fail in spectacular ways, I just wanna know.
+> On 10/19/21 9:44 AM, Warner Losh wrote:
+> > +                env->eabi = 1; /* FreeBSD is eabi only now */
+>
+> Surely this should be set target_cpu_init.  Even then it'd be just for
+> completeness.  This
+> is the kind of thing that shouldn't have escaped linux-user, as it's
+> otherwise unused.
+>
+> Otherwise,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
 
-I *think* what will happen at the moment is that qemu will go into a whacky state in which 
-the translator will read and interpret unaligned data.
+I see no other uses outside of linux-user, so I'm just going to delete this
+line. FreeBSD
+used to support OABI in bsd-user, but always badly and so that code was
+removed.
 
-I have a pending patch set for arm to raise unaligned exceptions for mis-aligned pc.  For 
-arm32 mode, this is fine, and we'll raise the exception.  But for thumb mode, this is 
-architecturally impossible, and the translator will assert.
+Warner
 
-The assert is going to be a problem.  There are a couple of options:
+--0000000000003a123805cf6d6dc8
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-(1) TARGET_REG_PC wins: unset PC[0] and adjust CPSR[T] to match.
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 28, 2021 at 9:35 AM Richa=
+rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
+nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">On 10/19/21 9:44 AM, Warner Losh wrote:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 env-&gt;eabi =
+=3D 1; /* FreeBSD is eabi only now */<br>
+<br>
+Surely this should be set target_cpu_init.=C2=A0 Even then it&#39;d be just=
+ for completeness.=C2=A0 This <br>
+is the kind of thing that shouldn&#39;t have escaped linux-user, as it&#39;=
+s otherwise unused.<br>
+<br>
+Otherwise,<br>
+Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br></blockqu=
+ote><div><br></div><div>I see no other uses outside of linux-user, so I&#39=
+;m just going to delete this line. FreeBSD</div><div>used to support OABI i=
+n bsd-user, but always badly and so that code was removed.</div><div><br></=
+div><div>Warner=C2=A0</div></div></div>
 
-(2) CPSR_T wins: unset pc[0] if CPSR[T] is set, unchanged otherwise.  (In the Arm ARM 
-psueodcode, pc[0] is hardwired to 0 in thumb mode.)
-
-(3) Don't worry about matching PC[0] and CPSR[T], but do prevent an impossible situation 
-and unset PC[0] always.  If PC[1] is set, and CPSR[T] is unset, then we'll raise unaligned 
-when the cpu restarts.
-
-And, finally, you're missing the mc_vfp_* handling.
-
-
-r~
+--0000000000003a123805cf6d6dc8--
 
