@@ -1,76 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mg9jB-0008Bj-7d
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 14:02:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52436)
+	id 1mgBC4-00071k-2Y
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 15:36:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44276)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg9j9-0008AP-JX
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 14:02:11 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:34468)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mgBC1-00070G-E6
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 15:36:05 -0400
+Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930]:40518)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg9j2-0004yU-Qk
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 14:02:11 -0400
-Received: by mail-pl1-x635.google.com with SMTP id r5so5023800pls.1
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 11:02:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KxBB6s+ApjnEywU03krTn/aRpNLuUV1/UczZhD7fAmw=;
- b=yf/ZIlgVC15hedHzvMvB8KQIhArEH0My0WDFeiKC3hG5yTTB3vGPpZ06LnLpPATFtp
- 7FOJgnwoaYKkuWHoJJodK+iUB/JKunWvhgCGvdPwHqLRlgQb5defENUDXLdY5+Ynjctw
- lA5bM+V4BblCfrrRCuf8vvpFhnSpfA63+TEguMYbAwZesxJgP88LRBgMTkcOqV6iCm8y
- NO/jbV/sBrsnXB79m3OV8NzWn4/rWuz2XAUSKk0umcVGvllr+Jwabn7mkS17vVuN9Z4x
- e1Xhh989x+MeyJ4TCiN2gAtni6Ht2Ahaa4piB3r0HSWcCaopom5jDBXjxvo9US2DOYnS
- qSkw==
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mgBBy-0000nc-W4
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 15:36:05 -0400
+Received: by mail-ua1-x930.google.com with SMTP id e2so13669916uax.7
+ for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 12:36:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PAjfajqf6hhzWsw0ynUSYD8tS6fzbX5F+OgUJQ+LEr4=;
+ b=GgkW3uG8kP3DNEj9qGg+RrKZCla8tv1BkcOMdckr0XaAj7wrWGUzUqnMafkSZPU6Ko
+ rxepff7+/ZbHq/17vfk4mKLknkPF+TGFt8diP5bENq7V0H8dFKdchpmSx2DoW1LBDj4a
+ Ed/V24V+G+90/ieQGk6blyHoCUlSD+5haKN4xm7kdB01iD8VZxLDx+SCBhbp8Mfx5oO4
+ UF4p5uXXhcIRMo/PubFNLj/qvEkiFAxYiMiFk1HAhMmTjOdIMz3pMB45qabhC5MzTZC+
+ QUhjW03NrZMri/WwLHZUSLhuoZFnFZH7rH42TKbRUCZYx8sQJzHEjJghMxiLpgu1sj/f
+ 9ZHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=KxBB6s+ApjnEywU03krTn/aRpNLuUV1/UczZhD7fAmw=;
- b=jituO1yYrFVS3wyTBuwlZbAHoDvxBgms+MXRTItJ5Qte/8vIwNO/Hq6t7P1iVNJcww
- T+sVu71WMGp+S/7TUbMZmksKIe5IkAdhaBGHsgkNke5pk3kF0cB8WBLuZZNMZk3P4t1f
- R0TsHg0I9v7W2fAB2B4GKLnU96aI6MUAFWFRxlC+ZTlhfQlyB9U6fOP26RxY0wRmqjDg
- C9jGNyAQdC1K7/rjhmQrXiKZEAAXaKymKeW97fA3+sPHmbqxIK1rRCw0OpUOZcHC1yED
- jONBtjIkLasOjBf2vlKtQz26+czkVvs3bNnFs/93xjF86lXYB9G0SsCeDMweEwD2K9Wh
- A+uA==
-X-Gm-Message-State: AOAM532pUgxs/RMfNQE/vh5ZTI6Z536BqUm6370zb6atJ5g6RQN+lxyE
- e/w0xy02WeY7SyZGDsyMFTJZfg==
-X-Google-Smtp-Source: ABdhPJwb4657WQ7WXTdNhfEz4AA5nYjrXwoa0bjKq0mEyrtBhDN0Ei0Dcb/iDyIUSeIl3UvosLI4qQ==
-X-Received: by 2002:a17:903:22c5:b0:140:298b:9e27 with SMTP id
- y5-20020a17090322c500b00140298b9e27mr5396801plg.23.1635444123477; 
- Thu, 28 Oct 2021 11:02:03 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id nv5sm3725572pjb.10.2021.10.28.11.02.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Oct 2021 11:02:02 -0700 (PDT)
-Subject: Re: [PATCH 24/24] bsd-user: add arm target build
-To: Kyle Evans <kevans@freebsd.org>, Warner Losh <imp@bsdimp.com>
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>
-References: <20211019164447.16359-1-imp@bsdimp.com>
- <20211019164447.16359-25-imp@bsdimp.com>
- <CACNAnaGiY2NSgCfrx7eTzhOsfXMK4ZZoMzM=GtMt5nFuj5-jGA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <8da2f237-4470-cc76-afd7-a3ca1a060f3f@linaro.org>
-Date: Thu, 28 Oct 2021 11:02:00 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PAjfajqf6hhzWsw0ynUSYD8tS6fzbX5F+OgUJQ+LEr4=;
+ b=Gb6XMfyT5G97jro9HRWRNZhStaPI/f/NPs0BDfQuQ/KGnmnH+Nhenh+1CC3JUHyWRk
+ MuVpCwGA1wG3mdL0sOlhpY8xUW/5vV1l5gJf/YipK4AmWj2SjRz8wQa9mOJwUVxloPkq
+ K0MU7cbMsjeyxVMmgnoMnnbcnY3nXk89hTVjZ/Dc1HK7sLfObSBurp3RCNR3eeuKnhxy
+ V4kc0KtCG1MbPlLwxaGldZ7pSD86ONqEVaTD6MEIZcn1wnbMtQMyLtwUTlvrZfHBRxhm
+ T7dnobGXB6En5TfdkV5eIYk1XhpsNXa3mCgdb3Ciyc3vwegMON7hSUdw8Rf1V9ZgXq5w
+ 5acQ==
+X-Gm-Message-State: AOAM530ZM6k/wSR5VyNVl1TcKXrkdBNmM/dRAshfLDn0L+HoLU/LODBc
+ qWC4ThJHDkJLV/rwfc8mEnsKShP0ziXRZ89JDzG9Dg==
+X-Google-Smtp-Source: ABdhPJzHGxC3TvWfm43gozX7b1zE6w9gUORmeROIiOq40JACIZZdL+L1ymaHo4hizGpxdZxPx9HXWuUrlkJbCEdhSc4=
+X-Received: by 2002:a05:6102:5494:: with SMTP id
+ bk20mr7512819vsb.6.1635449761371; 
+ Thu, 28 Oct 2021 12:36:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CACNAnaGiY2NSgCfrx7eTzhOsfXMK4ZZoMzM=GtMt5nFuj5-jGA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.847,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20211019164447.16359-1-imp@bsdimp.com>
+ <20211019164447.16359-13-imp@bsdimp.com>
+ <264949a3-4bc2-e4a1-8a4f-61ee43008c91@linaro.org>
+In-Reply-To: <264949a3-4bc2-e4a1-8a4f-61ee43008c91@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Thu, 28 Oct 2021 13:35:50 -0600
+Message-ID: <CANCZdfo-Q2Xhsesbx9-gZhumFhLE+8akCtoWbfSpaNDnd2TJrA@mail.gmail.com>
+Subject: Re: [PATCH 12/24] bsd-user/arm/target_arch_sigtramp.h: Signal
+ Trampoline for arm
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Stacey Son <sson@freebsd.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Kyle Evans <kevans@freebsd.org>, 
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
+Content-Type: multipart/alternative; boundary="000000000000132a2c05cf6ed281"
+Received-SPF: none client-ip=2607:f8b0:4864:20::930;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x930.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,42 +73,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Oct 2021 18:02:11 -0000
+X-List-Received-Date: Thu, 28 Oct 2021 19:36:06 -0000
 
-On 10/25/21 11:21 PM, Kyle Evans wrote:
-> On Tue, Oct 19, 2021 at 11:45 AM Warner Losh <imp@bsdimp.com> wrote:
->>
->> Signed-off-by: Warner Losh <imp@bsdimp.com>
->> ---
->>   configs/targets/arm-bsd-user.mak | 2 ++
->>   1 file changed, 2 insertions(+)
->>   create mode 100644 configs/targets/arm-bsd-user.mak
->>
->> diff --git a/configs/targets/arm-bsd-user.mak b/configs/targets/arm-bsd-user.mak
->> new file mode 100644
->> index 0000000000..deea21aaf5
->> --- /dev/null
->> +++ b/configs/targets/arm-bsd-user.mak
->> @@ -0,0 +1,2 @@
->> +TARGET_ARCH=arm
->> +TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
->> --
->> 2.32.0
->>
-> 
-> I'm not really qualified to review this one, but it looks basically
-> sane. I note that there's a gdb-xml/arm-vfp-sysregs.xml in the current
-> master that should probably be added to TARGET_XML_FILES.
-> Cross-referencing arm-linux-user and i386-bsd-user, this seems sane
-> and correct and I'm not aware of any other options that we would need
-> to consider setting, so let's call it:
-> 
-> Acked-by: Kyle Evans <kevans@FreeBSD.org>
+--000000000000132a2c05cf6ed281
+Content-Type: text/plain; charset="UTF-8"
 
-Yeah, add sysregs.xml and give it
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+On Thu, Oct 28, 2021 at 9:42 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
+
+> On 10/19/21 9:44 AM, Warner Losh wrote:
+> > +    /*
+> > +     * The code has to load r7 manually rather than using
+> > +     * "ldr r7, =SYS_return to make sure the size of the
+> > +     * code is correct.
+> > +     */
+>
+> This comment was applicable to the original freebsd asm source; it has no
+> bearing on the
+> hex instructions below
 
 
-r~
+Yea, the code size will always be correct...
 
+
+> > +    uint32_t sigtramp_code[] = {
+> > +    /* 1 */ 0xE1A0000D,                  /* mov r0, sp */
+> > +    /* 2 */ 0xE2800000 + sigf_uc,        /* add r0, r0, #SIGF_UC */
+>
+> I guess this was a bit of thumb1 source that accidentally became ABI?
+> Otherwise I can't think why you wouldn't squish the mov into the add.
+>
+
+It's in our ABI. gdb and others know what the sigcode signature looks like
+for sigreturn
+so we can't really change it without a lot of pain... So we're kinda stuck
+with very
+old-school ARM code sequences for our modern armv7 port. There's likely no
+reason to have the defensive call to sys_exit either, but like I said,
+we're kinda
+stuck with it w/o replacing it in a number of external sources...  You may
+see similar
+issues with the aarch64 code I'll post next.
+
+
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
+
+thanks!
+
+Warner
+
+
+> r~
+>
+
+--000000000000132a2c05cf6ed281
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 28, 2021 at 9:42 AM Richa=
+rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
+nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">On 10/19/21 9:44 AM, Warner Losh wrote:<br>
+&gt; +=C2=A0 =C2=A0 /*<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* The code has to load r7 manually rather than us=
+ing<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* &quot;ldr r7, =3DSYS_return to make sure the si=
+ze of the<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* code is correct.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
+<br>
+This comment was applicable to the original freebsd asm source; it has no b=
+earing on the <br>
+hex instructions below</blockquote><div><br></div><div>Yea, the code size w=
+ill always be correct...</div><div>=C2=A0</div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex">&gt; +=C2=A0 =C2=A0 uint32_t sigtramp_code[] =3D {<br=
+>
+&gt; +=C2=A0 =C2=A0 /* 1 */ 0xE1A0000D,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* mov r0, sp */<br>
+&gt; +=C2=A0 =C2=A0 /* 2 */ 0xE2800000 + sigf_uc,=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 /* add r0, r0, #SIGF_UC */<br>
+<br>
+I guess this was a bit of thumb1 source that accidentally became ABI?<br>
+Otherwise I can&#39;t think why you wouldn&#39;t squish the mov into the ad=
+d.<br></blockquote><div><br></div><div>It&#39;s in our ABI. gdb and others =
+know what the sigcode=C2=A0signature looks like for sigreturn</div><div>so =
+we can&#39;t really change=C2=A0it without a lot of pain... So we&#39;re ki=
+nda stuck with very</div><div>old-school ARM code sequences for our modern =
+armv7 port. There&#39;s likely no</div><div>reason to have the defensive ca=
+ll to sys_exit either, but like I said, we&#39;re kinda</div><div>stuck wit=
+h it w/o replacing it in a number of external sources...=C2=A0 You may see =
+similar</div><div>issues with the aarch64 code I&#39;ll post next.</div><di=
+v>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br></blockqu=
+ote><div><br></div><div>thanks!</div><div><br></div><div>Warner</div><div>=
+=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+r~<br>
+</blockquote></div></div>
+
+--000000000000132a2c05cf6ed281--
 
