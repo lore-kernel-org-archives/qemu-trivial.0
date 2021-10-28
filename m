@@ -1,70 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mg7mq-0005Ar-MR
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 11:57:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51210)
+	id 1mg7rg-0001fu-CU
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 12:02:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg7mk-00052D-1w
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 11:57:46 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529]:40598)
+ id 1mg7re-0001Ym-KQ
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 12:02:50 -0400
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436]:40875)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mg7mi-0004W4-43
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 11:57:45 -0400
-Received: by mail-pg1-x529.google.com with SMTP id l186so6796638pge.7
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 08:57:43 -0700 (PDT)
+ id 1mg7rc-0005Jt-Vi
+ for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 12:02:50 -0400
+Received: by mail-pf1-x436.google.com with SMTP id x7so1403197pfh.7
+ for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 09:02:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=XDDkQeHZ0dijGtSKlhGqjNUEl29/r8+MY+SRNPeDCrg=;
- b=iyCPo4L2ip3tRO/molwyZg9mVUEzrWwGaEEPrJ/GUqS4lMESbwuTM3VbeYsl1bnkXZ
- txewQdHGw927iCEwKyurt1NFIXAsc2N8ndEdp7kVhb2siiXo45+JvioLlasW0yKO9WxT
- AmfC9bM9PEIcJRVTAX6yEAh2yb4swZ2iBaYil8zJtMTuPYVTYnPH0Go3VZbPpryicor7
- jfalwDz+7bFKlMhHPFzrd/sBKIp9DfdLiHdKtxYlU3nZwpjEaygtM9X3EXM/T8jHz8X9
- ZEuqGYfvTltae6eX0hefG3di94FCHGtFkQs6uUSY8mFOaa6ZQ9AdhAGbUs7PtjIsgAb5
- huxQ==
+ bh=uw/xP20y7Tu/zA4i+uHZWSLhMwGIeYrK2aCLZQfEntA=;
+ b=NyWrvmg1v00ajaboclHPDULt3LH8ItetWm1KqZNZ1Y28bkBjkMy6HV3lBiq/8ljy/y
+ WONv2nthq+HJ+8gz2fppFCv7ovoywEMK+es+C8yLRPyq5c0crD+BUBTtv6eXYSalbtyh
+ pf2PaB9znMYfmEScB9raCe7RrlyStjrFkq2HuIal0jtuIeylOw0FkmvuXRNiH4zJhbQx
+ WsqynIXGeL/GBr+eqipxZEokNpL8OBU7qC1OyY9r/pUBoZkgku19B/ZT8xAw60WV8QSD
+ HBJ9ZkqlkmmiUKAT7fhLHhwNgG7fCTFPeOQaald+XCzB1kKsusHseO7+eg+upg1C5pPP
+ S8XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=XDDkQeHZ0dijGtSKlhGqjNUEl29/r8+MY+SRNPeDCrg=;
- b=2H3100DKjw06sb79bZgDO58HFybQ1pzxnq8YWq3ftK/dG5T+6DPht79bP6fVUsFo5f
- 1HOf+h16S8Qs08QcHqPUCOi3qrDe5odZV06222gzrHLAJNH1HW4+o8UK50hy8+Sg9uup
- MZAeaUhZL0ZLvBd2g8HmzYyyoPcDQwl+Hg9bjkvMfSakYQgs2nSkmyrIX/NzR4XTm1X+
- KGsCcB0OvHOQyNPyOT6uVSPR320lglr+QQdRpuZ2JwIlYcj1vqmNuwIeaAdMwWlI6pIU
- sWeJBssHztU4uPJTNWc6bEt0rVfIH8unfC8dtj5OpLQL9BGo2U+oLi2DTyX0Z+rUwvL7
- G8cg==
-X-Gm-Message-State: AOAM530ibQLZJYQzWioIQt9Jy6r66g6ZULUr5xWAQZJUzPNqQ+Ywl3zP
- K/reKE+jehFrcDPxice/DSow3A==
-X-Google-Smtp-Source: ABdhPJzHt8V+FBFCwkJFGAjwVhotNpolupuYxjsEsjXvvCcvmj/IQ0J3+gvAKWOhW/Y8lDqCdW8ezw==
-X-Received: by 2002:a05:6a00:1a4c:b0:44b:1fa6:532c with SMTP id
- h12-20020a056a001a4c00b0044b1fa6532cmr5053934pfv.64.1635436662468; 
- Thu, 28 Oct 2021 08:57:42 -0700 (PDT)
+ bh=uw/xP20y7Tu/zA4i+uHZWSLhMwGIeYrK2aCLZQfEntA=;
+ b=dI3OfVwgFNq/TOwiThGyox46qtRadPfB/OWLyKZo8jtAWEHppUkBsl2swScKGcJI5+
+ dPipFe7/oPyhZ5BwUf6kDiE1GupkE8U+MXOq6RGeRf/5+2nRQ97wqxXYGIjLUqcHTbR3
+ BXSkKXAzEu+HOP/YF542BmVPuPpLtD0Dg+jn9pGl00JOyoiG3JCRMmsjRITOT1Iqub1P
+ /CFOFC2ouaQralrS8nSRrXB4/wRor5qaT6ktxLsizIZUbGo3oG7HuxWG/Py8iG6wufQC
+ 7e83E+h5ZR4N0SuiHgsfIpdTHsasaNo+YIiCdwH9B4KOGL+I+rgV/mxyr7DSdI7ufZlO
+ nR5A==
+X-Gm-Message-State: AOAM530zyjLM5F+eAjCU1G7No0ackGaC4CeJiEOngd8ZeNsVb4ryvk90
+ w8Z/LsnDb1fUjcxKvW+cJ5e+Sw==
+X-Google-Smtp-Source: ABdhPJx1X+hmYe1ZEWCdpQp+mnFRsDSSR4RqnW+LwXshpJfopL8ngQytweD7y00Fq4WETD3do6zBHA==
+X-Received: by 2002:a63:7416:: with SMTP id p22mr3757507pgc.327.1635436966859; 
+ Thu, 28 Oct 2021 09:02:46 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id 11sm3813499pfl.41.2021.10.28.08.57.41
+ by smtp.gmail.com with ESMTPSA id d14sm3120096pgt.64.2021.10.28.09.02.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Oct 2021 08:57:42 -0700 (PDT)
-Subject: Re: [PATCH 13/24] bsd-user/arm/target_arch_thread.h: Routines to
- create and switch to a thread
+ Thu, 28 Oct 2021 09:02:46 -0700 (PDT)
+Subject: Re: [PATCH 14/24] bsd-user/arm/target_arch_elf.h: arm defines for ELF
 To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
 Cc: Stacey Son <sson@FreeBSD.org>, qemu-trivial@nongnu.org,
- Klye Evans <kevans@FreeBSD.org>, Michael Tokarev <mjt@tls.msk.ru>,
+ Kyle Evans <kevans@freebsd.org>, Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <laurent@vivier.eu>
 References: <20211019164447.16359-1-imp@bsdimp.com>
- <20211019164447.16359-14-imp@bsdimp.com>
+ <20211019164447.16359-15-imp@bsdimp.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <a7bd5ecc-8949-c7ae-6af7-9494eace94e0@linaro.org>
-Date: Thu, 28 Oct 2021 08:57:39 -0700
+Message-ID: <f3fe89f1-ec09-0d5c-37d2-70c9fc1b2c49@linaro.org>
+Date: Thu, 28 Oct 2021 09:02:44 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211019164447.16359-14-imp@bsdimp.com>
+In-Reply-To: <20211019164447.16359-15-imp@bsdimp.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -48
 X-Spam_score: -4.9
 X-Spam_bar: ----
@@ -84,17 +82,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Oct 2021 15:57:46 -0000
+X-List-Received-Date: Thu, 28 Oct 2021 16:02:51 -0000
 
 On 10/19/21 9:44 AM, Warner Losh wrote:
-> +    regs->spsr = ARM_CPU_MODE_USR;
-> +    if (entry & 0x1) {
-> +        regs->spsr |= CPSR_T;
-> +    }
+> Basic set of defines needed for arm ELF file activation.
+> 
+> Signed-off-by: Stacey Son<sson@FreeBSD.org>
+> Signed-off-by: Warner Losh<imp@bsdimp.com>
+> ---
+>   bsd-user/arm/target_arch_elf.h | 36 ++++++++++++++++++++++++++++++++++
+>   1 file changed, 36 insertions(+)
+>   create mode 100644 bsd-user/arm/target_arch_elf.h
 
-(1) Why are you setting SPSR not CPSR?
-(2) Changes to CPSR cannot be made manually; you need cpsr_write.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
 
