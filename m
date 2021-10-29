@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mgFQY-0000Ul-6W
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Oct 2021 20:07:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36328)
+	id 1mgJbe-0007tr-8E
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Oct 2021 00:35:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mgFQW-0000Tf-MV
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 20:07:21 -0400
-Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c]:39768)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mgJbZ-0007ge-6O
+ for qemu-trivial@nongnu.org; Fri, 29 Oct 2021 00:35:01 -0400
+Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936]:42710)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mgFQU-0000Oc-JV
- for qemu-trivial@nongnu.org; Thu, 28 Oct 2021 20:07:20 -0400
-Received: by mail-ua1-x92c.google.com with SMTP id i6so696883uae.6
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 17:07:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mgJbW-000860-GP
+ for qemu-trivial@nongnu.org; Fri, 29 Oct 2021 00:35:00 -0400
+Received: by mail-ua1-x936.google.com with SMTP id v20so15830705uaj.9
+ for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 21:34:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=K51mCMm+68kFPdXojNgqY/rrH8VYnBt16Se+htBKma8=;
- b=i1XHzszyVemG91Kdudk3F1Eo2iDdUdAWiozIDPwj09DajoUrr42raTrY5NkgxpNUvc
- egK1ur6Gbi1ZsXFDPSOTgNHytsTYT0/d40pLzMfJ0bg4Iy6w8jqa7V0ZoY2QbE5uDeZJ
- 6IPU2GiVDzJhPiHlFj8QgqhwN7u8SmPP6ON4C8yEouPmRsIZ6NTMNHIC1FO3PyTDbomL
- sMY/DPlPPmfOPJpwjAjQZARu5M69wok04KwDkpP1X9nDys5IeEjmjYUKbfstWtRmxuLc
- 3SGkFSyhod2T7W6kzCOnma6huG/lwNRFNbnfmaiekHpD6fXevZRRVyKbNF3UWUCU9WV1
- uVeg==
+ :cc; bh=JigSUszdFF99eBpIfI2yBV3fuMe3T7frvlh/SubSsFA=;
+ b=Q+9PLpLcxdZ+0EeAfaruo9AJaZIFfTomsAE2BOzfqpVrHmd44A3HUWcQBAZyHXzCuW
+ MvzyEfP6WSsJXmhpf2qrP/q88Spf1C9nAZzk9uwvVOfOnhmfX4Ydo4fY3bMbcZNquyIf
+ nXtCDX/CyOlFmpZMeop0FeAdMWQxa6lAZYvtj+9qdaGT3Tc0ylfaHgUZwwf4Vc2bwVwE
+ 1jTY/WkzE0+astw+WsIQ5ny6C29QcPlgL5f1LfS63ByqsugMf1Js6u/5xaUKHxFqBm8Q
+ SD6e2SX0Fwlthmiz+5wYUXH82Pn94s9hRzz2zBV6i8yOfSdYTDVL+QTZbGGTT0jl7wp4
+ jTOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=K51mCMm+68kFPdXojNgqY/rrH8VYnBt16Se+htBKma8=;
- b=Cfra+1cenJrbcwXrfcr11fd9DHDsfKXFC6EScgnxH60sV2MuosGhtM161MIaxwuNYj
- ZS1VJnrwGg9qzo8UAbKgjANL6746oTR8M0fI3NdVxVAiyVZk1MLx5KGGFe6F+EvFrsqY
- mjfbYNxdY4UDjR/6ia4k+Wdwbg77rIi/Jm3sYCaihfx9YM92fyU9v9qzTFrLsZLlv6Pc
- cJg+PKCoz2xIHYX8oqtL+DMZsyEx0YCzsCn3IIEInn5j9o2+mzWpzu766mUU/yruULK4
- HKgloJl6dC7Twgi6pyJBVbunK9EZwTRKl3WDHIcsBtj7o49jo9Jo2v1BUAPWZlQjOTJL
- c1cg==
-X-Gm-Message-State: AOAM533Gwl9yqF8YCASE410Qupu/dmnspYFlHGJlnBFIevV7Z+GvdmBU
- gw2aY5ySYZxU6WqtKMct9ZiQ84cuhYg15VcgMTYqeQ==
-X-Google-Smtp-Source: ABdhPJzKGIZlXMvYfIvCD3ww4TlBx790ofkkLJENH0bv52qMieUyigsvNvDkUiRvHjHlIra4Sb6qUNv+a65DsqK96v4=
-X-Received: by 2002:a05:6102:5494:: with SMTP id
- bk20mr9236895vsb.6.1635466036468; 
- Thu, 28 Oct 2021 17:07:16 -0700 (PDT)
+ bh=JigSUszdFF99eBpIfI2yBV3fuMe3T7frvlh/SubSsFA=;
+ b=eJekL47Pt/+pjgxImg9gmjxxYDSGkTMwMInYLI8z0vDLCpY3baqZRkmb12EIPUiR1X
+ +GsF6C2tCpkXLe8DQmAd44Jg6tGPAi2UfhXi2I3celOANYPMxKmKsRGmpWwJJ3/uKxyk
+ xcVr8tgeaGgNSltyryfjZ6I1bBHSM8pcPoypxO1pePusL3m9/QwETIzZ0p/KVdW+YayE
+ RuGoliTytM9w3UQk3lxHkrzcLn9+u+HQHkQqCXPHAVsIqdbQ2TNEV6ObBskhRkfwWRfb
+ 1DucN54qa+woeSATgxOGmDQ7IA5e5GjLfE5lLPYjz3BMBRisOpTplUP4r098ZG+xsXPI
+ 4Szg==
+X-Gm-Message-State: AOAM530YPA25+dCXAspdNDTIZJLnp39mrtF3YinVXbG55CcHYOndjsaT
+ 5YzNIu9fnNZCoQZtliZyc+kRVKd5a/5EOH25peRwqw==
+X-Google-Smtp-Source: ABdhPJwFSUVUWWtGUbsxJpxXfl8/7hc6l3b8dZr9yaz9zmfxBVHNZQPMlTDUNFLLbOJxe+UxqZDoBRnlhSa0VG+ORjU=
+X-Received: by 2002:ab0:7542:: with SMTP id k2mr9787803uaq.69.1635482097050;
+ Thu, 28 Oct 2021 21:34:57 -0700 (PDT)
 MIME-Version: 1.0
 References: <20211019164447.16359-1-imp@bsdimp.com>
  <20211019164447.16359-23-imp@bsdimp.com>
  <344ac222-daa9-c752-8c6a-21773efb8656@linaro.org>
-In-Reply-To: <344ac222-daa9-c752-8c6a-21773efb8656@linaro.org>
+ <CANCZdfo8b2uO=g_mGbZx8241nB8qytAsAD-E4nh7MLDCt9KGgw@mail.gmail.com>
+In-Reply-To: <CANCZdfo8b2uO=g_mGbZx8241nB8qytAsAD-E4nh7MLDCt9KGgw@mail.gmail.com>
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 28 Oct 2021 18:07:05 -0600
-Message-ID: <CANCZdfo8b2uO=g_mGbZx8241nB8qytAsAD-E4nh7MLDCt9KGgw@mail.gmail.com>
+Date: Thu, 28 Oct 2021 22:34:47 -0600
+Message-ID: <CANCZdfq2y52MxKzjmDAijP6rhZYJWoEXYMgR9g+XVm-bQtRzeA@mail.gmail.com>
 Subject: Re: [PATCH 22/24] bsd-user/arm/target_arch_signal.h: arm set_mcontext
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, Stacey Son <sson@freebsd.org>, 
  QEMU Trivial <qemu-trivial@nongnu.org>, Klye Evans <kevans@freebsd.org>, 
  Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
-Content-Type: multipart/alternative; boundary="00000000000025719405cf729c87"
-Received-SPF: none client-ip=2607:f8b0:4864:20::92c;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x92c.google.com
+Content-Type: multipart/alternative; boundary="0000000000006e76ab05cf765913"
+Received-SPF: none client-ip=2607:f8b0:4864:20::936;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x936.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -72,93 +72,144 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Oct 2021 00:07:21 -0000
+X-List-Received-Date: Fri, 29 Oct 2021 04:35:01 -0000
 
---00000000000025719405cf729c87
+--0000000000006e76ab05cf765913
 Content-Type: text/plain; charset="UTF-8"
 
-On Thu, Oct 28, 2021 at 11:53 AM Richard Henderson <
-richard.henderson@linaro.org> wrote:
+On Thu, Oct 28, 2021 at 6:07 PM Warner Losh <imp@bsdimp.com> wrote:
 
-> On 10/19/21 9:44 AM, Warner Losh wrote:
-> > +    regs->regs[15] = tswap32(gr[TARGET_REG_PC]);
-> > +    cpsr = tswap32(gr[TARGET_REG_CPSR]);
-> > +    cpsr_write(regs, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
 >
-> Hmm.  What's the expected behaviour if the saved CPSR state does not match
-> the PC state
-> wrt thumb?
 >
-> I'm ok if this should fail in spectacular ways, I just wanna know.
+> On Thu, Oct 28, 2021 at 11:53 AM Richard Henderson <
+> richard.henderson@linaro.org> wrote:
 >
-> I *think* what will happen at the moment is that qemu will go into a
-> whacky state in which
-> the translator will read and interpret unaligned data.
+>> On 10/19/21 9:44 AM, Warner Losh wrote:
+>> > +    regs->regs[15] = tswap32(gr[TARGET_REG_PC]);
+>> > +    cpsr = tswap32(gr[TARGET_REG_CPSR]);
+>> > +    cpsr_write(regs, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
+>>
+>> Hmm.  What's the expected behaviour if the saved CPSR state does not
+>> match the PC state
+>> wrt thumb?
+>>
+>> I'm ok if this should fail in spectacular ways, I just wanna know.
+>>
+>> I *think* what will happen at the moment is that qemu will go into a
+>> whacky state in which
+>> the translator will read and interpret unaligned data.
+>>
+>> I have a pending patch set for arm to raise unaligned exceptions for
+>> mis-aligned pc.  For
+>> arm32 mode, this is fine, and we'll raise the exception.  But for thumb
+>> mode, this is
+>> architecturally impossible, and the translator will assert.
+>>
+>> The assert is going to be a problem.  There are a couple of options:
+>>
+>> (1) TARGET_REG_PC wins: unset PC[0] and adjust CPSR[T] to match.
+>>
+>> (2) CPSR_T wins: unset pc[0] if CPSR[T] is set, unchanged otherwise.  (In
+>> the Arm ARM
+>> psueodcode, pc[0] is hardwired to 0 in thumb mode.)
+>>
+>> (3) Don't worry about matching PC[0] and CPSR[T], but do prevent an
+>> impossible situation
+>> and unset PC[0] always.  If PC[1] is set, and CPSR[T] is unset, then
+>> we'll raise unaligned
+>> when the cpu restarts.
+>>
 >
-> I have a pending patch set for arm to raise unaligned exceptions for
-> mis-aligned pc.  For
-> arm32 mode, this is fine, and we'll raise the exception.  But for thumb
-> mode, this is
-> architecturally impossible, and the translator will assert.
+> Consider this program:
+> #include <signal.h>
+> #include <stdio.h>
+> #include <unistd.h>
+> int g;
+> void fortytwo(int arg) { g = 42; }
+> int main(int argc, char **argv) {
+>         g = 123;
+>         signal(SIGALRM, fortytwo); alarm(1); pause();
+>         printf("G is %d\n", g);
+> }
 >
-> The assert is going to be a problem.  There are a couple of options:
+> Built for 'arm' I get
+> G is 42
+> Build -mthumb I get
+> qemu: uncaught target signal 11 (Segmentation fault) - core dumped
+> Segmentation fault
 >
-> (1) TARGET_REG_PC wins: unset PC[0] and adjust CPSR[T] to match.
->
-> (2) CPSR_T wins: unset pc[0] if CPSR[T] is set, unchanged otherwise.  (In
-> the Arm ARM
-> psueodcode, pc[0] is hardwired to 0 in thumb mode.)
->
-> (3) Don't worry about matching PC[0] and CPSR[T], but do prevent an
-> impossible situation
-> and unset PC[0] always.  If PC[1] is set, and CPSR[T] is unset, then we'll
-> raise unaligned
-> when the cpu restarts.
+> So even without your new assert, there are some issues I need to look into
+> before I can
+> get to this very interesting case :(. These are all good questions,
+> though. I clearly have
+> some work to do here...
 >
 
-Consider this program:
-#include <signal.h>
-#include <stdio.h>
-#include <unistd.h>
-int g;
-void fortytwo(int arg) { g = 42; }
-int main(int argc, char **argv) {
-        g = 123;
-        signal(SIGALRM, fortytwo); alarm(1); pause();
-        printf("G is %d\n", g);
-}
+Turns out I just needed to filter things correctly, and the changes to
+bsd-user/arm/target_arch_thread.h
+made the thumb signals work. I've not yet written tests that run T32
+instructions and get a A32
+signal (or vice versa). I've also not tried to do the same with T32 and A32
+threads (well, threads
+executing in those two modes and switching between them). That is beyond
+the scope of this
+set of patches, though.
 
-Built for 'arm' I get
-G is 42
-Build -mthumb I get
-qemu: uncaught target signal 11 (Segmentation fault) - core dumped
-Segmentation fault
+Real FreeBSD blindly sets these values and hopes the processor generates a
+fault for invalid states.
+With the filtering I added for the next round, we'll at least ensure that
+PC[0] == CPSR[T]. This ensures
+consistency, but I don't know how well it will fare in the real world.
+FreeBSD's thumb support wrt
+mcontext and thumb has only recently become more robust, but it doesn't
+check in the kernel.
 
-So even without your new assert, there are some issues I need to look into
-before I can
-get to this very interesting case :(. These are all good questions, though.
-I clearly have
-some work to do here...
 
-And, finally, you're missing the mc_vfp_* handling.
+> And, finally, you're missing the mc_vfp_* handling.
+>>
+>
+> Yes. We don't really support that at the moment, but I'll look into how
+> hard that might be
+> to add.
 >
 
-Yes. We don't really support that at the moment, but I'll look into how
-hard that might be
-to add.
+I've added it here and in get_mcontext too.
+
+I'll also include an up-to-date copy of a pointer to the tip of the
+bsd-user fork so you can
+see the current state of thigns like signal.c, which I have penciled in for
+after the aarch
+and riscv64 patches that I have lined up (but haven't done the common
+errors between the
+archs yet). Since I'd either need to seen a super-large review or delay
+things somewhat
+for signal.c, I'd like to get the other architectures in since they are
+almost ready unless there's
+a compelling reason to do signal.c and all its dependencies next. But
+that's getting a bit far
+afield from this one patch....
+
+And thank you for finding this and the other hard issues with this series!
+It's been instructive
+and gives me a few things to double check on the other, unsent series.
 
 Warner
 
---00000000000025719405cf729c87
+--0000000000006e76ab05cf765913
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 28, 2021 at 11:53 AM Rich=
-ard Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.h=
-enderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
-;padding-left:1ex">On 10/19/21 9:44 AM, Warner Losh wrote:<br>
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 28, 2021 at 6:07 PM Warne=
+r Losh &lt;<a href=3D"mailto:imp@bsdimp.com">imp@bsdimp.com</a>&gt; wrote:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
+><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
+ class=3D"gmail_attr">On Thu, Oct 28, 2021 at 11:53 AM Richard Henderson &l=
+t;<a href=3D"mailto:richard.henderson@linaro.org" target=3D"_blank">richard=
+.henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">On 10/19/21 9:44 AM, Warner Losh wrote:<br>
 &gt; +=C2=A0 =C2=A0 regs-&gt;regs[15] =3D tswap32(gr[TARGET_REG_PC]);<br>
 &gt; +=C2=A0 =C2=A0 cpsr =3D tswap32(gr[TARGET_REG_CPSR]);<br>
 &gt; +=C2=A0 =C2=A0 cpsr_write(regs, cpsr, CPSR_USER | CPSR_EXEC, CPSRWrite=
@@ -205,13 +256,42 @@ lt for &#39;arm&#39; I get</div><div>G is 42</div><div>Build -mthumb I get<=
 d<br>Segmentation fault<br></div><div><br></div><div>So even without your n=
 ew assert, there are some issues I need to look into before I can</div><div=
 >get to this very interesting case :(. These are all good questions, though=
-. I clearly have</div><div>some work to do here...</div><div><br></div><blo=
-ckquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left=
-:1px solid rgb(204,204,204);padding-left:1ex">And, finally, you&#39;re miss=
-ing the mc_vfp_* handling.<br></blockquote><div><br></div><div>Yes. We don&=
-#39;t really support that at the moment, but I&#39;ll look into how hard th=
-at might be</div><div>to add.</div><div><br></div><div>Warner</div></div></=
+. I clearly have</div><div>some work to do here...</div></div></div></block=
+quote><div><br></div><div>Turns out I just needed to filter things correctl=
+y, and the changes to bsd-user/arm/target_arch_thread.h</div><div>made the =
+thumb signals work. I&#39;ve not yet written tests that run T32 instruction=
+s and get a A32</div><div>signal (or vice versa). I&#39;ve also not tried t=
+o do the same with T32 and A32 threads (well, threads</div><div>executing i=
+n those two modes and switching between them). That is beyond the scope of =
+this</div><div>set of patches, though.<br></div><div><br></div><div>Real Fr=
+eeBSD blindly sets these values and hopes the processor generates a fault f=
+or invalid states.</div><div>With the filtering I added for the next round,=
+ we&#39;ll at least ensure that PC[0] =3D=3D CPSR[T]. This ensures</div><di=
+v>consistency, but I don&#39;t know how well it will fare in the real world=
+. FreeBSD&#39;s thumb support wrt</div><div>mcontext and thumb has only rec=
+ently become more robust, but it doesn&#39;t check in the kernel.<br></div>=
+<div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=
+=3D"ltr"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">And, finally, you&#39;re missing the mc_vfp_* handling.<br></blo=
+ckquote><div><br></div><div>Yes. We don&#39;t really support that at the mo=
+ment, but I&#39;ll look into how hard that might be</div><div>to add.</div>=
+</div></div></blockquote><div><br></div><div>I&#39;ve added it here and in =
+get_mcontext too.</div><div><br></div><div>I&#39;ll also include an up-to-d=
+ate copy of a pointer to the tip of the bsd-user fork so you can</div><div>=
+see the current state of thigns like signal.c, which I have penciled in for=
+ after the aarch</div><div>and riscv64 patches that I have lined up (but ha=
+ven&#39;t done the common errors between the</div><div>archs yet). Since I&=
+#39;d either need to seen a super-large review or delay things somewhat</di=
+v><div>for signal.c, I&#39;d like to get the other architectures in since t=
+hey are almost ready unless there&#39;s</div><div>a compelling reason to do=
+ signal.c and all its dependencies next. But that&#39;s getting a bit far</=
+div><div>afield from this one patch....</div><div><br></div><div>And thank =
+you for finding this and the other hard issues with this series! It&#39;s b=
+een instructive</div><div>and gives me a few things to double check on the =
+other, unsent series.<br></div><div><br></div><div>Warner<br></div></div></=
 div>
 
---00000000000025719405cf729c87--
+--0000000000006e76ab05cf765913--
 
