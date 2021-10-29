@@ -1,83 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mgL5n-0007td-Lf
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Oct 2021 02:10:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46646)
+	id 1mgUPT-00033F-9S
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Oct 2021 12:07:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mgL5b-0007sX-Sg
- for qemu-trivial@nongnu.org; Fri, 29 Oct 2021 02:10:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:54822)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mgL5a-0002ZK-5E
- for qemu-trivial@nongnu.org; Fri, 29 Oct 2021 02:10:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1635487805;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2u+inP+aKyI76LYtCQk95FBJS6VcSHyRUPCveCzt2tY=;
- b=fNXIH9tGbDy0k5vXlGVQocCrAda2MeJ6PeVaLHtVwMz7ezIWuXPOP1HBXfJhMTdfttFx9/
- QKjldMnEX7gLZFT3iCgf5iLEY85tksMWMTjRJmSuX2DqhJ+msHO1Ls5XO7yYrtww69TMWo
- 9YY05U+mwi54V2j80lc2r58gtdFWjUw=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-294-c9xShn50P1WCRhEdU_aMuw-1; Fri, 29 Oct 2021 02:10:02 -0400
-X-MC-Unique: c9xShn50P1WCRhEdU_aMuw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 125-20020a1c0183000000b003306ae8bfb7so974356wmb.7
- for <qemu-trivial@nongnu.org>; Thu, 28 Oct 2021 23:10:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mgUPP-00030u-4m
+ for qemu-trivial@nongnu.org; Fri, 29 Oct 2021 12:07:11 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:35655)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mgUPB-00041T-HA
+ for qemu-trivial@nongnu.org; Fri, 29 Oct 2021 12:07:09 -0400
+Received: by mail-pl1-x635.google.com with SMTP id n18so7153604plc.2
+ for <qemu-trivial@nongnu.org>; Fri, 29 Oct 2021 09:06:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=7ns362gp5sK83spmRPbeiyp8Oz8WXfk9dJsN9mwgWH8=;
+ b=CI7iOi7c/GUDVt5f3UefO0Ivh7Tb49a0X35CeuX5ZoOloiGsFSZnF7PMQ531gTaOEC
+ 0wQvMmtU6+ly6Jk8is5SSorlwhhcE4xlGVuyRqtayh47chaPq/G6Cn0K1hmLBrno5I2Y
+ FVIXoFfAxsexeU7B+knjz0HmEEhnmOmsw7E18GXJm3U6dbV2RQQQqFoPgRV0L//so0Ws
+ SPxsl4PPC5+mhQxQ3gkM7X81r6KV94pIdKFQpT3Z8CkyyhwPg016CqH4UxLP/OPtZ0MG
+ nPYZyQZBZbqVsRkKZ5TrPBAuTYBbKW/oxW8UbusKGt8OWYshlARSPzm7agHNKpIIxkNB
+ 3m0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=2u+inP+aKyI76LYtCQk95FBJS6VcSHyRUPCveCzt2tY=;
- b=M+LVpLRqmAVLCuMWrL4OMQuHiAHjW1MGedyETtXxtf38BRK8/bgGxrqrvLWSOGbHtY
- zxdbIP84PXOsmMjaQwcCH4W74gDkQJFNSfY0WocKFJYX/JobRElure/s2nefcvsUGN7x
- mWO3U6pidOkJn4o5soCJFSsHlNI9FfHaOct9kUO+zwojhtL9pzhEYhSP5dJeTvBEXmk8
- +eCqN217JUsE+5wWiUwyyyTYysJSIwJJsNn7IgDtmue7WAClCwJSlM6oKLwMbYDl2yFb
- oRKIjHcPmEPguzhCsfTdo7Iww6QhAaGaSRdqsx2MGWJ5ImfVPG6FRYlNWAF0CG11VLZV
- F7xA==
-X-Gm-Message-State: AOAM5334ddIHiiXWKM9UGkZEFmE0bHIh5G2ACdgkkxUdDheNl86Xi9jm
- 2r8/yKtbkzbeWH0b1QQrg9S08kZ0DCpWRsl4H1Ce2jsAbDnwkBHBBramEfLDabMQLkGrnHva5T7
- Vrt91UurOtg61SrMZNQ==
-X-Received: by 2002:adf:e34d:: with SMTP id n13mr11548219wrj.97.1635487800822; 
- Thu, 28 Oct 2021 23:10:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzTkSJRPmQJhqc+BFf8IK1NjyZP0OfMTgJBhSd/NlxzBWplel7TqNHxy9lYkcDZuoWbGTtJwg==
-X-Received: by 2002:adf:e34d:: with SMTP id n13mr11548196wrj.97.1635487800613; 
- Thu, 28 Oct 2021 23:10:00 -0700 (PDT)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id r1sm8891802wmr.36.2021.10.28.23.09.59
+ bh=7ns362gp5sK83spmRPbeiyp8Oz8WXfk9dJsN9mwgWH8=;
+ b=d6kllHgqFQJJFMCEjaGMJ1ba0VUrTNwvcQaMV1RKSCz8w57HZ2X3juuD7Ct65zlaS0
+ ioIABfvsrh9e+l14FKSRQU089lrnhCHz80Qb+P3B4DiSuLMrq8mcFtmNo5gCT6sCxana
+ fJtu8dvIVumU0BJk8/mMdODLPhFBUO35D7wfyWiyxzrQ+LaoxLjUXZeQES3yzWegeG2Q
+ FGPc+lep2wx/Ifrq9Majyaknt4Po0Pdo2XR7AcepRN+AbSwMesbmPlewuKNxFa5QkoLF
+ ghPsKhwz9PlP0MiOSA33PmyS/PR7sNDxQsmk+usjonfDL9+O4vQBFNoMEi49UCHl3Esa
+ +n3Q==
+X-Gm-Message-State: AOAM530Cq0U2Trr1Ov4FkILOt8OoKQ+RsjqZ6rr4A1i5WqC5e2KIldvK
+ UMkfyt4VlfdHUL55ws9zdT0t1w==
+X-Google-Smtp-Source: ABdhPJz2Fa6StlsW66F/fXHXQaE+4LbNrSQrGLzrQyTYwoRDYH8guiNWIar0E3nXHC0rI0fINWxFMg==
+X-Received: by 2002:a17:902:e789:b0:140:801:1262 with SMTP id
+ cp9-20020a170902e78900b0014008011262mr10606102plb.42.1635523614167; 
+ Fri, 29 Oct 2021 09:06:54 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
+ by smtp.gmail.com with ESMTPSA id ml14sm2663781pjb.43.2021.10.29.09.06.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Oct 2021 23:10:00 -0700 (PDT)
-Message-ID: <a2e059da-4c3a-66b7-6ce6-2b2fed0f980a@redhat.com>
-Date: Fri, 29 Oct 2021 08:09:59 +0200
+ Fri, 29 Oct 2021 09:06:53 -0700 (PDT)
+Subject: Re: [PATCH 13/24] bsd-user/arm/target_arch_thread.h: Routines to
+ create and switch to a thread
+To: Warner Losh <imp@bsdimp.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Stacey Son <sson@freebsd.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Klye Evans <kevans@freebsd.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
+References: <20211019164447.16359-1-imp@bsdimp.com>
+ <20211019164447.16359-14-imp@bsdimp.com>
+ <a7bd5ecc-8949-c7ae-6af7-9494eace94e0@linaro.org>
+ <CANCZdfqmiH0V+TLzNY0tL4_DHUXkYLJwOn-UtNvHdjrZcWarBA@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <509097c0-54ce-0a67-229c-83467ddc2a6a@linaro.org>
+Date: Fri, 29 Oct 2021 09:06:51 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH] hvf: Use standard CR0 and CR4 register definitions
-To: Cameron Esfahani <dirty@apple.com>, qemu-devel@nongnu.org
-Cc: r.bolshakov@yadro.com, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20211029013315.79207-1-dirty@apple.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <20211029013315.79207-1-dirty@apple.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CANCZdfqmiH0V+TLzNY0tL4_DHUXkYLJwOn-UtNvHdjrZcWarBA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -55
-X-Spam_score: -5.6
-X-Spam_bar: -----
-X-Spam_report: (-5.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.847, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.512,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -90,20 +86,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Oct 2021 06:10:10 -0000
+X-List-Received-Date: Fri, 29 Oct 2021 16:07:12 -0000
 
-On 10/29/21 03:33, Cameron Esfahani wrote:
-> No need to have our own definitions of these registers.
+On 10/28/21 12:45 PM, Warner Losh wrote:
+>     (2) Changes to CPSR cannot be made manually; you need cpsr_write.
 > 
-> Signed-off-by: Cameron Esfahani <dirty@apple.com>
-> ---
->  target/i386/hvf/vmx.h      | 17 +++++++++--------
->  target/i386/hvf/x86.c      |  6 +++---
->  target/i386/hvf/x86.h      | 34 ----------------------------------
->  target/i386/hvf/x86_mmu.c  |  2 +-
->  target/i386/hvf/x86_task.c |  3 ++-
->  5 files changed, 15 insertions(+), 47 deletions(-)
+> 
+> So would
+> 
+> +        cpsr_write(env, cpsr_read(env) | CPSR_T, CPSR_T, CPSRWriteByInstr);
+> 
+> cover what's needed here?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+You can use
 
+     cpsr_write(env, CPSR_T, CPSR_T, CPSRWriteByInstr);
+
+because the mask takes care of not changing other bits.
+
+
+r~
 
