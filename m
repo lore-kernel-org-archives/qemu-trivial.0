@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mhYk9-0002Or-5V
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 10:57:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50520)
+	id 1mhYl9-0004Bo-0u
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 10:58:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mhYk6-0002OK-RO
- for qemu-trivial@nongnu.org; Mon, 01 Nov 2021 10:56:58 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:41697)
+ id 1mhYl6-00046H-P5
+ for qemu-trivial@nongnu.org; Mon, 01 Nov 2021 10:58:00 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:50720)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mhYk4-000726-63
- for qemu-trivial@nongnu.org; Mon, 01 Nov 2021 10:56:58 -0400
-Received: by mail-wr1-x436.google.com with SMTP id d3so28510367wrh.8
- for <qemu-trivial@nongnu.org>; Mon, 01 Nov 2021 07:56:55 -0700 (PDT)
+ id 1mhYl4-00079C-VK
+ for qemu-trivial@nongnu.org; Mon, 01 Nov 2021 10:58:00 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id 133so4306356wme.0
+ for <qemu-trivial@nongnu.org>; Mon, 01 Nov 2021 07:57:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=3UUr3srpPw4bq4Uad6lcFBBSlzySqZ4qFcW9j/7ed/U=;
- b=tVpLyGDa76PyFNWl0agVqUnFjsZodfkh8KMIRtQaa6Kstp2nzHjslTNWTtYFydx8sO
- m4ATJ7DmuFb5HQ0q2DoZU8UPuowAUmGN5JJ1K6tLCxfNY2INS3g09+Um8Tsbd11TE61W
- huvikSrJv205Bzz6I6sMxAqKfZF1teGKkgrC3vQtKJTpBNvOuKnA9FGS5+o51sl/KO3Z
- SROkGr4gxVGOnjzI3jdVzrtowYEGxWiBDA+GmYu7t0RSDcnTipRh+OF16l3GqP1ZBd6L
- Ww6LaYWhIufxl581E5zhYskAtnV+YDUyUmAyAmdSXUo20rq/QM54ArkYJqYTKegChaJv
- fFKw==
+ :cc; bh=xFPfbKPygkpzz0T1y1/2uxk+aU50Ktnft1tY5SeGrdA=;
+ b=TITv8CjiaBNrYZUU2+Z8abaj0gZtbVc1tUT+3YuV76pwYfoYjy403bHZDHZIVgCr3o
+ tEisrZQuUzHvy5M+1ML4ZQQPkhxp7yIFHs5CRLDk9skTf2QgDNdW7e2JT6EmQa6f4eom
+ rfV7xkmKUBKO8m6B6FHPm6sfTH9vA6PTLhgTohbasOeE+dPGHU2S48L1fKLoRBT4iisW
+ UrprtV7kckysS8oVCmmv4zF8HgT09hC/PRfqOieiX4cZT7W29mw7DE0baoJKl6m9YAgV
+ EyXMO5+My0UuuPdEwOihTpg2BH5DswthVGlmVrV/5Z845jCO7FXsAThiBa8MkqEqtil+
+ KUng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=3UUr3srpPw4bq4Uad6lcFBBSlzySqZ4qFcW9j/7ed/U=;
- b=Bpwy3Ukx8BsmVQA6DVhS873pzm1SwkdrzsWhh68YkK3c+kDavVPVOpMxFPI+Z1ui8A
- W7e4iK9q+exZ8u+WqSl88ZL+2RFtGlS1GlXB2c1VmhKW9W4nfbZw72aQ34afVySJRlyF
- jQeymTKtEkFQuxPqDAYVZ8d3O6A6nSwxduH1KkIYzQirXPW2jAli5yEfwFppK5dOUY++
- Pa2KsSRgkh3hARYp0WDI3A2DDApZLNU6RbCAkZe7QOW4GPnzwjzrzU7Ii9KvGydUFAg9
- dsNfzCx/GhCQNMAzugqAewNDTrztktsmKaeJdCDrHmWsj7Ey7iUTRJXsq5U7lL8zXGhs
- Tbaw==
-X-Gm-Message-State: AOAM530qOY78ydnKfLfss7mNtxnIU8ePoH6DKirpQiQW7tD9+1Mk/Bc4
- uBt1aGaOiMch0GNik1D2CnwF5n0K5zhVYmg3jDnr/Q==
-X-Google-Smtp-Source: ABdhPJzQe/TumGA1L7Y9aSslCYgsY82kQB+aVra8AvdA2dC1bKEIknTeEaXw9BX5GfMIVO4YW590pkS13mP97pLbmuY=
-X-Received: by 2002:adf:e984:: with SMTP id h4mr34698014wrm.149.1635778614776; 
- Mon, 01 Nov 2021 07:56:54 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=xFPfbKPygkpzz0T1y1/2uxk+aU50Ktnft1tY5SeGrdA=;
+ b=bgAraosfnz2Tl1x+mZdQhFgV2Ydq/hirUDqbNC9dj/QOjSHvRYlrKsZh6m1N6zT/IZ
+ iFjyh3jnCrNeHyopwYEn7PKCtTtBPrXEUMDr291shO5xOBcDTcFlVxS/O6FLKep/beEP
+ p1bjsqNkyT5ZBGHGB7997YLVygg5BW1TUPmKzT6ZgGoDxUVk554+9yrjX4wDnlu0VNgN
+ /i2IZE/CsrUE12djL3kY5zarQKxS2Jsk0KKrfx7HrK7FnDVIn69df+ifIsheToxn0sTo
+ K598aIffOdNtooIa6DvI3Bz6XWb6haIflrhiGt0YRs71LSfyxL8AhZq5kApD5QSWmV3Y
+ tPPw==
+X-Gm-Message-State: AOAM532mK6EQfAziVK2bIqWt2uWapCOy2bD+UKoTZ6N9carBcSHmA1dV
+ E3MPYJ+ljmov4GHDU4b5PKtPZYp8pV5AtN3vNrnE+w==
+X-Google-Smtp-Source: ABdhPJxHuXpKKlrnyGYAt8j/QP/VJAu5MUl7ApiuwLJ2yGwi8qZ/wPnmy4q5x3J2/eoayMjMvQJGlIdboy0M3HrXpC4=
+X-Received: by 2002:a7b:c389:: with SMTP id s9mr20444949wmj.133.1635778677544; 
+ Mon, 01 Nov 2021 07:57:57 -0700 (PDT)
 MIME-Version: 1.0
 References: <20211019090344.3054300-1-kchamart@redhat.com>
-In-Reply-To: <20211019090344.3054300-1-kchamart@redhat.com>
+ <20211019090344.3054300-7-kchamart@redhat.com>
+In-Reply-To: <20211019090344.3054300-7-kchamart@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Nov 2021 14:56:43 +0000
-Message-ID: <CAFEAcA8CHVfAXFaQwfZrQUfJcD9qQNOYAEt9vvpQVtgwtTf80w@mail.gmail.com>
-Subject: Re: [PATCH v2 0/6] rSTify contribution-related wiki pages
+Date: Mon, 1 Nov 2021 14:57:46 +0000
+Message-ID: <CAFEAcA9qLe9dZmPQjm=eA-VFYnR8Hks0kmMNnyDpQF6mJg+RvA@mail.gmail.com>
+Subject: Re: [PATCH v2 6/6] docs/devel: Update the rST index file
 To: Kashyap Chamarthy <kchamart@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
  Stefan Hajnoczi <stefanha@redhat.com>, Eric Blake <eblake@redhat.com>, 
@@ -54,9 +54,8 @@ Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
  Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -76,26 +75,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Nov 2021 14:56:59 -0000
+X-List-Received-Date: Mon, 01 Nov 2021 14:58:01 -0000
 
-On Tue, 19 Oct 2021 at 10:04, Kashyap Chamarthy <kchamart@redhat.com> wrote=
-:
+On Tue, 19 Oct 2021 at 10:04, Kashyap Chamarthy <kchamart@redhat.com> wrote:
 >
-> My main motivation was to convert SubmitAPatch[1] based on a chat with
-> Peter Maydell and Dan Berrang=C3=A9 on #qemu channel (on OFTC).  But the =
-page
-> also links to a couple of other contribution-related pages, so I
-> converted them too:
+> Add the entries for contributing-related rSTified wiki docs.
 >
->   - SubmitAPullRequest: https://wiki.qemu.org/Contribute/SubmitAPullReque=
-st
->   - KeySigningParty: https://wiki.qemu.org/KeySigningParty
->   - SpellCheck: https://wiki.qemu.org/Contribute/SpellCheck
->   - TrivialPatches: https://wiki.qemu.org/Contribute/TrivialPatches
+> Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
+> ---
+>  docs/devel/index.rst | 5 +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/docs/devel/index.rst b/docs/devel/index.rst
+> index f95df10b3e..f7bec644f3 100644
+> --- a/docs/devel/index.rst
+> +++ b/docs/devel/index.rst
+> @@ -45,3 +45,8 @@ modifying QEMU's source code.
+>     vfio-migration
+>     qapi-code-gen
+>     writing-qmp-commands
+> +   trivial-patches
+> +   spell-check
+> +   key-signing-party
+> +   submitting-a-pull-request
+> +   submitting-a-patch
 
-I'm not sure that SpellCheck in particular is sufficiently baked
-to be in the actual docs. I'd rather just drop the reference to it
-from SubmitAPatch. KeySigningParty I'm on the fence about.
+You should update the index.rst in the same patch in which you
+add the new .rst file. Otherwise Sphinx will complain about
+orphan files if you do a build at the commit where the file
+was added but before the index.rst was updated.
 
 -- PMM
 
