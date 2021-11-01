@@ -1,55 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mhSfr-0006aM-4C
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 04:28:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36666)
+	id 1mhURo-0007JB-Hs
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 06:21:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mhSfp-0006TX-76; Mon, 01 Nov 2021 04:28:09 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:36767)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mhSfl-00087e-GR; Mon, 01 Nov 2021 04:28:08 -0400
-Received: from quad ([82.142.14.190]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1N6bHC-1mhvtv2LBG-0182lq; Mon, 01
- Nov 2021 09:27:53 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Damien Hedde <damien.hedde@greensocs.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 6/6] hw/input/lasips2: QOM'ify the Lasi PS/2
-Date: Mon,  1 Nov 2021 09:27:47 +0100
-Message-Id: <20211101082747.2524909-7-laurent@vivier.eu>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211101082747.2524909-1-laurent@vivier.eu>
-References: <20211101082747.2524909-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mhURk-0007H7-JA; Mon, 01 Nov 2021 06:21:44 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:36588)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mhURf-00072D-VP; Mon, 01 Nov 2021 06:21:44 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ z11-20020a1c7e0b000000b0030db7b70b6bso16783553wmc.1; 
+ Mon, 01 Nov 2021 03:21:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=26QzzUiifrh6jwU9IPlvYsbYrk9DFgqfk6wy49xTl2w=;
+ b=QoZcwoZv5a5DtN6bQR83BOY5IYF/8OQ14p1wcm7aVTVBGlunNyDRMmK9gTHFTCAumV
+ Hg6dRC+IgIDZfe5MAXTRrW2AZoNQts90iwc8NjXMKV7q+w9Ki/Gk0dv+fOr+CgxKGlLq
+ 50HwJhthrcKn7YKXiNfEqtmZI73IslhORNJJTWCn++WyFt58rFlAu8j5s5DJ8uWNP/Id
+ S7/ipiXSzAjyaXM1W7UVVXlkdsqDovMCrwZyaWo3UD1LLqimW8d2Crt2mvEd60AjU/CQ
+ oN2uK2uatIoGde3TNcEXrr1q02+8BvoFXIlh5hxK7T9vbHTvXfG4vXZwHVHMinTzxwDF
+ ALrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=26QzzUiifrh6jwU9IPlvYsbYrk9DFgqfk6wy49xTl2w=;
+ b=YplUvDiGSTgwAsy/olfSlZzkzode3lPfMfdEFTpolF7K5KrUAQCR4fdaWvOz1NsVfy
+ ElgaKmO+sSO1jsGLiS5F1qTXa/wYqplgGI/K51LwZ4fCpQc8OWNcln9isxwPUBLEZL51
+ 2E5cwFLYpu5OhrpCsUFPUiFFFWZtc8FGOp1Iv1vEFeRLLn60798cm/iRn/fN2ZE5/zN3
+ VCQsZcVlY4jfx2z5azE8TEdiujyt/QBhIyCWGh0sZb3GQZUK5rj0L19M/gQkaN/oZuCB
+ Ylfza9LDC33SewZIc8HmYAOO6XcGq1o6N45RIJYMCY/UG9gBngok9KNupoqAFI/xt9M6
+ U6+g==
+X-Gm-Message-State: AOAM530jZ8YdW8raaD5Km1HYAt4SY8P+TiQYhbeuYC4KOQdlfMSzX766
+ L8eg3/5MYySid8dM8QD9uVH0Zql9j4M=
+X-Google-Smtp-Source: ABdhPJwHBA65wxgwjWJJG4MVu7Br1pSP8Ak1gzYuNlzCRey9yOUiwzZzqkvIipVc8h9xmA1R9kMe6A==
+X-Received: by 2002:a7b:ce0f:: with SMTP id m15mr1606806wmc.149.1635762096787; 
+ Mon, 01 Nov 2021 03:21:36 -0700 (PDT)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id t1sm14891640wre.32.2021.11.01.03.21.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 01 Nov 2021 03:21:35 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <48a73d96-e8f3-902f-86fa-6d744cdf5e37@amsat.org>
+Date: Mon, 1 Nov 2021 11:21:33 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v2] hw: Add a 'Sensor devices' qdev category
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: Corey Minyard <cminyard@mvista.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare
+ <titusr@google.com>, Hao Wu <wuhaotsh@google.com>, qemu-trivial@nongnu.org,
+ John Wang <wangzhiqiang.bj@bytedance.com>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Bin Meng <bmeng.cn@gmail.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>
+References: <20211027050625.1265828-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20211027050625.1265828-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:vTRIRl9dsWwAtgu7Ui2dNw36goyA8bCbs2YTQGdBdTg2LuUphR7
- aBiA6GbwT8735AEbnyHvLfszB90joxxZMUGsWNZivxvLirBjQNe6meLTaamo7LZcf3tJ0BP
- xTmsp8S1qxKCIXzHyArO5w3AOQKqFncJfS4kHsjLt3wuOnXX0hMiAtBtv7uX3yh01cKCZRM
- Nm7NMWtMy422r5iD90eyw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:oWYh5lWFiSM=:xdW6SZ1WAFZbp9rlrPYEnc
- LG7ykr8Suqx7lJ7ok5QIc5VjgvwAmL5LhBK9YoODFKjwA77TopvX7S3Z+EvwRtPwHDH59s67P
- cj2L7DLX8qk3ggiXXOGkMtHgsmLkQuY/Wbf2XovAUaCHhWo9wcMFeBtTdP89k1guqSl+BZaPH
- wGbtL9RBAl993lniH9HpNOxY9U6u+KsKhugGhDMTIdoqB1THitz1qKPgJDKnjdKgdiuo8N51f
- PGfYkdY2mtQ5emXfe9rUEM/campEl1L89Vrc9Uyzsl9SUwv/G33kgXqtHbxR7vt/b5qo+30pe
- LWB7lkgN05U6h1VYl6a1/c8Szc4Czt+skzicQVkrzJt7MZHCTAAaDaZyMv2lhBBtIWECyMvry
- cdYus7wkdDlE1avKOBVJhzR3r5NiuHa6LB0ebl/5ZKsG/6IY8TrB0vszJ2dL2BvAz3nxBM2lj
- QiFyMt/sLVGVIwgOLQJtKA1CZTYkK0IFX6K7ExckZ/dXM6KrWHS+JrtQ1cX+kucw53Logv2H3
- ws9UakWuZrmUuhlDBlToh4GsopFA6w9b54ynmCtCz/0Xj2p9pEa+Ox2k/e5Q0mh8kyOq05VnP
- ijlW5W8lbtq70gsWshSjhHgTmApk+cFUgU0jqFC/zRqoj56agm/LrAWwkDcHAaAyaL59UUerJ
- bMI9JyXMvDCqulNjlB9H9n+/fAKGqty5AQuJXCkHUzmr0CGHxMfbZPR9iCnL068SM0hM=
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.592,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,152 +91,126 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Nov 2021 08:28:09 -0000
+X-List-Received-Date: Mon, 01 Nov 2021 10:21:45 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+ping?
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
-Message-Id: <20210920064048.2729397-4-f4bug@amsat.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/hppa/lasi.c             | 10 +++++++++-
- hw/input/lasips2.c         | 38 ++++++++++++++++++++++++++++----------
- include/hw/input/lasips2.h | 17 +++++++++++++----
- 3 files changed, 50 insertions(+), 15 deletions(-)
-
-diff --git a/hw/hppa/lasi.c b/hw/hppa/lasi.c
-index 88c3791eb683..91414748b70d 100644
---- a/hw/hppa/lasi.c
-+++ b/hw/hppa/lasi.c
-@@ -297,6 +297,7 @@ static int lasi_get_irq(unsigned long hpa)
- DeviceState *lasi_init(MemoryRegion *address_space)
- {
-     DeviceState *dev;
-+    SysBusDevice *sbd;
-     LasiState *s;
- 
-     dev = qdev_new(TYPE_LASI_CHIP);
-@@ -340,7 +341,14 @@ DeviceState *lasi_init(MemoryRegion *address_space)
-     /* PS/2 Keyboard/Mouse */
-     qemu_irq ps2kbd_irq = qemu_allocate_irq(lasi_set_irq, s,
-             lasi_get_irq(LASI_PS2KBD_HPA));
--    lasips2_init(address_space, LASI_PS2KBD_HPA,  ps2kbd_irq);
-+
-+    sbd = SYS_BUS_DEVICE(qdev_new(TYPE_LASIPS2));
-+    sysbus_realize_and_unref(sbd, &error_fatal);
-+    memory_region_add_subregion(address_space, LASI_PS2KBD_HPA,
-+                                sysbus_mmio_get_region(sbd, 0));
-+    memory_region_add_subregion(address_space, LASI_PS2MOU_HPA,
-+                                sysbus_mmio_get_region(sbd, 1));
-+    sysbus_connect_irq(sbd, 0, ps2kbd_irq);
- 
-     return dev;
- }
-diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
-index 0f8362f17bc1..46cd32316dac 100644
---- a/hw/input/lasips2.c
-+++ b/hw/input/lasips2.c
-@@ -243,28 +243,46 @@ static void ps2dev_update_irq(void *opaque, int level)
-     lasips2_update_irq(port->parent);
- }
- 
--void lasips2_init(MemoryRegion *address_space,
--                  hwaddr base, qemu_irq irq)
-+static void lasips2_init(Object *obj)
- {
--    LASIPS2State *s;
-+    LASIPS2State *s = LASIPS2(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
--    s = g_malloc0(sizeof(LASIPS2State));
--
--    s->irq = irq;
-+    sysbus_init_irq(sbd, &s->irq);
-     s->mouse.id = 1;
-     s->kbd.parent = s;
-     s->mouse.parent = s;
- 
--    vmstate_register(NULL, base, &vmstate_lasips2, s);
--
-     s->kbd.dev = ps2_kbd_init(ps2dev_update_irq, &s->kbd);
-     s->mouse.dev = ps2_mouse_init(ps2dev_update_irq, &s->mouse);
- 
-     memory_region_init_io(&s->kbd.reg, NULL, &lasips2_reg_ops, &s->kbd,
-                           "lasips2-kbd", 0x100);
--    memory_region_add_subregion(address_space, base, &s->kbd.reg);
-+    sysbus_init_mmio(sbd, &s->kbd.reg);
- 
-     memory_region_init_io(&s->mouse.reg, NULL, &lasips2_reg_ops, &s->mouse,
-                           "lasips2-mouse", 0x100);
--    memory_region_add_subregion(address_space, base + 0x100, &s->mouse.reg);
-+    sysbus_init_mmio(sbd, &s->mouse.reg);
-+}
-+
-+static void lasips2_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->vmsd = &vmstate_lasips2;
- }
-+
-+static const TypeInfo lasips2_info = {
-+    .name          = TYPE_LASIPS2,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(LASIPS2State),
-+    .instance_init = lasips2_init,
-+    .class_init    = lasips2_class_init,
-+};
-+
-+static void lasips2_register_types(void)
-+{
-+    type_register_static(&lasips2_info);
-+}
-+
-+type_init(lasips2_register_types)
-diff --git a/include/hw/input/lasips2.h b/include/hw/input/lasips2.h
-index c88f1700162a..834b6d867d9d 100644
---- a/include/hw/input/lasips2.h
-+++ b/include/hw/input/lasips2.h
-@@ -7,11 +7,11 @@
- #ifndef HW_INPUT_LASIPS2_H
- #define HW_INPUT_LASIPS2_H
- 
--#include "exec/hwaddr.h"
-+#include "hw/sysbus.h"
- 
- #define TYPE_LASIPS2 "lasips2"
-+OBJECT_DECLARE_SIMPLE_TYPE(LASIPS2State, LASIPS2)
- 
--struct LASIPS2State;
- typedef struct LASIPS2Port {
-     struct LASIPS2State *parent;
-     MemoryRegion reg;
-@@ -23,12 +23,21 @@ typedef struct LASIPS2Port {
-     bool irq;
- } LASIPS2Port;
- 
-+/*
-+ * QEMU interface:
-+ *  + sysbus MMIO region 0 is the keyboard port interface
-+ *  + sysbus MMIO region 1 is the mouse port interface
-+ *  + sysbus IRQ 0 is the interrupt line shared between
-+ *    keyboard and mouse ports
-+ */
- typedef struct LASIPS2State {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-     LASIPS2Port kbd;
-     LASIPS2Port mouse;
-     qemu_irq irq;
- } LASIPS2State;
- 
--void lasips2_init(MemoryRegion *address_space, hwaddr base, qemu_irq irq);
--
- #endif /* HW_INPUT_LASIPS2_H */
--- 
-2.31.1
-
+On 10/27/21 07:06, Philippe Mathieu-Daudé wrote:
+> Sensors models are listed in the 'Misc devices' category.
+> Move them to their own category.
+> 
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> v2: Only include hw/sensor/, removed AER915 device from hw/arm/z2.c
+> ---
+>  include/hw/qdev-core.h | 1 +
+>  hw/sensor/adm1272.c    | 1 +
+>  hw/sensor/dps310.c     | 1 +
+>  hw/sensor/emc141x.c    | 1 +
+>  hw/sensor/max34451.c   | 2 ++
+>  hw/sensor/tmp105.c     | 1 +
+>  hw/sensor/tmp421.c     | 1 +
+>  softmmu/qdev-monitor.c | 1 +
+>  8 files changed, 9 insertions(+)
+> 
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index 1bad07002df..2fd6b73bd8b 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -26,6 +26,7 @@ typedef enum DeviceCategory {
+>      DEVICE_CATEGORY_SOUND,
+>      DEVICE_CATEGORY_MISC,
+>      DEVICE_CATEGORY_CPU,
+> +    DEVICE_CATEGORY_SENSOR,
+>      DEVICE_CATEGORY_MAX
+>  } DeviceCategory;
+>  
+> diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c
+> index 7310c769be2..2942ac75f90 100644
+> --- a/hw/sensor/adm1272.c
+> +++ b/hw/sensor/adm1272.c
+> @@ -518,6 +518,7 @@ static void adm1272_class_init(ObjectClass *klass, void *data)
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
+>  
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>      dc->desc = "Analog Devices ADM1272 Hot Swap controller";
+>      dc->vmsd = &vmstate_adm1272;
+>      k->write_data = adm1272_write_data;
+> diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
+> index d60a18ac41b..1e24a499b38 100644
+> --- a/hw/sensor/dps310.c
+> +++ b/hw/sensor/dps310.c
+> @@ -208,6 +208,7 @@ static void dps310_class_init(ObjectClass *klass, void *data)
+>      k->send = dps310_tx;
+>      dc->reset = dps310_reset;
+>      dc->vmsd = &vmstate_dps310;
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>  }
+>  
+>  static const TypeInfo dps310_info = {
+> diff --git a/hw/sensor/emc141x.c b/hw/sensor/emc141x.c
+> index 7ce8f4e9794..4202d8f185a 100644
+> --- a/hw/sensor/emc141x.c
+> +++ b/hw/sensor/emc141x.c
+> @@ -270,6 +270,7 @@ static void emc141x_class_init(ObjectClass *klass, void *data)
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>  
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>      dc->reset = emc141x_reset;
+>      k->event = emc141x_event;
+>      k->recv = emc141x_rx;
+> diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c
+> index a91d8bd487c..8300bf4ff43 100644
+> --- a/hw/sensor/max34451.c
+> +++ b/hw/sensor/max34451.c
+> @@ -751,6 +751,8 @@ static void max34451_class_init(ObjectClass *klass, void *data)
+>      ResettableClass *rc = RESETTABLE_CLASS(klass);
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
+> +
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>      dc->desc = "Maxim MAX34451 16-Channel V/I monitor";
+>      dc->vmsd = &vmstate_max34451;
+>      k->write_data = max34451_write_data;
+> diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
+> index 20564494899..43d79b9eeec 100644
+> --- a/hw/sensor/tmp105.c
+> +++ b/hw/sensor/tmp105.c
+> @@ -305,6 +305,7 @@ static void tmp105_class_init(ObjectClass *klass, void *data)
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>  
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>      dc->realize = tmp105_realize;
+>      k->event = tmp105_event;
+>      k->recv = tmp105_rx;
+> diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
+> index a3db57dcb5a..c328978af9c 100644
+> --- a/hw/sensor/tmp421.c
+> +++ b/hw/sensor/tmp421.c
+> @@ -343,6 +343,7 @@ static void tmp421_class_init(ObjectClass *klass, void *data)
+>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>      TMP421Class *sc = TMP421_CLASS(klass);
+>  
+> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
+>      dc->realize = tmp421_realize;
+>      k->event = tmp421_event;
+>      k->recv = tmp421_rx;
+> diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
+> index 4851de51a5c..a411af03c5c 100644
+> --- a/softmmu/qdev-monitor.c
+> +++ b/softmmu/qdev-monitor.c
+> @@ -164,6 +164,7 @@ static void qdev_print_devinfos(bool show_no_user)
+>          [DEVICE_CATEGORY_SOUND]   = "Sound",
+>          [DEVICE_CATEGORY_MISC]    = "Misc",
+>          [DEVICE_CATEGORY_CPU]     = "CPU",
+> +        [DEVICE_CATEGORY_SENSOR]  = "Sensor",
+>          [DEVICE_CATEGORY_MAX]     = "Uncategorized",
+>      };
+>      GSList *list, *elt;
+> 
 
