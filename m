@@ -1,82 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mhURo-0007JB-Hs
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 06:21:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33512)
+	id 1mhUSQ-00007o-0F
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 06:22:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mhURk-0007H7-JA; Mon, 01 Nov 2021 06:21:44 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:36588)
+ id 1mhUSK-00005E-Kl; Mon, 01 Nov 2021 06:22:20 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:45803)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mhURf-00072D-VP; Mon, 01 Nov 2021 06:21:44 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- z11-20020a1c7e0b000000b0030db7b70b6bso16783553wmc.1; 
- Mon, 01 Nov 2021 03:21:38 -0700 (PDT)
+ id 1mhUSI-0000Gt-Ii; Mon, 01 Nov 2021 06:22:20 -0400
+Received: by mail-wr1-x431.google.com with SMTP id o14so27319336wra.12;
+ Mon, 01 Nov 2021 03:22:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=26QzzUiifrh6jwU9IPlvYsbYrk9DFgqfk6wy49xTl2w=;
- b=QoZcwoZv5a5DtN6bQR83BOY5IYF/8OQ14p1wcm7aVTVBGlunNyDRMmK9gTHFTCAumV
- Hg6dRC+IgIDZfe5MAXTRrW2AZoNQts90iwc8NjXMKV7q+w9Ki/Gk0dv+fOr+CgxKGlLq
- 50HwJhthrcKn7YKXiNfEqtmZI73IslhORNJJTWCn++WyFt58rFlAu8j5s5DJ8uWNP/Id
- S7/ipiXSzAjyaXM1W7UVVXlkdsqDovMCrwZyaWo3UD1LLqimW8d2Crt2mvEd60AjU/CQ
- oN2uK2uatIoGde3TNcEXrr1q02+8BvoFXIlh5hxK7T9vbHTvXfG4vXZwHVHMinTzxwDF
- ALrA==
+ bh=Aqdk8VTyGjb6Wg2A3/1ygS74e9OuceuUnGMfmfjCvRM=;
+ b=PFHMh1uzkYImy5FkBTQDxwq6E0/dsLSm/33wCEC370vO0h8+Xt7ULKZiE2CUr7mbfg
+ vukX9kl/Nowdxrp/V5s04G2AJ6K2BbegSABSik+nJfpxw2KVQ3xh6V25lsz2+slKH5Tm
+ MzsXcxF5wQxQfzPJLrvZSkOBgQWEKXdwGJUeR329bf07awrKNAzdWLSsK7D7HKo+S+7L
+ kPL2H5Yxpd17fWnt45UspfZsBT/JHnswq4AnkNRhUVU+Y0h/PV/KjmKQRph55WlF18bJ
+ 3FuSDBv3nlM3WK7+YpG7cmj0raMKco3kKlcLoIuuuycp1fp3jRZvrlytwRvufUNRR2n9
+ 8gOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=26QzzUiifrh6jwU9IPlvYsbYrk9DFgqfk6wy49xTl2w=;
- b=YplUvDiGSTgwAsy/olfSlZzkzode3lPfMfdEFTpolF7K5KrUAQCR4fdaWvOz1NsVfy
- ElgaKmO+sSO1jsGLiS5F1qTXa/wYqplgGI/K51LwZ4fCpQc8OWNcln9isxwPUBLEZL51
- 2E5cwFLYpu5OhrpCsUFPUiFFFWZtc8FGOp1Iv1vEFeRLLn60798cm/iRn/fN2ZE5/zN3
- VCQsZcVlY4jfx2z5azE8TEdiujyt/QBhIyCWGh0sZb3GQZUK5rj0L19M/gQkaN/oZuCB
- Ylfza9LDC33SewZIc8HmYAOO6XcGq1o6N45RIJYMCY/UG9gBngok9KNupoqAFI/xt9M6
- U6+g==
-X-Gm-Message-State: AOAM530jZ8YdW8raaD5Km1HYAt4SY8P+TiQYhbeuYC4KOQdlfMSzX766
- L8eg3/5MYySid8dM8QD9uVH0Zql9j4M=
-X-Google-Smtp-Source: ABdhPJwHBA65wxgwjWJJG4MVu7Br1pSP8Ak1gzYuNlzCRey9yOUiwzZzqkvIipVc8h9xmA1R9kMe6A==
-X-Received: by 2002:a7b:ce0f:: with SMTP id m15mr1606806wmc.149.1635762096787; 
- Mon, 01 Nov 2021 03:21:36 -0700 (PDT)
+ bh=Aqdk8VTyGjb6Wg2A3/1ygS74e9OuceuUnGMfmfjCvRM=;
+ b=pZNfTtcwr9gDhVw527x9orvJAhnUNH7DF6Mex1efDjndFf9SWk90yFv3MlhWbznSTl
+ HaYnvi7eh8fRkLRQ6djLScMS4gaXPN22IdBWxWX4xYAoJaQi12EmU/0vJ2beyVQ5+ijw
+ VxEuq3RC02STDnmTaGNadcn3iEqAjRS3/LcbIcJ3BProKYx0fq3/R7yTLdWI4ew/qsHm
+ y+QadUPM8rTPN2o9JMJ3oomSToqA2AdipCkUkRYPUmaFED37+aEIzUDllZm5nVu0gdq9
+ ENnpuVYPb5kLWQ8SB4UBH5ZRLSElOp+TvHOsvkRHpN4j7WUFdON+AkkMv0FnBsjoL5vQ
+ oqgA==
+X-Gm-Message-State: AOAM531PpXU9FSdLG+xzYgMMNJxQ0a4YhR9qCi8yN1PDG5NwwV+UPfMj
+ etA2vMNqOvdsWyCuqjmHUQSdtxU4UZU=
+X-Google-Smtp-Source: ABdhPJyYPwWp15IV0KFbXceyi9v2N0H9HkfTiClqYBITq1H2ebFqJ8WK8btn6i3rVXC7Q6hktmq/ew==
+X-Received: by 2002:a5d:4845:: with SMTP id n5mr36064662wrs.251.1635762136555; 
+ Mon, 01 Nov 2021 03:22:16 -0700 (PDT)
 Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
  [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id t1sm14891640wre.32.2021.11.01.03.21.34
+ by smtp.gmail.com with ESMTPSA id f20sm14673854wmq.38.2021.11.01.03.22.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Nov 2021 03:21:35 -0700 (PDT)
+ Mon, 01 Nov 2021 03:22:16 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <48a73d96-e8f3-902f-86fa-6d744cdf5e37@amsat.org>
-Date: Mon, 1 Nov 2021 11:21:33 +0100
+Message-ID: <530b7d0e-9290-c78a-df50-7ef297dbf0b6@amsat.org>
+Date: Mon, 1 Nov 2021 11:22:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH v2] hw: Add a 'Sensor devices' qdev category
+Subject: Re: [PATCH v2] .mailmap: Fix more contributor entries
 Content-Language: en-US
 To: qemu-devel@nongnu.org
-Cc: Corey Minyard <cminyard@mvista.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Titus Rwantare
- <titusr@google.com>, Hao Wu <wuhaotsh@google.com>, qemu-trivial@nongnu.org,
- John Wang <wangzhiqiang.bj@bytedance.com>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>
-References: <20211027050625.1265828-1-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Hyman Huang <huangy81@chinatelecom.cn>,
+ Pan Nengyuan <pannengyuan@huawei.com>, Alex Chen <alex.chen@huawei.com>,
+ Haibin Zhang <haibinzhang@tencent.com>
+References: <20211027043254.1248097-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211027050625.1265828-1-f4bug@amsat.org>
+In-Reply-To: <20211027043254.1248097-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.592,
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.592,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -91,126 +84,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Nov 2021 10:21:45 -0000
+X-List-Received-Date: Mon, 01 Nov 2021 10:22:21 -0000
 
-ping?
+Can this patch go via the Trivial tree?
 
-On 10/27/21 07:06, Philippe Mathieu-Daudé wrote:
-> Sensors models are listed in the 'Misc devices' category.
-> Move them to their own category.
+On 10/27/21 06:32, Philippe Mathieu-Daudé wrote:
+> These authors have some incorrect author email field.
 > 
-> Reviewed-by: Cédric Le Goater <clg@kaod.org>
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
+> Acked-by: Pan Nengyuan <pannengyuan@huawei.com>
+> Reviewed-by: Alex Chen <alex.chen@huawei.com>
+> Reviewed-by: Hyman Huang <huangy81@chinatelecom.cn>
+> Reviewed-by: Haibin Zhang <haibinzhang@tencent.com>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
-> v2: Only include hw/sensor/, removed AER915 device from hw/arm/z2.c
+> Patch fully reviewed/acked.
 > ---
->  include/hw/qdev-core.h | 1 +
->  hw/sensor/adm1272.c    | 1 +
->  hw/sensor/dps310.c     | 1 +
->  hw/sensor/emc141x.c    | 1 +
->  hw/sensor/max34451.c   | 2 ++
->  hw/sensor/tmp105.c     | 1 +
->  hw/sensor/tmp421.c     | 1 +
->  softmmu/qdev-monitor.c | 1 +
->  8 files changed, 9 insertions(+)
+>  .mailmap | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index 1bad07002df..2fd6b73bd8b 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -26,6 +26,7 @@ typedef enum DeviceCategory {
->      DEVICE_CATEGORY_SOUND,
->      DEVICE_CATEGORY_MISC,
->      DEVICE_CATEGORY_CPU,
-> +    DEVICE_CATEGORY_SENSOR,
->      DEVICE_CATEGORY_MAX
->  } DeviceCategory;
->  
-> diff --git a/hw/sensor/adm1272.c b/hw/sensor/adm1272.c
-> index 7310c769be2..2942ac75f90 100644
-> --- a/hw/sensor/adm1272.c
-> +++ b/hw/sensor/adm1272.c
-> @@ -518,6 +518,7 @@ static void adm1272_class_init(ObjectClass *klass, void *data)
->      DeviceClass *dc = DEVICE_CLASS(klass);
->      PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
->  
-> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
->      dc->desc = "Analog Devices ADM1272 Hot Swap controller";
->      dc->vmsd = &vmstate_adm1272;
->      k->write_data = adm1272_write_data;
-> diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
-> index d60a18ac41b..1e24a499b38 100644
-> --- a/hw/sensor/dps310.c
-> +++ b/hw/sensor/dps310.c
-> @@ -208,6 +208,7 @@ static void dps310_class_init(ObjectClass *klass, void *data)
->      k->send = dps310_tx;
->      dc->reset = dps310_reset;
->      dc->vmsd = &vmstate_dps310;
-> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
->  }
->  
->  static const TypeInfo dps310_info = {
-> diff --git a/hw/sensor/emc141x.c b/hw/sensor/emc141x.c
-> index 7ce8f4e9794..4202d8f185a 100644
-> --- a/hw/sensor/emc141x.c
-> +++ b/hw/sensor/emc141x.c
-> @@ -270,6 +270,7 @@ static void emc141x_class_init(ObjectClass *klass, void *data)
->      DeviceClass *dc = DEVICE_CLASS(klass);
->      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->  
-> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
->      dc->reset = emc141x_reset;
->      k->event = emc141x_event;
->      k->recv = emc141x_rx;
-> diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c
-> index a91d8bd487c..8300bf4ff43 100644
-> --- a/hw/sensor/max34451.c
-> +++ b/hw/sensor/max34451.c
-> @@ -751,6 +751,8 @@ static void max34451_class_init(ObjectClass *klass, void *data)
->      ResettableClass *rc = RESETTABLE_CLASS(klass);
->      DeviceClass *dc = DEVICE_CLASS(klass);
->      PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
-> +
-> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
->      dc->desc = "Maxim MAX34451 16-Channel V/I monitor";
->      dc->vmsd = &vmstate_max34451;
->      k->write_data = max34451_write_data;
-> diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-> index 20564494899..43d79b9eeec 100644
-> --- a/hw/sensor/tmp105.c
-> +++ b/hw/sensor/tmp105.c
-> @@ -305,6 +305,7 @@ static void tmp105_class_init(ObjectClass *klass, void *data)
->      DeviceClass *dc = DEVICE_CLASS(klass);
->      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->  
-> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
->      dc->realize = tmp105_realize;
->      k->event = tmp105_event;
->      k->recv = tmp105_rx;
-> diff --git a/hw/sensor/tmp421.c b/hw/sensor/tmp421.c
-> index a3db57dcb5a..c328978af9c 100644
-> --- a/hw/sensor/tmp421.c
-> +++ b/hw/sensor/tmp421.c
-> @@ -343,6 +343,7 @@ static void tmp421_class_init(ObjectClass *klass, void *data)
->      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->      TMP421Class *sc = TMP421_CLASS(klass);
->  
-> +    set_bit(DEVICE_CATEGORY_SENSOR, dc->categories);
->      dc->realize = tmp421_realize;
->      k->event = tmp421_event;
->      k->recv = tmp421_rx;
-> diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-> index 4851de51a5c..a411af03c5c 100644
-> --- a/softmmu/qdev-monitor.c
-> +++ b/softmmu/qdev-monitor.c
-> @@ -164,6 +164,7 @@ static void qdev_print_devinfos(bool show_no_user)
->          [DEVICE_CATEGORY_SOUND]   = "Sound",
->          [DEVICE_CATEGORY_MISC]    = "Misc",
->          [DEVICE_CATEGORY_CPU]     = "CPU",
-> +        [DEVICE_CATEGORY_SENSOR]  = "Sensor",
->          [DEVICE_CATEGORY_MAX]     = "Uncategorized",
->      };
->      GSList *list, *elt;
+> diff --git a/.mailmap b/.mailmap
+> index f029d1c21fe..8beb2f95ae2 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -69,6 +69,7 @@ Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
+>  # git author config, or had utf8/latin1 encoding issues.
+>  Aaron Lindsay <aaron@os.amperecomputing.com>
+>  Alexey Gerasimenko <x1917x@gmail.com>
+> +Alex Chen <alex.chen@huawei.com>
+>  Alex Ivanov <void@aleksoft.net>
+>  Andreas Färber <afaerber@suse.de>
+>  Bandan Das <bsd@redhat.com>
+> @@ -99,9 +100,11 @@ Gautham R. Shenoy <ego@in.ibm.com>
+>  Gautham R. Shenoy <ego@linux.vnet.ibm.com>
+>  Gonglei (Arei) <arei.gonglei@huawei.com>
+>  Guang Wang <wang.guang55@zte.com.cn>
+> +Haibin Zhang <haibinzhang@tencent.com>
+>  Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+>  Hanna Reitz <hreitz@redhat.com> <mreitz@redhat.com>
+>  Hervé Poussineau <hpoussin@reactos.org>
+> +Hyman Huang <huangy81@chinatelecom.cn>
+>  Jakub Jermář <jakub@jermar.eu>
+>  Jakub Jermář <jakub.jermar@kernkonzept.com>
+>  Jean-Christophe Dubois <jcd@tribudubois.net>
+> @@ -135,6 +138,7 @@ Nicholas Thomas <nick@bytemark.co.uk>
+>  Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>
+>  Orit Wasserman <owasserm@redhat.com>
+>  Paolo Bonzini <pbonzini@redhat.com>
+> +Pan Nengyuan <pannengyuan@huawei.com>
+>  Pavel Dovgaluk <dovgaluk@ispras.ru>
+>  Pavel Dovgaluk <pavel.dovgaluk@gmail.com>
+>  Pavel Dovgaluk <Pavel.Dovgaluk@ispras.ru>
 > 
 
