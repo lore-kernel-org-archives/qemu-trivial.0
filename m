@@ -1,68 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mhYl9-0004Bo-0u
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 10:58:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50806)
+	id 1mhZHV-0006fs-Ob
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 11:31:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mhYl6-00046H-P5
- for qemu-trivial@nongnu.org; Mon, 01 Nov 2021 10:58:00 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:50720)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mhZHT-0006ee-EZ
+ for qemu-trivial@nongnu.org; Mon, 01 Nov 2021 11:31:27 -0400
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836]:37738)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mhYl4-00079C-VK
- for qemu-trivial@nongnu.org; Mon, 01 Nov 2021 10:58:00 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id 133so4306356wme.0
- for <qemu-trivial@nongnu.org>; Mon, 01 Nov 2021 07:57:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mhZHP-0000cE-Ls
+ for qemu-trivial@nongnu.org; Mon, 01 Nov 2021 11:31:27 -0400
+Received: by mail-qt1-x836.google.com with SMTP id o12so5403820qtv.4
+ for <qemu-trivial@nongnu.org>; Mon, 01 Nov 2021 08:31:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xFPfbKPygkpzz0T1y1/2uxk+aU50Ktnft1tY5SeGrdA=;
- b=TITv8CjiaBNrYZUU2+Z8abaj0gZtbVc1tUT+3YuV76pwYfoYjy403bHZDHZIVgCr3o
- tEisrZQuUzHvy5M+1ML4ZQQPkhxp7yIFHs5CRLDk9skTf2QgDNdW7e2JT6EmQa6f4eom
- rfV7xkmKUBKO8m6B6FHPm6sfTH9vA6PTLhgTohbasOeE+dPGHU2S48L1fKLoRBT4iisW
- UrprtV7kckysS8oVCmmv4zF8HgT09hC/PRfqOieiX4cZT7W29mw7DE0baoJKl6m9YAgV
- EyXMO5+My0UuuPdEwOihTpg2BH5DswthVGlmVrV/5Z845jCO7FXsAThiBa8MkqEqtil+
- KUng==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ZQTpF83tMKfnveNBLXnXgJTprnpVbSC46DeBc3/Pxno=;
+ b=JqFzphJieRh0MhwvbffcYU0D5Igox5fzh7tPqSp3dppbLkzvrBXMBsHH9FKB1FB1k8
+ rDi/GaT4u+Wb5E5x+6mH4BXFynDK4QhLZGIJE1GSkq1jYYZV+zbizd2my+5bc17Bs3vv
+ 66Ah8Zw4rUfTNJUFLnVeiAzmYJnCzTPAw4MrNZoOkSark09/0B4Cy3JiU+EB7qCwaIVU
+ RzXcgHXJef3r0mgcr6gc17nJw8Nt+IS9qjJavlGvQ/iw0pku348SsFfsLSbxzuebFi3l
+ JEWGBtURdKzgl3kQPBwujfgYbo5rEoa0kHKBybPvxKLHAvt9NvdnPqzllE/7JP6fcY8s
+ nq9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xFPfbKPygkpzz0T1y1/2uxk+aU50Ktnft1tY5SeGrdA=;
- b=bgAraosfnz2Tl1x+mZdQhFgV2Ydq/hirUDqbNC9dj/QOjSHvRYlrKsZh6m1N6zT/IZ
- iFjyh3jnCrNeHyopwYEn7PKCtTtBPrXEUMDr291shO5xOBcDTcFlVxS/O6FLKep/beEP
- p1bjsqNkyT5ZBGHGB7997YLVygg5BW1TUPmKzT6ZgGoDxUVk554+9yrjX4wDnlu0VNgN
- /i2IZE/CsrUE12djL3kY5zarQKxS2Jsk0KKrfx7HrK7FnDVIn69df+ifIsheToxn0sTo
- K598aIffOdNtooIa6DvI3Bz6XWb6haIflrhiGt0YRs71LSfyxL8AhZq5kApD5QSWmV3Y
- tPPw==
-X-Gm-Message-State: AOAM532mK6EQfAziVK2bIqWt2uWapCOy2bD+UKoTZ6N9carBcSHmA1dV
- E3MPYJ+ljmov4GHDU4b5PKtPZYp8pV5AtN3vNrnE+w==
-X-Google-Smtp-Source: ABdhPJxHuXpKKlrnyGYAt8j/QP/VJAu5MUl7ApiuwLJ2yGwi8qZ/wPnmy4q5x3J2/eoayMjMvQJGlIdboy0M3HrXpC4=
-X-Received: by 2002:a7b:c389:: with SMTP id s9mr20444949wmj.133.1635778677544; 
- Mon, 01 Nov 2021 07:57:57 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ZQTpF83tMKfnveNBLXnXgJTprnpVbSC46DeBc3/Pxno=;
+ b=kF3Q0H7/do8OixhXI/RnNKfZ+/Q18oM32Q7T6ud3Kaprhxgkaexx4jXt7rgXanqgsD
+ vSOz4bezQstLItcNZF7t60DaehcuVCFX9K01hfqp2OsuT655GbvE+WARvQ6Eaci6BRYZ
+ bWv03N36Ra8DBu/etOrpNdRanW3bIX1gJHt4gfsY5Nry8TTBOmEEvx3fqy+RzxB5+gSQ
+ V+FeY9y2EjSUSfLilbKhKIoPG+/iAue1lCT+hybNASW2kgzRgAfbOQmV4Tc9fni+iORj
+ QP1VqoKSslsDnTpZn3S8G8cGwDn8HS4mcMN/OxKurSQGjBOEZxx2suHJXYvmxrWpCmpV
+ WfmA==
+X-Gm-Message-State: AOAM533LWYULDloPqjbbMM37EsWuLuxlOckzXwxNBVSfmgbQMRlNMelX
+ 6qZ6J54yzToAn6W5QWBSHF1djA==
+X-Google-Smtp-Source: ABdhPJxi+8lB7BQ18Ge2IxnndH6j2pwlOHbS5NdaUQ+US6EUOoPqJt50JZK9UWX4kBmrk6SsCVPqww==
+X-Received: by 2002:ac8:5a11:: with SMTP id n17mr26706598qta.210.1635780681923; 
+ Mon, 01 Nov 2021 08:31:21 -0700 (PDT)
+Received: from [172.20.81.179] (rrcs-172-254-253-57.nyc.biz.rr.com.
+ [172.254.253.57])
+ by smtp.gmail.com with ESMTPSA id n19sm10865053qta.22.2021.11.01.08.31.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 01 Nov 2021 08:31:21 -0700 (PDT)
+Subject: Re: [PULL 6/6] hw/input/lasips2: QOM'ify the Lasi PS/2
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Damien Hedde <damien.hedde@greensocs.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20211101082747.2524909-1-laurent@vivier.eu>
+ <20211101082747.2524909-7-laurent@vivier.eu>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <04704da8-24c5-25d6-85e1-6f9901f00b24@linaro.org>
+Date: Mon, 1 Nov 2021 11:31:19 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-References: <20211019090344.3054300-1-kchamart@redhat.com>
- <20211019090344.3054300-7-kchamart@redhat.com>
-In-Reply-To: <20211019090344.3054300-7-kchamart@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Nov 2021 14:57:46 +0000
-Message-ID: <CAFEAcA9qLe9dZmPQjm=eA-VFYnR8Hks0kmMNnyDpQF6mJg+RvA@mail.gmail.com>
-Subject: Re: [PATCH v2 6/6] docs/devel: Update the rST index file
-To: Kashyap Chamarthy <kchamart@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Stefan Hajnoczi <stefanha@redhat.com>, Eric Blake <eblake@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>, 
- Laurent Vivier <Laurent@vivier.eu>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <20211101082747.2524909-7-laurent@vivier.eu>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x836.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.14,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,35 +82,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Nov 2021 14:58:01 -0000
+X-List-Received-Date: Mon, 01 Nov 2021 15:31:27 -0000
 
-On Tue, 19 Oct 2021 at 10:04, Kashyap Chamarthy <kchamart@redhat.com> wrote:
->
-> Add the entries for contributing-related rSTified wiki docs.
->
-> Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
+On 11/1/21 4:27 AM, Laurent Vivier wrote:
+> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+> Message-Id: <20210920064048.2729397-4-f4bug@amsat.org>
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 > ---
->  docs/devel/index.rst | 5 +++++
->  1 file changed, 5 insertions(+)
->
-> diff --git a/docs/devel/index.rst b/docs/devel/index.rst
-> index f95df10b3e..f7bec644f3 100644
-> --- a/docs/devel/index.rst
-> +++ b/docs/devel/index.rst
-> @@ -45,3 +45,8 @@ modifying QEMU's source code.
->     vfio-migration
->     qapi-code-gen
->     writing-qmp-commands
-> +   trivial-patches
-> +   spell-check
-> +   key-signing-party
-> +   submitting-a-pull-request
-> +   submitting-a-patch
+>   hw/hppa/lasi.c             | 10 +++++++++-
+>   hw/input/lasips2.c         | 38 ++++++++++++++++++++++++++++----------
+>   include/hw/input/lasips2.h | 17 +++++++++++++----
+>   3 files changed, 50 insertions(+), 15 deletions(-)
 
-You should update the index.rst in the same patch in which you
-add the new .rst file. Otherwise Sphinx will complain about
-orphan files if you do a build at the commit where the file
-was added but before the index.rst was updated.
+This has broken the qtest-hppa device-introspection test:
 
--- PMM
+ERROR:../src/qom/object.c:2011:object_get_canonical_path_component: code should not be reached
+Broken pipe
+Aborted (core dumped)
+
+Also, the previous patch 5 does not compile on its own:
+
+In file included from ../src/hw/input/lasips2.c:28:0:
+/home/richard.henderson/qemu/src/include/hw/input/lasips2.h:17:18: error: field ‘reg’ has 
+incomplete type
+      MemoryRegion reg;
+                   ^~~
+ninja: build stopped: subcommand failed.
+
+Reverting to patch 4 builds, and passes the introspection test.
+
+
+r~
 
