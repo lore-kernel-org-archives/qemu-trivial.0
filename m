@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mhSfh-00065d-N4
+	id 1mhSfh-00066R-Uh
 	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 04:28:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36616)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36626)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mhSff-0005xh-DP; Mon, 01 Nov 2021 04:27:59 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:43275)
+ id 1mhSfg-000600-4f; Mon, 01 Nov 2021 04:28:00 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:43127)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mhSfd-00086R-FJ; Mon, 01 Nov 2021 04:27:59 -0400
+ id 1mhSfe-00086V-4B; Mon, 01 Nov 2021 04:27:59 -0400
 Received: from quad ([82.142.14.190]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MPrXf-1mKj1Y3Ibj-00MqRP; Mon, 01
- Nov 2021 09:27:51 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MVJZv-1mFAad44Qh-00SMER; Mon, 01
+ Nov 2021 09:27:53 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 3/6] MAINTAINERS: Split HPPA TCG vs HPPA machines/hardware
-Date: Mon,  1 Nov 2021 09:27:44 +0100
-Message-Id: <20211101082747.2524909-4-laurent@vivier.eu>
+ Damien Hedde <damien.hedde@greensocs.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 5/6] hw/input/lasips2: Move LASIPS2State declaration to
+ 'hw/input/lasips2.h'
+Date: Mon,  1 Nov 2021 09:27:46 +0100
+Message-Id: <20211101082747.2524909-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211101082747.2524909-1-laurent@vivier.eu>
 References: <20211101082747.2524909-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:cYdtptuzDFuG45gYvai7tL8cFu6w+SZLwAKfkBqP88cBixraQHS
- yNvX66bDoOW/ttzJMC5xP03E5xnBd7XMMUYLjv/Zc7T4muFG/jbBCoTKPgL0soisyQs6aS4
- L12yNMAYkI0l2ela9i/Z19EbkeNtdF7jygipa79RVR2cCweuYIb8kBAnjJCIcvJbxy7vpjB
- XWa3yKw0ar+FHh6ZgY4nQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:s755VrgJ/u4=:XGEFTsDCNx1G6K63+3Lf5V
- rKRPuxNu0R9JyEx688NauGu44epj78ee/WJdS99D7rS1r/0uekgtXgwksMLPRs6WtYvPI8Jwc
- C18ePvaQ+1/gCF307btDxuBtTaKYoTeDPFmfkZn+w7oVfZ99n3cAOSTNg164ofwFmhgtEepiY
- M+vC1UNKLszmvwq+pLNOt4+dOlG7dvjNYfBwybsx0PtYraDon1vHfo7C/QrnBCnIc9tYyQ+jk
- aP08tQZK0qUO2nJlwMcY23qnEWZ4Zyg2SbanL9zM2n/jCXunqPlJeBUoNJkAO88tnwP8BnmQ0
- OFzFlUQfwAkLQxL6EyXFH7Nhr0350d1aoTUk5gX24BVpxBlXSCIYt8qRVYcKHsdC0LhWo6vOA
- YI7tX0kgPJasqz54qQtnq/YoTvObvkFh/h0mGBpo7KKy3bYYZvpzz7wWC2DcXUMwPqxnw31OT
- hRsX9YL/iezjm7V9Vw7yTLt7osWA+fZf1ya7WIBXYh0EiFRS4Tmo1eKIwu+tcpGwD6mjIMbHt
- yTanEAAYT9m1dBDZKZmfqn1pdYg4f0ji7Egr7rpvHzigaRXz9HKKrAvVUXTg1Fu6bK32Yhjfc
- 1UjKr7NutRmjGoI2Hm3F3Uf59UcKswgc2crnPC9BwKerVpfBxwtRs+7N1YS6UfULpCrfia1H7
- ICXmy1yYk+1Bgv9V/pYPQJPmILxtgTJEt0IJhM8neqHOs1TB+dLrZCeAhKwzftrHCEUE=
+X-Provags-ID: V03:K1:RpkfCmiRDLupRVEyYLVHr4RnyDj8zP76pJckPtOT2vzxwq2jrCV
+ w4PO3ofsWHLJXVaXFPSH28mA9rhzGhWY3IUybl6Z9v4552kGroGewROHTBP+KAoOKHm6OBk
+ cY4JRQM/0MkFrqIrVB605GBnCtGiLuqye0rkNao4z5HsELKTBB4Y3jWTJW12amVtb1BqubU
+ 1lJ3+OSdnsFWNwTxqkKjw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zpQAy5oH68k=:LuyMKKjYxjBz2vn6YhepFb
+ GxX7wDAlhmPsGz0anMF09aCqNqrpmLv4q7mBx6L+RVcrqBd4UvDZpK1hqLIPHQs08OBZD+5mK
+ Jm/IOFEI+adCK8rZIFD7x4PRKqD1M2+VVol4lcsByQ5I7z4bUnYLc5Kkb0ZcTloeNhQsLgMW3
+ vDG9HqGleVK4VLSoO/rHiiMZzN+mbLcBpg5ktLQJagQNHxZtl2aYdYWQQq7/z6KJpOOdcIDs7
+ 9Kaq+0U2dVTHk4ogCNBsMgQzOeJeLSBh/UdF4Bto3caSZ7Qi4uRPLeaXWEqK0EkbAAsHj1FHz
+ kBy4uUEDYQcJ/kqhq+dL5ifmrNy1ETe146+/DbBudeQ45cAcZLchcIRWrg+DCzpM4DUA4pUfQ
+ OtdDoEmJZufnkuVVofj4lE74w6kP0HAH+X2KaMpr+q6KL3o1m6cKcybLCUDAZxzrTm58GXI5N
+ nuG2gBELR9JIs0IdSRCoAMVFc9CfEK33svqFbKHiEeMWYtPRj4kkOVjwF8sNrQrgRhIELBlsB
+ bsw0Aa1Wx0miJhvlvAz+yRnoqPie9xyPcnFX9PHyZ51Pa/pMcNgDkRnP5rjOW3ATYpWitmIzO
+ KXO9IDe0j9lA3HQJPHjIkspkXv9/pw+kcgXVH2nC6WoCccqIKpp4zq9KGTlwhSzDv05S4nPRP
+ +Tx/9/ZVwgDy8wLQSfK4as208KpEILtwW1kLxDr3rRVKMFtLsbGfXDM7/PRDjQwXXHh4=
 Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -66,42 +67,78 @@ X-List-Received-Date: Mon, 01 Nov 2021 08:28:00 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Hardware emulated models don't belong to the TCG MAINTAINERS
-section. Move them to the 'HP-PARISC Machines' section.
+We want to use the OBJECT_DECLARE_SIMPLE_TYPE() macro to QOM'ify
+this device in the next commit. To make its review simpler, as a
+first step move the LASIPS2State and LASIPS2Port declarations to
+'hw/input/lasips2.h'
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Helge Deller <deller@gmx.de>
-Message-Id: <20211004083835.3802961-1-f4bug@amsat.org>
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+Message-Id: <20210920064048.2729397-3-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/input/lasips2.c         | 18 ------------------
+ include/hw/input/lasips2.h | 18 ++++++++++++++++++
+ 2 files changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 894dc4310526..6f2b20078032 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -205,10 +205,7 @@ HPPA (PA-RISC) TCG CPUs
- M: Richard Henderson <richard.henderson@linaro.org>
- S: Maintained
- F: target/hppa/
--F: hw/hppa/
- F: disas/hppa.c
--F: hw/net/*i82596*
--F: include/hw/net/lasi_82596.h
+diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
+index 68d741d34215..0f8362f17bc1 100644
+--- a/hw/input/lasips2.c
++++ b/hw/input/lasips2.c
+@@ -33,24 +33,6 @@
+ #include "hw/irq.h"
  
- M68K TCG CPUs
- M: Laurent Vivier <laurent@vivier.eu>
-@@ -1099,6 +1096,8 @@ R: Helge Deller <deller@gmx.de>
- S: Odd Fixes
- F: configs/devices/hppa-softmmu/default.mak
- F: hw/hppa/
-+F: hw/net/*i82596*
-+F: include/hw/net/lasi_82596.h
- F: pc-bios/hppa-firmware.img
  
- M68K Machines
+-struct LASIPS2State;
+-typedef struct LASIPS2Port {
+-    struct LASIPS2State *parent;
+-    MemoryRegion reg;
+-    void *dev;
+-    uint8_t id;
+-    uint8_t control;
+-    uint8_t buf;
+-    bool loopback_rbne;
+-    bool irq;
+-} LASIPS2Port;
+-
+-typedef struct LASIPS2State {
+-    LASIPS2Port kbd;
+-    LASIPS2Port mouse;
+-    qemu_irq irq;
+-} LASIPS2State;
+-
+ static const VMStateDescription vmstate_lasips2 = {
+     .name = "lasips2",
+     .version_id = 0,
+diff --git a/include/hw/input/lasips2.h b/include/hw/input/lasips2.h
+index 0cd7b59064a9..c88f1700162a 100644
+--- a/include/hw/input/lasips2.h
++++ b/include/hw/input/lasips2.h
+@@ -11,6 +11,24 @@
+ 
+ #define TYPE_LASIPS2 "lasips2"
+ 
++struct LASIPS2State;
++typedef struct LASIPS2Port {
++    struct LASIPS2State *parent;
++    MemoryRegion reg;
++    void *dev;
++    uint8_t id;
++    uint8_t control;
++    uint8_t buf;
++    bool loopback_rbne;
++    bool irq;
++} LASIPS2Port;
++
++typedef struct LASIPS2State {
++    LASIPS2Port kbd;
++    LASIPS2Port mouse;
++    qemu_irq irq;
++} LASIPS2State;
++
+ void lasips2_init(MemoryRegion *address_space, hwaddr base, qemu_irq irq);
+ 
+ #endif /* HW_INPUT_LASIPS2_H */
 -- 
 2.31.1
 
