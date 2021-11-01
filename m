@@ -1,49 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mhSff-0005y6-Hd
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 04:27:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36596)
+	id 1mhSfh-00065d-N4
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 04:28:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36616)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mhSfe-0005v8-BY; Mon, 01 Nov 2021 04:27:58 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:44745)
+ id 1mhSff-0005xh-DP; Mon, 01 Nov 2021 04:27:59 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:43275)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mhSfc-00086J-4n; Mon, 01 Nov 2021 04:27:58 -0400
+ id 1mhSfd-00086R-FJ; Mon, 01 Nov 2021 04:27:59 -0400
 Received: from quad ([82.142.14.190]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MFb38-1mQOz203DC-00HB8Q; Mon, 01
- Nov 2021 09:27:50 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MPrXf-1mKj1Y3Ibj-00MqRP; Mon, 01
+ Nov 2021 09:27:51 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Greg Kurz <groug@kaod.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 1/6] monitor: Trim some trailing space from human-readable
- output
-Date: Mon,  1 Nov 2021 09:27:42 +0100
-Message-Id: <20211101082747.2524909-2-laurent@vivier.eu>
+ Helge Deller <deller@gmx.de>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 3/6] MAINTAINERS: Split HPPA TCG vs HPPA machines/hardware
+Date: Mon,  1 Nov 2021 09:27:44 +0100
+Message-Id: <20211101082747.2524909-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211101082747.2524909-1-laurent@vivier.eu>
 References: <20211101082747.2524909-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uKGNeJnaNMjzS72yERCQlhOgHt3P3Qf8bUqkpsxi61YLpgElKP2
- 4PSiFM2FmctiOrOBjxVK7SrOG/fFZVfzquoH+QpyC6FmEW4JKFmL9jBwjh493L/YladORtn
- kVToRJEymbUP1bGooU4YDTGLjYa/f70P75k28w55KRz8vULGXXCN5H70f2KiFCuo7g5rOdc
- hiSZYccttX74AdcnLXUSg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8FGewMwOW6c=:7u4CILcK/TYz7QCLfy6Vzo
- gaodSnQlEo3p3zykaUH1p1yuk7oPSeClB6A1ell31tLlTkziRrXZlHpAWYs4ai7J6ajJgYjhg
- EWX1JLKzBVzl8ipesr31VmJZaVr0L3tge4frgQecI3Ou6vjBgOulwKymqkj0kJoqY0RKE4gW3
- KQhUpoE2O6cqzB967hUG7NqbNunKFHICfKjkxLC8lH5ph7h5eoq2aG6qAWUJpdtJbmWAi9pXu
- AYyV4t+qBhTau7fj/gCO+gaQfxArpzT14hkenrtWrWP4RjE/wG0MjE/y65tVrXNzsKbR0+LKv
- +o/FBB3ZqIH0SwygmS8nwNVWkbq5kbsU8gQe291yT3LHing7qi1svaPJemSyBSZwbl2WyGOPM
- nVm1S1X6c59f4mdWx1w3mP/yJbnLfSuSzGIxemixnJwkO9WQuNJiM59bPB0VBuah+x9Z35l17
- kqDQhfkE7nB0Nfmet1zQdu6H6Jbai+Yf+xlJn4ecNcwS6fT2H3XYackUqUgQbPCBBn07mEupF
- 0rDi4ap7UqMvpT273lMmBYWqIjs7eD6+8UcNYUvUNhF1JmJLiL7yXAsNIRt4MEtMcv1rARWJV
- an04ZbEBfrZ6FgxwXqmqx4pXbfmt2tCn5UcV6vvAwKW3cPBk6trpkdNcO82NQh+RsU77pCaIq
- lRNrw7tspuRWf5t+0Tf3hJ8L2f4XFWWdWUdXHFdM78mDUs2KkVoO85hCqCh0mWtyab+U=
+X-Provags-ID: V03:K1:cYdtptuzDFuG45gYvai7tL8cFu6w+SZLwAKfkBqP88cBixraQHS
+ yNvX66bDoOW/ttzJMC5xP03E5xnBd7XMMUYLjv/Zc7T4muFG/jbBCoTKPgL0soisyQs6aS4
+ L12yNMAYkI0l2ela9i/Z19EbkeNtdF7jygipa79RVR2cCweuYIb8kBAnjJCIcvJbxy7vpjB
+ XWa3yKw0ar+FHh6ZgY4nQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:s755VrgJ/u4=:XGEFTsDCNx1G6K63+3Lf5V
+ rKRPuxNu0R9JyEx688NauGu44epj78ee/WJdS99D7rS1r/0uekgtXgwksMLPRs6WtYvPI8Jwc
+ C18ePvaQ+1/gCF307btDxuBtTaKYoTeDPFmfkZn+w7oVfZ99n3cAOSTNg164ofwFmhgtEepiY
+ M+vC1UNKLszmvwq+pLNOt4+dOlG7dvjNYfBwybsx0PtYraDon1vHfo7C/QrnBCnIc9tYyQ+jk
+ aP08tQZK0qUO2nJlwMcY23qnEWZ4Zyg2SbanL9zM2n/jCXunqPlJeBUoNJkAO88tnwP8BnmQ0
+ OFzFlUQfwAkLQxL6EyXFH7Nhr0350d1aoTUk5gX24BVpxBlXSCIYt8qRVYcKHsdC0LhWo6vOA
+ YI7tX0kgPJasqz54qQtnq/YoTvObvkFh/h0mGBpo7KKy3bYYZvpzz7wWC2DcXUMwPqxnw31OT
+ hRsX9YL/iezjm7V9Vw7yTLt7osWA+fZf1ya7WIBXYh0EiFRS4Tmo1eKIwu+tcpGwD6mjIMbHt
+ yTanEAAYT9m1dBDZKZmfqn1pdYg4f0ji7Egr7rpvHzigaRXz9HKKrAvVUXTg1Fu6bK32Yhjfc
+ 1UjKr7NutRmjGoI2Hm3F3Uf59UcKswgc2crnPC9BwKerVpfBxwtRs+7N1YS6UfULpCrfia1H7
+ ICXmy1yYk+1Bgv9V/pYPQJPmILxtgTJEt0IJhM8neqHOs1TB+dLrZCeAhKwzftrHCEUE=
 Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -64,137 +62,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Nov 2021 08:27:58 -0000
+X-List-Received-Date: Mon, 01 Nov 2021 08:28:00 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-I noticed -cpu help printing enough trailing spaces to make the output
-at least 84 characters wide.  Looks ugly unless the terminal is wider.
-Ugly or not, trailing spaces are stupid.
+Hardware emulated models don't belong to the TCG MAINTAINERS
+section. Move them to the 'HP-PARISC Machines' section.
 
-The culprit is this line in x86_cpu_list_entry():
-
-    qemu_printf("x86 %-20s  %-58s\n", name, desc);
-
-This prints a string with minimum field left-justified right before a
-newline.  Change it to
-
-    qemu_printf("x86 %-20s  %s\n", name, desc);
-
-which avoids the trailing spaces and is simpler to boot.
-
-A search for the pattern with "git-grep -E '%-[0-9]+s\\n'" found a few
-more instances.  Change them similarly.
-
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Acked-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
-Message-Id: <20211009152401.2982862-1-armbru@redhat.com>
+Reviewed-by: Helge Deller <deller@gmx.de>
+Message-Id: <20211004083835.3802961-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- monitor/hmp-cmds.c         | 2 +-
- target/i386/cpu-dump.c     | 4 ++--
- target/i386/cpu.c          | 2 +-
- target/ppc/cpu_init.c      | 2 +-
- target/s390x/cpu_models.c  | 4 ++--
- target/xtensa/mmu_helper.c | 2 +-
- 6 files changed, 8 insertions(+), 8 deletions(-)
+ MAINTAINERS | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-index bcaa41350e9a..9e45a138a505 100644
---- a/monitor/hmp-cmds.c
-+++ b/monitor/hmp-cmds.c
-@@ -1945,7 +1945,7 @@ void hmp_rocker_ports(Monitor *mon, const QDict *qdict)
-     monitor_printf(mon, "      port  link    duplex neg?\n");
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 894dc4310526..6f2b20078032 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -205,10 +205,7 @@ HPPA (PA-RISC) TCG CPUs
+ M: Richard Henderson <richard.henderson@linaro.org>
+ S: Maintained
+ F: target/hppa/
+-F: hw/hppa/
+ F: disas/hppa.c
+-F: hw/net/*i82596*
+-F: include/hw/net/lasi_82596.h
  
-     for (port = list; port; port = port->next) {
--        monitor_printf(mon, "%10s  %-4s   %-3s  %2s  %-3s\n",
-+        monitor_printf(mon, "%10s  %-4s   %-3s  %2s  %s\n",
-                        port->value->name,
-                        port->value->enabled ? port->value->link_up ?
-                        "up" : "down" : "!ena",
-diff --git a/target/i386/cpu-dump.c b/target/i386/cpu-dump.c
-index 02b635a52cff..08ac957e99cf 100644
---- a/target/i386/cpu-dump.c
-+++ b/target/i386/cpu-dump.c
-@@ -464,13 +464,13 @@ void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-             snprintf(cc_op_name, sizeof(cc_op_name), "[%d]", env->cc_op);
- #ifdef TARGET_X86_64
-         if (env->hflags & HF_CS64_MASK) {
--            qemu_fprintf(f, "CCS=%016" PRIx64 " CCD=%016" PRIx64 " CCO=%-8s\n",
-+            qemu_fprintf(f, "CCS=%016" PRIx64 " CCD=%016" PRIx64 " CCO=%s\n",
-                          env->cc_src, env->cc_dst,
-                          cc_op_name);
-         } else
- #endif
-         {
--            qemu_fprintf(f, "CCS=%08x CCD=%08x CCO=%-8s\n",
-+            qemu_fprintf(f, "CCS=%08x CCD=%08x CCO=%s\n",
-                          (uint32_t)env->cc_src, (uint32_t)env->cc_dst,
-                          cc_op_name);
-         }
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 598d451dcf04..c5744ce08cf9 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -4878,7 +4878,7 @@ static void x86_cpu_list_entry(gpointer data, gpointer user_data)
-         desc = g_strdup_printf("%s", model_id);
-     }
+ M68K TCG CPUs
+ M: Laurent Vivier <laurent@vivier.eu>
+@@ -1099,6 +1096,8 @@ R: Helge Deller <deller@gmx.de>
+ S: Odd Fixes
+ F: configs/devices/hppa-softmmu/default.mak
+ F: hw/hppa/
++F: hw/net/*i82596*
++F: include/hw/net/lasi_82596.h
+ F: pc-bios/hppa-firmware.img
  
--    qemu_printf("x86 %-20s  %-58s\n", name, desc);
-+    qemu_printf("x86 %-20s  %s\n", name, desc);
- }
- 
- /* list available CPU models and flags */
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 65545ba9ca8d..ba384a592bc1 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -8734,7 +8734,7 @@ void ppc_cpu_list(void)
- 
- #ifdef CONFIG_KVM
-     qemu_printf("\n");
--    qemu_printf("PowerPC %-16s\n", "host");
-+    qemu_printf("PowerPC %s\n", "host");
- #endif
- }
- 
-diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
-index 4e4598cc774c..11e06cc51fab 100644
---- a/target/s390x/cpu_models.c
-+++ b/target/s390x/cpu_models.c
-@@ -398,14 +398,14 @@ void s390_cpu_list(void)
-     for (feat = 0; feat < S390_FEAT_MAX; feat++) {
-         const S390FeatDef *def = s390_feat_def(feat);
- 
--        qemu_printf("%-20s %-50s\n", def->name, def->desc);
-+        qemu_printf("%-20s %s\n", def->name, def->desc);
-     }
- 
-     qemu_printf("\nRecognized feature groups:\n");
-     for (group = 0; group < S390_FEAT_GROUP_MAX; group++) {
-         const S390FeatGroupDef *def = s390_feat_group_def(group);
- 
--        qemu_printf("%-20s %-50s\n", def->name, def->desc);
-+        qemu_printf("%-20s %s\n", def->name, def->desc);
-     }
- }
- 
-diff --git a/target/xtensa/mmu_helper.c b/target/xtensa/mmu_helper.c
-index b01ff9399ae6..57e319a1af3a 100644
---- a/target/xtensa/mmu_helper.c
-+++ b/target/xtensa/mmu_helper.c
-@@ -1098,7 +1098,7 @@ static void dump_tlb(CPUXtensaState *env, bool dtlb)
-                     qemu_printf("\tVaddr       Paddr       ASID  Attr RWX Cache\n"
-                                 "\t----------  ----------  ----  ---- --- -------\n");
-                 }
--                qemu_printf("\t0x%08x  0x%08x  0x%02x  0x%02x %c%c%c %-7s\n",
-+                qemu_printf("\t0x%08x  0x%08x  0x%02x  0x%02x %c%c%c %s\n",
-                             entry->vaddr,
-                             entry->paddr,
-                             entry->asid,
+ M68K Machines
 -- 
 2.31.1
 
