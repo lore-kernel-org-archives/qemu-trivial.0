@@ -1,59 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mgo91-0003ui-EP
-	for mharc-qemu-trivial@gnu.org; Sat, 30 Oct 2021 09:11:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47794)
+	id 1mhSfc-0005sU-DS
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Nov 2021 04:27:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36580)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mgo8z-0003uT-KY; Sat, 30 Oct 2021 09:11:33 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:43721)
+ id 1mhSfa-0005sF-OD; Mon, 01 Nov 2021 04:27:54 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:55897)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mgo8x-0007pq-Gm; Sat, 30 Oct 2021 09:11:33 -0400
-Received: from [192.168.100.1] ([82.142.14.190]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MRTEp-1mJNZS411p-00NOtP; Sat, 30 Oct 2021 15:11:12 +0200
-Message-ID: <777f45b4-62a1-e136-8aff-8fc673e157dd@vivier.eu>
-Date: Sat, 30 Oct 2021 15:11:10 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH] MAINTAINERS: add myself as partial audio reviewer
-Content-Language: fr
-To: Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <E1mMVca-0005ZJ-Lo@lizzy.crudebyte.com> <3098986.y1qXEgzS8n@silver>
+ id 1mhSfY-00085u-NZ; Mon, 01 Nov 2021 04:27:54 -0400
+Received: from quad ([82.142.14.190]) by mrelayeu.kundenserver.de (mreue012
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1M8k65-1mcnq80o5J-004laj; Mon, 01
+ Nov 2021 09:27:49 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <3098986.y1qXEgzS8n@silver>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:oMr/yoS400bGN6UZRkIYwAbKMXnq8ljG3grAiXcwYa40vch//g3
- C7e3tJZRKYst5HbNcG4V8+s8idYfqOfagWKPFvLRStKw9zryh/sFx/rP0UbSzcSw3Zai2IB
- Jw/FOpB+BXHf/qZa2YPxXn+gsXpLjMzWiWuu+gulwHjEtlKdM/Xr9D5VWbodKgby9+2fJ4o
- ApFewV9eVOoxCB1LbGHwg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sMwTF4HJJiA=:qupB4y3TBGLYQ8/2Hj8F+K
- wscG3EJLI6D1SC8xTSHxTiAsEeDzkRUIkoWoDoSe5Cm/1y4omvnnTn6hVUDeDe8G6g3NipqC2
- A0sTZcNz4SlgMUiyiF+nriNOV5Ar35NfI7fZGQIOUC/Eo+0hUOWhdeJo8Hay2Gt7LEpqJwbrR
- A/O/nCdrOcGsFIGYTJ8CqPyPGPL+hJgQulO0ubO+m4t0+bMVhMUTRVxwxRKBrBp08ZZOzTcU3
- G3BCLNKlPebFHMZHkxkUTClt0i4zR5lih5VWD41JOqWaImsiJjw3Y4ClKhAMIpE+A/XOCCbtm
- z0eRAh/zpVgq2gjIijuG5xuUQRWDUAv4a4uJEkgLw1hAMpy1eMLYor3QZNTIlqNoSSzS+oK4j
- zWrohzzBNLLK8qUHjgxOjA9krwxx6/yL9ZsXQiurpP8m8o7cnct8nIhtDA7H89ocrOh1utnNF
- 9ECu/sUJ233Eyfj3bS1LTGQvt64rvzZ/wAkOAyffVQw3nK6VgO9VNw9j7MvFd4t/fcIPSBuwZ
- jvDF53HkPUNkJ7/yUMfzjElf/qgF3I358m9a97JSG93+sOZTUQ4sg5o0RVtiQMlyOrtkcAyGv
- g31tdN8lEGDjO61eklVV8KwZj7kCD6hhCfl0jGwpOdFH0h+k7eSpWdDQdDihUEp2+JEMYP/GI
- 9ztyApq/a0Q9fNM6aTG02CYbNMBMXWQifFPY8n4LCV2n2ZFCNNw5LBGwise2Ez/Ii8r0=
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 0/6] Trivial branch for 6.2 patches
+Date: Mon,  1 Nov 2021 09:27:41 +0100
+Message-Id: <20211101082747.2524909-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:SRKYVP9A+K7pB3Fy+XZb+755061HJ5rMHUOxADsVnuD2D90YqvG
+ Xc+ecAQWeGjeXQyyj8ZKt9I7H6ZDejoPxgoDvRJnowf9jIKqh9+6SUkZBMO6YK0wvnwwJSI
+ ee5Cr9vHJ/bxuL5c+YNSOtaaznGjsyOOZ/7TkxtuYF4xgp6GsGsNfzuekYvvQHYGcvsfSAQ
+ apNzbLH1UmNIj35ITfrWg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:UH0IZkTvLBk=:84gIIppeIiCNEmXt3IfCkS
+ ctXH0fG/6LnhW3cysTwrE9OjAgNTHylH55ulscw1kOKPheN+4VAjitTa1MBichMsWwCRnAHOL
+ M1k6mrMmZhLi3mu80ebce0UIcanaHQFluabrjdiLTk9mWvlvgneT72DV+5oqlqlI5Cfag1a/N
+ ZNTiyJ45C/8zPsNyAK+7wKqFD/Sfx0EK/kBB8jOOVbsMNk+QJmdQxIMxyir/7m+D2fThqJgu0
+ IYy+7Ear5P6yeN3T+Z4PJQD6L+H3zG3eSEO90o9++Uq/wM8nDom8tkLBFJW4+dOaIKXWBIU77
+ f8ipO/sGNf1G7fKB9I8Q3B0/jnv4UhszXPEx5q9XhneIKdGEaL0thtLS+u1lctiq+MXUgZBbq
+ TD4V8W6Y7V/6jsxF07DANpDm8tKSFqH2g97981lZE2RGInSAY0zVnOQaAno+t0y1EnCiSg7Vd
+ aqE01v9xXQE8RGbfBNEGG2SfPz9u+rGSbjX1PLlGqPh/BdS7YmGN1mkX26VzWtM3Q9On3OA/r
+ TWBWOkIUW9WROa3XMUT5NVq8LHaWp6DeZm8AHb5PabKrA8XxdLi/LSDRYgYMXOCrXTnw8oa8v
+ /OSJ5rIzlIOYS+OfsesAMiKTm7X5dC1RPkFKMO3sRS3ICKttKjaYUaFr6yUR2yp5g7o/CHZMP
+ nPjFoeDvxUJ5Wz7YS4ljbPFAY7o0HAlnEV/M39FnMM4D2JQdq4QoRfrT7oqH/h7uvUss=
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.426,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Mailman-Version: 2.1.29
 Precedence: list
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
@@ -63,55 +58,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 Oct 2021 13:11:33 -0000
+X-List-Received-Date: Mon, 01 Nov 2021 08:27:55 -0000
 
-Le 29/10/2021 à 21:37, Christian Schoenebeck a écrit :
-> On Samstag, 4. September 2021 15:13:46 CEST Christian Schoenebeck wrote:
->> Volunteering as reviewer for some of the audio backends; namely
->> ALSA, CoreAudio and JACK.
->>
->> Signed-off-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
->> ---
->>   MAINTAINERS | 3 +++
->>   1 file changed, 3 insertions(+)
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 5d923a6544..f018c1891a 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -2289,11 +2289,13 @@ F: qapi/audio.json
->>
->>   ALSA Audio backend
->>   M: Gerd Hoffmann <kraxel@redhat.com>
->> +R: Christian Schoenebeck <qemu_oss@crudebyte.com>
->>   S: Odd Fixes
->>   F: audio/alsaaudio.c
->>
->>   Core Audio framework backend
->>   M: Gerd Hoffmann <kraxel@redhat.com>
->> +R: Christian Schoenebeck <qemu_oss@crudebyte.com>
->>   S: Odd Fixes
->>   F: audio/coreaudio.c
->>
->> @@ -2304,6 +2306,7 @@ F: audio/dsound*
->>
->>   JACK Audio Connection Kit backend
->>   M: Gerd Hoffmann <kraxel@redhat.com>
->> +R: Christian Schoenebeck <qemu_oss@crudebyte.com>
->>   S: Odd Fixes
->>   F: audio/jackaudio.c
-> 
-> Ping
-> 
-> I just realized this patch was never queued. Could this go through the trivial
-> branch maybe, please?
-> 
-> I should have probably CCed qemu-trivial right from the start, sorry.
-> 
-
-Perhaps an Ack from Gerd would help.
-
-Thanks,
-Laurent
-
+The following changes since commit af531756d25541a1b3b3d9a14e72e7fedd941a2e=
+:=0D
+=0D
+  Merge remote-tracking branch 'remotes/philmd/tags/renesas-20211030' into =
+staging (2021-10-30 11:31:41 -0700)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  git://github.com/vivier/qemu.git tags/trivial-branch-for-6.2-pull-request=
+=0D
+=0D
+for you to fetch changes up to c3f93230df9ad1d3260f03655faa8f9f23c90a52:=0D
+=0D
+  hw/input/lasips2: QOM'ify the Lasi PS/2 (2021-10-31 21:05:40 +0100)=0D
+=0D
+----------------------------------------------------------------=0D
+Trivial patches branch pull request 20211101=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Markus Armbruster (1):=0D
+  monitor: Trim some trailing space from human-readable output=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (4):=0D
+  MAINTAINERS: Split HPPA TCG vs HPPA machines/hardware=0D
+  hw/input/lasips2: Fix typos in function names=0D
+  hw/input/lasips2: Move LASIPS2State declaration to=0D
+    'hw/input/lasips2.h'=0D
+  hw/input/lasips2: QOM'ify the Lasi PS/2=0D
+=0D
+Yanan Wang (1):=0D
+  hw/core/machine: Add the missing delimiter in cpu_slot_to_string()=0D
+=0D
+ MAINTAINERS                |  5 ++-=0D
+ hw/core/machine.c          |  3 ++=0D
+ hw/hppa/lasi.c             | 10 +++++-=0D
+ hw/input/lasips2.c         | 64 +++++++++++++++++++-------------------=0D
+ include/hw/input/lasips2.h | 31 ++++++++++++++++--=0D
+ monitor/hmp-cmds.c         |  2 +-=0D
+ target/i386/cpu-dump.c     |  4 +--=0D
+ target/i386/cpu.c          |  2 +-=0D
+ target/ppc/cpu_init.c      |  2 +-=0D
+ target/s390x/cpu_models.c  |  4 +--=0D
+ target/xtensa/mmu_helper.c |  2 +-=0D
+ 11 files changed, 83 insertions(+), 46 deletions(-)=0D
+=0D
+-- =0D
+2.31.1=0D
+=0D
 
