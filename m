@@ -1,66 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mi2f1-0007IW-3b
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 18:53:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44750)
+	id 1mi2f2-0007N7-2U
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 18:53:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2ez-0007At-C3
- for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:41 -0400
-Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b]:46875)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2f0-0007Hl-Sz
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:42 -0400
+Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c]:47016)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2eu-0002qN-T1
- for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:40 -0400
-Received: by mail-il1-x12b.google.com with SMTP id w10so620120ilc.13
- for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 15:53:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2ex-0002r5-Nr
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:42 -0400
+Received: by mail-io1-xd2c.google.com with SMTP id i79so273598ioa.13
+ for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 15:53:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=oLmdczkCWtTXgS+hIrrLVL8jr4D4Q93OjOn0dkypiZQ=;
- b=UkDisWA5favtvBrnRYgu3Zh7u4yVI2YftcY51MkpjyL8An+/5O0NfOjDRMeGBtpQVy
- iN63brvCs2RpRRQZBeUmA2cBOP0Gu869Mx8mrjC813dn95bRwSQWanm//YoeCnoXA9nE
- bRolsj0IVam+KRM5fK93cHhiI0OxkcJn9z+TvcunkrXj6EWDNHxS9mXMhIJBTgdyJkDZ
- gv3T3R3iCrlTTyOCxXpWYdNFv9tlKZQC52QnqjXZYYaDbFg236gsXVYn0ZnGWdscwa3d
- CQlDa6F/J9B+xV8JXIb31rnUr2/z1vWqr35uJxj9CNN9VpSMu7S2MM4h2m8K1IxzS/nx
- fqVg==
+ bh=I1XrwZ0o7hRgTEhkk9E1BQTq9616nNWJfCEFdNAWs4w=;
+ b=jQWnxoEziai3SJE6ywkOR4R8P+qr1tU+Ov+7QU1XTo6Z3KuLzt+/wPT10oG4ypqwPj
+ glsSLW+FZAB8YIZ5j7GsoOwF2xO7vTgAX/d6h4IEPZ7L5ZGO1jJ9dmd8nPMqpzDSKlZB
+ wn/v9oNJiqDH5VOEf55NhaiTuKIk8dQCX7C8WTvoSWaB/dNJeCMx/wRFmvDi9iU6Wmdv
+ t4ts1mUCsXCAZgrV4Jn7kIfIYNbsa7cLEvqMA72Cj6vPPE7Z2InKwRFv39NtD8Jx6s1E
+ NDN4Ir2TUIzZvgIooexRB+YJOBHWkf+RlT2SXmB7kJvutQQl6hmDxnw3o+YyjB6yrsTs
+ zI8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=oLmdczkCWtTXgS+hIrrLVL8jr4D4Q93OjOn0dkypiZQ=;
- b=q/pSN2ONe5DGFBN46+uuD8lRREbLD7brvNjZSVyGCTEqgxL20mGGduUSPQh872dXh4
- uSA+rPCrebSQSr0u3x7Z7sqchsOpI9FbaYqHDWIdqpPp5N75F3Ey5V0YUhg1XFDhLziF
- +GxruosMV9ZCXKOJY2KI41L+Gn35TcjT6vuE08YbGi2iMgnLKZSmHfpiWBxX+N5kw/Zv
- WCdeYHZ2uotrvm54wS6C2lEfpt9birUcHhwJGoAqVzAeqj+hrAWZlZhGBsmsSz9D5zVf
- P3fk5lv5CbHLvTYxI454L24yFu81CQbwdqOpsosUY5j2rzHD16wpV56Dmvzgi7def1AT
- jX5A==
-X-Gm-Message-State: AOAM533MLjUnHPShQSjrg8QhyHS7BVEF7iG670/sG9VJ+6XB6Dx4DvxW
- 2yxWMqPUeAQv1qIuqBbUQvVf6g==
-X-Google-Smtp-Source: ABdhPJxtEMjONA/W4p7sPlXWM/qmz8NNFe0XSg/KJdgU4A3TmxQNRJSPMyS9bPUDL0MlCvtZsSUkXQ==
-X-Received: by 2002:a92:3642:: with SMTP id d2mr27886722ilf.234.1635893615857; 
- Tue, 02 Nov 2021 15:53:35 -0700 (PDT)
+ bh=I1XrwZ0o7hRgTEhkk9E1BQTq9616nNWJfCEFdNAWs4w=;
+ b=OI9A3GNDinmZVpaztiCjWLKnfpleUANqfHDRqDn3cusk9FBMkY9pPzUSXgAbDcVY3F
+ VqcaYNCQBerCMiko9rGqghbrvctbldhJ89LRho6+/qsQZSwhj84e2Ri9+3arZR3Ssfdp
+ D6g9RI89NR9t5W/GdnMYpFsuCgZIqmMBtwPcf3wcJ2eyYLm1T318jrzE1jQZKqxM6qFm
+ TgrFnQZByBUwoPamFZr4fusVr51Y+gUY7wuk3WLZD4feZvNV3bnwgmrxZGoLBJwa8904
+ CvWSMe4ym5YxMJFsTYtYBkys3wuJqVxeLQh42SYWkPOjhHC268qucbLYGLQ4zmGMejJz
+ c4MA==
+X-Gm-Message-State: AOAM533bnJhNP4WfmSWEsjM45osXJrBVYssE3tFpT/9iU+Bb0dVHorhJ
+ I2Vm03Y5HI4EKWUIODe3m2Ls+A==
+X-Google-Smtp-Source: ABdhPJy0s321dQIXr+0Nc2hYhstT1z2z9+xitHUjyDNQ1yrmKBAd8TiN0ZzgNhFlSn629f0OMzyb/w==
+X-Received: by 2002:a5d:8ad2:: with SMTP id e18mr28345809iot.144.1635893618027; 
+ Tue, 02 Nov 2021 15:53:38 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id h14sm205427ils.75.2021.11.02.15.53.35
+ by smtp.gmail.com with ESMTPSA id h14sm205427ils.75.2021.11.02.15.53.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Nov 2021 15:53:35 -0700 (PDT)
+ Tue, 02 Nov 2021 15:53:37 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
  qemu-trivial@nongnu.org, Philippe Mathieu-Daude <f4bug@amsat.org>,
  Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Stacey Son <sson@FreeBSD.org>,
- Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v2 15/30] bsd-user/arm/target_arch_elf.h: arm defines for ELF
-Date: Tue,  2 Nov 2021 16:52:33 -0600
-Message-Id: <20211102225248.52999-16-imp@bsdimp.com>
+ Laurent Vivier <laurent@vivier.eu>, Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v2 17/30] bsd-user/arm/target_arch_elf.h: arm get_hwcap2 impl
+Date: Tue,  2 Nov 2021 16:52:35 -0600
+Message-Id: <20211102225248.52999-18-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211102225248.52999-1-imp@bsdimp.com>
 References: <20211102225248.52999-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::12b;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x12b.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d2c;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd2c.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -79,61 +78,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Nov 2021 22:53:41 -0000
+X-List-Received-Date: Tue, 02 Nov 2021 22:53:43 -0000
 
-Basic set of defines needed for arm ELF file activation.
+Implement the extended HW capabilities for HWCAP2.
 
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
+Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_elf.h | 36 ++++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_elf.h
+ bsd-user/arm/target_arch_elf.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
 diff --git a/bsd-user/arm/target_arch_elf.h b/bsd-user/arm/target_arch_elf.h
-new file mode 100644
-index 0000000000..15b5c66511
---- /dev/null
+index 02d25b8926..4a0215d02e 100644
+--- a/bsd-user/arm/target_arch_elf.h
 +++ b/bsd-user/arm/target_arch_elf.h
-@@ -0,0 +1,36 @@
-+/*
-+ *  arm ELF definitions
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef _TARGET_ARCH_ELF_H_
-+#define _TARGET_ARCH_ELF_H_
+@@ -32,6 +32,7 @@
+ #define ELF_EXEC_PAGESIZE       4096
+ 
+ #define ELF_HWCAP get_elf_hwcap()
++#define ELF_HWCAP2 get_elf_hwcap2()
+ 
+ #define GET_FEATURE(feat, hwcap) \
+     do { if (arm_feature(&cpu->env, feat)) { hwcaps |= hwcap; } } while (0)
+@@ -64,6 +65,14 @@ enum {
+     ARM_HWCAP_ARM_EVTSTRM   = 1 << 21,
+ };
+ 
++enum {
++    ARM_HWCAP2_ARM_AES      = 1 << 0,
++    ARM_HWCAP2_ARM_PMULL    = 1 << 1,
++    ARM_HWCAP2_ARM_SHA1     = 1 << 2,
++    ARM_HWCAP2_ARM_SHA2     = 1 << 3,
++    ARM_HWCAP2_ARM_CRC32    = 1 << 4,
++};
 +
-+#define ELF_START_MMAP 0x80000000
-+#define ELF_ET_DYN_LOAD_ADDR    0x500000
+ static uint32_t get_elf_hwcap(void)
+ {
+     ARMCPU *cpu = ARM_CPU(thread_cpu);
+@@ -100,6 +109,19 @@ static uint32_t get_elf_hwcap(void)
+     return hwcaps;
+ }
+ 
++static uint32_t get_elf_hwcap2(void)
++{
++    ARMCPU *cpu = ARM_CPU(thread_cpu);
++    uint32_t hwcaps = 0;
 +
-+#define elf_check_arch(x) ((x) == EM_ARM)
++    GET_FEATURE_ID(aa32_aes, ARM_HWCAP2_ARM_AES);
++    GET_FEATURE_ID(aa32_pmull, ARM_HWCAP2_ARM_PMULL);
++    GET_FEATURE_ID(aa32_sha1, ARM_HWCAP2_ARM_SHA1);
++    GET_FEATURE_ID(aa32_sha2, ARM_HWCAP2_ARM_SHA2);
++    GET_FEATURE_ID(aa32_crc32, ARM_HWCAP2_ARM_CRC32);
++    return hwcaps;
++}
 +
-+#define ELF_CLASS       ELFCLASS32
-+#define ELF_DATA        ELFDATA2LSB
-+#define ELF_ARCH        EM_ARM
-+
-+#define USE_ELF_CORE_DUMP
-+#define ELF_EXEC_PAGESIZE       4096
-+
-+#define ELF_HWCAP 0
-+
-+#endif /* _TARGET_ARCH_ELF_H_ */
+ #undef GET_FEATURE
+ #undef GET_FEATURE_ID
+ 
 -- 
 2.33.0
 
