@@ -1,44 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mi36q-00069G-Ne
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 19:22:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51042)
+	id 1mi36t-0006EP-QP
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 19:22:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51060)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mi36k-00064L-Nk; Tue, 02 Nov 2021 19:22:23 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:55627)
+ id 1mi36o-000676-Nt; Tue, 02 Nov 2021 19:22:28 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:48497)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mi36h-0006LH-S1; Tue, 02 Nov 2021 19:22:22 -0400
+ id 1mi36m-0006Mt-3V; Tue, 02 Nov 2021 19:22:26 -0400
 Received: from quad ([82.142.14.190]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MmyzH-1mIvkg2NYV-00kB8s; Wed, 03
- Nov 2021 00:22:13 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1My6xz-1mYEf12yfH-00zU0A; Wed, 03
+ Nov 2021 00:22:16 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 0/4] Trivial branch for 6.2 patches
-Date: Wed,  3 Nov 2021 00:22:08 +0100
-Message-Id: <20211102232212.2911638-1-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 4/4] hw/input/lasips2: Fix typos in function names
+Date: Wed,  3 Nov 2021 00:22:12 +0100
+Message-Id: <20211102232212.2911638-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20211102232212.2911638-1-laurent@vivier.eu>
+References: <20211102232212.2911638-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:rTbczGPGWs1SbRspFrruUwk/v6KniVcaeUSqTzN7rugFQp+qN+8
- Py2vxNADMFZAHjjQUFWOEESyIJbjpN461je32Zz1P9wI8jcV23ObL9r511PPIfNkxCGtXln
- T9hxVVCqCMKOk8GITTm4u3a/jTskJTFsoYijy3LcQx7Fn1Yib1vyW/6hgjEJD5va0Gnh1Mx
- +zrQIGgyGjD9NvxNpDGbQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Rhy23w4mtrQ=:R0g5QWUu6t7yruxM0+uniR
- PeOdAAfcoD25dkK10BcDlxOMdZjeQI3XZECnB/UiNZnCIvLZ1IE6OHq8Nv1mEhlf5Q+dHJ4nI
- LH3ToxyrxFb/uwruD50tx5wcUpB0ShIBp5ViuWgTvThJJJ53D1zPEhg5SoY3SOtvn/pTW7MNm
- 3OanQ0ncyWzAKFW4QyxmBuhHjxfiE9rvwJ0rCMivXy9CJllDzq45ZSnGEycMhPqQQh+wHnUue
- ORpl/o5CWXDx89fP5luBUw+Et7QiOsqT9i0/QcoTuBWm82H/Q8IMzoC12qQuV6tBkm9V+Yicx
- ajmf6nBi/xhbedDWdTSbgKkLHbbEv7xBxuFHNXnaN2WsWi/bqGzcA26eS84tYoD0s6QyhN13h
- UDVn+IsdNyUDzNy8aQJHj3eGAfOVPH9Uzpb+FdBEglPHF2xRS1CfzGn5/qk3o8HtdEBCwBDHF
- 7Riwf/yYntV5ODSUePl5kBgQiTgy+XFKFDiMNGYjL2Mb465g6NBUtHaCP8peA3+tTD5mMdDVK
- AySjT66QYIBat/AkfdT/sSo1cOdSf982wBwX2yCCAzhMYz3S4IDqNLrc+bKV5Pm8qUln2agZR
- BmLk7iQMPlUYQe78aVM+NcM77HOPcWatUaU3IgQyTr7bpNSpWzTKDgw9OokopUOqqoijTrx4i
- dTs8AnXd3rElLX6BjbdyA8ST5JovMVLSDxEG6APEzaTV7mgGEiTnxNTAuzt6OWV8OHLk=
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:1Va5+AUHsEKCs5nJcxLCECMp9gMOKNWhVv4EI9CVyzEfFqFOzO4
+ OeGcSoyf3SliP709XeHLpKvBmu1B7n8nQhKlhVh0pkCz6aN0Q5mqIBnTZEPkueHTBf7fOW6
+ biHFfMOpGsXUfcZxDVYeWFy1J5+XicBOE5oaM1nXIiIsPQqrVB07Bf5GzmYvvGwMPW4+oi+
+ p1KT8647KyqHpc41h3/LQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Ac3bDVIYQcQ=:8httf/N825RT7G/2wjZ65G
+ va9D6WEVIYXf0odfjYEf5SIjyAyOdA7SJZRZVPru1BqofDLvSnzgzZug3mGcg3FqnoZlh5Khh
+ 2G2MC9dpEbP6p0d05NQoejxiU50QZOSUTUrVG/r53vHSKWh88h81/anFBiOHMoL1z8dpoOOyN
+ Yjksh3dONPAh/tNux8wLfaK77L54Ux0jWKsS8qwYr3igsTC1BNl9E6kGaFHgl8chp73HUGR8x
+ RB9duYai+kulHFmVb6EkOOS9Cn2wHAmAFfzErUyqVKlUF6VLM7oHy/6V+rPhzWvlkG7z6KfMI
+ AKA+TqebcpGPLhaMcAsXyXbxRG6Pm6i5zux1Z294UGYbwcx7IUMTx3SqngtfFWUThVkK+/dnd
+ 7Mi94ouycG4TFdhghGAxXRVC9iYs6n+XiTZSzD4vMBHaUo8KT6QD+s+qm+4TCBkHf21U/XVSJ
+ hOG879OBbjYGhJUNBJ1p5S595J7YKjIpSl1juTsAm5YBldQXrQkZv7G/6PQAI1aY2dh+SXhRI
+ PlnhNcTO61tZvr1taXCaM2n70xY49rToHqQ8fNPhuBrX5A4l9ncPO9wJIxTsF+86/UtzfnbRN
+ 6gBxwS4LXcp+X8XCtyA5Gv0rBCKlzJsrWx7tfjLRLRqGdztrVg0b3zO5P5D2tKB4ZvGrdJKSm
+ VZKTGG0dZja4swHo9oHfsCv0/uuJqAKyN/K2rsIjPaXSJxz2RNA7AMsu4Pf/3DnMxsmU=
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -58,51 +62,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Nov 2021 23:22:24 -0000
+X-List-Received-Date: Tue, 02 Nov 2021 23:22:28 -0000
 
-The following changes since commit af531756d25541a1b3b3d9a14e72e7fedd941a2e=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/philmd/tags/renesas-20211030' into =
-staging (2021-10-30 11:31:41 -0700)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  git://github.com/vivier/qemu.git tags/trivial-branch-for-6.2-pull-request=
-=0D
-=0D
-for you to fetch changes up to 5d2bd73588d14b5868129ace9c7912a777f06753:=0D
-=0D
-  hw/input/lasips2: Fix typos in function names (2021-10-31 21:05:40 +0100)=
-=0D
-=0D
-----------------------------------------------------------------=0D
-Trivial patches branch pull request 20211101 v2=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Markus Armbruster (1):=0D
-  monitor: Trim some trailing space from human-readable output=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (2):=0D
-  MAINTAINERS: Split HPPA TCG vs HPPA machines/hardware=0D
-  hw/input/lasips2: Fix typos in function names=0D
-=0D
-Yanan Wang (1):=0D
-  hw/core/machine: Add the missing delimiter in cpu_slot_to_string()=0D
-=0D
- MAINTAINERS                | 5 ++---=0D
- hw/core/machine.c          | 3 +++=0D
- hw/input/lasips2.c         | 8 ++++----=0D
- monitor/hmp-cmds.c         | 2 +-=0D
- target/i386/cpu-dump.c     | 4 ++--=0D
- target/i386/cpu.c          | 2 +-=0D
- target/ppc/cpu_init.c      | 2 +-=0D
- target/s390x/cpu_models.c  | 4 ++--=0D
- target/xtensa/mmu_helper.c | 2 +-=0D
- 9 files changed, 17 insertions(+), 15 deletions(-)=0D
-=0D
--- =0D
-2.31.1=0D
-=0D
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+Artist is another device, this one is the Lasi PS/2.
+Rename the functions accordingly.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+Message-Id: <20210920064048.2729397-2-f4bug@amsat.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/input/lasips2.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/hw/input/lasips2.c b/hw/input/lasips2.c
+index e7faf24058b4..68d741d34215 100644
+--- a/hw/input/lasips2.c
++++ b/hw/input/lasips2.c
+@@ -96,7 +96,7 @@ typedef enum {
+     LASIPS2_STATUS_CLKSHD = 0x80,
+ } lasips2_status_reg_t;
+ 
+-static const char *artist_read_reg_name(uint64_t addr)
++static const char *lasips2_read_reg_name(uint64_t addr)
+ {
+     switch (addr & 0xc) {
+     case REG_PS2_ID:
+@@ -116,7 +116,7 @@ static const char *artist_read_reg_name(uint64_t addr)
+     }
+ }
+ 
+-static const char *artist_write_reg_name(uint64_t addr)
++static const char *lasips2_write_reg_name(uint64_t addr)
+ {
+     switch (addr & 0x0c) {
+     case REG_PS2_RESET:
+@@ -145,7 +145,7 @@ static void lasips2_reg_write(void *opaque, hwaddr addr, uint64_t val,
+     LASIPS2Port *port = opaque;
+ 
+     trace_lasips2_reg_write(size, port->id, addr,
+-                            artist_write_reg_name(addr), val);
++                            lasips2_write_reg_name(addr), val);
+ 
+     switch (addr & 0xc) {
+     case REG_PS2_CONTROL:
+@@ -239,7 +239,7 @@ static uint64_t lasips2_reg_read(void *opaque, hwaddr addr, unsigned size)
+         break;
+     }
+     trace_lasips2_reg_read(size, port->id, addr,
+-                           artist_read_reg_name(addr), ret);
++                           lasips2_read_reg_name(addr), ret);
+ 
+     return ret;
+ }
+-- 
+2.31.1
+
 
