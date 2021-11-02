@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mi2ez-0007CA-MC
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 18:53:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44680)
+	id 1mi2f0-0007Hg-SJ
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 18:53:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44732)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2ev-00071K-6x
- for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:37 -0400
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33]:44656)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2ez-00079h-2s
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:41 -0400
+Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a]:45783)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2es-0002pb-MH
- for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:36 -0400
-Received: by mail-io1-xd33.google.com with SMTP id f9so546956ioo.11
- for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 15:53:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2eu-0002pz-3p
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:37 -0400
+Received: by mail-io1-xd2a.google.com with SMTP id q203so432219iod.12
+ for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 15:53:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=F9IbbLGjnRnokIuDKxQfCzJoAx075CoGnpnzgfUmRKo=;
- b=vy6e8tNZROOdFDQyZxG2MTR1EPgOBt/EBLKpWF+ANbjnjCZLZ1vpw+TvuwivPjRe1g
- fkrzvYbpKXf1PP4mbLPwcs94afw5Ay3MOEEqI67KVMcYoZzpABPmqtLDFu7AejM5KNjw
- TwYjbiRde+0Iu1xgtZ9Dm8y4+lxsT9fWyos+cYdmTDIU6G2Ij3hoLsc3GOsG82DJstEq
- SWSwx839DdjTMmr97OeLYvLvInlg/OfljJfg+8Z7sQ3fUy/MpzYieNl+XYGlJqFwC+bQ
- 7IOeM+JC+yb7oPtZScmZ9/Zq5kEl+6OFh94KPkVQqpmIURJ6WSULm1Hm3Q30OKDDH91u
- CaZA==
+ bh=6DB47UhSMx0NROvdpxbbFKEeEEfM+Jod+IqssIJkyio=;
+ b=YJyo8iQj8KPiGpUA+NO4uFiQIhI2eunq9LSV3pMJ80s6MTXD10JBWlMV7BySjho9wZ
+ pt0q67XzmDxv9v59Jnc6UV76cKdNkgKUZGerBeR/o5B/8mEKb9HDvB2w3s+oTVmAGxfu
+ ravgq5FLRsGoT1pnxmcmYB45yC5pjqfAuAiOtfraMzhdB9qRgo3jvYH50Ep9/ivRpy0+
+ fmV85Bqt3rQ+L8SWpY0tdVGUpoXOQS0Trjf7kWn75RXPLY3P/ohi5FtWfJWYgxYIRudF
+ 02aHlJVefBHUNY6yj4l6hY5qFnMjHfUOlXVxBmyZof5euuK9AndOMuOTY1PxRP6s72pl
+ kcBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=F9IbbLGjnRnokIuDKxQfCzJoAx075CoGnpnzgfUmRKo=;
- b=8CYG4WGcTyP5GRhZwCNHp3hZRPv4rupwx4ZbKjOQDvTNNFKewZUkB0+O+oJ+XhZlSX
- lnO91OL22Ek6o7qUJk7THwWUacTuEc4S04Ek6sduVWVNFFUaHngmEzBuptkTOtpwxp/2
- Nn9zJRFMENwT78hQrRSysDXjoHBJXoPD8nytq70cSsLLTh7aGZaD8tFWonGfN8hr4vwq
- l/oSiroCRxjONV1KU7045mIxyW5gbUqPtCAKwCpxrxLVBmOKoe6ObbYYHyKh59UmeDEo
- OjT/CEg6m/V35mApZbjO5smLiR0U9feoN/NSclMSgT5CMWdVevAj7/nzEFUoIQFUKPoe
- NkDA==
-X-Gm-Message-State: AOAM532xpz0pnH5biyZaTDnQmcO3hZvjRTioiA/ZRLhQmrlELFck9Rre
- 9kR/xVlhgVuzJP/JzJXxlXDqpw==
-X-Google-Smtp-Source: ABdhPJxtfAMNPTpfIwWljKAQYxdyJ57+wlchjUyznx7567i0U3qrmLb+O96wlBDgOiQTh1BREFWoVw==
-X-Received: by 2002:a05:6638:29b:: with SMTP id
- c27mr13148859jaq.67.1635893611933; 
- Tue, 02 Nov 2021 15:53:31 -0700 (PDT)
+ bh=6DB47UhSMx0NROvdpxbbFKEeEEfM+Jod+IqssIJkyio=;
+ b=E8t62ITSFoYkqL9Uy1R9OGZQOWrgr0mprM2s5fAo8aqIeUqMd2Y2xjQmQ5rDFtc+gf
+ tK0uy4aLG3PuXfW43kcSLDHkChV+an6VaK/Ct5r4qDprOGgtcygpwwgpYZtB117DUbBd
+ OtzdhiRSl/H1nhaBgNF9wV3b7bs+rONCUX/QdsdzteMPDpVDyOccn438SeRM/4rCApMg
+ FIX2QCVnDIg05ff4l511KhcahxP0XcsTVeSRdcmTSSk1SvPMDtIbfiBD0zhyu2OyJ2dr
+ ytC0KtTDblxccsyHcTsMXDAYWZkIm/gqrX0UmdvLq/e017LS2Doa72hZ8BnoOu4WVmZb
+ Kdxw==
+X-Gm-Message-State: AOAM531AnJfeLwvYntp+OYbBFbos/kwW/D7wZUYUEuH2t4XuOVcFaxKr
+ pi/pYlyMF5U2F1HqpDdjO2mcGLQvImvWGg==
+X-Google-Smtp-Source: ABdhPJwydmAVEm7p3xgADwaWtVOa60s2Q2rHjDp79xILx0soXN2+emRbdSe8eRt/xE+ggcRJuWamUQ==
+X-Received: by 2002:a05:6638:22d6:: with SMTP id
+ j22mr8667717jat.97.1635893615104; 
+ Tue, 02 Nov 2021 15:53:35 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id h14sm205427ils.75.2021.11.02.15.53.30
+ by smtp.gmail.com with ESMTPSA id h14sm205427ils.75.2021.11.02.15.53.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Nov 2021 15:53:31 -0700 (PDT)
+ Tue, 02 Nov 2021 15:53:34 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
@@ -52,17 +52,17 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>, Stacey Son <sson@FreeBSD.org>,
  Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v2 13/30] bsd-user/arm/target_arch_sigtramp.h: Signal
- Trampoline for arm
-Date: Tue,  2 Nov 2021 16:52:31 -0600
-Message-Id: <20211102225248.52999-14-imp@bsdimp.com>
+Subject: [PATCH v2 14/30] bsd-user/arm/target_arch_thread.h: Routines to
+ create and switch to a thread
+Date: Tue,  2 Nov 2021 16:52:32 -0600
+Message-Id: <20211102225248.52999-15-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211102225248.52999-1-imp@bsdimp.com>
 References: <20211102225248.52999-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d33;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd33.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d2a;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd2a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -81,28 +81,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Nov 2021 22:53:37 -0000
+X-List-Received-Date: Tue, 02 Nov 2021 22:53:41 -0000
 
-Copy of the signal trampoline code for arm, as well as setup_sigtramp to
-write it to the stack.
+Implement target_thread_init (to create a thread) and target_set_upcall
+(to switch to a thread) for arm.
 
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
+Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_sigtramp.h | 49 +++++++++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_sigtramp.h
+ bsd-user/arm/target_arch_thread.h | 80 +++++++++++++++++++++++++++++++
+ 1 file changed, 80 insertions(+)
+ create mode 100644 bsd-user/arm/target_arch_thread.h
 
-diff --git a/bsd-user/arm/target_arch_sigtramp.h b/bsd-user/arm/target_arch_sigtramp.h
+diff --git a/bsd-user/arm/target_arch_thread.h b/bsd-user/arm/target_arch_thread.h
 new file mode 100644
-index 0000000000..5d434a9e7e
+index 0000000000..ae5b0d6c38
 --- /dev/null
-+++ b/bsd-user/arm/target_arch_sigtramp.h
-@@ -0,0 +1,49 @@
++++ b/bsd-user/arm/target_arch_thread.h
+@@ -0,0 +1,80 @@
 +/*
-+ *  arm sysarch() system call emulation
++ *  arm thread support
 + *
 + *  Copyright (c) 2013 Stacey D. Son
 + *
@@ -119,37 +119,68 @@ index 0000000000..5d434a9e7e
 + *  You should have received a copy of the GNU General Public License
 + *  along with this program; if not, see <http://www.gnu.org/licenses/>.
 + */
++#ifndef _TARGET_ARCH_THREAD_H_
++#define _TARGET_ARCH_THREAD_H_
 +
-+#ifndef _TARGET_ARCH_SIGTRAMP_H_
-+#define _TARGET_ARCH_SIGTRAMP_H_
-+
-+/* Compare to arm/arm/locore.S ENTRY_NP(sigcode) */
-+static inline abi_long setup_sigtramp(abi_ulong offset, unsigned sigf_uc,
-+        unsigned sys_sigreturn)
++/* Compare to arm/arm/vm_machdep.c cpu_set_upcall_kse() */
++static inline void target_thread_set_upcall(CPUARMState *env, abi_ulong entry,
++    abi_ulong arg, abi_ulong stack_base, abi_ulong stack_size)
 +{
-+    int i;
-+    uint32_t sys_exit = TARGET_FREEBSD_NR_exit;
-+    uint32_t sigtramp_code[] = {
-+    /* 1 */ 0xE1A0000D,                  /* mov r0, sp */
-+    /* 2 */ 0xE2800000 + sigf_uc,        /* add r0, r0, #SIGF_UC */
-+    /* 3 */ 0xE59F700C,                  /* ldr r7, [pc, #12] */
-+    /* 4 */ 0xEF000000 + sys_sigreturn,  /* swi (SYS_sigreturn) */
-+    /* 5 */ 0xE59F7008,                  /* ldr r7, [pc, #8] */
-+    /* 6 */ 0xEF000000 + sys_exit,       /* swi (SYS_exit)*/
-+    /* 7 */ 0xEAFFFFFA,                  /* b . -16 */
-+    /* 8 */ sys_sigreturn,
-+    /* 9 */ sys_exit
-+    };
++    abi_ulong sp;
 +
-+    G_STATIC_ASSERT(sizeof(sigtramp_code) == TARGET_SZSIGCODE);
++    /*
++     * Make sure the stack is properly aligned.
++     * arm/include/param.h (STACKLIGN() macro)
++     */
++    sp = (u_int)(stack_base + stack_size) & ~0x7;
 +
-+    for (i = 0; i < 9; i++) {
-+        tswap32s(&sigtramp_code[i]);
++    /* sp = stack base */
++    env->regs[13] = sp;
++    /* pc = start function entry */
++    env->regs[15] = entry & 0xfffffffe;
++    /* r0 = arg */
++    env->regs[0] = arg;
++    env->spsr = ARM_CPU_MODE_USR;
++    /*
++     * Thumb mode is encoded by the low bit in the entry point (since ARM can't
++     * execute at odd addresses). When it's set, set the Thumb bit (T) in the
++     * CPSR.
++     */
++    if (entry & 0x1) {
++        cpsr_write(env, cpsr_read(env) | CPSR_T, CPSR_T, CPSRWriteByInstr);
 +    }
-+
-+    return memcpy_to_target(offset, sigtramp_code, TARGET_SZSIGCODE);
 +}
-+#endif /* _TARGET_ARCH_SIGTRAMP_H_ */
++
++static inline void target_thread_init(struct target_pt_regs *regs,
++        struct image_info *infop)
++{
++    abi_long stack = infop->start_stack;
++    memset(regs, 0, sizeof(*regs));
++    regs->ARM_cpsr = 0x10;
++    /*
++     * Thumb mode is encoded by the low bit in the entry point (since ARM can't
++     * execute at odd addresses). When it's set, set the Thumb bit (T) in the
++     * CPSR.
++     */
++    if (infop->entry & 1) {
++        regs->ARM_cpsr |= CPSR_T;
++    }
++    regs->ARM_pc = infop->entry & 0xfffffffe;
++    regs->ARM_sp = infop->start_stack;
++    if (bsd_type == target_freebsd) {
++        regs->ARM_lr = infop->entry & 0xfffffffe;
++    }
++    /* FIXME - what to for failure of get_user()? */
++    get_user_ual(regs->ARM_r2, stack + 8); /* envp */
++    get_user_ual(regs->ARM_r1, stack + 4); /* envp */
++    /* XXX: it seems that r0 is zeroed after ! */
++    regs->ARM_r0 = 0;
++    /* For uClinux PIC binaries.  */
++    /* XXX: Linux does this only on ARM with no MMU (do we care ?) */
++    regs->ARM_r10 = infop->start_data;
++}
++
++#endif /* !_TARGET_ARCH_THREAD_H_ */
 -- 
 2.33.0
 
