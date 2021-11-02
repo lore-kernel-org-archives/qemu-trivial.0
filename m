@@ -1,53 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mi36x-0006Pt-BI
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 19:22:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51104)
+	id 1mi3LQ-00009E-Dh
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 19:37:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55148)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mi36s-0006B3-VI; Tue, 02 Nov 2021 19:22:30 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:36219)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mi36q-0006NM-OK; Tue, 02 Nov 2021 19:22:30 -0400
-Received: from quad ([82.142.14.190]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M6YEz-1moNpu1SqP-006xdk; Wed, 03
- Nov 2021 00:22:15 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mi3LO-0008Uc-I4
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 19:37:30 -0400
+Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b]:34778)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mi3LK-0002vr-Dq
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 19:37:30 -0400
+Received: by mail-qv1-xf2b.google.com with SMTP id i13so743871qvm.1
+ for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 16:37:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=higN3TA3bhO5AwRXdd7DWxRGHM5dSrbbhXXx+VgKykg=;
+ b=xnmcPtRAj8g5wJxu/M9skbLQ+iCUTfiWceTTPEmYukW2GpYZPy89IjEqKI0u/btwfW
+ VgWCgne3gJTl4pJgOV0FrqbuzL5fsfSgM8u7I/jPIxdhlLbANrhLSwiNrO+/50dOeMYs
+ lUvsIJ2KsC3W9Ym1NAgTx5n12H4rTWm4A0JjIVORricM9gR2a1EH24di/atJ3E9UNUK9
+ tqByRKf+QUTsSlSaN/+u78VlZ0DX9H0+7YlYQU4glQVAn1wc1xatdknuFYC7RdjhxabK
+ LsXPZM37Y9QchjumymcYw4fobYaHypCY9r1fI29tRdD8f5RxWSqo/auGixkv1Lr8Zbj7
+ zuLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=higN3TA3bhO5AwRXdd7DWxRGHM5dSrbbhXXx+VgKykg=;
+ b=osD71rQeC6KTRQ3+AjYFUDbudiOk0ESDlzBhEKoZPUA4kR7aYIx2r7Ky83VsebBPYv
+ yKU6STi7I1W4rKymcmxJ+jBTWbXGHmwSA9qKdvDSTkuBNPU56C/0ycQAELDpTgWjObeU
+ fXqz5wm574LNy6rNTEmiga6L6/tpULlSuy3TZNYUBB+yqSFNPKJRJl4oKMS9PWXXlpVZ
+ 3xaPiQB9Eht98tgnjtLIKBVa6CaAaoz1EL40JregeC0o2jGugamjxSaysxb+1f643n+/
+ F2RlBnoJIfX2Ew/3ZXpp5Vtho0u/yy1UV4/qRf81k0EehPSCUyY8HKwruwODpnxbtyNn
+ Ik/Q==
+X-Gm-Message-State: AOAM530X+ry2fVnoGCn/s2mTVWcM4iarxqGjMxvcy432nozMi/TTWIEl
+ GvlGuidzOwCCZ5aUf/TPqWy7OQ==
+X-Google-Smtp-Source: ABdhPJxyq/qwAQempDIoKWy1ardqK5hn8jzbfJPXqJo/TNn3IP3wHBRNzh58rmYSxFhl0VCs0eY56A==
+X-Received: by 2002:ac8:5f88:: with SMTP id j8mr40963848qta.275.1635896245506; 
+ Tue, 02 Nov 2021 16:37:25 -0700 (PDT)
+Received: from [172.20.81.179] (rrcs-172-254-253-57.nyc.biz.rr.com.
+ [172.254.253.57])
+ by smtp.gmail.com with ESMTPSA id v7sm311961qkd.41.2021.11.02.16.37.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Nov 2021 16:37:24 -0700 (PDT)
+Subject: Re: [PATCH v2 01/30] bsd-user: Add stubs for new signal routines
+To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Philippe Mathieu-Daude <f4bug@amsat.org>, Kyle Evans <kevans@freebsd.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 2/4] hw/core/machine: Add the missing delimiter in
- cpu_slot_to_string()
-Date: Wed,  3 Nov 2021 00:22:10 +0100
-Message-Id: <20211102232212.2911638-3-laurent@vivier.eu>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211102232212.2911638-1-laurent@vivier.eu>
-References: <20211102232212.2911638-1-laurent@vivier.eu>
+References: <20211102225248.52999-1-imp@bsdimp.com>
+ <20211102225248.52999-2-imp@bsdimp.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <3a4d91dc-5726-ff89-a837-faefdff45a92@linaro.org>
+Date: Tue, 2 Nov 2021 19:37:23 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5FXlvVb3/zzi+MOmf9tLnjbW3xIQ5WTPKKqmY9fkazwz2S6RpOT
- UCFo6Z+ZX6kDBhepqp7k6U7O0sh13wVBXiQrWnhc2/tcBdIxw2PVR20xntNq74R5NZRGRRe
- /8H+IGXhSdnqOmtLSZrBuZmXPeFrvjLMctdThqeT8WG3j72xNWzsFQO59iy41/Vhyob9saC
- onu1sa8jeRqXJ9kMV9zHA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:p7XltI9PD00=:2hN4eQqHqb7Bc6BspdnyRj
- 92VsyesoYq+3WmKhR0KoODrHrsr9RL1UMIpZqVm59bHvXS1HAvQKt1QilyJCwKm6ONU/k3I0K
- gadUMfhv8cO0T2g0kQY/yMJ6xviLP1f4ecq5ktb90P0DhM8hMc7lp0GtnzdcE7lsDyXF4kgGN
- TpfsDbwX6DINiZbqAXvs5EmcmROobHKNVesq+/J7nxohPIU7az5GUE8MzMFjhm/wRfmxvb5tN
- WGw/1run8CEsZHlutk0giWKojm6fSm99UDgfF2DHmxl+Nv0Dk1fpPYwVAiAZsHu0SLU9Z1ENP
- +Q0pDknbLt0bMae4uDB62EfGc2ufpyee2HrBmoitYaiDWM13JfugOsM9MVWkYY5hpaXP/Ryxn
- VN36V+Ifu5q3G/r9jzOHT5DbiPrTEIsKqyhkRYTf5O+RSAYaIV6ZFSsXAU3B0P9rs5xaopmGl
- oPpfgndMgxXDaqB9S4bLCikiLRshNwnIKlzZAYEd0CqMUuSoJlUJ6Ou33K3nsXfNngwddYksQ
- 3btz/AKseMtaWbd7day9Mz5EC9ctxNHi43958JForbJAsR2K2nujW4py8dLwsMpvhkHoysK8z
- RuYGemaeg5R+u2XCeljaqRpPo6ZKM5kiLn12ApM6++V+5u4zT03+5MkYBC2spKPoQEa7rTStD
- V9FM5fMhpVY+ar8/e0zJLGVl4VsFCBSs6pHzMjiUO+DKrxYrEsjxcAHfiZ2l1pATVYR0=
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20211102225248.52999-2-imp@bsdimp.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf2b.google.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.549,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -60,39 +83,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Nov 2021 23:22:31 -0000
+X-List-Received-Date: Tue, 02 Nov 2021 23:37:30 -0000
 
-From: Yanan Wang <wangyanan55@huawei.com>
+On 11/2/21 6:52 PM, Warner Losh wrote:
+> Until the signal support is merged from the bsd-user fork, we need stubs
+> for cpu_loop_exit_sigsegv and cpu_loop_exit_sigbus to link. These call
+> abort after logging a message. Since singals aren't supported here
+> yet, this is sufficient.
+> 
+> Signed-off-by: Warner Losh <imp@bsdimp.com>
+> ---
+>   bsd-user/signal.c | 21 +++++++++++++++++++++
+>   1 file changed, 21 insertions(+)
+> 
+> diff --git a/bsd-user/signal.c b/bsd-user/signal.c
+> index 0c1093deb1..05b277c642 100644
+> --- a/bsd-user/signal.c
+> +++ b/bsd-user/signal.c
+> @@ -20,6 +20,11 @@
+>   #include "qemu/osdep.h"
+>   #include "qemu.h"
+>   
+> +/*
+> + * Stubbed out routines until we merge signal support from bsd-user
+> + * fork.
+> + */
+> +
+>   /*
+>    * Queue a signal so that it will be send to the virtual CPU as soon as
+>    * possible.
+> @@ -36,3 +41,19 @@ void signal_init(void)
+>   void process_pending_signals(CPUArchState *cpu_env)
+>   {
+>   }
+> +
+> +void cpu_loop_exit_sigsegv(CPUState *cpu, target_ulong addr,
+> +                           MMUAccessType access_type, bool maperr, uintptr_t ra)
+> +{
+> +    qemu_log_mask(LOG_UNIMP, "No signal support for SIGSEGV\n");
+> +    /* unreachable */
+> +    abort();
+> +}
+> +
+> +void cpu_loop_exit_sigbus(CPUState *cpu, target_ulong addr,
+> +                          MMUAccessType access_type, uintptr_t ra)
+> +{
+> +    qemu_log_mask(LOG_UNIMP, "No signal support for SIGBUS\n");
+> +    /* unreachable */
+> +    abort();
+> +}
+> 
 
-The expected output string from cpu_slot_to_string() ought to be
-like "socket-id: *, die-id: *, core-id: *, thread-id: *", so add
-the missing ", " before "die-id". This affects the readability
-of the error message.
+I'm going to apply this directly to master as a build fix.
+Sorry about that.
 
-Fixes: 176d2cda0d ("i386/cpu: Consolidate die-id validity in smp context")
-Signed-off-by: Yanan Wang <wangyanan55@huawei.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20211008075040.18028-1-wangyanan55@huawei.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/core/machine.c | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index b8d95eec32d4..0a23ae310606 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1157,6 +1157,9 @@ static char *cpu_slot_to_string(const CPUArchId *cpu)
-         g_string_append_printf(s, "socket-id: %"PRId64, cpu->props.socket_id);
-     }
-     if (cpu->props.has_die_id) {
-+        if (s->len) {
-+            g_string_append_printf(s, ", ");
-+        }
-         g_string_append_printf(s, "die-id: %"PRId64, cpu->props.die_id);
-     }
-     if (cpu->props.has_core_id) {
--- 
-2.31.1
-
+r~
 
