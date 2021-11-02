@@ -1,80 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mhwxO-0002aB-OW
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 12:48:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38724)
+	id 1mi2el-0006Om-0S
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 18:53:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44286)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mhwxH-0002Sw-0L; Tue, 02 Nov 2021 12:48:11 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:38863)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2ei-0006HE-QM
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:24 -0400
+Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30]:45787)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mhwxE-0006GA-Sn; Tue, 02 Nov 2021 12:48:10 -0400
-Received: by mail-wr1-x435.google.com with SMTP id u18so34315990wrg.5;
- Tue, 02 Nov 2021 09:48:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:from:to:cc:references:in-reply-to
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mi2ef-0002kr-Jc
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 18:53:24 -0400
+Received: by mail-io1-xd30.google.com with SMTP id q203so431549iod.12
+ for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 15:53:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=I9mMexECIuGNRJjxaSTDrLv3ntUNjViZ4B+QfGaT224=;
- b=GWfkxwz/qk5SUpu4T2OVZ2Y4Vdlao6fi3dQVODYCnd/W1qB4T9/u6GjQG4ccUSQ1RJ
- fCqh6bGYii/2pNUa2VBcNvlzNN0Mc8+MV4xJl5keFW0KaiSkZqcQErkeP4K2fHMBzRDY
- PXycT/AV6Q8SfBBujKUXw2M9CtRtXO9r8KG0PMATs5xOB9aPhFZ4lX0bCjf2F2aGmQ3d
- NM4TxEUPWiiRxbLF2JBG8Meqf/r7Sq9VJZ6fJSl+evCC1oTIiGgfv5jS35j68HPoGYSe
- x8tRXVCnykd/clDClFKky5hoffTdSTlfj6zFFiXh0f3VwDqmz/5GIpIQEne2ejsOJc47
- zlTQ==
+ bh=15ogyUvqhVbhuTz0UVwGNAYoE4VdOlH1XIgsQEaFYI8=;
+ b=ASyX6enCr1N3gHjKrJB5/1N7WRrK+LjpXZIjVtrxRShR7NdKHSvisWz/EyCrhn+td2
+ lYzyNemT6RmZM9ead1enPKGm60VieBfpMIO8MXeXmywo0fQUF+2o080TICVZFPcg895b
+ hFVqcqtwMXBn3FaLAuIinNOyuloHGY8Mt64fkJ9yR3E09cNvSjx19c39SxLAgVgke9n0
+ wx4Ss5oHeH3K9DpLoADCE0XiNjKX4O/wo8N8dCDVEtbAH/wMiiqbOLsYw8/3aBKej7WB
+ NoLis8zi+RZvdKTFUyCBJEGIXyNRonKwWWPVmvOYsz2wt5ByflnAzkOHWsNqFMpQRdxn
+ 5jEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:from:to:cc:references:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=I9mMexECIuGNRJjxaSTDrLv3ntUNjViZ4B+QfGaT224=;
- b=Ehh+ArdxufzjLpYPsuv1IMXWNHXwJKrrVYoLaCdw5Dg1C/74AYpMbnn0i/5+0WD2/k
- DyCvodoShygMMCLAJZbS8NK1nnn1iGYSngpVkVsI43FqB7vVfb1tH7UZGtM7eJzCqNFe
- yFAnNGKlL2y4cuhma+DnnJ3aQza0U+KG1Rx21r1rPLaXHBYutOeWC90YC/kBIIUHCO8Y
- MIyeSDfQ0SGU+W/cCU83ocVcGMaj43kbUOkYPPvgZR4uZCjZgFBxhftE0Y0P8xLvc0E7
- lE00rGqWiAMAjsCqDnJwarpD5/h9gxf4SnYRhuCFOLNeSDyYwLEkPBSWO9/yF4LaIzpL
- 0pNA==
-X-Gm-Message-State: AOAM532ZmrCeLvvPtLJYbCD6ck/7NHti9ijRXUwV7DMMnSF5xYi5YQji
- o7KWGACw39COmdmQKKOCymc=
-X-Google-Smtp-Source: ABdhPJwM12CfMIhdlKgd999oisr0mrv/ce1UwKKmuAFt3gIktPX99NSOD5LTb9kIBKpJ9x7B2hgzcw==
-X-Received: by 2002:a05:6000:1684:: with SMTP id
- y4mr48005877wrd.252.1635871686898; 
- Tue, 02 Nov 2021 09:48:06 -0700 (PDT)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id h17sm16161897wrp.34.2021.11.02.09.48.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Nov 2021 09:48:05 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <0fa577e4-dedc-11f2-41fa-d8a3a3a6ec86@amsat.org>
-Date: Tue, 2 Nov 2021 17:48:04 +0100
+ bh=15ogyUvqhVbhuTz0UVwGNAYoE4VdOlH1XIgsQEaFYI8=;
+ b=uJeQF8Z3Ve8VFeAbYvEdMMckyqycUp9yaQPCzKbRPeFVUZzsn2MrDLcZpyVQdenoMw
+ XVQ/rY2GGIqc6MgXEa67K/xyApZQcxEyWryzOjQEicwqw7N/hdrh6oKWUAStbsAVoU6S
+ Y5KC0kqMi7utuxXsUsPZNWlscQtM6JHu1bJVuSt83CNQk32W1KoX7myLNLnFhcx2MgNA
+ xJiFIbamLHUrNNSriGoltkp9rZPyvE7AbuV48WpbBJ7BcwNS1Vj7V0Kaoi+A0V8vqICK
+ kq4+9Tuw5UL6qNoChnEMBzNxTQsWsz6uJjFtJlbUU8dTusKvOzaNlfpITEjzoaYuHY5+
+ +NCg==
+X-Gm-Message-State: AOAM532WbQIR4oHgoz/JV8f495dxbsmDqPHt6jNpKrFSSkaalcEdzsJC
+ Caz8FJjfrSyUWvxXZWvKs2/ibQ==
+X-Google-Smtp-Source: ABdhPJwYyXWTRUwf8mqgFB+WEka85pLQwQ/3s8Q/Z8NzJCPz81YX1v+73xeUVMRYExDO+B6SHnKH4w==
+X-Received: by 2002:a02:6666:: with SMTP id l38mr28977754jaf.146.1635893599468; 
+ Tue, 02 Nov 2021 15:53:19 -0700 (PDT)
+Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
+ [50.253.99.174])
+ by smtp.gmail.com with ESMTPSA id h14sm205427ils.75.2021.11.02.15.53.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Nov 2021 15:53:19 -0700 (PDT)
+From: Warner Losh <imp@bsdimp.com>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
+ qemu-trivial@nongnu.org, Philippe Mathieu-Daude <f4bug@amsat.org>,
+ Kyle Evans <kevans@freebsd.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH v2 00/30] bsd-user: arm (32-bit) support
+Date: Tue,  2 Nov 2021 16:52:18 -0600
+Message-Id: <20211102225248.52999-1-imp@bsdimp.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PULL 6/6] hw/input/lasips2: QOM'ify the Lasi PS/2
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Damien Hedde <damien.hedde@greensocs.com>
-References: <20211101082747.2524909-1-laurent@vivier.eu>
- <20211101082747.2524909-7-laurent@vivier.eu>
- <04704da8-24c5-25d6-85e1-6f9901f00b24@linaro.org>
- <a62209b3-340d-e24e-b5a1-0a50accb487f@amsat.org>
-In-Reply-To: <a62209b3-340d-e24e-b5a1-0a50accb487f@amsat.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.549,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: none client-ip=2607:f8b0:4864:20::d30;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd30.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,49 +77,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Nov 2021 16:48:13 -0000
+X-List-Received-Date: Tue, 02 Nov 2021 22:53:25 -0000
 
-Hi Laurent,
+This series of patches brings in 32-bit arm support for bsd-user.  It implements
+all the bits needed to do image activation, signal handling, stack management
+and threading. This allows us to get to the "Hello World" level and also to
+satisfy all linking requirements. I've sliced up the current bsd-user fork
+versions of all this code into what I hope are right-sized reviewable chunks.
 
-On 11/1/21 16:43, Philippe Mathieu-Daudé wrote:
-> On 11/1/21 16:31, Richard Henderson wrote:
->> On 11/1/21 4:27 AM, Laurent Vivier wrote:
->>> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
->>> Message-Id: <20210920064048.2729397-4-f4bug@amsat.org>
->>> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
->>> ---
->>>   hw/hppa/lasi.c             | 10 +++++++++-
->>>   hw/input/lasips2.c         | 38 ++++++++++++++++++++++++++++----------
->>>   include/hw/input/lasips2.h | 17 +++++++++++++----
->>>   3 files changed, 50 insertions(+), 15 deletions(-)
->>
->> This has broken the qtest-hppa device-introspection test:
->>
->> ERROR:../src/qom/object.c:2011:object_get_canonical_path_component: code
->> should not be reached
->> Broken pipe
->> Aborted (core dumped)
->>
->> Also, the previous patch 5 does not compile on its own:
->>
->> In file included from ../src/hw/input/lasips2.c:28:0:
->> /home/richard.henderson/qemu/src/include/hw/input/lasips2.h:17:18:
->> error: field ‘reg’ has incomplete type
->>      MemoryRegion reg;
->>                   ^~~
->> ninja: build stopped: subcommand failed.
->>
->> Reverting to patch 4 builds, and passes the introspection test.
-> 
-> Thank you for the update, I'll have a look.
+make checkpatch has a couple of complaints about the comments for the signal
+trampoline:
+WARNING: Block comments use a leading /* on a separate line
++    /* 8 */ sys_sigreturn,
 
-The last 2 patches are broken, do you mind resending your pullreq
-without them?
+WARNING: Block comments use a leading /* on a separate line
++    /* 9 */ sys_exit
 
-Thanks,
+that I think should be ignored.
 
-Phil.
+This also adds stubs necessary for building.
+
+V2 improves target_arch_signal.h in a number of ways
+   o match mcontext to FreeBSD/arm kernel (we'd used mips mcontext
+     which was originally copied from arm so things mostly worked)
+   o support thumb execution better (in the fork A32 -> T32 and
+     vice versa, even with signals, not works, here hello T32 and
+     A32 programs now work).
+   o common ucontext now implemented.
+   o patches with substantial changes have had the reviewed by
+     removed.
+   o Also remove target_sigcontext (FreeBSD's old way of doing
+     signals) that was discovered as it appeared unused in arm
+     upstream.
+   o update x86 to use target_os_ucontext.h, though signals aren't
+     yet completely supported in x86.
+   o add cpu_loop_exit_sigsegv and cpu_loop_exit_sigbus stubs that
+     just abort: bsd-user hadn't been updated so this is the first
+     patch in the series.
+
+The following still need review:
+       bsd-user/freebsd: Create common target_os_ucontext.h file
+       bsd-user/arm/target_arch_signal.h: arm machine context for signals
+       bsd-user/arm/target_arch_signal.h: arm user context and trapframe for signals
+       bsd-user/arm/target_arch_signal.h: arm set_sigtramp_args
+       bsd-user/arm/target_arch_signal.h: arm get_mcontext
+       bsd-user/arm/target_arch_signal.h: arm set_mcontext
+       bsd-user/i386/target_arch_signal.h: Remove target_sigcontext
+       bsd-user/x86_64/target_arch_signal.h: Remove target_sigcontext
+       bsd-user/i386/target_arch_signal.h: use new target_os_ucontext.h
+       bsd-user/x86_64/target_arch_signal.h: use new target_os_ucontext.h
+
+Warner Losh (30):
+  bsd-user: Add stubs for new signal routines
+  bsd-user/arm/target_arch_sysarch.h: Use consistent include guards
+  bsd-user/arm/target_syscall.h: Add copyright and update name
+  bsd-user/arm/target_arch_cpu.c: Target specific TLS routines
+  bsd-user/arm/target_arch_cpu.h: CPU Loop definitions
+  bsd-user/arm/target_arch_cpu.h: Implement target_cpu_clone_regs
+  bsd-user/arm/target_arch_cpu.h: Dummy target_cpu_loop implementation
+  bsd-user/arm/target_arch_cpu.h: Implement trivial EXCP exceptions
+  bsd-user/arm/target_arch_cpu.h: Implement data abort exceptions
+  bsd-user/arm/target_arch_cpu.h: Implement system call dispatch
+  bsd-user/arm/target_arch_reg.h: Implement core dump register copying
+  bsd-user/arm/target_arch_vmparam.h: Parameters for arm address space
+  bsd-user/arm/target_arch_sigtramp.h: Signal Trampoline for arm
+  bsd-user/arm/target_arch_thread.h: Routines to create and switch to a
+    thread
+  bsd-user/arm/target_arch_elf.h: arm defines for ELF
+  bsd-user/arm/target_arch_elf.h: arm get hwcap
+  bsd-user/arm/target_arch_elf.h: arm get_hwcap2 impl
+  bsd-user/freebsd: Create common target_os_ucontext.h file
+  bsd-user/arm/target_arch_signal.h: arm specific signal registers and
+    stack
+  bsd-user/arm/target_arch_signal.h: arm machine context for signals
+  bsd-user/arm/target_arch_signal.h: arm user context and trapframe for
+    signals
+  bsd-user/arm/target_arch_signal.h: arm set_sigtramp_args
+  bsd-user/arm/target_arch_signal.h: arm get_mcontext
+  bsd-user/arm/target_arch_signal.h: arm set_mcontext
+  bsd-user/arm/target_arch_signal.h: arm get_ucontext_sigreturn
+  bsd-user: add arm target build
+  bsd-user/i386/target_arch_signal.h: Remove target_sigcontext
+  bsd-user/x86_64/target_arch_signal.h: Remove target_sigcontext
+  bsd-user/i386/target_arch_signal.h: use new target_os_ucontext.h
+  bsd-user/x86_64/target_arch_signal.h: use new target_os_ucontext.h
+
+ bsd-user/arm/target_arch.h            |  28 +++
+ bsd-user/arm/target_arch_cpu.c        |  39 ++++
+ bsd-user/arm/target_arch_cpu.h        | 236 +++++++++++++++++++++++
+ bsd-user/arm/target_arch_elf.h        | 128 +++++++++++++
+ bsd-user/arm/target_arch_reg.h        |  60 ++++++
+ bsd-user/arm/target_arch_signal.h     | 266 ++++++++++++++++++++++++++
+ bsd-user/arm/target_arch_sigtramp.h   |  49 +++++
+ bsd-user/arm/target_arch_sysarch.h    |   6 +-
+ bsd-user/arm/target_arch_thread.h     |  80 ++++++++
+ bsd-user/arm/target_arch_vmparam.h    |  48 +++++
+ bsd-user/arm/target_syscall.h         |  27 ++-
+ bsd-user/freebsd/target_os_signal.h   |   3 -
+ bsd-user/freebsd/target_os_ucontext.h |  26 +++
+ bsd-user/i386/target_arch_signal.h    |  13 +-
+ bsd-user/signal.c                     |  21 ++
+ bsd-user/x86_64/target_arch_signal.h  |  13 +-
+ configs/targets/arm-bsd-user.mak      |   2 +
+ 17 files changed, 1011 insertions(+), 34 deletions(-)
+ create mode 100644 bsd-user/arm/target_arch.h
+ create mode 100644 bsd-user/arm/target_arch_cpu.c
+ create mode 100644 bsd-user/arm/target_arch_cpu.h
+ create mode 100644 bsd-user/arm/target_arch_elf.h
+ create mode 100644 bsd-user/arm/target_arch_reg.h
+ create mode 100644 bsd-user/arm/target_arch_signal.h
+ create mode 100644 bsd-user/arm/target_arch_sigtramp.h
+ create mode 100644 bsd-user/arm/target_arch_thread.h
+ create mode 100644 bsd-user/arm/target_arch_vmparam.h
+ create mode 100644 bsd-user/freebsd/target_os_ucontext.h
+ create mode 100644 configs/targets/arm-bsd-user.mak
+
+-- 
+2.33.0
+
 
