@@ -1,57 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1miL2v-0006Dw-DW
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Nov 2021 14:31:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60140)
+	id 1miLiN-0004FH-4t
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Nov 2021 15:14:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43456)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1miL2d-00068M-42; Wed, 03 Nov 2021 14:31:19 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:44385)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1miL2a-0004o9-AD; Wed, 03 Nov 2021 14:31:18 -0400
-Received: from [192.168.100.1] ([82.142.14.190]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MKbTo-1n3Ak60OnE-00Kvdx; Wed, 03 Nov 2021 19:31:02 +0100
-Message-ID: <11d82a15-0f09-c7c0-eccc-b8a60936cee5@vivier.eu>
-Date: Wed, 3 Nov 2021 19:31:01 +0100
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1miLiM-0004F1-7r
+ for qemu-trivial@nongnu.org; Wed, 03 Nov 2021 15:14:26 -0400
+Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31]:39615)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1miLiK-0004ZD-3L
+ for qemu-trivial@nongnu.org; Wed, 03 Nov 2021 15:14:25 -0400
+Received: by mail-vk1-xa31.google.com with SMTP id g18so1833407vkg.6
+ for <qemu-trivial@nongnu.org>; Wed, 03 Nov 2021 12:14:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7hHpcXnXbnO/Smq2EF0kBP5czLB9Onl/pbFZJwtZ3Ec=;
+ b=rSTgjogqkfSIo6KE2ap9b9hjad8/oV1GXxP1s2d4YWT3rV6H9Yaat3VDypkP1JZre0
+ yMM4r63jVpNAS6bHGtOpseUnJeClf8Qm51vY3tl06OZ1UzwrkBXLML4hmjgitBZ392Pr
+ vHP+SgzFFB1NA956m+bjKWX0JsOR+nES5CBxxeE3ESqG+SeNANrvCRvEugxabic0t0fw
+ z4FlpyFVM4D0Z3tOzJrWd0V+7WZ5D5DesZ8mZeF6ibAY9TQdfPAxZn7mnBBe5q9OABs5
+ z5rt2cZNBVrn8Ezb7alfyDSnsxDTM2IQarOMgqqHXYt8Ny/yyuMHvpz8Hh06Bpluxt0S
+ WCGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7hHpcXnXbnO/Smq2EF0kBP5czLB9Onl/pbFZJwtZ3Ec=;
+ b=BwIw3okpGTJqdAP5Le7rOsCNkr/vLradDpaOM7RRCJaEwc2T+FJJdrlihrZVVsGwfn
+ 8O1k+boOtnNCluTdtwx2o6lyai9WV7JjBw7cCY0t/Qr9Ksa3BrbCyHfXhsf8iKNBEU35
+ D0e42+2y+ekaOEmw+rHl/nfxqDLXTSabZVeIxzVnF9+Bx/jP3VKQe3vgB/jdYFy909HX
+ 57vB3y30RLp9SGGCMCAS7qEh94R/GBRVJJtkv6QALHgUwxBDE6TUDMRs6UY6gq44IL9b
+ 5OfAwcLmtb2e1+rAvCZbFqgPOnxO6DJh50p3xvVQxAAz2Ck766MaMAVIaLNJM5PR6fUQ
+ uGcA==
+X-Gm-Message-State: AOAM533mnrwBSPHRmYViuKcuNHm+kmkhgvmNKVNgrJC6kNyd1IIlhQ2X
+ FU0ECxxrs49dCtDn7G6IsStc3mMxTYQzrhFtYrSRAQ==
+X-Google-Smtp-Source: ABdhPJz7mAbpNEknN8lHMh0hBtbIEprB1mlcvNK6GZliBjg6/82vlsuveqy3Btv409Rzat3Bqr+C1urewI8EdzgYR5o=
+X-Received: by 2002:a05:6122:134f:: with SMTP id
+ f15mr18256169vkp.22.1635966862538; 
+ Wed, 03 Nov 2021 12:14:22 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH] hw/m68k: Fix typo in SPDX tag
-Content-Language: fr
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20211103105311.3399293-1-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20211103105311.3399293-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:yixGwkZ1TZYQKoKmhK+es6ACq3/tMwG/TwbHni63VqzYi/p6UHa
- bS66TmVqw5bBZPhUsrf7ma3J1+rDVwBbca/XyRbV2xjb8uNLiLW6a06nGigSVQYvbM5H0Ku
- nx3ZxtlyOTGwJrb093541QvbisMWJhiUfj1QATkKG5QtvBmE6DBmZtegytZ1mqX6KTcxq1y
- 3JDbPDPtTSwUQvxLFGjoA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wvtKIC194TE=:z7BVPidyax87pcO9hju/CP
- vbqD7gOLkdLe3Bw2D7gX4UxXcwPrE3gU173kbYB4XyWRKJT5+sWuWMbcG2zRwiDVLwDurndD6
- numiYxWKDSlOXCnGJS0jv3PPaw9LWOFdC2+Kycralgy0ClD1qbthPmN3cLLAmcF5GYe/0RupR
- h5AYEVXpFzES6bge90qbWP6YbVq+00rNnprVORtP+gAQLV690aIpyx+8wCZwbfMIV9A83gpjk
- XRlHrqqMcVaLFbBX2NdR9GGD9lKq9rD9DL814d23Y1tXtVbQWsrwfoKIxy9lL7A7hhNncstmV
- 99ozrKZmLerK0mVgTrXxPc7AGiwnwh1LhDnCAwe+0KeV8POJxTStnqgzPh5hdbXoQRyMo7vSS
- iIFIjOCITF4xIMcPFQxBfetkDJtMX4ER5ryIeKtuUfkGZ5jL7y4yjSlhVV1A/GMvuBXQJUwMx
- K/UDrVvuwZow3obwpbjP5jtY9uYviHEJghfgmKy0VFAdXJAcVuuC433+WOoSEFc2Ol9CyLdpG
- p2YiDzOGF0UluCyMdmHDdClVuIvuI5rJlKnHZS+A0OweO+rv7JN0t/4qtE91FtnJZ+AF5DhOk
- Ip87i0SlKAXF+6gJhJJ2j7woB0BUmRoYJmwsp6PI0d2GQ3InI+UoO/n7XlOqUvddE2S9nHeeZ
- e5woDE+s8MATeeJWrwA/pXH31H6Uxh8AJgtC2BdjrhON6vkdWPk0ElmSU5bptebg6vQ8=
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.528,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20211102225248.52999-1-imp@bsdimp.com>
+ <20211102225248.52999-23-imp@bsdimp.com>
+ <27eae3b8-156b-540b-e88b-0d8c3097ee7e@linaro.org>
+In-Reply-To: <27eae3b8-156b-540b-e88b-0d8c3097ee7e@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Wed, 3 Nov 2021 13:14:11 -0600
+Message-ID: <CANCZdfqyK4y2-wqL6rm8LKEa8L0im=hNTqU3W9vG4j-DDokGqw@mail.gmail.com>
+Subject: Re: [PATCH v2 22/30] bsd-user/arm/target_arch_signal.h: arm
+ set_sigtramp_args
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Philippe Mathieu-Daude <f4bug@amsat.org>, 
+ Kyle Evans <kevans@freebsd.org>, Laurent Vivier <laurent@vivier.eu>,
+ Stacey Son <sson@freebsd.org>
+Content-Type: multipart/alternative; boundary="000000000000b4ca1d05cfe7371c"
+Received-SPF: none client-ip=2607:f8b0:4864:20::a31;
+ envelope-from=wlosh@bsdimp.com; helo=mail-vk1-xa31.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,134 +75,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Nov 2021 18:31:23 -0000
+X-List-Received-Date: Wed, 03 Nov 2021 19:14:26 -0000
 
-Le 03/11/2021 à 11:53, Philippe Mathieu-Daudé a écrit :
-> Fix 'Identifer' -> 'Identifier' typo.
-> 
-> Cc: Laurent Vivier <laurent@vivier.eu>
-> Fixes: 8c6df16ff60 ("hw/char: add goldfish-tty")
-> Fixes: 87855593903 ("hw/intc: add goldfish-pic")
-> Fixes: 2fde99ee312 ("m68k: add an interrupt controller")
-> Fixes: 0791bc02b8f ("m68k: add a system controller")
-> Fixes: e1cecdca559 ("m68k: add Virtual M68k Machine")
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   include/hw/char/goldfish_tty.h | 2 +-
->   include/hw/intc/goldfish_pic.h | 2 +-
->   include/hw/intc/m68k_irqc.h    | 2 +-
->   include/hw/misc/virt_ctrl.h    | 2 +-
->   hw/char/goldfish_tty.c         | 2 +-
->   hw/intc/goldfish_pic.c         | 2 +-
->   hw/intc/m68k_irqc.c            | 2 +-
->   hw/m68k/virt.c                 | 2 +-
->   hw/misc/virt_ctrl.c            | 2 +-
->   9 files changed, 9 insertions(+), 9 deletions(-)
-> 
-> diff --git a/include/hw/char/goldfish_tty.h b/include/hw/char/goldfish_tty.h
-> index b9dd67362a6..7503d2fa1e1 100644
-> --- a/include/hw/char/goldfish_tty.h
-> +++ b/include/hw/char/goldfish_tty.h
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * Goldfish TTY
->    *
-> diff --git a/include/hw/intc/goldfish_pic.h b/include/hw/intc/goldfish_pic.h
-> index ad13ab37fc3..e9d552f7968 100644
-> --- a/include/hw/intc/goldfish_pic.h
-> +++ b/include/hw/intc/goldfish_pic.h
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * Goldfish PIC
->    *
-> diff --git a/include/hw/intc/m68k_irqc.h b/include/hw/intc/m68k_irqc.h
-> index dbcfcfc2e00..ef91f218122 100644
-> --- a/include/hw/intc/m68k_irqc.h
-> +++ b/include/hw/intc/m68k_irqc.h
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * QEMU Motorola 680x0 IRQ Controller
->    *
-> diff --git a/include/hw/misc/virt_ctrl.h b/include/hw/misc/virt_ctrl.h
-> index edfadc46950..25a237e5187 100644
-> --- a/include/hw/misc/virt_ctrl.h
-> +++ b/include/hw/misc/virt_ctrl.h
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * Virt system Controller
->    */
-> diff --git a/hw/char/goldfish_tty.c b/hw/char/goldfish_tty.c
-> index 8365a187614..20b77885c18 100644
-> --- a/hw/char/goldfish_tty.c
-> +++ b/hw/char/goldfish_tty.c
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * Goldfish TTY
->    *
-> diff --git a/hw/intc/goldfish_pic.c b/hw/intc/goldfish_pic.c
-> index e3b43a69f16..dfd53275f69 100644
-> --- a/hw/intc/goldfish_pic.c
-> +++ b/hw/intc/goldfish_pic.c
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * Goldfish PIC
->    *
-> diff --git a/hw/intc/m68k_irqc.c b/hw/intc/m68k_irqc.c
-> index 2133d2a698a..0c515e4ecb7 100644
-> --- a/hw/intc/m68k_irqc.c
-> +++ b/hw/intc/m68k_irqc.c
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * QEMU Motorola 680x0 IRQ Controller
->    *
-> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-> index 4e8bce5aa6f..edc58fbddae 100644
-> --- a/hw/m68k/virt.c
-> +++ b/hw/m68k/virt.c
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * QEMU Vitual M68K Machine
->    *
-> diff --git a/hw/misc/virt_ctrl.c b/hw/misc/virt_ctrl.c
-> index 3552d7a09ab..e75d1e7e17b 100644
-> --- a/hw/misc/virt_ctrl.c
-> +++ b/hw/misc/virt_ctrl.c
-> @@ -1,5 +1,5 @@
->   /*
-> - * SPDX-License-Identifer: GPL-2.0-or-later
-> + * SPDX-License-Identifier: GPL-2.0-or-later
->    *
->    * Virt system Controller
->    */
-> 
+--000000000000b4ca1d05cfe7371c
+Content-Type: text/plain; charset="UTF-8"
 
-Applied to my trivial-patches branch.
+On Tue, Nov 2, 2021 at 9:37 PM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-Thanks,
-Laurent
+> On 11/2/21 6:52 PM, Warner Losh wrote:
+> > +    /*
+> > +     * Low bit indicates whether or not we're entering thumb mode.
+> > +     */
+> > +    cpsr = cpsr_read(env);
+> > +    if (ka->_sa_handler & 1) {
+> > +        cpsr |= CPSR_T;
+> > +    } else {
+> > +        cpsr &= ~CPSR_T;
+> > +    }
+> > +    cpsr_write(env, cpsr, CPSR_T, CPSRWriteByInstr);
+>
+> Like I said before, you don't need the cpsr_read, because the mask ensures
+> that only
+> CPSR_T will change:
+>
+>    cpsr_write(env, (ka->_sa_handler & 1) * CPSR_T, CPSR_T,
+> CPSRWriteByInstr);
+>
+>
+> Otherwise,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
 
+Thanks. Applied. I'd intended to do this for this round, but it slipped my
+mind.
+
+Warner
+
+--000000000000b4ca1d05cfe7371c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 2, 2021 at 9:37 PM Richar=
+d Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.hen=
+derson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
+ style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
+adding-left:1ex">On 11/2/21 6:52 PM, Warner Losh wrote:<br>
+&gt; +=C2=A0 =C2=A0 /*<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* Low bit indicates whether or not we&#39;re ente=
+ring thumb mode.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
+&gt; +=C2=A0 =C2=A0 cpsr =3D cpsr_read(env);<br>
+&gt; +=C2=A0 =C2=A0 if (ka-&gt;_sa_handler &amp; 1) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpsr |=3D CPSR_T;<br>
+&gt; +=C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpsr &amp;=3D ~CPSR_T;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 cpsr_write(env, cpsr, CPSR_T, CPSRWriteByInstr);<br>
+<br>
+Like I said before, you don&#39;t need the cpsr_read, because the mask ensu=
+res that only <br>
+CPSR_T will change:<br>
+<br>
+=C2=A0 =C2=A0cpsr_write(env, (ka-&gt;_sa_handler &amp; 1) * CPSR_T, CPSR_T,=
+ CPSRWriteByInstr);<br>
+<br>
+<br>
+Otherwise,<br>
+Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br></blockqu=
+ote><div><br></div><div>Thanks. Applied. I&#39;d intended to do this for th=
+is round, but it slipped my mind.</div><div><br></div><div>Warner</div></di=
+v></div>
+
+--000000000000b4ca1d05cfe7371c--
 
