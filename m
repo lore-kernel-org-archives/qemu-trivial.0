@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mi7FD-0008GN-Pn
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 23:47:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43358)
+	id 1mi7Fr-0000PD-JF
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 23:48:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mi7FC-0008Ek-0I
- for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 23:47:22 -0400
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35]:33693)
+ id 1mi7Fq-0000MR-Dx
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 23:48:02 -0400
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35]:35757)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mi7F7-0005Dw-S6
- for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 23:47:21 -0400
-Received: by mail-qv1-xf35.google.com with SMTP id bu11so1483430qvb.0
- for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 20:47:17 -0700 (PDT)
+ id 1mi7Fo-0005IG-BF
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 23:48:02 -0400
+Received: by mail-qv1-xf35.google.com with SMTP id u25so1459046qve.2
+ for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 20:47:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=QxMx/OLVJWXoSgv7bLM7cCW8EIQOD8UuKaKV0sFo2RI=;
- b=FHwmbtz3FsK8UqcOyG1CP0erXIaBzvwwE+e5Uxy9JEJsAWzcp1TcewD22afY5uJ9+X
- NlAK9OTUWvJozRKm5wfxhHB5Gv4ADii9zuOHu2NaSJr1+4XxXkdM+thCnCL9Aak3hLlN
- 5Q/pL8ZNpb2z5izVgwMcHnUwjNfzsNK4jWVyqM2oumwQp42GkEYtRox7+mxI8uqc/ogu
- QqY3dE01FH0+ulnRx9oP1Sty8cSZOsVLEiJPLIOmIyp1y6jSDOQkj0z8d2pFOOK+j43x
- M7IN29eupr82BuvzNmP+7aqr/DOGCs1QR0xohvLpNsmwLwCBo76X/Cxo9pNuhLEOuXh4
- ja7w==
+ bh=L6yk3KZ08G/sRG+koWjB+g9wd4JkMZ8rKwv/Q4dfkJw=;
+ b=B4aAzasBMLAAMBge0xFxJ7Y7aeHwdoMnWpRtEwlR6Tgyr3wltYVFJk4bQ0LT5HnnFL
+ Iao+A2JU+oZgCYzRsMF3kqmq2Ih/VGlwZobJjEY7yXjpprlEUJzlHkdhnxtgWIcC7aZ9
+ 1BZDeUSXxC7mK9t1wunawUjzmGcNj0ogfRqxMPPVc0qLscfj9exiU22ncEDwRsYnlqny
+ bId0PQwbsqNIPPKaDShCHRQUEJdm8UfP0VXKlqByk1CyruILDBhMCzXae2vU7CYV/qin
+ vY/8wyx0he8GOXIOxx04xlk10Giccdz6n155wwvAn5N4jZJTqBP6tE6TBQqvbsMngt4A
+ QgQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=QxMx/OLVJWXoSgv7bLM7cCW8EIQOD8UuKaKV0sFo2RI=;
- b=Q7zFijeNfeqziljtilw1QWUfhGnVIDg/tjuzMisKxNZqYaxPKl1umY+uNyyR4p/X7G
- KD2mfuC7+V8pmdZfJR3xz3/hRgUjSFiC+/cMT//HHPUJJeCi2YuobfFO/5rTmY2GPUFK
- JY0bqtIfXR61rdeI4J9eSZv8MCckgWPsY1IxoDvyJj4cBoXBgvowvaoUD3MmEt8y/dAF
- cEOaFnfgFVDrDhulbCzWeRvnttf0AZdU1v/UdSuZAxyn0TEjjyR8xINuxKJ2eKtFkpwL
- PkKdxyZNc1c4uBhnVPMl5EHvLaWTbbNx4ZRne/i+oDELZc+p5gTl3+w4+KR3HT/1/04y
- 8ZeQ==
-X-Gm-Message-State: AOAM5338eev9zu2m6R472yUqknyE6R+vsbrAPO56Dj6PyE3EpJoen4Qg
- gQIxzKlzR537JHEas4JWJGKgFQ==
-X-Google-Smtp-Source: ABdhPJyN+35sshO+mhSKkTeQhQCwVVMSO92m9F9k5nYiFccVXuNOmTIQ71VOwibUAA8R9Dmld52Lmg==
-X-Received: by 2002:ac8:5a11:: with SMTP id n17mr38477512qta.210.1635911236727; 
- Tue, 02 Nov 2021 20:47:16 -0700 (PDT)
+ bh=L6yk3KZ08G/sRG+koWjB+g9wd4JkMZ8rKwv/Q4dfkJw=;
+ b=e6wlhUcDstBx3WXz5xLKu5D/4mJLL2R8OP0sKhXyNoWieCZ57mKeP+9Jjer6ctjymZ
+ efiaEuUXopOx2Waph4dfPyKuvZ62nXd+Vblaq/PHPlYD9x/a51ifSFNsgkkYK2a2yjs9
+ jEfNSCXJ3o7Sqqzq3kYyUvcNKUVE7d2VTcGL/mQ6G/n+ReBvO+oVTBO7HsHai/Uun27P
+ ceXXBOeZ0cACEd6pl5DFai4mDSGDFxq0+EQ3P+rw2rWQWff5kR+8g5pfymWdx1UaiL6W
+ JVNEqOSoXsY1mAaE/htSdWwsW7E527189zRHwd6Twva0SKmAhwOE0KaITeBbzR2bsPST
+ 48KQ==
+X-Gm-Message-State: AOAM533Id8e7X2EBymA8EosV0AE5cTxcLrguT5aFRq/1RsBQBwnEti10
+ UgGUWw4LQ5WfeD0SA6rFKH+IsA==
+X-Google-Smtp-Source: ABdhPJxvZQ9gjr6ei9yolqtV7QqRSPAO7ucZfzdV7/+tT0E17ssFYlRGUF7TayGcgQQoVe7HeJBXuA==
+X-Received: by 2002:a05:6214:c6f:: with SMTP id
+ t15mr7146513qvj.6.1635911279520; 
+ Tue, 02 Nov 2021 20:47:59 -0700 (PDT)
 Received: from [172.20.81.179] (rrcs-172-254-253-57.nyc.biz.rr.com.
  [172.254.253.57])
- by smtp.gmail.com with ESMTPSA id q14sm675171qtl.73.2021.11.02.20.47.15
+ by smtp.gmail.com with ESMTPSA id u18sm737851qki.69.2021.11.02.20.47.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Nov 2021 20:47:16 -0700 (PDT)
-Subject: Re: [PATCH v2 25/30] bsd-user/arm/target_arch_signal.h: arm
- get_ucontext_sigreturn
+ Tue, 02 Nov 2021 20:47:59 -0700 (PDT)
+Subject: Re: [PATCH v2 26/30] bsd-user: add arm target build
 To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Philippe Mathieu-Daude <f4bug@amsat.org>, Kyle Evans <kevans@freebsd.org>,
- Laurent Vivier <laurent@vivier.eu>, Stacey Son <sson@FreeBSD.org>
+ Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20211102225248.52999-1-imp@bsdimp.com>
- <20211102225248.52999-26-imp@bsdimp.com>
+ <20211102225248.52999-27-imp@bsdimp.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f152831e-dc66-698f-3aea-fd970d109a64@linaro.org>
-Date: Tue, 2 Nov 2021 23:47:13 -0400
+Message-ID: <fc347f04-cf78-0b30-b0c4-911e3281e6d1@linaro.org>
+Date: Tue, 2 Nov 2021 23:47:57 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211102225248.52999-26-imp@bsdimp.com>
+In-Reply-To: <20211102225248.52999-27-imp@bsdimp.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
@@ -71,7 +71,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.549,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,18 +84,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Nov 2021 03:47:22 -0000
+X-List-Received-Date: Wed, 03 Nov 2021 03:48:02 -0000
 
 On 11/2/21 6:52 PM, Warner Losh wrote:
-> Update ucontext to implement sigreturn.
-> 
-> Signed-off-by: Stacey Son<sson@FreeBSD.org>
-> Signed-off-by: Warner Losh<imp@bsdimp.com>
+> CC: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Warner Losh <imp@bsdimp.com>
+> Acked-by: Kyle Evans <kevans@FreeBSD.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   bsd-user/arm/target_arch_signal.h | 9 +++++++++
->   1 file changed, 9 insertions(+)
+>   configs/targets/arm-bsd-user.mak | 2 ++
+>   1 file changed, 2 insertions(+)
+>   create mode 100644 configs/targets/arm-bsd-user.mak
+> 
+> diff --git a/configs/targets/arm-bsd-user.mak b/configs/targets/arm-bsd-user.mak
+> new file mode 100644
+> index 0000000000..90b6533195
+> --- /dev/null
+> +++ b/configs/targets/arm-bsd-user.mak
+> @@ -0,0 +1,2 @@
+> +TARGET_ARCH=arm
+> +TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
+> 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Note that we just added one more xml file for m-profile mve.
+
 
 r~
 
