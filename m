@@ -1,78 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mi72B-00061M-Ei
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 23:33:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41044)
+	id 1mi72M-0006GI-QI
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Nov 2021 23:34:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mi726-0005uN-Rd
- for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 23:33:50 -0400
-Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f]:45758)
+ id 1mi72L-0006Ec-HA
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 23:34:05 -0400
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729]:39821)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mi71z-00069m-EE
- for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 23:33:48 -0400
-Received: by mail-qv1-xf2f.google.com with SMTP id s9so1383617qvk.12
- for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 20:33:43 -0700 (PDT)
+ id 1mi72K-0006bW-35
+ for qemu-trivial@nongnu.org; Tue, 02 Nov 2021 23:34:05 -0400
+Received: by mail-qk1-x729.google.com with SMTP id bk22so1079802qkb.6
+ for <qemu-trivial@nongnu.org>; Tue, 02 Nov 2021 20:34:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=4XgbTWcu8tV3eWnpSGX2UU7M18TFEwpLwmaorcMMMGM=;
- b=Ay9TWLXRGyVlWKM8TvNjp4uhBffAAvSXYHHzPW2z/r2qKA79IIKG7a8SSNJHn0tWOb
- HDnrT482UME/IBqfv8mlLzedeSvP9dExwvYaKHnmsxJvVAAM+r1Ui+gS0l3a6rPNWtaC
- KSCwyGz1hcvcWg4MblQcWCwFFg2swTduCKWQoGUWd2sKbPyrnWYt+jdZjbOrWpJHf9UJ
- KSN7QY6ZU6/Zb290jovM0x4VENA97ZLzN+2cJiaaK0L+aDEwMfnKVI+gU+LhPfq6MirL
- MR6fUmdoQDo/rfn9RSs5bv6mXKiLFcy44I6NhK6br3bqANprurGPyw1XycEBXq2XfvVi
- nCTA==
+ bh=UlN3wmW3ATJyufAG+pglFq+NXiV4lMV5IucOlkJQx/E=;
+ b=zS2KsyQGpzPafo6Rtkkd4L/Z++JeOSRNF0/IShXQaxSZWJpInEYO9igbhSUb4b/2Oo
+ XQFSjEbjPUYFbv/WUgxXniVBTs0pvv7q0CLLaidtLngT4rXzGFxlYalZ29+aas6/+Fmo
+ 06N7XUBjwU5Ua1Et+ehG9rS6XsStrPadlK8bS2Jz/FJ6qhJWyHNrMVJQ+iCyTFFiAqvn
+ UAx6tYpLTAF4krIfpltb112LGVeeAsBGeAVCcTyE78nzEuJC/RuPwXI/AXt41MFFwFri
+ /48otjLldvolBKWIqUfhOfKinVHKgwrgNspbUw/CoznFbP5eT7E/T6Tq3CZDkbTn3QIz
+ rEiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=4XgbTWcu8tV3eWnpSGX2UU7M18TFEwpLwmaorcMMMGM=;
- b=Ctj/GQPjoemi2S6BLoyUit2kLRjEKh/4u6Dn5KUFZLmJ67xnlOlK/eiyLpl1QBYGJt
- k+cC5RFBgdCV3uXCBVJknEq3VHW5x1bjl1pn7+671+I7mUoqjcAnDpzDfUJRxnngSfsc
- UseDIbyYMOfmPUC5LQae2KIeIPrWmLuGH06Ku5CVq0B0M83f6YBgBYj+1rBzXe3DM1ue
- UP/C3q9l/SA7cUxGeZnev0fWiWG3NhwYP8VbCxUirGLUHVH6Dsgpy42auWe0jGMrzJjB
- cv/P9NsyBZcUR5Y0sVerGtweFdB6TEnVm0V+DlO5NIEspMJMWhW110eifssCqTsrXuJV
- Sc3A==
-X-Gm-Message-State: AOAM530xApIj8EZnf8/zxQOZlRZWcLG05HIcFGA0UkYh0WufOUoXJtGz
- Z1ZdkclMjVVejU7DNByhNaJRNA==
-X-Google-Smtp-Source: ABdhPJyUUKAFXguSNY3l+ZBFYI9A1khdeVFpmNtDNso4V+sKyOmjy1Y9zaKMganXs5opYsqutn/LuQ==
-X-Received: by 2002:a05:6214:5195:: with SMTP id
- kl21mr13820775qvb.42.1635910422406; 
- Tue, 02 Nov 2021 20:33:42 -0700 (PDT)
+ bh=UlN3wmW3ATJyufAG+pglFq+NXiV4lMV5IucOlkJQx/E=;
+ b=mNUliIKOF4JcE/9RAK7iGC0HOAyI2ws6KcwXtLtgAythv662wxpmSEcCVxYCC+HlcY
+ K2BINN1oSSvkYiIWtzq4kvo4E69S/hWHRAy3X4MQgNT1qRRN9Om4YN7AGFj5ZawsQIuG
+ a3z0tlxjiBGG5Fe08JJrTbk9loBySDMGeX5f8R+0JwyTJdEiUd3PgkXU0utK6oGkJoc0
+ PiHzO0hVfMSVcNEhsOT23uqM9JH1UN1vyPPJiJ+FonZkCkfweqYwFxZ2mrr+jawPBPai
+ 98HXul3dInSozUlpOJ1WIFZVz2gdNS3NldKhOx30BLKe1rclCgXpQ3Ju02g0enS0bjLI
+ Vf6g==
+X-Gm-Message-State: AOAM533yq1CIMmCQzEspViOOxrClHIBldG+k//2zEDHVGBeAdfPdtFW1
+ Rz9zsjOFKOwliCwQ4nB1n8cS4pJXrUgl9g==
+X-Google-Smtp-Source: ABdhPJz4FfByGj1+sS/S4FtZwiyOrUDEaQ9B6M5DmF8WEo93fM2O7j9IRlVvk87lHRHkO7R/tXIoBQ==
+X-Received: by 2002:a05:620a:9d3:: with SMTP id
+ y19mr33258509qky.412.1635910442744; 
+ Tue, 02 Nov 2021 20:34:02 -0700 (PDT)
 Received: from [172.20.81.179] (rrcs-172-254-253-57.nyc.biz.rr.com.
  [172.254.253.57])
- by smtp.gmail.com with ESMTPSA id h17sm714301qtx.64.2021.11.02.20.33.41
+ by smtp.gmail.com with ESMTPSA id t22sm758982qta.36.2021.11.02.20.34.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Nov 2021 20:33:42 -0700 (PDT)
-Subject: Re: [PATCH v2 20/30] bsd-user/arm/target_arch_signal.h: arm machine
- context for signals
+ Tue, 02 Nov 2021 20:34:02 -0700 (PDT)
+Subject: Re: [PATCH v2 21/30] bsd-user/arm/target_arch_signal.h: arm user
+ context and trapframe for signals
 To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Philippe Mathieu-Daude <f4bug@amsat.org>, Kyle Evans <kevans@freebsd.org>,
  Laurent Vivier <laurent@vivier.eu>, Stacey Son <sson@FreeBSD.org>
 References: <20211102225248.52999-1-imp@bsdimp.com>
- <20211102225248.52999-21-imp@bsdimp.com>
+ <20211102225248.52999-22-imp@bsdimp.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <268e46e1-3023-7214-abc3-46bb3d195152@linaro.org>
-Date: Tue, 2 Nov 2021 23:33:40 -0400
+Message-ID: <8e05eb58-20ed-2dfb-a35b-e98aa7606b37@linaro.org>
+Date: Tue, 2 Nov 2021 23:34:00 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211102225248.52999-21-imp@bsdimp.com>
+In-Reply-To: <20211102225248.52999-22-imp@bsdimp.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2f;
- envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf2f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::729;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x729.google.com
 X-Spam_score_int: -45
 X-Spam_score: -4.6
 X-Spam_bar: ----
 X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.549,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,15 +85,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Nov 2021 03:33:51 -0000
+X-List-Received-Date: Wed, 03 Nov 2021 03:34:05 -0000
 
 On 11/2/21 6:52 PM, Warner Losh wrote:
+> Arm specific user context structures for signal handling and the closely
+> related trap frame.
+> 
 > Signed-off-by: Stacey Son<sson@FreeBSD.org>
-> Signed-off-by: Kyle Evans<kevans@FreeBSD.org>
 > Signed-off-by: Warner Losh<imp@bsdimp.com>
 > ---
->   bsd-user/arm/target_arch_signal.h | 20 ++++++++++++++++++++
->   1 file changed, 20 insertions(+)
+>   bsd-user/arm/target_arch_signal.h | 8 ++++++++
+>   1 file changed, 8 insertions(+)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
