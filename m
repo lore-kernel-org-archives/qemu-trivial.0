@@ -1,62 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1miLiN-0004FH-4t
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Nov 2021 15:14:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43456)
+	id 1miLn6-0007oU-LZ
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Nov 2021 15:19:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1miLiM-0004F1-7r
- for qemu-trivial@nongnu.org; Wed, 03 Nov 2021 15:14:26 -0400
-Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31]:39615)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1miLn5-0007nh-61
+ for qemu-trivial@nongnu.org; Wed, 03 Nov 2021 15:19:19 -0400
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a]:42893)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1miLiK-0004ZD-3L
- for qemu-trivial@nongnu.org; Wed, 03 Nov 2021 15:14:25 -0400
-Received: by mail-vk1-xa31.google.com with SMTP id g18so1833407vkg.6
- for <qemu-trivial@nongnu.org>; Wed, 03 Nov 2021 12:14:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1miLn3-0005U9-QU
+ for qemu-trivial@nongnu.org; Wed, 03 Nov 2021 15:19:18 -0400
+Received: by mail-ua1-x92a.google.com with SMTP id v20so6377930uaj.9
+ for <qemu-trivial@nongnu.org>; Wed, 03 Nov 2021 12:19:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7hHpcXnXbnO/Smq2EF0kBP5czLB9Onl/pbFZJwtZ3Ec=;
- b=rSTgjogqkfSIo6KE2ap9b9hjad8/oV1GXxP1s2d4YWT3rV6H9Yaat3VDypkP1JZre0
- yMM4r63jVpNAS6bHGtOpseUnJeClf8Qm51vY3tl06OZ1UzwrkBXLML4hmjgitBZ392Pr
- vHP+SgzFFB1NA956m+bjKWX0JsOR+nES5CBxxeE3ESqG+SeNANrvCRvEugxabic0t0fw
- z4FlpyFVM4D0Z3tOzJrWd0V+7WZ5D5DesZ8mZeF6ibAY9TQdfPAxZn7mnBBe5q9OABs5
- z5rt2cZNBVrn8Ezb7alfyDSnsxDTM2IQarOMgqqHXYt8Ny/yyuMHvpz8Hh06Bpluxt0S
- WCGA==
+ :cc; bh=kQ9c+iHRuqaXprFxWNV+LUdIWRAkDlxuO7yG3cuxZ1w=;
+ b=qeMuUbWJyFa5N6BcD1evbqlkv5fAgrEanNzsAT9IDulwF2ini1OcoOgyk0qi20b5+4
+ 5q1dFj8LqX/MKrv+Ds9jveacyFav4mnh1oz9GH/T6wvlTaw3vNzS3kAjqj7FKzmAuqRb
+ hRQTa7g4DBb3WU+S1s90b3Az+C3es0YoXpgy+ntpaZwXUwOgsgKN0hb8+eA+BLKatEkN
+ KOHgz2CFKReNOa6leZW4ayt1OMq3Uq+EIEeDkHZZ8+S5LDU6mxSLKxI7wlcVAXD7NEd1
+ cAOc/DIaQTwawriMmGZ3agb+0L1frhHhzJhkOWCzYg6inQr6VDcEpn2dVb8MwaTxVeGB
+ LoTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=7hHpcXnXbnO/Smq2EF0kBP5czLB9Onl/pbFZJwtZ3Ec=;
- b=BwIw3okpGTJqdAP5Le7rOsCNkr/vLradDpaOM7RRCJaEwc2T+FJJdrlihrZVVsGwfn
- 8O1k+boOtnNCluTdtwx2o6lyai9WV7JjBw7cCY0t/Qr9Ksa3BrbCyHfXhsf8iKNBEU35
- D0e42+2y+ekaOEmw+rHl/nfxqDLXTSabZVeIxzVnF9+Bx/jP3VKQe3vgB/jdYFy909HX
- 57vB3y30RLp9SGGCMCAS7qEh94R/GBRVJJtkv6QALHgUwxBDE6TUDMRs6UY6gq44IL9b
- 5OfAwcLmtb2e1+rAvCZbFqgPOnxO6DJh50p3xvVQxAAz2Ck766MaMAVIaLNJM5PR6fUQ
- uGcA==
-X-Gm-Message-State: AOAM533mnrwBSPHRmYViuKcuNHm+kmkhgvmNKVNgrJC6kNyd1IIlhQ2X
- FU0ECxxrs49dCtDn7G6IsStc3mMxTYQzrhFtYrSRAQ==
-X-Google-Smtp-Source: ABdhPJz7mAbpNEknN8lHMh0hBtbIEprB1mlcvNK6GZliBjg6/82vlsuveqy3Btv409Rzat3Bqr+C1urewI8EdzgYR5o=
-X-Received: by 2002:a05:6122:134f:: with SMTP id
- f15mr18256169vkp.22.1635966862538; 
- Wed, 03 Nov 2021 12:14:22 -0700 (PDT)
+ bh=kQ9c+iHRuqaXprFxWNV+LUdIWRAkDlxuO7yG3cuxZ1w=;
+ b=tV6I2sa78cYRn2iWILWoyc3gYsjx6D3D1KDtPfw5jOXriwdRMDHVnJilNdeHhXj8f4
+ Vxi5wsAK/vmytwGnTJlUkrX+uYhuwQtI8Lo7dwC76Lzs4YtOjFZ3p5KwRX5O/C5yUjcG
+ BRiOaDw/m5sJZEWpHuOZWlO51/7wpxNMq/LNC1AWNcTw2MDh8w3ArZ7aHrdLMzAtAieC
+ cGl6dHxMEu2AdtAI7kQx+UoG5dGJSiINyoHqqpvq6uJ8H/y2jkwle0nBMp/YaAsV65hC
+ Fij5zqUC2LzLsxjWz1PQq7l3S8bkMmgnixEc7AJBhDx8eyU/uvO9t6vzFjsl/45JPDu0
+ WHiw==
+X-Gm-Message-State: AOAM533JGd2v1uDro44a3VRlTh6X3H5ws4vkr9DHgxeXau23hxZmcLgW
+ DQrz8iVJidIFQ4D3auE29+1t8VkAVcfCFMGSM+o8nA==
+X-Google-Smtp-Source: ABdhPJyvdNKQPPmW0zr38wGkyFtQY1FPjjNAYX4Yr5R7Fs33YzVmg/mAXftyWp29Pc8UjV02WcbgqsrnYtLdauX9tVg=
+X-Received: by 2002:a9f:21d7:: with SMTP id 81mr25798670uac.39.1635967156526; 
+ Wed, 03 Nov 2021 12:19:16 -0700 (PDT)
 MIME-Version: 1.0
 References: <20211102225248.52999-1-imp@bsdimp.com>
- <20211102225248.52999-23-imp@bsdimp.com>
- <27eae3b8-156b-540b-e88b-0d8c3097ee7e@linaro.org>
-In-Reply-To: <27eae3b8-156b-540b-e88b-0d8c3097ee7e@linaro.org>
+ <20211102225248.52999-25-imp@bsdimp.com>
+ <d4673836-df0b-064d-50e5-2f301a7bf1f1@linaro.org>
+In-Reply-To: <d4673836-df0b-064d-50e5-2f301a7bf1f1@linaro.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Wed, 3 Nov 2021 13:14:11 -0600
-Message-ID: <CANCZdfqyK4y2-wqL6rm8LKEa8L0im=hNTqU3W9vG4j-DDokGqw@mail.gmail.com>
-Subject: Re: [PATCH v2 22/30] bsd-user/arm/target_arch_signal.h: arm
- set_sigtramp_args
+Date: Wed, 3 Nov 2021 13:19:04 -0600
+Message-ID: <CANCZdfp=OxoNh5hZUj_MzbUTgJs-P7eBsU6wMCQ0B3kCCWC+1w@mail.gmail.com>
+Subject: Re: [PATCH v2 24/30] bsd-user/arm/target_arch_signal.h: arm
+ set_mcontext
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
  QEMU Trivial <qemu-trivial@nongnu.org>,
  Philippe Mathieu-Daude <f4bug@amsat.org>, 
  Kyle Evans <kevans@freebsd.org>, Laurent Vivier <laurent@vivier.eu>,
  Stacey Son <sson@freebsd.org>
-Content-Type: multipart/alternative; boundary="000000000000b4ca1d05cfe7371c"
-Received-SPF: none client-ip=2607:f8b0:4864:20::a31;
- envelope-from=wlosh@bsdimp.com; helo=mail-vk1-xa31.google.com
+Content-Type: multipart/alternative; boundary="0000000000003ab75605cfe7493a"
+Received-SPF: none client-ip=2607:f8b0:4864:20::92a;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x92a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -75,79 +74,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Nov 2021 19:14:26 -0000
+X-List-Received-Date: Wed, 03 Nov 2021 19:19:19 -0000
 
---000000000000b4ca1d05cfe7371c
+--0000000000003ab75605cfe7493a
 Content-Type: text/plain; charset="UTF-8"
 
-On Tue, Nov 2, 2021 at 9:37 PM Richard Henderson <
+On Tue, Nov 2, 2021 at 9:40 PM Richard Henderson <
 richard.henderson@linaro.org> wrote:
 
 > On 11/2/21 6:52 PM, Warner Losh wrote:
-> > +    /*
-> > +     * Low bit indicates whether or not we're entering thumb mode.
-> > +     */
-> > +    cpsr = cpsr_read(env);
-> > +    if (ka->_sa_handler & 1) {
-> > +        cpsr |= CPSR_T;
-> > +    } else {
-> > +        cpsr &= ~CPSR_T;
-> > +    }
-> > +    cpsr_write(env, cpsr, CPSR_T, CPSRWriteByInstr);
+> > +    env->regs[15] = tswap32(gr[TARGET_REG_PC]);
 >
-> Like I said before, you don't need the cpsr_read, because the mask ensures
-> that only
-> CPSR_T will change:
->
->    cpsr_write(env, (ka->_sa_handler & 1) * CPSR_T, CPSR_T,
-> CPSRWriteByInstr);
->
->
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> This will be able to crash qemu with an odd pc in thumb mode.
+> You'd have to artificially create this mcontext of course.
 >
 
-Thanks. Applied. I'd intended to do this for this round, but it slipped my
-mind.
+Sure. And if you did this natively, you'd also get SIGILL or something
+similar and the process would die and/or coredump.
+Is there something different about qemu-user that I'm missing in this
+context?
 
 Warner
 
---000000000000b4ca1d05cfe7371c
+
+> Otherwise,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
+>
+> r~
+>
+
+--0000000000003ab75605cfe7493a
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 2, 2021 at 9:37 PM Richar=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 2, 2021 at 9:40 PM Richar=
 d Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.hen=
 derson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
  style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
 adding-left:1ex">On 11/2/21 6:52 PM, Warner Losh wrote:<br>
-&gt; +=C2=A0 =C2=A0 /*<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* Low bit indicates whether or not we&#39;re ente=
-ring thumb mode.<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; +=C2=A0 =C2=A0 cpsr =3D cpsr_read(env);<br>
-&gt; +=C2=A0 =C2=A0 if (ka-&gt;_sa_handler &amp; 1) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpsr |=3D CPSR_T;<br>
-&gt; +=C2=A0 =C2=A0 } else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpsr &amp;=3D ~CPSR_T;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 cpsr_write(env, cpsr, CPSR_T, CPSRWriteByInstr);<br>
+&gt; +=C2=A0 =C2=A0 env-&gt;regs[15] =3D tswap32(gr[TARGET_REG_PC]);<br>
 <br>
-Like I said before, you don&#39;t need the cpsr_read, because the mask ensu=
-res that only <br>
-CPSR_T will change:<br>
-<br>
-=C2=A0 =C2=A0cpsr_write(env, (ka-&gt;_sa_handler &amp; 1) * CPSR_T, CPSR_T,=
- CPSRWriteByInstr);<br>
-<br>
-<br>
+This will be able to crash qemu with an odd pc in thumb mode.<br>
+You&#39;d have to artificially create this mcontext of course.<br></blockqu=
+ote><div><br></div><div>Sure. And if you did this natively, you&#39;d also =
+get SIGILL or something similar and the process would die and/or coredump.<=
+/div><div>Is there something different about qemu-user that I&#39;m missing=
+ in this context?</div><div><br></div><div>Warner</div><div>=C2=A0</div><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
+t:1px solid rgb(204,204,204);padding-left:1ex">
 Otherwise,<br>
 Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
-ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br></blockqu=
-ote><div><br></div><div>Thanks. Applied. I&#39;d intended to do this for th=
-is round, but it slipped my mind.</div><div><br></div><div>Warner</div></di=
-v></div>
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
+<br>
+<br>
+r~<br>
+</blockquote></div></div>
 
---000000000000b4ca1d05cfe7371c--
+--0000000000003ab75605cfe7493a--
 
