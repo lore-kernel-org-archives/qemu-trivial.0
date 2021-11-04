@@ -1,67 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1midNs-0006wo-3W
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37142)
+	id 1midNu-00077D-M7
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNj-0006gb-E0
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:19 -0400
-Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f]:39845)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNs-00070f-Tk
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:28 -0400
+Received: from mail-il1-x133.google.com ([2607:f8b0:4864:20::133]:42532)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNh-0000yv-Pr
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:19 -0400
-Received: by mail-io1-xd2f.google.com with SMTP id r3so5537511iod.6
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNo-000111-Oy
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:28 -0400
+Received: by mail-il1-x133.google.com with SMTP id y17so6255386ilb.9
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=98BqBI8TmV8YvyFkZ3y+XgKQlmpyG8KzRCO1YXNy77I=;
- b=WOhdyhMPDFSG6PtfWxQ6FFJnmW2vV9sjSYfd9kPCabDrNYPNEDEoF+zBXVWd0q+L9a
- CDotICchVeI1S/Pj9Cnbjf2etzo5I3I/kJG0DOf+OB1/cOjsd9HQS5Se/VSLx/459XJy
- F7L0L1vCiHf2ji9qIEbxsE6oy4nBtR9cxSAJ8L1dVBdR3La1/ND6gvsv2sQpo/45+i7F
- LsCg80ZQdtVtvJSLQ02Sy1sI1Q7ZipERwb6tiRf+ZzM4FxJ5RdRhWNpi9kXis6Kox1sF
- P4wwMR2kwdaEYU+JBff2+kVCwK81v1KkmYfFCuxDEya3avAR7phzwevEHbBdWi62qCn/
- uFYA==
+ bh=I1XrwZ0o7hRgTEhkk9E1BQTq9616nNWJfCEFdNAWs4w=;
+ b=RiJ7QAl28KqQVUNVdMTWAIG8NCmD8yhONjP8KagQJSZ6oySEjXZ/IeOjj39u2aXV2X
+ HVCPBLRrBkUzqX7CoPKXpgpBFlQmBtQt0bZHCy8c+fQV5gH/Cw2szgdEBtmSDvmyM+Wn
+ nZV/OCqMNlaqhrQic2HYgp+wkGCgQzbef3qws7w4Hm2nJLDJ6B7K5PcaHbckq84FcFJk
+ NXrtesHTUIRJuGeNx9Lt+pzSx0bZq/T6EXRTFOIBUW6PL+2v7ux7hyEBhLWU6pcf/E67
+ Ar7DWWxHH1gK1Fr8DP6CmEUd2Pia/I9fIDH5byV8G1Six2V3nDZIIuWynDnpXcbZ28vR
+ Zxog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=98BqBI8TmV8YvyFkZ3y+XgKQlmpyG8KzRCO1YXNy77I=;
- b=i08b4iQJ1Y5d3FfF3EmzHY33JFePrbSR7RJXp7FqoCzcs69VqBcv4GDvWZyQuH9s/W
- SrZRazo4anhzKTYUJRGz/R5M+srLebpUlKI/vcKrXG7yMT95i6oQBN994cf6Fe7bVPZi
- LQ7mC/r31ff9vlvHdK7z2EzXah5xph5nZ2TSu7EkSdAq/io0zV+DDsPjd0QK8hr9jBL8
- rYPC9fH0rfgUrEEdS+lnS0OXVb0okesrr5zGVekysDwfdtVy1OYsR46kaaNIfN9ZdSEM
- gO8Jk9ozj3Gk1+hdUH+plEMfFLZk2QC1rYTgQpjWEukwMwXf5NofCOTsqjmZudkvNyo0
- ixwg==
-X-Gm-Message-State: AOAM5329meuTvH0y5GJ3wTsNogYTlHWWAVtfzK6UeVCrte6mKkORm5lu
- ft/LplfLbCNE0TQE0wEh8IjiCg==
-X-Google-Smtp-Source: ABdhPJwcvsbHbZQyE4mDJNtTDBGtbbQGRIvMBJZ3bA4kMB/p3M3jN7fz8h+ubbQay5N6u/EBCaC+9A==
-X-Received: by 2002:a05:6638:22d6:: with SMTP id
- j22mr4012437jat.97.1636034775806; 
- Thu, 04 Nov 2021 07:06:15 -0700 (PDT)
+ bh=I1XrwZ0o7hRgTEhkk9E1BQTq9616nNWJfCEFdNAWs4w=;
+ b=GrYl7x5ElgAWhFApVnqCy6FslvpbYJzlOFidQZEKhGgP5Ab7Empnq9TpvDYgW+KF8S
+ F3OR58CC+6h2QEEMUumbyPTDDgnMWOVWno+IAj+Wu7G6Z9MVDef37NyXUX9K3OYdJVSA
+ w0KttjxDEcAuW+bm/Cufyk+nk87jpqJOnfwbX8C6kFAEzTfIGJGNm3DceRPVFrRzDrjp
+ 49W5rp34cltE7/Atg1CzDpmgNajJYo3e7o2FbBWOI+b5tSq7yQbKpbevXuPvqtgo+Y/W
+ EuPextHyUUw46zq8msW9ZLz3VzwwsaMtAL/WwNiDU+UYmHHRloGXa0roARhYQouDBHtZ
+ G/Sg==
+X-Gm-Message-State: AOAM533Qj5iFA0FKve5F1XiOrGE1zYZ4Fq/Zxl+CFZIkXDX/Fcrbuuk0
+ Y6sxUbW4/7XYs7aQ8KmMLWkiBw==
+X-Google-Smtp-Source: ABdhPJxRDw5eKNqsReMrSnGW2pDOTiY0BpT81/WgHEpgzsgjLarCkAjwDWrzNMFcwz4W4qrJlDkPCQ==
+X-Received: by 2002:a05:6e02:1846:: with SMTP id
+ b6mr11299206ilv.164.1636034783704; 
+ Thu, 04 Nov 2021 07:06:23 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.14
+ by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 07:06:15 -0700 (PDT)
+ Thu, 04 Nov 2021 07:06:23 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Stacey Son <sson@FreeBSD.org>, Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v3 09/29] bsd-user/arm/target_arch_cpu.h: Implement system
- call dispatch
-Date: Thu,  4 Nov 2021 08:05:16 -0600
-Message-Id: <20211104140536.42573-10-imp@bsdimp.com>
+ Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v3 16/29] bsd-user/arm/target_arch_elf.h: arm get_hwcap2 impl
+Date: Thu,  4 Nov 2021 08:05:23 -0600
+Message-Id: <20211104140536.42573-17-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211104140536.42573-1-imp@bsdimp.com>
 References: <20211104140536.42573-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2f;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd2f.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::133;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x133.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -80,133 +79,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Nov 2021 14:06:19 -0000
+X-List-Received-Date: Thu, 04 Nov 2021 14:06:29 -0000
 
-Implement the system call dispatch. This implements all three kinds of
-system call: direct and the two indirect variants. It handles all the
-special cases for thumb as well.
+Implement the extended HW capabilities for HWCAP2.
 
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_cpu.h | 94 ++++++++++++++++++++++++++++++++++
- 1 file changed, 94 insertions(+)
+ bsd-user/arm/target_arch_elf.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
-index 905a5ffaff..c675419c30 100644
---- a/bsd-user/arm/target_arch_cpu.h
-+++ b/bsd-user/arm/target_arch_cpu.h
-@@ -40,6 +40,7 @@ static inline void target_cpu_loop(CPUARMState *env)
- {
-     int trapnr;
-     target_siginfo_t info;
-+    unsigned int n;
-     CPUState *cs = env_cpu(env);
+diff --git a/bsd-user/arm/target_arch_elf.h b/bsd-user/arm/target_arch_elf.h
+index 02d25b8926..4a0215d02e 100644
+--- a/bsd-user/arm/target_arch_elf.h
++++ b/bsd-user/arm/target_arch_elf.h
+@@ -32,6 +32,7 @@
+ #define ELF_EXEC_PAGESIZE       4096
  
-     for (;;) {
-@@ -62,6 +63,99 @@ static inline void target_cpu_loop(CPUARMState *env)
-                 /* TODO: What about instruction emulation? */
-             }
-             break;
-+        case EXCP_SWI:
-+        case EXCP_BKPT:
-+            {
-+                /*
-+                 * system call
-+                 * See arm/arm/trap.c cpu_fetch_syscall_args()
-+                 */
-+                if (trapnr == EXCP_BKPT) {
-+                    if (env->thumb) {
-+                        env->regs[15] += 2;
-+                    } else {
-+                        env->regs[15] += 4;
-+                    }
-+                }
-+                n = env->regs[7];
-+                if (bsd_type == target_freebsd) {
-+                    int ret;
-+                    abi_ulong params = get_sp_from_cpustate(env);
-+                    int32_t syscall_nr = n;
-+                    int32_t arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8;
+ #define ELF_HWCAP get_elf_hwcap()
++#define ELF_HWCAP2 get_elf_hwcap2()
+ 
+ #define GET_FEATURE(feat, hwcap) \
+     do { if (arm_feature(&cpu->env, feat)) { hwcaps |= hwcap; } } while (0)
+@@ -64,6 +65,14 @@ enum {
+     ARM_HWCAP_ARM_EVTSTRM   = 1 << 21,
+ };
+ 
++enum {
++    ARM_HWCAP2_ARM_AES      = 1 << 0,
++    ARM_HWCAP2_ARM_PMULL    = 1 << 1,
++    ARM_HWCAP2_ARM_SHA1     = 1 << 2,
++    ARM_HWCAP2_ARM_SHA2     = 1 << 3,
++    ARM_HWCAP2_ARM_CRC32    = 1 << 4,
++};
 +
-+                    /* See arm/arm/trap.c cpu_fetch_syscall_args() */
-+                    if (syscall_nr == TARGET_FREEBSD_NR_syscall) {
-+                        syscall_nr = env->regs[0];
-+                        arg1 = env->regs[1];
-+                        arg2 = env->regs[2];
-+                        arg3 = env->regs[3];
-+                        get_user_s32(arg4, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg5, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg6, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg7, params);
-+                        arg8 = 0;
-+                    } else if (syscall_nr == TARGET_FREEBSD_NR___syscall) {
-+                        syscall_nr = env->regs[0];
-+                        arg1 = env->regs[2];
-+                        arg2 = env->regs[3];
-+                        get_user_s32(arg3, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg4, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg5, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg6, params);
-+                        arg7 = 0;
-+                        arg8 = 0;
-+                    } else {
-+                        arg1 = env->regs[0];
-+                        arg2 = env->regs[1];
-+                        arg3 = env->regs[2];
-+                        arg4 = env->regs[3];
-+                        get_user_s32(arg5, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg6, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg7, params);
-+                        params += sizeof(int32_t);
-+                        get_user_s32(arg8, params);
-+                    }
-+                    ret = do_freebsd_syscall(env, syscall_nr, arg1, arg2, arg3,
-+                            arg4, arg5, arg6, arg7, arg8);
-+                    /*
-+                     * Compare to arm/arm/vm_machdep.c
-+                     * cpu_set_syscall_retval()
-+                     */
-+                    if (-TARGET_EJUSTRETURN == ret) {
-+                        /*
-+                         * Returning from a successful sigreturn syscall.
-+                         * Avoid clobbering register state.
-+                         */
-+                        break;
-+                    }
-+                    if (-TARGET_ERESTART == ret) {
-+                        env->regs[15] -= env->thumb ? 2 : 4;
-+                        break;
-+                    }
-+                    if ((unsigned int)ret >= (unsigned int)(-515)) {
-+                        ret = -ret;
-+                        cpsr_write(env, CPSR_C, CPSR_C, CPSRWriteByInstr);
-+                        env->regs[0] = ret;
-+                    } else {
-+                        cpsr_write(env, 0, CPSR_C, CPSRWriteByInstr);
-+                        env->regs[0] = ret; /* XXX need to handle lseek()? */
-+                        /* env->regs[1] = 0; */
-+                    }
-+                } else {
-+                    fprintf(stderr, "qemu: bsd_type (= %d) syscall "
-+                            "not supported\n", bsd_type);
-+                }
-+            }
-+            break;
-         case EXCP_INTERRUPT:
-             /* just indicate that signals should be handled asap */
-             break;
+ static uint32_t get_elf_hwcap(void)
+ {
+     ARMCPU *cpu = ARM_CPU(thread_cpu);
+@@ -100,6 +109,19 @@ static uint32_t get_elf_hwcap(void)
+     return hwcaps;
+ }
+ 
++static uint32_t get_elf_hwcap2(void)
++{
++    ARMCPU *cpu = ARM_CPU(thread_cpu);
++    uint32_t hwcaps = 0;
++
++    GET_FEATURE_ID(aa32_aes, ARM_HWCAP2_ARM_AES);
++    GET_FEATURE_ID(aa32_pmull, ARM_HWCAP2_ARM_PMULL);
++    GET_FEATURE_ID(aa32_sha1, ARM_HWCAP2_ARM_SHA1);
++    GET_FEATURE_ID(aa32_sha2, ARM_HWCAP2_ARM_SHA2);
++    GET_FEATURE_ID(aa32_crc32, ARM_HWCAP2_ARM_CRC32);
++    return hwcaps;
++}
++
+ #undef GET_FEATURE
+ #undef GET_FEATURE_ID
+ 
 -- 
 2.33.0
 
