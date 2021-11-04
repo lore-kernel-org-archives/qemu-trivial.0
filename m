@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1midNh-0006ZY-6M
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36900)
+	id 1midNi-0006bR-DR
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNc-0006Lt-7z
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:12 -0400
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c]:36727)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNf-0006SH-5u
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:15 -0400
+Received: from mail-io1-xd29.google.com ([2607:f8b0:4864:20::d29]:37860)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNZ-0000wR-ID
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:11 -0400
-Received: by mail-io1-xd2c.google.com with SMTP id e144so7021268iof.3
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNd-0000xg-NN
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:14 -0400
+Received: by mail-io1-xd29.google.com with SMTP id y73so7015510iof.4
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=5K9w6Dgj9bW+v4mINR6IMzovYCKqh6rwlm+KG2b5Ybg=;
- b=Fht7BRK1sFf0xIRTby7u61RJ4guM3kfj7y1SZfgUyGSfV55eiRhbB5vQq+pu2F9W99
- lDCy4Jg2asRvBOo0EoVIL25Ydi7LOin1BfycgScomANuR/vfTtqz6eaAYSkjteGfizXT
- 6cMhTngWOPvFEjBsIRRPk2smVWfNibStHVkW6a5/6aK6tr4Oxjho9LjMR0euYbSSulPg
- xdb0WKYlYn9f9GhZSsgNP8OtQcFwp03KM8gN23dspLYnEj6MSoNpLNQdLa2O26OMUeez
- g4gSL012s4rw5fTWY+ScESo552A5sJr3PY5MmQMhSGA8muWH3zklrRo0AObySxNyQBwg
- vVZQ==
+ bh=GLFz+hfOtxy/QWMpxfsl9nCO3CdG/6n25bbQ+o+tB/w=;
+ b=Aep7I0AFEOJdWz7ORLLsHk2dAaAVCXYD7FvYJarVRcdNPuTpxYAXtjSfJ95V73R3en
+ lOnGqYQYADHW/Kmh9r4TnIzcKou7QtNdnzry/nIi36DVCDkv+AUXI8KXBWlqd50NxDeK
+ q2iiCxw9CoAOIVQ9yvZZCsjqF1FsPx+CP6VCDWkFvjLtoy7uQLsBFMaso/6G6fLQjZhG
+ e2+aEgIBCMwxZn+EzciAzqBLR/CDZK7P2TtiXJxMPNyBJZBw+/iVF4/Dbnz0uTt3W2Ke
+ tTP88l/5mk0EOR0SpBRScAEmg46v6ItdckVVb5RDZBHgT/vAoVbNFyLPN0FU9ZX2FTCK
+ JQ+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5K9w6Dgj9bW+v4mINR6IMzovYCKqh6rwlm+KG2b5Ybg=;
- b=Vk/HrawiMfZ2SC38Py9XYmKZUmvtRxg3sbeZy96nLRaT5DFd76mcqI5loRVWPl6j3C
- i/DQBINFAFG0ZB2ysoD6KrOyk/seZBcBjPPQpulRgAMvjdYQFjO0SFfWpZlPbQHmNDTj
- xDeUj7b7c5CMCGwBZ/vYoRoZY9vjez3zVcm/1WHwpsL5Z92cXaiwjjYpT5gPsCR2NjOB
- OQPBzeWFKYuggSda7uzVI0A6klsVDa1K9h/4CYLcm/Qj9fGDpQDZblYkttnJostWjzhS
- UQkKKbaMFQ1MIAgQFifSzrjtnl8aMDWC5d/CCqVIdshmOXZ+PJHSPQ4WBhKTOtfL4B9N
- s3fQ==
-X-Gm-Message-State: AOAM5328yPwIfEEvnUs+RmRcP/LnFt1FTYMJ7ybTTg2PVGZqCJWf8FlC
- i12D4bc7CboWpTIJh6V2hGPF6w==
-X-Google-Smtp-Source: ABdhPJzUNanoZa8JdJ1wjQF/CKoXWYtskUqV5yBT+TYWNYWY1awD72TBgasMptS1DELE63XgTSyv5g==
-X-Received: by 2002:a05:6638:348e:: with SMTP id
- t14mr3885547jal.145.1636034768458; 
- Thu, 04 Nov 2021 07:06:08 -0700 (PDT)
+ bh=GLFz+hfOtxy/QWMpxfsl9nCO3CdG/6n25bbQ+o+tB/w=;
+ b=ioKA9jfbPtpcSps/nOX1+Wq9FiUeDXUKCyuIH5rmrYszzC56gPdSZzNt8vsqHBGzMw
+ 4reikmEAP60QgJCQ+bx6kPBHL4Gm/RoReC2+aVXH1lVWgoRlE4P97aI/CqS1Q0Dipguo
+ Xnuen85LoQqzgpdq4scLr5bdVT1+WA92kOfNVARZMacddHEDyVtysHBHQGvDjybNTigM
+ FDYdIej+L/2aepum1zkTPCS6Iang7x5X7X7oaHgvrcbwC5DAC8nr30kX3Jysh9JOxFC0
+ lFsOljhZq9rivxdW5Dh/0DWYUzliUuZOC0t58t0Col2WRJqdVgR16986QCpiJiFHtfnT
+ kgGA==
+X-Gm-Message-State: AOAM5308UYHQ/0McsVGNZuapfLycLk0UEvwajGujemH8yKxmYPkYBrzm
+ qcFKuBoCwfF705im2xBA82lh2w==
+X-Google-Smtp-Source: ABdhPJxfZ4eU9HYuD0XDcjzdLF/AZ/SGczESVoLWkFGBDQKu4AcQtedLzPlqSLtsFaD4T/fUoAqUNw==
+X-Received: by 2002:a05:6638:c49:: with SMTP id
+ g9mr4070026jal.54.1636034772726; 
+ Thu, 04 Nov 2021 07:06:12 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.07
+ by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 07:06:07 -0700 (PDT)
+ Thu, 04 Nov 2021 07:06:12 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Stacey Son <sson@FreeBSD.org>, Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v3 02/29] bsd-user/arm/target_syscall.h: Add copyright and
- update name
-Date: Thu,  4 Nov 2021 08:05:09 -0600
-Message-Id: <20211104140536.42573-3-imp@bsdimp.com>
+ Sean Bruno <sbruno@FreeBSD.org>, Stacey Son <sson@FreeBSD.org>,
+ Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v3 06/29] bsd-user/arm/target_arch_cpu.h: Dummy
+ target_cpu_loop implementation
+Date: Thu,  4 Nov 2021 08:05:13 -0600
+Message-Id: <20211104140536.42573-7-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211104140536.42573-1-imp@bsdimp.com>
 References: <20211104140536.42573-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2c;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd2c.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d29;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd29.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -80,60 +81,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Nov 2021 14:06:12 -0000
+X-List-Received-Date: Thu, 04 Nov 2021 14:06:15 -0000
 
-The preferred name for the 32-bit arm is now armv7. Update the name to
-reflect that. In addition, add Stacey's copyright to this file and
-update the include guards to the new convention.
+Add a boiler plate CPU loop that does nothing except return an error for
+all traps.
 
+Signed-off-by: Sean Bruno <sbruno@FreeBSD.org>
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_syscall.h | 27 +++++++++++++++++++++++----
- 1 file changed, 23 insertions(+), 4 deletions(-)
+ bsd-user/arm/target_arch_cpu.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/bsd-user/arm/target_syscall.h b/bsd-user/arm/target_syscall.h
-index ef4b37f017..a5f2bb4e01 100644
---- a/bsd-user/arm/target_syscall.h
-+++ b/bsd-user/arm/target_syscall.h
-@@ -1,5 +1,24 @@
--#ifndef BSD_USER_ARCH_SYSCALL_H_
--#define BSD_USER_ARCH_SYSCALL_H_
-+/*
-+ *  arm cpu system call stubs
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
+diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
+index fa45d9335d..2484bdc2f7 100644
+--- a/bsd-user/arm/target_arch_cpu.h
++++ b/bsd-user/arm/target_arch_cpu.h
+@@ -36,6 +36,28 @@ static inline void target_cpu_init(CPUARMState *env,
+     }
+ }
+ 
++static inline void target_cpu_loop(CPUARMState *env)
++{
++    int trapnr;
++    target_siginfo_t info;
++    CPUState *cs = env_cpu(env);
 +
-+#ifndef _TARGET_ARCH_SYSCALL_H_
-+#define _TARGET_ARCH_SYSCALL_H_
- 
- struct target_pt_regs {
-     abi_long uregs[17];
-@@ -31,6 +50,6 @@ struct target_pt_regs {
- #define TARGET_FREEBSD_ARM_GET_TP       3
- 
- #define TARGET_HW_MACHINE       "arm"
--#define TARGET_HW_MACHINE_ARCH  "armv6"
-+#define TARGET_HW_MACHINE_ARCH  "armv7"
- 
--#endif /* !BSD_USER_ARCH_SYSCALL_H_ */
-+#endif /* !_TARGET_ARCH_SYSCALL_H_ */
++    for (;;) {
++        cpu_exec_start(cs);
++        trapnr = cpu_exec(cs);
++        cpu_exec_end(cs);
++        process_queued_cpu_work(cs);
++        switch (trapnr) {
++        default:
++            fprintf(stderr, "qemu: unhandled CPU exception 0x%x - aborting\n",
++                    trapnr);
++            cpu_dump_state(cs, stderr, 0);
++            abort();
++        } /* switch() */
++        process_pending_signals(env);
++    } /* for (;;) */
++}
++
+ static inline void target_cpu_clone_regs(CPUARMState *env, target_ulong newsp)
+ {
+     if (newsp) {
 -- 
 2.33.0
 
