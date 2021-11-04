@@ -1,68 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mijmx-0000fJ-5T
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 16:56:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46782)
+	id 1miksw-0006po-OU
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 18:07:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35622)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mijmr-0000d9-Ie
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 16:56:41 -0400
-Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933]:36389)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mikst-0006nZ-MR; Thu, 04 Nov 2021 18:06:59 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:40881)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mijml-0002kE-UL
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 16:56:41 -0400
-Received: by mail-ua1-x933.google.com with SMTP id e10so13418306uab.3
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 13:56:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6rOaGt4SYBEDUG5BCrAb4T9+k2UA00TPCvwBhAoJrGM=;
- b=bgl/txwUCIp1OeIBlEZJx2AIHtjwL9bLYQuAgBy+t5k0aCsIRqUWdZvPmvUzI1ZZYA
- 4t4nR8mZIqs/3AMWMiajxZKt90MreSzVwvANq/l91353/HtFqX3qL4rK5Akm0Vm7O+5o
- pHwb5V9kVJH41BP6H7MhZ9GribYF9RtTMBVFgWFlOiUYZvW+8bIjTGk5zKJ4ixcHhYe8
- x+EOZSYHvql8t4WtmxhVvrFInCANszE04xLXoadgDOYZjKhae4i7fZJCu7jRbWjZtIuu
- e/mP4uPLuUoxadWtT/5XHsRTFzDKaFssmW1zEnVu3fAW2ZFOZiObeNzQAVL5XPyfme6L
- lGpw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1miksr-0002cA-HL; Thu, 04 Nov 2021 18:06:59 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ j128-20020a1c2386000000b003301a98dd62so8251142wmj.5; 
+ Thu, 04 Nov 2021 15:06:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:from:to:cc:references:in-reply-to
+ :content-transfer-encoding;
+ bh=ov5UyOWG/LREWFhsLE/a0C98bYm5nthMTa9ht29qXy8=;
+ b=ZbjsvAyjdVBraonnCW4mIjpakoixzdj0iG7KRZsEP2woZpJi7fT5w7yDdd0gtihyRW
+ IuGTDAO+VSYOzMHQZdMbJmPnnY9AgmYMnpx2hKPogAaknTNX8hnK45HS0/XWypQeaw0T
+ dfwyBCc1fvB4BT6+JVLQChwKb9UUIMpEQUr9lpr+nJYTwW0AebnvpKBU2Ywghi6z9bOy
+ aG4X+7plFYvMSD+5c4BtMTIfRosCUA2AoMQFACOBXyWQ/o3HZGICV2QUVcsU999AtJvB
+ UjHBkR/vzmH1G9PScgJbJGwO60YOijEGaS6Esq8on/CSFzM1YpNzNqNWZiecDfgoE2R5
+ kFLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6rOaGt4SYBEDUG5BCrAb4T9+k2UA00TPCvwBhAoJrGM=;
- b=PwbpHjm3YWZx0ANbf0r1ayUp+h9BvTauQg8SNJiGydJCvKu2mfy3pwqLkgQdaDR+6y
- Otn0+rCRc95jqyC2wp7UfyYDJhFLgoDQ/onQgX6tOikkYiz4jL7FWh7MUMPk2OwdA2Ar
- 0CbDeY8DPCMryouNHkh5O5LuxdabD9xXyfHp/5pcdYIFOgkBiU1GVjHA2hvCvoAuJQrm
- s77DTbJslp4nui7OzQZ88d3Y2Q4bipthGKv01hLLadCXv+enz+w+uWXYWrdS+CMc79B8
- ccj62azgQiOfzKBHfvPin+gTh9Eb5UiGhB+3zCFv3AJcFjqgdyNJs3Uk+bXcdTSmoOeY
- LX2Q==
-X-Gm-Message-State: AOAM533ylfVsa8xCc5sYZv/vu3ygvp6mmXZcOXwdUJMEHESyj4z60eEw
- b50b2UScjEsrsaEtNCMIt9oFAPPhuaUk/GRsxdrtRQ==
-X-Google-Smtp-Source: ABdhPJxvVBdK/t95VKWN5cwgv3xEPE1t1xMMH92fr++zJBZdxOtwg5rRGC+Lwu77tU+PcDRwDOZKebuwFT0flVzPz0Q=
-X-Received: by 2002:a05:6102:10c7:: with SMTP id
- t7mr50573177vsr.44.1636059394645; 
- Thu, 04 Nov 2021 13:56:34 -0700 (PDT)
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:from:to:cc:references:in-reply-to
+ :content-transfer-encoding;
+ bh=ov5UyOWG/LREWFhsLE/a0C98bYm5nthMTa9ht29qXy8=;
+ b=hbXEXQoe2SLYa3y7O3Tg3P94wfd3EGdCoxUAprB/2Bkc3jq63hcHEcYz26DQfdXUih
+ M4oVajFziVPQn/SNBmIQOZnY+loFUz3+ISoDdFwWeSRHia7r5YK9bKpEl0sK2oBEQDgc
+ bjJYpdpAZWnXR70z4KeSIhynzmyH2K0QvtS6qZxE03+Nq70yMb/V+4Zk/FkcPPHahgyg
+ 8yK6Hx8SIYiOLHVe1+4RRIF9rlsCgfWw1xX3HgEfXPXxMjPah904zg803/HulINjzM8w
+ hQaSmD9cqk7HqbR+uE+ZoUmkAbVUJDJJRSdevSxmV2eX8LxXdtU1AVPHYKmVCgGDPd+j
+ Zx7Q==
+X-Gm-Message-State: AOAM531NIgfG+8prEStGL4eaHn6wfbwJeZhqx4PSekJ2H7eEh7pQLpqP
+ 2hMPBSAzhPijhvV732/3S4T5iJk/Hhw=
+X-Google-Smtp-Source: ABdhPJzFIExVh/H62KmFvkfNz6smxu6vWsg9E784qrXwxmYZLC5V2KWVkpw7QNIaMEbB8DU8LTXvQQ==
+X-Received: by 2002:a05:600c:4f10:: with SMTP id
+ l16mr7026694wmq.47.1636063614635; 
+ Thu, 04 Nov 2021 15:06:54 -0700 (PDT)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id u2sm6150185wrs.17.2021.11.04.15.06.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 04 Nov 2021 15:06:53 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <fec0423b-8ef7-7a76-6827-1ebb6c69db1a@amsat.org>
+Date: Thu, 4 Nov 2021 23:06:52 +0100
 MIME-Version: 1.0
-References: <20211104140536.42573-1-imp@bsdimp.com>
- <20211104140536.42573-20-imp@bsdimp.com>
- <1262504d-1ce4-4720-31e4-e373d74e2b39@linaro.org>
- <CANCZdfpo_VwtWGrKVM1x=qZrBOMnWy-w6A6PfdswUE0yJH-EcQ@mail.gmail.com>
-In-Reply-To: <CANCZdfpo_VwtWGrKVM1x=qZrBOMnWy-w6A6PfdswUE0yJH-EcQ@mail.gmail.com>
-From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 4 Nov 2021 14:56:23 -0600
-Message-ID: <CANCZdfozm_gxB0exs6u7QGxgPGcaymxhAhOaXqPP8u1URUtLhA@mail.gmail.com>
-Subject: Re: [PATCH v3 19/29] bsd-user/arm/target_arch_signal.h: arm machine
- context for signals
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Kyle Evans <kevans@freebsd.org>, Stacey Son <sson@freebsd.org>
-Content-Type: multipart/alternative; boundary="0000000000000cb3f005cffcc341"
-Received-SPF: none client-ip=2607:f8b0:4864:20::933;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x933.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH-for-6.2 v2] .mailmap: Fix more contributor entries
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Pan Nengyuan <pannengyuan@huawei.com>,
+ Hyman Huang <huangy81@chinatelecom.cn>,
+ Haibin Zhang <haibinzhang@tencent.com>, Alex Chen <alex.chen@huawei.com>
+References: <20211027043254.1248097-1-f4bug@amsat.org>
+ <530b7d0e-9290-c78a-df50-7ef297dbf0b6@amsat.org>
+In-Reply-To: <530b7d0e-9290-c78a-df50-7ef297dbf0b6@amsat.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.093,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,95 +87,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Nov 2021 20:56:42 -0000
+X-List-Received-Date: Thu, 04 Nov 2021 22:07:00 -0000
 
---0000000000000cb3f005cffcc341
-Content-Type: text/plain; charset="UTF-8"
+Ping for 6.2? (Patch fully reviewed/acked by affected contributors).
 
-On Thu, Nov 4, 2021 at 11:58 AM Warner Losh <imp@bsdimp.com> wrote:
-
->
->
-> On Thu, Nov 4, 2021 at 11:49 AM Richard Henderson <
-> richard.henderson@linaro.org> wrote:
->
->> On 11/4/21 10:05 AM, Warner Losh wrote:
->> > +typedef struct target_mcontext {
->> > +    uint32_t    __gregs[32];
+On 11/1/21 11:22, Philippe Mathieu-Daudé wrote:
+> Can this patch go via the Trivial tree?
+> 
+> On 10/27/21 06:32, Philippe Mathieu-Daudé wrote:
+>> These authors have some incorrect author email field.
 >>
->> sys/arm/include/ucontext.h has
+>> Acked-by: Pan Nengyuan <pannengyuan@huawei.com>
+>> Reviewed-by: Alex Chen <alex.chen@huawei.com>
+>> Reviewed-by: Hyman Huang <huangy81@chinatelecom.cn>
+>> Reviewed-by: Haibin Zhang <haibinzhang@tencent.com>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>> Patch fully reviewed/acked.
+>> ---
+>>  .mailmap | 4 ++++
+>>  1 file changed, 4 insertions(+)
 >>
->> #define _NGREG          17
->> typedef __greg_t        __gregset_t[_NGREG];
+>> diff --git a/.mailmap b/.mailmap
+>> index f029d1c21fe..8beb2f95ae2 100644
+>> --- a/.mailmap
+>> +++ b/.mailmap
+>> @@ -69,6 +69,7 @@ Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
+>>  # git author config, or had utf8/latin1 encoding issues.
+>>  Aaron Lindsay <aaron@os.amperecomputing.com>
+>>  Alexey Gerasimenko <x1917x@gmail.com>
+>> +Alex Chen <alex.chen@huawei.com>
+>>  Alex Ivanov <void@aleksoft.net>
+>>  Andreas Färber <afaerber@suse.de>
+>>  Bandan Das <bsd@redhat.com>
+>> @@ -99,9 +100,11 @@ Gautham R. Shenoy <ego@in.ibm.com>
+>>  Gautham R. Shenoy <ego@linux.vnet.ibm.com>
+>>  Gonglei (Arei) <arei.gonglei@huawei.com>
+>>  Guang Wang <wang.guang55@zte.com.cn>
+>> +Haibin Zhang <haibinzhang@tencent.com>
+>>  Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+>>  Hanna Reitz <hreitz@redhat.com> <mreitz@redhat.com>
+>>  Hervé Poussineau <hpoussin@reactos.org>
+>> +Hyman Huang <huangy81@chinatelecom.cn>
+>>  Jakub Jermář <jakub@jermar.eu>
+>>  Jakub Jermář <jakub.jermar@kernkonzept.com>
+>>  Jean-Christophe Dubois <jcd@tribudubois.net>
+>> @@ -135,6 +138,7 @@ Nicholas Thomas <nick@bytemark.co.uk>
+>>  Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>
+>>  Orit Wasserman <owasserm@redhat.com>
+>>  Paolo Bonzini <pbonzini@redhat.com>
+>> +Pan Nengyuan <pannengyuan@huawei.com>
+>>  Pavel Dovgaluk <dovgaluk@ispras.ru>
+>>  Pavel Dovgaluk <pavel.dovgaluk@gmail.com>
+>>  Pavel Dovgaluk <Pavel.Dovgaluk@ispras.ru>
 >>
->> With s/32/17/ here,
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->>
->
-> Will do.
->
-> And I'm going to add compile time asserts for the size of mcontext and
-> ucontext in a future
-> patch series. It won't test for layout, but will keep things like this
-> from happening again by accident.
->
-
-So I added a G_STATIC_ASSERT and found I used a host's pointer instead of
-the target's pointer for the vfp stuff.
-Easy enough to  fix... But it means using functions that aren't yet defined
-when this is included, which means I'll
-have to restructure things... shuffling the includes is likely out of the
-question, so I'll have to create an arch/signal.c
-to hold the now-inlined functions.
-
-All because I wanted to catch errors like this before I made them again in
-public... :)  So thanks for inspiring me
-to do something that detected the error, but a good natured harumph at the
-work I have to do now...
-
-Warner
-
---0000000000000cb3f005cffcc341
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 4, 2021 at 11:58 AM Warne=
-r Losh &lt;<a href=3D"mailto:imp@bsdimp.com">imp@bsdimp.com</a>&gt; wrote:<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
-><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
- class=3D"gmail_attr">On Thu, Nov 4, 2021 at 11:49 AM Richard Henderson &lt=
-;<a href=3D"mailto:richard.henderson@linaro.org" target=3D"_blank">richard.=
-henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
-);padding-left:1ex">On 11/4/21 10:05 AM, Warner Losh wrote:<br>
-&gt; +typedef struct target_mcontext {<br>
-&gt; +=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 __gregs[32];<br>
-<br>
-sys/arm/include/ucontext.h has<br>
-<br>
-#define _NGREG=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 17<br>
-typedef __greg_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 __gregset_t[_NGREG];<br>
-<br>
-With s/32/17/ here,<br>
-Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
-ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br></blockqu=
-ote><div><br></div><div>Will do.</div><div><br></div><div>And I&#39;m going=
- to add compile time asserts for the size of mcontext and ucontext in a fut=
-ure</div><div>patch series. It won&#39;t test for layout, but will keep thi=
-ngs like this from happening again by accident.</div></div></div></blockquo=
-te><div><br></div><div>So I added a G_STATIC_ASSERT and found I used a host=
-&#39;s pointer instead of the target&#39;s pointer for the vfp stuff.</div>=
-<div>Easy enough to=C2=A0 fix... But it means using functions that aren&#39=
-;t yet defined when this is included, which means I&#39;ll</div><div>have t=
-o restructure things... shuffling the includes is likely out of the questio=
-n, so I&#39;ll have to create an arch/signal.c</div><div>to hold the now-in=
-lined functions.</div><div><br></div><div>All because I wanted to catch err=
-ors like this before I made them again in public... :)=C2=A0 So thanks for =
-inspiring me</div><div>to do something that detected the error, but a good =
-natured harumph at the work I have to do now...</div><div><br></div><div>Wa=
-rner</div><div><br></div><div><br></div><div><br></div></div></div>
-
---0000000000000cb3f005cffcc341--
+> 
 
