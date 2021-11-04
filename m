@@ -1,72 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1midO0-0007XJ-R3
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37416)
+	id 1midO1-0007Y7-0d
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37476)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNu-00077P-OV
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:30 -0400
-Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135]:33378)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNw-0007Ec-AZ
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:32 -0400
+Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129]:33368)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNo-00010t-Jq
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:30 -0400
-Received: by mail-il1-x135.google.com with SMTP id l19so6331407ilk.0
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNt-00012e-AT
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:31 -0400
+Received: by mail-il1-x129.google.com with SMTP id l19so6331706ilk.0
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8R82c+oSIU+sp8WqnJE/Io3vjzLSVpjkS5kzwk9Q/Pk=;
- b=UCStGRAeCTA/ulOT0ztTc8cLjjsrzT551wKA5yMOAYO/YCeJN66ARNsBme8ZHmfhGp
- xUs+h2CmCEfZqiQWg0LZsNk92LYQe8Ul7ulC6avl8g0DRPNMvGYmyYn0yRcXbohXVfHZ
- MYKRL6Mkc/c4Yg0m63P5AWxPPG3d3YlNYl2IXZONIt9617blKxjbynDfXcPVK8KqP0f8
- iE4Iw3pn8xOhhPK72IBUuZ8fHcZx8lAHVw+hyiI+/UEBat7ylP/ox99PFKsCy5jy6OuH
- aRiirEZaHvKyppuXQkrcBBJJSVQtr2NU1x7m8FYsuMYe/Q7fZXPoaKHomMWyFXhtxeRg
- p6uA==
+ bh=xSpmZTHUVlMjxvu++nH1NyF/IL0CfnSZPyN2HVK7azg=;
+ b=4ahHVQGXl30Jufa7BeyVLDBsX/iXnXU0UsJAKc3QHOQ6SYfcZ8iIPrq6Cbtu2fSD0Y
+ 5cHxECbJVaPtI/w+Hj/4PJC4OqjR7IFB/q5IpKkHZOsxbDUeOfvflun7iFRs0loN+r6J
+ LyzBgmviXqIY4axfbv6wM8Dq565BD5cG68KZJEmqY1XpJwb1cylOChKiRs4HauEAqvzH
+ 9F8P2QMqKsAPM9J62gkrn+ksqkBzQ3HxrN3tOPaHyc9+/QCK7EMnRAzq3y+pNlyTO18j
+ sth2meFNF/zPdDk/WgZNqRd4SP8ae1f/oVf3QtTYa34Vmf2tapxrWtL9fxqrE4/qmx/i
+ ieTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8R82c+oSIU+sp8WqnJE/Io3vjzLSVpjkS5kzwk9Q/Pk=;
- b=jPNTpntbNV4Ortd5u/YGASjfkihLBqNHvzpMwwUElegOHGZI55TUVzOPy6/ebsmtEA
- vC1PDJq0iC6Xls/XErtcrkXfN3N2MyX/IKNynJ2uabrvAjOjkj1sK4vJhHO7bLF1h6am
- WJ9UijC1fA7XvJAFFW14uG3JbBXwjHYBnb5WbPdE9FuKUOmAZQKxD2eYbgmrKMEVylUN
- egy/y0R8ecPBBrmkbv21RaylQF1riy3v1w4US8d7fTLhDQgf0O3MFfznft8YRzY9ds/p
- C2jhnMkUoRA8BJkyEDWun7uqZUd8lWrdRm/KxHiPFAriktcwC54YwwNLhQxJZZic1j2t
- wkFw==
-X-Gm-Message-State: AOAM530FFEUFtK94Nap4wskdWUwoiAmzif8aYYDRR5xK0Spu0U6DBQh+
- pCOudm5ieEn1BL07W0hJEINHuA==
-X-Google-Smtp-Source: ABdhPJy9JVzLBXpTyLknNrAlmJYovI2Cl3gspJA00CUtyPxZ5n+vOG0nTruvju0pEWylAgVlGqWpBw==
-X-Received: by 2002:a05:6e02:144e:: with SMTP id
- p14mr3716650ilo.18.1636034782930; 
- Thu, 04 Nov 2021 07:06:22 -0700 (PDT)
+ bh=xSpmZTHUVlMjxvu++nH1NyF/IL0CfnSZPyN2HVK7azg=;
+ b=BB+kidOiNn/1Yz1OD9SrkDD++pnLNXQuQbqsVInZWuvfJEcKN6wgGyXFgwukc4zFp4
+ q3fsPAh0DGSoK55ZMFHIFHbvsjIicje50J90fZlNSbzuDC79rQTdNyFs0bKR3ujHKI0T
+ Q86ipwtgOcwxsOwLWLUUgnPdTZKnftxzfybTfzbpeFGtbZl4Pkw4KyP/K2LbDiTDeoey
+ YB7HB0sR1GQf5f8utWeKvG5f7lTemeBGknrF9Z26NLcstVnCPCS8C/mesoX+A0Wu4JsG
+ DPA+kG3qsnxKCwWh3QkX682L05cPp41Pm9z525rWHkL4oZu+9n9LYdF11ih7+ccYW90l
+ fr/w==
+X-Gm-Message-State: AOAM531XKH+6Ee1Zyij3n2tQJvk8XD2SIRAmNrfFctXV6o403fxRyiSw
+ Dea3/PXNNhAi5GPB25fKa+MXgZ+UUCoPSg==
+X-Google-Smtp-Source: ABdhPJwoAIcJAA7m6YmTCmekCHgs5BTpPQ5bldUR9eWONJnQKEzZ5N3dv8WHPIYoejoz/Wy/N1b+zA==
+X-Received: by 2002:a05:6e02:b24:: with SMTP id
+ e4mr12116400ilu.17.1636034788263; 
+ Thu, 04 Nov 2021 07:06:28 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.22
+ by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 07:06:22 -0700 (PDT)
+ Thu, 04 Nov 2021 07:06:27 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Kyle Evans <kevans@FreeBSD.org>, Stacey Son <sson@FreeBSD.org>
-Subject: [PATCH v3 15/29] bsd-user/arm/target_arch_elf.h: arm get hwcap
-Date: Thu,  4 Nov 2021 08:05:22 -0600
-Message-Id: <20211104140536.42573-16-imp@bsdimp.com>
+ Stacey Son <sson@FreeBSD.org>
+Subject: [PATCH v3 20/29] bsd-user/arm/target_arch_signal.h: arm user context
+ and trapframe for signals
+Date: Thu,  4 Nov 2021 08:05:27 -0600
+Message-Id: <20211104140536.42573-21-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211104140536.42573-1-imp@bsdimp.com>
 References: <20211104140536.42573-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::135;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x135.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::129;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x129.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,101 +80,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Nov 2021 14:06:31 -0000
+X-List-Received-Date: Thu, 04 Nov 2021 14:06:32 -0000
 
-Implement get_elf_hwcap to get the first word of hardware capabilities.
+Arm specific user context structures for signal handling and the closely
+related trap frame.
 
-Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
-Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_elf.h | 72 +++++++++++++++++++++++++++++++++-
- 1 file changed, 71 insertions(+), 1 deletion(-)
+ bsd-user/arm/target_arch_signal.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/bsd-user/arm/target_arch_elf.h b/bsd-user/arm/target_arch_elf.h
-index 15b5c66511..02d25b8926 100644
---- a/bsd-user/arm/target_arch_elf.h
-+++ b/bsd-user/arm/target_arch_elf.h
-@@ -31,6 +31,76 @@
- #define USE_ELF_CORE_DUMP
- #define ELF_EXEC_PAGESIZE       4096
+diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
+index 3aaced474b..4bdfcbb8d7 100644
+--- a/bsd-user/arm/target_arch_signal.h
++++ b/bsd-user/arm/target_arch_signal.h
+@@ -74,4 +74,12 @@ typedef struct target_mcontext {
+     abi_int     mc_spare[33];
+ } target_mcontext_t;
  
--#define ELF_HWCAP 0
-+#define ELF_HWCAP get_elf_hwcap()
++#include "target_os_ucontext.h"
 +
-+#define GET_FEATURE(feat, hwcap) \
-+    do { if (arm_feature(&cpu->env, feat)) { hwcaps |= hwcap; } } while (0)
-+
-+#define GET_FEATURE_ID(feat, hwcap) \
-+    do { if (cpu_isar_feature(feat, cpu)) { hwcaps |= hwcap; } } while (0)
-+
-+enum {
-+    ARM_HWCAP_ARM_SWP       = 1 << 0,
-+    ARM_HWCAP_ARM_HALF      = 1 << 1,
-+    ARM_HWCAP_ARM_THUMB     = 1 << 2,
-+    ARM_HWCAP_ARM_26BIT     = 1 << 3,
-+    ARM_HWCAP_ARM_FAST_MULT = 1 << 4,
-+    ARM_HWCAP_ARM_FPA       = 1 << 5,
-+    ARM_HWCAP_ARM_VFP       = 1 << 6,
-+    ARM_HWCAP_ARM_EDSP      = 1 << 7,
-+    ARM_HWCAP_ARM_JAVA      = 1 << 8,
-+    ARM_HWCAP_ARM_IWMMXT    = 1 << 9,
-+    ARM_HWCAP_ARM_CRUNCH    = 1 << 10,
-+    ARM_HWCAP_ARM_THUMBEE   = 1 << 11,
-+    ARM_HWCAP_ARM_NEON      = 1 << 12,
-+    ARM_HWCAP_ARM_VFPv3     = 1 << 13,
-+    ARM_HWCAP_ARM_VFPv3D16  = 1 << 14,
-+    ARM_HWCAP_ARM_TLS       = 1 << 15,
-+    ARM_HWCAP_ARM_VFPv4     = 1 << 16,
-+    ARM_HWCAP_ARM_IDIVA     = 1 << 17,
-+    ARM_HWCAP_ARM_IDIVT     = 1 << 18,
-+    ARM_HWCAP_ARM_VFPD32    = 1 << 19,
-+    ARM_HWCAP_ARM_LPAE      = 1 << 20,
-+    ARM_HWCAP_ARM_EVTSTRM   = 1 << 21,
++struct target_sigframe {
++    target_siginfo_t    sf_si;  /* saved siginfo */
++    target_ucontext_t   sf_uc;  /* saved ucontext */
++    target_mcontext_vfp_t sf_vfp; /* actual saved VFP context */
 +};
 +
-+static uint32_t get_elf_hwcap(void)
-+{
-+    ARMCPU *cpu = ARM_CPU(thread_cpu);
-+    uint32_t hwcaps = 0;
-+
-+    hwcaps |= ARM_HWCAP_ARM_SWP;
-+    hwcaps |= ARM_HWCAP_ARM_HALF;
-+    hwcaps |= ARM_HWCAP_ARM_THUMB;
-+    hwcaps |= ARM_HWCAP_ARM_FAST_MULT;
-+
-+    /* probe for the extra features */
-+    /* EDSP is in v5TE and above */
-+    GET_FEATURE(ARM_FEATURE_V5, ARM_HWCAP_ARM_EDSP);
-+    GET_FEATURE(ARM_FEATURE_IWMMXT, ARM_HWCAP_ARM_IWMMXT);
-+    GET_FEATURE(ARM_FEATURE_THUMB2EE, ARM_HWCAP_ARM_THUMBEE);
-+    GET_FEATURE(ARM_FEATURE_NEON, ARM_HWCAP_ARM_NEON);
-+    GET_FEATURE(ARM_FEATURE_V6K, ARM_HWCAP_ARM_TLS);
-+    GET_FEATURE(ARM_FEATURE_LPAE, ARM_HWCAP_ARM_LPAE);
-+    GET_FEATURE_ID(aa32_arm_div, ARM_HWCAP_ARM_IDIVA);
-+    GET_FEATURE_ID(aa32_thumb_div, ARM_HWCAP_ARM_IDIVT);
-+    GET_FEATURE_ID(aa32_vfp, ARM_HWCAP_ARM_VFP);
-+
-+    if (cpu_isar_feature(aa32_fpsp_v3, cpu) ||
-+        cpu_isar_feature(aa32_fpdp_v3, cpu)) {
-+        hwcaps |= ARM_HWCAP_ARM_VFPv3;
-+        if (cpu_isar_feature(aa32_simd_r32, cpu)) {
-+            hwcaps |= ARM_HWCAP_ARM_VFPD32;
-+        } else {
-+            hwcaps |= ARM_HWCAP_ARM_VFPv3D16;
-+        }
-+    }
-+    GET_FEATURE_ID(aa32_simdfmac, ARM_HWCAP_ARM_VFPv4);
-+
-+    return hwcaps;
-+}
-+
-+#undef GET_FEATURE
-+#undef GET_FEATURE_ID
- 
- #endif /* _TARGET_ARCH_ELF_H_ */
+ #endif /* !_TARGET_ARCH_SIGNAL_H_ */
 -- 
 2.33.0
 
