@@ -1,77 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1migrL-0003f1-5u
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 13:49:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48660)
+	id 1mih0J-0003FB-Hu
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 13:58:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50742)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1migrJ-0003d6-O2
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 13:49:06 -0400
-Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833]:44710)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mih0I-0003Ey-GV
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 13:58:22 -0400
+Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929]:42535)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1migrH-0008J4-L4
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 13:49:05 -0400
-Received: by mail-qt1-x833.google.com with SMTP id d21so4847766qtw.11
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 10:49:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hs4+2w+EPhh1gsybkdyrjCeFQnWf4C2zk7arz+gwxrM=;
- b=dwihwSd6VrF3at5HThaE0CmXhAa3DIV1ZakuLBaIAyJwuoUiw4YL93Gqr6dNjZa0bk
- WnTqru+p40s/4TYeXu9y0LnQDA6H0+KzX/+Skopt3UdzoK2vG+9ONCxxy7aVi6ZEEBc1
- p33/zuwpUGDZjkU2UO6AW/e4oteN2Kd6Yk9pHXhTALAbFYYzKIGTloRp5boA3llpv9ov
- OI2rCEwC4sG41c5GJ5U8I5e+kFouEaWi7qMhC7Ovr/YCASe4A29G/BFYX9/yvSnO+htf
- N37BtDstKIC+S5UcQoxKvPnt+pIIB/o3WLsrsjQkj9IBRaV8rFaNMVU/yTtOsmjDM0u6
- SnRA==
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mih0G-00027S-4l
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 13:58:22 -0400
+Received: by mail-ua1-x929.google.com with SMTP id v20so12407010uaj.9
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 10:58:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RJgS0i0nITxMk13nWJS39NdX3wZPjD2Hgy6vob0SZ1Y=;
+ b=XYU3fl9EAG6UIaCeVkySLKasRbJtjN2WaEvRlD3sZ4b1GSnjmVioCecrNpHBz4jCs0
+ bsjoch5x6IF3fXL6ALztky+PjyrCSE3WYXGbJfMfUhUVLiibjLT5GEVE/173U1FN5RiZ
+ +Dl/qK1wZMpmzrSOTMdWod/jqVdEUqDXoLfpjJEVerY4apRjRCbSTvRaZssGZWc8fvFT
+ QbtMUohu61NC8EXuvbdH1x7+LHx+n6HabotH5tNkvfV6xmiTxmCZ6XzqCOE6yBBKnBhT
+ ma7+/eTB1w5BRb+yqEJNxk9NW+Q/Uu8Ep2LrZi0PSjKHjlatZj8W+PkaG4Pk3/vVnuwv
+ lGBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hs4+2w+EPhh1gsybkdyrjCeFQnWf4C2zk7arz+gwxrM=;
- b=mP0YgiOVgHio++lDclj7gNNM24fJjYkB0AAme0HVhF+tpo7dse2lvfSaZnqALz+7K3
- MSJeLFNLLyo643uE8GqPWgPlJfz04d4ozh6UeB89k0KKjTaLFgRKQdM42q2O7o0oeqLz
- b0KN4dCxAkEb6VRe1vpIwggG8iPMjmxFzHEEo6qoo3O8jLQ+xz++KuvLOEsX/6wQ2Ugd
- QxN2YFy4MOFQhiMd53splE+Ym4LbW+2qEMFWiRe+uPP4baEKNFmUISP7mTE9662Vat4z
- hunMGnDXf7NVb4UqKyAzHUpSwX54SBUkidgXQbW0vhcn4JJ1fGfhOrs8OhLTwnbS8ezj
- QVbA==
-X-Gm-Message-State: AOAM532ztfSzKA+eUcJaBIbSQCe9BSRnVsAOpijCaVawU1N7kVGcVbNx
- wvipixTrnsL63ttSrFRwUHHYLw==
-X-Google-Smtp-Source: ABdhPJy+L7uatWrMkqZuQ0aBiTK6JW3P4V72NUYE6DnRRWYu1+tJ7bswHxKxxGHbg+9Bvr0Mw7EsYA==
-X-Received: by 2002:ac8:5888:: with SMTP id t8mr55386761qta.121.1636048141438; 
- Thu, 04 Nov 2021 10:49:01 -0700 (PDT)
-Received: from ?IPv6:2607:fb90:f802:6e0c:4407:203:e794:8e1f?
- ([2607:fb90:f802:6e0c:4407:203:e794:8e1f])
- by smtp.gmail.com with ESMTPSA id w9sm4200739qkp.12.2021.11.04.10.49.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Nov 2021 10:49:01 -0700 (PDT)
-Subject: Re: [PATCH v3 19/29] bsd-user/arm/target_arch_signal.h: arm machine
- context for signals
-To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- Philippe Mathieu-Daude <f4bug@amsat.org>, qemu-trivial@nongnu.org,
- Kyle Evans <kevans@freebsd.org>, Stacey Son <sson@FreeBSD.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RJgS0i0nITxMk13nWJS39NdX3wZPjD2Hgy6vob0SZ1Y=;
+ b=q9gr9XtvxAvv17a2VN4AB+jHcr+24qA28Ou2/KPvRJfefTb2EV5Ex/IsM37Cw+PDI1
+ jSVo9QbjBjvrbeYxX2BqrMb0vpCj1bPLzHEh4VvzQ7VC4QI2NJvRYkeSaBDkVAQ0BtIA
+ ibLVfHOAkUG46g4fQ4D6BKcGnshvMKsoZaVUED4dPDS1STMpBGlSaey4DjnSr1e+KqY4
+ 5+jrnweON6zjEx2F3qmlfsKozoqeDBiog/nV+21FpC1LdzGRkU+FrckC20jFuUZcWy+S
+ 492J3vcHJx5xeJhepcPpCbgaUi1hdKdnqpxr5zT1Y966k8bqsTyBApK8NM9+MgLNQKsq
+ XK+w==
+X-Gm-Message-State: AOAM531RH0T60nPIsRKXza+7aGvdQJr9YR4NqAJ0rcAdD9hW3+I6GQtw
+ IhxO8pHlr24j8aBArkfwI2dNh2HTj6NZEHDZ5da2Kw==
+X-Google-Smtp-Source: ABdhPJxnr3QDD/pvy1AsKwe+2Xj5l8aL5zNIUWR9hfr/89N7ANvHZamWr86foe+H3Yf3n//gpWLnVozZ1TzQ2zB2OtA=
+X-Received: by 2002:ab0:6f47:: with SMTP id r7mr54025450uat.85.1636048698363; 
+ Thu, 04 Nov 2021 10:58:18 -0700 (PDT)
+MIME-Version: 1.0
 References: <20211104140536.42573-1-imp@bsdimp.com>
  <20211104140536.42573-20-imp@bsdimp.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <1262504d-1ce4-4720-31e4-e373d74e2b39@linaro.org>
-Date: Thu, 4 Nov 2021 13:48:58 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <20211104140536.42573-20-imp@bsdimp.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::833;
- envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x833.google.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.093,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <1262504d-1ce4-4720-31e4-e373d74e2b39@linaro.org>
+In-Reply-To: <1262504d-1ce4-4720-31e4-e373d74e2b39@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Thu, 4 Nov 2021 11:58:07 -0600
+Message-ID: <CANCZdfpo_VwtWGrKVM1x=qZrBOMnWy-w6A6PfdswUE0yJH-EcQ@mail.gmail.com>
+Subject: Re: [PATCH v3 19/29] bsd-user/arm/target_arch_signal.h: arm machine
+ context for signals
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Kyle Evans <kevans@freebsd.org>, Stacey Son <sson@freebsd.org>
+Content-Type: multipart/alternative; boundary="00000000000080685205cffa45cf"
+Received-SPF: none client-ip=2607:f8b0:4864:20::929;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x929.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,20 +73,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Nov 2021 17:49:06 -0000
+X-List-Received-Date: Thu, 04 Nov 2021 17:58:22 -0000
 
-On 11/4/21 10:05 AM, Warner Losh wrote:
-> +typedef struct target_mcontext {
-> +    uint32_t    __gregs[32];
+--00000000000080685205cffa45cf
+Content-Type: text/plain; charset="UTF-8"
 
-sys/arm/include/ucontext.h has
+On Thu, Nov 4, 2021 at 11:49 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-#define _NGREG          17
-typedef __greg_t        __gregset_t[_NGREG];
+> On 11/4/21 10:05 AM, Warner Losh wrote:
+> > +typedef struct target_mcontext {
+> > +    uint32_t    __gregs[32];
+>
+> sys/arm/include/ucontext.h has
+>
+> #define _NGREG          17
+> typedef __greg_t        __gregset_t[_NGREG];
+>
+> With s/32/17/ here,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
 
-With s/32/17/ here,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Will do.
 
+And I'm going to add compile time asserts for the size of mcontext and
+ucontext in a future
+patch series. It won't test for layout, but will keep things like this from
+happening again by accident.
 
-r~
+Warner
+
+--00000000000080685205cffa45cf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 4, 2021 at 11:49 AM Richa=
+rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
+nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">On 11/4/21 10:05 AM, Warner Losh wrote:<br>
+&gt; +typedef struct target_mcontext {<br>
+&gt; +=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 __gregs[32];<br>
+<br>
+sys/arm/include/ucontext.h has<br>
+<br>
+#define _NGREG=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 17<br>
+typedef __greg_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 __gregset_t[_NGREG];<br>
+<br>
+With s/32/17/ here,<br>
+Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br></blockqu=
+ote><div><br></div><div>Will do.</div><div><br></div><div>And I&#39;m going=
+ to add compile time asserts for the size of mcontext and ucontext in a fut=
+ure</div><div>patch series. It won&#39;t test for layout, but will keep thi=
+ngs like this from happening again by accident.</div><div><br></div><div>Wa=
+rner=C2=A0<br></div></div></div>
+
+--00000000000080685205cffa45cf--
 
