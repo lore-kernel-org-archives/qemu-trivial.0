@@ -1,67 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1midNf-0006Un-Ol
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36956)
+	id 1midNg-0006Vs-2a
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNd-0006No-LI
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:13 -0400
-Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30]:33741)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNe-0006QZ-N1
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:14 -0400
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:41690)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNa-0000we-N0
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:13 -0400
-Received: by mail-io1-xd30.google.com with SMTP id z206so7072035iof.0
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNb-0000wz-VA
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:14 -0400
+Received: by mail-io1-xd34.google.com with SMTP id p193so6986684iod.8
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3XmuKD3L8C0RdT+vaSED8BhWG5EV9OjA2AgZ0ahq8Uw=;
- b=iYbZOCjmBOTRuGfgtTMGw/lFkauFMLI5K9hxVRuShg+0GWVWfOTThjGc3ErYiQBkGd
- KrfreuickrMOz7O+FpyvKJRX8Q1SQ2s0Mk4JmWTSaQYgsK5CAQ+Pxy9GCLjpOnGQKEU+
- EvBF2jHpDeIuEvhwV/ITqguGog/gBspwrvgQzpwvpqMNIJELeGrn7giWnnb6pnLKlMpW
- 30NCP5o7EeTkxvHizqmi0/ZBaF2lXRGxnO/fserypFc9L9HzdoJgvNwOTS51amLoMKA+
- eRRHiKT9BR1vp6vRRsPTuMKW+s3Y2JNLSHLKv5zIgfUzZP/1nEPK6fsGFs4pA4rtLxBA
- rMMw==
+ bh=5iIfFcYyYja/cPaQ9qdIgUErIUCnLNWxpKMyL/JDBtE=;
+ b=0KsRHtTzaIzii+ZWZCTR76FtLAIodVpIQehBsjf+XCoFrxV8gS4feMgtlwgA3pgA73
+ EDsRrTUUoIYPkgpndxEC5AzI5cW0pyy8lZ17jGDb6G4PXB5pxBKxL2JPTilRXn7C3ZxM
+ bUjtAqSH5Dx71uP88vCbRTIBPOPRkLdXNPIxApHlN5uNB4QBwy3oUQhrKLNjXfX+deTw
+ o9day25mWc5ayWVVNxpMcVM75jAkMat/niufTSRZXoi8gqtb32gjbdBKaI7HsVWCjqXO
+ D/yznpHMmLR1Xm9nLTb3oTUpmP+llZyxm8DyyIzz8y4ZEDWfOWl19jAO5RyQPMWx+1rz
+ iefA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=3XmuKD3L8C0RdT+vaSED8BhWG5EV9OjA2AgZ0ahq8Uw=;
- b=4JsDcb4P0LanwM01oL1r5JIhlNi2OiALl+zoV5w0kmEkJmX97tuoW6oM3OuUjrmELF
- v1+qXpb5aHe+dU0wjYlsHbcqVt90nWck9o9xaPFrIiIgPIaGCRQOthBGVBsaEEqy5Mkq
- d+e/SHRf1W6wSVCYY9rhWLpHHqACmfrL0kHM7OiAMQ/96n01zzLigYlfYQxefgXuJBq5
- jG8nR65I+Af8glWg28TwUe+Lf+Vb+0u8DkXwqFzM2jS02NEBRxg6yZiOBJTe61z6xuL/
- VHk9tM5L93OgJXsRlTOpUoRzQARLe9FaNsr9XtfkBrsDrEjkaX+Xsl0VRKdyhJNR7Zfo
- CkHQ==
-X-Gm-Message-State: AOAM533ChRBg5nm96sALlLMUJvYpA5Pto4P4EVU7qlyXIuK5C9s/0voR
- vGOHZKFOsY5f1HD11+fFa7l0+A==
-X-Google-Smtp-Source: ABdhPJwkHDUTeoAPsl4X9WDCaqzyJntBiJl0Ik+bI9N9uJ9R4RIkE32rLjNqOmGXpISRHWsKUa/bJg==
-X-Received: by 2002:a05:6602:2352:: with SMTP id
- r18mr399455iot.180.1636034769667; 
- Thu, 04 Nov 2021 07:06:09 -0700 (PDT)
+ bh=5iIfFcYyYja/cPaQ9qdIgUErIUCnLNWxpKMyL/JDBtE=;
+ b=WeEeXYuYKr7wm+W2raPGC0+4JU7uI9V+lGriZcXRM4v0fe7xW/U8mezjM8T5soEBwz
+ mswTaHl59RWKrQimAvcrbPyf28qtxrbba/AIDjEBlMwWArsPMrvJB6qwCoNzslQ7JeMm
+ 0xDX/0Tk21unz8QFgM8a9+gz66yZJtHvuBbGlvNlMonPo/RtR9hJMTvDJ46hlYv/Uu+d
+ FbrGIjza5Npj1y0ya9mKhll2zHCLy5jDXELaOa7ljbzSI2S4aSqRSr+Q26/tDEsfVdRe
+ 4kJAONdYM3UAfWYSiGUVMYWnaINuHufZohmXKdKtdpNeA2lkTJyf2WKKfbxvs/F9wNTR
+ g9cw==
+X-Gm-Message-State: AOAM533IIXWXIGj8EXz/nbywQ+jP5wU52uuWDaLU2GjCuRvIfz+AcYcW
+ KF2ZO6IBbV6ztm4k2i1+/Pyk3w==
+X-Google-Smtp-Source: ABdhPJxSKbvBgzegEUeDY9xUccML/AwLqA9XpWneoRMkjZRKVWEKKTMs/BoUip/7Tp0zqWi3FvY1gQ==
+X-Received: by 2002:a6b:7a04:: with SMTP id h4mr7178334iom.154.1636034770847; 
+ Thu, 04 Nov 2021 07:06:10 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.08
+ by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 07:06:09 -0700 (PDT)
+ Thu, 04 Nov 2021 07:06:10 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Kyle Evans <kevans@FreeBSD.org>, Stacey Son <sson@FreeBSD.org>
-Subject: [PATCH v3 03/29] bsd-user/arm/target_arch_cpu.c: Target specific TLS
- routines
-Date: Thu,  4 Nov 2021 08:05:10 -0600
-Message-Id: <20211104140536.42573-4-imp@bsdimp.com>
+ Olivier Houchard <cognet@ci0.org>, Stacey Son <sson@FreeBSD.org>,
+ Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v3 04/29] bsd-user/arm/target_arch_cpu.h: CPU Loop definitions
+Date: Thu,  4 Nov 2021 08:05:11 -0600
+Message-Id: <20211104140536.42573-5-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211104140536.42573-1-imp@bsdimp.com>
 References: <20211104140536.42573-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d30;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd30.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d34;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd34.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -80,30 +79,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Nov 2021 14:06:13 -0000
+X-List-Received-Date: Thu, 04 Nov 2021 14:06:15 -0000
 
-Target specific TLS routines to get and set the TLS values.
+target_arch_cpu.h is for CPU loop definitions. Create the file and
+define target_cpu_init and target_cpu_reset for arm.
 
-Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
+Signed-off-by: Olivier Houchard <cognet@ci0.org>
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch.h     | 28 ++++++++++++++++++++++++
- bsd-user/arm/target_arch_cpu.c | 39 ++++++++++++++++++++++++++++++++++
- 2 files changed, 67 insertions(+)
- create mode 100644 bsd-user/arm/target_arch.h
- create mode 100644 bsd-user/arm/target_arch_cpu.c
+ bsd-user/arm/target_arch_cpu.h | 43 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 bsd-user/arm/target_arch_cpu.h
 
-diff --git a/bsd-user/arm/target_arch.h b/bsd-user/arm/target_arch.h
+diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
 new file mode 100644
-index 0000000000..93cfaea098
+index 0000000000..66215684d6
 --- /dev/null
-+++ b/bsd-user/arm/target_arch.h
-@@ -0,0 +1,28 @@
++++ b/bsd-user/arm/target_arch_cpu.h
+@@ -0,0 +1,43 @@
 +/*
-+ * ARM 32-bit specific prototypes for bsd-user
++ *  arm cpu init and loop
 + *
 + *  Copyright (c) 2013 Stacey D. Son
 + *
@@ -121,60 +119,30 @@ index 0000000000..93cfaea098
 + *  along with this program; if not, see <http://www.gnu.org/licenses/>.
 + */
 +
-+#ifndef _TARGET_ARCH_H_
-+#define _TARGET_ARCH_H_
++#ifndef _TARGET_ARCH_CPU_H_
++#define _TARGET_ARCH_CPU_H_
 +
-+#include "qemu.h"
-+
-+void target_cpu_set_tls(CPUARMState *env, target_ulong newtls);
-+target_ulong target_cpu_get_tls(CPUARMState *env);
-+
-+#endif /* !_TARGET_ARCH_H_ */
-diff --git a/bsd-user/arm/target_arch_cpu.c b/bsd-user/arm/target_arch_cpu.c
-new file mode 100644
-index 0000000000..02bf9149d5
---- /dev/null
-+++ b/bsd-user/arm/target_arch_cpu.c
-@@ -0,0 +1,39 @@
-+/*
-+ *  arm cpu related code
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
 +#include "target_arch.h"
 +
-+void target_cpu_set_tls(CPUARMState *env, target_ulong newtls)
-+{
-+    if (access_secure_reg(env)) {
-+        env->cp15.tpidrurw_s = newtls;
-+        env->cp15.tpidruro_s = newtls;
-+        return;
-+    }
++#define TARGET_DEFAULT_CPU_MODEL "any"
 +
-+    env->cp15.tpidr_el[0] = newtls;
-+    env->cp15.tpidrro_el[0] = newtls;
++static inline void target_cpu_init(CPUARMState *env,
++        struct target_pt_regs *regs)
++{
++    int i;
++
++    cpsr_write(env, regs->uregs[16], CPSR_USER | CPSR_EXEC,
++               CPSRWriteByInstr);
++    for (i = 0; i < 16; i++) {
++        env->regs[i] = regs->uregs[i];
++    }
 +}
 +
-+target_ulong target_cpu_get_tls(CPUARMState *env)
++static inline void target_cpu_reset(CPUArchState *cpu)
 +{
-+    if (access_secure_reg(env)) {
-+        return env->cp15.tpidruro_s;
-+    }
-+    return env->cp15.tpidrro_el[0];
 +}
++
++#endif /* !_TARGET_ARCH_CPU_H */
 -- 
 2.33.0
 
