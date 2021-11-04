@@ -1,67 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1midO1-0007Y7-0d
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37476)
+	id 1midO2-0007cq-67
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 10:06:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNw-0007Ec-AZ
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:32 -0400
-Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129]:33368)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midO0-0007Wx-GS
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:36 -0400
+Received: from mail-il1-x132.google.com ([2607:f8b0:4864:20::132]:35811)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNt-00012e-AT
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:31 -0400
-Received: by mail-il1-x129.google.com with SMTP id l19so6331706ilk.0
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1midNy-00014i-Cv
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 10:06:36 -0400
+Received: by mail-il1-x132.google.com with SMTP id w15so6284628ill.2
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 07:06:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xSpmZTHUVlMjxvu++nH1NyF/IL0CfnSZPyN2HVK7azg=;
- b=4ahHVQGXl30Jufa7BeyVLDBsX/iXnXU0UsJAKc3QHOQ6SYfcZ8iIPrq6Cbtu2fSD0Y
- 5cHxECbJVaPtI/w+Hj/4PJC4OqjR7IFB/q5IpKkHZOsxbDUeOfvflun7iFRs0loN+r6J
- LyzBgmviXqIY4axfbv6wM8Dq565BD5cG68KZJEmqY1XpJwb1cylOChKiRs4HauEAqvzH
- 9F8P2QMqKsAPM9J62gkrn+ksqkBzQ3HxrN3tOPaHyc9+/QCK7EMnRAzq3y+pNlyTO18j
- sth2meFNF/zPdDk/WgZNqRd4SP8ae1f/oVf3QtTYa34Vmf2tapxrWtL9fxqrE4/qmx/i
- ieTw==
+ bh=VTdt3uC+ttB19F3HtSXrERhSxFv3zvRil3LE5812gSQ=;
+ b=AIImSrI+5yifraxY1cijEXWfKdEiLny5ZHoZ0oucx/8AhDuRDzVLLNb89thINiV8dd
+ xGYqV4KueoOOgxLbRlkMu1VppfBf/8qfBLmsMoT9SqPcAUjLgAx4mEASlNzhPCzCdUrK
+ MDI20qD/qXTC24clPy8zq0KcsGl1dzf2xbHfnPi8iDYDR8U+EeurGzV1WwL3vCLYYJRq
+ TBrB3uN3+Yvml4qba3+JeNrUkq8aPFmmGqMEmQO9rM8AptwDfHvnMAQTNL60ADgNJpJC
+ /8WSB946b4wG3UwTljzBMwY64jjeeMmzHp25Ppcxzz007X+kar1eKcAV02uMWrGbuKiD
+ Wkyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xSpmZTHUVlMjxvu++nH1NyF/IL0CfnSZPyN2HVK7azg=;
- b=BB+kidOiNn/1Yz1OD9SrkDD++pnLNXQuQbqsVInZWuvfJEcKN6wgGyXFgwukc4zFp4
- q3fsPAh0DGSoK55ZMFHIFHbvsjIicje50J90fZlNSbzuDC79rQTdNyFs0bKR3ujHKI0T
- Q86ipwtgOcwxsOwLWLUUgnPdTZKnftxzfybTfzbpeFGtbZl4Pkw4KyP/K2LbDiTDeoey
- YB7HB0sR1GQf5f8utWeKvG5f7lTemeBGknrF9Z26NLcstVnCPCS8C/mesoX+A0Wu4JsG
- DPA+kG3qsnxKCwWh3QkX682L05cPp41Pm9z525rWHkL4oZu+9n9LYdF11ih7+ccYW90l
- fr/w==
-X-Gm-Message-State: AOAM531XKH+6Ee1Zyij3n2tQJvk8XD2SIRAmNrfFctXV6o403fxRyiSw
- Dea3/PXNNhAi5GPB25fKa+MXgZ+UUCoPSg==
-X-Google-Smtp-Source: ABdhPJwoAIcJAA7m6YmTCmekCHgs5BTpPQ5bldUR9eWONJnQKEzZ5N3dv8WHPIYoejoz/Wy/N1b+zA==
-X-Received: by 2002:a05:6e02:b24:: with SMTP id
- e4mr12116400ilu.17.1636034788263; 
- Thu, 04 Nov 2021 07:06:28 -0700 (PDT)
+ bh=VTdt3uC+ttB19F3HtSXrERhSxFv3zvRil3LE5812gSQ=;
+ b=f7602sxlhshXelEi14ePX8qGlkiNlwoSDDuTp3hvF+DPsiDN3/8e/ckVZVek2/Y7vG
+ yS+HWKJcZrQ43nXNq4cd76VudVLvl3aaRmmG566ZcKVEEpNhPnEq6eh0Kr/zwDfHLe9P
+ 2mB54eG0IGJCc+sRV/QV+I7uvPcQVl0sOgu24+0Vzk1jJ9LlyxKNnzgixj01sQRjIQr/
+ Vp1oVYAJX+3pLNeWA3qndrsWBlSwuHKSLRY6By2PrmM9/uGS2UZ379X4DzTFSr0nRxoo
+ IVpgDYcrQx2gxb/X57CUWyleva1OtGmIt9ip6FWeIm3DXFC3vzzPFWZ6x2DwFqpAsS8e
+ 91oA==
+X-Gm-Message-State: AOAM533fqsVbSpI9aYuqygIpjt/GnUz//ZSh1UeLj4RJJRhtvUGP/9br
+ 88QQbAU4PLbSOAzUvhlHw2ChUg==
+X-Google-Smtp-Source: ABdhPJy+TYE0PxzR+TXXpkO4POIHOKH2FK/vhj5Pwd+fKjV41vFr7Mf84YPCnrPizNS4M1ICs3sJRQ==
+X-Received: by 2002:a05:6e02:1989:: with SMTP id
+ g9mr21213842ilf.61.1636034793261; 
+ Thu, 04 Nov 2021 07:06:33 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.27
+ by smtp.gmail.com with ESMTPSA id l2sm3206741iln.50.2021.11.04.07.06.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 07:06:27 -0700 (PDT)
+ Thu, 04 Nov 2021 07:06:32 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
  qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Stacey Son <sson@FreeBSD.org>
-Subject: [PATCH v3 20/29] bsd-user/arm/target_arch_signal.h: arm user context
- and trapframe for signals
-Date: Thu,  4 Nov 2021 08:05:27 -0600
-Message-Id: <20211104140536.42573-21-imp@bsdimp.com>
+ Paolo Bonzini <pbonzini@redhat.com>, Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v3 25/29] bsd-user: add arm target build
+Date: Thu,  4 Nov 2021 08:05:32 -0600
+Message-Id: <20211104140536.42573-26-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211104140536.42573-1-imp@bsdimp.com>
 References: <20211104140536.42573-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::129;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x129.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::132;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x132.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -80,35 +79,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Nov 2021 14:06:32 -0000
+X-List-Received-Date: Thu, 04 Nov 2021 14:06:36 -0000
 
-Arm specific user context structures for signal handling and the closely
-related trap frame.
-
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
+CC: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
+Acked-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_signal.h | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ configs/targets/arm-bsd-user.mak | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 configs/targets/arm-bsd-user.mak
 
-diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
-index 3aaced474b..4bdfcbb8d7 100644
---- a/bsd-user/arm/target_arch_signal.h
-+++ b/bsd-user/arm/target_arch_signal.h
-@@ -74,4 +74,12 @@ typedef struct target_mcontext {
-     abi_int     mc_spare[33];
- } target_mcontext_t;
- 
-+#include "target_os_ucontext.h"
-+
-+struct target_sigframe {
-+    target_siginfo_t    sf_si;  /* saved siginfo */
-+    target_ucontext_t   sf_uc;  /* saved ucontext */
-+    target_mcontext_vfp_t sf_vfp; /* actual saved VFP context */
-+};
-+
- #endif /* !_TARGET_ARCH_SIGNAL_H_ */
+diff --git a/configs/targets/arm-bsd-user.mak b/configs/targets/arm-bsd-user.mak
+new file mode 100644
+index 0000000000..cb143e6426
+--- /dev/null
++++ b/configs/targets/arm-bsd-user.mak
+@@ -0,0 +1,2 @@
++TARGET_ARCH=arm
++TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml
 -- 
 2.33.0
 
