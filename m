@@ -1,80 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1miksw-0006po-OU
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 18:07:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35622)
+	id 1mimeg-0000iV-5K
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 20:00:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35216)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mikst-0006nZ-MR; Thu, 04 Nov 2021 18:06:59 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:40881)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mimef-0000iK-2l
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 20:00:25 -0400
+Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d]:39549)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1miksr-0002cA-HL; Thu, 04 Nov 2021 18:06:59 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- j128-20020a1c2386000000b003301a98dd62so8251142wmj.5; 
- Thu, 04 Nov 2021 15:06:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:from:to:cc:references:in-reply-to
- :content-transfer-encoding;
- bh=ov5UyOWG/LREWFhsLE/a0C98bYm5nthMTa9ht29qXy8=;
- b=ZbjsvAyjdVBraonnCW4mIjpakoixzdj0iG7KRZsEP2woZpJi7fT5w7yDdd0gtihyRW
- IuGTDAO+VSYOzMHQZdMbJmPnnY9AgmYMnpx2hKPogAaknTNX8hnK45HS0/XWypQeaw0T
- dfwyBCc1fvB4BT6+JVLQChwKb9UUIMpEQUr9lpr+nJYTwW0AebnvpKBU2Ywghi6z9bOy
- aG4X+7plFYvMSD+5c4BtMTIfRosCUA2AoMQFACOBXyWQ/o3HZGICV2QUVcsU999AtJvB
- UjHBkR/vzmH1G9PScgJbJGwO60YOijEGaS6Esq8on/CSFzM1YpNzNqNWZiecDfgoE2R5
- kFLg==
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mimeF-00018G-Qd
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 20:00:24 -0400
+Received: by mail-ua1-x92d.google.com with SMTP id i6so14058140uae.6
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 16:59:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=etDdz7r9ka1d6Iyc8TT+35IHert1sULZbtZ+2T+ACms=;
+ b=HRWsxRyODr1a5/chyWbFxXsaZSp5xZGbN14b14MJFYsVaTk/YFYcQtjHjI4r+89QTb
+ BuT9vhns0NvdjzHkxwMwVYqGFlDVK+tfou5raQEkGnGO0g5yUxNdnWdbXZcE0ctvogGl
+ DstkyDEAhig4umyEcFVT1MkgFHzDK81PBIRS8viUgG7Fnd4IuBseHurOfIcon31z9fBP
+ uTadIyF3eHMRNNyvWxRw8Z/weVSMdyz2kBJ4FHUWoVGCty11n9/Bmr2AottZhq0ZDIFY
+ t2ttKqQbzNGnfJZnHQtcvZds+3307mrubdA0F1RkldyaAVcuGiR/ntwYw59Pfvnyvsq2
+ wwTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:from:to:cc:references:in-reply-to
- :content-transfer-encoding;
- bh=ov5UyOWG/LREWFhsLE/a0C98bYm5nthMTa9ht29qXy8=;
- b=hbXEXQoe2SLYa3y7O3Tg3P94wfd3EGdCoxUAprB/2Bkc3jq63hcHEcYz26DQfdXUih
- M4oVajFziVPQn/SNBmIQOZnY+loFUz3+ISoDdFwWeSRHia7r5YK9bKpEl0sK2oBEQDgc
- bjJYpdpAZWnXR70z4KeSIhynzmyH2K0QvtS6qZxE03+Nq70yMb/V+4Zk/FkcPPHahgyg
- 8yK6Hx8SIYiOLHVe1+4RRIF9rlsCgfWw1xX3HgEfXPXxMjPah904zg803/HulINjzM8w
- hQaSmD9cqk7HqbR+uE+ZoUmkAbVUJDJJRSdevSxmV2eX8LxXdtU1AVPHYKmVCgGDPd+j
- Zx7Q==
-X-Gm-Message-State: AOAM531NIgfG+8prEStGL4eaHn6wfbwJeZhqx4PSekJ2H7eEh7pQLpqP
- 2hMPBSAzhPijhvV732/3S4T5iJk/Hhw=
-X-Google-Smtp-Source: ABdhPJzFIExVh/H62KmFvkfNz6smxu6vWsg9E784qrXwxmYZLC5V2KWVkpw7QNIaMEbB8DU8LTXvQQ==
-X-Received: by 2002:a05:600c:4f10:: with SMTP id
- l16mr7026694wmq.47.1636063614635; 
- Thu, 04 Nov 2021 15:06:54 -0700 (PDT)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id u2sm6150185wrs.17.2021.11.04.15.06.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Nov 2021 15:06:53 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <fec0423b-8ef7-7a76-6827-1ebb6c69db1a@amsat.org>
-Date: Thu, 4 Nov 2021 23:06:52 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=etDdz7r9ka1d6Iyc8TT+35IHert1sULZbtZ+2T+ACms=;
+ b=PlBmyHcBHV7IVQyl8WeNkSgiFDLB1LJ/x8vbpzeoISnHeOTv9o2PYdIqi6Y7rGBg0n
+ NbV+Cz2dMksEBWnHfRHanGFTgusrd59rgji16v6HL384kSmwkSPTf6FYv0cOmMxTaysV
+ YSnX4jd4YDBToLXzCvNdtXMuF2ppAqTPQdNvchL2kDFMOG8kqn/UPSpfPBGMBKASKonK
+ Sc9EETJrQw+jbKAQ4mZ9NRyXtbtF+wssUH/IKt9CuCgO3STWDuto0QLvFa1yKFnc/Ef4
+ mfF5/GQ38Wkl4BiPJA0dWj2Uh0ERlFCWkaA5O7Yjvc5So7XbIcDrCnvnWheCnn8M/Bm6
+ V8uQ==
+X-Gm-Message-State: AOAM530wBtG7tzyHFog5AFX+8KCI8rtJJP0fESJoCKmwzPyiV07RMn9F
+ zC0H0BA+8epGWMowqd22b1h+p9W4JM38jkzcECJSIg==
+X-Google-Smtp-Source: ABdhPJzMczPV71y1l7fTwU5vOVPZD/4ooeSrYm/TY7+oxHsJlZjvKHPDDFiJ5PdWfPe4w/pmHKkC2uc08nEcP400d4U=
+X-Received: by 2002:a9f:21d7:: with SMTP id 81mr37066813uac.39.1636070395005; 
+ Thu, 04 Nov 2021 16:59:55 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH-for-6.2 v2] .mailmap: Fix more contributor entries
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, Pan Nengyuan <pannengyuan@huawei.com>,
- Hyman Huang <huangy81@chinatelecom.cn>,
- Haibin Zhang <haibinzhang@tencent.com>, Alex Chen <alex.chen@huawei.com>
-References: <20211027043254.1248097-1-f4bug@amsat.org>
- <530b7d0e-9290-c78a-df50-7ef297dbf0b6@amsat.org>
-In-Reply-To: <530b7d0e-9290-c78a-df50-7ef297dbf0b6@amsat.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-2.093,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20211104140536.42573-1-imp@bsdimp.com>
+ <20211104140536.42573-24-imp@bsdimp.com>
+ <a4809133-bdae-8c06-511c-0aa9af6f3362@linaro.org>
+In-Reply-To: <a4809133-bdae-8c06-511c-0aa9af6f3362@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Thu, 4 Nov 2021 17:59:43 -0600
+Message-ID: <CANCZdfru-o2tX_AJWOCxmBjpXTEbCpb-nHk8t1dGpxrhUv-29A@mail.gmail.com>
+Subject: Re: [PATCH v3 23/29] bsd-user/arm/target_arch_signal.h: arm
+ set_mcontext
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Kyle Evans <kevans@freebsd.org>, Stacey Son <sson@freebsd.org>
+Content-Type: multipart/alternative; boundary="000000000000b8e4d505cfff52ce"
+Received-SPF: none client-ip=2607:f8b0:4864:20::92d;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x92d.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,59 +73,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Nov 2021 22:07:00 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 00:00:25 -0000
 
-Ping for 6.2? (Patch fully reviewed/acked by affected contributors).
+--000000000000b8e4d505cfff52ce
+Content-Type: text/plain; charset="UTF-8"
 
-On 11/1/21 11:22, Philippe Mathieu-Daudé wrote:
-> Can this patch go via the Trivial tree?
-> 
-> On 10/27/21 06:32, Philippe Mathieu-Daudé wrote:
->> These authors have some incorrect author email field.
->>
->> Acked-by: Pan Nengyuan <pannengyuan@huawei.com>
->> Reviewed-by: Alex Chen <alex.chen@huawei.com>
->> Reviewed-by: Hyman Huang <huangy81@chinatelecom.cn>
->> Reviewed-by: Haibin Zhang <haibinzhang@tencent.com>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->> Patch fully reviewed/acked.
->> ---
->>  .mailmap | 4 ++++
->>  1 file changed, 4 insertions(+)
->>
->> diff --git a/.mailmap b/.mailmap
->> index f029d1c21fe..8beb2f95ae2 100644
->> --- a/.mailmap
->> +++ b/.mailmap
->> @@ -69,6 +69,7 @@ Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
->>  # git author config, or had utf8/latin1 encoding issues.
->>  Aaron Lindsay <aaron@os.amperecomputing.com>
->>  Alexey Gerasimenko <x1917x@gmail.com>
->> +Alex Chen <alex.chen@huawei.com>
->>  Alex Ivanov <void@aleksoft.net>
->>  Andreas Färber <afaerber@suse.de>
->>  Bandan Das <bsd@redhat.com>
->> @@ -99,9 +100,11 @@ Gautham R. Shenoy <ego@in.ibm.com>
->>  Gautham R. Shenoy <ego@linux.vnet.ibm.com>
->>  Gonglei (Arei) <arei.gonglei@huawei.com>
->>  Guang Wang <wang.guang55@zte.com.cn>
->> +Haibin Zhang <haibinzhang@tencent.com>
->>  Hailiang Zhang <zhang.zhanghailiang@huawei.com>
->>  Hanna Reitz <hreitz@redhat.com> <mreitz@redhat.com>
->>  Hervé Poussineau <hpoussin@reactos.org>
->> +Hyman Huang <huangy81@chinatelecom.cn>
->>  Jakub Jermář <jakub@jermar.eu>
->>  Jakub Jermář <jakub.jermar@kernkonzept.com>
->>  Jean-Christophe Dubois <jcd@tribudubois.net>
->> @@ -135,6 +138,7 @@ Nicholas Thomas <nick@bytemark.co.uk>
->>  Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>
->>  Orit Wasserman <owasserm@redhat.com>
->>  Paolo Bonzini <pbonzini@redhat.com>
->> +Pan Nengyuan <pannengyuan@huawei.com>
->>  Pavel Dovgaluk <dovgaluk@ispras.ru>
->>  Pavel Dovgaluk <pavel.dovgaluk@gmail.com>
->>  Pavel Dovgaluk <Pavel.Dovgaluk@ispras.ru>
->>
-> 
+On Thu, Nov 4, 2021 at 12:43 PM Richard Henderson <
+richard.henderson@linaro.org> wrote:
+
+> On 11/4/21 10:05 AM, Warner Losh wrote:
+> > +    /*
+> > +     * Make sure T mode matches the PC's notion of thumb mode, although
+> > +     * FreeBSD lets the processor sort this out, so we may need remove
+> > +     * this check, or generate a signal...
+> > +     */
+> > +    if (!!(tswap32(gr[TARGET_REG_PC]) & 1) != !!(cpsr & CPSR_T)) {
+> > +        return -TARGET_EINVAL;
+> > +    }
+>
+> I've had a read through the Arm ARM for "movs pc, lr", which is how
+> swi_exit returns to
+> userspace:
+>
+>      CPSRWriteByInstr(SPSR[], '1111', TRUE);
+>      ...
+>      BranchWritePC(result);
+>
+> So the CPSR gets written first, which sets the T bit, and thus the result
+> of
+> CurrentInstrSet(), then
+>
+> BranchWritePC(bits(32) address)
+>    if CurrentInstrSet() == InstrSet_ARM then
+>      if ArchVersion() < 6 && address<1:0> != '00' then UNPREDICTABLE;
+>      BranchTo(address<31:2>:'00');
+>    ...
+>    else
+>      BranchTo(address<31:1>:'0');
+>
+> > +    env->regs[15] = tswap32(gr[TARGET_REG_PC]);
+>
+> So this should mask the low 1 or 2 bits depending on cpsr & CPSR_T.
+>
+
+Will do. Thanks for all the patient explanations.
+
+Warner
+
+
+> r~
+>
+
+--000000000000b8e4d505cfff52ce
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 4, 2021 at 12:43 PM Richa=
+rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
+nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">On 11/4/21 10:05 AM, Warner Losh wrote:<br>
+&gt; +=C2=A0 =C2=A0 /*<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* Make sure T mode matches the PC&#39;s notion of=
+ thumb mode, although<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* FreeBSD lets the processor sort this out, so we=
+ may need remove<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* this check, or generate a signal...<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
+&gt; +=C2=A0 =C2=A0 if (!!(tswap32(gr[TARGET_REG_PC]) &amp; 1) !=3D !!(cpsr=
+ &amp; CPSR_T)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return -TARGET_EINVAL;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+<br>
+I&#39;ve had a read through the Arm ARM for &quot;movs pc, lr&quot;, which =
+is how swi_exit returns to <br>
+userspace:<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0CPSRWriteByInstr(SPSR[], &#39;1111&#39;, TRUE);<br>
+=C2=A0 =C2=A0 =C2=A0...<br>
+=C2=A0 =C2=A0 =C2=A0BranchWritePC(result);<br>
+<br>
+So the CPSR gets written first, which sets the T bit, and thus the result o=
+f <br>
+CurrentInstrSet(), then<br>
+<br>
+BranchWritePC(bits(32) address)<br>
+=C2=A0 =C2=A0if CurrentInstrSet() =3D=3D InstrSet_ARM then<br>
+=C2=A0 =C2=A0 =C2=A0if ArchVersion() &lt; 6 &amp;&amp; address&lt;1:0&gt; !=
+=3D &#39;00&#39; then UNPREDICTABLE;<br>
+=C2=A0 =C2=A0 =C2=A0BranchTo(address&lt;31:2&gt;:&#39;00&#39;);<br>
+=C2=A0 =C2=A0...<br>
+=C2=A0 =C2=A0else<br>
+=C2=A0 =C2=A0 =C2=A0BranchTo(address&lt;31:1&gt;:&#39;0&#39;);<br>
+<br>
+&gt; +=C2=A0 =C2=A0 env-&gt;regs[15] =3D tswap32(gr[TARGET_REG_PC]);<br>
+<br>
+So this should mask the low 1 or 2 bits depending on cpsr &amp; CPSR_T.<br>=
+</blockquote><div><br></div><div>Will do. Thanks for all the patient explan=
+ations.</div><div><br></div><div>Warner</div><div>=C2=A0</div><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
+d rgb(204,204,204);padding-left:1ex">
+r~<br>
+</blockquote></div></div>
+
+--000000000000b8e4d505cfff52ce--
 
