@@ -1,73 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mipmG-0005Jn-UY
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:20:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53906)
+	id 1mipmH-0005K7-36
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:20:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mipm1-0004XX-W2
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:15 -0400
-Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136]:33689)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mipm5-0004ev-Cn
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:17 -0400
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31]:33786)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miply-0004BM-NL
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:13 -0400
-Received: by mail-il1-x136.google.com with SMTP id l19so8323317ilk.0
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:20:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mipm3-0004CM-5M
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:17 -0400
+Received: by mail-io1-xd31.google.com with SMTP id z206so9371406iof.0
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:20:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1ztRBQYqWrUwRLf6NQ4W8izvboRcDbY0eKrhIvHHz3I=;
- b=jv0dLjV4mrXUY3snyiQ6c51BEj97lhaQkMRHPwt5k7otCAN+GpVbKFtyHbXikURwa7
- rgV5xgjl0vSE17euTf4i7SrE5RuIugPGBca6SBnznD2Ep/8lsEsNrpse60IjZ319Dm9z
- dz+n1PHGv4EY3EopGMUQXuLuts8ukU/PTlNJKT00v40U4NNR69V+0HpZVCSU9EbRwWdD
- i/+tbNoIgu0ZgU5gTOIrQL7/X9W5T8tYdutldwMjEqRpc4ANnv/o+taHI8vgiDJQD2qg
- PxyJbGPn3Kz9P8tED+CPDst8h9MUN7bbwcPD4Ea4N/wa+kvX7KzRZ1e/8+SH/56isWlt
- cptQ==
+ bh=8R82c+oSIU+sp8WqnJE/Io3vjzLSVpjkS5kzwk9Q/Pk=;
+ b=vnUCfdYjsH88o9fPUsVo+W+O0+5uumY9F7skizHk8Kfc9gKK9W5Bn7RE9C1VgxtDs/
+ bD8ftsPqTeDjMQKstVXwoi29ZzdNeMEc9M86iAgT9r/ydm23M0K+mOekOchDn9T8UA0R
+ Jl7yPoMGX4fXS017AiRlGwCiAGBxHAbutgt9aDAtLyto5Owl7G0inX45s5pP1mfSiU6c
+ NlIA792KAFNCoJm/X9rbzDOsXyn1bIoPEQmY7eSy4ICcUgu5NFIG9Oj5NqCuGS3ypZ2z
+ 10pd+AOio/ovwOBPkPSrRY5RA4zd2H3nHeqo+t4ZpLNs7zVul7Xw55Ws+SVTkWPCmKuk
+ NEUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=1ztRBQYqWrUwRLf6NQ4W8izvboRcDbY0eKrhIvHHz3I=;
- b=aDvjWu/tENn92uGl60i8+GAqe/PUy9s++tgaqiktaTBWFID8SgEllQpx6RkWhT8+Aj
- Bv0IP/tMZfkV49WHyWJhmV/HOw9Si03uEwlcPrAE5+WCT464Shbdh+uwDJ9dK/hV0UiM
- jnPBxChvf8pOEoW1qM1nWvCE0Bp6ydWNDLMhyIpA/TzZ5vpO1/woC2/AltKn8Sie5UFV
- TSPEJPcfzHtO4gXz9xAdmO7qhLwXSdjs26kGSuo11nla0qPZ5bcdITsJD8ALh8v2GTX8
- ldQ/ve99hl9bEjJTH876+O7YkE8NqjhyG8MauGeCxqEeAvfK5RybEtS1eAgPP+oigYb5
- swQA==
-X-Gm-Message-State: AOAM533NAC3k96AnA9JZqbNZuxEZxksZVqgBb0z358DMJPKNy2Pp7u4q
- jpZpH/HnbXwfdWqWniTA1qp53Q==
-X-Google-Smtp-Source: ABdhPJxQKqlXIZYFNc73EhrO2XRmXvaNTXGZacHM5nhF33rM9hn0hDbkSfRJXtXMiWWMlOh0VXUzOg==
-X-Received: by 2002:a92:d48f:: with SMTP id p15mr36433785ilg.236.1636082408953; 
- Thu, 04 Nov 2021 20:20:08 -0700 (PDT)
+ bh=8R82c+oSIU+sp8WqnJE/Io3vjzLSVpjkS5kzwk9Q/Pk=;
+ b=o4xxC70sNIvPhdoVswLVLaXn2Bt5GbWMmAhsd72YmDKhMEfP19JcnwFRyYt2fHNnx5
+ JcfxjXOOHPxwv2eQRoSoQybZtUJGKA/bh1iJWmONpnFhNar8UKpKxD6F1JRXT+nYZpu1
+ Acd/AXSjW7a9fl/uogY+CUub5mUOio+F+7zGadA0tr+QgAbgfYRO/mqr1OY/dOhq7500
+ phULB0XOD8vLXMN2nHnkl123e9CamdYyzPdc3n918xCD+xZOiBLRYRxIjD4PU4j1jdny
+ NCl5kHcFviThzYQLbYxHjPpEFAoowiWfF/kcQPi9pnFi7kd6UtVLMdaC0mh5oPFx24XG
+ 3DjA==
+X-Gm-Message-State: AOAM5328E2cOsfExa/s80oRcQOuaKA0slXY8lW79SRF/cjsWxJY6x3x/
+ ZwWBac7ZDLerNlBqJwpaibdqqg==
+X-Google-Smtp-Source: ABdhPJwBUoeLYNtlSkITxlkI2iu84t+XQGIx40SUbDg3AxeoJrM/36Vo+dIphPjUMDHFRdeHQKwlBQ==
+X-Received: by 2002:a5d:8ad5:: with SMTP id e21mr40066200iot.195.1636082413058; 
+ Thu, 04 Nov 2021 20:20:13 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.20.07
+ by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.20.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 20:20:08 -0700 (PDT)
+ Thu, 04 Nov 2021 20:20:12 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Philippe Mathieu-Daude <f4bug@amsat.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
- Kyle Evans <kevans@freebsd.org>, Stacey Son <sson@FreeBSD.org>,
- Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v4 22/36] bsd-user/arm/target_arch_vmparam.h: Parameters for
- arm address space
-Date: Thu,  4 Nov 2021 21:19:03 -0600
-Message-Id: <20211105031917.87837-23-imp@bsdimp.com>
+ Kyle Evans <kevans@freebsd.org>, Kyle Evans <kevans@FreeBSD.org>,
+ Stacey Son <sson@FreeBSD.org>
+Subject: [PATCH v4 26/36] bsd-user/arm/target_arch_elf.h: arm get hwcap
+Date: Thu,  4 Nov 2021 21:19:07 -0600
+Message-Id: <20211105031917.87837-27-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211105031917.87837-1-imp@bsdimp.com>
 References: <20211105031917.87837-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::136;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x136.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d31;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd31.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,76 +79,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 03:20:15 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 03:20:17 -0000
 
-Various parameters describing the layout of the ARM address space. In
-addition, define routines to get the stack pointer and to set the second
-return value.
+Implement get_elf_hwcap to get the first word of hardware capabilities.
 
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
+Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_vmparam.h | 48 ++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_vmparam.h
+ bsd-user/arm/target_arch_elf.h | 72 +++++++++++++++++++++++++++++++++-
+ 1 file changed, 71 insertions(+), 1 deletion(-)
 
-diff --git a/bsd-user/arm/target_arch_vmparam.h b/bsd-user/arm/target_arch_vmparam.h
-new file mode 100644
-index 0000000000..4bbc04ddf5
---- /dev/null
-+++ b/bsd-user/arm/target_arch_vmparam.h
-@@ -0,0 +1,48 @@
-+/*
-+ *  arm VM parameters definitions
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef _TARGET_ARCH_VMPARAM_H_
-+#define _TARGET_ARCH_VMPARAM_H_
+diff --git a/bsd-user/arm/target_arch_elf.h b/bsd-user/arm/target_arch_elf.h
+index 15b5c66511..02d25b8926 100644
+--- a/bsd-user/arm/target_arch_elf.h
++++ b/bsd-user/arm/target_arch_elf.h
+@@ -31,6 +31,76 @@
+ #define USE_ELF_CORE_DUMP
+ #define ELF_EXEC_PAGESIZE       4096
+ 
+-#define ELF_HWCAP 0
++#define ELF_HWCAP get_elf_hwcap()
 +
-+#include "cpu.h"
++#define GET_FEATURE(feat, hwcap) \
++    do { if (arm_feature(&cpu->env, feat)) { hwcaps |= hwcap; } } while (0)
 +
-+/* compare to sys/arm/include/vmparam.h */
-+#define TARGET_MAXTSIZ      (64 * MiB)           /* max text size */
-+#define TARGET_DFLDSIZ      (128 * MiB)          /* initial data size limit */
-+#define TARGET_MAXDSIZ      (512 * MiB)          /* max data size */
-+#define TARGET_DFLSSIZ      (4 * MiB)            /* initial stack size limit */
-+#define TARGET_MAXSSIZ      (64 * MiB)           /* max stack size */
-+#define TARGET_SGROWSIZ     (128 * KiB)          /* amount to grow stack */
++#define GET_FEATURE_ID(feat, hwcap) \
++    do { if (cpu_isar_feature(feat, cpu)) { hwcaps |= hwcap; } } while (0)
 +
-+#define TARGET_RESERVED_VA  0xf7000000
++enum {
++    ARM_HWCAP_ARM_SWP       = 1 << 0,
++    ARM_HWCAP_ARM_HALF      = 1 << 1,
++    ARM_HWCAP_ARM_THUMB     = 1 << 2,
++    ARM_HWCAP_ARM_26BIT     = 1 << 3,
++    ARM_HWCAP_ARM_FAST_MULT = 1 << 4,
++    ARM_HWCAP_ARM_FPA       = 1 << 5,
++    ARM_HWCAP_ARM_VFP       = 1 << 6,
++    ARM_HWCAP_ARM_EDSP      = 1 << 7,
++    ARM_HWCAP_ARM_JAVA      = 1 << 8,
++    ARM_HWCAP_ARM_IWMMXT    = 1 << 9,
++    ARM_HWCAP_ARM_CRUNCH    = 1 << 10,
++    ARM_HWCAP_ARM_THUMBEE   = 1 << 11,
++    ARM_HWCAP_ARM_NEON      = 1 << 12,
++    ARM_HWCAP_ARM_VFPv3     = 1 << 13,
++    ARM_HWCAP_ARM_VFPv3D16  = 1 << 14,
++    ARM_HWCAP_ARM_TLS       = 1 << 15,
++    ARM_HWCAP_ARM_VFPv4     = 1 << 16,
++    ARM_HWCAP_ARM_IDIVA     = 1 << 17,
++    ARM_HWCAP_ARM_IDIVT     = 1 << 18,
++    ARM_HWCAP_ARM_VFPD32    = 1 << 19,
++    ARM_HWCAP_ARM_LPAE      = 1 << 20,
++    ARM_HWCAP_ARM_EVTSTRM   = 1 << 21,
++};
 +
-+                /* KERNBASE - 512 MB */
-+#define TARGET_VM_MAXUSER_ADDRESS   (0xc0000000 - (512 * MiB))
-+#define TARGET_USRSTACK             TARGET_VM_MAXUSER_ADDRESS
-+
-+static inline abi_ulong get_sp_from_cpustate(CPUARMState *state)
++static uint32_t get_elf_hwcap(void)
 +{
-+    return state->regs[13]; /* sp */
++    ARMCPU *cpu = ARM_CPU(thread_cpu);
++    uint32_t hwcaps = 0;
++
++    hwcaps |= ARM_HWCAP_ARM_SWP;
++    hwcaps |= ARM_HWCAP_ARM_HALF;
++    hwcaps |= ARM_HWCAP_ARM_THUMB;
++    hwcaps |= ARM_HWCAP_ARM_FAST_MULT;
++
++    /* probe for the extra features */
++    /* EDSP is in v5TE and above */
++    GET_FEATURE(ARM_FEATURE_V5, ARM_HWCAP_ARM_EDSP);
++    GET_FEATURE(ARM_FEATURE_IWMMXT, ARM_HWCAP_ARM_IWMMXT);
++    GET_FEATURE(ARM_FEATURE_THUMB2EE, ARM_HWCAP_ARM_THUMBEE);
++    GET_FEATURE(ARM_FEATURE_NEON, ARM_HWCAP_ARM_NEON);
++    GET_FEATURE(ARM_FEATURE_V6K, ARM_HWCAP_ARM_TLS);
++    GET_FEATURE(ARM_FEATURE_LPAE, ARM_HWCAP_ARM_LPAE);
++    GET_FEATURE_ID(aa32_arm_div, ARM_HWCAP_ARM_IDIVA);
++    GET_FEATURE_ID(aa32_thumb_div, ARM_HWCAP_ARM_IDIVT);
++    GET_FEATURE_ID(aa32_vfp, ARM_HWCAP_ARM_VFP);
++
++    if (cpu_isar_feature(aa32_fpsp_v3, cpu) ||
++        cpu_isar_feature(aa32_fpdp_v3, cpu)) {
++        hwcaps |= ARM_HWCAP_ARM_VFPv3;
++        if (cpu_isar_feature(aa32_simd_r32, cpu)) {
++            hwcaps |= ARM_HWCAP_ARM_VFPD32;
++        } else {
++            hwcaps |= ARM_HWCAP_ARM_VFPv3D16;
++        }
++    }
++    GET_FEATURE_ID(aa32_simdfmac, ARM_HWCAP_ARM_VFPv4);
++
++    return hwcaps;
 +}
 +
-+static inline void set_second_rval(CPUARMState *state, abi_ulong retval2)
-+{
-+    state->regs[1] = retval2;
-+}
-+
-+#endif  /* ! _TARGET_ARCH_VMPARAM_H_ */
++#undef GET_FEATURE
++#undef GET_FEATURE_ID
+ 
+ #endif /* _TARGET_ARCH_ELF_H_ */
 -- 
 2.33.0
 
