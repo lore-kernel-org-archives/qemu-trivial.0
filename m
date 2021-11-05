@@ -1,69 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mj1XL-0001Na-7U
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 11:53:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47202)
+	id 1mj1bE-0006Jb-1V
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 11:57:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48262)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kevans@freebsd.org>)
- id 1mj1XI-0001Lu-Pf; Fri, 05 Nov 2021 11:53:48 -0400
-Received: from mx2.freebsd.org ([2610:1c1:1:606c::19:2]:34830)
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1mj1b6-0006Hk-Jr
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 11:57:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51588)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kevans@freebsd.org>)
- id 1mj1XG-0006Ol-NA; Fri, 05 Nov 2021 11:53:48 -0400
-Received: from mx1.freebsd.org (mx1.freebsd.org [96.47.72.80])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits)
- client-signature RSA-PSS (4096 bits))
- (Client CN "mx1.freebsd.org", Issuer "R3" (verified OK))
- by mx2.freebsd.org (Postfix) with ESMTPS id 4F51992AC7;
- Fri,  5 Nov 2021 15:53:37 +0000 (UTC)
- (envelope-from kevans@freebsd.org)
-Received: from smtp.freebsd.org (smtp.freebsd.org [96.47.72.83])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256
- client-signature RSA-PSS (4096 bits) client-digest SHA256)
- (Client CN "smtp.freebsd.org", Issuer "R3" (verified OK))
- by mx1.freebsd.org (Postfix) with ESMTPS id 4Hm4md0lM0z3Dwc;
- Fri,  5 Nov 2021 15:53:37 +0000 (UTC)
- (envelope-from kevans@freebsd.org)
-Received: from mail-qt1-f177.google.com (mail-qt1-f177.google.com
- [209.85.160.177])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (Client CN "smtp.gmail.com", Issuer "GTS CA 1D4" (verified OK))
- (Authenticated sender: kevans)
- by smtp.freebsd.org (Postfix) with ESMTPSA id DB8B97C3B;
- Fri,  5 Nov 2021 15:53:36 +0000 (UTC)
- (envelope-from kevans@freebsd.org)
-Received: by mail-qt1-f177.google.com with SMTP id u7so7558883qtc.1;
- Fri, 05 Nov 2021 08:53:36 -0700 (PDT)
-X-Gm-Message-State: AOAM531d/t1LMgI+3NEmhixd/vN0VR3dCOnbd3Cz8GAatKLKQxIsZfio
- wvEg/3HsZXhuMWNFRWEm1Ty3irMufBFwDVg3s3E=
-X-Google-Smtp-Source: ABdhPJxa0YamnKliklD9UrbAU+Ajg2MgVA2shT3C/lmRTt0TLRahQdvlSpeooqlPy7QoHd/zjUSAgYvlx5oDrZhefrw=
-X-Received: by 2002:a05:622a:13:: with SMTP id
- x19mr61576957qtw.83.1636127616314; 
- Fri, 05 Nov 2021 08:53:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1mj1b2-0006zq-ME
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 11:57:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1636127858;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8lbw4urAsY28vIOFJXljLaDDWbNRUmdHZJKje1qEhY4=;
+ b=ciLTgFgEp6GwEA3wBltUyj2ZUcJ348JikgBRXchn4M0L9ghkFoTBosrN1kZ2Vy+bxAuUdy
+ l2fG/0m+JDysM+Fuwtc6jdDGaY89UzpZ/YNtuKtWg4luNGOX4SZduWXCRAdaEGOxDdsWGD
+ yJ4HcTsYwvlJIa2B5AznuKocFD6dHII=
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
+ [209.85.210.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-182-sVUSGWs-OxeFAdLRSVEagA-1; Fri, 05 Nov 2021 11:57:37 -0400
+X-MC-Unique: sVUSGWs-OxeFAdLRSVEagA-1
+Received: by mail-pf1-f198.google.com with SMTP id
+ 134-20020a62198c000000b0047bf0981003so6049563pfz.4
+ for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 08:57:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=8lbw4urAsY28vIOFJXljLaDDWbNRUmdHZJKje1qEhY4=;
+ b=7EdKPO3dnXfcvPzXB1+qI4XE2pZcq2aW6dmJKQpoJeewITZNcErqkKi/onIBsxRak4
+ vOyZRok3qeMVS8ivDT6Tv8vCnnhzn0v+LWRzLhYfifHMtlP8TF0hSUnneaTaUuzE0PmU
+ IrdB9L4AOXlrhr8jbl7lQrerUGzhsjhHU/ovBg/+sS+RcbQqVho7zv6bwRb7nEdFxL0z
+ FP+IwfJqHZnyJcrkpeNdT0klkd3OStRU/NXEfdlro2cIvYOlAsO7kML3V3X+m5x7Py88
+ cygAWod38kTzeZfB0gDP0TFVDTecdLhdGDD8bgDF/bYpeVSEL350Eut3ojONDjMTfvT6
+ aoTw==
+X-Gm-Message-State: AOAM5328rc/eJcYFTm41kdvoj2rD4mObEB6xRBf8/Pakp+OVSMtUMdbH
+ 2iMoZ6nUvkul0CClaVTCrVg5zusLBW+6BwHYverdbXyMA+YQUK70Iq05pDKxOoj+79qk7ZOIOT3
+ uKFsPWZfU0fZ7N4VsIFahww5pf8J/tn0eRQ==
+X-Received: by 2002:a63:f316:: with SMTP id l22mr43615148pgh.439.1636127856729; 
+ Fri, 05 Nov 2021 08:57:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJys2rARk8S7Ssc/G/TwW46I3lJEGCYcAWAHjRwFq5ZXoiXOjMlJSDpbVfY9/3PyTi1CDoOZQzPN4VO/7MGXmH8=
+X-Received: by 2002:a63:f316:: with SMTP id l22mr43615118pgh.439.1636127856393; 
+ Fri, 05 Nov 2021 08:57:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20211105031917.87837-1-imp@bsdimp.com>
- <20211105031917.87837-2-imp@bsdimp.com>
- <0901cff3-28ed-4a80-90b2-d2e4966e667a@linaro.org>
-In-Reply-To: <0901cff3-28ed-4a80-90b2-d2e4966e667a@linaro.org>
-From: Kyle Evans <kevans@freebsd.org>
-Date: Fri, 5 Nov 2021 10:53:25 -0500
-X-Gmail-Original-Message-ID: <CACNAnaFzT7iytnoNMTNM_O9oUskpMrXH35Yk4cO1GsCMkNLM+A@mail.gmail.com>
-Message-ID: <CACNAnaFzT7iytnoNMTNM_O9oUskpMrXH35Yk4cO1GsCMkNLM+A@mail.gmail.com>
-Subject: Re: [PATCH v4 01/36] bsd-user/mips*: Remove
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Warner Losh <imp@bsdimp.com>, QEMU Developers <qemu-devel@nongnu.org>, 
- Philippe Mathieu-Daude <f4bug@amsat.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Laurent Vivier <laurent@vivier.eu>, Kyle Evans <kevans@freebsd.org>
+References: <20211105142656.145791-1-philmd@redhat.com>
+In-Reply-To: <20211105142656.145791-1-philmd@redhat.com>
+From: Willian Rampazzo <wrampazz@redhat.com>
+Date: Fri, 5 Nov 2021 12:57:10 -0300
+Message-ID: <CAKJDGDYYizAtxCVeJJH0VfDpmOjXwbbJULnxYv7g2nMo5bfUgg@mail.gmail.com>
+Subject: Re: [PATCH] docs/about/deprecated: Remove empty 'related binaries'
+ section
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, libvir-list@redhat.com, 
+ Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
+ John Snow <jsnow@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2610:1c1:1:606c::19:2;
- envelope-from=kevans@freebsd.org; helo=mx2.freebsd.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=wrampazz@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.648,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,30 +86,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 15:53:49 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 15:57:47 -0000
 
-On Fri, Nov 5, 2021 at 10:52 AM Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, Nov 5, 2021 at 11:31 AM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
 >
-> On 11/4/21 11:18 PM, Warner Losh wrote:
-> > FreeBSD has dropped support for mips starting with FreeBSD 14. mips
-> > support has been removed from the bsd-user fork because updating it for
-> > new signal requirements. Remove it here since it is a distraction.
-> >
-> > Signed-off-by: Warner Losh<imp@bsdimp.com>
-> > ---
-> >   bsd-user/mips/target_arch_sysarch.h   | 69 ---------------------------
-> >   bsd-user/mips/target_syscall.h        | 52 --------------------
-> >   bsd-user/mips64/target_arch_sysarch.h | 69 ---------------------------
-> >   bsd-user/mips64/target_syscall.h      | 53 --------------------
-> >   4 files changed, 243 deletions(-)
-> >   delete mode 100644 bsd-user/mips/target_arch_sysarch.h
-> >   delete mode 100644 bsd-user/mips/target_syscall.h
-> >   delete mode 100644 bsd-user/mips64/target_arch_sysarch.h
-> >   delete mode 100644 bsd-user/mips64/target_syscall.h
-> I'm somewhat surprised that sys/mips/mips still exists on the main branch?  But anyway,
+> Commit 497a30dbb06 ("qemu-img: Require -F with -b backing image")
+> removed the content of the "Related binaries" section but forgot
+> to remove the section title. Since it is now empty, remove it too.
 >
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  docs/about/deprecated.rst | 3 ---
+>  1 file changed, 3 deletions(-)
+>
 
-It's slated for removal here within the coming month or two-
+Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+
 
