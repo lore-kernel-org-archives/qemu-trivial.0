@@ -1,81 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mj0BQ-00010N-UK
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 10:27:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43516)
+	id 1mj1W5-0000Je-RF
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 11:52:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46954)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mj0BP-0000wk-QF
- for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 10:27:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:52814)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mj0BL-0008PM-TR
- for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 10:27:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636122421;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=kRqyJC/JV+6B11q5unZLQCsXiO1VFs66KXHe5SIeVtg=;
- b=BOp0aOa54O62knhxozauVF5VOgjhgOEFEX1lcq5uq7KYS4ASB1B2Eg/Ij1trQKWr0RaWEh
- wEhOtnnrt0mlnSLukNYrW+49p6AgjfgRvqW526zhwG87VmZOPiTo1289+5DusIR2MdYM8a
- /Qynyk3zswhYXJkP6xLQcvjPtd3/NWc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-470-hC097rCcP5qi76MflG3HAg-1; Fri, 05 Nov 2021 10:27:00 -0400
-X-MC-Unique: hC097rCcP5qi76MflG3HAg-1
-Received: by mail-wr1-f71.google.com with SMTP id
- h7-20020adfaa87000000b001885269a937so1252179wrc.17
- for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 07:27:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mj1W4-0000GZ-EM
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 11:52:32 -0400
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e]:44642)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mj1W2-0004yU-Fj
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 11:52:32 -0400
+Received: by mail-qk1-x72e.google.com with SMTP id bj27so7472978qkb.11
+ for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 08:52:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Cfy1fXm4aA0ZDOHPRy57MLQFkuAcmaLsF8/hWn3uko8=;
+ b=ZiCX2lwdVwW5TtnQx2lCmUNG/k7NEYGGUyki/LRwmhutpw5IdJtN+mvyR21fzsbKqw
+ eOiOxWOfnmiAiZTU+YtUmFZuKMlnM/qqFFqrDiJkIzxdW7Jrh8Mdcc7a2C1AvpqyC6Mh
+ VnaVi/qKcshMzLcdC3CuP5C2kU2BYPkgOuMJXpTlr70tUr4NxhxsJmuWhN+6HjadiEkm
+ 781J9Yn9nkrrNm2t/7kco5ufw4CDoZrWwEyc1lCXzNRGIgaAooZrgovfOTpX1QKYP8UM
+ NVeqBoBvpmf0cYYd2ZxEAHwagJhQxwl+dcNxR73OfQaTvwHncd3er48EZgf4PPmT+0vF
+ CtuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=kRqyJC/JV+6B11q5unZLQCsXiO1VFs66KXHe5SIeVtg=;
- b=gr41A8NAOo0XtEFrnFyzaV8/ubKvuIEpNVAqYdq6bskWHzVpzmitw2W8kUwESWi6Dm
- 5fcNQw1FiymlIJQD79W4lTa5Wn8ksNmwODHbBH5BVkcIjFiYaqLDe7g+vZgpFqJ3zifY
- gP3GL4EW0w/YfYzq9FcS5O2He9QYX+l/eKbE2gT8s4mVa/YYwF44jQahePLK3x7xY6Ol
- 0LcC1ClsAs6Xc6M945ytE5nPbov32h01S+fqgb5/RAFRgYZPdrJhsj8/Nu1tdlcjJTDU
- 4yP4CV8jf5HaYmZJvkDnh0mxq2iKiVKta0wJNYt3U4Xoi96ZePDfPN7hThbZDyENxKCN
- Dmvw==
-X-Gm-Message-State: AOAM5306xrs06WMpoJ8zi8L0xLJjoMzEN6Qe5FHHqX3vU4fgExpBjAOu
- Xsar6USxSdMwIwl2hWmb8AyVQwCOBGknW/j9JuPEQbfEax/LS8xf6x6LgtUpT6tgHG8XgxLStw1
- LFhMZ9zmVS5ISU/784g==
-X-Received: by 2002:a05:6000:1141:: with SMTP id
- d1mr1905588wrx.342.1636122419339; 
- Fri, 05 Nov 2021 07:26:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwNKA0brfXbUbNdgtoxtTB8FpI8d0pMyjoPIuMqeTYMNNXVtQNlLU1FWwa7fhX0/dDU/+rBjQ==
-X-Received: by 2002:a05:6000:1141:: with SMTP id
- d1mr1905547wrx.342.1636122419073; 
- Fri, 05 Nov 2021 07:26:59 -0700 (PDT)
-Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id j10sm8064281wru.15.2021.11.05.07.26.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Nov 2021 07:26:58 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: libvir-list@redhat.com, John Snow <jsnow@redhat.com>,
- Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] docs/about/deprecated: Remove empty 'related binaries' section
-Date: Fri,  5 Nov 2021 15:26:56 +0100
-Message-Id: <20211105142656.145791-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.31.1
+ bh=Cfy1fXm4aA0ZDOHPRy57MLQFkuAcmaLsF8/hWn3uko8=;
+ b=JKyPTM9I5TzKPwvf4NybjyAcaiZYBCatxu0DKFZ3x+um5dts6TNr2Ip26QY7PwrKw6
+ JeTq5xfuVzojiQF1igqUNW5he2otrUO3Z0cvzGK+VODGdhmr/4r+Of8pkPNpuduBN77Q
+ 4YZwPTJprDI0Nmr6ICFb+w6zXINgm1Sj8dgM3EnM4O3J36D+x9a+Uuz0FU9zKMyuFSsZ
+ rdE4pbtzZBfW6zuyyAXzPcsIHWMMB56hriX14R87NgQGV/Jkm/4NopErQFviUP0yOFY6
+ zPVh0uLLXJiv4+hInLjwmMT/L3dPUh0lGWKEQp6T+YHB/2n/XV1Tzc2nOh4OfTFuGLXn
+ D8Rg==
+X-Gm-Message-State: AOAM532KgVnsGWWNYBywhWtfguujsx5nSmao0a0Qla5sQqvvjr9FO4ip
+ PfAP5BnntMZYdaxZZzPfrC371w==
+X-Google-Smtp-Source: ABdhPJyMZ5JrJ8w0IQLoe7fOD9ipbzxYBso7ido5lFUqZ2TvFKUB8/1yhFEdEIiAvyZA1iEHGr8fgA==
+X-Received: by 2002:a05:620a:2a01:: with SMTP id
+ o1mr10991867qkp.305.1636127549375; 
+ Fri, 05 Nov 2021 08:52:29 -0700 (PDT)
+Received: from [10.200.5.34] ([38.66.81.217])
+ by smtp.gmail.com with ESMTPSA id b5sm6324713qtb.1.2021.11.05.08.52.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Nov 2021 08:52:29 -0700 (PDT)
+Subject: Re: [PATCH v4 01/36] bsd-user/mips*: Remove
+To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
+Cc: Philippe Mathieu-Daude <f4bug@amsat.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Kyle Evans <kevans@freebsd.org>
+References: <20211105031917.87837-1-imp@bsdimp.com>
+ <20211105031917.87837-2-imp@bsdimp.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <0901cff3-28ed-4a80-90b2-d2e4966e667a@linaro.org>
+Date: Fri, 5 Nov 2021 11:52:27 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.648,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20211105031917.87837-2-imp@bsdimp.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x72e.google.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.093,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,32 +84,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 14:27:08 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 15:52:32 -0000
 
-Commit 497a30dbb06 ("qemu-img: Require -F with -b backing image")
-removed the content of the "Related binaries" section but forgot
-to remove the section title. Since it is now empty, remove it too.
+On 11/4/21 11:18 PM, Warner Losh wrote:
+> FreeBSD has dropped support for mips starting with FreeBSD 14. mips
+> support has been removed from the bsd-user fork because updating it for
+> new signal requirements. Remove it here since it is a distraction.
+> 
+> Signed-off-by: Warner Losh<imp@bsdimp.com>
+> ---
+>   bsd-user/mips/target_arch_sysarch.h   | 69 ---------------------------
+>   bsd-user/mips/target_syscall.h        | 52 --------------------
+>   bsd-user/mips64/target_arch_sysarch.h | 69 ---------------------------
+>   bsd-user/mips64/target_syscall.h      | 53 --------------------
+>   4 files changed, 243 deletions(-)
+>   delete mode 100644 bsd-user/mips/target_arch_sysarch.h
+>   delete mode 100644 bsd-user/mips/target_syscall.h
+>   delete mode 100644 bsd-user/mips64/target_arch_sysarch.h
+>   delete mode 100644 bsd-user/mips64/target_syscall.h
+I'm somewhat surprised that sys/mips/mips still exists on the main branch?  But anyway,
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- docs/about/deprecated.rst | 3 ---
- 1 file changed, 3 deletions(-)
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 56f9ad15ab5..5e514fb443d 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -370,9 +370,6 @@ The ``I7200`` guest CPU relies on the nanoMIPS ISA, which is deprecated
- (the ISA has never been upstreamed to a compiler toolchain). Therefore
- this CPU is also deprecated.
- 
--Related binaries
------------------
--
- Backwards compatibility
- -----------------------
- 
--- 
-2.31.1
 
+r~
 
