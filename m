@@ -1,86 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mizFa-0008FR-0p
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 09:27:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52176)
+	id 1mj0BQ-00010N-UK
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 10:27:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43516)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mizFK-0008BO-DN
- for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 09:27:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26728)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mj0BP-0000wk-QF
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 10:27:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:52814)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mizFG-0001J4-Si
- for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 09:27:04 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mj0BL-0008PM-TR
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 10:27:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636118815;
+ s=mimecast20190719; t=1636122421;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=A3v1Kwu/D7VMLJOSCkry+oYDcsVNS833SFiRE2ADIeQ=;
- b=MJbOUNWZeOR7ValseshYcxmfK2DnK1Bf3bqMdJxIJ30RlpGFEMquy35vp54NdKMZPU3lVr
- 7zCbe9+wwCuwaJv3fzeqhr2xs0ft3tpOKkVpPTrsrv/t6Ivf1QQHFLK5M6w40L0TaI49gg
- SwrababpdLgoxlVnvkxzJIENae4/gso=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=kRqyJC/JV+6B11q5unZLQCsXiO1VFs66KXHe5SIeVtg=;
+ b=BOp0aOa54O62knhxozauVF5VOgjhgOEFEX1lcq5uq7KYS4ASB1B2Eg/Ij1trQKWr0RaWEh
+ wEhOtnnrt0mlnSLukNYrW+49p6AgjfgRvqW526zhwG87VmZOPiTo1289+5DusIR2MdYM8a
+ /Qynyk3zswhYXJkP6xLQcvjPtd3/NWc=
 Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
  [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-377-eo1wTDCYPyiPv1FlEYqeRA-1; Fri, 05 Nov 2021 09:26:54 -0400
-X-MC-Unique: eo1wTDCYPyiPv1FlEYqeRA-1
+ us-mta-470-hC097rCcP5qi76MflG3HAg-1; Fri, 05 Nov 2021 10:27:00 -0400
+X-MC-Unique: hC097rCcP5qi76MflG3HAg-1
 Received: by mail-wr1-f71.google.com with SMTP id
- a2-20020a5d4d42000000b0017b3bcf41b9so2325888wru.23
- for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 06:26:54 -0700 (PDT)
+ h7-20020adfaa87000000b001885269a937so1252179wrc.17
+ for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 07:27:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=A3v1Kwu/D7VMLJOSCkry+oYDcsVNS833SFiRE2ADIeQ=;
- b=EM0X12gELjFtrrcxNNZV4czRevmqyVAxL9vjlJ0C7NY4YjzMmdpeJx/EdI5n9dXDUC
- 6vQ1aacXArSCLsv4N/9YhNUQSOU/LPo1oI5RkSdUIi+mtApMLof+gDMO8d5hrURD6RKM
- kxNX2HxWef4a16HeE7YTtwTGCg/I84sj7wOdEmDeaLUx091ASDrWUosq4x2KhdGC3EqC
- kZGd3oCppdL3C92a7v+w9nngqjYlogeXRZ0N1laUNd1P5RmRh9pn/F+Nn7Cf5bE2+K7J
- WMAf3mBQePPCxq55rKFDXZksBxePp01W67bErU8mXT2zwnB0MGZnAtQtcuBmjxmi0xTc
- s43Q==
-X-Gm-Message-State: AOAM532WB6MqKTUGBbL86AJAgC7BU+Nelb1j8e4ygMx+R4wvN5wIItMG
- kwZljzmqXfxoSoxPPB54nJHoSIgaWUf2fhS5VlhfXx7eaB8CFvMZ4vwz8vpVfyz/9vKgibQMHSe
- i/WRVnU5vTb+WgPJwoQ==
-X-Received: by 2002:a05:600c:2046:: with SMTP id
- p6mr30375151wmg.87.1636118813101; 
- Fri, 05 Nov 2021 06:26:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwGq3lHmQxMu2uX2VNjvIjX+Usi/49qtHpZkNMgOzxX5tEVyqo6BRWZs03u+SD4NREWtwsYhQ==
-X-Received: by 2002:a05:600c:2046:: with SMTP id
- p6mr30375126wmg.87.1636118812862; 
- Fri, 05 Nov 2021 06:26:52 -0700 (PDT)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ bh=kRqyJC/JV+6B11q5unZLQCsXiO1VFs66KXHe5SIeVtg=;
+ b=gr41A8NAOo0XtEFrnFyzaV8/ubKvuIEpNVAqYdq6bskWHzVpzmitw2W8kUwESWi6Dm
+ 5fcNQw1FiymlIJQD79W4lTa5Wn8ksNmwODHbBH5BVkcIjFiYaqLDe7g+vZgpFqJ3zifY
+ gP3GL4EW0w/YfYzq9FcS5O2He9QYX+l/eKbE2gT8s4mVa/YYwF44jQahePLK3x7xY6Ol
+ 0LcC1ClsAs6Xc6M945ytE5nPbov32h01S+fqgb5/RAFRgYZPdrJhsj8/Nu1tdlcjJTDU
+ 4yP4CV8jf5HaYmZJvkDnh0mxq2iKiVKta0wJNYt3U4Xoi96ZePDfPN7hThbZDyENxKCN
+ Dmvw==
+X-Gm-Message-State: AOAM5306xrs06WMpoJ8zi8L0xLJjoMzEN6Qe5FHHqX3vU4fgExpBjAOu
+ Xsar6USxSdMwIwl2hWmb8AyVQwCOBGknW/j9JuPEQbfEax/LS8xf6x6LgtUpT6tgHG8XgxLStw1
+ LFhMZ9zmVS5ISU/784g==
+X-Received: by 2002:a05:6000:1141:: with SMTP id
+ d1mr1905588wrx.342.1636122419339; 
+ Fri, 05 Nov 2021 07:26:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwNKA0brfXbUbNdgtoxtTB8FpI8d0pMyjoPIuMqeTYMNNXVtQNlLU1FWwa7fhX0/dDU/+rBjQ==
+X-Received: by 2002:a05:6000:1141:: with SMTP id
+ d1mr1905547wrx.342.1636122419073; 
+ Fri, 05 Nov 2021 07:26:59 -0700 (PDT)
+Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
  [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id s24sm7399636wmj.26.2021.11.05.06.26.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Nov 2021 06:26:52 -0700 (PDT)
-Message-ID: <98d98c4b-9e34-700c-c659-2dd6f169a4c8@redhat.com>
-Date: Fri, 5 Nov 2021 14:26:51 +0100
+ by smtp.gmail.com with ESMTPSA id j10sm8064281wru.15.2021.11.05.07.26.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Nov 2021 07:26:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: libvir-list@redhat.com, John Snow <jsnow@redhat.com>,
+ Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] docs/about/deprecated: Remove empty 'related binaries' section
+Date: Fri,  5 Nov 2021 15:26:56 +0100
+Message-Id: <20211105142656.145791-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH] docs: fix qemu incorrect tag
-To: huangy81@chinatelecom.cn, qemu-devel <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Eric Blake <eblake@redhat.com>, Juan Quintela <quintela@redhat.com>
-References: <2f6070f08d63fd2281d324c70bb5f8db3b4c803c.1636116975.git.huangy81@chinatelecom.cn>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <2f6070f08d63fd2281d324c70bb5f8db3b4c803c.1636116975.git.huangy81@chinatelecom.cn>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -54
-X-Spam_score: -5.5
-X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.648,
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.648,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.093, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,70 +88,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 13:27:16 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 14:27:08 -0000
 
-Cc'ing qemu-trivial@
+Commit 497a30dbb06 ("qemu-img: Require -F with -b backing image")
+removed the content of the "Related binaries" section but forgot
+to remove the section title. Since it is now empty, remove it too.
 
-On 11/5/21 14:01, huangy81@chinatelecom.cn wrote:
-> From: Hyman Huang(黄勇) <huangy81@chinatelecom.cn>
-> 
-> The last modification of the patchset may be 2 month before
-> merging dirtyrate implementation, it used the wrong tag, so
-> fix with 6.2.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ docs/about/deprecated.rst | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Maybe:
-
- The patchset merged in 71864eadd9a ("migration/dirtyrate:
- introduce struct and adjust DirtyRateStat") was targeting
- QEMU 6.1 but got merged later, so correct the tag for 6.2.
-
-Anyhow,
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-> Signed-off-by: Hyman Huang(黄勇) <huangy81@chinatelecom.cn>
-> ---
->  qapi/migration.json | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/qapi/migration.json b/qapi/migration.json
-> index 87146ce..f0aefda 100644
-> --- a/qapi/migration.json
-> +++ b/qapi/migration.json
-> @@ -1740,7 +1740,7 @@
->  #
->  # @dirty-rate: dirty rate.
->  #
-> -# Since: 6.1
-> +# Since: 6.2
->  #
->  ##
->  { 'struct': 'DirtyRateVcpu',
-> @@ -1774,7 +1774,7 @@
->  #
->  # @dirty-bitmap: calculate dirtyrate by dirty bitmap.
->  #
-> -# Since: 6.1
-> +# Since: 6.2
->  #
->  ##
->  { 'enum': 'DirtyRateMeasureMode',
-> @@ -1796,13 +1796,13 @@
->  # @calc-time: time in units of second for sample dirty pages
->  #
->  # @sample-pages: page count per GB for sample dirty pages
-> -#                the default value is 512 (since 6.1)
-> +#                the default value is 512 (since 6.2)
->  #
->  # @mode: mode containing method of calculate dirtyrate includes
-> -#        'page-sampling' and 'dirty-ring' (Since 6.1)
-> +#        'page-sampling' and 'dirty-ring' (Since 6.2)
->  #
->  # @vcpu-dirty-rate: dirtyrate for each vcpu if dirty-ring
-> -#                   mode specified (Since 6.1)
-> +#                   mode specified (Since 6.2)
->  #
->  # Since: 5.2
->  #
-> 
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 56f9ad15ab5..5e514fb443d 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -370,9 +370,6 @@ The ``I7200`` guest CPU relies on the nanoMIPS ISA, which is deprecated
+ (the ISA has never been upstreamed to a compiler toolchain). Therefore
+ this CPU is also deprecated.
+ 
+-Related binaries
+-----------------
+-
+ Backwards compatibility
+ -----------------------
+ 
+-- 
+2.31.1
 
 
