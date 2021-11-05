@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mj2ur-0002Zz-4i
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 13:22:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48874)
+	id 1mj2ut-0002bD-5v
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 13:22:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mj2uY-0002TX-4R; Fri, 05 Nov 2021 13:22:00 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:52200)
+ id 1mj2uf-0002Vg-Uz; Fri, 05 Nov 2021 13:22:03 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:45626)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mj2uO-0007Dd-1K; Fri, 05 Nov 2021 13:21:48 -0400
-Received: by mail-wm1-x334.google.com with SMTP id z200so7651192wmc.1;
- Fri, 05 Nov 2021 10:21:40 -0700 (PDT)
+ id 1mj2uZ-0007B2-FG; Fri, 05 Nov 2021 13:22:01 -0400
+Received: by mail-wr1-x436.google.com with SMTP id w29so3251146wra.12;
+ Fri, 05 Nov 2021 10:21:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=kMH4rTDikXhJZKCos7ysG4oLdQBxpsKJK0cAf4O+2Mc=;
- b=NFWCwo7iM31vVhh2iyNK/IlBZtZFlAS2hv0kT88M/xEBw05IZ5zkcwuQEf9ESwsV9A
- k+lQoLZlTqBq3ZEGIZfntT8Cm/ac4o6KHLlwPqfOy7iQt8S3D6KszBw0G/Pq0i4UIBGu
- Ukm9ZAtIAMfKxKAxjmY48IoJvmpcNudd5+uLQgqfOej6dL9rNjGjXaRLLLGRJ9NkAVlQ
- vY18PF75xZM6u80Oz+BXa40nLqIUSkqF559UeGdJ9rv38Hj9zDa/X21tQJj75AW0Omki
- 1nOI85sWgbzmj6iExD+SDfv+8kePfk/fOApEJWdbalaFpccgPMK1nav28/T8C89iCoHs
- y89Q==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SsnqRxIkydd+fBkqtBAbIt03sgAtTSLHMDKWB0oS4kc=;
+ b=pCaUPMoM62z9hOL/qFCbYyPISRI/+cCSvBvZM5YPt0g3/vMud3LsRqgTjJ1NEPHgF9
+ hXTmxRgsQJKz+kbgO94zhJM+4n9xvErtMlbLlF679qS+8h3CTseEM2+f+hH8iYiNwWXq
+ gHYt7RmDX8m5vvUyaJokwZd81W4dcx7di3v1LlvbW51G4WAcPoEFw5uhvrBGOEqjadoj
+ BYkRhd11/pXLJm9pjoiPAnZZAcaL1bSVaI4KdAMOfEAhto5/ozizL65yoX1Yi1M/YKM2
+ 2xSF3f7eHE7/bp+f/2Y6oF9s6lyTZ0QcTp6XYqkpE3EgchO4E7ObgKPNcf7G3YMRoARN
+ gMDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=kMH4rTDikXhJZKCos7ysG4oLdQBxpsKJK0cAf4O+2Mc=;
- b=SFTVU0lTBKyRXbGy2CS5t+AvhvHLIdy+hZlhU3CfNh4Gax+ViMMJ5aiN9VJT2r0rYx
- lrjBSpqLfn3NpXt49XS7/RmX6iTbKp0caEMMHDXU0obpnphfSBF+/NWsMtaT1iQ6SuXK
- Mha4KFA9YfTxs9z4BDemONSfH41vc5kizz37MhdaonZ5KSZAXMvl75sN1khEZOzRCFw6
- Jr2x3YpyNeYgRmSytb82K2Ou5DVi73oTYIMKR7ayMRWMyYfEuctCM8VS4JgMB1qWCynI
- F8FhmvcjR+onv15QyZV5nGGgOvl7k2++n+a94IsTDPnqgCW+O5wxX6cM1se5QKnZwsw2
- nNEg==
-X-Gm-Message-State: AOAM5328inkHvtKwMXb9eygb/LST2hIYh9EnR947OKpgwaSVWHxuVhKz
- J+Rjnwte8fw7FMJP+f+RaU+nfJ1A6J8=
-X-Google-Smtp-Source: ABdhPJwmmiMflzrZV3GcpCWTGmL5EN9FSF0gkk5YW/bTfouE1WUse5OP7XWXzoEHEOPpSIT06kejgg==
-X-Received: by 2002:a7b:c841:: with SMTP id c1mr32572419wml.80.1636132898997; 
- Fri, 05 Nov 2021 10:21:38 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=SsnqRxIkydd+fBkqtBAbIt03sgAtTSLHMDKWB0oS4kc=;
+ b=MTY7lShH3hRSnmTw7LfCXgOKmHmLsEi4RGNZGV5dV5vsA5BV5fjPwxMyghIa3sWp7C
+ 2OjanfYnB+Ul4KaiR4NngXDIXHzyIgLSKQCU43Nl58brGFpSlrk1xrsQLu00LxX+fNJ/
+ XrXVv3SixVYFtwJULpJkjqUBS/GDwO3O+U67QG55dEGVxrETNXR5Pc6x7u65er882DBD
+ bSrq8gtekiezz7RoQbp3b5VBXDYWCp+RcL6a7BcUnS31V+hbSyjnxoPq7/GCtVV8Aucb
+ KHcGtWXA+S9d6s5BHJ7FDPQTbb8w+HNBaNpB9PtAlHXoIRTzkCkW0+xPAp6oD44y28xo
+ tu4Q==
+X-Gm-Message-State: AOAM533SEh0UprkQipvEHT2QzHYVK+VUpvhMFXXfOPSE52eTvovnpkQp
+ pQ2z+8+qcrpfIsLbEhRNLXYthYLU7SA=
+X-Google-Smtp-Source: ABdhPJx5RVAv1V9T/CMy1GoKol5PAvdme73O8Uhdzpcnakkmclhb1i1NwjCssCNt9Z/tWh56Yb1QCA==
+X-Received: by 2002:adf:eece:: with SMTP id a14mr25377402wrp.333.1636132889285; 
+ Fri, 05 Nov 2021 10:21:29 -0700 (PDT)
 Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
  [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id o26sm11661262wmc.17.2021.11.05.10.21.38
+ by smtp.gmail.com with ESMTPSA id c5sm5237205wrd.13.2021.11.05.10.21.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Nov 2021 10:21:38 -0700 (PDT)
+ Fri, 05 Nov 2021 10:21:28 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -51,18 +51,15 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 2/3] hw/qdev: Rename qdev_connect_gpio_out*() 'input_pin'
- parameter
-Date: Fri,  5 Nov 2021 18:21:26 +0100
-Message-Id: <20211105172127.224462-3-f4bug@amsat.org>
+Subject: [PATCH 0/3] hw/qdev: Clarify qdev_connect_gpio_out() documentation
+Date: Fri,  5 Nov 2021 18:21:24 +0100
+Message-Id: <20211105172127.224462-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211105172127.224462-1-f4bug@amsat.org>
-References: <20211105172127.224462-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -83,96 +80,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 17:22:01 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 17:22:05 -0000
 
-@pin is an input where we connect a device output.
-Rename it @input_pin to simplify the documentation.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/qdev-core.h |  8 ++++----
- hw/core/gpio.c         | 13 +++++++------
- 2 files changed, 11 insertions(+), 10 deletions(-)
-
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 5b88c8b9dd3..3a0fe643a73 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -470,7 +470,7 @@ qemu_irq qdev_get_gpio_in_named(DeviceState *dev, const char *name, int n);
-  * qdev_connect_gpio_out: Connect one of a device's anonymous output GPIO lines
-  * @dev: Device whose GPIO to connect
-  * @n: Number of the anonymous output GPIO line (which must be in range)
-- * @pin: qemu_irq to connect the output line to
-+ * @input_pin: qemu_irq to connect the output line to
-  *
-  * This function connects an anonymous output GPIO line on a device
-  * up to an arbitrary qemu_irq, so that when the device asserts that
-@@ -495,14 +495,14 @@ qemu_irq qdev_get_gpio_in_named(DeviceState *dev, const char *name, int n);
-  *
-  * For named output GPIO lines, use qdev_connect_gpio_out_named().
-  */
--void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq pin);
-+void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq input_pin);
- /**
-  * qdev_connect_gpio_out_named: Connect one of a device's named output
-  *                              GPIO lines
-  * @dev: Device whose GPIO to connect
-  * @name: Name of the output GPIO array
-  * @n: Number of the anonymous output GPIO line (which must be in range)
-- * @pin: qemu_irq to connect the output line to
-+ * @input_pin: qemu_irq to connect the output line to
-  *
-  * This function connects an anonymous output GPIO line on a device
-  * up to an arbitrary qemu_irq, so that when the device asserts that
-@@ -521,7 +521,7 @@ void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq pin);
-  * same qemu_irq; see qdev_connect_gpio_out() for details.
-  */
- void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
--                                 qemu_irq pin);
-+                                 qemu_irq input_pin);
- /**
-  * qdev_get_gpio_out_connector: Get the qemu_irq connected to an output GPIO
-  * @dev: Device whose output GPIO we are interested in
-diff --git a/hw/core/gpio.c b/hw/core/gpio.c
-index 8e6b4f5edf3..80d07a6ec99 100644
---- a/hw/core/gpio.c
-+++ b/hw/core/gpio.c
-@@ -115,17 +115,18 @@ qemu_irq qdev_get_gpio_in(DeviceState *dev, int n)
- }
- 
- void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
--                                 qemu_irq pin)
-+                                 qemu_irq input_pin)
- {
-     char *propname = g_strdup_printf("%s[%d]",
-                                      name ? name : "unnamed-gpio-out", n);
--    if (pin && !OBJECT(pin)->parent) {
-+    if (input_pin && !OBJECT(input_pin)->parent) {
-         /* We need a name for object_property_set_link to work */
-         object_property_add_child(container_get(qdev_get_machine(),
-                                                 "/unattached"),
--                                  "non-qdev-gpio[*]", OBJECT(pin));
-+                                  "non-qdev-gpio[*]", OBJECT(input_pin));
-     }
--    object_property_set_link(OBJECT(dev), propname, OBJECT(pin), &error_abort);
-+    object_property_set_link(OBJECT(dev), propname,
-+                             OBJECT(input_pin), &error_abort);
-     g_free(propname);
- }
- 
-@@ -165,9 +166,9 @@ qemu_irq qdev_intercept_gpio_out(DeviceState *dev, qemu_irq icpt,
-     return disconnected;
- }
- 
--void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq pin)
-+void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq input_pin)
- {
--    qdev_connect_gpio_out_named(dev, NULL, n, pin);
-+    qdev_connect_gpio_out_named(dev, NULL, n, input_pin);
- }
- 
- void qdev_pass_gpios(DeviceState *dev, DeviceState *container,
--- 
-2.31.1
-
+Trivial patches clarifying qdev_connect_gpio_out() use,=0D
+basically that the qemu_irq argument is an input.=0D
+No logical change, only function name / parameter changed.=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (3):=0D
+  hw/qdev: Correct qdev_connect_gpio_out_named() documentation=0D
+  hw/qdev: Rename qdev_connect_gpio_out*() 'input_pin' parameter=0D
+  hw/input/pckbd: Rename i8042_setup_a20_line() and its a20 irq argument=0D
+=0D
+ include/hw/input/i8042.h |  2 +-=0D
+ include/hw/qdev-core.h   | 13 ++++++-------=0D
+ hw/core/gpio.c           | 13 +++++++------=0D
+ hw/i386/pc.c             |  2 +-=0D
+ hw/input/pckbd.c         |  4 ++--=0D
+ 5 files changed, 17 insertions(+), 17 deletions(-)=0D
+=0D
+-- =0D
+2.31.1=0D
+=0D
 
