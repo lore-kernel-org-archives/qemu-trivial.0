@@ -1,66 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mimeg-0000iV-5K
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 20:00:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35216)
+	id 1mipli-0004GX-2P
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:19:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mimef-0000iK-2l
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 20:00:25 -0400
-Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d]:39549)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplg-0004EM-Qz
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:19:52 -0400
+Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131]:33681)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mimeF-00018G-Qd
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 20:00:24 -0400
-Received: by mail-ua1-x92d.google.com with SMTP id i6so14058140uae.6
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 16:59:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mipld-00042q-HL
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:19:51 -0400
+Received: by mail-il1-x131.google.com with SMTP id l19so8322742ilk.0
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:19:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=etDdz7r9ka1d6Iyc8TT+35IHert1sULZbtZ+2T+ACms=;
- b=HRWsxRyODr1a5/chyWbFxXsaZSp5xZGbN14b14MJFYsVaTk/YFYcQtjHjI4r+89QTb
- BuT9vhns0NvdjzHkxwMwVYqGFlDVK+tfou5raQEkGnGO0g5yUxNdnWdbXZcE0ctvogGl
- DstkyDEAhig4umyEcFVT1MkgFHzDK81PBIRS8viUgG7Fnd4IuBseHurOfIcon31z9fBP
- uTadIyF3eHMRNNyvWxRw8Z/weVSMdyz2kBJ4FHUWoVGCty11n9/Bmr2AottZhq0ZDIFY
- t2ttKqQbzNGnfJZnHQtcvZds+3307mrubdA0F1RkldyaAVcuGiR/ntwYw59Pfvnyvsq2
- wwTg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=MDPt+10pI2apuOo9dXdmFVld2os3PLc83HBDg8phZBs=;
+ b=cGhb2BisdGQt9pQ+jOl57shUMusmZDfK7i7YyovASaM8LtIa+Onj8GDIWD/T1rEyaD
+ Ttn7sIASZkG1U+a3mi/+H7steP9rE4ae7t+YUoUnkSLfPFF8q6tFszMmC0yzTqwhlSEU
+ CQZRrD1NCrXsUQcQ6q3hdcrUhXcIzPrZ1nMaSorfqAgzGj7dTUSlG+zYRRplniFVbC/y
+ h7O2LntKnBUTh9C/5KP6sKo2NhsW6JXazYT9tM47NwlBU09x3+jGa5rU0rk8AuSVCjFf
+ TyehDt+egTUstqG9L9nATfTr027f2tqwpc4p99UcpVPGlaei9sZzy2YRy7SsPprFx/xy
+ OsJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=etDdz7r9ka1d6Iyc8TT+35IHert1sULZbtZ+2T+ACms=;
- b=PlBmyHcBHV7IVQyl8WeNkSgiFDLB1LJ/x8vbpzeoISnHeOTv9o2PYdIqi6Y7rGBg0n
- NbV+Cz2dMksEBWnHfRHanGFTgusrd59rgji16v6HL384kSmwkSPTf6FYv0cOmMxTaysV
- YSnX4jd4YDBToLXzCvNdtXMuF2ppAqTPQdNvchL2kDFMOG8kqn/UPSpfPBGMBKASKonK
- Sc9EETJrQw+jbKAQ4mZ9NRyXtbtF+wssUH/IKt9CuCgO3STWDuto0QLvFa1yKFnc/Ef4
- mfF5/GQ38Wkl4BiPJA0dWj2Uh0ERlFCWkaA5O7Yjvc5So7XbIcDrCnvnWheCnn8M/Bm6
- V8uQ==
-X-Gm-Message-State: AOAM530wBtG7tzyHFog5AFX+8KCI8rtJJP0fESJoCKmwzPyiV07RMn9F
- zC0H0BA+8epGWMowqd22b1h+p9W4JM38jkzcECJSIg==
-X-Google-Smtp-Source: ABdhPJzMczPV71y1l7fTwU5vOVPZD/4ooeSrYm/TY7+oxHsJlZjvKHPDDFiJ5PdWfPe4w/pmHKkC2uc08nEcP400d4U=
-X-Received: by 2002:a9f:21d7:: with SMTP id 81mr37066813uac.39.1636070395005; 
- Thu, 04 Nov 2021 16:59:55 -0700 (PDT)
-MIME-Version: 1.0
-References: <20211104140536.42573-1-imp@bsdimp.com>
- <20211104140536.42573-24-imp@bsdimp.com>
- <a4809133-bdae-8c06-511c-0aa9af6f3362@linaro.org>
-In-Reply-To: <a4809133-bdae-8c06-511c-0aa9af6f3362@linaro.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=MDPt+10pI2apuOo9dXdmFVld2os3PLc83HBDg8phZBs=;
+ b=K2kGKE9JXc6BAE3qwYTyG2V6FC1nooH+qRKxmxPGmVoi+nOzGQlunvEjvWS1xSegMZ
+ xPYm99kzrpyewAphcIIugQducYeJKhDMfbyk0QNtqUZjtNn3N0zgbfZ2s+PWwvgSdEoD
+ bfQRUqhz1P2CjCOQYfV8awfg0Z3vSpMF/1kt4DFvQrhVFzJ0lUPWYynUGc2pxcKugv2y
+ 2WePgVXzGOPf9hjCbt1pKxGKACjjeWowOLc/YCcDuM7MQzGcVWcoz0mwig51XoeqiGXE
+ xZI1Z8uiicRznqQAS4T1yRAqmPISl17vwx42uO52KrpYhBQSo9R4t+b81BdkGW8dfdH/
+ H/Ng==
+X-Gm-Message-State: AOAM533H4YhKYjlC1h5QFUsOAoEbSiRjuBYMgIkMLYi8sLH5tBYjDwxv
+ S97KLcG79etkNFXuBqGpyB6ciQ==
+X-Google-Smtp-Source: ABdhPJyyNr6VGXtoH4vWJOIJmyrJly1Jp0Lj67zE6PoCh3B9DO/7+xLp419jcloOWNtwIFHmgppksg==
+X-Received: by 2002:a92:6412:: with SMTP id y18mr32996662ilb.178.1636082388232; 
+ Thu, 04 Nov 2021 20:19:48 -0700 (PDT)
+Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
+ [50.253.99.174])
+ by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.19.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Nov 2021 20:19:47 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
-Date: Thu, 4 Nov 2021 17:59:43 -0600
-Message-ID: <CANCZdfru-o2tX_AJWOCxmBjpXTEbCpb-nHk8t1dGpxrhUv-29A@mail.gmail.com>
-Subject: Re: [PATCH v3 23/29] bsd-user/arm/target_arch_signal.h: arm
- set_mcontext
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>, Philippe Mathieu-Daude <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Kyle Evans <kevans@freebsd.org>, Stacey Son <sson@freebsd.org>
-Content-Type: multipart/alternative; boundary="000000000000b8e4d505cfff52ce"
-Received-SPF: none client-ip=2607:f8b0:4864:20::92d;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x92d.google.com
+To: qemu-devel@nongnu.org
+Cc: Philippe Mathieu-Daude <f4bug@amsat.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
+ Kyle Evans <kevans@freebsd.org>
+Subject: [PATCH v4 02/36] bsd-user/freebsd: Create common target_os_ucontext.h
+ file
+Date: Thu,  4 Nov 2021 21:18:43 -0600
+Message-Id: <20211105031917.87837-3-imp@bsdimp.com>
+X-Mailer: git-send-email 2.33.0
+In-Reply-To: <20211105031917.87837-1-imp@bsdimp.com>
+References: <20211105031917.87837-1-imp@bsdimp.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::131;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x131.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,109 +79,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 00:00:25 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 03:19:53 -0000
 
---000000000000b8e4d505cfff52ce
-Content-Type: text/plain; charset="UTF-8"
+FreeBSD has a MI ucontext structure that contains the MD mcontext
+machine state and other things that are machine independent. Create an
+include file for all the ucontext stuff. It needs to be included in the
+arch specific files after target_mcontext is defined. This is largely
+copied from sys/_ucontext.h with the comments about layout removed
+because we don't support ancient FreeBSD binaries.
 
-On Thu, Nov 4, 2021 at 12:43 PM Richard Henderson <
-richard.henderson@linaro.org> wrote:
+Signed-off-by: Warner Losh <imp@bsdimp.com>
+---
+ bsd-user/freebsd/target_os_signal.h   |  3 ---
+ bsd-user/freebsd/target_os_ucontext.h | 35 +++++++++++++++++++++++++++
+ 2 files changed, 35 insertions(+), 3 deletions(-)
+ create mode 100644 bsd-user/freebsd/target_os_ucontext.h
 
-> On 11/4/21 10:05 AM, Warner Losh wrote:
-> > +    /*
-> > +     * Make sure T mode matches the PC's notion of thumb mode, although
-> > +     * FreeBSD lets the processor sort this out, so we may need remove
-> > +     * this check, or generate a signal...
-> > +     */
-> > +    if (!!(tswap32(gr[TARGET_REG_PC]) & 1) != !!(cpsr & CPSR_T)) {
-> > +        return -TARGET_EINVAL;
-> > +    }
->
-> I've had a read through the Arm ARM for "movs pc, lr", which is how
-> swi_exit returns to
-> userspace:
->
->      CPSRWriteByInstr(SPSR[], '1111', TRUE);
->      ...
->      BranchWritePC(result);
->
-> So the CPSR gets written first, which sets the T bit, and thus the result
-> of
-> CurrentInstrSet(), then
->
-> BranchWritePC(bits(32) address)
->    if CurrentInstrSet() == InstrSet_ARM then
->      if ArchVersion() < 6 && address<1:0> != '00' then UNPREDICTABLE;
->      BranchTo(address<31:2>:'00');
->    ...
->    else
->      BranchTo(address<31:1>:'0');
->
-> > +    env->regs[15] = tswap32(gr[TARGET_REG_PC]);
->
-> So this should mask the low 1 or 2 bits depending on cpsr & CPSR_T.
->
+diff --git a/bsd-user/freebsd/target_os_signal.h b/bsd-user/freebsd/target_os_signal.h
+index 1a4c5faf19..3ed454e086 100644
+--- a/bsd-user/freebsd/target_os_signal.h
++++ b/bsd-user/freebsd/target_os_signal.h
+@@ -1,9 +1,6 @@
+ #ifndef _TARGET_OS_SIGNAL_H_
+ #define _TARGET_OS_SIGNAL_H_
+ 
+-/* FreeBSD's sys/ucontext.h defines this */
+-#define TARGET_MC_GET_CLEAR_RET 0x0001
+-
+ #include "target_os_siginfo.h"
+ #include "target_arch_signal.h"
+ 
+diff --git a/bsd-user/freebsd/target_os_ucontext.h b/bsd-user/freebsd/target_os_ucontext.h
+new file mode 100644
+index 0000000000..1d0c3c4e65
+--- /dev/null
++++ b/bsd-user/freebsd/target_os_ucontext.h
+@@ -0,0 +1,35 @@
++/*
++ * FreeBSD has a common ucontext definition for all architectures.
++ *
++ * Copyright 2021 Warner Losh <imp@bsdimp.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later OR BSD-3-Clause
++ */
++#ifndef TARGET_OS_UCONTEXT_H
++#define TARGET_OS_UCONTEXT_H
++
++/*
++ * Defines the common bits for all of FreeBSD's architectures. Has to be
++ * included AFTER the MD target_mcontext_t is defined, however, so can't
++ * be in the grab-bag that is target_os_signal.h.
++ */
++
++/* See FreeBSD's sys/ucontext.h */
++#define TARGET_MC_GET_CLEAR_RET 0x0001
++
++/* FreeBSD's sys/_ucontext.h structures */
++typedef struct target_ucontext {
++    target_sigset_t     uc_sigmask;
++    target_mcontext_t   uc_mcontext;
++    abi_ulong           uc_link;
++    target_stack_t      uc_stack;
++    int32_t             uc_flags;
++    int32_t             __spare__[4];
++} target_ucontext_t;
++
++#ifdef TARGET_MCONTEXT_SIZE
++G_STATIC_ASSERT(TARGET_MCONTEXT_SIZE == sizeof(target_mcontext_t));
++G_STATIC_ASSERT(TARGET_UCONTEXT_SIZE == sizeof(target_ucontext_t));
++#endif /* TARGET_MCONTEXT_SIZE */
++
++#endif /* TARGET_OS_UCONTEXT_H */
+-- 
+2.33.0
 
-Will do. Thanks for all the patient explanations.
-
-Warner
-
-
-> r~
->
-
---000000000000b8e4d505cfff52ce
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 4, 2021 at 12:43 PM Richa=
-rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
-nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">On 11/4/21 10:05 AM, Warner Losh wrote:<br>
-&gt; +=C2=A0 =C2=A0 /*<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* Make sure T mode matches the PC&#39;s notion of=
- thumb mode, although<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* FreeBSD lets the processor sort this out, so we=
- may need remove<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0* this check, or generate a signal...<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; +=C2=A0 =C2=A0 if (!!(tswap32(gr[TARGET_REG_PC]) &amp; 1) !=3D !!(cpsr=
- &amp; CPSR_T)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return -TARGET_EINVAL;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-<br>
-I&#39;ve had a read through the Arm ARM for &quot;movs pc, lr&quot;, which =
-is how swi_exit returns to <br>
-userspace:<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0CPSRWriteByInstr(SPSR[], &#39;1111&#39;, TRUE);<br>
-=C2=A0 =C2=A0 =C2=A0...<br>
-=C2=A0 =C2=A0 =C2=A0BranchWritePC(result);<br>
-<br>
-So the CPSR gets written first, which sets the T bit, and thus the result o=
-f <br>
-CurrentInstrSet(), then<br>
-<br>
-BranchWritePC(bits(32) address)<br>
-=C2=A0 =C2=A0if CurrentInstrSet() =3D=3D InstrSet_ARM then<br>
-=C2=A0 =C2=A0 =C2=A0if ArchVersion() &lt; 6 &amp;&amp; address&lt;1:0&gt; !=
-=3D &#39;00&#39; then UNPREDICTABLE;<br>
-=C2=A0 =C2=A0 =C2=A0BranchTo(address&lt;31:2&gt;:&#39;00&#39;);<br>
-=C2=A0 =C2=A0...<br>
-=C2=A0 =C2=A0else<br>
-=C2=A0 =C2=A0 =C2=A0BranchTo(address&lt;31:1&gt;:&#39;0&#39;);<br>
-<br>
-&gt; +=C2=A0 =C2=A0 env-&gt;regs[15] =3D tswap32(gr[TARGET_REG_PC]);<br>
-<br>
-So this should mask the low 1 or 2 bits depending on cpsr &amp; CPSR_T.<br>=
-</blockquote><div><br></div><div>Will do. Thanks for all the patient explan=
-ations.</div><div><br></div><div>Warner</div><div>=C2=A0</div><blockquote c=
-lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
-d rgb(204,204,204);padding-left:1ex">
-r~<br>
-</blockquote></div></div>
-
---000000000000b8e4d505cfff52ce--
 
