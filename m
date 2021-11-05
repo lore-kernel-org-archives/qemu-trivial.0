@@ -1,66 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mipm8-0004ou-L4
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:20:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53354)
+	id 1mipmA-0004wk-Ss
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:20:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53616)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplj-0004Gi-1v
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:19:56 -0400
-Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32]:34401)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplt-0004P6-Be
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:05 -0400
+Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131]:44623)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplf-00043e-Ou
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:19:54 -0400
-Received: by mail-io1-xd32.google.com with SMTP id 2so5963184iou.1
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:19:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplq-00047t-OR
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:05 -0400
+Received: by mail-il1-x131.google.com with SMTP id h2so8198779ili.11
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:20:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=YUhiVOQnmpNFSdmZg3CHyQkzJYfHEf7WcwU0TPM0Y70=;
- b=5qxLB4ZdqD/SJBGHlPvaveJoxwDCsTLPc1BgkXHsVd66IEUWrWYpJqlAKHBi2XLhXA
- aeLFmEiuuPW1DoxMSihZoZpe3HRGloi0gRJwlZ4ivjG5xeX27kW2gUqOEk8fWEnQ2twq
- MVRU4QT6UluKanUDEovoM4JeFyeWe4g+e4svjuI8dM842OxeVTG10vsgcimkxulxt4sb
- dkk7Qc8Mbwt/gUm/W/4piTpofMPWHD/mTQZWvKUJkbUwYSGtR9z/9lJMaC6B0qGaB5Kx
- VDkqyQyVsY9Spop+JbD1GdduDJytNRuFX4bSe8+8Sk+KM004/ZzCdBBde8P/rwEEIkI8
- taRA==
+ bh=5iIfFcYyYja/cPaQ9qdIgUErIUCnLNWxpKMyL/JDBtE=;
+ b=7sgS0wNaMypH+B2pRnp6JxirU8GrwCtcz4vg586usnsBFJtF92pr458j8ima9M1zDc
+ 41DqgpIa90Rj4mSgpWuzolUXTUFDEKVQfB6dRnOBHPhdPXxOXK0dFy4M4LQBPS4V+xYa
+ czXXOtYFXhkl8FawyWHnr8wo4/nwG3caztBTzTAJIzAYb/jMdRbe+u7i6ldsq230fpyP
+ JAGwmlhn6gi+eWLiJIg1b0eFd1eKrWMklc1LstAqiyM9Rak3QHWKaddj2mTmM0QD9PbA
+ DE2Esq+5WLv+oGhUIAWGDtGNMu7MXWx8gPkH+yZaA0vlut1ZOxzFCExUgNXfejlc7TIz
+ hC1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=YUhiVOQnmpNFSdmZg3CHyQkzJYfHEf7WcwU0TPM0Y70=;
- b=TLvoW/lZsfbio/CP3YLAQL4khs/dA0xevdkaBdV0xs2yKW2QtSqWjPLbEB5v4GPwbz
- JGndZ1z/uOzkFnddjdTy4166AEugOKsiyCceQbotXzQOfa16I0/NNfocL5GYrD/G2xTR
- j+BbBDedvYJRqDW7A62N/ZJDpPHifOdpo7nN7ye+Q37VYfx5rRo4RISNCtuH+/+n5Lqm
- BDR/Mj06NFIBQlOVc14YR+FqdheKp3UyaDzoDoc7Jz+k9aZmnmTXSvVa/qdmujpGhlyV
- wvUk85c6L3MEIr97FAbBwl0BEQVpkCK6U1Pga5CI+G7sRR3wCiuf0lfcXlv82JCkRCuE
- vtKQ==
-X-Gm-Message-State: AOAM530vU1VZrtOB6OajOvs/RqX73vMA5xgQtq0DQztnAGGg8nmiyBFt
- NF7DcVHU/GrlvPTP/yoMKZ4wTA==
-X-Google-Smtp-Source: ABdhPJyvL+2Tm/sSUxGF6AVJBfltr0yDymFvwceUglM2QXjAVc/Y5dLIH+O6iO9zdLRCnuFys20+6w==
-X-Received: by 2002:a02:84ec:: with SMTP id f99mr7027850jai.122.1636082390824; 
- Thu, 04 Nov 2021 20:19:50 -0700 (PDT)
+ bh=5iIfFcYyYja/cPaQ9qdIgUErIUCnLNWxpKMyL/JDBtE=;
+ b=gDellDn8iF5RMZ2dWZn4FXDVMYkJMj3cYGkT7J0gCv7ZWLE1YliSI3cYBToHzg3hgB
+ 5CXSAXEH4LJeW5UW1X2YABriBEQFPswhLHMSOsFBoS2MZNkHcjgKresIsE+aNSpaJSrH
+ 0nG/cbQIM2USMsIxmJi7yNn8VyEZxOLvi8H21n0iF11iBA5l3bIIBFAdKwGsrW6+dGk1
+ XQnT1AK7fIHNH/MyNapM6rpL5FMseJXbAVunJXIhxlYa23lOZh6ldJsQuA7mvVteGhpT
+ IspTdYtqCJEwGUyVUuih+gYHw5bqeGmyMaBVoF+Ste7DR8XHHgH0xGv/QFjlmNTvfVFV
+ n5dg==
+X-Gm-Message-State: AOAM5332oeVD0sywGsAPPROWtMjvaLyhyUha2A/xtaOBuGU/Pi0QZ0QH
+ PrLLf6ApEI6LET2wCd7sWwkg3Q==
+X-Google-Smtp-Source: ABdhPJypkh9s3TyDfIXDGWEkSL7tEswAYjkD1GWu7/Rr52YEWzPQUkLVfFX2ESdqVvDLNMZE96iTMA==
+X-Received: by 2002:a92:cda2:: with SMTP id g2mr28387347ild.46.1636082401440; 
+ Thu, 04 Nov 2021 20:20:01 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.19.50
+ by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.20.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 20:19:50 -0700 (PDT)
+ Thu, 04 Nov 2021 20:20:01 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Philippe Mathieu-Daude <f4bug@amsat.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
- Kyle Evans <kevans@freebsd.org>
-Subject: [PATCH v4 05/36] bsd-user/i386/target_arch_signal.h: use new
- target_os_ucontext.h
-Date: Thu,  4 Nov 2021 21:18:46 -0600
-Message-Id: <20211105031917.87837-6-imp@bsdimp.com>
+ Kyle Evans <kevans@freebsd.org>, Olivier Houchard <cognet@ci0.org>,
+ Stacey Son <sson@FreeBSD.org>, Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v4 15/36] bsd-user/arm/target_arch_cpu.h: CPU Loop definitions
+Date: Thu,  4 Nov 2021 21:18:56 -0600
+Message-Id: <20211105031917.87837-16-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211105031917.87837-1-imp@bsdimp.com>
 References: <20211105031917.87837-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d32;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd32.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::131;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x131.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -79,34 +79,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 03:19:56 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 03:20:08 -0000
 
+target_arch_cpu.h is for CPU loop definitions. Create the file and
+define target_cpu_init and target_cpu_reset for arm.
+
+Signed-off-by: Olivier Houchard <cognet@ci0.org>
+Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/i386/target_arch_signal.h | 9 +--------
- 1 file changed, 1 insertion(+), 8 deletions(-)
+ bsd-user/arm/target_arch_cpu.h | 43 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 bsd-user/arm/target_arch_cpu.h
 
-diff --git a/bsd-user/i386/target_arch_signal.h b/bsd-user/i386/target_arch_signal.h
-index e262667bda..bf7263c4f8 100644
---- a/bsd-user/i386/target_arch_signal.h
-+++ b/bsd-user/i386/target_arch_signal.h
-@@ -30,14 +30,7 @@
- typedef struct target_mcontext {
- } target_mcontext_t;
- 
--typedef struct target_ucontext {
--    target_sigset_t   uc_sigmask;
--    target_mcontext_t uc_mcontext;
--    abi_ulong         uc_link;
--    target_stack_t    uc_stack;
--    int32_t           uc_flags;
--    int32_t         __spare__[4];
--} target_ucontext_t;
-+#include "target_os_ucontext.h"
- 
- struct target_sigframe {
-     abi_ulong   sf_signum;
+diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
+new file mode 100644
+index 0000000000..66215684d6
+--- /dev/null
++++ b/bsd-user/arm/target_arch_cpu.h
+@@ -0,0 +1,43 @@
++/*
++ *  arm cpu init and loop
++ *
++ *  Copyright (c) 2013 Stacey D. Son
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef _TARGET_ARCH_CPU_H_
++#define _TARGET_ARCH_CPU_H_
++
++#include "target_arch.h"
++
++#define TARGET_DEFAULT_CPU_MODEL "any"
++
++static inline void target_cpu_init(CPUARMState *env,
++        struct target_pt_regs *regs)
++{
++    int i;
++
++    cpsr_write(env, regs->uregs[16], CPSR_USER | CPSR_EXEC,
++               CPSRWriteByInstr);
++    for (i = 0; i < 16; i++) {
++        env->regs[i] = regs->uregs[i];
++    }
++}
++
++static inline void target_cpu_reset(CPUArchState *cpu)
++{
++}
++
++#endif /* !_TARGET_ARCH_CPU_H */
 -- 
 2.33.0
 
