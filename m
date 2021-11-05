@@ -1,67 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mj2Vi-0004Kn-8g
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 12:56:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40930)
+	id 1mj2i6-0004DC-Rs
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 13:09:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44356)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mj2Vd-0004IN-O0
- for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 12:56:11 -0400
-Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929]:34730)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mj2i3-0004AZ-Gr
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 13:09:00 -0400
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a]:34390)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mj2VV-0000Gt-L9
- for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 12:56:09 -0400
-Received: by mail-ua1-x929.google.com with SMTP id b3so18295830uam.1
- for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 09:56:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mj2i1-0002uG-Ft
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 13:08:59 -0400
+Received: by mail-ua1-x92a.google.com with SMTP id b3so18363316uam.1
+ for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 10:08:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ImBtKANwzFYMJGF7A5lGmEMS0YIFDEnFYBubhVvo7oM=;
- b=vq26P66n7twtKGThpwd46OGDw45+hgysng4VHkL5t/RsoUNWasajBS6MoYNF1Tkalh
- Fe+FJaurVypqDOJ61NwusmFGG5gGhvZL+Z+utTAfqm+cNgRuHw5ukWK1SZiPiJXa3h+7
- /TJmAmlcKIgbSJdG8iI6cg6lJUsC35ZyRsGNzaHs7qG3sjtOHOO5b5GhZ6f+5gX2Lkxx
- +TPleDhX0JFYfaLtRr+lW5Pp+56lDQ2JE42eQ9g9gFZXdRvr0PnOeURVsp1VwVY8Up5C
- xkzF6an4zavZKaoY4v8azpgoaH0wKK9Ac+lNoBxjUR376L9dulL7PyKPDSN1gji7Zhjk
- PK/Q==
+ :cc; bh=kbQHhaYp8FTpqPysPfme9O/tCiPncSFKKQH3ADep+Iw=;
+ b=3+o9tCT6Ah+Q2bXL+HPpmfYGzQPYch2iWfWvKRz9FBiY/UznoIr7OlOoVWGYuqUgZg
+ gsB2vn+oSqAzc3avNXYGZGXj1uj9mfTKUDvD6pKVNd6bBEKJd2Oxs+oyyMc806K0PaSH
+ 7NFNbyfXXEyC+eh/Vd+pkxoekzQoRDncp8oQDi3sUu5tVBfIpagUyZmavuaIMTghPIfK
+ 0RyIP99h2D3a8Ji8vD27oNGhuO/XeTswugtfVTsvQjW3FeWoOVQ2P8YGYQnNVZo+SZi3
+ c0pL381Q4mrKv0qrN+uhCrLgwBRGVvrMeuthWM+8aHk7wfpgTDSAeAKOrNvmBXGH1HLL
+ QR8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ImBtKANwzFYMJGF7A5lGmEMS0YIFDEnFYBubhVvo7oM=;
- b=Voys5Rh5UDKQ0WAM/3ixfnOT8Xi8ZnL/AUU+7gEfWF8eqZiaAetgf+bNy+Ao2H3zV1
- hBOKFBd9IYC644pnIRA8BGR0JnTfTze+vmp25EPac7g0+1ghbcqm8QM921YKm1u6njAk
- cfY98AXV63Vha2UyW720mA55tAGI5kH/nsDSMsDGGjmFNPP9neca9szQJUI8XuXNME+e
- BRB+Ovd62wkdPD7ZrQy3onkzHqroZ5oL0wVEk9cS6dRTY+ZLOx2jWhRjONAtwUdFaXn6
- +/hzjFCP61vQbQ7ULnLneAiaxunvrLPOp7B6ehKCC6f9h1762EZK9Kmzg+ub6QRdT/Z7
- DZ+A==
-X-Gm-Message-State: AOAM533kaTpMO8TfmkL33k1rklOjQ5hHtUdpVjN4Vt6WiCRvBdWHS3zU
- lblGDwqi0eRLeW4w7EH3hntvnWJweP2h1IeRst2xJg==
-X-Google-Smtp-Source: ABdhPJwA/B0XgGIY44iph0jNldqf/DcJxk8AuTlFoNvT7vMBcRpqieI+7RDwZPrVP8xp82dZIY/fQeRxNsPdPPJBC+A=
-X-Received: by 2002:ab0:6010:: with SMTP id j16mr55693143ual.69.1636131360346; 
- Fri, 05 Nov 2021 09:56:00 -0700 (PDT)
+ bh=kbQHhaYp8FTpqPysPfme9O/tCiPncSFKKQH3ADep+Iw=;
+ b=ujyTyyEWewQd6f210aaAw9wgLJXmmzWDpK9FfKeF5JipfhTLkgcBDeeSSeNSgzooxN
+ 6+/n01XsfHh2ImAMMqkeHxo8JuqHSvYMatbz9rbA+uDkLblyKeipTtifqvTP4LIXPdaP
+ FqG/bB9W74EjN0ZBCpcXvgViID28WBONlwnkn0t6z7aiO8vEuusVAMdTmkTLe8c1kuBc
+ 1rLhcybzbVgmO4NHY5S5mzN9HPhOVi4VfqW/ZQr/dpKWKyAjZQFZXeQZNEcVaJpEMjbd
+ rsewt4sVaN/5Cc2ITfljomLxXZ8JJIqVmdpZ8rUBSc2XUrLCCCFxjvnT5NEcXQdVSNOK
+ C6VQ==
+X-Gm-Message-State: AOAM533UlaBHDSmPDM+uSurK/VlWRk81ILdHhpbyCCT2h5qrn3wfiq3+
+ c13eD8WBLwqcn0tTOm82Gnfo/wdjxw1dxzEnQ7cGSw==
+X-Google-Smtp-Source: ABdhPJxxSdKuU8qi2hr2iuTNB9q9p2n7SoJgg2vHIqy7qo4d9JsxBozxZx413woAl86Cjr06Po+fwGeSmLPSp4DXBKg=
+X-Received: by 2002:a67:ab48:: with SMTP id k8mr74222338vsh.30.1636132136300; 
+ Fri, 05 Nov 2021 10:08:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20211105031917.87837-1-imp@bsdimp.com>
- <20211105031917.87837-8-imp@bsdimp.com>
- <ba0e1487-ec74-1d8b-b371-c33ea9ca0d74@linaro.org>
- <CANCZdfpwYPRb9mt7G3Oojx5BkfNHjtMFDZHeckzs0qhAepaJFw@mail.gmail.com>
-In-Reply-To: <CANCZdfpwYPRb9mt7G3Oojx5BkfNHjtMFDZHeckzs0qhAepaJFw@mail.gmail.com>
+ <20211105031917.87837-12-imp@bsdimp.com>
+ <fd711f1c-380a-80f2-2382-ef5aaf3b697e@linaro.org>
+In-Reply-To: <fd711f1c-380a-80f2-2382-ef5aaf3b697e@linaro.org>
 From: Warner Losh <imp@bsdimp.com>
-Date: Fri, 5 Nov 2021 10:55:49 -0600
-Message-ID: <CANCZdfrHdPyOZAEDwaopvqtLRSg3Ltu+VXq9QuUtTb6vtPcmFQ@mail.gmail.com>
-Subject: Re: [PATCH v4 07/36] bsd-user/i386: Move the inlines into signal.c
+Date: Fri, 5 Nov 2021 11:08:45 -0600
+Message-ID: <CANCZdfqg-svHj-bUVSquxNRsnyvMK=_zoJMpT6WirNkxOoNtNA@mail.gmail.com>
+Subject: Re: [PATCH v4 11/36] bsd-user/x86_64: Move functions into signal.c
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
  Philippe Mathieu-Daude <f4bug@amsat.org>, 
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
  QEMU Trivial <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, 
  Kyle Evans <kevans@freebsd.org>
-Content-Type: multipart/alternative; boundary="0000000000008a5a5005d00d8473"
-Received-SPF: none client-ip=2607:f8b0:4864:20::929;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x929.google.com
+Content-Type: multipart/alternative; boundary="000000000000ca452105d00db274"
+Received-SPF: none client-ip=2607:f8b0:4864:20::92a;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x92a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,75 +73,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 16:56:11 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 17:09:00 -0000
 
---0000000000008a5a5005d00d8473
+--000000000000ca452105d00db274
 Content-Type: text/plain; charset="UTF-8"
 
-On Fri, Nov 5, 2021 at 10:45 AM Warner Losh <imp@bsdimp.com> wrote:
+On Fri, Nov 5, 2021 at 10:25 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
+> On 11/4/21 11:18 PM, Warner Losh wrote:
+> > Move the current inline functions into sigal.c. This will increate the
+> > flexibility of implementation in the future.
+> >
+> > Signed-off-by: Warner Losh<imp@bsdimp.com>
+> > ---
+> >   bsd-user/x86_64/signal.c             | 56 +++++++++++++++++++++++++++-
+> >   bsd-user/x86_64/target_arch_signal.h | 43 ++++-----------------
+> >   2 files changed, 63 insertions(+), 36 deletions(-)
+>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 >
 >
-> On Fri, Nov 5, 2021 at 10:21 AM Richard Henderson <
-> richard.henderson@linaro.org> wrote:
+> > +abi_long set_sigtramp_args(CPUX86State *env, int sig,
+> > +                           struct target_sigframe *frame,
+> > +                           abi_ulong frame_addr,
+> > +                           struct target_sigaction *ka);
+> > +abi_long get_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int
+> flags);
+> > +abi_long set_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int
+> srflag);
+> > +abi_long get_ucontext_sigreturn(CPUX86State *regs, abi_ulong target_sf,
+> > +                                abi_ulong *target_uc);
 >
->> On 11/4/21 11:18 PM, Warner Losh wrote:
->> > +abi_long set_sigtramp_args(CPUX86State *env, int sig,
->> > +                           struct target_sigframe *frame,
->> > +                           abi_ulong frame_addr,
->> > +                           struct target_sigaction *ka);
->> > +abi_long get_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int
->> flags);
->> > +abi_long set_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int
->> srflag);
->> > +abi_long get_ucontext_sigreturn(CPUX86State *regs, abi_ulong target_sf,
->> > +                                abi_ulong *target_uc);
->> >
->> >   #endif /* TARGET_ARCH_SIGNAL_H */
->>
->> You should use the CPUArchState typedef, instead of CPUX86State directly,
->> and place these
->> declarations in a shared header.
->>
->
-> Will do! Thanks!
+> with of course the same comment as for i386.
 >
 
-FYI: I'm going to add a change that moves this to target_os_ucommon.h after
-I've
-made i386 and x86_64 use the functions. That way all revisions will still
-compile
-and I don't have to deal with the 'half-way' state. I'll then tweak the arm
-commits
-later in the series to not add them arm specific prototypes to the
-target_arch_signal.h
-file.
+of course... :)
 
 Warner
 
-
->
->
->> Otherwise,
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->>
->
-
---0000000000008a5a5005d00d8473
+--000000000000ca452105d00db274
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Nov 5, 2021 at 10:45 AM Warne=
-r Losh &lt;<a href=3D"mailto:imp@bsdimp.com">imp@bsdimp.com</a>&gt; wrote:<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
-><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
- class=3D"gmail_attr">On Fri, Nov 5, 2021 at 10:21 AM Richard Henderson &lt=
-;<a href=3D"mailto:richard.henderson@linaro.org" target=3D"_blank">richard.=
-henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
-);padding-left:1ex">On 11/4/21 11:18 PM, Warner Losh wrote:<br>
+<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Nov 5, 2021 at 10:25 AM Richa=
+rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
+nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">On 11/4/21 11:18 PM, Warner Losh wrote:<br>
+&gt; Move the current inline functions into sigal.c. This will increate the=
+<br>
+&gt; flexibility of implementation in the future.<br>
+&gt; <br>
+&gt; Signed-off-by: Warner Losh&lt;<a href=3D"mailto:imp@bsdimp.com" target=
+=3D"_blank">imp@bsdimp.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0bsd-user/x86_64/signal.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0| 56 +++++++++++++++++++++++++++-<br>
+&gt;=C2=A0 =C2=A0bsd-user/x86_64/target_arch_signal.h | 43 ++++------------=
+-----<br>
+&gt;=C2=A0 =C2=A02 files changed, 63 insertions(+), 36 deletions(-)<br>
+<br>
+Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
+ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
+<br>
+<br>
 &gt; +abi_long set_sigtramp_args(CPUX86State *env, int sig,<br>
 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
  =C2=A0 =C2=A0 =C2=A0 =C2=A0struct target_sigframe *frame,<br>
@@ -158,29 +154,9 @@ srflag);<br>
 f,<br>
 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
  =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 abi_ulong *target_uc);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0#endif /* TARGET_ARCH_SIGNAL_H */<br>
 <br>
-You should use the CPUArchState typedef, instead of CPUX86State directly, a=
-nd place these <br>
-declarations in a shared header.<br></blockquote><div><br></div><div>Will d=
-o! Thanks!</div></div></div></blockquote><div><br></div><div>FYI: I&#39;m g=
-oing to add a change that moves this to target_os_ucommon.h after I&#39;ve<=
-br></div><div>made i386 and x86_64 use the functions. That way all revision=
-s will still compile</div><div>and I don&#39;t have to deal with the &#39;h=
-alf-way&#39; state. I&#39;ll then tweak the arm commits</div><div>later in =
-the series to not add them arm specific prototypes to the target_arch_signa=
-l.h</div><div>file.</div><div><br></div><div>Warner</div><div>=C2=A0</div><=
-blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
-eft:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div clas=
-s=3D"gmail_quote"><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-Otherwise,<br>
-Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
-ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
-</blockquote></div></div>
-</blockquote></div></div>
+with of course the same comment as for i386.<br></blockquote><div><br></div=
+><div>of course... :)</div><div><br></div><div>Warner</div></div></div>
 
---0000000000008a5a5005d00d8473--
+--000000000000ca452105d00db274--
 
