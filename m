@@ -1,66 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mj2i6-0004DC-Rs
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 13:09:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44356)
+	id 1mj2uh-0002WP-S2
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 13:22:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mj2i3-0004AZ-Gr
- for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 13:09:00 -0400
-Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a]:34390)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mj2ue-0002Te-Nk; Fri, 05 Nov 2021 13:22:00 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:42987)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mj2i1-0002uG-Ft
- for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 13:08:59 -0400
-Received: by mail-ua1-x92a.google.com with SMTP id b3so18363316uam.1
- for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 10:08:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kbQHhaYp8FTpqPysPfme9O/tCiPncSFKKQH3ADep+Iw=;
- b=3+o9tCT6Ah+Q2bXL+HPpmfYGzQPYch2iWfWvKRz9FBiY/UznoIr7OlOoVWGYuqUgZg
- gsB2vn+oSqAzc3avNXYGZGXj1uj9mfTKUDvD6pKVNd6bBEKJd2Oxs+oyyMc806K0PaSH
- 7NFNbyfXXEyC+eh/Vd+pkxoekzQoRDncp8oQDi3sUu5tVBfIpagUyZmavuaIMTghPIfK
- 0RyIP99h2D3a8Ji8vD27oNGhuO/XeTswugtfVTsvQjW3FeWoOVQ2P8YGYQnNVZo+SZi3
- c0pL381Q4mrKv0qrN+uhCrLgwBRGVvrMeuthWM+8aHk7wfpgTDSAeAKOrNvmBXGH1HLL
- QR8A==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mj2uV-0007EU-Fi; Fri, 05 Nov 2021 13:21:55 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ d72-20020a1c1d4b000000b00331140f3dc8so6934159wmd.1; 
+ Fri, 05 Nov 2021 10:21:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=IOdSvE7B+V3yJN993wQb7M8J5BQsaGVtUf2KFSGPdGo=;
+ b=A1eqCaDugkUYsUbS/i+GBK6GjR0EuLjgxR+xu2r17EbgaGhEAINocCh4Q6n07C2tDy
+ 9HPvEAZ38wFpB1MNkdGu0FmZam7q/EnRWnSncJo+/m2RJIvxiMt9R0tmVweGZ7ztj8GL
+ 6BuJu2akeUESKGOmKBm2R15EGP2EnJehKtTgxC4jSrVMvRdXF/5Era73LSA8QvlBa2iT
+ rfnZwO4BFU8hsdo6NNv2RqM5vfLtQraPbUqtjr6ww172kRatsohVF7axXUPAak/SRNnF
+ iPVySQBoJto/BnkWaP+Vc1Y+3LQW+OMWOb8d2EtEQH/aMsgxMk53z3ZZZVTwCcXAhC6W
+ 3Qqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kbQHhaYp8FTpqPysPfme9O/tCiPncSFKKQH3ADep+Iw=;
- b=ujyTyyEWewQd6f210aaAw9wgLJXmmzWDpK9FfKeF5JipfhTLkgcBDeeSSeNSgzooxN
- 6+/n01XsfHh2ImAMMqkeHxo8JuqHSvYMatbz9rbA+uDkLblyKeipTtifqvTP4LIXPdaP
- FqG/bB9W74EjN0ZBCpcXvgViID28WBONlwnkn0t6z7aiO8vEuusVAMdTmkTLe8c1kuBc
- 1rLhcybzbVgmO4NHY5S5mzN9HPhOVi4VfqW/ZQr/dpKWKyAjZQFZXeQZNEcVaJpEMjbd
- rsewt4sVaN/5Cc2ITfljomLxXZ8JJIqVmdpZ8rUBSc2XUrLCCCFxjvnT5NEcXQdVSNOK
- C6VQ==
-X-Gm-Message-State: AOAM533UlaBHDSmPDM+uSurK/VlWRk81ILdHhpbyCCT2h5qrn3wfiq3+
- c13eD8WBLwqcn0tTOm82Gnfo/wdjxw1dxzEnQ7cGSw==
-X-Google-Smtp-Source: ABdhPJxxSdKuU8qi2hr2iuTNB9q9p2n7SoJgg2vHIqy7qo4d9JsxBozxZx413woAl86Cjr06Po+fwGeSmLPSp4DXBKg=
-X-Received: by 2002:a67:ab48:: with SMTP id k8mr74222338vsh.30.1636132136300; 
- Fri, 05 Nov 2021 10:08:56 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=IOdSvE7B+V3yJN993wQb7M8J5BQsaGVtUf2KFSGPdGo=;
+ b=ZMls6nbXNUxBvNPh9s8PCu0WDzqZBhBIetlhkqmI0B7Ct1bUpHaQpXdlbDZqqSjv/n
+ VIft7PFNCbQcdKpTsRMYlWh+fnnlM214Y2BJ2h1uUaO2Av4qiNrbzqKOd591H8+6i25k
+ YrhxAw0gCePpclJtAjf6J7/LKHLnuvD/sGJlX0QsZ53maFWxQfJN00ZcgulqUGF7t2xV
+ 6uv5pqkT2FDxxA+QqWaIzZqFTfEvfriYCPpg+nUkWiVTHTmSbKg0f7fEZF0ru+5g/yA0
+ DKfRaqB7sUMuwiTW938j/bya4jm/ajZ/TPUZpPZdIBzrYCrWCTyQgMWqr890ECSY+ZqZ
+ lGMQ==
+X-Gm-Message-State: AOAM531chUqbjoVbE2BqIpJ8kn+Ya0tdqKJMkbzRR3y9Q4SQAQafyhEF
+ LauYMZWhOmADAgKtaz1hhWUYc6HMxBQ=
+X-Google-Smtp-Source: ABdhPJydUANBy2qlKlDDoncrwZW9FQohQBIjND9xVC++HE8vbZd3xtzzN55+t2dEWXzBiMRApzgpMg==
+X-Received: by 2002:a05:600c:511c:: with SMTP id
+ o28mr33057350wms.96.1636132903802; 
+ Fri, 05 Nov 2021 10:21:43 -0700 (PDT)
+Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id a4sm7648091wmg.10.2021.11.05.10.21.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Nov 2021 10:21:43 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 3/3] hw/input/pckbd: Rename i8042_setup_a20_line() and its a20
+ irq argument
+Date: Fri,  5 Nov 2021 18:21:27 +0100
+Message-Id: <20211105172127.224462-4-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20211105172127.224462-1-f4bug@amsat.org>
+References: <20211105172127.224462-1-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20211105031917.87837-1-imp@bsdimp.com>
- <20211105031917.87837-12-imp@bsdimp.com>
- <fd711f1c-380a-80f2-2382-ef5aaf3b697e@linaro.org>
-In-Reply-To: <fd711f1c-380a-80f2-2382-ef5aaf3b697e@linaro.org>
-From: Warner Losh <imp@bsdimp.com>
-Date: Fri, 5 Nov 2021 11:08:45 -0600
-Message-ID: <CANCZdfqg-svHj-bUVSquxNRsnyvMK=_zoJMpT6WirNkxOoNtNA@mail.gmail.com>
-Subject: Re: [PATCH v4 11/36] bsd-user/x86_64: Move functions into signal.c
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Philippe Mathieu-Daude <f4bug@amsat.org>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, 
- Kyle Evans <kevans@freebsd.org>
-Content-Type: multipart/alternative; boundary="000000000000ca452105d00db274"
-Received-SPF: none client-ip=2607:f8b0:4864:20::92a;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x92a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,90 +85,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 17:09:00 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 17:22:01 -0000
 
---000000000000ca452105d00db274
-Content-Type: text/plain; charset="UTF-8"
+'a20_out' is an input IRQ, rename it as 'a20_input'.
+i8042_setup_a20_line() doesn't take a Device parameter
+but an ISADevice one. Rename it as i8042_isa_*() to
+make it explicit.
 
-On Fri, Nov 5, 2021 at 10:25 AM Richard Henderson <
-richard.henderson@linaro.org> wrote:
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/input/i8042.h | 2 +-
+ hw/i386/pc.c             | 2 +-
+ hw/input/pckbd.c         | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-> On 11/4/21 11:18 PM, Warner Losh wrote:
-> > Move the current inline functions into sigal.c. This will increate the
-> > flexibility of implementation in the future.
-> >
-> > Signed-off-by: Warner Losh<imp@bsdimp.com>
-> > ---
-> >   bsd-user/x86_64/signal.c             | 56 +++++++++++++++++++++++++++-
-> >   bsd-user/x86_64/target_arch_signal.h | 43 ++++-----------------
-> >   2 files changed, 63 insertions(+), 36 deletions(-)
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->
->
-> > +abi_long set_sigtramp_args(CPUX86State *env, int sig,
-> > +                           struct target_sigframe *frame,
-> > +                           abi_ulong frame_addr,
-> > +                           struct target_sigaction *ka);
-> > +abi_long get_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int
-> flags);
-> > +abi_long set_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int
-> srflag);
-> > +abi_long get_ucontext_sigreturn(CPUX86State *regs, abi_ulong target_sf,
-> > +                                abi_ulong *target_uc);
->
-> with of course the same comment as for i386.
->
+diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
+index 1d90432daef..3534fcc4b43 100644
+--- a/include/hw/input/i8042.h
++++ b/include/hw/input/i8042.h
+@@ -21,6 +21,6 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
+                    MemoryRegion *region, ram_addr_t size,
+                    hwaddr mask);
+ void i8042_isa_mouse_fake_event(ISAKBDState *isa);
+-void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
++void i8042_isa_setup_a20_line(ISADevice *dev, qemu_irq a20_input);
+ 
+ #endif /* HW_INPUT_I8042_H */
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 2592a821486..06ef74ca22b 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1043,7 +1043,7 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl, bool no_vmport)
+     port92 = isa_create_simple(isa_bus, TYPE_PORT92);
+ 
+     a20_line = qemu_allocate_irqs(handle_a20_line_change, first_cpu, 2);
+-    i8042_setup_a20_line(i8042, a20_line[0]);
++    i8042_isa_setup_a20_line(i8042, a20_line[0]);
+     qdev_connect_gpio_out_named(DEVICE(port92),
+                                 PORT92_A20_LINE, 0, a20_line[1]);
+     g_free(a20_line);
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index baba62f357a..7b842c8f3b5 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -680,9 +680,9 @@ void i8042_isa_mouse_fake_event(ISAKBDState *isa)
+     ps2_mouse_fake_event(s->mouse);
+ }
+ 
+-void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out)
++void i8042_isa_setup_a20_line(ISADevice *dev, qemu_irq a20_input)
+ {
+-    qdev_connect_gpio_out_named(DEVICE(dev), I8042_A20_LINE, 0, a20_out);
++    qdev_connect_gpio_out_named(DEVICE(dev), I8042_A20_LINE, 0, a20_input);
+ }
+ 
+ static const VMStateDescription vmstate_kbd_isa = {
+-- 
+2.31.1
 
-of course... :)
-
-Warner
-
---000000000000ca452105d00db274
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Nov 5, 2021 at 10:25 AM Richa=
-rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
-nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">On 11/4/21 11:18 PM, Warner Losh wrote:<br>
-&gt; Move the current inline functions into sigal.c. This will increate the=
-<br>
-&gt; flexibility of implementation in the future.<br>
-&gt; <br>
-&gt; Signed-off-by: Warner Losh&lt;<a href=3D"mailto:imp@bsdimp.com" target=
-=3D"_blank">imp@bsdimp.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0bsd-user/x86_64/signal.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0| 56 +++++++++++++++++++++++++++-<br>
-&gt;=C2=A0 =C2=A0bsd-user/x86_64/target_arch_signal.h | 43 ++++------------=
------<br>
-&gt;=C2=A0 =C2=A02 files changed, 63 insertions(+), 36 deletions(-)<br>
-<br>
-Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@lina=
-ro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
-<br>
-<br>
-&gt; +abi_long set_sigtramp_args(CPUX86State *env, int sig,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0struct target_sigframe *frame,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0abi_ulong frame_addr,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0struct target_sigaction *ka);<br>
-&gt; +abi_long get_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int =
-flags);<br>
-&gt; +abi_long set_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int =
-srflag);<br>
-&gt; +abi_long get_ucontext_sigreturn(CPUX86State *regs, abi_ulong target_s=
-f,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 abi_ulong *target_uc);<br>
-<br>
-with of course the same comment as for i386.<br></blockquote><div><br></div=
-><div>of course... :)</div><div><br></div><div>Warner</div></div></div>
-
---000000000000ca452105d00db274--
 
