@@ -1,48 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mipli-0004GX-2P
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:19:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53246)
+	id 1miplm-0004Kl-Us
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:20:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplg-0004EM-Qz
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:19:52 -0400
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131]:33681)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mipli-0004Ga-3g
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:19:54 -0400
+Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a]:36675)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mipld-00042q-HL
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:19:51 -0400
-Received: by mail-il1-x131.google.com with SMTP id l19so8322742ilk.0
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:19:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplf-00043Q-Bf
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:19:53 -0400
+Received: by mail-il1-x12a.google.com with SMTP id l8so8272333ilv.3
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:19:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MDPt+10pI2apuOo9dXdmFVld2os3PLc83HBDg8phZBs=;
- b=cGhb2BisdGQt9pQ+jOl57shUMusmZDfK7i7YyovASaM8LtIa+Onj8GDIWD/T1rEyaD
- Ttn7sIASZkG1U+a3mi/+H7steP9rE4ae7t+YUoUnkSLfPFF8q6tFszMmC0yzTqwhlSEU
- CQZRrD1NCrXsUQcQ6q3hdcrUhXcIzPrZ1nMaSorfqAgzGj7dTUSlG+zYRRplniFVbC/y
- h7O2LntKnBUTh9C/5KP6sKo2NhsW6JXazYT9tM47NwlBU09x3+jGa5rU0rk8AuSVCjFf
- TyehDt+egTUstqG9L9nATfTr027f2tqwpc4p99UcpVPGlaei9sZzy2YRy7SsPprFx/xy
- OsJA==
+ bh=rOISPYYKecMk71RBzznUZbzYo3FGryyldBKKzRc7muU=;
+ b=HsDjNmtOoFA6hBAH8rjKqis5saoGQ1Kk7UyzD0c8L2dKow0WG8ibimMhhexPMiGQDL
+ UYNqXFbiz7QXWKpR6dz/rf40xqoJgKsnaJl4+iLIT5XX277VYCZTn378lS/xEX7JHxil
+ +IbXyZQYVM0aVgPUtHMBKFa/MARhXlKCp6I3ykM/Q9eMYmh8cHZL2BLgllrv7xbmT+UP
+ 2qCu3kiKvsAwfKphNC73FXfW91fmcCfB3tASKzA0BrmX992aF1oUjIBxtU6mzkbs9S5X
+ CBFTzyzUxdcMEDSjbu4C7QeN8DVxhrIOGBkYUTv8G5dVYaKGAtIsfWE9+BbftuJSbfBl
+ UHuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=MDPt+10pI2apuOo9dXdmFVld2os3PLc83HBDg8phZBs=;
- b=K2kGKE9JXc6BAE3qwYTyG2V6FC1nooH+qRKxmxPGmVoi+nOzGQlunvEjvWS1xSegMZ
- xPYm99kzrpyewAphcIIugQducYeJKhDMfbyk0QNtqUZjtNn3N0zgbfZ2s+PWwvgSdEoD
- bfQRUqhz1P2CjCOQYfV8awfg0Z3vSpMF/1kt4DFvQrhVFzJ0lUPWYynUGc2pxcKugv2y
- 2WePgVXzGOPf9hjCbt1pKxGKACjjeWowOLc/YCcDuM7MQzGcVWcoz0mwig51XoeqiGXE
- xZI1Z8uiicRznqQAS4T1yRAqmPISl17vwx42uO52KrpYhBQSo9R4t+b81BdkGW8dfdH/
- H/Ng==
-X-Gm-Message-State: AOAM533H4YhKYjlC1h5QFUsOAoEbSiRjuBYMgIkMLYi8sLH5tBYjDwxv
- S97KLcG79etkNFXuBqGpyB6ciQ==
-X-Google-Smtp-Source: ABdhPJyyNr6VGXtoH4vWJOIJmyrJly1Jp0Lj67zE6PoCh3B9DO/7+xLp419jcloOWNtwIFHmgppksg==
-X-Received: by 2002:a92:6412:: with SMTP id y18mr32996662ilb.178.1636082388232; 
- Thu, 04 Nov 2021 20:19:48 -0700 (PDT)
+ bh=rOISPYYKecMk71RBzznUZbzYo3FGryyldBKKzRc7muU=;
+ b=a9/fwnzlvK+3oaAEdE/99Q7UPfdw+1OQvUBS11ekTX6c4jKzuNkRqL3wC1PB3vtfy1
+ +2b6b3IbF84jy0jVlhxgcbEBCMb1P3IhpXRzMFV+wOCKDeA6by2jmBAEEsjApI7MRM0j
+ OHTD5jgIi9tzeKLCANfZCfGkNIm22OXWYz1fR8DjrFxYB6oVunAnH9I/Q9svyFdsIr/f
+ ZUEUqswvJssRt3iKZlmPeMdtCg/4WWPNqvFne/w8XguDmJdzUC+maRvvMCsAsV6BZm1c
+ tN4efNA/iDBd5E11le9jZleHCULSTVbW399pMZ2ig203A/SMSaYQx7yr9VUuUKcgKDAn
+ YMDA==
+X-Gm-Message-State: AOAM530o4xNke8lK7Y3BF9PoHrVRnjvDIra8Qoeksb4YcOkK5xi0XVry
+ as1I5SyvQVHFMC9ZAvFypey1NQ==
+X-Google-Smtp-Source: ABdhPJzVFhzWsOGkE7rfKs03PlXzdcfqK0dvnp7/2wm1iAaSeJCCt+j7QDp3NRC4/kE4jyvRvRrv6w==
+X-Received: by 2002:a05:6e02:1ca9:: with SMTP id
+ x9mr12340717ill.273.1636082390111; 
+ Thu, 04 Nov 2021 20:19:50 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.19.47
+ by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.19.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 20:19:47 -0700 (PDT)
+ Thu, 04 Nov 2021 20:19:49 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Philippe Mathieu-Daude <f4bug@amsat.org>,
@@ -50,17 +51,17 @@ Cc: Philippe Mathieu-Daude <f4bug@amsat.org>,
  qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  Kyle Evans <kevans@freebsd.org>
-Subject: [PATCH v4 02/36] bsd-user/freebsd: Create common target_os_ucontext.h
- file
-Date: Thu,  4 Nov 2021 21:18:43 -0600
-Message-Id: <20211105031917.87837-3-imp@bsdimp.com>
+Subject: [PATCH v4 04/36] bsd-user/i386/target_arch_signal.h: Remove
+ target_sigcontext
+Date: Thu,  4 Nov 2021 21:18:45 -0600
+Message-Id: <20211105031917.87837-5-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211105031917.87837-1-imp@bsdimp.com>
 References: <20211105031917.87837-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::131;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x131.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::12a;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x12a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -79,77 +80,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 03:19:53 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 03:19:56 -0000
 
-FreeBSD has a MI ucontext structure that contains the MD mcontext
-machine state and other things that are machine independent. Create an
-include file for all the ucontext stuff. It needs to be included in the
-arch specific files after target_mcontext is defined. This is largely
-copied from sys/_ucontext.h with the comments about layout removed
-because we don't support ancient FreeBSD binaries.
+In FreeBSD, sigcontext was retired in favor of ucontext/mcontext.
+Remove vestigial target_sigcontext.
 
 Signed-off-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/freebsd/target_os_signal.h   |  3 ---
- bsd-user/freebsd/target_os_ucontext.h | 35 +++++++++++++++++++++++++++
- 2 files changed, 35 insertions(+), 3 deletions(-)
- create mode 100644 bsd-user/freebsd/target_os_ucontext.h
+ bsd-user/i386/target_arch_signal.h | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/bsd-user/freebsd/target_os_signal.h b/bsd-user/freebsd/target_os_signal.h
-index 1a4c5faf19..3ed454e086 100644
---- a/bsd-user/freebsd/target_os_signal.h
-+++ b/bsd-user/freebsd/target_os_signal.h
-@@ -1,9 +1,6 @@
- #ifndef _TARGET_OS_SIGNAL_H_
- #define _TARGET_OS_SIGNAL_H_
+diff --git a/bsd-user/i386/target_arch_signal.h b/bsd-user/i386/target_arch_signal.h
+index a90750d602..e262667bda 100644
+--- a/bsd-user/i386/target_arch_signal.h
++++ b/bsd-user/i386/target_arch_signal.h
+@@ -27,10 +27,6 @@
+ #define TARGET_MINSIGSTKSZ  (512 * 4)               /* min sig stack size */
+ #define TARGET_SIGSTKSZ     (MINSIGSTKSZ + 32768)   /* recommended size */
  
--/* FreeBSD's sys/ucontext.h defines this */
--#define TARGET_MC_GET_CLEAR_RET 0x0001
+-struct target_sigcontext {
+-    /* to be added */
+-};
 -
- #include "target_os_siginfo.h"
- #include "target_arch_signal.h"
+ typedef struct target_mcontext {
+ } target_mcontext_t;
  
-diff --git a/bsd-user/freebsd/target_os_ucontext.h b/bsd-user/freebsd/target_os_ucontext.h
-new file mode 100644
-index 0000000000..1d0c3c4e65
---- /dev/null
-+++ b/bsd-user/freebsd/target_os_ucontext.h
-@@ -0,0 +1,35 @@
-+/*
-+ * FreeBSD has a common ucontext definition for all architectures.
-+ *
-+ * Copyright 2021 Warner Losh <imp@bsdimp.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later OR BSD-3-Clause
-+ */
-+#ifndef TARGET_OS_UCONTEXT_H
-+#define TARGET_OS_UCONTEXT_H
-+
-+/*
-+ * Defines the common bits for all of FreeBSD's architectures. Has to be
-+ * included AFTER the MD target_mcontext_t is defined, however, so can't
-+ * be in the grab-bag that is target_os_signal.h.
-+ */
-+
-+/* See FreeBSD's sys/ucontext.h */
-+#define TARGET_MC_GET_CLEAR_RET 0x0001
-+
-+/* FreeBSD's sys/_ucontext.h structures */
-+typedef struct target_ucontext {
-+    target_sigset_t     uc_sigmask;
-+    target_mcontext_t   uc_mcontext;
-+    abi_ulong           uc_link;
-+    target_stack_t      uc_stack;
-+    int32_t             uc_flags;
-+    int32_t             __spare__[4];
-+} target_ucontext_t;
-+
-+#ifdef TARGET_MCONTEXT_SIZE
-+G_STATIC_ASSERT(TARGET_MCONTEXT_SIZE == sizeof(target_mcontext_t));
-+G_STATIC_ASSERT(TARGET_UCONTEXT_SIZE == sizeof(target_ucontext_t));
-+#endif /* TARGET_MCONTEXT_SIZE */
-+
-+#endif /* TARGET_OS_UCONTEXT_H */
 -- 
 2.33.0
 
