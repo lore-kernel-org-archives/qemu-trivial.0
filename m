@@ -1,76 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mj2uw-0002dC-U4
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 13:22:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49006)
+	id 1mj3E9-0003ea-Iw
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 13:42:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54272)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mj2ug-0002Vv-Bh; Fri, 05 Nov 2021 13:22:03 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:46933)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mj3E7-0003cw-Jw
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 13:42:07 -0400
+Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936]:43726)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mj2uZ-0007DH-FH; Fri, 05 Nov 2021 13:22:01 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id u1so14780426wru.13;
- Fri, 05 Nov 2021 10:21:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=d3pfBfUWEkr1HXpj/BC7XFNX+5ez4tvt7AfZVzlC78A=;
- b=KxSOfKAtNVnLsGosZ5y8Vw1xxDNdMoLRzrJB5mLO3F6iAb8SSNUV0ZbpexiCav7Mkn
- jQoPwJP0KzHa4AN8GfQhNRiskX0ncuVUx8M6xWzs4Yf2FOatyu4H7YlKVJtsHMwdbV0K
- dK1U/hVJrPDt7XuPE9fk14ewmNrxD+amLQEuYHafH2una/oA0ns4HBrxdAWr7UDQIJol
- juXpMU1V2U2aY0aaewV7zmE0s7eIrg+rNY5ETGvGswejxpapiI1Zw3Xq8Eup1ucJGUMs
- 9J4OWPoW+bbbA0WBx7HHOWRsJhXBKFsZrbn2WbvpqKho029yRfDC7bDc2AfoGA3G/FJc
- Piqg==
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mj3E5-00036H-JI
+ for qemu-trivial@nongnu.org; Fri, 05 Nov 2021 13:42:07 -0400
+Received: by mail-ua1-x936.google.com with SMTP id v3so18445268uam.10
+ for <qemu-trivial@nongnu.org>; Fri, 05 Nov 2021 10:42:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Tz9sADjW5Cx4noWIH/cQaSJzFVTbqmrE932QTIxCyuE=;
+ b=aJicsuj7dVOrErJZOWkmyHj253OooLNmSbv0h1fKDeEuNy4jHnRDsbKmOvu5uVII5L
+ 7uhoSWltDJbb0DLKSqxexYipXDVRqiAVbY0B9wL6GQ2Pl1F9dnRl1XM5S/UEnQYSlh50
+ RxWGa1KDmGDT2dhMS2FYev5w2herExL7AIOWcOJCtHMSl+kCxK1XMtyVWVVnP5UY3lUV
+ j/HzEIcBanspgquTXezIfVLqeINozmjWd898FP9NMpdskc2xi4o65a/ximUzqn+ekrbJ
+ ayP9eRyVrZrrncv2QbLsgXpU6s5K8HXoE3YoZw0t8NqDo+J4/YSVriwHALivbuoKjq5S
+ 0sxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=d3pfBfUWEkr1HXpj/BC7XFNX+5ez4tvt7AfZVzlC78A=;
- b=M4tUVFyTwsBpPus8Ws6Q3DkODj8qmKKgDnVTjeUyrEdf3NF5KriJ4/WCJMFC+lsoDd
- ehXIv0ABSAy8PvCnc1YFAe1T/pO5uOR7dAIaBeR+HowqLLwav/S12wGLJ5kmGRuieYWJ
- CAs1waDI4gmUKKJUTzB4jWYIhOdmTIt24IHcs2w7wQ/Tj3JcQcs+uJXXhXIAx51Rs6+Z
- 99mM1KuJLb/FdIu5UiKF8cLWBOPqavfAlAUAxLwFeJNRDCP5nopczt3luZbATTZWHW0A
- LFrhc/sKWI6LrOuOVO5PqHHbZa0je5XwwLQ4+ITTEHySOMTHm18JImFDQJwsvWf0xeCY
- Vmjg==
-X-Gm-Message-State: AOAM532DmVVQ6kxolzcSI2TWbgoIZ6mQYsOutCHRtYWZNHSShDpfJWqW
- TwbX72CjtIB0Czfk2ZSSk5nHzSNGu9A=
-X-Google-Smtp-Source: ABdhPJxSRofpgzzyLJ/LHocsl6qYthoyntcVE4dyjS02VB4BG3qNEhRDqBzJon9IMtgQzBDT7wMiqw==
-X-Received: by 2002:adf:f990:: with SMTP id f16mr68147221wrr.128.1636132894197; 
- Fri, 05 Nov 2021 10:21:34 -0700 (PDT)
-Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id m125sm11628641wmm.39.2021.11.05.10.21.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Nov 2021 10:21:33 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 1/3] hw/qdev: Correct qdev_connect_gpio_out_named()
- documentation
-Date: Fri,  5 Nov 2021 18:21:25 +0100
-Message-Id: <20211105172127.224462-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211105172127.224462-1-f4bug@amsat.org>
-References: <20211105172127.224462-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Tz9sADjW5Cx4noWIH/cQaSJzFVTbqmrE932QTIxCyuE=;
+ b=j/T0LhRSVEgjGAX5Lrsv6ztPMVoVbR92b5XDg6zTlB/Fefu6TjLg0VJDbAwUVJ+OwV
+ LWIXyVNsV/om3ixl5gbTWq/m8hVVI8UeCKDjbRSUNbx2kE7kg/Dab9vWrBZpRCyN5SnJ
+ ftAa0/Yd0d7VHLkEfwipBkJPVAW8ffqtABjGw+jLif/3iFjhZNHD2mzSbsSv4KjEaaho
+ DC5TOpS8PD4HwwvXniasRzi1KxVRXXpAVMcTFNlLe/2XHeMi7ASN7Sw3DuVo6ZQSdOBm
+ ZBMGdTPgMDK1XIsxNzzLjJv5oK04ZG8ZRRR4fFnwA0/Kk9m8dQccXyFfiV/KQvpy9/6V
+ KhvQ==
+X-Gm-Message-State: AOAM531BOudmZYrBOXPT3XEvvwRAfta+ATKuqg1yd/9xwPbVsvgFxJ5s
+ d/lEz90uX1qWF0tMmt8UubRt+j3/HZHRH8+wyHR1DQ==
+X-Google-Smtp-Source: ABdhPJzqyNYy58j4kzdWfqLEhS8iUME7nez15p1XA/uwmF3sw4/0Y1IEH1JZRhBnOnciLPToQwRzZR4CsEXxvb0svRA=
+X-Received: by 2002:a67:fdc3:: with SMTP id l3mr12179417vsq.42.1636134123788; 
+ Fri, 05 Nov 2021 10:42:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+References: <20211105031917.87837-1-imp@bsdimp.com>
+ <20211105031917.87837-34-imp@bsdimp.com>
+ <1fd1396f-56d6-1a60-6786-797623827dd9@linaro.org>
+In-Reply-To: <1fd1396f-56d6-1a60-6786-797623827dd9@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Fri, 5 Nov 2021 11:41:52 -0600
+Message-ID: <CANCZdfp2a1pf4RNK+uLTUOrDWsJGY9FymPCR5dmntq+K_2WHRg@mail.gmail.com>
+Subject: Re: [PATCH v4 33/36] bsd-user/arm/target_arch_signal.c: arm
+ set_mcontext
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Philippe Mathieu-Daude <f4bug@amsat.org>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, 
+ Kyle Evans <kevans@freebsd.org>, Stacey Son <sson@freebsd.org>
+Content-Type: multipart/alternative; boundary="00000000000041033d05d00e2905"
+Received-SPF: none client-ip=2607:f8b0:4864:20::936;
+ envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x936.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,40 +74,147 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 17:22:05 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 17:42:08 -0000
 
-qdev_connect_gpio_out_named() is described as qdev_connect_gpio_out(),
-and referring to itself in an endless loop, which is confusing. Fix.
+--00000000000041033d05d00e2905
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/qdev-core.h | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+On Fri, Nov 5, 2021 at 10:44 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 72622bd3370..5b88c8b9dd3 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -497,7 +497,8 @@ qemu_irq qdev_get_gpio_in_named(DeviceState *dev, const char *name, int n);
-  */
- void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq pin);
- /**
-- * qdev_connect_gpio_out: Connect one of a device's anonymous output GPIO lines
-+ * qdev_connect_gpio_out_named: Connect one of a device's named output
-+ *                              GPIO lines
-  * @dev: Device whose GPIO to connect
-  * @name: Name of the output GPIO array
-  * @n: Number of the anonymous output GPIO line (which must be in range)
-@@ -518,8 +519,6 @@ void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq pin);
-  * It is not valid to try to connect one outbound GPIO to multiple
-  * qemu_irqs at once, or to connect multiple outbound GPIOs to the
-  * same qemu_irq; see qdev_connect_gpio_out() for details.
-- *
-- * For named output GPIO lines, use qdev_connect_gpio_out_named().
-  */
- void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
-                                  qemu_irq pin);
--- 
-2.31.1
+> On 11/4/21 11:19 PM, Warner Losh wrote:
+> > +/* Compare to arm/arm/exec_machdep.c set_mcontext() */
+> > +abi_long set_mcontext(CPUARMState *env, target_mcontext_t *mcp, int
+> srflag)
+> > +{
+> > +    int err = 0;
+> > +    const uint32_t *gr = mcp->__gregs;
+> > +    uint32_t cpsr, ccpsr = cpsr_read(env);
+> > +    uint32_t fpscr, mask;
+> > +
+> > +    cpsr = tswap32(gr[TARGET_REG_CPSR]);
+> > +    /*
+> > +     * Only allow certain bits to change, reject attempted changes to
+> non-user
+> > +     * bits. In addition, make sure we're headed for user mode and none
+> of the
+> > +     * interrupt bits are set.
+> > +     */
+> > +    if ((ccpsr & ~CPSR_USER) != (cpsr & ~CPSR_USER)) {
+> > +        return -TARGET_EINVAL;
+> > +    }
+> > +    if ((cpsr & CPSR_M) != ARM_CPU_MODE_USR ||
+> > +        (cpsr & (CPSR_I | CPSR_F)) != 0) {
+> > +        return -TARGET_EINVAL;
+> > +    }
+> > +    mask = cpsr & CPSR_T ? 0x1 : 0x3;
+>
+> Should add a sentence or so here, pointing to the exception return
+> instruction used by the
+> freebsd kernel, which does this masking.
+>
 
+Will do.
+
+
+> > +    /*
+> > +     * Make sure T mode matches the PC's notion of thumb mode, although
+> > +     * FreeBSD lets the processor sort this out, so we may need remove
+> > +     * this check, or generate a signal...
+> > +     */
+> > +    if (!!(tswap32(gr[TARGET_REG_PC]) & 1) != !!(cpsr & CPSR_T)) {
+> > +        return -TARGET_EINVAL;
+> > +    }
+>
+> Remove this.
+>
+
+Gone.
+
+
+> > +    env->regs[15] = tswap32(gr[TARGET_REG_PC] & mask);
+>
+> You wanted ~mask.
+>
+
+Doh! Fixed.
+
+Warner
+
+
+>
+> r~
+>
+
+--00000000000041033d05d00e2905
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Nov 5, 2021 at 10:44 AM Richa=
+rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
+nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">On 11/4/21 11:19 PM, Warner Losh wrote:<br>
+&gt; +/* Compare to arm/arm/exec_machdep.c set_mcontext() */<br>
+&gt; +abi_long set_mcontext(CPUARMState *env, target_mcontext_t *mcp, int s=
+rflag)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 int err =3D 0;<br>
+&gt; +=C2=A0 =C2=A0 const uint32_t *gr =3D mcp-&gt;__gregs;<br>
+&gt; +=C2=A0 =C2=A0 uint32_t cpsr, ccpsr =3D cpsr_read(env);<br>
+&gt; +=C2=A0 =C2=A0 uint32_t fpscr, mask;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 cpsr =3D tswap32(gr[TARGET_REG_CPSR]);<br>
+&gt; +=C2=A0 =C2=A0 /*<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* Only allow certain bits to change, reject attem=
+pted changes to non-user<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* bits. In addition, make sure we&#39;re headed f=
+or user mode and none of the<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* interrupt bits are set.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
+&gt; +=C2=A0 =C2=A0 if ((ccpsr &amp; ~CPSR_USER) !=3D (cpsr &amp; ~CPSR_USE=
+R)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return -TARGET_EINVAL;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 if ((cpsr &amp; CPSR_M) !=3D ARM_CPU_MODE_USR ||<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (cpsr &amp; (CPSR_I | CPSR_F)) !=3D 0) {<=
+br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return -TARGET_EINVAL;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 mask =3D cpsr &amp; CPSR_T ? 0x1 : 0x3;<br>
+<br>
+Should add a sentence or so here, pointing to the exception return instruct=
+ion used by the <br>
+freebsd kernel, which does this masking.<br></blockquote><div><br></div><di=
+v>Will do.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D=
+"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-le=
+ft:1ex">
+&gt; +=C2=A0 =C2=A0 /*<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* Make sure T mode matches the PC&#39;s notion of=
+ thumb mode, although<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* FreeBSD lets the processor sort this out, so we=
+ may need remove<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0* this check, or generate a signal...<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
+&gt; +=C2=A0 =C2=A0 if (!!(tswap32(gr[TARGET_REG_PC]) &amp; 1) !=3D !!(cpsr=
+ &amp; CPSR_T)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return -TARGET_EINVAL;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+<br>
+Remove this.<br></blockquote><div><br></div><div>Gone.</div><div>=C2=A0</di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex">
+&gt; +=C2=A0 =C2=A0 env-&gt;regs[15] =3D tswap32(gr[TARGET_REG_PC] &amp; ma=
+sk);<br>
+<br>
+You wanted ~mask.<br></blockquote><div><br></div><div>Doh! Fixed.</div><div=
+><br></div><div>Warner</div><div>=C2=A0</div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex">
+<br>
+r~<br>
+</blockquote></div></div>
+
+--00000000000041033d05d00e2905--
 
