@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mipmJ-0005Sh-Rf
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:20:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54228)
+	id 1mipmK-0005Um-M0
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Nov 2021 23:20:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mipmC-00050e-81
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:24 -0400
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d]:35757)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplz-0004TD-2l
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:11 -0400
+Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f]:46869)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mipmA-0004GK-6l
- for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:23 -0400
-Received: by mail-io1-xd2d.google.com with SMTP id c206so7788917iof.2
- for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:20:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1miplv-0004A3-Pq
+ for qemu-trivial@nongnu.org; Thu, 04 Nov 2021 23:20:10 -0400
+Received: by mail-il1-x12f.google.com with SMTP id w10so8226297ilc.13
+ for <qemu-trivial@nongnu.org>; Thu, 04 Nov 2021 20:20:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=58nY3Z2yBhPr75+AsIyykvpCnSBFtHFIGJuFPLu1qik=;
- b=IRUwAkz8klEw4Dvxx4a5QN1oakAKkBfW3D5SJ/tLjJFJa/JCJwQEou1gSb03PbTJtV
- sFuce7WwCSgQH/JV3d4bbrssLbRPEuI92XZdCAddF9rlZUVhdDwuRrQCDbfRzhf5l34a
- EY8fB7E0VCVqlaAToBVF4LhClMAccmZN5V7L3roQGogVEI6DLCTCdap9WmonQ80x+tiz
- ApN/u7otLXFngvouZAPkZvSjkHLDi/VIL+BxttRcsnOjjWhVuN4I2IBseKypAjO2cmW9
- pMCFAHoQMwDQZJJU+Qlv8CEJVafQSLSL49XSNQUjvmUve7ucQG6ZH4gLWYTu50/qqqCY
- LlQw==
+ bh=98BqBI8TmV8YvyFkZ3y+XgKQlmpyG8KzRCO1YXNy77I=;
+ b=6sE0pexeQqrn5SF0NWwdIXpUZQpVKw3scy75G62WVxFc4j88ikoIBgIyqRvgYulcPn
+ ZU3oSvxOghyJaD8EiwFFTs0FkTfy95D1B3JlwoOzYeZ2Gtr51s/SmaZzUQNcN8aijcir
+ u4aoxd6WDz2GooofZ834Us2dSpF2RayGhI1q+F3bajNOwaCs2vf/lIfpDz83sO2FJvhb
+ riLPbEiRy/BbavyP4Z1iELrzSIsAPM2ScNYSoGhli5pmAhjcBit1/tcO7fPEPXnxKhmY
+ KPHmonLV82TYL1A/D0XGZxp/PUiJBrK9JpXrQv+bsS4kNlK5lBUUoFn9Gblb2wWi36BS
+ aZ4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=58nY3Z2yBhPr75+AsIyykvpCnSBFtHFIGJuFPLu1qik=;
- b=ygHQPVWhGqX1KkhIj8puVpQ39OagYKF7IaFHvS5kADGS4SamotTsQ1Xn4xifM+cRio
- G8MetAndNuEMvAC/QzmjGzb1DT4EjX3d+vGmbuY0BgCFOBDjobcuGqjx8pWexL9Wu7jO
- Zy1tv9H4tKuwOdPNtbSDJX4G0jsW+ZKsT0hWG7d16Cvg4pB1BCfQLVQHAber1nlJUoNr
- I9lcIqAp2CAQgA8O6hbMwldd4QblJ2bJtflDkBmIB/yPmt9opINfu+286iBTHC/vP5/a
- RKCHBFc9vI1/XwEc6GU+wkTRtWBykkc3Wif7u5tM8UTetUz016qpilgIL0aQdhjGMNo8
- LmPw==
-X-Gm-Message-State: AOAM532d9ScLTLwA8qvz6hwfOytGYxm8O/1cWYHGGa/vHYd6zr0CXIFL
- AJqu1fIQ8+qu9AsHMoapzKIieg==
-X-Google-Smtp-Source: ABdhPJyHNa3HfRhESco+5r3ltk+fu0c6fkHJqwj8xpE/G3rnDkbn97GJ6kgsuv2RucGPzCI1ATrvoQ==
-X-Received: by 2002:a05:6638:1242:: with SMTP id
- o2mr6964239jas.68.1636082420902; 
- Thu, 04 Nov 2021 20:20:20 -0700 (PDT)
+ bh=98BqBI8TmV8YvyFkZ3y+XgKQlmpyG8KzRCO1YXNy77I=;
+ b=zAtGn5Rcy7uQugVsSxWo2siAlwv7kX9pXgsqFAe6QV/9yeW0k5+gNVDP4KHUMLjK/S
+ +48BFSsdMRS7Qkysmkj5RfpQTTdzkEqPxslWnwZv1tWxK0RG/vngx6pBQBDu8WL+OP8U
+ 5GE8M7QSywzMtNBdgn43/33HJVyQ9Zm1+uAlbRrp4UIwMtY05dD+kf0+rlKDr68QcNNz
+ QCesoSjnppzFwkrvi8F+wUJgiAn2ODFgr565zItbt5NbJOIZbQ/m9vVtaxZIiFerPHum
+ Dx3x2y8ilR/N2urYXAxW+6Pn31eq/tHw7sgr3usPod3CwxAd2/1U1GsOZAseCpYiNqi5
+ zw3Q==
+X-Gm-Message-State: AOAM531cfD5wrqDZHmks1QALrVIp/FxjA3/uZrut4wYXtHmRa6HPq5xa
+ vOESNwk1A85WrO/7EpxU+Z5kGQ==
+X-Google-Smtp-Source: ABdhPJwjwBmxYr41/gavOmKZMyGacQ1Y+/tLALNYmyBnQ6M7yXK5r8+gyGckd1PQws/SWIJCIFPiMA==
+X-Received: by 2002:a05:6e02:1be2:: with SMTP id
+ y2mr34609188ilv.22.1636082406573; 
+ Thu, 04 Nov 2021 20:20:06 -0700 (PDT)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.20.20
+ by smtp.gmail.com with ESMTPSA id v4sm3508528ilq.57.2021.11.04.20.20.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 20:20:20 -0700 (PDT)
+ Thu, 04 Nov 2021 20:20:06 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Philippe Mathieu-Daude <f4bug@amsat.org>,
@@ -52,22 +52,23 @@ Cc: Philippe Mathieu-Daude <f4bug@amsat.org>,
  Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>,
  Kyle Evans <kevans@freebsd.org>, Stacey Son <sson@FreeBSD.org>,
  Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v4 33/36] bsd-user/arm/target_arch_signal.c: arm set_mcontext
-Date: Thu,  4 Nov 2021 21:19:14 -0600
-Message-Id: <20211105031917.87837-34-imp@bsdimp.com>
+Subject: [PATCH v4 20/36] bsd-user/arm/target_arch_cpu.h: Implement system
+ call dispatch
+Date: Thu,  4 Nov 2021 21:19:01 -0600
+Message-Id: <20211105031917.87837-21-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211105031917.87837-1-imp@bsdimp.com>
 References: <20211105031917.87837-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2d;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd2d.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::12f;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x12f.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,116 +81,133 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Nov 2021 03:20:24 -0000
+X-List-Received-Date: Fri, 05 Nov 2021 03:20:11 -0000
 
-Move the machine context to the CPU state.
+Implement the system call dispatch. This implements all three kinds of
+system call: direct and the two indirect variants. It handles all the
+special cases for thumb as well.
 
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/signal.c             | 79 +++++++++++++++++++++++++++++++
- bsd-user/arm/target_arch_signal.h |  1 +
- 2 files changed, 80 insertions(+)
+ bsd-user/arm/target_arch_cpu.h | 94 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 94 insertions(+)
 
-diff --git a/bsd-user/arm/signal.c b/bsd-user/arm/signal.c
-index 93c9bfc0d3..d32e3b4560 100644
---- a/bsd-user/arm/signal.c
-+++ b/bsd-user/arm/signal.c
-@@ -109,3 +109,82 @@ abi_long get_mcontext(CPUARMState *env, target_mcontext_t *mcp, int flags)
-     }
-     return err;
- }
-+
-+/* Compare to arm/arm/exec_machdep.c set_mcontext() */
-+abi_long set_mcontext(CPUARMState *env, target_mcontext_t *mcp, int srflag)
-+{
-+    int err = 0;
-+    const uint32_t *gr = mcp->__gregs;
-+    uint32_t cpsr, ccpsr = cpsr_read(env);
-+    uint32_t fpscr, mask;
-+
-+    cpsr = tswap32(gr[TARGET_REG_CPSR]);
-+    /*
-+     * Only allow certain bits to change, reject attempted changes to non-user
-+     * bits. In addition, make sure we're headed for user mode and none of the
-+     * interrupt bits are set.
-+     */
-+    if ((ccpsr & ~CPSR_USER) != (cpsr & ~CPSR_USER)) {
-+        return -TARGET_EINVAL;
-+    }
-+    if ((cpsr & CPSR_M) != ARM_CPU_MODE_USR ||
-+        (cpsr & (CPSR_I | CPSR_F)) != 0) {
-+        return -TARGET_EINVAL;
-+    }
-+    mask = cpsr & CPSR_T ? 0x1 : 0x3;
-+
-+    /*
-+     * Make sure that we either have no vfp, or it's the correct size.
-+     * FreeBSD just ignores it, though, so maybe we'll need to adjust
-+     * things below instead.
-+     */
-+    if (mcp->mc_vfp_size != 0 && mcp->mc_vfp_size != sizeof(target_mcontext_vfp_t)) {
-+        return -TARGET_EINVAL;
-+    }
-+    /*
-+     * Make sure T mode matches the PC's notion of thumb mode, although
-+     * FreeBSD lets the processor sort this out, so we may need remove
-+     * this check, or generate a signal...
-+     */
-+    if (!!(tswap32(gr[TARGET_REG_PC]) & 1) != !!(cpsr & CPSR_T)) {
-+        return -TARGET_EINVAL;
-+    }
-+
-+    env->regs[0] = tswap32(gr[TARGET_REG_R0]);
-+    env->regs[1] = tswap32(gr[TARGET_REG_R1]);
-+    env->regs[2] = tswap32(gr[TARGET_REG_R2]);
-+    env->regs[3] = tswap32(gr[TARGET_REG_R3]);
-+    env->regs[4] = tswap32(gr[TARGET_REG_R4]);
-+    env->regs[5] = tswap32(gr[TARGET_REG_R5]);
-+    env->regs[6] = tswap32(gr[TARGET_REG_R6]);
-+    env->regs[7] = tswap32(gr[TARGET_REG_R7]);
-+    env->regs[8] = tswap32(gr[TARGET_REG_R8]);
-+    env->regs[9] = tswap32(gr[TARGET_REG_R9]);
-+    env->regs[10] = tswap32(gr[TARGET_REG_R10]);
-+    env->regs[11] = tswap32(gr[TARGET_REG_R11]);
-+    env->regs[12] = tswap32(gr[TARGET_REG_R12]);
-+
-+    env->regs[13] = tswap32(gr[TARGET_REG_SP]);
-+    env->regs[14] = tswap32(gr[TARGET_REG_LR]);
-+    env->regs[15] = tswap32(gr[TARGET_REG_PC] & mask);
-+    if (mcp->mc_vfp_size != 0 && mcp->mc_vfp_ptr != 0) {
-+        /* see set_vfpcontext in sys/arm/arm/exec_machdep.c */
-+        target_mcontext_vfp_t *vfp;
-+
-+        vfp = lock_user(VERIFY_READ, mcp->mc_vfp_ptr, sizeof(*vfp), 1);
-+        for (int i = 0; i < 32; i++) {
-+            __get_user(*aa32_vfp_dreg(env, i), &vfp->mcv_reg[i]);
-+        }
-+        __get_user(fpscr, &vfp->mcv_fpscr);
-+        vfp_set_fpscr(env, fpscr);
-+        unlock_user(vfp, mcp->mc_vfp_ptr, sizeof(target_ucontext_t));
-+
-+        /*
-+         * linux-user sets fpexc, fpinst and fpinst2, but these aren't in
-+         * FreeBSD's mcontext, what to do?
-+         */
-+    }
-+    cpsr_write(env, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
-+
-+    return err;
-+}
-diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
-index 429843c70f..83ecfaafef 100644
---- a/bsd-user/arm/target_arch_signal.h
-+++ b/bsd-user/arm/target_arch_signal.h
-@@ -90,5 +90,6 @@ abi_long set_sigtramp_args(CPUARMState *regs, int sig,
-                            abi_ulong frame_addr,
-                            struct target_sigaction *ka);
- abi_long get_mcontext(CPUARMState *regs, target_mcontext_t *mcp, int flags);
-+abi_long set_mcontext(CPUARMState *regs, target_mcontext_t *mcp, int srflag);
+diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
+index 905a5ffaff..c675419c30 100644
+--- a/bsd-user/arm/target_arch_cpu.h
++++ b/bsd-user/arm/target_arch_cpu.h
+@@ -40,6 +40,7 @@ static inline void target_cpu_loop(CPUARMState *env)
+ {
+     int trapnr;
+     target_siginfo_t info;
++    unsigned int n;
+     CPUState *cs = env_cpu(env);
  
- #endif /* !_TARGET_ARCH_SIGNAL_H_ */
+     for (;;) {
+@@ -62,6 +63,99 @@ static inline void target_cpu_loop(CPUARMState *env)
+                 /* TODO: What about instruction emulation? */
+             }
+             break;
++        case EXCP_SWI:
++        case EXCP_BKPT:
++            {
++                /*
++                 * system call
++                 * See arm/arm/trap.c cpu_fetch_syscall_args()
++                 */
++                if (trapnr == EXCP_BKPT) {
++                    if (env->thumb) {
++                        env->regs[15] += 2;
++                    } else {
++                        env->regs[15] += 4;
++                    }
++                }
++                n = env->regs[7];
++                if (bsd_type == target_freebsd) {
++                    int ret;
++                    abi_ulong params = get_sp_from_cpustate(env);
++                    int32_t syscall_nr = n;
++                    int32_t arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8;
++
++                    /* See arm/arm/trap.c cpu_fetch_syscall_args() */
++                    if (syscall_nr == TARGET_FREEBSD_NR_syscall) {
++                        syscall_nr = env->regs[0];
++                        arg1 = env->regs[1];
++                        arg2 = env->regs[2];
++                        arg3 = env->regs[3];
++                        get_user_s32(arg4, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg5, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg6, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg7, params);
++                        arg8 = 0;
++                    } else if (syscall_nr == TARGET_FREEBSD_NR___syscall) {
++                        syscall_nr = env->regs[0];
++                        arg1 = env->regs[2];
++                        arg2 = env->regs[3];
++                        get_user_s32(arg3, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg4, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg5, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg6, params);
++                        arg7 = 0;
++                        arg8 = 0;
++                    } else {
++                        arg1 = env->regs[0];
++                        arg2 = env->regs[1];
++                        arg3 = env->regs[2];
++                        arg4 = env->regs[3];
++                        get_user_s32(arg5, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg6, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg7, params);
++                        params += sizeof(int32_t);
++                        get_user_s32(arg8, params);
++                    }
++                    ret = do_freebsd_syscall(env, syscall_nr, arg1, arg2, arg3,
++                            arg4, arg5, arg6, arg7, arg8);
++                    /*
++                     * Compare to arm/arm/vm_machdep.c
++                     * cpu_set_syscall_retval()
++                     */
++                    if (-TARGET_EJUSTRETURN == ret) {
++                        /*
++                         * Returning from a successful sigreturn syscall.
++                         * Avoid clobbering register state.
++                         */
++                        break;
++                    }
++                    if (-TARGET_ERESTART == ret) {
++                        env->regs[15] -= env->thumb ? 2 : 4;
++                        break;
++                    }
++                    if ((unsigned int)ret >= (unsigned int)(-515)) {
++                        ret = -ret;
++                        cpsr_write(env, CPSR_C, CPSR_C, CPSRWriteByInstr);
++                        env->regs[0] = ret;
++                    } else {
++                        cpsr_write(env, 0, CPSR_C, CPSRWriteByInstr);
++                        env->regs[0] = ret; /* XXX need to handle lseek()? */
++                        /* env->regs[1] = 0; */
++                    }
++                } else {
++                    fprintf(stderr, "qemu: bsd_type (= %d) syscall "
++                            "not supported\n", bsd_type);
++                }
++            }
++            break;
+         case EXCP_INTERRUPT:
+             /* just indicate that signals should be handled asap */
+             break;
 -- 
 2.33.0
 
