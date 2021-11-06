@@ -1,56 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjCUA-0003vA-1T
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Nov 2021 23:35:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56154)
+	id 1mjJN8-00086z-TD
+	for mharc-qemu-trivial@gnu.org; Sat, 06 Nov 2021 06:56:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mjCU8-0003tL-KZ; Fri, 05 Nov 2021 23:35:16 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2948)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mjCU5-0001V4-B2; Fri, 05 Nov 2021 23:35:16 -0400
-Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.55])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4HmNDR4ljhzcZxw;
- Sat,  6 Nov 2021 11:30:15 +0800 (CST)
-Received: from dggpemm500023.china.huawei.com (7.185.36.83) by
- dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.15; Sat, 6 Nov 2021 11:35:02 +0800
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.15; Sat, 6 Nov 2021 11:35:01 +0800
-Subject: Re: [PATCH 3/3] hw/input/pckbd: Rename i8042_setup_a20_line() and its
- a20 irq argument
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- <qemu-devel@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost
- <ehabkost@redhat.com>, <qemu-trivial@nongnu.org>, Richard Henderson
- <richard.henderson@linaro.org>
-References: <20211105172127.224462-1-f4bug@amsat.org>
- <20211105172127.224462-4-f4bug@amsat.org>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <9cf31ee0-8a2f-c1b0-df4e-fcfc25df287a@huawei.com>
-Date: Sat, 6 Nov 2021 11:35:01 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mjJN7-00082e-0y; Sat, 06 Nov 2021 06:56:29 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:46961)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mjJN5-0002Ud-IQ; Sat, 06 Nov 2021 06:56:28 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id u1so17726064wru.13;
+ Sat, 06 Nov 2021 03:56:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=r7ChOI/rOL8VqbBn1urCKzj6+wcEmE0CC31/KsKTfic=;
+ b=KrJKd/nfhzje79M+VknKNugIqOESWo30prGj30ickuHeuy4psfCpUKsRfqzP99ka8Z
+ AJVcLVLAUja6gvTJLN/WjujTlnY0q8OVMK+QkdkM+e4D7DYTiUt+BQqpxij6OSn0B114
+ OYZRaQ/DNQyW0krBH7cGoA90ZkQQPWjldwXvgzB9EYaby9vGXOIpWwY2YEhO3gxwn8PQ
+ h/3g8prVCzCE9yPVM/4TmzjvMB8v86vcSYbNAaNYHGzHieXK6icP5n2EcZ16q//08maq
+ n6OdyrFOHHNt6Ex1eabWptrrY4xHHucOeShFWYM3hjUlED6bWDFerjxX7lzRwVU04Tw0
+ a6cQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=r7ChOI/rOL8VqbBn1urCKzj6+wcEmE0CC31/KsKTfic=;
+ b=d0w7ghwWRmeu3oVgVlKQxXLBERQSulvHbxpjxvehgiuG/rVaUbVORx/CzgZmiNJnXi
+ tGPPtbaywzTPMNpYpfq9KnghuN0jwb3/mtkMvbKQZN7XINTyg1bCsS1igvK6LkNc2ATc
+ pu79vIsdFKq52Y/4QgnEMNKXdJlUSbuwk9mDrdg88wMGmMIDmwyer1GJjin132KLCWGs
+ HvqP9O5xV0opaP9oqVopX55SThTwrdxq+q1otDbNGWSdmc5ZpnbtPpQ8dW0KjQV1ZbGT
+ NoKfA2fWF8amsgaL6NSQsm/7ZbnOsZRWcm0KhxyRn1KIbfNraITSqBm4H7d6IxsTQb45
+ nlBw==
+X-Gm-Message-State: AOAM531d32wFIEp/GOBO2TvEuK/iOVt4aMp9acG1cEH5UdoR0DaqmV2u
+ 7MhXmUoU6jlG13LEfMD+n56ZBKGP/XY=
+X-Google-Smtp-Source: ABdhPJxnbmoHniqKhPN8y8/y+ICCTR4X/b8Z2CauEWYugbdiiHA9JhqvOf6vhS7lO32Tu9gGtS+Djg==
+X-Received: by 2002:a5d:44d1:: with SMTP id z17mr71414562wrr.143.1636196184977; 
+ Sat, 06 Nov 2021 03:56:24 -0700 (PDT)
+Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id g18sm10387824wrv.42.2021.11.06.03.56.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 06 Nov 2021 03:56:24 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] hw/timer/etraxfs_timer: Add vmstate for ETRAX timers
+Date: Sat,  6 Nov 2021 11:56:23 +0100
+Message-Id: <20211106105623.510868-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <20211105172127.224462-4-f4bug@amsat.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme711-chm.china.huawei.com (10.1.199.107) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -62
-X-Spam_score: -6.3
-X-Spam_bar: ------
-X-Spam_report: (-6.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.093,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,66 +78,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 06 Nov 2021 03:35:17 -0000
+X-List-Received-Date: Sat, 06 Nov 2021 10:56:29 -0000
 
+Add the vmstate for the ETRAX timers.
+This is in theory a migration compatibility break
+for the 'AXIS devboard 88' CRIS machine.
 
-On 2021/11/6 1:21, Philippe Mathieu-Daudé wrote:
-> 'a20_out' is an input IRQ, rename it as 'a20_input'.
-> i8042_setup_a20_line() doesn't take a Device parameter
-> but an ISADevice one. Rename it as i8042_isa_*() to
-> make it explicit.
->
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   include/hw/input/i8042.h | 2 +-
->   hw/i386/pc.c             | 2 +-
->   hw/input/pckbd.c         | 4 ++--
->   3 files changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
-> index 1d90432daef..3534fcc4b43 100644
-> --- a/include/hw/input/i8042.h
-> +++ b/include/hw/input/i8042.h
-> @@ -21,6 +21,6 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
->                      MemoryRegion *region, ram_addr_t size,
->                      hwaddr mask);
->   void i8042_isa_mouse_fake_event(ISAKBDState *isa);
-> -void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
-> +void i8042_isa_setup_a20_line(ISADevice *dev, qemu_irq a20_input);
->   
->   #endif /* HW_INPUT_I8042_H */
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 2592a821486..06ef74ca22b 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1043,7 +1043,7 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl, bool no_vmport)
->       port92 = isa_create_simple(isa_bus, TYPE_PORT92);
->   
->       a20_line = qemu_allocate_irqs(handle_a20_line_change, first_cpu, 2);
-> -    i8042_setup_a20_line(i8042, a20_line[0]);
-> +    i8042_isa_setup_a20_line(i8042, a20_line[0]);
->       qdev_connect_gpio_out_named(DEVICE(port92),
->                                   PORT92_A20_LINE, 0, a20_line[1]);
->       g_free(a20_line);
-> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-> index baba62f357a..7b842c8f3b5 100644
-> --- a/hw/input/pckbd.c
-> +++ b/hw/input/pckbd.c
-> @@ -680,9 +680,9 @@ void i8042_isa_mouse_fake_event(ISAKBDState *isa)
->       ps2_mouse_fake_event(s->mouse);
->   }
->   
-> -void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out)
-> +void i8042_isa_setup_a20_line(ISADevice *dev, qemu_irq a20_input)
->   {
-> -    qdev_connect_gpio_out_named(DEVICE(dev), I8042_A20_LINE, 0, a20_out);
-> +    qdev_connect_gpio_out_named(DEVICE(dev), I8042_A20_LINE, 0, a20_input);
->   }
->   
->   static const VMStateDescription vmstate_kbd_isa = {
-Looks reasonable:
-Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/timer/etraxfs_timer.c | 34 +++++++++++++++++++++++++++++++++-
+ 1 file changed, 33 insertions(+), 1 deletion(-)
 
-Thanks,
-Yanan
+diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
+index 4ba662190de..139e5b86a44 100644
+--- a/hw/timer/etraxfs_timer.c
++++ b/hw/timer/etraxfs_timer.c
+@@ -26,6 +26,7 @@
+ #include "hw/sysbus.h"
+ #include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
++#include "migration/vmstate.h"
+ #include "qemu/module.h"
+ #include "qemu/timer.h"
+ #include "hw/irq.h"
+@@ -64,7 +65,7 @@ struct ETRAXTimerState {
+     ptimer_state *ptimer_t1;
+     ptimer_state *ptimer_wd;
+ 
+-    int wd_hits;
++    uint32_t wd_hits;
+ 
+     /* Control registers.  */
+     uint32_t rw_tmr0_div;
+@@ -83,6 +84,36 @@ struct ETRAXTimerState {
+     uint32_t r_masked_intr;
+ };
+ 
++static const VMStateDescription vmstate_etraxfs = {
++    .name = "etraxfs",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]) {
++        VMSTATE_PTIMER(ptimer_t0, ETRAXTimerState),
++        VMSTATE_PTIMER(ptimer_t1, ETRAXTimerState),
++        VMSTATE_PTIMER(ptimer_wd, ETRAXTimerState),
++
++        VMSTATE_UINT32(wd_hits, ETRAXTimerState),
++
++        VMSTATE_UINT32(rw_tmr0_div, ETRAXTimerState),
++        VMSTATE_UINT32(r_tmr0_data, ETRAXTimerState),
++        VMSTATE_UINT32(rw_tmr0_ctrl, ETRAXTimerState),
++
++        VMSTATE_UINT32(rw_tmr1_div, ETRAXTimerState),
++        VMSTATE_UINT32(r_tmr1_data, ETRAXTimerState),
++        VMSTATE_UINT32(rw_tmr1_ctrl, ETRAXTimerState),
++
++        VMSTATE_UINT32(rw_wd_ctrl, ETRAXTimerState),
++
++        VMSTATE_UINT32(rw_intr_mask, ETRAXTimerState),
++        VMSTATE_UINT32(rw_ack_intr, ETRAXTimerState),
++        VMSTATE_UINT32(r_intr, ETRAXTimerState),
++        VMSTATE_UINT32(r_masked_intr, ETRAXTimerState),
++
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static uint64_t
+ timer_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+@@ -357,6 +388,7 @@ static void etraxfs_timer_class_init(ObjectClass *klass, void *data)
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+ 
+     dc->realize = etraxfs_timer_realize;
++    dc->vmsd = &vmstate_etraxfs;
+     rc->phases.enter = etraxfs_timer_reset_enter;
+     rc->phases.hold = etraxfs_timer_reset_hold;
+ }
+-- 
+2.31.1
+
 
