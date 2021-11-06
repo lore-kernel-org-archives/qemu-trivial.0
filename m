@@ -1,76 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjLxU-0004e0-MH
-	for mharc-qemu-trivial@gnu.org; Sat, 06 Nov 2021 09:42:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54876)
+	id 1mjN4T-0002eO-9I
+	for mharc-qemu-trivial@gnu.org; Sat, 06 Nov 2021 10:53:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mjLxP-0004bj-M9
- for qemu-trivial@nongnu.org; Sat, 06 Nov 2021 09:42:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:21795)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mjN4R-0002dL-Jr
+ for qemu-trivial@nongnu.org; Sat, 06 Nov 2021 10:53:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:30811)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mjLxN-0004lZ-Ro
- for qemu-trivial@nongnu.org; Sat, 06 Nov 2021 09:42:07 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mjN4O-0004aK-4K
+ for qemu-trivial@nongnu.org; Sat, 06 Nov 2021 10:53:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636206125;
+ s=mimecast20190719; t=1636210402;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hpWCid9UewSIDZKy89GAH4fSn0++vdwnA69NZMo4eVM=;
- b=GRj5Dju1ARLGEIKdvzcTlOaXecQwq6jdaFFcTP9QhJzSQ9lPFhDYoYIrniL7UAFvAKdfdC
- Gsd+z/piY65QmZZe9IxIHmeqaNuVPXYNMLwR2zxj0Z/3rIripYbRkDPmmJZKbvTRhvEcKw
- T7k0nmwUvZlXaaGI/vtATaDy942pfKI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-484-FM56brK3PUOsjs30lsO7-Q-1; Sat, 06 Nov 2021 09:42:03 -0400
-X-MC-Unique: FM56brK3PUOsjs30lsO7-Q-1
-Received: by mail-wr1-f72.google.com with SMTP id
- z5-20020a5d6405000000b00182083d7d2aso2704886wru.13
- for <qemu-trivial@nongnu.org>; Sat, 06 Nov 2021 06:42:03 -0700 (PDT)
+ bh=gqX//TN5efMN1JRLZhCjZB6XWxeQAeaXjPU+B/aR9L8=;
+ b=PbusboJwedoWmTAkydSIIGZvH9Vubkg8KeTCkbJbliiYDX6iq1Z55B9nuQoj0+9zmDhVUL
+ n7PdxAPyVR/vXbZ1UHHFO2If/HRBnRj+5SMIxh4NaAky4rsKF/aosErG3329rB0/paG5F3
+ 2b6+YdWvxyUbresoVBQxjvBUcVbZ1G0=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-290-fKv0S6gXOm2YFrzuHiTDag-1; Sat, 06 Nov 2021 10:53:18 -0400
+X-MC-Unique: fKv0S6gXOm2YFrzuHiTDag-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ f20-20020a0564021e9400b003e2ad3eae74so11322310edf.5
+ for <qemu-trivial@nongnu.org>; Sat, 06 Nov 2021 07:53:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=hpWCid9UewSIDZKy89GAH4fSn0++vdwnA69NZMo4eVM=;
- b=oloiZpDxhAlc9QTt8u7AkOo81NgnqvAIDz4lYWsfrrIFM+94PjvXk/+uGj3sbgNnKz
- bpUIzRkxm1AjXM05XNnWznXybyOFreqe5cCCoE42LyTEN5r4LlR1VgtZfDsjdRhc3PGx
- OxTh14SexT1JUXttSsYIhidSmZ1EwQCAGtn+7a0QHVXVU9Q64cvsSMdqwvfTJ4fDiju1
- +6xW3nq6VaYVwZUv9CEteHgf9WmF8x5O1BVN3FkWhbZuu+lc4zatdODvsJqa4E33C1EO
- OWAWyY33TwxEA6AqM9GSndNvslX+6izhDU6pqmrNnbUoLiT4EML2kXf9c5AIF6ypNEcL
- jJDQ==
-X-Gm-Message-State: AOAM532lcCOXd/4ov0qo+lrTLLS6/S4oEIvg8bNLEPkMDSb482rbvwkq
- f5iJP81UebTYoBGfXejggGjVCNmzlutAiUGQT+kctgELzvZ6Vh5myk624A5SuxVtXV97xYoenBk
- 0zyQuTb4CN3vNUAeLAg==
-X-Received: by 2002:adf:e84d:: with SMTP id d13mr63791237wrn.72.1636206122328; 
- Sat, 06 Nov 2021 06:42:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtgZ05o2NU4IXT31/WvAFgNpzJL3hkeuTy9EPekPYKqpE4PwH/QSUXeNl4HOZXSQTlP9G8Ww==
-X-Received: by 2002:adf:e84d:: with SMTP id d13mr63791213wrn.72.1636206122173; 
- Sat, 06 Nov 2021 06:42:02 -0700 (PDT)
-Received: from x1w.redhat.com (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id y7sm10501445wrw.55.2021.11.06.06.42.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 06 Nov 2021 06:42:01 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jon Doron <arilou@gmail.com>, qemu-trivial@nongnu.org,
- Roman Kagan <rkagan@virtuozzo.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Maciej S . Szmigiero" <maciej.szmigiero@oracle.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v4 1/1] hw/hyperv/vmbus: Remove unused vmbus_load/save_req()
-Date: Sat,  6 Nov 2021 14:41:55 +0100
-Message-Id: <20211106134155.582312-2-philmd@redhat.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211106134155.582312-1-philmd@redhat.com>
-References: <20211106134155.582312-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=gqX//TN5efMN1JRLZhCjZB6XWxeQAeaXjPU+B/aR9L8=;
+ b=arzLfo9bAWbiInqbo3x4xwD+syBfZc5rerGWT2mHWB+Z/T2zjrmv8FkAcNY5YiluQm
+ InzYX4/4uOF0gY84mzVEUvjbBpgUB9gch5y9VQTiRLGH3Faag4gDPe2QpkkjpUCL9Bhy
+ 7S1iZt9bJ0zvH/PUo5t1V8skbrvzbD/FPUTx4Rz1v0bZA/ZqcyenJA5Ysm4nINTMjiPk
+ mwaSR4TdxsDtqeZkxKq4LHvP0nKiWfP/B1GqmqvEMjpytlVcncGihSvIsnVet9v41a8K
+ NJGKkezO3R/pKGhvzI433vvcMKCV4jY2ud9d37JZEXEGHkrOWSLOoZSynhW4rlERUTS3
+ Xocg==
+X-Gm-Message-State: AOAM532x6iPq+aL7vs5mT3X2BdtJiCTkoPoTqkzpk7tg+upqgiS6PJs7
+ NcTytZxwT8ZM2jcBPRdo67rdxyjnApcYZNF1F+4RYrqhreJH00NQVWBCaQjJgMymokeCryr5AQJ
+ VG3axmdcWBRki04hq1NYPN60YaPM4/9LRuQ==
+X-Received: by 2002:a17:906:8cd:: with SMTP id
+ o13mr83762817eje.341.1636210397518; 
+ Sat, 06 Nov 2021 07:53:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx3H4rLYh/SNZ85zvqKx4m+ggrL4n6mavgyBguKBT9EyPQLefbFa3bWOjBvWpLlTSaGw+8Rj3oygp9rHB/n8Xo=
+X-Received: by 2002:a17:906:8cd:: with SMTP id
+ o13mr83762792eje.341.1636210397340; 
+ Sat, 06 Nov 2021 07:53:17 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210521103423.2780345-1-philmd@redhat.com>
+ <7d9abdeb-575d-3ec5-904b-bc676313ca14@vivier.eu>
+In-Reply-To: <7d9abdeb-575d-3ec5-904b-bc676313ca14@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Sat, 6 Nov 2021 15:53:06 +0100
+Message-ID: <CAP+75-U0wK7BKxFywWr8tWUbZ-nc5W8cdcOWM=gPp162gPAtiQ@mail.gmail.com>
+Subject: Re: [PATCH] meson: Fix 'interpretor' typo
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Peter Maydell <peter.maydell@linaro.org>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -34
@@ -92,103 +86,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 06 Nov 2021 13:42:08 -0000
+X-List-Received-Date: Sat, 06 Nov 2021 14:53:27 -0000
 
-vmbus_save_req() and vmbus_load_req() are not used.
-Remove them to avoid maintaining dead code.
+ping...
 
-This partially reverts commit 4dd8a7064b8a6527f99a62be11
-("vmbus: add infrastructure to save/load vmbus requests").
+https://lore.kernel.org/qemu-devel/20210521103423.2780345-1-philmd@redhat.c=
+om/
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- include/hw/hyperv/vmbus.h |  3 --
- hw/hyperv/vmbus.c         | 59 ---------------------------------------
- 2 files changed, 62 deletions(-)
-
-diff --git a/include/hw/hyperv/vmbus.h b/include/hw/hyperv/vmbus.h
-index f98bea3888d..8ea660dd8e6 100644
---- a/include/hw/hyperv/vmbus.h
-+++ b/include/hw/hyperv/vmbus.h
-@@ -223,7 +223,4 @@ int vmbus_map_sgl(VMBusChanReq *req, DMADirection dir, struct iovec *iov,
- void vmbus_unmap_sgl(VMBusChanReq *req, DMADirection dir, struct iovec *iov,
-                      unsigned iov_cnt, size_t accessed);
- 
--void vmbus_save_req(QEMUFile *f, VMBusChanReq *req);
--void *vmbus_load_req(QEMUFile *f, VMBusDevice *dev, uint32_t size);
--
- #endif
-diff --git a/hw/hyperv/vmbus.c b/hw/hyperv/vmbus.c
-index dbce3b35fba..78c19caf5f7 100644
---- a/hw/hyperv/vmbus.c
-+++ b/hw/hyperv/vmbus.c
-@@ -1311,65 +1311,6 @@ static const VMStateDescription vmstate_vmbus_chan_req = {
-     }
- };
- 
--void vmbus_save_req(QEMUFile *f, VMBusChanReq *req)
--{
--    VMBusChanReqSave req_save;
--
--    req_save.chan_idx = req->chan->subchan_idx;
--    req_save.pkt_type = req->pkt_type;
--    req_save.msglen = req->msglen;
--    req_save.msg = req->msg;
--    req_save.transaction_id = req->transaction_id;
--    req_save.need_comp = req->need_comp;
--    req_save.num = req->sgl.nsg;
--    req_save.sgl = g_memdup(req->sgl.sg,
--                            req_save.num * sizeof(ScatterGatherEntry));
--
--    vmstate_save_state(f, &vmstate_vmbus_chan_req, &req_save, NULL);
--
--    g_free(req_save.sgl);
--}
--
--void *vmbus_load_req(QEMUFile *f, VMBusDevice *dev, uint32_t size)
--{
--    VMBusChanReqSave req_save;
--    VMBusChanReq *req = NULL;
--    VMBusChannel *chan = NULL;
--    uint32_t i;
--
--    vmstate_load_state(f, &vmstate_vmbus_chan_req, &req_save, 0);
--
--    if (req_save.chan_idx >= dev->num_channels) {
--        error_report("%s: %u(chan_idx) > %u(num_channels)", __func__,
--                     req_save.chan_idx, dev->num_channels);
--        goto out;
--    }
--    chan = &dev->channels[req_save.chan_idx];
--
--    if (vmbus_channel_reserve(chan, 0, req_save.msglen)) {
--        goto out;
--    }
--
--    req = vmbus_alloc_req(chan, size, req_save.pkt_type, req_save.msglen,
--                          req_save.transaction_id, req_save.need_comp);
--    if (req_save.msglen) {
--        memcpy(req->msg, req_save.msg, req_save.msglen);
--    }
--
--    for (i = 0; i < req_save.num; i++) {
--        qemu_sglist_add(&req->sgl, req_save.sgl[i].base, req_save.sgl[i].len);
--    }
--
--out:
--    if (req_save.msglen) {
--        g_free(req_save.msg);
--    }
--    if (req_save.num) {
--        g_free(req_save.sgl);
--    }
--    return req;
--}
--
- static void channel_event_cb(EventNotifier *e)
- {
-     VMBusChannel *chan = container_of(e, VMBusChannel, notifier);
--- 
-2.31.1
+On Sat, Jun 5, 2021 at 9:03 PM Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> Le 21/05/2021 =C3=A0 12:34, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit :
+> > Fix a typo from commit fa2f7b0b9b7 ("meson: Warn when TCI is
+> > selected but TCG backend is available").
+> >
+> > Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> > ---
+> >  meson.build | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/meson.build b/meson.build
+> > index 1559e8d873a..230a0e4b558 100644
+> > --- a/meson.build
+> > +++ b/meson.build
+> > @@ -247,7 +247,7 @@
+> >        error('Unsupported CPU @0@, try --enable-tcg-interpreter'.format=
+(cpu))
+> >      endif
+> >    elif get_option('tcg_interpreter')
+> > -    warning('Use of the TCG interpretor is not recommended on this hos=
+t')
+> > +    warning('Use of the TCG interpreter is not recommended on this hos=
+t')
+> >      warning('architecture. There is a native TCG execution backend ava=
+ilable')
+> >      warning('which provides substantially better performance and relia=
+bility.')
+> >      warning('It is strongly recommended to remove the --enable-tcg-int=
+erpreter')
+> >
+>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+>
 
 
