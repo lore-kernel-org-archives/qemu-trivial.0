@@ -1,88 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjz7g-0006nV-N4
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Nov 2021 02:31:20 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58346)
+	id 1mk5ey-00025u-Rz
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Nov 2021 09:30:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mjz7f-0006lf-5y
- for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 02:31:19 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25705)
+ (Exim 4.90_1) (envelope-from <me@xcancerberox.com.ar>)
+ id 1mk3Lb-0000LP-Ue; Mon, 08 Nov 2021 07:01:59 -0500
+Received: from dormouse.elm.relay.mailchannels.net ([23.83.212.50]:39244)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mjz7Y-0004mp-Qk
- for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 02:31:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636356665;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vy07NpmjE3vqxd14i7vOmnS86GY1iLrrFQhK/J26s10=;
- b=TyWjGJ/qC1BjVgDQ/LFdgnpWdAJj7FnaUzsVODpU/kAw73bAGQrP03waa60+VWgfqm2o58
- IqgRbFirqplPUf87dO6eCIOD6zJBOJL0z37f38xNiIJ2fwz82sRWOdy45uLjyP7dt/N8bI
- eEgsioX9zlgbzacvPu83q5+fkLwcz2s=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-509-AlxQXR9DMiOcTEvueJiV8A-1; Mon, 08 Nov 2021 02:31:02 -0500
-X-MC-Unique: AlxQXR9DMiOcTEvueJiV8A-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 145-20020a1c0197000000b0032efc3eb9bcso9750771wmb.0
- for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 23:31:02 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=vy07NpmjE3vqxd14i7vOmnS86GY1iLrrFQhK/J26s10=;
- b=udTE0Ov2bn0V5LTzLpdnwHNkTYCVBUvF6sKKGVKrrYpWQgRpnlYHmsCsOuD0g+lSYR
- I5KLtAv9ffsn5Uk+29W19RCfKCQdQnlTdD1hesQ4eYySJicVMrXP5nwrIaq2OUu4wiFS
- p9EuDo+rrzXt3lvhPspEEPl8u3mBSBEm1ygEBTlqQYlrufgrZc9tivhqkJYOY8Y37x/S
- o2F80kCpnmMWrcmyfcGlLAAP82TJaQ3pfoY9wDeJiauMxOgM5+f3OQ8Q7cZQAM5+dN3N
- 7wBgLwZAkulHTufBzRdIMP2jmP7VwpSi20FgLyKotUtC6GzIE/lOl8sz5xzieRoeZiSD
- JVyw==
-X-Gm-Message-State: AOAM530BKri9m8MPVatrE30VNsjfuyeWriqSr0T8prynS3wNUJ2H48dE
- XNTOVKe7jWymXM9O9vVsrokwY8I2HficoRPF7/Ic0dJC6ZcPX2IFUAd8pimswP48zOQDk8JYZcL
- 0FhbBBYEJ/r81zZa7Lg==
-X-Received: by 2002:a1c:4b07:: with SMTP id y7mr50274195wma.188.1636356660880; 
- Sun, 07 Nov 2021 23:31:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxYtuFSrnm1EhdMPbYxLwSI91eZc8WbOM/tHJhxSFiJnglHqUFheWG77BijCEvzX5IShp0RPw==
-X-Received: by 2002:a1c:4b07:: with SMTP id y7mr50274180wma.188.1636356660704; 
- Sun, 07 Nov 2021 23:31:00 -0800 (PST)
-Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
- [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id u23sm8843144wru.21.2021.11.07.23.30.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 07 Nov 2021 23:31:00 -0800 (PST)
-Message-ID: <96683e8d-9633-7cb8-98ab-0a8791e1c63e@redhat.com>
-Date: Mon, 8 Nov 2021 08:30:59 +0100
+ (Exim 4.90_1) (envelope-from <me@xcancerberox.com.ar>)
+ id 1mk3LZ-0006uY-QL; Mon, 08 Nov 2021 07:01:59 -0500
+X-Sender-Id: duplika|x-authuser|me@xcancerberox.com.ar
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+ by relay.mailchannels.net (Postfix) with ESMTP id 9FDDF401A3A;
+ Mon,  8 Nov 2021 12:01:13 +0000 (UTC)
+Received: from cloud.estebanecheverria.gob.ar
+ (100-96-11-8.trex.outbound.svc.cluster.local [100.96.11.8])
+ (Authenticated sender: duplika)
+ by relay.mailchannels.net (Postfix) with ESMTPA id 839E8401A74;
+ Mon,  8 Nov 2021 12:01:11 +0000 (UTC)
+X-Sender-Id: duplika|x-authuser|me@xcancerberox.com.ar
+Received: from cloud.estebanecheverria.gob.ar (cloud.estebanecheverria.gob.ar
+ [67.227.157.153])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384)
+ by 100.96.11.8 (trex/6.4.3); Mon, 08 Nov 2021 12:01:13 +0000
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: duplika|x-authuser|me@xcancerberox.com.ar
+X-MailChannels-Auth-Id: duplika
+X-Eyes-Keen: 477049341373b88b_1636372872887_829065421
+X-MC-Loop-Signature: 1636372872887:3716353796
+X-MC-Ingress-Time: 1636372872886
+Received: from ipbcc2ffad.dynamic.kabel-deutschland.de
+ ([188.194.255.173]:60278 helo=[192.168.1.216])
+ by cloud.estebanecheverria.gob.ar with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
+ (envelope-from <me@xcancerberox.com.ar>)
+ id 1mk3Ko-0007Js-0I; Mon, 08 Nov 2021 09:01:09 -0300
+Message-ID: <829e9ea8-b9e9-c2ab-972c-18440c0a2d79@xcancerberox.com.ar>
+Date: Mon, 8 Nov 2021 13:01:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH v4 0/1] hw/hyperv/vmbus: Is it maintained?
-To: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
-Cc: Jon Doron <arilou@gmail.com>, qemu-trivial@nongnu.org,
- Roman Kagan <rkagan@virtuozzo.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <20211106134155.582312-1-philmd@redhat.com>
- <e9c29f4d-d5d5-34aa-8311-7ad1fc05b7d6@oracle.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <e9c29f4d-d5d5-34aa-8311-7ad1fc05b7d6@oracle.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Thunderbird/91.3.0
+Subject: Re: [PATCH] docs/about/deprecated: Remove empty 'related binaries'
+ section
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: libvir-list@redhat.com, Eric Blake <eblake@redhat.com>,
+ qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>
+References: <20211105142656.145791-1-philmd@redhat.com>
+From: Joaquin de Andres <me@xcancerberox.com.ar>
+In-Reply-To: <20211105142656.145791-1-philmd@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -65
-X-Spam_score: -6.6
-X-Spam_bar: ------
-X-Spam_report: (-6.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.06, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-AuthUser: me@xcancerberox.com.ar
+Received-SPF: pass client-ip=23.83.212.50; envelope-from=me@xcancerberox.com.ar;
+ helo=dormouse.elm.relay.mailchannels.net
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.06,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 08 Nov 2021 09:30:06 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,33 +74,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 07:31:19 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 12:02:00 -0000
 
-On 11/6/21 20:28, Maciej S. Szmigiero wrote:
-> On 06.11.2021 14:41, Philippe Mathieu-Daudé wrote:
->> This is the 4th time I send this patch. Is the VMBus infrastructure
->> used / maintained? Should we deprecate & remove?
->>
->>    $ ./scripts/get_maintainer.pl -f hw/hyperv/vmbus.c -f
->> include/hw/hyperv/vmbus.h
->>    get_maintainer.pl: No maintainers found
+On 11/5/21 15:26, Philippe Mathieu-Daudé wrote:
+> Commit 497a30dbb06 ("qemu-img: Require -F with -b backing image")
+> removed the content of the "Related binaries" section but forgot
+> to remove the section title. Since it is now empty, remove it too.
 > 
-> There's an email thread at [1] explaining the reasons for having VMBus
-> infrastructure last time such question was asked.
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>   docs/about/deprecated.rst | 3 ---
+>   1 file changed, 3 deletions(-)
 > 
-> In short: mere presence of a working VMBus is needed for some high-speed
-> Windows debugging, also people are working on VMBus host device drivers.
-
-Great. Do you mind adding an entry in MAINTAINERS to
-cover these files, so we stop wondering about them?
-
-> Your patch makes sense to me, so for it:
-> Reviewed-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
-
-Thank you.
-
-> [1]:
-> https://lore.kernel.org/qemu-devel/20201009193919.GF7303@habkost.net/T/#u
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 56f9ad15ab5..5e514fb443d 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -370,9 +370,6 @@ The ``I7200`` guest CPU relies on the nanoMIPS ISA, which is deprecated
+>   (the ISA has never been upstreamed to a compiler toolchain). Therefore
+>   this CPU is also deprecated.
+>   
+> -Related binaries
+> -----------------
+> -
+>   Backwards compatibility
+>   -----------------------
+>   
 > 
 
+Reviewed-by: Joaquin de Andres <me@xcancerberox.com.ar>
 
