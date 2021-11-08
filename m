@@ -1,69 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjvnf-0003My-JN
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 22:58:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49646)
+	id 1mjvng-0003QJ-Ue
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 22:58:28 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49666)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvna-0003G8-Ne
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:23 -0500
-Received: from [2607:f8b0:4864:20::12c] (port=35462
- helo=mail-il1-x12c.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnd-0003Ir-1F
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:25 -0500
+Received: from [2607:f8b0:4864:20::130] (port=34395
+ helo=mail-il1-x130.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnZ-0006Oc-0E
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:22 -0500
-Received: by mail-il1-x12c.google.com with SMTP id w15so15566281ill.2
- for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:58:20 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnb-0006Ot-8r
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:24 -0500
+Received: by mail-il1-x130.google.com with SMTP id j28so15560026ila.1
+ for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:58:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Bx57Grx4Ho2QTHDmDapCkPzf47yXES68RJ3vL59z+xc=;
- b=aoulB3QOjs8yknezIbWDSAF18cLlLHCToc/1V9aY/NxM7excLnuhc87wAtLX11Snuh
- O/ILUsOPhr20pfZrb4lwOU5p1sqhg0NrRLw9X89R/8B1lQXiT3fkvcT7KNx2N8a46irA
- hnQEUyjqaAc5RvSf8cPDByHGLQOq7LifxS99Mx1BrWlN1R1JPl0iQeWaG6V1ovI9z70Y
- DDpwEnefOb6JcMw4gt4yuousMw9EaHh1SHUPxWwIf4pWVwrHCiJGdaofH6O9W7e6rMFN
- 0FB0QnMjW/25eBCXOyMilT7+q31hB4/BpashbOCyD19f7tfYX8NPhJyeRzOkBX6UJql/
- kG8g==
+ bh=unoUheHOiBFwRIZBJ0G39ayIeTidxh9oy5cQLMJnocc=;
+ b=Ji3jqYOgwzC2XJPxa8/28tjRiU8eTsUpTSkPO+A0KDSc1SJj4vMtSHnANEjjrqbi2M
+ ad059Bm1NeloIKruBps43QkyJuuo9JmGQZ4vc2L4kP15hx/qYbkoz8UNkCg0qF0f+zbG
+ 6snbx9XQO6B1sBlNvhZIacGb4YxDZLNTM6MIIY3mtEljwZnhXMhkVmhMvEMSG3u2IstP
+ LLtmQN5zo2I2Xq7PRhpw1Cx7i+CWBWvvYin/pRPguA2WEeQy6ST3yW6/XQc0s93D5xIE
+ nWZnpMl6rZkWVw8qoxCaLhBP5Uvo9t8eoZrg0L7wCqeKSFq2QqNm1cp1R1ggTDHSWQbp
+ L9qQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Bx57Grx4Ho2QTHDmDapCkPzf47yXES68RJ3vL59z+xc=;
- b=AlZI/OJ/gfQ+MCh0Ih//RvuP9QGTMey6S22ZvDnh4uN/R87GwgBGCHdoL4RIZEGIGl
- oQE5vosOvRMN6HGAOgI6lXC0bC1/Osqd/LIUibyOAiQJ7TVb7m73oF8x1O2lBFkHzHiC
- xaBqma0RZMDUiCDrbg+OgeI02oYUlG8HGF+EP5fWbmvMF5x9+uD3ntKkwZak9kOe5Nx2
- vz6e/hMLysieUYUi6HRXBvQKKU46IuA6421E5ResrTTbFnudepUIqzBBa7R0HQ52ni/8
- 0BpiAxEPJ0N8E+27TPyinqtS3BdAOKtI3TnULqn8DO7t/yX4IEjwIEAaxP27v8W3bVEA
- mmkA==
-X-Gm-Message-State: AOAM532RiMVrudaDLKpdt2Jye0K3TaNgXKk+/A62pG5zW9mireYT8VVD
- NKtjWXywZeLbfo1kvWNDtqd/CFlnDP4i7A==
-X-Google-Smtp-Source: ABdhPJzllnn02z39wmWmK/372UBZwqeluNpy5OZCtOM0hBuiIrvdb+2UTZRXOdSFtMVhe6Kgod0cHg==
-X-Received: by 2002:a05:6602:14d0:: with SMTP id
- b16mr8811887iow.181.1636343539251; 
- Sun, 07 Nov 2021 19:52:19 -0800 (PST)
+ bh=unoUheHOiBFwRIZBJ0G39ayIeTidxh9oy5cQLMJnocc=;
+ b=nUacUHUIqY0ZOidHg6N4fjYV5occUmFJDRsOe2a4VQfpZq7yMPSpmivxWEtCPglFbq
+ N8yU4U05TlJccw3SQuM/if+lG2fuLyv4+ct2ovyoWmjwD79XYuEBkTnY5fg9jdmVVAAy
+ zac9NsgmCgb4KFL5n7mBeVYniNL8P9TF2r6q0DQW97J7WTCVXTl6P0U/kOucHCJNDK+e
+ pjaUbI5Of0JhbdMQh7WKE501ZFCMq+ry+yiiKA5GDEBxITeFouaS861H49PPdXUcLBee
+ LZ+sOWbVdSrmdrRrc3mutzHluZygKR3CkuHbnIZfMNxsa5Ft8mu2SwAfo9psUWWQFTi8
+ ByFg==
+X-Gm-Message-State: AOAM5333zfPrOcKCk9HQSh28RbA8f89JMP1PEse6merQ7jKC2/A9EzLR
+ LyoLPe+/yrapMgzRtXNkThZqjCUhClJxSw==
+X-Google-Smtp-Source: ABdhPJwYYZXnyacGGGQms1ge3xdm18zvQZiRA/1RyxDx4bZI0F+JQ8PkmLDatFWKKgu5JBTtKCwhgQ==
+X-Received: by 2002:a5d:87c8:: with SMTP id q8mr11200624ios.117.1636343548005; 
+ Sun, 07 Nov 2021 19:52:28 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.18
+ by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Nov 2021 19:52:18 -0800 (PST)
+ Sun, 07 Nov 2021 19:52:27 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  Warner Losh <imp@bsdimp.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Kyle Evans <kevans@freebsd.org>, Philippe Mathieu-Daude <f4bug@amsat.org>,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v5 10/37] bsd-user/x86_64/target_arch_signal.h: Fill in
- mcontext_t
-Date: Sun,  7 Nov 2021 20:51:09 -0700
-Message-Id: <20211108035136.43687-11-imp@bsdimp.com>
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Stacey Son <sson@FreeBSD.org>,
+ =?UTF-8?q?Mika=C3=ABl=20Urankar?= <mikael.urankar@gmail.com>,
+ Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v5 19/37] bsd-user/arm/target_arch_cpu.h: Implement trivial
+ EXCP exceptions
+Date: Sun,  7 Nov 2021 20:51:18 -0700
+Message-Id: <20211108035136.43687-20-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211108035136.43687-1-imp@bsdimp.com>
 References: <20211108035136.43687-1-imp@bsdimp.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::12c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::130
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::12c;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x12c.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::130;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x130.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -83,84 +86,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 03:58:23 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 03:58:25 -0000
 
-Fill in target_mcontext match the FreeBSD mcontext_t structure. Also
-define the size correctly.
+Implement EXCP_UDEF, EXCP_DEBUG, EXCP_INTERRUPT, EXCP_ATOMIC and
+EXCP_YIELD. The first two generate a signal to the emulated
+binary. EXCP_ATOMIC handles atomic operations. The remainder are fancy
+nops.
 
+Signed-off-by: Stacey Son <sson@FreeBSD.org>
+Signed-off-by: Mikaël Urankar <mikael.urankar@gmail.com>
+Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/x86_64/target_arch_signal.h | 54 ++++++++++++++++++++++++++++
- 1 file changed, 54 insertions(+)
+ bsd-user/arm/target_arch_cpu.h | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/bsd-user/x86_64/target_arch_signal.h b/bsd-user/x86_64/target_arch_signal.h
-index e84aff948c..720e3939c3 100644
---- a/bsd-user/x86_64/target_arch_signal.h
-+++ b/bsd-user/x86_64/target_arch_signal.h
-@@ -28,8 +28,62 @@
- #define TARGET_SIGSTKSZ     (MINSIGSTKSZ + 32768)   /* recommended size */
- 
- typedef struct target_mcontext {
-+    abi_ulong   mc_onstack;     /* XXX - sigcontext compat. */
-+    abi_ulong   mc_rdi;         /* machine state (struct trapframe) */
-+    abi_ulong   mc_rsi;
-+    abi_ulong   mc_rdx;
-+    abi_ulong   mc_rcx;
-+    abi_ulong   mc_r8;
-+    abi_ulong   mc_r9;
-+    abi_ulong   mc_rax;
-+    abi_ulong   mc_rbx;
-+    abi_ulong   mc_rbp;
-+    abi_ulong   mc_r10;
-+    abi_ulong   mc_r11;
-+    abi_ulong   mc_r12;
-+    abi_ulong   mc_r13;
-+    abi_ulong   mc_r14;
-+    abi_ulong   mc_r15;
-+    uint32_t    mc_trapno;
-+    uint16_t    mc_fs;
-+    uint16_t    mc_gs;
-+    abi_ulong   mc_addr;
-+    uint32_t    mc_flags;
-+    uint16_t    mc_es;
-+    uint16_t    mc_ds;
-+    abi_ulong   mc_err;
-+    abi_ulong   mc_rip;
-+    abi_ulong   mc_cs;
-+    abi_ulong   mc_rflags;
-+    abi_ulong   mc_rsp;
-+    abi_ulong   mc_ss;
+diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
+index 2484bdc2f7..9f9b380b13 100644
+--- a/bsd-user/arm/target_arch_cpu.h
++++ b/bsd-user/arm/target_arch_cpu.h
+@@ -48,6 +48,39 @@ static inline void target_cpu_loop(CPUARMState *env)
+         cpu_exec_end(cs);
+         process_queued_cpu_work(cs);
+         switch (trapnr) {
++        case EXCP_UDEF:
++            {
++                /* See arm/arm/undefined.c undefinedinstruction(); */
++                info.si_addr = env->regs[15];
 +
-+    abi_long    mc_len;                 /* sizeof(mcontext_t) */
++                /* illegal instruction */
++                info.si_signo = TARGET_SIGILL;
++                info.si_errno = 0;
++                info.si_code = TARGET_ILL_ILLOPC;
++                queue_signal(env, info.si_signo, &info);
 +
-+#define _MC_FPFMT_NODEV         0x10000 /* device not present or configured */
-+#define _MC_FPFMT_XMM           0x10002
-+    abi_long    mc_fpformat;
-+#define _MC_FPOWNED_NONE        0x20000 /* FP state not used */
-+#define _MC_FPOWNED_FPU         0x20001 /* FP state came from FPU */
-+#define _MC_FPOWNED_PCB         0x20002 /* FP state came from PCB */
-+    abi_long    mc_ownedfp;
-+    /*
-+     * See <machine/fpu.h> for the internals of mc_fpstate[].
-+     */
-+    abi_long    mc_fpstate[64] __aligned(16);
++                /* TODO: What about instruction emulation? */
++            }
++            break;
++        case EXCP_INTERRUPT:
++            /* just indicate that signals should be handled asap */
++            break;
++        case EXCP_DEBUG:
++            {
 +
-+    abi_ulong   mc_fsbase;
-+    abi_ulong   mc_gsbase;
-+
-+    abi_ulong   mc_xfpustate;
-+    abi_ulong   mc_xfpustate_len;
-+
-+    abi_long    mc_spare[4];
- } target_mcontext_t;
- 
-+#define TARGET_MCONTEXT_SIZE 800
-+#define TARGET_UCONTEXT_SIZE 880
-+
- #include "target_os_ucontext.h"
- 
- struct target_sigframe {
++                info.si_signo = TARGET_SIGTRAP;
++                info.si_errno = 0;
++                info.si_code = TARGET_TRAP_BRKPT;
++                info.si_addr = env->exception.vaddress;
++                queue_signal(env, info.si_signo, &info);
++            }
++            break;
++        case EXCP_ATOMIC:
++            cpu_exec_step_atomic(cs);
++            break;
++        case EXCP_YIELD:
++            /* nothing to do here for user-mode, just resume guest code */
++            break;
+         default:
+             fprintf(stderr, "qemu: unhandled CPU exception 0x%x - aborting\n",
+                     trapnr);
 -- 
 2.33.0
 
