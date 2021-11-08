@@ -1,68 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjvnZ-0003EM-AE
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 22:58:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49614)
+	id 1mjvnc-0003In-AI
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 22:58:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49630)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnY-0003Aq-2j
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:20 -0500
-Received: from [2607:f8b0:4864:20::52d] (port=38875
- helo=mail-pg1-x52d.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnZ-0003Dk-0y
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:21 -0500
+Received: from [2607:f8b0:4864:20::12e] (port=38411
+ helo=mail-il1-x12e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnV-0006O7-VZ
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:19 -0500
-Received: by mail-pg1-x52d.google.com with SMTP id e65so13986261pgc.5
- for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:58:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnX-0006OK-Gc
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:20 -0500
+Received: by mail-il1-x12e.google.com with SMTP id f10so15567127ilu.5
+ for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:58:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=pUnz5WHUhswb5q8XxN9w41FLyhOSulO5CBUbhPFGoI0=;
- b=qwGOMW1Dg8qR53+mqolKe8WLRXeTbR4ysvm4UEsn4kvfjsTss38GQrmu5bI5RzZHY3
- GCUzK7Cy5OoeuKDAxrj3MK33JVpt9k4ULMR0nOkVSRA+WZXJtPHXx+uA4YU9tXaBglGh
- Dj4FTsTkS5ajkSXdYlDFmzu1frDZjpkNbyiMZ60lE/fEvdiPoYN9cBlWKrYBAEVi0vDW
- qXI1T1sy6AuO3sWLHJlGaPxcbWhT9WOG6MXTSw/agW8Y+vjhJ1O7eBypdNuMvYJeVg1u
- 7jlTw7QH1Tpm7jfH30yiZCBgdwLDDYtTf5AyJk1U6FztruO3cvFEPDhJIClM+Cb8VdlD
- IoPg==
+ bh=8R82c+oSIU+sp8WqnJE/Io3vjzLSVpjkS5kzwk9Q/Pk=;
+ b=RZEx6SDAu9e0UUOZnTNwtQqOun36orq0oaAKyxFxyCEqVaGD3BKeUFP34tO+y92SM+
+ Dz0ENh8cubvy+At8qCKd0SZI2eTd7WddFFO21bK3NULNM6n/EdZo65x1Wz4FK8xyhs9r
+ z8G1Ny5GmXcGUYwrsCpqrW6msiaJkp0fhix5/I9g811kgrGNo95czm0G1HZeKbBP935M
+ szrieI88P6v/Qm6YE5Vpu1iv8oVUWVa7dVVd0+TsqicAz3xum35uwh3Psdyoam6rwE8u
+ sPMOfg8suh1BDC7mCAb4rfpGsFwyCWEDWncJV4qkuSWhWG+8rhox7oV670cqzmAwjm7o
+ Imhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=pUnz5WHUhswb5q8XxN9w41FLyhOSulO5CBUbhPFGoI0=;
- b=QfDMrNVJM6/OLiBD9WQ+JUZtrZZUVjZIH2ibeswIl8NAWRPcIdlnzV+GtWp+9JdJtC
- wL+gy7qmjBey14yZc7LR85MXJOdi2LlYGG8PkhAmSLXahDEWU+10QJ6rOSum3ZsBa6y/
- 9+QLATrvMm5HDUIo8ZqCVU8bscDxC8hz5GRq+iPTUOP5EOHFkxyFNCSpTE+jyp4Cnn7k
- 52ZSsL6AqfnK+Pzw9pCniQTSx19UnOLexB60YGSHgK+3E28tLslxpTYhEmWS/uc0WFya
- vYX8EWhcwbm/5Kw9sNNKd4mQhjGUrVUyhvoEH62DviivcVgpUaItYs2LFCPy31F5Dyc7
- uDQw==
-X-Gm-Message-State: AOAM531xA3fCRVem8yBNjDGeu/q+xYTzbfz27LvuWb5GFrsOTbrcUJt+
- aDvXl8p6L3JndInmwYK9Fo16bjlUAlZ4gw==
-X-Google-Smtp-Source: ABdhPJw6r2XM1yoZo5v44PkSWGYTA9Wgug1wVcwEu6uFokFY10hLPlQe08D01AmwmhMbQKV/2FtYQA==
-X-Received: by 2002:a5d:8e07:: with SMTP id e7mr4648231iod.148.1636343535417; 
- Sun, 07 Nov 2021 19:52:15 -0800 (PST)
+ bh=8R82c+oSIU+sp8WqnJE/Io3vjzLSVpjkS5kzwk9Q/Pk=;
+ b=oRd4INvoDysZlrtpDRLJPJ+GzlAz5nn/rjzQuBPa7Tt3SvblWHExvwoUID7RL1yEFQ
+ N1ioQLuOD0gOcTMEOxgXcoCq/NkwIF93vqLFQAG0XY0yUz94vO/zhVjcxG3lg9OTD6bI
+ SDv6PCkaocnmzTiSZk9/QzIAl/JwvmM2FMbF0GHA74wxculchnMI3tAJDRRJywniDarj
+ YVNdyClvlQ8dsz1XYNYU9go4md8eMoy65EAOMQveKD6zfzcUTpIJIyJFqBE6WRu2yHfo
+ FYDdBO4RPwfpbxavanWyX4gryZoAxEsXOOPtGrN8aAN8OPtnc7DkLZB8GyqzjfFGp6ng
+ fsUg==
+X-Gm-Message-State: AOAM530bXKKZVRNPdoROrAnBccxB2v3lH0EHGk/1Up4qu1AyPT2xk+kU
+ vONCiO9WOP8X1ZjrRBjZYg0xgb/Wpd/HRQ==
+X-Google-Smtp-Source: ABdhPJz4MCpHPM94oowND6IhOPPtrFsam50KbRGnaBD9RdzLjVCtj8LAWlUTpmTJrMX1rQXHlhmPRQ==
+X-Received: by 2002:a05:6e02:168c:: with SMTP id
+ f12mr32457301ila.277.1636343555494; 
+ Sun, 07 Nov 2021 19:52:35 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.14
+ by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Nov 2021 19:52:15 -0800 (PST)
+ Sun, 07 Nov 2021 19:52:34 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  Warner Losh <imp@bsdimp.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Kyle Evans <kevans@freebsd.org>, Philippe Mathieu-Daude <f4bug@amsat.org>,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v5 06/37] bsd-user/i386/target_arch_signal.h: Update
- mcontext_t to match FreeBSD
-Date: Sun,  7 Nov 2021 20:51:05 -0700
-Message-Id: <20211108035136.43687-7-imp@bsdimp.com>
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Kyle Evans <kevans@FreeBSD.org>, Stacey Son <sson@FreeBSD.org>
+Subject: [PATCH v5 27/37] bsd-user/arm/target_arch_elf.h: arm get hwcap
+Date: Sun,  7 Nov 2021 20:51:26 -0700
+Message-Id: <20211108035136.43687-28-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211108035136.43687-1-imp@bsdimp.com>
 References: <20211108035136.43687-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52d
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::12e
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::52d;
- envelope-from=imp@bsdimp.com; helo=mail-pg1-x52d.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::12e;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x12e.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -82,76 +83,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 03:58:20 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 03:58:21 -0000
 
-Fill in target_mcontext_t to match the FreeBSD mcontex_t. Also tag the
-current size of mcontext and ucontext to enable size checking for i386.
+Implement get_elf_hwcap to get the first word of hardware capabilities.
 
+Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
+Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/i386/target_arch_signal.h | 46 ++++++++++++++++++++++++++++++
- 1 file changed, 46 insertions(+)
+ bsd-user/arm/target_arch_elf.h | 72 +++++++++++++++++++++++++++++++++-
+ 1 file changed, 71 insertions(+), 1 deletion(-)
 
-diff --git a/bsd-user/i386/target_arch_signal.h b/bsd-user/i386/target_arch_signal.h
-index bf7263c4f8..701c6f964f 100644
---- a/bsd-user/i386/target_arch_signal.h
-+++ b/bsd-user/i386/target_arch_signal.h
-@@ -28,8 +28,54 @@
- #define TARGET_SIGSTKSZ     (MINSIGSTKSZ + 32768)   /* recommended size */
+diff --git a/bsd-user/arm/target_arch_elf.h b/bsd-user/arm/target_arch_elf.h
+index 15b5c66511..02d25b8926 100644
+--- a/bsd-user/arm/target_arch_elf.h
++++ b/bsd-user/arm/target_arch_elf.h
+@@ -31,6 +31,76 @@
+ #define USE_ELF_CORE_DUMP
+ #define ELF_EXEC_PAGESIZE       4096
  
- typedef struct target_mcontext {
-+    abi_ulong   mc_onstack;     /* XXX - sigcontext compat. */
-+    abi_ulong   mc_gs;          /* machine state (struct trapframe) */
-+    abi_ulong   mc_fs;
-+    abi_ulong   mc_es;
-+    abi_ulong   mc_ds;
-+    abi_ulong   mc_edi;
-+    abi_ulong   mc_esi;
-+    abi_ulong   mc_ebp;
-+    abi_ulong   mc_isp;
-+    abi_ulong   mc_ebx;
-+    abi_ulong   mc_edx;
-+    abi_ulong   mc_ecx;
-+    abi_ulong   mc_eax;
-+    abi_ulong   mc_trapno;
-+    abi_ulong   mc_err;
-+    abi_ulong   mc_eip;
-+    abi_ulong   mc_cs;
-+    abi_ulong   mc_eflags;
-+    abi_ulong   mc_esp;
-+    abi_ulong   mc_ss;
+-#define ELF_HWCAP 0
++#define ELF_HWCAP get_elf_hwcap()
 +
-+    int32_t     mc_len;                 /* sizeof(mcontext_t) */
-+#define _MC_FPFMT_NODEV         0x10000 /* device not present or configured */
-+#define _MC_FPFMT_387           0x10001
-+#define _MC_FPFMT_XMM           0x10002
-+    int32_t     mc_fpformat;
-+#define _MC_FPOWNED_NONE        0x20000 /* FP state not used */
-+#define _MC_FPOWNED_FPU         0x20001 /* FP state came from FPU */
-+#define _MC_FPOWNED_PCB         0x20002 /* FP state came from PCB */
-+    int32_t     mc_ownedfp;
-+    abi_ulong mc_flags;
-+        /*
-+         * See <machine/npx.h> for the internals of mc_fpstate[].
-+         */
-+    int32_t     mc_fpstate[128] __aligned(16);
++#define GET_FEATURE(feat, hwcap) \
++    do { if (arm_feature(&cpu->env, feat)) { hwcaps |= hwcap; } } while (0)
 +
-+    abi_ulong mc_fsbase;
-+    abi_ulong mc_gsbase;
++#define GET_FEATURE_ID(feat, hwcap) \
++    do { if (cpu_isar_feature(feat, cpu)) { hwcaps |= hwcap; } } while (0)
 +
-+    abi_ulong mc_xfpustate;
-+    abi_ulong mc_xfpustate_len;
++enum {
++    ARM_HWCAP_ARM_SWP       = 1 << 0,
++    ARM_HWCAP_ARM_HALF      = 1 << 1,
++    ARM_HWCAP_ARM_THUMB     = 1 << 2,
++    ARM_HWCAP_ARM_26BIT     = 1 << 3,
++    ARM_HWCAP_ARM_FAST_MULT = 1 << 4,
++    ARM_HWCAP_ARM_FPA       = 1 << 5,
++    ARM_HWCAP_ARM_VFP       = 1 << 6,
++    ARM_HWCAP_ARM_EDSP      = 1 << 7,
++    ARM_HWCAP_ARM_JAVA      = 1 << 8,
++    ARM_HWCAP_ARM_IWMMXT    = 1 << 9,
++    ARM_HWCAP_ARM_CRUNCH    = 1 << 10,
++    ARM_HWCAP_ARM_THUMBEE   = 1 << 11,
++    ARM_HWCAP_ARM_NEON      = 1 << 12,
++    ARM_HWCAP_ARM_VFPv3     = 1 << 13,
++    ARM_HWCAP_ARM_VFPv3D16  = 1 << 14,
++    ARM_HWCAP_ARM_TLS       = 1 << 15,
++    ARM_HWCAP_ARM_VFPv4     = 1 << 16,
++    ARM_HWCAP_ARM_IDIVA     = 1 << 17,
++    ARM_HWCAP_ARM_IDIVT     = 1 << 18,
++    ARM_HWCAP_ARM_VFPD32    = 1 << 19,
++    ARM_HWCAP_ARM_LPAE      = 1 << 20,
++    ARM_HWCAP_ARM_EVTSTRM   = 1 << 21,
++};
 +
-+    int32_t     mc_spare2[4];
- } target_mcontext_t;
++static uint32_t get_elf_hwcap(void)
++{
++    ARMCPU *cpu = ARM_CPU(thread_cpu);
++    uint32_t hwcaps = 0;
++
++    hwcaps |= ARM_HWCAP_ARM_SWP;
++    hwcaps |= ARM_HWCAP_ARM_HALF;
++    hwcaps |= ARM_HWCAP_ARM_THUMB;
++    hwcaps |= ARM_HWCAP_ARM_FAST_MULT;
++
++    /* probe for the extra features */
++    /* EDSP is in v5TE and above */
++    GET_FEATURE(ARM_FEATURE_V5, ARM_HWCAP_ARM_EDSP);
++    GET_FEATURE(ARM_FEATURE_IWMMXT, ARM_HWCAP_ARM_IWMMXT);
++    GET_FEATURE(ARM_FEATURE_THUMB2EE, ARM_HWCAP_ARM_THUMBEE);
++    GET_FEATURE(ARM_FEATURE_NEON, ARM_HWCAP_ARM_NEON);
++    GET_FEATURE(ARM_FEATURE_V6K, ARM_HWCAP_ARM_TLS);
++    GET_FEATURE(ARM_FEATURE_LPAE, ARM_HWCAP_ARM_LPAE);
++    GET_FEATURE_ID(aa32_arm_div, ARM_HWCAP_ARM_IDIVA);
++    GET_FEATURE_ID(aa32_thumb_div, ARM_HWCAP_ARM_IDIVT);
++    GET_FEATURE_ID(aa32_vfp, ARM_HWCAP_ARM_VFP);
++
++    if (cpu_isar_feature(aa32_fpsp_v3, cpu) ||
++        cpu_isar_feature(aa32_fpdp_v3, cpu)) {
++        hwcaps |= ARM_HWCAP_ARM_VFPv3;
++        if (cpu_isar_feature(aa32_simd_r32, cpu)) {
++            hwcaps |= ARM_HWCAP_ARM_VFPD32;
++        } else {
++            hwcaps |= ARM_HWCAP_ARM_VFPv3D16;
++        }
++    }
++    GET_FEATURE_ID(aa32_simdfmac, ARM_HWCAP_ARM_VFPv4);
++
++    return hwcaps;
++}
++
++#undef GET_FEATURE
++#undef GET_FEATURE_ID
  
-+#define TARGET_MCONTEXT_SIZE 640
-+#define TARGET_UCONTEXT_SIZE 704
-+
- #include "target_os_ucontext.h"
- 
- struct target_sigframe {
+ #endif /* _TARGET_ARCH_ELF_H_ */
 -- 
 2.33.0
 
