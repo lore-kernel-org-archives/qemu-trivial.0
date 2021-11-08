@@ -1,68 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjvpm-0007nC-4D
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 23:00:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50318)
+	id 1mjvpn-0007rq-9k
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 23:00:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvpl-0007jk-BP
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvpl-0007jw-CM
  for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 23:00:37 -0500
-Received: from [2607:f8b0:4864:20::431] (port=43668
- helo=mail-pf1-x431.google.com)
+Received: from [2607:f8b0:4864:20::42b] (port=41879
+ helo=mail-pf1-x42b.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvpj-00014V-Tr
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvpf-000147-Kl
  for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 23:00:37 -0500
-Received: by mail-pf1-x431.google.com with SMTP id n85so10221532pfd.10
- for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 20:00:35 -0800 (PST)
+Received: by mail-pf1-x42b.google.com with SMTP id g19so8730859pfb.8
+ for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 20:00:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=VTdt3uC+ttB19F3HtSXrERhSxFv3zvRil3LE5812gSQ=;
- b=CekGNyIce6XdthziiJgk/NHpe3zTL+GqsQetJo3+U0Za57P3l7w0yRXyqgbmbtFnwD
- tgXNS7M1NHTlcweoCp+mhdhkWek3ziv3IfQkIRfpwLI1WYVhEhY6F9arMuSetWfgFLhk
- W75W0npC573EGzJZT/p+198J3VNnuOqF+M5Eaqo76jfKxsFfw6bYNJGW2EtqI+G/nmdB
- 0xderTdRcsOswGdtlcpLm/FyhJsR+cXEYzSXmmynpusg0agJxfWASCcnqudbV9KMCAWI
- GsUzhSWbPGdE2NV5pPWUpI1sZIxTHNZrsH/kPoHQfzcHlYX5+0/QnTq4ssbvxr8LCE+t
- xSww==
+ bh=IfRWeGYD+0hbc23c7Edg1M5XjxcHd+iZ98b19hdHbHg=;
+ b=h+lyCx3528JpeKv4Yln6Sy72OPZoCCxKjmTZXnrCALhSmdp992bgleJT+hCPqX/sz9
+ MYl78Ke1RwfdsixnA+UCmUU5kT5O6MufbwlbH9IqZZ/z16Wmuz/YuWLzCVfSm5NrNPyE
+ 2mk4+cU5NjXFy4uexRJ+jS33UPnFwyBo8rKvm5WiJ4hqMw0I15RETcE+vijStdgrmX76
+ EjZ68O0172zpD/hWW0tkvOliS2hYbfo0exzuGjA1cLmV5vh5rA5ow2tviQxG4zp+tCdG
+ zQraX6cJY7hcRuDOyPdCGi9X9C3pVoSDPkgpGMHbdZ1sjyCENDsAUff1IM73mpQVwrjw
+ rw+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=VTdt3uC+ttB19F3HtSXrERhSxFv3zvRil3LE5812gSQ=;
- b=VyYh/eTl7rDeiBpTKkut9ouY9QS2oDbkkR9p4uIBVwy0N+yons4kgQKYh6BLQ3nlda
- uuvFQiatvHYxN+HgUgiLX4SdZUyB8NtZjZoeyRkZnpgRrv2wBjIj95mAYnvt91iJJB/7
- UF4oI867wbbnnM6nj6RJNIe/zVyc97sjQaEF+/2tN/SrPcJrJeok5FsP8sJ/KQo6+NIw
- vymXHQM2wD6/8w3WkhrsoRMOOdAzEAbsI0E+IRV60ifKTRiEx7O927oJtIYTed4FASnB
- GyJOAbPoFVaSxUe42Ws20Lmzz09rZrLg4Rk3DxH5nVlGpG73vXPVuIZ0AvDmCg1+lI3w
- j8ZQ==
-X-Gm-Message-State: AOAM531Gyp9OHzgooicjIV8+ZkvcIBuwHzivKyu5uIsPtOP35N6cVR8U
- b3xfrgGrm9C1l6OHifO/bdr1Q0aS+fW0qw==
-X-Google-Smtp-Source: ABdhPJy6p764ECR0WIUF261YXMRgOfChCfxGVar0vHRFEe9bkKoa6IcJjrMgRBmp7uSyZFed2gSGBQ==
-X-Received: by 2002:a6b:7306:: with SMTP id e6mr3914401ioh.25.1636343564293;
- Sun, 07 Nov 2021 19:52:44 -0800 (PST)
+ bh=IfRWeGYD+0hbc23c7Edg1M5XjxcHd+iZ98b19hdHbHg=;
+ b=OGZPPQNUKK/CdbdzZpWWORnfsuH0dvfiHMOsIArFs+m7JQeprf3NlnaGCSInEArC+W
+ Ijn2P85pyDzrtau9XqmOxYukjdlMoWLw6m4PUkehJB1P1pTNfWVC5gw8JLdrU1PfitoC
+ vc4Hu4emRVLle+jYqsY16Hrgi0RUYx5dxncW7hIbg9bXXw8w7LuqoevfuTGcheVDUl3P
+ HdbQOXaMV1Y8FR7f4HZIp4GZ6VFcx3AHugxQJ5EvouwL9L3Q5lO3NYrkXAeskv1pbxJH
+ Gr28wlLD/ACM1sIbABEENXzHydTcXifbnpg9SkMPahmvMMjITJuhBT9rJlo+wf32tJkM
+ ddTQ==
+X-Gm-Message-State: AOAM5303IovVGX/gkHXonPZ+M23nAjsi5Lpts39BIibWcux8cPgLGxzP
+ rluHJZoPozjSl3CGLwuZuMh19tKBaF134Q==
+X-Google-Smtp-Source: ABdhPJxLWqXcPZTsil6T1YcFNMubGoXM1Re1az4U8UfOiudO6PY3fIHS1zEVPBj/s3NBD+SLninLNA==
+X-Received: by 2002:a92:c80d:: with SMTP id v13mr54571731iln.175.1636343548913; 
+ Sun, 07 Nov 2021 19:52:28 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.43
+ by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Nov 2021 19:52:43 -0800 (PST)
+ Sun, 07 Nov 2021 19:52:28 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  Warner Losh <imp@bsdimp.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Kyle Evans <kevans@freebsd.org>, Philippe Mathieu-Daude <f4bug@amsat.org>,
  qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v5 37/37] bsd-user: add arm target build
-Date: Sun,  7 Nov 2021 20:51:36 -0700
-Message-Id: <20211108035136.43687-38-imp@bsdimp.com>
+ Kyle Evans <kevans@FreeBSD.org>, Olivier Houchard <cognet@ci0.org>,
+ Stacey Son <sson@FreeBSD.org>
+Subject: [PATCH v5 20/37] bsd-user/arm/target_arch_cpu.h: Implement data abort
+ exceptions
+Date: Sun,  7 Nov 2021 20:51:19 -0700
+Message-Id: <20211108035136.43687-21-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211108035136.43687-1-imp@bsdimp.com>
 References: <20211108035136.43687-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::431
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42b
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::431;
- envelope-from=imp@bsdimp.com; helo=mail-pf1-x431.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=imp@bsdimp.com; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -84,23 +86,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 08 Nov 2021 04:00:37 -0000
 
-CC: Paolo Bonzini <pbonzini@redhat.com>
+Implement EXCP_PREFETCH_ABORT AND EXCP_DATA_ABORT. Both of these data
+exceptions cause a SIGSEGV.
+
+Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
+Signed-off-by: Olivier Houchard <cognet@ci0.org>
+Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
-Acked-by: Kyle Evans <kevans@FreeBSD.org>
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- configs/targets/arm-bsd-user.mak | 2 ++
- 1 file changed, 2 insertions(+)
- create mode 100644 configs/targets/arm-bsd-user.mak
+ bsd-user/arm/target_arch_cpu.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/configs/targets/arm-bsd-user.mak b/configs/targets/arm-bsd-user.mak
-new file mode 100644
-index 0000000000..cb143e6426
---- /dev/null
-+++ b/configs/targets/arm-bsd-user.mak
-@@ -0,0 +1,2 @@
-+TARGET_ARCH=arm
-+TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml
+diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
+index 9f9b380b13..905a5ffaff 100644
+--- a/bsd-user/arm/target_arch_cpu.h
++++ b/bsd-user/arm/target_arch_cpu.h
+@@ -65,6 +65,17 @@ static inline void target_cpu_loop(CPUARMState *env)
+         case EXCP_INTERRUPT:
+             /* just indicate that signals should be handled asap */
+             break;
++        case EXCP_PREFETCH_ABORT:
++            /* See arm/arm/trap.c prefetch_abort_handler() */
++        case EXCP_DATA_ABORT:
++            /* See arm/arm/trap.c data_abort_handler() */
++            info.si_signo = TARGET_SIGSEGV;
++            info.si_errno = 0;
++            /* XXX: check env->error_code */
++            info.si_code = 0;
++            info.si_addr = env->exception.vaddress;
++            queue_signal(env, info.si_signo, &info);
++            break;
+         case EXCP_DEBUG:
+             {
+ 
 -- 
 2.33.0
 
