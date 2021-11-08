@@ -1,72 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mk6PA-0006ue-Jj
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Nov 2021 10:17:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44504)
+	id 1mk6tJ-0008H0-Fd
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Nov 2021 10:49:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54686)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mk6P8-0006nU-So
- for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 10:17:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47779)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mk6P1-0003T7-QZ
- for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 10:17:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636384662;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hKcyTKLMPRJMRL1WkoqUFnlj4Ggg7wFsfX1AAjTEU2E=;
- b=XF31Y6KLKi0v3FSJ695xhorLTjrLm00ZCWJMWSYSfCeUTt1q6e/xhrxDoTIu+zaE+q4KH0
- OI38lyyTOHHrPPVVYX28W9eBvdHQdlkZ8KmZW8I/v21WSobigz/ds29/B1R0qHl9Bw2L4a
- A4bBC7XXnKA62G5aQrHWu6uFhnzVkwo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-553-U5NUlwKIMKy8A2ieEgcrDQ-1; Mon, 08 Nov 2021 10:17:39 -0500
-X-MC-Unique: U5NUlwKIMKy8A2ieEgcrDQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5365F1054F93;
- Mon,  8 Nov 2021 15:17:36 +0000 (UTC)
-Received: from [10.39.192.185] (unknown [10.39.192.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D9C5161077;
- Mon,  8 Nov 2021 15:16:57 +0000 (UTC)
-Message-ID: <124c2224-8983-3737-c8a5-1347bd83e941@redhat.com>
-Date: Mon, 8 Nov 2021 16:16:56 +0100
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mk6tH-0008Gf-R2
+ for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 10:48:59 -0500
+Received: from [2a00:1450:4864:20::435] (port=36725
+ helo=mail-wr1-x435.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mk6tG-0008Gv-0r
+ for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 10:48:59 -0500
+Received: by mail-wr1-x435.google.com with SMTP id s13so27710520wrb.3
+ for <qemu-trivial@nongnu.org>; Mon, 08 Nov 2021 07:48:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=hMTDcW0D7yNFGXUXrpduCEnVS95gV9fWvJu34D4Ey+U=;
+ b=tkJq04geNdZFbYMF0tqZLgokWyRa/RYFfKo4hS0xtXNcbKM2G2Z3+X+SjZdyBOICwl
+ QaXsPqhKmxkNNxH6V21qwA364BVA8zDkJHEpDonrEQPfLASN0wOkcejZqmfjpBlOTZHo
+ dGg4LdpNtJ92tyefiN1BiIKYjPnUq+T8YWFM/cNc9c9E63n4AsRn/1ukdtx9f5UeKgYy
+ Zf5MNQOfFWj95EX78z3JCGPnmK3+xSgTsM412e3wOsUt2X75Z3/9OMvxkqDnNK+5ON2a
+ TwTbgxEw3mqWQbPXo7MZSyFNJAW2EUm/glUhsBe33iL2tPJ0HuOo0yxGXJrx5RnJgMnI
+ bJQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=hMTDcW0D7yNFGXUXrpduCEnVS95gV9fWvJu34D4Ey+U=;
+ b=Y/NQUwzy6wcs5f6jVAjc0c4JS0Ka8IPADSp4cGS05MT9dB1gKad6vnCyEYLsnQ1bSv
+ nd8rkVkzaai7cXRWSQBI26fa8tOgY3+VhSyFF0j5BhyawOL9aSVXVq9udsK83KWSnJSY
+ QivmcnphVvFA0O859TR8Ip2m0lgN2W4F4QjovUlcYlLVcZW6/VRTDbYQeAKxqG1I4kdy
+ wGljQbu5jYr0isPsNuSMPJQq1w7DI8lv83hNQtEBUNlZr10PtJ4KXDgRUY9XBVRtIOV/
+ lNSdAtQmkX9saOfP9blDDB11PWg94/YKYzd3+qyIGwXoaNXlFTvJLi5o+uSJhOVaaB4y
+ M7/g==
+X-Gm-Message-State: AOAM533TFcFJSwtcacSwM3nLBEBOuVUVqbj7LrhWPzIYJ1BY3OXLxaGU
+ BSp970ThHsxXccGx17OthyVIy92UKvFKMszEC58=
+X-Google-Smtp-Source: ABdhPJy3wAKt0KGqJSMotuKPBXK42F0Kd/dtaPckGERavtdQPfDjnJnz3EyS1HiEsyL3GeqvL+tO9g==
+X-Received: by 2002:a05:6000:1c2:: with SMTP id
+ t2mr107089wrx.378.1636386169467; 
+ Mon, 08 Nov 2021 07:42:49 -0800 (PST)
+Received: from [192.168.8.106] (173.red-95-126-185.staticip.rima-tde.net.
+ [95.126.185.173])
+ by smtp.gmail.com with ESMTPSA id a4sm15434385wmg.10.2021.11.08.07.42.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Nov 2021 07:42:49 -0800 (PST)
+Subject: Re: [PATCH v5 34/37] bsd-user/arm/signal.c: arm set_mcontext
+To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Kyle Evans <kevans@freebsd.org>,
+ Philippe Mathieu-Daude <f4bug@amsat.org>, qemu-trivial@nongnu.org,
+ Stacey Son <sson@FreeBSD.org>
+References: <20211108035136.43687-1-imp@bsdimp.com>
+ <20211108035136.43687-35-imp@bsdimp.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <f7c85323-ac00-f67f-f1d5-c02733ec8ad6@linaro.org>
+Date: Mon, 8 Nov 2021 16:42:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH v2 0/6] rSTify contribution-related wiki pages
-To: Kashyap Chamarthy <kchamart@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Eric Blake <eblake@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
- Laurent Vivier <Laurent@vivier.eu>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-References: <20211019090344.3054300-1-kchamart@redhat.com>
- <CAFEAcA8CHVfAXFaQwfZrQUfJcD9qQNOYAEt9vvpQVtgwtTf80w@mail.gmail.com>
- <YYFebObSyo6itE/R@paraplu>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <YYFebObSyo6itE/R@paraplu>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20211108035136.43687-35-imp@bsdimp.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -65
-X-Spam_score: -6.6
-X-Spam_bar: ------
-X-Spam_report: (-6.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.06, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+Content-Transfer-Encoding: 7bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::435
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.06,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,37 +88,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 15:17:51 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 15:49:00 -0000
 
-On 02/11/2021 16.51, Kashyap Chamarthy wrote:
-> On Mon, Nov 01, 2021 at 02:56:43PM +0000, Peter Maydell wrote:
->> On Tue, 19 Oct 2021 at 10:04, Kashyap Chamarthy <kchamart@redhat.com> wrote:
->>>
->>> My main motivation was to convert SubmitAPatch[1] based on a chat with
->>> Peter Maydell and Dan Berrangé on #qemu channel (on OFTC).  But the page
->>> also links to a couple of other contribution-related pages, so I
->>> converted them too:
->>>
->>>    - SubmitAPullRequest: https://wiki.qemu.org/Contribute/SubmitAPullRequest
->>>    - KeySigningParty: https://wiki.qemu.org/KeySigningParty
->>>    - SpellCheck: https://wiki.qemu.org/Contribute/SpellCheck
->>>    - TrivialPatches: https://wiki.qemu.org/Contribute/TrivialPatches
->>
->> I'm not sure that SpellCheck in particular is sufficiently baked
->> to be in the actual docs. I'd rather just drop the reference to it
->> from SubmitAPatch.
-> 
-> Sure, will drop.
-> 
->> KeySigningParty I'm on the fence about.
-> 
-> This is linked only from the SubmitAPullRequest page.  If we're
-> ambivalent about it, I'll just keep it in for reference.
+On 11/8/21 4:51 AM, Warner Losh wrote:
+> +    env->regs[15] = tswap32(gr[TARGET_REG_PC] & ~mask);
 
-FWIW, I'd rather prefer to keep the KeySigningParty stuff in the wiki - it 
-does not feel like the right content for the docs that we ship in the 
-release tarballs.
+Oops, one more buglet: the mask should be outside the tswap.
 
-  Thomas
+Otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
+
+r~
 
