@@ -1,77 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjvpu-0008IF-RU
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 23:00:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50368)
+	id 1mjz7g-0006nV-N4
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Nov 2021 02:31:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvpt-0008Dm-Px
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 23:00:45 -0500
-Received: from [2607:f8b0:4864:20::434] (port=46656
- helo=mail-pf1-x434.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvpr-00016G-LJ
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 23:00:45 -0500
-Received: by mail-pf1-x434.google.com with SMTP id o4so678889pfp.13
- for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 20:00:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=1ztRBQYqWrUwRLf6NQ4W8izvboRcDbY0eKrhIvHHz3I=;
- b=wwVNPKwXNB345Y+KHd7cYKOgZiQs1sO2mU5Ex5N/UF3nbBZyYf6TKAcADAJVMeBEQ/
- KqD6UUBAW91rYSXH2QuD+isXhM0lJOwVp54xjsPVqK6zulvl/2ZwulNG/n4XcafLGIWt
- 6KRt3Q8mPhEWhlztuRx9iYD14GViRmsg1ydlnS2tnOO/x40R/XMITwTl1v32FPboh7Vh
- 4AZISkSek/VWeewYTr6mI/aBKlSy/SRqLAHnU7nnA16egI2Kd/TkHP7SiBdZmWbNKxx7
- 94iLA/CflVUDPtJzuXfhsLIRxLbD42Ihg+bGxz64vqk7K/aX0cbJ1MjYu4zPR5vJ6ncz
- cQkg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mjz7f-0006lf-5y
+ for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 02:31:19 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25705)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mjz7Y-0004mp-Qk
+ for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 02:31:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1636356665;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vy07NpmjE3vqxd14i7vOmnS86GY1iLrrFQhK/J26s10=;
+ b=TyWjGJ/qC1BjVgDQ/LFdgnpWdAJj7FnaUzsVODpU/kAw73bAGQrP03waa60+VWgfqm2o58
+ IqgRbFirqplPUf87dO6eCIOD6zJBOJL0z37f38xNiIJ2fwz82sRWOdy45uLjyP7dt/N8bI
+ eEgsioX9zlgbzacvPu83q5+fkLwcz2s=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-509-AlxQXR9DMiOcTEvueJiV8A-1; Mon, 08 Nov 2021 02:31:02 -0500
+X-MC-Unique: AlxQXR9DMiOcTEvueJiV8A-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 145-20020a1c0197000000b0032efc3eb9bcso9750771wmb.0
+ for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 23:31:02 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=1ztRBQYqWrUwRLf6NQ4W8izvboRcDbY0eKrhIvHHz3I=;
- b=KkZQmkyQDc7BRNdE/0gU+L+buUEKiHGvgrDaX8iJUlO+ssRTWrTjYFKJYSQ8QNCF7+
- 3Peok4JRBL55FHaDD4AWqOn1fsqO7H2grKCbM7VDhHKlJFF6WmRVXYeJ90miJF88Nzr/
- O9WAGSI2PkpkaYvmf+KAUxRcYZJ0HfUujgrdEOrFcpJ8sAxo+zxVutJlKvv1sK2wIrFi
- 4h7m13eB0QLGSw4A/4X4bMsl6tX7bZIh/81RYmsPShYKxesB/TsyrKHG2vninmDDzS9i
- IlS3reLw9aqsXQahz4AMsKUBLXi1+DorfB3+AJ9QfCI4wVAK/YZYgs9oRMl19uWkqyqx
- wVQg==
-X-Gm-Message-State: AOAM530A5D9Z5DWDoY5oXPrE7sZlQF6p4/cnN+Uf9dMuKCcFxE5nPU20
- KjyVx/3vEkjFKsbEGzZWrnRqDcNkOxHq5g==
-X-Google-Smtp-Source: ABdhPJy+84jQWRggiXik/h53Z8l3sNekwDhj4LkVYixLAW+4hF+LklY/6bAFXCeLdKjpiHlSbrHjIg==
-X-Received: by 2002:a05:6e02:1a2d:: with SMTP id
- g13mr24650043ile.301.1636343551797; 
- Sun, 07 Nov 2021 19:52:31 -0800 (PST)
-Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
- [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Nov 2021 19:52:31 -0800 (PST)
-From: Warner Losh <imp@bsdimp.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- Warner Losh <imp@bsdimp.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Kyle Evans <kevans@freebsd.org>, Philippe Mathieu-Daude <f4bug@amsat.org>,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Stacey Son <sson@FreeBSD.org>, Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v5 23/37] bsd-user/arm/target_arch_vmparam.h: Parameters for
- arm address space
-Date: Sun,  7 Nov 2021 20:51:22 -0700
-Message-Id: <20211108035136.43687-24-imp@bsdimp.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211108035136.43687-1-imp@bsdimp.com>
-References: <20211108035136.43687-1-imp@bsdimp.com>
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=vy07NpmjE3vqxd14i7vOmnS86GY1iLrrFQhK/J26s10=;
+ b=udTE0Ov2bn0V5LTzLpdnwHNkTYCVBUvF6sKKGVKrrYpWQgRpnlYHmsCsOuD0g+lSYR
+ I5KLtAv9ffsn5Uk+29W19RCfKCQdQnlTdD1hesQ4eYySJicVMrXP5nwrIaq2OUu4wiFS
+ p9EuDo+rrzXt3lvhPspEEPl8u3mBSBEm1ygEBTlqQYlrufgrZc9tivhqkJYOY8Y37x/S
+ o2F80kCpnmMWrcmyfcGlLAAP82TJaQ3pfoY9wDeJiauMxOgM5+f3OQ8Q7cZQAM5+dN3N
+ 7wBgLwZAkulHTufBzRdIMP2jmP7VwpSi20FgLyKotUtC6GzIE/lOl8sz5xzieRoeZiSD
+ JVyw==
+X-Gm-Message-State: AOAM530BKri9m8MPVatrE30VNsjfuyeWriqSr0T8prynS3wNUJ2H48dE
+ XNTOVKe7jWymXM9O9vVsrokwY8I2HficoRPF7/Ic0dJC6ZcPX2IFUAd8pimswP48zOQDk8JYZcL
+ 0FhbBBYEJ/r81zZa7Lg==
+X-Received: by 2002:a1c:4b07:: with SMTP id y7mr50274195wma.188.1636356660880; 
+ Sun, 07 Nov 2021 23:31:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxYtuFSrnm1EhdMPbYxLwSI91eZc8WbOM/tHJhxSFiJnglHqUFheWG77BijCEvzX5IShp0RPw==
+X-Received: by 2002:a1c:4b07:: with SMTP id y7mr50274180wma.188.1636356660704; 
+ Sun, 07 Nov 2021 23:31:00 -0800 (PST)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id u23sm8843144wru.21.2021.11.07.23.30.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 07 Nov 2021 23:31:00 -0800 (PST)
+Message-ID: <96683e8d-9633-7cb8-98ab-0a8791e1c63e@redhat.com>
+Date: Mon, 8 Nov 2021 08:30:59 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v4 0/1] hw/hyperv/vmbus: Is it maintained?
+To: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
+Cc: Jon Doron <arilou@gmail.com>, qemu-trivial@nongnu.org,
+ Roman Kagan <rkagan@virtuozzo.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <20211106134155.582312-1-philmd@redhat.com>
+ <e9c29f4d-d5d5-34aa-8311-7ad1fc05b7d6@oracle.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+In-Reply-To: <e9c29f4d-d5d5-34aa-8311-7ad1fc05b7d6@oracle.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::434
- (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::434;
- envelope-from=imp@bsdimp.com; helo=mail-pf1-x434.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -65
+X-Spam_score: -6.6
+X-Spam_bar: ------
+X-Spam_report: (-6.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-3.06, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,77 +94,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 04:00:46 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 07:31:19 -0000
 
-Various parameters describing the layout of the ARM address space. In
-addition, define routines to get the stack pointer and to set the second
-return value.
+On 11/6/21 20:28, Maciej S. Szmigiero wrote:
+> On 06.11.2021 14:41, Philippe Mathieu-Daudé wrote:
+>> This is the 4th time I send this patch. Is the VMBus infrastructure
+>> used / maintained? Should we deprecate & remove?
+>>
+>>    $ ./scripts/get_maintainer.pl -f hw/hyperv/vmbus.c -f
+>> include/hw/hyperv/vmbus.h
+>>    get_maintainer.pl: No maintainers found
+> 
+> There's an email thread at [1] explaining the reasons for having VMBus
+> infrastructure last time such question was asked.
+> 
+> In short: mere presence of a working VMBus is needed for some high-speed
+> Windows debugging, also people are working on VMBus host device drivers.
 
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
-Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
-Signed-off-by: Warner Losh <imp@bsdimp.com>
-Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- bsd-user/arm/target_arch_vmparam.h | 48 ++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_vmparam.h
+Great. Do you mind adding an entry in MAINTAINERS to
+cover these files, so we stop wondering about them?
 
-diff --git a/bsd-user/arm/target_arch_vmparam.h b/bsd-user/arm/target_arch_vmparam.h
-new file mode 100644
-index 0000000000..4bbc04ddf5
---- /dev/null
-+++ b/bsd-user/arm/target_arch_vmparam.h
-@@ -0,0 +1,48 @@
-+/*
-+ *  arm VM parameters definitions
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef _TARGET_ARCH_VMPARAM_H_
-+#define _TARGET_ARCH_VMPARAM_H_
-+
-+#include "cpu.h"
-+
-+/* compare to sys/arm/include/vmparam.h */
-+#define TARGET_MAXTSIZ      (64 * MiB)           /* max text size */
-+#define TARGET_DFLDSIZ      (128 * MiB)          /* initial data size limit */
-+#define TARGET_MAXDSIZ      (512 * MiB)          /* max data size */
-+#define TARGET_DFLSSIZ      (4 * MiB)            /* initial stack size limit */
-+#define TARGET_MAXSSIZ      (64 * MiB)           /* max stack size */
-+#define TARGET_SGROWSIZ     (128 * KiB)          /* amount to grow stack */
-+
-+#define TARGET_RESERVED_VA  0xf7000000
-+
-+                /* KERNBASE - 512 MB */
-+#define TARGET_VM_MAXUSER_ADDRESS   (0xc0000000 - (512 * MiB))
-+#define TARGET_USRSTACK             TARGET_VM_MAXUSER_ADDRESS
-+
-+static inline abi_ulong get_sp_from_cpustate(CPUARMState *state)
-+{
-+    return state->regs[13]; /* sp */
-+}
-+
-+static inline void set_second_rval(CPUARMState *state, abi_ulong retval2)
-+{
-+    state->regs[1] = retval2;
-+}
-+
-+#endif  /* ! _TARGET_ARCH_VMPARAM_H_ */
--- 
-2.33.0
+> Your patch makes sense to me, so for it:
+> Reviewed-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
+
+Thank you.
+
+> [1]:
+> https://lore.kernel.org/qemu-devel/20201009193919.GF7303@habkost.net/T/#u
+> 
 
 
