@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjvpB-0006nI-4a
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 23:00:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50050)
+	id 1mjvpW-00076L-DH
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 23:00:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50080)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvp9-0006fU-5F
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:59:59 -0500
-Received: from [2607:f8b0:4864:20::129] (port=42735
- helo=mail-il1-x129.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvpI-00070I-Ay
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 23:00:09 -0500
+Received: from [2607:f8b0:4864:20::52d] (port=44786
+ helo=mail-pg1-x52d.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvp7-0000tU-FT
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:59:58 -0500
-Received: by mail-il1-x129.google.com with SMTP id y17so15562012ilb.9
- for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:59:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvpG-0000vq-2M
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 23:00:07 -0500
+Received: by mail-pg1-x52d.google.com with SMTP id p8so12662459pgh.11
+ for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 20:00:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qz2DLL0tx93vRkMGyLNPCCWpP2HVx1ms+ORRUByobBY=;
- b=6kERkSJ5C5WvQZulIoet5WKKZYaFQwEo1gwteXoWW2YNu40WSfPkRpB1JIktAQt/cA
- rdbZjcSbWEUZoKJWMdVDjfQN5zo5CYWaYXUlPq4PjHf9aWrR03mn8V6Vksu52CBVTSz9
- EscsUoWBJQyGY2PnWBqpefO/L056TGW+6XGstXjPCzxszKFTaw+1gMtZJ/dkSTu9L8tf
- avs4bg0yoGu5l/RHdGWp7hX3cWWKGFk+a23nGWe1WviS503xT6BloiaeWs2C9RGsCpCC
- 2RCM/myK7vRVVu0KP/T1qeEXdJmJKeVF3oqEIUoXvDfh7EsdofUkO/uIhWGQaKSzh9Du
- hDQQ==
+ bh=GncYDfjxwlhtNC69qwkoQdNduf0of/aApvZ39YXAJoM=;
+ b=MZjh9XbOL3nSD5GrxFCTTHblUVD7kYo+b0aqw6vqmdMG+KNb+gpniGELksu5JUwe6q
+ 3TywRb2JIPcQ72jRUJCtG4yIKjHCZ05Mu7bnjj5rGmvvuNwzaCwK1S+6I/0wwqT75qUB
+ nvYDg3idd9+tpsRwpZaRhPNYyibmOYNXaFTtgoBB75YmZxKWr7Z8wExWVdn3vdcoogLA
+ +lPDN8bH5/dbmSzQUHqMfl6QIelz1frOqlNfrSkmqBHAzsX5oHYF0l13TFk67LDbosq7
+ dbj02bx1WSC9zF7hrhGwqKg2i3MTcD1AT0OsaqzTc4xHmJkOQt7+TrQHzAsMPZ6n6y2E
+ GvCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qz2DLL0tx93vRkMGyLNPCCWpP2HVx1ms+ORRUByobBY=;
- b=PWCLX5ACm9Pi33/sKofqajtC4lgFK78R3BmtcytNo9RnhubAm6aSVVmBtawOduC/xw
- 5duFedGncq2toN8NM4/ajrVecfFsr0+Ak16ByuacfkmOta662GbLaB2dbxb8NK09LKWm
- wLeeq2jSheg2i/zBRnvy9BnZy0OUs4OrgQfxT9aaXRingQMUatc/e8VV0J/wYHzaVfJp
- pTp734H3t1/8R1ma+O4/g/8Zw+BUFi48kcT8i87565QyEeVn1r3uoy/2+vGRQ+l0fQgJ
- YJJnNgz87J2a8Isgzq72FYrmIelPGVqT6ZYHRZMyfcb32yy+YFb/9O20XzZsh708xaWD
- Qegg==
-X-Gm-Message-State: AOAM530fb5eYS6mPEbGyHUqcWgyb8zB/WfhLEtW0ZzJzapl9c+bpX5ch
- +NFQgzUvsQFFXdjAFW4ZGyh5TYesL8p0ig==
-X-Google-Smtp-Source: ABdhPJwlmtWfJ/R+w5Y3qSjnVidOoOBTozG3p2EM817YPRkkHeOIcJjFDLaoeZi4eh6reyq6xOts8A==
-X-Received: by 2002:a05:6602:2f15:: with SMTP id
- q21mr6064941iow.113.1636343558086; 
- Sun, 07 Nov 2021 19:52:38 -0800 (PST)
+ bh=GncYDfjxwlhtNC69qwkoQdNduf0of/aApvZ39YXAJoM=;
+ b=N0ikkK0uHWQpZ9nCnj/EKok4Onj59HT1K8e+pnZtpx7OjHAlvjR4o25FSuM0cceXzx
+ F1/f5HvYdQFYq/htdyypLKOEzG2Xz9cGn1970zHXjvm/Y5RjO7n4so0Z/w8gRHHqvdS+
+ hcVFAo35xuqpkOgagUsc+owMrnLQ8/Tvo4Ht06QIRktiSiYvpGycNshaxlP7ujmnFhcX
+ iolQIY5Yu47ScobMFWe/ZLD2jrLgpmZ4pv2s17lKEg2gZzmBMwDVQ9Uj/yywMyVWtZuL
+ jrao8tXEEdPMAHWT11Ujzvr/FHx5wQHY0M2z+hPGnf45AaBT+km4y0Mh5ePGYVCD74wd
+ Z5tg==
+X-Gm-Message-State: AOAM532PV4jsq7r9MF4jZNX9n8TYXIcS8lg4VkljpeyTo73ye3nQudlZ
+ BfbHAHhd2q+RmLDmTr+NxVVRInpVPjx6xA==
+X-Google-Smtp-Source: ABdhPJw5dRmeBg31Ywv/z67GW9FozmVAXGBZWBL3mHCn1zW5GCseV+PxQmUVPDJydOHFQef25eCzlA==
+X-Received: by 2002:a5d:8c83:: with SMTP id g3mr11200078ion.24.1636343561515; 
+ Sun, 07 Nov 2021 19:52:41 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.37
+ by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Nov 2021 19:52:37 -0800 (PST)
+ Sun, 07 Nov 2021 19:52:41 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -52,19 +51,18 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  Kyle Evans <kevans@freebsd.org>, Philippe Mathieu-Daude <f4bug@amsat.org>,
  qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Stacey Son <sson@FreeBSD.org>, Kyle Evans <kevans@FreeBSD.org>
-Subject: [PATCH v5 30/37] bsd-user/arm/target_arch_signal.h: arm machine
- context and trapframe for signals
-Date: Sun,  7 Nov 2021 20:51:29 -0700
-Message-Id: <20211108035136.43687-31-imp@bsdimp.com>
+Subject: [PATCH v5 34/37] bsd-user/arm/signal.c: arm set_mcontext
+Date: Sun,  7 Nov 2021 20:51:33 -0700
+Message-Id: <20211108035136.43687-35-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211108035136.43687-1-imp@bsdimp.com>
 References: <20211108035136.43687-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::129
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::52d
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::129;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x129.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=imp@bsdimp.com; helo=mail-pg1-x52d.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -84,53 +82,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 03:59:59 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 04:00:10 -0000
+
+Move the machine context to the CPU state.
 
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_signal.h | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ bsd-user/arm/signal.c | 76 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 76 insertions(+)
 
-diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
-index 973183d99c..9527335cc9 100644
---- a/bsd-user/arm/target_arch_signal.h
-+++ b/bsd-user/arm/target_arch_signal.h
-@@ -54,4 +54,32 @@
- #define TARGET_MINSIGSTKSZ  (1024 * 4)                  /* min sig stack size */
- #define TARGET_SIGSTKSZ     (TARGET_MINSIGSTKSZ + 32768)  /* recommended size */
- 
-+/*
-+ * Floating point register state
-+ */
-+typedef struct target_mcontext_vfp {
-+    abi_ullong  mcv_reg[32];
-+    abi_ulong   mcv_fpscr;
-+} target_mcontext_vfp_t;
+diff --git a/bsd-user/arm/signal.c b/bsd-user/arm/signal.c
+index 93c9bfc0d3..fb6228db6c 100644
+--- a/bsd-user/arm/signal.c
++++ b/bsd-user/arm/signal.c
+@@ -109,3 +109,79 @@ abi_long get_mcontext(CPUARMState *env, target_mcontext_t *mcp, int flags)
+     }
+     return err;
+ }
 +
-+typedef struct target_mcontext {
-+    abi_uint    __gregs[TARGET__NGREG];
++/* Compare to arm/arm/exec_machdep.c set_mcontext() */
++abi_long set_mcontext(CPUARMState *env, target_mcontext_t *mcp, int srflag)
++{
++    int err = 0;
++    const uint32_t *gr = mcp->__gregs;
++    uint32_t cpsr, ccpsr = cpsr_read(env);
++    uint32_t fpscr, mask;
++
++    cpsr = tswap32(gr[TARGET_REG_CPSR]);
++    /*
++     * Only allow certain bits to change, reject attempted changes to non-user
++     * bits. In addition, make sure we're headed for user mode and none of the
++     * interrupt bits are set.
++     */
++    if ((ccpsr & ~CPSR_USER) != (cpsr & ~CPSR_USER)) {
++        return -TARGET_EINVAL;
++    }
++    if ((cpsr & CPSR_M) != ARM_CPU_MODE_USR ||
++        (cpsr & (CPSR_I | CPSR_F)) != 0) {
++        return -TARGET_EINVAL;
++    }
 +
 +    /*
-+     * Originally, rest of this structure was named __fpu, 35 * 4 bytes
-+     * long, never accessed from kernel.
++     * The movs pc,lr instruction that implements the return to userland masks
++     * these bits out.
 +     */
-+    abi_ulong   mc_vfp_size;
-+    abi_ptr     mc_vfp_ptr;
-+    abi_int     mc_spare[33];
-+} target_mcontext_t;
++    mask = cpsr & CPSR_T ? 0x1 : 0x3;
 +
-+#include "target_os_ucontext.h"
++    /*
++     * Make sure that we either have no vfp, or it's the correct size.
++     * FreeBSD just ignores it, though, so maybe we'll need to adjust
++     * things below instead.
++     */
++    if (mcp->mc_vfp_size != 0 && mcp->mc_vfp_size != sizeof(target_mcontext_vfp_t)) {
++        return -TARGET_EINVAL;
++    }
 +
-+struct target_sigframe {
-+    target_siginfo_t    sf_si;  /* saved siginfo */
-+    target_ucontext_t   sf_uc;  /* saved ucontext */
-+    target_mcontext_vfp_t sf_vfp; /* actual saved VFP context */
-+};
++    env->regs[0] = tswap32(gr[TARGET_REG_R0]);
++    env->regs[1] = tswap32(gr[TARGET_REG_R1]);
++    env->regs[2] = tswap32(gr[TARGET_REG_R2]);
++    env->regs[3] = tswap32(gr[TARGET_REG_R3]);
++    env->regs[4] = tswap32(gr[TARGET_REG_R4]);
++    env->regs[5] = tswap32(gr[TARGET_REG_R5]);
++    env->regs[6] = tswap32(gr[TARGET_REG_R6]);
++    env->regs[7] = tswap32(gr[TARGET_REG_R7]);
++    env->regs[8] = tswap32(gr[TARGET_REG_R8]);
++    env->regs[9] = tswap32(gr[TARGET_REG_R9]);
++    env->regs[10] = tswap32(gr[TARGET_REG_R10]);
++    env->regs[11] = tswap32(gr[TARGET_REG_R11]);
++    env->regs[12] = tswap32(gr[TARGET_REG_R12]);
 +
- #endif /* !_TARGET_ARCH_SIGNAL_H_ */
++    env->regs[13] = tswap32(gr[TARGET_REG_SP]);
++    env->regs[14] = tswap32(gr[TARGET_REG_LR]);
++    env->regs[15] = tswap32(gr[TARGET_REG_PC] & ~mask);
++    if (mcp->mc_vfp_size != 0 && mcp->mc_vfp_ptr != 0) {
++        /* see set_vfpcontext in sys/arm/arm/exec_machdep.c */
++        target_mcontext_vfp_t *vfp;
++
++        vfp = lock_user(VERIFY_READ, mcp->mc_vfp_ptr, sizeof(*vfp), 1);
++        for (int i = 0; i < 32; i++) {
++            __get_user(*aa32_vfp_dreg(env, i), &vfp->mcv_reg[i]);
++        }
++        __get_user(fpscr, &vfp->mcv_fpscr);
++        vfp_set_fpscr(env, fpscr);
++        unlock_user(vfp, mcp->mc_vfp_ptr, sizeof(target_ucontext_t));
++
++        /*
++         * linux-user sets fpexc, fpinst and fpinst2, but these aren't in
++         * FreeBSD's mcontext, what to do?
++         */
++    }
++    cpsr_write(env, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
++
++    return err;
++}
 -- 
 2.33.0
 
