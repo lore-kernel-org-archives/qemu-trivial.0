@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjvn6-00021G-VJ
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 22:57:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49460)
+	id 1mjvnD-0002DK-Pv
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 22:57:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49480)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvn5-0001wz-LN
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:57:51 -0500
-Received: from [2607:f8b0:4864:20::d2b] (port=46712
- helo=mail-io1-xd2b.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnB-00028G-2y
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:57:57 -0500
+Received: from [2607:f8b0:4864:20::435] (port=46045
+ helo=mail-pf1-x435.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvn3-0006LZ-Qv
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:57:51 -0500
-Received: by mail-io1-xd2b.google.com with SMTP id k22so4074055iol.13
- for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:57:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvn8-0006Ll-RH
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:57:56 -0500
+Received: by mail-pf1-x435.google.com with SMTP id x131so9544330pfc.12
+ for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:57:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+NfUAHUW0Nh2J7SrWzMj/OqYpGUA/s6zV61PQbcFLFE=;
- b=OCsHhkjQd2BG0aNftGvJF9tJghGwdfOTKT3r63/Qq0fGMIWvXaNLR1NLUQsN+gNkf5
- bQ9K2qkTPiRVLNYro2J9guMPevRb2evctdUa+T6RBZk7VeBnl27oirIWK1XsVJqOzoJy
- rvOUMzrT+5lSDotn/w5a7rWfRIUiKIMKXpvdYp20LnA7hvbtpHxvlmmYACAvRrMMlK4u
- LlDFdICiWKgL7xTpFDHsYWGdi2lpAmn2QZ/xaS+SqUkr3ueW153lreL4C0hUyjR15O/r
- 9UPrJ3jjzemIO1DOcKpfyUlpbX7iQD9+OSh6ahfg2X92VmbjRTa3Iblno8OvOgltzN7d
- y3Gg==
+ bh=oLmdczkCWtTXgS+hIrrLVL8jr4D4Q93OjOn0dkypiZQ=;
+ b=8IjHAEf0T/07Kc4SeBfB/3a/wPPO1ToXqK/JENPSlvi7Iae9ioWVBd/0IqAAsbRaW+
+ VOk8a5SEfF+2NOTYfbjXvZXvsEvMHOIqLSeoE1/1dD2ce0DMfYic3/0EzfJ8Bkl92N+e
+ 7CTDh4K/eTFKU6+a7WUBdPfyejxPu+10TBtqEKa/SuKP8/r1syAyzQt5g0K/3qDmTZwY
+ c4KgkeR+YFngMANhGR9YdoPbSbTQ6tUMs1WWkXHoqLbiz/iflpzBbUY0+LxlHvk7aiIM
+ fQmzSh5rk8ERIq1zZ2kk4jPUWIipeq+pSwKPfwxMvvOhKczSRTq6996Mv3QG1ppFn17S
+ yxwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+NfUAHUW0Nh2J7SrWzMj/OqYpGUA/s6zV61PQbcFLFE=;
- b=M2IT3PPgCnIcGEoxgKfoge2PDDcg0RW7y+yXpv2ZCt6ru0orKrWT7EYzov2co43Z7G
- DK/z/pwnJ7a9zPctBIdTQ0E5vqIrMMX1B1yMW0lpOOC+q5wY2HUfR1oTU5vcIXvepB11
- 6FhCn3/Xe5ShyI5skrwXH+L09oPYlU/XBr6VpFKBki5uOko4/wyPZP6E8r2/+YW5tHcn
- VfkkV/Tm93YBQDfJRN2RKegpXgAJzUF4esqsTzSNH3vOFuJI6uL46zG4lyeI+/meX30C
- 9+aCU3xktUM8sAWENnYDgm11fkTf9/bYdJyGIdifGCpLJsVr4zXS1JoJVBB0WtDWW9qL
- kjmA==
-X-Gm-Message-State: AOAM531+7O4esfY0ukS8H3x1qeSjnKxR0SheCCUFUamEkw9jd6ZvEO53
- gl60RP7GQhu2e1Z+0gVjnJ93yEziRQ8zLg==
-X-Google-Smtp-Source: ABdhPJzAsgUa2hXcnoFk1De8IcHli9Tovs5Fg/XGg3HXNHbQLNx1o0IT1mJHbtB8o7YjRaW/x9MQzQ==
-X-Received: by 2002:a05:6e02:12c7:: with SMTP id
- i7mr46483103ilm.253.1636343541334; 
- Sun, 07 Nov 2021 19:52:21 -0800 (PST)
+ bh=oLmdczkCWtTXgS+hIrrLVL8jr4D4Q93OjOn0dkypiZQ=;
+ b=BPsq58lLOskB4eLJ/rbILkfZIYVvnpJNZyR4utHR6EdojDSDi3LP/kesIHCoqK6D2W
+ rd6/XoWY2073nzde0pnKKDEFrVzHU7mTvwJ/64NJd2lW5YHIWlcg00NrLIWttldR3IA2
+ 0IiWeXHmUkGO251PfeDYXifWqocReoFtlfgr4qr/d6L04tV+i3dhVHNfk9I+oEucoOmq
+ w53uXIy86G7Pf8nDggQ6b/6pCF/mvCM0gKNZHF3zmw8zbHTAX8SQkveUjl2eUg8HhUPv
+ BiyDjLjTIBR5BCFjWTKqEKYriZYlGi+IFu0rckNr2Qy3sBjJZ86OmNPJi9fIDzvmPvJy
+ mcTQ==
+X-Gm-Message-State: AOAM531ilj2mL125OwvLST5mllVotXEfOkdzjoRHUXizF7ze6I5bmRab
+ 68ClsbwVoJnGPVWYqyuZLjQdhbf2Q2yRQQ==
+X-Google-Smtp-Source: ABdhPJyAY2xjK7jP6X5K+EirXHF14L+LHzRS7SfPwzzE1XRiVIofKYJQ5eXxYXBVgJ8/NownPWo8Ig==
+X-Received: by 2002:a05:6e02:174a:: with SMTP id
+ y10mr9572350ill.68.1636343554472; 
+ Sun, 07 Nov 2021 19:52:34 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.20
+ by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Nov 2021 19:52:21 -0800 (PST)
+ Sun, 07 Nov 2021 19:52:34 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  Warner Losh <imp@bsdimp.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Kyle Evans <kevans@freebsd.org>, Philippe Mathieu-Daude <f4bug@amsat.org>,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v5 12/37] bsd-user/target_os_signal.h: Move signal prototypes
- to target_os_ucontext.h
-Date: Sun,  7 Nov 2021 20:51:11 -0700
-Message-Id: <20211108035136.43687-13-imp@bsdimp.com>
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Stacey Son <sson@FreeBSD.org>, Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v5 26/37] bsd-user/arm/target_arch_elf.h: arm defines for ELF
+Date: Sun,  7 Nov 2021 20:51:25 -0700
+Message-Id: <20211108035136.43687-27-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211108035136.43687-1-imp@bsdimp.com>
 References: <20211108035136.43687-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d2b
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::435
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2b;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd2b.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::435;
+ envelope-from=imp@bsdimp.com; helo=mail-pf1-x435.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -83,75 +83,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 03:57:52 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 03:57:57 -0000
 
-Switch to the CPUArchState typedef and move target-provided prototypes
-to target_os_ucontext.h.
+Basic set of defines needed for arm ELF file activation.
 
+Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/freebsd/target_os_ucontext.h | 11 +++++++++++
- bsd-user/i386/target_arch_signal.h    |  9 ---------
- bsd-user/x86_64/target_arch_signal.h  |  9 ---------
- 3 files changed, 11 insertions(+), 18 deletions(-)
+ bsd-user/arm/target_arch_elf.h | 36 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 bsd-user/arm/target_arch_elf.h
 
-diff --git a/bsd-user/freebsd/target_os_ucontext.h b/bsd-user/freebsd/target_os_ucontext.h
-index 1d0c3c4e65..dd61aec7cc 100644
---- a/bsd-user/freebsd/target_os_ucontext.h
-+++ b/bsd-user/freebsd/target_os_ucontext.h
-@@ -32,4 +32,15 @@ G_STATIC_ASSERT(TARGET_MCONTEXT_SIZE == sizeof(target_mcontext_t));
- G_STATIC_ASSERT(TARGET_UCONTEXT_SIZE == sizeof(target_ucontext_t));
- #endif /* TARGET_MCONTEXT_SIZE */
- 
-+struct target_sigframe;
+diff --git a/bsd-user/arm/target_arch_elf.h b/bsd-user/arm/target_arch_elf.h
+new file mode 100644
+index 0000000000..15b5c66511
+--- /dev/null
++++ b/bsd-user/arm/target_arch_elf.h
+@@ -0,0 +1,36 @@
++/*
++ *  arm ELF definitions
++ *
++ *  Copyright (c) 2013 Stacey D. Son
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++#ifndef _TARGET_ARCH_ELF_H_
++#define _TARGET_ARCH_ELF_H_
 +
-+abi_long set_sigtramp_args(CPUArchState *env, int sig,
-+                           struct target_sigframe *frame,
-+                           abi_ulong frame_addr,
-+                           struct target_sigaction *ka);
-+abi_long get_mcontext(CPUArchState *regs, target_mcontext_t *mcp, int flags);
-+abi_long set_mcontext(CPUArchState *regs, target_mcontext_t *mcp, int srflag);
-+abi_long get_ucontext_sigreturn(CPUArchState *regs, abi_ulong target_sf,
-+                                abi_ulong *target_uc);
++#define ELF_START_MMAP 0x80000000
++#define ELF_ET_DYN_LOAD_ADDR    0x500000
 +
- #endif /* TARGET_OS_UCONTEXT_H */
-diff --git a/bsd-user/i386/target_arch_signal.h b/bsd-user/i386/target_arch_signal.h
-index 982c7035c7..279dadc22c 100644
---- a/bsd-user/i386/target_arch_signal.h
-+++ b/bsd-user/i386/target_arch_signal.h
-@@ -88,13 +88,4 @@ struct target_sigframe {
-     uint32_t    __spare__[2];
- };
- 
--abi_long set_sigtramp_args(CPUX86State *env, int sig,
--                           struct target_sigframe *frame,
--                           abi_ulong frame_addr,
--                           struct target_sigaction *ka);
--abi_long get_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int flags);
--abi_long set_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int srflag);
--abi_long get_ucontext_sigreturn(CPUX86State *regs, abi_ulong target_sf,
--                                abi_ulong *target_uc);
--
- #endif /* TARGET_ARCH_SIGNAL_H */
-diff --git a/bsd-user/x86_64/target_arch_signal.h b/bsd-user/x86_64/target_arch_signal.h
-index b39b70466e..b4a0ebf2bd 100644
---- a/bsd-user/x86_64/target_arch_signal.h
-+++ b/bsd-user/x86_64/target_arch_signal.h
-@@ -96,13 +96,4 @@ struct target_sigframe {
-     uint32_t    __spare__[2];
- };
- 
--abi_long set_sigtramp_args(CPUX86State *env, int sig,
--                           struct target_sigframe *frame,
--                           abi_ulong frame_addr,
--                           struct target_sigaction *ka);
--abi_long get_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int flags);
--abi_long set_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int srflag);
--abi_long get_ucontext_sigreturn(CPUX86State *regs, abi_ulong target_sf,
--                                abi_ulong *target_uc);
--
- #endif /* !TARGET_ARCH_SIGNAL_H_ */
++#define elf_check_arch(x) ((x) == EM_ARM)
++
++#define ELF_CLASS       ELFCLASS32
++#define ELF_DATA        ELFDATA2LSB
++#define ELF_ARCH        EM_ARM
++
++#define USE_ELF_CORE_DUMP
++#define ELF_EXEC_PAGESIZE       4096
++
++#define ELF_HWCAP 0
++
++#endif /* _TARGET_ARCH_ELF_H_ */
 -- 
 2.33.0
 
