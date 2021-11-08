@@ -1,68 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mjvnv-0003i7-Ay
+	id 1mjvnv-0003jb-LD
 	for mharc-qemu-trivial@gnu.org; Sun, 07 Nov 2021 22:58:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49758)
+Received: from eggs.gnu.org ([209.51.188.92]:49780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnp-0003bm-Tt
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:38 -0500
-Received: from [2607:f8b0:4864:20::82f] (port=41778
- helo=mail-qt1-x82f.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnt-0003eW-Os
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:42 -0500
+Received: from [2607:f8b0:4864:20::d31] (port=46721
+ helo=mail-io1-xd31.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvnn-0006tL-Ic
- for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:37 -0500
-Received: by mail-qt1-x82f.google.com with SMTP id v4so12588301qtw.8
- for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:58:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1mjvns-0006uD-11
+ for qemu-trivial@nongnu.org; Sun, 07 Nov 2021 22:58:41 -0500
+Received: by mail-io1-xd31.google.com with SMTP id k22so4075402iol.13
+ for <qemu-trivial@nongnu.org>; Sun, 07 Nov 2021 19:58:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=FnZV5yZZtImm0a3Lr70JdB+t8rtGyZo6MRXcETRGQ/U=;
- b=m+N0bC0T/7jrW7Mm/HchCTGApQm/zAlLTi8wpSxBKm2LDwvhh0wRWeZGY9KBDGAXeh
- k77Z7UqsmuARYprJRpef8JxlnI38my7qD82hlLETcSaHil7acK9V7xmcieTSLrPKPv4G
- rz3sNvXbAIMKp0DYzQMA9yksaxom/BoDnR00bOPhyjahDye4cGKMSneDwoVlzOo4wWx6
- 2Mhj19j/fmaaLrgKHSuE3BgVNbIgJLJcBSU4QnIRekwy3ygn4fNmyBTB6TmJ7d+mhHtz
- THTrLSjGQfqa4gK/QJYVc/zcJnSeqsx7Mxc+Ih0tHMw16+QPCyppwVXlIA8SO2ePu/F0
- ENhA==
+ bh=I1XrwZ0o7hRgTEhkk9E1BQTq9616nNWJfCEFdNAWs4w=;
+ b=iHtHR3+L3TPKMgvw29wWTsuJmwq/CPpAaT3lOZGdLFgE648Hpw3GP/8Cni2Xsh6A62
+ XfnGsxoFiLrEyxmfIwttGim2RCFqlXqiByVUPWdi7Gzd3Ydfp4vvUZq3lfXBjdvGUG8w
+ CDTTAGDVf4FoGAw5bQwn8MjtlK+FW8gyypZh8zjR6AjNlNugiy7JE1O7rFzHfmzgbDHt
+ Xhd+8q4m/hep/KNk7GoW5DwQQ0xRiTXOFeWEBCaPggEBmKqHl0qAny+D7k/hfFzZaaG1
+ evnMgOXLpPJTW4sNM+fcKmOvJJcgnL2fB9VbarW1p/UdeCPwRVDbxjLI/gi2LiHrqjw2
+ YoUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=FnZV5yZZtImm0a3Lr70JdB+t8rtGyZo6MRXcETRGQ/U=;
- b=TbI94rKLGqCl8mZS4klEWWEHXrLh6tL1hLGj9Xf0DzVD3vkSft4v4zlkI5/Q77i3Xl
- cIvfyp9DnNmLjW+WLEG1A4rugyhMHH6FIiblflm0FCCkLD0BuaroQMy966n1r7Xz0Od8
- keEsOZzEZheqwpbRFvJc7haad9KJMqVtpYr1xDhOOrJEIuldVnZXpr4tssS9U5zTGTnb
- R+f7twnYa4sUUk/+vO5xv5PfZrCnw72WMeDfKoMIIlBd1Hds0SpVlAHWpxqEB6RQfIxk
- epbkGzbCnXe/2cgooiaf2LVb4eJb1KvEIezbXA88nHhGg8OTWyas2YHNMHHCjHRnc/6z
- EsPA==
-X-Gm-Message-State: AOAM530jvcQxJ83UYKiiXHQ6z1NgOWm2I2FWPFvP9GEwceX14CYG1rcU
- d6CmMb60qExeN6tuFvV4vISYwlpUtgfNJw==
-X-Google-Smtp-Source: ABdhPJzPPagBpun2c0anJKbYboNkN8mwQm9hYemgvLGnnmGh2TgXA5GGG4Fo6ciT4bHf5t2eCnWS4Q==
-X-Received: by 2002:a02:a314:: with SMTP id q20mr5286302jai.104.1636343531764; 
- Sun, 07 Nov 2021 19:52:11 -0800 (PST)
+ bh=I1XrwZ0o7hRgTEhkk9E1BQTq9616nNWJfCEFdNAWs4w=;
+ b=v75JIthc2KKZ74ulzy6XgnEvrBbYAA++RPLY5/b0hyxjF6gFF+sCiCJvDxS1CacSKv
+ NdXxbVF7AfSB4tktssJNW/csz69x9JYvLct/htJ9YSzm+4n6wNbiqpJQshyodhp84KfZ
+ RB3DCY9wjGj83QiJFOaO8H3RErL20240osM6lBdyjUDWY0aEI18gYex9OFnUHj2WxG+J
+ 97txaLXYnUTQFWv/kBZqkUUrlViTdbPPvzo9c8jawG4IJYJeDqcC1zIS14ZSs3IRGLOQ
+ HkZ2sUBfFZmgAIIa016Wxkz91ZMg1fykheeQvA3VOC5sd++y0Qa6DL5M38/Dt/j2zAJ1
+ W/og==
+X-Gm-Message-State: AOAM533zcgz02Aan9ea3X4S9qjx189AyeMkTZuoq1m/YeWcIpdx7gJDP
+ XlsZmEE+sFUmjt8X3ereZ2LP+fJOBenfKw==
+X-Google-Smtp-Source: ABdhPJzngoF5WBay+ClD50mdExal44tbM6pudV5iaWjZXs7htVFEPy69H4qABd+0OTWl94gdBN0cTA==
+X-Received: by 2002:a92:c261:: with SMTP id h1mr33309867ild.291.1636343556337; 
+ Sun, 07 Nov 2021 19:52:36 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.11
+ by smtp.gmail.com with ESMTPSA id x15sm876909iob.8.2021.11.07.19.52.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Nov 2021 19:52:11 -0800 (PST)
+ Sun, 07 Nov 2021 19:52:36 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  Warner Losh <imp@bsdimp.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Kyle Evans <kevans@freebsd.org>, Philippe Mathieu-Daude <f4bug@amsat.org>,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v5 02/37] bsd-user/freebsd: Create common target_os_ucontext.h
- file
-Date: Sun,  7 Nov 2021 20:51:01 -0700
-Message-Id: <20211108035136.43687-3-imp@bsdimp.com>
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Kyle Evans <kevans@FreeBSD.org>
+Subject: [PATCH v5 28/37] bsd-user/arm/target_arch_elf.h: arm get_hwcap2 impl
+Date: Sun,  7 Nov 2021 20:51:27 -0700
+Message-Id: <20211108035136.43687-29-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211108035136.43687-1-imp@bsdimp.com>
 References: <20211108035136.43687-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::82f
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d31
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::82f;
- envelope-from=imp@bsdimp.com; helo=mail-qt1-x82f.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d31;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd31.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -82,78 +82,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 03:58:38 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 03:58:42 -0000
 
-FreeBSD has a MI ucontext structure that contains the MD mcontext
-machine state and other things that are machine independent. Create an
-include file for all the ucontext stuff. It needs to be included in the
-arch specific files after target_mcontext is defined. This is largely
-copied from sys/_ucontext.h with the comments about layout removed
-because we don't support ancient FreeBSD binaries.
+Implement the extended HW capabilities for HWCAP2.
 
+Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/freebsd/target_os_signal.h   |  3 ---
- bsd-user/freebsd/target_os_ucontext.h | 35 +++++++++++++++++++++++++++
- 2 files changed, 35 insertions(+), 3 deletions(-)
- create mode 100644 bsd-user/freebsd/target_os_ucontext.h
+ bsd-user/arm/target_arch_elf.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/bsd-user/freebsd/target_os_signal.h b/bsd-user/freebsd/target_os_signal.h
-index 1a4c5faf19..3ed454e086 100644
---- a/bsd-user/freebsd/target_os_signal.h
-+++ b/bsd-user/freebsd/target_os_signal.h
-@@ -1,9 +1,6 @@
- #ifndef _TARGET_OS_SIGNAL_H_
- #define _TARGET_OS_SIGNAL_H_
+diff --git a/bsd-user/arm/target_arch_elf.h b/bsd-user/arm/target_arch_elf.h
+index 02d25b8926..4a0215d02e 100644
+--- a/bsd-user/arm/target_arch_elf.h
++++ b/bsd-user/arm/target_arch_elf.h
+@@ -32,6 +32,7 @@
+ #define ELF_EXEC_PAGESIZE       4096
  
--/* FreeBSD's sys/ucontext.h defines this */
--#define TARGET_MC_GET_CLEAR_RET 0x0001
--
- #include "target_os_siginfo.h"
- #include "target_arch_signal.h"
+ #define ELF_HWCAP get_elf_hwcap()
++#define ELF_HWCAP2 get_elf_hwcap2()
  
-diff --git a/bsd-user/freebsd/target_os_ucontext.h b/bsd-user/freebsd/target_os_ucontext.h
-new file mode 100644
-index 0000000000..1d0c3c4e65
---- /dev/null
-+++ b/bsd-user/freebsd/target_os_ucontext.h
-@@ -0,0 +1,35 @@
-+/*
-+ * FreeBSD has a common ucontext definition for all architectures.
-+ *
-+ * Copyright 2021 Warner Losh <imp@bsdimp.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later OR BSD-3-Clause
-+ */
-+#ifndef TARGET_OS_UCONTEXT_H
-+#define TARGET_OS_UCONTEXT_H
+ #define GET_FEATURE(feat, hwcap) \
+     do { if (arm_feature(&cpu->env, feat)) { hwcaps |= hwcap; } } while (0)
+@@ -64,6 +65,14 @@ enum {
+     ARM_HWCAP_ARM_EVTSTRM   = 1 << 21,
+ };
+ 
++enum {
++    ARM_HWCAP2_ARM_AES      = 1 << 0,
++    ARM_HWCAP2_ARM_PMULL    = 1 << 1,
++    ARM_HWCAP2_ARM_SHA1     = 1 << 2,
++    ARM_HWCAP2_ARM_SHA2     = 1 << 3,
++    ARM_HWCAP2_ARM_CRC32    = 1 << 4,
++};
 +
-+/*
-+ * Defines the common bits for all of FreeBSD's architectures. Has to be
-+ * included AFTER the MD target_mcontext_t is defined, however, so can't
-+ * be in the grab-bag that is target_os_signal.h.
-+ */
+ static uint32_t get_elf_hwcap(void)
+ {
+     ARMCPU *cpu = ARM_CPU(thread_cpu);
+@@ -100,6 +109,19 @@ static uint32_t get_elf_hwcap(void)
+     return hwcaps;
+ }
+ 
++static uint32_t get_elf_hwcap2(void)
++{
++    ARMCPU *cpu = ARM_CPU(thread_cpu);
++    uint32_t hwcaps = 0;
 +
-+/* See FreeBSD's sys/ucontext.h */
-+#define TARGET_MC_GET_CLEAR_RET 0x0001
++    GET_FEATURE_ID(aa32_aes, ARM_HWCAP2_ARM_AES);
++    GET_FEATURE_ID(aa32_pmull, ARM_HWCAP2_ARM_PMULL);
++    GET_FEATURE_ID(aa32_sha1, ARM_HWCAP2_ARM_SHA1);
++    GET_FEATURE_ID(aa32_sha2, ARM_HWCAP2_ARM_SHA2);
++    GET_FEATURE_ID(aa32_crc32, ARM_HWCAP2_ARM_CRC32);
++    return hwcaps;
++}
 +
-+/* FreeBSD's sys/_ucontext.h structures */
-+typedef struct target_ucontext {
-+    target_sigset_t     uc_sigmask;
-+    target_mcontext_t   uc_mcontext;
-+    abi_ulong           uc_link;
-+    target_stack_t      uc_stack;
-+    int32_t             uc_flags;
-+    int32_t             __spare__[4];
-+} target_ucontext_t;
-+
-+#ifdef TARGET_MCONTEXT_SIZE
-+G_STATIC_ASSERT(TARGET_MCONTEXT_SIZE == sizeof(target_mcontext_t));
-+G_STATIC_ASSERT(TARGET_UCONTEXT_SIZE == sizeof(target_ucontext_t));
-+#endif /* TARGET_MCONTEXT_SIZE */
-+
-+#endif /* TARGET_OS_UCONTEXT_H */
+ #undef GET_FEATURE
+ #undef GET_FEATURE_ID
+ 
 -- 
 2.33.0
 
