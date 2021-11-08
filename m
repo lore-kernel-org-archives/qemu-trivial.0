@@ -1,74 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkDS9-0008Vj-KE
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Nov 2021 17:49:25 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60958)
+	id 1mkDqD-0006x5-FY
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Nov 2021 18:14:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41184)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mkDS7-0008Uz-CG
- for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 17:49:23 -0500
-Received: from [2607:f8b0:4864:20::731] (port=36460
- helo=mail-qk1-x731.google.com)
+ (Exim 4.90_1) (envelope-from <raj.khem@gmail.com>)
+ id 1mkAms-00014l-Vi
+ for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 14:58:40 -0500
+Received: from [2607:f8b0:4864:20::132] (port=47032
+ helo=mail-il1-x132.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mkDS5-00078G-Ja
- for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 17:49:23 -0500
-Received: by mail-qk1-x731.google.com with SMTP id i9so17057109qki.3
- for <qemu-trivial@nongnu.org>; Mon, 08 Nov 2021 14:49:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <raj.khem@gmail.com>)
+ id 1mkAmr-0003Kt-Mr
+ for qemu-trivial@nongnu.org; Mon, 08 Nov 2021 14:58:38 -0500
+Received: by mail-il1-x132.google.com with SMTP id i11so8995835ilv.13
+ for <qemu-trivial@nongnu.org>; Mon, 08 Nov 2021 11:58:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=WBXCNBgU8CcKAxSwhr3mUT60pBImmYZqHDisNP33Cxk=;
- b=iWfSXedkytDNHsHfswe5/jSuvkvHpB7owTS2aTiBCu/8F/fKg9sBSS3iLL3PFYhqQE
- rjuy7bgrxr0A27CxBHamgS6SlspE1g3+ANGlOKzCPfA3XsCRF+L6zknTao+zsZo2fIf3
- NoEGh4elDY8G+HOeqjAsYqOxCibwYo4V1t7t5u8HWnUx+WCAwRqjHNkOlfnzTzNMqC0h
- x1hv2laqFH/yu2hK23PDQmYwUp2xzuQNH/5bgjIpLFpmLGHBBn8V4OQ4ys5R98qATxFD
- jSC28C/Qq+TMG66fjQMmPT2d+4FVPS0PUK0ixSjtQNf9PvagJ8CrlVt6eFozMM88Rudk
- 84kA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zj7AQVX+x87/tg9+P6j8jJmHy9YTaibeJh0b4X92FGc=;
+ b=UrMSvfZdPECtZ+P9DrmfzqzzUidS2J4s0j8AzK4INzOJe/SfmNpgF5iAQI9Iy0VauV
+ wa/9UZC0g+AX3aR8FZCKO9KaqB+7zB1Zhs7nfmzRhmInKrNBxlr0XC9jUzaYJaAyndif
+ tMnTDQCP0/WvgYF5O/HYhmFh9bwFvkV3T6x1KQmHAXG1g/SVzKB1WdhGEkw7J6De3HAJ
+ ffK3PRfANCsC7/PPGgMVXHrMmnbqZZTXYWv6oryjyvbk4BNLDNUNo9gJkZeLM78aXQhg
+ gZowOTPb24xK2ZR8wRiwx4wbqgTtQ0Fq+bzNoAXvIqJF6qAOiQeDFA55HeaiQ3cD33ko
+ 27IA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=WBXCNBgU8CcKAxSwhr3mUT60pBImmYZqHDisNP33Cxk=;
- b=FZM4Z2Ri7YnkgriKuau55IhweLapQk44K+1m24oQ9bzaMatmxta0r1QlSZIv7niXmp
- 6dkD+OOrwvwtfKC9ahwMZ1RLvbzXPrmnPb553j6o4uw4PFGcwiUgPxVFYlCgd+ODEWPf
- Qo5rgPe3qt7ufSTwcUZB5whj8Ugh88YWzdS81NG67HAaAAfkxVACiAaWp4FrIH7LkNBH
- lggp2tlXoEYKH4R0QLrrK9ER862xocndaY1Dcp8UGNvuXm11sTVKz7RwQhAyL7mVkNf0
- npLKCEEVRUcYekYbLjocecIrbZi6Q8zZQ3CwgOqD3eupkUO/fZ9MOLJsJzNsw9gJhYZs
- FcLQ==
-X-Gm-Message-State: AOAM532RF7YUEkKDNG35dmAMwdwZj2Eg8cpkdAXHsitQOL8qOMj3hS4h
- qVcSaUk5kXU+Q5BaKTVLJFO0FAQpOLyeEIeBiv1MDpx6NNsnuH94y2I=
-X-Google-Smtp-Source: ABdhPJwea2HaTzqIbDqNWuJrPjBJ5dC3lgY6E8tCO7fDX+N8z1nBb65N5a1Mda6ZyIxzF/MGeQe7N0zGCH1O52RyUn4=
-X-Received: by 2002:a05:6638:d16:: with SMTP id
- q22mr1996737jaj.35.1636411438394; 
- Mon, 08 Nov 2021 14:43:58 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zj7AQVX+x87/tg9+P6j8jJmHy9YTaibeJh0b4X92FGc=;
+ b=fNiE4+6z22872cmP13hwxANkKnZyRxpT77FHSF/1o9aXnf5vrD4Y7ZzWPXDi5My+wG
+ zA5lz4KweMHdEzQ7JIFdOKC9La4gzChkRiexykL2eTOFB+JUqMaWzm6nc4OKwdVd0GnM
+ 1PJKOe184BHfA2yHG20Opn+1jzMcEoof4TwIIlYfvC4XC++eufd+aOefX9gU8iBATuui
+ +Y5wHeZMcowneILyTgWWpKLo36Vb2QQcx8izlPvqnW8GznYXha8qF5ECMx4eJ8nI7His
+ 5MiD6YEZEOxjrwvjsoWKpVifg5QYbqVtshFFCFYqJe2oWdXOqSxb3h0ajYlDvdErUSIP
+ Ndpw==
+X-Gm-Message-State: AOAM530nh5ds579Rb2DXENA+oBZwh1m3c2L8TsOF6Z5B6wzCeG2jWC59
+ RXeKuf/wR6QDa+U0lTC2+qFkVd0xnZY=
+X-Google-Smtp-Source: ABdhPJzjS2G00LbUcDwRw9H7ZQ1Z8+1IJWaagnY86gqEzWrXKACOBw4GijHREiK5pX2lbfngCpXu0Q==
+X-Received: by 2002:a63:6c43:: with SMTP id h64mr1494957pgc.306.1636401076210; 
+ Mon, 08 Nov 2021 11:51:16 -0800 (PST)
+Received: from apollo.hsd1.ca.comcast.net ([2601:646:9200:a0f0::f94a])
+ by smtp.gmail.com with ESMTPSA id rj6sm177354pjb.0.2021.11.08.11.51.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Nov 2021 11:51:15 -0800 (PST)
+From: Khem Raj <raj.khem@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Khem Raj <raj.khem@gmail.com>
+Subject: [PATCH] linux-user: Replace __u64 with uint64_t
+Date: Mon,  8 Nov 2021 11:51:13 -0800
+Message-Id: <20211108195113.1879836-1-raj.khem@gmail.com>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-References: <20211108200756.1302697-1-sw@weilnetz.de>
-In-Reply-To: <20211108200756.1302697-1-sw@weilnetz.de>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 9 Nov 2021 08:43:32 +1000
-Message-ID: <CAKmqyKPSHycrLo5=Eh5NeZVVE8aMkQXCVGxmQrKYEs50k6HLqQ@mail.gmail.com>
-Subject: Re: [PATCH] device_tree: Fix compiler error
-To: Stefan Weil <sw@weilnetz.de>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>, 
- David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::731
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::132
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::731;
- envelope-from=alistair23@gmail.com; helo=mail-qk1-x731.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132;
+ envelope-from=raj.khem@gmail.com; helo=mail-il1-x132.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, PDS_HP_HELO_NORDNS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 08 Nov 2021 18:14:16 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,57 +78,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Nov 2021 22:49:23 -0000
+X-List-Received-Date: Mon, 08 Nov 2021 19:58:41 -0000
 
-On Tue, Nov 9, 2021 at 6:08 AM Stefan Weil <sw@weilnetz.de> wrote:
->
-> A build with gcc (Debian 10.2.1-6) 10.2.1 20210110 fails:
->
-> ../../../softmmu/device_tree.c: In function =E2=80=98qemu_fdt_add_path=E2=
-=80=99:
-> ../../../softmmu/device_tree.c:560:18: error: =E2=80=98retval=E2=80=99 ma=
-y be used uninitialized in this function [-Werror=3Dmaybe-uninitialized]
->   560 |     int namelen, retval;
->       |                  ^~~~~~
->
-> This is not a real error, but the compiler can be satisfied with a small =
-change.
+uint64_t is available in all userspaces via compiler include stdint.h
+therefore use it instead of __u64 which is linux internal type, it fixes
+build on some platforms eg. aarch64 systems using musl C library
 
-Why don't we just initalise retval?
+Upstream-Status: Submitted []
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ linux-user/host/aarch64/hostdep.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Alistair
+diff --git a/linux-user/host/aarch64/hostdep.h b/linux-user/host/aarch64/hostdep.h
+index a8d41a21ad..34d934f665 100644
+--- a/linux-user/host/aarch64/hostdep.h
++++ b/linux-user/host/aarch64/hostdep.h
+@@ -25,7 +25,7 @@ extern char safe_syscall_end[];
+ static inline void rewind_if_in_safe_syscall(void *puc)
+ {
+     ucontext_t *uc = puc;
+-    __u64 *pcreg = &uc->uc_mcontext.pc;
++    uint64_t *pcreg = &uc->uc_mcontext.pc;
+ 
+     if (*pcreg > (uintptr_t)safe_syscall_start
+         && *pcreg < (uintptr_t)safe_syscall_end) {
+-- 
+2.33.1
 
->
-> Fixes: b863f0b75852 ("device_tree: Add qemu_fdt_add_path")
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  softmmu/device_tree.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-> index 3965c834ca..9e96f5ecd5 100644
-> --- a/softmmu/device_tree.c
-> +++ b/softmmu/device_tree.c
-> @@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->          return -1;
->      }
->
-> -    while (p) {
-> +    do {
->          name =3D p + 1;
->          p =3D strchr(name, '/');
->          namelen =3D p !=3D NULL ? p - name : strlen(name);
-> @@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->          }
->
->          parent =3D retval;
-> -    }
-> +    } while (p);
->
->      return retval;
->  }
-> --
-> 2.30.2
->
->
 
