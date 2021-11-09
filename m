@@ -1,93 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkFHS-0002tZ-Fd
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Nov 2021 19:46:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53062)
+	id 1mkLHo-00019P-UE
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 02:11:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.vnet.ibm.com>)
- id 1mkFHQ-0002oP-9G; Mon, 08 Nov 2021 19:46:28 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:17032
- helo=mx0a-001b2d01.pphosted.com)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mkLHl-00015u-23; Tue, 09 Nov 2021 02:11:14 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:37293)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.vnet.ibm.com>)
- id 1mkFHN-0007Ov-Ao; Mon, 08 Nov 2021 19:46:27 -0500
-Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A90QLP3003956; 
- Tue, 9 Nov 2021 00:46:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding; s=pp1;
- bh=6YxIXruI/Y9ALWqSWgI1paaOG86gg1bqZqO5DlJYIp0=;
- b=d+iDG0pCdhpUTWWZbUbqa8T155TVEOeLXSnYbQQbQvOmligIJDrSxIqUe2RS2iG0a55L
- EddQlm44bVdpwlolPrPnE42YYG0Bl2C2lFAHQqC1x2j6vwbOQ7Uflzc/bYw6E8LmwiAp
- 6EELT0uMTsnJZfN4Cx7yyFPsU18Ld9F6SvtqDbxR0pwWe0pENr0dycG4MTPkOAjkUVVp
- w0d0d1axNkvnOMvfZ9fNoaXTVi9IAILfjv0MD9+hWL2Ab7gqsTjJDUcf3oBj9G1coK/u
- RTpRy/lp55xtjA3Eeyd3uztQhOx0MV99pzJoGevir8Nh/xOZ06mbmSGRqQ1Yx+Rs+Gve AA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 3c7eet0btn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Nov 2021 00:46:23 +0000
-Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 1A90auIF018602;
- Tue, 9 Nov 2021 00:46:23 GMT
-Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
- [169.63.214.131])
- by mx0b-001b2d01.pphosted.com with ESMTP id 3c7eet0btc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Nov 2021 00:46:23 +0000
-Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
- by ppma01dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 1A90hNsO017774;
- Tue, 9 Nov 2021 00:46:22 GMT
-Received: from b01cxnp23033.gho.pok.ibm.com (b01cxnp23033.gho.pok.ibm.com
- [9.57.198.28]) by ppma01dal.us.ibm.com with ESMTP id 3c5hbb9tbq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Nov 2021 00:46:22 +0000
-Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
- [9.57.199.111])
- by b01cxnp23033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 1A90kLDV25297154
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 9 Nov 2021 00:46:21 GMT
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0CC8EAC064;
- Tue,  9 Nov 2021 00:46:21 +0000 (GMT)
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0667DAC05E;
- Tue,  9 Nov 2021 00:46:20 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue,  9 Nov 2021 00:46:20 +0000 (GMT)
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: marcandre.lureau@redhat.com, Stefan Berger <stefanb@linux.ibm.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>
-Subject: [PATCH] acpi: tpm: Add missing device identification objects
-Date: Mon,  8 Nov 2021 19:46:15 -0500
-Message-Id: <20211109004615.993911-1-stefanb@linux.vnet.ibm.com>
-X-Mailer: git-send-email 2.31.1
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1mkLHj-0002sx-B8; Tue, 09 Nov 2021 02:11:12 -0500
+Received: from [192.168.100.1] ([82.142.14.190]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N1gWU-1mZZli12vQ-0120aK; Tue, 09 Nov 2021 08:11:06 +0100
+Message-ID: <6d67f83e-924b-b715-1207-01c14cf80aa5@vivier.eu>
+Date: Tue, 9 Nov 2021 08:11:05 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH] tests/qtest/virtio-net: fix hotplug test case
+Content-Language: fr
+To: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>
+References: <20211028173014.139692-1-lvivier@redhat.com>
+ <7380e0bd-f144-c6eb-b370-7b711c09b0e2@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <7380e0bd-f144-c6eb-b370-7b711c09b0e2@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: geGpbto-EPYEz8zuJQw-a08_h568bXfR
-X-Proofpoint-ORIG-GUID: e0Rhyh1tD6Aluyr8H27D6dAK34a2Qmkz
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
- definitions=2021-11-08_07,2021-11-08_02,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 phishscore=0
- clxscore=1015 mlxscore=0 lowpriorityscore=0 malwarescore=0 bulkscore=0
- impostorscore=0 priorityscore=1501 mlxlogscore=987 adultscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2110150000 definitions=main-2111090001
-Received-SPF: none client-ip=148.163.158.5;
- envelope-from=stefanb@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Provags-ID: V03:K1:DchP+IpmJtFb798w7L2RGdt7pep2DCm/gRZ1RiWtBB3KumM1YAz
+ YEEFVj2j+kdIJIc93qA4hkJqxwun9mP/f4Eo99Cbe7vtgypciz4/JBVD8gKAyXxEx4SGvyT
+ mQMvR9Y8A8HuYt7aGPdQWaGNCwF6LkTGJxCCLAkLiEml2aBiBaCvjmj1aPPoe8RygGp86TP
+ 8qvsOj+itbgW7SmeyYBww==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:I/UIdqXQ9Z8=:52DdieO4ADG6/+2DLfWNmC
+ 6lVU2FkSfajm0v2pPsJnaWDvPknb6QNdCEox386mvJ7p/Y+FJQudeX7K5RSyzTNncVW67MUki
+ 5RYpIoi3dSrZb7mtaI+Ix1tdPiqgY4ywrhMS2XVmT3I4aUPtQ20X5hd1EIlzIUJ4dxJJoCR+F
+ HOS21lyAk3ib0F4239gwRdei4NCDw++Lps4r6ik7PA/ZOscNk3tJ0Gppvp9CbVYpI5Pbd44+D
+ f4M8XxVP7lUYUkr9QIIr4LVzGQdB7BIp1X793gZUc5RQYNuaRx1A1aL06SP9b99bYP658kRsW
+ MZMvzrvMxgvSLKxobnJJwJOc6w/tAkCHXKjUB3hKg4TjvNHK/ijSmWLI2+ai1z72ljyFZ4FuI
+ JO8Vs1jVRMeX+HUH1AGnvMd/nlOVipr2mxA4RvCTZmwx23q8D+e53gL/85MMTW+yHXBuNkq3Q
+ dBpOfIxzo2nLv+U40TVzj9bSAj5OtAuqCwENWUkS5qI397V3pDGbL44VcTYF+5ArUkCZfniKA
+ YFBFjGhKL0Tnu74eFd/bWcgPvWKocwjP4mYZIS0XGTGFhKGQ+4xzJ4DmESm3zz4mUcgIMFoz7
+ Ytn7xsefyipdw5dxNJ/cgHzR+42JBnBNk+Z82viutRxywr6kxzOcpC78BfGBanQaqPnDAyTrI
+ Z6Yjbp3TB9OpDyURCtrVK++PKfpFYVIXIiv9RDxtikMOSRp9J8waFLnHZUxnjcWETQEA=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -52
+X-Spam_score: -5.3
+X-Spam_bar: -----
+X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.364,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -101,52 +64,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Nov 2021 00:46:28 -0000
+X-List-Received-Date: Tue, 09 Nov 2021 07:11:15 -0000
 
-From: Stefan Berger <stefanb@linux.ibm.com>
+Le 08/11/2021 à 18:12, Thomas Huth a écrit :
+> On 28/10/2021 19.30, Laurent Vivier wrote:
+>> virtio-net-test has an hotplug testcase that is never executed.
+>>
+>> This is because the testcase is attached to virtio-pci interface
+>> rather than to virtio-net-pci.
+>>
+>>    $ QTEST_QEMU_BINARY=./qemu-system-x86_64 tests/qtest/qos-test -l | grep hotplug
+>>    /x86_64/.../pci-ohci-tests/ohci_pci-test-hotplug
+>>    /x86_64/.../e1000e/e1000e-tests/hotplug
+>>    /x86_64/.../virtio-blk-pci/virtio-blk-pci-tests/hotplug
+>>    /x86_64/.../vhost-user-blk-pci/vhost-user-blk-pci-tests/hotplug
+>>    /x86_64/.../virtio-rng-pci/virtio-rng-pci-tests/hotplug
+>>    /x86_64/.../virtio-scsi/virtio-scsi-tests/hotplug
+>>    /x86_64/.../virtio-serial/virtio-serial-tests/hotplug
+>>
+>> With this fix:
+>>
+>>    $ QTEST_QEMU_BINARY=./qemu-system-x86_64 tests/qtest/qos-test -l | grep hotplug
+>>    ...
+>>    /x86_64/.../vhost-user-blk-pci/vhost-user-blk-pci-tests/hotplug
+>>    /x86_64/.../virtio-net-pci/virtio-net-pci-tests/hotplug
+>>    /x86_64/.../virtio-rng-pci/virtio-rng-pci-tests/hotplug
+>>    ...
+>>    $ QTEST_QEMU_BINARY=./qemu-system-x86_64 tests/qtest/qos-test -p 
+>> /x86_64/.../virtio-net-pci-tests/hotplug
+>>    /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net-pci-tests/hotplug: OK
+>>
+>> Fixes: 6ae333f91b99 ("qos-test: virtio-net test node")
+>> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+>> ---
+>>   tests/qtest/virtio-net-test.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/tests/qtest/virtio-net-test.c b/tests/qtest/virtio-net-test.c
+>> index a08e2ffe123f..8bf74e516cce 100644
+>> --- a/tests/qtest/virtio-net-test.c
+>> +++ b/tests/qtest/virtio-net-test.c
+>> @@ -319,7 +319,7 @@ static void register_virtio_net_test(void)
+>>           .before = virtio_net_test_setup,
+>>       };
+>> -    qos_add_test("hotplug", "virtio-pci", hotplug, &opts);
+>> +    qos_add_test("hotplug", "virtio-net-pci", hotplug, &opts);
+>>   #ifndef _WIN32
+>>       qos_add_test("basic", "virtio-net", send_recv_test, &opts);
+>>       qos_add_test("rx_stop_cont", "virtio-net", stop_cont_test, &opts);
+>>
+> 
+> Acked-by: Thomas Huth <thuth@redhat.com>
+> 
+> 
 
-Add missing device identification objects _STR and _UID. They will appear
-as files 'description' and 'uid' under Linux sysfs.
+Applied to my trivial-patches branch.
 
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: Ani Sinha <ani@anisinha.ca>
-Fixes: #708
-Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
----
- hw/arm/virt-acpi-build.c | 1 +
- hw/i386/acpi-build.c     | 4 ++++
- 2 files changed, 5 insertions(+)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 674f902652..09456424aa 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -228,6 +228,7 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
- 
-     Aml *dev = aml_device("TPM0");
-     aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-+    aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")));
-     aml_append(dev, aml_name_decl("_UID", aml_int(0)));
- 
-     Aml *crs = aml_resource_template();
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index a3ad6abd33..d6d3541407 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -1808,6 +1808,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-                     dev = aml_device("TPM");
-                     aml_append(dev, aml_name_decl("_HID",
-                                                   aml_string("MSFT0101")));
-+                    aml_append(dev,
-+                               aml_name_decl("_STR",
-+                                             aml_string("TPM 2.0 Device")));
-+                    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-                 } else {
-                     dev = aml_device("ISA.TPM");
-                     aml_append(dev, aml_name_decl("_HID",
--- 
-2.31.1
-
+Thanks,
+Laurent
 
