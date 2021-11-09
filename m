@@ -1,77 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkQ17-0003D8-RN
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 07:14:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36518)
+	id 1mkSNA-0007hZ-6m
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 09:45:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mkQ16-000389-9J
- for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 07:14:20 -0500
-Received: from [2a00:1450:4864:20::42b] (port=41569
- helo=mail-wr1-x42b.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mkQ0t-0003fU-H9
- for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 07:14:19 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id d3so32588312wrh.8
- for <qemu-trivial@nongnu.org>; Tue, 09 Nov 2021 04:14:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=BTHG+IHioR9XckfE607EcSZwJKlKt7tdKJYmzr/90Lk=;
- b=h/hjxf2A8HrwYBgmLk9geoNcFlrWyQrqoRm4G2xNsfGHr9AWX54AkmqJ5otghyIBjW
- A+FNm9GpLiA257FOt4SKn7OjEH7WlQnNBZg6TWXsO79X+N50W0qcMYq64RL7Qd70bmOx
- JBWQOAmC7HO1zm3UZm5qdGsh5Kw3TH0qO2XF+XdLtOQucg8a0qZpFrDkfyL87v5xvLzx
- GhbbIi1I36RkPYShEqzPoZ86qNwE68CoRyf6jjDr/NwzINeTgEqVxBsbxGZVB6Hb2GIf
- +SbFPEP2eUSTLyVBZthUFFZO/UTUZeWWAwh+3mdRf+z+XXq6yiRCHd6SLAEu+1hM8+nc
- Ojgw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mkSN8-0007gr-Fy
+ for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 09:45:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:52355)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mkSN3-00033s-SU
+ for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 09:45:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1636469108;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=BHrFyIedMgFkgcfjvsjFe56Wr+AISOkv82qmkiOkMDw=;
+ b=c6B87qh5GoCwhbsyHbDxVGEOWKN4HeCcSYEZ1DLsYGmHcOTJ7Hag8RceIO5R2cbYZJYQ+a
+ M+J5VjGmd7gvcoj004JaCvWITazTFaaemT2IFRZs7d1BgmfstlDYq5DY6nfIDvfJTIGyO8
+ AAjUTAmIkQv43xrxVTatKcpvf+OhiMw=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-62-2p7lisaPP_mKbqtWEn8lKQ-1; Tue, 09 Nov 2021 09:45:07 -0500
+X-MC-Unique: 2p7lisaPP_mKbqtWEn8lKQ-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ k5-20020a7bc3050000b02901e081f69d80so7824833wmj.8
+ for <qemu-trivial@nongnu.org>; Tue, 09 Nov 2021 06:45:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=BTHG+IHioR9XckfE607EcSZwJKlKt7tdKJYmzr/90Lk=;
- b=ztWvJZe4J+RRvQ1N6u8rxvnbgPlYK61tUTbul2oVROV6gRbszqH4Dot0hEwPbx28Ne
- g/OCfCBKfuG9ZrOVKZCKuduIgxt2we5m5nF9Kd5LHhXZTLOgt2FkMM5XTK9lt3iBe2hu
- 93M1DG7kiqQmyCVQeh6NH7Odbh4c7iTB6tSv3muJIgBd8D3+PHTpU5HlEapnBzkSPxr5
- DbMTumEmj+4JGxOT0mmzAFnS1t9Bx3kmD1tMPiih33XpTyXb+yBvNoD0FHEyUKmk/1g4
- czY/DQmRF0bf90PcIyqEKICyNVGOjyKdnma3ew57JnKb4/Mn8sgaWhsSLuDysfVBy1mb
- CFZQ==
-X-Gm-Message-State: AOAM532g4df88+2stxmEqLZZon+NiofIUnBLwNCE3RIR5Ko4pD8UCOKu
- x0JdAR31acGDNaavhpPBeYGuabcYYmrj5Gfcf0E=
-X-Google-Smtp-Source: ABdhPJzjqq2NFK2z8tOpRRN9ODkv2sE4OX28Sf3nLayGSwWu0EWN3ph0D4l/3st/3jjVSpHL4DSoWw==
-X-Received: by 2002:a5d:5303:: with SMTP id e3mr8645036wrv.73.1636460045190;
- Tue, 09 Nov 2021 04:14:05 -0800 (PST)
-Received: from [192.168.8.106] (169.red-37-158-143.dynamicip.rima-tde.net.
- [37.158.143.169])
- by smtp.gmail.com with ESMTPSA id t4sm2295435wmi.48.2021.11.09.04.14.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Nov 2021 04:14:04 -0800 (PST)
-Subject: Re: [PULL 0/6] Trivial branch for 6.2 patches
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20211109091238.817997-1-laurent@vivier.eu>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <fce90156-5bfb-5d39-a96d-10125ddbee9a@linaro.org>
-Date: Tue, 9 Nov 2021 13:14:02 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ bh=BHrFyIedMgFkgcfjvsjFe56Wr+AISOkv82qmkiOkMDw=;
+ b=bnwiYl0stWl47X2/dgFuQq9+JOZCAzehDERuniZIc6yFJ8uboDhUu+8taa4znwHd11
+ qGmVHC2Y2XHr808iby6aziygZdt9rnEk+/nGp/PyMmKfrAXXnTQg1vzEDBPZHJCLZSlP
+ 3InSa4TSWxq9A3muqbfEjqcKiZvpTf2wO48qgu1MYVOYS+gFVFm9l/xODcfwWzC2SgSZ
+ ktlsWYPjD/Qvtf7X+1ukPZgL0uUVkLGcqZ69fYQMyhYLcvACR40inaN8/rmbuDqFH3j1
+ 3tlF3XYlRHUgvrhjtAss67HlIKfLRkXOoLPiFXfTR4r8qqcDE/oWcasbi3RpcYCxEt9c
+ sZFA==
+X-Gm-Message-State: AOAM530f7PSybmCnmOeQFRaNwDUmzwAjqGiorIWlup2vM5+dtOJO/72T
+ HlY+LSd34cHWutmClxZ1Pc3n+GLFRg9dSyAv9gWp+Ado7l4GQKBtPwdDNHciXtHoGtbhwCpBdwG
+ oPlkDQM+U0BgJbmN0Kg==
+X-Received: by 2002:a05:600c:a08:: with SMTP id
+ z8mr8045694wmp.52.1636469106051; 
+ Tue, 09 Nov 2021 06:45:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx3z+Py4DaF/vHdys0Rft53Cqitjp+8hC8jQNB8CqVEwweKbCiqKCPKUiDB4pmQ5o/zYfstOA==
+X-Received: by 2002:a05:600c:a08:: with SMTP id
+ z8mr8045648wmp.52.1636469105760; 
+ Tue, 09 Nov 2021 06:45:05 -0800 (PST)
+Received: from x1w.. (62.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id
+ i15sm2726425wmb.20.2021.11.09.06.45.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Nov 2021 06:45:05 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>, Yonggang Luo <luoyonggang@gmail.com>,
+ qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] configure: Symlink binaries using .exe suffix with MinGW
+Date: Tue,  9 Nov 2021 15:45:04 +0100
+Message-Id: <20211109144504.1541206-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <20211109091238.817997-1-laurent@vivier.eu>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.364,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,56 +88,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Nov 2021 12:14:20 -0000
+X-List-Received-Date: Tue, 09 Nov 2021 14:45:14 -0000
 
-On 11/9/21 10:12 AM, Laurent Vivier wrote:
-> The following changes since commit f10e7b9f6fc18be390b3bc189e04b5147eb8dbf8:
-> 
->    Merge remote-tracking branch 'remotes/dgibson/tags/ppc-for-6.2-20211109' into staging (2021-11-09 07:18:33 +0100)
-> 
-> are available in the Git repository at:
-> 
->    git://github.com/vivier/qemu.git tags/trivial-branch-for-6.2-pull-request
-> 
-> for you to fetch changes up to 66d96a1901b7d9cfdbc454d407710ca8bfb90947:
-> 
->    docs/about/deprecated: Remove empty 'related binaries' section (2021-11-09 10:11:27 +0100)
-> 
-> ----------------------------------------------------------------
-> Trivial branch patches pull request 20211109
-> 
-> ----------------------------------------------------------------
-> 
-> BALATON Zoltan (1):
->    hmp: Add shortcut to stop command to match cont
-> 
-> Laurent Vivier (1):
->    tests/qtest/virtio-net: fix hotplug test case
-> 
-> Philippe Mathieu-Daudé (4):
->    hw/m68k: Fix typo in SPDX tag
->    .mailmap: Fix more contributor entries
->    meson: Fix 'interpretor' typo
->    docs/about/deprecated: Remove empty 'related binaries' section
-> 
->   .mailmap                       | 4 ++++
->   docs/about/deprecated.rst      | 3 ---
->   hmp-commands.hx                | 4 ++--
->   hw/char/goldfish_tty.c         | 2 +-
->   hw/intc/goldfish_pic.c         | 2 +-
->   hw/intc/m68k_irqc.c            | 2 +-
->   hw/m68k/virt.c                 | 2 +-
->   hw/misc/virt_ctrl.c            | 2 +-
->   include/hw/char/goldfish_tty.h | 2 +-
->   include/hw/intc/goldfish_pic.h | 2 +-
->   include/hw/intc/m68k_irqc.h    | 2 +-
->   include/hw/misc/virt_ctrl.h    | 2 +-
->   meson.build                    | 2 +-
->   tests/qtest/virtio-net-test.c  | 2 +-
->   14 files changed, 17 insertions(+), 16 deletions(-)
+When using the MinGW toolchain, we use the .exe suffix for the
+executable name. We also need to use it for the symlinks in the
+build directory.
 
-Applied, thanks.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-r~
+diff --git a/configure b/configure
+index 48c21775f3a..31e8f586dc7 100755
+--- a/configure
++++ b/configure
+@@ -3786,7 +3786,7 @@ fi
+ 
+ for target in $target_list; do
+     target_dir="$target"
+-    target_name=$(echo $target | cut -d '-' -f 1)
++    target_name=$(echo $target | cut -d '-' -f 1)$EXESUF
+     mkdir -p $target_dir
+     case $target in
+         *-user) symlink "../qemu-$target_name" "$target_dir/qemu-$target_name" ;;
+-- 
+2.31.1
 
 
