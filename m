@@ -1,57 +1,104 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkNCP-0000nu-Cq
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 04:13:49 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39758)
+	id 1mkPdl-0003DE-RQ
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 06:50:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57072)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mkNCO-0000i4-6R; Tue, 09 Nov 2021 04:13:48 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:53989)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1mkPdk-0003Bq-NZ; Tue, 09 Nov 2021 06:50:12 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:56672
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mkNCM-0005KS-7Q; Tue, 09 Nov 2021 04:13:47 -0500
-Received: from quad ([82.142.14.190]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1N5FtF-1md7i712KD-0119bP; Tue, 09
- Nov 2021 10:12:54 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Willian Rampazzo <willianr@redhat.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 6/6] docs/about/deprecated: Remove empty 'related binaries'
- section
-Date: Tue,  9 Nov 2021 10:12:38 +0100
-Message-Id: <20211109091238.817997-7-laurent@vivier.eu>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211109091238.817997-1-laurent@vivier.eu>
-References: <20211109091238.817997-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1mkPdh-0004PE-5s; Tue, 09 Nov 2021 06:50:12 -0500
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A99JtRh030089; 
+ Tue, 9 Nov 2021 11:50:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=7v78+v1S3lcaMix3NjHgV9YswN94D0vLaNsc+OQyfoY=;
+ b=ZVM4QuneNqDwpsqz5s9sGzgYqR28beQTYZQ8IFqtV8vkSuIaZD+y1ecAxId75oDOTTQO
+ Neh5W9flrrVnizAOVUSit+RXIQzWH9AVHpgiJqre2HjUUU2bJHmg/rNKNbhfw16BFomj
+ whiF4TErSAFyj9XXK8kBPDVPQiOWdnZWHKt9zH6WsB19Pr8eTkWS2jdnNFgd20AzaF8p
+ dQjSmHYz+31pDBB6+dDE2NkqeuWiX/UPsxzD4y5MXkFAeLttRCsAp4Tg+A64PHalFnaV
+ AMEaKMEkspwQ6hz18sxakDctLtoD5G4m6SYCAaetJHnwHC9kKkel+DR9RFLKGSKlJoEO 4A== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 3c7m1p6687-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 09 Nov 2021 11:50:05 +0000
+Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 1A9BO0FD029043;
+ Tue, 9 Nov 2021 11:50:04 GMT
+Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.27])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 3c7m1p667n-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 09 Nov 2021 11:50:04 +0000
+Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
+ by ppma05wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 1A9BhOlx005139;
+ Tue, 9 Nov 2021 11:50:04 GMT
+Received: from b03cxnp08026.gho.boulder.ibm.com
+ (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
+ by ppma05wdc.us.ibm.com with ESMTP id 3c5hbb6q38-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 09 Nov 2021 11:50:03 +0000
+Received: from b03ledav005.gho.boulder.ibm.com
+ (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
+ by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 1A9Bo2DH41484660
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 9 Nov 2021 11:50:02 GMT
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4015FBE04F;
+ Tue,  9 Nov 2021 11:50:02 +0000 (GMT)
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A0135BE05F;
+ Tue,  9 Nov 2021 11:50:01 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Tue,  9 Nov 2021 11:50:01 +0000 (GMT)
+Message-ID: <2a79eeda-8dd4-50a9-7900-42afc60491a4@linux.ibm.com>
+Date: Tue, 9 Nov 2021 06:50:01 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH] acpi: tpm: Add missing device identification objects
+Content-Language: en-US
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>
+References: <20211109003733.3177378-1-stefanb@linux.vnet.ibm.com>
+ <CAMxuvax+T0sVp512idiCkngZJqFOWcQGR3mkfUy6-gO8yEofKA@mail.gmail.com>
+ <CAMxuvayxZaBzs4RuR9JR5ocMfcXr-phQzcsFbBSPt1CH0PnoRg@mail.gmail.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <CAMxuvayxZaBzs4RuR9JR5ocMfcXr-phQzcsFbBSPt1CH0PnoRg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:x76QNzdADSPKEOU3OveNFP+BcfK+BGp0E/AgVvF8W/RQtZQnMCa
- SwLWPnOvUO4JS9npGg94M4s+Mt+uFASHMFRBCWSEDAYuc3RCZ+5zz7TOFIsxAwsAceHXIAN
- 3gwCB9Wys/CbrLsr85e3C2evIHcuzvX0ZsMwTyylfL7y4s+0PILLDbRjbLNfL78gSxo4+Z2
- UnS8GB7SYqVd7dpOiA1AA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Q3KA6nlt3rY=:iwQCd16B4r8AVOe9CXeJOe
- cAU7MxJOOLz9xwJmPGfnbO0jHBMcI1k+ORJRLzaqzezskt3diCRyRvZE9OzfKP1Zv5CoZ3TyG
- I8MaBdNcBDYDoelzeomf5d0ef2NALAIYbIQF0QJmvjk/ajLO2XCDmxxylNw5fMCmbJw+5Vn6Q
- LQX/4AcjQ1eI1GrfQH5Y4XYXM4Sq85vOCUXkcEjF55XX+GiABH+gY9pkxYlJ5Es5fq5xfGXYW
- SKi4EGnvzyTjmDPKzDhEWN287Zy4FAf/0MWP+lmu8eVFq9tMDa3dxQmyTORl6QwqYrxedAxFA
- 7+7gkhFOWGH+sqTRHkJ/obXzWfBfskSYqzf574xqRrzKKhEuEeaaQ/lo4E81Ii/piWF/f64nQ
- hupeVameshLMQ/kCkjcZpfhw4P8PlkuqhiuV+U4S6K7LxesvJbZitQFE1oPwLkMWavst5tIJ4
- s8JpbuWXax4Ie/lNdL2Z90i9VplAzOhs5J/OgjuVoV8kkRGKMfoxMKfm23tp31f/0Al5N7mXt
- dIcWMdsn0JQau0BpaKV/zh+0+D7cworEXK+bv0PcOo2faajF6t4i97ZiYvRW0vWi1GvenAojV
- p/bGfQBgacVGWbKTtxf6MoqO6jm6PMuAnSkrEiShIAQy0RdhhkU2yHoIUvNPHTwyLHiJHmGbR
- TDWxA/nVOoRD15GqDctokehnagLqWITrcWReSaoqWWNzTiVM2v5ZknAFPOwj9krqMYh4=
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: cRW9yPsOTrIB_6Ei-AyJQKCUATdcOZkn
+X-Proofpoint-ORIG-GUID: ZypmZxlJJ1Eu12pTDBKQhIBAHLJ84Gzs
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
+ definitions=2021-11-09_03,2021-11-08_02,2020-04-07_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 mlxscore=0
+ adultscore=0 mlxlogscore=999 bulkscore=0 lowpriorityscore=0 spamscore=0
+ suspectscore=0 phishscore=0 impostorscore=0 malwarescore=0 clxscore=1011
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
+ definitions=main-2111090070
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.364,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,39 +111,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Nov 2021 09:13:48 -0000
+X-List-Received-Date: Tue, 09 Nov 2021 11:50:13 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Commit 497a30dbb06 ("qemu-img: Require -F with -b backing image")
-removed the content of the "Related binaries" section but forgot
-to remove the section title. Since it is now empty, remove it too.
+On 11/9/21 02:30, Marc-André Lureau wrote:
+> Hi
+>
+> On Tue, Nov 9, 2021 at 11:25 AM Marc-André Lureau
+> <marcandre.lureau@redhat.com> wrote:
+>> On Tue, Nov 9, 2021 at 4:37 AM Stefan Berger <stefanb@linux.vnet.ibm.com> wrote:
+>>> Add missing device identification objects _STR and _UID. They will appear
+>>> as files 'description' and 'uid' under Linux sysfs.
+>>>
+>>> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+>>> Cc: Michael S. Tsirkin <mst@redhat.com>
+>>> Cc: Igor Mammedov <imammedo@redhat.com>
+>>> Cc: Ani Sinha <ani@anisinha.ca>
+>>> Fixes: #708
+>>> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+>> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+>>
+>> (on my host, for some reason the UID is 1, does this matter?)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
-Reviewed-by: Joaquin de Andres <me@xcancerberox.com.ar>
-Message-Id: <20211105142656.145791-1-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- docs/about/deprecated.rst | 3 ---
- 1 file changed, 3 deletions(-)
+Let's make it '1'. My TPM 1.2 machine shows also '1'.
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 56f9ad15ab54..5e514fb443da 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -370,9 +370,6 @@ The ``I7200`` guest CPU relies on the nanoMIPS ISA, which is deprecated
- (the ISA has never been upstreamed to a compiler toolchain). Therefore
- this CPU is also deprecated.
- 
--Related binaries
------------------
--
- Backwards compatibility
- -----------------------
- 
--- 
-2.31.1
+specs:
 
+"6.1.12 _UID (Unique ID)
+This object provides OSPM with a logical device ID that does not change 
+across reboots. This object is
+optional, but is required when the device has no other way to report a 
+persistent unique device ID. The
+_UID must be unique across all devices with either a common _HID or 
+_CID. [...]"
+
+
+> And shouldn't this be done also for TIS device?
+
+Fixed. It was missing for the CRB device.
+
+Thanks.
+
+   Stefan
+
+>
+>>> ---
+>>>   hw/arm/virt-acpi-build.c | 1 +
+>>>   hw/i386/acpi-build.c     | 4 ++++
+>>>   2 files changed, 5 insertions(+)
+>>>
+>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>>> index 674f902652..09456424aa 100644
+>>> --- a/hw/arm/virt-acpi-build.c
+>>> +++ b/hw/arm/virt-acpi-build.c
+>>> @@ -228,6 +228,7 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
+>>>
+>>>       Aml *dev = aml_device("TPM0");
+>>>       aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
+>>> +    aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")));
+>>>       aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>>>
+>>>       Aml *crs = aml_resource_template();
+>>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>>> index a3ad6abd33..d6d3541407 100644
+>>> --- a/hw/i386/acpi-build.c
+>>> +++ b/hw/i386/acpi-build.c
+>>> @@ -1808,6 +1808,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>>>                       dev = aml_device("TPM");
+>>>                       aml_append(dev, aml_name_decl("_HID",
+>>>                                                     aml_string("MSFT0101")));
+>>> +                    aml_append(dev,
+>>> +                               aml_name_decl("_STR",
+>>> +                                             aml_string("TPM 2.0 Device")));
+>>> +                    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>>>                   } else {
+>>>                       dev = aml_device("ISA.TPM");
+>>>                       aml_append(dev, aml_name_decl("_HID",
+>>> --
+>>> 2.31.1
+>>>
 
