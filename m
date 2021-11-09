@@ -1,45 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkNBm-000782-59
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 04:13:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39318)
+	id 1mkNCA-0008H0-1t
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 04:13:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39664)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mkNBi-00076E-Cd; Tue, 09 Nov 2021 04:13:07 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:50001)
+ id 1mkNC6-000870-Qo; Tue, 09 Nov 2021 04:13:31 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:57631)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1mkNBa-00058k-Tj; Tue, 09 Nov 2021 04:13:05 -0500
+ id 1mkNC5-0005HQ-4i; Tue, 09 Nov 2021 04:13:30 -0500
 Received: from quad ([82.142.14.190]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MMX9b-1n2ro346op-00JX6v; Tue, 09
- Nov 2021 10:12:53 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MIMOy-1mycnn2hZU-00EQjC; Tue, 09
+ Nov 2021 10:12:51 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 5/6] tests/qtest/virtio-net: fix hotplug test case
-Date: Tue,  9 Nov 2021 10:12:37 +0100
-Message-Id: <20211109091238.817997-6-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Pan Nengyuan <pannengyuan@huawei.com>, Alex Chen <alex.chen@huawei.com>,
+ Hyman Huang <huangy81@chinatelecom.cn>,
+ Haibin Zhang <haibinzhang@tencent.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 3/6] .mailmap: Fix more contributor entries
+Date: Tue,  9 Nov 2021 10:12:35 +0100
+Message-Id: <20211109091238.817997-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211109091238.817997-1-laurent@vivier.eu>
 References: <20211109091238.817997-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:s7G/o5rG6ME0gS7ziVPIsjhiZtcvJRxLpWUZbJXdC4uEx7OBoSe
- i7kq4txyxyQwwE5vojTBV8SbobL50Bj+2GISlfMnGftehK5D9F/hp+VppxmFGhKqKnUBbMt
- DUyXyFTIlK5ZIf7aGxN+72Ry2Tv/XNy7eIbtvqOIbM/bcO9PsJVi37fgGQuwqcoh/YtDjeq
- tzOszhPDHuo4i/3k6GrCw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iK+nkuISu8U=:Wskyrunjxzy9+8LGEtdgSh
- F2dQbdKUMTb5gQ7044Sj5KFJ7cNI3EWsr3DZCcNnwJ2zQl69Dv6oyPO/BWGOBoWCcoYCjKyzT
- k5LPMwtoFic54zRZ6atWTbInxQSaO9g3Kuav55HZU5RBniTnUGtrr7+33Y9YOVfAOVG2wE2xA
- IHu+89Zukh8NQZ8NlsVEC02ziaE7UGlC4tbqx370wRoImkJItH5Zpp6/YgCFFgh64rluJ3Gq5
- 5TuGDSwGcve/Vh1PnzZ3F9lSxGgn+t4Tlh4KZ6IADaQpMBY7RNaQbEeV6f7Q6R0ir9SskF2t3
- visjZuP7YUPVs/mDP2Gz+n20AQDmD+Z7JxqvGdAIB13KVo4+dIF0tlH2q4meVYdNS1eDVCkD3
- xPrcTv1VTXnaNtmrNRkty6wcLz5Ih4wmRsOtxP0iUjeHKEECRM8fzNFIrD/Nx3hkwRu6kZCHz
- EHuv3DPoxL8XGggOyghhqvt7hoY9pij5rZg0SZSBEJW4TYwZwusaY1jQeonOiHnOsRvEQgsd3
- qmbwLjsTIlTtcjIAM9ih3WWLnGnXWlYm1LmuYorzM1nRcfYFmRYVQAx/nd185Am/zdp0OiZyf
- jOYHeo7e+Vj9Lg7PQNYdy1nbkuUQEUcp25SMHh/jH8jcwXrpixj/KO2SnLiozybZEP9lV0J02
- TKs3IbGDWbZEt0LcO/LgIpjn0Kp6Oh8WrdggmONj/02WahSudrDZ5qPhZ0WGCq43fLvo=
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:QbeM83FLzidANlyszufo6HJ/9+JS5wRogyeZXqX4ccxhCqwpvOJ
+ Iq31+5A2RfN+o/OoJ1FslJAzysOvT/0DO7XgOqTyCAsEkxW0wwH3DXhx2dBcBS8rBz5HbY/
+ WRqF57OyvVJ+31liIHwdEZ5xE4/w6a0cN6MLJYgQ2OBItRXUWa7IQbcNfA9JpNnFvPINzjc
+ DDGS6OFNxeG7xGBZKllmA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BO8vJEotHjk=:RfERvBGdKfuaiBRY4rwUTT
+ DMk+qEwoZIxE3aL38Igfvq5JDnz+qMRmbWpIeIA1bnXKBMBse/iABeI3LjgVWo/dT7aavHorC
+ 8Lib5ZSxJWMAy3Ftw+8KosjOKpvsQDp/A3efp7qtd2srmcexxh+f5sc1Bazb7J5VAqUurpqFx
+ EauzqHMaucR31mkeT1F3EZal/zApAUYCbm7DSQxhplyOMg7+5C4wMPWVdu+kTDYfeZoKXvmrb
+ OvUxxMzocy/dpx+YXrUZ251PUZMe+9lEvJbpW7sVW3TsqEF8PyDOkcREv5mrKDsnvSIwdpIc4
+ fzkjlwU+/y8QGguNWms1W5BIy3gxAOob3rKX46k/GzV7dkcUugtPFyVb4O6cRzb2XINKwq5/2
+ l/t/X773A1dp88CNv4EEduXMTbydZUPj2WLJaf2tf0I6GFPYr1kLVIp9IeE58oUTaWD0oAiuC
+ hY3kL671fy2LStAZIe9MhYIeeOObkw6PdJZ9bQ45zn77l+HkGVKV5ByWuz4Jez3TWDPgxqH5J
+ zr7WX5vinC2QesD9mjKFs6RF4reBq6S9CnvdLuUE166KZIb3ZgbCwCelTY8SqNPb34st5MhK4
+ 655Ih//8VoLDZuJIaRewKAdO9VXJrqHfh3DT8EbNsjQYKSdgo3yfdJBfkvE13LNFCtSDjDdV+
+ iGOApUUAUcPwgFSw8t64UW8Ml7vlPMrEUnXrKMorxhVolqwMH3uWJo0U6okp3c7WqH/Q=
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -58,57 +62,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Nov 2021 09:13:08 -0000
+X-List-Received-Date: Tue, 09 Nov 2021 09:13:32 -0000
 
-From: Laurent Vivier <lvivier@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-virtio-net-test has an hotplug testcase that is never executed.
+These authors have some incorrect author email field.
 
-This is because the testcase is attached to virtio-pci interface
-rather than to virtio-net-pci.
-
-  $ QTEST_QEMU_BINARY=./qemu-system-x86_64 tests/qtest/qos-test -l | grep hotplug
-  /x86_64/.../pci-ohci-tests/ohci_pci-test-hotplug
-  /x86_64/.../e1000e/e1000e-tests/hotplug
-  /x86_64/.../virtio-blk-pci/virtio-blk-pci-tests/hotplug
-  /x86_64/.../vhost-user-blk-pci/vhost-user-blk-pci-tests/hotplug
-  /x86_64/.../virtio-rng-pci/virtio-rng-pci-tests/hotplug
-  /x86_64/.../virtio-scsi/virtio-scsi-tests/hotplug
-  /x86_64/.../virtio-serial/virtio-serial-tests/hotplug
-
-With this fix:
-
-  $ QTEST_QEMU_BINARY=./qemu-system-x86_64 tests/qtest/qos-test -l | grep hotplug
-  ...
-  /x86_64/.../vhost-user-blk-pci/vhost-user-blk-pci-tests/hotplug
-  /x86_64/.../virtio-net-pci/virtio-net-pci-tests/hotplug
-  /x86_64/.../virtio-rng-pci/virtio-rng-pci-tests/hotplug
-  ...
-  $ QTEST_QEMU_BINARY=./qemu-system-x86_64 tests/qtest/qos-test -p /x86_64/.../virtio-net-pci-tests/hotplug
-  /x86_64/pc/i440FX-pcihost/pci-bus-pc/pci-bus/virtio-net-pci/virtio-net-pci-tests/hotplug: OK
-
-Fixes: 6ae333f91b99 ("qos-test: virtio-net test node")
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Acked-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20211028173014.139692-1-lvivier@redhat.com>
+Acked-by: Pan Nengyuan <pannengyuan@huawei.com>
+Reviewed-by: Alex Chen <alex.chen@huawei.com>
+Reviewed-by: Hyman Huang <huangy81@chinatelecom.cn>
+Reviewed-by: Haibin Zhang <haibinzhang@tencent.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20211027043254.1248097-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/qtest/virtio-net-test.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .mailmap | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/tests/qtest/virtio-net-test.c b/tests/qtest/virtio-net-test.c
-index a08e2ffe123f..8bf74e516cce 100644
---- a/tests/qtest/virtio-net-test.c
-+++ b/tests/qtest/virtio-net-test.c
-@@ -319,7 +319,7 @@ static void register_virtio_net_test(void)
-         .before = virtio_net_test_setup,
-     };
- 
--    qos_add_test("hotplug", "virtio-pci", hotplug, &opts);
-+    qos_add_test("hotplug", "virtio-net-pci", hotplug, &opts);
- #ifndef _WIN32
-     qos_add_test("basic", "virtio-net", send_recv_test, &opts);
-     qos_add_test("rx_stop_cont", "virtio-net", stop_cont_test, &opts);
+diff --git a/.mailmap b/.mailmap
+index f029d1c21fe8..8beb2f95ae28 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -69,6 +69,7 @@ Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
+ # git author config, or had utf8/latin1 encoding issues.
+ Aaron Lindsay <aaron@os.amperecomputing.com>
+ Alexey Gerasimenko <x1917x@gmail.com>
++Alex Chen <alex.chen@huawei.com>
+ Alex Ivanov <void@aleksoft.net>
+ Andreas Färber <afaerber@suse.de>
+ Bandan Das <bsd@redhat.com>
+@@ -99,9 +100,11 @@ Gautham R. Shenoy <ego@in.ibm.com>
+ Gautham R. Shenoy <ego@linux.vnet.ibm.com>
+ Gonglei (Arei) <arei.gonglei@huawei.com>
+ Guang Wang <wang.guang55@zte.com.cn>
++Haibin Zhang <haibinzhang@tencent.com>
+ Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+ Hanna Reitz <hreitz@redhat.com> <mreitz@redhat.com>
+ Hervé Poussineau <hpoussin@reactos.org>
++Hyman Huang <huangy81@chinatelecom.cn>
+ Jakub Jermář <jakub@jermar.eu>
+ Jakub Jermář <jakub.jermar@kernkonzept.com>
+ Jean-Christophe Dubois <jcd@tribudubois.net>
+@@ -135,6 +138,7 @@ Nicholas Thomas <nick@bytemark.co.uk>
+ Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>
+ Orit Wasserman <owasserm@redhat.com>
+ Paolo Bonzini <pbonzini@redhat.com>
++Pan Nengyuan <pannengyuan@huawei.com>
+ Pavel Dovgaluk <dovgaluk@ispras.ru>
+ Pavel Dovgaluk <pavel.dovgaluk@gmail.com>
+ Pavel Dovgaluk <Pavel.Dovgaluk@ispras.ru>
 -- 
 2.31.1
 
