@@ -1,104 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkPdl-0003DE-RQ
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 06:50:13 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57072)
+	id 1mkQ17-0003D8-RN
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 07:14:21 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1mkPdk-0003Bq-NZ; Tue, 09 Nov 2021 06:50:12 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:56672
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1mkPdh-0004PE-5s; Tue, 09 Nov 2021 06:50:12 -0500
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A99JtRh030089; 
- Tue, 9 Nov 2021 11:50:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=7v78+v1S3lcaMix3NjHgV9YswN94D0vLaNsc+OQyfoY=;
- b=ZVM4QuneNqDwpsqz5s9sGzgYqR28beQTYZQ8IFqtV8vkSuIaZD+y1ecAxId75oDOTTQO
- Neh5W9flrrVnizAOVUSit+RXIQzWH9AVHpgiJqre2HjUUU2bJHmg/rNKNbhfw16BFomj
- whiF4TErSAFyj9XXK8kBPDVPQiOWdnZWHKt9zH6WsB19Pr8eTkWS2jdnNFgd20AzaF8p
- dQjSmHYz+31pDBB6+dDE2NkqeuWiX/UPsxzD4y5MXkFAeLttRCsAp4Tg+A64PHalFnaV
- AMEaKMEkspwQ6hz18sxakDctLtoD5G4m6SYCAaetJHnwHC9kKkel+DR9RFLKGSKlJoEO 4A== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 3c7m1p6687-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Nov 2021 11:50:05 +0000
-Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 1A9BO0FD029043;
- Tue, 9 Nov 2021 11:50:04 GMT
-Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.27])
- by mx0b-001b2d01.pphosted.com with ESMTP id 3c7m1p667n-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Nov 2021 11:50:04 +0000
-Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
- by ppma05wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 1A9BhOlx005139;
- Tue, 9 Nov 2021 11:50:04 GMT
-Received: from b03cxnp08026.gho.boulder.ibm.com
- (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
- by ppma05wdc.us.ibm.com with ESMTP id 3c5hbb6q38-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Nov 2021 11:50:03 +0000
-Received: from b03ledav005.gho.boulder.ibm.com
- (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
- by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 1A9Bo2DH41484660
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 9 Nov 2021 11:50:02 GMT
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4015FBE04F;
- Tue,  9 Nov 2021 11:50:02 +0000 (GMT)
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A0135BE05F;
- Tue,  9 Nov 2021 11:50:01 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP;
- Tue,  9 Nov 2021 11:50:01 +0000 (GMT)
-Message-ID: <2a79eeda-8dd4-50a9-7900-42afc60491a4@linux.ibm.com>
-Date: Tue, 9 Nov 2021 06:50:01 -0500
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mkQ16-000389-9J
+ for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 07:14:20 -0500
+Received: from [2a00:1450:4864:20::42b] (port=41569
+ helo=mail-wr1-x42b.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mkQ0t-0003fU-H9
+ for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 07:14:19 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id d3so32588312wrh.8
+ for <qemu-trivial@nongnu.org>; Tue, 09 Nov 2021 04:14:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=BTHG+IHioR9XckfE607EcSZwJKlKt7tdKJYmzr/90Lk=;
+ b=h/hjxf2A8HrwYBgmLk9geoNcFlrWyQrqoRm4G2xNsfGHr9AWX54AkmqJ5otghyIBjW
+ A+FNm9GpLiA257FOt4SKn7OjEH7WlQnNBZg6TWXsO79X+N50W0qcMYq64RL7Qd70bmOx
+ JBWQOAmC7HO1zm3UZm5qdGsh5Kw3TH0qO2XF+XdLtOQucg8a0qZpFrDkfyL87v5xvLzx
+ GhbbIi1I36RkPYShEqzPoZ86qNwE68CoRyf6jjDr/NwzINeTgEqVxBsbxGZVB6Hb2GIf
+ +SbFPEP2eUSTLyVBZthUFFZO/UTUZeWWAwh+3mdRf+z+XXq6yiRCHd6SLAEu+1hM8+nc
+ Ojgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=BTHG+IHioR9XckfE607EcSZwJKlKt7tdKJYmzr/90Lk=;
+ b=ztWvJZe4J+RRvQ1N6u8rxvnbgPlYK61tUTbul2oVROV6gRbszqH4Dot0hEwPbx28Ne
+ g/OCfCBKfuG9ZrOVKZCKuduIgxt2we5m5nF9Kd5LHhXZTLOgt2FkMM5XTK9lt3iBe2hu
+ 93M1DG7kiqQmyCVQeh6NH7Odbh4c7iTB6tSv3muJIgBd8D3+PHTpU5HlEapnBzkSPxr5
+ DbMTumEmj+4JGxOT0mmzAFnS1t9Bx3kmD1tMPiih33XpTyXb+yBvNoD0FHEyUKmk/1g4
+ czY/DQmRF0bf90PcIyqEKICyNVGOjyKdnma3ew57JnKb4/Mn8sgaWhsSLuDysfVBy1mb
+ CFZQ==
+X-Gm-Message-State: AOAM532g4df88+2stxmEqLZZon+NiofIUnBLwNCE3RIR5Ko4pD8UCOKu
+ x0JdAR31acGDNaavhpPBeYGuabcYYmrj5Gfcf0E=
+X-Google-Smtp-Source: ABdhPJzjqq2NFK2z8tOpRRN9ODkv2sE4OX28Sf3nLayGSwWu0EWN3ph0D4l/3st/3jjVSpHL4DSoWw==
+X-Received: by 2002:a5d:5303:: with SMTP id e3mr8645036wrv.73.1636460045190;
+ Tue, 09 Nov 2021 04:14:05 -0800 (PST)
+Received: from [192.168.8.106] (169.red-37-158-143.dynamicip.rima-tde.net.
+ [37.158.143.169])
+ by smtp.gmail.com with ESMTPSA id t4sm2295435wmi.48.2021.11.09.04.14.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Nov 2021 04:14:04 -0800 (PST)
+Subject: Re: [PULL 0/6] Trivial branch for 6.2 patches
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20211109091238.817997-1-laurent@vivier.eu>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <fce90156-5bfb-5d39-a96d-10125ddbee9a@linaro.org>
+Date: Tue, 9 Nov 2021 13:14:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.1.0
-Subject: Re: [PATCH] acpi: tpm: Add missing device identification objects
+In-Reply-To: <20211109091238.817997-1-laurent@vivier.eu>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>
-References: <20211109003733.3177378-1-stefanb@linux.vnet.ibm.com>
- <CAMxuvax+T0sVp512idiCkngZJqFOWcQGR3mkfUy6-gO8yEofKA@mail.gmail.com>
- <CAMxuvayxZaBzs4RuR9JR5ocMfcXr-phQzcsFbBSPt1CH0PnoRg@mail.gmail.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <CAMxuvayxZaBzs4RuR9JR5ocMfcXr-phQzcsFbBSPt1CH0PnoRg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: cRW9yPsOTrIB_6Ei-AyJQKCUATdcOZkn
-X-Proofpoint-ORIG-GUID: ZypmZxlJJ1Eu12pTDBKQhIBAHLJ84Gzs
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
- definitions=2021-11-09_03,2021-11-08_02,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 mlxscore=0
- adultscore=0 mlxlogscore=999 bulkscore=0 lowpriorityscore=0 spamscore=0
- suspectscore=0 phishscore=0 impostorscore=0 malwarescore=0 clxscore=1011
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
- definitions=main-2111090070
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.364,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -46
+X-Spam_score: -4.7
+X-Spam_bar: ----
+X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.364,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,83 +84,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Nov 2021 11:50:13 -0000
+X-List-Received-Date: Tue, 09 Nov 2021 12:14:20 -0000
 
+On 11/9/21 10:12 AM, Laurent Vivier wrote:
+> The following changes since commit f10e7b9f6fc18be390b3bc189e04b5147eb8dbf8:
+> 
+>    Merge remote-tracking branch 'remotes/dgibson/tags/ppc-for-6.2-20211109' into staging (2021-11-09 07:18:33 +0100)
+> 
+> are available in the Git repository at:
+> 
+>    git://github.com/vivier/qemu.git tags/trivial-branch-for-6.2-pull-request
+> 
+> for you to fetch changes up to 66d96a1901b7d9cfdbc454d407710ca8bfb90947:
+> 
+>    docs/about/deprecated: Remove empty 'related binaries' section (2021-11-09 10:11:27 +0100)
+> 
+> ----------------------------------------------------------------
+> Trivial branch patches pull request 20211109
+> 
+> ----------------------------------------------------------------
+> 
+> BALATON Zoltan (1):
+>    hmp: Add shortcut to stop command to match cont
+> 
+> Laurent Vivier (1):
+>    tests/qtest/virtio-net: fix hotplug test case
+> 
+> Philippe Mathieu-Daudé (4):
+>    hw/m68k: Fix typo in SPDX tag
+>    .mailmap: Fix more contributor entries
+>    meson: Fix 'interpretor' typo
+>    docs/about/deprecated: Remove empty 'related binaries' section
+> 
+>   .mailmap                       | 4 ++++
+>   docs/about/deprecated.rst      | 3 ---
+>   hmp-commands.hx                | 4 ++--
+>   hw/char/goldfish_tty.c         | 2 +-
+>   hw/intc/goldfish_pic.c         | 2 +-
+>   hw/intc/m68k_irqc.c            | 2 +-
+>   hw/m68k/virt.c                 | 2 +-
+>   hw/misc/virt_ctrl.c            | 2 +-
+>   include/hw/char/goldfish_tty.h | 2 +-
+>   include/hw/intc/goldfish_pic.h | 2 +-
+>   include/hw/intc/m68k_irqc.h    | 2 +-
+>   include/hw/misc/virt_ctrl.h    | 2 +-
+>   meson.build                    | 2 +-
+>   tests/qtest/virtio-net-test.c  | 2 +-
+>   14 files changed, 17 insertions(+), 16 deletions(-)
 
-On 11/9/21 02:30, Marc-André Lureau wrote:
-> Hi
->
-> On Tue, Nov 9, 2021 at 11:25 AM Marc-André Lureau
-> <marcandre.lureau@redhat.com> wrote:
->> On Tue, Nov 9, 2021 at 4:37 AM Stefan Berger <stefanb@linux.vnet.ibm.com> wrote:
->>> Add missing device identification objects _STR and _UID. They will appear
->>> as files 'description' and 'uid' under Linux sysfs.
->>>
->>> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
->>> Cc: Michael S. Tsirkin <mst@redhat.com>
->>> Cc: Igor Mammedov <imammedo@redhat.com>
->>> Cc: Ani Sinha <ani@anisinha.ca>
->>> Fixes: #708
->>> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
->> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
->>
->> (on my host, for some reason the UID is 1, does this matter?)
+Applied, thanks.
 
-Let's make it '1'. My TPM 1.2 machine shows also '1'.
+r~
 
-specs:
-
-"6.1.12 _UID (Unique ID)
-This object provides OSPM with a logical device ID that does not change 
-across reboots. This object is
-optional, but is required when the device has no other way to report a 
-persistent unique device ID. The
-_UID must be unique across all devices with either a common _HID or 
-_CID. [...]"
-
-
-> And shouldn't this be done also for TIS device?
-
-Fixed. It was missing for the CRB device.
-
-Thanks.
-
-   Stefan
-
->
->>> ---
->>>   hw/arm/virt-acpi-build.c | 1 +
->>>   hw/i386/acpi-build.c     | 4 ++++
->>>   2 files changed, 5 insertions(+)
->>>
->>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>> index 674f902652..09456424aa 100644
->>> --- a/hw/arm/virt-acpi-build.c
->>> +++ b/hw/arm/virt-acpi-build.c
->>> @@ -228,6 +228,7 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
->>>
->>>       Aml *dev = aml_device("TPM0");
->>>       aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
->>> +    aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")));
->>>       aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->>>
->>>       Aml *crs = aml_resource_template();
->>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->>> index a3ad6abd33..d6d3541407 100644
->>> --- a/hw/i386/acpi-build.c
->>> +++ b/hw/i386/acpi-build.c
->>> @@ -1808,6 +1808,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->>>                       dev = aml_device("TPM");
->>>                       aml_append(dev, aml_name_decl("_HID",
->>>                                                     aml_string("MSFT0101")));
->>> +                    aml_append(dev,
->>> +                               aml_name_decl("_STR",
->>> +                                             aml_string("TPM 2.0 Device")));
->>> +                    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->>>                   } else {
->>>                       dev = aml_device("ISA.TPM");
->>>                       aml_append(dev, aml_name_decl("_HID",
->>> --
->>> 2.31.1
->>>
 
