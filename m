@@ -1,82 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkLao-00016k-FL
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 02:30:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40064)
+	id 1mkM1F-0005ft-Qp
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 02:58:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46150)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1mkLam-000110-Ul
- for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 02:30:52 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39539)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1mkM1D-0005f8-Qv; Tue, 09 Nov 2021 02:58:11 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]:55876
+ helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1mkLak-0008Mr-Nm
- for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 02:30:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636443048;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GwPT1QYVjGy3wzj6f3joG9IhoMPLqg0OMa8v2OxOmd4=;
- b=IWD64HNesPVMlvK0zL30vBgPqwyy1KNMxlOb2kSFTZqmS6FnnQZSLts1VoOPxlmKXvqJiV
- Ao3Mvx/OlkFkLHSyc0okLgq9h5VbMsc0Gap3aT9XrHOp8seZmaKZ1WSvqQf504mLeriR2R
- T5uwRXVwI4ot4M/Ay8BGL+3YOGx+/uo=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-82-IKzgxjB-MMi8Lx6WsJkzYw-1; Tue, 09 Nov 2021 02:30:47 -0500
-X-MC-Unique: IKzgxjB-MMi8Lx6WsJkzYw-1
-Received: by mail-pl1-f198.google.com with SMTP id
- m5-20020a170902bb8500b0013a2b785187so8198744pls.11
- for <qemu-trivial@nongnu.org>; Mon, 08 Nov 2021 23:30:47 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=GwPT1QYVjGy3wzj6f3joG9IhoMPLqg0OMa8v2OxOmd4=;
- b=AuHhjl9v+i67PLdAuvv/lp1M6gt84gSzlotK4F+JpkhVlolFGe6rHIJNU02OrXUEgY
- 0EUthjAMf2bn7bpMFZW6xUgSkZN6JDCQa3nGabPanM5Ni69g6DiLtkyy7ew4OCDqpCAU
- syVz7zmDTYcvTiDvXIbebNKMUaM9jCan6zb9Zj40S4Wf1ZS+dzwyuKdPvYJA4sI5JapO
- d/ddoO1K+5dNYU+cH3uah1OWtL2f5ziVkUGT6Fc8deDJ0ENE3AOpl8Ms8CYB6xFc52/I
- JqeSvsWfprql+TW4ASPZfgvO7mHSIa0ouY1GE4T9lnkVw9wnZaYwEedO7/D0BY35JyXb
- zTVA==
-X-Gm-Message-State: AOAM532IbUt2QTOzzQ2AhfIQQVOa2p/6EyB0/CXAq8NFijbiSd6dEJo7
- 1w+Uovx5d2k0HOxb23qFZ2hwbTVQqzrrCZTCDaT05VQKxVlVymkGVoxd7W9xj5zcbQFuUSrHePT
- qQygc3nTjpTivudR7LhJIl3D6paCT+bq4iA==
-X-Received: by 2002:a17:90a:9501:: with SMTP id
- t1mr5057729pjo.134.1636443046364; 
- Mon, 08 Nov 2021 23:30:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxtlcRAZHq04IEqzEW7CgbhKxWU24cxLMyKgZRYx+ehi+ZoghfQD6MUl0cEvIYojui1a6vytoU0Inb0EQG1NgA=
-X-Received: by 2002:a17:90a:9501:: with SMTP id
- t1mr5057702pjo.134.1636443046163; 
- Mon, 08 Nov 2021 23:30:46 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1mkM1B-0001XZ-Cg; Tue, 09 Nov 2021 02:58:11 -0500
+Received: from macbook02.fritz.box (p57b42bf1.dip0.t-ipconnect.de
+ [87.180.43.241])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id E734CDA0D1E;
+ Tue,  9 Nov 2021 08:58:05 +0100 (CET)
+To: Alistair Francis <alistair23@gmail.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20211108200756.1302697-1-sw@weilnetz.de>
+ <CAKmqyKPSHycrLo5=Eh5NeZVVE8aMkQXCVGxmQrKYEs50k6HLqQ@mail.gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
+Subject: Re: [PATCH] device_tree: Fix compiler error
+Message-ID: <0f54b659-b8d2-6124-8e96-b7fe75f89fa5@weilnetz.de>
+Date: Tue, 9 Nov 2021 08:58:04 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.14.0
 MIME-Version: 1.0
-References: <20211109003733.3177378-1-stefanb@linux.vnet.ibm.com>
- <CAMxuvax+T0sVp512idiCkngZJqFOWcQGR3mkfUy6-gO8yEofKA@mail.gmail.com>
-In-Reply-To: <CAMxuvax+T0sVp512idiCkngZJqFOWcQGR3mkfUy6-gO8yEofKA@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Tue, 9 Nov 2021 11:30:35 +0400
-Message-ID: <CAMxuvayxZaBzs4RuR9JR5ocMfcXr-phQzcsFbBSPt1CH0PnoRg@mail.gmail.com>
-Subject: Re: [PATCH] acpi: tpm: Add missing device identification objects
-To: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>, 
- Stefan Berger <stefanb@linux.ibm.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mlureau@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAKmqyKPSHycrLo5=Eh5NeZVVE8aMkQXCVGxmQrKYEs50k6HLqQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mlureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -52
+X-Spam_score: -5.3
+X-Spam_bar: -----
+X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.364,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,74 +54,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Nov 2021 07:30:53 -0000
+X-List-Received-Date: Tue, 09 Nov 2021 07:58:12 -0000
 
-Hi
+Am 08.11.21 um 23:43 schrieb Alistair Francis:
 
-On Tue, Nov 9, 2021 at 11:25 AM Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@redhat.com> wrote:
+> On Tue, Nov 9, 2021 at 6:08 AM Stefan Weil <sw@weilnetz.de> wrote:
+>> A build with gcc (Debian 10.2.1-6) 10.2.1 20210110 fails:
+>>
+>> ../../../softmmu/device_tree.c: In function =E2=80=98qemu_fdt_add_path=
+=E2=80=99:
+>> ../../../softmmu/device_tree.c:560:18: error: =E2=80=98retval=E2=80=99=
+ may be used uninitialized in this function [-Werror=3Dmaybe-uninitialize=
+d]
+>>    560 |     int namelen, retval;
+>>        |                  ^~~~~~
+>>
+>> This is not a real error, but the compiler can be satisfied with a sma=
+ll change.
+> Why don't we just initalise retval?
 >
-> On Tue, Nov 9, 2021 at 4:37 AM Stefan Berger <stefanb@linux.vnet.ibm.com>=
- wrote:
-> >
-> > Add missing device identification objects _STR and _UID. They will appe=
-ar
-> > as files 'description' and 'uid' under Linux sysfs.
-> >
-> > Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> > Cc: Michael S. Tsirkin <mst@redhat.com>
-> > Cc: Igor Mammedov <imammedo@redhat.com>
-> > Cc: Ani Sinha <ani@anisinha.ca>
-> > Fixes: #708
-> > Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
->
-> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->
-> (on my host, for some reason the UID is 1, does this matter?)
+> Alistair
 
-And shouldn't this be done also for TIS device?
 
->
-> > ---
-> >  hw/arm/virt-acpi-build.c | 1 +
-> >  hw/i386/acpi-build.c     | 4 ++++
-> >  2 files changed, 5 insertions(+)
-> >
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 674f902652..09456424aa 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -228,6 +228,7 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachi=
-neState *vms)
-> >
-> >      Aml *dev =3D aml_device("TPM0");
-> >      aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-> > +    aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")=
-));
-> >      aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-> >
-> >      Aml *crs =3D aml_resource_template();
-> > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> > index a3ad6abd33..d6d3541407 100644
-> > --- a/hw/i386/acpi-build.c
-> > +++ b/hw/i386/acpi-build.c
-> > @@ -1808,6 +1808,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linke=
-r,
-> >                      dev =3D aml_device("TPM");
-> >                      aml_append(dev, aml_name_decl("_HID",
-> >                                                    aml_string("MSFT0101=
-")));
-> > +                    aml_append(dev,
-> > +                               aml_name_decl("_STR",
-> > +                                             aml_string("TPM 2.0 Devic=
-e")));
-> > +                    aml_append(dev, aml_name_decl("_UID", aml_int(0)))=
-;
-> >                  } else {
-> >                      dev =3D aml_device("ISA.TPM");
-> >                      aml_append(dev, aml_name_decl("_HID",
-> > --
-> > 2.31.1
-> >
+retval is already set in the do ... while loop and was also set in the=20
+former while loop.
+
+If we set it in the declaration (int retval =3D 0), a clever compiler=20
+might complain that we assign a value which is never used.
+
+And changing from the while loop to the do ... while loop also avoids=20
+one compare statement, so depending on the compiler optimizations could=20
+make the code a little bit faster.
+
+Stefan
+
+
 
 
