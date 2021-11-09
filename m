@@ -1,44 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkUqb-0006Br-5V
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 12:23:49 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36712)
+	id 1mkVOx-0001JB-VU
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Nov 2021 12:59:19 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1mkUqZ-00067i-2S; Tue, 09 Nov 2021 12:23:47 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]:58932
- helo=mail.v2201612906741603.powersrv.de)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1mkVOv-0001Di-Ut
+ for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 12:59:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:28929)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1mkUqW-0001Ze-JD; Tue, 09 Nov 2021 12:23:46 -0500
-Received: from macbook02.fritz.box (p57b42bf1.dip0.t-ipconnect.de
- [87.180.43.241])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 93648DA106C;
- Tue,  9 Nov 2021 18:23:42 +0100 (CET)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1mkVOu-0001y0-9I
+ for qemu-trivial@nongnu.org; Tue, 09 Nov 2021 12:59:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1636480755;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AVRCR5K22DBiFiZF4nUG9c7Eo7efS0bMdisrOMbfGtY=;
+ b=I44GEJPckrnfDw2wUQJSvocJQtWpH7Sd4cHXxZO3ZIqOTz1xAsFY328dXS1jvjhj6e9FXa
+ nsDslI32RdaPx3FozHxCPkuUq6A3FfKQ4E7hRFO5Ro5Xdy9LyDvR3MeaqEAT3J5SqQvw1c
+ 6fGaHftsfLyfpuHf3KHncdgN/eS9yZE=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-273-bv3NWYDsORu4J46PRItanA-1; Tue, 09 Nov 2021 12:59:14 -0500
+X-MC-Unique: bv3NWYDsORu4J46PRItanA-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ t20-20020a056402525400b003e2ad6b5ee7so18656935edd.8
+ for <qemu-trivial@nongnu.org>; Tue, 09 Nov 2021 09:59:13 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=AVRCR5K22DBiFiZF4nUG9c7Eo7efS0bMdisrOMbfGtY=;
+ b=t8BcJRX348/0JVAAgeSG2owMzoz+bJwUwkDQzPD8Qh4QV0K9X5q77YyRrM9h+54G7v
+ wHT0s/5BybHoK0JG7tfQAKU8vZNZb4QS/WmhL6X7EZZyTcEUaFVjkAsRWFzU5ijpz1Bi
+ NIKPJ4bJzSJRc8KZWxpvIhUIKTaC8yC9ywFnEUZLcahUeSSTOLftGoVsB2dN7dU8Km0u
+ ZLEIrkv9sj6LmoQQaX1IZ350p8VouofradNVijy9FYVGRu2BJMtTdJeUvg5Nke87fPrh
+ Hrs0QJNq2yjSP1AtVcpEfxuDZthg3M1PgE66shT0k99gG+WWeLAoj39XpatsEt5LONUt
+ qWJA==
+X-Gm-Message-State: AOAM533NaKpIqtEXqYzaG2+ryYWhEF7J6bKVtLReGk1VIDIbgVmA50mw
+ zjkajtXLMNuqq9c/YZqvgQoAmZdEPaFWcCRj8WH9QLyeELh+cmDbO2PCZJHHr3BFWFHRtMDDqWi
+ CGTwCGqbdAgLUoai2iQ==
+X-Received: by 2002:a05:6402:1c95:: with SMTP id
+ cy21mr12493480edb.320.1636480753061; 
+ Tue, 09 Nov 2021 09:59:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwCoGxhY+u6YaA9zyW2G+v2Z1hsS9JxIi2P8LrI5ys7I6FZxiCes45BUCVo8ZLCGzh9XNdH8g==
+X-Received: by 2002:a05:6402:1c95:: with SMTP id
+ cy21mr12493443edb.320.1636480752814; 
+ Tue, 09 Nov 2021 09:59:12 -0800 (PST)
+Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id e7sm12141627edk.3.2021.11.09.09.59.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Nov 2021 09:59:12 -0800 (PST)
+Message-ID: <5e3a38be-cc80-f870-04d1-bd0e225f402c@redhat.com>
+Date: Tue, 9 Nov 2021 18:59:11 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
 Subject: Re: [PATCH] configure: Symlink binaries using .exe suffix with MinGW
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Yonggang Luo <luoyonggang@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+ Yonggang Luo <luoyonggang@gmail.com>
 References: <20211109144504.1541206-1-philmd@redhat.com>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <81daf35f-da64-9d7b-cbf5-d99dc199f676@weilnetz.de>
-Date: Tue, 9 Nov 2021 18:23:39 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.14.0
-MIME-Version: 1.0
+From: Paolo Bonzini <pbonzini@redhat.com>
 In-Reply-To: <20211109144504.1541206-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -52
-X-Spam_score: -5.3
-X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.364,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-3.364, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -51,19 +97,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Nov 2021 17:23:47 -0000
+X-List-Received-Date: Tue, 09 Nov 2021 17:59:18 -0000
 
-Am 09.11.21 um 15:45 schrieb Philippe Mathieu-Daudé:
-
+On 11/9/21 15:45, Philippe Mathieu-Daudé wrote:
 > When using the MinGW toolchain, we use the .exe suffix for the
 > executable name. We also need to use it for the symlinks in the
 > build directory.
->
+> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+
+but perhaps we can get rid of the symlinks instead?...
+
+Paolo
+
 > ---
 >   configure | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
->
+> 
 > diff --git a/configure b/configure
 > index 48c21775f3a..31e8f586dc7 100755
 > --- a/configure
@@ -77,12 +129,6 @@ Am 09.11.21 um 15:45 schrieb Philippe Mathieu-Daudé:
 >       mkdir -p $target_dir
 >       case $target in
 >           *-user) symlink "../qemu-$target_name" "$target_dir/qemu-$target_name" ;;
-
-
-I never missed those links, and so I did not notice that they were 
-broken. But fixing them is reasonable of course, thank you.
-
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
+> 
 
 
