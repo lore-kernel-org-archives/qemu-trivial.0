@@ -1,80 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mkmNp-0007ne-LZ
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Nov 2021 07:07:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35298)
+	id 1mknCV-00067Y-4f
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Nov 2021 07:59:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48088)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mkmNo-0007n4-ID
- for qemu-trivial@nongnu.org; Wed, 10 Nov 2021 07:07:16 -0500
-Received: from [2a00:1450:4864:20::331] (port=43000
- helo=mail-wm1-x331.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1mkmNn-0004EO-2g
- for qemu-trivial@nongnu.org; Wed, 10 Nov 2021 07:07:16 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- d72-20020a1c1d4b000000b00331140f3dc8so1801705wmd.1
- for <qemu-trivial@nongnu.org>; Wed, 10 Nov 2021 04:07:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ZPZvhyAHMF6fQv7vvN9CcWvuGq7Ra6AXidp/MDJIZBg=;
- b=EsP47IDq3jUtyigkbK3Wto/mAZB5XI8Q1tZB0oq6k54/gJBg7XdOVN3tr/SKQkdXoc
- duWZ7RXHBpIs5RqffA2qx3m96nWfeGFjOb0+5D6nHUZxH+qihq0LXn6jpSvwgD34gno+
- Df3E3EGQcsHALyzb4x39TrT5Ow5iaORuYj/nOHl1HYs/BvhzKzD3e0xLCvvZEKZ8x7Te
- BaczYsPdgXefuPvEJzsLfWK91maVwissjIbpGjkbniNMYhF91ufGUFAD6Anx/r7F+sJp
- dJr+yTlPRGjOgu2oyVJ6HJP1ujqlemkL+zUFBFLEbOHWA7tKwdFa+qBJIeM/UgvX/f0/
- gwaA==
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mkjqK-0005Et-K6
+ for qemu-trivial@nongnu.org; Wed, 10 Nov 2021 04:24:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:30019)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mkjqH-0003Ti-8d
+ for qemu-trivial@nongnu.org; Wed, 10 Nov 2021 04:24:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1636536268;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SVVGPNEAyVqGYYnxBUr0FKy0AlNi0LQj4Fzcteyyfxk=;
+ b=a/8RImMVxVltQzGXYal8DertxscU0B6gDEFTla5mx0AYaO/4dNk8+EgKQNTdLxy4eAibzW
+ Og+1Pt9BxgtRYmsC5dGFcYaz3HULlsyddBy0S0fwRVJLslrzlS1XLAmKyqf3bvRufXIYwq
+ 2EHJOeooM1RsaNVSQKjk+2Dzi0S+jO8=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-342-R_hzvJzmNSKoEtzlCCs_vA-1; Wed, 10 Nov 2021 04:24:25 -0500
+X-MC-Unique: R_hzvJzmNSKoEtzlCCs_vA-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ u4-20020a5d4684000000b0017c8c1de97dso267034wrq.16
+ for <qemu-trivial@nongnu.org>; Wed, 10 Nov 2021 01:24:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=ZPZvhyAHMF6fQv7vvN9CcWvuGq7Ra6AXidp/MDJIZBg=;
- b=qQSfjaXIv+/Eq5rnZbDyJeiE9kk0jm3YL3ipqTXNAnrnqqSfrOkB3CgyrC1n5eT9BH
- F+AUUZXkLIkdCzWIRnko8THjfCqKfbuwVT+5WnUop8sMKcwTomt4+ehGValxdnwelpzI
- UU/PSOppInvF0ueqBXPBlKgxJ5xXi4PeC+yb8bDtcgjAlsAeXU3PAMZ8K0FSppcjnIPy
- RBPAN6ja3immhruXFu+j49gu9pLmTyjtG4gCFkfrzMXJJjx0xugKCA/IstLgah+B4RvA
- +nJhrXs0lmt/gGpE3oQV06DP5wRuqM+tL+Ky5IHYovLhidZlOxr1Vw5gRRhSTBUdqpQT
- AuyQ==
-X-Gm-Message-State: AOAM531JqewxpFazeum8eABd6OMRLC/rqrhT8Brvm+2XM2ZJ/5SNGBEh
- 9AaGda8BjGfEzITGOrhNoQWDEg==
-X-Google-Smtp-Source: ABdhPJxXaDlbmXBHLsdzt5YnfVC9mYvU9C1vEzqQ3GoyVKDFkScAEX1QfrOymmPyA8eAOt8uQ8SrYQ==
-X-Received: by 2002:a7b:c841:: with SMTP id c1mr16024089wml.80.1636546033133; 
- Wed, 10 Nov 2021 04:07:13 -0800 (PST)
-Received: from [192.168.8.106] (104.red-2-142-241.dynamicip.rima-tde.net.
- [2.142.241.104])
- by smtp.gmail.com with ESMTPSA id n15sm5886874wmq.38.2021.11.10.04.07.11
+ bh=SVVGPNEAyVqGYYnxBUr0FKy0AlNi0LQj4Fzcteyyfxk=;
+ b=ap0k+bFVPOC0sXhV3Exa5GLvF8EG+WtmSeKXpDQvSMo8TE9CclbzO0U0iwiq03RItX
+ LmMY+LK+44fVXdR5bTFQKSjwPlxOGEIoG75+VbfQvwIsQiJ90rOt8JaHN+HVvEBlrqqF
+ IRPeB4YIF78Y1MuHLhGa1HFxBUhP3khAetv4pgx85tkY6FPg/TDE9syIPodEsRHKvGeD
+ UQEM01iI/WLWhzcRgV9RysNnKMvIH7lXYxYWaEZjH1lsDHydWS9EV6qS0wjermVA5Ohn
+ YhAP8JgFnGRUKdTMdUjrc2cjqyg14lVbZNNNTM3LL9io2uvEkcD3TGRwpwuFLrk47sxi
+ EYaQ==
+X-Gm-Message-State: AOAM533n6n+7hcbyyZ5EvD4VBkT1v4gR+h7cRfmnNMK24fG/zNOn1wQc
+ f8uzMjJHm3E52Y/StTfvVB1h1NgmLLieZsr3YpbLoNXTz7UDYl9ubfpKXMlfkSul2s1ukLWu/eL
+ EUSAcy9UR1O275FgQOQ==
+X-Received: by 2002:adf:e109:: with SMTP id t9mr17144462wrz.387.1636536264232; 
+ Wed, 10 Nov 2021 01:24:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzAtQpgqIQzNixRTEE/0q4OCtHYJse4vp61ois7RztIvg6bes38ghvHwlL7vjDjtsHJV9LZbw==
+X-Received: by 2002:adf:e109:: with SMTP id t9mr17144432wrz.387.1636536264009; 
+ Wed, 10 Nov 2021 01:24:24 -0800 (PST)
+Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id c5sm19302285wrd.13.2021.11.10.01.24.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 Nov 2021 04:07:12 -0800 (PST)
-Subject: Re: [PATCH v2] tcg: Remove TCI experimental status
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
- Thomas Huth <thuth@redhat.com>
-References: <20211106111457.517546-1-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <74388486-4f19-bfbc-6b0f-8de2a13120b0@linaro.org>
-Date: Wed, 10 Nov 2021 13:07:07 +0100
+ Wed, 10 Nov 2021 01:24:23 -0800 (PST)
+Subject: Re: [PATCH] acpi: tpm: Add missing device identification objects
+To: Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: "Michael S . Tsirkin" <mst@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov
+ <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ marcandre.lureau@redhat.com, Stefan Berger <stefanb@linux.ibm.com>
+References: <20211109004615.993911-1-stefanb@linux.vnet.ibm.com>
+From: Eric Auger <eauger@redhat.com>
+Message-ID: <4584426c-6bd3-c2f7-74cd-d22b35a2e4f6@redhat.com>
+Date: Wed, 10 Nov 2021 10:24:22 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <20211106111457.517546-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20211109004615.993911-1-stefanb@linux.vnet.ibm.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::331
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.678,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.678, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 10 Nov 2021 07:59:37 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,32 +95,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Nov 2021 12:07:16 -0000
+X-List-Received-Date: Wed, 10 Nov 2021 09:24:32 -0000
 
-On 11/6/21 12:14 PM, Philippe Mathieu-Daudé wrote:
-> The following commits (released in v6.0.0) made raised the
-> quality of the TCI backend to the other TCG architectures,
-> thus is is not considerated experimental anymore:
-> - c6fbea47664..2f74f45e32b
-> - dc09f047edd..9e9acb7b348
-> - b6139eb0578..2fc6f16ca5e
-> - dbcbda2cd84..5e8892db93f
+Hi Stefan,
+
+On 11/9/21 1:46 AM, Stefan Berger wrote:
+> From: Stefan Berger <stefanb@linux.ibm.com>
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
-> ---
-> v2:
-> - rebase
-> - precise sysemu/user (Richard)
+> Add missing device identification objects _STR and _UID. They will appear
+> as files 'description' and 'uid' under Linux sysfs.
 > 
-> Supersedes:<20210920062306.2723797-1-f4bug@amsat.org>
+> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: Ani Sinha <ani@anisinha.ca>
+> Fixes: #708
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Thanks
+
+Eric
+> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
 > ---
->   docs/about/build-platforms.rst | 10 ++++++----
->   meson.build                    |  4 ++--
->   meson_options.txt              |  2 +-
->   scripts/meson-buildoptions.sh  |  3 +--
->   4 files changed, 10 insertions(+), 9 deletions(-)
+>  hw/arm/virt-acpi-build.c | 1 +
+>  hw/i386/acpi-build.c     | 4 ++++
+>  2 files changed, 5 insertions(+)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 674f902652..09456424aa 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -228,6 +228,7 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
+>  
+>      Aml *dev = aml_device("TPM0");
+>      aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
+> +    aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")));
+>      aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>  
+>      Aml *crs = aml_resource_template();
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index a3ad6abd33..d6d3541407 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1808,6 +1808,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>                      dev = aml_device("TPM");
+>                      aml_append(dev, aml_name_decl("_HID",
+>                                                    aml_string("MSFT0101")));
+> +                    aml_append(dev,
+> +                               aml_name_decl("_STR",
+> +                                             aml_string("TPM 2.0 Device")));
+> +                    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>                  } else {
+>                      dev = aml_device("ISA.TPM");
+>                      aml_append(dev, aml_name_decl("_HID",
+> 
 
-Applied to tcg-next.
-
-r~
 
