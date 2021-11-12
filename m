@@ -1,89 +1,141 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mknCV-00067Y-4f
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Nov 2021 07:59:39 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48088)
+	id 1mlbLw-0007Jv-KF
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Nov 2021 13:32:44 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47616)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mkjqK-0005Et-K6
- for qemu-trivial@nongnu.org; Wed, 10 Nov 2021 04:24:32 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:30019)
+ (Exim 4.90_1) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1mlbLv-0007JS-6z; Fri, 12 Nov 2021 13:32:43 -0500
+Received: from mail-eopbgr60132.outbound.protection.outlook.com
+ ([40.107.6.132]:51334 helo=EUR04-DB3-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1mkjqH-0003Ti-8d
- for qemu-trivial@nongnu.org; Wed, 10 Nov 2021 04:24:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636536268;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SVVGPNEAyVqGYYnxBUr0FKy0AlNi0LQj4Fzcteyyfxk=;
- b=a/8RImMVxVltQzGXYal8DertxscU0B6gDEFTla5mx0AYaO/4dNk8+EgKQNTdLxy4eAibzW
- Og+1Pt9BxgtRYmsC5dGFcYaz3HULlsyddBy0S0fwRVJLslrzlS1XLAmKyqf3bvRufXIYwq
- 2EHJOeooM1RsaNVSQKjk+2Dzi0S+jO8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-342-R_hzvJzmNSKoEtzlCCs_vA-1; Wed, 10 Nov 2021 04:24:25 -0500
-X-MC-Unique: R_hzvJzmNSKoEtzlCCs_vA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- u4-20020a5d4684000000b0017c8c1de97dso267034wrq.16
- for <qemu-trivial@nongnu.org>; Wed, 10 Nov 2021 01:24:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=SVVGPNEAyVqGYYnxBUr0FKy0AlNi0LQj4Fzcteyyfxk=;
- b=ap0k+bFVPOC0sXhV3Exa5GLvF8EG+WtmSeKXpDQvSMo8TE9CclbzO0U0iwiq03RItX
- LmMY+LK+44fVXdR5bTFQKSjwPlxOGEIoG75+VbfQvwIsQiJ90rOt8JaHN+HVvEBlrqqF
- IRPeB4YIF78Y1MuHLhGa1HFxBUhP3khAetv4pgx85tkY6FPg/TDE9syIPodEsRHKvGeD
- UQEM01iI/WLWhzcRgV9RysNnKMvIH7lXYxYWaEZjH1lsDHydWS9EV6qS0wjermVA5Ohn
- YhAP8JgFnGRUKdTMdUjrc2cjqyg14lVbZNNNTM3LL9io2uvEkcD3TGRwpwuFLrk47sxi
- EYaQ==
-X-Gm-Message-State: AOAM533n6n+7hcbyyZ5EvD4VBkT1v4gR+h7cRfmnNMK24fG/zNOn1wQc
- f8uzMjJHm3E52Y/StTfvVB1h1NgmLLieZsr3YpbLoNXTz7UDYl9ubfpKXMlfkSul2s1ukLWu/eL
- EUSAcy9UR1O275FgQOQ==
-X-Received: by 2002:adf:e109:: with SMTP id t9mr17144462wrz.387.1636536264232; 
- Wed, 10 Nov 2021 01:24:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzAtQpgqIQzNixRTEE/0q4OCtHYJse4vp61ois7RztIvg6bes38ghvHwlL7vjDjtsHJV9LZbw==
-X-Received: by 2002:adf:e109:: with SMTP id t9mr17144432wrz.387.1636536264009; 
- Wed, 10 Nov 2021 01:24:24 -0800 (PST)
-Received: from ?IPv6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id c5sm19302285wrd.13.2021.11.10.01.24.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 Nov 2021 01:24:23 -0800 (PST)
-Subject: Re: [PATCH] acpi: tpm: Add missing device identification objects
-To: Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: "Michael S . Tsirkin" <mst@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov
- <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- marcandre.lureau@redhat.com, Stefan Berger <stefanb@linux.ibm.com>
-References: <20211109004615.993911-1-stefanb@linux.vnet.ibm.com>
-From: Eric Auger <eauger@redhat.com>
-Message-ID: <4584426c-6bd3-c2f7-74cd-d22b35a2e4f6@redhat.com>
-Date: Wed, 10 Nov 2021 10:24:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
-MIME-Version: 1.0
-In-Reply-To: <20211109004615.993911-1-stefanb@linux.vnet.ibm.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eauger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+ (Exim 4.90_1) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1mlbLp-0000Qn-A4; Fri, 12 Nov 2021 13:32:39 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mjyhXPWyTZTx0SJWyWz1rq7EFpvVjiyoMQbGfCmWhKkbC8CpZxvI/qoNYJOvJZPVkEW5434VPOkglr9z+U0thbtx3LtfQNzoeta4aSpkR40LgSKXxIsXipfmCxJ2tk1YvWJXyuJJxteo9OWQTjx0yJF7SZ/UKHdxYbDfkovu9jLZYPeYaaeVWi/k2mGRzLkUDHebeLtHZYTdSPW5QK5kybY1tjtKJrzhlu7oDkpd9EfIHU2cx/wjyhFT4udi3nVW0/lNuH51/0/2YCXZbfQuwe4kOzEmvQqvHWQO/OChxSfKbQkCBWp+rIKL5uZv5Eec2PH0hg1H7TQPCo3QVruunA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9fheNvSAf7dz/AhsaD2culb7jluJRlXd1ZdejTVzlkc=;
+ b=RmAccDffeoq16LpfQ2LpElOkasuA26bcQZBPmxTYNYYq3bfJwcmAQwcXHty+WT464+SthxoKsa0f6h68OGm+Ry9x9EDy6p2+1KgLLbhoC9eNwkzuVvIPa1d+MgUT+qfVZP2PKw9nXMILEcHwV9JuAjdX6VkcHbv2PfbPTL5P9iCuzhUiwVhvY9/9BdbRHi45T89hrzpC1dpD0xnOKYNCS4/+4Fj9JJK41nhKdojrzNmEt/nmVe26nZ9TW031oNcD+BU96g+YjFMEKrMyBa+KDP+hBFWE8sai479XsVUYeI+/hdhg65pcXyuvfLpx/HHF/e6T7RheZ92CRNEChjcCrQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9fheNvSAf7dz/AhsaD2culb7jluJRlXd1ZdejTVzlkc=;
+ b=LBiJeXm50tSy0W42WmmfapWHYmQ2PA3mh/xl/wYmBoSKIt295kPNWdwr/jeDvvJSpYRYaYa0J/421CfVccOpunYh7lOc7mfAnVR0Li01JonUrDrUMUmcmE9gZpuCvNESr0X3Wz6pznTrFiURsqvs6kOK32aumChjsekZrSOog24=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=virtuozzo.com;
+Received: from AM7PR08MB5494.eurprd08.prod.outlook.com (2603:10a6:20b:dc::15)
+ by AS8PR08MB6102.eurprd08.prod.outlook.com (2603:10a6:20b:23d::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.19; Fri, 12 Nov
+ 2021 18:32:34 +0000
+Received: from AM7PR08MB5494.eurprd08.prod.outlook.com
+ ([fe80::a994:9f7c:53a5:84bc]) by AM7PR08MB5494.eurprd08.prod.outlook.com
+ ([fe80::a994:9f7c:53a5:84bc%4]) with mapi id 15.20.4690.018; Fri, 12 Nov 2021
+ 18:32:34 +0000
+Message-ID: <54b75db4-8867-d1ee-e32c-bc3e4c23ec28@virtuozzo.com>
+Date: Fri, 12 Nov 2021 21:32:31 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [PATCH v4 0/1] hw/hyperv/vmbus: Is it maintained?
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -51
-X-Spam_score: -5.2
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Jon Doron <arilou@gmail.com>, qemu-trivial@nongnu.org,
+ Roman Kagan <rkagan@virtuozzo.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "Maciej S . Szmigiero" <maciej.szmigiero@oracle.com>,
+ "Denis V. Lunev" <den@openvz.org>, Roman Kagan <rvkagan@yandex-team.ru>
+References: <20211106134155.582312-1-philmd@redhat.com>
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+In-Reply-To: <20211106134155.582312-1-philmd@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: AS9PR05CA0047.eurprd05.prod.outlook.com
+ (2603:10a6:20b:489::26) To AM7PR08MB5494.eurprd08.prod.outlook.com
+ (2603:10a6:20b:dc::15)
+MIME-Version: 1.0
+Received: from [192.168.100.10] (185.215.60.229) by
+ AS9PR05CA0047.eurprd05.prod.outlook.com (2603:10a6:20b:489::26) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.16 via Frontend
+ Transport; Fri, 12 Nov 2021 18:32:33 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: a0f58e79-895f-4d8f-80d3-08d9a60acb1d
+X-MS-TrafficTypeDiagnostic: AS8PR08MB6102:
+X-Microsoft-Antispam-PRVS: <AS8PR08MB610239174DEB98FC65767295C1959@AS8PR08MB6102.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:5236;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: sJ161wymCV1kGrmQGfK9aTEzp6wsL16+Mu5v0tzvDhBryrsjzqfyf1W+KlJP3N57hhr3SBu5XOzJ9jkbB75rO1JLMpNNIfe8kle3hfTtBbIrSdxuqXPS7CEya3ZB0dRgSc4HTR4omZ+NCy+vYd49zDGTWBzAzhglC7n6NzA7VtT6cqM+qmLEEtNt/9CVUEUCdsNPBpllddTebSWBLiFXw0kQpWlHJlqXbHu1PRjYdNPaIb9VAfJtalCkH3zhipaCdsDjwnHLdF2460tkce3rTGEWXs8YvaM1JNzJCrkHlpwWvX59EvnZ2dwdLKPpPcRs+vos4VYUgz/g18Z5r+fxyx7KoxxvXA9w/aIYYAcZTocDenfJQMBQpOG1c9UMEg18Jrlp5hD6pE1DetdGXa60wvI8hictau+ABElhlO4eu3NadeXjHDjYGONJo1yUGGAIbnR58ftPnt1/I87cBHTfBXnJS6197gfhcmFcwC0NUDLA6xlkyF1hFGVpvK6SdG4jr8OMERglmD4Xp/MxI7yGaOrZeuToVZg5wOOv3+mmkqVmGIiBYBu+0t9Nd/3mZ2JmjOXY3KJU/AqnhicmGb8x+Ie6AeFLZznsf3arCXTDzadl3rcWbgh8/mOZX4IiX3IgbcnVfuV9P0IX6TjYaiewLWCDKDFQDF5hY9LBZqXvPVfQbr/DwAOuZFxOXYV6R4hXixEOZaYzKeF7xDiUqQHbDB1MJXVVWinVwy3srgfemQUw/2d6ykpXAjmU2QUFpcTj3+Roj+WrzMHXq3+Q461/EQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM7PR08MB5494.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(52116002)(83380400001)(186003)(31686004)(8936002)(6486002)(26005)(86362001)(66476007)(66556008)(2906002)(956004)(66946007)(316002)(2616005)(16576012)(4326008)(5660300002)(508600001)(8676002)(4744005)(31696002)(38350700002)(38100700002)(36756003)(54906003)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eUptaUIzbm1zbWFaZHVqMTVZZklBenVjY2grUjhmajhWbVhDa1pkRWhwUmRT?=
+ =?utf-8?B?YWpyM2tRekRnRnpPRG5XUVV6NXV2WGlhWng5cFlqL1BzZ3B5aXgwOEd4QTFw?=
+ =?utf-8?B?SnRDS3F0d2J3MXJja1RaSHRNSmcyM0lnNW9tUGlJQk5vaTJVL0NTSnhGRjk4?=
+ =?utf-8?B?dC81OGh1YkZtL2QvRkhxNkpEcDUwcmJDSUs1MUZxTk0xbk5TU0hmY3FwN0gw?=
+ =?utf-8?B?QytyK1VqZGU5Q0dLZ0M5UEtEanVXTG1TK0VmUVNxYXNPYzRjSDZ2Q1REQVpk?=
+ =?utf-8?B?ckZkM0wyWG1FMGd5WGRDTzJYOGF4QjJ6Sm5YRm9vR0owRTFYeWl1b1hKZ0RW?=
+ =?utf-8?B?N0UzOWg0T1VVQUlLTlp3N3QvRVBuZkp0NlBBendxRmdUVGxtbXBVUnU5UFU0?=
+ =?utf-8?B?ZU1FUHFpNnBQaU5RY1ZYOGszMCtjbmpYQUdNODVIT3FwaVhqT1VEOEgyQ1RB?=
+ =?utf-8?B?Vi9tZDBWc0NEUXBYVUpwTXRhNUI5VGJjeXpRM1VBd2ltL081M1R3TXh4Y0Iv?=
+ =?utf-8?B?bVZjbllzbzBkZXZ4UG1kT2tTelZwREY2MWFLbnR4cjBEazZOc2k0eEQ4ZXR2?=
+ =?utf-8?B?UkVjeGtNd3oxa3E3RGZBaWZ3djRvUUNBUDBEdU94UVZidjJXaVBhNFdzS3dy?=
+ =?utf-8?B?N1NaMUhSYU1WamdhYzFBVjRzL2RmcmdDYVZWejZQV0xNUHRRNjJ6NEpQZWhV?=
+ =?utf-8?B?dXJjQktCUE1LU0Z2dmcxY09RdXlwNTBUYmhhSFRITGVQc1JDdzJYN3U3S050?=
+ =?utf-8?B?MU5KbFp5YVFITGxPTGRxUlg2NGtOVDVXQ0l2cE5pQmdUUC9yZFY2MDUyUnUx?=
+ =?utf-8?B?V3RsVExBd1lqdUtod0xrb2NLTzVNdTFQTkVCamlXQ01xdmlxQlV1K1ExUUkz?=
+ =?utf-8?B?aldMV1FpeHNabzc3bTFFeVA3S1dIbm5XN3U2UHBzZysyQUdaMVVWa1VmUU94?=
+ =?utf-8?B?WE8xUzRqUDlzb0wySVpMOVZzL3RkV0VxdWZ3djd3OFAzZmcwVFY3ZWJFSEJ3?=
+ =?utf-8?B?Sjh2RHpObVAzQks4akx2SFJycjY1WXdWVlNHRmU4M1dnbmw4Q3Q2ZHI3YVBY?=
+ =?utf-8?B?TWYrdTlkK3hoUmRjTCtMc3lXaUtpaUc4WnRFTFpDc0RWZnROd2NvNG4wNUhy?=
+ =?utf-8?B?dklqVm5yY3IxREpRcnNHRmhQbkJMek9INU9xVWxZa1pHYkIxQ1VWYUxiWVVX?=
+ =?utf-8?B?TWozWHNVN2FoZlFjeHhYUHU4RzNYMk1lOEZuZ0tkU1pJY3NIdW1VSC9kcDB4?=
+ =?utf-8?B?c0FQb2dKckFRSHREN2JKeHFaVzRuREl4bjEra3dVOTA1Y0x4eHVNRndqaFU0?=
+ =?utf-8?B?T28rZTkzNTh3bitGMWQvZVJ4ODFraVRwQmpNZEFROUhKSTQzempqQVRYUUlz?=
+ =?utf-8?B?K1l2eGU4eitnTGVIVnl3VjNBTzBjVGhMQ0VhZXpNSDRlUHM1RjBSM3F2VmNU?=
+ =?utf-8?B?MG5FNFNXUkJwc3FTSm1oa3p5ejdCR1Noa0QxOTN2WEFqeGp5Sk5hUEZmaEZJ?=
+ =?utf-8?B?cDVtelIvYzFyU1FDMEdFMlJtT3ZJV3RsZlhFRnluOVViakp0MGUyTzNiWW8z?=
+ =?utf-8?B?alpEdmRlNWY5MXFMeE1XeW5XczQ4d0lkbDRkNkxSVE1mekxZR1R2VUpYbkty?=
+ =?utf-8?B?Y2Q1dmlXMXRjalhRc0d4cjU1N2JlZFQ3Q05KTXowS1pPOStjUklQQm4vcEJr?=
+ =?utf-8?B?TUJhRklCYWlaZTdOcHdzcUpQY3o0ZFY1WTFFaExGT29rNDcwdVlmcWtsOW1E?=
+ =?utf-8?B?QXN4TFJRdEM2cDVxeFVleVJ4ZnhjZFRKbmE2ckZvOXErY0U3TmxzUFpuQ2ww?=
+ =?utf-8?B?bW95UVlGckdZeXdWaHAreGt1bTM0Zk9rWUt2TEdoeFFJNjFuQzhWZGtFSU1i?=
+ =?utf-8?B?cGcvWGJmeVBtUTZKdlpmYWh2RE1kUS9zb2pyL2xPb3R5SklXR1B1ZEkvYTJE?=
+ =?utf-8?B?L1YrdEtPb1dROXBONjNESVhHYlAyUlNwd1N5cytsUWdVN09yTWFaTVRMQTNz?=
+ =?utf-8?B?SzlzWnoxbWhHeWtJdU8vRlFwZ0ZYOU8wTDJHbjlmNnlNUmVGUWtKdkE3SWRa?=
+ =?utf-8?B?QmlnWHBja3h3SURYL1JJTzJMcE9INEk0SUZ5eTlPbUdCeElOTFh0SmQ5cXRW?=
+ =?utf-8?B?ck9SMzBObTQ0SXdiVmh0ZitkK0pCQWlTWFR3Y2xOWHQxblFmZ2FROTlTbnV3?=
+ =?utf-8?B?OWkzTmZIbTlhcU05RE5aSG16aW9QSnhJSW5NQjhaUlp5UlBGejNUd0hZMVly?=
+ =?utf-8?Q?ii0ob9O0pNCWbc6yoqMYQp0W8YIFsri0kScRY4Uank=3D?=
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a0f58e79-895f-4d8f-80d3-08d9a60acb1d
+X-MS-Exchange-CrossTenant-AuthSource: AM7PR08MB5494.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2021 18:32:33.9059 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ENMIOkcrb57XTznR1YGb0HWHPU/U0maQ5lP6fQKgMpTpqtcHhdc+qpJ7pvgyUVTmFstYavm5VHb6c/t0z48jo/3HI9PLkXQJD9Sefy4L0FA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB6102
+Received-SPF: pass client-ip=40.107.6.132;
+ envelope-from=vsementsov@virtuozzo.com;
+ helo=EUR04-DB3-obe.outbound.protection.outlook.com
+X-Spam_score_int: -55
+X-Spam_score: -5.6
 X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.678, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-5.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MSGID_FROM_MTA_HEADER=0.001, NICE_REPLY_A=-3.449, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 10 Nov 2021 07:59:37 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,59 +147,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Nov 2021 09:24:32 -0000
+X-List-Received-Date: Fri, 12 Nov 2021 18:32:43 -0000
 
-Hi Stefan,
+Add Den and Roman (his new address)
 
-On 11/9/21 1:46 AM, Stefan Berger wrote:
-> From: Stefan Berger <stefanb@linux.ibm.com>
+06.11.2021 16:41, Philippe Mathieu-Daudé wrote:
+> This is the 4th time I send this patch. Is the VMBus infrastructure
+> used / maintained? Should we deprecate & remove?
 > 
-> Add missing device identification objects _STR and _UID. They will appear
-> as files 'description' and 'uid' under Linux sysfs.
+>    $ ./scripts/get_maintainer.pl -f hw/hyperv/vmbus.c -f include/hw/hyperv/vmbus.h
+>    get_maintainer.pl: No maintainers found
 > 
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: Michael S. Tsirkin <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: Ani Sinha <ani@anisinha.ca>
-> Fixes: #708
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
-> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
-> ---
->  hw/arm/virt-acpi-build.c | 1 +
->  hw/i386/acpi-build.c     | 4 ++++
->  2 files changed, 5 insertions(+)
+> Philippe Mathieu-Daudé (1):
+>    hw/hyperv/vmbus: Remove unused vmbus_load/save_req()
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 674f902652..09456424aa 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -228,6 +228,7 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
->  
->      Aml *dev = aml_device("TPM0");
->      aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-> +    aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")));
->      aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->  
->      Aml *crs = aml_resource_template();
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index a3ad6abd33..d6d3541407 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -1808,6 +1808,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->                      dev = aml_device("TPM");
->                      aml_append(dev, aml_name_decl("_HID",
->                                                    aml_string("MSFT0101")));
-> +                    aml_append(dev,
-> +                               aml_name_decl("_STR",
-> +                                             aml_string("TPM 2.0 Device")));
-> +                    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->                  } else {
->                      dev = aml_device("ISA.TPM");
->                      aml_append(dev, aml_name_decl("_HID",
+>   include/hw/hyperv/vmbus.h |  3 --
+>   hw/hyperv/vmbus.c         | 59 ---------------------------------------
+>   2 files changed, 62 deletions(-)
 > 
 
+
+-- 
+Best regards,
+Vladimir
 
