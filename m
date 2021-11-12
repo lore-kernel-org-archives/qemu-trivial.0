@@ -1,67 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mlcKI-0003Tz-BX
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Nov 2021 14:35:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60168)
+	id 1mlfVr-0007jg-K7
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Nov 2021 17:59:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1mlcKD-0003Ox-4e
- for qemu-trivial@nongnu.org; Fri, 12 Nov 2021 14:35:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:52662)
+ (Exim 4.90_1) (envelope-from <rvkagan@yandex-team.ru>)
+ id 1mldKW-0008OD-9e
+ for qemu-trivial@nongnu.org; Fri, 12 Nov 2021 15:39:24 -0500
+Received: from forwardcorp1p.mail.yandex.net ([77.88.29.217]:43198)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1mlcKB-0007yd-2i
- for qemu-trivial@nongnu.org; Fri, 12 Nov 2021 14:35:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1636745698;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3NlTKCv+dB2uLiS+nu6ZWpM01wn+xk+NhHBbif2PWUE=;
- b=i9WDhB37b9g6AxojRHTDP0qY676Ry/PPgOizWRcTQvNiCkUfzaVifMVxXNNERAjcX7PKXO
- YqvgPM0VB9wdSAQbJXeuD3Pxikoa4zZGVkLoLYEh4vtVVNdVg9pr7XPdO/aJerkguhPNxJ
- KiFTtQqIKCoy5LHxUABkVWLTPEF8060=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-229-x2k6HkZrMLm8leF4R445WA-1; Fri, 12 Nov 2021 14:34:57 -0500
-X-MC-Unique: x2k6HkZrMLm8leF4R445WA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4AF7315722;
- Fri, 12 Nov 2021 19:34:56 +0000 (UTC)
-Received: from eperezma.remote.csb (unknown [10.39.192.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EE6F419723;
- Fri, 12 Nov 2021 19:34:50 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, Cindy Lu <lulu@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>
-Subject: [PATCH 2/2] vdpa: Check for existence of opts.vhostdev
-Date: Fri, 12 Nov 2021 20:34:31 +0100
-Message-Id: <20211112193431.2379298-3-eperezma@redhat.com>
-In-Reply-To: <20211112193431.2379298-1-eperezma@redhat.com>
-References: <20211112193431.2379298-1-eperezma@redhat.com>
+ (Exim 4.90_1) (envelope-from <rvkagan@yandex-team.ru>)
+ id 1mldKT-0007j3-7f
+ for qemu-trivial@nongnu.org; Fri, 12 Nov 2021 15:39:22 -0500
+Received: from vla1-a78d115f8d22.qloud-c.yandex.net
+ (vla1-a78d115f8d22.qloud-c.yandex.net
+ [IPv6:2a02:6b8:c0d:2906:0:640:a78d:115f])
+ by forwardcorp1p.mail.yandex.net (Yandex) with ESMTP id AFC602E1272;
+ Fri, 12 Nov 2021 23:39:09 +0300 (MSK)
+Received: from vla5-d6d5ce7a4718.qloud-c.yandex.net
+ (vla5-d6d5ce7a4718.qloud-c.yandex.net [2a02:6b8:c18:341e:0:640:d6d5:ce7a])
+ by vla1-a78d115f8d22.qloud-c.yandex.net (mxbackcorp/Yandex) with ESMTP id
+ uPXVCxPvCp-d9suoWJ7; Fri, 12 Nov 2021 23:39:09 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
+ s=default; 
+ t=1636749549; bh=+YPp49mlvnOWmu13OU3H2BKA73rQ0rKBTzdu3YPETF0=;
+ h=In-Reply-To:Subject:To:From:Message-ID:Cc:References:Date;
+ b=u3kN1EGcB8t/jBDNe4+9CVH8w73CV0yAqxCJSkrOGFnsH/BDhG9NXr5Pwq+/03j9j
+ JZfz6RJpe0wHEDl7/OZdan/cFJs00hbgr8oBdmTI9yGcsIdwbuVG1A3OkOuXGNzie1
+ i1HQlsEQg3OGg8Icup+2w65mzYJPC6JLuxQVTT8A=
+Authentication-Results: vla1-a78d115f8d22.qloud-c.yandex.net;
+ dkim=pass header.i=@yandex-team.ru
+Received: from rvkaganb.lan (dynamic-vpn.dhcp.yndx.net
+ [2a02:6b8:b081:1206::1:19])
+ by vla5-d6d5ce7a4718.qloud-c.yandex.net (smtpcorp/Yandex) with ESMTPS id
+ kBSkBxChz7-d9xmoDod; Fri, 12 Nov 2021 23:39:09 +0300
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+ (Client certificate not present)
+X-Yandex-Fwd: 2
+Date: Fri, 12 Nov 2021 23:39:07 +0300
+From: Roman Kagan <rvkagan@yandex-team.ru>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Jon Doron <arilou@gmail.com>,
+ qemu-trivial@nongnu.org, Roman Kagan <rkagan@virtuozzo.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Maciej S . Szmigiero" <maciej.szmigiero@oracle.com>,
+ "Denis V. Lunev" <den@openvz.org>
+Subject: Re: [PATCH v4 0/1] hw/hyperv/vmbus: Is it maintained?
+Message-ID: <YY7Q62ltAyfAUYJp@rvkaganb.lan>
+Mail-Followup-To: Roman Kagan <rvkagan@yandex-team.ru>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Jon Doron <arilou@gmail.com>,
+ qemu-trivial@nongnu.org, Roman Kagan <rkagan@virtuozzo.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Maciej S . Szmigiero" <maciej.szmigiero@oracle.com>,
+ "Denis V. Lunev" <den@openvz.org>
+References: <20211106134155.582312-1-philmd@redhat.com>
+ <54b75db4-8867-d1ee-e32c-bc3e4c23ec28@virtuozzo.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.699,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <54b75db4-8867-d1ee-e32c-bc3e4c23ec28@virtuozzo.com>
+Received-SPF: pass client-ip=77.88.29.217; envelope-from=rvkagan@yandex-team.ru;
+ helo=forwardcorp1p.mail.yandex.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 12 Nov 2021 17:59:11 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,33 +83,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Nov 2021 19:35:05 -0000
+X-List-Received-Date: Fri, 12 Nov 2021 20:39:24 -0000
 
-Since net_init_vhost_vdpa is trying to open it. Not specifying it in the
-command line crash qemu.
+On Fri, Nov 12, 2021 at 09:32:31PM +0300, Vladimir Sementsov-Ogievskiy wrote:
+> Add Den and Roman (his new address)
 
-Fixes: 7327813d17 ("vhost-vdpa: open device fd in net_init_vhost_vdpa()")
-Signed-off-by: Eugenio PÃ©rez <eperezma@redhat.com>
----
- net/vhost-vdpa.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Thanks, I missed it on the list indeed.
 
-diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
-index 6ffb29f4da..bbd3576f23 100644
---- a/net/vhost-vdpa.c
-+++ b/net/vhost-vdpa.c
-@@ -260,6 +260,10 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
- 
-     assert(netdev->type == NET_CLIENT_DRIVER_VHOST_VDPA);
-     opts = &netdev->u.vhost_vdpa;
-+    if (!opts->vhostdev) {
-+        error_setg(errp, "vdpa character device not specified with vhostdev");
-+        return -1;
-+    }
- 
-     vdpa_device_fd = qemu_open(opts->vhostdev, O_RDWR, errp);
-     if (vdpa_device_fd == -1) {
--- 
-2.27.0
+> 06.11.2021 16:41, Philippe Mathieu-Daudé wrote:
+> > This is the 4th time I send this patch. Is the VMBus infrastructure
+> > used / maintained? Should we deprecate & remove?
 
+I think it's fair to say it's not maintained.  The whole
+hw/hyperv/vmbus.c was submitted as a part of the work by Jon to enable
+some obscure windows debugging feature which only worked in presence of
+VMBus.  It was mostly taken from the respective branch of the (now
+effectively abandoned) downstream tree with an implementation of the
+core VMBus infrastructure and the devices using it; however, none of the
+actual VMBus devices ever made it into the mainline tree.
+
+> > 
+> >    $ ./scripts/get_maintainer.pl -f hw/hyperv/vmbus.c -f include/hw/hyperv/vmbus.h
+> >    get_maintainer.pl: No maintainers found
+> > 
+> > Philippe Mathieu-Daudé (1):
+> >    hw/hyperv/vmbus: Remove unused vmbus_load/save_req()
+> > 
+> >   include/hw/hyperv/vmbus.h |  3 --
+> >   hw/hyperv/vmbus.c         | 59 ---------------------------------------
+> >   2 files changed, 62 deletions(-)
+
+This seems to basically be the revert of 4dd8a7064b "vmbus: add
+infrastructure to save/load vmbus requests"; it was originally meant to
+be submitted with the code that would use it, vmbus scsi controller, but
+that never happened.  It believe it's safe to remove without affecting
+Jon's work, but I'd rather check with him.
+
+Thanks,
+Roman.
 
