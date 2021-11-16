@@ -1,78 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mmvL6-0007UV-4t
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Nov 2021 05:05:20 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48154)
+	id 1mn2Eb-0002Pt-P1
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Nov 2021 12:27:05 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40948)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arilou@gmail.com>)
- id 1mmvL4-0007UA-Ny; Tue, 16 Nov 2021 05:05:18 -0500
-Received: from [2a00:1450:4864:20::434] (port=34773
- helo=mail-wr1-x434.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <arilou@gmail.com>)
- id 1mmvL3-0006Bp-7c; Tue, 16 Nov 2021 05:05:18 -0500
-Received: by mail-wr1-x434.google.com with SMTP id d5so36441115wrc.1;
- Tue, 16 Nov 2021 02:05:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=umf3jekVSE+q3zndQXQbaMm8de+5jHv8p9w5itkRDDM=;
- b=A/+2Xga+ZeLo8HL6psRBhnU+raYmv2a0aK8VF997eqiDjiYgLUyZCdWHp5ZcJTW2UP
- UaDwR6JE9rExLBF9S17NR8Pv90g+m/pBwY80OydoPiPyi8WmXmwGnqDVxFwvfDpr4GQC
- Ui+yg+8GAeSes0R+mwLCj2DQCBzdUCwpIDCMWOm2MkHAFKocYmkWCqN0VVigmHVas7TE
- Q0VUVok+XD7466wnG7zHvA6IP8zJAa/cybwmVnK6lbL5XDPViSlhpAeowVNkKKIa6ORX
- t7QU0FJbEkgauoi2p01cW/Ycgr9cR43KziG9BPIWGvtkg7HdH8FWTukNg0tDKR1seVLf
- tkHw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mn2EZ-0002Oy-Tb
+ for qemu-trivial@nongnu.org; Tue, 16 Nov 2021 12:27:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:40770)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mn2EX-0004kp-NT
+ for qemu-trivial@nongnu.org; Tue, 16 Nov 2021 12:27:03 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1637083621;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=HqZnPDrp1xIa4GdFRINL3GzOA88hthFW+13YOjEUpHI=;
+ b=YwYz6D+v34XyfB9cIMCiEIHc0127vObR1P2YTvC+bTRAA/yPl7LZayXiSFaZ+Qm923rCNA
+ 29qKsNBlV93Qcds4L3TbQK20kjN0dd78NUcXBbuw3hfT4hrez0V30CCnr6eVLB6SvVuWRr
+ CieUohdA8d+1ebvJplKMEefGMaZEkps=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-221-Dgus9BXpO5epz8nDsDjUWA-1; Tue, 16 Nov 2021 12:26:59 -0500
+X-MC-Unique: Dgus9BXpO5epz8nDsDjUWA-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ l6-20020a05600c4f0600b0033321934a39so1765864wmq.9
+ for <qemu-trivial@nongnu.org>; Tue, 16 Nov 2021 09:26:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=umf3jekVSE+q3zndQXQbaMm8de+5jHv8p9w5itkRDDM=;
- b=5ldhRDnqOxma76+DuBtF0xdUzOjxVVfhPDJW7PhxaYoWvjEOEsyVe8ENaTfIdOgUab
- rcgfnmrmylHWUa9XGHsArlt60C96wc2SH+1GMRfGnJYo9NCoyk/QLivjAYyHbvYIc9dC
- 03vxwgn4VQ+fgo+2s1VfcChaRZOMvVJabyimEblI1YOkAI/Z7oCOzO3Asn2//INRONUV
- vM7hP1JKgtT46SxtDigNQQWWT3QpqggXBxP6TVV6n3ozMLfOYz+lkJqK+mUAhUreLtsI
- zSYL/Lpe5X4RAx0t1AbN6wQWciR0xwF1lpN7KWGyVaeH0o20y0t7mwO6rhZca9JZ7rpY
- gNmQ==
-X-Gm-Message-State: AOAM531qsj12m5K7RTabCixlONsq8TMMsI4q+1iPCPKfEh8Pn4CsH3kq
- mDxO8EBYhq5XteFU+DInH2o=
-X-Google-Smtp-Source: ABdhPJx1OUSTS61BtsxjmrJ/xZE86J0CTaezST3FMC/EFvIwbboPial+rjyi++oszdPcXUHkVaY97A==
-X-Received: by 2002:adf:fe8b:: with SMTP id l11mr7691641wrr.228.1637057114936; 
- Tue, 16 Nov 2021 02:05:14 -0800 (PST)
-Received: from jondnuc ([2a0d:6fc2:4af1:7d00:5e41:a6ea:ffaa:548c])
- by smtp.gmail.com with ESMTPSA id h18sm18044251wre.46.2021.11.16.02.05.12
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HqZnPDrp1xIa4GdFRINL3GzOA88hthFW+13YOjEUpHI=;
+ b=XMtqdSiqGgoQywWxXNg5YzJsiMFXdGSgtL1pXe0rxTP5H43kI/NCzkUGURXobmWSd0
+ NRp0wHNzoE2ibqjo6sRUSMeAz5GAOyqM0AVOStLwXyPcLp2p1Mbfa28k5p6KlOH8gt70
+ pt0S7KHbmwvr4qc/c+eZWeJGsmLXE8k0/guR4GQhqt5BZR50gkN5pHIMBocv4xAPVpHm
+ Qcd2OjqXB4kr6kDVkwo6LMUgN8K/OY1jnOe6Z+akX0PSp6oSr040trgnf92OQLwMI6bZ
+ 5xucpLMXgwDHPixKXMm9FbL8loOZko00X6wCCAiynK+SF0ugvfqNEuIUSvReaBde0Fh8
+ o+Qw==
+X-Gm-Message-State: AOAM531ObXmrmlUEvIoFI9QFHTsRoWulb2h+ylkuEM3D0aHFtfnyHiiF
+ +HiFuyXZM8LCJNuDHfvQtn774T1aHujFnyeacLR68qCLjpGVeFZFPDXKpF8vDU/I9+nX9Lxt/sG
+ bBYLG5tmmpv5dYJusyg==
+X-Received: by 2002:a05:600c:19cc:: with SMTP id
+ u12mr72022556wmq.24.1637083618204; 
+ Tue, 16 Nov 2021 09:26:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzYED4VJKHOibXGZzcDumNop9s29r0K02kI47PZkUP6G5maLM7aaQdmBnRH/h/Oevtg7q/cqw==
+X-Received: by 2002:a05:600c:19cc:: with SMTP id
+ u12mr72022518wmq.24.1637083617959; 
+ Tue, 16 Nov 2021 09:26:57 -0800 (PST)
+Received: from x1w.. (62.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id
+ q8sm17707960wrx.71.2021.11.16.09.26.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Nov 2021 02:05:14 -0800 (PST)
-Date: Tue, 16 Nov 2021 12:05:11 +0200
-From: Jon Doron <arilou@gmail.com>
-To: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
-Cc: Roman Kagan <rvkagan@yandex-team.ru>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, "Denis V. Lunev" <den@openvz.org>
-Subject: Re: [PATCH v4 0/1] hw/hyperv/vmbus: Is it maintained?
-Message-ID: <YZOCV1EFniPx9FLh@jondnuc>
-References: <20211106134155.582312-1-philmd@redhat.com>
- <54b75db4-8867-d1ee-e32c-bc3e4c23ec28@virtuozzo.com>
- <YY7Q62ltAyfAUYJp@rvkaganb.lan>
- <8caa5fb3-df36-d763-e07b-8fe1667ed7c9@oracle.com>
+ Tue, 16 Nov 2021 09:26:57 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Jagannathan Raman <jag.raman@oracle.com>, Jason Wang <jasowang@redhat.com>,
+ John G Johnson <john.g.johnson@oracle.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>, qemu-trivial@nongnu.org,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH-for-7.0] hw/pci: Don't open-code pci_intx()
+Date: Tue, 16 Nov 2021 18:26:55 +0100
+Message-Id: <20211116172655.2752742-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Disposition: inline
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <8caa5fb3-df36-d763-e07b-8fe1667ed7c9@oracle.com>
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::434
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=arilou@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.697,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,50 +90,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Nov 2021 10:05:19 -0000
+X-List-Received-Date: Tue, 16 Nov 2021 17:27:04 -0000
 
-On 13/11/2021, Maciej S. Szmigiero wrote:
->On 12.11.2021 21:39, Roman Kagan wrote:
->>On Fri, Nov 12, 2021 at 09:32:31PM +0300, Vladimir Sementsov-Ogievskiy wrote:
->>>Add Den and Roman (his new address)
->>
->>Thanks, I missed it on the list indeed.
->>
->>>06.11.2021 16:41, Philippe Mathieu-DaudÈ wrote:
->>>>This is the 4th time I send this patch. Is the VMBus infrastructure
->>>>used / maintained? Should we deprecate & remove?
->>
->>I think it's fair to say it's not maintained.  The whole
->>hw/hyperv/vmbus.c was submitted as a part of the work by Jon to enable
->>some obscure windows debugging feature which only worked in presence of
->>VMBus.  It was mostly taken from the respective branch of the (now
->>effectively abandoned) downstream tree with an implementation of the
->>core VMBus infrastructure and the devices using it; however, none of the
->>actual VMBus devices ever made it into the mainline tree.
->>
->
->The VMBus code works fine, is mostly self-contained and by being a part
->of the upstream QEMU it does benefit from any improvements done there and
->so it is much less likely to bit-rot with time.
->
->I am still committed to upstreaming a Hyper-V Dynamic Memory Protocol
->driver (which uses VMBus), however had been preempted by higher-priority
->work for now.
->
->Thanks,
->Maciej
+Use the pci_intx() helper instead of open-coding it.
 
-Hi guys,
+Signed-off-by: Philippe Mathieu-Daud√© <philmd@redhat.com>
+---
+Based-on: <20211116170133.724751-3-fbarrat@linux.ibm.com>
+---
+ hw/net/vmxnet3.c  | 2 +-
+ hw/remote/iohub.c | 6 ++----
+ hw/remote/proxy.c | 3 +--
+ 3 files changed, 4 insertions(+), 7 deletions(-)
 
-Sorry for the late reply, like Roman I also never got to submit the RFC 
-for the Synth debugger device which requires the VMBus, I do hope to get 
-to it at some point and VMBus is a required part for it.
+diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
+index 41f796a247d..c7fc5f44d8f 100644
+--- a/hw/net/vmxnet3.c
++++ b/hw/net/vmxnet3.c
+@@ -1350,7 +1350,7 @@ static void vmxnet3_update_features(VMXNET3State *s)
+ static bool vmxnet3_verify_intx(VMXNET3State *s, int intx)
+ {
+     return s->msix_used || msi_enabled(PCI_DEVICE(s))
+-        || intx == pci_get_byte(s->parent_obj.config + PCI_INTERRUPT_PIN) - 1;
++                        || intx == pci_intx(PCI_DEVICE(s));
+ }
+ 
+ static void vmxnet3_validate_interrupt_idx(bool is_msix, int idx)
+diff --git a/hw/remote/iohub.c b/hw/remote/iohub.c
+index 547d597f0fe..0e0bb651d1a 100644
+--- a/hw/remote/iohub.c
++++ b/hw/remote/iohub.c
+@@ -93,11 +93,9 @@ void process_set_irqfd_msg(PCIDevice *pci_dev, MPQemuMsg *msg)
+ {
+     RemoteMachineState *machine = REMOTE_MACHINE(current_machine);
+     RemoteIOHubState *iohub = &machine->iohub;
+-    int pirq, intx;
++    int pirq;
+ 
+-    intx = pci_get_byte(pci_dev->config + PCI_INTERRUPT_PIN) - 1;
+-
+-    pirq = remote_iohub_map_irq(pci_dev, intx);
++    pirq = remote_iohub_map_irq(pci_dev, pci_intx(pci_dev));
+ 
+     if (event_notifier_get_fd(&iohub->irqfds[pirq]) != -1) {
+         qemu_set_fd_handler(event_notifier_get_fd(&iohub->resamplefds[pirq]),
+diff --git a/hw/remote/proxy.c b/hw/remote/proxy.c
+index bad164299dd..22f32a5930b 100644
+--- a/hw/remote/proxy.c
++++ b/hw/remote/proxy.c
+@@ -32,14 +32,13 @@ static void proxy_intx_update(PCIDevice *pci_dev)
+ {
+     PCIProxyDev *dev = PCI_PROXY_DEV(pci_dev);
+     PCIINTxRoute route;
+-    int pin = pci_get_byte(pci_dev->config + PCI_INTERRUPT_PIN) - 1;
+ 
+     if (dev->virq != -1) {
+         kvm_irqchip_remove_irqfd_notifier_gsi(kvm_state, &dev->intr, dev->virq);
+         dev->virq = -1;
+     }
+ 
+-    route = pci_device_route_intx_to_irq(pci_dev, pin);
++    route = pci_device_route_intx_to_irq(pci_dev, pci_intx(pci_dev));
+ 
+     dev->virq = route.irq;
+ 
+-- 
+2.31.1
 
-In the last year or so I have not had much time to spend on this but I 
-do hope to get back to finishing what I have started.
-
-I'm not really sure I have the time or knowledge to maintain VMBus :( 
-but I'll do my best to answer any questions as well.
-
--- Jon.
 
