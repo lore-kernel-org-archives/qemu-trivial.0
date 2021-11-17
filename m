@@ -1,85 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mnRWi-0004V9-K0
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Nov 2021 15:27:29 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58000)
+	id 1mnRqJ-0006YG-Gu
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Nov 2021 15:47:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
- id 1mnRWg-0004Uh-8K; Wed, 17 Nov 2021 15:27:26 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:9456)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mnRqH-0006Uy-Lt
+ for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 15:47:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:51489)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
- id 1mnRWd-0005r6-3z; Wed, 17 Nov 2021 15:27:24 -0500
-Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1AHKKFQl012530; 
- Wed, 17 Nov 2021 20:27:16 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding; s=pp1;
- bh=NIBi4jF1VK6z37od7rVpIijzWUJMjOWXlHgGcODU7Jc=;
- b=cmEwyORKNc3tKQI5SbNaotN0FAtEX56MNXHNBeNRzqzveXx0MUR8c4z61Kza2QGSW/GI
- ouSBSZFzdlLPSrP50YJTEZRNp3y+TtTp77+2oUppufO/F7VBWt41y2JSdnjyL/yjn083
- SbfdpdpbHQcvPhRb6Ge0ke/x02oZ/AfsOBEILutk5buJegzcGv37qHh/JhB1BK3J6OT5
- CvCUo7zUuz6/4m/vpJfVkXtUIsSFSNUllDT9dPK8pCa5QQ9Sl97yMzEQFgxhCsQTJW/z
- rVndBtKpesICio+9ADM3oq6qNKq8nCGLN2qkdeIOHppSBHx0wciqGTR7YDF2gqtlIsbf 5g== 
-Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.26])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3cd8per83r-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 17 Nov 2021 20:27:16 +0000
-Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
- by ppma04wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 1AHKCsml006055;
- Wed, 17 Nov 2021 20:27:15 GMT
-Received: from b03cxnp08028.gho.boulder.ibm.com
- (b03cxnp08028.gho.boulder.ibm.com [9.17.130.20])
- by ppma04wdc.us.ibm.com with ESMTP id 3ca50bmbrk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 17 Nov 2021 20:27:15 +0000
-Received: from b03ledav004.gho.boulder.ibm.com
- (b03ledav004.gho.boulder.ibm.com [9.17.130.235])
- by b03cxnp08028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 1AHKRE8i32375222
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 17 Nov 2021 20:27:14 GMT
-Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9556D78079;
- Wed, 17 Nov 2021 20:27:14 +0000 (GMT)
-Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6A67F7806A;
- Wed, 17 Nov 2021 20:27:13 +0000 (GMT)
-Received: from lagarcia.br.ibm.com (unknown [9.160.118.240])
- by b03ledav004.gho.boulder.ibm.com (Postfix) with ESMTP;
- Wed, 17 Nov 2021 20:27:13 +0000 (GMT)
-From: lagarcia@linux.ibm.com
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Leonardo Garcia <lagarcia@br.ibm.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2] Fix typo in comment.
-Date: Wed, 17 Nov 2021 17:26:59 -0300
-Message-Id: <c30019abaca0ca1a9f636671a8a2552a0bb17a71.1637180729.git.lagarcia@br.ibm.com>
-X-Mailer: git-send-email 2.33.1
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mnRqG-0000BZ-2p
+ for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 15:47:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1637182059;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8xPK7inuc0m+8E4ZawGGLzBZSifgSSRfvoqvOLY4cCo=;
+ b=JSIo+WsiyNcPNtq308VuJvZ1vSpqY6ngLgiuwXeD8nE8HsM/v7+NH+7SpGDnRoKj8w5zJg
+ xem85t4gtucaGuQPRBqDWmIrBDMRq4Of9qS/jYArR33rVek4w/8G0UY5PQaDBygNGi/Rw7
+ xsAW6toD4F8miM1Zj5saqrwPyHIzJXs=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-351-HPRNaK90P3ONLdzcdGIADw-1; Wed, 17 Nov 2021 15:47:36 -0500
+X-MC-Unique: HPRNaK90P3ONLdzcdGIADw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 205-20020a1c00d6000000b003335d1384f1so3328908wma.3
+ for <qemu-trivial@nongnu.org>; Wed, 17 Nov 2021 12:47:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=8xPK7inuc0m+8E4ZawGGLzBZSifgSSRfvoqvOLY4cCo=;
+ b=UG2h0hmzleC5sNfCqfo04JTGnhLAedpYiLGJYlr3imkq1i2EvQloe3qAEK51/Eo9r0
+ l91Wavwh8zdFINUVCrBvYffzID+99wwugnK44P/OFyKRdsOLtCUGS8HFOGTa0/JZudFO
+ +ME43C6QSN1SPLuRarpZESflV50Z3MuGKDrZpVd4RYv5+S7aPM98GpM8WCPDZCTe2hwd
+ n9dsFzcrUT7S+nVlL7BFWLRMEQ2xL9U11Ae1a3RT7c45bCIepRoDn6LCZh+T69QJLTfB
+ /Q71/V/xHGKkd0x731ou0+jt3rvipvySLyNINmTg7S00lOudXiM6Gkzjw8iBZMqrYzEK
+ WmLg==
+X-Gm-Message-State: AOAM533s2eiw4wcVa/PDbE6fw2Xsu2zsxehxAIoDA7ya/NsKvuq2ZF/H
+ LEtWFi+ZZ1hlEvRSQknWkNVMs1kyrakUNaLelbjbLOjoSdOttDHNO2xK+4nIIqdpytGiCNFoyJE
+ w3q0kZIEJtrQEy47TjA==
+X-Received: by 2002:a05:6000:1289:: with SMTP id
+ f9mr25057129wrx.329.1637182055461; 
+ Wed, 17 Nov 2021 12:47:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxv94VPq+CobwJbK10kWE6PJLwfvewfrNMy5Ukb8e81/RIycHexNP5rqE47fcc6WcC0im9iXQ==
+X-Received: by 2002:a05:6000:1289:: with SMTP id
+ f9mr25057089wrx.329.1637182055156; 
+ Wed, 17 Nov 2021 12:47:35 -0800 (PST)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id u6sm130261wmc.29.2021.11.17.12.47.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 17 Nov 2021 12:47:34 -0800 (PST)
+Message-ID: <ec5dbaeb-beee-feda-9441-92a39075e05a@redhat.com>
+Date: Wed, 17 Nov 2021 21:47:33 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v2] Fix typo in comment.
+To: lagarcia@linux.ibm.com, qemu-trivial@nongnu.org
+Cc: Leonardo Garcia <lagarcia@br.ibm.com>, qemu-devel@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
+References: <c30019abaca0ca1a9f636671a8a2552a0bb17a71.1637180729.git.lagarcia@br.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+In-Reply-To: <c30019abaca0ca1a9f636671a8a2552a0bb17a71.1637180729.git.lagarcia@br.ibm.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: p0c4RmlOabCrbPfVIWxRVgc9T13TSpFq
-X-Proofpoint-ORIG-GUID: p0c4RmlOabCrbPfVIWxRVgc9T13TSpFq
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
- definitions=2021-11-17_07,2021-11-17_01,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 adultscore=0
- impostorscore=0 spamscore=0 mlxscore=0 lowpriorityscore=0 mlxlogscore=999
- malwarescore=0 suspectscore=0 phishscore=0 priorityscore=1501 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
- definitions=main-2111170090
-Received-SPF: pass client-ip=148.163.158.5;
- envelope-from=lagarcia@linux.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.701,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.009, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,30 +94,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Nov 2021 20:27:26 -0000
+X-List-Received-Date: Wed, 17 Nov 2021 20:47:41 -0000
 
-From: Leonardo Garcia <lagarcia@br.ibm.com>
+Hi Leonardo,
 
-Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/virtio/vhost.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 11/17/21 21:26, lagarcia@linux.ibm.com wrote:
+> From: Leonardo Garcia <lagarcia@br.ibm.com>
+> 
+> Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> ---
+>  hw/virtio/vhost.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index 437347ad01..20913cf8fb 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -313,7 +313,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
-      * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
-      * incremental memory mapping API via IOTLB API. For platform that
-      * does not have IOMMU, there's no need to enable this feature
--     * which may cause unnecessary IOTLB miss/update trnasactions.
-+     * which may cause unnecessary IOTLB miss/update transactions.
-      */
-     return virtio_bus_device_iommu_enabled(vdev) &&
-            virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
--- 
-2.33.1
+Better if you prefix the patch subject with "hw/virtio/vhost: ",
+anyway:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Thanks,
+
+Phil.
 
 
