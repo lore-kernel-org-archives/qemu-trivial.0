@@ -1,62 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mnI2Y-0005Tp-Kb
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Nov 2021 05:19:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49248)
+	id 1mnKe0-0003LS-Qh
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Nov 2021 08:06:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58764)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mnI2V-0005FT-GF
- for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 05:19:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41137)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mnI2R-0000gt-Oz
- for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 05:19:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1637144374;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2kbIY+mVJlvrqmyfrT8rDzpC1VKjeG4jBFcb5KJrjsA=;
- b=PeFY/44PwsXdyAPaP7hGvd4FanWQWClj6NfnadA225Uhl+/QaNLB0fK3iHIca5c0HiTo3u
- S/Mg5W7XQUpk1c83DqarXfzjro1GJRKN2G4hQqUpfBchG7gVoGgnOFrILEKgz4WkWGs1Oy
- y3Wo4dwBjM/rIPIcdI1MrR/gSmJrovM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-515-yEcQEaI2MtiBGas9IuqTrg-1; Wed, 17 Nov 2021 05:19:27 -0500
-X-MC-Unique: yEcQEaI2MtiBGas9IuqTrg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5B5A5802C8F;
- Wed, 17 Nov 2021 10:19:26 +0000 (UTC)
-Received: from thuth.com (dhcp-192-183.str.redhat.com [10.33.192.183])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B602FADCD;
- Wed, 17 Nov 2021 10:19:25 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-trivial@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 3/6] docs: rSTify the "SubmitAPullRequest" wiki
-Date: Wed, 17 Nov 2021 11:19:18 +0100
-Message-Id: <20211117101921.622242-4-thuth@redhat.com>
-In-Reply-To: <20211117101921.622242-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mnKdx-0003K4-KL
+ for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 08:06:30 -0500
+Received: from [2a00:1450:4864:20::333] (port=46966
+ helo=mail-wm1-x333.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1mnKdv-0000oQ-Bg
+ for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 08:06:29 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ b184-20020a1c1bc1000000b0033140bf8dd5so2057250wmb.5
+ for <qemu-trivial@nongnu.org>; Wed, 17 Nov 2021 05:06:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=JsYBZ/hrxd2PpCka0fA30gSmznK0nWVmIhCCA/bVIE0=;
+ b=Wf0H2g2MuspNbv+cT5jXi54PvdxKsp8KrPPmEXIIqy2lCeHUKTplDFv4GeZl3vY3iY
+ 5ex28vmYy9IpNjMZZBDnojyI8Fxai7gJx/oDi1tWHZi0O7rLAzlhhRYkfp4+sjNXzdUV
+ x8keY5t7XXY9p26K6kaO/aIJRHcDYvAkQT8w2kWTGUSQ9DAkahbYdBIMm4H5Hw6WoFk8
+ zt6s4oRguj9JuwyqVnEzB7ZjmKWc0WkPwk4TUwM8+rV3U/c7zhZfWLji4OHTZr5QFPIe
+ gA/CQ6+o/HapDu7zxfGjxZXBfbauC/VANV7jK15V0KQtbRmo9WuST/5Otc7KX1gOiEes
+ c99g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JsYBZ/hrxd2PpCka0fA30gSmznK0nWVmIhCCA/bVIE0=;
+ b=dy+i2C1FGWBK6UumkAOrZ6pJiJVug8u49QvA9ihtQLDpt57qVA9p7ROthvb3yHqFSd
+ +ZzaiqRHprX47pa3SrT16UfgCZL2XFMVlNFTe3j/OHdmyS3ct63MJbOlLHzdzWlgl1tJ
+ /Z/ysS7pnqZMloUZD3gQECbgk2J+/CdwVX2hOSZNLLdlJWEiXfiCsYlNYCB0zYNntSMB
+ M0Cg/iQprkMZbR/xLxCzMibdJPOLFxhJusiY4JRFB9qJjt+Xu5rmcXXX9dXhIEQ12UIA
+ YTN2Wc8C3q8/YKHhOJhDJSA0hy8ELCC3erHKk/301Gsv6E/aSGXBuDlkmgHZmx7CwO5o
+ ibJw==
+X-Gm-Message-State: AOAM533xOgZ7yPC22s/mEmvicIArNz9P749djpG5xU2vZF7I0j78XrTv
+ Fyj7/r2REldQd3mPqMktFnadsQ==
+X-Google-Smtp-Source: ABdhPJyTiXQSaSKNT8CVwPUvj5kbCJEyKIKDxldNsrXDixSV47Rv2ZtkbV6VbANdZ5d2WbVfVjsAOQ==
+X-Received: by 2002:a05:600c:4e51:: with SMTP id
+ e17mr18250581wmq.127.1637154385727; 
+ Wed, 17 Nov 2021 05:06:25 -0800 (PST)
+Received: from [192.168.8.105] (101.red-176-80-44.dynamicip.rima-tde.net.
+ [176.80.44.101])
+ by smtp.gmail.com with ESMTPSA id g5sm30677358wri.45.2021.11.17.05.06.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 17 Nov 2021 05:06:25 -0800 (PST)
+Subject: Re: [PULL 0/6] Misc patches for 6.2-rc2
+To: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-devel <qemu-devel@nongnu.org>
 References: <20211117101921.622242-1-thuth@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <10ec19c2-9319-aad3-53e9-495476f1d114@linaro.org>
+Date: Wed, 17 Nov 2021 14:06:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.701,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20211117101921.622242-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::333
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.009,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -69,122 +85,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Nov 2021 10:19:39 -0000
+X-List-Received-Date: Wed, 17 Nov 2021 13:06:31 -0000
 
-From: Kashyap Chamarthy <kchamart@redhat.com>
+On 11/17/21 11:19 AM, Thomas Huth wrote:
+>   Hi Richard!
+>   
+> The following changes since commit 8d5fcb1990bc64b62c0bc12121fe510940be5664:
+> 
+>    Merge tag 'python-pull-request' of https://gitlab.com/jsnow/qemu into staging (2021-11-17 07:41:08 +0100)
+> 
+> are available in the Git repository at:
+> 
+>    https://gitlab.com/thuth/qemu.git tags/pull-request-2021-11-17
+> 
+> for you to fetch changes up to d06f3bf922679d89815fde9eac9264ba44e37954:
+> 
+>    gitlab-ci/cirrus: Increase timeout to 80 minutes (2021-11-17 10:20:38 +0100)
+> 
+> ----------------------------------------------------------------
+> * Remove some unused #defines in s390x code
+> * rSTify some of the development process pages from the Wiki
+> * Revert a useless patch in the device-crash-test script
+> * Bump timeout of the Cirrus-CI jobs to 80 minutes
+> 
+> ----------------------------------------------------------------
+> Kashyap Chamarthy (3):
+>        docs: rSTify the "TrivialPatches" wiki
+>        docs: rSTify the "SubmitAPullRequest" wiki
+>        docs: rSTify the "SubmitAPatch" wiki
+> 
+> Thomas Huth (3):
+>        target/s390x/cpu.h: Remove unused SIGP_MODE defines
+>        Revert "device-crash-test: Ignore errors about a bus not being available"
+>        gitlab-ci/cirrus: Increase timeout to 80 minutes
+> 
+>   .gitlab-ci.d/cirrus.yml                  |   1 +
+>   docs/devel/index.rst                     |   3 +
+>   docs/devel/submitting-a-patch.rst        | 456 +++++++++++++++++++++++++++++++
+>   docs/devel/submitting-a-pull-request.rst |  76 ++++++
+>   docs/devel/trivial-patches.rst           |  50 ++++
+>   scripts/device-crash-test                |   1 -
+>   target/s390x/cpu.h                       |   5 -
+>   7 files changed, 586 insertions(+), 6 deletions(-)
+>   create mode 100644 docs/devel/submitting-a-patch.rst
+>   create mode 100644 docs/devel/submitting-a-pull-request.rst
+>   create mode 100644 docs/devel/trivial-patches.rst
+> 
 
-The original wiki is here[1].  I converted by copying the wiki source
-into a .wiki file and convert to rST using `pandoc`:
+Applied, thanks.
 
-    $ pandoc -f Mediawiki -t rst submitting-a-pull-request.wiki \
-        -o submitting-a-pull-request.rst
-
-This is a 1-1 conversion; no content changes.
-
-[1] https://wiki.qemu.org/Contribute/SubmitAPullRequest
-
-Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20211110144902.388183-3-kchamart@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- docs/devel/index.rst                     |  1 +
- docs/devel/submitting-a-pull-request.rst | 76 ++++++++++++++++++++++++
- 2 files changed, 77 insertions(+)
- create mode 100644 docs/devel/submitting-a-pull-request.rst
-
-diff --git a/docs/devel/index.rst b/docs/devel/index.rst
-index dbde1c44e9..211f8876da 100644
---- a/docs/devel/index.rst
-+++ b/docs/devel/index.rst
-@@ -46,3 +46,4 @@ modifying QEMU's source code.
-    qapi-code-gen
-    writing-monitor-commands
-    trivial-patches
-+   submitting-a-pull-request
-diff --git a/docs/devel/submitting-a-pull-request.rst b/docs/devel/submitting-a-pull-request.rst
-new file mode 100644
-index 0000000000..8729d29036
---- /dev/null
-+++ b/docs/devel/submitting-a-pull-request.rst
-@@ -0,0 +1,76 @@
-+Submit a Pull Request
-+=====================
-+
-+QEMU welcomes contributions of code, but we generally expect these to be
-+sent as simple patch emails to the mailing list (see our page on
-+`submitting a patch
-+<https://qemu-project.gitlab.io/qemu/devel/submitting-a-patch.html>`__
-+for more details).  Generally only existing submaintainers of a tree
-+will need to submit pull requests, although occasionally for a large
-+patch series we might ask a submitter to send a pull request. This page
-+documents our recommendations on pull requests for those people.
-+
-+A good rule of thumb is not to send a pull request unless somebody asks
-+you to.
-+
-+**Resend the patches with the pull request** as emails which are
-+threaded as follow-ups to the pull request itself. The simplest way to
-+do this is to use ``git format-patch --cover-letter`` to create the
-+emails, and then edit the cover letter to include the pull request
-+details that ``git request-pull`` outputs.
-+
-+**Use PULL as the subject line tag** in both the cover letter and the
-+retransmitted patch mails (for example, by using
-+``--subject-prefix=PULL`` in your ``git format-patch`` command). This
-+helps people to filter in or out the resulting emails (especially useful
-+if they are only CC'd on one email out of the set).
-+
-+**Each patch must have your own Signed-off-by: line** as well as that of
-+the original author if the patch was not written by you. This is because
-+with a pull request you're now indicating that the patch has passed via
-+you rather than directly from the original author.
-+
-+**Don't forget to add Reviewed-by: and Acked-by: lines**. When other
-+people have reviewed the patches you're putting in the pull request,
-+make sure you've copied their signoffs across. (If you use the `patches
-+tool <https://github.com/stefanha/patches>`__ to add patches from email
-+directly to your git repo it will include the tags automatically; if
-+you're updating patches manually or in some other way you'll need to
-+edit the commit messages by hand.)
-+
-+**Don't send pull requests for code that hasn't passed review**. A pull
-+request says these patches are ready to go into QEMU now, so they must
-+have passed the standard code review processes. In particular if you've
-+corrected issues in one round of code review, you need to send your
-+fixed patch series as normal to the list; you can't put it in a pull
-+request until it's gone through. (Extremely trivial fixes may be OK to
-+just fix in passing, but if in doubt err on the side of not.)
-+
-+**Test before sending**. This is an obvious thing to say, but make sure
-+everything builds (including that it compiles at each step of the patch
-+series) and that "make check" passes before sending out the pull
-+request. As a submaintainer you're one of QEMU's lines of defense
-+against bad code, so double check the details.
-+
-+**All pull requests must be signed**. If your key is not already signed
-+by members of the QEMU community, you should make arrangements to attend
-+a `KeySigningParty <https://wiki.qemu.org/KeySigningParty>`__ (for
-+example at KVM Forum) or make alternative arrangements to have your key
-+signed by an attendee.  Key signing requires meeting another community
-+member \*in person\* so please make appropriate arrangements.  By
-+"signed" here we mean that the pullreq email should quote a tag which is
-+a GPG-signed tag (as created with 'gpg tag -s ...').
-+
-+**Pull requests not for master should say "not for master" and have
-+"PULL SUBSYSTEM whatever" in the subject tag**. If your pull request is
-+targeting a stable branch or some submaintainer tree, please include the
-+string "not for master" in the cover letter email, and make sure the
-+subject tag is "PULL SUBSYSTEM s390/block/whatever" rather than just
-+"PULL". This allows it to be automatically filtered out of the set of
-+pull requests that should be applied to master.
-+
-+You might be interested in the `make-pullreq
-+<https://git.linaro.org/people/peter.maydell/misc-scripts.git/tree/make-pullreq>`__
-+script which automates some of this process for you and includes a few
-+sanity checks. Note that you must edit it to configure it suitably for
-+your local situation!
--- 
-2.27.0
-
+r~
 
