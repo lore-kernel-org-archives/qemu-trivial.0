@@ -1,66 +1,96 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mnP2Y-0008Kx-80
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Nov 2021 12:48:10 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51108)
+	id 1mnRT3-00028k-IH
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Nov 2021 15:23:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mnP2W-0008IK-Qa
- for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 12:48:08 -0500
-Received: from [2607:f8b0:4864:20::930] (port=42610
- helo=mail-ua1-x930.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1mnP2V-0002PA-4b
- for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 12:48:08 -0500
-Received: by mail-ua1-x930.google.com with SMTP id t13so7661357uad.9
- for <qemu-trivial@nongnu.org>; Wed, 17 Nov 2021 09:48:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HVbvaOfquLKncGFDBe2M/Y4YwsUkfp4WGF45bjWhFDE=;
- b=TUbesez10FKPI+NxYv8Z6IODYMFJYVFU2JodEa8bg3rmYrDM69TVKFdWS+VoQ0yZND
- kg82+f5r9u7+Wyzmi296Z89ifa9WFU7XfAutxAyEaGakz0Cx6JHM3QSvLL8bnjj3+mH0
- UtMUlA0dFake3sgfAYPfGj3rr2n8uZZCFwUaeB9uXusC2TJJcQ2GsE49ybbtH66DXnJS
- bUzwvhPZ/NkP+IgWyTeqGVdkdpi8sMHNePHhLXUk5/lpketMnawCT+NBd7GpyMUdJfNL
- /2s1cLo9QYx5cxLEtUpDsgOxWrVYywFhkG550zgmJC057GEyd5NFCxpwLLWs6z6IFXOB
- WD9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HVbvaOfquLKncGFDBe2M/Y4YwsUkfp4WGF45bjWhFDE=;
- b=mrzzPPldOtGMQas3BGhHx9GuFZ7Ad7A+3eVebCXUEOG1uy00lNPP3o7wOQKj6mI6i1
- U0Ky7IAKsmCCfJpnZnBNhlo+wUMKCq04UosxnirjIeIy+YjjmRfNn1JFNcKhzOr23xcM
- IRhM+dIlI92wYec30KdTOpnAaD4dZz6uUKzkB2mtaXrYYoM/WDF3PK+Hzgk0OFHQ23eW
- NXpYl/ij/DicvHJxbtybZ1RrLy8V/8a/Nz1tZgRATT/s6TirvTyxTMwW8D2liL+XWiYl
- 5X5c53Sk886APk5OvANZYUGYqjJjPFMb5+b3UgRlHv7I/9Ks09WVnroZnFvHfke7NrDm
- 7PYQ==
-X-Gm-Message-State: AOAM530j5nzqAqobPl2x7dThZXGMzz/1rP5aj9e8zD+LgnXL5cuKlVrM
- wUsAFBy6FpkjnZB0VNp5HMxSPYwm5KOLi//avmkJGg==
-X-Google-Smtp-Source: ABdhPJyRrldZrO+e3+QZwYQxWux3ytnBK41n0qAydYwEL0lJi3U3IsexIWLyWonqQr58cVKpvpgnLpoj+ej9ogzDWVg=
-X-Received: by 2002:a67:e050:: with SMTP id n16mr70652383vsl.44.1637171286138; 
- Wed, 17 Nov 2021 09:48:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
+ id 1mnRSz-00024X-8L
+ for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 15:23:37 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:43226)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
+ id 1mnRSx-0005KE-HH
+ for qemu-trivial@nongnu.org; Wed, 17 Nov 2021 15:23:36 -0500
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1AHJjlef004024; 
+ Wed, 17 Nov 2021 20:23:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : reply-to : subject : to : cc : references : from :
+ in-reply-to : content-type : content-transfer-encoding; s=pp1;
+ bh=0K7u8gbg2rAclcR1K4EWDG+5wqXNCsFvB0n2MJy41yw=;
+ b=EThfD/KNC054cGcDZCmn/pJQP2AkN0wbaZ6Dx+vmncREtLqkQEtvv9uvgC7LmGZRPgNB
+ XcHGmZH6RC3ucaTTIqtM6TkS8mlV1vvsvtCBO5k7WEiTNFbCP6/wW02v9jEBtuKTxSaD
+ ZFwu/8lE0p0+UFV7XJ/YemPhEQ17eHUP9+rlVLTFpZA0HdWR2HscuI601by96ZmA81pM
+ W1l1dnXHX4FNe0sBa1lDXyAlBhirTbx7lBsdsmI6x38yzsFx3warD64sPSEgvOt6wzb9
+ W/JNcX3JQ+8bMWlh+Jhc5FY4hwNoyGxkNnVmni6/IQUzTr2yIuQT5t+HTxIrfXGacAO9 eA== 
+Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.27])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3cd85v8svq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 17 Nov 2021 20:23:33 +0000
+Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
+ by ppma05wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 1AHKCr3D004664;
+ Wed, 17 Nov 2021 20:23:31 GMT
+Received: from b03cxnp08027.gho.boulder.ibm.com
+ (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+ by ppma05wdc.us.ibm.com with ESMTP id 3ca50c45hp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 17 Nov 2021 20:23:31 +0000
+Received: from b03ledav006.gho.boulder.ibm.com
+ (b03ledav006.gho.boulder.ibm.com [9.17.130.237])
+ by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 1AHKNU9m22413888
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 17 Nov 2021 20:23:30 GMT
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 56C02C6062;
+ Wed, 17 Nov 2021 20:23:30 +0000 (GMT)
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 873DAC605B;
+ Wed, 17 Nov 2021 20:23:29 +0000 (GMT)
+Received: from [9.160.118.240] (unknown [9.160.118.240])
+ by b03ledav006.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Wed, 17 Nov 2021 20:23:29 +0000 (GMT)
+Message-ID: <c873365d-e644-465e-9499-2c918ed3803b@linux.ibm.com>
+Date: Wed, 17 Nov 2021 17:23:28 -0300
 MIME-Version: 1.0
-References: <20211117174533.1900570-1-philmd@redhat.com>
-In-Reply-To: <20211117174533.1900570-1-philmd@redhat.com>
-From: Warner Losh <imp@bsdimp.com>
-Date: Wed, 17 Nov 2021 10:47:56 -0700
-Message-ID: <CANCZdfpVDcddF5n2qhbTV6UU78y2VckH0KFyz5aY-ozj0XEEKA@mail.gmail.com>
-Subject: Re: [PATCH] qemu-keymap: Add license in generated files
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- "Daniel P . Berrange" <berrange@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000f277a405d0ffa49b"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::930
- (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::930;
- envelope-from=wlosh@bsdimp.com; helo=mail-ua1-x930.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Reply-To: lagarcia@br.ibm.com
+Subject: Re: [PATCH] Fix typo in comment.
+Content-Language: en-US
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: Leonardo Garcia <lagarcia@br.ibm.com>, qemu-trivial@nongnu.org
+References: <2833bf05e3c85267c5fefaab7326b58521da3896.1611685564.git.lagarcia@br.ibm.com>
+ <da3ee880-33f5-d43f-6784-bb3d81b6c591@vivier.eu>
+From: =?UTF-8?Q?Leonardo_Augusto_Guimar=c3=a3es_Garcia?=
+ <lagarcia@linux.ibm.com>
+Organization: IBM
+In-Reply-To: <da3ee880-33f5-d43f-6784-bb3d81b6c591@vivier.eu>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: egJxZlLYqILtQWcU8qLV8QeyjFRjIBeb
+X-Proofpoint-ORIG-GUID: egJxZlLYqILtQWcU8qLV8QeyjFRjIBeb
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
+ definitions=2021-11-17_07,2021-11-17_01,2020-04-07_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0
+ priorityscore=1501 phishscore=0 adultscore=0 mlxlogscore=999 clxscore=1011
+ bulkscore=0 impostorscore=0 malwarescore=0 mlxscore=0 suspectscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2110150000 definitions=main-2111170090
+Received-SPF: pass client-ip=148.163.156.1;
+ envelope-from=lagarcia@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.009,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,81 +103,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Nov 2021 17:48:09 -0000
+X-List-Received-Date: Wed, 17 Nov 2021 20:23:38 -0000
 
---000000000000f277a405d0ffa49b
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Nov 17, 2021 at 10:46 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com>
-wrote:
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  qemu-keymap.c | 1 +
->  1 file changed, 1 insertion(+)
+On 1/29/21 05:00, Laurent Vivier wrote:
+> Le 26/01/2021 à 19:26, lagarcia@linux.ibm.com a écrit :
+>> From: Leonardo Garcia <lagarcia@br.ibm.com>
+>>
+>> Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
+>> ---
+>>  hw/virtio/vhost.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+>> index 28c7d78172..d6d290e79f 100644
+>> --- a/hw/virtio/vhost.c
+>> +++ b/hw/virtio/vhost.c
+>> @@ -285,7 +285,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
+>>       * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
+>>       * incremental memory mapping API via IOTLB API. For platform that
+>>       * does not have IOMMU, there's no need to enable this feature
+>> -     * which may cause unnecessary IOTLB miss/update trnasactions.
+>> +     * which may cause unnecessary IOTLB miss/update transactions.
+>>       */
+>>      return vdev->dma_as != &address_space_memory &&
+>>             virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
+>>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 >
+> Please, re-send your patch to qemu-devel@nongnu.org, this is the reference list.
 
-Reviewed-by: Warner Losh <imp@bsdimp.com>
+
+Thanks for the guidance. I'll do that now, as no one did that in the
+past months. :)
 
 
-> diff --git a/qemu-keymap.c b/qemu-keymap.c
-> index 536e8f2385d..4095b654a60 100644
-> --- a/qemu-keymap.c
-> +++ b/qemu-keymap.c
-> @@ -187,6 +187,7 @@ int main(int argc, char *argv[])
->      }
+Cheers,
+
+
+Leo
+
+
 >
->      fprintf(outfile,
-> +            "# SPDX-License-Identifier: GPL-2.0-or-later\n"
->              "#\n"
->              "# generated by qemu-keymap\n"
->              "#    model   : %s\n"
-> --
-> 2.31.1
->
->
->
-
---000000000000f277a405d0ffa49b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Nov 17, 2021 at 10:46 AM Phil=
-ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
-hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:phi=
-lmd@redhat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br>
----<br>
-=C2=A0qemu-keymap.c | 1 +<br>
-=C2=A01 file changed, 1 insertion(+)<br></blockquote><div><br></div><div>Re=
-viewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com">imp@bsdimp.com=
-</a>&gt;</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">
-diff --git a/qemu-keymap.c b/qemu-keymap.c<br>
-index 536e8f2385d..4095b654a60 100644<br>
---- a/qemu-keymap.c<br>
-+++ b/qemu-keymap.c<br>
-@@ -187,6 +187,7 @@ int main(int argc, char *argv[])<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0fprintf(outfile,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;# SPDX-License-Identifier:=
- GPL-2.0-or-later\n&quot;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;#\n&quot;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;# generated by qemu-k=
-eymap\n&quot;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;#=C2=A0 =C2=A0 model=
-=C2=A0 =C2=A0: %s\n&quot;<br>
--- <br>
-2.31.1<br>
-<br>
-<br>
-</blockquote></div></div>
-
---000000000000f277a405d0ffa49b--
+> Thanks,
+> Laurent
 
