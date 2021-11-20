@@ -1,43 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mncwp-0006ov-7D
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Nov 2021 03:39:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60216)
+	id 1moXHR-0001m2-8Z
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Nov 2021 15:48:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53866)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lei.rao@intel.com>)
- id 1mnYzq-00023V-NN; Wed, 17 Nov 2021 23:26:02 -0500
-Received: from mga17.intel.com ([192.55.52.151]:41569)
+ (Exim 4.90_1) (envelope-from <mail@maciej.szmigiero.name>)
+ id 1moVNv-0004vS-8O; Sat, 20 Nov 2021 13:46:47 -0500
+Received: from vps-vb.mhejs.net ([37.28.154.113]:44656)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lei.rao@intel.com>)
- id 1mnYzn-0004PZ-QZ; Wed, 17 Nov 2021 23:26:02 -0500
-X-IronPort-AV: E=McAfee;i="6200,9189,10171"; a="214828795"
-X-IronPort-AV: E=Sophos;i="5.87,243,1631602800"; d="scan'208";a="214828795"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Nov 2021 20:25:53 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,243,1631602800"; d="scan'208";a="507254892"
-Received: from unknown (HELO localhost.localdomain.bj.intel.com)
- ([10.238.156.105])
- by orsmga008.jf.intel.com with ESMTP; 17 Nov 2021 20:25:50 -0800
-From: "Rao, Lei" <lei.rao@intel.com>
-To: chen.zhang@intel.com, zhang.zhanghailiang@huawei.com, quintela@redhat.com,
- dgilbert@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- "Rao, Lei" <lei.rao@intel.com>
-Subject: [PATCH] docs/COLO-FT.txt: Drop deprecated 'props' from object-add in
- COLO docs
-Date: Thu, 18 Nov 2021 12:17:21 +0800
-Message-Id: <1637209041-15080-1-git-send-email-lei.rao@intel.com>
-X-Mailer: git-send-email 1.8.3.1
-Received-SPF: pass client-ip=192.55.52.151; envelope-from=lei.rao@intel.com;
- helo=mga17.intel.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <mail@maciej.szmigiero.name>)
+ id 1moVNt-0004D2-7f; Sat, 20 Nov 2021 13:46:46 -0500
+Received: from MUA by vps-vb.mhejs.net with esmtps (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <mail@maciej.szmigiero.name>)
+ id 1moVNg-0001xn-Ib; Sat, 20 Nov 2021 19:46:32 +0100
+From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Jon Doron <arilou@gmail.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Denis V . Lunev" <den@openvz.org>,
+ Roman Kagan <rvkagan@yandex-team.ru>, qemu-trivial@nongnu.org
+Subject: [PATCH] MAINTAINERS: Add myself as a reviewer for Hyper-V VMBus
+Date: Sat, 20 Nov 2021 19:46:27 +0100
+Message-Id: <b145dcf08ae606e9d29e55b2f701a3fe4f16b347.1637433881.git.maciej.szmigiero@oracle.com>
+X-Mailer: git-send-email 2.33.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=37.28.154.113;
+ envelope-from=mail@maciej.szmigiero.name; helo=vps-vb.mhejs.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 18 Nov 2021 03:39:09 -0500
+X-Mailman-Approved-At: Sat, 20 Nov 2021 15:48:09 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,56 +46,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Nov 2021 04:26:03 -0000
+X-List-Received-Date: Sat, 20 Nov 2021 18:46:47 -0000
 
-From: "Rao, Lei" <lei.rao@intel.com>
+From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
 
-With the removal of deprecated 'props' from object-add in the commit of
-"50243407457a9fb0ed17b9a9ba9fc9aee09495b1", we also should update COLO's
-documents.
+This way there is at least some contact point for incoming patches.
 
-Signed-off-by: Lei Rao <lei.rao@intel.com>
+We'll see whether the code still gets just a random patch a few times
+a year or whether it requires a permanent maintainer to take care of it.
+
+Signed-off-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
 ---
- docs/COLO-FT.txt | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ MAINTAINERS | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/docs/COLO-FT.txt b/docs/COLO-FT.txt
-index 8d6d53a..fd5ffcc 100644
---- a/docs/COLO-FT.txt
-+++ b/docs/COLO-FT.txt
-@@ -289,11 +289,11 @@ Wait until disk is synced, then:
- {'execute': 'human-monitor-command', 'arguments':{ 'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0'}}
- {'execute': 'x-blockdev-change', 'arguments':{ 'parent': 'colo-disk0', 'node': 'replication0' } }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d3879aa3c12c..7f57e7fda73b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1729,6 +1729,12 @@ F: include/hw/block/fdc.h
+ F: tests/qtest/fdc-test.c
+ T: git https://gitlab.com/jsnow/qemu.git ide
  
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-mirror', 'id': 'm0', 'props': { 'netdev': 'hn0', 'queue': 'tx', 'outdev': 'mirror0' } } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire0', 'props': { 'netdev': 'hn0', 'queue': 'rx', 'indev': 'compare_out' } } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire1', 'props': { 'netdev': 'hn0', 'queue': 'rx', 'outdev': 'compare0' } } }
-+{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-mirror', 'id': 'm0', 'netdev': 'hn0', 'queue': 'tx', 'outdev': 'mirror0' } }
-+{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire0', 'netdev': 'hn0', 'queue': 'rx', 'indev': 'compare_out' } }
-+{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire1', 'netdev': 'hn0', 'queue': 'rx', 'outdev': 'compare0' } }
- {'execute': 'object-add', 'arguments':{ 'qom-type': 'iothread', 'id': 'iothread1' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'colo-compare', 'id': 'comp0', 'props': { 'primary_in': 'compare0-0', 'secondary_in': 'compare1', 'outdev': 'compare_out0', 'iothread': 'iothread1' } } }
-+{'execute': 'object-add', 'arguments':{ 'qom-type': 'colo-compare', 'id': 'comp0', 'primary_in': 'compare0-0', 'secondary_in': 'compare1', 'outdev': 'compare_out0', 'iothread': 'iothread1' } }
- 
- {'execute': 'migrate-set-capabilities', 'arguments':{ 'capabilities': [ {'capability': 'x-colo', 'state': true } ] } }
- {'execute': 'migrate', 'arguments':{ 'uri': 'tcp:127.0.0.2:9998' } }
-@@ -318,11 +318,11 @@ Wait until disk is synced, then:
- {'execute': 'human-monitor-command', 'arguments':{ 'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.1,file.port=9999,file.export=parent0,node-name=replication0'}}
- {'execute': 'x-blockdev-change', 'arguments':{ 'parent': 'colo-disk0', 'node': 'replication0' } }
- 
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-mirror', 'id': 'm0', 'props': { 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'tx', 'outdev': 'mirror0' } } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire0', 'props': { 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'rx', 'indev': 'compare_out' } } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire1', 'props': { 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'rx', 'outdev': 'compare0' } } }
-+{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-mirror', 'id': 'm0', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'tx', 'outdev': 'mirror0' } }
-+{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire0', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'rx', 'indev': 'compare_out' } }
-+{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire1', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'rx', 'outdev': 'compare0' } }
- {'execute': 'object-add', 'arguments':{ 'qom-type': 'iothread', 'id': 'iothread1' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'colo-compare', 'id': 'comp0', 'props': { 'primary_in': 'compare0-0', 'secondary_in': 'compare1', 'outdev': 'compare_out0', 'iothread': 'iothread1' } } }
-+{'execute': 'object-add', 'arguments':{ 'qom-type': 'colo-compare', 'id': 'comp0', 'primary_in': 'compare0-0', 'secondary_in': 'compare1', 'outdev': 'compare_out0', 'iothread': 'iothread1' } }
- 
- {'execute': 'migrate-set-capabilities', 'arguments':{ 'capabilities': [ {'capability': 'x-colo', 'state': true } ] } }
- {'execute': 'migrate', 'arguments':{ 'uri': 'tcp:127.0.0.1:9998' } }
--- 
-1.8.3.1
-
++Hyper-V VMBus
++S: Odd Fixes
++R: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
++F: hw/hyperv/vmbus.c
++F: include/hw/hyperv/vmbus*.h
++
+ OMAP
+ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
 
