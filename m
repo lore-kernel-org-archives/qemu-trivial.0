@@ -1,40 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1moXHR-0001m2-8Z
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Nov 2021 15:48:15 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53866)
+	id 1moiZO-0005ud-BT
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Nov 2021 03:51:30 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48938)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mail@maciej.szmigiero.name>)
- id 1moVNv-0004vS-8O; Sat, 20 Nov 2021 13:46:47 -0500
-Received: from vps-vb.mhejs.net ([37.28.154.113]:44656)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mail@maciej.szmigiero.name>)
- id 1moVNt-0004D2-7f; Sat, 20 Nov 2021 13:46:46 -0500
-Received: from MUA by vps-vb.mhejs.net with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <mail@maciej.szmigiero.name>)
- id 1moVNg-0001xn-Ib; Sat, 20 Nov 2021 19:46:32 +0100
-From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
+ (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
+ id 1moglE-0005Jq-2C; Sun, 21 Nov 2021 01:55:36 -0500
+Received: from [2607:f8b0:4864:20::f32] (port=34594
+ helo=mail-qv1-xf32.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
+ id 1moglB-0002yR-Dl; Sun, 21 Nov 2021 01:55:35 -0500
+Received: by mail-qv1-xf32.google.com with SMTP id i13so10201819qvm.1;
+ Sat, 20 Nov 2021 22:55:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VBZdCZwrgI7co0FlatAmRyngorwgBGgTSbhgup+mEeg=;
+ b=I6o3EJEz7wxis7Tigi71jItJp5Qgn0OaJ2sksYbMt3Pfd1PKYCbqlV5T3+MTZY5Ek/
+ pyQyyl3JqwtrNfNtd6Ze1pZTS+xGG8B5UBtlbA4XRw6bu390BL1y4pKRUTpWvnMBo5Fq
+ yl5zeYIJu00MUk1Lig/vA5hlK9eM0g+suDnubuzFWxQ7Pn9mVVMsPeu/5+jvI0h9ldQK
+ yQ1E3poFWW+q7C1bBVSlr8bHXlovVD69UDyi36NTcgB0RLTiYvDCLlXq59qYMZBKE99W
+ yaXGC55cjOZkzMg4KmiPclNRRZzWlv7z5jx/KjPjaH0tVk/95vL7+Z97A/1dRELrzqlW
+ NrQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VBZdCZwrgI7co0FlatAmRyngorwgBGgTSbhgup+mEeg=;
+ b=GPwtZ7xJQnPPMNCFTa+n7JxQGZtnwL2Qi5H6zY85/RWP6wjlXhiZSf3LwCaH5B/q4i
+ lxX4OSTupF8Ra8KVpcUuhvaCKtYxUs5L3Sz+SceNTXYYWFxRS71XA93KHzCf/COpT7SQ
+ C4EwDg0AMRT7hUogr6R9leltAlDWneBCPNZWEit11A8OpgUI5Xte39lY5Mxk5r+IHAJv
+ kZfPpnVntd0oc1D5lAR/7q2zbZvgJf2rX+8yxBNebSgOG4zVbF53nG5AheqOboU9MseY
+ P8xASjiNSbZoVu/dFjI1fYap5X28FJw7GfV78pWfHU5mCubHDFpI3drjQkTShOirXNT6
+ k/jw==
+X-Gm-Message-State: AOAM531Eo0mUvnDz3Fx0W5GYHOjD/Zrdy0tcCF7kRl7Wu5w6H7Bm2xWY
+ 2YS5hEVE666Rkb7ATRGsRSIq1nTfFym8UYHeVhI=
+X-Google-Smtp-Source: ABdhPJwbetCyKheuQZD9WgOOqQ20u8ake0ewsOk/flgY0c15sqfn3iQ6AWC/evqEj+BbEXoD0r7OAA==
+X-Received: by 2002:a05:6214:f2d:: with SMTP id
+ iw13mr90888489qvb.13.1637477731645; 
+ Sat, 20 Nov 2021 22:55:31 -0800 (PST)
+Received: from alexdesktop.localdomain
+ (cpebc4dfb42ca53-cmbc4dfb42ca50.cpe.net.cable.rogers.com. [99.251.122.96])
+ by smtp.gmail.com with ESMTPSA id j24sm2489860qkg.133.2021.11.20.22.55.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 20 Nov 2021 22:55:31 -0800 (PST)
+From: Alexander Orzechowski <orzechowski.alexander@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Jon Doron <arilou@gmail.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Paolo Bonzini <pbonzini@redhat.com>, "Denis V . Lunev" <den@openvz.org>,
- Roman Kagan <rvkagan@yandex-team.ru>, qemu-trivial@nongnu.org
-Subject: [PATCH] MAINTAINERS: Add myself as a reviewer for Hyper-V VMBus
-Date: Sat, 20 Nov 2021 19:46:27 +0100
-Message-Id: <b145dcf08ae606e9d29e55b2f701a3fe4f16b347.1637433881.git.maciej.szmigiero@oracle.com>
-X-Mailer: git-send-email 2.33.0
+Cc: Alexander Orzechowski <orzechowski.alexander@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org
+Subject: [PATCH 0/2] Fix trivial errors with highdpi/wayland
+Date: Sun, 21 Nov 2021 01:55:02 -0500
+Message-Id: <20211121065504.29101-1-orzechowski.alexander@gmail.com>
+X-Mailer: git-send-email 2.34.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.28.154.113;
- envelope-from=mail@maciej.szmigiero.name; helo=vps-vb.mhejs.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f32
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f32;
+ envelope-from=orzechowski.alexander@gmail.com; helo=mail-qv1-xf32.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 20 Nov 2021 15:48:09 -0500
+X-Mailman-Approved-At: Sun, 21 Nov 2021 03:51:28 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,35 +78,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Nov 2021 18:46:47 -0000
+X-List-Received-Date: Sun, 21 Nov 2021 06:55:36 -0000
 
-From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
+Hi, this patch series is ment to fix two problems with highdpi/wayland
+with gtk that makes the program unusuable. As it stands currently:
+The virtual machine window will only render in the bottom-left quarter of the screen
+(with 2x scaling) while using the gtk,gl=on and virtgl backend. This also
+fixes the --usbdevice tablet option as before if the pointer would click
+in the incorrect spot of the virtual machine then was expected.
 
-This way there is at least some contact point for incoming patches.
-
-We'll see whether the code still gets just a random patch a few times
-a year or whether it requires a permanent maintainer to take care of it.
-
-Signed-off-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
----
- MAINTAINERS | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d3879aa3c12c..7f57e7fda73b 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1729,6 +1729,12 @@ F: include/hw/block/fdc.h
- F: tests/qtest/fdc-test.c
- T: git https://gitlab.com/jsnow/qemu.git ide
+Alexander Orzechowski (2):
+  ui: fix incorrect scaling on highdpi with gtk/opengl
+  ui: fix incorrect pointer position on highdpi with gtk
  
-+Hyper-V VMBus
-+S: Odd Fixes
-+R: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
-+F: hw/hyperv/vmbus.c
-+F: include/hw/hyperv/vmbus*.h
-+
- OMAP
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
+ ui/gtk-gl-area.c |  7 ++++---
+ ui/gtk.c         | 13 ++++++++-----
+ 2 files changed, 12 insertions(+), 8 deletions(-)
+
+-- 
+2.34.0
+
 
