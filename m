@@ -1,71 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mp7HR-0008Jq-AA
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Nov 2021 06:14:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59470)
+	id 1mp8GI-00080J-6z
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Nov 2021 07:17:30 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45494)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mp7HP-0008Ck-7C
- for qemu-trivial@nongnu.org; Mon, 22 Nov 2021 06:14:35 -0500
-Received: from [2a00:1450:4864:20::42a] (port=37451
- helo=mail-wr1-x42a.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mp7HN-0003H7-Om
- for qemu-trivial@nongnu.org; Mon, 22 Nov 2021 06:14:34 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id b12so31977186wrh.4
- for <qemu-trivial@nongnu.org>; Mon, 22 Nov 2021 03:14:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=yoFdkWO62twBanTX65W0CEzc9tStIbxUYO8OnbTVzjw=;
- b=nur0CyPscKh+zNJuTK12QgxLqnqL4NhoiVnJIj4jjDy+VteHKqELy1Haw1rYv4nE7U
- ESG1347CidssyvLdluEe3ACafw3zJvcHg0ET1oaq1+Ag7MCldtBsNQT+H8gP161cPB9N
- h7ADPZwDU2go6w4CSvAOH23kQFrsBz8rKrcWDKTdk6lpk6MJzAVgXD+j2Tdv2ykgibV9
- rwCHCoWCuPvr1aONicP6vA1E3XYv4+ONCJ0aZr/yaZbCN+K/vNwf6tosXQ/RSA/jJ0gA
- sg+S8zYtzoLfdxeSskFWr7Be8QuVwde3YANdWWWpX49edHjaq6GS7odXsQPIAzFNJpv5
- 0XsQ==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mp8GF-0007yF-Ry
+ for qemu-trivial@nongnu.org; Mon, 22 Nov 2021 07:17:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:25270)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mp8GD-0005QJ-IZ
+ for qemu-trivial@nongnu.org; Mon, 22 Nov 2021 07:17:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1637583444;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xtaloi5R+LH/p1amxef3z86CYMvQ7bGT240F6mebXq8=;
+ b=efpjBfvganhWL73hYbnPH+8N+D71XcAQ5PaMk8CeYTOvV1JkZRTYY0oPCEVJkvjDKrttW9
+ b/k182OOo4+fJi/MmlmE3SfV+CIeyKkwn2Wv/1b4xfi1ipLYi1nw4vA9xcOUCf01vM8bUf
+ Ya6RPE/0+o4UAoi99wcfU8U1TIyQ2C8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-568-I6T8W33-OTKR3YK0UeD8oQ-1; Mon, 22 Nov 2021 07:17:23 -0500
+X-MC-Unique: I6T8W33-OTKR3YK0UeD8oQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ g81-20020a1c9d54000000b003330e488323so4149282wme.0
+ for <qemu-trivial@nongnu.org>; Mon, 22 Nov 2021 04:17:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=yoFdkWO62twBanTX65W0CEzc9tStIbxUYO8OnbTVzjw=;
- b=I+4MMZlEYS1/8rZ7ykGd+unfnkMd4VZ9vTkMyx2W6Lc6pPyoNxhSj/ZYX8y9RizMEM
- k4kRsppZ+EO6FNL4HxUsCiortaaVvfAU4JPW0GB0Seukxadhb2Bs/qoc4o//+UAOUFPo
- XKsquo3gjRLpL+xGbv6cG7ZVV4qHJ1E3aDEOxuAuPnrmBfAZZfi2dQIDa3XJJH6qIO2h
- eiEHDwVokb6Dfw9gum6CtTovBcAwuir9B99cx2Wgw5SZF5Svfaouau1I56yHg3DfTlCf
- wj8mIs153dogUmV14tTCt/c8p7KtLuDT+JRkxTxJfMUVL3g/EUU3yDtHSqncZdhUT0+l
- tPpg==
-X-Gm-Message-State: AOAM531WE4ft422zs83qYRibhRWPRPSogFUF3lAhvjfcvMs6akDURGue
- 6ZevVy6DMXE/zzVsLnFQxMYXEA5x/YHBbDG2ol979jUVTyHcvQ==
-X-Google-Smtp-Source: ABdhPJygWV4EY0Z8ZAB77tXm5TzUm7hjJTXvihZf52gOC/T0TbK1s4z/iJOw/XTCA9mrVvU2G82DrAfyxuve3fCzync=
-X-Received: by 2002:a5d:6da1:: with SMTP id u1mr37524846wrs.263.1637579672483; 
- Mon, 22 Nov 2021 03:14:32 -0800 (PST)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=xtaloi5R+LH/p1amxef3z86CYMvQ7bGT240F6mebXq8=;
+ b=WkYUrDFR5RAIruzPYPAKnMDbYXJ9+GUlM15oMYBbGCl1mkd27KqLExfcMOq/3EGW5/
+ fqs3W/hFFc870JoKW6Grn+PY0oK4FOo++htMiQ/gEN34Bz7Q4bcDLI/HpXSmUXSJsBbF
+ TNSspvOv6Pkop3fnP/vN6Mr2Yf0pzDU2BjyOlESqSK/moyhaduLTF8HCMxKvV0ytA7Xv
+ oLpCOZJkCehXpwwmCkYptz4V+Pv+aLyLu6GgTB45rTC8Vj47JYz8UpvddwPmBseHIKaW
+ djSIz3tT2dG8wyWgDrbOhVDmBJGjcliDXKVOhkaScF7867dUT8d94ZH9L9ZqC6u0ErcL
+ /rXA==
+X-Gm-Message-State: AOAM531TW0TvnOGxAM7lzt1XGt2IgoKY2b1Nk3Mya8BjOq1cMghoMM9j
+ NN/tAPuA0gN8MPUv1eUAaqoBTwsVBV3YM0EzO1I4hA2F6x0rC0fIU7s+64pR2NvYGX3k7l+aKGG
+ 7ubib7Pb6UQxAGSZrsA==
+X-Received: by 2002:adf:9bcd:: with SMTP id e13mr37090427wrc.165.1637583442033; 
+ Mon, 22 Nov 2021 04:17:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyut/Tst1nlHd4W6dCshnzM2Owz2NdBVxKRr1JGcEeOrdYRXxyVzXwhsY7m9j+SyWQCF3LZjA==
+X-Received: by 2002:adf:9bcd:: with SMTP id e13mr37090359wrc.165.1637583441651; 
+ Mon, 22 Nov 2021 04:17:21 -0800 (PST)
+Received: from [192.168.1.36] (62.red-83-57-168.dynamicip.rima-tde.net.
+ [83.57.168.62])
+ by smtp.gmail.com with ESMTPSA id n7sm8684577wro.68.2021.11.22.04.17.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Nov 2021 04:17:21 -0800 (PST)
+Message-ID: <a605fb86-d86f-e200-de80-e5802254f52e@redhat.com>
+Date: Mon, 22 Nov 2021 13:17:19 +0100
 MIME-Version: 1.0
-References: <20211105172127.224462-1-f4bug@amsat.org>
- <20211105172127.224462-4-f4bug@amsat.org>
-In-Reply-To: <20211105172127.224462-4-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Nov 2021 11:14:21 +0000
-Message-ID: <CAFEAcA-xNhWGV46SY5K9uChAZWvU44YYgTgXu5wVjKtMq8XTug@mail.gmail.com>
-Subject: Re: [PATCH 3/3] hw/input/pckbd: Rename i8042_setup_a20_line() and its
- a20 irq argument
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42a
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH] MAINTAINERS: Add myself as a reviewer for Hyper-V VMBus
+To: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>, qemu-devel@nongnu.org
+Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Jon Doron <arilou@gmail.com>, qemu-trivial@nongnu.org,
+ Roman Kagan <rvkagan@yandex-team.ru>, "Denis V . Lunev" <den@openvz.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <b145dcf08ae606e9d29e55b2f701a3fe4f16b347.1637433881.git.maciej.szmigiero@oracle.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+In-Reply-To: <b145dcf08ae606e9d29e55b2f701a3fe4f16b347.1637433881.git.maciej.szmigiero@oracle.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.709,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.097, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,71 +94,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Nov 2021 11:14:35 -0000
+X-List-Received-Date: Mon, 22 Nov 2021 12:17:28 -0000
 
-On Fri, 5 Nov 2021 at 17:21, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> 'a20_out' is an input IRQ, rename it as 'a20_input'.
-> i8042_setup_a20_line() doesn't take a Device parameter
-> but an ISADevice one. Rename it as i8042_isa_*() to
-> make it explicit.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 11/20/21 19:46, Maciej S. Szmigiero wrote:
+> From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
+> 
+> This way there is at least some contact point for incoming patches.
+> 
+> We'll see whether the code still gets just a random patch a few times
+> a year or whether it requires a permanent maintainer to take care of it.
+> 
+> Signed-off-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
 > ---
->  include/hw/input/i8042.h | 2 +-
->  hw/i386/pc.c             | 2 +-
->  hw/input/pckbd.c         | 4 ++--
->  3 files changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
-> index 1d90432daef..3534fcc4b43 100644
-> --- a/include/hw/input/i8042.h
-> +++ b/include/hw/input/i8042.h
-> @@ -21,6 +21,6 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq=
-,
->                     MemoryRegion *region, ram_addr_t size,
->                     hwaddr mask);
->  void i8042_isa_mouse_fake_event(ISAKBDState *isa);
-> -void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
-> +void i8042_isa_setup_a20_line(ISADevice *dev, qemu_irq a20_input);
->
->  #endif /* HW_INPUT_I8042_H */
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 2592a821486..06ef74ca22b 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1043,7 +1043,7 @@ static void pc_superio_init(ISABus *isa_bus, bool c=
-reate_fdctrl, bool no_vmport)
->      port92 =3D isa_create_simple(isa_bus, TYPE_PORT92);
->
->      a20_line =3D qemu_allocate_irqs(handle_a20_line_change, first_cpu, 2=
-);
-> -    i8042_setup_a20_line(i8042, a20_line[0]);
-> +    i8042_isa_setup_a20_line(i8042, a20_line[0]);
+>  MAINTAINERS | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d3879aa3c12c..7f57e7fda73b 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1729,6 +1729,12 @@ F: include/hw/block/fdc.h
+>  F: tests/qtest/fdc-test.c
+>  T: git https://gitlab.com/jsnow/qemu.git ide
+>  
+> +Hyper-V VMBus
+> +S: Odd Fixes
+> +R: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
+> +F: hw/hyperv/vmbus.c
+> +F: include/hw/hyperv/vmbus*.h
 
-I think these days we can directly call
-    qdev_connect_gpio_out_named(DEVICE(i8042), I8042_A20_LINE, 0, a20_line[=
-0]);
-and drop the i8042_setup_a20_line() wrapper entirely,
-since the named GPIO lines are a "public" interface to the device.
-We only have this i8042_setup_a20_line() because the original
-implementation (added in commit 956a3e6bb738) predates gpio lines
-and did an assignment into the KBDState struct which needed to
-be private to pckbd.c.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
->      qdev_connect_gpio_out_named(DEVICE(port92),
->                                  PORT92_A20_LINE, 0, a20_line[1]);
+Thank you!
 
-That would then make it consistent with how we're wiring up the
-other A20 input source here.
-
-(Some day we should perhaps make the A20 input to the CPU an actual
-GPIO input on the CPU device object, so we could wire the I8042_A20_LINE
-and PORT92_A20_LINE to it via an OR gate, and drop the intermidate
-qemu_irq array and handle_a20_line_change function. But needing
-the OR gate makes that a little clunky so I'm not sure it's
-really worth the effort.)
-
--- PMM
 
