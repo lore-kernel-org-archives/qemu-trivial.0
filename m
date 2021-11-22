@@ -1,46 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mp1KV-0004mW-UG
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Nov 2021 23:53:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33888)
+	id 1mp3wg-0007Ih-Qe
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Nov 2021 02:40:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lei.rao@intel.com>)
- id 1mp0oZ-00027h-QN; Sun, 21 Nov 2021 23:20:23 -0500
-Received: from mga02.intel.com ([134.134.136.20]:64513)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mp3we-0007H0-6U
+ for qemu-trivial@nongnu.org; Mon, 22 Nov 2021 02:40:57 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:33440)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lei.rao@intel.com>)
- id 1mp0oW-0008OI-Ld; Sun, 21 Nov 2021 23:20:23 -0500
-X-IronPort-AV: E=McAfee;i="6200,9189,10175"; a="221941481"
-X-IronPort-AV: E=Sophos;i="5.87,253,1631602800"; d="scan'208";a="221941481"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Nov 2021 20:20:17 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,253,1631602800"; d="scan'208";a="496716337"
-Received: from unknown (HELO localhost.localdomain.bj.intel.com)
- ([10.238.156.105])
- by orsmga007.jf.intel.com with ESMTP; 21 Nov 2021 20:20:13 -0800
-From: "Rao, Lei" <lei.rao@intel.com>
-To: armbru@redhat.com, chen.zhang@intel.com, zhang.zhanghailiang@huawei.com,
- wencongyang2@huawei.com, xiechanglong.d@gmail.com, berto@igalia.com,
- eblake@redhat.com, vsementsov@virtuozzo.com
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- "Rao, Lei" <lei.rao@intel.com>
-Subject: [PATCH 2/2] docs: Use double quotes instead of single quotes for COLO
-Date: Mon, 22 Nov 2021 12:11:23 +0800
-Message-Id: <1637554283-11264-2-git-send-email-lei.rao@intel.com>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1637554283-11264-1-git-send-email-lei.rao@intel.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1mp3wP-00062u-3m
+ for qemu-trivial@nongnu.org; Mon, 22 Nov 2021 02:40:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1637566840;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Z5LF6IdWCA+fJgDjp54g5OhsA8mtXINs6wrTk6V9hNc=;
+ b=aS8UipekpHiUyamylRNN67j4zVp0d6gmsRXeE5eaWcNRDYiwMWgjN9zuz7jozgqBTlEZRj
+ Gq5LLMzNR5xFapc9QzOwfQ03z37N01wXiygyJTUBDLvf/a/zWLNi+Fojj74E5sHGhIfrfY
+ bHENJlLRXcmecJgAJiOo6prqewpr5qg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-290-a1qmdww5NiGrCe2faJyEIA-1; Mon, 22 Nov 2021 02:40:37 -0500
+X-MC-Unique: a1qmdww5NiGrCe2faJyEIA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7F44E100C664;
+ Mon, 22 Nov 2021 07:40:35 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-7.ams2.redhat.com [10.36.112.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 930E360CC3;
+ Mon, 22 Nov 2021 07:40:25 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 2E31211380A7; Mon, 22 Nov 2021 08:40:24 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: "Rao, Lei" <lei.rao@intel.com>
+Cc: chen.zhang@intel.com,  zhang.zhanghailiang@huawei.com,
+ wencongyang2@huawei.com,  xiechanglong.d@gmail.com,  berto@igalia.com,
+ eblake@redhat.com,  vsementsov@virtuozzo.com,  qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org,  qemu-devel@nongnu.org
+Subject: Re: [PATCH 2/2] docs: Use double quotes instead of single quotes
+ for COLO
 References: <1637554283-11264-1-git-send-email-lei.rao@intel.com>
-Received-SPF: pass client-ip=134.134.136.20; envelope-from=lei.rao@intel.com;
- helo=mga02.intel.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <1637554283-11264-2-git-send-email-lei.rao@intel.com>
+Date: Mon, 22 Nov 2021 08:40:24 +0100
+In-Reply-To: <1637554283-11264-2-git-send-email-lei.rao@intel.com> (Lei Rao's
+ message of "Mon, 22 Nov 2021 12:11:23 +0800")
+Message-ID: <87h7c4priv.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.709,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 21 Nov 2021 23:53:22 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,271 +76,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Nov 2021 04:20:24 -0000
+X-List-Received-Date: Mon, 22 Nov 2021 07:40:58 -0000
 
-From: "Rao, Lei" <lei.rao@intel.com>
+Looks like this is based on your "[PATCH] docs/COLO-FT.txt: Drop
+deprecated 'props' from object-add in COLO docs".  To make things easier
+for reviewers and maintainers, please resend all three patches together
+in a single series.  I'd squash "[PATCH] docs/COLO-FT.txt: Drop
+deprecated 'props' from object-add in COLO docs" and "[PATCH 1/2] docs:
+Drop deprecated 'props' from object-add" together.
 
-Signed-off-by: Lei Rao <lei.rao@intel.com>
----
- docs/COLO-FT.txt           | 106 ++++++++++++++++++++++-----------------------
- docs/block-replication.txt |  52 +++++++++++-----------
- 2 files changed, 79 insertions(+), 79 deletions(-)
-
-diff --git a/docs/COLO-FT.txt b/docs/COLO-FT.txt
-index fd5ffcc..8ec653f 100644
---- a/docs/COLO-FT.txt
-+++ b/docs/COLO-FT.txt
-@@ -209,9 +209,9 @@ children.0=childs0 \
- 
- 
- 3. On Secondary VM's QEMU monitor, issue command
--{'execute':'qmp_capabilities'}
--{'execute': 'nbd-server-start', 'arguments': {'addr': {'type': 'inet', 'data': {'host': '0.0.0.0', 'port': '9999'} } } }
--{'execute': 'nbd-server-add', 'arguments': {'device': 'parent0', 'writable': true } }
-+{"execute":"qmp_capabilities"}
-+{"execute": "nbd-server-start", "arguments": {"addr": {"type": "inet", "data": {"host": "0.0.0.0", "port": "9999"} } } }
-+{"execute": "nbd-server-add", "arguments": {"device": "parent0", "writable": true } }
- 
- Note:
-   a. The qmp command nbd-server-start and nbd-server-add must be run
-@@ -222,11 +222,11 @@ Note:
-      will be merged into the parent disk on failover.
- 
- 4. On Primary VM's QEMU monitor, issue command:
--{'execute':'qmp_capabilities'}
--{'execute': 'human-monitor-command', 'arguments': {'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0'}}
--{'execute': 'x-blockdev-change', 'arguments':{'parent': 'colo-disk0', 'node': 'replication0' } }
--{'execute': 'migrate-set-capabilities', 'arguments': {'capabilities': [ {'capability': 'x-colo', 'state': true } ] } }
--{'execute': 'migrate', 'arguments': {'uri': 'tcp:127.0.0.2:9998' } }
-+{"execute":"qmp_capabilities"}
-+{"execute": "human-monitor-command", "arguments": {"command-line": "drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0"}}
-+{"execute": "x-blockdev-change", "arguments":{"parent": "colo-disk0", "node": "replication0" } }
-+{"execute": "migrate-set-capabilities", "arguments": {"capabilities": [ {"capability": "x-colo", "state": true } ] } }
-+{"execute": "migrate", "arguments": {"uri": "tcp:127.0.0.2:9998" } }
- 
-   Note:
-   a. There should be only one NBD Client for each primary disk.
-@@ -249,59 +249,59 @@ if you want to resume the replication, follow "Secondary resume replication"
- == Primary Failover ==
- The Secondary died, resume on the Primary
- 
--{'execute': 'x-blockdev-change', 'arguments':{ 'parent': 'colo-disk0', 'child': 'children.1'} }
--{'execute': 'human-monitor-command', 'arguments':{ 'command-line': 'drive_del replication0' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'comp0' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'iothread1' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'm0' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'redire0' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'redire1' } }
--{'execute': 'x-colo-lost-heartbeat' }
-+{"execute": "x-blockdev-change", "arguments":{ "parent": "colo-disk0", "child": "children.1"} }
-+{"execute": "human-monitor-command", "arguments":{ "command-line": "drive_del replication0" } }
-+{"execute": "object-del", "arguments":{ "id": "comp0" } }
-+{"execute": "object-del", "arguments":{ "id": "iothread1" } }
-+{"execute": "object-del", "arguments":{ "id": "m0" } }
-+{"execute": "object-del", "arguments":{ "id": "redire0" } }
-+{"execute": "object-del", "arguments":{ "id": "redire1" } }
-+{"execute": "x-colo-lost-heartbeat" }
- 
- == Secondary Failover ==
- The Primary died, resume on the Secondary and prepare to become the new Primary
- 
--{'execute': 'nbd-server-stop'}
--{'execute': 'x-colo-lost-heartbeat'}
-+{"execute": "nbd-server-stop"}
-+{"execute": "x-colo-lost-heartbeat"}
- 
--{'execute': 'object-del', 'arguments':{ 'id': 'f2' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'f1' } }
--{'execute': 'chardev-remove', 'arguments':{ 'id': 'red1' } }
--{'execute': 'chardev-remove', 'arguments':{ 'id': 'red0' } }
-+{"execute": "object-del", "arguments":{ "id": "f2" } }
-+{"execute": "object-del", "arguments":{ "id": "f1" } }
-+{"execute": "chardev-remove", "arguments":{ "id": "red1" } }
-+{"execute": "chardev-remove", "arguments":{ "id": "red0" } }
- 
--{'execute': 'chardev-add', 'arguments':{ 'id': 'mirror0', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '0.0.0.0', 'port': '9003' } }, 'server': true } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare1', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '0.0.0.0', 'port': '9004' } }, 'server': true } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare0', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '127.0.0.1', 'port': '9001' } }, 'server': true } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare0-0', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '127.0.0.1', 'port': '9001' } }, 'server': false } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare_out', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '127.0.0.1', 'port': '9005' } }, 'server': true } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare_out0', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '127.0.0.1', 'port': '9005' } }, 'server': false } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "mirror0", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "0.0.0.0", "port": "9003" } }, "server": true } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare1", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "0.0.0.0", "port": "9004" } }, "server": true } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare0", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "127.0.0.1", "port": "9001" } }, "server": true } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare0-0", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "127.0.0.1", "port": "9001" } }, "server": false } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare_out", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "127.0.0.1", "port": "9005" } }, "server": true } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare_out0", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "127.0.0.1", "port": "9005" } }, "server": false } } } }
- 
- == Primary resume replication ==
- Resume replication after new Secondary is up.
- 
- Start the new Secondary (Steps 2 and 3 above), then on the Primary:
--{'execute': 'drive-mirror', 'arguments':{ 'device': 'colo-disk0', 'job-id': 'resync', 'target': 'nbd://127.0.0.2:9999/parent0', 'mode': 'existing', 'format': 'raw', 'sync': 'full'} }
-+{"execute": "drive-mirror", "arguments":{ "device": "colo-disk0", "job-id": "resync", "target": "nbd://127.0.0.2:9999/parent0", "mode": "existing", "format": "raw", "sync": "full"} }
- 
- Wait until disk is synced, then:
--{'execute': 'stop'}
--{'execute': 'block-job-cancel', 'arguments':{ 'device': 'resync'} }
-+{"execute": "stop"}
-+{"execute": "block-job-cancel", "arguments":{ "device": "resync"} }
- 
--{'execute': 'human-monitor-command', 'arguments':{ 'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0'}}
--{'execute': 'x-blockdev-change', 'arguments':{ 'parent': 'colo-disk0', 'node': 'replication0' } }
-+{"execute": "human-monitor-command", "arguments":{ "command-line": "drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0"}}
-+{"execute": "x-blockdev-change", "arguments":{ "parent": "colo-disk0", "node": "replication0" } }
- 
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-mirror', 'id': 'm0', 'netdev': 'hn0', 'queue': 'tx', 'outdev': 'mirror0' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire0', 'netdev': 'hn0', 'queue': 'rx', 'indev': 'compare_out' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire1', 'netdev': 'hn0', 'queue': 'rx', 'outdev': 'compare0' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'iothread', 'id': 'iothread1' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'colo-compare', 'id': 'comp0', 'primary_in': 'compare0-0', 'secondary_in': 'compare1', 'outdev': 'compare_out0', 'iothread': 'iothread1' } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-mirror", "id": "m0", "netdev": "hn0", "queue": "tx", "outdev": "mirror0" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-redirector", "id": "redire0", "netdev": "hn0", "queue": "rx", "indev": "compare_out" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-redirector", "id": "redire1", "netdev": "hn0", "queue": "rx", "outdev": "compare0" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "iothread", "id": "iothread1" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "colo-compare", "id": "comp0", "primary_in": "compare0-0", "secondary_in": "compare1", "outdev": "compare_out0", "iothread": "iothread1" } }
- 
--{'execute': 'migrate-set-capabilities', 'arguments':{ 'capabilities': [ {'capability': 'x-colo', 'state': true } ] } }
--{'execute': 'migrate', 'arguments':{ 'uri': 'tcp:127.0.0.2:9998' } }
-+{"execute": "migrate-set-capabilities", "arguments":{ "capabilities": [ {"capability": "x-colo", "state": true } ] } }
-+{"execute": "migrate", "arguments":{ "uri": "tcp:127.0.0.2:9998" } }
- 
- Note:
- If this Primary previously was a Secondary, then we need to insert the
- filters before the filter-rewriter by using the
--"'insert': 'before', 'position': 'id=rew0'" Options. See below.
-+""insert": "before", "position": "id=rew0"" Options. See below.
- 
- == Secondary resume replication ==
- Become Primary and resume replication after new Secondary is up. Note
-@@ -309,23 +309,23 @@ that now 127.0.0.1 is the Secondary and 127.0.0.2 is the Primary.
- 
- Start the new Secondary (Steps 2 and 3 above, but with primary_ip=127.0.0.2),
- then on the old Secondary:
--{'execute': 'drive-mirror', 'arguments':{ 'device': 'colo-disk0', 'job-id': 'resync', 'target': 'nbd://127.0.0.1:9999/parent0', 'mode': 'existing', 'format': 'raw', 'sync': 'full'} }
-+{"execute": "drive-mirror", "arguments":{ "device": "colo-disk0", "job-id": "resync", "target": "nbd://127.0.0.1:9999/parent0", "mode": "existing", "format": "raw", "sync": "full"} }
- 
- Wait until disk is synced, then:
--{'execute': 'stop'}
--{'execute': 'block-job-cancel', 'arguments':{ 'device': 'resync' } }
-+{"execute": "stop"}
-+{"execute": "block-job-cancel", "arguments":{ "device": "resync" } }
- 
--{'execute': 'human-monitor-command', 'arguments':{ 'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.1,file.port=9999,file.export=parent0,node-name=replication0'}}
--{'execute': 'x-blockdev-change', 'arguments':{ 'parent': 'colo-disk0', 'node': 'replication0' } }
-+{"execute": "human-monitor-command", "arguments":{ "command-line": "drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.1,file.port=9999,file.export=parent0,node-name=replication0"}}
-+{"execute": "x-blockdev-change", "arguments":{ "parent": "colo-disk0", "node": "replication0" } }
- 
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-mirror', 'id': 'm0', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'tx', 'outdev': 'mirror0' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire0', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'rx', 'indev': 'compare_out' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire1', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'rx', 'outdev': 'compare0' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'iothread', 'id': 'iothread1' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'colo-compare', 'id': 'comp0', 'primary_in': 'compare0-0', 'secondary_in': 'compare1', 'outdev': 'compare_out0', 'iothread': 'iothread1' } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-mirror", "id": "m0", "insert": "before", "position": "id=rew0", "netdev": "hn0", "queue": "tx", "outdev": "mirror0" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-redirector", "id": "redire0", "insert": "before", "position": "id=rew0", "netdev": "hn0", "queue": "rx", "indev": "compare_out" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-redirector", "id": "redire1", "insert": "before", "position": "id=rew0", "netdev": "hn0", "queue": "rx", "outdev": "compare0" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "iothread", "id": "iothread1" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "colo-compare", "id": "comp0", "primary_in": "compare0-0", "secondary_in": "compare1", "outdev": "compare_out0", "iothread": "iothread1" } }
- 
--{'execute': 'migrate-set-capabilities', 'arguments':{ 'capabilities': [ {'capability': 'x-colo', 'state': true } ] } }
--{'execute': 'migrate', 'arguments':{ 'uri': 'tcp:127.0.0.1:9998' } }
-+{"execute": "migrate-set-capabilities", "arguments":{ "capabilities": [ {"capability": "x-colo", "state": true } ] } }
-+{"execute": "migrate", "arguments":{ "uri": "tcp:127.0.0.1:9998" } }
- 
- == TODO ==
- 1. Support shared storage.
-diff --git a/docs/block-replication.txt b/docs/block-replication.txt
-index 59eb2b3..b0f2376 100644
---- a/docs/block-replication.txt
-+++ b/docs/block-replication.txt
-@@ -156,15 +156,15 @@ Primary:
-          children.0.driver=raw
- 
-   Run qmp command in primary qemu:
--    { 'execute': 'human-monitor-command',
--      'arguments': {
--          'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=xxxx,file.port=xxxx,file.export=colo1,node-name=nbd_client1'
-+    { "execute": "human-monitor-command",
-+      "arguments": {
-+          "command-line": "drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=xxxx,file.port=xxxx,file.export=colo1,node-name=nbd_client1"
-       }
-     }
--    { 'execute': 'x-blockdev-change',
--      'arguments': {
--          'parent': 'colo1',
--          'node': 'nbd_client1'
-+    { "execute": "x-blockdev-change",
-+      "arguments": {
-+          "parent": "colo1",
-+          "node": "nbd_client1"
-       }
-     }
-   Note:
-@@ -189,21 +189,21 @@ Secondary:
-          vote-threshold=1,children.0=childs1
- 
-   Then run qmp command in secondary qemu:
--    { 'execute': 'nbd-server-start',
--      'arguments': {
--          'addr': {
--              'type': 'inet',
--              'data': {
--                  'host': 'xxx',
--                  'port': 'xxx'
-+    { "execute": "nbd-server-start",
-+      "arguments": {
-+          "addr": {
-+              "type": "inet",
-+              "data": {
-+                  "host": "xxx",
-+                  "port": "xxx"
-               }
-           }
-       }
-     }
--    { 'execute': 'nbd-server-add',
--      'arguments': {
--          'device': 'colo1',
--          'writable': true
-+    { "execute": "nbd-server-add",
-+      "arguments": {
-+          "device": "colo1",
-+          "writable": true
-       }
-     }
- 
-@@ -223,22 +223,22 @@ After Failover:
- Primary:
-   The secondary host is down, so we should run the following qmp command
-   to remove the nbd child from the quorum:
--  { 'execute': 'x-blockdev-change',
--    'arguments': {
--        'parent': 'colo1',
--        'child': 'children.1'
-+  { "execute": "x-blockdev-change",
-+    "arguments": {
-+        "parent": "colo1",
-+        "child": "children.1"
-     }
-   }
--  { 'execute': 'human-monitor-command',
--    'arguments': {
--        'command-line': 'drive_del xxxx'
-+  { "execute": "human-monitor-command",
-+    "arguments": {
-+        "command-line": "drive_del xxxx"
-     }
-   }
-   Note: there is no qmp command to remove the blockdev now
- 
- Secondary:
-   The primary host is down, so we should do the following thing:
--  { 'execute': 'nbd-server-stop' }
-+  { "execute": "nbd-server-stop" }
- 
- Promote Secondary to Primary:
-   see COLO-FT.txt
--- 
-1.8.3.1
+Thanks!
 
 
