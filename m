@@ -1,72 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1moiZO-0005ud-BT
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Nov 2021 03:51:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48938)
+	id 1mp1KV-0004mB-Ld
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Nov 2021 23:53:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
- id 1moglE-0005Jq-2C; Sun, 21 Nov 2021 01:55:36 -0500
-Received: from [2607:f8b0:4864:20::f32] (port=34594
- helo=mail-qv1-xf32.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
- id 1moglB-0002yR-Dl; Sun, 21 Nov 2021 01:55:35 -0500
-Received: by mail-qv1-xf32.google.com with SMTP id i13so10201819qvm.1;
- Sat, 20 Nov 2021 22:55:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=VBZdCZwrgI7co0FlatAmRyngorwgBGgTSbhgup+mEeg=;
- b=I6o3EJEz7wxis7Tigi71jItJp5Qgn0OaJ2sksYbMt3Pfd1PKYCbqlV5T3+MTZY5Ek/
- pyQyyl3JqwtrNfNtd6Ze1pZTS+xGG8B5UBtlbA4XRw6bu390BL1y4pKRUTpWvnMBo5Fq
- yl5zeYIJu00MUk1Lig/vA5hlK9eM0g+suDnubuzFWxQ7Pn9mVVMsPeu/5+jvI0h9ldQK
- yQ1E3poFWW+q7C1bBVSlr8bHXlovVD69UDyi36NTcgB0RLTiYvDCLlXq59qYMZBKE99W
- yaXGC55cjOZkzMg4KmiPclNRRZzWlv7z5jx/KjPjaH0tVk/95vL7+Z97A/1dRELrzqlW
- NrQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=VBZdCZwrgI7co0FlatAmRyngorwgBGgTSbhgup+mEeg=;
- b=GPwtZ7xJQnPPMNCFTa+n7JxQGZtnwL2Qi5H6zY85/RWP6wjlXhiZSf3LwCaH5B/q4i
- lxX4OSTupF8Ra8KVpcUuhvaCKtYxUs5L3Sz+SceNTXYYWFxRS71XA93KHzCf/COpT7SQ
- C4EwDg0AMRT7hUogr6R9leltAlDWneBCPNZWEit11A8OpgUI5Xte39lY5Mxk5r+IHAJv
- kZfPpnVntd0oc1D5lAR/7q2zbZvgJf2rX+8yxBNebSgOG4zVbF53nG5AheqOboU9MseY
- P8xASjiNSbZoVu/dFjI1fYap5X28FJw7GfV78pWfHU5mCubHDFpI3drjQkTShOirXNT6
- k/jw==
-X-Gm-Message-State: AOAM531Eo0mUvnDz3Fx0W5GYHOjD/Zrdy0tcCF7kRl7Wu5w6H7Bm2xWY
- 2YS5hEVE666Rkb7ATRGsRSIq1nTfFym8UYHeVhI=
-X-Google-Smtp-Source: ABdhPJwbetCyKheuQZD9WgOOqQ20u8ake0ewsOk/flgY0c15sqfn3iQ6AWC/evqEj+BbEXoD0r7OAA==
-X-Received: by 2002:a05:6214:f2d:: with SMTP id
- iw13mr90888489qvb.13.1637477731645; 
- Sat, 20 Nov 2021 22:55:31 -0800 (PST)
-Received: from alexdesktop.localdomain
- (cpebc4dfb42ca53-cmbc4dfb42ca50.cpe.net.cable.rogers.com. [99.251.122.96])
- by smtp.gmail.com with ESMTPSA id j24sm2489860qkg.133.2021.11.20.22.55.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 20 Nov 2021 22:55:31 -0800 (PST)
-From: Alexander Orzechowski <orzechowski.alexander@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Alexander Orzechowski <orzechowski.alexander@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org
-Subject: [PATCH 0/2] Fix trivial errors with highdpi/wayland
-Date: Sun, 21 Nov 2021 01:55:02 -0500
-Message-Id: <20211121065504.29101-1-orzechowski.alexander@gmail.com>
-X-Mailer: git-send-email 2.34.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f32
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f32;
- envelope-from=orzechowski.alexander@gmail.com; helo=mail-qv1-xf32.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ (Exim 4.90_1) (envelope-from <lei.rao@intel.com>)
+ id 1mp0oR-0001vZ-3m; Sun, 21 Nov 2021 23:20:15 -0500
+Received: from mga14.intel.com ([192.55.52.115]:28529)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lei.rao@intel.com>)
+ id 1mp0oP-0008NJ-0F; Sun, 21 Nov 2021 23:20:14 -0500
+X-IronPort-AV: E=McAfee;i="6200,9189,10175"; a="234955665"
+X-IronPort-AV: E=Sophos;i="5.87,253,1631602800"; d="scan'208";a="234955665"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Nov 2021 20:20:08 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,253,1631602800"; d="scan'208";a="496716217"
+Received: from unknown (HELO localhost.localdomain.bj.intel.com)
+ ([10.238.156.105])
+ by orsmga007.jf.intel.com with ESMTP; 21 Nov 2021 20:20:04 -0800
+From: "Rao, Lei" <lei.rao@intel.com>
+To: armbru@redhat.com, chen.zhang@intel.com, zhang.zhanghailiang@huawei.com,
+ wencongyang2@huawei.com, xiechanglong.d@gmail.com, berto@igalia.com,
+ eblake@redhat.com, vsementsov@virtuozzo.com
+Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ "Rao, Lei" <lei.rao@intel.com>
+Subject: [PATCH 1/2] docs: Drop deprecated 'props' from object-add
+Date: Mon, 22 Nov 2021 12:11:22 +0800
+Message-Id: <1637554283-11264-1-git-send-email-lei.rao@intel.com>
+X-Mailer: git-send-email 1.8.3.1
+Received-SPF: pass client-ip=192.55.52.115; envelope-from=lei.rao@intel.com;
+ helo=mga14.intel.com
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 21 Nov 2021 03:51:28 -0500
+X-Mailman-Approved-At: Sun, 21 Nov 2021 23:53:22 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,24 +49,104 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Nov 2021 06:55:36 -0000
+X-List-Received-Date: Mon, 22 Nov 2021 04:20:15 -0000
 
-Hi, this patch series is ment to fix two problems with highdpi/wayland
-with gtk that makes the program unusuable. As it stands currently:
-The virtual machine window will only render in the bottom-left quarter of the screen
-(with 2x scaling) while using the gtk,gl=on and virtgl backend. This also
-fixes the --usbdevice tablet option as before if the pointer would click
-in the incorrect spot of the virtual machine then was expected.
+From: "Rao, Lei" <lei.rao@intel.com>
 
-Alexander Orzechowski (2):
-  ui: fix incorrect scaling on highdpi with gtk/opengl
-  ui: fix incorrect pointer position on highdpi with gtk
+In commit 5024340745 "qapi/qom: Drop deprecated 'props' from
+object-add" (v6.0.0), we also should update documents.
+
+Signed-off-by: Lei Rao <lei.rao@intel.com>
+---
+ docs/system/authz.rst   | 26 ++++++++++----------------
+ docs/throttle.txt       |  8 +++-----
+ docs/tools/qemu-nbd.rst |  2 +-
+ 3 files changed, 14 insertions(+), 22 deletions(-)
+
+diff --git a/docs/system/authz.rst b/docs/system/authz.rst
+index 942af39..55b7315 100644
+--- a/docs/system/authz.rst
++++ b/docs/system/authz.rst
+@@ -77,9 +77,7 @@ To create an instance of this driver via QMP:
+      "arguments": {
+        "qom-type": "authz-simple",
+        "id": "authz0",
+-       "props": {
+-         "identity": "fred"
+-       }
++       "identity": "fred"
+      }
+    }
  
- ui/gtk-gl-area.c |  7 ++++---
- ui/gtk.c         | 13 ++++++++-----
- 2 files changed, 12 insertions(+), 8 deletions(-)
-
+@@ -110,15 +108,13 @@ To create an instance of this class via QMP:
+      "arguments": {
+        "qom-type": "authz-list",
+        "id": "authz0",
+-       "props": {
+-         "rules": [
+-            { "match": "fred", "policy": "allow", "format": "exact" },
+-            { "match": "bob", "policy": "allow", "format": "exact" },
+-            { "match": "danb", "policy": "deny", "format": "exact" },
+-            { "match": "dan*", "policy": "allow", "format": "glob" }
+-         ],
+-         "policy": "deny"
+-       }
++       "rules": [
++          { "match": "fred", "policy": "allow", "format": "exact" },
++          { "match": "bob", "policy": "allow", "format": "exact" },
++          { "match": "danb", "policy": "deny", "format": "exact" },
++          { "match": "dan*", "policy": "allow", "format": "glob" }
++       ],
++       "policy": "deny"
+      }
+    }
+ 
+@@ -143,10 +139,8 @@ To create an instance of this class via QMP:
+      "arguments": {
+        "qom-type": "authz-list-file",
+        "id": "authz0",
+-       "props": {
+-         "filename": "/etc/qemu/myvm-vnc.acl",
+-         "refresh": true
+-       }
++       "filename": "/etc/qemu/myvm-vnc.acl",
++       "refresh": true
+      }
+    }
+ 
+diff --git a/docs/throttle.txt b/docs/throttle.txt
+index b5b78b7..0a0453a 100644
+--- a/docs/throttle.txt
++++ b/docs/throttle.txt
+@@ -273,11 +273,9 @@ A group can be created using the object-add QMP function:
+      "arguments": {
+        "qom-type": "throttle-group",
+        "id": "group0",
+-       "props": {
+-         "limits" : {
+-           "iops-total": 1000
+-           "bps-write": 2097152
+-         }
++       "limits" : {
++         "iops-total": 1000,
++         "bps-write": 2097152
+        }
+      }
+    }
+diff --git a/docs/tools/qemu-nbd.rst b/docs/tools/qemu-nbd.rst
+index 56e54cd..726cd189 100644
+--- a/docs/tools/qemu-nbd.rst
++++ b/docs/tools/qemu-nbd.rst
+@@ -31,7 +31,7 @@ driver options if ``--image-opts`` is specified.
+ 
+ *dev* is an NBD device.
+ 
+-.. option:: --object type,id=ID,...props...
++.. option:: --object type,id=ID,...
+ 
+   Define a new instance of the *type* object class identified by *ID*.
+   See the :manpage:`qemu(1)` manual page for full details of the properties
 -- 
-2.34.0
+1.8.3.1
 
 
