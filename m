@@ -1,74 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mp6vY-0002lo-G4
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Nov 2021 05:52:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54646)
+	id 1mp7HR-0008Jq-AA
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Nov 2021 06:14:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59470)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mp6vX-0002fd-4b; Mon, 22 Nov 2021 05:51:59 -0500
-Received: from [2a00:1450:4864:20::42f] (port=39727
- helo=mail-wr1-x42f.google.com)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mp7HP-0008Ck-7C
+ for qemu-trivial@nongnu.org; Mon, 22 Nov 2021 06:14:35 -0500
+Received: from [2a00:1450:4864:20::42a] (port=37451
+ helo=mail-wr1-x42a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mp6vV-0000NH-Kg; Mon, 22 Nov 2021 05:51:58 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id d27so31894592wrb.6;
- Mon, 22 Nov 2021 02:51:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Tdq7N3oNCaqvE7IxQ4unaziboqg8QUaCE/ZXK4Tc81s=;
- b=ekuBg/7W7q3hiCgSwO67UU6+u3tB0/hWhHicDyVeOtx1S6FWeUH8pl/bS50pZp44md
- dz7ZOzORVF0HWDTfYcxN5jkppikEM394PpnH70rPe8yo+SXef/ir1vdzK5m/D9qayM1P
- Mj8P6trUPqmmDSYUI9gHqYilxaFA5V6Cwih3VAMhwyK8dILBTunnzoOqlEew+StIb+vJ
- WbI+7TwWS3BA+NWygLL06bXLpotrtf3b/O2Xhsl1SHbirVfDXHLovoWdYrKVXD0643KT
- Ffu+I1rXe5djGfrOqZfwcN4Gske4BV/iLsiaxnmE63NifGJ1eHH1staPQb5dBxQD6uuF
- 1wDw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1mp7HN-0003H7-Om
+ for qemu-trivial@nongnu.org; Mon, 22 Nov 2021 06:14:34 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id b12so31977186wrh.4
+ for <qemu-trivial@nongnu.org>; Mon, 22 Nov 2021 03:14:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=yoFdkWO62twBanTX65W0CEzc9tStIbxUYO8OnbTVzjw=;
+ b=nur0CyPscKh+zNJuTK12QgxLqnqL4NhoiVnJIj4jjDy+VteHKqELy1Haw1rYv4nE7U
+ ESG1347CidssyvLdluEe3ACafw3zJvcHg0ET1oaq1+Ag7MCldtBsNQT+H8gP161cPB9N
+ h7ADPZwDU2go6w4CSvAOH23kQFrsBz8rKrcWDKTdk6lpk6MJzAVgXD+j2Tdv2ykgibV9
+ rwCHCoWCuPvr1aONicP6vA1E3XYv4+ONCJ0aZr/yaZbCN+K/vNwf6tosXQ/RSA/jJ0gA
+ sg+S8zYtzoLfdxeSskFWr7Be8QuVwde3YANdWWWpX49edHjaq6GS7odXsQPIAzFNJpv5
+ 0XsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=Tdq7N3oNCaqvE7IxQ4unaziboqg8QUaCE/ZXK4Tc81s=;
- b=d6ce8I68BhEEkCw6HkDXCNDw5mkdeUBSTsjne10QSUEeN28TnNvMX4S7lHosuzbYuO
- E1CW2yCK82JeU9BUdM9lgQ1/cRDTkzV4+UGgjeCNgngBFjqAjHMWlmcSOI4phr73oLEj
- h6HEwbL6kTgXcQxP4luxOuj4KgMRD5cqyso/75GtmqImTC2JSM46uTI2pPNFarrbo0BN
- ls3vdKGMhirbM24eAQv7omp+leAmft5lfj2M1YUxbuzCGxkPfMq/3l4Uusu1k9qmwAdF
- Drx745MitPUiUaKIXNrVjfsXxWW/QiHtAI9KiAIUcjPlvOKOXYdBA2qa3d/PtuHp9b+Z
- 4ybw==
-X-Gm-Message-State: AOAM531hA3B/uTfzsdI/XEkhWZKOuAcjyBLKUirDxRhA6rGt2V+uev51
- t3C4zxrXmwog56WCd4sJFnr5xbmRA1Q=
-X-Google-Smtp-Source: ABdhPJwgnucgX0aZEVama/oCf60IyOTSr2um5lLWliNgAsYwac6y0+cVtLriQatzCmXR6qpkZ6CRMA==
-X-Received: by 2002:adf:f40b:: with SMTP id g11mr38059008wro.296.1637578307169; 
- Mon, 22 Nov 2021 02:51:47 -0800 (PST)
-Received: from x1w.. (62.red-83-57-168.dynamicip.rima-tde.net. [83.57.168.62])
- by smtp.gmail.com with ESMTPSA id
- o4sm24345061wmq.31.2021.11.22.02.51.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Nov 2021 02:51:46 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Beniamino Galvani <b.galvani@gmail.com>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] hw/net/allwinner_emac: Replace MII_ANAR_TX -> MII_ANLPAR_TX
- definition
-Date: Mon, 22 Nov 2021 11:51:45 +0100
-Message-Id: <20211122105145.1053455-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.31.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=yoFdkWO62twBanTX65W0CEzc9tStIbxUYO8OnbTVzjw=;
+ b=I+4MMZlEYS1/8rZ7ykGd+unfnkMd4VZ9vTkMyx2W6Lc6pPyoNxhSj/ZYX8y9RizMEM
+ k4kRsppZ+EO6FNL4HxUsCiortaaVvfAU4JPW0GB0Seukxadhb2Bs/qoc4o//+UAOUFPo
+ XKsquo3gjRLpL+xGbv6cG7ZVV4qHJ1E3aDEOxuAuPnrmBfAZZfi2dQIDa3XJJH6qIO2h
+ eiEHDwVokb6Dfw9gum6CtTovBcAwuir9B99cx2Wgw5SZF5Svfaouau1I56yHg3DfTlCf
+ wj8mIs153dogUmV14tTCt/c8p7KtLuDT+JRkxTxJfMUVL3g/EUU3yDtHSqncZdhUT0+l
+ tPpg==
+X-Gm-Message-State: AOAM531WE4ft422zs83qYRibhRWPRPSogFUF3lAhvjfcvMs6akDURGue
+ 6ZevVy6DMXE/zzVsLnFQxMYXEA5x/YHBbDG2ol979jUVTyHcvQ==
+X-Google-Smtp-Source: ABdhPJygWV4EY0Z8ZAB77tXm5TzUm7hjJTXvihZf52gOC/T0TbK1s4z/iJOw/XTCA9mrVvU2G82DrAfyxuve3fCzync=
+X-Received: by 2002:a5d:6da1:: with SMTP id u1mr37524846wrs.263.1637579672483; 
+ Mon, 22 Nov 2021 03:14:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42f
+References: <20211105172127.224462-1-f4bug@amsat.org>
+ <20211105172127.224462-4-f4bug@amsat.org>
+In-Reply-To: <20211105172127.224462-4-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 Nov 2021 11:14:21 +0000
+Message-ID: <CAFEAcA-xNhWGV46SY5K9uChAZWvU44YYgTgXu5wVjKtMq8XTug@mail.gmail.com>
+Subject: Re: [PATCH 3/3] hw/input/pckbd: Rename i8042_setup_a20_line() and its
+ a20 irq argument
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42a
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -83,31 +78,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Nov 2021 10:51:59 -0000
+X-List-Received-Date: Mon, 22 Nov 2021 11:14:35 -0000
 
-While both MII_ANAR_TX / MII_ANLPAR_TX have the same value,
-the ANAR and ANLPAR registers are different, so technically
-the ANLPAR register have to use the MII_ANLPAR_TX definition.
+On Fri, 5 Nov 2021 at 17:21, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+>
+> 'a20_out' is an input IRQ, rename it as 'a20_input'.
+> i8042_setup_a20_line() doesn't take a Device parameter
+> but an ISADevice one. Rename it as i8042_isa_*() to
+> make it explicit.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  include/hw/input/i8042.h | 2 +-
+>  hw/i386/pc.c             | 2 +-
+>  hw/input/pckbd.c         | 4 ++--
+>  3 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
+> index 1d90432daef..3534fcc4b43 100644
+> --- a/include/hw/input/i8042.h
+> +++ b/include/hw/input/i8042.h
+> @@ -21,6 +21,6 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq=
+,
+>                     MemoryRegion *region, ram_addr_t size,
+>                     hwaddr mask);
+>  void i8042_isa_mouse_fake_event(ISAKBDState *isa);
+> -void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
+> +void i8042_isa_setup_a20_line(ISADevice *dev, qemu_irq a20_input);
+>
+>  #endif /* HW_INPUT_I8042_H */
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 2592a821486..06ef74ca22b 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1043,7 +1043,7 @@ static void pc_superio_init(ISABus *isa_bus, bool c=
+reate_fdctrl, bool no_vmport)
+>      port92 =3D isa_create_simple(isa_bus, TYPE_PORT92);
+>
+>      a20_line =3D qemu_allocate_irqs(handle_a20_line_change, first_cpu, 2=
+);
+> -    i8042_setup_a20_line(i8042, a20_line[0]);
+> +    i8042_isa_setup_a20_line(i8042, a20_line[0]);
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/net/allwinner_emac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I think these days we can directly call
+    qdev_connect_gpio_out_named(DEVICE(i8042), I8042_A20_LINE, 0, a20_line[=
+0]);
+and drop the i8042_setup_a20_line() wrapper entirely,
+since the named GPIO lines are a "public" interface to the device.
+We only have this i8042_setup_a20_line() because the original
+implementation (added in commit 956a3e6bb738) predates gpio lines
+and did an assignment into the KBDState struct which needed to
+be private to pckbd.c.
 
-diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
-index ddddf35c45d..3aed92b8f1a 100644
---- a/hw/net/allwinner_emac.c
-+++ b/hw/net/allwinner_emac.c
-@@ -50,7 +50,7 @@ static void mii_reset(RTL8201CPState *mii, bool link_ok)
-                 MII_BMSR_10T_HD | MII_BMSR_MFPS | MII_BMSR_AUTONEG;
-     mii->anar = MII_ANAR_TXFD | MII_ANAR_TX | MII_ANAR_10FD | MII_ANAR_10 |
-                 MII_ANAR_CSMACD;
--    mii->anlpar = MII_ANAR_TX;
-+    mii->anlpar = MII_ANLPAR_TX;
- 
-     mii_set_link(mii, link_ok);
- }
--- 
-2.31.1
+>      qdev_connect_gpio_out_named(DEVICE(port92),
+>                                  PORT92_A20_LINE, 0, a20_line[1]);
 
+That would then make it consistent with how we're wiring up the
+other A20 input source here.
+
+(Some day we should perhaps make the A20 input to the CPU an actual
+GPIO input on the CPU device object, so we could wire the I8042_A20_LINE
+and PORT92_A20_LINE to it via an OR gate, and drop the intermidate
+qemu_irq array and handle_a20_line_change function. But needing
+the OR gate makes that a little clunky so I'm not sure it's
+really worth the effort.)
+
+-- PMM
 
