@@ -1,46 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mpAu6-0003XR-7P
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Nov 2021 10:06:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36162)
+	id 1mpUIP-00043o-R3
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Nov 2021 06:49:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47376)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lei.rao@intel.com>)
- id 1mp4Dw-0003Ni-8x; Mon, 22 Nov 2021 02:58:49 -0500
-Received: from mga03.intel.com ([134.134.136.65]:42237)
+ (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
+ id 1mpUIN-000439-F6; Tue, 23 Nov 2021 06:49:07 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:64646)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lei.rao@intel.com>)
- id 1mp4Dt-0008Fv-6t; Mon, 22 Nov 2021 02:58:47 -0500
-X-IronPort-AV: E=McAfee;i="6200,9189,10175"; a="234685220"
-X-IronPort-AV: E=Sophos;i="5.87,254,1631602800"; d="scan'208";a="234685220"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Nov 2021 23:58:37 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,254,1631602800"; d="scan'208";a="673981217"
-Received: from unknown (HELO localhost.localdomain.bj.intel.com)
- ([10.238.156.105])
- by orsmga005.jf.intel.com with ESMTP; 21 Nov 2021 23:58:34 -0800
-From: "Rao, Lei" <lei.rao@intel.com>
-To: armbru@redhat.com, chen.zhang@intel.com, zhang.zhanghailiang@huawei.com,
- wencongyang2@huawei.com, xiechanglong.d@gmail.com, berto@igalia.com,
- eblake@redhat.com, vsementsov@virtuozzo.com
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- "Rao, Lei" <lei.rao@intel.com>
-Subject: [PATCH v2 2/2] docs: Use double quotes instead of single quotes for
- COLO
-Date: Mon, 22 Nov 2021 15:49:47 +0800
-Message-Id: <1637567387-28250-2-git-send-email-lei.rao@intel.com>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1637567387-28250-1-git-send-email-lei.rao@intel.com>
-References: <1637567387-28250-1-git-send-email-lei.rao@intel.com>
-Received-SPF: pass client-ip=134.134.136.65; envelope-from=lei.rao@intel.com;
- helo=mga03.intel.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
+ id 1mpUIL-0001Sh-5T; Tue, 23 Nov 2021 06:49:07 -0500
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1ANAknsx034925; 
+ Tue, 23 Nov 2021 11:49:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-type :
+ content-transfer-encoding; s=pp1;
+ bh=nyS3yiofOVQAEQNLEMzdAz5aOTjFbiuVfeFvAr7asco=;
+ b=tD1qEx473WaM8KPfS+6Mic5IHmQh7eGra70ARPJ0CR6lae1u1CL/0tYLsTnxw3ttEWuI
+ uEoFu+r0fqx12urS1EvNZIfLI/hPxwfkBMwJVOb51XouD6cPdZczdX2pwWxLn48bKQPB
+ StJt9UO6blowFoYrbhkG7jXV9MaoVZuU2HOGOY2RKlzFyuArSB1ynC6f8l/l4BT6HCNY
+ rjg0NSbYhXTAoFsFWqKkMOYryDW6WJDsa70lvFIp5Je0utixaqmNut0hl+B0jEEUSji7
+ ur1cksgaIdYf/U0CcyABCRXA3t0au0qs8A5jObyayiqJOrzmC0xHM2tb2ZK+ahkP+PsL GQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3cgxun172d-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 23 Nov 2021 11:49:01 +0000
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 1ANBn1GB006472;
+ Tue, 23 Nov 2021 11:49:01 GMT
+Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com
+ [169.63.121.186])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3cgxun1722-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 23 Nov 2021 11:49:01 +0000
+Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
+ by ppma03wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 1ANBmx1Y025728;
+ Tue, 23 Nov 2021 11:49:00 GMT
+Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
+ [9.57.198.23]) by ppma03wdc.us.ibm.com with ESMTP id 3cernahsyh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 23 Nov 2021 11:48:59 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
+ [9.57.199.111])
+ by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 1ANBmw3Z57672020
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 23 Nov 2021 11:48:58 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D2886AC062;
+ Tue, 23 Nov 2021 11:48:58 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6F449AC060;
+ Tue, 23 Nov 2021 11:48:57 +0000 (GMT)
+Received: from lagarcia.br.ibm.com (unknown [9.160.47.188])
+ by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
+ Tue, 23 Nov 2021 11:48:57 +0000 (GMT)
+From: lagarcia@linux.ibm.com
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Leonardo Garcia <lagarcia@br.ibm.com>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v3] hw/virtio/vhost: Fix typo in comment.
+Date: Tue, 23 Nov 2021 08:48:31 -0300
+Message-Id: <a10a0ddab65b474ebea1e1141abe0f4aa463909b.1637668012.git.lagarcia@br.ibm.com>
+X-Mailer: git-send-email 2.33.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: bu1M1wl_GxjXk631G7m0aWRn2FalH0Td
+X-Proofpoint-GUID: hdyRw9uh93yvlwQcuae-umFLGSIcjoHf
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
+ definitions=2021-11-23_04,2021-11-23_01,2020-04-07_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ bulkscore=0 phishscore=0 spamscore=0 adultscore=0 clxscore=1015 mlxscore=0
+ priorityscore=1501 impostorscore=0 suspectscore=0 mlxlogscore=999
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2110150000 definitions=main-2111230063
+Received-SPF: pass client-ip=148.163.156.1;
+ envelope-from=lagarcia@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 22 Nov 2021 10:06:38 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,271 +100,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Nov 2021 07:59:03 -0000
+X-List-Received-Date: Tue, 23 Nov 2021 11:49:07 -0000
 
-From: "Rao, Lei" <lei.rao@intel.com>
+From: Leonardo Garcia <lagarcia@br.ibm.com>
 
-Signed-off-by: Lei Rao <lei.rao@intel.com>
+Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- docs/COLO-FT.txt           | 106 ++++++++++++++++++++++-----------------------
- docs/block-replication.txt |  52 +++++++++++-----------
- 2 files changed, 79 insertions(+), 79 deletions(-)
+ hw/virtio/vhost.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/COLO-FT.txt b/docs/COLO-FT.txt
-index fd5ffcc..8ec653f 100644
---- a/docs/COLO-FT.txt
-+++ b/docs/COLO-FT.txt
-@@ -209,9 +209,9 @@ children.0=childs0 \
- 
- 
- 3. On Secondary VM's QEMU monitor, issue command
--{'execute':'qmp_capabilities'}
--{'execute': 'nbd-server-start', 'arguments': {'addr': {'type': 'inet', 'data': {'host': '0.0.0.0', 'port': '9999'} } } }
--{'execute': 'nbd-server-add', 'arguments': {'device': 'parent0', 'writable': true } }
-+{"execute":"qmp_capabilities"}
-+{"execute": "nbd-server-start", "arguments": {"addr": {"type": "inet", "data": {"host": "0.0.0.0", "port": "9999"} } } }
-+{"execute": "nbd-server-add", "arguments": {"device": "parent0", "writable": true } }
- 
- Note:
-   a. The qmp command nbd-server-start and nbd-server-add must be run
-@@ -222,11 +222,11 @@ Note:
-      will be merged into the parent disk on failover.
- 
- 4. On Primary VM's QEMU monitor, issue command:
--{'execute':'qmp_capabilities'}
--{'execute': 'human-monitor-command', 'arguments': {'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0'}}
--{'execute': 'x-blockdev-change', 'arguments':{'parent': 'colo-disk0', 'node': 'replication0' } }
--{'execute': 'migrate-set-capabilities', 'arguments': {'capabilities': [ {'capability': 'x-colo', 'state': true } ] } }
--{'execute': 'migrate', 'arguments': {'uri': 'tcp:127.0.0.2:9998' } }
-+{"execute":"qmp_capabilities"}
-+{"execute": "human-monitor-command", "arguments": {"command-line": "drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0"}}
-+{"execute": "x-blockdev-change", "arguments":{"parent": "colo-disk0", "node": "replication0" } }
-+{"execute": "migrate-set-capabilities", "arguments": {"capabilities": [ {"capability": "x-colo", "state": true } ] } }
-+{"execute": "migrate", "arguments": {"uri": "tcp:127.0.0.2:9998" } }
- 
-   Note:
-   a. There should be only one NBD Client for each primary disk.
-@@ -249,59 +249,59 @@ if you want to resume the replication, follow "Secondary resume replication"
- == Primary Failover ==
- The Secondary died, resume on the Primary
- 
--{'execute': 'x-blockdev-change', 'arguments':{ 'parent': 'colo-disk0', 'child': 'children.1'} }
--{'execute': 'human-monitor-command', 'arguments':{ 'command-line': 'drive_del replication0' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'comp0' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'iothread1' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'm0' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'redire0' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'redire1' } }
--{'execute': 'x-colo-lost-heartbeat' }
-+{"execute": "x-blockdev-change", "arguments":{ "parent": "colo-disk0", "child": "children.1"} }
-+{"execute": "human-monitor-command", "arguments":{ "command-line": "drive_del replication0" } }
-+{"execute": "object-del", "arguments":{ "id": "comp0" } }
-+{"execute": "object-del", "arguments":{ "id": "iothread1" } }
-+{"execute": "object-del", "arguments":{ "id": "m0" } }
-+{"execute": "object-del", "arguments":{ "id": "redire0" } }
-+{"execute": "object-del", "arguments":{ "id": "redire1" } }
-+{"execute": "x-colo-lost-heartbeat" }
- 
- == Secondary Failover ==
- The Primary died, resume on the Secondary and prepare to become the new Primary
- 
--{'execute': 'nbd-server-stop'}
--{'execute': 'x-colo-lost-heartbeat'}
-+{"execute": "nbd-server-stop"}
-+{"execute": "x-colo-lost-heartbeat"}
- 
--{'execute': 'object-del', 'arguments':{ 'id': 'f2' } }
--{'execute': 'object-del', 'arguments':{ 'id': 'f1' } }
--{'execute': 'chardev-remove', 'arguments':{ 'id': 'red1' } }
--{'execute': 'chardev-remove', 'arguments':{ 'id': 'red0' } }
-+{"execute": "object-del", "arguments":{ "id": "f2" } }
-+{"execute": "object-del", "arguments":{ "id": "f1" } }
-+{"execute": "chardev-remove", "arguments":{ "id": "red1" } }
-+{"execute": "chardev-remove", "arguments":{ "id": "red0" } }
- 
--{'execute': 'chardev-add', 'arguments':{ 'id': 'mirror0', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '0.0.0.0', 'port': '9003' } }, 'server': true } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare1', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '0.0.0.0', 'port': '9004' } }, 'server': true } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare0', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '127.0.0.1', 'port': '9001' } }, 'server': true } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare0-0', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '127.0.0.1', 'port': '9001' } }, 'server': false } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare_out', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '127.0.0.1', 'port': '9005' } }, 'server': true } } } }
--{'execute': 'chardev-add', 'arguments':{ 'id': 'compare_out0', 'backend': {'type': 'socket', 'data': {'addr': { 'type': 'inet', 'data': { 'host': '127.0.0.1', 'port': '9005' } }, 'server': false } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "mirror0", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "0.0.0.0", "port": "9003" } }, "server": true } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare1", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "0.0.0.0", "port": "9004" } }, "server": true } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare0", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "127.0.0.1", "port": "9001" } }, "server": true } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare0-0", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "127.0.0.1", "port": "9001" } }, "server": false } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare_out", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "127.0.0.1", "port": "9005" } }, "server": true } } } }
-+{"execute": "chardev-add", "arguments":{ "id": "compare_out0", "backend": {"type": "socket", "data": {"addr": { "type": "inet", "data": { "host": "127.0.0.1", "port": "9005" } }, "server": false } } } }
- 
- == Primary resume replication ==
- Resume replication after new Secondary is up.
- 
- Start the new Secondary (Steps 2 and 3 above), then on the Primary:
--{'execute': 'drive-mirror', 'arguments':{ 'device': 'colo-disk0', 'job-id': 'resync', 'target': 'nbd://127.0.0.2:9999/parent0', 'mode': 'existing', 'format': 'raw', 'sync': 'full'} }
-+{"execute": "drive-mirror", "arguments":{ "device": "colo-disk0", "job-id": "resync", "target": "nbd://127.0.0.2:9999/parent0", "mode": "existing", "format": "raw", "sync": "full"} }
- 
- Wait until disk is synced, then:
--{'execute': 'stop'}
--{'execute': 'block-job-cancel', 'arguments':{ 'device': 'resync'} }
-+{"execute": "stop"}
-+{"execute": "block-job-cancel", "arguments":{ "device": "resync"} }
- 
--{'execute': 'human-monitor-command', 'arguments':{ 'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0'}}
--{'execute': 'x-blockdev-change', 'arguments':{ 'parent': 'colo-disk0', 'node': 'replication0' } }
-+{"execute": "human-monitor-command", "arguments":{ "command-line": "drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.2,file.port=9999,file.export=parent0,node-name=replication0"}}
-+{"execute": "x-blockdev-change", "arguments":{ "parent": "colo-disk0", "node": "replication0" } }
- 
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-mirror', 'id': 'm0', 'netdev': 'hn0', 'queue': 'tx', 'outdev': 'mirror0' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire0', 'netdev': 'hn0', 'queue': 'rx', 'indev': 'compare_out' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire1', 'netdev': 'hn0', 'queue': 'rx', 'outdev': 'compare0' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'iothread', 'id': 'iothread1' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'colo-compare', 'id': 'comp0', 'primary_in': 'compare0-0', 'secondary_in': 'compare1', 'outdev': 'compare_out0', 'iothread': 'iothread1' } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-mirror", "id": "m0", "netdev": "hn0", "queue": "tx", "outdev": "mirror0" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-redirector", "id": "redire0", "netdev": "hn0", "queue": "rx", "indev": "compare_out" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-redirector", "id": "redire1", "netdev": "hn0", "queue": "rx", "outdev": "compare0" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "iothread", "id": "iothread1" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "colo-compare", "id": "comp0", "primary_in": "compare0-0", "secondary_in": "compare1", "outdev": "compare_out0", "iothread": "iothread1" } }
- 
--{'execute': 'migrate-set-capabilities', 'arguments':{ 'capabilities': [ {'capability': 'x-colo', 'state': true } ] } }
--{'execute': 'migrate', 'arguments':{ 'uri': 'tcp:127.0.0.2:9998' } }
-+{"execute": "migrate-set-capabilities", "arguments":{ "capabilities": [ {"capability": "x-colo", "state": true } ] } }
-+{"execute": "migrate", "arguments":{ "uri": "tcp:127.0.0.2:9998" } }
- 
- Note:
- If this Primary previously was a Secondary, then we need to insert the
- filters before the filter-rewriter by using the
--"'insert': 'before', 'position': 'id=rew0'" Options. See below.
-+""insert": "before", "position": "id=rew0"" Options. See below.
- 
- == Secondary resume replication ==
- Become Primary and resume replication after new Secondary is up. Note
-@@ -309,23 +309,23 @@ that now 127.0.0.1 is the Secondary and 127.0.0.2 is the Primary.
- 
- Start the new Secondary (Steps 2 and 3 above, but with primary_ip=127.0.0.2),
- then on the old Secondary:
--{'execute': 'drive-mirror', 'arguments':{ 'device': 'colo-disk0', 'job-id': 'resync', 'target': 'nbd://127.0.0.1:9999/parent0', 'mode': 'existing', 'format': 'raw', 'sync': 'full'} }
-+{"execute": "drive-mirror", "arguments":{ "device": "colo-disk0", "job-id": "resync", "target": "nbd://127.0.0.1:9999/parent0", "mode": "existing", "format": "raw", "sync": "full"} }
- 
- Wait until disk is synced, then:
--{'execute': 'stop'}
--{'execute': 'block-job-cancel', 'arguments':{ 'device': 'resync' } }
-+{"execute": "stop"}
-+{"execute": "block-job-cancel", "arguments":{ "device": "resync" } }
- 
--{'execute': 'human-monitor-command', 'arguments':{ 'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.1,file.port=9999,file.export=parent0,node-name=replication0'}}
--{'execute': 'x-blockdev-change', 'arguments':{ 'parent': 'colo-disk0', 'node': 'replication0' } }
-+{"execute": "human-monitor-command", "arguments":{ "command-line": "drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=127.0.0.1,file.port=9999,file.export=parent0,node-name=replication0"}}
-+{"execute": "x-blockdev-change", "arguments":{ "parent": "colo-disk0", "node": "replication0" } }
- 
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-mirror', 'id': 'm0', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'tx', 'outdev': 'mirror0' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire0', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'rx', 'indev': 'compare_out' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'filter-redirector', 'id': 'redire1', 'insert': 'before', 'position': 'id=rew0', 'netdev': 'hn0', 'queue': 'rx', 'outdev': 'compare0' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'iothread', 'id': 'iothread1' } }
--{'execute': 'object-add', 'arguments':{ 'qom-type': 'colo-compare', 'id': 'comp0', 'primary_in': 'compare0-0', 'secondary_in': 'compare1', 'outdev': 'compare_out0', 'iothread': 'iothread1' } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-mirror", "id": "m0", "insert": "before", "position": "id=rew0", "netdev": "hn0", "queue": "tx", "outdev": "mirror0" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-redirector", "id": "redire0", "insert": "before", "position": "id=rew0", "netdev": "hn0", "queue": "rx", "indev": "compare_out" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "filter-redirector", "id": "redire1", "insert": "before", "position": "id=rew0", "netdev": "hn0", "queue": "rx", "outdev": "compare0" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "iothread", "id": "iothread1" } }
-+{"execute": "object-add", "arguments":{ "qom-type": "colo-compare", "id": "comp0", "primary_in": "compare0-0", "secondary_in": "compare1", "outdev": "compare_out0", "iothread": "iothread1" } }
- 
--{'execute': 'migrate-set-capabilities', 'arguments':{ 'capabilities': [ {'capability': 'x-colo', 'state': true } ] } }
--{'execute': 'migrate', 'arguments':{ 'uri': 'tcp:127.0.0.1:9998' } }
-+{"execute": "migrate-set-capabilities", "arguments":{ "capabilities": [ {"capability": "x-colo", "state": true } ] } }
-+{"execute": "migrate", "arguments":{ "uri": "tcp:127.0.0.1:9998" } }
- 
- == TODO ==
- 1. Support shared storage.
-diff --git a/docs/block-replication.txt b/docs/block-replication.txt
-index 59eb2b3..b0f2376 100644
---- a/docs/block-replication.txt
-+++ b/docs/block-replication.txt
-@@ -156,15 +156,15 @@ Primary:
-          children.0.driver=raw
- 
-   Run qmp command in primary qemu:
--    { 'execute': 'human-monitor-command',
--      'arguments': {
--          'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=xxxx,file.port=xxxx,file.export=colo1,node-name=nbd_client1'
-+    { "execute": "human-monitor-command",
-+      "arguments": {
-+          "command-line": "drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=xxxx,file.port=xxxx,file.export=colo1,node-name=nbd_client1"
-       }
-     }
--    { 'execute': 'x-blockdev-change',
--      'arguments': {
--          'parent': 'colo1',
--          'node': 'nbd_client1'
-+    { "execute": "x-blockdev-change",
-+      "arguments": {
-+          "parent": "colo1",
-+          "node": "nbd_client1"
-       }
-     }
-   Note:
-@@ -189,21 +189,21 @@ Secondary:
-          vote-threshold=1,children.0=childs1
- 
-   Then run qmp command in secondary qemu:
--    { 'execute': 'nbd-server-start',
--      'arguments': {
--          'addr': {
--              'type': 'inet',
--              'data': {
--                  'host': 'xxx',
--                  'port': 'xxx'
-+    { "execute": "nbd-server-start",
-+      "arguments": {
-+          "addr": {
-+              "type": "inet",
-+              "data": {
-+                  "host": "xxx",
-+                  "port": "xxx"
-               }
-           }
-       }
-     }
--    { 'execute': 'nbd-server-add',
--      'arguments': {
--          'device': 'colo1',
--          'writable': true
-+    { "execute": "nbd-server-add",
-+      "arguments": {
-+          "device": "colo1",
-+          "writable": true
-       }
-     }
- 
-@@ -223,22 +223,22 @@ After Failover:
- Primary:
-   The secondary host is down, so we should run the following qmp command
-   to remove the nbd child from the quorum:
--  { 'execute': 'x-blockdev-change',
--    'arguments': {
--        'parent': 'colo1',
--        'child': 'children.1'
-+  { "execute": "x-blockdev-change",
-+    "arguments": {
-+        "parent": "colo1",
-+        "child": "children.1"
-     }
-   }
--  { 'execute': 'human-monitor-command',
--    'arguments': {
--        'command-line': 'drive_del xxxx'
-+  { "execute": "human-monitor-command",
-+    "arguments": {
-+        "command-line": "drive_del xxxx"
-     }
-   }
-   Note: there is no qmp command to remove the blockdev now
- 
- Secondary:
-   The primary host is down, so we should do the following thing:
--  { 'execute': 'nbd-server-stop' }
-+  { "execute": "nbd-server-stop" }
- 
- Promote Secondary to Primary:
-   see COLO-FT.txt
+diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+index 437347ad01..20913cf8fb 100644
+--- a/hw/virtio/vhost.c
++++ b/hw/virtio/vhost.c
+@@ -313,7 +313,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
+      * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
+      * incremental memory mapping API via IOTLB API. For platform that
+      * does not have IOMMU, there's no need to enable this feature
+-     * which may cause unnecessary IOTLB miss/update trnasactions.
++     * which may cause unnecessary IOTLB miss/update transactions.
+      */
+     return virtio_bus_device_iommu_enabled(vdev) &&
+            virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
 -- 
-1.8.3.1
+2.33.1
 
 
