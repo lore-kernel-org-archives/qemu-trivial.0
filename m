@@ -1,94 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mpUIP-00043o-R3
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Nov 2021 06:49:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47376)
+	id 1mqdSm-0008PQ-DC
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Nov 2021 10:48:36 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
- id 1mpUIN-000439-F6; Tue, 23 Nov 2021 06:49:07 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:64646)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lagarcia@linux.ibm.com>)
- id 1mpUIL-0001Sh-5T; Tue, 23 Nov 2021 06:49:07 -0500
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1ANAknsx034925; 
- Tue, 23 Nov 2021 11:49:01 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : mime-version : content-type :
- content-transfer-encoding; s=pp1;
- bh=nyS3yiofOVQAEQNLEMzdAz5aOTjFbiuVfeFvAr7asco=;
- b=tD1qEx473WaM8KPfS+6Mic5IHmQh7eGra70ARPJ0CR6lae1u1CL/0tYLsTnxw3ttEWuI
- uEoFu+r0fqx12urS1EvNZIfLI/hPxwfkBMwJVOb51XouD6cPdZczdX2pwWxLn48bKQPB
- StJt9UO6blowFoYrbhkG7jXV9MaoVZuU2HOGOY2RKlzFyuArSB1ynC6f8l/l4BT6HCNY
- rjg0NSbYhXTAoFsFWqKkMOYryDW6WJDsa70lvFIp5Je0utixaqmNut0hl+B0jEEUSji7
- ur1cksgaIdYf/U0CcyABCRXA3t0au0qs8A5jObyayiqJOrzmC0xHM2tb2ZK+ahkP+PsL GQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3cgxun172d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 Nov 2021 11:49:01 +0000
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 1ANBn1GB006472;
- Tue, 23 Nov 2021 11:49:01 GMT
-Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com
- [169.63.121.186])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3cgxun1722-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 Nov 2021 11:49:01 +0000
-Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
- by ppma03wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 1ANBmx1Y025728;
- Tue, 23 Nov 2021 11:49:00 GMT
-Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
- [9.57.198.23]) by ppma03wdc.us.ibm.com with ESMTP id 3cernahsyh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 Nov 2021 11:48:59 +0000
-Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
- [9.57.199.111])
- by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 1ANBmw3Z57672020
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 23 Nov 2021 11:48:58 GMT
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D2886AC062;
- Tue, 23 Nov 2021 11:48:58 +0000 (GMT)
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6F449AC060;
- Tue, 23 Nov 2021 11:48:57 +0000 (GMT)
-Received: from lagarcia.br.ibm.com (unknown [9.160.47.188])
- by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue, 23 Nov 2021 11:48:57 +0000 (GMT)
-From: lagarcia@linux.ibm.com
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Leonardo Garcia <lagarcia@br.ibm.com>,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v3] hw/virtio/vhost: Fix typo in comment.
-Date: Tue, 23 Nov 2021 08:48:31 -0300
-Message-Id: <a10a0ddab65b474ebea1e1141abe0f4aa463909b.1637668012.git.lagarcia@br.ibm.com>
-X-Mailer: git-send-email 2.33.1
+ (Exim 4.90_1) (envelope-from <noah@statshelix.com>)
+ id 1mqbqU-0000ZE-RN
+ for qemu-trivial@nongnu.org; Fri, 26 Nov 2021 09:04:59 -0500
+Received: from [2a00:1450:4864:20::434] (port=40529
+ helo=mail-wr1-x434.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <noah@statshelix.com>)
+ id 1mqbqT-0006cW-8M
+ for qemu-trivial@nongnu.org; Fri, 26 Nov 2021 09:04:58 -0500
+Received: by mail-wr1-x434.google.com with SMTP id t9so1948308wrx.7
+ for <qemu-trivial@nongnu.org>; Fri, 26 Nov 2021 06:04:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=statshelix-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=t+j80Fk+3jaZD/zDKWX85qIQ2pNzathu7Y5kH+2Tx0U=;
+ b=NWpF0Y+CjwLRsw6i03isSw5UbQnho8qGp6P3Z0D/keyVtwbW3wOW7LSnPOf6XzJy86
+ u9XMln7gtJ34wEAeQvaBA89HwTvi+NiSRub3d7IKBLIWeZyGp3mBTGOZChwblCN/TVF7
+ R6LSkd2H4qcSvGQ/0OsvCo+eAlvKscxYaHs8CKgU1nFBYU5rC1XMgpR4TijnTzzGirmm
+ NNY3R1TzZPo3kU4PuxHEiBOhKDIPTVtT8zwsxL2uzSzO46iJepiiwYV3CTFovDy2MgDm
+ uJ4/+qFfV+7WPCitkdO30rdLHJz1iI8rtoVTPSq/dx3Ty/0gE5cXFkq6P7MNwaCYo2Pc
+ sAxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=t+j80Fk+3jaZD/zDKWX85qIQ2pNzathu7Y5kH+2Tx0U=;
+ b=mNqoLl7yOaeBnBk5x3SJXL0lFW6Uek6MNYBcKRMfHd/IoXycVKskSCyAmnNWf6obRa
+ G6gcr8HOAIFwxBjdb9XjqMHXBEWxWn61sww+zdxlLUIT/Aa3rmKsxez80C8JOZHZkByE
+ aaa5WfIcQJwQNQoGzbUHKhEH6Rd8OMhALoWpypR6TyRM4oVRrWxdN4QzLyMKmCLsvkKJ
+ XvqorD3LfIEIb+n8nDd8UsL3da5NKMbCPqvvZDY/dmVpcOMcMXkoEtqxa0/KqWGUYc4f
+ DlXDblEHcO+h4d8GcSFgeK8OFiz63Q+l2hb8TyHC8Nizj+VEd+Gg1VAgQWcn1YKBXZzM
+ qCWA==
+X-Gm-Message-State: AOAM532T2CMov/Pabq1GFuxFX1XaMJG9U1hA3DawZHGxE38Su5g233PV
+ r0mChwpQSKV9EUvFPg1eVZir0w==
+X-Google-Smtp-Source: ABdhPJy9OBtCaet8kwbv0Yf0qlph3eV+fcnruRdywxkaR1SOmUxd60x2vnfnrgXczrZg/o/Zd13rQg==
+X-Received: by 2002:a5d:5850:: with SMTP id i16mr13953691wrf.410.1637935484464; 
+ Fri, 26 Nov 2021 06:04:44 -0800 (PST)
+Received: from glockingjay.. ([2a02:810d:f00:24c8::bce])
+ by smtp.gmail.com with ESMTPSA id h17sm5661928wrp.34.2021.11.26.06.04.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 26 Nov 2021 06:04:44 -0800 (PST)
+From: Noah Bergbauer <noah@statshelix.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Noah Bergbauer <noah@statshelix.com>
+Subject: [PATCH] hid: Implement support for side and extra buttons
+Date: Fri, 26 Nov 2021 15:04:37 +0100
+Message-Id: <20211126140437.79745-1-noah@statshelix.com>
+X-Mailer: git-send-email 2.34.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: bu1M1wl_GxjXk631G7m0aWRn2FalH0Td
-X-Proofpoint-GUID: hdyRw9uh93yvlwQcuae-umFLGSIcjoHf
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
- definitions=2021-11-23_04,2021-11-23_01,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- bulkscore=0 phishscore=0 spamscore=0 adultscore=0 clxscore=1015 mlxscore=0
- priorityscore=1501 impostorscore=0 suspectscore=0 mlxlogscore=999
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2110150000 definitions=main-2111230063
-Received-SPF: pass client-ip=148.163.156.1;
- envelope-from=lagarcia@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::434
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=noah@statshelix.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 26 Nov 2021 10:48:31 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,31 +79,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Nov 2021 11:49:07 -0000
+X-List-Received-Date: Fri, 26 Nov 2021 14:04:59 -0000
 
-From: Leonardo Garcia <lagarcia@br.ibm.com>
+Simply set the respective bits and update the descriptor accordingly.
 
-Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Noah Bergbauer <noah@statshelix.com>
 ---
- hw/virtio/vhost.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/input/hid.c   | 2 ++
+ hw/usb/dev-hid.c | 6 +++---
+ 2 files changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index 437347ad01..20913cf8fb 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -313,7 +313,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
-      * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
-      * incremental memory mapping API via IOTLB API. For platform that
-      * does not have IOMMU, there's no need to enable this feature
--     * which may cause unnecessary IOTLB miss/update trnasactions.
-+     * which may cause unnecessary IOTLB miss/update transactions.
-      */
-     return virtio_bus_device_iommu_enabled(vdev) &&
-            virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
+diff --git a/hw/input/hid.c b/hw/input/hid.c
+index 8aab0521f4..e7ecebdf8f 100644
+--- a/hw/input/hid.c
++++ b/hw/input/hid.c
+@@ -114,6 +114,8 @@ static void hid_pointer_event(DeviceState *dev, QemuConsole *src,
+         [INPUT_BUTTON_LEFT]   = 0x01,
+         [INPUT_BUTTON_RIGHT]  = 0x02,
+         [INPUT_BUTTON_MIDDLE] = 0x04,
++        [INPUT_BUTTON_SIDE] = 0x08,
++        [INPUT_BUTTON_EXTRA] = 0x10,
+     };
+     HIDState *hs = (HIDState *)dev;
+     HIDPointerEvent *e;
+diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
+index 1c7ae97c30..bdd6d1ffaf 100644
+--- a/hw/usb/dev-hid.c
++++ b/hw/usb/dev-hid.c
+@@ -461,14 +461,14 @@ static const uint8_t qemu_mouse_hid_report_descriptor[] = {
+     0xa1, 0x00,		/*   Collection (Physical) */
+     0x05, 0x09,		/*     Usage Page (Button) */
+     0x19, 0x01,		/*     Usage Minimum (1) */
+-    0x29, 0x03,		/*     Usage Maximum (3) */
++    0x29, 0x05,		/*     Usage Maximum (5) */
+     0x15, 0x00,		/*     Logical Minimum (0) */
+     0x25, 0x01,		/*     Logical Maximum (1) */
+-    0x95, 0x03,		/*     Report Count (3) */
++    0x95, 0x05,		/*     Report Count (5) */
+     0x75, 0x01,		/*     Report Size (1) */
+     0x81, 0x02,		/*     Input (Data, Variable, Absolute) */
+     0x95, 0x01,		/*     Report Count (1) */
+-    0x75, 0x05,		/*     Report Size (5) */
++    0x75, 0x03,		/*     Report Size (3) */
+     0x81, 0x01,		/*     Input (Constant) */
+     0x05, 0x01,		/*     Usage Page (Generic Desktop) */
+     0x09, 0x30,		/*     Usage (X) */
 -- 
-2.33.1
+2.34.0
 
 
