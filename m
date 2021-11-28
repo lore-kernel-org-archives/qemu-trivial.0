@@ -1,73 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mqdSm-0008PQ-DC
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Nov 2021 10:48:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46000)
+	id 1mr92x-0000lr-B1
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Nov 2021 20:32:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <noah@statshelix.com>)
- id 1mqbqU-0000ZE-RN
- for qemu-trivial@nongnu.org; Fri, 26 Nov 2021 09:04:59 -0500
-Received: from [2a00:1450:4864:20::434] (port=40529
- helo=mail-wr1-x434.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <noah@statshelix.com>)
- id 1mqbqT-0006cW-8M
- for qemu-trivial@nongnu.org; Fri, 26 Nov 2021 09:04:58 -0500
-Received: by mail-wr1-x434.google.com with SMTP id t9so1948308wrx.7
- for <qemu-trivial@nongnu.org>; Fri, 26 Nov 2021 06:04:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=statshelix-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=t+j80Fk+3jaZD/zDKWX85qIQ2pNzathu7Y5kH+2Tx0U=;
- b=NWpF0Y+CjwLRsw6i03isSw5UbQnho8qGp6P3Z0D/keyVtwbW3wOW7LSnPOf6XzJy86
- u9XMln7gtJ34wEAeQvaBA89HwTvi+NiSRub3d7IKBLIWeZyGp3mBTGOZChwblCN/TVF7
- R6LSkd2H4qcSvGQ/0OsvCo+eAlvKscxYaHs8CKgU1nFBYU5rC1XMgpR4TijnTzzGirmm
- NNY3R1TzZPo3kU4PuxHEiBOhKDIPTVtT8zwsxL2uzSzO46iJepiiwYV3CTFovDy2MgDm
- uJ4/+qFfV+7WPCitkdO30rdLHJz1iI8rtoVTPSq/dx3Ty/0gE5cXFkq6P7MNwaCYo2Pc
- sAxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=t+j80Fk+3jaZD/zDKWX85qIQ2pNzathu7Y5kH+2Tx0U=;
- b=mNqoLl7yOaeBnBk5x3SJXL0lFW6Uek6MNYBcKRMfHd/IoXycVKskSCyAmnNWf6obRa
- G6gcr8HOAIFwxBjdb9XjqMHXBEWxWn61sww+zdxlLUIT/Aa3rmKsxez80C8JOZHZkByE
- aaa5WfIcQJwQNQoGzbUHKhEH6Rd8OMhALoWpypR6TyRM4oVRrWxdN4QzLyMKmCLsvkKJ
- XvqorD3LfIEIb+n8nDd8UsL3da5NKMbCPqvvZDY/dmVpcOMcMXkoEtqxa0/KqWGUYc4f
- DlXDblEHcO+h4d8GcSFgeK8OFiz63Q+l2hb8TyHC8Nizj+VEd+Gg1VAgQWcn1YKBXZzM
- qCWA==
-X-Gm-Message-State: AOAM532T2CMov/Pabq1GFuxFX1XaMJG9U1hA3DawZHGxE38Su5g233PV
- r0mChwpQSKV9EUvFPg1eVZir0w==
-X-Google-Smtp-Source: ABdhPJy9OBtCaet8kwbv0Yf0qlph3eV+fcnruRdywxkaR1SOmUxd60x2vnfnrgXczrZg/o/Zd13rQg==
-X-Received: by 2002:a5d:5850:: with SMTP id i16mr13953691wrf.410.1637935484464; 
- Fri, 26 Nov 2021 06:04:44 -0800 (PST)
-Received: from glockingjay.. ([2a02:810d:f00:24c8::bce])
- by smtp.gmail.com with ESMTPSA id h17sm5661928wrp.34.2021.11.26.06.04.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Nov 2021 06:04:44 -0800 (PST)
-From: Noah Bergbauer <noah@statshelix.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Noah Bergbauer <noah@statshelix.com>
-Subject: [PATCH] hid: Implement support for side and extra buttons
-Date: Fri, 26 Nov 2021 15:04:37 +0100
-Message-Id: <20211126140437.79745-1-noah@statshelix.com>
-X-Mailer: git-send-email 2.34.0
+ (Exim 4.90_1) (envelope-from <juro.bystricky@intel.com>)
+ id 1mr8oS-00031h-MI; Sat, 27 Nov 2021 20:17:04 -0500
+Received: from mga18.intel.com ([134.134.136.126]:59618)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <juro.bystricky@intel.com>)
+ id 1mr8oM-00050I-TI; Sat, 27 Nov 2021 20:17:00 -0500
+X-IronPort-AV: E=McAfee;i="6200,9189,10181"; a="222668209"
+X-IronPort-AV: E=Sophos;i="5.87,270,1631602800"; d="scan'208";a="222668209"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Nov 2021 17:16:54 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,270,1631602800"; d="scan'208";a="608276451"
+Received: from vm-rhel-devel-juro.jf.intel.com ([10.54.87.224])
+ by orsmga004.jf.intel.com with ESMTP; 27 Nov 2021 17:16:54 -0800
+From: Juro Bystricky <juro.bystricky@intel.com>
+To: qemu-trivial@nongnu.org
+Cc: alex.bennee@linaro.org, erdnaxe@crans.org, ma.mandourr@gmail.com,
+ qemu-devel@nongnu.org, jurobystricky@hotmail.com
+Subject: [PATCH] tests/plugin/syscall.c: fix compiler warnings
+Date: Sat, 27 Nov 2021 17:15:51 -0800
+Message-Id: <20211128011551.2115468-1-juro.bystricky@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::434
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=noah@statshelix.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=134.134.136.126;
+ envelope-from=juro.bystricky@intel.com; helo=mga18.intel.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 26 Nov 2021 10:48:31 -0500
+X-Mailman-Approved-At: Sat, 27 Nov 2021 20:32:01 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,52 +49,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Nov 2021 14:04:59 -0000
+X-List-Received-Date: Sun, 28 Nov 2021 01:17:04 -0000
 
-Simply set the respective bits and update the descriptor accordingly.
+Fix compiler warnings. The warnings can result in a broken build.
+This patch fixes warnings such as:
 
-Signed-off-by: Noah Bergbauer <noah@statshelix.com>
+In file included from /usr/include/glib-2.0/glib.h:111,
+                 from ../tests/plugin/syscall.c:13:
+../tests/plugin/syscall.c: In function ‘print_entry’:
+/usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘out’ may be
+       used uninitialized in this function [-Werror=maybe-uninitialized]
+   g_free (*pp);
+   ^~~~~~~~~~~~
+../tests/plugin/syscall.c:82:23: note: ‘out’ was declared here
+     g_autofree gchar *out;
+                       ^~~
+In file included from /usr/include/glib-2.0/glib.h:111,
+                 from ../tests/plugin/syscall.c:13:
+../tests/plugin/syscall.c: In function ‘vcpu_syscall_ret’:
+/usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘out’ may be
+        used uninitialized in this function [-Werror=maybe-uninitialized]
+   g_free (*pp);
+   ^~~~~~~~~~~~
+../tests/plugin/syscall.c:73:27: note: ‘out’ was declared here
+         g_autofree gchar *out;
+                           ^~~
+cc1: all warnings being treated as errors
+
+Signed-off-by: Juro Bystricky <juro.bystricky@intel.com>
 ---
- hw/input/hid.c   | 2 ++
- hw/usb/dev-hid.c | 6 +++---
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ tests/plugin/syscall.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/hw/input/hid.c b/hw/input/hid.c
-index 8aab0521f4..e7ecebdf8f 100644
---- a/hw/input/hid.c
-+++ b/hw/input/hid.c
-@@ -114,6 +114,8 @@ static void hid_pointer_event(DeviceState *dev, QemuConsole *src,
-         [INPUT_BUTTON_LEFT]   = 0x01,
-         [INPUT_BUTTON_RIGHT]  = 0x02,
-         [INPUT_BUTTON_MIDDLE] = 0x04,
-+        [INPUT_BUTTON_SIDE] = 0x08,
-+        [INPUT_BUTTON_EXTRA] = 0x10,
-     };
-     HIDState *hs = (HIDState *)dev;
-     HIDPointerEvent *e;
-diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
-index 1c7ae97c30..bdd6d1ffaf 100644
---- a/hw/usb/dev-hid.c
-+++ b/hw/usb/dev-hid.c
-@@ -461,14 +461,14 @@ static const uint8_t qemu_mouse_hid_report_descriptor[] = {
-     0xa1, 0x00,		/*   Collection (Physical) */
-     0x05, 0x09,		/*     Usage Page (Button) */
-     0x19, 0x01,		/*     Usage Minimum (1) */
--    0x29, 0x03,		/*     Usage Maximum (3) */
-+    0x29, 0x05,		/*     Usage Maximum (5) */
-     0x15, 0x00,		/*     Logical Minimum (0) */
-     0x25, 0x01,		/*     Logical Maximum (1) */
--    0x95, 0x03,		/*     Report Count (3) */
-+    0x95, 0x05,		/*     Report Count (5) */
-     0x75, 0x01,		/*     Report Size (1) */
-     0x81, 0x02,		/*     Input (Data, Variable, Absolute) */
-     0x95, 0x01,		/*     Report Count (1) */
--    0x75, 0x05,		/*     Report Size (5) */
-+    0x75, 0x03,		/*     Report Size (3) */
-     0x81, 0x01,		/*     Input (Constant) */
-     0x05, 0x01,		/*     Usage Page (Generic Desktop) */
-     0x09, 0x30,		/*     Usage (X) */
+diff --git a/tests/plugin/syscall.c b/tests/plugin/syscall.c
+index 484b48de49..96040c578f 100644
+--- a/tests/plugin/syscall.c
++++ b/tests/plugin/syscall.c
+@@ -70,19 +70,17 @@ static void vcpu_syscall_ret(qemu_plugin_id_t id, unsigned int vcpu_idx,
+         }
+         g_mutex_unlock(&lock);
+     } else {
+-        g_autofree gchar *out;
+-        out = g_strdup_printf("syscall #%" PRIi64 " returned -> %" PRIi64 "\n",
+-                num, ret);
++        g_autofree gchar *out = g_strdup_printf(
++             "syscall #%" PRIi64 " returned -> %" PRIi64 "\n", num, ret);
+         qemu_plugin_outs(out);
+     }
+ }
+ 
+ static void print_entry(gpointer val, gpointer user_data)
+ {
+-    g_autofree gchar *out;
+     SyscallStats *entry = (SyscallStats *) val;
+     int64_t syscall_num = entry->num;
+-    out = g_strdup_printf(
++    g_autofree gchar *out = g_strdup_printf(
+         "%-13" PRIi64 "%-6" PRIi64 " %" PRIi64 "\n",
+         syscall_num, entry->calls, entry->errors);
+     qemu_plugin_outs(out);
 -- 
-2.34.0
+2.27.0
 
 
