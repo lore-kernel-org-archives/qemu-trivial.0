@@ -1,67 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mreBc-0003P1-VK
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Nov 2021 05:47:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51684)
+	id 1mrfRo-0007sc-EB
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Nov 2021 07:07:53 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mreBW-0003OL-NX
- for qemu-trivial@nongnu.org; Mon, 29 Nov 2021 05:46:58 -0500
-Received: from [2a00:1450:4864:20::42d] (port=35611
- helo=mail-wr1-x42d.google.com)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1mrfRf-0007om-W5; Mon, 29 Nov 2021 07:07:47 -0500
+Received: from [2607:f8b0:4864:20::d33] (port=45892
+ helo=mail-io1-xd33.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1mreBU-0006CM-Jd
- for qemu-trivial@nongnu.org; Mon, 29 Nov 2021 05:46:58 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id i5so35763986wrb.2
- for <qemu-trivial@nongnu.org>; Mon, 29 Nov 2021 02:46:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1mrfRS-00019a-JC; Mon, 29 Nov 2021 07:07:38 -0500
+Received: by mail-io1-xd33.google.com with SMTP id v23so21077293iom.12;
+ Mon, 29 Nov 2021 04:07:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=ftbifqO8h+JkhOkmRmSz/Nzuup+KQ/16UkpK5dR7o18=;
- b=aMwc1U2N/ltUJlLM/HufN/05RaEkRfrUg7gOZ+6miA6yun3FqAZlEJ/Bm9bQ2cg7KL
- MTk0lxWfol2mbh3L/Vqrie+QohLZT5RlUz0yOsOj0tTRXMp+uRhoKugKZbknBnqj7l4V
- 3Ibd7v3cly/k3ZVeP/LpkrftBgbJTroJe3TblDrR9q3rt//isnhlTO/NmSXxCR3n+clt
- FVvNG7TxbDcTYj47PLUNO51QBehsFprKqngwRfun8VVZaeUVPr24rXwp+AnPNUf2n7na
- 9trDvwFSGkGdmhT4z6VWPoMTegGNtt/p/kah4qMKH3C4ppjvWlSfZ5dWEYIavU6x7nTk
- 4pgg==
+ bh=EAUl3DWQfAzDG/HNvrOgxJKxeenx2rv5J5ybj2Yz3eY=;
+ b=DTSI3m+8rjuv8gergmV3GkvXlGe4Zd3IxEJu3Y0LWwKBp8qP+y9eZxG8FiqDRQJ5IJ
+ 7hkLJfwRSOb9usOhMdTYq5IySJMtV19YkciXnU7mno8jeMWg212Oc4mcbWg8dOpDfUgz
+ 4FFG9rgsQZSheEmsSF1QSBptq3DYQ0nHYrzZrvNUAYyCDOgdydLuiwquK5Db3WGd7dS/
+ mTO1XlRdck5gBik5nTe6SiB+rdYn+IuCRrfuf+90qpK1p9cwu6aO6MS+SnR4H0G68psy
+ KognJhbCxhujgSDrgFpLqB4Ivfqfdp1rArfjEXmst0k7Kkildf2ZieB/bnenGGLqnfep
+ Q6AA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=ftbifqO8h+JkhOkmRmSz/Nzuup+KQ/16UkpK5dR7o18=;
- b=dPcoo7DJphBiuw+hgPUwrHJF6gALPoyk+u1Cyg7OoFdcSNwnhICZ209dsucjdvqGst
- +FBG4pdDYBXsX+yGFj3RnraIZJTL0RV2BX+JnTYQ/ERNX95XI3K3bMyqaHInvelUO7CU
- EFibpzUh6uyjI8ygUFyQJZQg43/AM5BLHXLdR7AR64aoJDfMxxBy+5J5bbaAiZgXMEDP
- 8K5xvdxnAfFYsKuXpIEbuaNuHRDx+LXl+OKGLYcPC0GBniMcvRO1PMz5gzYY/8R3SYzC
- 2LhEvGb8ylC6r9so4wNdiDlog0+YriNgxQujLMh+VhzBY3W5qAXLhojz0QgxhHldLUlH
- nHqQ==
-X-Gm-Message-State: AOAM533EioTF4Dj5sPgsHKGpVZDRt80YJrzqZhU1feH+tlCvOVGrO9Z8
- kFuUgEfnXmgvkMUYX1A9lw5nAoXyhh/mf8Nyvn8jqw==
-X-Google-Smtp-Source: ABdhPJyOEGCY4Jt/1lWUIUX+2jaZaCBCx6Z+wIJysMdzYFYu1ay4CDPDdLWNaCx7Ka9bquzcQ4RyiZalNDrol6nuqhk=
-X-Received: by 2002:adf:f64b:: with SMTP id x11mr33953498wrp.4.1638182815219; 
- Mon, 29 Nov 2021 02:46:55 -0800 (PST)
+ bh=EAUl3DWQfAzDG/HNvrOgxJKxeenx2rv5J5ybj2Yz3eY=;
+ b=4pcBhw0fPTGV8Hp3/JivJKCzOOJWzXlNTXeQhFGfTXzux82mVoeNhVFbnGwu38x+BA
+ ndiMG0A1Hcf5bLtweD+psBpjSGHJ+edfJCJiPXcYAn2d4B5Zbcr3c4dC1CVtKVYd6h8c
+ P9nlSccmUY27PMIrbwiKh9QBIe7wl+VkrWeWlFD6Xv/lPJ745aL818hcplwpzFod34qH
+ DZD7yJUWBUPOnpH0qBO3cUt7NDqoEHkvA17kPTbA9T0m5kxkoya+Ad4hbpKNNl2hPoHn
+ 5SpK3SdGU1ScQYBm1rB5XAXxlj/y+MnpwW/9GK+nk5nBleUn/8EXXFnO7oonHsQFhSc7
+ sKZw==
+X-Gm-Message-State: AOAM533EfhtWWN3oocfIQJbluSGaZAUW42CHEZSMv4NKoIKSpzZmXMp7
+ NjBVZ6/+GUmhR3iNTxEQ6LecGmhIYPjAyn6/JHg=
+X-Google-Smtp-Source: ABdhPJwnaR25OHKpFwosDoSjahM8JJL/qU9kOt2NfJEoXV51V1Y24TI6+HPDQWS3rpLd2PXxBWG+qGMZqZS9f0s8quQ=
+X-Received: by 2002:a05:6638:d84:: with SMTP id
+ l4mr67754870jaj.18.1638187648611; 
+ Mon, 29 Nov 2021 04:07:28 -0800 (PST)
 MIME-Version: 1.0
 References: <20211128120723.4053-1-olivier.heriveaux@ledger.fr>
 In-Reply-To: <20211128120723.4053-1-olivier.heriveaux@ledger.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Nov 2021 10:46:43 +0000
-Message-ID: <CAFEAcA8WBZPBoMDBcfv05p-EZOFCUGZkVt5aZJrYAtfCviryjA@mail.gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 29 Nov 2021 22:07:02 +1000
+Message-ID: <CAKmqyKP47GoL+m6PHW6ijCTK1rowgRf=du5=JXOYEtwHCTK=Fw@mail.gmail.com>
 Subject: Re: [PATCH] Fix STM32F2XX USART data register readout
 To: =?UTF-8?Q?Olivier_H=C3=A9riveaux?= <olivier.heriveaux@ledger.fr>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alistair@alistair23.me
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42d
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d33
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d33;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd33.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, PDS_HP_HELO_NORDNS=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,15 +77,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Nov 2021 10:46:59 -0000
+X-List-Received-Date: Mon, 29 Nov 2021 12:07:50 -0000
 
-On Sun, 28 Nov 2021 at 12:07, Olivier H=C3=A9riveaux
+On Mon, Nov 29, 2021 at 12:46 AM Olivier H=C3=A9riveaux
 <olivier.heriveaux@ledger.fr> wrote:
 >
 > Fix issue where the data register may be overwritten by next character
 > reception before being read and returned.
 >
 > Signed-off-by: Olivier H=C3=A9riveaux <olivier.heriveaux@ledger.fr>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
 >  hw/char/stm32f2xx_usart.c | 3 ++-
 >  1 file changed, 2 insertions(+), 1 deletion(-)
@@ -108,15 +116,37 @@ art_dr);
 >      case USART_CR1:
 > --
 > 2.17.1
-
-The bug happens because qemu_chr_fe_accept_input() can cause
-stm32f2xx_usart_receive() to be called, right ?
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-I'll put this in my list of patches to take via target-arm.next for the
-7.0 release.
-
-thanks
--- PMM
+>
+>
+> --
+>
+> Les informations contenues dans ce message =C3=A9lectronique ainsi que ce=
+lles
+> contenues dans les documents attach=C3=A9s sont strictement confidentiell=
+es et
+> sont destin=C3=A9es =C3=A0 l'usage exclusif du (des) destinataire(s) nomm=
+=C3=A9(s).
+> Toute
+> divulgation, distribution ou reproduction, m=C3=AAme partielle, en est
+> strictement interdite sauf autorisation =C3=A9crite et expresse de l=E2=
+=80=99=C3=A9metteur.
+> Si vous recevez ce message par erreur, veuillez le notifier imm=C3=A9diat=
+ement =C3=A0
+> son =C3=A9metteur par retour, et le d=C3=A9truire ainsi que tous les docu=
+ments qui y
+> sont attach=C3=A9s.
+>
+>
+> The information contained in this email and in any
+> document enclosed is strictly confidential and is intended solely for the
+> use of the individual or entity to which it is addressed.
+> Partial or total
+> disclosure, distribution or reproduction of its contents is strictly
+> prohibited unless expressly approved in writing by the sender.
+> If you have
+> received this communication in error, please notify us immediately by
+> responding to this email, and then delete the message and its attached
+> files from your system.
+>
+>
 
