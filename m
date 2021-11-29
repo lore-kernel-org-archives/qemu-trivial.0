@@ -1,70 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mrfRo-0007sc-EB
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Nov 2021 07:07:53 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45074)
+	id 1mrgEg-0002MJ-6w
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Nov 2021 07:58:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mrfRf-0007om-W5; Mon, 29 Nov 2021 07:07:47 -0500
-Received: from [2607:f8b0:4864:20::d33] (port=45892
- helo=mail-io1-xd33.google.com)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1mrgEf-0002Ly-Cg
+ for qemu-trivial@nongnu.org; Mon, 29 Nov 2021 07:58:21 -0500
+Received: from [2a00:1450:4864:20::434] (port=35479
+ helo=mail-wr1-x434.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1mrfRS-00019a-JC; Mon, 29 Nov 2021 07:07:38 -0500
-Received: by mail-io1-xd33.google.com with SMTP id v23so21077293iom.12;
- Mon, 29 Nov 2021 04:07:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=EAUl3DWQfAzDG/HNvrOgxJKxeenx2rv5J5ybj2Yz3eY=;
- b=DTSI3m+8rjuv8gergmV3GkvXlGe4Zd3IxEJu3Y0LWwKBp8qP+y9eZxG8FiqDRQJ5IJ
- 7hkLJfwRSOb9usOhMdTYq5IySJMtV19YkciXnU7mno8jeMWg212Oc4mcbWg8dOpDfUgz
- 4FFG9rgsQZSheEmsSF1QSBptq3DYQ0nHYrzZrvNUAYyCDOgdydLuiwquK5Db3WGd7dS/
- mTO1XlRdck5gBik5nTe6SiB+rdYn+IuCRrfuf+90qpK1p9cwu6aO6MS+SnR4H0G68psy
- KognJhbCxhujgSDrgFpLqB4Ivfqfdp1rArfjEXmst0k7Kkildf2ZieB/bnenGGLqnfep
- Q6AA==
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1mrgEd-0002Ht-UJ
+ for qemu-trivial@nongnu.org; Mon, 29 Nov 2021 07:58:21 -0500
+Received: by mail-wr1-x434.google.com with SMTP id i5so36617854wrb.2
+ for <qemu-trivial@nongnu.org>; Mon, 29 Nov 2021 04:58:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=Bzwx2VMVMxASXARypUNNpeqqL7YlsGByLkHj+hW/F6k=;
+ b=GvK+GXOf/PMSqMf0p8Adax/X6OwJvk2jT9prTaSC4NIcgYlOoxGe9E8qB7mLWS9pjj
+ 71cf1vu+0sPZ4zLk7WQi7L45DTqPsqiujuqunovAlruktJ0/CNzcje95/PHxfRVS5rph
+ tCcqaCIyeMWldyZIIgAPsTbtn/il21HoDNB6qVfx5/gByBolk/T3YAarmvr+Bbwfr77C
+ 0ahS33HV6WQ7Yn0zOPw2HDddjgrKY9tFoWl00Ds9EPIc1XN6r3+sUWke3xziF0ufU4wT
+ B3tnlplYUD/otkwJ/V6O/KIIBDUNBBN2GjFJZx6zKCGofhXnyvPsPO+vBZZUvmUZYXam
+ BJ+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=EAUl3DWQfAzDG/HNvrOgxJKxeenx2rv5J5ybj2Yz3eY=;
- b=4pcBhw0fPTGV8Hp3/JivJKCzOOJWzXlNTXeQhFGfTXzux82mVoeNhVFbnGwu38x+BA
- ndiMG0A1Hcf5bLtweD+psBpjSGHJ+edfJCJiPXcYAn2d4B5Zbcr3c4dC1CVtKVYd6h8c
- P9nlSccmUY27PMIrbwiKh9QBIe7wl+VkrWeWlFD6Xv/lPJ745aL818hcplwpzFod34qH
- DZD7yJUWBUPOnpH0qBO3cUt7NDqoEHkvA17kPTbA9T0m5kxkoya+Ad4hbpKNNl2hPoHn
- 5SpK3SdGU1ScQYBm1rB5XAXxlj/y+MnpwW/9GK+nk5nBleUn/8EXXFnO7oonHsQFhSc7
- sKZw==
-X-Gm-Message-State: AOAM533EfhtWWN3oocfIQJbluSGaZAUW42CHEZSMv4NKoIKSpzZmXMp7
- NjBVZ6/+GUmhR3iNTxEQ6LecGmhIYPjAyn6/JHg=
-X-Google-Smtp-Source: ABdhPJwnaR25OHKpFwosDoSjahM8JJL/qU9kOt2NfJEoXV51V1Y24TI6+HPDQWS3rpLd2PXxBWG+qGMZqZS9f0s8quQ=
-X-Received: by 2002:a05:6638:d84:: with SMTP id
- l4mr67754870jaj.18.1638187648611; 
- Mon, 29 Nov 2021 04:07:28 -0800 (PST)
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=Bzwx2VMVMxASXARypUNNpeqqL7YlsGByLkHj+hW/F6k=;
+ b=cV6RuNtg73NrN8jDXmbJq80p065W+3P3JsVhsCtyXEKtl0GTOdCbcitLEZ/iVsR0f0
+ y0NRI2kEx+A1NbhVp9wgqQijpg3LJ1vIElH+CXvbwI9cw7gsukxv0f58mez1SOGIWwB+
+ HWv1wOdIQIDA1DdSpHusizi9fuu1Onzejcm6SfEo0GbRyXi9XtVq4EqVy6WyELplaRm4
+ 3YGflZpC5Wur88a0W7gg4piIjO6XFdSQWHvj0w896lpSDKwxyHf2h5XZRV8vQI0wUBQT
+ sFz02FKS1TzVcR9+POdSc142p6cNZW8T+68YstMgUYqT9uD8UVVD1QLfXLSnH6lUaoht
+ RsOg==
+X-Gm-Message-State: AOAM531KqSB0vc6C2c+hgDyOHLSJRvgFWjn7v1lFOBLJsoFFuswbtLl1
+ rEn66dyYLmWzpOTsE7qaJkS90g==
+X-Google-Smtp-Source: ABdhPJz0Ru6iVc4aQS89nfzPgb4N6iHdb9iBfkWmgImSKPoBlwiJ+hBTBdOvs/bokNv85nC+bay2HA==
+X-Received: by 2002:adf:cc91:: with SMTP id p17mr33566493wrj.589.1638190698434; 
+ Mon, 29 Nov 2021 04:58:18 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id h18sm15088933wre.46.2021.11.29.04.58.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Nov 2021 04:58:17 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 2CE481FF96;
+ Mon, 29 Nov 2021 12:58:15 +0000 (GMT)
+References: <20211128011551.2115468-1-juro.bystricky@intel.com>
+User-agent: mu4e 1.7.5; emacs 28.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Juro Bystricky <juro.bystricky@intel.com>
+Cc: qemu-trivial@nongnu.org, erdnaxe@crans.org, ma.mandourr@gmail.com,
+ qemu-devel@nongnu.org, jurobystricky@hotmail.com
+Subject: Re: [PATCH] tests/plugin/syscall.c: fix compiler warnings
+Date: Mon, 29 Nov 2021 12:58:09 +0000
+In-reply-to: <20211128011551.2115468-1-juro.bystricky@intel.com>
+Message-ID: <87r1azyv88.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20211128120723.4053-1-olivier.heriveaux@ledger.fr>
-In-Reply-To: <20211128120723.4053-1-olivier.heriveaux@ledger.fr>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Nov 2021 22:07:02 +1000
-Message-ID: <CAKmqyKP47GoL+m6PHW6ijCTK1rowgRf=du5=JXOYEtwHCTK=Fw@mail.gmail.com>
-Subject: Re: [PATCH] Fix STM32F2XX USART data register readout
-To: =?UTF-8?Q?Olivier_H=C3=A9riveaux?= <olivier.heriveaux@ledger.fr>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d33
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::434
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d33;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd33.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, PDS_HP_HELO_NORDNS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,76 +83,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Nov 2021 12:07:50 -0000
+X-List-Received-Date: Mon, 29 Nov 2021 12:58:21 -0000
 
-On Mon, Nov 29, 2021 at 12:46 AM Olivier H=C3=A9riveaux
-<olivier.heriveaux@ledger.fr> wrote:
->
-> Fix issue where the data register may be overwritten by next character
-> reception before being read and returned.
->
-> Signed-off-by: Olivier H=C3=A9riveaux <olivier.heriveaux@ledger.fr>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Juro Bystricky <juro.bystricky@intel.com> writes:
 
-Alistair
+> Fix compiler warnings. The warnings can result in a broken build.
+> This patch fixes warnings such as:
 
-> ---
->  hw/char/stm32f2xx_usart.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-> index 8df0832424..fde67f4f03 100644
-> --- a/hw/char/stm32f2xx_usart.c
-> +++ b/hw/char/stm32f2xx_usart.c
-> @@ -103,10 +103,11 @@ static uint64_t stm32f2xx_usart_read(void *opaque, =
-hwaddr addr,
->          return retvalue;
->      case USART_DR:
->          DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) s->us=
-art_dr);
-> +        retvalue =3D s->usart_dr & 0x3FF;
->          s->usart_sr &=3D ~USART_SR_RXNE;
->          qemu_chr_fe_accept_input(&s->chr);
->          qemu_set_irq(s->irq, 0);
-> -        return s->usart_dr & 0x3FF;
-> +        return retvalue;
->      case USART_BRR:
->          return s->usart_brr;
->      case USART_CR1:
-> --
-> 2.17.1
->
->
-> --
->
-> Les informations contenues dans ce message =C3=A9lectronique ainsi que ce=
-lles
-> contenues dans les documents attach=C3=A9s sont strictement confidentiell=
-es et
-> sont destin=C3=A9es =C3=A0 l'usage exclusif du (des) destinataire(s) nomm=
-=C3=A9(s).
-> Toute
-> divulgation, distribution ou reproduction, m=C3=AAme partielle, en est
-> strictement interdite sauf autorisation =C3=A9crite et expresse de l=E2=
-=80=99=C3=A9metteur.
-> Si vous recevez ce message par erreur, veuillez le notifier imm=C3=A9diat=
-ement =C3=A0
-> son =C3=A9metteur par retour, et le d=C3=A9truire ainsi que tous les docu=
-ments qui y
-> sont attach=C3=A9s.
->
->
-> The information contained in this email and in any
-> document enclosed is strictly confidential and is intended solely for the
-> use of the individual or entity to which it is addressed.
-> Partial or total
-> disclosure, distribution or reproduction of its contents is strictly
-> prohibited unless expressly approved in writing by the sender.
-> If you have
-> received this communication in error, please notify us immediately by
-> responding to this email, and then delete the message and its attached
-> files from your system.
->
->
+Queued to for-6.2/more-misc-fixes, thanks.
+
+--=20
+Alex Benn=C3=A9e
 
