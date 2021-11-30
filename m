@@ -1,65 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mrjch-0002NV-U5
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Nov 2021 11:35:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46916)
+	id 1ms6xT-0002kb-Hc
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Nov 2021 12:30:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41482)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <olivier.heriveaux@ledger.fr>)
- id 1mrjcg-0002Mg-LL
- for qemu-trivial@nongnu.org; Mon, 29 Nov 2021 11:35:22 -0500
-Received: from [2a00:1450:4864:20::22e] (port=39825
- helo=mail-lj1-x22e.google.com)
+ (Exim 4.90_1) (envelope-from <emmiller@gmail.com>)
+ id 1ms6xR-0002eM-7Z; Tue, 30 Nov 2021 12:30:21 -0500
+Received: from [2607:f8b0:4864:20::f2b] (port=43970
+ helo=mail-qv1-xf2b.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <olivier.heriveaux@ledger.fr>)
- id 1mrjce-0004Qv-Aw
- for qemu-trivial@nongnu.org; Mon, 29 Nov 2021 11:35:21 -0500
-Received: by mail-lj1-x22e.google.com with SMTP id t11so35564096ljh.6
- for <qemu-trivial@nongnu.org>; Mon, 29 Nov 2021 08:35:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ledger.fr; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=69n8nWHU2/ZqQENjZoeWKHlT6wJanKn5qutQopApahc=;
- b=JhGNP8bdbdAjzri8+HHK4YPMhJeisXFHdi5hN3VWWNmnW1p/9cuRQRZtIEsnDwTAsW
- 5+zasuvZCFbC/M12YG9xqXnLg7HeDWT203N3eDRzDTl/VHeKhHTixCGAGVAMA4sUwfvB
- sBPCA4KvrO58n7Oy2bhfIcj7SC8vRNf0+XprXlZ42Q9nlomo4j8aGjVQkeF3BNo9FxrL
- qJAq5x5jRDRNdAUC/Bx1Z43t+kfdY7/tRJ5lWcAFikpRES+XFIQlgFQkce1MjB4RJXnE
- wJW06X+c4Cy6mprqbm5St0B8MbN9+2rugh4IcN3RPGUBaUd0Plrk0NXm3d60NsveHhNG
- muGw==
+ (Exim 4.90_1) (envelope-from <emmiller@gmail.com>)
+ id 1ms6xM-0005mO-RA; Tue, 30 Nov 2021 12:30:20 -0500
+Received: by mail-qv1-xf2b.google.com with SMTP id j9so18666136qvm.10;
+ Tue, 30 Nov 2021 09:30:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:content-transfer-encoding:mime-version:subject:message-id:date
+ :cc:to; bh=6k52PxujPTpHvPAFY2ubvJVVQOKd3T3Fqw+xS3zU6b4=;
+ b=n0ijgJe0BZ+CE+dVFoX0ep302tOG3zjuuaivMAnWPu/IP6/RbPQvRY6HiIVndB+N+c
+ f4MvCYPYLnY9m8f2PB24i1zTwS4pTZxKhTC9kvv+H1aCRWfnu3kFXecHwCNHmQCP764R
+ rLkCE34iDwLI9PhogFtCkvZ0B38lvPIMcMV4LuLk5FPBWoLpkqnOhdKCK+U1AbNlBWmG
+ 2YrVMcAK2jixf1gyoBVVXywqoZkTfLH4LzuLPYWqliAaU9UGehqFugSHtc3SZczQ3F/V
+ Y56SaFO8MXTzBNKLOpCsv3QtRgbxTDatyUhjF3O/lq+MH7UbrHEUduo1vkWcDIzCTQmh
+ 4+9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=69n8nWHU2/ZqQENjZoeWKHlT6wJanKn5qutQopApahc=;
- b=b0jgvhPjpdjKsLkTWwPfAMDoH00n3M6zskmqrhBn2pS6fuUHnYCFdUbxxxVkkJRZ7d
- 1zg7tS4fKiheyQ8rtlDWgE7FnJqjJdEgFNN7MxG/WlzA/AsxCj298gf+waOZIYhx6mVu
- JCxkZu7mUYd9dy8CG1OfaME3fxWzNh0PW/pUtvMQpfyEWF4nrwvgcVCvFOMhYQzH/bv7
- v15PubCeBgml+33j6qy8J2MPaY0jToDAY5EAtpdbFsGtTOKy70qn8N7FX1knoTGOLfrv
- Pk8Cmy0tefTxbAhhJHUUZvvViKylSifrtLaVgU1cJMNjlfTdUuMbBMjoSuZzLMjCtgCQ
- MnGA==
-X-Gm-Message-State: AOAM532O/vd+Cj/+QSm9CLc/cm6pU44Fp6KouYZaw2Tg8/DjMVL8w+Zf
- Y07Rs/AN1gwibIJkcVvCH7XDOoiOf/mRGOlBmQ6QvKz5G7fEOY1w2B/XP6HYHwU0Qfn+1lzsmLJ
- 36cZ9mivJuglxBRrf/6VlKiFD5oU=
-X-Google-Smtp-Source: ABdhPJzC+d7xWLJ/N156Hp8uNERkMDP50mloUFXRQGCgx5LWWa52pCeC2wHTx1ar/Ie9Ywt+ah5h1SZzkPh289k43tU=
-X-Received: by 2002:a2e:3a18:: with SMTP id h24mr52551666lja.372.1638203717356; 
- Mon, 29 Nov 2021 08:35:17 -0800 (PST)
-MIME-Version: 1.0
-References: <20211128120723.4053-1-olivier.heriveaux@ledger.fr>
- <CAFEAcA8WBZPBoMDBcfv05p-EZOFCUGZkVt5aZJrYAtfCviryjA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8WBZPBoMDBcfv05p-EZOFCUGZkVt5aZJrYAtfCviryjA@mail.gmail.com>
-From: Olivier Heriveaux <olivier.heriveaux@ledger.fr>
-Date: Mon, 29 Nov 2021 17:35:06 +0100
-Message-ID: <CAC_ssAHqNiR1b6fr6Tyb1GBNbHLkys5_HDcae8z6ic6_+sx1Lw@mail.gmail.com>
-Subject: Re: [PATCH] Fix STM32F2XX USART data register readout
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alistair@alistair23.me
-Content-Type: multipart/alternative; boundary="000000000000a4a7c405d1f00689"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::22e
+ h=x-gm-message-state:from:content-transfer-encoding:mime-version
+ :subject:message-id:date:cc:to;
+ bh=6k52PxujPTpHvPAFY2ubvJVVQOKd3T3Fqw+xS3zU6b4=;
+ b=xN3CfNZ18vbTZODAUnTC2ssZECUVwXhedXEyg9oVwzN8PFyyugPrmyA8HPugQa9PE1
+ rEkZXL91rpRVq83Nsm/18XtWQhHKOvMdM/r2kWRpH9VoyxUyGFc1pvF8FOmsFBAwZR+6
+ xLrM1gegr8PiAQDJDff/QoaWYTI6h4DegU8Qkja/AJwk5fdqPn3XeCgNh+pr2677AHSk
+ 3aEhB/q1UCq6TyDLZwUfKm6gi2NSteGI9H4vvhfQ4uB341On61/L6EKuTYme9ypcgfzP
+ U+AGVjwASYZpOFKz/GwxohRPpWs6otvtf7KlFB+mmnUJoHCERYf4TPz6SQV2d0LK1VuK
+ ANVw==
+X-Gm-Message-State: AOAM530cjSaw3WAgUpRTMYhx4UHkNiOmkEOv9UWz/f7j+4+9SQ+X0XGK
+ ZMwzbnrlmezpr3tsvjhVw4PEvDcZuCQ=
+X-Google-Smtp-Source: ABdhPJz7bE7uSZNi8AmOqI6PrieX/nEYeSbPkwWaW27eXe2QwiTwkWmX08duFB1LJtXrE/oUt3aUlQ==
+X-Received: by 2002:a05:6214:19e5:: with SMTP id
+ q5mr818971qvc.74.1638293413968; 
+ Tue, 30 Nov 2021 09:30:13 -0800 (PST)
+Received: from smtpclient.apple (host-66-85-236-20.MIDOLT3.epbfi.com.
+ [66.85.236.20])
+ by smtp.gmail.com with ESMTPSA id v4sm10674397qkp.118.2021.11.30.09.30.13
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 30 Nov 2021 09:30:13 -0800 (PST)
+From: Evan Miller <emmiller@gmail.com>
+Content-Type: text/plain;
+	charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.20.0.1.32\))
+Subject: [PATCH] scripts/entitlement.sh: Use backward-compatible cp flags
+Message-Id: <40635C6E-059A-4146-B1E2-F6376700EE85@gmail.com>
+Date: Tue, 30 Nov 2021 12:30:12 -0500
+Cc: qemu-trivial@nongnu.org
+To: qemu-devel@nongnu.org
+X-Mailer: Apple Mail (2.3693.20.0.1.32)
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f2b
  (failed)
-Received-SPF: permerror client-ip=2a00:1450:4864:20::22e;
- envelope-from=olivier.heriveaux@ledger.fr; helo=mail-lj1-x22e.google.com
-X-Spam_score_int: 14
-X-Spam_score: 1.4
-X-Spam_bar: +
-X-Spam_report: (1.4 / 5.0 requ) BAYES_50=0.8, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2b;
+ envelope-from=emmiller@gmail.com; helo=mail-qv1-xf2b.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -74,194 +77,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Nov 2021 16:35:22 -0000
+X-List-Received-Date: Tue, 30 Nov 2021 17:30:21 -0000
 
---000000000000a4a7c405d1f00689
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Older versions of Mac OS X do not support cp -a. The cp man page =
+indicates that -a is equivalent to -pPR.
 
-If I understand correctly (I'm not a QEmu internals expert), yes this is
-what happens.
-Maybe stm32f2xx_usart_can_receive() is also called but since the
-USART_SR_RXNE flag is reset before the USART_DR is read, it does not
-prevent reading the next character.
+Signed-off-by: Evan Miller <emmiller@gmail.com>
 
-Best regards,
-Olivier H=C3=A9riveaux
+--- scripts/entitlement.sh.orig
++++ scripts/entitlement.sh
+@@ -15,7 +15,7 @@
 
-Le lun. 29 nov. 2021 =C3=A0 11:46, Peter Maydell <peter.maydell@linaro.org>=
- a
-=C3=A9crit :
-
-> On Sun, 28 Nov 2021 at 12:07, Olivier H=C3=A9riveaux
-> <olivier.heriveaux@ledger.fr> wrote:
-> >
-> > Fix issue where the data register may be overwritten by next character
-> > reception before being read and returned.
-> >
-> > Signed-off-by: Olivier H=C3=A9riveaux <olivier.heriveaux@ledger.fr>
-> > ---
-> >  hw/char/stm32f2xx_usart.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-> > index 8df0832424..fde67f4f03 100644
-> > --- a/hw/char/stm32f2xx_usart.c
-> > +++ b/hw/char/stm32f2xx_usart.c
-> > @@ -103,10 +103,11 @@ static uint64_t stm32f2xx_usart_read(void *opaque=
-,
-> hwaddr addr,
-> >          return retvalue;
-> >      case USART_DR:
-> >          DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char)
-> s->usart_dr);
-> > +        retvalue =3D s->usart_dr & 0x3FF;
-> >          s->usart_sr &=3D ~USART_SR_RXNE;
-> >          qemu_chr_fe_accept_input(&s->chr);
-> >          qemu_set_irq(s->irq, 0);
-> > -        return s->usart_dr & 0x3FF;
-> > +        return retvalue;
-> >      case USART_BRR:
-> >          return s->usart_brr;
-> >      case USART_CR1:
-> > --
-> > 2.17.1
->
-> The bug happens because qemu_chr_fe_accept_input() can cause
-> stm32f2xx_usart_receive() to be called, right ?
->
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->
-> I'll put this in my list of patches to take via target-arm.next for the
-> 7.0 release.
->
-> thanks
-> -- PMM
->
-
---=20
-
-Les informations contenues dans ce message =C3=A9lectronique ainsi que cell=
-es=20
-contenues dans les documents attach=C3=A9s sont strictement confidentielles=
- et=20
-sont destin=C3=A9es =C3=A0 l'usage exclusif du (des) destinataire(s) nomm=
-=C3=A9(s).
-Toute=20
-divulgation, distribution ou reproduction, m=C3=AAme partielle, en est=20
-strictement interdite sauf autorisation =C3=A9crite et expresse de l=E2=80=
-=99=C3=A9metteur.
-Si vous recevez ce message par erreur, veuillez le notifier imm=C3=A9diatem=
-ent =C3=A0=20
-son =C3=A9metteur par retour, et le d=C3=A9truire ainsi que tous les docume=
-nts qui y=20
-sont attach=C3=A9s.
-
-
-The information contained in this email and in any=20
-document enclosed is strictly confidential and is intended solely for the=
-=20
-use of the individual or entity to which it is addressed.
-Partial or total=20
-disclosure, distribution or reproduction of its contents is strictly=20
-prohibited unless expressly approved in writing by the sender.
-If you have=20
-received this communication in error, please notify us immediately by=20
-responding to this email, and then delete the message and its attached=20
-files from your system.
-
-
---000000000000a4a7c405d1f00689
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">If I understand correctly (I&#39;m not a QEmu internals ex=
-pert), yes this is what happens.<div>Maybe=C2=A0stm32f2xx_usart_can_receive=
-() is also called but since the USART_SR_RXNE flag is reset before the USAR=
-T_DR is read, it does not prevent reading the next character.</div><div><br=
-></div><div>Best regards,</div><div>Olivier H=C3=A9riveaux</div></div><br><=
-div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Le=C2=A0lun=
-. 29 nov. 2021 =C3=A0=C2=A011:46, Peter Maydell &lt;<a href=3D"mailto:peter=
-.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<b=
-r></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex=
-;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Sun, 28 Nov 20=
-21 at 12:07, Olivier H=C3=A9riveaux<br>
-&lt;<a href=3D"mailto:olivier.heriveaux@ledger.fr" target=3D"_blank">olivie=
-r.heriveaux@ledger.fr</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Fix issue where the data register may be overwritten by next character=
-<br>
-&gt; reception before being read and returned.<br>
-&gt;<br>
-&gt; Signed-off-by: Olivier H=C3=A9riveaux &lt;<a href=3D"mailto:olivier.he=
-riveaux@ledger.fr" target=3D"_blank">olivier.heriveaux@ledger.fr</a>&gt;<br=
->
-&gt; ---<br>
-&gt;=C2=A0 hw/char/stm32f2xx_usart.c | 3 ++-<br>
-&gt;=C2=A0 1 file changed, 2 insertions(+), 1 deletion(-)<br>
-&gt;<br>
-&gt; diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c<br>
-&gt; index 8df0832424..fde67f4f03 100644<br>
-&gt; --- a/hw/char/stm32f2xx_usart.c<br>
-&gt; +++ b/hw/char/stm32f2xx_usart.c<br>
-&gt; @@ -103,10 +103,11 @@ static uint64_t stm32f2xx_usart_read(void *opaqu=
-e, hwaddr addr,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return retvalue;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 case USART_DR:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;Value: 0x%&quot; PRIx=
-32 &quot;, %c\n&quot;, s-&gt;usart_dr, (char) s-&gt;usart_dr);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 retvalue =3D s-&gt;usart_dr &amp; 0x3FF;<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;usart_sr &amp;=3D ~USART_SR_RX=
-NE;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_chr_fe_accept_input(&amp;s-&gt;=
-chr);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_set_irq(s-&gt;irq, 0);<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 return s-&gt;usart_dr &amp; 0x3FF;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return retvalue;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 case USART_BRR:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return s-&gt;usart_brr;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 case USART_CR1:<br>
-&gt; --<br>
-&gt; 2.17.1<br>
-<br>
-The bug happens because qemu_chr_fe_accept_input() can cause<br>
-stm32f2xx_usart_receive() to be called, right ?<br>
-<br>
-Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" =
-target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-<br>
-I&#39;ll put this in my list of patches to take via target-arm.next for the=
-<br>
-7.0 release.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
-<br>
-<div><hr></div><div><font face=3D"Arial" size=3D"1" color=3D"#808080">Les i=
-nformations contenues dans ce message =C3=A9lectronique ainsi que celles co=
-ntenues dans les documents attach=C3=A9s sont strictement confidentielles e=
-t sont destin=C3=A9es =C3=A0 l&#39;usage exclusif du (des) destinataire(s) =
-nomm=C3=A9(s).</font></div><div><font face=3D"Arial" size=3D"1" color=3D"#8=
-08080">Toute divulgation, distribution ou reproduction, m=C3=AAme partielle=
-, en est strictement interdite sauf autorisation =C3=A9crite et expresse de=
- l=E2=80=99=C3=A9metteur.</font></div><div><font face=3D"Arial" size=3D"1" =
-color=3D"#808080">Si vous recevez ce message par erreur, veuillez le notifi=
-er imm=C3=A9diatement =C3=A0 son =C3=A9metteur par retour, et le d=C3=A9tru=
-ire ainsi que tous les documents qui y sont attach=C3=A9s.</font></div><div=
-><font face=3D"Arial" size=3D"1" color=3D"#808080"><br></font></div><div><f=
-ont face=3D"Arial" size=3D"1" color=3D"#808080">The information contained i=
-n this email and in any document enclosed is strictly confidential and is i=
-ntended solely for the use of the individual or entity to which it is addre=
-ssed.</font></div><div><font face=3D"Arial" size=3D"1" color=3D"#808080">Pa=
-rtial or total disclosure, distribution or reproduction of its contents is =
-strictly prohibited unless expressly approved in writing by the sender.</fo=
-nt></div><div><font face=3D"Arial" size=3D"1" color=3D"#808080">If you have=
- received this communication in error, please notify us immediately by resp=
-onding to this email, and then delete the message and its attached files fr=
-om your system.</font></div><div style=3D"font-family:Arial,Helvetica,sans-=
-serif;font-size:1.3em"><hr></div>
---000000000000a4a7c405d1f00689--
+ if $in_place; then
+   trap 'rm "$DST.tmp"' exit
+-  cp -af "$SRC" "$DST.tmp"
++  cp -pPRf "$SRC" "$DST.tmp"
+   SRC=3D"$DST.tmp"
+ else
+   cd "$MESON_INSTALL_DESTDIR_PREFIX"=
 
