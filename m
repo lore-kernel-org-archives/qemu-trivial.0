@@ -1,66 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mtT6O-0008VQ-Rv
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Dec 2021 06:21:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58598)
+	id 1mu0C6-0000d0-1t
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Dec 2021 17:41:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <noah@statshelix.com>)
- id 1mtT6L-0008TH-9p
- for qemu-trivial@nongnu.org; Sat, 04 Dec 2021 06:21:10 -0500
-Received: from [2607:f8b0:4864:20::b2d] (port=41931
- helo=mail-yb1-xb2d.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mu0C4-0000cm-B5; Sun, 05 Dec 2021 17:41:16 -0500
+Received: from [2a00:1450:4864:20::432] (port=43961
+ helo=mail-wr1-x432.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <noah@statshelix.com>)
- id 1mtT6G-00005k-KA
- for qemu-trivial@nongnu.org; Sat, 04 Dec 2021 06:21:09 -0500
-Received: by mail-yb1-xb2d.google.com with SMTP id v138so17067603ybb.8
- for <qemu-trivial@nongnu.org>; Sat, 04 Dec 2021 03:21:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=statshelix-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HeZp5ZfnJgEx8JnFuNwQvdXaX3kHfRM6rwnLCu04cl0=;
- b=Y9ajELrSVPpDszuZl3dhZbtiJUeN576qZcFbitEhR9GpdboK8GkYfAdqs+7YNqdKqh
- l2ha7Yy+rHOSTMO6QM0hWfvJ2TIgkf68yNj5Okv5MHJdu99yK7b58AINQiR/HL+mXp1j
- jzvb6cy8o52IAx2UzvqEANDCq5WV/wy7RsEYowJ2as3VyaJM/pEwHdMWH9e7CYd7rZ9w
- FEhQ/nbWwgcEe9t51wPRKyscdNWsbP/LY37J4fNeLMGoBlTcgTSMD1Q5hV39/zJf1UuI
- 6DxIoVhgGj0EgmAFWDhIKZ8j/JrZimCYwAhhy+hFOudwTEeRcS/vkTunIgMguu/Upvj6
- 6mJA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mu0C2-0005gr-T5; Sun, 05 Dec 2021 17:41:16 -0500
+Received: by mail-wr1-x432.google.com with SMTP id v11so18479816wrw.10;
+ Sun, 05 Dec 2021 14:41:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Do+gkwFWgZjsboWWGNyZl6ctAqJWluyDrT9V2L5cqvc=;
+ b=akHJoyzEUhZeaihrm5g9629IkxpmGn6OnGILFd0U9jcq+sqWCm+oM0WtykNm1a4LO3
+ 2vBUAh2hJNkMeX3FIlhTXWmxJP6cE7GoJw+TjgIx9FXIRz44Tw6D9d5w8iyYryBY0l3A
+ G7mO3jRALeWnvwvR+plyPxyv9DKrLi/OOvab7HKXS1biPBrzSY38KR5HwrYSs5Exwx7N
+ 0JgvWdw/D0zhbZAL9tRd/neBmLrrAU2zjzssAvdztHqCQ83Olu9yUgk1LQUgxZTUX8Nk
+ 48SIG3LNJ8R6n0i+yGUkYICC0GUUNc2WuHRf5F/Ae11FaoypVOKJZP7kAdX49drSWY7D
+ 4wQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HeZp5ZfnJgEx8JnFuNwQvdXaX3kHfRM6rwnLCu04cl0=;
- b=kMnT41tSmoZh+jnLMxdhOwr1TjoqS41vC3MIwEcd7Y7sHM6k6gmDPRMuNjSvdlgWJL
- 0G621rFAuzIcj6S6x/b5WhBkbk6AuXo9qnsJK4c+zkwtlvw2qisLHlL9mK5Ah05Na6F7
- CHDtl+KgiRceJ/dgqe57d8pkx13RwwEpJ0G6Zczrj6DYto0GXAXW6cR1ln/eIK6o6Lje
- QHcoRbHaY/Aioim4Pn1QYUx5v6Ewimhs5Z680CCvKpHaVwjinsnMZXalp9ZaxgzTwezE
- SwenxGtFbRsDAVjadZl0ucUbZ1vqEB8Mb27nang2JVGSIMFHAE597V9qh/Mk3C5ukBx4
- QrjQ==
-X-Gm-Message-State: AOAM530n4fNsiGlfgcd+3TtuDRilhwKP1ndvuVeo52v/Fztbkrzag4Ji
- zGTvhh1r/C0pBX4U+huNN0cRb/nl+UBPEQM0/RzBvA==
-X-Google-Smtp-Source: ABdhPJzhEdJFLtkQxbpvWU8KI8TP3WmJA+uVN69S/HfaESEbzMp5n4yQIynaTYNu53clCISbW5bdG0rRryGH947tKK4=
-X-Received: by 2002:a25:5d6:: with SMTP id 205mr29352603ybf.741.1638616862348; 
- Sat, 04 Dec 2021 03:21:02 -0800 (PST)
-MIME-Version: 1.0
-References: <20211126140437.79745-1-noah@statshelix.com>
-In-Reply-To: <20211126140437.79745-1-noah@statshelix.com>
-From: Noah Bergbauer <noah@statshelix.com>
-Date: Sat, 4 Dec 2021 12:20:51 +0100
-Message-ID: <CABjy+RiwQLNmdSYop1zWq40Jp2HRvf_z5xtDTmKT1R3ff0bHdg@mail.gmail.com>
-Subject: Re: [PATCH] hid: Implement support for side and extra buttons
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=Do+gkwFWgZjsboWWGNyZl6ctAqJWluyDrT9V2L5cqvc=;
+ b=wxJ6121ahtfzq2kbRPE9ObktXBb5oalFFWVr/An5bSKRfV4q0myTcvN2E5h2rwYSQc
+ mfsWEHPT1ccJU60mqZy/ycUznrir00CbqcKbnGkrH5cRxLoijQYxvtBvZFYBiEDQ/lPR
+ lhhAlLKeImkXWpeKtrcvOG1gGjtRtRrm1XW5ZpjvGKJMmLk0o8nV2ekP0mHEl0qAeUQ1
+ HmXPCoIm8lLujkf20szyJaUBjytSrfiiUxW+tv+Ni/ovSu81HCMX4gFJjlUG0VLLxiXv
+ LiOtbVtnkkGudC4IlOu9gHl8UR86pI3LWPBgOSyEtMiiqW3X+7mS1g1ZHhZVZiasWAPA
+ nuvw==
+X-Gm-Message-State: AOAM530/nhM1Se5e/+UbWG7ps/ZXszkmxITKR5ILZDx/XRDuaonawQ+J
+ gIrBcdIohIwV4TevigmH3SQft3hu4Bc=
+X-Google-Smtp-Source: ABdhPJxDP5C8N3O5VCSygYwcOhuo93D/LekwtwRP54jWSUgwRXfNyTOuitQgXe8orgiL84YPBiaEXQ==
+X-Received: by 2002:a5d:6e85:: with SMTP id k5mr38523122wrz.545.1638744072561; 
+ Sun, 05 Dec 2021 14:41:12 -0800 (PST)
+Received: from x1w.. (82.red-83-50-95.dynamicip.rima-tde.net. [83.50.95.82])
+ by smtp.gmail.com with ESMTPSA id n7sm9650403wro.68.2021.12.05.14.41.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 05 Dec 2021 14:41:11 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-Content-Type: multipart/alternative; boundary="00000000000000f04c05d25038b6"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2d
+Cc: Markus Armbruster <armbru@redhat.com>, Michael Rolnik <mrolnik@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] hw/avr: Realize AVRCPU qdev object using qdev_realize()
+Date: Sun,  5 Dec 2021 23:41:09 +0100
+Message-Id: <20211205224109.322152-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.33.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::432
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2d;
- envelope-from=noah@statshelix.com; helo=mail-yb1-xb2d.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,144 +80,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Dec 2021 11:21:10 -0000
+X-List-Received-Date: Sun, 05 Dec 2021 22:41:16 -0000
 
---00000000000000f04c05d25038b6
-Content-Type: text/plain; charset="UTF-8"
+TYPE_AVR_CPU inherits TYPE_CPU, which itself inherits TYPE_DEVICE.
+TYPE_DEVICE instances are realized using qdev_realize(), we don't
+need to access QOM internal values.
 
-ping https://patchew.org/QEMU/20211126140437.79745-1-noah@statshelix.com/
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/avr/atmega.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Fri, Nov 26, 2021 at 3:04 PM Noah Bergbauer <noah@statshelix.com> wrote:
+diff --git a/hw/avr/atmega.c b/hw/avr/atmega.c
+index 0608e2d475e..a34803e6427 100644
+--- a/hw/avr/atmega.c
++++ b/hw/avr/atmega.c
+@@ -233,7 +233,7 @@ static void atmega_realize(DeviceState *dev, Error **errp)
+ 
+     /* CPU */
+     object_initialize_child(OBJECT(dev), "cpu", &s->cpu, mc->cpu_type);
+-    object_property_set_bool(OBJECT(&s->cpu), "realized", true, &error_abort);
++    qdev_realize(DEVICE(&s->cpu), NULL, &error_abort);
+     cpudev = DEVICE(&s->cpu);
+ 
+     /* SRAM */
+-- 
+2.33.1
 
-> Simply set the respective bits and update the descriptor accordingly.
->
-> Signed-off-by: Noah Bergbauer <noah@statshelix.com>
-> ---
->  hw/input/hid.c   | 2 ++
->  hw/usb/dev-hid.c | 6 +++---
->  2 files changed, 5 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/input/hid.c b/hw/input/hid.c
-> index 8aab0521f4..e7ecebdf8f 100644
-> --- a/hw/input/hid.c
-> +++ b/hw/input/hid.c
-> @@ -114,6 +114,8 @@ static void hid_pointer_event(DeviceState *dev,
-> QemuConsole *src,
->          [INPUT_BUTTON_LEFT]   = 0x01,
->          [INPUT_BUTTON_RIGHT]  = 0x02,
->          [INPUT_BUTTON_MIDDLE] = 0x04,
-> +        [INPUT_BUTTON_SIDE] = 0x08,
-> +        [INPUT_BUTTON_EXTRA] = 0x10,
->      };
->      HIDState *hs = (HIDState *)dev;
->      HIDPointerEvent *e;
-> diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
-> index 1c7ae97c30..bdd6d1ffaf 100644
-> --- a/hw/usb/dev-hid.c
-> +++ b/hw/usb/dev-hid.c
-> @@ -461,14 +461,14 @@ static const uint8_t
-> qemu_mouse_hid_report_descriptor[] = {
->      0xa1, 0x00,                /*   Collection (Physical) */
->      0x05, 0x09,                /*     Usage Page (Button) */
->      0x19, 0x01,                /*     Usage Minimum (1) */
-> -    0x29, 0x03,                /*     Usage Maximum (3) */
-> +    0x29, 0x05,                /*     Usage Maximum (5) */
->      0x15, 0x00,                /*     Logical Minimum (0) */
->      0x25, 0x01,                /*     Logical Maximum (1) */
-> -    0x95, 0x03,                /*     Report Count (3) */
-> +    0x95, 0x05,                /*     Report Count (5) */
->      0x75, 0x01,                /*     Report Size (1) */
->      0x81, 0x02,                /*     Input (Data, Variable, Absolute) */
->      0x95, 0x01,                /*     Report Count (1) */
-> -    0x75, 0x05,                /*     Report Size (5) */
-> +    0x75, 0x03,                /*     Report Size (3) */
->      0x81, 0x01,                /*     Input (Constant) */
->      0x05, 0x01,                /*     Usage Page (Generic Desktop) */
->      0x09, 0x30,                /*     Usage (X) */
-> --
-> 2.34.0
->
->
-
---00000000000000f04c05d25038b6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>ping <a href=3D"https://patchew.org/QEMU/202111261404=
-37.79745-1-noah@statshelix.com/">https://patchew.org/QEMU/20211126140437.79=
-745-1-noah@statshelix.com/</a></div></div><br><div class=3D"gmail_quote"><d=
-iv dir=3D"ltr" class=3D"gmail_attr">On Fri, Nov 26, 2021 at 3:04 PM Noah Be=
-rgbauer &lt;<a href=3D"mailto:noah@statshelix.com">noah@statshelix.com</a>&=
-gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
-px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Simpl=
-y set the respective bits and update the descriptor accordingly.<br>
-<br>
-Signed-off-by: Noah Bergbauer &lt;<a href=3D"mailto:noah@statshelix.com" ta=
-rget=3D"_blank">noah@statshelix.com</a>&gt;<br>
----<br>
-=C2=A0hw/input/hid.c=C2=A0 =C2=A0| 2 ++<br>
-=C2=A0hw/usb/dev-hid.c | 6 +++---<br>
-=C2=A02 files changed, 5 insertions(+), 3 deletions(-)<br>
-<br>
-diff --git a/hw/input/hid.c b/hw/input/hid.c<br>
-index 8aab0521f4..e7ecebdf8f 100644<br>
---- a/hw/input/hid.c<br>
-+++ b/hw/input/hid.c<br>
-@@ -114,6 +114,8 @@ static void hid_pointer_event(DeviceState *dev, QemuCon=
-sole *src,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[INPUT_BUTTON_LEFT]=C2=A0 =C2=A0=3D 0x01,=
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[INPUT_BUTTON_RIGHT]=C2=A0 =3D 0x02,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0[INPUT_BUTTON_MIDDLE] =3D 0x04,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 [INPUT_BUTTON_SIDE] =3D 0x08,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 [INPUT_BUTTON_EXTRA] =3D 0x10,<br>
-=C2=A0 =C2=A0 =C2=A0};<br>
-=C2=A0 =C2=A0 =C2=A0HIDState *hs =3D (HIDState *)dev;<br>
-=C2=A0 =C2=A0 =C2=A0HIDPointerEvent *e;<br>
-diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c<br>
-index 1c7ae97c30..bdd6d1ffaf 100644<br>
---- a/hw/usb/dev-hid.c<br>
-+++ b/hw/usb/dev-hid.c<br>
-@@ -461,14 +461,14 @@ static const uint8_t qemu_mouse_hid_report_descriptor=
-[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A00xa1, 0x00,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0Collection (Physical) */<br>
-=C2=A0 =C2=A0 =C2=A00x05, 0x09,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Usage Page (Button) */<br>
-=C2=A0 =C2=A0 =C2=A00x19, 0x01,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Usage Minimum (1) */<br>
--=C2=A0 =C2=A0 0x29, 0x03,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 /*=C2=A0 =C2=A0 =C2=A0Usage Maximum (3) */<br>
-+=C2=A0 =C2=A0 0x29, 0x05,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 /*=C2=A0 =C2=A0 =C2=A0Usage Maximum (5) */<br>
-=C2=A0 =C2=A0 =C2=A00x15, 0x00,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Logical Minimum (0) */<br>
-=C2=A0 =C2=A0 =C2=A00x25, 0x01,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Logical Maximum (1) */<br>
--=C2=A0 =C2=A0 0x95, 0x03,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 /*=C2=A0 =C2=A0 =C2=A0Report Count (3) */<br>
-+=C2=A0 =C2=A0 0x95, 0x05,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 /*=C2=A0 =C2=A0 =C2=A0Report Count (5) */<br>
-=C2=A0 =C2=A0 =C2=A00x75, 0x01,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Report Size (1) */<br>
-=C2=A0 =C2=A0 =C2=A00x81, 0x02,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Input (Data, Variable, Absolute) */<br>
-=C2=A0 =C2=A0 =C2=A00x95, 0x01,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Report Count (1) */<br>
--=C2=A0 =C2=A0 0x75, 0x05,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 /*=C2=A0 =C2=A0 =C2=A0Report Size (5) */<br>
-+=C2=A0 =C2=A0 0x75, 0x03,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 /*=C2=A0 =C2=A0 =C2=A0Report Size (3) */<br>
-=C2=A0 =C2=A0 =C2=A00x81, 0x01,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Input (Constant) */<br>
-=C2=A0 =C2=A0 =C2=A00x05, 0x01,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Usage Page (Generic Desktop) */<br>
-=C2=A0 =C2=A0 =C2=A00x09, 0x30,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 /*=C2=A0 =C2=A0 =C2=A0Usage (X) */<br>
--- <br>
-2.34.0<br>
-<br>
-</blockquote></div>
-
---00000000000000f04c05d25038b6--
 
