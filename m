@@ -1,64 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mwdxj-0000Wa-AP
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Dec 2021 00:33:24 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57474)
+	id 1mwiJA-00081b-FY
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Dec 2021 05:11:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33014)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xvilka@gmail.com>)
- id 1mwbHq-0003my-E0; Sun, 12 Dec 2021 21:41:58 -0500
-Received: from [2a00:1450:4864:20::22a] (port=45925
- helo=mail-lj1-x22a.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mwiJ7-0007yy-OB; Mon, 13 Dec 2021 05:11:45 -0500
+Received: from [2a00:1450:4864:20::42e] (port=40838
+ helo=mail-wr1-x42e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xvilka@gmail.com>)
- id 1mwbHn-0000E3-3l; Sun, 12 Dec 2021 21:41:58 -0500
-Received: by mail-lj1-x22a.google.com with SMTP id b19so19933915ljr.12;
- Sun, 12 Dec 2021 18:41:53 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1mwiJ5-0003EQ-RK; Mon, 13 Dec 2021 05:11:45 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id t9so26086816wrx.7;
+ Mon, 13 Dec 2021 02:11:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to:cc;
- bh=76uZIxbBLUi8hYre3IvEPsH76ywyUQmVUHrBimDo/JA=;
- b=nihzRgFSCaC6WDeog4d/tFdca8ZpoKgYfKMcpufqZUoRURQkzClwadRyYJLIXny39v
- bRjA3zYmELEuHRk6DwAa/QWqxRlUvBv7I27LU6uddqu67ksZ1LMVU1TtI67+UzM/Q52k
- 8Cv5p3jWKEK4zeZZjarw3X+nldTghLYnaWNCguki0Phm+X2oovEydvJa5Hpsr5Q2Qzyq
- CeqL+7v+1STFzs+P9ebmDZgN/ejEzcYtzLEKdW40WcflCn0G9WCnOQFi7Cp4dPQmHjOm
- /pemT2k+qoRA+b2qiNMdhs/2bdJCIrQrt7mV2CAJykLYf6Vp8btsQSbGUVoiXQiwPSV+
- HYOA==
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=3Q5vmBoydi6XhwdxjCs7Ykk0Go8oJFpb/T+fS/otPvs=;
+ b=hTe7yJ4PG3Q/VlPM7S25cMnRJeHqmka7/HIRIDRFzj74By5dDySyM0/ojBRciS6P5g
+ do++JEmDfoQuPvkS8uTMiCI2iu5meJ/mjfTEHvv7R9ZcNq/kn7Lp5gHxU2fPy80yVqWW
+ iwR2DwBxWOXFT8FKP1vYiQD6YKZkHphMQV4ug1CmuO3mTBzWojJ9uuJJunTPaTsiSAJN
+ da8QAZcprx1G08yse8nBLeNj/zz/07u91n12LVjt+jrGI9EfLVz+bPQZSH9adTseFQrV
+ r44yCLOiHnQoqTtIJbRUXgMHSxIjPivT+Mv4oYk9h8gp71dUfUExyIq3iOrMJ63tyIId
+ sUPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:cc;
- bh=76uZIxbBLUi8hYre3IvEPsH76ywyUQmVUHrBimDo/JA=;
- b=vd4TjmZQVWghw7a7iPN3KBcKARMmUf+BQmEG1Q+BM6lSALTx1sGbGAqb0jd6o3vCUb
- MHeZDzAu9XmWn+t16QKh2a0BxhJgYEhZMBKu4TA55T+NpbAIUQKyQVDah5y1y+CPQrTf
- dfsMwkUFbPercrv6C/ddeD6OWRcW4Potjwf8nPOtWAMWoj2s4Oum+OEXzo7llYOyIy2B
- lazz1y6dm1edZcaU42BcBgU45vLNj47qMpym9bOFrJBNJm5QMckFgcsHJiVJghhq4qKD
- QB6cS5c5vugdpyx86QC5bulFRXJ/7PN6TCJ13cgitcErTVBl+n1qQbFU/Seb70+mIZHg
- CI/g==
-X-Gm-Message-State: AOAM532oJdCyPx7s2qzPoyMvK0lvadrCtQhCatzqC5KmoZ3veMlXUEye
- u+iS1BgnILNcX/qzV67dvO2JNyOxmn5qSx2cXZiHZC2Ly0Y=
-X-Google-Smtp-Source: ABdhPJyhYGBtZ8n9lB4shV903mx7cUFFWWs1flXALdbB2cqaPHrWFSmpLeGNG4zSXp2yC20KyIVy+eULK0H+YBUr3RY=
-X-Received: by 2002:a2e:a594:: with SMTP id m20mr25958841ljp.332.1639363311864; 
- Sun, 12 Dec 2021 18:41:51 -0800 (PST)
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=3Q5vmBoydi6XhwdxjCs7Ykk0Go8oJFpb/T+fS/otPvs=;
+ b=buFsuxawPhUmY3clwMMQdQlAyNL0/MtfgCOJPtIzplglCz5nTOvwHupYbDpgr0WGnt
+ hjfqcdrzr5HGxC9/DiLi1FPfNjgCXuU15kcoLRCjkKX0n9OG7hyqjJ02mQs4BeUSuiDp
+ pXAyTsCi0/xhUVmmsQFIFIo+Ax1IfS/HQKh0SDqM7AOKL+N7NFO52xDEImYSEk2XQYZM
+ z+Y1iiKJhroZP/2ABWcYUFlyvcHgf2NgXtiOKVDss/ZK2QpbOqtwtSjk5etWH79/c6R3
+ s7jfHL4R1OfJlSFQj3lQLcQElC4BcchSttpd1Vy7dEDAA34BX8zd3xQ4uNeyOznF4m0S
+ N6wg==
+X-Gm-Message-State: AOAM5329pher+LI+MgxHNlb3xKCGp75v0pAtOmDdRV0rgedzz29NiYCG
+ QsZ2O2NZDM/DWwAuQ+PIZWY=
+X-Google-Smtp-Source: ABdhPJwyhQCKDaMwmhnj4wCGgVV5OAzi67CpAGKidAFUkWwvFF7BhIClc2PDFexzduSjW8eHsBAk1Q==
+X-Received: by 2002:a5d:4482:: with SMTP id j2mr31795475wrq.355.1639390302265; 
+ Mon, 13 Dec 2021 02:11:42 -0800 (PST)
+Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
+ [83.50.185.174])
+ by smtp.gmail.com with ESMTPSA id g13sm7822010wri.102.2021.12.13.02.11.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Dec 2021 02:11:41 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <0808354a-c9ac-4dc1-574e-ed41c5d32a1e@amsat.org>
+Date: Mon, 13 Dec 2021 11:11:40 +0100
 MIME-Version: 1.0
-Reply-To: anton.kochkov@gmail.com
-From: =?UTF-8?B?0JDQvdGC0L7QvSDQmtC+0YfQutC+0LI=?= <anton.kochkov@gmail.com>
-Date: Mon, 13 Dec 2021 10:41:43 +0800
-Message-ID: <CA+8M6wm4Yeg7sEAge9TMxbRmiEsyWu-cj5wuRGwFO8JpD2qPFw@mail.gmail.com>
-Subject: [PATCH] meson: be strict for boolean options
-To: qemu-devel <qemu-devel@nongnu.org>
-Cc: qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::22a
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH v5 01/37] bsd-user/mips*: Remove mips support
+Content-Language: en-US
+To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20211108035136.43687-1-imp@bsdimp.com>
+ <20211108035136.43687-2-imp@bsdimp.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20211108035136.43687-2-imp@bsdimp.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
- envelope-from=xvilka@gmail.com; helo=mail-lj1-x22a.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-4.093,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 13 Dec 2021 00:33:11 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,52 +88,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Dec 2021 02:42:01 -0000
+X-List-Received-Date: Mon, 13 Dec 2021 10:11:46 -0000
 
-This patch allows to proceed further to be able to build with Muon buildsystem
+On 11/8/21 04:51, Warner Losh wrote:
+> FreeBSD is dropping support for mips starting with FreeBSD 14. mips
+> support has been removed from the bsd-user fork because updating it for
+> new signal requirements will take too much time. Remove it here since it
+> is a distraction.
+> 
+> Signed-off-by: Warner Losh <imp@bsdimp.com>
+> Acked-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  bsd-user/mips/target_arch_sysarch.h   | 69 ---------------------------
+>  bsd-user/mips/target_syscall.h        | 52 --------------------
+>  bsd-user/mips64/target_arch_sysarch.h | 69 ---------------------------
+>  bsd-user/mips64/target_syscall.h      | 53 --------------------
+>  4 files changed, 243 deletions(-)
+>  delete mode 100644 bsd-user/mips/target_arch_sysarch.h
+>  delete mode 100644 bsd-user/mips/target_syscall.h
+>  delete mode 100644 bsd-user/mips64/target_arch_sysarch.h
+>  delete mode 100644 bsd-user/mips64/target_syscall.h
 
-https://sr.ht/~lattis/muon/
-
-There are still few bugs remain, but they are on the Muon side:
-https://todo.sr.ht/~lattis/muon/21
-
-Best regards,
-Anton Kochkov.
-
-From fa80e0c17b14b8f5067d13ad7bc63e0d2cbb94ce Mon Sep 17 00:00:00 2001
-From: Anton Kochkov <anton.kochkov@gmail.com>
-Date: Fri, 10 Dec 2021 21:10:34 +0800
-Subject: [PATCH] meson: be strict for boolean options
-
-While Meson buildsystem accepts the 'false' as a value
-for boolean options, it's not covered by the specification
-and in general invalid. Some alternative Meson implementations,
-like Muon, do not accept 'false' or 'true' as a valid value
-for the boolean options.
-
-See https://mesonbuild.com/Build-options.html
-
-Signed-off-by: Anton Kochkov <anton.kochkov@gmail.com>
----
- meson_options.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/meson_options.txt b/meson_options.txt
-index e392323732..4ca770c1bd 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -60,9 +60,9 @@ option('tcg', type: 'feature', value: 'auto',
-        description: 'TCG support')
- option('tcg_interpreter', type: 'boolean', value: false,
-        description: 'TCG with bytecode interpreter (slow)')
--option('cfi', type: 'boolean', value: 'false',
-+option('cfi', type: 'boolean', value: false,
-        description: 'Control-Flow Integrity (CFI)')
--option('cfi_debug', type: 'boolean', value: 'false',
-+option('cfi_debug', type: 'boolean', value: false,
-        description: 'Verbose errors in case of CFI violation')
- option('multiprocess', type: 'feature', value: 'auto',
-        description: 'Out of process device emulation support')
--- 
-2.33.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
