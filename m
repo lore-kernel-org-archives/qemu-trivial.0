@@ -1,90 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mwkV0-0006VP-Uu
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Dec 2021 07:32:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35118)
+	id 1mxPai-0005MR-1D
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Dec 2021 03:24:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mwkV0-0006V8-0j
- for qemu-trivial@nongnu.org; Mon, 13 Dec 2021 07:32:10 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46109)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mxPad-0005Jr-18
+ for qemu-trivial@nongnu.org; Wed, 15 Dec 2021 03:24:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31933)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mwkUx-0003mt-MK
- for qemu-trivial@nongnu.org; Mon, 13 Dec 2021 07:32:09 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1mxPaS-0003AY-Ac
+ for qemu-trivial@nongnu.org; Wed, 15 Dec 2021 03:24:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1639398726;
+ s=mimecast20190719; t=1639556669;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8iSkI/RqpaM6zm0BQ+1s6DC9YFouhPAlAVjjFNYP8cI=;
- b=ALduRhWqX/jLGjRVb7WUIixyGXdT0Vhk+3XvxQSMDF4aeZAPVebcaVeyTnei1ygl5Ryp/m
- nPfGXci4kd55Ju+hBFWLooqd/Jw2mGlbLbOCUGMKO8J1U0LL3xz25dX+6eSg3Uqj1nnzbz
- g2ap7e+9aOk18KXRU/Wow4QhhdenoS4=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding;
+ bh=p07RHNvWzcBrZLANCifZrsrSFZCVpN3ffkhLC49rsmk=;
+ b=J6rlVBopKpKI4ibq/zxcVrrSdPFWfqw7GOERsVcU7jUfSv+GE3i3a9vISmSieWmnPVDIDz
+ Sxwf+U3DUegFYAILEOL78LPM34VEPD5lzshPW/trdWI9WYXKtu1cJpcG57I1yZBETRqgLV
+ EedH9B49kNhsjVvGhh+s15APmuapOrw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-344-xWd4BR3yNwyQftOvk7QERQ-1; Mon, 13 Dec 2021 07:32:05 -0500
-X-MC-Unique: xWd4BR3yNwyQftOvk7QERQ-1
-Received: by mail-wm1-f69.google.com with SMTP id
- j193-20020a1c23ca000000b003306ae8bfb7so9551658wmj.7
- for <qemu-trivial@nongnu.org>; Mon, 13 Dec 2021 04:32:04 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=8iSkI/RqpaM6zm0BQ+1s6DC9YFouhPAlAVjjFNYP8cI=;
- b=4t2XwN5Bezcc1WT4sE0YsAdXPhu+YCpFusglwF9KBFwtKE/YRBq/wXll/VqK9s3Pko
- mWLXnowGXWTM9wdm/0CAwYvvci5/cMTrvUQlWfgm09yXWke1fdZmPgPjEpWEIceV6uCo
- 926PxTSSW4Q037TjIahZK/x+KJKfELSZfFHK0QrmyYtNGWG3XR6M+74wzeiy4k0JbPR8
- djxJXDUuXkGvpAj8GtMBtOCUZcFU8e6DNPIFo6aXNNrGllK/13mNUdsREAjzxDxTziPn
- 0cfy+JuwNilS0j6VbEFSAlI3iEhEkU5ae7GLQEWKi09A+6G+PgbotiQKvsD3Vnh6S3fi
- QwpA==
-X-Gm-Message-State: AOAM533PA1Hx3z8IapXZkZibRFnrEG6elftx1sFMfXuTIA9Ge2PnB9zL
- nEf8ab9rq1YZnx/D/SaALKCMBikbAINgMkQOiqI9vOIN/36NoLfUfpTUmK2broMLmUHwtzVs99d
- SXHkvyYtu6t60XQvKcQ==
-X-Received: by 2002:a5d:45c4:: with SMTP id b4mr31228783wrs.222.1639398723943; 
- Mon, 13 Dec 2021 04:32:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxpBiLMEuOIFG5Vw8c6vkjmqoxXccGu1ATa4uR82V3Tc154RZgOrP0rAz4QwDTCywf/WhFPDg==
-X-Received: by 2002:a5d:45c4:: with SMTP id b4mr31228752wrs.222.1639398723775; 
- Mon, 13 Dec 2021 04:32:03 -0800 (PST)
-Received: from [192.168.50.34] (static-180-27-86-188.ipcom.comunitel.net.
- [188.86.27.180])
- by smtp.gmail.com with ESMTPSA id l9sm9183765wrs.101.2021.12.13.04.32.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Dec 2021 04:32:03 -0800 (PST)
-Message-ID: <32c7c66b-304e-6dd7-d1c8-785ea86c1dee@redhat.com>
-Date: Mon, 13 Dec 2021 13:32:01 +0100
+ us-mta-124-dm6_btJrOti4zJOz2HuW9g-1; Wed, 15 Dec 2021 03:24:28 -0500
+X-MC-Unique: dm6_btJrOti4zJOz2HuW9g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 86FF439391;
+ Wed, 15 Dec 2021 08:24:27 +0000 (UTC)
+Received: from thuth.com (dhcp-192-183.str.redhat.com [10.33.192.183])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C325F2AA9D;
+ Wed, 15 Dec 2021 08:24:18 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ libvir-list@redhat.com, Gerd Hoffmann <kraxel@redhat.com>,
+ John Snow <jsnow@redhat.com>
+Subject: [PATCH] qemu-options: Remove the deprecated -no-quit option
+Date: Wed, 15 Dec 2021 09:24:17 +0100
+Message-Id: <20211215082417.180735-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH-for-6.2 0/2] hw/scsi/megasas: Avoid overflowing the SGL
- buffer
-To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Bandan Das <bsd@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Darren Kenny <darren.kenny@oracle.com>, Fam Zheng <fam@euphon.net>,
- Alexander Bulekov <alxndr@bu.edu>, Paolo Bonzini <pbonzini@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>, qemu-block@nongnu.org,
- Hannes Reinecke <hare@suse.com>
-References: <20211119201141.532377-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <20211119201141.532377-1-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -75
-X-Spam_score: -7.6
-X-Spam_bar: -------
-X-Spam_report: (-7.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.713,
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.719,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-4.093, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,16 +69,102 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Dec 2021 12:32:10 -0000
+X-List-Received-Date: Wed, 15 Dec 2021 08:24:43 -0000
 
-Too late for 6.2 now, so Cc'ing qemu-trivial (series reviewed).
+This option was just a wrapper around the -display ...,window-close=off
+parameter, and the name "no-quit" is rather confusing compared to
+"window-close" (since there are still other means to quit the emulator),
+so let's remove this now.
 
-On 11/19/21 21:11, Philippe Mathieu-Daudé wrote:
-> Fix issue #521 reported by Alex some months ago:
-> https://gitlab.com/qemu-project/qemu/-/issues/521
-> 
-> Philippe Mathieu-Daudé (2):
->   hw/scsi/megasas: Fails command if SGL buffer overflows
->   tests/qtest/fuzz-megasas-test: Add test for GitLab issue #521
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ docs/about/deprecated.rst       | 6 ------
+ docs/about/removed-features.rst | 7 +++++++
+ qemu-options.hx                 | 8 --------
+ softmmu/vl.c                    | 8 +-------
+ 4 files changed, 8 insertions(+), 21 deletions(-)
+
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 7f12f53713..6f85afdee4 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -134,12 +134,6 @@ specified.
+ Use ``-display sdl,window-close=...`` instead (i.e. with a minus instead of
+ an underscore between "window" and "close").
+ 
+-``-no-quit`` (since 6.1)
+-''''''''''''''''''''''''
+-
+-The ``-no-quit`` is a synonym for ``-display ...,window-close=off`` which
+-should be used instead.
+-
+ ``-alt-grab`` and ``-display sdl,alt_grab=on`` (since 6.2)
+ ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ 
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index f92b8bd738..380a1b30ea 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -330,6 +330,13 @@ RISC-V firmware not booted by default (removed in 5.1)
+ QEMU 5.1 changes the default behaviour from ``-bios none`` to ``-bios default``
+ for the RISC-V ``virt`` machine and ``sifive_u`` machine.
+ 
++``-no-quit`` (removed in 7.0)
++'''''''''''''''''''''''''''''
++
++The ``-no-quit`` was a synonym for ``-display ...,window-close=off`` which
++should be used instead.
++
++
+ QEMU Machine Protocol (QMP) commands
+ ------------------------------------
+ 
+diff --git a/qemu-options.hx b/qemu-options.hx
+index ae2c6dbbfc..e2b73f6e5d 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2002,14 +2002,6 @@ SRST
+     ``-display sdl,grab-mod=rctrl`` instead.
+ ERST
+ 
+-DEF("no-quit", 0, QEMU_OPTION_no_quit,
+-    "-no-quit        disable SDL/GTK window close capability (deprecated)\n", QEMU_ARCH_ALL)
+-SRST
+-``-no-quit``
+-    Disable window close capability (SDL and GTK only). This option is
+-    deprecated, please use ``-display ...,window-close=off`` instead.
+-ERST
+-
+ DEF("sdl", 0, QEMU_OPTION_sdl,
+     "-sdl            shorthand for -display sdl\n", QEMU_ARCH_ALL)
+ SRST
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 620a1f1367..163ab355f5 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -1938,7 +1938,7 @@ static void qemu_create_early_backends(void)
+                      "for SDL, ignoring option");
+     }
+     if (dpy.has_window_close && !use_gtk && !use_sdl) {
+-        error_report("-no-quit is only valid for GTK and SDL, "
++        error_report("window-close is only valid for GTK and SDL, "
+                      "ignoring option");
+     }
+ 
+@@ -3298,12 +3298,6 @@ void qemu_init(int argc, char **argv, char **envp)
+                 warn_report("-ctrl-grab is deprecated, please use "
+                             "-display sdl,grab-mod=rctrl instead.");
+                 break;
+-            case QEMU_OPTION_no_quit:
+-                dpy.has_window_close = true;
+-                dpy.window_close = false;
+-                warn_report("-no-quit is deprecated, please use "
+-                            "-display ...,window-close=off instead.");
+-                break;
+             case QEMU_OPTION_sdl:
+                 warn_report("-sdl is deprecated, use -display sdl instead.");
+ #ifdef CONFIG_SDL
+-- 
+2.27.0
 
 
