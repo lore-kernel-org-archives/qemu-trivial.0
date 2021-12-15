@@ -1,78 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mxRXE-0007WY-3Z
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Dec 2021 05:29:20 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37640)
+	id 1mxRYe-0000pe-Hr
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Dec 2021 05:30:49 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38042)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mxRXC-0007SI-6v; Wed, 15 Dec 2021 05:29:18 -0500
-Received: from [2a00:1450:4864:20::435] (port=46723
- helo=mail-wr1-x435.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mxRXA-0006fU-OS; Wed, 15 Dec 2021 05:29:17 -0500
-Received: by mail-wr1-x435.google.com with SMTP id i22so7509203wrb.13;
- Wed, 15 Dec 2021 02:29:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=pM1Uem9tzwudfYAnplI4hmjxJCfT6aC2a3RRoXBbF14=;
- b=Wi5ol8nQPVO6REB7eNMY2HCa+i19VmmgjPKTccvXMnyqCEekleq8TZTZxQmoyXjOe3
- ry8iIrXx1xcWbNbL2oeifK6t2enausS8sttvti4bnMQXEtFGliMEkSvfTFAzQXcGLd0N
- 0NLSECVp76PclJ6PuXHpcOnjn9Wsy36sQ0b9HdX2qDOgj5YfoJ0nAhKkwcFlH2l6xpBl
- VFn5HE59tyT8kjStv3zpX82J0LuJXMGf43NCVu8BS+FQdKJ7g7LcpNTR8EQyyZyBddz5
- aNQbybtJg1UUh0/u6AFxMqGogdgIOYklGVfI38NnQFPi+pK/J8G+BSuh7AaJPBm/F5oH
- 1pVA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mxRYW-0000lp-K3
+ for qemu-trivial@nongnu.org; Wed, 15 Dec 2021 05:30:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:32490)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1mxRYR-0006wh-Ty
+ for qemu-trivial@nongnu.org; Wed, 15 Dec 2021 05:30:38 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1639564234;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jKQ+OeMlfGg92wQxaTuSfGSP91d1mpGx717OSXPoNJk=;
+ b=QOSpMRMVBMikJZC3Rto58Cv5jT0geMLQNB7nUUgnkhzdItehdvbFeGyvbaqIVZyYRw5cd8
+ JorherStvRqDuTfBnaca4n2fjF1bt8x+9zV0wlgYo70ZlXz+5QLfJ4ObhP5Z54R85WSiu9
+ WhMcUvdykd8Xd7Z67MyVqMf/iYzzFYE=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-91-gGjnUzyON0extYKIuftM7A-1; Wed, 15 Dec 2021 05:30:33 -0500
+X-MC-Unique: gGjnUzyON0extYKIuftM7A-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ f13-20020adfe90d000000b001a15c110077so992543wrm.8
+ for <qemu-trivial@nongnu.org>; Wed, 15 Dec 2021 02:30:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:from:to:cc:references:in-reply-to
  :content-transfer-encoding;
- bh=pM1Uem9tzwudfYAnplI4hmjxJCfT6aC2a3RRoXBbF14=;
- b=p7IPYuJpzzSDcnKjfs8f57LLR9rCHpaIP3rIQ4hCZSZvlxV6TnU3l0OQNI1JAyIirE
- nrZXfg82Pi5qh7GSeGir3/j/j2rN1Blge8RUeDjDf2Kvb+FR6XDBm9HTOY+sxjw0dgyM
- /ire54zH/S3fyO31MoBxLJD9RByNEo8bzq6Rk+5sRhj7CihZ/F9Dkh+Y2Ui5CQ3mhId4
- 5awZonhNuAYw/a98ccpJQEg+6aYkW+xCwvRwdtfEB/maGyOu5pgOJHkvcE5Gb/vyWImi
- 27UddEzqmkW9ep40HqNOmilT7PlZYqiZfooBy+s+2/sroxuKG5nYJv4h9v3VX/0n0WdV
- S6Ug==
-X-Gm-Message-State: AOAM533KIjej2VD86PCZE5qO5JJ/AhHKN+OA0dMbkPC72jJvWCB/EPom
- INKqFeu3Ge2oYWh9ryl22nTo5hAfrNw=
-X-Google-Smtp-Source: ABdhPJwHJ4ETXoGbpKjEY4THceFaIRZzP9gMozZlvz58JEsnsyt4xUT3yK09w9gZMZLmE/vdEGSdmg==
-X-Received: by 2002:adf:f10f:: with SMTP id r15mr3678929wro.553.1639564154771; 
- Wed, 15 Dec 2021 02:29:14 -0800 (PST)
+ bh=jKQ+OeMlfGg92wQxaTuSfGSP91d1mpGx717OSXPoNJk=;
+ b=vSu66KNtglRZeMVzvss5ljBwXjvFgJBMzRo6vgHWxTayXd5OW22yVsYnivfevBjNdt
+ lqsul6ss+6vxiOjs1/0CGk8/pnkp9QJCQIGZ+E9z9vI6oAlkpALtxOfbQ1xwhcEYmvxr
+ qmOgv3IWyx2iNujKNJgdlywfPlRH9SJUll6vzzbwnLvnBE+EVo6meH9Iu7K1xpGbafT9
+ kCRCzET3jvwOa1uJPuyq1GDgzEkFzjpTqaQTw9UY4XqKX8jeZYr7EgHXFTlRvnshAI9J
+ X8iIMj6Bn88L2XPJNy9qMsMVUA0btzf3q87VxdKOroZqVYGWpG7Hcp4Na8+3poST3qFD
+ UYcw==
+X-Gm-Message-State: AOAM531781DtIZWW69QYO56EbIKrrMe9zAihcDF3Nhbosv9GQErZcH6Y
+ Znxuaf4GcvLJ1qpMnpTLQW+RvwEy9CuPJlDzVf/P3g8Lr/C8lKBz7NzCydun+EsFAcHUZMMF3BA
+ 4Wr4CS9yc+lecZqYu5w==
+X-Received: by 2002:a05:600c:3d94:: with SMTP id
+ bi20mr3999167wmb.83.1639564232036; 
+ Wed, 15 Dec 2021 02:30:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzIaTfb+eIRm0nQSKotF+yz4btqhVac7f1hQswsSJoJ/ZUJK0wsMDgXj2Jft+EBqAH1ndcPxw==
+X-Received: by 2002:a05:600c:3d94:: with SMTP id
+ bi20mr3999140wmb.83.1639564231832; 
+ Wed, 15 Dec 2021 02:30:31 -0800 (PST)
 Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
  [83.50.185.174])
- by smtp.gmail.com with ESMTPSA id m6sm2059037wrp.34.2021.12.15.02.29.13
+ by smtp.gmail.com with ESMTPSA id a1sm1548599wru.113.2021.12.15.02.30.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Dec 2021 02:29:14 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <c411d129-cbb8-42e1-08fc-c10b081aae03@amsat.org>
-Date: Wed, 15 Dec 2021 11:29:13 +0100
+ Wed, 15 Dec 2021 02:30:31 -0800 (PST)
+Message-ID: <50433e39-83ce-8307-1039-9e3224d4d436@redhat.com>
+Date: Wed, 15 Dec 2021 11:30:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH] hw/scsi: Fix scsi_bus_init_named() docstring
+Subject: Re: [PATCH-for-6.2 0/2] hw/scsi/megasas: Avoid overflowing the SGL
+ buffer
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
+ qemu-block@nongnu.org
+Cc: Bandan Das <bsd@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, Fam Zheng <fam@euphon.net>,
+ Alexander Bulekov <alxndr@bu.edu>, Paolo Bonzini <pbonzini@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>, Hannes Reinecke <hare@suse.com>
+References: <20211119201141.532377-1-philmd@redhat.com>
+ <32c7c66b-304e-6dd7-d1c8-785ea86c1dee@redhat.com>
+In-Reply-To: <32c7c66b-304e-6dd7-d1c8-785ea86c1dee@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20211122104744.1051554-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211122104744.1051554-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::435
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.64,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.719,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.64, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -86,34 +101,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Dec 2021 10:29:18 -0000
+X-List-Received-Date: Wed, 15 Dec 2021 10:30:43 -0000
 
-Hi Laurent,
+ping?
 
-This patch is reviewed, can it go via your trivial tree?
+On 12/13/21 13:32, Philippe Mathieu-Daudé wrote:
+> Too late for 6.2 now, so Cc'ing qemu-trivial (series reviewed).
+> 
+> On 11/19/21 21:11, Philippe Mathieu-Daudé wrote:
+>> Fix issue #521 reported by Alex some months ago:
+>> https://gitlab.com/qemu-project/qemu/-/issues/521
+>>
+>> Philippe Mathieu-Daudé (2):
+>>   hw/scsi/megasas: Fails command if SGL buffer overflows
+>>   tests/qtest/fuzz-megasas-test: Add test for GitLab issue #521
 
-On 11/22/21 11:47, Philippe Mathieu-Daudé wrote:
-> Commit 739e95f5741 ("scsi: Replace scsi_bus_new() with
-> scsi_bus_init(), scsi_bus_init_named()") forgot to rename
-> scsi_bus_init() in the function documentation string.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/scsi/scsi.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/scsi/scsi.h b/include/hw/scsi/scsi.h
-> index a567a5ed86b..2ef80af6dca 100644
-> --- a/include/hw/scsi/scsi.h
-> +++ b/include/hw/scsi/scsi.h
-> @@ -158,7 +158,7 @@ struct SCSIBus {
->   * provided by the caller. It is the caller's responsibility to make
->   * sure that name does not clash with the name of any other bus in the
->   * system. Unless you need the new bus to have a specific name, you
-> - * should use scsi_bus_new() instead.
-> + * should use scsi_bus_init() instead.
->   */
->  void scsi_bus_init_named(SCSIBus *bus, size_t bus_size, DeviceState *host,
->                           const SCSIBusInfo *info, const char *bus_name);
-> 
 
