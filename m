@@ -1,72 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mxRU2-00020G-KR
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Dec 2021 05:26:03 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37074)
+	id 1mxRWW-0006hV-RU
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Dec 2021 05:28:36 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mxRU0-0001xa-Qp; Wed, 15 Dec 2021 05:26:00 -0500
-Received: from [2a00:1450:4864:20::32c] (port=37421
- helo=mail-wm1-x32c.google.com)
+ id 1mxRWU-0006ci-K7; Wed, 15 Dec 2021 05:28:34 -0500
+Received: from [2a00:1450:4864:20::42d] (port=37473
+ helo=mail-wr1-x42d.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1mxRTv-0006K6-AL; Wed, 15 Dec 2021 05:25:59 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- k37-20020a05600c1ca500b00330cb84834fso18161086wms.2; 
- Wed, 15 Dec 2021 02:25:53 -0800 (PST)
+ id 1mxRWS-0006ag-Ns; Wed, 15 Dec 2021 05:28:34 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id t26so994737wrb.4;
+ Wed, 15 Dec 2021 02:28:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=+AA8L+lmPS4Y8CfZ5titB/nnVN7X7WdAbSVCwQErl50=;
- b=awIoh5lWFe7z+GHvRVpSKCrTnBYYuCLtv/GILR/UcmpVQGZU0i5JsVQVztEy3d7U3B
- DInxFOOZPX1wOmAMCToeI7wvqq5TvsTIYoNQe3qrBwzxiJjS79YSdh5xpYlOUHt9Pkgm
- qNwG7/c5rtTkpaMVqf50u7J/dzSHTYJi00Gve85j3loUUwmU/g90VxK4vY/LIIoZO/um
- grZj4s3MuMaqF1K5AO6ED66ZFUqaHMJBY7JD4bYnZOygzHp1i2wyJJ87rDxZ17SmZpCh
- qgruFpEW+X6+CULZcugrubJA1AXa1yJfHdlTsOC9i1s47SvEAnTa45JsMk6wo3VIxl1W
- pbHw==
+ bh=QwkEHXiosJIaS+OyAADBU7K8nwRx957nZ9Du90mUYm8=;
+ b=R3jRLUeoF3OEBLoJ/qSh3ID/XDXQbXjffvw46UMFnl47wnKeDHnsZBkIZ5E6shuSIQ
+ 1Pd0IevFUFNlpNFcUm7Ji43SsAfIjYn3FVCHL/eHmVPvH3fZTWfz4HkKTK0k/VElSvhY
+ O2pxtfm8Z40KctIK5UXEKRE1xBF6MmrolD1eayP1WRA4+54bFdxFhwYZq9TYJZyyO3Fd
+ JYzNFUvxVPVXJkd27V7prS5mbqPRDKZw3low9I9BuEN+JXp0FLZtDPNq7LXST65NlYYN
+ LP1Ga4J7UviLp94XswBAgKR2U9bv/vIECCBYRUF+h1HeUEmR5mpnpFT2dYv9Z1qtQzE+
+ u72Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=+AA8L+lmPS4Y8CfZ5titB/nnVN7X7WdAbSVCwQErl50=;
- b=08lWzP3emRp6yoaK+C19O7uX8y4mlheL/dJ9mu/iiRK8DC4gY5aX9kuPmeeso+mc1g
- VhkZt6krQ9JE9zWT9H4P3yqLBEr7PXaFF6oiY01ryorLDpVNRCpdmz5G0MRjjhqnaB1H
- gB6YOJ00xzpEoQj8wtU2Q8NkJOVoTPJDj52ExlaLGwBLf38kDguiscjtAI1jmpr7LfWV
- 9zOQDl/5iqZdBwaF1k7xkEmAFbDpjGJkA/1V8t5Ct5UeizjBy0/Xs7WSWMBLFfhq+qxa
- AAG0PYJ/sqG38BPGyXlb33ImXP/DLBxyN6+6JD265YkVYO//SdOrmV0WbcRjS7uv+kWo
- +iUg==
-X-Gm-Message-State: AOAM531BVT27+ebFjU2rABluqC4nByim3Y6z1nO2duxXXOU1rvOR0PM8
- po5Bf1WD4QgsVKLunsUK713gTKTA2cc=
-X-Google-Smtp-Source: ABdhPJy7kvUX6dw/8YAh0wf79Rsn+bzKTrNspTJhIaz4VYLuxAKqeDbN+DgL9mdXz9IPHeGe1AjJeQ==
-X-Received: by 2002:a1c:7908:: with SMTP id l8mr3917841wme.16.1639563952545;
- Wed, 15 Dec 2021 02:25:52 -0800 (PST)
+ bh=QwkEHXiosJIaS+OyAADBU7K8nwRx957nZ9Du90mUYm8=;
+ b=mUTa0wHHj4D71RNno7DeQnsnGOenVeKSzRLT+yL0TMiD6a9IZ8P08dZIU+aoouM+rk
+ CxiPxnHBsOBZFdopX2XPi6D+wPdWOI4n8B0tbYVdtrABnPHZZTDyzBuI/wsnsjOPfHiQ
+ lPgg1GtEsipe1h71ri6sbENk/adXaR6zk5hb1X9cajJYNC9JIrARJOANs/rYEMZKU8un
+ rp8T7NKlN3OJ/2WsiZoC1/tIdREEcnS/n+0aZrvX5/BxPMQUkMy18FzBpF8Rax+lPTsO
+ 4HgPHSNZWIykUB5cGpMCw1rKSdREtR3x+caxcGU+FXz1//i39uGsiZybAsWHfBPc5HQc
+ AKaQ==
+X-Gm-Message-State: AOAM5331KySbEJZIQU9yM0PgaoI18zYr5E16MGxDkyI1eaoEKQt5cdm1
+ 5I9RAkq9X5BZOk9gKT0oiwTknl8+oR0=
+X-Google-Smtp-Source: ABdhPJyrDiZlFEK6sXtd1rUvM9sKBgPlTRYZEEbkrbw/tXpAzwax1D1+TetSQ+AgstvCUmyCeVmf3A==
+X-Received: by 2002:a5d:4ece:: with SMTP id s14mr3886173wrv.371.1639564110565; 
+ Wed, 15 Dec 2021 02:28:30 -0800 (PST)
 Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
  [83.50.185.174])
- by smtp.gmail.com with ESMTPSA id o12sm1246483wrv.76.2021.12.15.02.25.51
+ by smtp.gmail.com with ESMTPSA id 10sm1933866wrb.75.2021.12.15.02.28.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Dec 2021 02:25:51 -0800 (PST)
+ Wed, 15 Dec 2021 02:28:29 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <0b08d0ca-7a72-9332-ff3d-df8901416a94@amsat.org>
-Date: Wed, 15 Dec 2021 11:25:50 +0100
+Message-ID: <cea68742-6f9b-02c5-a705-2231d7efb6c7@amsat.org>
+Date: Wed, 15 Dec 2021 11:28:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH] hw/avr: Realize AVRCPU qdev object using qdev_realize()
+Subject: Re: [PATCH] hw/misc/auxbus: Improve aux_bus_init() docstring
 Content-Language: en-US
 To: qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Markus Armbruster <armbru@redhat.com>
-References: <20211205224109.322152-1-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20211122104831.1052063-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211205224109.322152-1-f4bug@amsat.org>
+In-Reply-To: <20211122104831.1052063-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42d
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -22
 X-Spam_score: -2.3
 X-Spam_bar: --
@@ -87,34 +86,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Dec 2021 10:26:01 -0000
+X-List-Received-Date: Wed, 15 Dec 2021 10:28:35 -0000
 
-Hi Laurent,
+Cc'ing Peter for documentation review.
 
-This patch is reviewed, can it go via your trivial tree?
-
-On 12/5/21 23:41, Philippe Mathieu-Daudé wrote:
-> TYPE_AVR_CPU inherits TYPE_CPU, which itself inherits TYPE_DEVICE.
-> TYPE_DEVICE instances are realized using qdev_realize(), we don't
-> need to access QOM internal values.
+On 11/22/21 11:48, Philippe Mathieu-Daudé wrote:
+> Mention in aux_bus_init() docstring that the AUXBus
+> is not simply initialized, it is also allocated.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/avr/atmega.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/hw/misc/auxbus.h | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
 > 
-> diff --git a/hw/avr/atmega.c b/hw/avr/atmega.c
-> index 0608e2d475e..a34803e6427 100644
-> --- a/hw/avr/atmega.c
-> +++ b/hw/avr/atmega.c
-> @@ -233,7 +233,7 @@ static void atmega_realize(DeviceState *dev, Error **errp)
+> diff --git a/include/hw/misc/auxbus.h b/include/hw/misc/auxbus.h
+> index b05799d2f7a..bd8612018a7 100644
+> --- a/include/hw/misc/auxbus.h
+> +++ b/include/hw/misc/auxbus.h
+> @@ -85,7 +85,8 @@ struct AUXSlave {
+>  };
 >  
->      /* CPU */
->      object_initialize_child(OBJECT(dev), "cpu", &s->cpu, mc->cpu_type);
-> -    object_property_set_bool(OBJECT(&s->cpu), "realized", true, &error_abort);
-> +    qdev_realize(DEVICE(&s->cpu), NULL, &error_abort);
->      cpudev = DEVICE(&s->cpu);
+>  /**
+> - * aux_bus_init: Initialize an AUX bus.
+> + * aux_bus_init:
+> + * Create an AUX bus on the heap.
+>   *
+>   * Returns the new AUX bus created.
+>   *
+> @@ -101,7 +102,7 @@ AUXBus *aux_bus_init(DeviceState *parent, const char *name);
+>   */
+>  void aux_bus_realize(AUXBus *bus);
 >  
->      /* SRAM */
+> -/*
+> +/**
+>   * aux_request: Make a request on the bus.
+>   *
+>   * Returns the reply of the request.
+> @@ -115,7 +116,7 @@ void aux_bus_realize(AUXBus *bus);
+>  AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
+>                                uint8_t len, uint8_t *data);
+>  
+> -/*
+> +/**
+>   * aux_get_i2c_bus: Get the i2c bus for I2C over AUX command.
+>   *
+>   * Returns the i2c bus associated to this AUX bus.
+> @@ -124,7 +125,7 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
+>   */
+>  I2CBus *aux_get_i2c_bus(AUXBus *bus);
+>  
+> -/*
+> +/**
+>   * aux_init_mmio: Init an mmio for an AUX slave.
+>   *
+>   * @aux_slave The AUX slave.
+> @@ -132,7 +133,8 @@ I2CBus *aux_get_i2c_bus(AUXBus *bus);
+>   */
+>  void aux_init_mmio(AUXSlave *aux_slave, MemoryRegion *mmio);
+>  
+> -/* aux_map_slave: Map the mmio for an AUX slave on the bus.
+> +/**
+> + * aux_map_slave: Map the mmio for an AUX slave on the bus.
+>   *
+>   * @dev The AUX slave.
+>   * @addr The address for the slave's mmio.
 > 
 
