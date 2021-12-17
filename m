@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1myAv8-0007dY-7Q
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 05:57:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45782)
+	id 1myAxv-0003nE-QZ
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 05:59:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46170)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myAv6-0007aR-VN; Fri, 17 Dec 2021 05:57:00 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:44243)
+ id 1myAxu-0003k3-8P; Fri, 17 Dec 2021 05:59:54 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:53381)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myAv5-0006RX-08; Fri, 17 Dec 2021 05:57:00 -0500
+ id 1myAxs-0006fv-JR; Fri, 17 Dec 2021 05:59:53 -0500
 Received: from [192.168.100.1] ([82.142.30.186]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N8XDT-1mThhG2h9d-014VqR; Fri, 17 Dec 2021 11:56:47 +0100
-Message-ID: <af2c49ea-69c8-32cd-0cf0-571640ab3cb6@vivier.eu>
-Date: Fri, 17 Dec 2021 11:56:44 +0100
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MmU9X-1mGYUD0Swb-00iQ9O; Fri, 17 Dec 2021 11:59:36 +0100
+Message-ID: <0cc480da-aa6d-d0ab-7c91-f2b6df41ea23@vivier.eu>
+Date: Fri, 17 Dec 2021 11:59:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH v3 24/28] tests/qtest: Replace g_memdup() by g_memdup2()
+Subject: Re: [PATCH v3 00/28] glib: Replace g_memdup() by g_memdup2()
 Content-Language: fr
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+ qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>,
@@ -34,36 +34,36 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Kevin Wolf <kwolf@redhat.com>,
  Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  "Daniel P . Berrange" <berrange@redhat.com>, Hanna Reitz
- <hreitz@redhat.com>, qemu-ppc@nongnu.org, Paolo Bonzini
- <pbonzini@redhat.com>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+ <hreitz@redhat.com>, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 References: <20210903174510.751630-1-philmd@redhat.com>
- <20210903174510.751630-25-philmd@redhat.com>
+ <697323f3-0d82-2c7f-3c54-a0f38d93615f@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20210903174510.751630-25-philmd@redhat.com>
+In-Reply-To: <697323f3-0d82-2c7f-3c54-a0f38d93615f@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:SL+pO6j1OrP191s1v9vkjW0/R5XANarHdOJfeNnG49iHt5V016K
- gLJwacv0PQi+V1s4xBClosJoXy+AeVKrozPZKzKYMKv8Y8KZ/g45+oMkP+GaGmU983Dw2dp
- 63z/PRGnWKTwaOIKQLx93w6vIzNzw8pDftQQffakIdKhufPY6dyDqVp/uGG+c8uSD+QKPxM
- V4tH8LpzyMv2bfGvN5lYg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Q+CKb5EiIDg=:dYE43IFdu0ii7IOli4vLu2
- w7guNIWC3qacK9naUD/v2GcfYTqr6w4pBfIiFPTVvc69DDonAjxNjfbXSQwEWG8Tl7kdNVPnR
- 1BM6Q2+LN9lL4x7PlsGO++T1p4n331kN9BGzZKS36XuTRXEY+oV6S68spu/UNqDZPqDPFPMLr
- R9e0HONYFkMCjtbCKa4m8lpO9BmMlM8i6tUnDF9c60Kq9cQsgCN518Y+TrRG1FXXWiQKRzeyZ
- KTqVCpxkeakAF2MQGC3U8uFB+yYsAVBDvDsHID35WDr9NXXAaeudNk06EFCMHF2xL6hvcyCuC
- u4q/Y8QO4/sXGsySyZQ/lLQOBM5hznQxFl6SKouKW1ibE5RxdgpsjEHVbt+m3eNESQEU3bc/8
- LD4a8wnR1Wz+qjgs5XILdhZA0VNWLnpt7eRb/CqlIJVHskebURXFungHYjtmIORLf/tDfiiz3
- dnOWNIQKASR+d7TSG+nx60olHlmxljt2Vdh7QuSt8SLK/2rP7KJJFGQK6PsKIk5/59kwtrbqO
- 9zNfmLOVWG1zmtIanlFtElOb0ri0CfeHC96JIG+SM+pQ0MEoplYQkU863djEk24MJLbXuT+WT
- RyOufvE2yFh3HMIGq8ksT3abiAp8yPSSjCSx12FM3ABq89EQ7ND4DSeBUfw51gLR4xSZhfow/
- E+f1hy8LZ0SLv4PW/978IBDPi8a/SZ595vhqx+TnIhhgxG5gyq5+WVBG+tDBJvIY2Aa8=
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:5XS31+n5lZ7ddrgxHNrvM4qnHivM5umP6pYcBSGt/TheNYM6DQc
+ xlKjNMOMKJYbV1wgb0i/MB5URP/fzr5HvCTy9OIRJXwXnoywfwkTpat272v9zTwJltXrF8s
+ 1lN9Qe0W6mGH2i1RgB97UN2hCKwpDVRN0qb0ZpmhQUi3cnFSkmL7wHv+ItRrSvSBKq8Y1BP
+ l2b93x01QKCJhjarD2pHQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+qUylvyHy0c=:u0wFTS+mA/IBULKzNfebzN
+ 0eQHaffALNfpesYKZrPEGSzQEnBFTPb9pxjIsz9KhgB4cxzxvTGlYDgXGb1HnaVlm6Lby6s7g
+ tC4u9/kIHsgL8nq7HeaC3rbCvB417mFapANqJP2FRehsKdyWEiA7fWMNd0nrwmW/UTPVrQG3y
+ q65InHGoDkXNVf2JNsfssXrCQ+fnh4cdL9xK36hEh35Xv06a2ftzn2mZuqtQ6A9RTNkeCAfz8
+ VyedmAg30iD5kThzQOgBltxUzzvH5DLEe+twcLC2/VvPT92vz4zyQecSsSxHMMs/WnNPbI91r
+ kv1V93sOTmDGBZqX8gYwpWE81kgnA821Ska2QVq4sS5UaSjCL2bM4KjHjLj/37hwMg3gl0FVx
+ LRiQssyjqPAdsbczCdIT7EIaqsD/ArmQIm5kOzWBleguUCKl0JbbG3zcsdhAfwv/pVLY68XMA
+ nd8wB+GD2CpetYoo5TDTRn4EAgVreh16PTcnWUsTcSH7GxviIa91wTr5ngr2abJ6nv/oAOPvy
+ M2oqkVEEvCdmeeb3yAI8lZGBGnjyM8ZCDxgOsFQWk72HYrh0G7Ov63eQCeyGiIGAZSY+2JbBo
+ ZPSsxwBB4GbZHFzQJlicogcJz0kV8IZW9bfbtAvH2yWpbeHZBtgWV7uZ8jBp8mOKXqrzVUikQ
+ VEsoe5DRLlSDmtT80VWkfvjCIOZqdJLerTdnK9ZQ/ffpE/hxY2xBlJCv8HKsC6aoJypo=
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.716,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -77,67 +77,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 10:57:01 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 10:59:54 -0000
 
-Le 03/09/2021 à 19:45, Philippe Mathieu-Daudé a écrit :
-> Per https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
+Le 15/12/2021 à 17:54, Philippe Mathieu-Daudé a écrit :
+> Hi Laurent,
 > 
->    The old API took the size of the memory to duplicate as a guint,
->    whereas most memory functions take memory sizes as a gsize. This
->    made it easy to accidentally pass a gsize to g_memdup(). For large
->    values, that would lead to a silent truncation of the size from 64
->    to 32 bits, and result in a heap area being returned which is
->    significantly smaller than what the caller expects. This can likely
->    be exploited in various modules to cause a heap buffer overflow.
+> On 9/3/21 19:44, Philippe Mathieu-Daudé wrote:
 > 
-> Replace g_memdup() by the safer g_memdup2() wrapper.
+>> This series provides the safely equivalent g_memdup2() wrapper,
+>> and replace all g_memdup() calls by it.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->   tests/qtest/libqos/ahci.c   | 6 +++---
->   tests/qtest/libqos/qgraph.c | 2 +-
->   2 files changed, 4 insertions(+), 4 deletions(-)
+>> Philippe Mathieu-Daudé (28):
+>>    hw/hyperv/vmbus: Remove unused vmbus_load/save_req()
+>>    glib-compat: Introduce g_memdup2() wrapper
+>>    qapi: Replace g_memdup() by g_memdup2()
+>>    accel/tcg: Replace g_memdup() by g_memdup2()
+>>    block/qcow2-bitmap: Replace g_memdup() by g_memdup2()
+>>    softmmu: Replace g_memdup() by g_memdup2()
+>>    hw/9pfs: Replace g_memdup() by g_memdup2()
+>>    hw/acpi: Avoid truncating acpi_data_len() to 32-bit
+>>    hw/acpi: Replace g_memdup() by g_memdup2()
+>>    hw/core/machine: Replace g_memdup() by g_memdup2()
+>>    hw/hppa/machine: Replace g_memdup() by g_memdup2()
+>>    hw/i386/multiboot: Replace g_memdup() by g_memdup2()
+>>    hw/net/eepro100: Replace g_memdup() by g_memdup2()
+>>    hw/nvram/fw_cfg: Replace g_memdup() by g_memdup2()
+>>    hw/scsi/mptsas: Replace g_memdup() by g_memdup2()
+>>    hw/ppc/spapr_pci: Replace g_memdup() by g_memdup2()
+>>    hw/rdma: Replace g_memdup() by g_memdup2()
+>>    hw/vfio/pci: Replace g_memdup() by g_memdup2()
+>>    hw/virtio: Replace g_memdup() by g_memdup2()
+>>    net/colo: Replace g_memdup() by g_memdup2()
+>>    ui/clipboard: Replace g_memdup() by g_memdup2()
+>>    linux-user: Replace g_memdup() by g_memdup2()
+>>    tests/unit: Replace g_memdup() by g_memdup2()
+>>    tests/qtest: Replace g_memdup() by g_memdup2()
+>>    target/arm: Replace g_memdup() by g_memdup2()
+>>    target/ppc: Replace g_memdup() by g_memdup2()
+>>    contrib: Replace g_memdup() by g_memdup2()
+>>    checkpatch: Do not allow deprecated g_memdup(
+> Is it possible to take the reviewed patches 2, 24 and 28
+> via qemu-trivial, so the rest can be merged slowly by
+> each submaintainer?
 > 
-> diff --git a/tests/qtest/libqos/ahci.c b/tests/qtest/libqos/ahci.c
-> index fba3e7a954e..eaa2096512e 100644
-> --- a/tests/qtest/libqos/ahci.c
-> +++ b/tests/qtest/libqos/ahci.c
-> @@ -639,8 +639,8 @@ void ahci_exec(AHCIQState *ahci, uint8_t port,
->       AHCIOpts *opts;
->       uint64_t buffer_in;
->   
-> -    opts = g_memdup((opts_in == NULL ? &default_opts : opts_in),
-> -                    sizeof(AHCIOpts));
-> +    opts = g_memdup2((opts_in == NULL ? &default_opts : opts_in),
-> +                     sizeof(AHCIOpts));
->   
->       buffer_in = opts->buffer;
->   
-> @@ -860,7 +860,7 @@ AHCICommand *ahci_command_create(uint8_t command_name)
->       g_assert(!props->ncq || props->lba48);
->   
->       /* Defaults and book-keeping */
-> -    cmd->props = g_memdup(props, sizeof(AHCICommandProp));
-> +    cmd->props = g_memdup2(props, sizeof(AHCICommandProp));
->       cmd->name = command_name;
->       cmd->xbytes = props->size;
->       cmd->prd_size = 4096;
-> diff --git a/tests/qtest/libqos/qgraph.c b/tests/qtest/libqos/qgraph.c
-> index d1dc4919305..109ff04e1e8 100644
-> --- a/tests/qtest/libqos/qgraph.c
-> +++ b/tests/qtest/libqos/qgraph.c
-> @@ -93,7 +93,7 @@ static void add_edge(const char *source, const char *dest,
->       edge->type = type;
->       edge->dest = g_strdup(dest);
->       edge->edge_name = g_strdup(opts->edge_name ?: dest);
-> -    edge->arg = g_memdup(opts->arg, opts->size_arg);
-> +    edge->arg = g_memdup2(opts->arg, opts->size_arg);
->   
->       edge->before_cmd_line =
->           opts->before_cmd_line ? g_strconcat(" ", opts->before_cmd_line, NULL) : NULL;
 > 
 
-Applied to my trivial-patches branch.
+Done for these 3 patches.
 
 Thanks,
 Laurent
