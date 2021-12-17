@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1my9p5-00083F-UE
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 04:46:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55996)
+	id 1myAD0-0000f4-80
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 05:11:26 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1my9p4-00080H-A9; Fri, 17 Dec 2021 04:46:42 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:53153)
+ id 1myACz-0000ej-7p; Fri, 17 Dec 2021 05:11:25 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:36301)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1my9p2-0005u6-Le; Fri, 17 Dec 2021 04:46:42 -0500
+ id 1myACx-0002S4-Dk; Fri, 17 Dec 2021 05:11:24 -0500
 Received: from [192.168.100.1] ([82.142.30.186]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MBE3k-1mmdDo2U3C-00CmHp; Fri, 17 Dec 2021 10:46:34 +0100
-Message-ID: <8c19cee3-d3ea-6a26-c68f-5195cf9e620a@vivier.eu>
-Date: Fri, 17 Dec 2021 10:46:31 +0100
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N7Qt9-1mQPHc2uk9-017qA5; Fri, 17 Dec 2021 11:11:17 +0100
+Message-ID: <63a9aa27-c7a0-a106-b8f2-a53047d94774@vivier.eu>
+Date: Fri, 17 Dec 2021 11:11:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH v3] hw/virtio/vhost: Fix typo in comment.
-Content-Language: fr
-To: lagarcia@linux.ibm.com, qemu-trivial@nongnu.org
-Cc: Leonardo Garcia <lagarcia@br.ibm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <a10a0ddab65b474ebea1e1141abe0f4aa463909b.1637668012.git.lagarcia@br.ibm.com>
+Subject: Re: [PATCH] device_tree: Fix compiler error
+Content-Language: en-US
+To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20211108200756.1302697-1-sw@weilnetz.de>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <a10a0ddab65b474ebea1e1141abe0f4aa463909b.1637668012.git.lagarcia@br.ibm.com>
+In-Reply-To: <20211108200756.1302697-1-sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JLU0841/ntms43jpLRHDLC0YgftIESBkvoHlnKqL2vbK0DoQBKY
- HXUFB4nE5lZt5jh5tGPHTF9fK3rhrVjIo1ZgZnKlVSrDNja1plEwWX7Xp8BFMsAE4zaRbZg
- dZ2sDmH58Mszm1zou6bvhqdnrz98FZIqJmP6SO3224hHvUTzVScm7q/wiJeuTYdDD+XW1JC
- od3SS7/CgB9sJVMCuHQ3g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:E4XXD0FyMf4=:vQunIvZrImsCYQYcSEw8E7
- fZW1nlWxqzC0+l3wAu88LIF2c+zUdboxNU8muy8umgfsNNocHZcHq5GytfGgQikCPrXn0r3lX
- 6pA8Ts3qzjCtFoG7SvkscqjN9MXcJhhb2IaVe5dQHdfMaSDzWEGAHioXckneZvEmH8EikcHaM
- hXdML0/wmxbWdTqpJMxAlUXmOyIMeJ3ApY4Y+rkoz9NtngLcKaPnA8spy2eDrFmYSSdLapE3V
- lf7p/3c0VrcsvtlMfI0LvNMWH2PEtbEfKzLl7+NmzxvOSABVs61HKEm8B8wjtc+d8E1nhqcCq
- WmQ917TuykE2WbeWM3ETZPx/7Oz+k74FXao91XsYxcg1c3aG0uG/553rGbq+7XPnC1Hwflk/t
- eHkW7TmUYBR34hzHllXktnaGJTDhob4aI98uANMmTIXoyJbMMpiZOjVBTz+b8fT8/pISz5iNo
- RxmWpoMinFELGMKkFUBmerF7nFNVAVUrPZsOLkNlSS0yasSOT3lhLfn99+rcDtgobhnIRZAL4
- HQ+AyTZkJjmRcOf4HgaHOTnxYPFJVVKaAc2XQ1o/4kLQanO5v1lVoSqD6jd+1WVvQtY7p03ob
- UL+1ng/QteddEbU6JmYF8G3OeEIsvcp2/WmwDMPlU+uDE3uzp4MkZMIKLrZSv0iS3UfQX29si
- TmFTSTwMZWefZIxeEuPZ3ZQ50ZS//xfwPsui29SFFJq/VoCbWpFbaYvmVhLJOV5ePZPI=
+X-Provags-ID: V03:K1:Z3dsSa1iU3PoiXe8thnTuK0NSP8F8pVqNWDnmVTFaV2gk4t1HHJ
+ S3BtorzEgGpVItsuEIP9OkT3B28HhvC4Js/la1bMoxjBkxYsuh5CpDOKMAdbuyLvgWtAW0H
+ cTfl/QP160Dbtb5wTjm2RztwX49zr/hbs+W6tvqQVyN9stnl6X8H28SxrhI5zzEr7zfVJ6X
+ plDcLu8OdKReVWzaz/JpQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:dQAgJuVxvj4=:QWVTycz2dQM3g2faK2rb4T
+ 8czXtGicTBrp6MSJFebTwVo6S6IF2fOGeypkNXl/Rj32d9SCrsdoYyCk98weRnvu1HnmPkdht
+ 3cT7a6S60FYE96KWSLfXIS6LmNjCSpmH9hkOkTidOyTILo6DacJMWKJw9nzNJudiMNtSrWOUZ
+ I0PufBiMBKROlmPEgQnVHzJCKJL37zkFIe4X7gmVUfsrAM39ttnOhRL7UBsPqXmfUlVw/S+jl
+ bhDEweupKu2fMWW1BbBJwYXa7WnYfnyrkljXF3vcVDGNytbAeTKcsozXvX6pPZwNAnMLnmxVw
+ ZViqHnxLw3TKUqK1XyQ1Kd5X00MeaKoeemhuFTxdgLlLbGCs10Y6Sl0l/Hcyn+jvN7ERglCIR
+ gff0gkeolvmWJpBvyL5ugPIzk0Vml/2sOBZu2/y/KMqe0XMtsVh/H74/L3gW3FFTqOwYTPPpu
+ hAOJBNOdkhUNsE5CKZMsNVUl9K0njge1dMot5KUDIuEJbZcrZwFZ/olECAUwPhXq7Z92HXIQZ
+ wFaBsfJqA0bVkdlVPzM+IQZbG96rOfOyyz+QD0vDkgsJIqP5PQWkhwrMaR3aRygpppdCpvUVe
+ FWUdUJRJmq9hS6509MDmpKC5otcPPihVN6hUiWbICP+32jghbAxxzso9CQwidWL63V3Vgvojj
+ 8aIPr9jZUhH1GfYMBmhtQfdvbi60E8O8cQo688HFTDg/x+Msvfy/gx/fmcsvdEqMJbu0=
 Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -35
@@ -63,37 +63,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 09:46:42 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 10:11:25 -0000
 
-Le 23/11/2021 à 12:48, lagarcia@linux.ibm.com a écrit :
-> From: Leonardo Garcia <lagarcia@br.ibm.com>
+Le 08/11/2021 à 21:07, Stefan Weil a écrit :
+> A build with gcc (Debian 10.2.1-6) 10.2.1 20210110 fails:
 > 
-> Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ../../../softmmu/device_tree.c: In function ‘qemu_fdt_add_path’:
+> ../../../softmmu/device_tree.c:560:18: error: ‘retval’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>    560 |     int namelen, retval;
+>        |                  ^~~~~~
+> 
+> This is not a real error, but the compiler can be satisfied with a small change.
+> 
+> Fixes: b863f0b75852 ("device_tree: Add qemu_fdt_add_path")
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->   hw/virtio/vhost.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   softmmu/device_tree.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-> index 437347ad01..20913cf8fb 100644
-> --- a/hw/virtio/vhost.c
-> +++ b/hw/virtio/vhost.c
-> @@ -313,7 +313,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
->        * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
->        * incremental memory mapping API via IOTLB API. For platform that
->        * does not have IOMMU, there's no need to enable this feature
-> -     * which may cause unnecessary IOTLB miss/update trnasactions.
-> +     * which may cause unnecessary IOTLB miss/update transactions.
->        */
->       return virtio_bus_device_iommu_enabled(vdev) &&
->              virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
+> diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
+> index 3965c834ca..9e96f5ecd5 100644
+> --- a/softmmu/device_tree.c
+> +++ b/softmmu/device_tree.c
+> @@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
+>           return -1;
+>       }
+>   
+> -    while (p) {
+> +    do {
+>           name = p + 1;
+>           p = strchr(name, '/');
+>           namelen = p != NULL ? p - name : strlen(name);
+> @@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
+>           }
+>   
+>           parent = retval;
+> -    }
+> +    } while (p);
+>   
+>       return retval;
+>   }
 > 
 
-Applied to my trivial-patches branch.
+I think to add a "g_assert_nonull(p);" before the loop would inform the compiler that we always go 
+in the loop and remove the compiler error.
 
 Thanks,
 Laurent
-
-
 
