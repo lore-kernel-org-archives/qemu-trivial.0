@@ -1,78 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1myMnX-0002tB-SW
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 18:37:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52658)
+	id 1myMzP-0002xc-9i
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 18:50:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54580)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1myMnS-0002oi-G7; Fri, 17 Dec 2021 18:37:54 -0500
-Received: from [2a00:1450:4864:20::430] (port=46980
- helo=mail-wr1-x430.google.com)
+ id 1myMzN-0002w5-3Y; Fri, 17 Dec 2021 18:50:13 -0500
+Received: from [2a00:1450:4864:20::436] (port=35343
+ helo=mail-wr1-x436.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1myMnF-0002qI-65; Fri, 17 Dec 2021 18:37:54 -0500
-Received: by mail-wr1-x430.google.com with SMTP id i22so6780545wrb.13;
- Fri, 17 Dec 2021 15:37:39 -0800 (PST)
+ id 1myMzJ-0001dz-8P; Fri, 17 Dec 2021 18:50:12 -0500
+Received: by mail-wr1-x436.google.com with SMTP id j18so6939752wrd.2;
+ Fri, 17 Dec 2021 15:50:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=HOPTAh6m5GDI/CIXJitGyoUDnldaGQ9D0CTfu8psJhM=;
- b=QyIaOkSLFtHICor4cOCoMCJQ7EdRXI4B673RWqLWoOkwC4BQKUxUKjjrWl7/VuJiIF
- GJxOn1rvGx5PzUf+y1mEunpen7x+FZ+47+gxif76HsAOQZX6sqMmjIoaatG9+B+d10PJ
- vMUlUXVCSy+QCQ7rFDxeesveYFjsIhWdrdYxhrpE6RSiD2mbNhvv3Q4xlrSzVtY9bVFl
- B279XoLfly9BEhDcb+YlMBKamxgZTwaHgqpaiRB6cf1/XEKt/5xj82s2IduRjA98NMyj
- FklrAsGAauYDvIdXJoigg9yV4m8wJaVmQCH4+3x6Z7ccpWp3bPmPzO68VKTgZ/JR6gcd
- 7PaQ==
+ bh=Jl5m91Ie2/vr9J2gVOtOAyt4M08ds3qYYa0OkQfjGnA=;
+ b=CYNERAIS6vAmAi/ejtzEj1y8zwbmE2C492851NSdLXWtuExKwP/ljoYyj9hXnf6OlF
+ 8gGmQ/XZQe8FEEWykMUvz7/Hh05smoeR8MUz3uMupDckWLfHZ2JI57jAeneaT8BXwbLP
+ DqTJQ4FhAqWzJe/D2X6oMrp+m1I0KOwPLTJsVdmc0e3j/QJYFmivsdcEjMcLrcSdefnr
+ JTfks1QMC+R4BnYpIRDUkBRL+NBbCcHxR1iP6FJE8XePQbdDRnFqAb3FfAeNQrhaQtny
+ 3w/X0/TR6LZnTgSIQ/fw/qpK+vRRYHa5TBme5QPuZbNG+CQy1/7iDaYvXdW/VekfrW7+
+ ZRWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=HOPTAh6m5GDI/CIXJitGyoUDnldaGQ9D0CTfu8psJhM=;
- b=BQx4eC0CyMWY9/2qpD+6PdX/9gjouZeE1jZB3mf9dOALgLrU/JoyuN+8mgto0HBcKp
- KNWRucD3S71RNBLi/OQreC0BWE72w/ItHvHgAgFIDDQzxc3p+3JFgwwE3vICBZ6v45iv
- FCckEYuN0XALvliJ6Clo66gbn3rJ4A2rIC5eW0v9dEh43NfqESVrTNOnhEBtvzzBSHlC
- ZVbtJRuD9BRc8Mwn0ulFVlr8VqExxi/h1h0GVhb3ukChlst5Oha8SlSIRJNGXbgjIP4o
- vgQzphw1automUJCLbr/exYzjHj/fG7JLyYrY6rBMksgb9L4/x+u9C57qW/mocK5sJHL
- lJrA==
-X-Gm-Message-State: AOAM532FmTgq8XHaV2CZjrxin/Xy6U8OPUqoGj8SmG6EVR3DVOWbJY/G
- oO5o6+AEi8hPC7uiCOifHz448H6cARU=
-X-Google-Smtp-Source: ABdhPJwq+5Zk1c5zJ1GOCFOCUVTI7zgI6tpLzuuR1oyi/ThS+mOaDtbOPirACxHcIaVUidssN8ceXA==
-X-Received: by 2002:adf:e706:: with SMTP id c6mr4295809wrm.228.1639784257719; 
- Fri, 17 Dec 2021 15:37:37 -0800 (PST)
+ bh=Jl5m91Ie2/vr9J2gVOtOAyt4M08ds3qYYa0OkQfjGnA=;
+ b=hs/PpSEUYWeK36ZYpc9h0VnxOpSaRTA5uK78b+HgLkxisTCadRGu8JT3A5bj1GW3YS
+ kLWSc2I7V7pyeRW5JcHIso41duZMFPJCQZCDmpSj/NIcge6lHR7lqDZKEvjm/A09GRth
+ 4KOKzeXmqxYMBMitW5hHK0/XMYWfp9oNFzZAFNHEDx6ieZwQ6DOYJiopP0lo+85cO/zd
+ hXteKMOPW/f5B1dwcVEmOz836QKOZ1SuT2jcCaxIdkIDg3UtIoNVE9/AAFzcKYbZLNym
+ Jo3DBRmD44OXkQDaOqX12WdK4aSDt4qXhmKRci1OzJnuid1A/beJbnmkgAMWoL9mWulR
+ TbxA==
+X-Gm-Message-State: AOAM533wNusVMAR33szFPtNMN+XC67XgwaJKDEyPG9vd5c4hI1i4x8MJ
+ EGjgvYD2ZKZs+q8qfOBmKe0=
+X-Google-Smtp-Source: ABdhPJzJ/PJpIahy01devWISwdKLtKvg+LjFhVR6avzvVLOqPraC3XuplLi+qHEQEvRXcHyB59fGfA==
+X-Received: by 2002:adf:c992:: with SMTP id f18mr4140144wrh.574.1639785007359; 
+ Fri, 17 Dec 2021 15:50:07 -0800 (PST)
 Received: from [192.168.1.36] (174.red-83-50-185.dynamicip.rima-tde.net.
  [83.50.185.174])
- by smtp.gmail.com with ESMTPSA id f19sm13550716wmq.34.2021.12.17.15.37.36
+ by smtp.gmail.com with ESMTPSA id m21sm8507732wrb.2.2021.12.17.15.50.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Dec 2021 15:37:37 -0800 (PST)
+ Fri, 17 Dec 2021 15:50:06 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <8f417138-a3bb-7d07-bda9-db4740550f2f@amsat.org>
-Date: Sat, 18 Dec 2021 00:37:35 +0100
+Message-ID: <1a53c8f2-0f80-c6c2-9a73-0a9575ecc951@amsat.org>
+Date: Sat, 18 Dec 2021 00:50:05 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH] hw/timer/etraxfs_timer: Add vmstate for ETRAX timers
+Subject: Re: [PATCH 3/3] hw/input/pckbd: Rename i8042_setup_a20_line() and its
+ a20 irq argument
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20211106105623.510868-1-f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-trivial@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Eduardo Habkost <ehabkost@redhat.com>
+References: <20211105172127.224462-1-f4bug@amsat.org>
+ <20211105172127.224462-4-f4bug@amsat.org>
+ <CAFEAcA-xNhWGV46SY5K9uChAZWvU44YYgTgXu5wVjKtMq8XTug@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20211106105623.510868-1-f4bug@amsat.org>
+In-Reply-To: <CAFEAcA-xNhWGV46SY5K9uChAZWvU44YYgTgXu5wVjKtMq8XTug@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::436
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
  FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.716,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -86,85 +90,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 23:37:59 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 23:50:13 -0000
 
-ping?
+On 11/22/21 12:14, Peter Maydell wrote:
+> On Fri, 5 Nov 2021 at 17:21, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> 'a20_out' is an input IRQ, rename it as 'a20_input'.
+>> i8042_setup_a20_line() doesn't take a Device parameter
+>> but an ISADevice one. Rename it as i8042_isa_*() to
+>> make it explicit.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  include/hw/input/i8042.h | 2 +-
+>>  hw/i386/pc.c             | 2 +-
+>>  hw/input/pckbd.c         | 4 ++--
+>>  3 files changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
+>> index 1d90432daef..3534fcc4b43 100644
+>> --- a/include/hw/input/i8042.h
+>> +++ b/include/hw/input/i8042.h
+>> @@ -21,6 +21,6 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
+>>                     MemoryRegion *region, ram_addr_t size,
+>>                     hwaddr mask);
+>>  void i8042_isa_mouse_fake_event(ISAKBDState *isa);
+>> -void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
+>> +void i8042_isa_setup_a20_line(ISADevice *dev, qemu_irq a20_input);
+>>
+>>  #endif /* HW_INPUT_I8042_H */
+>> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+>> index 2592a821486..06ef74ca22b 100644
+>> --- a/hw/i386/pc.c
+>> +++ b/hw/i386/pc.c
+>> @@ -1043,7 +1043,7 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl, bool no_vmport)
+>>      port92 = isa_create_simple(isa_bus, TYPE_PORT92);
+>>
+>>      a20_line = qemu_allocate_irqs(handle_a20_line_change, first_cpu, 2);
+>> -    i8042_setup_a20_line(i8042, a20_line[0]);
+>> +    i8042_isa_setup_a20_line(i8042, a20_line[0]);
+> 
+> I think these days we can directly call
+>     qdev_connect_gpio_out_named(DEVICE(i8042), I8042_A20_LINE, 0, a20_line[0]);
+> and drop the i8042_setup_a20_line() wrapper entirely,
+> since the named GPIO lines are a "public" interface to the device.
+> We only have this i8042_setup_a20_line() because the original
+> implementation (added in commit 956a3e6bb738) predates gpio lines
+> and did an assignment into the KBDState struct which needed to
+> be private to pckbd.c.
+> 
+>>      qdev_connect_gpio_out_named(DEVICE(port92),
+>>                                  PORT92_A20_LINE, 0, a20_line[1]);
+> 
+> That would then make it consistent with how we're wiring up the
+> other A20 input source here.
 
-On 11/6/21 11:56, Philippe Mathieu-Daudé wrote:
-> Add the vmstate for the ETRAX timers.
-> This is in theory a migration compatibility break
-> for the 'AXIS devboard 88' CRIS machine.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/timer/etraxfs_timer.c | 34 +++++++++++++++++++++++++++++++++-
->  1 file changed, 33 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
-> index 4ba662190de..139e5b86a44 100644
-> --- a/hw/timer/etraxfs_timer.c
-> +++ b/hw/timer/etraxfs_timer.c
-> @@ -26,6 +26,7 @@
->  #include "hw/sysbus.h"
->  #include "sysemu/reset.h"
->  #include "sysemu/runstate.h"
-> +#include "migration/vmstate.h"
->  #include "qemu/module.h"
->  #include "qemu/timer.h"
->  #include "hw/irq.h"
-> @@ -64,7 +65,7 @@ struct ETRAXTimerState {
->      ptimer_state *ptimer_t1;
->      ptimer_state *ptimer_wd;
->  
-> -    int wd_hits;
-> +    uint32_t wd_hits;
->  
->      /* Control registers.  */
->      uint32_t rw_tmr0_div;
-> @@ -83,6 +84,36 @@ struct ETRAXTimerState {
->      uint32_t r_masked_intr;
->  };
->  
-> +static const VMStateDescription vmstate_etraxfs = {
-> +    .name = "etraxfs",
-> +    .version_id = 0,
-> +    .minimum_version_id = 0,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_PTIMER(ptimer_t0, ETRAXTimerState),
-> +        VMSTATE_PTIMER(ptimer_t1, ETRAXTimerState),
-> +        VMSTATE_PTIMER(ptimer_wd, ETRAXTimerState),
-> +
-> +        VMSTATE_UINT32(wd_hits, ETRAXTimerState),
-> +
-> +        VMSTATE_UINT32(rw_tmr0_div, ETRAXTimerState),
-> +        VMSTATE_UINT32(r_tmr0_data, ETRAXTimerState),
-> +        VMSTATE_UINT32(rw_tmr0_ctrl, ETRAXTimerState),
-> +
-> +        VMSTATE_UINT32(rw_tmr1_div, ETRAXTimerState),
-> +        VMSTATE_UINT32(r_tmr1_data, ETRAXTimerState),
-> +        VMSTATE_UINT32(rw_tmr1_ctrl, ETRAXTimerState),
-> +
-> +        VMSTATE_UINT32(rw_wd_ctrl, ETRAXTimerState),
-> +
-> +        VMSTATE_UINT32(rw_intr_mask, ETRAXTimerState),
-> +        VMSTATE_UINT32(rw_ack_intr, ETRAXTimerState),
-> +        VMSTATE_UINT32(r_intr, ETRAXTimerState),
-> +        VMSTATE_UINT32(r_masked_intr, ETRAXTimerState),
-> +
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static uint64_t
->  timer_read(void *opaque, hwaddr addr, unsigned int size)
->  {
-> @@ -357,6 +388,7 @@ static void etraxfs_timer_class_init(ObjectClass *klass, void *data)
->      ResettableClass *rc = RESETTABLE_CLASS(klass);
->  
->      dc->realize = etraxfs_timer_realize;
-> +    dc->vmsd = &vmstate_etraxfs;
->      rc->phases.enter = etraxfs_timer_reset_enter;
->      rc->phases.hold = etraxfs_timer_reset_hold;
->  }
-> 
+Very good point, thank you.
+
+> (Some day we should perhaps make the A20 input to the CPU an actual
+> GPIO input on the CPU device object, so we could wire the I8042_A20_LINE
+> and PORT92_A20_LINE to it via an OR gate, and drop the intermidate
+> qemu_irq array and handle_a20_line_change function. But needing
+> the OR gate makes that a little clunky so I'm not sure it's
+> really worth the effort.)
+
+I once worked on an "info irqtree" HMP command; if I finish it
+then would be nice to display.
 
