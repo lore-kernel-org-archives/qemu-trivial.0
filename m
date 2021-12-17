@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1my9mO-0004HO-87
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 04:43:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55542)
+	id 1my9p5-00083F-UE
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 04:46:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55996)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1my9mM-0004GT-VS; Fri, 17 Dec 2021 04:43:54 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:41157)
+ id 1my9p4-00080H-A9; Fri, 17 Dec 2021 04:46:42 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:53153)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1my9mL-0000wh-6R; Fri, 17 Dec 2021 04:43:54 -0500
+ id 1my9p2-0005u6-Le; Fri, 17 Dec 2021 04:46:42 -0500
 Received: from [192.168.100.1] ([82.142.30.186]) by mrelayeu.kundenserver.de
  (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MHWvH-1mlFUH1nEH-00DZpF; Fri, 17 Dec 2021 10:43:36 +0100
-Message-ID: <156581e6-9aad-779b-d2e8-a66da3e705d5@vivier.eu>
-Date: Fri, 17 Dec 2021 10:43:34 +0100
+ 1MBE3k-1mmdDo2U3C-00CmHp; Fri, 17 Dec 2021 10:46:34 +0100
+Message-ID: <8c19cee3-d3ea-6a26-c68f-5195cf9e620a@vivier.eu>
+Date: Fri, 17 Dec 2021 10:46:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH] hw/avr: Realize AVRCPU qdev object using qdev_realize()
+Subject: Re: [PATCH v3] hw/virtio/vhost: Fix typo in comment.
 Content-Language: fr
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+To: lagarcia@linux.ibm.com, qemu-trivial@nongnu.org
+Cc: Leonardo Garcia <lagarcia@br.ibm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Markus Armbruster <armbru@redhat.com>
-References: <20211205224109.322152-1-f4bug@amsat.org>
+References: <a10a0ddab65b474ebea1e1141abe0f4aa463909b.1637668012.git.lagarcia@br.ibm.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20211205224109.322152-1-f4bug@amsat.org>
+In-Reply-To: <a10a0ddab65b474ebea1e1141abe0f4aa463909b.1637668012.git.lagarcia@br.ibm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:FvYxKTKG+l9tP8PpefJKJxUGC6no5h0DpuwUsMm8vlvnTKHPDo0
- scwUDp6C1VHLzimqkgpfRdZTw27go9+ylJ8L9Zpt6ZiPKp1vSYmfSUtb2qYuUNJgMqxBuwP
- Dxm6prGCQ7WMJLIaP76DVhrFceG6z1bv8/QSfm4IKOSzx23mWNOujoVvHen561LySrDC+gD
- ddnO5JeY7bx92kaL5lE4w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:eat4JgH8Zeo=:srgfm7SBtg0Hc6xAoWdYbt
- zeCpang6PduF/TUW/mvO0t6WffIK3cIX+c05rVZCSMMwOGkCvWppZid+U7eF2L8A5KT3iMubp
- IRwzNNe5XJ8LwMfQE4ZxYSEjF5rB6S0sKWXusCT0C5H9KMhvTf2/sDckovV/4ceEdIle6p+Kk
- BbL/sZ5/DPOM3nO1jCNHnGbyCnaEIDjR1RiVgY2q5Vcrg1oZNwCkfs4CzxHF7ho3ng21UPUAw
- tiFzHxGtuNGynm+wkYZqjwTr6Mz8upFHcV+nVZAzmJINnpFkwliDNuzP9AToVJJmluuhi2enj
- ZYa5GQ6zygqNVvV1jUNxDVNK+5dlZcu8fWTSE7ct0m96TnFlTK6evQqfT0TC70Q0S85Lu7RTs
- gysdwKI4UWBRMPUFsQAzzAd2GRuPZfxAuJQ/V0qJjKGTheXhSdqSzuuFVyRaVvLYkepnKGKnr
- ayPOZWYnnVmdbrfw9iA6VxidYwvCmedtOZVeLrhagJt0hNy9OHfsQ/Hy004mVlQoUUpPI3RR2
- 1skhIqg15NZi6nNjtabzkYSKhuHAL4FaMdytTH0u2AkNaa2C9dsFfZGt+zKZluKS5q78673Wt
- 6cufIX+HGSO80w6znZwnBOOwjNMRboNu741xMvKPtPVIUyP2VK5aa7fDtsiKn77rp45ueC5U/
- PZglXXEpSSx/RQ7QHi0FHXEPjiXoT2m2EMB9zm5tB3XEpUZK644yQUlJ2l1RipzDpgoA=
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:JLU0841/ntms43jpLRHDLC0YgftIESBkvoHlnKqL2vbK0DoQBKY
+ HXUFB4nE5lZt5jh5tGPHTF9fK3rhrVjIo1ZgZnKlVSrDNja1plEwWX7Xp8BFMsAE4zaRbZg
+ dZ2sDmH58Mszm1zou6bvhqdnrz98FZIqJmP6SO3224hHvUTzVScm7q/wiJeuTYdDD+XW1JC
+ od3SS7/CgB9sJVMCuHQ3g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:E4XXD0FyMf4=:vQunIvZrImsCYQYcSEw8E7
+ fZW1nlWxqzC0+l3wAu88LIF2c+zUdboxNU8muy8umgfsNNocHZcHq5GytfGgQikCPrXn0r3lX
+ 6pA8Ts3qzjCtFoG7SvkscqjN9MXcJhhb2IaVe5dQHdfMaSDzWEGAHioXckneZvEmH8EikcHaM
+ hXdML0/wmxbWdTqpJMxAlUXmOyIMeJ3ApY4Y+rkoz9NtngLcKaPnA8spy2eDrFmYSSdLapE3V
+ lf7p/3c0VrcsvtlMfI0LvNMWH2PEtbEfKzLl7+NmzxvOSABVs61HKEm8B8wjtc+d8E1nhqcCq
+ WmQ917TuykE2WbeWM3ETZPx/7Oz+k74FXao91XsYxcg1c3aG0uG/553rGbq+7XPnC1Hwflk/t
+ eHkW7TmUYBR34hzHllXktnaGJTDhob4aI98uANMmTIXoyJbMMpiZOjVBTz+b8fT8/pISz5iNo
+ RxmWpoMinFELGMKkFUBmerF7nFNVAVUrPZsOLkNlSS0yasSOT3lhLfn99+rcDtgobhnIRZAL4
+ HQ+AyTZkJjmRcOf4HgaHOTnxYPFJVVKaAc2XQ1o/4kLQanO5v1lVoSqD6jd+1WVvQtY7p03ob
+ UL+1ng/QteddEbU6JmYF8G3OeEIsvcp2/WmwDMPlU+uDE3uzp4MkZMIKLrZSv0iS3UfQX29si
+ TmFTSTwMZWefZIxeEuPZ3ZQ50ZS//xfwPsui29SFFJq/VoCbWpFbaYvmVhLJOV5ePZPI=
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.716,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,35 +63,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 09:43:55 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 09:46:42 -0000
 
-Le 05/12/2021 à 23:41, Philippe Mathieu-Daudé a écrit :
-> TYPE_AVR_CPU inherits TYPE_CPU, which itself inherits TYPE_DEVICE.
-> TYPE_DEVICE instances are realized using qdev_realize(), we don't
-> need to access QOM internal values.
+Le 23/11/2021 à 12:48, lagarcia@linux.ibm.com a écrit :
+> From: Leonardo Garcia <lagarcia@br.ibm.com>
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Leonardo Garcia <lagarcia@br.ibm.com>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->   hw/avr/atmega.c | 2 +-
+>   hw/virtio/vhost.c | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/avr/atmega.c b/hw/avr/atmega.c
-> index 0608e2d475e..a34803e6427 100644
-> --- a/hw/avr/atmega.c
-> +++ b/hw/avr/atmega.c
-> @@ -233,7 +233,7 @@ static void atmega_realize(DeviceState *dev, Error **errp)
->   
->       /* CPU */
->       object_initialize_child(OBJECT(dev), "cpu", &s->cpu, mc->cpu_type);
-> -    object_property_set_bool(OBJECT(&s->cpu), "realized", true, &error_abort);
-> +    qdev_realize(DEVICE(&s->cpu), NULL, &error_abort);
->       cpudev = DEVICE(&s->cpu);
->   
->       /* SRAM */
+> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+> index 437347ad01..20913cf8fb 100644
+> --- a/hw/virtio/vhost.c
+> +++ b/hw/virtio/vhost.c
+> @@ -313,7 +313,7 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
+>        * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
+>        * incremental memory mapping API via IOTLB API. For platform that
+>        * does not have IOMMU, there's no need to enable this feature
+> -     * which may cause unnecessary IOTLB miss/update trnasactions.
+> +     * which may cause unnecessary IOTLB miss/update transactions.
+>        */
+>       return virtio_bus_device_iommu_enabled(vdev) &&
+>              virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
+
 
