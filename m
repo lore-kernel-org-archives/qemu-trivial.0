@@ -1,56 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1myAD0-0000f4-80
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 05:11:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60564)
+	id 1myAQu-0005sN-TP
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 05:25:49 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35736)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myACz-0000ej-7p; Fri, 17 Dec 2021 05:11:25 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:36301)
+ id 1myAQr-0005s1-S5; Fri, 17 Dec 2021 05:25:46 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:48177)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myACx-0002S4-Dk; Fri, 17 Dec 2021 05:11:24 -0500
+ id 1myAQp-00028e-5Q; Fri, 17 Dec 2021 05:25:45 -0500
 Received: from [192.168.100.1] ([82.142.30.186]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N7Qt9-1mQPHc2uk9-017qA5; Fri, 17 Dec 2021 11:11:17 +0100
-Message-ID: <63a9aa27-c7a0-a106-b8f2-a53047d94774@vivier.eu>
-Date: Fri, 17 Dec 2021 11:11:15 +0100
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mbj3Y-1mMMYz0nWA-00dDxb; Fri, 17 Dec 2021 11:25:19 +0100
+Message-ID: <86d06356-7ce8-ec33-29bc-df3e10ffc416@vivier.eu>
+Date: Fri, 17 Dec 2021 11:25:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.3.0
-Subject: Re: [PATCH] device_tree: Fix compiler error
-Content-Language: en-US
-To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson
- <richard.henderson@linaro.org>, Alistair Francis <alistair.francis@wdc.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20211108200756.1302697-1-sw@weilnetz.de>
+Subject: Re: [PATCH] docs/block-replication.txt: Fix replication top-id
+ command demo
+Content-Language: fr
+To: Zhang Chen <chen.zhang@intel.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>,
+ Wen Congyang <wencongyang2@huawei.com>, qemu-trivial@nongnu.org
+Cc: Lukas Straub <lukasstraub2@web.de>, qemu-dev <qemu-devel@nongnu.org>
+References: <20211018085044.2788276-1-chen.zhang@intel.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20211108200756.1302697-1-sw@weilnetz.de>
+In-Reply-To: <20211018085044.2788276-1-chen.zhang@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Z3dsSa1iU3PoiXe8thnTuK0NSP8F8pVqNWDnmVTFaV2gk4t1HHJ
- S3BtorzEgGpVItsuEIP9OkT3B28HhvC4Js/la1bMoxjBkxYsuh5CpDOKMAdbuyLvgWtAW0H
- cTfl/QP160Dbtb5wTjm2RztwX49zr/hbs+W6tvqQVyN9stnl6X8H28SxrhI5zzEr7zfVJ6X
- plDcLu8OdKReVWzaz/JpQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:dQAgJuVxvj4=:QWVTycz2dQM3g2faK2rb4T
- 8czXtGicTBrp6MSJFebTwVo6S6IF2fOGeypkNXl/Rj32d9SCrsdoYyCk98weRnvu1HnmPkdht
- 3cT7a6S60FYE96KWSLfXIS6LmNjCSpmH9hkOkTidOyTILo6DacJMWKJw9nzNJudiMNtSrWOUZ
- I0PufBiMBKROlmPEgQnVHzJCKJL37zkFIe4X7gmVUfsrAM39ttnOhRL7UBsPqXmfUlVw/S+jl
- bhDEweupKu2fMWW1BbBJwYXa7WnYfnyrkljXF3vcVDGNytbAeTKcsozXvX6pPZwNAnMLnmxVw
- ZViqHnxLw3TKUqK1XyQ1Kd5X00MeaKoeemhuFTxdgLlLbGCs10Y6Sl0l/Hcyn+jvN7ERglCIR
- gff0gkeolvmWJpBvyL5ugPIzk0Vml/2sOBZu2/y/KMqe0XMtsVh/H74/L3gW3FFTqOwYTPPpu
- hAOJBNOdkhUNsE5CKZMsNVUl9K0njge1dMot5KUDIuEJbZcrZwFZ/olECAUwPhXq7Z92HXIQZ
- wFaBsfJqA0bVkdlVPzM+IQZbG96rOfOyyz+QD0vDkgsJIqP5PQWkhwrMaR3aRygpppdCpvUVe
- FWUdUJRJmq9hS6509MDmpKC5otcPPihVN6hUiWbICP+32jghbAxxzso9CQwidWL63V3Vgvojj
- 8aIPr9jZUhH1GfYMBmhtQfdvbi60E8O8cQo688HFTDg/x+Msvfy/gx/fmcsvdEqMJbu0=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:KgkpI1BpFfipOUtpi8bLvGxPrwib3ckmXJ+4MaeaWHAQeneetRB
+ K7rGbcAvuKVQmxCYzNxyR3wb0GQQRwjPsbo/JZZMXqWH7Osxy0gTH8uWH/sH0FflNF+W5LA
+ h0EH+Ki1rMKTCFGokhWc6xPuxUo5vKe15r62MY8ZvjTyulBgZsteVpTj19Ue1bgJwDJDFqc
+ c/m4UW836JaQKxh5Su9BA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:68LRt2cmTyY=:JVid4p59RxYyShoZvO4Kne
+ aQZvQPpmYJ1pn/uC8mkQDpZXbavhBamx7eKYIGpBJKBfe8n8cEMWs6Rmn1hDTovRFLOtoYcVO
+ pq7LrbyaTKg8FzIYer1+YVm8A8tUvYHeZlnv/anvVWugVvQKzxqX131pJydmtVOaDt5JlOBNk
+ OXbz946pDL1c6gmLf9gEazc1V76lLiRH8EN95BYEZkquHs1fGWFWXWDpXahFuRwoJ+iuBB9Ai
+ nLVWtcZMeCcl5dX4YOyNzkrZm4ZuEhpipPUTSy5C3EngmFXpsoZ2iDj4Lnr7MYffdfM9n4EPI
+ jeluuTOepN9kJ/23D3XGVXsEZyKnVEfoNOVRhiYNQB9SBqNo1PDte1XowZBanjHcayJSZxoSt
+ VRFIPN+uoeXctMAZAc1yG73EJe2t8JoqtVu5+Dxkga6LcA8wuwArWDmFIoqMM+l3e4RxmLbeq
+ 70tq/Mgf3l7gOwLuPaCS6463LGfpbqBOO0wxC5s7lwIxnw3PXfteZDfr90RJsSNKI6GGGwtmM
+ /hpJ80cNztrSbHIjvXIYDXAATuO/UkwNNrS4tO+klKtpTKMaW03hKrENPqVGZ4LYV62U7GyWx
+ PG1N8GSxnkxF2kf68WfqQgSmKcsyWgMcABAul3CvvlvVkoQIp76f1adLL+vK5DwONpeu+1SFA
+ Bd+b1KbT9xMZ2vlSSfD+BFjmEAXybUkLtXl3KGlM76FG2gWKWQHFPV3/gcOvA+InvG7w=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.716,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,51 +64,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 10:11:25 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 10:25:47 -0000
 
-Le 08/11/2021 à 21:07, Stefan Weil a écrit :
-> A build with gcc (Debian 10.2.1-6) 10.2.1 20210110 fails:
+Le 18/10/2021 à 10:50, Zhang Chen a écrit :
+> This demo not correct, the original childs1 can't pass the
+> the bdrv_is_root_node check in replcation_start().
+> Keep consistent with docs/COLO-FT.txt
 > 
-> ../../../softmmu/device_tree.c: In function ‘qemu_fdt_add_path’:
-> ../../../softmmu/device_tree.c:560:18: error: ‘retval’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
->    560 |     int namelen, retval;
->        |                  ^~~~~~
-> 
-> This is not a real error, but the compiler can be satisfied with a small change.
-> 
-> Fixes: b863f0b75852 ("device_tree: Add qemu_fdt_add_path")
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Zhang Chen <chen.zhang@intel.com>
 > ---
->   softmmu/device_tree.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   docs/block-replication.txt | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-> index 3965c834ca..9e96f5ecd5 100644
-> --- a/softmmu/device_tree.c
-> +++ b/softmmu/device_tree.c
-> @@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->           return -1;
->       }
+> diff --git a/docs/block-replication.txt b/docs/block-replication.txt
+> index 108e9166a8..66ad540676 100644
+> --- a/docs/block-replication.txt
+> +++ b/docs/block-replication.txt
+> @@ -179,7 +179,7 @@ Primary:
 >   
-> -    while (p) {
-> +    do {
->           name = p + 1;
->           p = strchr(name, '/');
->           namelen = p != NULL ? p - name : strlen(name);
-> @@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->           }
->   
->           parent = retval;
-> -    }
-> +    } while (p);
->   
->       return retval;
->   }
+>   Secondary:
+>     -drive if=none,driver=raw,file.filename=1.raw,id=colo1 \
+> -  -drive if=none,id=childs1,driver=replication,mode=secondary,top-id=childs1
+> +  -drive if=none,id=childs1,driver=replication,mode=secondary,top-id=top-disk1
+>            file.file.filename=active_disk.qcow2,\
+>            file.driver=qcow2,\
+>            file.backing.file.filename=hidden_disk.qcow2,\
 > 
 
-I think to add a "g_assert_nonull(p);" before the loop would inform the compiler that we always go 
-in the loop and remove the compiler error.
-
-Thanks,
-Laurent
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
