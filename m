@@ -1,69 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1myAxv-0003nE-QZ
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 05:59:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46170)
+	id 1myJYh-0005p3-9A
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 15:10:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39916)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myAxu-0003k3-8P; Fri, 17 Dec 2021 05:59:54 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:53381)
+ id 1myJYf-0005o9-BI; Fri, 17 Dec 2021 15:10:25 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:59017)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myAxs-0006fv-JR; Fri, 17 Dec 2021 05:59:53 -0500
-Received: from [192.168.100.1] ([82.142.30.186]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MmU9X-1mGYUD0Swb-00iQ9O; Fri, 17 Dec 2021 11:59:36 +0100
-Message-ID: <0cc480da-aa6d-d0ab-7c91-f2b6df41ea23@vivier.eu>
-Date: Fri, 17 Dec 2021 11:59:33 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH v3 00/28] glib: Replace g_memdup() by g_memdup2()
-Content-Language: fr
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Eric Blake <eblake@redhat.com>,
- qemu-block@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, David Hildenbrand <david@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- Kevin Wolf <kwolf@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- "Daniel P . Berrange" <berrange@redhat.com>, Hanna Reitz
- <hreitz@redhat.com>, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20210903174510.751630-1-philmd@redhat.com>
- <697323f3-0d82-2c7f-3c54-a0f38d93615f@redhat.com>
+ id 1myJYd-0001FZ-Gh; Fri, 17 Dec 2021 15:10:25 -0500
+Received: from quad ([82.142.30.186]) by mrelayeu.kundenserver.de (mreue011
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1N9Md2-1mSBk82YMe-015MdZ; Fri, 17
+ Dec 2021 21:10:20 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <697323f3-0d82-2c7f-3c54-a0f38d93615f@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5XS31+n5lZ7ddrgxHNrvM4qnHivM5umP6pYcBSGt/TheNYM6DQc
- xlKjNMOMKJYbV1wgb0i/MB5URP/fzr5HvCTy9OIRJXwXnoywfwkTpat272v9zTwJltXrF8s
- 1lN9Qe0W6mGH2i1RgB97UN2hCKwpDVRN0qb0ZpmhQUi3cnFSkmL7wHv+ItRrSvSBKq8Y1BP
- l2b93x01QKCJhjarD2pHQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+qUylvyHy0c=:u0wFTS+mA/IBULKzNfebzN
- 0eQHaffALNfpesYKZrPEGSzQEnBFTPb9pxjIsz9KhgB4cxzxvTGlYDgXGb1HnaVlm6Lby6s7g
- tC4u9/kIHsgL8nq7HeaC3rbCvB417mFapANqJP2FRehsKdyWEiA7fWMNd0nrwmW/UTPVrQG3y
- q65InHGoDkXNVf2JNsfssXrCQ+fnh4cdL9xK36hEh35Xv06a2ftzn2mZuqtQ6A9RTNkeCAfz8
- VyedmAg30iD5kThzQOgBltxUzzvH5DLEe+twcLC2/VvPT92vz4zyQecSsSxHMMs/WnNPbI91r
- kv1V93sOTmDGBZqX8gYwpWE81kgnA821Ska2QVq4sS5UaSjCL2bM4KjHjLj/37hwMg3gl0FVx
- LRiQssyjqPAdsbczCdIT7EIaqsD/ArmQIm5kOzWBleguUCKl0JbbG3zcsdhAfwv/pVLY68XMA
- nd8wB+GD2CpetYoo5TDTRn4EAgVreh16PTcnWUsTcSH7GxviIa91wTr5ngr2abJ6nv/oAOPvy
- M2oqkVEEvCdmeeb3yAI8lZGBGnjyM8ZCDxgOsFQWk72HYrh0G7Ov63eQCeyGiIGAZSY+2JbBo
- ZPSsxwBB4GbZHFzQJlicogcJz0kV8IZW9bfbtAvH2yWpbeHZBtgWV7uZ8jBp8mOKXqrzVUikQ
- VEsoe5DRLlSDmtT80VWkfvjCIOZqdJLerTdnK9ZQ/ffpE/hxY2xBlJCv8HKsC6aoJypo=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 0/9] Trivial branch for 7.0 patches
+Date: Fri, 17 Dec 2021 21:10:10 +0100
+Message-Id: <20211217201019.1652798-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.33.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:iJL3Z6RukqQrjYj6Hm9jeyUPxOpUeWj2l6uNey/dPND/FU8TVPb
+ 0/QElQblkVExYA6kp1DrgcePUZuBpn8ODpP1RwOppGFPfP7E0SKbID+dTsv2TJpedGjWqlz
+ G6BvMwqbS+6vcmTzp4NTY5f2yPfxAuQvIMlFtQ25xmjyDogj4rCkt2EEHWnyhEqQgLRWps6
+ +MhupfNkWtOPAP74GorOg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:h1TASiOxzzM=:L4zkYzz7FHTUrct84upUVh
+ R+4bhvJrHQGsQQLcH361c7mxSHL5gWVdxuAmdiIvDqO8hXKMU1adVwHHfV+i/XYGP9lQvubun
+ fxsWVFK+PlfrAqp5Tt5LmryCb7y+TVREjcnU/Bn3lP9nRc9VrlPRf/oq1NPJhjVEzuUCopeZQ
+ 7Dq7HLL/2Xo23Zb7In+iv2SJi83iAw1vV5BI/KQe17qxqSJa0E5gSr2G67HbTELwxp05bEzYs
+ 5yAPiMnkXeHxOxu7smw0VBDqxRgiWrOwzKOAjXhzn+LlEC3KgpoAUyg6YelAv+Z4SzQ2OPXM5
+ HyCbqdfivfWOy0wxTHkhCMuMscMHU6wmD3bfw9Q/79kBijLeWG6X0YasOod7drJv/j+9ZrIDt
+ jXLYhr37SluxYX1uPx+sUp2aC5cyIJCE5KR/gdpVBYIm9M8x6YdEhxh++PkRHcjDxOvho2U9A
+ F8uVM5/XaPzxtg7DwC68VKTtvdHR/mK8VrOY6THTn7AX3kGfP19qlA+l6qe/W+Uzv2zysOGQl
+ PrLKJ2/U00r59bIyolL6rY2rriHhRMZChFZnCOs1EEtKmKU3TMPb4nKaSAOg16hGblQHRuQZJ
+ 5xfqtVkWxI7rXWI76gW9sIOoDB8iAz/8VME4qGj/R7IsGZt9qc3KhdKehp6nW2oleI9UWCM1S
+ TmE/t/H2UUNhGGYghbFf95lOyZcJ/ewOwtbhnvro0kx4JqOpsKY9RBKNfV2tT5c/hbLA=
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.716,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -77,53 +58,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 10:59:54 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 20:10:25 -0000
 
-Le 15/12/2021 à 17:54, Philippe Mathieu-Daudé a écrit :
-> Hi Laurent,
-> 
-> On 9/3/21 19:44, Philippe Mathieu-Daudé wrote:
-> 
->> This series provides the safely equivalent g_memdup2() wrapper,
->> and replace all g_memdup() calls by it.
-> 
->> Philippe Mathieu-Daudé (28):
->>    hw/hyperv/vmbus: Remove unused vmbus_load/save_req()
->>    glib-compat: Introduce g_memdup2() wrapper
->>    qapi: Replace g_memdup() by g_memdup2()
->>    accel/tcg: Replace g_memdup() by g_memdup2()
->>    block/qcow2-bitmap: Replace g_memdup() by g_memdup2()
->>    softmmu: Replace g_memdup() by g_memdup2()
->>    hw/9pfs: Replace g_memdup() by g_memdup2()
->>    hw/acpi: Avoid truncating acpi_data_len() to 32-bit
->>    hw/acpi: Replace g_memdup() by g_memdup2()
->>    hw/core/machine: Replace g_memdup() by g_memdup2()
->>    hw/hppa/machine: Replace g_memdup() by g_memdup2()
->>    hw/i386/multiboot: Replace g_memdup() by g_memdup2()
->>    hw/net/eepro100: Replace g_memdup() by g_memdup2()
->>    hw/nvram/fw_cfg: Replace g_memdup() by g_memdup2()
->>    hw/scsi/mptsas: Replace g_memdup() by g_memdup2()
->>    hw/ppc/spapr_pci: Replace g_memdup() by g_memdup2()
->>    hw/rdma: Replace g_memdup() by g_memdup2()
->>    hw/vfio/pci: Replace g_memdup() by g_memdup2()
->>    hw/virtio: Replace g_memdup() by g_memdup2()
->>    net/colo: Replace g_memdup() by g_memdup2()
->>    ui/clipboard: Replace g_memdup() by g_memdup2()
->>    linux-user: Replace g_memdup() by g_memdup2()
->>    tests/unit: Replace g_memdup() by g_memdup2()
->>    tests/qtest: Replace g_memdup() by g_memdup2()
->>    target/arm: Replace g_memdup() by g_memdup2()
->>    target/ppc: Replace g_memdup() by g_memdup2()
->>    contrib: Replace g_memdup() by g_memdup2()
->>    checkpatch: Do not allow deprecated g_memdup(
-> Is it possible to take the reviewed patches 2, 24 and 28
-> via qemu-trivial, so the rest can be merged slowly by
-> each submaintainer?
-> 
-> 
-
-Done for these 3 patches.
-
-Thanks,
-Laurent
+The following changes since commit 29eb5c2c86f935b0e9700fad2ecfe8a32b011d57=
+:=0D
+=0D
+  Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging =
+(2021-12-16 08:39:20 -0800)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pu=
+ll-request=0D
+=0D
+for you to fetch changes up to ce2ff9cccf0c5f123f9d1e3d5e4fc07d1c2c159d:=0D
+=0D
+  checkpatch: Do not allow deprecated g_memdup() (2021-12-17 11:57:35 +0100=
+)=0D
+=0D
+----------------------------------------------------------------=0D
+Trivial patches pull request 20211217=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Leonardo Garcia (1):=0D
+  hw/virtio/vhost: Fix typo in comment.=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (7):=0D
+  configure: Symlink binaries using .exe suffix with MinGW=0D
+  target/i386/kvm: Replace use of __u32 type=0D
+  qemu-keymap: Add license in generated files=0D
+  hw/avr: Realize AVRCPU qdev object using qdev_realize()=0D
+  glib-compat: Introduce g_memdup2() wrapper=0D
+  tests/qtest: Replace g_memdup() by g_memdup2()=0D
+  checkpatch: Do not allow deprecated g_memdup()=0D
+=0D
+Zhang Chen (1):=0D
+  docs/block-replication.txt: Fix replication top-id command demo=0D
+=0D
+ configure                   |  2 +-=0D
+ docs/block-replication.txt  |  2 +-=0D
+ hw/avr/atmega.c             |  2 +-=0D
+ hw/virtio/vhost.c           |  2 +-=0D
+ include/glib-compat.h       | 37 +++++++++++++++++++++++++++++++++++++=0D
+ qemu-keymap.c               |  1 +=0D
+ scripts/checkpatch.pl       |  5 +++++=0D
+ target/i386/kvm/kvm.c       |  2 +-=0D
+ tests/qtest/libqos/ahci.c   |  6 +++---=0D
+ tests/qtest/libqos/qgraph.c |  2 +-=0D
+ 10 files changed, 52 insertions(+), 9 deletions(-)=0D
+=0D
+-- =0D
+2.33.1=0D
+=0D
 
