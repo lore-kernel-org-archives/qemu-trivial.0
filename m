@@ -1,44 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1myJYh-0005p3-9A
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 15:10:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39916)
+	id 1myJYj-0005tB-JM
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 15:10:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myJYf-0005o9-BI; Fri, 17 Dec 2021 15:10:25 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:59017)
+ id 1myJYh-0005po-SZ; Fri, 17 Dec 2021 15:10:27 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:59525)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myJYd-0001FZ-Gh; Fri, 17 Dec 2021 15:10:25 -0500
+ id 1myJYg-0001IJ-CF; Fri, 17 Dec 2021 15:10:27 -0500
 Received: from quad ([82.142.30.186]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1N9Md2-1mSBk82YMe-015MdZ; Fri, 17
- Dec 2021 21:10:20 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1McXs5-1mLwSu386H-00cufE; Fri, 17
+ Dec 2021 21:10:21 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 0/9] Trivial branch for 7.0 patches
-Date: Fri, 17 Dec 2021 21:10:10 +0100
-Message-Id: <20211217201019.1652798-1-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 2/9] target/i386/kvm: Replace use of __u32 type
+Date: Fri, 17 Dec 2021 21:10:12 +0100
+Message-Id: <20211217201019.1652798-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20211217201019.1652798-1-laurent@vivier.eu>
+References: <20211217201019.1652798-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:iJL3Z6RukqQrjYj6Hm9jeyUPxOpUeWj2l6uNey/dPND/FU8TVPb
- 0/QElQblkVExYA6kp1DrgcePUZuBpn8ODpP1RwOppGFPfP7E0SKbID+dTsv2TJpedGjWqlz
- G6BvMwqbS+6vcmTzp4NTY5f2yPfxAuQvIMlFtQ25xmjyDogj4rCkt2EEHWnyhEqQgLRWps6
- +MhupfNkWtOPAP74GorOg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:h1TASiOxzzM=:L4zkYzz7FHTUrct84upUVh
- R+4bhvJrHQGsQQLcH361c7mxSHL5gWVdxuAmdiIvDqO8hXKMU1adVwHHfV+i/XYGP9lQvubun
- fxsWVFK+PlfrAqp5Tt5LmryCb7y+TVREjcnU/Bn3lP9nRc9VrlPRf/oq1NPJhjVEzuUCopeZQ
- 7Dq7HLL/2Xo23Zb7In+iv2SJi83iAw1vV5BI/KQe17qxqSJa0E5gSr2G67HbTELwxp05bEzYs
- 5yAPiMnkXeHxOxu7smw0VBDqxRgiWrOwzKOAjXhzn+LlEC3KgpoAUyg6YelAv+Z4SzQ2OPXM5
- HyCbqdfivfWOy0wxTHkhCMuMscMHU6wmD3bfw9Q/79kBijLeWG6X0YasOod7drJv/j+9ZrIDt
- jXLYhr37SluxYX1uPx+sUp2aC5cyIJCE5KR/gdpVBYIm9M8x6YdEhxh++PkRHcjDxOvho2U9A
- F8uVM5/XaPzxtg7DwC68VKTtvdHR/mK8VrOY6THTn7AX3kGfP19qlA+l6qe/W+Uzv2zysOGQl
- PrLKJ2/U00r59bIyolL6rY2rriHhRMZChFZnCOs1EEtKmKU3TMPb4nKaSAOg16hGblQHRuQZJ
- 5xfqtVkWxI7rXWI76gW9sIOoDB8iAz/8VME4qGj/R7IsGZt9qc3KhdKehp6nW2oleI9UWCM1S
- TmE/t/H2UUNhGGYghbFf95lOyZcJ/ewOwtbhnvro0kx4JqOpsKY9RBKNfV2tT5c/hbLA=
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:fyWsljQuV2ckBBMTcxXIz+WOj/dSSWgGibWMtCyplCIyCga1TSe
+ ZgHMLnB+W4739oebK3R7hlPKweuB58jzdNHL9grO4bCqQMr9p9Nfcz3TmOOyuK6pN1YTY1L
+ sDXVsyIMissdM0oZant+gJ3GKAFOONnZHA59Ho09UY9r4yqZtOye/2t+DPD0onS606kj7Yb
+ /UzB2zHGyY12ZYNYI4CpQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:hEQm1re27Go=:AgqnFOhiEqEGMED4hGi4sr
+ 9xTtFyXMDCzqx3DzRiWG4Aspp9KajXXzY76S81oRaJt50BHR15lUhArk8SncwT1pqeR1hc7pO
+ GeLxIyJ7aV5n49CyEgi32kwMlWxptFPudzz9kaQj7kemz5uSicitZHtdgmq2j/VdtZORmAHkk
+ ZDQdF3Uj4ceYms6xikYHCU2XbTsnUPfys6nxFX4sbWD0SZ72g08RDUkahiEYu19euxQTVMrzw
+ kPCWkM7mX4gbJaFEnl7s3U3w3G1f7gUP9kMl+hdZAHsE46XNTbxF9PWLbKPUBwAqMRYucmPUk
+ i9rAOdown8g3otD4hSEXDNVIudtfWrLgsWLIVO+OenKrEsd4gTevhw/9pG3vA/cefgheBCbe1
+ StvMK/cKYZ+OyrVN27sEYQLKeWyDpdJ+2SG67RtT5kaKucSmAr7qctO8dqD/9216BkPWIW27F
+ xR2/FAaUa2ed6/R2kdFd8Md78vCgd6W/JbIjsWBgUzr3x9cRmYyZaiigz2sqdIxfI1UXM4K6A
+ VWOct/CHrdaV3KjpINCFkx98fo31pWHGgmcCJF7+x0M9nBuFhl7700SKxtlXhAQnFZ6mA6FUS
+ GS8L4QLaSxywRD7//VqBnxEfeDPw1aTkuINuSw5T/HE9UlVRZALtSM0HabAGuH5y/DPwK5jgD
+ 0GIRD+UOcvcuXpQlvU2oIip/oUZPjYISf1JBG4zH1n4nUEkq7ZA7h2N9q8xSHtC50qBc=
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -58,57 +62,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 20:10:25 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 20:10:28 -0000
 
-The following changes since commit 29eb5c2c86f935b0e9700fad2ecfe8a32b011d57=
-:=0D
-=0D
-  Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging =
-(2021-12-16 08:39:20 -0800)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pu=
-ll-request=0D
-=0D
-for you to fetch changes up to ce2ff9cccf0c5f123f9d1e3d5e4fc07d1c2c159d:=0D
-=0D
-  checkpatch: Do not allow deprecated g_memdup() (2021-12-17 11:57:35 +0100=
-)=0D
-=0D
-----------------------------------------------------------------=0D
-Trivial patches pull request 20211217=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Leonardo Garcia (1):=0D
-  hw/virtio/vhost: Fix typo in comment.=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (7):=0D
-  configure: Symlink binaries using .exe suffix with MinGW=0D
-  target/i386/kvm: Replace use of __u32 type=0D
-  qemu-keymap: Add license in generated files=0D
-  hw/avr: Realize AVRCPU qdev object using qdev_realize()=0D
-  glib-compat: Introduce g_memdup2() wrapper=0D
-  tests/qtest: Replace g_memdup() by g_memdup2()=0D
-  checkpatch: Do not allow deprecated g_memdup()=0D
-=0D
-Zhang Chen (1):=0D
-  docs/block-replication.txt: Fix replication top-id command demo=0D
-=0D
- configure                   |  2 +-=0D
- docs/block-replication.txt  |  2 +-=0D
- hw/avr/atmega.c             |  2 +-=0D
- hw/virtio/vhost.c           |  2 +-=0D
- include/glib-compat.h       | 37 +++++++++++++++++++++++++++++++++++++=0D
- qemu-keymap.c               |  1 +=0D
- scripts/checkpatch.pl       |  5 +++++=0D
- target/i386/kvm/kvm.c       |  2 +-=0D
- tests/qtest/libqos/ahci.c   |  6 +++---=0D
- tests/qtest/libqos/qgraph.c |  2 +-=0D
- 10 files changed, 52 insertions(+), 9 deletions(-)=0D
-=0D
--- =0D
-2.33.1=0D
-=0D
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+QEMU coding style mandates to not use Linux kernel internal
+types for scalars types. Replace __u32 by uint32_t.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20211116193955.2793171-1-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ target/i386/kvm/kvm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index 5a698bde19ac..13f8e30c2a54 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -1406,7 +1406,7 @@ static int hyperv_fill_cpuids(CPUState *cs,
+     c->edx = cpu->hyperv_limits[2];
+ 
+     if (hyperv_feat_enabled(cpu, HYPERV_FEAT_EVMCS)) {
+-        __u32 function;
++        uint32_t function;
+ 
+         /* Create zeroed 0x40000006..0x40000009 leaves */
+         for (function = HV_CPUID_IMPLEMENT_LIMITS + 1;
+-- 
+2.33.1
+
 
