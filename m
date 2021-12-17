@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1myJYu-0006Dv-Og
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 15:10:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40086)
+	id 1myJZF-0006Jd-LZ
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 15:11:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myJYm-00060m-JC; Fri, 17 Dec 2021 15:10:32 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:55467)
+ id 1myJZ1-0006Fu-66; Fri, 17 Dec 2021 15:10:50 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:51513)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myJYk-0001Kg-TG; Fri, 17 Dec 2021 15:10:32 -0500
+ id 1myJYq-0001MG-54; Fri, 17 Dec 2021 15:10:37 -0500
 Received: from quad ([82.142.30.186]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MPXxi-1nC0gc3A9K-00MeAN; Fri, 17
- Dec 2021 21:10:24 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MmUYD-1mGQ9O0Ufx-00iSYq; Fri, 17
+ Dec 2021 21:10:23 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Zhang Chen <chen.zhang@intel.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 6/9] docs/block-replication.txt: Fix replication top-id command
- demo
-Date: Fri, 17 Dec 2021 21:10:16 +0100
-Message-Id: <20211217201019.1652798-7-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 4/9] hw/avr: Realize AVRCPU qdev object using qdev_realize()
+Date: Fri, 17 Dec 2021 21:10:14 +0100
+Message-Id: <20211217201019.1652798-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20211217201019.1652798-1-laurent@vivier.eu>
 References: <20211217201019.1652798-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ssDFRdxDU16rVQvfzMzWFZ47dYx4Nv9mVinYp71rDC1gBkVny77
- 0Tm9NPLR5qWRURP9TlhOms110cyPsAPLbVrePzJCTYd2Uu7wF6/ioOU1MDqyWlxlqWi47f8
- Qnoq8u58hviyW5OETWCvAXS+kk1dpWji5nJf4nbReTywOmdmp790Pb/w26GWJ/wHAIR8QRQ
- mAQzNlTXHkPt4E2nYkBVw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ekthWI3McGs=:ke8MFEY93nnxy6QVecBJAA
- 181Iecl6D8J6vchjkB+9NLWTaGkR2QKf+Xcqj7SlQ0j2p9hDmXlj98xtwj2lFkLDEvqnZ/GBA
- s6YbwILa0KiX93oe46xDSgLMankYPN+grdnKCvS1/9FdOFhggssXNJmn6Hq26g8v1I/vvFBLW
- ijbU83Xn+dckWdUCMeEb+5i04jclA+Zv49lGsRVPG7I7FtlRX9+ZStuEhDpd8ICXcn+VuyX4s
- +uLZ7T7KheBxW3bGAZZbf9CXqihCjA/pFzxkr27C0eSHXZqQFioUdmUcMA2anLszRMel1a85h
- eFrM8fb+eTryNXegWRLW1XAJa3mJDoadRDzp6PhI3yxCsPOgNWZPK74BaQu4rujDrJofLyEfc
- NL0FRrjwW+VHd/RA8w0Qn0YHhdPYYRqQKkhHy4Te6Qlo6/3cYRNJRhOy6rovXNbrsVwVxGDBZ
- VKO/1psXrGxJVfLKd2oIOMpCoX38ce7xvE4916HUSSRPXO4ZHR22pPq6CCUS8q15I1JBq+Frt
- f/0qpgPw/D1x5BGvM9cafL/Y1yrXUVIWJQAOZ3xMRLKnoPf8O9kK7VaCVkydKb4DJahOhHK+a
- NGOmu0vbCp/fHVk1j8csztyUpV0gBeAYLF4nbInP7vuvBVkMY4+2Jdcz0VdfWtDZhG0Z5q+rW
- 2c7yVcCfB70vwHyVmRQNginMaZv/fis9Ie4PpD6wapppC/tEJ89Kl2EEC3Ritq55Hk30=
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:R70kTna8rRJD+JhV25qXyrvnmPOe12pS+SsPgukOH90eTZXweCA
+ 7oAzql7rmqeoaa5XjpS0rM3IyHKylb8F19Ln4DCO2wNSKold5GtjTAktFdQe3T7wCFwmNIc
+ 0nV5U4r/szSoe5ijt7qjXeUDka/g/2sSR6Z+k0RrNPhz7Wp3xpMOrKZmukyJc6xwU1ZxknJ
+ PaH06bjPvZSan6pnD2XLg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fZ9wgF/45kY=:2MSIvKqM72rNPqLGLj0AXS
+ MVccKNUGRv4s4/DJAJNGs0AtUXeaCaOZ7MYQPQVadbqPwHFK+4MEFlrbCkmA1OJNgJWe/1+OC
+ 1nKkXtYDv1Gtq3xIBgAA5kDEnBPsv13lyegeHVDVbX1LNd2cdKJ81FqOPMmCPRhyTxUNxP2GC
+ c3bZs9ZH5JwXjFP9JdtUh16RZub4wW4/EufA5DA9s473izfGuCrCCqk0UM3YFK2yHL1dOUswH
+ yLrlqNED+GwNv1KZq1kOtkJrf0BuWWHM8JFivZbve9mcE0PWtzbGuAtu6TW2NbeMeb2RUJRD4
+ J5tXGueGYZtpHlISsc45fPOZlOCHGSE4KXo4IAy97FaqBFhEZ33NsRjJHlMNm7xJhDNWM2nlU
+ s6rT/LmafAza0a8xc1R89/Q5VZyAd6uAHXLBlvsnKVK8pNYaEHSfoWOxdCG8TvJ3+eV5Qiuaw
+ Ny4aWNDnPl+Lx0vNTaXqN3ufR2lqCtzyMl+vrCF9DMM9eYt05L/SSZmEHfOYPxefcO3HlzcqY
+ wgp/Blg9G1BJCm2F9VO67Hc4/ZnciNR/uId65/vVPWUTpyFJeFt/3TIKCihaBl1ML6f41YZFb
+ w6sZ44wbRCXdamMzbE0Dg/2Vpk9pgXlWk9xQj/gYWmL40GlHydQsVvBDfI6N9u4Tki1whVQXY
+ aeYGh/fcS5koBmN+4LtgfDGR3FkmGgGbjo0L/EKptP+w+h1QYsgniEFWruYGoMDQsbg0=
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,35 +61,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 20:10:33 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 20:10:53 -0000
 
-From: Zhang Chen <chen.zhang@intel.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-This demo not correct, the original childs1 can't pass the
-the bdrv_is_root_node check in replcation_start().
-Keep consistent with docs/COLO-FT.txt
+TYPE_AVR_CPU inherits TYPE_CPU, which itself inherits TYPE_DEVICE.
+TYPE_DEVICE instances are realized using qdev_realize(), we don't
+need to access QOM internal values.
 
-Signed-off-by: Zhang Chen <chen.zhang@intel.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20211018085044.2788276-1-chen.zhang@intel.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Michael Rolnik <mrolnik@gmail.com>
+Message-Id: <20211205224109.322152-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/block-replication.txt | 2 +-
+ hw/avr/atmega.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/block-replication.txt b/docs/block-replication.txt
-index b0f23761c6e7..e1b28a6cc117 100644
---- a/docs/block-replication.txt
-+++ b/docs/block-replication.txt
-@@ -179,7 +179,7 @@ Primary:
+diff --git a/hw/avr/atmega.c b/hw/avr/atmega.c
+index 0608e2d475ee..a34803e64272 100644
+--- a/hw/avr/atmega.c
++++ b/hw/avr/atmega.c
+@@ -233,7 +233,7 @@ static void atmega_realize(DeviceState *dev, Error **errp)
  
- Secondary:
-   -drive if=none,driver=raw,file.filename=1.raw,id=colo1 \
--  -drive if=none,id=childs1,driver=replication,mode=secondary,top-id=childs1
-+  -drive if=none,id=childs1,driver=replication,mode=secondary,top-id=top-disk1
-          file.file.filename=active_disk.qcow2,\
-          file.driver=qcow2,\
-          file.backing.file.filename=hidden_disk.qcow2,\
+     /* CPU */
+     object_initialize_child(OBJECT(dev), "cpu", &s->cpu, mc->cpu_type);
+-    object_property_set_bool(OBJECT(&s->cpu), "realized", true, &error_abort);
++    qdev_realize(DEVICE(&s->cpu), NULL, &error_abort);
+     cpudev = DEVICE(&s->cpu);
+ 
+     /* SRAM */
 -- 
 2.33.1
 
