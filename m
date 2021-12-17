@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1myJYm-000620-W3
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 15:10:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40046)
+	id 1myJYo-00066o-Qz
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Dec 2021 15:10:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myJYl-0005wH-8J; Fri, 17 Dec 2021 15:10:31 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:55323)
+ id 1myJYm-0005zx-CV; Fri, 17 Dec 2021 15:10:32 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:33149)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1myJYj-0001K7-C5; Fri, 17 Dec 2021 15:10:30 -0500
+ id 1myJYk-0001Ke-PB; Fri, 17 Dec 2021 15:10:32 -0500
 Received: from quad ([82.142.30.186]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M72Xn-1mrRXC1K3T-008XfC; Fri, 17
- Dec 2021 21:10:25 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1N2lzA-1mUMXO1t4W-0138e5; Fri, 17
+ Dec 2021 21:10:26 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Eric Blake <eblake@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 7/9] glib-compat: Introduce g_memdup2() wrapper
-Date: Fri, 17 Dec 2021 21:10:17 +0100
-Message-Id: <20211217201019.1652798-8-laurent@vivier.eu>
+Subject: [PULL 9/9] checkpatch: Do not allow deprecated g_memdup()
+Date: Fri, 17 Dec 2021 21:10:19 +0100
+Message-Id: <20211217201019.1652798-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20211217201019.1652798-1-laurent@vivier.eu>
 References: <20211217201019.1652798-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:UeMXTxEg4EZxikICzR28+jbzOvBt+qYBo66QQvSlzlZMPxYxKa6
- 8Zlt9gUR0RdLQMwks26xphRyjvlaUyzVLqNPRDwCLH7pAJxixV4O55pIHJ8U56BwlTvYS61
- NhPs0MIJYnWB+y9AWCa1FBub2s97dViQduaDqdZ1GOVslhiFOHHMWOPgjW3fA19ugC8rkD6
- uk2RwfHlUVLiu0dimD92g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QJFJ1H0ftOo=:fML5X/pRHoasRnp12sVCgd
- cwiihyEKbXMSamd4gOKNEQ5VM9RJlwwAqa3aBeErm7CblgRc80Y00obtvJBgq8sfXJtTPpbCl
- PeqmzfKRONkmxrzp709EuAxpLcP8nv3uvoY2FUYQr00tDhL09VvAUUJg5x1HSP3Um73LS5gV3
- J/7uBUWgMPFKvIhzfDMo+jpgpXM+yWMtvnQfpNRcrM08gR9d7Njq9uGL4YV+JUPnoOwcjlnIK
- 61o/sjN5Ah28pEoEOeMhYZK4e4o3nKi9I9b/bzGjxqRrS9O/3PchRIUhDFWX8agf6SXOGTdL/
- 43+ZGKU1IZRnoYmICliNbSfp4ju01pYe8bOHlkUNIX9PRWy5idqqOOW5pP8ndIXFrZgYh3aXv
- 6L9hkuDJ8UC8TK5JzAQCn5arEbHTqA4gYyUQZZyeufiyosNcxQn7s1LRG+U8Hiu3HTOOVz0pc
- YBv83WT70KQgMkxF1dJS9nogHgm+4Xx1MJNy5L+/M450qGI/i5tDvtw/Q5/ZiDb1rKanRQ81J
- qovb1CwRd0KsJq6eZFE/9AdNVBZBYo8TGgscSu/Eh6t5z46G8NcJynl8IMgX+S587jEA0WHxA
- ZSg3BoNJNzvPiRm6XxoOrPEzax0sKnf6oKZMn6BckgNQuCv6y5hMCv+Q3Ro+7TKqzIwNwnsUQ
- 27QldzoOXxVHV/BMS83MlnnGlREKrwM0lErS1HM7EOW6Rj+f3wOCxRwR6CK765/0q9J8=
+X-Provags-ID: V03:K1:n/0qUk+ExpCi1UzF9vwS45WsPPf2mwPWWO2GJ9rfDGfVjQqWMPv
+ t6QsnZSNduTTgQzTm0Kxe6rOkaGJbxgjZwmu3D/+7jlTUmUNuf16DNr33VSY81/ldFEO0Hh
+ HnGdOcK4YqQsE+lIEScWenWNdi1uIPuXGsle4NWxAaurJz490B1Ys32sbA3AL1sMLBVPDpN
+ 7lT1tKlVLPF8n0mlEgUOg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:swnoLcIIHrc=:B+upXRvFACYoJr0Z3Ffkxc
+ be4ez8vZNZ09q9IaDUZsx1UQRVw48yBYIm2ip4FCBnDHtNwfYMSkalMuMZyFsR0jTGZhrPt9n
+ x4F8VYWrKSK0g8aXtGvxKsLSFBT1To7fHbMLtFLWfaBd8Ugzj49jhx84+3GCtNzeYWNeVKQss
+ xNThTOOJxQK++I+sBE388/ptpbW2v6x8k6porhjlA3HhxcHtLTuo3CBLA+m8mxpipbkhY+Iqf
+ NPf/pGK6KWZGkfvFQNumI2Yly4+3Uh95XrVexFyJneH1G1I5hgLLcgrpZis2sJM1XfFLIdT08
+ GUv4yf4NUUoRA0oC2B1AVCMAvTfMEm1bvL01futC7ETLkeY9TxLxpBvTKdEms3AFFMNedXVxh
+ X6wh5Z1pVhCDfSNlie03SUIDV6kb+GL7BStvx7g27TDWufNZ6K/rn0zJnjmssU5rH2ghrOQ/K
+ kBLykbR/u4kBwkN45XawjTdWFOkXOKGBKQ0FdAZw7/NJbP/C2xJb6IpX2FRNGEpuavPw1kn1h
+ vTuZycn9+knKjGRP7l6RmnMBQxMH/984zQKn97/XEJZJyGK0fw46Cb7idESXX0//jLcvNODlX
+ D7zlKcMdXxttejfLJYufvS/CroNm+4ciaoAx9LWaAVQBwiDGBDJvpE5usJJCWysKHHsiZGz1d
+ u3PwzsGrkC5D2rEUSOdO8+XbG+qE33MT5wOlSVivjSRGaRLac8qM20hxoPUr5LcZ6rbw=
 Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -61,86 +61,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Dec 2021 20:10:31 -0000
+X-List-Received-Date: Fri, 17 Dec 2021 20:10:32 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-When experimenting raising GLIB_VERSION_MIN_REQUIRED to 2.68
-(Fedora 34 provides GLib 2.68.1) we get:
+g_memdup() is insecure and as been deprecated in GLib 2.68.
+QEMU provides the safely equivalent g_memdup2() wrapper.
 
-  hw/virtio/virtio-crypto.c:245:24: error: 'g_memdup' is deprecated: Use 'g_memdup2' instead [-Werror,-Wdeprecated-declarations]
-  ...
+Do not allow more g_memdup() calls in the repository, provide
+a hint to use g_memdup2().
 
-g_memdup() has been updated by g_memdup2() to fix eventual security
-issues (size argument is 32-bit and could be truncated / wrapping).
-GLib recommends to copy their static inline version of g_memdup2():
-https://discourse.gnome.org/t/port-your-module-from-g-memdup-to-g-memdup2-now/5538
-
-Our glib-compat.h provides a comment explaining how to deal with
-these deprecated declarations (see commit e71e8cc0355
-"glib: enforce the minimum required version and warn about old APIs").
-
-Following this comment suggestion, implement the g_memdup2_qemu()
-wrapper to g_memdup2(), and use the safer equivalent inlined when
-we are using pre-2.68 GLib.
-
-Reported-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Eric Blake <eblake@redhat.com>
-Message-Id: <20210903174510.751630-3-philmd@redhat.com>
+Message-Id: <20210903174510.751630-29-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/glib-compat.h | 37 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ scripts/checkpatch.pl | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/include/glib-compat.h b/include/glib-compat.h
-index 9e95c888f54f..8d01a8c01fb8 100644
---- a/include/glib-compat.h
-+++ b/include/glib-compat.h
-@@ -68,6 +68,43 @@
-  * without generating warnings.
-  */
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index cb8eff233e06..5caa739db486 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -2850,6 +2850,11 @@ sub process {
+ 			WARN("consider using g_path_get_$1() in preference to g_strdup($1())\n" . $herecurr);
+ 		}
  
-+/*
-+ * g_memdup2_qemu:
-+ * @mem: (nullable): the memory to copy.
-+ * @byte_size: the number of bytes to copy.
-+ *
-+ * Allocates @byte_size bytes of memory, and copies @byte_size bytes into it
-+ * from @mem. If @mem is %NULL it returns %NULL.
-+ *
-+ * This replaces g_memdup(), which was prone to integer overflows when
-+ * converting the argument from a #gsize to a #guint.
-+ *
-+ * This static inline version is a backport of the new public API from
-+ * GLib 2.68, kept internal to GLib for backport to older stable releases.
-+ * See https://gitlab.gnome.org/GNOME/glib/-/issues/2319.
-+ *
-+ * Returns: (nullable): a pointer to the newly-allocated copy of the memory,
-+ *          or %NULL if @mem is %NULL.
-+ */
-+static inline gpointer g_memdup2_qemu(gconstpointer mem, gsize byte_size)
-+{
-+#if GLIB_CHECK_VERSION(2, 68, 0)
-+    return g_memdup2(mem, byte_size);
-+#else
-+    gpointer new_mem;
++# enforce g_memdup2() over g_memdup()
++		if ($line =~ /\bg_memdup\s*\(/) {
++			ERROR("use g_memdup2() instead of unsafe g_memdup()\n" . $herecurr);
++		}
 +
-+    if (mem && byte_size != 0) {
-+        new_mem = g_malloc(byte_size);
-+        memcpy(new_mem, mem, byte_size);
-+    } else {
-+        new_mem = NULL;
-+    }
-+
-+    return new_mem;
-+#endif
-+}
-+#define g_memdup2(m, s) g_memdup2_qemu(m, s)
-+
- #if defined(G_OS_UNIX)
- /*
-  * Note: The fallback implementation is not MT-safe, and it returns a copy of
+ # recommend qemu_strto* over strto* for numeric conversions
+ 		if ($line =~ /\b(strto[^kd].*?)\s*\(/) {
+ 			ERROR("consider using qemu_$1 in preference to $1\n" . $herecurr);
 -- 
 2.33.1
 
