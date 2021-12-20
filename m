@@ -1,73 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mylz4-0001el-39
-	for mharc-qemu-trivial@gnu.org; Sat, 18 Dec 2021 21:31:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41660)
+	id 1mz7jG-0000fh-AI
+	for mharc-qemu-trivial@gnu.org; Sun, 19 Dec 2021 20:44:42 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
- id 1mylyu-0001UC-AL; Sat, 18 Dec 2021 21:31:24 -0500
-Received: from [2607:f8b0:4864:20::f2d] (port=42917
- helo=mail-qv1-xf2d.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
- id 1mylyr-0003ef-QA; Sat, 18 Dec 2021 21:31:24 -0500
-Received: by mail-qv1-xf2d.google.com with SMTP id p3so6102013qvj.9;
- Sat, 18 Dec 2021 18:31:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=GQ++DfcDzAjdfJdKyj0x+1JvHGLZ0hECGNGimajPzTo=;
- b=kZ1Dto5icIoVlhL6CJH1r/VsGG+MpwXamQGmt0ve+qkB6gVe70vF+b+D5xqOfrKwWw
- lRwwmbDQsCQorm69ScN+y9Mi9hvHeMzSmcjo0P0StPZidZdmdFi4T3pVww8GhD/9EQ9N
- q4Ij1ARfYC7fHApfaymovizqJTWPZGGVQEoT9wtgrOEHy3TgHoahlJg7mW/Fhp631iy5
- 8KAJZJK7n89/6Ss7xXXJ6laYgBzrZ3QfomqyyPZkcleW/LeEqi/mLvK9z7/CR40DikVC
- ZzzEnUMk1vIKhnynd32UvyOpP0z9vtOl1MPVENAaiM7Jg2CV0rPl0fzDN/gVlebl6RAq
- eVQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=GQ++DfcDzAjdfJdKyj0x+1JvHGLZ0hECGNGimajPzTo=;
- b=DTZfnCQt6wOH1JtuTadTby1GVxBT0ga8D0ObMEgVw91AM9mfXXrx+AqYlwULe7gnZU
- o6XZmtqAH0trutBao8uTPwR6llm+kI/VSAaBiDxuRTUI7S0X6x4w7UUvLRSXnGT0fw2V
- owc84ZczVspZlHPWviP5Lln2W5lUD94O9UYKWvzpnAqKJMhg2O+T2k331/MZ0CYl3t23
- ZzbrfYGWiVWgUmKzKZEdQa7s44MR4iITTn4aQGOesWNIBoYuFPUozX40cGd0ajFr7W7I
- 154mz4Wsca2k+dmK2xTVKP8VlM7mUiEO224ouMjmKtnCXrsKwuv/3bNeauwJW2zj5p/R
- NAbw==
-X-Gm-Message-State: AOAM532Umx2ZEdelWb9hRvWRbKsVdaR57ZFCIbYNLtzC7hSHiru5aYl/
- r/1HCWDHV2gTcIWcfAoBhegOOjTorhUzp2e/VUA=
-X-Google-Smtp-Source: ABdhPJxF59kzgeSetf0Hf3Ubbx8ohozfQw41Z5Cme3C9Iuqb0oQSWxjeC+GHQOyRW+Ja3Aw803Wo6g==
-X-Received: by 2002:a05:6214:5193:: with SMTP id
- kl19mr8069646qvb.77.1639881080315; 
- Sat, 18 Dec 2021 18:31:20 -0800 (PST)
-Received: from alexdesktop.localdomain
- (cpebc4dfb42ca53-cmbc4dfb42ca50.cpe.net.cable.rogers.com. [99.251.122.96])
- by smtp.gmail.com with ESMTPSA id m4sm10174293qtu.87.2021.12.18.18.31.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 18 Dec 2021 18:31:20 -0800 (PST)
-From: Alexander Orzechowski <orzechowski.alexander@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org,
- Alexander Orzechowski <orzechowski.alexander@gmail.com>
-Subject: [PATCH 4/4] ui: Fix gtk/gl when the scaled virtual console does not
- fit the window
-Date: Sat, 18 Dec 2021 21:30:06 -0500
-Message-Id: <20211219023006.124530-5-orzechowski.alexander@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20211219023006.124530-1-orzechowski.alexander@gmail.com>
-References: <20211219023006.124530-1-orzechowski.alexander@gmail.com>
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mz7jF-0000bw-01; Sun, 19 Dec 2021 20:44:41 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2965)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
+ id 1mz7jC-0002jm-2R; Sun, 19 Dec 2021 20:44:40 -0500
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.56])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4JHMnh5cN6zcbvN;
+ Mon, 20 Dec 2021 09:44:08 +0800 (CST)
+Received: from [10.174.187.128] (10.174.187.128) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2308.20; Mon, 20 Dec 2021 09:44:29 +0800
+Subject: Re: [PATCH v2 1/5] hw/qdev: Cosmetic around documentation
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
+CC: Richard Henderson <richard.henderson@linaro.org>, Eduardo Habkost
+ <eduardo@habkost.net>, <qemu-trivial@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+References: <20211218130437.1516929-1-f4bug@amsat.org>
+ <20211218130437.1516929-2-f4bug@amsat.org>
+From: "wangyanan (Y)" <wangyanan55@huawei.com>
+Message-ID: <dfe11870-de06-2b9b-b3a3-1da5fa549bef@huawei.com>
+Date: Mon, 20 Dec 2021 09:44:29 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
+In-Reply-To: <20211218130437.1516929-2-f4bug@amsat.org>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f2d
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2d;
- envelope-from=orzechowski.alexander@gmail.com; helo=mail-qv1-xf2d.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Language: en-US
+X-Originating-IP: [10.174.187.128]
+X-ClientProxiedBy: dggeme704-chm.china.huawei.com (10.1.199.100) To
+ dggpemm500023.china.huawei.com (7.185.36.83)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=wangyanan55@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.563,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,88 +58,112 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 19 Dec 2021 02:31:24 -0000
+X-List-Received-Date: Mon, 20 Dec 2021 01:44:41 -0000
 
-gtk/gl was incorrectly always rendering as if the 'Zoom to Fit' was
-always checked even if it wasn't. This is now using logic closer
-to what is being used for the existing cairo code paths.
 
-Signed-off-by: Alexander Orzechowski <orzechowski.alexander@gmail.com>
----
- ui/gtk-gl-area.c | 34 +++++++++++++++++++++++++++++-----
- 1 file changed, 29 insertions(+), 5 deletions(-)
+On 2021/12/18 21:04, Philippe Mathieu-Daudé wrote:
+> Add empty lines to have a clearer distinction between different
+> functions declarations.
+>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   include/hw/qdev-core.h | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
+Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
 
-diff --git a/ui/gtk-gl-area.c b/ui/gtk-gl-area.c
-index 01e4e74ee3..ea72f1817b 100644
---- a/ui/gtk-gl-area.c
-+++ b/ui/gtk-gl-area.c
-@@ -41,16 +41,40 @@ void gd_gl_area_draw(VirtualConsole *vc)
- #ifdef CONFIG_GBM
-     QemuDmaBuf *dmabuf = vc->gfx.guest_fb.dmabuf;
- #endif
-+    GtkDisplayState *s = vc->s;
-     int ww, wh, ws, y1, y2;
-+    int mx, my;
-+    int fbh, fbw;
- 
-     if (!vc->gfx.gls) {
-         return;
-     }
- 
-     gtk_gl_area_make_current(GTK_GL_AREA(vc->gfx.drawing_area));
-+
-+    fbw = surface_width(vc->gfx.ds);
-+    fbh = surface_height(vc->gfx.ds);
-+
-     ws = gdk_window_get_scale_factor(gtk_widget_get_window(vc->gfx.drawing_area));
--    ww = gtk_widget_get_allocated_width(vc->gfx.drawing_area) * ws;
--    wh = gtk_widget_get_allocated_height(vc->gfx.drawing_area) * ws;
-+    ww = gtk_widget_get_allocated_width(vc->gfx.drawing_area);
-+    wh = gtk_widget_get_allocated_height(vc->gfx.drawing_area);
-+
-+    if (s->full_screen) {
-+        vc->gfx.scale_x = (double)ww / fbw;
-+        vc->gfx.scale_y = (double)wh / fbh;
-+    } else if (s->free_scale) {
-+        double sx, sy;
-+
-+        sx = (double)ww / fbw;
-+        sy = (double)wh / fbh;
-+
-+        vc->gfx.scale_x = vc->gfx.scale_y = MIN(sx, sy);
-+    }
-+
-+    fbw *= vc->gfx.scale_x * ws;
-+    fbh *= vc->gfx.scale_y * ws;
-+    mx = (ww * ws - fbw) / 2;
-+    my = (wh * ws - fbh) / 2;
- 
-     if (vc->gfx.scanout_mode) {
-         if (!vc->gfx.guest_fb.framebuffer) {
-@@ -70,11 +94,11 @@ void gd_gl_area_draw(VirtualConsole *vc)
-         glBindFramebuffer(GL_READ_FRAMEBUFFER, vc->gfx.guest_fb.framebuffer);
-         /* GtkGLArea sets GL_DRAW_FRAMEBUFFER for us */
- 
--        glViewport(0, 0, ww, wh);
-+        glViewport(mx, my, fbw, fbh);
-         y1 = vc->gfx.y0_top ? 0 : vc->gfx.h;
-         y2 = vc->gfx.y0_top ? vc->gfx.h : 0;
-         glBlitFramebuffer(0, y1, vc->gfx.w, y2,
--                          0, 0, ww, wh,
-+                          mx, my, fbw, fbh,
-                           GL_COLOR_BUFFER_BIT, GL_NEAREST);
- #ifdef CONFIG_GBM
-         if (dmabuf) {
-@@ -98,7 +122,7 @@ void gd_gl_area_draw(VirtualConsole *vc)
-         }
-         gtk_gl_area_make_current(GTK_GL_AREA(vc->gfx.drawing_area));
- 
--        surface_gl_setup_viewport(vc->gfx.gls, vc->gfx.ds, ww, wh);
-+        glViewport(mx, my, fbw, fbh);
-         surface_gl_render_texture(vc->gfx.gls, vc->gfx.ds);
-     }
- 
--- 
-2.34.1
+Thanks,
+Yanan
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index 20d3066595e..59a822ffceb 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -321,6 +321,7 @@ compat_props_add(GPtrArray *arr,
+>    * The returned object has a reference count of 1.
+>    */
+>   DeviceState *qdev_new(const char *name);
+> +
+>   /**
+>    * qdev_try_new: Try to create a device on the heap
+>    * @name: device type to create
+> @@ -329,6 +330,7 @@ DeviceState *qdev_new(const char *name);
+>    * does not exist, rather than asserting.
+>    */
+>   DeviceState *qdev_try_new(const char *name);
+> +
+>   /**
+>    * qdev_realize: Realize @dev.
+>    * @dev: device to realize
+> @@ -347,6 +349,7 @@ DeviceState *qdev_try_new(const char *name);
+>    * qdev_realize_and_unref() instead.
+>    */
+>   bool qdev_realize(DeviceState *dev, BusState *bus, Error **errp);
+> +
+>   /**
+>    * qdev_realize_and_unref: Realize @dev and drop a reference
+>    * @dev: device to realize
+> @@ -372,6 +375,7 @@ bool qdev_realize(DeviceState *dev, BusState *bus, Error **errp);
+>    * would be incorrect. For that use case you want qdev_realize().
+>    */
+>   bool qdev_realize_and_unref(DeviceState *dev, BusState *bus, Error **errp);
+> +
+>   /**
+>    * qdev_unrealize: Unrealize a device
+>    * @dev: device to unrealize
+> @@ -450,6 +454,7 @@ typedef enum {
+>    * For named input GPIO lines, use qdev_get_gpio_in_named().
+>    */
+>   qemu_irq qdev_get_gpio_in(DeviceState *dev, int n);
+> +
+>   /**
+>    * qdev_get_gpio_in_named: Get one of a device's named input GPIO lines
+>    * @dev: Device whose GPIO we want
+> @@ -497,6 +502,7 @@ qemu_irq qdev_get_gpio_in_named(DeviceState *dev, const char *name, int n);
+>    * For named output GPIO lines, use qdev_connect_gpio_out_named().
+>    */
+>   void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq pin);
+> +
+>   /**
+>    * qdev_connect_gpio_out: Connect one of a device's anonymous output GPIO lines
+>    * @dev: Device whose GPIO to connect
+> @@ -524,6 +530,7 @@ void qdev_connect_gpio_out(DeviceState *dev, int n, qemu_irq pin);
+>    */
+>   void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
+>                                    qemu_irq pin);
+> +
+>   /**
+>    * qdev_get_gpio_out_connector: Get the qemu_irq connected to an output GPIO
+>    * @dev: Device whose output GPIO we are interested in
+> @@ -541,6 +548,7 @@ void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
+>    * by the platform-bus subsystem.
+>    */
+>   qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name, int n);
+> +
+>   /**
+>    * qdev_intercept_gpio_out: Intercept an existing GPIO connection
+>    * @dev: Device to intercept the outbound GPIO line from
+> @@ -582,6 +590,7 @@ BusState *qdev_get_child_bus(DeviceState *dev, const char *name);
+>    * hold of an input GPIO line to manipulate it.
+>    */
+>   void qdev_init_gpio_in(DeviceState *dev, qemu_irq_handler handler, int n);
+> +
+>   /**
+>    * qdev_init_gpio_out: create an array of anonymous output GPIO lines
+>    * @dev: Device to create output GPIOs for
+> @@ -610,6 +619,7 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_handler handler, int n);
+>    * handler.
+>    */
+>   void qdev_init_gpio_out(DeviceState *dev, qemu_irq *pins, int n);
+> +
+>   /**
+>    * qdev_init_gpio_out: create an array of named output GPIO lines
+>    * @dev: Device to create output GPIOs for
+> @@ -623,6 +633,7 @@ void qdev_init_gpio_out(DeviceState *dev, qemu_irq *pins, int n);
+>    */
+>   void qdev_init_gpio_out_named(DeviceState *dev, qemu_irq *pins,
+>                                 const char *name, int n);
+> +
+>   /**
+>    * qdev_init_gpio_in_named_with_opaque: create an array of input GPIO lines
+>    *   for the specified device
 
 
