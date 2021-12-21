@@ -1,52 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mz8Cl-0007xP-PV
-	for mharc-qemu-trivial@gnu.org; Sun, 19 Dec 2021 21:15:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51194)
+	id 1mzZZD-0002Q7-CP
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Dec 2021 02:28:12 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33198)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mz8Cc-0007up-1V; Sun, 19 Dec 2021 21:15:07 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:2914)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1mz8CZ-0005pj-8n; Sun, 19 Dec 2021 21:15:01 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.57])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4JHNPd1z2Cz1DK29;
- Mon, 20 Dec 2021 10:11:49 +0800 (CST)
-Received: from [10.174.187.128] (10.174.187.128) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.20; Mon, 20 Dec 2021 10:14:54 +0800
-Subject: Re: [PATCH v2 5/5] hw/input/pckbd: Open-code i8042_setup_a20_line()
- wrapper
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- <qemu-devel@nongnu.org>
-CC: Richard Henderson <richard.henderson@linaro.org>, Eduardo Habkost
- <eduardo@habkost.net>, <qemu-trivial@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>
-References: <20211218130437.1516929-1-f4bug@amsat.org>
- <20211218130437.1516929-6-f4bug@amsat.org>
-From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <b2e7e228-ec2c-f0be-5777-e7077b0d7203@huawei.com>
-Date: Mon, 20 Dec 2021 10:14:54 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1mzZZ8-0002Mg-Ix; Tue, 21 Dec 2021 02:28:08 -0500
+Received: from [2a00:1450:4864:20::32d] (port=55083
+ helo=mail-wm1-x32d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1mzZZ6-0004TU-KC; Tue, 21 Dec 2021 02:28:06 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id i12so8427071wmq.4;
+ Mon, 20 Dec 2021 23:28:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jF8DkO2cy9W45icSbyEnpTsSHUiuu/71kvV+CqKRQ8k=;
+ b=HAm2sEBdFFDghRpTcLC3dO+PNTEvemIhXH6Vt/VYQBihsyZqM1aD92NN9GUdZIep6e
+ fygMY8GiMjV6hCIlQwZRat1Q7mrWlKEzVdiYVgMFTv/5mKm88/9Lp3YehnUpGtoPnh4R
+ BFuxwHD0xN/glGKnoUC7bdB/ZYdixdcIzjJRJWZSXL3gIGYzY2yfY0CGQgNtanbPrEHk
+ aInFhyE4Gv/qKL5eGIZ385VqFYLcwEVg7KlUqve8cv8iXS+39rKH/vReqN6Is2ix+PsX
+ VvDBrUWmYBv2tZxSqRpEVBfVdE1Qb4fHvpQ+2+z82D5X1hbxKiY6oYKj9C6dQr1pvKzm
+ Si0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jF8DkO2cy9W45icSbyEnpTsSHUiuu/71kvV+CqKRQ8k=;
+ b=4dFfk7VIuAJwwJvry14cnpBzoXSczTVupyE+zdZLPJ3mEjDSEv+rorYn5jqKxkC5wc
+ vZ5g2+L0SPL++t8G7MPu1szy3A1kZdXQWFo394ih+JuO+ALhzgqLbbs2+0Bm17t/BvQM
+ aFgDh27ZJSzrMaJ219KwFC/2mAPmg0nM4KP1wXS5FNZB5nCdTqS7JDMTMYioIIbZruI/
+ WdP+Lp+TtT+q57g1Q8avM7zXoY047pfpfroQ9SdwaULLHUFP5DBHYP3pJ25ly0efyqU/
+ tn44ED3R8l3BqUUfazpnOA+aUGlKaqAN777t56d3nL9jvojjB3L3LaWSCzyelVcZRwEi
+ C3iw==
+X-Gm-Message-State: AOAM533J3Vbu0MjBFdE3+kVENrMMIxmQz3nkdvbQmhP99LARcyEt1Jb/
+ xBHL6hKzU4kMDXzWRogd8nqL1en7hVxF+SE7SGU=
+X-Google-Smtp-Source: ABdhPJyiX6MPcmgy2werCana0nOzHAM8jPFxsHV3q+2JjzxlF880LjXKbsXfXc5eZfqshDVhr/VB2mueFJlrHXBOU58=
+X-Received: by 2002:a05:600c:511c:: with SMTP id
+ o28mr1471206wms.96.1640071681718; 
+ Mon, 20 Dec 2021 23:28:01 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20211218130437.1516929-6-f4bug@amsat.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme702-chm.china.huawei.com (10.1.199.98) To
- dggpemm500023.china.huawei.com (7.185.36.83)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=wangyanan55@huawei.com; helo=szxga08-in.huawei.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.563,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20211219023006.124530-1-orzechowski.alexander@gmail.com>
+ <20211219023006.124530-2-orzechowski.alexander@gmail.com>
+In-Reply-To: <20211219023006.124530-2-orzechowski.alexander@gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 21 Dec 2021 11:27:49 +0400
+Message-ID: <CAJ+F1CJnf0Ksm6PoRoucmjx0D08zsXA4ckascDQvGJY906BiPA@mail.gmail.com>
+Subject: Re: [PATCH 1/4] ui: Use allocated size instead of window size
+To: Alexander Orzechowski <orzechowski.alexander@gmail.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
+ Gerd Hoffmann <kraxel@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000febe1305d3a2f111"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32d
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -59,65 +73,251 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Dec 2021 02:15:09 -0000
+X-List-Received-Date: Tue, 21 Dec 2021 07:28:10 -0000
 
+--000000000000febe1305d3a2f111
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 2021/12/18 21:04, Philippe Mathieu-Daudé wrote:
-> Since the named GPIO lines are a "public" interface to the device,
-> we can directly call qdev_connect_gpio_out_named(), making it
-> consistent with how the other A20 input source (port92) is wired.
+Hi
+
+On Sun, Dec 19, 2021 at 6:33 AM Alexander Orzechowski <
+orzechowski.alexander@gmail.com> wrote:
+
+> In these cases, we only care about the size of the virtual console
+> itself. Previously, these calculations were made using the size of
+> the entire window, which would include the size of the virtual console
+> plus all the ui elements around it.
 >
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   include/hw/input/i8042.h | 1 -
->   hw/i386/pc.c             | 3 ++-
->   hw/input/pckbd.c         | 5 -----
->   3 files changed, 2 insertions(+), 7 deletions(-)
-Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
+> Signed-off-by: Alexander Orzechowski <orzechowski.alexander@gmail.com>
+>
 
-Thanks,
-Yanan
-> diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
-> index 1d90432daef..1cd53b8d221 100644
-> --- a/include/hw/input/i8042.h
-> +++ b/include/hw/input/i8042.h
-> @@ -21,6 +21,5 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
->                      MemoryRegion *region, ram_addr_t size,
->                      hwaddr mask);
->   void i8042_isa_mouse_fake_event(ISAKBDState *isa);
-> -void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
->   
->   #endif /* HW_INPUT_I8042_H */
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index a2ef40ecbc2..e2f7cd4aec6 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1045,7 +1045,8 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl, bool no_vmport)
->       port92 = isa_create_simple(isa_bus, TYPE_PORT92);
->   
->       a20_line = qemu_allocate_irqs(handle_a20_line_change, first_cpu, 2);
-> -    i8042_setup_a20_line(i8042, a20_line[0]);
-> +    qdev_connect_gpio_out_named(DEVICE(i8042),
-> +                                I8042_A20_LINE, 0, a20_line[0]);
->       qdev_connect_gpio_out_named(DEVICE(port92),
->                                   PORT92_A20_LINE, 0, a20_line[1]);
->       g_free(a20_line);
-> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-> index baba62f357a..7fd4477d742 100644
-> --- a/hw/input/pckbd.c
-> +++ b/hw/input/pckbd.c
-> @@ -680,11 +680,6 @@ void i8042_isa_mouse_fake_event(ISAKBDState *isa)
->       ps2_mouse_fake_event(s->mouse);
->   }
->   
-> -void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out)
-> -{
-> -    qdev_connect_gpio_out_named(DEVICE(dev), I8042_A20_LINE, 0, a20_out);
-> -}
-> -
->   static const VMStateDescription vmstate_kbd_isa = {
->       .name = "pckbd",
->       .version_id = 3,
+It's not obvious to me that the drawing area doesn't have its own window.
 
+Nonetheless, it is better to use the allocated size.
+
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+---
+>  ui/gtk.c | 26 ++++++++++----------------
+>  1 file changed, 10 insertions(+), 16 deletions(-)
+>
+> diff --git a/ui/gtk.c b/ui/gtk.c
+> index 428f02f2df..824334ff3d 100644
+> --- a/ui/gtk.c
+> +++ b/ui/gtk.c
+> @@ -340,8 +340,8 @@ static void gd_update_full_redraw(VirtualConsole *vc)
+>  {
+>      GtkWidget *area =3D vc->gfx.drawing_area;
+>      int ww, wh;
+> -    ww =3D gdk_window_get_width(gtk_widget_get_window(area));
+> -    wh =3D gdk_window_get_height(gtk_widget_get_window(area));
+> +    ww =3D gtk_widget_get_allocated_width(vc->gfx.drawing_area);
+> +    wh =3D gtk_widget_get_allocated_height(vc->gfx.drawing_area);
+>  #if defined(CONFIG_OPENGL)
+>      if (vc->gfx.gls && gtk_use_gl_area) {
+>          gtk_gl_area_queue_render(GTK_GL_AREA(vc->gfx.drawing_area));
+> @@ -387,7 +387,6 @@ static void gd_update(DisplayChangeListener *dcl,
+>                        int x, int y, int w, int h)
+>  {
+>      VirtualConsole *vc =3D container_of(dcl, VirtualConsole, gfx.dcl);
+> -    GdkWindow *win;
+>      int x1, x2, y1, y2;
+>      int mx, my;
+>      int fbw, fbh;
+> @@ -414,12 +413,8 @@ static void gd_update(DisplayChangeListener *dcl,
+>      fbw =3D surface_width(vc->gfx.ds) * vc->gfx.scale_x;
+>      fbh =3D surface_height(vc->gfx.ds) * vc->gfx.scale_y;
+>
+> -    win =3D gtk_widget_get_window(vc->gfx.drawing_area);
+> -    if (!win) {
+> -        return;
+> -    }
+> -    ww =3D gdk_window_get_width(win);
+> -    wh =3D gdk_window_get_height(win);
+> +    ww =3D gtk_widget_get_allocated_width(vc->gfx.drawing_area);
+> +    wh =3D gtk_widget_get_allocated_height(vc->gfx.drawing_area);
+>
+>      mx =3D my =3D 0;
+>      if (ww > fbw) {
+> @@ -788,8 +783,8 @@ static gboolean gd_draw_event(GtkWidget *widget,
+> cairo_t *cr, void *opaque)
+>      fbw =3D surface_width(vc->gfx.ds);
+>      fbh =3D surface_height(vc->gfx.ds);
+>
+> -    ww =3D gdk_window_get_width(gtk_widget_get_window(widget));
+> -    wh =3D gdk_window_get_height(gtk_widget_get_window(widget));
+> +    ww =3D gtk_widget_get_allocated_width(vc->gfx.drawing_area);
+> +    wh =3D gtk_widget_get_allocated_height(vc->gfx.drawing_area);
+>
+>      if (s->full_screen) {
+>          vc->gfx.scale_x =3D (double)ww / fbw;
+> @@ -838,7 +833,6 @@ static gboolean gd_motion_event(GtkWidget *widget,
+> GdkEventMotion *motion,
+>  {
+>      VirtualConsole *vc =3D opaque;
+>      GtkDisplayState *s =3D vc->s;
+> -    GdkWindow *window;
+>      int x, y;
+>      int mx, my;
+>      int fbh, fbw;
+> @@ -851,10 +845,10 @@ static gboolean gd_motion_event(GtkWidget *widget,
+> GdkEventMotion *motion,
+>      fbw =3D surface_width(vc->gfx.ds) * vc->gfx.scale_x;
+>      fbh =3D surface_height(vc->gfx.ds) * vc->gfx.scale_y;
+>
+> -    window =3D gtk_widget_get_window(vc->gfx.drawing_area);
+> -    ww =3D gdk_window_get_width(window);
+> -    wh =3D gdk_window_get_height(window);
+> -    ws =3D gdk_window_get_scale_factor(window);
+> +    ww =3D gtk_widget_get_allocated_width(vc->gfx.drawing_area);
+> +    wh =3D gtk_widget_get_allocated_height(vc->gfx.drawing_area);
+> +    ws =3D gdk_window_get_scale_factor(
+> +            gtk_widget_get_window(vc->gfx.drawing_area));
+>
+>      mx =3D my =3D 0;
+>      if (ww > fbw) {
+> --
+> 2.34.1
+>
+>
+>
+
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--000000000000febe1305d3a2f111
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi<br></div><br><div class=3D"gmail_quote=
+"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Dec 19, 2021 at 6:33 AM Ale=
+xander Orzechowski &lt;<a href=3D"mailto:orzechowski.alexander@gmail.com">o=
+rzechowski.alexander@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
+04,204,204);padding-left:1ex">In these cases, we only care about the size o=
+f the virtual console<br>
+itself. Previously, these calculations were made using the size of<br>
+the entire window, which would include the size of the virtual console<br>
+plus all the ui elements around it.<br>
+<br>
+Signed-off-by: Alexander Orzechowski &lt;<a href=3D"mailto:orzechowski.alex=
+ander@gmail.com" target=3D"_blank">orzechowski.alexander@gmail.com</a>&gt;<=
+br></blockquote><div><br></div><div>It&#39;s not obvious to me that the dra=
+wing area doesn&#39;t have its own window.</div><div><br></div><div>Nonethe=
+less, it is better to use the allocated size.</div><div><br></div><div>Revi=
+ewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@redh=
+at.com">marcandre.lureau@redhat.com</a>&gt;</div><div><br></div><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
+lid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0ui/gtk.c | 26 ++++++++++----------------<br>
+=C2=A01 file changed, 10 insertions(+), 16 deletions(-)<br>
+<br>
+diff --git a/ui/gtk.c b/ui/gtk.c<br>
+index 428f02f2df..824334ff3d 100644<br>
+--- a/ui/gtk.c<br>
++++ b/ui/gtk.c<br>
+@@ -340,8 +340,8 @@ static void gd_update_full_redraw(VirtualConsole *vc)<b=
+r>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0GtkWidget *area =3D vc-&gt;gfx.drawing_area;<br>
+=C2=A0 =C2=A0 =C2=A0int ww, wh;<br>
+-=C2=A0 =C2=A0 ww =3D gdk_window_get_width(gtk_widget_get_window(area));<br=
+>
+-=C2=A0 =C2=A0 wh =3D gdk_window_get_height(gtk_widget_get_window(area));<b=
+r>
++=C2=A0 =C2=A0 ww =3D gtk_widget_get_allocated_width(vc-&gt;gfx.drawing_are=
+a);<br>
++=C2=A0 =C2=A0 wh =3D gtk_widget_get_allocated_height(vc-&gt;gfx.drawing_ar=
+ea);<br>
+=C2=A0#if defined(CONFIG_OPENGL)<br>
+=C2=A0 =C2=A0 =C2=A0if (vc-&gt;gfx.gls &amp;&amp; gtk_use_gl_area) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0gtk_gl_area_queue_render(GTK_GL_AREA(vc-&=
+gt;gfx.drawing_area));<br>
+@@ -387,7 +387,6 @@ static void gd_update(DisplayChangeListener *dcl,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0int x, int y, int w, int h)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0VirtualConsole *vc =3D container_of(dcl, VirtualConsole=
+, gfx.dcl);<br>
+-=C2=A0 =C2=A0 GdkWindow *win;<br>
+=C2=A0 =C2=A0 =C2=A0int x1, x2, y1, y2;<br>
+=C2=A0 =C2=A0 =C2=A0int mx, my;<br>
+=C2=A0 =C2=A0 =C2=A0int fbw, fbh;<br>
+@@ -414,12 +413,8 @@ static void gd_update(DisplayChangeListener *dcl,<br>
+=C2=A0 =C2=A0 =C2=A0fbw =3D surface_width(vc-&gt;gfx.ds) * vc-&gt;gfx.scale=
+_x;<br>
+=C2=A0 =C2=A0 =C2=A0fbh =3D surface_height(vc-&gt;gfx.ds) * vc-&gt;gfx.scal=
+e_y;<br>
+<br>
+-=C2=A0 =C2=A0 win =3D gtk_widget_get_window(vc-&gt;gfx.drawing_area);<br>
+-=C2=A0 =C2=A0 if (!win) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+-=C2=A0 =C2=A0 }<br>
+-=C2=A0 =C2=A0 ww =3D gdk_window_get_width(win);<br>
+-=C2=A0 =C2=A0 wh =3D gdk_window_get_height(win);<br>
++=C2=A0 =C2=A0 ww =3D gtk_widget_get_allocated_width(vc-&gt;gfx.drawing_are=
+a);<br>
++=C2=A0 =C2=A0 wh =3D gtk_widget_get_allocated_height(vc-&gt;gfx.drawing_ar=
+ea);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0mx =3D my =3D 0;<br>
+=C2=A0 =C2=A0 =C2=A0if (ww &gt; fbw) {<br>
+@@ -788,8 +783,8 @@ static gboolean gd_draw_event(GtkWidget *widget, cairo_=
+t *cr, void *opaque)<br>
+=C2=A0 =C2=A0 =C2=A0fbw =3D surface_width(vc-&gt;gfx.ds);<br>
+=C2=A0 =C2=A0 =C2=A0fbh =3D surface_height(vc-&gt;gfx.ds);<br>
+<br>
+-=C2=A0 =C2=A0 ww =3D gdk_window_get_width(gtk_widget_get_window(widget));<=
+br>
+-=C2=A0 =C2=A0 wh =3D gdk_window_get_height(gtk_widget_get_window(widget));=
+<br>
++=C2=A0 =C2=A0 ww =3D gtk_widget_get_allocated_width(vc-&gt;gfx.drawing_are=
+a);<br>
++=C2=A0 =C2=A0 wh =3D gtk_widget_get_allocated_height(vc-&gt;gfx.drawing_ar=
+ea); <br>
+<br>
+=C2=A0 =C2=A0 =C2=A0if (s-&gt;full_screen) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0vc-&gt;gfx.scale_x =3D (double)ww / fbw;<=
+br>
+@@ -838,7 +833,6 @@ static gboolean gd_motion_event(GtkWidget *widget, GdkE=
+ventMotion *motion,<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0VirtualConsole *vc =3D opaque;<br>
+=C2=A0 =C2=A0 =C2=A0GtkDisplayState *s =3D vc-&gt;s;<br>
+-=C2=A0 =C2=A0 GdkWindow *window;<br>
+=C2=A0 =C2=A0 =C2=A0int x, y;<br>
+=C2=A0 =C2=A0 =C2=A0int mx, my;<br>
+=C2=A0 =C2=A0 =C2=A0int fbh, fbw;<br>
+@@ -851,10 +845,10 @@ static gboolean gd_motion_event(GtkWidget *widget, Gd=
+kEventMotion *motion,<br>
+=C2=A0 =C2=A0 =C2=A0fbw =3D surface_width(vc-&gt;gfx.ds) * vc-&gt;gfx.scale=
+_x;<br>
+=C2=A0 =C2=A0 =C2=A0fbh =3D surface_height(vc-&gt;gfx.ds) * vc-&gt;gfx.scal=
+e_y;<br>
+<br>
+-=C2=A0 =C2=A0 window =3D gtk_widget_get_window(vc-&gt;gfx.drawing_area);<b=
+r>
+-=C2=A0 =C2=A0 ww =3D gdk_window_get_width(window);<br>
+-=C2=A0 =C2=A0 wh =3D gdk_window_get_height(window);<br>
+-=C2=A0 =C2=A0 ws =3D gdk_window_get_scale_factor(window);<br>
++=C2=A0 =C2=A0 ww =3D gtk_widget_get_allocated_width(vc-&gt;gfx.drawing_are=
+a);<br>
++=C2=A0 =C2=A0 wh =3D gtk_widget_get_allocated_height(vc-&gt;gfx.drawing_ar=
+ea);<br>
++=C2=A0 =C2=A0 ws =3D gdk_window_get_scale_factor(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 gtk_widget_get_window(vc-&gt;gfx=
+.drawing_area));<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0mx =3D my =3D 0;<br>
+=C2=A0 =C2=A0 =C2=A0if (ww &gt; fbw) {<br>
+-- <br>
+2.34.1<br>
+<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
+
+--000000000000febe1305d3a2f111--
 
