@@ -1,67 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mzpE4-0005kr-7h
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Dec 2021 19:11:24 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55172)
+	id 1mzpE4-0005lX-D3
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Dec 2021 19:11:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
- id 1mzpDz-0005dI-Jp; Tue, 21 Dec 2021 19:11:19 -0500
-Received: from [2607:f8b0:4864:20::f31] (port=36563
- helo=mail-qv1-xf31.google.com)
+ id 1mzpDz-0005dJ-KH; Tue, 21 Dec 2021 19:11:19 -0500
+Received: from [2607:f8b0:4864:20::833] (port=42566
+ helo=mail-qt1-x833.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
- id 1mzpDx-0004Zu-NC; Tue, 21 Dec 2021 19:11:18 -0500
-Received: by mail-qv1-xf31.google.com with SMTP id kc16so819644qvb.3;
- Tue, 21 Dec 2021 16:11:17 -0800 (PST)
+ id 1mzpDw-0004Ze-K2; Tue, 21 Dec 2021 19:11:18 -0500
+Received: by mail-qt1-x833.google.com with SMTP id z9so433039qtj.9;
+ Tue, 21 Dec 2021 16:11:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=2fZwUUl0Nx3lYJiijHfkMwPLeE2pMycIYokPXRHmPyY=;
- b=TKvXa18VS9ijHC0Bir6buMp6AnNpNHYu+kwR8PcwHGO5yB0nN70M+HZb338PCAaV49
- Z0M2cC0OEEUhPkRQr6LEfb9YPb7MorsFYMIZM4CkUyfLaXkfUqGu7TEAnTdABtY/rTvn
- nmzZBy2iILCBmM0BZxbScjQggAwQSqCzL1F7ImT2w7gYqu2VszVodbWcJocz0bFtnmy+
- NlMz1U5D0jQ1rLSWGVcTGrGeg5BzznVffBXfg1m0oVn763lVqQLZch+GOz+bFGao2I6+
- ABiZ3+GaH1edR7AN0vgTImoI4M852iMO0UdFqSBjby6Oj4v8IJvaGovnVV44I1POYb6c
- WRig==
+ bh=5PzUgNm2q09z3nrELevky60vyh/vg7hqpGJ+6nDPRxs=;
+ b=oTVCHeOkHydgS7XLTI73PUkq3C44sLYLsfSP5+xy26UqQDW+zGS1Zg979N6THTEPTu
+ i+hI++fdP2NPd3+d4N/0G33gy6iB9dgqDCZRGyM0AXjNR+2xCEWoWcDskUFbz/eERm7m
+ Wlp3tCcb3NagvbpMBvIEWI+UqN69Uls6YcEK6+Cfb98coMISCYqT+/s1CfnBmf6KcUWR
+ 5l/D4/1iIFysxwQ4LX03jhx6sV7vkX0n7qMkYPmm6psKbacUkWv2IWFiSm2efbT1spzX
+ tBOtWV7ozi2GM5d1z30KshLMvvXi/QT151ryQ1WlOUJX3U6HyPhJsgblQWYaM9CErG3I
+ 3LVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=2fZwUUl0Nx3lYJiijHfkMwPLeE2pMycIYokPXRHmPyY=;
- b=iao7FRygkYd+jL+A1izyELdZYhwblkX1gV3bYMYChazfxZ7RFI3Q81v1/GGHYZdhuT
- /d0KtOjcFvX2oGGgODo8R6pBccevE35X8QiaTBZefJbIuMFcrgLOAKlG9+LCVDC6cWEV
- Ui6uz/xKf+Tvt0MGXK1EqGZCW0fdDwEkh4JkEuvKrQCO/sKypT8ve65QNqgJ6m7SOahi
- LphvFc9HqpPXDYnzbKpb+saGydLwDev4CuidVJ6NAzajV3Gd4DnuFJkpsMotAVQ3+W2U
- TXondqEAsi8UP83deZtpeyqLtAzC6eaaDLBKblr9CI1IAtPcY7TqCKghyU7eqCe9AUg6
- iA7w==
-X-Gm-Message-State: AOAM531cRxodjXDhnYh/tNrb05hra2ih8wLBeSmH/yzGUyZjL7V8Ogvo
- j6pbgMjlPrSErJSTxEiYzwDq+ND9dA5KWQ==
-X-Google-Smtp-Source: ABdhPJzHv1uBo7jPkhaI9oTq7s2wh21tDjmU9gOO3xHv2vZPUtJkX6RzIh9h3Sjaa19T0D3yv0CN5w==
-X-Received: by 2002:ad4:5aad:: with SMTP id u13mr680374qvg.46.1640131876628;
- Tue, 21 Dec 2021 16:11:16 -0800 (PST)
+ bh=5PzUgNm2q09z3nrELevky60vyh/vg7hqpGJ+6nDPRxs=;
+ b=YcmRpi7Sj3PAKWkn+xRc7dzxyOc2dZMI1ai8Zt2g0NZD+hVlhucFvQ8BXkCOs5FnLP
+ iwcks/U3iGEwTAojOv9cvWEVMN/kagiIiyhDiULVammCphyxVimhixPDm2aYLDoB4MgB
+ B7IwH8j5dlzDS7PZ+ZVHXwRmw9on20CWV+HS1Y4MVh42GzCkQ8uqxm1Lyu45QoWuEcZ7
+ JVdt8lP4U5HeakyyL3u5uO02qrui3G8Xw++avFlQdaGqwX/w8AjWCF+rdSbvT/pO0DNd
+ vmDC++YoIOeWSfskyFnQ15RkCS9MTDNwX8/KJD/tmGnhBVt0pJn+Ay8tYk70gWbq0Bda
+ FQTg==
+X-Gm-Message-State: AOAM533Tioq1ml7fNgSE1v1RkgvL8SRd7C2ZkcP1J+lPfItILGfxGs1j
+ grauuIh12OYRInk6tI05HRLbyf2eH+1dHQ==
+X-Google-Smtp-Source: ABdhPJzIgubhaPgAQC8cMmNrn1Yk4ltOt8o0x/NtCuN9WYwW/yQfX+ISRz4otazTbmsqTH07nVizTA==
+X-Received: by 2002:a05:622a:1354:: with SMTP id
+ w20mr519653qtk.566.1640131875270; 
+ Tue, 21 Dec 2021 16:11:15 -0800 (PST)
 Received: from alexdesktop.localdomain
  (cpebc4dfb42ca53-cmbc4dfb42ca50.cpe.net.cable.rogers.com. [99.251.122.96])
- by smtp.gmail.com with ESMTPSA id i6sm503410qkn.26.2021.12.21.16.11.16
+ by smtp.gmail.com with ESMTPSA id i6sm503410qkn.26.2021.12.21.16.11.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Dec 2021 16:11:16 -0800 (PST)
+ Tue, 21 Dec 2021 16:11:15 -0800 (PST)
 From: Alexander Orzechowski <orzechowski.alexander@gmail.com>
 To: QEMU <qemu-devel@nongnu.org>
 Cc: qemu trivial <qemu-trivial@nongnu.org>,
  Mark-Andre Lureau <marcandre.lureau@gmail.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
- Alexander Orzechowski <orzechowski.alexander@gmail.com>
-Subject: [PATCH v2 3/3] ui: Fix gtk/gl when the scaled virtual console does
- not fit the window
-Date: Tue, 21 Dec 2021 19:10:51 -0500
-Message-Id: <20211222001051.2295513-4-orzechowski.alexander@gmail.com>
+ Alexander Orzechowski <orzechowski.alexander@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v2 1/3] ui: Use allocated size instead of window size
+Date: Tue, 21 Dec 2021 19:10:49 -0500
+Message-Id: <20211222001051.2295513-2-orzechowski.alexander@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20211222001051.2295513-1-orzechowski.alexander@gmail.com>
 References: <20211222001051.2295513-1-orzechowski.alexander@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f31
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::833
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f31;
- envelope-from=orzechowski.alexander@gmail.com; helo=mail-qv1-xf31.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::833;
+ envelope-from=orzechowski.alexander@gmail.com; helo=mail-qt1-x833.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -81,87 +83,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Dec 2021 00:11:20 -0000
+X-List-Received-Date: Wed, 22 Dec 2021 00:11:21 -0000
 
-gtk/gl was incorrectly always rendering as if the 'Zoom to Fit' was
-always checked even if it wasn't. This is now using logic closer
-to what is being used for the existing cairo code paths.
+In these cases, we only care about the size of the virtual console
+itself. Previously, these calculations were made using the size of
+the entire window, which would include the size of the virtual console
+plus all the ui elements around it.
 
 Signed-off-by: Alexander Orzechowski <orzechowski.alexander@gmail.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- ui/gtk-gl-area.c | 34 +++++++++++++++++++++++++++++-----
- 1 file changed, 29 insertions(+), 5 deletions(-)
+ ui/gtk.c | 26 ++++++++++----------------
+ 1 file changed, 10 insertions(+), 16 deletions(-)
 
-diff --git a/ui/gtk-gl-area.c b/ui/gtk-gl-area.c
-index 01e4e74ee3..f4f2dac882 100644
---- a/ui/gtk-gl-area.c
-+++ b/ui/gtk-gl-area.c
-@@ -41,16 +41,40 @@ void gd_gl_area_draw(VirtualConsole *vc)
- #ifdef CONFIG_GBM
-     QemuDmaBuf *dmabuf = vc->gfx.guest_fb.dmabuf;
- #endif
-+    GtkDisplayState *s = vc->s;
-     int ww, wh, ws, y1, y2;
-+    int mx, my;
-+    int fbh, fbw;
- 
-     if (!vc->gfx.gls) {
-         return;
-     }
- 
-     gtk_gl_area_make_current(GTK_GL_AREA(vc->gfx.drawing_area));
-+
-+    fbw = surface_width(vc->gfx.ds);
-+    fbh = surface_height(vc->gfx.ds);
-+
-     ws = gdk_window_get_scale_factor(gtk_widget_get_window(vc->gfx.drawing_area));
--    ww = gtk_widget_get_allocated_width(vc->gfx.drawing_area) * ws;
--    wh = gtk_widget_get_allocated_height(vc->gfx.drawing_area) * ws;
+diff --git a/ui/gtk.c b/ui/gtk.c
+index 428f02f2df..824334ff3d 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -340,8 +340,8 @@ static void gd_update_full_redraw(VirtualConsole *vc)
+ {
+     GtkWidget *area = vc->gfx.drawing_area;
+     int ww, wh;
+-    ww = gdk_window_get_width(gtk_widget_get_window(area));
+-    wh = gdk_window_get_height(gtk_widget_get_window(area));
 +    ww = gtk_widget_get_allocated_width(vc->gfx.drawing_area);
 +    wh = gtk_widget_get_allocated_height(vc->gfx.drawing_area);
-+
-+    if (s->full_screen) {
-+        vc->gfx.scale_x = (double)ww / fbw;
-+        vc->gfx.scale_y = (double)wh / fbh;
-+    } else if (s->free_scale) {
-+        double sx, sy;
-+
-+        sx = (double)ww / fbw;
-+        sy = (double)wh / fbh;
-+
-+        vc->gfx.scale_x = vc->gfx.scale_y = MIN(sx, sy);
-+    }
-+
-+    fbw *= vc->gfx.scale_x * ws;
-+    fbh *= vc->gfx.scale_y * ws;
-+    mx = (ww * ws - fbw) / 2;
-+    my = (wh * ws - fbh) / 2;
+ #if defined(CONFIG_OPENGL)
+     if (vc->gfx.gls && gtk_use_gl_area) {
+         gtk_gl_area_queue_render(GTK_GL_AREA(vc->gfx.drawing_area));
+@@ -387,7 +387,6 @@ static void gd_update(DisplayChangeListener *dcl,
+                       int x, int y, int w, int h)
+ {
+     VirtualConsole *vc = container_of(dcl, VirtualConsole, gfx.dcl);
+-    GdkWindow *win;
+     int x1, x2, y1, y2;
+     int mx, my;
+     int fbw, fbh;
+@@ -414,12 +413,8 @@ static void gd_update(DisplayChangeListener *dcl,
+     fbw = surface_width(vc->gfx.ds) * vc->gfx.scale_x;
+     fbh = surface_height(vc->gfx.ds) * vc->gfx.scale_y;
  
-     if (vc->gfx.scanout_mode) {
-         if (!vc->gfx.guest_fb.framebuffer) {
-@@ -70,11 +94,11 @@ void gd_gl_area_draw(VirtualConsole *vc)
-         glBindFramebuffer(GL_READ_FRAMEBUFFER, vc->gfx.guest_fb.framebuffer);
-         /* GtkGLArea sets GL_DRAW_FRAMEBUFFER for us */
+-    win = gtk_widget_get_window(vc->gfx.drawing_area);
+-    if (!win) {
+-        return;
+-    }
+-    ww = gdk_window_get_width(win);
+-    wh = gdk_window_get_height(win);
++    ww = gtk_widget_get_allocated_width(vc->gfx.drawing_area);
++    wh = gtk_widget_get_allocated_height(vc->gfx.drawing_area);
  
--        glViewport(0, 0, ww, wh);
-+        glViewport(mx, my, fbw, fbh);
-         y1 = vc->gfx.y0_top ? 0 : vc->gfx.h;
-         y2 = vc->gfx.y0_top ? vc->gfx.h : 0;
-         glBlitFramebuffer(0, y1, vc->gfx.w, y2,
--                          0, 0, ww, wh,
-+                          mx, my, fbw + mx, fbh + my,
-                           GL_COLOR_BUFFER_BIT, GL_NEAREST);
- #ifdef CONFIG_GBM
-         if (dmabuf) {
-@@ -98,7 +122,7 @@ void gd_gl_area_draw(VirtualConsole *vc)
-         }
-         gtk_gl_area_make_current(GTK_GL_AREA(vc->gfx.drawing_area));
+     mx = my = 0;
+     if (ww > fbw) {
+@@ -788,8 +783,8 @@ static gboolean gd_draw_event(GtkWidget *widget, cairo_t *cr, void *opaque)
+     fbw = surface_width(vc->gfx.ds);
+     fbh = surface_height(vc->gfx.ds);
  
--        surface_gl_setup_viewport(vc->gfx.gls, vc->gfx.ds, ww, wh);
-+        glViewport(mx, my, fbw, fbh);
-         surface_gl_render_texture(vc->gfx.gls, vc->gfx.ds);
-     }
+-    ww = gdk_window_get_width(gtk_widget_get_window(widget));
+-    wh = gdk_window_get_height(gtk_widget_get_window(widget));
++    ww = gtk_widget_get_allocated_width(vc->gfx.drawing_area);
++    wh = gtk_widget_get_allocated_height(vc->gfx.drawing_area); 
  
+     if (s->full_screen) {
+         vc->gfx.scale_x = (double)ww / fbw;
+@@ -838,7 +833,6 @@ static gboolean gd_motion_event(GtkWidget *widget, GdkEventMotion *motion,
+ {
+     VirtualConsole *vc = opaque;
+     GtkDisplayState *s = vc->s;
+-    GdkWindow *window;
+     int x, y;
+     int mx, my;
+     int fbh, fbw;
+@@ -851,10 +845,10 @@ static gboolean gd_motion_event(GtkWidget *widget, GdkEventMotion *motion,
+     fbw = surface_width(vc->gfx.ds) * vc->gfx.scale_x;
+     fbh = surface_height(vc->gfx.ds) * vc->gfx.scale_y;
+ 
+-    window = gtk_widget_get_window(vc->gfx.drawing_area);
+-    ww = gdk_window_get_width(window);
+-    wh = gdk_window_get_height(window);
+-    ws = gdk_window_get_scale_factor(window);
++    ww = gtk_widget_get_allocated_width(vc->gfx.drawing_area);
++    wh = gtk_widget_get_allocated_height(vc->gfx.drawing_area);
++    ws = gdk_window_get_scale_factor(
++            gtk_widget_get_window(vc->gfx.drawing_area));
+ 
+     mx = my = 0;
+     if (ww > fbw) {
 -- 
 2.34.1
 
