@@ -1,76 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1mzaU5-00072A-Im
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Dec 2021 03:26:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45770)
+	id 1mzpDz-0005cf-7b
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Dec 2021 19:11:19 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55140)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
- id 1mzaU4-00070R-2i; Tue, 21 Dec 2021 03:26:56 -0500
-Received: from [2607:f8b0:4864:20::f32] (port=37635
- helo=mail-qv1-xf32.google.com)
+ id 1mzpDx-0005bJ-Ii; Tue, 21 Dec 2021 19:11:17 -0500
+Received: from [2607:f8b0:4864:20::732] (port=43886
+ helo=mail-qk1-x732.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <orzechowski.alexander@gmail.com>)
- id 1mzaU2-0003VX-Dr; Tue, 21 Dec 2021 03:26:55 -0500
-Received: by mail-qv1-xf32.google.com with SMTP id fo11so11813100qvb.4;
- Tue, 21 Dec 2021 00:26:53 -0800 (PST)
+ id 1mzpDw-0004Za-2o; Tue, 21 Dec 2021 19:11:17 -0500
+Received: by mail-qk1-x732.google.com with SMTP id f138so688417qke.10;
+ Tue, 21 Dec 2021 16:11:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :references:from:cc:in-reply-to:content-transfer-encoding;
- bh=ISoNwL9hruIDeN+zSOkGWOpuJkWiy0iPdEQ/XotEuwU=;
- b=jJpJFprQColG4mDqPpqZUwTj4NSFmSLzp3uszwDdWgSzFeRPTOibGYAC+85km9c9kZ
- Zwrwi/QOb5q3Da1yrnLBPqbMxFiXESa0CPfLMflEhgF8ngSAjsIeeJnfR5QMb+diZ5z+
- Y2Ilj6ys8xzLfFz9owV40H7kvb/TLtgC96MLUKtC+EJ4HWrZM9VNmzZorhlpBpcyIAki
- Jv0Qx5JYgmRQfmyP5SBW+9kj2iw+6Rz19cKh2udQLpxdoaKzazFkWg+agpTp08tU3uTr
- 1KHHbzJQUv8kq3AVjFAT80168ekQCSr5mPku8NuXsaAQh7mQEBBUfipZL033jAUPrqhz
- 3ezA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=im5BaiLvVm0Mtty/oSmlct8BNjrIwlIbNqeSddnZHvw=;
+ b=BLVwi9ps/J6znCSmabm/dGiehsruaOe+gC7wz2oOCxjFbwbSdzDTo6C67BKoqg2Hn/
+ jpryyPn6HWb/TJgL70MVvhwOsfhTcmYtpKYSVHEKPD83nkHznbVIt2dfDeSM5vOpEjWU
+ M+CRryiuKt5e7wRh+GN/uNLXC2jyVCHjDdpNMwauiWi56F/Fdpjk42+SAuUfCfZ76PB5
+ s9eLHvNTvfcdtDy5xzOzXdrEjYaqki8DPfSMtkyMA59Zdwokl1e6n0C4/Mm9uYPAXgFS
+ AtJk/kGMinpgX/OoBkZerkrG9HjY3WFUnfdlvyVVpwqUY/p7/5lY4c6j05GiA+meJby5
+ aJRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:cc:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ISoNwL9hruIDeN+zSOkGWOpuJkWiy0iPdEQ/XotEuwU=;
- b=t5sX8S5KQUeM5fOQGc6blJD/0IFv4aAILyLW4gHpWbNzaKOvC4jSvHhelB5Xi6dKeY
- 0/1byKJVKGs81VUBTmemtF59+EcdV7S5P+2XtSNXrLLATMyhB6nwvyp87pVOWH6ydWuh
- bPP4ZB3zLXypvI0ubBYZ5La7IvNnks2eJn2FHl8EtzWqOEu+9dgvO31lj9I2QgVecvTC
- YnHDg8gL8JzZUIIIops1EqhjKdhLEBTWHuUMfJBBBlsH3m9Z+/6SfcAk+VsSIJQ22Ho0
- TUsduzHE2IySDclTqgXWDJDEHLbC1XiDL4vt1KNUPSRTDWpqwU81iJL/9xom/yg34lD6
- pNhg==
-X-Gm-Message-State: AOAM530j7Um5qfcf6jr+YEH5RsysDWt/xLRyex5/j51eJWqTre3hra6b
- HE9bnFrn5aGvYdX2FdoILxo=
-X-Google-Smtp-Source: ABdhPJyuXUy5fHxWMSnrr1Eu5g3cKS/OWVy+gR0qjwiuTH6Sj68Uo0BSEAAU9VNsmI+mxZHGHQXrzg==
-X-Received: by 2002:a0c:efcd:: with SMTP id a13mr1619001qvt.11.1640075213048; 
- Tue, 21 Dec 2021 00:26:53 -0800 (PST)
-Received: from [192.168.1.10]
+ bh=im5BaiLvVm0Mtty/oSmlct8BNjrIwlIbNqeSddnZHvw=;
+ b=Th7g+DwhfqmPhwxGcxXpgk9ngwLrv5EAGgrfmDb/9LfTadF7kk3IgF0El5hv/gctMV
+ rb8FYH///H7UKJdRlQ0jDR71OmEXdv63KGO+Mp75+tmXtwNtLjgOy81uFHd7EBonphLc
+ RpDw01KUo2YSPn86AjE0epbc1zRjpx30cnh33OUtgrJ0xjSg8oJ2D7OhAI/da/dqPIx5
+ KlGHlzwlrve74/sWwFLrg/HdgtckqDhDqzKc6jvWyOTB07t1HZCXp+kRBZK6jOHB9Ptn
+ aoXGwBZPHW3XsIuRizmsW9ermB7Oh5vy87tSNXDOHmHlLocA43k5hPcbXP1DjaiZDzmc
+ LE2g==
+X-Gm-Message-State: AOAM532hSaw/47JCyu15V0x0RjkbqWTNdOIYyPvaKqS0VBgXbwqZQR4A
+ i+A6zdx8RV5v44Ulb6PgwDmZVSsV3tnrKw==
+X-Google-Smtp-Source: ABdhPJzycMR0//0M/8e8N7IpM6ATto1Y8TnfJCWoAzMg1/1GsDZDF+HDQ2M35wUsLEPY1bdipUpT0A==
+X-Received: by 2002:a05:620a:28c9:: with SMTP id
+ l9mr547172qkp.761.1640131874530; 
+ Tue, 21 Dec 2021 16:11:14 -0800 (PST)
+Received: from alexdesktop.localdomain
  (cpebc4dfb42ca53-cmbc4dfb42ca50.cpe.net.cable.rogers.com. [99.251.122.96])
- by smtp.gmail.com with ESMTPSA id x15sm13505850qko.82.2021.12.21.00.26.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Dec 2021 00:26:52 -0800 (PST)
-Message-ID: <b8300a7d-dffe-c600-1b36-62d7ae2b2699@gmail.com>
-Date: Tue, 21 Dec 2021 03:26:52 -0500
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH 2/4] ui: Remove unnecessary checks
-Content-Language: en-US
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>
-References: <20211219023006.124530-1-orzechowski.alexander@gmail.com>
- <20211219023006.124530-3-orzechowski.alexander@gmail.com>
- <CAJ+F1CL4LxdbCOzt+uFTw_ggxQ+forzd7chDQRw8DMsc9EMamA@mail.gmail.com>
+ by smtp.gmail.com with ESMTPSA id i6sm503410qkn.26.2021.12.21.16.11.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 21 Dec 2021 16:11:14 -0800 (PST)
 From: Alexander Orzechowski <orzechowski.alexander@gmail.com>
-Cc: QEMU <qemu-devel@nongnu.org>, qemu trivial <qemu-trivial@nongnu.org>
-In-Reply-To: <CAJ+F1CL4LxdbCOzt+uFTw_ggxQ+forzd7chDQRw8DMsc9EMamA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: QEMU <qemu-devel@nongnu.org>
+Cc: qemu trivial <qemu-trivial@nongnu.org>,
+ Mark-Andre Lureau <marcandre.lureau@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Alexander Orzechowski <orzechowski.alexander@gmail.com>
+Subject: [PATCH v2 0/3] UI fixups
+Date: Tue, 21 Dec 2021 19:10:48 -0500
+Message-Id: <20211222001051.2295513-1-orzechowski.alexander@gmail.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f32
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::732
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f32;
- envelope-from=orzechowski.alexander@gmail.com; helo=mail-qv1-xf32.google.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::732;
+ envelope-from=orzechowski.alexander@gmail.com; helo=mail-qk1-x732.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-2.012, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,135 +80,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Dec 2021 08:26:56 -0000
+X-List-Received-Date: Wed, 22 Dec 2021 00:11:17 -0000
 
-On 12/21/21 02:40, Marc-André Lureau wrote:
+Some UI fixups including one revert.
 
-> Hi
->
-> On Sun, Dec 19, 2021 at 6:32 AM Alexander Orzechowski 
-> <orzechowski.alexander@gmail.com> wrote:
->
->     These conditionals should never be false as scale_x and scale_y should
->     scale the fbw and fbh variables such that the ww and wh variables
->     always
->     have a greater magnitude.
->
->     Signed-off-by: Alexander Orzechowski <orzechowski.alexander@gmail.com>
->
->
-> I don't understand how you reached that conclusion.
->
-> scale_x/scale_y can have various values, from 0.25 manually, or pretty 
-> much anything in freescale.
->
-> Just adding a breakpoint/debug there and you can see they can be false.
->
->     ---
->      ui/gtk.c | 27 ++++++---------------------
->      1 file changed, 6 insertions(+), 21 deletions(-)
->
->     diff --git a/ui/gtk.c b/ui/gtk.c
->     index 824334ff3d..f2d74b253d 100644
->     --- a/ui/gtk.c
->     +++ b/ui/gtk.c
->     @@ -416,13 +416,8 @@ static void gd_update(DisplayChangeListener *dcl,
->          ww = gtk_widget_get_allocated_width(vc->gfx.drawing_area);
->          wh = gtk_widget_get_allocated_height(vc->gfx.drawing_area);
->
->     -    mx = my = 0;
->     -    if (ww > fbw) {
->     -        mx = (ww - fbw) / 2;
->     -    }
->     -    if (wh > fbh) {
->     -        my = (wh - fbh) / 2;
->     -    }
->     +    mx = (ww - fbw) / 2;
->     +    my = (wh - fbh) / 2;
->
->          gtk_widget_queue_draw_area(vc->gfx.drawing_area,
->                                     mx + x1, my + y1, (x2 - x1), (y2 -
->     y1));
->     @@ -801,13 +796,8 @@ static gboolean gd_draw_event(GtkWidget
->     *widget, cairo_t *cr, void *opaque)
->          fbw *= vc->gfx.scale_x;
->          fbh *= vc->gfx.scale_y;
->
->     -    mx = my = 0;
->     -    if (ww > fbw) {
->     -        mx = (ww - fbw) / 2;
->     -    }
->     -    if (wh > fbh) {
->     -        my = (wh - fbh) / 2;
->     -    }
->     +    mx = (ww - fbw) / 2;
->     +    my = (wh - fbh) / 2;
->
->          cairo_rectangle(cr, 0, 0, ww, wh);
->
->     @@ -850,13 +840,8 @@ static gboolean gd_motion_event(GtkWidget
->     *widget, GdkEventMotion *motion,
->          ws = gdk_window_get_scale_factor(
->      gtk_widget_get_window(vc->gfx.drawing_area));
->
->     -    mx = my = 0;
->     -    if (ww > fbw) {
->     -        mx = (ww - fbw) / 2;
->     -    }
->     -    if (wh > fbh) {
->     -        my = (wh - fbh) / 2;
->     -    }
->     +    mx = (ww - fbw) / 2;
->     +    my = (wh - fbh) / 2;
->
->          x = (motion->x - mx) / vc->gfx.scale_x * ws;
->          y = (motion->y - my) / vc->gfx.scale_y * ws;
->     -- 
->     2.34.1
->
->
->
->
-> -- 
-> Marc-André Lureau
+I have some things that I want to have a discussion about. Fullscreen mode
+will always distort the virtual console. Is this behavior we really want? If we
+get rid of this, we can combine scale_x and scale_y into a single variable
+and simplify things a little bit.
 
-Thanks for the thorough review. I didn't realize you could set the scale 
-manually, but
+Also just from looking around a little bit in ui/gtk-egl.c the code
+seems super broken regarding the virtual console rendering in the correct place.
+I'm unable to test those code paths so I haven't touched it for now.
 
-it was under my impression that qemu would set the GDK_HINT_MIN_SIZE 
-property[1]
+Changes in v2:
+ - Dropped patch 2, I couldn't figure out what to colour the bike shed
+ - Fixed incorrect rendering when gtk/gl is using scanout_mode
 
-to try to disallow the user from resizing the window any smaller than 
-the size of the
+Alexander Orzechowski (3):
+  ui: Use allocated size instead of window size
+  ui: Revert: "fix incorrect pointer position on highdpi with gtk"
+  ui: Fix gtk/gl when the scaled virtual console does not fit the window
 
-virtual console. Qemu provides no mechanism to change the translation of 
-the virtual
+ ui/gtk-gl-area.c | 34 +++++++++++++++++++++++++++++-----
+ ui/gtk.c         | 30 +++++++++++-------------------
+ 2 files changed, 40 insertions(+), 24 deletions(-)
 
-console within the window in this case where the window is smaller than 
-the virtual
-
-console would normally allow, I consider this invalid state. The mx and 
-my variables
-
-are only used to translate the virtual console within its render 
-surface. Thus, if qemu
-
-were to enter this "invalid" state as I've called it, the view would 
-show the middle of
-
-the virtual console and obscure the edges. Without this patch it would 
-show the top
-
-left, obscuring the bottom right. I am happy to drop this patch for v2. 
-Please let me
-
-know your thoughts.
-
-
-[1]: See ui/gtk.c line 279 with the patches applied.
-
---
-
-Alexander Orzechowski
+-- 
+2.34.1
 
 
