@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n3KC1-0002qj-K5
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Dec 2021 10:51:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60072)
+	id 1n3Lv2-0004JW-Qz
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Dec 2021 12:42:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58306)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n3G87-0005Xr-TR; Fri, 31 Dec 2021 06:31:28 -0500
-Received: from [2a00:1450:4864:20::330] (port=39528
- helo=mail-wm1-x330.google.com)
+ id 1n3Lv0-0004JH-WA; Fri, 31 Dec 2021 12:42:19 -0500
+Received: from [2a00:1450:4864:20::434] (port=44970
+ helo=mail-wr1-x434.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n3G85-0005wN-TQ; Fri, 31 Dec 2021 06:31:27 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- g7-20020a7bc4c7000000b00345c4bb365aso14636165wmk.4; 
- Fri, 31 Dec 2021 03:31:24 -0800 (PST)
+ id 1n3Luz-0002nY-7A; Fri, 31 Dec 2021 12:42:18 -0500
+Received: by mail-wr1-x434.google.com with SMTP id k18so20273964wrg.11;
+ Fri, 31 Dec 2021 09:42:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version:signed-off-by
  :content-transfer-encoding;
- bh=xDcKdi1xnSy4xUhLHbDGCBgLhVFhAtW7fbQb9786whU=;
- b=j4udd3eRPFfDbgUmyhco0YmB1CGHsIIRQcM91t4H7i/4C/HUa9pTJO3MpOcXMr8ieE
- TttnvpBe/hjrkrodiF3a1Fem9nArKEdNgBsP9HOFaPv1Wjq6j/hE9ThOhZ/uj2ttU+mT
- NcSQGiRo5gAZSxw9Hkbl1LUibU2qyhe1C8wiWF+9e3fcc48lBnE5TlLk00YB/adZZ1Bw
- JLy9vdMK/6xllnKnpi9yQSMZ3aQey0ZwdzzeqhbgzKmIiI+doYQ49OMQVAb/V2Z86plB
- u+tlJ8jI10ZivsfLUaT758/DwPqKjApNepdq02y/BEheGRX1E9btB9FtPv3VuQykLekH
- iWhQ==
+ bh=2if3R9DA+TOXAIr9zervaqdIqJ1B+6O2/bLr/Ji83iU=;
+ b=iW8U6dMCahFwcnhk3d50RSC/8NjBwODizx+s2w5lBl/D7GpgMB78GsX/smkTKeghPj
+ 6idasYY9gDn/JTUMtZJ6TOEcKsAsqpUsOzH8Rs2IKgcFu9G4F55i/ga5DcIbLt2og/FT
+ s1JBcH8SGd6U3Czqkmq1jRH/f8RKs0F03XZoGSFYwm8+tS2bVH1PoynOQIzNIY5dJl28
+ Xwgn1R+mVIo9Vjx1/1BWCsfx2KbklYExZA62Bg5dKrbdaeK6AsZNShLx9KON5f9sSHOZ
+ XX+tubJhNbA/YlQnsKdKSsxSo8x15rNkk9kGKlGKmnKIAH/wRFnvvSD4DSZS/s+r4smK
+ 7XXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :signed-off-by:content-transfer-encoding;
- bh=xDcKdi1xnSy4xUhLHbDGCBgLhVFhAtW7fbQb9786whU=;
- b=G8cY7OaUrRsgyAvu4B26DEU9NgDvEQ8gM0UkHtwqdy40x/TsNsrrutVpdJWU+FXE5d
- OqbENf383iWWqMgNcl5Kykcdoyo9PDxYA9quHwF8dGdWejwrX7f5o6wyr9g4z3pTIhaL
- WAHHmoWKeSgc+1Em/yc5CEiZME+LgLT03qCRAH4u8L/rGSoVd02BqjmX75yCsxEIH1SL
- mV68rv6pYUFHIc40C/WJQuAIF6jBLAoGzEdLYRXYkzJwXzAG3nFGT8BNATQLgjlVRUg4
- we/RatqBUzSMFfJOF+JEzfCYtvNIY3etNxhyyrHvAFWkbE567nKfgi3YCNe9vbkV8sZv
- NMtA==
-X-Gm-Message-State: AOAM5319L9/A/ly+IuCVHKddoeKb/xubs9m8fLawOHtYAmbAhD9g/iWD
- AzSy6KHdikU6RaFjWNPse43sELyv9/8=
-X-Google-Smtp-Source: ABdhPJyBwjBwXj6+vQwN7jkCeYnVJFCqnjJRQ3FM6FrwTm4UqWV1MqDfgJZrbKrYsqt9pD3fSS2bBw==
-X-Received: by 2002:a1c:f304:: with SMTP id q4mr29935889wmq.162.1640950283234; 
- Fri, 31 Dec 2021 03:31:23 -0800 (PST)
+ bh=2if3R9DA+TOXAIr9zervaqdIqJ1B+6O2/bLr/Ji83iU=;
+ b=Ky5y9ZrEN/N9bRBDQOxnU0kKjgFhs4HAEAjDtLKFdCymifUe4D+9zQI0Loz4Hg9UG8
+ DC8rX+Ib1LfsBxcsKWW16ZQnN4YWgx3aw1KhkoSUWqiBjcxwv5nuMeknWz3f8HieFYhw
+ DfD9sWlWoDXqF6Yv/P8gmUBJKBM5M2QTAwwmCzUT4RbIx7PPg1uCngFZA3to4qSiQOLG
+ hzqkVdKjPtL1hJ3HtlCb5ToK0pd3VmQSb2YOAbWMkcYWMMZJtggeaFtA7CmGQj3gdYEq
+ FEp/geRxiB4pniV8NYXV2CRYVdAplMfv3PeyouHGza9DC6NcFgNMLruR2MYNsheCh0C0
+ MxAg==
+X-Gm-Message-State: AOAM530uHlU+VVQCBdtcquHs9aPy46cyPgwg6cZ9Pi0bEYchbQ8lWSPR
+ NUVUrdClwH7GBIi+uJD1WeFqWsCsFeA=
+X-Google-Smtp-Source: ABdhPJzcBLYnOxwFzQl7KQvYFeYMH0leFFwynI4q1voR69mee/kVOdHTjG+iZQ/V6mGq6KjcQP37SA==
+X-Received: by 2002:a05:6000:1548:: with SMTP id
+ 8mr28416050wry.489.1640972535505; 
+ Fri, 31 Dec 2021 09:42:15 -0800 (PST)
 Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
  [194.75.11.201])
- by smtp.googlemail.com with ESMTPSA id z11sm32802237wmf.9.2021.12.31.03.31.22
+ by smtp.googlemail.com with ESMTPSA id p13sm19762149wrs.54.2021.12.31.09.42.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 31 Dec 2021 03:31:23 -0800 (PST)
+ Fri, 31 Dec 2021 09:42:15 -0800 (PST)
 From: Carwyn Ellis <carwynellis@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, qemu-trivial@nongnu.org,
  Carwyn Ellis <carwynellis@gmail.com>
 Subject: [PATCH 0/1] ui/cocoa: Add option to disable left command and hide
  cursor on click
-Date: Fri, 31 Dec 2021 11:30:58 +0000
-Message-Id: <20211231113059.84130-1-carwynellis@gmail.com>
+Date: Fri, 31 Dec 2021 17:42:09 +0000
+Message-Id: <20211231174210.82446-1-carwynellis@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::330
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::434
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=carwynellis@gmail.com; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=carwynellis@gmail.com; helo=mail-wr1-x434.google.com
 X-Spam_score_int: 6
 X-Spam_score: 0.6
 X-Spam_bar: /
@@ -68,7 +68,6 @@ X-Spam_report: (0.6 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 31 Dec 2021 10:51:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,7 +79,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Dec 2021 11:31:29 -0000
+X-List-Received-Date: Fri, 31 Dec 2021 17:42:19 -0000
+
+Apologies for all the spam on what should be a simple change. Still
+getting the hang of all of this. :/
+
+Please disregard my earlier submissions. After further testing I
+realised that the calls to cursor hide/unhide weren't balanced which
+broke the hide/unhide behaviour. I've added an additional static flag
+to track the cursor state so the cursor state is only updated where this
+would change the existing cursor state, ensuring the calls are now
+balanced.
 
 Having made the switch to an M1 Mac I needed to switch from VMware back
 to QEMU in order to run some intel guests.
@@ -112,8 +121,8 @@ Carwyn Ellis (1):
 
  qapi/ui.json    | 17 +++++++++++++++++
  qemu-options.hx | 12 ++++++++++++
- ui/cocoa.m      | 16 ++++++++++++++--
- 3 files changed, 43 insertions(+), 2 deletions(-)
+ ui/cocoa.m      | 33 +++++++++++++++++++++++++--------
+ 3 files changed, 54 insertions(+), 8 deletions(-)
 
 -- 
 2.34.1
