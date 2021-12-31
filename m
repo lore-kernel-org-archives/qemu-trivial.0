@@ -1,89 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n3GrA-00025W-OA
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Dec 2021 07:18:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43608)
+	id 1n3KC1-0002q4-6I
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Dec 2021 10:51:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60088)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n3Gr8-0001xT-Jg
- for qemu-trivial@nongnu.org; Fri, 31 Dec 2021 07:17:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23537)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1n3Gqw-0004eJ-1f
- for qemu-trivial@nongnu.org; Fri, 31 Dec 2021 07:17:57 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1640953064;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JaDXPBCrCiAWnLmP0Q3KzCBnhc9sFROHsxglIhNk4ak=;
- b=XE1TKNgPcW6pgEUBnpPxo07e4XVsKPTqS4uWWJvPT/WV3HBjU8tu9RfWX8WgYRz8OyzBlX
- lnx0so24NMJjmX5tT6RZXWVAPKkVwxwujJ7W6bx8k5KnYqLppRBAhUCT7qMa30Lllr8zsR
- ub6UEbHWvGdWDuFsWbrbElTCZeXlQo0=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-50-G1hxL-OrOe2iwSj4UHpFpQ-1; Fri, 31 Dec 2021 07:17:43 -0500
-X-MC-Unique: G1hxL-OrOe2iwSj4UHpFpQ-1
-Received: by mail-wm1-f71.google.com with SMTP id
- m19-20020a05600c4f5300b00345cb6e8dd4so7175236wmq.3
- for <qemu-trivial@nongnu.org>; Fri, 31 Dec 2021 04:17:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
+ id 1n3G8C-0005YB-C5; Fri, 31 Dec 2021 06:31:32 -0500
+Received: from [2a00:1450:4864:20::430] (port=37772
+ helo=mail-wr1-x430.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
+ id 1n3G89-000672-9G; Fri, 31 Dec 2021 06:31:32 -0500
+Received: by mail-wr1-x430.google.com with SMTP id t26so55493502wrb.4;
+ Fri, 31 Dec 2021 03:31:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:signed-off-by:content-transfer-encoding;
+ bh=qo1r93T4G599ySh3f318LBPUiQ0tcFkSSVvX0MQU6U8=;
+ b=gXXygWR7mb0mq7LLXTrBfaFRUPlUXxVWvOU7XqkMAmBR+IVh+yr0mweP19BNomBhVw
+ IW1LJNqCM75+Vvu7IILVqExPafqeF4V1tBwzoGl+G1mFuC0rBdprGBDAQyCwXVg1yYn2
+ TgVRG6HHiQCN03/7BLbjqoxOdSBymieUb2fsInJRi80PEhBTbYikYQyatEv5JSRO9JFS
+ 8bhkjFoSvnoomVi3Jyir4g0mfx2D2Vx/FlT+UHelOKq3WXXTm8eSIq0htZA8ULmOcYpV
+ b8BdPLKcx7BMTmg+XrFdjM4O7uTU0I1v8KDZoKJKakRcZnWoGFiiTKhseJfhWOm/c+M0
+ aA7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=JaDXPBCrCiAWnLmP0Q3KzCBnhc9sFROHsxglIhNk4ak=;
- b=H9QReLR9Ti3DOxv9+d5R/7QrarxNJdA/YR97E8arEhHHN+ptkNANaLOSLqaELoQAtD
- 51UpRD0w+cyWMJX8GaPaOIzK2kFPJTDOCG+KAAQUV2mM8Lr/6POdNke6CT0/WstHgXiL
- akYF7EGeFC3AnVkeVMuVCpGDzK0vawLEsDHeBVBrGejaUiFe/yn72Hq7+0E4XzjZef5B
- mP/5cgUflChuKSnF8ZpqEmk9QTVcR/o+hK0NRDv7ezrgM2KT/9l5nvrKGYMSEL/DyGKb
- 9yFj78/kOXbCahlpeo52P/+iIkvCrKYz6nmyN8ktoFSpXeMMnzov6nwkzhfNqifkpAUl
- /axQ==
-X-Gm-Message-State: AOAM533POmeUPuYiVIj4nztWTzEN/AduKhRH6iVrTqRVScJsi+hL2eyj
- 3CWwM8Ou+1Gpb1J7JSgo3rgykJZooFDnERPQfhZ8W9W/6z2cTNaPYEAjNpuv1y+5vO9f3Ien/ln
- QHH2bRP4r94SbHkL5hg==
-X-Received: by 2002:adf:eb89:: with SMTP id t9mr14485551wrn.177.1640953062063; 
- Fri, 31 Dec 2021 04:17:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzxCsuhXEU81V8ZkV30mCkCRJiCea+ZKvau74h7DPlsuYupoJQJhVZh865VoREAGV0Reuzl5Q==
-X-Received: by 2002:adf:eb89:: with SMTP id t9mr14485543wrn.177.1640953061901; 
- Fri, 31 Dec 2021 04:17:41 -0800 (PST)
-Received: from [192.168.1.36] (26.red-83-50-86.dynamicip.rima-tde.net.
- [83.50.86.26])
- by smtp.gmail.com with ESMTPSA id b2sm29674127wrd.35.2021.12.31.04.17.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 31 Dec 2021 04:17:41 -0800 (PST)
-Message-ID: <4fb4277e-58d1-06e2-6ad1-ebae350788e8@redhat.com>
-Date: Fri, 31 Dec 2021 13:17:40 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH v2 0/5] hw/qdev: Clarify qdev_connect_gpio_out()
- documentation
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:signed-off-by:content-transfer-encoding;
+ bh=qo1r93T4G599ySh3f318LBPUiQ0tcFkSSVvX0MQU6U8=;
+ b=K4G0rxp2ivvyNJqJVSc23b7mj6X5GSq4GFlg4mcsPkquYeVOHHSkGRpkGlZ8O66re4
+ NxLfoxY+rK5TjP9r+/H42/5csavvepeS5zXNsGapFtVElHUanssg9tdtAwh4oA1Dkp89
+ 1a/wl/yMMoXhMneJnuinRl7nMGB8YynBid9qx/v63Tu1/5vOjLuwsivSVi1jRePhZrU4
+ TLBl9e/C5k88nbsOSAI2YDbrZ9DRTzJnUG8on3oktgU5EM78g82GpfYuqVuhhHPmzeo/
+ f2G+km7G2torS+z/Rb0kigLGAlVZWRRn2Ky0C3VhlkTqHvFd1MuYvd4ibvojuOK6d/E3
+ vGkQ==
+X-Gm-Message-State: AOAM533DPlrV7xpq/gDR1fNFsqoTa+PMFlgxD885EZhMPrAPP56QwDMV
+ SLgCd+jWOAPN5hp10llLIaYGehXBTYQ=
+X-Google-Smtp-Source: ABdhPJw2s8XzAAMCfxYmllsEBtTn2Uj/NRxaMdwwN8TSkc1ruyGnQCZ8vWF6QrI9ueGFfRF25khWXA==
+X-Received: by 2002:adf:f741:: with SMTP id z1mr29330378wrp.54.1640950287477; 
+ Fri, 31 Dec 2021 03:31:27 -0800 (PST)
+Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
+ [194.75.11.201])
+ by smtp.googlemail.com with ESMTPSA id z11sm32802237wmf.9.2021.12.31.03.31.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 31 Dec 2021 03:31:27 -0800 (PST)
+From: Carwyn Ellis <carwynellis@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>
-References: <20211218130437.1516929-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-In-Reply-To: <20211218130437.1516929-1-f4bug@amsat.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Cc: peter.maydell@linaro.org, qemu-trivial@nongnu.org,
+ Carwyn Ellis <carwynellis@gmail.com>
+Subject: [PATCH 1/1] ui/cocoa: Add option to disable left command and hide
+ cursor on click
+Date: Fri, 31 Dec 2021 11:30:59 +0000
+Message-Id: <20211231113059.84130-2-carwynellis@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20211231113059.84130-1-carwynellis@gmail.com>
+References: <20211231113059.84130-1-carwynellis@gmail.com>
+MIME-Version: 1.0
+Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) DKIMWL_WL_HIGH=-0.573, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.024,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=carwynellis@gmail.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: 6
+X-Spam_score: 0.6
+X-Spam_bar: /
+X-Spam_report: (0.6 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 31 Dec 2021 10:51:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,24 +81,150 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Dec 2021 12:17:59 -0000
+X-List-Received-Date: Fri, 31 Dec 2021 11:31:33 -0000
 
-On 12/18/21 14:04, Philippe Mathieu-Daudé wrote:
-> Trivial patches clarifying qdev_connect_gpio_out() use,
-> basically that the qemu_irq argument is an input.
-> 
-> Since v1:
-> - Addressed Yanan Wang and Peter Maydell comments:
-> - Correct qdev_init_gpio_out_named() doc
-> - Drop i8042_setup_a20_line() wrapper
-> 
-> Philippe Mathieu-Daudé (5):
->   hw/qdev: Cosmetic around documentation
->   hw/qdev: Correct qdev_init_gpio_out_named() documentation
->   hw/qdev: Correct qdev_connect_gpio_out_named() documentation
->   hw/qdev: Rename qdev_connect_gpio_out*() 'input_pin' parameter
->   hw/input/pckbd: Open-code i8042_setup_a20_line() wrapper
+When switching between guest and host on a Mac using command-tab the
+command key is sent to the guest which can trigger functionality in the
+guest OS. Specifying left-command-key=off disables forwarding this key
+to the guest. Defaults to enabled.
 
-Queuing patches 1-4 via machine-next.
+When switching between guest and host on a Mac with a fullscreen guest
+the host pointer will occasionally persist despite the ui code
+requesting that it be hidden. Added cursor hide calls on left and right
+mouse click to hide the cursor when the mouse is clicked.
+
+Also updated the cocoa display documentation to reference the new
+left-command-key option along with the existing show-cursor option.
+---
+ qapi/ui.json    | 17 +++++++++++++++++
+ qemu-options.hx | 12 ++++++++++++
+ ui/cocoa.m      | 16 ++++++++++++++--
+ 3 files changed, 43 insertions(+), 2 deletions(-)
+
+diff --git a/qapi/ui.json b/qapi/ui.json
+index 2b4371da37..dd1569ed4b 100644
+--- a/qapi/ui.json
++++ b/qapi/ui.json
+@@ -1107,6 +1107,22 @@
+   'data'    : { '*grab-on-hover' : 'bool',
+                 '*zoom-to-fit'   : 'bool'  } }
+ 
++##
++# @DisplayCocoa:
++#
++# Cocoa display options.
++#
++# @left-command-key: Enable/disable forwarding of left command key to
++#                    guest. Allows command-tab window switching on the
++#                    host without sending this key to the guest when
++#                    "off". Defaults to "on"
++#
++# Since: 6.2.50
++#
++##
++{ 'struct'  : 'DisplayCocoa',
++  'data'    : { '*left-command-key' : 'bool' } }
++
+ ##
+ # @DisplayEGLHeadless:
+ #
+@@ -1254,6 +1270,7 @@
+   'discriminator' : 'type',
+   'data'    : {
+       'gtk': { 'type': 'DisplayGTK', 'if': 'CONFIG_GTK' },
++      'cocoa': { 'type': 'DisplayCocoa', 'if': 'CONFIG_COCOA' },
+       'curses': { 'type': 'DisplayCurses', 'if': 'CONFIG_CURSES' },
+       'egl-headless': { 'type': 'DisplayEGLHeadless',
+                         'if': { 'all': ['CONFIG_OPENGL', 'CONFIG_GBM'] } },
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 7d47510947..5214457676 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1869,6 +1869,9 @@ DEF("display", HAS_ARG, QEMU_OPTION_display,
+ #if defined(CONFIG_DBUS_DISPLAY)
+     "-display dbus[,addr=<dbusaddr>]\n"
+     "             [,gl=on|core|es|off][,rendernode=<file>]\n"
++#endif
++#if defined(CONFIG_COCOA)
++    "-display cocoa[,show-cursor=on|off][,left-command-key=on|off]\n"
+ #endif
+     "-display none\n"
+     "                select display backend type\n"
+@@ -1956,6 +1959,15 @@ SRST
+         ``charset=CP850`` for IBM CP850 encoding. The default is
+         ``CP437``.
+ 
++    ``cocoa``
++        Display video output in a Cocoa window. Mac only. This interface
++        provides drop-down menus and other UI elements to configure and
++        control the VM during runtime. Valid parameters are:
++
++        ``show-cursor=on|off`` :  Force showing the mouse cursor
++
++        ``left-command-key=on|off`` : Disable forwarding left command key to host
++
+     ``egl-headless[,rendernode=<file>]``
+         Offload all OpenGL operations to a local DRI device. For any
+         graphical display, this display needs to be paired with either
+diff --git a/ui/cocoa.m b/ui/cocoa.m
+index 69745c483b..105b742831 100644
+--- a/ui/cocoa.m
++++ b/ui/cocoa.m
+@@ -95,6 +95,7 @@ static DisplayChangeListener dcl = {
+ };
+ static int last_buttons;
+ static int cursor_hide = 1;
++static int left_command_key_enabled = 1;
+ 
+ static int gArgc;
+ static char **gArgv;
+@@ -831,10 +832,14 @@ QemuCocoaView *cocoaView;
+                     }
+                     break;
+ 
+-                /* Don't pass command key changes to guest unless mouse is grabbed */
++                /*
++                    Don't pass command key changes to guest unless mouse is grabbed
++                    or the key is explicitly disabled using the left-command-key option
++                */
+                 case kVK_Command:
+                     if (isMouseGrabbed &&
+-                        !!(modifiers & NSEventModifierFlagCommand)) {
++                        !!(modifiers & NSEventModifierFlagCommand) &&
++                        left_command_key_enabled) {
+                         [self toggleKey:Q_KEY_CODE_META_L];
+                     }
+                     break;
+@@ -923,10 +928,12 @@ QemuCocoaView *cocoaView;
+         case NSEventTypeLeftMouseDown:
+             buttons |= MOUSE_EVENT_LBUTTON;
+             mouse_event = true;
++            [self hideCursor];
+             break;
+         case NSEventTypeRightMouseDown:
+             buttons |= MOUSE_EVENT_RBUTTON;
+             mouse_event = true;
++            [self hideCursor];
+             break;
+         case NSEventTypeOtherMouseDown:
+             buttons |= MOUSE_EVENT_MBUTTON;
+@@ -2050,10 +2057,15 @@ static void cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
+             [(QemuCocoaAppController *)[[NSApplication sharedApplication] delegate] toggleFullScreen: nil];
+         });
+     }
++
+     if (opts->has_show_cursor && opts->show_cursor) {
+         cursor_hide = 0;
+     }
+ 
++    if (opts->u.cocoa.has_left_command_key && !opts->u.cocoa.left_command_key) {
++        left_command_key_enabled = 0;
++    }
++
+     // register vga output callbacks
+     register_displaychangelistener(&dcl);
+ 
+-- 
+2.34.1
 
 
