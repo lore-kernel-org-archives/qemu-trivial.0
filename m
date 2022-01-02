@@ -1,69 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n3M9r-0005Cd-4X
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Dec 2021 12:57:39 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60898)
+	id 1n44rt-0006Ky-DI
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Jan 2022 12:42:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44232)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n3M9m-0005Ah-Dc; Fri, 31 Dec 2021 12:57:37 -0500
-Received: from [2a00:1450:4864:20::433] (port=42707
- helo=mail-wr1-x433.google.com)
+ id 1n44rq-0006KL-Rr; Sun, 02 Jan 2022 12:42:02 -0500
+Received: from [2a00:1450:4864:20::429] (port=33637
+ helo=mail-wr1-x429.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n3M9k-0007DX-JK; Fri, 31 Dec 2021 12:57:34 -0500
-Received: by mail-wr1-x433.google.com with SMTP id w20so48080115wra.9;
- Fri, 31 Dec 2021 09:57:31 -0800 (PST)
+ id 1n44rp-0003lU-BT; Sun, 02 Jan 2022 12:42:02 -0500
+Received: by mail-wr1-x429.google.com with SMTP id d9so65918261wrb.0;
+ Sun, 02 Jan 2022 09:42:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=TzO2Ewgbpo1AJycJs/9RoIRu41NSl8PQOCvyCTEEqaE=;
- b=iuF27G2giGErRYA7SxVsA9S0aptbmYaHl1dmnP8PD1W0HBwhs2l+cHzeSmp6vDTsy6
- VZ0gCJC0/N1sdh0kjJnu+3gBsLsjegxH/WxSsOTqFWplxxZfLNo5QPrlTZA07NXglwAp
- E4AcCq5mPunpOOT41ia1BGNf+JSqYJSFYoiZ+SqhSP04cuh3dBAh04XabMTyBgUdkOhf
- zj9WtLnLaIhNTC/7/ZJCjcvKM3rACqOF+ZCESBc3ZzQQy12VE3z4ZcWMC8y5idOYCFo4
- B7oqGBU1FDM8QMe7U4Livbg+ZaAs1A9jFeNlQj+BQjzuWEAJD5/+bY0Z8ZC56CHSjIaQ
- OQpg==
+ h=from:to:cc:subject:date:message-id:mime-version:signed-off-by
+ :content-transfer-encoding;
+ bh=/RloWi4NnWFUkJAUfth5A2gIvX9pKr10npzQltNYZRg=;
+ b=pi5vKq/6xmmUJhGWPCQzlvKRzlW9YWGoxpIdm7io09CviNmbUyUwdm+OnQiDuQrFse
+ HvMndzn4jlHExWGa2XDS3D3VV/X23DlG9FXfvGaUIP23V/mUjRjpWDKTyjJza/GM1wLY
+ O/NkhTHOB87/FRQ/cxhwNnN5SsDazgXntYDLPJC85XBGVMMfGP7Ghf5bkbys3+vfdA8e
+ 1CHGWKtu/7HnuhU/4AN/J8bd+v16PkzhlNBBLOIkgGIvNv5FPy5qCu/0YPWaAZguUxdx
+ 3O1oAuXwfV3Nd18ooA7C67li8JGkwTkh5hXrcX1UrCA4ukPnTJq+1vUhMietY5+IPxmy
+ ij/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=TzO2Ewgbpo1AJycJs/9RoIRu41NSl8PQOCvyCTEEqaE=;
- b=nzZEw++nlj+eq/KNi/3IGovK8qBwDNWIN6ge9rpraprwree+x23nIpV9EhCY7qJz0F
- opcGAM80u5aVe17tPKZwhPdun3vYWPMgwNUlElhjHLIZXqidfGy6bBI7UV+M6t1pPbWb
- f03DgpFyYZp10fUjhps74u8GteAGKxuRjMNpFbAe4ifgkKGp7mjYth4FAdX6Sfh4/t1t
- blG3oFWocYBwwgAQ9i2+GrH5QJMxGRzFW/KbEHNUNHp1UGMik5vHk9FY2EYIAewSKUDl
- LVj1O1ZwShVCEam1hb3XwtCZqEtlv1+Hxg6KQW9euD1sFp22YcNjzOqdEi3OKQ2MR6uN
- q9sw==
-X-Gm-Message-State: AOAM533NFCLh7oZkMIFW0F9aCWEK9JBr+oCqBWKec0iygg3tOdDN7IkY
- fcwA+7gNnJynOu/M3j6VTOs=
-X-Google-Smtp-Source: ABdhPJxMbKP2+fSfyV0mOZuf3secrGp4Uv0p0hPefr/0keN78Hace6pxQWkuSbUWOXM9v8/lwM9G/A==
-X-Received: by 2002:adf:f94e:: with SMTP id q14mr6661724wrr.526.1640973450832; 
- Fri, 31 Dec 2021 09:57:30 -0800 (PST)
-Received: from smtpclient.apple (201.11.75.194.dyn.plus.net. [194.75.11.201])
- by smtp.gmail.com with ESMTPSA id
- n4sm27822306wrc.1.2021.12.31.09.57.30
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 31 Dec 2021 09:57:30 -0800 (PST)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.40.0.1.81\))
-Subject: Re: [PATCH 1/1] ui/cocoa: Add option to disable left command and hide
- cursor on click
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :signed-off-by:content-transfer-encoding;
+ bh=/RloWi4NnWFUkJAUfth5A2gIvX9pKr10npzQltNYZRg=;
+ b=wm9gKRqv+8LSVon0+r+QcNpmASij/oohvbhPaxmbfACowbNkUYcKFju4XNS7L+/KO1
+ 8Ep/HFRGdszGOXf6iNBboRhHB2MuuqiVOaUZH/A139VTKK9CvAtaJ0UQP4y4p6hD8zg0
+ xdytzzPWW4nLO3azCs/1LX0zZ0VfDxhIGVhgLrsMrECqOdGevGwW4XiZdGdNvKXg248j
+ jptiZjITT69f6IQ0ff64AsKN9DJbYC1YLc3yl9VQVk3aFkO5izxx9dqr0Klzc6NNdSGy
+ ry0au5G5M8uw7GBaZ4dRCdaQ6kATHRC7n7gmrupEMHwaqAdl1HqhylBWbFclfVp6l+tp
+ +HCg==
+X-Gm-Message-State: AOAM531kstC7RV3RM+3NP1FIc2tWp5yovRCaJsu7OdCjgKhN2LwfWche
+ UO+Qvy4UZBQnx3bhKIqAL98s0P+uqvk=
+X-Google-Smtp-Source: ABdhPJyCQOAUOBi1c2vMhAIwAtXUGtuAJeNVfe/+22beamakYw8DmArtxnvJYyoPXQhUt4COGLZ4tw==
+X-Received: by 2002:a5d:6d84:: with SMTP id l4mr36763992wrs.61.1641145318871; 
+ Sun, 02 Jan 2022 09:41:58 -0800 (PST)
+Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
+ [194.75.11.201])
+ by smtp.googlemail.com with ESMTPSA id w9sm1626565wrq.70.2022.01.02.09.41.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 02 Jan 2022 09:41:58 -0800 (PST)
 From: Carwyn Ellis <carwynellis@gmail.com>
-In-Reply-To: <d04fabe5-a8ac-621b-75ee-a8f17b1745cb@gmail.com>
-Date: Fri, 31 Dec 2021 17:57:29 +0000
-Cc: QEMU <qemu-devel@nongnu.org>,
- qemu trivial <qemu-trivial@nongnu.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <10E9A0FC-A111-4E74-90AD-FAD82BB177E5@gmail.com>
-References: <20211231174210.82446-1-carwynellis@gmail.com>
- <20211231174210.82446-2-carwynellis@gmail.com>
- <d04fabe5-a8ac-621b-75ee-a8f17b1745cb@gmail.com>
-To: Alexander Orzechowski <orzechowski.alexander@gmail.com>
-X-Mailer: Apple Mail (2.3693.40.0.1.81)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::433
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-trivial@nongnu.org,
+ Carwyn Ellis <carwynellis@gmail.com>
+Subject: [PATCH 0/2] ui/cocoa: Add option to disable left command and hide
+ cursor on click
+Date: Sun,  2 Jan 2022 17:41:51 +0000
+Message-Id: <20220102174153.70043-1-carwynellis@gmail.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::429
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=carwynellis@gmail.com; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=carwynellis@gmail.com; helo=mail-wr1-x429.google.com
 X-Spam_score_int: 6
 X-Spam_score: 0.6
 X-Spam_bar: /
@@ -83,207 +78,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Dec 2021 17:57:37 -0000
+X-List-Received-Date: Sun, 02 Jan 2022 17:42:04 -0000
 
+Supersedes earlier submissions and splits the patch into two separate
+patches covering
 
+  - addition of left-command-key option to disable forwarding this key
+    to the guest
+  - fix for persistent mouse cursor when switching from and back to the
+    QEMU window
 
-> On 31 Dec 2021, at 17:56, Alexander Orzechowski =
-<orzechowski.alexander@gmail.com> wrote:
->=20
->=20
-> On 12/31/21 12:42, Carwyn Ellis wrote:
->> When switching between guest and host on a Mac using command-tab the
->> command key is sent to the guest which can trigger functionality in =
-the
->> guest OS. Specifying left-command-key=3Doff disables forwarding this =
-key
->> to the guest. Defaults to enabled.
->>=20
->> When switching between guest and host on a Mac with a fullscreen =
-guest
->> the host pointer will occasionally persist despite the ui code
->> requesting that it be hidden. Added cursor hide calls on left and =
-right
->> mouse click to hide the cursor when the mouse is clicked.
->>=20
->> Also updated the cocoa display documentation to reference the new
->> left-command-key option along with the existing show-cursor option.
->> ---
->>  qapi/ui.json    | 17 +++++++++++++++++
->>  qemu-options.hx | 12 ++++++++++++
->>  ui/cocoa.m      | 33 +++++++++++++++++++++++++--------
->>  3 files changed, 54 insertions(+), 8 deletions(-)
->>=20
->> diff --git a/qapi/ui.json b/qapi/ui.json
->> index 2b4371da37..764480e145 100644
->> --- a/qapi/ui.json
->> +++ b/qapi/ui.json
->> @@ -1107,6 +1107,22 @@
->>    'data'    : { '*grab-on-hover' : 'bool',
->>                  '*zoom-to-fit'   : 'bool'  } }
->>  +##
->> +# @DisplayCocoa:
->> +#
->> +# Cocoa display options.
->> +#
->> +# @left-command-key: Enable/disable forwarding of left command key =
-to
->> +#                    guest. Allows command-tab window switching on =
-the
->> +#                    host without sending this key to the guest when
->> +#                    "off". Defaults to "on"
->> +#
->> +# Since: 6.2.50
->> +#
->> +##
->> +{ 'struct'  : 'DisplayCocoa',
->> +  'data'    : { '*left-command-key' : 'bool' } }
->> +
->>  ##
->>  # @DisplayEGLHeadless:
->>  #
->> @@ -1254,6 +1270,7 @@
->>    'discriminator' : 'type',
->>    'data'    : {
->>        'gtk': { 'type': 'DisplayGTK', 'if': 'CONFIG_GTK' },
->> +      'cocoa': { 'type': 'DisplayCocoa', 'if': 'CONFIG_COCOA' },
->>        'curses': { 'type': 'DisplayCurses', 'if': 'CONFIG_CURSES' },
->>        'egl-headless': { 'type': 'DisplayEGLHeadless',
->>                          'if': { 'all': ['CONFIG_OPENGL', =
-'CONFIG_GBM'] } },
->> diff --git a/qemu-options.hx b/qemu-options.hx
->> index 7d47510947..5214457676 100644
->> --- a/qemu-options.hx
->> +++ b/qemu-options.hx
->> @@ -1869,6 +1869,9 @@ DEF("display", HAS_ARG, QEMU_OPTION_display,
->>  #if defined(CONFIG_DBUS_DISPLAY)
->>      "-display dbus[,addr=3D<dbusaddr>]\n"
->>      "             [,gl=3Don|core|es|off][,rendernode=3D<file>]\n"
->> +#endif
->> +#if defined(CONFIG_COCOA)
->> +    "-display =
-cocoa[,show-cursor=3Don|off][,left-command-key=3Don|off]\n"
->>  #endif
->>      "-display none\n"
->>      "                select display backend type\n"
->> @@ -1956,6 +1959,15 @@ SRST
->>          ``charset=3DCP850`` for IBM CP850 encoding. The default is
->>          ``CP437``.
->>  +    ``cocoa``
->> +        Display video output in a Cocoa window. Mac only. This =
-interface
->> +        provides drop-down menus and other UI elements to configure =
-and
->> +        control the VM during runtime. Valid parameters are:
->> +
->> +        ``show-cursor=3Don|off`` :  Force showing the mouse cursor
->> +
->> +        ``left-command-key=3Don|off`` : Disable forwarding left =
-command key to host
->> +
->>      ``egl-headless[,rendernode=3D<file>]``
->>          Offload all OpenGL operations to a local DRI device. For any
->>          graphical display, this display needs to be paired with =
-either
->> diff --git a/ui/cocoa.m b/ui/cocoa.m
->> index 69745c483b..10e492538a 100644
->> --- a/ui/cocoa.m
->> +++ b/ui/cocoa.m
->> @@ -95,6 +95,8 @@ static DisplayChangeListener dcl =3D {
->>  };
->>  static int last_buttons;
->>  static int cursor_hide =3D 1;
->> +static bool cursor_visible =3D 1;
->> +static int left_command_key_enabled =3D 1;
->>    static int gArgc;
->>  static char **gArgv;
->> @@ -411,18 +413,18 @@ QemuCocoaView *cocoaView;
->>    - (void) hideCursor
->>  {
->> -    if (!cursor_hide) {
->> -        return;
->> +    if (cursor_hide && cursor_visible) {
->> +        cursor_visible =3D 0;
->> +        [NSCursor hide];
->>      }
->> -    [NSCursor hide];
->>  }
->>    - (void) unhideCursor
->>  {
->> -    if (!cursor_hide) {
->> -        return;
->> +    if (cursor_hide && !cursor_visible) {
->> +        cursor_visible =3D 1;
->> +        [NSCursor unhide];
->>      }
->> -    [NSCursor unhide];
->>  }
->>    - (void) drawRect:(NSRect) rect
->> @@ -831,10 +833,14 @@ QemuCocoaView *cocoaView;
->>                      }
->>                      break;
->>  -                /* Don't pass command key changes to guest unless =
-mouse is grabbed */
->> +                /*
->> +                    Don't pass command key changes to guest unless =
-mouse is grabbed
->> +                    or the key is explicitly disabled using the =
-left-command-key option
->> +                */
->>                  case kVK_Command:
->>                      if (isMouseGrabbed &&
->> -                        !!(modifiers & NSEventModifierFlagCommand)) =
-{
->> +                        !!(modifiers & NSEventModifierFlagCommand) =
-&&
->> +                        left_command_key_enabled) {
->>                          [self toggleKey:Q_KEY_CODE_META_L];
->>                      }
->>                      break;
->> @@ -923,10 +929,16 @@ QemuCocoaView *cocoaView;
->>          case NSEventTypeLeftMouseDown:
->>              buttons |=3D MOUSE_EVENT_LBUTTON;
->>              mouse_event =3D true;
->> +            if (isFullscreen) {
->> +                [self hideCursor];
->> +            }
->>              break;
->>          case NSEventTypeRightMouseDown:
->>              buttons |=3D MOUSE_EVENT_RBUTTON;
->>              mouse_event =3D true;
->> +            if (isFullscreen) {
->> +                [self hideCursor];
->> +            }
->>              break;
->>          case NSEventTypeOtherMouseDown:
->>              buttons |=3D MOUSE_EVENT_MBUTTON;
->> @@ -2050,10 +2062,15 @@ static void cocoa_display_init(DisplayState =
-*ds, DisplayOptions *opts)
->>              [(QemuCocoaAppController *)[[NSApplication =
-sharedApplication] delegate] toggleFullScreen: nil];
->>          });
->>      }
->> +
->>      if (opts->has_show_cursor && opts->show_cursor) {
->>          cursor_hide =3D 0;
->>      }
->>  +    if (opts->u.cocoa.has_left_command_key && =
-!opts->u.cocoa.left_command_key) {
->> +        left_command_key_enabled =3D 0;
->> +    }
->> +
->>      // register vga output callbacks
->>      register_displaychangelistener(&dcl);
->> =20
->=20
-> You also forgot about the sign off. git commit with a -s switch will =
-append the appropriate sign off message.
->=20
-> All patches need to be signed off so we know you are okay with them =
-going upstream.
->=20
+Having made the switch to an M1 Mac I needed to switch from VMware back
+to QEMU in order to run some intel guests.
 
-Good point! Will make sure that=E2=80=99s in on the next set of patches.=20=
+This patch addresses a couple of niggles with the cocoa UI, namely:
 
+ - Using command-tab to switch between the guest OS and MacOS sends the
+   command keypress to the guest which can be annoying e.g. on a
+   windows guest this may trigger the start menu
+
+ - Switching between the guest and MacOS sometimes leaves the MacOS
+   mouse cursor visible with no way to hide it without switching
+   windows again
+
+I've made the following changes
+
+ - Added a new cocoa display option left-command-key which can be used
+   to disable the left command key in the guest. Default is on.
+
+ - Added a call to ungrabMouse in the applicationWillResignActive method
+   which frees the mouse and unhides the cursor when switching away from
+   the QEMU window. When switching back the user must left-click in
+   to grab the mouse and hide the cursor again. After testing several
+   different approaches this was the only way I could find to reliably
+   hide the cursor every time the user returns to QEMU after switching
+   to another app on the host machine.
+
+ - Updated the command line docs to reference the show-cursor option
+   which is also respected by the cocoa UI code.
+
+Carwyn Ellis (2):
+  ui/cocoa: add option to disable left-command forwarding to guest
+  ui/cocoa: release mouse when user switches away from QEMU window
+
+ qapi/ui.json    | 17 +++++++++++++++++
+ qemu-options.hx | 12 ++++++++++++
+ ui/cocoa.m      | 10 +++++++++-
+ 3 files changed, 38 insertions(+), 1 deletion(-)
+
+-- 
+2.34.1
 
 
