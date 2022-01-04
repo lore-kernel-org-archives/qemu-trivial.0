@@ -1,72 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n4oDL-0004T4-RL
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 13:07:16 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40866)
+	id 1n4rhh-0003Lf-0i
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 16:50:49 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:32874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n4oDG-0004M8-J8; Tue, 04 Jan 2022 13:07:11 -0500
-Received: from [2a00:1450:4864:20::436] (port=39595
- helo=mail-wr1-x436.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n4rhW-0003GA-Cj; Tue, 04 Jan 2022 16:50:40 -0500
+Received: from [2a00:1450:4864:20::429] (port=35647
+ helo=mail-wr1-x429.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n4oDE-0006Nt-PR; Tue, 04 Jan 2022 13:07:10 -0500
-Received: by mail-wr1-x436.google.com with SMTP id s1so77822531wra.6;
- Tue, 04 Jan 2022 10:07:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n4rhQ-0004XH-44; Tue, 04 Jan 2022 16:50:34 -0500
+Received: by mail-wr1-x429.google.com with SMTP id j18so78832485wrd.2;
+ Tue, 04 Jan 2022 13:50:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:signed-off-by:content-transfer-encoding;
- bh=TC6fcyrbPLoGHS5hWK+yxMJDZROs9siQqDFYf3yADSw=;
- b=opx8uJTz3UBqgStZLVQjxj5HPlrciun+/okRxBubUH4tPp6TBUuOxxqBF1N7pEkP3y
- NSFKrtqNKN81sqUV6Nr+Y7Dpg82S8s3ENGEB4kCCPCchPtVL5uw5QFbI3VkfZwQIXEl4
- ctpLVPRXjcSXBBaWa5dMm0/J2y1hmad5su7HvquSC6hFCs3V7hkwj73zC1w7BoD+UWC+
- cdEZVtWkEMXUl7qx8lEuEsY2qfWulne1qUXF2Riq+xbbxa+xvDkz7+jaHXVtsq06Hv6m
- ETJG/g1mzPrr0E/wEOq0sphWsfTSNZforZEntFHZyKGLKeyhO0plf4aChYTqQsmm0sio
- 34ZQ==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=CKRFGK/nQbJSO9eH4vCzDs3frMk9TG9xrgiou6/dFxQ=;
+ b=H+s4xYLBvW4eeeXr3hAw3ptmkPoEOaFbt6nwqLZaPfmfiSzWlg/0kUFzl9tpDVoZI+
+ QJCk2IYJO6bWK+fpudq3TAIaFVlQqbBdBrRg9dDh8vZR13vS2vHk4vmvcLKwEEZfNR1l
+ UBfQf64EsWqeUrHlGk6r6Xyqj+CgvOJQ7QauYhY4scGakO0XG/fDguFRwhrb3v0mIaKr
+ oCvv+IcBRScP3Cduy24r1yAbqZzw3Ow+M8Z2BdocNXsvNfY0hmkeBVWWtL19vvNnMrZ0
+ xCS07DZJrKjnzJrrqj/UT7ns3P7ioTPsbIt1JtfF4mpNG41ca63dM26r7rf1kEHiWI6L
+ q70g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:signed-off-by:content-transfer-encoding;
- bh=TC6fcyrbPLoGHS5hWK+yxMJDZROs9siQqDFYf3yADSw=;
- b=otNk26gextQt14n1zp/EWmE40QUf8sSkbib2GKhNy0ENdDbitiyw1ZVrNGI1/nZGHn
- LK1OMFQeY9d8BgqA2NuSoSZC0VpbQBvKIt6UXn07EvUmlO08fLbtLpR6Isnt1g/UjILi
- a22aiYI9gHOPSfcMfVNrRLHHS1msAo1vDXgCjEzYB5LX7xbhpVNBVjAUUHITCByLbLJw
- tRdcu7+pDVXEFdPYCtsZ/hlaqph/PYnD7XWdfFZuZeJMxDaNHPESLeho+hBBr5rj2mQs
- ejbx7ShcpDi6LLlr11PAmGywAbaPn9ODujCKEtkXBFkUQ8lFqJ+tsSmfRjwuc0HdyyjF
- XhKA==
-X-Gm-Message-State: AOAM531pfdZIyHy1EbcYfz1bocAvVVhCIgws35vRau9BJNT2PhLq8mzc
- wXFQrGQEYymisW2NXAaDdpCWFG77IeY=
-X-Google-Smtp-Source: ABdhPJyuQNQejx/sUdlwgRoZCyV3SVk5JAdGekBKR/zMT3k1jE8AY8ishzhHYUQBhQOshJdemTMOlg==
-X-Received: by 2002:a5d:4c48:: with SMTP id n8mr42878804wrt.25.1641319626786; 
- Tue, 04 Jan 2022 10:07:06 -0800 (PST)
-Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
- [194.75.11.201])
- by smtp.googlemail.com with ESMTPSA id o11sm121997wmq.15.2022.01.04.10.07.06
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=CKRFGK/nQbJSO9eH4vCzDs3frMk9TG9xrgiou6/dFxQ=;
+ b=6eHuTscLhAPF7yFRD9W4fSuY6L6IEyxWJea31oPGk4psfBRUdmGarzo+N8q0yINGVV
+ +EaC0v+X3WI44+AiRl2IMhQMtVGjNi+txQeKQG3FnMl32IPTrLxwi6FVCj1qJz56bWUF
+ FSJ6iF1vZb93N/xAImMf4TJ7Fi/NoAuEa5YjPQCpdFgnfFzbKpZfF5JODMwTUPB+t1xM
+ y8LvD8V4zTGYOItWHLS7TVuhANONse++PrUzuq4TknIyHvpuIA28TnFDHUp3E2nW5cCG
+ DGXvHstFHMSFfRMzHNY3UgJIYgU01KeRgZ+FN0oPTYHnG85x8XM9/LPKC8m0oAGLSxh/
+ hqQQ==
+X-Gm-Message-State: AOAM531kRG7p8kDwEBAxxENNqhWtsxI27phHWgk6dbt3nOx8NRQp73B0
+ Q1ArwaTPSZGBKCrmvloxn2EM6A5NoDc=
+X-Google-Smtp-Source: ABdhPJyW7nwCVZE03wLWlyJEoM7FjY+evtSXj/v5so2cyHbLiEjhHb8GHQYEDYG5ZuGN7UZ3kwe5nQ==
+X-Received: by 2002:adf:aac7:: with SMTP id i7mr44556716wrc.537.1641333029395; 
+ Tue, 04 Jan 2022 13:50:29 -0800 (PST)
+Received: from x1w.. (83.red-83-50-87.dynamicip.rima-tde.net. [83.50.87.83])
+ by smtp.gmail.com with ESMTPSA id y1sm38872710wrm.3.2022.01.04.13.50.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Jan 2022 10:07:06 -0800 (PST)
-From: Carwyn Ellis <carwynellis@gmail.com>
+ Tue, 04 Jan 2022 13:50:29 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Carwyn Ellis <carwynellis@gmail.com>
-Subject: [PATCH 1/2] hw/display/vmware_vga: replace fprintf calls with trace
- events
-Date: Tue,  4 Jan 2022 18:06:58 +0000
-Message-Id: <20220104180659.91619-2-carwynellis@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220104180659.91619-1-carwynellis@gmail.com>
-References: <20220104180659.91619-1-carwynellis@gmail.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, WANG Xuerui <git@xen0n.name>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Song Gao <gaosong@loongson.cn>
+Subject: [PATCH v2] linux-user: Fix trivial build error on loongarch64 hosts
+Date: Tue,  4 Jan 2022 22:50:27 +0100
+Message-Id: <20220104215027.2180972-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::436
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::429
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=carwynellis@gmail.com; helo=mail-wr1-x436.google.com
-X-Spam_score_int: 6
-X-Spam_score: 0.6
-X-Spam_bar: /
-X-Spam_report: (0.6 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,94 +81,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jan 2022 18:07:12 -0000
+X-List-Received-Date: Tue, 04 Jan 2022 21:50:46 -0000
 
-Debug output was always being sent to STDERR.
+When building using GCC 8.3.0 on loongarch64 (Loongnix) we get:
 
-This has been replaced with trace events.
+  In file included from ../linux-user/signal.c:33:
+  ../linux-user/host/loongarch64/host-signal.h: In function ‘host_signal_write’:
+  ../linux-user/host/loongarch64/host-signal.h:57:9: error: a label can only be part of a statement and a declaration is not a statement
+         uint32_t sel = (insn >> 15) & 0b11111111111;
+         ^~~~~~~~
 
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+We don't use the 'sel' variable more than once, so drop it.
+
+Meson output for the record:
+
+  Host machine cpu family: loongarch64
+  Host machine cpu: loongarch64
+  C compiler for the host machine: cc (gcc 8.3.0 "cc (Loongnix 8.3.0-6.lnd.vec.27) 8.3.0")
+  C linker for the host machine: cc ld.bfd 2.31.1-system
+
+Fixes: ad812c3bd65 ("linux-user: Implement CPU-specific signal handler for loongarch64 hosts")
+Reported-by: Song Gao <gaosong@loongson.cn>
+Suggested-by: Song Gao <gaosong@loongson.cn>
+Reviewed-by: WANG Xuerui <git@xen0n.name>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/display/trace-events |  3 +++
- hw/display/vmware_vga.c | 22 ++++++++++------------
- 2 files changed, 13 insertions(+), 12 deletions(-)
+ linux-user/host/loongarch64/host-signal.h | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/hw/display/trace-events b/hw/display/trace-events
-index 3a7a2c957f..e1a0d2a88a 100644
---- a/hw/display/trace-events
-+++ b/hw/display/trace-events
-@@ -21,6 +21,9 @@ vmware_palette_write(uint32_t index, uint32_t value) "index %d, value 0x%x"
- vmware_scratch_read(uint32_t index, uint32_t value) "index %d, value 0x%x"
- vmware_scratch_write(uint32_t index, uint32_t value) "index %d, value 0x%x"
- vmware_setmode(uint32_t w, uint32_t h, uint32_t bpp) "%dx%d @ %d bpp"
-+vmware_verify_rect_less_than_zero(const char *name, const char *param, int x) "%s: %s was < 0 (%d)"
-+vmware_verify_rect_greater_than_bound(const char *name, const char *param, int bound, int x) "%s: %s was > %d (%d)"
-+vmware_verify_rect_surface_bound_exceeded(const char *name, const char *component, int bound, const char *param1, int value1, const char *param2, int value2) "%s: %s > %d (%s: %d, %s, %d)"
- 
- # virtio-gpu-base.c
- virtio_gpu_features(bool virgl) "virgl %d"
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index e2969a6c81..0d32a605a0 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -297,46 +297,44 @@ static inline bool vmsvga_verify_rect(DisplaySurface *surface,
-                                       int x, int y, int w, int h)
- {
-     if (x < 0) {
--        fprintf(stderr, "%s: x was < 0 (%d)\n", name, x);
-+        trace_vmware_verify_rect_less_than_zero(name, "x", x);
-         return false;
-     }
-     if (x > SVGA_MAX_WIDTH) {
--        fprintf(stderr, "%s: x was > %d (%d)\n", name, SVGA_MAX_WIDTH, x);
-+        trace_vmware_verify_rect_greater_than_bound(name, "x", SVGA_MAX_WIDTH, x);
-         return false;
-     }
-     if (w < 0) {
--        fprintf(stderr, "%s: w was < 0 (%d)\n", name, w);
-+        trace_vmware_verify_rect_less_than_zero(name, "w", w);
-         return false;
-     }
-     if (w > SVGA_MAX_WIDTH) {
--        fprintf(stderr, "%s: w was > %d (%d)\n", name, SVGA_MAX_WIDTH, w);
-+        trace_vmware_verify_rect_greater_than_bound(name, "w", SVGA_MAX_WIDTH, w);
-         return false;
-     }
-     if (x + w > surface_width(surface)) {
--        fprintf(stderr, "%s: width was > %d (x: %d, w: %d)\n",
--                name, surface_width(surface), x, w);
-+        trace_vmware_verify_rect_surface_bound_exceeded(name, "width", surface_width(surface), "x", x, "w", w);
-         return false;
-     }
- 
-     if (y < 0) {
--        fprintf(stderr, "%s: y was < 0 (%d)\n", name, y);
-+        trace_vmware_verify_rect_less_than_zero(name, "y", y);
-         return false;
-     }
-     if (y > SVGA_MAX_HEIGHT) {
--        fprintf(stderr, "%s: y was > %d (%d)\n", name, SVGA_MAX_HEIGHT, y);
-+        trace_vmware_verify_rect_greater_than_bound(name, "y", SVGA_MAX_HEIGHT, y);
-         return false;
-     }
-     if (h < 0) {
--        fprintf(stderr, "%s: h was < 0 (%d)\n", name, h);
-+        trace_vmware_verify_rect_less_than_zero(name, "h", h);
-         return false;
-     }
-     if (h > SVGA_MAX_HEIGHT) {
--        fprintf(stderr, "%s: h was > %d (%d)\n", name, SVGA_MAX_HEIGHT, h);
-+        trace_vmware_verify_rect_greater_than_bound(name, "y", SVGA_MAX_HEIGHT, y);
-         return false;
-     }
-     if (y + h > surface_height(surface)) {
--        fprintf(stderr, "%s: update height > %d (y: %d, h: %d)\n",
--                name, surface_height(surface), y, h);
-+        trace_vmware_verify_rect_surface_bound_exceeded(name, "height", surface_height(surface), "y", y, "h", h);
-         return false;
-     }
- 
+diff --git a/linux-user/host/loongarch64/host-signal.h b/linux-user/host/loongarch64/host-signal.h
+index 05e2c823717..7effa242515 100644
+--- a/linux-user/host/loongarch64/host-signal.h
++++ b/linux-user/host/loongarch64/host-signal.h
+@@ -54,9 +54,7 @@ static inline bool host_signal_write(siginfo_t *info, ucontext_t *uc)
+         }
+         break;
+     case 0b001110: /* indexed, atomic, bounds-checking memory operations */
+-        uint32_t sel = (insn >> 15) & 0b11111111111;
+-
+-        switch (sel) {
++        switch ((insn >> 15) & 0b11111111111) {
+         case 0b00000100000: /* stx.b */
+         case 0b00000101000: /* stx.h */
+         case 0b00000110000: /* stx.w */
 -- 
-2.34.1
+2.33.1
 
 
