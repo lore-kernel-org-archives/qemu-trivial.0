@@ -1,78 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n4fzm-0004fe-EL
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 04:20:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37106)
+	id 1n4g6E-0001ex-IC
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 04:27:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n4fzj-0004dY-QQ; Tue, 04 Jan 2022 04:20:40 -0500
-Received: from [2a00:1450:4864:20::330] (port=39459
- helo=mail-wm1-x330.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n4fzi-0008FG-2j; Tue, 04 Jan 2022 04:20:39 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- g7-20020a7bc4c7000000b00345c4bb365aso19607881wmk.4; 
- Tue, 04 Jan 2022 01:20:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=GCPLuPwSXoVEGZ8BAJ3WOKIPJnETmpVk7myN2twz94Y=;
- b=o2UtxdpsFXbiivKYe8V8zPgku/6U9TQP+DVqrsdcsCzjMpqJu5P4ERJlw7MiTQsIKJ
- hqz6ubPieTSlxLoBhYM8g2ebfiwp3zx5pPnhCOqXhNCWYK6UYJZdeb8+BgkUaz/h8zf/
- sMEefynurZMHlqEP60e4L8SZ5yxnp8twv32khDu0cJWFlcsHzJrWav3rCmmvaathm/Al
- KLxyOjPTMDMxfLXvEaNqigpZlFCHga0twDe9ZBqaBylc2lm0LwtKfT43P2K+OKgWUk+0
- GMGgenrkvuBcDbvlN6r253ESXf6W0IBsWn3RZYqA6TDArsKydrkN5CaMexaSwCSk+7pK
- 3m9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=GCPLuPwSXoVEGZ8BAJ3WOKIPJnETmpVk7myN2twz94Y=;
- b=tZ2s5K4kd1zfmLXSjABcP7wDPIqnBGwTm4foe8bMDTy2kdNbpGifxBd1uzIM4IbPrw
- cKmKCEP9WMz+pEtR8Uc2Hye88ChLEdKkD3WRT7Eri8gG9eI1j6Qy8y2fZUAtRiEj3pQy
- VF1iX9dUqt6TdmKE0JSlNN3XoWoqlDqVB/K0mf9m24GTCB6+W+k2fitzrcA86NBSXT+0
- hFmCw/mD8tEBv0cVoP/HxuCaoHsMBDf1epcv3+FFiVdQAr33V6EAB/nnQaKOLsMCxLau
- oNwnNXt0eFWYTg/TOgRNQxvcotkwrIueNG5lx4C0qRop/2P3XnBcf1fk8uBjT7OQ9rKp
- yTXg==
-X-Gm-Message-State: AOAM533hjjG+o4s1Ef/iyPDZyiScfc0k/+nFaiEfStuKnlnSWsQPYkhZ
- PblOlgbgy9sLgDZLtwK3nsk=
-X-Google-Smtp-Source: ABdhPJwnkABgMKkv3g1Zi8bZSs7ORwFXCyVYIAna2Uz7kKsfYfhJxrQThpAVsE4nswAAzEB6KU1SCA==
-X-Received: by 2002:a05:600c:4998:: with SMTP id
- h24mr41042217wmp.188.1641288035740; 
- Tue, 04 Jan 2022 01:20:35 -0800 (PST)
-Received: from smtpclient.apple (201.11.75.194.dyn.plus.net. [194.75.11.201])
- by smtp.gmail.com with ESMTPSA id
- c7sm41754536wri.21.2022.01.04.01.20.35
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 04 Jan 2022 01:20:35 -0800 (PST)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.40.0.1.81\))
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1n4g6D-0001ei-Lg; Tue, 04 Jan 2022 04:27:21 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:43669)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1n4g6B-0000kn-Oj; Tue, 04 Jan 2022 04:27:21 -0500
+Received: from [192.168.100.1] ([82.142.30.62]) by mrelayeu.kundenserver.de
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MMGVE-1mmbFT1gm6-00JK9m; Tue, 04 Jan 2022 10:27:17 +0100
+Message-ID: <d46faaf5-17c9-20e9-83e8-fb6bcd87ee67@vivier.eu>
+Date: Tue, 4 Jan 2022 10:27:16 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
 Subject: Re: [PATCH 1/2] hw/display/vmware_vga: only show debug output if
  DEBUG enabled
-From: Carwyn Ellis <carwynellis@gmail.com>
-In-Reply-To: <5be97a9e-8df4-621a-8875-56979448a777@vivier.eu>
-Date: Tue, 4 Jan 2022 09:20:34 +0000
-Cc: qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <5DC1E921-4166-45E4-8EBE-BA07A2708956@gmail.com>
+Content-Language: fr
+To: Carwyn Ellis <carwynellis@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <20220104091135.61226-1-carwynellis@gmail.com>
  <20220104091135.61226-2-carwynellis@gmail.com>
  <5be97a9e-8df4-621a-8875-56979448a777@vivier.eu>
-To: Laurent Vivier <laurent@vivier.eu>
-X-Mailer: Apple Mail (2.3693.40.0.1.81)
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::330
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=carwynellis@gmail.com; helo=mail-wm1-x330.google.com
-X-Spam_score_int: 6
-X-Spam_score: 0.6
-X-Spam_bar: /
-X-Spam_report: (0.6 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <5DC1E921-4166-45E4-8EBE-BA07A2708956@gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <5DC1E921-4166-45E4-8EBE-BA07A2708956@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:pIeUMJ1rkPAXySetGsJRDYH8g7B5eG9SAiiDW99TvbsC+QOu/Yr
+ mYdFSzKaeV/6wBHM6OyBSLA4aMNf4qbrbb0YGNZZepy44/13yP3d9VIBA/5KjrS9SEhM8B7
+ /zjkrXxIChPlv448L3D0G0L6bQ83A8XBERre4zn6Y6zUwcvrARE8dYXR3ytNT9ngYg/HOwq
+ bw2vA5R4avi1SaCwhYjBQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TxL0Yb6scZY=:FTuH8aW4biaun7iVSlzq4R
+ +K/jFssxmp6am1uWInDPtsHw4hyXq99hTDcqeT/WmH50Mo9kHEc4VlEQt5R75Mtw0BKcVC6eh
+ tBSVyrm6IjCifm1XKstptO94C2T69cjv8eErSGrM89QgpwB7Pq7kmQnMM2W6JAoASseFayHd4
+ uPgpc1XCek42zEZuf1cECyIjjxTySSR/ikjz7WHbVt7XUfnEMz5eyLG4gU1b6azwOo3fqmtzB
+ L8HCNmMYWsXIN/w9E166sA539fTTMUHfV0DltCeCg0VUAuIwkDDHqdrdmVRwhrA/idE+Ojpu+
+ Y9FW529aBJkzeznlShVIFOUdMWsA8ynbX6CG4Ysvs/+eb9gbSlExoGQ/+QVjG9SCt4b2dFa5b
+ oSl3bUmBdIWYM4aOGpvHTQfVjeNO+8DmkJaaXDSFHJ+vd+MT48GlzC7m3KLA3oLgYPYPRBsb8
+ YJPvaVc+0lDdbt6W3r231MC8pFOgDpwPs0+uzclLOQY12XLR9yGHdxkAB5UN4XzH5FNW17OSt
+ oyhjbarqMR9dt43U/3vDjy5l/kQDaGDu5CAhHeDovjOReyZxL2GNLNFVzWWkJMFrS3J+Br00N
+ vG3n7CQHu7A0GTbmPoRge+PdGxF2EJ+0PtBGzitS+vZIGP7EtcRDZEPxv2sDILg3zTr9NsQW3
+ ++8XS6y2swjC98lDFez7oG3ZJbbFA/gSQAHA6ZPTf2Suhazn8qgjOuWkhKLC13sUJNMs=
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) NICE_REPLY_A=-3.354,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,116 +65,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jan 2022 09:20:40 -0000
+X-List-Received-Date: Tue, 04 Jan 2022 09:27:21 -0000
 
-Hey,
+Le 04/01/2022 à 10:20, Carwyn Ellis a écrit :
+> Hey,
+> 
+> Thanks for getting back to me.
+> 
+> Yeah will take a look and update when I have a mo.
 
-Thanks for getting back to me.
+It's really easy to do, see below for an example:
 
-Yeah will take a look and update when I have a mo.
+...
+>>>   @@ -297,45 +303,45 @@ static inline bool vmsvga_verify_rect(DisplaySurface *surface,
+>>>                                         int x, int y, int w, int h)
+>>>   {
+>>>       if (x < 0) {
+>>> -        fprintf(stderr, "%s: x was < 0 (%d)\n", name, x);
+>>> +        VMWARE_VGA_DEBUG("%s: x was < 0 (%d)\n", name, x);
 
-Cheers
-Carwyn
+replace it by:
 
-> On 4 Jan 2022, at 09:18, Laurent Vivier <laurent@vivier.eu> wrote:
->=20
-> Le 04/01/2022 =C3=A0 10:11, Carwyn Ellis a =C3=A9crit :
->> Debug output was always being sent to STDERR. This has been replaced =
-by
->> a define that will only show this output when DEBUG is set to true.
->> Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
->> ---
->>  hw/display/vmware_vga.c | 26 ++++++++++++++++----------
->>  1 file changed, 16 insertions(+), 10 deletions(-)
->> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
->> index e2969a6c81..8080e085d1 100644
->> --- a/hw/display/vmware_vga.c
->> +++ b/hw/display/vmware_vga.c
->> @@ -43,6 +43,12 @@
->>    /* See http://vmware-svga.sf.net/ for some documentation on VMWare =
-SVGA */
->>  +#ifdef DEBUG
->> +#define VMWARE_VGA_DEBUG(...) { (void) fprintf(stdout, __VA_ARGS__); =
-}
->> +#else
->> +#define VMWARE_VGA_DEBUG(...) ((void) 0)
->> +#endif
->> +
->=20
-> Could you replace this macro by adding some trace-events instead.
->=20
-> See =
-https://qemu-project.gitlab.io/qemu/devel/tracing.html#using-trace-events
->=20
-> Thanks,
-> Laurent
->=20
->>  struct vmsvga_state_s {
->>      VGACommonState vga;
->>  @@ -297,45 +303,45 @@ static inline bool =
-vmsvga_verify_rect(DisplaySurface *surface,
->>                                        int x, int y, int w, int h)
->>  {
->>      if (x < 0) {
->> -        fprintf(stderr, "%s: x was < 0 (%d)\n", name, x);
->> +        VMWARE_VGA_DEBUG("%s: x was < 0 (%d)\n", name, x);
->>          return false;
->>      }
->>      if (x > SVGA_MAX_WIDTH) {
->> -        fprintf(stderr, "%s: x was > %d (%d)\n", name, =
-SVGA_MAX_WIDTH, x);
->> +        VMWARE_VGA_DEBUG("%s: x was > %d (%d)\n", name, =
-SVGA_MAX_WIDTH, x);
->>          return false;
->>      }
->>      if (w < 0) {
->> -        fprintf(stderr, "%s: w was < 0 (%d)\n", name, w);
->> +        VMWARE_VGA_DEBUG("%s: w was < 0 (%d)\n", name, w);
->>          return false;
->>      }
->>      if (w > SVGA_MAX_WIDTH) {
->> -        fprintf(stderr, "%s: w was > %d (%d)\n", name, =
-SVGA_MAX_WIDTH, w);
->> +        VMWARE_VGA_DEBUG("%s: w was > %d (%d)\n", name, =
-SVGA_MAX_WIDTH, w);
->>          return false;
->>      }
->>      if (x + w > surface_width(surface)) {
->> -        fprintf(stderr, "%s: width was > %d (x: %d, w: %d)\n",
->> +        VMWARE_VGA_DEBUG("%s: width was > %d (x: %d, w: %d)\n",
->>                  name, surface_width(surface), x, w);
->>          return false;
->>      }
->>        if (y < 0) {
->> -        fprintf(stderr, "%s: y was < 0 (%d)\n", name, y);
->> +        VMWARE_VGA_DEBUG("%s: y was < 0 (%d)\n", name, y);
->>          return false;
->>      }
->>      if (y > SVGA_MAX_HEIGHT) {
->> -        fprintf(stderr, "%s: y was > %d (%d)\n", name, =
-SVGA_MAX_HEIGHT, y);
->> +        VMWARE_VGA_DEBUG("%s: y was > %d (%d)\n", name, =
-SVGA_MAX_HEIGHT, y);
->>          return false;
->>      }
->>      if (h < 0) {
->> -        fprintf(stderr, "%s: h was < 0 (%d)\n", name, h);
->> +        VMWARE_VGA_DEBUG("%s: h was < 0 (%d)\n", name, h);
->>          return false;
->>      }
->>      if (h > SVGA_MAX_HEIGHT) {
->> -        fprintf(stderr, "%s: h was > %d (%d)\n", name, =
-SVGA_MAX_HEIGHT, h);
->> +        VMWARE_VGA_DEBUG("%s: h was > %d (%d)\n", name, =
-SVGA_MAX_HEIGHT, h);
->>          return false;
->>      }
->>      if (y + h > surface_height(surface)) {
->> -        fprintf(stderr, "%s: update height > %d (y: %d, h: %d)\n",
->> +        VMWARE_VGA_DEBUG("%s: update height > %d (y: %d, h: %d)\n",
->>                  name, surface_height(surface), y, h);
->>          return false;
->>      }
->=20
+     trace_vmsvga_verify_rect_check_neg(name, x);
 
+and in hw/display/trace-events you add:
+
+     vmsvga_verify_rect_check_neg(const char *name, int x) "%s: x was < 0 (%d)"
+
+Thanks,
+Laurent
 
