@@ -1,66 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n4LmG-0006ib-Li
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jan 2022 06:45:25 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55830)
+	id 1n4fr5-00024h-Ll
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 04:11:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35318)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n4LmE-0006en-As; Mon, 03 Jan 2022 06:45:22 -0500
-Received: from [2a00:1450:4864:20::431] (port=36414
- helo=mail-wr1-x431.google.com)
+ id 1n4fr3-00021T-Ud; Tue, 04 Jan 2022 04:11:41 -0500
+Received: from [2a00:1450:4864:20::435] (port=34697
+ helo=mail-wr1-x435.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n4LmC-00025k-SW; Mon, 03 Jan 2022 06:45:22 -0500
-Received: by mail-wr1-x431.google.com with SMTP id r17so69348199wrc.3;
- Mon, 03 Jan 2022 03:45:20 -0800 (PST)
+ id 1n4fr2-0005oF-Fp; Tue, 04 Jan 2022 04:11:41 -0500
+Received: by mail-wr1-x435.google.com with SMTP id s1so74880080wrg.1;
+ Tue, 04 Jan 2022 01:11:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:signed-off-by:content-transfer-encoding;
- bh=Ed/ZjFGQ57CfLs2xZtzopdldQ8WY6IYbdN6URwTDwKg=;
- b=Rm0KEQ6qutu25t+oMxUIQVYMYCJ/FCT9ew91YMSDNHORBpvQG8MkKjQ682udcKzpmv
- cZqQEOD/0X2wDwQWbWyV003glgx1rOrjaooHCHLLM/yCwJOCBJgmqQYUixtSz4vm6OVd
- AiQ2A9dBl09WAh+HgY3lVD9Zmxd40lJN4AEtmN/Zug8rF3U83qk3I/gwL1rSQqXwkXYS
- so29H5/dS2wpYwA2PRzgMOQxMz9HVYHdEzBTKPa3zPTdshF2NLpSMYHd8he/E2mF1Yd9
- t/OkUiqwqWQDYfBfZ8y04D3W3QvfJn745mpnGTewum4xaMYF7I8FDQDvmMnlDlEtDVSL
- Ig8w==
+ h=from:to:cc:subject:date:message-id:mime-version:signed-off-by
+ :content-transfer-encoding;
+ bh=AlGmEmXK6aVR/ArAGpjkyUllywQuWQTDtESbSeG3LXQ=;
+ b=DDCFYmbPvQoVolfcvcxx/QrBMyHtBjq5pcAxED5ldHP7Jyg7BKeoavHGpkBAMDduF2
+ JH0dExDZorVB4HaArH4eYGyqt+aI1/e1W+vVQuMJGQg8hbgnpk3OcpqO1Fav7lyzwufW
+ aeqNxph88r68SLtL8dUFmKOqcfA9yCaU4gk3yPlETQ4lUaEZHI1FoONFHO+BpJ//ifyV
+ p84C6+alxPRl83ETjTXy5lEuERP8h+JVgJ5VLJ72N/dsumvK9Lmy6auw5bLpOVRBR97L
+ L7UyyDNCCNZtArVNkjXPwKCzX6uqwU/sjs36PFYetdc/4S4ezwwUqTjBnEeZEJ4zLvPt
+ NsEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:signed-off-by:content-transfer-encoding;
- bh=Ed/ZjFGQ57CfLs2xZtzopdldQ8WY6IYbdN6URwTDwKg=;
- b=MMDR9oRkT6vj1F6AJKr1BemrfoH5w04cGjcumemtsf/nRRs8ixo7HkxKFe44bBeJ9w
- KJvF2xRWZ4byowCDrxA+7Kcq6BnrRA0uur2tr8BgdZGnYoEOlYHXU2DCFS7uN0Y1qolE
- 5i1ms9JIlKSuxvjG+3lXfZfiZvN1KTfPMLb9bsAw1XTzV49+NbOur+FrvHZDlTfUmmZy
- 7G+go7gFaXdLWW1LiYUmOcowO+cr8DM2rrnI2R0AvIZ5oEktk7GFLtM20ZiSMtr9H4T1
- r+qelR0JAqUxxZQIawByA6kDBRbbSMtfGlCw5puCe99Xqf8v5PIOr+Fc1StC4zIILiFD
- pbsA==
-X-Gm-Message-State: AOAM533L/y07dnKQXeS8V4WE+t1yKkNHKOsNUjs/aBwypWB8lNM3kTrV
- QwEEHaHWllOkP3YGc5i5ouZeSD9WHcc=
-X-Google-Smtp-Source: ABdhPJx1+j0kBKYCWzx7z1sp8XlvUGAXLvuCr9ZwPZdPfuygYF3/i1ZUlPsQ9jlzar+XrUWG1jXzKw==
-X-Received: by 2002:adf:e683:: with SMTP id r3mr37617687wrm.480.1641210319401; 
- Mon, 03 Jan 2022 03:45:19 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :signed-off-by:content-transfer-encoding;
+ bh=AlGmEmXK6aVR/ArAGpjkyUllywQuWQTDtESbSeG3LXQ=;
+ b=uy5MrHyWd58zPs3GqqV0ejfoYCajJKN1SC5cGkS6QxrOsId/wqAnHBPYQm0xEE6ev6
+ O9r+qI20px5/SQTvgGHomoH/UFWTh7/2tnzWPaRPadsyQtOrIjkLvT/kNLaFEq3r3kca
+ HIY4EMiO3hDfgghW3JB9wMLwrN9fsWmv2SiUWNy+EA956VZvXWgNavhorfEYVXdu4+kn
+ O6AhBZpHuUtcNJ6DdbEz1k1mSwnQI51tiEsTVgxCv69a/TYPt3MkKsuQ3BU2OiMukM3h
+ q+c8crIj0sd/ctWxhCytvBV8KwJOus8XkUT3mexAQfnIbVmuGzz6AbyEEa6J4me6Mf+9
+ TOvw==
+X-Gm-Message-State: AOAM531b2gzhPFHvG18Y3eAghOvpmVEBK7APozLYwJo6SQkEd5+Qlfvj
+ XaJOtu1+H2geU8RxQPG+pu1cGrj4TyM=
+X-Google-Smtp-Source: ABdhPJynutccrizg0HV9u5k/pPlpg2ogWUS3YBIMktrMfSVx7AQfk5u23BMIJhvvComIAhTn8l+jPA==
+X-Received: by 2002:a5d:488a:: with SMTP id g10mr28051554wrq.653.1641287498319; 
+ Tue, 04 Jan 2022 01:11:38 -0800 (PST)
 Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
- [194.75.11.201]) by smtp.googlemail.com with ESMTPSA id
- g198sm38831631wme.23.2022.01.03.03.45.19
+ [194.75.11.201])
+ by smtp.googlemail.com with ESMTPSA id c11sm43962844wmq.48.2022.01.04.01.11.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Jan 2022 03:45:19 -0800 (PST)
+ Tue, 04 Jan 2022 01:11:38 -0800 (PST)
 From: Carwyn Ellis <carwynellis@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-trivial@nongnu.org,
- Carwyn Ellis <carwynellis@gmail.com>
-Subject: [PATCH 1/1] ui/cocoa: show/hide menu in fullscreen on mouse
- ungrab/grab
-Date: Mon,  3 Jan 2022 11:45:15 +0000
-Message-Id: <20220103114515.24020-2-carwynellis@gmail.com>
+Cc: qemu-trivial@nongnu.org,
+	Carwyn Ellis <carwynellis@gmail.com>
+Subject: [PATCH 0/2] hw/display/vmware_vga: supress debug output and fix
+Date: Tue,  4 Jan 2022 09:11:33 +0000
+Message-Id: <20220104091135.61226-1-carwynellis@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220103114515.24020-1-carwynellis@gmail.com>
-References: <20220103114515.24020-1-carwynellis@gmail.com>
 MIME-Version: 1.0
 Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::431
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::435
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=carwynellis@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=carwynellis@gmail.com; helo=mail-wr1-x435.google.com
 X-Spam_score_int: 6
 X-Spam_score: 0.6
 X-Spam_bar: /
@@ -80,45 +77,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jan 2022 11:45:22 -0000
+X-List-Received-Date: Tue, 04 Jan 2022 09:11:42 -0000
 
-The menu bar is only accessible when the Cocoa UI is windowed. In order
-to allow the menu bar to be accessible in fullscreen mode, this change
-makes the menu visible when the mouse is ungrabbed.
+Two patches addressing the following in the vmware vga display code
 
-When the mouse is grabbed the menu is hidden again.
+  - only show debug output if DEBUG is explicitly enabled
 
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
----
- ui/cocoa.m | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+  - do not discard display updates
 
-diff --git a/ui/cocoa.m b/ui/cocoa.m
-index 69745c483b..42dcf47da4 100644
---- a/ui/cocoa.m
-+++ b/ui/cocoa.m
-@@ -1037,7 +1037,9 @@ QemuCocoaView *cocoaView;
- {
-     COCOA_DEBUG("QemuCocoaView: grabMouse\n");
- 
--    if (!isFullscreen) {
-+    if (isFullscreen) {
-+        [NSMenu setMenuBarVisible: FALSE];
-+    } else {
-         if (qemu_name)
-             [normalWindow setTitle:[NSString stringWithFormat:@"QEMU %s - (Press ctrl + alt + g to release Mouse)", qemu_name]];
-         else
-@@ -1052,7 +1054,9 @@ QemuCocoaView *cocoaView;
- {
-     COCOA_DEBUG("QemuCocoaView: ungrabMouse\n");
- 
--    if (!isFullscreen) {
-+    if (isFullscreen) {
-+        [NSMenu setMenuBarVisible: TRUE];
-+    } else {
-         if (qemu_name)
-             [normalWindow setTitle:[NSString stringWithFormat:@"QEMU %s", qemu_name]];
-         else
+    This prevents an issue that can cause garbled display output when
+    a high number of screen updates are being requested.
+
+    The FIFO queue size has been increased and all display update events
+    are now processed ensuring correct display output even during
+    periods of high activity.
+
+Carwyn Ellis (2):
+  hw/display/vmware_vga: only show debug output if DEBUG enabled
+  hw/display/vmware_vga: do not discard screen updates
+
+ hw/display/vmware_vga.c | 50 +++++++++++++++++++++++++++--------------
+ 1 file changed, 33 insertions(+), 17 deletions(-)
+
 -- 
 2.34.1
 
