@@ -1,78 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n4s3m-00082O-PE
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 17:13:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37314)
+	id 1n4tEp-00028y-CK
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 18:29:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50758)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1n4s3k-0007zC-Rq
- for qemu-trivial@nongnu.org; Tue, 04 Jan 2022 17:13:36 -0500
-Received: from [2607:f8b0:4864:20::429] (port=45751
- helo=mail-pf1-x429.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n4tEk-00027J-44; Tue, 04 Jan 2022 18:29:02 -0500
+Received: from [2a00:1450:4864:20::32e] (port=41579
+ helo=mail-wm1-x32e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1n4s3j-0000o1-Dd
- for qemu-trivial@nongnu.org; Tue, 04 Jan 2022 17:13:36 -0500
-Received: by mail-pf1-x429.google.com with SMTP id u20so33403829pfi.12
- for <qemu-trivial@nongnu.org>; Tue, 04 Jan 2022 14:13:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=yGhC5KNeUzflPJXWteXAWgl1DeyBYTlAzOlKhY0VdZs=;
- b=deJd+JzV1b8vgfCZ4/zl75e+lKbqI9V7zecOLmCs5R327fsMRcCq45FNImCrWYplLC
- +dXV4DaL4ffb3OYw4lnKLYM+oQyRmiQA/6/Ryce1rtYtoRKARjngz+Zzg3BJPCYTqbzc
- t39QHkWHNxNZ/8OmAJejRLsRuASgzLLqn5mUw8VWUdsmq6G01JPpeBSv5gUyFefGRMH9
- fuMyqwrN6PvPvL+Bm8ysj2tFiAK89SqWuUEkms5RBxBU3gqWc1qNWaUJu//RuazhxQxJ
- xjrpZuDFmaD30BXI2JxtyPbXGI0236/iDfe2cNPO0MI39kVqbkz2J4D9ApaJRRYgfqlQ
- Eugg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n4tEi-0005JI-HR; Tue, 04 Jan 2022 18:29:01 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ b186-20020a1c1bc3000000b00345734afe78so2299637wmb.0; 
+ Tue, 04 Jan 2022 15:28:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=8LA3/n8sctVec6qROBt23msuoQk3Cfjdxpm0txxqur8=;
+ b=OqpEjHAKM6xM6GQG5/J2/wS1J8Fhsrt3/2iVtx1472B01G8OC+3RHmCPXRqGYgDwH2
+ LEJPbhXJV0MA2tr40msRXvcCAyCqAzMl1GV60eOv5dsZAr0A93sGkrG5Y7pKUByuSPfQ
+ PCXFmaXGyY7PVLYI/HlAuCWHPVOvVoM/s+LMZnt/LwsKitlYDsXzo58oXVzyjiTShBM/
+ g4cG+XIbuLfJfkL0tw69XblCNxQ87T7wnWOrnNndt3hopfip5NL3V1z3S6FYdI4XLcOP
+ pId1he2OV+TigXjbz0oe97vn8xouVcpOQHZJhaZbduV+T4GzO1z3o+xT2uOZtMtepxOi
+ YA5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=yGhC5KNeUzflPJXWteXAWgl1DeyBYTlAzOlKhY0VdZs=;
- b=SeLACmUXxquATWGiQ4gFgjY+1ghIk5ycXMN7lmHUgVV+ag/bDn0PluKFat3Seabioc
- JTWdxBm/lrsj7fhuikkMfiWPJWbITQFCt8Kk7ykrSXeqlb6+NdT6EMbeDt+pyJ3N801T
- 66s+u7tZXKQUHVT2tu/TcpITMfqS+hM07fUobuSmkFmrEOzePl3xvT6xnqkOSx2l/62w
- Q/ZjMlUt3s2tLUaPuGxX/NDMQr6mDtspUfiE0yxUj1X6/V9cAwP6mcdG228mpQoBZgpP
- PNdr/9iOXEhEsxD6iZSHCV4kInT7hTOw8bVsGzBa8SCll7zG2bFkayQhV/A840ubTclA
- cKXw==
-X-Gm-Message-State: AOAM5331c7P6ehVtNMsuzk6yaLXwQlM+pH0C31/kGq4x77DZ9XXNlpCq
- JEVhMgXK2qB9fNLAP+1mQh4rzQ==
-X-Google-Smtp-Source: ABdhPJzdaJFtlrXyYnKqOW1ux2eJIuT26XhgcyknJi49YK1HC5AAR0vOoeZt3ff/L9njD1Yi2ceyoQ==
-X-Received: by 2002:a05:6a00:1818:b0:4ba:c287:a406 with SMTP id
- y24-20020a056a00181800b004bac287a406mr52363203pfa.6.1641334414082; 
- Tue, 04 Jan 2022 14:13:34 -0800 (PST)
-Received: from [192.168.1.13] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id l22sm43859988pfc.167.2022.01.04.14.13.33
+ bh=8LA3/n8sctVec6qROBt23msuoQk3Cfjdxpm0txxqur8=;
+ b=5ClSdgIz57/8+iuDEXgFIYpwkn/plsUvSFxDZn3tKAN6DIXhEUxA80bySQ/rdVz8M6
+ 7y4xgx0je42VBZg7nzxA5zAI0Q4zIZwylHXsZVnMjWcn3AJ52zL6b621esiOKGIAA4/b
+ GmD91a3JX+E6oSw0BrAfCc6t9RJ7ahZH6ShCL3RGyEGbIBdMXYVIR6WOZ0PtMQxhxJ1J
+ SMWR5Eh4hx9L7ekH0WGfAQ32ApKZyCJ9JFZetdOZIUrfp+ST5F18CCZqK6MGoEvqFIq/
+ RvAF/emFfC+OP2FGP+S+agt5LWMycVIpTbDlyuFfhDH4SKEzMvX7gZEBH2g8WaDwETTz
+ uFSg==
+X-Gm-Message-State: AOAM530rW5AS7rQw7sy5ShT5tznrW2zA++wcgQOELDRNSdVy6OW0MC48
+ xWIQs5IviJoyQ/0T71gS2oU=
+X-Google-Smtp-Source: ABdhPJzK4YsVzTDONjro+0qUUb+7P9HcbnSzNw3BHzZaMR1ZTFk/rfNnxjJgCUTf2wtgFRlBhNHm/w==
+X-Received: by 2002:a1c:f205:: with SMTP id s5mr510226wmc.33.1641338938741;
+ Tue, 04 Jan 2022 15:28:58 -0800 (PST)
+Received: from [192.168.1.40] (83.red-83-50-87.dynamicip.rima-tde.net.
+ [83.50.87.83])
+ by smtp.gmail.com with ESMTPSA id a2sm44455153wri.17.2022.01.04.15.28.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Jan 2022 14:13:33 -0800 (PST)
-Subject: Re: [PATCH v2] linux-user: Fix trivial build error on loongarch64
- hosts
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, Song Gao <gaosong@loongson.cn>,
- WANG Xuerui <git@xen0n.name>
-References: <20220104215027.2180972-1-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <8d48454c-12d4-1c3c-e85d-12c319deb3ec@linaro.org>
-Date: Tue, 4 Jan 2022 14:13:32 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ Tue, 04 Jan 2022 15:28:58 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <8542122e-e9bd-e641-d464-9b2f1cbebfb4@amsat.org>
+Date: Wed, 5 Jan 2022 00:28:57 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220104215027.2180972-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH 1/2] hw/display/vmware_vga: replace fprintf calls with
+ trace events
 Content-Language: en-US
+To: Carwyn Ellis <carwynellis@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20220104180659.91619-1-carwynellis@gmail.com>
+ <20220104180659.91619-2-carwynellis@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220104180659.91619-2-carwynellis@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::429
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32e
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.354,
+X-Spam_report: (-2.2 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.354,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -87,36 +88,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jan 2022 22:13:37 -0000
+X-List-Received-Date: Tue, 04 Jan 2022 23:29:02 -0000
 
-On 1/4/22 1:50 PM, Philippe Mathieu-Daudé wrote:
-> When building using GCC 8.3.0 on loongarch64 (Loongnix) we get:
+On 1/4/22 19:06, Carwyn Ellis wrote:
+> Debug output was always being sent to STDERR.
 > 
->    In file included from ../linux-user/signal.c:33:
->    ../linux-user/host/loongarch64/host-signal.h: In function ‘host_signal_write’:
->    ../linux-user/host/loongarch64/host-signal.h:57:9: error: a label can only be part of a statement and a declaration is not a statement
->           uint32_t sel = (insn >> 15) & 0b11111111111;
->           ^~~~~~~~
+> This has been replaced with trace events.
 > 
-> We don't use the 'sel' variable more than once, so drop it.
-> 
-> Meson output for the record:
-> 
->    Host machine cpu family: loongarch64
->    Host machine cpu: loongarch64
->    C compiler for the host machine: cc (gcc 8.3.0 "cc (Loongnix 8.3.0-6.lnd.vec.27) 8.3.0")
->    C linker for the host machine: cc ld.bfd 2.31.1-system
-> 
-> Fixes: ad812c3bd65 ("linux-user: Implement CPU-specific signal handler for loongarch64 hosts")
-> Reported-by: Song Gao<gaosong@loongson.cn>
-> Suggested-by: Song Gao<gaosong@loongson.cn>
-> Reviewed-by: WANG Xuerui<git@xen0n.name>
-> Signed-off-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
+> Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
 > ---
->   linux-user/host/loongarch64/host-signal.h | 4 +---
->   1 file changed, 1 insertion(+), 3 deletions(-)
+>  hw/display/trace-events |  3 +++
+>  hw/display/vmware_vga.c | 22 ++++++++++------------
+>  2 files changed, 13 insertions(+), 12 deletions(-)
+> 
+> diff --git a/hw/display/trace-events b/hw/display/trace-events
+> index 3a7a2c957f..e1a0d2a88a 100644
+> --- a/hw/display/trace-events
+> +++ b/hw/display/trace-events
+> @@ -21,6 +21,9 @@ vmware_palette_write(uint32_t index, uint32_t value) "index %d, value 0x%x"
+>  vmware_scratch_read(uint32_t index, uint32_t value) "index %d, value 0x%x"
+>  vmware_scratch_write(uint32_t index, uint32_t value) "index %d, value 0x%x"
+>  vmware_setmode(uint32_t w, uint32_t h, uint32_t bpp) "%dx%d @ %d bpp"
+> +vmware_verify_rect_less_than_zero(const char *name, const char *param, int x) "%s: %s was < 0 (%d)"
+> +vmware_verify_rect_greater_than_bound(const char *name, const char *param, int bound, int x) "%s: %s was > %d (%d)"
+> +vmware_verify_rect_surface_bound_exceeded(const char *name, const char *component, int bound, const char *param1, int value1, const char *param2, int value2) "%s: %s > %d (%s: %d, %s, %d)"
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+"%s: %s > %d (%s: %d, %s: %d)", otherwise:
 
-r~
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+
 
