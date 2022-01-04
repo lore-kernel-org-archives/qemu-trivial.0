@@ -1,73 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n4frD-0002Mj-4G
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 04:11:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35346)
+	id 1n4fxb-0002ua-Ke
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 04:18:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n4fr9-0002DF-5s; Tue, 04 Jan 2022 04:11:47 -0500
-Received: from [2a00:1450:4864:20::430] (port=44763
- helo=mail-wr1-x430.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1n4fr6-0005qX-IE; Tue, 04 Jan 2022 04:11:45 -0500
-Received: by mail-wr1-x430.google.com with SMTP id k18so38050332wrg.11;
- Tue, 04 Jan 2022 01:11:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:signed-off-by:content-transfer-encoding;
- bh=gUacSFKzE5d5rBkE0IE8ydFAm3pspR29oFymbe1laec=;
- b=SpKzP18pDwRB1xifWNNtl9TFaPh0aJws361lD4xeCT+gtsLE0YBP5v1vuIOO4xEFe+
- far3TaCH9ZwmUfdmuB94xVcbEjKVJutFm0V6OslAK2FNtrxGpuUy8WdUQGtHk4u0HLqH
- 4yy33EpsuvQ6cBB2BUe/S0ncAEsGmqk/iW4oyIGwRFboT/4aIG61qaKGFo67FNVRg5gw
- bc6cNcqvW48Y66FlG6wTFD9+Va0952xEexNNRgfSNERYO5OQP6UhNk5lHlUtnpgdcCGz
- ydepL4+u4XtVwoBNO7PH7EdJm13SI5vU5R7kLlN/s56K3TPNdmNvXoJ5b8MOc35yYE3I
- b29A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:signed-off-by:content-transfer-encoding;
- bh=gUacSFKzE5d5rBkE0IE8ydFAm3pspR29oFymbe1laec=;
- b=0G4UY8XKFxKG4iPaflNpnOyUWzDz4vwCn7pWnl2/Rc4jw7Rd638wmiL/zQ7fgojYXc
- MwhCZRAUasfDpBMZFyy9tXiGqMEAjwhkhBuc4zskRbCzdWQOessz4O2GPsq8ekyeexNM
- q7SFLurWM200vks+yWk/qpLSMa/gsrUYRzhrfCHZVZgFwuwfSY/OgtaYVnqkeL04Mh1+
- v3ujECR8WJRv+lqvtssX1n4vm6WnxSKTlz511WZAmfQRyyKAZNgZJ47wWLYS5t0sjxG/
- encgiVbvpHgyURHyw4Agz+TqNnc1GhhXBPtSxwVp0f84LM5TBzksVRUgbCfvpTB15ohC
- 1wFA==
-X-Gm-Message-State: AOAM531APhV0b99VNR/wistdT0y+3ZeeyFqsHoMJVm1XDJ/M7Jiu906u
- yKVBPpUXpb6Poiv1C0A0vmoFsHr/72c=
-X-Google-Smtp-Source: ABdhPJy4qjtVGrsr+hEhVNUB7ihCAz2F028GLx2Z5W7uxk9LZ5mjnGfEmBTonAIhMr516WcgIgJZNg==
-X-Received: by 2002:a05:6000:118a:: with SMTP id
- g10mr40146559wrx.533.1641287502957; 
- Tue, 04 Jan 2022 01:11:42 -0800 (PST)
-Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
- [194.75.11.201])
- by smtp.googlemail.com with ESMTPSA id c11sm43962844wmq.48.2022.01.04.01.11.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Jan 2022 01:11:42 -0800 (PST)
-From: Carwyn Ellis <carwynellis@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Carwyn Ellis <carwynellis@gmail.com>
-Subject: [PATCH 2/2] hw/display/vmware_vga: do not discard screen updates
-Date: Tue,  4 Jan 2022 09:11:35 +0000
-Message-Id: <20220104091135.61226-3-carwynellis@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220104091135.61226-1-carwynellis@gmail.com>
-References: <20220104091135.61226-1-carwynellis@gmail.com>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1n4fxa-0002uO-8Y; Tue, 04 Jan 2022 04:18:26 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:43395)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1n4fxY-0007ln-GV; Tue, 04 Jan 2022 04:18:25 -0500
+Received: from [192.168.100.1] ([82.142.30.62]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1M7sQ8-1n0oL12f6A-0050c5; Tue, 04 Jan 2022 10:18:21 +0100
+Message-ID: <5be97a9e-8df4-621a-8875-56979448a777@vivier.eu>
+Date: Tue, 4 Jan 2022 10:18:20 +0100
 MIME-Version: 1.0
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH 1/2] hw/display/vmware_vga: only show debug output if
+ DEBUG enabled
+Content-Language: fr
+To: Carwyn Ellis <carwynellis@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20220104091135.61226-1-carwynellis@gmail.com>
+ <20220104091135.61226-2-carwynellis@gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20220104091135.61226-2-carwynellis@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=carwynellis@gmail.com; helo=mail-wr1-x430.google.com
-X-Spam_score_int: 6
-X-Spam_score: 0.6
-X-Spam_bar: /
-X-Spam_report: (0.6 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Provags-ID: V03:K1:PMm0EfZLp/+QGDse6+hLAiGZgrLkUXKLytnYDVui8VnDz+/v7re
+ amRrwc9TPaZKBYqjS+PwjgNW4wC9Mpvl9CkLk0+9SyTN6581Hh+VBzM788BSx9uevt5qlmO
+ RJyOM1RVr6nL2EZ1N70Nf0uwJDDsUXJLYFM8vpS4g1PehgdZ0OyXQ/QfgnNNgosCJvgMiL2
+ O6ki2GYjWVIzQWNZsDLIA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BxT/9a5mnVE=:PL6m4t9rfrwN9ij7mLXRXc
+ 7mzbrLwiXKiGIX6c+J92tKwhSBkyPhEjLUxnwojn80WZ3lXVvjqc7nYkha6ic6qGWJRmTEIAZ
+ jx2wfj2Be6jbBpSemoYvIUfzivp+i5caI7qVJaFPg1/29/kros3J/41hymbpmAo8fk06vK81x
+ Xnt3h1rxE051KbrKyz0PfcPNiF9op6NnMBcV4Et7UIkmQoXtfVoqt2L/duDcMlQtcsbjyP+r1
+ V14TTbbLAXVfHBOnEY0hnjHt2YJnWgQwZE/tBmIfTPaE6TzuH2yIzP/3ju7WgSp8pF/aelTJi
+ oHagLRjyzfIBcwHPlku4D7MpIatPkZpUCdVcqSNOohXiMgBkHvq0T0+o4DZZ7M7uZE0Xr9t2E
+ rRRmwGZoIBkP/mr1cao/SpK2psrmApguhLVcK6wx2a9xM6ZVDjnnGaC9p9wzX05lWYIZYX73F
+ 4N1/mwxgnHCmD6Ckif43G5JsGu/OT7pxF6YEOTxljoSqNSFrds4OqHdS5o/CnPhvideMWTjU8
+ U3ujq7Lxi3jlhIWxKbcDGYGnRTw7Q2vGBX26pnkaJWFbhJR1zP/JTETlXiq3p5Y7zpjVhBWZ7
+ Dw4i5+ycuLrzkNkhxSYe0TFqAu8IZGu2n1mXIt/t/27zhYpASNlBgr26dJqsZtIuSocXUMN/1
+ UJ4d3MujfzJ8DqcT7Z3pQsj5rflgxFleyVJ9F5ZrYwlN6TGnfBDIbxs9qEqK9HFD08Tc=
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) NICE_REPLY_A=-3.354,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,87 +63,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jan 2022 09:11:49 -0000
+X-List-Received-Date: Tue, 04 Jan 2022 09:18:26 -0000
 
-In certain circumstances, typically when there is lots changing on the
-screen, updates will be discarded resulting in garbled output.
+Le 04/01/2022 à 10:11, Carwyn Ellis a écrit :
+> Debug output was always being sent to STDERR. This has been replaced by
+> a define that will only show this output when DEBUG is set to true.
+> 
+> Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+> ---
+>   hw/display/vmware_vga.c | 26 ++++++++++++++++----------
+>   1 file changed, 16 insertions(+), 10 deletions(-)
+> 
+> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+> index e2969a6c81..8080e085d1 100644
+> --- a/hw/display/vmware_vga.c
+> +++ b/hw/display/vmware_vga.c
+> @@ -43,6 +43,12 @@
+>   
+>   /* See http://vmware-svga.sf.net/ for some documentation on VMWare SVGA */
+>   
+> +#ifdef DEBUG
+> +#define VMWARE_VGA_DEBUG(...) { (void) fprintf(stdout, __VA_ARGS__); }
+> +#else
+> +#define VMWARE_VGA_DEBUG(...) ((void) 0)
+> +#endif
+> +
 
-This change firstly increases the screen update FIFO size to ensure it's
-large enough to accomodate all updates deferred in a given screen
-refresh cycle.
+Could you replace this macro by adding some trace-events instead.
 
-When updating the screen all updates are applied to ensure the display
-output is rendered correctly.
+See https://qemu-project.gitlab.io/qemu/devel/tracing.html#using-trace-events
 
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
----
- hw/display/vmware_vga.c | 24 +++++++++++++++++-------
- 1 file changed, 17 insertions(+), 7 deletions(-)
+Thanks,
+Laurent
 
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index 8080e085d1..28556f39c6 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -82,7 +82,7 @@ struct vmsvga_state_s {
-     uint32_t fifo_next;
-     uint32_t fifo_stop;
- 
--#define REDRAW_FIFO_LEN  512
-+#define REDRAW_FIFO_LEN  8192
-     struct vmsvga_rect_s {
-         int x, y, w, h;
-     } redraw_fifo[REDRAW_FIFO_LEN];
-@@ -385,7 +385,14 @@ static inline void vmsvga_update_rect_delayed(struct vmsvga_state_s *s,
- {
-     struct vmsvga_rect_s *rect = &s->redraw_fifo[s->redraw_fifo_last++];
- 
--    s->redraw_fifo_last &= REDRAW_FIFO_LEN - 1;
-+    if (s->redraw_fifo_last >= REDRAW_FIFO_LEN) {
-+        VMWARE_VGA_DEBUG("%s: Discarding updates - FIFO length %d exceeded\n",
-+            "vmsvga_update_rect_delayed",
-+            REDRAW_FIFO_LEN
-+        );
-+        s->redraw_fifo_last = REDRAW_FIFO_LEN - 1;
-+    }
-+
-     rect->x = x;
-     rect->y = y;
-     rect->w = w;
-@@ -402,11 +409,13 @@ static inline void vmsvga_update_rect_flush(struct vmsvga_state_s *s)
-     }
-     /* Overlapping region updates can be optimised out here - if someone
-      * knows a smart algorithm to do that, please share.  */
--    while (s->redraw_fifo_first != s->redraw_fifo_last) {
--        rect = &s->redraw_fifo[s->redraw_fifo_first++];
--        s->redraw_fifo_first &= REDRAW_FIFO_LEN - 1;
-+    for (int i = 0; i < s->redraw_fifo_last; i++) {
-+        rect = &s->redraw_fifo[i];
-         vmsvga_update_rect(s, rect->x, rect->y, rect->w, rect->h);
-     }
-+
-+    s->redraw_fifo_first = 0;
-+    s->redraw_fifo_last = 0;
- }
- 
- #ifdef HW_RECT_ACCEL
-@@ -607,13 +616,14 @@ static inline uint32_t vmsvga_fifo_read(struct vmsvga_state_s *s)
- static void vmsvga_fifo_run(struct vmsvga_state_s *s)
- {
-     uint32_t cmd, colour;
--    int args, len, maxloop = 1024;
-+    int args, len = 1024;
-     int x, y, dx, dy, width, height;
-     struct vmsvga_cursor_definition_s cursor;
-     uint32_t cmd_start;
- 
-     len = vmsvga_fifo_length(s);
--    while (len > 0 && --maxloop > 0) {
-+
-+    while (len > 0) {
-         /* May need to go back to the start of the command if incomplete */
-         cmd_start = s->fifo_stop;
- 
--- 
-2.34.1
+>   struct vmsvga_state_s {
+>       VGACommonState vga;
+>   
+> @@ -297,45 +303,45 @@ static inline bool vmsvga_verify_rect(DisplaySurface *surface,
+>                                         int x, int y, int w, int h)
+>   {
+>       if (x < 0) {
+> -        fprintf(stderr, "%s: x was < 0 (%d)\n", name, x);
+> +        VMWARE_VGA_DEBUG("%s: x was < 0 (%d)\n", name, x);
+>           return false;
+>       }
+>       if (x > SVGA_MAX_WIDTH) {
+> -        fprintf(stderr, "%s: x was > %d (%d)\n", name, SVGA_MAX_WIDTH, x);
+> +        VMWARE_VGA_DEBUG("%s: x was > %d (%d)\n", name, SVGA_MAX_WIDTH, x);
+>           return false;
+>       }
+>       if (w < 0) {
+> -        fprintf(stderr, "%s: w was < 0 (%d)\n", name, w);
+> +        VMWARE_VGA_DEBUG("%s: w was < 0 (%d)\n", name, w);
+>           return false;
+>       }
+>       if (w > SVGA_MAX_WIDTH) {
+> -        fprintf(stderr, "%s: w was > %d (%d)\n", name, SVGA_MAX_WIDTH, w);
+> +        VMWARE_VGA_DEBUG("%s: w was > %d (%d)\n", name, SVGA_MAX_WIDTH, w);
+>           return false;
+>       }
+>       if (x + w > surface_width(surface)) {
+> -        fprintf(stderr, "%s: width was > %d (x: %d, w: %d)\n",
+> +        VMWARE_VGA_DEBUG("%s: width was > %d (x: %d, w: %d)\n",
+>                   name, surface_width(surface), x, w);
+>           return false;
+>       }
+>   
+>       if (y < 0) {
+> -        fprintf(stderr, "%s: y was < 0 (%d)\n", name, y);
+> +        VMWARE_VGA_DEBUG("%s: y was < 0 (%d)\n", name, y);
+>           return false;
+>       }
+>       if (y > SVGA_MAX_HEIGHT) {
+> -        fprintf(stderr, "%s: y was > %d (%d)\n", name, SVGA_MAX_HEIGHT, y);
+> +        VMWARE_VGA_DEBUG("%s: y was > %d (%d)\n", name, SVGA_MAX_HEIGHT, y);
+>           return false;
+>       }
+>       if (h < 0) {
+> -        fprintf(stderr, "%s: h was < 0 (%d)\n", name, h);
+> +        VMWARE_VGA_DEBUG("%s: h was < 0 (%d)\n", name, h);
+>           return false;
+>       }
+>       if (h > SVGA_MAX_HEIGHT) {
+> -        fprintf(stderr, "%s: h was > %d (%d)\n", name, SVGA_MAX_HEIGHT, h);
+> +        VMWARE_VGA_DEBUG("%s: h was > %d (%d)\n", name, SVGA_MAX_HEIGHT, h);
+>           return false;
+>       }
+>       if (y + h > surface_height(surface)) {
+> -        fprintf(stderr, "%s: update height > %d (y: %d, h: %d)\n",
+> +        VMWARE_VGA_DEBUG("%s: update height > %d (y: %d, h: %d)\n",
+>                   name, surface_height(surface), y, h);
+>           return false;
+>       }
 
 
