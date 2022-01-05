@@ -1,79 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n4tGB-00042T-VK
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jan 2022 18:30:31 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51090)
+	id 1n514A-0007uJ-40
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Jan 2022 02:50:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1n4tG8-0003zg-06
- for qemu-trivial@nongnu.org; Tue, 04 Jan 2022 18:30:30 -0500
-Received: from [2607:f8b0:4864:20::42e] (port=43984
- helo=mail-pf1-x42e.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1n4tG5-0005WI-9B
- for qemu-trivial@nongnu.org; Tue, 04 Jan 2022 18:30:27 -0500
-Received: by mail-pf1-x42e.google.com with SMTP id 196so33541926pfw.10
- for <qemu-trivial@nongnu.org>; Tue, 04 Jan 2022 15:30:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=2zz9JpojlO/mC46XIrbuc5H7vdt4uyxRPevybAibDSw=;
- b=KZULgzd418ev4gTz1ekUWkxXr76Sf70IiA+iezEzX1jx5+0M6jsNjmuh+vLGejwbdf
- F1etTWPUEfFb/yWGQCPK3VVM6+jBi3iHH4XlF5+GGEMtwliA1bK2D6oTqZn/PY7TjeZA
- Nx2tl/mrzH7jtaUEuavbpVMjaj08Mt7KZYMyhk4576uEmyjpfjd36XDkM2RHgfdMX+tA
- 6wclFkVQhRKjtFsUxp52Ae5N5TgOt7rM6hSeCjn7+4Wg7tvt3zxApCkNGh5BbMv0sQtW
- GbFlx3NohCy4eDgsEUukqV8mlkaae8RgUgQvtp2tiCw1YI0FQ3AsflghmeCddcuuWRNL
- vBJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=2zz9JpojlO/mC46XIrbuc5H7vdt4uyxRPevybAibDSw=;
- b=UyXSSNqML86be0JDfvGQ0x4Oed3WhBaJTs0CKwm0IyOdnlXEHIy8nDoowKCOn23cUP
- QPQt36NxgNzfAeluTgNq7QdYGn3O4/W8727BkUQkqm6cs4x4z76TVHNkjfEv9LWjJJOH
- sA0/awDgsrP2WPCCK99eCaVi0+htvje4t5ixbTMg29kLdHhic6OvnKGbdeEJTTcWB6dY
- sWBi8ily50tx5oRQwxjlMJTaBbLqfdjL16ON43NZdFzpCLS6ueVqTvgP2IZXWB/xTDzB
- wxStdM2DeamFHObelbsEqviKsUNaqcLN4Nyy+IOhLDI01f7An8nwe6dVkT3rdFp2KVBp
- Mjbg==
-X-Gm-Message-State: AOAM533g9ZMHnwk3yTf83gaps4eh7cstV93ehOOwBJPQY0EoExUblaj4
- f7ZQtKKZjLtJmnOpoxMGPAErUA==
-X-Google-Smtp-Source: ABdhPJw1CnBfg5VirXudnRJ3T/okWJwOu47vnI1He9ihqidMizuobaIW2Kota+RNjHalrOrolTqnBQ==
-X-Received: by 2002:a65:5c87:: with SMTP id a7mr46520743pgt.600.1641339021725; 
- Tue, 04 Jan 2022 15:30:21 -0800 (PST)
-Received: from [192.168.1.13] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id x33sm45522570pfh.212.2022.01.04.15.30.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Jan 2022 15:30:21 -0800 (PST)
-Subject: Re: [PATCH v2] linux-user: Fix trivial build error on loongarch64
- hosts
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, Song Gao <gaosong@loongson.cn>,
- WANG Xuerui <git@xen0n.name>
-References: <20220104215027.2180972-1-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <487c5acb-e44f-13f7-1146-032904d9e7f6@linaro.org>
-Date: Tue, 4 Jan 2022 15:30:19 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1n513v-0007rT-9x
+ for qemu-trivial@nongnu.org; Wed, 05 Jan 2022 02:50:23 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:44075)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1n513s-0004gi-0m
+ for qemu-trivial@nongnu.org; Wed, 05 Jan 2022 02:50:22 -0500
+Received: from [192.168.100.1] ([82.142.30.62]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MuluN-1mEZ1u2wOR-00rrgt; Wed, 05 Jan 2022 08:50:09 +0100
+Message-ID: <833ec4a8-58df-ca13-2d42-cb89d4d6e0ef@vivier.eu>
+Date: Wed, 5 Jan 2022 08:50:08 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220104215027.2180972-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH] linux-user/syscall.c: malloc to g_try_malloc
+Content-Language: fr
+To: Ahmed Abouzied <email@aabouzied.com>, qemu-trivial@nongnu.org
+References: <20220104144602.25300-1-email@aabouzied.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20220104144602.25300-1-email@aabouzied.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42e
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.354,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Provags-ID: V03:K1:u7c6jjxGENwUv+GhezdofWks5yBg4ntYABqQ8+2Q1LJ5z7pdxBv
+ cx2LSu7KSAudcBIg0TJJxvwyMWSYqCKQsgG+n6woVCnZwetJ0FmpiboMMjKzSzuhsUWfOzc
+ c/2f9K8O4JQbzauPVPrgvTmxZv6jqeU2Ny966j8cCjndixsb4rRhpICZWdNx3mIuf3CENYq
+ 1QzjPRGQtTA8KgB1WAhrQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:MN3zBPcrplM=:iN4x6Qd4kYipC7eNt9p1O3
+ hIa7IGJ7GrUryvIgC1NGNXkK3iONrrcP+lfJlXY//IJaCfgCYwwKCq8Xzvt29OAQnSh9Cx3Vr
+ uAuY3zwUGVrsdqfbB54H5Z0yhn0VioGz2NO+y5Rz6nbM5QOrTzQW6pXfkB6WKg1n2676YLP3q
+ nC63yj0m6tUiI/cs33BICdFqjovZFGEvONu/F4JJEXHLf2JekkMcW5170K208SVuL7FCNWugJ
+ LV2IsVHaLYCNphI6TWT7K4II9WY712jeOIjeiPrfABkfG7N5PK6O2U1Y3WImiFoUrovcxUcEW
+ YZgsokxWyjv9t73xRM8DdQgZZLS2udhMXEAlOrnm4hJNEYsRcJIln0DgzqTohDJa4US/2AZp/
+ 2O9/KfxJesloQJ93AZ1ilLAowrIiST7bAfFCOEE46ZgwSrB/2TA6Zz3VmHrPtzR5VPdJMmIiL
+ QNvxpzkqlC9V+BrcfmlXqtHneVhv7uZeFztScPijNw2Mij++wXeCntj1g4CNUcZIVCR1x7pbP
+ v16qeihLuZdmDbIYOM+afF071vh1QxWCJG8j5M/WDmdGFkAPRQb2+G/2xW5PSHZ8NqPQLqkp/
+ 0BIPiW4eGmjUn43E4P0MB+Odadk5tPV0SAl24f19BwR0GMMJVrEMZC0+h7JUUOR5DDePMmBq9
+ 4Huvyl3IXGh8zdcOHEbKrrWuQhAeqUkQ2ztCcaIYBW3jxmTJOaBMJuNas3kkKPL1mB9w=
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.057,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,34 +60,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jan 2022 23:30:30 -0000
+X-List-Received-Date: Wed, 05 Jan 2022 07:50:23 -0000
 
-On 1/4/22 1:50 PM, Philippe Mathieu-Daudé wrote:
-> When building using GCC 8.3.0 on loongarch64 (Loongnix) we get:
+Le 04/01/2022 à 15:46, Ahmed Abouzied a écrit :
+> Use g_try_malloc instead of malloc to alocate the target ifconfig.
+> Also replace the corresponding free with g_free.
 > 
->    In file included from ../linux-user/signal.c:33:
->    ../linux-user/host/loongarch64/host-signal.h: In function ‘host_signal_write’:
->    ../linux-user/host/loongarch64/host-signal.h:57:9: error: a label can only be part of a statement and a declaration is not a statement
->           uint32_t sel = (insn >> 15) & 0b11111111111;
->           ^~~~~~~~
+> Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
+> ---
 > 
-> We don't use the 'sel' variable more than once, so drop it.
+> Hello,
 > 
-> Meson output for the record:
+> I noticed that there was a `malloc` call in this file. It seems that it
+> was added by the commit 22e4a267 (3 years ago) which was after the commit
+> 0e173b24 (6 years ago) that replaced malloc calls with glib alternative calls.
 > 
->    Host machine cpu family: loongarch64
->    Host machine cpu: loongarch64
->    C compiler for the host machine: cc (gcc 8.3.0 "cc (Loongnix 8.3.0-6.lnd.vec.27) 8.3.0")
->    C linker for the host machine: cc ld.bfd 2.31.1-system
+> There is no issue for this on Gitlab. Should I have created an issue
+> first?
 > 
-> Fixes: ad812c3bd65 ("linux-user: Implement CPU-specific signal handler for loongarch64 hosts")
-> Reported-by: Song Gao <gaosong@loongson.cn>
-> Suggested-by: Song Gao <gaosong@loongson.cn>
-> Reviewed-by: WANG Xuerui <git@xen0n.name>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Best regards,
+> 
+>   linux-user/syscall.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 56a3e17183..715f9430e1 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -4867,7 +4867,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
+>                * We can't fit all the extents into the fixed size buffer.
+>                * Allocate one that is large enough and use it instead.
+>                */
+> -            host_ifconf = malloc(outbufsz);
+> +            host_ifconf = g_try_malloc(outbufsz);
+>               if (!host_ifconf) {
+>                   return -TARGET_ENOMEM;
+>               }
+> @@ -4915,7 +4915,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
+>       }
+>   
+>       if (free_buf) {
+> -        free(host_ifconf);
+> +        g_free(host_ifconf);
+>       }
+>   
+>       return ret;
 
-As a build fix, I'll pop this into tcg-next.
-
-
-r~
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
