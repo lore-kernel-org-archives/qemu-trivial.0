@@ -1,61 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n5Be5-000584-7a
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jan 2022 14:08:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52626)
+	id 1n5CNx-0000L1-Pq
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Jan 2022 14:55:49 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35342)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n5Bdz-00056Q-1j
- for qemu-trivial@nongnu.org; Wed, 05 Jan 2022 14:08:19 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:30208)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n5Bdw-0001c4-Bt
- for qemu-trivial@nongnu.org; Wed, 05 Jan 2022 14:08:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641409693;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=m+nqggG0rL8HhYsj/YcdpvJS1y85maipQse/a3UKvmk=;
- b=D+zqjYgvQFZqpL1JK58AbfI2lQz00+B5gU7umPjXFdtFONwFI68chWhTtfZ6XaHgXu/8d4
- yyPyTe1fayZLXNNSO+ld4J6zlzEtKxHg+M/m9kZsJummrbmMa3+GXNBTvz1nkjA4iOxaOF
- Lch+j6qPowxJYdqDegpsBLNQkUb6fEg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-21-LzLJ0rJQP8yuEgJf6AW8Kw-1; Wed, 05 Jan 2022 14:08:10 -0500
-X-MC-Unique: LzLJ0rJQP8yuEgJf6AW8Kw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C90911006AA3;
- Wed,  5 Jan 2022 19:08:08 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.142])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8C46A10013C1;
- Wed,  5 Jan 2022 19:08:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH] meson.build: Print gtk version in the summary info
-Date: Wed,  5 Jan 2022 20:08:04 +0100
-Message-Id: <20220105190804.649316-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n5CNr-0000G0-T7; Wed, 05 Jan 2022 14:55:43 -0500
+Received: from [2607:f8b0:4864:20::62f] (port=37620
+ helo=mail-pl1-x62f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n5CNm-0004eh-5x; Wed, 05 Jan 2022 14:55:40 -0500
+Received: by mail-pl1-x62f.google.com with SMTP id q14so410440plx.4;
+ Wed, 05 Jan 2022 11:55:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=+ts14gz6wYZfJoAQNL3AKoZfuctlqVSCgkQNYbC1A58=;
+ b=EApk190mLGvHfQTsPjQVBIp4H0fn08GIwAK7MZ75A0R0XH/vXwpnPSNE/ugYhBx4xp
+ LtESdiPw5t3vYgWGrQAfo9KqrOiBCE7aQrrOr3XZS/6w5BEYj8X/WuiATy/SqNfsZK3V
+ 5q6enwCZs7S0355xLrqw69PreMt5yamZ8L/EuGtZ2c6QmQLEVuqg/6sp2l0S/d3AKAuz
+ 4U56VaxySa6p5aQyqAzrBjtAtK7iZ1RFVlzc6lMzTpWzxibuhwdf2uhxyjGkyBhVx19J
+ 5v7LM6XJrIlxykkGefm8ZZFxOwPSOwqPOAJMAjNo2wnwpVCVeDT6Gi3QklWhwKGIANA4
+ eVcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=+ts14gz6wYZfJoAQNL3AKoZfuctlqVSCgkQNYbC1A58=;
+ b=r/kINQ6yxxp7ItQVkgzLRnsRJunNCwIDzf4IGPQXkz6CMn6gK5wZyS636X3dp94/o3
+ UrdbepVAz3yzeYOE9nNHSqGlFUTDegG5kXjpFb3IuR9m5t2b4avBjywM0e7U0E93kD1y
+ oeGI6MZyEjd+YTblWqbWic6yDm67Jz395qOZQhryclSWqMGnWbcuNZklxiIoI+F+5wLx
+ 6ZDHL8HfmonsFmgn0yWKrQMd9wlegpJIvE2foPTBtGMZrD1stfGoTKYJvd6Vv5F/nhti
+ SyZgPOs39XLvEjS5ay9jQliuI9r0qatnuJHwB2Umm0BrzLk9uQGopD9PuZ8HwLDTCIx7
+ eVhg==
+X-Gm-Message-State: AOAM532dA9ALkCW7hTX84q3Cgr/Byipa31i/fe5Mc4XpRUVWJvcuh/n/
+ kCDfd1JIJaxnk5YxIshBxaQ=
+X-Google-Smtp-Source: ABdhPJzL82yzoYZrNGzjIg1m2XtxIWOtVwexgXy12kDStOizkU2Gg+LGL+Bqj1CWcilY9KIQKdss5A==
+X-Received: by 2002:a17:90b:4a11:: with SMTP id
+ kk17mr5944709pjb.234.1641412534820; 
+ Wed, 05 Jan 2022 11:55:34 -0800 (PST)
+Received: from [192.168.1.33] (83.red-83-50-87.dynamicip.rima-tde.net.
+ [83.50.87.83])
+ by smtp.gmail.com with ESMTPSA id b19sm335895pgk.44.2022.01.05.11.55.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 05 Jan 2022 11:55:34 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <42290099-9061-a901-85b3-7aafeff14700@amsat.org>
+Date: Wed, 5 Jan 2022 20:55:31 +0100
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.4.1
+Subject: Re: [PATCH] meson.build: Print gtk version in the summary info
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20220105190804.649316-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220105190804.649316-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::62f
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pl1-x62f.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.057,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,49 +86,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Jan 2022 19:08:19 -0000
+X-List-Received-Date: Wed, 05 Jan 2022 19:55:44 -0000
 
-The "gtk" variable is re-declared as "dependencies: [gtk, gtkx11]",
-so there is just a "YES" in the summary info if gtk has been found.
-Let's use the info from the library detection instead so that the
-library version is printed in the summary instead.
+On 5/1/22 20:08, Thomas Huth wrote:
+> The "gtk" variable is re-declared as "dependencies: [gtk, gtkx11]",
+> so there is just a "YES" in the summary info if gtk has been found.
+> Let's use the info from the library detection instead so that the
+> library version is printed in the summary instead.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   meson.build | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- meson.build | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/meson.build b/meson.build
-index 82769749db..798811dfbb 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1058,11 +1058,11 @@ gtk = not_found
- gtkx11 = not_found
- vte = not_found
- if not get_option('gtk').auto() or (have_system and not cocoa.found())
--  gtk = dependency('gtk+-3.0', version: '>=3.22.0',
--                   method: 'pkg-config',
--                   required: get_option('gtk'),
--                   kwargs: static_kwargs)
--  if gtk.found()
-+  libgtk = dependency('gtk+-3.0', version: '>=3.22.0',
-+                      method: 'pkg-config',
-+                      required: get_option('gtk'),
-+                      kwargs: static_kwargs)
-+  if libgtk.found()
-     gtkx11 = dependency('gtk+-x11-3.0', version: '>=3.22.0',
-                         method: 'pkg-config',
-                         required: false,
-@@ -3410,7 +3410,7 @@ if targetos == 'darwin'
- endif
- summary_info += {'SDL support':       sdl}
- summary_info += {'SDL image support': sdl_image}
--summary_info += {'GTK support':       gtk}
-+summary_info += {'GTK support':       libgtk}
- summary_info += {'pixman':            pixman}
- summary_info += {'VTE support':       vte}
- summary_info += {'slirp support':     slirp_opt == 'internal' ? slirp_opt : slirp}
--- 
-2.27.0
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
