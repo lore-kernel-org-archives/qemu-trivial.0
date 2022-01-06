@@ -1,76 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n5KFF-0005h5-PO
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jan 2022 23:19:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51804)
+	id 1n5TOX-0002C2-NO
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jan 2022 09:05:33 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1n5KFE-0005fX-7K
- for qemu-trivial@nongnu.org; Wed, 05 Jan 2022 23:19:20 -0500
-Received: from [2607:f8b0:4864:20::22f] (port=34741
- helo=mail-oi1-x22f.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1n5KFC-0004xQ-Kb
- for qemu-trivial@nongnu.org; Wed, 05 Jan 2022 23:19:19 -0500
-Received: by mail-oi1-x22f.google.com with SMTP id r131so2098983oig.1
- for <qemu-trivial@nongnu.org>; Wed, 05 Jan 2022 20:19:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=uNhrhRhtl+SrE3MXJdAXRnN+eVUU2AnRRD1it2rSHRA=;
- b=E5Hqs1zBcZmsj5gNi7aSt1nlEC8VJFgwlrsOmkNdV3qbW2SklUNpgJaBYa/eQ8DCCS
- U7Ilso1g4q6gC3p4ca6Vf3C30GCjjUV5sOecQ5iRcP1RMgDrGa6O7l5+tYeo0HdZbEnv
- RIXk83XN1mqT7UY0jyHUu1fcOZaOv0VIv03eyQGpNf+EZaHxEbvmDERC3j4HJND7gNTS
- ++miS5rwDGnI8NliOqxUpBLJspVBJpG3jdsjmKuFBtMMvWN7EEZLeWphYEZMwL1jTonw
- RGIsBcBEQ8/ejtTwyTauiUXv9yDf5uj7+QP/O/fGCqmjySf1E9s87uoHwNo953PZmSmA
- l4WQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=uNhrhRhtl+SrE3MXJdAXRnN+eVUU2AnRRD1it2rSHRA=;
- b=JIYMuYKmx7zPqTDjwXPSDp+TVU9ZlXoYgbazN4JCEPECoXmBVpefFDtq/esHv1j0oJ
- Q+FCpjrvy7fOYaZn0ew2ZCX6W1K9XGpt2eJROgnlTYn/S3sur2qbqAmXEh5lVvY6Iuw2
- hcOxF4wAUwecSXsW/zKH0W/EIQtr4mYh7EcJu/FBwuemRc3Jsp68fKCDBTlR5NArRnCr
- ekTzRAHtR0U0Ltv139EvJPuMoyOTi3cUhxR8dnx9whZQTVqe8BcNSpkPvJDJjde8CepX
- WnJI64+WFxgSVf8jB/pgajn0mCxOiZoc7iCMU16QPQHi2NF2OOQqHnHkSMXk9yGH5mTk
- LqmQ==
-X-Gm-Message-State: AOAM533WzNiMJkBXk7R2YJNLeKIk4MLR6g1KIqOfJnCFi2Iz8HCB22aK
- bM8Z4xO4CQ+4MAO6jGWo7nQWh+mu6WlvyA==
-X-Google-Smtp-Source: ABdhPJxbgj2FJb/xJaALCAeinqw3aLFszi+m3BAdL/CqBMVXGGSSAOVQ7sUdV52+bLAxiASk/lWsLQ==
-X-Received: by 2002:a17:90b:1950:: with SMTP id
- nk16mr7872877pjb.129.1641442309593; 
- Wed, 05 Jan 2022 20:11:49 -0800 (PST)
-Received: from [192.168.1.13] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id d13sm564508pfj.135.2022.01.05.20.11.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 05 Jan 2022 20:11:49 -0800 (PST)
-Subject: Re: [PATCH] meson.build: Print gtk version in the summary info
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20220105190804.649316-1-thuth@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ac9319dd-d64a-0c12-d378-740642b57b48@linaro.org>
-Date: Wed, 5 Jan 2022 20:11:47 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1n5TOW-00024S-8O; Thu, 06 Jan 2022 09:05:32 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:42737)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1n5TOT-0000A4-6M; Thu, 06 Jan 2022 09:05:31 -0500
+Received: from [192.168.100.1] ([82.142.12.178]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MfHIZ-1mTeSX3mOZ-00gp1K; Thu, 06 Jan 2022 15:05:15 +0100
+Message-ID: <e81ec4c9-9315-bf7f-2e74-65544664f430@vivier.eu>
+Date: Thu, 6 Jan 2022 15:05:13 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220105190804.649316-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::22f
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22f;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22f.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.057,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Content-Language: fr
+To: Ahmed Abouzied <email@aabouzied.com>
+References: <20220104143841.25116-1-email@aabouzied.com>
+ <94aebec7-0bf7-18b1-a10e-dda5f476f70b@vivier.eu>
+ <CANL98e9RO38rmP8oSmEcoop3Pr_qC741Om91Bw9FQxAZcqf2QQ@mail.gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ John Snow <jsnow@redhat.com>
+Subject: Byte Sized task (was Re: [PATCH] linux-user/syscall.c: malloc to
+ g_try_malloc)
+In-Reply-To: <CANL98e9RO38rmP8oSmEcoop3Pr_qC741Om91Bw9FQxAZcqf2QQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:XwYw/YGJuQmJY0FNGNfnKM4tSYtrl63OtoX+k4Y01qGyt17gMW8
+ ZiFX1CImreQPKFtjFioVtyeSP/o5Wx7ydbayvYOcq/oZ+BAaZlKJXvZOC2v9kIQ7vFziLnc
+ j+DyCV46qdpnf29c3HFI7dZXXAMeIOMJNFyoqD1nHeV/Zdt5GOw6PWa0RYrxfgLcD2DMMNt
+ HSeIyf/BFawT98z09ST9g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Kc8wgchhsck=:0RoW1jMN84f7o3TS7buUYy
+ Poqgd5OXV3F87s861UQyteKYj87a55wdKwktpOQmIeltKBEsf3RIJcPS0dL0kfo7zKB95u4II
+ szbBdKJ+MxZk2FYVy9nCXrJfHXaH0Og3Ys/zaBF7O03RHijXzOhxeyxDAvn8MPOTqhvfa7JMu
+ N0N0IX5+LuXuWifbHLCiBOmODet4DjPt5FvBXP9MzUKw7oCC2xVd8MRLnk1JDLBJGC41mBIRq
+ xTUOo1hKMHMZQXRzi6noKM0jT5OY9iuC+prWUG1QVOSQZMIkw+D4HQsvb7/X+39mY92Nwd36x
+ T8ldoKevGb65hnnOQLt+hm2+1gayza43VzpLs2cUdNX2OKjn1u+lNuA4UhYZMRK1YCKA9xA0H
+ 6HHrk45l/9nMaYccqBGewXpRrGTDYOV2EB+IYLgVOMSm1plF9/sXyZGuo0RHVB4FpRF1P6wFw
+ dSI8S4igINKq+aZi4UQ7etSJSReTLHEP0Y9v/RS1MnV5qiYoFPXSawhfzI0Oun0f22uDXdTtx
+ 3uv2aGeB2R4DN6bFdUzmIYmWpfAX0VBR/Cq+7rttY7bq2yAtk2bVdIEJjy10YnRb6+RUbUSrb
+ ubE61zm3vK3EIDWPAPNmSU649A/tyTpmkYD4uw70m5xhea4tYmQQU+dHwmsBPLIOqy3+iYhC/
+ cbxUm30zX4bNCZ1z6fDhKtCr4WHne/tk3A3P/5FNlIarq9oVUGsSYI9nZJF3yrq+or18=
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,20 +66,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jan 2022 04:19:20 -0000
+X-List-Received-Date: Thu, 06 Jan 2022 14:05:32 -0000
 
-On 1/5/22 11:08 AM, Thomas Huth wrote:
-> The "gtk" variable is re-declared as "dependencies: [gtk, gtkx11]",
-> so there is just a "YES" in the summary info if gtk has been found.
-> Let's use the info from the library detection instead so that the
-> library version is printed in the summary instead.
+Hi Ahmed,
+
+the email address you use for the trivial ML is broken. I've fixed it for my answer and added 
+qemu-devel.
+
+Le 05/01/2022 à 20:09, Ahmed Abouzied a écrit :
+> Hello,
 > 
-> Signed-off-by: Thomas Huth<thuth@redhat.com>
-> ---
->   meson.build | 12 ++++++------
->   1 file changed, 6 insertions(+), 6 deletions(-)
+> Thanks for the review. I also found some occurrences of "cpu_physical_memor_*" calls that should be 
+> replaced with "address_space_*" around the codebase as mentioned 
+> [here](https://wiki.qemu.org/Contribute/BiteSizedTasks 
+> <https://wiki.qemu.org/Contribute/BiteSizedTasks>) in the API conversion section. The "/hw" 
+> directory for instance. Should I go about replacing those as well? Should I create a Gitlab issue 
+> first to track the changes?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-r~
+According to the wiki, the gitlab issue are already created with the "Byte Sized" label.
+
+https://gitlab.com/qemu-project/qemu/-/issues?scope=all&state=opened&label_name[]=Bite%20Sized
+
+But this one is not, I think John can help you for that (added in cc:)
+
+Thanks,
+Laurent
+
+> Best regards,
+> Ahmed
+> 
+> On Wed, 5 Jan 2022 at 12:26, Laurent Vivier <laurent@vivier.eu <mailto:laurent@vivier.eu>> wrote:
+> 
+>     Le 04/01/2022 à 15:38, Ahmed Abouzied a écrit :
+>      > Use g_try_malloc instead of malloc to alocate the target ifconfig.
+>      > Also replace the corresponding free with g_free.
+>      >
+>      > Signed-off-by: Ahmed Abouzied <email@aabouzied.com <mailto:email@aabouzied.com>>
+>      > ---
+>      >
+>      > Hello,
+>      >
+>      > I noticed that there was a `malloc` call in this file. It seems that it
+>      > was added by the commit 22e4a267 (3 years ago) which was after the commit
+>      > 0e173b24 (6 years ago) that replaced malloc calls with glib alternative calls.
+>      >
+>      > There is no issue for this on Gitlab. Should I have created an issue
+>      > first?
+>      >
+>      > Best regards,
+>      >
+>      >   linux-user/syscall.c | 4 ++--
+>      >   1 file changed, 2 insertions(+), 2 deletions(-)
+>      >
+>      > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+>      > index 56a3e17183..715f9430e1 100644
+>      > --- a/linux-user/syscall.c
+>      > +++ b/linux-user/syscall.c
+>      > @@ -4867,7 +4867,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
+>      >                * We can't fit all the extents into the fixed size buffer.
+>      >                * Allocate one that is large enough and use it instead.
+>      >                */
+>      > -            host_ifconf = malloc(outbufsz);
+>      > +            host_ifconf = g_try_malloc(outbufsz);
+>      >               if (!host_ifconf) {
+>      >                   return -TARGET_ENOMEM;
+>      >               }
+>      > @@ -4915,7 +4915,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
+>      >       }
+>      >
+>      >       if (free_buf) {
+>      > -        free(host_ifconf);
+>      > +        g_free(host_ifconf);
+>      >       }
+>      >
+>      >       return ret;
+> 
+>     Applied to my linux-user-for-7.0 branch.
+> 
+>     Thanks,
+>     Laurent
+> 
+
 
