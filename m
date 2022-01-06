@@ -1,59 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n5TOX-0002C2-NO
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jan 2022 09:05:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52570)
+	id 1n5UCS-0003jy-RN
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jan 2022 09:57:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40164)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n5TOW-00024S-8O; Thu, 06 Jan 2022 09:05:32 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:42737)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n5TOT-0000A4-6M; Thu, 06 Jan 2022 09:05:31 -0500
-Received: from [192.168.100.1] ([82.142.12.178]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MfHIZ-1mTeSX3mOZ-00gp1K; Thu, 06 Jan 2022 15:05:15 +0100
-Message-ID: <e81ec4c9-9315-bf7f-2e74-65544664f430@vivier.eu>
-Date: Thu, 6 Jan 2022 15:05:13 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n5UCR-0003ic-91
+ for qemu-trivial@nongnu.org; Thu, 06 Jan 2022 09:57:07 -0500
+Received: from [2a00:1450:4864:20::434] (port=45658
+ helo=mail-wr1-x434.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n5UCP-0006QM-Jn
+ for qemu-trivial@nongnu.org; Thu, 06 Jan 2022 09:57:06 -0500
+Received: by mail-wr1-x434.google.com with SMTP id q8so5234444wra.12
+ for <qemu-trivial@nongnu.org>; Thu, 06 Jan 2022 06:57:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=C1KWiuro5yW4XPrGSKh0APssAzNtgml64Q3JDHHCffc=;
+ b=kl/Q5b03dHU51hv6kSA+sCaTJq6wa/tmTcZQFY0pqYg44UDjGsuZhuW3PVGko6ydWv
+ LZQy0tNJ9ZbrkzFsLU9Jj5c8DWQPy3pia6nXn6Yn1JjdN/e1fs6ozPIbUTmDblDCSR0U
+ v2VnpPElwluCU/ajsZvs0QFB1Nk3h8+XsE1+B5WnAvTvxviCS8nihSAhTayFOx2d1Ihl
+ nNh7Q9uH2597X6lNnoCsz8WcNQSmNle+jO0ds/u7363kYlVmHATn818ZbVyQVwCLjmQy
+ 7FsikOVpraiX3tkiN2uSrha362bfRjZXxS4LBVxKin7B+b3nN2h5WYU+rSxdx6cCPlj/
+ 6jLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=C1KWiuro5yW4XPrGSKh0APssAzNtgml64Q3JDHHCffc=;
+ b=f+UQtqiwoPLfvvgri7wkobkW3A6TFtc8QEd1D6O2uhMAf0AV0LucA69rs/ViudG/0T
+ J/9S4b/TOb9vsMa3MCLTUpnduBfH00JiAhTnVAGDEx9KipuNqMZfHdgrk09EkhN5402L
+ 5Zcjl8ngKwbZrq83Y/wvjnXDhoDmRdM/MLqL0jPGjBDhPa/HX/vmCFvF+KiWIJIjCZzx
+ e8LZGLBLaMf/N8o6Jjpb1Dgk8kqWBb+wT/LaujBNFSOThmQVOZWJ6x6672n993744fzM
+ 38sva3S3Lo6zTULx2CIpPcrjZEkWhhlMuS7c1h00fHyOTKKnnAF/2M0ux5VJuQkrF1CB
+ g65w==
+X-Gm-Message-State: AOAM533jmdR3fbu5vHMw/DtrH1LtgM5KGZMo6eCXJXzMM4lMUpGO5hAR
+ BiF00H/gxDTPfHmy7P5yNlBhkmVdy6VfMLHmQPDfJw==
+X-Google-Smtp-Source: ABdhPJy4ZINlFh21YC4Iz29V0KJ8E4aj/VPOIai+i5Qbj+GXuyvaGcDafXXkjDuBrjPGHQWQ0oKPbN7a/V0fKmAuFb0=
+X-Received: by 2002:a5d:52c4:: with SMTP id r4mr29652400wrv.521.1641481024296; 
+ Thu, 06 Jan 2022 06:57:04 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Content-Language: fr
-To: Ahmed Abouzied <email@aabouzied.com>
-References: <20220104143841.25116-1-email@aabouzied.com>
- <94aebec7-0bf7-18b1-a10e-dda5f476f70b@vivier.eu>
- <CANL98e9RO38rmP8oSmEcoop3Pr_qC741Om91Bw9FQxAZcqf2QQ@mail.gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- John Snow <jsnow@redhat.com>
-Subject: Byte Sized task (was Re: [PATCH] linux-user/syscall.c: malloc to
- g_try_malloc)
-In-Reply-To: <CANL98e9RO38rmP8oSmEcoop3Pr_qC741Om91Bw9FQxAZcqf2QQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XwYw/YGJuQmJY0FNGNfnKM4tSYtrl63OtoX+k4Y01qGyt17gMW8
- ZiFX1CImreQPKFtjFioVtyeSP/o5Wx7ydbayvYOcq/oZ+BAaZlKJXvZOC2v9kIQ7vFziLnc
- j+DyCV46qdpnf29c3HFI7dZXXAMeIOMJNFyoqD1nHeV/Zdt5GOw6PWa0RYrxfgLcD2DMMNt
- HSeIyf/BFawT98z09ST9g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Kc8wgchhsck=:0RoW1jMN84f7o3TS7buUYy
- Poqgd5OXV3F87s861UQyteKYj87a55wdKwktpOQmIeltKBEsf3RIJcPS0dL0kfo7zKB95u4II
- szbBdKJ+MxZk2FYVy9nCXrJfHXaH0Og3Ys/zaBF7O03RHijXzOhxeyxDAvn8MPOTqhvfa7JMu
- N0N0IX5+LuXuWifbHLCiBOmODet4DjPt5FvBXP9MzUKw7oCC2xVd8MRLnk1JDLBJGC41mBIRq
- xTUOo1hKMHMZQXRzi6noKM0jT5OY9iuC+prWUG1QVOSQZMIkw+D4HQsvb7/X+39mY92Nwd36x
- T8ldoKevGb65hnnOQLt+hm2+1gayza43VzpLs2cUdNX2OKjn1u+lNuA4UhYZMRK1YCKA9xA0H
- 6HHrk45l/9nMaYccqBGewXpRrGTDYOV2EB+IYLgVOMSm1plF9/sXyZGuo0RHVB4FpRF1P6wFw
- dSI8S4igINKq+aZi4UQ7etSJSReTLHEP0Y9v/RS1MnV5qiYoFPXSawhfzI0Oun0f22uDXdTtx
- 3uv2aGeB2R4DN6bFdUzmIYmWpfAX0VBR/Cq+7rttY7bq2yAtk2bVdIEJjy10YnRb6+RUbUSrb
- ubE61zm3vK3EIDWPAPNmSU649A/tyTpmkYD4uw70m5xhea4tYmQQU+dHwmsBPLIOqy3+iYhC/
- cbxUm30zX4bNCZ1z6fDhKtCr4WHne/tk3A3P/5FNlIarq9oVUGsSYI9nZJF3yrq+or18=
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <20211122104831.1052063-1-f4bug@amsat.org>
+In-Reply-To: <20211122104831.1052063-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 6 Jan 2022 14:56:53 +0000
+Message-ID: <CAFEAcA9PiJfG9gLr7cGs2n-a9TojfKi+QHN20kNw_efO6Gkw5Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/misc/auxbus: Improve aux_bus_init() docstring
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::434
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -66,86 +75,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jan 2022 14:05:32 -0000
+X-List-Received-Date: Thu, 06 Jan 2022 14:57:07 -0000
 
-Hi Ahmed,
+On Mon, 22 Nov 2021 at 11:11, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> Mention in aux_bus_init() docstring that the AUXBus
+> is not simply initialized, it is also allocated.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  include/hw/misc/auxbus.h | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
+>
+> diff --git a/include/hw/misc/auxbus.h b/include/hw/misc/auxbus.h
+> index b05799d2f7a..bd8612018a7 100644
+> --- a/include/hw/misc/auxbus.h
+> +++ b/include/hw/misc/auxbus.h
+> @@ -85,7 +85,8 @@ struct AUXSlave {
+>  };
+>
+>  /**
+> - * aux_bus_init: Initialize an AUX bus.
+> + * aux_bus_init:
+> + * Create an AUX bus on the heap.
+>   *
+>   * Returns the new AUX bus created.
+>   *
+> @@ -101,7 +102,7 @@ AUXBus *aux_bus_init(DeviceState *parent, const char =
+*name);
+>   */
+>  void aux_bus_realize(AUXBus *bus);
+>
+> -/*
+> +/**
+>   * aux_request: Make a request on the bus.
+>   *
+>   * Returns the reply of the request.
+> @@ -115,7 +116,7 @@ void aux_bus_realize(AUXBus *bus);
+>  AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uint32_t address,
+>                                uint8_t len, uint8_t *data);
+>
+> -/*
+> +/**
+>   * aux_get_i2c_bus: Get the i2c bus for I2C over AUX command.
+>   *
+>   * Returns the i2c bus associated to this AUX bus.
+> @@ -124,7 +125,7 @@ AUXReply aux_request(AUXBus *bus, AUXCommand cmd, uin=
+t32_t address,
+>   */
+>  I2CBus *aux_get_i2c_bus(AUXBus *bus);
+>
+> -/*
+> +/**
+>   * aux_init_mmio: Init an mmio for an AUX slave.
+>   *
+>   * @aux_slave The AUX slave.
+> @@ -132,7 +133,8 @@ I2CBus *aux_get_i2c_bus(AUXBus *bus);
+>   */
+>  void aux_init_mmio(AUXSlave *aux_slave, MemoryRegion *mmio);
+>
+> -/* aux_map_slave: Map the mmio for an AUX slave on the bus.
+> +/**
+> + * aux_map_slave: Map the mmio for an AUX slave on the bus.
+>   *
+>   * @dev The AUX slave.
+>   * @addr The address for the slave's mmio.
 
-the email address you use for the trivial ML is broken. I've fixed it for my answer and added 
-qemu-devel.
+If you want to turn these into /**-introduced kerneldoc-comment
+comments, then they need to be rearranged to have all the elements
+in the required order:
 
-Le 05/01/2022 à 20:09, Ahmed Abouzied a écrit :
-> Hello,
-> 
-> Thanks for the review. I also found some occurrences of "cpu_physical_memor_*" calls that should be 
-> replaced with "address_space_*" around the codebase as mentioned 
-> [here](https://wiki.qemu.org/Contribute/BiteSizedTasks 
-> <https://wiki.qemu.org/Contribute/BiteSizedTasks>) in the API conversion section. The "/hw" 
-> directory for instance. Should I go about replacing those as well? Should I create a Gitlab issue 
-> first to track the changes?
+/**
+ * function_name - brief description
+ * @arg1: Description of argument
+ * @arg2: Description of argument
+ *
+ * Longer description paragraph if required.
+ *
+ * Return: Describe return value
+ */
 
+https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html#function-d=
+ocumentation
 
-According to the wiki, the gitlab issue are already created with the "Byte Sized" label.
+This might be better done as a separate commit from fixing the
+comment text for aux_bus_init().
 
-https://gitlab.com/qemu-project/qemu/-/issues?scope=all&state=opened&label_name[]=Bite%20Sized
-
-But this one is not, I think John can help you for that (added in cc:)
-
-Thanks,
-Laurent
-
-> Best regards,
-> Ahmed
-> 
-> On Wed, 5 Jan 2022 at 12:26, Laurent Vivier <laurent@vivier.eu <mailto:laurent@vivier.eu>> wrote:
-> 
->     Le 04/01/2022 à 15:38, Ahmed Abouzied a écrit :
->      > Use g_try_malloc instead of malloc to alocate the target ifconfig.
->      > Also replace the corresponding free with g_free.
->      >
->      > Signed-off-by: Ahmed Abouzied <email@aabouzied.com <mailto:email@aabouzied.com>>
->      > ---
->      >
->      > Hello,
->      >
->      > I noticed that there was a `malloc` call in this file. It seems that it
->      > was added by the commit 22e4a267 (3 years ago) which was after the commit
->      > 0e173b24 (6 years ago) that replaced malloc calls with glib alternative calls.
->      >
->      > There is no issue for this on Gitlab. Should I have created an issue
->      > first?
->      >
->      > Best regards,
->      >
->      >   linux-user/syscall.c | 4 ++--
->      >   1 file changed, 2 insertions(+), 2 deletions(-)
->      >
->      > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
->      > index 56a3e17183..715f9430e1 100644
->      > --- a/linux-user/syscall.c
->      > +++ b/linux-user/syscall.c
->      > @@ -4867,7 +4867,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
->      >                * We can't fit all the extents into the fixed size buffer.
->      >                * Allocate one that is large enough and use it instead.
->      >                */
->      > -            host_ifconf = malloc(outbufsz);
->      > +            host_ifconf = g_try_malloc(outbufsz);
->      >               if (!host_ifconf) {
->      >                   return -TARGET_ENOMEM;
->      >               }
->      > @@ -4915,7 +4915,7 @@ static abi_long do_ioctl_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,
->      >       }
->      >
->      >       if (free_buf) {
->      > -        free(host_ifconf);
->      > +        g_free(host_ifconf);
->      >       }
->      >
->      >       return ret;
-> 
->     Applied to my linux-user-for-7.0 branch.
-> 
->     Thanks,
->     Laurent
-> 
-
+-- PMM
 
