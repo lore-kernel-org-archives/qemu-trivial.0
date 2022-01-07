@@ -1,55 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n5pSV-0007R3-KM
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 08:39:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49612)
+	id 1n5qV6-0006BH-R9
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 09:45:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n5pSS-0007Ql-Lm
- for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 08:39:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41931)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1n5qUs-0005zv-S8
+ for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 09:45:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51748)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n5pSP-0003mR-Fe
- for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 08:39:03 -0500
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1n5qUp-0001zZ-Sp
+ for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 09:45:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641562739;
+ s=mimecast20190719; t=1641566733;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=totBQYvoHc08z47dM7svER7xPZjbFH67rj55UiVMlN4=;
- b=aIILCy38F0TXgJBYDZVAa1R93AFJEOhky7WdUR60CvOdSc30ui8qFziBuJbjAP09cem1ql
- 9PsRk38Vtuq3owae8zQjeTFj8M6WrkheNfjAyornWjTKlf02MPGN1sqR0fB3jeJzWJtzgt
- IvRKqfgs1RktihvA78k6yDd2eeMKzck=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Z7Y4ZGhOxeHGRsiJL7IY0x/v+cdybg3bWuVMsMYKOZA=;
+ b=XZABpMrxBG08586P6dYEDmdCYyoa3h0YahtA/JFkz6r3waTIe6lL69HLwAo6o9M+0Yx7Qe
+ 3tXu4C582ncY4sM0K3MFNaUA97WS3ea6NyxEEMXQELIozKYnEPd+hdjRHQ9ss0MUyS333m
+ HRuxZIut1RPKqEor5wtk/oy7P/E51tY=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-577-lxGmi70WOUmmxkL0JRHmhQ-1; Fri, 07 Jan 2022 08:38:51 -0500
-X-MC-Unique: lxGmi70WOUmmxkL0JRHmhQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3150C10168F7;
- Fri,  7 Jan 2022 13:38:50 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.171])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C824B78A9C;
- Fri,  7 Jan 2022 13:38:47 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@wdc.com>
-Cc: Yanan Wang <wangyanan55@huawei.com>, Andrew Jones <drjones@redhat.com>,
+ us-mta-380-wGnXhhazPEKvyI-DVMdfVw-1; Fri, 07 Jan 2022 09:45:32 -0500
+X-MC-Unique: wGnXhhazPEKvyI-DVMdfVw-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ z8-20020a056402274800b003f8580bfb99so4846351edd.11
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 06:45:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=Z7Y4ZGhOxeHGRsiJL7IY0x/v+cdybg3bWuVMsMYKOZA=;
+ b=nTy47o3bGhQLrn5GPiPY/NLcJHvzUM8raTrDPJ/Cr5ooDRz0qaQAsB6paZj9KYC3bD
+ JTZQHCDgj8kP0LKhBnkkIfw7QiVSYjYhAF1WWFAHu6RywtctGA63IRNCXJz00Y86Onmm
+ 4FZheITR9h47xi9SEZ3JS4uSL8XdfvmMyQSASTZJLqOX72EgYqPNGeHZgEmdtiO7+nvB
+ yyTJj0a1uqH4B8XgkEsLCrCue+ufbcWjZ9Q4oHrX9TziV++VcDFTNQfDXFydEB+A+27O
+ TBZD2S2CVVWotPguh+9yHONAUOeCjcSF8K8Dupaiq9ZEB4B9wNt5Uqd2bTqpLmAsLVN5
+ ZGRw==
+X-Gm-Message-State: AOAM531IFIdJZTtpvzAmG/srChrZ0qkak9J7IOwYG73G8zPsytxtlQ1c
+ JHu96N5ApaWItDAFDKWViZniYbgMz3x6ZH8/uRIwHhhjJNcsnN1x4m+r4R0jiU4P2DjElDdo4Xh
+ 2NufjkgkSbwfZis2cpg==
+X-Received: by 2002:a05:6402:1d4b:: with SMTP id
+ dz11mr61780750edb.15.1641566731581; 
+ Fri, 07 Jan 2022 06:45:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxLmtYdIXy4eeiM2d2bm/EbJNU/Zw6GeYMB2wnDDIA7bf48zTFj84w/wC/Vo0kGccd8FP/5PQ==
+X-Received: by 2002:a05:6402:1d4b:: with SMTP id
+ dz11mr61780723edb.15.1641566731280; 
+ Fri, 07 Jan 2022 06:45:31 -0800 (PST)
+Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
+ by smtp.gmail.com with ESMTPSA id ds7sm1465201ejc.50.2022.01.07.06.45.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Jan 2022 06:45:30 -0800 (PST)
+Date: Fri, 7 Jan 2022 15:45:29 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ Yanan Wang <wangyanan55@huawei.com>,
  David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org
-Subject: [PATCH] softmmu/device_tree: Silence compiler warning with
+Subject: Re: [PATCH] softmmu/device_tree: Silence compiler warning with
  --enable-sanitizers
-Date: Fri,  7 Jan 2022 14:38:44 +0100
-Message-Id: <20220107133844.145039-1-thuth@redhat.com>
+Message-ID: <20220107144529.3oovw6ywlcqg3fc7@gator>
+References: <20220107133844.145039-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20220107133844.145039-1-thuth@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
@@ -70,50 +95,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Jan 2022 13:39:05 -0000
+X-List-Received-Date: Fri, 07 Jan 2022 14:45:39 -0000
 
-If I configure my build with --enable-sanitizers, my GCC (v8.5.0)
-complains:
+On Fri, Jan 07, 2022 at 02:38:44PM +0100, Thomas Huth wrote:
+> If I configure my build with --enable-sanitizers, my GCC (v8.5.0)
+> complains:
+> 
+> .../softmmu/device_tree.c: In function ‘qemu_fdt_add_path’:
+> .../softmmu/device_tree.c:560:18: error: ‘retval’ may be used uninitialized
+>  in this function [-Werror=maybe-uninitialized]
+>      int namelen, retval;
+>                   ^~~~~~
+> 
+> It's a false warning since the while loop is always executed at least
+> once (p has to be non-NULL, otherwise the derefence in the if-statement
+> earlier will crash). Thus let's switch to a do-while loop here instead
+> to make the compiler happy in all cases.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  softmmu/device_tree.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
+> index 3965c834ca..9e96f5ecd5 100644
+> --- a/softmmu/device_tree.c
+> +++ b/softmmu/device_tree.c
+> @@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
+>          return -1;
+>      }
+>  
+> -    while (p) {
+> +    do {
+>          name = p + 1;
+>          p = strchr(name, '/');
+>          namelen = p != NULL ? p - name : strlen(name);
+> @@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
+>          }
+>  
+>          parent = retval;
+> -    }
+> +    } while (p);
+>  
+>      return retval;
+>  }
+> -- 
+> 2.27.0
+>
 
-.../softmmu/device_tree.c: In function ‘qemu_fdt_add_path’:
-.../softmmu/device_tree.c:560:18: error: ‘retval’ may be used uninitialized
- in this function [-Werror=maybe-uninitialized]
-     int namelen, retval;
-                  ^~~~~~
-
-It's a false warning since the while loop is always executed at least
-once (p has to be non-NULL, otherwise the derefence in the if-statement
-earlier will crash). Thus let's switch to a do-while loop here instead
-to make the compiler happy in all cases.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- softmmu/device_tree.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-index 3965c834ca..9e96f5ecd5 100644
---- a/softmmu/device_tree.c
-+++ b/softmmu/device_tree.c
-@@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
-         return -1;
-     }
  
--    while (p) {
-+    do {
-         name = p + 1;
-         p = strchr(name, '/');
-         namelen = p != NULL ? p - name : strlen(name);
-@@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
-         }
- 
-         parent = retval;
--    }
-+    } while (p);
- 
-     return retval;
- }
--- 
-2.27.0
+Reviewed-by: Andrew Jones <drjones@redhat.com>
 
 
