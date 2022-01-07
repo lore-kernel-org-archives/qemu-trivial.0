@@ -1,38 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n5rUo-00027q-By
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 10:49:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51632)
+	id 1n5ttr-0003eR-SU
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 13:23:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1n5rUm-00027F-US; Fri, 07 Jan 2022 10:49:36 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]:40826
- helo=mail.v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1n5rUk-0006JK-Rf; Fri, 07 Jan 2022 10:49:36 -0500
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 04802DA0787;
- Fri,  7 Jan 2022 16:49:32 +0100 (CET)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
- id EFC89460019; Fri,  7 Jan 2022 16:49:31 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH] libvhost-user: Fix wrong type of argument to formatting
- function (reported by LGTM)
-Date: Fri,  7 Jan 2022 16:49:30 +0100
-Message-Id: <20220107154930.505075-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n5ttq-0003cL-I0; Fri, 07 Jan 2022 13:23:38 -0500
+Received: from [2a00:1450:4864:20::42d] (port=35348
+ helo=mail-wr1-x42d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n5tto-00015S-QW; Fri, 07 Jan 2022 13:23:38 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id e9so11139012wra.2;
+ Fri, 07 Jan 2022 10:23:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=r/61UO2M8uKpBF9iK8crNZAzwXGD+NkoTW1VO8VeSwA=;
+ b=lgwda55neFwHIIDXPsgBMDaBj1NSRJmM+HX28O74XTVoJ7A3cZFerrHIhwmAVf0aw9
+ OukEGgaMzd6nnSDJz70JmFf23fjGDvoeg7RMzedRbWj1IWR/qZmo89d46d8yd2WlSGpf
+ ZpprWqIsEPeK6Y/G3GYoUzqwSnYvZ1Z1e5FRqT6RFFVXMqVH13/TS7uYGmHBET7ghlQw
+ PiV2NsE2NpZVzaB4AaPXhws4LaXd7uxNH9pl4ItP6zd+ZVONYVaNpkVogofNAswhwaho
+ +5et4XMH6JejCgL1YX3Up9ODXZLuNIz9kPHWpoIZLK1ZAZ4/Xmq8HgzXqkRvdzBO6Cc3
+ oYVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=r/61UO2M8uKpBF9iK8crNZAzwXGD+NkoTW1VO8VeSwA=;
+ b=4jKVGGJ+uMW2IY0TBRi7G7hdlLA3MTakzxHC3F5mVYrWrfsYcLEnXA0hbnhfv6hjmM
+ OrejZAnppy+DkRIr7gFvde5Y5sQ7jW/y/F4Yvw+UnNvaiQNu0tbdCBDGNNvWdwtm6J5H
+ BTK7KvbHpCaHujQd7clkaKfoqxYHd+7dBMERa9WO7WqHxdnjHMQiVagbxb5+T7P5rI/G
+ HVjWAebP43gab8RIrPxNbZvdJ1SKPPDSgVeDXgKUX5aAMAvi6JFTP0NhyVZBU1SM6qaL
+ mqzUAO7DzGcq6uwk5iimHL5N2PFGCkFc6Krw2+16YQLGru83+MK8gTxDRJ/WIqZgJfd0
+ 7Y/Q==
+X-Gm-Message-State: AOAM530N9T/Jfo2Hc0X7TQMhHPbwLg8gb+fw6uHvtflzBhCAGDVVnoo3
+ EbreLNYjw1jiiVcPeune/+s=
+X-Google-Smtp-Source: ABdhPJxMWpvvsmcrboZgzBX/OsC7h3vcPgI1GosrMTWp9GjSJWIFspHPO1L600Sa2XGeSbBHACTPkA==
+X-Received: by 2002:a05:6000:1ac7:: with SMTP id
+ i7mr48785584wry.7.1641579814095; 
+ Fri, 07 Jan 2022 10:23:34 -0800 (PST)
+Received: from [192.168.1.40] (83.red-83-50-87.dynamicip.rima-tde.net.
+ [83.50.87.83])
+ by smtp.gmail.com with ESMTPSA id h2sm5618187wmq.20.2022.01.07.10.23.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Jan 2022 10:23:33 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <63f40c85-4770-31c7-2903-687acb7bbd27@amsat.org>
+Date: Fri, 7 Jan 2022 19:23:32 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH] simplebench: Fix Python syntax error (reported by LGTM)
+Content-Language: en-US
+To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ John Snow <jsnow@redhat.com>
+References: <20220107153019.504124-1-sw@weilnetz.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220107153019.504124-1-sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42d
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.691,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -46,34 +88,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Jan 2022 15:49:37 -0000
+X-List-Received-Date: Fri, 07 Jan 2022 18:23:39 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
+On 1/7/22 16:30, Stefan Weil wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  scripts/simplebench/bench-example.py | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/scripts/simplebench/bench-example.py b/scripts/simplebench/bench-example.py
+> index 4864435f39..fc370691e0 100644
+> --- a/scripts/simplebench/bench-example.py
+> +++ b/scripts/simplebench/bench-example.py
+> @@ -25,7 +25,7 @@
+>  
+>  def bench_func(env, case):
+>      """ Handle one "cell" of benchmarking table. """
+> -    return bench_block_copy(env['qemu_binary'], env['cmd'], {}
+> +    return bench_block_copy(env['qemu_binary'], env['cmd'], {},
+>                              case['source'], case['target'])
+>  
+>  
 
-LGTM has some more alerts which need attention:
-https://lgtm.com/projects/g/qemu/qemu/
-
-Regards,
-Stefan
-
- subprojects/libvhost-user/libvhost-user.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
-index 787f4d2d4f..6eb72c4200 100644
---- a/subprojects/libvhost-user/libvhost-user.c
-+++ b/subprojects/libvhost-user/libvhost-user.c
-@@ -651,7 +651,7 @@ generate_faults(VuDev *dev) {
- 
-         if (ioctl(dev->postcopy_ufd, UFFDIO_REGISTER, &reg_struct)) {
-             vu_panic(dev, "%s: Failed to userfault region %d "
--                          "@%p + size:%zx offset: %zx: (ufd=%d)%s\n",
-+                          "@%" PRIx64 " + size:%zx offset: %zx: (ufd=%d)%s\n",
-                      __func__, i,
-                      dev_region->mmap_addr,
-                      dev_region->size, dev_region->mmap_offset,
--- 
-2.30.2
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
