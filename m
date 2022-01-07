@@ -1,85 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n5nuk-0004SH-J7
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 07:00:10 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55428)
+	id 1n5pSV-0007R3-KM
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 08:39:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n5nuj-0004Ol-5g
- for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 07:00:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:48545)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n5pSS-0007Ql-Lm
+ for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 08:39:05 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41931)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n5nud-0004dy-R0
- for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 07:00:08 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n5pSP-0003mR-Fe
+ for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 08:39:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641556803;
+ s=mimecast20190719; t=1641562739;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Yat/Qsy2FZlmD3f4lls8Zub2EBCLL2GaAVY4ykhLn98=;
- b=YEAcuWQ1V/BKvoz2rP/p0PG3XsHyOdcZZCOpOaL6/Jo06OwS4l0O0A6u8573vfQtEmnhV+
- ffkrqiQz0gRyMijdesxnY+UetBe3nTLphRbkJa/1/4RbfBNEZefn13Wa1zQVymYx1cCzwH
- e9zU0WJ3gjR1ib6AlYYgzruy83bLE8I=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding;
+ bh=totBQYvoHc08z47dM7svER7xPZjbFH67rj55UiVMlN4=;
+ b=aIILCy38F0TXgJBYDZVAa1R93AFJEOhky7WdUR60CvOdSc30ui8qFziBuJbjAP09cem1ql
+ 9PsRk38Vtuq3owae8zQjeTFj8M6WrkheNfjAyornWjTKlf02MPGN1sqR0fB3jeJzWJtzgt
+ IvRKqfgs1RktihvA78k6yDd2eeMKzck=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-661-0Thpc7CaNfmjQOmmSeC5_g-1; Fri, 07 Jan 2022 06:59:57 -0500
-X-MC-Unique: 0Thpc7CaNfmjQOmmSeC5_g-1
-Received: by mail-wm1-f70.google.com with SMTP id
- az9-20020a05600c600900b0034692565ca8so3525778wmb.9
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 03:59:57 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:from:to:cc:references:in-reply-to
- :content-transfer-encoding;
- bh=Yat/Qsy2FZlmD3f4lls8Zub2EBCLL2GaAVY4ykhLn98=;
- b=3AdftAXEIAefFs5tSdubNpDsTXvRa0YpvfOPyEyNZHUTOyAz7bj7faQqqRq4KiFPfu
- FS5a/ZuVzGbI6Oca2lTHmFSB+nzjTKm7+NdOGSYQOaZWzNJKIHDK78T/CrGXTcbbuH2B
- ZwiL5PqVs6FSwADHxn1p/l66dpFY4pS1YFTttadD5tjQ0mKffNHktWPSHgiDZoV0x+ix
- PqTJZCAFMJvcbmE6oaarghzecg1Qyt5U1xmmOgcGCcQZITj4cuua50Uc7PuTR7I1WMwY
- /RyMrCbfbT///3zIy/ZVHWW3SSLoVTBTQaYG71Dkc4hY8kWqDspAgogDY0AM1BuucWlp
- Tnqg==
-X-Gm-Message-State: AOAM5306cRVyWuNmtn1Lcl8Gkm4LDtQAdADSBQ/kxvavNMbGFsrxRsmC
- FyObG7Y0HQg9dlI63euWpwOLFGrUvCOt/U72yQHFj9iXyHnO2rJvziHJoK0WGdiItCK2qFNEIIu
- xBJbnpNjNAf0GsdqYKQ==
-X-Received: by 2002:adf:f14b:: with SMTP id y11mr51898475wro.493.1641556796143; 
- Fri, 07 Jan 2022 03:59:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxXtfZh3AKHQeuTZFSgJQOz28emXWn8v60WvbU0KGs3HT0yLDvkshD1zoJwcadLVHKEj6G+zA==
-X-Received: by 2002:adf:f14b:: with SMTP id y11mr51898462wro.493.1641556795967; 
- Fri, 07 Jan 2022 03:59:55 -0800 (PST)
-Received: from [192.168.8.100] (tmo-098-68.customers.d1-online.com.
- [80.187.98.68])
- by smtp.gmail.com with ESMTPSA id az1sm1632135wrb.104.2022.01.07.03.59.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Jan 2022 03:59:55 -0800 (PST)
-Message-ID: <1b6fa831-f99e-3693-d2d4-48bc271c9d46@redhat.com>
-Date: Fri, 7 Jan 2022 12:59:54 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH] meson.build: Print gtk version in the summary info
+ us-mta-577-lxGmi70WOUmmxkL0JRHmhQ-1; Fri, 07 Jan 2022 08:38:51 -0500
+X-MC-Unique: lxGmi70WOUmmxkL0JRHmhQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3150C10168F7;
+ Fri,  7 Jan 2022 13:38:50 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.171])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C824B78A9C;
+ Fri,  7 Jan 2022 13:38:47 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20220105190804.649316-1-thuth@redhat.com>
-In-Reply-To: <20220105190804.649316-1-thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Alistair Francis <alistair.francis@wdc.com>
+Cc: Yanan Wang <wangyanan55@huawei.com>, Andrew Jones <drjones@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org
+Subject: [PATCH] softmmu/device_tree: Silence compiler warning with
+ --enable-sanitizers
+Date: Fri,  7 Jan 2022 14:38:44 +0100
+Message-Id: <20220107133844.145039-1-thuth@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -58
-X-Spam_score: -5.9
-X-Spam_bar: -----
-X-Spam_report: (-5.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.691, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,54 +70,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Jan 2022 12:00:09 -0000
+X-List-Received-Date: Fri, 07 Jan 2022 13:39:05 -0000
 
-On 05/01/2022 20.08, Thomas Huth wrote:
-> The "gtk" variable is re-declared as "dependencies: [gtk, gtkx11]",
-> so there is just a "YES" in the summary info if gtk has been found.
-> Let's use the info from the library detection instead so that the
-> library version is printed in the summary instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   meson.build | 12 ++++++------
->   1 file changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/meson.build b/meson.build
-> index 82769749db..798811dfbb 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -1058,11 +1058,11 @@ gtk = not_found
->   gtkx11 = not_found
->   vte = not_found
+If I configure my build with --enable-sanitizers, my GCC (v8.5.0)
+complains:
 
-Drat, I'm missing a "libgtk = not_found" here ... I'll send a v2.
+.../softmmu/device_tree.c: In function ‘qemu_fdt_add_path’:
+.../softmmu/device_tree.c:560:18: error: ‘retval’ may be used uninitialized
+ in this function [-Werror=maybe-uninitialized]
+     int namelen, retval;
+                  ^~~~~~
 
-  Thomas
+It's a false warning since the while loop is always executed at least
+once (p has to be non-NULL, otherwise the derefence in the if-statement
+earlier will crash). Thus let's switch to a do-while loop here instead
+to make the compiler happy in all cases.
 
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ softmmu/device_tree.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
->   if not get_option('gtk').auto() or (have_system and not cocoa.found())
-> -  gtk = dependency('gtk+-3.0', version: '>=3.22.0',
-> -                   method: 'pkg-config',
-> -                   required: get_option('gtk'),
-> -                   kwargs: static_kwargs)
-> -  if gtk.found()
-> +  libgtk = dependency('gtk+-3.0', version: '>=3.22.0',
-> +                      method: 'pkg-config',
-> +                      required: get_option('gtk'),
-> +                      kwargs: static_kwargs)
-> +  if libgtk.found()
->       gtkx11 = dependency('gtk+-x11-3.0', version: '>=3.22.0',
->                           method: 'pkg-config',
->                           required: false,
-> @@ -3410,7 +3410,7 @@ if targetos == 'darwin'
->   endif
->   summary_info += {'SDL support':       sdl}
->   summary_info += {'SDL image support': sdl_image}
-> -summary_info += {'GTK support':       gtk}
-> +summary_info += {'GTK support':       libgtk}
->   summary_info += {'pixman':            pixman}
->   summary_info += {'VTE support':       vte}
->   summary_info += {'slirp support':     slirp_opt == 'internal' ? slirp_opt : slirp}
+diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
+index 3965c834ca..9e96f5ecd5 100644
+--- a/softmmu/device_tree.c
++++ b/softmmu/device_tree.c
+@@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
+         return -1;
+     }
+ 
+-    while (p) {
++    do {
+         name = p + 1;
+         p = strchr(name, '/');
+         namelen = p != NULL ? p - name : strlen(name);
+@@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
+         }
+ 
+         parent = retval;
+-    }
++    } while (p);
+ 
+     return retval;
+ }
+-- 
+2.27.0
 
 
