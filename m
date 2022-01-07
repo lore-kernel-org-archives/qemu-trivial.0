@@ -1,88 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n5qV6-0006BH-R9
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 09:45:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37776)
+	id 1n5qXC-0001JY-90
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 09:48:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38276)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1n5qUs-0005zv-S8
- for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 09:45:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:51748)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1n5qUp-0001zZ-Sp
- for qemu-trivial@nongnu.org; Fri, 07 Jan 2022 09:45:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641566733;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Z7Y4ZGhOxeHGRsiJL7IY0x/v+cdybg3bWuVMsMYKOZA=;
- b=XZABpMrxBG08586P6dYEDmdCYyoa3h0YahtA/JFkz6r3waTIe6lL69HLwAo6o9M+0Yx7Qe
- 3tXu4C582ncY4sM0K3MFNaUA97WS3ea6NyxEEMXQELIozKYnEPd+hdjRHQ9ss0MUyS333m
- HRuxZIut1RPKqEor5wtk/oy7P/E51tY=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-380-wGnXhhazPEKvyI-DVMdfVw-1; Fri, 07 Jan 2022 09:45:32 -0500
-X-MC-Unique: wGnXhhazPEKvyI-DVMdfVw-1
-Received: by mail-ed1-f72.google.com with SMTP id
- z8-20020a056402274800b003f8580bfb99so4846351edd.11
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 06:45:32 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n5qXA-0001Gz-2N; Fri, 07 Jan 2022 09:48:00 -0500
+Received: from [2a00:1450:4864:20::42b] (port=42513
+ helo=mail-wr1-x42b.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n5qX8-0002ZP-J3; Fri, 07 Jan 2022 09:47:59 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id w20so11472760wra.9;
+ Fri, 07 Jan 2022 06:47:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=2ervEO8ZIHqf+L4Yfh5ajSBCvEXICbY0zqrMkvsVgwY=;
+ b=mucB0sZt++x82inuvK+G9dmBga6vokoMsYeg2vVuGHNHaLDBVTpF9F1jPGRAnYHWsM
+ vfpV6pl8QkQaPOGxmSmsRwjq04ynNJBK3waX7pr/sQK8Gfs7QpVpvGYYIJ0ZDA8bbO6+
+ DSZKO44f3Ls9Vp2mui8fx3HpWF9lAEjj2KVD4qFtnBXbwaRjr4AlAHglf1v9SbJENOSL
+ M18Ua1EoF9+JkJPdkCPQvBBs+X2eZi1kWCTEyr/xsnYHtwf6jBAn6GRoFLo3ZbSSP1YB
+ vXE4KQl0KGm5W3kcH8Z8NgYC+uE9LqfIg25/i9hGh3R2buDqAEdQgWwVCVbImPJ3kjlS
+ 3JUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=Z7Y4ZGhOxeHGRsiJL7IY0x/v+cdybg3bWuVMsMYKOZA=;
- b=nTy47o3bGhQLrn5GPiPY/NLcJHvzUM8raTrDPJ/Cr5ooDRz0qaQAsB6paZj9KYC3bD
- JTZQHCDgj8kP0LKhBnkkIfw7QiVSYjYhAF1WWFAHu6RywtctGA63IRNCXJz00Y86Onmm
- 4FZheITR9h47xi9SEZ3JS4uSL8XdfvmMyQSASTZJLqOX72EgYqPNGeHZgEmdtiO7+nvB
- yyTJj0a1uqH4B8XgkEsLCrCue+ufbcWjZ9Q4oHrX9TziV++VcDFTNQfDXFydEB+A+27O
- TBZD2S2CVVWotPguh+9yHONAUOeCjcSF8K8Dupaiq9ZEB4B9wNt5Uqd2bTqpLmAsLVN5
- ZGRw==
-X-Gm-Message-State: AOAM531IFIdJZTtpvzAmG/srChrZ0qkak9J7IOwYG73G8zPsytxtlQ1c
- JHu96N5ApaWItDAFDKWViZniYbgMz3x6ZH8/uRIwHhhjJNcsnN1x4m+r4R0jiU4P2DjElDdo4Xh
- 2NufjkgkSbwfZis2cpg==
-X-Received: by 2002:a05:6402:1d4b:: with SMTP id
- dz11mr61780750edb.15.1641566731581; 
- Fri, 07 Jan 2022 06:45:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxLmtYdIXy4eeiM2d2bm/EbJNU/Zw6GeYMB2wnDDIA7bf48zTFj84w/wC/Vo0kGccd8FP/5PQ==
-X-Received: by 2002:a05:6402:1d4b:: with SMTP id
- dz11mr61780723edb.15.1641566731280; 
- Fri, 07 Jan 2022 06:45:31 -0800 (PST)
-Received: from gator (cst2-173-70.cust.vodafone.cz. [31.30.173.70])
- by smtp.gmail.com with ESMTPSA id ds7sm1465201ejc.50.2022.01.07.06.45.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 06:45:30 -0800 (PST)
-Date: Fri, 7 Jan 2022 15:45:29 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=2ervEO8ZIHqf+L4Yfh5ajSBCvEXICbY0zqrMkvsVgwY=;
+ b=4Z2HzBOjtpULnXHaRpvd88oobf3KADo6PX6jeJE86m120c75ZPaxMFMp64xJVI4j5Y
+ /Vym8OSFQJ6bmfZt53Mh5j9X5zlYBlAbej2IoN9x5Prvd1hQNFy9DV63WH4JYLv6wUJM
+ TChFCi9bIERTzOB8SofnVuJlsETjnkI1qiwGucaltkO7DNb6dCP3qL8JoFWtU1yR+foB
+ 4/l8+ACjvnndtXz4f4c+KURKyoIORDZMHfMSqaWW9He60UIwP8eYlUBSHP6RR8gg4tiS
+ +rv+WC0YlIMJvYyAnNwuWzy4z9MLFRZY5V5Oa1lVxjBKgHPJQVboIcTMdUswVvK+diPE
+ 6fLg==
+X-Gm-Message-State: AOAM532TRMuptvR4iMnz9VUN8w9y1Buaw0buZpGIsVYpN49MOITVgwik
+ b80g2e5QrlADZ+Hj5oT3EkY=
+X-Google-Smtp-Source: ABdhPJxSBRFyq7rfT2x1mSrOpspyKETv5pe6jHlNyOsDvuKZgMC2bo99wcWv+/5MXlo/1ISWwp24zg==
+X-Received: by 2002:adf:f0c2:: with SMTP id x2mr31136209wro.367.1641566876871; 
+ Fri, 07 Jan 2022 06:47:56 -0800 (PST)
+Received: from [192.168.1.33] (83.red-83-50-87.dynamicip.rima-tde.net.
+ [83.50.87.83])
+ by smtp.gmail.com with ESMTPSA id o38sm4685261wms.11.2022.01.07.06.47.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Jan 2022 06:47:56 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <69832841-76d6-8a40-abd3-56df88a8351d@amsat.org>
+Date: Fri, 7 Jan 2022 15:47:55 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.4.1
 Subject: Re: [PATCH] softmmu/device_tree: Silence compiler warning with
  --enable-sanitizers
-Message-ID: <20220107144529.3oovw6ywlcqg3fc7@gator>
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>
+Cc: Yanan Wang <wangyanan55@huawei.com>, qemu-trivial@nongnu.org,
+ Andrew Jones <drjones@redhat.com>, David Gibson <david@gibson.dropbear.id.au>
 References: <20220107133844.145039-1-thuth@redhat.com>
-MIME-Version: 1.0
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 In-Reply-To: <20220107133844.145039-1-thuth@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42b
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.691,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,17 +88,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Jan 2022 14:45:39 -0000
+X-List-Received-Date: Fri, 07 Jan 2022 14:48:00 -0000
 
-On Fri, Jan 07, 2022 at 02:38:44PM +0100, Thomas Huth wrote:
+On 7/1/22 14:38, Thomas Huth wrote:
 > If I configure my build with --enable-sanitizers, my GCC (v8.5.0)
 > complains:
 > 
 > .../softmmu/device_tree.c: In function ‘qemu_fdt_add_path’:
 > .../softmmu/device_tree.c:560:18: error: ‘retval’ may be used uninitialized
->  in this function [-Werror=maybe-uninitialized]
->      int namelen, retval;
->                   ^~~~~~
+>   in this function [-Werror=maybe-uninitialized]
+>       int namelen, retval;
+>                    ^~~~~~
 > 
 > It's a false warning since the while loop is always executed at least
 > once (p has to be non-NULL, otherwise the derefence in the if-statement
@@ -114,36 +107,8 @@ On Fri, Jan 07, 2022 at 02:38:44PM +0100, Thomas Huth wrote:
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  softmmu/device_tree.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-> index 3965c834ca..9e96f5ecd5 100644
-> --- a/softmmu/device_tree.c
-> +++ b/softmmu/device_tree.c
-> @@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->          return -1;
->      }
->  
-> -    while (p) {
-> +    do {
->          name = p + 1;
->          p = strchr(name, '/');
->          namelen = p != NULL ? p - name : strlen(name);
-> @@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->          }
->  
->          parent = retval;
-> -    }
-> +    } while (p);
->  
->      return retval;
->  }
-> -- 
-> 2.27.0
->
+>   softmmu/device_tree.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
- 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
