@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n66Jf-0005yp-55
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:39:10 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35596)
+	id 1n66Jp-000631-3b
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:39:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ia-0005JU-Mk
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ia-0005JR-ID
  for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:02 -0500
-Received: from [2607:f8b0:4864:20::132] (port=41905
- helo=mail-il1-x132.google.com)
+Received: from [2607:f8b0:4864:20::130] (port=41903
+ helo=mail-il1-x130.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66IU-0003LL-Ls
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:37:57 -0500
-Received: by mail-il1-x132.google.com with SMTP id r16so4778311ile.8
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:37:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66IU-0003LD-Aa
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:37:56 -0500
+Received: by mail-il1-x130.google.com with SMTP id r16so4778290ile.8
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:37:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=LuLB1GCaE27UYhebE8MEe7wQj0GNFAlmAIMZ+t4rYog=;
- b=rmhy6MmztDwLR6K8HP0DJCWbyWNsectKMkBk0Kce3mJPQVacAPxDXp+9EO1VwhTHGO
- 9BfxfSj6EVAb/YIOKOpHZcT9vEx1MhTuBPba3CMh1cshNXWDOLpXTiDUhNRNSCKt5U5O
- 6YO2E8EGiVvfUFaFnqwCF5yNW4eeRHz6FtOWvviBB9ctQfI7M5qHPx8RtCRu3UbYGiKk
- 4T0cJ+goijz2eRFKVHfGr+Pe7JzEqruITUwrG4ZTPUlXq7S04GDQoKE2NxROflIKD9qF
- yTyBHWTR14N4iZ3yrmkMgc9SbrIatWX5R5kIiy8rEB/wxZPa8bJCSezfi7477+D7Q5h6
- 5CmA==
+ bh=XDeeTs/ZwISiL/2qknbpHkl3Yjz2NvR7d+xYIi8TXws=;
+ b=Ql5oNOcEn/6JvsMBf2wGZHXMwA2kxy32V6QjiHcbI4AMu27MQVEz4xuP6faM8ZyjwF
+ DVuxmWjEZONYCMCITEevrZhTOQBfXQ7b5ed8+rtl2izIKyjzfBKvR5tVad+9nOr/nQhx
+ D5kpqpvPxbl9gPmC0Man15KgwABbvboDrJKwlBuiEMNEyIu4LyMTlsDra2UZbbA7dOXk
+ Yqw0uMQ/FlOQL3Hmcu1LDpRxJGHDl4Nj/atFlW8gAoSM/53VROCSUBKTALX12J8rmvBM
+ /TT86fZ2VL1pi5K5XQxxgYo6QJGkJboUglMi12MsR1El0o5rPZtYQ05k/4NhUc6ruuvZ
+ odcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=LuLB1GCaE27UYhebE8MEe7wQj0GNFAlmAIMZ+t4rYog=;
- b=nWIlGfxls727/P+iYlmeW67y3f8uhRjTrRlm7zDUtv+U+GFREjoT24YVKegBtB2eaG
- kyP5d7ASx8y6XQXG+w9l89FtEKublWXOrWUchdqq/MMQUEVj4RnNimYEZK2ea2FUFqZH
- XMnnsPpgnMRgjTeBMZYwzumGyH2J1JatL51xtG2ry8lI8NBBDp9BQS66AuEEeuFggAnc
- 00gXpZ3NNYyEVrPgmPDkL1EXAO2JSTHZ9o9/IY1xBiIiUAGJRMLfIfr7JbiQGfUo51AW
- Yga2KjusmPRipIlGRZD8MbXglnnU89jL9HwE8UY+JNYQLUWqYdYHWQZAR5OgQzVtnRFB
- olsg==
-X-Gm-Message-State: AOAM531PtJ2RRAetNLNg6fZlgH0qP69FClcBXj9jvEUl1V1KpUuLrHYR
- 1CxbA8ovCIGH/Q2FZ0/LtLTXAg==
-X-Google-Smtp-Source: ABdhPJyMQxavm3Q1NeKZA9S3jAu0rcWPW/XqrTGGnKSJi4A5Q7rMttmvXjyOzDJR8H0/UZZYumOq7g==
-X-Received: by 2002:a05:6e02:1c06:: with SMTP id
- l6mr1361840ilh.239.1641627471664; 
- Fri, 07 Jan 2022 23:37:51 -0800 (PST)
+ bh=XDeeTs/ZwISiL/2qknbpHkl3Yjz2NvR7d+xYIi8TXws=;
+ b=sUMlhrlybH6N0pYVcRVWyRznIafC+uyGxKMoNYqS+/tucc5UtSAijkkYYyk9YYEvN2
+ 39xsLe8oR2Mcaf67Aapjae4DnYCv7EdPbIklKJZn2wSRyyzlxV7o+z7+XKdEZn0q614Z
+ IAkRZguQvRByVO+Glxb03GHCKTnzY0hMSV/uZch0ghF+f/RbKZIzPM05e/thvUM+oTph
+ SZJBXEWIacC0Fnllf3AG4As/JNx4YGM+79BNAbI7BNtL/+vEreK5VxxYUs/0/JTU/Lef
+ n66WIPhzeVFx4y7EhN1pS+971fhyQWPaJfVnI7p8nqUGqXuH6f0IE1TIEnmJ7ypwpYBT
+ OhVA==
+X-Gm-Message-State: AOAM532VS16V/HCTL3HTZOwgVLyuZzbv8Y6pIeP+XmQ/5zw2RNfVfF9l
+ nkGC/K/cZeJOqfWLaYkDfwqJkA==
+X-Google-Smtp-Source: ABdhPJy+VCmZwBPLCgX9vgaqJrIymoFl2MwV+qiI5UT2Ig4HNO7CF1WPouhyYdB6O/9DmTEgIJSGPQ==
+X-Received: by 2002:a05:6e02:1bc5:: with SMTP id
+ x5mr31494703ilv.255.1641627470799; 
+ Fri, 07 Jan 2022 23:37:50 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.37.50
+ by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.37.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 23:37:51 -0800 (PST)
+ Fri, 07 Jan 2022 23:37:50 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -53,19 +53,19 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 09/37] bsd-user/x86_64/target_arch_signal.h: use new
- target_os_ucontext.h
-Date: Sat,  8 Jan 2022 00:37:09 -0700
-Message-Id: <20220108073737.5959-10-imp@bsdimp.com>
+Subject: [PULL 08/37] bsd-user/x86_64/target_arch_signal.h: Remove
+ target_sigcontext
+Date: Sat,  8 Jan 2022 00:37:08 -0700
+Message-Id: <20220108073737.5959-9-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
 References: <20220108073737.5959-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::132
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::130
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::132;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x132.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::130;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x130.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -86,32 +86,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 08 Jan 2022 07:38:12 -0000
 
+In FreeBSD, sigcontext was retired in favor of ucontext/mcontext.
+Remove vestigial target_sigcontext.
+
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/x86_64/target_arch_signal.h | 9 +--------
- 1 file changed, 1 insertion(+), 8 deletions(-)
+ bsd-user/x86_64/target_arch_signal.h | 4 ----
+ 1 file changed, 4 deletions(-)
 
 diff --git a/bsd-user/x86_64/target_arch_signal.h b/bsd-user/x86_64/target_arch_signal.h
-index 55f742b0a8c..e84aff948c5 100644
+index 4bb753b08bb..55f742b0a8c 100644
 --- a/bsd-user/x86_64/target_arch_signal.h
 +++ b/bsd-user/x86_64/target_arch_signal.h
-@@ -30,14 +30,7 @@
+@@ -27,10 +27,6 @@
+ #define TARGET_MINSIGSTKSZ  (512 * 4)               /* min sig stack size */
+ #define TARGET_SIGSTKSZ     (MINSIGSTKSZ + 32768)   /* recommended size */
+ 
+-struct target_sigcontext {
+-    /* to be added */
+-};
+-
  typedef struct target_mcontext {
  } target_mcontext_t;
  
--typedef struct target_ucontext {
--    target_sigset_t   uc_sigmask;
--    target_mcontext_t uc_mcontext;
--    abi_ulong         uc_link;
--    target_stack_t    uc_stack;
--    int32_t           uc_flags;
--    int32_t         __spare__[4];
--} target_ucontext_t;
-+#include "target_os_ucontext.h"
- 
- struct target_sigframe {
-     abi_ulong   sf_signum;
 -- 
 2.33.1
 
