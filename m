@@ -1,70 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n5zVJ-000156-V6
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Jan 2022 19:22:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37504)
+	id 1n66Ir-0005TP-Ny
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:38:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1n5zVI-00014U-EU; Fri, 07 Jan 2022 19:22:40 -0500
-Received: from [2607:f8b0:4864:20::d32] (port=35832
- helo=mail-io1-xd32.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66IO-0005Hl-TI
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:37:52 -0500
+Received: from [2607:f8b0:4864:20::d2a] (port=37504
+ helo=mail-io1-xd2a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1n5zVG-00058U-Q6; Fri, 07 Jan 2022 19:22:40 -0500
-Received: by mail-io1-xd32.google.com with SMTP id y70so9213152iof.2;
- Fri, 07 Jan 2022 16:22:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=k3NPVvDkIV3sTprnGw9GCol6BU2QPGGFPtc1vpAmcmc=;
- b=aSkpKQauh4nt8iwYZ03OevjVtDW8gZSV4JaYfisToyNFb1bWHSA0NBPT1gDq6Fs4Nt
- pYa4jmZf1JPaqOI8y/Po6lcPksdcAEjI0mJwAVT0Tm3jL8i/8mNGhlYIk4JMsSRQ/sje
- 1DZJpfDRCgJcYkgGCwZThOD6BQE9arpfJ7b66S0k666HTbZo2ISCpRLsstKTkJwD8hDC
- uTVfAELMyE6sXGw+/Np79743mzzLxtLaNzHnOKLFFfAF06Mmq6bK9v1HfHB90QBJxz0f
- eDjJjBmWXYlv7TCGW2GCqd9Ft98QhjEViKfzqdHi7G9ljWr54xyfu4znVkPjB1MzZGSq
- rQBw==
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66IL-0003Jq-6y
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:37:47 -0500
+Received: by mail-io1-xd2a.google.com with SMTP id 19so10094381ioz.4
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:37:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=zybZPjB8nKU1WribOLJ/TrFoY2QK+pom/GELtkI+EXk=;
+ b=MIKQBWRAOLTcjTYsIGUsn6z0jZpSiei9pliaseQhXcYhQHcfJT5C2LbHbGQYwnbgVL
+ 58LfzwT+UTLshI9JDiJUDFdIr/wbYqOZ3rsxF0ZAVCXXCGWT7dTUuT0CAJxLtqGDhyge
+ SoUKWA7a3autQPq0TRWXsb9BvUTeoX55nBYAi8R01o5vtE3l80lPs1Yq1dq5tH0bjiQB
+ odOzXPjfm1IO5ZnCJXlxnrJ3sggH/zYqBwOQX4yyK4RL132iuLAVRg60qq28Ifp6kUEJ
+ C3X0CHIyNTwZBrSyScy1OWnDsE++wyjdWm8cLXIparjs57dBQmbPzcf1r5i7k5upOYay
+ SKRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=k3NPVvDkIV3sTprnGw9GCol6BU2QPGGFPtc1vpAmcmc=;
- b=3N6dMhUAutgn+kbWFTXAuVbCKiIb5XoQzXoS/0eVSB6f60UEtUt4tAJ5rOB94/el6/
- wK1gN+ppKO1dNFiA25y05VsCtr8q92v9pgDtPLTf6FrPNHJevZkpY+hBaERKUoEXw8rK
- w6Xd6YoQe/GikOM1M+6m4csdrIl5ELRXfEn6JQq9Dfso1p/kgdJcLk5NMeTQCkSC1/6L
- NP+RTnscvWUMIiObSCTZuEfdBYL7U4LJF4FiiUWD9d2lfGHjnAJccxSUU/TEMmCilbsg
- b/5BPFr/9hjka3C2E5TxvYIVlU4/60imxO3h8QPTUz386NimBuiLfqAsT/WJ75NRKptj
- WeRA==
-X-Gm-Message-State: AOAM533KUYET5h+e34dqWRz9yjRlA4zhSJk3XGs2XXwmHXuU8dTlKTkX
- ZcT53C+9zQf98wb7A/kmn/ENl3aNVXXcsKqJLvo=
-X-Google-Smtp-Source: ABdhPJxnaMfhcTDoIOcE/vSv99tO/k+/vY4WTLvRV1+ABI2nFsY+zTVFf1tuCvZWQp6ibPEW7O8qbD0WBvW2PBROZxI=
-X-Received: by 2002:a5d:8a0a:: with SMTP id w10mr31243513iod.90.1641601346554; 
- Fri, 07 Jan 2022 16:22:26 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=zybZPjB8nKU1WribOLJ/TrFoY2QK+pom/GELtkI+EXk=;
+ b=y1FajO7EsU5UiUDagE2G1aSFQyhrS02DuzIK/5ONGMg2V2FWDIjyg+pM9x1nHsBDMC
+ EmhPSUHbHKFSmw9dDpju6HuEigkJGW7g14YvoaQcxLqU02SVvPWGp4fovqBJk4z3qxa5
+ +7xaW5yePSqD7BIGI8sonm7gWffRL0DXBBFFTZHjqaGcbQ9nDypHgP0kGJ0TB0iN+4JU
+ Ee+Lt5lyP4Glv1Uz3fo7oF4ivxDrMf/qjGZTXHNh4i3NQ8pQDN/ZY6HEcN5I9rzJRUZM
+ Tb1RTpnnY4O8uvvvRU7e8yZCzbtXyfY78U72doad4/O5uTD9fGO5/f9goDrk7rilyzGA
+ obqQ==
+X-Gm-Message-State: AOAM531vo79GJ/wSfYJj5OddkHiO2SrJARiZhv9/Fz/P9leXNhxRR567
+ vQMFqQFBt6RdlY7lFquGswH0Yw==
+X-Google-Smtp-Source: ABdhPJwAuZ+H+KGwkPwod1D1275UtD34caBoTTLl0SD02m5azU0xSZl9ppSgthKRGeb8rkVwfMniRw==
+X-Received: by 2002:a05:6602:13c4:: with SMTP id
+ o4mr32584418iov.152.1641627463714; 
+ Fri, 07 Jan 2022 23:37:43 -0800 (PST)
+Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
+ [50.253.99.174])
+ by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.37.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Jan 2022 23:37:43 -0800 (PST)
+From: Warner Losh <imp@bsdimp.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-trivial@nongnu.org, kevans@freebsd.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 01/37] bsd-user/mips*: Remove mips support
+Date: Sat,  8 Jan 2022 00:37:01 -0700
+Message-Id: <20220108073737.5959-2-imp@bsdimp.com>
+X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
+References: <20220108073737.5959-1-imp@bsdimp.com>
 MIME-Version: 1.0
-References: <20220107133844.145039-1-thuth@redhat.com>
-In-Reply-To: <20220107133844.145039-1-thuth@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Sat, 8 Jan 2022 10:22:00 +1000
-Message-ID: <CAKmqyKO2sxGT49MS27LBUq+K7K5yxUp+jOpgV8sMYs7tXNfQ0g@mail.gmail.com>
-Subject: Re: [PATCH] softmmu/device_tree: Silence compiler warning with
- --enable-sanitizers
-To: Thomas Huth <thuth@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Yanan Wang <wangyanan55@huawei.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Andrew Jones <drjones@redhat.com>, David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d32
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d2a
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d32;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd32.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d2a;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd2a.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,60 +83,295 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jan 2022 00:22:40 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:37:59 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:37:59 -0000
 
-On Fri, Jan 7, 2022 at 11:41 PM Thomas Huth <thuth@redhat.com> wrote:
->
-> If I configure my build with --enable-sanitizers, my GCC (v8.5.0)
-> complains:
->
-> .../softmmu/device_tree.c: In function =E2=80=98qemu_fdt_add_path=E2=80=
-=99:
-> .../softmmu/device_tree.c:560:18: error: =E2=80=98retval=E2=80=99 may be =
-used uninitialized
->  in this function [-Werror=3Dmaybe-uninitialized]
->      int namelen, retval;
->                   ^~~~~~
->
-> It's a false warning since the while loop is always executed at least
-> once (p has to be non-NULL, otherwise the derefence in the if-statement
-> earlier will crash). Thus let's switch to a do-while loop here instead
-> to make the compiler happy in all cases.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+FreeBSD is dropping support for mips starting with FreeBSD 14. mips
+support has been removed from the bsd-user fork because updating it for
+new signal requirements will take too much time. Remove it here since it
+is a distraction.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Warner Losh <imp@bsdimp.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ bsd-user/mips/target_arch_sysarch.h   | 69 ---------------------------
+ bsd-user/mips/target_syscall.h        | 52 --------------------
+ bsd-user/mips64/target_arch_sysarch.h | 69 ---------------------------
+ bsd-user/mips64/target_syscall.h      | 53 --------------------
+ 4 files changed, 243 deletions(-)
+ delete mode 100644 bsd-user/mips/target_arch_sysarch.h
+ delete mode 100644 bsd-user/mips/target_syscall.h
+ delete mode 100644 bsd-user/mips64/target_arch_sysarch.h
+ delete mode 100644 bsd-user/mips64/target_syscall.h
 
-Alistair
+diff --git a/bsd-user/mips/target_arch_sysarch.h b/bsd-user/mips/target_arch_sysarch.h
+deleted file mode 100644
+index 6da803a408e..00000000000
+--- a/bsd-user/mips/target_arch_sysarch.h
++++ /dev/null
+@@ -1,69 +0,0 @@
+-/*
+- *  mips sysarch() system call emulation
+- *
+- *  Copyright (c) 2013 Stacey D. Son
+- *
+- *  This program is free software; you can redistribute it and/or modify
+- *  it under the terms of the GNU General Public License as published by
+- *  the Free Software Foundation; either version 2 of the License, or
+- *  (at your option) any later version.
+- *
+- *  This program is distributed in the hope that it will be useful,
+- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- *  GNU General Public License for more details.
+- *
+- *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+- */
+-
+-#ifndef BSD_USER_ARCH_SYSARCH_H_
+-#define BSD_USER_ARCH_SYSARCH_H_
+-
+-#include "target_syscall.h"
+-#include "target_arch.h"
+-
+-static inline abi_long do_freebsd_arch_sysarch(CPUMIPSState *env, int op,
+-        abi_ulong parms)
+-{
+-    int ret = 0;
+-
+-    switch (op) {
+-    case TARGET_MIPS_SET_TLS:
+-        target_cpu_set_tls(env, parms);
+-        break;
+-
+-    case TARGET_MIPS_GET_TLS:
+-        if (put_user(target_cpu_get_tls(env), parms, abi_ulong)) {
+-            ret = -TARGET_EFAULT;
+-        }
+-        break;
+-
+-    default:
+-        ret = -TARGET_EINVAL;
+-        break;
+-    }
+-
+-    return ret;
+-}
+-
+-static inline void do_freebsd_arch_print_sysarch(
+-        const struct syscallname *name, abi_long arg1, abi_long arg2,
+-        abi_long arg3, abi_long arg4, abi_long arg5, abi_long arg6)
+-{
+-
+-    switch (arg1) {
+-    case TARGET_MIPS_SET_TLS:
+-        gemu_log("%s(SET_TLS, 0x" TARGET_ABI_FMT_lx ")", name->name, arg2);
+-        break;
+-
+-    case TARGET_MIPS_GET_TLS:
+-        gemu_log("%s(GET_TLS, 0x" TARGET_ABI_FMT_lx ")", name->name, arg2);
+-        break;
+-
+-    default:
+-        gemu_log("UNKNOWN OP: %d, " TARGET_ABI_FMT_lx ")", (int)arg1, arg2);
+-    }
+-}
+-
+-#endif /*!BSD_USER_ARCH_SYSARCH_H_ */
+diff --git a/bsd-user/mips/target_syscall.h b/bsd-user/mips/target_syscall.h
+deleted file mode 100644
+index aacc6ddf9fc..00000000000
+--- a/bsd-user/mips/target_syscall.h
++++ /dev/null
+@@ -1,52 +0,0 @@
+-/*
+- *  mips system call definitions
+- *
+- *
+- *  This program is free software; you can redistribute it and/or modify
+- *  it under the terms of the GNU General Public License as published by
+- *  the Free Software Foundation; either version 2 of the License, or
+- *  (at your option) any later version.
+- *
+- *  This program is distributed in the hope that it will be useful,
+- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- *  GNU General Public License for more details.
+- *
+- *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+- */
+-#ifndef _MIPS_SYSCALL_H_
+-#define _MIPS_SYSCALL_H_
+-
+-/*
+- * struct target_pt_regs defines the way the registers are stored on the stack
+- * during a system call.
+- */
+-
+-struct target_pt_regs {
+-    /* Saved main processor registers. */
+-    abi_ulong regs[32];
+-
+-    /* Saved special registers. */
+-    abi_ulong cp0_status;
+-    abi_ulong lo;
+-    abi_ulong hi;
+-    abi_ulong cp0_badvaddr;
+-    abi_ulong cp0_cause;
+-    abi_ulong cp0_epc;
+-};
+-
+-#if defined(TARGET_WORDS_BIGENDIAN)
+-#define UNAME_MACHINE "mips"
+-#else
+-#define UNAME_MACHINE "mipsel"
+-#endif
+-
+-#define TARGET_HW_MACHINE       "mips"
+-#define TARGET_HW_MACHINE_ARCH   UNAME_MACHINE
+-
+-/* sysarch() commands */
+-#define TARGET_MIPS_SET_TLS     1
+-#define TARGET_MIPS_GET_TLS     2
+-
+-#endif /* !_MIPS_SYSCALL_H_ */
+diff --git a/bsd-user/mips64/target_arch_sysarch.h b/bsd-user/mips64/target_arch_sysarch.h
+deleted file mode 100644
+index e6f9c00d5f6..00000000000
+--- a/bsd-user/mips64/target_arch_sysarch.h
++++ /dev/null
+@@ -1,69 +0,0 @@
+-/*
+- *  mips64 sysarch() system call emulation
+- *
+- *  Copyright (c) 2013 Stacey D. Son
+- *
+- *  This program is free software; you can redistribute it and/or modify
+- *  it under the terms of the GNU General Public License as published by
+- *  the Free Software Foundation; either version 2 of the License, or
+- *  (at your option) any later version.
+- *
+- *  This program is distributed in the hope that it will be useful,
+- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- *  GNU General Public License for more details.
+- *
+- *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+- */
+-
+-#ifndef BSD_USER_ARCH_SYSARCH_H_
+-#define BSD_USER_ARCH_SYSARCH_H_
+-
+-#include "target_syscall.h"
+-#include "target_arch.h"
+-
+-static inline abi_long do_freebsd_arch_sysarch(CPUMIPSState *env, int op,
+-        abi_ulong parms)
+-{
+-    int ret = 0;
+-
+-    switch (op) {
+-    case TARGET_MIPS_SET_TLS:
+-        target_cpu_set_tls(env, parms);
+-        break;
+-
+-    case TARGET_MIPS_GET_TLS:
+-        if (put_user(target_cpu_get_tls(env), parms, abi_ulong)) {
+-            ret = -TARGET_EFAULT;
+-        }
+-        break;
+-
+-    default:
+-        ret = -TARGET_EINVAL;
+-        break;
+-    }
+-
+-    return ret;
+-}
+-
+-static inline void do_freebsd_arch_print_sysarch(
+-        const struct syscallname *name, abi_long arg1, abi_long arg2,
+-        abi_long arg3, abi_long arg4, abi_long arg5, abi_long arg6)
+-{
+-
+-    switch (arg1) {
+-    case TARGET_MIPS_SET_TLS:
+-        gemu_log("%s(SET_TLS, 0x" TARGET_ABI_FMT_lx ")", name->name, arg2);
+-        break;
+-
+-    case TARGET_MIPS_GET_TLS:
+-        gemu_log("%s(GET_TLS, 0x" TARGET_ABI_FMT_lx ")", name->name, arg2);
+-        break;
+-
+-    default:
+-        gemu_log("UNKNOWN OP: %d, " TARGET_ABI_FMT_lx ")", (int)arg1, arg2);
+-    }
+-}
+-
+-#endif /*!BSD_USER_ARCH_SYSARCH_H_ */
+diff --git a/bsd-user/mips64/target_syscall.h b/bsd-user/mips64/target_syscall.h
+deleted file mode 100644
+index bf4c598b136..00000000000
+--- a/bsd-user/mips64/target_syscall.h
++++ /dev/null
+@@ -1,53 +0,0 @@
+-/*
+- *  mips64 system call definitions
+- *
+- *
+- *  This program is free software; you can redistribute it and/or modify
+- *  it under the terms of the GNU General Public License as published by
+- *  the Free Software Foundation; either version 2 of the License, or
+- *  (at your option) any later version.
+- *
+- *  This program is distributed in the hope that it will be useful,
+- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- *  GNU General Public License for more details.
+- *
+- *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+- */
+-#ifndef _MIPS64_SYSCALL_H_
+-#define _MIPS64_SYSCALL_H_
+-
+-/*
+- * struct target_pt_regs defines the way the registers are stored on the stack
+- * during a system call.
+- */
+-
+-struct target_pt_regs {
+-    /* Saved main processor registers. */
+-    abi_ulong regs[32];
+-
+-    /* Saved special registers. */
+-    abi_ulong cp0_status;
+-    abi_ulong lo;
+-    abi_ulong hi;
+-    abi_ulong cp0_badvaddr;
+-    abi_ulong cp0_cause;
+-    abi_ulong cp0_epc;
+-};
+-
+-
+-#if defined(TARGET_WORDS_BIGENDIAN)
+-#define UNAME_MACHINE "mips64"
+-#else
+-#define UNAME_MACHINE "mips64el"
+-#endif
+-
+-#define TARGET_HW_MACHINE       "mips"
+-#define TARGET_HW_MACHINE_ARCH  UNAME_MACHINE
+-
+-/* sysarch() commands */
+-#define TARGET_MIPS_SET_TLS     1
+-#define TARGET_MIPS_GET_TLS     2
+-
+-#endif /* !_MIPS64_SYSCALL_H_ */
+-- 
+2.33.1
 
-> ---
->  softmmu/device_tree.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-> index 3965c834ca..9e96f5ecd5 100644
-> --- a/softmmu/device_tree.c
-> +++ b/softmmu/device_tree.c
-> @@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->          return -1;
->      }
->
-> -    while (p) {
-> +    do {
->          name =3D p + 1;
->          p =3D strchr(name, '/');
->          namelen =3D p !=3D NULL ? p - name : strlen(name);
-> @@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->          }
->
->          parent =3D retval;
-> -    }
-> +    } while (p);
->
->      return retval;
->  }
-> --
-> 2.27.0
->
->
 
