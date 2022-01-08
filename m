@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n66KW-0006Rw-0f
+	id 1n66KW-0006T1-6b
 	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:40:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36144)
+Received: from eggs.gnu.org ([209.51.188.92]:36228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Iq-0005OX-3C
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:16 -0500
-Received: from [2607:f8b0:4864:20::d35] (port=38521
- helo=mail-io1-xd35.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Is-0005Tj-57
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:19 -0500
+Received: from [2607:f8b0:4864:20::d36] (port=43852
+ helo=mail-io1-xd36.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Im-0003TD-L8
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:15 -0500
-Received: by mail-io1-xd35.google.com with SMTP id u8so10107259iol.5
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:38:12 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Iq-0003V4-51
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:17 -0500
+Received: by mail-io1-xd36.google.com with SMTP id l3so10039002iol.10
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:38:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=yq/esU6h8w+LdCkuWquK/eBiSLOcYx6Uh3QYevpdbXE=;
- b=Ux6bT1h+NL04vRBOs7InSf8TFeJqq3ydq5OuOHgvepvQRx5lu33u2sz7Nnt7yPGDsP
- rajaAKrjxdiIXVo0QjIQKjTYCIFljvW5pb4DpggOUtn6adcxNFz7Aqbn1BkBF7mz9PEt
- o0n59flxBZCm9hwGNzbs+EHSbKJcojP5hdU6mGKtYsNR2gXti+d8zyeVhq6xnX67Z9QF
- dFrxhWKukEu0673ihhwHTq5VnQejfKc6rqwVDT+yIpKloiRkPg1cTEAhwLyMCvsbAOZS
- rNkb/PdZZH47o2wd+kdGdxF7uT/yswgiXVq/Y4vh+sAgm7eCqOGfk0xdE9MQEdWQ54cz
- mz7Q==
+ bh=siiQROmFkgoyoci8mg+ev58BNz0SLHU/+j4/Xsy7h34=;
+ b=o6Wthbmf9+gsuhvkJSA4DXYAhvjS7ynqhw6hv6P1PHN1GxKlqx21CB2GkxqAxGexMm
+ uOlkjS2rHNI4FdMMmepBmeODOPDGyC0+r5kqlo7YzLqW/rlAJHb548Qa3tailb/AOWx8
+ 9Io0HRUHlfQHvENLvjxklBXyDG4YWhFVUhaChU2CDOLWF6GtwQQQ7seC8OzqF3CnLWZD
+ 8odHNispijxADcQTtFONsXph+FU5GD+DIBn//yjKM82uBxgN8R5CZJaM6w7RS3Nny8aS
+ QPPjt7Tf0BsFBhcexJAtJnUNFipsIdX3SJRK0cnXMSSaDzJWZjjcDaBYdhAk/8G3XDEf
+ O1Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=yq/esU6h8w+LdCkuWquK/eBiSLOcYx6Uh3QYevpdbXE=;
- b=hNvESuoKhf5Lir2q9UJ/I/nzi3UEJNSQG1/raa1WJor6a+TCXLi7nSe1NS20k4a7h0
- dUIL5zw2yPU9pIEVXB5WEGHCtWL979HCmOO3x4PKUx0CwDAe5RALJ3iu+x+GCloa3Xru
- SACLlNU2/YQseoM1Ld0JqvyQWnsjhbUo1/ZD3Mlf0QTtf81uiLludt6kiuowDo2I0D+/
- Mmxa84mZPIkKZI9TnICFVIH28BF6XhoBtVqvNegwxPNnvDCgpgIWHsnjUzZuYuWdSXgp
- g/MrNnRt0xgHSp+PqwZxuIgNWKdoirbehwBcy5rs2SqwCBwYUT2R5ks0OjjGeu7gBmFJ
- oWtw==
-X-Gm-Message-State: AOAM532CctbB1Pfut0zk3iDtBI3UjKGKUBQcnAKmq5+Ai0Y9n/EnKVZM
- 1SwMUrzVs8hc84DtI9m44U8kag==
-X-Google-Smtp-Source: ABdhPJzXh8VLD5aHqkgc1xExN0YZGjAUVb3zTkuvHPwAge662IExrA8FeGKJOf8gD8+uRM/NaSFAXg==
-X-Received: by 2002:a5e:9b07:: with SMTP id j7mr30935584iok.136.1641627491628; 
- Fri, 07 Jan 2022 23:38:11 -0800 (PST)
+ bh=siiQROmFkgoyoci8mg+ev58BNz0SLHU/+j4/Xsy7h34=;
+ b=tI8o8wJEde2iwxpQ2/ZlJrZbkSfo5YGbjgAb0DKh9ebRF5QgaB/mWEBsxoDmvXT2Nw
+ fJWRZkAjsMCINm9QRzWitCjcFNwn2yRxheLFrjoq0YQmkjuR0DRHPnWKial6vcH6lZYN
+ oiPW+9W+MebyDwNJAwo8tkNIH9PdziELt4zCn7E9SJU6FFUHgHWjuovG1XgbVo3Ljm+r
+ 3pStxWaO7wU3lZw3SRMH+mEK0R14SnBtjwI8HPjxdGVwOa89l0KInUAPCmGFIvOd2Jom
+ 6EQuqmYgLmoHAzUp42NamFixnMTb9BzQVHfbs/4UyKJVXudzbWpEsR9Mg7u4EBSKM1Do
+ HHWA==
+X-Gm-Message-State: AOAM533gwTrLPJUWkGPJvs1EXJDckHg0gCJ3Hvxd9RCqEOgNAbzapPwo
+ obVmLT9tcKQp77LnIBfPiqa8wA==
+X-Google-Smtp-Source: ABdhPJx93hmzAsdzhG/Tc6Kq1VwakhGEGSKTT/qw8EBaC1MN/TdmucVhZmzbUS3npWOGb4ws6q50Ig==
+X-Received: by 2002:a05:6638:2688:: with SMTP id
+ o8mr30059038jat.118.1641627495227; 
+ Fri, 07 Jan 2022 23:38:15 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.38.10
+ by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.38.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 23:38:11 -0800 (PST)
+ Fri, 07 Jan 2022 23:38:14 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -53,19 +54,18 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
  Laurent Vivier <laurent@vivier.eu>, Stacey Son <sson@FreeBSD.org>,
  Kyle Evans <kevans@FreeBSD.org>
-Subject: [PULL 29/37] bsd-user/arm/target_arch_signal.h: arm specific signal
- registers and stack
-Date: Sat,  8 Jan 2022 00:37:29 -0700
-Message-Id: <20220108073737.5959-30-imp@bsdimp.com>
+Subject: [PULL 33/37] bsd-user/arm/signal.c: arm get_mcontext
+Date: Sat,  8 Jan 2022 00:37:33 -0700
+Message-Id: <20220108073737.5959-34-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
 References: <20220108073737.5959-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d35
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d36
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::d35;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd35.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d36;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd36.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -84,82 +84,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jan 2022 07:38:16 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:38:20 -0000
 
-Defines for registers and stack layout related to signals.
+Get the machine context from the CPU state.
 
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
+Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
-Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_signal.h | 57 +++++++++++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_signal.h
+ bsd-user/arm/signal.c | 51 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
 
-diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
-new file mode 100644
-index 00000000000..973183d99ca
---- /dev/null
-+++ b/bsd-user/arm/target_arch_signal.h
-@@ -0,0 +1,57 @@
+diff --git a/bsd-user/arm/signal.c b/bsd-user/arm/signal.c
+index 3c0db30a85e..93c9bfc0d37 100644
+--- a/bsd-user/arm/signal.c
++++ b/bsd-user/arm/signal.c
+@@ -58,3 +58,54 @@ abi_long set_sigtramp_args(CPUARMState *env, int sig,
+ 
+     return 0;
+ }
++
 +/*
-+ *  arm signal definitions
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
++ * Compare to arm/arm/machdep.c get_mcontext()
++ * Assumes that the memory is locked if mcp points to user memory.
 + */
-+#ifndef _TARGET_ARCH_SIGNAL_H_
-+#define _TARGET_ARCH_SIGNAL_H_
++abi_long get_mcontext(CPUARMState *env, target_mcontext_t *mcp, int flags)
++{
++    int err = 0;
++    uint32_t *gr = mcp->__gregs;
 +
-+#include "cpu.h"
++    if (mcp->mc_vfp_size != 0 && mcp->mc_vfp_size != sizeof(target_mcontext_vfp_t)) {
++        return -TARGET_EINVAL;
++    }
 +
-+#define TARGET_REG_R0   0
-+#define TARGET_REG_R1   1
-+#define TARGET_REG_R2   2
-+#define TARGET_REG_R3   3
-+#define TARGET_REG_R4   4
-+#define TARGET_REG_R5   5
-+#define TARGET_REG_R6   6
-+#define TARGET_REG_R7   7
-+#define TARGET_REG_R8   8
-+#define TARGET_REG_R9   9
-+#define TARGET_REG_R10  10
-+#define TARGET_REG_R11  11
-+#define TARGET_REG_R12  12
-+#define TARGET_REG_R13  13
-+#define TARGET_REG_R14  14
-+#define TARGET_REG_R15  15
-+#define TARGET_REG_CPSR 16
-+#define TARGET__NGREG   17
-+/* Convenience synonyms */
-+#define TARGET_REG_FP   TARGET_REG_R11
-+#define TARGET_REG_SP   TARGET_REG_R13
-+#define TARGET_REG_LR   TARGET_REG_R14
-+#define TARGET_REG_PC   TARGET_REG_R15
++    gr[TARGET_REG_CPSR] = tswap32(cpsr_read(env));
++    if (flags & TARGET_MC_GET_CLEAR_RET) {
++        gr[TARGET_REG_R0] = 0;
++        gr[TARGET_REG_CPSR] &= ~CPSR_C;
++    } else {
++        gr[TARGET_REG_R0] = tswap32(env->regs[0]);
++    }
 +
-+#define TARGET_INSN_SIZE    4       /* arm instruction size */
++    gr[TARGET_REG_R1] = tswap32(env->regs[1]);
++    gr[TARGET_REG_R2] = tswap32(env->regs[2]);
++    gr[TARGET_REG_R3] = tswap32(env->regs[3]);
++    gr[TARGET_REG_R4] = tswap32(env->regs[4]);
++    gr[TARGET_REG_R5] = tswap32(env->regs[5]);
++    gr[TARGET_REG_R6] = tswap32(env->regs[6]);
++    gr[TARGET_REG_R7] = tswap32(env->regs[7]);
++    gr[TARGET_REG_R8] = tswap32(env->regs[8]);
++    gr[TARGET_REG_R9] = tswap32(env->regs[9]);
++    gr[TARGET_REG_R10] = tswap32(env->regs[10]);
++    gr[TARGET_REG_R11] = tswap32(env->regs[11]);
++    gr[TARGET_REG_R12] = tswap32(env->regs[12]);
 +
-+/* Size of the signal trampolin code. See _sigtramp(). */
-+#define TARGET_SZSIGCODE    ((abi_ulong)(9 * TARGET_INSN_SIZE))
++    gr[TARGET_REG_SP] = tswap32(env->regs[13]);
++    gr[TARGET_REG_LR] = tswap32(env->regs[14]);
++    gr[TARGET_REG_PC] = tswap32(env->regs[15]);
 +
-+/* compare to arm/include/_limits.h */
-+#define TARGET_MINSIGSTKSZ  (1024 * 4)                  /* min sig stack size */
-+#define TARGET_SIGSTKSZ     (TARGET_MINSIGSTKSZ + 32768)  /* recommended size */
-+
-+#endif /* !_TARGET_ARCH_SIGNAL_H_ */
++    if (mcp->mc_vfp_size != 0 && mcp->mc_vfp_ptr != 0) {
++        /* see get_vfpcontext in sys/arm/arm/exec_machdep.c */
++        target_mcontext_vfp_t *vfp;
++        vfp = lock_user(VERIFY_WRITE, mcp->mc_vfp_ptr, sizeof(*vfp), 0);
++        for (int i = 0; i < 32; i++) {
++            vfp->mcv_reg[i] = tswap64(*aa32_vfp_dreg(env, i));
++        }
++        vfp->mcv_fpscr = tswap32(vfp_get_fpscr(env));
++        unlock_user(vfp, mcp->mc_vfp_ptr, sizeof(*vfp));
++    }
++    return err;
++}
 -- 
 2.33.1
 
