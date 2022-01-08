@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n66JJ-0005vL-7L
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:38:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35606)
+	id 1n66Jd-0005xd-DI
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:39:05 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ia-0005JY-Mp
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:02 -0500
-Received: from [2607:f8b0:4864:20::d2b] (port=36580
- helo=mail-io1-xd2b.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ic-0005Jr-HH
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:08 -0500
+Received: from [2607:f8b0:4864:20::d2a] (port=38509
+ helo=mail-io1-xd2a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66IU-0003Kz-Ad
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:37:56 -0500
-Received: by mail-io1-xd2b.google.com with SMTP id p65so10130998iof.3
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:37:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66IX-0003MY-59
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:01 -0500
+Received: by mail-io1-xd2a.google.com with SMTP id u8so10106721iol.5
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:37:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=V+Cl1Da8qxWzFQYHoMpffHhzKgcajhVImOHitRup9JU=;
- b=pg/Ci6EsstG96xupGGV3+iK2w1vcfeS9/iq9RYv6RuEzprptHmrIHvQ6T5xuprooaR
- X5ovHKCIQTdf19Qr/TBeHwUVX9pghvq75ryoguZNXkX6O3QZcCfXCT0LuXMVfO0a+bqj
- pqk+Bq/fS+/jvUXFoMq6LcNEEFY0V9Xy6CKpYxFoK4T42c85SaEI5yR2oorPxsWQHHOH
- cMRZDWo8L1iXTTaleL0I74uqNHH4szwYGOl94OpMHx60Mw2X8mvPuvKcklVHjfPiA+XN
- 58CFUTihVaS9L6U+zt51xXUSxDGfuYs2BujEzp7a4w4nIwBlaRvjgkaWQ2PyR2+FAY1e
- 3nxg==
+ bh=mZBnE033yruOj+6+f3yOKrn/YgX/XwTkzCLoSaIb1ZM=;
+ b=AKiLWI/cL8f4kLeRdGVVgrZK6k3G69gBbcyuVJxz/S1KIKHayC2lM5BYPfbf0T4Bxu
+ qjyMVL5lVd70sCQSP3JG5iflIv4q10kbDwyI+KdO9Y16g+y7kewfg2dcMgegNj0HyQCy
+ FBWCm3eA26+2Pf+3apl+NWB3T458ma9V6hFK6vMMDJtmECNzwb+Cll5P92Xitr9Fl7zB
+ 7qCuvEzTgvQ9UDV+werTNNbmbfXi4TjsY/aSi3l5ATRXXFsMerbssROtgWSE+4gsX9bn
+ JuLvUh9ve9ioRueqOaFFbPe4oietQMA7Mf0IhTL0G6jE09eemBsRhoUZblQPOqmzXt48
+ dbag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=V+Cl1Da8qxWzFQYHoMpffHhzKgcajhVImOHitRup9JU=;
- b=qCbJJrF0FdvXNTb63Dj85simnfj3jPrSD616mkVeVE3iXwKA13UA2x7eCimvDFgxvZ
- z6diYfiITuHGjDBrF+Yh4MQN7k60CJHQCOUAgX1E/il9cBCI0g350SeWUI/K1B1AnrS7
- meoROaZmuCFZ/8zUjaS/drN7ap1+ZrWiFWaMkEol9EsTpXwgrNY3JnkCL+mXH+mlh0RI
- H4P3soLfDclk7EyeO9/O+GZ3sp7Vt7bQj8woU9JGeoIxRnK9IF2iZ3iKLI5Wh/XZ4stf
- Pp5xF2mqXYuwLO1NnwJlVZ22+O5+GXWnaWKEwtK4E8jaF44eEh4q8LKUp4/yBnzuiAJ9
- SATw==
-X-Gm-Message-State: AOAM531e61ONZck/5UYpe8gwWcjNcpnurixCG4WdKEdpnwRuuomqBP3N
- GDyd2iBv1Bn8tg8NgT8jx2ViwQ==
-X-Google-Smtp-Source: ABdhPJzVDaaR1rMWpVrLyKeeLbB0+UUocqL0UgMMMUQUZMKr3mmWrW5Fuq2xBw+ILG/lKnV23ofjZQ==
-X-Received: by 2002:a05:6602:2e11:: with SMTP id
- o17mr32004168iow.172.1641627469902; 
- Fri, 07 Jan 2022 23:37:49 -0800 (PST)
+ bh=mZBnE033yruOj+6+f3yOKrn/YgX/XwTkzCLoSaIb1ZM=;
+ b=DLA0AvkC12Rp0PmVW/r8EogNoBgWv0RwTP7XFTvE6taDuKFXYL4S+HJ5CMukvAm+t3
+ xffXbYQcds9TkiuEXJ7VuQQU/4Jf6oEz6Ta+zORM1hBPOYao3v4xZGf3623Z2/nzOirU
+ 9sO4/4PEspV4CEYHa+3QckY8joJMLS+DA/gUmv2UIqzHohceOnLYAaxrYEQFXxs9hOR+
+ v0JW2PouNSKcxhVWlSfg/h3K6nkbDq4gvsDJiGPjhjYyHdqPVHHrWAlLWsKVVOKkOpca
+ PvOVhALbp4xgy47nZ5yiiCf7AxBzJz71nlwCm/ZBEy+A4KsX02LX67YdOrGcduE9XgAf
+ xeRQ==
+X-Gm-Message-State: AOAM5320PEq0CXmEIovCRXB3XO8vUrtrG7A2YFI4IDIZsUZNI3byxQLq
+ zH7wmPzXnStSPAEUJfy1HFiS9Q==
+X-Google-Smtp-Source: ABdhPJxbDqp1hWqU2X9l+8w+gUAFoHdtMT4t8MGQ9iDymheGG8yKXO0w+dHwBlxiTZ47VDQEQ1DEAg==
+X-Received: by 2002:a05:6638:160d:: with SMTP id
+ x13mr30818617jas.120.1641627475714; 
+ Fri, 07 Jan 2022 23:37:55 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.37.49
+ by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.37.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 23:37:49 -0800 (PST)
+ Fri, 07 Jan 2022 23:37:55 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -52,19 +52,20 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 07/37] bsd-user/i386: Move the inlines into signal.c
-Date: Sat,  8 Jan 2022 00:37:07 -0700
-Message-Id: <20220108073737.5959-8-imp@bsdimp.com>
+ Laurent Vivier <laurent@vivier.eu>, Kyle Evans <kevans@FreeBSD.org>
+Subject: [PULL 13/37] bsd-user/arm/target_arch_sysarch.h: Use consistent
+ include guards
+Date: Sat,  8 Jan 2022 00:37:13 -0700
+Message-Id: <20220108073737.5959-14-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
 References: <20220108073737.5959-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d2b
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d2a
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2b;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd2b.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d2a;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd2a.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -83,131 +84,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jan 2022 07:38:12 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:38:14 -0000
 
-Move the (now stubbed out) inlines into bsd-user/i386/signal.c.
+As part of upstreaming, the include guards have been made more
+consistent. Update this file to use the new guards.
 
 Signed-off-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/i386/signal.c             | 56 +++++++++++++++++++++++++++++-
- bsd-user/i386/target_arch_signal.h | 43 +++++------------------
- 2 files changed, 63 insertions(+), 36 deletions(-)
+ bsd-user/arm/target_arch_sysarch.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/bsd-user/i386/signal.c b/bsd-user/i386/signal.c
-index ac903233653..2939d32400c 100644
---- a/bsd-user/i386/signal.c
-+++ b/bsd-user/i386/signal.c
-@@ -1 +1,55 @@
--/* Placeholder for signal.c */
-+/*
-+ *  i386 dependent signal definitions
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu.h"
-+
-+/*
-+ * Compare to i386/i386/machdep.c sendsig()
-+ * Assumes that target stack frame memory is locked.
-+ */
-+abi_long set_sigtramp_args(CPUX86State *env, int sig,
-+                           struct target_sigframe *frame,
-+                           abi_ulong frame_addr,
-+                           struct target_sigaction *ka)
-+{
-+    /* XXX return -TARGET_EOPNOTSUPP; */
-+    return 0;
-+}
-+
-+/* Compare to i386/i386/machdep.c get_mcontext() */
-+abi_long get_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int flags)
-+{
-+    /* XXX */
-+    return -TARGET_EOPNOTSUPP;
-+}
-+
-+/* Compare to i386/i386/machdep.c set_mcontext() */
-+abi_long set_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int srflag)
-+{
-+    /* XXX */
-+    return -TARGET_EOPNOTSUPP;
-+}
-+
-+abi_long get_ucontext_sigreturn(CPUX86State *regs, abi_ulong target_sf,
-+                                abi_ulong *target_uc)
-+{
-+    /* XXX */
-+    *target_uc = 0;
-+    return -TARGET_EOPNOTSUPP;
-+}
-diff --git a/bsd-user/i386/target_arch_signal.h b/bsd-user/i386/target_arch_signal.h
-index 701c6f964f8..982c7035c75 100644
---- a/bsd-user/i386/target_arch_signal.h
-+++ b/bsd-user/i386/target_arch_signal.h
-@@ -88,40 +88,13 @@ struct target_sigframe {
-     uint32_t    __spare__[2];
- };
+diff --git a/bsd-user/arm/target_arch_sysarch.h b/bsd-user/arm/target_arch_sysarch.h
+index 632a5cd453a..8cc6bff2077 100644
+--- a/bsd-user/arm/target_arch_sysarch.h
++++ b/bsd-user/arm/target_arch_sysarch.h
+@@ -17,8 +17,8 @@
+  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
  
--/*
-- * Compare to i386/i386/machdep.c sendsig()
-- * Assumes that target stack frame memory is locked.
-- */
--static inline abi_long set_sigtramp_args(CPUX86State *regs,
--        int sig, struct target_sigframe *frame, abi_ulong frame_addr,
--        struct target_sigaction *ka)
--{
--    /* XXX return -TARGET_EOPNOTSUPP; */
--    return 0;
--}
--
--/* Compare to i386/i386/machdep.c get_mcontext() */
--static inline abi_long get_mcontext(CPUX86State *regs,
--        target_mcontext_t *mcp, int flags)
--{
--    /* XXX */
--    return -TARGET_EOPNOTSUPP;
--}
--
--/* Compare to i386/i386/machdep.c set_mcontext() */
--static inline abi_long set_mcontext(CPUX86State *regs,
--        target_mcontext_t *mcp, int srflag)
--{
--    /* XXX */
--    return -TARGET_EOPNOTSUPP;
--}
--
--static inline abi_long get_ucontext_sigreturn(CPUX86State *regs,
--                        abi_ulong target_sf, abi_ulong *target_uc)
--{
--    /* XXX */
--    *target_uc = 0;
--    return -TARGET_EOPNOTSUPP;
--}
-+abi_long set_sigtramp_args(CPUX86State *env, int sig,
-+                           struct target_sigframe *frame,
-+                           abi_ulong frame_addr,
-+                           struct target_sigaction *ka);
-+abi_long get_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int flags);
-+abi_long set_mcontext(CPUX86State *regs, target_mcontext_t *mcp, int srflag);
-+abi_long get_ucontext_sigreturn(CPUX86State *regs, abi_ulong target_sf,
-+                                abi_ulong *target_uc);
+-#ifndef BSD_USER_ARCH_SYSARCH_H_
+-#define BSD_USER_ARCH_SYSARCH_H_
++#ifndef _TARGET_ARCH_SYSARCH_H_
++#define _TARGET_ARCH_SYSARCH_H_
  
- #endif /* TARGET_ARCH_SIGNAL_H */
+ #include "target_syscall.h"
+ #include "target_arch.h"
+@@ -75,4 +75,4 @@ static inline void do_freebsd_arch_print_sysarch(
+     }
+ }
+ 
+-#endif /*!BSD_USER_ARCH_SYSARCH_H_ */
++#endif /*!_TARGET_ARCH_SYSARCH_H_ */
 -- 
 2.33.1
 
