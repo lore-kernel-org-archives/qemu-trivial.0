@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n66KT-0006Jo-O6
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:39:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35954)
+	id 1n66KV-0006PL-Ap
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:39:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Im-0005LY-6t
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:13 -0500
-Received: from [2607:f8b0:4864:20::d2a] (port=41717
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ir-0005TL-6b
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:17 -0500
+Received: from [2607:f8b0:4864:20::d2a] (port=46618
  helo=mail-io1-xd2a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ii-0003RP-6j
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:10 -0500
-Received: by mail-io1-xd2a.google.com with SMTP id y18so10100741iob.8
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:38:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Io-0003UC-Dz
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:16 -0500
+Received: by mail-io1-xd2a.google.com with SMTP id x6so10011513iol.13
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:38:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=A4XfzEfM8rJrMxLuwMhjGZH/tq7SaJNrwBDs3j79yAc=;
- b=ljo6GIKrZlqnMMGfGsbpJMTtYHWVbGhtedo4qoW9KQ0J2yfwuI14VZoCDNbuaUqz6J
- U84GjlOfqVDbvdlMWGLD30OVxsC5NRNK0fEdAGKPhplq53At06z4T8bLorPl7MAWoE4J
- e6mBZIL/ntbC0HqgZ67qUc8FUFeIXKkdHtZ6YwE90i5S4o+iLKSOjKIJOl0YY5j20KMU
- vdSlGXF70zEYM0uJuW5jhJ7FI1+tBdWaB3T8yhTLdUVKm8GXjo0l5xpvIjQk4uLEH/cJ
- zRcqjk3Fp+dDOzugVIxPh2ktMC0hNlyTSgWhsvCxFSX3pDupu3Q9qsCqNq3izWl6hyoP
- 9hww==
+ bh=1ZeA73Y9C2GNlu6BEvq4LLEaMFz/sfyQRf5YDtwolg4=;
+ b=jZM6Mj0QDMQVxxdjw+Z5QBwBwaOwuAnP5A9Hw6XS205QSw0WLkl3zsSH2m7Xouxtbk
+ lfnBHcs4vzfNts3p4kyp0UeFFeC7wlz3GECP52UM5TWLXXfDlJWk5oLu0nFKFOReo6mi
+ NllmxLjhDIBF/N9H+wM+RboUykm3MH1VqLxcduTjSHQxXdre8/f2XGwh5plv0paApEMY
+ EwNqgyLWaU3sLo6vSdt9ppmlbOT6wbgrcPgfaBSy1lXOSpnTpFUUZcMmvkC2b9HDNk5f
+ 857Cl/gcjJW6G2YyXOTuG5p+IiEcg4gppQ79uviHYjpk+JOD+hmOG8hWy5Gpukbxq4kg
+ k4RA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=A4XfzEfM8rJrMxLuwMhjGZH/tq7SaJNrwBDs3j79yAc=;
- b=Ww2yz/aCPkVQ/rX9qfADzvw7S2gPaU/qot2SBGjbiAJ0ymi1lRBLhs6YBRqV8mna+W
- Kj9k0eyju2Wz82N5rV+zxO9lv4fDVypXPfoUgc+Gw9NFh5mKp0E80NAMtgL0oIY4DQ3E
- qHWdZ34nasWvLsJ1nDutigJco0kP/loWCnCYtYxd8OkuJRRY4QlAINSsJX31LVT+pEhA
- ZQvDod2WusvcjpS7KqxDBOMaQqEr9Igt2q8FcED22gS5uL6XWXIts1BTnlQYmTOc0fwB
- jX86V7qVXBD85JxZ6/4hEGJ+h4FxPKyVWTGeqGjWWVaXKQlKQWQeZmFRYtU6yxLYy9rB
- WsQw==
-X-Gm-Message-State: AOAM531sqvvflKlMt47AkYxLpeZyR6yCLfv79vzZsIPJhbjJ1DfHk3ho
- gOPd26GwfcvDcIM5gWBswMODVA==
-X-Google-Smtp-Source: ABdhPJx3gPBUj7hjKzX9R+yBS7KKQn4GTilsF7iS+vbSwGpBlugSshx/nG1/HHntjwIx3xWE5M2XpQ==
-X-Received: by 2002:a6b:ec16:: with SMTP id c22mr31027500ioh.214.1641627486753; 
- Fri, 07 Jan 2022 23:38:06 -0800 (PST)
+ bh=1ZeA73Y9C2GNlu6BEvq4LLEaMFz/sfyQRf5YDtwolg4=;
+ b=Vt+pdJjbE/PS2fjeBxDI0hXtltSqo3FnH5bIYOWWGKUWE2uYllRK0LkYo0E+HCZaTo
+ u8Z00nUHdaYe0pJRMjVmT6ykfyV0DXCq34S7F3IrLI7cmJp9om9f+Euys1eQUZ7DMaS9
+ Z+wv8mXQTeNtnE08IHV0TbRW7mM6deAkyDb5iFi63d9GHkCy0MzxyUvE/drsAielAQM4
+ zT/dDH+D3/J09Fjq7PiCnSD/yM3tfa+V1GpUA4MsD7phA6jae/U+Sd6CZhhEsKP/9PBv
+ 9gGBLferltnUZ9FB8pigRFmcHuwJWAwkNFQ9/Ay1IzozSNin4COrddEKR9eYHkzMBFOC
+ 5P4A==
+X-Gm-Message-State: AOAM530CROQwNel28Epe6UPzB9FfIF6dy7/1FFiU4PwJWyGe19iQ7Une
+ 2NrSIHfJXxuJebqBM/esb4jdHQ==
+X-Google-Smtp-Source: ABdhPJz2ZCgSSnULsN3w7PH341XluADiNSZftSeYKPVKPgQS9t6c3FZwGaxFt+W/+G+fDbfGytSpGQ==
+X-Received: by 2002:a6b:6614:: with SMTP id a20mr6613636ioc.26.1641627493444; 
+ Fri, 07 Jan 2022 23:38:13 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.38.05
+ by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.38.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 23:38:06 -0800 (PST)
+ Fri, 07 Jan 2022 23:38:13 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -51,12 +51,11 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
- Laurent Vivier <laurent@vivier.eu>, Stacey Son <sson@FreeBSD.org>,
- Kyle Evans <kevans@FreeBSD.org>
-Subject: [PULL 24/37] bsd-user/arm/target_arch_sigtramp.h: Signal Trampoline
- for arm
-Date: Sat,  8 Jan 2022 00:37:24 -0700
-Message-Id: <20220108073737.5959-25-imp@bsdimp.com>
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 31/37] bsd-user/arm/target_arch_signal.h: Define size of
+ *context_t
+Date: Sat,  8 Jan 2022 00:37:31 -0700
+Message-Id: <20220108073737.5959-32-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
 References: <20220108073737.5959-1-imp@bsdimp.com>
@@ -84,75 +83,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jan 2022 07:38:16 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:38:20 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:38:20 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:38:20 -0000
 
-Copy of the signal trampoline code for arm, as well as setup_sigtramp to
-write it to the stack.
+Define the native sizes of mcontext_t and ucontext_t so that the tests
+in target_os_ucontext.h ensure the size of arm's version of these
+structures is correct.
 
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
-Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_sigtramp.h | 49 +++++++++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_sigtramp.h
+ bsd-user/arm/target_arch_signal.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/bsd-user/arm/target_arch_sigtramp.h b/bsd-user/arm/target_arch_sigtramp.h
-new file mode 100644
-index 00000000000..5d434a9e7e8
---- /dev/null
-+++ b/bsd-user/arm/target_arch_sigtramp.h
-@@ -0,0 +1,49 @@
-+/*
-+ *  arm sysarch() system call emulation
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
+diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
+index 9527335cc98..f1844dbf225 100644
+--- a/bsd-user/arm/target_arch_signal.h
++++ b/bsd-user/arm/target_arch_signal.h
+@@ -74,6 +74,9 @@ typedef struct target_mcontext {
+     abi_int     mc_spare[33];
+ } target_mcontext_t;
+ 
++#define TARGET_MCONTEXT_SIZE 208
++#define TARGET_UCONTEXT_SIZE 260
 +
-+#ifndef _TARGET_ARCH_SIGTRAMP_H_
-+#define _TARGET_ARCH_SIGTRAMP_H_
-+
-+/* Compare to arm/arm/locore.S ENTRY_NP(sigcode) */
-+static inline abi_long setup_sigtramp(abi_ulong offset, unsigned sigf_uc,
-+        unsigned sys_sigreturn)
-+{
-+    int i;
-+    uint32_t sys_exit = TARGET_FREEBSD_NR_exit;
-+    uint32_t sigtramp_code[] = {
-+    /* 1 */ 0xE1A0000D,                  /* mov r0, sp */
-+    /* 2 */ 0xE2800000 + sigf_uc,        /* add r0, r0, #SIGF_UC */
-+    /* 3 */ 0xE59F700C,                  /* ldr r7, [pc, #12] */
-+    /* 4 */ 0xEF000000 + sys_sigreturn,  /* swi (SYS_sigreturn) */
-+    /* 5 */ 0xE59F7008,                  /* ldr r7, [pc, #8] */
-+    /* 6 */ 0xEF000000 + sys_exit,       /* swi (SYS_exit)*/
-+    /* 7 */ 0xEAFFFFFA,                  /* b . -16 */
-+    /* 8 */ sys_sigreturn,
-+    /* 9 */ sys_exit
-+    };
-+
-+    G_STATIC_ASSERT(sizeof(sigtramp_code) == TARGET_SZSIGCODE);
-+
-+    for (i = 0; i < 9; i++) {
-+        tswap32s(&sigtramp_code[i]);
-+    }
-+
-+    return memcpy_to_target(offset, sigtramp_code, TARGET_SZSIGCODE);
-+}
-+#endif /* _TARGET_ARCH_SIGTRAMP_H_ */
+ #include "target_os_ucontext.h"
+ 
+ struct target_sigframe {
 -- 
 2.33.1
 
