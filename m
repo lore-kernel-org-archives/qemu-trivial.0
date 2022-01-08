@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n66KS-0006Ch-0K
+	id 1n66KS-0006Df-7g
 	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:39:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35958)
+Received: from eggs.gnu.org ([209.51.188.92]:35752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Im-0005Lo-7J
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:13 -0500
-Received: from [2607:f8b0:4864:20::d29] (port=41716
- helo=mail-io1-xd29.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ie-0005K3-Ig
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:11 -0500
+Received: from [2607:f8b0:4864:20::131] (port=43826
+ helo=mail-il1-x131.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ii-0003RD-6r
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:10 -0500
-Received: by mail-io1-xd29.google.com with SMTP id y18so10100726iob.8
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:38:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ia-0003ON-M8
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:03 -0500
+Received: by mail-il1-x131.google.com with SMTP id d3so6453101ilr.10
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:38:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=e+6KZ3Ysi4G9kovLQZe1VwbKNP6XCvJKHGf2d/pxlNg=;
- b=S74B33RGxxdx5+64KSHucUxj7FM/+N05Ggq9fSh9tehIoatMps7rhyObePqsgaGPOe
- 1B93NHWgL+4PWGVkTdhc7+mIsO1tcULHMxhYXsutGPDqmdQEKbWKXCD504v3qmHwj10a
- /edoskLRJExEcyvMI8EKISqGPY5r5itmElnVliYkhl1z9Pb1X2gNG2qBTPJlvIKq+Y5f
- VRUZsW5FFxw0V8eDgYD9yb+K0HWnjmO9KUyObQzJZUcswR/m8GkoJRNa5IEiIvXhB+h9
- BwrOW16Y5vCCgr4JUb7xqnN0Ne5ArkbfYnFfAWPAYflJSjZQPJaFhkiyyv0iTwqob1uQ
- BJ0A==
+ bh=3nePtE5ZTuo2h1AKS5faGNz7Ftuxfg1QV7jdqmeDiQY=;
+ b=l5hvCeEfckp2u2f1C1KhtD/tVLhthtkiJnRex4IvEMCWPmTJOQ1QYqa+s0fr7bwfWt
+ 5KwpqEzjQNT42WxQ9kyaoPFRDfB4YY0wxRPUraeTU0CBuifNoq6ag6+mRatnjLrcEN0T
+ PSEDWLVkygwVDTNKwYImHn/DV7oUG4RHwXPJ3E2DoybezGLuYobmrQIdVbCQKcm2qOtw
+ lO3tkU1I/tLCR3usanRW8oYaTSK/EMLJhvxLJJ5h3+DCpsRDPgqN6pBL2hzN4ZCnNrZC
+ 2TkgGnGxiB7B7ckvIPTRCiVR/WL2LTjgWE2kdR7O2DQXb5BH6QuTLOvvaN/VlXGFIxY5
+ gyEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=e+6KZ3Ysi4G9kovLQZe1VwbKNP6XCvJKHGf2d/pxlNg=;
- b=AFK2I8zDsL+5fkA0CS742jq1BFBwTLpnSsm/ujBp8OKHMO5DngZLekHxwme8Nm3lAN
- GQDGMo+GC0gQaeEQi5eINajawGVn4Oj5rKDEW4IR+5blMCRu29cf+lghL8EB3MKFg76S
- yQ3lQkIAnMypI1AWuwES3xKb3e1sXWVZRQ3F4ILARvMNzRmbD/CINiLk6PAdCjuLnNYN
- 1JbkWy0gPCqShDjDtwkSESNeIXwVvRmdGpvR1YM6OZwIFMUsS18sGWiLJHbMJtGORhQE
- Y8IpkeFx5iJ0jkpxLPOtPUKBelDR1hKVoUaze8Va+SvoatH3v+q3SPTIRpBre4bJx7UR
- swHA==
-X-Gm-Message-State: AOAM530BTRCLSr27IprK/XOIwDtOHl5mjjSrxYxOTLxk0kImJ1chah7l
- qFYbqQLRd/8SgR2Lso35ZdrbuA==
-X-Google-Smtp-Source: ABdhPJz3BX9BiqvSXZdegkOimtwJnAbOLOCs2Nb/OLu4Q/jD0M8EN/xnUQK3FucXmefm/n4t+wpNfA==
-X-Received: by 2002:a6b:fd19:: with SMTP id c25mr29752395ioi.49.1641627485812; 
- Fri, 07 Jan 2022 23:38:05 -0800 (PST)
+ bh=3nePtE5ZTuo2h1AKS5faGNz7Ftuxfg1QV7jdqmeDiQY=;
+ b=K7LqVu7t90dGX36yS7ET32UV0ysvR6s84KlesucavUoZc+e+QAPex+mvNrkGJ9JEBY
+ 0xNvq3NTxTO3ZojoV8aqUMjScszUfUG5jEcmE90rgXpA87KjCi2VqWewxOpmtak4saVO
+ Ru+MUJ/lJRYwnJvLfGOODAjaaqxmvjhH245JpJT0ca7nxjplOGMm6d01rVxP39i53WU2
+ O2gmBKXmbjZK/59R71/juay0RR2ogA6fy2ELksYGOf63KAHJFJmnQ2chYVOGPasSl8kx
+ du/BM7wwCLm8u9+XODKISPcseNeMo6mtXX5mVzbGyGO1Ij9I+xVYtuxHqBRVaLmtEAh0
+ CWzA==
+X-Gm-Message-State: AOAM532k7sM2kU21rmpqrKl6Y6bbKFH1w8ijXuHrAJ0wLtSfVPWGXAtI
+ kyj48RkoTQJ5olin5UWCoW30bA==
+X-Google-Smtp-Source: ABdhPJxAAUoHezTAirx/IiF37/gjwNMuD7KauWfOuz9Bb+WoCg2PQZcqp2cOlHtLPDo3KkrVUsmVCQ==
+X-Received: by 2002:a05:6e02:1d92:: with SMTP id
+ h18mr30648155ila.314.1641627479588; 
+ Fri, 07 Jan 2022 23:37:59 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.38.04
+ by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.37.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 23:38:05 -0800 (PST)
+ Fri, 07 Jan 2022 23:37:59 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -53,19 +54,19 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
  Laurent Vivier <laurent@vivier.eu>, Stacey Son <sson@FreeBSD.org>,
  Kyle Evans <kevans@FreeBSD.org>
-Subject: [PULL 23/37] bsd-user/arm/target_arch_vmparam.h: Parameters for arm
- address space
-Date: Sat,  8 Jan 2022 00:37:23 -0700
-Message-Id: <20220108073737.5959-24-imp@bsdimp.com>
+Subject: [PULL 17/37] bsd-user/arm/target_arch_cpu.h: Implement
+ target_cpu_clone_regs
+Date: Sat,  8 Jan 2022 00:37:17 -0700
+Message-Id: <20220108073737.5959-18-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
 References: <20220108073737.5959-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d29
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::131
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::d29;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd29.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::131;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x131.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -84,76 +85,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jan 2022 07:38:16 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:38:14 -0000
 
-Various parameters describing the layout of the ARM address space. In
-addition, define routines to get the stack pointer and to set the second
-return value.
+Implement target_cpu_clone_regs to clone the resister state on a fork.
 
 Signed-off-by: Stacey Son <sson@FreeBSD.org>
-Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_vmparam.h | 48 ++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
- create mode 100644 bsd-user/arm/target_arch_vmparam.h
+ bsd-user/arm/target_arch_cpu.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/bsd-user/arm/target_arch_vmparam.h b/bsd-user/arm/target_arch_vmparam.h
-new file mode 100644
-index 00000000000..4bbc04ddf5b
---- /dev/null
-+++ b/bsd-user/arm/target_arch_vmparam.h
-@@ -0,0 +1,48 @@
-+/*
-+ *  arm VM parameters definitions
-+ *
-+ *  Copyright (c) 2013 Stacey D. Son
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef _TARGET_ARCH_VMPARAM_H_
-+#define _TARGET_ARCH_VMPARAM_H_
-+
-+#include "cpu.h"
-+
-+/* compare to sys/arm/include/vmparam.h */
-+#define TARGET_MAXTSIZ      (64 * MiB)           /* max text size */
-+#define TARGET_DFLDSIZ      (128 * MiB)          /* initial data size limit */
-+#define TARGET_MAXDSIZ      (512 * MiB)          /* max data size */
-+#define TARGET_DFLSSIZ      (4 * MiB)            /* initial stack size limit */
-+#define TARGET_MAXSSIZ      (64 * MiB)           /* max stack size */
-+#define TARGET_SGROWSIZ     (128 * KiB)          /* amount to grow stack */
-+
-+#define TARGET_RESERVED_VA  0xf7000000
-+
-+                /* KERNBASE - 512 MB */
-+#define TARGET_VM_MAXUSER_ADDRESS   (0xc0000000 - (512 * MiB))
-+#define TARGET_USRSTACK             TARGET_VM_MAXUSER_ADDRESS
-+
-+static inline abi_ulong get_sp_from_cpustate(CPUARMState *state)
+diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
+index 66215684d6f..fa45d9335d6 100644
+--- a/bsd-user/arm/target_arch_cpu.h
++++ b/bsd-user/arm/target_arch_cpu.h
+@@ -36,6 +36,14 @@ static inline void target_cpu_init(CPUARMState *env,
+     }
+ }
+ 
++static inline void target_cpu_clone_regs(CPUARMState *env, target_ulong newsp)
 +{
-+    return state->regs[13]; /* sp */
++    if (newsp) {
++        env->regs[13] = newsp;
++    }
++    env->regs[0] = 0;
 +}
 +
-+static inline void set_second_rval(CPUARMState *state, abi_ulong retval2)
-+{
-+    state->regs[1] = retval2;
-+}
-+
-+#endif  /* ! _TARGET_ARCH_VMPARAM_H_ */
+ static inline void target_cpu_reset(CPUArchState *cpu)
+ {
+ }
 -- 
 2.33.1
 
