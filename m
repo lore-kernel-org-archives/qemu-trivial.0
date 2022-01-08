@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n66Jd-0005yC-Kz
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:39:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35880)
+	id 1n66Jf-0005yp-55
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:39:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ij-0005KR-0b
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:13 -0500
-Received: from [2607:f8b0:4864:20::135] (port=42622
- helo=mail-il1-x135.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ia-0005JU-Mk
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:02 -0500
+Received: from [2607:f8b0:4864:20::132] (port=41905
+ helo=mail-il1-x132.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ie-0003Q8-7y
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:06 -0500
-Received: by mail-il1-x135.google.com with SMTP id 9so6474718ill.9
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:38:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66IU-0003LL-Ls
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:37:57 -0500
+Received: by mail-il1-x132.google.com with SMTP id r16so4778311ile.8
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:37:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CM117LpYpXND7JkdncohCCBAU91EayOUZoRKvmUOZBw=;
- b=2aFFLW5FyTGUM/6C2u+gQakccnyNVzfv6JLape/JXGsEN/LlDCL0PfzFFgbF0WOk7J
- rMJdF2/ca6G1jxri8E9rc2+76KVfIhyLdIiH4OUi3xh7UCXn1jgB3gGG0irI9KsQPoTn
- LBEkIszjbMXAkcggLTG9DqtHW80B/CoCQRAbScLFVROSjEKl4fi4Y8vIRcZG38TJJX4a
- K5jfaTv/3KGuF8Rq32JmKAOPmmlRS2+pJ8RG9NtAzZVq5DE6gN2LT/37OCfgEfHV8A7S
- AQdcJJIsueszBSqfNZxQ2TYm0YUHexwpejtVEwEj52rBc8FpzjCSwXrJ4o3F6b0ZwmBV
- b4fQ==
+ bh=LuLB1GCaE27UYhebE8MEe7wQj0GNFAlmAIMZ+t4rYog=;
+ b=rmhy6MmztDwLR6K8HP0DJCWbyWNsectKMkBk0Kce3mJPQVacAPxDXp+9EO1VwhTHGO
+ 9BfxfSj6EVAb/YIOKOpHZcT9vEx1MhTuBPba3CMh1cshNXWDOLpXTiDUhNRNSCKt5U5O
+ 6YO2E8EGiVvfUFaFnqwCF5yNW4eeRHz6FtOWvviBB9ctQfI7M5qHPx8RtCRu3UbYGiKk
+ 4T0cJ+goijz2eRFKVHfGr+Pe7JzEqruITUwrG4ZTPUlXq7S04GDQoKE2NxROflIKD9qF
+ yTyBHWTR14N4iZ3yrmkMgc9SbrIatWX5R5kIiy8rEB/wxZPa8bJCSezfi7477+D7Q5h6
+ 5CmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=CM117LpYpXND7JkdncohCCBAU91EayOUZoRKvmUOZBw=;
- b=O2MXPSdFYZnqYtrcz9fCyNYiVZl2ADVMi2IumwIJcJeC2EacIHHvXwBqQulzI4c1gD
- SSxJo/wjlQMCm7BfmT8W9Hne2Sb923o9ofm9AE2HK1RSBbYx3k8GOn3hnYmx3c5o1zpA
- sV53ZSelpRB1pl1cD46j84f/jbb5KTygLH08uO472FdYA+EXWuUbUcfcYB2PdyJqnYjM
- +b8XIRH+b7/NOJO5LGPKXkd5yEf74u6gLb5NYZEeTwWbOLBHscLjmW3iAviPGIEvlWZX
- HEfaAdIfHzTzenP/0ZuSCeJPbq8zCgmadj/9tYqS63sflvDa0/LPT5pGe2rCEXxiKgOD
- YSKA==
-X-Gm-Message-State: AOAM531SyeawW9AxI5PwxtA4IwVgduHHJXpYRPzEXEmDHseWwA1JVbxU
- 6EfyHuuDM6y1WYyajRy27eptCQ==
-X-Google-Smtp-Source: ABdhPJx9bBU2xS0yXTG4BTSzHnm42K3nlhO5wIbbgVsKPaCwNxIm/bF9tl9Bb9gafrb1QsiDGqF/TQ==
-X-Received: by 2002:a05:6e02:164c:: with SMTP id
- v12mr2353552ilu.49.1641627482269; 
- Fri, 07 Jan 2022 23:38:02 -0800 (PST)
+ bh=LuLB1GCaE27UYhebE8MEe7wQj0GNFAlmAIMZ+t4rYog=;
+ b=nWIlGfxls727/P+iYlmeW67y3f8uhRjTrRlm7zDUtv+U+GFREjoT24YVKegBtB2eaG
+ kyP5d7ASx8y6XQXG+w9l89FtEKublWXOrWUchdqq/MMQUEVj4RnNimYEZK2ea2FUFqZH
+ XMnnsPpgnMRgjTeBMZYwzumGyH2J1JatL51xtG2ry8lI8NBBDp9BQS66AuEEeuFggAnc
+ 00gXpZ3NNYyEVrPgmPDkL1EXAO2JSTHZ9o9/IY1xBiIiUAGJRMLfIfr7JbiQGfUo51AW
+ Yga2KjusmPRipIlGRZD8MbXglnnU89jL9HwE8UY+JNYQLUWqYdYHWQZAR5OgQzVtnRFB
+ olsg==
+X-Gm-Message-State: AOAM531PtJ2RRAetNLNg6fZlgH0qP69FClcBXj9jvEUl1V1KpUuLrHYR
+ 1CxbA8ovCIGH/Q2FZ0/LtLTXAg==
+X-Google-Smtp-Source: ABdhPJyMQxavm3Q1NeKZA9S3jAu0rcWPW/XqrTGGnKSJi4A5Q7rMttmvXjyOzDJR8H0/UZZYumOq7g==
+X-Received: by 2002:a05:6e02:1c06:: with SMTP id
+ l6mr1361840ilh.239.1641627471664; 
+ Fri, 07 Jan 2022 23:37:51 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.38.01
+ by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.37.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 23:38:01 -0800 (PST)
+ Fri, 07 Jan 2022 23:37:51 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -52,21 +52,20 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
- Laurent Vivier <laurent@vivier.eu>, Kyle Evans <kevans@FreeBSD.org>,
- Olivier Houchard <cognet@ci0.org>, Stacey Son <sson@FreeBSD.org>
-Subject: [PULL 20/37] bsd-user/arm/target_arch_cpu.h: Implement data abort
- exceptions
-Date: Sat,  8 Jan 2022 00:37:20 -0700
-Message-Id: <20220108073737.5959-21-imp@bsdimp.com>
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 09/37] bsd-user/x86_64/target_arch_signal.h: use new
+ target_os_ucontext.h
+Date: Sat,  8 Jan 2022 00:37:09 -0700
+Message-Id: <20220108073737.5959-10-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
 References: <20220108073737.5959-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::135
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::132
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::135;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x135.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::132;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x132.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -85,43 +84,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jan 2022 07:38:16 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:38:12 -0000
 
-Implement EXCP_PREFETCH_ABORT AND EXCP_DATA_ABORT. Both of these data
-exceptions cause a SIGSEGV.
-
-Signed-off-by: Kyle Evans <kevans@FreeBSD.org>
-Signed-off-by: Olivier Houchard <cognet@ci0.org>
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
-Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/arm/target_arch_cpu.h | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ bsd-user/x86_64/target_arch_signal.h | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
-diff --git a/bsd-user/arm/target_arch_cpu.h b/bsd-user/arm/target_arch_cpu.h
-index 9f9b380b137..905a5ffaffa 100644
---- a/bsd-user/arm/target_arch_cpu.h
-+++ b/bsd-user/arm/target_arch_cpu.h
-@@ -65,6 +65,17 @@ static inline void target_cpu_loop(CPUARMState *env)
-         case EXCP_INTERRUPT:
-             /* just indicate that signals should be handled asap */
-             break;
-+        case EXCP_PREFETCH_ABORT:
-+            /* See arm/arm/trap.c prefetch_abort_handler() */
-+        case EXCP_DATA_ABORT:
-+            /* See arm/arm/trap.c data_abort_handler() */
-+            info.si_signo = TARGET_SIGSEGV;
-+            info.si_errno = 0;
-+            /* XXX: check env->error_code */
-+            info.si_code = 0;
-+            info.si_addr = env->exception.vaddress;
-+            queue_signal(env, info.si_signo, &info);
-+            break;
-         case EXCP_DEBUG:
-             {
+diff --git a/bsd-user/x86_64/target_arch_signal.h b/bsd-user/x86_64/target_arch_signal.h
+index 55f742b0a8c..e84aff948c5 100644
+--- a/bsd-user/x86_64/target_arch_signal.h
++++ b/bsd-user/x86_64/target_arch_signal.h
+@@ -30,14 +30,7 @@
+ typedef struct target_mcontext {
+ } target_mcontext_t;
  
+-typedef struct target_ucontext {
+-    target_sigset_t   uc_sigmask;
+-    target_mcontext_t uc_mcontext;
+-    abi_ulong         uc_link;
+-    target_stack_t    uc_stack;
+-    int32_t           uc_flags;
+-    int32_t         __spare__[4];
+-} target_ucontext_t;
++#include "target_os_ucontext.h"
+ 
+ struct target_sigframe {
+     abi_ulong   sf_signum;
 -- 
 2.33.1
 
