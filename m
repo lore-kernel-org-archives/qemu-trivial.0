@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n66KY-0006aa-DE
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:40:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36338)
+	id 1n66Op-0003o9-Sr
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 02:44:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Iu-0005VX-RT
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:21 -0500
-Received: from [2607:f8b0:4864:20::d2e] (port=39471
- helo=mail-io1-xd2e.google.com)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Om-0003ji-Vn
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:44:25 -0500
+Received: from [2607:f8b0:4864:20::42f] (port=41721
+ helo=mail-pf1-x42f.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66It-0003Wj-IY
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:38:20 -0500
-Received: by mail-io1-xd2e.google.com with SMTP id y11so10079799iod.6
- for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:38:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1n66Ol-0004Gi-JB
+ for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 02:44:24 -0500
+Received: by mail-pf1-x42f.google.com with SMTP id m1so7162681pfk.8
+ for <qemu-trivial@nongnu.org>; Fri, 07 Jan 2022 23:44:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bsdimp-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=zYfRV6dnf6d+zAIFlxvvp/6sxyAwR3ew/6aIDkWKGyA=;
- b=DmGcah70KXaUCMaNvepb0vXbtdz0FsDVaFoK3DxxNu0CawLQKkB6jXljWQnYwY35Y3
- BUI+h4CrYthOdiVYcBo0T3dwxaD7O0bB/THFi0fQUW+atoa60gkwL4iKk02R6pGI/YrP
- nkdV+U3LusIeSx6jJd+ryWDTqI0lt0Ph5+mMeBZKok9LC5OR01TR+I/t/klPoTE4IqYL
- n4ctyIoU4qnqpNd2aQa6bvknyxVMP+hFyQvQLVRv0N7aobJfIJ0URenHNaE6KTKSggQS
- /xr7scqCsXVB4RxjCh566SINZhPqbev69LrW0lchuvtz1wLwW3uIilQqiezv4m/EEDA4
- OSjg==
+ bh=qQyeT4ATSzu88iMyeOafl0yabm+zECQCG8Im0X8yUyY=;
+ b=Tufuf/IzDp1UdsKysWDSBm0sbV2wDEJnQN3MGH9DcStLMk+QWbOVvgQUF7rLaUhKUz
+ cEQjn/h3VJS9sbNnZhyHBs97FSD6c0NtLS4RFDRgb5bNsEis1BdP+3L2qM2orR+1Gk4l
+ uugSnewYR8TU/yt1M3qGD9betFGgz7vyOiozSnST0Nb9YXwAhdoqxo4Cz4FIw5L/nEAv
+ L92nQ9d2RPBMs+DZRguTUQoNC06wPx5Net5xSnepUxPfuaNCKKKczC/zJ90hO5nHL2Td
+ V4TszAKczGz6HbW6worGXbku3Nfv2SZGk4UlyZRR6lQFJyJszMTVF33NipSZy7sQkBTu
+ zkOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=zYfRV6dnf6d+zAIFlxvvp/6sxyAwR3ew/6aIDkWKGyA=;
- b=guYSCl4dBUtF9uhGv2Qn49H5MeG+agzaNomcXs/r7G7NjuOPZfxXiMX/XDTj2F38s6
- xthSoq9kx+l9nMR7i9PWVm1mdRo4axDfw0N5XgGrxmBW2hIjrKwJbPWHB7AqTD3gZ6IZ
- cybQy9RHIeFIVKm2/Y9+cZYKOr1lZUbFHeKwUoKduCfbC0F85zzj0PC84mELqwqmHjdr
- vGSdrpW7GO/IfeuICol7GrhaUKYzBZwAvsWy64oWLgyuAeSxubZYlUzx2NAxTeL3op7P
- K6j86UbnTZDy8ji2PCEVGHhphuYx/b81j34/7A4OnwEmF2cBVguQtODkHRXmiuyxg24d
- w/Xw==
-X-Gm-Message-State: AOAM532WTpJWcS3LfH5+v9cysbaVF31oWnYM8BBbsaVjAwMtJjTCk0qY
- pgROTXwpM78uro9ClmHMw6lAVA==
-X-Google-Smtp-Source: ABdhPJwl2buk8ATQk86GdhbbCHAe3AfusOFMNZx5AB325hJ5oLzWTvSIh4ckif8uIf8Psb6/UGsuVQ==
-X-Received: by 2002:a05:6638:3009:: with SMTP id
- r9mr30896197jak.261.1641627498002; 
- Fri, 07 Jan 2022 23:38:18 -0800 (PST)
+ bh=qQyeT4ATSzu88iMyeOafl0yabm+zECQCG8Im0X8yUyY=;
+ b=n3tEauVKiV4AUJJPYxW5uoid0vUw9Y6nmKDrb7X7fQ05QE0LbmyZhUqabr48sDKdsh
+ ilHvvtCEOxJ7X3Ra2eitxdEwFr4gN/+SDWjUi0ThsDRcU9ac3ymNxOgFTX/iU9Hs3U8F
+ yEiIgNd9YKgPAyVxSXqZnzPsmGuugluZCdorTqmhMbwz2CWXrgWsI9tT2q/BEtee9u39
+ 7XQbDAtfsPVQbVevoV9DzAXaciGNvRDR/Pnj2face7EoF3J4sSl2dw0KbFumGh1TuS0m
+ YJR0S4YVTLpiLOu734EJPttG92WxpG8TBkeWJzpRDOVCMW/JxyqqTQMHKJYyib+x+uNf
+ mMWA==
+X-Gm-Message-State: AOAM530vORyW4mrZ7WBjmeQU2uuLXE9yLV1Dj7D6jUUNO/LaMjD56LZ0
+ 0sZdnQg3tsn+EoPHglHT14Ay1eVhQlaYUXmG
+X-Google-Smtp-Source: ABdhPJy7dFz0gO3vzF+46RW9RsSwGGfCpwcTtP9Ea4zBPYqD/yZIlshCsVXuWvgEYRLbx4sC+kXJcA==
+X-Received: by 2002:a05:6602:13d3:: with SMTP id
+ o19mr31004447iov.4.1641627465720; 
+ Fri, 07 Jan 2022 23:37:45 -0800 (PST)
 Received: from dune.bsdimp.com (50-253-99-174-static.hfc.comcastbusiness.net.
  [50.253.99.174])
- by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.38.17
+ by smtp.gmail.com with ESMTPSA id w19sm613022iov.12.2022.01.07.23.37.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 23:38:17 -0800 (PST)
+ Fri, 07 Jan 2022 23:37:45 -0800 (PST)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -53,19 +53,18 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Michael Tokarev <mjt@tls.msk.ru>, Warner Losh <imp@bsdimp.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 36/37] bsd-user/freebsd/target_os_ucontext.h: Require
- TARGET_*CONTEXT_SIZE
-Date: Sat,  8 Jan 2022 00:37:36 -0700
-Message-Id: <20220108073737.5959-37-imp@bsdimp.com>
+Subject: [PULL 03/37] bsd-user: create a per-arch signal.c file
+Date: Sat,  8 Jan 2022 00:37:03 -0700
+Message-Id: <20220108073737.5959-4-imp@bsdimp.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
 References: <20220108073737.5959-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d2e
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42f
  (failed)
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2e;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd2e.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=imp@bsdimp.com; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -84,33 +83,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jan 2022 07:38:22 -0000
+X-List-Received-Date: Sat, 08 Jan 2022 07:44:25 -0000
 
-Now that all architecutres define TARGET_[MU]CONTEXT_SIZE, enforce
-requiring them and always check the sizeof target_{u,m}context_t
-sizes.
+Create a place-holder signal.c file for each of the architectures that
+are currently built. In the future, some code that's currently inlined
+in target_arch_signal.h will live here.
 
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/freebsd/target_os_ucontext.h | 2 --
- 1 file changed, 2 deletions(-)
+ bsd-user/i386/signal.c   | 1 +
+ bsd-user/x86_64/signal.c | 1 +
+ meson.build              | 2 +-
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 bsd-user/i386/signal.c
+ create mode 100644 bsd-user/x86_64/signal.c
 
-diff --git a/bsd-user/freebsd/target_os_ucontext.h b/bsd-user/freebsd/target_os_ucontext.h
-index dd61aec7cce..41b28b2c150 100644
---- a/bsd-user/freebsd/target_os_ucontext.h
-+++ b/bsd-user/freebsd/target_os_ucontext.h
-@@ -27,10 +27,8 @@ typedef struct target_ucontext {
-     int32_t             __spare__[4];
- } target_ucontext_t;
- 
--#ifdef TARGET_MCONTEXT_SIZE
- G_STATIC_ASSERT(TARGET_MCONTEXT_SIZE == sizeof(target_mcontext_t));
- G_STATIC_ASSERT(TARGET_UCONTEXT_SIZE == sizeof(target_ucontext_t));
--#endif /* TARGET_MCONTEXT_SIZE */
- 
- struct target_sigframe;
- 
+diff --git a/bsd-user/i386/signal.c b/bsd-user/i386/signal.c
+new file mode 100644
+index 00000000000..ac903233653
+--- /dev/null
++++ b/bsd-user/i386/signal.c
+@@ -0,0 +1 @@
++/* Placeholder for signal.c */
+diff --git a/bsd-user/x86_64/signal.c b/bsd-user/x86_64/signal.c
+new file mode 100644
+index 00000000000..ac903233653
+--- /dev/null
++++ b/bsd-user/x86_64/signal.c
+@@ -0,0 +1 @@
++/* Placeholder for signal.c */
+diff --git a/meson.build b/meson.build
+index 53065e96ecf..c1b1db1e28c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2933,7 +2933,7 @@ foreach target : target_dirs
+       base_dir = 'bsd-user'
+       target_inc += include_directories('bsd-user/' / targetos)
+       dir = base_dir / abi
+-      arch_srcs += files(dir / 'target_arch_cpu.c')
++      arch_srcs += files(dir / 'signal.c', dir / 'target_arch_cpu.c')
+     endif
+     target_inc += include_directories(
+       base_dir,
 -- 
 2.33.1
 
