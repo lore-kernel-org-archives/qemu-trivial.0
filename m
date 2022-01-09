@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n6O5T-00058H-GN
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 21:37:39 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45840)
+	id 1n6PST-00014V-5y
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 23:05:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54896)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chrisfriedt@gmail.com>)
- id 1n6O5R-000583-UG; Sat, 08 Jan 2022 21:37:37 -0500
-Received: from [2607:f8b0:4864:20::72c] (port=47100
- helo=mail-qk1-x72c.google.com)
+ id 1n6PSO-000131-89; Sat, 08 Jan 2022 23:05:24 -0500
+Received: from [2607:f8b0:4864:20::833] (port=36572
+ helo=mail-qt1-x833.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <chrisfriedt@gmail.com>)
- id 1n6O5Q-00057O-GF; Sat, 08 Jan 2022 21:37:37 -0500
-Received: by mail-qk1-x72c.google.com with SMTP id 202so10839638qkg.13;
- Sat, 08 Jan 2022 18:37:35 -0800 (PST)
+ id 1n6PSM-0000SJ-RJ; Sat, 08 Jan 2022 23:05:23 -0500
+Received: by mail-qt1-x833.google.com with SMTP id f9so9862704qtk.3;
+ Sat, 08 Jan 2022 20:05:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=HVHz4LljrWyly/3ZCzMzQ51vugIv+uVN7Al8e9a9qgQ=;
- b=ZD87IYwD1KFqAOeyyFylQdYOMI21/qF+WczOuy8a15+2LRR9wEXnmarUQLnAaitySU
- k7Sw/X28Lwzja4pABr7RAivsWo3xiYH7f8SF5AG+Mdj/KmWG8/e8j9N8nuPP2Z6zcT9x
- yxaA1iBTmdLysrQ4zLkKcvSNwaTk9bPILRY31rvCiwXbt5xaECS5b5hEfeK7dhiflV1i
- ngtw7xV+9IJVNwQgiL7GhI7ULt55JY6IgZf66BCP9cj8o93gm8vRXupkp81QD6A4KnO6
- YjtzlTo6N9dEp4Fj0P6gAyCclObvsQueThC6VXdbe4Ipqiy77nZDMmm7x+tknFKyuunb
- zpmw==
+ bh=3WFxPI7IVemcGg4l8MDY6Up6yfiOlJdEqkZJg7RkCuU=;
+ b=XUwOtcBkz42f9CA7VIAzVQ73b1RSYSWcDCW8n067jnfmLMHvQ5HH8tNY7W45nelVOZ
+ c/0gdM7cfJAqrLPhX3qE1vb3YzZqx60QQoicaJip0AF/HZXm9MWopcfkL2nLOYb1XL0U
+ DfLW9awVXWPKs+6AboLqKsb2M8sqDDBKS/ecoHUjOQoKNuabwAsF1IM2aIzIjaonAoEo
+ +LX/OLcXvsNxzTNKhkuwL79F+771YFpHFqNJS767ElDdEvbQefd4gv1Nb1xwn2WIZvxo
+ hWxNKonCSgU+oiKHh9AlGN6//pWFUK2DQQSgwGF9NRsrenXU25FG39/cAiHZlfwHGMdv
+ 1rpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=HVHz4LljrWyly/3ZCzMzQ51vugIv+uVN7Al8e9a9qgQ=;
- b=CkIClwQFbc/tHXAlKNL5FlT5F7S9PAueED0/PLzhhfTbXzK/IlVity8w745PQN1YBw
- 44rPbdJfooI3Y+NBc5+FvQlhbaAiRSY5OiO9bWm9qHRJ8A+AO1dgf1hl2ebd7d38SZzk
- RdLPLSkuNrHFrQW4puxiKYW03/ifhP0DzsDhnAH6WWewPwQyhGNu0KiicdTQI1m3OhKW
- nOursTPK9Zx7PzvtlJ0vMqFlO1ITULBhXhEM0tjG+xiZWXPCRv4at00Qf518d8jIZicC
- hWcIpCbgaoP/A9WcCWVzLIM1h8g2Ms03ln0TEKq7G+/bm68JsM+6gtl5ks3ydGtYCdnw
- EXgg==
-X-Gm-Message-State: AOAM533+3qi/uanPF3C+zb14sASqpzpuZlXZX4JBXh9oPTpNiHADqXVt
- Y60owDSDg5yFECRx5E3bnCMdsogN2E8=
-X-Google-Smtp-Source: ABdhPJwcGObz0/7CS21w0L063gKt21WHPR28MydA0BgnfyWZ46PWEyq3pkJBwfqmHuqsn/Vhzyqppw==
-X-Received: by 2002:a05:620a:f84:: with SMTP id
- b4mr391274qkn.566.1641695854602; 
- Sat, 08 Jan 2022 18:37:34 -0800 (PST)
+ bh=3WFxPI7IVemcGg4l8MDY6Up6yfiOlJdEqkZJg7RkCuU=;
+ b=iJYtbeFJ9dijtjxFnY4HN5vcqQhRPpSsBLEv2/QGIlO+BjsuBxT42AKixCUzBzpv/a
+ dey2cWu6l9p6ao95O5qoTcy8TfwkMJmSCxCVG0WEgbtAS/KuYaUQeAunDpG9X9T+MG+w
+ h9CLMn8KR7+Rckks5EjbK03TQ2+xxLbdNODxVWLkZO2NFWjaZxzXe1SBwGTKxxPKupef
+ EejFmqbpEfIKxTa743iMoRoN4Ooxjyxy1t/pYNjQym6A07iFPVVD+qzX83iL9UpvqC/G
+ lRxyZI01yqmxcBY3K/vM0Mk1Kb/IBL5V8PArRxthuFX0Pl5ZkIp3yDFslbHhY+aFDyl3
+ COaw==
+X-Gm-Message-State: AOAM532zF7MHoIPOg1V9t3whGMh1ZBFZ1++fHE9pI/YSXS1g6n+LKZjR
+ mBMOJJS6sGdN4XmOGli8WrkA0h3QZBg=
+X-Google-Smtp-Source: ABdhPJw2UKM4wNWjywnd3n3y3My/l5hznGSBipG7JecrJtqYtIRLOaOh1zsJe0F7HIYR6x5IWjU8RA==
+X-Received: by 2002:a05:622a:553:: with SMTP id
+ m19mr6774863qtx.180.1641701121283; 
+ Sat, 08 Jan 2022 20:05:21 -0800 (PST)
 Received: from ChristophersAir.hitronhub.home
  ([2001:1970:50d6:9900:ecb7:536:86b6:f747])
- by smtp.gmail.com with ESMTPSA id j12sm1830007qtj.30.2022.01.08.18.37.33
+ by smtp.gmail.com with ESMTPSA id 14sm2196877qtx.84.2022.01.08.20.05.20
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 08 Jan 2022 18:37:34 -0800 (PST)
+ Sat, 08 Jan 2022 20:05:20 -0800 (PST)
 From: Christopher Friedt <chrisfriedt@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	Christopher Friedt <chrisfriedt@gmail.com>
-Subject: [PATCH] hw: misc: edu: fix 2 off-by-one errors
-Date: Sat,  8 Jan 2022 21:37:28 -0500
-Message-Id: <20220109023728.46765-1-chrisfriedt@gmail.com>
-X-Mailer: git-send-email 2.30.2
+Subject: [PATCH v2] hw: misc: edu: fix 2 off-by-one errors
+Date: Sat,  8 Jan 2022 23:05:08 -0500
+Message-Id: <20220109040508.47696-1-chrisfriedt@gmail.com>
+X-Mailer: git-send-email 2.30.1 (Apple Git-130)
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::72c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::833
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72c;
- envelope-from=chrisfriedt@gmail.com; helo=mail-qk1-x72c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::833;
+ envelope-from=chrisfriedt@gmail.com; helo=mail-qt1-x833.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -77,7 +77,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 09 Jan 2022 02:37:38 -0000
+X-List-Received-Date: Sun, 09 Jan 2022 04:05:28 -0000
 
 In the case that size1 was zero, because of the explicit
 'end1 > addr' check, the range check would fail and the error
@@ -137,6 +137,6 @@ index e935c418d4..73e97a54e7 100644
  
  static dma_addr_t edu_clamp_addr(const EduState *edu, dma_addr_t addr)
 -- 
-2.30.2
+2.30.1 (Apple Git-130)
 
 
