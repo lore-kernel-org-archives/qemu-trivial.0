@@ -1,80 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n6HEY-000167-FO
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 14:18:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37172)
+	id 1n6O5T-00058H-GN
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jan 2022 21:37:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45840)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1n6HEW-00015n-Sc
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 14:18:32 -0500
-Received: from [2607:f8b0:4864:20::1030] (port=33460
- helo=mail-pj1-x1030.google.com)
+ (Exim 4.90_1) (envelope-from <chrisfriedt@gmail.com>)
+ id 1n6O5R-000583-UG; Sat, 08 Jan 2022 21:37:37 -0500
+Received: from [2607:f8b0:4864:20::72c] (port=47100
+ helo=mail-qk1-x72c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1n6HEU-00053P-HD
- for qemu-trivial@nongnu.org; Sat, 08 Jan 2022 14:18:32 -0500
-Received: by mail-pj1-x1030.google.com with SMTP id
- g11-20020a17090a7d0b00b001b2c12c7273so7716399pjl.0
- for <qemu-trivial@nongnu.org>; Sat, 08 Jan 2022 11:18:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tTFuxXZUmeoRJYbjMVOPg6CPeWqT2HFOzYWOdzGQR8M=;
- b=nIdYMbu2NHqmoUfFgDL0tPHyEH95Bx+pibml2L+yHhOXKcBm0lxQNrCocSFjzE0vvA
- Fk6y+4Ea1YD9CXzt0xlJHvgksWv+qVjjTTmXe5b5Pd3X7YUj/sgY+fR5TH9kT2DuxX+2
- X/su7Ccw65vgEOsTfbnaJQfyH3VruPJd+aa9iAJDd4jRoDL9ELl19Sz+XmRSD/Xb4eIa
- vnzlMQpRokkFui8ouv2Wf5sxr6VRK9E5mhG6nZDXE2Ij3L94hjeknUVHE4T3GhaH7ZIu
- ymXBdByIK2dg0pUMxU+EE1MnMzJ1/xVnZ5qFy7pIfKSMw9AmX/TRfkJpwYB0j55/cn0t
- JBzg==
+ (Exim 4.90_1) (envelope-from <chrisfriedt@gmail.com>)
+ id 1n6O5Q-00057O-GF; Sat, 08 Jan 2022 21:37:37 -0500
+Received: by mail-qk1-x72c.google.com with SMTP id 202so10839638qkg.13;
+ Sat, 08 Jan 2022 18:37:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HVHz4LljrWyly/3ZCzMzQ51vugIv+uVN7Al8e9a9qgQ=;
+ b=ZD87IYwD1KFqAOeyyFylQdYOMI21/qF+WczOuy8a15+2LRR9wEXnmarUQLnAaitySU
+ k7Sw/X28Lwzja4pABr7RAivsWo3xiYH7f8SF5AG+Mdj/KmWG8/e8j9N8nuPP2Z6zcT9x
+ yxaA1iBTmdLysrQ4zLkKcvSNwaTk9bPILRY31rvCiwXbt5xaECS5b5hEfeK7dhiflV1i
+ ngtw7xV+9IJVNwQgiL7GhI7ULt55JY6IgZf66BCP9cj8o93gm8vRXupkp81QD6A4KnO6
+ YjtzlTo6N9dEp4Fj0P6gAyCclObvsQueThC6VXdbe4Ipqiy77nZDMmm7x+tknFKyuunb
+ zpmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=tTFuxXZUmeoRJYbjMVOPg6CPeWqT2HFOzYWOdzGQR8M=;
- b=74gW8Vkr7e8Y2ISeNovBCDYmeFdulAwv8oW2Iva6Y8dQGNCuIBrC0eZKP7ya9L/8HH
- +ICjkATZEbeqbw0GhMxKHgpuLKzjYCwXGQ1BBH+GULnipgA5AtU6DBcg/a7+o37aiv3u
- Q9UnI+XArFnVAis4gH85LP81pLUu5ooCNH9CZ/yovAEHRvYPX411QkolAL2vqHkleAK2
- 7gKVjtmJkylSP7n2SCYP21eR5v2lbrx7X8vo7CC9T4eR5qsEcd5+Ci+u+eb3Fh94OeqM
- RHW8onxc/F8asQS5GmVHOuavnJQQbAVKey1FgYWO0LtEi9IPX5+1WAzyviv7nzd5V52K
- jVGw==
-X-Gm-Message-State: AOAM531ceroCkx3wMTumUd296+juRPoMPiw6GDsezh43gptC9Vb86sSk
- SLa2rOrVPipmhV3Vq0BHQhshYA==
-X-Google-Smtp-Source: ABdhPJxuGAzYMGJ/D2oWjXkYgUQOKRrWM90xlbQItsMMvoN8zwtisQrUlO5MTONbZ64bV+yx8wDSsQ==
-X-Received: by 2002:a17:902:76c1:b0:149:989d:c6e3 with SMTP id
- j1-20020a17090276c100b00149989dc6e3mr47045424plt.127.1641669509093; 
- Sat, 08 Jan 2022 11:18:29 -0800 (PST)
-Received: from [192.168.1.13] (174-21-75-75.tukw.qwest.net. [174.21.75.75])
- by smtp.gmail.com with ESMTPSA id s8sm2725356pfu.58.2022.01.08.11.18.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 08 Jan 2022 11:18:28 -0800 (PST)
-Subject: Re: [PULL 00/37] Bsd user arm patches
-To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-trivial@nongnu.org, kevans@freebsd.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>
-References: <20220108073737.5959-1-imp@bsdimp.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <bb90df62-bbf9-c54a-0dbf-5c0604fc004d@linaro.org>
-Date: Sat, 8 Jan 2022 11:18:27 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ bh=HVHz4LljrWyly/3ZCzMzQ51vugIv+uVN7Al8e9a9qgQ=;
+ b=CkIClwQFbc/tHXAlKNL5FlT5F7S9PAueED0/PLzhhfTbXzK/IlVity8w745PQN1YBw
+ 44rPbdJfooI3Y+NBc5+FvQlhbaAiRSY5OiO9bWm9qHRJ8A+AO1dgf1hl2ebd7d38SZzk
+ RdLPLSkuNrHFrQW4puxiKYW03/ifhP0DzsDhnAH6WWewPwQyhGNu0KiicdTQI1m3OhKW
+ nOursTPK9Zx7PzvtlJ0vMqFlO1ITULBhXhEM0tjG+xiZWXPCRv4at00Qf518d8jIZicC
+ hWcIpCbgaoP/A9WcCWVzLIM1h8g2Ms03ln0TEKq7G+/bm68JsM+6gtl5ks3ydGtYCdnw
+ EXgg==
+X-Gm-Message-State: AOAM533+3qi/uanPF3C+zb14sASqpzpuZlXZX4JBXh9oPTpNiHADqXVt
+ Y60owDSDg5yFECRx5E3bnCMdsogN2E8=
+X-Google-Smtp-Source: ABdhPJwcGObz0/7CS21w0L063gKt21WHPR28MydA0BgnfyWZ46PWEyq3pkJBwfqmHuqsn/Vhzyqppw==
+X-Received: by 2002:a05:620a:f84:: with SMTP id
+ b4mr391274qkn.566.1641695854602; 
+ Sat, 08 Jan 2022 18:37:34 -0800 (PST)
+Received: from ChristophersAir.hitronhub.home
+ ([2001:1970:50d6:9900:ecb7:536:86b6:f747])
+ by smtp.gmail.com with ESMTPSA id j12sm1830007qtj.30.2022.01.08.18.37.33
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Sat, 08 Jan 2022 18:37:34 -0800 (PST)
+From: Christopher Friedt <chrisfriedt@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Christopher Friedt <chrisfriedt@gmail.com>
+Subject: [PATCH] hw: misc: edu: fix 2 off-by-one errors
+Date: Sat,  8 Jan 2022 21:37:28 -0500
+Message-Id: <20220109023728.46765-1-chrisfriedt@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <20220108073737.5959-1-imp@bsdimp.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1030
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::72c
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
-X-Spam_score_int: -54
-X-Spam_score: -5.5
-X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-4.199,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72c;
+ envelope-from=chrisfriedt@gmail.com; helo=mail-qk1-x72c.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,141 +77,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jan 2022 19:18:33 -0000
+X-List-Received-Date: Sun, 09 Jan 2022 02:37:38 -0000
 
-On 1/7/22 11:37 PM, Warner Losh wrote:
-> The following changes since commit 7d4ae4d4978079d564d3b6354c90a949130409fe:
-> 
->    Merge tag 'pull-request-2022-01-05' of https://gitlab.com/thuth/qemu into staging (2022-01-05 08:47:18 -0800)
-> 
-> are available in the Git repository at:
-> 
->    git@gitlab.com:bsdimp/qemu.git tags/bsd-user-arm-pull-request
-> 
-> for you to fetch changes up to 18fe5d99f27fa7458724aa367e3c6784c36d5771:
-> 
->    bsd-user: add arm target build (2022-01-07 22:58:51 -0700)
-> 
-> ----------------------------------------------------------------
-> bsd-user: arm (32-bit) support
-> 
-> This series of patches brings in 32-bit arm support for bsd-user.  It implements
-> all the bits needed to do image activation, signal handling, stack management
-> and threading. This allows us to get to the "Hello World" level. The arm and x86
-> code are now the same as in the bsd-user fork. For full context, the fork is at
-> https://github.com/qemu-bsd-user/qemu-bsd-user/tree/blitz (though the the recent
-> sig{bus,segv} needed updates are incomplete).
-> 
-> v5 changes:
->     o Moved to using the CPUArchState typedef and move
->       set_sigtramp_args, get_mcontext, set_mcontext, and
->       get_ucontext_sigreturn prototypes to
->       bsd-user/freebsd/target_os_ucontext.h
->     o Fix issues with arm's set_mcontext related to masking
->       and remove an unnecessary check.
-> 
-> We're down to only one hunk needing review:
->      bsd-user/arm/target_arch_signal.c: arm set_mcontext
-> 
-> Warnings that should be ignored:
->     o make checkpatch has a couple of complaints about the comments for the
->       signal trampoline, since it's a false positive IMHO.
-> WARNING: Block comments use a leading /* on a separate line
-> +    /* 8 */ sys_sigreturn,
-> WARNING: Block comments use a leading /* on a separate line
-> +    /* 9 */ sys_exit
-> 
-> ----------------------------------------------------------------
-> 
-> Warner Losh (37):
->    bsd-user/mips*: Remove mips support
->    bsd-user/freebsd: Create common target_os_ucontext.h file
->    bsd-user: create a per-arch signal.c file
->    bsd-user/i386/target_arch_signal.h: Remove target_sigcontext
->    bsd-user/i386/target_arch_signal.h: use new target_os_ucontext.h
->    bsd-user/i386/target_arch_signal.h: Update mcontext_t to match FreeBSD
->    bsd-user/i386: Move the inlines into signal.c
->    bsd-user/x86_64/target_arch_signal.h: Remove target_sigcontext
->    bsd-user/x86_64/target_arch_signal.h: use new target_os_ucontext.h
->    bsd-user/x86_64/target_arch_signal.h: Fill in mcontext_t
->    bsd-user/x86_64: Move functions into signal.c
->    bsd-user/target_os_signal.h: Move signal prototypes to
->      target_os_ucontext.h
->    bsd-user/arm/target_arch_sysarch.h: Use consistent include guards
->    bsd-user/arm/target_syscall.h: Add copyright and update name
->    bsd-user/arm/target_arch_cpu.c: Target specific TLS routines
->    bsd-user/arm/target_arch_cpu.h: CPU Loop definitions
->    bsd-user/arm/target_arch_cpu.h: Implement target_cpu_clone_regs
->    bsd-user/arm/target_arch_cpu.h: Dummy target_cpu_loop implementation
->    bsd-user/arm/target_arch_cpu.h: Implement trivial EXCP exceptions
->    bsd-user/arm/target_arch_cpu.h: Implement data abort exceptions
->    bsd-user/arm/target_arch_cpu.h: Implement system call dispatch
->    bsd-user/arm/target_arch_reg.h: Implement core dump register copying
->    bsd-user/arm/target_arch_vmparam.h: Parameters for arm address space
->    bsd-user/arm/target_arch_sigtramp.h: Signal Trampoline for arm
->    bsd-user/arm/target_arch_thread.h: Routines to create and switch to a
->      thread
->    bsd-user/arm/target_arch_elf.h: arm defines for ELF
->    bsd-user/arm/target_arch_elf.h: arm get hwcap
->    bsd-user/arm/target_arch_elf.h: arm get_hwcap2 impl
->    bsd-user/arm/target_arch_signal.h: arm specific signal registers and
->      stack
->    bsd-user/arm/target_arch_signal.h: arm machine context and trapframe
->      for signals
->    bsd-user/arm/target_arch_signal.h: Define size of *context_t
->    bsd-user/arm/signal.c: arm set_sigtramp_args
->    bsd-user/arm/signal.c: arm get_mcontext
->    bsd-user/arm/signal.c: arm set_mcontext
->    bsd-user/arm/signal.c: arm get_ucontext_sigreturn
->    bsd-user/freebsd/target_os_ucontext.h: Require TARGET_*CONTEXT_SIZE
->    bsd-user: add arm target build
-> 
->   bsd-user/arm/signal.c                 | 196 ++++++++++++++++++++++++
->   bsd-user/arm/target_arch.h            |  28 ++++
->   bsd-user/arm/target_arch_cpu.c        |  39 +++++
->   bsd-user/arm/target_arch_cpu.h        | 211 ++++++++++++++++++++++++++
->   bsd-user/arm/target_arch_elf.h        | 128 ++++++++++++++++
->   bsd-user/arm/target_arch_reg.h        |  60 ++++++++
->   bsd-user/arm/target_arch_signal.h     |  88 +++++++++++
->   bsd-user/arm/target_arch_sigtramp.h   |  49 ++++++
->   bsd-user/arm/target_arch_sysarch.h    |   6 +-
->   bsd-user/arm/target_arch_thread.h     |  82 ++++++++++
->   bsd-user/arm/target_arch_vmparam.h    |  48 ++++++
->   bsd-user/arm/target_syscall.h         |  27 +++-
->   bsd-user/freebsd/target_os_signal.h   |   3 -
->   bsd-user/freebsd/target_os_ucontext.h |  44 ++++++
->   bsd-user/i386/signal.c                |  55 +++++++
->   bsd-user/i386/target_arch_signal.h    |  95 ++++++------
->   bsd-user/mips/target_arch_sysarch.h   |  69 ---------
->   bsd-user/mips/target_syscall.h        |  52 -------
->   bsd-user/mips64/target_arch_sysarch.h |  69 ---------
->   bsd-user/mips64/target_syscall.h      |  53 -------
->   bsd-user/x86_64/signal.c              |  55 +++++++
->   bsd-user/x86_64/target_arch_signal.h  | 103 +++++++------
->   configs/targets/arm-bsd-user.mak      |   2 +
->   meson.build                           |   2 +-
->   24 files changed, 1214 insertions(+), 350 deletions(-)
->   create mode 100644 bsd-user/arm/signal.c
->   create mode 100644 bsd-user/arm/target_arch.h
->   create mode 100644 bsd-user/arm/target_arch_cpu.c
->   create mode 100644 bsd-user/arm/target_arch_cpu.h
->   create mode 100644 bsd-user/arm/target_arch_elf.h
->   create mode 100644 bsd-user/arm/target_arch_reg.h
->   create mode 100644 bsd-user/arm/target_arch_signal.h
->   create mode 100644 bsd-user/arm/target_arch_sigtramp.h
->   create mode 100644 bsd-user/arm/target_arch_thread.h
->   create mode 100644 bsd-user/arm/target_arch_vmparam.h
->   create mode 100644 bsd-user/freebsd/target_os_ucontext.h
->   create mode 100644 bsd-user/i386/signal.c
->   delete mode 100644 bsd-user/mips/target_arch_sysarch.h
->   delete mode 100644 bsd-user/mips/target_syscall.h
->   delete mode 100644 bsd-user/mips64/target_arch_sysarch.h
->   delete mode 100644 bsd-user/mips64/target_syscall.h
->   create mode 100644 bsd-user/x86_64/signal.c
->   create mode 100644 configs/targets/arm-bsd-user.mak
+In the case that size1 was zero, because of the explicit
+'end1 > addr' check, the range check would fail and the error
+message would read as shown below. The correct comparison
+is 'end1 >= addr' (or 'addr <= end1').
 
-Applied, thanks.
+EDU: DMA range 0x40000-0x3ffff out of bounds (0x40000-0x3ffff)!
 
+At the opposite end, in the case that size1 was 4096, within()
+would fail because of the non-inclusive check 'end1 < end2',
+which should have been 'end1 <= end2'. The error message would
+previously say
 
-r~
+EDU: DMA range 0x40000-0x40fff out of bounds (0x40000-0x40fff)!
+
+The solution is to use non-inclusive ranges e.g. [begin,end).
+
+Signed-off-by: Christopher Friedt <chrisfriedt@gmail.com>
+---
+ hw/misc/edu.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
+
+diff --git a/hw/misc/edu.c b/hw/misc/edu.c
+index e935c418d4..73e97a54e7 100644
+--- a/hw/misc/edu.c
++++ b/hw/misc/edu.c
+@@ -103,25 +103,21 @@ static void edu_lower_irq(EduState *edu, uint32_t val)
+     }
+ }
+ 
+-static bool within(uint64_t addr, uint64_t start, uint64_t end)
+-{
+-    return start <= addr && addr < end;
+-}
+-
+ static void edu_check_range(uint64_t addr, uint64_t size1, uint64_t start,
+                 uint64_t size2)
+ {
+     uint64_t end1 = addr + size1;
+     uint64_t end2 = start + size2;
+ 
+-    if (within(addr, start, end2) &&
+-            end1 > addr && within(end1, start, end2)) {
++    if (start <= addr && addr < end2 &&
++        addr <= end1 &&
++        start <= end1 && end1 <= end2) {
+         return;
+     }
+ 
+-    hw_error("EDU: DMA range 0x%016"PRIx64"-0x%016"PRIx64
+-             " out of bounds (0x%016"PRIx64"-0x%016"PRIx64")!",
+-            addr, end1 - 1, start, end2 - 1);
++    hw_error("EDU: DMA range [0x%016"PRIx64", 0x%016"PRIx64")"
++             " out of bounds [0x%016"PRIx64", 0x%016"PRIx64")!",
++            addr, end1, start, end2);
+ }
+ 
+ static dma_addr_t edu_clamp_addr(const EduState *edu, dma_addr_t addr)
+-- 
+2.30.2
+
 
