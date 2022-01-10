@@ -1,70 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n6oMQ-0007x7-5G
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jan 2022 01:40:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58558)
+	id 1n6yAB-0004ll-MH
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jan 2022 12:08:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39072)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1n6oM3-0007pM-Cc; Mon, 10 Jan 2022 01:40:33 -0500
-Received: from [2607:f8b0:4864:20::d34] (port=42502
- helo=mail-io1-xd34.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1n6oLn-0005MU-IJ; Mon, 10 Jan 2022 01:40:17 -0500
-Received: by mail-io1-xd34.google.com with SMTP id o7so16164055ioo.9;
- Sun, 09 Jan 2022 22:40:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=gqVMJaUBivD10g/gyFwe0c9eCn5awuYbTFhPKLVR0VM=;
- b=n0TTQKwqkYZUkWg6JhyB0kvZJ8K1eKeF7f1Qk3DPPOdcjn1wfJQ1mMT1dylot+VUDS
- +LR6fd10HpWkqNOZX5NWJO1o+irAjHjVMxEphGvvpsKlIHtHfFTLO/8dE84hOaWyuTSS
- VE5vqQW8jO9RHnLvmCICDb5CkSloQc0cI4l4VEFOrDUJqq0jt8+UchkdVqVIfZ0+eKx3
- 2+SaDqWpOVFQhR0cSJadFLhnc1mketC05DorfUq/3DcW6yWkPxpDaVxX4BN4EEFOXTxL
- R6IXo8PYLdy/qxNTMSIhbBMfDg4/BhjnOxbnZjbvpgOXk+BZmoAgvE4eVNnv4JXAGEew
- M5/Q==
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1n6yA7-0004jW-HQ
+ for qemu-trivial@nongnu.org; Mon, 10 Jan 2022 12:08:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:32221)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1n6yA4-0007yF-Kq
+ for qemu-trivial@nongnu.org; Mon, 10 Jan 2022 12:08:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1641834527;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=U+3SGfTNYkO6F8uq7Hq/XANHMcqQyET6yEo1VtIfGUg=;
+ b=QStj+ShjraVahF6xk+STUNwLFNaATxY1C6OeDUR1KxYwYr6upT56Vd2bxc8ompODeMkQRq
+ rfCwG1+cC+g3afWOSPr7KEbvaMHlrrDcJt+rMegEWAUum054FIbjA4ah0XaAWmpI38db//
+ Nzup3QcUNKTsS67/AJJ3udlnHRB+B7I=
+Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
+ [209.85.222.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-500-XExJ8tUPMfGAZxmnOPaMpA-1; Mon, 10 Jan 2022 12:08:45 -0500
+X-MC-Unique: XExJ8tUPMfGAZxmnOPaMpA-1
+Received: by mail-ua1-f72.google.com with SMTP id
+ n1-20020a9f3141000000b003057abfef2fso5166273uab.3
+ for <qemu-trivial@nongnu.org>; Mon, 10 Jan 2022 09:08:45 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=gqVMJaUBivD10g/gyFwe0c9eCn5awuYbTFhPKLVR0VM=;
- b=KZ4VDJ7rUldzijAQG+yJZ9aFKg+rqE0bIo3+0eYnrkug2EOWj4WqmqvoEJlT86wR99
- fxZ9TSU7fS14j2JRTVwK5L827iILhT8vbc8e+ynYMiJ/zJiydDv+uqyTQ7tzhGojs4i+
- zlZo29kqX/ZyZkSOyqHUS9eZqkUPUBRBsnUE17bo9SeBDIekXnC0pjmjDgKoJkFnX6Zw
- SUeL7SZwKamPHimoW8r8iOEGHEE808t+dNPmE71qs4E97Ewj8T84d6AGaeVoJwYgQx0c
- eqR5Z7KVICmPnrUVzaQWWNFTvy3JW9JkS2BHi85ZHYTaZVLa/sG5+7pmwHjDuUcNBhqr
- 2y+Q==
-X-Gm-Message-State: AOAM533VhH+uYdO9sQKlp0mbhoAe8eHBgEBeeZWwHFviU+RHjA6VTUKo
- EaEww/FaAYpDUqSPj1CM7tRX6DA/LrAaRjfxvmc=
-X-Google-Smtp-Source: ABdhPJxcJiqE7pW7JujW6vZnc3SaWA0XNMZu8Mn5GKm/g+cHJakVEQWuRsz/4D+5ee68cyXu4LvRgTnm5a2K2SwG6QM=
-X-Received: by 2002:a5d:8a0a:: with SMTP id w10mr35040162iod.90.1641796813700; 
- Sun, 09 Jan 2022 22:40:13 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=U+3SGfTNYkO6F8uq7Hq/XANHMcqQyET6yEo1VtIfGUg=;
+ b=kGIwdwnIesHpu1xUlRj2xnVEi9V6c5+yZcP9ZLpooMEFt+vpYwOI2s4KCII3gH8rfw
+ 73qLnyV+il65CdbgBkvX/UT57w3YDXSqExWYrbHVo2em1dXMwvp69KaJ1hmOmHqGYLli
+ vza7oe/3O/iOEq2/hDFu1Q73b5krsfi1zrCP0RCxgCT6Ukb6Cojnd2tAol3H8ONi7Ig+
+ I4zPOLtZvWRdQY/viy3t5f1894NhZy2GPH7HWLdZ62cpE2ij9aNwtDIpBZf96aJgA7kQ
+ RUsk9WXkGmt7kyRRpT+BtmU7LxF6ckv4qVgf/R3Cf10vC+kiAdFkr/bshZZqwYVRnSH8
+ qn2w==
+X-Gm-Message-State: AOAM532jJUjcforBZDsrBMXay+k8F+i/y+D/VsmbUtiX6V1UQsJWxhEQ
+ /SFyIE+wsCeRNLCVSJ0IM7qD+vD6JggyaOCpCFmzlryHrm5eVGKhxr7KAkzL6qYvL9mXm6E+IDB
+ Wpp1LuI2MD0Ls1/SaGHSaTI1A3014Dfyrqw==
+X-Received: by 2002:a05:6102:390b:: with SMTP id
+ e11mr309979vsu.35.1641834525307; 
+ Mon, 10 Jan 2022 09:08:45 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyOkOaesUbm5csGJSv1vMu87CHJOC3rZwYQB+5NWVv6jr8hR/LtkV7BrdMjAcuwXuDpaRBkg8gBCPuNpQiNB/k=
+X-Received: by 2002:a05:6102:390b:: with SMTP id
+ e11mr309968vsu.35.1641834525129; 
+ Mon, 10 Jan 2022 09:08:45 -0800 (PST)
 MIME-Version: 1.0
-References: <20220107133844.145039-1-thuth@redhat.com>
-In-Reply-To: <20220107133844.145039-1-thuth@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 10 Jan 2022 16:39:47 +1000
-Message-ID: <CAKmqyKOAs4zoACwqROv=XY1WdqC84u3_4X_t-JYOjg=EV2ZFQg@mail.gmail.com>
-Subject: Re: [PATCH] softmmu/device_tree: Silence compiler warning with
- --enable-sanitizers
-To: Thomas Huth <thuth@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Yanan Wang <wangyanan55@huawei.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Andrew Jones <drjones@redhat.com>, David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::d34
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd34.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20220107153019.504124-1-sw@weilnetz.de>
+In-Reply-To: <20220107153019.504124-1-sw@weilnetz.de>
+From: John Snow <jsnow@redhat.com>
+Date: Mon, 10 Jan 2022 12:08:34 -0500
+Message-ID: <CAFn=p-ZYr+D54GzYKt5cxuJQQTARGQTvkkgVfhLGEeLczFt-Tw@mail.gmail.com>
+Subject: Re: [PATCH] simplebench: Fix Python syntax error (reported by LGTM)
+To: Stefan Weil <sw@weilnetz.de>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="000000000000a68fad05d53d631b"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.597,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,65 +84,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jan 2022 06:40:38 -0000
+X-List-Received-Date: Mon, 10 Jan 2022 17:08:51 -0000
 
-On Fri, Jan 7, 2022 at 11:41 PM Thomas Huth <thuth@redhat.com> wrote:
->
-> If I configure my build with --enable-sanitizers, my GCC (v8.5.0)
-> complains:
->
-> .../softmmu/device_tree.c: In function =E2=80=98qemu_fdt_add_path=E2=80=
-=99:
-> .../softmmu/device_tree.c:560:18: error: =E2=80=98retval=E2=80=99 may be =
-used uninitialized
->  in this function [-Werror=3Dmaybe-uninitialized]
->      int namelen, retval;
->                   ^~~~~~
->
-> It's a false warning since the while loop is always executed at least
-> once (p has to be non-NULL, otherwise the derefence in the if-statement
-> earlier will crash). Thus let's switch to a do-while loop here instead
-> to make the compiler happy in all cases.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+--000000000000a68fad05d53d631b
+Content-Type: text/plain; charset="UTF-8"
 
-Thanks!
+On Fri, Jan 7, 2022 at 10:32 AM Stefan Weil <sw@weilnetz.de> wrote:
 
-Applied to riscv-to-apply.next
-
-If anyone else (trivial maybe?) wants to take this feel free to as
-well, otherwise I'll just take this via the RISC-V tree.
-
-Alistair
-
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->  softmmu/device_tree.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  scripts/simplebench/bench-example.py | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-> index 3965c834ca..9e96f5ecd5 100644
-> --- a/softmmu/device_tree.c
-> +++ b/softmmu/device_tree.c
-> @@ -564,7 +564,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->          return -1;
->      }
+> diff --git a/scripts/simplebench/bench-example.py
+> b/scripts/simplebench/bench-example.py
+> index 4864435f39..fc370691e0 100644
+> --- a/scripts/simplebench/bench-example.py
+> +++ b/scripts/simplebench/bench-example.py
+> @@ -25,7 +25,7 @@
 >
-> -    while (p) {
-> +    do {
->          name =3D p + 1;
->          p =3D strchr(name, '/');
->          namelen =3D p !=3D NULL ? p - name : strlen(name);
-> @@ -584,7 +584,7 @@ int qemu_fdt_add_path(void *fdt, const char *path)
->          }
+>  def bench_func(env, case):
+>      """ Handle one "cell" of benchmarking table. """
+> -    return bench_block_copy(env['qemu_binary'], env['cmd'], {}
+> +    return bench_block_copy(env['qemu_binary'], env['cmd'], {},
+>                              case['source'], case['target'])
 >
->          parent =3D retval;
-> -    }
-> +    } while (p);
 >
->      return retval;
->  }
 > --
-> 2.27.0
+> 2.30.2
 >
->
+
+Good spot. If it's not too late and not a hassle, can you add a fixes:
+commit-id in the commit message? No big deal if not.
+
+Reviewed-by: John Snow <jsnow@redhat.com>
+
+--000000000000a68fad05d53d631b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jan 7, 2022 at 10:32 AM Stefa=
+n Weil &lt;<a href=3D"mailto:sw@weilnetz.de">sw@weilnetz.de</a>&gt; wrote:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex">Signed-off-by: S=
+tefan Weil &lt;<a href=3D"mailto:sw@weilnetz.de" target=3D"_blank">sw@weiln=
+etz.de</a>&gt;<br>
+---<br>
+=C2=A0scripts/simplebench/bench-example.py | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/scripts/simplebench/bench-example.py b/scripts/simplebench/ben=
+ch-example.py<br>
+index 4864435f39..fc370691e0 100644<br>
+--- a/scripts/simplebench/bench-example.py<br>
++++ b/scripts/simplebench/bench-example.py<br>
+@@ -25,7 +25,7 @@<br>
+<br>
+=C2=A0def bench_func(env, case):<br>
+=C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot; Handle one &quot;cell&quot; of bench=
+marking table. &quot;&quot;&quot;<br>
+-=C2=A0 =C2=A0 return bench_block_copy(env[&#39;qemu_binary&#39;], env[&#39=
+;cmd&#39;], {}<br>
++=C2=A0 =C2=A0 return bench_block_copy(env[&#39;qemu_binary&#39;], env[&#39=
+;cmd&#39;], {},<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case[&#39;source&#39;], case[&#39;target&#39=
+;])<br>
+<br>
+<br>
+-- <br>
+2.30.2<br></blockquote><div><br></div><div>Good spot. If it&#39;s not too l=
+ate and not a hassle, can you add a fixes: commit-id in the commit message?=
+ No big deal if not.</div><div><br></div><div>Reviewed-by: John Snow &lt;<a=
+ href=3D"mailto:jsnow@redhat.com">jsnow@redhat.com</a>&gt;<br></div></div><=
+/div>
+
+--000000000000a68fad05d53d631b--
+
 
