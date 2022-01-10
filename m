@@ -1,76 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n6yAB-0004ll-MH
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jan 2022 12:08:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39072)
+	id 1n6yv4-00065m-2W
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jan 2022 12:57:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1n6yA7-0004jW-HQ
- for qemu-trivial@nongnu.org; Mon, 10 Jan 2022 12:08:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:32221)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1n6yuo-00063V-2T; Mon, 10 Jan 2022 12:57:07 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]:60560
+ helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1n6yA4-0007yF-Kq
- for qemu-trivial@nongnu.org; Mon, 10 Jan 2022 12:08:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641834527;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=U+3SGfTNYkO6F8uq7Hq/XANHMcqQyET6yEo1VtIfGUg=;
- b=QStj+ShjraVahF6xk+STUNwLFNaATxY1C6OeDUR1KxYwYr6upT56Vd2bxc8ompODeMkQRq
- rfCwG1+cC+g3afWOSPr7KEbvaMHlrrDcJt+rMegEWAUum054FIbjA4ah0XaAWmpI38db//
- Nzup3QcUNKTsS67/AJJ3udlnHRB+B7I=
-Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
- [209.85.222.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-500-XExJ8tUPMfGAZxmnOPaMpA-1; Mon, 10 Jan 2022 12:08:45 -0500
-X-MC-Unique: XExJ8tUPMfGAZxmnOPaMpA-1
-Received: by mail-ua1-f72.google.com with SMTP id
- n1-20020a9f3141000000b003057abfef2fso5166273uab.3
- for <qemu-trivial@nongnu.org>; Mon, 10 Jan 2022 09:08:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=U+3SGfTNYkO6F8uq7Hq/XANHMcqQyET6yEo1VtIfGUg=;
- b=kGIwdwnIesHpu1xUlRj2xnVEi9V6c5+yZcP9ZLpooMEFt+vpYwOI2s4KCII3gH8rfw
- 73qLnyV+il65CdbgBkvX/UT57w3YDXSqExWYrbHVo2em1dXMwvp69KaJ1hmOmHqGYLli
- vza7oe/3O/iOEq2/hDFu1Q73b5krsfi1zrCP0RCxgCT6Ukb6Cojnd2tAol3H8ONi7Ig+
- I4zPOLtZvWRdQY/viy3t5f1894NhZy2GPH7HWLdZ62cpE2ij9aNwtDIpBZf96aJgA7kQ
- RUsk9WXkGmt7kyRRpT+BtmU7LxF6ckv4qVgf/R3Cf10vC+kiAdFkr/bshZZqwYVRnSH8
- qn2w==
-X-Gm-Message-State: AOAM532jJUjcforBZDsrBMXay+k8F+i/y+D/VsmbUtiX6V1UQsJWxhEQ
- /SFyIE+wsCeRNLCVSJ0IM7qD+vD6JggyaOCpCFmzlryHrm5eVGKhxr7KAkzL6qYvL9mXm6E+IDB
- Wpp1LuI2MD0Ls1/SaGHSaTI1A3014Dfyrqw==
-X-Received: by 2002:a05:6102:390b:: with SMTP id
- e11mr309979vsu.35.1641834525307; 
- Mon, 10 Jan 2022 09:08:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyOkOaesUbm5csGJSv1vMu87CHJOC3rZwYQB+5NWVv6jr8hR/LtkV7BrdMjAcuwXuDpaRBkg8gBCPuNpQiNB/k=
-X-Received: by 2002:a05:6102:390b:: with SMTP id
- e11mr309968vsu.35.1641834525129; 
- Mon, 10 Jan 2022 09:08:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1n6yul-0006xn-Nt; Mon, 10 Jan 2022 12:57:05 -0500
+Received: from [192.168.178.28] (pd9ec355f.dip0.t-ipconnect.de [217.236.53.95])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 248D2DA0798;
+ Mon, 10 Jan 2022 18:56:51 +0100 (CET)
+Content-Type: multipart/alternative;
+ boundary="------------jrovZAEWtLkQLvwAM1rP08GK"
+Message-ID: <42ac8990-8733-fa68-c4b4-c54a82ce43f9@weilnetz.de>
+Date: Mon, 10 Jan 2022 18:56:50 +0100
 MIME-Version: 1.0
-References: <20220107153019.504124-1-sw@weilnetz.de>
-In-Reply-To: <20220107153019.504124-1-sw@weilnetz.de>
-From: John Snow <jsnow@redhat.com>
-Date: Mon, 10 Jan 2022 12:08:34 -0500
-Message-ID: <CAFn=p-ZYr+D54GzYKt5cxuJQQTARGQTvkkgVfhLGEeLczFt-Tw@mail.gmail.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.4.1
 Subject: Re: [PATCH] simplebench: Fix Python syntax error (reported by LGTM)
-To: Stefan Weil <sw@weilnetz.de>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org,
  Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000a68fad05d53d631b"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.597,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20220107153019.504124-1-sw@weilnetz.de>
+ <CAFn=p-ZYr+D54GzYKt5cxuJQQTARGQTvkkgVfhLGEeLczFt-Tw@mail.gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
+In-Reply-To: <CAFn=p-ZYr+D54GzYKt5cxuJQQTARGQTvkkgVfhLGEeLczFt-Tw@mail.gmail.com>
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ NICE_REPLY_A=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -84,82 +51,126 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jan 2022 17:08:51 -0000
+X-List-Received-Date: Mon, 10 Jan 2022 17:57:15 -0000
 
---000000000000a68fad05d53d631b
-Content-Type: text/plain; charset="UTF-8"
+This is a multi-part message in MIME format.
+--------------jrovZAEWtLkQLvwAM1rP08GK
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-On Fri, Jan 7, 2022 at 10:32 AM Stefan Weil <sw@weilnetz.de> wrote:
+Am 10.01.22 um 18:08 schrieb John Snow:
 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  scripts/simplebench/bench-example.py | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> On Fri, Jan 7, 2022 at 10:32 AM Stefan Weil <sw@weilnetz.de> wrote:
 >
-> diff --git a/scripts/simplebench/bench-example.py
-> b/scripts/simplebench/bench-example.py
-> index 4864435f39..fc370691e0 100644
-> --- a/scripts/simplebench/bench-example.py
-> +++ b/scripts/simplebench/bench-example.py
-> @@ -25,7 +25,7 @@
+>     Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>     ---
+>      scripts/simplebench/bench-example.py | 2 +-
+>      1 file changed, 1 insertion(+), 1 deletion(-)
 >
->  def bench_func(env, case):
->      """ Handle one "cell" of benchmarking table. """
-> -    return bench_block_copy(env['qemu_binary'], env['cmd'], {}
-> +    return bench_block_copy(env['qemu_binary'], env['cmd'], {},
->                              case['source'], case['target'])
+>     diff --git a/scripts/simplebench/bench-example.py
+>     b/scripts/simplebench/bench-example.py
+>     index 4864435f39..fc370691e0 100644
+>     --- a/scripts/simplebench/bench-example.py
+>     +++ b/scripts/simplebench/bench-example.py
+>     @@ -25,7 +25,7 @@
+>
+>      def bench_func(env, case):
+>          """ Handle one "cell" of benchmarking table. """
+>     -    return bench_block_copy(env['qemu_binary'], env['cmd'], {}
+>     +    return bench_block_copy(env['qemu_binary'], env['cmd'], {},
+>                                  case['source'], case['target'])
 >
 >
-> --
-> 2.30.2
+>     -- 
+>     2.30.2
 >
+>
+> Good spot. If it's not too late and not a hassle, can you add a fixes: 
+> commit-id in the commit message? No big deal if not.
+>
+> Reviewed-by: John Snow <jsnow@redhat.com>
 
-Good spot. If it's not too late and not a hassle, can you add a fixes:
-commit-id in the commit message? No big deal if not.
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+Maybe that can be added locally to avoid a V2 patch. Here it is:
 
---000000000000a68fad05d53d631b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Fixes: b2fcb0c5754c2554b8406376e99a75e9e0a6b7bd
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jan 7, 2022 at 10:32 AM Stefa=
-n Weil &lt;<a href=3D"mailto:sw@weilnetz.de">sw@weilnetz.de</a>&gt; wrote:<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">Signed-off-by: S=
-tefan Weil &lt;<a href=3D"mailto:sw@weilnetz.de" target=3D"_blank">sw@weiln=
-etz.de</a>&gt;<br>
----<br>
-=C2=A0scripts/simplebench/bench-example.py | 2 +-<br>
-=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-diff --git a/scripts/simplebench/bench-example.py b/scripts/simplebench/ben=
-ch-example.py<br>
-index 4864435f39..fc370691e0 100644<br>
---- a/scripts/simplebench/bench-example.py<br>
-+++ b/scripts/simplebench/bench-example.py<br>
-@@ -25,7 +25,7 @@<br>
-<br>
-=C2=A0def bench_func(env, case):<br>
-=C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot; Handle one &quot;cell&quot; of bench=
-marking table. &quot;&quot;&quot;<br>
--=C2=A0 =C2=A0 return bench_block_copy(env[&#39;qemu_binary&#39;], env[&#39=
-;cmd&#39;], {}<br>
-+=C2=A0 =C2=A0 return bench_block_copy(env[&#39;qemu_binary&#39;], env[&#39=
-;cmd&#39;], {},<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case[&#39;source&#39;], case[&#39;target&#39=
-;])<br>
-<br>
-<br>
--- <br>
-2.30.2<br></blockquote><div><br></div><div>Good spot. If it&#39;s not too l=
-ate and not a hassle, can you add a fixes: commit-id in the commit message?=
- No big deal if not.</div><div><br></div><div>Reviewed-by: John Snow &lt;<a=
- href=3D"mailto:jsnow@redhat.com">jsnow@redhat.com</a>&gt;<br></div></div><=
-/div>
+Thanks,
 
---000000000000a68fad05d53d631b--
+Stefan
 
+
+
+--------------jrovZAEWtLkQLvwAM1rP08GK
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p>Am 10.01.22 um 18:08 schrieb John Snow:<br>
+    </p>
+    <blockquote type="cite"
+cite="mid:CAFn=p-ZYr+D54GzYKt5cxuJQQTARGQTvkkgVfhLGEeLczFt-Tw@mail.gmail.com">
+      <div dir="ltr">On Fri, Jan 7, 2022 at 10:32 AM Stefan Weil &lt;<a
+          href="mailto:sw@weilnetz.de" moz-do-not-send="true"
+          class="moz-txt-link-freetext">sw@weilnetz.de</a>&gt; wrote:<br>
+        <div class="gmail_quote">
+          <blockquote class="gmail_quote">Signed-off-by: Stefan Weil
+            &lt;<a href="mailto:sw@weilnetz.de" target="_blank"
+              moz-do-not-send="true" class="moz-txt-link-freetext">sw@weilnetz.de</a>&gt;<br>
+            ---<br>
+             scripts/simplebench/bench-example.py | 2 +-<br>
+             1 file changed, 1 insertion(+), 1 deletion(-)<br>
+            <br>
+            diff --git a/scripts/simplebench/bench-example.py
+            b/scripts/simplebench/bench-example.py<br>
+            index 4864435f39..fc370691e0 100644<br>
+            --- a/scripts/simplebench/bench-example.py<br>
+            +++ b/scripts/simplebench/bench-example.py<br>
+            @@ -25,7 +25,7 @@<br>
+            <br>
+             def bench_func(env, case):<br>
+                 """ Handle one "cell" of benchmarking table. """<br>
+            -    return bench_block_copy(env['qemu_binary'], env['cmd'],
+            {}<br>
+            +    return bench_block_copy(env['qemu_binary'], env['cmd'],
+            {},<br>
+                                         case['source'], case['target'])<br>
+            <br>
+            <br>
+            -- <br>
+            2.30.2<br>
+          </blockquote>
+          <div><br>
+          </div>
+          <div>Good spot. If it's not too late and not a hassle, can you
+            add a fixes: commit-id in the commit message? No big deal if
+            not.</div>
+          <div><br>
+          </div>
+          <div>Reviewed-by: John Snow &lt;<a
+              href="mailto:jsnow@redhat.com" moz-do-not-send="true"
+              class="moz-txt-link-freetext">jsnow@redhat.com</a>&gt;<br>
+          </div>
+        </div>
+      </div>
+    </blockquote>
+    <p><br>
+    </p>
+    <p>Maybe that can be added locally to avoid a V2 patch. Here it is:<br>
+    </p>
+    <p>Fixes: b2fcb0c5754c2554b8406376e99a75e9e0a6b7bd</p>
+    <p>Thanks,</p>
+    <p>Stefan</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>
+
+--------------jrovZAEWtLkQLvwAM1rP08GK--
 
