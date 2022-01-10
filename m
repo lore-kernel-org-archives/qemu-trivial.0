@@ -1,69 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n6z7c-0007EC-81
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jan 2022 13:10:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52622)
+	id 1n70ZP-0002k4-3C
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jan 2022 14:43:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1n6z7V-0007B2-0J
- for qemu-trivial@nongnu.org; Mon, 10 Jan 2022 13:10:13 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:51365)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1n70ZM-0002eH-D0
+ for qemu-trivial@nongnu.org; Mon, 10 Jan 2022 14:43:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:30439)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1n6z7R-0000oZ-DX
- for qemu-trivial@nongnu.org; Mon, 10 Jan 2022 13:10:11 -0500
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1n70ZI-0000hv-F8
+ for qemu-trivial@nongnu.org; Mon, 10 Jan 2022 14:43:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1641838207;
+ s=mimecast20190719; t=1641843779;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=w/QK7eXVlTY6YqofVDReUKCT0BobRz4TTDioq1E7w2g=;
- b=FMwLfuIBlmC7oczqW4cT2a6WYrhYmpYpicTNrmKryoDygJPOkYFh9SGrL0Uz8cB/BhwG/Z
- UDh/uDwVrUypns2Hts0IurYplF1MMcXXVQae3AE8ngNhpVF0B1vNO6NPtEJi2IYIAaP1NU
- PcUHeBlgqvAhM+UoUTSy3E11Ndou6iQ=
-Received: from mail-ua1-f69.google.com (mail-ua1-f69.google.com
- [209.85.222.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=KmBiP5fsc5bvudeLKFY2+j5HRVD+vUfriM7l0omGpQs=;
+ b=L1YwqreX4TQ7N+zkQQZCn4jVMrFhW8f52BdSlh7bYW4DQAtFfcH/9j6l0UTZKDEIQFuKvw
+ cql5ibIshdzSl6srT22MPMqyX69eoYnQ7dFjrKqzPh+ZbrpmLACnTKBRjO70NS8MdPWGq8
+ heugOT3pZYR7o9NykFPNzJYv7jphmEc=
+Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
+ [209.85.222.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-433-Y3aaFkS7McSv0aIBtFHowA-1; Mon, 10 Jan 2022 13:10:06 -0500
-X-MC-Unique: Y3aaFkS7McSv0aIBtFHowA-1
-Received: by mail-ua1-f69.google.com with SMTP id
- v13-20020ab05b4d000000b003041993723cso8124482uae.10
- for <qemu-trivial@nongnu.org>; Mon, 10 Jan 2022 10:10:06 -0800 (PST)
+ us-mta-209-kzBvR5q0Pmm-HYS6AoSN0g-1; Mon, 10 Jan 2022 14:42:57 -0500
+X-MC-Unique: kzBvR5q0Pmm-HYS6AoSN0g-1
+Received: by mail-ua1-f72.google.com with SMTP id
+ n1-20020a9f3141000000b003057abfef2fso5386532uab.3
+ for <qemu-trivial@nongnu.org>; Mon, 10 Jan 2022 11:42:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=w/QK7eXVlTY6YqofVDReUKCT0BobRz4TTDioq1E7w2g=;
- b=fg10SiJZuCgdUH49/fJVUFjsxGWduy4vxFiy1H2Ffhvu0T7UxoLZPi175D2HPaKoZV
- unGXBP+PWzmhMK0jynXt0hDdN6oHsLktnKr5PRD3wu+C4kMILHPw1joYoU7Yykpl77Eu
- bWVlrx5KdgM1eQeYvnjUrwSvYc5aRezO4r6aWVE0DWjv7jc6Ra7d8LZkYW41RHwQhVHM
- gDn7liNM5uqkP3LomTi4ZGrSBoimmcBUifRRFduOq+in6gydFZ2hDMdfJuuR4SKsWyTW
- 2GfQU853CFIdvFpQAg7zr8bn2LmHhb8l37mm9RKLQNG5PHoGh1rtpJltyvQUoWNBhNd2
- V7VA==
-X-Gm-Message-State: AOAM531o1CiK0jJOAlKQ3QOg2DdByNdRZXiN+/MDFzrf/QxP43OkqPsz
- gMnIXLXNk4KJZqA8vyTMn7nTK0HncU/AFktp+eg3LKGY+5bksNls6m0OzZy2w79056/7uY5uk0i
- 24ibVJORz1LUWFY+9Ga9fJZw76oG0VHpdZQ==
-X-Received: by 2002:a05:6102:3714:: with SMTP id
- s20mr191674vst.61.1641838205868; 
- Mon, 10 Jan 2022 10:10:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxM4FxRNlaY4Ow69pjmvB1uxwI/dxN0FD4zpztT/p608+3aGMSxisvLbhApUxXaLSdMM89pgyWnVMb50f6C50o=
-X-Received: by 2002:a05:6102:3714:: with SMTP id
- s20mr191668vst.61.1641838205699; 
- Mon, 10 Jan 2022 10:10:05 -0800 (PST)
+ bh=KmBiP5fsc5bvudeLKFY2+j5HRVD+vUfriM7l0omGpQs=;
+ b=z2295JhC42Hg4U5/FqmakxWYDvgODYEQ8CiyhpONILi78q0L90XXCjbwsyhe9kizV7
+ q1qt2UabBc3+z+1Vk+UxQXnPII++6Y4DnxkIK+hedRufMeZgZW/+6EfVGJorGYyu2L+Z
+ D/vZdHRUTuNgcSXWy8q6/33Q6Q2PlUgTzYcTKf1JGS7I+v/hXfDzPzlXNNQntHDXI/7h
+ NH1Zkq7f2nzmBr525OtHOnSiCWXv83PSKPgjE1XjayNYOpT99m/eeXZM+wfrgjPmEGgu
+ hfaWdsbct3OiR3dyOJZk5PGVN9Sj8iD7K5jfroh17cmBsScl798fC0bxKa+kXzzNb5zG
+ PY8A==
+X-Gm-Message-State: AOAM532kZZZkfxwsoOw8XfkgTHNsWlVNgY2c4cxYIQkUV7KqDqi4xZyU
+ y2mEZkSJT/1sWCZ7S4AZll3JV/KNaU33G5UikilY+NDB6GcNy1xMYpFvj+Iaz9bMQ/21pguIry0
+ l5MJKHVpetcWHZkchvpoWijXw5h0QvgzmiA==
+X-Received: by 2002:ab0:d97:: with SMTP id i23mr590337uak.79.1641843776541;
+ Mon, 10 Jan 2022 11:42:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyPOXCi/eI2Xfy2ssLKKrNWoHTDCWoT6zDwOX1+DYM2DnctNu0Kl0TVLJP8ZyuV8stYR/g6Wr63bo98sNprOvM=
+X-Received: by 2002:ab0:d97:: with SMTP id i23mr590326uak.79.1641843776224;
+ Mon, 10 Jan 2022 11:42:56 -0800 (PST)
 MIME-Version: 1.0
-References: <20220107153019.504124-1-sw@weilnetz.de>
- <CAFn=p-ZYr+D54GzYKt5cxuJQQTARGQTvkkgVfhLGEeLczFt-Tw@mail.gmail.com>
- <42ac8990-8733-fa68-c4b4-c54a82ce43f9@weilnetz.de>
-In-Reply-To: <42ac8990-8733-fa68-c4b4-c54a82ce43f9@weilnetz.de>
+References: <20220104143841.25116-1-email@aabouzied.com>
+ <94aebec7-0bf7-18b1-a10e-dda5f476f70b@vivier.eu>
+ <CANL98e9RO38rmP8oSmEcoop3Pr_qC741Om91Bw9FQxAZcqf2QQ@mail.gmail.com>
+ <e81ec4c9-9315-bf7f-2e74-65544664f430@vivier.eu>
+In-Reply-To: <e81ec4c9-9315-bf7f-2e74-65544664f430@vivier.eu>
 From: John Snow <jsnow@redhat.com>
-Date: Mon, 10 Jan 2022 13:09:55 -0500
-Message-ID: <CAFn=p-bgXrmUj9NXM3uKfi9V_YSDQA1_b8e-yGXrN5=G8eyYyw@mail.gmail.com>
-Subject: Re: [PATCH] simplebench: Fix Python syntax error (reported by LGTM)
-To: Stefan Weil <sw@weilnetz.de>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Date: Mon, 10 Jan 2022 14:42:45 -0500
+Message-ID: <CAFn=p-b2oY+MHFUULEL2AprD+Uyy=61g12U7EYPjb3qgr=KtOQ@mail.gmail.com>
+Subject: Re: Byte Sized task (was Re: [PATCH] linux-user/syscall.c: malloc to
+ g_try_malloc)
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: Ahmed Abouzied <email@aabouzied.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jsnow@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000079b0505d53e3f6f"
+Content-Type: multipart/alternative; boundary="0000000000000f2b6305d53f8b96"
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -33
@@ -86,138 +87,263 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jan 2022 18:10:14 -0000
+X-List-Received-Date: Mon, 10 Jan 2022 19:43:05 -0000
 
---000000000000079b0505d53e3f6f
+--0000000000000f2b6305d53f8b96
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jan 10, 2022 at 12:57 PM Stefan Weil <sw@weilnetz.de> wrote:
+On Thu, Jan 6, 2022 at 9:10 AM Laurent Vivier <laurent@vivier.eu> wrote:
 
-> Am 10.01.22 um 18:08 schrieb John Snow:
+> Hi Ahmed,
 >
-> On Fri, Jan 7, 2022 at 10:32 AM Stefan Weil <sw@weilnetz.de> wrote:
+> the email address you use for the trivial ML is broken. I've fixed it for
+> my answer and added
+> qemu-devel.
 >
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>  scripts/simplebench/bench-example.py | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/scripts/simplebench/bench-example.py
->> b/scripts/simplebench/bench-example.py
->> index 4864435f39..fc370691e0 100644
->> --- a/scripts/simplebench/bench-example.py
->> +++ b/scripts/simplebench/bench-example.py
->> @@ -25,7 +25,7 @@
->>
->>  def bench_func(env, case):
->>      """ Handle one "cell" of benchmarking table. """
->> -    return bench_block_copy(env['qemu_binary'], env['cmd'], {}
->> +    return bench_block_copy(env['qemu_binary'], env['cmd'], {},
->>                              case['source'], case['target'])
->>
->>
->> --
->> 2.30.2
->>
->
-> Good spot. If it's not too late and not a hassle, can you add a fixes:
-> commit-id in the commit message? No big deal if not.
->
-> Reviewed-by: John Snow <jsnow@redhat.com>
+> Le 05/01/2022 =C3=A0 20:09, Ahmed Abouzied a =C3=A9crit :
+> > Hello,
+> >
+> > Thanks for the review. I also found some occurrences of
+> "cpu_physical_memor_*" calls that should be
+> > replaced with "address_space_*" around the codebase as mentioned
+> > [here](https://wiki.qemu.org/Contribute/BiteSizedTasks
+> > <https://wiki.qemu.org/Contribute/BiteSizedTasks>) in the API
+> conversion section. The "/hw"
+> > directory for instance. Should I go about replacing those as well?
+> Should I create a Gitlab issue
+> > first to track the changes?
 >
 >
-> Maybe that can be added locally to avoid a V2 patch. Here it is:
+> According to the wiki, the gitlab issue are already created with the "Byt=
+e
+> Sized" label.
 >
-> Fixes: b2fcb0c5754c2554b8406376e99a75e9e0a6b7bd
+>
+> https://gitlab.com/qemu-project/qemu/-/issues?scope=3Dall&state=3Dopened&=
+label_name[]=3DBite%20Sized
+>
+> But this one is not, I think John can help you for that (added in cc:)
 >
 > Thanks,
+> Laurent
 >
-> Stefan
+> > Best regards,
+> > Ahmed
+> >
+> > On Wed, 5 Jan 2022 at 12:26, Laurent Vivier <laurent@vivier.eu <mailto:
+> laurent@vivier.eu>> wrote:
+> >
+> >     Le 04/01/2022 =C3=A0 15:38, Ahmed Abouzied a =C3=A9crit :
+> >      > Use g_try_malloc instead of malloc to alocate the target ifconfi=
+g.
+> >      > Also replace the corresponding free with g_free.
+> >      >
+> >      > Signed-off-by: Ahmed Abouzied <email@aabouzied.com <mailto:
+> email@aabouzied.com>>
+> >      > ---
+> >      >
+> >      > Hello,
+> >      >
+> >      > I noticed that there was a `malloc` call in this file. It seems
+> that it
+> >      > was added by the commit 22e4a267 (3 years ago) which was after
+> the commit
+> >      > 0e173b24 (6 years ago) that replaced malloc calls with glib
+> alternative calls.
+> >      >
+> >      > There is no issue for this on Gitlab. Should I have created an
+> issue
+> >      > first?
+> >      >
+> >      > Best regards,
+> >      >
+> >      >   linux-user/syscall.c | 4 ++--
+> >      >   1 file changed, 2 insertions(+), 2 deletions(-)
+> >      >
+> >      > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> >      > index 56a3e17183..715f9430e1 100644
+> >      > --- a/linux-user/syscall.c
+> >      > +++ b/linux-user/syscall.c
+> >      > @@ -4867,7 +4867,7 @@ static abi_long do_ioctl_ifconf(const
+> IOCTLEntry *ie, uint8_t *buf_temp,
+> >      >                * We can't fit all the extents into the fixed siz=
+e
+> buffer.
+> >      >                * Allocate one that is large enough and use it
+> instead.
+> >      >                */
+> >      > -            host_ifconf =3D malloc(outbufsz);
+> >      > +            host_ifconf =3D g_try_malloc(outbufsz);
+> >      >               if (!host_ifconf) {
+> >      >                   return -TARGET_ENOMEM;
+> >      >               }
+> >      > @@ -4915,7 +4915,7 @@ static abi_long do_ioctl_ifconf(const
+> IOCTLEntry *ie, uint8_t *buf_temp,
+> >      >       }
+> >      >
+> >      >       if (free_buf) {
+> >      > -        free(host_ifconf);
+> >      > +        g_free(host_ifconf);
+> >      >       }
+> >      >
+> >      >       return ret;
+> >
+> >     Applied to my linux-user-for-7.0 branch.
+> >
+> >     Thanks,
+> >     Laurent
+> >
 >
 >
-> Got it. I just got back from holiday today, so there's still lots of mail
-to catch up on. If nobody else has staged this, I will do so as part of my
-python fixes this week. Thanks!
+IIRC, consensus was that this task was not "bite sized", as it might
+possibly be a large task without an easily attainable "end". You don't need
+to worry about creating a GitLab issue to track it (Unless you WANT to for
+your own tracking, then go ahead and make one), but if you believe that the
+task is now *done* in its entirety, the task should be removed from the
+wiki.
+
+Feel free to send me questions if you've got any.
 
 --js
 
---000000000000079b0505d53e3f6f
+--0000000000000f2b6305d53f8b96
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jan 10, 2022 at 12:57 PM Stef=
-an Weil &lt;<a href=3D"mailto:sw@weilnetz.de">sw@weilnetz.de</a>&gt; wrote:=
-<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
-ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
- =20
-   =20
- =20
-  <div>
-    <p>Am 10.01.22 um 18:08 schrieb John Snow:<br>
-    </p>
-    <blockquote type=3D"cite">
-      <div dir=3D"ltr">On Fri, Jan 7, 2022 at 10:32 AM Stefan Weil &lt;<a h=
-ref=3D"mailto:sw@weilnetz.de" target=3D"_blank">sw@weilnetz.de</a>&gt; wrot=
-e:<br>
-        <div class=3D"gmail_quote">
-          <blockquote class=3D"gmail_quote">Signed-off-by: Stefan Weil
-            &lt;<a href=3D"mailto:sw@weilnetz.de" target=3D"_blank">sw@weil=
-netz.de</a>&gt;<br>
-            ---<br>
-            =C2=A0scripts/simplebench/bench-example.py | 2 +-<br>
-            =C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-            <br>
-            diff --git a/scripts/simplebench/bench-example.py
-            b/scripts/simplebench/bench-example.py<br>
-            index 4864435f39..fc370691e0 100644<br>
-            --- a/scripts/simplebench/bench-example.py<br>
-            +++ b/scripts/simplebench/bench-example.py<br>
-            @@ -25,7 +25,7 @@<br>
-            <br>
-            =C2=A0def bench_func(env, case):<br>
-            =C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot; Handle one &quot;cell&qu=
-ot; of benchmarking table. &quot;&quot;&quot;<br>
-            -=C2=A0 =C2=A0 return bench_block_copy(env[&#39;qemu_binary&#39=
-;], env[&#39;cmd&#39;],
-            {}<br>
-            +=C2=A0 =C2=A0 return bench_block_copy(env[&#39;qemu_binary&#39=
-;], env[&#39;cmd&#39;],
-            {},<br>
-            =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case[&#39;source&#39;], case[&#39;=
-target&#39;])<br>
-            <br>
-            <br>
-            -- <br>
-            2.30.2<br>
-          </blockquote>
-          <div><br>
-          </div>
-          <div>Good spot. If it&#39;s not too late and not a hassle, can yo=
-u
-            add a fixes: commit-id in the commit message? No big deal if
-            not.</div>
-          <div><br>
-          </div>
-          <div>Reviewed-by: John Snow &lt;<a href=3D"mailto:jsnow@redhat.co=
-m" target=3D"_blank">jsnow@redhat.com</a>&gt;<br>
-          </div>
-        </div>
-      </div>
-    </blockquote>
-    <p><br>
-    </p>
-    <p>Maybe that can be added locally to avoid a V2 patch. Here it is:<br>
-    </p>
-    <p>Fixes: b2fcb0c5754c2554b8406376e99a75e9e0a6b7bd</p>
-    <p>Thanks,</p>
-    <p>Stefan</p>
-    <p><br></p></div></blockquote><div>Got it. I just got back from holiday=
- today, so there&#39;s still lots of mail to catch up on. If nobody else ha=
-s staged this, I will do so as part of my python fixes this week. Thanks!</=
-div><div><br></div><div>--js<br></div></div></div>
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 6, 2022 at 9:10 AM Lauren=
+t Vivier &lt;<a href=3D"mailto:laurent@vivier.eu">laurent@vivier.eu</a>&gt;=
+ wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hi Ahmed=
+,<br>
+<br>
+the email address you use for the trivial ML is broken. I&#39;ve fixed it f=
+or my answer and added <br>
+qemu-devel.<br>
+<br>
+Le 05/01/2022 =C3=A0 20:09, Ahmed Abouzied a =C3=A9crit=C2=A0:<br>
+&gt; Hello,<br>
+&gt; <br>
+&gt; Thanks for the review. I also found some occurrences of &quot;cpu_phys=
+ical_memor_*&quot; calls that should be <br>
+&gt; replaced with &quot;address_space_*&quot; around the codebase as menti=
+oned <br>
+&gt; [here](<a href=3D"https://wiki.qemu.org/Contribute/BiteSizedTasks" rel=
+=3D"noreferrer" target=3D"_blank">https://wiki.qemu.org/Contribute/BiteSize=
+dTasks</a> <br>
+&gt; &lt;<a href=3D"https://wiki.qemu.org/Contribute/BiteSizedTasks" rel=3D=
+"noreferrer" target=3D"_blank">https://wiki.qemu.org/Contribute/BiteSizedTa=
+sks</a>&gt;) in the API conversion section. The &quot;/hw&quot; <br>
+&gt; directory for instance. Should I go about replacing those as well? Sho=
+uld I create a Gitlab issue <br>
+&gt; first to track the changes?<br>
+<br>
+<br>
+According to the wiki, the gitlab issue are already created with the &quot;=
+Byte Sized&quot; label.<br>
+<br>
+<a href=3D"https://gitlab.com/qemu-project/qemu/-/issues?scope=3Dall&amp;st=
+ate=3Dopened&amp;label_name[]=3DBite%20Sized" rel=3D"noreferrer" target=3D"=
+_blank">https://gitlab.com/qemu-project/qemu/-/issues?scope=3Dall&amp;state=
+=3Dopened&amp;label_name[]=3DBite%20Sized</a><br>
+<br>
+But this one is not, I think John can help you for that (added in cc:)<br>
+<br>
+Thanks,<br>
+Laurent<br>
+<br>
+&gt; Best regards,<br>
+&gt; Ahmed<br>
+&gt; <br>
+&gt; On Wed, 5 Jan 2022 at 12:26, Laurent Vivier &lt;<a href=3D"mailto:laur=
+ent@vivier.eu" target=3D"_blank">laurent@vivier.eu</a> &lt;mailto:<a href=
+=3D"mailto:laurent@vivier.eu" target=3D"_blank">laurent@vivier.eu</a>&gt;&g=
+t; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Le 04/01/2022 =C3=A0 15:38, Ahmed Abouzied a =C3=A9=
+crit=C2=A0:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Use g_try_malloc instead of malloc to alocate=
+ the target ifconfig.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Also replace the corresponding free with g_fr=
+ee.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Ahmed Abouzied &lt;<a href=3D"=
+mailto:email@aabouzied.com" target=3D"_blank">email@aabouzied.com</a> &lt;m=
+ailto:<a href=3D"mailto:email@aabouzied.com" target=3D"_blank">email@aabouz=
+ied.com</a>&gt;&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; ---<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Hello,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; I noticed that there was a `malloc` call in t=
+his file. It seems that it<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; was added by the commit 22e4a267 (3 years ago=
+) which was after the commit<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; 0e173b24 (6 years ago) that replaced malloc c=
+alls with glib alternative calls.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; There is no issue for this on Gitlab. Should =
+I have created an issue<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; first?<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Best regards,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0linux-user/syscall.c | 4 ++--<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A01 file changed, 2 insertions(+), =
+2 deletions(-)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/linux-user/syscall.c b/linux-use=
+r/syscall.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index 56a3e17183..715f9430e1 100644<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- a/linux-user/syscall.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/linux-user/syscall.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -4867,7 +4867,7 @@ static abi_long do_ioct=
+l_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 * We can&#39;t fit all the extents into the fixed size buffer.<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 * Allocate one that is large enough and use it instead.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ho=
+st_ifconf =3D malloc(outbufsz);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ho=
+st_ifconf =3D g_try_malloc(outbufsz);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0if (!host_ifconf) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0return -TARGET_ENOMEM;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -4915,7 +4915,7 @@ static abi_long do_ioct=
+l_ifconf(const IOCTLEntry *ie, uint8_t *buf_temp,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (free_buf) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 free(host_ifconf=
+);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 g_free(host_ifco=
+nf);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return ret;<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Applied to my linux-user-for-7.0 branch.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Thanks,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0Laurent<br>
+&gt; <br>
+<br></blockquote><div><br></div><div>IIRC, consensus was that this task was=
+ not &quot;bite sized&quot;, as it might possibly be a large task without a=
+n easily attainable &quot;end&quot;. You don&#39;t need to worry about crea=
+ting a GitLab issue to track it (Unless you WANT to for your own tracking, =
+then go ahead and make one), but if you believe that the task is now *done*=
+ in its entirety, the task should be removed from the wiki.</div><div><br><=
+/div><div>Feel free to send me questions if you&#39;ve got any.<br></div><d=
+iv><br></div><div>--js<br></div></div></div>
 
---000000000000079b0505d53e3f6f--
+--0000000000000f2b6305d53f8b96--
 
 
