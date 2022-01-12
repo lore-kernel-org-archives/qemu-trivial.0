@@ -1,41 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n7SeX-0008PQ-Il
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jan 2022 20:42:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46386)
+	id 1n7Siv-0004es-0C
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jan 2022 20:46:49 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n7SeU-0008Ns-Q5; Tue, 11 Jan 2022 20:42:14 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189]:4176)
+ id 1n7Sit-0004cf-OH; Tue, 11 Jan 2022 20:46:47 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:3076)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyanan55@huawei.com>)
- id 1n7SeR-0005zE-Da; Tue, 11 Jan 2022 20:42:14 -0500
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.53])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4JYVbX0LwNz8wDl;
- Wed, 12 Jan 2022 09:39:20 +0800 (CST)
+ id 1n7Sir-0006a1-Ld; Tue, 11 Jan 2022 20:46:47 -0500
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.56])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4JYVlH0L6jzbjpH;
+ Wed, 12 Jan 2022 09:46:03 +0800 (CST)
 Received: from [10.174.187.128] (10.174.187.128) by
  dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2308.20; Wed, 12 Jan 2022 09:42:01 +0800
-Subject: Re: [PATCH] qdev-core.h: Fix wrongly named reference to TYPE_SPLIT_IRQ
-To: Peter Maydell <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>
-References: <20220111172655.3546766-1-peter.maydell@linaro.org>
+ 15.1.2308.20; Wed, 12 Jan 2022 09:46:42 +0800
+Subject: Re: [PATCH] tests: Fix typo in check-help output
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>
+References: <20220111175528.22294-1-f4bug@amsat.org>
 From: "wangyanan (Y)" <wangyanan55@huawei.com>
-Message-ID: <f5f2bce4-5572-ad6d-c36e-b79406e5d9ca@huawei.com>
-Date: Wed, 12 Jan 2022 09:42:01 +0800
+Message-ID: <1fef44a0-a54d-3c18-ee3c-7a63e86cc38a@huawei.com>
+Date: Wed, 12 Jan 2022 09:46:41 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20220111172655.3546766-1-peter.maydell@linaro.org>
+In-Reply-To: <20220111175528.22294-1-f4bug@amsat.org>
 Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Content-Language: en-US
 X-Originating-IP: [10.174.187.128]
-X-ClientProxiedBy: dggeme704-chm.china.huawei.com (10.1.199.100) To
+X-ClientProxiedBy: dggeme712-chm.china.huawei.com (10.1.199.108) To
  dggpemm500023.china.huawei.com (7.185.36.83)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=wangyanan55@huawei.com; helo=szxga03-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=wangyanan55@huawei.com; helo=szxga02-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -54,30 +55,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jan 2022 01:42:15 -0000
+X-List-Received-Date: Wed, 12 Jan 2022 01:46:48 -0000
 
 
-On 2022/1/12 1:26, Peter Maydell wrote:
-> Fix a comment in qdev-core.h where we incorrectly referred
-> to TYPE_IRQ_SPLIT when we meant TYPE_SPLIT_IRQ.
+On 2022/1/12 1:55, Philippe Mathieu-Daudé wrote:
+> Fix typo in 'make check-help' output.
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->   include/hw/qdev-core.h | 2 +-
+>   tests/Makefile.include | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index d19c9417520..92c3d652086 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -493,7 +493,7 @@ qemu_irq qdev_get_gpio_in_named(DeviceState *dev, const char *name, int n);
->    * qemu_irqs at once, or to connect multiple outbound GPIOs to the
->    * same qemu_irq. (Warning: there is no assertion or other guard to
->    * catch this error: the model will just not do the right thing.)
-> - * Instead, for fan-out you can use the TYPE_IRQ_SPLIT device: connect
-> + * Instead, for fan-out you can use the TYPE_SPLIT_IRQ device: connect
->    * a device's outbound GPIO to the splitter's input, and connect each
->    * of the splitter's outputs to a different device.  For fan-in you
->    * can use the TYPE_OR_IRQ device, which is a model of a logical OR
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 4c564cf7899..3aba6224009 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -23,7 +23,7 @@ endif
+>   	@echo " $(MAKE) check-clean          Clean the tests and related data"
+>   	@echo
+>   	@echo "The following are useful for CI builds"
+> -	@echo " $(MAKE) check-build          Build most test binaris"
+> +	@echo " $(MAKE) check-build          Build most test binaries"
+>   	@echo " $(MAKE) get-vm-images        Downloads all images used by avocado tests, according to configured targets (~350 MB each, 1.5 GB max)"
+>   	@echo
+>   	@echo
 Reviewed-by: Yanan Wang <wangyanan55@huawei.com>
 
