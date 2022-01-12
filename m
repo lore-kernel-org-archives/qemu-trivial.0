@@ -1,64 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n7g5T-0008Qc-HD
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jan 2022 11:02:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45448)
+	id 1n7h4d-0008OF-Ce
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jan 2022 12:06:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1n7g5Q-0008JR-W6
- for qemu-trivial@nongnu.org; Wed, 12 Jan 2022 11:02:57 -0500
-Received: from [2a00:1450:4864:20::335] (port=43747
- helo=mail-wm1-x335.google.com)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1n7h4b-0008I1-KY
+ for qemu-trivial@nongnu.org; Wed, 12 Jan 2022 12:06:09 -0500
+Received: from [2a00:1450:4864:20::42e] (port=41530
+ helo=mail-wr1-x42e.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1n7g5M-000186-9A
- for qemu-trivial@nongnu.org; Wed, 12 Jan 2022 11:02:53 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- o203-20020a1ca5d4000000b003477d032384so1893152wme.2
- for <qemu-trivial@nongnu.org>; Wed, 12 Jan 2022 08:02:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1n7h4Z-0004Iv-Us
+ for qemu-trivial@nongnu.org; Wed, 12 Jan 2022 12:06:09 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id v6so5400987wra.8
+ for <qemu-trivial@nongnu.org>; Wed, 12 Jan 2022 09:06:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JtP/OBWv3oGBCGkDc1JxKU9quAN1EqYPaTLl6hCCSDo=;
- b=H+5vOufPhIBz0z0+TumsIKIBf9nlHEuAMHerKiygG+iKzEtpHwqNTT1sG8BMao1jpr
- Bc+MEAObA5uTkHHFqyTZqbsNq+HQfgjFacUcN5F/NuuVbebYD8HkgXA1O1WfXwLY9Sen
- 8b0iimnEZpKWN1iGqd99FSRmDeQn1tW83Y30nNc9SK8GY/RNs1pFgOZa03r7rGcdiWbw
- JWKrObblWL/A6toxn+UTpf93Medj3bgBzC8N6o3e8oMSpFMr+MlxHkVF32GBt0qsK0ak
- Yh6v2ZfCwX0Wd4Sw5ae/wlY2fXA4vjmitXjtUGWliLRCGGirtDLnJtY0PASrAYJ0R7Is
- LFwA==
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=N0o08J2eeJ2usJ3KVRna3CwSwhqUYmecvtj6wjkJb8U=;
+ b=EJeXW2y1JX0XNV6uMD3OCQrjhwTXKf2XeKcNquGC9HPeFLartgUi+lhLIe9sAariTD
+ ZQezLW615r0KroNUFtZZPYbvbK/hUbIjtcR01xHQYX+JNJM2dTnHK7arXhuqCN3oY6vx
+ kZJuQoN0aJtILVDnS8ADAPLKTU8lVFbh7feHvV/I6rqryAsIQKklgdcn/hEB1uwyQf67
+ puAzW1bjKpEcOqHYm1SA2LwYtN7lEAQkKRVmfDB5JCGkkY+Qdkscm9yTXlmVfsf+3+xd
+ usxgQHM+c5pGdyauyJApXsRopYFAJHb5+Esrs9zVCPgonVbawsqqtCGwecUOjb00yQw6
+ vU5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=JtP/OBWv3oGBCGkDc1JxKU9quAN1EqYPaTLl6hCCSDo=;
- b=Gah5TWbWo7Eb1qH9k+jEBXS0bX2z9DuqO7+7nwHn1SBeYj2aT7VcExSbVPE0V4/F89
- MejC3ucEpJKZ6va9p9PuGDu2hbcen277erx2rw5swaQTFjADc/DkxxR5+UaQgfBzuUAo
- +7p4Bhj28sYySftgvYPorukaKJ6GuQ2j8ujRpOFlzKFHFdT3sKc14zsgQ+f7hB5EPPta
- 1ZlbsKhTdIyWTbLz4mCE2dH3Ij/7oEqhuzqbVd/dou3Wx360WNz/99FvxXSjGYivs9XV
- yyhv4qSnB0KdUAZynZvqivdzomJYr1O/beBpKtgCVzfZqYxiwRo+Ero7hj6OtkmF4fEA
- seUw==
-X-Gm-Message-State: AOAM532lKRHbEDN3vq5BSK2ogT9w9Y9OOeuV8YwHGTLBfo9/Chvh42+F
- er/SNwZc//b5cq1ZMuOX3M+Yxq0gJGt76d/fbTUOSQ==
-X-Google-Smtp-Source: ABdhPJwnWbbyxVUMESxMGkDUxfCTCRaqaXDI5AlS80ycOBM0Y1VYang3hOYw5W/jX74J2OCbiaZbN8XWMj3mN7j4Zso=
-X-Received: by 2002:a05:600c:154c:: with SMTP id
- f12mr3285887wmg.126.1642003369141; 
- Wed, 12 Jan 2022 08:02:49 -0800 (PST)
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=N0o08J2eeJ2usJ3KVRna3CwSwhqUYmecvtj6wjkJb8U=;
+ b=t/Z+an6DncBhYdWfjNRcLS1l4wo9O5JfZlCZ5Am/c8ybnCg4QpY0CJ3uh1Osq7azAS
+ Tl0585Rvdigii9NtWXCOzLBJblcBbQRAdJyqdw3XBkV0Si5asgnH/y+f2yT0ui+IL+9k
+ qj/zRDt9IVdW8zBIdmze6zva3+GhSlKVeWYthgq9jfDnJe59c0TpSC6zu4NDqV0Ig7eV
+ FLoS5i80m4yUdlw4UgQPv5hEHlvjHnVfIh/TVaMnDu/3gERDAnR36Q9ryWQTtz/RCMfZ
+ fUR/JXJF7Sq+Ji85id4CZz64Mp0I/2j6auetsgIUt/XIQlOQlUTf+GUO2spxcVp0wgkN
+ lOww==
+X-Gm-Message-State: AOAM533WevxlOISZsFbhQQFRh7sijC8M4AsP0HYxVShtsZQSstZBoWt2
+ vjvru0AdURMdoMqGudVNygojzg==
+X-Google-Smtp-Source: ABdhPJy/aksIen9WrudOUrNIniQmj+pvkAT2GeDehKD89F7pebj5kqnUX/HH1aMUyHPK3Gbi+xcD7g==
+X-Received: by 2002:a5d:4087:: with SMTP id o7mr573520wrp.189.1642007165923;
+ Wed, 12 Jan 2022 09:06:05 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id az4sm363449wrb.14.2022.01.12.09.06.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Jan 2022 09:06:05 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 882151FFB7;
+ Wed, 12 Jan 2022 17:06:04 +0000 (GMT)
+References: <20220111175528.22294-1-f4bug@amsat.org>
+User-agent: mu4e 1.7.5; emacs 28.0.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH] tests: Fix typo in check-help output
+Date: Wed, 12 Jan 2022 17:05:59 +0000
+In-reply-to: <20220111175528.22294-1-f4bug@amsat.org>
+Message-ID: <87lezkanpf.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20211106105623.510868-1-f4bug@amsat.org>
- <8f417138-a3bb-7d07-bda9-db4740550f2f@amsat.org>
- <5cad7d04-1699-35d2-8d96-b236d451101d@linaro.org>
-In-Reply-To: <5cad7d04-1699-35d2-8d96-b236d451101d@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 12 Jan 2022 16:02:38 +0000
-Message-ID: <CAFEAcA8m=uX6ju-4CN6rac4v0Dun2d-Qn1gtReHLaKFjvEt6zg@mail.gmail.com>
-Subject: Re: [PATCH] hw/timer/etraxfs_timer: Add vmstate for ETRAX timers
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::335
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -78,20 +83,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jan 2022 16:02:57 -0000
+X-List-Received-Date: Wed, 12 Jan 2022 17:06:10 -0000
 
-On Sat, 18 Dec 2021 at 02:28, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> What I don't understand is how these controls get applied to qemu_irq after vmload, here
-> or in any other device.  It seems like we should have some post_load hook that calls
-> timer_update_irq, etc.
 
-Very late answer, but: we don't need to call qemu_set_irq() on
-qemu_irqs outbound from a device after a vmload, because IRQ
-lines themselves have no state. The device on the other end of
-the irq line also loads its own state, and typically that includes
-its internal variables which it uses to track whether its input
-lines are 0 or 1.
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
--- PMM
+> Fix typo in 'make check-help' output.
+
+Queued to testing/next, thanks.
+
+--=20
+Alex Benn=C3=A9e
 
