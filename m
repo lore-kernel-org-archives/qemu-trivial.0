@@ -1,55 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n7ert-0004Mm-C4
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jan 2022 09:44:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44184)
+	id 1n7g5T-0008Qc-HD
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jan 2022 11:02:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45448)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n7err-0004JL-6k; Wed, 12 Jan 2022 09:44:51 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:38887)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n7erp-0002w2-Ka; Wed, 12 Jan 2022 09:44:50 -0500
-Received: from [192.168.100.1] ([82.142.23.158]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MOm9H-1mi1tq22QR-00QCM6; Wed, 12 Jan 2022 15:44:37 +0100
-Message-ID: <4f99783d-5ed4-f798-bd04-7906161adb40@vivier.eu>
-Date: Wed, 12 Jan 2022 15:44:35 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n7g5Q-0008JR-W6
+ for qemu-trivial@nongnu.org; Wed, 12 Jan 2022 11:02:57 -0500
+Received: from [2a00:1450:4864:20::335] (port=43747
+ helo=mail-wm1-x335.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1n7g5M-000186-9A
+ for qemu-trivial@nongnu.org; Wed, 12 Jan 2022 11:02:53 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ o203-20020a1ca5d4000000b003477d032384so1893152wme.2
+ for <qemu-trivial@nongnu.org>; Wed, 12 Jan 2022 08:02:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JtP/OBWv3oGBCGkDc1JxKU9quAN1EqYPaTLl6hCCSDo=;
+ b=H+5vOufPhIBz0z0+TumsIKIBf9nlHEuAMHerKiygG+iKzEtpHwqNTT1sG8BMao1jpr
+ Bc+MEAObA5uTkHHFqyTZqbsNq+HQfgjFacUcN5F/NuuVbebYD8HkgXA1O1WfXwLY9Sen
+ 8b0iimnEZpKWN1iGqd99FSRmDeQn1tW83Y30nNc9SK8GY/RNs1pFgOZa03r7rGcdiWbw
+ JWKrObblWL/A6toxn+UTpf93Medj3bgBzC8N6o3e8oMSpFMr+MlxHkVF32GBt0qsK0ak
+ Yh6v2ZfCwX0Wd4Sw5ae/wlY2fXA4vjmitXjtUGWliLRCGGirtDLnJtY0PASrAYJ0R7Is
+ LFwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JtP/OBWv3oGBCGkDc1JxKU9quAN1EqYPaTLl6hCCSDo=;
+ b=Gah5TWbWo7Eb1qH9k+jEBXS0bX2z9DuqO7+7nwHn1SBeYj2aT7VcExSbVPE0V4/F89
+ MejC3ucEpJKZ6va9p9PuGDu2hbcen277erx2rw5swaQTFjADc/DkxxR5+UaQgfBzuUAo
+ +7p4Bhj28sYySftgvYPorukaKJ6GuQ2j8ujRpOFlzKFHFdT3sKc14zsgQ+f7hB5EPPta
+ 1ZlbsKhTdIyWTbLz4mCE2dH3Ij/7oEqhuzqbVd/dou3Wx360WNz/99FvxXSjGYivs9XV
+ yyhv4qSnB0KdUAZynZvqivdzomJYr1O/beBpKtgCVzfZqYxiwRo+Ero7hj6OtkmF4fEA
+ seUw==
+X-Gm-Message-State: AOAM532lKRHbEDN3vq5BSK2ogT9w9Y9OOeuV8YwHGTLBfo9/Chvh42+F
+ er/SNwZc//b5cq1ZMuOX3M+Yxq0gJGt76d/fbTUOSQ==
+X-Google-Smtp-Source: ABdhPJwnWbbyxVUMESxMGkDUxfCTCRaqaXDI5AlS80ycOBM0Y1VYang3hOYw5W/jX74J2OCbiaZbN8XWMj3mN7j4Zso=
+X-Received: by 2002:a05:600c:154c:: with SMTP id
+ f12mr3285887wmg.126.1642003369141; 
+ Wed, 12 Jan 2022 08:02:49 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH] tests: Fix typo in check-help output
-Content-Language: fr
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>
-References: <20220111175528.22294-1-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220111175528.22294-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:0sHglb3v4mt0STluwAhT9/oHnSYMixgylRpu9SyKqXnSEd/lAre
- ZkV16Sjxph3O6Ki2q6axAaaujWYz3fFW8LoXAZmpnApPUqnpno55qydg+J6uFOrKuhusLLH
- UBFH6zqgcf6aIqkNrTByHZr4hTL5w3/UNTcbUe0AInTnmSUgX5dRq2epoeGjDN7nMT6HeAH
- AV4Rmn+fLVqe4rnu2nAgQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pIlkVx3l5oI=:tipSs9kTht7PZiwJ6Ojx+Q
- c31ymUOd2AMmfunvRXAQnIJ9T4HFHoRGvFd4q+WqFDc6rs74l/bO3St5b2xgl4ct5n2u82fkY
- Sdv9INx0LzWFHZ3JdvaCCt4ZlplTsmKUK4weCek/sMNVbUK/DrYow1CDyfmxPfFwFigz67y6y
- Ve5ts+9JPBemRiJG2WwN39xFrwa+jJ+TBi/GxNBhum94IRpXUefDyTB1Rx86h7J9HCuWz4Pg/
- 040Zu+Z2hAxYjrFDd2goeWuzYG0EmVmxIDvXrmHAmzay1bwk1TBJEDF3aGax19x2rfi40awvE
- KOqumQFKZbjDSixSRMr35BDuTUZYekdr6UkbFWLq6X3w0stUeFUH0K4yN1QhTRC13s3/g8Z5G
- ssVyrjC840wRDIIjXtfPzw/upsgiG0VTe/L6no7rDPF0ZfEtGJoRwacIbDlZ/tetVQhx9Kooj
- Crmo1KNYChb0DSupfRzECIPpTQIbma5nCNAAADj7AoH3B4IwVdGCdgyxr53S7pnUOwsTo+7mY
- ks9IMVYr83oXNqsogDyzXwtoUI6uTSzbpvafoX+semYTuseTBLGEl7ihSTy2uam29SlibSO26
- NeY0F8402CeNTGDh1b4GOXwJsd47qDlKyPSX0SYKt2DRrn0BGgtYWWH5PfBC0u6BILVmFPSGe
- i0QZBi4+jg2y9hBywVWXJQwPHa+fS3SL0ddGjnPAhAAvxdrPx8ao5oWgFXPW4bzWiGy4=
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <20211106105623.510868-1-f4bug@amsat.org>
+ <8f417138-a3bb-7d07-bda9-db4740550f2f@amsat.org>
+ <5cad7d04-1699-35d2-8d96-b236d451101d@linaro.org>
+In-Reply-To: <5cad7d04-1699-35d2-8d96-b236d451101d@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 12 Jan 2022 16:02:38 +0000
+Message-ID: <CAFEAcA8m=uX6ju-4CN6rac4v0Dun2d-Qn1gtReHLaKFjvEt6zg@mail.gmail.com>
+Subject: Re: [PATCH] hw/timer/etraxfs_timer: Add vmstate for ETRAX timers
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::335
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,33 +78,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jan 2022 14:44:51 -0000
+X-List-Received-Date: Wed, 12 Jan 2022 16:02:57 -0000
 
-Le 11/01/2022 à 18:55, Philippe Mathieu-Daudé a écrit :
-> Fix typo in 'make check-help' output.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   tests/Makefile.include | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index 4c564cf7899..3aba6224009 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -23,7 +23,7 @@ endif
->   	@echo " $(MAKE) check-clean          Clean the tests and related data"
->   	@echo
->   	@echo "The following are useful for CI builds"
-> -	@echo " $(MAKE) check-build          Build most test binaris"
-> +	@echo " $(MAKE) check-build          Build most test binaries"
->   	@echo " $(MAKE) get-vm-images        Downloads all images used by avocado tests, according to configured targets (~350 MB each, 1.5 GB max)"
->   	@echo
->   	@echo
+On Sat, 18 Dec 2021 at 02:28, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> What I don't understand is how these controls get applied to qemu_irq after vmload, here
+> or in any other device.  It seems like we should have some post_load hook that calls
+> timer_update_irq, etc.
 
+Very late answer, but: we don't need to call qemu_set_irq() on
+qemu_irqs outbound from a device after a vmload, because IRQ
+lines themselves have no state. The device on the other end of
+the irq line also loads its own state, and typically that includes
+its internal variables which it uses to track whether its input
+lines are 0 or 1.
 
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
+-- PMM
 
