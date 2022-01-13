@@ -1,77 +1,103 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n7h4d-0008OF-Ce
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jan 2022 12:06:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44122)
+	id 1n84Fy-0000Ks-So
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jan 2022 12:51:26 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1n7h4b-0008I1-KY
- for qemu-trivial@nongnu.org; Wed, 12 Jan 2022 12:06:09 -0500
-Received: from [2a00:1450:4864:20::42e] (port=41530
- helo=mail-wr1-x42e.google.com)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1n83ct-0001fL-8d; Thu, 13 Jan 2022 12:11:04 -0500
+Received: from [2a00:1450:4864:20::444] (port=46805
+ helo=mail-wr1-x444.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1n7h4Z-0004Iv-Us
- for qemu-trivial@nongnu.org; Wed, 12 Jan 2022 12:06:09 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id v6so5400987wra.8
- for <qemu-trivial@nongnu.org>; Wed, 12 Jan 2022 09:06:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:date:in-reply-to
- :message-id:mime-version:content-transfer-encoding;
- bh=N0o08J2eeJ2usJ3KVRna3CwSwhqUYmecvtj6wjkJb8U=;
- b=EJeXW2y1JX0XNV6uMD3OCQrjhwTXKf2XeKcNquGC9HPeFLartgUi+lhLIe9sAariTD
- ZQezLW615r0KroNUFtZZPYbvbK/hUbIjtcR01xHQYX+JNJM2dTnHK7arXhuqCN3oY6vx
- kZJuQoN0aJtILVDnS8ADAPLKTU8lVFbh7feHvV/I6rqryAsIQKklgdcn/hEB1uwyQf67
- puAzW1bjKpEcOqHYm1SA2LwYtN7lEAQkKRVmfDB5JCGkkY+Qdkscm9yTXlmVfsf+3+xd
- usxgQHM+c5pGdyauyJApXsRopYFAJHb5+Esrs9zVCPgonVbawsqqtCGwecUOjb00yQw6
- vU5g==
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1n83cn-0007N1-09; Thu, 13 Jan 2022 12:11:01 -0500
+Received: by mail-wr1-x444.google.com with SMTP id l25so11288328wrb.13;
+ Thu, 13 Jan 2022 09:10:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=CSAtvbWfdrT0lmUK8NUHAYG5g7V1Ztn14ZRrTnDwyto=;
+ b=SSmAXm7jCvPtxBRBSr8/D22LAl8xNYoYCofn0HGgQA1RhUgKV8OA2zOgzmRwfddHWF
+ sDW1lyQt8Ny6T8jxd0Hsq7Sm3/QkOI57ypkR9GhHG/5imTcOLtGYr5aykNoN6dj21Pk/
+ ZUdMz1amiDdZbTQFrldmAFRI+o20aS4l4gcCfgqlVWDNtv1cnxy1PlwHyvLuU2+BzLcs
+ irxiY1HiI6qFvAUKMAboOHCjLIqDxbSMKrrL7J6pl4EWO9TqP7+vbwIBBabiexyo3FNi
+ MU2aB3CIhQRceWNtU2H5zzFlkxvOTjWW/fOoPCs+Tdzx7XgM8UJ3K3dV1s3aNJW6x3TW
+ 4xcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
- :in-reply-to:message-id:mime-version:content-transfer-encoding;
- bh=N0o08J2eeJ2usJ3KVRna3CwSwhqUYmecvtj6wjkJb8U=;
- b=t/Z+an6DncBhYdWfjNRcLS1l4wo9O5JfZlCZ5Am/c8ybnCg4QpY0CJ3uh1Osq7azAS
- Tl0585Rvdigii9NtWXCOzLBJblcBbQRAdJyqdw3XBkV0Si5asgnH/y+f2yT0ui+IL+9k
- qj/zRDt9IVdW8zBIdmze6zva3+GhSlKVeWYthgq9jfDnJe59c0TpSC6zu4NDqV0Ig7eV
- FLoS5i80m4yUdlw4UgQPv5hEHlvjHnVfIh/TVaMnDu/3gERDAnR36Q9ryWQTtz/RCMfZ
- fUR/JXJF7Sq+Ji85id4CZz64Mp0I/2j6auetsgIUt/XIQlOQlUTf+GUO2spxcVp0wgkN
- lOww==
-X-Gm-Message-State: AOAM533WevxlOISZsFbhQQFRh7sijC8M4AsP0HYxVShtsZQSstZBoWt2
- vjvru0AdURMdoMqGudVNygojzg==
-X-Google-Smtp-Source: ABdhPJy/aksIen9WrudOUrNIniQmj+pvkAT2GeDehKD89F7pebj5kqnUX/HH1aMUyHPK3Gbi+xcD7g==
-X-Received: by 2002:a5d:4087:: with SMTP id o7mr573520wrp.189.1642007165923;
- Wed, 12 Jan 2022 09:06:05 -0800 (PST)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id az4sm363449wrb.14.2022.01.12.09.06.05
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=CSAtvbWfdrT0lmUK8NUHAYG5g7V1Ztn14ZRrTnDwyto=;
+ b=dkII/0RCequY8uiwicJKuYsXbZeAhHrX2+Fy5a3WlMvZlDzdonC4sHnxHH9rnC/c3t
+ uGFpBBYh/XmbzlGuwjhJkmC0WwmgaWcqQlaBW5Wc+g7TfBeFLUqLksWIhoSYiPoYQRUw
+ mCOgTUbt6OYKHYvodMXmYWlLU5pHNk8GeLL2Xh+WVbGd5LLctJqptHrlh/zk3SGOKhj6
+ Zz35j0OgNo/KepG0eWLgkHjMV4GG5cQku9IU4q2D97m4aXQn3qsEKq51oYwzCbS2QXYX
+ Gs3V8ALqgKvdVjFa+a23xo8esGJpKizXfxKQsDJc0NbPcCb99UgIgrC0D2zOBWcE5Rno
+ RD8Q==
+X-Gm-Message-State: AOAM5334hN+J5ggQQp5bGoYG6RBPhIPrJM8R2MLzQ4q8JnOSsjMnOCV5
+ XhDesYogHZuxV55Kri38gpriZqd66UvV/ooTjaemww==
+X-Google-Smtp-Source: ABdhPJylx5icGNkROcpKw3yNDbyJEPhQt8WYDSmnvXws4sZvlQbRNk2guPcSqIckBnPf1QNj1tQiJg==
+X-Received: by 2002:adf:d4c8:: with SMTP id w8mr4886496wrk.137.1642093853284; 
+ Thu, 13 Jan 2022 09:10:53 -0800 (PST)
+Received: from osoxes.fritz.box (mue-88-130-49-176.dsl.tropolys.de.
+ [88.130.49.176])
+ by smtp.gmail.com with ESMTPSA id a20sm2833690wmb.27.2022.01.13.09.10.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Jan 2022 09:06:05 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 882151FFB7;
- Wed, 12 Jan 2022 17:06:04 +0000 (GMT)
-References: <20220111175528.22294-1-f4bug@amsat.org>
-User-agent: mu4e 1.7.5; emacs 28.0.91
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] tests: Fix typo in check-help output
-Date: Wed, 12 Jan 2022 17:05:59 +0000
-In-reply-to: <20220111175528.22294-1-f4bug@amsat.org>
-Message-ID: <87lezkanpf.fsf@linaro.org>
+ Thu, 13 Jan 2022 09:10:52 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Corey Minyard <minyard@acm.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Fam Zheng <fam@euphon.net>, Beniamino Galvani <b.galvani@gmail.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ Tyrone Ting <kfting@nuvoton.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org (open list:Raspberry Pi),
+ qemu-ppc@nongnu.org (open list:e500),
+ qemu-s390x@nongnu.org (open list:S390 PCI)
+Subject: [PATCH] Mark remaining global TypeInfo instances as const
+Date: Thu, 13 Jan 2022 18:10:37 +0100
+Message-Id: <20220113171038.18128-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42e
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::444
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x444.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
 X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 13 Jan 2022 12:51:18 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,15 +109,586 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jan 2022 17:06:10 -0000
+X-List-Received-Date: Thu, 13 Jan 2022 17:11:05 -0000
 
+More than 1k of TypeInfo instances are already marked as const. Mark the
+remaining ones, too.
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/core/generic-loader.c   | 2 +-
+ hw/core/guest-loader.c     | 2 +-
+ hw/display/bcm2835_fb.c    | 2 +-
+ hw/display/i2c-ddc.c       | 2 +-
+ hw/display/macfb.c         | 4 ++--
+ hw/display/virtio-vga.c    | 2 +-
+ hw/dma/bcm2835_dma.c       | 2 +-
+ hw/i386/pc_piix.c          | 2 +-
+ hw/i386/sgx-epc.c          | 2 +-
+ hw/intc/bcm2835_ic.c       | 2 +-
+ hw/intc/bcm2836_control.c  | 2 +-
+ hw/ipmi/ipmi.c             | 4 ++--
+ hw/mem/nvdimm.c            | 2 +-
+ hw/mem/pc-dimm.c           | 2 +-
+ hw/misc/bcm2835_mbox.c     | 2 +-
+ hw/misc/bcm2835_powermgt.c | 2 +-
+ hw/misc/bcm2835_property.c | 2 +-
+ hw/misc/bcm2835_rng.c      | 2 +-
+ hw/misc/pvpanic-isa.c      | 2 +-
+ hw/misc/pvpanic-pci.c      | 2 +-
+ hw/net/fsl_etsec/etsec.c   | 2 +-
+ hw/ppc/prep_systemio.c     | 2 +-
+ hw/ppc/spapr_iommu.c       | 2 +-
+ hw/s390x/s390-pci-bus.c    | 2 +-
+ hw/s390x/sclp.c            | 2 +-
+ hw/s390x/tod-kvm.c         | 2 +-
+ hw/s390x/tod-tcg.c         | 2 +-
+ hw/s390x/tod.c             | 2 +-
+ hw/scsi/lsi53c895a.c       | 2 +-
+ hw/sd/allwinner-sdhost.c   | 2 +-
+ hw/sd/aspeed_sdhci.c       | 2 +-
+ hw/sd/bcm2835_sdhost.c     | 2 +-
+ hw/sd/cadence_sdhci.c      | 2 +-
+ hw/sd/npcm7xx_sdhci.c      | 2 +-
+ hw/usb/dev-mtp.c           | 2 +-
+ hw/usb/host-libusb.c       | 2 +-
+ hw/vfio/igd.c              | 2 +-
+ hw/virtio/virtio-pmem.c    | 2 +-
+ qom/object.c               | 4 ++--
+ 39 files changed, 42 insertions(+), 42 deletions(-)
 
-> Fix typo in 'make check-help' output.
+diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
+index 9a24ffb880..eaafc416f4 100644
+--- a/hw/core/generic-loader.c
++++ b/hw/core/generic-loader.c
+@@ -207,7 +207,7 @@ static void generic_loader_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+-static TypeInfo generic_loader_info = {
++static const TypeInfo generic_loader_info = {
+     .name = TYPE_GENERIC_LOADER,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(GenericLoaderState),
+diff --git a/hw/core/guest-loader.c b/hw/core/guest-loader.c
+index d3f9d1a06e..391c875a29 100644
+--- a/hw/core/guest-loader.c
++++ b/hw/core/guest-loader.c
+@@ -129,7 +129,7 @@ static void guest_loader_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+-static TypeInfo guest_loader_info = {
++static const TypeInfo guest_loader_info = {
+     .name = TYPE_GUEST_LOADER,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(GuestLoaderState),
+diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+index 2be77bdd3a..088fc3d51c 100644
+--- a/hw/display/bcm2835_fb.c
++++ b/hw/display/bcm2835_fb.c
+@@ -454,7 +454,7 @@ static void bcm2835_fb_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_fb;
+ }
+ 
+-static TypeInfo bcm2835_fb_info = {
++static const TypeInfo bcm2835_fb_info = {
+     .name          = TYPE_BCM2835_FB,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835FBState),
+diff --git a/hw/display/i2c-ddc.c b/hw/display/i2c-ddc.c
+index 13eb529fc1..146489518c 100644
+--- a/hw/display/i2c-ddc.c
++++ b/hw/display/i2c-ddc.c
+@@ -113,7 +113,7 @@ static void i2c_ddc_class_init(ObjectClass *oc, void *data)
+     isc->send = i2c_ddc_tx;
+ }
+ 
+-static TypeInfo i2c_ddc_info = {
++static const TypeInfo i2c_ddc_info = {
+     .name = TYPE_I2CDDC,
+     .parent = TYPE_I2C_SLAVE,
+     .instance_size = sizeof(I2CDDCState),
+diff --git a/hw/display/macfb.c b/hw/display/macfb.c
+index 4bd7c3ad6a..69c2ea2b6e 100644
+--- a/hw/display/macfb.c
++++ b/hw/display/macfb.c
+@@ -783,14 +783,14 @@ static void macfb_nubus_class_init(ObjectClass *klass, void *data)
+     device_class_set_props(dc, macfb_nubus_properties);
+ }
+ 
+-static TypeInfo macfb_sysbus_info = {
++static const TypeInfo macfb_sysbus_info = {
+     .name          = TYPE_MACFB,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(MacfbSysBusState),
+     .class_init    = macfb_sysbus_class_init,
+ };
+ 
+-static TypeInfo macfb_nubus_info = {
++static const TypeInfo macfb_nubus_info = {
+     .name          = TYPE_NUBUS_MACFB,
+     .parent        = TYPE_NUBUS_DEVICE,
+     .instance_size = sizeof(MacfbNubusState),
+diff --git a/hw/display/virtio-vga.c b/hw/display/virtio-vga.c
+index b23a75a04b..5a2f7a4540 100644
+--- a/hw/display/virtio-vga.c
++++ b/hw/display/virtio-vga.c
+@@ -220,7 +220,7 @@ static void virtio_vga_base_class_init(ObjectClass *klass, void *data)
+                                    virtio_vga_set_big_endian_fb);
+ }
+ 
+-static TypeInfo virtio_vga_base_info = {
++static const TypeInfo virtio_vga_base_info = {
+     .name          = TYPE_VIRTIO_VGA_BASE,
+     .parent        = TYPE_VIRTIO_PCI,
+     .instance_size = sizeof(VirtIOVGABase),
+diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
+index eb0002a2b9..5e9306110d 100644
+--- a/hw/dma/bcm2835_dma.c
++++ b/hw/dma/bcm2835_dma.c
+@@ -394,7 +394,7 @@ static void bcm2835_dma_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_dma;
+ }
+ 
+-static TypeInfo bcm2835_dma_info = {
++static const TypeInfo bcm2835_dma_info = {
+     .name          = TYPE_BCM2835_DMA,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835DMAState),
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 7c7790a5ce..f6557d3c21 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -865,7 +865,7 @@ static void isa_bridge_class_init(ObjectClass *klass, void *data)
+     k->class_id     = PCI_CLASS_BRIDGE_ISA;
+ };
+ 
+-static TypeInfo isa_bridge_info = {
++static const TypeInfo isa_bridge_info = {
+     .name          = "igd-passthrough-isa-bridge",
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIDevice),
+diff --git a/hw/i386/sgx-epc.c b/hw/i386/sgx-epc.c
+index 96b2940d75..d664829d35 100644
+--- a/hw/i386/sgx-epc.c
++++ b/hw/i386/sgx-epc.c
+@@ -167,7 +167,7 @@ static void sgx_epc_class_init(ObjectClass *oc, void *data)
+     mdc->fill_device_info = sgx_epc_md_fill_device_info;
+ }
+ 
+-static TypeInfo sgx_epc_info = {
++static const TypeInfo sgx_epc_info = {
+     .name          = TYPE_SGX_EPC,
+     .parent        = TYPE_DEVICE,
+     .instance_size = sizeof(SGXEPCDevice),
+diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
+index 9000d995e8..4513fad16f 100644
+--- a/hw/intc/bcm2835_ic.c
++++ b/hw/intc/bcm2835_ic.c
+@@ -227,7 +227,7 @@ static void bcm2835_ic_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_ic;
+ }
+ 
+-static TypeInfo bcm2835_ic_info = {
++static const TypeInfo bcm2835_ic_info = {
+     .name          = TYPE_BCM2835_IC,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835ICState),
+diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
+index 2ead76ffdc..b0589df188 100644
+--- a/hw/intc/bcm2836_control.c
++++ b/hw/intc/bcm2836_control.c
+@@ -392,7 +392,7 @@ static void bcm2836_control_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2836_control;
+ }
+ 
+-static TypeInfo bcm2836_control_info = {
++static const TypeInfo bcm2836_control_info = {
+     .name          = TYPE_BCM2836_CONTROL,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2836ControlState),
+diff --git a/hw/ipmi/ipmi.c b/hw/ipmi/ipmi.c
+index 8d35c9fdd6..bbb07b151e 100644
+--- a/hw/ipmi/ipmi.c
++++ b/hw/ipmi/ipmi.c
+@@ -85,7 +85,7 @@ static void ipmi_interface_class_init(ObjectClass *class, void *data)
+     ik->do_hw_op = ipmi_do_hw_op;
+ }
+ 
+-static TypeInfo ipmi_interface_type_info = {
++static const TypeInfo ipmi_interface_type_info = {
+     .name = TYPE_IPMI_INTERFACE,
+     .parent = TYPE_INTERFACE,
+     .class_size = sizeof(IPMIInterfaceClass),
+@@ -120,7 +120,7 @@ static void bmc_class_init(ObjectClass *oc, void *data)
+     device_class_set_props(dc, ipmi_bmc_properties);
+ }
+ 
+-static TypeInfo ipmi_bmc_type_info = {
++static const TypeInfo ipmi_bmc_type_info = {
+     .name = TYPE_IPMI_BMC,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(IPMIBmc),
+diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
+index 7397b67156..933bc5e0c7 100644
+--- a/hw/mem/nvdimm.c
++++ b/hw/mem/nvdimm.c
+@@ -248,7 +248,7 @@ static void nvdimm_class_init(ObjectClass *oc, void *data)
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
+ 
+-static TypeInfo nvdimm_info = {
++static const TypeInfo nvdimm_info = {
+     .name          = TYPE_NVDIMM,
+     .parent        = TYPE_PC_DIMM,
+     .class_size    = sizeof(NVDIMMClass),
+diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
+index 48b913aba6..28af0d71b2 100644
+--- a/hw/mem/pc-dimm.c
++++ b/hw/mem/pc-dimm.c
+@@ -286,7 +286,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
+     mdc->fill_device_info = pc_dimm_md_fill_device_info;
+ }
+ 
+-static TypeInfo pc_dimm_info = {
++static const TypeInfo pc_dimm_info = {
+     .name          = TYPE_PC_DIMM,
+     .parent        = TYPE_DEVICE,
+     .instance_size = sizeof(PCDIMMDevice),
+diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
+index 9f73cbd5e4..1908c152f6 100644
+--- a/hw/misc/bcm2835_mbox.c
++++ b/hw/misc/bcm2835_mbox.c
+@@ -324,7 +324,7 @@ static void bcm2835_mbox_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_mbox;
+ }
+ 
+-static TypeInfo bcm2835_mbox_info = {
++static const TypeInfo bcm2835_mbox_info = {
+     .name          = TYPE_BCM2835_MBOX,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835MboxState),
+diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
+index 25fa804cbd..976f3d34e5 100644
+--- a/hw/misc/bcm2835_powermgt.c
++++ b/hw/misc/bcm2835_powermgt.c
+@@ -144,7 +144,7 @@ static void bcm2835_powermgt_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_powermgt;
+ }
+ 
+-static TypeInfo bcm2835_powermgt_info = {
++static const TypeInfo bcm2835_powermgt_info = {
+     .name          = TYPE_BCM2835_POWERMGT,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835PowerMgtState),
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index 76ea511d53..e94e951057 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -421,7 +421,7 @@ static void bcm2835_property_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_property;
+ }
+ 
+-static TypeInfo bcm2835_property_info = {
++static const TypeInfo bcm2835_property_info = {
+     .name          = TYPE_BCM2835_PROPERTY,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835PropertyState),
+diff --git a/hw/misc/bcm2835_rng.c b/hw/misc/bcm2835_rng.c
+index d0c4e64e88..b3c80cf186 100644
+--- a/hw/misc/bcm2835_rng.c
++++ b/hw/misc/bcm2835_rng.c
+@@ -131,7 +131,7 @@ static void bcm2835_rng_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_rng;
+ }
+ 
+-static TypeInfo bcm2835_rng_info = {
++static const TypeInfo bcm2835_rng_info = {
+     .name          = TYPE_BCM2835_RNG,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835RngState),
+diff --git a/hw/misc/pvpanic-isa.c b/hw/misc/pvpanic-isa.c
+index 7b66d58acc..a39fcdd1fc 100644
+--- a/hw/misc/pvpanic-isa.c
++++ b/hw/misc/pvpanic-isa.c
+@@ -77,7 +77,7 @@ static void pvpanic_isa_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+-static TypeInfo pvpanic_isa_info = {
++static const TypeInfo pvpanic_isa_info = {
+     .name          = TYPE_PVPANIC_ISA_DEVICE,
+     .parent        = TYPE_ISA_DEVICE,
+     .instance_size = sizeof(PVPanicISAState),
+diff --git a/hw/misc/pvpanic-pci.c b/hw/misc/pvpanic-pci.c
+index af8cbe2830..62e1be68c1 100644
+--- a/hw/misc/pvpanic-pci.c
++++ b/hw/misc/pvpanic-pci.c
+@@ -74,7 +74,7 @@ static void pvpanic_pci_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+-static TypeInfo pvpanic_pci_info = {
++static const TypeInfo pvpanic_pci_info = {
+     .name          = TYPE_PVPANIC_PCI_DEVICE,
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PVPanicPCIState),
+diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+index bd9d62b559..e7fc082518 100644
+--- a/hw/net/fsl_etsec/etsec.c
++++ b/hw/net/fsl_etsec/etsec.c
+@@ -430,7 +430,7 @@ static void etsec_class_init(ObjectClass *klass, void *data)
+     dc->user_creatable = true;
+ }
+ 
+-static TypeInfo etsec_info = {
++static const TypeInfo etsec_info = {
+     .name                  = TYPE_ETSEC_COMMON,
+     .parent                = TYPE_SYS_BUS_DEVICE,
+     .instance_size         = sizeof(eTSEC),
+diff --git a/hw/ppc/prep_systemio.c b/hw/ppc/prep_systemio.c
+index b2bd783248..8c9b8dd67b 100644
+--- a/hw/ppc/prep_systemio.c
++++ b/hw/ppc/prep_systemio.c
+@@ -300,7 +300,7 @@ static void prep_systemio_class_initfn(ObjectClass *klass, void *data)
+     device_class_set_props(dc, prep_systemio_properties);
+ }
+ 
+-static TypeInfo prep_systemio800_info = {
++static const TypeInfo prep_systemio800_info = {
+     .name          = TYPE_PREP_SYSTEMIO,
+     .parent        = TYPE_ISA_DEVICE,
+     .instance_size = sizeof(PrepSystemIoState),
+diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
+index db01071858..81e5a1aea3 100644
+--- a/hw/ppc/spapr_iommu.c
++++ b/hw/ppc/spapr_iommu.c
+@@ -685,7 +685,7 @@ static void spapr_tce_table_class_init(ObjectClass *klass, void *data)
+     spapr_register_hypercall(H_STUFF_TCE, h_stuff_tce);
+ }
+ 
+-static TypeInfo spapr_tce_table_info = {
++static const TypeInfo spapr_tce_table_info = {
+     .name = TYPE_SPAPR_TCE_TABLE,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(SpaprTceTable),
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index 01b58ebc70..4b2bdd94b3 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -1392,7 +1392,7 @@ static const TypeInfo s390_pci_device_info = {
+     .class_init = s390_pci_device_class_init,
+ };
+ 
+-static TypeInfo s390_pci_iommu_info = {
++static const TypeInfo s390_pci_iommu_info = {
+     .name = TYPE_S390_PCI_IOMMU,
+     .parent = TYPE_OBJECT,
+     .instance_size = sizeof(S390PCIIOMMU),
+diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
+index 89c30a8a91..eff74479f4 100644
+--- a/hw/s390x/sclp.c
++++ b/hw/s390x/sclp.c
+@@ -460,7 +460,7 @@ static void sclp_class_init(ObjectClass *oc, void *data)
+     sc->service_interrupt = service_interrupt;
+ }
+ 
+-static TypeInfo sclp_info = {
++static const TypeInfo sclp_info = {
+     .name = TYPE_SCLP,
+     .parent = TYPE_DEVICE,
+     .instance_init = sclp_init,
+diff --git a/hw/s390x/tod-kvm.c b/hw/s390x/tod-kvm.c
+index ec855811ae..9d0cbfbce2 100644
+--- a/hw/s390x/tod-kvm.c
++++ b/hw/s390x/tod-kvm.c
+@@ -147,7 +147,7 @@ static void kvm_s390_tod_init(Object *obj)
+     td->stopped = false;
+ }
+ 
+-static TypeInfo kvm_s390_tod_info = {
++static const TypeInfo kvm_s390_tod_info = {
+     .name = TYPE_KVM_S390_TOD,
+     .parent = TYPE_S390_TOD,
+     .instance_size = sizeof(S390TODState),
+diff --git a/hw/s390x/tod-tcg.c b/hw/s390x/tod-tcg.c
+index 9bb94ff72b..ad4993203d 100644
+--- a/hw/s390x/tod-tcg.c
++++ b/hw/s390x/tod-tcg.c
+@@ -73,7 +73,7 @@ static void qemu_s390_tod_init(Object *obj)
+     }
+ }
+ 
+-static TypeInfo qemu_s390_tod_info = {
++static const TypeInfo qemu_s390_tod_info = {
+     .name = TYPE_QEMU_S390_TOD,
+     .parent = TYPE_S390_TOD,
+     .instance_size = sizeof(S390TODState),
+diff --git a/hw/s390x/tod.c b/hw/s390x/tod.c
+index fd5a36bf24..c81b1c0338 100644
+--- a/hw/s390x/tod.c
++++ b/hw/s390x/tod.c
+@@ -123,7 +123,7 @@ static void s390_tod_class_init(ObjectClass *oc, void *data)
+     dc->user_creatable = false;
+ }
+ 
+-static TypeInfo s390_tod_info = {
++static const TypeInfo s390_tod_info = {
+     .name = TYPE_S390_TOD,
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(S390TODState),
+diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+index 4c431adb77..c8773f73f7 100644
+--- a/hw/scsi/lsi53c895a.c
++++ b/hw/scsi/lsi53c895a.c
+@@ -2352,7 +2352,7 @@ static void lsi53c810_class_init(ObjectClass *klass, void *data)
+     k->device_id = PCI_DEVICE_ID_LSI_53C810;
+ }
+ 
+-static TypeInfo lsi53c810_info = {
++static const TypeInfo lsi53c810_info = {
+     .name          = TYPE_LSI53C810,
+     .parent        = TYPE_LSI53C895A,
+     .class_init    = lsi53c810_class_init,
+diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+index de5bc49e68..041e45c680 100644
+--- a/hw/sd/allwinner-sdhost.c
++++ b/hw/sd/allwinner-sdhost.c
+@@ -835,7 +835,7 @@ static void allwinner_sdhost_sun5i_class_init(ObjectClass *klass, void *data)
+     sc->max_desc_size = 64 * KiB;
+ }
+ 
+-static TypeInfo allwinner_sdhost_info = {
++static const TypeInfo allwinner_sdhost_info = {
+     .name          = TYPE_AW_SDHOST,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_init = allwinner_sdhost_init,
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index df1bdf1fa4..be8cafd65f 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -198,7 +198,7 @@ static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
+     device_class_set_props(dc, aspeed_sdhci_properties);
+ }
+ 
+-static TypeInfo aspeed_sdhci_info = {
++static const TypeInfo aspeed_sdhci_info = {
+     .name          = TYPE_ASPEED_SDHCI,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(AspeedSDHCIState),
+diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
+index 088a7ac6ed..9431c35914 100644
+--- a/hw/sd/bcm2835_sdhost.c
++++ b/hw/sd/bcm2835_sdhost.c
+@@ -436,7 +436,7 @@ static void bcm2835_sdhost_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_bcm2835_sdhost;
+ }
+ 
+-static TypeInfo bcm2835_sdhost_info = {
++static const TypeInfo bcm2835_sdhost_info = {
+     .name          = TYPE_BCM2835_SDHOST,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(BCM2835SDHostState),
+diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
+index 56b8bae1c3..75db34befe 100644
+--- a/hw/sd/cadence_sdhci.c
++++ b/hw/sd/cadence_sdhci.c
+@@ -175,7 +175,7 @@ static void cadence_sdhci_class_init(ObjectClass *classp, void *data)
+     dc->vmsd = &vmstate_cadence_sdhci;
+ }
+ 
+-static TypeInfo cadence_sdhci_info = {
++static const TypeInfo cadence_sdhci_info = {
+     .name          = TYPE_CADENCE_SDHCI,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(CadenceSDHCIState),
+diff --git a/hw/sd/npcm7xx_sdhci.c b/hw/sd/npcm7xx_sdhci.c
+index ef503365df..b2f5b4a542 100644
+--- a/hw/sd/npcm7xx_sdhci.c
++++ b/hw/sd/npcm7xx_sdhci.c
+@@ -166,7 +166,7 @@ static void npcm7xx_sdhci_instance_init(Object *obj)
+                             TYPE_SYSBUS_SDHCI);
+ }
+ 
+-static TypeInfo npcm7xx_sdhci_info = {
++static const TypeInfo npcm7xx_sdhci_info = {
+     .name = TYPE_NPCM7XX_SDHCI,
+     .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(NPCM7xxSDHCIState),
+diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+index c1d1694fd0..1e6ac76bef 100644
+--- a/hw/usb/dev-mtp.c
++++ b/hw/usb/dev-mtp.c
+@@ -2106,7 +2106,7 @@ static void usb_mtp_class_initfn(ObjectClass *klass, void *data)
+     device_class_set_props(dc, mtp_properties);
+ }
+ 
+-static TypeInfo mtp_info = {
++static const TypeInfo mtp_info = {
+     .name          = TYPE_USB_MTP,
+     .parent        = TYPE_USB_DEVICE,
+     .instance_size = sizeof(MTPState),
+diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
+index d0d46dd0a4..2b35cb6cdd 100644
+--- a/hw/usb/host-libusb.c
++++ b/hw/usb/host-libusb.c
+@@ -1801,7 +1801,7 @@ static void usb_host_class_initfn(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+-static TypeInfo usb_host_dev_info = {
++static const TypeInfo usb_host_dev_info = {
+     .name          = TYPE_USB_HOST_DEVICE,
+     .parent        = TYPE_USB_DEVICE,
+     .instance_size = sizeof(USBHostDevice),
+diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
+index d4685709a3..afe3fe7efc 100644
+--- a/hw/vfio/igd.c
++++ b/hw/vfio/igd.c
+@@ -199,7 +199,7 @@ static void vfio_pci_igd_lpc_bridge_class_init(ObjectClass *klass, void *data)
+     k->class_id = PCI_CLASS_BRIDGE_ISA;
+ }
+ 
+-static TypeInfo vfio_pci_igd_lpc_bridge_info = {
++static const TypeInfo vfio_pci_igd_lpc_bridge_info = {
+     .name = "vfio-pci-igd-lpc-bridge",
+     .parent = TYPE_PCI_DEVICE,
+     .class_init = vfio_pci_igd_lpc_bridge_class_init,
+diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
+index d1aeb90a31..5419dca75e 100644
+--- a/hw/virtio/virtio-pmem.c
++++ b/hw/virtio/virtio-pmem.c
+@@ -182,7 +182,7 @@ static void virtio_pmem_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
+ 
+-static TypeInfo virtio_pmem_info = {
++static const TypeInfo virtio_pmem_info = {
+     .name          = TYPE_VIRTIO_PMEM,
+     .parent        = TYPE_VIRTIO_DEVICE,
+     .class_size    = sizeof(VirtIOPMEMClass),
+diff --git a/qom/object.c b/qom/object.c
+index 4f0677cca9..9f7a33139d 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -2793,13 +2793,13 @@ static void object_class_init(ObjectClass *klass, void *data)
+ 
+ static void register_types(void)
+ {
+-    static TypeInfo interface_info = {
++    static const TypeInfo interface_info = {
+         .name = TYPE_INTERFACE,
+         .class_size = sizeof(InterfaceClass),
+         .abstract = true,
+     };
+ 
+-    static TypeInfo object_info = {
++    static const TypeInfo object_info = {
+         .name = TYPE_OBJECT,
+         .instance_size = sizeof(Object),
+         .class_init = object_class_init,
+-- 
+2.34.1
 
-Queued to testing/next, thanks.
-
---=20
-Alex Benn=C3=A9e
 
