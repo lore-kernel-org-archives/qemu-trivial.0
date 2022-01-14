@@ -1,71 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n8GZG-0005UB-U8
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jan 2022 02:00:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51418)
+	id 1n8KMJ-0003c4-A3
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jan 2022 06:03:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37836)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n8GZD-0005R3-Pu
- for qemu-trivial@nongnu.org; Fri, 14 Jan 2022 02:00:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:51220)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n8GZ8-0008Bg-Uv
- for qemu-trivial@nongnu.org; Fri, 14 Jan 2022 02:00:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1642143601;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=yOK5xYSh1FtuE1McPhlJvPKMXYPSmh6qcCuMZNqtwrk=;
- b=DUXH6e3j5651oC+10H+EVYWsm/TeBoFB6n1+azU9qhQQiBuiX+98LXILPQhoCEtEjiPIbk
- rWeonsYw0lsRWAu99C6szGbESWHMeiqT7HIai/P5FV1Q5u+AjqPRnPvZGX7wgYzLGV2Nr9
- wopo34Pm0RqkMgV2Hj1mu06J8FZ+Y8A=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-573-ux3zlFB7NW-AbeP5nC-XXw-1; Fri, 14 Jan 2022 02:00:00 -0500
-X-MC-Unique: ux3zlFB7NW-AbeP5nC-XXw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- w25-20020adf8bd9000000b001a255212b7cso1516544wra.18
- for <qemu-trivial@nongnu.org>; Thu, 13 Jan 2022 22:59:59 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n8KMC-0003Xs-0j; Fri, 14 Jan 2022 06:02:56 -0500
+Received: from [2a00:1450:4864:20::42f] (port=39727
+ helo=mail-wr1-x42f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n8KMA-0002zo-9U; Fri, 14 Jan 2022 06:02:55 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id s1so14965279wra.6;
+ Fri, 14 Jan 2022 03:02:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=yOK5xYSh1FtuE1McPhlJvPKMXYPSmh6qcCuMZNqtwrk=;
- b=LNpzGkFb2JlKmDo4MI6RlmdpDUu559NAD8dj3KCm2zcMRF99//7RlYtonWHdL/ObyS
- WYzzJWNFoF2SfjEZfoFaezsAorWg+o/t+t6tBm00P8vSVYF/Tm2RRIHutIuM7M++u5EP
- RC/1trdsNo4fxdX3O5oPxc1A8enPJCh/mDI1lW0ilhjgG/UbCReK6UkFjkZGssw5bzxy
- lU1Na+6y+NypRZ/FCbzQtnnL3iHHyYcQWnpjIIKNQyGsBHuUIXgJhBm10m14/i9P7KLm
- ENlilRzaZ13sf1j4QEYX/QAyoq3o+lwTiEo8917HptAM3QBcLITQ+m8znoZpXTHJ53jo
- +c3w==
-X-Gm-Message-State: AOAM532HEGtzekq8LxtVdCPj840HAcLCwEkNVZA4899PB4jUzGoks4xO
- c2v6LruaRAAUVagvj788861IOGrZaj4pmSH2vgb0XaPF6JPl/pq+u4RWq6S7XaH5hYzZh9YtI+M
- 1guVq5rwzNuQVNz+Ejg==
-X-Received: by 2002:a05:6000:c8:: with SMTP id
- q8mr7029369wrx.611.1642143598952; 
- Thu, 13 Jan 2022 22:59:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxV+HTwRahAA4geCnQVubX4Pfhl/gGbyIcVC++ab3IoF7RdaU/+bXelqehPlU9L6QozMsxw6g==
-X-Received: by 2002:a05:6000:c8:: with SMTP id
- q8mr7029313wrx.611.1642143598578; 
- Thu, 13 Jan 2022 22:59:58 -0800 (PST)
-Received: from [192.168.42.76] (tmo-098-185.customers.d1-online.com.
- [80.187.98.185])
- by smtp.gmail.com with ESMTPSA id r205sm3437942wma.26.2022.01.13.22.59.55
+ bh=t/G7JZA9GQDFGfYcKoq7rnD+jJp/08VTYN/09/cRKc4=;
+ b=X3EnmfRzzUCkoKzau5pNnZ7iZ+INseRQ75C1ofylalMX35Y+WBDgf63tSrFdlRtmkE
+ 1RDXrAlKxXoJ/LIpqzSUPWdEJhaGIlWYaP1esYACXAaThenXrolN2IZxgxT+5J39O7tf
+ 5s18Wu+2nzl3U1GsTI/vXDZq3yjjnYQssPJ2sYp4/cle1aTEyxIa+q33XEslVWkNe5/4
+ Sc+SQaZOF5Ht82sLMEoPn4964FDR1qrVMkaKe8APogfjFrMVpz9QkLAE8k+OkbkIAONu
+ 7L4SQopTl5UrzOoRb1/mxsUgRsSbRk+FhktijIblNYpJym+DjHzkDOEn6KtFr8taDPkw
+ XbRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=t/G7JZA9GQDFGfYcKoq7rnD+jJp/08VTYN/09/cRKc4=;
+ b=cx17F7OSPfEP03XK2pU+9g5DqLEqSXl1EdN7kYqScjqudRH/m+vJVZ61y6K9/iA2lK
+ 2k0yYEjAVtuN6qpf3n8VBvzMj/OfLPx3jOtB91rfu8D2QGltet3YklW2f0fmdLWV4oyE
+ kSRWGYSnJddOOxgvp7z6qr+sriLd5WKeVWDSsQNLMNeimi3PhJ+C6BUE1FRgsxyLb2hi
+ NWTPoqFDMAajbnevwqhTdMR5HAixqSMDHkxUB9VHAeN7yyZpt/FjWRp836SFXW89hqMs
+ divpOiLiwiYB4UXKtemJPJaY98HOtkIYUxfNxIdkqfnYkSRqYwV8s35X7yqq47on9aCv
+ 0aww==
+X-Gm-Message-State: AOAM531Xk2x8fdugUMLLQOhH4v1mZM5CeEIsHL962u7HwbeVqn/Pee04
+ VYM6HxD3/rzjCnpxLPO0zT0=
+X-Google-Smtp-Source: ABdhPJw1Lp+pfkjhVE9hqZpenPO4cc2wMslXnA7d/8vNWyF1R90+TCqWN2cNZc8fAi3rAX94d3L6pw==
+X-Received: by 2002:adf:cd8f:: with SMTP id q15mr2214666wrj.118.1642158171105; 
+ Fri, 14 Jan 2022 03:02:51 -0800 (PST)
+Received: from ?IPV6:2a01:e34:ec40:49e0:48b5:8fce:b44b:d951?
+ ([2a01:e34:ec40:49e0:48b5:8fce:b44b:d951])
+ by smtp.gmail.com with ESMTPSA id v13sm5729254wro.90.2022.01.14.03.02.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Jan 2022 22:59:57 -0800 (PST)
-Message-ID: <a75789e0-0ace-c898-ea61-9b55624c772a@redhat.com>
-Date: Fri, 14 Jan 2022 07:59:54 +0100
+ Fri, 14 Jan 2022 03:02:50 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <abbe1a9b-96ea-26d5-0375-1eeb7f5e4e42@amsat.org>
+Date: Fri, 14 Jan 2022 12:02:48 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.0
 Subject: Re: [PATCH] Mark remaining global TypeInfo instances as const
+Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
@@ -80,7 +73,7 @@ Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
  David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
  David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>, Fam Zheng
  <fam@euphon.net>, Beniamino Galvani <b.galvani@gmail.com>,
  Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
@@ -92,25 +85,22 @@ Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
  "open list:e500" <qemu-ppc@nongnu.org>,
  "open list:S390 PCI" <qemu-s390x@nongnu.org>
 References: <20220113171038.18128-1-shentey@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 In-Reply-To: <20220113171038.18128-1-shentey@gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.595,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42f
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,9 +113,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jan 2022 07:00:08 -0000
+X-List-Received-Date: Fri, 14 Jan 2022 11:02:59 -0000
 
-On 13/01/2022 18.10, Bernhard Beschow wrote:
+On 13/1/22 18:10, Bernhard Beschow wrote:
 > More than 1k of TypeInfo instances are already marked as const. Mark the
 > remaining ones, too.
 > 
@@ -171,9 +161,28 @@ On 13/01/2022 18.10, Bernhard Beschow wrote:
 >   hw/virtio/virtio-pmem.c    | 2 +-
 >   qom/object.c               | 4 ++--
 >   39 files changed, 42 insertions(+), 42 deletions(-)
+> 
+> diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
+> index 9a24ffb880..eaafc416f4 100644
+> --- a/hw/core/generic-loader.c
+> +++ b/hw/core/generic-loader.c
+> @@ -207,7 +207,7 @@ static void generic_loader_class_init(ObjectClass *klass, void *data)
+>       set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>   }
+>   
+> -static TypeInfo generic_loader_info = {
+> +static const TypeInfo generic_loader_info = {
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Good cleanup. If you use a sed expression to automatically replace,
+it would be nice to mention it (see i.e. commit f548f20176cb5f4406).
 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+To avoid further non-const static TypeInfo introduced, we should
+add a check in scripts/checkpatch.pl. Maybe a simple "static TypeInfo"
+line comparison is enough. Do you mind having a look for a patch?
 
+Thanks,
+
+Phil.
 
