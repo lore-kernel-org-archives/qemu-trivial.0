@@ -1,57 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9nc5-0004wZ-BI
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:25 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55772)
+	id 1n9s8U-0005SG-Rk
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 12:19:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbz-0004px-Aq; Tue, 18 Jan 2022 07:29:19 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:43051)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n9s8S-0005Pz-HX
+ for qemu-trivial@nongnu.org; Tue, 18 Jan 2022 12:19:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:24601)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbw-0001wm-OP; Tue, 18 Jan 2022 07:29:18 -0500
-Received: from quad ([82.142.13.186]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1N2BQM-1mAf0t0S6A-013bb5; Tue, 18
- Jan 2022 13:28:53 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 5/9] softmmu: Provide a clue as to why device tree loading
- failed
-Date: Tue, 18 Jan 2022 13:28:43 +0100
-Message-Id: <20220118122847.636461-6-laurent@vivier.eu>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
-References: <20220118122847.636461-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n9s8P-0004Uf-JP
+ for qemu-trivial@nongnu.org; Tue, 18 Jan 2022 12:19:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1642526341;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=qUx4BP0FIwrp/ETX7AzAIjDyfL8mLaDKixyBGKf1G00=;
+ b=T+3cLZWvS87t8ntn12FQyWz8E88N5/hxJQ6xZmG9DQ06hS8OgHHlpnVbGxhKExSfSmTF9z
+ Cy/mXAj8DgjDcyp3bAOAfAZ3g9tAMqH5AQS18uUcoDa7KVQkRhJ3C+XWOumIEFpIzmoMYP
+ PX0EIqkuWXkyMuUHNS9+Tn/d1DCRXIw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-640-1Va_pZ9NMPqAZQ_UIMy5Ow-1; Tue, 18 Jan 2022 12:18:53 -0500
+X-MC-Unique: 1Va_pZ9NMPqAZQ_UIMy5Ow-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AA78018982B4;
+ Tue, 18 Jan 2022 17:06:09 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.194.216])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 78FB4753DA;
+ Tue, 18 Jan 2022 17:06:04 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] meson.build: Use a function from libfdt 1.5.1 for the library
+ check
+Date: Tue, 18 Jan 2022 18:05:48 +0100
+Message-Id: <20220118170548.97288-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:FmmG+CKTpvo/5jEj8swnrjyejv81D0GmNPY47wdn4u0pt4CkhIF
- NYwHVr62qfnoeDJ704mBjQDPyajyysAHtqt/O7Y4bgV0Edf67IEGXkSzvU/+KfEZPfgWTQT
- /h+gMFrHJsbHm9R7bz3AtYzWanbZz99TZlNsKcIU56nIyoCuskWzxt4xoLiWZULGcVJwhKC
- wlRjXtG2ZGZx5hPOLnZoQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:4DWjIaCnvgc=:ERHdBs68Qvtv0pIHiawS/2
- 7g85dZNSHSNnGP7M1Lx1n86Y8GGYq+Eu4jqgyPeE+fjHvZQ4OQoXXNcUPfPA2qUImg6fGVwrM
- THarRWo8S57RVFkTwNaNO9T6cAOgpm9pFmGPH1EDD//FnKBSFCtp8WbuWudl3xg6UOC0jiAdM
- b3DczNMG4Kq2lXIZzhqRPKwxbZrT/wghVt5B9gtRPdxbk4X2Rm65Mvb/x7XRW/HK4S0GhByGh
- gkVAOFv73LHHmNTQ568cpFkOtZiJ8jsCk6A0Byx4cwSZpx8j/CpGLFL8WYVKmCpoouFdYi7tf
- W6Cboyd635tZzs9Z3qbP3csDz8P5rUUbI1IrDRkVlAKTOZKulTLIE4hWO1mofSat0cy8hgymG
- hNHoBniKDqA9zA2nc9Pmrlpe0u1eCnRmsEVUb3WQBwD7dJmGURFdHdyw7AEbqrYgEgY+6YQs8
- j3D/t+nS7hHzd2xgVFiePN7XI24qpUKnUi31teJaKRqj9K0t/Uq+cwxZc88GZ0EhCQv169jA+
- VrBxxui6bltdtNFZOFlsfECYMvJ1Z7dJDU0cXjd6clXSXE3sy2zto9L3Wuco2QsyvpNTa5T8d
- 9Dw8wvsZ+uac6+QkNEO1GNBls90zHIWbw/9ajUARsope4r+J5PLYpXRofDqdbOQTd86WMJ2Zk
- hpjSAXQjmm0zaZxUC+PRROA4WYJBxPLeOd9rfs6cgNLoSxEL9XkWDBRjip8NtiSZEMDk=
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,48 +70,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jan 2022 12:29:21 -0000
+X-List-Received-Date: Tue, 18 Jan 2022 17:19:09 -0000
 
-From: Bernhard Beschow <shentey@gmail.com>
+The fdt version test in meson.build uses a function from libfdt v1.4.7,
+but we require version 1.5.1 nowadays. Thus use a function that has
+been introduced in that version instead.
 
-fdt_open_into() obligingly returns an error code in case the operation
-failed. So be obliging as well and use it in the error message.
-
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220116114649.40859-1-shentey@gmail.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/822
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- softmmu/device_tree.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-index 3965c834ca62..31d106694048 100644
---- a/softmmu/device_tree.c
-+++ b/softmmu/device_tree.c
-@@ -60,7 +60,8 @@ void *create_device_tree(int *sizep)
-     }
-     ret = fdt_open_into(fdt, fdt, *sizep);
-     if (ret) {
--        error_report("Unable to copy device tree in memory");
-+        error_report("%s: Unable to copy device tree into memory: %s",
-+                     __func__, fdt_strerror(ret));
-         exit(1);
-     }
- 
-@@ -104,7 +105,8 @@ void *load_device_tree(const char *filename_path, int *sizep)
- 
-     ret = fdt_open_into(fdt, fdt, dt_size);
-     if (ret) {
--        error_report("Unable to copy device tree in memory");
-+        error_report("%s: Unable to copy device tree into memory: %s",
-+                     __func__, fdt_strerror(ret));
-         goto fail;
-     }
- 
+diff --git a/meson.build b/meson.build
+index 762d7cee85..d1cc04c7a2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2276,7 +2276,7 @@ if have_system
+     if fdt.found() and cc.links('''
+        #include <libfdt.h>
+        #include <libfdt_env.h>
+-       int main(void) { fdt_check_full(NULL, 0); return 0; }''',
++       int main(void) { fdt_find_max_phandle(NULL, NULL); return 0; }''',
+          dependencies: fdt)
+       fdt_opt = 'system'
+     elif fdt_opt == 'system'
 -- 
-2.34.1
+2.27.0
 
 
