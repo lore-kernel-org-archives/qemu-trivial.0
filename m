@@ -1,54 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9nc2-0004rz-39
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55612)
+	id 1n9nc5-0004wZ-BI
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55772)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbd-0004ZN-Lo; Tue, 18 Jan 2022 07:28:57 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:48717)
+ id 1n9nbz-0004px-Aq; Tue, 18 Jan 2022 07:29:19 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:43051)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbb-0001uc-7F; Tue, 18 Jan 2022 07:28:57 -0500
+ id 1n9nbw-0001wm-OP; Tue, 18 Jan 2022 07:29:18 -0500
 Received: from quad ([82.142.13.186]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1Ma0HM-1mmirF3ZOm-00Vug9; Tue, 18
- Jan 2022 13:28:50 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1N2BQM-1mAf0t0S6A-013bb5; Tue, 18
+ Jan 2022 13:28:53 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
+Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Richard Henderson <richard.henderson@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 1/9] hw/timer/etraxfs_timer: Add vmstate for ETRAX timers
-Date: Tue, 18 Jan 2022 13:28:39 +0100
-Message-Id: <20220118122847.636461-2-laurent@vivier.eu>
+Subject: [PULL 5/9] softmmu: Provide a clue as to why device tree loading
+ failed
+Date: Tue, 18 Jan 2022 13:28:43 +0100
+Message-Id: <20220118122847.636461-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
 References: <20220118122847.636461-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:09/ZkVTYnpu/etwWOM/PzWTt8OgRgTrKqNdcfTEpKIFcgu+sbK5
- a+lE71QBba1DFIwCvdcM6yFRQ8IrDhEErw7LAvN7VCVnCagXy8avKtQrqMmA4v5PS+oCzGv
- yriCgKf02ntipqBq2YJAuE3XBCQ/laXcclY9pXrcN1TR8cd60QcndB3Hs2N3/Bft8aOHiRb
- iJMwlW9owwzA/p+d7qMKQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pIkXajQg0Sw=:ihKi2+w8QBCInaq6Tw/iw3
- vTQ6tcblsykIL7oqIXSvFN1dFlj4Aze9cDjvPOu5Cvxntco1MEIJqJt0dx5oiT1+Nvz27gTgs
- hD8jLJp1l5VWhYV/Qt8yosc4q5wRezbzLrAY2PVCXJvLQO6+tZEwi/6vi9/KhKPtWTr58MwF/
- d7S3fC185E/Dy/UK84344kaz+pBVGG8Dnsq/EMDuCBMEiEB6X2IVpCXky9PNWbBq9GUnwyguG
- bH/a/X3aE/YsJKULOq3OWMDI/J+QWQZdzA1rhslDTkCRuI9+z9WfYgNOgQ7Uz010zIPhG6TbR
- pYH37M4lHKGtia6ItDpXEubRPMwacozF+4VuLJ0h3yMZL3djfufZQ6E8ubKNZsLJo++CfDtcT
- E1ZZEhusd51gEZFCNuyCUKOVq04wjbpEWBPnvo1jLBhevK71TOQ0TCv51NABdd3ELbVdEkrsG
- fhUKGdPvSFb2bfiYn4EdSLnqnpHLImaqRfQoBQUahFKxql3Ngd4TFFaH2s+YBGv8aS0snfBaS
- hjHE5UZdvrunSBkUvOBcqkrBoLAIDEiHNpNYDGGk/fJJ52QM/O+iEyNYRuZ+AhAUb7/ZmAS/P
- gIkEufSaWVmcb3dRN6MJE6DE4tjx9JjyMZsAxbVwqsr9fsZvnXpy512DtFH1F43d+U+J19wgr
- 1VxyqeUw8bOAFRF2R6qvQfCbVq3ynvBW93LsKOGzdgu402Xan8nQzDs1NL0fmmybQHxs=
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:FmmG+CKTpvo/5jEj8swnrjyejv81D0GmNPY47wdn4u0pt4CkhIF
+ NYwHVr62qfnoeDJ704mBjQDPyajyysAHtqt/O7Y4bgV0Edf67IEGXkSzvU/+KfEZPfgWTQT
+ /h+gMFrHJsbHm9R7bz3AtYzWanbZz99TZlNsKcIU56nIyoCuskWzxt4xoLiWZULGcVJwhKC
+ wlRjXtG2ZGZx5hPOLnZoQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4DWjIaCnvgc=:ERHdBs68Qvtv0pIHiawS/2
+ 7g85dZNSHSNnGP7M1Lx1n86Y8GGYq+Eu4jqgyPeE+fjHvZQ4OQoXXNcUPfPA2qUImg6fGVwrM
+ THarRWo8S57RVFkTwNaNO9T6cAOgpm9pFmGPH1EDD//FnKBSFCtp8WbuWudl3xg6UOC0jiAdM
+ b3DczNMG4Kq2lXIZzhqRPKwxbZrT/wghVt5B9gtRPdxbk4X2Rm65Mvb/x7XRW/HK4S0GhByGh
+ gkVAOFv73LHHmNTQ568cpFkOtZiJ8jsCk6A0Byx4cwSZpx8j/CpGLFL8WYVKmCpoouFdYi7tf
+ W6Cboyd635tZzs9Z3qbP3csDz8P5rUUbI1IrDRkVlAKTOZKulTLIE4hWO1mofSat0cy8hgymG
+ hNHoBniKDqA9zA2nc9Pmrlpe0u1eCnRmsEVUb3WQBwD7dJmGURFdHdyw7AEbqrYgEgY+6YQs8
+ j3D/t+nS7hHzd2xgVFiePN7XI24qpUKnUi31teJaKRqj9K0t/Uq+cwxZc88GZ0EhCQv169jA+
+ VrBxxui6bltdtNFZOFlsfECYMvJ1Z7dJDU0cXjd6clXSXE3sy2zto9L3Wuco2QsyvpNTa5T8d
+ 9Dw8wvsZ+uac6+QkNEO1GNBls90zHIWbw/9ajUARsope4r+J5PLYpXRofDqdbOQTd86WMJ2Zk
+ hpjSAXQjmm0zaZxUC+PRROA4WYJBxPLeOd9rfs6cgNLoSxEL9XkWDBRjip8NtiSZEMDk=
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,88 +64,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jan 2022 12:28:58 -0000
+X-List-Received-Date: Tue, 18 Jan 2022 12:29:21 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Bernhard Beschow <shentey@gmail.com>
 
-Add the vmstate for the ETRAX timers.
-This is in theory a migration compatibility break
-for the 'AXIS devboard 88' CRIS machine.
+fdt_open_into() obligingly returns an error code in case the operation
+failed. So be obliging as well and use it in the error message.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20211106105623.510868-1-f4bug@amsat.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20220116114649.40859-1-shentey@gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/timer/etraxfs_timer.c | 34 +++++++++++++++++++++++++++++++++-
- 1 file changed, 33 insertions(+), 1 deletion(-)
+ softmmu/device_tree.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
-index 4ba662190de3..139e5b86a447 100644
---- a/hw/timer/etraxfs_timer.c
-+++ b/hw/timer/etraxfs_timer.c
-@@ -26,6 +26,7 @@
- #include "hw/sysbus.h"
- #include "sysemu/reset.h"
- #include "sysemu/runstate.h"
-+#include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "qemu/timer.h"
- #include "hw/irq.h"
-@@ -64,7 +65,7 @@ struct ETRAXTimerState {
-     ptimer_state *ptimer_t1;
-     ptimer_state *ptimer_wd;
+diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
+index 3965c834ca62..31d106694048 100644
+--- a/softmmu/device_tree.c
++++ b/softmmu/device_tree.c
+@@ -60,7 +60,8 @@ void *create_device_tree(int *sizep)
+     }
+     ret = fdt_open_into(fdt, fdt, *sizep);
+     if (ret) {
+-        error_report("Unable to copy device tree in memory");
++        error_report("%s: Unable to copy device tree into memory: %s",
++                     __func__, fdt_strerror(ret));
+         exit(1);
+     }
  
--    int wd_hits;
-+    uint32_t wd_hits;
+@@ -104,7 +105,8 @@ void *load_device_tree(const char *filename_path, int *sizep)
  
-     /* Control registers.  */
-     uint32_t rw_tmr0_div;
-@@ -83,6 +84,36 @@ struct ETRAXTimerState {
-     uint32_t r_masked_intr;
- };
+     ret = fdt_open_into(fdt, fdt, dt_size);
+     if (ret) {
+-        error_report("Unable to copy device tree in memory");
++        error_report("%s: Unable to copy device tree into memory: %s",
++                     __func__, fdt_strerror(ret));
+         goto fail;
+     }
  
-+static const VMStateDescription vmstate_etraxfs = {
-+    .name = "etraxfs",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_PTIMER(ptimer_t0, ETRAXTimerState),
-+        VMSTATE_PTIMER(ptimer_t1, ETRAXTimerState),
-+        VMSTATE_PTIMER(ptimer_wd, ETRAXTimerState),
-+
-+        VMSTATE_UINT32(wd_hits, ETRAXTimerState),
-+
-+        VMSTATE_UINT32(rw_tmr0_div, ETRAXTimerState),
-+        VMSTATE_UINT32(r_tmr0_data, ETRAXTimerState),
-+        VMSTATE_UINT32(rw_tmr0_ctrl, ETRAXTimerState),
-+
-+        VMSTATE_UINT32(rw_tmr1_div, ETRAXTimerState),
-+        VMSTATE_UINT32(r_tmr1_data, ETRAXTimerState),
-+        VMSTATE_UINT32(rw_tmr1_ctrl, ETRAXTimerState),
-+
-+        VMSTATE_UINT32(rw_wd_ctrl, ETRAXTimerState),
-+
-+        VMSTATE_UINT32(rw_intr_mask, ETRAXTimerState),
-+        VMSTATE_UINT32(rw_ack_intr, ETRAXTimerState),
-+        VMSTATE_UINT32(r_intr, ETRAXTimerState),
-+        VMSTATE_UINT32(r_masked_intr, ETRAXTimerState),
-+
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static uint64_t
- timer_read(void *opaque, hwaddr addr, unsigned int size)
- {
-@@ -357,6 +388,7 @@ static void etraxfs_timer_class_init(ObjectClass *klass, void *data)
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
- 
-     dc->realize = etraxfs_timer_realize;
-+    dc->vmsd = &vmstate_etraxfs;
-     rc->phases.enter = etraxfs_timer_reset_enter;
-     rc->phases.hold = etraxfs_timer_reset_hold;
- }
 -- 
 2.34.1
 
