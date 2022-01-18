@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9nbx-0004nu-0o
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55642)
+	id 1n9nby-0004oW-3S
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55656)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbg-0004dK-AM; Tue, 18 Jan 2022 07:29:00 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:43741)
+ id 1n9nbh-0004eV-QF; Tue, 18 Jan 2022 07:29:01 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:60835)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbe-0001vF-HW; Tue, 18 Jan 2022 07:28:59 -0500
+ id 1n9nbg-0001vo-1d; Tue, 18 Jan 2022 07:29:01 -0500
 Received: from quad ([82.142.13.186]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MN67J-1mrRwJ27sb-00J2Vw; Tue, 18
- Jan 2022 13:28:54 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1Mm9NA-1mRd6F2hjU-00iESf; Tue, 18
+ Jan 2022 13:28:55 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Warner Losh <imp@bsdimp.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 7/9] linux-user: Rename user_force_sig tracepoint to match
- function name
-Date: Tue, 18 Jan 2022 13:28:45 +0100
-Message-Id: <20220118122847.636461-8-laurent@vivier.eu>
+Subject: [PULL 9/9] linux-user: Remove MAX_SIGQUEUE_SIZE
+Date: Tue, 18 Jan 2022 13:28:47 +0100
+Message-Id: <20220118122847.636461-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
 References: <20220118122847.636461-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Tsl2Q16fvXB8FNfFf/v1PpOY2UMUt9fOCM4ty45DVnz1nkd6cae
- YlNfvO/fFe5BP9rIkJrs8qcFP2dJ9g6pNtXrccv7ZFyYNlH8QmTd3gcw31E9jLrL2KgIyv4
- WA45vBcI/8o743Ommt3fiPVy5qglfZmppucjymAeul0JJsf4dLgU3IIanKrp1D+vTMWfjXx
- XDatr/NxQa19zro6IZIHg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Thhiw20/mDc=:NwpC8qjD6mZxjPKDsN93Vm
- DkUBSd06aswz96tV0Fhf5kVaLhRA04DGe6SSFOx0FNmOSgXPlpC+L4vGK6oMH7+y9WsaSSAHG
- wYc23djdC6TKUmuvT8tBJKEPX3XqqEwllLAR2QROizuAOssRkXK1//qyCr945iORSdG28okc0
- QG+akhWqVsYNMkbi4G/zOX+x1T7rk7MvfwOvCZcimWzd8zyizT2z4pw69zcvQId0GRkbjUzjA
- Suceq2X6c3Am9dmcaES/NMAfbp6ksgGuSSOYIF1P1hs5mVpWQnIH0YV/UKeepgX2EJa4+5kxn
- vJIfNUUjGWPFSF5wERH3rMiYMFHNMG0PmF/CQIwBGK/ngAjFqGC7dshxukJUfKY13z5ostCUf
- O+w7E296X2+3t9QQ7YJXGHWXCNyDz6j3lMNm63FQmHZGPf3Rx3hGygOA/X7FhsB5xAOEgzRuG
- tdWUGC/wZhG4GkeIQSoc/0Z5eOimCVQv1KNp/66I4YNYmYm7XeKvGzScNJazyvU+XLxDGm3QB
- EnovDAjsDH8W0MhqdGeCtGYh02xpsGzq3uxRstvSxFD+jcle28vnLGeKlbrDwmEtik49L3mB8
- k72P5vXUnjDo9TyOzlKfbKAOCVYWiXmlwISLSQalQyw2bTf47g0NY2lS1+5lQkF3NuCZjhNr9
- aCZOokwaYQvrJROzayiUL5/7tCqqiv6c4fATDkLK29CASQGgVHflifkAZBTW8kgzv24E=
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:xVDWO0rOo6tfbtHhb3fszSbSPP5GxI+CQBOPheU3fF5nIT1OfL9
+ OfHbQymYf7T1ZIhh95s+bYWhhXe04CYmawJve25pGZFwqmLwXdoAJvG/7JchS4dGPWRNUOg
+ 4FjzBqmkKJbyTNPgP30DsiOSHf4LbNeviGinKnCVk55CHxit4FUBqoxee/NX73fLyP8zgoJ
+ lvkCH1226Rxb8K4FoAZgg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5GdSVSHQYOc=:vrZE+AfRjeDTZI9hBBpx1b
+ 4xjbmCFVNpE+twVMIcqjXYxX1HbWtkvtI/bdrSQAasGVQp9Iq08OMDwtTYnDA192IkY2wpljb
+ PRWiNk96oJe2jjlNoqMbf1Ue1evES4EHghde2gtqCc4CElAEOYJTgyliwReEkNg6HoBRfhuLo
+ VcrXmf9hEzIcZDZW0K9kKWwkKYxUuqiAuI2JxLaS0xVOohZIHDs1ZTK3xMpZOfLq2VVxmUTYB
+ 2IiA3VhXsVDobnSTZH6G6U+NX7Ndi2i0mfTQl5cIpGh4G5mla1/ijVbemHsv8CLjCAmfKM2wn
+ Wc5kHpsD5EmTFvKy+0MG7xTHLzfEelVfN0vp5RWlm3Rdu23I1Fyd8weF4NmXXl/sQt3iX8bxe
+ coNgVF0Xlk7mr2eZarpbF8nMEkITCmyA4EZlvypjIitd/U31YpVP68mDBH4gKexA3Dg1Km4yh
+ EKamPGx9FCsCNh0IdHIjb8UwizKUDEGCqRNdogZvEf9Yb/iiWZ2DZOxyIdgM4HwCmHMynpUZK
+ I1ALHxvyOEj3iNHjqmL6C0vk3xuYeH6VuWhhQT/NyROq1O/Dt7t02MgD1d6pFBeOLXzeTQO/Q
+ 3dWb8tPGbFHgT7PcXRzhOokqAAebsxIhFsIUMsKZ7iE1ZasMTS/woaQcTrnh4SYvJsiFbLKxP
+ FbiaSX8tGSBd1ArzKpmBdJIze/LDxcsVv6b0F2wMR8gE8zZQa2+b65E8b2t5nXBsAQU8=
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,50 +62,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jan 2022 12:29:01 -0000
+X-List-Received-Date: Tue, 18 Jan 2022 12:29:02 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
 
-In commit c599d4d6d6e9bfdb64 in 2016 we renamed the old force_sig()
-function to dump_core_and_abort(), but we forgot to rename the
-associated tracepoint.  Rename the tracepoint to to match the
-function it's called from.
+It's been unused for 7 years since 907f5fddaa67 when linux-user stopped
+queueing any signals.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220114153732.3767229-3-peter.maydell@linaro.org>
+Message-Id: <20220116204423.16133-2-imp@bsdimp.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- linux-user/signal.c     | 2 +-
- linux-user/trace-events | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ linux-user/qemu.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index f813b4f18e44..bfbbeab9ad2e 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -734,7 +734,7 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)
-     struct sigaction act;
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index 5c713fa8ab26..7910ce59cc8c 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -89,8 +89,6 @@ struct vm86_saved_state {
+ #include "nwfpe/fpa11.h"
+ #endif
  
-     host_sig = target_to_host_signal(target_sig);
--    trace_user_force_sig(env, target_sig, host_sig);
-+    trace_user_dump_core_and_abort(env, target_sig, host_sig);
-     gdb_signalled(env, target_sig);
- 
-     /* dump core if supported by target binary format */
-diff --git a/linux-user/trace-events b/linux-user/trace-events
-index e7d2f54e9401..f33717f248af 100644
---- a/linux-user/trace-events
-+++ b/linux-user/trace-events
-@@ -9,7 +9,7 @@ user_setup_frame(void *env, uint64_t frame_addr) "env=%p frame_addr=0x%"PRIx64
- user_setup_rt_frame(void *env, uint64_t frame_addr) "env=%p frame_addr=0x%"PRIx64
- user_do_rt_sigreturn(void *env, uint64_t frame_addr) "env=%p frame_addr=0x%"PRIx64
- user_do_sigreturn(void *env, uint64_t frame_addr) "env=%p frame_addr=0x%"PRIx64
--user_force_sig(void *env, int target_sig, int host_sig) "env=%p signal %d (host %d)"
-+user_dump_core_and_abort(void *env, int target_sig, int host_sig) "env=%p signal %d (host %d)"
- user_handle_signal(void *env, int target_sig) "env=%p signal %d"
- user_host_signal(void *env, int host_sig, int target_sig) "env=%p signal %d (target %d)"
- user_queue_signal(void *env, int target_sig) "env=%p signal %d"
+-#define MAX_SIGQUEUE_SIZE 1024
+-
+ struct emulated_sigtable {
+     int pending; /* true if signal is pending */
+     target_siginfo_t info;
 -- 
 2.34.1
 
