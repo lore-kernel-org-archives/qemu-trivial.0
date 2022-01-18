@@ -1,46 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9nbk-0004hy-7O
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55620)
+	id 1n9nbo-0004lC-FQ
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55628)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbd-0004ZV-RZ; Tue, 18 Jan 2022 07:28:57 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:51291)
+ id 1n9nbe-0004aa-Pd; Tue, 18 Jan 2022 07:28:58 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:33739)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbb-0001ui-RX; Tue, 18 Jan 2022 07:28:57 -0500
+ id 1n9nbc-0001uy-Pz; Tue, 18 Jan 2022 07:28:58 -0500
 Received: from quad ([82.142.13.186]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M3VAI-1n9FNB1tHG-000gBP; Tue, 18
- Jan 2022 13:28:51 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MFJfN-1n7pgC49wf-00FkCe; Tue, 18
+ Jan 2022 13:28:54 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 4/9] tests: Fix typo in check-help output
-Date: Tue, 18 Jan 2022 13:28:42 +0100
-Message-Id: <20220118122847.636461-5-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Warner Losh <imp@bsdimp.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 6/9] linux-user: Fix comment typo in arm cpu_loop code
+Date: Tue, 18 Jan 2022 13:28:44 +0100
+Message-Id: <20220118122847.636461-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
 References: <20220118122847.636461-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:i6PYalnVU2B2ycDWxlaBzav/aWen7xXrmyb15vd3e3gWxsJuWvq
- M/6ncqwhCw/OLAvx8QET447iEO/OW2Yum9vN37JuXoTfE9Xzw6iPlHyCkpFXHCtK0cSMFhY
- +by/oXo9t3mxYBe7SDjnRtoSiEk1vtU4WdvxK7lAX5AvSeFFHZdSHm43blnSFJ7meQSRz46
- rdqzocIheiU6icnlxobnw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:on+rD648Jcs=:MojisKvTT3W39aEIZKwlnL
- JVMNiKOc/BQppiJWustL2Bou2Dli8Xv8OJU+/WjfWKqLywI4ZyxzLwkuzGNDKLOCHjhb7HzbW
- n05ldfDJzCyVXKj6MfqWpdX1qHiDrwDHChjWXggoeGKXxamXK+a3JexmvX80h8XJF6vxPNisC
- tjtXedTuDPWMmhaiQH81onCKgjlyyLs07KUIp3dhaQMRIo5Gcl4BXDhEghi2S8WOZJmWmg45Y
- lo/GVKibwugYPGqF1cTboHmSg24ILiNx7+yU7RHbLy8AGM372sfpkVxkMQd2lMXe8EM41bBcQ
- Q0VGnZuim68iOH0a3KN4L4zxydycy2Q/eKK6dcZDDMsqb5LPccUUuBsfRnrU5skh5RuX0vgK6
- ZygdCzg1ES1xQnF1FxvxCuhgeYqVHmor38i2qbze9nqhF/nCYpcSp4d0XHkWTcHGsbLpyceBz
- vNhiczfxVZFQOw7uEqel9ss+Nb/RBdvISlUZXuvzec8h25kpv9l6BHFWUkaY7EE6NDdrWcWP+
- Zyrgtlc9J92zAq1cL2BElqJJ9c1YrSmA+gDPz6g7zshc1RK2iOqeVoLaae/+O4ZwP46CUf5FY
- uSMjo5LLfJRFqLObOa2k8iYISqsQqAtcnzKjhPbfigEUGIwLTZE6Qe7C9tL6f50oyKFY0Gsar
- Ks+tyDGTZ03qMxW1r4i7dYCffWkMuMDtGk2XTH6UC7psvZ8+NIjcAi/iepp5bIxd7vUE=
+X-Provags-ID: V03:K1:9Sc1dsPggki8oCQV/stELrG0WWdFAZR6OrITScov03rS0sg+LB1
+ 3DVM2jASnUM4HSVNclCIQOzWU042+FWraeGPlhpftGBHYLgba9Je2Yp59hWkSNibEIZQdi4
+ oG0mozj/xeCh+MXy0Jl6j/9+tbbGLQm1MAd7RiyvDvyojS0A0SSJVlvT0ZUOdzSHklG7qET
+ DLf8WoGXOgklSmd/kjttg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:cj7vib6NnAA=:UKcKDejVukRreBu+SWx8fb
+ Nw0OsbCY4vNXbjefyCRWbI9IsUH14yf+xB/1TqRmQHPsVsGigs/WooayH03HYn9zOiapn2wqs
+ /HErHrDGMPMascDp+pM/9B5/sYmF7lGerLZITdkLMOTp4IK1T1HIjKD6upksxpt7Ht93rxgL8
+ aHkocoWTUEGLJqr8IsEtrXiEgLcNlVvcdmqcRbe0GZ3Bv2xNzzUc4tcARIFIK7YBJ7sd0fmyY
+ FCPP/tjizar5XESl2ZVFLx10sgV3RDuK2CSZbPBryHk//lLjuPRgWyfb7KrE4nscR7NeACdOP
+ 4f9t+pZjPvLcT8gUB3pjIgsUsOglhaMKqx4ODHvMRSbOMzUIBajHgJ/UoJrc34dSSjUa6MHaJ
+ eT1wcV8ZjFReFmWytt9dSep6SajPmMENd3BrQjzr28QDEiPtCflNzi/XGyK5dF27OkBga8/1S
+ AZMsA8qhRAQ/GobKR6gsxI1wXb6KK5DfpmTDXH2w4l2xk21bIaVFDsJycAtGXZe3D6IWra2PH
+ baO9qLu8XpDolnZSRdztvCQ6tQ/D2LOM25c2ZWv6e8NgTk1C7NKzHy9nN9Iv/HW7O1A7FNkxT
+ RMxYhM1Y/S8W8d9vWI+qkWSpZOt40CVhip9uDPQksmkrgwOSfBbIC3UTYGpwbFMMEQP0nNHNj
+ d1aRJHC39trpx3jHhRiDtyuz2pG/hylQogDNVob9BL+Bjy6wS0FUXdOXL0/iJR5HE1iQ=
 Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -61,32 +59,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jan 2022 12:28:58 -0000
+X-List-Received-Date: Tue, 18 Jan 2022 12:28:59 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Fix typo in 'make check-help' output.
+Fix a typo in a comment in the arm cpu_loop code.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220111175528.22294-1-f4bug@amsat.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+Message-Id: <20220114182535.3804783-1-peter.maydell@linaro.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/Makefile.include | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ linux-user/arm/cpu_loop.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 4c564cf7899e..3aba62240099 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -23,7 +23,7 @@ endif
- 	@echo " $(MAKE) check-clean          Clean the tests and related data"
- 	@echo
- 	@echo "The following are useful for CI builds"
--	@echo " $(MAKE) check-build          Build most test binaris"
-+	@echo " $(MAKE) check-build          Build most test binaries"
- 	@echo " $(MAKE) get-vm-images        Downloads all images used by avocado tests, according to configured targets (~350 MB each, 1.5 GB max)"
- 	@echo
- 	@echo
+diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
+index f153ab503a8a..032e1ffddfbd 100644
+--- a/linux-user/arm/cpu_loop.c
++++ b/linux-user/arm/cpu_loop.c
+@@ -434,8 +434,8 @@ void cpu_loop(CPUARMState *env)
+             case 0x6: /* Access flag fault, level 2 */
+             case 0x9: /* Domain fault, level 1 */
+             case 0xb: /* Domain fault, level 2 */
+-            case 0xd: /* Permision fault, level 1 */
+-            case 0xf: /* Permision fault, level 2 */
++            case 0xd: /* Permission fault, level 1 */
++            case 0xf: /* Permission fault, level 2 */
+                 si_signo = TARGET_SIGSEGV;
+                 si_code = TARGET_SEGV_ACCERR;
+                 break;
 -- 
 2.34.1
 
