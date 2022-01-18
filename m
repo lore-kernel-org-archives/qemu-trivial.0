@@ -1,63 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9s8U-0005SG-Rk
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 12:19:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51190)
+	id 1n9sez-0002ta-N1
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 12:52:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n9s8S-0005Pz-HX
- for qemu-trivial@nongnu.org; Tue, 18 Jan 2022 12:19:08 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:24601)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1n9s8P-0004Uf-JP
- for qemu-trivial@nongnu.org; Tue, 18 Jan 2022 12:19:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1642526341;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=qUx4BP0FIwrp/ETX7AzAIjDyfL8mLaDKixyBGKf1G00=;
- b=T+3cLZWvS87t8ntn12FQyWz8E88N5/hxJQ6xZmG9DQ06hS8OgHHlpnVbGxhKExSfSmTF9z
- Cy/mXAj8DgjDcyp3bAOAfAZ3g9tAMqH5AQS18uUcoDa7KVQkRhJ3C+XWOumIEFpIzmoMYP
- PX0EIqkuWXkyMuUHNS9+Tn/d1DCRXIw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-640-1Va_pZ9NMPqAZQ_UIMy5Ow-1; Tue, 18 Jan 2022 12:18:53 -0500
-X-MC-Unique: 1Va_pZ9NMPqAZQ_UIMy5Ow-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AA78018982B4;
- Tue, 18 Jan 2022 17:06:09 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.194.216])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 78FB4753DA;
- Tue, 18 Jan 2022 17:06:04 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Alistair Francis <alistair.francis@wdc.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH] meson.build: Use a function from libfdt 1.5.1 for the library
- check
-Date: Tue, 18 Jan 2022 18:05:48 +0100
-Message-Id: <20220118170548.97288-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n9sex-0002pO-LK; Tue, 18 Jan 2022 12:52:43 -0500
+Received: from [2607:f8b0:4864:20::102d] (port=55232
+ helo=mail-pj1-x102d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1n9sew-0002VW-2J; Tue, 18 Jan 2022 12:52:43 -0500
+Received: by mail-pj1-x102d.google.com with SMTP id l16so12334pjl.4;
+ Tue, 18 Jan 2022 09:52:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=VeWFhAGH8soSH8puPWWUDv0Yn266XF0d6Sv/ERgUwbM=;
+ b=S7q0COlYM77YSTfEv4vggtBe0rJ0y1Hk9iO2tsNtERqhTV4CTxMauuWk9zX6U/MRJv
+ 8Y6pfVolyyJ0vfAmT+mAPKSTDLC481knKN9YSmZo5vtgxcxMB1aK/OEQU3dfS7S5kE9N
+ W/dBJ7zqVUzqNNJiPAObJcs/nf3lPjEE2KwdHaTk4O53C6Y9OtRdObsj9mJvVp0MH+mJ
+ 2nTLzQqGcPkoKKf/8nWUZyFCLYitqnwlqmRTSoo8RaOz6o3tjJMIx5qoZcxqWOfnTnRf
+ 3ofUr0D8s3a9JRDGbldyujaoCiuMFVXx5FEcLoFJI6eLS5UMqbTjOSt6Tv/cZxwfGXdN
+ z7+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=VeWFhAGH8soSH8puPWWUDv0Yn266XF0d6Sv/ERgUwbM=;
+ b=V/BdadJKQSQJaDFmxcYohEKvLkEb/liPFd895JIEjiyQAWQHNZpXxdPu7WqvvLteYo
+ 0ayqyXxVbEAvj43OKNqfcN3RZBDqVUpGftqvmDEINALvTG4QGaFppiLaBu/bFb8XkFZc
+ O0b0SrznS5tZ4hzuU7okloCAb7mmbIU7iqoWlYdHHCxyWp1TLEPudZycJw9wxlUCnAWW
+ KASIajCBNInoqqALoyTh5FOGWVV3QUAJLTdduJ6EObyMLMi4hAceCDGdK0FL4aoe3+rh
+ qK86B1ToDl43Ed6DWNORodvXxdmVZj1aGjOkxJPwd4S2YLc81Zk0AekkiMQBDXV/HO5i
+ iG+w==
+X-Gm-Message-State: AOAM533Jdc8vtOPjb+NiEsjwKD29VSErFA70D6jXc9apKFjiycHewHb8
+ q0F0KvxR2WiWT1U20t7VfLc=
+X-Google-Smtp-Source: ABdhPJyvnGHYFgKpqgPpmBrbZHWrtUIZtEsh8uqO9xvTVIdBtCck+/hiOUaYPgjFO161X5R7QPJbwA==
+X-Received: by 2002:a17:90b:3ecd:: with SMTP id
+ rm13mr26744930pjb.49.1642528360236; 
+ Tue, 18 Jan 2022 09:52:40 -0800 (PST)
+Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id e10sm7940196pgk.5.2022.01.18.09.52.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Jan 2022 09:52:39 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <2135d665-5ec4-c70d-1d23-d1bce37b6b24@amsat.org>
+Date: Tue, 18 Jan 2022 18:52:35 +0100
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.0
+Subject: Re: [PATCH] meson.build: Use a function from libfdt 1.5.1 for the
+ library check
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20220118170548.97288-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220118170548.97288-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.7,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102d
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102d.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,32 +89,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jan 2022 17:19:09 -0000
+X-List-Received-Date: Tue, 18 Jan 2022 17:52:44 -0000
 
-The fdt version test in meson.build uses a function from libfdt v1.4.7,
-but we require version 1.5.1 nowadays. Thus use a function that has
-been introduced in that version instead.
+On 18/1/22 18:05, Thomas Huth wrote:
+> The fdt version test in meson.build uses a function from libfdt v1.4.7,
+> but we require version 1.5.1 nowadays. Thus use a function that has
+> been introduced in that version instead.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/822
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   meson.build | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/822
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/meson.build b/meson.build
-index 762d7cee85..d1cc04c7a2 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2276,7 +2276,7 @@ if have_system
-     if fdt.found() and cc.links('''
-        #include <libfdt.h>
-        #include <libfdt_env.h>
--       int main(void) { fdt_check_full(NULL, 0); return 0; }''',
-+       int main(void) { fdt_find_max_phandle(NULL, NULL); return 0; }''',
-          dependencies: fdt)
-       fdt_opt = 'system'
-     elif fdt_opt == 'system'
--- 
-2.27.0
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
