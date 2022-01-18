@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9nc1-0004qY-2G
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55734)
+	id 1n9nc2-0004rz-39
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nby-0004oo-6u; Tue, 18 Jan 2022 07:29:18 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:41033)
+ id 1n9nbd-0004ZN-Lo; Tue, 18 Jan 2022 07:28:57 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:48717)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbm-0001wV-Ml; Tue, 18 Jan 2022 07:29:17 -0500
+ id 1n9nbb-0001uc-7F; Tue, 18 Jan 2022 07:28:57 -0500
 Received: from quad ([82.142.13.186]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1Mcpz0-1mZuYX0CQ6-00a107; Tue, 18
- Jan 2022 13:28:55 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1Ma0HM-1mmirF3ZOm-00Vug9; Tue, 18
+ Jan 2022 13:28:50 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 8/9] linux-user: Return void from queue_signal()
-Date: Tue, 18 Jan 2022 13:28:46 +0100
-Message-Id: <20220118122847.636461-9-laurent@vivier.eu>
+Subject: [PULL 1/9] hw/timer/etraxfs_timer: Add vmstate for ETRAX timers
+Date: Tue, 18 Jan 2022 13:28:39 +0100
+Message-Id: <20220118122847.636461-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
 References: <20220118122847.636461-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QeG1eFTRE/Urk2aR/twAVOiLDrXveYNtkX83aKc3lzNNpiVafgg
- vGTzMGI9AacC43fObbFJ4wtX5zBTFgF3sfALPvye9CRBB1ohZocvr1/a/xdDreApwMWEJbx
- zb3kP11EF/tzb8iaSmernm7qfD7lGX/YNjs8JWdSli/DB3tHR05Wkoq3XgwHTQV8afRECSk
- biTHv/IuBM8VDDKZi6cSA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3LWQsXjGBMs=:eH32QqGWHM/h+loKzlHWmj
- BnqsRjyvIX3xHiEQObpSPI0uAcaOaqo7hHQR3GshWJlnbU9oVe4qbwU5Po8qzBKJAbucoD4rR
- VCm/KM1xr7xrNRNWKK/UYiQewTrZgsUB6YscM0/m2b+UNaEgKp7OEqa2/bj7sa8rYWGPvNAlI
- GnWBTFamP0DB2waLJVJIP+Xwimy/yZ3LIZZTgaPVMbn5ylPf0JJ2bheXqO0gNTCFJYoFzU2AA
- dCtxnMiYk8wVLTOKRNUcFCLAqflAh9EAYszN6ifJQnih0lPgxHCYtd2xyuFQDs6o7XTBFGm7Y
- m2T7K8XIHJMR3fUayWpoUZoZdMecdsyGIeAEOPT0KL3zKiD1GNvJ7358hzd1ks71xD9vsxd7z
- EkfLFlVKQ58zjdyguzIDmpdD0fo9VEpeSblVZne3qdq45JmGa2/5LdQG8ZGzHaYub4Rt6ywph
- 1ZJSbhQp7i0T55cIMbCUXOO8Nlf2L0Qye5/shiJn75bjlhwsuXp+3SsG7SwH69eJVAdoyWu2W
- vlx9E8n4ww4Z5oUsIx4zbW4NhSxezYTgD5B+GLdmFw1Tjz3xpKIiswsfZQlNjU8P40VJASxs1
- Gd2ZbBnZ1sNM90Wz5j53dzNNWhDlsYBgwCLte+zwJtMVSvEObFcGM/Tw3WsHf9URYD/DDtOza
- t4GsL5r9TwT1FlkS15I6MrZU2xolR/d6Gy61fFamxyKtwWsVEv4TxZFwkZ2j/mc0tWF4=
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:09/ZkVTYnpu/etwWOM/PzWTt8OgRgTrKqNdcfTEpKIFcgu+sbK5
+ a+lE71QBba1DFIwCvdcM6yFRQ8IrDhEErw7LAvN7VCVnCagXy8avKtQrqMmA4v5PS+oCzGv
+ yriCgKf02ntipqBq2YJAuE3XBCQ/laXcclY9pXrcN1TR8cd60QcndB3Hs2N3/Bft8aOHiRb
+ iJMwlW9owwzA/p+d7qMKQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pIkXajQg0Sw=:ihKi2+w8QBCInaq6Tw/iw3
+ vTQ6tcblsykIL7oqIXSvFN1dFlj4Aze9cDjvPOu5Cvxntco1MEIJqJt0dx5oiT1+Nvz27gTgs
+ hD8jLJp1l5VWhYV/Qt8yosc4q5wRezbzLrAY2PVCXJvLQO6+tZEwi/6vi9/KhKPtWTr58MwF/
+ d7S3fC185E/Dy/UK84344kaz+pBVGG8Dnsq/EMDuCBMEiEB6X2IVpCXky9PNWbBq9GUnwyguG
+ bH/a/X3aE/YsJKULOq3OWMDI/J+QWQZdzA1rhslDTkCRuI9+z9WfYgNOgQ7Uz010zIPhG6TbR
+ pYH37M4lHKGtia6ItDpXEubRPMwacozF+4VuLJ0h3yMZL3djfufZQ6E8ubKNZsLJo++CfDtcT
+ E1ZZEhusd51gEZFCNuyCUKOVq04wjbpEWBPnvo1jLBhevK71TOQ0TCv51NABdd3ELbVdEkrsG
+ fhUKGdPvSFb2bfiYn4EdSLnqnpHLImaqRfQoBQUahFKxql3Ngd4TFFaH2s+YBGv8aS0snfBaS
+ hjHE5UZdvrunSBkUvOBcqkrBoLAIDEiHNpNYDGGk/fJJ52QM/O+iEyNYRuZ+AhAUb7/ZmAS/P
+ gIkEufSaWVmcb3dRN6MJE6DE4tjx9JjyMZsAxbVwqsr9fsZvnXpy512DtFH1F43d+U+J19wgr
+ 1VxyqeUw8bOAFRF2R6qvQfCbVq3ynvBW93LsKOGzdgu402Xan8nQzDs1NL0fmmybQHxs=
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -61,67 +62,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jan 2022 12:29:19 -0000
+X-List-Received-Date: Tue, 18 Jan 2022 12:28:58 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-The linux-user queue_signal() function always returns 1, and none of
-its callers check the return value.  Give it a void return type
-instead.
+Add the vmstate for the ETRAX timers.
+This is in theory a migration compatibility break
+for the 'AXIS devboard 88' CRIS machine.
 
-The return value is a leftover from the old pre-2016 linux-user
-signal handling code, which really did have a queue of signals and so
-might return a failure indication if too many signals were queued at
-once.  The current design avoids having to ever have more than one
-signal queued via queue_signal() at once, so it can never fail.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220114153732.3767229-4-peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20211106105623.510868-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- linux-user/signal-common.h | 4 ++--
- linux-user/signal.c        | 5 ++---
- 2 files changed, 4 insertions(+), 5 deletions(-)
+ hw/timer/etraxfs_timer.c | 34 +++++++++++++++++++++++++++++++++-
+ 1 file changed, 33 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/signal-common.h b/linux-user/signal-common.h
-index 42aa479080b8..2113165a7583 100644
---- a/linux-user/signal-common.h
-+++ b/linux-user/signal-common.h
-@@ -59,8 +59,8 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
+diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
+index 4ba662190de3..139e5b86a447 100644
+--- a/hw/timer/etraxfs_timer.c
++++ b/hw/timer/etraxfs_timer.c
+@@ -26,6 +26,7 @@
+ #include "hw/sysbus.h"
+ #include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
++#include "migration/vmstate.h"
+ #include "qemu/module.h"
+ #include "qemu/timer.h"
+ #include "hw/irq.h"
+@@ -64,7 +65,7 @@ struct ETRAXTimerState {
+     ptimer_state *ptimer_t1;
+     ptimer_state *ptimer_wd;
  
- void process_pending_signals(CPUArchState *cpu_env);
- void signal_init(void);
--int queue_signal(CPUArchState *env, int sig, int si_type,
--                 target_siginfo_t *info);
-+void queue_signal(CPUArchState *env, int sig, int si_type,
-+                  target_siginfo_t *info);
- void host_to_target_siginfo(target_siginfo_t *tinfo, const siginfo_t *info);
- void target_to_host_siginfo(siginfo_t *info, const target_siginfo_t *tinfo);
- int target_to_host_signal(int sig);
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index bfbbeab9ad2e..32854bb3752d 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -780,8 +780,8 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)
+-    int wd_hits;
++    uint32_t wd_hits;
  
- /* queue a signal so that it will be send to the virtual CPU as soon
-    as possible */
--int queue_signal(CPUArchState *env, int sig, int si_type,
--                 target_siginfo_t *info)
-+void queue_signal(CPUArchState *env, int sig, int si_type,
-+                  target_siginfo_t *info)
+     /* Control registers.  */
+     uint32_t rw_tmr0_div;
+@@ -83,6 +84,36 @@ struct ETRAXTimerState {
+     uint32_t r_masked_intr;
+ };
+ 
++static const VMStateDescription vmstate_etraxfs = {
++    .name = "etraxfs",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]) {
++        VMSTATE_PTIMER(ptimer_t0, ETRAXTimerState),
++        VMSTATE_PTIMER(ptimer_t1, ETRAXTimerState),
++        VMSTATE_PTIMER(ptimer_wd, ETRAXTimerState),
++
++        VMSTATE_UINT32(wd_hits, ETRAXTimerState),
++
++        VMSTATE_UINT32(rw_tmr0_div, ETRAXTimerState),
++        VMSTATE_UINT32(r_tmr0_data, ETRAXTimerState),
++        VMSTATE_UINT32(rw_tmr0_ctrl, ETRAXTimerState),
++
++        VMSTATE_UINT32(rw_tmr1_div, ETRAXTimerState),
++        VMSTATE_UINT32(r_tmr1_data, ETRAXTimerState),
++        VMSTATE_UINT32(rw_tmr1_ctrl, ETRAXTimerState),
++
++        VMSTATE_UINT32(rw_wd_ctrl, ETRAXTimerState),
++
++        VMSTATE_UINT32(rw_intr_mask, ETRAXTimerState),
++        VMSTATE_UINT32(rw_ack_intr, ETRAXTimerState),
++        VMSTATE_UINT32(r_intr, ETRAXTimerState),
++        VMSTATE_UINT32(r_masked_intr, ETRAXTimerState),
++
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static uint64_t
+ timer_read(void *opaque, hwaddr addr, unsigned int size)
  {
-     CPUState *cpu = env_cpu(env);
-     TaskState *ts = cpu->opaque;
-@@ -794,7 +794,6 @@ int queue_signal(CPUArchState *env, int sig, int si_type,
-     ts->sync_signal.pending = sig;
-     /* signal that a new signal is pending */
-     qatomic_set(&ts->signal_pending, 1);
--    return 1; /* indicates that the signal was queued */
+@@ -357,6 +388,7 @@ static void etraxfs_timer_class_init(ObjectClass *klass, void *data)
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+ 
+     dc->realize = etraxfs_timer_realize;
++    dc->vmsd = &vmstate_etraxfs;
+     rc->phases.enter = etraxfs_timer_reset_enter;
+     rc->phases.hold = etraxfs_timer_reset_hold;
  }
- 
- 
 -- 
 2.34.1
 
