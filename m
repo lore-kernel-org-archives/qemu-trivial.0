@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9nbh-0004ee-Uw
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55596)
+	id 1n9nbk-0004hy-7O
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbc-0004Yi-UW; Tue, 18 Jan 2022 07:28:57 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:37711)
+ id 1n9nbd-0004ZV-RZ; Tue, 18 Jan 2022 07:28:57 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:51291)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nba-0001uZ-OW; Tue, 18 Jan 2022 07:28:56 -0500
+ id 1n9nbb-0001ui-RX; Tue, 18 Jan 2022 07:28:57 -0500
 Received: from quad ([82.142.13.186]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MQy0N-1mvHQj1fVv-00NyCU; Tue, 18
- Jan 2022 13:28:50 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1M3VAI-1n9FNB1tHG-000gBP; Tue, 18
+ Jan 2022 13:28:51 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 2/9] hw/scsi/megasas: Simplify using the ldst API
-Date: Tue, 18 Jan 2022 13:28:40 +0100
-Message-Id: <20220118122847.636461-3-laurent@vivier.eu>
+Subject: [PULL 4/9] tests: Fix typo in check-help output
+Date: Tue, 18 Jan 2022 13:28:42 +0100
+Message-Id: <20220118122847.636461-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
 References: <20220118122847.636461-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:kA5fMoXBa0wB00HzZofVdfTi95TE04Gb1A9HDOUdB+QwUMk041L
- 6vcjl53WEmxp0F7uvkffuL+guM2LpNAfmF07WIDXOMMWCA5nZQ6+8eN0Mx1Tf7Q0g5LZ4Oz
- +PUCKlBuRq/FIX64LGMOIxxq+Dr6WyucEdqUNYS4HhrlZOtWwzC9wWXSj2QLTtq+dFzPKSW
- UMbgHwjafKi96atA8J3Vw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iUAunBZy8rg=:kvDIGkbx3hSWv05mOfGb8v
- GGWlCnB1vBNjQx8vsUjDX6x7sRxltLyMY7xj3KkWccjLKdYtDGXJQeDkmrtpCCngmbj3ajgGT
- KvoOT9PN3I74jJALA+gV8lc47Td9/Nya5B9UxQITCP6zOAfy9TD99uiA8CBQMCk6dmD0BJLuO
- dyGqB8qkWFKCoEPIezvJCMBeuSAk7j1O0tuWNaUPzsxfB7Pmo8rP4copQoArur5uSXUtSptKr
- dtGY4tgduX+L2DD6VHaJguy21AWRrKjGKQPCF6BlQKfuIEs9tWreVOulF9e6L9+iUOUjkFVEf
- XpVw/vl66uuA36cvterlJqL/3UzPt7UYpCfOE5LKZaQZXxl6Rf5ovEwsW8sH/yBPBVkUy5ysM
- 6kZ15+IYnCOEPrgWiX9+QmevyRi8WdQIbd/XHfeatTMIny1lQgIb50xciGar8GSgi8GQl5vsD
- UutNvnwek2T//gmJbTP6B9GC/QPCafri6NNnLU3jFQgv7M3WBpwifJZ/83AsMH+tGCu3xUlxf
- SO1MK4MCheyuqOSTpFLErnikuoz0v1DtTLpmIz3iuyyy5hvA8a9w2NhotzugYNlspdnku1cUn
- 7dlkVEiURD+yXRv2lVh54QsFW4sEZkKnBZIGkxUbdbhOka6Los+KvbIJwkzpFE1iOWThNvI6U
- 0oIZug3TkaPtmesCJdF3aWcdQ9USQBuH0Xnuasf+5efobhfokwSAHGicEX2ZqVKZSCco=
+X-Provags-ID: V03:K1:i6PYalnVU2B2ycDWxlaBzav/aWen7xXrmyb15vd3e3gWxsJuWvq
+ M/6ncqwhCw/OLAvx8QET447iEO/OW2Yum9vN37JuXoTfE9Xzw6iPlHyCkpFXHCtK0cSMFhY
+ +by/oXo9t3mxYBe7SDjnRtoSiEk1vtU4WdvxK7lAX5AvSeFFHZdSHm43blnSFJ7meQSRz46
+ rdqzocIheiU6icnlxobnw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:on+rD648Jcs=:MojisKvTT3W39aEIZKwlnL
+ JVMNiKOc/BQppiJWustL2Bou2Dli8Xv8OJU+/WjfWKqLywI4ZyxzLwkuzGNDKLOCHjhb7HzbW
+ n05ldfDJzCyVXKj6MfqWpdX1qHiDrwDHChjWXggoeGKXxamXK+a3JexmvX80h8XJF6vxPNisC
+ tjtXedTuDPWMmhaiQH81onCKgjlyyLs07KUIp3dhaQMRIo5Gcl4BXDhEghi2S8WOZJmWmg45Y
+ lo/GVKibwugYPGqF1cTboHmSg24ILiNx7+yU7RHbLy8AGM372sfpkVxkMQd2lMXe8EM41bBcQ
+ Q0VGnZuim68iOH0a3KN4L4zxydycy2Q/eKK6dcZDDMsqb5LPccUUuBsfRnrU5skh5RuX0vgK6
+ ZygdCzg1ES1xQnF1FxvxCuhgeYqVHmor38i2qbze9nqhF/nCYpcSp4d0XHkWTcHGsbLpyceBz
+ vNhiczfxVZFQOw7uEqel9ss+Nb/RBdvISlUZXuvzec8h25kpv9l6BHFWUkaY7EE6NDdrWcWP+
+ Zyrgtlc9J92zAq1cL2BElqJJ9c1YrSmA+gDPz6g7zshc1RK2iOqeVoLaae/+O4ZwP46CUf5FY
+ uSMjo5LLfJRFqLObOa2k8iYISqsQqAtcnzKjhPbfigEUGIwLTZE6Qe7C9tL6f50oyKFY0Gsar
+ Ks+tyDGTZ03qMxW1r4i7dYCffWkMuMDtGk2XTH6UC7psvZ8+NIjcAi/iepp5bIxd7vUE=
 Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -62,55 +61,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jan 2022 12:28:57 -0000
+X-List-Received-Date: Tue, 18 Jan 2022 12:28:58 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-This code is easier to review using the load/store API.
+Fix typo in 'make check-help' output.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20211218111912.1499377-1-philmd@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20220111175528.22294-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/scsi/megasas.c | 17 +++--------------
- 1 file changed, 3 insertions(+), 14 deletions(-)
+ tests/Makefile.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
-index dc9bbdb740e7..83c321ec208a 100644
---- a/hw/scsi/megasas.c
-+++ b/hw/scsi/megasas.c
-@@ -383,8 +383,7 @@ static int megasas_setup_inquiry(uint8_t *cdb, int pg, int len)
-         cdb[1] = 0x1;
-         cdb[2] = pg;
-     }
--    cdb[3] = (len >> 8) & 0xff;
--    cdb[4] = (len & 0xff);
-+    stw_be_p(&cdb[3], len);
-     return len;
- }
- 
-@@ -400,18 +399,8 @@ static void megasas_encode_lba(uint8_t *cdb, uint64_t lba,
-     } else {
-         cdb[0] = READ_16;
-     }
--    cdb[2] = (lba >> 56) & 0xff;
--    cdb[3] = (lba >> 48) & 0xff;
--    cdb[4] = (lba >> 40) & 0xff;
--    cdb[5] = (lba >> 32) & 0xff;
--    cdb[6] = (lba >> 24) & 0xff;
--    cdb[7] = (lba >> 16) & 0xff;
--    cdb[8] = (lba >> 8) & 0xff;
--    cdb[9] = (lba) & 0xff;
--    cdb[10] = (len >> 24) & 0xff;
--    cdb[11] = (len >> 16) & 0xff;
--    cdb[12] = (len >> 8) & 0xff;
--    cdb[13] = (len) & 0xff;
-+    stq_be_p(&cdb[2], lba);
-+    stl_be_p(&cdb[2 + 8], len);
- }
- 
- /*
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 4c564cf7899e..3aba62240099 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -23,7 +23,7 @@ endif
+ 	@echo " $(MAKE) check-clean          Clean the tests and related data"
+ 	@echo
+ 	@echo "The following are useful for CI builds"
+-	@echo " $(MAKE) check-build          Build most test binaris"
++	@echo " $(MAKE) check-build          Build most test binaries"
+ 	@echo " $(MAKE) get-vm-images        Downloads all images used by avocado tests, according to configured targets (~350 MB each, 1.5 GB max)"
+ 	@echo
+ 	@echo
 -- 
 2.34.1
 
