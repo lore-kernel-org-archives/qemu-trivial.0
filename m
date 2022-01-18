@@ -1,43 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9nbh-0004e0-1i
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55556)
+	id 1n9nbh-0004ee-Uw
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:29:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nba-0004YD-NW; Tue, 18 Jan 2022 07:28:54 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:40809)
+ id 1n9nbc-0004Yi-UW; Tue, 18 Jan 2022 07:28:57 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:37711)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9nbY-0001uH-LJ; Tue, 18 Jan 2022 07:28:54 -0500
+ id 1n9nba-0001uZ-OW; Tue, 18 Jan 2022 07:28:56 -0500
 Received: from quad ([82.142.13.186]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MqINP-1mVjhi0svD-00nR86; Tue, 18
- Jan 2022 13:28:49 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MQy0N-1mvHQj1fVv-00NyCU; Tue, 18
+ Jan 2022 13:28:50 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 0/9] Trivial branch for 7.0 patches
-Date: Tue, 18 Jan 2022 13:28:38 +0100
-Message-Id: <20220118122847.636461-1-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 2/9] hw/scsi/megasas: Simplify using the ldst API
+Date: Tue, 18 Jan 2022 13:28:40 +0100
+Message-Id: <20220118122847.636461-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
+References: <20220118122847.636461-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:rpTQguqhbEm/oITqwFdw9trpaoT7dE4gaMTPWWC9ICC027Y+y6N
- XZTC+2TXoPNIIqKgmp854GEObWwulZq33WnjgZzXDLRzFo4oahA6Spc9Braic0c8VA599l4
- Jz3HIXwXfzMHN9wGWj0kY544XPrJBjzdNkuPkdgOtwWbhD2rNwkc6r4539pEh8aqAndII52
- vDgqgCZH6Sd+JbIxF9RJg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5ZNoj97stAo=:G2umrKFlhCWBy6F4HSacSM
- IdiYwzJLqguTShSQGKCXm2lGe9qgK7dNkKjgzBaTvx21R2kEwYEoaWBijZdPZt4C0N6b6P+PB
- DCE8RMUXIKEDRx7Ac9ljIPJjTrCYrMu6v9mYSbyUYlKH6Nr3RoR3Dw9jJvBlaC/IQbxlvinje
- xuCbypX2AqVQt4IX0VpFgNa1WQgWuxALZ7ewM5C0aE0V7uhQkxO2xTviBZQwrFXbe4R1fNvmp
- VYN0ReJF04IK1hKqaIjOJ7LMJ/SziTxY2ZNy2MwqwkoJ94qqTIyEf1MrLYl+6yTh7EClKP1OY
- k8Z37PwmY48nXBV0z+BwYtiRUhhVjwrzXRNwSFTjAKrUg6qRM0OzBVv7BrnGwZv0998YPfQD8
- M/Y/EUZeZVWs8snHIaxXx5hIY+RyOfYNVusM2hWMQ76ubH6zY+SJs67KycMHa6IXY1BZ6lyGz
- 5KjRvzWwnIEB/jRXJrAu+0/CimTCiVmDGRfMcVXsDgEE8KkZS5JVlOuGXoleOy6AHvnAAiIQN
- g21WWwPwu8Lyt+9nrbQd4r7Y4oVo1Nc56L9goyTjXtKXzezA17HmnoGa9SGhuQkDxhXXiBB8z
- CAlNa8hpp3x7jq3/PI9ojEv94koo3lWZM4IPa9CCzClk4EWx1JXCLYEXkx0f7yuvGx+z0AxrY
- GQCadq8A+zjfZmfJZ83+PwqJN10Ap3iLXEBdM5eLo2yPVlNyb5t6XxqsFwyP6RnATEyY=
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:kA5fMoXBa0wB00HzZofVdfTi95TE04Gb1A9HDOUdB+QwUMk041L
+ 6vcjl53WEmxp0F7uvkffuL+guM2LpNAfmF07WIDXOMMWCA5nZQ6+8eN0Mx1Tf7Q0g5LZ4Oz
+ +PUCKlBuRq/FIX64LGMOIxxq+Dr6WyucEdqUNYS4HhrlZOtWwzC9wWXSj2QLTtq+dFzPKSW
+ UMbgHwjafKi96atA8J3Vw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:iUAunBZy8rg=:kvDIGkbx3hSWv05mOfGb8v
+ GGWlCnB1vBNjQx8vsUjDX6x7sRxltLyMY7xj3KkWccjLKdYtDGXJQeDkmrtpCCngmbj3ajgGT
+ KvoOT9PN3I74jJALA+gV8lc47Td9/Nya5B9UxQITCP6zOAfy9TD99uiA8CBQMCk6dmD0BJLuO
+ dyGqB8qkWFKCoEPIezvJCMBeuSAk7j1O0tuWNaUPzsxfB7Pmo8rP4copQoArur5uSXUtSptKr
+ dtGY4tgduX+L2DD6VHaJguy21AWRrKjGKQPCF6BlQKfuIEs9tWreVOulF9e6L9+iUOUjkFVEf
+ XpVw/vl66uuA36cvterlJqL/3UzPt7UYpCfOE5LKZaQZXxl6Rf5ovEwsW8sH/yBPBVkUy5ysM
+ 6kZ15+IYnCOEPrgWiX9+QmevyRi8WdQIbd/XHfeatTMIny1lQgIb50xciGar8GSgi8GQl5vsD
+ UutNvnwek2T//gmJbTP6B9GC/QPCafri6NNnLU3jFQgv7M3WBpwifJZ/83AsMH+tGCu3xUlxf
+ SO1MK4MCheyuqOSTpFLErnikuoz0v1DtTLpmIz3iuyyy5hvA8a9w2NhotzugYNlspdnku1cUn
+ 7dlkVEiURD+yXRv2lVh54QsFW4sEZkKnBZIGkxUbdbhOka6Los+KvbIJwkzpFE1iOWThNvI6U
+ 0oIZug3TkaPtmesCJdF3aWcdQ9USQBuH0Xnuasf+5efobhfokwSAHGicEX2ZqVKZSCco=
 Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -60,60 +64,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 18 Jan 2022 12:28:57 -0000
 
-The following changes since commit 6621441db50d5bae7e34dbd04bf3c57a27a71b32=
-:=0D
-=0D
-  Merge remote-tracking branch 'remotes/mcayland/tags/qemu-openbios-2022011=
-5' into staging (2022-01-16 20:12:23 +0000)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pu=
-ll-request=0D
-=0D
-for you to fetch changes up to bfadf13f63d63d099bf2be14c9b1863f25a091a2:=0D
-=0D
-  linux-user: Remove MAX_SIGQUEUE_SIZE (2022-01-18 12:44:44 +0100)=0D
-=0D
-----------------------------------------------------------------=0D
-trivial patches pull request 20220118=0D
-=0D
-Fix comments and typos=0D
-Add vmstate for ETRAX timers=0D
-Use ldst in megasas=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Bernhard Beschow (1):=0D
-  softmmu: Provide a clue as to why device tree loading failed=0D
-=0D
-Peter Maydell (4):=0D
-  qdev-core.h: Fix wrongly named reference to TYPE_SPLIT_IRQ=0D
-  linux-user: Fix comment typo in arm cpu_loop code=0D
-  linux-user: Rename user_force_sig tracepoint to match function name=0D
-  linux-user: Return void from queue_signal()=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (3):=0D
-  hw/timer/etraxfs_timer: Add vmstate for ETRAX timers=0D
-  hw/scsi/megasas: Simplify using the ldst API=0D
-  tests: Fix typo in check-help output=0D
-=0D
-Warner Losh (1):=0D
-  linux-user: Remove MAX_SIGQUEUE_SIZE=0D
-=0D
- hw/scsi/megasas.c          | 17 +++--------------=0D
- hw/timer/etraxfs_timer.c   | 34 +++++++++++++++++++++++++++++++++-=0D
- include/hw/qdev-core.h     |  2 +-=0D
- linux-user/arm/cpu_loop.c  |  4 ++--=0D
- linux-user/qemu.h          |  2 --=0D
- linux-user/signal-common.h |  4 ++--=0D
- linux-user/signal.c        |  7 +++----=0D
- linux-user/trace-events    |  2 +-=0D
- softmmu/device_tree.c      |  6 ++++--=0D
- tests/Makefile.include     |  2 +-=0D
- 10 files changed, 50 insertions(+), 30 deletions(-)=0D
-=0D
--- =0D
-2.34.1=0D
-=0D
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+This code is easier to review using the load/store API.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20211218111912.1499377-1-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/scsi/megasas.c | 17 +++--------------
+ 1 file changed, 3 insertions(+), 14 deletions(-)
+
+diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
+index dc9bbdb740e7..83c321ec208a 100644
+--- a/hw/scsi/megasas.c
++++ b/hw/scsi/megasas.c
+@@ -383,8 +383,7 @@ static int megasas_setup_inquiry(uint8_t *cdb, int pg, int len)
+         cdb[1] = 0x1;
+         cdb[2] = pg;
+     }
+-    cdb[3] = (len >> 8) & 0xff;
+-    cdb[4] = (len & 0xff);
++    stw_be_p(&cdb[3], len);
+     return len;
+ }
+ 
+@@ -400,18 +399,8 @@ static void megasas_encode_lba(uint8_t *cdb, uint64_t lba,
+     } else {
+         cdb[0] = READ_16;
+     }
+-    cdb[2] = (lba >> 56) & 0xff;
+-    cdb[3] = (lba >> 48) & 0xff;
+-    cdb[4] = (lba >> 40) & 0xff;
+-    cdb[5] = (lba >> 32) & 0xff;
+-    cdb[6] = (lba >> 24) & 0xff;
+-    cdb[7] = (lba >> 16) & 0xff;
+-    cdb[8] = (lba >> 8) & 0xff;
+-    cdb[9] = (lba) & 0xff;
+-    cdb[10] = (len >> 24) & 0xff;
+-    cdb[11] = (len >> 16) & 0xff;
+-    cdb[12] = (len >> 8) & 0xff;
+-    cdb[13] = (len) & 0xff;
++    stq_be_p(&cdb[2], lba);
++    stl_be_p(&cdb[2 + 8], len);
+ }
+ 
+ /*
+-- 
+2.34.1
+
 
