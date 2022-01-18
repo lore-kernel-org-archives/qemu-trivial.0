@@ -1,57 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9mvs-00086B-IA
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 06:45:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48288)
+	id 1n9nbf-0004cS-Pb
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 07:28:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55562)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9mvq-00083g-Gd; Tue, 18 Jan 2022 06:45:46 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:54841)
+ id 1n9nbb-0004YO-53; Tue, 18 Jan 2022 07:28:56 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:40733)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1n9mvo-0003J3-Ih; Tue, 18 Jan 2022 06:45:46 -0500
-Received: from [192.168.100.1] ([82.142.13.186]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MplLZ-1mXPNJ0hCf-00qEJ9; Tue, 18 Jan 2022 12:45:32 +0100
-Message-ID: <cdc1b831-82b3-9d1f-8dab-d14d138ab0bf@vivier.eu>
-Date: Tue, 18 Jan 2022 12:45:31 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH 1/2] linx-user: Remove MAX_SIGQUEUE_SIZE
-Content-Language: fr
-To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
-Cc: f4bug@amsat.org, richard.henderson@linaro.org,
- Peter Maydell <peter.maydell@linaro.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20220116204423.16133-1-imp@bsdimp.com>
- <20220116204423.16133-2-imp@bsdimp.com>
+ id 1n9nbZ-0001uL-GS; Tue, 18 Jan 2022 07:28:54 -0500
+Received: from quad ([82.142.13.186]) by mrelayeu.kundenserver.de (mreue012
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MSI6i-1mldzW3q6y-00ScLp; Tue, 18
+ Jan 2022 13:28:51 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220116204423.16133-2-imp@bsdimp.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 3/9] qdev-core.h: Fix wrongly named reference to TYPE_SPLIT_IRQ
+Date: Tue, 18 Jan 2022 13:28:41 +0100
+Message-Id: <20220118122847.636461-4-laurent@vivier.eu>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
+References: <20220118122847.636461-1-laurent@vivier.eu>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:HoFBMq2TE9XiNcqsfhicisyt36KKBNA0HDmPNjcXSFYnGeMOq8i
- H/TlNmee+DcYIDtZJiJcKt87kQdslg+fbIpL4bai6P3DpdgR9rxq6Xljdal5Om/I6xG8ovg
- RvnvOZ5GcQNr5QkgTv/B/rk85kOkcVwAXPOyyRfaylrMmmI48QG8DLdpvlqbermna6CM4rt
- 57QG/aaqnXZkYZI8G7ceA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BFYlGZ0WjgU=:YRJ2xFHVPF8Wufplq3cdMG
- D+wq4QjbhNkiPx/PRzlMZiU5UdesWTSBxxF2en54GnVQlW2/4hKpHnZBuGXPIoDMExWCaVC+J
- iVMjcMiQi/hXXgMkVRTd93GDKkWUpLSOntN7Xu9Um/LjMvs0GMKADWPX5B6+rWzKT4YVMWc7A
- QPIgiTqR5i0yFfnEWZYaXNXdC1C8/3rlbnXJQWBShE9tj+dTVNt3Y05a/sVa7R/pZ83L7o1rE
- hIWxLuilka+cJ+nWZ5xRqhVwpYHF2SUAl32HiqWr38v78mrVyCbvazCXJoaGDVqheB5ZDXjoq
- 3NsiI+g5CwbtDp+wNZW2p4czJZLPcpOO1PSbitGRgKrHajfuZGriB1B45JSTlAt5H9kPTxLFo
- V6YK3HLNfrkAvSNtLfMIish6t62jwkouT1pdHGl/roIDy8AihoQY7m2jbreNF74SrBVvLMC6Q
- WW8M0RdtV7qr5IdJ7VRWbT3CJ6tBaelJFCdm5jdFtKFgw12JYvwhV3aHu30oCMdKcDu4Gnst9
- S3iZk0GjjWfqXkTWZ3J7refeqcgzXyDRt1+GR3zcq51vOmUYPdf8igAgASoQ6nELYTUAOIE8f
- PraAM6PHCPRqb0y9eHELjwCGtEZNT12Ih5yBH67bMNoK3AABjTAjrfXcgrekVMDrsw3icP3BD
- ecs9jrZdKUYed99OGzyYG64ELTV9pxdez7FtXnVkr4H2sJNs1f3alDvSjcjSbtUXB4Wo=
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:MQnKmRB8npa5YEAAaH3uoiCps7zArtRaxuKPOlKKbmIA/OPMg7g
+ l0sS2p8Jep5tk45dGPh90u96Z2/IiMd1440xdqsy5pIhaeCYoxKZPYnsd06y4ykn3W82Lji
+ ouxjgs4/KOPB4IsIbWXVkyZX5W08zmF7bO1o7t7WYQPAxoo78Y0aex2mJ72XZmxneVB5g/k
+ ycbKAgCDuCpr+lprrdbcQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:dJGRwbSZHh4=:o1UcgT2c3RTll2I26kqHwZ
+ sYWwpM6JbB2CrMl0gOwABAmXrPpkxGPli+yJk72MXYFZdswj7dFDist9kBYSsDZOPLxFMqTuZ
+ iCqlEIjyayn1pqA3oq5iH3s3n2FvQAo38ETZzh/cblN2AXaRQg/ZRvutd9Lq3GF2w6oFjYo4k
+ X36LDHEdxxbBrQKGZJELmF6mcS1LIw9vtUkJpN4okVfeqm/spNGYBRSqh6hgJmhnwl64NdAxN
+ Up5bHlgKVI+eLjxcV0skrGRwGvrRxUW9O3EQiUSM1tUsACQ/txsB3la8U845ohBnlS+PmY6RO
+ t5wgDbxc0GjyISM8BNhYm1kQwxK4B7KI9FcmofGaU5Xe2LX0hqIziy3LVBDtCnrlfcH3OMz6c
+ /O1zWovhtFd6qnU1DE4N16uOQOdKaFzcpW9LdPPY9r1Uyy4o73Opypr6Sx48hGgT1w/ToORIV
+ dgNTiJzHAP8nPfqaj3n32CRqhq85NbnUA+JYMhmWJ5Vdr7ZaMaV8HOwFMyK7Jg78sKcouIuTc
+ 9UnzZPOCyjyA0II1REA8gyVDdQgj3YCmfHCTueZmwcW1ggV84SFrqTDIjvzJSolo4xyJkfwrf
+ SO9EXrMWEGk9oTpQQ4U7b1P9DcuUyoEk92onviD7ddzRlN1eiZzg1Pa/uQIHcGNzH6fX0KLzp
+ q2bCfRpmn7+zOtp1lqBCKgp/Zzo2+VRWRYD8CTD1dNJg5A1MM1H/d20pfWjkMrIHLuJY=
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,34 +59,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jan 2022 11:45:46 -0000
+X-List-Received-Date: Tue, 18 Jan 2022 12:28:58 -0000
 
-Le 16/01/2022 à 21:44, Warner Losh a écrit :
-> It's been unused for 7 years since 907f5fddaa67 when linux-user stopped
-> queueing any signals.
-> 
-> Signed-off-by: Warner Losh <imp@bsdimp.com>
-> ---
->   linux-user/qemu.h | 2 --
->   1 file changed, 2 deletions(-)
-> 
-> diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-> index 5c713fa8ab2..7910ce59cc8 100644
-> --- a/linux-user/qemu.h
-> +++ b/linux-user/qemu.h
-> @@ -89,8 +89,6 @@ struct vm86_saved_state {
->   #include "nwfpe/fpa11.h"
->   #endif
->   
-> -#define MAX_SIGQUEUE_SIZE 1024
-> -
->   struct emulated_sigtable {
->       int pending; /* true if signal is pending */
->       target_siginfo_t info;
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Applied to my trivial-patches branch.
-(typo fixed)
+Fix a comment in qdev-core.h where we incorrectly referred
+to TYPE_IRQ_SPLIT when we meant TYPE_SPLIT_IRQ.
 
-Thanks,
-Laurent
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20220111172655.3546766-1-peter.maydell@linaro.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ include/hw/qdev-core.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index d19c94175203..92c3d6520866 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -493,7 +493,7 @@ qemu_irq qdev_get_gpio_in_named(DeviceState *dev, const char *name, int n);
+  * qemu_irqs at once, or to connect multiple outbound GPIOs to the
+  * same qemu_irq. (Warning: there is no assertion or other guard to
+  * catch this error: the model will just not do the right thing.)
+- * Instead, for fan-out you can use the TYPE_IRQ_SPLIT device: connect
++ * Instead, for fan-out you can use the TYPE_SPLIT_IRQ device: connect
+  * a device's outbound GPIO to the splitter's input, and connect each
+  * of the splitter's outputs to a different device.  For fan-in you
+  * can use the TYPE_OR_IRQ device, which is a model of a logical OR
+-- 
+2.34.1
+
 
