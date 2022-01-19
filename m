@@ -1,67 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nAEbT-0002FG-PU
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Jan 2022 12:18:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43760)
+	id 1nAEg3-0000Uv-Q7
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Jan 2022 12:23:19 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nAEbJ-000296-Kg; Wed, 19 Jan 2022 12:18:26 -0500
-Received: from [2a00:1450:4864:20::32c] (port=38548
- helo=mail-wm1-x32c.google.com)
+ id 1nAEg2-0000O0-0B; Wed, 19 Jan 2022 12:23:18 -0500
+Received: from [2a00:1450:4864:20::334] (port=42626
+ helo=mail-wm1-x334.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nAEas-0008WV-91; Wed, 19 Jan 2022 12:18:02 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- ay14-20020a05600c1e0e00b0034d7bef1b5dso9049432wmb.3; 
- Wed, 19 Jan 2022 09:17:56 -0800 (PST)
+ id 1nAEg0-0000tD-19; Wed, 19 Jan 2022 12:23:17 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ f202-20020a1c1fd3000000b0034dd403f4fbso3652393wmf.1; 
+ Wed, 19 Jan 2022 09:23:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=31Kh4cabXgoV77kBjuuBJ8a3rg/29tn10Z0N7J1WtnI=;
- b=AnbPjZcJQzpEwQIY3GdflmkJCKr7/Hz+Q9ySpxtVqIWglU89bPVTk/okCSO0GiktZa
- 87sGH2hOEf6vz0LGShKqWpkOCjYaYOQ4kKu2Fv3GjPVWyNB7yWl1vxZIilY2zvjflNhD
- ny/6dgpGYhuzcUTuZ6N7+jcAqow5omhHXn4W6o9JWjlluwtlfrDEebbzyQV96I6bAu6i
- TzEIb9lN3MsUpQg9eGX9vYW3njUgQ4ORdZ9RpQfwE5H9IlygZznWktJDw9xcGLI2RNZ/
- XBCZpaXFXSeE67GQuVmAmjYOGlDdMiySQNjAIJDcIe55kO5LlTKKp+lqX0HKphQIzqTv
- qkvg==
+ bh=EAEd4OhFBVRPxp/SIABMrqaTJWQrsQ/zO2rmaF0oIug=;
+ b=M9dYgR3Okuzgc3qlcn1TPEYn8sTiPrR+hgfSmQByeApfVMXmbQbX8jHx5RFy8Ei01H
+ y/9nEWOhbRLRw336zqaLcgRUV/F03471iLtOvfD4pwPHBNd5d/GtpVFVgz4B3PifHRUF
+ pC7vdgUgLYPBhtUR5++vDUpIun95QK3tejSSABHDAROEjtPRK7wmGJG/vBlXpOSiwgyI
+ rn40Ofzd4nKs0dKcHjEDRnMTOeHoNdGiiLEUDMs0ucYe/qdqqxeKY7bwPKkk30ubdQ8D
+ JESyCSWd8ukbBN5+fBe2qVDZf+8Ja+/lweDnM+vpYca1JaLCLst/9gbupu3jEotznjOY
+ q/gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=31Kh4cabXgoV77kBjuuBJ8a3rg/29tn10Z0N7J1WtnI=;
- b=x6AzwPdkD3osFZLXPw03MFXNIun9/tL4FvQFeYPK2KEemcchLhL9xZLHrGKh7p1ApD
- mIeNUwyr54lF0c7eGUCVS/V8mZPXtO0iik1AZbFoujBrosC6wACn9uhOLNdRx17bgJ0u
- zJrBcstRFOQfdr/aGuXCArrtlS1zqswpxgQ+ntbtYZZvGxbFrBiVMuiVTDraTbx8ZAE2
- zi0ObiD7UEZ72MpScOjTNsnzRHlyPNG9gzYCpHdBylQV9sPKMGrmQEohxQLTS4+qVVnQ
- Cvlf9JRipc5bieQKLvI/3lv4LbRegn1T42qvdcPKQni1I96LVVFbdA8HNTyw/M23QJxq
- FiLQ==
-X-Gm-Message-State: AOAM530J5hXaTS4nlrmwchnNCZYMJLhjFA68zHaXTjdm6+FB0OJvFvsj
- lyy3uJ19ZfiFBP/vH3RBK6BUCREFsbY=
-X-Google-Smtp-Source: ABdhPJyDjPTOBo8KMWUGP3HwAYTsA+akv/nlsPzokejsaAPZ5v6kmivhrxloWpb81gcG4jh+tJrCsQ==
-X-Received: by 2002:adf:d1c9:: with SMTP id b9mr29733739wrd.560.1642612675197; 
- Wed, 19 Jan 2022 09:17:55 -0800 (PST)
+ bh=EAEd4OhFBVRPxp/SIABMrqaTJWQrsQ/zO2rmaF0oIug=;
+ b=M3Zb/TTF2XbyfdOPAgnapRMX4h9Ujcl79jpOkW7mfEg8PsUJeEKPdmXWSQVyyGqGRi
+ M4OZw4HW11Nd4m8zkeeSwCDJ6lYb2HzPiM73FUfl51wdUkEsks8F5/96Coc/iefbpaUO
+ haadmz7EqWNSpgt8M+MJHse3XqBgSUQtLYtKIbKsvaZ27ENSeHk5mnM9ljBREsMmxAFh
+ KJ/hCH3B0KZp5adypGq0SNkFWZkGoKDFNkxre6UIKE0i2OVvgMIjH25gERIBuLn5jfpF
+ W7QGofz+7x5GuRiIFYCQeEkhdU3NWKFGAXul2ydIHzGBukxkdi7fidb2Ma3rC/UkU3WU
+ NcqA==
+X-Gm-Message-State: AOAM531ME+awSCHXK7DpnvKlL2qMlDNpWHJLs3Y6jNeFLvwNaFn/BAb7
+ 8Cq4xfWCzPYws+eXSOY3nq/CSBQOweo=
+X-Google-Smtp-Source: ABdhPJwIzUjdyAfjy5Q2cBHzwBVCpMpvDQNrD+HbR8Eor63/0DJro6b9uXkNLQtZ8TnfcQjW04HX0Q==
+X-Received: by 2002:a5d:6881:: with SMTP id h1mr29909254wru.250.1642612992265; 
+ Wed, 19 Jan 2022 09:23:12 -0800 (PST)
 Received: from nuc.. (154.red-83-50-83.dynamicip.rima-tde.net. [83.50.83.154])
  by smtp.gmail.com with ESMTPSA id
- f14sm456546wri.44.2022.01.19.09.17.54
+ t30sm399212wra.95.2022.01.19.09.23.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Jan 2022 09:17:54 -0800 (PST)
+ Wed, 19 Jan 2022 09:23:11 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+From: "=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9=20via?="
+ <philippe@mathieu-daude.net>
+X-Google-Original-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9=20via?=
+ <qemu-trivial@nongnu.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+Cc: Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH RESEND] qapi/block: Cosmetic change in BlockExportType schema
-Date: Wed, 19 Jan 2022 18:17:53 +0100
-Message-Id: <20220119171753.221120-1-f4bug@amsat.org>
+Subject: [PATCH RESEND v2] qapi/block: Cosmetic change in BlockExportType
+ schema
+Date: Wed, 19 Jan 2022 18:23:10 +0100
+Message-Id: <20220119172310.221311-1-qemu-trivial@nongnu.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::334
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -82,7 +86,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Jan 2022 17:18:32 -0000
+X-List-Received-Date: Wed, 19 Jan 2022 17:23:18 -0000
+
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 Fix long line introduced in commit bb01ea73110 ("qapi/block:
 Restrict vhost-user-blk to CONFIG_VHOST_USER_BLK_SERVER").
