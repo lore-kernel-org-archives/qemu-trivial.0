@@ -1,79 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nA6er-00063S-Vy
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Jan 2022 03:49:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37650)
+	id 1nA9SQ-0002HT-0S
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Jan 2022 06:48:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:32804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nA6ep-0005zd-0g; Wed, 19 Jan 2022 03:49:31 -0500
-Received: from [2a00:1450:4864:20::32e] (port=39861
- helo=mail-wm1-x32e.google.com)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nA9SM-0002FK-KC
+ for qemu-trivial@nongnu.org; Wed, 19 Jan 2022 06:48:50 -0500
+Received: from [2a00:1450:4864:20::32a] (port=37725
+ helo=mail-wm1-x32a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nA6en-0003IX-F1; Wed, 19 Jan 2022 03:49:30 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- h206-20020a1c21d7000000b0034d95625e1fso4614694wmh.4; 
- Wed, 19 Jan 2022 00:49:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=eImK0eXsWep8SpuRUiznEtMz07rDvyn1SkHBOd5KUVA=;
- b=PU7AWWPte34slZtiC061n/SbMgRDFJLtrEUBMa54T11pWhMYrtdUzSDm6EiAqb83Rt
- uH/jUjC7Nyrg/gc3OLVDQ9D4CWARUELgOsxSpgus39SlXena9lenNODW5Bnhc40o5yaK
- YWFUC0ZQ7BYfZXYfuGAmAp+kCUgy05nRhw22hjS3QNBdZWSuBXlJqF/PSEgzpabq+RZ6
- Bx/syZId5tQH9rjMrNXXkuDAHNFPt65P5ta7XQZA47YGauuOBzn8HYtWX1yH9qZN9nus
- gU3XPNT9i7Su7zWRHVfgLtpptBxe1/2I3ONv+zyiqxiuNFVyonOutePWd5Qy04N0Sxli
- coDQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nA9SK-0003vG-S3
+ for qemu-trivial@nongnu.org; Wed, 19 Jan 2022 06:48:50 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ l12-20020a7bc34c000000b003467c58cbdfso13944622wmj.2
+ for <qemu-trivial@nongnu.org>; Wed, 19 Jan 2022 03:48:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=biWLxbWsAetNpihAQQdR1JYGualxpxdxVeQ6h0bH8TE=;
+ b=x05/1bH+nNbp2zEPrY4lnQuK5obYMCdnkukCNdrVw78Bum8QphNoLYlzDcH21Bal+0
+ EyunnQdxJclDScOmKqD7VlBUmpDeCec/zNNuUbnvl6VSgS8M3lbOZIuXj0LGn+4CUI3S
+ RVi3FnKAu+zBK3K0/kE4I6YSClMC4K/QFO63eVpqvgcfteCtEJXaxUjO7RHX7AAJQ9fg
+ fWb0FeTfGzWbSkyiDW3zP4mUz5gn7+JM6Ccjm8QkoIbv65KrWmWKaXtaLG9n3ETNzjJZ
+ KNtmfkhXEEpCJym6gmiYloQlVxFJynuHw6mO5229G9uTkQt4e27N/1ivZSyP2/uzJCjB
+ GXag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=eImK0eXsWep8SpuRUiznEtMz07rDvyn1SkHBOd5KUVA=;
- b=WN8e9FR4oR3DaU+X33jVGfCDwDhW+/t+BIrC4/YRLPKwuqk3SqxzkxklGWoYjmdoz3
- 10XC92OY2OjL2nJt/Uy0iF9Dxg2YH8s23sKNNUSF6qya6FG9TmsbxUczZoB6K2On0OWN
- gapIf4fiSPmG1B8I/zqMLVab/ENCtwVrESVhBd+uhnlVTv18h1XbGmgF2G8RTtDUSv3p
- tbFJH0Srd+LBWP1H4PvrR3+p4rSiH0nVJpai00Mn9cNJEAlgRhRDp9djQMROPvYiaTO/
- pvoJQi1YuPQFpL7NnwN+sTUxs5Jw5CfGUwL5+Qw/uE21Mswm7j+CH4e8FxKXB19++EZR
- jtiQ==
-X-Gm-Message-State: AOAM531bQhmTyqJ9VdFIALiymHBYG6aU76wOa2nFvdmAW/G9W79y13rc
- bus19V+CfQSozg9eKBB7SBVXMd9dVUQ=
-X-Google-Smtp-Source: ABdhPJxYu8I2K1ph/NhCqFKtHazZFnprjcH82ewUapdpB8B+l89tdJic1V8ota1rx58uhFS0zFodtA==
-X-Received: by 2002:adf:e948:: with SMTP id m8mr4112121wrn.556.1642582167926; 
- Wed, 19 Jan 2022 00:49:27 -0800 (PST)
-Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.googlemail.com with ESMTPSA id 1sm11638611wry.81.2022.01.19.00.49.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 19 Jan 2022 00:49:27 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <1fb12907-943e-1039-3916-5e5e1ec80075@redhat.com>
-Date: Wed, 19 Jan 2022 09:49:25 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=biWLxbWsAetNpihAQQdR1JYGualxpxdxVeQ6h0bH8TE=;
+ b=j7/BWh3uBWWaEDA4S7p+cmVSQUeYxzwezAsPy3RI55Mrvvx9+ZB5tp6PuSiHOOF4Hf
+ ggl4nxA0pcpI7iKx3/7KlEHZH1Li4loU0fE0d09Cda+btX/+JMDOh8MjDFB1x/QX00pJ
+ qgxvXf7v4IPDNF1TSi7nC1mbauqT3/MBchqXVeyz+xrIYAM0s6QoNroy08RI5zGhQLK5
+ BNlHqRvmpFiwFjIVUquxZYWFyqfe9LHRUjDlNdv/RWV/DcDrOs+OTmKuk5vB+Zkzi6ol
+ KB36b8cNl6OP0ewN458oLGn21s3+spxrgK2R++C7VzWEGv6ii15J2Py173uKeJ/RhrS2
+ Wlkg==
+X-Gm-Message-State: AOAM531adAowrQDE+4Ve5izsV75muhX63M1E0wjmClcNvIBLV/LeYgVN
+ lShh42YSV6mtHTWWh3x4YDq+OnGKlcbIGbgG9UJ/KQ==
+X-Google-Smtp-Source: ABdhPJwXgvKTBD0+sqZzj67t/LY24sZ3T6jsBOWl7RVCE/2ypkX5G4QeUd8ocPW0JHO1U5Xf87KF46icdG4ycoCe/nE=
+X-Received: by 2002:a5d:64aa:: with SMTP id m10mr17212739wrp.295.1642592926258; 
+ Wed, 19 Jan 2022 03:48:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH] meson.build: Use a function from libfdt 1.5.1 for the
- library check
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20220118170548.97288-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20220118170548.97288-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32e
+References: <20220118122847.636461-1-laurent@vivier.eu>
+In-Reply-To: <20220118122847.636461-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 19 Jan 2022 11:48:35 +0000
+Message-ID: <CAFEAcA9fNx6VR+v2E0yr-DKfHF8uSnHVuibpk=vaCpPPTTjfNw@mail.gmail.com>
+Subject: Re: [PULL 0/9] Trivial branch for 7.0 patches
+To: Laurent Vivier <Laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32a
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=paolo.bonzini@gmail.com; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -88,34 +73,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Jan 2022 08:49:32 -0000
+X-List-Received-Date: Wed, 19 Jan 2022 11:48:51 -0000
 
-On 1/18/22 18:05, Thomas Huth wrote:
-> The fdt version test in meson.build uses a function from libfdt v1.4.7,
-> but we require version 1.5.1 nowadays. Thus use a function that has
-> been introduced in that version instead.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/822
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   meson.build | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/meson.build b/meson.build
-> index 762d7cee85..d1cc04c7a2 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -2276,7 +2276,7 @@ if have_system
->       if fdt.found() and cc.links('''
->          #include <libfdt.h>
->          #include <libfdt_env.h>
-> -       int main(void) { fdt_check_full(NULL, 0); return 0; }''',
-> +       int main(void) { fdt_find_max_phandle(NULL, NULL); return 0; }''',
->            dependencies: fdt)
->         fdt_opt = 'system'
->       elif fdt_opt == 'system'
+On Tue, 18 Jan 2022 at 13:32, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 6621441db50d5bae7e34dbd04bf3c57a27a71b32:
+>
+>   Merge remote-tracking branch 'remotes/mcayland/tags/qemu-openbios-20220115' into staging (2022-01-16 20:12:23 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pull-request
+>
+> for you to fetch changes up to bfadf13f63d63d099bf2be14c9b1863f25a091a2:
+>
+>   linux-user: Remove MAX_SIGQUEUE_SIZE (2022-01-18 12:44:44 +0100)
+>
+> ----------------------------------------------------------------
+> trivial patches pull request 20220118
+>
+> Fix comments and typos
+> Add vmstate for ETRAX timers
+> Use ldst in megasas
 
-Queued, thanks.
 
-Paolo
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/7.0
+for any user-visible changes.
+
+-- PMM
 
