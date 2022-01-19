@@ -1,49 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1n9zcc-0004iz-VR
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jan 2022 20:18:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43898)
+	id 1nA6er-00063S-Vy
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Jan 2022 03:49:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37650)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@gandalf.ozlabs.org>)
- id 1n9zcR-0004h5-8e; Tue, 18 Jan 2022 20:18:37 -0500
-Received: from [2404:9400:2:0:216:3eff:fee2:21ea] (port=60449
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@gandalf.ozlabs.org>)
- id 1n9zcL-00081H-9d; Tue, 18 Jan 2022 20:18:33 -0500
-Received: by gandalf.ozlabs.org (Postfix, from userid 1007)
- id 4Jdnp648C8z4y3m; Wed, 19 Jan 2022 12:18:22 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gibson.dropbear.id.au; s=201602; t=1642555102;
- bh=sWS/T3xjWzADiZX+hNnG4XnQGybHi3H13FKaHuhSZ7Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RgPv1T3q7sFYVmYN4cngHYFLhpyEUpY4HIaISDbGnaWGHj6cvvLphZJtitSOWYot7
- E5Rxonob0mpMhgrL1FBkO/qssLMWGAN/c3O+XgfbLirZ2tTRywv7dvBCE3UC57qSXU
- /76Je5ftvh66WsaeceeCiwVifPn5F3Ymxg7AJGtw=
-Date: Wed, 19 Jan 2022 10:27:50 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Alistair Francis <alistair.francis@wdc.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1nA6ep-0005zd-0g; Wed, 19 Jan 2022 03:49:31 -0500
+Received: from [2a00:1450:4864:20::32e] (port=39861
+ helo=mail-wm1-x32e.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1nA6en-0003IX-F1; Wed, 19 Jan 2022 03:49:30 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ h206-20020a1c21d7000000b0034d95625e1fso4614694wmh.4; 
+ Wed, 19 Jan 2022 00:49:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=eImK0eXsWep8SpuRUiznEtMz07rDvyn1SkHBOd5KUVA=;
+ b=PU7AWWPte34slZtiC061n/SbMgRDFJLtrEUBMa54T11pWhMYrtdUzSDm6EiAqb83Rt
+ uH/jUjC7Nyrg/gc3OLVDQ9D4CWARUELgOsxSpgus39SlXena9lenNODW5Bnhc40o5yaK
+ YWFUC0ZQ7BYfZXYfuGAmAp+kCUgy05nRhw22hjS3QNBdZWSuBXlJqF/PSEgzpabq+RZ6
+ Bx/syZId5tQH9rjMrNXXkuDAHNFPt65P5ta7XQZA47YGauuOBzn8HYtWX1yH9qZN9nus
+ gU3XPNT9i7Su7zWRHVfgLtpptBxe1/2I3ONv+zyiqxiuNFVyonOutePWd5Qy04N0Sxli
+ coDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=eImK0eXsWep8SpuRUiznEtMz07rDvyn1SkHBOd5KUVA=;
+ b=WN8e9FR4oR3DaU+X33jVGfCDwDhW+/t+BIrC4/YRLPKwuqk3SqxzkxklGWoYjmdoz3
+ 10XC92OY2OjL2nJt/Uy0iF9Dxg2YH8s23sKNNUSF6qya6FG9TmsbxUczZoB6K2On0OWN
+ gapIf4fiSPmG1B8I/zqMLVab/ENCtwVrESVhBd+uhnlVTv18h1XbGmgF2G8RTtDUSv3p
+ tbFJH0Srd+LBWP1H4PvrR3+p4rSiH0nVJpai00Mn9cNJEAlgRhRDp9djQMROPvYiaTO/
+ pvoJQi1YuPQFpL7NnwN+sTUxs5Jw5CfGUwL5+Qw/uE21Mswm7j+CH4e8FxKXB19++EZR
+ jtiQ==
+X-Gm-Message-State: AOAM531bQhmTyqJ9VdFIALiymHBYG6aU76wOa2nFvdmAW/G9W79y13rc
+ bus19V+CfQSozg9eKBB7SBVXMd9dVUQ=
+X-Google-Smtp-Source: ABdhPJxYu8I2K1ph/NhCqFKtHazZFnprjcH82ewUapdpB8B+l89tdJic1V8ota1rx58uhFS0zFodtA==
+X-Received: by 2002:adf:e948:: with SMTP id m8mr4112121wrn.556.1642582167926; 
+ Wed, 19 Jan 2022 00:49:27 -0800 (PST)
+Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.googlemail.com with ESMTPSA id 1sm11638611wry.81.2022.01.19.00.49.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 19 Jan 2022 00:49:27 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <1fb12907-943e-1039-3916-5e5e1ec80075@redhat.com>
+Date: Wed, 19 Jan 2022 09:49:25 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
 Subject: Re: [PATCH] meson.build: Use a function from libfdt 1.5.1 for the
  library check
-Message-ID: <YedM9icYA+S5OMT7@yekko>
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
 References: <20220118170548.97288-1-thuth@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="5Uof2MeR3Bni/4SR"
-Content-Disposition: inline
+From: Paolo Bonzini <pbonzini@redhat.com>
 In-Reply-To: <20220118170548.97288-1-thuth@redhat.com>
-X-Host-Lookup-Failed: Reverse DNS lookup failed for
- 2404:9400:2:0:216:3eff:fee2:21ea (failed)
-Received-SPF: pass client-ip=2404:9400:2:0:216:3eff:fee2:21ea;
- envelope-from=dgibson@gandalf.ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -9
-X-Spam_score: -1.0
-X-Spam_bar: -
-X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32e
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=paolo.bonzini@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -56,67 +88,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Jan 2022 01:18:44 -0000
+X-List-Received-Date: Wed, 19 Jan 2022 08:49:32 -0000
 
-
---5Uof2MeR3Bni/4SR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Jan 18, 2022 at 06:05:48PM +0100, Thomas Huth wrote:
+On 1/18/22 18:05, Thomas Huth wrote:
 > The fdt version test in meson.build uses a function from libfdt v1.4.7,
 > but we require version 1.5.1 nowadays. Thus use a function that has
 > been introduced in that version instead.
->=20
+> 
 > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/822
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-
 > ---
->  meson.build | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
+>   meson.build | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
 > diff --git a/meson.build b/meson.build
 > index 762d7cee85..d1cc04c7a2 100644
 > --- a/meson.build
 > +++ b/meson.build
 > @@ -2276,7 +2276,7 @@ if have_system
->      if fdt.found() and cc.links('''
->         #include <libfdt.h>
->         #include <libfdt_env.h>
+>       if fdt.found() and cc.links('''
+>          #include <libfdt.h>
+>          #include <libfdt_env.h>
 > -       int main(void) { fdt_check_full(NULL, 0); return 0; }''',
 > +       int main(void) { fdt_find_max_phandle(NULL, NULL); return 0; }''',
->           dependencies: fdt)
->        fdt_opt =3D 'system'
->      elif fdt_opt =3D=3D 'system'
+>            dependencies: fdt)
+>         fdt_opt = 'system'
+>       elif fdt_opt == 'system'
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Queued, thanks.
 
---5Uof2MeR3Bni/4SR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEoULxWu4/Ws0dB+XtgypY4gEwYSIFAmHnTO0ACgkQgypY4gEw
-YSJuHQ/9F0V124p0EVF8Rx4RuBUftjk4s+1g76KY4NpuweD49vfZcRj6k5JungQE
-wYwnd3LWBkpmObDWs44ViTPMc5nCAE+/G2eiNV2j7Zc09Nc16AQ0WLLdTtUX4mhO
-/0tAe5Uwh707D8cef2i/W8yPqq8MSH3E+YFpIhffgTJCzJctsqsGqK0UapE7xR4s
-qhhDFSqn/MQbim3DneltmOjjweD8Rzpj4+KSZo5IoM/IFESxu0A68z+Ks8LAvaFZ
-evw2G8wpU1HFuqjlDbZkR879K6yd/KEsC0OxjajGsFZl6Nlsqo4K9xyK13S3f0nE
-gH91PK/lFthdDk+UIjT+iKnYf1uc6pUeAzrdyJu19+VLxNB8kiLfsgXusoD9AqSy
-MWuZCr/hhK+UywXT6589amws/MiJ9N8KfYwQVG13No1spucUaKyHB7DxDfgsLNRK
-NI7jMiGD/CIpHdTvmDm4oDLuAy3ciEm33y1YnzhJWf6ixgKPdUkQcA8qp0wHfpMN
-8WQRNlwKUqwBzZlYawP8LS5vpc6ewmJiBKSJy4HY9AzqAoqZGVuiyc/DdTtPmg1P
-Zh3duBu3YSb0BLITI/0T+eR/O3JsWIAn51bkxKWjqwSgxiet2CzxQ33WlRnEhQvw
-IT48bJg6xa+cQbBHjFAJirxaGCiC0x6DP+fQkV98QvZGCsdKHCc=
-=3Jbe
------END PGP SIGNATURE-----
-
---5Uof2MeR3Bni/4SR--
+Paolo
 
