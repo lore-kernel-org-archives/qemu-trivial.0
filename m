@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nB4Ba-0003hT-4K
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Jan 2022 19:23:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40626)
+	id 1nB4Lt-0000TN-SW
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Jan 2022 19:33:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41832)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nB4BY-0003db-N6; Fri, 21 Jan 2022 19:23:17 -0500
-Received: from [2607:f8b0:4864:20::1036] (port=38861
- helo=mail-pj1-x1036.google.com)
+ id 1nB4Lr-0000OR-OW; Fri, 21 Jan 2022 19:33:55 -0500
+Received: from [2607:f8b0:4864:20::62c] (port=45592
+ helo=mail-pl1-x62c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nB4BT-0002IG-RS; Fri, 21 Jan 2022 19:23:13 -0500
-Received: by mail-pj1-x1036.google.com with SMTP id
- d12-20020a17090a628c00b001b4f47e2f51so11860205pjj.3; 
- Fri, 21 Jan 2022 16:23:10 -0800 (PST)
+ id 1nB4Lq-0006Kk-B3; Fri, 21 Jan 2022 19:33:55 -0500
+Received: by mail-pl1-x62c.google.com with SMTP id d7so10144521plr.12;
+ Fri, 21 Jan 2022 16:33:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=UKZAFvJiBwJ053eAdNYYvJqZVgfO9npCRqUR9ReQ2mo=;
- b=gGbgTDNQ76uRlUlOU04EooKlMN5BQSzWcWlxqcREhQn+VnzNdOokWOgOUY1ijIXymP
- x+jz7jOq+tjGfnJi0wFKcyYy91pxLaiMsDnLQm+1MJicSmkjA5GLCG6hcqLmD9XxROKK
- uPfEVGBXri3dhPhwVm1OwdXo0H9BXnlhuq3j+NGqsFoUS9IAdQ3aSp+PiFCXoh/9TFaQ
- bIxzSkINuMkVbUWCcIh9vGi02KIBx6DxuWMDm8DiVkHBjOYOUp+TaU3DMniTIQiJfgR9
- vFDZy/Ik7dX6IUAZ1sUNuwhnKt7j0hE6uyo2r07VQ9SzFVd2kx+k9AzQWhKry3KSC7Qo
- 28wg==
+ bh=Cc6IjahI2sgKwlvBITvToMCZaNnslADDopvO2JmTQxs=;
+ b=VSonq31IkogXhlP8OjQ2v0O3MG1AP+MzCUqYyplXl7UJLsUMT7goF3uSuyiFfpFoM3
+ KGAs9WlC78hbGnh7rQymmk90517GChkd0Y9NlRycc2CVUnYI+/NQfKr65pTqsXaaG/fd
+ t/Mf+kmEJtdGvcnB791EDIzC02EdiplNcrj9DDJM8huSi74Y2suQYBe0LDnOSk4Its2B
+ a1WwgQN1pmBQAIgMwAN+597TMexaDy422LAgI7Gh19l/b4E6mHQ8lNG+2604mcIIH129
+ raF+I23ieXpHuCoab0mnRN8rq5YmQDvhv8k6GGQqKR8DWDPrFUG1tBgac65T4HKjQSAT
+ e26w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=UKZAFvJiBwJ053eAdNYYvJqZVgfO9npCRqUR9ReQ2mo=;
- b=CE9A7bPrVpAqhhmYil2Y2VE0LtSszt2SJ0NafQrMAQa4g6l5mXbpXY4XEXTcCzFXsT
- 0jCy0tw/8Qva6o3JpZ1WgRoMGdf6xC4eqfB2tL5tVrK9A6RG8qA67mMHRgkgfKQwCceG
- 1/TVc1yMAwl1zq/XPuHFgJkK6mTtb+jJ58FABMt37JR9XER/x3dNy2jWjs0+pQ+9BXTT
- h125ASMimleXzE1xghHspreGxBvNrhxGj15imG9BDSRO24KVSv3FxUxh1VzUSgGdplrb
- YMH1wnLqvBhoZHt2CHaa7ok5xs20tVzbde0hrJPwmLCNRJ2qBFlin1pAIG92j0zf0c2G
- I95Q==
-X-Gm-Message-State: AOAM533yEx9KTYxOiomrb8xUnD6X3heb6CQTjlthdghuXdrGIQaPDYJA
- 6LHd0TEFf9IBLSWi6SQC/eJTFEktDJo=
-X-Google-Smtp-Source: ABdhPJwPaYnvLS2TfxXcgf/ViAVCAUF3FNESC9Yy0xvicnv3lpkZ90w7BcieKuR6M73tdfAjlqwcSA==
-X-Received: by 2002:a17:902:7297:b0:14a:9df9:6424 with SMTP id
- d23-20020a170902729700b0014a9df96424mr6023869pll.19.1642810989759; 
- Fri, 21 Jan 2022 16:23:09 -0800 (PST)
+ bh=Cc6IjahI2sgKwlvBITvToMCZaNnslADDopvO2JmTQxs=;
+ b=mjMlDzeHU3VpiWbRWivbLAn/GXCWoMgYk4y2Ru+tuChriMCPn1E9cFfXGH8my9JmIU
+ 1Lidx8Eh01lprYk37tc3fA7TD2NxTvf2KaF7wKjrL5esDe7Q39BtWUJpNVwEd75km/c4
+ MO8rSW2YnNhGjl05+sMIE936XseswU4jD/NApHbWGQc8la4IaIaBtvABFsxpUSmZwd4I
+ qHw+EAUxKrmxgT6SkOiXqRvJjZOh0KPxDm0dHXPmNd+6b4Lw2eegGGJPeHBtza85VlIL
+ UYcPFmAILYXxdcRBa60uLQs0LfLI88yThI3KbnH0EXgXjvygK6vDTYtD/QQPkVALoKRO
+ VIDg==
+X-Gm-Message-State: AOAM531yXvNERFuM6R8nj0BJhD0hBOnkJjnZCNq3qvDn1bt0BOhuD1FP
+ cWbk8PS2fXbXcY6GVn3edl2c1jKadwU=
+X-Google-Smtp-Source: ABdhPJw8la6I5xw+D43LEGU6Qq8mYAfQjch6TCpa4Cv1wHpDEcb+LhCZKvJUB9/MyVQC6NBTicThoA==
+X-Received: by 2002:a17:90b:1b0b:: with SMTP id
+ nu11mr3011865pjb.143.1642811631580; 
+ Fri, 21 Jan 2022 16:33:51 -0800 (PST)
 Received: from localhost.localdomain (154.red-83-50-83.dynamicip.rima-tde.net.
  [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id oa13sm13613291pjb.33.2022.01.21.16.23.07
+ by smtp.gmail.com with ESMTPSA id p4sm6963273pfw.214.2022.01.21.16.33.48
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 21 Jan 2022 16:23:09 -0800 (PST)
+ Fri, 21 Jan 2022 16:33:51 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
+Cc: John G Johnson <john.g.johnson@oracle.com>, qemu-trivial@nongnu.org,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Jagannathan Raman <jag.raman@oracle.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] target/rx: Remove unused ENV_OFFSET definition
-Date: Sat, 22 Jan 2022 01:23:04 +0100
-Message-Id: <20220122002304.84016-1-f4bug@amsat.org>
+Subject: [PATCH] hw/remote: Add missing include
+Date: Sat, 22 Jan 2022 01:33:45 +0100
+Message-Id: <20220122003345.84522-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1036
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::62c
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x1036.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -82,26 +83,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Jan 2022 00:23:17 -0000
+X-List-Received-Date: Sat, 22 Jan 2022 00:33:56 -0000
+
+Currently "qemu/error-report.h" is implicitly included, however
+if headers in include/ get refactored, we get:
+
+  hw/remote/proxy-memory-listener.c: In function ‘proxy_memory_listener_commit’:
+  hw/remote/proxy-memory-listener.c:183:9: error: implicit declaration of function ‘error_report’; did you mean ‘error_report_err’? [-Werror=implicit-function-declaration]
+    183 |         error_report("Number of fds is more than %d", REMOTE_MAX_FDS);
+        |         ^~~~~~~~~~~~
+        |         error_report_err
+
+Add the missing "qemu/error-report.h" header to avoid that.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/rx/cpu.h | 2 --
- 1 file changed, 2 deletions(-)
+ hw/remote/proxy-memory-listener.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-index 657db84ef0..58adf9edf6 100644
---- a/target/rx/cpu.h
-+++ b/target/rx/cpu.h
-@@ -116,8 +116,6 @@ struct RXCPU {
+diff --git a/hw/remote/proxy-memory-listener.c b/hw/remote/proxy-memory-listener.c
+index 882c9b4854..0e893f3189 100644
+--- a/hw/remote/proxy-memory-listener.c
++++ b/hw/remote/proxy-memory-listener.c
+@@ -16,6 +16,7 @@
+ #include "exec/cpu-common.h"
+ #include "exec/ram_addr.h"
+ #include "qapi/error.h"
++#include "qemu/error-report.h"
+ #include "hw/remote/mpqemu-link.h"
+ #include "hw/remote/proxy-memory-listener.h"
  
- typedef RXCPU ArchCPU;
- 
--#define ENV_OFFSET offsetof(RXCPU, env)
--
- #define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
- #define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_RX_CPU
 -- 
 2.34.1
 
