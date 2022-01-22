@@ -1,66 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nB3zc-0001Lv-9u
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Jan 2022 19:10:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39278)
+	id 1nB4Ba-0003hT-4K
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Jan 2022 19:23:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40626)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nB3zV-0001F1-QY; Fri, 21 Jan 2022 19:10:50 -0500
-Received: from [2607:f8b0:4864:20::42a] (port=36766
- helo=mail-pf1-x42a.google.com)
+ id 1nB4BY-0003db-N6; Fri, 21 Jan 2022 19:23:17 -0500
+Received: from [2607:f8b0:4864:20::1036] (port=38861
+ helo=mail-pj1-x1036.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nB3zQ-0005Sj-Pa; Fri, 21 Jan 2022 19:10:46 -0500
-Received: by mail-pf1-x42a.google.com with SMTP id 192so6822286pfz.3;
- Fri, 21 Jan 2022 16:10:42 -0800 (PST)
+ id 1nB4BT-0002IG-RS; Fri, 21 Jan 2022 19:23:13 -0500
+Received: by mail-pj1-x1036.google.com with SMTP id
+ d12-20020a17090a628c00b001b4f47e2f51so11860205pjj.3; 
+ Fri, 21 Jan 2022 16:23:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=lBwqqZ2garQXfPWLDcYKHOJoYITMa+22nAeYQNLrJQQ=;
- b=iBzn00AMFGKvIIEXFKXuxOeliA8mtScmtKhJVAfiiodK7G4bBwYKpQNfMojPCWnHaR
- 20zbIl43+2e0AHgg8DYjlGvuBiTWmmi1J/7vuSD6u1+UoYmERR5AggIB6LsMR5FX9Lzz
- 7GgKzav3vQhGQ9E+pqLgirJlK93ZRpai4SSOv4Fnba/d1T4VH/L8TgiKHZWDsMknbnua
- XtOZ+EC/wX6TdMx58NZC5Dm/ssa8hXxJHovWVcgRpwik0MtZ3eM4HKWe7pkxUljgp4OY
- 1z0JYB0VSYA2BOFdj0JoITXwBcxAxHwrv8aIL4ryb0KVdCgkPnPLL84XXgZQU4rNNdpi
- lqRA==
+ bh=UKZAFvJiBwJ053eAdNYYvJqZVgfO9npCRqUR9ReQ2mo=;
+ b=gGbgTDNQ76uRlUlOU04EooKlMN5BQSzWcWlxqcREhQn+VnzNdOokWOgOUY1ijIXymP
+ x+jz7jOq+tjGfnJi0wFKcyYy91pxLaiMsDnLQm+1MJicSmkjA5GLCG6hcqLmD9XxROKK
+ uPfEVGBXri3dhPhwVm1OwdXo0H9BXnlhuq3j+NGqsFoUS9IAdQ3aSp+PiFCXoh/9TFaQ
+ bIxzSkINuMkVbUWCcIh9vGi02KIBx6DxuWMDm8DiVkHBjOYOUp+TaU3DMniTIQiJfgR9
+ vFDZy/Ik7dX6IUAZ1sUNuwhnKt7j0hE6uyo2r07VQ9SzFVd2kx+k9AzQWhKry3KSC7Qo
+ 28wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=lBwqqZ2garQXfPWLDcYKHOJoYITMa+22nAeYQNLrJQQ=;
- b=H2Nq+HhwbhRyP26/soJibulUVdmNdFy6tNShbwlV9CfUiOHsMO8yWxdwaVhBbvzOg+
- +Ewhr9a1dKqG3J1xavMLAeumjQWHuymx/CPPpz0uThF4Iab/C8ckFeu6bzh2h+98Rlkg
- 9gy2hhDiQEyeHd1JkXzid43K7/mmG9mF8zD1txxypOYLCdL5FyvY2WFWu2f7IZaH5aYs
- lJimfExOpG8qU6EnwXa+aa3xM/fDKtx4woXh55mztt3K4XYHnj0+z8RAioEjb25nAgGU
- 30T6Hz7h9KDROgJShY+MdfFXHq0bBMfEcvWRZkX8EezYFqyYVA61eFh2hYpN0RhdBVAW
- ZYNg==
-X-Gm-Message-State: AOAM532ZQ14eYwio/bw/pSXoqrOO45Na/rNPGeY7q+87OX6fl7TWBbzQ
- /cdKsvTUIW2o+EKnSd4U0fZ0edAK22c=
-X-Google-Smtp-Source: ABdhPJzjXRWD5uRxkqok4tEatYo4wKzmNJnJVNKqGmlmR4WyJgsw9TOdaqVVCfQfDj0ICChGu6rEbg==
-X-Received: by 2002:a63:e448:: with SMTP id i8mr4578118pgk.206.1642810241399; 
- Fri, 21 Jan 2022 16:10:41 -0800 (PST)
+ bh=UKZAFvJiBwJ053eAdNYYvJqZVgfO9npCRqUR9ReQ2mo=;
+ b=CE9A7bPrVpAqhhmYil2Y2VE0LtSszt2SJ0NafQrMAQa4g6l5mXbpXY4XEXTcCzFXsT
+ 0jCy0tw/8Qva6o3JpZ1WgRoMGdf6xC4eqfB2tL5tVrK9A6RG8qA67mMHRgkgfKQwCceG
+ 1/TVc1yMAwl1zq/XPuHFgJkK6mTtb+jJ58FABMt37JR9XER/x3dNy2jWjs0+pQ+9BXTT
+ h125ASMimleXzE1xghHspreGxBvNrhxGj15imG9BDSRO24KVSv3FxUxh1VzUSgGdplrb
+ YMH1wnLqvBhoZHt2CHaa7ok5xs20tVzbde0hrJPwmLCNRJ2qBFlin1pAIG92j0zf0c2G
+ I95Q==
+X-Gm-Message-State: AOAM533yEx9KTYxOiomrb8xUnD6X3heb6CQTjlthdghuXdrGIQaPDYJA
+ 6LHd0TEFf9IBLSWi6SQC/eJTFEktDJo=
+X-Google-Smtp-Source: ABdhPJwPaYnvLS2TfxXcgf/ViAVCAUF3FNESC9Yy0xvicnv3lpkZ90w7BcieKuR6M73tdfAjlqwcSA==
+X-Received: by 2002:a17:902:7297:b0:14a:9df9:6424 with SMTP id
+ d23-20020a170902729700b0014a9df96424mr6023869pll.19.1642810989759; 
+ Fri, 21 Jan 2022 16:23:09 -0800 (PST)
 Received: from localhost.localdomain (154.red-83-50-83.dynamicip.rima-tde.net.
  [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id p4sm8472923pfo.100.2022.01.21.16.10.39
+ by smtp.gmail.com with ESMTPSA id oa13sm13613291pjb.33.2022.01.21.16.23.07
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 21 Jan 2022 16:10:41 -0800 (PST)
+ Fri, 21 Jan 2022 16:23:09 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Joaquin de Andres <me@xcancerberox.com.ar>,
- Michael Rolnik <mrolnik@gmail.com>, qemu-trivial@nongnu.org,
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH] target/avr: Correct AVRCPUClass docstring
-Date: Sat, 22 Jan 2022 01:10:36 +0100
-Message-Id: <20220122001036.83267-1-f4bug@amsat.org>
+Subject: [PATCH] target/rx: Remove unused ENV_OFFSET definition
+Date: Sat, 22 Jan 2022 01:23:04 +0100
+Message-Id: <20220122002304.84016-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42a
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1036
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -81,29 +82,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Jan 2022 00:10:51 -0000
-
-There is no 'vr' field in AVRCPUClass.
-
-Likely a copy/paste typo from CRISCPUClass ;)
+X-List-Received-Date: Sat, 22 Jan 2022 00:23:17 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/avr/cpu-qom.h | 1 -
- 1 file changed, 1 deletion(-)
+ target/rx/cpu.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/target/avr/cpu-qom.h b/target/avr/cpu-qom.h
-index 9fa6989c18..14e5b3ce72 100644
---- a/target/avr/cpu-qom.h
-+++ b/target/avr/cpu-qom.h
-@@ -33,7 +33,6 @@ OBJECT_DECLARE_TYPE(AVRCPU, AVRCPUClass,
-  *  AVRCPUClass:
-  *  @parent_realize: The parent class' realize handler.
-  *  @parent_reset: The parent class' reset handler.
-- *  @vr: Version Register value.
-  *
-  *  A AVR CPU model.
-  */
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index 657db84ef0..58adf9edf6 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -116,8 +116,6 @@ struct RXCPU {
+ 
+ typedef RXCPU ArchCPU;
+ 
+-#define ENV_OFFSET offsetof(RXCPU, env)
+-
+ #define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
+ #define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_RX_CPU
 -- 
 2.34.1
 
