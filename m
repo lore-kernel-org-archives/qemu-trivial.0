@@ -1,61 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nBwSQ-0007Lr-Kk
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jan 2022 05:20:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43696)
+	id 1nC8XH-0004L0-LS
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jan 2022 18:14:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nBwSN-0007KB-AB
- for qemu-trivial@nongnu.org; Mon, 24 Jan 2022 05:20:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:26243)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nBwSJ-0006yt-UK
- for qemu-trivial@nongnu.org; Mon, 24 Jan 2022 05:20:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643019610;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=3+0md9az7qVGOq6ns7hMrPL1YC84U2kkSoagCUhx+1Y=;
- b=WrkqSNp6x4iUALMHp8Nln3dTMwEJgJv2kX0m8SfCq/nMDmY/W5DNhKrUGYItnEvfgy9YVh
- mLElsokcF4N82obZvTbf4b0y07HwhQqoweoGQB8KYmbrzJPhVJYcG5M+dyS0Mvtr8wQHiF
- qxcZdc9R57i6Z/MWoEjdU3OiogsmnBo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-496-2d-iaW0IMW-zhLFusz10Nw-1; Mon, 24 Jan 2022 05:20:06 -0500
-X-MC-Unique: 2d-iaW0IMW-zhLFusz10Nw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4E6691018726;
- Mon, 24 Jan 2022 10:20:05 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.193.48])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E125F73177;
- Mon, 24 Jan 2022 10:20:03 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nC8XF-0004JR-F7; Mon, 24 Jan 2022 18:14:05 -0500
+Received: from [2607:f8b0:4864:20::432] (port=43912
+ helo=mail-pf1-x432.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nC8XD-0004wp-FB; Mon, 24 Jan 2022 18:14:04 -0500
+Received: by mail-pf1-x432.google.com with SMTP id u10so13024626pfg.10;
+ Mon, 24 Jan 2022 15:14:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=imo7Wy5hgWMnz1KgDMaD90e9iwmwMmg1CP8nFgO71sM=;
+ b=FuvamHsIC1GdHiKK8+bJJahkruREU1hfUrxa0Q+sPX4GEFGd41GNvyIMyhrIvrNwoR
+ 5bNys2aHka9ZFVVA/ExNs6fY8BhmxdZHTk3IgVozFgJVEn2GIprt7M+aLRMJVN4xjiI/
+ 51OEd4Nz8hUk7f80G6Z0UOHtykCfeamus8Dg4TMphgB5+TKvfgmU2NpKUs47EHpDhaOi
+ zXWV8NH3xBafwPBpEKofjnhJ5i+kzZs7o3HguVdk5VxffVB2rp1ylk9bLbxNyoecRBvk
+ gpj9JGxAB9FhkcYAxxRavUUtnN3qGE1PUXv672us1++a0vHx2SZWdaoBbokifKprr7Ry
+ Q7dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=imo7Wy5hgWMnz1KgDMaD90e9iwmwMmg1CP8nFgO71sM=;
+ b=HAy5m+KWj7Ljt6ebYkPYHLOk9F0LgMw7k9mjE+y71lSt2C2aGDYxibosYGkjcWa/J5
+ 4n8Og3pYDyUziC73t9ahwYKkX277VRl9EK60uV++jnBAMr0KxcS/76tz5IK2WlNFgpyq
+ G1uGQr2JEWibT5uhjuiUSqUYQP+/GgWDWqotZE2NpGLLvDSTa+FsuarURI4q1vt2aZtU
+ RMXbzowRVU08DxlTnJhzSD/yoE3kgJVjWG/vIpTSHAwBhNVfj1TCz30sRu6MriOGk9zz
+ ibL0cXxUopU8tuNVDv+KXZ349tzx0k2Ffb+1MfGNohfQ9TaTZjTyxz3OkrMgqMYsD44A
+ /ZUg==
+X-Gm-Message-State: AOAM532PkPTvfcimG7qvRNo/a9J7hAe8D1HIZrNYrvyOeNjC2vsoSgji
+ wIM/W1My739tHxEXCAOPf6QWdAYsYe0=
+X-Google-Smtp-Source: ABdhPJyIX7N4OVLmDuqSd1o3NqhKPCjEPkh1tsyvvmZE1souNot1f5et9zSzD6/GX5UpZap1byFW5g==
+X-Received: by 2002:a63:5a51:: with SMTP id k17mr13045506pgm.129.1643066041248; 
+ Mon, 24 Jan 2022 15:14:01 -0800 (PST)
+Received: from localhost.localdomain (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id f15sm11965981pfn.19.2022.01.24.15.13.59
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 24 Jan 2022 15:14:00 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] scripts: Remove the old switch-timer-api script
-Date: Mon, 24 Jan 2022 11:20:01 +0100
-Message-Id: <20220124102001.35930-1-thuth@redhat.com>
+Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] hw/misc/macio/cuda: Simplify using the ldst API
+Date: Tue, 25 Jan 2022 00:13:55 +0100
+Message-Id: <20220124231355.48210-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.158,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::432
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x432.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,202 +81,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jan 2022 10:20:16 -0000
+X-List-Received-Date: Mon, 24 Jan 2022 23:14:06 -0000
 
-This script has been useful for the timer API rewrite in 2013, but
-it is of no use anymore today. Let's remove it now.
+This code is easier to review using the load/store API.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- scripts/switch-timer-api | 178 ---------------------------------------
- 1 file changed, 178 deletions(-)
- delete mode 100755 scripts/switch-timer-api
+ hw/misc/macio/cuda.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/scripts/switch-timer-api b/scripts/switch-timer-api
-deleted file mode 100755
-index 41736d11dd..0000000000
---- a/scripts/switch-timer-api
-+++ /dev/null
-@@ -1,178 +0,0 @@
--#!/usr/bin/env perl
--
--use strict;
--use warnings;
--use Getopt::Long;
--use FindBin;
--
--my @legacy = qw(qemu_clock_ptr qemu_get_clock_ns qemu_get_clock_ms qemu_register_clock_reset_notifier qemu_unregister_clock_reset_notifier qemu_new_timer qemu_free_timer qemu_del_timer qemu_mod_timer_ns qemu_mod_timer qemu_run_timers qemu_new_timer_ns qemu_new_timer_us qemu_new_timer_ms);
--my $legacyre = '\b('.join('|', @legacy).')\b';
--my $option_git;
--my $option_dryrun;
--my $option_quiet;
--my $option_rtc;
--my $suffix=".tmp.$$";
--my @files;
--my $getfiles = 'git grep -l -E \'\b((host|rt|vm|rtc)_clock\b|qemu_\w*timer)\' | egrep \'\.[ch]$\' | egrep -v \'qemu-timer\.c$|include/qemu/timer\.h$\'';
--
--sub Syntax
--{
--    print STDERR <<STOP;
--Usage: $FindBin::Script [options] FILE ...
--
--Translate each FILE to the new QEMU timer API. If no files
--are passed, a reasonable guess is taken.
--
--Options:
--  -q, --quiet     Do not show warnings etc
--  -d, --dry-run   Do a dry run
--  -g, --git       Generate a git commit for each change
--  -r, --rtc       Only fix up rtc usage
--  -h, --help      Print this message
--
--STOP
--return;
--}
--
--sub ParseOptions
--{
--    if (!GetOptions (
--	     "dry-run|d" => \$option_dryrun,
--             "git|g" => \$option_git,
--	     "quiet|q" => \$option_quiet,
--	     "rtc|r" => \$option_rtc,
--             "help|h" => sub { Syntax(); exit(0); }
--        ))
--    {
--        Syntax();
--        die "Bad options";
--    }
--
--    if ($#ARGV >=0)
--    {
--	@files = @ARGV;
--    }
--    else
--    {
--	@files = split(/\s+/, `$getfiles`);
--    }
--
--    foreach my $file (@files)
--    {
--	die "Cannot find $file" unless (-f $file && -r $file);
--    }
--}
--
--sub DoWarn
--{
--    my $text = shift @_;
--    my $line = shift @_;
--    return if ($option_quiet);
--    chomp ($line);
--    print STDERR "$text\n";
--    print STDERR "$line\n\n";
--}
--
--sub Process
--{
--    my $ifn = shift @_;
--    my $ofn = $ifn.$suffix;
--
--    my $intext;
--    my $outtext;
--    my $linenum = 0;
--
--    open my $input, "<", $ifn || die "Cannot open $ifn for read: $!";
--
--    while (<$input>)
--    {
--	my $line = $_;
--	$intext .= $line;
--	$linenum++;
--
--	# fix the specific uses
--	unless ($option_rtc)
--	{
--	    $line =~ s/\bqemu_new_timer(_[num]s)\s*\((vm_|rt_|host_)clock\b/timer_new$1(XXX_$2clock/g;
--	    $line =~ s/\bqemu_new_timer\s*\((vm_|rt_|host_)clock\b/timer_new(XXX_$1clock/g;
--	    $line =~ s/\bqemu_get_clock(_[num]s)\s*\((vm_|rt_|host_)clock\b/qemu_clock_get$1(XXX_$2clock/g;
--	}
--
--	# rtc is different
--	$line =~ s/\bqemu_new_timer(_[num]s)\s*\(rtc_clock\b/timer_new$1(rtc_clock/g;
--	$line =~ s/\bqemu_new_timer\s*\(rtc_clock\b/timer_new(rtc_clock/g;
--	$line =~ s/\bqemu_get_clock(_[num]s)\s*\(rtc_clock\b/qemu_clock_get$1(rtc_clock/g;
--	$line =~ s/\bqemu_register_clock_reset_notifier\s*\(rtc_clock\b/qemu_register_clock_reset_notifier(qemu_clock_ptr(rtc_clock)/g;
--
--	unless ($option_rtc)
--	{
--	    # fix up comments
--	    $line =~ s/\b(vm_|rt_|host_)clock\b/XXX_$1clock/g if ($line =~ m,^[/ ]+\*,);
--
--	    # spurious fprintf error reporting
--	    $line =~ s/: qemu_new_timer_ns failed/: timer_new_ns failed/g;
--
--	    # these have just changed name
--	    $line =~ s/\bqemu_mod_timer\b/timer_mod/g;
--	    $line =~ s/\bqemu_mod_timer_(ns|us|ms)\b/timer_mod_$1/g;
--	    $line =~ s/\bqemu_free_timer\b/timer_free/g;
--	    $line =~ s/\bqemu_del_timer\b/timer_del/g;
--	}
--
--	# fix up rtc_clock
--	$line =~ s/QEMUClock \*rtc_clock;/QEMUClockType rtc_clock;/g;
--	$line =~ s/\brtc_clock = (vm_|rt_|host_)clock\b/rtc_clock = XXX_$1clock/g;
--
--	unless ($option_rtc)
--	{
--	    # replace any more general uses
--	    $line =~ s/\b(vm_|rt_|host_)clock\b/qemu_clock_ptr(XXX_$1clock)/g;
--	}
--
--	# fix up the place holders
--	$line =~ s/\bXXX_vm_clock\b/QEMU_CLOCK_VIRTUAL/g;
--	$line =~ s/\bXXX_rt_clock\b/QEMU_CLOCK_REALTIME/g;
--	$line =~ s/\bXXX_host_clock\b/QEMU_CLOCK_HOST/g;
--
--	unless ($option_rtc)
--	{
--	    DoWarn("$ifn:$linenum WARNING: timer $1 not fixed up", $line) if ($line =~ /\b((vm_|rt_|host_)clock)\b/);
--	    DoWarn("$ifn:$linenum WARNING: function $1 not fixed up", $line) if ($line =~ /\b(qemu_new_timer\w+)\b/);
--	    DoWarn("$ifn:$linenum WARNING: legacy function $1 remains", $line) if ($line =~ /$legacyre/o);
--	}
--
--	$outtext .= $line;
--    }
--
--    close $input;
--
--    if ($intext ne $outtext)
--    {
--	print STDERR "Patching $ifn\n" unless ($option_quiet);
--	unless ($option_dryrun)
--	{
--	    open my $output, ">", $ofn || die "Cannot open $ofn for write: $!";
--	    print $output $outtext;
--	    close $output;
--	    rename ($ofn, $ifn) || die "Cannot rename temp file to $ifn: $!";
--	    return 1;
--	}
--    }
--    return 0;
--}
--
--sub DoCommit
--{
--    my $file = shift @_;
--    open (my $git, "| git commit -F - $file") || die "Cannot run git commit on $file: $!";
--    print $git "timers api: use new timer api in $file\n\nConvert $file to use new timer API.\nThis is an automated commit made by scripts/switch-timer-api\n";
--    close ($git);
--}
--
--ParseOptions;
--
--foreach my $file (@files)
--{
--    my $changed = Process ($file);
--    DoCommit($file) if ($changed && $option_git);
--}
+diff --git a/hw/misc/macio/cuda.c b/hw/misc/macio/cuda.c
+index e917a6a095..f1186671bf 100644
+--- a/hw/misc/macio/cuda.c
++++ b/hw/misc/macio/cuda.c
+@@ -36,6 +36,7 @@
+ #include "sysemu/runstate.h"
+ #include "qapi/error.h"
+ #include "qemu/cutils.h"
++#include "qemu/bswap.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "trace.h"
+@@ -345,10 +346,7 @@ static bool cuda_cmd_get_time(CUDAState *s,
+ 
+     ti = s->tick_offset + (qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL)
+                            / NANOSECONDS_PER_SECOND);
+-    out_data[0] = ti >> 24;
+-    out_data[1] = ti >> 16;
+-    out_data[2] = ti >> 8;
+-    out_data[3] = ti;
++    stl_be_p(out_data, ti);
+     *out_len = 4;
+     return true;
+ }
+@@ -363,8 +361,7 @@ static bool cuda_cmd_set_time(CUDAState *s,
+         return false;
+     }
+ 
+-    ti = (((uint32_t)in_data[0]) << 24) + (((uint32_t)in_data[1]) << 16)
+-         + (((uint32_t)in_data[2]) << 8) + in_data[3];
++    ti = ldl_be_p(in_data);
+     s->tick_offset = ti - (qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL)
+                            / NANOSECONDS_PER_SECOND);
+     return true;
 -- 
-2.27.0
+2.34.1
 
 
