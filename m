@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nD59y-00067T-22
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jan 2022 08:50:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46670)
+	id 1nD5Ts-00027O-ID
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jan 2022 09:10:33 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51456)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nD59u-00065Z-TD; Thu, 27 Jan 2022 08:49:54 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:45283)
+ id 1nD5Tq-00022t-3u; Thu, 27 Jan 2022 09:10:30 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:42771)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nD59s-00071k-HW; Thu, 27 Jan 2022 08:49:54 -0500
+ id 1nD5TW-0001Ru-7o; Thu, 27 Jan 2022 09:10:25 -0500
 Received: from [192.168.100.1] ([82.142.25.174]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Ml6du-1mYE113PQK-00lWRf; Thu, 27 Jan 2022 14:49:31 +0100
-Message-ID: <4e110850-a303-d0a4-158b-6186367aa739@vivier.eu>
-Date: Thu, 27 Jan 2022 14:49:30 +0100
+ 1Mate1-1mfgKa2wiB-00cUBQ; Thu, 27 Jan 2022 15:09:59 +0100
+Message-ID: <9594cc96-efba-37b9-97f3-d79ee7379d44@vivier.eu>
+Date: Thu, 27 Jan 2022 15:09:58 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
+Subject: Re: [PATCH] linux-user/alpha: Fix target rlimits for alpha and
+ rearrange for clarity
 Content-Language: fr
 To: Serge Belyshev <belyshev@depni.sinp.msu.ru>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
 References: <87y236lpwb.fsf@depni.sinp.msu.ru>
 From: Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PATCH] linux-user/alpha: Fix target rlimits for alpha and
- rearrange for clarity
 In-Reply-To: <87y236lpwb.fsf@depni.sinp.msu.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:YlyaTxdLBpF//PibthjhqWPQWY7WFPxyMhazuAvyUWGcYNLsL+P
- xan8VwEmKi1qFkf4h28ZJuzTldQJUDoFFE8SC59s1BODgqftzPAMMEChduJF41eUB7V0auS
- YLlY5lnAPrM6CDiwUFeEs2cTMvExGMUoZdpdSSkGVWRYMsC+BZMW4KmmT8vfV8DkaLuV42r
- 0BgKt0Ir1sSZ+TtG3hAsg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:OTiKTavedYY=:X+19Uobf9q07hsclR53HOZ
- JIgkxBEouxxCvbjxgHZ61vwWAfF1kwWBfXfz4x5gw0eSPzAK81MY5TbKH2Gr+KNkZVABY6XAF
- XrvXbgwd5af4Xw/B13xgo81BGT2fK64djKLmYcD1KIaqUzG+moxzHjlZ6OnU5qCy1FK2LmCxc
- T2gku2exbQ8QNfS3rbM67B3Z2/E929kReWpb3UsneLnNenwmCJT9O5GmlVV5h+vGOWu7DV67S
- LEIIvn8zJgbKokA/pHf0q5yzf8TJjlJCXCXVohgBa2BWLIehqZJOy3553rmw+S1AtWnoYhXbq
- MoLrQiamwzkMrNSdCOFHtCQU8ssaby3CR6+j0K/uGgt/132AURFrT7STp3wECkn1uaNR7McN2
- 5wriGpkHBSruZTKWXXKAaShPoU1jCfKVmuUhCF6+5qqVFtpoiC0m8pXPWH17+XmxZOeN9vWUF
- D7UXgjqhJOjJOvkUVMtwV63hkc1rB5MI4CWlPbC833c1walBhSH3gdyzVpkX2q8W0OItC/mvY
- zHtGo3vSFmjHEEBhZLhCBplNgImhqudCJYNFhLWZ5wiR8EFipE/rxE3zMQBzlTCwezCdy6k+k
- kRuLCvVMC/bz8fAhn7p95aqXYIjXnif7iLEvh9Pt30YlBLWuVtNwSz8CxaNwoMxyUeHMd1cyQ
- rhIDXvRQMDc0a6dmgG4SAfu0nh+JIngcvLWe1nHAgWJEGKTnY1K/yZ7XfnaZt+tx6yVU=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:DGLlM0IquQMamdkMx63v4gn2Bc+xmKT5rCOh5r0KZBpGJ8s0Cho
+ Y97FbPJB6Qx/wkZ9bekFpz5ld4lLDmH3ymYJyo2KWvb6w0JhlhwNSwqubXfmww/0U3JPY32
+ YfD9H97PKuzbL/x1PWC7Z1q7lXDthtqtOv+HVlkebxwgXcZJ+Bvw3GezpI/4kcSeEw09htL
+ +Bq6ptrYukQit1aNDMJFg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:YRKMsUDnsfM=:bvucubHs6oFfFeh6/RtVfM
+ GASv+lMrFIKSkJ1rELpe+iOdtacdpRUeZBt3W+6zE3g/Z7bpL6ZOc1A6AX2yzGX0HHaJAwq0c
+ ZKBobo8UJLCErpIidO97rSl2NB0NGekpG8Pxso/HTnfIM4w1N7TSYFMHjfGSils1fDhd6zEg5
+ n0R/eelG82ofzmtFJHDXBSqvq2ok76R6ewBXGLcr62ZsYBD3M9BNTxLns1GwiRREugg4dXRVP
+ v46XTTzvmEE5FC404ic5Z6ZUt7OHVfxMFTDV+pd+7JrGLZQsFIpHTjBJbKacEgYu6VE3yahta
+ TKGYE1NKfQvb0uOPGufr30Tpc2uzgzolRfhF5u9P7DZXjOdslnZCfHCjLVSOsz4/GHqfPg/5K
+ OtPmXVRB8a9ZnnuK0AY3CtYvFNiI/Vap19xHw38qnDW5n4zVV2s/YsAO/SYtuGEESqVk6aBAx
+ J9e6qaaluhw+Bk/LCuBxztLsZbU7XKUaNRvwmBs8qMDYkGgQE3Wb6a5l2gKDc4C0m/BWUlsyQ
+ YCpDa19aLVsDzH7oqO4VkACc4AOQd8Xge2G1YlpuKUwKa46AfOIdEOc0+0DXMJrqDkP6KkDW9
+ Ke0Mbo1d7hG6vIJChLQmDJ5u5+04gvdbEISU3dgh3AKaQm1QChRBhdCfn+06K9yvvjnmhTtu2
+ D2qWA2iJc+dr0R4FPKya0Cbk5n2iagFTtaZAFmgvFSDDQzyXvZkGJb1J2qj59gt26GVI=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,7 +62,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jan 2022 13:49:55 -0000
+X-List-Received-Date: Thu, 27 Jan 2022 14:10:31 -0000
 
 Le 15/01/2022 à 12:32, Serge Belyshev a écrit :
 > Alpha uses different values of some TARGET_RLIMIT_* constants, which were
@@ -139,13 +139,7 @@ Le 15/01/2022 à 12:32, Serge Belyshev a écrit :
 >   struct target_pollfd {
 >       int fd;           /* file descriptor */
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-
-perhaps you could also add RLIMIT_RTTIME (15) and update target_to_host_resource()?
-
-The next step would be to move the generic definitions to a new file in 
-linux-user/generic/target_resource.h and the specific ones to linux-user/alpha, linux-user/mips and 
-linux-user/sparc.
+Applied to my linux-user-for-7.0 branch.
 
 Thanks,
 Laurent
