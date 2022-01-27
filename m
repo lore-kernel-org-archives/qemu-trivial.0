@@ -1,56 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nD2GB-0004VN-Hn
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jan 2022 05:44:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60896)
+	id 1nD4gE-0005oj-OW
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jan 2022 08:19:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39622)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
- id 1nD2G7-0004U7-FV; Thu, 27 Jan 2022 05:44:07 -0500
-Received: from mga03.intel.com ([134.134.136.65]:40194)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nD4gA-0005nQ-9O; Thu, 27 Jan 2022 08:19:13 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:36425)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
- id 1nD2Fy-0001ul-LS; Thu, 27 Jan 2022 05:44:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643280238; x=1674816238;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=8vZ2wLiF0D8fcxIiyM1b/e46mihNk1dtqR3LRzL3/hU=;
- b=GcuKUZpanyFD7ofvWYx+Xbrth/l1IO2q1UA27y+8PTA0Lrrka/OPke9e
- QXXVhCgpGfUmvUHkBdpRBdfsiG1I8lGOZb9K1Ok9D8msycB79Fb77UyO2
- UCDuvM5ozwzvhO3iy2NcXcxxi94fjAHerN4OWTBiPprqqK5BrGoXTRT2p
- oYO8pqc0tmmi2EDWcHd6uk8KqeiNcGzULNz+lIHWYmCfK4NKWrRvSyrC6
- W8uG2EZB0hPn1Nii35UsKg9mRF+gYXsH9ztN5O25Qn8VMHRBYt1pOzhHw
- B92kOcgddwEnSg8Tc4r8t+AQMVqnicjnZzy2aeyQ5rgqyaloCyNYUcw5t w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="246760118"
-X-IronPort-AV: E=Sophos;i="5.88,320,1635231600"; d="scan'208";a="246760118"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2022 02:43:53 -0800
-X-IronPort-AV: E=Sophos;i="5.88,320,1635231600"; d="scan'208";a="480244969"
-Received: from unknown (HELO localhost.localdomain) ([10.239.13.19])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2022 02:43:51 -0800
-From: Zhang Chen <chen.zhang@intel.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-dev <qemu-devel@nongnu.org>,
- qemu-trivial@nongnu.org
-Cc: Zhang Chen <chen.zhang@intel.com>
-Subject: [PATCH] docs/devel/migration.rst: Updates content from code and fixes
- minor issues
-Date: Thu, 27 Jan 2022 18:32:44 +0800
-Message-Id: <20220127103244.3277760-1-chen.zhang@intel.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nD4g8-0002PD-2K; Thu, 27 Jan 2022 08:19:09 -0500
+Received: from [192.168.100.1] ([82.142.25.174]) by mrelayeu.kundenserver.de
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1M5wY1-1nAZRZ0hxb-007X2e; Thu, 27 Jan 2022 14:18:58 +0100
+Message-ID: <fb4f4efd-0676-51a9-dd01-50643dec1278@vivier.eu>
+Date: Thu, 27 Jan 2022 14:18:56 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Content-Language: fr
+To: Serge Belyshev <belyshev@depni.sinp.msu.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <8735len4jt.fsf@depni.sinp.msu.ru>
+From: Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [PATCH] linux-user/syscall: Do not ignore info.si_pid == 0 in
+ waitid()
+In-Reply-To: <8735len4jt.fsf@depni.sinp.msu.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=134.134.136.65; envelope-from=chen.zhang@intel.com;
- helo=mga03.intel.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.159,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:UGTiR/EdlzwpwAPBMCkmqsQiSQfzmGuNgmYvUkqs1nKqsrb2+Az
+ zLBqST568OvaklNXcXKzS033Ok7pZdve3MXSaQk+Pkia3yclxIZTc87z7ykllRttTjwc2Uo
+ XaJu7fj39qkZsHt9JiMo+j0Pw17AhAaww4TMixxWLd2UmEkGMmyrVx+GHOG4lf25in73Iml
+ pCPXVZlHBx3+du24/c/Dw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0psMztn+8eE=:+28bURajgk5Y8dImDjvGmE
+ tDsS+JRA5SBtKht+0O/5qVMeuhfnm7SXQfRMu8KJuVpmWLlHV7TWnIrlMyn0GeCcrM60Ag9Bk
+ wRzKlOhGtpeFWetQG7ew0ndoow9RaY9XM/V+TYfRS/FkVsX+f0wcNn5ARJh4KCzamI+uzGEK5
+ jaZ9ag4NqKYJ2vohb9HnjJswYitm2lUd4Yhlh3ea53zz2U/xO4/calnn11/QTSv+HqUPzJ0pg
+ bUB5LSx1xMWoOt7IcJym2lqqqEUHhg6OEMADJRh8l3d6bHvtRTfINh3ulhzSX0CjyuqCrHVP8
+ eGbv8owfRFe20TtGH4WkkRRO4KjNQXKPwQ257xiuWT1dLF0QaLuxRmGMihPvJcnAkw4EuAx1k
+ QUjGoAgmVNCgjw3gTODGR4c7pLDSPzFiXx2pptlzcW+A8YAKDMSXdem45W0xUMn4WMNUsne+m
+ 2dmZH3RmcpWtH6twTqXBsDW8jPd5tnt9IsmW4xswEWdE7hXGZxvcNKchouBIPk8WaoT6y1iC9
+ dNNblTcksK+PfFz7LKxS+C/mcCgwow3cu6M89QU8vUdZ30LFWvkuXfanAAlxLMpuCgkHr6cuZ
+ biGnqT/7UcfXc8JkhYZnCwOy60s65u1AO6upKqn8HB8gCUeNhWGExHFkYFdPDqtDHsADfPAJp
+ GBp4u1mS9ucd1gq0b22vAgVj5el7mOM8Y53as4sSOtX94bbVUu25Z5ZHozoA+pYGoKgs=
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,114 +62,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jan 2022 10:44:07 -0000
+X-List-Received-Date: Thu, 27 Jan 2022 13:19:13 -0000
 
-Signed-off-by: Zhang Chen <chen.zhang@intel.com>
----
- docs/devel/migration.rst | 36 +++++++++++++++++++++++-------------
- 1 file changed, 23 insertions(+), 13 deletions(-)
+Le 13/01/2022 à 10:37, Serge Belyshev a écrit :
+> When called with WNOHANG and no child has exited, waitid returns with
+> info.si_pid set to zero and thus check for info.si_pid != 0 will cause
+> target siginfo structure to be uninitialized.  Fixed by removing the check.
+> 
+> Signed-off-by: Serge Belyshev <belyshev@depni.sinp.msu.ru>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/817
+> ---
+>   linux-user/syscall.c | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 5950222a77..b80531ac4c 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -8724,9 +8724,8 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+>       case TARGET_NR_waitid:
+>           {
+>               siginfo_t info;
+> -            info.si_pid = 0;
+>               ret = get_errno(safe_waitid(arg1, arg2, &info, arg4, NULL));
+> -            if (!is_error(ret) && arg3 && info.si_pid != 0) {
+> +            if (!is_error(ret) && arg3) {
+>                   if (!(p = lock_user(VERIFY_WRITE, arg3, sizeof(target_siginfo_t), 0)))
+>                       return -TARGET_EFAULT;
+>                   host_to_target_siginfo(p, &info);
 
-diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-index 2401253482..9f190d439a 100644
---- a/docs/devel/migration.rst
-+++ b/docs/devel/migration.rst
-@@ -156,12 +156,20 @@ An example (from hw/input/pckbd.c)
-       .name = "pckbd",
-       .version_id = 3,
-       .minimum_version_id = 3,
-+      .pre_load = kbd_pre_load,
-+      .post_load = kbd_post_load,
-+      .pre_save = kbd_pre_save,
-       .fields = (VMStateField[]) {
-           VMSTATE_UINT8(write_cmd, KBDState),
-           VMSTATE_UINT8(status, KBDState),
-           VMSTATE_UINT8(mode, KBDState),
--          VMSTATE_UINT8(pending, KBDState),
-+          VMSTATE_UINT8(pending_tmp, KBDState),
-           VMSTATE_END_OF_LIST()
-+      },
-+      .subsections = (const VMStateDescription*[]) {
-+          &vmstate_kbd_outport,
-+          &vmstate_kbd_extended_state,
-+          NULL
-       }
-   };
- 
-@@ -278,7 +286,7 @@ Example:
-       IDEState *s = opaque;
- 
-       return ((s->status & DRQ_STAT) != 0)
--          || (s->bus->error_status & BM_STATUS_PIO_RETRY);
-+          || (s->bus->error_status & IDE_RETRY_PIO);
-   }
- 
-   const VMStateDescription vmstate_ide_drive_pio_state = {
-@@ -312,6 +320,8 @@ Example:
-       },
-       .subsections = (const VMStateDescription*[]) {
-           &vmstate_ide_drive_pio_state,
-+          &vmstate_ide_tray_state,
-+          &vmstate_ide_atapi_gesn_state,
-           NULL
-       }
-   };
-@@ -481,11 +491,11 @@ versions exist for high bandwidth IO.
- 
- An iterative device must provide:
- 
--  - A ``save_setup`` function that initialises the data structures and
--    transmits a first section containing information on the device.  In the
--    case of RAM this transmits a list of RAMBlocks and sizes.
-+  - A ``save_setup`` function that initialize the data structures and
-+    transmits a first section containing information on the device. In the
-+    case of RAM used to transmit a list of RAMBlocks and sizes.
- 
--  - A ``load_setup`` function that initialises the data structures on the
-+  - A ``load_setup`` function that initialize the data structures on the
-     destination.
- 
-   - A ``save_live_pending`` function that is called repeatedly and must
-@@ -756,13 +766,13 @@ ADVISE->DISCARD->LISTEN->RUNNING->END
-     (the 'listen thread') which takes over the job of receiving
-     pages off the migration stream, while the main thread carries
-     on processing the blob.  With this thread able to process page
--    reception, the destination now 'sensitises' the RAM to detect
-+    reception, the destination now 'sensitive' the RAM to detect
-     any access to missing pages (on Linux using the 'userfault'
-     system).
- 
-  - Running
- 
--    POSTCOPY_RUN causes the destination to synchronise all
-+    POSTCOPY_RUN causes the destination to synchronize all
-     state and start the CPUs and IO devices running.  The main
-     thread now finishes processing the migration package and
-     now carries on as it would for normal precopy migration
-@@ -771,8 +781,8 @@ ADVISE->DISCARD->LISTEN->RUNNING->END
- 
-  - End
- 
--    The listen thread can now quit, and perform the cleanup of migration
--    state, the migration is now complete.
-+    The listen thread already exited, and perform the cleanup of migration
-+    state, the migration has been completed.
- 
- Source side page maps
- ---------------------
-@@ -861,9 +871,9 @@ Firmware
- ========
- 
- Migration migrates the copies of RAM and ROM, and thus when running
--on the destination it includes the firmware from the source. Even after
--resetting a VM, the old firmware is used.  Only once QEMU has been restarted
--is the new firmware in use.
-+on the destination it includes the firmware from the source. The old
-+firmware of the VM is still used even rebooted. And the new firmware
-+will not be loaded until QEMU is restarted.
- 
- - Changes in firmware size can cause changes in the required RAMBlock size
-   to hold the firmware and thus migration can fail.  In practice it's best
--- 
-2.25.1
+According to wait(2), it sounds a little bit more complicated than that.
 
+        If WNOHANG was specified in options and there were no children in a waitable state, then
+        waitid() returns 0 immediately and the state of the siginfo_t  structure  pointed  to  by
+        infop  depends  on  the  implementation.   To (portably) distinguish this case from that
+        where a child was in a waitable state, zero out the si_pid field before the call and check
+        for a nonzero value in this field after the call returns.
+
+        POSIX.1-2008  Technical  Corrigendum  1 (2013) adds the requirement that when WNOHANG is
+        specified in options and there were no children in a waitable state, then waitid() should
+        zero out the si_pid and si_signo fields of the structure.  On Linux and other implementations
+        that adhere to this requirement, it is not necessary to zero out the si_pid field before
+        calling waitid().  However, not all implementations follow the POSIX.1  specification  on
+        this point.
+
+Perhaps the best approach would be to copy the caller target siginfo to the host one, call host 
+waitpid(), remove the "info.si_pid != 0" and copy back the host siginfo to target one?
+
+Thanks,
+Laurent
 
