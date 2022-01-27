@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nD4gE-0005oj-OW
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jan 2022 08:19:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39622)
+	id 1nD59y-00067T-22
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jan 2022 08:50:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46670)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nD4gA-0005nQ-9O; Thu, 27 Jan 2022 08:19:13 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:36425)
+ id 1nD59u-00065Z-TD; Thu, 27 Jan 2022 08:49:54 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:45283)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nD4g8-0002PD-2K; Thu, 27 Jan 2022 08:19:09 -0500
+ id 1nD59s-00071k-HW; Thu, 27 Jan 2022 08:49:54 -0500
 Received: from [192.168.100.1] ([82.142.25.174]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M5wY1-1nAZRZ0hxb-007X2e; Thu, 27 Jan 2022 14:18:58 +0100
-Message-ID: <fb4f4efd-0676-51a9-dd01-50643dec1278@vivier.eu>
-Date: Thu, 27 Jan 2022 14:18:56 +0100
+ 1Ml6du-1mYE113PQK-00lWRf; Thu, 27 Jan 2022 14:49:31 +0100
+Message-ID: <4e110850-a303-d0a4-158b-6186367aa739@vivier.eu>
+Date: Thu, 27 Jan 2022 14:49:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
 Content-Language: fr
 To: Serge Belyshev <belyshev@depni.sinp.msu.ru>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-References: <8735len4jt.fsf@depni.sinp.msu.ru>
+References: <87y236lpwb.fsf@depni.sinp.msu.ru>
 From: Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PATCH] linux-user/syscall: Do not ignore info.si_pid == 0 in
- waitid()
-In-Reply-To: <8735len4jt.fsf@depni.sinp.msu.ru>
+Subject: Re: [PATCH] linux-user/alpha: Fix target rlimits for alpha and
+ rearrange for clarity
+In-Reply-To: <87y236lpwb.fsf@depni.sinp.msu.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:UGTiR/EdlzwpwAPBMCkmqsQiSQfzmGuNgmYvUkqs1nKqsrb2+Az
- zLBqST568OvaklNXcXKzS033Ok7pZdve3MXSaQk+Pkia3yclxIZTc87z7ykllRttTjwc2Uo
- XaJu7fj39qkZsHt9JiMo+j0Pw17AhAaww4TMixxWLd2UmEkGMmyrVx+GHOG4lf25in73Iml
- pCPXVZlHBx3+du24/c/Dw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0psMztn+8eE=:+28bURajgk5Y8dImDjvGmE
- tDsS+JRA5SBtKht+0O/5qVMeuhfnm7SXQfRMu8KJuVpmWLlHV7TWnIrlMyn0GeCcrM60Ag9Bk
- wRzKlOhGtpeFWetQG7ew0ndoow9RaY9XM/V+TYfRS/FkVsX+f0wcNn5ARJh4KCzamI+uzGEK5
- jaZ9ag4NqKYJ2vohb9HnjJswYitm2lUd4Yhlh3ea53zz2U/xO4/calnn11/QTSv+HqUPzJ0pg
- bUB5LSx1xMWoOt7IcJym2lqqqEUHhg6OEMADJRh8l3d6bHvtRTfINh3ulhzSX0CjyuqCrHVP8
- eGbv8owfRFe20TtGH4WkkRRO4KjNQXKPwQ257xiuWT1dLF0QaLuxRmGMihPvJcnAkw4EuAx1k
- QUjGoAgmVNCgjw3gTODGR4c7pLDSPzFiXx2pptlzcW+A8YAKDMSXdem45W0xUMn4WMNUsne+m
- 2dmZH3RmcpWtH6twTqXBsDW8jPd5tnt9IsmW4xswEWdE7hXGZxvcNKchouBIPk8WaoT6y1iC9
- dNNblTcksK+PfFz7LKxS+C/mcCgwow3cu6M89QU8vUdZ30LFWvkuXfanAAlxLMpuCgkHr6cuZ
- biGnqT/7UcfXc8JkhYZnCwOy60s65u1AO6upKqn8HB8gCUeNhWGExHFkYFdPDqtDHsADfPAJp
- GBp4u1mS9ucd1gq0b22vAgVj5el7mOM8Y53as4sSOtX94bbVUu25Z5ZHozoA+pYGoKgs=
+X-Provags-ID: V03:K1:YlyaTxdLBpF//PibthjhqWPQWY7WFPxyMhazuAvyUWGcYNLsL+P
+ xan8VwEmKi1qFkf4h28ZJuzTldQJUDoFFE8SC59s1BODgqftzPAMMEChduJF41eUB7V0auS
+ YLlY5lnAPrM6CDiwUFeEs2cTMvExGMUoZdpdSSkGVWRYMsC+BZMW4KmmT8vfV8DkaLuV42r
+ 0BgKt0Ir1sSZ+TtG3hAsg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OTiKTavedYY=:X+19Uobf9q07hsclR53HOZ
+ JIgkxBEouxxCvbjxgHZ61vwWAfF1kwWBfXfz4x5gw0eSPzAK81MY5TbKH2Gr+KNkZVABY6XAF
+ XrvXbgwd5af4Xw/B13xgo81BGT2fK64djKLmYcD1KIaqUzG+moxzHjlZ6OnU5qCy1FK2LmCxc
+ T2gku2exbQ8QNfS3rbM67B3Z2/E929kReWpb3UsneLnNenwmCJT9O5GmlVV5h+vGOWu7DV67S
+ LEIIvn8zJgbKokA/pHf0q5yzf8TJjlJCXCXVohgBa2BWLIehqZJOy3553rmw+S1AtWnoYhXbq
+ MoLrQiamwzkMrNSdCOFHtCQU8ssaby3CR6+j0K/uGgt/132AURFrT7STp3wECkn1uaNR7McN2
+ 5wriGpkHBSruZTKWXXKAaShPoU1jCfKVmuUhCF6+5qqVFtpoiC0m8pXPWH17+XmxZOeN9vWUF
+ D7UXgjqhJOjJOvkUVMtwV63hkc1rB5MI4CWlPbC833c1walBhSH3gdyzVpkX2q8W0OItC/mvY
+ zHtGo3vSFmjHEEBhZLhCBplNgImhqudCJYNFhLWZ5wiR8EFipE/rxE3zMQBzlTCwezCdy6k+k
+ kRuLCvVMC/bz8fAhn7p95aqXYIjXnif7iLEvh9Pt30YlBLWuVtNwSz8CxaNwoMxyUeHMd1cyQ
+ rhIDXvRQMDc0a6dmgG4SAfu0nh+JIngcvLWe1nHAgWJEGKTnY1K/yZ7XfnaZt+tx6yVU=
 Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -62,52 +62,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jan 2022 13:19:13 -0000
+X-List-Received-Date: Thu, 27 Jan 2022 13:49:55 -0000
 
-Le 13/01/2022 à 10:37, Serge Belyshev a écrit :
-> When called with WNOHANG and no child has exited, waitid returns with
-> info.si_pid set to zero and thus check for info.si_pid != 0 will cause
-> target siginfo structure to be uninitialized.  Fixed by removing the check.
+Le 15/01/2022 à 12:32, Serge Belyshev a écrit :
+> Alpha uses different values of some TARGET_RLIMIT_* constants, which were
+> missing and caused bugs like #577, fixed thus.  Also rearranged all three
+> (alpha, mips and sparc) that differ from everyone else for clarity.
 > 
 > Signed-off-by: Serge Belyshev <belyshev@depni.sinp.msu.ru>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/817
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/577
 > ---
->   linux-user/syscall.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
+>   linux-user/syscall_defs.h | 31 ++++++++++++++-----------------
+>   1 file changed, 14 insertions(+), 17 deletions(-)
 > 
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 5950222a77..b80531ac4c 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -8724,9 +8724,8 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
->       case TARGET_NR_waitid:
->           {
->               siginfo_t info;
-> -            info.si_pid = 0;
->               ret = get_errno(safe_waitid(arg1, arg2, &info, arg4, NULL));
-> -            if (!is_error(ret) && arg3 && info.si_pid != 0) {
-> +            if (!is_error(ret) && arg3) {
->                   if (!(p = lock_user(VERIFY_WRITE, arg3, sizeof(target_siginfo_t), 0)))
->                       return -TARGET_EFAULT;
->                   host_to_target_siginfo(p, &info);
+> diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+> index f23f0a2178..3fcabaeae3 100644
+> --- a/linux-user/syscall_defs.h
+> +++ b/linux-user/syscall_defs.h
+> @@ -730,44 +730,41 @@ struct target_rlimit {
+>   #define TARGET_RLIM_INFINITY	((abi_ulong)-1)
+>   #endif
+>   
+> -#if defined(TARGET_MIPS)
+>   #define TARGET_RLIMIT_CPU		0
+>   #define TARGET_RLIMIT_FSIZE		1
+>   #define TARGET_RLIMIT_DATA		2
+>   #define TARGET_RLIMIT_STACK		3
+>   #define TARGET_RLIMIT_CORE		4
+> +#if defined(TARGET_MIPS)
+> +#define TARGET_RLIMIT_NOFILE		5
+> +#define TARGET_RLIMIT_AS		6
+>   #define TARGET_RLIMIT_RSS		7
+>   #define TARGET_RLIMIT_NPROC		8
+> -#define TARGET_RLIMIT_NOFILE		5
+>   #define TARGET_RLIMIT_MEMLOCK		9
+> -#define TARGET_RLIMIT_AS		6
+> -#define TARGET_RLIMIT_LOCKS		10
+> -#define TARGET_RLIMIT_SIGPENDING	11
+> -#define TARGET_RLIMIT_MSGQUEUE		12
+> -#define TARGET_RLIMIT_NICE		13
+> -#define TARGET_RLIMIT_RTPRIO		14
+> -#else
+> -#define TARGET_RLIMIT_CPU		0
+> -#define TARGET_RLIMIT_FSIZE		1
+> -#define TARGET_RLIMIT_DATA		2
+> -#define TARGET_RLIMIT_STACK		3
+> -#define TARGET_RLIMIT_CORE		4
+> +#elif defined(TARGET_ALPHA)
+> +#define TARGET_RLIMIT_RSS		5
+> +#define TARGET_RLIMIT_NOFILE		6
+> +#define TARGET_RLIMIT_AS		7
+> +#define TARGET_RLIMIT_NPROC		8
+> +#define TARGET_RLIMIT_MEMLOCK		9
+> +#elif defined(TARGET_SPARC)
+>   #define TARGET_RLIMIT_RSS		5
+> -#if defined(TARGET_SPARC)
+>   #define TARGET_RLIMIT_NOFILE		6
+>   #define TARGET_RLIMIT_NPROC		7
+> +#define TARGET_RLIMIT_MEMLOCK		8
+> +#define TARGET_RLIMIT_AS		9
+>   #else
+> +#define TARGET_RLIMIT_RSS		5
+>   #define TARGET_RLIMIT_NPROC		6
+>   #define TARGET_RLIMIT_NOFILE		7
+> -#endif
+>   #define TARGET_RLIMIT_MEMLOCK		8
+>   #define TARGET_RLIMIT_AS		9
+> +#endif
+>   #define TARGET_RLIMIT_LOCKS		10
+>   #define TARGET_RLIMIT_SIGPENDING	11
+>   #define TARGET_RLIMIT_MSGQUEUE		12
+>   #define TARGET_RLIMIT_NICE		13
+>   #define TARGET_RLIMIT_RTPRIO		14
+> -#endif
+>   
+>   struct target_pollfd {
+>       int fd;           /* file descriptor */
 
-According to wait(2), it sounds a little bit more complicated than that.
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
-        If WNOHANG was specified in options and there were no children in a waitable state, then
-        waitid() returns 0 immediately and the state of the siginfo_t  structure  pointed  to  by
-        infop  depends  on  the  implementation.   To (portably) distinguish this case from that
-        where a child was in a waitable state, zero out the si_pid field before the call and check
-        for a nonzero value in this field after the call returns.
+perhaps you could also add RLIMIT_RTTIME (15) and update target_to_host_resource()?
 
-        POSIX.1-2008  Technical  Corrigendum  1 (2013) adds the requirement that when WNOHANG is
-        specified in options and there were no children in a waitable state, then waitid() should
-        zero out the si_pid and si_signo fields of the structure.  On Linux and other implementations
-        that adhere to this requirement, it is not necessary to zero out the si_pid field before
-        calling waitid().  However, not all implementations follow the POSIX.1  specification  on
-        this point.
-
-Perhaps the best approach would be to copy the caller target siginfo to the host one, call host 
-waitpid(), remove the "info.si_pid != 0" and copy back the host siginfo to target one?
+The next step would be to move the generic definitions to a new file in 
+linux-user/generic/target_resource.h and the specific ones to linux-user/alpha, linux-user/mips and 
+linux-user/sparc.
 
 Thanks,
 Laurent
