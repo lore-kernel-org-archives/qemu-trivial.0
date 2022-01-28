@@ -1,55 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nD5Ts-00027O-ID
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jan 2022 09:10:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51456)
+	id 1nDYGa-0001C6-6B
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jan 2022 15:54:44 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45782)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nD5Tq-00022t-3u; Thu, 27 Jan 2022 09:10:30 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:42771)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1nDYGY-000149-9D
+ for qemu-trivial@nongnu.org; Fri, 28 Jan 2022 15:54:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:36209)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nD5TW-0001Ru-7o; Thu, 27 Jan 2022 09:10:25 -0500
-Received: from [192.168.100.1] ([82.142.25.174]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mate1-1mfgKa2wiB-00cUBQ; Thu, 27 Jan 2022 15:09:59 +0100
-Message-ID: <9594cc96-efba-37b9-97f3-d79ee7379d44@vivier.eu>
-Date: Thu, 27 Jan 2022 15:09:58 +0100
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1nDYGU-0004qN-VA
+ for qemu-trivial@nongnu.org; Fri, 28 Jan 2022 15:54:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643403278;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=g5cZ+sGGeykxfnw4kXmUVHrLmEGd4rxuhsyjK9tzQzw=;
+ b=VoedkWOHg23R2D+AHqgbmLadWLNvEDWZ4UujiHkwxTJmdYdhS327NunYTpLgyT3txY2Oi/
+ fRU76UXeuFM8F6UYrTUIPGVaGZ4AyEAElqJOFsCquFeDLYoSbuNtoXrl/qSwzGcEcV71tN
+ QEPoyrFseCk89mXMzDKmaCoNk1t1pX4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-447-s9j0Px9jMd6tvoVJaXgdJQ-1; Fri, 28 Jan 2022 15:54:35 -0500
+X-MC-Unique: s9j0Px9jMd6tvoVJaXgdJQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B62E81083F65;
+ Fri, 28 Jan 2022 20:54:33 +0000 (UTC)
+Received: from redhat.com (unknown [10.22.32.61])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DA506A22D;
+ Fri, 28 Jan 2022 20:54:32 +0000 (UTC)
+Date: Fri, 28 Jan 2022 14:54:30 -0600
+From: Eric Blake <eblake@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] qapi/block: Cosmetic change in BlockExportType schema
+Message-ID: <20220128205430.ispmytuw2vrpar4g@redhat.com>
+References: <20220119121439.214821-1-f4bug@amsat.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH] linux-user/alpha: Fix target rlimits for alpha and
- rearrange for clarity
-Content-Language: fr
-To: Serge Belyshev <belyshev@depni.sinp.msu.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <87y236lpwb.fsf@depni.sinp.msu.ru>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <87y236lpwb.fsf@depni.sinp.msu.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <20220119121439.214821-1-f4bug@amsat.org>
+User-Agent: NeoMutt/20211029-256-77b59a
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:DGLlM0IquQMamdkMx63v4gn2Bc+xmKT5rCOh5r0KZBpGJ8s0Cho
- Y97FbPJB6Qx/wkZ9bekFpz5ld4lLDmH3ymYJyo2KWvb6w0JhlhwNSwqubXfmww/0U3JPY32
- YfD9H97PKuzbL/x1PWC7Z1q7lXDthtqtOv+HVlkebxwgXcZJ+Bvw3GezpI/4kcSeEw09htL
- +Bq6ptrYukQit1aNDMJFg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YRKMsUDnsfM=:bvucubHs6oFfFeh6/RtVfM
- GASv+lMrFIKSkJ1rELpe+iOdtacdpRUeZBt3W+6zE3g/Z7bpL6ZOc1A6AX2yzGX0HHaJAwq0c
- ZKBobo8UJLCErpIidO97rSl2NB0NGekpG8Pxso/HTnfIM4w1N7TSYFMHjfGSils1fDhd6zEg5
- n0R/eelG82ofzmtFJHDXBSqvq2ok76R6ewBXGLcr62ZsYBD3M9BNTxLns1GwiRREugg4dXRVP
- v46XTTzvmEE5FC404ic5Z6ZUt7OHVfxMFTDV+pd+7JrGLZQsFIpHTjBJbKacEgYu6VE3yahta
- TKGYE1NKfQvb0uOPGufr30Tpc2uzgzolRfhF5u9P7DZXjOdslnZCfHCjLVSOsz4/GHqfPg/5K
- OtPmXVRB8a9ZnnuK0AY3CtYvFNiI/Vap19xHw38qnDW5n4zVV2s/YsAO/SYtuGEESqVk6aBAx
- J9e6qaaluhw+Bk/LCuBxztLsZbU7XKUaNRvwmBs8qMDYkGgQE3Wb6a5l2gKDc4C0m/BWUlsyQ
- YCpDa19aLVsDzH7oqO4VkACc4AOQd8Xge2G1YlpuKUwKa46AfOIdEOc0+0DXMJrqDkP6KkDW9
- Ke0Mbo1d7hG6vIJChLQmDJ5u5+04gvdbEISU3dgh3AKaQm1QChRBhdCfn+06K9yvvjnmhTtu2
- D2qWA2iJc+dr0R4FPKya0Cbk5n2iagFTtaZAFmgvFSDDQzyXvZkGJb1J2qj59gt26GVI=
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.1 / 5.0 requ) DKIMWL_WL_HIGH=-0.167, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,85 +74,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jan 2022 14:10:31 -0000
+X-List-Received-Date: Fri, 28 Jan 2022 20:54:42 -0000
 
-Le 15/01/2022 à 12:32, Serge Belyshev a écrit :
-> Alpha uses different values of some TARGET_RLIMIT_* constants, which were
-> missing and caused bugs like #577, fixed thus.  Also rearranged all three
-> (alpha, mips and sparc) that differ from everyone else for clarity.
+On Wed, Jan 19, 2022 at 01:14:39PM +0100, Philippe Mathieu-Daudé wrote:
+> From: Philippe Mathieu-Daude <f4bug@amsat.org>
 > 
-> Signed-off-by: Serge Belyshev <belyshev@depni.sinp.msu.ru>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/577
+> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+The doubled From: looks odd here.  I'll double-check that git doesn't
+mess up the actual commit once I apply the patch.
+
+> 
+> Fix long line introduced in commit bb01ea73110 ("qapi/block:
+> Restrict vhost-user-blk to CONFIG_VHOST_USER_BLK_SERVER").
+> 
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
+> Acked-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->   linux-user/syscall_defs.h | 31 ++++++++++++++-----------------
->   1 file changed, 14 insertions(+), 17 deletions(-)
+>  qapi/block-export.json | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
-> index f23f0a2178..3fcabaeae3 100644
-> --- a/linux-user/syscall_defs.h
-> +++ b/linux-user/syscall_defs.h
-> @@ -730,44 +730,41 @@ struct target_rlimit {
->   #define TARGET_RLIM_INFINITY	((abi_ulong)-1)
->   #endif
->   
-> -#if defined(TARGET_MIPS)
->   #define TARGET_RLIMIT_CPU		0
->   #define TARGET_RLIMIT_FSIZE		1
->   #define TARGET_RLIMIT_DATA		2
->   #define TARGET_RLIMIT_STACK		3
->   #define TARGET_RLIMIT_CORE		4
-> +#if defined(TARGET_MIPS)
-> +#define TARGET_RLIMIT_NOFILE		5
-> +#define TARGET_RLIMIT_AS		6
->   #define TARGET_RLIMIT_RSS		7
->   #define TARGET_RLIMIT_NPROC		8
-> -#define TARGET_RLIMIT_NOFILE		5
->   #define TARGET_RLIMIT_MEMLOCK		9
-> -#define TARGET_RLIMIT_AS		6
-> -#define TARGET_RLIMIT_LOCKS		10
-> -#define TARGET_RLIMIT_SIGPENDING	11
-> -#define TARGET_RLIMIT_MSGQUEUE		12
-> -#define TARGET_RLIMIT_NICE		13
-> -#define TARGET_RLIMIT_RTPRIO		14
-> -#else
-> -#define TARGET_RLIMIT_CPU		0
-> -#define TARGET_RLIMIT_FSIZE		1
-> -#define TARGET_RLIMIT_DATA		2
-> -#define TARGET_RLIMIT_STACK		3
-> -#define TARGET_RLIMIT_CORE		4
-> +#elif defined(TARGET_ALPHA)
-> +#define TARGET_RLIMIT_RSS		5
-> +#define TARGET_RLIMIT_NOFILE		6
-> +#define TARGET_RLIMIT_AS		7
-> +#define TARGET_RLIMIT_NPROC		8
-> +#define TARGET_RLIMIT_MEMLOCK		9
-> +#elif defined(TARGET_SPARC)
->   #define TARGET_RLIMIT_RSS		5
-> -#if defined(TARGET_SPARC)
->   #define TARGET_RLIMIT_NOFILE		6
->   #define TARGET_RLIMIT_NPROC		7
-> +#define TARGET_RLIMIT_MEMLOCK		8
-> +#define TARGET_RLIMIT_AS		9
->   #else
-> +#define TARGET_RLIMIT_RSS		5
->   #define TARGET_RLIMIT_NPROC		6
->   #define TARGET_RLIMIT_NOFILE		7
-> -#endif
->   #define TARGET_RLIMIT_MEMLOCK		8
->   #define TARGET_RLIMIT_AS		9
-> +#endif
->   #define TARGET_RLIMIT_LOCKS		10
->   #define TARGET_RLIMIT_SIGPENDING	11
->   #define TARGET_RLIMIT_MSGQUEUE		12
->   #define TARGET_RLIMIT_NICE		13
->   #define TARGET_RLIMIT_RTPRIO		14
-> -#endif
->   
->   struct target_pollfd {
->       int fd;           /* file descriptor */
+> diff --git a/qapi/block-export.json b/qapi/block-export.json
+> index f9ce79a974b..f183522d0d2 100644
+> --- a/qapi/block-export.json
+> +++ b/qapi/block-export.json
+> @@ -278,7 +278,8 @@
+>  ##
+>  { 'enum': 'BlockExportType',
+>    'data': [ 'nbd',
+> -            { 'name': 'vhost-user-blk', 'if': 'CONFIG_VHOST_USER_BLK_SERVER' },
+> +            { 'name': 'vhost-user-blk',
+> +              'if': 'CONFIG_VHOST_USER_BLK_SERVER' },
+>              { 'name': 'fuse', 'if': 'CONFIG_FUSE' } ] }
 
-Applied to my linux-user-for-7.0 branch.
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Thanks,
-Laurent
+Happy to queue this through my NBD tree (as it is tangentially related...)
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
 
