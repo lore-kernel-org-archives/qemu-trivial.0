@@ -1,67 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nDYGa-0001C6-6B
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jan 2022 15:54:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45782)
+	id 1nDtAC-00079n-DV
+	for mharc-qemu-trivial@gnu.org; Sat, 29 Jan 2022 14:13:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37024)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1nDYGY-000149-9D
- for qemu-trivial@nongnu.org; Fri, 28 Jan 2022 15:54:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:36209)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1nDYGU-0004qN-VA
- for qemu-trivial@nongnu.org; Fri, 28 Jan 2022 15:54:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643403278;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=g5cZ+sGGeykxfnw4kXmUVHrLmEGd4rxuhsyjK9tzQzw=;
- b=VoedkWOHg23R2D+AHqgbmLadWLNvEDWZ4UujiHkwxTJmdYdhS327NunYTpLgyT3txY2Oi/
- fRU76UXeuFM8F6UYrTUIPGVaGZ4AyEAElqJOFsCquFeDLYoSbuNtoXrl/qSwzGcEcV71tN
- QEPoyrFseCk89mXMzDKmaCoNk1t1pX4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-447-s9j0Px9jMd6tvoVJaXgdJQ-1; Fri, 28 Jan 2022 15:54:35 -0500
-X-MC-Unique: s9j0Px9jMd6tvoVJaXgdJQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B62E81083F65;
- Fri, 28 Jan 2022 20:54:33 +0000 (UTC)
-Received: from redhat.com (unknown [10.22.32.61])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DA506A22D;
- Fri, 28 Jan 2022 20:54:32 +0000 (UTC)
-Date: Fri, 28 Jan 2022 14:54:30 -0600
-From: Eric Blake <eblake@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] qapi/block: Cosmetic change in BlockExportType schema
-Message-ID: <20220128205430.ispmytuw2vrpar4g@redhat.com>
-References: <20220119121439.214821-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <belyshev@depni.sinp.msu.ru>)
+ id 1nDtA9-000787-9p; Sat, 29 Jan 2022 14:13:29 -0500
+Received: from depni-mx.sinp.msu.ru ([213.131.7.21]:49565)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <belyshev@depni.sinp.msu.ru>)
+ id 1nDtA6-0006SE-QQ; Sat, 29 Jan 2022 14:13:28 -0500
+Received: from spider (unknown [176.195.59.180])
+ by depni-mx.sinp.msu.ru (Postfix) with ESMTPSA id 25E7E1BF4B3;
+ Sat, 29 Jan 2022 22:13:31 +0300 (MSK)
+From: Serge Belyshev <belyshev@depni.sinp.msu.ru>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
+Subject: Re: [PATCH] linux-user/syscall: Do not ignore info.si_pid == 0 in
+ waitid()
+References: <8735len4jt.fsf@depni.sinp.msu.ru>
+ <fb4f4efd-0676-51a9-dd01-50643dec1278@vivier.eu>
+Date: Sat, 29 Jan 2022 22:13:13 +0300
+In-Reply-To: <fb4f4efd-0676-51a9-dd01-50643dec1278@vivier.eu> (Laurent
+ Vivier's message of "Thu, 27 Jan 2022 14:18:56 +0100")
+Message-ID: <87mtjel5iu.fsf@depni.sinp.msu.ru>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/29.0.50 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20220119121439.214821-1-f4bug@amsat.org>
-User-Agent: NeoMutt/20211029-256-77b59a
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) DKIMWL_WL_HIGH=-0.167, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+Received-SPF: none client-ip=213.131.7.21;
+ envelope-from=belyshev@depni.sinp.msu.ru; helo=depni-mx.sinp.msu.ru
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,47 +46,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jan 2022 20:54:42 -0000
+X-List-Received-Date: Sat, 29 Jan 2022 19:13:29 -0000
 
-On Wed, Jan 19, 2022 at 01:14:39PM +0100, Philippe Mathieu-Daudé wrote:
-> From: Philippe Mathieu-Daude <f4bug@amsat.org>
-> 
-> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Laurent Vivier <laurent@vivier.eu> writes:
 
-The doubled From: looks odd here.  I'll double-check that git doesn't
-mess up the actual commit once I apply the patch.
+> ...
+>
+> According to wait(2), it sounds a little bit more complicated than that.
+>
+>        If WNOHANG was specified in options and there were no children in a waitable state, then
+>        waitid() returns 0 immediately and the state of the siginfo_t  structure  pointed  to  by
+>        infop  depends  on  the  implementation.   To (portably) distinguish this case from that
+>        where a child was in a waitable state, zero out the si_pid field before the call and check
+>        for a nonzero value in this field after the call returns.
+>
+>        POSIX.1-2008  Technical  Corrigendum  1 (2013) adds the requirement that when WNOHANG is
+>        specified in options and there were no children in a waitable state, then waitid() should
+>        zero out the si_pid and si_signo fields of the structure.  On Linux and other implementations
+>        that adhere to this requirement, it is not necessary to zero out the si_pid field before
+>        calling waitid().  However, not all implementations follow the POSIX.1  specification  on
+>        this point.
+>
 
-> 
-> Fix long line introduced in commit bb01ea73110 ("qapi/block:
-> Restrict vhost-user-blk to CONFIG_VHOST_USER_BLK_SERVER").
-> 
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Acked-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  qapi/block-export.json | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/qapi/block-export.json b/qapi/block-export.json
-> index f9ce79a974b..f183522d0d2 100644
-> --- a/qapi/block-export.json
-> +++ b/qapi/block-export.json
-> @@ -278,7 +278,8 @@
->  ##
->  { 'enum': 'BlockExportType',
->    'data': [ 'nbd',
-> -            { 'name': 'vhost-user-blk', 'if': 'CONFIG_VHOST_USER_BLK_SERVER' },
-> +            { 'name': 'vhost-user-blk',
-> +              'if': 'CONFIG_VHOST_USER_BLK_SERVER' },
->              { 'name': 'fuse', 'if': 'CONFIG_FUSE' } ] }
+In glibc waitpid is implemented using wait4, and on systems where wait4
+is not available (e.g. riscv32), wait4 is implemented via waitid and the
+implementation expects that info.si_pid is cleared when appropriate:
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+(from https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/wait4.c#l58 )
 
-Happy to queue this through my NBD tree (as it is tangentially related...)
+  siginfo_t infop;
+  ...
+  SYSCALL_CANCEL (waitid, idtype, pid, &infop, options, usage)
+  ...
+  return infop.si_pid;
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+so I think it is safe to follow glibc here and rely on the kernel to clear
+pid/signo and other fields and just to remove the "info.si_pid != 0" check.
 
+
+> Perhaps the best approach would be to copy the caller target siginfo
+> to the host one, call host waitpid(), remove the "info.si_pid != 0"
+> and copy back the host siginfo to target one?
+
+Not sure what would be the gain in this case, as linux clears siginfo fiels
+since the very first implementation of waitid in 2.6.9:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/history/history.git/tree/kernel/exit.c?h=v2.6.9#n1354
+
+	/*
+	 * For a WNOHANG return, clear out all the fields
+	 * we would set so the user can easily tell the
+	 * difference.
+	 */
 
