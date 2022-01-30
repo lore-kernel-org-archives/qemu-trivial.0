@@ -1,40 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nDti2-0002jx-Ar
-	for mharc-qemu-trivial@gnu.org; Sat, 29 Jan 2022 14:48:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40790)
+	id 1nEFHv-0007IJ-LU
+	for mharc-qemu-trivial@gnu.org; Sun, 30 Jan 2022 13:51:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36510)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <belyshev@depni.sinp.msu.ru>)
- id 1nDthy-0002h2-Nv; Sat, 29 Jan 2022 14:48:26 -0500
-Received: from depni-mx.sinp.msu.ru ([213.131.7.21]:49606)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <belyshev@depni.sinp.msu.ru>)
- id 1nDthx-0002PA-8q; Sat, 29 Jan 2022 14:48:26 -0500
-Received: from spider (unknown [176.195.59.180])
- by depni-mx.sinp.msu.ru (Postfix) with ESMTPSA id 594131BF471;
- Sat, 29 Jan 2022 22:48:39 +0300 (MSK)
-From: Serge Belyshev <belyshev@depni.sinp.msu.ru>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
-Subject: [PATCH] linux-user/syscall: Translate TARGET_RLIMIT_RTTIME
-References: <87y236lpwb.fsf@depni.sinp.msu.ru>
- <4e110850-a303-d0a4-158b-6186367aa739@vivier.eu>
- <87ilu2l473.fsf@depni.sinp.msu.ru>
- <87ee4ql3yk.fsf_-_@depni.sinp.msu.ru>
-Date: Sat, 29 Jan 2022 22:48:23 +0300
-In-Reply-To: <87ee4ql3yk.fsf_-_@depni.sinp.msu.ru> (Serge Belyshev's message
- of "Sat, 29 Jan 2022 22:46:59 +0300")
-Message-ID: <87a6fel3w8.fsf_-_@depni.sinp.msu.ru>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/29.0.50 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nEFHn-0007Dx-RS; Sun, 30 Jan 2022 13:50:52 -0500
+Received: from [2a00:1450:4864:20::32b] (port=56136
+ helo=mail-wm1-x32b.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nEFHk-0004tX-CS; Sun, 30 Jan 2022 13:50:50 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id r7so8701286wmq.5;
+ Sun, 30 Jan 2022 10:50:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=GJpoSDCKo1RxFAlQY+7VUVU+goEtVhcjhXyZ2bsPkys=;
+ b=N3jbfsAwsiC6uuA437a/Z3Fg93C5VhA0EiwHnEBUnmQ9OkgLzOa7fsDkO92bPuk6eV
+ un3W+pkTz0/BvhIgUjmjU2fstgB49TLvIgLpo3lg19U8YSzjQb8EB2bMxxDukC3v7Vja
+ xO+ue+hTywQTPT3WmL15D4OpK6cfpbBKMdyRt9VJq2F/T17pPhFbsoLZ2zmQTr2SPr7H
+ I+ZP0sWSGmc4hdsjuHMloIZHeKlCdzNi2uHOsEOWs1NS880UhPeSbEJCRVg/E9HO/bfy
+ cJKY3qC/k+5WCfmDPL1/vy5PRRNgA3fDGFLirf+TgmwDBwQFQS35PrR8kttf15NmbtaL
+ yBaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=GJpoSDCKo1RxFAlQY+7VUVU+goEtVhcjhXyZ2bsPkys=;
+ b=lOfgK39sQIdWeBWwu/sj6cs+Ns3fH6Z5s/VpGpEWqdVRR9GH4qnDQ44O01PDwdtwPz
+ Se0jd2OyqztP4mYm0VYm1wKRa5uarcGTlTfzcCsv9ryJBoiRPrmVrk/Nud0UmgS869GG
+ bapa4hwoVpkxKzpHyxipMgEvd+qLgC7WzBN9YOPD5Mt+euBe8ib61EleTuL0blAYi/Qb
+ OCmbvPBhpIZa41ZKpkkiZTJeqYSFTX3Kt0M32HafK1R5qEOwqwhitf53ZEKGd7Opue2J
+ e4UqBSpGXphhJAy4p35Bnp+qBwLKtzbJYtsmC9lDTncfYRYKqle9RQibFEF7lgbmSuAD
+ jm8g==
+X-Gm-Message-State: AOAM5304bMnb4AzqYo77p3IbPjhwnKviZAWtDx2hCFEzruDRpKswu3cb
+ rMpFpw0U6FdbaupxtrkobNE=
+X-Google-Smtp-Source: ABdhPJzkhdZt2ihlJT+95JrEj9V62VxIpYBA/30LCI1Cp7SIYNA9HHNFqykbpQk9pBcw8/Hl7jOfcw==
+X-Received: by 2002:a05:600c:3846:: with SMTP id
+ s6mr18295370wmr.26.1643568642962; 
+ Sun, 30 Jan 2022 10:50:42 -0800 (PST)
+Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id n8sm7323933wmq.42.2022.01.30.10.50.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 30 Jan 2022 10:50:42 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <50848a6d-98a9-3218-479b-7406850a06a2@amsat.org>
+Date: Sun, 30 Jan 2022 19:50:41 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-Received-SPF: none client-ip=213.131.7.21;
- envelope-from=belyshev@depni.sinp.msu.ru; helo=depni-mx.sinp.msu.ru
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.0
+Subject: Re: [PATCH] qapi/block: Cosmetic change in BlockExportType schema
+Content-Language: en-US
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
+References: <20220119121439.214821-1-f4bug@amsat.org>
+ <20220128205430.ispmytuw2vrpar4g@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220128205430.ispmytuw2vrpar4g@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32b
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -47,40 +89,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 29 Jan 2022 19:48:27 -0000
+X-List-Received-Date: Sun, 30 Jan 2022 18:50:55 -0000
 
+On 28/1/22 21:54, Eric Blake wrote:
+> On Wed, Jan 19, 2022 at 01:14:39PM +0100, Philippe Mathieu-Daudé wrote:
+>> From: Philippe Mathieu-Daude <f4bug@amsat.org>
+>>
+>> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> The doubled From: looks odd here.  I'll double-check that git doesn't
+> mess up the actual commit once I apply the patch.
 
-Signed-off-by: Serge Belyshev <belyshev@depni.sinp.msu.ru>
----
- linux-user/generic/target_resource.h | 1 +
- linux-user/syscall.c                 | 2 ++
- 2 files changed, 3 insertions(+)
+I played with the git --from option to not appear in the list as
+'"Philippe Mathieu-Daudé via" <qemu-devel@nongnu.org>':
+https://lore.kernel.org/qemu-devel/efc5f304-f3d2-ff7b-99a6-673595ff0259@amsat.org/
+by using a different sendemail.from (removing the acute in my
+lastname) to force a correct author.from.
+git-am should have picked the 2nd form, but I see the 1st in commit
+3a8fa0edd1. Just curious, did you had to modify it manually?
 
-diff --git a/linux-user/generic/target_resource.h b/linux-user/generic/target_resource.h
-index f04c93b125..539d8c4677 100644
---- a/linux-user/generic/target_resource.h
-+++ b/linux-user/generic/target_resource.h
-@@ -33,5 +33,6 @@ struct target_rlimit64 {
- #define TARGET_RLIMIT_MSGQUEUE          12
- #define TARGET_RLIMIT_NICE              13
- #define TARGET_RLIMIT_RTPRIO            14
-+#define TARGET_RLIMIT_RTTIME            15
- 
- #endif
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 5950222a77..6d41a741ac 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -1083,6 +1083,8 @@ static inline int target_to_host_resource(int code)
-         return RLIMIT_RSS;
-     case TARGET_RLIMIT_RTPRIO:
-         return RLIMIT_RTPRIO;
-+    case TARGET_RLIMIT_RTTIME:
-+        return RLIMIT_RTTIME;
-     case TARGET_RLIMIT_SIGPENDING:
-         return RLIMIT_SIGPENDING;
-     case TARGET_RLIMIT_STACK:
--- 
-2.34.1
+Anyway, thanks for merging this :)
 
+>>
+>> Fix long line introduced in commit bb01ea73110 ("qapi/block:
+>> Restrict vhost-user-blk to CONFIG_VHOST_USER_BLK_SERVER").
+>>
+>> Suggested-by: Markus Armbruster <armbru@redhat.com>
+>> Acked-by: Markus Armbruster <armbru@redhat.com>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   qapi/block-export.json | 3 ++-
+>>   1 file changed, 2 insertions(+), 1 deletion(-)
 
