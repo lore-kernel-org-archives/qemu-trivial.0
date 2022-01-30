@@ -1,73 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEFHv-0007IJ-LU
-	for mharc-qemu-trivial@gnu.org; Sun, 30 Jan 2022 13:51:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36510)
+	id 1nEG2A-0002Zn-Ki
+	for mharc-qemu-trivial@gnu.org; Sun, 30 Jan 2022 14:38:46 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42408)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEFHn-0007Dx-RS; Sun, 30 Jan 2022 13:50:52 -0500
-Received: from [2a00:1450:4864:20::32b] (port=56136
- helo=mail-wm1-x32b.google.com)
+ id 1nEG28-0002ZA-1p; Sun, 30 Jan 2022 14:38:44 -0500
+Received: from [2a00:1450:4864:20::333] (port=52875
+ helo=mail-wm1-x333.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEFHk-0004tX-CS; Sun, 30 Jan 2022 13:50:50 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id r7so8701286wmq.5;
- Sun, 30 Jan 2022 10:50:44 -0800 (PST)
+ id 1nEG26-0002Ia-FS; Sun, 30 Jan 2022 14:38:43 -0500
+Received: by mail-wm1-x333.google.com with SMTP id v123so8768852wme.2;
+ Sun, 30 Jan 2022 11:38:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=GJpoSDCKo1RxFAlQY+7VUVU+goEtVhcjhXyZ2bsPkys=;
- b=N3jbfsAwsiC6uuA437a/Z3Fg93C5VhA0EiwHnEBUnmQ9OkgLzOa7fsDkO92bPuk6eV
- un3W+pkTz0/BvhIgUjmjU2fstgB49TLvIgLpo3lg19U8YSzjQb8EB2bMxxDukC3v7Vja
- xO+ue+hTywQTPT3WmL15D4OpK6cfpbBKMdyRt9VJq2F/T17pPhFbsoLZ2zmQTr2SPr7H
- I+ZP0sWSGmc4hdsjuHMloIZHeKlCdzNi2uHOsEOWs1NS880UhPeSbEJCRVg/E9HO/bfy
- cJKY3qC/k+5WCfmDPL1/vy5PRRNgA3fDGFLirf+TgmwDBwQFQS35PrR8kttf15NmbtaL
- yBaQ==
+ bh=se8wSDAh7T/fYxF6TOXbwzNWYEVC+EVgFuohKBrq0pM=;
+ b=G070xyz+I3nvwNyK6g3NkzOj509YIix3NeVmbnoWt1szcIES9MIjFHkdoqITqO5Cl9
+ tI3KYRTCY0vPbjUCZL518yHL/7k+YrY2trca+Ak1/5o1V4FY33gxejTXXbuO46TZ1gDC
+ T2LgksoWNGcpgqOJyJZIowM14pKN8dFzj5CNRRv1Ktt2HyFpsZUKADJynD5wzi1A+cDz
+ oTmlim+TbTApvXV4YiI9rQg6KVC0kdo3MfufnIxChW57prxnefr/72uHiSCfoF8ixeoS
+ M/2yk9fvkniZa30msU+7klsHmIAAggHXaP3S/QwdxjHsSdOIO1yXDW3nqZXQAiwV3bdc
+ EYJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=GJpoSDCKo1RxFAlQY+7VUVU+goEtVhcjhXyZ2bsPkys=;
- b=lOfgK39sQIdWeBWwu/sj6cs+Ns3fH6Z5s/VpGpEWqdVRR9GH4qnDQ44O01PDwdtwPz
- Se0jd2OyqztP4mYm0VYm1wKRa5uarcGTlTfzcCsv9ryJBoiRPrmVrk/Nud0UmgS869GG
- bapa4hwoVpkxKzpHyxipMgEvd+qLgC7WzBN9YOPD5Mt+euBe8ib61EleTuL0blAYi/Qb
- OCmbvPBhpIZa41ZKpkkiZTJeqYSFTX3Kt0M32HafK1R5qEOwqwhitf53ZEKGd7Opue2J
- e4UqBSpGXphhJAy4p35Bnp+qBwLKtzbJYtsmC9lDTncfYRYKqle9RQibFEF7lgbmSuAD
- jm8g==
-X-Gm-Message-State: AOAM5304bMnb4AzqYo77p3IbPjhwnKviZAWtDx2hCFEzruDRpKswu3cb
- rMpFpw0U6FdbaupxtrkobNE=
-X-Google-Smtp-Source: ABdhPJzkhdZt2ihlJT+95JrEj9V62VxIpYBA/30LCI1Cp7SIYNA9HHNFqykbpQk9pBcw8/Hl7jOfcw==
-X-Received: by 2002:a05:600c:3846:: with SMTP id
- s6mr18295370wmr.26.1643568642962; 
- Sun, 30 Jan 2022 10:50:42 -0800 (PST)
+ bh=se8wSDAh7T/fYxF6TOXbwzNWYEVC+EVgFuohKBrq0pM=;
+ b=u+0pFVM1GHsWzj5g/qSYmFvE9gkHeXSHKC9qCmfMizA2HltUVFVeScFKFih69Zgd4g
+ IxmDpSfsOIxLJFc8GlRRTIzQZazOAfdm6+3rayEDLdAfCMbDPX+1TWxZxD5dD1OhgYkT
+ Mo4hxrMG5eXQ2zSUpVn+jQf31ZOxSd6Q8jMqaxvQYEAvA62m2gfzG4lAdD+d0qxk1GMk
+ j+lPXZZDKfbeSShXBTHQUH6PaM/UTNspdMNY87h2BpRDar1PL/dg9LtwMOX2MsQmiJ4H
+ Q+qHIb8wDyBSmjLJddS4ZaEc5WK2qk4PKA5ZSn6QgtDZazNwY+UPy+EMT7SfrcwK5Fs1
+ 593g==
+X-Gm-Message-State: AOAM53058tZxJSzLqwwXwvwhx71dpJyFS8GkZ8DaigFnfFJj6t2YSDGO
+ ycl2nzJKPUvlLAorbuUBOnKNBtR256A=
+X-Google-Smtp-Source: ABdhPJwP1f/YiQVs3mllLoPAV858x/YxQp0p6VTWASQXYLnBiaMOCBJtZzD9Rc6Yo6WrNgUf8WrvjQ==
+X-Received: by 2002:a1c:f312:: with SMTP id q18mr16210611wmq.13.1643571520170; 
+ Sun, 30 Jan 2022 11:38:40 -0800 (PST)
 Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
  [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id n8sm7323933wmq.42.2022.01.30.10.50.42
+ by smtp.gmail.com with ESMTPSA id y15sm14405333wry.36.2022.01.30.11.38.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Jan 2022 10:50:42 -0800 (PST)
+ Sun, 30 Jan 2022 11:38:39 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <50848a6d-98a9-3218-479b-7406850a06a2@amsat.org>
-Date: Sun, 30 Jan 2022 19:50:41 +0100
+Message-ID: <cac5809d-87d0-28dc-8681-e2b8c92a9534@amsat.org>
+Date: Sun, 30 Jan 2022 20:38:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH] qapi/block: Cosmetic change in BlockExportType schema
+Subject: Re: [PATCH] hw/ppc/vof: Add missing includes
 Content-Language: en-US
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-References: <20220119121439.214821-1-f4bug@amsat.org>
- <20220128205430.ispmytuw2vrpar4g@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, Greg Kurz <groug@kaod.org>,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org
+References: <20220122003104.84391-1-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220128205430.ispmytuw2vrpar4g@redhat.com>
+In-Reply-To: <20220122003104.84391-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32b
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::333
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -89,35 +89,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 30 Jan 2022 18:50:55 -0000
+X-List-Received-Date: Sun, 30 Jan 2022 19:38:44 -0000
 
-On 28/1/22 21:54, Eric Blake wrote:
-> On Wed, Jan 19, 2022 at 01:14:39PM +0100, Philippe Mathieu-Daudé wrote:
->> From: Philippe Mathieu-Daude <f4bug@amsat.org>
->>
->> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc'ing qemu-trivial@
+
+On 22/1/22 01:31, Philippe Mathieu-Daudé wrote:
+> vof.h requires "qom/object.h" for DECLARE_CLASS_CHECKERS(),
+> "exec/memory.h" for address_space_read/write(),
+> "exec/address-spaces.h" for address_space_memory
+> and more importantly "cpu.h" for target_ulong.
 > 
-> The doubled From: looks odd here.  I'll double-check that git doesn't
-> mess up the actual commit once I apply the patch.
+> vof.c doesn't need "exec/ram_addr.h".
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   hw/ppc/vof.c         | 1 -
+>   include/hw/ppc/vof.h | 5 +++++
+>   2 files changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
+> index 73adc44ec2..2b63a62875 100644
+> --- a/hw/ppc/vof.c
+> +++ b/hw/ppc/vof.c
+> @@ -16,7 +16,6 @@
+>   #include "qemu/units.h"
+>   #include "qemu/log.h"
+>   #include "qapi/error.h"
+> -#include "exec/ram_addr.h"
+>   #include "exec/address-spaces.h"
+>   #include "hw/ppc/vof.h"
+>   #include "hw/ppc/fdt.h"
+> diff --git a/include/hw/ppc/vof.h b/include/hw/ppc/vof.h
+> index 97fdef758b..f8c0effcaf 100644
+> --- a/include/hw/ppc/vof.h
+> +++ b/include/hw/ppc/vof.h
+> @@ -6,6 +6,11 @@
+>   #ifndef HW_VOF_H
+>   #define HW_VOF_H
+>   
+> +#include "qom/object.h"
+> +#include "exec/address-spaces.h"
+> +#include "exec/memory.h"
+> +#include "cpu.h"
+> +
+>   typedef struct Vof {
+>       uint64_t top_addr; /* copied from rma_size */
+>       GArray *claimed; /* array of SpaprOfClaimed */
 
-I played with the git --from option to not appear in the list as
-'"Philippe Mathieu-Daudé via" <qemu-devel@nongnu.org>':
-https://lore.kernel.org/qemu-devel/efc5f304-f3d2-ff7b-99a6-673595ff0259@amsat.org/
-by using a different sendemail.from (removing the acute in my
-lastname) to force a correct author.from.
-git-am should have picked the 2nd form, but I see the 1st in commit
-3a8fa0edd1. Just curious, did you had to modify it manually?
-
-Anyway, thanks for merging this :)
-
->>
->> Fix long line introduced in commit bb01ea73110 ("qapi/block:
->> Restrict vhost-user-blk to CONFIG_VHOST_USER_BLK_SERVER").
->>
->> Suggested-by: Markus Armbruster <armbru@redhat.com>
->> Acked-by: Markus Armbruster <armbru@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   qapi/block-export.json | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
 
