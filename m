@@ -1,72 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEWvn-0004yd-08
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 08:41:19 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39140)
+	id 1nEWyZ-0005vE-2a
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 08:44:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39638)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEWvj-0004tZ-P0; Mon, 31 Jan 2022 08:41:15 -0500
-Received: from [2a00:1450:4864:20::334] (port=44560
- helo=mail-wm1-x334.google.com)
+ id 1nEWyQ-0005qt-QZ; Mon, 31 Jan 2022 08:44:03 -0500
+Received: from [2a00:1450:4864:20::432] (port=41571
+ helo=mail-wr1-x432.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEWvi-000412-5T; Mon, 31 Jan 2022 08:41:15 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- l35-20020a05600c1d2300b0034d477271c1so9396357wms.3; 
- Mon, 31 Jan 2022 05:41:10 -0800 (PST)
+ id 1nEWyN-0004JH-HW; Mon, 31 Jan 2022 08:44:01 -0500
+Received: by mail-wr1-x432.google.com with SMTP id h21so25507471wrb.8;
+ Mon, 31 Jan 2022 05:43:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=VWBfq2qoGD1ExXa5/bORefdQ0o5eOcds4wBiM1lqGVE=;
- b=ALqEUbEeK9gOFWcqKegKSXa1XktxowTHfe3fPJkuJAbeNCmyuavhn8cW4XWUVasxtO
- tgMIn2XmenXHmSamWKUl9RVxYB4SGtVbt6QhsT3ikALxcnTnQ7AW3YtYJYSwULyW4YFR
- UxjAb8xGfwNiBK6cJ7LJRdjzkcXx/I++f25dyt9l1NBUb0AzbvuGmW6EE1y3K6fOQyWM
- uQspqAlXCXrcRGpgaeLTqHaiRW+xpeI+sXjP7D+BDDE48I8D0l+aWlWOkRftoxpreGc2
- ibntP1dKt5a/c8RdBQMqfKViZJeopG3Q0SnPeS14bmJbdxyWGFIxzMYAFAdPvLJ1oQf6
- SiZA==
+ bh=T8tu7PHP64Wh3NwNRP5ujO0rSthz5ycMNE0XMaxl0wo=;
+ b=kptaPjC0Fp+ls2S7iTSn0v+QzGZEB/Wg5SGYzyDAZRl7j4TmbxRIythnkOjcRpwM77
+ QozyVQUOGRy0wFB61wQbb44P7e5zPq9O5Ua5kbdur5WxuW5BY4d92hbVml87f5kjP+H/
+ jZx3yb5rxAd0U4/YbAwlkclKgeiDx/mz9Bydgj2HJBIPz/YzAl5rUjMdmc9/YjiK8Sc9
+ 6Pm0234CIvQ0lPSV4ax7oHq5hch2yVX9ksHHg9iWv37Q5axzvyYiHdwWmy2nOuqaXY4n
+ 0qg5R0oJhFI6q/VEf/i+N9dSCYaby1TwSMiRm8kANPsQvj+OAPjQUbeL2osgEkG2ibD8
+ yxoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:references:from:in-reply-to
+ :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=VWBfq2qoGD1ExXa5/bORefdQ0o5eOcds4wBiM1lqGVE=;
- b=XRTkq3bm1tMb0EykwHg92664LHjOOZUPbuEQQlb+OFdA07h8VHy0/7kryFL02ebeIE
- lJNlRBXJlYSWRML7srg22//UpXZBFFrtTwTPYeAwyV9RNUHdaZClNxsv+U1jGGzw1P5+
- YaiivHKRXkNFFQ+7pQ7mLW27Yoaoub+0ZSi9+umsSqKQtVJZ+zPnsxBQJNNcuoLh0wls
- /HaHgBlX7ulZlW9oohiD8rqZmk6y2SltobfZkTcW3dynNXX2CoxFo1js0idfwsOdpXPs
- aTxp8+/JJtpqsgib3/6OnFZsXZ/bsONkH+AYIlmSSHLS1iEaddbSBcr1zhBmPuBYURYp
- phtg==
-X-Gm-Message-State: AOAM5318ca62Dq+GuHeKVqcDNsdMz4+7JwoJRTlNzwGKjMJlyXy0k/uq
- xs1IZin0W4+a8lcyRnmRR3E=
-X-Google-Smtp-Source: ABdhPJyvohexG8VTCaSJmsERwS56uLv8ruDuQuKqGNzfdIH2B0gTcL+FlXMyZVQ/l9xOouEFtzJpkw==
-X-Received: by 2002:a05:600c:3494:: with SMTP id
- a20mr18948185wmq.129.1643636468885; 
- Mon, 31 Jan 2022 05:41:08 -0800 (PST)
+ bh=T8tu7PHP64Wh3NwNRP5ujO0rSthz5ycMNE0XMaxl0wo=;
+ b=l2oKfbxaKeuiW4RKENCoGRNZXAvaKLep2dNE7gk7gSe+HLq5ALFBFbUDsgPIbb506M
+ ab3MHjxvUxdNXdp2Z7VAQVKz0WzWnnqgptC8eBiHC6qurOvcofv7lyAZzpaRTvhnjp2k
+ q+IRY0oUSdc0yPX1HnanN5/ZpnAdua3R2AvIUutoNZfHpGy1yXMAjSIG1oMMRfTzvtxt
+ 1b/PgEqupx8grhRtx9wl+y0cAug5bgG0kXQ7tysMY3DWVvBzRkimc2RaqSnkkHX5aXaY
+ lJDiZ+qm+EVwMu+mieKm9AELCafFEzVtPnRBCXlgKLMInOEvY/5MVKW8kPnWUI4utDr8
+ QyiQ==
+X-Gm-Message-State: AOAM531RN997gefHRPFKQPwgCm2rWoHsx08l/POROR25015gGKHZZYS7
+ tywBq0MNTSLt/EU40+rPRTk=
+X-Google-Smtp-Source: ABdhPJy9fIK+A2PPK/NSPh1DJkDKwYnkezF0ZCDvUUWa5luRwLD7lLzISJ4gFiwDnscRQBrjjlunhw==
+X-Received: by 2002:a5d:5446:: with SMTP id w6mr17400279wrv.493.1643636637364; 
+ Mon, 31 Jan 2022 05:43:57 -0800 (PST)
 Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
  [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id bg17sm7731137wmb.2.2022.01.31.05.41.08
+ by smtp.gmail.com with ESMTPSA id n26sm9500763wms.13.2022.01.31.05.43.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Jan 2022 05:41:08 -0800 (PST)
+ Mon, 31 Jan 2022 05:43:56 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <9fe14564-e2ac-7623-f85f-de9bda131085@amsat.org>
-Date: Mon, 31 Jan 2022 14:41:07 +0100
+Message-ID: <eabe95a4-752e-d18a-1846-66709008c2c3@amsat.org>
+Date: Mon, 31 Jan 2022 14:43:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH] hw/rx: rx-gdbsim: DTB load address fix.
+Subject: Re: [PATCH] hw/ppc/vof: Add missing includes
 Content-Language: en-US
-To: Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20220131094203.772226-1-ysato@users.sourceforge.jp>
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org
+References: <20220122003104.84391-1-f4bug@amsat.org>
+ <cac5809d-87d0-28dc-8681-e2b8c92a9534@amsat.org>
+ <20d584f8-54e4-e9ad-b125-77b25067532f@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220131094203.772226-1-ysato@users.sourceforge.jp>
+In-Reply-To: <20d584f8-54e4-e9ad-b125-77b25067532f@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::334
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::432
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -88,36 +91,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jan 2022 13:41:16 -0000
+X-List-Received-Date: Mon, 31 Jan 2022 13:44:08 -0000
 
-Cc'ing qemu-trivial@
-
-On 31/1/22 10:42, Yoshinori Sato wrote:
-> Linux kernel required alined address of DTB.
-> But missing align in dtb load function.
-> Fixed to load to the correct address.
+On 31/1/22 08:45, Cédric Le Goater wrote:
+> On 1/30/22 20:38, Philippe Mathieu-Daudé wrote:
+>> Cc'ing qemu-trivial@
+>>
 > 
-> Signed-off-by: Yoshinori Sato <ysato@users.sourceforge.jp>
-> ---
->   hw/rx/rx-gdbsim.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
-> index 75d1fec6ca..f70472aeaf 100644
-> --- a/hw/rx/rx-gdbsim.c
-> +++ b/hw/rx/rx-gdbsim.c
-> @@ -143,6 +143,7 @@ static void rx_gdbsim_init(MachineState *machine)
->               }
->               /* DTB is located at the end of SDRAM space. */
->               dtb_offset = machine->ram_size - dtb_size;
-> +            dtb_offset &= ~0x0f;
+> It is queued in ppc-7.0. I should send a PR today or tomorrow.
 
-
-Alternatively (more explicit):
-
-           dtb_offset = ROUND_DOWN(machine->ram_size - dtb_size, 16);
-
-For any option:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+Thanks!
 
