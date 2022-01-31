@@ -1,69 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEeMS-0006io-Vp
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 16:37:20 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38754)
+	id 1nEfxi-0007kt-Lq
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 18:19:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57754)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1nEeMN-0006dA-RD
- for qemu-trivial@nongnu.org; Mon, 31 Jan 2022 16:37:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:20630)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1nEeMK-0001Cx-K6
- for qemu-trivial@nongnu.org; Mon, 31 Jan 2022 16:37:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643665032;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ST4AVF55fqzUgM1RbzLPzBWv3mCBlcI0cUwUoC0Qk6I=;
- b=I9Lb2H1oY8Exb5So4Yyr0CeH1ayTpWuCjX5oYu6QDCYoPSqlLquBHLOHoxixdjeES52v2S
- 3bym6JkgKmsSa7+szh3upiQHNJxpqpBJfzMGBJjwJdgbK5cinZlJJJRxcXWcFBoasw15SG
- 9oa5diIrAzvrAl5p/nhNVWeFrzzcKRs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-633-ud_POe-1PuG29qXuG5cPdA-1; Mon, 31 Jan 2022 16:37:06 -0500
-X-MC-Unique: ud_POe-1PuG29qXuG5cPdA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4F53283DD20;
- Mon, 31 Jan 2022 21:37:05 +0000 (UTC)
-Received: from redhat.com (unknown [10.22.32.61])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DD7525DB94;
- Mon, 31 Jan 2022 21:37:02 +0000 (UTC)
-Date: Mon, 31 Jan 2022 15:37:00 -0600
-From: Eric Blake <eblake@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nEfxg-0007jL-Fl; Mon, 31 Jan 2022 18:19:52 -0500
+Received: from [2607:f8b0:4864:20::1032] (port=35402
+ helo=mail-pj1-x1032.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nEfxe-0006e7-LJ; Mon, 31 Jan 2022 18:19:52 -0500
+Received: by mail-pj1-x1032.google.com with SMTP id
+ z14-20020a17090ab10e00b001b6175d4040so762724pjq.0; 
+ Mon, 31 Jan 2022 15:19:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=bYMEGy1sfD++uBFCWEhu3dHUI1tZlW19zcULxGg+P20=;
+ b=e4cw3j0vQfsUU+ePSou6V9K7WDtePwL1mQxdhbVPrlS3jmczdVNzBlaE4DHdzCU626
+ wE2lXWVRbRz8dPpPqcRgjb+uVEg2LagZ6h8+GzPBZ9YWieaxOsQ5JefK36LUDDRehKz8
+ UqaAB7BuMoKm/xmBMPXcwaxAXj5r2Xy6UixTgtsHOSBRpIar0CxnqMWGPBghAFvL87Hp
+ MUtUbaeUkgDR/vDjQfIJ08ROfsszUQ5Y9BTc9Bvo5ZdjrLgTsDOe88XAo0Rnc+QhYKW6
+ RzfjxSUW2wMeAWx1ajjeGSg9Z3dwoqixERbe/mXc2A4o6YqPVdaB+CGrBDmqIdDavUd6
+ YUgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=bYMEGy1sfD++uBFCWEhu3dHUI1tZlW19zcULxGg+P20=;
+ b=PEri4v+ItZ8+dFLKfUBnbDiF1eGD5UqvPRrna8MjiOwD7jvCX7W1CifAQBueQIay/b
+ gcZg+DD5crPSXke7XHyYyF6LVkU2JG7Ck67pEnL0MeTLVlySCLZpv2ZspuVwJJvUsVp8
+ /O/SMV1oh8hJ6mtxH+85qfyCPaD3xrHSej9XiHk1wIkjIdxt64vn2od9AYb0mAR+FOcs
+ 1aZQYGu3Rg3aaWq5+/VUFvt9vJqtRW/L3lfxKmgn5AcC1n2YZv9mlo64Ylb9SII/fub2
+ hWpuwx4t0ZEbRC6TWG5cJhenxWFlZuakIO0bk2tnKynPlvmrDdpClHXWz6cNVOiKbYT0
+ XsoA==
+X-Gm-Message-State: AOAM533noUbEAMBwr2p4B7H6jkEXdSTIL/J0c7HhVhUlnOCPmXmQxoBb
+ ZPN7KETtEUdVN90hYF0kbkU=
+X-Google-Smtp-Source: ABdhPJz19TVQh6KKWnytLcepZQsK0W79xweqhATwy4UTl0kdBBB093nFoZVWcaqfex82kzBDegCO/w==
+X-Received: by 2002:a17:90b:4f87:: with SMTP id
+ qe7mr27223919pjb.207.1643671188342; 
+ Mon, 31 Jan 2022 15:19:48 -0800 (PST)
+Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id o8sm20128553pfu.52.2022.01.31.15.19.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 Jan 2022 15:19:47 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <55d51751-218e-5fbd-7e8c-5eebe25d2fba@amsat.org>
+Date: Tue, 1 Feb 2022 00:19:43 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.0
+Subject: Re: [PATCH] qapi/block: Cosmetic change in BlockExportType schema
+Content-Language: en-US
+To: Eric Blake <eblake@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
  Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] qapi/block: Cosmetic change in BlockExportType schema
-Message-ID: <20220131213700.7smrzizfuhg2befo@redhat.com>
 References: <20220119121439.214821-1-f4bug@amsat.org>
  <20220128205430.ispmytuw2vrpar4g@redhat.com>
  <50848a6d-98a9-3218-479b-7406850a06a2@amsat.org>
-MIME-Version: 1.0
-In-Reply-To: <50848a6d-98a9-3218-479b-7406850a06a2@amsat.org>
-User-Agent: NeoMutt/20211029-256-77b59a
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ <20220131213700.7smrzizfuhg2befo@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220131213700.7smrzizfuhg2befo@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1032
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x1032.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,50 +92,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jan 2022 21:37:16 -0000
+X-List-Received-Date: Mon, 31 Jan 2022 23:19:53 -0000
 
-On Sun, Jan 30, 2022 at 07:50:41PM +0100, Philippe Mathieu-Daudé wrote:
-> On 28/1/22 21:54, Eric Blake wrote:
-> > On Wed, Jan 19, 2022 at 01:14:39PM +0100, Philippe Mathieu-Daudé wrote:
-> > > From: Philippe Mathieu-Daude <f4bug@amsat.org>
-
-'git am' used this line to insert the authorship...
-
-> > > 
-> > > From: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-...then left this line in the commit body, which I manually deleted,
-without spotting the difference between the two.
-
-> > 
-> > The doubled From: looks odd here.  I'll double-check that git doesn't
-> > mess up the actual commit once I apply the patch.
+On 31/1/22 22:37, Eric Blake wrote:
+> On Sun, Jan 30, 2022 at 07:50:41PM +0100, Philippe Mathieu-Daudé wrote:
+>> On 28/1/22 21:54, Eric Blake wrote:
+>>> On Wed, Jan 19, 2022 at 01:14:39PM +0100, Philippe Mathieu-Daudé wrote:
+>>>> From: Philippe Mathieu-Daude <f4bug@amsat.org>
 > 
-> I played with the git --from option to not appear in the list as
-> '"Philippe Mathieu-Daudé via" <qemu-devel@nongnu.org>':
-> https://lore.kernel.org/qemu-devel/efc5f304-f3d2-ff7b-99a6-673595ff0259@amsat.org/
-> by using a different sendemail.from (removing the acute in my
-> lastname) to force a correct author.from.
-> git-am should have picked the 2nd form, but I see the 1st in commit
-> 3a8fa0edd1. Just curious, did you had to modify it manually?
-
-Alas, since I managed to overlook the change in the acute (I suppose
-I'm cursed with having a boring name, so unlike many list participants
-who are overjoyed by the power of UTF-8 to make self-expression more
-accurate, I have not had as much experience with thinking about it),
-my manual edits explain why the merged commit ended up with a less
-desirable spelling.  I apologize for the mishap.  Do we need/want a
-.mailmap entry to aid git at listing your preferred spelling?
-
+> 'git am' used this line to insert the authorship...
 > 
-> Anyway, thanks for merging this :)
+>>>>
+>>>> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> ...then left this line in the commit body, which I manually deleted,
+> without spotting the difference between the two.
+> 
+>>>
+>>> The doubled From: looks odd here.  I'll double-check that git doesn't
+>>> mess up the actual commit once I apply the patch.
+>>
+>> I played with the git --from option to not appear in the list as
+>> '"Philippe Mathieu-Daudé via" <qemu-devel@nongnu.org>':
+>> https://lore.kernel.org/qemu-devel/efc5f304-f3d2-ff7b-99a6-673595ff0259@amsat.org/
+>> by using a different sendemail.from (removing the acute in my
+>> lastname) to force a correct author.from.
+>> git-am should have picked the 2nd form, but I see the 1st in commit
+>> 3a8fa0edd1. Just curious, did you had to modify it manually?
+> 
+> Alas, since I managed to overlook the change in the acute (I suppose
+> I'm cursed with having a boring name, so unlike many list participants
+> who are overjoyed by the power of UTF-8 to make self-expression more
+> accurate, I have not had as much experience with thinking about it),
+> my manual edits explain why the merged commit ended up with a less
+> desirable spelling.  I apologize for the mishap.  Do we need/want a
+> .mailmap entry to aid git at listing your preferred spelling?
 
-And thanks for bearing with developers that are still learning to
-overcome accidental cultural bias!
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
+A missing acute is not a big deal, compared to other alphabets where
+people try to approximate their name pronunciation to Latin symbols,
+and is still better than UTF-8 mojibake :)
 
