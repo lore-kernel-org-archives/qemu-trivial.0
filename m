@@ -1,82 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEG2A-0002Zn-Ki
-	for mharc-qemu-trivial@gnu.org; Sun, 30 Jan 2022 14:38:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42408)
+	id 1nEROD-0003zu-Ot
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 02:46:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46064)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEG28-0002ZA-1p; Sun, 30 Jan 2022 14:38:44 -0500
-Received: from [2a00:1450:4864:20::333] (port=52875
- helo=mail-wm1-x333.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEG26-0002Ia-FS; Sun, 30 Jan 2022 14:38:43 -0500
-Received: by mail-wm1-x333.google.com with SMTP id v123so8768852wme.2;
- Sun, 30 Jan 2022 11:38:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=se8wSDAh7T/fYxF6TOXbwzNWYEVC+EVgFuohKBrq0pM=;
- b=G070xyz+I3nvwNyK6g3NkzOj509YIix3NeVmbnoWt1szcIES9MIjFHkdoqITqO5Cl9
- tI3KYRTCY0vPbjUCZL518yHL/7k+YrY2trca+Ak1/5o1V4FY33gxejTXXbuO46TZ1gDC
- T2LgksoWNGcpgqOJyJZIowM14pKN8dFzj5CNRRv1Ktt2HyFpsZUKADJynD5wzi1A+cDz
- oTmlim+TbTApvXV4YiI9rQg6KVC0kdo3MfufnIxChW57prxnefr/72uHiSCfoF8ixeoS
- M/2yk9fvkniZa30msU+7klsHmIAAggHXaP3S/QwdxjHsSdOIO1yXDW3nqZXQAiwV3bdc
- EYJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=se8wSDAh7T/fYxF6TOXbwzNWYEVC+EVgFuohKBrq0pM=;
- b=u+0pFVM1GHsWzj5g/qSYmFvE9gkHeXSHKC9qCmfMizA2HltUVFVeScFKFih69Zgd4g
- IxmDpSfsOIxLJFc8GlRRTIzQZazOAfdm6+3rayEDLdAfCMbDPX+1TWxZxD5dD1OhgYkT
- Mo4hxrMG5eXQ2zSUpVn+jQf31ZOxSd6Q8jMqaxvQYEAvA62m2gfzG4lAdD+d0qxk1GMk
- j+lPXZZDKfbeSShXBTHQUH6PaM/UTNspdMNY87h2BpRDar1PL/dg9LtwMOX2MsQmiJ4H
- Q+qHIb8wDyBSmjLJddS4ZaEc5WK2qk4PKA5ZSn6QgtDZazNwY+UPy+EMT7SfrcwK5Fs1
- 593g==
-X-Gm-Message-State: AOAM53058tZxJSzLqwwXwvwhx71dpJyFS8GkZ8DaigFnfFJj6t2YSDGO
- ycl2nzJKPUvlLAorbuUBOnKNBtR256A=
-X-Google-Smtp-Source: ABdhPJwP1f/YiQVs3mllLoPAV858x/YxQp0p6VTWASQXYLnBiaMOCBJtZzD9Rc6Yo6WrNgUf8WrvjQ==
-X-Received: by 2002:a1c:f312:: with SMTP id q18mr16210611wmq.13.1643571520170; 
- Sun, 30 Jan 2022 11:38:40 -0800 (PST)
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
- [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id y15sm14405333wry.36.2022.01.30.11.38.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Jan 2022 11:38:39 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <cac5809d-87d0-28dc-8681-e2b8c92a9534@amsat.org>
-Date: Sun, 30 Jan 2022 20:38:38 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nERO3-0003tm-Rr
+ for qemu-trivial@nongnu.org; Mon, 31 Jan 2022 02:46:12 -0500
+Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173]:60379)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1nERNb-0000hF-UA
+ for qemu-trivial@nongnu.org; Mon, 31 Jan 2022 02:45:41 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.66])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 03713DB2298B;
+ Mon, 31 Jan 2022 08:45:35 +0100 (CET)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.18; Mon, 31 Jan
+ 2022 08:45:35 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R006562598d1-200e-4348-82ed-e96e318ace24,
+ 4E4406098780EA2DD5F77ED28C3E8FA94DEDF1FC) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <20d584f8-54e4-e9ad-b125-77b25067532f@kaod.org>
+Date: Mon, 31 Jan 2022 08:45:34 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
 Subject: Re: [PATCH] hw/ppc/vof: Add missing includes
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, Greg Kurz <groug@kaod.org>,
- qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
+CC: Daniel Henrique Barboza <danielhb413@gmail.com>, Greg Kurz
+ <groug@kaod.org>, <qemu-ppc@nongnu.org>, David Gibson
+ <david@gibson.dropbear.id.au>, Alexey Kardashevskiy <aik@ozlabs.ru>,
+ <qemu-trivial@nongnu.org>
 References: <20220122003104.84391-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220122003104.84391-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <cac5809d-87d0-28dc-8681-e2b8c92a9534@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <cac5809d-87d0-28dc-8681-e2b8c92a9534@amsat.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::333
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 3be00d90-cff8-4eb1-86df-8fda12cea897
+X-Ovh-Tracer-Id: 10637220845159091052
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvvddrgedtgdduuddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieegvdffkeegfeetuddttddtveduiefhgeduffekiedtkeekteekhfffleevleelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhnsggprhgtphhtthhopedupdhrtghpthhtohepghhrohhugheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo529.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,51 +67,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 30 Jan 2022 19:38:44 -0000
+X-List-Received-Date: Mon, 31 Jan 2022 07:46:14 -0000
 
-Cc'ing qemu-trivial@
+On 1/30/22 20:38, Philippe Mathieu-Daudé wrote:
+> Cc'ing qemu-trivial@
+>
 
-On 22/1/22 01:31, Philippe Mathieu-Daudé wrote:
-> vof.h requires "qom/object.h" for DECLARE_CLASS_CHECKERS(),
-> "exec/memory.h" for address_space_read/write(),
-> "exec/address-spaces.h" for address_space_memory
-> and more importantly "cpu.h" for target_ulong.
+It is queued in ppc-7.0. I should send a PR today or tomorrow.
+
+Thanks,
+
+C.
+
+> On 22/1/22 01:31, Philippe Mathieu-Daudé wrote:
+>> vof.h requires "qom/object.h" for DECLARE_CLASS_CHECKERS(),
+>> "exec/memory.h" for address_space_read/write(),
+>> "exec/address-spaces.h" for address_space_memory
+>> and more importantly "cpu.h" for target_ulong.
+>>
+>> vof.c doesn't need "exec/ram_addr.h".
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   hw/ppc/vof.c         | 1 -
+>>   include/hw/ppc/vof.h | 5 +++++
+>>   2 files changed, 5 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
+>> index 73adc44ec2..2b63a62875 100644
+>> --- a/hw/ppc/vof.c
+>> +++ b/hw/ppc/vof.c
+>> @@ -16,7 +16,6 @@
+>>   #include "qemu/units.h"
+>>   #include "qemu/log.h"
+>>   #include "qapi/error.h"
+>> -#include "exec/ram_addr.h"
+>>   #include "exec/address-spaces.h"
+>>   #include "hw/ppc/vof.h"
+>>   #include "hw/ppc/fdt.h"
+>> diff --git a/include/hw/ppc/vof.h b/include/hw/ppc/vof.h
+>> index 97fdef758b..f8c0effcaf 100644
+>> --- a/include/hw/ppc/vof.h
+>> +++ b/include/hw/ppc/vof.h
+>> @@ -6,6 +6,11 @@
+>>   #ifndef HW_VOF_H
+>>   #define HW_VOF_H
+>> +#include "qom/object.h"
+>> +#include "exec/address-spaces.h"
+>> +#include "exec/memory.h"
+>> +#include "cpu.h"
+>> +
+>>   typedef struct Vof {
+>>       uint64_t top_addr; /* copied from rma_size */
+>>       GArray *claimed; /* array of SpaprOfClaimed */
 > 
-> vof.c doesn't need "exec/ram_addr.h".
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   hw/ppc/vof.c         | 1 -
->   include/hw/ppc/vof.h | 5 +++++
->   2 files changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
-> index 73adc44ec2..2b63a62875 100644
-> --- a/hw/ppc/vof.c
-> +++ b/hw/ppc/vof.c
-> @@ -16,7 +16,6 @@
->   #include "qemu/units.h"
->   #include "qemu/log.h"
->   #include "qapi/error.h"
-> -#include "exec/ram_addr.h"
->   #include "exec/address-spaces.h"
->   #include "hw/ppc/vof.h"
->   #include "hw/ppc/fdt.h"
-> diff --git a/include/hw/ppc/vof.h b/include/hw/ppc/vof.h
-> index 97fdef758b..f8c0effcaf 100644
-> --- a/include/hw/ppc/vof.h
-> +++ b/include/hw/ppc/vof.h
-> @@ -6,6 +6,11 @@
->   #ifndef HW_VOF_H
->   #define HW_VOF_H
->   
-> +#include "qom/object.h"
-> +#include "exec/address-spaces.h"
-> +#include "exec/memory.h"
-> +#include "cpu.h"
-> +
->   typedef struct Vof {
->       uint64_t top_addr; /* copied from rma_size */
->       GArray *claimed; /* array of SpaprOfClaimed */
 
 
