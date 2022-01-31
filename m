@@ -1,84 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEWyZ-0005vE-2a
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 08:44:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39638)
+	id 1nEeMS-0006io-Vp
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 16:37:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38754)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEWyQ-0005qt-QZ; Mon, 31 Jan 2022 08:44:03 -0500
-Received: from [2a00:1450:4864:20::432] (port=41571
- helo=mail-wr1-x432.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEWyN-0004JH-HW; Mon, 31 Jan 2022 08:44:01 -0500
-Received: by mail-wr1-x432.google.com with SMTP id h21so25507471wrb.8;
- Mon, 31 Jan 2022 05:43:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=T8tu7PHP64Wh3NwNRP5ujO0rSthz5ycMNE0XMaxl0wo=;
- b=kptaPjC0Fp+ls2S7iTSn0v+QzGZEB/Wg5SGYzyDAZRl7j4TmbxRIythnkOjcRpwM77
- QozyVQUOGRy0wFB61wQbb44P7e5zPq9O5Ua5kbdur5WxuW5BY4d92hbVml87f5kjP+H/
- jZx3yb5rxAd0U4/YbAwlkclKgeiDx/mz9Bydgj2HJBIPz/YzAl5rUjMdmc9/YjiK8Sc9
- 6Pm0234CIvQ0lPSV4ax7oHq5hch2yVX9ksHHg9iWv37Q5axzvyYiHdwWmy2nOuqaXY4n
- 0qg5R0oJhFI6q/VEf/i+N9dSCYaby1TwSMiRm8kANPsQvj+OAPjQUbeL2osgEkG2ibD8
- yxoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=T8tu7PHP64Wh3NwNRP5ujO0rSthz5ycMNE0XMaxl0wo=;
- b=l2oKfbxaKeuiW4RKENCoGRNZXAvaKLep2dNE7gk7gSe+HLq5ALFBFbUDsgPIbb506M
- ab3MHjxvUxdNXdp2Z7VAQVKz0WzWnnqgptC8eBiHC6qurOvcofv7lyAZzpaRTvhnjp2k
- q+IRY0oUSdc0yPX1HnanN5/ZpnAdua3R2AvIUutoNZfHpGy1yXMAjSIG1oMMRfTzvtxt
- 1b/PgEqupx8grhRtx9wl+y0cAug5bgG0kXQ7tysMY3DWVvBzRkimc2RaqSnkkHX5aXaY
- lJDiZ+qm+EVwMu+mieKm9AELCafFEzVtPnRBCXlgKLMInOEvY/5MVKW8kPnWUI4utDr8
- QyiQ==
-X-Gm-Message-State: AOAM531RN997gefHRPFKQPwgCm2rWoHsx08l/POROR25015gGKHZZYS7
- tywBq0MNTSLt/EU40+rPRTk=
-X-Google-Smtp-Source: ABdhPJy9fIK+A2PPK/NSPh1DJkDKwYnkezF0ZCDvUUWa5luRwLD7lLzISJ4gFiwDnscRQBrjjlunhw==
-X-Received: by 2002:a5d:5446:: with SMTP id w6mr17400279wrv.493.1643636637364; 
- Mon, 31 Jan 2022 05:43:57 -0800 (PST)
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
- [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id n26sm9500763wms.13.2022.01.31.05.43.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Jan 2022 05:43:56 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <eabe95a4-752e-d18a-1846-66709008c2c3@amsat.org>
-Date: Mon, 31 Jan 2022 14:43:55 +0100
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1nEeMN-0006dA-RD
+ for qemu-trivial@nongnu.org; Mon, 31 Jan 2022 16:37:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:20630)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1nEeMK-0001Cx-K6
+ for qemu-trivial@nongnu.org; Mon, 31 Jan 2022 16:37:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643665032;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ST4AVF55fqzUgM1RbzLPzBWv3mCBlcI0cUwUoC0Qk6I=;
+ b=I9Lb2H1oY8Exb5So4Yyr0CeH1ayTpWuCjX5oYu6QDCYoPSqlLquBHLOHoxixdjeES52v2S
+ 3bym6JkgKmsSa7+szh3upiQHNJxpqpBJfzMGBJjwJdgbK5cinZlJJJRxcXWcFBoasw15SG
+ 9oa5diIrAzvrAl5p/nhNVWeFrzzcKRs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-633-ud_POe-1PuG29qXuG5cPdA-1; Mon, 31 Jan 2022 16:37:06 -0500
+X-MC-Unique: ud_POe-1PuG29qXuG5cPdA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4F53283DD20;
+ Mon, 31 Jan 2022 21:37:05 +0000 (UTC)
+Received: from redhat.com (unknown [10.22.32.61])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DD7525DB94;
+ Mon, 31 Jan 2022 21:37:02 +0000 (UTC)
+Date: Mon, 31 Jan 2022 15:37:00 -0600
+From: Eric Blake <eblake@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] qapi/block: Cosmetic change in BlockExportType schema
+Message-ID: <20220131213700.7smrzizfuhg2befo@redhat.com>
+References: <20220119121439.214821-1-f4bug@amsat.org>
+ <20220128205430.ispmytuw2vrpar4g@redhat.com>
+ <50848a6d-98a9-3218-479b-7406850a06a2@amsat.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH] hw/ppc/vof: Add missing includes
-Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
- Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
- Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-trivial@nongnu.org
-References: <20220122003104.84391-1-f4bug@amsat.org>
- <cac5809d-87d0-28dc-8681-e2b8c92a9534@amsat.org>
- <20d584f8-54e4-e9ad-b125-77b25067532f@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20d584f8-54e4-e9ad-b125-77b25067532f@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <50848a6d-98a9-3218-479b-7406850a06a2@amsat.org>
+User-Agent: NeoMutt/20211029-256-77b59a
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::432
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,14 +76,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jan 2022 13:44:08 -0000
+X-List-Received-Date: Mon, 31 Jan 2022 21:37:16 -0000
 
-On 31/1/22 08:45, Cédric Le Goater wrote:
-> On 1/30/22 20:38, Philippe Mathieu-Daudé wrote:
->> Cc'ing qemu-trivial@
->>
+On Sun, Jan 30, 2022 at 07:50:41PM +0100, Philippe Mathieu-Daudé wrote:
+> On 28/1/22 21:54, Eric Blake wrote:
+> > On Wed, Jan 19, 2022 at 01:14:39PM +0100, Philippe Mathieu-Daudé wrote:
+> > > From: Philippe Mathieu-Daude <f4bug@amsat.org>
+
+'git am' used this line to insert the authorship...
+
+> > > 
+> > > From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+...then left this line in the commit body, which I manually deleted,
+without spotting the difference between the two.
+
+> > 
+> > The doubled From: looks odd here.  I'll double-check that git doesn't
+> > mess up the actual commit once I apply the patch.
 > 
-> It is queued in ppc-7.0. I should send a PR today or tomorrow.
+> I played with the git --from option to not appear in the list as
+> '"Philippe Mathieu-Daudé via" <qemu-devel@nongnu.org>':
+> https://lore.kernel.org/qemu-devel/efc5f304-f3d2-ff7b-99a6-673595ff0259@amsat.org/
+> by using a different sendemail.from (removing the acute in my
+> lastname) to force a correct author.from.
+> git-am should have picked the 2nd form, but I see the 1st in commit
+> 3a8fa0edd1. Just curious, did you had to modify it manually?
 
-Thanks!
+Alas, since I managed to overlook the change in the acute (I suppose
+I'm cursed with having a boring name, so unlike many list participants
+who are overjoyed by the power of UTF-8 to make self-expression more
+accurate, I have not had as much experience with thinking about it),
+my manual edits explain why the merged commit ended up with a less
+desirable spelling.  I apologize for the mishap.  Do we need/want a
+.mailmap entry to aid git at listing your preferred spelling?
+
+> 
+> Anyway, thanks for merging this :)
+
+And thanks for bearing with developers that are still learning to
+overcome accidental cultural bias!
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
 
