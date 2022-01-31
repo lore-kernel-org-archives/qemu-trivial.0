@@ -1,19 +1,19 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nESxq-0000XS-72
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 04:27:10 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40144)
+	id 1nET9w-0007M3-Dh
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 04:39:40 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42378)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nESxo-0000Um-D9; Mon, 31 Jan 2022 04:27:08 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:44061)
+ id 1nET9t-0007JY-Nh; Mon, 31 Jan 2022 04:39:38 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:43077)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nESxk-00077o-BT; Mon, 31 Jan 2022 04:27:07 -0500
+ id 1nET9n-0000Kz-3B; Mon, 31 Jan 2022 04:39:37 -0500
 Received: from [192.168.100.1] ([82.142.10.94]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MLR5f-1mw6jP0Cnr-00ITaM; Mon, 31 Jan 2022 10:27:00 +0100
-Message-ID: <8cf4a787-8517-9f65-417b-41378c5b6b79@vivier.eu>
-Date: Mon, 31 Jan 2022 10:26:59 +0100
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MjjSt-1mXfMJ24NP-00lGNn; Mon, 31 Jan 2022 10:39:20 +0100
+Message-ID: <d559d8ee-2433-bf87-1530-01ceb9c20fd1@vivier.eu>
+Date: Mon, 31 Jan 2022 10:39:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
@@ -29,22 +29,22 @@ From: Laurent Vivier <laurent@vivier.eu>
 In-Reply-To: <87a6fel3w8.fsf_-_@depni.sinp.msu.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:N1b/jROfOTiY7bP5iaQPegCm4xURnwcDx/dSTJIoHC4+vTS0HY9
- JsnGmJssX7eXNPl+GMjUH91bjv9O7LpSGwfQiaIi7OnSPxXTX2PWHId5hi2fPYJhIShoJMQ
- zZRk5fdrV9uxQBpIg2FMPvXEhfqdnsMvOGF1ihN2iOd74kDCbhbe4L7PqDADbLe8q4dRWAr
- /aK/V5jyHfcFAi774kaXQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:52NVN5MkmXc=:fOxzmbg3QvfPb+MBnQ+DgI
- 3s5gY97jw6iXWhMoCE4cxZTYiCrHxn+3mgIXayVJ7qJlkRd1/tgQ4AqFsmp423Rq+nRch77so
- Va6V84eEnOmp3yD4Op08V5rlADpV6zzJENw/5vAgRf9XTsqFT0jAhLJJu6P7m7pXyJF/TdrKK
- s7jqWbGKUomaLE+ZdOjtVX9S+hmklsoeghYkFbjLXFCqANHQJNGs+hUwARqYqATQ/cI/1IGKl
- 8s/4aCwBGaDio024AZV165J0OTogu+91gN17pv7aCEzDVviZmCrf5VGU5LxhfzykgvAIR5iBP
- g75sOAgL1g1eWjQtMP+xCEPL17GaKqEamxJdecjnNaabK5q2FEKr0x3jPJHTrW7M+YSMH7Qme
- L/LT7W+3QXxmKfnBz2n8vbqotcFsVpD2fEALedQcPln1ZKuUHlTEXPaj59yyp+muOPAOPf2HL
- 6xyY2Lz1zZsCQc3XJlIdBdMRNfa29qg+P5k6yMkUH/moA0740ZwjT+vk2SrZfvT7tBW8vjoHI
- O8opMDXD2AwSHS7fjZQwqmiCD5BYVd1GVf+TJhYSn/kdJD6nNrV7i2cN1RFtWS/U9Vh3rBJcx
- 628Nxb/Vg4VvtbJZ0QXA8qqhQG9i9VRy60kAvTzXQZY7Ra1MD6muXK/J7TEq4oLdKdTmj770Y
- SztTx3loduc3CdyC9tSQ/IaXJ9n4h8m8sukKrJyqyrMGQYVWwJa3KsxnIq2+rFQBIxnU=
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:6J38ln81Pct2rWX3V4xFWMSIb0SaG99uhDfONmVZGMXfWSAXNqM
+ KVHZHAu2+MaReTACrf3eIdmnugw0MJnq0TjRfxVyv96VrMVVOV3NtRENHB0Fb3VKLgHzQvy
+ 0f6frGGwsxGL2E9cIIIy9P0U+AcyApGPCjBwJlPl8Qc/VFq0AeX7v1oBN2kVAwXd9hGh/dt
+ fppMFsndr/IeKjPIb23Ow==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:aDjWgExZfhE=:82jzUeJ8eCgDdBYDBUj2fm
+ 2TL0gH2+UGK/frYL/GzXGqjEbUe2vlMT5FaqxO76Pm0JrJEub6h9igLzhCDd847Jkxl/CQEkF
+ aQ1lrNbo6CYKm8BQ/si2eBq40V8MNNcE6ze1aktARImsv0eiZAyLD/arqx3jqdeyMRXCfu0vy
+ h6JfrQhPtmkNOIhWTubvaXuwoC3ccpAWP8MoXtxsZqQSc9rbqCCDQYwa4oj/XrSnSBFiXqbow
+ 3x1NOq2Xw6YH9gBgu5rsSr1kaRCgy/4xJP6LkT7vSPsP93YrSC5yJJaQlSVEZnwXtKyfjRioD
+ 2MVu0ogGAZildbY6gteD1bE5LWSUpZWmR8bVCdzj8Nk/CNG0u/tFdxsT6Z0/q8CrfpfFb0sdD
+ rbgKqEc79Da225V1I/88dIhj7nJIswzS+kljMnmRl3lv4ToyiwgYS8386L7J//UjMV7f8RRN5
+ yzyLyrBS6WZkWP5Qdt2sKlyquaFpVhKekZg9B8zyvUuqamdeCwtsn0tZyPfWnI6nGPiQpQzOf
+ 5t75WtdEDSqnheJqZDfGl8y5t6inOgb1ovIR8gG5e0t6szcFXOv7NF32mD1IqlvGjfQXpLqbU
+ qSbOfQCrI5WWgAGXWz7XmfUWAIHwJEU2L14lVjTYnvPXzUylUyCZTHRJYkle2nAMtMTI6a+OJ
+ p9qCVTuAoI1aDxwnBOiiKaE4uZ9I/sEcX12MAtuoAJsgRHhJxktfgassn2nRLM8ulLqg=
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,7 +64,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jan 2022 09:27:09 -0000
+X-List-Received-Date: Mon, 31 Jan 2022 09:39:38 -0000
 
 Le 29/01/2022 à 20:48, Serge Belyshev a écrit :
 > 
