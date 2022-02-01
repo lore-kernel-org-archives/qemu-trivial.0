@@ -1,56 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEnBT-00026j-KA
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Feb 2022 02:02:35 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40462)
+	id 1nEoyK-0005gf-GL
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Feb 2022 03:57:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56998)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nEnBK-00024p-MD; Tue, 01 Feb 2022 02:02:33 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:47145)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nEoy7-0005eR-Pv
+ for qemu-trivial@nongnu.org; Tue, 01 Feb 2022 03:57:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:54528)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nEnBJ-0002EU-2d; Tue, 01 Feb 2022 02:02:26 -0500
-Received: from [192.168.100.1] ([82.142.10.94]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MmDAW-1mWgv90ClE-00iDiV; Tue, 01 Feb 2022 08:02:23 +0100
-Message-ID: <6f3fafd3-f221-0b67-743b-e28b1835206b@vivier.eu>
-Date: Tue, 1 Feb 2022 08:02:21 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nEoy4-0000Iz-UZ
+ for qemu-trivial@nongnu.org; Tue, 01 Feb 2022 03:56:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643705811;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=RktKE3VpOPZ1YbhVl8tz46kzsTzG3FlFb4m1soYkP9o=;
+ b=gOEQmhjX6XMrKN6V6F2nzraGMUS6MIAu2SHNQjz7BwB9CdlwTkwbHdae96MGPsiQXo7HHy
+ KvW2KU9UI/x9uoaNLKqJ+d0qLINMWQF06m9WIfMEaMarps80Lts+ytM63AkV8/SG8cjYLZ
+ /ZfpnuIpCwi+fvCHcevHoXDzYV3ePAo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-635-_OOXT7xEMpKL0WXxCDi0rQ-1; Tue, 01 Feb 2022 03:56:08 -0500
+X-MC-Unique: _OOXT7xEMpKL0WXxCDi0rQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 54D821091DA9;
+ Tue,  1 Feb 2022 08:56:07 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 41BB04EC84;
+ Tue,  1 Feb 2022 08:55:55 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH] tests/lcitool: Allow lcitool-refresh in out-of-tree builds,
+ too
+Date: Tue,  1 Feb 2022 09:55:54 +0100
+Message-Id: <20220201085554.85733-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH] linux-user/syscall: Translate TARGET_RLIMIT_RTTIME
-Content-Language: fr
-To: Serge Belyshev <belyshev@depni.sinp.msu.ru>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <87y236lpwb.fsf@depni.sinp.msu.ru>
- <4e110850-a303-d0a4-158b-6186367aa739@vivier.eu>
- <87ilu2l473.fsf@depni.sinp.msu.ru> <87ee4ql3yk.fsf_-_@depni.sinp.msu.ru>
- <87a6fel3w8.fsf_-_@depni.sinp.msu.ru>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <87a6fel3w8.fsf_-_@depni.sinp.msu.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:4Y/fQ2tDecvA6GXXOy9RbS0F64hV/IRubqmezIj7lXXGa41Sgw0
- bTCIgDBTmnWF87eJcqokUy6sxSYMpPw71CRTI36EkrOokdIWAa8QQBxQ/KtF8vdJQ4DrWwr
- nehlWYCi8YCkF6LCgA2lUzuKjWuGr0qQQX0lnuCm5wEMEQft0zloWH4Ylq+KpEXpeeeu6rO
- JuwiQaxTwdybrI9s1RZ5g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1YuaCVL7bRU=:Ru+l0BMZ7xgmsNciNAUscS
- 4BY3LNmxNF6ggTdZ1tVzcgSmP9r8jf8GdSY2adQ8UKctFpdqIfTwuPH4NQPV/om/w5nvZGRoV
- WeU+OGXSZJ7cH/yvMSTQSrR5dJy/BC7OoskQQdwTmRR/WCf2h9gKd488o2tH4GfxKwqMZzzZA
- xJeqF4U2iAaCOAo0hKFSpuSGfi3R25vKOUiFOjTa4ZXgv+F3RAVjwXlauYX9SXPiHaEQvgt8v
- IjAMrvT1CFVcrpPM6TTShImKVvEyquBP6zNerLNAirNuobTxIuANv8zo2ssuZy2tfImwzwpCS
- n2GdQFPQmuhEhWSezwobRTqr2nNL8FsGssGrxXbEMce34JUXJ0oZjrD9V6yZkyRFNVc2ntAHN
- vUoPTjuLQiszS5R7hRVAIjiPiPI7UyiJ98iI6C+Ue8wL7ZWSWo2/O23TpM82pUMQL+DZsM9Td
- M5KE4RJ7vh6r4Csy2116GLDyh5NTeEZAEEgz8+0desfjaZD6EMRBX7+MKZ1fdj5vc/74OoY5c
- ZfM2m/M1v9FBaymUNjmFfSgHQwXpT8rDk0uEZYvm4M6kXc1/8gSaQjB+d5YqT6bSOZgr7nYgT
- JP29jLdOM/AgLTwbcQ7DQ+YVUcL8KQ6sEvT6G9HFSGJ+LquOr3w6uPhHqjErBQzCtas6VW8Ww
- 7l1fDRm4Tk8IzN3ZlW90o3peHsLrWQmO8a691tLpyKY+PhoIC2BySDQ3OC1u2U9bdZtM=
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.081,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -64,44 +72,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Feb 2022 07:02:34 -0000
+X-List-Received-Date: Tue, 01 Feb 2022 08:57:06 -0000
 
-Le 29/01/2022 à 20:48, Serge Belyshev a écrit :
-> 
-> Signed-off-by: Serge Belyshev <belyshev@depni.sinp.msu.ru>
-> ---
->   linux-user/generic/target_resource.h | 1 +
->   linux-user/syscall.c                 | 2 ++
->   2 files changed, 3 insertions(+)
-> 
-> diff --git a/linux-user/generic/target_resource.h b/linux-user/generic/target_resource.h
-> index f04c93b125..539d8c4677 100644
-> --- a/linux-user/generic/target_resource.h
-> +++ b/linux-user/generic/target_resource.h
-> @@ -33,5 +33,6 @@ struct target_rlimit64 {
->   #define TARGET_RLIMIT_MSGQUEUE          12
->   #define TARGET_RLIMIT_NICE              13
->   #define TARGET_RLIMIT_RTPRIO            14
-> +#define TARGET_RLIMIT_RTTIME            15
->   
->   #endif
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 5950222a77..6d41a741ac 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -1083,6 +1083,8 @@ static inline int target_to_host_resource(int code)
->           return RLIMIT_RSS;
->       case TARGET_RLIMIT_RTPRIO:
->           return RLIMIT_RTPRIO;
-> +    case TARGET_RLIMIT_RTTIME:
-> +        return RLIMIT_RTTIME;
->       case TARGET_RLIMIT_SIGPENDING:
->           return RLIMIT_SIGPENDING;
->       case TARGET_RLIMIT_STACK:
+When running "make lcitool-refresh" in an out-of-tree build, it
+currently fails with an error message from git like this:
 
-Applied to my linux-user-for-7.0 branch.
+ fatal: not a git repository (or any parent up to mount point /)
+ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 
-Thanks,
-Laurent
+Fix it by changing to the source directory first before updating
+the submodule.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/lcitool/Makefile.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/lcitool/Makefile.include b/tests/lcitool/Makefile.include
+index cff7c0b814..6b215adcd1 100644
+--- a/tests/lcitool/Makefile.include
++++ b/tests/lcitool/Makefile.include
+@@ -13,5 +13,5 @@ lcitool:
+ lcitool-help: lcitool
+ 
+ lcitool-refresh:
+-	$(call quiet-command, git submodule update --init $(SRC_PATH)/tests/lcitool/libvirt-ci)
++	$(call quiet-command, cd $(SRC_PATH) && git submodule update --init tests/lcitool/libvirt-ci)
+ 	$(call quiet-command, $(LCITOOL_REFRESH))
+-- 
+2.27.0
 
 
