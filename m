@@ -1,78 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEqEh-0008Vf-MC
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Feb 2022 05:18:07 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44680)
+	id 1nEqo9-0005ha-Ry
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Feb 2022 05:54:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1nEqEU-0008So-Qo
- for qemu-trivial@nongnu.org; Tue, 01 Feb 2022 05:17:54 -0500
-Received: from [2a00:1450:4864:20::62f] (port=36485
- helo=mail-ej1-x62f.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nEqo7-0005bk-TT; Tue, 01 Feb 2022 05:54:43 -0500
+Received: from [2a00:1450:4864:20::32b] (port=40879
+ helo=mail-wm1-x32b.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1nEqEN-0003iU-PJ
- for qemu-trivial@nongnu.org; Tue, 01 Feb 2022 05:17:52 -0500
-Received: by mail-ej1-x62f.google.com with SMTP id s13so52713178ejy.3
- for <qemu-trivial@nongnu.org>; Tue, 01 Feb 2022 02:17:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:date:in-reply-to
- :message-id:mime-version:content-transfer-encoding;
- bh=7ejQz4zmASG8K5kSmVEDZnl6Zusvm5+Hadrnix/u4fI=;
- b=aw1Cxg7ob0XoNVRMyEp6cRY+fSaw5LTsyjxNn++29i9p5GSX4KumD6VrEt6gx8lkI9
- r12DYIfrFZ2P8lMtIuW/QmkFEDtph0zQgIOvamfd21R+79WDqBUGatD793Hi0byvXzCb
- wy0wPAWoFlzqQYFEvwd+d2k0jiG5SvCqxsjtxGdX7GETsZ+JWhtFD1Oafb+UgGNFNd9c
- 2N5ZYRpGd8qM9Dq9rrP73lPGR4cxRa1YmhvhdQM6Q/SBbOU198QC8pZl3NrG2ypevhii
- Dplh+HSY6kFzlpA6MJ2h05Vl8JaVQwEjwiq6lUX6CHrjlsHWngekuuxVz4GDRjFUp+JC
- M5Dw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nEqo6-0000h0-FV; Tue, 01 Feb 2022 05:54:43 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ l129-20020a1c2587000000b0035394fedf14so1509359wml.5; 
+ Tue, 01 Feb 2022 02:54:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=cOeEZ/NsRnidUIp0FsptD31Ix2QxxCxfqaVXaDQc4Ho=;
+ b=C+uo7RIBo9EJcWjHXA0IlPixLZSxb4y75l1370nta8Bck4GJnyhrqzvubEW2Onq7vF
+ si91T8HM8WpbkduSukIz/W1Uix0Yhtgik3VKvgSmrdrZpB2vj7T7XrFKisChc465jKBT
+ W/c3FLOWcSPcn9gDWGb1AjE7N5shh3zZMZsQHbD0GG0RY0SOrH30FqlrDdEcFpWbiUJF
+ zj5Fy331A7225bGiYlalbhqnPKelvC35e3ZceADIvvvaxva3ApNkGkjUQGSgWzNCZeS9
+ aG+oJX4r6FJet/8Sgdmd9L+gihk/5Wq8Ev0V2Kq7ttjJrkdZmIu8S70yr314UPd8VT/2
+ Ge/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
- :in-reply-to:message-id:mime-version:content-transfer-encoding;
- bh=7ejQz4zmASG8K5kSmVEDZnl6Zusvm5+Hadrnix/u4fI=;
- b=ocrJo/smHpg1C3qsQhMuX99oTQT9cP8CsiaCFSpjbZUo/LZ1M0Ou4Kkf7pGHS6BK21
- nHYcBkpc+YrrAdv0cA7wxF4k6n97azitOQ2nujpZvLUQgcSKSvhq4zYkipvyIVsO7ml9
- p4+IQlJ5O4h5booG6xOd44K5niY0UJROWGpyPpplYzLtXR9A+66QUfQcTe9hIVBWJmKg
- dwHAQJpMm4KvWqp6NbltVOe/HoZxOiBsvl2RoRG4Fnekr6b8ZjeyoioxzSPNGenr0+6X
- QybuQ7GtFmJOSWdFZMlvFZIUtCEgBYKmB2EhTub1gXWafglyR6F31JrDdBtwsC3lcVsF
- ng/A==
-X-Gm-Message-State: AOAM530+fdce44hSQs6WYMiuYCTYtKbxsfOGl+HPw6obxbrVG0QVBnJ6
- Xb+Zzy2ykVkXHMzhBbIgqFdLvA==
-X-Google-Smtp-Source: ABdhPJz7sF16pAovZOML+m8FDYyTSMXjEoLRfSia5K5P3XAPSNXBwalcL3SY9N9ln0+iZszKuCFfng==
-X-Received: by 2002:a17:907:2da2:: with SMTP id
- gt34mr21138097ejc.620.1643710638945; 
- Tue, 01 Feb 2022 02:17:18 -0800 (PST)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id k7sm14309930ejp.182.2022.02.01.02.17.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Feb 2022 02:17:18 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 89DFE1FFB7;
- Tue,  1 Feb 2022 10:17:17 +0000 (GMT)
-References: <20220201085554.85733-1-thuth@redhat.com>
-User-agent: mu4e 1.7.6; emacs 28.0.91
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>, qemu-trivial@nongnu.org, Wainer dos Santos Moschetta
- <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>, =?utf-8?Q?Daniel?=
- =?utf-8?Q?_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=cOeEZ/NsRnidUIp0FsptD31Ix2QxxCxfqaVXaDQc4Ho=;
+ b=4MJ3EJtYGL+JILcV0vf/0v97H8u4v1K1pPycdnnImoGgL4mXq883hRxiDOiQWazWl8
+ IkkmeAW3QiVCdFtyypVs5ZXhUadaR1TALZ2wLlJpA0ddSyGdDbm5XyLvxP7Ol2FYTBj0
+ FkaqPV9kU/PP7rT5FJBwyCaFumMRh5bl1ld0T3jUbyNdeytJSTYUrM27YxKEWsaMC+gH
+ zlr1fswcFVkWIDc/OE8ZR4Wmbev37mtvTJjHbqvuQkJVKZ6j4JL3WCwoviBeyz9SgHAW
+ mxyxP3sTHT3sv7itYD+m9EbC2pzkS/+1xpsQy1WcbaZQFwwwex9gc1RCpIP/UdM72LaO
+ 3xaw==
+X-Gm-Message-State: AOAM530QKjmlw12VlyzTXLqMCG6HUAjxt5BoUTflwg09ctrIrjh9mYtE
+ hxzsqeE52O8CEnyAaLYQDSs=
+X-Google-Smtp-Source: ABdhPJwAnx3+mmcIAeNlrsiyXFVZn3LX+CHAISwc9KGh8XpxyUuZ7PHiyxRPJEjkNFWyMX0tLfAtgg==
+X-Received: by 2002:a05:600c:a4c:: with SMTP id
+ c12mr1251789wmq.48.1643712880808; 
+ Tue, 01 Feb 2022 02:54:40 -0800 (PST)
+Received: from [192.168.1.40] (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id 5sm16521281wrb.113.2022.02.01.02.54.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Feb 2022 02:54:40 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <6867fd1e-4392-f1ee-362c-118b1a2d8e86@amsat.org>
+Date: Tue, 1 Feb 2022 11:54:39 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
 Subject: Re: [PATCH] tests/lcitool: Allow lcitool-refresh in out-of-tree
  builds, too
-Date: Tue, 01 Feb 2022 10:17:12 +0000
-In-reply-to: <20220201085554.85733-1-thuth@redhat.com>
-Message-ID: <87a6fazyaa.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::62f
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-trivial@nongnu.org, Wainer dos Santos Moschetta
+ <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>
+References: <20220201085554.85733-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220201085554.85733-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32b
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62f.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
@@ -88,25 +92,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Feb 2022 10:17:56 -0000
+X-List-Received-Date: Tue, 01 Feb 2022 10:54:44 -0000
 
-
-Thomas Huth <thuth@redhat.com> writes:
-
+On 2/1/22 09:55, Thomas Huth wrote:
 > When running "make lcitool-refresh" in an out-of-tree build, it
 > currently fails with an error message from git like this:
->
+> 
 >  fatal: not a git repository (or any parent up to mount point /)
->  Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set=
-).
->
+>  Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+> 
 > Fix it by changing to the source directory first before updating
 > the submodule.
->
+> 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  tests/lcitool/Makefile.include | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Queued to testing/next, thanks.
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
---=20
-Alex Benn=C3=A9e
 
