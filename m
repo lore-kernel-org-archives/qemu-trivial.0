@@ -1,85 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEfxi-0007kt-Lq
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jan 2022 18:19:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57754)
+	id 1nEnBG-00023s-N4
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Feb 2022 02:02:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEfxg-0007jL-Fl; Mon, 31 Jan 2022 18:19:52 -0500
-Received: from [2607:f8b0:4864:20::1032] (port=35402
- helo=mail-pj1-x1032.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nEfxe-0006e7-LJ; Mon, 31 Jan 2022 18:19:52 -0500
-Received: by mail-pj1-x1032.google.com with SMTP id
- z14-20020a17090ab10e00b001b6175d4040so762724pjq.0; 
- Mon, 31 Jan 2022 15:19:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=bYMEGy1sfD++uBFCWEhu3dHUI1tZlW19zcULxGg+P20=;
- b=e4cw3j0vQfsUU+ePSou6V9K7WDtePwL1mQxdhbVPrlS3jmczdVNzBlaE4DHdzCU626
- wE2lXWVRbRz8dPpPqcRgjb+uVEg2LagZ6h8+GzPBZ9YWieaxOsQ5JefK36LUDDRehKz8
- UqaAB7BuMoKm/xmBMPXcwaxAXj5r2Xy6UixTgtsHOSBRpIar0CxnqMWGPBghAFvL87Hp
- MUtUbaeUkgDR/vDjQfIJ08ROfsszUQ5Y9BTc9Bvo5ZdjrLgTsDOe88XAo0Rnc+QhYKW6
- RzfjxSUW2wMeAWx1ajjeGSg9Z3dwoqixERbe/mXc2A4o6YqPVdaB+CGrBDmqIdDavUd6
- YUgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=bYMEGy1sfD++uBFCWEhu3dHUI1tZlW19zcULxGg+P20=;
- b=PEri4v+ItZ8+dFLKfUBnbDiF1eGD5UqvPRrna8MjiOwD7jvCX7W1CifAQBueQIay/b
- gcZg+DD5crPSXke7XHyYyF6LVkU2JG7Ck67pEnL0MeTLVlySCLZpv2ZspuVwJJvUsVp8
- /O/SMV1oh8hJ6mtxH+85qfyCPaD3xrHSej9XiHk1wIkjIdxt64vn2od9AYb0mAR+FOcs
- 1aZQYGu3Rg3aaWq5+/VUFvt9vJqtRW/L3lfxKmgn5AcC1n2YZv9mlo64Ylb9SII/fub2
- hWpuwx4t0ZEbRC6TWG5cJhenxWFlZuakIO0bk2tnKynPlvmrDdpClHXWz6cNVOiKbYT0
- XsoA==
-X-Gm-Message-State: AOAM533noUbEAMBwr2p4B7H6jkEXdSTIL/J0c7HhVhUlnOCPmXmQxoBb
- ZPN7KETtEUdVN90hYF0kbkU=
-X-Google-Smtp-Source: ABdhPJz19TVQh6KKWnytLcepZQsK0W79xweqhATwy4UTl0kdBBB093nFoZVWcaqfex82kzBDegCO/w==
-X-Received: by 2002:a17:90b:4f87:: with SMTP id
- qe7mr27223919pjb.207.1643671188342; 
- Mon, 31 Jan 2022 15:19:48 -0800 (PST)
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
- [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id o8sm20128553pfu.52.2022.01.31.15.19.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Jan 2022 15:19:47 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <55d51751-218e-5fbd-7e8c-5eebe25d2fba@amsat.org>
-Date: Tue, 1 Feb 2022 00:19:43 +0100
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nEnBB-00021f-Q2; Tue, 01 Feb 2022 02:02:17 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:56781)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nEnB9-0002Di-DN; Tue, 01 Feb 2022 02:02:17 -0500
+Received: from [192.168.100.1] ([82.142.10.94]) by mrelayeu.kundenserver.de
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MKbTo-1mw1JB0Nzg-00Kyxy; Tue, 01 Feb 2022 08:02:13 +0100
+Message-ID: <bf2f08b6-d6b2-3080-f031-b3cec85b64cd@vivier.eu>
+Date: Tue, 1 Feb 2022 08:02:11 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH] qapi/block: Cosmetic change in BlockExportType schema
-Content-Language: en-US
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-References: <20220119121439.214821-1-f4bug@amsat.org>
- <20220128205430.ispmytuw2vrpar4g@redhat.com>
- <50848a6d-98a9-3218-479b-7406850a06a2@amsat.org>
- <20220131213700.7smrzizfuhg2befo@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220131213700.7smrzizfuhg2befo@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH] linux-user: Move generic TARGET_RLIMIT* definitions to
+ generic/target_resource.h
+Content-Language: fr
+To: Serge Belyshev <belyshev@depni.sinp.msu.ru>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <87y236lpwb.fsf@depni.sinp.msu.ru>
+ <4e110850-a303-d0a4-158b-6186367aa739@vivier.eu>
+ <87ilu2l473.fsf@depni.sinp.msu.ru> <87ee4ql3yk.fsf_-_@depni.sinp.msu.ru>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <87ee4ql3yk.fsf_-_@depni.sinp.msu.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1032
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x1032.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Provags-ID: V03:K1:EqkOwcb4cGs03HmCoJ+mng2mqKTHI5zG2ucpXUXvqwvuf5+877Z
+ slo57m8RpdsRXvfmbcSs3PxunMJwBpb1bVFqueTxbolkYcnfFtkz8Ujln8CR3PtoRs+EiIN
+ h+cThpAKfkOhc5HliY5uk0FgctxfXR/nipOST0b3+3F0E22cm5xkkOsb8S4jzuIF6fWYlav
+ EJI8rHjLHSElskK9taR6g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:dNOLixC2iZM=:jB7s3U1o92/9ch+52e0hn8
+ j4Oe4/LbeLf7450romwPbUS+pBlUQvQ9wzqRgg6pYlitvdyz1A0C62ie1JGgrfipj+PwkL3Vd
+ 6JsnFpRNUkhMRVc0y9YGUvcMh8pHnPDmmzozGFvUBdMNu9oM5oBFXqe49bz3t5xkMIyCQ+BUz
+ Fn1iJe5gXLu8HLdY7FIwL7XCV217A5xXcZ3wu4pAd4mneLOTNrJuk1TluJNeoSng4DOOJaNXK
+ r3ZsNgzxCEtWeqtNLnSOUAqw8vRKTjTYzjMcHhdd9TIc6Mmc+LCjUDiGpCfuruA7J2hcuO7/C
+ hS0E1W8KO2BRH4jFgPIXmrbMJkqL6kaD0jVYn3X76Z2CWa/r+eJyRKXzxLDBz2ujSBS5HluLs
+ cYAtqocF0iPoDsgmoK/b/Sd6bUWbRSmOs4SyWhqkguRXBp4Z3EEgqn3sZnB63Db85iMYkh+H6
+ plA6CSPQ+751cZc4AL8znpFRYd7/6ylmngbbiCUbI56UCDZMvpPZtwlyElUtHE9YZpXzxxrz2
+ mSZmIZOp+CDY1zyLJsqswd3p0CcbqJJQ+vbL7Ud+x/5wdccNro7HbUHRab/ZgYXOtdYFl73lS
+ OOq5TzjPAX2mcdyt4HC+qjfCnjyo6bLZATj29XewEw+uCHhzn8si3ErhJkMBW9pKt6LNenSKE
+ BzhfNoay1dZVMHATX+v0GEa3nCg/u+gwvu6BS6EIMKwNZBCF6drX81STc/VPu4gNqAio=
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,43 +64,376 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jan 2022 23:19:53 -0000
+X-List-Received-Date: Tue, 01 Feb 2022 07:02:18 -0000
 
-On 31/1/22 22:37, Eric Blake wrote:
-> On Sun, Jan 30, 2022 at 07:50:41PM +0100, Philippe Mathieu-Daudé wrote:
->> On 28/1/22 21:54, Eric Blake wrote:
->>> On Wed, Jan 19, 2022 at 01:14:39PM +0100, Philippe Mathieu-Daudé wrote:
->>>> From: Philippe Mathieu-Daude <f4bug@amsat.org>
+Le 29/01/2022 à 20:46, Serge Belyshev a écrit :
 > 
-> 'git am' used this line to insert the authorship...
+> Signed-off-by: Serge Belyshev <belyshev@depni.sinp.msu.ru>
+> ---
+> Compile tested, and also verified that target definitions did not change.
 > 
->>>>
->>>> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>   linux-user/aarch64/target_resource.h    |  1 +
+>   linux-user/alpha/target_resource.h      | 21 ++++++++++
+>   linux-user/arm/target_resource.h        |  1 +
+>   linux-user/cris/target_resource.h       |  1 +
+>   linux-user/generic/target_resource.h    | 37 +++++++++++++++++
+>   linux-user/hexagon/target_resource.h    |  1 +
+>   linux-user/hppa/target_resource.h       |  1 +
+>   linux-user/i386/target_resource.h       |  1 +
+>   linux-user/m68k/target_resource.h       |  1 +
+>   linux-user/microblaze/target_resource.h |  1 +
+>   linux-user/mips/target_resource.h       | 24 +++++++++++
+>   linux-user/mips64/target_resource.h     |  1 +
+>   linux-user/nios2/target_resource.h      |  1 +
+>   linux-user/openrisc/target_resource.h   |  1 +
+>   linux-user/ppc/target_resource.h        |  1 +
+>   linux-user/riscv/target_resource.h      |  1 +
+>   linux-user/s390x/target_resource.h      |  1 +
+>   linux-user/sh4/target_resource.h        |  1 +
+>   linux-user/sparc/target_resource.h      | 17 ++++++++
+>   linux-user/syscall_defs.h               | 53 +------------------------
+>   linux-user/x86_64/target_resource.h     |  1 +
+>   linux-user/xtensa/target_resource.h     |  1 +
+>   22 files changed, 117 insertions(+), 52 deletions(-)
+>   create mode 100644 linux-user/aarch64/target_resource.h
+>   create mode 100644 linux-user/alpha/target_resource.h
+>   create mode 100644 linux-user/arm/target_resource.h
+>   create mode 100644 linux-user/cris/target_resource.h
+>   create mode 100644 linux-user/generic/target_resource.h
+>   create mode 100644 linux-user/hexagon/target_resource.h
+>   create mode 100644 linux-user/hppa/target_resource.h
+>   create mode 100644 linux-user/i386/target_resource.h
+>   create mode 100644 linux-user/m68k/target_resource.h
+>   create mode 100644 linux-user/microblaze/target_resource.h
+>   create mode 100644 linux-user/mips/target_resource.h
+>   create mode 100644 linux-user/mips64/target_resource.h
+>   create mode 100644 linux-user/nios2/target_resource.h
+>   create mode 100644 linux-user/openrisc/target_resource.h
+>   create mode 100644 linux-user/ppc/target_resource.h
+>   create mode 100644 linux-user/riscv/target_resource.h
+>   create mode 100644 linux-user/s390x/target_resource.h
+>   create mode 100644 linux-user/sh4/target_resource.h
+>   create mode 100644 linux-user/sparc/target_resource.h
+>   create mode 100644 linux-user/x86_64/target_resource.h
+>   create mode 100644 linux-user/xtensa/target_resource.h
 > 
-> ...then left this line in the commit body, which I manually deleted,
-> without spotting the difference between the two.
-> 
->>>
->>> The doubled From: looks odd here.  I'll double-check that git doesn't
->>> mess up the actual commit once I apply the patch.
->>
->> I played with the git --from option to not appear in the list as
->> '"Philippe Mathieu-Daudé via" <qemu-devel@nongnu.org>':
->> https://lore.kernel.org/qemu-devel/efc5f304-f3d2-ff7b-99a6-673595ff0259@amsat.org/
->> by using a different sendemail.from (removing the acute in my
->> lastname) to force a correct author.from.
->> git-am should have picked the 2nd form, but I see the 1st in commit
->> 3a8fa0edd1. Just curious, did you had to modify it manually?
-> 
-> Alas, since I managed to overlook the change in the acute (I suppose
-> I'm cursed with having a boring name, so unlike many list participants
-> who are overjoyed by the power of UTF-8 to make self-expression more
-> accurate, I have not had as much experience with thinking about it),
-> my manual edits explain why the merged commit ended up with a less
-> desirable spelling.  I apologize for the mishap.  Do we need/want a
-> .mailmap entry to aid git at listing your preferred spelling?
+> diff --git a/linux-user/aarch64/target_resource.h b/linux-user/aarch64/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/aarch64/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/alpha/target_resource.h b/linux-user/alpha/target_resource.h
+> new file mode 100644
+> index 0000000000..c9b082faee
+> --- /dev/null
+> +++ b/linux-user/alpha/target_resource.h
+> @@ -0,0 +1,21 @@
+> +#ifndef ALPHA_TARGET_RESOURCE_H
+> +#define ALPHA_TARGET_RESOURCE_H
+> +
+> +#include "../generic/target_resource.h"
+> +
+> +#undef TARGET_RLIM_INFINITY
+> +#define TARGET_RLIM_INFINITY    0x7fffffffffffffffull
+> +
+> +#undef TARGET_RLIMIT_NOFILE
+> +#define TARGET_RLIMIT_NOFILE    6
+> +
+> +#undef TARGET_RLIMIT_AS
+> +#define TARGET_RLIMIT_AS        7
+> +
+> +#undef TARGET_RLIMIT_NPROC
+> +#define TARGET_RLIMIT_NPROC     8
+> +
+> +#undef TARGET_RLIMIT_MEMLOCK
+> +#define TARGET_RLIMIT_MEMLOCK   9
+> +
+> +#endif
+> diff --git a/linux-user/arm/target_resource.h b/linux-user/arm/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/arm/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/cris/target_resource.h b/linux-user/cris/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/cris/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/generic/target_resource.h b/linux-user/generic/target_resource.h
+> new file mode 100644
+> index 0000000000..f04c93b125
+> --- /dev/null
+> +++ b/linux-user/generic/target_resource.h
+> @@ -0,0 +1,37 @@
+> +/*
+> + * Target definitions of RLIMIT_* constants. These may be overridden by an
+> + * architecture specific header if needed.
+> + */
+> +
+> +#ifndef GENERIC_TARGET_RESOURCE_H
+> +#define GENERIC_TARGET_RESOURCE_H
+> +
+> +struct target_rlimit {
+> +    abi_ulong rlim_cur;
+> +    abi_ulong rlim_max;
+> +};
+> +
+> +struct target_rlimit64 {
+> +    uint64_t rlim_cur;
+> +    uint64_t rlim_max;
+> +};
+> +
+> +#define TARGET_RLIM_INFINITY    ((abi_ulong)-1)
+> +
+> +#define TARGET_RLIMIT_CPU               0
+> +#define TARGET_RLIMIT_FSIZE             1
+> +#define TARGET_RLIMIT_DATA              2
+> +#define TARGET_RLIMIT_STACK             3
+> +#define TARGET_RLIMIT_CORE              4
+> +#define TARGET_RLIMIT_RSS               5
+> +#define TARGET_RLIMIT_NPROC             6
+> +#define TARGET_RLIMIT_NOFILE            7
+> +#define TARGET_RLIMIT_MEMLOCK           8
+> +#define TARGET_RLIMIT_AS                9
+> +#define TARGET_RLIMIT_LOCKS             10
+> +#define TARGET_RLIMIT_SIGPENDING        11
+> +#define TARGET_RLIMIT_MSGQUEUE          12
+> +#define TARGET_RLIMIT_NICE              13
+> +#define TARGET_RLIMIT_RTPRIO            14
+> +
+> +#endif
+> diff --git a/linux-user/hexagon/target_resource.h b/linux-user/hexagon/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/hexagon/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/hppa/target_resource.h b/linux-user/hppa/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/hppa/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/i386/target_resource.h b/linux-user/i386/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/i386/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/m68k/target_resource.h b/linux-user/m68k/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/m68k/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/microblaze/target_resource.h b/linux-user/microblaze/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/microblaze/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/mips/target_resource.h b/linux-user/mips/target_resource.h
+> new file mode 100644
+> index 0000000000..6d131b041d
+> --- /dev/null
+> +++ b/linux-user/mips/target_resource.h
+> @@ -0,0 +1,24 @@
+> +#ifndef MIPS_TARGET_RESOURCE_H
+> +#define MIPS_TARGET_RESOURCE_H
+> +
+> +#include "../generic/target_resource.h"
+> +
+> +#undef TARGET_RLIM_INFINITY
+> +#define TARGET_RLIM_INFINITY    0x7fffffffUL
+> +
+> +#undef TARGET_RLIMIT_NOFILE
+> +#define TARGET_RLIMIT_NOFILE    5
+> +
+> +#undef TARGET_RLIMIT_AS
+> +#define TARGET_RLIMIT_AS        6
+> +
+> +#undef TARGET_RLIMIT_RSS
+> +#define TARGET_RLIMIT_RSS       7
+> +
+> +#undef TARGET_RLIMIT_NPROC
+> +#define TARGET_RLIMIT_NPROC     8
+> +
+> +#undef TARGET_RLIMIT_MEMLOCK
+> +#define TARGET_RLIMIT_MEMLOCK   9
+> +
+> +#endif
+> diff --git a/linux-user/mips64/target_resource.h b/linux-user/mips64/target_resource.h
+> new file mode 100644
+> index 0000000000..fe29002a12
+> --- /dev/null
+> +++ b/linux-user/mips64/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../mips/target_resource.h"
+> diff --git a/linux-user/nios2/target_resource.h b/linux-user/nios2/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/nios2/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/openrisc/target_resource.h b/linux-user/openrisc/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/openrisc/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/ppc/target_resource.h b/linux-user/ppc/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/ppc/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/riscv/target_resource.h b/linux-user/riscv/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/riscv/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/s390x/target_resource.h b/linux-user/s390x/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/s390x/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/sh4/target_resource.h b/linux-user/sh4/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/sh4/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/sparc/target_resource.h b/linux-user/sparc/target_resource.h
+> new file mode 100644
+> index 0000000000..d9a2fb814a
+> --- /dev/null
+> +++ b/linux-user/sparc/target_resource.h
+> @@ -0,0 +1,17 @@
+> +#ifndef SPARC_TARGET_RESOURCE_H
+> +#define SPARC_TARGET_RESOURCE_H
+> +
+> +#include "../generic/target_resource.h"
+> +
+> +#if TARGET_ABI_BITS == 32
+> +#undef TARGET_RLIM_INFINITY
+> +#define TARGET_RLIM_INFINITY    0x7fffffffUL
+> +#endif
+> +
+> +#undef TARGET_RLIMIT_NOFILE
+> +#define TARGET_RLIMIT_NOFILE    6
+> +
+> +#undef TARGET_RLIMIT_NPROC
+> +#define TARGET_RLIMIT_NPROC     7
+> +
+> +#endif
+> diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+> index 3fcabaeae3..78607effe8 100644
+> --- a/linux-user/syscall_defs.h
+> +++ b/linux-user/syscall_defs.h
+> @@ -717,54 +717,7 @@ typedef struct target_siginfo {
+>   #define TARGET_TRAP_HWBKPT      (4)     /* hardware breakpoint/watchpoint */
+>   #define TARGET_TRAP_UNK         (5)     /* undiagnosed trap */
+>   
+> -struct target_rlimit {
+> -        abi_ulong   rlim_cur;
+> -        abi_ulong   rlim_max;
+> -};
+> -
+> -#if defined(TARGET_ALPHA)
+> -#define TARGET_RLIM_INFINITY	0x7fffffffffffffffull
+> -#elif defined(TARGET_MIPS) || (defined(TARGET_SPARC) && TARGET_ABI_BITS == 32)
+> -#define TARGET_RLIM_INFINITY	0x7fffffffUL
+> -#else
+> -#define TARGET_RLIM_INFINITY	((abi_ulong)-1)
+> -#endif
+> -
+> -#define TARGET_RLIMIT_CPU		0
+> -#define TARGET_RLIMIT_FSIZE		1
+> -#define TARGET_RLIMIT_DATA		2
+> -#define TARGET_RLIMIT_STACK		3
+> -#define TARGET_RLIMIT_CORE		4
+> -#if defined(TARGET_MIPS)
+> -#define TARGET_RLIMIT_NOFILE		5
+> -#define TARGET_RLIMIT_AS		6
+> -#define TARGET_RLIMIT_RSS		7
+> -#define TARGET_RLIMIT_NPROC		8
+> -#define TARGET_RLIMIT_MEMLOCK		9
+> -#elif defined(TARGET_ALPHA)
+> -#define TARGET_RLIMIT_RSS		5
+> -#define TARGET_RLIMIT_NOFILE		6
+> -#define TARGET_RLIMIT_AS		7
+> -#define TARGET_RLIMIT_NPROC		8
+> -#define TARGET_RLIMIT_MEMLOCK		9
+> -#elif defined(TARGET_SPARC)
+> -#define TARGET_RLIMIT_RSS		5
+> -#define TARGET_RLIMIT_NOFILE		6
+> -#define TARGET_RLIMIT_NPROC		7
+> -#define TARGET_RLIMIT_MEMLOCK		8
+> -#define TARGET_RLIMIT_AS		9
+> -#else
+> -#define TARGET_RLIMIT_RSS		5
+> -#define TARGET_RLIMIT_NPROC		6
+> -#define TARGET_RLIMIT_NOFILE		7
+> -#define TARGET_RLIMIT_MEMLOCK		8
+> -#define TARGET_RLIMIT_AS		9
+> -#endif
+> -#define TARGET_RLIMIT_LOCKS		10
+> -#define TARGET_RLIMIT_SIGPENDING	11
+> -#define TARGET_RLIMIT_MSGQUEUE		12
+> -#define TARGET_RLIMIT_NICE		13
+> -#define TARGET_RLIMIT_RTPRIO		14
+> +#include "target_resource.h"
+>   
+>   struct target_pollfd {
+>       int fd;           /* file descriptor */
+> @@ -2769,10 +2722,6 @@ struct target_epoll_event {
+>   #define TARGET_EP_MAX_EVENTS (INT_MAX / sizeof(struct target_epoll_event))
+>   
+>   #endif
+> -struct target_rlimit64 {
+> -    uint64_t rlim_cur;
+> -    uint64_t rlim_max;
+> -};
+>   
+>   struct target_ucred {
+>       uint32_t pid;
+> diff --git a/linux-user/x86_64/target_resource.h b/linux-user/x86_64/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/x86_64/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
+> diff --git a/linux-user/xtensa/target_resource.h b/linux-user/xtensa/target_resource.h
+> new file mode 100644
+> index 0000000000..227259594c
+> --- /dev/null
+> +++ b/linux-user/xtensa/target_resource.h
+> @@ -0,0 +1 @@
+> +#include "../generic/target_resource.h"
 
-A missing acute is not a big deal, compared to other alphabets where
-people try to approximate their name pronunciation to Latin symbols,
-and is still better than UTF-8 mojibake :)
+Applied to my linux-user-for-7.0 branch.
+
+Thanks,
+Laurent
+
 
