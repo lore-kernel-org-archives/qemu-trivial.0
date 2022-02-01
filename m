@@ -1,74 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nEpQY-000294-Qq
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Feb 2022 04:26:19 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33766)
+	id 1nEqEh-0008Vf-MC
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Feb 2022 05:18:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nEpQS-00023u-7F
- for qemu-trivial@nongnu.org; Tue, 01 Feb 2022 04:26:13 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:33499)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nEpQQ-0004RL-G9
- for qemu-trivial@nongnu.org; Tue, 01 Feb 2022 04:26:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643707569;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MfL5vTqdakW0303JU2kdrZB3ZkZ2ZKyAPGr7vcyNlWU=;
- b=SrODexXdSMHMZquqsaeaf4poSKPa67VFRrykF6+N62AUXVtHzgsfNy852ucGDIDryTeAw/
- zyfwgII97f7KD+IN5aIp1rDbxVLJZISmYm+2TJuO35RbWOF2/6lwSodHJ9/ygpqzsR2sTS
- 3DNP6isvOGduLmIwEviJfpmC6AuFo94=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-601-_vw1F5gZMnm6bDAU3nU5uA-1; Tue, 01 Feb 2022 04:26:06 -0500
-X-MC-Unique: _vw1F5gZMnm6bDAU3nU5uA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3009192D789;
- Tue,  1 Feb 2022 09:26:05 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.195.27])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0E7925E4B7;
- Tue,  1 Feb 2022 09:26:03 +0000 (UTC)
-Date: Tue, 1 Feb 2022 09:26:01 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1nEqEU-0008So-Qo
+ for qemu-trivial@nongnu.org; Tue, 01 Feb 2022 05:17:54 -0500
+Received: from [2a00:1450:4864:20::62f] (port=36485
+ helo=mail-ej1-x62f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1nEqEN-0003iU-PJ
+ for qemu-trivial@nongnu.org; Tue, 01 Feb 2022 05:17:52 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id s13so52713178ejy.3
+ for <qemu-trivial@nongnu.org>; Tue, 01 Feb 2022 02:17:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=7ejQz4zmASG8K5kSmVEDZnl6Zusvm5+Hadrnix/u4fI=;
+ b=aw1Cxg7ob0XoNVRMyEp6cRY+fSaw5LTsyjxNn++29i9p5GSX4KumD6VrEt6gx8lkI9
+ r12DYIfrFZ2P8lMtIuW/QmkFEDtph0zQgIOvamfd21R+79WDqBUGatD793Hi0byvXzCb
+ wy0wPAWoFlzqQYFEvwd+d2k0jiG5SvCqxsjtxGdX7GETsZ+JWhtFD1Oafb+UgGNFNd9c
+ 2N5ZYRpGd8qM9Dq9rrP73lPGR4cxRa1YmhvhdQM6Q/SBbOU198QC8pZl3NrG2ypevhii
+ Dplh+HSY6kFzlpA6MJ2h05Vl8JaVQwEjwiq6lUX6CHrjlsHWngekuuxVz4GDRjFUp+JC
+ M5Dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=7ejQz4zmASG8K5kSmVEDZnl6Zusvm5+Hadrnix/u4fI=;
+ b=ocrJo/smHpg1C3qsQhMuX99oTQT9cP8CsiaCFSpjbZUo/LZ1M0Ou4Kkf7pGHS6BK21
+ nHYcBkpc+YrrAdv0cA7wxF4k6n97azitOQ2nujpZvLUQgcSKSvhq4zYkipvyIVsO7ml9
+ p4+IQlJ5O4h5booG6xOd44K5niY0UJROWGpyPpplYzLtXR9A+66QUfQcTe9hIVBWJmKg
+ dwHAQJpMm4KvWqp6NbltVOe/HoZxOiBsvl2RoRG4Fnekr6b8ZjeyoioxzSPNGenr0+6X
+ QybuQ7GtFmJOSWdFZMlvFZIUtCEgBYKmB2EhTub1gXWafglyR6F31JrDdBtwsC3lcVsF
+ ng/A==
+X-Gm-Message-State: AOAM530+fdce44hSQs6WYMiuYCTYtKbxsfOGl+HPw6obxbrVG0QVBnJ6
+ Xb+Zzy2ykVkXHMzhBbIgqFdLvA==
+X-Google-Smtp-Source: ABdhPJz7sF16pAovZOML+m8FDYyTSMXjEoLRfSia5K5P3XAPSNXBwalcL3SY9N9ln0+iZszKuCFfng==
+X-Received: by 2002:a17:907:2da2:: with SMTP id
+ gt34mr21138097ejc.620.1643710638945; 
+ Tue, 01 Feb 2022 02:17:18 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id k7sm14309930ejp.182.2022.02.01.02.17.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 01 Feb 2022 02:17:18 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 89DFE1FFB7;
+ Tue,  1 Feb 2022 10:17:17 +0000 (GMT)
+References: <20220201085554.85733-1-thuth@redhat.com>
+User-agent: mu4e 1.7.6; emacs 28.0.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-trivial@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>
+Cc: qemu-devel@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>, qemu-trivial@nongnu.org, Wainer dos Santos Moschetta
+ <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>, =?utf-8?Q?Daniel?=
+ =?utf-8?Q?_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>
 Subject: Re: [PATCH] tests/lcitool: Allow lcitool-refresh in out-of-tree
  builds, too
-Message-ID: <Yfj8qc4NeJw7UQy+@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20220201085554.85733-1-thuth@redhat.com>
+Date: Tue, 01 Feb 2022 10:17:12 +0000
+In-reply-to: <20220201085554.85733-1-thuth@redhat.com>
+Message-ID: <87a6fazyaa.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20220201085554.85733-1-thuth@redhat.com>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.081,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::62f
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62f.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,31 +88,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Feb 2022 09:26:13 -0000
+X-List-Received-Date: Tue, 01 Feb 2022 10:17:56 -0000
 
-On Tue, Feb 01, 2022 at 09:55:54AM +0100, Thomas Huth wrote:
+
+Thomas Huth <thuth@redhat.com> writes:
+
 > When running "make lcitool-refresh" in an out-of-tree build, it
 > currently fails with an error message from git like this:
-> 
+>
 >  fatal: not a git repository (or any parent up to mount point /)
->  Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
-> 
+>  Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set=
+).
+>
 > Fix it by changing to the source directory first before updating
 > the submodule.
-> 
+>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  tests/lcitool/Makefile.include | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Queued to testing/next, thanks.
 
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+--=20
+Alex Benn=C3=A9e
 
