@@ -1,64 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nFKSq-0000lz-Bv
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Feb 2022 13:34:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41508)
+	id 1nFOh9-0002eq-KN
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Feb 2022 18:05:53 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47026)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1nFKSh-0000hN-Bq
- for qemu-trivial@nongnu.org; Wed, 02 Feb 2022 13:34:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:59451)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1nFKSb-0007DC-4E
- for qemu-trivial@nongnu.org; Wed, 02 Feb 2022 13:34:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643826866;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=shFHqOtZMlot1MYce/edh45LVQIQqnY5ryrPaxgniYA=;
- b=J1LbIxx5NYqA2wC0eJquqqEEg+n0KrOGQwEV4v8QVBz/wfLmhBnoKp1g/ukpp9m/Hu0fHR
- owsnuiWS1cOrDd6WRQhSD9l1on9uxho2fnlbEtN87A+kIa5tn+l8Jh0KJ0HSPATawrj90E
- c552UBRoPQ/ZXo0JA8+LR0B1pW4nMJU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-205-dnqg2AeWOF6w6E-ShlmyXw-1; Wed, 02 Feb 2022 13:34:25 -0500
-X-MC-Unique: dnqg2AeWOF6w6E-ShlmyXw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5D0621015DA0;
- Wed,  2 Feb 2022 18:34:24 +0000 (UTC)
-Received: from dgilbert-t580.localhost (unknown [10.39.195.68])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 33CA884791;
- Wed,  2 Feb 2022 18:34:22 +0000 (UTC)
-From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
-To: qemu-devel@nongnu.org,
-	shorne@gmail.com,
-	richard.henderson@linaro.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH v2] Fix %#0 misuses
-Date: Wed,  2 Feb 2022 18:34:17 +0000
-Message-Id: <20220202183417.116478-1-dgilbert@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nFOgo-0002cn-EL; Wed, 02 Feb 2022 18:05:26 -0500
+Received: from [2607:f8b0:4864:20::42f] (port=37611
+ helo=mail-pf1-x42f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nFOgm-0005bN-C3; Wed, 02 Feb 2022 18:05:25 -0500
+Received: by mail-pf1-x42f.google.com with SMTP id a19so621063pfx.4;
+ Wed, 02 Feb 2022 15:05:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Lr2GjeoiN17rUbzPRNE2b1PSRB0HiXf9jcLR8z+0tBo=;
+ b=BmbjklBXXuU9fAzMTgBU7F9ICWLDiyGhhdRfKKxswftBPuWrSTYMnb55kIkn0r4jsX
+ 5s+NMVkbFmdDQygZmc885VdlQ6NJ1Sr8m2xHJ6IB3PtHLsLpgDgKd2vg1LWPpquIWvhQ
+ jjDASVyvWotpfjjl/LIIDDE8OhVModx8RAa4qFjdfYDkaa+W+Ms7pPYnTkGpnWGUHJGj
+ HTCgVDBeQ1xHzb3CGatxA5BpZud6wlwBT4mFbpjhphOPXCStflM4W0r/AVMAuOjRKoVq
+ E+lRJJoapA5wV9zjf9pCx2uoAG6vsTiiSU40hAbmYmkN2nyftj3F8F5dBj3tuNtM7C8X
+ mFMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Lr2GjeoiN17rUbzPRNE2b1PSRB0HiXf9jcLR8z+0tBo=;
+ b=pTNooYHpbLG1zjuSofiZPYVREeDNriRJt+YQ9DSXyZevf/b4LjQ5XERb8w6kWKOx3f
+ mK8p5plLZPpVKJ2QNZjynr8n/NfI8l5iTUEQnYLfVMuE24wvaKzhhoyzRrbZlVfdCK44
+ 9TibPAnuBthLbpuJKkzQGvYHPeiPNDjrM/jemC1CA7NQc2ZqJJaIWu7AtGb0vt81AnC/
+ ORWX1rjF6OP+ORpGUTJwB0G0rUuGKzkZzeHGgZwW8j5XoAHOvwIL7+Gy+s62Prdu43o0
+ lvyvnB26w0eMIZCakKFJv5dfioFaNCFcukE5+dF5OOH+OWEqjcTjRZKNpY6fL1Dw6F59
+ 5DCA==
+X-Gm-Message-State: AOAM533NvjDecSJBJQvRPpV6WzfHXAoFDyVwWVgaUihJ6pJ4VkMQ1Yjc
+ IBX5/G97fTnCtyDJmNZTb8w=
+X-Google-Smtp-Source: ABdhPJwWNXy+BxDgoX6NhCLlfionDqTtTa+OZi5oYxkWtTyxJGioAPz/2gImRdHnLeEJUbkqRCGdVw==
+X-Received: by 2002:a05:6a00:1828:: with SMTP id
+ y40mr31192010pfa.15.1643843121526; 
+ Wed, 02 Feb 2022 15:05:21 -0800 (PST)
+Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id c5sm26298105pfc.12.2022.02.02.15.05.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Feb 2022 15:05:21 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <77c6899b-5892-5aaa-97ee-a79a74928c09@amsat.org>
+Date: Thu, 3 Feb 2022 00:05:16 +0100
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.0
+Subject: Re: [PATCH v2] Fix %#0 misuses
+Content-Language: en-US
+To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>,
+ qemu-devel@nongnu.org, shorne@gmail.com, richard.henderson@linaro.org
+Cc: qemu-trivial@nongnu.org
+References: <20220202183417.116478-1-dgilbert@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220202183417.116478-1-dgilbert@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.086,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42f
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x42f.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,161 +88,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Feb 2022 18:34:42 -0000
+X-List-Received-Date: Wed, 02 Feb 2022 23:05:38 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+On 2/2/22 19:34, Dr. David Alan Gilbert (git) wrote:
+> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> 
+> Joe Perches pointed out on lkml [1] that the format special %# (which
+> adds 0x) is included in the character count, i.e.:
+> 
+>    printf("0: %#08x\n0: %#08x\n", 0xabcdef01,1);
+> gives:
+> 0: 0xabcdef01
+> 0: 0x000001
+> 
+> rather than padding to the expected 8 data characters.
+> 
+> Replace all the '%#08' cases by '0x%08' and
+> also handle a '%#02'; there are some other cases mostly
+> in testing and a few that look like the authors have
+> thought about the size, that I've ignored for now.
+> 
+> (Note I've not managed to test most of these)
+> 
+> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> 
+> [1] https://lore.kernel.org/lkml/9499203f1e993872b384aabdec59ac223a8ab931.camel@perches.com/
+> 
+> Fixup %#
+> ---
+>   chardev/baum.c          | 2 +-
+>   disas/alpha.c           | 2 +-
+>   disas/sparc.c           | 2 +-
+>   hw/arm/omap1.c          | 2 +-
+>   hw/timer/a9gtimer.c     | 4 ++--
+>   include/hw/arm/omap.h   | 5 +++--
+>   softmmu/device_tree.c   | 2 +-
+>   target/openrisc/disas.c | 2 +-
+>   8 files changed, 11 insertions(+), 10 deletions(-)
 
-Joe Perches pointed out on lkml [1] that the format special %# (which
-adds 0x) is included in the character count, i.e.:
+Few more:
 
-  printf("0: %#08x\n0: %#08x\n", 0xabcdef01,1);
-gives:
-0: 0xabcdef01
-0: 0x000001
+$ git grep -E '\%#[0-9]{1,2}[dDxX]'
+chardev/baum.c:369:            DPRINTF("Broken packet %#2x, tossing\n", 
+req); \
+disas/alpha.c:1854:  (*info->fprintf_func) (info->stream, ".long %#08x", 
+insn);
+hw/audio/ac97.c:244:    dolog ("bd %2d addr=%#x ctl=%#06x len=%#x(%d 
+bytes)\n",
+hw/dma/i8257.c:265:        linfo ("write_cont: nport %#06x, ichan % 2d, 
+val %#06x\n",
+hw/dma/i8257.c:290:    ldebug ("read_cont: nport %#06x, iport %#04x val 
+%#x\n", nport, iport, val);
+softmmu/device_tree.c:372:        error_report("%s: Couldn't set %s/%s = 
+%#08x: %s", __func__,
+target/openrisc/disas.c:48:        output(".long", "%#08x", insn);
+tests/qemu-iotests/nbd-fault-injector.py:187: 
+print('unrecognized command type %#02x' % req.type)
+tests/tcg/arm/fcvt.c:60:    printf("%02d   HALF: %#04x  (%#x => %s)\n",
+tests/tcg/multiarch/libs/float_helpers.c:72:    asprintf(&fmt, 
+"f16(%#04x)", num);
 
-rather than padding to the expected 8 data characters.
+In mood to add a regexp to checkpatch? :)
 
-Replace all the '%#08' cases by '0x%08' and
-also handle a '%#02'; there are some other cases mostly
-in testing and a few that look like the authors have
-thought about the size, that I've ignored for now.
-
-(Note I've not managed to test most of these)
-
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
-[1] https://lore.kernel.org/lkml/9499203f1e993872b384aabdec59ac223a8ab931.camel@perches.com/
-
-Fixup %#
----
- chardev/baum.c          | 2 +-
- disas/alpha.c           | 2 +-
- disas/sparc.c           | 2 +-
- hw/arm/omap1.c          | 2 +-
- hw/timer/a9gtimer.c     | 4 ++--
- include/hw/arm/omap.h   | 5 +++--
- softmmu/device_tree.c   | 2 +-
- target/openrisc/disas.c | 2 +-
- 8 files changed, 11 insertions(+), 10 deletions(-)
-
-diff --git a/chardev/baum.c b/chardev/baum.c
-index 79d618e350..9a842c2bbb 100644
---- a/chardev/baum.c
-+++ b/chardev/baum.c
-@@ -366,7 +366,7 @@ static int baum_eat_packet(BaumChardev *baum, const uint8_t *buf, int len)
-         if (!len--) \
-             return 0; \
-         if (*cur++ != ESC) { \
--            DPRINTF("Broken packet %#2x, tossing\n", req); \
-+            DPRINTF("Broken packet 0x%02x, tossing\n", req); \
-             if (timer_pending(baum->cellCount_timer)) {    \
-                 timer_del(baum->cellCount_timer);     \
-                 baum_cellCount_timer_cb(baum);             \
-diff --git a/disas/alpha.c b/disas/alpha.c
-index 3db90fa665..f218bf023a 100644
---- a/disas/alpha.c
-+++ b/disas/alpha.c
-@@ -1851,7 +1851,7 @@ print_insn_alpha (bfd_vma memaddr, struct disassemble_info *info)
-     }
- 
-   /* No instruction found */
--  (*info->fprintf_func) (info->stream, ".long %#08x", insn);
-+  (*info->fprintf_func) (info->stream, ".long 0x%08x", insn);
- 
-   return 4;
- 
-diff --git a/disas/sparc.c b/disas/sparc.c
-index 5689533ce1..adc8438aa2 100644
---- a/disas/sparc.c
-+++ b/disas/sparc.c
-@@ -3231,6 +3231,6 @@ print_insn_sparc (bfd_vma memaddr, disassemble_info *info)
-     }
- 
-   info->insn_type = dis_noninsn;        /* Mark as non-valid instruction.  */
--  (*info->fprintf_func) (stream, ".long %#08lx", insn);
-+  (*info->fprintf_func) (stream, ".long 0x%08lx", insn);
-   return sizeof (buffer);
- }
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 9852c2a07e..c9e0ae87b1 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -42,7 +42,7 @@
- 
- static inline void omap_log_badwidth(const char *funcname, hwaddr addr, int sz)
- {
--    qemu_log_mask(LOG_GUEST_ERROR, "%s: %d-bit register %#08" HWADDR_PRIx "\n",
-+    qemu_log_mask(LOG_GUEST_ERROR, "%s: %d-bit register 0x%08" HWADDR_PRIx "\n",
-                   funcname, 8 * sz, addr);
- }
- 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 7233068a37..2ea51a137e 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -169,7 +169,7 @@ static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
-         return 0;
-     }
- 
--    DB_PRINT("addr:%#x data:%#08" PRIx64 "\n", (unsigned)addr, ret);
-+    DB_PRINT("addr:0x%x data:0x%08" PRIx64 "\n", (unsigned)addr, ret);
-     return ret;
- }
- 
-@@ -180,7 +180,7 @@ static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
-     A9GTimerState *s = gtb->parent;
-     int shift = 0;
- 
--    DB_PRINT("addr:%#x data:%#08" PRIx64 "\n", (unsigned)addr, value);
-+    DB_PRINT("addr:0x%x data:0x%08" PRIx64 "\n", (unsigned)addr, value);
- 
-     switch (addr) {
-     case R_COUNTER_HI:
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index ff6a173f8a..8b1c2365d5 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -1003,10 +1003,11 @@ void omap_badwidth_write32(void *opaque, hwaddr addr,
- void omap_mpu_wakeup(void *opaque, int irq, int req);
- 
- # define OMAP_BAD_REG(paddr)		\
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad register %#08"HWADDR_PRIx"\n", \
-+        qemu_log_mask(LOG_GUEST_ERROR,  \
-+                      "%s: Bad register 0x%08"HWADDR_PRIx"\n", \
-                       __func__, paddr)
- # define OMAP_RO_REG(paddr)		\
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: Read-only register %#08" \
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Read-only register 0x%08" \
-                                        HWADDR_PRIx "\n", \
-                       __func__, paddr)
- 
-diff --git a/softmmu/device_tree.c b/softmmu/device_tree.c
-index 6ca3fad285..338e1c03fd 100644
---- a/softmmu/device_tree.c
-+++ b/softmmu/device_tree.c
-@@ -369,7 +369,7 @@ int qemu_fdt_setprop_cell(void *fdt, const char *node_path,
- 
-     r = fdt_setprop_cell(fdt, findnode_nofail(fdt, node_path), property, val);
-     if (r < 0) {
--        error_report("%s: Couldn't set %s/%s = %#08x: %s", __func__,
-+        error_report("%s: Couldn't set %s/%s = 0x%08x: %s", __func__,
-                      node_path, property, val, fdt_strerror(r));
-         exit(1);
-     }
-diff --git a/target/openrisc/disas.c b/target/openrisc/disas.c
-index dc025bd64d..72f1476a13 100644
---- a/target/openrisc/disas.c
-+++ b/target/openrisc/disas.c
-@@ -45,7 +45,7 @@ int print_insn_or1k(bfd_vma addr, disassemble_info *info)
-     insn = bfd_getb32(buffer);
- 
-     if (!decode(info, insn)) {
--        output(".long", "%#08x", insn);
-+        output(".long", "0x%08x", insn);
-     }
-     return 4;
- }
--- 
-2.34.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
