@@ -1,80 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nFF1r-0002Uu-1G
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Feb 2022 07:46:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55688)
+	id 1nFGiQ-0003k9-9N
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Feb 2022 09:34:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nFF1n-0002Rv-5Y; Wed, 02 Feb 2022 07:46:27 -0500
-Received: from [2a00:1450:4864:20::32d] (port=44982
- helo=mail-wm1-x32d.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nFF1l-00045z-Mu; Wed, 02 Feb 2022 07:46:26 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- l35-20020a05600c1d2300b0034d477271c1so3819470wms.3; 
- Wed, 02 Feb 2022 04:46:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=JXqoHZx9RaJNH8Wfq3ehf5pr/WkCIRGEXeRLTufmAZs=;
- b=JcnpYZvS3a/ZDUK94C/ipi9dDDhYIf67tY28cLXGWJJp94lGQDI7RzkqztgxlIlF93
- Nm7V2hHjjphxxl4o/MGmfaWjqtY0faKptZfXSOmWYedgGZmiJYCq9Vrqg0733K+hPfRe
- F1WKgyrRwRR4Ofxkmk1iV7rfwVRDo+JnXVGMghA0MIl2zUftaDhgfoQBPlhsM9eTBi8w
- EHxB2ivsZnoiKm03hrQqa3MP3iUSbJzQQmwma9F10lfbuBDJmZjKBA2GJ9GRRPeCU/c9
- PWsXu3UM2oB49kJIEWK32kzRYYIoO0eJwSyY6TCR6tsoOFMjTwNETrNhxXLDVClGAse8
- ESgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=JXqoHZx9RaJNH8Wfq3ehf5pr/WkCIRGEXeRLTufmAZs=;
- b=23rqAuc8yFOOsL6/+l1YDo63aJjYvGhh/yxURghnVoB2QjJERUOL0RUU5qdCWBXQ4P
- YiQcOMV3h0qxaF5+rSALyytEel2wAPPypTLvFhkvCWxOUkD78q9Uxo9gNYqJe4Glk4F5
- iTLTpTbDAlwxvADeGnY3WfZwnBl0H3/jyUuLkGbapUsbGzDho1VO4bPy1D23sc7AH1lP
- d6inVPjGuFJi86vNa68dcuCsxBnxlUZ2b28dYnHNafYrAII7+I9QwHSGlZjyYgt/J1ia
- b4BsXMuIjDzsYaruGciB/r0kJmbY+koBt/Yh+lFe+YHrx5i80QOqUTeFwcJP6qyuFzPv
- 61kg==
-X-Gm-Message-State: AOAM530H3N5feQk7gfpRWm04iZo2AEjvh+xER4RFX9ugFnchSh+d4ngf
- ss3/bh3AFcvBIjoqiPdQ5GM=
-X-Google-Smtp-Source: ABdhPJwbNawwnLwoljXG39kvBi3Ilmx/dVbAJThYriefysTCXUOnYIFq5bkKwDzyGtPWcvc1YxW7pw==
-X-Received: by 2002:a7b:c0d0:: with SMTP id s16mr6015303wmh.169.1643805983818; 
- Wed, 02 Feb 2022 04:46:23 -0800 (PST)
-Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
- [83.50.83.154])
- by smtp.gmail.com with ESMTPSA id h11sm4548236wmb.12.2022.02.02.04.46.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Feb 2022 04:46:23 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <b68c1a68-9404-2031-e729-ac0b1cb1c263@amsat.org>
-Date: Wed, 2 Feb 2022 13:46:22 +0100
+ (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
+ id 1nFGiO-0003e4-LM
+ for qemu-trivial@nongnu.org; Wed, 02 Feb 2022 09:34:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:21192)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
+ id 1nFGiM-0003DA-Go
+ for qemu-trivial@nongnu.org; Wed, 02 Feb 2022 09:34:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643812469;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=btEjiwx03vsruxYCWqBsMG3oi5QhtN7ol7dFxIfkwH4=;
+ b=THCj+UNnreSTjtBKEfZ2SdBIf7aBQ0CBQEwKUc+GbZO3/yfMfhzsKJsKdo8urGWCE480YD
+ JDNg4F8JQHlBy0uknxb1wRmtQX39PWv9iID1vDG55vWQn1wvNAHW9tEDjDXiIR2q4nWzeA
+ nPpEvFXg0xK/uHDtcAsv1h43UN81VmI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-153-YXE1HaqdNi2cfNvIMPWedw-1; Wed, 02 Feb 2022 09:34:26 -0500
+X-MC-Unique: YXE1HaqdNi2cfNvIMPWedw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 52C4D46860;
+ Wed,  2 Feb 2022 14:34:25 +0000 (UTC)
+Received: from thinkpad.redhat.com (unknown [10.39.193.0])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B06F52B4B1;
+ Wed,  2 Feb 2022 14:34:23 +0000 (UTC)
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH] qemu-options: fix incorrect description for '-drive index='
+Date: Wed,  2 Feb 2022 15:34:22 +0100
+Message-Id: <20220202143422.912070-1-lvivier@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.5.0
-Subject: Re: [PATCH v2] hw/rx: rx-gdbsim DTB load address aligned of 16byte.
-Content-Language: en-US
-To: Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20220202103023.788916-1-ysato@users.sourceforge.jp>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220202103023.788916-1-ysato@users.sourceforge.jp>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lvivier@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32d
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=lvivier@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.086,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,32 +70,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Feb 2022 12:46:28 -0000
+X-List-Received-Date: Wed, 02 Feb 2022 14:34:32 -0000
 
-On 2/2/22 11:30, Yoshinori Sato wrote:
-> Linux kernel required alined address of DTB.
-> But missing align in dtb load function.
-> Fixed to load to the correct address.
-> 
-> v2 changes.
-> Use ROUND_DOWN macro.
-> 
-> Signed-off-by: Yoshinori Sato <ysato@users.sourceforge.jp>
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   hw/rx/rx-gdbsim.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
-> index 75d1fec6ca..2356af83a0 100644
-> --- a/hw/rx/rx-gdbsim.c
-> +++ b/hw/rx/rx-gdbsim.c
-> @@ -142,7 +142,7 @@ static void rx_gdbsim_init(MachineState *machine)
->                   exit(1);
->               }
->               /* DTB is located at the end of SDRAM space. */
-> -            dtb_offset = machine->ram_size - dtb_size;
-> +            dtb_offset = ROUND_DOWN(machine->ram_size - dtb_size, 16 - 1);
+qemu-options.hx contains grammar that a native English-speaking
+person would never use.
 
-Why did you add '-1'?
+Replace "This option defines where is connected the drive" by
+"This option defines where the drive is connected".
+
+Fixes: https://gitlab.com/qemu-project/qemu/-/issues/853
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+---
+ qemu-options.hx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index ba3ae6a42aa3..094a6c1d7c28 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1377,7 +1377,7 @@ SRST
+         the bus number and the unit id.
+ 
+     ``index=index``
+-        This option defines where is connected the drive by using an
++        This option defines where the drive is connected by using an
+         index in the list of available connectors of a given interface
+         type.
+ 
+-- 
+2.34.1
+
 
