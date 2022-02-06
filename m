@@ -1,73 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nGmTR-00010k-N8
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Feb 2022 13:41:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48166)
+	id 1nGmTk-00014O-Oa
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Feb 2022 13:41:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48178)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1nGmTC-0000sZ-Jd; Sun, 06 Feb 2022 13:41:10 -0500
-Received: from [2a00:1450:4864:20::435] (port=42573
- helo=mail-wr1-x435.google.com)
+ id 1nGmTD-0000sb-JW; Sun, 06 Feb 2022 13:41:10 -0500
+Received: from [2a00:1450:4864:20::430] (port=42568
+ helo=mail-wr1-x430.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1nGmT5-0006cc-Ld; Sun, 06 Feb 2022 13:41:02 -0500
-Received: by mail-wr1-x435.google.com with SMTP id h6so2440421wrb.9;
- Sun, 06 Feb 2022 10:40:02 -0800 (PST)
+ id 1nGmT4-0006cJ-An; Sun, 06 Feb 2022 13:41:07 -0500
+Received: by mail-wr1-x430.google.com with SMTP id h6so2440317wrb.9;
+ Sun, 06 Feb 2022 10:40:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:signed-off-by:content-transfer-encoding;
- bh=A/HCs/kNXI7cJGLKEQ8PcT+uHPNHbpAq4h2rDiwNG1I=;
- b=NNz3yZt402vcxzwC44FRqUjHq3hR+MRRd0aKu/FuT5LqXSDrUH3ZXs4EDtahaIDYpx
- qYG6XN0mSIb3I71Opa4ogn4c2v+nLANLlHuS0Ccg5I3x53RGYETqCbF8bkn8hkrdwqPo
- uz4xRASWJjOKQv8jj47OOx6EJklpnSw443iccQBHaZAU+YtXAWsQ+hx0LVfIY21PwrZp
- +oR/S8ss6mytN9Qwk3lOjENFZuu71C/AEiaD08XZ+SVyiCJSPDyIrJpF4mQCAvJghmAo
- lMGXoH6nqIU802psFlk4M3BLAdwfsfzi99zdT1z1lI+IvGoP6R48OTNlF8Sdj6L/UJzw
- 7ApA==
+ h=from:to:cc:subject:date:message-id:mime-version:signed-off-by
+ :content-transfer-encoding;
+ bh=spjgzVubc5usm9XSuLd7P6qivAQqGr2OOPaSftBQs4Q=;
+ b=XfMRPta4RCA9Nx9dw0MObhDfCJgTIB8z/PjsR8FL889WIxH+ZfFDAgvlyvAtspn2Lr
+ Fg3bsZ85A32gEarM6ELsz3su46eklh0tcc8TUfdtfOwC//LPul8XIDbW6GkERLpyEI1t
+ UgboM9yhmUUgrdUy/6dJas+OOw9APJJTNxgfq7KlpZTU3jOPJaWd4guD1ArUL26PefbO
+ l6rsmc9gDJolY/cb8sJokE24fcYHp+KOKAm4J3Z4x0IhDtgFmZ+AqVoZBBjG7YShrwbC
+ ow3NHsyOcGhv6UmHqjTu58mlRnKKotJ1MJpV8VO7MrIl5Zo4AuIxBCrJH0Tz7c5WQqS2
+ Jmmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:signed-off-by:content-transfer-encoding;
- bh=A/HCs/kNXI7cJGLKEQ8PcT+uHPNHbpAq4h2rDiwNG1I=;
- b=MuHWDtIKPPMPsL+GveVX9/b8vdUTGS1DodXsHuHFBPl2j+rrs1cGG2WTAOPTFcO+x3
- DXZzG9uTP2aERQ8iZNvUVAB9mFwHBy4xVQy+h3XxzT45B6z3MDdcRp1jGZXIQeDwOvyS
- T43T9L7hC1UIzzwZxeR5x3SsUiB5PF80qfN72OP8DgSU2LIBPIG+GdgUsFb+rimbOtnH
- 3WHInZKmBNYI/Bux+dbURpDczPFLflCqc+tkBXd+e54B3TS9gxUJE38vlz5kano8vFfJ
- 6J2lSD3I7hglflz5teOehS0RWht59SOuV5vgQ8Q2vxK1VjOyTioV53ngQIHXaUafIG1f
- mS1A==
-X-Gm-Message-State: AOAM530rTx1qvSfCtuLfqT6a5TKsalMthSOvUuCv1wT1Sod+MU0yoI11
- yl2NlzPfLtxodmZNIuf9dMyx/iAYK4s=
-X-Google-Smtp-Source: ABdhPJz1ZJUY1JbRPg4v4YwiealrsYpKdmryaiw4obInns1aI/YwJlcLY1dtfXsFy5WNnHppweN+OQ==
-X-Received: by 2002:adf:ee81:: with SMTP id b1mr2776057wro.149.1644172801391; 
- Sun, 06 Feb 2022 10:40:01 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :signed-off-by:content-transfer-encoding;
+ bh=spjgzVubc5usm9XSuLd7P6qivAQqGr2OOPaSftBQs4Q=;
+ b=B3ybdwSPkK5YzB2ZU+rKbCY25mchPdEJoynv3JwbA1KF6c3WeTbL0pJgS/IxAukHuk
+ 6ILv6sINITWTg1QGhoQsDbib3ZheO2yfFowk1naMQV1tiNFj1Pw1xc1WdmfX4DApNtCn
+ AQP4wE1UZ0YlZ+TaBvV6OOU3tnzVIxzdPu2xrMdk9bXOgnHqeKQFWZqs5QWGsK6HVeGk
+ BkyPCyP9e6g/0KyaSTj35HH3kISv4EUg92XStMsFHS02k7nqFM0FMBBRzPCCNKooMjhj
+ HzHr84IhG8BQnGsKSnpT+Nn6Ui5T5Cz4J2MNK3nTC+uCz+27V8dI0zCoV6ws3pX/Cn9J
+ c+1g==
+X-Gm-Message-State: AOAM530j44DtzuGe4Rq2QknvoeLS6/BXHXQ4pyHeNj8Ivv3+5s4/o9/W
+ CEHQ9KSOejS5lmuO0IT7bC3/PC1tWEY=
+X-Google-Smtp-Source: ABdhPJzIFnmzx/G9s3Vztg+1RjXT6CwS+pRuT+D/lOZGD5j1J+bkLEF3ax64cSB2zV5AE/moV/ah5g==
+X-Received: by 2002:a05:6000:1acb:: with SMTP id
+ i11mr6506199wry.195.1644172799080; 
+ Sun, 06 Feb 2022 10:39:59 -0800 (PST)
 Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
  [194.75.11.201])
- by smtp.googlemail.com with ESMTPSA id y8sm8695566wrd.32.2022.02.06.10.40.00
+ by smtp.googlemail.com with ESMTPSA id y8sm8695566wrd.32.2022.02.06.10.39.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Feb 2022 10:40:00 -0800 (PST)
+ Sun, 06 Feb 2022 10:39:58 -0800 (PST)
 From: Carwyn Ellis <carwynellis@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	Carwyn Ellis <carwynellis@gmail.com>
-Subject: [PATCH v3 2/2] hw/display/vmware_vga: do not discard screen updates
-Date: Sun,  6 Feb 2022 18:39:56 +0000
-Message-Id: <20220206183956.10694-3-carwynellis@gmail.com>
+Subject: [PATCH v3 0/2] use trace events and fix garbled output
+Date: Sun,  6 Feb 2022 18:39:54 +0000
+Message-Id: <20220206183956.10694-1-carwynellis@gmail.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220206183956.10694-1-carwynellis@gmail.com>
-References: <20220206183956.10694-1-carwynellis@gmail.com>
 MIME-Version: 1.0
 Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::435
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=carwynellis@gmail.com; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=carwynellis@gmail.com; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
 X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,111 +82,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 06 Feb 2022 18:41:16 -0000
 
-In certain circumstances, typically when there is lots changing on the
-screen, updates will be discarded resulting in garbled output.
+This patchset supersedes earlier submissions and incorporates feedback
+from Laurent Vivier, Gerd Hoffmann and Philippe Mathieu-Daudé.
 
-This change simplifies the traversal of the display update FIFO queue
-when applying updates. We just track the queue length and iterate up to
-the end of the queue.
+There are two patches addressing the following in the vmware vga display
+code
 
-Additionally when adding updates to the queue, if the buffer reaches
-capacity we force a flush before accepting further events.
+ - use of fprintf to log debug output to STDERR
 
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
----
- hw/display/trace-events |  1 +
- hw/display/vmware_vga.c | 41 +++++++++++++++++++++++------------------
- 2 files changed, 24 insertions(+), 18 deletions(-)
+   This has been replaced with trace events.
 
-diff --git a/hw/display/trace-events b/hw/display/trace-events
-index 91efc88f04..0c0ffcbe42 100644
---- a/hw/display/trace-events
-+++ b/hw/display/trace-events
-@@ -24,6 +24,7 @@ vmware_setmode(uint32_t w, uint32_t h, uint32_t bpp) "%dx%d @ %d bpp"
- vmware_verify_rect_less_than_zero(const char *name, const char *param, int x) "%s: %s was < 0 (%d)"
- vmware_verify_rect_greater_than_bound(const char *name, const char *param, int bound, int x) "%s: %s was > %d (%d)"
- vmware_verify_rect_surface_bound_exceeded(const char *name, const char *component, int bound, const char *param1, int value1, const char *param2, int value2) "%s: %s > %d (%s: %d, %s: %d)"
-+vmware_update_rect_delayed_flush(void) "display update FIFO full - forcing flush"
- 
- # virtio-gpu-base.c
- virtio_gpu_features(bool virgl) "virgl %d"
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index 0cc43a1f15..8a3c3cb8f0 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -80,7 +80,7 @@ struct vmsvga_state_s {
-     struct vmsvga_rect_s {
-         int x, y, w, h;
-     } redraw_fifo[REDRAW_FIFO_LEN];
--    int redraw_fifo_first, redraw_fifo_last;
-+    int redraw_fifo_last;
- };
- 
- #define TYPE_VMWARE_SVGA "vmware-svga"
-@@ -380,33 +380,39 @@ static inline void vmsvga_update_rect(struct vmsvga_state_s *s,
-     dpy_gfx_update(s->vga.con, x, y, w, h);
- }
- 
--static inline void vmsvga_update_rect_delayed(struct vmsvga_state_s *s,
--                int x, int y, int w, int h)
--{
--    struct vmsvga_rect_s *rect = &s->redraw_fifo[s->redraw_fifo_last++];
--
--    s->redraw_fifo_last &= REDRAW_FIFO_LEN - 1;
--    rect->x = x;
--    rect->y = y;
--    rect->w = w;
--    rect->h = h;
--}
--
- static inline void vmsvga_update_rect_flush(struct vmsvga_state_s *s)
- {
-     struct vmsvga_rect_s *rect;
- 
-     if (s->invalidated) {
--        s->redraw_fifo_first = s->redraw_fifo_last;
-+        s->redraw_fifo_last = 0;
-         return;
-     }
-     /* Overlapping region updates can be optimised out here - if someone
-      * knows a smart algorithm to do that, please share.  */
--    while (s->redraw_fifo_first != s->redraw_fifo_last) {
--        rect = &s->redraw_fifo[s->redraw_fifo_first++];
--        s->redraw_fifo_first &= REDRAW_FIFO_LEN - 1;
-+    for (int i = 0; i < s->redraw_fifo_last; i++) {
-+        rect = &s->redraw_fifo[i];
-         vmsvga_update_rect(s, rect->x, rect->y, rect->w, rect->h);
-     }
-+
-+    s->redraw_fifo_last = 0;
-+}
-+
-+static inline void vmsvga_update_rect_delayed(struct vmsvga_state_s *s,
-+                int x, int y, int w, int h)
-+{
-+
-+    if (s->redraw_fifo_last >= REDRAW_FIFO_LEN) {
-+        trace_vmware_update_rect_delayed_flush();
-+        vmsvga_update_rect_flush(s);
-+    }
-+
-+    struct vmsvga_rect_s *rect = &s->redraw_fifo[s->redraw_fifo_last++];
-+
-+    rect->x = x;
-+    rect->y = y;
-+    rect->w = w;
-+    rect->h = h;
- }
- 
- #ifdef HW_RECT_ACCEL
-@@ -1159,7 +1165,6 @@ static void vmsvga_reset(DeviceState *dev)
-     s->config = 0;
-     s->svgaid = SVGA_ID;
-     s->cursor.on = 0;
--    s->redraw_fifo_first = 0;
-     s->redraw_fifo_last = 0;
-     s->syncing = 0;
- 
+ - garbled display due to lost display updates
+
+   This prevents an issue that can cause garbled display output when
+   a high number of screen updates are being requested.
+
+   The queue is now flushed when it reaches capacity.
+
+   The code traversing the queue when updates are being applied to the
+   display has also been simplified, since we always start the traversal
+   at the beginning of the queue to ensure that all updates are applied.
+
+Carwyn Ellis (2):
+  hw/display/vmware_vga: replace fprintf calls with trace events
+  hw/display/vmware_vga: do not discard screen updates
+
+ hw/display/trace-events |  4 +++
+ hw/display/vmware_vga.c | 71 ++++++++++++++++++++++++-----------------
+ 2 files changed, 45 insertions(+), 30 deletions(-)
+
 -- 
 2.35.1
 
