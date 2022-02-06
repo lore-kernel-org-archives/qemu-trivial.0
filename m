@@ -1,73 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nGmTk-00014O-Oa
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Feb 2022 13:41:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48178)
+	id 1nGoqg-00028N-AW
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Feb 2022 16:13:30 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49544)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1nGmTD-0000sb-JW; Sun, 06 Feb 2022 13:41:10 -0500
-Received: from [2a00:1450:4864:20::430] (port=42568
- helo=mail-wr1-x430.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nGoqf-00026Q-78; Sun, 06 Feb 2022 16:13:29 -0500
+Received: from [2a00:1450:4864:20::42c] (port=38607
+ helo=mail-wr1-x42c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1nGmT4-0006cJ-An; Sun, 06 Feb 2022 13:41:07 -0500
-Received: by mail-wr1-x430.google.com with SMTP id h6so2440317wrb.9;
- Sun, 06 Feb 2022 10:40:00 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nGoqd-0002Fm-NM; Sun, 06 Feb 2022 16:13:28 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id s10so18918978wra.5;
+ Sun, 06 Feb 2022 13:13:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version:signed-off-by
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=spjgzVubc5usm9XSuLd7P6qivAQqGr2OOPaSftBQs4Q=;
- b=XfMRPta4RCA9Nx9dw0MObhDfCJgTIB8z/PjsR8FL889WIxH+ZfFDAgvlyvAtspn2Lr
- Fg3bsZ85A32gEarM6ELsz3su46eklh0tcc8TUfdtfOwC//LPul8XIDbW6GkERLpyEI1t
- UgboM9yhmUUgrdUy/6dJas+OOw9APJJTNxgfq7KlpZTU3jOPJaWd4guD1ArUL26PefbO
- l6rsmc9gDJolY/cb8sJokE24fcYHp+KOKAm4J3Z4x0IhDtgFmZ+AqVoZBBjG7YShrwbC
- ow3NHsyOcGhv6UmHqjTu58mlRnKKotJ1MJpV8VO7MrIl5Zo4AuIxBCrJH0Tz7c5WQqS2
- Jmmw==
+ bh=JC1QD9vIsXZyWYPfKRDh+XPexunFvQS4EJ2p2X3jQIg=;
+ b=kECo74qoY9pmaMXQhD6cY1C0NoOuq2NuieO21UDECeazIDKHTTSkEYC4spebX7IOLX
+ K0Djma4mC7a4UKPCfws1BJg/ExadvJh0orF9owZUgWgwPA1KOu71FrPGjdlFNAjYZ3XX
+ miFcW4wvfQgCvCFat0I+UcWTV3ZlsA7APTNEGJe8k7iV5dQjIJaRVXkxsygUlKIQeOyn
+ OLMRYWrkRxTQnZ7J138ifhxTfpjD/dApeMEffHodXPPfWVYPFl3c1en+meqDk3h0GWkN
+ QYcm1Gh/ElnKJy8V3/ff6jqspXTmjrsPEzeOqx5o72Kz0wa2WPF5v8XSuLeBoXi28edP
+ 1FEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :signed-off-by:content-transfer-encoding;
- bh=spjgzVubc5usm9XSuLd7P6qivAQqGr2OOPaSftBQs4Q=;
- b=B3ybdwSPkK5YzB2ZU+rKbCY25mchPdEJoynv3JwbA1KF6c3WeTbL0pJgS/IxAukHuk
- 6ILv6sINITWTg1QGhoQsDbib3ZheO2yfFowk1naMQV1tiNFj1Pw1xc1WdmfX4DApNtCn
- AQP4wE1UZ0YlZ+TaBvV6OOU3tnzVIxzdPu2xrMdk9bXOgnHqeKQFWZqs5QWGsK6HVeGk
- BkyPCyP9e6g/0KyaSTj35HH3kISv4EUg92XStMsFHS02k7nqFM0FMBBRzPCCNKooMjhj
- HzHr84IhG8BQnGsKSnpT+Nn6Ui5T5Cz4J2MNK3nTC+uCz+27V8dI0zCoV6ws3pX/Cn9J
- c+1g==
-X-Gm-Message-State: AOAM530j44DtzuGe4Rq2QknvoeLS6/BXHXQ4pyHeNj8Ivv3+5s4/o9/W
- CEHQ9KSOejS5lmuO0IT7bC3/PC1tWEY=
-X-Google-Smtp-Source: ABdhPJzIFnmzx/G9s3Vztg+1RjXT6CwS+pRuT+D/lOZGD5j1J+bkLEF3ax64cSB2zV5AE/moV/ah5g==
-X-Received: by 2002:a05:6000:1acb:: with SMTP id
- i11mr6506199wry.195.1644172799080; 
- Sun, 06 Feb 2022 10:39:59 -0800 (PST)
-Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
- [194.75.11.201])
- by smtp.googlemail.com with ESMTPSA id y8sm8695566wrd.32.2022.02.06.10.39.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Feb 2022 10:39:58 -0800 (PST)
-From: Carwyn Ellis <carwynellis@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Carwyn Ellis <carwynellis@gmail.com>
-Subject: [PATCH v3 0/2] use trace events and fix garbled output
-Date: Sun,  6 Feb 2022 18:39:54 +0000
-Message-Id: <20220206183956.10694-1-carwynellis@gmail.com>
-X-Mailer: git-send-email 2.35.1
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=JC1QD9vIsXZyWYPfKRDh+XPexunFvQS4EJ2p2X3jQIg=;
+ b=LMh7JtvgSfKu4JjC0ZDhQeOhaRHTqbYX4dYE5iIvzw6ay+5thgaI8IhZua6S1AA7eD
+ p8Sg8XEwwNe1qTb47alwOmA5OWSBa6IrW203PgPl5/4Q0yY4mykvWW3hD69vh7f7iONi
+ 1+IJ3alTV9C7Qa0ggX4kN8lWf57yJls6C/tFqbzJtLI/afHAXMRsMmB1kN+7/B43QWEp
+ DSWSYRoKgf8itXjYERqRezGRYaZRGcYHrFCOUA/r+7/lqQPf/dX+1JS6KyyhWH4f4Gmp
+ 8tDCgfu24OTMmRk6FfRXghXzcRuM2+amdAZC2sZIyWzZPVi5Mwat8NPvSR8AxNRf4h4r
+ UJLw==
+X-Gm-Message-State: AOAM532jRzfHqU2TWq/LobkeXpp1936rZtBrkbBogXPV6KPrpZCVQMhm
+ FvShIh7WlmPYgKm3h/gwBcQ=
+X-Google-Smtp-Source: ABdhPJzLvOx4vwdU1DT/BpdmIC4R7WBRsxGk5P6Z+ziL6jCF+RulXxfJV2Mn2ZY8UArBjUMIDJyZyQ==
+X-Received: by 2002:a5d:6381:: with SMTP id p1mr7455393wru.549.1644182006104; 
+ Sun, 06 Feb 2022 13:13:26 -0800 (PST)
+Received: from [192.168.1.33] (154.red-83-50-83.dynamicip.rima-tde.net.
+ [83.50.83.154])
+ by smtp.gmail.com with ESMTPSA id q140sm4890797wme.16.2022.02.06.13.13.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 06 Feb 2022 13:13:25 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <de082768-694d-d3ab-a553-6b862aab5bc5@amsat.org>
+Date: Sun, 6 Feb 2022 22:13:25 +0100
 MIME-Version: 1.0
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.1
+Subject: Re: [PATCH v3 1/2] hw/display/vmware_vga: replace fprintf calls with
+ trace events
+Content-Language: en-US
+To: Carwyn Ellis <carwynellis@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+References: <20220206183956.10694-1-carwynellis@gmail.com>
+ <20220206183956.10694-2-carwynellis@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220206183956.10694-2-carwynellis@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42c
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=carwynellis@gmail.com; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  PDS_HP_HELO_NORDNS=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,38 +88,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Feb 2022 18:41:16 -0000
+X-List-Received-Date: Sun, 06 Feb 2022 21:13:29 -0000
 
-This patchset supersedes earlier submissions and incorporates feedback
-from Laurent Vivier, Gerd Hoffmann and Philippe Mathieu-Daudé.
+On 6/2/22 19:39, Carwyn Ellis wrote:
+> Debug output was always being sent to STDERR.
+> 
+> This has been replaced with trace events.
+> 
+> Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+> ---
+>   hw/display/trace-events |  3 +++
+>   hw/display/vmware_vga.c | 30 ++++++++++++++++++------------
+>   2 files changed, 21 insertions(+), 12 deletions(-)
 
-There are two patches addressing the following in the vmware vga display
-code
-
- - use of fprintf to log debug output to STDERR
-
-   This has been replaced with trace events.
-
- - garbled display due to lost display updates
-
-   This prevents an issue that can cause garbled display output when
-   a high number of screen updates are being requested.
-
-   The queue is now flushed when it reaches capacity.
-
-   The code traversing the queue when updates are being applied to the
-   display has also been simplified, since we always start the traversal
-   at the beginning of the queue to ensure that all updates are applied.
-
-Carwyn Ellis (2):
-  hw/display/vmware_vga: replace fprintf calls with trace events
-  hw/display/vmware_vga: do not discard screen updates
-
- hw/display/trace-events |  4 +++
- hw/display/vmware_vga.c | 71 ++++++++++++++++++++++++-----------------
- 2 files changed, 45 insertions(+), 30 deletions(-)
-
--- 
-2.35.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
