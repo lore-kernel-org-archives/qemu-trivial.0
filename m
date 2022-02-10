@@ -1,92 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nHXzJ-0006Vo-Ni
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Feb 2022 16:25:25 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57508)
+	id 1nI4mc-0001vB-Cn
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Feb 2022 03:26:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dirty@apple.com>)
- id 1nHXz3-0006S2-Ex; Tue, 08 Feb 2022 16:25:11 -0500
-Received: from rn-mailsvcp-ppex-lapp45.rno.apple.com ([17.179.253.49]:37630
- helo=rn-mailsvcp-ppex-lapp45.apple.com)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nI4mY-0001q6-Pr
+ for qemu-trivial@nongnu.org; Thu, 10 Feb 2022 03:26:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:47508)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dirty@apple.com>)
- id 1nHXyz-0001wX-H2; Tue, 08 Feb 2022 16:25:07 -0500
-Received: from pps.filterd (rn-mailsvcp-ppex-lapp45.rno.apple.com [127.0.0.1])
- by rn-mailsvcp-ppex-lapp45.rno.apple.com (8.16.1.2/8.16.1.2) with
- SMTP id 218L9wAH016254; Tue, 8 Feb 2022 13:25:04 -0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com;
- h=content-type :
- mime-version : subject : from : in-reply-to : date : cc :
- content-transfer-encoding : message-id : references : to; s=20180706;
- bh=1HnOBy94IwfqYl7pjVzCXTYCgP2pb4mwnRuajn3eLmY=;
- b=kaug1jdvypli4w3uZnFAErACjD9pQUfrG4KCAbgDLSQkDu0gf8dW8/3ylIAsF+xRa6sd
- ACxlnl7R44vi8C94aGba+7yWR5N9FHof4uJUX69u1Le8xhdXFg63t3wbcP0PcMf7TmN9
- TD98HDQ+L2w5IFiTzPR4bswKhrK7vwUyPhza5bJj+UcOdp6ETvkJbfL8KStJ6KmiDQBF
- jPIywwiIQ+smw8FIj7owxbargvdTv62kTJYGCajHu/I019OZQ9gDIac6IXPgAvZEVXyj
- Q2pzy728qU7Yc+zLjRcZXceTfeoAy3SPK3BTUL95cZAI7FxMr7pLRxtFAyNjJ2Z7mbC9 FQ== 
-Received: from rn-mailsvcp-mta-lapp03.rno.apple.com
- (rn-mailsvcp-mta-lapp03.rno.apple.com [10.225.203.151])
- by rn-mailsvcp-ppex-lapp45.rno.apple.com with ESMTP id 3e1rdw2vcr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NO);
- Tue, 08 Feb 2022 13:25:04 -0800
-Received: from rn-mailsvcp-mmp-lapp02.rno.apple.com
- (rn-mailsvcp-mmp-lapp02.rno.apple.com [17.179.253.15])
- by rn-mailsvcp-mta-lapp03.rno.apple.com
- (Oracle Communications Messaging Server 8.1.0.12.20210903 64bit (built Sep 3
- 2021)) with ESMTPS id <0R7000NRS8TRSD70@rn-mailsvcp-mta-lapp03.rno.apple.com>; 
- Tue, 08 Feb 2022 13:25:03 -0800 (PST)
-Received: from process_milters-daemon.rn-mailsvcp-mmp-lapp02.rno.apple.com by
- rn-mailsvcp-mmp-lapp02.rno.apple.com
- (Oracle Communications Messaging Server 8.1.0.12.20210903 64bit (built Sep 3
- 2021)) id <0R7000H008RSOL00@rn-mailsvcp-mmp-lapp02.rno.apple.com>; Tue,
- 08 Feb 2022 13:25:03 -0800 (PST)
-X-Va-A: 
-X-Va-T-CD: 16f626147f7367ea3787748dc0255bf0
-X-Va-E-CD: f4eddad3b57a264b2be953ea0d8040c0
-X-Va-R-CD: 737e400e4e3995eefa44c59dd587b24b
-X-Va-CD: 0
-X-Va-ID: ba671030-a90e-4382-b7fb-62ccdcc471b3
-X-V-A: 
-X-V-T-CD: 16f626147f7367ea3787748dc0255bf0
-X-V-E-CD: f4eddad3b57a264b2be953ea0d8040c0
-X-V-R-CD: 737e400e4e3995eefa44c59dd587b24b
-X-V-CD: 0
-X-V-ID: ea2ed6b3-f2c3-4bd1-b480-4e15ec413d55
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.425, 18.0.816
- definitions=2022-02-08_06:2022-02-07,
- 2022-02-08 signatures=0
-Received: from smtpclient.apple ([17.149.229.60])
- by rn-mailsvcp-mmp-lapp02.rno.apple.com
- (Oracle Communications Messaging Server 8.1.0.12.20210903 64bit (built Sep 3
- 2021))
- with ESMTPSA id <0R70002M78T1QD10@rn-mailsvcp-mmp-lapp02.rno.apple.com>; Tue,
- 08 Feb 2022 13:25:02 -0800 (PST)
-Content-type: text/plain; charset=utf-8
-MIME-version: 1.0 (Mac OS X Mail 15.0 \(3693.20.0.1.32\))
-Subject: Re: [PATCH] hvf: Use standard CR0 and CR4 register definitions
-From: Cameron Esfahani <dirty@apple.com>
-In-reply-to: <a2e059da-4c3a-66b7-6ce6-2b2fed0f980a@redhat.com>
-Date: Tue, 08 Feb 2022 13:25:02 -0800
-Cc: Cameron Esfahani via <qemu-devel@nongnu.org>,
- Roman Bolshakov <r.bolshakov@yadro.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Content-transfer-encoding: quoted-printable
-Message-id: <8413E8AB-3EB1-42D4-A02C-EC5CADE13D51@apple.com>
-References: <20211029013315.79207-1-dirty@apple.com>
- <a2e059da-4c3a-66b7-6ce6-2b2fed0f980a@redhat.com>
-To: QEMU Trivial <qemu-trivial@nongnu.org>
-X-Mailer: Apple Mail (2.3693.20.0.1.32)
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.425, 18.0.816
- definitions=2022-02-08_06:2022-02-07,
- 2022-02-08 signatures=0
-Received-SPF: pass client-ip=17.179.253.49; envelope-from=dirty@apple.com;
- helo=rn-mailsvcp-ppex-lapp45.apple.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nI4mV-0006p8-Hk
+ for qemu-trivial@nongnu.org; Thu, 10 Feb 2022 03:26:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1644481582;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hseZq7a2lxPYo8hUFen1q3BMsz5xUpfzza9DtD2LoHM=;
+ b=OUMOqfF1Oe3aGz67WnGU1NFzii0G0Y0Yx0Yu6ABUueKM9hUlbK0dIJ8/gQsXWhJO47EJa4
+ /vz1sMTiB4ypV83nWIEtrVI4uTyUx27/NojGvlcXb2zQXH1cge9cULnVKDNANSbq7/tDrU
+ 8yPCa1szdqk8pfH4hHkmqG53n7DOp6w=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-653-rDvZ9ygrNNedUFPBwlmDsw-1; Thu, 10 Feb 2022 03:26:21 -0500
+X-MC-Unique: rDvZ9ygrNNedUFPBwlmDsw-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ m8-20020adfa3c8000000b001e3381fdf45so2161330wrb.4
+ for <qemu-trivial@nongnu.org>; Thu, 10 Feb 2022 00:26:21 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=hseZq7a2lxPYo8hUFen1q3BMsz5xUpfzza9DtD2LoHM=;
+ b=lt0Yp8KoZjt9VwxgGNT8j4nMa89GgsDa81gPpgtH3EzLfkMZCVlog3q3P1VQ81DF+U
+ iQx5djDrjCOcPDFE1JuIVm01vkVeMvNPYg+AZzgQ3aa85dcKfcgirkoJlLnSdjU9huEK
+ 3/+fMp/hihtWEEEVbaPI/0GREcjxNDufcY/l4CfTgQMAK5lQlDsNjLzyRC/C83UAX1Or
+ onsiosGz7pnYaIsZoc1DNv+SokRj4fRxDHQqJqEHB0fl1P9HI4FaD+fVdAQO7M5gTQBg
+ c7bHhkVN/4Df5fZhoddzZMiNW4ihdJmB+rDwLGMuScB15q4madniQMSmiwKaAR0b5NNQ
+ BMaA==
+X-Gm-Message-State: AOAM530OYaMHDH4SHdu/7e688tXpHKZN+U0sq3TyP3I7y65YQzmfnUGQ
+ XSuVpymhABc/ZYlahk69f/pLYGBjGJywlpAgluwI818599PdEukntUPNW/2vRg92HpUpfdJitbZ
+ 1TQW60vbdKDJ3AHbk6g==
+X-Received: by 2002:a5d:43c6:: with SMTP id v6mr5569459wrr.530.1644481578237; 
+ Thu, 10 Feb 2022 00:26:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzTKGYjCKh4Mi7TJY2FgElvQ5l8lN+K0hTqmqZjpjUKHh7+9BMlbLMJ2jOTRru2Y686GxVi3A==
+X-Received: by 2002:a5d:43c6:: with SMTP id v6mr5569444wrr.530.1644481577984; 
+ Thu, 10 Feb 2022 00:26:17 -0800 (PST)
+Received: from [192.168.8.104] (tmo-098-218.customers.d1-online.com.
+ [80.187.98.218])
+ by smtp.gmail.com with ESMTPSA id p27sm1431324wms.1.2022.02.10.00.26.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 10 Feb 2022 00:26:17 -0800 (PST)
+Message-ID: <10c05761-6422-48c8-4c53-9e9378b98a4c@redhat.com>
+Date: Thu, 10 Feb 2022 09:26:15 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH 03/15] hw/tricore: Remove unused and incorrect header
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20220209215446.58402-1-f4bug@amsat.org>
+ <20220209215446.58402-4-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20220209215446.58402-4-f4bug@amsat.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,29 +96,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Feb 2022 21:25:14 -0000
+X-List-Received-Date: Thu, 10 Feb 2022 08:26:27 -0000
 
-Ping
+On 09/02/2022 22.54, Philippe Mathieu-Daudé wrote:
+> TriCore boards certainly don't need the ARM loader API :)
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   include/hw/tricore/triboard.h | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/include/hw/tricore/triboard.h b/include/hw/tricore/triboard.h
+> index f3844be447..094c8bd563 100644
+> --- a/include/hw/tricore/triboard.h
+> +++ b/include/hw/tricore/triboard.h
+> @@ -21,7 +21,6 @@
+>   #include "qemu/osdep.h"
+>   #include "qapi/error.h"
+>   #include "hw/boards.h"
+> -#include "hw/arm/boot.h"
+>   #include "sysemu/sysemu.h"
+>   #include "exec/address-spaces.h"
+>   #include "qom/object.h"
 
-Cameron
-
-> On Oct 28, 2021, at 11:09 PM, Philippe Mathieu-Daud=C3=A9 =
-<philmd@redhat.com> wrote:
->=20
-> On 10/29/21 03:33, Cameron Esfahani wrote:
->> No need to have our own definitions of these registers.
->>=20
->> Signed-off-by: Cameron Esfahani <dirty@apple.com>
->> ---
->> target/i386/hvf/vmx.h      | 17 +++++++++--------
->> target/i386/hvf/x86.c      |  6 +++---
->> target/i386/hvf/x86.h      | 34 ----------------------------------
->> target/i386/hvf/x86_mmu.c  |  2 +-
->> target/i386/hvf/x86_task.c |  3 ++-
->> 5 files changed, 15 insertions(+), 47 deletions(-)
->=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->=20
->=20
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
