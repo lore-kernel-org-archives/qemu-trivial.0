@@ -1,88 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nI4uJ-0006BD-6l
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Feb 2022 03:34:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51846)
+	id 1nJh7k-00025C-EH
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Feb 2022 14:35:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53880)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nI4uG-00068e-UK
- for qemu-trivial@nongnu.org; Thu, 10 Feb 2022 03:34:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:58751)
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1nJh7X-00021p-Kg
+ for qemu-trivial@nongnu.org; Mon, 14 Feb 2022 14:34:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:48825)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nI4uD-0008GN-7m
- for qemu-trivial@nongnu.org; Thu, 10 Feb 2022 03:34:22 -0500
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1nJh7T-0003nn-8Y
+ for qemu-trivial@nongnu.org; Mon, 14 Feb 2022 14:34:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644482060;
+ s=mimecast20190719; t=1644867276;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=E8Z4/u73WcTAbRBQAt6lJZa00PxzNAbHl3tAc4layOA=;
- b=dF1zhQ4YEfTPGju+qBGQhHLk6W1ESsiD8n/VxqHICOaJTVhjTmV0Nkdeq6llNVZtiDMWun
- SY17YOV5jIPxhs7iAoMj7ru39ayI71vUg++5RovH7Ih1dZOSk4WYlfRGIrvgPcgFNXrD90
- To64lAwmLnNPXka4UCu9+dz+YPPohwI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=1n9AQ37W0b14xZXad/BfVMGr5Wd3DU/6I9HeKxTuVj0=;
+ b=XXfkjk0+pR1kAsgMFMY5+2lJ2fjPeMJ2uUiD0EQijYRGbg+FxhZy8I6ibU/dGr8Cn7P+Cp
+ /QsZQ9+CwXyxmPbi+l7xOWAla76ADhKdkKMQsSNr3tyIQJYRLnRWJAbCSNHf4vbIrZq4Hs
+ xvQqYBUc0SZ7PYuikrdzeh18zx8dKQA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-437-gDC-SlX_P-6LT4rnPdoOjg-1; Thu, 10 Feb 2022 03:34:19 -0500
-X-MC-Unique: gDC-SlX_P-6LT4rnPdoOjg-1
-Received: by mail-wr1-f72.google.com with SMTP id
- q8-20020adfb188000000b001e33a8cdbf4so2163736wra.16
- for <qemu-trivial@nongnu.org>; Thu, 10 Feb 2022 00:34:19 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=E8Z4/u73WcTAbRBQAt6lJZa00PxzNAbHl3tAc4layOA=;
- b=Sy8l/PvH+dgvc+sR1EnYEvvQVijf5cKl/6guykNMtDupnEKN/PLqbgR3+r4uWdJgU5
- adhdl/EHRlCMbvW8Hqf74Jte0dVv1GkNMxYrjGgpOeiroh+61wshoaXDMqZ1q5MFxQcm
- fkxsRHpj8fkG2l+n+wRHmE+h/SLpue6eJgm0sftCypIEqeJ0AJuZQ/7bH7grSv+A7OW+
- ICtuIUscJRpdz5jz1Rn5Q7Gh9f2pcLY6WOnPDipy93uWSzm1JNlMgec08qrjZYg93BiA
- KgoOTKwR+u0RjAiSo3ACZFrX4zqP0sbu4AGsD8dUjYGQB9jNBgtacdPKkr9orhkbLmN0
- af0g==
-X-Gm-Message-State: AOAM532OwPUehPqBUIntQaJihWQbhAZ7i0PcuRopAq0p2+49HYPqir4/
- aawbNosLrjMkZps8j4U3om6PGuUUjThsiCZNJ2zIVlOp9B8l7RIQ2QKqkm4ROfirw7Ybc9sGk21
- /esfYdlIXWTgpsHeYzA==
-X-Received: by 2002:a5d:5988:: with SMTP id n8mr1487036wri.193.1644482058339; 
- Thu, 10 Feb 2022 00:34:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx1A98GhlTzYjKjcAoFmocTOEF3tdCkWO+1GT16fi8ZrsI55mXkFGzNQfrUIRpMxoShSrc/6w==
-X-Received: by 2002:a5d:5988:: with SMTP id n8mr1487019wri.193.1644482058112; 
- Thu, 10 Feb 2022 00:34:18 -0800 (PST)
-Received: from [192.168.8.104] (tmo-098-218.customers.d1-online.com.
- [80.187.98.218])
- by smtp.gmail.com with ESMTPSA id f2sm19431178wri.49.2022.02.10.00.34.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Feb 2022 00:34:17 -0800 (PST)
-Message-ID: <3d648897-99cc-4078-0016-0b4a0856dff1@redhat.com>
-Date: Thu, 10 Feb 2022 09:34:15 +0100
+ us-mta-397-kwy39YLbOP6R6QJrcoz7Tw-1; Mon, 14 Feb 2022 14:34:35 -0500
+X-MC-Unique: kwy39YLbOP6R6QJrcoz7Tw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0DF2383DBE2;
+ Mon, 14 Feb 2022 19:34:34 +0000 (UTC)
+Received: from eperezma.remote.csb (unknown [10.39.195.20])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A75BA5F4F6;
+ Mon, 14 Feb 2022 19:34:32 +0000 (UTC)
+From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, qemu-trivial@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH 1/1] vdpa: Make ncs autofree
+Date: Mon, 14 Feb 2022 20:34:15 +0100
+Message-Id: <20220214193415.1606752-2-eperezma@redhat.com>
+In-Reply-To: <20220214193415.1606752-1-eperezma@redhat.com>
+References: <20220214193415.1606752-1-eperezma@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 02/15] hw/m68k/mcf: Add missing 'exec/hwaddr.h' header
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20220209215446.58402-1-f4bug@amsat.org>
- <20220209215446.58402-3-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20220209215446.58402-3-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eperezma@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.083,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,29 +73,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Feb 2022 08:34:26 -0000
+X-List-Received-Date: Mon, 14 Feb 2022 19:34:50 -0000
 
-On 09/02/2022 22.54, Philippe Mathieu-Daudé wrote:
-> hwaddr type is defined in "exec/hwaddr.h".
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   include/hw/m68k/mcf.h | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/include/hw/m68k/mcf.h b/include/hw/m68k/mcf.h
-> index decf17ce42..8cbd587bbf 100644
-> --- a/include/hw/m68k/mcf.h
-> +++ b/include/hw/m68k/mcf.h
-> @@ -2,6 +2,7 @@
->   #define HW_MCF_H
->   /* Motorola ColdFire device prototypes.  */
->   
-> +#include "exec/hwaddr.h"
->   #include "target/m68k/cpu-qom.h"
->   
->   /* mcf_uart.c */
+Simplifying memory management.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+---
+ net/vhost-vdpa.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
+index 4125d13118..4befba5cc7 100644
+--- a/net/vhost-vdpa.c
++++ b/net/vhost-vdpa.c
+@@ -264,7 +264,8 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
+ {
+     const NetdevVhostVDPAOptions *opts;
+     int vdpa_device_fd;
+-    NetClientState **ncs, *nc;
++    g_autofree NetClientState **ncs = NULL;
++    NetClientState *nc;
+     int queue_pairs, i, has_cvq = 0;
+ 
+     assert(netdev->type == NET_CLIENT_DRIVER_VHOST_VDPA);
+@@ -302,7 +303,6 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
+             goto err;
+     }
+ 
+-    g_free(ncs);
+     return 0;
+ 
+ err:
+@@ -310,7 +310,6 @@ err:
+         qemu_del_net_client(ncs[0]);
+     }
+     qemu_close(vdpa_device_fd);
+-    g_free(ncs);
+ 
+     return -1;
+ }
+-- 
+2.27.0
 
 
