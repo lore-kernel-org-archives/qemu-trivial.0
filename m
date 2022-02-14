@@ -1,63 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nJh7l-00025g-D7
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Feb 2022 14:35:03 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53884)
+	id 1nJjcQ-0002au-RV
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Feb 2022 17:14:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37280)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1nJh7X-00022J-Re
- for qemu-trivial@nongnu.org; Mon, 14 Feb 2022 14:34:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:52677)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1nJh7T-0003nj-7y
- for qemu-trivial@nongnu.org; Mon, 14 Feb 2022 14:34:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644867274;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=WbZkGO9qyjq6RDpnrsDF29OORphhT1cLxLl0CsElxKg=;
- b=EuUTQBDC0gkv+H5pMj7g8WYk/xLwIcWe7IR5orcgSiisWFSOqwEK0/0rxXXh+cLosj2fRS
- 4M0vXIxjMK+E5sxDf8RIixirk8MMBrgJhMKvD3YtDjz0+G2P9ijsaTfSBc9AM6n5GTfE6P
- M2DM0Xe21/zUu5XZn0SgIjoK5SK/WNE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-241-D54XxXb-PPms2SY-bxYDnA-1; Mon, 14 Feb 2022 14:34:33 -0500
-X-MC-Unique: D54XxXb-PPms2SY-bxYDnA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4C3122F25;
- Mon, 14 Feb 2022 19:34:32 +0000 (UTC)
-Received: from eperezma.remote.csb (unknown [10.39.195.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8AFF75F4EA;
- Mon, 14 Feb 2022 19:34:18 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, qemu-trivial@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH 0/1] vdpa: Make ncs autofree
-Date: Mon, 14 Feb 2022 20:34:14 +0100
-Message-Id: <20220214193415.1606752-1-eperezma@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nJjcP-0002aD-4Q; Mon, 14 Feb 2022 17:14:49 -0500
+Received: from [2607:f8b0:4864:20::1035] (port=53907
+ helo=mail-pj1-x1035.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nJjcM-0005jH-3z; Mon, 14 Feb 2022 17:14:48 -0500
+Received: by mail-pj1-x1035.google.com with SMTP id qe15so15799448pjb.3;
+ Mon, 14 Feb 2022 14:14:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=cFdcSty7VoVDb7EduO4tbI6EzqzKILqqMKStMsiCKZQ=;
+ b=Ck2tGWNOIwySXQhinn312IkcO0TfvYDp3ItUj3zSTsuKjHmGc2KmMgSMBehav+h8QC
+ ecn/TyeDnWU2kNlgMXZcMdU18RL5sEOxRsxULbtzX9dCckIySRQqL/cUeN+uqYudNp/q
+ Bi61BQPzGQLXMeV0pHGK0t/aK/Kvhe+bdMZKeGiKDI1enojZio8Pg0Gqfa28oU54FZkO
+ 8xZjFuRgpibBjnnJPgV6pvb5Pf2XueHTYbbuEm27glrgKVBxLbQC07IOa+KcDHIHUVx5
+ vnJZB3gPE0XrcuV9R/3a7XKSd9qGHKddW+sNmbbhTP1+Etq0cG2OQH6niHDkQSZHjVJx
+ BCqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=cFdcSty7VoVDb7EduO4tbI6EzqzKILqqMKStMsiCKZQ=;
+ b=Y9keyC4Ipa0N6Cd8VKD7D3amkfBwuiVTl8h30Hc09DlvreyqD9ljEXpWeINrby7od5
+ h9zfwEj6Ba6cetZYRFrQVe0eKH9/hiLSY4Le8V74a2+reaUm/xaR3Iz5X89D/WvHz3Th
+ 7H8fKIuQ6BYIX8oXRsd2e/JhynvktCYtm9TThoDwIzr1gsddFE4aJ40ntmwSSiNbBYZQ
+ eqjRAs6Ys/2lHSEIcbUJGcnbBPem7oLmZpBBZKBMrjJzZz/zylqe/k49jR+B2GlH8HBr
+ A317bGJ1HmXBeCDu2jESfmeCD0AeT3/HzBl4r+9aZ/0lNtQIJBXC7J9NO2xocYJKKAiR
+ or+w==
+X-Gm-Message-State: AOAM533jb/RJ2TOgARurk8C/8/zVaxCspnDENJ3Bi82jv46rER5FUuD3
+ 18CRLFKGG3HT+RYCxCwPDgY=
+X-Google-Smtp-Source: ABdhPJwyhtpJZQpTXrji6NwcLYY2/nTK4PQCu1pX+cNZIH4Bcw7sGhJbrRgWRgLxMZ40SU7TmqN1CA==
+X-Received: by 2002:a17:902:7788:: with SMTP id
+ o8mr1043457pll.27.1644876883849; 
+ Mon, 14 Feb 2022 14:14:43 -0800 (PST)
+Received: from [192.168.1.35] (71.red-83-50-68.dynamicip.rima-tde.net.
+ [83.50.68.71])
+ by smtp.gmail.com with ESMTPSA id h18sm37024415pfh.51.2022.02.14.14.14.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Feb 2022 14:14:43 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <11af7e55-560e-a46f-e923-c9baebd461be@amsat.org>
+Date: Mon, 14 Feb 2022 23:14:39 +0100
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.083,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.1
+Subject: Re: [PATCH 1/1] vdpa: Make ncs autofree
+Content-Language: en-US
+To: =?UTF-8?Q?Eugenio_P=c3=a9rez?= <eperezma@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <20220214193415.1606752-1-eperezma@redhat.com>
+ <20220214193415.1606752-2-eperezma@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220214193415.1606752-2-eperezma@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1035
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x1035.google.com
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.635, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,25 +89,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Feb 2022 19:34:50 -0000
+X-List-Received-Date: Mon, 14 Feb 2022 22:14:49 -0000
 
-Trivial patch extracted from [1] series. It helps to simplify the memory=0D
-management of the function when adding exit paths following the qemu=0D
-guidelines.=0D
-=0D
-Thanks!=0D
-=0D
-[1] https://patchwork.kernel.org/project/qemu-devel/patch/20220121202733.40=
-4989-30-eperezma@redhat.com/=0D
-=0D
-Eugenio P=C3=A9rez (1):=0D
-  vdpa: Make ncs autofree=0D
-=0D
- net/vhost-vdpa.c | 5 ++---=0D
- 1 file changed, 2 insertions(+), 3 deletions(-)=0D
-=0D
---=20=0D
-2.27.0=0D
-=0D
+On 14/2/22 20:34, Eugenio Pérez wrote:
+> Simplifying memory management.
+> 
+> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+> ---
+>   net/vhost-vdpa.c | 5 ++---
+>   1 file changed, 2 insertions(+), 3 deletions(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
