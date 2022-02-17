@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nKkvr-00089s-GD
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Feb 2022 12:51:07 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36882)
+	id 1nKoPd-0001Qr-Tn
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Feb 2022 16:34:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1nKkvk-00082P-RX
- for qemu-trivial@nongnu.org; Thu, 17 Feb 2022 12:51:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:38171)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1nKkvg-00080C-FZ
- for qemu-trivial@nongnu.org; Thu, 17 Feb 2022 12:50:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1645120241;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=zTsCoUoM6GSUXC9kbdbEv3j0VsB+4Z+ZH7S1KgtdN0Y=;
- b=DhYk1rp9+8ZPmZ4cs5OIx/VN/ZFGjbdu5eug7jVpOXLvbdThlL2vAbOzM7hqYY1odRnJbB
- bMwbk3NSxh5bBtfC8eVlG+2pxQCnE9a9HJB2BOpyISDrFodht8zopWCnQUyuf5F2CgJCp2
- cLQls+JHkdI8Iy3Q/gvyzdvC4yYRRSA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-350-OIMqpYAEMEO6DHv7ZLQ5Eg-1; Thu, 17 Feb 2022 12:50:38 -0500
-X-MC-Unique: OIMqpYAEMEO6DHv7ZLQ5Eg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 85B7F84DA40;
- Thu, 17 Feb 2022 17:50:37 +0000 (UTC)
-Received: from eperezma.remote.csb (unknown [10.39.193.110])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F36987DE5B;
- Thu, 17 Feb 2022 17:50:31 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>
-Subject: [RFC PATCH] virtio-net: Unlimit tx queue size if peer is vdpa
-Date: Thu, 17 Feb 2022 18:50:29 +0100
-Message-Id: <20220217175029.2517071-1-eperezma@redhat.com>
+ (Exim 4.90_1) (envelope-from <josh.a.seaton@gmail.com>)
+ id 1nKlk9-0007NY-2Z; Thu, 17 Feb 2022 13:43:05 -0500
+Received: from [2a00:1450:4864:20::633] (port=36772
+ helo=mail-ej1-x633.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <josh.a.seaton@gmail.com>)
+ id 1nKlk7-0007N2-CR; Thu, 17 Feb 2022 13:43:04 -0500
+Received: by mail-ej1-x633.google.com with SMTP id a23so9410444eju.3;
+ Thu, 17 Feb 2022 10:43:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=NJ1TbyXRdWRoNbrHprkOeyKSjtDCgSO9ZG41674G78g=;
+ b=j8HKAgWVcQtG9kETJy7BFqbncYD/XtDQGpPMFmzWh5Uk0BACNfkM561kXN30lOwUP6
+ yMf+z3V9yy7OlnRVmupt0xicxDlSs2B4HXjzobJz7Yat72Gy+DJKm8ACrAFp19ak4KK0
+ roGfOw91Jpw3cltr7VjqglbOuJ6oKALZ2yyRl2bpS5KK4Q6eeAx9D+gNHPw4KxMOB2N7
+ cbqTvcfaf1F3nuY4p5cNtqj3qe+wHL87CccrbVsWR6rHaooSZ0X9Pm0edxo6YybBNkly
+ Fv1NAcbL5oGsk5EGXmonGhJNvZPJOUBP6jMhWkEO2d6bj1Ck2hjJARBT1+BIZfku8xh+
+ qaRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=NJ1TbyXRdWRoNbrHprkOeyKSjtDCgSO9ZG41674G78g=;
+ b=W6XjJs5RSfAA4/zotiZwVm/F19rTyfGzAlYdsNc5Bn8pyKl8HBR/266FkTXIBHA8wg
+ NcaSSWijRG3haRlTY+fxhEBuGlCvtsmt9IsVyY2dTLkCL6yU/JkGsakBb+hQnrOGLSQf
+ ezoQ9U3s8JYKHmuWKYIaC/DH3m3Ffih6Wnicnm8XXxqV57vGjpHVFOAsOGGZ1IJiF7vZ
+ RWMDxzKXXi8lzI4HlpgFCkbwsBdFjQefgnz/83L4eygu6MjaPrs0tk7a2ZGQTCOf9pMH
+ H6WTyVhzSZgvBr9b9g0brhjtyU0DKP7UbGADI1GWvNoe4RBW4kYB5KfRpZUAuwxfybev
+ +fqg==
+X-Gm-Message-State: AOAM530HJPuBAUOyn293+RHSa8xtHSe9Mmiqohrc0/tSQmd9WA9C57Kw
+ OZy3k7rHX0cijJK1XtKf/lVhJIgvoRQYSfjPfKh1y4GUfz8=
+X-Google-Smtp-Source: ABdhPJyjR3IDrSAjKe2brosrV4CKyW+kOLstmufwM8AgwidQenE5lcIclWk9NAiIj4XYhbq9Nr2iaVk6VzzSSbFEZ8A=
+X-Received: by 2002:a17:906:a10:b0:6ce:7107:598b with SMTP id
+ w16-20020a1709060a1000b006ce7107598bmr3373847ejf.653.1645123378840; Thu, 17
+ Feb 2022 10:42:58 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+From: Joshua Seaton <josh.a.seaton@gmail.com>
+Date: Thu, 17 Feb 2022 10:42:47 -0800
+Message-ID: <CAPbYy+_14jeLBzihGjY-v0L1inZ1CGc+8TFu7NuPiaZie8skyg@mail.gmail.com>
+Subject: [PATCH] configure: Support empty prefixes
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, geist@foobox.com
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::633
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=josh.a.seaton@gmail.com; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 17 Feb 2022 16:34:04 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,51 +70,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Feb 2022 17:51:06 -0000
+X-List-Received-Date: Thu, 17 Feb 2022 18:43:10 -0000
 
-The code used to limit the maximum size of tx queue for others backends
-than vhost_user since the introduction of configurable tx queue size in
-9b02e1618cf2 ("virtio-net: enable configurable tx queue size").
+At least as of v5 (before the meson build), empty `--prefix` values were
+supported; this seems to have fallen out along the way. This change
+reintroduces support.
 
-As vhost_user, vhost_vdpa devices should deal with memory region
-crosses already, so let's use the full tx size.
+Tested locally with empty and non-empty values of `--prefix`.
 
-Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+Signed-off-by: Joshua Seaton <josh.a.seaton@gmail.com>
 ---
- hw/net/virtio-net.c | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ configure | 33 ++++++++++++++++++++++++---------
+ 1 file changed, 24 insertions(+), 9 deletions(-)
 
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index 49cd13314a..b1769bfee0 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -629,17 +629,20 @@ static int virtio_net_max_tx_queue_size(VirtIONet *n)
-     NetClientState *peer = n->nic_conf.peers.ncs[0];
- 
-     /*
--     * Backends other than vhost-user don't support max queue size.
-+     * Backends other than vhost-user or vhost-vdpa don't support max queue
-+     * size.
-      */
-     if (!peer) {
-         return VIRTIO_NET_TX_QUEUE_DEFAULT_SIZE;
-     }
- 
--    if (peer->info->type != NET_CLIENT_DRIVER_VHOST_USER) {
-+    switch(peer->info->type) {
-+    case NET_CLIENT_DRIVER_VHOST_USER:
-+    case NET_CLIENT_DRIVER_VHOST_VDPA:
-+        return VIRTQUEUE_MAX_SIZE;
-+    default:
-         return VIRTIO_NET_TX_QUEUE_DEFAULT_SIZE;
--    }
--
--    return VIRTQUEUE_MAX_SIZE;
-+    };
- }
- 
- static int peer_attach(VirtIONet *n, int index)
--- 
-2.27.0
+diff --git a/configure b/configure
+index 3a29eff5cc..87a32e52e4 100755
+--- a/configure
++++ b/configure
+@@ -1229,20 +1229,30 @@ case $git_submodules_action in
+     ;;
+ esac
 
+-libdir="${libdir:-$prefix/lib}"
+-libexecdir="${libexecdir:-$prefix/libexec}"
+-includedir="${includedir:-$prefix/include}"
++# Emits a relative path in the case of an empty prefix.
++prefix_subdir() {
++    dir="$1"
++    if test -z "$prefix" ; then
++        echo "$dir"
++    else
++        echo "$prefix/$dir"
++    fi
++}
++
++libdir="${libdir:-$(prefix_subdir lib)}"
++libexecdir="${libexecdir:-$(prefix_subdir libexec)}"
++includedir="${includedir:-$(prefix_subdir include)}"
+
+ if test "$mingw32" = "yes" ; then
+     bindir="${bindir:-$prefix}"
+ else
+-    bindir="${bindir:-$prefix/bin}"
++    bindir="${bindir:-$(prefix_subdir bin)}"
+ fi
+-mandir="${mandir:-$prefix/share/man}"
+-datadir="${datadir:-$prefix/share}"
+-docdir="${docdir:-$prefix/share/doc}"
+-sysconfdir="${sysconfdir:-$prefix/etc}"
+-local_statedir="${local_statedir:-$prefix/var}"
++mandir="${mandir:-$(prefix_subdir share/man)}"
++datadir="${datadir:-$(prefix_subdir share)}"
++docdir="${docdir:-$(prefix_subdir share/doc)}"
++sysconfdir="${sysconfdir:-$(prefix_subdir etc)}"
++local_statedir="${local_statedir:-$(prefix_subdir var)}"
+ firmwarepath="${firmwarepath:-$datadir/qemu-firmware}"
+ localedir="${localedir:-$datadir/locale}"
+
+@@ -3763,6 +3773,11 @@ if test "$skip_meson" = no; then
+   mv $cross config-meson.cross
+
+   rm -rf meson-private meson-info meson-logs
++
++  # Workaround for a meson bug preventing empty prefixes:
++  # see https://github.com/mesonbuild/meson/issues/6946.
++  prefix="${prefix:-/}"
++
+   run_meson() {
+     NINJA=$ninja $meson setup \
+         --prefix "$prefix" \
+--
+2.35.1.265.g69c8d7142f-goog
 
