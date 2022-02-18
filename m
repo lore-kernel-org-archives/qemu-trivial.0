@@ -1,76 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nKqXh-0005XO-83
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Feb 2022 18:50:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53816)
+	id 1nL1ay-0003AA-Cn
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Feb 2022 06:38:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57812)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nKqXf-0005X4-QH; Thu, 17 Feb 2022 18:50:31 -0500
-Received: from [2a00:1450:4864:20::532] (port=37471
- helo=mail-ed1-x532.google.com)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nL1ap-00038b-TQ
+ for qemu-trivial@nongnu.org; Fri, 18 Feb 2022 06:38:33 -0500
+Received: from [2607:f8b0:4864:20::b29] (port=42998
+ helo=mail-yb1-xb29.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nKqXd-0004qh-1Z; Thu, 17 Feb 2022 18:50:31 -0500
-Received: by mail-ed1-x532.google.com with SMTP id q17so12523657edd.4;
- Thu, 17 Feb 2022 15:50:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3SUncBg7tnXt+1SvYlz1kZnuraD/uLu0eqBrmfIGZj4=;
- b=Y/DyDggO3nBxioI+IZH7rDbf6JYTFMvE3SwrQrPW9ieaLLQkmikgh4ga3BzYSKmg7Y
- IuDkxkcYUZSkZoqA4LtxhsQavNGpiInuvEx5G58Ix35NX54OTJ2xHFNRP5xkNWtehac6
- 9NdmOG3PKd2fnASF52ygQdt+gnNbKfw3VVCnBpn2tw6+6s/ghbwRteyUEJw5hOimPrxl
- 4jdcr0MlskabyBEGmsUVSC63Qaw3KyAy49VrWGLY33BuWwSihDy9CUbi4TSwHaIHwD2f
- hFY3ws2AyPTxP1CbL1GTKiKf/B6u2qteSHlWcZG7fZDWaIW5kUHJSS4t6m+JQggpWiwe
- NC2w==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nL1an-0006o2-Es
+ for qemu-trivial@nongnu.org; Fri, 18 Feb 2022 06:38:31 -0500
+Received: by mail-yb1-xb29.google.com with SMTP id e140so18907732ybh.9
+ for <qemu-trivial@nongnu.org>; Fri, 18 Feb 2022 03:38:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=G/VSXKZO4kk4KttMdl+Oq45G8UpP7pW+r2icGfXdWIQ=;
+ b=EopMrW1Q26PeWHIJcoJueTh8kp6r83o95mVK13LZVmPjAZ0KZIocwy7DKKRTPXPWBU
+ zxfqxtjpWSCkM6erFvl+GyE8aDq4YcPhwoMG6oiof8ORl4dNRso5ikdTBQnQdGUTwviv
+ ODdjcdBjh4P94d1fr6emWs2olli5ZCh6//SxQFRnSw2ipqctuBBJpICFahVrhEwV8SSM
+ MACSc9Zofa2UwPWwawsl/SxgRsP6zzVxFd7dxBA6rNCElJmRXGfewqn3OYSXHCeON/KM
+ 3yIEpHvazgc1Is8HM0LFV0T3v3UAeK+CEmqU+xG0pLefVCCi1U6JAP9wiDtIShlHlrZY
+ coew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3SUncBg7tnXt+1SvYlz1kZnuraD/uLu0eqBrmfIGZj4=;
- b=exokdwQKkpW25ZxjKb4jSOBBdUHfY0gApD6Uj2s9t1Gt/34F9Yt4nsBeLpKK7hHwfN
- BUfGDqfkC8LJIoSPapKDjKQ4UoCGnHwfnAhTfbZzh/bekcv3rCgVj1FFF6G4pGCf4UxJ
- SoLMTeR3kr1zzV2FulRCU/y8pKSGC43N7s9GCj6AJAzr1rpMG0BLDlBPQhNDcpR51Pnc
- 8IGb4Oz/ug5Nla/NztIwZSh3znrpfMQsvCX1+WIOpRPfsazpIYwWF2lV+ztTziI/6G6x
- zFdEq6dFFChHDO6+Sp0Svz/b9LUdmvypjgMDcDf7k/OcNw6Az6HkxAy3Xu/haQZ6ARio
- AJiA==
-X-Gm-Message-State: AOAM532Y831Ha8fnCA/7IpmMyIK8JhxNoMlBhSYTmZXUDQyOyAP5RmZh
- aju6JyOnpG1qEiUoUwZ10sA=
-X-Google-Smtp-Source: ABdhPJwEgPoHXC2ogTtvRJzTzzC0UtCybYUWcavQ1tyPrOfIJeLeLFXZ7BzCfHA3aYwSLLukrK731A==
-X-Received: by 2002:a50:aac8:0:b0:410:ae77:c484 with SMTP id
- r8-20020a50aac8000000b00410ae77c484mr5271501edc.431.1645141826848; 
- Thu, 17 Feb 2022 15:50:26 -0800 (PST)
-Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.googlemail.com with ESMTPSA id er17sm3001208edb.34.2022.02.17.15.50.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Feb 2022 15:50:26 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <eb099ea1-f88e-8b4f-22ab-863952c04f32@redhat.com>
-Date: Fri, 18 Feb 2022 00:50:25 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=G/VSXKZO4kk4KttMdl+Oq45G8UpP7pW+r2icGfXdWIQ=;
+ b=x161e1ng1uxZsUlOhXPOFYT7jGS7iO16iFPErpHFtWG0oh72doB4pkCVJhzdMEuKGs
+ R6j8I2RbHEWIPOxdlWpLAtWoDC0y2VoEn53nBG264wR1TotkzIsX4QuhUkcltm+gkc1P
+ cnE0tIzywxHpSYv0qgAf/o8lFi2nRYaY+NNs6iOOUaqpgIRU0CvRgGs9vcMKhzkFU9xC
+ 7N5J3+8yP2l8fFi989Vtu4lXZos1lCmboX6uI1Fw0WyLyjwUuK6DemSTYMES7PP0O1XJ
+ Eyo4pi1w3usjcRaE/P01PsHspc4eeyWaTFmZew0O07WKanPGHyc1Aqa9AR6AvUlJB+JP
+ EQ3g==
+X-Gm-Message-State: AOAM530eKnvR/F72yDc9a7Z/WRXoyQiAs7oq11C/VMWnnezHOZ4brPc2
+ rpbo/aMQCDNrfdF5VakMdjsXWLiYqmOTOZ8c70jRZw==
+X-Google-Smtp-Source: ABdhPJzQPZkBzztA1Mndypag9uAUeb1B5coK5ZVqj/CkLgr3HJ7xGmUAvHKFX2gLwdqK8cOTM1OU++jnkTdDTWxVkfA=
+X-Received: by 2002:a25:8084:0:b0:5fe:cadd:2532 with SMTP id
+ n4-20020a258084000000b005fecadd2532mr6918346ybk.193.1645184298206; Fri, 18
+ Feb 2022 03:38:18 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH] configure: Support empty prefixes
-Content-Language: en-US
-To: Joshua Seaton <josh.a.seaton@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, geist@foobox.com
-References: <CAPbYy+_14jeLBzihGjY-v0L1inZ1CGc+8TFu7NuPiaZie8skyg@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <CAPbYy+_14jeLBzihGjY-v0L1inZ1CGc+8TFu7NuPiaZie8skyg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::532
+References: <20220117145805.173070-1-shentey@gmail.com>
+In-Reply-To: <20220117145805.173070-1-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 18 Feb 2022 11:38:07 +0000
+Message-ID: <CAFEAcA_eFitfKzarU8XS+JT5m6uhGMecQzWjp9wruFBByk+oog@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] Mark remaining global TypeInfo instances as const
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b29
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=paolo.bonzini@gmail.com; helo=mail-ed1-x532.google.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
 X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
@@ -86,84 +74,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Feb 2022 23:50:32 -0000
+X-List-Received-Date: Fri, 18 Feb 2022 11:38:34 -0000
 
-On 2/17/22 19:42, Joshua Seaton wrote:
-> At least as of v5 (before the meson build), empty `--prefix` values were
-> supported; this seems to have fallen out along the way. This change
-> reintroduces support.
+On Mon, 17 Jan 2022 at 15:35, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> Applied review comments:
+> * Mention the sed-expression used for the cleanup in the commit message
+> * Have checkpatch.pl error on further non-const TypeInfo introduction
+>
+> Bernhard Beschow (2):
+>   Mark remaining global TypeInfo instances as const
+>   checkpatch: Ensure that TypeInfos are const
 
-What is the usecase exactly?  QEMU supports relocatable installation so 
-if you want you can use --prefix=/nonexistent and then move the 
-resulting tree wherever you want.
 
-Paolo
 
-> Tested locally with empty and non-empty values of `--prefix`.
-> 
-> Signed-off-by: Joshua Seaton <josh.a.seaton@gmail.com>
-> ---
->   configure | 33 ++++++++++++++++++++++++---------
->   1 file changed, 24 insertions(+), 9 deletions(-)
-> 
-> diff --git a/configure b/configure
-> index 3a29eff5cc..87a32e52e4 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1229,20 +1229,30 @@ case $git_submodules_action in
->       ;;
->   esac
-> 
-> -libdir="${libdir:-$prefix/lib}"
-> -libexecdir="${libexecdir:-$prefix/libexec}"
-> -includedir="${includedir:-$prefix/include}"
-> +# Emits a relative path in the case of an empty prefix.
-> +prefix_subdir() {
-> +    dir="$1"
-> +    if test -z "$prefix" ; then
-> +        echo "$dir"
-> +    else
-> +        echo "$prefix/$dir"
-> +    fi
-> +}
-> +
-> +libdir="${libdir:-$(prefix_subdir lib)}"
-> +libexecdir="${libexecdir:-$(prefix_subdir libexec)}"
-> +includedir="${includedir:-$(prefix_subdir include)}"
-> 
->   if test "$mingw32" = "yes" ; then
->       bindir="${bindir:-$prefix}"
->   else
-> -    bindir="${bindir:-$prefix/bin}"
-> +    bindir="${bindir:-$(prefix_subdir bin)}"
->   fi
-> -mandir="${mandir:-$prefix/share/man}"
-> -datadir="${datadir:-$prefix/share}"
-> -docdir="${docdir:-$prefix/share/doc}"
-> -sysconfdir="${sysconfdir:-$prefix/etc}"
-> -local_statedir="${local_statedir:-$prefix/var}"
-> +mandir="${mandir:-$(prefix_subdir share/man)}"
-> +datadir="${datadir:-$(prefix_subdir share)}"
-> +docdir="${docdir:-$(prefix_subdir share/doc)}"
-> +sysconfdir="${sysconfdir:-$(prefix_subdir etc)}"
-> +local_statedir="${local_statedir:-$(prefix_subdir var)}"
->   firmwarepath="${firmwarepath:-$datadir/qemu-firmware}"
->   localedir="${localedir:-$datadir/locale}"
-> 
-> @@ -3763,6 +3773,11 @@ if test "$skip_meson" = no; then
->     mv $cross config-meson.cross
-> 
->     rm -rf meson-private meson-info meson-logs
-> +
-> +  # Workaround for a meson bug preventing empty prefixes:
-> +  # see https://github.com/mesonbuild/meson/issues/6946.
-> +  prefix="${prefix:-/}"
-> +
->     run_meson() {
->       NINJA=$ninja $meson setup \
->           --prefix "$prefix" \
-> --
-> 2.35.1.265.g69c8d7142f-goog
-> 
+Applied to target-arm.next, thanks.
 
+-- PMM
 
