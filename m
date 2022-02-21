@@ -1,81 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nM6v4-0001Yh-6a
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Feb 2022 06:31:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44024)
+	id 1nMCG6-0001dR-Ee
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Feb 2022 12:13:58 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nM6v2-0001W1-Am; Mon, 21 Feb 2022 06:31:52 -0500
-Received: from [2a00:1450:4864:20::62b] (port=33476
- helo=mail-ej1-x62b.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1nM6v0-0003w3-Rj; Mon, 21 Feb 2022 06:31:51 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id vz16so32563634ejb.0;
- Mon, 21 Feb 2022 03:31:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=41FVW70+6E7c273ZQOZ9+/o3XPWyqrnAKRRmffmuJ9E=;
- b=TDaPirEDhLLCQmFesXUtsj4kB4jpObezk4v+ncDemHBe5rcRDyRlp2mDwsFDug53gN
- yaRux+kRSLtqSIIAjNP0mrcwLNh4E4sFgFfRBUbSatdO8x7bj09IEfuIxkarzLBmWIh8
- d+u9JKNEVXaqroGvwU+/vXgFe1R2b2DTmd7VTXytuaZp+DlAUNGIIUzBUizp43942Q9u
- +8JS5IObITSVtsIb+j93Pll83Y+XUts/9g3c0tUKVkpPcyi+P+dbXivBB3t29mBdcXcC
- p3UWA9VWvDL6KXP+dQzPZdBWEQcZNoCOp8m97K/ghmb1bDKi764AHFkCxMw0NO4MU7F2
- APKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=41FVW70+6E7c273ZQOZ9+/o3XPWyqrnAKRRmffmuJ9E=;
- b=WSOkonSUDFPYoHfuiCuexipwxeUgtcX8L0cvOOJy0G38iECKfDRWyUcRGOg6Ikl8v4
- BQG0b/90pyylXwmZu3/PX4GZCynwM7Yl94iGJGSk7nX2XI32iFO7qg/nUo5YSp81lVrW
- SaytpBdaOTFNvsPpwcesf1n/js3jaQYZBUtUwRyyHPI/XqBjSFWXUfQiZ0C+6OcpWxck
- VpxeXnyQzSEhOR7p58ubjyG6f8p9mrhj7DmTAl6s2RKfJmcYPbWqGaoKdlKW/KiXc/Vc
- 0ytrweqpNxwjBfG23ZrMqjNF4fSQi0RaYL5jNbRFRMD483acKukxKUdf444GSzeRzbDN
- zytQ==
-X-Gm-Message-State: AOAM533/nKPrWmTKij8fA5r0kexopWAlv99mjMW4z5SHlCm8zUZ9p2cH
- jRNR98BrVWIzLPjbTJ4xzws=
-X-Google-Smtp-Source: ABdhPJwXwZd0kEH28VwD1njPNBF44VVywJyl00N6qyh2BvykHp7yrbgMwPG0VfCS9tVwR9wydJbSJw==
-X-Received: by 2002:a17:906:11da:b0:6ce:71f1:5fe3 with SMTP id
- o26-20020a17090611da00b006ce71f15fe3mr14948757eja.181.1645443109194; 
- Mon, 21 Feb 2022 03:31:49 -0800 (PST)
-Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.googlemail.com with ESMTPSA id j18sm634608ejm.102.2022.02.21.03.31.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Feb 2022 03:31:48 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <d5c90dde-43e0-4932-f7b5-a2e3da3bb8e7@redhat.com>
-Date: Mon, 21 Feb 2022 12:31:48 +0100
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nMCG4-0001Yd-93; Mon, 21 Feb 2022 12:13:56 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:58183)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nMCG2-00062N-5A; Mon, 21 Feb 2022 12:13:55 -0500
+Received: from [192.168.100.1] ([82.142.17.50]) by mrelayeu.kundenserver.de
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1M3lkT-1nLNJB1B7j-000xQ8; Mon, 21 Feb 2022 18:13:46 +0100
+Message-ID: <3c91b56d-864c-4b58-b94e-27d209156a58@vivier.eu>
+Date: Mon, 21 Feb 2022 18:13:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
 Subject: Re: [PATCH] configure: Disable capstone and slirp in the
  --without-default-features mode
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Content-Language: fr
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Cc: qemu-trivial@nongnu.org, Samuel Thibault <samuel.thibault@ens-lyon.org>,
  Richard Henderson <richard.henderson@linaro.org>
 References: <20220221090647.150184-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
 In-Reply-To: <20220221090647.150184-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::62b
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=paolo.bonzini@gmail.com; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:Bxw42vZjpdwzh7wNLuomxjH0NF6Kirq8WcQ26ToLgA1yEnc6bJy
+ 5iukTk21Wc7CIHq9rfU4slj+TWGFTbTQMnAIyVPJ7ESTyCRA3gFklUmKPlWfFKtVf5bfm+Y
+ YnPgyAiDTkkWHYHMXaR5IkarhcBSfqOFlFIAnpWg421+swAj4XaVamU0J4SsQ9eRwUes6NF
+ yUPlDRtfGHIHmjZcGoc1w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Cbw+7c/l/oc=:b6av6/7GFadkXpilVSYbUf
+ KQ/L7xaGh6xR9vMFb0usASK/42PkyoArgZHseZ5qhlQWvtg7oLiHk7kmSLZUNZxuTkO41jeWG
+ 2iN3jYKDHCAEj0rm24MPqkeZqGYUuy9fw1dCvvRHqBqwW4dUOIqJLKYBPlqRbbljKScWEQgA7
+ hqKRQR9HnqIa05Nd113dQcxwMFUme8GreTS3M1d2WNq04XXqKAXWyjPMmMYlSxw6bFIEIfKHM
+ IdQFaibohtJmWRG+UD/iVMnOAcnrhCsJ8OTIZ0FylTb4HimsC2LDzcDNEpNwKTLf2SB9sc99G
+ PUiVbfM2sBCQR/ACrKg4FkdHG1gvnI4ZWOXhSUrDvSfzVw7XMiNW85T6ui4JekUO9/0vfwIcY
+ c7Jgv/52YdsBpTDGriIE4NkqakAaA5IfgKEKZo3Qb7JzDTnUK+upQyZ5p6KIb9kSBfy45rLpZ
+ htSfJSmYQavuVBpOxKks19d37Hgnw+qVvVuHRqO3pohvRZsIGiZAjYAEKyAN7oo3TuqWAisJT
+ JRb11+qDTzO8Ih2L1c8uLKWKYdZ3HUu3xpasT6oqwy4B6aGAABlK0GDMqhy8lZJDEta2LWdCN
+ 2Z1zP+LCtzEIf7wx0qf8vFkqqykVF6BDDrZQ358kTGkYxWMD6qxzv1zMXN03ts0DQUIdhs3iv
+ fl3dmCxO07T3xKQicoOqMa3WtBc5Fdw2kFNSecosb+YsQc8IWTL0pzRPr4FXAN3iw1c8=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,20 +64,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Feb 2022 11:31:52 -0000
+X-List-Received-Date: Mon, 21 Feb 2022 17:13:56 -0000
 
-On 2/21/22 10:06, Thomas Huth wrote:
+Le 21/02/2022 à 10:06, Thomas Huth a écrit :
 > For the users, it looks a little bit weird that capstone and slirp are
 > not disabled automatically if they run the configure script with the
 > "--without-default-features" option, so let's do that now.
-> Note: fdt is*not*  changed accordingly since this affects the targets
+> Note: fdt is *not* changed accordingly since this affects the targets
 > that we can build, so disabling fdt automatically here might have
 > unexpected side-effects for the users.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   I thought I sent out that patch a couple of weeks ago already, but
+>   I cannot find it in the archives, so I likely missed to send it
+>   correctly. Anyway, sorry if you've got this twice!
+> 
+>   configure | 9 +++++++--
+>   1 file changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/configure b/configure
+> index 3a29eff5cc..36d10d95bb 100755
+> --- a/configure
+> +++ b/configure
+> @@ -361,9 +361,14 @@ slirp_smbd="$default_feature"
+>   # are included in the automatically generated help message)
+>   
+>   # 1. Track which submodules are needed
+> -capstone="auto"
+> +if test "$default_feature" = no ; then
+> +  capstone="disabled"
+> +  slirp="disabled"
+> +else
+> +  capstone="auto"
+> +  slirp="auto"
+> +fi
+>   fdt="auto"
+> -slirp="auto"
+>   
+>   # 2. Support --with/--without option
+>   default_devices="true"
 
-I suppose that's why it wasn't done for any of the submodules, but your 
-way makes sense as well (possibly _more_ sense).
+Applied to my trivial-patches branch.
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Thanks,
+Laurent
 
-Paolo
+
 
