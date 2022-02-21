@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nMCLf-0001Y9-3h
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Feb 2022 12:19:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48290)
+	id 1nMCPJ-0007cM-BD
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Feb 2022 12:23:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49286)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMCLd-0001SM-KM; Mon, 21 Feb 2022 12:19:41 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:51351)
+ id 1nMCPG-0007Xn-SC; Mon, 21 Feb 2022 12:23:26 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:58225)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMCLb-0006wg-BE; Mon, 21 Feb 2022 12:19:41 -0500
+ id 1nMCPC-0007d2-Ir; Mon, 21 Feb 2022 12:23:25 -0500
 Received: from [192.168.100.1] ([82.142.17.50]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MJmCV-1nfdy90VJp-00K82X; Mon, 21 Feb 2022 18:19:24 +0100
-Message-ID: <6b89630e-7d49-5a9d-61c4-9532f6ecea8d@vivier.eu>
-Date: Mon, 21 Feb 2022 18:19:22 +0100
+ 1M7JrG-1nL70q3s1U-007jTw; Mon, 21 Feb 2022 18:23:17 +0100
+Message-ID: <2cff027b-408d-5d9f-acb8-320242f77bd7@vivier.eu>
+Date: Mon, 21 Feb 2022 18:23:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH v2] target/rx: Remove unused ENV_OFFSET definition
+Subject: Re: [PATCH] hw/nvram: use at24 macro
 Content-Language: fr
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20220203001252.37982-1-f4bug@amsat.org>
+To: Paolo Bonzini <pbonzini@redhat.com>, Patrick Venture
+ <venture@google.com>, philmd@redhat.com
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+References: <20220119214329.2557049-1-venture@google.com>
+ <b043c11d-a007-6579-180f-4dd8f0bcae5d@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220203001252.37982-1-f4bug@amsat.org>
+In-Reply-To: <b043c11d-a007-6579-180f-4dd8f0bcae5d@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xEQqS0yyjeL4AQu3HTQAXTClGyr5yhBdW2zF19P23HNp6pcTv0N
- xpjEzfYMbIk1828oQ+HSNdC/6Z7Tnws+uV5G2yIaovho0EwTE9XZr4dj4/g6idgoHnRa6jM
- qxCLCVz++jkMAItM2jO+NoSKl0ZkGycV37JL+xdbWsK+kwly2Tz4JOQu2W0MvmNN0zg6e17
- CfP6QdS2TR6ipm5EIPdmg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TrbU4VCKvJ0=:qUx+OYqKySprCNFVWmE4tU
- 0X90Vcyt1x5M9dnhTXa3BcdRmxfp96YJrghtQl7PvxPVsFd7UFGUkXUSQ2Cdu+tHV6cy7xA1/
- 6WZ0hM+vnODFOeb00HqkagXulESck9COAQTAh2oYS7SGIWlDeTttGi+MLMOJglu616BGx2Cas
- ZziSU4rvw3ywhXtmPeR/1yH6IwRNQNWw7b45SFNhaPuu1DFmqwAJaTszISZE7Y4EAppq4ODfS
- F9x/pz+tCsVZa/JDDmty6NHtVD3mWmqpy6FG31r+w9mQekd+uGfTbsL1GCMQ8yGF0EZuGLiPr
- Ic31eQEhSDXsemvEhQewMMueG7jw6aSbcTQLs/fEjfIEI1rl8fdwy+DJ91HA71JnsVbD+xOvD
- t6QOy3JnIsDzZLk5hk7+W+A0+RRgcetsTGA0YQOPh8HCRwIAqtz/E90pzYKhtORTp9VvX40HW
- e1JYMxBycKIrpQ1A0zy8wngvM/v/ymKi1Z0J1o6Ejr9P0aIyzLyVodEljcHHffJ5uMSiv9YXV
- wgF30JTp9TotbcxY6cAohM10/7EFKIMSIIlkcHqiyl3joBYXdy59cvkeRKhrbeHujK3X91o8i
- wXyypcG9YCvoC/LlrQIg623z7ZuNBWwo7HLF5P+fp6/HpG3In3Lyd2nDJdGvmHP/a+aksJb/G
- aUxPNUKTqMpQiauAL/uOFgWHAJOCHhF8M1HVPTyPhxUEXySHGRxKE3sMAcaE69RHeXyw=
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:lBZmj4O8EDifppxdb2Umv8P50JgCpW4K6iS53ZfA6HVUqIphILq
+ T6Lxfw7rk4ag+kzyMtESLOXYm2EB2N7j7SDpBPYzAL9vDab0qXwLabjGjA/Jo4N6pZfoEdt
+ 9R7Oy4NGflTM6ooKamQdrXrfvpMdbUtp00xG0C15pei4gW1gm+4mWV9QK1vBj2mn4KdTECB
+ sgdMH0bWcoXNXFRD0uvew==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:kz+fCI0Vmmg=:BVj13kLa1kgl4wEjGCg3Ud
+ kDKyiyfP9UTGHzxmEusAWtdN35kEf4+IaAP86bE1LgAKKdAQTP+mzXVAUXQi5yi2ylWiBQoSp
+ a8ML0js4TVlT4U29KRsUKsmcx6BPN9TWeU88m50VP2gpnJkoA11CF/Enu13w119STesHNFeJ0
+ TounOR8jx3EmcyFolRxtsZeF9xbGP2MKGC7tSRt+mLsL2e1Ge5vIelKQLBPCnfQcvnCwSXPvE
+ 1UpgVyl4j7b7DKATMOOMtlGLt2MICqDgcYrjKCjeg9GH0MNM4qM0hQRfv9Yj8cyQF/7BDcL3l
+ 8ylOHaEmMoLfdIcEPSwltZ2E52Z3XGCEqxk6wbV5k/GlbPmiHqp5qhZNBqLJf+w9zbMn59NV6
+ 09tcSVuBDWoes71L+olUUs6FaWxubcCt0v9ji8QzrUduUdvOb52cHV7aCPafD/mHkBafUHufy
+ E7lRbvP3x5V0hmc5MSIJwldXZUJ7BYMEE6MXVyte3dAfkRbuMQljuziXqtEloBM/Am+gt1pU/
+ 0TjDSM4aWUpQKRNYovKiTF4PQr51aVaNmo0PNnXvFRLSzk/ooJGXCg9AdHcEem/gcqb2ssMbr
+ 0P2sPipS2d8D4R7dta+/Ewu8wAG4lbGUNnuzN/kXYZ9FutcmB/sfs4VccjQV0IHRK5GGgZBo6
+ IAH5v1mZ+2VWHPzV0yeBidLjIOra9crJq36Rp9TY1/Rwqms64BtsfOC5ZMzCTGRh5Ug0=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,33 +63,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Feb 2022 17:19:41 -0000
+X-List-Received-Date: Mon, 21 Feb 2022 17:23:27 -0000
 
-Le 03/02/2022 à 01:12, Philippe Mathieu-Daudé via a écrit :
-> The last use of ENV_OFFSET was removed in 5e1401969b
-> ("cpu: Move icount_decr to CPUNegativeOffsetState");
-> the commit of target/rx came in just afterward.
+Le 25/01/2022 à 10:20, Paolo Bonzini a écrit :
+> On 1/19/22 22:43, Patrick Venture wrote:
+>> Use the macro for going from I2CSlave to EEPROMState.
+>>
+>> Signed-off-by: Patrick Venture <venture@google.com>
+>> ---
+>>   hw/nvram/eeprom_at24c.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
+>> index af6f5dbb99..da435500ba 100644
+>> --- a/hw/nvram/eeprom_at24c.c
+>> +++ b/hw/nvram/eeprom_at24c.c
+>> @@ -54,7 +54,7 @@ struct EEPROMState {
+>>   static
+>>   int at24c_eeprom_event(I2CSlave *s, enum i2c_event event)
+>>   {
+>> -    EEPROMState *ee = container_of(s, EEPROMState, parent_obj);
+>> +    EEPROMState *ee = AT24C_EE(s);
+>>       switch (event) {
+>>       case I2C_START_SEND:
 > 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   target/rx/cpu.h | 2 --
->   1 file changed, 2 deletions(-)
+> Cc: qemu-trivial@nongnu.org
 > 
-> diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-> index 657db84ef0..58adf9edf6 100644
-> --- a/target/rx/cpu.h
-> +++ b/target/rx/cpu.h
-> @@ -116,8 +116,6 @@ struct RXCPU {
->   
->   typedef RXCPU ArchCPU;
->   
-> -#define ENV_OFFSET offsetof(RXCPU, env)
-> -
->   #define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
->   #define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
->   #define CPU_RESOLVING_TYPE TYPE_RX_CPU
 
 Applied to my trivial-patches branch.
 
