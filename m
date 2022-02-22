@@ -1,54 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nMXqN-0008Dk-0P
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 11:16:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40994)
+	id 1nMXqX-0008Hj-Qs
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 11:17:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMXqE-00085w-BB; Tue, 22 Feb 2022 11:16:43 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:43053)
+ id 1nMXqR-0008EF-Dn; Tue, 22 Feb 2022 11:16:55 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:39911)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMXqC-0005cv-Ph; Tue, 22 Feb 2022 11:16:42 -0500
+ id 1nMXqG-0005e2-6U; Tue, 22 Feb 2022 11:16:54 -0500
 Received: from quad ([82.142.17.50]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mdv2u-1nvKQN1XfS-00b1fY; Tue, 22
- Feb 2022 17:16:29 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MStT6-1nogXg2TbK-00UKZg; Tue, 22
+ Feb 2022 17:16:30 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Patrick Venture <venture@google.com>,
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 4/7] hw/nvram: use at24 macro
-Date: Tue, 22 Feb 2022 17:16:21 +0100
-Message-Id: <20220222161624.382218-5-laurent@vivier.eu>
+Subject: [PULL 6/7] vdpa: Make ncs autofree
+Date: Tue, 22 Feb 2022 17:16:23 +0100
+Message-Id: <20220222161624.382218-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220222161624.382218-1-laurent@vivier.eu>
 References: <20220222161624.382218-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:i6YXL2oOuSspIHI9tjBbj2CB3SS0ph6p4gtrAyOii/ZfInlyAAR
- BXq/Y43MfmmGeWa4rYqTFByS3runjoTtLJ/nmX9aYPnn1+DUN10BYkWu4ny+si9lsRYanvf
- 10X8jOnnyr2asKzJSjOicugXFZ0oHE2eD9tcBnMkawHzRSqv09Ir7gLggSYeQc59U+gGH2b
- qUzq/YXKkjUt0xTHivicQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:v+knrSGZsUc=:yEjVVl5omTtj/RO95Uv7lW
- p1RqHZUrbDiqveS3TmrLPY4qRtalpD/3YPTNOuYrdJHU6Xqm8OOd2sQGHBL9ledqs3pgkYfJ/
- TWmMLL+5V4MWSEB8ebdnZwYyizQM87LVltTItBKKnAZNngBtCxjYv3J3ZyCmJiMzpANfKP9ek
- GsUQ6I15skYr5eF3bmM6apt5OG61Q8hC2rd6Q4nJZgjmTWjnie4FKwSPUW8NnR/6v2TAY3V5o
- bAiSCl9Gk+hAT0iPgYotAamFKVIixq3DA8+/P0czhGRJObLnKDe5OU1gfqPgOvVu08MH5FpYw
- wyZjaBUbjweoyfOKWCjA5pV/VI/bhvV/o2lvz7btEVDjiuZP7LueYiUXP4ZkqIdGzHXFYrxOi
- TukgfAzToMZhrEYVrhrrQA1PoapG55CuyZIcCgtD9Ip0em4T+6KVAgN1528hV4CuxJNDbTFGj
- 0aWRbbe1gXqLl4orXO0kYsyECh90HxQuMVQr6WHJ4C7kuQpakUs7m39wkHRmZRQczakK2GUzE
- N7ThBK8kXjQZMdPtDjdcqZtqldfXiwr33dSwMsTRF9uHAzb4xMq79Ziz03i0D8XlOcTi6dhHk
- lM5cELO450acdZ+1Zb8aFY9PnO7XhbQeZfTCbbAZRjmV7323+DUPVd+28AdRLgDhULtvKJc0B
- QFy0UCfKdbE+M2JOoVBWtNA0RX5Ym0LF5047izYrUlWgLKwFnzOLzdaZVTrPzmtq9+Rk=
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:rmVM5WGWPKasarRE3cpUe12de7fpmIbq4i52tAPE+lQ15mx1sYF
+ UWDj/tDHZ3fhK28aDqJGrTRZkirUd2FB/CR0yNT01m5H/iVlndvH+777gOVUga5cpERCQTb
+ uAMdwmAt6Fn43wN6B2QxyRcPicY09HxcPjIK+i97wnGdZpMeqbzRSK48gmV+JF3UPwZ9xFj
+ EPD9D3QKJ+00cnEu3q8xg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:izCHUsKb+jU=:I7vHYsEujlmpe5AxNd5JCS
+ 7Mlw7tvd8n62z4pRvS4tclfSzQUxDHmU0XzuvYblLS5bUSs6zv6SVBoTz04+J1WWaxZHX9H0f
+ T/QGyaCU6lAXlXcyxzTVMpB38KfoWdzbBaFwubfRHicFuH4zb3XqQ5zhfuCkrglwvBotq8/nd
+ FYtFlmnmYIup0JyjiN/rr9Hc44bQ6MteB7+SNryyD890JEL3MBNKBs9pWuf9B+4lFChS4yD/D
+ +oEkAUf2A38IWcRYvILTUHWJ+hH2+PW7AgQ4I0WFq8SxyTCGe5UFFW600lIMlrhQs2hn1DxXy
+ hTpcd+Y8/cSME0BnSzPHX5Uczk8T889I9IC8OmcT7SBy8WlCe5lu3jEThZDs0iEcFOtT19Lzz
+ el+JsoPCXyuHI+ph5xwN/mHRWbdO8YxNzYzALqHUd/29pby88jboERCKu4j3N+4VZ9rDpNnC1
+ X/yKbQZysjye0It0+xSqLY4a9QJbdGX93JJXnplJVhlfeSbvvODuo29ax03UYQrOXayG1WggA
+ Ehglax6x2JdoOxBRUwnTTEQntTzeEVn4lMwVDyQ0xYGHQI0nPnHRVIAv9ZTtz+48OEcmM7JKZ
+ DsEbvD0ndOJGc2Bw1eX6La3h31HhcYATe31xUi1maM1p3Am31/7RJFmBTWErM56sMAzcjHK5I
+ 95ZUYmdyGwwiKTt2MQLM0JFhIxOIqWQqlMoK/SMV9RTdDP0SXv2NcBT0GU8uLQymSs4M=
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -61,33 +63,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Feb 2022 16:16:44 -0000
+X-List-Received-Date: Tue, 22 Feb 2022 16:16:57 -0000
 
-From: Patrick Venture <venture@google.com>
+From: Eugenio Pérez <eperezma@redhat.com>
 
-Use the macro for going from I2CSlave to EEPROMState.
+Simplifying memory management.
 
-Signed-off-by: Patrick Venture <venture@google.com>
+Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+Acked-by: Jason Wang <jasowang@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220119214329.2557049-1-venture@google.com>
+Message-Id: <20220214193415.1606752-2-eperezma@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/nvram/eeprom_at24c.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ net/vhost-vdpa.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-index af6f5dbb9984..da435500baca 100644
---- a/hw/nvram/eeprom_at24c.c
-+++ b/hw/nvram/eeprom_at24c.c
-@@ -54,7 +54,7 @@ struct EEPROMState {
- static
- int at24c_eeprom_event(I2CSlave *s, enum i2c_event event)
+diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
+index 25dd6dd97547..1e9fe47c033d 100644
+--- a/net/vhost-vdpa.c
++++ b/net/vhost-vdpa.c
+@@ -263,7 +263,8 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
  {
--    EEPROMState *ee = container_of(s, EEPROMState, parent_obj);
-+    EEPROMState *ee = AT24C_EE(s);
+     const NetdevVhostVDPAOptions *opts;
+     int vdpa_device_fd;
+-    NetClientState **ncs, *nc;
++    g_autofree NetClientState **ncs = NULL;
++    NetClientState *nc;
+     int queue_pairs, i, has_cvq = 0;
  
-     switch (event) {
-     case I2C_START_SEND:
+     assert(netdev->type == NET_CLIENT_DRIVER_VHOST_VDPA);
+@@ -301,7 +302,6 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
+             goto err;
+     }
+ 
+-    g_free(ncs);
+     return 0;
+ 
+ err:
+@@ -309,7 +309,6 @@ err:
+         qemu_del_net_client(ncs[0]);
+     }
+     qemu_close(vdpa_device_fd);
+-    g_free(ncs);
+ 
+     return -1;
+ }
 -- 
 2.35.1
 
