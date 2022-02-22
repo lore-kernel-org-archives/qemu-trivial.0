@@ -1,69 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nMSV1-0005fP-6X
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 05:34:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56202)
+	id 1nMSlF-0006W8-G5
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 05:51:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59992)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nMSV0-0005di-A7
- for qemu-trivial@nongnu.org; Tue, 22 Feb 2022 05:34:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41927)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nMSlD-0006Uc-AS; Tue, 22 Feb 2022 05:51:11 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:56341)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nMSUy-0006xC-Go
- for qemu-trivial@nongnu.org; Tue, 22 Feb 2022 05:34:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1645526063;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=s7BOtu9wGcWHrHIYra3A0Xc0bF2gc97TUC3em0vjcQQ=;
- b=PuqITJHSIgQgBwShXHuJoYgGy01n+2+PokH7ak4PkzjTJFPQ8h3dXbIIE9y0OLQXaEV2Zm
- 8VfZ4nba6qFJSBh9HFrvM66pwujXuo0vcjfm1lO7e1izFUAucffbrc3CoTZNqoG+Dg/jt+
- lueMtKWBDVGNwGoepWODgNO9Enb/Suw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-327-sqBfQlmIODSC17csrpDEHQ-1; Tue, 22 Feb 2022 05:34:20 -0500
-X-MC-Unique: sqBfQlmIODSC17csrpDEHQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1A78E80573C;
- Tue, 22 Feb 2022 10:34:19 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.195.81])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C673672190;
- Tue, 22 Feb 2022 10:34:18 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 1804A180079D; Tue, 22 Feb 2022 11:34:17 +0100 (CET)
-Date: Tue, 22 Feb 2022 11:34:17 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru,
- Noah Bergbauer <noah@statshelix.com>, qemu-devel@nongnu.org
-Subject: Re: [PATCH] hid: trivial change to support side and extra buttons
-Message-ID: <20220222103417.mf2vw5t7lewmudpt@sirius.home.kraxel.org>
-References: <20211126140437.79745-1-noah@statshelix.com>
- <CABjy+RiwQLNmdSYop1zWq40Jp2HRvf_z5xtDTmKT1R3ff0bHdg@mail.gmail.com>
- <CABjy+Ri7Cnnnkn8PqhNwfDeNYo8y526TnTanAwV+DuLZWGQ-9g@mail.gmail.com>
- <610ad47e-b991-1502-5197-cf8040989ed4@vivier.eu>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1nMSlB-0001mQ-8s; Tue, 22 Feb 2022 05:51:11 -0500
+Received: from [192.168.100.1] ([82.142.17.50]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MVdUQ-1nljQ53qi4-00RWKY; Tue, 22 Feb 2022 11:51:06 +0100
+Message-ID: <8bd75e7b-f7e2-7177-949e-097cdf0c77a3@vivier.eu>
+Date: Tue, 22 Feb 2022 11:51:05 +0100
 MIME-Version: 1.0
-In-Reply-To: <610ad47e-b991-1502-5197-cf8040989ed4@vivier.eu>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH] hid: Implement support for side and extra buttons
+Content-Language: fr
+To: Noah Bergbauer <noah@statshelix.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20211126140437.79745-1-noah@statshelix.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20211126140437.79745-1-noah@statshelix.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:PdtOyLYPlxHH5bGkkJZCkVPFYj9pM/I43/zjOrLagPPhaNyJ9Ns
+ BrMVjtyxQcO9Zzy4aHM8D0dZiWe24qVDK71K3XSkbGSGN72AR79DU16ur2dMqOOo++pK47O
+ x6YB8QszpGtiKIdiAYX2AyZPeY7zsa1KIMwTYv8hRFPz7YiTlbYJW2p1BEnZngIaNirkfHK
+ 1DQ/4iitmW8DBEOWYzKfg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Mx1XoDbINpA=:o/8WotANv9zYE37kqRgjVv
+ hONjqiMTzkLqTxEJfFn1X5yGPeYhGEh2iyFXPRGpaq4vMPtEvqnDFxEWHaBcGiC6zDlld2AIe
+ x/PkMoGf7BlcUrOJmZ0fVDU7vabR7ntJkUlqMMedNmzP37PxPBXw0G6dHfgqBqjRWXDmbFln7
+ KrSHa8dFwWXASGimaZ1+2Htja9hG3BtLLeJYxwVqxr1hMEQ86ax2N7whnehPtji8uprlce3AE
+ YXAbpCyOsW517yHSJNKBXzVR7pZf0Xpv9r2cbgKY7QnTO00bbCQ12wKuFOOYb3o9Ba6hFWymu
+ K9hOu20lSTmjFIFezopQF0otAY7XhcfF87S9kBbm54fbQnitQHwm+lCQCglrJBjuI2TcECF5Z
+ N0DfASeeMAwNQDpUHOw0BulxHI/7YeSZBmTcuZJYxrZJ+UfQYdQxlj9QtdRqUtySVvZyNgApb
+ a+NbIYE+L7Xf/WWsmZUO14QSPfG9fbzpOcYnKmA6WuJlK02e6fqJ1PppunsnCaDmb3FxLkv+J
+ hkru9Kuox6p1GJ0HME7XRZvNLt3sN5mT+CQUTuceuZgtYTQ2s9XMtxXsjtmoMg2Hij8lasc/A
+ suFoqqsLPktqL+Amq7S8Oo4FMf1RG0iVMqO/UZ0E7sG1mBy/IlLJVN8b0f0n1qbgclKfqm2ae
+ 71pahzR64nFf294mW4aH0voKUglGG23ndJItHMvu6L264Z72teQi4NJbqEc46keOcYs8=
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,16 +62,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Feb 2022 10:34:26 -0000
+X-List-Received-Date: Tue, 22 Feb 2022 10:51:11 -0000
 
-On Tue, Feb 22, 2022 at 10:32:49AM +0100, Laurent Vivier wrote:
-> Gerd,
+Le 26/11/2021 à 15:04, Noah Bergbauer a écrit :
+> Simply set the respective bits and update the descriptor accordingly.
 > 
-> if you acknowledge the patch I can merge it via the trivial branch.
+> Signed-off-by: Noah Bergbauer <noah@statshelix.com>
+> ---
+>   hw/input/hid.c   | 2 ++
+>   hw/usb/dev-hid.c | 6 +++---
+>   2 files changed, 5 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/input/hid.c b/hw/input/hid.c
+> index 8aab0521f4..e7ecebdf8f 100644
+> --- a/hw/input/hid.c
+> +++ b/hw/input/hid.c
+> @@ -114,6 +114,8 @@ static void hid_pointer_event(DeviceState *dev, QemuConsole *src,
+>           [INPUT_BUTTON_LEFT]   = 0x01,
+>           [INPUT_BUTTON_RIGHT]  = 0x02,
+>           [INPUT_BUTTON_MIDDLE] = 0x04,
+> +        [INPUT_BUTTON_SIDE] = 0x08,
+> +        [INPUT_BUTTON_EXTRA] = 0x10,
+>       };
+>       HIDState *hs = (HIDState *)dev;
+>       HIDPointerEvent *e;
+> diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
+> index 1c7ae97c30..bdd6d1ffaf 100644
+> --- a/hw/usb/dev-hid.c
+> +++ b/hw/usb/dev-hid.c
+> @@ -461,14 +461,14 @@ static const uint8_t qemu_mouse_hid_report_descriptor[] = {
+>       0xa1, 0x00,		/*   Collection (Physical) */
+>       0x05, 0x09,		/*     Usage Page (Button) */
+>       0x19, 0x01,		/*     Usage Minimum (1) */
+> -    0x29, 0x03,		/*     Usage Maximum (3) */
+> +    0x29, 0x05,		/*     Usage Maximum (5) */
+>       0x15, 0x00,		/*     Logical Minimum (0) */
+>       0x25, 0x01,		/*     Logical Maximum (1) */
+> -    0x95, 0x03,		/*     Report Count (3) */
+> +    0x95, 0x05,		/*     Report Count (5) */
+>       0x75, 0x01,		/*     Report Size (1) */
+>       0x81, 0x02,		/*     Input (Data, Variable, Absolute) */
+>       0x95, 0x01,		/*     Report Count (1) */
+> -    0x75, 0x05,		/*     Report Size (5) */
+> +    0x75, 0x03,		/*     Report Size (3) */
+>       0x81, 0x01,		/*     Input (Constant) */
+>       0x05, 0x01,		/*     Usage Page (Generic Desktop) */
+>       0x09, 0x30,		/*     Usage (X) */
 
-Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Applied to my trivial-patches branch.
 
-thanks,
-  Gerd
+Thanks,
+Laurent
 
 
