@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nMSlF-0006W8-G5
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 05:51:13 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59992)
+	id 1nMXq9-000801-Ie
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 11:16:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMSlD-0006Uc-AS; Tue, 22 Feb 2022 05:51:11 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:56341)
+ id 1nMXq6-0007tD-S5; Tue, 22 Feb 2022 11:16:34 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:59329)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMSlB-0001mQ-8s; Tue, 22 Feb 2022 05:51:11 -0500
-Received: from [192.168.100.1] ([82.142.17.50]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MVdUQ-1nljQ53qi4-00RWKY; Tue, 22 Feb 2022 11:51:06 +0100
-Message-ID: <8bd75e7b-f7e2-7177-949e-097cdf0c77a3@vivier.eu>
-Date: Tue, 22 Feb 2022 11:51:05 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH] hid: Implement support for side and extra buttons
-Content-Language: fr
-To: Noah Bergbauer <noah@statshelix.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20211126140437.79745-1-noah@statshelix.com>
+ id 1nMXq5-0005XO-6j; Tue, 22 Feb 2022 11:16:34 -0500
+Received: from quad ([82.142.17.50]) by mrelayeu.kundenserver.de (mreue107
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MBV2f-1nWkBY42cJ-00CwJZ; Tue, 22
+ Feb 2022 17:16:28 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20211126140437.79745-1-noah@statshelix.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 2/7] target/avr: Correct AVRCPUClass docstring
+Date: Tue, 22 Feb 2022 17:16:19 +0100
+Message-Id: <20220222161624.382218-3-laurent@vivier.eu>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220222161624.382218-1-laurent@vivier.eu>
+References: <20220222161624.382218-1-laurent@vivier.eu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:PdtOyLYPlxHH5bGkkJZCkVPFYj9pM/I43/zjOrLagPPhaNyJ9Ns
- BrMVjtyxQcO9Zzy4aHM8D0dZiWe24qVDK71K3XSkbGSGN72AR79DU16ur2dMqOOo++pK47O
- x6YB8QszpGtiKIdiAYX2AyZPeY7zsa1KIMwTYv8hRFPz7YiTlbYJW2p1BEnZngIaNirkfHK
- 1DQ/4iitmW8DBEOWYzKfg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Mx1XoDbINpA=:o/8WotANv9zYE37kqRgjVv
- hONjqiMTzkLqTxEJfFn1X5yGPeYhGEh2iyFXPRGpaq4vMPtEvqnDFxEWHaBcGiC6zDlld2AIe
- x/PkMoGf7BlcUrOJmZ0fVDU7vabR7ntJkUlqMMedNmzP37PxPBXw0G6dHfgqBqjRWXDmbFln7
- KrSHa8dFwWXASGimaZ1+2Htja9hG3BtLLeJYxwVqxr1hMEQ86ax2N7whnehPtji8uprlce3AE
- YXAbpCyOsW517yHSJNKBXzVR7pZf0Xpv9r2cbgKY7QnTO00bbCQ12wKuFOOYb3o9Ba6hFWymu
- K9hOu20lSTmjFIFezopQF0otAY7XhcfF87S9kBbm54fbQnitQHwm+lCQCglrJBjuI2TcECF5Z
- N0DfASeeMAwNQDpUHOw0BulxHI/7YeSZBmTcuZJYxrZJ+UfQYdQxlj9QtdRqUtySVvZyNgApb
- a+NbIYE+L7Xf/WWsmZUO14QSPfG9fbzpOcYnKmA6WuJlK02e6fqJ1PppunsnCaDmb3FxLkv+J
- hkru9Kuox6p1GJ0HME7XRZvNLt3sN5mT+CQUTuceuZgtYTQ2s9XMtxXsjtmoMg2Hij8lasc/A
- suFoqqsLPktqL+Amq7S8Oo4FMf1RG0iVMqO/UZ0E7sG1mBy/IlLJVN8b0f0n1qbgclKfqm2ae
- 71pahzR64nFf294mW4aH0voKUglGG23ndJItHMvu6L264Z72teQi4NJbqEc46keOcYs8=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:zKvTuSac4jMVLlJ5S6oKT/YwhaVtsL3Wirc5MKLVFVHh+aUK9iE
+ t94PZyIPnGwGOb0RSunqRuhPHcp5OJUAkl1OvYNuEqHA5FIg7y9cHP6emqE+pFI12EPmcxB
+ iLAZcy5NTmy5hlZe/SXchHnAT0wGc5fK19L2e1LtAQJojr8LRqNt36KE7bWemYbWdXEO2R4
+ noFeGmmG7MVD7eVqcrLpA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:v6mkg8znzLw=:vtUIVWMKT85hl8HYO7pF6X
+ znRjX+FwDt6co2quGifjWLN6pGkpPqHmWMzMRT/tgR/dRjUdbAkhgtnFyNDFycJxc34dIgv4d
+ Bz+D4v5/OlwmsjmV4m7IokIuYACPCbx2tmR6qV7FxwPxILCyyxPA/42T9UQ3tiqiUwDn7VZcj
+ dG6LMAi5ZpG4FUQyluitEFU6ZN61GUVM1kH0lQbdXwARndo+YYfzrG2jdNXLyPt78VWNwNEDZ
+ hQXDRLwyKnIn10VIF4bV+n6WplayRCxE4oucJwEL9MnDMoW/H6jCu8rnqPveCZ2qWYD40LDNW
+ 4exYqOj3yTGMXM1lkx9/GkVNaokYIHhtBWNjV0B4tBKNdag+6056mDKBsFAWWr6ES2ZkslTz7
+ 25JXAqJrwiuzlYEhlqw7srxkGlh73FnNEmN1Vl/XLZpMb2isk4nax0gV/AAbGUpeketKXdXMu
+ RG5FiYNoA4SxzpzVauK7sL7uwdm8GRAjrSqnosj2VJ2UOO51H+HRL+WlmdxvD2ZwoeTGgj3Jh
+ 9WRxXpQfJ6x47h5UnLT9aWDPej6WKAAn/LBQVSh4pZ0R7yXQLdqq+v5dSCWGfZ5VNapUOOt0M
+ YBq/sO/EemVIb6Tb5r/866AeEbput4LbbPcuUD8SZ8RdLkZpRuR70M3yopkqPDSdZwIfauymH
+ PRc697yrZw7HqMF3Af/AmFY5ibIMNdv0gz1vAmqJPNYg7CShtX090BW39RCrMotMXP8s=
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,56 +62,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Feb 2022 10:51:11 -0000
+X-List-Received-Date: Tue, 22 Feb 2022 16:16:35 -0000
 
-Le 26/11/2021 à 15:04, Noah Bergbauer a écrit :
-> Simply set the respective bits and update the descriptor accordingly.
-> 
-> Signed-off-by: Noah Bergbauer <noah@statshelix.com>
-> ---
->   hw/input/hid.c   | 2 ++
->   hw/usb/dev-hid.c | 6 +++---
->   2 files changed, 5 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/input/hid.c b/hw/input/hid.c
-> index 8aab0521f4..e7ecebdf8f 100644
-> --- a/hw/input/hid.c
-> +++ b/hw/input/hid.c
-> @@ -114,6 +114,8 @@ static void hid_pointer_event(DeviceState *dev, QemuConsole *src,
->           [INPUT_BUTTON_LEFT]   = 0x01,
->           [INPUT_BUTTON_RIGHT]  = 0x02,
->           [INPUT_BUTTON_MIDDLE] = 0x04,
-> +        [INPUT_BUTTON_SIDE] = 0x08,
-> +        [INPUT_BUTTON_EXTRA] = 0x10,
->       };
->       HIDState *hs = (HIDState *)dev;
->       HIDPointerEvent *e;
-> diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
-> index 1c7ae97c30..bdd6d1ffaf 100644
-> --- a/hw/usb/dev-hid.c
-> +++ b/hw/usb/dev-hid.c
-> @@ -461,14 +461,14 @@ static const uint8_t qemu_mouse_hid_report_descriptor[] = {
->       0xa1, 0x00,		/*   Collection (Physical) */
->       0x05, 0x09,		/*     Usage Page (Button) */
->       0x19, 0x01,		/*     Usage Minimum (1) */
-> -    0x29, 0x03,		/*     Usage Maximum (3) */
-> +    0x29, 0x05,		/*     Usage Maximum (5) */
->       0x15, 0x00,		/*     Logical Minimum (0) */
->       0x25, 0x01,		/*     Logical Maximum (1) */
-> -    0x95, 0x03,		/*     Report Count (3) */
-> +    0x95, 0x05,		/*     Report Count (5) */
->       0x75, 0x01,		/*     Report Size (1) */
->       0x81, 0x02,		/*     Input (Data, Variable, Absolute) */
->       0x95, 0x01,		/*     Report Count (1) */
-> -    0x75, 0x05,		/*     Report Size (5) */
-> +    0x75, 0x03,		/*     Report Size (3) */
->       0x81, 0x01,		/*     Input (Constant) */
->       0x05, 0x01,		/*     Usage Page (Generic Desktop) */
->       0x09, 0x30,		/*     Usage (X) */
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Applied to my trivial-patches branch.
+There is no 'vr' field in AVRCPUClass.
 
-Thanks,
-Laurent
+Likely a copy/paste typo from CRISCPUClass ;)
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220122001036.83267-1-f4bug@amsat.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ target/avr/cpu-qom.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/target/avr/cpu-qom.h b/target/avr/cpu-qom.h
+index 9fa6989c1882..14e5b3ce72ff 100644
+--- a/target/avr/cpu-qom.h
++++ b/target/avr/cpu-qom.h
+@@ -33,7 +33,6 @@ OBJECT_DECLARE_TYPE(AVRCPU, AVRCPUClass,
+  *  AVRCPUClass:
+  *  @parent_realize: The parent class' realize handler.
+  *  @parent_reset: The parent class' reset handler.
+- *  @vr: Version Register value.
+  *
+  *  A AVR CPU model.
+  */
+-- 
+2.35.1
 
 
