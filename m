@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nMJ8o-0006hw-Sq
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Feb 2022 19:34:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37134)
+	id 1nMRXc-0003O3-G0
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 04:33:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMJ8m-0006gR-BL; Mon, 21 Feb 2022 19:34:52 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:42581)
+ id 1nMRXa-0003NH-VP; Tue, 22 Feb 2022 04:33:02 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:41917)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMJ8k-0000fq-LH; Mon, 21 Feb 2022 19:34:52 -0500
+ id 1nMRXY-0005zh-TQ; Tue, 22 Feb 2022 04:33:02 -0500
 Received: from [192.168.100.1] ([82.142.17.50]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M730b-1nJplp0C3r-008cve; Tue, 22 Feb 2022 01:34:46 +0100
-Message-ID: <96592c2c-0fd3-443a-80b6-ac5b6d1e6bd5@vivier.eu>
-Date: Tue, 22 Feb 2022 01:34:44 +0100
+ 1N4R0a-1oLNpK2xGg-011Pa2; Tue, 22 Feb 2022 10:32:53 +0100
+Message-ID: <610ad47e-b991-1502-5197-cf8040989ed4@vivier.eu>
+Date: Tue, 22 Feb 2022 10:32:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH 1/1] vdpa: Make ncs autofree
+Subject: Re: [PATCH] hid: trivial change to support side and extra buttons
 Content-Language: fr
-To: =?UTF-8?Q?Eugenio_P=c3=a9rez?= <eperezma@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-References: <20220214193415.1606752-1-eperezma@redhat.com>
- <20220214193415.1606752-2-eperezma@redhat.com>
+To: kraxel@redhat.com
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+ Noah Bergbauer <noah@statshelix.com>, qemu-devel@nongnu.org
+References: <20211126140437.79745-1-noah@statshelix.com>
+ <CABjy+RiwQLNmdSYop1zWq40Jp2HRvf_z5xtDTmKT1R3ff0bHdg@mail.gmail.com>
+ <CABjy+Ri7Cnnnkn8PqhNwfDeNYo8y526TnTanAwV+DuLZWGQ-9g@mail.gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220214193415.1606752-2-eperezma@redhat.com>
+In-Reply-To: <CABjy+Ri7Cnnnkn8PqhNwfDeNYo8y526TnTanAwV+DuLZWGQ-9g@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:2vip0x3L8odmZYzCPSYr8nnqquOISQ6OpkgLGWYiNEqK5QWMPkM
- NQNP9nj1FxBP7HpYDpvr0RgHE/hTWa4an3sIVt1taLvlVX2keKdx9NoK5/qxMO38r78oEXp
- pe9EEgetFvhQ8mJdy1HFZAEiG55X/DpEHgEUas83bYNQm/65blwhaiGIEmVUCnourSzzifk
- Z2ECelK/riDdRkfUwsK6Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+ii3IkOvuNc=:Zcf60wPbb1CUAZHaKmYMVs
- e5q+Waq0UYR4zM/Xhb4ZvI8jBtBhtsk01jPeXscGQcRnHmLoozl11486jBJT3QGYUiTQD09zq
- 1pDAz148ilfgK7qzptYVBU3YH88/wNJd9ZQyUg10aFlUEBg5+kosyQlavzQ1/x9sQuAvTcyzk
- Q432xP/9dsVmc1pc8IGIGNmLJDYgHFt4JVBC+RJkK9KQ7/JuyY8ewxVa6nGbTGHgA53V5YjJj
- 3zG5O7sMbYOZflixzHAEkmHrQPQ4GzD8eNNoDdrOnMvwGIMplAbAPH3dCPqYTPlCiMNE3opXI
- NtJjV+rANN/eqm6L2m6anIBUhOgHtn9cndERk31NQHGigqPHE0LQ+PCCpMdIPGjjN9NsqiMa8
- 6w4w12jUWPx53/lu+UzuHVhVhiUO8d87ygoJLo9i8qa64Wg3G4uVJO9bALe85BRZcV1Dzcsoj
- Euu3IvXXMNhlt50tPIRxspLUE3wChDr13acad2Gvc2zxa51m2E/r5eowgF2eRRSP5ob6HrL0W
- R2VmGWvMMvSexJZ6lXxmhE9qKqn7qBd+RozQupw2BW2TtTMUCpLzbfyd8wUpjCqsqys34Y3Wb
- Bj+ucTZiRpkHD6XFI+Jst7ebRzqTqBNZclnXIWDTiBBHG1O2QXiB/ZaZEihqB/Ovpcx02SbPj
- phJUoAOE2dBJLUsKxKq4mdjp9dJDEEiS84ysOiy7XSCAezFI32GpcDDyno7X6k1eoVio=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:k+hgf3Uqc4MkDdAvofs2vZ8Rlj2jgPekn9TOlWj3/geAV7JQDOs
+ eAh4i7+fM47+hrHgOl5khEf+dUnPVerS4bYqbsVCnPl+Ea7zRGrv/yGh7XVDvj0V5A8oqNL
+ xakXz0ByeNhdyLhxTFuBdlaydizareHYhHQjpCtTbObaZdXtpc/9noGCkvE2AqAHnCI9LMS
+ tE56zD4xAwpWoA3xkY4Yg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:MUl3bFSaf0E=:t40hYXCgnZSqY9D9fyZw23
+ hkK4NdvkEGBvbozJ+AIs6bz39NO7gH5pfduEoRcI8eVFyt6ccsgv63PX8gE80UEM4c/Hl9Jzw
+ Y7njM/wsv7cJwr+bpxHzRk09VzPl40gK6nY6bJPnNNtlA47BVOloY3HtEAUPwZkzvMTZ7qAlD
+ PTinuNrFEHyc1LrJiV/r/zriIONDuOrrQrLj24bukOcJOhRpY9F5NlQJ8ieUlgo2MAuVW4vjU
+ wDYrzZPQeNzOsrFQIZHGOKeq3lw04dm3oH7lu30GEMn4PjWhfdEAWVG8b+pfIcfnhfMYSGYAx
+ EfwL+XyMlAzV3nNb06NvRrUUOHHXRyv1Hv3ZNZi7NaAxjmEWZrhGwLonsAFYcjgw3SAGwGsVH
+ EzvG1XyKhRFMJJ/Dhv1NeCGy+3OyHp4+d7k4g8BsVAztdKjxG5zJQshDKEAo36sOoD82bucSX
+ YDTaHVUj1kvM1pSMwG1nyIjwCQ9zVqcNlbXx+h8VvajxRhqopB+X3p2tTrLQChLpOekSEFedO
+ 0eqT4qDbeob2rbJQqDZGo1GQovNHB1hZAoJrboitFAGjOusDxRLbtak78jDNvCeQmlgG4JdIS
+ 8G/pKjYWKgR4nu5Zf4J/IYE09XqsLz0thUtEeaQ2gSJobhlGPG0hSjx+/bSjc7gYaxXm2PJQf
+ kkLoApNgDpwXL8NQY0prr5mKQsdSop5eynJBmy8BVfHw2ExwFu4fetO5ypuVhMXZLROM=
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,51 +65,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Feb 2022 00:34:52 -0000
+X-List-Received-Date: Tue, 22 Feb 2022 09:33:03 -0000
 
-Le 14/02/2022 à 20:34, Eugenio Pérez a écrit :
-> Simplifying memory management.
-> 
-> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
-> ---
->   net/vhost-vdpa.c | 5 ++---
->   1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
-> index 4125d13118..4befba5cc7 100644
-> --- a/net/vhost-vdpa.c
-> +++ b/net/vhost-vdpa.c
-> @@ -264,7 +264,8 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
->   {
->       const NetdevVhostVDPAOptions *opts;
->       int vdpa_device_fd;
-> -    NetClientState **ncs, *nc;
-> +    g_autofree NetClientState **ncs = NULL;
-> +    NetClientState *nc;
->       int queue_pairs, i, has_cvq = 0;
->   
->       assert(netdev->type == NET_CLIENT_DRIVER_VHOST_VDPA);
-> @@ -302,7 +303,6 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
->               goto err;
->       }
->   
-> -    g_free(ncs);
->       return 0;
->   
->   err:
-> @@ -310,7 +310,6 @@ err:
->           qemu_del_net_client(ncs[0]);
->       }
->       qemu_close(vdpa_device_fd);
-> -    g_free(ncs);
->   
->       return -1;
->   }
+Gerd,
 
-Applied to my trivial-patches branch.
+if you acknowledge the patch I can merge it via the trivial branch.
 
 Thanks,
 Laurent
 
+Le 22/01/2022 à 10:57, Noah Bergbauer a écrit :
+> ping https://patchew.org/QEMU/20211126140437.79745-1-noah@statshelix.com/ 
+> <https://patchew.org/QEMU/20211126140437.79745-1-noah@statshelix.com/>
+> 
+> This patch is really small because all of the necessary functionality is already in place. It's just 
+> a matter of setting the respective flags (instead of just ignoring the buttons) and allocating these 
+> bits in the HID descriptor.
+> 
+> On Sat, Dec 4, 2021 at 12:20 PM Noah Bergbauer <noah@statshelix.com <mailto:noah@statshelix.com>> wrote:
+> 
+>     ping https://patchew.org/QEMU/20211126140437.79745-1-noah@statshelix.com/
+>     <https://patchew.org/QEMU/20211126140437.79745-1-noah@statshelix.com/>
+> 
+>     On Fri, Nov 26, 2021 at 3:04 PM Noah Bergbauer <noah@statshelix.com
+>     <mailto:noah@statshelix.com>> wrote:
+> 
+>         Simply set the respective bits and update the descriptor accordingly.
+> 
+>         Signed-off-by: Noah Bergbauer <noah@statshelix.com <mailto:noah@statshelix.com>>
+>         ---
+>           hw/input/hid.c   | 2 ++
+>           hw/usb/dev-hid.c | 6 +++---
+>           2 files changed, 5 insertions(+), 3 deletions(-)
+> 
+>         diff --git a/hw/input/hid.c b/hw/input/hid.c
+>         index 8aab0521f4..e7ecebdf8f 100644
+>         --- a/hw/input/hid.c
+>         +++ b/hw/input/hid.c
+>         @@ -114,6 +114,8 @@ static void hid_pointer_event(DeviceState *dev, QemuConsole *src,
+>                   [INPUT_BUTTON_LEFT]   = 0x01,
+>                   [INPUT_BUTTON_RIGHT]  = 0x02,
+>                   [INPUT_BUTTON_MIDDLE] = 0x04,
+>         +        [INPUT_BUTTON_SIDE] = 0x08,
+>         +        [INPUT_BUTTON_EXTRA] = 0x10,
+>               };
+>               HIDState *hs = (HIDState *)dev;
+>               HIDPointerEvent *e;
+>         diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
+>         index 1c7ae97c30..bdd6d1ffaf 100644
+>         --- a/hw/usb/dev-hid.c
+>         +++ b/hw/usb/dev-hid.c
+>         @@ -461,14 +461,14 @@ static const uint8_t qemu_mouse_hid_report_descriptor[] = {
+>               0xa1, 0x00,                /*   Collection (Physical) */
+>               0x05, 0x09,                /*     Usage Page (Button) */
+>               0x19, 0x01,                /*     Usage Minimum (1) */
+>         -    0x29, 0x03,                /*     Usage Maximum (3) */
+>         +    0x29, 0x05,                /*     Usage Maximum (5) */
+>               0x15, 0x00,                /*     Logical Minimum (0) */
+>               0x25, 0x01,                /*     Logical Maximum (1) */
+>         -    0x95, 0x03,                /*     Report Count (3) */
+>         +    0x95, 0x05,                /*     Report Count (5) */
+>               0x75, 0x01,                /*     Report Size (1) */
+>               0x81, 0x02,                /*     Input (Data, Variable, Absolute) */
+>               0x95, 0x01,                /*     Report Count (1) */
+>         -    0x75, 0x05,                /*     Report Size (5) */
+>         +    0x75, 0x03,                /*     Report Size (3) */
+>               0x81, 0x01,                /*     Input (Constant) */
+>               0x05, 0x01,                /*     Usage Page (Generic Desktop) */
+>               0x09, 0x30,                /*     Usage (X) */
+>         -- 
+>         2.34.0
+> 
 
 
