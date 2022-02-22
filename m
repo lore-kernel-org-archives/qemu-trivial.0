@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nMXqI-00088D-4C
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 11:16:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40926)
+	id 1nMXqK-0008A3-BI
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 11:16:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMXq8-0007yC-Hf; Tue, 22 Feb 2022 11:16:36 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:59401)
+ id 1nMXqA-00083f-V0; Tue, 22 Feb 2022 11:16:38 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:52993)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nMXq5-0005Xn-S3; Tue, 22 Feb 2022 11:16:36 -0500
+ id 1nMXq8-0005Yv-Tk; Tue, 22 Feb 2022 11:16:38 -0500
 Received: from quad ([82.142.17.50]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MfqCF-1ntPoC3cnx-00gGrj; Tue, 22
- Feb 2022 17:16:30 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mz9EL-1o9RYi393D-00wHY9; Tue, 22
+ Feb 2022 17:16:32 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 5/7] qemu-options: fix incorrect description for '-drive index='
-Date: Tue, 22 Feb 2022 17:16:22 +0100
-Message-Id: <20220222161624.382218-6-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Noah Bergbauer <noah@statshelix.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 7/7] hid: Implement support for side and extra buttons
+Date: Tue, 22 Feb 2022 17:16:24 +0100
+Message-Id: <20220222161624.382218-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220222161624.382218-1-laurent@vivier.eu>
 References: <20220222161624.382218-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:W3be25eMGrIwj+ZQIR8oJ2BZ2AfhUMIDi7sSacHu7CJYPovVnGx
- jFdAZluKcjSouI9Pi1QjnLNU648IbcCldljXW686ZRxV8ePwI38yn5iDqwVTUpkIz2P2N2h
- E0qo3xDaU2Q9gjEws2NWak+xtbTHlryb/7StUWaL0PumctfTazoU5rweDe24zqazhVY/uvt
- X6tgtgcBIpwhFKaYqA7UQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9hxDYsm8f/s=:D2kqxTlZZxWjVIDaCAZG/l
- UPxdcPlTLMdBs9iNzquwDjWZg+59n85enF5PgZBnB9HRKB1pdl8UYnFdyTUQ4IuZVpJojQ47/
- INKtJnb6bALX0IMFRjqOZX01wirfOElDvw3kvagM4a6sohfRRMMUgC+0LpMtjejxGOJU6sqGt
- ztwfNLl926qWpd7DrIpIVL4eB1v4nbwW7T1BuZh5RaOKscRaXit7rgOQaQfIwwD/tIPy4gqot
- /MmQqe0eFT5UGmMFcOwTBADI7EmHCWTnTQbV+kEsx4VDGZtz0IVOAt2GKhKklko9VaRXgeYny
- EgWnPzzqQzs4UTtnjTht/DL22gTax6yjiP8pTT8I+g2silAcX2dd34/m7yUZKJCmDfqdI0Ghu
- Hhm/RyNfEpsjDQaSMYootZkrcqERPCmqfAW6jpCNqOJV6OFGEP4AQiVDjmRBClPWKwsPcoDAI
- 67O5xhapmgtMHVyQZT2l4LQ39l2cJOWGAmjDiuHzjjAtKZ4FIpW43+0Q1X7OX1AepimptWGlp
- nMBhMlyFioHOElcaL8q/ZmjSq85kqlG3aoI+5GZaP+vHg7Hk650cfJ4U5ARJMkOrluFcxIB3e
- sWrmG1hAkw01qzzUV2CabKXOAm3IA/Pzb48ANrhU2qOGxGe1HAUUbkZTSOhJNeUa2qE/TXiQi
- VGE8q4zcXqKMhExKVeSFVL3/SSy7k1TQTqHtTPEgMr82GO7D8wtHlKsPvZR9Odcc37NQ=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:OzCb64N2cYd1R9aWeQovsMhFwuGsr/13GRgXaFfJYXJoFhxThrH
+ JBHEklgBYyJkEffxRB9zW764V8htsJiuuKeshRViz8bwmf7fuGVjnKkQllO5Qw6r7PN5G02
+ 0MI9R49vKzaBDBChcT2cA4eIICvpib7XhMnrxBVo8gS4FXvqoMit+y5JYOvsnid/xb6Chp5
+ e9AyO6yLFgYowlwrmTNLg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Xe0ZHh8ssmU=:XVy3KHCi1zIk0bvocYY72n
+ dbtF8IPX0Zfj9Z20bXzeqgOBeFOpzOLw37JRZcHWzzd+ml81yjeQLPVQ2myPTaFyWyBicvD78
+ e4O2VUMA2dGHI6GCx15CDPl3fP84bGSCphEdoqQqQ3bqn1ybJev98hN2Q/li5WD8thUTE8Bf7
+ 0NhCdKbZldPMp71Pgm3XY3zUI4M7mo2E1VaR+rkICYUojlzcPYo39XadlWodoiS++J3kfb8lu
+ hqG2w4rfBt0ACmIvSMSXj+Gc08yNrowmZTZz6TsFm+V4JqOApEE81Y/BLGv2poP+dj2kDfbrA
+ cXjfqz8+NRf2cZl36fnmc0ismBoAK6Fu9yN7aMq9YeJVHhhoSVPItwJj7mzxE2u+jJWnCosxV
+ zR3dY8m22LoNWEWRP4rGbu3hzTsU7vmOPRVpcZIhUXeoKAromKIrnBAqggYBjUd6xXbSX9+fR
+ QcUFR8Fg0z62UOlO1qa9rcKt9RPfX87k7JvoUHqcE5IT5PIFKjT9eKZcoHuOFo733tD5ytsa5
+ VD+3hnFlJnJWV2JEUAefyxdcJsGPblaSQ1bQsEVwsMQWFbTwbZK1kXjUCi59gyEYFbrhE42mi
+ oxeX6KcFeMTPgFZLcIh+NzjHUjEuZLPuOz4VP1WD1elJvAhdbpqhgNa5VNCP7+NUeFFL0lmfc
+ CMmuk0YBcOO2gYZqAK89Se1jeEcbEluBFn0/8IB7yuQ/+FOC4I20V/ZfGZZU3OQ+SB18=
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -59,38 +59,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Feb 2022 16:16:36 -0000
+X-List-Received-Date: Tue, 22 Feb 2022 16:16:39 -0000
 
-From: Laurent Vivier <lvivier@redhat.com>
+From: Noah Bergbauer <noah@statshelix.com>
 
-qemu-options.hx contains grammar that a native English-speaking
-person would never use.
+Simply set the respective bits and update the descriptor accordingly.
 
-Replace "This option defines where is connected the drive" by
-"This option defines where the drive is connected".
-
-Fixes: https://gitlab.com/qemu-project/qemu/-/issues/853
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20220202143422.912070-1-lvivier@redhat.com>
+Signed-off-by: Noah Bergbauer <noah@statshelix.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-Id: <20211126140437.79745-1-noah@statshelix.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-options.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/input/hid.c   | 2 ++
+ hw/usb/dev-hid.c | 6 +++---
+ 2 files changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index ba3ae6a42aa3..094a6c1d7c28 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1377,7 +1377,7 @@ SRST
-         the bus number and the unit id.
- 
-     ``index=index``
--        This option defines where is connected the drive by using an
-+        This option defines where the drive is connected by using an
-         index in the list of available connectors of a given interface
-         type.
- 
+diff --git a/hw/input/hid.c b/hw/input/hid.c
+index 8aab0521f405..e7ecebdf8f88 100644
+--- a/hw/input/hid.c
++++ b/hw/input/hid.c
+@@ -114,6 +114,8 @@ static void hid_pointer_event(DeviceState *dev, QemuConsole *src,
+         [INPUT_BUTTON_LEFT]   = 0x01,
+         [INPUT_BUTTON_RIGHT]  = 0x02,
+         [INPUT_BUTTON_MIDDLE] = 0x04,
++        [INPUT_BUTTON_SIDE] = 0x08,
++        [INPUT_BUTTON_EXTRA] = 0x10,
+     };
+     HIDState *hs = (HIDState *)dev;
+     HIDPointerEvent *e;
+diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
+index 1c7ae97c3033..bdd6d1ffafe4 100644
+--- a/hw/usb/dev-hid.c
++++ b/hw/usb/dev-hid.c
+@@ -461,14 +461,14 @@ static const uint8_t qemu_mouse_hid_report_descriptor[] = {
+     0xa1, 0x00,		/*   Collection (Physical) */
+     0x05, 0x09,		/*     Usage Page (Button) */
+     0x19, 0x01,		/*     Usage Minimum (1) */
+-    0x29, 0x03,		/*     Usage Maximum (3) */
++    0x29, 0x05,		/*     Usage Maximum (5) */
+     0x15, 0x00,		/*     Logical Minimum (0) */
+     0x25, 0x01,		/*     Logical Maximum (1) */
+-    0x95, 0x03,		/*     Report Count (3) */
++    0x95, 0x05,		/*     Report Count (5) */
+     0x75, 0x01,		/*     Report Size (1) */
+     0x81, 0x02,		/*     Input (Data, Variable, Absolute) */
+     0x95, 0x01,		/*     Report Count (1) */
+-    0x75, 0x05,		/*     Report Size (5) */
++    0x75, 0x03,		/*     Report Size (3) */
+     0x81, 0x01,		/*     Input (Constant) */
+     0x05, 0x01,		/*     Usage Page (Generic Desktop) */
+     0x09, 0x30,		/*     Usage (X) */
 -- 
 2.35.1
 
