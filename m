@@ -1,63 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nMZ4p-0007Om-Of
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Feb 2022 12:35:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34054)
+	id 1nMo0V-0006yi-Qd
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Feb 2022 04:32:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <josh.a.seaton@gmail.com>)
- id 1nMZ4o-0007LG-Vm; Tue, 22 Feb 2022 12:35:51 -0500
-Received: from [2a00:1450:4864:20::634] (port=38513
- helo=mail-ej1-x634.google.com)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nMo0U-0006x2-Li
+ for qemu-trivial@nongnu.org; Wed, 23 Feb 2022 04:32:22 -0500
+Received: from [2607:f8b0:4864:20::b2f] (port=41940
+ helo=mail-yb1-xb2f.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <josh.a.seaton@gmail.com>)
- id 1nMZ4k-00021s-Hw; Tue, 22 Feb 2022 12:35:50 -0500
-Received: by mail-ej1-x634.google.com with SMTP id r13so22097346ejd.5;
- Tue, 22 Feb 2022 09:35:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nMo0S-0005s6-Oj
+ for qemu-trivial@nongnu.org; Wed, 23 Feb 2022 04:32:22 -0500
+Received: by mail-yb1-xb2f.google.com with SMTP id j12so46629686ybh.8
+ for <qemu-trivial@nongnu.org>; Wed, 23 Feb 2022 01:32:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=j8t+4q8YxwuhQRgVVqsUokHtGIlX/Uz4ryzQ1HlRcnU=;
- b=Xa6+FxtPQ2FxNRNF+3Y0MXr7ncUc16i8feo3QK5eDcJDjU9lsb15+o/t8pNW+fmsRM
- 4wyTimemQ+7GnlLvbfYjEjbc105zJhNnZNx/r1EWAN2XPfNydCwc6zVcDnORTdejHS/3
- PCHbPkaU6B/OttHrqy5Gp4QvB7T5hqs48UplXMHn9Kkr1t5tYF1hu07DImoNjixsxOVV
- 3w/jJV5XC1QsCnI9AtH3gJPK0qPRtsaNhm+e3OfoPFmRfjfbUHqTBR5xRg0O/fVHTBvo
- R4uCtSLJpFDIGePmAo0XCkUrsQAnCzJwVYdOaJyZ2SwcPDoMQNnEHx3ax50zxjx7M4f7
- V8cg==
+ :cc; bh=h0MuX52Q+muXKaiQy3XFqF8eMrYwugIxgvBoFwop9AA=;
+ b=WWoTJTAGygDay3JxOTJVX2W9WL6XBn5oJPsGjktOPFspmyT3aDPI8+lkmZOjHe1340
+ U7upoVbm9vB1YH1YjgrQ5zYCFoJ2ErborzQ3d+BjE0p4YLtJENdJVOgDRabPmCy4H5q6
+ Yql22OPmuoJdVSTsczvJGH5pWKLONZCU2GX3W0z4Np3EErNFqAYdFm0V94EzSKHvQIFs
+ nbpjNhpjTE4oJTgAnCHkV+GaH+pFoILMNHtAX0iHB9YxWbl2DRQ5Lk3SxkSHpeC0/U+N
+ IOq+ygo/aWnuMHE3faVVZhGFYHqfvqtO8tU47bFJhfANxGbq3WZO+0txvdkqG5fu7/je
+ iMFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=j8t+4q8YxwuhQRgVVqsUokHtGIlX/Uz4ryzQ1HlRcnU=;
- b=E6kNDGsfKBsI0qBaJXtJSMXCFqElt2q7+tEPuEV1rFt3s4irRcD+MjIT0K66OHGxYh
- S2GRjFqSf42BCZ+Y4XyApBKnuu61Wh2l/BG5Srly5xU2yKWzetJtegp51Uur4c3YPLMs
- +SbIX0VFnenS4BEwetV/ndXLX6EWtIS/QUPr/ZpTnKmj1GAWDYfG2dm7jSwiH/sNQoSx
- 1rn9lH+hS9zgHRC5xmoSawI4t5pu2m35bjE0J6r4+BaROsgLhjjD6xRNlpQFsbRt0Lcb
- DoofYfnV+lT6MegBPIhGhmW+2NWIokuUktRQtJya7CWYtzUaeMv/wPQgDudPEBzzBJse
- /w5Q==
-X-Gm-Message-State: AOAM530lNC282yNYO6USQntNhdUjiNVpjXCo2LCEt4Kyzq8LbUByRq+l
- JZz/hgDeVP8j6owm+4PL9CcDZLCG6SKavwlrkzj128KUHX+P4A==
-X-Google-Smtp-Source: ABdhPJzVRXK562X9XZsQVrSMOiY5M2XNEsLT/0YKP4OqE5AWiVFPY1J5ONyLWJhfywAtrLrHmK5ZfJGAtJX8KBlY7+s=
-X-Received: by 2002:a17:906:4d8d:b0:6ce:8c3d:6e81 with SMTP id
- s13-20020a1709064d8d00b006ce8c3d6e81mr19459589eju.205.1645551335521; Tue, 22
- Feb 2022 09:35:35 -0800 (PST)
+ bh=h0MuX52Q+muXKaiQy3XFqF8eMrYwugIxgvBoFwop9AA=;
+ b=od6LlUbKaqsDy9U9q9NHWmPO5TPNLAN3EZZPwg829fQje5A50uf8SlLIv2Ef1BHhAa
+ dm0asRfqugjZKInE7VZTKx0Q1PuF15ELOqsq73TKBybW9Cbos9dhmZIkcDQfaC5QeCsh
+ HLngLikwvhl1jvwIkh7c/U461vNaHcLowbBFdbYrHyA6Dfq7iJlrr+4Z+1oCga59Ubb1
+ HCyYzf5Z0MK/9+kfrL+xGJuBKohY5JSWnwoJdwnR72BXdGFSxv9v8+uGYVMrFLd4rOtg
+ 5Jc3T+WldIRLNJIynREOeQ0DB01B21Ui+8j0SjdGTS/CxIQP/AQABt5eUjN2h8t7G4H3
+ jq5Q==
+X-Gm-Message-State: AOAM53333vR1U52k/RMRDx9vOEmsTtfFXJ4zoiYcovRFN4V+E9FhkyI1
+ lpm0V8x9lv6zLc3KgqZao27QiccPJt+aJNMwlqJniMMToks=
+X-Google-Smtp-Source: ABdhPJwOtHSOgtM8dMzxPMMh+3YTa03PCntT3j2ixJtX62Fva4qtdKt5mATvmYxFr1D4bG48beKl61BbNUyhe2EziUA=
+X-Received: by 2002:a81:a748:0:b0:2d6:1f8b:23a9 with SMTP id
+ e69-20020a81a748000000b002d61f8b23a9mr28287357ywh.329.1645608296376; Wed, 23
+ Feb 2022 01:24:56 -0800 (PST)
 MIME-Version: 1.0
-References: <CAPbYy+_14jeLBzihGjY-v0L1inZ1CGc+8TFu7NuPiaZie8skyg@mail.gmail.com>
- <eb099ea1-f88e-8b4f-22ab-863952c04f32@redhat.com>
-In-Reply-To: <eb099ea1-f88e-8b4f-22ab-863952c04f32@redhat.com>
-From: Joshua Seaton <josh.a.seaton@gmail.com>
-Date: Tue, 22 Feb 2022 09:35:24 -0800
-Message-ID: <CAPbYy+8MLLjZbeDarG9o5Dc=zLg7F17jwojEg8w41DkaruxCjg@mail.gmail.com>
-Subject: Re: [PATCH] configure: Support empty prefixes
-To: Paolo Bonzini <pbonzini@redhat.com>
+References: <20220222161624.382218-1-laurent@vivier.eu>
+In-Reply-To: <20220222161624.382218-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 23 Feb 2022 09:24:45 +0000
+Message-ID: <CAFEAcA_pPdzydMyua_95OHW7FJ-JTiJF5dgmyxPMFuF+6HesRA@mail.gmail.com>
+Subject: Re: [PULL 0/7] Trivial branch for 7.0 patches
+To: Laurent Vivier <Laurent@vivier.eu>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::634
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2f
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=josh.a.seaton@gmail.com; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2f.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
@@ -73,124 +74,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Feb 2022 17:35:51 -0000
+X-List-Received-Date: Wed, 23 Feb 2022 09:32:23 -0000
 
-Hi Paolo,
-
-Thanks for the quick response (and apologies about my delayed one).
-
-My project has automated scripts to build a number of other tools. The
-way we conventionally go about it is
-```
-path/to/configure '--prefix=' ...
-make
-make install DEST_DIR=$destdir
-```
-
-We currently build an earlier v5 version of QEMU this way. I am trying
-to update things to start building v6 and hit the empty-prefix issue
-in doing so.
-You are of course right though that this is easily worked around:
-```
-path/to/configure "--prefix=$destdir" ...
-make
-make install
-```
-works fine and I've happily updated things on my side to reflect that.
-
-My particular use-case aside, my understanding is that accepting empty
-`--prefix` values is a widespread convention for configure scripts,
-one which was previously supported by this project too (at least
-unofficially). Is that accurate?
-If the patch/feature is unwanted, that's completely okay by me;
-although I'd be curious to hear why it might be regarded as
-undesirable.
-
-
-Joshua.
-
-
-
-
-
-On Thu, Feb 17, 2022 at 3:50 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
+On Tue, 22 Feb 2022 at 16:35, Laurent Vivier <laurent@vivier.eu> wrote:
 >
-> On 2/17/22 19:42, Joshua Seaton wrote:
-> > At least as of v5 (before the meson build), empty `--prefix` values were
-> > supported; this seems to have fallen out along the way. This change
-> > reintroduces support.
+> The following changes since commit e670f6d825d4dee248b311197fd4048469d6772b:
 >
-> What is the usecase exactly?  QEMU supports relocatable installation so
-> if you want you can use --prefix=/nonexistent and then move the
-> resulting tree wherever you want.
+>   Merge remote-tracking branch 'remotes/legoater/tags/pull-ppc-20220218' into staging (2022-02-20 15:05:41 +0000)
 >
-> Paolo
+> are available in the Git repository at:
 >
-> > Tested locally with empty and non-empty values of `--prefix`.
-> >
-> > Signed-off-by: Joshua Seaton <josh.a.seaton@gmail.com>
-> > ---
-> >   configure | 33 ++++++++++++++++++++++++---------
-> >   1 file changed, 24 insertions(+), 9 deletions(-)
-> >
-> > diff --git a/configure b/configure
-> > index 3a29eff5cc..87a32e52e4 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -1229,20 +1229,30 @@ case $git_submodules_action in
-> >       ;;
-> >   esac
-> >
-> > -libdir="${libdir:-$prefix/lib}"
-> > -libexecdir="${libexecdir:-$prefix/libexec}"
-> > -includedir="${includedir:-$prefix/include}"
-> > +# Emits a relative path in the case of an empty prefix.
-> > +prefix_subdir() {
-> > +    dir="$1"
-> > +    if test -z "$prefix" ; then
-> > +        echo "$dir"
-> > +    else
-> > +        echo "$prefix/$dir"
-> > +    fi
-> > +}
-> > +
-> > +libdir="${libdir:-$(prefix_subdir lib)}"
-> > +libexecdir="${libexecdir:-$(prefix_subdir libexec)}"
-> > +includedir="${includedir:-$(prefix_subdir include)}"
-> >
-> >   if test "$mingw32" = "yes" ; then
-> >       bindir="${bindir:-$prefix}"
-> >   else
-> > -    bindir="${bindir:-$prefix/bin}"
-> > +    bindir="${bindir:-$(prefix_subdir bin)}"
-> >   fi
-> > -mandir="${mandir:-$prefix/share/man}"
-> > -datadir="${datadir:-$prefix/share}"
-> > -docdir="${docdir:-$prefix/share/doc}"
-> > -sysconfdir="${sysconfdir:-$prefix/etc}"
-> > -local_statedir="${local_statedir:-$prefix/var}"
-> > +mandir="${mandir:-$(prefix_subdir share/man)}"
-> > +datadir="${datadir:-$(prefix_subdir share)}"
-> > +docdir="${docdir:-$(prefix_subdir share/doc)}"
-> > +sysconfdir="${sysconfdir:-$(prefix_subdir etc)}"
-> > +local_statedir="${local_statedir:-$(prefix_subdir var)}"
-> >   firmwarepath="${firmwarepath:-$datadir/qemu-firmware}"
-> >   localedir="${localedir:-$datadir/locale}"
-> >
-> > @@ -3763,6 +3773,11 @@ if test "$skip_meson" = no; then
-> >     mv $cross config-meson.cross
-> >
-> >     rm -rf meson-private meson-info meson-logs
-> > +
-> > +  # Workaround for a meson bug preventing empty prefixes:
-> > +  # see https://github.com/mesonbuild/meson/issues/6946.
-> > +  prefix="${prefix:-/}"
-> > +
-> >     run_meson() {
-> >       NINJA=$ninja $meson setup \
-> >           --prefix "$prefix" \
-> > --
-> > 2.35.1.265.g69c8d7142f-goog
-> >
+>   https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pull-request
 >
+> for you to fetch changes up to 1e2d555846226a9e5fb1052fe8ba6f30480f33a9:
+>
+>   hid: Implement support for side and extra buttons (2022-02-22 17:15:36 +0100)
+>
+> ----------------------------------------------------------------
+> Trivial branch pull request 20220222
+>
+
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/7.0
+for any user-visible changes.
+
+-- PMM
 
