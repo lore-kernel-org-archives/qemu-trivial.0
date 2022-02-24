@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nMo0V-0006yi-Qd
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Feb 2022 04:32:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53634)
+	id 1nNDVv-0000if-Hd
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Feb 2022 07:46:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nMo0U-0006x2-Li
- for qemu-trivial@nongnu.org; Wed, 23 Feb 2022 04:32:22 -0500
-Received: from [2607:f8b0:4864:20::b2f] (port=41940
- helo=mail-yb1-xb2f.google.com)
+ id 1nNDVs-0000eR-OQ
+ for qemu-trivial@nongnu.org; Thu, 24 Feb 2022 07:46:29 -0500
+Received: from [2607:f8b0:4864:20::b35] (port=42905
+ helo=mail-yb1-xb35.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nMo0S-0005s6-Oj
- for qemu-trivial@nongnu.org; Wed, 23 Feb 2022 04:32:22 -0500
-Received: by mail-yb1-xb2f.google.com with SMTP id j12so46629686ybh.8
- for <qemu-trivial@nongnu.org>; Wed, 23 Feb 2022 01:32:20 -0800 (PST)
+ id 1nNDVl-0000XZ-UT
+ for qemu-trivial@nongnu.org; Thu, 24 Feb 2022 07:46:23 -0500
+Received: by mail-yb1-xb35.google.com with SMTP id e140so3516811ybh.9
+ for <qemu-trivial@nongnu.org>; Thu, 24 Feb 2022 04:46:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=h0MuX52Q+muXKaiQy3XFqF8eMrYwugIxgvBoFwop9AA=;
- b=WWoTJTAGygDay3JxOTJVX2W9WL6XBn5oJPsGjktOPFspmyT3aDPI8+lkmZOjHe1340
- U7upoVbm9vB1YH1YjgrQ5zYCFoJ2ErborzQ3d+BjE0p4YLtJENdJVOgDRabPmCy4H5q6
- Yql22OPmuoJdVSTsczvJGH5pWKLONZCU2GX3W0z4Np3EErNFqAYdFm0V94EzSKHvQIFs
- nbpjNhpjTE4oJTgAnCHkV+GaH+pFoILMNHtAX0iHB9YxWbl2DRQ5Lk3SxkSHpeC0/U+N
- IOq+ygo/aWnuMHE3faVVZhGFYHqfvqtO8tU47bFJhfANxGbq3WZO+0txvdkqG5fu7/je
- iMFQ==
+ :cc; bh=dRvqrjX4ZRWm4mUgejKatfS+fFK/f3WxgZediqF9/jA=;
+ b=OV6rMx9sCTnqMBhLIdtI2R18yJV8d7hu2gIfNDqa7CZ+PAxuvj2Whs7LsAsmfIgNg0
+ Zs0sYG8dehW4jJpr1eEacBD8j0senUFkK2gcvDVwqctudThXIYaqEegfR3ZqXP1B+wFk
+ 5VCjgrFKHHsAqGcvtLuUccRkyziWx3ldIovPGwunG5g5oMjxeh8RVcQrs/IJWDxnYboc
+ 1vcNa0ACAg7iHkLUNGqz5oy/Nga2sEAVdhdGsMPf9gwztlCfvvbe5GnM2B5brwUdiafH
+ 0j5nocV/bMiSVWtMEcAjTOB471u2XNVx9DwqHCpIqRcXZMxPHNEU44hc1HlspsXIHvUu
+ 6vkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=h0MuX52Q+muXKaiQy3XFqF8eMrYwugIxgvBoFwop9AA=;
- b=od6LlUbKaqsDy9U9q9NHWmPO5TPNLAN3EZZPwg829fQje5A50uf8SlLIv2Ef1BHhAa
- dm0asRfqugjZKInE7VZTKx0Q1PuF15ELOqsq73TKBybW9Cbos9dhmZIkcDQfaC5QeCsh
- HLngLikwvhl1jvwIkh7c/U461vNaHcLowbBFdbYrHyA6Dfq7iJlrr+4Z+1oCga59Ubb1
- HCyYzf5Z0MK/9+kfrL+xGJuBKohY5JSWnwoJdwnR72BXdGFSxv9v8+uGYVMrFLd4rOtg
- 5Jc3T+WldIRLNJIynREOeQ0DB01B21Ui+8j0SjdGTS/CxIQP/AQABt5eUjN2h8t7G4H3
- jq5Q==
-X-Gm-Message-State: AOAM53333vR1U52k/RMRDx9vOEmsTtfFXJ4zoiYcovRFN4V+E9FhkyI1
- lpm0V8x9lv6zLc3KgqZao27QiccPJt+aJNMwlqJniMMToks=
-X-Google-Smtp-Source: ABdhPJwOtHSOgtM8dMzxPMMh+3YTa03PCntT3j2ixJtX62Fva4qtdKt5mATvmYxFr1D4bG48beKl61BbNUyhe2EziUA=
-X-Received: by 2002:a81:a748:0:b0:2d6:1f8b:23a9 with SMTP id
- e69-20020a81a748000000b002d61f8b23a9mr28287357ywh.329.1645608296376; Wed, 23
- Feb 2022 01:24:56 -0800 (PST)
+ bh=dRvqrjX4ZRWm4mUgejKatfS+fFK/f3WxgZediqF9/jA=;
+ b=SSWOkqKLxaWAoIa9+cvI1Ai+9BFCjrCBm3CskZROSRyMGjP/DtLcMJvSE+DLv04VBO
+ 1WXxWb5Px/KqtekBRh89mUBC2xWOrXATXdfiz/FUoWUZsFG/mztbcVNHqhbVQBbnuZsw
+ yinqoGD3wsZwkciuGt3+rLTcF8sq7O/+9a26m7DxIub5q14yXPddP3zuc6+8cmruIXJT
+ qjVUayeKEy40HENBHyFfvkpmUpg7FIf/04szjXNndzY1eikRgXTuNgMcK/+zGtOw+BFB
+ gfSqcXbhdAp1D1jxubOw7LkeYeETjII3HOYzV6iqXde9seodY+ZNPnklcNcqircSnO82
+ WGbg==
+X-Gm-Message-State: AOAM533lGYu4NWcanTmf4MzVawqasCrEmFKL3YLf8lp6DlGRTQBbl/lH
+ XvRQXFxTudsx4spMjb8mqCTDyqO+Z3B6GHhLaeEoqQ==
+X-Google-Smtp-Source: ABdhPJwJ/R4TOEOfOyKi1a0cGIs/oBPcWH6rDoXyNnLDDFyIXDFk73rJP2bnzW0HEUMXDlKlqvbZqEtJJU5osteTCxw=
+X-Received: by 2002:a25:dc87:0:b0:624:4104:a331 with SMTP id
+ y129-20020a25dc87000000b006244104a331mr2223776ybe.67.1645706779496; Thu, 24
+ Feb 2022 04:46:19 -0800 (PST)
 MIME-Version: 1.0
-References: <20220222161624.382218-1-laurent@vivier.eu>
-In-Reply-To: <20220222161624.382218-1-laurent@vivier.eu>
+References: <20220224122110.22371-1-evgeny.v.ermakov@gmail.com>
+In-Reply-To: <20220224122110.22371-1-evgeny.v.ermakov@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 23 Feb 2022 09:24:45 +0000
-Message-ID: <CAFEAcA_pPdzydMyua_95OHW7FJ-JTiJF5dgmyxPMFuF+6HesRA@mail.gmail.com>
-Subject: Re: [PULL 0/7] Trivial branch for 7.0 patches
-To: Laurent Vivier <Laurent@vivier.eu>
+Date: Thu, 24 Feb 2022 12:46:08 +0000
+Message-ID: <CAFEAcA8zKcZ7=gRmKX0fygpdmYfEf-HEodfH+SXwS_fT+rt2Ag@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc/armv7m_nvic: Fix typo in comment
+To: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b2f
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b35
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb35.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -74,31 +74,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Feb 2022 09:32:23 -0000
+X-List-Received-Date: Thu, 24 Feb 2022 12:46:30 -0000
 
-On Tue, 22 Feb 2022 at 16:35, Laurent Vivier <laurent@vivier.eu> wrote:
+On Thu, 24 Feb 2022 at 12:22, Evgeny Ermakov <evgeny.v.ermakov@gmail.com> wrote:
 >
-> The following changes since commit e670f6d825d4dee248b311197fd4048469d6772b:
+> Signed-off-by: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
+> ---
+>  hw/intc/armv7m_nvic.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
->   Merge remote-tracking branch 'remotes/legoater/tags/pull-ppc-20220218' into staging (2022-02-20 15:05:41 +0000)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pull-request
->
-> for you to fetch changes up to 1e2d555846226a9e5fb1052fe8ba6f30480f33a9:
->
->   hid: Implement support for side and extra buttons (2022-02-22 17:15:36 +0100)
->
-> ----------------------------------------------------------------
-> Trivial branch pull request 20220222
->
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index 13df002ce4..a08a0fdc50 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -97,7 +97,7 @@ static int nvic_pending_prio(NVICState *s)
+>   * this is only different in the obscure corner case where guest
+>   * code has manually deactivated an exception and is about
+>   * to fail an exception-return integrity check. The definition
+> - * above is the one from the v8M ARM ARM and is also in line
+> + * above is the one from the v8M ARM and is also in line
+>   * with the behaviour documented for the Cortex-M3.
+>   */
 
+This is not a typo. The "ARM ARM" (or "Arm ARM" these days if
+you want to follow the official corporate name capitalization)
+is the standard abbreviated way to refer to the
+Arm Architecture Reference Manual. "git grep -i 'arm arm'"
+finds over 50 uses of it in various comments.
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/7.0
-for any user-visible changes.
-
+thanks
 -- PMM
 
