@@ -1,67 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nNZ1m-0007dH-1a
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Feb 2022 06:44:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43456)
+	id 1nNmdb-0005D9-9j
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Feb 2022 21:16:47 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59500)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <evgeny.v.ermakov@gmail.com>)
- id 1nNZ1h-0007aC-6i; Fri, 25 Feb 2022 06:44:45 -0500
-Received: from [2a00:1450:4864:20::632] (port=44670
- helo=mail-ej1-x632.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <evgeny.v.ermakov@gmail.com>)
- id 1nNZ1d-0001ST-T4; Fri, 25 Feb 2022 06:44:44 -0500
-Received: by mail-ej1-x632.google.com with SMTP id p14so10264352ejf.11;
- Fri, 25 Feb 2022 03:44:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=eUHQicd6FQDPefJ9NMTQz9Tys3iyG0hW5qYJnYhCt28=;
- b=ICUYvLvwcZP9Tk8MNtr1G+6xqbmkJuHbw3lywqsl1rO4zld+WVJ0RPZ1H08di/jgUn
- gOOep89tsJPpi2au3DRqj8hhl1PDRzfDs1319x9LdP9NnMc/Dn+B73eXKc6YxIWodcRn
- udngohSrELC1FlV+YqErIuSLOlDppDhKjfZlmp+CnMV0yL+mPNoCbFK/NOakzLoJ9/gB
- 9HXg54yS+n+P1BgqEN5L7DHi6ikQjelMiBeRyuMue1+NQdSUaY3tCKCx1xhvGK9yllBT
- YPRoeB+63RnEAKS5Z5DPRnwIO8X+ttMYSGh9KsUAX5poXi9gPqPFuA3lL5l1SLFV/Wv/
- BnYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=eUHQicd6FQDPefJ9NMTQz9Tys3iyG0hW5qYJnYhCt28=;
- b=NZ68jhfnvUMzKXaaXIOed6GQ7VvtZV/dClxw3psflOzNwFjwXk3jzTR7Ao3u3VbZkN
- xGP+rsXMvaTQE+Dl/pcnTh/4vx6BnEhLjZWSaw/AL8CYqECa8jwkBTxor19DtdO8CIns
- hINiK66BDI0xy+wwF8AjVGfas+ELxRcXQs0ywZNaTSY0ryHv8Ct6EVCf0tQOazkmZp2V
- eFCdCAGFu/pGaUT8NaYOvCD9nGNDfEJ5HCh5hKJtw4eQ0cOAHp/gPOxl3j1Vn3FSGgKk
- Jogr73qDPYRuHInYvI1EiVS9Uo+CZY+QYSqhR5fD2/dhz+ru1DXz/jkx7KY9LyG3Ul00
- Arfg==
-X-Gm-Message-State: AOAM531OqwYh/aq5Ob9iSrPxPUZwtEKqUo2+BMBQZ0rIYXLv1smCMmdx
- 7B31JU/lBKaSyk/NSBEb/a1qpNSbL458D5autyc=
-X-Google-Smtp-Source: ABdhPJzryof5GDlf7/E3P33WgDmTPQUPQdK38UsaEBc3Y2RdvRFCPKXk1fGzdKVpXcrYdHMvLVcssHnLj5w+Ub7xCBo=
-X-Received: by 2002:a17:906:4783:b0:6d0:9b6e:b5a5 with SMTP id
- cw3-20020a170906478300b006d09b6eb5a5mr6138216ejc.526.1645789479419; Fri, 25
- Feb 2022 03:44:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <joel@nider.org>) id 1nNjz9-0003Sf-60
+ for qemu-trivial@nongnu.org; Fri, 25 Feb 2022 18:26:51 -0500
+Received: from mailout.easymail.ca ([64.68.200.34]:36328)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <joel@nider.org>) id 1nNjz6-0001yL-1w
+ for qemu-trivial@nongnu.org; Fri, 25 Feb 2022 18:26:50 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by mailout.easymail.ca (Postfix) with ESMTP id E16C546C98;
+ Fri, 25 Feb 2022 23:17:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=nider.org; s=easymail;
+ t=1645831053; bh=OhOnuyUeA9F2nkOJM0pXuO5EqnDQKiPlpaScCt2oAP0=;
+ h=From:To:Cc:Subject:Date:From;
+ b=ZJuOn9+gXGHPwo6IheNOfiOlEAwg8GM/gax/OSgkqKBdYIeuZWt5mjty4XKRXOnYz
+ VN0/WD+56ZJF4mRjoxudPdBSDT2DRUNdR3lYbogiIhIim/RQeqVFXlnQl1XiCT8VmA
+ CQh/BGGlXZUTJx5L72pbt5I6BWjTVPHBmR76XSoBq/ftjqcdWaL35qWKehzzVA1tQ7
+ kMvMP4Z0cDGx5NY90wi4MY3s1dTylhx3i2HSpVDkgF+ZZy0knyy0T38NXUjIL7RDzP
+ jCk/Z9avV6TeVaswENBJ0sms3lb1DBlIBnD1thNS/wGWKhJUrrb8F2ibYMMtJcbytg
+ UCk+Gh5QZGjDg==
+X-Virus-Scanned: Debian amavisd-new at emo03-pco.easydns.vpn
+Received: from mailout.easymail.ca ([127.0.0.1])
+ by localhost (emo03-pco.easydns.vpn [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7r_t4vHvOO72; Fri, 25 Feb 2022 23:17:33 +0000 (UTC)
+Received: from orca.nider.org (S010674da88fe49f5.vc.shawcable.net
+ [70.79.150.243])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mailout.easymail.ca (Postfix) with ESMTPSA id 2C1A046C95;
+ Fri, 25 Feb 2022 23:17:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=nider.org; s=easymail;
+ t=1645831053; bh=OhOnuyUeA9F2nkOJM0pXuO5EqnDQKiPlpaScCt2oAP0=;
+ h=From:To:Cc:Subject:Date:From;
+ b=ZJuOn9+gXGHPwo6IheNOfiOlEAwg8GM/gax/OSgkqKBdYIeuZWt5mjty4XKRXOnYz
+ VN0/WD+56ZJF4mRjoxudPdBSDT2DRUNdR3lYbogiIhIim/RQeqVFXlnQl1XiCT8VmA
+ CQh/BGGlXZUTJx5L72pbt5I6BWjTVPHBmR76XSoBq/ftjqcdWaL35qWKehzzVA1tQ7
+ kMvMP4Z0cDGx5NY90wi4MY3s1dTylhx3i2HSpVDkgF+ZZy0knyy0T38NXUjIL7RDzP
+ jCk/Z9avV6TeVaswENBJ0sms3lb1DBlIBnD1thNS/wGWKhJUrrb8F2ibYMMtJcbytg
+ UCk+Gh5QZGjDg==
+From: Joel Nider <joel@nider.org>
+To: qemu-trivial@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>,
+	Joel Nider <joel@nider.org>
+Subject: [PATCH] virtio-mem: fix typo virito
+Date: Fri, 25 Feb 2022 15:17:00 -0800
+Message-Id: <20220225231700.1360270-1-joel@nider.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20220224122110.22371-1-evgeny.v.ermakov@gmail.com>
- <CAFEAcA8zKcZ7=gRmKX0fygpdmYfEf-HEodfH+SXwS_fT+rt2Ag@mail.gmail.com>
-In-Reply-To: <CAFEAcA8zKcZ7=gRmKX0fygpdmYfEf-HEodfH+SXwS_fT+rt2Ag@mail.gmail.com>
-From: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
-Date: Fri, 25 Feb 2022 22:44:27 +1100
-Message-ID: <CABbZYZJhiA6GoTDjNX6W1tAX3c-1TCAQuX2SczGyZXjrO3grmA@mail.gmail.com>
-Subject: Re: [PATCH] hw/intc/armv7m_nvic: Fix typo in comment
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000004bc2e405d8d63930"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::632
- (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=evgeny.v.ermakov@gmail.com; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=64.68.200.34; envelope-from=joel@nider.org;
+ helo=mailout.easymail.ca
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 25 Feb 2022 21:16:42 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,97 +73,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Feb 2022 11:44:46 -0000
+X-List-Received-Date: Fri, 25 Feb 2022 23:26:51 -0000
 
---0000000000004bc2e405d8d63930
-Content-Type: text/plain; charset="UTF-8"
+Replace 'virito' with 'virtio'. No functional change.
 
-Ah, indeed.
+Signed-off-by: Joel Nider <joel@nider.org>
+---
+ hw/virtio/virtio-mem.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Sorry for having bothered you.
+diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+index f55dcf61f2..75649f1777 100644
+--- a/hw/virtio/virtio-mem.c
++++ b/hw/virtio/virtio-mem.c
+@@ -208,7 +208,7 @@ static int virtio_mem_for_each_unplugged_range(const VirtIOMEM *vmem, void *arg,
+  *
+  * Returns false if the intersection is empty, otherwise returns true.
+  */
+-static bool virito_mem_intersect_memory_section(MemoryRegionSection *s,
++static bool virtio_mem_intersect_memory_section(MemoryRegionSection *s,
+                                                 uint64_t offset, uint64_t size)
+ {
+     uint64_t start = MAX(s->offset_within_region, offset);
+@@ -246,7 +246,7 @@ static int virtio_mem_for_each_plugged_section(const VirtIOMEM *vmem,
+                                       first_bit + 1) - 1;
+         size = (last_bit - first_bit + 1) * vmem->block_size;
+ 
+-        if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
++        if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
+             break;
+         }
+         ret = cb(&tmp, arg);
+@@ -278,7 +278,7 @@ static int virtio_mem_for_each_unplugged_section(const VirtIOMEM *vmem,
+                                  first_bit + 1) - 1;
+         size = (last_bit - first_bit + 1) * vmem->block_size;
+ 
+-        if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
++        if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
+             break;
+         }
+         ret = cb(&tmp, arg);
+@@ -314,7 +314,7 @@ static void virtio_mem_notify_unplug(VirtIOMEM *vmem, uint64_t offset,
+     QLIST_FOREACH(rdl, &vmem->rdl_list, next) {
+         MemoryRegionSection tmp = *rdl->section;
+ 
+-        if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
++        if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
+             continue;
+         }
+         rdl->notify_discard(rdl, &tmp);
+@@ -330,7 +330,7 @@ static int virtio_mem_notify_plug(VirtIOMEM *vmem, uint64_t offset,
+     QLIST_FOREACH(rdl, &vmem->rdl_list, next) {
+         MemoryRegionSection tmp = *rdl->section;
+ 
+-        if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
++        if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
+             continue;
+         }
+         ret = rdl->notify_populate(rdl, &tmp);
+@@ -347,7 +347,7 @@ static int virtio_mem_notify_plug(VirtIOMEM *vmem, uint64_t offset,
+             if (rdl2 == rdl) {
+                 break;
+             }
+-            if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
++            if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
+                 continue;
+             }
+             rdl2->notify_discard(rdl2, &tmp);
+-- 
+2.25.1
 
-
-On Thu, 24 Feb 2022, 23:46 Peter Maydell, <peter.maydell@linaro.org> wrote:
-
-> On Thu, 24 Feb 2022 at 12:22, Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
-> wrote:
-> >
-> > Signed-off-by: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
-> > ---
-> >  hw/intc/armv7m_nvic.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> > index 13df002ce4..a08a0fdc50 100644
-> > --- a/hw/intc/armv7m_nvic.c
-> > +++ b/hw/intc/armv7m_nvic.c
-> > @@ -97,7 +97,7 @@ static int nvic_pending_prio(NVICState *s)
-> >   * this is only different in the obscure corner case where guest
-> >   * code has manually deactivated an exception and is about
-> >   * to fail an exception-return integrity check. The definition
-> > - * above is the one from the v8M ARM ARM and is also in line
-> > + * above is the one from the v8M ARM and is also in line
-> >   * with the behaviour documented for the Cortex-M3.
-> >   */
->
-> This is not a typo. The "ARM ARM" (or "Arm ARM" these days if
-> you want to follow the official corporate name capitalization)
-> is the standard abbreviated way to refer to the
-> Arm Architecture Reference Manual. "git grep -i 'arm arm'"
-> finds over 50 uses of it in various comments.
->
-> thanks
-> -- PMM
->
-
---0000000000004bc2e405d8d63930
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div>Ah, indeed.<div dir=3D"auto"><br></div><div dir=3D"a=
-uto">Sorry for having bothered you.<br></div><br><br><div class=3D"gmail_qu=
-ote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, 24 Feb 2022, 23:46 Peter=
- Maydell, &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank"=
- rel=3D"noreferrer">peter.maydell@linaro.org</a>&gt; wrote:<br></div><block=
-quote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc=
- solid;padding-left:1ex">On Thu, 24 Feb 2022 at 12:22, Evgeny Ermakov &lt;<=
-a href=3D"mailto:evgeny.v.ermakov@gmail.com" rel=3D"noreferrer noreferrer" =
-target=3D"_blank">evgeny.v.ermakov@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Signed-off-by: Evgeny Ermakov &lt;<a href=3D"mailto:evgeny.v.ermakov@g=
-mail.com" rel=3D"noreferrer noreferrer" target=3D"_blank">evgeny.v.ermakov@=
-gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 hw/intc/armv7m_nvic.c | 2 +-<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt;<br>
-&gt; diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c<br>
-&gt; index 13df002ce4..a08a0fdc50 100644<br>
-&gt; --- a/hw/intc/armv7m_nvic.c<br>
-&gt; +++ b/hw/intc/armv7m_nvic.c<br>
-&gt; @@ -97,7 +97,7 @@ static int nvic_pending_prio(NVICState *s)<br>
-&gt;=C2=A0 =C2=A0* this is only different in the obscure corner case where =
-guest<br>
-&gt;=C2=A0 =C2=A0* code has manually deactivated an exception and is about<=
-br>
-&gt;=C2=A0 =C2=A0* to fail an exception-return integrity check. The definit=
-ion<br>
-&gt; - * above is the one from the v8M ARM ARM and is also in line<br>
-&gt; + * above is the one from the v8M ARM and is also in line<br>
-&gt;=C2=A0 =C2=A0* with the behaviour documented for the Cortex-M3.<br>
-&gt;=C2=A0 =C2=A0*/<br>
-<br>
-This is not a typo. The &quot;ARM ARM&quot; (or &quot;Arm ARM&quot; these d=
-ays if<br>
-you want to follow the official corporate name capitalization)<br>
-is the standard abbreviated way to refer to the<br>
-Arm Architecture Reference Manual. &quot;git grep -i &#39;arm arm&#39;&quot=
-;<br>
-finds over 50 uses of it in various comments.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div></div>
-
---0000000000004bc2e405d8d63930--
 
