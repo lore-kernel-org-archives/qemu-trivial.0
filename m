@@ -1,69 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nOhAo-0001Rb-Di
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Feb 2022 09:38:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52040)
+	id 1nOhi7-0000nK-Fh
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Feb 2022 10:13:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nOhAn-0001J0-9W
- for qemu-trivial@nongnu.org; Mon, 28 Feb 2022 09:38:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41755)
+ (Exim 4.90_1) (envelope-from <schaub@mit.edu>)
+ id 1nOhi6-0000lc-K3; Mon, 28 Feb 2022 10:13:14 -0500
+Received: from outgoing-auth-1.mit.edu ([18.9.28.11]:37860
+ helo=outgoing.mit.edu)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nOhAi-0000aW-CX
- for qemu-trivial@nongnu.org; Mon, 28 Feb 2022 09:38:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1646059120;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=XZbY6dTxKcULIMs3sAbcc0SFcUf8Gxnfdm3biyWz8m8=;
- b=GpxJ9Ouu2QyDHOCwX5DaOS/glSIE8rkg3TO6Mi9Xt0Id7vqFI9OxhVfJZeXJmrRY8EMQex
- 5Lt/HjIDzHWZgiVci83aS6SWzi1cMtJfEd9B9eR4uxaiat3tctc2hKSa1A/yCTQM3pWZ2N
- LeFxL6mbXLsiC+ywL2wmPfL9X6blat0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-53-sbx0jNRgNHe8LHWzpSgBPA-1; Mon, 28 Feb 2022 09:38:32 -0500
-X-MC-Unique: sbx0jNRgNHe8LHWzpSgBPA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 670161091DA8;
- Mon, 28 Feb 2022 14:38:30 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.149])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 018F083BE3;
- Mon, 28 Feb 2022 14:38:27 +0000 (UTC)
-Date: Mon, 28 Feb 2022 14:38:25 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Simeon Schaub <schaub@mit.edu>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <schaub@mit.edu>)
+ id 1nOhi5-0001OQ-2I; Mon, 28 Feb 2022 10:13:14 -0500
+Received: from [10.31.51.144] (dhcp-10-31-51-144.dyn.mit.edu [10.31.51.144])
+ (authenticated bits=0) (User authenticated as schaub@ATHENA.MIT.EDU)
+ by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id 21SFD8Cq030737
+ (version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NOT);
+ Mon, 28 Feb 2022 10:13:09 -0500
+Message-ID: <949b0675-cbae-51dc-5a3b-d0215738279b@mit.edu>
+Date: Mon, 28 Feb 2022 10:13:15 -0500
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.1
 Subject: Re: [PATCH] explicitly link libqemuutil against rt
-Message-ID: <YhzeYQ7akrGqAIW7@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <eddf5c19-5582-7d88-5232-2052f87583ae@mit.edu>
  <CAFEAcA-dStng7OmArapZTMXx=fF9cme3VftLAAd-nQgcv0ZgGA@mail.gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-dStng7OmArapZTMXx=fF9cme3VftLAAd-nQgcv0ZgGA@mail.gmail.com>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ <YhzeYQ7akrGqAIW7@redhat.com>
+From: Simeon Schaub <schaub@mit.edu>
+In-Reply-To: <YhzeYQ7akrGqAIW7@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=18.9.28.11; envelope-from=schaub@mit.edu;
+ helo=outgoing.mit.edu
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,36 +52,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Feb 2022 14:38:49 -0000
+X-List-Received-Date: Mon, 28 Feb 2022 15:13:15 -0000
 
-On Mon, Feb 28, 2022 at 02:15:11PM +0000, Peter Maydell wrote:
-> On Mon, 28 Feb 2022 at 14:12, Simeon Schaub <schaub@mit.edu> wrote:
-> >
-> > >From e77de12cc33846a3de71d1858e497fbf4cdbff96 Mon Sep 17 00:00:00 2001
-> > From: Simeon David Schaub <schaub@mit.edu>
-> > Date: Sun, 27 Feb 2022 22:59:19 -0500
-> > Subject: [PATCH] explicitly link libqemuutil against rt
-> >
-> > Qemu uses `clock_gettime` which is already part of more recent versions
-> > of glibc, but on older versions it is still required to link against
-> > librt.
+We generally target glibc 2.12 in the Julia ecosystem, since CentOS 6 is
+still quite common in the HPC community.
+
+Best,
+Simeon
+
+On 2/28/22 09:38, Daniel P. Berrangé wrote:
+> On Mon, Feb 28, 2022 at 02:15:11PM +0000, Peter Maydell wrote:
+>> On Mon, 28 Feb 2022 at 14:12, Simeon Schaub <schaub@mit.edu> wrote:
+>>>
+>>> >From e77de12cc33846a3de71d1858e497fbf4cdbff96 Mon Sep 17 00:00:00 2001
+>>> From: Simeon David Schaub <schaub@mit.edu>
+>>> Date: Sun, 27 Feb 2022 22:59:19 -0500
+>>> Subject: [PATCH] explicitly link libqemuutil against rt
+>>>
+>>> Qemu uses `clock_gettime` which is already part of more recent versions
+>>> of glibc, but on older versions it is still required to link against
+>>> librt.
+>>
+>> Which version of glibc are you seeing this with ?
 > 
-> Which version of glibc are you seeing this with ?
-
-The man page says
-
-   "Link with -lrt (only for glibc versions before 2.17)."
-
-and even ancient RHEL-7 had glibc 2.17, so I can't imagine any platform
-we currently target in QEMU has a glibc older than 2.17, so QEMU should
-not need this change, unless there's some other scenario not described
-in the commit message.
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+> The man page says
+> 
+>    "Link with -lrt (only for glibc versions before 2.17)."
+> 
+> and even ancient RHEL-7 had glibc 2.17, so I can't imagine any platform
+> we currently target in QEMU has a glibc older than 2.17, so QEMU should
+> not need this change, unless there's some other scenario not described
+> in the commit message.
+> 
+> Regards,
+> Daniel
 
