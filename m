@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nOyLg-0007Qz-Bd
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Mar 2022 03:59:15 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59784)
+	id 1nP2Xv-00005T-B3
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Mar 2022 08:28:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54508)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nOyLe-0007Ji-0T
- for qemu-trivial@nongnu.org; Tue, 01 Mar 2022 03:59:10 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:31988)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nP2Xs-0008Vl-1s
+ for qemu-trivial@nongnu.org; Tue, 01 Mar 2022 08:28:05 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:32335)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nOyLa-0004bW-Vc
- for qemu-trivial@nongnu.org; Tue, 01 Mar 2022 03:59:08 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nP2Xp-0002Ve-60
+ for qemu-trivial@nongnu.org; Tue, 01 Mar 2022 08:28:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1646125145;
+ s=mimecast20190719; t=1646141279;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding;
- bh=1mB8Rmk7azzWgiSCorUh3Arp9bleh7d37IIKsc+UUMA=;
- b=QmnZ46eK6qM43PTMtZvsRdUIhe0rRhnteGo/Ria9XniTs7pfCorvrgJm/1Pz2f9ihJpRiq
- uH94CmFCXEbttg9kpDc+x4V0OI+QPhPOwyzTIaTeAJ6aif/UaPvCpiT4xqFmrEb+CUjTRR
- cMzrFbBACGHdsU6WRon4zzOkRNFrm+o=
+ bh=jLONn9iKrM5GUkxTd9wUq27gU2dq7a6agA3KB5biMqc=;
+ b=A58snuX8VpZcmaZPcTLJSx++O3QWpuyAs8w8HrSMNw+ialogOdJvDf6LB3fLiNmt/nMW1V
+ g5wgBWkekcpDI+JCko+lYYNGFO1drvNJXaxhjNEcdEh801XyBaD3ant78g8nAD5ngUrx8y
+ vIfqhx8ia/2qOTWNT3AskDfGsTPCoHo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-257-gD1J9I6BM-W6d4pfGy-Psw-1; Tue, 01 Mar 2022 03:59:04 -0500
-X-MC-Unique: gD1J9I6BM-W6d4pfGy-Psw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-482-79KJqMCsNuuia0INh4CNBg-1; Tue, 01 Mar 2022 08:27:58 -0500
+X-MC-Unique: 79KJqMCsNuuia0INh4CNBg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0243A8070ED;
- Tue,  1 Mar 2022 08:59:03 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6E0E71006AA5;
+ Tue,  1 Mar 2022 13:27:57 +0000 (UTC)
 Received: from thuth.com (dhcp-192-205.str.redhat.com [10.33.192.205])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D6CF45ED32;
- Tue,  1 Mar 2022 08:59:01 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3F35C2C2C3;
+ Tue,  1 Mar 2022 13:27:56 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-trivial@nongnu.org
-Subject: [PATCH] tests/Makefile.include: Let "make clean" remove the TCG tests, too
-Date: Tue,  1 Mar 2022 09:59:00 +0100
-Message-Id: <20220301085900.1443232-1-thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-ppc@nongnu.org
+Subject: [PATCH] configure: Fix building on a ppc64 host with Clang
+Date: Tue,  1 Mar 2022 14:27:54 +0100
+Message-Id: <20220301132754.1483837-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -70,29 +70,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Mar 2022 08:59:10 -0000
+X-List-Received-Date: Tue, 01 Mar 2022 13:28:05 -0000
 
-"make clean" should clear all binaries that have been built, but so
-far it left the TCG tests still in place. Let's make sure that they
-are now removed, too.
+Clang only supports the -mlittle-endian and -mbig-endian switches,
+and not -mlittle / -mbig. Since GCC supports both, let's use the
+long versions that are supported by both instead.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- tests/Makefile.include | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index e7153c8e91..7a932caf91 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -162,6 +162,6 @@ check-build: run-ninja
- check-clean:
- 	rm -rf $(TESTS_VENV_DIR) $(TESTS_RESULTS_DIR)
+diff --git a/configure b/configure
+index c56ed53ee3..81618708e4 100755
+--- a/configure
++++ b/configure
+@@ -630,10 +630,10 @@ case "$cpu" in
+   ppc)
+     CPU_CFLAGS="-m32" ;;
+   ppc64)
+-    CPU_CFLAGS="-m64 -mbig" ;;
++    CPU_CFLAGS="-m64 -mbig-endian" ;;
+   ppc64le)
+     cpu="ppc64"
+-    CPU_CFLAGS="-m64 -mlittle" ;;
++    CPU_CFLAGS="-m64 -mlittle-endian" ;;
  
--clean: check-clean
-+clean: check-clean clean-tcg
- 
- endif
+   s390)
+     CPU_CFLAGS="-m31" ;;
 -- 
 2.27.0
 
