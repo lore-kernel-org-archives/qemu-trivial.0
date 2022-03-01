@@ -1,80 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nOjop-0005ce-66
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Feb 2022 12:28:19 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37330)
+	id 1nOyLg-0007Qz-Bd
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Mar 2022 03:59:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59784)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nOjoo-0005aX-1n; Mon, 28 Feb 2022 12:28:18 -0500
-Received: from [2607:f8b0:4864:20::634] (port=40522
- helo=mail-pl1-x634.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nOjom-00039h-HY; Mon, 28 Feb 2022 12:28:17 -0500
-Received: by mail-pl1-x634.google.com with SMTP id z11so2940473pla.7;
- Mon, 28 Feb 2022 09:28:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=5kn3699G+V9W9USVWa4FVtQc5cxH/buPsSCUjtTz5NA=;
- b=nrWXdHZC/BTh9jl4R7HYn51V+gkM+Ux4/EQzBrYdVDXNZkRqszHxRAg8X6jK6XYKhL
- +xCfPftgdMQ7S6/C2Cr4QJecMVTfk3deQU9NN9ebMvvBV1q3+UZr1/sPdbYzNk7IP7A6
- N7AAXIWe6nJZxfBv5BZ2KX23Bbf36vUUGkI4/IWWvFXiYagGj42ONjMqu5dE428LY7zP
- PYlFJVRlppFw9aHwG8bzjAaMPVrq10OdaJ0pxjrY4DDEL2A5fnQW2U+MjdTSBB4R5R7S
- FDTeENFdZ8tyjr41iE7RXQ8SA1TQArAikKq6L852ygETM31iVkRmkBJ8jQyX7GhfSkQC
- 4YyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=5kn3699G+V9W9USVWa4FVtQc5cxH/buPsSCUjtTz5NA=;
- b=yg93+C5wwpPskBlWDA6D/gRwyKsfbq2HW4bfjLq1Ih86qYAQAywyoDAKDGEO9Sb/CZ
- hdmO4lEkYO94PAZ8xoJIpDa8iXeBwSrsyCbr9hNzYM8huKIlIzVsi962FKIwv/H9TO6X
- K7TLHaj5wuyAsZQEcB1Hv/27SGZiK/UrRA02htKbD4xRXadwI0p0iAZSYTtMad0QUKAH
- QFa8/pT8lgN9iFM8XBztPnAP6NBrpJUXRSQAWxo9ds12te5N+CtLgGo32Vcyew7ohvrd
- 95kftwp9LBKtGlnmVXxC4hjVGbmSq1/vm1OKdtXWSCS7sA0vtnKlBVQ7jNCkSWF4M5zg
- NLig==
-X-Gm-Message-State: AOAM533tNDOqFC3Oy2A/rpHMhMFj6uGLveWLyw5YjsdAWMOwS+f3rZrE
- ezZwvyad9MywKthXbuHRsOQ=
-X-Google-Smtp-Source: ABdhPJwo5gZqSA+Gy6WVVf7y7BXFEKMkE2Qx8NtRF5+cANjGYhiI87HY36VMXKzIyHvagrytMlUNXg==
-X-Received: by 2002:a17:903:1cc:b0:151:3e13:e2a1 with SMTP id
- e12-20020a17090301cc00b001513e13e2a1mr15044274plh.52.1646069294462; 
- Mon, 28 Feb 2022 09:28:14 -0800 (PST)
-Received: from [192.168.74.175] (133.red-95-127-186.staticip.rima-tde.net.
- [95.127.186.133]) by smtp.gmail.com with ESMTPSA id
- on18-20020a17090b1d1200b001b9cfbfbf00sm10922598pjb.40.2022.02.28.09.28.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Feb 2022 09:28:13 -0800 (PST)
-Message-ID: <45d6fe24-4a72-36b6-079b-6279e4e079ad@gmail.com>
-Date: Mon, 28 Feb 2022 18:28:09 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nOyLe-0007Ji-0T
+ for qemu-trivial@nongnu.org; Tue, 01 Mar 2022 03:59:10 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:31988)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nOyLa-0004bW-Vc
+ for qemu-trivial@nongnu.org; Tue, 01 Mar 2022 03:59:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1646125145;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=1mB8Rmk7azzWgiSCorUh3Arp9bleh7d37IIKsc+UUMA=;
+ b=QmnZ46eK6qM43PTMtZvsRdUIhe0rRhnteGo/Ria9XniTs7pfCorvrgJm/1Pz2f9ihJpRiq
+ uH94CmFCXEbttg9kpDc+x4V0OI+QPhPOwyzTIaTeAJ6aif/UaPvCpiT4xqFmrEb+CUjTRR
+ cMzrFbBACGHdsU6WRon4zzOkRNFrm+o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-257-gD1J9I6BM-W6d4pfGy-Psw-1; Tue, 01 Mar 2022 03:59:04 -0500
+X-MC-Unique: gD1J9I6BM-W6d4pfGy-Psw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0243A8070ED;
+ Tue,  1 Mar 2022 08:59:03 +0000 (UTC)
+Received: from thuth.com (dhcp-192-205.str.redhat.com [10.33.192.205])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D6CF45ED32;
+ Tue,  1 Mar 2022 08:59:01 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] tests/Makefile.include: Let "make clean" remove the TCG tests, too
+Date: Tue,  1 Mar 2022 09:59:00 +0100
+Message-Id: <20220301085900.1443232-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.6.1
-Subject: Re: [PATCH] allow disabling tests
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, Simeon Schaub <schaub@mit.edu>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <a8bdb3e7-a877-070c-3ef5-6d14086a7f9b@mit.edu>
- <CAFEAcA_jsunyeYOqu0aPtC3XrdD30b1Fk-6QsiDCTs=AJcvYVQ@mail.gmail.com>
- <006d618a-07d5-f58c-fdce-18914c7c7625@mit.edu>
- <CAFEAcA_ps901W=Cwu0ev39B2+6YyWZtERfuGjCsDTz=G=iA9fQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <CAFEAcA_ps901W=Cwu0ev39B2+6YyWZtERfuGjCsDTz=G=iA9fQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::634
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pl1-x634.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,19 +70,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Feb 2022 17:28:18 -0000
+X-List-Received-Date: Tue, 01 Mar 2022 08:59:10 -0000
 
-On 28/2/22 17:25, Peter Maydell wrote:
-> On Mon, 28 Feb 2022 at 16:22, Simeon Schaub <schaub@mit.edu> wrote:
->>
->> Ah, yes, sorry, I didn't check whether the tests were actually run. I
->> can rename this to something more like `build-tests` if you think that's
->> more informative.
-> 
-> What problem are you trying to solve here ? It shouldn't
-> matter whether we build the test binaries or not...
+"make clean" should clear all binaries that have been built, but so
+far it left the TCG tests still in place. Let's make sure that they
+are now removed, too.
 
-Maybe speeding up the build by restricting to compiling what is required
-(and saving energy), similar to 
-https://lore.kernel.org/qemu-devel/20220204152924.6253-3-f4bug@amsat.org/ ?
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/Makefile.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index e7153c8e91..7a932caf91 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -162,6 +162,6 @@ check-build: run-ninja
+ check-clean:
+ 	rm -rf $(TESTS_VENV_DIR) $(TESTS_RESULTS_DIR)
+ 
+-clean: check-clean
++clean: check-clean clean-tcg
+ 
+ endif
+-- 
+2.27.0
+
 
