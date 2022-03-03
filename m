@@ -1,74 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nPMXk-0006Ty-IW
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Mar 2022 05:49:16 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52280)
+	id 1nPkgZ-0006bi-Io
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Mar 2022 07:35:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44118)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nPMXi-0006SL-Gj; Wed, 02 Mar 2022 05:49:14 -0500
-Received: from [2a00:1450:4864:20::62c] (port=40721
- helo=mail-ej1-x62c.google.com)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1nPkgV-0006Wv-Sv
+ for qemu-trivial@nongnu.org; Thu, 03 Mar 2022 07:35:57 -0500
+Received: from [2a00:1450:4864:20::52c] (port=35367
+ helo=mail-ed1-x52c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nPMXg-0002U1-UZ; Wed, 02 Mar 2022 05:49:14 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id p15so2813333ejc.7;
- Wed, 02 Mar 2022 02:49:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:in-reply-to:references:message-id
- :mime-version:content-transfer-encoding;
- bh=7rrkiXHc8VJ7fc3zbr0X1gkXAhdAYfkWnD7av1JwCgU=;
- b=q1hjfgCBY3dKoUriSGWhs6L8Dwm5Kauf5ioMZ3N4f+wA8i94Mtqwn0zKnmPtUoo2PX
- MBzOEPUagbFJerl9bczGQPTu5g/i3QO7TeVxjwvHSNSQp1Dcwoj0T+tmevTGMyZsRXRo
- mWqPHXQxdcll/FAQRWxqE4k+TW5YHE8CSI5eATrr1rmG2PXBmYq3kLuoSGatFO1Qc8cX
- eKrw6FljoBCcPdJfPaIeZF8L9+ltO+hZQVndX/6+Xam60+Har0gGayukz9w9VHsw3l+U
- BX5Ls0xjg7iyIA3gLl6HeadLxoi5xrdKJuYVNcPsvaeLlXf5mIk1J0o8dle1qwKAuv41
- g8jw==
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1nPkgT-0003mp-O1
+ for qemu-trivial@nongnu.org; Thu, 03 Mar 2022 07:35:55 -0500
+Received: by mail-ed1-x52c.google.com with SMTP id y2so1773933edc.2
+ for <qemu-trivial@nongnu.org>; Thu, 03 Mar 2022 04:35:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=s3iuDPI+C7CFzS1QKTXUsw7916VjE+RCP9v8irkZ97Q=;
+ b=wBtG0Hd4h6PYEDA5NHaYt4s9LUvAJ7f1b4+AFufSjQ5gBU+F7Fwd+8i3yUOwrIhgeU
+ W5J81cmAPpL4uTfDMpJ34UAnomGweYEj9Tgu8zKz4IVN/qPHlXp2NwJ7Xeo8QygNkuWL
+ q8FaASOs9Z0LsdmAbr0E4FJXzaqkjp3zo9QIrN8A8+CYLpWSo117nC/MmcTTUwr9sldS
+ 9EBk/ygvlvlnnsfsP+qZoJ4FshAoGwSq+b0Lx8KoW5jhidj/gR0/vleALsK4M7q0AKEp
+ vwb8pYhVDytTd4wuzodcOGSzzUiYrldtkDZ3t5+siuxKJ0QZM5EG02btxcQSk2zAqw3D
+ TDlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
- :message-id:mime-version:content-transfer-encoding;
- bh=7rrkiXHc8VJ7fc3zbr0X1gkXAhdAYfkWnD7av1JwCgU=;
- b=OD/vabQfaTVl7SOJgEcCPtibh6bexNVCqylLIQjb6OePXvcpIIUIZZj87QFn2uas6I
- zp7IEDn23mXa8BWyfEUYH6Qsgf/pUGP+heLEVdX1XK6nJtC3CDCuTvLy3Jhxye3jT8KC
- U86Bp77DQ1ZpXG2nuWoCCMBD7Z6MS/th+wnxHCulcWfzydE1yoSM4bvf1DrWOdd/Yw+5
- MAdVcg17pnKwCUr0v6hXjBKZgAv/x9lS2Y8qPP28HI+TQgg6wgo0brl42gwTlQsz4qPo
- XmrS+yztpGQjC4xy9V4KBK7p2UnGZaaQjRczvw3PG4fSFMIrPhKmKoE6LG/h7P2kki4V
- tH7g==
-X-Gm-Message-State: AOAM531WOnD6tuUtWO1u+I8/EL16HpfGmm3Q3fozDXyDUzx5MA53g2oo
- ChMfFEIC/463aNnmWe6DMm23y1pgTggG3w==
-X-Google-Smtp-Source: ABdhPJwOwq5iwz5Lx/joVjscnQHzL2Wne8JjcFU7ADFQ6w+n1QIQVfkU77lrBSqWRk35It8QAqNUmA==
-X-Received: by 2002:a17:907:8693:b0:6d9:67df:b21c with SMTP id
- qa19-20020a170907869300b006d967dfb21cmr2217320ejc.536.1646218146485; 
- Wed, 02 Mar 2022 02:49:06 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-078-055-087-134.78.55.pool.telefonica.de.
- [78.55.87.134]) by smtp.gmail.com with ESMTPSA id
- g22-20020a170906395600b006cec40b9cf0sm6239027eje.92.2022.03.02.02.49.05
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 02 Mar 2022 02:49:06 -0800 (PST)
-Date: Wed, 02 Mar 2022 10:49:03 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-CC: qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Alex Williamson <alex.williamson@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RESEND_1/2=5D_hw/vfio/pci-qui?=
- =?US-ASCII?Q?rks=3A_Resolve_redundant_property_getters?=
-In-Reply-To: <20220301225220.239065-2-shentey@gmail.com>
-References: <20220301225220.239065-1-shentey@gmail.com>
- <20220301225220.239065-2-shentey@gmail.com>
-Message-ID: <162428EB-D942-46C4-9B20-D824B56774E1@gmail.com>
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=s3iuDPI+C7CFzS1QKTXUsw7916VjE+RCP9v8irkZ97Q=;
+ b=Ueca1NlBPPtjyQOe4SY8WBSun80XSBNZagBwE2CYrGUkyPtOElK9OC/tH1VBiD/R7N
+ 4HU9Qybu+kI0BDG1zK3xzheeCMqKD3YIqXTgiw8bYipUlbnUJyk4eotu81a00ziZHU3V
+ j7FAGNtCduHdOSa4xDI1NwqfzUTrGbGMTzJib/oGvZtyvHTE6yBc6I/RBOoAjGQUNRAc
+ B0Qv82td2IIgk5JA51f5dzjap1DHhW+KPVSDWUafvT40ADoGiJMKSsvgDzXG5MRN+dH8
+ Up6FfHUZwdjK5qVAL0VUJfxSnrPXmczGb82W2rZNcUvmg5iM9d2pvXwSvtW9aaMoQs6p
+ qadQ==
+X-Gm-Message-State: AOAM532FChrGBOFl2z1fWaIXL422w/GvhVjGd9OpjhiqEqAmX0SaGrCr
+ QrQfw2jOP+PfG0ekBAgADSDX+A==
+X-Google-Smtp-Source: ABdhPJwd35WZMZ0aS334c1tjtkLRkdrxth9kaMsbg2JQgUE0Ae1Yr6aeF8pHS1DpD1YxwQpLEUdIww==
+X-Received: by 2002:a05:6402:3549:b0:412:b31c:5509 with SMTP id
+ f9-20020a056402354900b00412b31c5509mr34544649edd.224.1646310952000; 
+ Thu, 03 Mar 2022 04:35:52 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id
+ q2-20020a170906144200b006ceb8723de9sm636150ejc.120.2022.03.03.04.35.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Mar 2022 04:35:50 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 19EE01FFB7;
+ Thu,  3 Mar 2022 12:35:50 +0000 (GMT)
+References: <20220301085900.1443232-1-thuth@redhat.com>
+User-agent: mu4e 1.7.9; emacs 28.0.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] tests/Makefile.include: Let "make clean" remove the TCG
+ tests, too
+Date: Thu, 03 Mar 2022 12:35:45 +0000
+In-reply-to: <20220301085900.1443232-1-thuth@redhat.com>
+Message-ID: <87ee3ji57d.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::62c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::52c
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
@@ -84,95 +87,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Mar 2022 10:49:14 -0000
+X-List-Received-Date: Thu, 03 Mar 2022 12:35:57 -0000
 
-Am 1=2E M=C3=A4rz 2022 22:52:19 UTC schrieb Bernhard Beschow <shentey@gmail=
-=2Ecom>:
->The QOM API already provides getters for uint64 and uint32 values, so reu=
-se
->them=2E
->
->Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->Reviewed-by: Alistair Francis <alistair=2Efrancis@wdc=2Ecom>
 
-Meh, I accidently swapped Alistair's Reviewed-by into this patch while dro=
-pping it from the other=2E Please ignore and sorry for that=2E
+Thomas Huth <thuth@redhat.com> writes:
 
-Best regards,
-Bernhard
+> "make clean" should clear all binaries that have been built, but so
+> far it left the TCG tests still in place. Let's make sure that they
+> are now removed, too.
 
->Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=2Eorg>
->---
-> hw/vfio/pci-quirks=2Ec | 34 +++++++++-------------------------
-> 1 file changed, 9 insertions(+), 25 deletions(-)
->
->diff --git a/hw/vfio/pci-quirks=2Ec b/hw/vfio/pci-quirks=2Ec
->index 0cf69a8c6d=2E=2Ef0147a050a 100644
->--- a/hw/vfio/pci-quirks=2Ec
->+++ b/hw/vfio/pci-quirks=2Ec
->@@ -1565,22 +1565,6 @@ static int vfio_add_nv_gpudirect_cap(VFIOPCIDevice=
- *vdev, Error **errp)
->     return 0;
-> }
->=20
->-static void vfio_pci_nvlink2_get_tgt(Object *obj, Visitor *v,
->-                                     const char *name,
->-                                     void *opaque, Error **errp)
->-{
->-    uint64_t tgt =3D (uintptr_t) opaque;
->-    visit_type_uint64(v, name, &tgt, errp);
->-}
->-
->-static void vfio_pci_nvlink2_get_link_speed(Object *obj, Visitor *v,
->-                                                 const char *name,
->-                                                 void *opaque, Error **e=
-rrp)
->-{
->-    uint32_t link_speed =3D (uint32_t)(uintptr_t) opaque;
->-    visit_type_uint32(v, name, &link_speed, errp);
->-}
->-
-> int vfio_pci_nvidia_v100_ram_init(VFIOPCIDevice *vdev, Error **errp)
-> {
->     int ret;
->@@ -1618,9 +1602,9 @@ int vfio_pci_nvidia_v100_ram_init(VFIOPCIDevice *vd=
-ev, Error **errp)
->                                nv2reg->size, p);
->     QLIST_INSERT_HEAD(&vdev->bars[0]=2Equirks, quirk, next);
->=20
->-    object_property_add(OBJECT(vdev), "nvlink2-tgt", "uint64",
->-                        vfio_pci_nvlink2_get_tgt, NULL, NULL,
->-                        (void *) (uintptr_t) cap->tgt);
->+    object_property_add_uint64_ptr(OBJECT(vdev), "nvlink2-tgt",
->+                                   (uint64_t *) &cap->tgt,
->+                                   OBJ_PROP_FLAG_READ);
->     trace_vfio_pci_nvidia_gpu_setup_quirk(vdev->vbasedev=2Ename, cap->tg=
-t,
->                                           nv2reg->size);
-> free_exit:
->@@ -1679,15 +1663,15 @@ int vfio_pci_nvlink2_init(VFIOPCIDevice *vdev, Er=
-ror **errp)
->         QLIST_INSERT_HEAD(&vdev->bars[0]=2Equirks, quirk, next);
->     }
->=20
->-    object_property_add(OBJECT(vdev), "nvlink2-tgt", "uint64",
->-                        vfio_pci_nvlink2_get_tgt, NULL, NULL,
->-                        (void *) (uintptr_t) captgt->tgt);
->+    object_property_add_uint64_ptr(OBJECT(vdev), "nvlink2-tgt",
->+                                   (uint64_t *) &captgt->tgt,
->+                                   OBJ_PROP_FLAG_READ);
->     trace_vfio_pci_nvlink2_setup_quirk_ssatgt(vdev->vbasedev=2Ename, cap=
-tgt->tgt,
->                                               atsdreg->size);
->=20
->-    object_property_add(OBJECT(vdev), "nvlink2-link-speed", "uint32",
->-                        vfio_pci_nvlink2_get_link_speed, NULL, NULL,
->-                        (void *) (uintptr_t) capspeed->link_speed);
->+    object_property_add_uint32_ptr(OBJECT(vdev), "nvlink2-link-speed",
->+                                   &capspeed->link_speed,
->+                                   OBJ_PROP_FLAG_READ);
->     trace_vfio_pci_nvlink2_setup_quirk_lnkspd(vdev->vbasedev=2Ename,
->                                               capspeed->link_speed);
-> free_exit:
+Queued to for-7.0/misc-bits, thanks.
 
+--=20
+Alex Benn=C3=A9e
 
