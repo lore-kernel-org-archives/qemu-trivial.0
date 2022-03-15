@@ -1,73 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nSef5-0001a5-4Y
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Mar 2022 07:46:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51468)
+	id 1nU8MT-0007iL-Cn
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Mar 2022 10:41:21 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1nSeey-0001VV-05
- for qemu-trivial@nongnu.org; Fri, 11 Mar 2022 07:46:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31743)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nU8MR-0007eM-7l
+ for qemu-trivial@nongnu.org; Tue, 15 Mar 2022 10:41:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:46457)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1nSeeu-0005Ob-NE
- for qemu-trivial@nongnu.org; Fri, 11 Mar 2022 07:46:18 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nU8MO-0001F0-5Y
+ for qemu-trivial@nongnu.org; Tue, 15 Mar 2022 10:41:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1647002775;
+ s=mimecast20190719; t=1647355275;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=laKojkpIyQ0VHsN6aDdj17w9V67ADMCuESGn1QVTAgI=;
- b=IWidhDpjMmfdIo97qRwWTEU9QJ5hyY5acXQH+gGlfCA+UOckk1YjVvFIe6gaEy08A5OcvF
- F8gvohRh6am/OY1AQh/SLxq4PG0yPnN0LwLZP23I8F/LEiq2Mg0qBsXYKwyH3mELVpsLje
- sWdVDrsERdtSRpOuMMY1vTIVd/BlKQ4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding;
+ bh=GpLAuFA5vT75sGSG5OQ8FPkF5tQT2epJyXCoizc7WTE=;
+ b=hLtc+VaSP55O9oWiR1xOx4n1affCtDU0VdihLGTqY+NkL+2Bpu+Rljd6fVVwsr3WefDhpT
+ d8ntp5VB1/G6QT0zqf6isq7lipvE73R9rdQAFXWunPBVXMVCh/BdDvWjQykRSqLJhzO53V
+ Ed7OzS5k6XnQIURxVgh+dGgmJ9z8Buk=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-288-IXMIJ8yhP8-Z5BhKMpN0hQ-1; Fri, 11 Mar 2022 07:46:11 -0500
-X-MC-Unique: IXMIJ8yhP8-Z5BhKMpN0hQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-557-pxtGn3DQPo-c7JCbB1OG1A-1; Tue, 15 Mar 2022 10:41:12 -0400
+X-MC-Unique: pxtGn3DQPo-c7JCbB1OG1A-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A28F11854E3D;
- Fri, 11 Mar 2022 12:46:10 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.36.112.3])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3E77926DF0;
- Fri, 11 Mar 2022 12:46:10 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BEDE321E6A00; Fri, 11 Mar 2022 13:46:08 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,  Carwyn Ellis
- <carwynellis@gmail.com>,  qemu-trivial@nongnu.org,  Michael Roth
- <michael.roth@amd.com>,  qemu-devel@nongnu.org
-Subject: Re: [PATCH 1/2] ui/cocoa: add option to disable left-command
- forwarding to guest
-References: <20220102174153.70043-1-carwynellis@gmail.com>
- <20220102174153.70043-2-carwynellis@gmail.com>
- <CAFEAcA9VDAOJf22RkF5nkKKcvDXWoJ=YmEKY13N_GULkZAwb-Q@mail.gmail.com>
- <a32bb6e3-f7ea-b736-f5c5-95fbbd067a4d@amsat.org>
-Date: Fri, 11 Mar 2022 13:46:08 +0100
-In-Reply-To: <a32bb6e3-f7ea-b736-f5c5-95fbbd067a4d@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 18 Feb 2022 21:21:27
- +0100")
-Message-ID: <87sfro7j3j.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B3C983C16503;
+ Tue, 15 Mar 2022 14:41:11 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.119])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 87B3EC202C9;
+ Tue, 15 Mar 2022 14:41:10 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH] Don't include sysemu/tcg.h if it is not necessary
+Date: Tue, 15 Mar 2022 15:41:07 +0100
+Message-Id: <20220315144107.1012530-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -82,117 +69,134 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Mar 2022 12:46:21 -0000
+X-List-Received-Date: Tue, 15 Mar 2022 14:41:20 -0000
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+This header only defines the tcg_allowed variable and the tcg_enabled()
+function - which are not required in many files that include this
+header. Drop the #include statement there.
 
-> On 18/2/22 19:55, Peter Maydell wrote:
->> On Sun, 2 Jan 2022 at 17:42, Carwyn Ellis <carwynellis@gmail.com> wrote:
->>>
->>> When switching between guest and host on a Mac using command-tab the
->>> command key is sent to the guest which can trigger functionality in the
->>> guest OS. Specifying left-command-key=3Doff disables forwarding this ke=
-y
->>> to the guest. Defaults to enabled.
->>>
->>> Also updated the cocoa display documentation to reference the new
->>> left-command-key option along with the existing show-cursor option.
->>>
->>> Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
->> Ccing the QAPI folks for review on the QAPI parts of this.
->> -- PMM
->>=20
->>> ---
->>>   qapi/ui.json    | 17 +++++++++++++++++
->>>   qemu-options.hx | 12 ++++++++++++
->>>   ui/cocoa.m      |  8 +++++++-
->>>   3 files changed, 36 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/qapi/ui.json b/qapi/ui.json
->>> index 2b4371da37..764480e145 100644
->>> --- a/qapi/ui.json
->>> +++ b/qapi/ui.json
->>> @@ -1107,6 +1107,22 @@
->>>     'data'    : { '*grab-on-hover' : 'bool',
->>>                   '*zoom-to-fit'   : 'bool'  } }
->>>
->>> +##
->>> +# @DisplayCocoa:
->>> +#
->>> +# Cocoa display options.
->>> +#
->>> +# @left-command-key: Enable/disable forwarding of left command key to
->>> +#                    guest. Allows command-tab window switching on the
->>> +#                    host without sending this key to the guest when
->>> +#                    "off". Defaults to "on"
->>> +#
->>> +# Since: 6.2.50
->
-> Not a QAPI folk, but LGTM using 7.0 here instead of 6.2.50 (this the
-> number of the *released* QEMU version which contains this new type).
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ accel/tcg/hmp.c                  | 1 -
+ accel/tcg/tcg-accel-ops-icount.c | 1 -
+ bsd-user/main.c                  | 1 -
+ hw/virtio/vhost.c                | 1 -
+ linux-user/main.c                | 1 -
+ monitor/misc.c                   | 1 -
+ target/arm/helper.c              | 1 -
+ target/s390x/cpu_models_sysemu.c | 1 -
+ target/s390x/helper.c            | 1 -
+ 9 files changed, 9 deletions(-)
 
-Yes.
-
->>> +#
->>> +##
->>> +{ 'struct'  : 'DisplayCocoa',
->>> +  'data'    : { '*left-command-key' : 'bool' } }
->>> +
->>>   ##
->>>   # @DisplayEGLHeadless:
->>>   #
->>> @@ -1254,6 +1270,7 @@
->>>     'discriminator' : 'type',
->>>     'data'    : {
->>>         'gtk': { 'type': 'DisplayGTK', 'if': 'CONFIG_GTK' },
->>> +      'cocoa': { 'type': 'DisplayCocoa', 'if': 'CONFIG_COCOA' },
->>>         'curses': { 'type': 'DisplayCurses', 'if': 'CONFIG_CURSES' },
->>>         'egl-headless': { 'type': 'DisplayEGLHeadless',
->>>                           'if': { 'all': ['CONFIG_OPENGL', 'CONFIG_GBM'=
-] } },
->>> diff --git a/qemu-options.hx b/qemu-options.hx
->>> index fd1f8135fb..6fa9c38c83 100644
->>> --- a/qemu-options.hx
->>> +++ b/qemu-options.hx
->>> @@ -1912,6 +1912,9 @@ DEF("display", HAS_ARG, QEMU_OPTION_display,
->>>   #if defined(CONFIG_DBUS_DISPLAY)
->>>       "-display dbus[,addr=3D<dbusaddr>]\n"
->>>       "             [,gl=3Don|core|es|off][,rendernode=3D<file>]\n"
->>> +#endif
->>> +#if defined(CONFIG_COCOA)
->>> +    "-display cocoa[,show-cursor=3Don|off][,left-command-key=3Don|off]=
-\n"
->>>   #endif
->>>       "-display none\n"
->>>       "                select display backend type\n"
->>> @@ -1999,6 +2002,15 @@ SRST
->>>           ``charset=3DCP850`` for IBM CP850 encoding. The default is
->>>           ``CP437``.
->>>
->>> +    ``cocoa``
->>> +        Display video output in a Cocoa window. Mac only. This interfa=
-ce
->>> +        provides drop-down menus and other UI elements to configure an=
-d
->>> +        control the VM during runtime. Valid parameters are:
->>> +
->>> +        ``show-cursor=3Don|off`` :  Force showing the mouse cursor
->>> +
->>> +        ``left-command-key=3Don|off`` : Disable forwarding left comman=
-d key to host
->>> +
->>>       ``egl-headless[,rendernode=3D<file>]``
->>>           Offload all OpenGL operations to a local DRI device. For any
->>>           graphical display, this display needs to be paired with eithe=
-r
-
-In the QAPI schema, @full-screen, @window-close and @show-cursor are
-common to all display types.  Here, @full-screen is only documented with
-gtk, @window-close with gtk and sdl, @show-cursor with gtk, sdl and now
-cocoa.
-
-What's going on here?
-
-[...]
+diff --git a/accel/tcg/hmp.c b/accel/tcg/hmp.c
+index d2ea352655..bb67941420 100644
+--- a/accel/tcg/hmp.c
++++ b/accel/tcg/hmp.c
+@@ -4,7 +4,6 @@
+ #include "qapi/qapi-commands-machine.h"
+ #include "exec/exec-all.h"
+ #include "monitor/monitor.h"
+-#include "sysemu/tcg.h"
+ 
+ static void hmp_tcg_register(void)
+ {
+diff --git a/accel/tcg/tcg-accel-ops-icount.c b/accel/tcg/tcg-accel-ops-icount.c
+index bdaf2c943b..8827e1d2cc 100644
+--- a/accel/tcg/tcg-accel-ops-icount.c
++++ b/accel/tcg/tcg-accel-ops-icount.c
+@@ -25,7 +25,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
+-#include "sysemu/tcg.h"
+ #include "sysemu/replay.h"
+ #include "sysemu/cpu-timers.h"
+ #include "qemu/main-loop.h"
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 88d347d05e..e274dd92d7 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -27,7 +27,6 @@
+ #include "qemu-common.h"
+ #include "qemu/units.h"
+ #include "qemu/accel.h"
+-#include "sysemu/tcg.h"
+ #include "qemu-version.h"
+ #include <machine/trap.h>
+ 
+diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+index b643f42ea4..c9bf01a424 100644
+--- a/hw/virtio/vhost.c
++++ b/hw/virtio/vhost.c
+@@ -26,7 +26,6 @@
+ #include "migration/blocker.h"
+ #include "migration/qemu-file-types.h"
+ #include "sysemu/dma.h"
+-#include "sysemu/tcg.h"
+ #include "trace.h"
+ 
+ /* enabled until disconnected backend stabilizes */
+diff --git a/linux-user/main.c b/linux-user/main.c
+index fbc9bcfd5f..f1711b82ec 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -21,7 +21,6 @@
+ #include "qemu-common.h"
+ #include "qemu/units.h"
+ #include "qemu/accel.h"
+-#include "sysemu/tcg.h"
+ #include "qemu-version.h"
+ #include <sys/syscall.h>
+ #include <sys/resource.h>
+diff --git a/monitor/misc.c b/monitor/misc.c
+index b1839cb8ee..b5ca141e1d 100644
+--- a/monitor/misc.c
++++ b/monitor/misc.c
+@@ -48,7 +48,6 @@
+ #include "qapi/util.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/sysemu.h"
+-#include "sysemu/tcg.h"
+ #include "sysemu/tpm.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qerror.h"
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 088956eecf..94221a3e8d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -27,7 +27,6 @@
+ #include "sysemu/cpus.h"
+ #include "sysemu/cpu-timers.h"
+ #include "sysemu/kvm.h"
+-#include "sysemu/tcg.h"
+ #include "qemu/range.h"
+ #include "qapi/qapi-commands-machine-target.h"
+ #include "qapi/error.h"
+diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
+index 05c3ccaaff..d8a141a023 100644
+--- a/target/s390x/cpu_models_sysemu.c
++++ b/target/s390x/cpu_models_sysemu.c
+@@ -15,7 +15,6 @@
+ #include "s390x-internal.h"
+ #include "kvm/kvm_s390x.h"
+ #include "sysemu/kvm.h"
+-#include "sysemu/tcg.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+ #include "qapi/qmp/qerror.h"
+diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+index 6e35473c7f..473c8e51b0 100644
+--- a/target/s390x/helper.c
++++ b/target/s390x/helper.c
+@@ -27,7 +27,6 @@
+ #include "hw/s390x/pv.h"
+ #include "sysemu/hw_accel.h"
+ #include "sysemu/runstate.h"
+-#include "sysemu/tcg.h"
+ 
+ void s390x_tod_timer(void *opaque)
+ {
+-- 
+2.27.0
 
 
