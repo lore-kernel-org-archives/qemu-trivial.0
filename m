@@ -1,78 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nVHYs-0000pW-5p
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 14:42:54 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36148)
+	id 1nVJf2-0007wl-H9
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 16:57:24 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nVHYq-0000hI-51; Fri, 18 Mar 2022 14:42:52 -0400
-Received: from [2607:f8b0:4864:20::42b] (port=37840
- helo=mail-pf1-x42b.google.com)
+ (Exim 4.90_1) (envelope-from <ahmedaabouzied44@gmail.com>)
+ id 1nVGrQ-0006DI-OV; Fri, 18 Mar 2022 13:58:03 -0400
+Received: from [2607:f8b0:4864:20::a2b] (port=45757
+ helo=mail-vk1-xa2b.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nVHYo-0004ht-OW; Fri, 18 Mar 2022 14:42:51 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id t5so10208083pfg.4;
- Fri, 18 Mar 2022 11:42:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ahmedaabouzied44@gmail.com>)
+ id 1nVGrO-0005m0-DD; Fri, 18 Mar 2022 13:58:00 -0400
+Received: by mail-vk1-xa2b.google.com with SMTP id 134so2868513vkz.12;
+ Fri, 18 Mar 2022 10:57:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=7nS+8zHZoh7qurm6Qfs3DdLW71cU3D+xMS9aoS9PgyM=;
- b=HypWMTJ1jpK3p9c6R8IGgCcGDle68s0lk0yKaWS4bwAGMNbNYrCfcejxSQwpnY77A1
- FcuauD+Ksy2IXFwM00VkF19hgu5pXQeGJbhQQlgYj1N70z6FBNPfpcWEtqV7QPqwpLsX
- +TL5OjiSs4pffIVWTN4D2fNpIZOmL7nunkGdCGD5RtjIgir+cS1VOp/mOlZToS0Ne1fm
- WpcBIffNammCip2L49bRFiN5DgWL+6bvBeDbKL/zJmInx+XbOwU3KehI4tP9Rj3uEM1S
- 7Sp3diUb0mMtdGQI3rxIvLTtUbg1o0XMoijItPum/5DcUqU0nN808RFMJQVHtMu6kokY
- jeDg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8Yjvkj3yqr41ZdAuasyMTbpIIeoAciKXaNTpV2FhFnM=;
+ b=ijJptlpMDrdiapXccbSkO1W3DoU9rN+SiGlrxAmaEj7BzK0br+oTngKnWW8f1K2jgv
+ x6PzToFixs1gcUl3U8IHhhk5hCexaZYSZeNxMqoGS1oAhqPPjFrHMn/opYjC6SOGd7Cc
+ SLRR7CU4xMJs2h1bm077BB4T7LGKHgifFlA9siXTuMeIJfomZDqGsmy+b4ThBFbSthCu
+ 57+JTg2msPpABOAtnu3L/T6eZE4BMNy2yg5+YeXyGc1L7JSB3BKVC9NpTZY9UEuBljb+
+ wOy8knBenmfviqVB1pMYAR8PePRIIxkJLB5cfntvDf2Z4P+X8D+tn5oXJ/iMokBmTXj+
+ WgoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=7nS+8zHZoh7qurm6Qfs3DdLW71cU3D+xMS9aoS9PgyM=;
- b=4dOMVtOfLQIQ+sPzY/DRnPZY6wZpRo3MT6N8ERTfRfxXoHJB3Kg7vpdJ2pRugtpVna
- 9oQ4KDu1gkHmBpTA39JKn5ewZO4sQ3XtobYN1Y2J+iIPnfYopm6BUXXspmqLcztM4kUs
- FWUSWlbLa7K9Z2YkTrc2tOINizxCPGjwEBho5pR8kdzACJgy6xLY0KUEAUIsTQ9XmiKy
- gQDyqtPSk9PSfQOP7gAJweZhlM25gwFYr0OwFtSn6ws8YWYUvkh4OsKZXN3J2wLOhVGa
- HURbJ4rgBh/U56p1BAXj0rTmByfdC8kwuD/dXdra2YL+gMZOPE5CWQn4CpHNg6kaGKGX
- oUWw==
-X-Gm-Message-State: AOAM531TXo9eGKTqVco8LXeGdBfUBNjSYm3MKa7sDCAo7w2dmT6VyD8m
- aE+B1GrKJEbLxG2mDoP3y0Y=
-X-Google-Smtp-Source: ABdhPJzqod61CrXs6KXlOhmY1pTVBzuuvcWoCoczHhbKvDhyjBy12RQOdWkRp3kIFtXvekZgRsvg/Q==
-X-Received: by 2002:a05:6a00:10d0:b0:4f7:5af4:47b6 with SMTP id
- d16-20020a056a0010d000b004f75af447b6mr11223197pfu.6.1647628968808; 
- Fri, 18 Mar 2022 11:42:48 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- k11-20020a056a00168b00b004f7e1555538sm10723714pfc.190.2022.03.18.11.42.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Mar 2022 11:42:48 -0700 (PDT)
-Message-ID: <24c72a93-0251-6bce-c652-2455ee642de1@gmail.com>
-Date: Fri, 18 Mar 2022 19:42:45 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8Yjvkj3yqr41ZdAuasyMTbpIIeoAciKXaNTpV2FhFnM=;
+ b=jVnJu4bPuuk5hQDSZeB7Ml+9uNw/dfZ+2zO5JO2l25FvPdF6JQ0dT9ygK4JDY1uxLl
+ hF87LSq3h1R1m6+ETPY+E8j6UgwDJAff90ipWHG/TwMsVhRbu1i+XNrOpI6VF0yZcvod
+ RuAr5y3vWcbeaYfFzN6QpeIf8o2CNQX8z/N3d4WXI41DO6LG5F37G8gnqNa8URP3h0eN
+ AUFcLUUEzC899019jgeIrJiZad2lA8bsa3JKnLzhOGz+JY1vMufZcRFC7bO1by20A+7u
+ f8GRHwzW/dxCwC2X8ehBGL7PlkG5KGiGo5AI9C8abMmS282Pg7RMVxomNMGMvrgDEw/b
+ 1BaA==
+X-Gm-Message-State: AOAM533rmN3e/S/qyX1G3Q6TMBm8eQ7TQ7YX9QsA/4UKJem0c34ebx9g
+ dAxaXCHxhtwZJzK3qrJgUqddOMEYBfv+a3Kg1jyQrLu0
+X-Google-Smtp-Source: ABdhPJw6kvGerRhVG0FfIJ65psyU3ArPcpJPbUFqlLO9DJEtczIpHtlqwFJ1HosetjvH7TBtV+fQyqzn9RvvBjmKTY4=
+X-Received: by 2002:a05:6122:78a:b0:337:5ba4:f588 with SMTP id
+ k10-20020a056122078a00b003375ba4f588mr4077256vkr.27.1647626276674; Fri, 18
+ Mar 2022 10:57:56 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.7.0
-Subject: Re: [PATCH] Fix 'writeable' typos
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20220318173038.3350098-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <20220318173038.3350098-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::42b
+References: <20210620175452.10076-1-email@aabouzied.com>
+ <d9a8f15d-d582-5fc9-5ddd-206185f459c4@redhat.com>
+In-Reply-To: <d9a8f15d-d582-5fc9-5ddd-206185f459c4@redhat.com>
+From: Ahmed Abouzied <ahmedaabouzied44@gmail.com>
+Date: Fri, 18 Mar 2022 19:57:45 +0200
+Message-ID: <CANL98e-ZM322A4Lor3=ct2PbTMZnAoAUMPxxU9poYo0xLbEvjA@mail.gmail.com>
+Subject: Re: [PATCH] sh4: Replace TAB indentations with spaces
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000f1a19f05da81e2d4"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::a2b
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x42b.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2b;
+ envelope-from=ahmedaabouzied44@gmail.com; helo=mail-vk1-xa2b.google.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
 X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 18 Mar 2022 16:57:23 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,49 +75,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Mar 2022 18:42:52 -0000
+X-List-Received-Date: Fri, 18 Mar 2022 17:58:06 -0000
 
-On 18/3/22 18:30, Peter Maydell wrote:
-> We have about 25 instances of the typo/variant spelling 'writeable',
-> and over 500 of the more common 'writable'.  Standardize on the
-> latter.
+--000000000000f1a19f05da81e2d4
+Content-Type: text/plain; charset="UTF-8"
 
-Amusingly I was looking yesterday at the difference between both.
+Hello,
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+I remember this PR. It was a long time ago. I'll take a look at it and
+propose a fix.
 
-> Change produced with:
-> 
->   sed -i -e 's/writeable/writable/g' $(git grep -l writeable)
-> 
-> and then hand-undoing the instance in linux-headers/linux/kvm.h.
-> 
-> All these changes are in comments or documentation, except for the
-> two local variables in accel/hvf/hvf-accel-ops.c and
-> accel/kvm/kvm-all.c.
-> 
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   docs/interop/vhost-user.rst    | 2 +-
->   docs/specs/vmgenid.txt         | 4 ++--
->   hw/scsi/mfi.h                  | 2 +-
->   target/arm/internals.h         | 2 +-
->   accel/hvf/hvf-accel-ops.c      | 4 ++--
->   accel/kvm/kvm-all.c            | 4 ++--
->   accel/tcg/user-exec.c          | 6 +++---
->   hw/acpi/ghes.c                 | 2 +-
->   hw/intc/arm_gicv3_cpuif.c      | 2 +-
->   hw/intc/arm_gicv3_dist.c       | 2 +-
->   hw/intc/arm_gicv3_redist.c     | 2 +-
->   hw/intc/riscv_aclint.c         | 2 +-
->   hw/intc/riscv_aplic.c          | 2 +-
->   hw/pci/shpc.c                  | 2 +-
->   hw/timer/sse-timer.c           | 2 +-
->   target/arm/gdbstub.c           | 2 +-
->   target/i386/cpu-sysemu.c       | 2 +-
->   target/s390x/ioinst.c          | 2 +-
->   python/qemu/machine/machine.py | 2 +-
->   tests/tcg/x86_64/system/boot.S | 2 +-
->   20 files changed, 25 insertions(+), 25 deletions(-)
+Thanks,
+Ahmed
+
+On Fri, 18 Mar 2022 at 19:25, Thomas Huth <thuth@redhat.com> wrote:
+
+> On 20/06/2021 19.54, Ahmed Abouzied wrote:
+> > Replaces TABs with spaces, making sure to have a consistent coding style
+> > of 4 space indentations in the SH4 subsystem.
+> >
+> > Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/376
+> > ---
+> ...
+> > @@ -1705,101 +1705,101 @@ static void _decode_opc(DisasContext * ctx)
+> >           }
+> >           return;
+> >       case 0xf00d: /* fsts FPUL,FRn - FPSCR: Nothing */
+> > -     CHECK_FPU_ENABLED
+> > +    CHECK_FPU_ENABLED
+> >           tcg_gen_mov_i32(FREG(B11_8), cpu_fpul);
+> > -     return;
+> > +    return;
+> >       case 0xf01d: /* flds FRm,FPUL - FPSCR: Nothing */
+> > -     CHECK_FPU_ENABLED
+> > +    CHECK_FPU_ENABLED
+> >           tcg_gen_mov_i32(cpu_fpul, FREG(B11_8));
+> > -     return;
+> > +    return;
+>
+> Sorry, it's a very late reply ... but in case you're still interested in
+> fixing this: It seems like at least some of these files used TABs as 8
+> spaces, not as 4 spaces, so after applying your patch, the indentation
+> seems
+> to be wrong in all places. Please double-check the look of the files
+> before
+> sending! Thanks!
+>
+>   Thomas
+>
+>
+
+--000000000000f1a19f05da81e2d4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default"><font size=3D"2"><span style=
+=3D"font-family:arial,sans-serif">Hello,</span></font></div><div class=3D"g=
+mail_default"><font size=3D"2"><span style=3D"font-family:arial,sans-serif"=
+><br></span></font></div><div class=3D"gmail_default"><font size=3D"2"><spa=
+n style=3D"font-family:arial,sans-serif">I remember this PR. It was a long =
+time ago. I&#39;ll take a look at it and propose a fix. <br></span></font><=
+/div><div class=3D"gmail_default"><font size=3D"2"><span style=3D"font-fami=
+ly:arial,sans-serif"><br></span></font></div><div class=3D"gmail_default"><=
+font size=3D"2"><span style=3D"font-family:arial,sans-serif">Thanks,</span>=
+</font></div><div class=3D"gmail_default" style=3D"font-family:monospace;fo=
+nt-size:large"><font size=3D"2"><span style=3D"font-family:arial,sans-serif=
+">Ahmed</span></font><br></div></div><br><div class=3D"gmail_quote"><div di=
+r=3D"ltr" class=3D"gmail_attr">On Fri, 18 Mar 2022 at 19:25, Thomas Huth &l=
+t;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; wrote:<br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
+der-left:1px solid rgb(204,204,204);padding-left:1ex">On 20/06/2021 19.54, =
+Ahmed Abouzied wrote:<br>
+&gt; Replaces TABs with spaces, making sure to have a consistent coding sty=
+le<br>
+&gt; of 4 space indentations in the SH4 subsystem.<br>
+&gt; <br>
+&gt; Signed-off-by: Ahmed Abouzied &lt;<a href=3D"mailto:email@aabouzied.co=
+m" target=3D"_blank">email@aabouzied.com</a>&gt;<br>
+&gt; Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/376=
+" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-project/qemu=
+/-/issues/376</a><br>
+&gt; ---<br>
+...<br>
+&gt; @@ -1705,101 +1705,101 @@ static void _decode_opc(DisasContext * ctx)<=
+br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0case 0xf00d: /* fsts FPUL,FRn - FPSCR: Nothi=
+ng */<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0CHECK_FPU_ENABLED<br>
+&gt; +=C2=A0 =C2=A0 CHECK_FPU_ENABLED<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tcg_gen_mov_i32(FREG(B11_8), c=
+pu_fpul);<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0return;<br>
+&gt; +=C2=A0 =C2=A0 return;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0case 0xf01d: /* flds FRm,FPUL - FPSCR: Nothi=
+ng */<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0CHECK_FPU_ENABLED<br>
+&gt; +=C2=A0 =C2=A0 CHECK_FPU_ENABLED<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tcg_gen_mov_i32(cpu_fpul, FREG=
+(B11_8));<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0return;<br>
+&gt; +=C2=A0 =C2=A0 return;<br>
+<br>
+Sorry, it&#39;s a very late reply ... but in case you&#39;re still interest=
+ed in <br>
+fixing this: It seems like at least some of these files used TABs as 8 <br>
+spaces, not as 4 spaces, so after applying your patch, the indentation seem=
+s <br>
+to be wrong in all places. Please double-check the look of the files before=
+ <br>
+sending! Thanks!<br>
+<br>
+=C2=A0 Thomas<br>
+<br>
+</blockquote></div>
+
+--000000000000f1a19f05da81e2d4--
 
