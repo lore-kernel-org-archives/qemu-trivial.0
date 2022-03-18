@@ -1,84 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nVFFm-000833-11
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 12:15:02 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58670)
+	id 1nVGMK-0006nc-6L
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 13:25:52 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nVFFk-00082K-Jv; Fri, 18 Mar 2022 12:15:00 -0400
-Received: from [2607:f8b0:4864:20::102a] (port=32937
- helo=mail-pj1-x102a.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nVFFj-0005t2-6q; Fri, 18 Mar 2022 12:15:00 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- q1-20020a17090a4f8100b001c6575ae105so5869246pjh.0; 
- Fri, 18 Mar 2022 09:14:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=v2FB3ibC0PN2D9Ou398gRnH+T0IlchrYbvmYBo0HFlk=;
- b=FF2YNc5AloZnzUobfsrndnKzcgbYsoxeQ6g5teL2w6jB3mIrcDK40+75QmubT90c1a
- 7bO28Y70+ZIkRqkxhYG1pAPKV+g0hD8dyx/5p6G8rUQ2INooF30LR3Zw+uGIycZraJdM
- V6zjyor9ChmbNasZdd/6A/sKovjkVgULw6f9zEuYHSN2r+2vTHGlRi1LcYYVtFAOEmRl
- olYZ2SX7by6C/hb+n8XmtqqDlAbzPKIyCqLZP1nMkX+PC9ewxjVbgdqWuL2otJX7Zoz3
- GC4ma5MFsVn9TtRpLwayrmCN3P04YZPWXvaZSf97x7AOop6W9lA+uaQsmXfajbfewqGB
- zOnQ==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nVGMH-0006nJ-Un
+ for qemu-trivial@nongnu.org; Fri, 18 Mar 2022 13:25:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:41098)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nVGMF-000163-9J
+ for qemu-trivial@nongnu.org; Fri, 18 Mar 2022 13:25:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1647624345;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=asH6X9HWMOkBVqKKgg7llwQ5TC5dw9HIPQJ1qI0bvEI=;
+ b=UGQz0wYmh2ulhMJ50K7XgdpHuMV85GPce3AB72Bo8I1GxFiCULdVr1OvRR0uFJqD6NE4Oe
+ PQArb3FX6EpBbLc6WNJXarDwYdamqhps2/OE5ZdISFoFI/F0bp6X+Bd7fnpA/64eNj2Nrh
+ Q72fqUAH7BURa8yKwI/KXAukcDppRu4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-479-Vf2AIDS6NbSKY7HU_BwvDw-1; Fri, 18 Mar 2022 13:25:44 -0400
+X-MC-Unique: Vf2AIDS6NbSKY7HU_BwvDw-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ c126-20020a1c3584000000b00380dee8a62cso3294928wma.8
+ for <qemu-trivial@nongnu.org>; Fri, 18 Mar 2022 10:25:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=v2FB3ibC0PN2D9Ou398gRnH+T0IlchrYbvmYBo0HFlk=;
- b=dzwDDkCBs/vbHq5fwIJxLhd4LnK/hENouWjbGpMtzOxgBNxAcSaRDUdD9pKoeSMN13
- BOAdxE8TxZEka8nHeV0drBB5vHzPyDfeHButpd95lmsBxYnOqoEt+dDtzBtcT4jCCQJf
- qberHKqPqbl4SDjsrboMJKLm79SLSBraeKfG5wP2xIu5U9heJo+OYv6OO0U41BvcOunH
- 82vRn8m33SPst+7tPSxCMcmtqruQkU3QMUbGZxMTwAbHtfF2NRNDg+g3NjI7dEspu3MM
- NJMsosLjr2/D6Tmw0TiHh+k3UUvDDsB/CiiiGnGtcyUC3ndKz+JvXdGSAirzi/FuvV6Q
- WDcg==
-X-Gm-Message-State: AOAM532a4YhanZJwk54LRXLio7McDhgHAtx7UvbtClLFD0KdV19V0plY
- e+K7Nab/cWBLAxU8Sd+4BUg=
-X-Google-Smtp-Source: ABdhPJwPP2gmkXUBcS2XEUPFwAPEQONXJo6ho+eObrzVp/EJdX9RYTQRfSpc1mA2McJ2XPkWwJq9/w==
-X-Received: by 2002:a17:902:f68d:b0:153:9686:97ab with SMTP id
- l13-20020a170902f68d00b00153968697abmr213734plg.4.1647620097354; 
- Fri, 18 Mar 2022 09:14:57 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- e6-20020a056a001a8600b004f78b5a4493sm9810766pfv.105.2022.03.18.09.14.55
+ bh=asH6X9HWMOkBVqKKgg7llwQ5TC5dw9HIPQJ1qI0bvEI=;
+ b=7YMwGvF5tmviU0/n3+wgXGGPIZP2x2iKbASsX7stqnL6WC16axyb8SHdGSK9mp5yGj
+ 3o2YwAhiLhDZFiNA9Hqj7kC0rHOs/hD6W7jNA4oNy5aauKamMd0yYEjkV4Ux39JSxFsP
+ NhXtLNhKPXE6Ji85pkk3qyspjvjBVgzaT+0H+zpP+ENQLgkwb1kFD3lrUUczUcT2yTRd
+ UvXqZis4NRmVPYkzP0AF36SVsRDswpy/JvG1PwKQUxAH1YdQ1p2pFrlZPByKL8foz1bx
+ Z0Bw3kmI62QYy5vd7jml4CsspUIUcp+3yQOWhHZjXA943WYDy96T4HnvFTU9xOxZ5KVK
+ frmw==
+X-Gm-Message-State: AOAM533v1nNPl0OrkBOd7Z8jggc9LufRKZChP5aXSe0Sx+5SMX6ErhQl
+ /OIgjrDWdwOBPbS5i8KtorjAsb7wRh87NuWwF8ED4dcR4aNPPYioLf1w6GVQVYSQDzkmnCxZ2Eo
+ VLn7Yg5BcLwK+FRLHUA==
+X-Received: by 2002:adf:f28c:0:b0:1f1:e5e5:28c0 with SMTP id
+ k12-20020adff28c000000b001f1e5e528c0mr8882463wro.417.1647624343447; 
+ Fri, 18 Mar 2022 10:25:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+qYQg6vjC9mhMlL2XBKxQZG/VxBIed3TGhHC+7CePQsP4WdMBOuJdWzPOt8QbZ9stuxKRmg==
+X-Received: by 2002:adf:f28c:0:b0:1f1:e5e5:28c0 with SMTP id
+ k12-20020adff28c000000b001f1e5e528c0mr8882449wro.417.1647624343115; 
+ Fri, 18 Mar 2022 10:25:43 -0700 (PDT)
+Received: from [192.168.8.104] (tmo-098-218.customers.d1-online.com.
+ [80.187.98.218]) by smtp.gmail.com with ESMTPSA id
+ x6-20020adfdcc6000000b00203fc6ba079sm697814wrm.2.2022.03.18.10.25.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Mar 2022 09:14:57 -0700 (PDT)
-Message-ID: <2ab1e5f9-6a34-6b82-8f43-b7dcf58bc8b1@gmail.com>
-Date: Fri, 18 Mar 2022 17:14:52 +0100
+ Fri, 18 Mar 2022 10:25:42 -0700 (PDT)
+Message-ID: <d9a8f15d-d582-5fc9-5ddd-206185f459c4@redhat.com>
+Date: Fri, 18 Mar 2022 18:25:31 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.7.0
-Subject: Re: [PATCH] gitattributes: Cover Objective-C source files
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.0
+Subject: Re: [PATCH] sh4: Replace TAB indentations with spaces
+To: Ahmed Abouzied <email@aabouzied.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20210620175452.10076-1-email@aabouzied.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20210620175452.10076-1-email@aabouzied.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Akihiko Odaki <akihiko.odaki@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Gerd Hoffmann <kraxel@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>
-References: <20220317130326.39188-1-philippe.mathieu.daude@gmail.com>
- <62dbdfcf-771e-7c84-ab8b-b02a61112f86@gmail.com>
- <69c6db77-273e-dbeb-e695-e20772d003e2@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <69c6db77-273e-dbeb-e695-e20772d003e2@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102a
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102a.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,32 +94,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Mar 2022 16:15:01 -0000
+X-List-Received-Date: Fri, 18 Mar 2022 17:25:50 -0000
 
-On 18/3/22 15:42, Akihiko Odaki wrote:
-> I don't think this is needed. I could see a diff annotated with a method 
-> name even without this change:
-> % git diff
-> diff --git a/ui/cocoa.m b/ui/cocoa.m
-> index cb6e7c41dc6..14a4416cc8b 100644
-> --- a/ui/cocoa.m
-> +++ b/ui/cocoa.m
-> @@ -1264,6 +1264,7 @@ - (id) init
->           [pauseLabel setTextColor: [NSColor blackColor]];
->           [pauseLabel sizeToFit];
->       }
-> +    //
->       return self;
->   }
+On 20/06/2021 19.54, Ahmed Abouzied wrote:
+> Replaces TABs with spaces, making sure to have a consistent coding style
+> of 4 space indentations in the SH4 subsystem.
 > 
-> Commit 29cf16db23 says:
->> Since commits 0979ed017f0 ("meson: rename .inc.h files to .h.inc")
->> and 139c1837db7 ("meson: rename included C source files to .c.inc")
->> 'git-diff --function-context' stopped displaying C function context
->> correctly.
-> 
-> So I suspect Git has some knowledge of common file extensions like .c, 
-> .h and .m although I couldn't find in the source code of Git.
+> Signed-off-by: Ahmed Abouzied <email@aabouzied.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/376
+> ---
+...
+> @@ -1705,101 +1705,101 @@ static void _decode_opc(DisasContext * ctx)
+>           }
+>           return;
+>       case 0xf00d: /* fsts FPUL,FRn - FPSCR: Nothing */
+> -	CHECK_FPU_ENABLED
+> +    CHECK_FPU_ENABLED
+>           tcg_gen_mov_i32(FREG(B11_8), cpu_fpul);
+> -	return;
+> +    return;
+>       case 0xf01d: /* flds FRm,FPUL - FPSCR: Nothing */
+> -	CHECK_FPU_ENABLED
+> +    CHECK_FPU_ENABLED
+>           tcg_gen_mov_i32(cpu_fpul, FREG(B11_8));
+> -	return;
+> +    return;
 
-'git-diff --function-context' doesn't work for me without this change.
+Sorry, it's a very late reply ... but in case you're still interested in 
+fixing this: It seems like at least some of these files used TABs as 8 
+spaces, not as 4 spaces, so after applying your patch, the indentation seems 
+to be wrong in all places. Please double-check the look of the files before 
+sending! Thanks!
+
+  Thomas
+
 
