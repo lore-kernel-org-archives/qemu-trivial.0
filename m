@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nVDok-0003MQ-6E
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 10:43:02 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35836)
+	id 1nVFFm-000833-11
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 12:15:02 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58670)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@gmail.com>)
- id 1nVDoi-0003J7-Dd; Fri, 18 Mar 2022 10:43:00 -0400
-Received: from [2607:f8b0:4864:20::1029] (port=50995
- helo=mail-pj1-x1029.google.com)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nVFFk-00082K-Jv; Fri, 18 Mar 2022 12:15:00 -0400
+Received: from [2607:f8b0:4864:20::102a] (port=32937
+ helo=mail-pj1-x102a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@gmail.com>)
- id 1nVDog-0007Pj-Nz; Fri, 18 Mar 2022 10:43:00 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id m22so7619085pja.0;
- Fri, 18 Mar 2022 07:42:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nVFFj-0005t2-6q; Fri, 18 Mar 2022 12:15:00 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ q1-20020a17090a4f8100b001c6575ae105so5869246pjh.0; 
+ Fri, 18 Mar 2022 09:14:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=EhOjmmlk6lfmEc3bhbVxGITu9BQG2eWb5VTDIIzKOU8=;
- b=pRuZ/I/xk8QcJPLI4CtcSG44RT2gFwno3EFhLCrzNK8/SR9jplC8+d38ay4igkW1rh
- fOuu7MzD8usg/vEqlVP/TXafdJabSSTSxRtV6DJQ5/R0prLX/dr/aIBdmoailBipfYAT
- 7eFDexunPO1z1FqEO15ig7cV2+XYVDlyWk+DsGmaWSrOhEobXHSoN8WRiD1NkSqQvy3v
- yE7cIBVTYivXhBUJeYy8rcX6p2uJEwjGALpBsSagzcqjPsOIPyUsJmS4VKvIOxgIUi0j
- teAOXnRhYaXvaK6xzgj5FkOGcvBFALwxitlcTC7V9c67QbOq7i6rkZyLXKUAfLVlWC/3
- 0m/g==
+ bh=v2FB3ibC0PN2D9Ou398gRnH+T0IlchrYbvmYBo0HFlk=;
+ b=FF2YNc5AloZnzUobfsrndnKzcgbYsoxeQ6g5teL2w6jB3mIrcDK40+75QmubT90c1a
+ 7bO28Y70+ZIkRqkxhYG1pAPKV+g0hD8dyx/5p6G8rUQ2INooF30LR3Zw+uGIycZraJdM
+ V6zjyor9ChmbNasZdd/6A/sKovjkVgULw6f9zEuYHSN2r+2vTHGlRi1LcYYVtFAOEmRl
+ olYZ2SX7by6C/hb+n8XmtqqDlAbzPKIyCqLZP1nMkX+PC9ewxjVbgdqWuL2otJX7Zoz3
+ GC4ma5MFsVn9TtRpLwayrmCN3P04YZPWXvaZSf97x7AOop6W9lA+uaQsmXfajbfewqGB
+ zOnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=EhOjmmlk6lfmEc3bhbVxGITu9BQG2eWb5VTDIIzKOU8=;
- b=0gSfKADvd09IWzVVBZDhaXT6g/YF0Zd7KxRl3dm4+P/QLVh11KL0L26bTiTWJmc8Z5
- TWux61vt9PGzU3VL+vmWJ69kdJIamwLkGCVfUc0Jiq8N9LsiyyZ0U1RfmUv/bVwJTJ+d
- /rwaokC7aPbohCZ3oT4MJ3Eygiz2yH/Dt4oLTJww76yGCVo6zdiCUr6tgdMkIkIVuFbo
- MDvVHrgk0I+Dh/P6WWMwlaQ6KIQfQ9L3snhov4LTL3l1h3INv9ZJXNzJAF2IlLWp7GlT
- 3Mp6yKnlxhHqlwukB7r0jj8UmsM/iQuF2rtbD7LQyImEczaoxq0uHRprcUDMn7qFUayr
- PQTA==
-X-Gm-Message-State: AOAM531DONOfN7D2nCBJJAZztMs2ywy70gH6qRaVLPoezf7jEy+bwcTP
- vV71b9rWXNx77x5r3ddDQ8k=
-X-Google-Smtp-Source: ABdhPJw2XFkE5/SRMIGjMUp+WokP6pYRe1TS4GNWUmvf/GZ7iALKtVqVbFKBxl60297OVNuf/C/RSA==
-X-Received: by 2002:a17:902:7b88:b0:154:10fd:e748 with SMTP id
- w8-20020a1709027b8800b0015410fde748mr2796703pll.120.1647614576072; 
- Fri, 18 Mar 2022 07:42:56 -0700 (PDT)
-Received: from [192.168.66.3] (p912131-ipoe.ipoe.ocn.ne.jp. [153.243.13.130])
+ bh=v2FB3ibC0PN2D9Ou398gRnH+T0IlchrYbvmYBo0HFlk=;
+ b=dzwDDkCBs/vbHq5fwIJxLhd4LnK/hENouWjbGpMtzOxgBNxAcSaRDUdD9pKoeSMN13
+ BOAdxE8TxZEka8nHeV0drBB5vHzPyDfeHButpd95lmsBxYnOqoEt+dDtzBtcT4jCCQJf
+ qberHKqPqbl4SDjsrboMJKLm79SLSBraeKfG5wP2xIu5U9heJo+OYv6OO0U41BvcOunH
+ 82vRn8m33SPst+7tPSxCMcmtqruQkU3QMUbGZxMTwAbHtfF2NRNDg+g3NjI7dEspu3MM
+ NJMsosLjr2/D6Tmw0TiHh+k3UUvDDsB/CiiiGnGtcyUC3ndKz+JvXdGSAirzi/FuvV6Q
+ WDcg==
+X-Gm-Message-State: AOAM532a4YhanZJwk54LRXLio7McDhgHAtx7UvbtClLFD0KdV19V0plY
+ e+K7Nab/cWBLAxU8Sd+4BUg=
+X-Google-Smtp-Source: ABdhPJwPP2gmkXUBcS2XEUPFwAPEQONXJo6ho+eObrzVp/EJdX9RYTQRfSpc1mA2McJ2XPkWwJq9/w==
+X-Received: by 2002:a17:902:f68d:b0:153:9686:97ab with SMTP id
+ l13-20020a170902f68d00b00153968697abmr213734plg.4.1647620097354; 
+ Fri, 18 Mar 2022 09:14:57 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- q9-20020a056a00088900b004e03b051040sm10567765pfj.112.2022.03.18.07.42.54
+ e6-20020a056a001a8600b004f78b5a4493sm9810766pfv.105.2022.03.18.09.14.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Mar 2022 07:42:55 -0700 (PDT)
-Message-ID: <69c6db77-273e-dbeb-e695-e20772d003e2@gmail.com>
-Date: Fri, 18 Mar 2022 23:42:52 +0900
+ Fri, 18 Mar 2022 09:14:57 -0700 (PDT)
+Message-ID: <2ab1e5f9-6a34-6b82-8f43-b7dcf58bc8b1@gmail.com>
+Date: Fri, 18 Mar 2022 17:14:52 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
 Subject: Re: [PATCH] gitattributes: Cover Objective-C source files
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>, qemu-devel@nongnu.org,
+To: Akihiko Odaki <akihiko.odaki@gmail.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Christian Schoenebeck <qemu_oss@crudebyte.com>,
@@ -61,14 +61,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  <f4bug@amsat.org>
 References: <20220317130326.39188-1-philippe.mathieu.daude@gmail.com>
  <62dbdfcf-771e-7c84-ab8b-b02a61112f86@gmail.com>
-From: Akihiko Odaki <akihiko.odaki@gmail.com>
-In-Reply-To: <62dbdfcf-771e-7c84-ab8b-b02a61112f86@gmail.com>
+ <69c6db77-273e-dbeb-e695-e20772d003e2@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <69c6db77-273e-dbeb-e695-e20772d003e2@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1029
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102a
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=akihiko.odaki@gmail.com; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -89,58 +91,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Mar 2022 14:43:00 -0000
+X-List-Received-Date: Fri, 18 Mar 2022 16:15:01 -0000
 
-I don't think this is needed. I could see a diff annotated with a method 
-name even without this change:
-% git diff
-diff --git a/ui/cocoa.m b/ui/cocoa.m
-index cb6e7c41dc6..14a4416cc8b 100644
---- a/ui/cocoa.m
-+++ b/ui/cocoa.m
-@@ -1264,6 +1264,7 @@ - (id) init
-          [pauseLabel setTextColor: [NSColor blackColor]];
-          [pauseLabel sizeToFit];
-      }
-+    //
-      return self;
-  }
-
-Commit 29cf16db23 says:
-> Since commits 0979ed017f0 ("meson: rename .inc.h files to .h.inc")
-> and 139c1837db7 ("meson: rename included C source files to .c.inc")
-> 'git-diff --function-context' stopped displaying C function context
-> correctly.
-
-So I suspect Git has some knowledge of common file extensions like .c, 
-.h and .m although I couldn't find in the source code of Git.
-
-Regards,
-Akihiko Odaki
-
-On 2022/03/18 23:10, Philippe Mathieu-Daudé wrote:
-> +qemu-trivial@
+On 18/3/22 15:42, Akihiko Odaki wrote:
+> I don't think this is needed. I could see a diff annotated with a method 
+> name even without this change:
+> % git diff
+> diff --git a/ui/cocoa.m b/ui/cocoa.m
+> index cb6e7c41dc6..14a4416cc8b 100644
+> --- a/ui/cocoa.m
+> +++ b/ui/cocoa.m
+> @@ -1264,6 +1264,7 @@ - (id) init
+>           [pauseLabel setTextColor: [NSColor blackColor]];
+>           [pauseLabel sizeToFit];
+>       }
+> +    //
+>       return self;
+>   }
 > 
-> On 17/3/22 14:03, Philippe Mathieu-Daudé wrote:
->> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>
->> See comments in commit 29cf16db23 ("buildsys: Help git-diff
->> adding .gitattributes config file") for details.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   .gitattributes | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/.gitattributes b/.gitattributes
->> index 07f430e944..a217cb7bfe 100644
->> --- a/.gitattributes
->> +++ b/.gitattributes
->> @@ -1,3 +1,4 @@
->>   *.c.inc         diff=c
->>   *.h.inc         diff=c
->> +*.m             diff=objc
->>   *.py            diff=python
+> Commit 29cf16db23 says:
+>> Since commits 0979ed017f0 ("meson: rename .inc.h files to .h.inc")
+>> and 139c1837db7 ("meson: rename included C source files to .c.inc")
+>> 'git-diff --function-context' stopped displaying C function context
+>> correctly.
 > 
+> So I suspect Git has some knowledge of common file extensions like .c, 
+> .h and .m although I couldn't find in the source code of Git.
 
+'git-diff --function-context' doesn't work for me without this change.
 
