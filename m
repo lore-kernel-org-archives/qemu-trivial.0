@@ -1,58 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nVCBf-0003cD-VN
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 08:58:35 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41882)
+	id 1nVCtN-0008AL-Di
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 09:43:45 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nVCBe-0003Zt-Do; Fri, 18 Mar 2022 08:58:34 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:50155)
+ id 1nVCtL-00081P-6j; Fri, 18 Mar 2022 09:43:43 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:37655)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nVCBb-0006Xc-IY; Fri, 18 Mar 2022 08:58:34 -0400
-Received: from [192.168.100.1] ([82.142.28.230]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MbAYo-1o6SoS4BIW-00bXyS; Fri, 18 Mar 2022 13:58:25 +0100
-Message-ID: <af35bbd9-6683-b68f-eb97-fb7c7ab68c2e@vivier.eu>
-Date: Fri, 18 Mar 2022 13:58:24 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH vRESEND] virtio/virtio-balloon: Prefer Object* over void*
- parameter
-Content-Language: fr
-To: "Michael S. Tsirkin" <mst@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- David Hildenbrand <david@redhat.com>
-References: <20220301222301.103821-1-shentey@gmail.com>
- <20220301222301.103821-2-shentey@gmail.com>
- <20220304051952-mutt-send-email-mst@kernel.org>
+ id 1nVCtG-0005IB-F1; Fri, 18 Mar 2022 09:43:42 -0400
+Received: from quad ([82.142.28.230]) by mrelayeu.kundenserver.de (mreue106
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mbj7g-1o5uDh3zZu-00dC4Q; Fri, 18
+ Mar 2022 14:43:36 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220304051952-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:x34MfYIanpXryuHF3qHkpvdRrGMjnpj77kTsR+S54qpizGrAKG/
- 5oZEZcUknM+etmvsI7s5IZTQgxsE+E/FEX5raiIUNDTFPm0d96L4f/qlzDcafZBhXeFaBS4
- tQxVktZHdSNROtuj6anfAjI0g5dnN9m7mlk+BuopKkyD5qplWiKXSAU3tXMx/kL6IhaFRAM
- IA87wIn6J7A18gzpi/MIQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:py5J7NMGDI8=:W23+2JfwLJ36KcfJJZqYfn
- RPSIqkB8lMzc5oV3UzgZWtmm6divVH9PG03wSKofQLII5/4BGO8q1CC6etRicdsn8X8erFHrb
- WclYLcVWlO9IchVOYZwukEJ3b0Rx/zOXgxsN/kcuec6bnJAfgdrVRx6RJNu/TJs9PieRp5xBn
- otnj7QcAVdrgWnLlvTBOIeKiel8uZL2QqyJchZx6lmE95iapj008ub9VKhAEdjQa2gL1TUXnv
- 6NsNwNDwFylWZL2rmO4Jl854h9j6ZTywI+0JJ1aHIWZYhcxK9Jf48SFfYn+PC88vVt+lzgYFN
- xyd4WrV7YHBIRuNXDHQEvtx3EyHv6BxZVt+LSZbSC+g4/aa4fs1/4qqyL3vKSrBL3fOXtaqoE
- VsCpGg2SiOvLN5HuTicKnr0qRa8oB2xz5/LR5huDZ7Ho22bg07lpB4a1id8qNTG/QBq38AUoL
- Y2XsRgsRJ7ZWyB8MY6axj42+lG3swvlxJiY0XDET5TYhpydVk7km4FAQi/R5PXGx5tJnxe74t
- CurgbxcBjl8o31V8HwIIXl4aP8fqJCcmEPNxHk3SdfVNF0/vWwqQ36osG4wnIK43Jkikg/DDO
- YjZwg5NvZgAhNLBhYh7b5K5LmxXY1YTFdC4VRHNO6n+a2eI6gJ2IB+ewADg5HpuUR6o/8Wp1z
- 8WrvA0XMc/WzpWpdf4C0pH2cKsOKgHZQ2xk73WyFgfO1k0i88kZEvwE4bcWGfL4pQQAg=
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 0/2] Trivial branch for 7.0 patches
+Date: Fri, 18 Mar 2022 14:43:31 +0100
+Message-Id: <20220318134333.2901052-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.35.1
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:IqDVCDHkqqshDpeXyc5rG0RlXIqZIw8S1cwCC/d38iOYhL4mRkU
+ YbVdYSWtC2CfZA+n6DUXLpifXDZnYd+gn9ASr2W33I3uJLYxJo4itz4XcPYvitnqVLzLPkL
+ RQfXkTZ3EJf2wHdAmS+me2fPQ+gUeBvlAm2PapIB7h+sKmn0U1GyNNYSj/ejXiwFM0306Ng
+ OcdkDxmECyizwp2ZDbVJQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:IIB2XhBwmUM=:IEbgvJmYyW6tgmnw2HSYrH
+ Kg2fkpGnOUmNuDt3qkx0I6QTnv1vQeY1WkOfj3Q75yKxe+v+IVcjtedrBN+KgHESw7tEmE3Gc
+ GHWVCukBteK/E6u/haBCiekg/ccJdDgSfhgnOY9MWq2qjgKZ9EAMFHkGSLuXQuFGZFhC76Hwx
+ BJ5I+hmuXa89a/JChAYYPT0XGaSxeCTEVOnNkqjQUOX8D/VaKYLKQASnBNnN0HsFbr3hA145C
+ Db+f7dIuRoxMBXDkIvtSsBvqQRlNMAyuMl9IJ3n2Y1vpIVNw4OIhhNVs4zm6Vp/Nufun9uwoE
+ nXSf1Uqal6OTTP/3dEYCbYkVLr2k+fPFhMsjoVx0FVfEsnQ4ZxeJWFb43nMSSIGmJD2pECBjN
+ TTRA0jowutaCMVdrdHV7vvBCZCwBx64Lwga9RNvM94C0alVotpZHlYSWyn7f6BjldDWgt0eBi
+ /1GK/BEh45B0nwBq3wyvR9DCuv5JChtA76ET2FqPyPLGdIVugS3mwIWuRsHuATroE3bNMTlWy
+ kh/8Rpbe7eh4pteEgksyAUCw6fkV9InrcW5HH0OFvZUiBGcnO4kiNT70ai45JsjKeKtLBKXHf
+ t61nVPmb46g4SiKxWKKclaWLoUzZ3fC2QehaCiwqCV5ji1ogta9/VZ6VOgbnT9DyEmIjG01De
+ spuSZ8ukovglfUdRdRZfTJpNB2PYM1tDmimOMr97gzdOHkRJ0e3bbseJ6+lFgRrIUtgU=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,23 +58,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Mar 2022 12:58:34 -0000
+X-List-Received-Date: Fri, 18 Mar 2022 13:43:43 -0000
 
-Le 04/03/2022 à 11:20, Michael S. Tsirkin a écrit :
-> On Tue, Mar 01, 2022 at 11:23:01PM +0100, Bernhard Beschow wrote:
->> *opaque is an alias to *obj. Using the ladder makes the code consistent with
->> with other devices, e.g. accel/kvm/kvm-all and accel/tcg/tcg-all. It also
->> makes the cast more typesafe.
->>
->> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->> Reviewed-by: David Hildenbrand <david@redhat.com>
-> 
-> Acked-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> trivial tree pls
-
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
+The following changes since commit 1d60bb4b14601e38ed17384277aa4c30c57925d3=
+:=0D
+=0D
+  Merge tag 'pull-request-2022-03-15v2' of https://gitlab.com/thuth/qemu in=
+to staging (2022-03-16 10:43:58 +0000)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pu=
+ll-request=0D
+=0D
+for you to fetch changes up to a2d860bb546aa766f6c28a47fabedafbfa191cc2:=0D
+=0D
+  virtio/virtio-balloon: Prefer Object* over void* parameter (2022-03-18 13=
+:57:50 +0100)=0D
+=0D
+----------------------------------------------------------------=0D
+Trivial branch pull request 20220318=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Bernhard Beschow (1):=0D
+  virtio/virtio-balloon: Prefer Object* over void* parameter=0D
+=0D
+Rebecca Cran (1):=0D
+  hw/pci/pci.c: Fix typos of "Firewire", and of "controller" on same=0D
+    line=0D
+=0D
+ hw/pci/pci.c               |  2 +-=0D
+ hw/virtio/virtio-balloon.c | 10 +++++-----=0D
+ 2 files changed, 6 insertions(+), 6 deletions(-)=0D
+=0D
+-- =0D
+2.35.1=0D
+=0D
 
