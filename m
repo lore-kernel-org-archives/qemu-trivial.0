@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nVC8I-0007i8-II
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 08:55:06 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41314)
+	id 1nVCBf-0003cD-VN
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 08:58:35 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nVC8F-0007ef-LD; Fri, 18 Mar 2022 08:55:04 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:34977)
+ id 1nVCBe-0003Zt-Do; Fri, 18 Mar 2022 08:58:34 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:50155)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nVC8D-0005Tm-TK; Fri, 18 Mar 2022 08:55:03 -0400
+ id 1nVCBb-0006Xc-IY; Fri, 18 Mar 2022 08:58:34 -0400
 Received: from [192.168.100.1] ([82.142.28.230]) by mrelayeu.kundenserver.de
  (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MPooP-1njJ1w0lpz-00MunD; Fri, 18 Mar 2022 13:54:55 +0100
-Message-ID: <4d62086f-f048-bb55-41dc-950cf83320c7@vivier.eu>
-Date: Fri, 18 Mar 2022 13:54:52 +0100
+ 1MbAYo-1o6SoS4BIW-00bXyS; Fri, 18 Mar 2022 13:58:25 +0100
+Message-ID: <af35bbd9-6683-b68f-eb97-fb7c7ab68c2e@vivier.eu>
+Date: Fri, 18 Mar 2022 13:58:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH trivial 1/1] hw/pci/pci.c: Fix typos of "Firewire", and of
- "controller" on same line
+Subject: Re: [PATCH vRESEND] virtio/virtio-balloon: Prefer Object* over void*
+ parameter
 Content-Language: fr
-To: Peter Maydell <peter.maydell@linaro.org>,
- Rebecca Cran <quic_rcran@quicinc.com>
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-devel@nongnu.org
-References: <20220318101124.912-1-quic_rcran@quicinc.com>
- <CAFEAcA-SHKsmemg10VnO6pcKrR9HB=ViX0+zhwWKXGzMsp8Obg@mail.gmail.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>, Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ David Hildenbrand <david@redhat.com>
+References: <20220301222301.103821-1-shentey@gmail.com>
+ <20220301222301.103821-2-shentey@gmail.com>
+ <20220304051952-mutt-send-email-mst@kernel.org>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <CAFEAcA-SHKsmemg10VnO6pcKrR9HB=ViX0+zhwWKXGzMsp8Obg@mail.gmail.com>
+In-Reply-To: <20220304051952-mutt-send-email-mst@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:eU53p55pO6bjJ6w9khKhsHNPfraQ42Lbk62tEb2RmioyNjXkKBt
- lHtvyqpXakZ7mpSFeuFVS0TsuWJ/+fb/OhWZHO2GmYjQtx6sDPyEeIKl5EM5g24i0Eyyk/A
- lB8wR+l8QfXj+11eE0JN7tk9qM2oSMdA/tBKMW83XyvxR4TJutyDA0OSyNMzC0Ic6VmQspD
- 39Z52nu0EpU3jFmVUAi0g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ppm/uO31+Y4=:gPEO/DCQocBMX4tTL4kkGO
- dzcdxq5oscVXrt41EvH5PYAP/2WzlmhpkqeXv3vPJAijpyGgpaHMOk4G8FtPm5F38t5TNTK+4
- 481pEBEQwZrJtv7DifNFFfWVwhWvpmWjn4x1wf8tkzb1aQ7Q4BG+RBQjF1dUjX25ZfbRXwp2h
- LKkp3Gm+mLoXbjVik9r6WrVy06Hl5e5e8aOAHJ/qozP1UfuFoNpYoVdYNKzXdnOj7R7ej4DFB
- vdcjWkYL1r3vqVfJtGrVnac/QDdlJhzkKKotr+AHtRp4KXudUHxkRYzmNGepZ+sG5AYa4dGQ3
- NJjEHhfo/LVMy5BffEvptkuVc8RopQMKOTY+PTykWFDchGABzR3Pr4PYmMBg3e8WkAa16IcNX
- vPhqvAz8H3WB3e6jWf4ashwMdDTiTRZLAlwjDM9QeNfmFjZMZUXjOTs5J4lMPckZg1IrN4kM6
- H+QfR5CbgL74H9GO4XQcaefmNtHvQq0UmSpoZWhMOJdf9CnleRCYReyP+MHGWuiYcHLra7tLU
- stuYhBVsTx6I8GcTocmIkFiTQ5l0UNLJb4o+G9fWzDULQ8g69arfEBOPX7UTie8tD3cVVdxpi
- /M0ZAnZzrrmyaQ1g3mMFsFmSakKYPB2omsH5Np0gC/mxwNmUWhEcgVlVU6vDQcHuUmgAMHhv3
- 7zu5Vc3opRYKP3S7s+BdLOkxLF+QIDb/8ZE4l0/Uy56SVPS2sFlBLRulBDr5vnWKpJto=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:x34MfYIanpXryuHF3qHkpvdRrGMjnpj77kTsR+S54qpizGrAKG/
+ 5oZEZcUknM+etmvsI7s5IZTQgxsE+E/FEX5raiIUNDTFPm0d96L4f/qlzDcafZBhXeFaBS4
+ tQxVktZHdSNROtuj6anfAjI0g5dnN9m7mlk+BuopKkyD5qplWiKXSAU3tXMx/kL6IhaFRAM
+ IA87wIn6J7A18gzpi/MIQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:py5J7NMGDI8=:W23+2JfwLJ36KcfJJZqYfn
+ RPSIqkB8lMzc5oV3UzgZWtmm6divVH9PG03wSKofQLII5/4BGO8q1CC6etRicdsn8X8erFHrb
+ WclYLcVWlO9IchVOYZwukEJ3b0Rx/zOXgxsN/kcuec6bnJAfgdrVRx6RJNu/TJs9PieRp5xBn
+ otnj7QcAVdrgWnLlvTBOIeKiel8uZL2QqyJchZx6lmE95iapj008ub9VKhAEdjQa2gL1TUXnv
+ 6NsNwNDwFylWZL2rmO4Jl854h9j6ZTywI+0JJ1aHIWZYhcxK9Jf48SFfYn+PC88vVt+lzgYFN
+ xyd4WrV7YHBIRuNXDHQEvtx3EyHv6BxZVt+LSZbSC+g4/aa4fs1/4qqyL3vKSrBL3fOXtaqoE
+ VsCpGg2SiOvLN5HuTicKnr0qRa8oB2xz5/LR5huDZ7Ho22bg07lpB4a1id8qNTG/QBq38AUoL
+ Y2XsRgsRJ7ZWyB8MY6axj42+lG3swvlxJiY0XDET5TYhpydVk7km4FAQi/R5PXGx5tJnxe74t
+ CurgbxcBjl8o31V8HwIIXl4aP8fqJCcmEPNxHk3SdfVNF0/vWwqQ36osG4wnIK43Jkikg/DDO
+ YjZwg5NvZgAhNLBhYh7b5K5LmxXY1YTFdC4VRHNO6n+a2eI6gJ2IB+ewADg5HpuUR6o/8Wp1z
+ 8WrvA0XMc/WzpWpdf4C0pH2cKsOKgHZQ2xk73WyFgfO1k0i88kZEvwE4bcWGfL4pQQAg=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -66,34 +65,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Mar 2022 12:55:04 -0000
+X-List-Received-Date: Fri, 18 Mar 2022 12:58:34 -0000
 
-Le 18/03/2022 à 11:45, Peter Maydell a écrit :
-> On Fri, 18 Mar 2022 at 10:14, Rebecca Cran <quic_rcran@quicinc.com> wrote:
+Le 04/03/2022 à 11:20, Michael S. Tsirkin a écrit :
+> On Tue, Mar 01, 2022 at 11:23:01PM +0100, Bernhard Beschow wrote:
+>> *opaque is an alias to *obj. Using the ladder makes the code consistent with
+>> with other devices, e.g. accel/kvm/kvm-all and accel/tcg/tcg-all. It also
+>> makes the cast more typesafe.
 >>
->> Signed-off-by: Rebecca Cran <quic_rcran@quicinc.com>
->> ---
->>   hw/pci/pci.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
->> index 5cb1232e271d..dae9119bfe5f 100644
->> --- a/hw/pci/pci.c
->> +++ b/hw/pci/pci.c
->> @@ -1697,7 +1697,7 @@ static const pci_class_desc pci_class_descriptions[] =
->>       { 0x0902, "Mouse", "mouse"},
->>       { 0x0A00, "Dock station", "dock", 0x00ff},
->>       { 0x0B00, "i386 cpu", "cpu", 0x00ff},
->> -    { 0x0c00, "Fireware contorller", "fireware"},
->> +    { 0x0c00, "Firewire controller", "firewire"},
->>       { 0x0c01, "Access bus controller", "access-bus"},
->>       { 0x0c02, "SSA controller", "ssa"},
->>       { 0x0c03, "USB controller", "usb"},
->> --
+>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>> Reviewed-by: David Hildenbrand <david@redhat.com>
 > 
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Acked-by: Michael S. Tsirkin <mst@redhat.com>
 > 
-
+> trivial tree pls
 
 Applied to my trivial-patches branch.
 
