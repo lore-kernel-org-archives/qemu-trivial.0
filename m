@@ -1,63 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nVDUA-0003WG-OC
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 10:21:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37358)
+	id 1nVDny-000293-W1
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 10:42:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_rcran@quicinc.com>)
- id 1nV9a6-0002HI-KZ; Fri, 18 Mar 2022 06:11:38 -0400
-Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:46073)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <quic_rcran@quicinc.com>)
- id 1nV9a4-00026V-D5; Fri, 18 Mar 2022 06:11:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1647598296; x=1679134296;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=fgjSfIXuy0HGkMmXU7zWHg3/1AONPr96up362g4wMsk=;
- b=k1YVauwmSMzL6GTq713tCyCsi1ue2Mj9gU5h8oQUVQA2XN8XfEdPPnad
- aG9Mr301dkoDrquxJ0wVzG9UEwiCwbm+9omemwEs7+OPG2yQJhILn3t/j
- A2RqLSVk2/S4jXKxX8RLalnVCP04D82XYNWwcZ+Gs1xhr12afZaOqEpAn Q=;
-Received: from unknown (HELO ironmsg03-sd.qualcomm.com) ([10.53.140.143])
- by alexa-out-sd-01.qualcomm.com with ESMTP; 18 Mar 2022 03:11:32 -0700
-X-QCInternal: smtphost
-Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg03-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2022 03:11:32 -0700
-Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
- nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Fri, 18 Mar 2022 03:11:32 -0700
-Received: from linbox.ba.nuviainc.com (10.80.80.8) by
- nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Fri, 18 Mar 2022 03:11:31 -0700
-From: Rebecca Cran <quic_rcran@quicinc.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- <qemu-trivial@nongnu.org>
-CC: Rebecca Cran <quic_rcran@quicinc.com>, <qemu-devel@nongnu.org>
-Subject: [PATCH trivial 1/1] hw/pci/pci.c: Fix typos of "Firewire",
- and of "controller" on same line
-Date: Fri, 18 Mar 2022 04:11:24 -0600
-Message-ID: <20220318101124.912-1-quic_rcran@quicinc.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nVDnx-00024j-0F; Fri, 18 Mar 2022 10:42:13 -0400
+Received: from [2607:f8b0:4864:20::72a] (port=36804
+ helo=mail-qk1-x72a.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nVDnv-0007JN-JV; Fri, 18 Mar 2022 10:42:12 -0400
+Received: by mail-qk1-x72a.google.com with SMTP id v13so6895843qkv.3;
+ Fri, 18 Mar 2022 07:42:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=SfpSlaeSXZo1y30f3pb9kjCTVX4TumNf/45wRfbgvxU=;
+ b=YMv4Ty7VtRMg5sWv1QBEWB/CuOfMFSuvdLO2ZkECGm72BG9r8JjHmevIUQC+ngfV5w
+ pHKYAmPFgsJQ8CY64As0QtvtRv8wvNxEUrchcxgEvs53aNBIHuW/3ENijllGqcySqC4J
+ 61xpLRQ1gz4GX3F8XlMovq0niRhfuRH5HT0qQrQ4eaJN1dgt2UW/diMpduq5COubjFW5
+ vPbwRrAI1DYWeIfzV4b6n/DjvYUYpgl143L2WsjCjd7KkSWm9LWJRuJaIyuM8iRJlOgv
+ vYre8eXGB5wzkfIWNtZqu7gE8AOdzjbqdMv8QcZ+jxG1PxStWyEEzo9HkK6Rx6VNhgw2
+ G7qg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=SfpSlaeSXZo1y30f3pb9kjCTVX4TumNf/45wRfbgvxU=;
+ b=VHT9dFXODLIv9elYnIlYigJnoRRYcImggsLhH5fVHaGuO/V2KxfsTLbflgiSUQpYHh
+ ZqsuolUWrnxqd9DUoLLAgWJbr7xxNc6DB4xNJxkx4tyijGUmEHGYMvGrzOg2NGO9Dibc
+ 3my2OCllJVqnaLFldIEGbwGuwX+HZSn25Mu9D/ghPiZHdyvja5VST7gSNQoFdh72crBP
+ 5Bn2TKrgQjwofXVacowpX97ISVwdNxMFrmzQ7fyRTIr60293MxRkF8+DXpnO4GkjuRZj
+ 2bguwkCEEeooSNA0to9rdH87AkWXPG9DIXF9wrdXaNyEv1xUAIuJeM9sgYf+PeDynF5K
+ olOg==
+X-Gm-Message-State: AOAM530XlZgCtqrod+nssCEWFjrIFCX2RpbvdvUXzpX4tDdgPEnnYXxV
+ Dv8ihAWOMlbtI7YPrdj+frQ=
+X-Google-Smtp-Source: ABdhPJwlCPrcdLtbUb2vIV64GgJX1Fordf9qYkctu+7iD5/2WQr/YN0dLD0ArYf64dU7DUHhnDtEeA==
+X-Received: by 2002:a05:620a:16cb:b0:67b:3189:13be with SMTP id
+ a11-20020a05620a16cb00b0067b318913bemr5873892qkn.456.1647614530308; 
+ Fri, 18 Mar 2022 07:42:10 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ w17-20020ac857d1000000b002e19feda592sm5649990qta.85.2022.03.18.07.42.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 18 Mar 2022 07:42:10 -0700 (PDT)
+Message-ID: <423a1fb1-7395-34fe-8de4-c09b2e2f6981@gmail.com>
+Date: Fri, 18 Mar 2022 15:42:07 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [PATCH] vhost_net: Print feature masks in hex
+Content-Language: en-US
+To: Ilya Maximets <i.maximets@ovn.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-trivial@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
+References: <20220318140440.596019-1-i.maximets@ovn.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220318140440.596019-1-i.maximets@ovn.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-Received-SPF: pass client-ip=199.106.114.38;
- envelope-from=quic_rcran@quicinc.com; helo=alexa-out-sd-01.qualcomm.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::72a
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-qk1-x72a.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 18 Mar 2022 10:21:43 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,27 +85,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Mar 2022 10:11:38 -0000
+X-List-Received-Date: Fri, 18 Mar 2022 14:42:13 -0000
 
-Signed-off-by: Rebecca Cran <quic_rcran@quicinc.com>
----
- hw/pci/pci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 18/3/22 15:04, Ilya Maximets wrote:
+> "0x200000000" is much more readable than "8589934592".
+> The change saves one step (conversion) while debugging.
+> 
+> Signed-off-by: Ilya Maximets <i.maximets@ovn.org>
+> ---
+>   hw/net/vhost_net.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/net/vhost_net.c b/hw/net/vhost_net.c
+> index 30379d2ca4..df0f050548 100644
+> --- a/hw/net/vhost_net.c
+> +++ b/hw/net/vhost_net.c
+> @@ -201,7 +201,7 @@ struct vhost_net *vhost_net_init(VhostNetOptions *options)
+>               net->dev.features &= ~(1ULL << VIRTIO_NET_F_MRG_RXBUF);
+>           }
+>           if (~net->dev.features & net->dev.backend_features) {
+> -            fprintf(stderr, "vhost lacks feature mask %" PRIu64
+> +            fprintf(stderr, "vhost lacks feature mask 0x%" PRIx64
+>                      " for backend\n",
+>                      (uint64_t)(~net->dev.features & net->dev.backend_features));
+>               goto fail;
+> @@ -213,7 +213,7 @@ struct vhost_net *vhost_net_init(VhostNetOptions *options)
+>       if (net->nc->info->type == NET_CLIENT_DRIVER_VHOST_USER) {
+>           features = vhost_user_get_acked_features(net->nc);
+>           if (~net->dev.features & features) {
+> -            fprintf(stderr, "vhost lacks feature mask %" PRIu64
+> +            fprintf(stderr, "vhost lacks feature mask 0x%" PRIx64
+>                       " for backend\n",
+>                       (uint64_t)(~net->dev.features & features));
+>               goto fail;
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 5cb1232e271d..dae9119bfe5f 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -1697,7 +1697,7 @@ static const pci_class_desc pci_class_descriptions[] =
-     { 0x0902, "Mouse", "mouse"},
-     { 0x0A00, "Dock station", "dock", 0x00ff},
-     { 0x0B00, "i386 cpu", "cpu", 0x00ff},
--    { 0x0c00, "Fireware contorller", "fireware"},
-+    { 0x0c00, "Firewire controller", "firewire"},
-     { 0x0c01, "Access bus controller", "access-bus"},
-     { 0x0c02, "SSA controller", "ssa"},
-     { 0x0c03, "USB controller", "usb"},
--- 
-2.34.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
