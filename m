@@ -1,53 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nVCtP-0008K2-KO
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 09:43:47 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50178)
+	id 1nVDCs-0002M2-CM
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 10:03:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54678)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nVCtL-000843-R7; Fri, 18 Mar 2022 09:43:43 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:36853)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nVCtK-0005IW-7P; Fri, 18 Mar 2022 09:43:43 -0400
-Received: from quad ([82.142.28.230]) by mrelayeu.kundenserver.de (mreue106
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MUXYs-1ne6sD0Nvs-00QVc4; Fri, 18
- Mar 2022 14:43:37 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- David Hildenbrand <david@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 2/2] virtio/virtio-balloon: Prefer Object* over void* parameter
-Date: Fri, 18 Mar 2022 14:43:33 +0100
-Message-Id: <20220318134333.2901052-3-laurent@vivier.eu>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220318134333.2901052-1-laurent@vivier.eu>
-References: <20220318134333.2901052-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nVDCq-0002FW-Ka; Fri, 18 Mar 2022 10:03:52 -0400
+Received: from [2607:f8b0:4864:20::436] (port=35359
+ helo=mail-pf1-x436.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nVDCo-0000e6-BK; Fri, 18 Mar 2022 10:03:52 -0400
+Received: by mail-pf1-x436.google.com with SMTP id a5so9559966pfv.2;
+ Fri, 18 Mar 2022 07:03:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=64qvE4ivymnbYLyGpAgwtJ4atgyNPhSPChxVQUV3e5Y=;
+ b=Mv9DFxW6Y+Csq4sS1IcSUftq6JgPReWqXMik7bDA1V0gEd1RT+dOLTnL3thwSUeoQg
+ DP3p6hd3irD5N2Pq5R3lK2uLJBch/odGMD4mtLdso3SWxrGkH/iN4+runom19vPekYtG
+ sQoREez7v2OpM4nm7k8Yfu8MYEWgo6E1p65eZWiLrSpuU9XyPiQCBEaZtxUO81eozJwh
+ DX/bPqNO7UBmV1bxFgTRLdKJnchZ3PXYQ1w5NKhMpj86Y1Kl0o9Ll5bEYouxmjsW2uhc
+ mTOQIJy+zv4+LsF75bsRxAOcLDiboGpLP5OmI/iQ6Hcu+8s7WU6z2Hfv/F3oXuKI9Kr6
+ qsJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=64qvE4ivymnbYLyGpAgwtJ4atgyNPhSPChxVQUV3e5Y=;
+ b=J3T+FdU+6/WdijTuynq7Ysr9NqUWqkfJRCaupYT6AEk1Io7n7QeFxx8O6pYpbPL0vd
+ cdepDiKE8DSAE4nzayatn7+qu6yH1twmhDnbM0bf+8fc9puXMU6U1S1FGMskQnYIFxUV
+ o4ze4J0tUghDXxlYGLnMVwiR56gDBYR1BIHRCFTl5Qx/WZCU3ldvme7Kpe1zOWTQOQG7
+ hXPRqB1crcm8ozqwj3kucXxKuyBg2BmrxXub6cBamj+MwE6q4oy1/BqGPthtfL8FTyo8
+ 9SdPZOl3WgxNNBjGIvuN9FeG3sZiOFbjMDzhdL+91qU1vQ5IpJFi+yRkpWG8g19virla
+ lYlA==
+X-Gm-Message-State: AOAM533qeWL0tWIRwbABno9tZx++loNJgh4x3zeMlhdGufoAMB3VhscY
+ e5FOV/ZE4Nw8uCzgXDxlQiyBuvVhUtU=
+X-Google-Smtp-Source: ABdhPJxBteUdnSeSoFZHGFs4MBfszHDpMZfclqvsjF6+dEJTw0myxlqgbXckS3XDK/tI+i/LTMneZw==
+X-Received: by 2002:a05:6a00:d91:b0:4f7:a462:7612 with SMTP id
+ bf17-20020a056a000d9100b004f7a4627612mr9917966pfb.15.1647612228333; 
+ Fri, 18 Mar 2022 07:03:48 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ pj13-20020a17090b4f4d00b001bf2ff56430sm12835246pjb.30.2022.03.18.07.03.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 18 Mar 2022 07:03:48 -0700 (PDT)
+Message-ID: <2a8a7a37-57c1-9f6d-3a2d-359b8060abfb@gmail.com>
+Date: Fri, 18 Mar 2022 15:03:41 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [RFC PATCH-for-7.0] hw/i386/amd_iommu: Fix maybe-uninitialized
+ error with GCC 12
+Content-Language: en-US
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20220318004153.4510-1-philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220318004153.4510-1-philippe.mathieu.daude@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZO2GMyRro07Z4S9E5t2tzo51BMfa2Tt06d38WHW6fLFQggCmABA
- /YhcTulncakKDhzlm5aibCIZfKNWkgaOeQ8NMII/WnOGikSmusXr+XikHZv93uRgC/j9KwN
- k9YarZiXg5xW+KqCkLycAPbW0ImzLYzc67i8Ww4oRvqGxt2ePaBP0Opu+SKxdsrJPbmKS68
- pMcfO12gq0AmAFKGLzKJQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:peJHJ3AOAmc=:ldC1/4sSo5M1OqH7rPu2Cw
- bHRLAl6CtCtciRejzHiDtFP3dMvYOD/8eY/8oGu25/tmuDUnYdU0lXTsHI/uZ1qpFMGDao8I0
- eUmfEAZzVCir+xeb6CeCh5cz0q8NCJbdh8pSKQGuwNz9/qB17zAe6COfpxxlyJC1TRKdtTmuG
- EhLEieb/jfXQtVEhHog8nzK6j7DYy0TCNMdR/FJhUqHtRHClb4eODIEoGV8KFzPrHNLNhvKlx
- K5xOFNVy8nL8DhL33i/qaRVxOlDsxlvC4EkNf3CzGdVR+j9kgLvd13KDorYIsGcPsnQYyJWfY
- 33VjjTPFDStPbH+cxT7kIx83d6L9guWcFupCS3hKSICDdD1kNjpsDYe359XA69exE6c0s55s7
- h4k9i4+lUyETaGOXueiNBJVgdogcajvqG0eUkV+gncJkUUJKjmNVJhLeZCR2Mov81ntTBRvKf
- I1VelJqW4jDEW2qn4ifKx4WDsvpcXKxP4h5GQ1Ej85CHYAWOfz9C7bl+78bNkpg9+6zXc9wZx
- 5U2TR2NCt8PQ14xXRdpdCmWi+JuipXeDUXHVExc6aidXYed8SlIKNXMMeCZAys4k2UcYkKZbe
- +/c7754DMrUOOWQEkbVzi2UT803PaveaTd+1M9C10Ifo8v4gh/K9IwWmMZWGSeubqWirIcdnN
- NS7GEqxjqMTE3eiyTCipTTvbERAE9CXxzgdWD8Vuqh+oiwd+wMW4jh7KucVCEFPmpp0Y=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::436
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x436.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -60,70 +90,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Mar 2022 13:43:44 -0000
+X-List-Received-Date: Fri, 18 Mar 2022 14:03:53 -0000
 
-From: Bernhard Beschow <shentey@gmail.com>
++qemu-trivial@
 
-*opaque is an alias to *obj. Using the ladder makes the code consistent with
-with other devices, e.g. accel/kvm/kvm-all and accel/tcg/tcg-all. It also
-makes the cast more typesafe.
-
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: David Hildenbrand <david@redhat.com>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20220301222301.103821-2-shentey@gmail.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/virtio/virtio-balloon.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
-index e6c1b0aa46fe..163d244eb499 100644
---- a/hw/virtio/virtio-balloon.c
-+++ b/hw/virtio/virtio-balloon.c
-@@ -242,7 +242,7 @@ static void balloon_stats_get_all(Object *obj, Visitor *v, const char *name,
-                                   void *opaque, Error **errp)
- {
-     Error *err = NULL;
--    VirtIOBalloon *s = opaque;
-+    VirtIOBalloon *s = VIRTIO_BALLOON(obj);
-     int i;
- 
-     if (!visit_start_struct(v, name, NULL, 0, &err)) {
-@@ -277,7 +277,7 @@ static void balloon_stats_get_poll_interval(Object *obj, Visitor *v,
-                                             const char *name, void *opaque,
-                                             Error **errp)
- {
--    VirtIOBalloon *s = opaque;
-+    VirtIOBalloon *s = VIRTIO_BALLOON(obj);
-     visit_type_int(v, name, &s->stats_poll_interval, errp);
- }
- 
-@@ -285,7 +285,7 @@ static void balloon_stats_set_poll_interval(Object *obj, Visitor *v,
-                                             const char *name, void *opaque,
-                                             Error **errp)
- {
--    VirtIOBalloon *s = opaque;
-+    VirtIOBalloon *s = VIRTIO_BALLOON(obj);
-     int64_t value;
- 
-     if (!visit_type_int(v, name, &value, errp)) {
-@@ -1015,12 +1015,12 @@ static void virtio_balloon_instance_init(Object *obj)
-     s->free_page_hint_notify.notify = virtio_balloon_free_page_hint_notify;
- 
-     object_property_add(obj, "guest-stats", "guest statistics",
--                        balloon_stats_get_all, NULL, NULL, s);
-+                        balloon_stats_get_all, NULL, NULL, NULL);
- 
-     object_property_add(obj, "guest-stats-polling-interval", "int",
-                         balloon_stats_get_poll_interval,
-                         balloon_stats_set_poll_interval,
--                        NULL, s);
-+                        NULL, NULL);
- }
- 
- static const VMStateDescription vmstate_virtio_balloon = {
--- 
-2.35.1
+On 18/3/22 01:41, Philippe Mathieu-Daudé wrote:
+> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> Initialize 'oldlevel' early to avoid on Debian/sid:
+> 
+>    FAILED: libqemu-x86_64-softmmu.fa.p/hw_i386_amd_iommu.c.o
+>    In function 'pte_get_page_mask',
+>        inlined from 'amdvi_page_walk' at hw/i386/amd_iommu.c:945:25,
+>        inlined from 'amdvi_do_translate' at hw/i386/amd_iommu.c:989:5,
+>        inlined from 'amdvi_translate' at hw/i386/amd_iommu.c:1038:5:
+>    hw/i386/amd_iommu.c:877:38: error: 'oldlevel' may be used uninitialized [-Werror=maybe-uninitialized]
+>      877 |     return ~((1UL << ((oldlevel * 9) + 3)) - 1);
+>          |                      ~~~~~~~~~~~~~~~~^~~~
+>    hw/i386/amd_iommu.c: In function 'amdvi_translate':
+>    hw/i386/amd_iommu.c:906:41: note: 'oldlevel' was declared here
+>      906 |     unsigned level, present, pte_perms, oldlevel;
+>          |                                         ^~~~~~~~
+>    cc1: all warnings being treated as errors
+> 
+> Having:
+> 
+>    $ gcc --version
+>    gcc (Debian 12-20220313-1) 12.0.1 20220314 (experimental)
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   hw/i386/amd_iommu.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+> index 4d13d8e697..b6d299f964 100644
+> --- a/hw/i386/amd_iommu.c
+> +++ b/hw/i386/amd_iommu.c
+> @@ -904,6 +904,7 @@ static void amdvi_page_walk(AMDVIAddressSpace *as, uint64_t *dte,
+>       /* make sure the DTE has TV = 1 */
+>       if (pte & AMDVI_DEV_TRANSLATION_VALID) {
+>           level = get_pte_translation_mode(pte);
+> +        oldlevel = level;
+>           if (level >= 7) {
+>               trace_amdvi_mode_invalid(level, addr);
+>               return;
 
 
