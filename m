@@ -1,75 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nVDCs-0002M2-CM
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 10:03:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54678)
+	id 1nVDJU-0003cl-3F
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Mar 2022 10:10:44 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nVDCq-0002FW-Ka; Fri, 18 Mar 2022 10:03:52 -0400
-Received: from [2607:f8b0:4864:20::436] (port=35359
- helo=mail-pf1-x436.google.com)
+ id 1nVDJ9-0003Zt-Bb; Fri, 18 Mar 2022 10:10:25 -0400
+Received: from [2607:f8b0:4864:20::530] (port=44914
+ helo=mail-pg1-x530.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nVDCo-0000e6-BK; Fri, 18 Mar 2022 10:03:52 -0400
-Received: by mail-pf1-x436.google.com with SMTP id a5so9559966pfv.2;
- Fri, 18 Mar 2022 07:03:49 -0700 (PDT)
+ id 1nVDJ4-0001e0-49; Fri, 18 Mar 2022 10:10:22 -0400
+Received: by mail-pg1-x530.google.com with SMTP id c11so5148308pgu.11;
+ Fri, 18 Mar 2022 07:10:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=64qvE4ivymnbYLyGpAgwtJ4atgyNPhSPChxVQUV3e5Y=;
- b=Mv9DFxW6Y+Csq4sS1IcSUftq6JgPReWqXMik7bDA1V0gEd1RT+dOLTnL3thwSUeoQg
- DP3p6hd3irD5N2Pq5R3lK2uLJBch/odGMD4mtLdso3SWxrGkH/iN4+runom19vPekYtG
- sQoREez7v2OpM4nm7k8Yfu8MYEWgo6E1p65eZWiLrSpuU9XyPiQCBEaZtxUO81eozJwh
- DX/bPqNO7UBmV1bxFgTRLdKJnchZ3PXYQ1w5NKhMpj86Y1Kl0o9Ll5bEYouxmjsW2uhc
- mTOQIJy+zv4+LsF75bsRxAOcLDiboGpLP5OmI/iQ6Hcu+8s7WU6z2Hfv/F3oXuKI9Kr6
- qsJQ==
+ bh=+UHtT7RZRz40ub4V7ChbjlGTEDzYhWpzavpEeq20t34=;
+ b=jvnjexbGsWElCmRV5s9wXAJ8UlpMJiAKzO7iU9i+SwRrCmOuQEokB5hGejEJFzhw3G
+ qk1pTU4sQ/uWIXIxDej8xWGQhyBhaWjlpVGZdeTI0qKNFEUJLKG15WSk6gpG/dK/d4iv
+ +64i0fFtEa7cNWY7dnINP0jlMXIC2en00jIHSg1UtH+87CvWa0fEnTXywu9h6GQxMLxj
+ qJ5uiZGr2qx03Yph9yh8FMzYrvIKsrmpxWoHhfn9k369bSDAEOqMtqzW7bPPhTZCJfjN
+ RLeMT9izD/zVrH0fPR5NtxeJapKFjPfZcBo2anh6Xi3C9vRSRemF1mEtB1CqXLj6VXN2
+ 6DhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=64qvE4ivymnbYLyGpAgwtJ4atgyNPhSPChxVQUV3e5Y=;
- b=J3T+FdU+6/WdijTuynq7Ysr9NqUWqkfJRCaupYT6AEk1Io7n7QeFxx8O6pYpbPL0vd
- cdepDiKE8DSAE4nzayatn7+qu6yH1twmhDnbM0bf+8fc9puXMU6U1S1FGMskQnYIFxUV
- o4ze4J0tUghDXxlYGLnMVwiR56gDBYR1BIHRCFTl5Qx/WZCU3ldvme7Kpe1zOWTQOQG7
- hXPRqB1crcm8ozqwj3kucXxKuyBg2BmrxXub6cBamj+MwE6q4oy1/BqGPthtfL8FTyo8
- 9SdPZOl3WgxNNBjGIvuN9FeG3sZiOFbjMDzhdL+91qU1vQ5IpJFi+yRkpWG8g19virla
- lYlA==
-X-Gm-Message-State: AOAM533qeWL0tWIRwbABno9tZx++loNJgh4x3zeMlhdGufoAMB3VhscY
- e5FOV/ZE4Nw8uCzgXDxlQiyBuvVhUtU=
-X-Google-Smtp-Source: ABdhPJxBteUdnSeSoFZHGFs4MBfszHDpMZfclqvsjF6+dEJTw0myxlqgbXckS3XDK/tI+i/LTMneZw==
-X-Received: by 2002:a05:6a00:d91:b0:4f7:a462:7612 with SMTP id
- bf17-20020a056a000d9100b004f7a4627612mr9917966pfb.15.1647612228333; 
- Fri, 18 Mar 2022 07:03:48 -0700 (PDT)
+ bh=+UHtT7RZRz40ub4V7ChbjlGTEDzYhWpzavpEeq20t34=;
+ b=XvM/mJmc78iiKd4OYRfgBn36gq/OZwfePgYCp+AomwTYlPYWcJaH0bdUUvJKnibrWD
+ oS2AZI25jfpvQi2/al4eiFiKltDisxHzo0KZZVVcw958PF6x3aRE7V+f6UQb1qC0yX7j
+ LRADVBKrP3V1g3tYT6GDHPbEr4CRFBu+ScSyvml7MQ7Y8ZT9UrJoqNViyQqgE+54tGLV
+ wVL3BPUuiECjVs9IJond7yFQh4ZvFsWtnTPy6PHyb81LfOVCTUht+esw5TDo/ApjhaIB
+ 1OqKYH6fZaZ0k3JpkkXM41/BQj2AeicJfUg5WVcpTLSLMCDrL4uO5QiK9ZkgrrJwCxho
+ wSHA==
+X-Gm-Message-State: AOAM5322crvjz31L/nCXO2Cg0pY3aukErDhq4Nw1INfbSix2a/wIXoSV
+ CzsjJ0lEqz2SQaPx5mf2pYQUZP+rhZE=
+X-Google-Smtp-Source: ABdhPJx6WG8WozE7CbxMpmGvceZK+BwQWlTblTcIIDUme9fx0O3XQxKbJdq7TBrlD9cmWCzyE+98xQ==
+X-Received: by 2002:a65:6d8b:0:b0:376:bfb9:1f3b with SMTP id
+ bc11-20020a656d8b000000b00376bfb91f3bmr7985900pgb.427.1647612615617; 
+ Fri, 18 Mar 2022 07:10:15 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- pj13-20020a17090b4f4d00b001bf2ff56430sm12835246pjb.30.2022.03.18.07.03.45
+ 67-20020a630846000000b00372782a65d0sm8163012pgi.60.2022.03.18.07.10.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Mar 2022 07:03:48 -0700 (PDT)
-Message-ID: <2a8a7a37-57c1-9f6d-3a2d-359b8060abfb@gmail.com>
-Date: Fri, 18 Mar 2022 15:03:41 +0100
+ Fri, 18 Mar 2022 07:10:15 -0700 (PDT)
+Message-ID: <62dbdfcf-771e-7c84-ab8b-b02a61112f86@gmail.com>
+Date: Fri, 18 Mar 2022 15:10:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.7.0
-Subject: Re: [RFC PATCH-for-7.0] hw/i386/amd_iommu: Fix maybe-uninitialized
- error with GCC 12
+Subject: Re: [PATCH] gitattributes: Cover Objective-C source files
 Content-Language: en-US
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Akihiko Odaki <akihiko.odaki@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20220318004153.4510-1-philippe.mathieu.daude@gmail.com>
+References: <20220317130326.39188-1-philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
  <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <20220318004153.4510-1-philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220317130326.39188-1-philippe.mathieu.daude@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::436
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::530
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x530.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -90,50 +87,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Mar 2022 14:03:53 -0000
+X-List-Received-Date: Fri, 18 Mar 2022 14:10:33 -0000
 
 +qemu-trivial@
 
-On 18/3/22 01:41, Philippe Mathieu-Daudé wrote:
+On 17/3/22 14:03, Philippe Mathieu-Daudé wrote:
 > From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > 
-> Initialize 'oldlevel' early to avoid on Debian/sid:
-> 
->    FAILED: libqemu-x86_64-softmmu.fa.p/hw_i386_amd_iommu.c.o
->    In function 'pte_get_page_mask',
->        inlined from 'amdvi_page_walk' at hw/i386/amd_iommu.c:945:25,
->        inlined from 'amdvi_do_translate' at hw/i386/amd_iommu.c:989:5,
->        inlined from 'amdvi_translate' at hw/i386/amd_iommu.c:1038:5:
->    hw/i386/amd_iommu.c:877:38: error: 'oldlevel' may be used uninitialized [-Werror=maybe-uninitialized]
->      877 |     return ~((1UL << ((oldlevel * 9) + 3)) - 1);
->          |                      ~~~~~~~~~~~~~~~~^~~~
->    hw/i386/amd_iommu.c: In function 'amdvi_translate':
->    hw/i386/amd_iommu.c:906:41: note: 'oldlevel' was declared here
->      906 |     unsigned level, present, pte_perms, oldlevel;
->          |                                         ^~~~~~~~
->    cc1: all warnings being treated as errors
-> 
-> Having:
-> 
->    $ gcc --version
->    gcc (Debian 12-20220313-1) 12.0.1 20220314 (experimental)
+> See comments in commit 29cf16db23 ("buildsys: Help git-diff
+> adding .gitattributes config file") for details.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->   hw/i386/amd_iommu.c | 1 +
+>   .gitattributes | 1 +
 >   1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-> index 4d13d8e697..b6d299f964 100644
-> --- a/hw/i386/amd_iommu.c
-> +++ b/hw/i386/amd_iommu.c
-> @@ -904,6 +904,7 @@ static void amdvi_page_walk(AMDVIAddressSpace *as, uint64_t *dte,
->       /* make sure the DTE has TV = 1 */
->       if (pte & AMDVI_DEV_TRANSLATION_VALID) {
->           level = get_pte_translation_mode(pte);
-> +        oldlevel = level;
->           if (level >= 7) {
->               trace_amdvi_mode_invalid(level, addr);
->               return;
+> diff --git a/.gitattributes b/.gitattributes
+> index 07f430e944..a217cb7bfe 100644
+> --- a/.gitattributes
+> +++ b/.gitattributes
+> @@ -1,3 +1,4 @@
+>   *.c.inc         diff=c
+>   *.h.inc         diff=c
+> +*.m             diff=objc
+>   *.py            diff=python
 
 
