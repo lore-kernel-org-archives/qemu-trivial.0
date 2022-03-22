@@ -1,69 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nWJjt-0006w7-Mg
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Mar 2022 11:14:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37544)
+	id 1nWbZV-0001uY-CZ
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2022 06:17:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1nWJjr-0006un-KP
- for qemu-trivial@nongnu.org; Mon, 21 Mar 2022 11:14:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:28796)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1nWJjp-0000XB-TZ
- for qemu-trivial@nongnu.org; Mon, 21 Mar 2022 11:14:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1647875668;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0fE2FSkZWe1Prnj3nr05EXtA58ilE8eJb5fZeyh2pwU=;
- b=DEVePdjjEE5GpN16PjhkNsmpMjbz0O0SQfBXWbnapdOqqjg6InUeHEMHM900sdSKMR+y2N
- dO/WGzhhps+++djTlrlLCWwJefN/NQvZfHslGkn0ZBpcq9ycgazJTYBGNaYdnfi+ELPadv
- KEjUE6TMAS7PCqYrR8ezOB2Jb+PknzA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-654-AUK2wu7jOmOekeOQenwesQ-1; Mon, 21 Mar 2022 11:14:26 -0400
-X-MC-Unique: AUK2wu7jOmOekeOQenwesQ-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1077D185A7A4;
- Mon, 21 Mar 2022 15:14:26 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.36.112.3])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E24AA43485F;
- Mon, 21 Mar 2022 15:14:25 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C08B621A3F41; Mon, 21 Mar 2022 16:14:24 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: "Wang, Wenchao" <wenchao.wang@intel.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,  Paolo Bonzini
- <pbonzini@redhat.com>,  "Yuan, Hang" <hang.yuan@intel.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH 1/1] MAINTAINERS: Update maintainers for Guest x86 HAXM
- CPUs
-References: <DM6PR11MB40905967203E4917E78C773487119@DM6PR11MB4090.namprd11.prod.outlook.com>
-Date: Mon, 21 Mar 2022 16:14:24 +0100
-In-Reply-To: <DM6PR11MB40905967203E4917E78C773487119@DM6PR11MB4090.namprd11.prod.outlook.com>
- (Wenchao Wang's message of "Wed, 16 Mar 2022 00:47:52 +0000")
-Message-ID: <875yo7pcbz.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nWbZT-0001rH-LR; Tue, 22 Mar 2022 06:16:59 -0400
+Received: from [2a00:1450:4864:20::32c] (port=40507
+ helo=mail-wm1-x32c.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nWbZS-0006fl-1m; Tue, 22 Mar 2022 06:16:59 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ v130-20020a1cac88000000b00389d0a5c511so1321780wme.5; 
+ Tue, 22 Mar 2022 03:16:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :references:from:in-reply-to:content-transfer-encoding;
+ bh=uY1qwecAKkjbfoa/EKuoDdUSmFzBHTm19+p5FTH2LBU=;
+ b=WI5n42NJDps03MwbqSDwBmiq1QheIt6rgk5iS16fVLPs2eMfbS3tTu9zMJtbWUWsvB
+ 7ljYxJ8DRoR7A/5DZ22RPz7Wc+Rhh13VTaR1VglVnx+DnKC7SB8m5nWi2fRgXqcNbmVo
+ pXR8LOirk5cZSS6LQ2pNzTA+rXZIAbjLZf2lUyRIzJJBtSc6dU3gyvWokeGyGlYq7toB
+ dUDeSX1AZFuRbDSLCj7kYhVaG7T3rPipzm8G6tptUd9K9bIOBm+Ey6Bv40vk1fCd05m+
+ JgOQuXvck39HgzCeOeqil2QWwdIjkPjGnpMszeVU1+TDCjI/TFoW28933Zz61tbe4LFw
+ +tzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=uY1qwecAKkjbfoa/EKuoDdUSmFzBHTm19+p5FTH2LBU=;
+ b=q5h/SX0I2bvUWwfcrTfnvYy7oS/N35EvwzwycQawllTkmygCuLOoz3+1l9GXsFxP+x
+ PJpyFMWogb0tbmWGwfSAanO/mHTBEhSjtcFq3GURde20T2DcLbcbrb1Jsv+3mCECjDj7
+ eC+50sWnjv0NlAHp9O6+NggClCEMlLaLtwPV+fUNBVS16FF6ysHINiRlLXQs2R4ebCx0
+ YZxBi8QvNuODkx65oMPamT8eUyIvGDA5L5zetPaCZKIJZpqDPoLgy1QZWZZyyhovEBZ4
+ /eGvOxFAtP1D0/mfyEj/Iby1tyycZdOwdguz6TjzrGjYXPrRME865k4PAkugTVvxgf8Q
+ kmIg==
+X-Gm-Message-State: AOAM531gtHWZ7KDGtCR3ON8fRnhesvls5rOmgdOpyLL/5RZG+DFZdJBz
+ roPwKhrqkPs8ww4TcFTqJZ4=
+X-Google-Smtp-Source: ABdhPJz+10ooDWlPsYx8vX6GdDgzfvHO/Ql6S99m4ESdyBxlVR58sZBEEQbMVN8XEUkQ/DXlkeQgpw==
+X-Received: by 2002:a05:6000:2cd:b0:204:1bf4:e4f8 with SMTP id
+ o13-20020a05600002cd00b002041bf4e4f8mr5109089wry.682.1647944216335; 
+ Tue, 22 Mar 2022 03:16:56 -0700 (PDT)
+Received: from [192.168.1.33] (198.red-83-50-65.dynamicip.rima-tde.net.
+ [83.50.65.198]) by smtp.gmail.com with ESMTPSA id
+ d1-20020adffbc1000000b00203de0fff63sm15550702wrs.70.2022.03.22.03.16.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Mar 2022 03:16:55 -0700 (PDT)
+Message-ID: <a85f9adc-1db9-860f-0194-a32a47601aa9@gmail.com>
+Date: Tue, 22 Mar 2022 11:16:55 +0100
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [PATCH] target/avr: Drop avr_cpu_memory_rw_debug()
+Content-Language: en-US
+To: Bin Meng <bmeng.cn@gmail.com>, Michael Rolnik <mrolnik@gmail.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20220322095004.70682-1-bmeng.cn@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220322095004.70682-1-bmeng.cn@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32c
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,35 +85,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Mar 2022 15:14:32 -0000
+X-List-Received-Date: Tue, 22 Mar 2022 10:17:00 -0000
 
-Perhaps this can go via qemu-trivial (cc'ed).
+On 22/3/22 10:50, Bin Meng wrote:
+> CPUClass::memory_rw_debug() holds a callback for GDB memory access.
+> If not provided, cpu_memory_rw_debug() is used by the GDB stub.
+> Drop avr_cpu_memory_rw_debug() which does nothing special.
+> 
+> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+> ---
+> 
+>   target/avr/cpu.h    | 2 --
+>   target/avr/cpu.c    | 1 -
+>   target/avr/helper.c | 6 ------
+>   3 files changed, 9 deletions(-)
 
-"Wang, Wenchao" <wenchao.wang@intel.com> writes:
-
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index f2e9ce1da2..36f877cf74 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -492,7 +492,6 @@ Guest CPU Cores (HAXM)
-> ---------------------
-> X86 HAXM CPUs
-> M: Wenchao Wang <wenchao.wang@intel.com>
-> -M: Colin Xu <colin.xu@intel.com>
-> L: haxm-team@intel.com
-> W: https://github.com/intel/haxm/issues
-> S: Maintained
-> --
-> 2.17.1
-
-Patch git-am fails with "error: corrupt patch at line 7".
-
-For a trivial patch like this one, the maintainer may be willing to work
-around.  To post real work, you'll have to fix your mail sending, I'm
-afraid.
-
-Patch makes sense; mail to colin.xu@intel.com bounces.
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
