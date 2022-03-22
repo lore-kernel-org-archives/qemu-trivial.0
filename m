@@ -1,77 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nWbZV-0001uY-CZ
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2022 06:17:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59102)
+	id 1nWhaV-0008Ln-BC
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2022 12:42:27 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55556)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nWbZT-0001rH-LR; Tue, 22 Mar 2022 06:16:59 -0400
-Received: from [2a00:1450:4864:20::32c] (port=40507
- helo=mail-wm1-x32c.google.com)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1nWhaT-0008Hn-US; Tue, 22 Mar 2022 12:42:25 -0400
+Received: from [2607:f8b0:4864:20::1032] (port=43547
+ helo=mail-pj1-x1032.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nWbZS-0006fl-1m; Tue, 22 Mar 2022 06:16:59 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- v130-20020a1cac88000000b00389d0a5c511so1321780wme.5; 
- Tue, 22 Mar 2022 03:16:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1nWhaS-0000zQ-C6; Tue, 22 Mar 2022 12:42:25 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id
+ n7-20020a17090aab8700b001c6aa871860so2653984pjq.2; 
+ Tue, 22 Mar 2022 09:42:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :references:from:in-reply-to:content-transfer-encoding;
- bh=uY1qwecAKkjbfoa/EKuoDdUSmFzBHTm19+p5FTH2LBU=;
- b=WI5n42NJDps03MwbqSDwBmiq1QheIt6rgk5iS16fVLPs2eMfbS3tTu9zMJtbWUWsvB
- 7ljYxJ8DRoR7A/5DZ22RPz7Wc+Rhh13VTaR1VglVnx+DnKC7SB8m5nWi2fRgXqcNbmVo
- pXR8LOirk5cZSS6LQ2pNzTA+rXZIAbjLZf2lUyRIzJJBtSc6dU3gyvWokeGyGlYq7toB
- dUDeSX1AZFuRbDSLCj7kYhVaG7T3rPipzm8G6tptUd9K9bIOBm+Ey6Bv40vk1fCd05m+
- JgOQuXvck39HgzCeOeqil2QWwdIjkPjGnpMszeVU1+TDCjI/TFoW28933Zz61tbe4LFw
- +tzg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=56Sb5MySwq7l5qpWqAORgeN+64g5W2ggGWIGq51tO0M=;
+ b=pGa2JX2GFey9hXbDPlkgjYRcB2Wo0L7kCMzT4Tx7zqBeZSJfLUWYkYNJNLZ22Fl74+
+ OURtHIbUbvIhp+YyceHXxSljjOauVmV+SYWnsxzGYbq5LcUVvLMqVQYPMs4SUJgaFAME
+ CO90HVr8im6p8TFaQS0xUQRfeUNAs+aUW1m68D9JJFnV3p/y4EkHiCV45Dxsm/+m0gyR
+ qn54WCBGw6SMs/nTvyWD8w+nYkEmGnf7nH/lF+ni46bqsnGggXOqs8mebkBfTi+SHPzB
+ ZtIST4whkCLqKnRyWWjLgPCedlGEqciqZABJq1IlVgYxQ1pYF0aJlF3+5QGe3C7Apsor
+ udbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=uY1qwecAKkjbfoa/EKuoDdUSmFzBHTm19+p5FTH2LBU=;
- b=q5h/SX0I2bvUWwfcrTfnvYy7oS/N35EvwzwycQawllTkmygCuLOoz3+1l9GXsFxP+x
- PJpyFMWogb0tbmWGwfSAanO/mHTBEhSjtcFq3GURde20T2DcLbcbrb1Jsv+3mCECjDj7
- eC+50sWnjv0NlAHp9O6+NggClCEMlLaLtwPV+fUNBVS16FF6ysHINiRlLXQs2R4ebCx0
- YZxBi8QvNuODkx65oMPamT8eUyIvGDA5L5zetPaCZKIJZpqDPoLgy1QZWZZyyhovEBZ4
- /eGvOxFAtP1D0/mfyEj/Iby1tyycZdOwdguz6TjzrGjYXPrRME865k4PAkugTVvxgf8Q
- kmIg==
-X-Gm-Message-State: AOAM531gtHWZ7KDGtCR3ON8fRnhesvls5rOmgdOpyLL/5RZG+DFZdJBz
- roPwKhrqkPs8ww4TcFTqJZ4=
-X-Google-Smtp-Source: ABdhPJz+10ooDWlPsYx8vX6GdDgzfvHO/Ql6S99m4ESdyBxlVR58sZBEEQbMVN8XEUkQ/DXlkeQgpw==
-X-Received: by 2002:a05:6000:2cd:b0:204:1bf4:e4f8 with SMTP id
- o13-20020a05600002cd00b002041bf4e4f8mr5109089wry.682.1647944216335; 
- Tue, 22 Mar 2022 03:16:56 -0700 (PDT)
-Received: from [192.168.1.33] (198.red-83-50-65.dynamicip.rima-tde.net.
- [83.50.65.198]) by smtp.gmail.com with ESMTPSA id
- d1-20020adffbc1000000b00203de0fff63sm15550702wrs.70.2022.03.22.03.16.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Mar 2022 03:16:55 -0700 (PDT)
-Message-ID: <a85f9adc-1db9-860f-0194-a32a47601aa9@gmail.com>
-Date: Tue, 22 Mar 2022 11:16:55 +0100
+ bh=56Sb5MySwq7l5qpWqAORgeN+64g5W2ggGWIGq51tO0M=;
+ b=Bhju63LUIxVVq38pkaF+3Ape8Jqqkl0jHA7udtuCCvDZz20l0h208/E2k7+4lOcSGJ
+ A3alNdmxbQabkTbCWs/CfoOMuljKoSWjidMDPvP1sg4BpmCZXj/8wTLl4U4nTn1aWfw2
+ 6QLdrp0Rbuzv1nQbXCyVtjAEf5IwH+93oRxxKfxnwxbBi0ZgigxfSx94wPNksaY/OPm3
+ ++vF8cSt3+gtRR8va+HDzoJ/tXcQOAFV82t8vGqD1k4bTyjsczW8HJmo+NtA625/Ym/I
+ WlPYg29FX4IAXFv4G48vyXdm9Zwp7rp60In03kg/An+hcKUWGn+bFl25cEiQH+9TdRH0
+ A2KQ==
+X-Gm-Message-State: AOAM530FUEEVoNWnuaN9fhPvUwgDWsUSfwcjBP0QWfNM9RjZXDeC3de4
+ Rgwv3olg4i6c7zwlrryxd3hM6yrP5eqHXA==
+X-Google-Smtp-Source: ABdhPJzQMYfu1lWyqQ6MOL7oNdmGn9uSNwXP+d7BWmkDHKzHWdAN8JINILvcaMqsNSYrWvejK1mdKA==
+X-Received: by 2002:a17:90b:4d8e:b0:1c7:1e1f:484b with SMTP id
+ oj14-20020a17090b4d8e00b001c71e1f484bmr6036075pjb.216.1647967341616; 
+ Tue, 22 Mar 2022 09:42:21 -0700 (PDT)
+Received: from localhost.localdomain ([103.94.185.75])
+ by smtp.googlemail.com with ESMTPSA id
+ e10-20020a056a00162a00b004f6fc39c081sm21736958pfc.211.2022.03.22.09.42.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Mar 2022 09:42:20 -0700 (PDT)
+From: Yonggang Luo <luoyonggang@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ =?UTF-8?q?Alex=20Benn=D0=B8=D0=B6e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=D0=B8=D0=B6?= <f4bug@amsat.org>,
+ Thomas Huth <thuth@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Yonggang Luo <luoyonggang@gmail.com>
+Subject: [PATCH] cirrus: upgrade mingw base packages.
+Date: Wed, 23 Mar 2022 00:41:55 +0800
+Message-Id: <20220322164155.1715-1-luoyonggang@gmail.com>
+X-Mailer: git-send-email 2.31.1.windows.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.7.0
-Subject: Re: [PATCH] target/avr: Drop avr_cpu_memory_rw_debug()
-Content-Language: en-US
-To: Bin Meng <bmeng.cn@gmail.com>, Michael Rolnik <mrolnik@gmail.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20220322095004.70682-1-bmeng.cn@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>
-In-Reply-To: <20220322095004.70682-1-bmeng.cn@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32c
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1032
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x1032.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,20 +83,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Mar 2022 10:17:00 -0000
+X-List-Received-Date: Tue, 22 Mar 2022 16:42:26 -0000
 
-On 22/3/22 10:50, Bin Meng wrote:
-> CPUClass::memory_rw_debug() holds a callback for GDB memory access.
-> If not provided, cpu_memory_rw_debug() is used by the GDB stub.
-> Drop avr_cpu_memory_rw_debug() which does nothing special.
-> 
-> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-> ---
-> 
->   target/avr/cpu.h    | 2 --
->   target/avr/cpu.c    | 1 -
->   target/avr/helper.c | 6 ------
->   3 files changed, 9 deletions(-)
+Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+---
+ .cirrus.yml              | 2 +-
+ .gitlab-ci.d/windows.yml | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+diff --git a/.cirrus.yml b/.cirrus.yml
+index 7552d70974..59b004721d 100644
+--- a/.cirrus.yml
++++ b/.cirrus.yml
+@@ -12,7 +12,7 @@ windows_msys2_task:
+     CIRRUS_SHELL: powershell
+     MSYS: winsymlinks:nativestrict
+     MSYSTEM: MINGW64
+-    MSYS2_URL: https://github.com/msys2/msys2-installer/releases/download/2021-04-19/msys2-base-x86_64-20210419.sfx.exe
++    MSYS2_URL: https://github.com/msys2/msys2-installer/releases/download/2022-03-19/msys2-base-x86_64-20220319.sfx.exe
+     MSYS2_FINGERPRINT: 0
+     MSYS2_PACKAGES: "
+       diffutils git grep make pkg-config sed
+diff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windows.yml
+index 1df1630349..e8b65faccc 100644
+--- a/.gitlab-ci.d/windows.yml
++++ b/.gitlab-ci.d/windows.yml
+@@ -16,7 +16,7 @@
+     }
+   - If ( !(Test-Path -Path msys64\var\cache\msys2.exe ) ) {
+       Invoke-WebRequest
+-      "https://github.com/msys2/msys2-installer/releases/download/2021-07-25/msys2-base-x86_64-20210725.sfx.exe"
++      "https://github.com/msys2/msys2-installer/releases/download/2022-03-19/msys2-base-x86_64-20220319.sfx.exe"
+       -outfile "msys64\var\cache\msys2.exe"
+     }
+   - msys64\var\cache\msys2.exe -y
+-- 
+2.31.1.windows.1
+
 
