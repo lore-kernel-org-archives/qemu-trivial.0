@@ -1,68 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nWhaV-0008Ln-BC
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2022 12:42:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:55556)
+	id 1nWjxu-0007ZY-0k
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2022 15:14:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36700)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1nWhaT-0008Hn-US; Tue, 22 Mar 2022 12:42:25 -0400
-Received: from [2607:f8b0:4864:20::1032] (port=43547
- helo=mail-pj1-x1032.google.com)
+ id 1nWjxs-0007Yh-GS; Tue, 22 Mar 2022 15:14:44 -0400
+Received: from [2607:f8b0:4864:20::1033] (port=43780
+ helo=mail-pj1-x1033.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1nWhaS-0000zQ-C6; Tue, 22 Mar 2022 12:42:25 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- n7-20020a17090aab8700b001c6aa871860so2653984pjq.2; 
- Tue, 22 Mar 2022 09:42:23 -0700 (PDT)
+ id 1nWjxq-0005Pn-VQ; Tue, 22 Mar 2022 15:14:44 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ n7-20020a17090aab8700b001c6aa871860so3022506pjq.2; 
+ Tue, 22 Mar 2022 12:14:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=56Sb5MySwq7l5qpWqAORgeN+64g5W2ggGWIGq51tO0M=;
- b=pGa2JX2GFey9hXbDPlkgjYRcB2Wo0L7kCMzT4Tx7zqBeZSJfLUWYkYNJNLZ22Fl74+
- OURtHIbUbvIhp+YyceHXxSljjOauVmV+SYWnsxzGYbq5LcUVvLMqVQYPMs4SUJgaFAME
- CO90HVr8im6p8TFaQS0xUQRfeUNAs+aUW1m68D9JJFnV3p/y4EkHiCV45Dxsm/+m0gyR
- qn54WCBGw6SMs/nTvyWD8w+nYkEmGnf7nH/lF+ni46bqsnGggXOqs8mebkBfTi+SHPzB
- ZtIST4whkCLqKnRyWWjLgPCedlGEqciqZABJq1IlVgYxQ1pYF0aJlF3+5QGe3C7Apsor
- udbw==
+ bh=QzIyP8Mkvb2J5evFSr9KnKa1FyPsV8VryUkh49s1xvA=;
+ b=BRzphTLIzrBvJ7ikBJHA+GPKchDysPdlJC5H7e2gr3nS1zRsgjTQwg1js3XgMk++VW
+ ZkIezFEMk91EtfE+FIGlceHI5n7dgKkHl4YTj1YhxY6NOQk9q7BB0U44dcRf+l+ryPOM
+ LpKOJLVx9vh11sfER4vdZmuJGzeTdh8JoYROudAdMibXZzmVVJkmxi73Gv0r/3gfFOd2
+ 1iuwcDyAFVnUYvcz+9HFXy8n1N8aGxzKaivmqnhMDMYuIMZNjk/JI4Mx55g6sBZEjCRV
+ YAUUZqbQSDcmX00M+VIFUORsdrZAXzW4pUqhoKWTzL8gLByzLSyIYCaGcM2aUyc60NTU
+ yCtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=56Sb5MySwq7l5qpWqAORgeN+64g5W2ggGWIGq51tO0M=;
- b=Bhju63LUIxVVq38pkaF+3Ape8Jqqkl0jHA7udtuCCvDZz20l0h208/E2k7+4lOcSGJ
- A3alNdmxbQabkTbCWs/CfoOMuljKoSWjidMDPvP1sg4BpmCZXj/8wTLl4U4nTn1aWfw2
- 6QLdrp0Rbuzv1nQbXCyVtjAEf5IwH+93oRxxKfxnwxbBi0ZgigxfSx94wPNksaY/OPm3
- ++vF8cSt3+gtRR8va+HDzoJ/tXcQOAFV82t8vGqD1k4bTyjsczW8HJmo+NtA625/Ym/I
- WlPYg29FX4IAXFv4G48vyXdm9Zwp7rp60In03kg/An+hcKUWGn+bFl25cEiQH+9TdRH0
- A2KQ==
-X-Gm-Message-State: AOAM530FUEEVoNWnuaN9fhPvUwgDWsUSfwcjBP0QWfNM9RjZXDeC3de4
- Rgwv3olg4i6c7zwlrryxd3hM6yrP5eqHXA==
-X-Google-Smtp-Source: ABdhPJzQMYfu1lWyqQ6MOL7oNdmGn9uSNwXP+d7BWmkDHKzHWdAN8JINILvcaMqsNSYrWvejK1mdKA==
-X-Received: by 2002:a17:90b:4d8e:b0:1c7:1e1f:484b with SMTP id
- oj14-20020a17090b4d8e00b001c71e1f484bmr6036075pjb.216.1647967341616; 
- Tue, 22 Mar 2022 09:42:21 -0700 (PDT)
+ bh=QzIyP8Mkvb2J5evFSr9KnKa1FyPsV8VryUkh49s1xvA=;
+ b=oM2LOOk2tHcONQ9VzETcEy0f1/qnpE4yNNfiSqTEs0pR59/qF6iEY5j6w/F6JqBfoe
+ Vsf0ORqB/u90jIGPUkR1PBgk833yIA3nePlOnrFodVBR8JRxcUknHDt5jeOmdehr0AMe
+ Zr4sWdu2v/XNVAtflgmYNqKasdtJ5vxIY4QfAusvFj5ppwbbC+1uHTKyy3UsYlyFkQ+h
+ VWR6dpUubUYVp2L4jxtpPIKZfSffDd6wKgUDE0CmdDAS0MfYMi3rtM+8vo1RfHKrJyL+
+ JBWlyQCCgu704vB65t7ogJ358CYYx79mT68CCEKOjGPHMWJvEpviVzL8JantLZaXx5z3
+ RR7g==
+X-Gm-Message-State: AOAM531bDY8B/dFyqJynrD3vYCuOsxFqwPdtzAc8BkhAhp3VY4IoD+8s
+ UYhPITHQhduqk7MgpMgoUxQQPXIrqOseOQ==
+X-Google-Smtp-Source: ABdhPJyQ5d6lH9YwGRcpFpQTKDOXb9ZOFSM/NWyph5mpuctrxJcyIElt2cIDkxVdxle+yDgphwGUlg==
+X-Received: by 2002:a17:90a:7304:b0:1c6:aadc:90e5 with SMTP id
+ m4-20020a17090a730400b001c6aadc90e5mr6869831pjk.164.1647976480643; 
+ Tue, 22 Mar 2022 12:14:40 -0700 (PDT)
 Received: from localhost.localdomain ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- e10-20020a056a00162a00b004f6fc39c081sm21736958pfc.211.2022.03.22.09.42.16
+ q20-20020a056a00151400b004fa99ba6654sm10146827pfu.115.2022.03.22.12.14.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Mar 2022 09:42:20 -0700 (PDT)
+ Tue, 22 Mar 2022 12:14:40 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?q?Alex=20Benn=D0=B8=D0=B6e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=D0=B8=D0=B6?= <f4bug@amsat.org>,
- Thomas Huth <thuth@redhat.com>,
+To: QEMU Devel <qemu-devel@nongnu.org>
+Cc: Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH] cirrus: upgrade mingw base packages.
-Date: Wed, 23 Mar 2022 00:41:55 +0800
-Message-Id: <20220322164155.1715-1-luoyonggang@gmail.com>
+ =?UTF-8?q?Alex=20Benn=D0=B8=D0=B6e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=D0=B8=D0=B6?= <f4bug@amsat.org>,
+ Yonggang Luo <luoyonggang@gmail.com>
+Subject: [PATCH v2 0/2] CI fixes
+Date: Wed, 23 Mar 2022 03:14:07 +0800
+Message-Id: <20220322191409.1330-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.31.1.windows.1
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1032
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::1033
  (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x1032.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -83,40 +85,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Mar 2022 16:42:26 -0000
+X-List-Received-Date: Tue, 22 Mar 2022 19:14:44 -0000
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- .cirrus.yml              | 2 +-
- .gitlab-ci.d/windows.yml | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+* Fixes the cirrus CI
+* Add an empty github actions to get cirrus CI works properly
 
-diff --git a/.cirrus.yml b/.cirrus.yml
-index 7552d70974..59b004721d 100644
---- a/.cirrus.yml
-+++ b/.cirrus.yml
-@@ -12,7 +12,7 @@ windows_msys2_task:
-     CIRRUS_SHELL: powershell
-     MSYS: winsymlinks:nativestrict
-     MSYSTEM: MINGW64
--    MSYS2_URL: https://github.com/msys2/msys2-installer/releases/download/2021-04-19/msys2-base-x86_64-20210419.sfx.exe
-+    MSYS2_URL: https://github.com/msys2/msys2-installer/releases/download/2022-03-19/msys2-base-x86_64-20220319.sfx.exe
-     MSYS2_FINGERPRINT: 0
-     MSYS2_PACKAGES: "
-       diffutils git grep make pkg-config sed
-diff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windows.yml
-index 1df1630349..e8b65faccc 100644
---- a/.gitlab-ci.d/windows.yml
-+++ b/.gitlab-ci.d/windows.yml
-@@ -16,7 +16,7 @@
-     }
-   - If ( !(Test-Path -Path msys64\var\cache\msys2.exe ) ) {
-       Invoke-WebRequest
--      "https://github.com/msys2/msys2-installer/releases/download/2021-07-25/msys2-base-x86_64-20210725.sfx.exe"
-+      "https://github.com/msys2/msys2-installer/releases/download/2022-03-19/msys2-base-x86_64-20220319.sfx.exe"
-       -outfile "msys64\var\cache\msys2.exe"
-     }
-   - msys64\var\cache\msys2.exe -y
+Yonggang Luo (2):
+  ci: Add github workflow for getting cirrus working properly
+  cirrus: upgrade mingw base packages.
+
+ .cirrus.yml                |  2 +-
+ .github/workflows/main.yml | 29 +++++++++++++++++++++++++++++
+ .gitlab-ci.d/windows.yml   |  2 +-
+ MAINTAINERS                |  4 +++-
+ 4 files changed, 34 insertions(+), 3 deletions(-)
+ create mode 100644 .github/workflows/main.yml
+
 -- 
 2.31.1.windows.1
 
