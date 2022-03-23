@@ -1,75 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nWzI0-000466-LO
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 07:36:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40842)
+	id 1nXAXw-0005ob-PX
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 19:37:45 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1nWzHs-000424-Sd; Wed, 23 Mar 2022 07:36:25 -0400
-Received: from [2a00:1450:4864:20::62a] (port=41706
- helo=mail-ej1-x62a.google.com)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nXAXs-0005kE-Rp; Wed, 23 Mar 2022 19:37:40 -0400
+Received: from [2a00:1450:4864:20::535] (port=43607
+ helo=mail-ed1-x535.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1nWzHp-000881-G4; Wed, 23 Mar 2022 07:36:24 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id a8so2204519ejc.8;
- Wed, 23 Mar 2022 04:35:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nXAXr-0000Tw-88; Wed, 23 Mar 2022 19:37:40 -0400
+Received: by mail-ed1-x535.google.com with SMTP id b24so3672784edu.10;
+ Wed, 23 Mar 2022 16:37:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=MtlW6xouBq7U9a9mWHnPCh013FJzep//D/yBhZkelHE=;
- b=OGAdb09SekqTflcR5hg+xYw41ZZB9H939DDTCcSrDiO37B/hjcy9BT/aQZsEsf8MvI
- Lo8TGuR2R/0Nv+aVGj95oQDXltRhO/JtYtve/iILaJ8GjwFYnDUxZlae0YhSyelTve+T
- uAcKp88ClMi2fE4Xsfwu4BaoZik6pDEarNgoat6tRDl0XHGzVnl48gzuB2+ZV4MaUdSZ
- boh3T46/bRFmg/QrT2ihahZmFarnMxIS+FfjVDGniCdV+c7iYsFZ9+6S0rFypsCfox11
- bI+gQ21H+ufEa2+w5XlpKhbeT5CJvwoIdIlcGkh4FKD9nL53gUY5b9Btpt9P7GkGnxrK
- qoew==
+ h=date:from:to:cc:subject:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=XTfui0DxGyTQzGceNUFfGNAD3wX6/gYrtnVfLts+vFs=;
+ b=NczP0OhElljgxL4rvA9QMRtuR+LUbLrdjpA1icaDlAKCkpehpzR1GXD8UDOFbROPxo
+ Y9dkwx1A0VwwxXVp+WzYxe6LcQTlv+jmPsUpi3fuzvxGxc5tw8BS34loYZ4vL5oeu5gF
+ eKNSevgLLMq3Wf2qnDyT8liTNuTEePu9Yx7HiC75RSTncmOStTi/7cX3FPqJhgXxfv5H
+ fnVK54ZLOQOnGgz/bRWJYFjtwLIF+KE/eogDJqAokNLV9EamYeH8T28wS64BYRqRppOh
+ B6Y63qWdw2ZhvHyo8AIPDEdhgnVRVXnFdhGYA0rcgJTn8knnnGO4ODRS8/CEGS2A2w6H
+ iNbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=MtlW6xouBq7U9a9mWHnPCh013FJzep//D/yBhZkelHE=;
- b=SgTniyPkA0IzPjpwThq/bQdQmKAIclYaxqTXBx5Qox0/egs7vYG8nWWHRnAnHMVytJ
- 1IliA5zAczhZBwTdSslUXlltuelpEGsU6wTTRYUxjLqAxvv0ypH6BkuqUHFR3VU80FTH
- FZP1fVFiJgb8kVGQgi+OfrpEWZ+rXEPR/f4U7KX38eaG76CyIten0yzaKELJCFQpsTZ2
- FiRAyyVs2eiW+qyWLFnqRfdTHeH81Nr3CEiq0c1r/8P01aQriO0qNAfCVqwYgnDMXkTM
- HUfi7RzaNOX/vkJFB0ECv0xJnUCbLSf35xO/edICXiG5nU0o9tOAyoVYEqBGrBRj9ad7
- 2TPg==
-X-Gm-Message-State: AOAM530aaSyi9wrBFmnz+Hzm07SfqdeWlfRce+eatpB3PjEIERMCSfr0
- d1KJvjTKojMCf/2XsZAtPSvsYqMHi8B/oe4M+/BCsxG6gR4=
-X-Google-Smtp-Source: ABdhPJxXP68wFQjBb7u5dC4c3POsUbhorBayqPoXAZANZt4WKBuCRTflPm0A+ehmn43xwFowJ12l1IuzOzHvvulftPQ=
-X-Received: by 2002:a17:907:97c9:b0:6db:ab53:1fdf with SMTP id
- js9-20020a17090797c900b006dbab531fdfmr31559514ejc.406.1648035348482; Wed, 23
- Mar 2022 04:35:48 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=XTfui0DxGyTQzGceNUFfGNAD3wX6/gYrtnVfLts+vFs=;
+ b=shOjXSCba7nfT/5XDUktfv1HsMJNOzYS4aSp9fc1EOEpfSSkx7J0pL7kFXeSUn2xth
+ lWLap7GzHwC61eAKQcyLnk+aI22QkrMuwcRzeluUpUBtokJhREX4OQGrkyVYZxxrbk8d
+ MlevnHJ5vVw2ybyaOTYf32KR3TeEfrq5uusDMEtjv7TNqfcspTpEjYvYCG/vmoTYSrLs
+ vWQ1bxWVc3EiSZRrwzm5Nwbr2dVDfde3fRrTKmbWhsollWoVbKoSOxXSXzeqxIhICfX+
+ BZPFLAX0pBciXhqq43bz0t+FYTFZM9BOvmwuL3+0AMrKghjRPgRHdUN4wniy3N6MrYlO
+ UXsA==
+X-Gm-Message-State: AOAM532L+v2dffVD8asSC6ZS+CzQqrmGbfNSIvv3yWI2oA/oO9n6po4/
+ OTfOk7bcPTdbN8EDa6sMLTU=
+X-Google-Smtp-Source: ABdhPJyjlSAkAXzqJik78RL61BqaOnMVVqHHEBBS010wNp7RX3PD3aBIjP8IvFGgH2Glif78aXQ4vg==
+X-Received: by 2002:a05:6402:350d:b0:419:547f:134a with SMTP id
+ b13-20020a056402350d00b00419547f134amr3309178edd.405.1648078657431; 
+ Wed, 23 Mar 2022 16:37:37 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-077-011-006-205.77.11.pool.telefonica.de.
+ [77.11.6.205]) by smtp.gmail.com with ESMTPSA id
+ ga42-20020a1709070c2a00b006df76956b53sm449237ejc.212.2022.03.23.16.37.36
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 23 Mar 2022 16:37:36 -0700 (PDT)
+Date: Wed, 23 Mar 2022 23:37:35 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?=
+ <philippe.mathieu.daude@gmail.com>, qemu-devel@nongnu.org
+CC: qemu-trivial@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RESEND_1/2=5D_hw/vfio/pci-qui?=
+ =?US-ASCII?Q?rks=3A_Resolve_redundant_property_getters?=
+In-Reply-To: <a35794be-1e41-82a0-f6b0-c9541d2373c5@gmail.com>
+References: <20220301225220.239065-1-shentey@gmail.com>
+ <20220301225220.239065-2-shentey@gmail.com>
+ <5F510D6C-37E7-46A1-AEB8-E7D060B4ED0B@gmail.com>
+ <a35794be-1e41-82a0-f6b0-c9541d2373c5@gmail.com>
+Message-ID: <8FE68ABB-CE4D-446F-8785-313C9CFB1DE9@gmail.com>
 MIME-Version: 1.0
-References: <20220323080755.156-1-luoyonggang@gmail.com>
- <20220323080755.156-3-luoyonggang@gmail.com>
- <YjrpW2O8HqOT2PXN@redhat.com>
-In-Reply-To: <YjrpW2O8HqOT2PXN@redhat.com>
-Reply-To: luoyonggang@gmail.com
-From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Date: Wed, 23 Mar 2022 19:35:35 +0800
-Message-ID: <CAE2XoE9ez2WgdViMxCPbon8GNPbwvte6R9N6O=VbiU2=1G=7pw@mail.gmail.com>
-Subject: Re: [PATCH v3 2/3] ci: Add empty github workflow for reporting
- historical cirrus result at github
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: QEMU Devel <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Thomas Huth <thuth@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
- QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=D0=B8=D0=B6?= <f4bug@amsat.org>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?B?QWxleCBCZW5u0LjQtmU=?= <alex.bennee@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000860f8905dae12110"
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::62a
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::535
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=luoyonggang@gmail.com; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
- RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,161 +86,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Mar 2022 11:36:26 -0000
+X-List-Received-Date: Wed, 23 Mar 2022 23:37:41 -0000
 
---000000000000860f8905dae12110
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Mar 23, 2022 at 5:33 PM Daniel P. Berrang=C3=A9 <berrange@redhat.co=
-m>
-wrote:
+Am 21=2E M=C3=A4rz 2022 13:06:29 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
+<philippe=2Emathieu=2Edaude@gmail=2Ecom>:
+>On 21/3/22 11:57, Bernhard Beschow wrote:
+>> Am 1=2E M=C3=A4rz 2022 22:52:19 UTC schrieb Bernhard Beschow <shentey@g=
+mail=2Ecom>:
+>>> The QOM API already provides getters for uint64 and uint32 values, so =
+reuse
+>>> them=2E
+>>>
+>>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=2Eorg>
+>>> ---
+>>> hw/vfio/pci-quirks=2Ec | 34 +++++++++-------------------------
+>>> 1 file changed, 9 insertions(+), 25 deletions(-)
+>>>
+>>> diff --git a/hw/vfio/pci-quirks=2Ec b/hw/vfio/pci-quirks=2Ec
+>>> index 0cf69a8c6d=2E=2Ef0147a050a 100644
+>>> --- a/hw/vfio/pci-quirks=2Ec
+>>> +++ b/hw/vfio/pci-quirks=2Ec
+>>> @@ -1565,22 +1565,6 @@ static int vfio_add_nv_gpudirect_cap(VFIOPCIDev=
+ice *vdev, Error **errp)
+>>>      return 0;
+>>> }
+>>>
+>>> -static void vfio_pci_nvlink2_get_tgt(Object *obj, Visitor *v,
+>>> -                                     const char *name,
+>>> -                                     void *opaque, Error **errp)
+>>> -{
+>>> -    uint64_t tgt =3D (uintptr_t) opaque;
+>>> -    visit_type_uint64(v, name, &tgt, errp);
+>>> -}
+>>> -
+>>> -static void vfio_pci_nvlink2_get_link_speed(Object *obj, Visitor *v,
+>>> -                                                 const char *name,
+>>> -                                                 void *opaque, Error =
+**errp)
+>>> -{
+>>> -    uint32_t link_speed =3D (uint32_t)(uintptr_t) opaque;
+>>> -    visit_type_uint32(v, name, &link_speed, errp);
+>>> -}
+>>> -
+>>> int vfio_pci_nvidia_v100_ram_init(VFIOPCIDevice *vdev, Error **errp)
+>>> {
+>>>      int ret;
+>>> @@ -1618,9 +1602,9 @@ int vfio_pci_nvidia_v100_ram_init(VFIOPCIDevice =
+*vdev, Error **errp)
+>>>                                 nv2reg->size, p);
+>>>      QLIST_INSERT_HEAD(&vdev->bars[0]=2Equirks, quirk, next);
+>>>
+>>> -    object_property_add(OBJECT(vdev), "nvlink2-tgt", "uint64",
+>>> -                        vfio_pci_nvlink2_get_tgt, NULL, NULL,
+>>> -                        (void *) (uintptr_t) cap->tgt);
+>>> +    object_property_add_uint64_ptr(OBJECT(vdev), "nvlink2-tgt",
+>>> +                                   (uint64_t *) &cap->tgt,
+>>> +                                   OBJ_PROP_FLAG_READ);
+>>>      trace_vfio_pci_nvidia_gpu_setup_quirk(vdev->vbasedev=2Ename, cap-=
+>tgt,
+>>>                                            nv2reg->size);
+>>> free_exit:
+>>> @@ -1679,15 +1663,15 @@ int vfio_pci_nvlink2_init(VFIOPCIDevice *vdev,=
+ Error **errp)
+>>>          QLIST_INSERT_HEAD(&vdev->bars[0]=2Equirks, quirk, next);
+>>>      }
+>>>
+>>> -    object_property_add(OBJECT(vdev), "nvlink2-tgt", "uint64",
+>>> -                        vfio_pci_nvlink2_get_tgt, NULL, NULL,
+>>> -                        (void *) (uintptr_t) captgt->tgt);
+>>> +    object_property_add_uint64_ptr(OBJECT(vdev), "nvlink2-tgt",
+>>> +                                   (uint64_t *) &captgt->tgt,
+>>> +                                   OBJ_PROP_FLAG_READ);
+>>>      trace_vfio_pci_nvlink2_setup_quirk_ssatgt(vdev->vbasedev=2Ename, =
+captgt->tgt,
+>>>                                                atsdreg->size);
+>>>
+>>> -    object_property_add(OBJECT(vdev), "nvlink2-link-speed", "uint32",
+>>> -                        vfio_pci_nvlink2_get_link_speed, NULL, NULL,
+>>> -                        (void *) (uintptr_t) capspeed->link_speed);
+>>> +    object_property_add_uint32_ptr(OBJECT(vdev), "nvlink2-link-speed"=
+,
+>>> +                                   &capspeed->link_speed,
+>>> +                                   OBJ_PROP_FLAG_READ);
+>>>      trace_vfio_pci_nvlink2_setup_quirk_lnkspd(vdev->vbasedev=2Ename,
+>>>                                                capspeed->link_speed);
+>>> free_exit:
+>>=20
+>> Ping
+>>=20
+>> @Alistair: When resending, I accidently added a Reviewed-by with your n=
+ame here which I asked to be ignored *after* you re-acked patch 2/2=2E In c=
+ase you intended to ack this patch as well your voice would be needed again=
+=2E
 >
-> On Wed, Mar 23, 2022 at 04:07:54PM +0800, Yonggang Luo wrote:
-> > Looks like https://github.com/lygstate/qemu/actions does
-> >
-> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> > ---
-> >  .github/workflows/main.yml | 24 ++++++++++++++++++++++++
-> >  MAINTAINERS                |  1 +
-> >  2 files changed, 25 insertions(+)
-> >  create mode 100644 .github/workflows/main.yml
-> >
-> > diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
-> > new file mode 100644
-> > index 0000000000..71f5fbd556
-> > --- /dev/null
-> > +++ b/.github/workflows/main.yml
-> > @@ -0,0 +1,24 @@
-> > +# This is a basic workflow to help you get started with Actions
-> > +
-> > +name: CI
-> > +
-> > +# Controls when the action will run. Triggers the workflow on push or
-pull request
-> > +# events but only for the master branch
-> > +on:
-> > +  push:
-> > +    branches: [ master ]
-> > +  pull_request:
-> > +    branches: [ master ]
-> > +
-> > +# A workflow run is made up of one or more jobs that can run
-sequentially or in parallel
-> > +jobs:
-> > +  check-patch:
-> > +    name: Check Patch
-> > +    runs-on: ubuntu-latest
-> > +    steps:
-> > +      # Checks-out your repository under $GITHUB_WORKSPACE, so your
-job can access it
-> > +      - uses: actions/checkout@v2
-> > +        with:
-> > +          fetch-depth: 0
-> > +      - name: Install dependent packages
-> > +        run: echo "Empty action"
->
-> I really rather we just integrated the Cirrus CI windows job into our
-GitLab
-> pipeline using cirrus-run, as we did for the other Cirrus jobs.
->
-> We've also already got some native msys jobs under GitLab that test some
-> combinations, but not all since they're somewhat slow. So we still need
-> to take advantage of Cirrus for some msys testing, but we can likely
-> reduce the overlap.
->
-> I definitely don't want to see us increasing our use of GitHub, as having
-> multiple places to look at for CI results is a really bad thing. We want
-> todo what is possible to make GitLab the single dashboard for all CI info=
-.
+>FWIW I expect these patches to get merged via the qemu-trivial@ tree
+>once the 7=2E1 development window opens=2E
 
-Agreed a single dashboard is meaningfull, I'll try that. other than that, a
-empty
-github actions can give better experience with qemu, there is 3.9k for at
-github,
-and 5.9k star at github
+Excellent!
 
->
->
-> With regards,
-> Daniel
-> --
-> |: https://berrange.com      -o-
-https://www.flickr.com/photos/dberrange :|
-> |: https://libvirt.org         -o-
-https://fstop138.berrange.com :|
-> |: https://entangle-photo.org    -o-
-https://www.instagram.com/dberrange :|
->
+Best regards,
+Bernhard
 
-
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
-
---000000000000860f8905dae12110
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Wed, Mar 23, 2022 at 5:33 PM Daniel P. Berrang=
-=C3=A9 &lt;<a href=3D"mailto:berrange@redhat.com">berrange@redhat.com</a>&g=
-t; wrote:<br>&gt;<br>&gt; On Wed, Mar 23, 2022 at 04:07:54PM +0800, Yonggan=
-g Luo wrote:<br>&gt; &gt; Looks like <a href=3D"https://github.com/lygstate=
-/qemu/actions">https://github.com/lygstate/qemu/actions</a> does<br>&gt; &g=
-t;<br>&gt; &gt; Signed-off-by: Yonggang Luo &lt;<a href=3D"mailto:luoyongga=
-ng@gmail.com">luoyonggang@gmail.com</a>&gt;<br>&gt; &gt; ---<br>&gt; &gt; =
-=C2=A0.github/workflows/main.yml | 24 ++++++++++++++++++++++++<br>&gt; &gt;=
- =C2=A0MAINTAINERS =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
- =C2=A01 +<br>&gt; &gt; =C2=A02 files changed, 25 insertions(+)<br>&gt; &gt=
-; =C2=A0create mode 100644 .github/workflows/main.yml<br>&gt; &gt;<br>&gt; =
-&gt; diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml<b=
-r>&gt; &gt; new file mode 100644<br>&gt; &gt; index 0000000000..71f5fbd556<=
-br>&gt; &gt; --- /dev/null<br>&gt; &gt; +++ b/.github/workflows/main.yml<br=
->&gt; &gt; @@ -0,0 +1,24 @@<br>&gt; &gt; +# This is a basic workflow to hel=
-p you get started with Actions<br>&gt; &gt; +<br>&gt; &gt; +name: CI<br>&gt=
-; &gt; +<br>&gt; &gt; +# Controls when the action will run. Triggers the wo=
-rkflow on push or pull request<br>&gt; &gt; +# events but only for the mast=
-er branch<br>&gt; &gt; +on:<br>&gt; &gt; + =C2=A0push:<br>&gt; &gt; + =C2=
-=A0 =C2=A0branches: [ master ]<br>&gt; &gt; + =C2=A0pull_request:<br>&gt; &=
-gt; + =C2=A0 =C2=A0branches: [ master ]<br>&gt; &gt; +<br>&gt; &gt; +# A wo=
-rkflow run is made up of one or more jobs that can run sequentially or in p=
-arallel<br>&gt; &gt; +jobs:<br>&gt; &gt; + =C2=A0check-patch:<br>&gt; &gt; =
-+ =C2=A0 =C2=A0name: Check Patch<br>&gt; &gt; + =C2=A0 =C2=A0runs-on: ubunt=
-u-latest<br>&gt; &gt; + =C2=A0 =C2=A0steps:<br>&gt; &gt; + =C2=A0 =C2=A0 =
-=C2=A0# Checks-out your repository under $GITHUB_WORKSPACE, so your job can=
- access it<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0- uses: actions/checkout@v2<b=
-r>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0with:<br>&gt; &gt; + =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0fetch-depth: 0<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0- na=
-me: Install dependent packages<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0ru=
-n: echo &quot;Empty action&quot;<br>&gt;<br>&gt; I really rather we just in=
-tegrated the Cirrus CI windows job into our GitLab<br>&gt; pipeline using c=
-irrus-run, as we did for the other Cirrus jobs.<br>&gt;<br>&gt; We&#39;ve a=
-lso already got some native msys jobs under GitLab that test some<br>&gt; c=
-ombinations, but not all since they&#39;re somewhat slow. So we still need<=
-br>&gt; to take advantage of Cirrus for some msys testing, but we can likel=
-y<br>&gt; reduce the overlap.<br>&gt;<br>&gt; I definitely don&#39;t want t=
-o see us increasing our use of GitHub, as having<br>&gt; multiple places to=
- look at for CI results is a really bad thing. We want<div>&gt; todo what i=
-s possible to make GitLab the single dashboard for all CI info.</div><div><=
-br></div><div>Agreed a single dashboard is meaningfull, I&#39;ll try that. =
-other than that, a empty</div><div>github actions can give better experienc=
-e with qemu, there is 3.9k for at github,</div><div>and 5.9k star at github=
-=C2=A0</div><div><br>&gt;<br>&gt;<br>&gt; With regards,<br>&gt; Daniel<br>&=
-gt; --<br>&gt; |: <a href=3D"https://berrange.com">https://berrange.com</a>=
- =C2=A0 =C2=A0 =C2=A0-o- =C2=A0 =C2=A0<a href=3D"https://www.flickr.com/pho=
-tos/dberrange">https://www.flickr.com/photos/dberrange</a> :|<br>&gt; |: <a=
- href=3D"https://libvirt.org">https://libvirt.org</a> =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 -o- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"https://fsto=
-p138.berrange.com">https://fstop138.berrange.com</a> :|<br>&gt; |: <a href=
-=3D"https://entangle-photo.org">https://entangle-photo.org</a> =C2=A0 =C2=
-=A0-o- =C2=A0 =C2=A0<a href=3D"https://www.instagram.com/dberrange">https:/=
-/www.instagram.com/dberrange</a> :|<br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=
-=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</div></div>
-
---000000000000860f8905dae12110--
 
