@@ -1,93 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nWvfa-0004yQ-8X
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 03:44:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45780)
+	id 1nWvpm-0000RS-9H
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 03:55:10 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48938)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nWvfU-0004t7-Un
- for qemu-trivial@nongnu.org; Wed, 23 Mar 2022 03:44:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:36799)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nWvfS-00041i-1i
- for qemu-trivial@nongnu.org; Wed, 23 Mar 2022 03:44:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648021468;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eACxuUsXxsWvWpkBtvwbt1f8GVxFOqka1F3NNKAsb8Y=;
- b=RN8Uzq60mauT1wyk697PE9L8E9ljOcD9nFBSYJI1VWuyf6bjh4pB5X9jdtRQpbych3UaMc
- jGSGH6fnv7CA7qwp+DhoNJuBmp3xr32PDs9OD5xSKtjTIWVo/yzGL1dle3/wZSFfnBmLk9
- CbD7o6Mn7e/iEYIBrQ2H5JjEcxNUHO8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-613-FPjifDltN_Cy46H2qlrqrQ-1; Wed, 23 Mar 2022 03:44:25 -0400
-X-MC-Unique: FPjifDltN_Cy46H2qlrqrQ-1
-Received: by mail-wr1-f71.google.com with SMTP id
- s8-20020adfc548000000b00203eba1052eso220371wrf.1
- for <qemu-trivial@nongnu.org>; Wed, 23 Mar 2022 00:44:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1nWvpi-0000Nk-FV; Wed, 23 Mar 2022 03:55:08 -0400
+Received: from [2a00:1450:4864:20::52f] (port=33284
+ helo=mail-ed1-x52f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1nWvpg-0002Ao-G2; Wed, 23 Mar 2022 03:55:06 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id r23so859860edb.0;
+ Wed, 23 Mar 2022 00:55:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=bgBm1DAi3lNv03ULzbNcPze9lIfWJzn9Kx+8umnj81U=;
+ b=DnzwNRuyjhcJv1cCdZ5qHXqzu38g7rx+eN4IiqQBJhVl86sGDksIkue0jhyhxtGlYr
+ kSKG4O5QZRHPpWzU+7YecbTAd7d9fwBbOO6gpvoD1wgKLC/hpI3ryfXwaHTBZh11hq4l
+ UCDeb7gaR/CDQvN8Tm/ZU8EFBXUnztMsd4GMwnGPiynnlTwZEDsZij6zxBSZfhMckLYF
+ sNNkUkZxDJvDWAKs+bstZKC0Zv59glW7W5mw48HqAikJbW2D0o58Q9ZYkuHZc6VleCl0
+ jxtI1pB7zcq0xwT0VEBUzRoxB9BB4pIGsdnjIAqGfjchWqXxpPLm1XRhK0B2M6a5EbFq
+ x0Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=eACxuUsXxsWvWpkBtvwbt1f8GVxFOqka1F3NNKAsb8Y=;
- b=rIbv4HEUY8bPAscs/uMVGGKD9hJlS+yks3y7TPttAC8HbTWvv4o3xZGjD969xv0+DP
- yJ/pke2qra31Kv72vSQWTQCwxS6Pli4MSZ95FgCJOlNZunbcj+NDnxyuWWLMtl4EO1YX
- 0qVTo9t13D6Q+lw2+LfgCIHZDjgor7P8uwf9c495hblkpIN2MhvIquihjZdz0+5dJrSf
- Spr+ZFQoS7uUzjVmb+IkkNK9lWvlqAs9xTltY5Ft7OyRA+O+I8RRfBtSnK1ZtMFw7r2k
- fRBoXo/0ZcIwCeW74a80zGTn0ZHHuM10SE2sfdD2ljLkWBZioE5vC2Li1dl+SkKtRADG
- dndg==
-X-Gm-Message-State: AOAM533GocLjmKAy2Mbnp4RiGWlmY69uDCkKVQmOTFJGCroZAArY4wmN
- xskkU3nwSDCGT6UNOkdwQw1wzJnfmhBlqpyWrC7VXx/S+HCXnnHK58Zw7a6ZlDKqX96uVvzDS8j
- uAQx1N3BvR0ba1ze7sg==
-X-Received: by 2002:adf:ab09:0:b0:203:f9ce:cc1d with SMTP id
- q9-20020adfab09000000b00203f9cecc1dmr18990469wrc.269.1648021464782; 
- Wed, 23 Mar 2022 00:44:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrn6MYjMI8BkBYaqcv6BVHiHGj8A5unY/Mm+XdiWpcgaFcJYmpzzAvyVHxh+8OuIxKYDYL4A==
-X-Received: by 2002:adf:ab09:0:b0:203:f9ce:cc1d with SMTP id
- q9-20020adfab09000000b00203f9cecc1dmr18990442wrc.269.1648021464458; 
- Wed, 23 Mar 2022 00:44:24 -0700 (PDT)
-Received: from [192.168.8.104] (tmo-098-218.customers.d1-online.com.
- [80.187.98.218]) by smtp.gmail.com with ESMTPSA id
- y6-20020a05600015c600b00203fa70b4ebsm14725760wry.53.2022.03.23.00.44.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Mar 2022 00:44:24 -0700 (PDT)
-Message-ID: <0ab85e95-2cb2-51ae-fa48-089f02ac0c0e@redhat.com>
-Date: Wed, 23 Mar 2022 08:44:22 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=bgBm1DAi3lNv03ULzbNcPze9lIfWJzn9Kx+8umnj81U=;
+ b=RUUc4mauS72j3cX0NoGA2KS5eOawfQRYMDkzDbv/QEGHsB7Z4d+8iHP1rnfj1fEEz8
+ lCVxnZH7Mxt/mjyE+ELN6Vk1XWQDF65OqM8uOEr8lCtHTG75mwKimX/Ez7wAvtTvGHjO
+ xqSJDlbZX53AYtDf3HosYyHinOk+oERfwYNmePt8OTqOK57Z/nC+w5+8Do78TrwPdZyR
+ ya5v1dg/hRwZe05aeR/uTk/vla41z2vDMHfPYpOofq6CMAh6HbTQ34imXJSYVT4okN3u
+ qJwUhScudyk16WlS1TxDC3oHmvzunwnOOcONAOiKuT+ZTX6tfpKW0lUOHtUreDyhq/js
+ FHdg==
+X-Gm-Message-State: AOAM532Xsbqpr5Rq0qe5jnpS4E32jwmmBr4ez70SLL/27RyF/ckCQTzp
+ EfqYJOIm1io+VSXQhXvs9F6bA0tRWKmgL06lJRnkEj4PBQhMXg==
+X-Google-Smtp-Source: ABdhPJzov+Z5jvcKCPmCszUoRSui6znHdJKNL08IFJHd2d8FrxBWJi4Z7fl8V7yLO8rXZz8qHhHUJiXwWHhJzJr9R7Y=
+X-Received: by 2002:a05:6402:510f:b0:419:5105:f7e6 with SMTP id
+ m15-20020a056402510f00b004195105f7e6mr11031985edd.339.1648022102330; Wed, 23
+ Mar 2022 00:55:02 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH v2 1/2] ci: Add github workflow for getting cirrus working
- properly
-To: Yonggang Luo <luoyonggang@gmail.com>, QEMU Devel <qemu-devel@nongnu.org>
-Cc: Beraldo Leal <bleal@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?B?QWxleCBCZW5u0LjQtmU=?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=d0=b8=d0=b6?= <f4bug@amsat.org>
 References: <20220322191409.1330-1-luoyonggang@gmail.com>
  <20220322191409.1330-2-luoyonggang@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20220322191409.1330-2-luoyonggang@gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <0ab85e95-2cb2-51ae-fa48-089f02ac0c0e@redhat.com>
+In-Reply-To: <0ab85e95-2cb2-51ae-fa48-089f02ac0c0e@redhat.com>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Wed, 23 Mar 2022 15:54:49 +0800
+Message-ID: <CAE2XoE8DkLOzc=L=o3uVa_c64YpN0fjgWjNqFYZ_pbSUgYxLKg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] ci: Add github workflow for getting cirrus working
+ properly
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Devel <qemu-devel@nongnu.org>, Beraldo Leal <bleal@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+ =?UTF-8?B?QWxleCBCZW5u0LjQtmU=?= <alex.bennee@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=D0=B8=D0=B6?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="000000000000fdd18d05dade0b49"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::52f
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x52f.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,78 +82,178 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Mar 2022 07:44:33 -0000
+X-List-Received-Date: Wed, 23 Mar 2022 07:55:08 -0000
 
-On 22/03/2022 20.14, Yonggang Luo wrote:
-> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+--000000000000fdd18d05dade0b49
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Missing patch description ... why is this needed? I can't see anything 
-related to Cirrus-CI in here?
+On Wed, Mar 23, 2022 at 3:44 PM Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 22/03/2022 20.14, Yonggang Luo wrote:
+> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+>
+> Missing patch description ... why is this needed? I can't see anything
+> related to Cirrus-CI in here?
 
-> ---
->   .github/workflows/main.yml | 29 +++++++++++++++++++++++++++++
->   MAINTAINERS                |  4 +++-
->   2 files changed, 32 insertions(+), 1 deletion(-)
->   create mode 100644 .github/workflows/main.yml
-> 
-> diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
-> new file mode 100644
-> index 0000000000..85a392b962
-> --- /dev/null
-> +++ b/.github/workflows/main.yml
-> @@ -0,0 +1,29 @@
-> +# This is a basic workflow to help you get started with Actions
-> +
-> +name: CI
-> +
-> +# Controls when the action will run. Triggers the workflow on push or pull request
-> +# events but only for the master branch
-> +on:
-> +  push:
-> +    branches: [ master ]
-> +  pull_request:
-> +    branches: [ master ]
-> +
-> +# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-> +jobs:
-> +  check-patch:
-> +    name: Check Patch
-> +    runs-on: ubuntu-latest
-> +    steps:
-> +      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-> +      - uses: actions/checkout@v2
-> +        with:
-> +          fetch-depth: 0
-> +      - name: Install dependent packages
-> +        run: sudo apt install perl
-> +      - name: Checkpatch
-> +        run: |
-> +          git fetch https://git.qemu.org/git/qemu.git master
-> +          git tag base_tag_to_rebase FETCH_HEAD --force
-> +          ./scripts/checkpatch.pl --mailback base_tag_to_rebase..
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index cc364afef7..6d1dcc36b0 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -3612,10 +3612,12 @@ Build and test automation, general continuous integration
->   M: Alex Bennée <alex.bennee@linaro.org>
->   M: Philippe Mathieu-Daudé <f4bug@amsat.org>
->   M: Thomas Huth <thuth@redhat.com>
-> +M: Yonggang Luo <luoyonggang@gmail>
->   R: Wainer dos Santos Moschetta <wainersm@redhat.com>
->   R: Beraldo Leal <bleal@redhat.com>
->   S: Maintained
-> -F: .github/lockdown.yml
-> +F: .github/workflows/lockdown.yml
-> +F: .github/workflows/main.yml
->   F: .gitlab-ci.yml
->   F: .gitlab-ci.d/
->   F: .travis.yml
+Here is the place report failure
+https://github.com/qemu/qemu/runs/5652470682
 
-You also don't mention that change anywhere. And IIRC you've also only been 
-involved in the Windows-related CI tasks so far? So it might make more sense 
-to update the "Windows Hosted Continuous Integration" section instead?
+Here is the place showing the valid ci result:
+https://github.com/lygstate/qemu
 
-  Thomas
 
+>
+> > ---
+> >   .github/workflows/main.yml | 29 +++++++++++++++++++++++++++++
+> >   MAINTAINERS                |  4 +++-
+> >   2 files changed, 32 insertions(+), 1 deletion(-)
+> >   create mode 100644 .github/workflows/main.yml
+> >
+> > diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+> > new file mode 100644
+> > index 0000000000..85a392b962
+> > --- /dev/null
+> > +++ b/.github/workflows/main.yml
+> > @@ -0,0 +1,29 @@
+> > +# This is a basic workflow to help you get started with Actions
+> > +
+> > +name: CI
+> > +
+> > +# Controls when the action will run. Triggers the workflow on push or
+pull request
+> > +# events but only for the master branch
+> > +on:
+> > +  push:
+> > +    branches: [ master ]
+> > +  pull_request:
+> > +    branches: [ master ]
+> > +
+> > +# A workflow run is made up of one or more jobs that can run
+sequentially or in parallel
+> > +jobs:
+> > +  check-patch:
+> > +    name: Check Patch
+> > +    runs-on: ubuntu-latest
+> > +    steps:
+> > +      # Checks-out your repository under $GITHUB_WORKSPACE, so your
+job can access it
+> > +      - uses: actions/checkout@v2
+> > +        with:
+> > +          fetch-depth: 0
+> > +      - name: Install dependent packages
+> > +        run: sudo apt install perl
+> > +      - name: Checkpatch
+> > +        run: |
+> > +          git fetch https://git.qemu.org/git/qemu.git master
+> > +          git tag base_tag_to_rebase FETCH_HEAD --force
+> > +          ./scripts/checkpatch.pl --mailback base_tag_to_rebase..
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index cc364afef7..6d1dcc36b0 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -3612,10 +3612,12 @@ Build and test automation, general continuous
+integration
+> >   M: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> >   M: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> >   M: Thomas Huth <thuth@redhat.com>
+> > +M: Yonggang Luo <luoyonggang@gmail>
+> >   R: Wainer dos Santos Moschetta <wainersm@redhat.com>
+> >   R: Beraldo Leal <bleal@redhat.com>
+> >   S: Maintained
+> > -F: .github/lockdown.yml
+> > +F: .github/workflows/lockdown.yml
+> > +F: .github/workflows/main.yml
+> >   F: .gitlab-ci.yml
+> >   F: .gitlab-ci.d/
+> >   F: .travis.yml
+>
+> You also don't mention that change anywhere. And IIRC you've also only
+been
+> involved in the Windows-related CI tasks so far? So it might make more
+sense
+> to update the "Windows Hosted Continuous Integration" section instead?
+>
+>   Thomas
+>
+
+
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
+
+--000000000000fdd18d05dade0b49
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><br>On Wed, Mar 23, 2022 at 3:44 PM Thomas Huth &lt;<=
+a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; wrote:<br>&gt;<=
+br>&gt; On 22/03/2022 20.14, Yonggang Luo wrote:<br>&gt; &gt; Signed-off-by=
+: Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyonggang@gma=
+il.com</a>&gt;<br>&gt;<br>&gt; Missing patch description ... why is this ne=
+eded? I can&#39;t see anything<br>&gt; related to Cirrus-CI in here?</div><=
+div><br></div><div>Here is the place report failure<div><a href=3D"https://=
+github.com/qemu/qemu/runs/5652470682">https://github.com/qemu/qemu/runs/565=
+2470682</a><br></div></div><div><br></div><div>Here is the place showing th=
+e valid ci result:</div><div><a href=3D"https://github.com/lygstate/qemu">h=
+ttps://github.com/lygstate/qemu</a><br></div><div><br></div><div><br>&gt;<b=
+r>&gt; &gt; ---<br>&gt; &gt; =C2=A0 .github/workflows/main.yml | 29 +++++++=
+++++++++++++++++++++++<br>&gt; &gt; =C2=A0 MAINTAINERS =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| =C2=A04 +++-<br>&gt; &gt; =C2=A0 2 fil=
+es changed, 32 insertions(+), 1 deletion(-)<br>&gt; &gt; =C2=A0 create mode=
+ 100644 .github/workflows/main.yml<br>&gt; &gt;<br>&gt; &gt; diff --git a/.=
+github/workflows/main.yml b/.github/workflows/main.yml<br>&gt; &gt; new fil=
+e mode 100644<br>&gt; &gt; index 0000000000..85a392b962<br>&gt; &gt; --- /d=
+ev/null<br>&gt; &gt; +++ b/.github/workflows/main.yml<br>&gt; &gt; @@ -0,0 =
++1,29 @@<br>&gt; &gt; +# This is a basic workflow to help you get started w=
+ith Actions<br>&gt; &gt; +<br>&gt; &gt; +name: CI<br>&gt; &gt; +<br>&gt; &g=
+t; +# Controls when the action will run. Triggers the workflow on push or p=
+ull request<br>&gt; &gt; +# events but only for the master branch<br>&gt; &=
+gt; +on:<br>&gt; &gt; + =C2=A0push:<br>&gt; &gt; + =C2=A0 =C2=A0branches: [=
+ master ]<br>&gt; &gt; + =C2=A0pull_request:<br>&gt; &gt; + =C2=A0 =C2=A0br=
+anches: [ master ]<br>&gt; &gt; +<br>&gt; &gt; +# A workflow run is made up=
+ of one or more jobs that can run sequentially or in parallel<br>&gt; &gt; =
++jobs:<br>&gt; &gt; + =C2=A0check-patch:<br>&gt; &gt; + =C2=A0 =C2=A0name: =
+Check Patch<br>&gt; &gt; + =C2=A0 =C2=A0runs-on: ubuntu-latest<br>&gt; &gt;=
+ + =C2=A0 =C2=A0steps:<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0# Checks-out your=
+ repository under $GITHUB_WORKSPACE, so your job can access it<br>&gt; &gt;=
+ + =C2=A0 =C2=A0 =C2=A0- uses: actions/checkout@v2<br>&gt; &gt; + =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0with:<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+fetch-depth: 0<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0- name: Install dependent=
+ packages<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0run: sudo apt install p=
+erl<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0- name: Checkpatch<br>&gt; &gt; + =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0run: |<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0git fetch <a href=3D"https://git.qemu.org/git/qemu.git">https://g=
+it.qemu.org/git/qemu.git</a> master<br>&gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0git tag base_tag_to_rebase FETCH_HEAD --force<br>&gt; &gt; + =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0./scripts/<a href=3D"http://checkpatch.pl">c=
+heckpatch.pl</a> --mailback base_tag_to_rebase..<br>&gt; &gt; diff --git a/=
+MAINTAINERS b/MAINTAINERS<br>&gt; &gt; index cc364afef7..6d1dcc36b0 100644<=
+br>&gt; &gt; --- a/MAINTAINERS<br>&gt; &gt; +++ b/MAINTAINERS<br>&gt; &gt; =
+@@ -3612,10 +3612,12 @@ Build and test automation, general continuous integ=
+ration<br>&gt; &gt; =C2=A0 M: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.b=
+ennee@linaro.org">alex.bennee@linaro.org</a>&gt;<br>&gt; &gt; =C2=A0 M: Phi=
+lippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat=
+.org</a>&gt;<br>&gt; &gt; =C2=A0 M: Thomas Huth &lt;<a href=3D"mailto:thuth=
+@redhat.com">thuth@redhat.com</a>&gt;<br>&gt; &gt; +M: Yonggang Luo &lt;luo=
+yonggang@gmail&gt;<br>&gt; &gt; =C2=A0 R: Wainer dos Santos Moschetta &lt;<=
+a href=3D"mailto:wainersm@redhat.com">wainersm@redhat.com</a>&gt;<br>&gt; &=
+gt; =C2=A0 R: Beraldo Leal &lt;<a href=3D"mailto:bleal@redhat.com">bleal@re=
+dhat.com</a>&gt;<br>&gt; &gt; =C2=A0 S: Maintained<br>&gt; &gt; -F: .github=
+/lockdown.yml<br>&gt; &gt; +F: .github/workflows/lockdown.yml<br>&gt; &gt; =
++F: .github/workflows/main.yml<br>&gt; &gt; =C2=A0 F: .gitlab-ci.yml<br>&gt=
+; &gt; =C2=A0 F: .gitlab-ci.d/<br>&gt; &gt; =C2=A0 F: .travis.yml<br>&gt;<b=
+r>&gt; You also don&#39;t mention that change anywhere. And IIRC you&#39;ve=
+ also only been<br>&gt; involved in the Windows-related CI tasks so far? So=
+ it might make more sense<br>&gt; to update the &quot;Windows Hosted Contin=
+uous Integration&quot; section instead?<br>&gt;<br>&gt; =C2=A0 Thomas<br>&g=
+t;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br=
+>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincere=
+ly,<br>Yonggang Luo</div></div>
+
+--000000000000fdd18d05dade0b49--
 
