@@ -1,90 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nWxYH-0005nL-SA
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 05:45:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44882)
+	id 1nWyed-0004EX-Gh
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 06:55:52 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59374)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nWxYF-0005ms-N3
- for qemu-trivial@nongnu.org; Wed, 23 Mar 2022 05:45:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:58284)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nWxYC-0004FC-Gu
- for qemu-trivial@nongnu.org; Wed, 23 Mar 2022 05:45:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648028707;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qrJ9oeCNRuxFKyNn9QDK1yMz/t6w80PhHfKRVW/DJ4U=;
- b=BzTuFdEzmCtYt7OEuzWAnGcG51r39lf3jLsVQoLcs0XpdrrsdF2FWubewmFGNVxj2s5NZ3
- Su2rbtU+kj2/0l8tq3HT43OdGLJpKLPjMq5LwFvTl+4SxfXJE8hsyW/jRLEapbK+2tDDOU
- Cn81YhPXJg0RwpiENBTfmtxK6RsLHCQ=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-475-Ygb6DB_pPqC9NpyFKpI8NA-1; Wed, 23 Mar 2022 05:45:04 -0400
-X-MC-Unique: Ygb6DB_pPqC9NpyFKpI8NA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- h33-20020adf9024000000b00203fcba8aadso314174wrh.15
- for <qemu-trivial@nongnu.org>; Wed, 23 Mar 2022 02:45:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nWyeP-000451-9N; Wed, 23 Mar 2022 06:55:40 -0400
+Received: from [2a00:1450:4864:20::32a] (port=44951
+ helo=mail-wm1-x32a.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nWyeN-00027w-Ix; Wed, 23 Mar 2022 06:55:37 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ bg31-20020a05600c3c9f00b00381590dbb33so701975wmb.3; 
+ Wed, 23 Mar 2022 03:55:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=lME5d4aV9ZX4MLs/VOansnemt5E+4igMNrwqGAcIRz4=;
+ b=hR+JUTvZvMwznpTAGr9KHOykgSHUv7j3IJqjzC/NIKBmbWSM8Yd3Wu/ksJ1ZeY0xaJ
+ e0asVPl8FE341H2IQG6odEEH2wOzfRqvjQbiBEm0FdWoghFvrP2wzk/Z16oXY2JK62Dr
+ 8Xo5mzotHcEzmFB//NKSFhRToaw1uW+UPZuAGpXmiNVNSaMZmH051jfsbCQOO6fUzKcO
+ n9Zg69lZ3jMMd2FcfHBxGa4C4kcCWFNCY6xVY2WnxRm4X2oPmv1rYc3aOXflyUVI5nwd
+ R5m3xU76qj3VXT5rYS4L4eK6Gq/lL/YVyAUj3sAAritYeK4KykZdme4087mfjCttmGlz
+ URwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:cc:from:in-reply-to
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=qrJ9oeCNRuxFKyNn9QDK1yMz/t6w80PhHfKRVW/DJ4U=;
- b=P2PVcAevtbgZkxoeRRZlN1YItdQCARPgvkOaE34/RbBNCnVENZt2ML2Y69CAv4Aikc
- byjRMKgKmbu+hDaO49+pY5lXOFS5t5K4SFNO38W5b/e+xcA/UpvzP1ZONJiE6P9iIatK
- 1N4ciQCxe6mdnMReud6YMRElr7Y0iFq665xbFqe85VcAGTLoQSQ8RoMYQrpiyJYTJIrQ
- lbnMU9FtbBBmj9T30U4egVG+tdcxo7GpSbf53T2lfwzNWZDCBkUH79gVHvyJ+SQ8toBM
- zxHGh5niZXWWxqgFDsXOazULLDlOX+nsHF774BaU97i5baVlgw32iDuifLsm9B1UOyAk
- Y8UQ==
-X-Gm-Message-State: AOAM530iBLxykSKpVt0TCxXrX62c5d4YktlLSbS/am+D14kqTQ23jHQ5
- qzDkW6DiDrrHzBLAWJpNO+ZHaiUes7JcSuSPxi4gkUZJ5iZ3GYedbDJGNGAAY6W3biK0Q+6Yrs2
- GZgtfNUcEXAsbebHyFw==
-X-Received: by 2002:adf:9581:0:b0:1ed:c341:4ed1 with SMTP id
- p1-20020adf9581000000b001edc3414ed1mr25848780wrp.299.1648028703402; 
- Wed, 23 Mar 2022 02:45:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyunWhmG6C2kdxHaAwn/jKR3L1yqgVFxLDKT0vQuBfZRMRbgIbGt61X2ZxkaIXDLGUF9y562g==
-X-Received: by 2002:adf:9581:0:b0:1ed:c341:4ed1 with SMTP id
- p1-20020adf9581000000b001edc3414ed1mr25848760wrp.299.1648028703107; 
- Wed, 23 Mar 2022 02:45:03 -0700 (PDT)
-Received: from [192.168.8.104] (tmo-098-218.customers.d1-online.com.
- [80.187.98.218]) by smtp.gmail.com with ESMTPSA id
- r14-20020a05600c35ce00b0038c9f469979sm3710839wmq.40.2022.03.23.02.45.02
+ bh=lME5d4aV9ZX4MLs/VOansnemt5E+4igMNrwqGAcIRz4=;
+ b=ncLvgBb//sN2La7gqd7caxpM4+lWsOrMznVWKo5xtfdpVP93I4ZBWd96QGinIWVzoU
+ Pvn01GmF+jRSD2gL7vLdb1kU/WhqS0IENW5D747VQAsEgEwzgUEu+SjSzxh+1i5N8lrI
+ VMix8iE52IvEC9Q0FB7ydMDZBNOimg+BM296e1u+0A11lRfRmw9jjYovYNEiCvaBXlIO
+ jq5c8Wt4jRgQtyj/v2idHFIZXS1pkgtjfB1V/xitj+BPCQthEXKVGjEkOVsMk7yj3rlY
+ 8XPIVZ6V5nqUr6BIzxotRL0M0ox/bDbwZiEZxof4W15QhGjM6WQ0UMwhvpHalxoe4wVT
+ EfVw==
+X-Gm-Message-State: AOAM533Qg4FX1VeXpsS4D/dOyqRgH9JxE47VepFwXEu98WnmI7oCZOBk
+ rW3yO86ECyxHfR0LGUmG200=
+X-Google-Smtp-Source: ABdhPJx5XXRD+X/5aiCZlIs/Ayd/jd5ySLo0EMIIoQQuHVvmqQZfmhO4sPIHR0mAIJlJVYhxaHXj/w==
+X-Received: by 2002:a1c:4e01:0:b0:38c:b316:e6f5 with SMTP id
+ g1-20020a1c4e01000000b0038cb316e6f5mr8514456wmh.93.1648032933841; 
+ Wed, 23 Mar 2022 03:55:33 -0700 (PDT)
+Received: from [192.168.1.33] (198.red-83-50-65.dynamicip.rima-tde.net.
+ [83.50.65.198]) by smtp.gmail.com with ESMTPSA id
+ j16-20020a05600c191000b0038c9249ffdesm4593716wmq.9.2022.03.23.03.55.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Mar 2022 02:45:02 -0700 (PDT)
-Message-ID: <649c2c79-9d64-f44b-f801-492f47606794@redhat.com>
-Date: Wed, 23 Mar 2022 10:45:01 +0100
+ Wed, 23 Mar 2022 03:55:33 -0700 (PDT)
+Message-ID: <8b0f1662-5b44-d057-362b-db59cf595c94@gmail.com>
+Date: Wed, 23 Mar 2022 11:55:32 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH] build: disable fcf-protection on -march=486 -m16
-To: christian.ehrhardt@canonical.com, qemu-devel <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20220323090713.1002588-1-christian.ehrhardt@canonical.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-stable@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20220323090713.1002588-1-christian.ehrhardt@canonical.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [PATCH v3 3/3] misc: Fixes MAINTAINERS's path
+ .github/workflows/lockdown.yml
 Content-Language: en-US
+To: Yonggang Luo <luoyonggang@gmail.com>, QEMU Devel <qemu-devel@nongnu.org>
+Cc: Beraldo Leal <bleal@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=d0=b8?=
+ =?UTF-8?B?0LY=?= <f4bug@amsat.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?B?QWxleCBCZW5u0LjQtmU=?= <alex.bennee@linaro.org>
+References: <20220323080755.156-1-luoyonggang@gmail.com>
+ <20220323080755.156-4-luoyonggang@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220323080755.156-4-luoyonggang@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::32a
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,46 +91,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Mar 2022 09:45:12 -0000
+X-List-Received-Date: Wed, 23 Mar 2022 10:55:45 -0000
 
-On 23/03/2022 10.07, christian.ehrhardt@canonical.com wrote:
-> From: Christian Ehrhardt <christian.ehrhardt@canonical.com>
-> 
-> Some of the roms build with -march=i486 -m16 which is incompatible
-> with -fcf-protection. That in turn is can be set by default, for
-> example in Ubuntu [1].
-> That causes:
->   cc1: error: ‘-fcf-protection’ is not compatible with this target
-> 
-> This won't work on -march=i486 -m16 and no matter if set or not we can
-> override it to "none" if the option is known to the compiler to be
-> able to build reliably.
-> 
-> Fixes: https://gitlab.com/qemu-project/qemu/-/issues/889
-> 
-> [1]: https://wiki.ubuntu.com/ToolChain/CompilerFlags#A-fcf-protection
-> 
-> Signed-off-by: Christian Ehrhardt <christian.ehrhardt@canonical.com>
+On 23/3/22 09:07, Yonggang Luo wrote:
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
->   pc-bios/optionrom/Makefile | 4 ++++
->   1 file changed, 4 insertions(+)
+>   MAINTAINERS | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/pc-bios/optionrom/Makefile b/pc-bios/optionrom/Makefile
-> index 5d55d25acc..f1ef898073 100644
-> --- a/pc-bios/optionrom/Makefile
-> +++ b/pc-bios/optionrom/Makefile
-> @@ -14,6 +14,10 @@ cc-option = $(if $(shell $(CC) $1 -c -o /dev/null -xc /dev/null >/dev/null 2>&1
->   
->   override CFLAGS += -march=i486 -Wall
->   
-> +# If -fcf-protection is enabled in flags or compiler defaults that will
-> +# conflict with -march=i486
-> +override CFLAGS += $(call cc-option, -fcf-protection=none)
-> +
->   # Flags for dependency generation
->   override CPPFLAGS += -MMD -MP -MT $@ -MF $(@D)/$(*F).d
->   
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 01d2ce93bd..0e93d02c7e 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -3615,7 +3615,7 @@ M: Thomas Huth <thuth@redhat.com>
+>   R: Wainer dos Santos Moschetta <wainersm@redhat.com>
+>   R: Beraldo Leal <bleal@redhat.com>
+>   S: Maintained
+> -F: .github/lockdown.yml
+> +F: .github/workflows/lockdown.yml
+>   F: .gitlab-ci.yml
+>   F: .gitlab-ci.d/
+>   F: .travis.yml
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
