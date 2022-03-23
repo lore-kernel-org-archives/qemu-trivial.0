@@ -1,80 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nWw2y-00074B-Gl
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 04:08:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51870)
+	id 1nWxAr-00021a-WC
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 05:21:02 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40482)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1nWw2x-000704-5j; Wed, 23 Mar 2022 04:08:47 -0400
-Received: from [2607:f8b0:4864:20::102d] (port=45028
- helo=mail-pj1-x102d.google.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1nWw2v-0004s3-CR; Wed, 23 Mar 2022 04:08:46 -0400
-Received: by mail-pj1-x102d.google.com with SMTP id
- o6-20020a17090a9f8600b001c6562049d9so1009806pjp.3; 
- Wed, 23 Mar 2022 01:08:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=JdSm91hvdvG+iqWNOoJDdr4G5I+f7aXrH0SNn7ScfEM=;
- b=XZ2RYE4CK5H7AzsajM3mP91fVf0D5bYgGR9l18E4/zcB2GCqRZbXnLhAxPLQjFlHo/
- td+45mFNmleKZtRJVSxLhPjTYlweNe72sBsSdqppAwrMkY7tv9TfuOsWJ788qRCBj+9q
- hVdCOCFygaBiLTsy40j12S9HMI49iTHH5PMezwQRpzoHdKcGcNO5P9Z9ZFh4VdnLqzOf
- FyXgyEGEcCYYWVkftEoI4eE/oCDHi83SrfBBCumb7ilVNqtsBuS99orl4ydPGJNVp3x+
- pvg6sEKzIgAE9pDVW7JprvAlC0+MEv7EzsPQhZ9ZUXWCQTJIjzm3AKuGFJjhqI2NXHOc
- 8POg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=JdSm91hvdvG+iqWNOoJDdr4G5I+f7aXrH0SNn7ScfEM=;
- b=xXtHoMFo+HsrlhlabI7XHOBxkn9el+OqCts1fBWrLUx1gEoUewZt/WBXexnFgFtW2C
- YHW154wWf5Qnuqq7h7oLOjAH9V37Yf0kWgUAcRfpgJsBiYoCZKx6ZrhNAob2xMHhTG6l
- /rhc6ASLUuOvFA9VL0/y7ij0s8kxC11A6mLVvKbScz3RYJon+uqGF8YBksh8lroRpdye
- I8Q76aptmQdMRvyan6ESnMEPhO0ScOLasO+RzOh7miUm3eXUHX55KEiYl0IAKBOMC6IJ
- X3a3K5xhkPeM5nbUsQ/ZuCq/qf8LAby8Uj/YWlbghI3VqO55RMMweDcXhdziZQB3sTsi
- P7Sw==
-X-Gm-Message-State: AOAM531GpeTOFDsoDuS5CPPkpcgnoG3U/x83GifTLsVkWy1k+oVW6/bY
- pC3xecApL2kyR2YFqEcXzX8H1PBjRQ/B8A==
-X-Google-Smtp-Source: ABdhPJy7uqFE79s9zHhf+Emxe8glbTCW2XzN6QFWgi/mN+CcvN+AV3JWDRel11qVdQdMfN3X/UF2lA==
-X-Received: by 2002:a17:90a:1b65:b0:1c6:5bc5:99b4 with SMTP id
- q92-20020a17090a1b6500b001c65bc599b4mr10006889pjq.177.1648022922715; 
- Wed, 23 Mar 2022 01:08:42 -0700 (PDT)
-Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id
- v13-20020a17090a088d00b001c64d30fa8bsm4002999pjc.1.2022.03.23.01.08.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Mar 2022 01:08:42 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: QEMU Devel <qemu-devel@nongnu.org>
-Cc: Beraldo Leal <bleal@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=D0=B8=D0=B6?= <f4bug@amsat.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1nWxAp-0001wX-1c
+ for qemu-trivial@nongnu.org; Wed, 23 Mar 2022 05:20:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:42864)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1nWxAn-0005KN-Bl
+ for qemu-trivial@nongnu.org; Wed, 23 Mar 2022 05:20:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1648027256;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=w7TEpjQKYSCXMz48wbrgY5NgH8cUGKONZMTPXgO23rU=;
+ b=YgBUVyGSyM4yub9PniQJo0sfL4qKnAKyWTy1Fom48kgZbUrj7Xe2bnZiq6mCvAAdjd2Nyd
+ bIBg0k/GPPJB+EdSsj7Pr5q8M9NPY8bbBd7/j7eccR5QZi3g50TDyJxzJi4d/Fw0xpNrhs
+ BHQegyLy8OQLsswXiSMYUOCsw81Qixg=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-556-scYdeBRfMOq_C1XkP4dkzA-1; Wed, 23 Mar 2022 05:20:53 -0400
+X-MC-Unique: scYdeBRfMOq_C1XkP4dkzA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F1C4918E0042;
+ Wed, 23 Mar 2022 09:20:52 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.123])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 29FA62166B2D;
+ Wed, 23 Mar 2022 09:20:20 +0000 (UTC)
+Date: Wed, 23 Mar 2022 09:20:17 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: QEMU Devel <qemu-devel@nongnu.org>,
  Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=D0=B8=D0=B6?= <f4bug@amsat.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?q?Alex=20Benn=D0=B8=D0=B6e?= <alex.bennee@linaro.org>,
- Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH v3 3/3] misc: Fixes MAINTAINERS's path
- .github/workflows/lockdown.yml
-Date: Wed, 23 Mar 2022 16:07:55 +0800
-Message-Id: <20220323080755.156-4-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.31.1.windows.1
-In-Reply-To: <20220323080755.156-1-luoyonggang@gmail.com>
-References: <20220323080755.156-1-luoyonggang@gmail.com>
+ Alex =?utf-8?B?QmVubtC40LZl?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH v2 1/2] ci: Add github workflow for getting cirrus
+ working properly
+Message-ID: <YjrmUStDoWnk/t4A@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20220322191409.1330-1-luoyonggang@gmail.com>
+ <20220322191409.1330-2-luoyonggang@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102d
- (failed)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
- envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x102d.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+In-Reply-To: <20220322191409.1330-2-luoyonggang@gmail.com>
+User-Agent: Mutt/2.1.5 (2021-12-30)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,27 +82,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Mar 2022 08:08:47 -0000
+X-List-Received-Date: Wed, 23 Mar 2022 09:20:59 -0000
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Wed, Mar 23, 2022 at 03:14:08AM +0800, Yonggang Luo wrote:
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>  .github/workflows/main.yml | 29 +++++++++++++++++++++++++++++
+>  MAINTAINERS                |  4 +++-
+>  2 files changed, 32 insertions(+), 1 deletion(-)
+>  create mode 100644 .github/workflows/main.yml
+> 
+> diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+> new file mode 100644
+> index 0000000000..85a392b962
+> --- /dev/null
+> +++ b/.github/workflows/main.yml
+> @@ -0,0 +1,29 @@
+> +# This is a basic workflow to help you get started with Actions
+> +
+> +name: CI
+> +
+> +# Controls when the action will run. Triggers the workflow on push or pull request
+> +# events but only for the master branch
+> +on:
+> +  push:
+> +    branches: [ master ]
+> +  pull_request:
+> +    branches: [ master ]
+> +
+> +# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+> +jobs:
+> +  check-patch:
+> +    name: Check Patch
+> +    runs-on: ubuntu-latest
+> +    steps:
+> +      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+> +      - uses: actions/checkout@v2
+> +        with:
+> +          fetch-depth: 0
+> +      - name: Install dependent packages
+> +        run: sudo apt install perl
+> +      - name: Checkpatch
+> +        run: |
+> +          git fetch https://git.qemu.org/git/qemu.git master
+> +          git tag base_tag_to_rebase FETCH_HEAD --force
+> +          ./scripts/checkpatch.pl --mailback base_tag_to_rebase..
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 01d2ce93bd..0e93d02c7e 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3615,7 +3615,7 @@ M: Thomas Huth <thuth@redhat.com>
- R: Wainer dos Santos Moschetta <wainersm@redhat.com>
- R: Beraldo Leal <bleal@redhat.com>
- S: Maintained
--F: .github/lockdown.yml
-+F: .github/workflows/lockdown.yml
- F: .gitlab-ci.yml
- F: .gitlab-ci.d/
- F: .travis.yml
+I really don't think we want to start duplicating our CI efforts into
+GitHub. We are using GitLab as our primary hosting platform for QEMU,
+and have standardized on using GitLab for CI, only using Cirrus CI
+and Travis for specific non-x86 or non-Linux tasks. 
+
+With regards,
+Daniel
 -- 
-2.31.1.windows.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
