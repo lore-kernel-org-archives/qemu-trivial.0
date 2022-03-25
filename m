@@ -1,80 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nXAXw-0005ob-PX
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2022 19:37:45 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50698)
+	id 1nXkby-0006Zs-Om
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Mar 2022 10:08:21 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nXAXs-0005kE-Rp; Wed, 23 Mar 2022 19:37:40 -0400
-Received: from [2a00:1450:4864:20::535] (port=43607
- helo=mail-ed1-x535.google.com)
+ (Exim 4.90_1) (envelope-from <julien.durillon@clever-cloud.com>)
+ id 1nXhhG-0005Ti-K6
+ for qemu-trivial@nongnu.org; Fri, 25 Mar 2022 07:01:34 -0400
+Received: from [2a00:1450:4864:20::42a] (port=33687
+ helo=mail-wr1-x42a.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nXAXr-0000Tw-88; Wed, 23 Mar 2022 19:37:40 -0400
-Received: by mail-ed1-x535.google.com with SMTP id b24so3672784edu.10;
- Wed, 23 Mar 2022 16:37:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:in-reply-to:references:message-id
- :mime-version:content-transfer-encoding;
- bh=XTfui0DxGyTQzGceNUFfGNAD3wX6/gYrtnVfLts+vFs=;
- b=NczP0OhElljgxL4rvA9QMRtuR+LUbLrdjpA1icaDlAKCkpehpzR1GXD8UDOFbROPxo
- Y9dkwx1A0VwwxXVp+WzYxe6LcQTlv+jmPsUpi3fuzvxGxc5tw8BS34loYZ4vL5oeu5gF
- eKNSevgLLMq3Wf2qnDyT8liTNuTEePu9Yx7HiC75RSTncmOStTi/7cX3FPqJhgXxfv5H
- fnVK54ZLOQOnGgz/bRWJYFjtwLIF+KE/eogDJqAokNLV9EamYeH8T28wS64BYRqRppOh
- B6Y63qWdw2ZhvHyo8AIPDEdhgnVRVXnFdhGYA0rcgJTn8knnnGO4ODRS8/CEGS2A2w6H
- iNbQ==
+ (Exim 4.90_1) (envelope-from <julien.durillon@clever-cloud.com>)
+ id 1nXhhE-0002b8-Sd
+ for qemu-trivial@nongnu.org; Fri, 25 Mar 2022 07:01:34 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id r7so9241382wrc.0
+ for <qemu-trivial@nongnu.org>; Fri, 25 Mar 2022 04:01:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=clever-cloud.com; s=google;
+ h=message-id:from:date:subject:to;
+ bh=JzMRFnGZnZPjbzpHwBxOiOnTHMiJqVxjiEBBhdfmpKs=;
+ b=Q3esLJmFP8saInR4+YkSmgSmvrZDOI2PWOhV5xgkAJv9JKk7bLXtcRu3m65/647o8o
+ nktgf3KcAAUKPwwklp0Wr6/tXClPby41YGnWMzlQ7DtOalc1+sg+DqsfFAJ345+R1bIW
+ JJd2BrAYiqMaxN82YuimosawyiNhP41Dztcv4fTRepkK+8d03BnJPd+bnKaGKGbTWKeg
+ tR38ztvGz5w0C/Kr17o4d5wyBKYC5YtYYvDT2oRozTSp7RrRZ6nuatKSTCHIVvOsKxd5
+ z0UyA/0Y3+tPYJ5mASiST4DVuGBRkcGQtrb2stJqIiq8ZG6STRaeDF45xMc7omEfdpZX
+ aV/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
- :message-id:mime-version:content-transfer-encoding;
- bh=XTfui0DxGyTQzGceNUFfGNAD3wX6/gYrtnVfLts+vFs=;
- b=shOjXSCba7nfT/5XDUktfv1HsMJNOzYS4aSp9fc1EOEpfSSkx7J0pL7kFXeSUn2xth
- lWLap7GzHwC61eAKQcyLnk+aI22QkrMuwcRzeluUpUBtokJhREX4OQGrkyVYZxxrbk8d
- MlevnHJ5vVw2ybyaOTYf32KR3TeEfrq5uusDMEtjv7TNqfcspTpEjYvYCG/vmoTYSrLs
- vWQ1bxWVc3EiSZRrwzm5Nwbr2dVDfde3fRrTKmbWhsollWoVbKoSOxXSXzeqxIhICfX+
- BZPFLAX0pBciXhqq43bz0t+FYTFZM9BOvmwuL3+0AMrKghjRPgRHdUN4wniy3N6MrYlO
- UXsA==
-X-Gm-Message-State: AOAM532L+v2dffVD8asSC6ZS+CzQqrmGbfNSIvv3yWI2oA/oO9n6po4/
- OTfOk7bcPTdbN8EDa6sMLTU=
-X-Google-Smtp-Source: ABdhPJyjlSAkAXzqJik78RL61BqaOnMVVqHHEBBS010wNp7RX3PD3aBIjP8IvFGgH2Glif78aXQ4vg==
-X-Received: by 2002:a05:6402:350d:b0:419:547f:134a with SMTP id
- b13-20020a056402350d00b00419547f134amr3309178edd.405.1648078657431; 
- Wed, 23 Mar 2022 16:37:37 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-011-006-205.77.11.pool.telefonica.de.
- [77.11.6.205]) by smtp.gmail.com with ESMTPSA id
- ga42-20020a1709070c2a00b006df76956b53sm449237ejc.212.2022.03.23.16.37.36
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 23 Mar 2022 16:37:36 -0700 (PDT)
-Date: Wed, 23 Mar 2022 23:37:35 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?=
- <philippe.mathieu.daude@gmail.com>, qemu-devel@nongnu.org
-CC: qemu-trivial@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_RESEND_1/2=5D_hw/vfio/pci-qui?=
- =?US-ASCII?Q?rks=3A_Resolve_redundant_property_getters?=
-In-Reply-To: <a35794be-1e41-82a0-f6b0-c9541d2373c5@gmail.com>
-References: <20220301225220.239065-1-shentey@gmail.com>
- <20220301225220.239065-2-shentey@gmail.com>
- <5F510D6C-37E7-46A1-AEB8-E7D060B4ED0B@gmail.com>
- <a35794be-1e41-82a0-f6b0-c9541d2373c5@gmail.com>
-Message-ID: <8FE68ABB-CE4D-446F-8785-313C9CFB1DE9@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::535
+ h=x-gm-message-state:message-id:from:date:subject:to;
+ bh=JzMRFnGZnZPjbzpHwBxOiOnTHMiJqVxjiEBBhdfmpKs=;
+ b=YrytqorXBD51G2Bedr0cV0hyt2EIwDbXFSo6ytmhldDmoSnxuEy5kU2kUNfhqDhUXq
+ IZ+bz6o7WUn3Nz+RpvryEl1YfGZrgTkqzZsZ+CcWlMuJwVP76BsGSb/ZNMvWlla29xHQ
+ vV0SB44J289B2y3cVWQwIQ7nRDFpIeHeaGBtpSzQu7QO65SEKcsr8QipKT1/qpolYSEF
+ eVg+Z3Qqao2f/QEWUNarZYmf6Yzh21P5eG0WOauT+c5Z+y5VvpqQvsJ4Ic8sYJZEu2bV
+ P0dovw9HFiOh/b/BWmy8JGm1kwCXtdZQ/7gq970uDbnWqpJb7wji2oYBAYuMji8y0kJV
+ EtFw==
+X-Gm-Message-State: AOAM530bCdLVF2PXXO5UeRQ4q7ipviQy7k73NjkCx4bw2U3T+szPt06V
+ 3RJmPU2j4hEFU4igGAz7Kvh2EbYnjoNJLg==
+X-Google-Smtp-Source: ABdhPJxD3xLEiaOyFwq3o5VHRJWU0tT2/gP1/NNQYeNzH/ZF1z0eh+0Mm5LAO75OWLuosFPxNEK4Ig==
+X-Received: by 2002:adf:8122:0:b0:1e7:b111:3b92 with SMTP id
+ 31-20020adf8122000000b001e7b1113b92mr8719935wrm.695.1648206090456; 
+ Fri, 25 Mar 2022 04:01:30 -0700 (PDT)
+Received: from localhost (2a01cb000397e40057c1e592a870c98e.ipv6.abo.wanadoo.fr.
+ [2a01:cb00:397:e400:57c1:e592:a870:c98e])
+ by smtp.gmail.com with ESMTPSA id
+ z5-20020a05600c0a0500b0037fa93193a8sm4860228wmp.44.2022.03.25.04.01.29
+ for <qemu-trivial@nongnu.org>
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Mar 2022 04:01:29 -0700 (PDT)
+Message-ID: <623da109.1c69fb81.4c36a.3f15@mx.google.com>
+From: Julien Durillon <julien.durillon@clever-cloud.com>
+Date: Fri, 25 Mar 2022 11:21:34 +0100
+Subject: [PATCH] Use prefixed strings command from distro.
+To: qemu-trivial@nongnu.org
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42a
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=julien.durillon@clever-cloud.com; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 25 Mar 2022 10:08:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,106 +77,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Mar 2022 23:37:41 -0000
+X-List-Received-Date: Fri, 25 Mar 2022 11:01:35 -0000
 
-Am 21=2E M=C3=A4rz 2022 13:06:29 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
-<philippe=2Emathieu=2Edaude@gmail=2Ecom>:
->On 21/3/22 11:57, Bernhard Beschow wrote:
->> Am 1=2E M=C3=A4rz 2022 22:52:19 UTC schrieb Bernhard Beschow <shentey@g=
-mail=2Ecom>:
->>> The QOM API already provides getters for uint64 and uint32 values, so =
-reuse
->>> them=2E
->>>
->>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=2Eorg>
->>> ---
->>> hw/vfio/pci-quirks=2Ec | 34 +++++++++-------------------------
->>> 1 file changed, 9 insertions(+), 25 deletions(-)
->>>
->>> diff --git a/hw/vfio/pci-quirks=2Ec b/hw/vfio/pci-quirks=2Ec
->>> index 0cf69a8c6d=2E=2Ef0147a050a 100644
->>> --- a/hw/vfio/pci-quirks=2Ec
->>> +++ b/hw/vfio/pci-quirks=2Ec
->>> @@ -1565,22 +1565,6 @@ static int vfio_add_nv_gpudirect_cap(VFIOPCIDev=
-ice *vdev, Error **errp)
->>>      return 0;
->>> }
->>>
->>> -static void vfio_pci_nvlink2_get_tgt(Object *obj, Visitor *v,
->>> -                                     const char *name,
->>> -                                     void *opaque, Error **errp)
->>> -{
->>> -    uint64_t tgt =3D (uintptr_t) opaque;
->>> -    visit_type_uint64(v, name, &tgt, errp);
->>> -}
->>> -
->>> -static void vfio_pci_nvlink2_get_link_speed(Object *obj, Visitor *v,
->>> -                                                 const char *name,
->>> -                                                 void *opaque, Error =
-**errp)
->>> -{
->>> -    uint32_t link_speed =3D (uint32_t)(uintptr_t) opaque;
->>> -    visit_type_uint32(v, name, &link_speed, errp);
->>> -}
->>> -
->>> int vfio_pci_nvidia_v100_ram_init(VFIOPCIDevice *vdev, Error **errp)
->>> {
->>>      int ret;
->>> @@ -1618,9 +1602,9 @@ int vfio_pci_nvidia_v100_ram_init(VFIOPCIDevice =
-*vdev, Error **errp)
->>>                                 nv2reg->size, p);
->>>      QLIST_INSERT_HEAD(&vdev->bars[0]=2Equirks, quirk, next);
->>>
->>> -    object_property_add(OBJECT(vdev), "nvlink2-tgt", "uint64",
->>> -                        vfio_pci_nvlink2_get_tgt, NULL, NULL,
->>> -                        (void *) (uintptr_t) cap->tgt);
->>> +    object_property_add_uint64_ptr(OBJECT(vdev), "nvlink2-tgt",
->>> +                                   (uint64_t *) &cap->tgt,
->>> +                                   OBJ_PROP_FLAG_READ);
->>>      trace_vfio_pci_nvidia_gpu_setup_quirk(vdev->vbasedev=2Ename, cap-=
->tgt,
->>>                                            nv2reg->size);
->>> free_exit:
->>> @@ -1679,15 +1663,15 @@ int vfio_pci_nvlink2_init(VFIOPCIDevice *vdev,=
- Error **errp)
->>>          QLIST_INSERT_HEAD(&vdev->bars[0]=2Equirks, quirk, next);
->>>      }
->>>
->>> -    object_property_add(OBJECT(vdev), "nvlink2-tgt", "uint64",
->>> -                        vfio_pci_nvlink2_get_tgt, NULL, NULL,
->>> -                        (void *) (uintptr_t) captgt->tgt);
->>> +    object_property_add_uint64_ptr(OBJECT(vdev), "nvlink2-tgt",
->>> +                                   (uint64_t *) &captgt->tgt,
->>> +                                   OBJ_PROP_FLAG_READ);
->>>      trace_vfio_pci_nvlink2_setup_quirk_ssatgt(vdev->vbasedev=2Ename, =
-captgt->tgt,
->>>                                                atsdreg->size);
->>>
->>> -    object_property_add(OBJECT(vdev), "nvlink2-link-speed", "uint32",
->>> -                        vfio_pci_nvlink2_get_link_speed, NULL, NULL,
->>> -                        (void *) (uintptr_t) capspeed->link_speed);
->>> +    object_property_add_uint32_ptr(OBJECT(vdev), "nvlink2-link-speed"=
-,
->>> +                                   &capspeed->link_speed,
->>> +                                   OBJ_PROP_FLAG_READ);
->>>      trace_vfio_pci_nvlink2_setup_quirk_lnkspd(vdev->vbasedev=2Ename,
->>>                                                capspeed->link_speed);
->>> free_exit:
->>=20
->> Ping
->>=20
->> @Alistair: When resending, I accidently added a Reviewed-by with your n=
-ame here which I asked to be ignored *after* you re-acked patch 2/2=2E In c=
-ase you intended to ack this patch as well your voice would be needed again=
-=2E
->
->FWIW I expect these patches to get merged via the qemu-trivial@ tree
->once the 7=2E1 development window opens=2E
+All the other tools can be prefixed/overriden by distro builders, but
+strings. This makes the build work in build packages like the Exherbo
+one.
 
-Excellent!
+Signed-off-by: Julien Durillon <julien.durillon@clever-cloud.com>
+---
+ configure | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Best regards,
-Bernhard
+diff --git a/configure b/configure
+index 6d9cb23ac5..c891b8c6ea 100755
+--- a/configure
++++ b/configure
+@@ -427,6 +427,7 @@ ranlib="${RANLIB-${cross_prefix}ranlib}"
+ nm="${NM-${cross_prefix}nm}"
+ smbd="$SMBD"
+ strip="${STRIP-${cross_prefix}strip}"
++strings="${STRINGS-${cross_prefix}strings}"
+ windres="${WINDRES-${cross_prefix}windres}"
+ pkg_config_exe="${PKG_CONFIG-${cross_prefix}pkg-config}"
+ query_pkg_config() {
+@@ -1671,9 +1672,9 @@ int main(int argc, char *argv[])
+ EOF
+ 
+ if compile_prog ; then
+-    if strings -a $TMPE | grep -q BiGeNdIaN ; then
++    if $strings -a $TMPE | grep -q BiGeNdIaN ; then
+         bigendian="yes"
+-    elif strings -a $TMPE | grep -q LiTtLeEnDiAn ; then
++    elif $strings -a $TMPE | grep -q LiTtLeEnDiAn ; then
+         bigendian="no"
+     else
+         echo big/little test failed
+-- 
+2.35.1
 
 
