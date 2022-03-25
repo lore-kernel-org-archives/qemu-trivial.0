@@ -1,61 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nXkby-0006Zs-Om
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Mar 2022 10:08:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36138)
+	id 1nXkc2-0006c4-37
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Mar 2022 10:08:22 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:42230)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <julien.durillon@clever-cloud.com>)
- id 1nXhhG-0005Ti-K6
- for qemu-trivial@nongnu.org; Fri, 25 Mar 2022 07:01:34 -0400
-Received: from [2a00:1450:4864:20::42a] (port=33687
- helo=mail-wr1-x42a.google.com)
+ id 1nXiAE-0000Hn-Dz
+ for qemu-trivial@nongnu.org; Fri, 25 Mar 2022 07:31:30 -0400
+Received: from [2a00:1450:4864:20::430] (port=38445
+ helo=mail-wr1-x430.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <julien.durillon@clever-cloud.com>)
- id 1nXhhE-0002b8-Sd
- for qemu-trivial@nongnu.org; Fri, 25 Mar 2022 07:01:34 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id r7so9241382wrc.0
- for <qemu-trivial@nongnu.org>; Fri, 25 Mar 2022 04:01:32 -0700 (PDT)
+ id 1nXiAC-0007u2-Le
+ for qemu-trivial@nongnu.org; Fri, 25 Mar 2022 07:31:29 -0400
+Received: by mail-wr1-x430.google.com with SMTP id t11so10464557wrm.5
+ for <qemu-trivial@nongnu.org>; Fri, 25 Mar 2022 04:31:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=clever-cloud.com; s=google;
  h=message-id:from:date:subject:to;
  bh=JzMRFnGZnZPjbzpHwBxOiOnTHMiJqVxjiEBBhdfmpKs=;
- b=Q3esLJmFP8saInR4+YkSmgSmvrZDOI2PWOhV5xgkAJv9JKk7bLXtcRu3m65/647o8o
- nktgf3KcAAUKPwwklp0Wr6/tXClPby41YGnWMzlQ7DtOalc1+sg+DqsfFAJ345+R1bIW
- JJd2BrAYiqMaxN82YuimosawyiNhP41Dztcv4fTRepkK+8d03BnJPd+bnKaGKGbTWKeg
- tR38ztvGz5w0C/Kr17o4d5wyBKYC5YtYYvDT2oRozTSp7RrRZ6nuatKSTCHIVvOsKxd5
- z0UyA/0Y3+tPYJ5mASiST4DVuGBRkcGQtrb2stJqIiq8ZG6STRaeDF45xMc7omEfdpZX
- aV/w==
+ b=XJW8dbpF/rlvzjCMhztDZ++eiC4UOQuMy3Rq5ITMgfhRnnTk8hSNxOyNI6PLUoXErW
+ 3cBSXTVNc02/qbUW77Y2uu8XO/iGtaeMhjyPby7MzsqPg5/RMMfOsgEX8F+jDgFKaPR0
+ Aklz1ihP7u1HOjLV2SwtNkr5eDygYxctAg5oNw+6xeAA4DZlV+cJ9XseuP9iyjy7ZnJr
+ /yyvNX9dC3ySLH0SwJAieu9Q2lSUnhj3rq0jDzrIVeeZg0CkComLrj3AUNGlmgz+02vB
+ yChbgSzkq6ighYwhkJMLnxYZ/u9pQogTHqIuz/tEfRAmZP3FIAFzpz20enebhlFVnjGG
+ cujQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:from:date:subject:to;
  bh=JzMRFnGZnZPjbzpHwBxOiOnTHMiJqVxjiEBBhdfmpKs=;
- b=YrytqorXBD51G2Bedr0cV0hyt2EIwDbXFSo6ytmhldDmoSnxuEy5kU2kUNfhqDhUXq
- IZ+bz6o7WUn3Nz+RpvryEl1YfGZrgTkqzZsZ+CcWlMuJwVP76BsGSb/ZNMvWlla29xHQ
- vV0SB44J289B2y3cVWQwIQ7nRDFpIeHeaGBtpSzQu7QO65SEKcsr8QipKT1/qpolYSEF
- eVg+Z3Qqao2f/QEWUNarZYmf6Yzh21P5eG0WOauT+c5Z+y5VvpqQvsJ4Ic8sYJZEu2bV
- P0dovw9HFiOh/b/BWmy8JGm1kwCXtdZQ/7gq970uDbnWqpJb7wji2oYBAYuMji8y0kJV
- EtFw==
-X-Gm-Message-State: AOAM530bCdLVF2PXXO5UeRQ4q7ipviQy7k73NjkCx4bw2U3T+szPt06V
- 3RJmPU2j4hEFU4igGAz7Kvh2EbYnjoNJLg==
-X-Google-Smtp-Source: ABdhPJxD3xLEiaOyFwq3o5VHRJWU0tT2/gP1/NNQYeNzH/ZF1z0eh+0Mm5LAO75OWLuosFPxNEK4Ig==
-X-Received: by 2002:adf:8122:0:b0:1e7:b111:3b92 with SMTP id
- 31-20020adf8122000000b001e7b1113b92mr8719935wrm.695.1648206090456; 
- Fri, 25 Mar 2022 04:01:30 -0700 (PDT)
+ b=5rs9ZWkQS+XOsU8DK9P6QcVlZrF68TyDY/5WaI33+sDIsRSdvglIwDbI7+qp5+hcDg
+ vHyND3E5ejMVaGMR0DbeTk0lgg+sExo2MgDs1sscnUwEdUhjSPF5cQ3v8VeOQWJHCbiV
+ 9zvQ7Bpu/8LWhNZ7+1RifK3dytputMwkInDE401D3l3qGG0D9qAUFJsg3b36cmxtZrU8
+ koiOoqrWplf0d9VmkMUu/KXpEmwRLz1jMKNDdNt0Fra5cl/OmZc+UzJnfr0lak++kLml
+ eN8E7KAMqWLDenQ5l6CgOwKW2kQUNtrVlZBCQ3bvirIiCu6Sv4NNdJyNGqTrexwOvPay
+ rRvQ==
+X-Gm-Message-State: AOAM532GwXnTOvKsJCFIPU2J4mbFyxAUw22XSyMizKZiC3v61LUQm1M2
+ uUANmgmKf3FwaBZAuzgBWDvL/cAwhycb5g==
+X-Google-Smtp-Source: ABdhPJzTJK/SjqXkyi1+UOQp0GTKNG/b3IP52jyt9dFh6Gpc6HXANHat2R5gCPoZZjW3v7MruWK8nw==
+X-Received: by 2002:a05:6000:178e:b0:205:7acf:8fb1 with SMTP id
+ e14-20020a056000178e00b002057acf8fb1mr8991760wrg.499.1648207886628; 
+ Fri, 25 Mar 2022 04:31:26 -0700 (PDT)
 Received: from localhost (2a01cb000397e40057c1e592a870c98e.ipv6.abo.wanadoo.fr.
  [2a01:cb00:397:e400:57c1:e592:a870:c98e])
  by smtp.gmail.com with ESMTPSA id
- z5-20020a05600c0a0500b0037fa93193a8sm4860228wmp.44.2022.03.25.04.01.29
+ p7-20020a5d48c7000000b002058b748dcdsm4787529wrs.114.2022.03.25.04.31.25
  for <qemu-trivial@nongnu.org>
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Mar 2022 04:01:29 -0700 (PDT)
-Message-ID: <623da109.1c69fb81.4c36a.3f15@mx.google.com>
+ Fri, 25 Mar 2022 04:31:26 -0700 (PDT)
+Message-ID: <623da80e.1c69fb81.8a40a.3b35@mx.google.com>
 From: Julien Durillon <julien.durillon@clever-cloud.com>
 Date: Fri, 25 Mar 2022 11:21:34 +0100
 Subject: [PATCH] Use prefixed strings command from distro.
 To: qemu-trivial@nongnu.org
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::42a
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=julien.durillon@clever-cloud.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=julien.durillon@clever-cloud.com; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
@@ -77,7 +77,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Mar 2022 11:01:35 -0000
+X-List-Received-Date: Fri, 25 Mar 2022 11:31:30 -0000
 
 All the other tools can be prefixed/overriden by distro builders, but
 strings. This makes the build work in build packages like the Exherbo
