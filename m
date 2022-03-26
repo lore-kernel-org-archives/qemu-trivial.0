@@ -1,71 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nXkc2-0006c4-37
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Mar 2022 10:08:22 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42230)
+	id 1nY9kl-0003sg-IF
+	for mharc-qemu-trivial@gnu.org; Sat, 26 Mar 2022 12:59:03 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35720)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <julien.durillon@clever-cloud.com>)
- id 1nXiAE-0000Hn-Dz
- for qemu-trivial@nongnu.org; Fri, 25 Mar 2022 07:31:30 -0400
-Received: from [2a00:1450:4864:20::430] (port=38445
- helo=mail-wr1-x430.google.com)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nY9kj-0003ra-NK; Sat, 26 Mar 2022 12:59:01 -0400
+Received: from [2a00:1450:4864:20::52c] (port=46997
+ helo=mail-ed1-x52c.google.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <julien.durillon@clever-cloud.com>)
- id 1nXiAC-0007u2-Le
- for qemu-trivial@nongnu.org; Fri, 25 Mar 2022 07:31:29 -0400
-Received: by mail-wr1-x430.google.com with SMTP id t11so10464557wrm.5
- for <qemu-trivial@nongnu.org>; Fri, 25 Mar 2022 04:31:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=clever-cloud.com; s=google;
- h=message-id:from:date:subject:to;
- bh=JzMRFnGZnZPjbzpHwBxOiOnTHMiJqVxjiEBBhdfmpKs=;
- b=XJW8dbpF/rlvzjCMhztDZ++eiC4UOQuMy3Rq5ITMgfhRnnTk8hSNxOyNI6PLUoXErW
- 3cBSXTVNc02/qbUW77Y2uu8XO/iGtaeMhjyPby7MzsqPg5/RMMfOsgEX8F+jDgFKaPR0
- Aklz1ihP7u1HOjLV2SwtNkr5eDygYxctAg5oNw+6xeAA4DZlV+cJ9XseuP9iyjy7ZnJr
- /yyvNX9dC3ySLH0SwJAieu9Q2lSUnhj3rq0jDzrIVeeZg0CkComLrj3AUNGlmgz+02vB
- yChbgSzkq6ighYwhkJMLnxYZ/u9pQogTHqIuz/tEfRAmZP3FIAFzpz20enebhlFVnjGG
- cujQ==
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nY9ki-0001tv-9s; Sat, 26 Mar 2022 12:59:01 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id z92so12403847ede.13;
+ Sat, 26 Mar 2022 09:58:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mj8A0RLRNIdvAuF8hgtnInpYRyCPwexDk40qwfPOsBQ=;
+ b=VudIedkzcmZpCKFNPLWeC9meXXGEiW8avS4VNLX8jIVMq6xJDK47smSxPdh7j1zXKa
+ aE8u3AMTLoygZbgNVKE7RRWsBh28Afpn/qsozjTQosph9P1r1uFeMtXmNnlXjdJv3eGV
+ qAWGYjTrg5KKGMxgZXQaSYn9FPoqA6svm8HJp8Qd2hTulf30q++vJQ7xfxz8MuU3Y8mE
+ vXMVhAwxhhx8xB+7LcWh+DEAdj4myHRulQv1PyP1VdLRdWvn+aWphw/xBXmJ5NFmT9NX
+ W/sDySyaTmaoUgty/l9xmyEK1S//42X60Ni/3TrLwwoU34EwKNaSARtCtO/eN1vqoi6V
+ /UEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:from:date:subject:to;
- bh=JzMRFnGZnZPjbzpHwBxOiOnTHMiJqVxjiEBBhdfmpKs=;
- b=5rs9ZWkQS+XOsU8DK9P6QcVlZrF68TyDY/5WaI33+sDIsRSdvglIwDbI7+qp5+hcDg
- vHyND3E5ejMVaGMR0DbeTk0lgg+sExo2MgDs1sscnUwEdUhjSPF5cQ3v8VeOQWJHCbiV
- 9zvQ7Bpu/8LWhNZ7+1RifK3dytputMwkInDE401D3l3qGG0D9qAUFJsg3b36cmxtZrU8
- koiOoqrWplf0d9VmkMUu/KXpEmwRLz1jMKNDdNt0Fra5cl/OmZc+UzJnfr0lak++kLml
- eN8E7KAMqWLDenQ5l6CgOwKW2kQUNtrVlZBCQ3bvirIiCu6Sv4NNdJyNGqTrexwOvPay
- rRvQ==
-X-Gm-Message-State: AOAM532GwXnTOvKsJCFIPU2J4mbFyxAUw22XSyMizKZiC3v61LUQm1M2
- uUANmgmKf3FwaBZAuzgBWDvL/cAwhycb5g==
-X-Google-Smtp-Source: ABdhPJzTJK/SjqXkyi1+UOQp0GTKNG/b3IP52jyt9dFh6Gpc6HXANHat2R5gCPoZZjW3v7MruWK8nw==
-X-Received: by 2002:a05:6000:178e:b0:205:7acf:8fb1 with SMTP id
- e14-20020a056000178e00b002057acf8fb1mr8991760wrg.499.1648207886628; 
- Fri, 25 Mar 2022 04:31:26 -0700 (PDT)
-Received: from localhost (2a01cb000397e40057c1e592a870c98e.ipv6.abo.wanadoo.fr.
- [2a01:cb00:397:e400:57c1:e592:a870:c98e])
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mj8A0RLRNIdvAuF8hgtnInpYRyCPwexDk40qwfPOsBQ=;
+ b=cnxqLuvbXKtJko16a64L/r3VY4bYRGSjc9Nu37ODPhbKJZ93GqAaYfJCkaT5L6I5dH
+ +Qy0RxwG9vxJTEvllrWZxcZQMF2yReGQev6Mn2agI8bW7x2Fc0I0G0ZGs82XRaEf6b1u
+ FYtA0a8ODGPGquIFWe0y6clo4znsTzDj3p/Lc+l36vAQuXGuk2zClJOWZnj/AFRqP9Qs
+ 2G3qW+aZn4moSqEu8d6cfaFzv46rf/Ui477TtnIEXxNCUq70Nw3b0a7j9qngsJgJZNA8
+ ffvpVu1Z8+de7j9QedP+NHKkoSdIkuFNPvVcKnX4MNFFr42unMHvd+DWf+phGQG6N6VO
+ L2dA==
+X-Gm-Message-State: AOAM531BM2fqsPmeJPU29RLy7vVdax24H2xLgQkRbugggmLPYSCEdzoQ
+ UY8kjl9YBi+TFv3nwR+8aP+Y5Eoox2w=
+X-Google-Smtp-Source: ABdhPJwpaKpN2SLviNqSkrKGGaoo27iFbtmd02Z+9nBx9SBKgvE51utb8uiM2TLaZgy5tGSyyJNNOQ==
+X-Received: by 2002:a05:6402:1906:b0:418:ff14:62b8 with SMTP id
+ e6-20020a056402190600b00418ff1462b8mr5616206edz.40.1648313937680; 
+ Sat, 26 Mar 2022 09:58:57 -0700 (PDT)
+Received: from localhost.localdomain
+ (dynamic-089-012-231-111.89.12.pool.telefonica.de. [89.12.231.111])
  by smtp.gmail.com with ESMTPSA id
- p7-20020a5d48c7000000b002058b748dcdsm4787529wrs.114.2022.03.25.04.31.25
- for <qemu-trivial@nongnu.org>
+ x12-20020a50d9cc000000b0040f70fe78f3sm4515930edj.36.2022.03.26.09.58.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Mar 2022 04:31:26 -0700 (PDT)
-Message-ID: <623da80e.1c69fb81.8a40a.3b35@mx.google.com>
-From: Julien Durillon <julien.durillon@clever-cloud.com>
-Date: Fri, 25 Mar 2022 11:21:34 +0100
-Subject: [PATCH] Use prefixed strings command from distro.
-To: qemu-trivial@nongnu.org
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::430
+ Sat, 26 Mar 2022 09:58:57 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 0/2] Confine igd-passthrough-isa-bridge to XEN
+Date: Sat, 26 Mar 2022 17:58:22 +0100
+Message-Id: <20220326165825.30794-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::52c
  (failed)
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=julien.durillon@clever-cloud.com; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -6
 X-Spam_score: -0.7
 X-Spam_bar: /
 X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 25 Mar 2022 10:08:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,41 +79,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Mar 2022 11:31:30 -0000
+X-List-Received-Date: Sat, 26 Mar 2022 16:59:02 -0000
 
-All the other tools can be prefixed/overriden by distro builders, but
-strings. This makes the build work in build packages like the Exherbo
-one.
+This patch series changes the "igd-passthrough-isa-bridge" device only to be
+provided if CONFIG_XEN_PCI_PASSTHROUGH is true. With it xen_pt gets decoupled
+from i386/pc.
 
-Signed-off-by: Julien Durillon <julien.durillon@clever-cloud.com>
----
- configure | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Bernhard Beschow (2):
+  hw/xen/xen_pt: Confine igd-passthrough-isa-bridge to XEN
+  hw/xen/xen_pt: Resolve igd_passthrough_isa_bridge_create() indirection
 
-diff --git a/configure b/configure
-index 6d9cb23ac5..c891b8c6ea 100755
---- a/configure
-+++ b/configure
-@@ -427,6 +427,7 @@ ranlib="${RANLIB-${cross_prefix}ranlib}"
- nm="${NM-${cross_prefix}nm}"
- smbd="$SMBD"
- strip="${STRIP-${cross_prefix}strip}"
-+strings="${STRINGS-${cross_prefix}strings}"
- windres="${WINDRES-${cross_prefix}windres}"
- pkg_config_exe="${PKG_CONFIG-${cross_prefix}pkg-config}"
- query_pkg_config() {
-@@ -1671,9 +1672,9 @@ int main(int argc, char *argv[])
- EOF
- 
- if compile_prog ; then
--    if strings -a $TMPE | grep -q BiGeNdIaN ; then
-+    if $strings -a $TMPE | grep -q BiGeNdIaN ; then
-         bigendian="yes"
--    elif strings -a $TMPE | grep -q LiTtLeEnDiAn ; then
-+    elif $strings -a $TMPE | grep -q LiTtLeEnDiAn ; then
-         bigendian="no"
-     else
-         echo big/little test failed
+ hw/i386/pc_piix.c        | 118 -------------------------------------
+ hw/xen/xen_pt.c          |  12 ----
+ hw/xen/xen_pt.h          |   2 +
+ hw/xen/xen_pt_graphics.c | 122 +++++++++++++++++++++++++++++++++++++++
+ include/hw/i386/pc.h     |   1 -
+ 5 files changed, 124 insertions(+), 131 deletions(-)
+
 -- 
 2.35.1
 
