@@ -1,84 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nYrAa-0005cU-Aj
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Mar 2022 11:20:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58466)
+	id 1nYy27-0002Li-Ib
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Mar 2022 18:40:19 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1nYrAZ-0005c6-1P
- for qemu-trivial@nongnu.org; Mon, 28 Mar 2022 11:20:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44853)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1nYrAU-0000Re-9I
- for qemu-trivial@nongnu.org; Mon, 28 Mar 2022 11:20:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648480829;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=XqQhkl4K9hzigj8pIPh9KD+EcMNejVLlcJfRvHSvwE4=;
- b=FX51Pe4MQqNFB3WfcKZtfYi2Tk/nRB0BELkCRJfTwZ4JyEjtRlzeZVvjYmLiSJCDxLnibB
- GIwiWeYLTDf1JTUmgdvNMqRQk0AbBhdkEyB+T0E5e/VxVG8fyoUdYekfujb5sM39Fl1iry
- eYbXLufxh3wh4kBFWwfINykv+FNLoEU=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-351-_yuH8TNdO6qr29t45hJm0w-1; Mon, 28 Mar 2022 11:20:27 -0400
-X-MC-Unique: _yuH8TNdO6qr29t45hJm0w-1
-Received: by mail-qv1-f72.google.com with SMTP id
- j8-20020ad454c8000000b0044111c17099so11625720qvx.0
- for <qemu-trivial@nongnu.org>; Mon, 28 Mar 2022 08:20:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nYy21-0002Kj-Qd; Mon, 28 Mar 2022 18:40:16 -0400
+Received: from [2607:f8b0:4864:20::102d] (port=42805
+ helo=mail-pj1-x102d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nYy20-0007kn-G3; Mon, 28 Mar 2022 18:40:13 -0400
+Received: by mail-pj1-x102d.google.com with SMTP id
+ o3-20020a17090a3d4300b001c6bc749227so904523pjf.1; 
+ Mon, 28 Mar 2022 15:40:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=5f08lrK2wrk1QE2cEOHbw92XZ93/BagAWRMrcUYlX6c=;
+ b=MPamJEzKaJIZENzA4f9409cYBP/+TAAXn83PQlA1ASRyben7omfjUK7fWy9QbCTO/a
+ R8OOVDA5q/U8PW+TIm2FRzJC6wZlMMGmmmMspeCw9nzo5NT/BFJjk3+jvaadSLTreOJl
+ hPuCmFhDBZSxhk4E22eYSgw7ViljSx5evunSEZEnKKQS+539RZTmFLU+zQG19F2CMugG
+ ak/5pT0xGX2g4T3f1V6Y6cdrWj9etge0PQbWnfnheTOWfFR3Uq8S2sYQW99xhP195blP
+ y5iIxQ1mPZOWqoZoo83Qbdq0PKV7BYkgMuoamaS22iYgid1BfCTlcYeQQBuyl24FyGnl
+ MUXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=XqQhkl4K9hzigj8pIPh9KD+EcMNejVLlcJfRvHSvwE4=;
- b=q8qyMbNSMR1NPsDG6kWlGesTwOEbrpZKICE5vdj/ujI2BEyK8mugJMKZ2S92HSn30P
- TwKnmBFbJp0IryQciRUnXTMoOSq+7URbVqnWnLGtiK7oDqgb1Yz9fXvwjqJUfVlt+shi
- VV2SVnXsHIsJcHzvQHgUoGLOwWWORnocoX8uUBjAWEWzDvd0nrQgZjdGXa+EthfBmapj
- lkrfFovsrZ6BwracmnckACL6UCksb4mPX4WqpNSCCH/0CxLvGjsaZgDHan3DfBiEAa7B
- +6sMMFwRhZd09rj1NTIrFKpWRlRYzFdtajxISnlfHqjFXydnY50K9GKG7gkqUajFGCZj
- YSew==
-X-Gm-Message-State: AOAM531ba52LdYv/5YWzP0XlIhDfY1ke4WWysj9bh1nVsNs/yiOs9c6M
- fA5fEB8dJDQWmNAiUoC6Jjmjx2/yiFpu2zi+7BvvXjsu4zcKUsioySqu2r5siGcSOfYIgUTVqXi
- rls4VP/9xhbs/nbCQ4g==
-X-Received: by 2002:a05:622a:1793:b0:2e1:ba41:ed2 with SMTP id
- s19-20020a05622a179300b002e1ba410ed2mr22044768qtk.238.1648480826634; 
- Mon, 28 Mar 2022 08:20:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxCxtEQ5rQE2Jyki1NBSuIViSi942YXAcGTBCOtSlRlbyaodoT/bHZqIs0YSpBSvpkN0t0F0A==
-X-Received: by 2002:a05:622a:1793:b0:2e1:ba41:ed2 with SMTP id
- s19-20020a05622a179300b002e1ba410ed2mr22044750qtk.238.1648480826416; 
- Mon, 28 Mar 2022 08:20:26 -0700 (PDT)
-Received: from step1.redhat.com (host-79-46-200-67.retail.telecomitalia.it.
- [79.46.200.67]) by smtp.gmail.com with ESMTPSA id
- m1-20020ae9e001000000b0067d430bba8asm8013298qkk.88.2022.03.28.08.20.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Mar 2022 08:20:25 -0700 (PDT)
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>
-Subject: [PATCH] vhost-vdpa: fix typo in a comment
-Date: Mon, 28 Mar 2022 17:20:22 +0200
-Message-Id: <20220328152022.73245-1-sgarzare@redhat.com>
-X-Mailer: git-send-email 2.35.1
+ bh=5f08lrK2wrk1QE2cEOHbw92XZ93/BagAWRMrcUYlX6c=;
+ b=hQNVmv1LCrxQ3pMdjTGfJMBPr+oVDCX0ugPY8cfUCAQE4sOHvTcTcF1Cho4Cks65wa
+ xwQAZrT+7eTZgnFb5VL0LB17O138yNGpqhnE5JiGC7pxmgItAddvswkM8KQFDPNXNZMn
+ /8K0W4VOpNN6G2/rSFtlGlTWz+MaHHUO8x1caNaFR1q/0x63YVWJyNGA2TTZsqTAlcr8
+ 9KpyHKvP9HZNd2xTMUFv4FCqMq+VbFvAUfUx76Zo2g30gd0PlVJh9foa/5zqWVEQWQGR
+ VYH1Bpc5Gt9/OyHv0K2QDX3+QN91Kk5xLs3XwBRb5le/QQtUr2vaWza2QPy8G0Ch5M7j
+ tf7A==
+X-Gm-Message-State: AOAM530PZGwQqeTwNBB9hyszHJjFKHYFsTH71tmsZvsansOuu4EcX/Fe
+ 9gTVX6xSt9g/XfZ+iUVoief9eOSzsnk7Ww==
+X-Google-Smtp-Source: ABdhPJxlPENaPkXyN26gg7tsETISOb+FGtnyChR/pS66obCJ7ekWM1OnV3af262pU9p0jiiKYq145Q==
+X-Received: by 2002:a17:902:9f98:b0:154:a809:7f0f with SMTP id
+ g24-20020a1709029f9800b00154a8097f0fmr27478208plq.118.1648507208918; 
+ Mon, 28 Mar 2022 15:40:08 -0700 (PDT)
+Received: from ?IPV6:2600:70ff:f07f:0:3c84:1cd:456b:b750?
+ ([2600:70ff:f07f:0:3c84:1cd:456b:b750])
+ by smtp.gmail.com with ESMTPSA id
+ f30-20020a63755e000000b00381f6b7ef30sm13858995pgn.54.2022.03.28.15.40.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 28 Mar 2022 15:40:08 -0700 (PDT)
+Message-ID: <f82759fb-ba6c-4920-23c3-8d4ff8d0b81d@gmail.com>
+Date: Tue, 29 Mar 2022 00:40:04 +0200
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sgarzare@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [PATCH] vhost-vdpa: fix typo in a comment
+Content-Language: en-US
+To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20220328152022.73245-1-sgarzare@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <20220328152022.73245-1-sgarzare@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sgarzare@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::102d
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102d.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,29 +86,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Mar 2022 15:20:35 -0000
+X-List-Received-Date: Mon, 28 Mar 2022 22:40:16 -0000
 
-Replace vpda with vdpa.
+On 28/3/22 17:20, Stefano Garzarella wrote:
+> Replace vpda with vdpa.
+> 
+> Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+> ---
+>   hw/virtio/vhost-vdpa.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
----
- hw/virtio/vhost-vdpa.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
-index c5ed7a3779..8adf7c0b92 100644
---- a/hw/virtio/vhost-vdpa.c
-+++ b/hw/virtio/vhost-vdpa.c
-@@ -299,7 +299,7 @@ static void vhost_vdpa_listener_region_del(MemoryListener *listener,
-     memory_region_unref(section->mr);
- }
- /*
-- * IOTLB API is used by vhost-vpda which requires incremental updating
-+ * IOTLB API is used by vhost-vdpa which requires incremental updating
-  * of the mapping. So we can not use generic vhost memory listener which
-  * depends on the addnop().
-  */
--- 
-2.35.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
