@@ -1,57 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nZZRx-0001Vr-RA
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Mar 2022 10:37:29 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47344)
+	id 1nZZrP-0004wG-Vc
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Mar 2022 11:03:47 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nZZRx-0001VZ-1u; Wed, 30 Mar 2022 10:37:29 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:38909)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1nZZRv-0003ne-8y; Wed, 30 Mar 2022 10:37:28 -0400
-Received: from [192.168.100.1] ([82.142.13.234]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MXHBo-1nWjFS19UU-00YjQt; Wed, 30 Mar 2022 16:37:16 +0200
-Message-ID: <9ec8f48b-1108-5bb8-cdb5-58257def3fc9@vivier.eu>
-Date: Wed, 30 Mar 2022 16:37:14 +0200
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1nZZrO-0004vl-En; Wed, 30 Mar 2022 11:03:46 -0400
+Received: from [2a00:1450:4864:20::62d] (port=46939
+ helo=mail-ej1-x62d.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1nZZrM-0004yL-Qs; Wed, 30 Mar 2022 11:03:46 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id c10so23706696ejs.13;
+ Wed, 30 Mar 2022 08:03:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=35KXp0SLlynsaLeljregrZKFz/RxNBR2Dfi7fdshI1k=;
+ b=Gdh23vP18H/eKgI2JJxi+2tCgnZ/tWfWb9eWcZSkg48Q/90N2cfjwh7US6Eqds32kw
+ 7vtFbYYarLgFh3zMI5LBGlnoT08Bv6IwNZvsuBHv6bz/+SmJqOac9Zwk8mwP1InwW87c
+ 4iOZpzVlQ4o+1Qb7HzCb9LdjjRIQuqUr6Ujy8Lrxbg0+ZhLmJxx3pEgkNRK4rEBoDTc5
+ SXifHIgXV1lGi+OKCKkn646jnUwTjQp5hhoJnWdgSoOwv5KAQBkf0A5hkbwvNSQ/thhR
+ Hjv+oUIVFudFNozxIUwEK83e/lmh0zG+6SISzzzsJmLrX1j/8MFhbyqFvn9ZOou2jSOX
+ 9vAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=35KXp0SLlynsaLeljregrZKFz/RxNBR2Dfi7fdshI1k=;
+ b=2UG1wcuLgFqoiWvMtD436rw3fQjCQEPhyiO8KDEo9x0CHsNlivRARaMaKWvZJFrFrt
+ hj/97er6X0OUdh/zMlywhEZBmO8Ace+IQsMTJqcPQ1zkNNFc3aXQiJSPmtSkrmUHDPpo
+ Do4FSFl+JI8nE+45MSvdbCsOPB2n36EH+hq+BMaOO1GYGeY1eecx7c79p0Qqu34PZKjn
+ tDGCwjFIq1NBpLkMf2VPtd3NNQw03jCs7k9XnnCKyqMSXqOOuv0Mu99HEvBYjVhM5SWW
+ l9L55vuK+BJGTXNNzeK3t9eOplWZzQGnsrNFdb2XA4JI4MqLf0fnoe5bszkmjjWxpRA5
+ Kx+w==
+X-Gm-Message-State: AOAM5333UxyvlX8w+3yg5eIcbt8njpV/gDXL7ky9MQm042pGNrLEdssP
+ yGjQvgduFlE4sPsXUOMkaiM=
+X-Google-Smtp-Source: ABdhPJzXN+hE9eBKLMDwOSDV69DJ1wr2nkGoSsdz7wJjsfxGf5oQ8qswg1UdlkKk8OddAiZeIyu1+Q==
+X-Received: by 2002:a17:906:9f25:b0:6e1:205a:c47 with SMTP id
+ fy37-20020a1709069f2500b006e1205a0c47mr15217587ejc.281.1648652617331; 
+ Wed, 30 Mar 2022 08:03:37 -0700 (PDT)
+Received: from ?IPV6:2001:b07:6468:f312:8ca6:a836:a237:fed1?
+ ([2001:b07:6468:f312:8ca6:a836:a237:fed1])
+ by smtp.googlemail.com with ESMTPSA id
+ u26-20020a05640207da00b00419a14928e5sm7881273edy.28.2022.03.30.08.03.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Mar 2022 08:03:36 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <b82541f6-46f2-07d3-0e8b-dcd47ad90bb5@redhat.com>
+Date: Wed, 30 Mar 2022 17:03:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH] linux-user/sh4/termbits: Silence warning about
- TIOCSER_TEMT double definition
-Content-Language: fr
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>
-References: <20220330134302.979686-1-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220330134302.979686-1-thuth@redhat.com>
+Subject: Re: [PATCH for-7.0] meson.build: Fix dependency of page-vary-common.c
+ to config-poison.h
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+References: <20220330114808.942933-1-thuth@redhat.com>
+ <e4de3f54-e812-9393-0b13-504fb78063e2@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <e4de3f54-e812-9393-0b13-504fb78063e2@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:18YEMcJTp1RnOgvMgWOcOFXRECRxO/Blc8N6pNI2ZcL7YnIQvLM
- h8pOcgbzdNMFHhiwjTINMLAJVzbES+Gmd3L2kd40juBA9rODMznhL5KgqvZKqrY362d46UM
- 6kUBAjFT20KfD1knyg+ZWmOlP2eKCF6JX3SN3qbHNcwGpfnyI+x8lE7Qu30ucCBbMeWGzsq
- SylVERz9THaTeitXe9/Tw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Gq6hWYTFtDc=:ey/Ou/3VahFU0HOqHaQW2G
- FE+ICzB03ph+WhPrcrPtjRZu07c9VfuuLs0kwHzvyVDjJ+lGdmbYnOT9p3WcqzVC02NWFhkRP
- J/H39GX5xZ5v0VIM8i9QjtDKYc4KRdkA49kp2Bwhv82KD1E8s1ExNBsCe3MGJYWz9Eha4wofP
- PdyY2U8Bgaz9PYkDhPC0kfKdqRkUCVTl5ynbtKRdwezdl3ZDWwXFzHVfjzkNmpj6VdUWOE0gl
- 4uzgYsAanX8ZIQaSN/UcNnyp4QX0QzGaMEyfCzzIuF2OgHwApsDEcuYW4zHEOa4+ttL6WqndP
- RTjggl0FSSskOV3wJnQhisyivfGu9orqbEmgfYvAmIypDNlqWsQwjSkw9Td6oN+vDxWttzMmf
- +74RhmlvAxcm549/XG+IniELNaJ0RMDbkbXrygvpS7xwALNixk3BTxLMggk2H/2INj8pI0ZGd
- bs64kmF34Wr8W24aGOCIhwntwoBZR9p1ige6eGNgZELnOLYQ+chw+imbumOsE7d0boPOUPGE/
- +MoCxFbZqZTgnEORBIvsiE5B/IMtWxKyQoFbbTP9GGmwdMPJFiJQIh5d5vBVpg016wBPWO2KP
- EeSCzrUfAfEib0ko8Ia0/UE0OHuqTzcS2Gzm/8i0HfNTI2A+AePeYQyECAsDz3w2WTrG5F395
- +eI6eZ+By5Hb6oKqrKoyhJJTYUpHYzimav23nSzXG4FoWhi8ICqOmC7A4Uu313wltDrE=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2a00:1450:4864:20::62d
+ (failed)
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=paolo.bonzini@gmail.com; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,43 +91,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Mar 2022 14:37:29 -0000
+X-List-Received-Date: Wed, 30 Mar 2022 15:03:46 -0000
 
-Le 30/03/2022 à 15:43, Thomas Huth a écrit :
-> Seen while compiling on Alpine:
+On 3/30/22 14:05, Philippe Mathieu-Daudé wrote:
+> Shouldn't add genh to all common_ss[]?
 > 
->   In file included from ../linux-user/strace.c:17:
->   In file included from ../linux-user/qemu.h:11:
->   In file included from ../linux-user/syscall_defs.h:1247:
->   ../linux-user/sh4/termbits.h:276:10: warning: 'TIOCSER_TEMT' macro redefined
->    [-Wmacro-redefined]
->   # define TIOCSER_TEMT    0x01   /* Transmitter physically empty */
->            ^
->   /usr/include/sys/ioctl.h:50:9: note: previous definition is here
->   #define TIOCSER_TEMT 1
->           ^
->   1 warning generated.
-> 
-> Add the TARGET_ prefix here, too, like we do it on the other architectures.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   linux-user/sh4/termbits.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/linux-user/sh4/termbits.h b/linux-user/sh4/termbits.h
-> index f91b5c51cf..eeabd2d7a9 100644
-> --- a/linux-user/sh4/termbits.h
-> +++ b/linux-user/sh4/termbits.h
-> @@ -273,7 +273,7 @@ ebugging only */
->   #define TARGET_TIOCSERGETLSR   TARGET_IOR('T', 89, unsigned int) /* 0x5459 */ /* Get line sta
->   tus register */
->     /* ioctl (fd, TIOCSERGETLSR, &result) where result may be as below */
-> -# define TIOCSER_TEMT    0x01   /* Transmitter physically empty */
-> +# define TARGET_TIOCSER_TEMT   0x01   /* Transmitter physically empty */
->   #define TARGET_TIOCSERGETMULTI TARGET_IOR('T', 90, int) /* 0x545A
->   */ /* Get multiport config  */
->   #define TARGET_TIOCSERSETMULTI TARGET_IOW('T', 91, int) /* 0x545B
+> Maybe the problem is how common_all[] is created?
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Generated headers have to be added to all sourcesets, or to all targets.
+
+common_ss is only used to build the object files in libcommon.fa.p, but 
+libcommon.fa also includes many other .fa build targets (via 
+"dependencies:").  All those build targets also need to have genh in 
+their build target as well, otherwise their object files might be built 
+before the generated headers.
+
+(The other question then is why we have libauthz, libcrypto, 
+libmigration, etc. instead of just using the sourcesets.  The answer for 
+that is that in Meson the static_library is the tool for object file 
+reuse.  If you include the same source file in many different executable 
+it is recompiled.  Therefore, if you used sourcesets, you would build 
+the object files once for each testsuite program that uses them).
+
+Paolo
 
