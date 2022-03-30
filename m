@@ -1,64 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nZYbT-0003cf-Fn
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Mar 2022 09:43:15 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33304)
+	id 1nZYub-0003Ul-A8
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Mar 2022 10:03:03 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38476)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nZYbR-0003Z0-Hq
- for qemu-trivial@nongnu.org; Wed, 30 Mar 2022 09:43:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:47150)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nZYbP-0000zt-Vg
- for qemu-trivial@nongnu.org; Wed, 30 Mar 2022 09:43:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648647791;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=UgfpGBW1y7I1vKTPKg8LSAn4vqTuR4OpQUr5z0J9T6c=;
- b=J8a07sqs9ulBzyPwr3qiaRTh+Uhwk7SfBxCGVcMwy99q/QDuV2nCy7D7xkNIUoDclwKEyL
- HLOsX09FtUsTzVfRUSCHGGdkmsvnsrNR6FhJwYjVANfc7DZRu9wERa9+nt/gPN5cU6tk3A
- U5DQAn4/XiG1sO0M1KekXZS7joY9bSM=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-187-aYxWVyUANNWlrXO2cKdJyQ-1; Wed, 30 Mar 2022 09:43:05 -0400
-X-MC-Unique: aYxWVyUANNWlrXO2cKdJyQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EBB0B3811A3F;
- Wed, 30 Mar 2022 13:43:04 +0000 (UTC)
-Received: from thuth.com (reserved-198-128.str.redhat.com [10.33.198.128])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 12D23141DECC;
- Wed, 30 Mar 2022 13:43:03 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>
-Subject: [PATCH] linux-user/sh4/termbits: Silence warning about TIOCSER_TEMT
- double definition
-Date: Wed, 30 Mar 2022 15:43:02 +0200
-Message-Id: <20220330134302.979686-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nZYuU-0003S2-Vd
+ for qemu-trivial@nongnu.org; Wed, 30 Mar 2022 10:02:55 -0400
+Received: from [2607:f8b0:4864:20::22f] (port=44711
+ helo=mail-oi1-x22f.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nZYuT-0001K0-BW
+ for qemu-trivial@nongnu.org; Wed, 30 Mar 2022 10:02:54 -0400
+Received: by mail-oi1-x22f.google.com with SMTP id t21so17257881oie.11
+ for <qemu-trivial@nongnu.org>; Wed, 30 Mar 2022 07:02:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=tx1SwE4iNljeOcZpcrMgADhaavxCRvqXXqyh57t5650=;
+ b=nQL2X8oq9dLlfvtRe1jwwgSEeQk2AHon6tdxLn7wRqW9GRT+e1HY169vsATBloEH+I
+ UADr0E6x6FFBfyl5R02AxzTYPLemEaIgTjhwD/ISvzMhgSvYgVPhq7eefnBin6NKRzVj
+ nkPYpQy2QEtKb/5P20DkMoFNhhDbV2h5LfYzXtfdjNWWW0815HHWmqqqAVbePrOslgd3
+ zn2VAVnthx7MBX8pY05ZsJOih9nfw933N/jwQ/L0NxM3hacigH8WORvmX2hAYITop2DL
+ hY1ZeM1ALdQ5P86qZ51YPjKIO2FavWcJrIYnB4mCw1LZ0WnbY/fDFHK7DgnZVbthS5WD
+ 1acw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=tx1SwE4iNljeOcZpcrMgADhaavxCRvqXXqyh57t5650=;
+ b=Qhs9wVNPQThuivI8tVErDvdGPA4f3t3ytv27VrNBJG/fztlmslmGpVWEJgRDN4j4Fl
+ tWDAP4gjzEWWvLmXIJyaf6lleAAgeTpWZEME05M1BasAhIk+H9AeqAToplOZd29CM+Cn
+ Kk+hMu5eDC4fsCFqDWV9CdYqzm1/tWyYODh9SiU5ft/5+japKY/YhYjUTl3Lcoc5RbGo
+ q5Chf2kb+p1q9DWjC9TroSmJuGRzxbGIEsBQWbwliZIx2qVgDaDrDl0L3SUmHa40I/QR
+ iDoq4nvJwV7SCSiZ7J7ggySr8n4iKEdPgcTAnEtX8DshWif8NYLprkkBo/uKcoV6Y0U4
+ KLmQ==
+X-Gm-Message-State: AOAM533Ut2PWX1/YaNngBYJMq1z9YChWrVWb+xhr3INE4Y1xI4bEv2Ll
+ ElNXo/G59BDiwQ/OU1lzM6Nk+wmo7Zl3as+F
+X-Google-Smtp-Source: ABdhPJw6zH8VlfBreUxlqC12yemySZq9a/MlgGzWQVrXo011AVoNauBzktTdpa9eLsCPjJd8TRJqZg==
+X-Received: by 2002:a05:6870:e253:b0:dd:a40e:ae92 with SMTP id
+ d19-20020a056870e25300b000dda40eae92mr2206453oac.233.1648648480619; 
+ Wed, 30 Mar 2022 06:54:40 -0700 (PDT)
+Received: from [192.168.249.227] (172.189-204-159.bestelclientes.com.mx.
+ [189.204.159.172]) by smtp.gmail.com with ESMTPSA id
+ c3-20020a056808138300b002f76b9a9ef6sm2070342oiw.10.2022.03.30.06.54.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Mar 2022 06:54:40 -0700 (PDT)
+Message-ID: <bab603b7-18d2-4a97-f426-6050211dbcc9@linaro.org>
+Date: Wed, 30 Mar 2022 07:54:35 -0600
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH] linux-user/sh4/termbits: Silence warning about
+ TIOCSER_TEMT double definition
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>
+References: <20220330134302.979686-1-thuth@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220330134302.979686-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::22f
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22f.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,43 +88,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Mar 2022 13:43:13 -0000
+X-List-Received-Date: Wed, 30 Mar 2022 14:02:55 -0000
 
-Seen while compiling on Alpine:
+On 3/30/22 07:43, Thomas Huth wrote:
+> Seen while compiling on Alpine:
+> 
+>   In file included from ../linux-user/strace.c:17:
+>   In file included from ../linux-user/qemu.h:11:
+>   In file included from ../linux-user/syscall_defs.h:1247:
+>   ../linux-user/sh4/termbits.h:276:10: warning: 'TIOCSER_TEMT' macro redefined
+>    [-Wmacro-redefined]
+>   # define TIOCSER_TEMT    0x01   /* Transmitter physically empty */
+>            ^
+>   /usr/include/sys/ioctl.h:50:9: note: previous definition is here
+>   #define TIOCSER_TEMT 1
+>           ^
+>   1 warning generated.
+> 
+> Add the TARGET_ prefix here, too, like we do it on the other architectures.
+> 
+> Signed-off-by: Thomas Huth<thuth@redhat.com>
+> ---
+>   linux-user/sh4/termbits.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
- In file included from ../linux-user/strace.c:17:
- In file included from ../linux-user/qemu.h:11:
- In file included from ../linux-user/syscall_defs.h:1247:
- ../linux-user/sh4/termbits.h:276:10: warning: 'TIOCSER_TEMT' macro redefined
-  [-Wmacro-redefined]
- # define TIOCSER_TEMT    0x01   /* Transmitter physically empty */
-          ^
- /usr/include/sys/ioctl.h:50:9: note: previous definition is here
- #define TIOCSER_TEMT 1
-         ^
- 1 warning generated.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Add the TARGET_ prefix here, too, like we do it on the other architectures.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- linux-user/sh4/termbits.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/linux-user/sh4/termbits.h b/linux-user/sh4/termbits.h
-index f91b5c51cf..eeabd2d7a9 100644
---- a/linux-user/sh4/termbits.h
-+++ b/linux-user/sh4/termbits.h
-@@ -273,7 +273,7 @@ ebugging only */
- #define TARGET_TIOCSERGETLSR   TARGET_IOR('T', 89, unsigned int) /* 0x5459 */ /* Get line sta
- tus register */
-   /* ioctl (fd, TIOCSERGETLSR, &result) where result may be as below */
--# define TIOCSER_TEMT    0x01   /* Transmitter physically empty */
-+# define TARGET_TIOCSER_TEMT   0x01   /* Transmitter physically empty */
- #define TARGET_TIOCSERGETMULTI TARGET_IOR('T', 90, int) /* 0x545A
- */ /* Get multiport config  */
- #define TARGET_TIOCSERSETMULTI TARGET_IOW('T', 91, int) /* 0x545B
--- 
-2.27.0
-
+r~
 
