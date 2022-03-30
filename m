@@ -1,72 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nZXNG-00005J-VD
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Mar 2022 08:24:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45264)
+	id 1nZYF3-0007FT-3c
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Mar 2022 09:20:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nZXNF-0008Vv-8b
- for qemu-trivial@nongnu.org; Wed, 30 Mar 2022 08:24:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:59783)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nZXNC-00082n-Ve
- for qemu-trivial@nongnu.org; Wed, 30 Mar 2022 08:24:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648643066;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fHQRIygcWdcl06Qz//+t22lhhLGXoQRkL8h4H4OThzI=;
- b=My0xcanL56lw799l5YgNofwQNedsylp5s7Xj+K9BHuoVn7eYQtbKohyjfNvUIeTVlifV6s
- Xfw55QneHTAdJkJ5/7cD4G/L9SFMT00NH4Y1EmCkYvxc2lb1b5+C+yfa5dix2EXEhOi5dS
- Zp4H+G88YFwRTUT8p3fa57bzEQje44o=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-450-oz3e--yvMBaeHG-DBkEbrQ-1; Wed, 30 Mar 2022 08:24:23 -0400
-X-MC-Unique: oz3e--yvMBaeHG-DBkEbrQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D5AF1C1C523;
- Wed, 30 Mar 2022 12:24:22 +0000 (UTC)
-Received: from [10.33.198.128] (reserved-198-128.str.redhat.com
- [10.33.198.128])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DC4EA400E420;
- Wed, 30 Mar 2022 12:24:21 +0000 (UTC)
-Message-ID: <7eb70fcb-0010-f291-6361-b270615ed7ef@redhat.com>
-Date: Wed, 30 Mar 2022 14:24:21 +0200
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nZYEg-0007C2-Vu; Wed, 30 Mar 2022 09:19:47 -0400
+Received: from [2607:f8b0:4864:20::f33] (port=43529
+ helo=mail-qv1-xf33.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nZYEb-0001O7-9S; Wed, 30 Mar 2022 09:19:42 -0400
+Received: by mail-qv1-xf33.google.com with SMTP id f3so16758447qvz.10;
+ Wed, 30 Mar 2022 06:19:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=sR3/cSIIxesi+h5rmG/bvJr8psg49kwOrfNyO+2JKF8=;
+ b=QIY6sqiGFJzsNUMXzhlxlpZHjjpVuY4TZ/tqBjTFxudF+QAyHeWLIoYzFQElUP7zah
+ 0X8EnQggt1Ajsqpj91y2ApXNDEBExBvaw7yI5pBb5NEoz+4PUrttfixVWpE7S71S6R/K
+ VGidcxpAzi+YAUqFUxLkwH5yYiCRHggCySL3dHHQ4/9itk8JDbRb0vppNokfr+/92pOQ
+ ccj+53YcVWdR6C8rNh6hNvupfrLzFl3BUidQPg4A/Z7NroDkoG0Y12ybSX0rdtY+dDAW
+ 9lKcCKlnQQ/cEZHfv9zoWCeg18JU8XAsIArnPvRO3p7qSKFaoyDgK+P5yw7bFgYmKlK4
+ rSLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=sR3/cSIIxesi+h5rmG/bvJr8psg49kwOrfNyO+2JKF8=;
+ b=vYFnHRb9pqxgSJhNNqBsN0ZmApcG1v9MOXHXqr4PDscoXupRiNQqoSCl5kFKcDAWgV
+ 7O9Z0+jYjGwbO21sZ/qyZD/t5agBDNUMHllgvHmfKR+mEgycXBeHhaO/70ucgxAT9AJ9
+ yCFoqrjpvXtInMo0/TGRL6tmSlblYWIy0X8PX3aXVfCinRWtxHflL4qubBmNJcKKepg3
+ 0eJNoolMkpf69WRMzzbGtMGJHakWtiViaZIZhhJi6VX7VXySjc1kjs88pd6Ly8ftlUQ/
+ 15lYCmoHuzAoc1NSwhWPFm9iviihHCJoDW6759S98s75w284YcabbpRb+1HhShVhJz+M
+ 0o2A==
+X-Gm-Message-State: AOAM531CNAPnPF7ieLu9oOWKTyrcQtRUiP31Dur2dyu7GhjMsEJssdzz
+ 9jR/ssfXoBsHNLc3KQ7b+mo=
+X-Google-Smtp-Source: ABdhPJx4qRQy1gMJrzIFPB6gA/HvaUUmNPw7U+sUJ+GPGT8SblIhJKAkAb4Ei6mCsaYxc2WZsqFPwg==
+X-Received: by 2002:a05:6214:2aa4:b0:440:f5fc:f1c4 with SMTP id
+ js4-20020a0562142aa400b00440f5fcf1c4mr31276434qvb.104.1648646376008; 
+ Wed, 30 Mar 2022 06:19:36 -0700 (PDT)
+Received: from ?IPV6:2600:70ff:f07f:0:403e:ab57:ee68:20ea?
+ ([2600:70ff:f07f:0:403e:ab57:ee68:20ea])
+ by smtp.gmail.com with ESMTPSA id
+ br13-20020a05620a460d00b00680d020b4cbsm5443687qkb.10.2022.03.30.06.19.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Mar 2022 06:19:35 -0700 (PDT)
+Message-ID: <212de8fd-2a18-fd54-201f-1119d1c7f992@gmail.com>
+Date: Wed, 30 Mar 2022 15:19:30 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH for-7.0] meson.build: Fix dependency of page-vary-common.c
- to config-poison.h
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philippe.mathieu.daude@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-References: <20220330114808.942933-1-thuth@redhat.com>
- <e4de3f54-e812-9393-0b13-504fb78063e2@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <e4de3f54-e812-9393-0b13-504fb78063e2@gmail.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [PATCH] MAINTAINERS: change Fred Konrad's email address
 Content-Language: en-US
+To: Fabien Chouteau <chouteau@adacore.com>,
+ Frederic Konrad <konrad@adacore.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>, f4bug@amsat.org,
+ Frederic Konrad <frederic.konrad@adacore.com>
+References: <1648643217-15811-1-git-send-email-frederic.konrad@adacore.com>
+ <CALQG_WjoK5QRNZWbz+7ZgRCPw7gUJy3J-tSZ7Mnz5RXqY+xZnA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <CALQG_WjoK5QRNZWbz+7ZgRCPw7gUJy3J-tSZ7Mnz5RXqY+xZnA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::f33
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f33;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-qv1-xf33.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.001, PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,69 +89,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Mar 2022 12:24:29 -0000
+X-List-Received-Date: Wed, 30 Mar 2022 13:19:48 -0000
 
-On 30/03/2022 14.05, Philippe Mathieu-Daudé wrote:
-> Hi Thomas,
+Cc'ing qemu-trivial@
+
+On 30/3/22 14:41, Fabien Chouteau wrote:
+> On Wed, Mar 30, 2022 at 2:31 PM Frederic Konrad <konrad@adacore.com 
+> <mailto:konrad@adacore.com>> wrote:
 > 
-> On 30/3/22 13:48, Thomas Huth wrote:
->> Before compiling page-vary-common.c, we have to make sure that
->> config-poison.h has been generated (which is in the "genh" list).
+>     frederic.konrad@adacore.com <mailto:frederic.konrad@adacore.com> and
+>     konrad@adacore.com <mailto:konrad@adacore.com> will stop working
+>     starting
+>     2022-04-01.
 > 
-> I am a bit confused, "config-poison.h" is include by "exec/poison.h"
-> which is included by "qemu/osdep.h" for all non-softmmu code (tools,
-> common and -user).
+>     Use my personal email instead.
 > 
-> Why is pagevary specific?
-
-pagevary is certainly not specific here, we're doing this
-all over the place in meson.build:
-
-$ grep -r static_library.*genh meson.build
-   libmodulecommon = static_library('module-common', files('module-common.c') + genh, pic: true, c_args: '-DBUILD_DSO')
-   pagevary = static_library('page-vary-common', sources: pagevary + genh,
-       sl = static_library(d + '-' + m, [genh, module_ss.sources()],
-libqom = static_library('qom', qom_ss.sources() + genh,
-libauthz = static_library('authz', authz_ss.sources() + genh,
-libcrypto = static_library('crypto', crypto_ss.sources() + genh,
-libio = static_library('io', io_ss.sources() + genh,
-libmigration = static_library('migration', sources: migration_files + genh,
-libblock = static_library('block', block_ss.sources() + genh,
-libblockdev = static_library('blockdev', blockdev_ss.sources() + genh,
-libqmp = static_library('qmp', qmp_ss.sources() + genh,
-libchardev = static_library('chardev', chardev_ss.sources() + genh,
-libhwcore = static_library('hwcore', sources: hwcore_ss.sources() + genh,
-
-> Shouldn't add genh to all common_ss[]?
 > 
-> Maybe the problem is how common_all[] is created?
+> Reviewed-by: Fabien Chouteau <chouteau@adacore.com 
 
-Maybe there is a better way to handle these dependencies ...
-but that's rather a bigger change and thus something for
-the 7.1 cycle, I think.
-
-  Thomas
-
-
->> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/948
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   meson.build | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/meson.build b/meson.build
->> index aef724ad3c..04ce33fef1 100644
->> --- a/meson.build
->> +++ b/meson.build
->> @@ -2881,7 +2881,7 @@ if get_option('b_lto')
->>     if get_option('cfi')
->>       pagevary_flags += '-fno-sanitize=cfi-icall'
->>     endif
->> -  pagevary = static_library('page-vary-common', sources: pagevary,
->> +  pagevary = static_library('page-vary-common', sources: pagevary + genh,
->>                               c_args: pagevary_flags)
->>     pagevary = declare_dependency(link_with: pagevary)
->>   endif
-> 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
