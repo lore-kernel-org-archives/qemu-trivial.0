@@ -1,55 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nZzMW-0005t9-Dm
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2022 14:17:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46878)
+	id 1nZzZY-0005do-Pi
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2022 14:31:04 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1nZzMT-0005pD-NL
- for qemu-trivial@nongnu.org; Thu, 31 Mar 2022 14:17:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:34044)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1nZzZS-0005Y6-9U
+ for qemu-trivial@nongnu.org; Thu, 31 Mar 2022 14:30:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:52430)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1nZzMR-0001t1-Os
- for qemu-trivial@nongnu.org; Thu, 31 Mar 2022 14:17:32 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1nZzZQ-0004bV-Ud
+ for qemu-trivial@nongnu.org; Thu, 31 Mar 2022 14:30:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648750651;
+ s=mimecast20190719; t=1648751456;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=4hRd/1JFpc+TVhaJIVv0c3bcCXb/Sz/bn/9yvm/rPhA=;
- b=DRcirdVwruW3qh+l3Nbi2BsPD2gsy64dL4S1+zfAxXu0EMA8AGk7FIcgOqr5FbSF578emt
- rvhxK8WT1dJWMM+wuBXUH99lcgJk2tu2AC22mp5fyhdRYJjRaoLV6vkNeRUS770xhcEXWK
- 9AmeOq9RIKShb+PQr/P9e7Fq9hGtqn8=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wqeRyMd4XKneb/AG7E6oEXxBnZkMFMHWYStW0LLVJuI=;
+ b=CwYAh5VuhqmHykI3nCxuh9GcYZP1g7MvwterSsDbalaW5/ft4/PwuC9rB8kx++XNQMu8Gy
+ 6sNxRvWNppYbfFfWxz5LtBH62DWWju6ddgQ1/+Y1IOpt8Vi5rOXHR1WuU70vyqowqdmPgH
+ nwuKL0D29oS+6yqL6qHYCioJzNHg1A4=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-245-4-FFH4RmOcuP7UphUGxzlQ-1; Thu, 31 Mar 2022 14:17:28 -0400
-X-MC-Unique: 4-FFH4RmOcuP7UphUGxzlQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9755E382221C;
- Thu, 31 Mar 2022 18:17:15 +0000 (UTC)
-Received: from eperezma.remote.csb (unknown [10.39.194.94])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 793031400B18;
- Thu, 31 Mar 2022 18:17:14 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, qemu-trivial@nongnu.org,
- Peter Xu <peterx@redhat.com>
-Subject: [PATCH] util: Return void on iova_tree_remove
-Date: Thu, 31 Mar 2022 20:17:12 +0200
-Message-Id: <20220331181712.535039-1-eperezma@redhat.com>
+ us-mta-257-W1SDMnd-OPqxo9ouCwNF4A-1; Thu, 31 Mar 2022 14:30:54 -0400
+X-MC-Unique: W1SDMnd-OPqxo9ouCwNF4A-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ f22-20020ac840d6000000b002dd4d87de21so147230qtm.23
+ for <qemu-trivial@nongnu.org>; Thu, 31 Mar 2022 11:30:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=wqeRyMd4XKneb/AG7E6oEXxBnZkMFMHWYStW0LLVJuI=;
+ b=0P2ES86GYL0EgyNHOhyYToHhhFxV1SvoEdqJwxTfSLvMugmcCYl0H20wM4hRJeYWbT
+ vMAg6l3t4NMyPrhyEMYXEyuc4fgeBJDfXv4EkxMOQAN8sairAO0JuC5mRK7g7807qQq2
+ WNxnGg4/8IM53OkRqBeumyop2DBklKsxANnU+eF3COqC5SwyNyswKLSpqUSnUCuBBz6r
+ No88mALsMdl0isruRoI/GfnuXpCHAeIL7UNujulz2IjI9qlSh3X5QFijxMe/zT8BowL9
+ +8Q33bBW9JDhyYYl039WDucCgSpwBl8aH7Zi0Wds8PRY52BcWj7sYyvnos+pYfgdSjcO
+ iy0w==
+X-Gm-Message-State: AOAM533s0ARoqOQXJqgyWoOKr3sM9KYxY0nIcIqiIyQWq+zr+KnWsHLV
+ xysffxekzpFe3O++6G2891asfT5CIlK5FanD/R5HBOkSP2XtIEKZdYsLNkaVYB+aoP3l54GhPNk
+ avlOotq/ca0qYYNzZFQ==
+X-Received: by 2002:a0c:f801:0:b0:427:47d3:3715 with SMTP id
+ r1-20020a0cf801000000b0042747d33715mr36818524qvn.46.1648751453107; 
+ Thu, 31 Mar 2022 11:30:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwc53MPLroqefayhAFrDHqYBmpIukK6Xpn1VNb9VM8bx/hX9hxYjd0l/oELM6xFuc7D7dACZw==
+X-Received: by 2002:a0c:f801:0:b0:427:47d3:3715 with SMTP id
+ r1-20020a0cf801000000b0042747d33715mr36818508qvn.46.1648751452899; 
+ Thu, 31 Mar 2022 11:30:52 -0700 (PDT)
+Received: from xz-m1.local
+ (cpec09435e3e0ee-cmc09435e3e0ec.cpe.net.cable.rogers.com. [99.241.198.116])
+ by smtp.gmail.com with ESMTPSA id
+ j1-20020a05620a288100b0067b1be3201bsm25816qkp.112.2022.03.31.11.30.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 31 Mar 2022 11:30:52 -0700 (PDT)
+Date: Thu, 31 Mar 2022 14:30:51 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Eugenio =?utf-8?B?UMOpcmV6?= <eperezma@redhat.com>
+Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] util: Return void on iova_tree_remove
+Message-ID: <YkXzWzb7Z9ee0hGF@xz-m1.local>
+References: <20220331181712.535039-1-eperezma@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+In-Reply-To: <20220331181712.535039-1-eperezma@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eperezma@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -71,54 +94,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Mar 2022 18:17:35 -0000
+X-List-Received-Date: Thu, 31 Mar 2022 18:30:59 -0000
 
-It always returns IOVA_OK so nobody uses it.
+On Thu, Mar 31, 2022 at 08:17:12PM +0200, Eugenio Pérez wrote:
+> It always returns IOVA_OK so nobody uses it.
+> 
+> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
 
-Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
----
- include/qemu/iova-tree.h | 4 +---
- util/iova-tree.c         | 4 +---
- 2 files changed, 2 insertions(+), 6 deletions(-)
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
-diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
-index c938fb0793..16bbfdf5f8 100644
---- a/include/qemu/iova-tree.h
-+++ b/include/qemu/iova-tree.h
-@@ -72,10 +72,8 @@ int iova_tree_insert(IOVATree *tree, const DMAMap *map);
-  * provided.  The range does not need to be exactly what has inserted,
-  * all the mappings that are included in the provided range will be
-  * removed from the tree.  Here map->translated_addr is meaningless.
-- *
-- * Return: 0 if succeeded, or <0 if error.
-  */
--int iova_tree_remove(IOVATree *tree, const DMAMap *map);
-+void iova_tree_remove(IOVATree *tree, const DMAMap *map);
-
- /**
-  * iova_tree_find:
-diff --git a/util/iova-tree.c b/util/iova-tree.c
-index 6dff29c1f6..fee530a579 100644
---- a/util/iova-tree.c
-+++ b/util/iova-tree.c
-@@ -164,15 +164,13 @@ void iova_tree_foreach(IOVATree *tree, iova_tree_iterator iterator)
-     g_tree_foreach(tree->tree, iova_tree_traverse, iterator);
- }
-
--int iova_tree_remove(IOVATree *tree, const DMAMap *map)
-+void iova_tree_remove(IOVATree *tree, const DMAMap *map)
- {
-     const DMAMap *overlap;
-
-     while ((overlap = iova_tree_find(tree, map))) {
-         g_tree_remove(tree->tree, overlap);
-     }
--
--    return IOVA_OK;
- }
-
- /**
---
-2.27.0
+-- 
+Peter Xu
 
 
