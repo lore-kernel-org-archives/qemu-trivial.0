@@ -1,43 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1na38F-0005a0-02
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2022 18:19:07 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37412)
+	id 1na38Q-0005mS-57
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2022 18:19:18 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1na38D-0005Zj-B1; Thu, 31 Mar 2022 18:19:05 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:34227)
+ id 1na38M-0005hb-N6; Thu, 31 Mar 2022 18:19:15 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:45897)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1na38A-00017V-4B; Thu, 31 Mar 2022 18:19:05 -0400
+ id 1na38L-00019J-8Z; Thu, 31 Mar 2022 18:19:14 -0400
 Received: from quad ([82.142.13.234]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MTznQ-1nQjir2wtu-00R3Wm; Fri, 01
- Apr 2022 00:18:59 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1M9WqY-1ndN2n2rLw-005WGQ; Fri, 01
+ Apr 2022 00:19:01 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 0/4] Trivial branch for 7.0 patches
-Date: Fri,  1 Apr 2022 00:18:53 +0200
-Message-Id: <20220331221857.433867-1-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Stefano Garzarella <sgarzare@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 3/4] vhost-vdpa: fix typo in a comment
+Date: Fri,  1 Apr 2022 00:18:56 +0200
+Message-Id: <20220331221857.433867-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220331221857.433867-1-laurent@vivier.eu>
+References: <20220331221857.433867-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:jZxejDmUZ1tj6aIQv1KYlThc2DdWySPWZZFtioHIPCcZrW7/o9g
- IhvGk/7qPPwPC0r9ndTTNY9u1nZ1ADDtxCG7B0VBXK8TMBbvdHjREV8htFVF5a4yK9xzGpx
- LeUdjapidNIAJKMXDpTXZNKjE4IKJ2EHEbetdRaohIbrBOiYu5vo131DZfTI1pcctmI93fS
- +DBwmFwgGPWbmg9Ntq3fQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ngyDjLKwd1w=:h+NXcrQELdIt1vsV+kUuGR
- uD1FtjTZalynRJeymCXvIZJNGVE/vdKAx52oj0jhTn09lIgVuQ4vkOhC+AuI4gxM68LhOMmOU
- NP7+p4mNGE8xhYnQH1wkvWaSswJow28ilniuFD5TljcmmZPtBPKMq3hQ+Fd65UNNnFsTk8SP4
- 1NinFyFxcY/+vX3LgEpuCUcnOm3c+9F4OQRFq6NIMLbhgNhk3beIMvyx1+SF4HQO3io2dfSZQ
- S0dZaeeTr/rphJ5ZMkZPigu2u4q3sHUd0Y7QPCPXT8+dPr9rHF5eR9ZGtpvw6jQGsFyyoUc60
- xmmQ7AdEIn69yv4oPokylkv1NgS9ejrRLGAoxhV55KAWvQE+c77Mn5fY012hwETyjyr3+CwCB
- /FoumXkiPFPVfDbJNEtM3xI3thqWh17p5uKmP2MMbOu2NYy8ra68TNei4ng6M6rvc+SVjN9zP
- lHN2KJptmvopmbBEp50cwAcUkrsVZuOcFz0ZaJK/cbv33f7MxFwzjMdw2668pk1LKilp8o0Iz
- 5XAo/FjbG252Bv1cxX9fXIOqHVLr+eSENTKt/xHxfEL7Z/x1KGB9oUds4kBqgu0JD2fAq353Y
- WcQj6f3Vv4ZbB9zQGIbk5dnYQNUZDmKdjTAsJgTR551A+wXyaZ09cb0JNDV8KirCpI4Lx9P2C
- obDKTKowQtMpSL/70ZHVvO9zmxIqpYccnAKa2KKi0w6hSaocj7tLyjgZ/Jq5WzLviIDU=
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:GazMYegsQxuda6DoJ2ADOD5A3QtMFxPrKj7lXHcJklviIf4xTHk
+ J3/9ALOz2IS0bJSq38vZiAFdKzHOz6zp9P3RhHRveg2nea68xMJlVcerNQIlmAYqHJ3Hu/s
+ pm9l4EsttIFfOqQjofCcttoJUPDBcM6swE3qZJh0VH0gYiChO/yJQQzw0T6Cbr4F7sxlkw2
+ /yy6qLJGNZU/v2PcqwfLg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:gUJDZR8uY+M=:4SyTGHS2M6JeuUQd5GSjiu
+ h+dpp+M46AD/egDHUbw3z96N+r/FTxF9qLTnqnIXH/hq7OPoAGx77gO1IsLJlO3qQ7rBijT5n
+ QmZ+cbHCgaKlWicitewVql6aYCFXkEBX1g4Qw3Z9gq24vwMBZLytHZN+GsDUNR7ymKScVe3po
+ zLaYaXg3GAedOyQ3aG0R8CXoJ7Nf2oUxOXcKvM/EoNSm0yspjiO9GvEb2zQj+xDfzWJl+NRZz
+ t+CUS8RAdupNnGDNlWI4NauuWObQ4NwGNpCzFeg7PQewZ5wMKLzn6pjqojVos6novuGETU3Zo
+ bt/SDJSjetmNGqLNdWCVukolDo0bx1XzvDFanldzER57zKdGHwkyGqCmvDqHw3x859jFdfq71
+ ZkY/WFtNDsIpiGMXlo85nw5KyL7w/WZZdZbvlnX2zoJSUhvKhSy/oxuiSqXmJzwTca2v9Lfjp
+ ExmBFN3kK9PSWqZazx8yAom4yHTo0UmMnbGP6snaoKPhJz7+310pRXnpLDoBXh/hTUWLRaaK3
+ xhYWljNnAK/GBFx3OxjkJTWQ/ZSjOhjjZ3K2OdKBBXKEw0TvxQYXHLyXtAkPnDmGrxywU4a5k
+ cIICXYaQe/pc4wdEU9y7NmdhXZScRo4BqjtvbQsbbK17kqhD1DGxh1bI5kAk3gVuhERlKocoP
+ 39r5MedJIsxm6t0m1AVp7iNeMKRMK1OytH0xdl+cQklmDuP9Rqfy1DAvvCdQ2fAAUtn0=
 Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -58,51 +61,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Mar 2022 22:19:05 -0000
+X-List-Received-Date: Thu, 31 Mar 2022 22:19:15 -0000
 
-The following changes since commit cace6c6f3aca7b88afc42995f90bbefb37a0ed57=
-:=0D
-=0D
-  Merge tag 'pull-qapi-2022-03-31' of git://repo.or.cz/qemu/armbru into sta=
-ging (2022-03-31 11:56:52 +0100)=0D
-=0D
-are available in the Git repository at:=0D
-=0D
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pu=
-ll-request=0D
-=0D
-for you to fetch changes up to 04cca669b237337cc8734788c3ad968aa8e0b57f:=0D
-=0D
-  tests/lcitool: Do not use a hard-coded /usr/bin/python3 as python interpr=
-eter (2022-03-31 21:32:49 +0200)=0D
-=0D
-----------------------------------------------------------------=0D
-Trivial branch pull request 20220401=0D
-=0D
-Fix sh4 linux-user build on Alpine=0D
-and some trivial updates=0D
-=0D
-----------------------------------------------------------------=0D
-=0D
-Stefano Garzarella (1):=0D
-  vhost-vdpa: fix typo in a comment=0D
-=0D
-Thomas Huth (3):=0D
-  linux-user/sh4/termbits: Silence warning about TIOCSER_TEMT double=0D
-    definition=0D
-  target/sh4: Remove old README.sh4 file=0D
-  tests/lcitool: Do not use a hard-coded /usr/bin/python3 as python=0D
-    interpreter=0D
-=0D
- hw/virtio/vhost-vdpa.c         |   2 +-=0D
- linux-user/sh4/termbits.h      |   2 +-=0D
- target/sh4/README.sh4          | 150 ---------------------------------=0D
- tests/lcitool/Makefile.include |   2 +-=0D
- tests/lcitool/refresh          |   2 +-=0D
- 5 files changed, 4 insertions(+), 154 deletions(-)=0D
- delete mode 100644 target/sh4/README.sh4=0D
-=0D
--- =0D
-2.35.1=0D
-=0D
+From: Stefano Garzarella <sgarzare@redhat.com>
+
+Replace vpda with vdpa.
+
+Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20220328152022.73245-1-sgarzare@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/virtio/vhost-vdpa.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+index c5ed7a377939..8adf7c0b92d9 100644
+--- a/hw/virtio/vhost-vdpa.c
++++ b/hw/virtio/vhost-vdpa.c
+@@ -299,7 +299,7 @@ static void vhost_vdpa_listener_region_del(MemoryListener *listener,
+     memory_region_unref(section->mr);
+ }
+ /*
+- * IOTLB API is used by vhost-vpda which requires incremental updating
++ * IOTLB API is used by vhost-vdpa which requires incremental updating
+  * of the mapping. So we can not use generic vhost memory listener which
+  * depends on the addnop().
+  */
+-- 
+2.35.1
+
 
