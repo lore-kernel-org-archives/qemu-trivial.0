@@ -1,54 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1na38Q-0005mS-57
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2022 18:19:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37438)
+	id 1na38R-0005ql-EF
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2022 18:19:21 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37460)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1na38M-0005hb-N6; Thu, 31 Mar 2022 18:19:15 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:45897)
+ id 1na38O-0005jP-Sz; Thu, 31 Mar 2022 18:19:17 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:54953)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1na38L-00019J-8Z; Thu, 31 Mar 2022 18:19:14 -0400
+ id 1na38N-00019W-Ah; Thu, 31 Mar 2022 18:19:16 -0400
 Received: from quad ([82.142.13.234]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1M9WqY-1ndN2n2rLw-005WGQ; Fri, 01
- Apr 2022 00:19:01 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MIdW7-1nmPbP11HR-00Ecx1; Fri, 01
+ Apr 2022 00:19:02 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefano Garzarella <sgarzare@redhat.com>,
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 3/4] vhost-vdpa: fix typo in a comment
-Date: Fri,  1 Apr 2022 00:18:56 +0200
-Message-Id: <20220331221857.433867-4-laurent@vivier.eu>
+Subject: [PULL 4/4] tests/lcitool: Do not use a hard-coded /usr/bin/python3 as
+ python interpreter
+Date: Fri,  1 Apr 2022 00:18:57 +0200
+Message-Id: <20220331221857.433867-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220331221857.433867-1-laurent@vivier.eu>
 References: <20220331221857.433867-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:GazMYegsQxuda6DoJ2ADOD5A3QtMFxPrKj7lXHcJklviIf4xTHk
- J3/9ALOz2IS0bJSq38vZiAFdKzHOz6zp9P3RhHRveg2nea68xMJlVcerNQIlmAYqHJ3Hu/s
- pm9l4EsttIFfOqQjofCcttoJUPDBcM6swE3qZJh0VH0gYiChO/yJQQzw0T6Cbr4F7sxlkw2
- /yy6qLJGNZU/v2PcqwfLg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gUJDZR8uY+M=:4SyTGHS2M6JeuUQd5GSjiu
- h+dpp+M46AD/egDHUbw3z96N+r/FTxF9qLTnqnIXH/hq7OPoAGx77gO1IsLJlO3qQ7rBijT5n
- QmZ+cbHCgaKlWicitewVql6aYCFXkEBX1g4Qw3Z9gq24vwMBZLytHZN+GsDUNR7ymKScVe3po
- zLaYaXg3GAedOyQ3aG0R8CXoJ7Nf2oUxOXcKvM/EoNSm0yspjiO9GvEb2zQj+xDfzWJl+NRZz
- t+CUS8RAdupNnGDNlWI4NauuWObQ4NwGNpCzFeg7PQewZ5wMKLzn6pjqojVos6novuGETU3Zo
- bt/SDJSjetmNGqLNdWCVukolDo0bx1XzvDFanldzER57zKdGHwkyGqCmvDqHw3x859jFdfq71
- ZkY/WFtNDsIpiGMXlo85nw5KyL7w/WZZdZbvlnX2zoJSUhvKhSy/oxuiSqXmJzwTca2v9Lfjp
- ExmBFN3kK9PSWqZazx8yAom4yHTo0UmMnbGP6snaoKPhJz7+310pRXnpLDoBXh/hTUWLRaaK3
- xhYWljNnAK/GBFx3OxjkJTWQ/ZSjOhjjZ3K2OdKBBXKEw0TvxQYXHLyXtAkPnDmGrxywU4a5k
- cIICXYaQe/pc4wdEU9y7NmdhXZScRo4BqjtvbQsbbK17kqhD1DGxh1bI5kAk3gVuhERlKocoP
- 39r5MedJIsxm6t0m1AVp7iNeMKRMK1OytH0xdl+cQklmDuP9Rqfy1DAvvCdQ2fAAUtn0=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:qpxTbYOVp2KVYXMAV9/hvcc3WGbZhNAQpd1zjP+BYsTTip83A9b
+ OH7kD1EjD4ZkZXotNd+upyTHp7dysx/i8qWok3Pl6dQgaV532oGRHRtaq30p5urr0/bF/AW
+ d40BuJchjomeNGh6z1Ud8rZW2lAWMMXj6Gzj3z/V1pHxKTIjg6iZJszMoLqnWx6ZhAv10+h
+ AmtNGxuO7ID1GLBSFrMuA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:83GrVj4BnbQ=:yCgduO7WA7H+UAnEu81oAb
+ ehaTMNnhFguzhrqfO3fuKtCZXEL2JGM+ExXWio9PeGEzjA10BtUD2MHfQOlHe6LB3keOpxwj+
+ LOQK5/bCeSQ4VDot3whEdq7XMyus6v2fPrwYMWlQmLB3wI/p0bMAyiCg0fXnm5UYfv4NaZkkC
+ YR6L58gDi4Bg4qLCuKxJ/MRBuWfS1wjCGQTrLA/j1fl1aVvf7GcAROFivdhyAdxJC+COE3VO8
+ 88pmEz8zwaai6VkgmiTUSBzZRWhXTmlQXkvXJi636HGCOChteXuUcCUEL6aUTimW823uJ0Zzk
+ DBbmnWrfbkx3SXA36RSnQZzfYSk6TTMo8pwRmAo8L6RmWdxnvT+KErBOH0fTIAYLIyXB2br/t
+ HitOvwD0souUrMYFSWOElMuSq7ZIiUZ9F/NZogr78oX/lSmxv7DF4s+PznWXVt6tnuiYLoYHi
+ MsQaH7mugzxDotNMq3Kw7alSrb9n2Ab/62OmqVZmiKJhWfC6uHXESCFNZ62uccI5BneiQhvMn
+ zQYaT+yf/vgO7ny8hiOox5zaLraFUTl+/93swC2FTC9JeJyIh8W4AHuJCp+MivuZtE9VMerIV
+ jZ8Cp1lWdik+8QzAb12WBJWMsrHJpSuMvuRKkZLuCcHw2RUnL6ReRaAU0Z9vrnqYAGsHAF3ta
+ i3Hspd3/1asvFsXKe6mdkbqnERusBSe5YdDybGOY0CcN97iyBAfbV0t9cql+4H9mtRls=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -61,33 +63,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Mar 2022 22:19:15 -0000
+X-List-Received-Date: Thu, 31 Mar 2022 22:19:17 -0000
 
-From: Stefano Garzarella <sgarzare@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 
-Replace vpda with vdpa.
+When running "make lcitool-refresh", this currently uses the hard-coded
+/usr/bin/python3 from the script's shebang line for running Python.
+That's bad, since neither /usr/bin/python3 is guaranteed to exist, nor
+does it honor the python interpreter that the user might have chosen
+while running the "configure" script. Thus let's rather use $(PYTHON)
+in the Makefile, and improve the shebang line in the script in case
+someone runs this directly.
 
-Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220328152022.73245-1-sgarzare@redhat.com>
+Message-Id: <20220329063958.262669-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/virtio/vhost-vdpa.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/lcitool/Makefile.include | 2 +-
+ tests/lcitool/refresh          | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
-index c5ed7a377939..8adf7c0b92d9 100644
---- a/hw/virtio/vhost-vdpa.c
-+++ b/hw/virtio/vhost-vdpa.c
-@@ -299,7 +299,7 @@ static void vhost_vdpa_listener_region_del(MemoryListener *listener,
-     memory_region_unref(section->mr);
- }
- /*
-- * IOTLB API is used by vhost-vpda which requires incremental updating
-+ * IOTLB API is used by vhost-vdpa which requires incremental updating
-  * of the mapping. So we can not use generic vhost memory listener which
-  * depends on the addnop().
-  */
+diff --git a/tests/lcitool/Makefile.include b/tests/lcitool/Makefile.include
+index 6b215adcd1e0..3780185c7c45 100644
+--- a/tests/lcitool/Makefile.include
++++ b/tests/lcitool/Makefile.include
+@@ -14,4 +14,4 @@ lcitool-help: lcitool
+ 
+ lcitool-refresh:
+ 	$(call quiet-command, cd $(SRC_PATH) && git submodule update --init tests/lcitool/libvirt-ci)
+-	$(call quiet-command, $(LCITOOL_REFRESH))
++	$(call quiet-command, $(PYTHON) $(LCITOOL_REFRESH))
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index 1f00281b443d..2d198ad281a0 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/env python3
+ #
+ # Re-generate container recipes
+ #
 -- 
 2.35.1
 
