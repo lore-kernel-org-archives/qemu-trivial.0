@@ -1,72 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1naAX9-0003lH-N0
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Apr 2022 02:13:23 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57098)
+	id 1naHtE-0007a3-Ee
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Apr 2022 10:04:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33262)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1naAX2-0003ko-Ah
- for qemu-trivial@nongnu.org; Fri, 01 Apr 2022 02:13:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46681)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1naAWy-0005UP-Qy
- for qemu-trivial@nongnu.org; Fri, 01 Apr 2022 02:13:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1648793588;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PL7MY0BNVQR7Jei3+AuRxYtexls7fs1oe7ohayOIIEs=;
- b=JznxtsYglD4scH5sukd6EevJiPWXa61B//IW09UbD4Ubh/sqHdxKs6Bx50kStKFNCXIyGV
- vwSSNYP1tSJxkk+3YlXl/n6rXiHsawxqkQ3a8w3DxPWe+a333FpYtwpST2JM+JDhtXz4zi
- f5XvOsOI2VNmtubsA4ab8yuPIt0/NdE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-296-5MBntIpEOv6lMDP_VXWPoQ-1; Fri, 01 Apr 2022 02:13:03 -0400
-X-MC-Unique: 5MBntIpEOv6lMDP_VXWPoQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 749A285A5BE;
- Fri,  1 Apr 2022 06:13:03 +0000 (UTC)
-Received: from [10.39.192.207] (unknown [10.39.192.207])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DE132401E67;
- Fri,  1 Apr 2022 06:13:01 +0000 (UTC)
-Message-ID: <5949a880-d383-af09-0812-8ce1c7bfd082@redhat.com>
-Date: Fri, 1 Apr 2022 08:13:00 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1naHtB-0007UW-Pa
+ for qemu-trivial@nongnu.org; Fri, 01 Apr 2022 10:04:34 -0400
+Received: from [2607:f8b0:4864:20::b31] (port=34628
+ helo=mail-yb1-xb31.google.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1naHt8-0005Kh-TH
+ for qemu-trivial@nongnu.org; Fri, 01 Apr 2022 10:04:33 -0400
+Received: by mail-yb1-xb31.google.com with SMTP id g9so5243615ybf.1
+ for <qemu-trivial@nongnu.org>; Fri, 01 Apr 2022 07:04:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YJ+i0hhsWk13jaMzuSAJwOsKApnofRVbnuRUAcpKqrA=;
+ b=GTMmewJWX5Lc+NiQBzPlnXBtEwahBpB7wQ9bX+gT0/YkYszamsNVlfBRd1xsO8Q+6R
+ Uhh/8x07Zu8XIyHtubkboQ8e6BwMjc//zPRser6JIWnwHSWhC3w+b7+mb5hqLjmGLY07
+ o7grIo8kqilW1RmVS+x+tEs+xaZbBNAM+TusJHCVwNJ8u89PlgQ/OQL6TT0qUy9dQJSH
+ Ea2jv2mFtbfSl59gxovBvROfyRxtt5uTXH/ZMbEZD6oAbItXoTTgp+PMNA1PP26MUu9n
+ apuetV+0SLZKvxw/bX3KJjxyYsM7EwEnhGEoazGV5Rl0Ccc0mjd2aCNmOpVEErW43jAg
+ VEQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YJ+i0hhsWk13jaMzuSAJwOsKApnofRVbnuRUAcpKqrA=;
+ b=jT6P1K3qJ/36g31gnb2emAQceDkRHUp1D/W4IgD2GqDxfHTAxRLKeQWeMv6Otlvq7u
+ UO8W/luqWxlD/i0hZQMBtc9tjwzdr036ezxNRZHAGnbGIMR/pQhvNtL4PGuOkUFeBZ/e
+ DhIcqopbNRrEcgfTmBYPkOrDY4IpAQAJ24wpUhXaj1jC+e80Sb7BiuPrLym2AD/NFx4s
+ YgXXlgogxvlj0z7eu39FPaKISv3Y9mTUH8rvcO3bWRn8k6qs9H1nWm9mBPQVT8kZvdmD
+ ZDo3FRuXasB1bE1Q1k+XZr5P+fP/vFRkdrPX4SWnvtEgMEfue5CSQVDqXYNrBCJmUa4+
+ KeHA==
+X-Gm-Message-State: AOAM531WnEDD1Ns23/zWtRFS6w4LKVCq7x2tPUTnItsIh+dori1mBHQf
+ Eq/eFjvixPeFHmPvKLn1mymd+duJVOyuOFNoNeoXEg==
+X-Google-Smtp-Source: ABdhPJxsvk3zH9Cj9jETsQZoQhu95J/ccEo5zVpmv0uVU09OfxPjgko1mKcnJ9dGm90oKTxf6WrezCurxL/INxWMbGY=
+X-Received: by 2002:a25:418c:0:b0:63d:84a2:2364 with SMTP id
+ o134-20020a25418c000000b0063d84a22364mr856310yba.85.1648821869564; Fri, 01
+ Apr 2022 07:04:29 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH] linux-user/sh4/termbits: Silence warning about
- TIOCSER_TEMT double definition
-To: Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
-References: <20220330134302.979686-1-thuth@redhat.com>
- <ee4c5717-37fb-6053-497d-06925eed8fcc@vivier.eu>
- <25aa0bce-1153-6448-720a-5420385603b1@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <25aa0bce-1153-6448-720a-5420385603b1@linaro.org>
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+References: <20220331221857.433867-1-laurent@vivier.eu>
+In-Reply-To: <20220331221857.433867-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 1 Apr 2022 15:04:18 +0100
+Message-ID: <CAFEAcA_6_z_PPV-KTCkNR1v+8ncDYFBwfiKmvL+C9_5noyyMVw@mail.gmail.com>
+Subject: Re: [PULL 0/4] Trivial branch for 7.0 patches
+To: Laurent Vivier <Laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 2607:f8b0:4864:20::b31
+ (failed)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb31.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ PDS_HP_HELO_NORDNS=0.659, RCVD_IN_DNSWL_NONE=-0.0001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,43 +74,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Apr 2022 06:13:14 -0000
+X-List-Received-Date: Fri, 01 Apr 2022 14:04:35 -0000
 
-On 31/03/2022 19.31, Richard Henderson wrote:
-> On 3/31/22 10:22, Laurent Vivier wrote:
->> Le 30/03/2022 à 15:43, Thomas Huth a écrit :
->>> Seen while compiling on Alpine:
->>>
->>>   In file included from ../linux-user/strace.c:17:
->>>   In file included from ../linux-user/qemu.h:11:
->>>   In file included from ../linux-user/syscall_defs.h:1247:
->>>   ../linux-user/sh4/termbits.h:276:10: warning: 'TIOCSER_TEMT' macro 
->>> redefined
->>>    [-Wmacro-redefined]
->>>   # define TIOCSER_TEMT    0x01   /* Transmitter physically empty */
->>>            ^
->>>   /usr/include/sys/ioctl.h:50:9: note: previous definition is here
->>>   #define TIOCSER_TEMT 1
->>>           ^
->>>   1 warning generated.
->>>
->>> Add the TARGET_ prefix here, too, like we do it on the other architectures.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>   linux-user/sh4/termbits.h | 2 +-
->>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> Thomas,
->>
->> do you think it can wait 7.1?
-> 
-> It fixes a build problem, so I'd suggest putting it in for 7.0.
-
-It's just a warning, so unless the user compiles with --enable-werror, it 
-should be harmless. Anyway, I see that Laurent already picked it up (thanks!).
-
-  Thomas
+On Thu, 31 Mar 2022 at 23:21, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit cace6c6f3aca7b88afc42995f90bbefb37a0ed57:
+>
+>   Merge tag 'pull-qapi-2022-03-31' of git://repo.or.cz/qemu/armbru into staging (2022-03-31 11:56:52 +0100)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.0-pull-request
+>
+> for you to fetch changes up to 04cca669b237337cc8734788c3ad968aa8e0b57f:
+>
+>   tests/lcitool: Do not use a hard-coded /usr/bin/python3 as python interpreter (2022-03-31 21:32:49 +0200)
+>
+> ----------------------------------------------------------------
+> Trivial branch pull request 20220401
+>
+> Fix sh4 linux-user build on Alpine
+> and some trivial updates
+>
 
 
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/7.0
+for any user-visible changes.
+
+-- PMM
 
