@@ -1,57 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1na38Y-0005xt-Kr
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2022 18:19:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37476)
+	id 1na73e-0006Ql-SW
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2022 22:30:38 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52914)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1na38U-0005t8-GM; Thu, 31 Mar 2022 18:19:23 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:44325)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1na73c-0006NN-Tg
+ for qemu-trivial@nongnu.org; Thu, 31 Mar 2022 22:30:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:52060)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1na38P-0001AB-Dc; Thu, 31 Mar 2022 18:19:20 -0400
-Received: from quad ([82.142.13.234]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MRmsG-1nSvaI1xhS-00TGSC; Fri, 01
- Apr 2022 00:19:00 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
-Subject: [PULL 1/4] linux-user/sh4/termbits: Silence warning about
- TIOCSER_TEMT double definition
-Date: Fri,  1 Apr 2022 00:18:54 +0200
-Message-Id: <20220331221857.433867-2-laurent@vivier.eu>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220331221857.433867-1-laurent@vivier.eu>
-References: <20220331221857.433867-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1na73b-0005dp-6l
+ for qemu-trivial@nongnu.org; Thu, 31 Mar 2022 22:30:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1648780234;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=W0Izd3I613P9CzGgMYJPxEUEMUA4QPcRASa85pagxRE=;
+ b=UittN7ZTRFbXjvkxDGeypZj5+aaenF6DnEOZjoPEwoyUc7Al8UKvV4BP2+kTnfAPKtGBcA
+ 6ZWbJxXhsR3G9BPrNyqXfD3ofUhyGt9HEJsz+Si30h2XymsEuTLz2p87wEexWlHd6/U3HX
+ kxAqb+CljMIJIQdLXSw6nV6jAmOxLmY=
+Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
+ [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-356-njp13ro-NW2rtKK_MtE3sA-1; Thu, 31 Mar 2022 22:30:31 -0400
+X-MC-Unique: njp13ro-NW2rtKK_MtE3sA-1
+Received: by mail-lf1-f69.google.com with SMTP id
+ i33-20020a0565123e2100b0044aa6befbe6so585539lfv.18
+ for <qemu-trivial@nongnu.org>; Thu, 31 Mar 2022 19:30:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=W0Izd3I613P9CzGgMYJPxEUEMUA4QPcRASa85pagxRE=;
+ b=jjbWKkNdmMyZsgKzB5LDA9vjO9lxk2GPy4Knoc75b/Ii4nfzi4YlgoKcp0+xaZFl1e
+ M7Wb/kOiIpywO/pGPzAVTBLwRS0m+TfTGq8mea1U5R3deFdpODsa7XmG+Fvz2asoaWLc
+ PiUVlgpETjLcVB06v4A92AYMT5JBofmvxkAA3JOF6ngHnXcj1sZbDkuQtxTvrRys6ZTK
+ KnmgN5F3N2BZo9N61vKsZoGBuqsLpT5K8l1hSIherySkSS8hDcAFlD6rz70vcqav/NXy
+ JeKSQjvrXkzkQYwl3ESmmZOo6+VDUmS0UgvX7QN7UIHiTTmoVgBl6tVH95qNAShEAY6G
+ hPzw==
+X-Gm-Message-State: AOAM533seuvtdjaQbfr/oB7MFmqVf4BNPX/pSsdsScuJ4RAgk5Dxm7rC
+ N5JdKJEfYroiStiznLKziE8hr67IR7Xt/gtEfrCyFKokfg39nAuINpDsRV5CqgQOslIUMDUsPrm
+ 36KYDexUK+fK8ZZ0DlJA+gfuLD9rqu7GQrg==
+X-Received: by 2002:a05:6512:b81:b0:448:b342:513c with SMTP id
+ b1-20020a0565120b8100b00448b342513cmr12633049lfv.257.1648780229340; 
+ Thu, 31 Mar 2022 19:30:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9d0MDtAM0UCocoMsdzm7PvWs8aetaQ4GSow8xPpjXG1e8aDT0dTF39SaINOBn2Tt22l5Q+T5YSRU22PULT5o=
+X-Received: by 2002:a05:6512:b81:b0:448:b342:513c with SMTP id
+ b1-20020a0565120b8100b00448b342513cmr12633040lfv.257.1648780229125; Thu, 31
+ Mar 2022 19:30:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8fuJ3eovMUKBZbH8q8Hh/zCPlrIBJZqsdjtCbmNSYDYepZYoNbd
- 5O4SwyX+RihZ1DxFvaURCON3rkZ+CzV7NJauvNfw6ou0ATX0USJOpHHiK6g6Weg0kx+pI+T
- dzqv+7xPeAllQcHmZNtMpMWaCog5nvZYMxSjkZxc3ZaoB5u/dxsFIILTZ3A0oalk29sxxgt
- CFihZY908q8laHTAXuVGw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BgPu3x2e+YY=:BFLHYGehS+UzoUoi5nYjVm
- FQn3evyMHW7Ca9JKSQLebgbMCEUtLn+ChczUoQ6wADLLwDnFIr1RHFatAL1dzBBCVdjnAR9+1
- iGMsZabMIeAM8F1x73kd4RA2ekw6DDp+F6IGtw1B+B4/aFqwsFVo5UtITssmXAD6mL4nYnKql
- s5TtNAOLUzjQBIYOxI+615ndIAd4ajR83wUygQ9k4NxUDn8Z++Ih7N8gxdSpGm2fY6sG90nDm
- zLS+h50yRYOIHT0Cillq3Arha1cnOpuN8rq4eBXWSQHnC0r90YIRAMC3ksCCUef1971FWosy2
- v9qS0tRqVvh9vhTG8UJvjJXntu82HcTr//4gCN4y0+IQVXQzNmcvDWYH8PaDGkhp+BCuOIfok
- T5+yJwhjdQUPNs1EeeYqv0y/iBsi7v5l+OtOf0I5+8xCYWKKJa43GXUv4gEbyBXXMBJa90+ZX
- v2t8yhdBdHFkr2qmXDkd85O3Ag6zeOlhU47f9ThnukbkaQfuagDJGqSu5UIanzyMpKGA4kZ85
- m6mQL3mttweycRtNWrE9HAzGHd1F6t0wh9puAn/oehi5R9pjGq9KzDF1xfiZFZ7xBoQYyyLve
- u4KgK+cYzwrZLS2JV1jTJu+wCCpWKWCW28kvtR/nvxg9Njx1lMHbsre+homJp49xZv3/xolSw
- f1GH1GcdmHg4+H11MoLXPKytjTQqZfOHpgMuh25VWuPtC9zRKaHXqvdv+SeUIb35WwQc=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20220331181712.535039-1-eperezma@redhat.com>
+In-Reply-To: <20220331181712.535039-1-eperezma@redhat.com>
+From: Jason Wang <jasowang@redhat.com>
+Date: Fri, 1 Apr 2022 10:30:17 +0800
+Message-ID: <CACGkMEsikhiZ8dA7-9PgOSPeScPvwh7JqoW7dcWNCzm388-GVA@mail.gmail.com>
+Subject: Re: [PATCH] util: Return void on iova_tree_remove
+To: =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
+ Peter Xu <peterx@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,51 +88,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Mar 2022 22:19:25 -0000
+X-List-Received-Date: Fri, 01 Apr 2022 02:30:37 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+On Fri, Apr 1, 2022 at 2:17 AM Eugenio P=C3=A9rez <eperezma@redhat.com> wro=
+te:
+>
+> It always returns IOVA_OK so nobody uses it.
+>
+> Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
 
-Seen while compiling on Alpine:
+Acked-by: Jason Wang <jasowang@redhat.com>
 
- In file included from ../linux-user/strace.c:17:
- In file included from ../linux-user/qemu.h:11:
- In file included from ../linux-user/syscall_defs.h:1247:
- ../linux-user/sh4/termbits.h:276:10: warning: 'TIOCSER_TEMT' macro redefined
-  [-Wmacro-redefined]
- # define TIOCSER_TEMT    0x01   /* Transmitter physically empty */
-          ^
- /usr/include/sys/ioctl.h:50:9: note: previous definition is here
- #define TIOCSER_TEMT 1
-         ^
- 1 warning generated.
-
-Add the TARGET_ prefix here, too, like we do it on the other architectures.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
-Message-Id: <20220330134302.979686-1-thuth@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- linux-user/sh4/termbits.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/linux-user/sh4/termbits.h b/linux-user/sh4/termbits.h
-index f91b5c51cf83..eeabd2d7a9ce 100644
---- a/linux-user/sh4/termbits.h
-+++ b/linux-user/sh4/termbits.h
-@@ -273,7 +273,7 @@ ebugging only */
- #define TARGET_TIOCSERGETLSR   TARGET_IOR('T', 89, unsigned int) /* 0x5459 */ /* Get line sta
- tus register */
-   /* ioctl (fd, TIOCSERGETLSR, &result) where result may be as below */
--# define TIOCSER_TEMT    0x01   /* Transmitter physically empty */
-+# define TARGET_TIOCSER_TEMT   0x01   /* Transmitter physically empty */
- #define TARGET_TIOCSERGETMULTI TARGET_IOR('T', 90, int) /* 0x545A
- */ /* Get multiport config  */
- #define TARGET_TIOCSERSETMULTI TARGET_IOW('T', 91, int) /* 0x545B
--- 
-2.35.1
+> ---
+>  include/qemu/iova-tree.h | 4 +---
+>  util/iova-tree.c         | 4 +---
+>  2 files changed, 2 insertions(+), 6 deletions(-)
+>
+> diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
+> index c938fb0793..16bbfdf5f8 100644
+> --- a/include/qemu/iova-tree.h
+> +++ b/include/qemu/iova-tree.h
+> @@ -72,10 +72,8 @@ int iova_tree_insert(IOVATree *tree, const DMAMap *map=
+);
+>   * provided.  The range does not need to be exactly what has inserted,
+>   * all the mappings that are included in the provided range will be
+>   * removed from the tree.  Here map->translated_addr is meaningless.
+> - *
+> - * Return: 0 if succeeded, or <0 if error.
+>   */
+> -int iova_tree_remove(IOVATree *tree, const DMAMap *map);
+> +void iova_tree_remove(IOVATree *tree, const DMAMap *map);
+>
+>  /**
+>   * iova_tree_find:
+> diff --git a/util/iova-tree.c b/util/iova-tree.c
+> index 6dff29c1f6..fee530a579 100644
+> --- a/util/iova-tree.c
+> +++ b/util/iova-tree.c
+> @@ -164,15 +164,13 @@ void iova_tree_foreach(IOVATree *tree, iova_tree_it=
+erator iterator)
+>      g_tree_foreach(tree->tree, iova_tree_traverse, iterator);
+>  }
+>
+> -int iova_tree_remove(IOVATree *tree, const DMAMap *map)
+> +void iova_tree_remove(IOVATree *tree, const DMAMap *map)
+>  {
+>      const DMAMap *overlap;
+>
+>      while ((overlap =3D iova_tree_find(tree, map))) {
+>          g_tree_remove(tree->tree, overlap);
+>      }
+> -
+> -    return IOVA_OK;
+>  }
+>
+>  /**
+> --
+> 2.27.0
+>
 
 
