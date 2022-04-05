@@ -1,56 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nbgOJ-0005Ny-8M
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 06:26:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58260)
+	id 1nbhN8-0007X5-1y
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 07:29:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43504)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
- id 1nbgO5-0005KD-Jv; Tue, 05 Apr 2022 06:26:16 -0400
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34]:46200)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nbhMv-0007VX-Cd; Tue, 05 Apr 2022 07:29:07 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:37507)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
- id 1nbgO3-0006OR-6Y; Tue, 05 Apr 2022 06:26:12 -0400
-Received: by mail-oa1-x34.google.com with SMTP id
- 586e51a60fabf-d39f741ba0so13846229fac.13; 
- Tue, 05 Apr 2022 03:26:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nbhMu-0005dk-13; Tue, 05 Apr 2022 07:29:05 -0400
+Received: by mail-ej1-x636.google.com with SMTP id bg10so26070366ejb.4;
+ Tue, 05 Apr 2022 04:29:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9BiuiDkKUVn9H9mfKCO/O1Z0Rp44UWtITYhttFqxuDs=;
- b=TQXq8lrF8mFXNKp4sLIfF++3W3NGti6jzBxZUaeZz/LJZmuOWQftiIF9Nro5gAmy7r
- cCKuPMQdg+83iA6xHXkay6t2QyhHBwyntnVzFipekZB1rxODKVuhb870/GaUDX5xKuDH
- leVTh1GBNmaEHKN6+CMZ+1fr4Qfrcg9B4+zD6j9xVj6ygsKLDE9I8QkMCUpva7giuioo
- Bb0GDb5+1mW5oPF7wnDF29ErFk2KG0LmBZdBIzbu9UdVbrXeOliThV5IJya36au7Xgcw
- w9mrx4rFl0MRgdA8gMHpKjCP+7/0DMB/o9tP1945X2kdRRHXlit7swlhZ6xZMB8Z9piD
- KoyQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=YSCtYurY6Y3ujiAxlIPVesqQ6HVNrkQwNiorsuyqVkA=;
+ b=UPvbaAC5mJh4o0CgFFQii1tnut/sqzFjLwCC44bhB5TfzBoSXUCyiUFtAsfafsn6zg
+ p8Bxxm76qIDi82s/y36URu2vkItM5feB7jnkytj4/TXlrpcBPp40B7Li+dkNUKPImVFn
+ eDBL2CVLHTjAIdcZuOv2IxPniKwB19Tbzii5KMQ6wQR5b/xWH+cW37Y8a9XBc9eapMot
+ wLrIiD60RD57pxcAT+fa3WdVfwz4/ThddkbCl9IGk3hMHwmBKUZ6Ti9zackJ3LCi370S
+ V7F0ef4CJSiKGOSFxhCTHwJuvTr9e/+YpKHqWEgzeoMnrbNPQXpkFf6P/WjlcPpNYA0Q
+ bplw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9BiuiDkKUVn9H9mfKCO/O1Z0Rp44UWtITYhttFqxuDs=;
- b=mCizBkgVSBx+YopJYqtw1tgf/lxmt833kCewh9KWxT7l79gX5xVZ0UBkyMam0PShLU
- WBSajdhf8qUsypNCf6I5zEtqBYejyB2gh8YNJKKmZy6VKL3d4HAP/2AqTx/2Z3qvImLI
- QJHYotwzNEEvvTDI/zeAAe/wVh15h/S7leH2jVnnekdRwSdL3fKd5mzVS0K5MvakgQfO
- 51BFNb0S89LY3gGgPDoanvUdMwpO94DoCmDqOyN1Mh13UEfgAuDPswAdNdn5ogFavbpv
- QmQ7EbQJ/BHcwLEWeQQyWk8O4W58+0uDtIIPZxDb9QkwQpBeCklMq690yh2oJBEeZ8vg
- rQXQ==
-X-Gm-Message-State: AOAM5300In3CNguqD8/NrfeYic7NfejHY2G2WXeEBSH4D1bHpP+aNOeh
- RXymCZVUaCJxBaDauCZlXqmALTWcszPTo5Z9IaQ=
-X-Google-Smtp-Source: ABdhPJwpu522NAGfeFccylGhB1/9MezXZMEkvqj8fz9fmWxh/Nc5skEgwQsT2QZefuvEjLKsmqiXMwy0PMbQ0PcyzoI=
-X-Received: by 2002:a05:6871:8a3:b0:e1:e54d:5f55 with SMTP id
- r35-20020a05687108a300b000e1e54d5f55mr1143498oaq.202.1649154361308; Tue, 05
- Apr 2022 03:26:01 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=YSCtYurY6Y3ujiAxlIPVesqQ6HVNrkQwNiorsuyqVkA=;
+ b=iuqaUL8D+D5089TAOijHm+oGaVH5QDhCM0vLBUCujzK0ty5A7VEWBjiWQV52CzpSgO
+ RVArUnddIt3hxm8WgBi+1ycYKQmvLeAbzG7bO2gzepksbXGT4YiqUcyqe4xYBKSflZv2
+ xilJnvGFXuii9az0chENV3MAyJy9cagVB51gGvO50FEi3lVe7MRBcrCXz0ADIasjrC9z
+ mQGa95Fa6vngFKwHPnHGRuxnteLRKRIox3LEXs/6JrwvDRRXeHJ05B5pjLzZK1mmNME1
+ SvNvHyWHYx6Emk/ys3b2hvfZp0q6yLs4E6j+xeg/gL0BhyAsWQw44fmhtFmQaP13EJnm
+ hfeg==
+X-Gm-Message-State: AOAM532y2enXWIg8GMf8/jBZfy/N+/9zFuusMzmZ4MxYGNkvgP14D9HC
+ BB5iBzt5NEppxDbFrAlLeMhtXICMYn8=
+X-Google-Smtp-Source: ABdhPJzlkECfHZ0MpHc+7BtZFRGgMYEmjkwKnK5HT8rUcfi0brHZ24hCk+ia8B1eE4SZtH0kyVeMGA==
+X-Received: by 2002:a17:907:728e:b0:6e0:5ce7:d7c7 with SMTP id
+ dt14-20020a170907728e00b006e05ce7d7c7mr3046218ejc.113.1649158139752; 
+ Tue, 05 Apr 2022 04:28:59 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-077-013-166-174.77.13.pool.telefonica.de. [77.13.166.174])
+ by smtp.gmail.com with ESMTPSA id
+ sb15-20020a1709076d8f00b006dfe4cda58fsm5384973ejc.95.2022.04.05.04.28.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 Apr 2022 04:28:59 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ qemu-ppc@nongnu.org (open list:405 (ref405ep and...)
+Subject: [PATCH] hw/ppc/ppc405_boards: Initialize g_autofree pointer
+Date: Tue,  5 Apr 2022 13:28:38 +0200
+Message-Id: <20220405112838.15360-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220403095837.2378-1-yuval.shaia.ml@gmail.com>
-In-Reply-To: <20220403095837.2378-1-yuval.shaia.ml@gmail.com>
-From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Date: Tue, 5 Apr 2022 12:25:50 +0200
-Message-ID: <CAC_L=vVn3zDbPfwzfKR3t=UCavSyC-p4dtU9Ka3xT9evOt1d+g@mail.gmail.com>
-Subject: Re: [PATCH] hw/pvrdma: Some cosmetic fixes
-To: Yuval Shaia <yuval.shaia.ml@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: qemu devel list <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2001:4860:4864:20::34;
- envelope-from=marcel.apfelbaum@gmail.com; helo=mail-oa1-x34.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -70,54 +76,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Apr 2022 10:26:17 -0000
+X-List-Received-Date: Tue, 05 Apr 2022 11:29:12 -0000
 
-On Sun, Apr 3, 2022 at 12:00 PM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
->
-> Signed-off-by: Yuval Shaia <yuval.shaia.ml@gmail.com>
-> ---
->  hw/rdma/vmw/pvrdma_main.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/rdma/vmw/pvrdma_main.c b/hw/rdma/vmw/pvrdma_main.c
-> index 91206dbb8e..aae382af59 100644
-> --- a/hw/rdma/vmw/pvrdma_main.c
-> +++ b/hw/rdma/vmw/pvrdma_main.c
-> @@ -159,13 +159,13 @@ static void free_dsr(PVRDMADev *dev)
->      free_dev_ring(pci_dev, &dev->dsr_info.cq, dev->dsr_info.cq_ring_state);
->
->      rdma_pci_dma_unmap(pci_dev, dev->dsr_info.req,
-> -                         sizeof(union pvrdma_cmd_req));
-> +                       sizeof(union pvrdma_cmd_req));
->
->      rdma_pci_dma_unmap(pci_dev, dev->dsr_info.rsp,
-> -                         sizeof(union pvrdma_cmd_resp));
-> +                       sizeof(union pvrdma_cmd_resp));
->
->      rdma_pci_dma_unmap(pci_dev, dev->dsr_info.dsr,
-> -                         sizeof(struct pvrdma_device_shared_region));
-> +                       sizeof(struct pvrdma_device_shared_region));
->
->      dev->dsr_info.dsr = NULL;
->  }
-> @@ -249,7 +249,8 @@ static void init_dsr_dev_caps(PVRDMADev *dev)
->  {
->      struct pvrdma_device_shared_region *dsr;
->
-> -    if (dev->dsr_info.dsr == NULL) {
-> +    if (!dev->dsr_info.dsr) {
-> +        /* Buggy or malicious guest driver */
->          rdma_error_report("Can't initialized DSR");
->          return;
->      }
-> --
-> 2.20.1
->
+Resolves the only compiler warning when building a full QEMU under Arch Linux:
 
-cc: QEMU Trivial <qemu-trivial@nongnu.org>
+  Compiling C object libqemu-ppc-softmmu.fa.p/hw_ppc_ppc405_boards.c.o
+  In file included from /usr/include/glib-2.0/glib.h:114,
+                   from qemu/include/glib-compat.h:32,
+                   from qemu/include/qemu/osdep.h:132,
+                   from ../src/hw/ppc/ppc405_boards.c:25:
+  ../src/hw/ppc/ppc405_boards.c: In function ‘ref405ep_init’:
+  /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: warning: ‘filename’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     28 |   g_free (*pp);
+        |   ^~~~~~~~~~~~
+  ../src/hw/ppc/ppc405_boards.c:265:26: note: ‘filename’ was declared here
+    265 |         g_autofree char *filename;
+        |                          ^~~~~~~~
 
-Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/ppc/ppc405_boards.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Marcel
+diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+index 7e1a4ac955..326353ea25 100644
+--- a/hw/ppc/ppc405_boards.c
++++ b/hw/ppc/ppc405_boards.c
+@@ -262,7 +262,7 @@ static void ref405ep_init(MachineState *machine)
+     /* allocate and load BIOS */
+     if (machine->firmware) {
+         MemoryRegion *bios = g_new(MemoryRegion, 1);
+-        g_autofree char *filename;
++        g_autofree char *filename = NULL;
+         long bios_size;
+ 
+         memory_region_init_rom(bios, NULL, "ef405ep.bios", BIOS_SIZE,
+-- 
+2.35.1
+
 
