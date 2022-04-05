@@ -1,66 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nbiW1-0005pM-P4
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 08:42:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37298)
+	id 1nbk6M-0005di-F8
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 10:24:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbiVz-0005nF-RE
- for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 08:42:31 -0400
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29]:34362)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nbiVy-0005cF-0N
- for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 08:42:31 -0400
-Received: by mail-yb1-xb29.google.com with SMTP id g9so23129233ybf.1
- for <qemu-trivial@nongnu.org>; Tue, 05 Apr 2022 05:42:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=fU8wMZy0p6GIKBtOYQzfgAUmrqT/FDuWU8SlkC/Ee58=;
- b=e5yUCGvFxwcAj+WsNXk1LgN3W4PI5PzNnxOBX4ItLmvxYaYr4WmlaDIkCeFqKcB4Vd
- spt8nlPrayPn15LzMzFRVH2Cr9dQ+OCB2w8cWLPMJlR43TidWw6oSKDgVccIP1XVSODn
- xzxqMzy2lat31qmCvWv2Rja7LyOFJHdfVLDcKveO1DpPH48yPmFcQO3QPKkdKQbW5aHw
- hvSprjNXWJERIyRFjid15e3tAtcgw6GRjeABsXryKjl/V6LRzk79VAIUTVZvR3Msrq2L
- fUS1zVtwIEOAUZ9jeWVl+yLaE05RVHBaS/Gm9d+5oCDH79X1ge+jwjZhPzGfNmSsW9iH
- VIiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=fU8wMZy0p6GIKBtOYQzfgAUmrqT/FDuWU8SlkC/Ee58=;
- b=LT2oLEIi9qFxqUOabeXVy3JwgrqzKWgpgQ2TQqRxxBeNkAT2KFPYlkrYFQOyGkcK4n
- JJ81Nt8SkqvjSZGwai61rZApdSW3zV5I63KPeR2JTBvEA7v0clqYkmdBtdIg8qfRfNTE
- TqnUovowDRl0kmZI0o6uIpkQSn9KJFj2mp58dF3uh50sARxFVVl7mGBFkHFyMN3eFOw2
- wNdQ2l1J/dq+bzeS6F6QUtmmAN9dVDuyK+qMdKDzG+IYh8O1xfDZB80w09B3YTTFW7PY
- mbMBBcERs5wLmVlT3Biw2EacD0zELhY5AXtLvXuTHChFGL2AO7ar/go/mkYfwNAGEIvA
- RKkA==
-X-Gm-Message-State: AOAM531q4Dn/fKOxYkSa075+I6bxpNL2XD1BRh6TmG/UEp24+sMwxIer
- LATVKqR1tgRlkUHjNGrfcXocLA7ce2ZOBUlsnttY6A==
-X-Google-Smtp-Source: ABdhPJxUFqmYsZQRvsMzVTy3k7vUwLr2p+bbBrfKQ8hkUQuoeLqu6kgn//4dUBI5fNJs1yPHx9mwnBv0yIooHyOxpU8=
-X-Received: by 2002:a25:418c:0:b0:63d:84a2:2364 with SMTP id
- o134-20020a25418c000000b0063d84a22364mr2336390yba.85.1649162548802; Tue, 05
- Apr 2022 05:42:28 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220405123534.3395-1-shentey@gmail.com>
-In-Reply-To: <20220405123534.3395-1-shentey@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Apr 2022 13:42:17 +0100
-Message-ID: <CAFEAcA8ni+WGVRoi=8jboQwyMsFetRCtd81RDL_5LZJHWGiVVA@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/ppc/ppc405_boards: Initialize g_autofree pointer
+ (Exim 4.90_1)
+ (envelope-from <prvs=0878235d2=anthony.perard@citrix.com>)
+ id 1nbk6L-0005cu-CW; Tue, 05 Apr 2022 10:24:09 -0400
+Received: from esa6.hc3370-68.iphmx.com ([216.71.155.175]:20018)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1)
+ (envelope-from <prvs=0878235d2=anthony.perard@citrix.com>)
+ id 1nbk6I-0000Bc-CN; Tue, 05 Apr 2022 10:24:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=citrix.com; s=securemail; t=1649168646;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=jujJyxLjaVGhBGCD3FuCmkLh3dgzDZvsxlACmDmXXAA=;
+ b=MTxSJt+LGlfVT6fbUlJdKLjFokwzvVoVzdlN4bYv2EOhahifWHHi9AYH
+ D6dXSpMV1Ul7tcDFiCLshA57Q+Bw4jJb8LSQTjrT/vHo1Ak0mhIVoiHLF
+ uV2brq9npjsccerruyxpHL61aO1je4TXCssmWrSVZGu1AWrEXn43DtEM4 0=;
+Authentication-Results: esa6.hc3370-68.iphmx.com;
+ dkim=none (message not signed) header.i=none
+X-SBRS: 5.1
+X-MesageID: 67949315
+X-Ironport-Server: esa6.hc3370-68.iphmx.com
+X-Remote-IP: 162.221.156.83
+X-Policy: $RELAYED
+IronPort-Data: A9a23:qp4xU6k6fJfsZAtUvuwNRjvo5gw7JkRdPkR7XQ2eYbSJt1+Wr1Gzt
+ xIaCziEMq3fNGX0fNl/bY62/U4PvpHQn9IySlBkrXs3HiMWpZLJC+rCIxarNUt+DCFioGGLT
+ Sk6QoOdRCzhZiaE/n9BCpC48T8kk/vgqoPUUIYoAAgoLeNfYHpn2EoLd9IR2NYy24DlW17V4
+ 7senuWEULOb828sWo4rw/rrRCNH5JwebxtB4zTSzdgS1LPvvyF94KA3fMldHFOhKmVgJcaoR
+ v6r8V2M1jixEyHBqD+Suu2TnkUiGtY+NOUV45Zcc/DKbhNq/kTe3kunXRa1hIg+ZzihxrhMJ
+ NtxWZOYcVg2fY3livsheRhRKhNhE5Zf4pHeGC3q2SCT5xWun3rExvxvCAc9PJEC+/YxCmZLn
+ RAaAGlTNFbZ3bvwme/lDLk37iggBJCD0Ic3s3d8zTbfHLA+TIrKWani7t5ExjYgwMtJGJ4yY
+ uJHNmszPU+ZPnWjPH8xFrscx+fxokXecmZJ82uxgZMO8kLMmVkZPL/Fb4OOJ43iqd9utkuUu
+ 2vc82PRAhgQN9uE1XyD/27ErvXOliPyQo5UFLC++vNwm1qV7mgSDhQMUh28u/bRolWlR9tVJ
+ kgQ+ywvhas/7kqmSp/6RRLQiG6JuFsQVsRdF8U+6RqR0ezE7gCBHG8GQzVdLts8u6ceXTU30
+ neZktWvAiZg2JWNQ3Wb5LaSrBuoNCQVJHNEbigBJSMc7tz+5Y0+kB/LZtBkFqGzk5vyAz6Y6
+ yuKoS4iiqQ7gssC1qH99lfC6xq1q53UCxIv5xvWV2aN6AR/a4i4IYuy5jDz6P9aJ4udCFCZs
+ nUAkcGD6cgBCJiMkGqGR+BlNLSy+96fPTHciEIpFJ4knwlB4Fb6I9oWumsnYh40bIBUIlcFf
+ XM/pytpu4AQHFK4cpNdYouIOdsE9rH6O83cA6W8gsV1XrB9cwqO/SdLbEGW3nzwnEVErZzTK
+ at3Yu73Uy9EVP0PIC6eAr5EjOR1nnxWKXb7H8iT8vix7VaJiJd5o58hOUDGUO025bjsTO79o
+ 4cGbJviJ/myvYTDjsjrHWw7cAtiwZsTX8meRylrmgireFcO9IYJUaK5/F/ZU9Y595m5b8+Rl
+ p1HZmdWyUDkmVrMIhiQZ3ZoZdvHBMgj/CphZXBxYQ30hxDPhLpDCo9FKvPbmpF9qoReIQNcF
+ aFZK61s/NwRItg4x9jtRcak99EzHPharQmPIzCkcFACk21IHGT0FivfVlK3rkEmV3Pv3eNn+
+ uHI/l6LEPIrGlU5ZO6LOa3H8r9ElSVE8A6EdxCTeYc7lYSF2NUCFhEdeddseptWdEqammXBv
+ +tUaD9BzdTwT0YO2IGhrci5Q02BSbYW8pZyd4UD0YuLCA==
+IronPort-HdrOrdr: A9a23:RaePKq5e5/CZBpTRLQPXwMrXdLJyesId70hD6qhwISY1TiW9rb
+ HIoB17726RtN9/Yh0dcLy7V5VoBEmsk6KdgrNhWItKPjOW21dARbsKheCJrgEIWReOlNK1vZ
+ 0QCpSWY+eRMbEVt6jH3DU=
+X-IronPort-AV: E=Sophos;i="5.90,236,1643691600"; d="scan'208";a="67949315"
+Date: Tue, 5 Apr 2022 15:23:48 +0100
+From: Anthony PERARD <anthony.perard@citrix.com>
 To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- "open list:ppc4xx" <qemu-ppc@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, "Paolo
+ Bonzini" <pbonzini@redhat.com>, Richard Henderson
+ <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
+ Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>,
+ "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
+Subject: Re: [PATCH 1/2] hw/xen/xen_pt: Confine igd-passthrough-isa-bridge to
+ XEN
+Message-ID: <YkxQ9JUtfn5t8oSR@perard.uk.xensource.com>
+References: <20220326165825.30794-1-shentey@gmail.com>
+ <20220326165825.30794-2-shentey@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20220326165825.30794-2-shentey@gmail.com>
+Received-SPF: pass client-ip=216.71.155.175;
+ envelope-from=prvs=0878235d2=anthony.perard@citrix.com;
+ helo=esa6.hc3370-68.iphmx.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,35 +90,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Apr 2022 12:42:32 -0000
+X-List-Received-Date: Tue, 05 Apr 2022 14:24:09 -0000
 
-On Tue, 5 Apr 2022 at 13:40, Bernhard Beschow <shentey@gmail.com> wrote:
->
-> Resolves the only compiler warning when building a full QEMU under Arch L=
-inux:
->
->   Compiling C object libqemu-ppc-softmmu.fa.p/hw_ppc_ppc405_boards.c.o
->   In file included from /usr/include/glib-2.0/glib.h:114,
->                    from qemu/include/glib-compat.h:32,
->                    from qemu/include/qemu/osdep.h:132,
->                    from ../src/hw/ppc/ppc405_boards.c:25:
->   ../src/hw/ppc/ppc405_boards.c: In function =E2=80=98ref405ep_init=E2=80=
-=99:
->   /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: warning: =E2=80=98=
-filename=E2=80=99 may be used uninitialized in this function [-Wmaybe-unini=
-tialized]
->      28 |   g_free (*pp);
->         |   ^~~~~~~~~~~~
->   ../src/hw/ppc/ppc405_boards.c:265:26: note: =E2=80=98filename=E2=80=99 =
-was declared here
->     265 |         g_autofree char *filename;
->         |                          ^~~~~~~~
->
+On Sat, Mar 26, 2022 at 05:58:23PM +0100, Bernhard Beschow wrote:
+> igd-passthrough-isa-bridge is only requested in xen_pt but was
+> implemented in pc_piix.c. This caused xen_pt to dependend on i386/pc
+> which is hereby resolved.
+> 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Acked-by: Anthony PERARD <anthony.perard@citrix.com>
 
-thanks
--- PMM
+Thanks,
+
+-- 
+Anthony PERARD
 
