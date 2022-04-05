@@ -1,69 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nbiPZ-0001bZ-Ve
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 08:35:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35548)
+	id 1nbiW1-0005pM-P4
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 08:42:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nbiPS-0001ZC-Sc; Tue, 05 Apr 2022 08:35:48 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:37682)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nbiVz-0005nF-RE
+ for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 08:42:31 -0400
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29]:34362)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nbiPR-00043s-Cf; Tue, 05 Apr 2022 08:35:46 -0400
-Received: by mail-ed1-x532.google.com with SMTP id b15so14723467edn.4;
- Tue, 05 Apr 2022 05:35:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZYqQsfsii8k/ZquAa02XYTZnvbPfLXV2MWaxC5hbxsw=;
- b=JSmvN0KmdEWuMWIrqnZrzNjHKqnAcR9W7dtxUzK8LgkDfE9oD5nI8G+2HEyNJTja1r
- 9mbery9l8N5JbUpvpMEwOVQlsPy62J43WxhhmnMqzsG2GAIiWb0OkqJ6vYxRfiu7+EeR
- L7ZXVBtFnSrwZ8yp7U30ohugZGHiXKoxsRJkvwEn3Qt7OJS4RcVJd39cGQGY7e+dnWXA
- 0DamI9PgtKHj0OoAvwCUc5+FQBUO91fVgMkwJ7G8hvJ6YZHHWXM+1AEMf6uypM642K32
- F/4bdaklmVNKcTJRaVHkeVJVwvFUwlzD5rHXnObQAHpOdg4dPeu8QZGg9WZkEkKEXcXN
- pSiA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1nbiVy-0005cF-0N
+ for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 08:42:31 -0400
+Received: by mail-yb1-xb29.google.com with SMTP id g9so23129233ybf.1
+ for <qemu-trivial@nongnu.org>; Tue, 05 Apr 2022 05:42:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=fU8wMZy0p6GIKBtOYQzfgAUmrqT/FDuWU8SlkC/Ee58=;
+ b=e5yUCGvFxwcAj+WsNXk1LgN3W4PI5PzNnxOBX4ItLmvxYaYr4WmlaDIkCeFqKcB4Vd
+ spt8nlPrayPn15LzMzFRVH2Cr9dQ+OCB2w8cWLPMJlR43TidWw6oSKDgVccIP1XVSODn
+ xzxqMzy2lat31qmCvWv2Rja7LyOFJHdfVLDcKveO1DpPH48yPmFcQO3QPKkdKQbW5aHw
+ hvSprjNXWJERIyRFjid15e3tAtcgw6GRjeABsXryKjl/V6LRzk79VAIUTVZvR3Msrq2L
+ fUS1zVtwIEOAUZ9jeWVl+yLaE05RVHBaS/Gm9d+5oCDH79X1ge+jwjZhPzGfNmSsW9iH
+ VIiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZYqQsfsii8k/ZquAa02XYTZnvbPfLXV2MWaxC5hbxsw=;
- b=HYSWsWN14SY+FgyiuRi8SHqjkpdiz61bGEDst2HQfdHQk8265URf1WUYxIoJkuB50V
- JDecZFQ85t1G3q5biEf4L3DjQXCauO1dpHwQ5Py6XmZ9ThEw69jaG8daCR83PUgewKD3
- 6NsUGU+wEe8aEd1ow72Ek2MIyFTFnG4jKVN76tyWoNJ4oV1131IthoKBUoL7qHX/867Z
- HrgQExPTTaM3o9/UMpAytAXgmj16f9j8FkMCVzENCKkcLBSnUmgEAtn1SP7rcKfHsmQC
- egm8fJEO/f+usLtBjEw3SscySxHCRS5ExycM/uiYZWiatmYim++ZroENepgrQbXeMH+j
- KN0A==
-X-Gm-Message-State: AOAM531cdURC8QFi9Uhw6extk91g4wFHlGIZ1VLMU1oxoOmK719DyR2V
- lIqxrLa2BgzJV+xXtP8r2805Awc4Qf8=
-X-Google-Smtp-Source: ABdhPJyUtloVK50IvzebP6lJrcgG0GGeFsYT9vekdTW8beNSnBMlJnpFB04sAgnaefzo/Tw9DBiolQ==
-X-Received: by 2002:a05:6402:1c87:b0:41c:dd9c:2e94 with SMTP id
- cy7-20020a0564021c8700b0041cdd9c2e94mr3461089edb.2.1649162143120; 
- Tue, 05 Apr 2022 05:35:43 -0700 (PDT)
-Received: from Provence.localdomain
- (dynamic-077-013-166-174.77.13.pool.telefonica.de. [77.13.166.174])
- by smtp.gmail.com with ESMTPSA id
- kw5-20020a170907770500b006db075e5358sm5350049ejc.66.2022.04.05.05.35.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Apr 2022 05:35:42 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- qemu-ppc@nongnu.org (open list:ppc4xx)
-Subject: [PATCH v2] hw/ppc/ppc405_boards: Initialize g_autofree pointer
-Date: Tue,  5 Apr 2022 14:35:34 +0200
-Message-Id: <20220405123534.3395-1-shentey@gmail.com>
-X-Mailer: git-send-email 2.35.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=fU8wMZy0p6GIKBtOYQzfgAUmrqT/FDuWU8SlkC/Ee58=;
+ b=LT2oLEIi9qFxqUOabeXVy3JwgrqzKWgpgQ2TQqRxxBeNkAT2KFPYlkrYFQOyGkcK4n
+ JJ81Nt8SkqvjSZGwai61rZApdSW3zV5I63KPeR2JTBvEA7v0clqYkmdBtdIg8qfRfNTE
+ TqnUovowDRl0kmZI0o6uIpkQSn9KJFj2mp58dF3uh50sARxFVVl7mGBFkHFyMN3eFOw2
+ wNdQ2l1J/dq+bzeS6F6QUtmmAN9dVDuyK+qMdKDzG+IYh8O1xfDZB80w09B3YTTFW7PY
+ mbMBBcERs5wLmVlT3Biw2EacD0zELhY5AXtLvXuTHChFGL2AO7ar/go/mkYfwNAGEIvA
+ RKkA==
+X-Gm-Message-State: AOAM531q4Dn/fKOxYkSa075+I6bxpNL2XD1BRh6TmG/UEp24+sMwxIer
+ LATVKqR1tgRlkUHjNGrfcXocLA7ce2ZOBUlsnttY6A==
+X-Google-Smtp-Source: ABdhPJxUFqmYsZQRvsMzVTy3k7vUwLr2p+bbBrfKQ8hkUQuoeLqu6kgn//4dUBI5fNJs1yPHx9mwnBv0yIooHyOxpU8=
+X-Received: by 2002:a25:418c:0:b0:63d:84a2:2364 with SMTP id
+ o134-20020a25418c000000b0063d84a22364mr2336390yba.85.1649162548802; Tue, 05
+ Apr 2022 05:42:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x532.google.com
+References: <20220405123534.3395-1-shentey@gmail.com>
+In-Reply-To: <20220405123534.3395-1-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Apr 2022 13:42:17 +0100
+Message-ID: <CAFEAcA8ni+WGVRoi=8jboQwyMsFetRCtd81RDL_5LZJHWGiVVA@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/ppc/ppc405_boards: Initialize g_autofree pointer
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ "open list:ppc4xx" <qemu-ppc@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,49 +73,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Apr 2022 12:35:51 -0000
+X-List-Received-Date: Tue, 05 Apr 2022 12:42:32 -0000
 
-Resolves the only compiler warning when building a full QEMU under Arch Linux:
+On Tue, 5 Apr 2022 at 13:40, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> Resolves the only compiler warning when building a full QEMU under Arch L=
+inux:
+>
+>   Compiling C object libqemu-ppc-softmmu.fa.p/hw_ppc_ppc405_boards.c.o
+>   In file included from /usr/include/glib-2.0/glib.h:114,
+>                    from qemu/include/glib-compat.h:32,
+>                    from qemu/include/qemu/osdep.h:132,
+>                    from ../src/hw/ppc/ppc405_boards.c:25:
+>   ../src/hw/ppc/ppc405_boards.c: In function =E2=80=98ref405ep_init=E2=80=
+=99:
+>   /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: warning: =E2=80=98=
+filename=E2=80=99 may be used uninitialized in this function [-Wmaybe-unini=
+tialized]
+>      28 |   g_free (*pp);
+>         |   ^~~~~~~~~~~~
+>   ../src/hw/ppc/ppc405_boards.c:265:26: note: =E2=80=98filename=E2=80=99 =
+was declared here
+>     265 |         g_autofree char *filename;
+>         |                          ^~~~~~~~
+>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
 
-  Compiling C object libqemu-ppc-softmmu.fa.p/hw_ppc_ppc405_boards.c.o
-  In file included from /usr/include/glib-2.0/glib.h:114,
-                   from qemu/include/glib-compat.h:32,
-                   from qemu/include/qemu/osdep.h:132,
-                   from ../src/hw/ppc/ppc405_boards.c:25:
-  ../src/hw/ppc/ppc405_boards.c: In function ‘ref405ep_init’:
-  /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: warning: ‘filename’ may be used uninitialized in this function [-Wmaybe-uninitialized]
-     28 |   g_free (*pp);
-        |   ^~~~~~~~~~~~
-  ../src/hw/ppc/ppc405_boards.c:265:26: note: ‘filename’ was declared here
-    265 |         g_autofree char *filename;
-        |                          ^~~~~~~~
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/ppc/ppc405_boards.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-index 7e1a4ac955..3bed7002d2 100644
---- a/hw/ppc/ppc405_boards.c
-+++ b/hw/ppc/ppc405_boards.c
-@@ -262,13 +262,13 @@ static void ref405ep_init(MachineState *machine)
-     /* allocate and load BIOS */
-     if (machine->firmware) {
-         MemoryRegion *bios = g_new(MemoryRegion, 1);
--        g_autofree char *filename;
-+        g_autofree char *filename = qemu_find_file(QEMU_FILE_TYPE_BIOS,
-+                                                   machine->firmware);
-         long bios_size;
- 
-         memory_region_init_rom(bios, NULL, "ef405ep.bios", BIOS_SIZE,
-                                &error_fatal);
- 
--        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, machine->firmware);
-         if (!filename) {
-             error_report("Could not find firmware '%s'", machine->firmware);
-             exit(1);
--- 
-2.35.1
-
+thanks
+-- PMM
 
