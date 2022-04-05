@@ -1,88 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nbdtM-00081R-1q
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 03:46:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43780)
+	id 1nbgOJ-0005Ny-8M
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 06:26:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1nbdtK-00080D-Iv
- for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 03:46:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:21117)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sgarzare@redhat.com>)
- id 1nbdtF-0002nU-Dy
- for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 03:46:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1649144772;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=r7khth0+SH89+eK20AWxD68QAYIq1XblOs/cDTbv0Yg=;
- b=Q70SUaGshdSt80sMoCipx6cRL6tCvOqN3mPBndQz9GfquNzvW9WdGytyIW7dGv6RwHz/ep
- Z712OppsTfGwP1lX6H6hyqi0Gvx8w301dldQW0BwcUy6zuGdlimkV7X8YsQF7mDS7ULBLH
- wYfW74ShVdMyGD6GPfz4r9BeandB+Mc=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-267-5mx8QONENgWDrylFgSVLbw-1; Tue, 05 Apr 2022 03:46:11 -0400
-X-MC-Unique: 5mx8QONENgWDrylFgSVLbw-1
-Received: by mail-qt1-f197.google.com with SMTP id
- z18-20020ac84552000000b002e201c79cd4so8138503qtn.2
- for <qemu-trivial@nongnu.org>; Tue, 05 Apr 2022 00:46:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
+ id 1nbgO5-0005KD-Jv; Tue, 05 Apr 2022 06:26:16 -0400
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34]:46200)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcel.apfelbaum@gmail.com>)
+ id 1nbgO3-0006OR-6Y; Tue, 05 Apr 2022 06:26:12 -0400
+Received: by mail-oa1-x34.google.com with SMTP id
+ 586e51a60fabf-d39f741ba0so13846229fac.13; 
+ Tue, 05 Apr 2022 03:26:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9BiuiDkKUVn9H9mfKCO/O1Z0Rp44UWtITYhttFqxuDs=;
+ b=TQXq8lrF8mFXNKp4sLIfF++3W3NGti6jzBxZUaeZz/LJZmuOWQftiIF9Nro5gAmy7r
+ cCKuPMQdg+83iA6xHXkay6t2QyhHBwyntnVzFipekZB1rxODKVuhb870/GaUDX5xKuDH
+ leVTh1GBNmaEHKN6+CMZ+1fr4Qfrcg9B4+zD6j9xVj6ygsKLDE9I8QkMCUpva7giuioo
+ Bb0GDb5+1mW5oPF7wnDF29ErFk2KG0LmBZdBIzbu9UdVbrXeOliThV5IJya36au7Xgcw
+ w9mrx4rFl0MRgdA8gMHpKjCP+7/0DMB/o9tP1945X2kdRRHXlit7swlhZ6xZMB8Z9piD
+ KoyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=r7khth0+SH89+eK20AWxD68QAYIq1XblOs/cDTbv0Yg=;
- b=D9M9Jpiv1/A/Va8X7f3KFPI1enwhUpKCUAAHDrt6zVYoBWIEcbdLvnGnSKHfIr+Y5D
- GnAImb6zyVih6a11EjrtGa+cYBlwFPbkBXq1BiSvp+u+qIrn8rlrobgiJs75x/GKSoMz
- Xncvc29qxdYJwYNyqKVWA0xXNMDvUoIxqjhkJ6ZwyndslLxLFL4Mm82pUnEI/Rzetk7O
- 3zrxtqeDm2XbDl8To2WCcE1nrsOddhWBSaq9kJxoUHKKnblgJ5LRafVZ3nRLMGpJGdqv
- TTXgLx9py9cBiijiYhmer438OXkg7/jmg3T97hP6s1BVshkTyOqvDuT11AWtrLZZSQNt
- QmRw==
-X-Gm-Message-State: AOAM530kqGXdZ3hmEgNrNCkGumbhpRF1GBqGo5Sb6BBgheL3t9GI5JUk
- aoouGsucJrkcgoC9gs+dAnV24fK5L8oJyq95PwhLDvfMb3H7lhrwcm9YRrs8YJfvydsp6DdUM3v
- 9L+WQ21upeJKWQhikDw==
-X-Received: by 2002:a37:c20b:0:b0:67b:3585:4687 with SMTP id
- i11-20020a37c20b000000b0067b35854687mr1303011qkm.280.1649144770512; 
- Tue, 05 Apr 2022 00:46:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxjxTc6YxzfGWEnkXU6MpKjXosnrxmjMXHXvseB62BiStCFVjQiydKlCgEYhOYoDAcAtK6wGA==
-X-Received: by 2002:a37:c20b:0:b0:67b:3585:4687 with SMTP id
- i11-20020a37c20b000000b0067b35854687mr1303001qkm.280.1649144770288; 
- Tue, 05 Apr 2022 00:46:10 -0700 (PDT)
-Received: from sgarzare-redhat (host-79-46-200-128.retail.telecomitalia.it.
- [79.46.200.128]) by smtp.gmail.com with ESMTPSA id
- o21-20020ac85a55000000b002e16389b501sm10133981qta.96.2022.04.05.00.46.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Apr 2022 00:46:09 -0700 (PDT)
-Date: Tue, 5 Apr 2022 09:46:04 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Eugenio =?utf-8?B?UMOpcmV6?= <eperezma@redhat.com>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Cindy Lu <lulu@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH] vdpa: Add missing tracing to batch mapping functions
-Message-ID: <20220405074604.ialrjxr7ccjxebg4@sgarzare-redhat>
-References: <20220405063628.853745-1-eperezma@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9BiuiDkKUVn9H9mfKCO/O1Z0Rp44UWtITYhttFqxuDs=;
+ b=mCizBkgVSBx+YopJYqtw1tgf/lxmt833kCewh9KWxT7l79gX5xVZ0UBkyMam0PShLU
+ WBSajdhf8qUsypNCf6I5zEtqBYejyB2gh8YNJKKmZy6VKL3d4HAP/2AqTx/2Z3qvImLI
+ QJHYotwzNEEvvTDI/zeAAe/wVh15h/S7leH2jVnnekdRwSdL3fKd5mzVS0K5MvakgQfO
+ 51BFNb0S89LY3gGgPDoanvUdMwpO94DoCmDqOyN1Mh13UEfgAuDPswAdNdn5ogFavbpv
+ QmQ7EbQJ/BHcwLEWeQQyWk8O4W58+0uDtIIPZxDb9QkwQpBeCklMq690yh2oJBEeZ8vg
+ rQXQ==
+X-Gm-Message-State: AOAM5300In3CNguqD8/NrfeYic7NfejHY2G2WXeEBSH4D1bHpP+aNOeh
+ RXymCZVUaCJxBaDauCZlXqmALTWcszPTo5Z9IaQ=
+X-Google-Smtp-Source: ABdhPJwpu522NAGfeFccylGhB1/9MezXZMEkvqj8fz9fmWxh/Nc5skEgwQsT2QZefuvEjLKsmqiXMwy0PMbQ0PcyzoI=
+X-Received: by 2002:a05:6871:8a3:b0:e1:e54d:5f55 with SMTP id
+ r35-20020a05687108a300b000e1e54d5f55mr1143498oaq.202.1649154361308; Tue, 05
+ Apr 2022 03:26:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20220405063628.853745-1-eperezma@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sgarzare@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sgarzare@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+References: <20220403095837.2378-1-yuval.shaia.ml@gmail.com>
+In-Reply-To: <20220403095837.2378-1-yuval.shaia.ml@gmail.com>
+From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Date: Tue, 5 Apr 2022 12:25:50 +0200
+Message-ID: <CAC_L=vVn3zDbPfwzfKR3t=UCavSyC-p4dtU9Ka3xT9evOt1d+g@mail.gmail.com>
+Subject: Re: [PATCH] hw/pvrdma: Some cosmetic fixes
+To: Yuval Shaia <yuval.shaia.ml@gmail.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: qemu devel list <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2001:4860:4864:20::34;
+ envelope-from=marcel.apfelbaum@gmail.com; helo=mail-oa1-x34.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -96,56 +70,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Apr 2022 07:46:18 -0000
+X-List-Received-Date: Tue, 05 Apr 2022 10:26:17 -0000
 
-On Tue, Apr 05, 2022 at 08:36:28AM +0200, Eugenio Pérez wrote:
->These functions were not traced properly.
+On Sun, Apr 3, 2022 at 12:00 PM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
 >
->Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
->---
-> hw/virtio/vhost-vdpa.c | 2 ++
-> hw/virtio/trace-events | 2 ++
-> 2 files changed, 4 insertions(+)
-
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-
+> Signed-off-by: Yuval Shaia <yuval.shaia.ml@gmail.com>
+> ---
+>  hw/rdma/vmw/pvrdma_main.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
 >
->diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
->index 8adf7c0b92..9e5fe15d03 100644
->--- a/hw/virtio/vhost-vdpa.c
->+++ b/hw/virtio/vhost-vdpa.c
->@@ -129,6 +129,7 @@ static void vhost_vdpa_listener_begin_batch(struct vhost_vdpa *v)
->         .iotlb.type = VHOST_IOTLB_BATCH_BEGIN,
->     };
+> diff --git a/hw/rdma/vmw/pvrdma_main.c b/hw/rdma/vmw/pvrdma_main.c
+> index 91206dbb8e..aae382af59 100644
+> --- a/hw/rdma/vmw/pvrdma_main.c
+> +++ b/hw/rdma/vmw/pvrdma_main.c
+> @@ -159,13 +159,13 @@ static void free_dsr(PVRDMADev *dev)
+>      free_dev_ring(pci_dev, &dev->dsr_info.cq, dev->dsr_info.cq_ring_state);
 >
->+    trace_vhost_vdpa_listener_begin_batch(v, fd, msg.type, msg.iotlb.type);
->     if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
->         error_report("failed to write, fd=%d, errno=%d (%s)",
->                      fd, errno, strerror(errno));
->@@ -163,6 +164,7 @@ static void vhost_vdpa_listener_commit(MemoryListener *listener)
->     msg.type = v->msg_type;
->     msg.iotlb.type = VHOST_IOTLB_BATCH_END;
+>      rdma_pci_dma_unmap(pci_dev, dev->dsr_info.req,
+> -                         sizeof(union pvrdma_cmd_req));
+> +                       sizeof(union pvrdma_cmd_req));
 >
->+    trace_vhost_vdpa_listener_commit(v, fd, msg.type, msg.iotlb.type);
->     if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
->         error_report("failed to write, fd=%d, errno=%d (%s)",
->                      fd, errno, strerror(errno));
->diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
->index a5102eac9e..333348d9d5 100644
->--- a/hw/virtio/trace-events
->+++ b/hw/virtio/trace-events
->@@ -25,6 +25,8 @@ vhost_user_postcopy_waker_nomatch(const char *rb, uint64_t rb_offset) "%s + 0x%"
-> # vhost-vdpa.c
-> vhost_vdpa_dma_map(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint64_t uaddr, uint8_t perm, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" uaddr: 0x%"PRIx64" perm: 0x%"PRIx8" type: %"PRIu8
-> vhost_vdpa_dma_unmap(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" type: %"PRIu8
->+vhost_vdpa_listener_begin_batch(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
->+vhost_vdpa_listener_commit(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
-> vhost_vdpa_listener_region_add(void *vdpa, uint64_t iova, uint64_t llend, void *vaddr, bool readonly) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64" vaddr: %p read-only: %d"
-> vhost_vdpa_listener_region_del(void *vdpa, uint64_t iova, uint64_t llend) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64
-> vhost_vdpa_add_status(void *dev, uint8_t status) "dev: %p status: 0x%"PRIx8
->--
->2.27.0
+>      rdma_pci_dma_unmap(pci_dev, dev->dsr_info.rsp,
+> -                         sizeof(union pvrdma_cmd_resp));
+> +                       sizeof(union pvrdma_cmd_resp));
 >
+>      rdma_pci_dma_unmap(pci_dev, dev->dsr_info.dsr,
+> -                         sizeof(struct pvrdma_device_shared_region));
+> +                       sizeof(struct pvrdma_device_shared_region));
+>
+>      dev->dsr_info.dsr = NULL;
+>  }
+> @@ -249,7 +249,8 @@ static void init_dsr_dev_caps(PVRDMADev *dev)
+>  {
+>      struct pvrdma_device_shared_region *dsr;
+>
+> -    if (dev->dsr_info.dsr == NULL) {
+> +    if (!dev->dsr_info.dsr) {
+> +        /* Buggy or malicious guest driver */
+>          rdma_error_report("Can't initialized DSR");
+>          return;
+>      }
+> --
+> 2.20.1
 >
 
+cc: QEMU Trivial <qemu-trivial@nongnu.org>
+
+Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+
+Thanks,
+Marcel
 
