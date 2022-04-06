@@ -1,72 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nbk6a-0005tB-Ec
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 10:24:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34658)
+	id 1nbvV7-0005kx-3V
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 22:34:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41412)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=0878235d2=anthony.perard@citrix.com>)
- id 1nbk6Y-0005rH-Jm; Tue, 05 Apr 2022 10:24:22 -0400
-Received: from esa2.hc3370-68.iphmx.com ([216.71.145.153]:42918)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1nbvV4-0005i8-Ue
+ for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 22:34:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39349)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=0878235d2=anthony.perard@citrix.com>)
- id 1nbk6W-0000Dp-8o; Tue, 05 Apr 2022 10:24:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=citrix.com; s=securemail; t=1649168660;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=ZZI+unHahHiJhTMT+graTuIHpLZ2cRUWGttaIkS9G8g=;
- b=cohQS7MHcjSVS+v2axs/ZC08+7nNQODAK5co3PF8JO2W0ZNiV/Sa5M6J
- nOkCsjWL5ZtOLbBxuJOre6G7SqKWIJhxjILLd1rL7vD9eAex6KEnDUxKn
- N2fASpuCH/o0HvcHrQmtiMNUGjkrpIgzCoXXlDKtLz6aLrjbladwiwLVl U=;
-Authentication-Results: esa2.hc3370-68.iphmx.com;
- dkim=none (message not signed) header.i=none
-X-SBRS: None
-X-MesageID: 68068257
-X-Ironport-Server: esa2.hc3370-68.iphmx.com
-X-Remote-IP: 162.221.156.83
-X-Policy: $RELAYED
-IronPort-Data: A9a23:kGda9KreGPa4VtqjvROAuIgSFJVeBmJiZBIvgKrLsJaIsI4StFCzt
- garIBmPPayCazCjc9BwPY3j8EgAvcWHyoM2GwZpqi9jQylH9puZCYyVIHmrMnLJJKUvbq7GA
- +byyDXkBJppJpMJjk71atANlVEliefQAOCU5NfsYkidfyc9IMsaoU8lyrZRbrJA24DjWVvR4
- Y6q+aUzBXf+s9JKGjNMg068gEsHUMTa4Fv0aXRnOJinFHeH/5UkJMp3yZOZdhMUcaENdgKOf
- M7RzanRw4/s10xF5uVJMFrMWhZirrb6ZWBig5fNMkSoqkAqSicais7XOBeAAKv+Zvrgc91Zk
- b1wWZKMpQgBPInts8cWWUdjDjx3GrxtyYb9Oki1mJnGp6HGWyOEL/RGCUg3OcsT+/ptAHEI/
- vsdQNwPRknd3aTsmuv9E7QywJR4RCXoFNp3VnVIxDfFDfEgUNbbTr/D/9Nw1zYsnMFeW/3ZY
- qL1bBIxPEyeM0cSZT/7DrowoMKSp1fkWQderU+7goYp4TLK9ixYhe2F3N39P4biqd9utl2Du
- mvM8mD9AxcbHN+S0zyI9jSrnOCntTvyRYY6BLC+sPlwjzW71mEVTREbS1a/if24kVKlHcJSL
- VQO/SgjprR081akJvHmXxC+vHOVlhEZUttUVeY97Wml06fR/kOVC3YJShZHb9opstJwQiYlv
- neQktb0QCB1saOUQHa18LCSojWvfy8PIgc/iTQsFFVfpYO5+cdq00yJHo0L/LOJs+AZ0ArYm
- 1iixBXSTZ1J0qbnC43TEYj7vg+R
-IronPort-HdrOrdr: A9a23:PcYl2638jRxgM4wUCzfa/AqjBLIkLtp133Aq2lEZdPRUGvb3qy
- mLpoV+6faUskd1ZJhOo7290cW7LU80sKQFhrX5Xo3SPjUO2lHJEGgK1+KLqFfd8m/Fh41gPM
- 9bAs5D4bbLbGSS4/yU3DWF
-X-IronPort-AV: E=Sophos;i="5.90,236,1643691600"; d="scan'208";a="68068257"
-Date: Tue, 5 Apr 2022 15:24:09 +0100
-From: Anthony PERARD <anthony.perard@citrix.com>
-To: Bernhard Beschow <shentey@gmail.com>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, Stefano Stabellini
- <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>, "open list:X86 Xen
- CPUs" <xen-devel@lists.xenproject.org>
-Subject: Re: [PATCH 2/2] hw/xen/xen_pt: Resolve
- igd_passthrough_isa_bridge_create() indirection
-Message-ID: <YkxRCYmMYYmU3lsW@perard.uk.xensource.com>
-References: <20220326165825.30794-1-shentey@gmail.com>
- <20220326165825.30794-3-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1nbvV1-0001uc-UT
+ for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 22:34:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1649212461;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JEfH59eCzTW51aCh4/1DCQHrAE2meERMIw31zysG1tg=;
+ b=ZShgae2uwWMGM5GiLdgEdTlGe2RNhtNgiwNYC80bBXgB0qp51i7uAGKscQYPVdSYZnWQI6
+ MZYpQqtY0YyHMqn1NJRC4yMrlAmYusZo954WDbp4g1rdH8y8oJztF7z7K+2H6E9r5QcD91
+ ezyIjNxUSf3K6n5dtHi9HASBJ+R8YVk=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-82-6C5Yjk-FMV6bT7r7xn8BKA-1; Tue, 05 Apr 2022 22:34:20 -0400
+X-MC-Unique: 6C5Yjk-FMV6bT7r7xn8BKA-1
+Received: by mail-pl1-f197.google.com with SMTP id
+ r16-20020a170903021000b00155f7af17b6so406629plh.16
+ for <qemu-trivial@nongnu.org>; Tue, 05 Apr 2022 19:34:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=JEfH59eCzTW51aCh4/1DCQHrAE2meERMIw31zysG1tg=;
+ b=laloXUgDhZ/yqX533k+c4N55zYpdfjIk7yD1BbXGeHSEYScQTD0MojdziNWyfqFbQH
+ qgSBzaqDj4Q69CZch5Y3+0T3zN6MSGs5oag7GfprvqBpD4YLGhNNWi8K4JoeXc0n0GsX
+ YMf45poMkdEqqMCzic2RvKxMPssj2KFgHLv06S2pXgewPsuNVRVLtbPeepF6YjtcPfbD
+ glIbwdWfXn3StO1iLfWrYQb4/jxB1rmWRy+gj6iRbp7WvNrieQUX02sAcfBO+Y/mhmsl
+ D/E69n0xXcN+dpzkpFuIYVNjESBPTQI3g0tUsM0kymjHhAkcDFQCAs4+gTnyMEJ9waev
+ b8kQ==
+X-Gm-Message-State: AOAM530FqixLScpFrk+LQS9ZRGrovUcWwyO6GHQJMr8ppd+RnNFnaBef
+ Bf2EWPkfbCuNTZ9fWZl9b0BFVwz6Dk/POKWGoFBmD6gEWaSez2galihBPGG4/LrY594xHgwkiwe
+ 1tXuBlog9szQFxpG/Qw==
+X-Received: by 2002:a17:90b:4a47:b0:1c6:42c6:fef2 with SMTP id
+ lb7-20020a17090b4a4700b001c642c6fef2mr7240384pjb.147.1649212459145; 
+ Tue, 05 Apr 2022 19:34:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzXoI89XPOzb94gM11SrK/WksXiKxp2poiSlhQPjDH8BARpfzONebuEstITIACkPHmNezzYKA==
+X-Received: by 2002:a17:90b:4a47:b0:1c6:42c6:fef2 with SMTP id
+ lb7-20020a17090b4a4700b001c642c6fef2mr7240351pjb.147.1649212458628; 
+ Tue, 05 Apr 2022 19:34:18 -0700 (PDT)
+Received: from [10.72.12.58] ([209.132.188.80])
+ by smtp.gmail.com with ESMTPSA id
+ mr10-20020a17090b238a00b001caab109ff3sm3590472pjb.23.2022.04.05.19.34.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 Apr 2022 19:34:18 -0700 (PDT)
+Message-ID: <120ddabc-08df-853a-3a67-533215827710@redhat.com>
+Date: Wed, 6 Apr 2022 10:34:10 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20220326165825.30794-3-shentey@gmail.com>
-Received-SPF: pass client-ip=216.71.145.153;
- envelope-from=prvs=0878235d2=anthony.perard@citrix.com;
- helo=esa2.hc3370-68.iphmx.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.7.0
+Subject: Re: [PATCH] vdpa: Add missing tracing to batch mapping functions
+To: =?UTF-8?Q?Eugenio_P=c3=a9rez?= <eperezma@redhat.com>, qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Cindy Lu <lulu@redhat.com>,
+ qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20220405063628.853745-1-eperezma@redhat.com>
+From: Jason Wang <jasowang@redhat.com>
+In-Reply-To: <20220405063628.853745-1-eperezma@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,19 +97,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Apr 2022 14:24:23 -0000
+X-List-Received-Date: Wed, 06 Apr 2022 02:34:27 -0000
 
-On Sat, Mar 26, 2022 at 05:58:24PM +0100, Bernhard Beschow wrote:
-> Now that igd_passthrough_isa_bridge_create() is implemented within the
-> xen context it may use Xen* data types directly and become
-> xen_igd_passthrough_isa_bridge_create(). This resolves an indirection.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 
-Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+在 2022/4/5 下午2:36, Eugenio Pérez 写道:
+> These functions were not traced properly.
+>
+> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
 
-Thanks,
 
--- 
-Anthony PERARD
+Acked-by: Jason Wang <jasowang@redhat.com>
+
+
+> ---
+>   hw/virtio/vhost-vdpa.c | 2 ++
+>   hw/virtio/trace-events | 2 ++
+>   2 files changed, 4 insertions(+)
+>
+> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+> index 8adf7c0b92..9e5fe15d03 100644
+> --- a/hw/virtio/vhost-vdpa.c
+> +++ b/hw/virtio/vhost-vdpa.c
+> @@ -129,6 +129,7 @@ static void vhost_vdpa_listener_begin_batch(struct vhost_vdpa *v)
+>           .iotlb.type = VHOST_IOTLB_BATCH_BEGIN,
+>       };
+>
+> +    trace_vhost_vdpa_listener_begin_batch(v, fd, msg.type, msg.iotlb.type);
+>       if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
+>           error_report("failed to write, fd=%d, errno=%d (%s)",
+>                        fd, errno, strerror(errno));
+> @@ -163,6 +164,7 @@ static void vhost_vdpa_listener_commit(MemoryListener *listener)
+>       msg.type = v->msg_type;
+>       msg.iotlb.type = VHOST_IOTLB_BATCH_END;
+>
+> +    trace_vhost_vdpa_listener_commit(v, fd, msg.type, msg.iotlb.type);
+>       if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
+>           error_report("failed to write, fd=%d, errno=%d (%s)",
+>                        fd, errno, strerror(errno));
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index a5102eac9e..333348d9d5 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -25,6 +25,8 @@ vhost_user_postcopy_waker_nomatch(const char *rb, uint64_t rb_offset) "%s + 0x%"
+>   # vhost-vdpa.c
+>   vhost_vdpa_dma_map(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint64_t uaddr, uint8_t perm, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" uaddr: 0x%"PRIx64" perm: 0x%"PRIx8" type: %"PRIu8
+>   vhost_vdpa_dma_unmap(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" type: %"PRIu8
+> +vhost_vdpa_listener_begin_batch(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
+> +vhost_vdpa_listener_commit(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
+>   vhost_vdpa_listener_region_add(void *vdpa, uint64_t iova, uint64_t llend, void *vaddr, bool readonly) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64" vaddr: %p read-only: %d"
+>   vhost_vdpa_listener_region_del(void *vdpa, uint64_t iova, uint64_t llend) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64
+>   vhost_vdpa_add_status(void *dev, uint8_t status) "dev: %p status: 0x%"PRIx8
+> --
+> 2.27.0
+>
+
 
