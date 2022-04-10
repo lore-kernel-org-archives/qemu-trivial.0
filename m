@@ -1,90 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nbvV7-0005kx-3V
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2022 22:34:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41412)
+	id 1ndakr-0005pd-Ig
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Apr 2022 12:49:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1nbvV4-0005i8-Ue
- for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 22:34:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:39349)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1nbvV1-0001uc-UT
- for qemu-trivial@nongnu.org; Tue, 05 Apr 2022 22:34:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1649212461;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JEfH59eCzTW51aCh4/1DCQHrAE2meERMIw31zysG1tg=;
- b=ZShgae2uwWMGM5GiLdgEdTlGe2RNhtNgiwNYC80bBXgB0qp51i7uAGKscQYPVdSYZnWQI6
- MZYpQqtY0YyHMqn1NJRC4yMrlAmYusZo954WDbp4g1rdH8y8oJztF7z7K+2H6E9r5QcD91
- ezyIjNxUSf3K6n5dtHi9HASBJ+R8YVk=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-82-6C5Yjk-FMV6bT7r7xn8BKA-1; Tue, 05 Apr 2022 22:34:20 -0400
-X-MC-Unique: 6C5Yjk-FMV6bT7r7xn8BKA-1
-Received: by mail-pl1-f197.google.com with SMTP id
- r16-20020a170903021000b00155f7af17b6so406629plh.16
- for <qemu-trivial@nongnu.org>; Tue, 05 Apr 2022 19:34:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
+ id 1ndakq-0005pG-1h; Sun, 10 Apr 2022 12:49:36 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:45789)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
+ id 1ndakn-000595-Ut; Sun, 10 Apr 2022 12:49:35 -0400
+Received: by mail-wr1-x430.google.com with SMTP id w4so19668519wrg.12;
+ Sun, 10 Apr 2022 09:49:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=muAnIhR7eb0RH2qr2mDsl/dYVinFkUmyqTfAz05NBAU=;
+ b=JGNagORU/gcbVO4pGuatqzAKtzStCOw+a+9eDhScXmsCwrWxcvKM8HmW6kwBdihdnX
+ H9S3RHgXd75NOn/Rm70VP2S/IVTLWJMZjih/9EQH0IYL9A4df6pYFwbegJTbPNJTodVd
+ VGkao30xWWMyOFRauzSwdx478LvGeVzFyZsSGh48dbLVZbH1CthciTlVCyBV4EY1AI5e
+ LIBMwpXrx98Qt8PLKxmazzQNR0vNXkU57NMc7biGC3+HkTna6INAMhzGL49BUT6BNZRv
+ Z3cy7Fhblb/UygLnmM+VaZUpfQ6+g44YpZATpOv9ON9uNtuX6Lu3mWQRlLBZAURFzwMQ
+ i7uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=JEfH59eCzTW51aCh4/1DCQHrAE2meERMIw31zysG1tg=;
- b=laloXUgDhZ/yqX533k+c4N55zYpdfjIk7yD1BbXGeHSEYScQTD0MojdziNWyfqFbQH
- qgSBzaqDj4Q69CZch5Y3+0T3zN6MSGs5oag7GfprvqBpD4YLGhNNWi8K4JoeXc0n0GsX
- YMf45poMkdEqqMCzic2RvKxMPssj2KFgHLv06S2pXgewPsuNVRVLtbPeepF6YjtcPfbD
- glIbwdWfXn3StO1iLfWrYQb4/jxB1rmWRy+gj6iRbp7WvNrieQUX02sAcfBO+Y/mhmsl
- D/E69n0xXcN+dpzkpFuIYVNjESBPTQI3g0tUsM0kymjHhAkcDFQCAs4+gTnyMEJ9waev
- b8kQ==
-X-Gm-Message-State: AOAM530FqixLScpFrk+LQS9ZRGrovUcWwyO6GHQJMr8ppd+RnNFnaBef
- Bf2EWPkfbCuNTZ9fWZl9b0BFVwz6Dk/POKWGoFBmD6gEWaSez2galihBPGG4/LrY594xHgwkiwe
- 1tXuBlog9szQFxpG/Qw==
-X-Received: by 2002:a17:90b:4a47:b0:1c6:42c6:fef2 with SMTP id
- lb7-20020a17090b4a4700b001c642c6fef2mr7240384pjb.147.1649212459145; 
- Tue, 05 Apr 2022 19:34:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzXoI89XPOzb94gM11SrK/WksXiKxp2poiSlhQPjDH8BARpfzONebuEstITIACkPHmNezzYKA==
-X-Received: by 2002:a17:90b:4a47:b0:1c6:42c6:fef2 with SMTP id
- lb7-20020a17090b4a4700b001c642c6fef2mr7240351pjb.147.1649212458628; 
- Tue, 05 Apr 2022 19:34:18 -0700 (PDT)
-Received: from [10.72.12.58] ([209.132.188.80])
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=muAnIhR7eb0RH2qr2mDsl/dYVinFkUmyqTfAz05NBAU=;
+ b=0M7BmteTutCe/K1Xsjq8/PQAt2uegBDmPtiuim5Gi6Ouno0qJIbFrohVGrgGZcWcgZ
+ yxtxi/ARMFvqsFksmaLX97exVN907YWz+X6wfXgBbMThD+l0chNp1ZCedRpTvVei/vaN
+ bIdZHlBppBpLB0JDWXr2r/7MNm70sNhhTjKpSjWXPHTFKGm1YdKKbm8ewS7Fy5aMaa0n
+ oRNharQ+XlABq+1UCmhRy7P05YFAw2kgzG0XwHAtBAgsmAbWtyTK540Cw20sC5YkpFWE
+ bJi3/YqL299mpbyggyc8YfQpEBblybN5KkLjvXG7KgBJ2Qzpnt86CbZ+VOji+9zAz8pb
+ hclg==
+X-Gm-Message-State: AOAM533S8AMcOUvXdlSoFz8LROikKq++Iy11zz2MDFC531kABQybOjMF
+ F4YBk5VfPJwx+0fhusmecL7KjCno6+Y=
+X-Google-Smtp-Source: ABdhPJwDfS1pR4tHbwMcnhMm5c+FFoktr2FUai/5Mm4bAtsLRIVWRiQEvnQd/CJYnxD/eb0VTOSqyg==
+X-Received: by 2002:adf:9581:0:b0:1ed:c341:4ed1 with SMTP id
+ p1-20020adf9581000000b001edc3414ed1mr21296663wrp.299.1649609371724; 
+ Sun, 10 Apr 2022 09:49:31 -0700 (PDT)
+Received: from smtpclient.apple (201.11.75.194.dyn.plus.net. [194.75.11.201])
  by smtp.gmail.com with ESMTPSA id
- mr10-20020a17090b238a00b001caab109ff3sm3590472pjb.23.2022.04.05.19.34.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Apr 2022 19:34:18 -0700 (PDT)
-Message-ID: <120ddabc-08df-853a-3a67-533215827710@redhat.com>
-Date: Wed, 6 Apr 2022 10:34:10 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.7.0
-Subject: Re: [PATCH] vdpa: Add missing tracing to batch mapping functions
-To: =?UTF-8?Q?Eugenio_P=c3=a9rez?= <eperezma@redhat.com>, qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, Cindy Lu <lulu@redhat.com>,
- qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20220405063628.853745-1-eperezma@redhat.com>
-From: Jason Wang <jasowang@redhat.com>
-In-Reply-To: <20220405063628.853745-1-eperezma@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+ v8-20020a5d6788000000b002060f55843csm18218409wru.19.2022.04.10.09.49.30
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 10 Apr 2022 09:49:31 -0700 (PDT)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.80.82.1.1\))
+Subject: Re: [PATCH v3 2/2] hw/display/vmware_vga: do not discard screen
+ updates
+From: Carwyn Ellis <carwynellis@gmail.com>
+In-Reply-To: <20220206183956.10694-3-carwynellis@gmail.com>
+Date: Sun, 10 Apr 2022 17:49:30 +0100
+Cc: qemu trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <2CBB155B-88D6-42EC-9EA0-88968C3FD3B7@gmail.com>
+References: <20220206183956.10694-1-carwynellis@gmail.com>
+ <20220206183956.10694-3-carwynellis@gmail.com>
+To: QEMU <qemu-devel@nongnu.org>
+X-Mailer: Apple Mail (2.3696.80.82.1.1)
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=carwynellis@gmail.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,58 +79,147 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Apr 2022 02:34:27 -0000
+X-List-Received-Date: Sun, 10 Apr 2022 16:49:36 -0000
 
+ping
 
-在 2022/4/5 下午2:36, Eugenio Pérez 写道:
-> These functions were not traced properly.
->
-> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+=
+https://patchew.org/QEMU/20220206183956.10694-1-carwynellis@gmail.com/2022=
+0206183956.10694-3-carwynellis@gmail.com/
 
+Originally submitted as one of two patches, the first patch to use trace =
+events has been merged, however the patch that fixes garbled output =
+hasn=E2=80=99t been reviewed yet.
 
-Acked-by: Jason Wang <jasowang@redhat.com>
+Do let me know if you think there=E2=80=99s anything else that needs =
+changing here and I=E2=80=99ll resubmit if so. FWIW I=E2=80=99ve been =
+using this fix for a couple of months now without any issues.
 
+Thanks
+Carwyn
 
+> On 6 Feb 2022, at 18:39, Carwyn Ellis <carwynellis@gmail.com> wrote:
+>=20
+> In certain circumstances, typically when there is lots changing on the
+> screen, updates will be discarded resulting in garbled output.
+>=20
+> This change simplifies the traversal of the display update FIFO queue
+> when applying updates. We just track the queue length and iterate up =
+to
+> the end of the queue.
+>=20
+> Additionally when adding updates to the queue, if the buffer reaches
+> capacity we force a flush before accepting further events.
+>=20
+> Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
 > ---
->   hw/virtio/vhost-vdpa.c | 2 ++
->   hw/virtio/trace-events | 2 ++
->   2 files changed, 4 insertions(+)
->
-> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
-> index 8adf7c0b92..9e5fe15d03 100644
-> --- a/hw/virtio/vhost-vdpa.c
-> +++ b/hw/virtio/vhost-vdpa.c
-> @@ -129,6 +129,7 @@ static void vhost_vdpa_listener_begin_batch(struct vhost_vdpa *v)
->           .iotlb.type = VHOST_IOTLB_BATCH_BEGIN,
->       };
->
-> +    trace_vhost_vdpa_listener_begin_batch(v, fd, msg.type, msg.iotlb.type);
->       if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
->           error_report("failed to write, fd=%d, errno=%d (%s)",
->                        fd, errno, strerror(errno));
-> @@ -163,6 +164,7 @@ static void vhost_vdpa_listener_commit(MemoryListener *listener)
->       msg.type = v->msg_type;
->       msg.iotlb.type = VHOST_IOTLB_BATCH_END;
->
-> +    trace_vhost_vdpa_listener_commit(v, fd, msg.type, msg.iotlb.type);
->       if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
->           error_report("failed to write, fd=%d, errno=%d (%s)",
->                        fd, errno, strerror(errno));
-> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-> index a5102eac9e..333348d9d5 100644
-> --- a/hw/virtio/trace-events
-> +++ b/hw/virtio/trace-events
-> @@ -25,6 +25,8 @@ vhost_user_postcopy_waker_nomatch(const char *rb, uint64_t rb_offset) "%s + 0x%"
->   # vhost-vdpa.c
->   vhost_vdpa_dma_map(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint64_t uaddr, uint8_t perm, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" uaddr: 0x%"PRIx64" perm: 0x%"PRIx8" type: %"PRIu8
->   vhost_vdpa_dma_unmap(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" type: %"PRIu8
-> +vhost_vdpa_listener_begin_batch(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
-> +vhost_vdpa_listener_commit(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
->   vhost_vdpa_listener_region_add(void *vdpa, uint64_t iova, uint64_t llend, void *vaddr, bool readonly) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64" vaddr: %p read-only: %d"
->   vhost_vdpa_listener_region_del(void *vdpa, uint64_t iova, uint64_t llend) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64
->   vhost_vdpa_add_status(void *dev, uint8_t status) "dev: %p status: 0x%"PRIx8
-> --
-> 2.27.0
->
+> hw/display/trace-events |  1 +
+> hw/display/vmware_vga.c | 41 +++++++++++++++++++++++------------------
+> 2 files changed, 24 insertions(+), 18 deletions(-)
+>=20
+> diff --git a/hw/display/trace-events b/hw/display/trace-events
+> index 91efc88f04..0c0ffcbe42 100644
+> --- a/hw/display/trace-events
+> +++ b/hw/display/trace-events
+> @@ -24,6 +24,7 @@ vmware_setmode(uint32_t w, uint32_t h, uint32_t bpp) =
+"%dx%d @ %d bpp"
+> vmware_verify_rect_less_than_zero(const char *name, const char *param, =
+int x) "%s: %s was < 0 (%d)"
+> vmware_verify_rect_greater_than_bound(const char *name, const char =
+*param, int bound, int x) "%s: %s was > %d (%d)"
+> vmware_verify_rect_surface_bound_exceeded(const char *name, const char =
+*component, int bound, const char *param1, int value1, const char =
+*param2, int value2) "%s: %s > %d (%s: %d, %s: %d)"
+> +vmware_update_rect_delayed_flush(void) "display update FIFO full - =
+forcing flush"
+>=20
+> # virtio-gpu-base.c
+> virtio_gpu_features(bool virgl) "virgl %d"
+> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+> index 0cc43a1f15..8a3c3cb8f0 100644
+> --- a/hw/display/vmware_vga.c
+> +++ b/hw/display/vmware_vga.c
+> @@ -80,7 +80,7 @@ struct vmsvga_state_s {
+>     struct vmsvga_rect_s {
+>         int x, y, w, h;
+>     } redraw_fifo[REDRAW_FIFO_LEN];
+> -    int redraw_fifo_first, redraw_fifo_last;
+> +    int redraw_fifo_last;
+> };
+>=20
+> #define TYPE_VMWARE_SVGA "vmware-svga"
+> @@ -380,33 +380,39 @@ static inline void vmsvga_update_rect(struct =
+vmsvga_state_s *s,
+>     dpy_gfx_update(s->vga.con, x, y, w, h);
+> }
+>=20
+> -static inline void vmsvga_update_rect_delayed(struct vmsvga_state_s =
+*s,
+> -                int x, int y, int w, int h)
+> -{
+> -    struct vmsvga_rect_s *rect =3D =
+&s->redraw_fifo[s->redraw_fifo_last++];
+> -
+> -    s->redraw_fifo_last &=3D REDRAW_FIFO_LEN - 1;
+> -    rect->x =3D x;
+> -    rect->y =3D y;
+> -    rect->w =3D w;
+> -    rect->h =3D h;
+> -}
+> -
+> static inline void vmsvga_update_rect_flush(struct vmsvga_state_s *s)
+> {
+>     struct vmsvga_rect_s *rect;
+>=20
+>     if (s->invalidated) {
+> -        s->redraw_fifo_first =3D s->redraw_fifo_last;
+> +        s->redraw_fifo_last =3D 0;
+>         return;
+>     }
+>     /* Overlapping region updates can be optimised out here - if =
+someone
+>      * knows a smart algorithm to do that, please share.  */
+> -    while (s->redraw_fifo_first !=3D s->redraw_fifo_last) {
+> -        rect =3D &s->redraw_fifo[s->redraw_fifo_first++];
+> -        s->redraw_fifo_first &=3D REDRAW_FIFO_LEN - 1;
+> +    for (int i =3D 0; i < s->redraw_fifo_last; i++) {
+> +        rect =3D &s->redraw_fifo[i];
+>         vmsvga_update_rect(s, rect->x, rect->y, rect->w, rect->h);
+>     }
+> +
+> +    s->redraw_fifo_last =3D 0;
+> +}
+> +
+> +static inline void vmsvga_update_rect_delayed(struct vmsvga_state_s =
+*s,
+> +                int x, int y, int w, int h)
+> +{
+> +
+> +    if (s->redraw_fifo_last >=3D REDRAW_FIFO_LEN) {
+> +        trace_vmware_update_rect_delayed_flush();
+> +        vmsvga_update_rect_flush(s);
+> +    }
+> +
+> +    struct vmsvga_rect_s *rect =3D =
+&s->redraw_fifo[s->redraw_fifo_last++];
+> +
+> +    rect->x =3D x;
+> +    rect->y =3D y;
+> +    rect->w =3D w;
+> +    rect->h =3D h;
+> }
+>=20
+> #ifdef HW_RECT_ACCEL
+> @@ -1159,7 +1165,6 @@ static void vmsvga_reset(DeviceState *dev)
+>     s->config =3D 0;
+>     s->svgaid =3D SVGA_ID;
+>     s->cursor.on =3D 0;
+> -    s->redraw_fifo_first =3D 0;
+>     s->redraw_fifo_last =3D 0;
+>     s->syncing =3D 0;
+>=20
+> --=20
+> 2.35.1
+>=20
 
 
