@@ -1,70 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nddId-00054r-0q
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Apr 2022 15:32:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34482)
+	id 1neEr1-00034y-BN
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Apr 2022 07:38:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60472)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1nddIa-00050N-Ku; Sun, 10 Apr 2022 15:32:36 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:40555)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1nddIZ-00030b-2n; Sun, 10 Apr 2022 15:32:36 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id e8so3759475wra.7;
- Sun, 10 Apr 2022 12:32:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:signed-off-by:content-transfer-encoding;
- bh=DxI01Lhb3PVVR1+hRo1spjyaUCy+NfvJh23lqBfJ0nM=;
- b=Z2ub7WibYAC6D+kXdXWl2tJKCCn6nJeX733VHRg00mSkZJ1bVzMGplpTXZ2FfOVz4z
- OSZWgT2YuK2vPz8uY2lpls+SB7DkJk/BvFV/R2DuLCEHftRARuzVm2gD6cAvYjf7ivIp
- 95I6zgv25BLftayqEG0vDZbIbjfP8a9DWqIhncizCYwf+ZT1QyrA9pR65lhkNCSwMK6E
- AgmKUTsv4VI5UY79zd9KMmXhKc1UaPzs9K+bxfwO82GIupvoPlGFObaj0PyJdjr1PfwG
- 7rKJCEu4RP33xM6I51XABCu6wVf3XydzbOfyHR2RDp6SbCVlA5IeWEMx7PzYlkx5PTWS
- zawg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:signed-off-by:content-transfer-encoding;
- bh=DxI01Lhb3PVVR1+hRo1spjyaUCy+NfvJh23lqBfJ0nM=;
- b=Ai+BoGfjifH/hx/+IUS1gkYu8svD23sOmkz0oiUNCkYMsNcjTKnJKoN8F3LnqSO5Rp
- oCVgPE1pxDaW/UY4zjKG026YSRG3p8221lcDrTn532RI1StjC9FwjZ2K5SYax4sejgOJ
- lcyrg6uYnnTxeidnzeqVrV0aEI2abYQx9BjB1qOOWUS4Y9H5um2yFB/Ed9n0o4Eps4eC
- sh80n+hEula2bNu9Q9Erlj5mDvh7z+VykSDTi1Dloi8vQbo4nw7UYFj7G27O1Hp0vfLo
- bfCfycIYILFgeCR4oEJwNS0HWhGG9Fz6NPp71gI33bmEBqgS/jjlyzeta9IQ6Tgs5gob
- 9BjQ==
-X-Gm-Message-State: AOAM5335NnTvWIZLdsXoZpj37kwA5b8tWIzPceDLDXQ9ow3nt2DaWakK
- ZcbLAERwlThu4ONS7FQBrnyo2wcGz5k=
-X-Google-Smtp-Source: ABdhPJw2fZ75tbGTGvy4RSzTebOGSf/3UF+5YRznvac/9HJFEfNsWX6O9QNB/b/5XH1EWv2O7ym0UQ==
-X-Received: by 2002:a5d:4cce:0:b0:207:a1f1:6f50 with SMTP id
- c14-20020a5d4cce000000b00207a1f16f50mr4849111wrt.139.1649619153254; 
- Sun, 10 Apr 2022 12:32:33 -0700 (PDT)
-Received: from localhost.localdomain (201.11.75.194.dyn.plus.net.
- [194.75.11.201]) by smtp.googlemail.com with ESMTPSA id
- t15-20020adfeb8f000000b002060d26c211sm19179596wrn.114.2022.04.10.12.32.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 10 Apr 2022 12:32:32 -0700 (PDT)
-From: Carwyn Ellis <carwynellis@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
- Carwyn Ellis <carwynellis@gmail.com>
-Subject: [PATCH v2 1/1] ui/cocoa: show/hide menu in fullscreen on mouse
- ungrab/grab
-Date: Sun, 10 Apr 2022 20:32:20 +0100
-Message-Id: <20220410193220.99168-2-carwynellis@gmail.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220410193220.99168-1-carwynellis@gmail.com>
-References: <20220410193220.99168-1-carwynellis@gmail.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1neEqx-00034Y-Jq
+ for qemu-trivial@nongnu.org; Tue, 12 Apr 2022 07:38:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:22225)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1neEqt-00035g-LC
+ for qemu-trivial@nongnu.org; Tue, 12 Apr 2022 07:38:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1649763510;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=gc1mzdkZsq3HzQEd8C3kVAd70WJNr1x6mPofhyxy8+Q=;
+ b=J0sq/Np1ZRiFEWwj9NJttAjmwXjwtpU3LJVBTj67RsSX1L7Sbzx4vqAX7WfO04Vjw6Ki2H
+ lMFM5fXI3Q7/IV82FMwSiU99sv3b1pGK7gwhOyMQCvC5jttZeNGhv+W+rl6O18V54KUmMQ
+ hZfH8cypkSAYmQ+AdHjPLdXNbOFm9JM=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-189-lz-HTiozPJqzbQLHF_HBOg-1; Tue, 12 Apr 2022 07:38:27 -0400
+X-MC-Unique: lz-HTiozPJqzbQLHF_HBOg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C84373820F61;
+ Tue, 12 Apr 2022 11:38:26 +0000 (UTC)
+Received: from thuth.com (dhcp-192-183.str.redhat.com [10.33.192.183])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 19EFB2024CCF;
+ Tue, 12 Apr 2022 11:38:25 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>
+Subject: [PATCH for-7.1] target/mips: Remove stale TODO file
+Date: Tue, 12 Apr 2022 13:38:24 +0200
+Message-Id: <20220412113824.297108-1-thuth@redhat.com>
 MIME-Version: 1.0
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=carwynellis@gmail.com; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,62 +70,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 10 Apr 2022 19:32:37 -0000
+X-List-Received-Date: Tue, 12 Apr 2022 11:38:37 -0000
 
-The menu bar is only accessible when the Cocoa UI is windowed. In order
-to allow the menu bar to be accessible in fullscreen mode, this change
-makes the menu visible when the mouse is ungrabbed.
+The last change to this file has been done in 2012, so it
+seems like this is not really used anymore, and the content
+is likely very out of date now.
 
-When the mouse is grabbed the menu is hidden again.
-
-Incorporates changes in response to review feedback from Akihiko Odaki.
-
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- ui/cocoa.m | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ target/mips/TODO | 51 ------------------------------------------------
+ 1 file changed, 51 deletions(-)
+ delete mode 100644 target/mips/TODO
 
-diff --git a/ui/cocoa.m b/ui/cocoa.m
-index c4e5468f9e..ea2cd4ece0 100644
---- a/ui/cocoa.m
-+++ b/ui/cocoa.m
-@@ -656,13 +656,11 @@ - (void) toggleFullScreen:(id)sender
-         [fullScreenWindow close];
-         [normalWindow setContentView: self];
-         [normalWindow makeKeyAndOrderFront: self];
--        [NSMenu setMenuBarVisible:YES];
-     } else { // switch from desktop to fullscreen
-         isFullscreen = TRUE;
-         [normalWindow orderOut: nil]; /* Hide the window */
-         [self grabMouse];
-         [self setContentDimensions];
--        [NSMenu setMenuBarVisible:NO];
-         fullScreenWindow = [[NSWindow alloc] initWithContentRect:[[NSScreen mainScreen] frame]
-             styleMask:NSWindowStyleMaskBorderless
-             backing:NSBackingStoreBuffered
-@@ -1141,7 +1139,9 @@ - (void) grabMouse
- {
-     COCOA_DEBUG("QemuCocoaView: grabMouse\n");
- 
--    if (!isFullscreen) {
-+    if (isFullscreen) {
-+        [NSMenu setMenuBarVisible: FALSE];
-+    } else {
-         if (qemu_name)
-             [normalWindow setTitle:[NSString stringWithFormat:@"QEMU %s - (Press ctrl + alt + g to release Mouse)", qemu_name]];
-         else
-@@ -1156,7 +1156,9 @@ - (void) ungrabMouse
- {
-     COCOA_DEBUG("QemuCocoaView: ungrabMouse\n");
- 
--    if (!isFullscreen) {
-+    if (isFullscreen) {
-+        [NSMenu setMenuBarVisible: TRUE];
-+    } else {
-         if (qemu_name)
-             [normalWindow setTitle:[NSString stringWithFormat:@"QEMU %s", qemu_name]];
-         else
+diff --git a/target/mips/TODO b/target/mips/TODO
+deleted file mode 100644
+index 1d782d8027..0000000000
+--- a/target/mips/TODO
++++ /dev/null
+@@ -1,51 +0,0 @@
+-Unsolved issues/bugs in the mips/mipsel backend
+------------------------------------------------
+-
+-General
+--------
+-- Unimplemented ASEs:
+-  - MDMX
+-  - SmartMIPS
+-  - microMIPS DSP r1 & r2 encodings
+-- MT ASE only partially implemented and not functional
+-- Shadow register support only partially implemented,
+-  lacks set switching on interrupt/exception.
+-- 34K ITC not implemented.
+-- A general lack of documentation, especially for technical internals.
+-  Existing documentation is x86-centric.
+-- Reverse endianness bit not implemented
+-- The TLB emulation is very inefficient:
+-  QEMU's softmmu implements a x86-style MMU, with separate entries
+-  for read/write/execute, a TLB index which is just a modulo of the
+-  virtual address, and a set of TLBs for each user/kernel/supervisor
+-  MMU mode.
+-  MIPS has a single entry for read/write/execute and only one MMU mode.
+-  But it is fully associative with randomized entry indices, and uses
+-  up to 256 ASID tags as additional matching criterion (which roughly
+-  equates to 256 MMU modes). It also has a global flag which causes
+-  entries to match regardless of ASID.
+-  To cope with these differences, QEMU currently flushes the TLB at
+-  each ASID change. Using the MMU modes to implement ASIDs hinges on
+-  implementing the global bit efficiently.
+-- save/restore of the CPU state is not implemented (see machine.c).
+-
+-MIPS64
+-------
+-- Userland emulation (both n32 and n64) not functional.
+-
+-"Generic" 4Kc system emulation
+-------------------------------
+-- Doesn't correspond to any real hardware. Should be removed some day,
+-  U-Boot is the last remaining user.
+-
+-PICA 61 system emulation
+-------------------------
+-- No framebuffer support yet.
+-
+-MALTA system emulation
+-----------------------
+-- We fake firmware support instead of doing the real thing
+-- Real firmware (YAMON) falls over when trying to init RAM, presumably
+-  due to lacking system controller emulation.
+-- Bonito system controller not implemented
+-- MSC1 system controller not implemented
 -- 
-2.35.1
+2.27.0
 
 
