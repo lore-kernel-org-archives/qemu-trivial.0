@@ -1,71 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nhFo7-0008F7-Pk
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Apr 2022 15:16:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38688)
+	id 1nhaH4-0006yf-Vn
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Apr 2022 13:07:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1nhFnw-0008Be-3g; Wed, 20 Apr 2022 15:15:59 -0400
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a]:43749)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nhaH3-0006rp-8g
+ for qemu-trivial@nongnu.org; Thu, 21 Apr 2022 13:07:21 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:55813)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1nhFns-00031a-PX; Wed, 20 Apr 2022 15:15:54 -0400
-Received: by mail-oi1-x22a.google.com with SMTP id w127so3136590oig.10;
- Wed, 20 Apr 2022 12:15:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1nhaH1-0007Wa-NP
+ for qemu-trivial@nongnu.org; Thu, 21 Apr 2022 13:07:20 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id u5so2418027pjr.5
+ for <qemu-trivial@nongnu.org>; Thu, 21 Apr 2022 10:07:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=iAPK1UqhiqaFJpDXle9Bc1K/dWfiZbbImrOTt1WgoWU=;
- b=dEom7+tDgSPpr2Rvn+yFLTU2aNcT7AN/cyAEdQxGgkrk+Ibnjpxu63I2cuOc7bnvHQ
- kIuBiHtmnqMpyx3Z1EUOfMv+KEQGQp5zCTRE3gb5iqOnitsqlI0ZSXRg061QYlEfuNQq
- nqmn3duCCdKboU7b8w+3/xtuqsbCRr3NfrOeG1kKeMWVnA59pMPgJMoYWyEmpghoSgu8
- q+ZJccrX0aHYLnic9LjgXGx37XRZX0rNzu73Qz+v6IAQ/voUADQM/5KCAViRQPm/rV7X
- DeEAcAU9g3O/zk1kJoa/l4fVX6NUtkp7BstG0jJBsWGwsjJJPKsR+F/dlkEr4GTzTUwX
- CMCw==
+ bh=S8QSuWiCKLdhVzdi+N+Nub5FNHJL4mdi+uVSoh9w5uM=;
+ b=emjojJEyHrc/8x/xIF9tWA78AnDoFxf99WZT9A/VSvvD7pebUKatG06F6e8FUZwaZi
+ 2Pynjv6FBJ8o24PS6hGmVNGx8I157fh/CpfWmXfxcSqamcCu0Ls+9idCzmvWA53QrD7n
+ 2q/iqvk1qU9mtT/4A7nhH2nVtXdMwoo0NEgyRnsvvJW7+pEOosBoLmkt+wU0WVhvtBv3
+ FfmZnPGEGVG0HBDH9Np7P2JBc6tUk/+6k+mX0RS2q3PuNR6yknEnoolZut1NjJZuy40a
+ hQ0ffmVHQJvm9Ty6rl90ZgzvJGniWrPLuuexma8YK5OHcGplZxDpIWGAbmLOevUrp+Lg
+ REsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=iAPK1UqhiqaFJpDXle9Bc1K/dWfiZbbImrOTt1WgoWU=;
- b=7c2IToItthJqwuWwbgTxVHmkaO2xVUdUEfLyPx1caKct80eZdN/bErbLf0bI5lD3WC
- NPWjgrJHFvtTXJ5BzVcqND4NwNEMHZ0MNh+gI1t4IgZ+Iq+bWapqN09M80VxLm7rIm6W
- lfPH4H3VyHaxYGMeAyAOY2c36A65ZjlcVm/zlsSwuqytf3B/RvD3e9MwmoK7HOUMsFcd
- JPHJNgjOtHWjpc0TzYp8VI3sv3PGzeMv1RvsKHIxkSA29K6qJ7gPu/BxGjcheyzYqiMs
- 7J594OoLOxbxhYMaqF082q1qRT9rLnYY9P5PUwcezwx3z41PY/SGIlfXe5TDOHKndzSD
- bUbg==
-X-Gm-Message-State: AOAM5335xu7/aq6YR4M+xHJpFGKkiX1PJQxS/omALRDeddSVLLJS4QWX
- fZgoJh5DppEauckqabSYpO0=
-X-Google-Smtp-Source: ABdhPJzJgTiJPMieAhDewyslQz6A+2oqZj+KPBv1tPFZid6GkraE0D4e2BT/llhb1qrVGXfoTrBGaQ==
-X-Received: by 2002:aca:5e84:0:b0:2ec:9c1d:fc77 with SMTP id
- s126-20020aca5e84000000b002ec9c1dfc77mr2431700oib.291.1650482150932; 
- Wed, 20 Apr 2022 12:15:50 -0700 (PDT)
-Received: from [192.168.10.222] ([179.225.252.195])
+ bh=S8QSuWiCKLdhVzdi+N+Nub5FNHJL4mdi+uVSoh9w5uM=;
+ b=xnfRwM09VBsE+8BtcEMCEuMKmouzDWNgLnIyzKo1DwW6XJO2BaMcfhu/bKUHhnV4zn
+ jr+kP+A57gv6k/v6AQ8sIU/WSZ4LOgvcFFO8VdBBDrYP4fj6UarvC2J+3Kje+O5NfZe1
+ RHxS/wUJGTnJqs3YglHhdMp7WF6E5R0JSqDaPGj1Xto6piuaRxcdMn6DnP2mqc/+nJIJ
+ cGetMNisb73rGVkgiU0txgiU+g3b9Y4xYUmRNV0Dkc15TlvPHaUv9pTlikw8F97j3lXI
+ vQ8o1FiXFTdg92x6+PnlZpxCJD+Fyu3yiQmiXrbYYgpvOpYe6ddMZOZH5CInZQo9WMUt
+ LmsQ==
+X-Gm-Message-State: AOAM530tKGHGHzRvGGj4g+xmPqGM8QDqACpgxK0lvKWHVlOWyF96djUP
+ ZS9+vCapE55YmNarfxLDP0jrmQ==
+X-Google-Smtp-Source: ABdhPJxyCB7iYc1ObkIpV8meXdmI40o7ab+vXUsvtRkPhur/95IKCgcWopt5AcHXU32yWTBWobm6/A==
+X-Received: by 2002:a17:902:e98b:b0:158:bc16:d5d2 with SMTP id
+ f11-20020a170902e98b00b00158bc16d5d2mr464454plb.103.1650560837294; 
+ Thu, 21 Apr 2022 10:07:17 -0700 (PDT)
+Received: from ?IPV6:2607:fb90:80c1:f8a5:3d1f:84a9:7713:bf09?
+ ([2607:fb90:80c1:f8a5:3d1f:84a9:7713:bf09])
  by smtp.gmail.com with ESMTPSA id
- o17-20020a9d5c11000000b005b2611a13edsm6803639otk.61.2022.04.20.12.15.48
+ o197-20020a62cdce000000b0050bb32e3b8dsm2289278pfg.179.2022.04.21.10.07.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 Apr 2022 12:15:50 -0700 (PDT)
-Message-ID: <70e811c4-7ade-d443-0e61-576995e28a30@gmail.com>
-Date: Wed, 20 Apr 2022 16:15:47 -0300
+ Thu, 21 Apr 2022 10:07:16 -0700 (PDT)
+Message-ID: <4db53278-9181-df6f-55eb-e7bc0b3085e6@linaro.org>
+Date: Thu, 21 Apr 2022 10:07:12 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
-Subject: Re: [PATCH v2] hw/ppc/ppc405_boards: Initialize g_autofree pointer
+Subject: Re: [PATCH v3] hw/rx: rx-gdbsim DTB load address aligned of 16byte.
 Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "open list:ppc4xx" <qemu-ppc@nongnu.org>
-References: <20220405123534.3395-1-shentey@gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20220405123534.3395-1-shentey@gmail.com>
+To: Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20220207132758.84403-1-ysato@users.sourceforge.jp>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220207132758.84403-1-ysato@users.sourceforge.jp>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
- envelope-from=danielhb413@gmail.com; helo=mail-oi1-x22a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -80,52 +83,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Apr 2022 19:16:05 -0000
+X-List-Received-Date: Thu, 21 Apr 2022 17:07:21 -0000
 
-Queued in gitlab.com/danielhb/qemu/tree/ppc-next. Thanks,
-
-
-Daniel
-
-On 4/5/22 09:35, Bernhard Beschow wrote:
-> Resolves the only compiler warning when building a full QEMU under Arch Linux:
+On 2/7/22 05:27, Yoshinori Sato wrote:
+> Linux kernel required alined address of DTB.
+> But missing align in dtb load function.
+> Fixed to load to the correct address.
 > 
->    Compiling C object libqemu-ppc-softmmu.fa.p/hw_ppc_ppc405_boards.c.o
->    In file included from /usr/include/glib-2.0/glib.h:114,
->                     from qemu/include/glib-compat.h:32,
->                     from qemu/include/qemu/osdep.h:132,
->                     from ../src/hw/ppc/ppc405_boards.c:25:
->    ../src/hw/ppc/ppc405_boards.c: In function ‘ref405ep_init’:
->    /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: warning: ‘filename’ may be used uninitialized in this function [-Wmaybe-uninitialized]
->       28 |   g_free (*pp);
->          |   ^~~~~~~~~~~~
->    ../src/hw/ppc/ppc405_boards.c:265:26: note: ‘filename’ was declared here
->      265 |         g_autofree char *filename;
->          |                          ^~~~~~~~
+> v3 changes.
+> Fix round value.
 > 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/ppc/ppc405_boards.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> v2 changes.
+> Use ROUND_DOWN macro.
 > 
-> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-> index 7e1a4ac955..3bed7002d2 100644
-> --- a/hw/ppc/ppc405_boards.c
-> +++ b/hw/ppc/ppc405_boards.c
-> @@ -262,13 +262,13 @@ static void ref405ep_init(MachineState *machine)
->       /* allocate and load BIOS */
->       if (machine->firmware) {
->           MemoryRegion *bios = g_new(MemoryRegion, 1);
-> -        g_autofree char *filename;
-> +        g_autofree char *filename = qemu_find_file(QEMU_FILE_TYPE_BIOS,
-> +                                                   machine->firmware);
->           long bios_size;
->   
->           memory_region_init_rom(bios, NULL, "ef405ep.bios", BIOS_SIZE,
->                                  &error_fatal);
->   
-> -        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, machine->firmware);
->           if (!filename) {
->               error_report("Could not find firmware '%s'", machine->firmware);
->               exit(1);
+> Signed-off-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+Queued to target-rx-next.
+
+
+r~
 
