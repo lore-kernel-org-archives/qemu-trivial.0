@@ -1,63 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nhqME-0002N8-R7
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Apr 2022 06:17:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33268)
+	id 1nhqiu-0003pQ-Lw
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Apr 2022 06:41:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhqM6-0002Ix-66
- for qemu-trivial@nongnu.org; Fri, 22 Apr 2022 06:17:41 -0400
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b]:42782)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1nhqM3-0004wV-Gg
- for qemu-trivial@nongnu.org; Fri, 22 Apr 2022 06:17:37 -0400
-Received: by mail-yb1-xb2b.google.com with SMTP id p65so13607488ybp.9
- for <qemu-trivial@nongnu.org>; Fri, 22 Apr 2022 03:17:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=P1HnQzAM+PSCFld2kMCvssWpFpCVK98/bY+30Mqe+hQ=;
- b=LxqO2ilDOr4t0hkDS8j524Y7uRdP8tBAZp5VMFmAP8wMZkFwV8Zdc5x08X6P3ZoPCw
- 0DKcc3UnOGCAYikypWY3sEGFq4KY6D1yeblLXSg/JU/c1/37vkaDECpOATcBfPjy52XY
- 3wvan9EeKZo9PR1HInltzSCGW7s844JjoH0k2Ytn5oiky/qRVrjIEkSUjQI2its7pufM
- 6+zjzVYckzosit/H8A3F5lWlI7U+xYTuzBsml7Kf5iAR0ulQ15i2pVA4xehHHpso+Ep4
- BRKWVAL8N8NaKdHXa72fWWs6mJu50gKIuIkqnjyNH/ha4MOJNHdD9fHnm74q24JHn6mt
- M3nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=P1HnQzAM+PSCFld2kMCvssWpFpCVK98/bY+30Mqe+hQ=;
- b=E07SvV+hJZ+FR8DGwEw+tISgX8jJ7szFTgHt65p6OEU+Q7J/MIufkKLO6DpjAIOoQF
- z6Se3RsIRyOcjGG6zbD4Lq7qM29AZbCPoDTUq6Q/aJXMFFWFTlLaZfLqcbCFtBj+rh4p
- TIXRYf3+XQbvlryVbCoe9CWNXDVcJLOrS0QHx2zOoCbi+IAAp4jRHRDAKGyTzjJT8VHF
- KqBFLlAEsU6X/+1ISa1BQMTtFbbrUJtsHh3vPZfctOTbdzcyFbmRHtashArvpB1nmHe7
- p6vZO4DdhSQLbXMZFb9vjPVAMF8oyj5U1jMY1i+I86IV15IoC7PLTgPLiGeaYEfUx+9y
- m+og==
-X-Gm-Message-State: AOAM532Sa8bqMDRJmA3VTjGPRsbsPdzeAWnGA2i6GCzyxN7tMkSYWZnf
- uo/fesaM4dNH0pOguy4cn76m/OGQXAOo6aNjf4nVSw==
-X-Google-Smtp-Source: ABdhPJz4jRpqHnEZQRNG+aJCENzBK+hl2bQh218vXCauCnd+aub/+MM8ZV0lv17qN8mizDZ6IxufVDsh1eYsZpuNqnk=
-X-Received: by 2002:a05:6902:390:b0:645:7d46:f1db with SMTP id
- f16-20020a056902039000b006457d46f1dbmr3642880ybs.85.1650622654248; Fri, 22
- Apr 2022 03:17:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nhqid-0003jU-5B
+ for qemu-trivial@nongnu.org; Fri, 22 Apr 2022 06:40:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:38954)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nhqiZ-0008Us-H8
+ for qemu-trivial@nongnu.org; Fri, 22 Apr 2022 06:40:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1650624048;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PAuucCbo3qLFpvPSw8VpRrHOmmStcCZLD50v3awWHDw=;
+ b=H6uYK6Rd7X+36q2VRM+dbxsXflqbMH5PjEFpO/y1oYXgnjwAxfLFcmKQu889flEkDj9g9O
+ LpA5zK51OiP2QResi8XlPQPwKV73jOrWncqy69On6+ac/k5KEtwD8QVbMBWtjjnXDfbvmX
+ a4k0xWCCC0u5XFiqSV1L4d67pP7COO4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-633-KPJrm1qFPcS__zDk7x2pdA-1; Fri, 22 Apr 2022 06:40:45 -0400
+X-MC-Unique: KPJrm1qFPcS__zDk7x2pdA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5A74C1014A60;
+ Fri, 22 Apr 2022 10:40:45 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.9])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2376F40D0174;
+ Fri, 22 Apr 2022 10:40:44 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 1FE37180098B; Fri, 22 Apr 2022 12:40:30 +0200 (CEST)
+Date: Fri, 22 Apr 2022 12:40:30 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Carwyn Ellis <carwynellis@gmail.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trivial <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH v3 2/2] hw/display/vmware_vga: do not discard screen
+ updates
+Message-ID: <20220422104030.kte6wcu3zc4oywey@sirius.home.kraxel.org>
+References: <20220206183956.10694-1-carwynellis@gmail.com>
+ <20220206183956.10694-3-carwynellis@gmail.com>
+ <2CBB155B-88D6-42EC-9EA0-88968C3FD3B7@gmail.com>
 MIME-Version: 1.0
-References: <20220422084611.1083806-1-sw@weilnetz.de>
-In-Reply-To: <20220422084611.1083806-1-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Apr 2022 11:17:23 +0100
-Message-ID: <CAFEAcA92E_FZwdjoR9gYRqHExmDXNdoU5yeKx1UkaDC_EeSkjw@mail.gmail.com>
-Subject: Re: [PATCH] nsis: Add missing tools to installer for Windows
-To: Stefan Weil <sw@weilnetz.de>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2CBB155B-88D6-42EC-9EA0-88968C3FD3B7@gmail.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,40 +72,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Apr 2022 10:17:41 -0000
+X-List-Received-Date: Fri, 22 Apr 2022 10:40:57 -0000
 
-On Fri, 22 Apr 2022 at 10:09, Stefan Weil <sw@weilnetz.de> wrote:
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  qemu.nsi | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/qemu.nsi b/qemu.nsi
-> index 564d617d11..f56a18901c 100644
-> --- a/qemu.nsi
-> +++ b/qemu.nsi
-> @@ -142,8 +142,12 @@ SectionEnd
->
->  Section "Tools" SectionTools
->      SetOutPath "$INSTDIR"
-> +    File "${BINDIR}\qemu-edid.exe"
-> +    File "${BINDIR}\qemu-ga.exe"
->      File "${BINDIR}\qemu-img.exe"
->      File "${BINDIR}\qemu-io.exe"
-> +    File "${BINDIR}\qemu-nbd.exe"
-> +    File "${BINDIR}\qemu-storage-daemon.exe"
->  SectionEnd
+On Sun, Apr 10, 2022 at 05:49:30PM +0100, Carwyn Ellis wrote:
+> ping
+> 
+> https://patchew.org/QEMU/20220206183956.10694-1-carwynellis@gmail.com/20220206183956.10694-3-carwynellis@gmail.com/
+> 
+> Originally submitted as one of two patches, the first patch to use trace events has been merged, however the patch that fixes garbled output hasn’t been reviewed yet.
 
-Maybe it would be better to change this section to be
-created by the nsis.py script? I haven't looked at what
-exactly we end up with in the tempdir that that script's
-'make install' creates, but it might be as simple as
-"put all the .exe files that aren't qemu-system-*.exe
-into a tools section that we write out to a nother .nsh
-include file". Scripting it would also let us handle the
-"build an installer on a --disable-tools config" case.
+Hmm, slipped through for some reason, IIRC I cherry-picked the trace
+events patch from v2 series and probably simply missed v3.  Queued now.
 
-thanks
--- PMM
+thanks,
+  Gerd
+
 
