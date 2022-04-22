@@ -1,72 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nhqk9-0005bl-Sk
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Apr 2022 06:42:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37286)
+	id 1nht6D-0003Kb-AQ
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Apr 2022 09:13:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1nhqk2-0005Yn-A5; Fri, 22 Apr 2022 06:42:23 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:45828)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1nhqk0-000090-Ah; Fri, 22 Apr 2022 06:42:21 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 17-20020a05600c021100b00393a19f8f98so2121164wmi.4; 
- Fri, 22 Apr 2022 03:42:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:from:mime-version:subject:date:message-id
- :references:cc:in-reply-to:to;
- bh=eKXctPbdF/XsgsBlo5qPoVJMO+HAPxUlXw6G7HgFefU=;
- b=QNq7ayM9GRL2fPTqwi7anyejh0pIItR5Lp0nv1GZIwTAskVUMmacDUCOEz1amSydBj
- PwTwIi2MlkTqz95CWAsZJO3KLNxl4L985JLVU9KAqGY6N3lArozzkjNpXK4iVkqzGBaz
- DAXlBV68hD/GjR/+jWj32dSylqJb3oWfSxmNkXcvNgItmxqkBzE7cCPXBq3jGsHL/BlI
- AldA95UPDLAsx/VTk5ngXQb09bP+nR+6GOirGtfxvK/pnJ8lfV8LxpjvKq6ahgv+AyXl
- /mwlaMxhMDJScI1OFWUVXQxLbFU6h2viKBw+KbavkiV5WVkbJl+K81QAIxG2zjN/Kj+o
- YyUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:content-transfer-encoding:from:mime-version
- :subject:date:message-id:references:cc:in-reply-to:to;
- bh=eKXctPbdF/XsgsBlo5qPoVJMO+HAPxUlXw6G7HgFefU=;
- b=sVEHP6f6qIiqsu/2DdiBfdN3bEl27PF+syvRat55YJgD0CnUT08W5FAcMd7aJFbrFb
- 9S+SS7Lwz8Q3zN7rsK++qAoq3Djy1FzKsir7NgS6hj+VLcYRK+fijxNxZM0s8HZJnJzA
- HhCh83Ez2nVd3+QWMil7D+KI9POz5ehk88VbBnPoP6gKvmjSuGKcdu+rs3yXePsrjKoe
- 92V/O/pWMFsqkB0LX5TwtkhH8VJ2DABSapUHHeaGBR3+ubhKQmz41NjyC8tqKjwYTZNL
- pvuUwbaMYDd5OtM9Sprco03DH6L57AOxuStvX52JILCQBVd4eE4pbf/p/y0ini26+tiL
- Wzxw==
-X-Gm-Message-State: AOAM5327nADCmpp39GAxftkAhYnfPlMGsuohXYjACXubJDXE0XpmQU9y
- xHni5JAFqhYuHryS5+ij/rg=
-X-Google-Smtp-Source: ABdhPJwRF/zExrX05fPbIeE+eUR/xvlE3aIUCzS3Io02y+Cb9qkNti30itGAEe6d4d79tcQ1qe/n4A==
-X-Received: by 2002:a05:600c:3011:b0:38e:ba57:8b79 with SMTP id
- j17-20020a05600c301100b0038eba578b79mr12551969wmh.26.1650624130035; 
- Fri, 22 Apr 2022 03:42:10 -0700 (PDT)
-Received: from smtpclient.apple ([2a04:4a43:446f:c914:5df4:343d:9921:2393])
- by smtp.gmail.com with ESMTPSA id
- v2-20020adf8b42000000b0020aa790a258sm1492663wra.8.2022.04.22.03.42.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Apr 2022 03:42:09 -0700 (PDT)
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-From: Carwyn Ellis <carwynellis@gmail.com>
-Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH v3 2/2] hw/display/vmware_vga: do not discard screen
- updates
-Date: Fri, 22 Apr 2022 11:42:07 +0100
-Message-Id: <1FAF24C1-40C7-4D30-BF33-FD6C933DD07E@gmail.com>
-References: <20220422104030.kte6wcu3zc4oywey@sirius.home.kraxel.org>
-Cc: QEMU <qemu-devel@nongnu.org>, qemu trivial <qemu-trivial@nongnu.org>
-In-Reply-To: <20220422104030.kte6wcu3zc4oywey@sirius.home.kraxel.org>
-To: Gerd Hoffmann <kraxel@redhat.com>
-X-Mailer: iPhone Mail (19D50)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=carwynellis@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <knuto@ifi.uio.no>)
+ id 1nhooo-0008DE-UI; Fri, 22 Apr 2022 04:39:16 -0400
+Received: from mail-out02.uio.no ([2001:700:100:8210::71]:47165)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <knuto@ifi.uio.no>)
+ id 1nhoom-0006S3-JV; Fri, 22 Apr 2022 04:39:10 -0400
+Received: from mail-mx10.uio.no ([129.240.10.27])
+ by mail-out02.uio.no with esmtps (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <knuto@ifi.uio.no>)
+ id 1nhoof-00G4Ql-RA; Fri, 22 Apr 2022 10:39:01 +0200
+Received: from 108.84-234-134.customer.lyse.net ([84.234.134.108]
+ helo=[172.25.2.5])
+ by mail-mx10.uio.no with esmtpsa (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256)
+ user knuto (Exim 4.94.2) (envelope-from <knuto@ifi.uio.no>)
+ id 1nhoof-000D6G-6Y; Fri, 22 Apr 2022 10:39:01 +0200
+Message-ID: <39d76f6ddf886fc32bf4e18a499bcd5744f1a75b.camel@ifi.uio.no>
+Subject: Re: [PATCH] docs: Replace Qemu -> QEMU
+From: Knut Omang <knuto@ifi.uio.no>
+To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org, 
+ qemu-trivial@nongnu.org, Knut Omang <knut.omang@oracle.com>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>
+Date: Fri, 22 Apr 2022 10:38:59 +0200
+In-Reply-To: <20220422083007.1082667-1-sw@weilnetz.de>
+References: <20220422083007.1082667-1-sw@weilnetz.de>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.42.4 (3.42.4-1.fc35) 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-UiO-SPF-Received: Received-SPF: neutral (mail-mx10.uio.no: 84.234.134.108 is
+ neither permitted nor denied by domain of ifi.uio.no)
+ client-ip=84.234.134.108; envelope-from=knuto@ifi.uio.no; helo=[172.25.2.5]; 
+X-UiO-Spam-info: not spam, SpamAssassin (score=-4.8, required=5.0,
+ autolearn=disabled, TVD_RCVD_IP=0.001, UIO_HTTP=0.2, UIO_MAIL_IS_INTERNAL=-5)
+X-UiO-Scanned: D357DE2A48B1FBDC736776C45C0972358AE999D1
+X-UiOonly: 9C48052885EDA4DBCB32979576F9AB025DB42659
+Received-SPF: pass client-ip=2001:700:100:8210::71;
+ envelope-from=knuto@ifi.uio.no; helo=mail-out02.uio.no
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 22 Apr 2022 09:13:23 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,26 +59,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Apr 2022 10:42:23 -0000
+X-List-Received-Date: Fri, 22 Apr 2022 08:39:17 -0000
 
-Awesome! Thanks!=20
+On Fri, 2022-04-22 at 10:30 +0200, Stefan Weil wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  docs/pcie_sriov.txt | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/docs/pcie_sriov.txt b/docs/pcie_sriov.txt
+> index f5e891e1d4..11158dbf88 100644
+> --- a/docs/pcie_sriov.txt
+> +++ b/docs/pcie_sriov.txt
+> @@ -8,8 +8,8 @@ of a PCI Express device. It allows a single physical function (PF) to
+> appear as
+>  virtual functions (VFs) for the main purpose of eliminating software
+>  overhead in I/O from virtual machines.
+>  
+> -Qemu now implements the basic common functionality to enable an emulated device
+> -to support SR/IOV. Yet no fully implemented devices exists in Qemu, but a
+> +QEMU now implements the basic common functionality to enable an emulated device
+> +to support SR/IOV. Yet no fully implemented devices exists in QEMU, but a
+>  proof-of-concept hack of the Intel igb can be found here:
+>  
+>  git://github.com/knuto/qemu.git sriov_patches_v5
+> @@ -18,7 +18,7 @@ Implementation
+>  ==============
+>  Implementing emulation of an SR/IOV capable device typically consists of
+>  implementing support for two types of device classes; the "normal" physical device
+> -(PF) and the virtual device (VF). From Qemu's perspective, the VFs are just
+> +(PF) and the virtual device (VF). From QEMU's perspective, the VFs are just
+>  like other devices, except that some of their properties are derived from
+>  the PF.
+>  
 
-> On 22 Apr 2022, at 11:40, Gerd Hoffmann <kraxel@redhat.com> wrote:
->=20
-> =EF=BB=BFOn Sun, Apr 10, 2022 at 05:49:30PM +0100, Carwyn Ellis wrote:
->> ping
->>=20
->> https://patchew.org/QEMU/20220206183956.10694-1-carwynellis@gmail.com/202=
-20206183956.10694-3-carwynellis@gmail.com/
->>=20
->> Originally submitted as one of two patches, the first patch to use trace e=
-vents has been merged, however the patch that fixes garbled output hasn=E2=80=
-=99t been reviewed yet.
->=20
-> Hmm, slipped through for some reason, IIRC I cherry-picked the trace
-> events patch from v2 series and probably simply missed v3.  Queued now.
->=20
-> thanks,
->  Gerd
->=20
+Reviewed-by: Knut Omang <knuto@ifi.uio.no>
+
 
