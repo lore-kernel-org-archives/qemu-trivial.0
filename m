@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1njKaD-0006Nj-Az
+	id 1njKaD-0006OM-Gq
 	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 08:46:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43634)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43630)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njKaC-0006KJ-Aj; Tue, 26 Apr 2022 08:46:20 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:46673)
+ id 1njKaC-0006KG-6b; Tue, 26 Apr 2022 08:46:20 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:40007)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njKaA-0007Cy-Az; Tue, 26 Apr 2022 08:46:20 -0400
+ id 1njKaA-0007D2-AD; Tue, 26 Apr 2022 08:46:19 -0400
 Received: from quad ([82.142.9.138]) by mrelayeu.kundenserver.de (mreue106
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MDgxt-1nYZsm0YJ5-00AluD; Tue, 26
- Apr 2022 14:46:15 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1M7bND-1noZEu38fd-007zxj; Tue, 26
+ Apr 2022 14:46:13 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
- Bin Meng <bmeng.cn@gmail.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 5/5] docs: Replace HomeBrew -> Homebrew
-Date: Tue, 26 Apr 2022 14:46:10 +0200
-Message-Id: <20220426124610.639614-6-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 3/5] target/mips: Remove stale TODO file
+Date: Tue, 26 Apr 2022 14:46:08 +0200
+Message-Id: <20220426124610.639614-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220426124610.639614-1-laurent@vivier.eu>
 References: <20220426124610.639614-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Yj+9ulMqoVosLV89hZcGIHowETN+ZkNPxG55W3Uk6xDp59pClYe
- vfuUCPalBdFhVQ/8iftMn12XW11Y3sMC58afWq3teLHUrqLf74epAJXJzo6MSPw4T5RwXML
- gd238oHz+bBbh1/Dce03bqzMKllxCR7IdEy0aZjuxXNRKdjPDLWgLngvZB+uJn20+eLU+Ki
- ySqtDGgVltivdRU3353Ew==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:xAjV5a74ze4=:Q3aIN4bYG1ePNIw0qSi0b9
- uX3zAPI7eSIQqUEPs24vh3kBo3ppBxRliwTJ4cyQ1DOzNdcPBbB+j6qBy+EU4SCzX4YOYYTYC
- QsuhXvzRRHsMtxeqLJkxW0TpGVApcRKmCmSskBbdxzBy7PgTJZ58X/SjjPwRmUKwjnmW/pdmS
- 8tCeBJczpdjmaAO1QX66exRZdCNuslAvVxeSqjoNlYeos0Kelw+4inY3e5X/cXlRYu/+DwYp9
- DcICp0X3/t0ihmk2WjOr1Gp7PJVv84KVjWGnwGJWL07BNFSwYxMRXeM+QC/Sfv6PPUVBO9UYF
- gSTAQTDpFcM7pD/kVzaUo6lbRM1l+wW74l3lmWeP/piCbHfU/2/TWo5wFjAk0lT2k1RCpRrjl
- 5+2ZV5+QwkJ89o1nFiCF/xvjVR/aBnKQn8RQBfH/MHS1UndyF9sbq2ZzCs9FbM4pQTTgsVhii
- ImRp6NlVrbhIX2iuTh3lpSi1CF1kn/LX2XlsDmeKXktYUwaq0qgj7n/ZEmBpd8g/GG2zqiYDV
- rUYD8lP85Lj73zLjNyJ24lsrEs7FuHgfWJ7oNW2ZHiIlZktHsCbNUCp6pRRkAf3UkglnWNKhM
- 6AIb/sQuJrDGR6CXlY5WV4E6SvYNfC1FtejHEsiARzd3lIYbOpBusGDpBlb6kVE/jMBavQ/TA
- YXIA/XyZ2lgu0pBaAkS94RjQnmOQhhP7Pm/DCaRw+XgV1cgWc0G2l/Sd352f0ryDxa54=
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:jXV4HkMsm15ucqLXV6DMOV8Iivp+GGn+wfz9h1QZ9gcS5fXoPqP
+ w1FKx3r0csgs5vbBjR2rEMpGGZFdupLqdqKIalvjIZY7oabbTCSH16RVYvU1ATBPXvRgpTt
+ kbo9JDZDR/GXqwZD+8vSvngOIvWFXvC1cCAm29SWN4mogFqflzXKlB09bAG556vXhTUe/an
+ 3XS6zYU7rAKrvCCYlNjYQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Ew6NugmkP7E=:wWGwGojYQPKSuUgqzrbfct
+ 6fbdEEliVIonXldHpL3uztosq9KzjRYkwzq38jYRK0O1OT28ZT2iAn80IDKUVUv/4J7t0uibR
+ ntidsy7hjVm8bvKE/itrQVxM5BTWvb7lTkkTCszMOiWnEWtcszwkAUzniGxTzJDuFgy/G5Fkw
+ j8RRrHURFV6swQeBHb5vU/6Ndv32Qb05j4FfS+DxkI+0jiK86+bzrz2hVHUjzqCREfz5wHcnI
+ Yw1PX6lSh606wAld8XVYiKeO3dMhcCPuI6H+byxflYwe5SZDjrmN+qeqxYyALNBx1THlP4iF3
+ rgX2BKIBmh8CGPVDJMhnOW5t5Dqy2BbtMrPJ4ApvVYTi5SdWvvpqzTdvKFvRTv998iODFwVbt
+ YZqQgtSY7yvc74SfpejzlmRVbDH9hspsLg7BJFqCIhFKc+p9GuAc+wKVGmk4nou3sqQSaOV/5
+ CRehqvYS0CnDBReAnC97LqtXmAWizfPiY3rsyTwNX1CGaLxvGIVqY3AIakG8Vaqg+phzqGbHl
+ 1EOAx+3chRsmIeGdZ01apz1qw2J3hWObmWv2x4WcsnLuwVzHI9OFXJ2VMFdjVu2K7qdreBWXn
+ AtLCa8/NYz8LoM7TL/9uBtIssz1DZIeU4npFLRJDIUMfIDDQNVQLB8b83V2inunoiU0vuIlBr
+ joheL0qIcpt960ip83vdK8ccGSwgqbanC4IvsAgTCzuMy0d8/sbVKQemywe7w5sIkykY=
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -61,39 +61,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 26 Apr 2022 12:46:20 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Thomas Huth <thuth@redhat.com>
 
-The official spelling does not use camel case.
+The last change to this file has been done in 2012, so it
+seems like this is not really used anymore, and the content
+is likely very out of date now.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-Message-Id: <20220422083403.1082924-1-sw@weilnetz.de>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220412113824.297108-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/about/build-platforms.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/mips/TODO | 51 ------------------------------------------------
+ 1 file changed, 51 deletions(-)
+ delete mode 100644 target/mips/TODO
 
-diff --git a/docs/about/build-platforms.rst b/docs/about/build-platforms.rst
-index c29a4b8fe649..e9163ba5563f 100644
---- a/docs/about/build-platforms.rst
-+++ b/docs/about/build-platforms.rst
-@@ -80,7 +80,7 @@ Ubuntu LTS. Other distros will be assumed to ship similar software versions.
- For FreeBSD and OpenBSD, decisions will be made based on the contents of the
- respective ports repository, while NetBSD will use the pkgsrc repository.
- 
--For macOS, `HomeBrew`_ will be used, although `MacPorts`_ is expected to carry
-+For macOS, `Homebrew`_ will be used, although `MacPorts`_ is expected to carry
- similar versions.
- 
- Windows
-@@ -92,6 +92,6 @@ hosted on Linux (Debian/Fedora).
- The version of the Windows API that's currently targeted is Vista / Server
- 2008.
- 
--.. _HomeBrew: https://brew.sh/
-+.. _Homebrew: https://brew.sh/
- .. _MacPorts: https://www.macports.org/
- .. _Repology: https://repology.org/
+diff --git a/target/mips/TODO b/target/mips/TODO
+deleted file mode 100644
+index 1d782d8027e0..000000000000
+--- a/target/mips/TODO
++++ /dev/null
+@@ -1,51 +0,0 @@
+-Unsolved issues/bugs in the mips/mipsel backend
+------------------------------------------------
+-
+-General
+--------
+-- Unimplemented ASEs:
+-  - MDMX
+-  - SmartMIPS
+-  - microMIPS DSP r1 & r2 encodings
+-- MT ASE only partially implemented and not functional
+-- Shadow register support only partially implemented,
+-  lacks set switching on interrupt/exception.
+-- 34K ITC not implemented.
+-- A general lack of documentation, especially for technical internals.
+-  Existing documentation is x86-centric.
+-- Reverse endianness bit not implemented
+-- The TLB emulation is very inefficient:
+-  QEMU's softmmu implements a x86-style MMU, with separate entries
+-  for read/write/execute, a TLB index which is just a modulo of the
+-  virtual address, and a set of TLBs for each user/kernel/supervisor
+-  MMU mode.
+-  MIPS has a single entry for read/write/execute and only one MMU mode.
+-  But it is fully associative with randomized entry indices, and uses
+-  up to 256 ASID tags as additional matching criterion (which roughly
+-  equates to 256 MMU modes). It also has a global flag which causes
+-  entries to match regardless of ASID.
+-  To cope with these differences, QEMU currently flushes the TLB at
+-  each ASID change. Using the MMU modes to implement ASIDs hinges on
+-  implementing the global bit efficiently.
+-- save/restore of the CPU state is not implemented (see machine.c).
+-
+-MIPS64
+-------
+-- Userland emulation (both n32 and n64) not functional.
+-
+-"Generic" 4Kc system emulation
+-------------------------------
+-- Doesn't correspond to any real hardware. Should be removed some day,
+-  U-Boot is the last remaining user.
+-
+-PICA 61 system emulation
+-------------------------
+-- No framebuffer support yet.
+-
+-MALTA system emulation
+-----------------------
+-- We fake firmware support instead of doing the real thing
+-- Real firmware (YAMON) falls over when trying to init RAM, presumably
+-  due to lacking system controller emulation.
+-- Bonito system controller not implemented
+-- MSC1 system controller not implemented
 -- 
 2.35.1
 
