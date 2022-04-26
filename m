@@ -1,54 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1njIdH-0005gQ-4t
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 06:41:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38728)
+	id 1njKa9-0006BI-Tv
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 08:46:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43528)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njIcv-0005cK-SV; Tue, 26 Apr 2022 06:41:03 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:41113)
+ id 1njKa8-00065C-4y; Tue, 26 Apr 2022 08:46:16 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:45065)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njIcs-0000gJ-JX; Tue, 26 Apr 2022 06:41:00 -0400
-Received: from [192.168.100.1] ([82.142.9.138]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MzR0i-1o56rV2LAW-00vMkY; Tue, 26 Apr 2022 12:40:53 +0200
-Message-ID: <b0da537b-080c-79d5-5466-4967e10ac204@vivier.eu>
-Date: Tue, 26 Apr 2022 12:40:52 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH] docs: Replace HomeBrew -> Homebrew
-Content-Language: fr
-To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>
-References: <20220422083403.1082924-1-sw@weilnetz.de>
+ id 1njKa6-0007CJ-CO; Tue, 26 Apr 2022 08:46:15 -0400
+Received: from quad ([82.142.9.138]) by mrelayeu.kundenserver.de (mreue106
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1N6LMN-1nyDoA3lxB-016jPr; Tue, 26
+ Apr 2022 14:46:12 +0200
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220422083403.1082924-1-sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xGByrkcrjxbs6nk7cruj+CxIYsIXzjEDpAAraiNnz1Ep4wqWm5V
- 34OFPSz3MjQRRAUmlAdQ8t/EZNGvBeYN9psPe7sQLeJHxo5bKjVa0iPvXwNjYvVZwNUC7G7
- Yryofk0Afe+ugxMUOPjqfo6PGncXCf8tHeiNlnptIecBfpt/cE2qSzmH0pWx+0G/PhVqwu5
- HaIjOvqJWWO5hH6Gd7HLA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BBuSTfwPc5Y=:lrA3TWJzmGKOSLFexxCDFS
- gbYXiLxJc57DeGb/KirRlsRul31QcAxEUwbsigX8jqgO4bcRMDrssZqGE0Ps69A/d34DaZ9Ak
- IOKOh6YnIo5BfAntzDg2ZVHKHz7x+NmNH1wZTpn7pIxOYAPbIHzRfKcY4fpL3O/18gxZRo3PW
- JGndUHSyMh63eY619GVQ2c7RecbpgoMXYV8qmCgLQK7WFbFCldAnhDk/2kC4fegRX6Z0MB1zD
- 3deqOuUA7sujDs+s26Ttl3Kr5iKkfgQc+g09mgP8rtBmasycLD7GnR6q+78ZIg26acI78BI7G
- DTAJFUevXbH+vJbpjve/hBtleLuFd3Fsy4CTEXcTm7yhqoNJ/ltWmsdolLCvDX6UHAIjTV/i2
- Na44k2+8p2SEidZBu9jI810svnMYVpm+Zhb1SKAxdPqpArKfgXznSCSsR6eXjc8wNrLfKPIWN
- 3WHCAZAIv3MqZ0Arl51GvgDiOSfRjZdzkS83HfUROA2xtB7xQjVq+pbyOdTxNKh1z0HI/j6n1
- tZxnRXWkNB7KmYIJasT7AuTVDf5WjFMYJJ5KEPVcEEKRsswd0GAe5eqnBA/7wtZmn3NOspkwq
- XSn5E4EZ/nvVDQeQ2qcho0N6GeHptw88IM1QqqE8oZ6z8YOjgXUhugo9+L+W00zfkC3vBBiQp
- fukZFWUpn2JnBE6DKb5bknMyMo9ddWAnmGuGZ42Zz15r2JwR6woHJ8bFV+yixLsNemuc=
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 0/5] Trivial branch for 7.1 patches
+Date: Tue, 26 Apr 2022 14:46:05 +0200
+Message-Id: <20220426124610.639614-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:ey7uDti7QYxdo4XZ74JfEGj3zumElS8RzOYyRH4bZsuibPS3TWU
+ BrMT8KUzj20OMFLyPTbdY8cWEDd/GbbyvaarmCr4nt+HR+YpYORjo78bxKFfTXxX7MopPkR
+ juvSRvVFRzAy87xcpTZjU9Wst2712hMStt5X6zG0zXMm1yeEgDymaEqPcq0Be9S3a7MYSeV
+ qhanhBqTAF4P9WnSEV9Lw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EX/AfjcaJyU=:rPMGlklBDwNRkFdOJfJyMW
+ UlxDUWZEQjbo/VOgSv+tbll0k8H3tQx9YJZq2P8Th+6vEXr9KPsSQQYwEZgonyWLVRqM9IgMZ
+ MJD3G0CSKpFrfW92RKdVd+PTeTj+Ly0i2m4sPmMmneJdzlD1LU6qhAeZBfAM0KF3CeSwwX2bq
+ SHFa+FU9zu4PUyk7fomL735OJd96CPbD4VrPNFAer639BU4DXOVlIuFz3lDo12pAI6hL0Obu5
+ zpFNsJaVfBDKIFLCTCyx89s3frqEQI8NP4lRZ9M35nboSjNVsAwtq3Q/SrkNBFTY9vZa5poIV
+ Qhmgoh3tqAuQyznNMYRaexJByfMlNOfzb6JjjWb3Ed+uYg+h8bdOb75/pxzLfQjkE/mlHhSf6
+ VCyOUy/0529+9m+YVagh+ueJKM9fTNAlMAx6LkrRxpy4/5AYhEcyMTGdjCquQ1hQqoQwyiYx/
+ 4Hn/3TALVlTfBmP+9ZiWs+gNKdy/WzgN4vxqZxvQU2qCw8iG4FY5z5tq5efiZKfgUM05bE9JM
+ USh89088QpXh5ydy2TPuLh+p1s0PKc5wqWkUXepYgBOZX/QcR2no3Pdu/l4m1YVbj+1GSqJBr
+ obdXg1neYtnVc6rxRREAFThdf4NXcK4ruqbRmMvVlE0u43CiVBhEL0ZC2BuD4Sjij/08n8vmz
+ Vj5+9Gl0AezqtelzBjnVfCsrUhlYGKfgwIOvg+h7uuLWIs77RudozlKHkAeOo4tKcnz8=
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,41 +58,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2022 10:41:07 -0000
+X-List-Received-Date: Tue, 26 Apr 2022 12:46:16 -0000
 
-Le 22/04/2022 à 10:34, Stefan Weil a écrit :
-> The official spelling does not use camel case.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->   docs/about/build-platforms.rst | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/docs/about/build-platforms.rst b/docs/about/build-platforms.rst
-> index c29a4b8fe6..e9163ba556 100644
-> --- a/docs/about/build-platforms.rst
-> +++ b/docs/about/build-platforms.rst
-> @@ -80,7 +80,7 @@ Ubuntu LTS. Other distros will be assumed to ship similar software versions.
->   For FreeBSD and OpenBSD, decisions will be made based on the contents of the
->   respective ports repository, while NetBSD will use the pkgsrc repository.
->   
-> -For macOS, `HomeBrew`_ will be used, although `MacPorts`_ is expected to carry
-> +For macOS, `Homebrew`_ will be used, although `MacPorts`_ is expected to carry
->   similar versions.
->   
->   Windows
-> @@ -92,6 +92,6 @@ hosted on Linux (Debian/Fedora).
->   The version of the Windows API that's currently targeted is Vista / Server
->   2008.
->   
-> -.. _HomeBrew: https://brew.sh/
-> +.. _Homebrew: https://brew.sh/
->   .. _MacPorts: https://www.macports.org/
->   .. _Repology: https://repology.org/
-
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
-
+The following changes since commit a1755db71e34df016ffc10aa0727360aae2c6036=
+:=0D
+=0D
+  Merge tag 'pull-block-2022-04-25' of https://gitlab.com/hreitz/qemu into =
+staging (2022-04-25 13:35:41 -0700)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.1-pu=
+ll-request=0D
+=0D
+for you to fetch changes up to 4a89bf188a318592324769bd2bda95172c9a7091:=0D
+=0D
+  docs: Replace HomeBrew -> Homebrew (2022-04-26 12:40:36 +0200)=0D
+=0D
+----------------------------------------------------------------=0D
+Pull request trivial patches 20220426=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+Eugenio P=C3=A9rez (1):=0D
+  vdpa: Add missing tracing to batch mapping functions=0D
+=0D
+Stefan Weil (2):=0D
+  docs: Replace Qemu -> QEMU=0D
+  docs: Replace HomeBrew -> Homebrew=0D
+=0D
+Thomas Huth (1):=0D
+  target/mips: Remove stale TODO file=0D
+=0D
+Yuval Shaia (1):=0D
+  hw/pvrdma: Some cosmetic fixes=0D
+=0D
+ docs/about/build-platforms.rst |  4 +--=0D
+ docs/pcie_sriov.txt            |  6 ++--=0D
+ hw/rdma/vmw/pvrdma_main.c      |  9 +++---=0D
+ hw/virtio/trace-events         |  2 ++=0D
+ hw/virtio/vhost-vdpa.c         |  2 ++=0D
+ target/mips/TODO               | 51 ----------------------------------=0D
+ 6 files changed, 14 insertions(+), 60 deletions(-)=0D
+ delete mode 100644 target/mips/TODO=0D
+=0D
+-- =0D
+2.35.1=0D
+=0D
 
