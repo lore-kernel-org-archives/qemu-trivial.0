@@ -1,53 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1njKaE-0006Qv-9h
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 08:46:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43638)
+	id 1njKaF-0006Tk-DV
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 08:46:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43580)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njKaC-0006LT-Ng; Tue, 26 Apr 2022 08:46:20 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:48887)
+ id 1njKaA-0006F7-Su; Tue, 26 Apr 2022 08:46:18 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:53513)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njKaA-0007DX-Ux; Tue, 26 Apr 2022 08:46:20 -0400
+ id 1njKa9-0007Cj-53; Tue, 26 Apr 2022 08:46:18 -0400
 Received: from quad ([82.142.9.138]) by mrelayeu.kundenserver.de (mreue106
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MysBI-1o4amq2DJK-00vyii; Tue, 26
- Apr 2022 14:46:14 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mv2gw-1o0iuL0iTA-00r0u6; Tue, 26
+ Apr 2022 14:46:13 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
- Bin Meng <bmeng.cn@gmail.com>, Knut Omang <knuto@ifi.uio.no>,
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 4/5] docs: Replace Qemu -> QEMU
-Date: Tue, 26 Apr 2022 14:46:09 +0200
-Message-Id: <20220426124610.639614-5-laurent@vivier.eu>
+Subject: [PULL 2/5] vdpa: Add missing tracing to batch mapping functions
+Date: Tue, 26 Apr 2022 14:46:07 +0200
+Message-Id: <20220426124610.639614-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220426124610.639614-1-laurent@vivier.eu>
 References: <20220426124610.639614-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:BVWSMNZ8ZzYQaSQNSyPt9gTkxJicL0/tTqyrH4Jq0/3HJOXoHxc
- WWnn39M/Nt3ITI3I96vibYh7h83rtwtHbckFgVg2L7jwHzLp6CIeKEhkOLF63XSmMqWqrNx
- oUXCbqs1X2T/Dl18Fjz5VuwdlXYQQ08CagujpuSGqqtbyBVlEj/abZdptDj4+tt1Rh9ZVwI
- yJLHWMdLsmFjrFTC8TX0g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:oh0jsigXXpQ=:6evrnPj7txYUf2wdjmQOb0
- odq3to2/tHtbUuqWz3+yA8c7+e2JlUroycaFRa9TlAmWPOYkxRNaJstu2R1dVQmPir7ynva5U
- Uooq7jKNTWcOHMg0edv38B/QW729Yg6/2x/7tjzweGH4ZD6AGQXkZ4Lc3lLr3VeWxfdo9DF/S
- c2lUyOBsRAcz0b/7tPE1hGqXiiY5Eu9Xs1Rc2xF2B4ykJFbdC2WJMWgMe9FbQltYg0dqe/QLx
- YNfpqiXwTo2mQdBkUnwCd/7aNB+cHUwIYgXo0VO5KFjaEv1LVUJrytiCksRFf7Hz8ICKz5egR
- lWZo8fRohyifwPAHH7JEXtTPYhToR+OCLXYJ2E5YVym2bgpk8CNWXlAfftKmQkVNyns1+MCc6
- vwrGxMxM9DbEkKtfvkXTTRJlzfuXd0BFQtqGRYAyuoKcacDc2wnwXswL8iP2nfaj24xvOVH/6
- YentCh8YyJlFI+GE62FUEYuiDTbUQ5uyoH7x2uAoZihoy565vqENCPIAXeEIdneA4KPMzl3lh
- S3tYuBh4P9kt4RyBmjOt+MyyPQCFD+zeJqgTIpIj2RtsAtIXzOmQU9XA/VZ6BREolzwrBSqm5
- NvYGsm43RZA58MlFzR2/GFnJJJSRa/nWkD6L23fOa/v6RRn/mfj0m5oG8rQxLnBbvlp+I6ax2
- kfCteC1a2rLjYgYplsScHlNzs6i/hCGjvOR1GA+NZmQxGEkQ45bjFysqxlER1eF6SRts=
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:jORt3lnNj4XyXmtbvkqEmtnODLHUMHrEPABvFO0gDoDJrmnZaJ4
+ Hy2jGyboilxEOyO4daanT/+8qmfRJONUvcv4w8imN0ZXqRz7xt/jn9LA0FDRxPDY3rlr030
+ SuwhSYy+/h+ZeyPdcEDxJjQbCWoFJLqB8wyLJcQ32JRNFUrY5qFrzsIelOdhRZj/q9iiXgC
+ 5NJ9ybHHqH3mbIqpeiq6w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:37X0dHEP1cY=:f+df+o/j9DHZ+Eej+9Z+xr
+ pzuRKXbvwWllpS2G1Roy2jw/K8ewH5AFnrY9N4DURFcYGmwR7Mt2IlCwt5mPsqrUyolUGZ3JW
+ eYnIKqtxTpLfYyQh8y2MeYcmHExZhOh3UPOHPqeTtwxC2iAHxsIrZV5IlIsW/EP1Jk+agey2g
+ 9m3FLysA/G8Hp2fEJZxU6jUl/XDN7g/Bn0AXFmm/5ofW+c9rdVonT/rS0FffKu26jxs0nE2qS
+ cnIj2j5cc6+Pkg5EwndLPm/2mp9FnI+r8gImhDwf4MwwNx8hliWEDnaG+nxBdOD+zLV99N8rI
+ m7ZIYgxjGummn4Y5cuT2TyqHDwdKbhyotA/G96tFCyyRppAJhFRrkbkTYyGXe4z3nAeFjKaPC
+ dP9Y03x13HtDj+12cgN9TiaHPNyslzjmESThPNbJVvMSxIwbQYLfmTPmsOFZLsmi3bj84ePF3
+ IZbvU8s/SmE4HHcO8nkBAkIq8fTtHFpqbcKkhRO3Uz4H4LiL0P7Up0vxwAtjwKK0OgcacH862
+ 2H0jAhQodZrR4ZB/6xorT9fvjc2Da0e+WN61HwYmMUhR0XGBVUIn4Y7uCzGWdPmvJBauBPrjq
+ 1wVYaOtUNhr5p+BdWKQdAFt/dmykSLWSR+XmqRfvppdb5F3CFDW03pXOCrDabf9bsMMq7n5WG
+ fgkpbbDs30kZ550UWfOl0AyYT7jawPrPIqXTb5nKGJDRLw4JzVCT/cmduMHQj16j+ji4=
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -60,43 +62,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2022 12:46:21 -0000
+X-List-Received-Date: Tue, 26 Apr 2022 12:46:19 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Eugenio Pérez <eperezma@redhat.com>
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
-Reviewed-by: Knut Omang <knuto@ifi.uio.no>
-Message-Id: <20220422083007.1082667-1-sw@weilnetz.de>
+These functions were not traced properly.
+
+Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Acked-by: Jason Wang <jasowang@redhat.com>
+Message-Id: <20220405063628.853745-1-eperezma@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/pcie_sriov.txt | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/virtio/trace-events | 2 ++
+ hw/virtio/vhost-vdpa.c | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/docs/pcie_sriov.txt b/docs/pcie_sriov.txt
-index f5e891e1d451..11158dbf8890 100644
---- a/docs/pcie_sriov.txt
-+++ b/docs/pcie_sriov.txt
-@@ -8,8 +8,8 @@ of a PCI Express device. It allows a single physical function (PF) to appear as
- virtual functions (VFs) for the main purpose of eliminating software
- overhead in I/O from virtual machines.
+diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+index a5102eac9e57..333348d9d5d0 100644
+--- a/hw/virtio/trace-events
++++ b/hw/virtio/trace-events
+@@ -25,6 +25,8 @@ vhost_user_postcopy_waker_nomatch(const char *rb, uint64_t rb_offset) "%s + 0x%"
+ # vhost-vdpa.c
+ vhost_vdpa_dma_map(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint64_t uaddr, uint8_t perm, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" uaddr: 0x%"PRIx64" perm: 0x%"PRIx8" type: %"PRIu8
+ vhost_vdpa_dma_unmap(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" type: %"PRIu8
++vhost_vdpa_listener_begin_batch(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
++vhost_vdpa_listener_commit(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
+ vhost_vdpa_listener_region_add(void *vdpa, uint64_t iova, uint64_t llend, void *vaddr, bool readonly) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64" vaddr: %p read-only: %d"
+ vhost_vdpa_listener_region_del(void *vdpa, uint64_t iova, uint64_t llend) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64
+ vhost_vdpa_add_status(void *dev, uint8_t status) "dev: %p status: 0x%"PRIx8
+diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+index b57be529c7eb..a30510ed17e4 100644
+--- a/hw/virtio/vhost-vdpa.c
++++ b/hw/virtio/vhost-vdpa.c
+@@ -129,6 +129,7 @@ static void vhost_vdpa_listener_begin_batch(struct vhost_vdpa *v)
+         .iotlb.type = VHOST_IOTLB_BATCH_BEGIN,
+     };
  
--Qemu now implements the basic common functionality to enable an emulated device
--to support SR/IOV. Yet no fully implemented devices exists in Qemu, but a
-+QEMU now implements the basic common functionality to enable an emulated device
-+to support SR/IOV. Yet no fully implemented devices exists in QEMU, but a
- proof-of-concept hack of the Intel igb can be found here:
++    trace_vhost_vdpa_listener_begin_batch(v, fd, msg.type, msg.iotlb.type);
+     if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
+         error_report("failed to write, fd=%d, errno=%d (%s)",
+                      fd, errno, strerror(errno));
+@@ -163,6 +164,7 @@ static void vhost_vdpa_listener_commit(MemoryListener *listener)
+     msg.type = v->msg_type;
+     msg.iotlb.type = VHOST_IOTLB_BATCH_END;
  
- git://github.com/knuto/qemu.git sriov_patches_v5
-@@ -18,7 +18,7 @@ Implementation
- ==============
- Implementing emulation of an SR/IOV capable device typically consists of
- implementing support for two types of device classes; the "normal" physical device
--(PF) and the virtual device (VF). From Qemu's perspective, the VFs are just
-+(PF) and the virtual device (VF). From QEMU's perspective, the VFs are just
- like other devices, except that some of their properties are derived from
- the PF.
- 
++    trace_vhost_vdpa_listener_commit(v, fd, msg.type, msg.iotlb.type);
+     if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
+         error_report("failed to write, fd=%d, errno=%d (%s)",
+                      fd, errno, strerror(errno));
 -- 
 2.35.1
 
