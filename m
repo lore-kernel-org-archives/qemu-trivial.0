@@ -1,53 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nht6D-0003Kb-AQ
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Apr 2022 09:13:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42190)
+	id 1njIOi-0002uO-Iq
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 06:26:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34758)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <knuto@ifi.uio.no>)
- id 1nhooo-0008DE-UI; Fri, 22 Apr 2022 04:39:16 -0400
-Received: from mail-out02.uio.no ([2001:700:100:8210::71]:47165)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1njIOZ-0002np-4h; Tue, 26 Apr 2022 06:26:11 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:38403)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <knuto@ifi.uio.no>)
- id 1nhoom-0006S3-JV; Fri, 22 Apr 2022 04:39:10 -0400
-Received: from mail-mx10.uio.no ([129.240.10.27])
- by mail-out02.uio.no with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <knuto@ifi.uio.no>)
- id 1nhoof-00G4Ql-RA; Fri, 22 Apr 2022 10:39:01 +0200
-Received: from 108.84-234-134.customer.lyse.net ([84.234.134.108]
- helo=[172.25.2.5])
- by mail-mx10.uio.no with esmtpsa (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256)
- user knuto (Exim 4.94.2) (envelope-from <knuto@ifi.uio.no>)
- id 1nhoof-000D6G-6Y; Fri, 22 Apr 2022 10:39:01 +0200
-Message-ID: <39d76f6ddf886fc32bf4e18a499bcd5744f1a75b.camel@ifi.uio.no>
-Subject: Re: [PATCH] docs: Replace Qemu -> QEMU
-From: Knut Omang <knuto@ifi.uio.no>
-To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org, Knut Omang <knut.omang@oracle.com>
-Cc: "Michael S . Tsirkin" <mst@redhat.com>
-Date: Fri, 22 Apr 2022 10:38:59 +0200
-In-Reply-To: <20220422083007.1082667-1-sw@weilnetz.de>
-References: <20220422083007.1082667-1-sw@weilnetz.de>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.42.4 (3.42.4-1.fc35) 
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1njIOV-0006VN-KW; Tue, 26 Apr 2022 06:26:10 -0400
+Received: from [192.168.100.1] ([82.142.9.138]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MK3eI-1nSAyr2ZaQ-00LS8r; Tue, 26 Apr 2022 12:26:03 +0200
+Message-ID: <2dac2575-08b4-e3c3-9b48-108037a10d59@vivier.eu>
+Date: Tue, 26 Apr 2022 12:26:02 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH] hw/pvrdma: Some cosmetic fixes
+Content-Language: fr
+To: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: qemu devel list <qemu-devel@nongnu.org>
+References: <20220403095837.2378-1-yuval.shaia.ml@gmail.com>
+ <CAC_L=vVn3zDbPfwzfKR3t=UCavSyC-p4dtU9Ka3xT9evOt1d+g@mail.gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <CAC_L=vVn3zDbPfwzfKR3t=UCavSyC-p4dtU9Ka3xT9evOt1d+g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-UiO-SPF-Received: Received-SPF: neutral (mail-mx10.uio.no: 84.234.134.108 is
- neither permitted nor denied by domain of ifi.uio.no)
- client-ip=84.234.134.108; envelope-from=knuto@ifi.uio.no; helo=[172.25.2.5]; 
-X-UiO-Spam-info: not spam, SpamAssassin (score=-4.8, required=5.0,
- autolearn=disabled, TVD_RCVD_IP=0.001, UIO_HTTP=0.2, UIO_MAIL_IS_INTERNAL=-5)
-X-UiO-Scanned: D357DE2A48B1FBDC736776C45C0972358AE999D1
-X-UiOonly: 9C48052885EDA4DBCB32979576F9AB025DB42659
-Received-SPF: pass client-ip=2001:700:100:8210::71;
- envelope-from=knuto@ifi.uio.no; helo=mail-out02.uio.no
+X-Provags-ID: V03:K1:hVTkIUgTltZvj8gfCY6K3gDtxXkUHqJ7IBii5FFGD4yi1ycvXgm
+ KfXzKyUzRqEHW9/gpyDfHXTQk4mqpscLcXqHxYHphSY/HLsly7T8yGNnaWW1sc9QWZXXJDr
+ bXsB+vMZFgkl9B0NiEAt0YJRwihjnIRvSlNJIDCQEgWvMvdAvk7Mocx1DgGkeA47K991ANc
+ UG6eGXBppKIWG85q1d1Yw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:QuXhKVT/KM8=:8O2O5XRO4j2Ha02IdH7/ub
+ 6HcXlPV+bEjtFderu7tIGEG3lyaij3vRuduAEm4EilwSMyzYM6BTyz9xzpAs9zmwJlslH1Lrm
+ Rh3WSIBccHW0IIY4Q9smMm8bUWmXcKnUJmRYDIQD2DkSf/MLfrKLUaqeKH6FqA9hkLoNHiEIr
+ SncqkRY8nl0n9tGkndsjTldlVjt7OmFr2yrq/VrO07jRkMwRUkSb0BTev2yuoi4mx6ujvzkKb
+ P/Z5FNSwllJxAE7sCLo0zotITZ7GQOKpE1y/Siie6hhbN3aVdG8M0fUu487s7eOZsRbeswA9a
+ o4nJD7KNhnNLlrRWatDnrz0WZt5+51CfL+csOLOffkQj47xHjMN8198p4aYXwxnIapsQj4Jo1
+ aB3/0hVUPHoFRw/nRJhtEPda3zH9QljxApo4fgizcEiTPvacEMtYETZ0NSnvHiU2e/8A88bP/
+ S+yJeBA9jDLkkK3aH+SXPuYZpZHNiHfQBb5NAoqjfMVD8fr/04YohGx3hv30iVfzNDGyIJUjc
+ SEjQn25+zI0Z4eNBj4hpFL+bLThhW7ZiNq6E73O5z47H7R/bjO8r0QiTclCFSaB6dow4EGomT
+ lojaebnweoxEFCKs2X7xVBLpoMwLkmWiLeGpV9BHvRikKls0sP65cRFpDDGaZQLg8bRMMIXyK
+ FE1/dPi+0asFzOcoJZgwCepJnk3zFaPmJrgoIdVOUGwnGWCf7b0WqOGNxsANVD/QLq00=
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 22 Apr 2022 09:13:23 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,40 +64,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Apr 2022 08:39:17 -0000
+X-List-Received-Date: Tue, 26 Apr 2022 10:26:12 -0000
 
-On Fri, 2022-04-22 at 10:30 +0200, Stefan Weil wrote:
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  docs/pcie_sriov.txt | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+Le 05/04/2022 à 12:25, Marcel Apfelbaum a écrit :
+> On Sun, Apr 3, 2022 at 12:00 PM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
+>>
+>> Signed-off-by: Yuval Shaia <yuval.shaia.ml@gmail.com>
+>> ---
+>>   hw/rdma/vmw/pvrdma_main.c | 9 +++++----
+>>   1 file changed, 5 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/rdma/vmw/pvrdma_main.c b/hw/rdma/vmw/pvrdma_main.c
+>> index 91206dbb8e..aae382af59 100644
+>> --- a/hw/rdma/vmw/pvrdma_main.c
+>> +++ b/hw/rdma/vmw/pvrdma_main.c
+>> @@ -159,13 +159,13 @@ static void free_dsr(PVRDMADev *dev)
+>>       free_dev_ring(pci_dev, &dev->dsr_info.cq, dev->dsr_info.cq_ring_state);
+>>
+>>       rdma_pci_dma_unmap(pci_dev, dev->dsr_info.req,
+>> -                         sizeof(union pvrdma_cmd_req));
+>> +                       sizeof(union pvrdma_cmd_req));
+>>
+>>       rdma_pci_dma_unmap(pci_dev, dev->dsr_info.rsp,
+>> -                         sizeof(union pvrdma_cmd_resp));
+>> +                       sizeof(union pvrdma_cmd_resp));
+>>
+>>       rdma_pci_dma_unmap(pci_dev, dev->dsr_info.dsr,
+>> -                         sizeof(struct pvrdma_device_shared_region));
+>> +                       sizeof(struct pvrdma_device_shared_region));
+>>
+>>       dev->dsr_info.dsr = NULL;
+>>   }
+>> @@ -249,7 +249,8 @@ static void init_dsr_dev_caps(PVRDMADev *dev)
+>>   {
+>>       struct pvrdma_device_shared_region *dsr;
+>>
+>> -    if (dev->dsr_info.dsr == NULL) {
+>> +    if (!dev->dsr_info.dsr) {
+>> +        /* Buggy or malicious guest driver */
+>>           rdma_error_report("Can't initialized DSR");
+>>           return;
+>>       }
+>> --
+>> 2.20.1
+>>
 > 
-> diff --git a/docs/pcie_sriov.txt b/docs/pcie_sriov.txt
-> index f5e891e1d4..11158dbf88 100644
-> --- a/docs/pcie_sriov.txt
-> +++ b/docs/pcie_sriov.txt
-> @@ -8,8 +8,8 @@ of a PCI Express device. It allows a single physical function (PF) to
-> appear as
->  virtual functions (VFs) for the main purpose of eliminating software
->  overhead in I/O from virtual machines.
->  
-> -Qemu now implements the basic common functionality to enable an emulated device
-> -to support SR/IOV. Yet no fully implemented devices exists in Qemu, but a
-> +QEMU now implements the basic common functionality to enable an emulated device
-> +to support SR/IOV. Yet no fully implemented devices exists in QEMU, but a
->  proof-of-concept hack of the Intel igb can be found here:
->  
->  git://github.com/knuto/qemu.git sriov_patches_v5
-> @@ -18,7 +18,7 @@ Implementation
->  ==============
->  Implementing emulation of an SR/IOV capable device typically consists of
->  implementing support for two types of device classes; the "normal" physical device
-> -(PF) and the virtual device (VF). From Qemu's perspective, the VFs are just
-> +(PF) and the virtual device (VF). From QEMU's perspective, the VFs are just
->  like other devices, except that some of their properties are derived from
->  the PF.
->  
+> cc: QEMU Trivial <qemu-trivial@nongnu.org>
+> 
+> Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 
-Reviewed-by: Knut Omang <knuto@ifi.uio.no>
+
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
 
