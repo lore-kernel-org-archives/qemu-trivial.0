@@ -1,46 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1njKaB-0006HE-DZ
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 08:46:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43532)
+	id 1njKaD-0006Nj-Az
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 08:46:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njKa8-00068C-T6; Tue, 26 Apr 2022 08:46:16 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:49689)
+ id 1njKaC-0006KJ-Aj; Tue, 26 Apr 2022 08:46:20 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:46673)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njKa7-0007CO-8L; Tue, 26 Apr 2022 08:46:16 -0400
+ id 1njKaA-0007Cy-Az; Tue, 26 Apr 2022 08:46:20 -0400
 Received: from quad ([82.142.9.138]) by mrelayeu.kundenserver.de (mreue106
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1M7bND-1noZEv1wY1-007zxj; Tue, 26
- Apr 2022 14:46:12 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MDgxt-1nYZsm0YJ5-00AluD; Tue, 26
+ Apr 2022 14:46:15 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 1/5] hw/pvrdma: Some cosmetic fixes
-Date: Tue, 26 Apr 2022 14:46:06 +0200
-Message-Id: <20220426124610.639614-2-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+ Bin Meng <bmeng.cn@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 5/5] docs: Replace HomeBrew -> Homebrew
+Date: Tue, 26 Apr 2022 14:46:10 +0200
+Message-Id: <20220426124610.639614-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220426124610.639614-1-laurent@vivier.eu>
 References: <20220426124610.639614-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QI1KGqHB4RxbJZJMUyIIBLUM0qVUsPRZ6VjPgzKIbuqsgPMiHU7
- t/+6Z0mu5mdqrWj5DYJF04kUiNEPrTUyxGfutpLpFhQ9B29OyHGWku9ejIMeMWbFb4e7XRw
- 185TppclwDmrshdlHMCMTIarUcjtm57LL+MrU8sF5kpVWucmrAQAz0B/hURoIqUFUEAHkm2
- V99eQSckrnX01xDfr/euQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3kGSB5lzYgc=:UMpCuz9pqhscMyP6EGb6zf
- dbVunRJ2wMpMwmTsCd0eUsC2+uc1GZcd69quWY0ALPSa+Dg2C3hyhDz6BjOFufFFE/ksShN++
- BfG23Usp/9kjst5ITlGijApeobbqNf9N0h8JcuOAWQB9XYuMQOBj92A90g37Rp1dI6gaHcGfP
- EGcEkbClaZOHDn1jEyS6s410JslCGVFb4LoOAOggHeP9yPQsP5AIYVWsF5r45rWmcLpkY3v1F
- 4LPZxJKp/f6hXDFU4LkaCoDtUm4Vrc0e8eZ2i/3rym4a2aEG5ovwnsYOAnJ4TFhdSH5m939qF
- eUjjbAxw3fRep30XJ7iHVqCIBpttpDUfjcztsH4u01JJ7o0QpGZvZeQG2yyQHzZ/Du/JT+AT7
- 6/zk1QLCjtc4iZWj0/JxHrcFXb1pA/t8triYE3vleSxuOiJuewCVHkILNnPcoL8QB6mC9iplj
- R/mVPDj45bpIGoR18MEv8XHTir9MROfVbfESvH8Pbo8KxlMbAGI87w2MlqCSr8E37TQRDkfkm
- FfA3FyxUXNAwEC7TxVKuf9V1Nuq95vHR0owR9aj8c1BnKT0/m9IjY5Zl6Z5jOld39F7RjdIoX
- 4gJU36BxiW+SEcf+OqS1W8QHj3iCNe13/kDA2KCw7OkNMNXe7+keI5leCH91dFzqkTU4ZiUF3
- 0Mj5oMlSjUF1BCcDTjCseWGS79GcexhpvQvs78qhxwYE7ysR/JSk8d9EWOdNFbuC3aAI=
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:Yj+9ulMqoVosLV89hZcGIHowETN+ZkNPxG55W3Uk6xDp59pClYe
+ vfuUCPalBdFhVQ/8iftMn12XW11Y3sMC58afWq3teLHUrqLf74epAJXJzo6MSPw4T5RwXML
+ gd238oHz+bBbh1/Dce03bqzMKllxCR7IdEy0aZjuxXNRKdjPDLWgLngvZB+uJn20+eLU+Ki
+ ySqtDGgVltivdRU3353Ew==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xAjV5a74ze4=:Q3aIN4bYG1ePNIw0qSi0b9
+ uX3zAPI7eSIQqUEPs24vh3kBo3ppBxRliwTJ4cyQ1DOzNdcPBbB+j6qBy+EU4SCzX4YOYYTYC
+ QsuhXvzRRHsMtxeqLJkxW0TpGVApcRKmCmSskBbdxzBy7PgTJZ58X/SjjPwRmUKwjnmW/pdmS
+ 8tCeBJczpdjmaAO1QX66exRZdCNuslAvVxeSqjoNlYeos0Kelw+4inY3e5X/cXlRYu/+DwYp9
+ DcICp0X3/t0ihmk2WjOr1Gp7PJVv84KVjWGnwGJWL07BNFSwYxMRXeM+QC/Sfv6PPUVBO9UYF
+ gSTAQTDpFcM7pD/kVzaUo6lbRM1l+wW74l3lmWeP/piCbHfU/2/TWo5wFjAk0lT2k1RCpRrjl
+ 5+2ZV5+QwkJ89o1nFiCF/xvjVR/aBnKQn8RQBfH/MHS1UndyF9sbq2ZzCs9FbM4pQTTgsVhii
+ ImRp6NlVrbhIX2iuTh3lpSi1CF1kn/LX2XlsDmeKXktYUwaq0qgj7n/ZEmBpd8g/GG2zqiYDV
+ rUYD8lP85Lj73zLjNyJ24lsrEs7FuHgfWJ7oNW2ZHiIlZktHsCbNUCp6pRRkAf3UkglnWNKhM
+ 6AIb/sQuJrDGR6CXlY5WV4E6SvYNfC1FtejHEsiARzd3lIYbOpBusGDpBlb6kVE/jMBavQ/TA
+ YXIA/XyZ2lgu0pBaAkS94RjQnmOQhhP7Pm/DCaRw+XgV1cgWc0G2l/Sd352f0ryDxa54=
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,49 +59,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2022 12:46:17 -0000
+X-List-Received-Date: Tue, 26 Apr 2022 12:46:20 -0000
 
-From: Yuval Shaia <yuval.shaia.ml@gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Signed-off-by: Yuval Shaia <yuval.shaia.ml@gmail.com>
-Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Message-Id: <20220403095837.2378-1-yuval.shaia.ml@gmail.com>
+The official spelling does not use camel case.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Message-Id: <20220422083403.1082924-1-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/rdma/vmw/pvrdma_main.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ docs/about/build-platforms.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/rdma/vmw/pvrdma_main.c b/hw/rdma/vmw/pvrdma_main.c
-index 27a76224320e..58db0b8e3bb9 100644
---- a/hw/rdma/vmw/pvrdma_main.c
-+++ b/hw/rdma/vmw/pvrdma_main.c
-@@ -159,13 +159,13 @@ static void free_dsr(PVRDMADev *dev)
-     free_dev_ring(pci_dev, &dev->dsr_info.cq, dev->dsr_info.cq_ring_state);
+diff --git a/docs/about/build-platforms.rst b/docs/about/build-platforms.rst
+index c29a4b8fe649..e9163ba5563f 100644
+--- a/docs/about/build-platforms.rst
++++ b/docs/about/build-platforms.rst
+@@ -80,7 +80,7 @@ Ubuntu LTS. Other distros will be assumed to ship similar software versions.
+ For FreeBSD and OpenBSD, decisions will be made based on the contents of the
+ respective ports repository, while NetBSD will use the pkgsrc repository.
  
-     rdma_pci_dma_unmap(pci_dev, dev->dsr_info.req,
--                         sizeof(union pvrdma_cmd_req));
-+                       sizeof(union pvrdma_cmd_req));
+-For macOS, `HomeBrew`_ will be used, although `MacPorts`_ is expected to carry
++For macOS, `Homebrew`_ will be used, although `MacPorts`_ is expected to carry
+ similar versions.
  
-     rdma_pci_dma_unmap(pci_dev, dev->dsr_info.rsp,
--                         sizeof(union pvrdma_cmd_resp));
-+                       sizeof(union pvrdma_cmd_resp));
+ Windows
+@@ -92,6 +92,6 @@ hosted on Linux (Debian/Fedora).
+ The version of the Windows API that's currently targeted is Vista / Server
+ 2008.
  
-     rdma_pci_dma_unmap(pci_dev, dev->dsr_info.dsr,
--                         sizeof(struct pvrdma_device_shared_region));
-+                       sizeof(struct pvrdma_device_shared_region));
- 
-     dev->dsr_info.dsr = NULL;
- }
-@@ -249,7 +249,8 @@ static void init_dsr_dev_caps(PVRDMADev *dev)
- {
-     struct pvrdma_device_shared_region *dsr;
- 
--    if (dev->dsr_info.dsr == NULL) {
-+    if (!dev->dsr_info.dsr) {
-+        /* Buggy or malicious guest driver */
-         rdma_error_report("Can't initialized DSR");
-         return;
-     }
+-.. _HomeBrew: https://brew.sh/
++.. _Homebrew: https://brew.sh/
+ .. _MacPorts: https://www.macports.org/
+ .. _Repology: https://repology.org/
 -- 
 2.35.1
 
