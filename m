@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1njIOi-0002uO-Iq
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 06:26:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34758)
+	id 1njIXg-0000Rp-IN
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2022 06:35:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36988)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njIOZ-0002np-4h; Tue, 26 Apr 2022 06:26:11 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:38403)
+ id 1njIXG-0000EZ-2v; Tue, 26 Apr 2022 06:35:19 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:59249)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1njIOV-0006VN-KW; Tue, 26 Apr 2022 06:26:10 -0400
+ id 1njIXD-0007pJ-5n; Tue, 26 Apr 2022 06:35:08 -0400
 Received: from [192.168.100.1] ([82.142.9.138]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MK3eI-1nSAyr2ZaQ-00LS8r; Tue, 26 Apr 2022 12:26:03 +0200
-Message-ID: <2dac2575-08b4-e3c3-9b48-108037a10d59@vivier.eu>
-Date: Tue, 26 Apr 2022 12:26:02 +0200
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MSLEm-1nL3Yk04Do-00SdKk; Tue, 26 Apr 2022 12:35:02 +0200
+Message-ID: <735751c6-c230-5013-7a65-0d210094fd74@vivier.eu>
+Date: Tue, 26 Apr 2022 12:35:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
-Subject: Re: [PATCH] hw/pvrdma: Some cosmetic fixes
+Subject: Re: [PATCH] vdpa: Add missing tracing to batch mapping functions
 Content-Language: fr
-To: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: qemu devel list <qemu-devel@nongnu.org>
-References: <20220403095837.2378-1-yuval.shaia.ml@gmail.com>
- <CAC_L=vVn3zDbPfwzfKR3t=UCavSyC-p4dtU9Ka3xT9evOt1d+g@mail.gmail.com>
+To: =?UTF-8?Q?Eugenio_P=c3=a9rez?= <eperezma@redhat.com>, qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Cindy Lu <lulu@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <20220405063628.853745-1-eperezma@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <CAC_L=vVn3zDbPfwzfKR3t=UCavSyC-p4dtU9Ka3xT9evOt1d+g@mail.gmail.com>
+In-Reply-To: <20220405063628.853745-1-eperezma@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hVTkIUgTltZvj8gfCY6K3gDtxXkUHqJ7IBii5FFGD4yi1ycvXgm
- KfXzKyUzRqEHW9/gpyDfHXTQk4mqpscLcXqHxYHphSY/HLsly7T8yGNnaWW1sc9QWZXXJDr
- bXsB+vMZFgkl9B0NiEAt0YJRwihjnIRvSlNJIDCQEgWvMvdAvk7Mocx1DgGkeA47K991ANc
- UG6eGXBppKIWG85q1d1Yw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QuXhKVT/KM8=:8O2O5XRO4j2Ha02IdH7/ub
- 6HcXlPV+bEjtFderu7tIGEG3lyaij3vRuduAEm4EilwSMyzYM6BTyz9xzpAs9zmwJlslH1Lrm
- Rh3WSIBccHW0IIY4Q9smMm8bUWmXcKnUJmRYDIQD2DkSf/MLfrKLUaqeKH6FqA9hkLoNHiEIr
- SncqkRY8nl0n9tGkndsjTldlVjt7OmFr2yrq/VrO07jRkMwRUkSb0BTev2yuoi4mx6ujvzkKb
- P/Z5FNSwllJxAE7sCLo0zotITZ7GQOKpE1y/Siie6hhbN3aVdG8M0fUu487s7eOZsRbeswA9a
- o4nJD7KNhnNLlrRWatDnrz0WZt5+51CfL+csOLOffkQj47xHjMN8198p4aYXwxnIapsQj4Jo1
- aB3/0hVUPHoFRw/nRJhtEPda3zH9QljxApo4fgizcEiTPvacEMtYETZ0NSnvHiU2e/8A88bP/
- S+yJeBA9jDLkkK3aH+SXPuYZpZHNiHfQBb5NAoqjfMVD8fr/04YohGx3hv30iVfzNDGyIJUjc
- SEjQn25+zI0Z4eNBj4hpFL+bLThhW7ZiNq6E73O5z47H7R/bjO8r0QiTclCFSaB6dow4EGomT
- lojaebnweoxEFCKs2X7xVBLpoMwLkmWiLeGpV9BHvRikKls0sP65cRFpDDGaZQLg8bRMMIXyK
- FE1/dPi+0asFzOcoJZgwCepJnk3zFaPmJrgoIdVOUGwnGWCf7b0WqOGNxsANVD/QLq00=
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:TQ08cczoIqRhfYX3Bl1xgcH2ir5QXFf5iG0EE46yYo8EmkY8lc+
+ +AVW26RJULpVWicQhA6oUx4VftMrLLcZBthUH/TUOH5w9tuMWyedPJRS5BuWAyrQyKrIvW2
+ caQJhYH1sPxblUYBeWQdpsmRgj4O77J6AFHIhYm0Pt/r4YqNThhk6n749Q1HgH55oBaGs66
+ tjqk23DBZlwumvQD0ed0Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:IOrkHfOVDms=:tvZLdUvSGGgNg/08qIKmC+
+ +qzUEnnzyPEEO2mW7bXgk+C3L0RO7xnVt0Q8yduxucpC0+snTLXajzpF5WGDJro584sKWlV8n
+ 3DG3BDJU0c4YGY99QQI2wx7pQQwf1keyuijoygcL2VAb8qbEE4R+goZ4Dwk+W0HOYXPUkRQzx
+ duu46/hUJCAlvMJGb9iipg8rdlIjELGnbJ7Vkce3A7Odgcq77iVhd+PKDPP+rjgJ1iju6tV05
+ ZKKrdVSOifUMBZ2YE5HSnmresjYYoW/V0peW2hGYNIphynWOVZ64fcvJYcLIYdLoLDO7bJbt0
+ 739LB3R6+65VXAZjJvFoWgsp3XpFsTPZwPCJPl7vH1rJHqPro89TZrgCfzww/i1dF+S/1ALKi
+ OaEe3wjgWeDscS1/dOKFAmTU8lEl+g4sE/YyDNow8UJswbOCJipNeLlA3AwHCMtw1gzIACyKl
+ M+aCb/NiPvMw14a5sqhgr/3ym88w7hqIZUu3YGvpcNTs3WDWSlbxRPAew0vVCDrCGV80CzsCg
+ KYX0hlxI9JJjWS4BtfmHKzUJZDNgYLuOY60zxR9gUCQXznghJ1Prvl5s+PUEvqh0G0xxl29eJ
+ tdB2N21gGfS4EYfh6Hc0Bv/7AjJz8+GT9BA9Qw7ahhgh5WHhgYcBNwaEc1AQM/4p6VOumOtjt
+ pYLLjCeY/fFlPVFCq83lnWbKsT6X6oa0K7sDghiL/l5wtmlDCq9QOvE86ryTGLM4A5Gk=
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,59 +63,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2022 10:26:12 -0000
+X-List-Received-Date: Tue, 26 Apr 2022 10:35:32 -0000
 
-Le 05/04/2022 à 12:25, Marcel Apfelbaum a écrit :
-> On Sun, Apr 3, 2022 at 12:00 PM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
->>
->> Signed-off-by: Yuval Shaia <yuval.shaia.ml@gmail.com>
->> ---
->>   hw/rdma/vmw/pvrdma_main.c | 9 +++++----
->>   1 file changed, 5 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/rdma/vmw/pvrdma_main.c b/hw/rdma/vmw/pvrdma_main.c
->> index 91206dbb8e..aae382af59 100644
->> --- a/hw/rdma/vmw/pvrdma_main.c
->> +++ b/hw/rdma/vmw/pvrdma_main.c
->> @@ -159,13 +159,13 @@ static void free_dsr(PVRDMADev *dev)
->>       free_dev_ring(pci_dev, &dev->dsr_info.cq, dev->dsr_info.cq_ring_state);
->>
->>       rdma_pci_dma_unmap(pci_dev, dev->dsr_info.req,
->> -                         sizeof(union pvrdma_cmd_req));
->> +                       sizeof(union pvrdma_cmd_req));
->>
->>       rdma_pci_dma_unmap(pci_dev, dev->dsr_info.rsp,
->> -                         sizeof(union pvrdma_cmd_resp));
->> +                       sizeof(union pvrdma_cmd_resp));
->>
->>       rdma_pci_dma_unmap(pci_dev, dev->dsr_info.dsr,
->> -                         sizeof(struct pvrdma_device_shared_region));
->> +                       sizeof(struct pvrdma_device_shared_region));
->>
->>       dev->dsr_info.dsr = NULL;
->>   }
->> @@ -249,7 +249,8 @@ static void init_dsr_dev_caps(PVRDMADev *dev)
->>   {
->>       struct pvrdma_device_shared_region *dsr;
->>
->> -    if (dev->dsr_info.dsr == NULL) {
->> +    if (!dev->dsr_info.dsr) {
->> +        /* Buggy or malicious guest driver */
->>           rdma_error_report("Can't initialized DSR");
->>           return;
->>       }
->> --
->> 2.20.1
->>
+Le 05/04/2022 à 08:36, Eugenio Pérez a écrit :
+> These functions were not traced properly.
 > 
-> cc: QEMU Trivial <qemu-trivial@nongnu.org>
+> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+> ---
+>   hw/virtio/vhost-vdpa.c | 2 ++
+>   hw/virtio/trace-events | 2 ++
+>   2 files changed, 4 insertions(+)
 > 
-> Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-
+> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+> index 8adf7c0b92..9e5fe15d03 100644
+> --- a/hw/virtio/vhost-vdpa.c
+> +++ b/hw/virtio/vhost-vdpa.c
+> @@ -129,6 +129,7 @@ static void vhost_vdpa_listener_begin_batch(struct vhost_vdpa *v)
+>           .iotlb.type = VHOST_IOTLB_BATCH_BEGIN,
+>       };
+> 
+> +    trace_vhost_vdpa_listener_begin_batch(v, fd, msg.type, msg.iotlb.type);
+>       if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
+>           error_report("failed to write, fd=%d, errno=%d (%s)",
+>                        fd, errno, strerror(errno));
+> @@ -163,6 +164,7 @@ static void vhost_vdpa_listener_commit(MemoryListener *listener)
+>       msg.type = v->msg_type;
+>       msg.iotlb.type = VHOST_IOTLB_BATCH_END;
+> 
+> +    trace_vhost_vdpa_listener_commit(v, fd, msg.type, msg.iotlb.type);
+>       if (write(fd, &msg, sizeof(msg)) != sizeof(msg)) {
+>           error_report("failed to write, fd=%d, errno=%d (%s)",
+>                        fd, errno, strerror(errno));
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index a5102eac9e..333348d9d5 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -25,6 +25,8 @@ vhost_user_postcopy_waker_nomatch(const char *rb, uint64_t rb_offset) "%s + 0x%"
+>   # vhost-vdpa.c
+>   vhost_vdpa_dma_map(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint64_t uaddr, uint8_t perm, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" uaddr: 0x%"PRIx64" perm: 0x%"PRIx8" type: %"PRIu8
+>   vhost_vdpa_dma_unmap(void *vdpa, int fd, uint32_t msg_type, uint64_t iova, uint64_t size, uint8_t type) "vdpa:%p fd: %d msg_type: %"PRIu32" iova: 0x%"PRIx64" size: 0x%"PRIx64" type: %"PRIu8
+> +vhost_vdpa_listener_begin_batch(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
+> +vhost_vdpa_listener_commit(void *v, int fd, uint32_t msg_type, uint8_t type)  "vdpa:%p fd: %d msg_type: %"PRIu32" type: %"PRIu8
+>   vhost_vdpa_listener_region_add(void *vdpa, uint64_t iova, uint64_t llend, void *vaddr, bool readonly) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64" vaddr: %p read-only: %d"
+>   vhost_vdpa_listener_region_del(void *vdpa, uint64_t iova, uint64_t llend) "vdpa: %p iova 0x%"PRIx64" llend 0x%"PRIx64
+>   vhost_vdpa_add_status(void *dev, uint8_t status) "dev: %p status: 0x%"PRIx8
+> --
+> 2.27.0
+> 
+> 
 
 Applied to my trivial-patches branch.
 
+(I know you have an (identicial) v7 of this patch in a series, but as this one is reviewed, acked 
+and sent to trivial I've merged it).
+
+
 Thanks,
 Laurent
+
 
 
