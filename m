@@ -1,76 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1njiVj-0007LL-LQ
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Apr 2022 10:19:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55350)
+	id 1njjvD-0004wo-HI
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Apr 2022 11:49:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48104)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1njiVi-0007IG-IC; Wed, 27 Apr 2022 10:19:18 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:41749)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
- id 1njiVh-0006Ji-5f; Wed, 27 Apr 2022 10:19:18 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id dk23so3706211ejb.8;
- Wed, 27 Apr 2022 07:19:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=OmEsfAlmfVi0ex7Sie/yjfgbuMcWuXTvGjt5/Cr/iZdUbjuHUJB1B8zPaXeuioosSN
- 4ImtfZkImlD0VzbXrcfDA6eQ+CEUUbytKJ17aHsszXmFi0u5OEUuPFNY0ODSzRjZNXK2
- DjNY+/4NvL43bpjAVtlV/ipefo1uii0SVWJ0MPfT9lw4sVXxU3JcfASA/4cb4ey75Iev
- qmDB0dVpDr1Wnif+f5C4aEK4/sQypmAcD9e3yeGCbuZJiE2l+QBRSrddPWycNuCLASx4
- sTNlk2Ud6K5uz9lu6cSiBmJmSOfpYgnOEOWWgQQAFHfaMDBLQWY5fOZGcWyR6RPdu5kE
- 1YYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=wfVzz6O7s8Z9BV/mb+VTfzfEFe9U7h1wh/yuXWonm2+kdJTQrmuAqafxaGO+Yd9MaW
- 6tG6nK4GSb6y5lG41Dq7Vb851mL29NgYdhBynoGyIvv255Xdm17Znt5HxAvgi5i9edup
- ra80dkuGZk46qeSXlA8Ow5NZUXOZjkuIKlj3/cH23JlmHoJjrOYshDoIS5PFOW1x6kBQ
- xX0KeWDS7f4ag2Oozkgq65UYaM4x7GjPOtnAyRJC4AcFwUtXakP/EJIJ1xL26hko+N72
- jq8UdBnL976yXY01b++1KGCmrj0eaafaHyQjWUkNffQ+MIIiVZZc+Rrzbd0Jmx/Klu4n
- R4IA==
-X-Gm-Message-State: AOAM531XKNUAEr/xuQ+GHBeRmpPO0on6L41WROILnT3gN7SAE7MH5KpP
- qzY/WGGnNAwgGA0amFODch8=
-X-Google-Smtp-Source: ABdhPJympO+iLbYBrlwGrJXBschXBmSKe3grIsTwIrHuUl98Iil0H39y9Qx2klJ6ROdwwxQV7Dc3Kw==
-X-Received: by 2002:a17:906:7946:b0:6f0:12ee:4418 with SMTP id
- l6-20020a170906794600b006f012ee4418mr26991980ejo.156.1651069153713; 
- Wed, 27 Apr 2022 07:19:13 -0700 (PDT)
-Received: from avogadro.redhat.com ([2001:b07:6468:f312:1c09:f536:3de6:228c])
- by smtp.gmail.com with ESMTPSA id
- s3-20020a1709067b8300b006e4a6dee49dsm6951349ejo.184.2022.04.27.07.19.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Apr 2022 07:19:13 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-trivial@nongnu.org,
- Huacai Chen <chenhuacai@kernel.org>, Marcelo Tosatti <mtosatti@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>
-Subject: Re: [PATCH] qemu-options: Limit the -enable-kvm option to the targets
- that support it
-Date: Wed, 27 Apr 2022 16:19:10 +0200
-Message-Id: <20220427141910.157004-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220427134906.348118-1-thuth@redhat.com>
-References: 
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1njjvB-0004wX-Th
+ for qemu-trivial@nongnu.org; Wed, 27 Apr 2022 11:49:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:57485)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1njjv9-0003RZ-9V
+ for qemu-trivial@nongnu.org; Wed, 27 Apr 2022 11:49:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1651074577;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=W/qhRcfWJ5m7eG6NvVgfeOyjdRT3Z2CLIxEFo6gpWS4=;
+ b=Ftkt15pcg1Iu7zciaUdK2+2k33vyhHo451yhRtnm8sYiY/iWYD8AGjzMv4YaaEQ/anpo4D
+ K7h+OWQYBH+sL4vNiLidodGO8Tc6xqPKXLNYQEgoZH7BabGxvsE8TmHOYNmvbNeTd5RTFP
+ H8kWiBtIynooVYRX056EjossMFyZVug=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-629-iHykN2LcMjun5PO9dTGQQA-1; Wed, 27 Apr 2022 11:49:36 -0400
+X-MC-Unique: iHykN2LcMjun5PO9dTGQQA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A4DF51014A61;
+ Wed, 27 Apr 2022 15:49:35 +0000 (UTC)
+Received: from eperezma.remote.csb (unknown [10.39.193.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8BC7540CFD05;
+ Wed, 27 Apr 2022 15:49:34 +0000 (UTC)
+From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, qemu-trivial@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, lvivier@redhat.com
+Subject: [PATCH] util: Return void on iova_tree_remove
+Date: Wed, 27 Apr 2022 17:49:31 +0200
+Message-Id: <20220427154931.3166388-1-eperezma@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=paolo.bonzini@gmail.com; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eperezma@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,11 +66,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Apr 2022 14:19:19 -0000
+X-List-Received-Date: Wed, 27 Apr 2022 15:49:42 -0000
 
-Queued, thanks.
+It always returns IOVA_OK so nobody uses it.
 
-Paolo
+Acked-by: Jason Wang <jasowang@redhat.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+---
+ include/qemu/iova-tree.h | 4 +---
+ util/iova-tree.c         | 4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
 
+diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
+index c938fb0793..16bbfdf5f8 100644
+--- a/include/qemu/iova-tree.h
++++ b/include/qemu/iova-tree.h
+@@ -72,10 +72,8 @@ int iova_tree_insert(IOVATree *tree, const DMAMap *map);
+  * provided.  The range does not need to be exactly what has inserted,
+  * all the mappings that are included in the provided range will be
+  * removed from the tree.  Here map->translated_addr is meaningless.
+- *
+- * Return: 0 if succeeded, or <0 if error.
+  */
+-int iova_tree_remove(IOVATree *tree, const DMAMap *map);
++void iova_tree_remove(IOVATree *tree, const DMAMap *map);
+
+ /**
+  * iova_tree_find:
+diff --git a/util/iova-tree.c b/util/iova-tree.c
+index 6dff29c1f6..fee530a579 100644
+--- a/util/iova-tree.c
++++ b/util/iova-tree.c
+@@ -164,15 +164,13 @@ void iova_tree_foreach(IOVATree *tree, iova_tree_iterator iterator)
+     g_tree_foreach(tree->tree, iova_tree_traverse, iterator);
+ }
+
+-int iova_tree_remove(IOVATree *tree, const DMAMap *map)
++void iova_tree_remove(IOVATree *tree, const DMAMap *map)
+ {
+     const DMAMap *overlap;
+
+     while ((overlap = iova_tree_find(tree, map))) {
+         g_tree_remove(tree->tree, overlap);
+     }
+-
+-    return IOVA_OK;
+ }
+
+ /**
+--
+2.27.0
 
 
