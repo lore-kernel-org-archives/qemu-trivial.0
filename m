@@ -1,63 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nji2h-00057b-1z
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Apr 2022 09:49:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47602)
+	id 1njiVj-0007LL-LQ
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Apr 2022 10:19:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nji2f-00054s-TP
- for qemu-trivial@nongnu.org; Wed, 27 Apr 2022 09:49:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:22045)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nji2d-0001GY-Gn
- for qemu-trivial@nongnu.org; Wed, 27 Apr 2022 09:49:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1651067354;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=ftE+IzxEayZLjktE4fm1VYiMzvXBDlMK4UWinfe0zTw=;
- b=ciDOatbL0xkvm2042mn9Tl8G/AvVer5tuLWPm72pjaBOE+GMRaAvLDmZdSbVpLF1il53ZS
- a0o62/HC3iLBIenUiglUS8cFq+0lvveNQTFA7fIE3xsKMrI/SxS5PXZlWTYrEnIClU/xYC
- +aKgccMu48PHq35LskH0bej2fQiBle0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-482--DVYMvjxPVickNv9XmGH7w-1; Wed, 27 Apr 2022 09:49:09 -0400
-X-MC-Unique: -DVYMvjxPVickNv9XmGH7w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 46537185A7A4;
- Wed, 27 Apr 2022 13:49:09 +0000 (UTC)
-Received: from thuth.com (dhcp-192-232.str.redhat.com [10.33.192.232])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F2CDB401199C;
- Wed, 27 Apr 2022 13:49:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Huacai Chen <chenhuacai@kernel.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1njiVi-0007IG-IC; Wed, 27 Apr 2022 10:19:18 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:41749)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1njiVh-0006Ji-5f; Wed, 27 Apr 2022 10:19:18 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id dk23so3706211ejb.8;
+ Wed, 27 Apr 2022 07:19:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+ b=OmEsfAlmfVi0ex7Sie/yjfgbuMcWuXTvGjt5/Cr/iZdUbjuHUJB1B8zPaXeuioosSN
+ 4ImtfZkImlD0VzbXrcfDA6eQ+CEUUbytKJ17aHsszXmFi0u5OEUuPFNY0ODSzRjZNXK2
+ DjNY+/4NvL43bpjAVtlV/ipefo1uii0SVWJ0MPfT9lw4sVXxU3JcfASA/4cb4ey75Iev
+ qmDB0dVpDr1Wnif+f5C4aEK4/sQypmAcD9e3yeGCbuZJiE2l+QBRSrddPWycNuCLASx4
+ sTNlk2Ud6K5uz9lu6cSiBmJmSOfpYgnOEOWWgQQAFHfaMDBLQWY5fOZGcWyR6RPdu5kE
+ 1YYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+ b=wfVzz6O7s8Z9BV/mb+VTfzfEFe9U7h1wh/yuXWonm2+kdJTQrmuAqafxaGO+Yd9MaW
+ 6tG6nK4GSb6y5lG41Dq7Vb851mL29NgYdhBynoGyIvv255Xdm17Znt5HxAvgi5i9edup
+ ra80dkuGZk46qeSXlA8Ow5NZUXOZjkuIKlj3/cH23JlmHoJjrOYshDoIS5PFOW1x6kBQ
+ xX0KeWDS7f4ag2Oozkgq65UYaM4x7GjPOtnAyRJC4AcFwUtXakP/EJIJ1xL26hko+N72
+ jq8UdBnL976yXY01b++1KGCmrj0eaafaHyQjWUkNffQ+MIIiVZZc+Rrzbd0Jmx/Klu4n
+ R4IA==
+X-Gm-Message-State: AOAM531XKNUAEr/xuQ+GHBeRmpPO0on6L41WROILnT3gN7SAE7MH5KpP
+ qzY/WGGnNAwgGA0amFODch8=
+X-Google-Smtp-Source: ABdhPJympO+iLbYBrlwGrJXBschXBmSKe3grIsTwIrHuUl98Iil0H39y9Qx2klJ6ROdwwxQV7Dc3Kw==
+X-Received: by 2002:a17:906:7946:b0:6f0:12ee:4418 with SMTP id
+ l6-20020a170906794600b006f012ee4418mr26991980ejo.156.1651069153713; 
+ Wed, 27 Apr 2022 07:19:13 -0700 (PDT)
+Received: from avogadro.redhat.com ([2001:b07:6468:f312:1c09:f536:3de6:228c])
+ by smtp.gmail.com with ESMTPSA id
+ s3-20020a1709067b8300b006e4a6dee49dsm6951349ejo.184.2022.04.27.07.19.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Apr 2022 07:19:13 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-trivial@nongnu.org,
+ Huacai Chen <chenhuacai@kernel.org>, Marcelo Tosatti <mtosatti@redhat.com>,
  Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Marcelo Tosatti <mtosatti@redhat.com>
-Subject: [PATCH] qemu-options: Limit the -enable-kvm option to the targets
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>
+Subject: Re: [PATCH] qemu-options: Limit the -enable-kvm option to the targets
  that support it
-Date: Wed, 27 Apr 2022 15:49:06 +0200
-Message-Id: <20220427134906.348118-1-thuth@redhat.com>
+Date: Wed, 27 Apr 2022 16:19:10 +0200
+Message-Id: <20220427141910.157004-1-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220427134906.348118-1-thuth@redhat.com>
+References: 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=paolo.bonzini@gmail.com; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,32 +83,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Apr 2022 13:49:18 -0000
+X-List-Received-Date: Wed, 27 Apr 2022 14:19:19 -0000
 
-There is no need to present the user with -enable-kvm if there
-is no support for KVM on the corresponding target.
+Queued, thanks.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- qemu-options.hx | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Paolo
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index cc3a39d21a..af1c8feda6 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4176,7 +4176,9 @@ SRST
- ERST
- 
- DEF("enable-kvm", 0, QEMU_OPTION_enable_kvm, \
--    "-enable-kvm     enable KVM full virtualization support\n", QEMU_ARCH_ALL)
-+    "-enable-kvm     enable KVM full virtualization support\n",
-+    QEMU_ARCH_ARM | QEMU_ARCH_I386 | QEMU_ARCH_MIPS | QEMU_ARCH_PPC |
-+    QEMU_ARCH_RISCV | QEMU_ARCH_S390X)
- SRST
- ``-enable-kvm``
-     Enable KVM full virtualization support. This option is only
--- 
-2.27.0
 
 
