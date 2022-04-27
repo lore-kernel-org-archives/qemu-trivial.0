@@ -1,71 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1njhsx-0006F0-0M
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Apr 2022 09:39:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45188)
+	id 1njhvp-0008WP-Hl
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Apr 2022 09:42:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46060)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1)
  (envelope-from <prvs=1094d0c61=anthony.perard@citrix.com>)
- id 1njhsp-0006CR-L7; Wed, 27 Apr 2022 09:39:10 -0400
-Received: from esa6.hc3370-68.iphmx.com ([216.71.155.175]:12271)
+ id 1njhvo-0008Uj-25; Wed, 27 Apr 2022 09:42:12 -0400
+Received: from esa5.hc3370-68.iphmx.com ([216.71.155.168]:4300)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1)
  (envelope-from <prvs=1094d0c61=anthony.perard@citrix.com>)
- id 1njhsm-0008Dj-Qv; Wed, 27 Apr 2022 09:39:06 -0400
+ id 1njhvm-0000J1-Ao; Wed, 27 Apr 2022 09:42:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=citrix.com; s=securemail; t=1651066744;
+ d=citrix.com; s=securemail; t=1651066930;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=KEH0uihlxnEuFRyeMAETigwL92GSAiyMausO3tgEKXc=;
- b=U7/Jbd/5t5f7jyy70bcRtNjZovL+VmfB0BPAi0actOM6lWsMCyptKHbA
- wsHudR/aDVN3njF/A46df6E6xnZBmbTwK2jpa5/9WfxKaUFcutDCqQDOT
- fzYDBY2+nVMHDnEpaDCkm2IeUWszk1XTcp+qAWGLS0VjK5Fp5qjMWqVKs Q=;
-Authentication-Results: esa6.hc3370-68.iphmx.com;
+ bh=1EftjlPb2D5bL7c8oYZxtZPU4mzZ887UzPNIbQPwjq4=;
+ b=HotkF5CSzd7yG76FexzaR6znN6qGkWHyLV+Zq2pArDZC++rnPD/0K5D0
+ R76S8JnLPpawqnbdOC8N2fMnbncjl7NPiPoVnlKpLM+5o4h5ayRQZF/uK
+ X3uNCd9CozpDxDcv9K5+jPQqlnjDktKB8J/cAupXmXRFCW6UE0W5FPUKq k=;
+Authentication-Results: esa5.hc3370-68.iphmx.com;
  dkim=none (message not signed) header.i=none
 X-SBRS: 5.1
-X-MesageID: 69925381
-X-Ironport-Server: esa6.hc3370-68.iphmx.com
+X-MesageID: 69441940
+X-Ironport-Server: esa5.hc3370-68.iphmx.com
 X-Remote-IP: 162.221.156.83
 X-Policy: $RELAYED
-IronPort-Data: A9a23:YUFkT6NsV8N8MLXvrR1El8FynXyQoLVcMsEvi/4bfWQNrUp01TBWy
- mMeWzuGaf+KZWagfNl0bI62pB5Tu5KHnN5lTQto+SlhQUwRpJueD7x1DKtR0wB+jCHnZBg6h
- ynLQoCYdKjYdleF+lH1dOKJQUBUjclkfJKlYAL/En03FFcMpBsJ00o5wbZl2NEw2LBVPivW0
- T/Mi5yHULOa82Yc3lI8s8pvfzs24ZweEBtB1rAPTagjUG32zhH5P7pGTU2FFFPqQ5E8IwKPb
- 72rIIdVXI/u10xF5tuNyt4Xe6CRK1LYFVDmZnF+A8BOjvXez8CbP2lS2Pc0MC9qZzu1c99Z1
- tISsr6qRjUQHffxn/hNejBxIz9XMvgTkFPHCSDXXc27ykTHdz3nwul0DVFwNoodkgp1KTgQr
- 7pCcmlLN03dwbLtqF64YrAEasALJc/3PIQZqzd4wCvQF/oOSpHfWaTao9Rf2V/cg+gQTKeEO
- pFJMFKDajzyehFwPnotCqgap7aMqViiTzFKknWs8P9fD2/7k1UqjemF3MDuUsyHQ4BZk1iVo
- krC/n/lGVcKOdqH0z2H/3mwwOjVkkvTQY8XCfik7P90gVSX7moUDhIQSB28u/bRola3RtZ3O
- 0ESvC00osAa71e3R9PwWxm5pn+svRMGXddUVeog52ml06fR/kOVC3YJShZHb9opstJwQiYlv
- neVn871BRR1vbGVQG7b/bCRxRuxIyEFIGsqfyIITQIZpdLkpekblhjISMRiFq+dlND5GTjsh
- TuNqUADa6471JBRkf/hpBae3mzq9sOhohMJChv/QGX66SFja7ycRNaV7kSLxN9pHJiwQQzU1
- JQboPS24OcLBJCLsSWCRuQRAb2kj8q43C3gbU1HRMd4qWn0k5K3VcUJuWwleh81WioRUWWxC
- HI/rz+983O60JGCSaZsK7y8BM0xpUQLPYS0D6uEBjaij3UYSeNmwM2MTRPIt4wOuBJ1+U3aB
- Xt8WZzxZUv28Yw9kFKLqx41iNfHPBwWy2LJXozcxB+6y7eYb3P9Ye5bbQPfNbxjtPzf+1+9H
- zNj2yyikUs3bQEDSnOPrd57wa4icBDX+qwaW+QIL7Xec2KK6UkqCuPLwKNJRmCWt/89qws8x
- VnkAhUw4AOm3RXvcFzaAlg+OOKHdcsu9hoTYH1zVWtELlB+OO5DGo9ELMBpFVTmncQ+pcNJo
- w4tJpvQX6wTGmiWk9nfBLGkxLFfmN2QrVrmF0KYjPIXJvaMmyShFgfYQzbS
-IronPort-HdrOrdr: A9a23:XuoJnazq7VB1nUORQ7P1KrPwLL1zdoMgy1knxilNoRw8SKKlfu
- SV7ZAmPH7P+VMssR4b9OxoVJPtfZqYz+8T3WBzB8bBYOCFgguVxehZhOOIqQEIWReOldK1vZ
- 0QFZSWY+eQMbEVt6nH3DU=
-X-IronPort-AV: E=Sophos;i="5.90,293,1643691600"; d="scan'208";a="69925381"
-Date: Wed, 27 Apr 2022 14:38:45 +0100
+IronPort-Data: A9a23:DQCqGapzxtXLq/t4U5DfJiBap9JeBmLMZRIvgKrLsJaIsI4StFCzt
+ garIBmDbPqJZWb8etwja4Sx8hhXusLVnYJhSwM/qSo1RnhHoJuZCYyVIHmrMnLJJKUvbq7GA
+ +byyDXkBJppJpMJjk71atANlVEliefQAOCU5NfsYkidfyc9IMsaoU8lyrZRbrJA24DjWVvR4
+ 4yq+qUzBXf+s9JKGjNMg068gEsHUMTa4Fv0aXRnOJinFHeH/5UkJMp3yZOZdhMUcaENdgKOf
+ M7RzanRw4/s10xF5uVJMFrMWhZirrb6ZWBig5fNMkSoqkAqSicais7XOBeAAKv+Zvrgc91Zk
+ b1wWZKMpQgBFJDrw+cSFBpjLiBmLIlY2bzsOleOmJnGp6HGWyOEL/RGCUg3OcsT+/ptAHEI/
+ vsdQNwPRknd3aTsmuv9E7QywJR4RCXoFNp3VnVIxDfFDfEgUNbbTr/D/9Nw1zYsnMFeW/3ZY
+ qL1bBIxPUicOkwTYj/7Dro3gtyBqWPddwR0tRXEo/U++G6U0jBuhe2F3N39JYXRGJQ9clyjj
+ nrM+GLrAxcbHMaSxTqM7jSngeqntTr2XZ9XCKe56P9jhHWVwWocDgBQUkG0ydGph0j7V99BJ
+ kg8/is1sbN05EGtVsP6XRCzvDiDpBF0c8JZDukS+AyLjK3O7G6xGmgZUj5pctEqtMYqAzct0
+ zehht7sGHljvaOYTVqb8bGbqy70PjIaRUcZfjMNRwYB59jloakwgwjJQ9IlF7S65uAZAhmpn
+ WrM9nJnwexO04hbjM1X4GwrnRqGm7+STQFy5T7qX3q0yh1YZ6W+SL2BvA2zAel7EK6VSVyIv
+ X4hkseY7fwTAZzlqBFhUNnhD5nyua/bbWS0bUpHWsB4qm/zoyLLkZV4umkWGat/DioTldYFi
+ mf3sBgZ2pJcNWDCgURfM9PoUJRCIUQN+L3YuhHogjhmP8AZmOyvpngGiausM4fFyhVErE3HE
+ c3HGftA9F5DYUid8BK4Rv0GzZggzT0kyGXYSPjTlkr6ievFOCTNFuxeajNii9zVC4ve/m3oH
+ yt3bZPWm32zrsWjCsUozWLjBQ9TdiVqbXwHg8dWavSCMmJb9JIJUJfsLUcaU9U9xcx9z76Ql
+ lnkAx8w4Aev1BXvdFTRAlg+OeyHYHqKhS9iVcDaFQ3zgCZLjEfGxPp3SqbbipF6qrw+laIkE
+ 6htlgfpKq0ndwkrMg81NfHVxLGOvjzx7e5SF0JJuAQCQqM=
+IronPort-HdrOrdr: A9a23:DpnpmamqKWNV1nOW1Z4xPcpiZaLpDfIs3DAbv31ZSRFFG/Fxl6
+ iV8sjz8SWE7Ar5OUtQ/OxoV5PsfZqxz/JICMwqTNCftWrdyQmVxeNZjbcKqgeIc0aVygce79
+ YCT0EXMqyXMbEQt6fHCWeDfOod/A==
+X-IronPort-AV: E=Sophos;i="5.90,293,1643691600"; d="scan'208";a="69441940"
+Date: Wed, 27 Apr 2022 14:41:52 +0100
 From: Anthony PERARD <anthony.perard@citrix.com>
 To: Thomas Huth <thuth@redhat.com>
-CC: <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- <kraxel@redhat.com>, <qemu-trivial@nongnu.org>,
- <xen-devel@lists.xenproject.org>, Stefano Stabellini
- <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>
-Subject: Re: [PATCH] softmmu/vl: Fence 'xenfb' if Xen support is not compiled
- in
-Message-ID: <YmlHZTcghklUZjok@perard.uk.xensource.com>
-References: <20220427123316.329312-1-thuth@redhat.com>
+CC: <qemu-devel@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>, Paul
+ Durrant <paul@xen.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ <qemu-trivial@nongnu.org>, <xen-devel@lists.xenproject.org>
+Subject: Re: [PATCH] qemu-options: Limit the -xen options to x86 and arm
+Message-ID: <YmlIICWzw0wDBE31@perard.uk.xensource.com>
+References: <20220427133156.344418-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <20220427123316.329312-1-thuth@redhat.com>
-Received-SPF: pass client-ip=216.71.155.175;
+In-Reply-To: <20220427133156.344418-1-thuth@redhat.com>
+Received-SPF: pass client-ip=216.71.155.168;
  envelope-from=prvs=1094d0c61=anthony.perard@citrix.com;
- helo=esa6.hc3370-68.iphmx.com
+ helo=esa5.hc3370-68.iphmx.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
 X-Spam_bar: ----
@@ -85,22 +83,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Apr 2022 13:39:11 -0000
+X-List-Received-Date: Wed, 27 Apr 2022 13:42:12 -0000
 
-On Wed, Apr 27, 2022 at 02:33:16PM +0200, Thomas Huth wrote:
-> The 'xenfb' parameter for the '-vga' command line option is currently
-> always enabled unconditionally (since the xenfb is not a proper QOM
-> device that could be tested via its class name). That means it also
-> shows up if Xen is not enabled at all, e.g. like this:
-> 
->  $ ./qemu-system-sparc -vga help
->  none                 no graphic card
->  xenfb                Xen paravirtualized framebuffer
->  tcx                  TCX framebuffer (default)
->  cg3                  CG3 framebuffer
-> 
-> Let's avoid this situation by fencing the parameter with the
-> CONFIG_XEN_BACKEND switch.
+On Wed, Apr 27, 2022 at 03:31:56PM +0200, Thomas Huth wrote:
+> The Xen hypervisor is only available on x86 and arm - thus let's
+> limit the related options to these targets.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
