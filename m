@@ -1,72 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nlymg-0001mm-RR
-	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2022 16:06:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43360)
+	id 1nm9dq-0002zu-J1
+	for mharc-qemu-trivial@gnu.org; Wed, 04 May 2022 03:41:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1nlyme-0001cd-KX; Tue, 03 May 2022 16:06:08 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:52956)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1nm9di-0002oq-2R; Wed, 04 May 2022 03:41:38 -0400
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232]:46053)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1nlyma-0008Qt-0Z; Tue, 03 May 2022 16:06:08 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id e24so16285834pjt.2;
- Tue, 03 May 2022 13:06:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1nm9dg-0007VW-Do; Wed, 04 May 2022 03:41:37 -0400
+Received: by mail-lj1-x232.google.com with SMTP id q14so622269ljc.12;
+ Wed, 04 May 2022 00:41:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=CdOKV/thj8b18wgN2+zK8yNjMAUbJZ9uaJbaHRQKzI8=;
- b=OqUNV4VNDJQfS/c0EutpsebETsyoP1/QQ58yceVaFyZAqvV6oFb7qmO2T4L0qXYXuJ
- nLYoAzPOHK2qnv77oNtPNLNmni1fDKzx9bxoJSAVL4Q3gt/U4PBQdqY0BQWP10O90jSu
- z9ai/C1189QkmX69L7GVwzv5Md8UtZ9Ghq2bXTs+ZP5us8C1UnhGExnWlvW9e9z9CjwY
- PgqvKzLtSpuOYSbecgvP06WJXL2uLld5NspasIt3/NkYAVg2M8RFVlooM2xLT6xhZ348
- hv270JcWBzq2VEejF+C0VlTEGZvZFp8OYTJB6lCH315qsCoWpIG5QPPoaPViTOAjB1fc
- 1p7A==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4l5c1TagE86iLy8NoyKuu9R0AyoGb91AHPjuctgeggU=;
+ b=Rf0GVfwUtoBtFgwTtNerR8dMSNlNw2ykYbV/hlCRZNilCJWOPRvtOHyz+gFsLz1L8o
+ N9Amxth9oope9XHC/PB8ZtahRtp4+TuqFqtDiQ7ozQ6iWcHywavnH4jsezeHTPcIv9QY
+ 32KKeO176OW411MIxXoEirzzwx0w+s637FBvNYUA//4Yj5+3qsimLM+n++9WeKEpO/YR
+ T77EMt6b73KCet5aBIxg44wLYgejwNxcntXmg3weBNxJyrsrRzhUwlxfWkFqedJ4NYWc
+ ZZqYZ4k2weR4WaQKhyfGBR5H9yr2AoOTTv1OLORRUoNw5xPUPgoGV74H7e8VZhVNt0x+
+ NOCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=CdOKV/thj8b18wgN2+zK8yNjMAUbJZ9uaJbaHRQKzI8=;
- b=Ay0aWAbFSvwrroENZDIu2jHMclzth/YeKEeMZhY85q5oPjuFsV4wbQUwK+7KUYQhfn
- ke4pc9UqIe99XDlQxB848Ci4BAD4baxcavo3u5AwMv7jDLAApZ8kfqcwV5Toq8s5jdLH
- 6NEejQ7PyaHTeODMxuFTYBN/8Ibv+1WQvQU8kX1ArYW1iOaVGcliXnULtKA9g8FfhdhS
- TCgHenuSFKoiU1eux+bCrGsr353JKWdWrCB3jIa2h6dYU044tGK44tv2981haRO7vcL2
- gFHmicn7e+/9qiiC2z+SpY5y47LPEYatiP/YnILBaP/gto1SosBJtGgyliUAlOV/wvWV
- 31Jg==
-X-Gm-Message-State: AOAM531zQ/q+TCAejiRLo5LBS9nBKSqutPvyWplDLHNH6jy1k+f0uuSW
- eSvommtb//v8HgqzYVDSwEFcq7Zmgls=
-X-Google-Smtp-Source: ABdhPJz6F4Juf8zq90qBWwPyRPlw/i8CkLLV57B1gVnvuW0oFIAQc29Ba2YnDBtnjkjahbbGeHY76A==
-X-Received: by 2002:a17:90b:3910:b0:1dc:515e:1b12 with SMTP id
- ob16-20020a17090b391000b001dc515e1b12mr6563372pjb.107.1651608361516; 
- Tue, 03 May 2022 13:06:01 -0700 (PDT)
-Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id
- q26-20020a63505a000000b003aa8b87feb5sm13670148pgl.0.2022.05.03.13.05.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 May 2022 13:06:00 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
- Yonggang Luo <luoyonggang@gmail.com>, Beraldo Leal <bleal@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 2/2] gitlab-ci: Upgrade mingw base package.
-Date: Wed,  4 May 2022 04:05:24 +0800
-Message-Id: <20220503200524.1868-3-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.36.0.windows.1
-In-Reply-To: <20220503200524.1868-1-luoyonggang@gmail.com>
-References: <20220503200524.1868-1-luoyonggang@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4l5c1TagE86iLy8NoyKuu9R0AyoGb91AHPjuctgeggU=;
+ b=d0x73+/pf2xp0RqEYu45WHupvCvxZs7V99j2D/BZ/W9IgS/5JwpwR6uKouJpFRZmFV
+ HBqzQifcykFRltrgTqVSZQZYg1yOXGHHlBnpSPHu9Q23xfbXQW77HlAahzF6QdlshTBl
+ Osrh7jm9/Xv9cV0+kqgyU5cZIZ3cGScf6/iTrqIt8QZpR/dLeaBDMfcHx8XykB/uyNGk
+ BXS91JTufuNqnEOWxjfmp1W1kSNiIYyWTpxww6GN9a/OyyPQ/IBs5oLLfLGyV2Dx40ow
+ Vdcb+qo+aO+jN9eCXT6a5GkJVMCxdmBMa9ab/X0kQSlCCbCcUNGHGm256LGiQPjOfMKW
+ NWDw==
+X-Gm-Message-State: AOAM531vLE5NNAaZCDJACO5MBlT7YK9me4xxUA6xBKGvJtMWyJiA8czT
+ bWT4X5A0XDyPB7QHauXRSfoCEZy3VVW+ePw+smM=
+X-Google-Smtp-Source: ABdhPJyuCaPIEN9SeFh0klTOzYqsphXXPc8RPqG3SrRMtvb6dXMkD7Nnxob/SATakEy4q0KuGuOawrvLefBaYX/xKOg=
+X-Received: by 2002:a2e:b0d7:0:b0:24f:1300:df37 with SMTP id
+ g23-20020a2eb0d7000000b0024f1300df37mr11851416ljl.507.1651650093426; Wed, 04
+ May 2022 00:41:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x1030.google.com
+References: <20220503200524.1868-1-luoyonggang@gmail.com>
+In-Reply-To: <20220503200524.1868-1-luoyonggang@gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Wed, 4 May 2022 11:41:21 +0400
+Message-ID: <CAJ+F1CLhE5LFVv6ZHV-=Bek3xO-3wV-ovFUAsRnJYYmgwjOQvw@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Upgrade mingw base packages
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: QEMU <qemu-devel@nongnu.org>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, 
+ qemu trival <qemu-trivial@nongnu.org>, Beraldo Leal <bleal@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="0000000000001caaff05de2ac163"
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-lj1-x232.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,27 +73,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 May 2022 20:06:09 -0000
+X-List-Received-Date: Wed, 04 May 2022 07:41:39 -0000
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- .gitlab-ci.d/windows.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--0000000000001caaff05de2ac163
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windows.yml
-index 1df1630349..47f6073773 100644
---- a/.gitlab-ci.d/windows.yml
-+++ b/.gitlab-ci.d/windows.yml
-@@ -16,7 +16,7 @@
-     }
-   - If ( !(Test-Path -Path msys64\var\cache\msys2.exe ) ) {
-       Invoke-WebRequest
--      "https://github.com/msys2/msys2-installer/releases/download/2021-07-25/msys2-base-x86_64-20210725.sfx.exe"
-+      "https://github.com/msys2/msys2-installer/releases/download/2022-05-03/msys2-base-x86_64-20220503.sfx.exe"
-       -outfile "msys64\var\cache\msys2.exe"
-     }
-   - msys64\var\cache\msys2.exe -y
--- 
-2.36.0.windows.1
+Hi
 
+On Wed, May 4, 2022 at 1:19 AM Yonggang Luo <luoyonggang@gmail.com> wrote:
+
+> v1. upgrade both cirrus and gitlab-ci to the newest mingw base release
+>
+> Yonggang Luo (2):
+>   cirrus/win32: upgrade mingw base packages
+>   gitlab-ci: Upgrade mingw base package.
+>
+
+lgtm,
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+It would help though to have some rationale for the change. Unfortunately,
+the installer news/changelog leaves a lot to be desired:
+https://github.com/msys2/msys2-installer/releases.
+
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--0000000000001caaff05de2ac163
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi<br></div><br><div class=3D"gmail_quote=
+"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, May 4, 2022 at 1:19 AM Yong=
+gang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail.com=
+</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">=
+v1. upgrade both cirrus and gitlab-ci to the newest mingw base release<br>
+<br>
+Yonggang Luo (2):<br>
+=C2=A0 cirrus/win32: upgrade mingw base packages<br>
+=C2=A0 gitlab-ci: Upgrade mingw base package.<br></blockquote><div><br></di=
+v><div>lgtm,<br></div><div>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=
+=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt;=
+</div><div>=C2=A0</div><div>It would help though to have some rationale for=
+ the change. Unfortunately, the installer news/changelog leaves a lot to be=
+ desired: <a href=3D"https://github.com/msys2/msys2-installer/releases">htt=
+ps://github.com/msys2/msys2-installer/releases</a>.</div></div><br>-- <br><=
+div dir=3D"ltr" class=3D"gmail_signature">Marc-Andr=C3=A9 Lureau<br></div><=
+/div>
+
+--0000000000001caaff05de2ac163--
 
