@@ -1,63 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nmeBu-0002Dz-1S
+	id 1nmeBu-0002EV-AT
 	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 12:18:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37334)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nmeBV-00028E-LP; Thu, 05 May 2022 12:18:38 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:34412)
+ id 1nmeBP-00023H-Dm; Thu, 05 May 2022 12:18:27 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:39792)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nmeBT-0005lW-Vl; Thu, 05 May 2022 12:18:33 -0400
-Received: by mail-ej1-x633.google.com with SMTP id g6so9714365ejw.1;
- Thu, 05 May 2022 09:18:31 -0700 (PDT)
+ id 1nmeBN-0005jF-OG; Thu, 05 May 2022 12:18:27 -0400
+Received: by mail-ed1-x534.google.com with SMTP id g20so5792667edw.6;
+ Thu, 05 May 2022 09:18:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=G1Ct2U+bQ3kGVUW9fsOA/lzpDAuaaKB4V0L6OSmysTo=;
- b=H1N+6wy7JPNGBxie9cnUCOtEstg0WknQv82ajmxWT+PTlRdtqB5ckykmKU9cEGs/sh
- /fWpAIvfPcXrp9g8Ftzw3oZhaRbh2UIbORe57nhGco1YNiLG2D7OXBIZOE9cTuzS0Le4
- 396Dj0zVu3AlSf+SBFyoAytDHYKcEYigl9Y/kQdxcNXYdG2UEj0l1tHfNelffKkRaM7L
- ZHzzmBXtKOltIyaruir1EOIkABk1aFNQsuYoCxCrSeD+2zvSpmmyta1g42sgYjiX5d63
- FrKYG3J0e9NpwW7Op3HiBbKJ0UXrkIrYjPKW6OmEGltnbY/gvl70V0KzAQBvuzFEUwhQ
- gUtQ==
+ bh=HsMzqxxFgcsYDTbmG5oH5cAAX9q04Igy6hB+pLUCwIg=;
+ b=jTz3dPVutTAIAOQp8siWGrXdqlikyh42Q3AU9pId8WGxycIC0WFIRZuqQVW9F5ejCP
+ 1NjGltRaySoCsKyH/NAx2IViW54M63Pl95v8Wu22Kgi5KEVBLw65TSJmqDF3Z26N+Cny
+ VJ5C/jNSsT7k99X4LjpE1O73awM7G7OKn5rhPD94Y/j8zbzEWGs9N4YokF+esYhh/WaV
+ nTEO9b9kMVicSS8UgPGkxoHvPd+dvE66cIGd68U5t+x6M478Zy4mdbYHMVxW7NS40oeJ
+ 7G+2obwAaannxsEWHKVKUbLlrSSxDDiG4UNf4FUZoJT+u6U3Xb3EgVquX8v/yTaiJ7FQ
+ p70w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=G1Ct2U+bQ3kGVUW9fsOA/lzpDAuaaKB4V0L6OSmysTo=;
- b=Xm/a3Zq/5PhUbjpOl+hZvNTzvDj7RG7ruBfku9bRka5X8eAf8eVd44NXekQKm/YMS3
- NoSdW7zY3Q7UKbx/UNL/Q6yTE7q22xFidUuJy/ZxFTsOUyV6UgUNML5BI8bw76cmYb8C
- sz96b1y7txA702ljA/ved2gC+7tIrOOBAXXuq+hbrCGcZraO6lXQGX5BcxG/AZdATTzn
- QNUgQlkS0tJkAMq/yd2ROGHwiLHiH8jFzv1pt5nMC13TKt1r5Yxk0JewGlBbINshsobB
- JlYe04NzZghW4MSIWu1ZkkuIK4NzY3yhWSrzHupRceuBb2HaDVVuNFqxz5Tzw+bu/jcv
- SnYQ==
-X-Gm-Message-State: AOAM533lAcFb6kqTYRK1REF3MWRDP0fYcdC5S357NQz0vl7pV1EYoHBL
- Avp9cCX8l7lNA6LGJhaTlHJ0SKgu+ko=
-X-Google-Smtp-Source: ABdhPJx8ON40EToetEO9Ws02IJUvTEPAtH10gYn/Qqm55eTLv/YNfSfsppNJihbXL2WR8tnPLuchpA==
-X-Received: by 2002:a17:906:2991:b0:6cf:6b24:e92f with SMTP id
- x17-20020a170906299100b006cf6b24e92fmr27141434eje.748.1651767509913; 
- Thu, 05 May 2022 09:18:29 -0700 (PDT)
+ bh=HsMzqxxFgcsYDTbmG5oH5cAAX9q04Igy6hB+pLUCwIg=;
+ b=LfWssNv3w5csaEdv99dpVY6Y1GCDYSekmNppgZjBAWW0bmsdQLZZnnUccKkc7w1bUj
+ CR77JCOjC87AfldZf5tP3qBuloXfakmOOmu7AmWW7pCXslj826ShHYx/xoOE4Y5Q9dQh
+ j8PBMqnvtyJAC3xqyoZXQAiDSSGxdCnCcZdwgEXJK0IAF4abKEcrkKzitaUL9vxIPMJq
+ 1uwvSwWoRkvjtn2fQNC92fdCzo6HraimliiPKWeAt9Ur4+ZIT3xVUI+tqiQD7u6lAq6q
+ k3VzQqs9uKlNByXijz/YD4TILgEy7xIxiHpQBp+l8mkEdVD8TZ+4IxG1+0o+ULt6rRvk
+ oX/g==
+X-Gm-Message-State: AOAM532Brl1UxTWlk5sggjzfCC5WEi8YgU4HxaALsaRxZqn/ONWNStoj
+ CWxyMLVXWa3Z4A6FznPwelHDQpvqpy8=
+X-Google-Smtp-Source: ABdhPJx0HLlzS39qLSKJSDNT/l1g96G3g+U6aVGATT8HnUyIIZPb1qYhR/whsSCrQRMauep5SmHNTA==
+X-Received: by 2002:a50:fb83:0:b0:425:cb1f:dc57 with SMTP id
+ e3-20020a50fb83000000b00425cb1fdc57mr30949021edq.150.1651767503662; 
+ Thu, 05 May 2022 09:18:23 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-078-054-123-159.78.54.pool.telefonica.de. [78.54.123.159])
  by smtp.gmail.com with ESMTPSA id
- i6-20020a17090685c600b006f3ef214dcfsm868542ejy.53.2022.05.05.09.18.29
+ i6-20020a17090685c600b006f3ef214dcfsm868542ejy.53.2022.05.05.09.18.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 09:18:29 -0700 (PDT)
+ Thu, 05 May 2022 09:18:23 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- qemu-stable@nongnu.org
-Subject: [PATCH 11/11] docs/devel: Fix link to developer mailing lists
-Date: Thu,  5 May 2022 18:18:05 +0200
-Message-Id: <20220505161805.11116-12-shentey@gmail.com>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH 05/11] hw/i386/pc: Unexport functions used only internally
+Date: Thu,  5 May 2022 18:17:59 +0200
+Message-Id: <20220505161805.11116-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220505161805.11116-1-shentey@gmail.com>
 References: <20220505161805.11116-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -77,34 +81,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 May 2022 16:18:53 -0000
+X-List-Received-Date: Thu, 05 May 2022 16:18:28 -0000
 
-Ammends commit 9f73de8df0335c9387f4ee39e207a65a1615676f 'docs: rSTify
-the "SubmitAPatch" wiki'.
-
-Cc: qemu-stable@nongnu.org
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- docs/devel/submitting-a-patch.rst | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/i386/pc.c         | 4 ++--
+ include/hw/i386/pc.h | 3 ---
+ 2 files changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
-index e51259eb9c..21ed52bd82 100644
---- a/docs/devel/submitting-a-patch.rst
-+++ b/docs/devel/submitting-a-patch.rst
-@@ -18,9 +18,9 @@ one-shot fix, the bare minimum we ask is that:
-    <http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/SubmittingPatches?id=f6f94e2ab1b33f0082ac22d71f66385a60d8157f#n297>`__
-    policy.) ``git commit -s`` or ``git format-patch -s`` will add one.
- -  All contributions to QEMU must be **sent as patches** to the
--   qemu-devel `mailing list <MailingLists>`__. Patch contributions
--   should not be posted on the bug tracker, posted on forums, or
--   externally hosted and linked to. (We have other mailing lists too,
-+   qemu-devel `mailing list <https://wiki.qemu.org/Contribute/MailingLists>`__.
-+   Patch contributions should not be posted on the bug tracker, posted on
-+   forums, or externally hosted and linked to. (We have other mailing lists too,
-    but all patches must go to qemu-devel, possibly with a Cc: to another
-    list.) ``git send-email`` (`step-by-step setup
-    guide <https://git-send-email.io/>`__ and `hints and
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index c2975d7de5..789fe9afdc 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -569,7 +569,7 @@ static const char * const fdc_container_path[] = {
+  * Locate the FDC at IO address 0x3f0, in order to configure the CMOS registers
+  * and ACPI objects.
+  */
+-ISADevice *pc_find_fdc0(void)
++static ISADevice *pc_find_fdc0(void)
+ {
+     int i;
+     Object *container;
+@@ -713,7 +713,7 @@ static const int ne2000_io[NE2000_NB_MAX] = { 0x300, 0x320, 0x340, 0x360,
+                                               0x280, 0x380 };
+ static const int ne2000_irq[NE2000_NB_MAX] = { 9, 10, 11, 3, 4, 5 };
+ 
+-void pc_init_ne2k_isa(ISABus *bus, NICInfo *nd)
++static void pc_init_ne2k_isa(ISABus *bus, NICInfo *nd)
+ {
+     static int nb_ne2k = 0;
+ 
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index b34c664ff5..a087ea7598 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -168,7 +168,6 @@ void pc_basic_device_init(struct PCMachineState *pcms,
+                           ISADevice **rtc_state,
+                           bool create_fdctrl,
+                           uint32_t hpet_irqs);
+-void pc_init_ne2k_isa(ISABus *bus, NICInfo *nd);
+ void pc_cmos_init(PCMachineState *pcms,
+                   BusState *ide0, BusState *ide1,
+                   ISADevice *s);
+@@ -179,8 +178,6 @@ typedef void (*cpu_set_smm_t)(int smm, void *arg);
+ 
+ void pc_i8259_create(ISABus *isa_bus, qemu_irq *i8259_irqs);
+ 
+-ISADevice *pc_find_fdc0(void);
+-
+ /* port92.c */
+ #define PORT92_A20_LINE "a20"
+ 
 -- 
 2.36.0
 
