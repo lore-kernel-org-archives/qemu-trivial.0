@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nmeBv-0002HA-VG
-	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 12:19:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37326)
+	id 1nmeBx-0002KX-73
+	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 12:19:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nmeBU-00028B-IC; Thu, 05 May 2022 12:18:36 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:38745)
+ id 1nmeBS-00027y-I5; Thu, 05 May 2022 12:18:36 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:44635)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nmeBS-0005lK-TA; Thu, 05 May 2022 12:18:32 -0400
-Received: by mail-ej1-x630.google.com with SMTP id n10so9706199ejk.5;
- Thu, 05 May 2022 09:18:30 -0700 (PDT)
+ id 1nmeBR-0005kW-23; Thu, 05 May 2022 12:18:30 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id i19so9676692eja.11;
+ Thu, 05 May 2022 09:18:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OBni9ZUFXG91vLe7sySYRIw20wTNmuqnX6QYDs/955Q=;
- b=AL6fSrg7LWp41pQYcA4jxZ+w0VV1CzJ96ZnfRVilV7ip+dqb9ssmIop5qp42/9GWmf
- 3FZxGcmkRPmnE7PpdZ8ZdaT0aUzI67C/C6M/RXSAVsVInBt1bKuA/eH50BsyILWzvH/D
- Xudf5e3aZ9xZsAIyb/JznyKRybr7hGGj1ufyfiXZzo6T1I+ebLsJTjfKhtXjJkZnvddG
- jem3Gm2lfS+pxR7yLZ66XMVe2ciye0zZkc9AWV6KSA2UEnTDWMIBMeUK/FBPu76+EBXG
- czbNvG/WgZY9dGQLbu0YplknWUiTrQQ3w93/+6VmD5tJVk1DsRsEOAXjc+Q5GH6zMoRy
- KBwQ==
+ bh=+73gejvQMvAP3s/0y0ZZzesiuBYtND4qvienTeKqs0I=;
+ b=qX+qtO/9UC8gRFM+SvnPkQOTfo8TZSaWF/7/BVmpn72DAaL2yag4BPJSzYix0EhzHi
+ o2borlKy0HgALAbXPGksWM90QAJy6LFclyJRBHFMQHZHI/WZYNJx1/86XWbQWMu7STsk
+ RLv2KV2eU6b60382ovVceaR7AgM/gTWdLCP9hUiizbBD3/0mgxqM91k0+LuMEgPXR6Te
+ cfTUHQJbvkPHtCL0LKHD+IeGEzvu6LX88g/pH5vqLGq0Q+VFpRb0DHxjiy9qncAKF4KX
+ O0jWSI9mE3kfRljFaN47Q0gTpcZIUECFlIHhZC1RHbUzlTD8BQWDDaP7McpXGz6g+153
+ NZZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=OBni9ZUFXG91vLe7sySYRIw20wTNmuqnX6QYDs/955Q=;
- b=bRhesFmRiGkm1gS7c+arCjZ1eSLb6GKCm0lAYujr3TG7fWsJ3Oixpx3WD2tSvWX86f
- N6Qh8HTK3M3KPdzLz0W4Ctd80WgbHLj+BWgrmjd5/fAPkv31Xfnnhp+HHXqa59bfVr1e
- XxOSrm08QLEl52d6k9vKh2SY0IBIratqPeGKpcvzNnFL4niMhPAXGDUFWcU2OPSLtfXk
- v0sCChlgktplOi5fMD+JXTa3ESXPhnV1UWT5UauvVVWO4IqvkhZmnCnMOYGolHewjKF7
- sk2lIKlAhF2tX3nkzf8YSYwmiSHKpJsIwEac/WuSvvbx5tYOJDig+O2lGlkF/tWsDGWj
- MNBQ==
-X-Gm-Message-State: AOAM5318EvK+KYW1bxmkv29gr6pN/sOrNmDYBYVBALF1uX8O0wIfkheO
- vBDDrEwCYLOSlaXFb3+YZQybv60agqg=
-X-Google-Smtp-Source: ABdhPJwY3a67m4Y7aGnUVSu0KbS6HmCPdKgi42AOmxmGO/Wpe7xWiALDfATwgGUPPTxKXE7HFTnkfA==
-X-Received: by 2002:a17:906:9b96:b0:6f5:cdd:9bf2 with SMTP id
- dd22-20020a1709069b9600b006f50cdd9bf2mr1124868ejc.364.1651767509081; 
- Thu, 05 May 2022 09:18:29 -0700 (PDT)
+ bh=+73gejvQMvAP3s/0y0ZZzesiuBYtND4qvienTeKqs0I=;
+ b=Z8gaVNGk/cfSFVolAAIFNH5YUCeEReAaSXXpCC3qt0nttshG0WJZsNSluMNtSEJ145
+ aZYaJvk2w/WXrqOuz7ORsZPm15T5pOieJ76wdxypaung92gxvigJAilgfMtj/RuFvVej
+ hzhevZFQm+VHGsaxkkjeJFCn/tDQiPNBgRudV+Gx1u3X2Wlcuh2GG8avHhXCUohn5meP
+ /Sv64ZjuxvUtFkZ858KLINT/4jte1lx/BkvzbO7B0+cL8CWRMlr/o/jCfaSxpzF82Y24
+ NR4RXiJyhusfRWM/RRDW5bXNVE6resMvUSm+8V3Uc6rkD+9lD2pFI6usxsoOHmn6R1qD
+ kB3A==
+X-Gm-Message-State: AOAM531v55vp5/Uopr7aJzwCo+3U5futiVs3BgnxBbHgD9jMxZ+Dt3c3
+ 95vqWm8SG9G9tPy8z5BuSdLTAqPER7Y=
+X-Google-Smtp-Source: ABdhPJybzMHvKvGRuZnYJDJuXJhkFapGAn67U4Z3oUZ5QWQzXaVIvHsTP6Lb8AC3UfQEY0S5Jq9vwg==
+X-Received: by 2002:a17:907:97d5:b0:6f5:405:ef01 with SMTP id
+ js21-20020a17090797d500b006f50405ef01mr2368287ejc.551.1651767506760; 
+ Thu, 05 May 2022 09:18:26 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-078-054-123-159.78.54.pool.telefonica.de. [78.54.123.159])
  by smtp.gmail.com with ESMTPSA id
- i6-20020a17090685c600b006f3ef214dcfsm868542ejy.53.2022.05.05.09.18.27
+ i6-20020a17090685c600b006f3ef214dcfsm868542ejy.53.2022.05.05.09.18.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 09:18:28 -0700 (PDT)
+ Thu, 05 May 2022 09:18:26 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 10/11] accel/tcg: Inline dump_opcount_info() and remove it
-Date: Thu,  5 May 2022 18:18:04 +0200
-Message-Id: <20220505161805.11116-11-shentey@gmail.com>
+ Jason Wang <jasowang@redhat.com>, qemu-ppc@nongnu.org (open list:e500)
+Subject: [PATCH 08/11] hw/net/fsl_etsec/etsec: Remove obsolete and unused
+ etsec_create()
+Date: Thu,  5 May 2022 18:18:02 +0200
+Message-Id: <20220505161805.11116-9-shentey@gmail.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220505161805.11116-1-shentey@gmail.com>
 References: <20220505161805.11116-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -78,59 +78,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 May 2022 16:18:52 -0000
+X-List-Received-Date: Thu, 05 May 2022 16:18:50 -0000
 
-dump_opcount_info() is a one-line wrapper around tcg_dump_op_count()
-which is also exported. So use the latter directly.
+etsec_create() wraps qdev API which is outdated. It is also unused,
+so remove it.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- accel/tcg/cpu-exec.c      | 2 +-
- accel/tcg/translate-all.c | 5 -----
- include/exec/cpu-all.h    | 1 -
- 3 files changed, 1 insertion(+), 7 deletions(-)
+ hw/net/fsl_etsec/etsec.c | 23 -----------------------
+ hw/net/fsl_etsec/etsec.h |  7 -------
+ 2 files changed, 30 deletions(-)
 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 7cbf9996b7..a565a3f8ec 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -1091,7 +1091,7 @@ HumanReadableText *qmp_x_query_opcount(Error **errp)
-         return NULL;
-     }
- 
--    dump_opcount_info(buf);
-+    tcg_dump_op_count(buf);
- 
-     return human_readable_text_from_str(buf);
- }
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 291034cb09..8fd23a9d05 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -2124,11 +2124,6 @@ void dump_exec_info(GString *buf)
-     tcg_dump_info(buf);
+diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+index 6d50c39543..24deb47cff 100644
+--- a/hw/net/fsl_etsec/etsec.c
++++ b/hw/net/fsl_etsec/etsec.c
+@@ -443,26 +443,3 @@ static void etsec_register_types(void)
  }
  
--void dump_opcount_info(GString *buf)
--{
--    tcg_dump_op_count(buf);
--}
+ type_init(etsec_register_types)
 -
- #else /* CONFIG_USER_ONLY */
+-DeviceState *etsec_create(hwaddr         base,
+-                          MemoryRegion * mr,
+-                          NICInfo      * nd,
+-                          qemu_irq       tx_irq,
+-                          qemu_irq       rx_irq,
+-                          qemu_irq       err_irq)
+-{
+-    DeviceState *dev;
+-
+-    dev = qdev_new("eTSEC");
+-    qdev_set_nic_properties(dev, nd);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+-
+-    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, tx_irq);
+-    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 1, rx_irq);
+-    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 2, err_irq);
+-
+-    memory_region_add_subregion(mr, base,
+-                                SYS_BUS_DEVICE(dev)->mmio[0].memory);
+-
+-    return dev;
+-}
+diff --git a/hw/net/fsl_etsec/etsec.h b/hw/net/fsl_etsec/etsec.h
+index fddf551544..3c625c955c 100644
+--- a/hw/net/fsl_etsec/etsec.h
++++ b/hw/net/fsl_etsec/etsec.h
+@@ -155,13 +155,6 @@ OBJECT_DECLARE_SIMPLE_TYPE(eTSEC, ETSEC_COMMON)
+ #define eTSEC_TRANSMIT 1
+ #define eTSEC_RECEIVE  2
  
- void cpu_interrupt(CPUState *cpu, int mask)
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 9a716be80d..f5bda2c3ca 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -421,7 +421,6 @@ static inline bool tlb_hit(target_ulong tlb_addr, target_ulong addr)
- #ifdef CONFIG_TCG
- /* accel/tcg/translate-all.c */
- void dump_exec_info(GString *buf);
--void dump_opcount_info(GString *buf);
- #endif /* CONFIG_TCG */
+-DeviceState *etsec_create(hwaddr        base,
+-                          MemoryRegion *mr,
+-                          NICInfo      *nd,
+-                          qemu_irq      tx_irq,
+-                          qemu_irq      rx_irq,
+-                          qemu_irq      err_irq);
+-
+ void etsec_update_irq(eTSEC *etsec);
  
- #endif /* !CONFIG_USER_ONLY */
+ void etsec_walk_tx_ring(eTSEC *etsec, int ring_nbr);
 -- 
 2.36.0
 
