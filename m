@@ -1,64 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nmeBz-0002PW-9R
-	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 12:19:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37308)
+	id 1nmejA-0001Kw-Mr
+	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 12:53:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47380)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nmeBT-00027z-9u; Thu, 05 May 2022 12:18:36 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:46865)
+ id 1nmej8-0001F7-0G; Thu, 05 May 2022 12:53:18 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:46795)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nmeBR-0005kq-Qm; Thu, 05 May 2022 12:18:31 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id g23so5789173edy.13;
- Thu, 05 May 2022 09:18:29 -0700 (PDT)
+ id 1nmej6-0006GD-C4; Thu, 05 May 2022 12:53:17 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id j6so9829114ejc.13;
+ Thu, 05 May 2022 09:53:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
+ h=date:from:to:cc:subject:in-reply-to:references:message-id
  :mime-version:content-transfer-encoding;
- bh=97XDoGXF8ui7gYguRxMIJDkZD5oW/orGdMFAxRwFGnY=;
- b=mGOtyPyxMTHSW0IA88ez1nV+WDhnuTPBCSmslnflOR4EiRZMvfXnbHHVRijy+UwRf2
- LT/hFWuQcetaXkVYddYPbYPHTNw23Ij03saVSIyzoonkqyNenAgkL5YV64BTCSAsnSq/
- pXIt045SnkTODFbTMTpnCeikhXh+HevzdPQPsdI6XCdX/i8q1VfoTE9Rd0XGvCsgwYPP
- mT7B2l7T2U+mDHLuTd07Yy+WuwRIDa9f/7NB5CP75GWdPcObS2RoqcON10uPWQk7aTiV
- gI8pl/n7vb6HGpY134g/ophulmX2TUZvTYUkVK0NFCVGGgOMJX0bfULzkdhCAPwLmRVO
- /n/Q==
+ bh=Msiwtik8tFyyUA5/qnFh0wN4ESwSdwAjl499C0bOXzM=;
+ b=DZh73zKh5p05y4YQ7ba5dZ7rZ9itSo0q3HWpQGCglBV6eWx0WLnc0sc4BuAAqv6f7c
+ FQLi6ToMTm70uevfdhD/37gULU7fvslX9kRTlCcFtPlzg3tFqrLJl7x4NATA40ynof62
+ 2gdiTmwmidPGvi+SikTzry0ojB+jufGa1M1qrh7Cd1FvaBwa1myek42nVqNhY4+6VLeP
+ 6OgbDMUdInRgWSmEa7DvbI6XwOQJMtYwUKV9c8H4TbjeEYHjbXNKB+b3ZOqptS1FM9YB
+ FA+1oVkaw6aIeKj1bom/L9gGxbvtTnVc0BgugBWafMp1hXQLJHzNpyIwk3hZ3YzT9l/x
+ DzlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=97XDoGXF8ui7gYguRxMIJDkZD5oW/orGdMFAxRwFGnY=;
- b=rRVn5XH1Bk67srst7OssGt1MedthnKC6Z08EIIF8iKLDIemnQeWa0jMOFjVQCpx/SI
- rBAgRF1d0AFOSNZZdMtzL74EHOG5r8aTEL36RPkPXuXBB4pNr1uIu9pocmXNGO8nRXB+
- DY7G89M5sDCV49VgBzhpYikYyEALmimmAR8QxZ4+Uz3nJ3fJ8NzMiwiOJosN42baebRw
- /Ymi+RFgabHJ/Qcg0elZ18Jmu3qbwibqzwmDf1nTW1pZyDNoFqMgD02NuKHAWMWK4M0E
- zIzfuLVBxdars/AwuCdu6jmoBtqZ5NxL9eWBsQb8QD9jbxhFMMEG4ivSGh6iSxpRyveY
- 2HPg==
-X-Gm-Message-State: AOAM532i8lwDxonZuQLgJvkparbO0LpfkIvdlUnrYgcHlWg6cFDALozZ
- NmxzLhCL5X5ronTSnIiA5tw0a+opy4M=
-X-Google-Smtp-Source: ABdhPJzVQ2lRvObH/BkCHFg/IcL9CGRfogXyDEux2AYlHwfjP8OnFYwzvg4HRO2TbU5fR6sr+8v1mg==
-X-Received: by 2002:aa7:c849:0:b0:427:d464:e66f with SMTP id
- g9-20020aa7c849000000b00427d464e66fmr19965123edt.411.1651767507619; 
- Thu, 05 May 2022 09:18:27 -0700 (PDT)
-Received: from Provence.localdomain
- (dynamic-078-054-123-159.78.54.pool.telefonica.de. [78.54.123.159])
- by smtp.gmail.com with ESMTPSA id
- i6-20020a17090685c600b006f3ef214dcfsm868542ejy.53.2022.05.05.09.18.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 09:18:27 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=Msiwtik8tFyyUA5/qnFh0wN4ESwSdwAjl499C0bOXzM=;
+ b=5R2JZGxaknAbSrR0tFA8ELuuqZ6aCYbZ+/cF6+874xYU2toi84Y0tvTTAFWWS5jAuZ
+ vec4shsitvQmBYxc8ki7B1jeufonlm14BNxY9U9y6cYMe7QPangeu/rg1/ev6Ldq0bne
+ PDGTZK2+oLE71EJFAqps5dGT5EkfNm+UKqYDbHCj8HR1kxfX8af0pSftWSHCrJleQrBL
+ +wzoRRdjaOmFo0O/sfMUCsplkasCcMQPQG7vvVDZDFAIYfPVvHfNK+vM4tUxnFUSVFdp
+ 0u0LrtzhUy0EHhgvGzIEBBVbbu+m6YLGNxoO2XwMfxOVPfAlgbwbC+eekkMfftk2HbN8
+ /FDQ==
+X-Gm-Message-State: AOAM530YIdfqhj29OKtBIjVArtx0TP648T1gGDPMsSmUeYIRpvprwjWk
+ 5EP2vasEaI6DJAC+ekih46b3IneZ7q8=
+X-Google-Smtp-Source: ABdhPJwjw6aOeC8L0JIoD8ewlvq7U86CwW30zhsRlNghG1fpYJJM5Pymiz8vCbxMcSp72+C8j4Z3hQ==
+X-Received: by 2002:a17:907:60cf:b0:6f4:4240:849 with SMTP id
+ hv15-20020a17090760cf00b006f442400849mr21995415ejc.566.1651769594098; 
+ Thu, 05 May 2022 09:53:14 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-078-054-123-159.78.54.pool.telefonica.de.
+ [78.54.123.159]) by smtp.gmail.com with ESMTPSA id
+ cf11-20020a170906b2cb00b006f3ef214da7sm945564ejb.13.2022.05.05.09.53.13
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 05 May 2022 09:53:13 -0700 (PDT)
+Date: Thu, 05 May 2022 16:52:13 +0000
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 09/11] accel/tcg/cpu-exec: Unexport dump_drift_info()
-Date: Thu,  5 May 2022 18:18:03 +0200
-Message-Id: <20220505161805.11116-10-shentey@gmail.com>
-X-Mailer: git-send-email 2.36.0
-In-Reply-To: <20220505161805.11116-1-shentey@gmail.com>
-References: <20220505161805.11116-1-shentey@gmail.com>
+CC: qemu-trivial@nongnu.org
+Subject: Re: [PATCH RESEND 0/2] Resolve some redundant property accessors
+In-Reply-To: <20220301225220.239065-1-shentey@gmail.com>
+References: <20220301225220.239065-1-shentey@gmail.com>
+Message-ID: <A987D65D-940B-4827-B547-92D27FBBA46E@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52e.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -78,46 +76,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 May 2022 16:18:50 -0000
+X-List-Received-Date: Thu, 05 May 2022 16:53:18 -0000
 
-Commit 3a841ab53f165910224dc4bebabf1a8f1d04200c 'qapi: introduce
-x-query-jit QMP command' basically moved the only function using
-dump_drift_info() to cpu-exec.c. Therefore, dump_drift_info() doesn't
-need to be exported any longer.
+Am 1=2E M=C3=A4rz 2022 22:52:18 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>No changes=2E Just also CC'ed to qemu-trivial=2E
+>
+>The QOM API already provides appropriate accessors, so reuse them=2E
+>
+>Testing done:
+>
+>  :$ make check
+>  Ok:                 570
+>  Expected Fail:      0
+>  Fail:               0
+>  Unexpected Pass:    0
+>  Skipped:            178
+>  Timeout:            0
+>
+>
+>Bernhard Beschow (2):
+>  hw/vfio/pci-quirks: Resolve redundant property getters
+>  hw/riscv/sifive_u: Resolve redundant property accessors
+>
+> hw/riscv/sifive_u=2Ec  | 24 ++++--------------------
+> hw/vfio/pci-quirks=2Ec | 34 +++++++++-------------------------
+> 2 files changed, 13 insertions(+), 45 deletions(-)
+>
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- accel/tcg/cpu-exec.c   | 2 +-
- include/exec/cpu-all.h | 2 --
- 2 files changed, 1 insertion(+), 3 deletions(-)
+Ping
 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 635aeecc0a..7cbf9996b7 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -1048,7 +1048,7 @@ void tcg_exec_unrealizefn(CPUState *cpu)
- 
- #ifndef CONFIG_USER_ONLY
- 
--void dump_drift_info(GString *buf)
-+static void dump_drift_info(GString *buf)
- {
-     if (!icount_enabled()) {
-         return;
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 5d5290deb5..9a716be80d 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -419,8 +419,6 @@ static inline bool tlb_hit(target_ulong tlb_addr, target_ulong addr)
- }
- 
- #ifdef CONFIG_TCG
--/* accel/tcg/cpu-exec.c */
--void dump_drift_info(GString *buf);
- /* accel/tcg/translate-all.c */
- void dump_exec_info(GString *buf);
- void dump_opcount_info(GString *buf);
--- 
-2.36.0
+First round of trivial patches went already in for 7=2E1, hence a reminder=
+=2E
 
+Best regards,
+Bernhard
 
