@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nmeBt-0002DX-R5
-	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 12:18:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37282)
+	id 1nmeBu-0002Dz-1S
+	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 12:18:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37334)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nmeBR-00027x-Pi; Thu, 05 May 2022 12:18:34 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:40856)
+ id 1nmeBV-00028E-LP; Thu, 05 May 2022 12:18:38 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:34412)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nmeBP-0005ju-RB; Thu, 05 May 2022 12:18:29 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id p18so5800840edr.7;
- Thu, 05 May 2022 09:18:26 -0700 (PDT)
+ id 1nmeBT-0005lW-Vl; Thu, 05 May 2022 12:18:33 -0400
+Received: by mail-ej1-x633.google.com with SMTP id g6so9714365ejw.1;
+ Thu, 05 May 2022 09:18:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=T3N5ocw7wyJjyTDsryXEF2wyCqbBVbiZiu2UEGxzxkc=;
- b=d3oby60CYMPot/H08C8LeATp6tAjV0OEX4I7K8IeuARphjQ6NJPhA2kFaRrNuulI3t
- BTXg2A02Sd4x+C7D+3Ih5Z/W2zdBpBFfti5qwEwbexwNgLQgsCCjAHoRB4ugJaLvB+4J
- a0Ao9mZh5/WkFkKpRgeXvIOVmXZJzTmqhje76DomG/faepUwhr5AbKwAM86JtsUR4G6E
- UGqynHkL0BSZQVUFD4l0TSvOgkUcSocx2GY/yIrLv+0v+lzxXO0JjCxmv+zkr1dQ5SrT
- eVt5D8XoNDgviCnWCUCG+HxDvAYMMV45jWQ6gSEO7jjbXnHcGhlI/1lFbl34fAKOcOaU
- nsBg==
+ bh=G1Ct2U+bQ3kGVUW9fsOA/lzpDAuaaKB4V0L6OSmysTo=;
+ b=H1N+6wy7JPNGBxie9cnUCOtEstg0WknQv82ajmxWT+PTlRdtqB5ckykmKU9cEGs/sh
+ /fWpAIvfPcXrp9g8Ftzw3oZhaRbh2UIbORe57nhGco1YNiLG2D7OXBIZOE9cTuzS0Le4
+ 396Dj0zVu3AlSf+SBFyoAytDHYKcEYigl9Y/kQdxcNXYdG2UEj0l1tHfNelffKkRaM7L
+ ZHzzmBXtKOltIyaruir1EOIkABk1aFNQsuYoCxCrSeD+2zvSpmmyta1g42sgYjiX5d63
+ FrKYG3J0e9NpwW7Op3HiBbKJ0UXrkIrYjPKW6OmEGltnbY/gvl70V0KzAQBvuzFEUwhQ
+ gUtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=T3N5ocw7wyJjyTDsryXEF2wyCqbBVbiZiu2UEGxzxkc=;
- b=bBE0vJSXW2DD0LkjFYvd0onYxL9Go684d8X7Mshp5Qavf8utsf6gmG9eJBzLqbJLoc
- K3tlZaNO1uwygBQv43+itxuCl8IZMDybdhdihGEB/KAHHd0UgHWJvSJSWRvaM/qC35hx
- ReN3dVMQZMPlIzcW1jmcNZ4ypATNDIBnAHmLAl/l7vPwdfHSK+6BnTqjZn/anQ3utXRv
- WNDPVahyQOAyWbhHD/EMLiLrMiLzxj5h4RjWmw62p/rFmj/tGe7n48S2IJnQmuDWcK0R
- DuqjFTqB2VMxK7k05LhQsbHvH44D8K16duDxCyNC1MdD8SaRtKu+6QDvzTDuNs/j5qR9
- t0OQ==
-X-Gm-Message-State: AOAM5327NyWsykPYFif0nCwCgqf1b52/KY+QyTnIDb5aUWTN7Q8i/Rgl
- //KrB9nisBqqsWcKEMNAaMjrF8gFR/A=
-X-Google-Smtp-Source: ABdhPJy0h8+C0scy9Y5eP95wLW/fFSPNpdii8ufdVYda1mX3y1wjO0ySPXv6jYDy0MpxLHdrKLuekA==
-X-Received: by 2002:a05:6402:11cd:b0:427:bf42:44ef with SMTP id
- j13-20020a05640211cd00b00427bf4244efmr24748369edw.336.1651767505527; 
- Thu, 05 May 2022 09:18:25 -0700 (PDT)
+ bh=G1Ct2U+bQ3kGVUW9fsOA/lzpDAuaaKB4V0L6OSmysTo=;
+ b=Xm/a3Zq/5PhUbjpOl+hZvNTzvDj7RG7ruBfku9bRka5X8eAf8eVd44NXekQKm/YMS3
+ NoSdW7zY3Q7UKbx/UNL/Q6yTE7q22xFidUuJy/ZxFTsOUyV6UgUNML5BI8bw76cmYb8C
+ sz96b1y7txA702ljA/ved2gC+7tIrOOBAXXuq+hbrCGcZraO6lXQGX5BcxG/AZdATTzn
+ QNUgQlkS0tJkAMq/yd2ROGHwiLHiH8jFzv1pt5nMC13TKt1r5Yxk0JewGlBbINshsobB
+ JlYe04NzZghW4MSIWu1ZkkuIK4NzY3yhWSrzHupRceuBb2HaDVVuNFqxz5Tzw+bu/jcv
+ SnYQ==
+X-Gm-Message-State: AOAM533lAcFb6kqTYRK1REF3MWRDP0fYcdC5S357NQz0vl7pV1EYoHBL
+ Avp9cCX8l7lNA6LGJhaTlHJ0SKgu+ko=
+X-Google-Smtp-Source: ABdhPJx8ON40EToetEO9Ws02IJUvTEPAtH10gYn/Qqm55eTLv/YNfSfsppNJihbXL2WR8tnPLuchpA==
+X-Received: by 2002:a17:906:2991:b0:6cf:6b24:e92f with SMTP id
+ x17-20020a170906299100b006cf6b24e92fmr27141434eje.748.1651767509913; 
+ Thu, 05 May 2022 09:18:29 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-078-054-123-159.78.54.pool.telefonica.de. [78.54.123.159])
  by smtp.gmail.com with ESMTPSA id
- i6-20020a17090685c600b006f3ef214dcfsm868542ejy.53.2022.05.05.09.18.24
+ i6-20020a17090685c600b006f3ef214dcfsm868542ejy.53.2022.05.05.09.18.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 09:18:25 -0700 (PDT)
+ Thu, 05 May 2022 09:18:29 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- qemu-ppc@nongnu.org (open list:e500)
-Subject: [PATCH 07/11] hw/ppc/e500: Remove unused BINARY_DEVICE_TREE_FILE
-Date: Thu,  5 May 2022 18:18:01 +0200
-Message-Id: <20220505161805.11116-8-shentey@gmail.com>
+ qemu-stable@nongnu.org
+Subject: [PATCH 11/11] docs/devel: Fix link to developer mailing lists
+Date: Thu,  5 May 2022 18:18:05 +0200
+Message-Id: <20220505161805.11116-12-shentey@gmail.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220505161805.11116-1-shentey@gmail.com>
 References: <20220505161805.11116-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -77,29 +77,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 May 2022 16:18:50 -0000
+X-List-Received-Date: Thu, 05 May 2022 16:18:53 -0000
 
-Commit 28290f37e20cda27574f15be9e9499493e3d0fe8 'PPC: E500: Generate
-device tree on reset' improved device tree generation and made
-BINARY_DEVICE_TREE_FILE obsolete.
+Ammends commit 9f73de8df0335c9387f4ee39e207a65a1615676f 'docs: rSTify
+the "SubmitAPatch" wiki'.
 
+Cc: qemu-stable@nongnu.org
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/ppc/e500.c | 1 -
- 1 file changed, 1 deletion(-)
+ docs/devel/submitting-a-patch.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 2bc3dce1fb..7f7f5b3452 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -47,7 +47,6 @@
- #include "hw/irq.h"
- 
- #define EPAPR_MAGIC                (0x45504150)
--#define BINARY_DEVICE_TREE_FILE    "mpc8544ds.dtb"
- #define DTC_LOAD_PAD               0x1800000
- #define DTC_PAD_MASK               0xFFFFF
- #define DTB_MAX_SIZE               (8 * MiB)
+diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
+index e51259eb9c..21ed52bd82 100644
+--- a/docs/devel/submitting-a-patch.rst
++++ b/docs/devel/submitting-a-patch.rst
+@@ -18,9 +18,9 @@ one-shot fix, the bare minimum we ask is that:
+    <http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/SubmittingPatches?id=f6f94e2ab1b33f0082ac22d71f66385a60d8157f#n297>`__
+    policy.) ``git commit -s`` or ``git format-patch -s`` will add one.
+ -  All contributions to QEMU must be **sent as patches** to the
+-   qemu-devel `mailing list <MailingLists>`__. Patch contributions
+-   should not be posted on the bug tracker, posted on forums, or
+-   externally hosted and linked to. (We have other mailing lists too,
++   qemu-devel `mailing list <https://wiki.qemu.org/Contribute/MailingLists>`__.
++   Patch contributions should not be posted on the bug tracker, posted on
++   forums, or externally hosted and linked to. (We have other mailing lists too,
+    but all patches must go to qemu-devel, possibly with a Cc: to another
+    list.) ``git send-email`` (`step-by-step setup
+    guide <https://git-send-email.io/>`__ and `hints and
 -- 
 2.36.0
 
