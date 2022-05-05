@@ -1,75 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nmep8-00083m-Sg
-	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 12:59:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49408)
+	id 1nmf2X-0008Ou-7B
+	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 13:13:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53292)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1nmeov-00080S-NE; Thu, 05 May 2022 12:59:18 -0400
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333]:41524)
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1nmf2U-0008Ie-WF; Thu, 05 May 2022 13:13:19 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:37770)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1nmeot-0007UE-1t; Thu, 05 May 2022 12:59:17 -0400
-Received: by mail-ot1-x333.google.com with SMTP id
- y14-20020a9d460e000000b00605ee347da1so3308363ote.8; 
- Thu, 05 May 2022 09:59:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1nmf2T-0002Ut-7b; Thu, 05 May 2022 13:13:18 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id k27so5969963edk.4;
+ Thu, 05 May 2022 10:13:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=f1kVqLvCxT7JZWCh4VuMbHZRZXru82k/oj2rUKF8TYE=;
- b=Wdxlu/d9BnZvQ2tyuNRlm8AFRACNS5xO13uy2KMaILgZoEb33f5+wr4+dNC8i8rWYd
- 1MoDWbWtIO4a2VJ3cTaqqHvuy5jHhqErDKExtP+1UWwE1lsHOFqNc3Ae7yi9lfS0MQgw
- qdoNis9pcs8LBKF0YXQGvwVMYZlz//Nl+BFLE5T2mB2F6CFu5B5b2RjyIC1KeerxvzU7
- 7Eb6MLhwfUaha/INYJMRSLQ4hdMfc1Vi6kqg1Qlm2MjgOH41p7n8gPhmLrLPAKQVbWEM
- UMHsfnEaPDgsRoJC37a/9CPvYDp8u2JI98nid65ZSG00M6DdeMKZEitvzsBPPowiw3QO
- b1Aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=f1kVqLvCxT7JZWCh4VuMbHZRZXru82k/oj2rUKF8TYE=;
- b=SAA/Yct29TPgVMtQVRiEGfka6nug2NFb1aHYunVOuEvQbYli3DIr3uQbocu4ZhmEV9
- 9CipDQ9c0+t9XHC4wMqhR2EZljj9/QP6EFYxUXnYnhy3WjsxZMo3TwOlsWMZvFk5TEWn
- NdavNl8OW75iozztw/OpF/5vSuLOX2vpDjyc/ayxJl4Wu/fl/fhhddAQdscSlttR/m92
- AxuXalz0dm6T6f3AO/wIFhxNO1NJRYvnTY2JYfVQSJPLgaWcTC9MhfTFnurN7cNnpxdb
- FBLpeAcu821SpUMOMwIK5k7e8X/Fvat/WcKpdt5Q78xC563L/kO3c2LsVf0YXv8I+VAd
- Xcqw==
-X-Gm-Message-State: AOAM533kKvd2twlDyAoUxEEFDDEZHUvZNN+kZkjPjpulpzdO1giMJMQc
- 7yxxLpkrTm1bXtJRpBTeNTU=
-X-Google-Smtp-Source: ABdhPJxIQEw8AEYl1jekcyJQh+L9pzGyMPfmw4irvTmX4QgwW3CxEEmHU9d3Us7Rmq26snHjeNuYcQ==
-X-Received: by 2002:a9d:37cb:0:b0:5cc:7a51:c984 with SMTP id
- x69-20020a9d37cb000000b005cc7a51c984mr9566928otb.98.1651769946127; 
- Thu, 05 May 2022 09:59:06 -0700 (PDT)
-Received: from [192.168.10.102] (201-1-57-208.dsl.telesp.net.br.
- [201.1.57.208]) by smtp.gmail.com with ESMTPSA id
- l10-20020a9d4c0a000000b006060322124fsm765486otf.31.2022.05.05.09.59.03
+ bh=AFDlXlQ6FIU1Y/5X84ot7ujbS7AQWGyB62TiXs5daSg=;
+ b=OF1qwFNSfLrTkdjps29BexsoZJIKqmhMWWlX0sIpo9tTEtC/a4bFasRZwsAKMjCzf+
+ C4A1WPIHSmJgwVtB2CNkG8gTq1lWHTBa+Z/GA5D3JpiAyXkxKpg2RrySQX63+FDIU4bT
+ foD1XfZ5iia76XIRe4qIl4fK8zKj+51KfXIBiA4E3065jMqPUiWMQS5cwM2OkjKnJXQe
+ cvAe7aHLEN3Uk3UkfP2RrJUSCuUNHV98VbqTYprvzRYrCXU83ghAztUYxniZyLLYnB4H
+ ur+gCYX78hLeI7lYPSZx0rhgjijRHGoEXlU67LoeHjMTbw3lbCCf5qd84Lqj4RZf75sV
+ qJcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=AFDlXlQ6FIU1Y/5X84ot7ujbS7AQWGyB62TiXs5daSg=;
+ b=QCrQLG0Q8p7uujov2JclAEGPp7m3CnrJV5Uifo2NzEj3F9OUr5+KI9HKIE0qHpBcm1
+ AbqqBUYXTPJseDtE+ZfOTDP1U5yq+CPshv6R1tQZ/7Y0v4CMnEIjIhS0MffK5CViBKQg
+ wvJa2/YJjEqGR3O2Rf7q0ajmJj2bqx5rony03/DfGNHJ0a3D0wjmQG1QtkucF18UIyjO
+ jNjNQKfmSqQaBTPvLLB5xFsQVFf6p4a9h0QOkTY2CHiqVOK99ju9q6GicL3sm//AQwDz
+ mrRKi60GHN1Ge+d2+s4YKzMX14NcaJdFNofp3BESpvkKqaAhSXiUadlEb57nzEAfx6u5
+ vrJg==
+X-Gm-Message-State: AOAM531wjJIWA8i2FpySy8Ur0h8bjZPKF0HsRVttlcn3Jgi+hFq30Uul
+ yynysA4ZrW+goozPphOoRJg=
+X-Google-Smtp-Source: ABdhPJx6x5DvBpxNGcTaCUEjWhqgu54+xFQlar7s/x0F/PYgdlmRNh35/SV8ouZBXYHiU/cDDsH2qw==
+X-Received: by 2002:a05:6402:4384:b0:427:b5c0:4bf with SMTP id
+ o4-20020a056402438400b00427b5c004bfmr26901283edc.127.1651770794750; 
+ Thu, 05 May 2022 10:13:14 -0700 (PDT)
+Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.googlemail.com with ESMTPSA id
+ l21-20020a056402125500b0042617ba63c5sm1095383edw.79.2022.05.05.10.13.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 May 2022 09:59:05 -0700 (PDT)
-Message-ID: <24f9b99d-0835-7cac-11d8-b5fbaeaffefb@gmail.com>
-Date: Thu, 5 May 2022 13:59:01 -0300
+ Thu, 05 May 2022 10:13:13 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <93b47120-d90e-6de1-13c8-d1addc714c1b@redhat.com>
+Date: Thu, 5 May 2022 19:13:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
-Subject: Re: [PATCH 07/11] hw/ppc/e500: Remove unused BINARY_DEVICE_TREE_FILE
+Subject: Re: [PATCH 0/2] Confine igd-passthrough-isa-bridge to XEN
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "open list:e500" <qemu-ppc@nongnu.org>
-References: <20220505161805.11116-1-shentey@gmail.com>
- <20220505161805.11116-8-shentey@gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20220505161805.11116-8-shentey@gmail.com>
+Cc: qemu-trivial@nongnu.org, Anthony PERARD <anthony.perard@citrix.com>
+References: <20220326165825.30794-1-shentey@gmail.com>
+ <F58C8DE7-6EF1-49B5-AABA-FE7D754C7FC8@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <F58C8DE7-6EF1-49B5-AABA-FE7D754C7FC8@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::333;
- envelope-from=danielhb413@gmail.com; helo=mail-ot1-x333.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=paolo.bonzini@gmail.com; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,33 +84,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 May 2022 16:59:25 -0000
+X-List-Received-Date: Thu, 05 May 2022 17:13:19 -0000
 
-
-
-On 5/5/22 13:18, Bernhard Beschow wrote:
-> Commit 28290f37e20cda27574f15be9e9499493e3d0fe8 'PPC: E500: Generate
-> device tree on reset' improved device tree generation and made
-> BINARY_DEVICE_TREE_FILE obsolete.
+On 5/5/22 18:56, Bernhard Beschow wrote:
+> Am 26. März 2022 16:58:22 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
+>> This patch series changes the "igd-passthrough-isa-bridge" device only to be
+>> provided if CONFIG_XEN_PCI_PASSTHROUGH is true. With it xen_pt gets decoupled
+>>from i386/pc.
+>>
+>> Bernhard Beschow (2):
+>>   hw/xen/xen_pt: Confine igd-passthrough-isa-bridge to XEN
+>>   hw/xen/xen_pt: Resolve igd_passthrough_isa_bridge_create() indirection
+>>
+>> hw/i386/pc_piix.c        | 118 -------------------------------------
+>> hw/xen/xen_pt.c          |  12 ----
+>> hw/xen/xen_pt.h          |   2 +
+>> hw/xen/xen_pt_graphics.c | 122 +++++++++++++++++++++++++++++++++++++++
+>> include/hw/i386/pc.h     |   1 -
+>> 5 files changed, 124 insertions(+), 131 deletions(-)
+>>
 > 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
-
-Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-
->   hw/ppc/e500.c | 1 -
->   1 file changed, 1 deletion(-)
+> Ping
 > 
-> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-> index 2bc3dce1fb..7f7f5b3452 100644
-> --- a/hw/ppc/e500.c
-> +++ b/hw/ppc/e500.c
-> @@ -47,7 +47,6 @@
->   #include "hw/irq.h"
->   
->   #define EPAPR_MAGIC                (0x45504150)
-> -#define BINARY_DEVICE_TREE_FILE    "mpc8544ds.dtb"
->   #define DTC_LOAD_PAD               0x1800000
->   #define DTC_PAD_MASK               0xFFFFF
->   #define DTB_MAX_SIZE               (8 * MiB)
+> Thanks to Anthony the series is reviewed. Which tree wants to pick it up?
+> 
+> Best regards,
+> Bernhard
+> 
+
+Queued, thanks.
+
+Paolo
 
