@@ -1,92 +1,117 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nmqZh-0007Mq-MG
-	for mharc-qemu-trivial@gnu.org; Fri, 06 May 2022 01:32:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58202)
+	id 1nn5J7-0007T5-Ni
+	for mharc-qemu-trivial@gnu.org; Fri, 06 May 2022 17:16:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41104)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nmqZX-0007M2-8U
- for qemu-trivial@nongnu.org; Fri, 06 May 2022 01:32:12 -0400
-Received: from us-smtp-delivery-74.mimecast.com ([170.10.133.74]:60205)
+ (Exim 4.90_1) (envelope-from <t.zhang2@samsung.com>)
+ id 1nn0rP-0000Xp-FP; Fri, 06 May 2022 12:31:20 -0400
+Received: from mailout1.w2.samsung.com ([211.189.100.11]:33609)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nmqZT-0001Mi-Q4
- for qemu-trivial@nongnu.org; Fri, 06 May 2022 01:32:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1651815127;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SUpY1J6F01Hx9ZhMvKP034OpvEhdt7W+srEg5e6h3y4=;
- b=eT5rRsI6O5hye5M1nFYGzFJGUwBEz4sjZWHu/8Z8Z44GBQpyfXVSj5IwKn2D+dWPu0DNM8
- 5BrKGJZGBmWfB7m3j0u0pMGX7q91CAs14tHWZe2/e8GmHS0B75wGtAwNoG1WsW3no5QTMB
- 878FmxaDiiWvsehqM6UG/d7K1120qB8=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-92-2LSZhRfPNuWnReUTVCNUng-1; Fri, 06 May 2022 01:32:05 -0400
-X-MC-Unique: 2LSZhRfPNuWnReUTVCNUng-1
-Received: by mail-qv1-f71.google.com with SMTP id
- m8-20020a0c9d08000000b00456549a0589so5169540qvf.2
- for <qemu-trivial@nongnu.org>; Thu, 05 May 2022 22:32:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=SUpY1J6F01Hx9ZhMvKP034OpvEhdt7W+srEg5e6h3y4=;
- b=aOFKqD0IkpKpL6HKJv8WxJ8RQ5anLQS0bi0TEwBoAyLH1avVuGXxZvR5mY/XxFIKFJ
- 3KPoyE9ANggp9IYXgGtSKY57wLiXxC8AGkm0IhTXWtv7TYAwoNPcI4+fXq4/w6cF3AcI
- UpgFTSJNn9jgHGINa/KEzyC+p1+nhb8zvW+LiXNG1Yil10ABSC2j9uxdYkez8PNAxpxV
- 9AUwIssu9Ic8SeWbCa+2Ox3GKwYrd/zxoVk2063w/9XthjIcpueR3+1kTZI3ULfSAfbc
- k40amxyJkHMqRnNFfDHDuJd3njV2lYCA+n7jKAUArzCRu3KrfZ2TNygT9IocQBszsSj8
- fRdg==
-X-Gm-Message-State: AOAM530+ylXtutAINUfu0gDrLSUXoS1yXYCu5GwZfVNlk9/mthd/xBXF
- io6M4v1BWCrs/K4Omq3FhhheOaqrElH45VP/Pybr3exC4X9C7mDWU/riEE584XVmZSEc6lp4rmO
- MXKQa7ZXE2dTd9vupTg==
-X-Received: by 2002:ac8:5b93:0:b0:2f3:9b90:34a5 with SMTP id
- a19-20020ac85b93000000b002f39b9034a5mr1279412qta.677.1651815125162; 
- Thu, 05 May 2022 22:32:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJsJpKOxUrjiWsfd830mUdBUNscIgO1yMB8RqoOKFrfywGY8r6vYrkyZPA2kJaw82SFggqkQ==
-X-Received: by 2002:ac8:5b93:0:b0:2f3:9b90:34a5 with SMTP id
- a19-20020ac85b93000000b002f39b9034a5mr1279389qta.677.1651815124852; 
- Thu, 05 May 2022 22:32:04 -0700 (PDT)
-Received: from [192.168.8.104] (tmo-082-126.customers.d1-online.com.
- [80.187.82.126]) by smtp.gmail.com with ESMTPSA id
- x9-20020ac84d49000000b002f39b99f677sm2041808qtv.17.2022.05.05.22.32.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 May 2022 22:32:04 -0700 (PDT)
-Message-ID: <309ab0f5-7bb0-ddb4-3736-8cf0a4cfb269@redhat.com>
-Date: Fri, 6 May 2022 07:31:52 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH][RESEND] MAINTAINERS: Add myself as a reviewer for Hyper-V
- VMBus
-To: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>,
- qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
-References: <7ecb5ece9d1e0a607e801d547d387bc840b250ea.1651779343.git.maciej.szmigiero@oracle.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <7ecb5ece9d1e0a607e801d547d387bc840b250ea.1651779343.git.maciej.szmigiero@oracle.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <t.zhang2@samsung.com>)
+ id 1nn0rN-0006NW-QY; Fri, 06 May 2022 12:31:19 -0400
+Received: from uscas1p1.samsung.com (unknown [182.198.245.206])
+ by mailout1.w2.samsung.com (KnoxPortal) with ESMTP id
+ 20220506163107usoutp01930c52429bf46083e9bf0fc19903b83f~skRF_Q1SV0869808698usoutp01b;
+ Fri,  6 May 2022 16:31:07 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w2.samsung.com
+ 20220506163107usoutp01930c52429bf46083e9bf0fc19903b83f~skRF_Q1SV0869808698usoutp01b
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1651854667;
+ bh=1ZjvoENIycjky5C3cXuao6J9XyheLQrjNGLqV80MRCw=;
+ h=From:To:CC:Subject:Date:References:From;
+ b=VwLfa3iUiQ9qpKKd0b4ZIq5GXwaMAegU9ElWXGL0V4NpYCK0zW/U40rq6qIjKQDGY
+ YR8I8AdpM5/nuzRcLWlvLFlRVjp+K/zqjDOpBKi1dvDMYjUaXob1x1zVayZs/3627b
+ jF/+3PKfQ0ifi/n0qKJHchxDPjlKoq9GaQcIbgFQ=
+Received: from ussmges3new.samsung.com (u112.gpu85.samsung.co.kr
+ [203.254.195.112]) by uscas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20220506163107uscas1p1255299366ad933575db61d7e2dc23178~skRFaS9yi3044830448uscas1p1B;
+ Fri,  6 May 2022 16:31:07 +0000 (GMT)
+Received: from uscas1p2.samsung.com ( [182.198.245.207]) by
+ ussmges3new.samsung.com (USCPEMTA) with SMTP id 58.97.09749.A4D45726; Fri, 
+ 6 May 2022 12:31:06 -0400 (EDT)
+Received: from ussmgxs1new.samsung.com (u89.gpu85.samsung.co.kr
+ [203.254.195.89]) by uscas1p2.samsung.com (KnoxPortal) with ESMTP id
+ 20220506163106uscas1p20aa8ba0a290a9b50be54df6ec4f9cee0~skRFDtAsx1463714637uscas1p2t;
+ Fri,  6 May 2022 16:31:06 +0000 (GMT)
+X-AuditID: cbfec370-a83ff70000002615-23-62754d4a7f7f
+Received: from SSI-EX3.ssi.samsung.com ( [105.128.2.145]) by
+ ussmgxs1new.samsung.com (USCPEXMTA) with SMTP id 1F.8D.52349.A4D45726; Fri, 
+ 6 May 2022 12:31:06 -0400 (EDT)
+Received: from SSI-EX2.ssi.samsung.com (105.128.2.227) by
+ SSI-EX3.ssi.samsung.com (105.128.2.228) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.1.2375.7; Fri, 6 May 2022 09:31:05 -0700
+Received: from SSI-EX2.ssi.samsung.com ([105.128.2.227]) by
+ SSI-EX2.ssi.samsung.com ([105.128.2.227]) with mapi id 15.01.2375.007; Fri,
+ 6 May 2022 09:31:05 -0700
+From: Tong Zhang <t.zhang2@samsung.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ "David Hildenbrand" <david@redhat.com>,
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "ztong0001@gmail.com" <ztong0001@gmail.com>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Tong Zhang <t.zhang2@samsung.com>, "Francisco
+ Londono" <f.londono@samsung.com>
+Subject: [RESEND PATCH] hw/dma: fix crash caused by race condition
+Thread-Topic: [RESEND PATCH] hw/dma: fix crash caused by race condition
+Thread-Index: AQHYYWauxUs3tXrAZkiwq8GTgHSRFw==
+Date: Fri, 6 May 2022 16:31:05 +0000
+Message-ID: <20220506163059.2517-1-t.zhang2@samsung.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.74; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-74.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [105.128.2.176]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprNKsWRmVeSWpSXmKPExsWy7djX87pevqVJBs/um1l8Xf+L2eLEpoPM
+ Fvu3/WO12LL/G7vF8d4dLBZrz8xltTj56jybA7vHgRcL2T12zrrL7vHk2mYmj/f7rrIFsERx
+ 2aSk5mSWpRbp2yVwZcz9klWwmbNi4RK+Bsab7F2MnBwSAiYSp64/Z+5i5OIQEljJKNHb8YQJ
+ wmllkmi8f4gNpmrRw42sILaQwFpGidv7nCDsD4wSC+9EQDQsZZQ4duMNC0iCTUBd4lfnIjaQ
+ hIjAQ0aJ130rwBxmgR2MEmu+/gRbLizgJLF+bgsTiC0i4C5x59g7KFtP4vO/TkYQm0VARWJJ
+ w3awOK+AhcSs5vlgNqOAmMT3U2vAbGYBcYlbTyDiEgKCEotm72GGsMUk/u16CPWCosT97y/Z
+ Ier1JG5MncIGYWtLLFv4mhlivqDEyZlPWCDqJSUOrrjBAnK0hMBSDombU2+xQiRcJHZ8a4Qa
+ Ki1x9fpUqGX1EjNv/WCEaOgB+vLIemgQW0v8OroHajOfxN9fj4CKOIDivBIdbUITGJVmIflh
+ FpL7ZiG5bxaS+xYwsqxiFC8tLs5NTy02zkst1ytOzC0uzUvXS87P3cQITD+n/x0u2MF469ZH
+ vUOMTByMhxglOJiVRHiFZ5UkCfGmJFZWpRblxxeV5qQWH2KU5mBREuddlrkhUUggPbEkNTs1
+ tSC1CCbLxMEp1cCU99Nn+qYGx/5rk1T0qtqNlz/LTJ27csl+I6NTZzLqr1u9a7/l93ZqQ8Vz
+ jcyWG7s8lhgFLjnRHDsjJWxbWsOUoJ5ZGx77r1++/4jwvT7LLeGtMi4X+asP/vywtTTgtf4h
+ h/LTU4J+rq4Pe3D66arLO2+6TZ9/U1uuxMZv1qMKp/x9wjq6AWvOzA7dUM3mnxE1r8S77bOq
+ rev8vZVuErGZuyceWLS0pNPBPCK26coxAUmFycZPz+ZXL1/mmR9p1e+zv8x0+90ndrOFfD75
+ 1sd7uauHuXkYF62X6lFYscHh2y+GXYtNZV+svW6eGeuTdKvQtvvjVuf7rTV+UxruH7+e+CaI
+ rdlWyCRSxPPjqwAlluKMREMt5qLiRABKqMIDrgMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprGIsWRmVeSWpSXmKPExsWS2cA0UdfLtzTJ4PRnZYuv638xW5zYdJDZ
+ Yv+2f6wWW/Z/Y7c43ruDxWLtmbmsFidfnWdzYPc48GIhu8fOWXfZPZ5c28zk8X7fVbYAligu
+ m5TUnMyy1CJ9uwSujLlfsgo2c1YsXMLXwHiTvYuRk0NCwERi0cONrF2MXBxCAqsZJe58v8QI
+ 4XxglNi2dBaUs5RRomnaYWaQFjYBdYlfnYvYQBIiAvcZJR7tnsoM4jAL7GCUWPP1J9hgYQEn
+ ifVzW5hAbBEBd4k7x95B2XoSn/91MoLYLAIqEksatoPFeQUsJGY1zwezGQXEJL6fWgNmMwuI
+ S9x6AhGXEBCQWLLnPDOELSrx8vE/VghbUeL+95fsEPV6EjemTmGDsLUlli18zQwxX1Di5Mwn
+ LBD1khIHV9xgmcAoOgvJillI2mchaZ+FpH0BI8sqRvHS4uLc9Ipiw7zUcr3ixNzi0rx0veT8
+ 3E2MwKg7/e9w5A7Go7c+6h1iZOJgPMQowcGsJMIrPKskSYg3JbGyKrUoP76oNCe1+BCjNAeL
+ kjivkOvEeCGB9MSS1OzU1ILUIpgsEwenVAPTRr4FakFhU31mRsSFJKy53l3e/H7H84D/G49Z
+ sid1sPn8qb/NzH6k2sBQfruBpMEJ5ocBGcaSZpGlSz9nzjjClfP1WqvKtukVdnX6y99p9ku4
+ vRW/tPpDfX7ma+3mE6btjYyxy0+vO9Il63NB2Wq3ue1xho2H85e+DdGe/ebWV11/q+/fl6ox
+ WfffEkw4o3bxcdX3vjxmHZn3i7hYJ4tzcu+Ve87U1RJ/34jd/57R05lpv+3mvss8NDFeIMll
+ xt+D19Z/qVukoPYs9OS3oAsbdy68Vy81UzPZ5xrDDeEveo0/rwnnb+QSmGagmlNUGMNT8t50
+ GSfvRIdzPY5tuTfWNBgz3VFLfqgR4CotPkWJpTgj0VCLuag4EQA3JR/2KQMAAA==
+X-CMS-MailID: 20220506163106uscas1p20aa8ba0a290a9b50be54df6ec4f9cee0
+CMS-TYPE: 301P
+X-CMS-RootMailID: 20220506163106uscas1p20aa8ba0a290a9b50be54df6ec4f9cee0
+References: <CGME20220506163106uscas1p20aa8ba0a290a9b50be54df6ec4f9cee0@uscas1p2.samsung.com>
+Received-SPF: pass client-ip=211.189.100.11; envelope-from=t.zhang2@samsung.com;
+ helo=mailout1.w2.samsung.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 06 May 2022 17:16:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,42 +123,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 May 2022 05:32:15 -0000
+X-List-Received-Date: Fri, 06 May 2022 16:31:21 -0000
 
-On 05/05/2022 21.36, Maciej S. Szmigiero wrote:
-> From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
-> 
-> This way there is at least some contact point for incoming patches.
-> 
-> We'll see whether the code still gets just a random patch a few times
-> a year or whether it requires a permanent maintainer to take care of it.
-> 
-> Signed-off-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
-> ---
->      Resending, since the previous submission at [1] wasn't picked up.
->      
->      [1]: https://lore.kernel.org/qemu-devel/b145dcf08ae606e9d29e55b2f701a3fe4f16b347.1637433881.git.maciej.szmigiero@oracle.com/
-> 
->   MAINTAINERS | 6 ++++++
->   1 file changed, 6 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 218c9459b6..907f1d4a88 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1776,6 +1776,12 @@ F: include/hw/block/fdc.h
->   F: tests/qtest/fdc-test.c
->   T: git https://gitlab.com/jsnow/qemu.git ide
->   
-> +Hyper-V VMBus
-> +S: Odd Fixes
-> +R: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
-> +F: hw/hyperv/vmbus.c
-> +F: include/hw/hyperv/vmbus*.h
+assert(dbs->acb) is meant to check the return value of io_func per
+documented in commit 6bee44ea34 ("dma: the passed io_func does not
+return NULL"). However, there is a chance that after calling
+aio_context_release(dbs->ctx); the dma_blk_cb function is called before
+the assertion and dbs->acb is set to NULL again at line 121. Thus when
+we run assert at line 181 it will fail.
 
-If there's no dedicated maintainer, I'd rather pick "Orphan" instead of "Odd 
-Fixes" here? Who's supposed to pick up the related patches?
+  softmmu/dma-helpers.c:181: dma_blk_cb: Assertion `dbs->acb' failed.
 
-  Thomas
+Reported-by: Francisco Londono <f.londono@samsung.com>
+Signed-off-by: Tong Zhang <t.zhang2@samsung.com>
+---
+ softmmu/dma-helpers.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/softmmu/dma-helpers.c b/softmmu/dma-helpers.c
+index 7820fec54c..cb81017928 100644
+--- a/softmmu/dma-helpers.c
++++ b/softmmu/dma-helpers.c
+@@ -177,8 +177,8 @@ static void dma_blk_cb(void *opaque, int ret)
+     aio_context_acquire(dbs->ctx);
+     dbs->acb =3D dbs->io_func(dbs->offset, &dbs->iov,
+                             dma_blk_cb, dbs, dbs->io_func_opaque);
+-    aio_context_release(dbs->ctx);
+     assert(dbs->acb);
++    aio_context_release(dbs->ctx);
+ }
+=20
+ static void dma_aio_cancel(BlockAIOCB *acb)
+--=20
+2.25.1
 
