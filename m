@@ -1,151 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nmnP7-0000xa-FN
-	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2022 22:09:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35220)
+	id 1nmqZh-0007Mq-MG
+	for mharc-qemu-trivial@gnu.org; Fri, 06 May 2022 01:32:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liuyd.fnst@fujitsu.com>)
- id 1nmnP5-0000xA-Iz; Thu, 05 May 2022 22:09:11 -0400
-Received: from esa10.fujitsucc.c3s2.iphmx.com ([68.232.159.247]:41910)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nmqZX-0007M2-8U
+ for qemu-trivial@nongnu.org; Fri, 06 May 2022 01:32:12 -0400
+Received: from us-smtp-delivery-74.mimecast.com ([170.10.133.74]:60205)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liuyd.fnst@fujitsu.com>)
- id 1nmnP3-0006Be-GT; Thu, 05 May 2022 22:09:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj1;
- t=1651802949; x=1683338949;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=fKQ7oQVDL+pMkkCYVZATy1LwcwxNvI9ptM/3zNkoR4E=;
- b=AO2xHKxtRTMBehkla1SQMnz1hvKq/ZCBnGUwq3uwYzZoS6SHS6opgIJI
- Db9PGd4woI/YxBHBVzaA2Y/4OOwaftleKmZUXEuT8ypJl5I9csXSec3/b
- 9SRVvgUhFYZxIms5f6f76c57eZLilTZDCq15q7r/nqGxzNxZAIxkY82Vk
- f6vaTZGADkrtyw/bVCU6VxaLIFHROjW38Op1vzxaaFd7I25c+TkGfdNna
- lyBEdtYlt+L3WOdY2NkM0NPSfe0F7R2VJrXyheFuUAd9a906A4EKwCQoT
- KNS15GI8sMvvPVKSw7CKxkNcUwpg0oFZfn/T9amf30ZhhxUOqx9KFnKe9 g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10338"; a="55338967"
-X-IronPort-AV: E=Sophos;i="5.91,203,1647270000"; d="scan'208";a="55338967"
-Received: from mail-os0jpn01lp2113.outbound.protection.outlook.com (HELO
- JPN01-OS0-obe.outbound.protection.outlook.com) ([104.47.23.113])
- by ob1.fujitsucc.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 May 2022 11:09:03 +0900
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iyDZkJqNfFyKruTQMjPHWadd8swf7VGONHk5yFE28hZuIc3sc+HDCWAfhTmHaIbw0eI+O0zqCHv1lCHvJAkFuQLgIdAktX2ExV8Ax0tSwdG9C9q2k1D75W8hmPh4sHZB83TP41oMoQByVlEMFqxZ7rCNF6GyoQe5gRkINEyWAwWcR1efzeIvMkEbI9fxFvh7nWyEvDIDgpcPtswDd3o/MVsaTyzJqnl3mMspgN0n13GMT+Gfp9dV/0CVRNi10KUEHSV36APn7RrcoO2thaTx9PAjwbzW8QEouziV1sCNEBOjt78mIrbrGBumeTyalKOCsBCCaIvy4Dq0PFxHSYKr6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fKQ7oQVDL+pMkkCYVZATy1LwcwxNvI9ptM/3zNkoR4E=;
- b=JaMbVz9FFyrmC2tpkvSYptcducK8AREifMVoXqU/UPbBhVAiCI/tz+++ac3yd6LOZ8FD7cVfJEepHBE02bL5YykSC0GBNIlZYxVkZa00yhYmNq6ILXh1ZtWywXUtsYujd7oFI758q5u7rzpycf8RZrU3Ag1Rcwu6HGDCksKhP4w786BTMBij+3IszUCPslys+N30+BSepebrUe6EORbexaVUkAjFLGJRjq7ghd5SEDTkU43+ZeKoAWerHGw2wDjg0TosZqDdXcRccnF4y1MJ/V3SsG3m2E6l9+MS9olhnIl/d/H/tK0XhsvbMBbhnrlGuKdq0G5VE2NhPdIvIjj2vA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fujitsu.com; dmarc=pass action=none header.from=fujitsu.com;
- dkim=pass header.d=fujitsu.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fujitsu.onmicrosoft.com; s=selector2-fujitsu-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fKQ7oQVDL+pMkkCYVZATy1LwcwxNvI9ptM/3zNkoR4E=;
- b=DJRGDCT6AbF6Om6tVyqHj6KsXXi+1Dsejvoc6UXr8Vm3oZZkye/7yJXU37Q9Za8wwzln1kWdgQ02XJQFhy7uAod5zuJ6RaYVBB89NSefmxM9x8uJDFn1v+C6y9PFOutLd05Wv3gdX/NSR14a5pgpq1XcbsHQ0nQ7vVL169iPo9k=
-Received: from OS0PR01MB6481.jpnprd01.prod.outlook.com (2603:1096:604:107::13)
- by OSBPR01MB2823.jpnprd01.prod.outlook.com (2603:1096:604:1a::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5206.13; Fri, 6 May
- 2022 02:09:01 +0000
-Received: from OS0PR01MB6481.jpnprd01.prod.outlook.com
- ([fe80::2112:8b9f:fbeb:367f]) by OS0PR01MB6481.jpnprd01.prod.outlook.com
- ([fe80::2112:8b9f:fbeb:367f%6]) with mapi id 15.20.5206.027; Fri, 6 May 2022
- 02:09:01 +0000
-From: "liuyd.fnst@fujitsu.com" <liuyd.fnst@fujitsu.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Stefan Hajnoczi
- <stefanha@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] docs: Correct the default thread-pool-size
-Thread-Topic: [PATCH] docs: Correct the default thread-pool-size
-Thread-Index: AQHYTu3i/2SNjuhH9EapQkf/Uwifj6zvVdyAgBO0IACADjSoAA==
-Date: Fri, 6 May 2022 02:09:01 +0000
-Message-ID: <aac992d8-4485-f5a6-e266-798884953a37@fujitsu.com>
-References: <20220413042054.1484640-1-liuyd.fnst@fujitsu.com>
- <YlgRRcgIbbE+ZKb7@redhat.com>
- <d6c4a49b-4547-8b65-02c6-9d3f72d611af@fujitsu.com>
-In-Reply-To: <d6c4a49b-4547-8b65-02c6-9d3f72d611af@fujitsu.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fujitsu.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f560e4ff-6d80-46bb-71da-08da2f05632f
-x-ms-traffictypediagnostic: OSBPR01MB2823:EE_
-x-microsoft-antispam-prvs: <OSBPR01MB2823FFC11D92DB65C30F73D69BC59@OSBPR01MB2823.jpnprd01.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: p+TbgmrxRIYNXYiWySNGhOK1qDrTnTQ/TSv47ai2hVfmv+QTLRGFnyBqcsDT0l6HyEkkJnUi9v125mUDVUu5iNDS4Z2BVmckdhvZ8GtaoC/gmNkT2/x5XUIbCSNQpJJ//5Wv3JDs51wGJVpeUtn5j4TgOHuERveCTjt1anyc76Q8pn9ezDUh1WUYpMoT8IyOGvijc7L/a4gmLz19CkbBvy4tQ0u0xSh1oDPjyEwlGfC+8oAoeLGvM3W8+NTCHvsyb1ovjnHuHkXtkOdDStp6g56xR3U0lSVwfE9AgikAxgiINN1YJQZijoPf4ckLHUMc6O9vMMuPsBrwv361PvPWpEi0EcgKdcECL5zX9kAd2QV3C/O7HPNVe+s/KQa7EejM5RfLC8z4hzIFX6iIG3Vri3kusAInrFIpniBGIbxKlH0288wjAP4lIuJ1+pBjeyg2D/SnqKp9BQfTjtY0GX1kx5ACx8QtDhEJXYG65r/gNHr+/NSpaNHDXPSgRJaGHB9zah5On4oCoKPKh073BDFgIHBRCZTQnUYjL/MtkCDLMvG7koWUK0SR7X+3OSEZkPG9zArSKp0eUNzbXRVtHQ8SnjR9PZmUSD+9EwJ8/t2PN5XAlFqdoMqpUQepDkzODXS5WeB4LQmRWx9BTQyMFDxr05TafomF6pzYUGM2luR5GFTb96J0WnqRQhZlGKeo16DEcJtXzgcpGlRfDbWdnYTuNbyDt9FltDdx+1JqBiGA2nmwJYf51GZGLlvtFD3qE8hz
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:OS0PR01MB6481.jpnprd01.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(122000001)(38070700005)(83380400001)(82960400001)(38100700002)(186003)(5660300002)(2906002)(8936002)(31686004)(36756003)(85182001)(76116006)(66946007)(110136005)(66556008)(91956017)(66446008)(6506007)(31696002)(8676002)(4326008)(66476007)(64756008)(53546011)(2616005)(316002)(6512007)(26005)(6486002)(508600001)(86362001)(71200400001)(45980500001);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Mm1sUGF1N1VaNm91eFp2bnAwRFRZQ3pGLzdvZnA4VnlzMndwSG1FdnFSdzdO?=
- =?utf-8?B?YjFOSjZqR2lOYkdKNjllSkVnT1d3Y1Y1UGk3MytoRTczeG5QaGg1VGgwcnBU?=
- =?utf-8?B?R3FSV2c4Mkg4djhZVml4VW1uRnVoenJreU1HazVkRjEwa2crcm10cWpjTlFG?=
- =?utf-8?B?Z1FMZlA3YStwWUJQeUpLSC9QZ3ZRS1h1Y1ZwL0x2VGZhSmR0bTFWYjIvM1dI?=
- =?utf-8?B?dHlUb2RmaHd3azZEOFI3dC9aOUVxS2grZU5TQmcyaTlVV2huS1NNTEJTRGFM?=
- =?utf-8?B?WkV5NW5CQmFWNy9lN2wwcW9OVVFMWGlESkdzRWNYbkNsdTFlR2JjR00zSStx?=
- =?utf-8?B?RU16RWJFSEZ3NmdJdWhwRERNQ0lhVzBVMlVQYmY4TVV4TnRRTGxIZmU2cGtV?=
- =?utf-8?B?UjdYT2lTSlU1U0ljQk9UcGJwNFA3WTB3SVpUZ0pzVXpDS3NTcUs4clQzWSsv?=
- =?utf-8?B?SVdCVm9yMDVsc3dRNHNFQ1haRjJGL28wOG8xUXhRekhSeHBuUTJ2LzVwTGRP?=
- =?utf-8?B?QS9mQ1lFTGdFWWpvNHJBbmsxZkZhWmh5WDVRL0hvRTdlWEtOUTFVa1RsS3hm?=
- =?utf-8?B?S0NsZXpsNXV2VFIvbE0xTEpIczhqRkRrcEFFQ3c2dm5XbzBXbkUvNHUxQmxS?=
- =?utf-8?B?dUtTY20vRlhWVG5UeWErSDNJTlFGNk1rUDNTMkhLbWlKUUJkZ3Z1cmFDZ0U5?=
- =?utf-8?B?VXBRdVpJSUlaS2xlSXlhTVJrN1B2QWp3eXZqSzFzdWhsWEVsUVJEbjkvNUl1?=
- =?utf-8?B?R2FKYzc3OGR2ZWxObEFsb25YekRBSUlEZUpxMEFWMlk5TlMzWS8wODYrRjFI?=
- =?utf-8?B?V1QzVUZkanY3aW12eUtnMGppZ3dHOEpSUEtCVWlvWHdiS25pQnhxaWJsSTds?=
- =?utf-8?B?UGZwMjdrNitTaFY1WXBQMGdLTEhGQk8xM2pnNzZwNkVFc1plTHhLUzhQQWE3?=
- =?utf-8?B?b0psTERLRC9sN1MrZW83QlhhYWhESnoyK3ltUGJhVUdwVVNSMHA2VW9iU1BE?=
- =?utf-8?B?YWpnOURtN2VxeGFWZFk1ZGUxeW41VXhkZjhNRGcraWZ4VnZzcEM4WXltWXI5?=
- =?utf-8?B?UElPR3BFNk1rYlAwZm9SUWVwbm5GbTA2TVExZXZJZjB4bDBqai9GMjZFd3J0?=
- =?utf-8?B?MUswK3Y1eXM3ZXZtc2JUVGVlck84UjVSc3gwSHh5L25EOFBhU3p3cEVZUkts?=
- =?utf-8?B?ckZEeTRwclJSMVRjMDZIcXhQZEVCM1A5SEcxZkR0VXdJRnl5dFpqNktDd0tT?=
- =?utf-8?B?WlFLem9WL2Y4TFQwVEc3OVFsbHMrbU5jWVplSzQ1VUxtKzYyVEJVYVN6VC91?=
- =?utf-8?B?NUNPdEpPZmhmbldRWDBHdzdMY1laQjczZVRWT1FaUVppY0NqME80WHBUYkZQ?=
- =?utf-8?B?T0tSamw2UVUvclJSTHdQOTlIcUt5dFpha1doN0hKWHVHUTFya0FNNDZTUkxW?=
- =?utf-8?B?dGhLOVZDOEZzWTRpdmRnNkJGcm9MU0gzeXpSVFA3ak55aSs1OEFZVi9xK200?=
- =?utf-8?B?QUd2MW9aQ3FrWlFhbEJmSC9ub1pSai9MNi9mUG9tZDFNVkg4dmdPSHNxcTI2?=
- =?utf-8?B?MS9ReXB6eHc4bUR3bWpJVThYRWhIYm9hRW1STVBIN0RHVzRhTHFxdnQ2NUla?=
- =?utf-8?B?UjBDT3hUNjJCcXpKaWk5anlRWnFmampvaENubzBsUHcrSTVZekpmZFFScEs3?=
- =?utf-8?B?TDBLdlV1TEJJNXo1RlFya05hM3JDcStETG1HQUt1UWRBSmNoLzNnSzNTNURR?=
- =?utf-8?B?RUwxWStZRDdJa2xZT3ppRE1tZExQSVk2c2JwNzdseE56aE1WZE9wcGRUREg4?=
- =?utf-8?B?RnZOQm1nemVjNUxzUnVJK2o1bXVuVzFxV09VS0JvTS8zeW5oellxRXlsSzVW?=
- =?utf-8?B?MDJYS3ZtWnVuM2ZidkN1UHgybXpBVVMrd09CeGNyOW1IZEZYK1cvb0JFSGY3?=
- =?utf-8?B?SE85NGFJNW1EUWV6cWswRktwWkRlbzRRclBhUGpBcmh6SXkwS05ZV0pJWTZJ?=
- =?utf-8?B?SC95c2p2dzUra2I2OHgwQXUvcmdWR0dhNDFWQzVVZ2NDZGVMcEZXVmV6MytT?=
- =?utf-8?B?dnZ3eHVzYW1tQ1kyL0pYZkpJRlM5RHdkRjFnWDJOQmQ1TkpPdVNMVzZTV0hB?=
- =?utf-8?B?UHJ5NFg3Z053VXpzakVaSS9DUktCSXMrZHNGM2FsejlUTXJvcjdHV3ZtWE56?=
- =?utf-8?B?SytNYzFZUkxKRVg2NGVNMTc5ZWJOTzRPV2pDdG1MRUJWSUplVzBjcmM4cVA1?=
- =?utf-8?B?ZWtkWVZqRkFqR0FkbzRDMlZhQzJJWGo3V1gxNmFmR1RCeTZOaHVEMWlrYjBx?=
- =?utf-8?B?RU9QR1JBRThpdUZaUkRQUEdKczBoLzlYektKaWROVHdPaHVacUdmVFBFL1Zq?=
- =?utf-8?Q?O2+zuFeGu8pEUd0I=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <4FCDDC4E31C1F34C82387D8225E87D90@jpnprd01.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1nmqZT-0001Mi-Q4
+ for qemu-trivial@nongnu.org; Fri, 06 May 2022 01:32:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1651815127;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SUpY1J6F01Hx9ZhMvKP034OpvEhdt7W+srEg5e6h3y4=;
+ b=eT5rRsI6O5hye5M1nFYGzFJGUwBEz4sjZWHu/8Z8Z44GBQpyfXVSj5IwKn2D+dWPu0DNM8
+ 5BrKGJZGBmWfB7m3j0u0pMGX7q91CAs14tHWZe2/e8GmHS0B75wGtAwNoG1WsW3no5QTMB
+ 878FmxaDiiWvsehqM6UG/d7K1120qB8=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-92-2LSZhRfPNuWnReUTVCNUng-1; Fri, 06 May 2022 01:32:05 -0400
+X-MC-Unique: 2LSZhRfPNuWnReUTVCNUng-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ m8-20020a0c9d08000000b00456549a0589so5169540qvf.2
+ for <qemu-trivial@nongnu.org>; Thu, 05 May 2022 22:32:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=SUpY1J6F01Hx9ZhMvKP034OpvEhdt7W+srEg5e6h3y4=;
+ b=aOFKqD0IkpKpL6HKJv8WxJ8RQ5anLQS0bi0TEwBoAyLH1avVuGXxZvR5mY/XxFIKFJ
+ 3KPoyE9ANggp9IYXgGtSKY57wLiXxC8AGkm0IhTXWtv7TYAwoNPcI4+fXq4/w6cF3AcI
+ UpgFTSJNn9jgHGINa/KEzyC+p1+nhb8zvW+LiXNG1Yil10ABSC2j9uxdYkez8PNAxpxV
+ 9AUwIssu9Ic8SeWbCa+2Ox3GKwYrd/zxoVk2063w/9XthjIcpueR3+1kTZI3ULfSAfbc
+ k40amxyJkHMqRnNFfDHDuJd3njV2lYCA+n7jKAUArzCRu3KrfZ2TNygT9IocQBszsSj8
+ fRdg==
+X-Gm-Message-State: AOAM530+ylXtutAINUfu0gDrLSUXoS1yXYCu5GwZfVNlk9/mthd/xBXF
+ io6M4v1BWCrs/K4Omq3FhhheOaqrElH45VP/Pybr3exC4X9C7mDWU/riEE584XVmZSEc6lp4rmO
+ MXKQa7ZXE2dTd9vupTg==
+X-Received: by 2002:ac8:5b93:0:b0:2f3:9b90:34a5 with SMTP id
+ a19-20020ac85b93000000b002f39b9034a5mr1279412qta.677.1651815125162; 
+ Thu, 05 May 2022 22:32:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJsJpKOxUrjiWsfd830mUdBUNscIgO1yMB8RqoOKFrfywGY8r6vYrkyZPA2kJaw82SFggqkQ==
+X-Received: by 2002:ac8:5b93:0:b0:2f3:9b90:34a5 with SMTP id
+ a19-20020ac85b93000000b002f39b9034a5mr1279389qta.677.1651815124852; 
+ Thu, 05 May 2022 22:32:04 -0700 (PDT)
+Received: from [192.168.8.104] (tmo-082-126.customers.d1-online.com.
+ [80.187.82.126]) by smtp.gmail.com with ESMTPSA id
+ x9-20020ac84d49000000b002f39b99f677sm2041808qtv.17.2022.05.05.22.32.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 May 2022 22:32:04 -0700 (PDT)
+Message-ID: <309ab0f5-7bb0-ddb4-3736-8cf0a4cfb269@redhat.com>
+Date: Fri, 6 May 2022 07:31:52 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: fujitsu.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: OS0PR01MB6481.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f560e4ff-6d80-46bb-71da-08da2f05632f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2022 02:09:01.1273 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a19f121d-81e1-4858-a9d8-736e267fd4c7
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: FFQMcSHehZ0TcY6CL8zoHWna1Tmn2vMoWsfsgNIZT368citW1Z/rvB5v147R/mqWjGVOJlHlFyDvSJDS80SwCw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSBPR01MB2823
-Received-SPF: pass client-ip=68.232.159.247;
- envelope-from=liuyd.fnst@fujitsu.com; helo=esa10.fujitsucc.c3s2.iphmx.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH][RESEND] MAINTAINERS: Add myself as a reviewer for Hyper-V
+ VMBus
+To: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
+References: <7ecb5ece9d1e0a607e801d547d387bc840b250ea.1651779343.git.maciej.szmigiero@oracle.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <7ecb5ece9d1e0a607e801d547d387bc840b250ea.1651779343.git.maciej.szmigiero@oracle.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.74; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-74.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -158,30 +98,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 May 2022 02:09:12 -0000
+X-List-Received-Date: Fri, 06 May 2022 05:32:15 -0000
 
-R2VudGx5IHBpbmcNCg0KDQpPbiA0LzI3LzIyIDk6MTIgQU0sIGxpdXlkLmZuc3RAZnVqaXRzdS5j
-b20gd3JvdGU6DQo+IFsrY2MgcWVtdS10cml2aWFsXQ0KPg0KPiBPbiA0LzE0LzIyIDg6MTkgUE0s
-IFZpdmVrIEdveWFsIHdyb3RlOg0KPj4gT24gV2VkLCBBcHIgMTMsIDIwMjIgYXQgMTI6MjA6NTRQ
-TSArMDgwMCwgTGl1IFlpZGluZyB3cm90ZToNCj4+PiBSZWZlciB0byAyNmVjMTkwOTY0IHZpcnRp
-b2ZzZDogRG8gbm90IHVzZSBhIHRocmVhZCBwb29sIGJ5IGRlZmF1bHQNCj4+Pg0KPj4+IFNpZ25l
-ZC1vZmYtYnk6IExpdSBZaWRpbmcgPGxpdXlkLmZuc3RAZnVqaXRzdS5jb20+DQo+PiBMb29rcyBn
-b29kLiBPdXIgZGVmYXVsdCB1c2VkIHRvIGJlIC0tdGhyZWFkLXBvb2wtc2l6ZT02NC4gQnV0IHdl
-IGNoYW5nZWQNCj4+IGl0IHRvIHVzaW5nIG5vIHRocmVhZCBwb29sIGJlY2F1c2Ugb24gbG93ZXIg
-ZW5kIG9mIHdvcmtsb2FkcyBpdCBwZXJmb3JtZWQNCj4+IGJldHRlci4gV2hlbiBtdWx0aXBsZSB0
-aHJlYWRzIGFyZSBkb2luZyBwYXJhbGxlbCBJL08gdGhlbiwgdGhyZWFkIHBvb2wNCj4+IGhlbHBz
-LiBTbyBwZW9wbGUgd2hvIHdhbnQgdG8gZG8gbG90cyBvZiBwYXJhbGxlbCBJL08gc2hvdWxkIG1h
-bnVhbGx5DQo+PiBlbmFibGUgdGhyZWFkIHBvb2wuDQo+Pg0KPj4gQWNrZWQtYnk6IFZpdmVrIEdv
-eWFsIDx2Z295YWxAcmVkaGF0LmNvbT4NCj4+DQo+PiBWaXZlaw0KPj4+IC0tLQ0KPj4+ICAgIGRv
-Y3MvdG9vbHMvdmlydGlvZnNkLnJzdCB8IDIgKy0NCj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkNCj4+Pg0KPj4+IGRpZmYgLS1naXQgYS9kb2NzL3Rv
-b2xzL3ZpcnRpb2ZzZC5yc3QgYi9kb2NzL3Rvb2xzL3ZpcnRpb2ZzZC5yc3QNCj4+PiBpbmRleCAw
-YzA1NjAyMDNjLi4zM2ZlZDA4YzZmIDEwMDY0NA0KPj4+IC0tLSBhL2RvY3MvdG9vbHMvdmlydGlv
-ZnNkLnJzdA0KPj4+ICsrKyBiL2RvY3MvdG9vbHMvdmlydGlvZnNkLnJzdA0KPj4+IEBAIC0xMjcs
-NyArMTI3LDcgQEAgT3B0aW9ucw0KPj4+ICAgIC4uIG9wdGlvbjo6IC0tdGhyZWFkLXBvb2wtc2l6
-ZT1OVU0NCj4+PiAgICANCj4+PiAgICAgIFJlc3RyaWN0IHRoZSBudW1iZXIgb2Ygd29ya2VyIHRo
-cmVhZHMgcGVyIHJlcXVlc3QgcXVldWUgdG8gTlVNLiAgVGhlIGRlZmF1bHQNCj4+PiAtICBpcyA2
-NC4NCj4+PiArICBpcyAwLg0KPj4+ICAgIA0KPj4+ICAgIC4uIG9wdGlvbjo6IC0tY2FjaGU9bm9u
-ZXxhdXRvfGFsd2F5cw0KPj4+ICAgIA0KPj4+IC0tIA0KPj4+IDIuMzEuMQ0KPj4+DQo+Pj4NCj4+
-Pg0KPj4+DQotLSANCkJlc3QgUmVnYXJkcy4NCllpZGluZyBMaXUNCg==
+On 05/05/2022 21.36, Maciej S. Szmigiero wrote:
+> From: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
+> 
+> This way there is at least some contact point for incoming patches.
+> 
+> We'll see whether the code still gets just a random patch a few times
+> a year or whether it requires a permanent maintainer to take care of it.
+> 
+> Signed-off-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
+> ---
+>      Resending, since the previous submission at [1] wasn't picked up.
+>      
+>      [1]: https://lore.kernel.org/qemu-devel/b145dcf08ae606e9d29e55b2f701a3fe4f16b347.1637433881.git.maciej.szmigiero@oracle.com/
+> 
+>   MAINTAINERS | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 218c9459b6..907f1d4a88 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1776,6 +1776,12 @@ F: include/hw/block/fdc.h
+>   F: tests/qtest/fdc-test.c
+>   T: git https://gitlab.com/jsnow/qemu.git ide
+>   
+> +Hyper-V VMBus
+> +S: Odd Fixes
+> +R: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
+> +F: hw/hyperv/vmbus.c
+> +F: include/hw/hyperv/vmbus*.h
+
+If there's no dedicated maintainer, I'd rather pick "Orphan" instead of "Odd 
+Fixes" here? Who's supposed to pick up the related patches?
+
+  Thomas
+
 
