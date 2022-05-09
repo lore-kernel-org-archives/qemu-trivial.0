@@ -1,78 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1no0Cx-0007LR-KD
-	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 06:01:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45014)
+	id 1no1eI-0006vH-7z
+	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 07:33:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1no0Cv-0007JN-Ph; Mon, 09 May 2022 06:01:37 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:37543)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1no0Ct-0006QU-My; Mon, 09 May 2022 06:01:37 -0400
-Received: by mail-ed1-x535.google.com with SMTP id k27so15641102edk.4;
- Mon, 09 May 2022 03:01:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:in-reply-to:references:message-id
- :mime-version:content-transfer-encoding;
- bh=ZqQErfe033WzHkqHcREjfuujLxdUhRLTfIeWA8F3QSc=;
- b=HPWXpRZ++l5RkZjWDXctKK5FylWMfIv3rm+URBWIAWThmqJjRr/u/Hhv70CT8b+Sws
- /sK31hBRwEhnjI/CJjCR0BynLWl+Phkvgo5QCEG0B1G7oy7o3rQUgqEM7Fkv1djhYKAP
- O+WQAgbLCjGIC4YbRmaIQQKqiULdR7B2LdMx17E1UeRMzf2Y7ois2kmFzbGQEmcywQa8
- FWeikIBym23eS1a+1B+vJcZedX1BklcdWA1maWduwYAnwVUuzHf7qJDPo0CQjS3GKvH2
- pJn635MYIWmIlpoA/oxJbf/U7FF+cniP4agUBc9YAelhZWp1G51htOODBSTWlaN7t7Li
- 8Dmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
- :message-id:mime-version:content-transfer-encoding;
- bh=ZqQErfe033WzHkqHcREjfuujLxdUhRLTfIeWA8F3QSc=;
- b=QM4pL8ACwG7Q5KQiItqk8PvmgKvEgxoZgK4kq/qC/gI5jENb8MBQb50HMSM0uhpsVC
- EaUSKR+0+X4pG7Xgn5ak9VykKHkFDrOq5FnxSEBLOuf0h1g/PqqFD66Hl3MEGSOMgYlD
- d8p8RLUfQqs7/2CS+IG7gEZvIB30JgDJbsp4sxUevZAWn/+gceL0STFRL0uZ5j7DBMiu
- ALaUWI+QlE3lViMRKVApr+hVq1m2ZVRGNTVf2hEFVIgf2LzpKt/Ae4wHl/k8XdzLwI1P
- 6vO2TFIBKkVnTCBLE6rJjlzSdePSf5FPOJred7WAq1KDJCidRx2NGHQpO8s0d/dSF469
- 5K2Q==
-X-Gm-Message-State: AOAM531MQOUJugbkIZKDdilxxRCI/o85yJd5XfYKBew+zJQPJzARLuoy
- ukK1ck27IJuaL4kFgvb63oI=
-X-Google-Smtp-Source: ABdhPJz84zv7VmcS6ff/C+IzKqHG8uhClLj5BrvVbBtth3kgGsLcbb7tOqsakQ8+5hQ2I1SuYgDWFg==
-X-Received: by 2002:a50:ed16:0:b0:425:f420:e51a with SMTP id
- j22-20020a50ed16000000b00425f420e51amr16590673eds.23.1652090493268; 
- Mon, 09 May 2022 03:01:33 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-013-108-001.77.13.pool.telefonica.de.
- [77.13.108.1]) by smtp.gmail.com with ESMTPSA id
- a7-20020a170906274700b006f8c8e43a45sm2190376ejd.103.2022.05.09.03.01.32
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 09 May 2022 03:01:33 -0700 (PDT)
-Date: Mon, 09 May 2022 10:01:28 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: paul@xen.org, "Durrant, Paul" <xadimgnik@gmail.com>, qemu-devel@nongnu.org
-CC: qemu-trivial@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>,
- "open list:IDE" <qemu-block@nongnu.org>
-Subject: Re: [PATCH 3/3] include/hw/ide: Unexport pci_piix3_xen_ide_unplug()
-In-Reply-To: <724c6af0-277b-a6d1-b773-89e1b03e0c53@gmail.com>
-References: <20220508103432.14874-1-shentey@gmail.com>
- <20220508103432.14874-4-shentey@gmail.com>
- <724c6af0-277b-a6d1-b773-89e1b03e0c53@gmail.com>
-Message-ID: <51E7FF85-EF4C-408F-96A9-71DB622D11E7@gmail.com>
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1no1e8-0006qK-7g; Mon, 09 May 2022 07:33:48 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:57262
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1no1e6-0005SQ-4F; Mon, 09 May 2022 07:33:47 -0400
+Received: from [192.168.178.59] (p57b42628.dip0.t-ipconnect.de [87.180.38.40])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 42999DA0464;
+ Mon,  9 May 2022 13:33:42 +0200 (CEST)
+Message-ID: <cd57c805-3be5-236e-904d-5fa47c8a9bda@weilnetz.de>
+Date: Mon, 9 May 2022 13:33:41 +0200
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.9.0
+Subject: Re: [PATCH v2] Fix 'writeable' typos
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20220505095015.2714666-1-peter.maydell@linaro.org>
+From: Stefan Weil <sw@weilnetz.de>
+In-Reply-To: <20220505095015.2714666-1-peter.maydell@linaro.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------pPviljlmzuwJvp664AK6XiCb"
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -86,202 +51,326 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 May 2022 10:01:38 -0000
+X-List-Received-Date: Mon, 09 May 2022 11:33:49 -0000
 
-Am 9=2E Mai 2022 08:02:13 UTC schrieb "Durrant, Paul" <xadimgnik@gmail=2Eco=
-m>:
->On 08/05/2022 11:34, Bernhard Beschow wrote:
->> This function was declared in a generic and public header, implemented
->> in a device-specific source file but only used in xen_platform=2E Given=
- its
->> 'aux' parameter, this function is more xen-specific than piix-specific=
-=2E
->> Also, the hardcoded magic constants seem to be generic and related to
->> PCIIDEState and IDEBus rather than piix=2E
->>=20
->> Therefore, move this function to xen_platform, unexport it, and drop th=
-e
->> "piix3" in the function name as well=2E
->>=20
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->
->Reviewed-by: Paul Durrant <paul@xen=2Eorg>
->
->=2E=2E=2E with one suggestion=2E=2E=2E
->
->> ---
->>   hw/i386/xen/xen_platform=2Ec | 49 +++++++++++++++++++++++++++++++++++=
-++-
->>   hw/ide/piix=2Ec              | 46 -----------------------------------
->>   include/hw/ide=2Eh           |  3 ---
->>   3 files changed, 48 insertions(+), 50 deletions(-)
->>=20
->> diff --git a/hw/i386/xen/xen_platform=2Ec b/hw/i386/xen/xen_platform=2E=
-c
->> index 72028449ba=2E=2E124ffeae35 100644
->> --- a/hw/i386/xen/xen_platform=2Ec
->> +++ b/hw/i386/xen/xen_platform=2Ec
->> @@ -26,6 +26,7 @@
->>   #include "qemu/osdep=2Eh"
->>   #include "qapi/error=2Eh"
->>   #include "hw/ide=2Eh"
->> +#include "hw/ide/pci=2Eh"
->>   #include "hw/pci/pci=2Eh"
->>   #include "hw/xen/xen_common=2Eh"
->>   #include "migration/vmstate=2Eh"
->> @@ -134,6 +135,52 @@ static void pci_unplug_nics(PCIBus *bus)
->>       pci_for_each_device(bus, 0, unplug_nic, NULL);
->>   }
->>   +/*
->> + * The Xen HVM unplug protocol [1] specifies a mechanism to allow gues=
-ts to
->> + * request unplug of 'aux' disks (which is stated to mean all IDE disk=
-s,
->> + * except the primary master)=2E
->> + *
->> + * NOTE: The semantics of what happens if unplug of all disks and 'aux=
-' disks
->> + *       is simultaneously requested is not clear=2E The implementatio=
-n assumes
->> + *       that an 'all' request overrides an 'aux' request=2E
->> + *
->> + * [1] https://xenbits=2Exen=2Eorg/gitweb/?p=3Dxen=2Egit;a=3Dblob;f=3D=
-docs/misc/hvm-emulated-unplug=2Epandoc
->> + */
->> +static int pci_xen_ide_unplug(DeviceState *dev, bool aux)
->> +{
->> +    PCIIDEState *pci_ide;
->> +    int i;
->> +    IDEDevice *idedev;
->> +    IDEBus *idebus;
->> +    BlockBackend *blk;
->> +
->> +    pci_ide =3D PCI_IDE(dev);
->> +
->> +    for (i =3D aux ? 1 : 0; i < 4; i++) {
->> +        idebus =3D &pci_ide->bus[i / 2];
->> +        blk =3D idebus->ifs[i % 2]=2Eblk;
->> +
->> +        if (blk && idebus->ifs[i % 2]=2Edrive_kind !=3D IDE_CD) {
->> +            if (!(i % 2)) {
->> +                idedev =3D idebus->master;
->> +            } else {
->> +                idedev =3D idebus->slave;
->> +            }
->> +
->> +            blk_drain(blk);
->> +            blk_flush(blk);
->> +
->> +            blk_detach_dev(blk, DEVICE(idedev));
->> +            idebus->ifs[i % 2]=2Eblk =3D NULL;
->> +            idedev->conf=2Eblk =3D NULL;
->> +            monitor_remove_blk(blk);
->> +            blk_unref(blk);
->> +        }
->> +    }
->> +    qdev_reset_all(dev);
->> +    return 0;
->
->The return value is ignored so you may as well make this a static void fu=
-nction=2E
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------pPviljlmzuwJvp664AK6XiCb
+Content-Type: multipart/mixed; boundary="------------5KmWrlWn8SnXCplqpxA4G353";
+ protected-headers="v1"
+From: Stefan Weil <sw@weilnetz.de>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <cd57c805-3be5-236e-904d-5fa47c8a9bda@weilnetz.de>
+Subject: Re: [PATCH v2] Fix 'writeable' typos
+References: <20220505095015.2714666-1-peter.maydell@linaro.org>
+In-Reply-To: <20220505095015.2714666-1-peter.maydell@linaro.org>
 
-Good catch! I'll prepare a v2=2E Meanwhile, I'm looking forward to comment=
-s on the other patches as well=2E
+--------------5KmWrlWn8SnXCplqpxA4G353
+Content-Type: multipart/mixed; boundary="------------VweHHHKTYvVIlvRtIea0W8pe"
 
-Thanks,
-Bernhard
+--------------VweHHHKTYvVIlvRtIea0W8pe
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
->  Paul
->
->> +}
->> +
->>   static void unplug_disks(PCIBus *b, PCIDevice *d, void *opaque)
->>   {
->>       uint32_t flags =3D *(uint32_t *)opaque;
->> @@ -147,7 +194,7 @@ static void unplug_disks(PCIBus *b, PCIDevice *d, v=
-oid *opaque)
->>         switch (pci_get_word(d->config + PCI_CLASS_DEVICE)) {
->>       case PCI_CLASS_STORAGE_IDE:
->> -        pci_piix3_xen_ide_unplug(DEVICE(d), aux);
->> +        pci_xen_ide_unplug(DEVICE(d), aux);
->>           break;
->>         case PCI_CLASS_STORAGE_SCSI:
->> diff --git a/hw/ide/piix=2Ec b/hw/ide/piix=2Ec
->> index bc1b37512a=2E=2E9a9b28078e 100644
->> --- a/hw/ide/piix=2Ec
->> +++ b/hw/ide/piix=2Ec
->> @@ -173,52 +173,6 @@ static void pci_piix_ide_realize(PCIDevice *dev, E=
-rror **errp)
->>       }
->>   }
->>   -/*
->> - * The Xen HVM unplug protocol [1] specifies a mechanism to allow gues=
-ts to
->> - * request unplug of 'aux' disks (which is stated to mean all IDE disk=
-s,
->> - * except the primary master)=2E
->> - *
->> - * NOTE: The semantics of what happens if unplug of all disks and 'aux=
-' disks
->> - *       is simultaneously requested is not clear=2E The implementatio=
-n assumes
->> - *       that an 'all' request overrides an 'aux' request=2E
->> - *
->> - * [1] https://xenbits=2Exen=2Eorg/gitweb/?p=3Dxen=2Egit;a=3Dblob;f=3D=
-docs/misc/hvm-emulated-unplug=2Epandoc
->> - */
->> -int pci_piix3_xen_ide_unplug(DeviceState *dev, bool aux)
->> -{
->> -    PCIIDEState *pci_ide;
->> -    int i;
->> -    IDEDevice *idedev;
->> -    IDEBus *idebus;
->> -    BlockBackend *blk;
->> -
->> -    pci_ide =3D PCI_IDE(dev);
->> -
->> -    for (i =3D aux ? 1 : 0; i < 4; i++) {
->> -        idebus =3D &pci_ide->bus[i / 2];
->> -        blk =3D idebus->ifs[i % 2]=2Eblk;
->> -
->> -        if (blk && idebus->ifs[i % 2]=2Edrive_kind !=3D IDE_CD) {
->> -            if (!(i % 2)) {
->> -                idedev =3D idebus->master;
->> -            } else {
->> -                idedev =3D idebus->slave;
->> -            }
->> -
->> -            blk_drain(blk);
->> -            blk_flush(blk);
->> -
->> -            blk_detach_dev(blk, DEVICE(idedev));
->> -            idebus->ifs[i % 2]=2Eblk =3D NULL;
->> -            idedev->conf=2Eblk =3D NULL;
->> -            monitor_remove_blk(blk);
->> -            blk_unref(blk);
->> -        }
->> -    }
->> -    qdev_reset_all(dev);
->> -    return 0;
->> -}
->> -
->>   static void pci_piix_ide_exitfn(PCIDevice *dev)
->>   {
->>       PCIIDEState *d =3D PCI_IDE(dev);
->> diff --git a/include/hw/ide=2Eh b/include/hw/ide=2Eh
->> index c5ce5da4f4=2E=2E60f1f4f714 100644
->> --- a/include/hw/ide=2Eh
->> +++ b/include/hw/ide=2Eh
->> @@ -8,9 +8,6 @@
->>   ISADevice *isa_ide_init(ISABus *bus, int iobase, int iobase2, int isa=
-irq,
->>                           DriveInfo *hd0, DriveInfo *hd1);
->>   -/* ide-pci=2Ec */
->> -int pci_piix3_xen_ide_unplug(DeviceState *dev, bool aux);
->> -
->>   /* ide-mmio=2Ec */
->>   void mmio_ide_init_drives(DeviceState *dev, DriveInfo *hd0, DriveInfo=
- *hd1);
-> =20
+QW0gMDUuMDUuMjIgdW0gMTE6NTAgc2NocmllYiBQZXRlciBNYXlkZWxsOg0KDQo+IFdlIGhh
+dmUgYWJvdXQgMzAgaW5zdGFuY2VzIG9mIHRoZSB0eXBvL3ZhcmlhbnQgc3BlbGxpbmcgJ3dy
+aXRlYWJsZScsDQo+IGFuZCBvdmVyIDUwMCBvZiB0aGUgbW9yZSBjb21tb24gJ3dyaXRhYmxl
+Jy4gIFN0YW5kYXJkaXplIG9uIHRoZQ0KPiBsYXR0ZXIuDQo+DQo+IENoYW5nZSBwcm9kdWNl
+ZCB3aXRoOg0KPg0KPiAgICBzZWQgLWkgLWUgJ3MvXChbV3ddW1JyXVtJaV1bVHRdXClbRWVd
+XChbQWFdW0JiXVtMbF1bRWVdXCkvXDFcMi9nJyAkKGdpdCBncmVwIC1pbCB3cml0ZWFibGUp
+DQo+DQo+IGFuZCB0aGVuIGhhbmQtdW5kb2luZyB0aGUgaW5zdGFuY2UgaW4gbGludXgtaGVh
+ZGVycy9saW51eC9rdm0uaC4NCj4NCj4gTW9zdCBvZiB0aGVzZSBjaGFuZ2VzIGFyZSBpbiBj
+b21tZW50cyBvciBkb2N1bWVudGF0aW9uOyB0aGUNCj4gZXhjZXB0aW9ucyBhcmU6DQo+ICAg
+KiBhIGxvY2FsIHZhcmlhYmxlIGluIGFjY2VsL2h2Zi9odmYtYWNjZWwtb3BzLmMNCj4gICAq
+IGEgbG9jYWwgdmFyaWFibGUgaW4gYWNjZWwva3ZtL2t2bS1hbGwuYw0KPiAgICogdGhlIFBN
+Q1JfV1JJVEFCTEVfTUFTSyBtYWNybyBpbiB0YXJnZXQvYXJtL2ludGVybmFscy5oDQo+ICAg
+KiB0aGUgRVBUX1ZJT0xBVElPTl9HUEFfV1JJVEFCTEUgbWFjcm8gaW4gdGFyZ2V0L2kzODYv
+aHZmL3ZtY3MuaA0KPiAgICAgKHdoaWNoIGlzIG5ldmVyIHVzZWQgYW55d2hlcmUpDQo+ICAg
+KiB0aGUgQVJfVFlQRV9XUklUQUJMRV9NQVNLIG1hY3JvIGluIHRhcmdldC9pMzg2L2h2Zi92
+bXguaA0KPiAgICAgKHdoaWNoIGlzIG5ldmVyIHVzZWQgYW55d2hlcmUpDQo+DQo+IFNpZ25l
+ZC1vZmYtYnk6IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4NCj4g
+LS0tDQo+IENoYW5nZXMgdjEtPnYyOg0KPiAgICogY29tbWl0IHJlZ2VuZXJhdGVkIHdpdGgg
+bmV3IHJ1bmUgdG8gYmUgY2FzZS1pbnNlbnNpdGl2ZTsgbm93DQo+ICAgICBpbmNsdWRlcyBm
+aXhlcyBmb3IgJ1dSSVRFQUJMRScgYW5kICdXcml0ZWFibGUnDQoNCg0KVGhhbmtzLg0KDQpS
+ZXZpZXdlZC1ieTogU3RlZmFuIFdlaWwgPHN3QHdlaWxuZXR6LmRlPg0KDQoNCg==
+--------------VweHHHKTYvVIlvRtIea0W8pe
+Content-Type: application/pgp-keys; name="OpenPGP_0xE08C21D5677450AD.asc"
+Content-Disposition: attachment; filename="OpenPGP_0xE08C21D5677450AD.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
 
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+JOrf/GvAd7nTp5it3HdD6laiYi3OX5wZslYID2YAojYQEGZeUMTV3poTrqY9mO6U
+bSJaxRqvLRfOp9idHaXqygHjvVXeoU4vNsTtYaacCAA7i22Ah2uyHq5rvXQjVAb4
+gtW6hNQvzD8U0Ez45VO1X8NB59v+gZla60AA7mVNk0pbzRRNWnEGeAHwQmtuhTEE
+7KQwNIvxOICJ4xYPam1jXbm4nw4zSUnP439DrkhbEdxxeNgCnGQMvEN71ZwKTQL+
+WzlaZLmA1eZKJXQR5ZFjGocInIecvEuOG6XF+LXK7EBWac8slT2bNFZKYPm7Zqe0
+COf1oQf0j1+xNrCrR9fBSogc8rN6dPrfXdwaNvFLO+YlB6L74TV5YXrs35l0yNsu
+1laoyudqwjMa/6uCNb9MlD6sqBbTuT2ySY+FqIhiXcngST77q3aLkdcGbwciW1/8
+K4s5ckoKscTfLFh8DR2abp0qPezuvHi+p+P5GOKmhe1bdSSC7ir1tJcoSL0ZVakt
+wSLBWrzDFd15YNnN8E34CBeNTcHV/Jg4BpRZlhQ1kiMIClE/wU/e8mrVK7FIb7x5
+wsBzBBABCAAdFiEEQHf8HnnvXGEFZVeNhOAqAqO72aUFAltg1lYACgkQhOAqAqO7
+2aVAtwgAzKdzVOKbYOLpAaMD998RTaWBL1ZBe3jkEmnWHgCStcvbyJkrN7/iWdCZ
+r9ilD/b24h+IPGUr9LATHA+T8ztOM3CxctAjuOOQy4kb6aF5O9VlUpkwXvf7aTps
+FWGWQj5+NSi4sCaEO1FEMYXDlRYhNyz3QWo0pg36PwE6sQXJsBndAzoqUqz0HpnT
+P43IDSwqxFhMC0LApjaTmOsrYWpPx4UdTmy/2ocvSI81Mo9ktK42anidl/YhFQjA
+8hR8WF7mI7+LpINQMdKyHWqXmoRqnkP+sfdnZSWjLyePMqlLW7k9Vz2bIHdI2UOj
+p089ha25kLhcrpWUtHI9Qkjk2nnwPc1MU3RlZmFuIFdlaWwgKFVuaXZlcnNpdMOk
+dHNiaWJsaW90aGVrIE1hbm5oZWltKSA8c3RlZmFuLndlaWxAdW5pLW1hbm5oZWlt
+LmRlPsLBjgQTAQgAOBYhBEkjb+p1yV1pjsK3iuCMIdVndFCtBQJiUx1kAhsDBQsJ
+CAcDBRUKCQgLBRYCAwEAAh4FAheAAAoJEOCMIdVndFCtGjoP/0xKqdIY6NatyyJd
+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
+=3DcqGX
+-----END PGP PUBLIC KEY BLOCK-----
+
+--------------VweHHHKTYvVIlvRtIea0W8pe--
+
+--------------5KmWrlWn8SnXCplqpxA4G353--
+
+--------------pPviljlmzuwJvp664AK6XiCb
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEESSNv6nXJXWmOwreK4Iwh1Wd0UK0FAmJ4/BUFAwAAAAAACgkQ4Iwh1Wd0UK03
+4Q//Xs+Gx/QqmWp9hTeyLO5iIuHAx1DAdt5M2jFM9xbCsDRDPusV10Gv1lbuDgjw5byejNsjFt2A
++gektAT3ZPzoA1RrPHh3lbghJmqQdCmX6MGuC2VD7XV6p6EAyAnpSwiDoa6WuFZcqBjQwleR6Obe
+K3pBqNieD0vGtren7EqpXh5CkIpz5rQVa/V8gMB6bLRvV/bWtZOTX+Z1znaDVfewSf1Ne2XnZlPj
+rwmINDo/sndIPdbxfW7EJ+ocSYDtTHvAHCNcvBnSwQYK2P/21KT/cwXemC3p9Au3qXg6hGalbUW+
+vdnlrLtluwNlp5lpq/8kZpk28V2CkWBDkXuBDZk0juoqBunxmjlXS86ly7uldDX3YHjH0kK8/89A
+6rwkNoq79zOczeum9qXBU5N+LoLsb32IHnIjjB1+FyBSbVq4h2dCDmcUK9Mgz8CewGEBKt3yR5/0
+zunr5fPOhlpbarbTGHAHLSllYk1C7mrWtLqli0f56HLf3MvnuaiostBMarL80PbcKR8JCWPD1QN5
+QlbafcWiggUhf7W9nWBYjEoGlNbi/5wj0CaS1CiMUMbL1cBT/DTNSxGBtSZKthw9oZ08v8CakokG
+y3k+PigXtoXQNrcrJ45aSZX9/hCWStwcoGqkKStBxrbvNzl7dCcEMUERPwaqpJx9KbK7dwGwhXau
+mbo=
+=YcO7
+-----END PGP SIGNATURE-----
+
+--------------pPviljlmzuwJvp664AK6XiCb--
 
