@@ -1,79 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1no2vy-00017C-Mx
-	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 08:56:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38360)
+	id 1no48h-0003kL-P8
+	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 10:13:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36586)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1no2vw-00012H-VE; Mon, 09 May 2022 08:56:17 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:46710)
+ id 1no48f-0003jd-Vl; Mon, 09 May 2022 10:13:30 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:45716)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1no2vu-0003Yq-80; Mon, 09 May 2022 08:56:16 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- cq17-20020a17090af99100b001dc0386cd8fso12708180pjb.5; 
- Mon, 09 May 2022 05:56:12 -0700 (PDT)
+ id 1no48e-0000Jk-GC; Mon, 09 May 2022 10:13:29 -0400
+Received: by mail-pg1-x532.google.com with SMTP id 7so12134495pga.12;
+ Mon, 09 May 2022 07:13:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=w4AeUr0BFIhhf922QI1NXhJUfL+9jerCz4gsvLff1gc=;
- b=mMpGHOeOjvAyCQpJjLRKY4Wzl1nSNHWCr0jR9AE93lDUBvzt/bw6tGdoz6jy06KfBp
- jM0SZW47ipz8ONQRL/ntCSIwTZyKmbEw2IfL5TBeyXK2ch+pa2t/tcKCyTIgxrRGqofw
- Lk/Sr3Q3zwPQYYh+jND5doKky2YZ8Xgr6TlocBdbYcIK0JRGVDdUTxFjK3N0fyx4CexP
- 9QJAa5/4bq7lrrCNTsR0Be2JKIY1UU9ySYMIrQ4l0MBIRUJcHyWcYxymFU2qk6eWjUzw
- 65nhfYFktUAc3qPMeWJmWvx8JAiQuk6suk/vNiYYHOgrnbZS6CLA5U1Xr1X5g21i+fqS
- 4AAA==
+ bh=JNXYT/aQpXuhbS2GUtE2VMMP/t0C+1fkqXOIZwRj01s=;
+ b=nCXd+gJ1L0059P4ptB7G82zorSy4S8Cgay7cu/s/uK88G+9Nj00WIxgWkattVF6Tgk
+ 8NYZuEcnC9bSf0eVVDoSeNmZO7FoD+XncBhMfoxrQEh8AFvznkxKoqEFPTT1+FIU/grP
+ DgR6hCAm/wfPml3JlyTOJ2x7aIPlKmfo0Px3DoGfjCK/pu7WY1udde222lYKhvr973sl
+ v+QHljFHTtq3ZdAOGtXe9v9TM0AzhL83+u5SyGBB4HKAq1ZZgjeIUp2fSoOuJM8j6ooH
+ pIhRlhRu2OurWZl8gStHTTRWlnv9x6ZAMZKL5mVUZ+tQ1xBNpp/kl400XhigUFV6Qqtr
+ +CCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=w4AeUr0BFIhhf922QI1NXhJUfL+9jerCz4gsvLff1gc=;
- b=wxDed2bokQfJgnx7HYWWSwkXWhV/nTJTUi3T+TavZYWZc81lzASZbPRYr83eFgKxOf
- t887HvUZP6JqmWpZREk+ccVEntxlJsJBd3+l8EWzl74gve+7NrKj+ixf271GyBy/T90T
- njMFOWaXndKog7QpcsKZwuadMAjV1uihq3R7rDzxAGBYRQjCTB00SzNFN5L5nCex6NTG
- btpe7Plal+JR53KMwINhaQOmb2hwKS/KYWk620VW41GwzP9DTy1M9i2ObFOcKkSXYQiT
- NPNYl0zKhch9x7RB7595xhxrTerB+xfmlX4m7hsrnn58GNtT+jvl2QpqysOceRizQoDy
- y/Zw==
-X-Gm-Message-State: AOAM530uuiBNQVkr3UlPJx5Zg3JZaXyzcpKJOstQxny9cLtCPdefXCCi
- bRvcjicPv3ZvDCNVAx57nBQ=
-X-Google-Smtp-Source: ABdhPJzCi9J2svHwofv4khOBc98fZYS0MpFLyEkbqOvQ3qBMymj4+3UuGJX+KLOxuZ3dmBSRLWv1Iw==
-X-Received: by 2002:a17:902:ce02:b0:153:bd65:5c0e with SMTP id
- k2-20020a170902ce0200b00153bd655c0emr15933806plg.160.1652100971922; 
- Mon, 09 May 2022 05:56:11 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
+ bh=JNXYT/aQpXuhbS2GUtE2VMMP/t0C+1fkqXOIZwRj01s=;
+ b=ywAAOPyWcm3DDHWq4OnNr8ptOed3P4agGwiN8EvjCkepxTFs6BzLc//9GWScVpE5lr
+ 9umIfpepdHM/U/yVreRGHBFX7SXV1UCb++tYebxUDrPJv5vf8wI/C+PiOEuuwFs6OgMN
+ Pb+cW7bHo8/SvRGat7G+iEP/WJqLJ2Qxuf0z4S+QgB3pNYRQ/56c21QZJp4nsVCSvr+g
+ oWvGY+Ujob+cru5dmO/YoJ3yGY6LycfhdQxwUTRqI2GsKqHv5CF51Lgl+YmQe4izdcZm
+ FzqJ8GsDhClj9dFecdojRsGITZIsRHaqEN0+L/0dr6Xu3oLMuMitCmU7ObM3d2F3VDkU
+ vllg==
+X-Gm-Message-State: AOAM531IQdZD6+56bDE5jGgKZA6XqR8KoRV8KO7hfU0EASMPthdkK/w+
+ ueZHUNBxPDSllkpfCy9Uhs47vhqFYeo=
+X-Google-Smtp-Source: ABdhPJxkk7gutQdriWOAHE6FPLOTz5mDnFW2dVTBX2Q5hsNe74GA9BzXoornDNrGxMAdFEsl0LpILA==
+X-Received: by 2002:a05:6a00:15d3:b0:510:3c69:b387 with SMTP id
+ o19-20020a056a0015d300b005103c69b387mr16125831pfu.30.1652105606456; 
+ Mon, 09 May 2022 07:13:26 -0700 (PDT)
+Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- y1-20020aa79e01000000b0050dc7628175sm8595665pfq.79.2022.05.09.05.56.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 May 2022 05:56:11 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ r13-20020a17090aa08d00b001cd4989fee4sm12571068pjp.48.2022.05.09.07.13.24
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 09 May 2022 07:13:26 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <76b369e1-76b5-1ed2-803f-3466ac376656@amsat.org>
-Date: Mon, 9 May 2022 14:19:38 +0200
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Bin Meng <bin.meng@windriver.com>
+Subject: [PATCH] hw/sd/sdcard: Return ILLEGAL for CMD19/CMD23 prior SD spec
+ v3.01
+Date: Mon,  9 May 2022 16:13:20 +0200
+Message-Id: <20220509141320.98374-1-philippe.mathieu.daude@gmail.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.9.0
-Subject: Re: [PATCH for-7.1] target/mips: Remove stale TODO file
-Content-Language: en-US
-To: Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>
-References: <20220412113824.297108-1-thuth@redhat.com>
- <739db399-e95a-ea02-6c2a-d353e1236171@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <739db399-e95a-ea02-6c2a-d353e1236171@vivier.eu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,21 +78,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 May 2022 12:56:17 -0000
+X-List-Received-Date: Mon, 09 May 2022 14:13:30 -0000
 
-On 26/4/22 12:36, Laurent Vivier wrote:
-> Le 12/04/2022 à 13:38, Thomas Huth a écrit :
->> The last change to this file has been done in 2012, so it
->> seems like this is not really used anymore, and the content
->> is likely very out of date now.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   target/mips/TODO | 51 ------------------------------------------------
->>   1 file changed, 51 deletions(-)
->>   delete mode 100644 target/mips/TODO
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> Applied to my trivial-patches branch.
+CMD19 (SEND_TUNING_BLOCK) and CMD23 (SET_BLOCK_COUNT) were
+added in the Physical SD spec v3.01. When earlier spec version
+is requested, we should return ILLEGAL.
 
-Thanks :)
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/sd/sd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index 8e6fa09151..7e3bb12b1a 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -1263,7 +1263,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
+ 
+     case 19:    /* CMD19: SEND_TUNING_BLOCK (SD) */
+         if (sd->spec_version < SD_PHY_SPECv3_01_VERS) {
+-            break;
++            goto bad_cmd;
+         }
+         if (sd->state == sd_transfer_state) {
+             sd->state = sd_sendingdata_state;
+@@ -1274,7 +1274,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
+ 
+     case 23:    /* CMD23: SET_BLOCK_COUNT */
+         if (sd->spec_version < SD_PHY_SPECv3_01_VERS) {
+-            break;
++            goto bad_cmd;
+         }
+         switch (sd->state) {
+         case sd_transfer_state:
+-- 
+2.35.1
+
 
