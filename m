@@ -1,84 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nnyLX-0003jh-Je
-	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 04:02:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41670)
+	id 1nnz33-0004yx-Sx
+	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 04:47:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
- id 1nnyLU-0003jC-R0; Mon, 09 May 2022 04:02:21 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:46926)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nnz2q-0004xD-D5; Mon, 09 May 2022 04:47:09 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:41760)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
- id 1nnyLS-0005UN-RB; Mon, 09 May 2022 04:02:20 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- n6-20020a05600c3b8600b0039492b44ce7so782335wms.5; 
- Mon, 09 May 2022 01:02:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1nnz2o-0003hZ-Kn; Mon, 09 May 2022 04:47:07 -0400
+Received: by mail-wr1-x431.google.com with SMTP id c11so18371175wrn.8;
+ Mon, 09 May 2022 01:47:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:reply-to:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=mqtL2gCCHPlBEBtIXSoW8gskUPGT59zht12YCRBFAJg=;
- b=TnEceOlku5O2LhN349fYQZpDLct6g/bOMC3cK32D2a9yyHC/wR8kQ3c2Ti3DLbWnwI
- qFf1g2/juO84NhnFgiirKUCWy90RQErkKtT7JcHiUdjqxt51X2vAVRi0IrF84GWP0Efr
- JnUz2vvfiVEWAiTpacxPdR/w/IKHOmNyicKp9E+EBNxM7aW+WYdrtLpBxiTsL+Hi9A12
- 6L6deeP+v1CmKRhvLcp/dCKxrE46CDd/h6bqsrCoOovl7dPvlLilas+AKZOjjxBqU7ef
- sBqrFdhdttyPwRlTq9tL4u9ajt5phOT1whpGoF1KCecFHMmpTzMMOrhSQGvCIcd7QLav
- /7hg==
+ bh=NxlGHwXR+g36Cy9CE/p0X5CLq8IiOkHBEVFGIUzcGpw=;
+ b=R3a4G1Zp7B16EmG0QNMzZ2E7Wb/g3FjBAC/8KuyS61DA+TBPHscd+dqCWF7v025a9S
+ ByqY5WVUR27Zbqd8Paujb/FETlcbYNX/V8cHdnWkrbdO8YegylnBHJHDYo5tC8qLpe+o
+ 8Lli2e2XcmVylB/OWurz+bhZVoLwGWMVjCXEUWSYGndh37C9AlpecSizZR4rQK43axDp
+ jtSEJtwkbT+wuu6u2SxR3DfNwwP6/OngWLDD6levK1iCDKGe1VNmXMoH/qqoa9rWVw/d
+ mUV/y80nIuj/+LRS46bGFcLny+QYaKqbN33UGZicLZc0YK7hJ9T3/NgqP3K9Y9OvK9IW
+ c8Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:reply-to
- :subject:content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=mqtL2gCCHPlBEBtIXSoW8gskUPGT59zht12YCRBFAJg=;
- b=IjGSVdkHRDvNJNSFpq82SGc+tfWE6jfyzO46CWliMTiV0PqVFCSO+3uTf+oDKKru6o
- 1LCBYSWezRBoPTlM6Qg/tfbrhoX5FvYQxHXgZJH5eQktyPx0nEHQNEfbYsuKTkF34oIW
- ikx1Ej+wRJSMDiuvBSBauQN4iV7nqkvGqoy1coD9BayOrIPfYVCVJKHk3jgCFjBj1n5G
- HfwXLBjoVtZbbaK0WcA+OhskxgsSWU8yBwQ6Op/gdJjXvT0dFfG9LcVG34SM0vj9FvUg
- kxq28xp/2YJ7kSwYTGv2lEREdgxbZvIKUOxjipEXm3LgEjaG/THEmMExkzpxASOUDwu5
- Da2g==
-X-Gm-Message-State: AOAM532QH3ZbiSY9BbP73VyHNQmnsY6lFjpWmYeiRTAtJUk78WHeUoBh
- 7C1UK0OHRllzMUZugJdeR7s=
-X-Google-Smtp-Source: ABdhPJxmKjHv2n8qTwpXp+fiZDf4jFcPCZM/5haHKnowSi0ZwuuvyGaWWMGogXOoBgnyRcTDBfcIIA==
-X-Received: by 2002:a1c:f710:0:b0:394:1960:e8a1 with SMTP id
- v16-20020a1cf710000000b003941960e8a1mr14595010wmh.154.1652083335977; 
- Mon, 09 May 2022 01:02:15 -0700 (PDT)
-Received: from [10.7.237.11] (54-240-197-227.amazon.com. [54.240.197.227])
+ bh=NxlGHwXR+g36Cy9CE/p0X5CLq8IiOkHBEVFGIUzcGpw=;
+ b=JleJ8npQ1vqyS6JLS6EBf/c01O+u6xyx1wXYsnPHdzC4LCY92fceFYOJmtx+/42E/Q
+ ZXYU9S5u49hLgvRbwkWu3Vo9YG4BijeqiJOxG9sZAR/L7jARS0TkNMSPRlO/Jhcw0TyE
+ POBNL6+inr8VpBA5Z3pr0mEEjxxlPlOkFflnAWT8lI35uVEzpACHZ0WkeTCD8+g7lebO
+ ty0G5mCUMQ7BzCnUjRalTwNrYnhFEipcdgGXLG/fEiaesdgkxh4BSagzjm9h+DbmOuRi
+ t4f5dTR0a/+YwhO3Q3+rzzINlKar9vKNIuW7gsHg3b5L5um8o79QoPGSf162eNzdR0cR
+ 8PIw==
+X-Gm-Message-State: AOAM532LfemIZjPIQa05YstGTJkdvmnTGD/zQ4Ajr84Lzb0DruW2jaqy
+ 3gsBxSdBfdhw1TJcOj8uzKNWHdmhxhg=
+X-Google-Smtp-Source: ABdhPJzXSC11RfRVV/+UzoMfgJPp4ltTNgjy7dIF9ODOm7IeV+qjDTp69wNSTpuJcvNhUq0o70mfDw==
+X-Received: by 2002:adf:f64b:0:b0:20a:c685:89ee with SMTP id
+ x11-20020adff64b000000b0020ac68589eemr12146578wrp.366.1652086022024; 
+ Mon, 09 May 2022 01:47:02 -0700 (PDT)
+Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- s6-20020a1cf206000000b003942a244f3fsm16317179wmc.24.2022.05.09.01.02.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 May 2022 01:02:15 -0700 (PDT)
-Message-ID: <724c6af0-277b-a6d1-b773-89e1b03e0c53@gmail.com>
-Date: Mon, 9 May 2022 09:02:13 +0100
+ a7-20020a05600c348700b003942a244ed7sm11396755wmq.28.2022.05.09.01.47.01
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 09 May 2022 01:47:01 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] qom/object: Remove circular include dependency
+Date: Mon,  9 May 2022 10:46:59 +0200
+Message-Id: <20220509084659.52076-1-philippe.mathieu.daude@gmail.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Reply-To: paul@xen.org
-Subject: Re: [PATCH 3/3] include/hw/ide: Unexport pci_piix3_xen_ide_unplug()
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>,
- "open list:IDE" <qemu-block@nongnu.org>
-References: <20220508103432.14874-1-shentey@gmail.com>
- <20220508103432.14874-4-shentey@gmail.com>
-From: "Durrant, Paul" <xadimgnik@gmail.com>
-In-Reply-To: <20220508103432.14874-4-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=xadimgnik@gmail.com; helo=mail-wm1-x32e.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,180 +78,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 May 2022 08:02:21 -0000
+X-List-Received-Date: Mon, 09 May 2022 08:47:19 -0000
 
-On 08/05/2022 11:34, Bernhard Beschow wrote:
-> This function was declared in a generic and public header, implemented
-> in a device-specific source file but only used in xen_platform. Given its
-> 'aux' parameter, this function is more xen-specific than piix-specific.
-> Also, the hardcoded magic constants seem to be generic and related to
-> PCIIDEState and IDEBus rather than piix.
-> 
-> Therefore, move this function to xen_platform, unexport it, and drop the
-> "piix3" in the function name as well.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Reviewed-by: Paul Durrant <paul@xen.org>
+"qom/object.h" doesn't need to include itself.
 
-... with one suggestion...
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/qom/object.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-> ---
->   hw/i386/xen/xen_platform.c | 49 +++++++++++++++++++++++++++++++++++++-
->   hw/ide/piix.c              | 46 -----------------------------------
->   include/hw/ide.h           |  3 ---
->   3 files changed, 48 insertions(+), 50 deletions(-)
-> 
-> diff --git a/hw/i386/xen/xen_platform.c b/hw/i386/xen/xen_platform.c
-> index 72028449ba..124ffeae35 100644
-> --- a/hw/i386/xen/xen_platform.c
-> +++ b/hw/i386/xen/xen_platform.c
-> @@ -26,6 +26,7 @@
->   #include "qemu/osdep.h"
->   #include "qapi/error.h"
->   #include "hw/ide.h"
-> +#include "hw/ide/pci.h"
->   #include "hw/pci/pci.h"
->   #include "hw/xen/xen_common.h"
->   #include "migration/vmstate.h"
-> @@ -134,6 +135,52 @@ static void pci_unplug_nics(PCIBus *bus)
->       pci_for_each_device(bus, 0, unplug_nic, NULL);
->   }
->   
-> +/*
-> + * The Xen HVM unplug protocol [1] specifies a mechanism to allow guests to
-> + * request unplug of 'aux' disks (which is stated to mean all IDE disks,
-> + * except the primary master).
-> + *
-> + * NOTE: The semantics of what happens if unplug of all disks and 'aux' disks
-> + *       is simultaneously requested is not clear. The implementation assumes
-> + *       that an 'all' request overrides an 'aux' request.
-> + *
-> + * [1] https://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=docs/misc/hvm-emulated-unplug.pandoc
-> + */
-> +static int pci_xen_ide_unplug(DeviceState *dev, bool aux)
-> +{
-> +    PCIIDEState *pci_ide;
-> +    int i;
-> +    IDEDevice *idedev;
-> +    IDEBus *idebus;
-> +    BlockBackend *blk;
-> +
-> +    pci_ide = PCI_IDE(dev);
-> +
-> +    for (i = aux ? 1 : 0; i < 4; i++) {
-> +        idebus = &pci_ide->bus[i / 2];
-> +        blk = idebus->ifs[i % 2].blk;
-> +
-> +        if (blk && idebus->ifs[i % 2].drive_kind != IDE_CD) {
-> +            if (!(i % 2)) {
-> +                idedev = idebus->master;
-> +            } else {
-> +                idedev = idebus->slave;
-> +            }
-> +
-> +            blk_drain(blk);
-> +            blk_flush(blk);
-> +
-> +            blk_detach_dev(blk, DEVICE(idedev));
-> +            idebus->ifs[i % 2].blk = NULL;
-> +            idedev->conf.blk = NULL;
-> +            monitor_remove_blk(blk);
-> +            blk_unref(blk);
-> +        }
-> +    }
-> +    qdev_reset_all(dev);
-> +    return 0;
-
-The return value is ignored so you may as well make this a static void 
-function.
-
-   Paul
-
-> +}
-> +
->   static void unplug_disks(PCIBus *b, PCIDevice *d, void *opaque)
->   {
->       uint32_t flags = *(uint32_t *)opaque;
-> @@ -147,7 +194,7 @@ static void unplug_disks(PCIBus *b, PCIDevice *d, void *opaque)
->   
->       switch (pci_get_word(d->config + PCI_CLASS_DEVICE)) {
->       case PCI_CLASS_STORAGE_IDE:
-> -        pci_piix3_xen_ide_unplug(DEVICE(d), aux);
-> +        pci_xen_ide_unplug(DEVICE(d), aux);
->           break;
->   
->       case PCI_CLASS_STORAGE_SCSI:
-> diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-> index bc1b37512a..9a9b28078e 100644
-> --- a/hw/ide/piix.c
-> +++ b/hw/ide/piix.c
-> @@ -173,52 +173,6 @@ static void pci_piix_ide_realize(PCIDevice *dev, Error **errp)
->       }
->   }
->   
-> -/*
-> - * The Xen HVM unplug protocol [1] specifies a mechanism to allow guests to
-> - * request unplug of 'aux' disks (which is stated to mean all IDE disks,
-> - * except the primary master).
-> - *
-> - * NOTE: The semantics of what happens if unplug of all disks and 'aux' disks
-> - *       is simultaneously requested is not clear. The implementation assumes
-> - *       that an 'all' request overrides an 'aux' request.
-> - *
-> - * [1] https://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=docs/misc/hvm-emulated-unplug.pandoc
-> - */
-> -int pci_piix3_xen_ide_unplug(DeviceState *dev, bool aux)
-> -{
-> -    PCIIDEState *pci_ide;
-> -    int i;
-> -    IDEDevice *idedev;
-> -    IDEBus *idebus;
-> -    BlockBackend *blk;
-> -
-> -    pci_ide = PCI_IDE(dev);
-> -
-> -    for (i = aux ? 1 : 0; i < 4; i++) {
-> -        idebus = &pci_ide->bus[i / 2];
-> -        blk = idebus->ifs[i % 2].blk;
-> -
-> -        if (blk && idebus->ifs[i % 2].drive_kind != IDE_CD) {
-> -            if (!(i % 2)) {
-> -                idedev = idebus->master;
-> -            } else {
-> -                idedev = idebus->slave;
-> -            }
-> -
-> -            blk_drain(blk);
-> -            blk_flush(blk);
-> -
-> -            blk_detach_dev(blk, DEVICE(idedev));
-> -            idebus->ifs[i % 2].blk = NULL;
-> -            idedev->conf.blk = NULL;
-> -            monitor_remove_blk(blk);
-> -            blk_unref(blk);
-> -        }
-> -    }
-> -    qdev_reset_all(dev);
-> -    return 0;
-> -}
-> -
->   static void pci_piix_ide_exitfn(PCIDevice *dev)
->   {
->       PCIIDEState *d = PCI_IDE(dev);
-> diff --git a/include/hw/ide.h b/include/hw/ide.h
-> index c5ce5da4f4..60f1f4f714 100644
-> --- a/include/hw/ide.h
-> +++ b/include/hw/ide.h
-> @@ -8,9 +8,6 @@
->   ISADevice *isa_ide_init(ISABus *bus, int iobase, int iobase2, int isairq,
->                           DriveInfo *hd0, DriveInfo *hd1);
->   
-> -/* ide-pci.c */
-> -int pci_piix3_xen_ide_unplug(DeviceState *dev, bool aux);
-> -
->   /* ide-mmio.c */
->   void mmio_ide_init_drives(DeviceState *dev, DriveInfo *hd0, DriveInfo *hd1);
->   
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 5f3d5b5bf5..ef7258a5e1 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -16,7 +16,6 @@
+ 
+ #include "qapi/qapi-builtin-types.h"
+ #include "qemu/module.h"
+-#include "qom/object.h"
+ 
+ struct TypeImpl;
+ typedef struct TypeImpl *Type;
+-- 
+2.35.1
 
 
