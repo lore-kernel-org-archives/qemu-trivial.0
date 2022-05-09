@@ -1,73 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1no2vr-0000z9-9z
-	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 08:56:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38296)
+	id 1no2vw-000123-B8
+	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 08:56:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1no2vf-0000vx-OQ; Mon, 09 May 2022 08:56:03 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435]:37723)
+ id 1no2vm-0000xV-1Z; Mon, 09 May 2022 08:56:09 -0400
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:44866)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1no2ve-0003Sy-8o; Mon, 09 May 2022 08:55:59 -0400
-Received: by mail-pf1-x435.google.com with SMTP id bo5so12166788pfb.4;
- Mon, 09 May 2022 05:55:57 -0700 (PDT)
+ id 1no2vj-0003XL-NL; Mon, 09 May 2022 08:56:05 -0400
+Received: by mail-pg1-x52e.google.com with SMTP id v10so11951750pgl.11;
+ Mon, 09 May 2022 05:56:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=x3xRskkMzsNP+opBZJ/hVCwrOgu52YA+x9XqJRMcvXM=;
- b=nGC3Ny0VOEjKn73B3O96Xm021SoJLWHfrVvCtQHRMLxfDXAuHar5pQ9peasSEhZRSR
- YKbyqmctyHJkSSHE5e07gH6TB6zWSV90OURESnLyUpIYTm8UqtIOrZUgopE/CEHULGcT
- 6OS0EvyqDZ702uu8EST02nX/AhrxhJiyXZbRa/SyxWCnEbutFhsOCT45FOZVxza7oUgT
- zkzedyHDYAWWhsYabRSmzCbsAneR/LwF9O5cGHGLf905UA4FT9Pj4Fs5EDMw6dtHq3G7
- X0odkWkEOi3zblDHQb66OmGY1wPWkQ81JdAmH0NxjXidg+4wg3acfuYJ1qbLRnHkGhwo
- VwIw==
+ bh=1P/eAYrw95uJZoO4ATHeOqxbOJBAe2tUOUOZV4h2kG8=;
+ b=OWxDhM0gsnl6kKGIcWbJXfvKTzYOXNRlCNc8OSP/I40UR8LOJE6ZtLpizdD4tz803Z
+ wS9neapuq7Fp2wM58Db+3pY6/sZe1xT9NiqNQeqxq2YcktVawV1kYV0dpOgNtUtSJjVN
+ FfUUVX8ILMl8crrEflgm4W0w9hr2cVugHiOFrnREpA/klWEktNPY90GsXilitAFscA/P
+ 7f0Z/RntaEeE6qX8AnYwIX0MycLI3STWAbbrXzIpDOxpmJXhYqso1yCdcfUC+Md9abXe
+ g6jRWyN2/XfFr2lXMImirVZquk6mMTrqe9uP77DnUMbLGho1SNhAlGYqT+oYqcNFYDeQ
+ otPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=x3xRskkMzsNP+opBZJ/hVCwrOgu52YA+x9XqJRMcvXM=;
- b=oZXmftsD3a+3PLYAGA8Zk5Jr9TGvBv2j7kA2sjs0yPW7CPb5EszPF6q5EnxBkR9D6D
- KkPXEEahQG81Wfj88I7CQGyEHh7VzmlTxR2s/aKr3yL75CtDCAIEuCIW/qL2ecAzmM1B
- nWvmZ3jbaU3ArMU+4m0N+NiImHEZKeHg/Ju6O1O00uvFWgA2D8N2BBE7X72+CH17YlaL
- VQC5gMzYOaI7Gcm5Zsf2IOHcI0WSdaNdyvyHbCLZlYKRsA8cxLItB36zVmYhLS8SkyZY
- cUQ+wRyYb2N/nGHWRhy+sKgO4ffb6U9Khiw8RhegE9OOGPWKxMTkny1A1h7A3xv5Od5N
- XOtA==
-X-Gm-Message-State: AOAM532H4N7NHjxEioSk8N7H/8RPJzSu/ZEThWOvHzXucgPVvFl1Cfh8
- HmtyrfJ8q1loqmezd/MJCLQ=
-X-Google-Smtp-Source: ABdhPJwg/rGiFsK8NxyKdGHudwaHr/TmhDal+TKzZ6XnNNy9xx5XsbTYnOO2KuzinkscyllVQNO9hw==
-X-Received: by 2002:a63:4e61:0:b0:3c6:9e14:5511 with SMTP id
- o33-20020a634e61000000b003c69e145511mr6561462pgl.446.1652100956714; 
- Mon, 09 May 2022 05:55:56 -0700 (PDT)
+ bh=1P/eAYrw95uJZoO4ATHeOqxbOJBAe2tUOUOZV4h2kG8=;
+ b=oqTH0r80fVc+2U6ocEYltbCQNAAkIOB0YIDH0DwRi4RJr88CaVXxKwqKRSZr/uE8z8
+ JYKhfrFiWqhEpGGmbxDO6+wUTJZIUpeZRyaKYnu78vGD/uJrbtn4srq66uykeCczbG9W
+ gPTBWu4m6Zz/8vt+jzmrEUh26+G2loJqnbdiUe2PTvvx531xfCqguxNJTqKzgH3O9kU9
+ xfw4dzOOoz2AD231FEzXykwnTlSbu1kC0TK9C3Pvv4rZaJHjBqq9e6uGc6+bPWbbhtmu
+ FlNkNVzqxF+QmQeKRm5ltJS9Xf/lRd0og3NhT0XDTSZ+od5ZCq5iezoCTFmYEl1wrOuM
+ tpmQ==
+X-Gm-Message-State: AOAM532RiHhIiOLVAvfLlRqP8S0kZ1LaFjA5vigCuAj6sZpS8q9Lj44M
+ NobVm7SGGtclwYJKN00KTpU=
+X-Google-Smtp-Source: ABdhPJzT9Z87mLkya3K9pVv6K37R9AkPYCDFnX+2UYwZq3DTL6cpJNFKfzm/3VlikxYLcLLXkfWsRA==
+X-Received: by 2002:a05:6a02:113:b0:3c6:4389:cd6e with SMTP id
+ bg19-20020a056a02011300b003c64389cd6emr12770006pgb.414.1652100961811; 
+ Mon, 09 May 2022 05:56:01 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- i21-20020aa79095000000b0050dc76281ddsm8540378pfa.183.2022.05.09.05.55.54
+ 6-20020a170902c24600b0015e8d4eb20dsm7035524plg.87.2022.05.09.05.55.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 May 2022 05:55:56 -0700 (PDT)
+ Mon, 09 May 2022 05:56:01 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <88b70fbc-637d-95e8-49df-d551a9f10685@amsat.org>
-Date: Mon, 9 May 2022 14:14:24 +0200
+Message-ID: <f5e05a7d-c565-93ba-3c17-cab549c98d82@amsat.org>
+Date: Mon, 9 May 2022 14:15:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.9.0
-Subject: Re: [PATCH 05/11] hw/i386/pc: Unexport functions used only internally
+Subject: Re: [PATCH 08/11] hw/net/fsl_etsec/etsec: Remove obsolete and unused
+ etsec_create()
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ "open list:e500" <qemu-ppc@nongnu.org>
 References: <20220505161805.11116-1-shentey@gmail.com>
- <20220505161805.11116-6-shentey@gmail.com>
+ <20220505161805.11116-9-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220505161805.11116-6-shentey@gmail.com>
+In-Reply-To: <20220505161805.11116-9-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x52e.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -88,14 +86,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 May 2022 12:56:04 -0000
+X-List-Received-Date: Mon, 09 May 2022 12:56:12 -0000
 
-On 5/5/22 18:17, Bernhard Beschow wrote:
+On 5/5/22 18:18, Bernhard Beschow wrote:
+> etsec_create() wraps qdev API which is outdated. It is also unused,
+> so remove it.
+> 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/i386/pc.c         | 4 ++--
->   include/hw/i386/pc.h | 3 ---
->   2 files changed, 2 insertions(+), 5 deletions(-)
+>   hw/net/fsl_etsec/etsec.c | 23 -----------------------
+>   hw/net/fsl_etsec/etsec.h |  7 -------
+>   2 files changed, 30 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
