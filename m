@@ -1,81 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1no2kw-0003u6-SH
-	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 08:44:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34372)
+	id 1no2mj-0006I9-33
+	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2022 08:46:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1no2kt-0003nT-Sl; Mon, 09 May 2022 08:44:51 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435]:45006)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1no2mc-0006Fq-6k
+ for qemu-trivial@nongnu.org; Mon, 09 May 2022 08:46:40 -0400
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34]:40529)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1no2ks-0000df-8a; Mon, 09 May 2022 08:44:51 -0400
-Received: by mail-pf1-x435.google.com with SMTP id x52so12138417pfu.11;
- Mon, 09 May 2022 05:44:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=dLdaDOUZIK3RBqbcEUH28W/27HMAjnXQ55ScHR5Pmno=;
- b=bPykLE3MJ/ujeIcjoDDL5cFoxjB3FL2AcQwi/3cB3+3+lgtUlMAgVkCfQ1TgCcuhg8
- 9Rytz5vl1qQPZ1EPEmYzR0Re56kLqadvZ1xGsROJIujFFHbCBpYNTKpWqJS4N5DCy+j/
- MncvW50gYjVIp2au4V7+MhLVQaqxyks+5fBIWiTyTh80Bcv95yi9JsD2bVVKoAhOYUta
- hiZqSP1Plr2VC7nFyOC7b5ZkSqs6AnWWbJ0rcLliykaITJ3vp8LEe5s6hi4x97YjJPan
- lefX4GiGs3+u6m3C4wdixS8W1bEPW65GoEYPmVfr62qvcSAhsTGnG740BwR7KaabMF/r
- /H9A==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1no2ma-0001It-Oq
+ for qemu-trivial@nongnu.org; Mon, 09 May 2022 08:46:37 -0400
+Received: by mail-yb1-xb34.google.com with SMTP id y2so24696492ybi.7
+ for <qemu-trivial@nongnu.org>; Mon, 09 May 2022 05:46:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=ovxcnWPWswsNQ9jcZB+2fya9ylg/0wUy8y3yY+QynbI=;
+ b=ddpaCRzghkzvJPVsE0ZW3yNDxTD9CbXsuBk/e3f0DQAB5lCpsc+jFUCipJ90cdKNxe
+ E+YRQbJLoZoRD7IWmXnib774Jgw8CtqFRLBXlOsYata0gl1a4Tz1ujlDZ60LNT7WE50d
+ 1i3fQuVgntqSxxQy+ldIIqEjs5gU6SYb7CIiaGBSsev4OopdLGjnWrtfj2hGGDOL/pQS
+ 1ZJY6o1v3dDx/p24VbAT3gsA2W8mXdo5GN2vVH/dG1r3A43tWDC4UtrlSOVEqlngjGet
+ gMCWcB2eMGEqZi2WLoTVMZY/EpaXic06qKBOddyVWBbgId9jIU3BlNgdWYXulfTzvf5X
+ 3Ggw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=dLdaDOUZIK3RBqbcEUH28W/27HMAjnXQ55ScHR5Pmno=;
- b=fm3Cgv/aO8ka4CCP/dpQWdLl86TI+vOO6W0o3hlesLiGaBFvRyidqFqA9R04pq+m2G
- St60zPLTohoSXl0bG65sQh9OJW+krLlrwiWRC04pj1cjymlRLLVgzJJX3eH6mZfNTCkr
- iDez+kcgj+iKIv55+AOyedvMufEacYnGXKqi8rxHNXUR4uaKsESlfztXungRJTpH9JV6
- HQ9pU4H6QZ63RtUcGu26qb+kZ/1Nl1N87FYe6lEBG8+GsVSQaOBFcUN1NEyQqyYeLLL/
- vDm2tfPUOCX0s1f9MYyehPZYMpCGDCtbBzG/n8mBP+AMx5EIPyS+6WxvgZqhbYQkMsSZ
- QXxg==
-X-Gm-Message-State: AOAM5338WUPogFLjxYKN0+sU6FGcR7rs/g3ozhW6cSy7hI2pib5HwKe9
- aHV0dvqfqeDyk7qrG2wR4Mo=
-X-Google-Smtp-Source: ABdhPJyEw7aiS2j09fyBEW+f118GeXVvcJA/300LcY6sIxQpHjXvrWz6qIcvFPUZ+6AaZrCqyXZhlg==
-X-Received: by 2002:a63:501a:0:b0:3c6:e381:e95 with SMTP id
- e26-20020a63501a000000b003c6e3810e95mr447703pgb.35.1652100288556; 
- Mon, 09 May 2022 05:44:48 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- cd10-20020a056a00420a00b0050dc76281d0sm8773828pfb.170.2022.05.09.05.44.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 May 2022 05:44:48 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <47f863af-82f7-ec6e-a066-fec8509f34cd@amsat.org>
-Date: Mon, 9 May 2022 14:44:43 +0200
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=ovxcnWPWswsNQ9jcZB+2fya9ylg/0wUy8y3yY+QynbI=;
+ b=oYXC8era4WcZhewolKkKVOyPKe1l6J2DBYenFcHwjBOhyCciA7EmIaVPz8EW9hGRjH
+ /IekPgFOa+2aWWGHbcPyyWtw5rAZCH+AyJ4AI1JG1TQEzV+53lyx0NmCv8gC65uvyxm5
+ HmX32pEg2Shyhe4NmPxmrsUakYbWfbYcitESex15JvsQ8ktBWUbP53NSDhR+wRyI/ID0
+ r6nqeO+ZJY/Hu1m5DQQRP9HLFEyFbGNb7HNUrqPOZtB+CfGzzPIVRKiW7/FWSXBbfEJ4
+ OE9LkwA/45dQn+G6cU4sSNBxRJmXue61W7fr+HLlwSru9wPX9/9d5JB5qYUL4nqj6968
+ lS3A==
+X-Gm-Message-State: AOAM533sB99muHIcHRJ1afQH+U0KFomaa+kDSmSOulz0ajOYmqlGnzg/
+ FYu/NOO5JTgLERe02vevPoy+uZsK1xjfOP1JPRasHA==
+X-Google-Smtp-Source: ABdhPJyAB2gGN4M5DOBD9A994mEn5ZVMHOiCfhFJCqXn4/c/P9vowFGY49UcuV8nOSR7QcNxXdq9qq/V6jW0mXO6mCs=
+X-Received: by 2002:a25:3b8f:0:b0:649:dacd:2b4c with SMTP id
+ i137-20020a253b8f000000b00649dacd2b4cmr12848193yba.479.1652100394933; Mon, 09
+ May 2022 05:46:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.9.0
-Subject: Re: [PATCH] qom/object: Remove circular include dependency
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philippe.mathieu.daude@gmail.com>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>
 References: <20220509084659.52076-1-philippe.mathieu.daude@gmail.com>
  <CAFEAcA-tC5hUcYa7Q_GOe=7_k=De_yw0mm2F21ALh6-2D5ChzA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <CAFEAcA-tC5hUcYa7Q_GOe=7_k=De_yw0mm2F21ALh6-2D5ChzA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x435.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ <47f863af-82f7-ec6e-a066-fec8509f34cd@amsat.org>
+In-Reply-To: <47f863af-82f7-ec6e-a066-fec8509f34cd@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 May 2022 13:46:23 +0100
+Message-ID: <CAFEAcA-32QFO7=NTEZMHD+RXg6qwt63a21pe1qfvxS50aLAH3w@mail.gmail.com>
+Subject: Re: [PATCH] qom/object: Remove circular include dependency
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb34.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,57 +78,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 May 2022 12:44:53 -0000
+X-List-Received-Date: Mon, 09 May 2022 12:46:41 -0000
 
-On 9/5/22 11:41, Peter Maydell wrote:
-> On Mon, 9 May 2022 at 09:53, Philippe Mathieu-Daudé
-> <philippe.mathieu.daude@gmail.com> wrote:
->>
->> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>
->> "qom/object.h" doesn't need to include itself.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   include/qom/object.h | 1 -
->>   1 file changed, 1 deletion(-)
->>
->> diff --git a/include/qom/object.h b/include/qom/object.h
->> index 5f3d5b5bf5..ef7258a5e1 100644
->> --- a/include/qom/object.h
->> +++ b/include/qom/object.h
->> @@ -16,7 +16,6 @@
->>
->>   #include "qapi/qapi-builtin-types.h"
->>   #include "qemu/module.h"
->> -#include "qom/object.h"
->>
->>   struct TypeImpl;
->>   typedef struct TypeImpl *Type;
-> 
-> Accidentally (but harmlessly) 
+On Mon, 9 May 2022 at 13:44, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+>
+> On 9/5/22 11:41, Peter Maydell wrote:
+> > Accidentally (but harmlessly)
+>
+> This makes crash clang tools such clang-format, I'll amend that
+> to the description.
 
-This makes crash clang tools such clang-format, I'll amend that
-to the description.
+That sounds like a bug in clang-format :-)
 
-> added in commit db1015e92e0483 by a
-> change generated by a script.
-> 
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> Eduardo: is it worth making ./scripts/codeconverter/converter.py
-> handle this as a special case, so it doesn't add the include line
-> to qom/object.h itself ? Or do we not really expect that script
-> to be run on the codebase again in future ?
-
-Oh, I see required_identifiers() adding this include in
-scripts/codeconverter/codeconverter/qom_macros.py.
-
-If we do not expect to use these scripts, we should remove it from
-the repository. They are in good shape however, and might be still
-valuable, so I'll amend a fix to the script.
-
-Thanks for pointing at these scripts,
-
-Phil.
+-- PMM
 
