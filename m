@@ -1,59 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nokRE-0003sQ-4m
-	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2022 07:23:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49130)
+	id 1npB4J-00065x-3c
+	for mharc-qemu-trivial@gnu.org; Thu, 12 May 2022 11:49:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43294)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nokR7-0003qV-2X
- for qemu-trivial@nongnu.org; Wed, 11 May 2022 07:23:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:41227)
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1npB4B-00061v-4C
+ for qemu-trivial@nongnu.org; Thu, 12 May 2022 11:49:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:55471)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1nokR4-0005CD-6l
- for qemu-trivial@nongnu.org; Wed, 11 May 2022 07:23:19 -0400
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1npB49-00066B-C7
+ for qemu-trivial@nongnu.org; Thu, 12 May 2022 11:49:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1652268197;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=HWmx8NZxneGjFDWiGB3HW2NAKbUqB2UMj74GGBSbBn0=;
- b=NJIXRk6pgJCf5frajtdl21DJZ7W3iltw1/WNlxgzzGrwNr9SkZt17nJ99CDDB5SN8pXmLp
- eSu9Q1A7u/JI6R3VNDPzj/X3p+AZFR4ozfHGLGD536Ksb2Fkd/PO/iijBZ3QxfBsJo8OKo
- MU8OK/IaOPiRo6XKwUUZNt+OEFSHUpE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1652370564;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fEyuA1t6b7UKCgLNW2WXWpyYp+0uxw2qdHmw+Q/dk+Y=;
+ b=Xg/iOVPJ4/tP8g7EdH3azFCgMiicJsHh8j8HF7STQx+QVMF03hPBpl5EOs3UUQIL46ZKWG
+ cfgfvJK9iaZwsbRDZ/yTARCk2H+4ix07TGqIn5TLYVpNK6yV42yyDtpTyGM9tZgLywPt/s
+ QxMpacrLMrc2N3FSguWBZBtLWgdMJ4E=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-34-2r2tAAm-O3SymibvEnfFwQ-1; Wed, 11 May 2022 07:23:16 -0400
-X-MC-Unique: 2r2tAAm-O3SymibvEnfFwQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 973D2101AA45;
- Wed, 11 May 2022 11:23:15 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.142])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EFAC52026D64;
- Wed, 11 May 2022 11:23:00 +0000 (UTC)
-Date: Wed, 11 May 2022 12:22:58 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- kraxel@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] meson.build: Bump minimum supported version of pixman to
- 0.34.0
-Message-ID: <Ynucki8ZXwZgCETK@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20220511094758.794946-1-thuth@redhat.com>
- <CAFEAcA9bUires+a-dc8v-oDDKg5WJRf4vVR8jKady5QgjMJTZA@mail.gmail.com>
- <b819e229-4aff-6381-a686-664aa97712a3@redhat.com>
+ us-mta-454-FZd9XFVIOESc5IuGy2Tolw-1; Thu, 12 May 2022 11:49:23 -0400
+X-MC-Unique: FZd9XFVIOESc5IuGy2Tolw-1
+Received: by mail-qt1-f197.google.com with SMTP id
+ f12-20020a05622a1a0c00b002f3b5acc2e7so4125841qtb.1
+ for <qemu-trivial@nongnu.org>; Thu, 12 May 2022 08:49:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=fEyuA1t6b7UKCgLNW2WXWpyYp+0uxw2qdHmw+Q/dk+Y=;
+ b=XPX5QbsKIHRyX+wpAWf0WOCQDGHTH1G0zKIaUhtIk7+t7FSitB63jxsdeZoNPHeF+W
+ wmuGk1eFNUH5X+KmKsYpuxQaeadVJVz9DzzF6haqoU4wvr/INVcaqKC+45QlAFpR7SRP
+ oR/pKkcT8KzsGpAx++sxDHCKag2q8R2qOOJREBT9eEAFOQQmPceAY3OJrKTo8oQ2+bn5
+ AMBad2HasDl8h8jhVUYC6xj8/3dnL27dh91LMMv7kNVNkbiQ5FkhbS2DgE95bg7tbcoh
+ plFIYpfojxklIoCpzHlJQDozXkko/qMHJXNMaazfZobghBO5jme12zCWndOFepQl3AgJ
+ FnSQ==
+X-Gm-Message-State: AOAM5314RqgvdPOnq2M9n0YjFLp0Y5T7wTR42xTs3uYIgGPgIEer/Bus
+ eGA4u6eEt9ndXemgiuuLr4O3zPAmOFjwkoNfg982Y05DSMqWGQ9HjIEG5wFwiiidcC0G7W7MPRn
+ c/DSFChKHRtsK5kCSQ0ENjBPxHR7QrfD4cg==
+X-Received: by 2002:a05:6214:1cc3:b0:456:56d:f2c5 with SMTP id
+ g3-20020a0562141cc300b00456056df2c5mr546716qvd.119.1652370563283; 
+ Thu, 12 May 2022 08:49:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxMg0LTdBbHHShbdHvaXdddgn6TwKjYQWYOyNRMgbMK4rQ0T8l7kBVwlB6W6maZOLCVj59LgkQBpV6mSt4Ieqw=
+X-Received: by 2002:a05:6214:1cc3:b0:456:56d:f2c5 with SMTP id
+ g3-20020a0562141cc300b00456056df2c5mr546701qvd.119.1652370563039; Thu, 12 May
+ 2022 08:49:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <b819e229-4aff-6381-a686-664aa97712a3@redhat.com>
-User-Agent: Mutt/2.1.5 (2021-12-30)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+References: <20220427154931.3166388-1-eperezma@redhat.com>
+In-Reply-To: <20220427154931.3166388-1-eperezma@redhat.com>
+From: Eugenio Perez Martin <eperezma@redhat.com>
+Date: Thu, 12 May 2022 17:48:47 +0200
+Message-ID: <CAJaqyWdwzUnP71LNEDe6Fo+th9-qMLQXJMgeo2nb3jE-GyUCPw@mail.gmail.com>
+Subject: Re: [PATCH] util: Return void on iova_tree_remove
+To: qemu-level <qemu-devel@nongnu.org>
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>, 
+ Jason Wang <jasowang@redhat.com>, Peter Xu <peterx@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eperezma@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -74,92 +87,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 May 2022 11:23:26 -0000
+X-List-Received-Date: Thu, 12 May 2022 15:49:28 -0000
 
-On Wed, May 11, 2022 at 12:56:45PM +0200, Thomas Huth wrote:
-> On 11/05/2022 12.28, Peter Maydell wrote:
-> > On Wed, 11 May 2022 at 10:50, Thomas Huth <thuth@redhat.com> wrote:
-> > > 
-> > > We haven't revisited the minimum required versions of pixman
-> > > since quite a while. Let's check whether we can rule out some
-> > > old versions that nobody tests anymore...
-> > > 
-> > > For pixman, per repology.org, currently shipping versions are:
-> > > 
-> > >       CentOS 8 / RHEL-8 : 0.38.4
-> > >                Fedora 34: 0.40.0
-> > >               Debian 10 : 0.36.0
-> > >        Ubuntu LTS 20.04 : 0.38.4
-> > >      openSUSE Leap 15.3 : 0.34.0
-> > >             MSYS2 MinGW : 0.40.0
-> > >           FreeBSD Ports : 0.34.0 / 0.40.0
-> > >            NetBSD pksrc : 0.40.0
-> > > 
-> > > OpenBSD 7.1 seems to use 0.40.0 when running tests/vm/openbsd.
-> > > 
-> > > So it seems to be fine to bump the minimum version to 0.34.0 now.
-> > 
-> > This seems to be missing the rationale for why bumping
-> > the minimum version is worth doing. What new feature that
-> > we need is this enabling, or what now-unnecessary bug
-> > workarounds does this permit us to drop?
-> 
-> We simply don't test such old versions anymore. Thus what happens if someone
-> tries to use such a version and runs into a problem (especially if it is
-> non-obvious and would need a lot of debugging)? Are you still willing to fix
-> it? Or would you then rather bump the version after hours of debugging the
-> problem? ... IMHO it's better to set the expectations right from the start.
-> If we do not test and support it anymore, we should not give the impression
-> that QEMU can still be compiled with this.
+On Wed, Apr 27, 2022 at 5:50 PM Eugenio P=C3=A9rez <eperezma@redhat.com> wr=
+ote:
+>
+> It always returns IOVA_OK so nobody uses it.
+>
+> Acked-by: Jason Wang <jasowang@redhat.com>
+> Reviewed-by: Peter Xu <peterx@redhat.com>
+> Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
 
-Support for QEMU is not such a clearly defined boundary, there are many
-levels of support.  Our CI testing determines our "top tier" platforms
-where we expect everything to be functional at all times, but it doesn't
-mean that all other platforms are entirely unsupported. It merely means
-we can't offer the same level of assurance that it will be perfect out
-of the box.
+Hi! Friendly ping about this, is it something pending from my side?
 
-If someone reports an issue we have freedom to decide how much effort
-to put in. If they're using a pixman that's very old compared to what
-we've tested, we don't have to spend time on that ourselves. We can
-easily tell the reporter to reproduce with something newer first if
-desired.
+Thanks!
 
-The platform support matrix is a way to determine:
-
- - what platforms we should focus our testing resources on
-
-   For this, we can unambiguously bump our tsting envs
-   on each release. It merely means the old version is
-   no longer top tier, it is second tier in terms of
-   what quality users can expect.
-
- - whether it is reasonable to bump a package minimum version
-
-   Admittedly we never expressed whether the min version bumps
-   are justifiable just for the sake of it, or whether version
-   bumps are expected as a means to access new functionality /
-   drop back compat code. Nearly all the bumps we've done have
-   had some code benefit in the past.
-
-   In practice when we bump the minimum glib2 version this has
-   a clear code benefit, and once you bump min glib2, this defacto
-   eliminates old versions of many other libraries. The only
-   exception would be distros that are fast at rebasing glib, but
-   slow at rebasing other deps we have. This is pretty uncommon
-   for any mainstream distro.
-
-IOW, I would suggest that in each release our first focus should
-be on glib, gcc/clang versions, as those historically bring us
-clear benefits. If glib bumps, then there's little point in
-keeping any other deps with older min versions, so many other
-bits can be a fairly straightforward decision.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> ---
+>  include/qemu/iova-tree.h | 4 +---
+>  util/iova-tree.c         | 4 +---
+>  2 files changed, 2 insertions(+), 6 deletions(-)
+>
+> diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
+> index c938fb0793..16bbfdf5f8 100644
+> --- a/include/qemu/iova-tree.h
+> +++ b/include/qemu/iova-tree.h
+> @@ -72,10 +72,8 @@ int iova_tree_insert(IOVATree *tree, const DMAMap *map=
+);
+>   * provided.  The range does not need to be exactly what has inserted,
+>   * all the mappings that are included in the provided range will be
+>   * removed from the tree.  Here map->translated_addr is meaningless.
+> - *
+> - * Return: 0 if succeeded, or <0 if error.
+>   */
+> -int iova_tree_remove(IOVATree *tree, const DMAMap *map);
+> +void iova_tree_remove(IOVATree *tree, const DMAMap *map);
+>
+>  /**
+>   * iova_tree_find:
+> diff --git a/util/iova-tree.c b/util/iova-tree.c
+> index 6dff29c1f6..fee530a579 100644
+> --- a/util/iova-tree.c
+> +++ b/util/iova-tree.c
+> @@ -164,15 +164,13 @@ void iova_tree_foreach(IOVATree *tree, iova_tree_it=
+erator iterator)
+>      g_tree_foreach(tree->tree, iova_tree_traverse, iterator);
+>  }
+>
+> -int iova_tree_remove(IOVATree *tree, const DMAMap *map)
+> +void iova_tree_remove(IOVATree *tree, const DMAMap *map)
+>  {
+>      const DMAMap *overlap;
+>
+>      while ((overlap =3D iova_tree_find(tree, map))) {
+>          g_tree_remove(tree->tree, overlap);
+>      }
+> -
+> -    return IOVA_OK;
+>  }
+>
+>  /**
+> --
+> 2.27.0
+>
+>
 
 
