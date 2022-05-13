@@ -1,79 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1npTTP-0002Eu-Ti
-	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2022 07:28:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44326)
+	id 1npZVH-0008CP-LO
+	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2022 13:55:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1npTT5-0002D9-Pu
- for qemu-trivial@nongnu.org; Fri, 13 May 2022 07:28:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:49722)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1npTSq-0005mx-Og
- for qemu-trivial@nongnu.org; Fri, 13 May 2022 07:28:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1652441285;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=8Q2RcdbUMLDEh/nK1EE7CHRFNqWQSdfjpVXPKN8pgFE=;
- b=iEW7a7RYoTlAmbFFhxu9sBcZ/ylC5K/E78G+zJ3jyCxWTk/xzUVQGu4aOBji16YIAahaO6
- yX8fv0xUmvvmkUJvrAytZuRwbbiVSo5HenOshSwDm4YugeS1q4kowtu6V+A0RHpJr7whOo
- nEqRi59UKTx9zgVPZPwwv65MWbG7PKE=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-257-Q6_PeCAEOxmwmyFyb14q2g-1; Fri, 13 May 2022 07:28:04 -0400
-X-MC-Unique: Q6_PeCAEOxmwmyFyb14q2g-1
-Received: by mail-wm1-f72.google.com with SMTP id
- bg7-20020a05600c3c8700b0039468585269so2815875wmb.3
- for <qemu-trivial@nongnu.org>; Fri, 13 May 2022 04:28:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1npZVF-00088e-Br; Fri, 13 May 2022 13:55:01 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:39861)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1npZVD-0004jB-4p; Fri, 13 May 2022 13:55:00 -0400
+Received: by mail-ej1-x631.google.com with SMTP id bv19so17667982ejb.6;
+ Fri, 13 May 2022 10:54:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9rqBmn8YnMTW0RKryoFkiS7PUR5rHMyOOmHYyr+GAcQ=;
+ b=SDky/RnWu0N9HfsIrXM+qKZDJlEHHRq3AhyluzhAq8661m971T3Zj1Jcw1XJ5llejg
+ 4y1kzsgMbBRN+Mgqxgi+HzZB0XlEP0Bj1him23if9vFh2Wgd0PXStELxLyhbMiRcMyoP
+ 4n5lv7tzNXsTcqFFbakdluylfrtozToLUJDoJGr3io3liteYQuYV8JXV3sAiojSizDVi
+ N6dLqQDyWOY9Nj+ZK8nPvDNdJEwKKMqrQ3GHn44sV8doJVg+wmc/27OJ7Lu8UvixLh8x
+ CnHpqj9oFrh4TnWbKcOdD1114eMzWsiqYBNNmqnsVMZVfulZY5yZhVESJwEbs90bcg69
+ fY6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=8Q2RcdbUMLDEh/nK1EE7CHRFNqWQSdfjpVXPKN8pgFE=;
- b=1NvgR0PdzNHxkPESFIZbQ683PbfaAqBUEK/SppDH8V8GxX/KYeeaajYbCylzK++nYn
- ayigAm/oExZKSh5Hos/Vt1G/Ln7j1ERCQ7Kx/YaiYqUnTu2RYCsZXnWKvNglcNwyh7Es
- p36YYOvGHEQ0W9RjZ3Ukl4Nu++7tv8PcUBYt5vJZS3V8nL5F3TSp58MorkC+lilJKZ2b
- //vrRpGWtpgYVLQkq24gsc/wcAvMlJBGZfkBtv9wH3NOhiT6stD/EQNRMiDPQOX2GJCe
- kDt02/iTxEDSaPe/iU8K9pZHuQ3KgkrufS8A5JlyV5BVNFNClB+oJjT3CwLUnrn3LYMz
- IMsQ==
-X-Gm-Message-State: AOAM531p0cXKO2NEYlBEwZ8kZz2xPc8pALcm3/6j8wzS2CmAKOygGazk
- iRoPooYEZokm3IRrk0JuR3s38GhidvYB9zmhnoZ3TQ7nv8Q4xM88TSY+qYa0Nn7uAyFMNWdDbWH
- opJq35FqvUh4JCZCh6A==
-X-Received: by 2002:a05:600c:1d95:b0:394:5d0d:6f70 with SMTP id
- p21-20020a05600c1d9500b003945d0d6f70mr4144667wms.48.1652441283214; 
- Fri, 13 May 2022 04:28:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4McUdgwfyYEAhPtwpFqWYrSRMY5AXhr+4F6NJyVv82hIcxRJhCsvIxwxWWtL8cxGYy4BLVg==
-X-Received: by 2002:a05:600c:1d95:b0:394:5d0d:6f70 with SMTP id
- p21-20020a05600c1d9500b003945d0d6f70mr4144648wms.48.1652441282946; 
- Fri, 13 May 2022 04:28:02 -0700 (PDT)
-Received: from redhat.com ([2.53.15.195]) by smtp.gmail.com with ESMTPSA id
- n8-20020a05600c4f8800b0039444973258sm6797712wmq.0.2022.05.13.04.28.01
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9rqBmn8YnMTW0RKryoFkiS7PUR5rHMyOOmHYyr+GAcQ=;
+ b=5Ir9k48AY+jhNj08UIzevHalislxhKQyGG4rYDnznJMN255SqVnrTCFPgzq1zle+Pi
+ Ox+yuyDuWOGrq2Gs5RN8Ltm7UKQSzC6oAQE4LZ3K2trqIk7G03Gj4hrSWdbJBQVv6TX5
+ aKkYkI3qv0y7LlflmSNlDjIm9XxIn5G69c7xlB9msAmoXpgNiadLdfOlAPPygt09wHTR
+ 3kWHa23MZ+IAs6Me33+jmr0q5H/8EN+5Nn+ucFC+IPZucIpKzQLMoQt9S/Ickt/zApH/
+ wYLkIaXSBBH9nGaHFZYGNH7XLifkNGjyjkNbOWi6lxjEvoxNORQrzOI7wD9RfLHq+dtM
+ /dyQ==
+X-Gm-Message-State: AOAM531P5K6aThEuPAd5RvPcUcqegB8ymbKSh4479NNnsF0uQL1yPvEw
+ 1t/TErvoeOzDxshtNjFYr6FlUV8yLW0=
+X-Google-Smtp-Source: ABdhPJxqyv+ZYjAs3/qWavNGUywiNarkayDE/D60qjuo97gVHIwvUOgGG+I8bzX+URhr2VaUgNixXA==
+X-Received: by 2002:a17:906:3e05:b0:6f3:a14a:fd3f with SMTP id
+ k5-20020a1709063e0500b006f3a14afd3fmr5052223eji.640.1652464496873; 
+ Fri, 13 May 2022 10:54:56 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-089-014-181-123.89.14.pool.telefonica.de. [89.14.181.123])
+ by smtp.gmail.com with ESMTPSA id
+ ci18-20020a170907267200b006f3ef214e3esm953874ejc.164.2022.05.13.10.54.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 May 2022 04:28:02 -0700 (PDT)
-Date: Fri, 13 May 2022 07:27:58 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH 00/11] Random cleanup patches
-Message-ID: <20220513072734-mutt-send-email-mst@kernel.org>
-References: <20220505161805.11116-1-shentey@gmail.com>
+ Fri, 13 May 2022 10:54:56 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 0/6] QOM'ify PIIX southbridge creation
+Date: Fri, 13 May 2022 19:54:39 +0200
+Message-Id: <20220513175445.89616-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-In-Reply-To: <20220505161805.11116-1-shentey@gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -87,48 +75,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 May 2022 11:28:40 -0000
+X-List-Received-Date: Fri, 13 May 2022 17:55:02 -0000
 
-On Thu, May 05, 2022 at 06:17:54PM +0200, Bernhard Beschow wrote:
-> This patch series contains random cleanups that I made while studying the code.
-> 
-> Bernhard Beschow (11):
->   hw/rtc/mc146818rtc: Inline isa_connect_gpio_out() and remove it
->   hw: Reuse TYPE_I8042 define
->   hw/audio/cs4231a: Const'ify global tables
->   hw/i386/pc: Unexport PC_CPU_MODEL_IDS macro
->   hw/i386/pc: Unexport functions used only internally
->   hw/i386/pc: Remove orphan declarations
->   hw/ppc/e500: Remove unused BINARY_DEVICE_TREE_FILE
->   hw/net/fsl_etsec/etsec: Remove obsolete and unused etsec_create()
->   accel/tcg/cpu-exec: Unexport dump_drift_info()
->   accel/tcg: Inline dump_opcount_info() and remove it
->   docs/devel: Fix link to developer mailing lists
+The piix3 and piix4 southbridge devices still rely on create() functions which
+are deprecated. This series resolves these functions piece by piece to
+modernize the code.
 
-pc changes looks like trivial tree material.
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Both devices are modified in lockstep where possible to provide more context.
 
+Testing done:
+* `qemu-system-x86_64 -M pc -m 2G -cdrom archlinux-2022.05.01-x86_64.iso`
+* `qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append "root=/dev/sda1 console=tty0"`
 
->  accel/tcg/cpu-exec.c              |  4 ++--
->  accel/tcg/translate-all.c         |  5 -----
->  docs/devel/submitting-a-patch.rst |  6 +++---
->  hw/audio/cs4231a.c                |  8 ++++----
->  hw/i386/pc.c                      | 17 +++++++++++++----
->  hw/isa/isa-bus.c                  |  6 ------
->  hw/net/fsl_etsec/etsec.c          | 23 -----------------------
->  hw/net/fsl_etsec/etsec.h          |  7 -------
->  hw/ppc/e500.c                     |  1 -
->  hw/rtc/mc146818rtc.c              |  3 ++-
->  hw/sparc64/sun4u.c                |  2 +-
->  include/exec/cpu-all.h            |  3 ---
->  include/hw/i386/pc.h              | 14 --------------
->  include/hw/isa/isa.h              |  1 -
->  14 files changed, 25 insertions(+), 75 deletions(-)
-> 
-> -- 
-> 2.36.0
-> 
-> 
-> 
+In both cases the system booted successfully and it was possible to shut down
+the system using the `poweroff` command.
+
+Bernhard Beschow (6):
+  include/hw: Move TYPE_PIIX4_PCI_DEVICE to southbridge/piix.h
+  hw/isa/piix{3,4}: Move pci_map_irq_fn's near pci_set_irq_fn's
+  hw/isa/piix{3,4}: QOM'ify PCI device creation and wiring
+  hw/isa/piix{3,4}: Factor out ISABus retrieval from create() functions
+  hw/isa/piix4: Factor out SM bus initialization from create() function
+  hw/isa/piix{3,4}: Inline and remove create() functions
+
+ hw/i386/pc_piix.c             |  7 ++-
+ hw/isa/piix3.c                | 98 +++++++++++++++++++----------------
+ hw/isa/piix4.c                | 91 +++++++++++++-------------------
+ hw/mips/malta.c               |  9 +++-
+ include/hw/isa/isa.h          |  2 -
+ include/hw/southbridge/piix.h |  6 +--
+ 6 files changed, 105 insertions(+), 108 deletions(-)
+
+-- 
+2.36.1
 
 
