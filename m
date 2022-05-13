@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1npZVO-0008NK-0H
-	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2022 13:55:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53444)
+	id 1npZVO-0008OY-VU
+	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2022 13:55:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53470)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1npZVI-0008EC-Ln; Fri, 13 May 2022 13:55:04 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:42773)
+ id 1npZVK-0008IX-TQ; Fri, 13 May 2022 13:55:06 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:47038)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1npZVF-0004jU-Jo; Fri, 13 May 2022 13:55:03 -0400
-Received: by mail-ej1-x632.google.com with SMTP id i27so17640443ejd.9;
- Fri, 13 May 2022 10:55:00 -0700 (PDT)
+ id 1npZVH-0004k4-GB; Fri, 13 May 2022 13:55:05 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id j6so17616233ejc.13;
+ Fri, 13 May 2022 10:55:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9fyFY+E6JJjVdT5p/+Wp03gGdDkS94wyw4n8PQHDYiA=;
- b=qsWemKgHXO+hXoAyiTh5Lcy91eu0qBEOGnMF1dlqZNZqp1rQ9ptihyJwL7MZ84qvQ3
- OaCGZNyGkMC0bENwhc+AMjd3sQOzL6RatBprHqpiaWjHqHOy0T6l7iRKK7nLBQTbli0Y
- gGTOTBZKIT7D+0+OWJ+2B/XwnXmuljMsO36LEgspATuUZ2/Yb5XB99LK4FX2f5i996Ff
- 2ehQBnbvb58EfiqZI8m6Hj3FqH8ATBXH1OJJ9qcm7jg/pTfkTrSlotjXgqLo7gSrrwO7
- w6w0bLj6VOnHnPdj5mE1pnODdF/N7ylXhJ7/bS+u9sm0jNyjb6tBnjLm0myW7v4LYeen
- Vsqg==
+ bh=3rRoC/qc2j2rBiKUOP0rc6x1xIIj9UTtpZ+lI3b2sFg=;
+ b=kSNSrD7H+7lEPMVsjjx+5TE3kCSCeB1kwgrqxk9nbszf1G1trrb1eriRW/R/vkmSj9
+ sZheEYpyV1aFZK0gdfYAMU9EOg+l9kLYUxECl2RtPdrs9VZ9a+ilaoT8zPkXVuKMwrtT
+ byrStTbcXRiLImwMQ44xVxwe7eVTNxDgVkEZ1HYtgEfAtY9PlsqV3oVbtaDxthnI5MIV
+ dU88N8yogbN4DkeGhc3kP9Tm6Pjx9eK0Wa+Paw8KcVMvBV5OT6of2bt3gYPC5iNCdW/J
+ BTCZ+OKbJg5+X9+/ZsVtswgYjJWo1IRkY/Ql+uWAZNxwE2CKo0lGwe0JsVOgn6hfkKQy
+ Pyrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9fyFY+E6JJjVdT5p/+Wp03gGdDkS94wyw4n8PQHDYiA=;
- b=dsF60M6R8zcpgp+P4rtuRgApYaVcq0yXs/3Ui5SVrmrWC7qDsuieTA1lJJ5ytCngRb
- tSeS4XPp/X5KIL8VzVSW4yiDuB+3XEn6a+E7CmpHVtP/CDpiQOGduc6NDSxftlu3IYoP
- tchvR9TbjYklb6/BnAevDwaCOuyqe3NuoCAubdO6zVQXtyvlhKOyFVyfoZMOBcTsszkq
- tXok9m3yE0ke7glSOwVBwr2bZxHAHE/XCwYmKRfC0hi1kKzLYdN2Tk/jTLl10gEyqxjA
- V9IS0aZcTWNYRHrWzkVefrn2RGtltgEchw52kiH2mVzo08tsrau2Z6+tL+EfLbzNF4Vl
- GWVA==
-X-Gm-Message-State: AOAM533UOEQPo+89Wa72PBSQPfZZDoyT9PpYNXOcYkKscpLhmG+zH3AZ
- Pgfmnyor/a6osYNNG6jpyuVXKO25GPU=
-X-Google-Smtp-Source: ABdhPJwkZ9ghJLzaakaY3NvWYMmn7TMqV1AKuxwiTNTXCx+8BsavE5NlC4dGZVb50yqOXL1zP2hytA==
-X-Received: by 2002:a17:907:6088:b0:6f4:bc5b:ab3c with SMTP id
- ht8-20020a170907608800b006f4bc5bab3cmr5332056ejc.236.1652464499471; 
- Fri, 13 May 2022 10:54:59 -0700 (PDT)
+ bh=3rRoC/qc2j2rBiKUOP0rc6x1xIIj9UTtpZ+lI3b2sFg=;
+ b=rtv1woyNhyVh2Mjqqa9tH3gDj1XzHk/38t+3kqtMHkBoKLKU9DwoTbd6WOIwwjN5rd
+ 6BEB8Tm0gSNwhNy6iJb6ZsDx6Scm+2nF2gOxQGHyjoPu0OSd5NFI20ty9R5cigwfSXA9
+ wzrLCU3ofv6kmiXBKb6DX++F8apKd4xx1sD7tAxxBFydpf/xTICCx5ZPKHu4sMItRi/f
+ xs8rOett9+UdR1P9JD7ArDcP8pBZdq/9J391ep0dBYk5nlC3Jh5QhT9bwk9nV+Mkfmgk
+ U82fSzOYO/NwYLiZbVlGh6oMn/h79y0ZtvoE3IONCzUb5X36LQgL9t2fcFDNo7EHaIIY
+ Ohjw==
+X-Gm-Message-State: AOAM532Tpw6/9VGV+ZopYvE/2RwpNcp/D7B3CBeE/lMA153mu7hsYCqS
+ PsCdzTc8AlBPfFg2a12QX4hBuHXwGlI=
+X-Google-Smtp-Source: ABdhPJwWq0WqXYCpoZFXjdlfpk5TniBqz0jDkCnu5Wswryc5j1rRUJB2g+LqZIt4KTd0d6ez+HU2Lw==
+X-Received: by 2002:a17:907:8a24:b0:6f4:82c9:9adc with SMTP id
+ sc36-20020a1709078a2400b006f482c99adcmr5396756ejc.223.1652464501498; 
+ Fri, 13 May 2022 10:55:01 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-089-014-181-123.89.14.pool.telefonica.de. [89.14.181.123])
  by smtp.gmail.com with ESMTPSA id
- ci18-20020a170907267200b006f3ef214e3esm953874ejc.164.2022.05.13.10.54.58
+ ci18-20020a170907267200b006f3ef214e3esm953874ejc.164.2022.05.13.10.55.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 May 2022 10:54:59 -0700 (PDT)
+ Fri, 13 May 2022 10:55:01 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [PATCH 3/6] hw/isa/piix{3,4}: QOM'ify PCI device creation and wiring
-Date: Fri, 13 May 2022 19:54:42 +0200
-Message-Id: <20220513175445.89616-4-shentey@gmail.com>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [PATCH 5/6] hw/isa/piix4: Factor out SM bus initialization from
+ create() function
+Date: Fri, 13 May 2022 19:54:44 +0200
+Message-Id: <20220513175445.89616-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220513175445.89616-1-shentey@gmail.com>
 References: <20220513175445.89616-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x632.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -81,206 +82,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 May 2022 17:55:05 -0000
+X-List-Received-Date: Fri, 13 May 2022 17:55:08 -0000
 
-PCI interrupt wiring and device creation (piix4 only) were performed
-in create() functions which are obsolete. Move these tasks into QOM
-functions to modernize the code.
-
-In order to avoid duplicate checking for xen_enabled() the piix3 realize
-methods are now split.
+Initialize the SM bus just like is done for piix3 which modernizes the
+code.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/isa/piix3.c | 67 +++++++++++++++++++++++++++++++++-----------------
- hw/isa/piix4.c | 20 +++++++++------
- 2 files changed, 57 insertions(+), 30 deletions(-)
+ hw/isa/piix4.c                | 15 +++------------
+ hw/mips/malta.c               |  7 ++++++-
+ include/hw/southbridge/piix.h |  2 +-
+ 3 files changed, 10 insertions(+), 14 deletions(-)
 
-diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
-index 7d69420967..d15117a7c7 100644
---- a/hw/isa/piix3.c
-+++ b/hw/isa/piix3.c
-@@ -24,6 +24,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/range.h"
-+#include "qapi/error.h"
- #include "hw/southbridge/piix.h"
- #include "hw/irq.h"
- #include "hw/isa/isa.h"
-@@ -280,7 +281,7 @@ static const MemoryRegionOps rcr_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN
- };
- 
--static void piix3_realize(PCIDevice *dev, Error **errp)
-+static void pci_piix3_realize(PCIDevice *dev, Error **errp)
- {
-     PIIX3State *d = PIIX3_PCI_DEVICE(dev);
- 
-@@ -305,7 +306,6 @@ static void pci_piix3_class_init(ObjectClass *klass, void *data)
-     dc->desc        = "ISA bridge";
-     dc->vmsd        = &vmstate_piix3;
-     dc->hotpluggable   = false;
--    k->realize      = piix3_realize;
-     k->vendor_id    = PCI_VENDOR_ID_INTEL;
-     /* 82371SB PIIX3 PCI-to-ISA bridge (Step A1) */
-     k->device_id    = PCI_DEVICE_ID_INTEL_82371SB_0;
-@@ -329,11 +329,28 @@ static const TypeInfo piix3_pci_type_info = {
-     },
- };
- 
-+static void piix3_realize(PCIDevice *dev, Error **errp)
-+{
-+    ERRP_GUARD();
-+    PIIX3State *piix3 = PIIX3_PCI_DEVICE(dev);
-+    PCIBus *pci_bus = pci_get_bus(dev);
-+
-+    pci_piix3_realize(dev, errp);
-+    if (*errp) {
-+        return;
-+    }
-+
-+    pci_bus_irqs(pci_bus, piix3_set_irq, pci_slot_get_pirq,
-+                 piix3, PIIX_NUM_PIRQS);
-+    pci_bus_set_route_irq_fn(pci_bus, piix3_route_intx_pin_to_irq);
-+};
-+
- static void piix3_class_init(ObjectClass *klass, void *data)
- {
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
- 
-     k->config_write = piix3_write_config;
-+    k->realize = piix3_realize;
- }
- 
- static const TypeInfo piix3_info = {
-@@ -342,11 +359,33 @@ static const TypeInfo piix3_info = {
-     .class_init    = piix3_class_init,
- };
- 
-+static void piix3_xen_realize(PCIDevice *dev, Error **errp)
-+{
-+    ERRP_GUARD();
-+    PIIX3State *piix3 = PIIX3_PCI_DEVICE(dev);
-+    PCIBus *pci_bus = pci_get_bus(dev);
-+
-+    pci_piix3_realize(dev, errp);
-+    if (*errp) {
-+        return;
-+    }
-+
-+    /*
-+     * Xen supports additional interrupt routes from the PCI devices to
-+     * the IOAPIC: the four pins of each PCI device on the bus are also
-+     * connected to the IOAPIC directly.
-+     * These additional routes can be discovered through ACPI.
-+     */
-+    pci_bus_irqs(pci_bus, xen_piix3_set_irq, xen_pci_slot_get_pirq,
-+                 piix3, XEN_PIIX_NUM_PIRQS);
-+};
-+
- static void piix3_xen_class_init(ObjectClass *klass, void *data)
- {
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
- 
-     k->config_write = piix3_write_config_xen;
-+    k->realize = piix3_xen_realize;
- };
- 
- static const TypeInfo piix3_xen_info = {
-@@ -368,27 +407,11 @@ PIIX3State *piix3_create(PCIBus *pci_bus, ISABus **isa_bus)
- {
-     PIIX3State *piix3;
-     PCIDevice *pci_dev;
-+    const char *type = xen_enabled() ? TYPE_PIIX3_XEN_DEVICE
-+                                     : TYPE_PIIX3_DEVICE;
- 
--    /*
--     * Xen supports additional interrupt routes from the PCI devices to
--     * the IOAPIC: the four pins of each PCI device on the bus are also
--     * connected to the IOAPIC directly.
--     * These additional routes can be discovered through ACPI.
--     */
--    if (xen_enabled()) {
--        pci_dev = pci_create_simple_multifunction(pci_bus, -1, true,
--                                                  TYPE_PIIX3_XEN_DEVICE);
--        piix3 = PIIX3_PCI_DEVICE(pci_dev);
--        pci_bus_irqs(pci_bus, xen_piix3_set_irq, xen_pci_slot_get_pirq,
--                     piix3, XEN_PIIX_NUM_PIRQS);
--    } else {
--        pci_dev = pci_create_simple_multifunction(pci_bus, -1, true,
--                                                  TYPE_PIIX3_DEVICE);
--        piix3 = PIIX3_PCI_DEVICE(pci_dev);
--        pci_bus_irqs(pci_bus, piix3_set_irq, pci_slot_get_pirq,
--                     piix3, PIIX_NUM_PIRQS);
--        pci_bus_set_route_irq_fn(pci_bus, piix3_route_intx_pin_to_irq);
--    }
-+    pci_dev = pci_create_simple_multifunction(pci_bus, -1, true, type);
-+    piix3 = PIIX3_PCI_DEVICE(pci_dev);
-     *isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa.0"));
- 
-     return piix3;
 diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-index a223b69e24..134d23aea7 100644
+index 4968c69da9..852e5c4db1 100644
 --- a/hw/isa/piix4.c
 +++ b/hw/isa/piix4.c
-@@ -204,6 +204,8 @@ static const MemoryRegionOps piix4_rcr_ops = {
- static void piix4_realize(PCIDevice *dev, Error **errp)
+@@ -301,21 +301,12 @@ static void piix4_register_types(void)
+ 
+ type_init(piix4_register_types)
+ 
+-DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus)
++PCIDevice *piix4_create(PCIBus *pci_bus)
  {
-     PIIX4State *s = PIIX4_PCI_DEVICE(dev);
-+    PCIDevice *pci;
-+    PCIBus *pci_bus = pci_get_bus(dev);
-     ISABus *isa_bus;
-     qemu_irq *i8259_out_irq;
- 
-@@ -242,6 +244,15 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
-         return;
-     }
-     s->rtc.irq = isa_get_irq(ISA_DEVICE(&s->rtc), s->rtc.isairq);
-+
-+    /* IDE */
-+    pci = pci_create_simple(pci_bus, dev->devfn + 1, "piix4-ide");
-+    pci_ide_create_devs(pci);
-+
-+    /* USB */
-+    pci_create_simple(pci_bus, dev->devfn + 2, "piix4-usb-uhci");
-+
-+    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s, PIIX_NUM_PIRQS);
- }
- 
- static void piix4_init(Object *obj)
-@@ -292,7 +303,6 @@ type_init(piix4_register_types)
- 
- DeviceState *piix4_create(PCIBus *pci_bus, ISABus **isa_bus, I2CBus **smbus)
- {
--    PIIX4State *s;
      PCIDevice *pci;
-     DeviceState *dev;
-     int devfn = PCI_DEVFN(10, 0);
-@@ -300,22 +310,16 @@ DeviceState *piix4_create(PCIBus *pci_bus, ISABus **isa_bus, I2CBus **smbus)
-     pci = pci_create_simple_multifunction(pci_bus, devfn,  true,
+-    DeviceState *dev;
+-    int devfn = PCI_DEVFN(10, 0);
+ 
+-    pci = pci_create_simple_multifunction(pci_bus, devfn,  true,
++    pci = pci_create_simple_multifunction(pci_bus, PCI_DEVFN(10, 0), true,
                                            TYPE_PIIX4_PCI_DEVICE);
-     dev = DEVICE(pci);
--    s = PIIX4_PCI_DEVICE(pci);
-+
-     if (isa_bus) {
-         *isa_bus = ISA_BUS(qdev_get_child_bus(dev, "isa.0"));
-     }
+-    dev = DEVICE(pci);
  
--    pci = pci_create_simple(pci_bus, devfn + 1, "piix4-ide");
--    pci_ide_create_devs(pci);
+-    if (smbus) {
+-        *smbus = piix4_pm_init(pci_bus, devfn + 3, 0x1100,
+-                               qdev_get_gpio_in_named(dev, "isa", 9),
+-                               NULL, 0, NULL);
+-    }
 -
--    pci_create_simple(pci_bus, devfn + 2, "piix4-usb-uhci");
-     if (smbus) {
-         *smbus = piix4_pm_init(pci_bus, devfn + 3, 0x1100,
-                                qdev_get_gpio_in_named(dev, "isa", 9),
-                                NULL, 0, NULL);
-     }
- 
--    pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s, PIIX_NUM_PIRQS);
--
-     return dev;
+-    return dev;
++    return pci;
  }
+diff --git a/hw/mips/malta.c b/hw/mips/malta.c
+index e446b25ad0..d4bd3549d0 100644
+--- a/hw/mips/malta.c
++++ b/hw/mips/malta.c
+@@ -1238,6 +1238,7 @@ void mips_malta_init(MachineState *machine)
+     int be;
+     MaltaState *s;
+     DeviceState *dev;
++    PCIDevice *piix4;
+ 
+     s = MIPS_MALTA(qdev_new(TYPE_MIPS_MALTA));
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
+@@ -1399,8 +1400,12 @@ void mips_malta_init(MachineState *machine)
+     empty_slot_init("GT64120", 0, 0x20000000);
+ 
+     /* Southbridge */
+-    dev = piix4_create(pci_bus, &smbus);
++    piix4 = piix4_create(pci_bus);
++    dev = DEVICE(piix4);
+     isa_bus = ISA_BUS(qdev_get_child_bus(dev, "isa.0"));
++    smbus = piix4_pm_init(pci_bus, piix4->devfn + 3, 0x1100,
++                          qdev_get_gpio_in_named(dev, "isa", 9),
++                          NULL, 0, NULL);
+ 
+     /* Interrupt controller */
+     qdev_connect_gpio_out_named(dev, "intr", 0, i8259_irq);
+diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
+index b768109f30..bea3b44551 100644
+--- a/include/hw/southbridge/piix.h
++++ b/include/hw/southbridge/piix.h
+@@ -74,6 +74,6 @@ DECLARE_INSTANCE_CHECKER(PIIX3State, PIIX3_PCI_DEVICE,
+ 
+ PIIX3State *piix3_create(PCIBus *pci_bus);
+ 
+-DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus);
++PCIDevice *piix4_create(PCIBus *pci_bus);
+ 
+ #endif
 -- 
 2.36.1
 
