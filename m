@@ -1,70 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1npRwo-0002xR-3S
-	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2022 05:50:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51290)
+	id 1npSdZ-0008Ln-Iq
+	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2022 06:35:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60772)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1npRwk-0002rM-UM
- for qemu-trivial@nongnu.org; Fri, 13 May 2022 05:50:54 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134]:34490)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1npSdW-0008Ka-T5; Fri, 13 May 2022 06:35:07 -0400
+Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f]:38876)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1npRwi-0005f6-W1
- for qemu-trivial@nongnu.org; Fri, 13 May 2022 05:50:54 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-2fb965b34easo84778477b3.1
- for <qemu-trivial@nongnu.org>; Fri, 13 May 2022 02:50:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1npSdU-0004FU-RA; Fri, 13 May 2022 06:35:06 -0400
+Received: by mail-qt1-x82f.google.com with SMTP id fu47so6478370qtb.5;
+ Fri, 13 May 2022 03:35:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=3YTnbfqNSSq55crGmMx6dDnfZ08hCd9gHpW0zzIk8f4=;
- b=UDlmOo962YiNl8oCm9EYJO336ui3wHptu4Twb2/Zol2lL06wrOHlJTW/XeSxGnidC5
- 80zqRlrQff8hTsgxHLFkQW0Il84HwDtKCW5Mo9mka4zJPCFykmZHH3Vzyz50BK6Pkm4m
- dAcbyYSZNXYvmxUDOD35xRoLsIpZeXlVWjnIYrB+2Q0vzX8fshCmyflMV8qqT5UJ1yAG
- Qt8vzI9ZcYkH0YEwGb2+XcFAC2mc7PxpHf80rJwskbnQ0tORdZnr9hBtwJApDxEY/eeF
- RY5AdGldigesFwNkxj7yvG1UZv2JPG+5C/Wnq0pXW6WdAPcL/EeDpyu+wRVSQkXphsqG
- ktkA==
+ bh=XmIsXPj4lKBZCvhM05b5Jn53tvM9nRvUPo30Su2jDGc=;
+ b=k6RQZgDnldx3zrCMr0/Aj43lcLcdJ9Bl2QwRfgoXHwhRKeJUCR5Kt2f1FdYQoBAuhA
+ a9gYqeFb679rMEnstpDkQYtHEVSH49owRw7kLuFCGUAMcR7ZnbDhoLvlHS++mlOKhXWQ
+ 8OXVGfRB7kiW02xLw/veX63HR8i9yQ1oI89Oj9qXh+6CClJbVMIKc6lyD2BmNkkCaiuW
+ Hp8t5t9KodenQmjasC3aqWZ8JPwDwVDxd5Xma2867354m6BK2wpLC0aQ76adAUH18gG5
+ BQaxcpMqXb/H9wqvCBs3h6wqCvt/QoVwr3TQJFDNKkIjR+xzw/vHEneMpcdvf8y+TuS9
+ 5y4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=3YTnbfqNSSq55crGmMx6dDnfZ08hCd9gHpW0zzIk8f4=;
- b=ulZ/s3/OaW+vtmoUxEMn0Ibckttj6xNsK+o8PKgtdtJFlvTKQkMqY4PTvRUsIqjof/
- +7o1gtXEI3tzCC8bgkHiqYr6VWwMQIziTudDnGt0wBc+x/pHKNqbDA8uEW3Hh/wsO6Q9
- wfJIg0Ros9nQqdlbaSNtJVndiv2KiBoihDnTYmXPKPdQ5+bn5u3jUCqbpFGGP+pzMBa6
- O+2mKFDBmLRZI9SK80gWl9lJGRrVX/ruj0/Tp3+MhkzMRT7jzQp5A7VB8QusSMEBLsSW
- UpRe4c5v79PyI9lRI2oSaJDVEMGfTg+lgxjOgVrC8AdlBPB9yh3IQ+G2lLbVYH1FSmLf
- fJiQ==
-X-Gm-Message-State: AOAM531YqNufVY400utc+x5RKN6QpBkOcDDfEMhd/pV7Tpkhm3VuWhOj
- wMhy0SWg7TSvtFI59I4y8C9j48EeDUWsKLyM+hK1SQ==
-X-Google-Smtp-Source: ABdhPJygCAVZgwC5b5QF6yKHna7K+R38/OfSkW88979qThXSJCnnZa9YR0Z9M7Kgw8jgF+KiFsoAuONUh/1ywzg+UYg=
-X-Received: by 2002:a81:106:0:b0:2d0:e682:8a7a with SMTP id
- 6-20020a810106000000b002d0e6828a7amr4853224ywb.257.1652435451187; Fri, 13 May
- 2022 02:50:51 -0700 (PDT)
+ bh=XmIsXPj4lKBZCvhM05b5Jn53tvM9nRvUPo30Su2jDGc=;
+ b=WQI7Hd+wUQlifa0SaePvpjxQqL4dfxNsm8QGbCC6VY8IV6itw1ib21a/BHGRYMNMYs
+ 4uVXdHbeAXMOgK2MRh0gg6JfV1Af9agtAg0EAgNGrih1I3TD0PLVfiIk/pPzQCnor3Ec
+ QBGTjEGmLdwQd+PTWxT3fI62JkSDrm5wYQ4qKlHB96KMGM1DzazFBc+Opsx773nexFOp
+ fRwWAl2hSm7Mv2k9iIQ4oAMTr35MGjbSq71bpXpLkB/wYabuYxYpZ1pBLLWeoXXK+TFM
+ 6NcMg797JpqkncAQ0Nm5SZPqlHlGUyIN46Zy3FAARt53E21ficEAVGvXdqci3QFZvpq5
+ jK8g==
+X-Gm-Message-State: AOAM531T+ARvMWbeG45INuzhUL48uuZFPU0LaU+vTDr7+F8hGyHmcNkn
+ CrIQ7GmSC+uMimQhaztyggQX+ARL59xzH2N5l7I=
+X-Google-Smtp-Source: ABdhPJyX2lkR9CJQuuL9m7vtkNetgWMRUvNlUymSEsjNr6mwV+CHHDpTMRnIngb+eKUh13Hq+08Vff/E0KTiJaJNhw0=
+X-Received: by 2002:a05:622a:5d4:b0:2f3:cdb0:816a with SMTP id
+ d20-20020a05622a05d400b002f3cdb0816amr3810165qtb.310.1652438103157; Fri, 13
+ May 2022 03:35:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220509202035.50335-1-philippe.mathieu.daude@gmail.com>
-In-Reply-To: <20220509202035.50335-1-philippe.mathieu.daude@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 May 2022 10:50:40 +0100
-Message-ID: <CAFEAcA9oEUHL0Z0+bSmP-Hx7e6TUdz=ahB5rgNgYt0GUytTTnQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/adc/zynq-xadc: Use qemu_irq typedef
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
- Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org, 
+References: <20220505161805.11116-1-shentey@gmail.com>
+ <20220505161805.11116-2-shentey@gmail.com>
+ <8b20e95a-33b3-929e-a94a-1d505ded174e@ilande.co.uk>
+In-Reply-To: <8b20e95a-33b3-929e-a94a-1d505ded174e@ilande.co.uk>
+From: Bernhard Beschow <shentey@gmail.com>
+Date: Fri, 13 May 2022 12:34:52 +0200
+Message-ID: <CAG4p6K4eRHb6vw-_eosmtqjvYY0UaNjmVCtCESaVTvogqEWQVA@mail.gmail.com>
+Subject: Re: [PATCH 01/11] hw/rtc/mc146818rtc: Inline isa_connect_gpio_out()
+ and remove it
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82f;
+ envelope-from=shentey@gmail.com; helo=mail-qt1-x82f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,26 +76,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 May 2022 09:50:55 -0000
+X-List-Received-Date: Fri, 13 May 2022 10:35:07 -0000
 
-On Mon, 9 May 2022 at 21:20, Philippe Mathieu-Daud=C3=A9
-<philippe.mathieu.daude@gmail.com> wrote:
+Am 11. Mai 2022 10:24:58 UTC schrieb Mark Cave-Ayland
+<mark.cave-ayland@ilande.co.uk>:
+>On 05/05/2022 17:17, Bernhard Beschow wrote:
 >
-> From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> Commit 250263033c5343012b2cd6f01210ffb5b908a159 'isa: introduce wrapper
+>> isa_connect_gpio_out' introduced it in 2016. Since then, its only user
+>> remained mc146818rtc. Remove this one-off solution.
+>>
+>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>> ---
+>>   hw/isa/isa-bus.c     | 6 ------
+>>   hw/rtc/mc146818rtc.c | 3 ++-
+>>   include/hw/isa/isa.h | 1 -
+>>   3 files changed, 2 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
+>> index 0ad1c5fd65..59eb1af9e3 100644
+>> --- a/hw/isa/isa-bus.c
+>> +++ b/hw/isa/isa-bus.c
+>> @@ -85,12 +85,6 @@ qemu_irq isa_get_irq(ISADevice *dev, unsigned isairq)
+>>       return isabus->irqs[isairq];
+>>   }
+>>   -void isa_connect_gpio_out(ISADevice *isadev, int gpioirq, unsigned is=
+airq)
+>> -{
+>> -    qemu_irq irq =3D isa_get_irq(isadev, isairq);
+>> -    qdev_connect_gpio_out(DEVICE(isadev), gpioirq, irq);
+>> -}
+>> -
+>>   void isa_bus_dma(ISABus *bus, IsaDma *dma8, IsaDma *dma16)
+>>   {
+>>       assert(bus && dma8 && dma16);
+>> diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+>> index f235c2ddbe..79c43391cb 100644
+>> --- a/hw/rtc/mc146818rtc.c
+>> +++ b/hw/rtc/mc146818rtc.c
+>> @@ -972,7 +972,8 @@ ISADevice *mc146818_rtc_init(ISABus *bus, int base_y=
+ear, qemu_irq intercept_irq)
+>>       if (intercept_irq) {
+>>           qdev_connect_gpio_out(dev, 0, intercept_irq);
+>>       } else {
+>> -        isa_connect_gpio_out(isadev, 0, s->isairq);
+>> +        qemu_irq irq =3D isa_get_irq(isadev, s->isairq);
+>> +        qdev_connect_gpio_out(dev, 0, irq);
+>>       }
+>>         object_property_add_alias(qdev_get_machine(), "rtc-time", OBJECT=
+(isadev),
+>> diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
+>> index 034d706ba1..1b758ae1ab 100644
+>> --- a/include/hw/isa/isa.h
+>> +++ b/include/hw/isa/isa.h
+>> @@ -90,7 +90,6 @@ ISABus *isa_bus_new(DeviceState *dev, MemoryRegion *ad=
+dress_space,
+>>                       MemoryRegion *address_space_io, Error **errp);
+>>   void isa_bus_irqs(ISABus *bus, qemu_irq *irqs);
+>>   qemu_irq isa_get_irq(ISADevice *dev, unsigned isairq);
+>> -void isa_connect_gpio_out(ISADevice *isadev, int gpioirq, unsigned isai=
+rq);
+>>   void isa_bus_dma(ISABus *bus, IsaDma *dma8, IsaDma *dma16);
+>>   IsaDma *isa_get_dma(ISABus *bus, int nchan);
+>>   MemoryRegion *isa_address_space(ISADevice *dev);
 >
-> Except hw/core/irq.c which implements the forward-declared opaque
-> qemu_irq structure, hw/adc/zynq-xadc.{c,h} are the only files not
-> using the typedef. Fix this single exception.
+>Hi Bernhard,
+
+Hi Mark,
+
+>I've been tinkering again with trying to improve QEMU's ISA implementation=
+ to use gpios, and actually I believe as per the comment in isa-bus.c that =
+isa_connect_gpio_out() will be the preferred way to wire up ISA devices. So=
+ really we should be trying to use this function more rather than removing =
+it.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/adc/zynq-xadc.c         | 4 ++--
->  include/hw/adc/zynq-xadc.h | 3 +--
->  2 files changed, 3 insertions(+), 4 deletions(-)
+>BTW if you are interested in helping to work on ISA bus improvements, I ca=
+n certainly come up with a TODO list of useful tasks :)
 
+Yes, that'd be great!
 
+As expressed earlier [1] I'd like to remove the isabus global in
+isa-bus.c. Meanwhile, I implemented a POC [2]. While the result seems
+to work for the PC and Malta boards, some of the changes required
+don't seem quite clean. So yeah, I'd be interested in the bigger
+picture regarding ISA improvements and would like to help out as time
+permits, too.
 
-Applied to target-arm.next, thanks.
+Best regards,
+Bernhard
 
--- PMM
+[1] https://lists.nongnu.org/archive/html/qemu-devel/2022-03/msg05955.html
+[2] https://github.com/shentok/qemu/commits/isa
+
+>
+>ATB,
+>
+>Mark.
 
