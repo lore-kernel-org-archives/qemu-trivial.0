@@ -1,62 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1npSdZ-0008Ln-Iq
-	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2022 06:35:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60772)
+	id 1npShm-0006I4-LE
+	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2022 06:39:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33506)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1npSdW-0008Ka-T5; Fri, 13 May 2022 06:35:07 -0400
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f]:38876)
+ id 1npShl-0006F2-NS; Fri, 13 May 2022 06:39:29 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:34442)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1npSdU-0004FU-RA; Fri, 13 May 2022 06:35:06 -0400
-Received: by mail-qt1-x82f.google.com with SMTP id fu47so6478370qtb.5;
- Fri, 13 May 2022 03:35:03 -0700 (PDT)
+ id 1npShj-00050L-SE; Fri, 13 May 2022 06:39:29 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id a21so9489070edb.1;
+ Fri, 13 May 2022 03:39:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=XmIsXPj4lKBZCvhM05b5Jn53tvM9nRvUPo30Su2jDGc=;
- b=k6RQZgDnldx3zrCMr0/Aj43lcLcdJ9Bl2QwRfgoXHwhRKeJUCR5Kt2f1FdYQoBAuhA
- a9gYqeFb679rMEnstpDkQYtHEVSH49owRw7kLuFCGUAMcR7ZnbDhoLvlHS++mlOKhXWQ
- 8OXVGfRB7kiW02xLw/veX63HR8i9yQ1oI89Oj9qXh+6CClJbVMIKc6lyD2BmNkkCaiuW
- Hp8t5t9KodenQmjasC3aqWZ8JPwDwVDxd5Xma2867354m6BK2wpLC0aQ76adAUH18gG5
- BQaxcpMqXb/H9wqvCBs3h6wqCvt/QoVwr3TQJFDNKkIjR+xzw/vHEneMpcdvf8y+TuS9
- 5y4A==
+ h=date:from:to:cc:subject:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=NaT6dXW76wXDq+p+wA+rsrTa1VclrnPzN5iPMNxtyQ0=;
+ b=KCccBMjrRQr70Ns+NajKXJexQZNNkQ+qmt3pXwDHVEPwNBhwD83kWtrD5SRcjBJDv5
+ IYLwFu5GXSrl/Pv70af5KNUzi0nuO6m4CYTdTmN2UjuCsre+frDr5OkCgPb2oae8WTuU
+ LWlbt5HAKFm0ShqzhSLSP8BdpilxohLtjhvyBxcvKq37qW2K3sAJTvuE5bRiF0VtlM19
+ o4iF5mEUL1P75nI9PhutPIUDKCddv91s2BOsiAAAdCkN3fBa5kTHpM3BevZbZtqwWQlO
+ h3OvHK1jUNJA52NaEvGhuCVhEwNpi29xXuzjyftYNrrtsa7P33oL3VJJ81xVyNBhv9Co
+ 2v2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=XmIsXPj4lKBZCvhM05b5Jn53tvM9nRvUPo30Su2jDGc=;
- b=WQI7Hd+wUQlifa0SaePvpjxQqL4dfxNsm8QGbCC6VY8IV6itw1ib21a/BHGRYMNMYs
- 4uVXdHbeAXMOgK2MRh0gg6JfV1Af9agtAg0EAgNGrih1I3TD0PLVfiIk/pPzQCnor3Ec
- QBGTjEGmLdwQd+PTWxT3fI62JkSDrm5wYQ4qKlHB96KMGM1DzazFBc+Opsx773nexFOp
- fRwWAl2hSm7Mv2k9iIQ4oAMTr35MGjbSq71bpXpLkB/wYabuYxYpZ1pBLLWeoXXK+TFM
- 6NcMg797JpqkncAQ0Nm5SZPqlHlGUyIN46Zy3FAARt53E21ficEAVGvXdqci3QFZvpq5
- jK8g==
-X-Gm-Message-State: AOAM531T+ARvMWbeG45INuzhUL48uuZFPU0LaU+vTDr7+F8hGyHmcNkn
- CrIQ7GmSC+uMimQhaztyggQX+ARL59xzH2N5l7I=
-X-Google-Smtp-Source: ABdhPJyX2lkR9CJQuuL9m7vtkNetgWMRUvNlUymSEsjNr6mwV+CHHDpTMRnIngb+eKUh13Hq+08Vff/E0KTiJaJNhw0=
-X-Received: by 2002:a05:622a:5d4:b0:2f3:cdb0:816a with SMTP id
- d20-20020a05622a05d400b002f3cdb0816amr3810165qtb.310.1652438103157; Fri, 13
- May 2022 03:35:03 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220505161805.11116-1-shentey@gmail.com>
- <20220505161805.11116-2-shentey@gmail.com>
- <8b20e95a-33b3-929e-a94a-1d505ded174e@ilande.co.uk>
-In-Reply-To: <8b20e95a-33b3-929e-a94a-1d505ded174e@ilande.co.uk>
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=NaT6dXW76wXDq+p+wA+rsrTa1VclrnPzN5iPMNxtyQ0=;
+ b=08RuxlT5qfuKvzb/g5biuaebFY9Ej1pFO/kUWKY4GAAbF1nzjHvZmL1QFQ+EnJbYSM
+ /4bzwySEUNTEqq7WxlkujY4P4HR7m8qXeJgZ4ZRcSBj31+trm+LvTAg/qIfn2CfqYXLm
+ Fqjo4eOTOJ83I++InTfdk8PJhpVap/ZnedxcvvQPuyjN7aqKOHSuVEu8StinNmi17sS2
+ iwdAG5F51U4qMLEaGzpbSg3qQlPTwRy9CRjp2MU0KSY1hb0aWN3figh0FlNL9UAexSps
+ Azj4uZfFmz2Gvmhjba2NrRnjfJI1UGHfA1izSQYFsmVDFTypuJOQ8k9mnfa1Vvn6JIB0
+ +YGw==
+X-Gm-Message-State: AOAM532QHyYJl5X+7MblFCAD5pK2zum8RH+GgZfHF5C1hPCmE16z8GC7
+ aC0D5rvbfzoitkNgCJ+QRuL375WRp8Q=
+X-Google-Smtp-Source: ABdhPJzZgW8+uAzjWsQlXNKnV8HDWRGLj/0FpTyx2niKsp8a4LfUeHfHPIgNI0qH0FwKDEoqVLeclQ==
+X-Received: by 2002:a05:6402:158a:b0:426:9efd:57a with SMTP id
+ c10-20020a056402158a00b004269efd057amr38617706edv.85.1652438365317; 
+ Fri, 13 May 2022 03:39:25 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-089-014-181-123.89.14.pool.telefonica.de.
+ [89.14.181.123]) by smtp.gmail.com with ESMTPSA id
+ k2-20020aa7d8c2000000b0042617ba63d4sm771188eds.94.2022.05.13.03.39.24
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 13 May 2022 03:39:24 -0700 (PDT)
+Date: Fri, 13 May 2022 10:39:22 +0000
 From: Bernhard Beschow <shentey@gmail.com>
-Date: Fri, 13 May 2022 12:34:52 +0200
-Message-ID: <CAG4p6K4eRHb6vw-_eosmtqjvYY0UaNjmVCtCESaVTvogqEWQVA@mail.gmail.com>
-Subject: Re: [PATCH 01/11] hw/rtc/mc146818rtc: Inline isa_connect_gpio_out()
- and remove it
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+To: qemu-devel@nongnu.org
+CC: qemu-trivial@nongnu.org
+Subject: Re: [PATCH RESEND 0/2] Resolve some redundant property accessors
+In-Reply-To: <A987D65D-940B-4827-B547-92D27FBBA46E@gmail.com>
+References: <20220301225220.239065-1-shentey@gmail.com>
+ <A987D65D-940B-4827-B547-92D27FBBA46E@gmail.com>
+Message-ID: <A5F957DF-375E-4CFF-BF01-4714064E5C7B@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82f;
- envelope-from=shentey@gmail.com; helo=mail-qt1-x82f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -76,100 +77,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 May 2022 10:35:07 -0000
+X-List-Received-Date: Fri, 13 May 2022 10:39:30 -0000
 
-Am 11. Mai 2022 10:24:58 UTC schrieb Mark Cave-Ayland
-<mark.cave-ayland@ilande.co.uk>:
->On 05/05/2022 17:17, Bernhard Beschow wrote:
->
->> Commit 250263033c5343012b2cd6f01210ffb5b908a159 'isa: introduce wrapper
->> isa_connect_gpio_out' introduced it in 2016. Since then, its only user
->> remained mc146818rtc. Remove this one-off solution.
+Am 5=2E Mai 2022 16:52:13 UTC schrieb Bernhard Beschow <shentey@gmail=2Ecom=
+>:
+>Am 1=2E M=C3=A4rz 2022 22:52:18 UTC schrieb Bernhard Beschow <shentey@gma=
+il=2Ecom>:
+>>No changes=2E Just also CC'ed to qemu-trivial=2E
 >>
->> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->> ---
->>   hw/isa/isa-bus.c     | 6 ------
->>   hw/rtc/mc146818rtc.c | 3 ++-
->>   include/hw/isa/isa.h | 1 -
->>   3 files changed, 2 insertions(+), 8 deletions(-)
+>>The QOM API already provides appropriate accessors, so reuse them=2E
 >>
->> diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
->> index 0ad1c5fd65..59eb1af9e3 100644
->> --- a/hw/isa/isa-bus.c
->> +++ b/hw/isa/isa-bus.c
->> @@ -85,12 +85,6 @@ qemu_irq isa_get_irq(ISADevice *dev, unsigned isairq)
->>       return isabus->irqs[isairq];
->>   }
->>   -void isa_connect_gpio_out(ISADevice *isadev, int gpioirq, unsigned is=
-airq)
->> -{
->> -    qemu_irq irq =3D isa_get_irq(isadev, isairq);
->> -    qdev_connect_gpio_out(DEVICE(isadev), gpioirq, irq);
->> -}
->> -
->>   void isa_bus_dma(ISABus *bus, IsaDma *dma8, IsaDma *dma16)
->>   {
->>       assert(bus && dma8 && dma16);
->> diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
->> index f235c2ddbe..79c43391cb 100644
->> --- a/hw/rtc/mc146818rtc.c
->> +++ b/hw/rtc/mc146818rtc.c
->> @@ -972,7 +972,8 @@ ISADevice *mc146818_rtc_init(ISABus *bus, int base_y=
-ear, qemu_irq intercept_irq)
->>       if (intercept_irq) {
->>           qdev_connect_gpio_out(dev, 0, intercept_irq);
->>       } else {
->> -        isa_connect_gpio_out(isadev, 0, s->isairq);
->> +        qemu_irq irq =3D isa_get_irq(isadev, s->isairq);
->> +        qdev_connect_gpio_out(dev, 0, irq);
->>       }
->>         object_property_add_alias(qdev_get_machine(), "rtc-time", OBJECT=
-(isadev),
->> diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
->> index 034d706ba1..1b758ae1ab 100644
->> --- a/include/hw/isa/isa.h
->> +++ b/include/hw/isa/isa.h
->> @@ -90,7 +90,6 @@ ISABus *isa_bus_new(DeviceState *dev, MemoryRegion *ad=
-dress_space,
->>                       MemoryRegion *address_space_io, Error **errp);
->>   void isa_bus_irqs(ISABus *bus, qemu_irq *irqs);
->>   qemu_irq isa_get_irq(ISADevice *dev, unsigned isairq);
->> -void isa_connect_gpio_out(ISADevice *isadev, int gpioirq, unsigned isai=
-rq);
->>   void isa_bus_dma(ISABus *bus, IsaDma *dma8, IsaDma *dma16);
->>   IsaDma *isa_get_dma(ISABus *bus, int nchan);
->>   MemoryRegion *isa_address_space(ISADevice *dev);
+>>Testing done:
+>>
+>>  :$ make check
+>>  Ok:                 570
+>>  Expected Fail:      0
+>>  Fail:               0
+>>  Unexpected Pass:    0
+>>  Skipped:            178
+>>  Timeout:            0
+>>
+>>
+>>Bernhard Beschow (2):
+>>  hw/vfio/pci-quirks: Resolve redundant property getters
+>>  hw/riscv/sifive_u: Resolve redundant property accessors
+>>
+>> hw/riscv/sifive_u=2Ec  | 24 ++++--------------------
+>> hw/vfio/pci-quirks=2Ec | 34 +++++++++-------------------------
+>> 2 files changed, 13 insertions(+), 45 deletions(-)
+>>
 >
->Hi Bernhard,
-
-Hi Mark,
-
->I've been tinkering again with trying to improve QEMU's ISA implementation=
- to use gpios, and actually I believe as per the comment in isa-bus.c that =
-isa_connect_gpio_out() will be the preferred way to wire up ISA devices. So=
- really we should be trying to use this function more rather than removing =
-it.
+>Ping
 >
->BTW if you are interested in helping to work on ISA bus improvements, I ca=
-n certainly come up with a TODO list of useful tasks :)
-
-Yes, that'd be great!
-
-As expressed earlier [1] I'd like to remove the isabus global in
-isa-bus.c. Meanwhile, I implemented a POC [2]. While the result seems
-to work for the PC and Malta boards, some of the changes required
-don't seem quite clean. So yeah, I'd be interested in the bigger
-picture regarding ISA improvements and would like to help out as time
-permits, too.
-
-Best regards,
-Bernhard
-
-[1] https://lists.nongnu.org/archive/html/qemu-devel/2022-03/msg05955.html
-[2] https://github.com/shentok/qemu/commits/isa
-
+>First round of trivial patches went already in for 7=2E1, hence a reminde=
+r=2E
 >
->ATB,
->
->Mark.
+>Best regards,
+>Bernhard
+Ping 2
 
