@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nqY5x-0006cD-28
-	for mharc-qemu-trivial@gnu.org; Mon, 16 May 2022 06:36:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48272)
+	id 1nqhgf-0005Zc-SC
+	for mharc-qemu-trivial@gnu.org; Mon, 16 May 2022 16:51:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58472)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1nqY5v-0006aA-DJ
- for qemu-trivial@nongnu.org; Mon, 16 May 2022 06:36:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:21647)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1nqhge-0005XQ-Lq
+ for qemu-trivial@nongnu.org; Mon, 16 May 2022 16:51:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:44051)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1nqY5t-0005KP-DK
- for qemu-trivial@nongnu.org; Mon, 16 May 2022 06:36:55 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1nqhgc-0006Po-UG
+ for qemu-trivial@nongnu.org; Mon, 16 May 2022 16:51:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1652697412;
+ s=mimecast20190719; t=1652734286;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
  bh=7SkfgM5LP5kRZHpaFT+JBmZUEdF/ThWL8FHFjzYg3vs=;
- b=f+ArDXAuFBf3A6/e8xFx8QAXZp+G6fGBqzR9FSdH0Z00QTHQafQTeioLDg1fQiUJYJ/KVl
- NQdmEwK3vX9Nv8MsNo0Y2nq+EeB8aBu3PQzrzSQdd056khh+m8NTm4j/qLW64yIYvmxQ8z
- 4tmXTATDVfWNFXswDv0ypbnGknjgWfM=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ b=RsyJsVk13hyUPPa2fOXizVypAyTEEK+b/c+fgsAwpZSF3cNgHiP1d/U56Gg45sF6yWpZ2i
+ r7QpmtxAg8XvL1OZZYUhxV83Jk9/aSBwV3oZC7QPCpOsYHC0GFziTi+nJc1vQ1cnFuTRjF
+ cWBMGrO47SwphehBuwzGSMefifxz5pc=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-443-ND_w0HJYPC-jbE0uDvFXTA-1; Mon, 16 May 2022 06:36:51 -0400
-X-MC-Unique: ND_w0HJYPC-jbE0uDvFXTA-1
-Received: by mail-wm1-f69.google.com with SMTP id
- g14-20020a1c4e0e000000b0039425ef54d6so5434572wmh.9
- for <qemu-trivial@nongnu.org>; Mon, 16 May 2022 03:36:51 -0700 (PDT)
+ us-mta-176-1OZ6wqBdMO6eqRrV6H_V1g-1; Mon, 16 May 2022 16:51:25 -0400
+X-MC-Unique: 1OZ6wqBdMO6eqRrV6H_V1g-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ q12-20020a056402040c00b0042a84f9939dso4546383edv.7
+ for <qemu-trivial@nongnu.org>; Mon, 16 May 2022 13:51:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
  bh=7SkfgM5LP5kRZHpaFT+JBmZUEdF/ThWL8FHFjzYg3vs=;
- b=kFs07f2pKCYDjkoI0Qqig093MtOq7Im4p0nIBx2RRklmCqLdoMtYCbn8VV+TarYNhz
- al4N7KM441VChvEM8tECTtDnLDU1qT0OEFRkSSEPKz+C7ZEbTHROFEuyK84cqvwC3TCo
- 6YajjjdhTc8sOgYDb8lv62X2IHya5K1SdvatRkwnZOVWT7WM69F0DHt6cp2q15b2jDf2
- m5VecMSfmDE9PNpfIuWJD/G5CB2Cyst80iSseBjsVV6R4Ogod5nWNMiG+8zfiDoLzyBC
- RPP/En5nPdtamRrDngEMYCFpGa5C8uPcQzKkWqQPfbxsB2iM8+2JBXDEgTD3xVztHsXt
- OhHA==
-X-Gm-Message-State: AOAM533iYMcW29Zvh9nibA2/tA0C0CWEiLqtBN57YId7Pamrjx3M0RyG
- OUAvoaRBfjUP/H+yUX56Ik7hbGkdYHg8ufqF0RYNMqfm9p/jvAyZh4YdfSc8rUupksWnwTpzY3z
- Jsyt0dff8l1eDhArNwA==
-X-Received: by 2002:a05:600c:1c97:b0:394:7a2e:a83c with SMTP id
- k23-20020a05600c1c9700b003947a2ea83cmr26747903wms.175.1652697410358; 
- Mon, 16 May 2022 03:36:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxspPAbSbPyNFfKdZ24l3qldtfKL4YUouMuF9hOM8n0HzjQ+E2AfoJ9VYpEHkuvPAgXq8a0AA==
-X-Received: by 2002:a05:600c:1c97:b0:394:7a2e:a83c with SMTP id
- k23-20020a05600c1c9700b003947a2ea83cmr26747882wms.175.1652697410148; 
- Mon, 16 May 2022 03:36:50 -0700 (PDT)
-Received: from redhat.com ([2.55.141.66]) by smtp.gmail.com with ESMTPSA id
- p12-20020a5d59ac000000b0020c5253d925sm9983488wrr.113.2022.05.16.03.36.48
+ b=Moss3KmiCQcDXMtb4QOfTIgizCs+uJdK4sqYvBNbn97VMIrB+jqboA19XnKxneIIxG
+ zQNNgEoJ1xkC1aTxLLgIpayolhkZplW5zw5WC05DCogU8v1DkflTsH1l/b8iMUOHMNlj
+ CIERYgEzEEoF0DKnPMGVB8lZEI1Eo9QyyEKeBIc7GENHhdPodaD73GvUMFrxbfxsXZLN
+ BOCj6kvDVvHUZikqZO5/3xC+oy7L5SMLWbgt+OCuFVqISDX0kGMQ+wuIfXQRU90c387C
+ 8QyPgtgoiGE4xWhGrOnzRbzl13SiMWz8UR6z5yokWdZM/7/CZMB0KfzRSZ5+Prxs12qw
+ KeQA==
+X-Gm-Message-State: AOAM530Q8/saqrGPxQB0dh6wW+e3JvWVSVDGkSaLuZk+KlSa5/FYHi86
+ wegP6JLylA17PXR1B88KT2LyrVj2lcFqaYRWFCwyZloXMXZxVkDT5XzNE+LgKMh3F0CcRbz/5CY
+ btEQVHx1kBdTCCEOSUQ==
+X-Received: by 2002:a17:906:f2c8:b0:6f5:18a1:c410 with SMTP id
+ gz8-20020a170906f2c800b006f518a1c410mr16651075ejb.281.1652734283664; 
+ Mon, 16 May 2022 13:51:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjrnki4yo/lr+DkL/Z0ghRc0x+D1Pl9UewxGG5nCo0E88FDy3F9dYL61xjp4k5W6a3/p9cyQ==
+X-Received: by 2002:a17:906:f2c8:b0:6f5:18a1:c410 with SMTP id
+ gz8-20020a170906f2c800b006f518a1c410mr16651055ejb.281.1652734283429; 
+ Mon, 16 May 2022 13:51:23 -0700 (PDT)
+Received: from redhat.com ([2.55.131.38]) by smtp.gmail.com with ESMTPSA id
+ ek27-20020a056402371b00b0042617ba63c0sm5496728edb.74.2022.05.16.13.51.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 May 2022 03:36:49 -0700 (PDT)
-Date: Mon, 16 May 2022 06:36:47 -0400
+ Mon, 16 May 2022 13:51:22 -0700 (PDT)
+Date: Mon, 16 May 2022 16:51:20 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -59,11 +59,11 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
-Subject: [PULL 21/91] hw/cxl/device: Add some trivial commands
-Message-ID: <20220516095448.507876-22-mst@redhat.com>
-References: <20220516095448.507876-1-mst@redhat.com>
+Subject: [PULL v2 21/86] hw/cxl/device: Add some trivial commands
+Message-ID: <20220516204913.542894-22-mst@redhat.com>
+References: <20220516204913.542894-1-mst@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20220516095448.507876-1-mst@redhat.com>
+In-Reply-To: <20220516204913.542894-1-mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
 Authentication-Results: relay.mimecast.com;
@@ -72,7 +72,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -93,7 +93,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 May 2022 10:36:55 -0000
+X-List-Received-Date: Mon, 16 May 2022 20:51:28 -0000
 
 From: Ben Widawsky <ben.widawsky@intel.com>
 
