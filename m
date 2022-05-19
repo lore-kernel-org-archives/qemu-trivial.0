@@ -1,70 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nqv79-0005Mn-Rd
-	for mharc-qemu-trivial@gnu.org; Tue, 17 May 2022 07:11:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35392)
+	id 1nrhA7-0007hl-Kk
+	for mharc-qemu-trivial@gnu.org; Thu, 19 May 2022 10:29:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48170)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nqv78-0005Lg-9p; Tue, 17 May 2022 07:11:42 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:44699)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nqv76-0006Zg-JB; Tue, 17 May 2022 07:11:41 -0400
-Received: by mail-ej1-x632.google.com with SMTP id i19so33946584eja.11;
- Tue, 17 May 2022 04:11:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:in-reply-to:references:message-id
- :mime-version:content-transfer-encoding;
- bh=U2ekewmZuR009TTZCxacJubRHTKtnotb/GkgBBPv5TM=;
- b=gfEPhSL3CKBV+Cz1+VZ5M+IFwlSuxrfpKNzm/h40EMjOBysowX/iYaVcxQ1ZaL8BFq
- 7KeN2sKN1zLyh39Yld5MvDwkpODznU+jSKrFLojW7cb0DzUIQpMrSEacK9xcMSUaHuWA
- xJpUlHq7xLemXfBmSL79a03ScZLnGrJebzp/QiMCBYrveoeoNg+wvhX9KHC7Fo1vJ0hq
- O7K89fYGK56LwNtXFMrA8L/9Pg8nx7oqP5OwEoRtjDBtkz9mVvm6I8jnmj6uznbjHvWM
- EPKodJEH8k5pWFIQOEWnkfUwE8uFkvPf3iCNgEbySoDxjscHK8f1aD83c0rkrTMeLqw7
- gpVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
- :message-id:mime-version:content-transfer-encoding;
- bh=U2ekewmZuR009TTZCxacJubRHTKtnotb/GkgBBPv5TM=;
- b=Jw0xLUvusYWX1NzmnCjayIDZ8UT46gl3LkyX6aEBH6C3WHkWZPOTO+fDtSETYrAD2R
- AsvudqSPziaCtUNdmIGHfqXN9egq8FDLaAW+4IjGGY0AUOw0n50YoQH5UHtfDenQvS0N
- 2JKdfqYuFFHxYiU+BwpWF+GJuAjBH01euMtku1048Oaj1RkRNdgKStAg/E5a0QqskWtZ
- 0PidhwKmwIOEFhsuimF44n0hXh68xjkKw3qWfXhJ46iHGhQQwDH/MB26/fYT15nKbtuY
- e2bOvGfWIuzJ1zKkrjnNzuJHT4bsFAu2f2AiS6rw42/5SihlLAPC23MqKEVukuZtihcN
- ZEpg==
-X-Gm-Message-State: AOAM530HTV8S/5Jigq762ai8mao0yyXSqicOmiwP1CwDtdHdnvevnuyO
- 4/HDrnONoWAszFilJcJeSeo=
-X-Google-Smtp-Source: ABdhPJx+DNmKFJ1y9wGdmSXY3nvIWoIRv/cLJ5zpi/1FCyhy34hZaojY8tgP3+xFhJw8DYitoLWaPg==
-X-Received: by 2002:a17:907:3e2a:b0:6f4:d700:2e65 with SMTP id
- hp42-20020a1709073e2a00b006f4d7002e65mr19726037ejc.624.1652785896770; 
- Tue, 17 May 2022 04:11:36 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-183-163-155.77.183.pool.telefonica.de.
- [77.183.163.155]) by smtp.gmail.com with ESMTPSA id
- dt2-20020a170906b78200b006f4c24495e7sm916739ejb.33.2022.05.17.04.11.36
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 17 May 2022 04:11:36 -0700 (PDT)
-Date: Tue, 17 May 2022 11:11:34 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Alistair Francis <alistair23@gmail.com>
-CC: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH RESEND 0/2] Resolve some redundant property accessors
-In-Reply-To: <CAKmqyKP52UZkjez9YyToZqWbOKyJ_xgAZK0NTpE--Z=DRMea=A@mail.gmail.com>
-References: <20220301225220.239065-1-shentey@gmail.com>
- <CAKmqyKP52UZkjez9YyToZqWbOKyJ_xgAZK0NTpE--Z=DRMea=A@mail.gmail.com>
-Message-ID: <ED86B551-E7CF-4241-B67C-CFD2DE35EBDE@gmail.com>
+ (Exim 4.90_1)
+ (envelope-from <prvs=13100c9ce=anthony.perard@citrix.com>)
+ id 1nrhA5-0007d1-6x; Thu, 19 May 2022 10:29:57 -0400
+Received: from esa1.hc3370-68.iphmx.com ([216.71.145.142]:24959)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1)
+ (envelope-from <prvs=13100c9ce=anthony.perard@citrix.com>)
+ id 1nrhA2-00066d-Hi; Thu, 19 May 2022 10:29:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=citrix.com; s=securemail; t=1652970594;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=r9lkrrxfjkjFuwcAENsqT/4XhkccjDDyecQwXCzjSPY=;
+ b=AFheTfYcClJMnnxb5RY2Ow1RcmoiAYiraTKWf6rwFlmx0AYLdglURw2g
+ x6LitFi+1UWp79RlReC7zvAjXjAcNHo+TMQb3d3q0Q2qsIKTTStYOBPaH
+ TCxbvGLHZ6+vIoRg2+KHLvNKp+aYvLXRfwJQrFozQevr+WB12SNMHQgq+ s=;
+Authentication-Results: esa1.hc3370-68.iphmx.com;
+ dkim=none (message not signed) header.i=none
+X-SBRS: 5.1
+X-MesageID: 72097988
+X-Ironport-Server: esa1.hc3370-68.iphmx.com
+X-Remote-IP: 162.221.156.83
+X-Policy: $RELAYED
+IronPort-Data: A9a23:v3GPyqzBMmFL99XFBYd6t+dowSrEfRIJ4+MujC+fZmUNrF6WrkVWy
+ zEZXziPM/vYZzanf9skOYuy9EkB6JSGytNkG1dsqSAxQypGp/SeCIXCJC8cHc8zwu4v7q5Dx
+ 59DAjUVBJlsFhcwnj/0bv656yMUOZigHtIQMsadUsxKbVIiGX5JZS5LwbZj2NY12InhWmthh
+ PupyyHhEA79s9JLGjp8B5Kr8HuDa9yr5Vv0FnRnDRx6lAe2e0s9VfrzFonoR5fMeaFGH/bSe
+ gr25OrRElU1XfsaIojNfr7TKiXmS1NJVOSEoiI+t6OK2nCuqsGuu0qS2TV1hUp/0l20c95NJ
+ Nplm4WdSy1wAZL1le1MahQFOjk9Eb140eqSSZS/mZT7I0zudnLtx7NlDV0sPJ1e8eFyaY1M3
+ aVGcnZXNEnF3r/ohuLgIgVvrp1LwM3DNYUDunZm3HfBAOwvW5zrSKTW/95Imjw3g6iiGN6BP
+ ZJINms/PHwsZTUfEFE6NbwXld6npXDOXmRakUy/lfEetj27IAtZj+G2bYu9lsaxbcBOgm6Cq
+ 27G9ni/CRYfXPSSxSeM6H6rru/GlyD8Q55UErCkntZwgVaTz3YfTh0bU1e2u+K+jGa6WtRWM
+ UtS/TAhxYAr+Um2C9P5WBa7iHiDuBEaRpxXCeJSwAOWzK3LyxyUCmgNUnhKb9lOnMo/Xzcn0
+ hmAh93kATZmrbi9RneU97PSpjS3UQANJ2gEdy4CTCMf7tXjqZ11hRXKJv56Hauoy8HvGC/xy
+ jSiqi84iLMOy8kR2M2T5F3Cnnegq4bESiYz4QPYWH/j6Rl2DKa+Z4Gu9VXKxflFJYedCFKGu
+ RAsi8WYqewDE5yJvCiMW/kWWqGk4e6fNz/RikIpGIMunxy18mOnVZBd5nd5PkgBGt0fZTbjb
+ UvXuAVQzJxeJn2naelweY3ZNigx5fG+T5K/DKmSN4cQJMgqHOOawM1wTWCJ8mLHyXcTqKw2a
+ K6WLO+0TloKN40ymVJaWNwh+bMswyk/w0baSpb60wmr3NKiWZKFdVsWGADQN75ktctotC2Qq
+ o8CbJXSl32zRcWkOkHqHZgvwUfmxJTRLbT/sIRpe+GKOWKK80lxWqaKkdvNl2GI9pm5d9skH
+ FngAye0K3Kl3BUrzDlmjVg6MdvSsW5X9y5TAMDVFQ/AN4IfSYiu9rwDUJA8YKMq8udupdYtE
+ aRfK5zaXqkWFG+fk9j4UXUahNUyHClHeCrUZ3b1CNTBV8AIq/P1Fi/MIVK0qXhm4tufvsoiu
+ bywvj43srJYLzmO+P3+Mar1p3vo5CB1sLsrAyPgf4kCEG2xodMCA3Gg0ZcKzzQkdEyrKs2yj
+ F3NX3/1ZIDl/ucIzTU+rfnU8NjyS7EmRSK33QDztN6LCMUTxUL7qacobQpCVWq1uL/ckEl6W
+ dho8g==
+IronPort-HdrOrdr: A9a23:OeyjjKD0QigQIbzlHemu55DYdb4zR+YMi2TC1yhKKCC9Vvbo8P
+ xG/c5rsSMc5wx8ZJhNo7+90ey7MBXhHP1OkOws1NWZLWrbUQKTRekIh+bfKn/bak/DH4ZmpN
+ 5dmsNFaOEYY2IVsfrH
+X-IronPort-AV: E=Sophos;i="5.91,237,1647316800"; d="scan'208";a="72097988"
+Date: Thu, 19 May 2022 15:29:42 +0100
+From: Anthony PERARD <anthony.perard@citrix.com>
+To: Bernhard Beschow <shentey@gmail.com>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
+ <sstabellini@kernel.org>, <paul@xen.org>, <xen-devel@lists.xenproject.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson
+ <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, John Snow <jsnow@redhat.com>, "open list:IDE"
+ <qemu-block@nongnu.org>
+Subject: Re: [PATCH v2 1/3] hw/ide/piix: Remove redundant "piix3-ide-xen"
+ device class
+Message-ID: <YoZUVvjL0EFjvqgj@perard.uk.xensource.com>
+References: <20220513180957.90514-1-shentey@gmail.com>
+ <20220513180957.90514-2-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20220513180957.90514-2-shentey@gmail.com>
+Received-SPF: pass client-ip=216.71.145.142;
+ envelope-from=prvs=13100c9ce=anthony.perard@citrix.com;
+ helo=esa1.hc3370-68.iphmx.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,52 +92,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 May 2022 11:11:42 -0000
+X-List-Received-Date: Thu, 19 May 2022 14:29:57 -0000
 
-Am 17=2E Mai 2022 03:41:51 UTC schrieb Alistair Francis <alistair23@gmail=
-=2Ecom>:
->On Wed, Mar 2, 2022 at 8:54 AM Bernhard Beschow <shentey@gmail=2Ecom> wro=
-te:
->>
->> No changes=2E Just also CC'ed to qemu-trivial=2E
->>
->> The QOM API already provides appropriate accessors, so reuse them=2E
->>
->> Testing done:
->>
->>   :$ make check
->>   Ok:                 570
->>   Expected Fail:      0
->>   Fail:               0
->>   Unexpected Pass:    0
->>   Skipped:            178
->>   Timeout:            0
->>
->>
->> Bernhard Beschow (2):
->>   hw/vfio/pci-quirks: Resolve redundant property getters
->>   hw/riscv/sifive_u: Resolve redundant property accessors
->
->Thanks!
->
->Applied to riscv-to-apply=2Enext
+On Fri, May 13, 2022 at 08:09:55PM +0200, Bernhard Beschow wrote:
+> Commit 0f8445820f11a69154309863960328dda3dc1ad4 'xen: piix reuse pci
+> generic class init function' already resolved redundant code which in
+> turn rendered piix3-ide-xen redundant.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 
-Finally :)
+Creating a guest and migrating a guest seems to work fine without
+"piix3-ide-xen", and I can't find this name used outside of QEMU. So I
+guess it's fine to remove it.
+
+Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
 
 Thanks,
-Bernhard
 
->
->Alistair
->
->>
->>  hw/riscv/sifive_u=2Ec  | 24 ++++--------------------
->>  hw/vfio/pci-quirks=2Ec | 34 +++++++++-------------------------
->>  2 files changed, 13 insertions(+), 45 deletions(-)
->>
->> --
->> 2=2E35=2E1
->>
->>
-
+-- 
+Anthony PERARD
 
