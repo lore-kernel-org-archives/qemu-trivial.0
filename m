@@ -1,67 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ns6wb-0003xi-LA
-	for mharc-qemu-trivial@gnu.org; Fri, 20 May 2022 14:01:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37858)
+	id 1ns6wc-0003yC-3f
+	for mharc-qemu-trivial@gnu.org; Fri, 20 May 2022 14:01:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ns6wY-0003rM-5d; Fri, 20 May 2022 14:01:42 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:43866)
+ id 1ns6wZ-0003uU-Jr; Fri, 20 May 2022 14:01:43 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:45880)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ns6wW-0004Fd-Cp; Fri, 20 May 2022 14:01:41 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id m20so16968911ejj.10;
- Fri, 20 May 2022 11:01:39 -0700 (PDT)
+ id 1ns6wX-0004FL-QJ; Fri, 20 May 2022 14:01:43 -0400
+Received: by mail-ej1-x633.google.com with SMTP id jx22so3546763ejb.12;
+ Fri, 20 May 2022 11:01:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=2JfOSXedVx9zd/uj2U6R7U6NlLpjul8WVbgYbN02e5g=;
- b=ebi6bPToYWk4BUV0EvqKGDP4zpqySNZ5ajFoul4NlDAsyQ9VnbgpoLQNFtCST15sT6
- e4zIIIPnfx92vC8olRbiNk6+bHskr78u49dmD3HCUX0aGzMj1/3i1hT6nXgcIGP8s6bK
- xwe0xLau48k178Yuxeai+nbI/C3/HMN3k5t8aQHPMAgB8rsOdYD2ssH1cJGOzgtdy5sF
- BORXnpnEuURlCZL2+cG1QSXqWPGtGk/OG3s+OVhlTZoZC+VaN7/qKOfrxme0Rdvw3ray
- cZmLknuyKKYbUuoUCBaaGmXmHAyk6rmEw5QEqBtNmwOj/hDtGTmRoBZbIv7CPsFuhUNf
- YkuA==
+ bh=N+TZy6cwDLZ0W5+ZsmiQT5X+1/OysDgnSgLOs65PewU=;
+ b=d7Jnv7UHRd14Umu1RL0OZv6I+x4H8W4Bur+KLwbLvUoKeBl3Eifyn0Ow1p4GlnTevs
+ uuzz+4HFVbtGLU9RtTcjdqyKRZRKBQO6PtIeV513NW+jqYRS5kWBLVSGve9mGK6QXaMK
+ /0jlnSxYYGIn9vBW3avN+pql5LoveOnalfwufRzsS3pmlMi0VUTbDj+c/AJod9slaG0y
+ bQOFI8CHduIIs34SoSUisnc5moN+VgG7BgKvnuCaNubO4P6ARGwNfEQR0mcbkNvJ9zoT
+ gDEeudaFzhRSqy74B7F+ZElOTur0mhprg52GsJrGJhrcgC7X6PQyeMypfYLeAAMUSqzV
+ bnhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=2JfOSXedVx9zd/uj2U6R7U6NlLpjul8WVbgYbN02e5g=;
- b=Pfp/+Wt9XJn3pF+VYscPftVyDcaYRb7v4Ymu7y8RsEvyWjRz4ZIt8tLWC+ajO20vQI
- rAUSYNJOoWWxHzGIPqoN6wlqfIsznXq5eCKTZSumrELCN+pjzoUisYkwlxf75TlY6/gd
- wU+GRfkGc2Dzs3XBB+P+1R5bh3lmKXyE618Aw6d0Mccash+vY5yAhfYNfV7tZq0d41Kr
- nf7Bz5NwARCwVN0bMtCOY7GuOGvNKOrLfsFcMILrr5uRN3KchKrlLgo7W+pYwgqs9tcO
- fq3Nv8vUskwuBSSA1eQXTV0s3ezfjjue21+L3byntFj+HofSjpfkE5tAdjhAFzSI3Yo/
- yaUA==
-X-Gm-Message-State: AOAM532hSqjB/yEs/MDiESs5RvmzDa+UWxcf7TA3Xy6y2R46hyMNv8Kc
- +I7/7Wzsu+GriWlnlse8M4vyS1uwW8c=
-X-Google-Smtp-Source: ABdhPJwAIa6JMAX7NhXQXDdrHB+Phu01dccMM8fqoIQabowHveKI/UR660lBBeZwSOXexcNvHK95bQ==
-X-Received: by 2002:a17:907:9609:b0:6f4:d4d7:7c82 with SMTP id
- gb9-20020a170907960900b006f4d4d77c82mr9467330ejc.483.1653069698191; 
- Fri, 20 May 2022 11:01:38 -0700 (PDT)
+ bh=N+TZy6cwDLZ0W5+ZsmiQT5X+1/OysDgnSgLOs65PewU=;
+ b=vITvo3JQEj1MZzRJx+QKNNaiaZZ2iSa0Z5eqfj88stHTgPwK43ULRbPABKCBNVN3V9
+ JJNTkglgaBtdScsDKo1ujNoY7rVC7RpvrZ8Y/DCEIDip9AfcspwgkS8EpQHXvCHXnDp3
+ CXm3obFSHya4l2N9vR42e690H9F07MkvGquAy7c2SydidIaIPoNhccLJswdhpSmBCiw8
+ ARhFtra0TgKsdC+aS1/LLK6gwtCjbjWjtZf0YBOBVd980BruM/jPszXzFVVmtzy0IIil
+ 8gxX3FGKorJQbnkD59WN8nAMNI/Qx1CQ+tZom19AkHbaZNDFdgVTDTbafpCEYtnjfLny
+ 8A1A==
+X-Gm-Message-State: AOAM533A+87oHShaRMgKnq4t3II2YEEd0lMGo1vefwFV7zV22IvmuMTD
+ gtBQd9r7Za++CZJPZSFnSI/GH1BaUXc=
+X-Google-Smtp-Source: ABdhPJw77nI3S/cFQpHPboGsZZVYFvKCqEe7eQw2YiVrb7sF3TwDgNPbjCFax1n3mZtq7RmVWOR6kw==
+X-Received: by 2002:a17:907:e92:b0:6fa:8125:c92a with SMTP id
+ ho18-20020a1709070e9200b006fa8125c92amr10147571ejc.45.1653069700693; 
+ Fri, 20 May 2022 11:01:40 -0700 (PDT)
 Received: from localhost.localdomain
  (dynamic-089-014-209-236.89.14.pool.telefonica.de. [89.14.209.236])
  by smtp.gmail.com with ESMTPSA id
- w5-20020aa7cb45000000b0042aa7e0f892sm4622029edt.15.2022.05.20.11.01.37
+ w5-20020aa7cb45000000b0042aa7e0f892sm4622029edt.15.2022.05.20.11.01.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 May 2022 11:01:37 -0700 (PDT)
+ Fri, 20 May 2022 11:01:40 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v2 03/10] hw/i386/pc: Unexport PC_CPU_MODEL_IDS macro
-Date: Fri, 20 May 2022 20:01:02 +0200
-Message-Id: <20220520180109.8224-4-shentey@gmail.com>
+Subject: [PATCH v2 05/10] hw/i386/pc: Remove orphan declarations
+Date: Fri, 20 May 2022 20:01:04 +0200
+Message-Id: <20220520180109.8224-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220520180109.8224-1-shentey@gmail.com>
 References: <20220520180109.8224-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -81,56 +78,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 May 2022 18:01:42 -0000
-
-The macro seems to be used only internally, so remove it.
+X-List-Received-Date: Fri, 20 May 2022 18:01:44 -0000
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Acked-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/i386/pc.c         | 9 +++++++++
- include/hw/i386/pc.h | 8 --------
- 2 files changed, 9 insertions(+), 8 deletions(-)
+ include/hw/i386/pc.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index c914ac0154..2ffaac52fb 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -96,6 +96,15 @@
- #include "trace.h"
- #include CONFIG_DEVICES
- 
-+/*
-+ * Helper for setting model-id for CPU models that changed model-id
-+ * depending on QEMU versions up to QEMU 2.4.
-+ */
-+#define PC_CPU_MODEL_IDS(v) \
-+    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
-+    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
-+    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
-+
- GlobalProperty pc_compat_7_0[] = {};
- const size_t pc_compat_7_0_len = G_N_ELEMENTS(pc_compat_7_0);
- 
 diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index ffcac5121e..38be346a13 100644
+index cb491fc43b..9c1d1c0a7c 100644
 --- a/include/hw/i386/pc.h
 +++ b/include/hw/i386/pc.h
-@@ -287,14 +287,6 @@ extern const size_t pc_compat_1_5_len;
- extern GlobalProperty pc_compat_1_4[];
- extern const size_t pc_compat_1_4_len;
- 
--/* Helper for setting model-id for CPU models that changed model-id
-- * depending on QEMU versions up to QEMU 2.4.
-- */
--#define PC_CPU_MODEL_IDS(v) \
--    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
--    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
--    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
+@@ -170,9 +170,6 @@ void pc_cmos_init(PCMachineState *pcms,
+                   BusState *ide0, BusState *ide1,
+                   ISADevice *s);
+ void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus);
+-void pc_pci_device_init(PCIBus *pci_bus);
 -
- #define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
-     static void pc_machine_##suffix##_class_init(ObjectClass *oc, void *data) \
-     { \
+-typedef void (*cpu_set_smm_t)(int smm, void *arg);
+ 
+ void pc_i8259_create(ISABus *isa_bus, qemu_irq *i8259_irqs);
+ 
 -- 
 2.36.1
 
