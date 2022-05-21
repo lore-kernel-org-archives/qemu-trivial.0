@@ -1,42 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nsDGX-0000UF-Ej
-	for mharc-qemu-trivial@gnu.org; Fri, 20 May 2022 20:46:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57602)
+	id 1nsK8I-00053M-HM
+	for mharc-qemu-trivial@gnu.org; Sat, 21 May 2022 04:06:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lkujaw@member.fsf.org>)
- id 1nsCQS-0005XH-CN; Fri, 20 May 2022 19:52:56 -0400
-Received: from mout-u-107.mailbox.org ([80.241.59.207]:51761)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_CHACHA20_POLY1305:256)
- (Exim 4.90_1) (envelope-from <lkujaw@member.fsf.org>)
- id 1nsCQQ-0002h6-QA; Fri, 20 May 2022 19:52:56 -0400
-Received: from smtp1.mailbox.org (smtp1.mailbox.org
- [IPv6:2001:67c:2050:b231:465::1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (No client certificate requested)
- by mout-u-107.mailbox.org (Postfix) with ESMTPS id 4L4k754QQLz9sSg;
- Sat, 21 May 2022 01:52:49 +0200 (CEST)
-From: Lev Kujawski <lkujaw@member.fsf.org>
-To: qemu-trivial@nongnu.org
-Cc: Lev Kujawski <lkujaw@member.fsf.org>, John Snow <jsnow@redhat.com>,
- qemu-block@nongnu.org (open list:IDE),
- qemu-devel@nongnu.org (open list:All patches CC here)
-Subject: [PATCH] ide_ioport_read: Return lower octet of data register instead
- of 0xFF
-Date: Fri, 20 May 2022 23:52:00 +0000
-Message-Id: <20220520235200.1138450-1-lkujaw@member.fsf.org>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nsK8D-00051V-4C; Sat, 21 May 2022 04:06:37 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:44668)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nsK8B-0008R1-0M; Sat, 21 May 2022 04:06:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=KneofULAbAsyUtKW2b3s9I5+VrMV5EtWm9AwdsWEs/g=; b=blsiWM0AVSCdtB8EtrS1QpXDaq
+ MKyKTJrx2MJ+ajr4jHfuXGp42f/2TKkrl70d507hpnqmPPQJrWm8hlZa2W1szhELbXTbJ+0lWFX4L
+ PwKGp/tI38kQIQzG2rE+N3UA8NZ3dUGroboNx3/fWlS4P+NdKtW/2dhIkl1467m7+nn31GhC03nRh
+ iGIeOHiX8p1BbxwNceisMzHt/TTF86VraBLtyh81Fei9rsVu5a74EXl4Wi78U3o7LJJFu18yllfFm
+ fYgv7eL5hIVAbrtO4ilxj4tQvONFapNto0W9KrYInd/11mGrvKwpana92JNHS5vaFQXTnSvNFm7tA
+ pk73xcK9RnFQtBcXSdwn4BsqkySJBXZE9Jgq9V50/5HwZU9gcHSmksVgh4WWSQ4pkmTGCQnMXGE7d
+ VFO0GquiZtXmgWhjhfQ6TNbBJLgrzeUh+LrqGWk4G/wnE81o8jl9zlRkwk4T4XQApmIN/HoFyR4lT
+ mzV8UxkNTZ1b+AGbTclZkPU5cmnxZOMWUQ7McoTe6j2+fvFt/O6zrzob4XwSy3n/W25cpwj/KeILO
+ xwY1G9vJrP4CIFfLLrcXnofC+aVBJQza4np1nY2jC08/Ii+m7MsmVB2Hk/K4vU25ljub1bnz9AbNV
+ NJNbT2AOSbKQBRuDWMM8HtHRHGz68HJS+ILuqdJWQ=;
+Received: from host86-135-55-247.range86-135.btcentralplus.com
+ ([86.135.55.247] helo=[192.168.50.176])
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nsK75-000A1g-29; Sat, 21 May 2022 09:05:31 +0100
+Message-ID: <ae830cac-8d63-4f29-cfaf-51f947ebd523@ilande.co.uk>
+Date: Sat, 21 May 2022 09:06:23 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Rspamd-Queue-Id: 4L4k754QQLz9sSg
-Received-SPF: pass client-ip=80.241.59.207; envelope-from=lkujaw@member.fsf.org;
- helo=mout-u-107.mailbox.org
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
+ <hpoussin@reactos.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20220513175445.89616-1-shentey@gmail.com>
+ <20220513175445.89616-2-shentey@gmail.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20220513175445.89616-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.135.55.247
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 1/6] include/hw: Move TYPE_PIIX4_PCI_DEVICE to
+ southbridge/piix.h
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 20 May 2022 20:46:40 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,50 +75,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 May 2022 23:52:56 -0000
+X-List-Received-Date: Sat, 21 May 2022 08:06:38 -0000
 
-Prior to this patch, the pre-GRUB Solaris x86 bootloader would fail to
-load on QEMU with the following screen output:
+On 13/05/2022 18:54, Bernhard Beschow wrote:
 
-SunOS Secondary Boot version 3.00
+> TYPE_PIIX3_PCI_DEVICE resides there as well.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   include/hw/isa/isa.h          | 2 --
+>   include/hw/southbridge/piix.h | 2 ++
+>   2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
+> index 034d706ba1..e9fa2f5cea 100644
+> --- a/include/hw/isa/isa.h
+> +++ b/include/hw/isa/isa.h
+> @@ -144,6 +144,4 @@ static inline ISABus *isa_bus_from_device(ISADevice *d)
+>       return ISA_BUS(qdev_get_parent_bus(DEVICE(d)));
+>   }
+>   
+> -#define TYPE_PIIX4_PCI_DEVICE "piix4-isa"
+> -
+>   #endif
+> diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
+> index f63f83e5c6..a304fc6041 100644
+> --- a/include/hw/southbridge/piix.h
+> +++ b/include/hw/southbridge/piix.h
+> @@ -70,6 +70,8 @@ typedef struct PIIXState PIIX3State;
+>   DECLARE_INSTANCE_CHECKER(PIIX3State, PIIX3_PCI_DEVICE,
+>                            TYPE_PIIX3_PCI_DEVICE)
+>   
+> +#define TYPE_PIIX4_PCI_DEVICE "piix4-isa"
+> +
+>   PIIX3State *piix3_create(PCIBus *pci_bus, ISABus **isa_bus);
+>   
+>   DeviceState *piix4_create(PCIBus *pci_bus, ISABus **isa_bus, I2CBus **smbus);
 
-prom_panic: Could not mount filesystem.
-Entering boot debugger:
-[136419]: _
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-This occurs because the bootloader issues an ATA IDENTIFY DEVICE
-command, and then reads the resulting 256 words of parameter
-information using inb rather than the correct inw. As the previous
-behavior of QEMU was to return 0xFF and not advance the drive's sector
-buffer, DRQ would never be cleared and the bootloader would be blocked
-from selecting a secondary ATA device, such as an optical drive.
 
-Resolves:
-* [Bug 1639394] Unable to boot Solaris 8/9 x86 under Fedora 24
+ATB,
 
-Signed-off-by: Lev Kujawski <lkujaw@member.fsf.org>
----
- hw/ide/core.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/hw/ide/core.c b/hw/ide/core.c
-index 3a5afff5d7..c2caa54285 100644
---- a/hw/ide/core.c
-+++ b/hw/ide/core.c
-@@ -2166,7 +2166,11 @@ uint32_t ide_ioport_read(void *opaque, uint32_t addr)
-     hob = bus->cmd & (IDE_CTRL_HOB);
-     switch (reg_num) {
-     case ATA_IOPORT_RR_DATA:
--        ret = 0xff;
-+        /*
-+         * The pre-GRUB Solaris x86 bootloader relies upon inb
-+         * consuming a word from the drive's sector buffer.
-+         */
-+        ret = ide_data_readw(bus, addr) & 0xff;
-         break;
-     case ATA_IOPORT_RR_ERROR:
-         if ((!bus->ifs[0].blk && !bus->ifs[1].blk) ||
--- 
-2.34.1
-
+Mark.
 
