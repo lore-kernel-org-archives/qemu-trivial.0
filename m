@@ -1,51 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nsKnN-0007gf-V5
-	for mharc-qemu-trivial@gnu.org; Sat, 21 May 2022 04:49:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54748)
+	id 1nsLHS-0004lP-3q
+	for mharc-qemu-trivial@gnu.org; Sat, 21 May 2022 05:20:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsKnG-0007fB-5p; Sat, 21 May 2022 04:49:02 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:44798)
+ id 1nsLHI-0004jM-RC; Sat, 21 May 2022 05:20:07 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:44832)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsKnE-00067Y-LE; Sat, 21 May 2022 04:49:01 -0400
+ id 1nsLHH-0001qw-6c; Sat, 21 May 2022 05:20:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
  In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=y5TCq19/3COv1+K29StwKAqRGzoA7qsUy+O/T7yyrZ4=; b=zD6/hFkjMg9x0jXZNhiLExWuVk
- Tjbi3+QKGCXbm4DFrJQ1mO4ZQ7Ysf6JWLbZ5O+3fmYVHX2Vx4hqVucOt64GdxfWy0Mp/yfIPrGfvE
- rOYQKyRDnj4/2D3SPArv1xIAknxQ9uOfmL7fdW4e5xNyNdrC7e3PVT6q5sLsP1UBkcBl1IQ+7KyfY
- V/20GD4dqOJQaiVJ77nthgBGT7b/kc5qP9XysLh/rwGcG+MBd3+SlaLaVEfJuud0T2UlxdaD7eyvV
- jidYJD+nB9z+iAJigfnTwdZir04r+aWWi46W8uNoJGjhbp9COSc1gaZjG8GLI4f/zYJM04BsDrj4e
- h61IPzpl6+LE4XZupQJvXn040syBkxlSzlrtqCzwvxiWgA6XNJj8ox42ALdiPikZRPOfdttTZujWu
- 1zcX+lywpxtg7C/pcuCA87CVhLqcTtdtdKVAmHL4kRuSASVSmgzqZUYBahl1eJKWMjWnhXvH/8tkv
- kp7SSjmiMQO9MdzDG9iNVFZ2OopJKKyvrZ4i0sDbU/SbnFECzPRl5HPDYciIbgae6iXWwQjyh0FbR
- 6ycjLkPRTJhv9qZ4h4WUHCrdme82xpN/DGLJXHG3IAOyt85p0XMDwuX5Xn6ZpJCNM/TOgAkeJiWgR
- ENgEYMNUGk0z+HG0BDeiZ2zeoDQfq99rfaIWTlrXA=;
-Received: from host86-135-55-247.range86-135.btcentralplus.com
- ([86.135.55.247] helo=[192.168.50.176])
+ bh=73YO+S4rnJwl+SzIEUsYYRgLMCILcLfGiRGqOh4wZf4=; b=g8lWxMUmItfWb/XtTegkDpWPhV
+ go7tQcgEA6LnPftW16JwY5IzTenx+Kum5yqUVKTehySuU6+pAUDK2q6WW3+H2pjKN4/TGjyKkvOtf
+ BS9g7OglLaLD1SaLBI8nKwjOEq4BbOaaflfa7sqyF3wFeVLwESu/hwt2u3SI6eBuDY2RCrz9ywzh9
+ YfdI60Nrn4gwOx1CEYO6TqmSWqvExZmiBnn6dFjnktDFO5sNKRICPhi4q8A8Ay5+/KEMh1K94EHXZ
+ 7+f4NCrG5wrx079XFXyT9NHmBKJSf+nMAdotCL6ku/QaW6Wi6WT1H3Lq/tddwW5FDtQWze+ClnGmI
+ VsTdd0PUP0TioV/eo1iUpmh8WEiH7vuGHxd4TDGA8DF/651Agmoh9eLcyfqNdzZwM1CeznBDNh1ce
+ Stfbdut8xrBRl6nRz++jR4fYQo1VHjAWmHZuVe13PbM9xz05BAO0blQThpEZ1hPIzYtFISt5wS8uh
+ 3agivxWxHAfQLd1YywzYvhlwM9800AHUm5mSSMPqe7OrUUPdCaoPTMe/sgMDSqgBZdesfvUkdXHUH
+ ArwLjz3yknPBTQwnsjKKBU33Sz1ZThNtr4m4IwsWrnzwIBcN/5IgomobWxIz5WlcZxaVC8tkoMW2u
+ sLJu7Pr4MbRphr7t2vDPR8W8AQuBKaFUQhBurVLDQ=;
+Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nsKmF-000AKw-8s; Sat, 21 May 2022 09:47:59 +0100
-Message-ID: <3b381726-1bf3-06b3-c989-6b0ee564b90f@ilande.co.uk>
-Date: Sat, 21 May 2022 09:48:58 +0100
+ id 1nsLGC-000AY1-Mo; Sat, 21 May 2022 10:19:00 +0100
+Message-ID: <09cf8b54-189b-b03f-1ddd-e414c9c9c9aa@ilande.co.uk>
+Date: Sat, 21 May 2022 10:19:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20220513175445.89616-1-shentey@gmail.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20220520174537.5827-1-shentey@gmail.com>
+ <20220520174537.5827-2-shentey@gmail.com>
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20220513175445.89616-1-shentey@gmail.com>
+In-Reply-To: <20220520174537.5827-2-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 86.135.55.247
+X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 0/6] QOM'ify PIIX southbridge creation
+Subject: Re: [PATCH 1/2] hw/i386/microvm-dt: Determine mc146818rtc's IRQ
+ number from QOM property
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -69,48 +73,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 May 2022 08:49:05 -0000
+X-List-Received-Date: Sat, 21 May 2022 09:20:09 -0000
 
-On 13/05/2022 18:54, Bernhard Beschow wrote:
+On 20/05/2022 18:45, Bernhard Beschow wrote:
 
-> The piix3 and piix4 southbridge devices still rely on create() functions which
-> are deprecated. This series resolves these functions piece by piece to
-> modernize the code.
+> Since commit 3b004a16540aa41f2aa6a1ceb0bf306716766914 'hw/rtc/
+> mc146818rtc: QOM'ify IRQ number' mc146818rtc's IRQ number is
+> configurable. Fix microvm-dt to respect its value.
 > 
-> Both devices are modified in lockstep where possible to provide more context.
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/i386/microvm-dt.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Testing done:
-> * `qemu-system-x86_64 -M pc -m 2G -cdrom archlinux-2022.05.01-x86_64.iso`
-> * `qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda debian_wheezy_mipsel_standard.qcow2 -append "root=/dev/sda1 console=tty0"`
-> 
-> In both cases the system booted successfully and it was possible to shut down
-> the system using the `poweroff` command.
-> 
-> Bernhard Beschow (6):
->    include/hw: Move TYPE_PIIX4_PCI_DEVICE to southbridge/piix.h
->    hw/isa/piix{3,4}: Move pci_map_irq_fn's near pci_set_irq_fn's
->    hw/isa/piix{3,4}: QOM'ify PCI device creation and wiring
->    hw/isa/piix{3,4}: Factor out ISABus retrieval from create() functions
->    hw/isa/piix4: Factor out SM bus initialization from create() function
->    hw/isa/piix{3,4}: Inline and remove create() functions
-> 
->   hw/i386/pc_piix.c             |  7 ++-
->   hw/isa/piix3.c                | 98 +++++++++++++++++++----------------
->   hw/isa/piix4.c                | 91 +++++++++++++-------------------
->   hw/mips/malta.c               |  9 +++-
->   include/hw/isa/isa.h          |  2 -
->   include/hw/southbridge/piix.h |  6 +--
->   6 files changed, 105 insertions(+), 108 deletions(-)
+> diff --git a/hw/i386/microvm-dt.c b/hw/i386/microvm-dt.c
+> index 9c3c4995b4..a5db9e4e5a 100644
+> --- a/hw/i386/microvm-dt.c
+> +++ b/hw/i386/microvm-dt.c
+> @@ -208,7 +208,7 @@ static void dt_add_isa_serial(MicrovmMachineState *mms, ISADevice *dev)
+>   static void dt_add_isa_rtc(MicrovmMachineState *mms, ISADevice *dev)
+>   {
+>       const char compat[] = "motorola,mc146818";
+> -    uint32_t irq = RTC_ISA_IRQ;
+> +    uint32_t irq = object_property_get_uint(OBJECT(dev), "irq", NULL);
+>       hwaddr base = RTC_ISA_BASE;
+>       hwaddr size = 8;
+>       char *nodename;
 
-I've just reviewed these, and other than a couple of minor issues these look good to 
-me and definitely help to improve the code.
+Rather than using NULL as the last parameter to object_property_get_uint() I think 
+using &error_abort to force an explicit failure if the irq property doesn't exist 
+would be better.
 
-One thing reading over this patches has made me realise is that there is quite a 
-model violation here in that the PIIX3 and PIIX4 devices (which are the PCI-ISA 
-bridges) are actually setting the PCI host bridge IRQs(!). What should happen is that 
-the PCI bus IRQs and routing should be done in the PCI host bridge, and gpios used in 
-the PCI-ISA bridges to pass them up. But that's definitely something outside the 
-scope of these improvements.
+Otherwise:
+
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
 
 ATB,
