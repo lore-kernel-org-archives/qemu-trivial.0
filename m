@@ -1,69 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nskj9-0001R7-A7
-	for mharc-qemu-trivial@gnu.org; Sun, 22 May 2022 08:30:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56458)
+	id 1nssQz-0004b5-55
+	for mharc-qemu-trivial@gnu.org; Sun, 22 May 2022 16:44:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38286)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nskj6-0001Qb-Ud; Sun, 22 May 2022 08:30:28 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:46884)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nskj5-0003io-3L; Sun, 22 May 2022 08:30:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=tQxUQ8oHktyJVNH6H7XQu8y4qHkocL7TNLAWsBcwCl0=; b=QG8TMPnIgk4ttu4o1f7bqhbadw
- NC5wdqpmKUr4n4m3eUWIgunVzjwXCIMxknnrL5fjFVEV6dW5nxee6JNfXg3UlCu9V8VK3Y+X7nmFB
- z6f0F4e5ORCT1F9AlfZBbQaEqWuGy567MuFaogQ2uwWE9KbfJ28wme5S3yMHWdX6CX3JU24oxK14j
- Mz8fWO1FgrS+9Ir/s+3kMFx1nUNsPtns0GHkJz7yMmEllC0tJTRpNIHukFOqNY7JGAZc1jfZV4rZg
- JfblGGzXT/ArfKz7M4DU8iiLMrMW6Gzh4fxB+PSvA+Dvu0ns3bAtrleYcwsSldNvzol4aio+EsU6K
- X/DNgiLQWqZIHly205CGpSAb005yemJUGi/JOEysxdhhfn3R3IRGaLszRqK7hSuGAeX0N1ZWbB28W
- JG/DrbknEhNUSpXg88HLpR9wxTtkxfN9ugov73vmR6hZub6+E1BfXVLDBTVJVKWwqhgIIOPN0Y1AP
- aUqFjcnILWiRBf66KfMCXj3daPPUdLOAHCKGS//rl9OeH2vh8v+UJ0m7iRcQRDMruzuAfOB1ZhsM0
- N78TSTEZSsQ+hx0xg3RvFuKT69I6joEpSwKl8nhH77iPOccnJMg5qlnsdhCgf5JDECxN3oUNhcMEf
- ettVfSZEtFIqjlV/4+DflibP8mJQ+iPNV1Lb+1Dww=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nski0-0006Ew-8N; Sun, 22 May 2022 13:29:24 +0100
-Message-ID: <515928bc-d8f6-c5e6-9a64-efcd2306dae7@ilande.co.uk>
-Date: Sun, 22 May 2022 13:30:18 +0100
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nssQx-0004aO-Tg; Sun, 22 May 2022 16:44:15 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:43736)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nssQw-0008Pr-DV; Sun, 22 May 2022 16:44:15 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id c12so16777347eds.10;
+ Sun, 22 May 2022 13:44:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=YcC/TUH7i+LAdz51RJT5WEUI8nBIPKDhEK48jgTbIgM=;
+ b=k93+ZnUqoTObNv3ouoh2+YdE1CSIGyV7Z9k7pVShGnyISPtM4k88dRu4UbIhHSw76C
+ JA6d3H9fjg/EQ7C/PGfF/HCQpr3ISIyeFd2pXxxFdUfBUdJnNGcd+kbERv/4lCc+5Rgk
+ 3eLE0wyaVvRFMq5K+K5HIs0m/CR1rtcuvnC5X/Cc9k1WV1gE0vQLOBdH4TfyqkbDqbM2
+ Kv4u6hRxcSSnH9pMrMMS0dGziKTgnZuFgqzSCV56p6doamZtnxvhF4aAyh/jrYKFuRQ+
+ 08XvDZOhiEDbkMfgIYvrc8nN34cZJH2oKzOSRv+CgZwiiVL1+IGOLmMbEW6K5xfWOt8Q
+ qcjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=YcC/TUH7i+LAdz51RJT5WEUI8nBIPKDhEK48jgTbIgM=;
+ b=DIaHzOXRzSo7C15F0HL5ZlF8iZayoJFB0gISrnel0WqyCKLhKglCYSiM+lByyTLd4q
+ DqgsZMQx3YwOQKZ8xT3+Mh13/2jOm26hn5pCFlr2VcX0HUtEi4cwcFZKaIJeEEt+2mL4
+ +0gOcAXwQQ0nHlAOKbNQ7fLJ39q1qizDh2CuGYcrvr+eHhZu1VJT9DJZCLPN3GpjSEJm
+ 1l96fZKMLm9nwt4J2jD7r5Z1SE9Cu8t6U3aQ+ysRkvJ7M3Y8VKe+b74D5Csq19/Tt7/x
+ CoW1URDU39wZ0rPDyNGze/9JbjZcSO5wHN135hgFk2KaOc4+cY1W1mcdHo+FMAgzrpH8
+ gs0g==
+X-Gm-Message-State: AOAM533YaFxLlDjy9L96LySF7uBpGg7Ihhuxy/3YBWOw6ePEYmj/MpWY
+ F5OWlmAHDKojbIKMu47xsfhReSr2VRc=
+X-Google-Smtp-Source: ABdhPJwfovmQ3wOz4+4nGzv4JGRIzV0erZvNKYOBhf/NosPXL/BNUMYKxw68TnwglhA2y9DtJJh96g==
+X-Received: by 2002:a05:6402:3682:b0:42a:c348:7248 with SMTP id
+ ej2-20020a056402368200b0042ac3487248mr21153243edb.197.1653252252276; 
+ Sun, 22 May 2022 13:44:12 -0700 (PDT)
+Received: from localhost.localdomain
+ (dynamic-078-054-075-232.78.54.pool.telefonica.de. [78.54.75.232])
+ by smtp.gmail.com with ESMTPSA id
+ f8-20020a1709063f4800b006f4c82c2b12sm5533968ejj.19.2022.05.22.13.44.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 22 May 2022 13:44:11 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v2 0/3] QOM improvements for rtc/mc146818rtc
+Date: Sun, 22 May 2022 22:43:44 +0200
+Message-Id: <20220522204347.10438-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Aurelien Jarno <aurelien@aurel32.net>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <20220513175445.89616-1-shentey@gmail.com>
- <20220513175445.89616-6-shentey@gmail.com>
- <ca32eb63-7a23-706c-cf17-6f74da7f2161@ilande.co.uk>
- <CAG4p6K5smE4G3xTf-miJ5OCgV4y7_BUkORccOpMTjcvPC-GROQ@mail.gmail.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <CAG4p6K5smE4G3xTf-miJ5OCgV4y7_BUkORccOpMTjcvPC-GROQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 5/6] hw/isa/piix4: Factor out SM bus initialization from
- create() function
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -77,121 +75,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 May 2022 12:30:29 -0000
+X-List-Received-Date: Sun, 22 May 2022 20:44:16 -0000
 
-On 22/05/2022 10:21, Bernhard Beschow wrote:
+v2:
+* Explicitly fail with &error_abort rather than NULL (Mark)
+* Explicitly fail with &error_abort rather than NULL in existing code (me)
+* Unexport rather than remove RTC_ISA_BASE (Mark)
+* Use object_property_get_*u*int() also for "iobase" (me)
 
-> On Sat, May 21, 2022 at 10:39 AM Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk 
-> <mailto:mark.cave-ayland@ilande.co.uk>> wrote:
-> 
->     On 13/05/2022 18:54, Bernhard Beschow wrote:
-> 
->      > Initialize the SM bus just like is done for piix3 which modernizes the
->      > code.
->      >
->      > Signed-off-by: Bernhard Beschow <shentey@gmail.com <mailto:shentey@gmail.com>>
->      > ---
->      >   hw/isa/piix4.c                | 15 +++------------
->      >   hw/mips/malta.c               |  7 ++++++-
->      >   include/hw/southbridge/piix.h |  2 +-
->      >   3 files changed, 10 insertions(+), 14 deletions(-)
->      >
->      > diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
->      > index 4968c69da9..852e5c4db1 100644
->      > --- a/hw/isa/piix4.c
->      > +++ b/hw/isa/piix4.c
->      > @@ -301,21 +301,12 @@ static void piix4_register_types(void)
->      >
->      >   type_init(piix4_register_types)
->      >
->      > -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus)
->      > +PCIDevice *piix4_create(PCIBus *pci_bus)
->      >   {
->      >       PCIDevice *pci;
->      > -    DeviceState *dev;
->      > -    int devfn = PCI_DEVFN(10, 0);
->      >
->      > -    pci = pci_create_simple_multifunction(pci_bus, devfn,  true,
->      > +    pci = pci_create_simple_multifunction(pci_bus, PCI_DEVFN(10, 0), true,
->      >                                             TYPE_PIIX4_PCI_DEVICE);
->      > -    dev = DEVICE(pci);
->      >
->      > -    if (smbus) {
->      > -        *smbus = piix4_pm_init(pci_bus, devfn + 3, 0x1100,
->      > -                               qdev_get_gpio_in_named(dev, "isa", 9),
->      > -                               NULL, 0, NULL);
->      > -    }
->      > -
->      > -    return dev;
->      > +    return pci;
->      >   }
-> 
->     I don't think it makes sense to return PCIDevice here: when returning a QOM object
->     from a function, the general expectation is that for a device you would return a
->     DeviceState since then it can natively be used by the qdev API. So please keep the
->     original return type above.
-> 
-> 
-> Okay, will do.
-> 
-> I've been toying with moving piix4_pm_init() into piix4_realize(), such that it is 
-> created as part of TYPE_PIIX4_PCI_DEVICE - just as the real hardware. I think I like 
-> this solution much better.
-> 
-> 
->      > diff --git a/hw/mips/malta.c b/hw/mips/malta.c
->      > index e446b25ad0..d4bd3549d0 100644
->      > --- a/hw/mips/malta.c
->      > +++ b/hw/mips/malta.c
->      > @@ -1238,6 +1238,7 @@ void mips_malta_init(MachineState *machine)
->      >       int be;
->      >       MaltaState *s;
->      >       DeviceState *dev;
->      > +    PCIDevice *piix4;
->      >
->      >       s = MIPS_MALTA(qdev_new(TYPE_MIPS_MALTA));
->      >       sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
->      > @@ -1399,8 +1400,12 @@ void mips_malta_init(MachineState *machine)
->      >       empty_slot_init("GT64120", 0, 0x20000000);
->      >
->      >       /* Southbridge */
->      > -    dev = piix4_create(pci_bus, &smbus);
->      > +    piix4 = piix4_create(pci_bus);
->      > +    dev = DEVICE(piix4);
->      >       isa_bus = ISA_BUS(qdev_get_child_bus(dev, "isa.0"));
->      > +    smbus = piix4_pm_init(pci_bus, piix4->devfn + 3, 0x1100,
->      > +                          qdev_get_gpio_in_named(dev, "isa", 9),
->      > +                          NULL, 0, NULL);
-> 
->     ... then here you can do either "piix4 = PCI_DEVICE(dev)" or perhaps even inline it
->     directly as PCI_DEVICE(dev)->devfn if it isn't used elsewhere.
-> 
-> 
-> When instantiating the pm in TYPE_PIIX4_PCI_DEVICE this problem just disappears 
-> magically. So I'd roll with this in v2.
+v1:
+This little series enhances QOM support for mc146818rtc:
+* makes microvm-dt respect mc146818rtc's IRQ number set by QOM property and
+* adds an io_base QOM property similar to other ISA devices
 
-(goes and looks)
+Bernhard Beschow (3):
+  hw/i386/microvm-dt: Force explicit failure if retrieving QOM property
+    fails
+  hw/i386/microvm-dt: Determine mc146818rtc's IRQ number from QOM
+    property
+  rtc/mc146818rtc: QOM'ify io_base offset
 
-Yes, that makes complete sense to me since it mirrors exactly how this is already 
-done with the integrated IDE and USB devices. At some point I can see that 
-piix4_pm_init() should also disappear but let's go one step at a time :)
+ hw/i386/microvm-dt.c         | 9 +++++----
+ hw/rtc/mc146818rtc.c         | 9 ++++++---
+ include/hw/rtc/mc146818rtc.h | 2 +-
+ 3 files changed, 12 insertions(+), 8 deletions(-)
 
->      >       /* Interrupt controller */
->      >       qdev_connect_gpio_out_named(dev, "intr", 0, i8259_irq);
->      > diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
->      > index b768109f30..bea3b44551 100644
->      > --- a/include/hw/southbridge/piix.h
->      > +++ b/include/hw/southbridge/piix.h
->      > @@ -74,6 +74,6 @@ DECLARE_INSTANCE_CHECKER(PIIX3State, PIIX3_PCI_DEVICE,
->      >
->      >   PIIX3State *piix3_create(PCIBus *pci_bus);
->      >
->      > -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus);
->      > +PCIDevice *piix4_create(PCIBus *pci_bus);
->      >
->      >   #endif
+-- 
+2.36.1
 
-ATB,
-
-Mark.
 
