@@ -1,77 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nsth7-0002NV-KZ
-	for mharc-qemu-trivial@gnu.org; Sun, 22 May 2022 18:05:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47130)
+	id 1nsu7X-0004jb-El
+	for mharc-qemu-trivial@gnu.org; Sun, 22 May 2022 18:32:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52518)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nsth6-0002Mu-7W; Sun, 22 May 2022 18:05:00 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031]:38704)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nsth4-0002PW-Ot; Sun, 22 May 2022 18:04:59 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- o13-20020a17090a9f8d00b001df3fc52ea7so15842228pjp.3; 
- Sun, 22 May 2022 15:04:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=dh2yD+FyfbZ1/WHe4AyfuaVRMsw+Tx8hX0HWTNR7jno=;
- b=SlpmPSzxO8lf6hM/pc80Dw1yzsssyreXeUkG8QyCZmGM+Qspc8CpcESh95eVkNjt24
- 8k7YvJYTqLiSSgmfEBxZDRZJ616bmaF6PuYbJTfEMhW5cSJWWW8c7BN3dscOEclA+j6Q
- QNiJ2a1di4+TAVF6WMhurqpYldpclh9WkvGdTrdEoWF20KOm+a74FMwdpo9u0GEKm21+
- 5v+rTCe64wWGD7hYnUTHqIA9dRZ4I5I82+hHUOiacWmblM3bs8alvVgsTXg2LAIegxwM
- nZhxM8IP5XKSB0JLNDc7lOdiYqFaSy80w/bmUSpbtX49UaTq/AttKx/miTpdL8+cGVEV
- ctQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=dh2yD+FyfbZ1/WHe4AyfuaVRMsw+Tx8hX0HWTNR7jno=;
- b=OesfC0rcJRSM9elikUBuMn2t23b9g8H5qsREGkZtjkGJBqWKAm/38T7ZALZusaNNop
- Q2EOtOW4ouaWvrH5oPWK3Pxi/jJRnSWs3TOnCCf8WrC78e2o8rdMnHLqFdL74K1edRY8
- +O9AFn3HUJSsqMnfJ/LQcedSX0AKqO4mYgn/D6y6focdXSFrxeCLZRA+gFfQAYgrYMPj
- Jf4ydQs1Ph1o19RgF9olvwC6quqTeyaVvqtF+idkpywc/hbVfZAL9Tw7mNdxW+E0lS5s
- jCtnyk5Nh66TXzNtsPI/uWLwYONnxAA3b1VRP4D46GJUL0i41/0QSAvD/79wCPMBgdgJ
- ZlTg==
-X-Gm-Message-State: AOAM531kAKvG5pVTvJc6Gp/stZiA4An2OkGH+5alrK3aP0QNdQM93amQ
- Vjr7JquPdSFVR+lkaHpLRVY=
-X-Google-Smtp-Source: ABdhPJzoprL9ClvVGTHVpuAISaKExpGPZ8oA9tYBWHomz/5m7hHGP+VpmTps1eBg/b3P3sXHDYFWQg==
-X-Received: by 2002:a17:90a:eac5:b0:1df:7da8:4b19 with SMTP id
- ev5-20020a17090aeac500b001df7da84b19mr23623923pjb.2.1653257097111; 
- Sun, 22 May 2022 15:04:57 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- o2-20020a170902d4c200b0016168e90f2csm3548822plg.208.2022.05.22.15.04.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 22 May 2022 15:04:56 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <c0577983-17b6-0698-db99-017fde8f84c0@amsat.org>
-Date: Mon, 23 May 2022 00:04:53 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.9.0
-Subject: Re: [PATCH v2 0/6] QOM'ify PIIX southbridge creation
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1nsu7S-0004g2-IB; Sun, 22 May 2022 18:32:15 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:42681)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1nsu7P-0007QJ-Rn; Sun, 22 May 2022 18:32:13 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id F2B92745958;
+ Mon, 23 May 2022 00:32:06 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id B940974581A; Mon, 23 May 2022 00:32:06 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id B78D874579D;
+ Mon, 23 May 2022 00:32:06 +0200 (CEST)
+Date: Mon, 23 May 2022 00:32:06 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Bernhard Beschow <shentey@gmail.com>
+cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>, 
+ Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [PATCH v2 1/6] include/hw/southbridge/piix: Aggregate all PIIX
+ soughbridge type names
+In-Reply-To: <20220522212431.14598-2-shentey@gmail.com>
+Message-ID: <e1654d8d-53c4-d01c-1288-f74fa4fdfcfd@eik.bme.hu>
 References: <20220522212431.14598-1-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220522212431.14598-1-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x1031.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ <20220522212431.14598-2-shentey@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-Spam-Probability: 8%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,17 +56,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 May 2022 22:05:00 -0000
+X-List-Received-Date: Sun, 22 May 2022 22:32:16 -0000
 
-On 22/5/22 23:24, Bernhard Beschow wrote:
+On Sun, 22 May 2022, Bernhard Beschow wrote:
+> TYPE_PIIX3_PCI_DEVICE resides there as already, so add the remaining
+> ones, too.
+>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> ---
+> hw/isa/piix3.c                | 3 ---
+> include/hw/isa/isa.h          | 2 --
+> include/hw/southbridge/piix.h | 4 ++++
+> 3 files changed, 4 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
+> index dab901c9ad..d96ce2b788 100644
+> --- a/hw/isa/piix3.c
+> +++ b/hw/isa/piix3.c
+> @@ -35,9 +35,6 @@
+>
+> #define XEN_PIIX_NUM_PIRQS      128ULL
+>
+> -#define TYPE_PIIX3_DEVICE "PIIX3"
+> -#define TYPE_PIIX3_XEN_DEVICE "PIIX3-xen"
+> -
+> static void piix3_set_irq_pic(PIIX3State *piix3, int pic_irq)
+> {
+>     qemu_set_irq(piix3->pic[pic_irq],
+> diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
+> index 034d706ba1..e9fa2f5cea 100644
+> --- a/include/hw/isa/isa.h
+> +++ b/include/hw/isa/isa.h
+> @@ -144,6 +144,4 @@ static inline ISABus *isa_bus_from_device(ISADevice *d)
+>     return ISA_BUS(qdev_get_parent_bus(DEVICE(d)));
+> }
+>
+> -#define TYPE_PIIX4_PCI_DEVICE "piix4-isa"
+> -
+> #endif
+> diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
+> index f63f83e5c6..4d17400dfd 100644
+> --- a/include/hw/southbridge/piix.h
+> +++ b/include/hw/southbridge/piix.h
+> @@ -70,6 +70,10 @@ typedef struct PIIXState PIIX3State;
+> DECLARE_INSTANCE_CHECKER(PIIX3State, PIIX3_PCI_DEVICE,
+>                          TYPE_PIIX3_PCI_DEVICE)
+>
+> +#define TYPE_PIIX3_DEVICE "PIIX3"
+> +#define TYPE_PIIX3_XEN_DEVICE "PIIX3-xen"
+> +#define TYPE_PIIX4_PCI_DEVICE "piix4-isa"
 
-> Bernhard Beschow (6):
->    include/hw/southbridge/piix: Aggregate all PIIX soughbridge type names
->    hw/isa/piix{3,4}: Move pci_map_irq_fn's near pci_set_irq_fn's
->    hw/isa/piix{3,4}: QOM'ify PCI device creation and wiring
->    hw/isa/piix{3,4}: Factor out ISABus retrieval from create() functions
->    hw/isa/piix4: QOM'ify PIIX4 PM creation
->    hw/isa/piix{3,4}: Inline and remove create() functions
+This naming seems to go back to 9b74b190d6c so it's not directly related 
+to this series but there seems to be a bit of a confusion here that I 
+wonder could be cleaned up now. We have:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+#define TYPE_PIIX3_PCI_DEVICE "pci-piix3"
+and
+#define TYPE_PIIX4_PCI_DEVICE "piix4-isa"
+
+and both of these have mismatched #define and device name. These are not 
+user creatable so so the device names don't appear anywhere (except maybe 
+in info qtree output) but this could still be confusing as normally type 
+defines should match device names. If these are the ISA bridges then maybe 
+piix?-isa is a good name so maybe we should have
+
+#define TYPE_PIIX3_ISA "piix3-isa"
+#defint TYPE_PIIX4_ISA "piix4-isa"
+
+(then also matching e.g. "via-isa") but I'm not sure changing "pci-piix3" 
+to "piix3-isa" could break anything (I don't expect changing the defines 
+themselces could cause any problem).
+
+It's just something I've noticed and brought up for consideration but I 
+have no strong opinion on it so up to you what you do with it.
+
+Regards,
+BALATON Zoltan
+
+> +
+> PIIX3State *piix3_create(PCIBus *pci_bus, ISABus **isa_bus);
+>
+> DeviceState *piix4_create(PCIBus *pci_bus, ISABus **isa_bus, I2CBus **smbus);
+>
 
