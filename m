@@ -1,65 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ntvS5-0004f5-Cy
-	for mharc-qemu-trivial@gnu.org; Wed, 25 May 2022 14:09:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33704)
+	id 1nuL7L-0005ED-OI
+	for mharc-qemu-trivial@gnu.org; Thu, 26 May 2022 17:34:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52436)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1ntvS3-0004Ym-6O; Wed, 25 May 2022 14:09:43 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:52750)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1ntvS1-000812-Fg; Wed, 25 May 2022 14:09:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=EyAap97/H9GKPR2EyhOebq5Fj+GVqX0xGZeT2x4AeS0=; b=azXLtPdhBZxEUrzX31eKW43TTi
- u2Xs1gMAAZ1Agxu5kB6nO71DIpPCKDySamb9S3f3S9q/hf+5TkAQxrToxzAEXL8aOIYPgfjJjOY2O
- gIX2EzZ0OlOEpVl1eayT2cKwpW/la1dDLqLGr6gZh2ScBbFW5F1H2j8ZCIsLk6QwQrkoB5hyr21eG
- gslW/TCm8mZTt13qsSwQmCOl7pej2enSbfoTkJBjR3ImOmf2G5hUxsGijo1ebC7hKQAcHXyeb3TmT
- XsL8vhLUJEuHrqph1ThhLHupnLIOf1aesYG1sjOUXOPq6sSkPrmXBYNeHCEcbWuJ/N3et0+DnrRVQ
- u2X3l7teA9aPisz9nYNGvBHta4Fi9N8GUUmWZkzchBX2tLk9ke3DDC8QtofcCZmPS1F23HZgnMW53
- UBfULZEo1m0ftDz/j8q8BJ17wkh+DIYYJPrADBxlGXJqkLCzKoVazkZJG6eQUjVePp0kcafERhU8e
- pOjn8OuRqN6x3sU2v7uUA8v+IE9mtMZ78yCyXKR93SZbn9UAdsfZlUzjG/ieztfXhQTr2Yzti64pt
- 6FhxkYFosbO7NGmbyjcp9aumgSFGV0//YliTWGyRuDJanSdubAA9wnZKT60UmZScrW0pi+p3bB6Uh
- MrjZif78e1rgDHBTJRgTfiMltPi/8VvC7uD+jmCAU=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1ntvQz-0006Yg-2T; Wed, 25 May 2022 19:08:37 +0100
-Message-ID: <a1f2e759-0e2c-df44-4a1b-eb2c6429298a@ilande.co.uk>
-Date: Wed, 25 May 2022 19:09:36 +0100
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1nuL7F-0005Ae-F6; Thu, 26 May 2022 17:33:57 -0400
+Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f]:36748)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1nuL7D-0007O3-Q8; Thu, 26 May 2022 17:33:57 -0400
+Received: by mail-oa1-x2f.google.com with SMTP id
+ 586e51a60fabf-edeb6c3642so3757534fac.3; 
+ Thu, 26 May 2022 14:33:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=5DVjK/wX3sR5WZY/hkuBjB8jVLAjNqWF7IL/p8fam14=;
+ b=aJFPGYbZScj7RRfvA9XzvxkJIDuPMCwp9hZSFbnxYJENrOBznIIm/gwLzQaHZMrPmf
+ yThrM/RRUBygLNpHFuciAmXjJfJUnxB6qhkVw2+47Xb6CpdPpAgMJN5wmjDvSisngsgx
+ 6ZL2Bd5H5WuuCdAQoGxHXjPNCHqqr2PYkPvT+t8xdfUlBDaLzhVJIxew8IlVwX51W0bg
+ fUPzsxF0V70fzH1tMm7o4cXNqOKp55El63mUeYolkgFa78AM7HLsjB04BTZkHdiKY+Ei
+ HOb71edo8SQCFWWHCFyufagsskv4PQxSb6q7UXvijPkQP5YlLAj8am4ID5ThYJ35ekO6
+ 7KZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=5DVjK/wX3sR5WZY/hkuBjB8jVLAjNqWF7IL/p8fam14=;
+ b=Z/CRkZcSIzkMF8cBfY/mwYRMmI3QGtjSdTWC4vfm1Er7vOblo4AahSL9f2qQEkRb/N
+ wQ9DU5zJKxRho4t5u3nSX0WLqoc/UITnohKNnJs8JQ67ET1MXsDPn/slRbUpKqQhTnac
+ YGH5gnYdyclCBH68ULIxHOL267UZ5+aVqiY4I6Oybae8XRzTMQe8LLaA/9erhTf7r9T3
+ 88VHvAoQqfuJ1xTjpRE/nFs2h8wSwz/OzKGjvcm0ZqHTN4DX++4SEZ5j+Z6Q6TPvj302
+ 2iaihILGanVwlvh75+Y2lgdriQ27Qfy/XZoEjfsBSexf0A6n3iRF8+Ftd5l9uXLkMF3j
+ F5Zg==
+X-Gm-Message-State: AOAM532cz/DcyqaPe/pr2NUyywmxpbcWVZdcQ4hZ6sjja8oXsMDgkYt5
+ qSQgUuCwzlCF4rSbJpkLDd0=
+X-Google-Smtp-Source: ABdhPJwfR2cKGkB8ipeoHyvEJePDTIyEWl1uAp3hSDhb7XP91JOggzEJ9PMv26APMjfGYuoHKbM4FQ==
+X-Received: by 2002:a05:6870:17a6:b0:f1:ccf4:ad53 with SMTP id
+ r38-20020a05687017a600b000f1ccf4ad53mr2374013oae.48.1653600833691; 
+ Thu, 26 May 2022 14:33:53 -0700 (PDT)
+Received: from [192.168.10.102] (189-46-169-45.dsl.telesp.net.br.
+ [189.46.169.45]) by smtp.gmail.com with ESMTPSA id
+ b3-20020a056820134300b0035eb4e5a6ccsm1065063oow.34.2022.05.26.14.33.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 26 May 2022 14:33:53 -0700 (PDT)
+Message-ID: <dc3ebcca-78e9-ded1-519f-416a3aaf2a11@gmail.com>
+Date: Thu, 26 May 2022 18:33:49 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
+Subject: Re: [PATCH v2 06/10] hw/ppc/e500: Remove unused
+ BINARY_DEVICE_TREE_FILE
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <20220522212431.14598-1-shentey@gmail.com>
- <20220522212431.14598-6-shentey@gmail.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20220522212431.14598-6-shentey@gmail.com>
+Cc: qemu-trivial@nongnu.org, "open list:e500" <qemu-ppc@nongnu.org>
+References: <20220520180109.8224-1-shentey@gmail.com>
+ <20220520180109.8224-7-shentey@gmail.com>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20220520180109.8224-7-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v2 5/6] hw/isa/piix4: QOM'ify PIIX4 PM creation
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2001:4860:4864:20::2f;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x2f.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,107 +83,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 May 2022 18:09:43 -0000
+X-List-Received-Date: Thu, 26 May 2022 21:34:02 -0000
 
-On 22/05/2022 22:24, Bernhard Beschow wrote:
+Queued in gitlab.com/danielhb/qemu/tree/ppc-next. Thanks,
 
-> Just like the real hardware, create the PIIX4 ACPI controller as part of
-> the PIIX4 southbridge. This also mirrors how the IDE and USB functions
-> are already created.
+
+Daniel
+
+On 5/20/22 15:01, Bernhard Beschow wrote:
+> Commit 28290f37e20cda27574f15be9e9499493e3d0fe8 'PPC: E500: Generate
+> device tree on reset' improved device tree generation and made
+> BINARY_DEVICE_TREE_FILE obsolete.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 > ---
->   hw/isa/piix4.c                | 14 +++++++-------
->   hw/mips/malta.c               |  3 ++-
->   include/hw/southbridge/piix.h |  2 +-
->   3 files changed, 10 insertions(+), 9 deletions(-)
+>   hw/ppc/e500.c | 1 -
+>   1 file changed, 1 deletion(-)
 > 
-> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-> index 4968c69da9..1645f63450 100644
-> --- a/hw/isa/piix4.c
-> +++ b/hw/isa/piix4.c
-> @@ -206,6 +206,7 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
->       PIIX4State *s = PIIX4_PCI_DEVICE(dev);
->       PCIDevice *pci;
->       PCIBus *pci_bus = pci_get_bus(dev);
-> +    I2CBus *smbus;
->       ISABus *isa_bus;
->       qemu_irq *i8259_out_irq;
+> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+> index 2bc3dce1fb..7f7f5b3452 100644
+> --- a/hw/ppc/e500.c
+> +++ b/hw/ppc/e500.c
+> @@ -47,7 +47,6 @@
+>   #include "hw/irq.h"
 >   
-> @@ -252,6 +253,11 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
->       /* USB */
->       pci_create_simple(pci_bus, dev->devfn + 2, "piix4-usb-uhci");
->   
-> +    /* ACPI controller */
-> +    smbus = piix4_pm_init(pci_bus, pci->devfn + 3, 0x1100, s->isa[9],
-> +                          NULL, 0, NULL);
-> +    object_property_add_const_link(OBJECT(s), "smbus", OBJECT(smbus));
-> +
-
-Interesting hack here to expose the smbus so it is available to qdev_get_child_bus(), 
-but really this is still really working around the fact that piix4_pm_init() itself 
-should be removed first. Once that is done, you can then use a standard QOM pattern 
-to initialise the "internal" PCI devices via object_initialize_child() and realize 
-them in piix4_realize() instead of using pci_create_simple().
-
-Is that something you could take a look at? If not, I may be able to put something 
-together towards the end of the week. Other than that I think the rest of the series 
-looks good.
-
->       pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s, PIIX_NUM_PIRQS);
->   }
->   
-> @@ -301,7 +307,7 @@ static void piix4_register_types(void)
->   
->   type_init(piix4_register_types)
->   
-> -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus)
-> +DeviceState *piix4_create(PCIBus *pci_bus)
->   {
->       PCIDevice *pci;
->       DeviceState *dev;
-> @@ -311,11 +317,5 @@ DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus)
->                                             TYPE_PIIX4_PCI_DEVICE);
->       dev = DEVICE(pci);
->   
-> -    if (smbus) {
-> -        *smbus = piix4_pm_init(pci_bus, devfn + 3, 0x1100,
-> -                               qdev_get_gpio_in_named(dev, "isa", 9),
-> -                               NULL, 0, NULL);
-> -    }
-> -
->       return dev;
->   }
-> diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-> index e446b25ad0..b0fc84ccbb 100644
-> --- a/hw/mips/malta.c
-> +++ b/hw/mips/malta.c
-> @@ -1399,8 +1399,9 @@ void mips_malta_init(MachineState *machine)
->       empty_slot_init("GT64120", 0, 0x20000000);
->   
->       /* Southbridge */
-> -    dev = piix4_create(pci_bus, &smbus);
-> +    dev = piix4_create(pci_bus);
->       isa_bus = ISA_BUS(qdev_get_child_bus(dev, "isa.0"));
-> +    smbus = I2C_BUS(qdev_get_child_bus(dev, "smbus"));
->   
->       /* Interrupt controller */
->       qdev_connect_gpio_out_named(dev, "intr", 0, i8259_irq);
-> diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
-> index 0bec7f8ca3..2c21359efa 100644
-> --- a/include/hw/southbridge/piix.h
-> +++ b/include/hw/southbridge/piix.h
-> @@ -76,6 +76,6 @@ DECLARE_INSTANCE_CHECKER(PIIX3State, PIIX3_PCI_DEVICE,
->   
->   PIIX3State *piix3_create(PCIBus *pci_bus);
->   
-> -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus);
-> +DeviceState *piix4_create(PCIBus *pci_bus);
->   
->   #endif
-
-
-ATB,
-
-Mark.
+>   #define EPAPR_MAGIC                (0x45504150)
+> -#define BINARY_DEVICE_TREE_FILE    "mpc8544ds.dtb"
+>   #define DTC_LOAD_PAD               0x1800000
+>   #define DTC_PAD_MASK               0xFFFFF
+>   #define DTB_MAX_SIZE               (8 * MiB)
 
