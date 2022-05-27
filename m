@@ -1,77 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nuL7L-0005ED-OI
-	for mharc-qemu-trivial@gnu.org; Thu, 26 May 2022 17:34:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52436)
+	id 1nugjd-0005mb-8G
+	for mharc-qemu-trivial@gnu.org; Fri, 27 May 2022 16:39:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1nuL7F-0005Ae-F6; Thu, 26 May 2022 17:33:57 -0400
-Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f]:36748)
+ (Exim 4.90_1) (envelope-from <richard0053@gmail.com>)
+ id 1nufIy-0005bj-If; Fri, 27 May 2022 15:07:24 -0400
+Received: from mail-pl1-f179.google.com ([209.85.214.179]:42896)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1nuL7D-0007O3-Q8; Thu, 26 May 2022 17:33:57 -0400
-Received: by mail-oa1-x2f.google.com with SMTP id
- 586e51a60fabf-edeb6c3642so3757534fac.3; 
- Thu, 26 May 2022 14:33:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=5DVjK/wX3sR5WZY/hkuBjB8jVLAjNqWF7IL/p8fam14=;
- b=aJFPGYbZScj7RRfvA9XzvxkJIDuPMCwp9hZSFbnxYJENrOBznIIm/gwLzQaHZMrPmf
- yThrM/RRUBygLNpHFuciAmXjJfJUnxB6qhkVw2+47Xb6CpdPpAgMJN5wmjDvSisngsgx
- 6ZL2Bd5H5WuuCdAQoGxHXjPNCHqqr2PYkPvT+t8xdfUlBDaLzhVJIxew8IlVwX51W0bg
- fUPzsxF0V70fzH1tMm7o4cXNqOKp55El63mUeYolkgFa78AM7HLsjB04BTZkHdiKY+Ei
- HOb71edo8SQCFWWHCFyufagsskv4PQxSb6q7UXvijPkQP5YlLAj8am4ID5ThYJ35ekO6
- 7KZw==
+ (Exim 4.90_1) (envelope-from <richard0053@gmail.com>)
+ id 1nufIx-0003L6-1l; Fri, 27 May 2022 15:07:24 -0400
+Received: by mail-pl1-f179.google.com with SMTP id d22so4886098plr.9;
+ Fri, 27 May 2022 12:07:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=5DVjK/wX3sR5WZY/hkuBjB8jVLAjNqWF7IL/p8fam14=;
- b=Z/CRkZcSIzkMF8cBfY/mwYRMmI3QGtjSdTWC4vfm1Er7vOblo4AahSL9f2qQEkRb/N
- wQ9DU5zJKxRho4t5u3nSX0WLqoc/UITnohKNnJs8JQ67ET1MXsDPn/slRbUpKqQhTnac
- YGH5gnYdyclCBH68ULIxHOL267UZ5+aVqiY4I6Oybae8XRzTMQe8LLaA/9erhTf7r9T3
- 88VHvAoQqfuJ1xTjpRE/nFs2h8wSwz/OzKGjvcm0ZqHTN4DX++4SEZ5j+Z6Q6TPvj302
- 2iaihILGanVwlvh75+Y2lgdriQ27Qfy/XZoEjfsBSexf0A6n3iRF8+Ftd5l9uXLkMF3j
- F5Zg==
-X-Gm-Message-State: AOAM532cz/DcyqaPe/pr2NUyywmxpbcWVZdcQ4hZ6sjja8oXsMDgkYt5
- qSQgUuCwzlCF4rSbJpkLDd0=
-X-Google-Smtp-Source: ABdhPJwfR2cKGkB8ipeoHyvEJePDTIyEWl1uAp3hSDhb7XP91JOggzEJ9PMv26APMjfGYuoHKbM4FQ==
-X-Received: by 2002:a05:6870:17a6:b0:f1:ccf4:ad53 with SMTP id
- r38-20020a05687017a600b000f1ccf4ad53mr2374013oae.48.1653600833691; 
- Thu, 26 May 2022 14:33:53 -0700 (PDT)
-Received: from [192.168.10.102] (189-46-169-45.dsl.telesp.net.br.
- [189.46.169.45]) by smtp.gmail.com with ESMTPSA id
- b3-20020a056820134300b0035eb4e5a6ccsm1065063oow.34.2022.05.26.14.33.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 May 2022 14:33:53 -0700 (PDT)
-Message-ID: <dc3ebcca-78e9-ded1-519f-416a3aaf2a11@gmail.com>
-Date: Thu, 26 May 2022 18:33:49 -0300
+ bh=deDD27VQcQrtt/6UAU4Aq+aDAYDaZ54pjGxgw6Ul7/g=;
+ b=s2W+ZdAZ8/0foPqr2CHcP5sI/wwKwgIhuBAkG3rKTe0wkdyxtEVTtjmPbK6Qf8Y0ng
+ FEbzQoQKdF4J1vJMs7Iet8e/SPESq/3g1Rpkz8L4thBQMVZE4wJdnWl4esovVlxMIG4F
+ +03RVBO1R+l27n0vkgbdZWEas+9N1C2GEPW6IIRiZQ0LG1vBpyNX9JDVgo9jt2kh5JYF
+ ZaQHuEajSmIo02H7ZB8ZAgYfkXuzl5wbfUt/M/r8Z+hEgUmK+iMvCjddqED+hTELvfYo
+ 6NTZbe4153HrHD7v6j/plJOnGsOgiahKul0XBytQE43K5x2ilIikV7f026AjTd3QV17d
+ Z+Ig==
+X-Gm-Message-State: AOAM533cmdVRA3ef63Bn4gzWAstZZgFjDRhh95bT+jWwKYfofEAmSzbI
+ gVV3aoZBmEgJfhV1kXDutQJjaW42uU3goQ==
+X-Google-Smtp-Source: ABdhPJzA/DwVcvpBDR/FsOWKChelI0ugTggRAqpQhiyfUVRom8cng/dY5fHb+bGDmA7IEvwxGMfKWA==
+X-Received: by 2002:a17:90b:3a8b:b0:1e0:548:1490 with SMTP id
+ om11-20020a17090b3a8b00b001e005481490mr10042319pjb.144.1653678440558; 
+ Fri, 27 May 2022 12:07:20 -0700 (PDT)
+Received: from localhost ([2401:7400:c809:3970:df01:d762:2b01:af8a])
+ by smtp.gmail.com with ESMTPSA id
+ u9-20020aa78489000000b0050dc76281a4sm3823537pfn.126.2022.05.27.12.07.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 27 May 2022 12:07:19 -0700 (PDT)
+From: Haochen Tong <i@hexchain.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Haochen Tong <i@hexchain.org>
+Subject: [PATCH] ebpf: replace deprecated bpf_program__set_socket_filter
+Date: Sat, 28 May 2022 03:06:58 +0800
+Message-Id: <20220527190658.169439-1-i@hexchain.org>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v2 06/10] hw/ppc/e500: Remove unused
- BINARY_DEVICE_TREE_FILE
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "open list:e500" <qemu-ppc@nongnu.org>
-References: <20220520180109.8224-1-shentey@gmail.com>
- <20220520180109.8224-7-shentey@gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20220520180109.8224-7-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2f;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x2f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=209.85.214.179;
+ envelope-from=richard0053@gmail.com; helo=mail-pl1-f179.google.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 27 May 2022 16:38:57 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,34 +66,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 May 2022 21:34:02 -0000
+X-List-Received-Date: Fri, 27 May 2022 19:07:25 -0000
 
-Queued in gitlab.com/danielhb/qemu/tree/ppc-next. Thanks,
+bpf_program__set_<TYPE> functions have been deprecated since libbpf 0.8.
+Replace with the equivalent bpf_program__set_type call to avoid a
+deprecation warning.
 
+Signed-off-by: Haochen Tong <i@hexchain.org>
+---
+ ebpf/ebpf_rss.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Daniel
+diff --git a/ebpf/ebpf_rss.c b/ebpf/ebpf_rss.c
+index 118c68da83..cee658c158 100644
+--- a/ebpf/ebpf_rss.c
++++ b/ebpf/ebpf_rss.c
+@@ -49,7 +49,7 @@ bool ebpf_rss_load(struct EBPFRSSContext *ctx)
+         goto error;
+     }
+ 
+-    bpf_program__set_socket_filter(rss_bpf_ctx->progs.tun_rss_steering_prog);
++    bpf_program__set_type(rss_bpf_ctx->progs.tun_rss_steering_prog, BPF_PROG_TYPE_SOCKET_FILTER);
+ 
+     if (rss_bpf__load(rss_bpf_ctx)) {
+         trace_ebpf_error("eBPF RSS", "can not load RSS program");
+-- 
+2.36.1
 
-On 5/20/22 15:01, Bernhard Beschow wrote:
-> Commit 28290f37e20cda27574f15be9e9499493e3d0fe8 'PPC: E500: Generate
-> device tree on reset' improved device tree generation and made
-> BINARY_DEVICE_TREE_FILE obsolete.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> ---
->   hw/ppc/e500.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-> index 2bc3dce1fb..7f7f5b3452 100644
-> --- a/hw/ppc/e500.c
-> +++ b/hw/ppc/e500.c
-> @@ -47,7 +47,6 @@
->   #include "hw/irq.h"
->   
->   #define EPAPR_MAGIC                (0x45504150)
-> -#define BINARY_DEVICE_TREE_FILE    "mpc8544ds.dtb"
->   #define DTC_LOAD_PAD               0x1800000
->   #define DTC_PAD_MASK               0xFFFFF
->   #define DTB_MAX_SIZE               (8 * MiB)
 
