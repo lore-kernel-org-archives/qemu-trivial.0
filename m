@@ -1,66 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nusyf-0000uG-3W
-	for mharc-qemu-trivial@gnu.org; Sat, 28 May 2022 05:43:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41646)
+	id 1nv203-0003RC-7F
+	for mharc-qemu-trivial@gnu.org; Sat, 28 May 2022 15:21:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57022)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nusyY-0000qp-V2; Sat, 28 May 2022 05:43:14 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:56884)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nusyW-0006ra-TZ; Sat, 28 May 2022 05:43:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:References:Cc:To:From:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=+SNs0J7EW/hoGDF73K/3k6PNyuddyBwP0w0KZ3E1iAk=; b=MAFbztAyYeQersY3Aq9+3TXVGR
- +sul0R4JsOy1gnkef+SuNSd7CtPaJjzR/SBKk8jxHtTLMwFjLzJCHV8b20EUvptAVhhYJE3s4lgbs
- mAvOk/8Ednvg6gWTKpICn80HeUDExDVAN3x55LUtqVGKEC9LxvDZT/ogXhzsD682uuQPF8LIVIpZM
- ZkFLQYtOx3rMrO05eZn0rF1Sx3X7f8udLdgX8sumr1/+xlYzbPS3sSBYR6PPWoQktOKoUxq1bL1Sc
- JA/AZ0P8tVCVxiNR+js/X0C97x1HbLWmB32B7QhSOsYxpTOckG/ZrA43fpJSxxi0r8jj4Ai50EDmN
- P0UiL3ZLlrZmhL64eRKg35qlLS7xK+wJgOsOyH/jeIL6zDdG92xycMzNglx9H0EZJCv+aZ4+Cl6F4
- fAmvvzZEfCf0CcB/2luiC0Yl0N3Qd+XkvGDm/nBHG8fTDRur2deVG2LKFpxedIwsg5VDhwdfUmMEE
- HvMhBTudogxkIx9CciyvwNfZywO/SzPeOpg3ZVW+VRYfwt3Ex5m9WnwpTwvo6GuwoIirUIwa7z7Gs
- hsQdV3Q2YLQqZdHQwTtRbsxhPwtu55i1UnwIhY697idPnczg8918JTNe9oZtQURSjD6Tuf0KMxQ/B
- 8CVp5/yYqX6FY4F/yzyEd186t+oKgjLNbBQ3REhNg=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nusxU-0003Vh-Fm; Sat, 28 May 2022 10:42:08 +0100
-Message-ID: <bdcb5d35-6e4a-a6b9-6faf-c8bc9f6c3260@ilande.co.uk>
-Date: Sat, 28 May 2022 10:43:08 +0100
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nv201-0003Pj-NA; Sat, 28 May 2022 15:21:21 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:46798)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nv1zz-00021S-Uq; Sat, 28 May 2022 15:21:21 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ c9-20020a7bc009000000b0039750ec5774so4411616wmb.5; 
+ Sat, 28 May 2022 12:21:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SQpLfrdO1EwLV7oP418pkgvZKkNvAMuSNnjxAQfX418=;
+ b=pr9K+8IT23Cip8Z8ydckTMXLP9Pd0PoUy0GFeG1U51wE6t9e4CrcFYeil1LW6N2mPc
+ FcFqYZv9TNSMLRaBEXvyYiskoBzWwpSDLThrl3kFzrUdqhP8TnBhcHv7juMetoMg1K7R
+ 3mJaDUA3mTwJAtpFJp1M4m8vOl21n5v0tENHXvHGmo6OlJm8HNpwWgWjw6ipdKw/XNtr
+ 42+I3ad5CPk9T46PwdqKhu2PsdsaPVb2qLbX8l7R1DiuAfKsePSKKH8AWb5RX7htO2Zt
+ V7GvuKjDiBnkBua5v4qNW76Ki7GBBMsP9k1OvcrJFzEBs+QOxQruisiazSypJD764SqP
+ JD1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SQpLfrdO1EwLV7oP418pkgvZKkNvAMuSNnjxAQfX418=;
+ b=BDPOKZlvbpTnN0PbaAyRsTVthRNQmuZCy6tw6GTSGVkY0S45OAFDW9j+sHtbmj4J83
+ KLyGJPIlGltUfcnN0FZ7UnZEOQFJntQTQycDQ1qCREKZMSwYyD7exAj8lmnH1iQ/lMcC
+ tEhG8Ok1DePoWgdgllTuWNCNUDz5asjo0OVUg2W3SQFXlXyR7dh7bLo7uYkfI0uZn3MF
+ STatiMQTXy+wogX+9yn2Zr6fQ8NvfUyBeNadXhb+/W+N14Oo0PeEucV8AKHkyF/rMqMg
+ /++6lrNLDpijOcfHJgnRc9yY/UvD0pj4pHt8Z7wlol+xPmuU0V3njxsrk+B6Qj4D1TKY
+ v5Uw==
+X-Gm-Message-State: AOAM5323EBh99zBACoukyLxIHUbctCfeF/7k84YpMzUTy9IFXkq99dnM
+ bhpAmnqNH36jJDgvK+bpbcIO/6LOUkewa2vrhvk=
+X-Google-Smtp-Source: ABdhPJyOiZ9mg8Rj7fy6O0GuA30BY8cuUPdLxN1p+JKHbwqK8vNxqV+xm7JI5pTyGXMF5ZWolbJuBQ==
+X-Received: by 2002:a05:600c:a03:b0:395:bb63:b457 with SMTP id
+ z3-20020a05600c0a0300b00395bb63b457mr12147443wmp.192.1653765677036; 
+ Sat, 28 May 2022 12:21:17 -0700 (PDT)
+Received: from osoxes.fritz.box (pd9ed79c4.dip0.t-ipconnect.de.
+ [217.237.121.196]) by smtp.gmail.com with ESMTPSA id
+ a21-20020a05600c069500b003942a244ed7sm5341022wmn.28.2022.05.28.12.21.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 28 May 2022 12:21:16 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v3 0/7] QOM'ify PIIX southbridge creation
+Date: Sat, 28 May 2022 21:20:49 +0200
+Message-Id: <20220528192057.30910-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>, Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <20220522212431.14598-1-shentey@gmail.com>
- <20220522212431.14598-6-shentey@gmail.com>
- <a1f2e759-0e2c-df44-4a1b-eb2c6429298a@ilande.co.uk>
-In-Reply-To: <a1f2e759-0e2c-df44-4a1b-eb2c6429298a@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v2 5/6] hw/isa/piix4: QOM'ify PIIX4 PM creation
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,127 +76,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 May 2022 09:43:15 -0000
+X-List-Received-Date: Sat, 28 May 2022 19:21:22 -0000
 
-On 25/05/2022 19:09, Mark Cave-Ayland wrote:
+v3:
+* Rebase onto 'hw/acpi/piix4: remove legacy piix4_pm_init() function' (Mark) [1]
+* Use embedded structs for touched PCI devices (Mark)
+* Fix piix4's rtc embedded struct to be initialized by
+  object_initialize_child() (Peter) [2]
 
-> On 22/05/2022 22:24, Bernhard Beschow wrote:
-> 
->> Just like the real hardware, create the PIIX4 ACPI controller as part of
->> the PIIX4 southbridge. This also mirrors how the IDE and USB functions
->> are already created.
->>
->> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->> ---
->>   hw/isa/piix4.c                | 14 +++++++-------
->>   hw/mips/malta.c               |  3 ++-
->>   include/hw/southbridge/piix.h |  2 +-
->>   3 files changed, 10 insertions(+), 9 deletions(-)
->>
->> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
->> index 4968c69da9..1645f63450 100644
->> --- a/hw/isa/piix4.c
->> +++ b/hw/isa/piix4.c
->> @@ -206,6 +206,7 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
->>       PIIX4State *s = PIIX4_PCI_DEVICE(dev);
->>       PCIDevice *pci;
->>       PCIBus *pci_bus = pci_get_bus(dev);
->> +    I2CBus *smbus;
->>       ISABus *isa_bus;
->>       qemu_irq *i8259_out_irq;
->> @@ -252,6 +253,11 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
->>       /* USB */
->>       pci_create_simple(pci_bus, dev->devfn + 2, "piix4-usb-uhci");
->> +    /* ACPI controller */
->> +    smbus = piix4_pm_init(pci_bus, pci->devfn + 3, 0x1100, s->isa[9],
->> +                          NULL, 0, NULL);
->> +    object_property_add_const_link(OBJECT(s), "smbus", OBJECT(smbus));
->> +
-> 
-> Interesting hack here to expose the smbus so it is available to qdev_get_child_bus(), 
-> but really this is still really working around the fact that piix4_pm_init() itself 
-> should be removed first. Once that is done, you can then use a standard QOM pattern 
-> to initialise the "internal" PCI devices via object_initialize_child() and realize 
-> them in piix4_realize() instead of using pci_create_simple().
-> 
-> Is that something you could take a look at? If not, I may be able to put something 
-> together towards the end of the week. Other than that I think the rest of the series 
-> looks good.
+Testing done:
 
-Hi Bernhard,
+1)
+`make check-avocado` for --target-list=x86_64-softmmu,mips-softmmu
+Result: All pass.
 
-I've just sent through the series for eliminating the piix4_pm_init() which should 
-allow you to improve the QOMifcation done as part of this series.
+2)
+* `qemu-system-x86_64 -M pc -m 2G -cdrom archlinux-2022.05.01-x86_64.iso`
+* `qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda
+  debian_wheezy_mipsel_standard.qcow2 -append "root=/dev/sda1 console=tty0"`
 
-A bit of background as to why this is necessary: when building a container device 
-such as the PIIX southbridge, there should still be 2 distinct init and realize 
-phases. In effect this needs to be done depth-first so when you init the PIIX4 
-southbridge, the instance init function should also init the contained PCI devices 
-such as IDE and USB. Similarly when the PIIX4 device is realized, its realize 
-function should then realize the contained PCI devices using qdev_realize().
-
-This is one of the main reasons why legacy global device init functions aren't 
-recommended, since they both init *and* realize the device before returning it which 
-immediately breaks this contract.
-
-The normal way to initialise a contained device is to use object_initialize_child() 
-in the container's instance init function and to store the the child device instance 
-within the container. But what this also means is that you shouldn't use any _new() 
-functions like pci_new() or pci_create_simple() to instantiated contained devices in 
-a container realize function either. So the next question: how is this done?
-
-Fortunately there is an existing example of this: take a look at how this is 
-currently done in hw/pci-host/q35.c's q35_host_initfn() and q35_host_realize() for 
-the MCH_PCI_DEVICE device.
-
-I hope this gives you all the information you need to produce a v3 of the series: if 
-you have any further questions, do let me know and I will do my best to answer them.
-
->>       pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s, PIIX_NUM_PIRQS);
->>   }
->> @@ -301,7 +307,7 @@ static void piix4_register_types(void)
->>   type_init(piix4_register_types)
->> -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus)
->> +DeviceState *piix4_create(PCIBus *pci_bus)
->>   {
->>       PCIDevice *pci;
->>       DeviceState *dev;
->> @@ -311,11 +317,5 @@ DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus)
->>                                             TYPE_PIIX4_PCI_DEVICE);
->>       dev = DEVICE(pci);
->> -    if (smbus) {
->> -        *smbus = piix4_pm_init(pci_bus, devfn + 3, 0x1100,
->> -                               qdev_get_gpio_in_named(dev, "isa", 9),
->> -                               NULL, 0, NULL);
->> -    }
->> -
->>       return dev;
->>   }
->> diff --git a/hw/mips/malta.c b/hw/mips/malta.c
->> index e446b25ad0..b0fc84ccbb 100644
->> --- a/hw/mips/malta.c
->> +++ b/hw/mips/malta.c
->> @@ -1399,8 +1399,9 @@ void mips_malta_init(MachineState *machine)
->>       empty_slot_init("GT64120", 0, 0x20000000);
->>       /* Southbridge */
->> -    dev = piix4_create(pci_bus, &smbus);
->> +    dev = piix4_create(pci_bus);
->>       isa_bus = ISA_BUS(qdev_get_child_bus(dev, "isa.0"));
->> +    smbus = I2C_BUS(qdev_get_child_bus(dev, "smbus"));
->>       /* Interrupt controller */
->>       qdev_connect_gpio_out_named(dev, "intr", 0, i8259_irq);
->> diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
->> index 0bec7f8ca3..2c21359efa 100644
->> --- a/include/hw/southbridge/piix.h
->> +++ b/include/hw/southbridge/piix.h
->> @@ -76,6 +76,6 @@ DECLARE_INSTANCE_CHECKER(PIIX3State, PIIX3_PCI_DEVICE,
->>   PIIX3State *piix3_create(PCIBus *pci_bus);
->> -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus);
->> +DeviceState *piix4_create(PCIBus *pci_bus);
->>   #endif
+In both cases the system booted successfully and it was possible to shut down
+the system using the `poweroff` command.
 
 
-ATB,
+v2:
+* Preserve `DeviceState *` as return value of piix4_create() (Mark)
+* Aggregate all type name movements into first commit (Mark)
+* Have piix4 southbridge rather than malta board instantiate piix4 pm (me)
 
-Mark.
+Testing done:
+
+1)
+`make check-avocado` for --target-list=x86_64-softmmu,mips-softmmu
+Result: All pass.
+
+2)
+Modify pci_piix3_realize() to start with
+    error_setg(errp, "This is a test");
+Then start `qemu-system-x86_64 -M pc -m 1G -accel kvm -cpu host -cdrom 
+archlinux-2022.05.01-x86_64.iso`.
+Result: qemu-system-x86_64 aborts with: "This is a test"
+
+
+v1:
+The piix3 and piix4 southbridge devices still rely on create() functions which
+are deprecated. This series resolves these functions piece by piece to
+modernize the code.
+
+Both devices are modified in lockstep where possible to provide more context.
+
+Testing done:
+* `qemu-system-x86_64 -M pc -m 2G -cdrom archlinux-2022.05.01-x86_64.iso`
+* `qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda
+  debian_wheezy_mipsel_standard.qcow2 -append "root=/dev/sda1 console=tty0"`
+
+In both cases the system booted successfully and it was possible to shut down
+the system using the `poweroff` command.
+
+[1] https://lists.gnu.org/archive/html/qemu-devel/2022-05/msg05686.html
+[2] https://lists.gnu.org/archive/html/qemu-devel/2022-02/msg01128.html
+
+Bernhard Beschow (7):
+  include/hw/southbridge/piix: Aggregate all PIIX soughbridge type names
+  hw/isa/piix4: Use object_initialize_child() for embedded struct
+  hw/isa/piix{3,4}: Move pci_map_irq_fn's near pci_set_irq_fn's
+  hw/isa/piix{3,4}: QOM'ify PCI device creation and wiring
+  hw/isa/piix{3,4}: Factor out ISABus retrieval from create() functions
+  hw/isa/piix4: QOM'ify PIIX4 PM creation
+  hw/isa/piix{3,4}: Inline and remove create() functions
+
+ hw/i386/pc_piix.c             |   7 +-
+ hw/isa/piix3.c                |  98 ++++++++++++++-------------
+ hw/isa/piix4.c                | 120 +++++++++++++++++-----------------
+ hw/mips/malta.c               |   7 +-
+ include/hw/isa/isa.h          |   2 -
+ include/hw/southbridge/piix.h |   6 +-
+ 6 files changed, 127 insertions(+), 113 deletions(-)
+
+-- 
+2.36.1
+
 
