@@ -1,61 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nvNqB-0006dz-0c
-	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2022 14:40:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55874)
+	id 1nvNqC-0006iK-Cm
+	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2022 14:40:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55894)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nvNq5-0006aT-75; Sun, 29 May 2022 14:40:33 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:46679)
+ id 1nvNq6-0006ay-Lw; Sun, 29 May 2022 14:40:35 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:46683)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nvNq3-0002FH-KP; Sun, 29 May 2022 14:40:32 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id d26so6426782wrb.13;
- Sun, 29 May 2022 11:40:30 -0700 (PDT)
+ id 1nvNq5-0002G7-30; Sun, 29 May 2022 14:40:34 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id d26so6426823wrb.13;
+ Sun, 29 May 2022 11:40:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=A9DKwKFr4BttRAjg5sxJylENPhkCHOeKkbPe1bC18QI=;
- b=TEyl2iYStp2J9X3TVh/UUFh2ART9a7NV9G5SHAu3lpuX0Em2NDPFpuyrGTQpXw8ltY
- 2vztXKrz2ndxwFufj0YipHHiEGsG9xMDsr92WGwB3pv9sNsKdJBJzAXzPhxLFYzeE/vS
- cwJaIaHHSch6ESfsDWQPII4NQP/+oNIa2cJsEu0+hL/ynDMf/rq2FvsNnQyOgLrSTDnM
- gr9D9UF8nGoDHBq5wYAOU91CZFrOPfevgP6SZ3JwfabWV3d9qtGe3OkN0sox6Bx4Quta
- CY7wiyrXrHUBOTubZAMYBN4WZskB9rR750RG0N2Okyri9/JWfQdwqgZp6Liajo1+wOCs
- Vn1A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Cov+lge9r84+pASXyK6paUlsnrkFtZeRPcnwvaSMtUY=;
+ b=QC/0n0jWuNFEjA6GJfJnyBszRzWMQMTp0+cyFjhD1QMFnPUxNS7lejjy5+gxe1YAuC
+ w+F3ys81DK3z/SvhRNVa8RgOn2yZtfkcU9Og7XbVGNKh3oLpCiYS3V0dY2vnQhbFfHBc
+ 5JnFEqUQDHYoNwvL5+duZKnJwMRQcmKmclkU8cg2wU7wHCblLjM6axwsAIgPFiWMCMmu
+ upUqKOyl45Xplo7u9TM8zut2Dy3TA0TdxoWt8+Pk5T1OCY458UmHQLMx6X8xWlh/pVPu
+ ozNSTzYn9Q98Zykh/OHgwdMH3ALNshcutuakLmCWz4TMs6X5krIW4B6Lnw6AQG8EailM
+ xmGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=A9DKwKFr4BttRAjg5sxJylENPhkCHOeKkbPe1bC18QI=;
- b=vj4W8eZGFuUqOOwb5vm1uWh/YhYcad04078wyNc3sjjXly6v0JS2uxjV9Z/0as/l6U
- AsM19jF1MvdAa1NUi17IAGZ9G6Jfb3eFSLbPkyv6gg9qQUAx0BApbzeZxcpUQil4Aqse
- RsOC7XNUZNS1OB1PIvvO9KIG+dxZ4StG5E/CnjsWo0Zb2VFyopuTInTrkKHCLu3kx1CN
- DKwm5A/aDll+jBTx2fJDDxIkzVZxZCf3k1SrM2Gg4xi3Sgq+i6nFjiDR9ZqB5AU52zo6
- VjlSA6GAc6A4oFPlAB4ftCfOVgc/oq/Z0nBwNPjQt2B7nCmcQxiUw8zzgOB5BeThcXDA
- /GUA==
-X-Gm-Message-State: AOAM532CnLwWytdO4SKY+E8tgy60odc7wfGJnX+20wjxnAxgeKJDWfd+
- T76FHV7Xfi8eNcnLvSeYlbf2GPHNy2ZnCm4W
-X-Google-Smtp-Source: ABdhPJwR81yqDl92u/aRvWVmH1Cxdn32/i8qym5F+rrhJJWaK/sPRDhBHR2PvCA1VPRaSy3tx5E+Fg==
-X-Received: by 2002:a5d:6dc3:0:b0:210:89d:30bc with SMTP id
- d3-20020a5d6dc3000000b00210089d30bcmr15079518wrz.272.1653849629514; 
- Sun, 29 May 2022 11:40:29 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Cov+lge9r84+pASXyK6paUlsnrkFtZeRPcnwvaSMtUY=;
+ b=GDr8i0Fgx9ZR6tWCqEroYCkoUJrk9rrMNWXuNdn6VWMciUPZA6h9Dw/4xPk/pkY9u4
+ T2HXNLKsLyEyybVLIn0DiTBhvsoLRhj00t3vLgCxdhzETvucGQJeFWHlroRnSezShEHi
+ nM4CeSIkovDGV1+tMeSPYcqS7/tgIdWjnGlxOiVc+SO+yIWiYN1wJGF6l2W6anNH6MqE
+ aYJqavJG/hHVztyEMN0gt+k86jDdMO1ff8SY7qr+zADeBSQrcLrPeDXVXZqgXf4UtdOP
+ Z8suARgL7dD7zbcM1qmSwvGy+eVUK/fc7dB5KNx5HkwzxleIrqfasu+pJzHE4S5ssgRz
+ anHA==
+X-Gm-Message-State: AOAM5324ekXk1qCxjn1BA35W9HLlF64uPJ5cf4kjDl7wmrttur+7lcwN
+ j3CFBjNGhiP8A2YtJGSIy6++6WxOu2iJ5SPc
+X-Google-Smtp-Source: ABdhPJyF+8W36m34tKnyLPNYszuTt/kp3KvReS+f4j5GE4AONrg6INOMJjSUuiQWzsdfBUtNO8lGSA==
+X-Received: by 2002:adf:f111:0:b0:210:313a:790b with SMTP id
+ r17-20020adff111000000b00210313a790bmr2496148wro.367.1653849631236; 
+ Sun, 29 May 2022 11:40:31 -0700 (PDT)
 Received: from osoxes.fritz.box (pd9ed79c4.dip0.t-ipconnect.de.
  [217.237.121.196]) by smtp.gmail.com with ESMTPSA id
- g13-20020a5d64ed000000b002100e86319asm7341049wri.78.2022.05.29.11.40.28
+ g13-20020a5d64ed000000b002100e86319asm7341049wri.78.2022.05.29.11.40.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 29 May 2022 11:40:29 -0700 (PDT)
+ Sun, 29 May 2022 11:40:30 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 0/3] QOM improvements for rtc/mc146818rtc
-Date: Sun, 29 May 2022 20:40:03 +0200
-Message-Id: <20220529184006.10712-1-shentey@gmail.com>
+Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH v3 2/3] hw/i386/microvm-dt: Determine mc146818rtc's IRQ number
+ from QOM property
+Date: Sun, 29 May 2022 20:40:05 +0200
+Message-Id: <20220529184006.10712-3-shentey@gmail.com>
 X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220529184006.10712-1-shentey@gmail.com>
+References: <20220529184006.10712-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -75,34 +84,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 May 2022 18:40:33 -0000
+X-List-Received-Date: Sun, 29 May 2022 18:40:36 -0000
 
-v3:
-* "iobase" is now u16 (Philippe)
+Since commit 3b004a16540aa41f2aa6a1ceb0bf306716766914 'hw/rtc/
+mc146818rtc: QOM'ify IRQ number' mc146818rtc's IRQ number is
+configurable. Fix microvm-dt to respect its value.
 
-v2:
-* Explicitly fail with &error_abort rather than NULL (Mark)
-* Explicitly fail with &error_abort rather than NULL in existing code (me)
-* Unexport rather than remove RTC_ISA_BASE (Mark)
-* Use object_property_get_*u*int() also for "iobase" (me)
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/i386/microvm-dt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-v1:
-This little series enhances QOM support for mc146818rtc:
-* makes microvm-dt respect mc146818rtc's IRQ number set by QOM property and
-* adds an io_base QOM property similar to other ISA devices
-
-Bernhard Beschow (3):
-  hw/i386/microvm-dt: Force explicit failure if retrieving QOM property
-    fails
-  hw/i386/microvm-dt: Determine mc146818rtc's IRQ number from QOM
-    property
-  rtc/mc146818rtc: QOM'ify io_base offset
-
- hw/i386/microvm-dt.c         | 9 +++++----
- hw/rtc/mc146818rtc.c         | 9 ++++++---
- include/hw/rtc/mc146818rtc.h | 2 +-
- 3 files changed, 12 insertions(+), 8 deletions(-)
-
+diff --git a/hw/i386/microvm-dt.c b/hw/i386/microvm-dt.c
+index fde74819f2..287818c641 100644
+--- a/hw/i386/microvm-dt.c
++++ b/hw/i386/microvm-dt.c
+@@ -209,7 +209,7 @@ static void dt_add_isa_serial(MicrovmMachineState *mms, ISADevice *dev)
+ static void dt_add_isa_rtc(MicrovmMachineState *mms, ISADevice *dev)
+ {
+     const char compat[] = "motorola,mc146818";
+-    uint32_t irq = RTC_ISA_IRQ;
++    uint32_t irq = object_property_get_uint(OBJECT(dev), "irq", &error_fatal);
+     hwaddr base = RTC_ISA_BASE;
+     hwaddr size = 8;
+     char *nodename;
 -- 
 2.36.1
 
