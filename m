@@ -1,72 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nv3uq-0006Jk-4a
-	for mharc-qemu-trivial@gnu.org; Sat, 28 May 2022 17:24:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44128)
+	id 1nvEsE-0001tX-5K
+	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2022 05:06:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nv3uo-0006JH-E7; Sat, 28 May 2022 17:24:06 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:42613)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nv3um-00015R-VV; Sat, 28 May 2022 17:24:06 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- l188-20020a1c25c5000000b003978df8a1e2so2445876wml.1; 
- Sat, 28 May 2022 14:24:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:in-reply-to:references:message-id
- :mime-version:content-transfer-encoding;
- bh=zIGHVshfh/VikUqvKrvhXfm7K5EaTaFbPI9k1R3B3QM=;
- b=Gjof+E9drLhCJstlob0ryE+KdjAqFu1orco5bOHUPfM49537XQd68rMwJbcjhhX0H/
- M0yM3xp+PkuXyiTTvaBXWS8bpekqZ0zad7gLdEUu/QfXqDdywXBUoIXrkuxhLYByRjfa
- wlbe0QLvtxou6rDlpyW3BVmP04hnz6aOt/DHkpN0dcIAB/yagxYB6Ldldfk5gEBIlz3c
- m22hF+nvtITy3fc9urmarP6a6y2ehC58medtCwWn0aMcL+LoJ/Ai9XtOYxONMN9af07f
- UIlPFwTTNsbfgF0DuoL1Iw8SNjOaalMhv0gIA+x948VQMmLqsRRO0B5ofDEP1L8RxFmA
- wsaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
- :message-id:mime-version:content-transfer-encoding;
- bh=zIGHVshfh/VikUqvKrvhXfm7K5EaTaFbPI9k1R3B3QM=;
- b=prDI/CjewgMtIHviNQRlnsrQzokZGAi0hwSwovEpCd/hFQhm7mYh56Zev0e09F5FUw
- a0vCH5jmXNnWmPgMTa7d1IH6J/S9i0NElKiZFnO3swXarv/cwusvajDZ7ouIMw9/kJoy
- k0uF0vrqhD9EUT91UCiCFb78Z8cszpsZTgJDIEw1Cj0SpAkCEgSlO28I5d/E5nVWNbBX
- 1tt460DBzKGOPhV8ZBlk8q1KBVPMdrWq4djSKkfqJ3ANb7/pKSiYMHMscYxGu1NhzPzd
- 4VYnEwXFVZhgfnUa/JW+OtOAoc/oWLxERfvBuyBO2iipmh9ElPdiQoPzzpHK0HZBPg+C
- t9pg==
-X-Gm-Message-State: AOAM532C5RqVkj2z/XOjAewtIJA+r4PffqAZs7l9U3vjCPPWuSiR2wbU
- L8489w8761S23AtikKEnMz1vw3H3oig=
-X-Google-Smtp-Source: ABdhPJzM9lqK4t3eYGzDQhKxZ49/sjKHJV1WyZZnqIKb08Qqj95EeFlTziQwrbxrhf49U8rQCfjscA==
-X-Received: by 2002:a05:600c:3ac6:b0:397:7520:c78e with SMTP id
- d6-20020a05600c3ac600b003977520c78emr12548506wms.23.1653773042858; 
- Sat, 28 May 2022 14:24:02 -0700 (PDT)
-Received: from ?IPv6:::1?
- (p200300faaf303d006df08acd6a055550.dip0.t-ipconnect.de.
- [2003:fa:af30:3d00:6df0:8acd:6a05:5550])
- by smtp.gmail.com with ESMTPSA id
- m7-20020adffe47000000b0020d0b2de858sm4910784wrs.33.2022.05.28.14.24.02
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 28 May 2022 14:24:02 -0700 (PDT)
-Date: Sat, 28 May 2022 21:23:57 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-CC: qemu-trivial@nongnu.org, sstabellini@kernel.org, anthony.perard@citrix.com,
- paul@xen.org, xen-devel@lists.xenproject.org
-Subject: Re: [PATCH v2 0/3] PIIX3-IDE XEN cleanup
-In-Reply-To: <20220513180957.90514-1-shentey@gmail.com>
-References: <20220513180957.90514-1-shentey@gmail.com>
-Message-ID: <43BCAA1E-7499-4584-AB60-C5004AA0643B@gmail.com>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nvEry-0001oq-CO; Sun, 29 May 2022 05:05:58 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:57468)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nvErw-0005Cb-KT; Sun, 29 May 2022 05:05:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=d21h+hULPY07Ye4c3rPmemr8o685mqyN99TjfXux7wQ=; b=ppv0sAIbhXcaUtgLTwKtKooRTo
+ 2ZZEE9NySU0j3k1Gfjdkj1u5HGq1f8caESmjgZcYbCbHs5r7pIyMS+/jUGv55WaHWPlZpD9f/rIC/
+ NdnogNy64I99iULBSKnytJEHHa100nc+fVvgl1FHEH0uIllMqh96153211+WbHolsWTC1cGJ3VrEX
+ S26Abv8RX3cRMKMF9cRP92TLPrB7gfiUi4ECTapcsiTCQ/Ou5IgalRkT/gd64MCAkela0mpCGf21r
+ y5IWzyHBqrwpDlnRbl3s3KrH4V4rVAGq4OSmjhoBK2/Tg0/SU9Y/GZKM8+2uH6KsWDgjHO2mve+CT
+ Yd9uhiilTyVbSuCGPe2ip63oASsk4H3rlmrzRQjwbo7n7ofwqa+dIqhBVOCFhufJQyrvmKoWjIOXU
+ EBxWBX71oRI0O6Ljs6lY1nA0mg+csMsIkhK72aTPjlw5TI3kc63OFrDDnWCEYLXZsyYk9f2Uhvfdt
+ pnB8oGc1hQqHZvtuzpsNA9MywsyZ3mscx3yKnF3+Tvh8yLtYq+RD7iOMaA5SBfk1nvGJAgtWDGDWt
+ kzdG2ugnbcdysPOeWmOmOU89t3VZ6v/WNtUAkHihmxGatIf3vLhgObZkjB8Vcahh/0spijp/VV3Li
+ TyxgMpgLZc4a0+As6X6MQZGxEw9KofvCUxpX67Qoo=;
+Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1nvEqb-000AHz-O7; Sun, 29 May 2022 10:04:33 +0100
+Message-ID: <c62dad6a-9bd9-a2ef-ab24-c65912baa8bd@ilande.co.uk>
+Date: Sun, 29 May 2022 10:05:26 +0100
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32a.google.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
+References: <20220528192057.30910-1-shentey@gmail.com>
+ <20220528192057.30910-2-shentey@gmail.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20220528192057.30910-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v3 1/7] include/hw/southbridge/piix: Aggregate all PIIX
+ soughbridge type names
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,46 +74,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 May 2022 21:24:06 -0000
+X-List-Received-Date: Sun, 29 May 2022 09:06:09 -0000
 
-Am 13=2E Mai 2022 18:09:54 UTC schrieb Bernhard Beschow <shentey@gmail=2Eco=
-m>:
->v2:
->* Have pci_xen_ide_unplug() return void (Paul Durrant)
->* CC Xen maintainers (Michael S=2E Tsirkin)
->
->v1:
->This patch series first removes the redundant "piix3-ide-xen" device clas=
-s and
->then moves a XEN-specific helper function from PIIX3 code to XEN code=2E =
-The idea
->is to decouple PIIX3-IDE and XEN and to compile XEN-specific bits only if=
- XEN
->support is enabled=2E
->
->Testing done:
->'qemu-system-x86_64 -M pc -m 1G -cdrom archlinux-2022=2E05=2E01-x86_64=2E=
-iso" boots
->successfully and a 'poweroff' inside the VM also shuts it down correctly=
-=2E
->
->XEN mode wasn't tested for the time being since its setup procedure seems=
- quite
->sophisticated=2E Please let me know in case this is an obstacle=2E
->
->Bernhard Beschow (3):
->  hw/ide/piix: Remove redundant "piix3-ide-xen" device class
->  hw/ide/piix: Add some documentation to pci_piix3_xen_ide_unplug()
->  include/hw/ide: Unexport pci_piix3_xen_ide_unplug()
->
-> hw/i386/pc_piix=2Ec          |  3 +--
-> hw/i386/xen/xen_platform=2Ec | 48 +++++++++++++++++++++++++++++++++++++-
-> hw/ide/piix=2Ec              | 42 ---------------------------------
-> include/hw/ide=2Eh           |  3 ---
-> 4 files changed, 48 insertions(+), 48 deletions(-)
->
+On 28/05/2022 20:20, Bernhard Beschow wrote:
 
-Ping
+> TYPE_PIIX3_PCI_DEVICE resides there as already, so add the remaining
+> ones, too.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   hw/isa/piix3.c                | 3 ---
+>   include/hw/isa/isa.h          | 2 --
+>   include/hw/southbridge/piix.h | 4 ++++
+>   3 files changed, 4 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
+> index dab901c9ad..d96ce2b788 100644
+> --- a/hw/isa/piix3.c
+> +++ b/hw/isa/piix3.c
+> @@ -35,9 +35,6 @@
+>   
+>   #define XEN_PIIX_NUM_PIRQS      128ULL
+>   
+> -#define TYPE_PIIX3_DEVICE "PIIX3"
+> -#define TYPE_PIIX3_XEN_DEVICE "PIIX3-xen"
+> -
+>   static void piix3_set_irq_pic(PIIX3State *piix3, int pic_irq)
+>   {
+>       qemu_set_irq(piix3->pic[pic_irq],
+> diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
+> index 034d706ba1..e9fa2f5cea 100644
+> --- a/include/hw/isa/isa.h
+> +++ b/include/hw/isa/isa.h
+> @@ -144,6 +144,4 @@ static inline ISABus *isa_bus_from_device(ISADevice *d)
+>       return ISA_BUS(qdev_get_parent_bus(DEVICE(d)));
+>   }
+>   
+> -#define TYPE_PIIX4_PCI_DEVICE "piix4-isa"
+> -
+>   #endif
+> diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
+> index 976b4da582..3b97186f75 100644
+> --- a/include/hw/southbridge/piix.h
+> +++ b/include/hw/southbridge/piix.h
+> @@ -64,6 +64,10 @@ typedef struct PIIXState PIIX3State;
+>   DECLARE_INSTANCE_CHECKER(PIIX3State, PIIX3_PCI_DEVICE,
+>                            TYPE_PIIX3_PCI_DEVICE)
+>   
+> +#define TYPE_PIIX3_DEVICE "PIIX3"
+> +#define TYPE_PIIX3_XEN_DEVICE "PIIX3-xen"
+> +#define TYPE_PIIX4_PCI_DEVICE "piix4-isa"
+> +
+>   PIIX3State *piix3_create(PCIBus *pci_bus, ISABus **isa_bus);
+>   
+>   DeviceState *piix4_create(PCIBus *pci_bus, ISABus **isa_bus, I2CBus **smbus);
 
-Whole series is reviewed/acked=2E
+One tiny nit here: there's a typo in the subject line which I missed when reviewing v2.
+
+s/soughbridge/southbridge/
+
+
+ATB,
+
+Mark.
 
