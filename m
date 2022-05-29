@@ -1,102 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nvIkO-0006F8-Eq
-	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2022 09:14:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44314)
+	id 1nvNIf-0006oO-2B
+	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2022 14:06:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wendland@live.com.au>)
- id 1nvFIx-0002hA-DF
- for qemu-trivial@nongnu.org; Sun, 29 May 2022 05:33:48 -0400
-Received: from mail-mw2nam12olkn2040.outbound.protection.outlook.com
- ([40.92.23.40]:54752 helo=NAM12-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wendland@live.com.au>)
- id 1nvFIu-0000Lj-G6
- for qemu-trivial@nongnu.org; Sun, 29 May 2022 05:33:46 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=R3C8cnsT1FSH2z2CH7icmyeyfiF/llTJ3OBHVNCb5jO8fdwvIS0EqtWjU66KocbYlx1BEHByxK89fC0+0y6jhl0WmWVxYkukPVyU/wFpdyDLz4OTfuIPK2G+tHyFebm4Ryg8YoSBM1SWN/YOgYaoaDGEtwB7LwaCpijXlpeJkByF0D4bW7ekmIX4mLSN7JYArTUGMFHG/wQIpfXlrcc7AGdM8GB+c5RYFPpnsnBJq5Ke1lhZzQ3zQuEj35P/+jsNCpZSJUTp+5gLvCKRoIS1c2PXCB0tNFPPi+zMJzEoogKOoVd0O9rEXp1fmoqBLfWlYSxe+FTBjvwUp4b9nG2gQg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=edhwCw93VTkmmSBbuHon2rEjCtP3J/Zkih2ALn0TnnM=;
- b=ml/m77EgaYcT1AiJN6bsi1ThLWeyJ1nx+/WX2XmbIU+FAi9HxPwPkBuXP1IDac122vMGA0CXtu9GNdSPym7hLWrx/yvkLK8v1oUm6XclLg2mH2ChbyH/FRwOsTqvDlrHd2uuuEDXA2ti3uuw29Xtr3o3lP4iGP7QLZ6RfjDyjjvLRJ8qQtYqWcm6k4w5pk937w59dOV7J+OqPxMiPcuc/wbDGmKE59uyYYUu1n7IXNegg+XJRzjgALZmtcos0+hFvleixPebmHjGxjvvptJFx1BR/nPdpGsN6wn8pMz2nnJYoTmsXPwqv+QKvoNu2M9tPxske3DiBgqj7YxF/WU5RQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from MWHPR06MB2510.namprd06.prod.outlook.com (2603:10b6:300:66::21)
- by SN6PR06MB6413.namprd06.prod.outlook.com (2603:10b6:805:f4::32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5293.13; Sun, 29 May
- 2022 09:28:39 +0000
-Received: from MWHPR06MB2510.namprd06.prod.outlook.com
- ([fe80::88a3:25df:65a8:7684]) by MWHPR06MB2510.namprd06.prod.outlook.com
- ([fe80::88a3:25df:65a8:7684%9]) with mapi id 15.20.5293.018; Sun, 29 May 2022
- 09:28:39 +0000
-From: Ryan Wendland <wendland@live.com.au>
-To: qemu-trivial@nongnu.org
-Cc: Ryan Wendland <wendland@live.com.au>
-Subject: [PATCH] usb/ohci: Set pad to 0 after frame update
-Date: Sun, 29 May 2022 18:57:24 +0930
-Message-ID: <MWHPR06MB25106D279E1BA0FA579E4CA086DA9@MWHPR06MB2510.namprd06.prod.outlook.com>
-X-Mailer: git-send-email 2.25.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TMN: [pO64fhHlT9of1UEsjkOE1hqxFbJFJFzU]
-X-ClientProxiedBy: ME2PR01CA0171.ausprd01.prod.outlook.com
- (2603:10c6:220:20::15) To MWHPR06MB2510.namprd06.prod.outlook.com
- (2603:10b6:300:66::21)
-X-Microsoft-Original-Message-ID: <20220529092722.3032-1-wendland@live.com.au>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nvNIc-0006lp-5B; Sun, 29 May 2022 14:05:58 -0400
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d]:36600)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nvNIa-0005e2-7K; Sun, 29 May 2022 14:05:57 -0400
+Received: by mail-qt1-x82d.google.com with SMTP id s31so9559222qtc.3;
+ Sun, 29 May 2022 11:05:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=VY4xNo05neEdn6ydNCkbSaT1BR46GtoapM+9KEaUSZk=;
+ b=GiGqALMsYedXHOcAIrvwcw26ASP3AcG+JhoZUyhnRCPOjl0/gy3uYzjXjsveobPtng
+ mnFmTZthLWBCm3zZ+PT3aUi8xpOQt6/oM6F1/JOd0X3G2XDK+zb9xTU37msslZMMago1
+ 1vM5ygpnqwtPLEWgUMQl8fgtYZOBuUVyDLbI8O5tXC5KznT2nhvfLiDAFscrhn4I1/Pn
+ TCp9GhnsJvf7nd/UWpAYiftGuiJ1gcQR5kcliJ2bQ422dW3VRz7mLaVTknQCjY0NpjAk
+ zGvRj7/yOKLhSBpG8ZE/1v7iJXhTJfYJQtBgX0diLE6Oz54RTKtjgqurWylVGwC+9c7R
+ /9ZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=VY4xNo05neEdn6ydNCkbSaT1BR46GtoapM+9KEaUSZk=;
+ b=0b7IQEMaywnYKblG2xXsCUJt3thZhi4fSpUBs603YziiIaRJjUOFO4MZ2sLqterPE4
+ vjI/709W7xyJ3LqIQPw9FkAlW0WZXxD589G2ForEkAKNLm24XpRsapdy18wBy7fjgpDR
+ KMsib5+zn9I+KtNOXgIFyHGcoQkmYWMsttoa86Ws5YheitqJf8mr5pNziZd3271jQAar
+ oms023L/KXMhOC5wDiSwPI18D/fXt2vYPQwAq532+NjHXletoXC0YvDx6NHJEo6WXEOD
+ +yPsMdhleD+UeHGePQx1eIVBj/XggmHeDA5pnM5VtRBeXZAjh23Tl6oAZhvHMLl3Q/8k
+ DgqQ==
+X-Gm-Message-State: AOAM532XLCUE7uiFTtj9QAZjR3baLHbPJvvwNU+WrprHW0xFperYB2Zv
+ ZgfGY21niNr/ykT6l/R4rSyNm42lu1u1sImar3k=
+X-Google-Smtp-Source: ABdhPJxKM6RCWfM/iBCYq/0k7R6UCtZ/xjxnwropaKH+zWlmfEpjulvJZwYHYm4l5Tf2/t8MzfG4Sc5oNyNCPjHy2gI=
+X-Received: by 2002:a05:622a:1386:b0:2f3:d73d:f5c4 with SMTP id
+ o6-20020a05622a138600b002f3d73df5c4mr41186884qtk.658.1653847554846; Sun, 29
+ May 2022 11:05:54 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 550abb98-f6a4-49e1-6b08-08da41559cdb
-X-MS-Exchange-SLBlob-MailProps: CaK+F7me6CmAWpFad70HnHl4r0LAX1ElMNgGpxXt55knpm/yee/yD0Ohhhfb+6sHyYVQLdxif56KbWu2m60p0dKOFhd225LURKzwykw29Hp7OW5SCQkRsGXieguwx36VweBAHdiUzicE2WONPcOxbzmM9dc0cEuGnvO+pDB2H/WeGWqIcZYy79IcXSPcstgFyoqFVVF1rSxu/RV6/emdbgNMx2My6f9xpLg+HRt8TgSlE9xxYGtCikKU7J4DGA6gLvDH5anYYOVF8WfaL2SHkTtnEMukAS8K9UWUmHRzSck5gBTfZqYWqmWIMJQVLETTZe6GfhtiWKJhMwTzdkd+o/nmxxUOm9VyXnBorh4bClsS9xl6Ys4B7xflVXIp/uXi1zZCf+kTCfLVBkAgedgCfQKnwc3SKcpiAU4YoCWhktT2EkRPCZExAvUX7qJ9KvEOJ2wjHHpz/mLmrkiWCj25RjfE8ANv+84YnRXPl8qSDe8kdxE0RnML2SCs2/Uae+XhAQf53BEDHPwLp6qhYe/GQlzVeyhxz2QIFnwTsm4IwgpsoWWT3GSotLRMwouZpQ/K33bO34+OJY70Lkibaxf6LXPmmI89Qers3k01yJFnA6FuIomH/KH45WoVTvi117/Fk0B+qobtSFvw455DFSWifnGTasTi2419hRvTUZLjmw1ZjX45FEEwh8UCCHyCT/jhjttF352S7jIZK+41w0JbufPbUWGVbVRajog8mtvsqmill0kNFJEQFw==
-X-MS-TrafficTypeDiagnostic: SN6PR06MB6413:EE_
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: /7/HqlKDhYKdBFtE5IjaSKx1yi3Z4yOL4OmWOxp4a9DBSBTlfwaOPOvPMVxOs/1gl4TxK20pQRYNJ2vwKArL103AdRsMGGZgQxW0TAMm7qhx9seDaXcdtu2jCrKvU0mVd/U6afsfUKGuVG/bSEiODH91qz5f5lI8iYeYYNl+3dQ1YWJiRGUaGU/mRnoy+B0yVlLvzg8WfpgyMjLUoX9FIYzYPioU6L6jj4YUL2A+tiSQT53FsJT+6UblWgXQJohPns/U+BUu7Hc5wXuKkeJW9WAod3YKwg3roNpN0IDN+DzSdlOJhzb7djaXACfYAbn16PrcNdHmAVOh71lu3Qg0J7pvxKBHj9XkxBApqxdGm/NmyZnahVjVK56y5SkLzPDTpiWRkQiGNDFmbjpDrcbho2AkicjtHXij6yYwByMYQZQPB+xAbZ0QZCQjlI+cH27AYI8uz4NjT52JXW5WeX2ayLjMPZuUja4/xqIqeofRnvq0WObiv0/nfUybHsG7QjkbeUUgSW+NV3r7WqRUTbrfRMUs0G8efk3OLVs8+1CyPFH2A/CC9qCloDKDLv63cmreaLoJOQ0PBzJWvqmMQF2WpA==
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?irm+VwLA5BkEREdUsO22DLzQX15fjJOElqs9Z78Nd1Xr7qCHwwxCCspWe9j3?=
- =?us-ascii?Q?wruOFrYt0jj93hE5Mr9Bqq7L+n+ks72vk1OKYMDv7v5Tf+4RwtjSzVEbGgAK?=
- =?us-ascii?Q?yVuKMFh0iRbT8RSBgazBj2CtfCZ5jOR0rdW9Hi+M8WquTkPPKe6IC41WbjdI?=
- =?us-ascii?Q?ENxhtAXezW7hJJfjwLGTHqbZK1dA8tzbgt4BKCAWDPlfv6aCGgquPIjlraUt?=
- =?us-ascii?Q?AQ6xW2oGXorY3Rx2WczCZ38iohxXu18SPIVzD/vwVjxL1l6lw4PamveB+qMp?=
- =?us-ascii?Q?6L08y7xrXAgtkHHVxU69iIFg7/n5y+Y12CbgXaV5H8rbcpZWjB6+odYKv1Yq?=
- =?us-ascii?Q?XutuBIZm7LyuR9bqeaQsf8CZkIjmeLmefCOYnoEaR3YxUdfMHCPzFNVks4if?=
- =?us-ascii?Q?dztQ+4ZvuFrSpRLBdaSQJB/yLiZIxtwZSx2HQPoYyaic+sI2WNHWoLENKSmd?=
- =?us-ascii?Q?YykpaHxIFnIpeOE4BczoQz/fqAgkAqvOn3+93O2Ww6IsncoKrZf+ziAbgkYu?=
- =?us-ascii?Q?E3RS/qvOFwFIBqVGOc2ynvE611Vxpplvti+7j9YO08YN1N6LDEkiwt48AsiP?=
- =?us-ascii?Q?fVsTQJP5GEUpEQkzhPbGmxoYF1/8jGhivG774UxN12lXRHKboOIsrywMCOq+?=
- =?us-ascii?Q?kn4aJALXxL4GO1BHU7nmxkrK0OmVTsoXX/oM0dpesgSxvb24WGGCJb5XxfRI?=
- =?us-ascii?Q?A/N+8OwTrPGyoyX/rmFR12SLcWM6+bjNXMr3l0Hfh9s+hAHWBgcRd7kpbmMT?=
- =?us-ascii?Q?Zrnrj/yMpbNCAy7Mb4V0iqBlv1PklMSajO1QsFdbvlrL7RnxAXyOPD5AKohP?=
- =?us-ascii?Q?bkR7i9Iz7EF6oxYqIilknWKSzBKrc//RPFrSGr6jf7tLEhwyiI9V9C31hk9Q?=
- =?us-ascii?Q?h4IdIqMRqVP2OlHcTSHB/4V7G4U2UjNkF14mnzxHCy4EeKJJMy0W5QbovrQq?=
- =?us-ascii?Q?QhISVthGKa6VNc7X260nMFEEtMhDZjo+dopHaTXPQNkuzrX/vzNtjCREABW4?=
- =?us-ascii?Q?8EPje3THIJBTN1ZFtsZaI+cWUYI80IZR3QqCUuDUhz0Vz72/kfvQkjL7niRM?=
- =?us-ascii?Q?E3WVDb/al3QfvrWbT9XyRp9HSIxkHIE5P8uD7Y4FaCTJpxrcph2aFdFITAgl?=
- =?us-ascii?Q?sOPM6trtkSMfBUg6CETgJ/esUfFSNKazruJ3NAHBdPrEZJl05BHtU4JvonRl?=
- =?us-ascii?Q?kyseE6cHZKWBNJjTPeNIeCOL7iJwONwVHeOz5IIvb7Qs/FnhxQY6k0YUQPKX?=
- =?us-ascii?Q?ewdMSy64qosPeEQ4WgQ2R1nGNQYcmkAObyMD0zeZne0Kg3Ay/b6MilXsNZYT?=
- =?us-ascii?Q?Sunj0Xd8WxOtBH03i7t7zu6yYFdb3+EPFAEcMdYFM2z/YKSC+ax/8JiamZr/?=
- =?us-ascii?Q?g5UI6cjOLqAnFNX3l8/TYQ9GK/kq0q5ikpTPOBCJlvsMcwyXEAY4DJGJxgP9?=
- =?us-ascii?Q?u2ACKzHUyvY=3D?=
-X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 550abb98-f6a4-49e1-6b08-08da41559cdb
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR06MB2510.namprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 May 2022 09:28:39.3340 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR06MB6413
-Received-SPF: pass client-ip=40.92.23.40; envelope-from=wendland@live.com.au;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+References: <20220528192057.30910-1-shentey@gmail.com>
+ <20220528192057.30910-7-shentey@gmail.com>
+ <f3428e7e-f3f5-b933-a279-7da6e056dd5e@ilande.co.uk>
+In-Reply-To: <f3428e7e-f3f5-b933-a279-7da6e056dd5e@ilande.co.uk>
+From: Bernhard Beschow <shentey@gmail.com>
+Date: Sun, 29 May 2022 20:05:32 +0200
+Message-ID: <CAG4p6K6uWyTeWBnkTb0XciyD7Xa2nF7XXLo5pP+JLC4QontHHQ@mail.gmail.com>
+Subject: Re: [PATCH v3 6/7] hw/isa/piix4: QOM'ify PIIX4 PM creation
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Aurelien Jarno <aurelien@aurel32.net>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=shentey@gmail.com; helo=mail-qt1-x82d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 29 May 2022 09:14:19 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,27 +75,175 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 May 2022 09:33:56 -0000
+X-List-Received-Date: Sun, 29 May 2022 18:05:59 -0000
 
-Signed-off-by: Ryan Wendland <wendland@live.com.au>
----
- hw/usb/hcd-ohci.c | 2 ++
- 1 file changed, 2 insertions(+)
+On Sun, May 29, 2022 at 11:25 AM Mark Cave-Ayland <
+mark.cave-ayland@ilande.co.uk> wrote:
 
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index 895b29fb86..fed364dcbe 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -1199,6 +1199,8 @@ static void ohci_frame_boundary(void *opaque)
-     /* Increment frame number and take care of endianness. */
-     ohci->frame_number = (ohci->frame_number + 1) & 0xffff;
-     hcca.frame = cpu_to_le16(ohci->frame_number);
-+    /* When the HC updates frame number, set pad to 0. Ref OHCI Spec 4.4.1*/
-+    hcca.pad = 0;
- 
-     if (ohci->done_count == 0 && !(ohci->intr_status & OHCI_INTR_WD)) {
-         if (!ohci->done)
--- 
-2.25.1
+> On 28/05/2022 20:20, Bernhard Beschow wrote:
+>
+> > Just like the real hardware, create the PIIX4 ACPI controller as part of
+> > the PIIX4 southbridge. This also mirrors how the IDE and USB functions
+> > are already created.
+> >
+> > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> > ---
+> >   hw/isa/piix4.c                | 25 ++++++++++++++-----------
+> >   hw/mips/malta.c               |  3 ++-
+> >   include/hw/southbridge/piix.h |  2 +-
+> >   3 files changed, 17 insertions(+), 13 deletions(-)
+> >
+> > diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
+> > index 96df21a610..217989227d 100644
+> > --- a/hw/isa/piix4.c
+> > +++ b/hw/isa/piix4.c
+> > @@ -49,6 +49,7 @@ struct PIIX4State {
+> >       RTCState rtc;
+> >       PCIIDEState ide;
+> >       UHCIState uhci;
+> > +    PIIX4PMState pm;
+> >       /* Reset Control Register */
+> >       MemoryRegion rcr_mem;
+> >       uint8_t rcr;
+> > @@ -261,6 +262,14 @@ static void piix4_realize(PCIDevice *dev, Error
+> **errp)
+> >           return;
+> >       }
+> >
+> > +    /* ACPI controller */
+> > +    qdev_prop_set_int32(DEVICE(&s->pm), "addr", dev->devfn + 3);
+> > +    if (!qdev_realize(DEVICE(&s->pm), BUS(pci_bus), errp)) {
+> > +        return;
+> > +    }
+> > +    qdev_connect_gpio_out(DEVICE(&s->pm), 0, s->isa[9]);
+> > +    object_property_add_alias(OBJECT(s), "smbus", OBJECT(&s->pm),
+> "i2c");
+>
+> Now that the PM device is QOMified you don't actually need this alias
+> anymore (see
+> below). In general aliasing parts of contained devices onto the container
+> isn't
+> recommended, since it starts to blur the line between individual devices
+> and then you
+> find some wiring gets done to the container, some directly to the
+> contained device
+> and then it starts to get confusing quite quickly.
+>
+> >       pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s,
+> PIIX_NUM_PIRQS);
+> >   }
+> >
+> > @@ -271,6 +280,10 @@ static void piix4_init(Object *obj)
+> >       object_initialize_child(obj, "rtc", &s->rtc, TYPE_MC146818_RTC);
+> >       object_initialize_child(obj, "ide", &s->ide, "piix4-ide");
+> >       object_initialize_child(obj, "uhci", &s->uhci, "piix4-usb-uhci");
+> > +
+> > +    object_initialize_child(obj, "pm", &s->pm, TYPE_PIIX4_PM);
+> > +    qdev_prop_set_uint32(DEVICE(&s->pm), "smb_io_base", 0x1100);
+> > +    qdev_prop_set_bit(DEVICE(&s->pm), "smm-enabled", 0);
+> >   }
+> >
+> >   static void piix4_class_init(ObjectClass *klass, void *data)
+> > @@ -312,7 +325,7 @@ static void piix4_register_types(void)
+> >
+> >   type_init(piix4_register_types)
+> >
+> > -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus)
+> > +DeviceState *piix4_create(PCIBus *pci_bus)
+> >   {
+> >       PCIDevice *pci;
+> >       DeviceState *dev;
+> > @@ -322,15 +335,5 @@ DeviceState *piix4_create(PCIBus *pci_bus, I2CBus
+> **smbus)
+> >                                             TYPE_PIIX4_PCI_DEVICE);
+> >       dev = DEVICE(pci);
+> >
+> > -    if (smbus) {
+> > -        pci = pci_new(devfn + 3, TYPE_PIIX4_PM);
+> > -        qdev_prop_set_uint32(DEVICE(pci), "smb_io_base", 0x1100);
+> > -        qdev_prop_set_bit(DEVICE(pci), "smm-enabled", 0);
+> > -        pci_realize_and_unref(pci, pci_bus, &error_fatal);
+> > -        qdev_connect_gpio_out(DEVICE(pci), 0,
+> > -                              qdev_get_gpio_in_named(dev, "isa", 9));
+> > -        *smbus = I2C_BUS(qdev_get_child_bus(DEVICE(pci), "i2c"));
+> > -    }
+> > -
+> >       return dev;
+> >   }
+> > diff --git a/hw/mips/malta.c b/hw/mips/malta.c
+> > index e446b25ad0..b0fc84ccbb 100644
+> > --- a/hw/mips/malta.c
+> > +++ b/hw/mips/malta.c
+> > @@ -1399,8 +1399,9 @@ void mips_malta_init(MachineState *machine)
+> >       empty_slot_init("GT64120", 0, 0x20000000);
+> >
+> >       /* Southbridge */
+> > -    dev = piix4_create(pci_bus, &smbus);
+> > +    dev = piix4_create(pci_bus);
+> >       isa_bus = ISA_BUS(qdev_get_child_bus(dev, "isa.0"));
+> > +    smbus = I2C_BUS(qdev_get_child_bus(dev, "smbus"));
+>
+> It should now be possible to do something like this:
+>
+>      pm_dev = DEVICE(object_resolve_path_component(OBJECT(dev), "pm"));
+>      smbus = I2C_BUS(qdev_get_child_bus(pm_dev, "i2c"));
+>
+> whereby we grab the reference to the PIIX4_PM device by resolving the "pm"
+> child
+> object and then use that to obtain the reference to smbus.
+>
 
+Imagining the container device to be an abstraction layer for the
+contained functionality I actually prefer the alias. Having it one
+doesn't need to know that there is an internal device named "pm" and
+one doesn't need to care about how many levels deep it is buried
+inside the implementation. This allows for further refactoring the
+PIIX4 without breaking its contract to its users.
+
+Also, this reflects how the real hardware works: The Malta board can
+wire up the PIIX4 southbridge without worrying about its inner
+details. One can look into the datasheets, see the exposed interfaces
+and pins, and connect them. By QOM'ifying PIIX4 we now have the
+opportunity to mirror the real hardware by exposing it to the Malta
+board as a black box which exposes dedicated pins and buses.
+
+Looking further into the QEMU code, there is even the following
+comment in sabrelite.c:
+        /*
+         * TODO: Ideally we would expose the chip select and spi bus on the
+         * SoC object using alias properties; then we would not need to
+         * directly access the underlying spi device object.
+         */
+To me this comment seems that the authors think in a similar way.
+
+What do you think?
+
+Best regards,
+Bernhard
+
+
+
+
+
+> >       /* Interrupt controller */
+> >       qdev_connect_gpio_out_named(dev, "intr", 0, i8259_irq);
+> > diff --git a/include/hw/southbridge/piix.h
+> b/include/hw/southbridge/piix.h
+> > index 0a2ef0c7b6..e1f5d6d5c8 100644
+> > --- a/include/hw/southbridge/piix.h
+> > +++ b/include/hw/southbridge/piix.h
+> > @@ -70,6 +70,6 @@ DECLARE_INSTANCE_CHECKER(PIIX3State, PIIX3_PCI_DEVICE,
+> >
+> >   PIIX3State *piix3_create(PCIBus *pci_bus);
+> >
+> > -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus);
+> > +DeviceState *piix4_create(PCIBus *pci_bus);
+> >
+> >   #endif
+>
+>
+> ATB,
+>
+> Mark.
+>
 
