@@ -1,68 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nvlXQ-0005xX-2k
-	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2022 15:58:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38148)
+	id 1nvmUn-0002bk-GC
+	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2022 17:00:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nvlXL-0005vb-1B; Mon, 30 May 2022 15:58:48 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:59074)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nvlXI-0002ck-VG; Mon, 30 May 2022 15:58:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=K0eP9NwXgeeYMd0IBkFu9noNi0vtmb65trtzAr5ysPA=; b=X0++K9CKt48mC6awHVPUzA5XpP
- nk/0z669+mo9bxgchef0GMJqD28GXr+pSeUNf0wsj7Ef248Jpe5j9LgdZKDNX085f5TbkjiWigJhm
- DUry+pRCI4GtmijnixaPYsTt9XIUvse+maJTsBcyWL5ZyAda48Y3K5TH5EGf7NpQnWAttL4Q+TiEJ
- V+bO0l2pFtSqZdbgYkPkL6wyqE53a/KiLGrW6jTCc9wUjiaSyWIEyXzJ/Kb5hiwMa3agSUYkbHkQR
- vebajv+2DU2xhXgunhivR98gjSjlW3avCiZrybtg9aLPVXrl/zE1Rjx3PO0WkpjjqVkVhP6iu3n7S
- ht/y14MtOjeIow0mpYXF//I1gzuF9eGbPAf7xVEb+tuwpmz0L7ckaGkN33yIFE4dtxUA6W5Ib/y0r
- vNpk3PNZdxKeIQfgTBRNHEIvFHyTWVyyYrIoDPwDfI5ANAVhewWRzqKXePS8ogfsZJYs6Yz3FqJ/z
- 5I4ur2LxUWdiWfDiGqNnHnUdjxBXslDLC9lp8T+4ily4bfqq6XkbVt5gpaKCkY+18SJc/VzBfIaA0
- 1vdDPfKOWvNzUmfGncFrEl7NMgVT6cFe7WWJE7tYlWOauBgOriPhLcradSgEaUvsz0Al9LHeKrk6u
- ag5oKq/+9VaBIGNRM5OxoNIM4ijQDz04NfLZa9J28=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1nvlWB-0009GZ-Rl; Mon, 30 May 2022 20:57:40 +0100
-Message-ID: <2c39af97-498b-bf1c-08ac-ab47d293144e@ilande.co.uk>
-Date: Mon, 30 May 2022 20:58:37 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Aurelien Jarno <aurelien@aurel32.net>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nvmUm-0002bW-Ca; Mon, 30 May 2022 17:00:12 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:39853)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1nvmUk-0003La-Uf; Mon, 30 May 2022 17:00:12 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id x17so7057582wrg.6;
+ Mon, 30 May 2022 14:00:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=j+LNb3AW6qPqPsw248a48oDxCuHb1EqC8yS+mWaN6+w=;
+ b=UotWSFmxgiGbz8lo4VBHe5SE0ylneR631bz8CsommG2XV485+92ccEgR29CGULoXxd
+ f27hVlLRa3fvz/XkRGiB6JeLhT7uMTLQDX12cwzkGg7VPeZWVwkX9g+n70HG/z0vduoa
+ wcceX9LSV8JVff4kOrFabY3HpEqjjbZ9+92vOv2aEr6P5CRWSC3KiFPDZ6zr9ud1q88W
+ kVWkEpEgIYcwbxfkRf1Ov5yH0c4xqovCpDUvBXhL8RL4Q/lUGkp78XcSVOS8bWTW+AUw
+ fTdG15T3cBMM8pkWHvFYFeuZQrjpDcj2uLwoU6VXP84+X/C237eV8FPphZCbI4dAZrSA
+ sN+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=j+LNb3AW6qPqPsw248a48oDxCuHb1EqC8yS+mWaN6+w=;
+ b=R7JMk5yqqMg65TvjAQxVDAAJyVkXyNYXeei0UKV6Y+QM/728QGf7Kb5ifoJtfs75VW
+ nINRKV+mOvO8C61ZOJzIQ+FVAdzYpNvIIwK0I1RB3omuKKFpoXywT1Pkldkf8/Qm9kMs
+ YAa2l9o80ExQcofDNg/EXBkyv5B5y6LRbciKdt8Djlj0KWD9l9nZXJf20cI0MhEk+iG0
+ +9A1me9Dr846iV8Bupn34MJt/SbGiCZXx6o05DQ56j/zk2KZwqEcs61GaTdNpAAMMB8N
+ uPVaIYY8PtFqXBChuqTvZ+Fc6iS4F8iI4Q00VDy1Bcd5G6SfI41zdn95GXyc/w4CAOKp
+ ThVg==
+X-Gm-Message-State: AOAM530l6WvCE4JkC+9K/k5xqJxIjMai77x5qySaf9I7JSk0BUHs6NfW
+ xiA2xE/Tbxhd3NPFIrc3gGg=
+X-Google-Smtp-Source: ABdhPJz7yaeyg7WY7xalYnbo+nbbuwd1td6x/VA9zf4P9Ui9kYKVycVrwkbUltEw/bm0R1EZatzQjQ==
+X-Received: by 2002:a5d:6943:0:b0:210:2f76:93ff with SMTP id
+ r3-20020a5d6943000000b002102f7693ffmr7614483wrw.377.1653944408604; 
+ Mon, 30 May 2022 14:00:08 -0700 (PDT)
+Received: from ?IPv6:::1?
+ (p200300faaf303d00ad33f34241f66c9c.dip0.t-ipconnect.de.
+ [2003:fa:af30:3d00:ad33:f342:41f6:6c9c])
+ by smtp.gmail.com with ESMTPSA id
+ f6-20020a05600c154600b00397402ae674sm391738wmg.11.2022.05.30.14.00.07
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 30 May 2022 14:00:08 -0700 (PDT)
+Date: Mon, 30 May 2022 21:00:04 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+CC: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v3_4/7=5D_hw/isa/piix=7B3=2C4=7D=3A_?=
+ =?US-ASCII?Q?QOM=27ify_PCI_device_creation_and_wiring?=
+In-Reply-To: <8a1584fe-68a5-9176-f8d5-c4ed2d9f745c@amsat.org>
 References: <20220528192057.30910-1-shentey@gmail.com>
- <20220528192057.30910-7-shentey@gmail.com>
- <f3428e7e-f3f5-b933-a279-7da6e056dd5e@ilande.co.uk>
- <CAG4p6K6uWyTeWBnkTb0XciyD7Xa2nF7XXLo5pP+JLC4QontHHQ@mail.gmail.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <CAG4p6K6uWyTeWBnkTb0XciyD7Xa2nF7XXLo5pP+JLC4QontHHQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v3 6/7] hw/isa/piix4: QOM'ify PIIX4 PM creation
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+ <20220528192057.30910-5-shentey@gmail.com>
+ <8a1584fe-68a5-9176-f8d5-c4ed2d9f745c@amsat.org>
+Message-ID: <FF9408A7-883D-4666-9F07-5597A9139651@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,175 +85,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 May 2022 19:58:50 -0000
+X-List-Received-Date: Mon, 30 May 2022 21:00:12 -0000
 
-On 29/05/2022 19:05, Bernhard Beschow wrote:
+Am 30=2E Mai 2022 13:17:12 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <f4bug=
+@amsat=2Eorg>:
+>Hi Bernhard,
 
-> On Sun, May 29, 2022 at 11:25 AM Mark Cave-Ayland <
-> mark.cave-ayland@ilande.co.uk> wrote:
-> 
->> On 28/05/2022 20:20, Bernhard Beschow wrote:
->>
->>> Just like the real hardware, create the PIIX4 ACPI controller as part of
->>> the PIIX4 southbridge. This also mirrors how the IDE and USB functions
->>> are already created.
->>>
->>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->>> ---
->>>    hw/isa/piix4.c                | 25 ++++++++++++++-----------
->>>    hw/mips/malta.c               |  3 ++-
->>>    include/hw/southbridge/piix.h |  2 +-
->>>    3 files changed, 17 insertions(+), 13 deletions(-)
->>>
->>> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
->>> index 96df21a610..217989227d 100644
->>> --- a/hw/isa/piix4.c
->>> +++ b/hw/isa/piix4.c
->>> @@ -49,6 +49,7 @@ struct PIIX4State {
->>>        RTCState rtc;
->>>        PCIIDEState ide;
->>>        UHCIState uhci;
->>> +    PIIX4PMState pm;
->>>        /* Reset Control Register */
->>>        MemoryRegion rcr_mem;
->>>        uint8_t rcr;
->>> @@ -261,6 +262,14 @@ static void piix4_realize(PCIDevice *dev, Error
->> **errp)
->>>            return;
->>>        }
->>>
->>> +    /* ACPI controller */
->>> +    qdev_prop_set_int32(DEVICE(&s->pm), "addr", dev->devfn + 3);
->>> +    if (!qdev_realize(DEVICE(&s->pm), BUS(pci_bus), errp)) {
->>> +        return;
->>> +    }
->>> +    qdev_connect_gpio_out(DEVICE(&s->pm), 0, s->isa[9]);
->>> +    object_property_add_alias(OBJECT(s), "smbus", OBJECT(&s->pm),
->> "i2c");
->>
->> Now that the PM device is QOMified you don't actually need this alias
->> anymore (see
->> below). In general aliasing parts of contained devices onto the container
->> isn't
->> recommended, since it starts to blur the line between individual devices
->> and then you
->> find some wiring gets done to the container, some directly to the
->> contained device
->> and then it starts to get confusing quite quickly.
->>
->>>        pci_bus_irqs(pci_bus, piix4_set_irq, pci_slot_get_pirq, s,
->> PIIX_NUM_PIRQS);
->>>    }
->>>
->>> @@ -271,6 +280,10 @@ static void piix4_init(Object *obj)
->>>        object_initialize_child(obj, "rtc", &s->rtc, TYPE_MC146818_RTC);
->>>        object_initialize_child(obj, "ide", &s->ide, "piix4-ide");
->>>        object_initialize_child(obj, "uhci", &s->uhci, "piix4-usb-uhci");
->>> +
->>> +    object_initialize_child(obj, "pm", &s->pm, TYPE_PIIX4_PM);
->>> +    qdev_prop_set_uint32(DEVICE(&s->pm), "smb_io_base", 0x1100);
->>> +    qdev_prop_set_bit(DEVICE(&s->pm), "smm-enabled", 0);
->>>    }
->>>
->>>    static void piix4_class_init(ObjectClass *klass, void *data)
->>> @@ -312,7 +325,7 @@ static void piix4_register_types(void)
->>>
->>>    type_init(piix4_register_types)
->>>
->>> -DeviceState *piix4_create(PCIBus *pci_bus, I2CBus **smbus)
->>> +DeviceState *piix4_create(PCIBus *pci_bus)
->>>    {
->>>        PCIDevice *pci;
->>>        DeviceState *dev;
->>> @@ -322,15 +335,5 @@ DeviceState *piix4_create(PCIBus *pci_bus, I2CBus
->> **smbus)
->>>                                              TYPE_PIIX4_PCI_DEVICE);
->>>        dev = DEVICE(pci);
->>>
->>> -    if (smbus) {
->>> -        pci = pci_new(devfn + 3, TYPE_PIIX4_PM);
->>> -        qdev_prop_set_uint32(DEVICE(pci), "smb_io_base", 0x1100);
->>> -        qdev_prop_set_bit(DEVICE(pci), "smm-enabled", 0);
->>> -        pci_realize_and_unref(pci, pci_bus, &error_fatal);
->>> -        qdev_connect_gpio_out(DEVICE(pci), 0,
->>> -                              qdev_get_gpio_in_named(dev, "isa", 9));
->>> -        *smbus = I2C_BUS(qdev_get_child_bus(DEVICE(pci), "i2c"));
->>> -    }
->>> -
->>>        return dev;
->>>    }
->>> diff --git a/hw/mips/malta.c b/hw/mips/malta.c
->>> index e446b25ad0..b0fc84ccbb 100644
->>> --- a/hw/mips/malta.c
->>> +++ b/hw/mips/malta.c
->>> @@ -1399,8 +1399,9 @@ void mips_malta_init(MachineState *machine)
->>>        empty_slot_init("GT64120", 0, 0x20000000);
->>>
->>>        /* Southbridge */
->>> -    dev = piix4_create(pci_bus, &smbus);
->>> +    dev = piix4_create(pci_bus);
->>>        isa_bus = ISA_BUS(qdev_get_child_bus(dev, "isa.0"));
->>> +    smbus = I2C_BUS(qdev_get_child_bus(dev, "smbus"));
->>
->> It should now be possible to do something like this:
->>
->>       pm_dev = DEVICE(object_resolve_path_component(OBJECT(dev), "pm"));
->>       smbus = I2C_BUS(qdev_get_child_bus(pm_dev, "i2c"));
->>
->> whereby we grab the reference to the PIIX4_PM device by resolving the "pm"
->> child
->> object and then use that to obtain the reference to smbus.
->>
-> 
-> Imagining the container device to be an abstraction layer for the
-> contained functionality I actually prefer the alias. Having it one
-> doesn't need to know that there is an internal device named "pm" and
-> one doesn't need to care about how many levels deep it is buried
-> inside the implementation. This allows for further refactoring the
-> PIIX4 without breaking its contract to its users.
-> 
-> Also, this reflects how the real hardware works: The Malta board can
-> wire up the PIIX4 southbridge without worrying about its inner
-> details. One can look into the datasheets, see the exposed interfaces
-> and pins, and connect them. By QOM'ifying PIIX4 we now have the
-> opportunity to mirror the real hardware by exposing it to the Malta
-> board as a black box which exposes dedicated pins and buses.
+Hi Philippe,
 
-It's a bit trickier in this particular case because here the PIIX4 device acts as 
-both a container and PCI device instance - and certainly the distinction can be 
-blurred when modelling integrated devices.
+>On 28/5/22 21:20, Bernhard Beschow wrote:
+>> PCI interrupt wiring and device creation (piix4 only) were performed
+>> in create() functions which are obsolete=2E Move these tasks into QOM
+>> functions to modernize the code=2E
+>>=20
+>> In order to avoid duplicate checking for xen_enabled() the piix3 realiz=
+e
+>> methods are now split=2E
+>>=20
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>   hw/isa/piix3=2Ec | 67 +++++++++++++++++++++++++++++++++--------------=
+---
+>>   hw/isa/piix4=2Ec | 30 ++++++++++++++++------
+>>   2 files changed, 67 insertions(+), 30 deletions(-)
+>
+>While this is the same chipset family, these models are maintained by
+>different people=2E=2E=2E Do you mind splitting?
 
-The reason for leaning towards referencing the "pm" child object directly is because 
-a quick glance at the datasheet suggests that the PM functions and smbus are exposed 
-via function 3, so it feels that referencing that PCIDevice instance to find the 
-smbus is intuitive.
+Will do=2E I'd split the whole series then=2E
 
-For me using the "pm" child object is a shorter alternative to using 
-pci_find_device() to locate the function 3 PCIDevice function on the bus, which is 
-effectively what a guest OS would do. Since the PM device sits directly on the PCI 
-bus it would never change depth within the PIIX4 container device, and renaming child 
-object properties is an extremely rare event (which would also be easily fixable with 
-grep).
+>For PIIX4 part:
+>Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=2Eorg>
+>
 
-> Looking further into the QEMU code, there is even the following
-> comment in sabrelite.c:
->          /*
->           * TODO: Ideally we would expose the chip select and spi bus on the
->           * SoC object using alias properties; then we would not need to
->           * directly access the underlying spi device object.
->           */
-> To me this comment seems that the authors think in a similar way.
-> 
-> What do you think?
-
-It's difficult for me to know without having much knowledge of ARM devices, but I can 
-see how this might be useful given that SoCs can integrate a lot of different devices 
-into a single address space. Another thing to note is that the comment above was 
-originally written in 2016, and the qdev/QOM APIs (and indeed our knowledge as to how 
-best to use them) have improved considerably since then.
-
-
-ATB,
-
-Mark.
 
