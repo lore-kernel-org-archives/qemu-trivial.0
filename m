@@ -1,73 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nvfGv-0000MQ-JA
-	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2022 09:17:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47612)
+	id 1nvfJB-00022c-I7
+	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2022 09:19:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nvfGt-0000J7-Bt; Mon, 30 May 2022 09:17:23 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535]:44961)
+ id 1nvfJ8-0001z7-1l; Mon, 30 May 2022 09:19:42 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f]:43760)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nvfGp-0001k1-1i; Mon, 30 May 2022 09:17:20 -0400
-Received: by mail-pg1-x535.google.com with SMTP id v15so10125519pgk.11;
- Mon, 30 May 2022 06:17:18 -0700 (PDT)
+ id 1nvfJ5-00029j-Vz; Mon, 30 May 2022 09:19:41 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id y189so10550479pfy.10;
+ Mon, 30 May 2022 06:19:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=nhXEHZPfLqymltQZF4KpmxUD2H0WPVW45Y0FhAxPSdA=;
- b=JQfoH6f3zBwNnJBSDaRpObaVpRftnFzYonSTIEWbU4HevjAduax/8TnLd46epEbTuW
- 7zHH1hUo//9FBur8NL7kn5J8kNZQ5usfCwNxuRavqvQ2IKv1EoiOcEldzGyO0nS1E6J9
- imbmM4bFU9UFqRdUBE2EoxUV4sa6ruMC01urjiw54aY7AmY9HvR6Ax7z1ox3i5ixHxVu
- fPy9suqgQzMor3tuSh/Dtkoqt0D7ZWQbHUAJ7zsjEkgDLfpRwbnGAr+PISy+SGKdn5P9
- J/Q6U/glUAf2F5iGAbUoyX8YPrWRyjFLuC6+p4drxbOjaXk0J7WUk5gKiZ2bcP0AohfZ
- L5WQ==
+ bh=HmGTu5js5oePZmoFhakOY0vorwpADQ2l8SWbK4lK24c=;
+ b=NT0gGz96HNPTi01FCiQsdc5SbolZLn8VcAj/CXWa1AJxI9Q6o/GkRQjOIogzWy12bj
+ xXz+1LqVR5olFzoFBhVgvQ8HHTDqGQxtQClOaMN6bRiFAsAI9Vglqw5TH1t3MVgX1CaK
+ 1I4iYU8m9EVLHUyyhAFJCos411ZyAjuo1aET479FFBW1ZLFcM+B0S4Iq+Uwntz3JZYux
+ USip9yT7y0DTm550P+EkGL/YrUApqlEeyzLPN/SDKcmt+zLhPfJAEEZ+m2J3Pst4YtjW
+ TcdFA7ThU2TiA3ZsnZHFUUwXty5Zgb241dBiiK5+Mv3w7GRHyGjeTkn8AFAB4QBY7LsJ
+ Bs6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=nhXEHZPfLqymltQZF4KpmxUD2H0WPVW45Y0FhAxPSdA=;
- b=Y6JxTZ7m+H3ZSOaFsqDA0Ti+CrqKk03SpgLhqyi69z+JcpV93isyrERvdVsqHi7zbX
- sxQJezh3S0LzM03QUb2s/pyrGKv5/DuQujwQc+ksNqlJPjBkuLzsBIQwAIUZwtc8xonk
- VCJ2WpXcwNgVrXZhUs7o8WaQUN7lXfRZt5kf8E3c6c0e/7E+Ij+m5Ra7QowftRsCyKPC
- vwrr9eixJ50iLzuu1GMo3fTAJFOTqKfdV1wfiPuZNMTkEKWswtJ4LiHoVwC4jBE3Q7q5
- +r32Im76WYNC5GHGTs7xA7LgGBfIM06ux77ZZnGa4UbnrluD5ROc3wUT0nLVtK6JbbAw
- FmWw==
-X-Gm-Message-State: AOAM532ObuHQK58Z5Qm3tDH7l9FI2R2Z5u4El4E4xInH0sXxiAPHYuoZ
- Y0zOzglH3ZcfPdnSuAN1mfo=
-X-Google-Smtp-Source: ABdhPJwbAEYcoCcNFiwOu77HjRf/D/tWooIBiGLtBGNQkeYm8/DdUtjL+WpuayGFHLU8uZYno9mI0Q==
-X-Received: by 2002:aa7:8081:0:b0:518:26c4:ea42 with SMTP id
- v1-20020aa78081000000b0051826c4ea42mr50523504pff.7.1653916637191; 
- Mon, 30 May 2022 06:17:17 -0700 (PDT)
+ bh=HmGTu5js5oePZmoFhakOY0vorwpADQ2l8SWbK4lK24c=;
+ b=2I6jgaE/tZBEgKml+wKMuIA6a9ipEZPy55e/O4If7rRmIe+QwVTdGVhOaDmklZWpzi
+ KyUVF4Y44647sqj+WwK1R9eQGhd0zYw0HLGoZED3OcggjqCQh3/vio40P/fFOqqedv/X
+ fc+iL4OdPu+S8auuy9bVCWUn7XFCR7XiXTQQ9Bk5jS+cgsIzQJ39lvPCzr01gL8b5w65
+ E/0bad4GcEnNJ1iEWPOS/te13qh5QnqoShJxLZeYZDP1eOJE1JMBMGrplCvukT9Xe8VX
+ YDsLC9+f43D1FfxOBjVeGAzxlJUm0sJgc6IlsfOd5UJpvvWghvbf/GThlgm7GgC/XIZK
+ 7mMg==
+X-Gm-Message-State: AOAM5313dV1/ctjs39NT5UM3Roq4bC0AkAlYUtyLjOeDDm0qZ1B/Wnlv
+ TqbaQfo07rCjPzJlqiPv8yM=
+X-Google-Smtp-Source: ABdhPJw/7C1fHbLd2id4rORYlQF3BRPRBr5TDmR+sFKKXmPjXWdIqjy9fhoBby+1Hygy7GRX8+frYw==
+X-Received: by 2002:a05:6a00:1582:b0:518:7aa0:d6d8 with SMTP id
+ u2-20020a056a00158200b005187aa0d6d8mr46709733pfk.27.1653916778249; 
+ Mon, 30 May 2022 06:19:38 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- a23-20020a170902b59700b001616c3bd5c2sm9132190pls.162.2022.05.30.06.17.14
+ p13-20020a17090adf8d00b001e31803540fsm1482192pjv.6.2022.05.30.06.19.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 May 2022 06:17:16 -0700 (PDT)
+ Mon, 30 May 2022 06:19:37 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <8a1584fe-68a5-9176-f8d5-c4ed2d9f745c@amsat.org>
-Date: Mon, 30 May 2022 15:17:12 +0200
+Message-ID: <f5cf718e-fc56-c271-5827-dc2d3c86a231@amsat.org>
+Date: Mon, 30 May 2022 15:19:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.9.1
-Subject: Re: [PATCH v3 4/7] hw/isa/piix{3, 4}: QOM'ify PCI device creation and
- wiring
+Subject: Re: [PATCH v3 1/7] include/hw/southbridge/piix: Aggregate all PIIX
+ soughbridge type names
 Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+To: Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
 References: <20220528192057.30910-1-shentey@gmail.com>
- <20220528192057.30910-5-shentey@gmail.com>
+ <20220528192057.30910-2-shentey@gmail.com>
+ <c62dad6a-9bd9-a2ef-ab24-c65912baa8bd@ilande.co.uk>
+ <CAG4p6K4v8qEUpZKqJ4R6aXXoKWSoBUORySsjt_eJFPzggsZVvg@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220528192057.30910-5-shentey@gmail.com>
+In-Reply-To: <CAG4p6K4v8qEUpZKqJ4R6aXXoKWSoBUORySsjt_eJFPzggsZVvg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x535.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -88,28 +92,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 May 2022 13:17:24 -0000
+X-List-Received-Date: Mon, 30 May 2022 13:19:43 -0000
 
-Hi Bernhard,
-
-On 28/5/22 21:20, Bernhard Beschow wrote:
-> PCI interrupt wiring and device creation (piix4 only) were performed
-> in create() functions which are obsolete. Move these tasks into QOM
-> functions to modernize the code.
+On 29/5/22 20:09, Bernhard Beschow wrote:
+> On Sun, May 29, 2022 at 11:05 AM Mark Cave-Ayland 
+> <mark.cave-ayland@ilande.co.uk <mailto:mark.cave-ayland@ilande.co.uk>> 
+> wrote:
 > 
-> In order to avoid duplicate checking for xen_enabled() the piix3 realize
-> methods are now split.
+>     On 28/05/2022 20:20, Bernhard Beschow wrote:
 > 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/isa/piix3.c | 67 +++++++++++++++++++++++++++++++++-----------------
->   hw/isa/piix4.c | 30 ++++++++++++++++------
->   2 files changed, 67 insertions(+), 30 deletions(-)
+>      > TYPE_PIIX3_PCI_DEVICE resides there as already, so add the remaining
+>      > ones, too.
+>      >
+>      > Signed-off-by: Bernhard Beschow <shentey@gmail.com
+>     <mailto:shentey@gmail.com>>
+>      > Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk
+>     <mailto:mark.cave-ayland@ilande.co.uk>>
+>      > Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org
+>     <mailto:f4bug@amsat.org>>
+>      > ---
+>      >   hw/isa/piix3.c                | 3 ---
+>      >   include/hw/isa/isa.h          | 2 --
+>      >   include/hw/southbridge/piix.h | 4 ++++
+>      >   3 files changed, 4 insertions(+), 5 deletions(-)
 
-While this is the same chipset family, these models are maintained by
-different people... Do you mind splitting?
+>     One tiny nit here: there's a typo in the subject line which I missed
+>     when reviewing v2.
+> 
+>     s/soughbridge/southbridge/
+> 
+> 
+> Ack. Will fix in v3.
 
-For PIIX4 part:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+Can do. Also, "include/" in subject is not helpful.
 
