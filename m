@@ -1,76 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nvfKx-0003hg-35
-	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2022 09:21:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49924)
+	id 1nvhag-00027W-2s
+	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2022 11:45:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34454)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nvfKq-0003bs-Bo; Mon, 30 May 2022 09:21:28 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429]:33381)
+ id 1nvhaZ-00023m-D6; Mon, 30 May 2022 11:45:52 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:45729)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1nvfKo-0002gz-Eb; Mon, 30 May 2022 09:21:27 -0400
-Received: by mail-pf1-x429.google.com with SMTP id 202so10613771pfu.0;
- Mon, 30 May 2022 06:21:25 -0700 (PDT)
+ id 1nvhaX-0003l9-9Q; Mon, 30 May 2022 11:45:50 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id a63so4276349pge.12;
+ Mon, 30 May 2022 08:45:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=1F0uftzI5Q6LjBGSRzse993wSF+4FV1A0f7dXUsc6dA=;
- b=ShOoUc1jH0YJ887llkMIp4r9G1OQvZuKunf0d5J3ssj2GQG/U4lf6aVa5p4ASdHMH3
- kMEIp+qfwQErdBazMQvTDqE6WRJmGdki+olpjhpeQc2uSyZ92rVFRTCxpMlWq6ZATZzo
- gHmnhJpIrW73tLyg0/dFVn4ygQpi2XN1e6ImKsSQPfDELRLvJjxEOxlZLHgUgvJSVNU4
- kvDtu9iljGmE5MIRzPo54dVtHoJpHUqZJD9BK2/9twwA/h80NQaC0i1sHDEhMLkpDbql
- odYVrnyc604PVVdJS+J1Ja1R2/xttV1060PcRUc28lFV86vH/70JJMrgMEdTr8dY3fdM
- F31Q==
+ bh=9oCr9pstjxODTn35PtKBbG9xZujwAQvv8auV4KOmykk=;
+ b=ZAT1/DyL6xm+ovo5paYLFnEF6gc54R8Y2VbLWRBQKTcjeyFrREIsSjXY125QXasaXC
+ HRmRiD5HmpmQoetJ4IN3huYahA40hnM3bHlqeSkqMANM4ZTH7i/428rWAv/z9XSd2YaK
+ ywhzYLN2HfVEDhKs+TErSf0LkL7ZvfwItQT/mpgA1x1K+69gq1nrDtjHEi1FcQnnEZde
+ 2XvgJ7Ce0DuhbZyXN32oAYdILufMkiwJrnjIHUq7IVe/l1yuLqt0ypp64U03vxvJmj2/
+ O8DbDfoWJ9f41r47/ZucV6oEoyuGkD8jEhl7IxuAWkpDfinKJmwrbwA1RN3NCO4bm61u
+ wv6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
  :subject:content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=1F0uftzI5Q6LjBGSRzse993wSF+4FV1A0f7dXUsc6dA=;
- b=z/OTj+Ii8GY4LXKvuMKqQDviNVuzjDxkXXzifbET7iXw84u7l2QJfNrlxPrzE1XK5O
- 4oLnUdGatSIQjefXNriNBf0eHV0cNnWbjwlKPjj4yWZtqtEE7E3GdL7Slq2zCnmO1T4u
- 36I1rUdYTDTgKpyPiIVcpkZEwWlol2h2xDHrgx1+F618ThbuCKOHCBSVyfXmX25AyM6X
- tSbS0yomzBbXS2z1VtK3dDyC8RslpqtQS0/VGvQLs6c04K/Q0y2aytCCqRk21Q1e68B5
- PMN8BDff5A8kiZ1s561ahZW7kvLVjuIyoLj1SGEe6NO6eNsCYM7mPLYoykZ2TW5FBymB
- 6N9A==
-X-Gm-Message-State: AOAM532AwZSuLpE4l+27HC4DuLiNMP+m8/DsAErmcBk0RA+/23Vq1lEU
- NfwY8FfMnxmt4RuOnndXJvE=
-X-Google-Smtp-Source: ABdhPJzD14XGB55/LWH/814vK4zGjVOozs3YEEt8P1fchX5CeSvAYxeGEaHIki53bJ0Uxse4XUBVfA==
-X-Received: by 2002:a62:be14:0:b0:505:a43b:cf6e with SMTP id
- l20-20020a62be14000000b00505a43bcf6emr57067489pff.33.1653916884057; 
- Mon, 30 May 2022 06:21:24 -0700 (PDT)
+ bh=9oCr9pstjxODTn35PtKBbG9xZujwAQvv8auV4KOmykk=;
+ b=dDdK8YVe4/YfBz8piSSN5kI6IulozEYDHKufmwYLwKQHn2zI0LA8yDGXKS4wT3mWod
+ 4JBy/jIifguKqgvw8Y+q6EyIvXjTQ+yphjNS6Cz1L9z7MG9n1sOLGlMBOCBgxY87sA8C
+ xIq4VDV1aJKZZdmlSLZCvd7C5wcU/PrFU2KMdoAB4jRrV/gHknQVbCyIyL+VDJuKVse8
+ h9CrXl6/NwtH/XGd7QI6BilM5SKU3AeOYe1YgXQxz7HvJYg81Y2a35C5V2oAQYQOhiEc
+ Nm0OtaOfT+aZf3wJS5Q3HaLaVdoNMy/gFTGKiFIZFMTNj5xKoz6PcdJ8ckziTsUFdpDt
+ Rcsw==
+X-Gm-Message-State: AOAM533hqgDyiqOmOdlTZQbkChGaWBk48UhSAK40wL2EzCtStwnR9ACL
+ ND1ZPKRFxueL+NH9/Br4ymo=
+X-Google-Smtp-Source: ABdhPJw8QuvetJ3oI4SVwOj1B8qRiYtF9xdOWR4OPQTH5kalt6GHCkheW1hu4+QsLnGyQ582FZE56w==
+X-Received: by 2002:a63:1661:0:b0:3fa:5855:989a with SMTP id
+ 33-20020a631661000000b003fa5855989amr33381545pgw.451.1653925547150; 
+ Mon, 30 May 2022 08:45:47 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- e18-20020a056a001a9200b00518285976cdsm8844811pfv.9.2022.05.30.06.21.20
+ w63-20020a627b42000000b0050dc76281ccsm8923705pfc.166.2022.05.30.08.45.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 May 2022 06:21:23 -0700 (PDT)
+ Mon, 30 May 2022 08:45:46 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
  <philippe.mathieu.daude@gmail.com>
-Message-ID: <5220940a-8b7a-6f09-6270-a138f7281c6d@amsat.org>
-Date: Mon, 30 May 2022 15:21:18 +0200
+Message-ID: <da48e613-18a3-4fa6-a9ce-ebcfc2c4d79e@amsat.org>
+Date: Mon, 30 May 2022 17:45:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.9.1
-Subject: Re: [PATCH v2 3/3] include/hw/ide: Unexport pci_piix3_xen_ide_unplug()
+Subject: Re: [PATCH] hw/sd/sdcard: Return ILLEGAL for CMD19/CMD23 prior SD
+ spec v3.01
 Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, sstabellini@kernel.org,
- anthony.perard@citrix.com, paul@xen.org, xen-devel@lists.xenproject.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, John Snow <jsnow@redhat.com>,
- "open list:IDE" <qemu-block@nongnu.org>
-References: <20220513180957.90514-1-shentey@gmail.com>
- <20220513180957.90514-4-shentey@gmail.com>
+To: Bin Meng <bmeng.cn@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philippe.mathieu.daude@gmail.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Qemu-block <qemu-block@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Bin Meng <bin.meng@windriver.com>
+References: <20220509141320.98374-1-philippe.mathieu.daude@gmail.com>
+ <CAEUhbmVfREvoi57nexHtPY59ieP3=Tk-73TG81pX7PXGwb0OeQ@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220513180957.90514-4-shentey@gmail.com>
+In-Reply-To: <CAEUhbmVfREvoi57nexHtPY59ieP3=Tk-73TG81pX7PXGwb0OeQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x52b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -91,25 +88,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 May 2022 13:21:30 -0000
+X-List-Received-Date: Mon, 30 May 2022 15:45:57 -0000
 
-On 13/5/22 20:09, Bernhard Beschow wrote:
-> This function was declared in a generic and public header, implemented
-> in a device-specific source file but only used in xen_platform. Given its
-> 'aux' parameter, this function is more xen-specific than piix-specific.
-> Also, the hardcoded magic constants seem to be generic and related to
-> PCIIDEState and IDEBus rather than piix.
+On 9/5/22 16:29, Bin Meng wrote:
+> On Mon, May 9, 2022 at 10:13 PM Philippe Mathieu-Daudé
+> <philippe.mathieu.daude@gmail.com> wrote:
+>>
+>> From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>> CMD19 (SEND_TUNING_BLOCK) and CMD23 (SET_BLOCK_COUNT) were
+>> added in the Physical SD spec v3.01. When earlier spec version
 > 
-> Therefore, move this function to xen_platform, unexport it, and drop the
-> "piix3" in the function name as well.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> Reviewed-by: Paul Durrant <paul@xen.org>
-> ---
->   hw/i386/xen/xen_platform.c | 48 +++++++++++++++++++++++++++++++++++++-
->   hw/ide/piix.c              | 46 ------------------------------------
->   include/hw/ide.h           |  3 ---
->   3 files changed, 47 insertions(+), 50 deletions(-)
+> nits: it should be spec v3.00, despite the fact that in QEMU we have
+> been using a name v3.01 to indicate v3.00.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Only the "Physical Layer Simplified Specification"s are public:
+https://www.sdcard.org/downloads/pls/archives/
+
+I'll rename to "Physical Layer Simplified Specification v3.01"
+so it is clearer.
+
+> 
+>> is requested, we should return ILLEGAL.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   hw/sd/sd.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+>> index 8e6fa09151..7e3bb12b1a 100644
+>> --- a/hw/sd/sd.c
+>> +++ b/hw/sd/sd.c
+>> @@ -1263,7 +1263,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
+>>
+>>       case 19:    /* CMD19: SEND_TUNING_BLOCK (SD) */
+>>           if (sd->spec_version < SD_PHY_SPECv3_01_VERS) {
+>> -            break;
+>> +            goto bad_cmd;
+>>           }
+>>           if (sd->state == sd_transfer_state) {
+>>               sd->state = sd_sendingdata_state;
+>> @@ -1274,7 +1274,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
+>>
+>>       case 23:    /* CMD23: SET_BLOCK_COUNT */
+>>           if (sd->spec_version < SD_PHY_SPECv3_01_VERS) {
+>> -            break;
+>> +            goto bad_cmd;
+>>           }
+>>           switch (sd->state) {
+>>           case sd_transfer_state:
+>> --
+> 
+> Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+
+Thanks! Queued.
 
