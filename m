@@ -1,64 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nwsP4-0002TZ-TL
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jun 2022 17:30:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60916)
+	id 1nx4lh-0006nu-Lm
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jun 2022 06:43:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nwsP3-0002TB-9N; Thu, 02 Jun 2022 17:30:49 -0400
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e]:33551)
+ id 1nx4lf-0006mx-86; Fri, 03 Jun 2022 06:42:59 -0400
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831]:44884)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nwsP1-0001ai-Jq; Thu, 02 Jun 2022 17:30:49 -0400
-Received: by mail-qk1-x72e.google.com with SMTP id br33so2916288qkb.0;
- Thu, 02 Jun 2022 14:30:46 -0700 (PDT)
+ id 1nx4ld-0005KS-Iz; Fri, 03 Jun 2022 06:42:58 -0400
+Received: by mail-qt1-x831.google.com with SMTP id f35so5215339qtb.11;
+ Fri, 03 Jun 2022 03:42:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=B/1eqqbHZnQqzfEJFI/2PMisMT8zWNIw4xhukZQmi8Q=;
- b=lCFMpTN4exoAZQ9n/fx4VXIwJwyfRwqE2Ui1VGvznjFtxo36qExWwecmrmeIgu1rWI
- wasYI8C7LdH7k2CbE5KZcax5XZ2KdWW1DhVtZuzYr6oF1bxYxV2q1xZqN4h6oupP/xhL
- /twg9f9HSpWVKu3wwePcw469DdYLgyoezQhu6WLRPAGCktT2J1gjYxr/HHVaL97zCpEu
- Utn+OIrLmERFLHOdnrIP/l9xkj2edr3Aeb7C4N948mC9oDCNlaS6jpTcazDuPFiCYRYr
- ofvBGZA+pG5+BUJebadb52KJsh26TZ2g1U+oJwvebpXd2JFfBYrjyiGKVg4Wbw/OVtJN
- UJGw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=X5wyTbJDDRzcsLHpd+6Ks9bUkxFOOcZvsrCWEKQ8jh0=;
+ b=ZPsWY6RMHxJVGM8H03R+KWW6kzNogOR/IhJ57hP+yA+XL9ztnpwuvdCY9vNDsGVpLu
+ rh/Yrzrnw/kAZnIumFvU/P1UVvEUaj25CcfRzuxUjUnK5sj1hQf23YELx1jLIya9cJKD
+ VL5F9qEo/0bGgmd+/srOLYHdFgpGI4NBu1UpQviR7O7paIQMxU3dk6ApdlnVEKs5DSiy
+ ZmlkQFQrGaSVW542cJIJBElmXQF92zUarQRNcsTS1uZBu1zaBz2/C2vtK81D+ctqrr/O
+ Sw6iNXphaOXzn7RUcb1P3+l2qIkKqjytrUA4eggA/ipmAHc5UkRlMLrmKzF/AQGhDcCM
+ od4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=B/1eqqbHZnQqzfEJFI/2PMisMT8zWNIw4xhukZQmi8Q=;
- b=MQNFvUNUjRkF5+Oj/k8aQM2nSeT5D+pYyK//gH1gCh56Bf5v4JTyrLjC4U0+JA577Y
- xKRSTQsWs7v5SPvGTGKi6r46prTAvMelusRUtylRoXGlvG4ck1qrEpeJ2IPslVh/6HVn
- 8FB8EJHR0bODNejSMHGZVvE7LgeuxLe/h9TAXUcphpMBfM3Jh/m3mqtQS0W+dQT/uKFU
- jew2P+jum5Xgn/8y8tPtBwNyHRWsbImtq+7Bli4Yn8+A6bs5sQXanPfYXDOUi4djDKCF
- mRiElk16ci0lyGQXC9PGc12RMk0w9ixZxAWhmDdlRuS8/MdTd83HkaSbdRa/Tpd+E/lS
- x7gw==
-X-Gm-Message-State: AOAM531aCF/cczbFYexYt7Ne+QQt+8+Krhr1dyCct8c94G79OAT3gAQl
- uJBp1MGo62gLxIN+H7vvFqX8fhe8njxovHYQfFSbOwWno9E=
-X-Google-Smtp-Source: ABdhPJwKW4JeFyoI54chyz2cWk2dZWekJhToO/7Dlpc/klI1T3tB3WkKbgxiJUpS1AAmIe1zrgsVE0eNKAnElADl81c=
-X-Received: by 2002:a37:917:0:b0:6a6:9a14:b542 with SMTP id
- 23-20020a370917000000b006a69a14b542mr458042qkj.562.1654205445841; Thu, 02 Jun
- 2022 14:30:45 -0700 (PDT)
+ bh=X5wyTbJDDRzcsLHpd+6Ks9bUkxFOOcZvsrCWEKQ8jh0=;
+ b=A1QM0aDbA/D/FZL/Ik0UzJurUnORpWC+nCJBQ+Yg/oz0xlyVY24nv/05kDDqpQOc9n
+ 9H8KqAe+b4T7pEqTfJ+BT4IGQAhucM136Kv3ajHmJNJb0Wie95NbHVPMXvtcIUp2/8W3
+ lbhMrxHcaaPCNtpcfla9r4orTHOlP/iEWwm+jaib1/m7hdfxvMRt701z7ZWiOfgi3a/q
+ ZEwVpMXn6i+UXj13JDemNNDRl4hoZ+8TztQUuCavvWZrYtsFJu7S4USwQAPKpSwo07qW
+ tnhf3SWlPxjOSwFLCSlkqyQ4G+ASEyNSiYu1yr2nbCTyuZ9pPar9YDfbIp4wd9cYOofN
+ 9Hcg==
+X-Gm-Message-State: AOAM532BSdu40urPthp6mfr1ZeZCz2FZW0YHmESQq4F8mJIhb15lzmDe
+ UE4j6cDIpCnwWxqQsW1Kdeej0Gzjni6eBBkdk0g=
+X-Google-Smtp-Source: ABdhPJxlXGx1wviN9k3Cr9x6CbEUodG3ZPzIJDNRrHi1af0t2b2+f/q0ebpk1wGG7985u2u1mM+t5m8o2YtwxYUdJws=
+X-Received: by 2002:a05:622a:1386:b0:2f3:d73d:f5c4 with SMTP id
+ o6-20020a05622a138600b002f3d73df5c4mr6800264qtk.658.1654252974107; Fri, 03
+ Jun 2022 03:42:54 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:ac8:7f14:0:0:0:0:0 with HTTP;
- Thu, 2 Jun 2022 14:30:45 -0700 (PDT)
-In-Reply-To: <43BCAA1E-7499-4584-AB60-C5004AA0643B@gmail.com>
-References: <20220513180957.90514-1-shentey@gmail.com>
- <43BCAA1E-7499-4584-AB60-C5004AA0643B@gmail.com>
+References: <20220520180109.8224-1-shentey@gmail.com>
+ <48f571d0-e783-4b31-7c90-3d330629c18c@ilande.co.uk>
+In-Reply-To: <48f571d0-e783-4b31-7c90-3d330629c18c@ilande.co.uk>
 From: Bernhard Beschow <shentey@gmail.com>
-Date: Thu, 2 Jun 2022 23:30:45 +0200
-Message-ID: <CAG4p6K6kZHfC6KLoioozmGWomUoUZwceUQcU+Y9qDo9FraXfyQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] PIIX3-IDE XEN cleanup
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: qemu-trivial@nongnu.org, sstabellini@kernel.org, anthony.perard@citrix.com,
- paul@xen.org, xen-devel@lists.xenproject.org, 
- Bernhard Beschow <shentey@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
+Date: Fri, 3 Jun 2022 12:42:34 +0200
+Message-ID: <CAG4p6K7jHWQEntQ0Tqv=CPufnHMnVA9-UPAbCzKKT142Q+rHZQ@mail.gmail.com>
+Subject: Re: [PATCH v2 00/10] Random cleanup patches
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
  Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, 
- John Snow <jsnow@redhat.com>, qemu-block@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000fc28c705e07db752"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72e;
- envelope-from=shentey@gmail.com; helo=mail-qk1-x72e.google.com
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
+ Jason Wang <jasowang@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000e3f02e05e088c887"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::831;
+ envelope-from=shentey@gmail.com; helo=mail-qt1-x831.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -78,83 +76,138 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jun 2022 21:30:49 -0000
+X-List-Received-Date: Fri, 03 Jun 2022 10:42:59 -0000
 
---000000000000fc28c705e07db752
+--000000000000e3f02e05e088c887
 Content-Type: text/plain; charset="UTF-8"
 
-On Saturday, May 28, 2022, Bernhard Beschow <shentey@gmail.com> wrote:
-> Am 13. Mai 2022 18:09:54 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->>v2:
->>* Have pci_xen_ide_unplug() return void (Paul Durrant)
->>* CC Xen maintainers (Michael S. Tsirkin)
->>
->>v1:
->>This patch series first removes the redundant "piix3-ide-xen" device
-class and
->>then moves a XEN-specific helper function from PIIX3 code to XEN code.
-The idea
->>is to decouple PIIX3-IDE and XEN and to compile XEN-specific bits only if
-XEN
->>support is enabled.
->>
->>Testing done:
->>'qemu-system-x86_64 -M pc -m 1G -cdrom archlinux-2022.05.01-x86_64.iso"
-boots
->>successfully and a 'poweroff' inside the VM also shuts it down correctly.
->>
->>XEN mode wasn't tested for the time being since its setup procedure seems
-quite
->>sophisticated. Please let me know in case this is an obstacle.
->>
->>Bernhard Beschow (3):
->>  hw/ide/piix: Remove redundant "piix3-ide-xen" device class
->>  hw/ide/piix: Add some documentation to pci_piix3_xen_ide_unplug()
->>  include/hw/ide: Unexport pci_piix3_xen_ide_unplug()
->>
->> hw/i386/pc_piix.c          |  3 +--
->> hw/i386/xen/xen_platform.c | 48 +++++++++++++++++++++++++++++++++++++-
->> hw/ide/piix.c              | 42 ---------------------------------
->> include/hw/ide.h           |  3 ---
->> 4 files changed, 48 insertions(+), 48 deletions(-)
->>
->
-> Ping
->
-> Whole series is reviewed/acked.
+On Sat, May 21, 2022 at 11:55 AM Mark Cave-Ayland <
+mark.cave-ayland@ilande.co.uk> wrote:
 
-Ping 2
+> On 20/05/2022 19:00, Bernhard Beschow wrote:
+>
+> > v2:
+> > * Omit removal of isa_connect_gpio_out() (Mark)
+> >
+> > v1:
+> > This patch series contains random cleanups that I made while studying
+> the code.
+> >
+> > Bernhard Beschow (10):
+> >    hw: Reuse TYPE_I8042 define
+> >    hw/audio/cs4231a: Const'ify global tables
+> >    hw/i386/pc: Unexport PC_CPU_MODEL_IDS macro
+> >    hw/i386/pc: Unexport functions used only internally
+> >    hw/i386/pc: Remove orphan declarations
+> >    hw/ppc/e500: Remove unused BINARY_DEVICE_TREE_FILE
+> >    hw/net/fsl_etsec/etsec: Remove obsolete and unused etsec_create()
+> >    accel/tcg/cpu-exec: Unexport dump_drift_info()
+> >    accel/tcg: Inline dump_opcount_info() and remove it
+> >    docs/devel: Fix link to developer mailing lists
+> >
+> >   accel/tcg/cpu-exec.c              |  4 ++--
+> >   accel/tcg/translate-all.c         |  5 -----
+> >   docs/devel/submitting-a-patch.rst |  6 +++---
+> >   hw/audio/cs4231a.c                |  8 ++++----
+> >   hw/i386/pc.c                      | 17 +++++++++++++----
+> >   hw/net/fsl_etsec/etsec.c          | 23 -----------------------
+> >   hw/net/fsl_etsec/etsec.h          |  7 -------
+> >   hw/ppc/e500.c                     |  1 -
+> >   hw/sparc64/sun4u.c                |  2 +-
+> >   include/exec/cpu-all.h            |  3 ---
+> >   include/hw/i386/pc.h              | 14 --------------
+> >   11 files changed, 23 insertions(+), 67 deletions(-)
+>
+> In general these changes look okay, so I'd be fine to give an:
+>
+> Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+>
+> for those I haven't already given a Reviewed-by tag for.
+>
+> Laurent, are you happy to take these patches with their current tags via
+> qemu-trivial? Or would you prefer an extra set of eyes on the two
+> accel/tcg ones first?
+>
 
---000000000000fc28c705e07db752
+Ping
+
+
+> ATB,
+>
+> Mark.
+>
+
+--000000000000e3f02e05e088c887
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Saturday, May 28, 2022, Bernhard Beschow &lt;<a href=3D"mailto:shentey@g=
-mail.com">shentey@gmail.com</a>&gt; wrote:<br>&gt; Am 13. Mai 2022 18:09:54=
- UTC schrieb Bernhard Beschow &lt;<a href=3D"mailto:shentey@gmail.com">shen=
-tey@gmail.com</a>&gt;:<br>&gt;&gt;v2:<br>&gt;&gt;* Have pci_xen_ide_unplug(=
-) return void (Paul Durrant)<br>&gt;&gt;* CC Xen maintainers (Michael S. Ts=
-irkin)<br>&gt;&gt;<br>&gt;&gt;v1:<br>&gt;&gt;This patch series first remove=
-s the redundant &quot;piix3-ide-xen&quot; device class and<br>&gt;&gt;then =
-moves a XEN-specific helper function from PIIX3 code to XEN code. The idea<=
-br>&gt;&gt;is to decouple PIIX3-IDE and XEN and to compile XEN-specific bit=
-s only if XEN<br>&gt;&gt;support is enabled.<br>&gt;&gt;<br>&gt;&gt;Testing=
- done:<br>&gt;&gt;&#39;qemu-system-x86_64 -M pc -m 1G -cdrom archlinux-2022=
-.05.01-x86_64.iso&quot; boots<br>&gt;&gt;successfully and a &#39;poweroff&#=
-39; inside the VM also shuts it down correctly.<br>&gt;&gt;<br>&gt;&gt;XEN =
-mode wasn&#39;t tested for the time being since its setup procedure seems q=
-uite<br>&gt;&gt;sophisticated. Please let me know in case this is an obstac=
-le.<br>&gt;&gt;<br>&gt;&gt;Bernhard Beschow (3):<br>&gt;&gt;=C2=A0 hw/ide/p=
-iix: Remove redundant &quot;piix3-ide-xen&quot; device class<br>&gt;&gt;=C2=
-=A0 hw/ide/piix: Add some documentation to pci_piix3_xen_ide_unplug()<br>&g=
-t;&gt;=C2=A0 include/hw/ide: Unexport pci_piix3_xen_ide_unplug()<br>&gt;&gt=
-;<br>&gt;&gt; hw/i386/pc_piix.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 3=
- +--<br>&gt;&gt; hw/i386/xen/xen_platform.c | 48 ++++++++++++++++++++++++++=
-+++++++++++-<br>&gt;&gt; hw/ide/piix.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 | 42 ---------------------------------<br>&gt;&gt; include/hw=
-/ide.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 3 ---<br>&gt;&gt; 4 =
-files changed, 48 insertions(+), 48 deletions(-)<br>&gt;&gt;<br>&gt;<br>&gt=
-; Ping<br>&gt;<br>&gt; Whole series is reviewed/acked.<br><br>Ping 2
+<div dir=3D"ltr"><div dir=3D"ltr">On Sat, May 21, 2022 at 11:55 AM Mark Cav=
+e-Ayland &lt;<a href=3D"mailto:mark.cave-ayland@ilande.co.uk">mark.cave-ayl=
+and@ilande.co.uk</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
+x solid rgb(204,204,204);padding-left:1ex">On 20/05/2022 19:00, Bernhard Be=
+schow wrote:<br>
+<br>
+&gt; v2:<br>
+&gt; * Omit removal of isa_connect_gpio_out() (Mark)<br>
+&gt; <br>
+&gt; v1:<br>
+&gt; This patch series contains random cleanups that I made while studying =
+the code.<br>
+&gt; <br>
+&gt; Bernhard Beschow (10):<br>
+&gt;=C2=A0 =C2=A0 hw: Reuse TYPE_I8042 define<br>
+&gt;=C2=A0 =C2=A0 hw/audio/cs4231a: Const&#39;ify global tables<br>
+&gt;=C2=A0 =C2=A0 hw/i386/pc: Unexport PC_CPU_MODEL_IDS macro<br>
+&gt;=C2=A0 =C2=A0 hw/i386/pc: Unexport functions used only internally<br>
+&gt;=C2=A0 =C2=A0 hw/i386/pc: Remove orphan declarations<br>
+&gt;=C2=A0 =C2=A0 hw/ppc/e500: Remove unused BINARY_DEVICE_TREE_FILE<br>
+&gt;=C2=A0 =C2=A0 hw/net/fsl_etsec/etsec: Remove obsolete and unused etsec_=
+create()<br>
+&gt;=C2=A0 =C2=A0 accel/tcg/cpu-exec: Unexport dump_drift_info()<br>
+&gt;=C2=A0 =C2=A0 accel/tcg: Inline dump_opcount_info() and remove it<br>
+&gt;=C2=A0 =C2=A0 docs/devel: Fix link to developer mailing lists<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0accel/tcg/cpu-exec.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 |=C2=A0 4 ++--<br>
+&gt;=C2=A0 =C2=A0accel/tcg/translate-all.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0|=C2=A0 5 -----<br>
+&gt;=C2=A0 =C2=A0docs/devel/submitting-a-patch.rst |=C2=A0 6 +++---<br>
+&gt;=C2=A0 =C2=A0hw/audio/cs4231a.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 |=C2=A0 8 ++++----<br>
+&gt;=C2=A0 =C2=A0hw/i386/pc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 17 +++++++++++++----<br>
+&gt;=C2=A0 =C2=A0hw/net/fsl_etsec/etsec.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ | 23 -----------------------<br>
+&gt;=C2=A0 =C2=A0hw/net/fsl_etsec/etsec.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ |=C2=A0 7 -------<br>
+&gt;=C2=A0 =C2=A0hw/ppc/e500.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 1 -<br>
+&gt;=C2=A0 =C2=A0hw/sparc64/sun4u.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+&gt;=C2=A0 =C2=A0include/exec/cpu-all.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 |=C2=A0 3 ---<br>
+&gt;=C2=A0 =C2=A0include/hw/i386/pc.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 | 14 --------------<br>
+&gt;=C2=A0 =C2=A011 files changed, 23 insertions(+), 67 deletions(-)<br>
+<br>
+In general these changes look okay, so I&#39;d be fine to give an:<br>
+<br>
+Acked-by: Mark Cave-Ayland &lt;<a href=3D"mailto:mark.cave-ayland@ilande.co=
+.uk" target=3D"_blank">mark.cave-ayland@ilande.co.uk</a>&gt;<br>
+<br>
+for those I haven&#39;t already given a Reviewed-by tag for.<br>
+<br>
+Laurent, are you happy to take these patches with their current tags via <b=
+r>
+qemu-trivial? Or would you prefer an extra set of eyes on the two accel/tcg=
+ ones first?<br></blockquote><div><br></div><div>Ping</div><div>=C2=A0<br><=
+/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
+rder-left:1px solid rgb(204,204,204);padding-left:1ex">
+ATB,<br>
+<br>
+Mark.<br>
+</blockquote></div></div>
 
---000000000000fc28c705e07db752--
+--000000000000e3f02e05e088c887--
 
