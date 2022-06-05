@@ -1,71 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nxPH2-0001VD-QD
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Jun 2022 04:36:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37568)
+	id 1nxs2H-0007wI-0c
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2022 11:19:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39456)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nxPH0-0001U4-Bn; Sat, 04 Jun 2022 04:36:42 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:38727)
+ id 1nxs2F-0007uo-Vm; Sun, 05 Jun 2022 11:19:24 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:43719)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1nxPGy-0003yq-J3; Sat, 04 Jun 2022 04:36:42 -0400
-Received: by mail-ej1-x631.google.com with SMTP id n10so19970544ejk.5;
- Sat, 04 Jun 2022 01:36:39 -0700 (PDT)
+ id 1nxs2E-0001HB-Ey; Sun, 05 Jun 2022 11:19:23 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id x62so15766106ede.10;
+ Sun, 05 Jun 2022 08:19:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:in-reply-to:references:message-id
- :mime-version:content-transfer-encoding;
- bh=Ro8NhecavwgSq1vQjcWquelJzViA9emsGz4dt61HhBE=;
- b=YTXjmMN7FssH9I8tbqAYW94NXfauMAhQC/a2/DnXSRI+4hE72qz+Tvf9a7aJ76yfm7
- w7gLs0a1Qb94EfEBs/kA2lbpkxYHPCX2K5oaN2BPl8z/9Voh91RKscALICqbooUAf8nO
- AwQwo08jauKgykUWYkF30NsnzLUNdu/hbe0w2wdR599+jPkmDU4BT7aSHl5NU+rZq+6O
- IiMtjrmCpUd24BAhifcfCY/t/V1lvyP7z9FegQbfkTLx9dcCF86ZxSLJpyw/a4b1vErO
- qW46scp7/LxbZa6y8mTxrCDYbC7ERXprGGLhYdZKKvQHlLtLBiPwg4a9w+ZMVgq+bH95
- ncNQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NYSiknA7dppfMTXs8EU/RKTT7XzgL7wmzt2hdrpwxV8=;
+ b=BXwoPJnnp5JelODgJEDYw5qG4JUoLZkgt0utsnT+dKP53Si+sZVGAqxTJ3I5coHSBH
+ 6S/c9sRJpuRMCUXwk8TgtiW+xrQpsQtXyCBTjo0f5D1sGIHIf8BjCq794DAy8X8fe0v6
+ 0yZBPPBFJZoR0YMF1opS9ryD8udjeZCElw1EREm+yJVhhKVkn2blDETB3JFegPZi4v6X
+ Fx7NAzBHXk+tqpPyKnJQPQyxzszyPmx17OPFbjh5Dqfdpfv0xdLRX2Y/ORLoMPnq9Js1
+ 73Dht7Zm9hlqg7Z1kVqpSmp9snpqju9KmQW07csBS3s5Rxkuhcb4nme9yCPT8IzwB1Mg
+ Lmyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
- :message-id:mime-version:content-transfer-encoding;
- bh=Ro8NhecavwgSq1vQjcWquelJzViA9emsGz4dt61HhBE=;
- b=8JPjPyYI51zMCizyQV/9rZbZt0cnIBvZIpJhbcfg5+hjoltPKj68n/GQhBec6FnBRv
- h/A6Smf56J2hiKfllu937NfT7LMIxYeu6KdhxjCZE2XDDSP2lXe5hBUsyKGEhpoW/op6
- VTZUP03nHir1AOYfn8dXI29zkZWW8P6j6jmAHaNmWi+uNZ4VFmUK8l0YU20h0vqo/Fjq
- 3yKX9s0baq00vL3b7kAXELdJX++JXO9reuP2v5nARRhSkHbIfBbkQvbP9NZm264kCm4C
- m7GYZ7Lc4XK9dABhXEmxHwrN/2UlWbF0GeIZK+w8O42N1sWGcG67EtRSzJ/NO1XADUlk
- 7iFA==
-X-Gm-Message-State: AOAM532IYcvE29KzzVrU4MtKpxQEAP7L5YEIFgdRWLs12Dg/8CrgfCnL
- 2EjB2k/XdZilmeAl/1hbMyI=
-X-Google-Smtp-Source: ABdhPJxGCJKFtZm0dem1cn8Cq+k2yNe9xd4Ke69q2TJxcJRRPpqX6HzXOqsSwu0ako+I03fMysCriw==
-X-Received: by 2002:a17:907:6e01:b0:704:8c0e:872f with SMTP id
- sd1-20020a1709076e0100b007048c0e872fmr12257627ejc.387.1654331798298; 
- Sat, 04 Jun 2022 01:36:38 -0700 (PDT)
-Received: from ?IPv6:::1?
- (p200300faaf303d00888d60a7ef49014d.dip0.t-ipconnect.de.
- [2003:fa:af30:3d00:888d:60a7:ef49:14d])
- by smtp.gmail.com with ESMTPSA id
- h4-20020a17090791c400b007109b15c109sm561772ejz.66.2022.06.04.01.36.37
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 04 Jun 2022 01:36:37 -0700 (PDT)
-Date: Sat, 04 Jun 2022 08:36:34 +0000
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NYSiknA7dppfMTXs8EU/RKTT7XzgL7wmzt2hdrpwxV8=;
+ b=ziwyH+EZvbvQBejK+t/XbTlEOPz7QFH32mDP453U9PI9ShXfxhZBIwdSOCNiF7ZDC1
+ FMkS6OAWozj+3EeA2WtJldeuFuLqwThzOHFS5wM0yZy1qSYXAFOkPj/+69L7HPn4yh1e
+ Ea5h2avpgb1K7d1cV4vv5EfcCSTLfZlK1m5VYnU5I+Fx5zeWGxza9lZWAmJ99I9V2Yza
+ R8DOyN4M6sFRSjl/O0lWBEUXBk5DO2npdlmY4LfeVW0yQCfEhb/rhOyaq/JmPWQ1iLdh
+ gib7bgsKgU7tCBj29kz10ErzlzGN1Kzstg1sOEcKwyksmj0E0zumydBerbF7tH0t3vxr
+ coXQ==
+X-Gm-Message-State: AOAM532Lq2434QN2kJs6hBVGyf5vrgqteaA+M2W9V/sQyMy1kB1V5qOR
+ h1Ej3B/UdWnvj16720JOxybjGhB1D73jJQ==
+X-Google-Smtp-Source: ABdhPJwDzCy6N2ZAVQ//4JJAFISOvZUTu7dxmcFuzAYNO28A+mFmjpPHujQgujejNZTbdhB5D9/Uog==
+X-Received: by 2002:a05:6402:43c5:b0:42d:e4f6:d63e with SMTP id
+ p5-20020a05640243c500b0042de4f6d63emr21780063edc.303.1654442359678; 
+ Sun, 05 Jun 2022 08:19:19 -0700 (PDT)
+Received: from osoxes.fritz.box (pd9ed79c4.dip0.t-ipconnect.de.
+ [217.237.121.196]) by smtp.gmail.com with ESMTPSA id
+ q24-20020aa7d458000000b0042aad9edc9bsm7090493edr.71.2022.06.05.08.19.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 05 Jun 2022 08:19:19 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-CC: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH v3 0/7] QOM'ify PIIX southbridge creation
-In-Reply-To: <c5fd32b5-fe22-a55b-de06-a6eac908bca2@amsat.org>
-References: <20220528192057.30910-1-shentey@gmail.com>
- <110e160e-19bd-dd7a-1b4e-1a0e7437b782@ilande.co.uk>
- <ac5d95b2-8be5-1585-3076-deabe749e926@ilande.co.uk>
- <CAG4p6K7DzHVsp8425-O4uvb46XT9nzw-A2CK_jK8Nm+Xt8wsbw@mail.gmail.com>
- <5ef86c6c-719b-f197-3ccb-462e453dffa5@ilande.co.uk>
- <c5fd32b5-fe22-a55b-de06-a6eac908bca2@amsat.org>
-Message-ID: <E6DD9B48-0529-4BBF-96AD-16CFCC33ED75@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Paul Burton <paulburton@kernel.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH] hw/mips/boston: Initialize g_autofree pointers
+Date: Sun,  5 Jun 2022 17:19:08 +0200
+Message-Id: <20220605151908.30566-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,54 +77,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Jun 2022 08:36:42 -0000
+X-List-Received-Date: Sun, 05 Jun 2022 15:19:24 -0000
 
-Am 30=2E Mai 2022 19:45:26 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <f4bug=
-@amsat=2Eorg>:
->On 30/5/22 21:11, Mark Cave-Ayland wrote:
->> On 29/05/2022 14:02, Bernhard Beschow wrote:
->
->>> =C2=A0=C2=A0=C2=A0 Oh wait - I see now it's just the cover letter whic=
-h is missing the additional
->>> =C2=A0=C2=A0=C2=A0 maintainer addresses :)=C2=A0 If you could add them=
- into the cover letter for your next
->>> =C2=A0=C2=A0=C2=A0 revision that would be great, since it gives contex=
-t for maintainers to help with
->>> =C2=A0=C2=A0=C2=A0 the
->>> =C2=A0=C2=A0=C2=A0 review process=2E
->>>=20
->>>=20
->>> Hi Mark,
->>>=20
->>> Thanks for your great work you put into reviews and the useful insight=
-s! It seems to me that the time it takes for patches to be queued depends o=
-n the subsystem - some are faster, some are slower=2E=2E=2E
->>>=20
->>> I've automated my setup as described in [1]=2E However, it doesn't see=
-m to work for the cover letter which I'd expect to be sent to the union of =
-all reviewers of all patches=2E Any idea how to fix this?
->>>=20
->>> Best regards,
->>> Bernhard
->>>=20
->>> [1] https://www=2Eqemu=2Eorg/docs/master/devel/submitting-a-patch=2Eht=
-ml#cc-the-relevant-maintainer <https://www=2Eqemu=2Eorg/docs/master/devel/s=
-ubmitting-a-patch=2Ehtml#cc-the-relevant-maintainer>=20
->>=20
->>=20
->> Good question=2E I tend to do "git format-patch -o /tmp/foo --cover-let=
-ter" to generate the series, fill in the cover letter, and then use "git se=
-nd-email /tmp/foo" to send out the emails (entering in the results of get_m=
-aintainer=2Epl by hand)=2E I'm not sure why the cover letter isn't being ge=
-nerated correctly in your case I'm afraid=2E
->
->Or try git-publish :) It does a first pass collecting Cc for each patch
->(calling get_maintainer=2Epl) then use that set on the cover=2E
->
->https://github=2Ecom/stefanha/git-publish
+Fixes compilation due to false positives with -Werror:
 
-Yes, that worked=2E What an improvement!
+  In file included from /usr/include/glib-2.0/glib.h:114,
+                   from qemu/src/include/glib-compat.h:32,
+                   from qemu/src/include/qemu/osdep.h:144,
+                   from ../src/hw/mips/boston.c:20:
+  In function ‘g_autoptr_cleanup_generic_gfree’,
+      inlined from ‘boston_mach_init’ at ../src/hw/mips/boston.c:790:52:
+  /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘dtb_load_data’ may be used uninitialized [-Werror=maybe-uninitialized]
+     28 |   g_free (*pp);
+        |   ^~~~~~~~~~~~
+  ../src/hw/mips/boston.c: In function ‘boston_mach_init’:
+  ../src/hw/mips/boston.c:790:52: note: ‘dtb_load_data’ was declared here
+    790 |             g_autofree const void *dtb_file_data, *dtb_load_data;
+        |                                                    ^~~~~~~~~~~~~
+  In function ‘g_autoptr_cleanup_generic_gfree’,
+    inlined from ‘boston_mach_init’ at ../src/hw/mips/boston.c:790:36:
+  /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘dtb_file_data’ may be used uninitialized [-Werror=maybe-uninitialized]
+     28 |   g_free (*pp);
+        |   ^~~~~~~~~~~~
+  ../src/hw/mips/boston.c: In function ‘boston_mach_init’:
+  ../src/hw/mips/boston.c:790:36: note: ‘dtb_file_data’ was declared here
+    790 |             g_autofree const void *dtb_file_data, *dtb_load_data;
+        |                                    ^~~~~~~~~~~~~
+  cc1: all warnings being treated as errors
 
-Best regards,
-Bernhard
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/mips/boston.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+index 59ca08b93a..1debca18ec 100644
+--- a/hw/mips/boston.c
++++ b/hw/mips/boston.c
+@@ -787,7 +787,8 @@ static void boston_mach_init(MachineState *machine)
+ 
+         if (kernel_size > 0) {
+             int dt_size;
+-            g_autofree const void *dtb_file_data, *dtb_load_data;
++            g_autofree const void *dtb_file_data = NULL;
++            g_autofree const void *dtb_load_data = NULL;
+             hwaddr dtb_paddr = QEMU_ALIGN_UP(kernel_high, 64 * KiB);
+             hwaddr dtb_vaddr = cpu_mips_phys_to_kseg0(NULL, dtb_paddr);
+ 
+-- 
+2.36.1
+
 
