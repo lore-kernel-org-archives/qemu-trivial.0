@@ -1,76 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nxst0-00077K-6p
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2022 12:13:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47766)
+	id 1ny9cQ-0006I1-6t
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jun 2022 06:05:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nxssw-00073V-Ee
- for qemu-trivial@nongnu.org; Sun, 05 Jun 2022 12:13:52 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:37472)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ny9c9-0006FJ-Qs
+ for qemu-trivial@nongnu.org; Mon, 06 Jun 2022 06:05:39 -0400
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e]:33486)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1nxssv-0000lb-0B
- for qemu-trivial@nongnu.org; Sun, 05 Jun 2022 12:13:50 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id t2so10401467pld.4
- for <qemu-trivial@nongnu.org>; Sun, 05 Jun 2022 09:13:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ny9bv-0002FL-6i
+ for qemu-trivial@nongnu.org; Mon, 06 Jun 2022 06:05:35 -0400
+Received: by mail-yb1-xb2e.google.com with SMTP id v106so24836423ybi.0
+ for <qemu-trivial@nongnu.org>; Mon, 06 Jun 2022 03:05:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=HWAOQI/LevKC0BiboX4rhAyExDZ1Sp2+bkoqJgXryEk=;
- b=Rxb2Pp1p64TY/r8q3KuQWZWsbrps0xWs9e1pXApTR9SCQkx0/OTxr2TcFq6X8ZAyD9
- 4AOQHZ/1ead5icpOzsQ3YVC+TzaKLxkaTbsBv4RzR5/bbi/4YISxA7Vf3saF1uWVWyJM
- PAWq3wA6lVl8A3PvvbhANFvAIT9AgwSexMFi+kex8qMUx5NtNLaTtJpdRVpZ6tZVaaMt
- JjQuUK2rc06becwY3/z9HLBBjUKhzy+Yx3HsW2ai4ZpU7NWtVmAaDdPVr2qX8Tyho0tY
- UQpvsVLc3e+J3BDVWjRU/+PpoFfc22A+FAzJL97yiFQ72UlVmMRAvkY98jDym0MA6SkN
- 2hPA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AgnpbB3uaCK9ZoYnv0dBLc6i1r4aYAr3ASAqi88cT5o=;
+ b=FpLu/WhRvhcqlN93cUNcwGvNC3m7zO5B7mEPwJI+0KsqWM35r3h/LquLIL/rhmai3l
+ /tZzlKIwoPmRh7YtQ7I7SPse0NAPrZnpCqS+2+jipj4BpotXwXvXoWAAIZ3JKmPf3+e/
+ fSInGUpRDdRTdgeVhz9grkP0lAZTMahCvN9YCJrLFIl5dc71HWb2rQpZFV3jy9pBSRSB
+ pm9QkUfKnLZyUACwjQULUGBjZOsHDuTykmVWw/3hIqLbEXPMtKGMs4ZcDwKunsj42Sc9
+ K39LInl2m2rC7h83ukpRcxyQYXZmIFLq3gMaTo4PvKvt5enB/mPSKOv/i1YQ5oJBZZFW
+ JHnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=HWAOQI/LevKC0BiboX4rhAyExDZ1Sp2+bkoqJgXryEk=;
- b=icupRiSowSoAEETrWko71JF3hzHNmC757bYdh+bNMJBkf+8B7Mu5K7XWhPu8w+5a+I
- KaOWgGOCmixaDjx6K9bb1tpKuBeiS7va4gXOayKQar5OY9neKdbetgGKSOQFNYbBguys
- domJ6RSWaGItoW+1mKUXPCnV8wQQJ1ZP2GIOkQe+jI+8kUFAq+KkBuMeZi/uRrQWSJ6a
- 0UfMRj4NRiWHvqg4Gc5LS2kElZk1yCMg6GL8ANyVPP+48sCrEgEz36QL0uBucAlSMk3E
- sGN6J1H5VAK1c2ah0fL4jD2McZ7SC/lVcx6FJDHMdCfl1iZVb3Ta7UEOMrlQqDZp+1qK
- 00ug==
-X-Gm-Message-State: AOAM532CU8AV1wgLm/jP1og8Y41p1wuFRBxcFiO6YLXD0ZLk7031A+A5
- 9/mslNSpC/oqeTZjcsQ0/SLNeA==
-X-Google-Smtp-Source: ABdhPJw/1XtTk8gkB3XIc8mxwvHq1J4HCOek+7eFAAkWl0XtsK3h5SAa8+/b3+kmxiOsuIea4+8cZw==
-X-Received: by 2002:a17:902:ebd1:b0:162:224f:abbb with SMTP id
- p17-20020a170902ebd100b00162224fabbbmr19856695plg.160.1654445627660; 
- Sun, 05 Jun 2022 09:13:47 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1547:e101:3fb8:a3e1:bf34:75a2?
- ([2602:ae:1547:e101:3fb8:a3e1:bf34:75a2])
- by smtp.gmail.com with ESMTPSA id
- v70-20020a638949000000b003fd3737f167sm4233358pgd.19.2022.06.05.09.13.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 05 Jun 2022 09:13:47 -0700 (PDT)
-Message-ID: <1584d6f0-4d8c-c72a-583d-e0690265c369@linaro.org>
-Date: Sun, 5 Jun 2022 09:13:44 -0700
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AgnpbB3uaCK9ZoYnv0dBLc6i1r4aYAr3ASAqi88cT5o=;
+ b=Q3KAhKzCutcFSvG8+dii+wmpRioBWZDDG8Z7uUBh1iyH1OT2b+D0KbNjXFU5BztqCF
+ ZlvvAA22ZzX5i5yxTjGHHqOOGxC0W/jCQfKdkGDNZFZuLZkCjZjaW9uM0vti0N6DBxLL
+ VBgSKOAz3/TNnPcmvLeYUqGtwMkMqT9gXGUCh0VXxxzKI2DgKEWsd17feVrUQiz8soVw
+ /O/VmtxjvlCPj7wys2L059UVy7Sb67Hb65jm1NtUQzlnZ2MyJ1VxfJUQm2x5rYpZvr3p
+ 86sMjPvfMY+7CFSVP8NO5D6n71i/fy5DsuADQz/8Dzqh9BICtnglZPV0Udrjma3OryVm
+ +caA==
+X-Gm-Message-State: AOAM531wniFcU8BtSPOIzTgmFkdHBJmMX3XYLCpLTn16UZsUOthAcYKr
+ 1MeKTUqnIwTnlOiA5W83un8GPH5nvN9cMIUmut/GxA==
+X-Google-Smtp-Source: ABdhPJxw7GfDa9Eh3KNL6BAx8yHUAkGyfwTfoUBY6WNH4d503/Fym+/3IYkBIhXMrgaoxhm1VRWJrXrsf7IWBS956+4=
+X-Received: by 2002:a05:6902:728:b0:663:5591:aa2c with SMTP id
+ l8-20020a056902072800b006635591aa2cmr9108690ybt.288.1654509900842; Mon, 06
+ Jun 2022 03:05:00 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] hw/mips/boston: Initialize g_autofree pointers
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Paul Burton <paulburton@kernel.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <f4bug@amsat.org>
-References: <20220605151908.30566-1-shentey@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220605151908.30566-1-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+References: <20220505095015.2714666-1-peter.maydell@linaro.org>
+ <CAFEAcA9khsVoAi9TB=wFNB-pkEiGXfghvpBr6WKQd5zyCNLTGA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9khsVoAi9TB=wFNB-pkEiGXfghvpBr6WKQd5zyCNLTGA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 Jun 2022 11:04:50 +0100
+Message-ID: <CAFEAcA_M7ZXYG4g3wubY79BQ8gN2_cFVBgcJzRJy-kaQhaD6+A@mail.gmail.com>
+Subject: Re: [PATCH v2] Fix 'writeable' typos
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -85,41 +72,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2022 16:13:53 -0000
+X-List-Received-Date: Mon, 06 Jun 2022 10:05:44 -0000
 
-On 6/5/22 08:19, Bernhard Beschow wrote:
-> Fixes compilation due to false positives with -Werror:
-> 
->    In file included from /usr/include/glib-2.0/glib.h:114,
->                     from qemu/src/include/glib-compat.h:32,
->                     from qemu/src/include/qemu/osdep.h:144,
->                     from ../src/hw/mips/boston.c:20:
->    In function ‘g_autoptr_cleanup_generic_gfree’,
->        inlined from ‘boston_mach_init’ at ../src/hw/mips/boston.c:790:52:
->    /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘dtb_load_data’ may be used uninitialized [-Werror=maybe-uninitialized]
->       28 |   g_free (*pp);
->          |   ^~~~~~~~~~~~
->    ../src/hw/mips/boston.c: In function ‘boston_mach_init’:
->    ../src/hw/mips/boston.c:790:52: note: ‘dtb_load_data’ was declared here
->      790 |             g_autofree const void *dtb_file_data, *dtb_load_data;
->          |                                                    ^~~~~~~~~~~~~
->    In function ‘g_autoptr_cleanup_generic_gfree’,
->      inlined from ‘boston_mach_init’ at ../src/hw/mips/boston.c:790:36:
->    /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘dtb_file_data’ may be used uninitialized [-Werror=maybe-uninitialized]
->       28 |   g_free (*pp);
->          |   ^~~~~~~~~~~~
->    ../src/hw/mips/boston.c: In function ‘boston_mach_init’:
->    ../src/hw/mips/boston.c:790:36: note: ‘dtb_file_data’ was declared here
->      790 |             g_autofree const void *dtb_file_data, *dtb_load_data;
->          |                                    ^~~~~~~~~~~~~
->    cc1: all warnings being treated as errors
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/mips/boston.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+On Mon, 23 May 2022 at 15:42, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Ping for qemu-trivial? Or I can take it through the arm queue
+> if you prefer.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I'll take this via the arm queue, then.
 
-r~
+thanks
+-- PMM
 
