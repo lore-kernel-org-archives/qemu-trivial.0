@@ -1,82 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nyqoX-0003bE-UN
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2022 04:13:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57542)
+	id 1nytwV-0006kc-Gn
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2022 07:33:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1nyqoQ-0003Xh-Jq
- for qemu-trivial@nongnu.org; Wed, 08 Jun 2022 04:13:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:40443)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1nytwM-0006jG-Ev; Wed, 08 Jun 2022 07:33:35 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:37174)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1nyqoL-0002j9-2o
- for qemu-trivial@nongnu.org; Wed, 08 Jun 2022 04:13:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1654675984;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=t5qqehEOwVvbuCr1lok3q8OOoWgqa7uOTNcl6JYvvAk=;
- b=MG3yr6cByrl+su5Tw6JEc3ExUhIasJc2Xsesz2RdEHtSNEWG2Xwd6oZhj5huo+UCQbtvlC
- ohALS1/dzl1ahhuASTVZ3w7lcy5AfalFRkfkAR+TAAI6NbEEScxpI0HzjU8dnmwd4+QFWk
- FJlqMaD+oCvlhtlUyStGgM5zR8z0V5g=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-252-xoIRZiD1MtGJh79Kr904kA-1; Wed, 08 Jun 2022 04:13:00 -0400
-X-MC-Unique: xoIRZiD1MtGJh79Kr904kA-1
-Received: by mail-lj1-f198.google.com with SMTP id
- g3-20020a2e9cc3000000b00253cc2b5ab5so3549940ljj.19
- for <qemu-trivial@nongnu.org>; Wed, 08 Jun 2022 01:13:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=t5qqehEOwVvbuCr1lok3q8OOoWgqa7uOTNcl6JYvvAk=;
- b=gEbedaGvxhHWM+wNoIjTemoCeWDjbpWsnACzrCDxgzuRIksw0y1KLMxcgzm3/ZwPlP
- Y1Ey1hPtSuJQKbojfTZXzWaKWaQmMmhO6pHIBIYWrQ+4PwHW1F3jIev5hlAoFxXaRg9Z
- V+GJHGtWFozT5TNss61JHal8PVKJdaUKFMMbrsT+2X6zPi4g3V0ClMfupvzMZt6qYlRp
- HiywJX/Q9lXurPnonedP664EZV0giP3fUuP9wbTrjTMFY5iSb75GhBJSqfGwwkP9zc3I
- B/SjSy+WImsxfXDQQfwod917YjtmmRq0Ja9JMBsAZzRu2N35vdsNYT3JXRpS+meGzJUx
- WvZA==
-X-Gm-Message-State: AOAM530OUBcFzAXYdToKwnfK2FuOZRb5A07hXRS6tEO0ItkI9XSAhbAy
- PYGulnW1mjKEcFeuEwLZi+IXKiHp/zftSJdrVURLiOPXJH4Xu6G4RrSvlaw36+i/QlDvkdqc4ph
- ERdTkeYmn0Z0IEOT31fWWNVaCamFeqnOHfQ==
-X-Received: by 2002:a05:6512:138d:b0:478:b72a:d66d with SMTP id
- p13-20020a056512138d00b00478b72ad66dmr44702404lfa.641.1654675978973; 
- Wed, 08 Jun 2022 01:12:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylg1ch1lEJD0KE+aqDRKTTar4pswBsYTkCNy+GmdJUh1eJCp9K+rxTrYE6zlGOdZE6a5LX0sqzmGesy6DHgwY=
-X-Received: by 2002:a05:6512:138d:b0:478:b72a:d66d with SMTP id
- p13-20020a056512138d00b00478b72ad66dmr44702382lfa.641.1654675978584; Wed, 08
- Jun 2022 01:12:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1nytwI-0003Xm-EY; Wed, 08 Jun 2022 07:33:33 -0400
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 258BXQ7Q007317;
+ Wed, 8 Jun 2022 11:33:26 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=fLivfP9V/utToS+WOT0UQo/TaP6znGXgfyMMVmyh41I=;
+ b=WKILsziVG9ZwkBvfZZROMpna1qBficvyaoDqhGRrVMsD0shPrGj/A3E2pxNoDuLEifI8
+ DFH7cD/F3H/vnkZ8o0vEcUMaIZBUHryyfyHjAHpMSf7d6Mb5UghMF6vl/RfL34c9NsRp
+ BF4KtM7PJYtAkP8ZwJOQcTXwHaX+egVlq5KfMfMSVnzhHP4MsI/UduZU7QN+eY2YLPQC
+ l4N2OYyLlsaGGC8zqu3DvLpQMhn+dlDacVWMrUKlDZHY+RgTzzThm/Ak3EovkHwxTGv9
+ 9qdn2KT+4T/jl5Evlg9L3CM1vCJdPtW/YSCMu9qljjrcqmXqBC9Is9Py98AXn36M4Hx+ Kg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3gjtqb8a8j-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 08 Jun 2022 11:33:26 +0000
+Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 258BXPbd007196;
+ Wed, 8 Jun 2022 11:33:25 GMT
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3gjtqb8a6e-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 08 Jun 2022 11:33:25 +0000
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 258BLLRX013765;
+ Wed, 8 Jun 2022 11:33:14 GMT
+Received: from b03cxnp08027.gho.boulder.ibm.com
+ (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+ by ppma04wdc.us.ibm.com with ESMTP id 3gfy19tvye-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 08 Jun 2022 11:33:14 +0000
+Received: from b03ledav002.gho.boulder.ibm.com
+ (b03ledav002.gho.boulder.ibm.com [9.17.130.233])
+ by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 258BXDsD15598008
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 8 Jun 2022 11:33:13 GMT
+Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2F48913604F;
+ Wed,  8 Jun 2022 11:33:13 +0000 (GMT)
+Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CA6E0136055;
+ Wed,  8 Jun 2022 11:33:12 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b03ledav002.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Wed,  8 Jun 2022 11:33:12 +0000 (GMT)
+From: Stefan Berger <stefanb@linux.ibm.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, gerd@kraxel.org
+Cc: marcandre.lureau@redhat.com, Stefan Berger <stefanb@linux.ibm.com>
+Subject: [PATCH] edk2: Use TPM2_ENABLE and TPM2_CONFIG_ENABLE for newer edk2
+Date: Wed,  8 Jun 2022 07:33:11 -0400
+Message-Id: <20220608113311.2144610-1-stefanb@linux.ibm.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-References: <20220527190658.169439-1-i@hexchain.org>
- <MWHPR11MB0031081716C325EBE19F8ACA9BDC9@MWHPR11MB0031.namprd11.prod.outlook.com>
-In-Reply-To: <MWHPR11MB0031081716C325EBE19F8ACA9BDC9@MWHPR11MB0031.namprd11.prod.outlook.com>
-From: Jason Wang <jasowang@redhat.com>
-Date: Wed, 8 Jun 2022 16:12:47 +0800
-Message-ID: <CACGkMEsRKNN4PkNBQEGEPpsFhFM7xLD6rVxfAk+QfwsbMoB+sA@mail.gmail.com>
-Subject: Re: [PATCH] ebpf: replace deprecated bpf_program__set_socket_filter
-To: "Zhang, Chen" <chen.zhang@intel.com>
-Cc: Haochen Tong <i@hexchain.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- Andrew Melnychenko <andrew@daynix.com>,
- Yuri Benditovich <yuri.benditovich@daynix.com>, 
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: Nk3siXOd97uE_8cf-rbih6FJvlE_4-ZC
+X-Proofpoint-ORIG-GUID: 0YU5nVHOFsqpQ8zc5-MhGfZgAOCRlqxp
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.517,FMLib:17.11.64.514
+ definitions=2022-06-08_03,2022-06-07_02,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxlogscore=857 adultscore=0
+ spamscore=0 clxscore=1011 priorityscore=1501 bulkscore=0 impostorscore=0
+ phishscore=0 malwarescore=0 lowpriorityscore=0 mlxscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2204290000
+ definitions=main-2206080049
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,60 +98,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jun 2022 08:13:11 -0000
+X-List-Received-Date: Wed, 08 Jun 2022 11:33:35 -0000
 
-On Tue, May 31, 2022 at 1:40 PM Zhang, Chen <chen.zhang@intel.com> wrote:
->
->
->
-> > -----Original Message-----
-> > From: Qemu-devel <qemu-devel-
-> > bounces+chen.zhang=intel.com@nongnu.org> On Behalf Of Haochen Tong
-> > Sent: Saturday, May 28, 2022 3:07 AM
-> > To: qemu-devel@nongnu.org
-> > Cc: qemu-trivial@nongnu.org; Haochen Tong <i@hexchain.org>
-> > Subject: [PATCH] ebpf: replace deprecated bpf_program__set_socket_filter
-> >
-> > bpf_program__set_<TYPE> functions have been deprecated since libbpf 0.8.
-> > Replace with the equivalent bpf_program__set_type call to avoid a
-> > deprecation warning.
-> >
-> > Signed-off-by: Haochen Tong <i@hexchain.org>
->
-> It looks good to me.
-> By the way, add eBPF maintainers.
-> Reviewed-by: Zhang Chen <chen.zhang@intel.com>
+Recent changes to edk2 switched the x86_64 build from using TPM_ENABLE
+to TPM2_ENABLE and TPM1_ENABLE to be similar to the ARM build. Adapt
+the QEMU edk2 Makefile to build with TPM2_ENABLE. QEMU v7.0.0 had lost
+the TPM 2 support in edk2 and this restores it.
 
-Applied.
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ roms/Makefile.edk2 | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-Thanks
-
->
-> Thanks
-> Chen
->
-> > ---
-> >  ebpf/ebpf_rss.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/ebpf/ebpf_rss.c b/ebpf/ebpf_rss.c index 118c68da83..cee658c158
-> > 100644
-> > --- a/ebpf/ebpf_rss.c
-> > +++ b/ebpf/ebpf_rss.c
-> > @@ -49,7 +49,7 @@ bool ebpf_rss_load(struct EBPFRSSContext *ctx)
-> >          goto error;
-> >      }
-> >
-> > -    bpf_program__set_socket_filter(rss_bpf_ctx-
-> > >progs.tun_rss_steering_prog);
-> > +    bpf_program__set_type(rss_bpf_ctx->progs.tun_rss_steering_prog,
-> > + BPF_PROG_TYPE_SOCKET_FILTER);
-> >
-> >      if (rss_bpf__load(rss_bpf_ctx)) {
-> >          trace_ebpf_error("eBPF RSS", "can not load RSS program");
-> > --
-> > 2.36.1
-> >
->
+diff --git a/roms/Makefile.edk2 b/roms/Makefile.edk2
+index 485f2244b1..a6eb14f215 100644
+--- a/roms/Makefile.edk2
++++ b/roms/Makefile.edk2
+@@ -101,8 +101,7 @@ submodules:
+ 		-D NETWORK_IP6_ENABLE \
+ 		-D NETWORK_HTTP_BOOT_ENABLE \
+ 		-D NETWORK_TLS_ENABLE \
+-		-D TPM_ENABLE \
+-		-D TPM_CONFIG_ENABLE
++		-D TPM2_ENABLE
+ 	cp edk2/Build/OvmfIa32/$(target)_$(call toolchain,i386)/FV/OVMF_CODE.fd $@
+ 
+ ../pc-bios/edk2-i386-secure-code.fd: submodules
+@@ -113,8 +112,7 @@ submodules:
+ 		-D NETWORK_IP6_ENABLE \
+ 		-D NETWORK_HTTP_BOOT_ENABLE \
+ 		-D NETWORK_TLS_ENABLE \
+-		-D TPM_ENABLE \
+-		-D TPM_CONFIG_ENABLE \
++		-D TPM2_ENABLE \
+ 		-D SECURE_BOOT_ENABLE \
+ 		-D SMM_REQUIRE
+ 	cp edk2/Build/OvmfIa32/$(target)_$(call toolchain,i386)/FV/OVMF_CODE.fd $@
+@@ -127,8 +125,7 @@ submodules:
+ 		-D NETWORK_IP6_ENABLE \
+ 		-D NETWORK_HTTP_BOOT_ENABLE \
+ 		-D NETWORK_TLS_ENABLE \
+-		-D TPM_ENABLE \
+-		-D TPM_CONFIG_ENABLE
++		-D TPM2_ENABLE
+ 	cp edk2/Build/OvmfX64/$(target)_$(call toolchain,x86_64)/FV/OVMF_CODE.fd $@
+ 
+ ../pc-bios/edk2-x86_64-secure-code.fd: submodules
+@@ -140,8 +137,7 @@ submodules:
+ 		-D NETWORK_IP6_ENABLE \
+ 		-D NETWORK_HTTP_BOOT_ENABLE \
+ 		-D NETWORK_TLS_ENABLE \
+-		-D TPM_ENABLE \
+-		-D TPM_CONFIG_ENABLE \
++		-D TPM2_ENABLE \
+ 		-D SECURE_BOOT_ENABLE \
+ 		-D SMM_REQUIRE
+ 	cp edk2/Build/Ovmf3264/$(target)_$(call toolchain,x86_64)/FV/OVMF_CODE.fd $@
+-- 
+2.35.3
 
 
