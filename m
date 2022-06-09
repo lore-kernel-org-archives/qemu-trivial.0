@@ -1,60 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1nzF7D-0006KF-2M
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Jun 2022 06:10:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56158)
+	id 1nzFBK-0001de-OZ
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Jun 2022 06:14:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nzF7A-0006E1-R5
- for qemu-trivial@nongnu.org; Thu, 09 Jun 2022 06:10:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:22733)
+ (Exim 4.90_1) (envelope-from <arnout@bzzt.net>)
+ id 1nzFBJ-0001bb-5s; Thu, 09 Jun 2022 06:14:25 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:50367)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1nzF78-0007PI-Fb
- for qemu-trivial@nongnu.org; Thu, 09 Jun 2022 06:10:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1654769404;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=poq99EVIsEAnGhH1RByOMe+7V3heirglEzIXUOIHxf8=;
- b=KJ/i7oc0DAdtQCXiuKOGMRmybuPbol+69lvaZq11NwLcm9bDXgPUto+Y/yASqg2v84pQP1
- tlGQe09CFkvxnoWPszD05bpltzJjtGXUb7eRq0IKAimlmw1pAz+gSHFWtcZ/IHlisFQBjc
- rKL5dmv+EshnPX/ibACKqI+0d9sx+GY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-144-JxZApfiXPLaUkLqOAdYB-A-1; Thu, 09 Jun 2022 06:10:03 -0400
-X-MC-Unique: JxZApfiXPLaUkLqOAdYB-A-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AB09886F154;
- Thu,  9 Jun 2022 10:09:56 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.40])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 80D6A456CD5;
- Thu,  9 Jun 2022 10:09:56 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 2C67B1800094; Thu,  9 Jun 2022 12:09:55 +0200 (CEST)
-Date: Thu, 9 Jun 2022 12:09:55 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Arnout Engelen <arnout@bzzt.net>
+ (Exim 4.90_1) (envelope-from <arnout@bzzt.net>)
+ id 1nzFBH-0007rj-AA; Thu, 09 Jun 2022 06:14:24 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.nyi.internal (Postfix) with ESMTP id C442D5C019B;
+ Thu,  9 Jun 2022 06:14:19 -0400 (EDT)
+Received: from imap52 ([10.202.2.102])
+ by compute3.internal (MEProxy); Thu, 09 Jun 2022 06:14:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bzzt.net; h=cc
+ :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to; s=fm3; t=1654769659; x=1654856059; bh=GKyoavzm7Y
+ uJo1rojdO4tBUcLV+R1eg5wTlo8YMWFXE=; b=h1ZMtDxh7B9K11+LzmoggSmYNb
+ DYZuM94pxPqR1RHuUQAkR7TqjWVUB012dJaunJsL947jt1hV2OSao96YwsgwJpzL
+ cTMawA7oMovcPNSZ6CoUuenR7K9lDNo01HBphryLxeJ5Whtvd81h8RG/QnOhTWOY
+ XODPVe/rqCHwKqG4yxkPDbFuXi4Reic0iYqVTMVwvJRITKtFQkAzVHhXe+veGqaG
+ Kf3lLH6IlASZgxHxBuENR8wNGNcbtdE6Sv8HN2g9EoM9HfoeSAH3Bvua1c1on40x
+ rNfFk5sYcIupQNsXT5Jl+FW7kBvHXQ8tI3wMy+tX1OJuZMzTUyFuWQd5FPdA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm2; t=1654769659; x=1654856059; bh=GKyoavzm7YuJo1rojdO4tBUcLV+R
+ 1eg5wTlo8YMWFXE=; b=tiYk7WCdr1fZQK7xFxciWykhHwu2ZYQwxZqL5uy4ixp+
+ +n34mcvqZKAA9pNiAWT7X5nbe749KEKEYcpeg3ox160z9wRInhvq5SEJYBMzV6s1
+ Y9TNawbi90cPmL/fbjSvWwkdcPoG4HrqmQmt+UN4GwCv06oXGHHKhkCXNyomsU26
+ bI95fBXAOwxLtfoPsgDeBvN+ApoWwQeGVi6h1UwGOY2tLzHz6JZdhNjoRgqQktTJ
+ pM2LIs/lTXo6/1yJ/HE4y5pXKhkpvZEvE9LxLqARaGAqefY3PRMhPuYUhziymyOd
+ UOtCBaaAZZjJwMsBEp+H09e6sXpy4CMa14MRxzdyKQ==
+X-ME-Sender: <xms:-8ehYjRcAjFD6-J5rMhrcLoOrrRPB09X4FE0lai7o8KRoLiHqNYVHQ>
+ <xme:-8ehYkwWvlw-3go2Dv0wj_9NEcARXT1L6i9c2w9spxRzR7z4-SPHQsTbkcFo6vpbm
+ gcijMq8ECJM2XUT-ZA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedruddtledgvdduucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefofgggkfgjfhffhffvvefutgesrg
+ dtreerreertdenucfhrhhomhepfdetrhhnohhuthcugfhnghgvlhgvnhdfuceorghrnhho
+ uhhtsegsiiiithdrnhgvtheqnecuggftrfgrthhtvghrnhepgfefleetffeiieduveetff
+ etgffghffhtdetjeevvedutdevudfftdehleehtddunecuvehluhhsthgvrhfuihiivgep
+ tdenucfrrghrrghmpehmrghilhhfrhhomheprghrnhhouhhtsegsiiiithdrnhgvth
+X-ME-Proxy: <xmx:-8ehYo0eaLIRf1_AFPTe3n2bVhFovpCnH97wNuqJ0PfGPCkwrWx7TA>
+ <xmx:-8ehYjAcpzZ7AKLa2eRHZnUWGavkqzx_RGunknI1L8c9ZcSpfuiWjw>
+ <xmx:-8ehYsjk_UDPNlLkzKPQRjDB3QCS6hhk7xMnv6YjeOwbP1V-yUVoHg>
+ <xmx:-8ehYkKgE9A95ibFFtQJKI6R63KvtiYV6z3SX1fvAYOAcXxPUmzg-A>
+Feedback-ID: i8a1146c4:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 927D4C6008A; Thu,  9 Jun 2022 06:14:19 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.7.0-alpha0-692-gb287c361f5-fm-20220603.003-gb287c361
+Mime-Version: 1.0
+Message-Id: <2d63230e-6b0c-4e4f-af9a-632ec00ca19f@www.fastmail.com>
+In-Reply-To: <20220609100955.ybq55nbapi2ach47@sirius.home.kraxel.org>
+References: <20220430082556.271627-1-arnout@bzzt.net>
+ <20220609100955.ybq55nbapi2ach47@sirius.home.kraxel.org>
+Date: Thu, 09 Jun 2022 12:13:58 +0200
+From: "Arnout Engelen" <arnout@bzzt.net>
+To: "Gerd Hoffmann" <kraxel@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Subject: Re: [PATCH] hw/usb/hcd-ehci.c: print diagnostics when cpage out of
  range
-Message-ID: <20220609100955.ybq55nbapi2ach47@sirius.home.kraxel.org>
-References: <20220430082556.271627-1-arnout@bzzt.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220430082556.271627-1-arnout@bzzt.net>
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: multipart/alternative; boundary=3958f281a626439697693b2c37797d72
+Received-SPF: pass client-ip=66.111.4.25; envelope-from=arnout@bzzt.net;
+ helo=out1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -68,23 +89,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Jun 2022 10:10:09 -0000
+X-List-Received-Date: Thu, 09 Jun 2022 10:14:26 -0000
 
-  Hi,
+--3958f281a626439697693b2c37797d72
+Content-Type: text/plain
 
->          if (cpage > 4) {
->              fprintf(stderr, "cpage out of range (%u)\n", cpage);
-> +            bytes  = get_field(p->qtd.token, QTD_TOKEN_TBYTES);
-> +            offset = p->qtd.bufptr[0] & ~QTD_BUFPTR_MASK;
-> +            cpage  = get_field(p->qtd.token, QTD_TOKEN_CPAGE);
-> +            fprintf(stderr, "reading %u bytes from offset %u at page %u\n",
-> +                    bytes, offset, cpage);
+On Thu, Jun 9, 2022, at 12:09, Gerd Hoffmann wrote:
+>   Hi,
+> 
+> >          if (cpage > 4) {
+> >              fprintf(stderr, "cpage out of range (%u)\n", cpage);
+> > +            bytes  = get_field(p->qtd.token, QTD_TOKEN_TBYTES);
+> > +            offset = p->qtd.bufptr[0] & ~QTD_BUFPTR_MASK;
+> > +            cpage  = get_field(p->qtd.token, QTD_TOKEN_CPAGE);
+> > +            fprintf(stderr, "reading %u bytes from offset %u at page %u\n",
+> > +                    bytes, offset, cpage);
+> 
+> I think we should either drop it (you've successfully debugged the
+> problem meanwhile, thanks for that), or turn it into a tracepoint.
+> Simply printing to stderr is deprecated.
 
-I think we should either drop it (you've successfully debugged the
-problem meanwhile, thanks for that), or turn it into a tracepoint.
-Simply printing to stderr is deprecated.
+Gotcha, I'm OK with dropping it. Thanks for the feedback & queue-ing the fix!
 
-take care,
-  Gerd
 
+Kind regards,
+
+Arnout
+--3958f281a626439697693b2c37797d72
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><title></title><style type=3D"text/css">p.Mso=
+Normal,p.MsoNoSpacing{margin:0}</style></head><body><div>On Thu, Jun 9, =
+2022, at 12:09, Gerd Hoffmann wrote:<br></div><blockquote type=3D"cite" =
+id=3D"qt" style=3D""><div>&nbsp; Hi,<br></div><div><br></div><div>&gt;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (cpage &gt; 4) {=
+<br></div><div>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp; fprintf(stderr, "cpage out of range (%u)\n", c=
+page);<br></div><div>&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp; bytes&nbsp; =3D get_field(p-&gt;qtd.token, QTD_TOK=
+EN_TBYTES);<br></div><div>&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp; offset =3D p-&gt;qtd.bufptr[0] &amp; ~QTD_BUF=
+PTR_MASK;<br></div><div>&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; cpage&nbsp; =3D get_field(p-&gt;qtd.token, QTD_=
+TOKEN_CPAGE);<br></div><div>&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp; fprintf(stderr, "reading %u bytes from offs=
+et %u at page %u\n",<br></div><div>&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp; bytes, offset, cpage);<br></div><div><br></div><div>I think =
+we should either drop it (you've successfully debugged the<br></div><div=
+>problem meanwhile, thanks for that), or turn it into a tracepoint.<br><=
+/div><div>Simply printing to stderr is deprecated.<br></div></blockquote=
+><div><br></div><div>Gotcha, I'm OK with dropping it. Thanks for the fee=
+dback &amp; queue-ing the fix!<br></div><div><br></div><div><br></div><d=
+iv>Kind regards,<br></div><div><br></div><div>Arnout<br></div></body></h=
+tml>
+--3958f281a626439697693b2c37797d72--
 
