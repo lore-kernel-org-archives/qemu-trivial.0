@@ -1,59 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o08yi-0003rV-7O
-	for mharc-qemu-trivial@gnu.org; Sat, 11 Jun 2022 17:49:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44642)
+	id 1o0TG1-00074b-R5
+	for mharc-qemu-trivial@gnu.org; Sun, 12 Jun 2022 15:28:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52772)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1o08yg-0003rI-Md; Sat, 11 Jun 2022 17:49:06 -0400
-Received: from mail-oi1-f169.google.com ([209.85.167.169]:39859)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1o0TFx-00073d-Ng; Sun, 12 Jun 2022 15:28:17 -0400
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:36730)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1o08ye-0001xR-QS; Sat, 11 Jun 2022 17:49:06 -0400
-Received: by mail-oi1-f169.google.com with SMTP id s8so3569198oib.6;
- Sat, 11 Jun 2022 14:49:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1o0TFv-0006dC-Vd; Sun, 12 Jun 2022 15:28:17 -0400
+Received: by mail-ej1-x641.google.com with SMTP id s12so7361866ejx.3;
+ Sun, 12 Jun 2022 12:28:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=32C84MgkT+e7b4732NZR1h3JkIJSDHIcnreZhE8Icl0=;
+ b=dSdCJMghtU7OEd2b0QQlX+u5kxwQN26AcdNM09tWWpSSJ79Yh4S8xcBvH+1SFauzp1
+ LgHDn18FToWtlLHNBSI1hcrd3cov90BjZFSYJ0+bIwN4c4FYXxSkKHuUDzhz5t49uZwy
+ zLEvno3JPpUi4M12hkkX+8rlIJlytPxVf+M+Thnl4m2YfaedJzXyMFWrTn3qAHlGCPyI
+ jfk77UKpu9SqIX+IP85VXcnFyW+6iIj9otnBbR8KfkCK0gyt2LV/B5c+ydCs3yaTQ2HB
+ M4INGTsQipkAOFwuAytDAiShUEF92kep1OBN2hIXl9CpWynwDBg7nWsoA8FZxXz20Ooq
+ nDnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=K1Py6qfLxNVWeO1x79P9Qjqppw4Icg4Zq+4D6x/hA7g=;
- b=oUAwrAMrXXvnme5AtsZtnjpkgWGVsu6WFrugsRItHuUmqQJ4ziDXDwR1ZX391sLr96
- /zZbvXX4PaLKCvW1d28lMd5vcvH9eLjTi/gZJXqb+cfniLGB1dW2IXNRdr3syA4PEJkf
- tbiOnvrkquogA4chqLkIAN/yQVdUk9NxpmGJnCvnwqleyMHjj/LK3dc1v5jcyusTu8PN
- J0xBTerVqVKRtABlJ6sJQ27FSIVWuy7jgCyAa+bxcEmHDI9Fn3LjFeXBsEIGe3g/wWg0
- sVywkGC8FBE2svNBiqJadJVGJlFqCRRmCfIguF2fEYpDreOUELJTJexu7gHQP4asE7dw
- jkfg==
-X-Gm-Message-State: AOAM530cnzVU+7dXE4G2xNcJROtitRjMXlVNAsh0bguHbcZre5PorUWW
- tUWHCZjJqZKTPnaWwRHpUaq/+Q+VBSuOOvzth5g=
-X-Google-Smtp-Source: ABdhPJzErT88T30GyPNupKhHeFp92UGxL2gvE3ZGFMdRvlkyjbTlER3Fw07VRuxWCGOPAqzWtVbo5YRk4U20VXx6G0Y=
-X-Received: by 2002:a05:6808:1444:b0:32f:1e22:55d9 with SMTP id
- x4-20020a056808144400b0032f1e2255d9mr2165431oiv.106.1654984142676; Sat, 11
- Jun 2022 14:49:02 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=32C84MgkT+e7b4732NZR1h3JkIJSDHIcnreZhE8Icl0=;
+ b=SF9maKElvMoHaxpGkQA3ZW1hYWO9R0MN3k2bA2hxwFaKc5aq6WggWiacIRrCFA2rsk
+ xxpM52rLqcbvAvcJJtDejSd6U2SDcoZmBCBfypdOcaMNfBSVURMH4EYUCRTOUq8Nk33A
+ 6YW4AsIXzINPTLjPg4ov7bc5PdmgDGyV5DtqCjHIVAWiun/lyNY1BN3QPjKq7YAcUL5a
+ XDAJGfiviXV62A8w4WSGzeEDFRsqKAdU6gUQDQ4k1NVd/pUhmFZs/IYipUfCAyGNJ4oB
+ dxQDpuLqqLNqpqvJCnmxf0T/CoylrRhdyjnmnBK2a0k6vegIUOE+s/L0D6VZiP3jqyEE
+ dCIw==
+X-Gm-Message-State: AOAM530aS2+Nv3f4IysMQLr4ikQYk8bE+rAOpx9BQMZGELClmD43iBE0
+ RbPsyC+dDLQb6WPgwbqJKmXotF3pSdnTAJpKcls=
+X-Google-Smtp-Source: ABdhPJz/QJMW4bPUIAnlH55b1CbV6MIi4Q9xJ9qhFQvYAO6R+Fo3VbO3sIEwS60HzklzJqzY14f+Ng==
+X-Received: by 2002:a17:906:3bd9:b0:6ff:4b5:4a8f with SMTP id
+ v25-20020a1709063bd900b006ff04b54a8fmr43754168ejf.139.1655062091546; 
+ Sun, 12 Jun 2022 12:28:11 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-077-183-191-140.77.183.pool.telefonica.de. [77.183.191.140])
+ by smtp.gmail.com with ESMTPSA id
+ o1-20020a1709064f8100b006f3ef214de7sm2816564eju.77.2022.06.12.12.28.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 12 Jun 2022 12:28:11 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH] hw/pci-host/i440fx: Remove unused parameter from i440fx_init()
+Date: Sun, 12 Jun 2022 21:28:00 +0200
+Message-Id: <20220612192800.40813-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-References: <20220605151908.30566-1-shentey@gmail.com>
- <124a4722-01f9-225f-05d3-35bd51713bfe@amsat.org>
- <CAG4p6K74wB1hnT=O2Z8Fyi0yk1W320AjCmYLEWDdcyZvX76oFg@mail.gmail.com>
-In-Reply-To: <CAG4p6K74wB1hnT=O2Z8Fyi0yk1W320AjCmYLEWDdcyZvX76oFg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Sat, 11 Jun 2022 23:48:51 +0200
-Message-ID: <CAAdtpL7b0vtL2RxBR8xxrPA4gfCKe-5fs6JpuBCU-LVrdJLTiQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/mips/boston: Initialize g_autofree pointers
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Paul Burton <paulburton@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.167.169;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-oi1-f169.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x641.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -66,67 +79,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 11 Jun 2022 21:49:07 -0000
+X-List-Received-Date: Sun, 12 Jun 2022 19:28:18 -0000
 
-On Sat, Jun 11, 2022 at 5:27 PM Bernhard Beschow <shentey@gmail.com> wrote:
-> On Fri, Jun 10, 2022 at 4:04 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
-org> wrote:
->> On 5/6/22 17:19, Bernhard Beschow wrote:
->> > Fixes compilation due to false positives with -Werror:
->> >
->> >    In file included from /usr/include/glib-2.0/glib.h:114,
->> >                     from qemu/src/include/glib-compat.h:32,
->> >                     from qemu/src/include/qemu/osdep.h:144,
->> >                     from ../src/hw/mips/boston.c:20:
->> >    In function =E2=80=98g_autoptr_cleanup_generic_gfree=E2=80=99,
->> >        inlined from =E2=80=98boston_mach_init=E2=80=99 at ../src/hw/mi=
-ps/boston.c:790:52:
->> >    /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: =E2=80=
-=98dtb_load_data=E2=80=99 may be used uninitialized [-Werror=3Dmaybe-uninit=
-ialized]
->> >       28 |   g_free (*pp);
->> >          |   ^~~~~~~~~~~~
->> >    ../src/hw/mips/boston.c: In function =E2=80=98boston_mach_init=E2=
-=80=99:
->> >    ../src/hw/mips/boston.c:790:52: note: =E2=80=98dtb_load_data=E2=80=
-=99 was declared here
->> >      790 |             g_autofree const void *dtb_file_data, *dtb_load=
-_data;
->> >          |                                                    ^~~~~~~~=
-~~~~~
->> >    In function =E2=80=98g_autoptr_cleanup_generic_gfree=E2=80=99,
->> >      inlined from =E2=80=98boston_mach_init=E2=80=99 at ../src/hw/mips=
-/boston.c:790:36:
->> >    /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: =E2=80=
-=98dtb_file_data=E2=80=99 may be used uninitialized [-Werror=3Dmaybe-uninit=
-ialized]
->> >       28 |   g_free (*pp);
->> >          |   ^~~~~~~~~~~~
->> >    ../src/hw/mips/boston.c: In function =E2=80=98boston_mach_init=E2=
-=80=99:
->> >    ../src/hw/mips/boston.c:790:36: note: =E2=80=98dtb_file_data=E2=80=
-=99 was declared here
->> >      790 |             g_autofree const void *dtb_file_data, *dtb_load=
-_data;
->> >          |                                    ^~~~~~~~~~~~~
->> >    cc1: all warnings being treated as errors
->> >
->> > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->> > ---
->> >   hw/mips/boston.c | 3 ++-
->> >   1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> Queued via mips-next.
->
->
-> Hi Phil,
->
-> shouldn't this patch be visible in your pull request then? https://patche=
-w.org/QEMU/20220611103312.67773-1-philippe.mathieu.daude@gmail.com/
+pi440fx_state is an out-parameter which is never read by the caller.
 
-It was included, but I have been overzealous when removing Mark's PS2
-series and removed it as well :/
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/i386/pc_piix.c            | 3 ---
+ hw/pci-host/i440fx.c         | 4 +---
+ include/hw/pci-host/i440fx.h | 1 -
+ 3 files changed, 1 insertion(+), 7 deletions(-)
 
-> Best regards,
-> Bernhard
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 0fc2361ffe..a234989ac3 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -82,7 +82,6 @@ static void pc_init1(MachineState *machine,
+     MemoryRegion *system_io = get_system_io();
+     PCIBus *pci_bus;
+     ISABus *isa_bus;
+-    PCII440FXState *i440fx_state;
+     int piix3_devfn = -1;
+     qemu_irq smi_irq;
+     GSIState *gsi_state;
+@@ -203,7 +202,6 @@ static void pc_init1(MachineState *machine,
+ 
+         pci_bus = i440fx_init(host_type,
+                               pci_type,
+-                              &i440fx_state,
+                               system_memory, system_io, machine->ram_size,
+                               x86ms->below_4g_mem_size,
+                               x86ms->above_4g_mem_size,
+@@ -217,7 +215,6 @@ static void pc_init1(MachineState *machine,
+         isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa.0"));
+     } else {
+         pci_bus = NULL;
+-        i440fx_state = NULL;
+         isa_bus = isa_bus_new(NULL, get_system_memory(), system_io,
+                               &error_abort);
+         pcms->hpet_enabled = false;
+diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+index e08716142b..1c5ad5f918 100644
+--- a/hw/pci-host/i440fx.c
++++ b/hw/pci-host/i440fx.c
+@@ -238,7 +238,6 @@ static void i440fx_realize(PCIDevice *dev, Error **errp)
+ }
+ 
+ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+-                    PCII440FXState **pi440fx_state,
+                     MemoryRegion *address_space_mem,
+                     MemoryRegion *address_space_io,
+                     ram_addr_t ram_size,
+@@ -264,8 +263,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+     d = pci_create_simple(b, 0, pci_type);
+-    *pi440fx_state = I440FX_PCI_DEVICE(d);
+-    f = *pi440fx_state;
++    f = I440FX_PCI_DEVICE(d);
+     f->system_memory = address_space_mem;
+     f->pci_address_space = pci_address_space;
+     f->ram_memory = ram_memory;
+diff --git a/include/hw/pci-host/i440fx.h b/include/hw/pci-host/i440fx.h
+index f068aaba8f..52518dbf08 100644
+--- a/include/hw/pci-host/i440fx.h
++++ b/include/hw/pci-host/i440fx.h
+@@ -36,7 +36,6 @@ struct PCII440FXState {
+ #define TYPE_IGD_PASSTHROUGH_I440FX_PCI_DEVICE "igd-passthrough-i440FX"
+ 
+ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+-                    PCII440FXState **pi440fx_state,
+                     MemoryRegion *address_space_mem,
+                     MemoryRegion *address_space_io,
+                     ram_addr_t ram_size,
+-- 
+2.36.1
+
 
