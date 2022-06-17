@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o2BJC-0008UV-Ur
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Jun 2022 08:42:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53960)
+	id 1o2BhI-0000Sd-8p
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Jun 2022 09:07:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1)
  (envelope-from <prvs=160677330=anthony.perard@citrix.com>)
- id 1o2BJB-0008RD-It; Fri, 17 Jun 2022 08:42:41 -0400
-Received: from esa1.hc3370-68.iphmx.com ([216.71.145.142]:51042)
+ id 1o2BhH-0000SO-FS; Fri, 17 Jun 2022 09:07:35 -0400
+Received: from esa6.hc3370-68.iphmx.com ([216.71.155.175]:58580)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1)
  (envelope-from <prvs=160677330=anthony.perard@citrix.com>)
- id 1o2BJ8-000695-VB; Fri, 17 Jun 2022 08:42:41 -0400
+ id 1o2BhD-0001Gw-Cd; Fri, 17 Jun 2022 09:07:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=citrix.com; s=securemail; t=1655469758;
+ d=citrix.com; s=securemail; t=1655471251;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=aQ2JFJdgxW+bvJ7wlrkPH1pYSZsqotk9gFtitGX3Kfo=;
- b=D1fmndEmk7h3rYynn55vaUwXo5QpE413xGsuhT2VuJpdPJoR8gMmFpuq
- tQ4752Hoimiywdb1oLXIRNiXlBmbm0UfVZN1Zh0c/trIJbJd7EDYCgXrY
- TNyNvIBMKTxUt98N1fhKJOrRgeX5v5MWBF7i4bowaHPA2OqcdStJMuAh3 4=;
-Authentication-Results: esa1.hc3370-68.iphmx.com;
+ bh=43DOepLpiA6dAclzX6XEZibIuvrKwywcq/eObv9mD9M=;
+ b=O55rHJSBVfJGzEDprBKfDI91CpNxkUJRcHe5i9DDYbxYNCL+A+t3Zu5n
+ lTGkbT6WPbv+WATeejv7OTYUUpqbSTRFX6QUWW06U8bT9ZJb/KNSAqvUf
+ /YpumGDmsURSI6Ph9Zzf3jDGPb61wa9P6CsdfeqEX80QWnEjIUTFxr1VC E=;
+Authentication-Results: esa6.hc3370-68.iphmx.com;
  dkim=none (message not signed) header.i=none
 X-SBRS: 5.1
-X-MesageID: 74267833
-X-Ironport-Server: esa1.hc3370-68.iphmx.com
+X-MesageID: 73699563
+X-Ironport-Server: esa6.hc3370-68.iphmx.com
 X-Remote-IP: 162.221.156.83
 X-Policy: $RELAYED
-IronPort-Data: A9a23:A6+buqOqEc0TJXjvrR2Cl8FynXyQoLVcMsEvi/4bfWQNrUoj3mNRn
- zcWXG6HO//fNmamLtBzO4jl9k9UupLWx9JlQAto+SlhQUwRpJueD7x1DKtR0wB+jCHnZBg6h
- ynLQoCYdKjYdleF+lH1dOKJQUBUjclkfJKlYAL/En03FFUMpBsJ00o5wbZn29Aw3bBVPivW0
- T/Mi5yHULOa82Yc3lI8s8pvfzs24ZweEBtB1rAPTagjUG32zhH5P7pGTU2FFFPqQ5E8IwKPb
- 72rIIdVXI/u10xF5tuNyt4Xe6CRK1LYFVDmZnF+A8BOjvXez8CbP2lS2Pc0MC9qZzu1c99Z2
- fFsiZWqVCkSIKzLid4cYhJ7CjFTBPgTkFPHCSDXXc27ykTHdz3nwul0DVFwNoodkgp1KTgQr
- 7pCcmlLN03dwbLtqF64YrAEasALJc/3PIQZqzd4wCvQF/oOSpHfWaTao9Rf2V/cg+gRQayAO
- JpCMlKDajyaYTpoO1I8U6kwt7unp1ehXT9H+W6a8P9fD2/7k1UqjemF3MDuUsWHQNgQglyZu
- GPP+0z/BRcVMsHZziCKmlq3nfPGly7/XIMUFZW7++RsjVnVwXYcYDUOXEa/iem0jAi5Qd03A
- 0YO8Sozpqsg3EWsSp/2WBjQiGeJuwNZV9dOHukS7gaLxazJpQGDCQAsXjNHLdArqsIybTgrz
- UOS2cPkAyR1t7+YQm7b8a2bxQ5eIgBMczVEP3VdC1JYvZ+z++nfky4jUP5yNI+Jh8foNwruw
- jeblikPjJYKneMygvDTEU/8v968mnTYZldru1iLBTr/tl4RiJ2NPNLxtwWChRpUBMPAFwTa4
- iBZ8ySLxLpWZaxhghBhVwnk8FuBw/+eeAPRjld0d3XK32T8oiXzFWy8DdwXGauIDirnUWWwC
- KMrkVkNjKK/xVPzBUONX6q/Ct4x0Y/rHsn/W/bfY7JmO8YsKVPfoH0zPRfNhQgBdXTAdoluU
- ap3jO72VSpKYUiZ5GHeqxghPU8DmXllmDK7qWHTxBW7y7uODEOopUM+GALWNIgRtfrcyC2Mq
- oo3H5bamn13DbylCgGKoNF7ELz/BSVibXwAg5cMLbDrz8sPMDxJNsI9Npt4I9Q7x/8OyraXl
- px/M2cBoGfCabT8AV3iQhhehHnHBP6TcVpT0fQQAGuV
-IronPort-HdrOrdr: A9a23:ofSIZKHW6Xg6BiWIpLqE6MeALOsnbusQ8zAXP0AYc3Jom+ij5q
- STdZUgpHrJYVkqNU3I9ertBEDEewK6yXcX2/hyAV7BZmnbUQKTRekIh7cKgQeQeBEWntQts5
- uIGJIeNDSfNzdHsfo=
-X-IronPort-AV: E=Sophos;i="5.92,306,1650945600"; d="scan'208";a="74267833"
-Date: Fri, 17 Jun 2022 13:42:21 +0100
+IronPort-Data: A9a23:65xIEqCvzCqKSxVW/w7jw5YqxClBgxIJ4kV8jS/XYbTApDMr1DwCn
+ GAdWWmAb67eZWDyeNxwO9y3/U0E6peGnIVmQQY4rX1jcSlH+JHPbTi7wuYcHM8wwunrFh8PA
+ xA2M4GYRCwMZiaA4E/raNANlFEkvU2ybuOU5NXsZ2YgH2eIdA970Ug5w7Bg3NY06TSEK1jlV
+ e3a8pW31GCNg1aYAkpMg05UgEoy1BhakGpwUm0WPZinjneH/5UmJMt3yZWKB2n5WuFp8tuSH
+ I4v+l0bElTxpH/BAvv9+lryn9ZjrrT6ZWBigVIOM0Sub4QrSoXfHc/XOdJFAXq7hQllkPha9
+ 9FipaKRWTsGfbHVm95efEREMgVhaPguFL/veRBTsOSWxkzCNXDt3+9vHAc9OohwFuRfWD8Us
+ 6ZCcXZUM07F17neLLGTE4GAguwqKtXrO4UO/Glt1zjDAd4tQIzZQrWM7thdtNs1rp8VQ6ePO
+ pRCAdZpRCrMUUx9NQ81McMVk9ijlGfFUDsG813A8MLb5ECMlVcsgdABKuH9Y9GPWIBJhEeGp
+ 2vC12L+BB4cKZqY0zXt2mm3mubFkCf/WYQTPL617PhnhBuU3GN7IAUfSF+TsfS/zEmkVLp3I
+ VYf+jclrroa/UuvCNL6WnWQuXOBo1sQVsRdF8U87weCzLeS5ByWbkAUQzgEZNE4ucseQT0xy
+ kTPj97vHSZosrCeVTSa7Lj8kN+pEXFLdylYP3ZCFFZbpYm4yG0usv7RZv1cFIGlsPzlJR6z3
+ ymJlmsR2qkyqdFegs1X4mv7byKQSonhF1Bou1mMBjj9s2uVd6b+OdX2tAGzAeJoad/AEwLf5
+ CVsd922trhmMH2bqMCarAzh9pmN7u3NDjDTiEUH83IJp2X0oC7LkWy9DVhDyKZV3iUsI2aBj
+ Lf741852XOqFCLCgVVLS4ywEd826qPrCM7oUPvZBvIXPMUsKFfboHw2PBPKt4wIrKTLufBXB
+ HtmWZz0USZy5VpPl1JauNvxIZd0n3tjlAs/tLjwzgi90Kr2WUN5vYwtaQPUBshgtfvsiFyMr
+ 753apvboz0CAbaWSnSGruYuwaUicCFT6Wbe8JcMKIZu42NORQkcNhMm6ep5I9I9xP8Jx7igE
+ 7PUchYw9WcTTEbvcW2iAk2Popu2NXqjhRrX5RARAGs=
+IronPort-HdrOrdr: A9a23:a6XODK4eXS8yIRbciwPXwMjXdLJyesId70hD6qhwISY6TiW9rb
+ HLoB17726QtN9/YhwdcLy7VJVoBEmskqKdgrNhX4tKPjOHhILAFugLhuHfKn/bak7DH4ZmpM
+ FdmsNFaeEYY2IUsfrH
+X-IronPort-AV: E=Sophos;i="5.92,306,1650945600"; d="scan'208";a="73699563"
+Date: Fri, 17 Jun 2022 14:07:18 +0100
 From: Anthony PERARD <anthony.perard@citrix.com>
 To: Chuck Zmudzinski <brchuckz@aol.com>
 CC: <qemu-devel@nongnu.org>, <xen-devel@lists.xenproject.org>,
  <qemu-trivial@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>, Paul
  Durrant <paul@xen.org>
-Subject: Re: [PATCH v2] xen/pass-through: merge emulated bits correctly
-Message-ID: <Yqx2rYn+9jEV679a@perard.uk.xensource.com>
-References: <b6718a3512ec0a97c6ef4a5b5c1f3de72238c603.1654961918.git.brchuckz.ref@aol.com>
- <b6718a3512ec0a97c6ef4a5b5c1f3de72238c603.1654961918.git.brchuckz@aol.com>
+Subject: Re: [PATCH] xen/pass-through: don't create needless register group
+Message-ID: <Yqx8ht2teAoRJF4b@perard.uk.xensource.com>
+References: <a2e946dfb45260a5e29cec3b2195e4c1385b0d63.1654876622.git.brchuckz.ref@aol.com>
+ <a2e946dfb45260a5e29cec3b2195e4c1385b0d63.1654876622.git.brchuckz@aol.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <b6718a3512ec0a97c6ef4a5b5c1f3de72238c603.1654961918.git.brchuckz@aol.com>
-Received-SPF: pass client-ip=216.71.145.142;
+In-Reply-To: <a2e946dfb45260a5e29cec3b2195e4c1385b0d63.1654876622.git.brchuckz@aol.com>
+Received-SPF: pass client-ip=216.71.155.175;
  envelope-from=prvs=160677330=anthony.perard@citrix.com;
- helo=esa1.hc3370-68.iphmx.com
+ helo=esa6.hc3370-68.iphmx.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
 X-Spam_bar: ----
@@ -83,38 +83,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Jun 2022 12:42:41 -0000
+X-List-Received-Date: Fri, 17 Jun 2022 13:07:35 -0000
 
-On Sat, Jun 11, 2022 at 12:43:29PM -0400, Chuck Zmudzinski wrote:
-> In xen_pt_config_reg_init(), there is an error in the merging of the
-> emulated data with the host value. With the current Qemu, instead of
-> merging the emulated bits with the host bits as defined by emu_mask,
-> the emulated bits are merged with the host bits as defined by the
-> inverse of emu_mask. In some cases, depending on the data in the
-> registers on the host, the way the registers are setup, and the
-> initial values of the emulated bits, the end result will be that
-> the register is initialized with the wrong value.
-> 
-> To correct this error, use the XEN_PT_MERGE_VALUE macro to help ensure
-> the merge is done correctly.
-> 
-> This correction is needed to resolve Qemu project issue #1061, which
-> describes the failure of Xen HVM Linux guests to boot in certain
-> configurations with passed through PCI devices, that is, when this error
-> disables instead of enables the PCI_STATUS_CAP_LIST bit of the
-> PCI_STATUS register of a passed through PCI device, which in turn
-> disables the MSI-X capability of the device in Linux guests with the end
-> result being that the Linux guest never completes the boot process.
-> 
-> Fixes: 2e87512eccf3
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1061
-> Buglink: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=988333
+On Fri, Jun 10, 2022 at 12:23:35PM -0400, Chuck Zmudzinski wrote:
+> Currently we are creating a register group for the Intel IGD OpRegion
+> for every device we pass through, but the XEN_PCI_INTEL_OPREGION
+> register group is only valid for an Intel IGD. Add a check to make
+> sure the device is an Intel IGD and a check that the administrator has
+> enabled gfx_passthru in the xl domain configuration. Require both checks
+> to be true before creating the register group. Use the existing
+> is_igd_vga_passthrough() function to check for a graphics device from
+> any vendor and that the administrator enabled gfx_passthru in the xl
+> domain configuration, but further require that the vendor be Intel,
+> because only Intel IGD devices have an Intel OpRegion. These are the
+> same checks hvmloader and libxl do to determine if the Intel OpRegion
+> needs to be mapped into the guest's memory.
 > 
 > Signed-off-by: Chuck Zmudzinski <brchuckz@aol.com>
+> ---
+>  hw/xen/xen_pt_config_init.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+> index c5c4e943a8..ffd915654c 100644
+> --- a/hw/xen/xen_pt_config_init.c
+> +++ b/hw/xen/xen_pt_config_init.c
+> @@ -2037,6 +2037,10 @@ void xen_pt_config_init(XenPCIPassthroughState *s, Error **errp)
+>           * therefore the size should be 0xff.
+>           */
 
-Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+Could you move that comment? I think it would make more sense to comment
+the "reg_grp_offset=XEN_PCI_INTEL_OPREGION" line now that the `if` block
+also skip setting up the group on non-intel devices.
 
-Thank you, looks like it's been a long quest to figure this one out.
+>          if (xen_pt_emu_reg_grps[i].grp_id == XEN_PCI_INTEL_OPREGION) {
+> +            if (!is_igd_vga_passthrough(&s->real_device) ||
+> +                s->real_device.vendor_id != PCI_VENDOR_ID_INTEL) {
+> +                continue;
+> +            }
+>              reg_grp_offset = XEN_PCI_INTEL_OPREGION;
+>          }
+
+Thanks,
 
 -- 
 Anthony PERARD
