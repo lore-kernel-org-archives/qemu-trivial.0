@@ -1,91 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o2JY6-0006P4-V8
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Jun 2022 17:30:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48866)
+	id 1o32ic-0000W9-8m
+	for mharc-qemu-trivial@gnu.org; Sun, 19 Jun 2022 17:44:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brchuckz@aim.com>) id 1o2Hb4-0004lr-VX
- for qemu-trivial@nongnu.org; Fri, 17 Jun 2022 15:25:38 -0400
-Received: from sonic316-54.consmr.mail.gq1.yahoo.com ([98.137.69.30]:37796)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1o32ia-0000To-0q; Sun, 19 Jun 2022 17:44:28 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:37705)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <brchuckz@aim.com>) id 1o2Hb2-0004Te-ON
- for qemu-trivial@nongnu.org; Fri, 17 Jun 2022 15:25:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netscape.net; s=a2048;
- t=1655493930; bh=vlcQCj9UTfubRdysfbCKFBRm8+4ciyYN0AmNZyeI72E=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From:Subject:Reply-To;
- b=W64Hyk0KdhYnX9eXyT8dkHrcfb1X5XZv8AEebzrnxObyxENzQd9OIgAO4PkNtn3wQBrRRMhQkVNtPlSyzi/4S+lnxxvgTvW+UfOdKK0RgY3JeqeKBguqiBPq9mkCKQ0fheaFk26ItpBqkHL8sszGW8YQ4uljRJ9ohpx8YV8m/khgVTBt/tUV8Bub/w0jB+jYRQxeMS1iwrJQJ/kCxKJdsca4OuecVjfExkj6B7UoC1juTbgsBZXP3MNKV3Ck1Fky03zv6pzojaIGHagcMbwydJJLeeKejyzjrTI/Oay/weoj95rHxGQF7uRRbIFHmkwZ9KpTLtcT/5s9atF/6QNy1g==
-X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1655493930; bh=qNjS/Va1GoI+ySU9xTMv+RsojFuWBUgo1wrTLH0W6Vs=;
- h=X-Sonic-MF:Date:Subject:To:From:From:Subject;
- b=Es6T2TayzTooeK/TnHPFo8rXiTQUGjG2tDGzDEqXwGQnjpU73Vq9HBZNX3a/uKnQrapPVLG5GwY8DXZFQyhBAfpyuCCap373EKRufPHwVjnsyn91c5uWoGUkkNNOoLg861tBMlC1ri2iCr6K62w0CxfUjXuQshzqxVoIq4Ar6qi+J8nuw5AQVkfKKfKOzcl4ZKhs0tDBz57Br1Unhtf5EW546UKiJJ0UG0FX3jcXjEYEcUSrmAK8H3wuqcivrfy2cQWDOZw1qUFZpSZ4yxw2bqehuRP9AD5I5xPJw6wuaso6h47PlP1ykGyfijXZtC5+gBw0lh8J+CpDOrnfeJVU/Q==
-X-YMail-OSG: 8g2H05QVM1nOwZscjg4ZJammOfHkIfN3ZZ6OZuNaC42ui4CQlRdSNH5Y4XZuTRr
- Tx5uiohXqqP.4gxpF6vLw0XO3mSP_NO_YwGtBH2rMGHE0GtTBpbYG1tFXuDk1lt6cIfRHxo62Jp0
- aQpASMlIHe.J2gpkpqNlFyzcNKuqPMDcC85J2i73Pc7Sms9hG.eTGFcnVPkM8IEHmagqhqmwjqFc
- y1pkUWsr4Wkl8Jap4.NUt6GCVfkmVRQvD6cDC_h1z3YRjoYRKdzPYVFDtAlFXyNqEpLQ6Eug.nPu
- FDdUJtHYxSLmUv1adccIl8hu3AjINPI2UkFcaPtKDHrmtdR4TiziXzmt8W9B5y_Qiodv0k2.ZCOd
- .zpcQBlpkTnvG3hWtUkMMA_N12KiNYmuOnAGJh_frFTWHUs3XtL4dkDPfeywu3Z3SGMhLWNxMRB.
- 7Zl6PmyYV3Kbv0vrXyrf93nTvQO.xHuJ7jHl57tSRcguczjZx.1FjdPEuk4cVLqZrCqLVytaw6Qn
- v65OuttbLHE4frViHxInC6_dURYnZuxxu1ikhUJ7aRbWJY83KUvaUibnvpBtpK0gtGkYeaFjQpxx
- VR9J0A4.zs.P7Hle.2lYoaLIlBUGaq0vxi873dJUfW0zoxllY7QBKhKpOPyIG_qr6PJRJ3gAVOBP
- BdMeTzw8.toDi_uZ9Bm8oYU_5Vu7BIdWLD3KG7j2lleyK4xt73XIIGIF7VOZMjhT8AdZa8QSvkb9
- AFV3RsVvsJUYj5AYMPNCcVlhKEcyTzZgBVOaEweEliWY196Tq71MQGksHwfJ6kCn9TUJVAirDy5Z
- pHHasKn_3m7N1wtq54PSB.pCSgIU.0qUkRwfhs_H4LZ_y7Ub5GFcxRY_NBwi78emUNyAbjPl5BQm
- MrmCXAaLuC8nQNUFLF5LW_GI8Zim_RdszAVH.U5VfAoT4Hbb2zz.0QWdD4oQR9jsO_z0bQnZPJNq
- Pufpqb9CF675czz0GgV4uYBXpjkuZQtoSN6RMiQ00QFGwaLdi0WcOpNft7P7ZrnLU0Vh5.fU_Pfg
- m07_pJJ8Lhe87vhwpi7JMEgBxfhqdoCT.e9rmHYk8b6S8u9GCZa92wXW4FJH2nfTMwsfcaGS5alx
- V4BR8QEuAGHq7UNQvWsnhTtu1PIlQyYGvr_mknCRO2TNiiN3.6D9WyPNn_fvquqB3VSAP5Hkljwc
- U8emc0tnAxKmb8TVYY3sPl8IpB1qjIvitBJ5nzAqwWRB4D7mz_2yuvuCznt.Tl2fEQU9uc7BYkRV
- jSs2q6BIk8FcABySKuMhnvDrxWwxAwtrSLV6MHBKKsoqNoKLt6AciTcOtb3yPZUJjpf2mxYpbrbj
- sXA3YgXEe.J3K1pcq8Es94ijnHufjh34e8nfLFlKDQy0LrOwGpEOsQbBuIPY7vU79L_ulmsPNusK
- LWiutpmNJeIt0QW4iBpF8_FFLlpyYR7.oQ0McGCg0ksk2d1ypF2zi3V0uKzwjh3XIoGg3YUKzbta
- IuK4hDSlkNddQhE1u9EGXZ9rRsx_CW499xfxEw1w3HOQVBoPkbKeXIOb9LGdpYlD5mH69_EA7LUZ
- n5GbCe.xjve1sX19h7mAaVo55huC_27w3Zi8qajh3zo10h5fJ.zwamWoA4iPQCUAlyckNID1s29J
- GWm17gh1D6sd1t1kmVXErVD105PHE5imSOb0pAOaahK78Q_v3f6M3siFQODxjaHs4t6E6CW5Pl3z
- 84w9.JdAp.Nv6d3KrY205XOFhKYfJKLtpDS1p5TR0L.SiuCt6SWCudrnC8NxyG7wwiYNQljFxXxJ
- 7.ytMcnivJyY7IzfBgtZ0pHAT6Gie9yjKzPBZXqSiUi3yzC5RXUCQ.TsKuVo9YvMY5hnSutLFjm.
- WKygxDVi3kBZN1.5b2dRXzC7sYT0yYLZEtpXvAVz.iayioMZazqd8UHRsrYQvUjYx2gIxDCaso1m
- cp6jKTb.MRyqmrQrs9jQ2xvSyafQTMvmue56WWJKkU85QTguKsrmaJOk6B7yLaV_G19MbdZLVQO_
- R1RCESAk3H5QRa0CdxKKhj5gf93a2Sa9RydT5NTiEp13Ze3ouiIml8DR7YR.m59jmECuEVolxa8g
- 73UTBmDY16JqUi7aL8.v3B4_XbyY5Nhefc7PF_i9IuzJFDP.cazDG.wpzIQqHYrGIlM.h1txA1kb
- JLmgpRltGFgmLKco7IPcb1FszlNgjaV3MCSGS0FiVwvQr97Le5TJ75jDKcAKGc6SpD_dKO9RFcNw
- 8.XryB.FFbJQ7QxhtXXU1
-X-Sonic-MF: <brchuckz@aim.com>
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic316.consmr.mail.gq1.yahoo.com with HTTP; Fri, 17 Jun 2022 19:25:30 +0000
-Received: by hermes--canary-production-bf1-8bb76d6cf-7lzpt (Yahoo Inc. Hermes
- SMTP Server) with ESMTPA ID 53c15538f9520d4ca7add3ad628bdd99; 
- Fri, 17 Jun 2022 19:25:27 +0000 (UTC)
-Message-ID: <40ffbdbb-6af7-5ab0-7065-db5c0e718ed5@netscape.net>
-Date: Fri, 17 Jun 2022 15:25:25 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1o32iY-0005CF-Ao; Sun, 19 Jun 2022 17:44:27 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id es26so10955214edb.4;
+ Sun, 19 Jun 2022 14:44:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=jDyeLgnmw1vtJkn84QJNvQTS6x9ae8YSmjSFMBPgcfU=;
+ b=D0D7vNHWZR1Nn+QJmc86KDtvSl6M6lEkcu7P5thCVjfpbgBW2AegguzLy7u4kvu4NX
+ EpnMJ2r6KMX9Ib+4UNPDd+mxtLF3T0pESLinzBohLYc/wB8MI1IbyCZX6pGCACZ0YENz
+ I9hP809+0zgxT+qye3y4sm0vIYQ2lka91I1VFLxa62LkB1ccEAJA6Xxa4zwC1jJ3IRMO
+ YIKjJDcsi08Wz8ZQKm6M/zHhb7O6lUmBRJxf6B3OuORiIxU+WvxBTqvvf48PXBV7NMlW
+ ZL3dvUKzptyg0hQVUMLe56JSnIZNI8BU7F0QTxbt3Jw6KVJwnLaKYXXbSjMniljDN8HC
+ fo8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=jDyeLgnmw1vtJkn84QJNvQTS6x9ae8YSmjSFMBPgcfU=;
+ b=6hwTJydJK8T8PKm5NuWxVjUeedN6kFgismB//RAkOLwwo1LwwySi32eTzquO8ongM5
+ Oy38BydkQOKFUq2Hq+fsQ3P6g3KCR3FURutl2Na97cEbQn86OgLz9GL008lpy8l66vqu
+ hZs8JSQSjqlU5wfCBH7+iUFo6+WcYklrBVbewKh+PVkAH5XK4JPtgtDEjAwRAqwMSdPK
+ 1HYYJ/8Eol6HbkO/HvISAOnvaoQGYP4Itb3xt+xXaunPCxK5y4svriH6PF2WT+fAGdEo
+ yQmS7+2oW1Gqs/rrQ3k/PMoovMjg37cDsrGSZ+XCx0XvxIWeSwKEH/hKIMnBWFZY0rba
+ 6PCA==
+X-Gm-Message-State: AJIora/glGUVUM1MtyPUWLoDzyrKJ3ocV7cA+xUmeTRR7NLQraOLX7jn
+ omjMOjC4Py3DQXpLsiig+TBZShh8G5Vw0g==
+X-Google-Smtp-Source: AGRyM1tKUz5kKK2Xz+Ty9Y1BjZhMQLdik8Gp7hJfFnyqnLaDWRpoBllcIvjGOddXkJYdSiDPS+39wg==
+X-Received: by 2002:aa7:c80a:0:b0:435:7784:18e with SMTP id
+ a10-20020aa7c80a000000b004357784018emr6779020edt.136.1655675063878; 
+ Sun, 19 Jun 2022 14:44:23 -0700 (PDT)
+Received: from ?IPv6:::1? ([2001:9e8:1946:f600:a881:84ce:a3ed:9c43])
+ by smtp.gmail.com with ESMTPSA id
+ 24-20020a170906309800b006f3ef214dbesm4954901ejv.36.2022.06.19.14.44.23
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 19 Jun 2022 14:44:23 -0700 (PDT)
+Date: Sun, 19 Jun 2022 21:44:21 +0000
+From: B <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+CC: Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH=5D_hw/pci-host/i440fx=3A_Remov?=
+ =?US-ASCII?Q?e_unused_parameter_from_i440fx=5Finit=28=29?=
+In-Reply-To: <20220612192800.40813-1-shentey@gmail.com>
+References: <20220612192800.40813-1-shentey@gmail.com>
+Message-ID: <14F9EAAB-1FF2-4718-BA5B-9F5971099C94@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH] xen/pass-through: don't create needless register group
-Content-Language: en-US
-To: Anthony PERARD <anthony.perard@citrix.com>
-Cc: qemu-devel@nongnu.org, xen-devel@lists.xenproject.org,
- qemu-trivial@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
- Paul Durrant <paul@xen.org>
-References: <a2e946dfb45260a5e29cec3b2195e4c1385b0d63.1654876622.git.brchuckz.ref@aol.com>
- <a2e946dfb45260a5e29cec3b2195e4c1385b0d63.1654876622.git.brchuckz@aol.com>
- <Yqx8ht2teAoRJF4b@perard.uk.xensource.com>
-From: Chuck Zmudzinski <brchuckz@netscape.net>
-In-Reply-To: <Yqx8ht2teAoRJF4b@perard.uk.xensource.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailer: WebService/1.1.20280
- mail.backend.jedi.jws.acl:role.jedi.acl.token.atz.jws.hermes.aol
-Received-SPF: pass client-ip=98.137.69.30; envelope-from=brchuckz@aim.com;
- helo=sonic316-54.consmr.mail.gq1.yahoo.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 17 Jun 2022 17:30:33 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,55 +81,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Jun 2022 19:25:38 -0000
+X-List-Received-Date: Sun, 19 Jun 2022 21:44:28 -0000
 
-On 6/17/22 9:07 AM, Anthony PERARD wrote:
-> On Fri, Jun 10, 2022 at 12:23:35PM -0400, Chuck Zmudzinski wrote:
->> Currently we are creating a register group for the Intel IGD OpRegion
->> for every device we pass through, but the XEN_PCI_INTEL_OPREGION
->> register group is only valid for an Intel IGD. Add a check to make
->> sure the device is an Intel IGD and a check that the administrator has
->> enabled gfx_passthru in the xl domain configuration. Require both checks
->> to be true before creating the register group. Use the existing
->> is_igd_vga_passthrough() function to check for a graphics device from
->> any vendor and that the administrator enabled gfx_passthru in the xl
->> domain configuration, but further require that the vendor be Intel,
->> because only Intel IGD devices have an Intel OpRegion. These are the
->> same checks hvmloader and libxl do to determine if the Intel OpRegion
->> needs to be mapped into the guest's memory.
->>
->> Signed-off-by: Chuck Zmudzinski <brchuckz@aol.com>
->> ---
->>   hw/xen/xen_pt_config_init.c | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
->> index c5c4e943a8..ffd915654c 100644
->> --- a/hw/xen/xen_pt_config_init.c
->> +++ b/hw/xen/xen_pt_config_init.c
->> @@ -2037,6 +2037,10 @@ void xen_pt_config_init(XenPCIPassthroughState *s, Error **errp)
->>            * therefore the size should be 0xff.
->>            */
-> Could you move that comment? I think it would make more sense to comment
-> the "reg_grp_offset=XEN_PCI_INTEL_OPREGION" line now that the `if` block
-> also skip setting up the group on non-intel devices.
 
-OK. I just e-mailed interested parties v2 that moves the comment
-and mentions that the comment is moved in the commit message.
 
-Best Regards,
-
-Chuck
-
+Am 12=2E Juni 2022 19:28:00 UTC schrieb Bernhard Beschow <shentey@gmail=2E=
+com>:
+>pi440fx_state is an out-parameter which is never read by the caller=2E
 >
->>           if (xen_pt_emu_reg_grps[i].grp_id == XEN_PCI_INTEL_OPREGION) {
->> +            if (!is_igd_vga_passthrough(&s->real_device) ||
->> +                s->real_device.vendor_id != PCI_VENDOR_ID_INTEL) {
->> +                continue;
->> +            }
->>               reg_grp_offset = XEN_PCI_INTEL_OPREGION;
->>           }
-> Thanks,
->
+>Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
 
+Ping
+
+>---
+> hw/i386/pc_piix=2Ec            | 3 ---
+> hw/pci-host/i440fx=2Ec         | 4 +---
+> include/hw/pci-host/i440fx=2Eh | 1 -
+> 3 files changed, 1 insertion(+), 7 deletions(-)
+>
+>diff --git a/hw/i386/pc_piix=2Ec b/hw/i386/pc_piix=2Ec
+>index 0fc2361ffe=2E=2Ea234989ac3 100644
+>--- a/hw/i386/pc_piix=2Ec
+>+++ b/hw/i386/pc_piix=2Ec
+>@@ -82,7 +82,6 @@ static void pc_init1(MachineState *machine,
+>     MemoryRegion *system_io =3D get_system_io();
+>     PCIBus *pci_bus;
+>     ISABus *isa_bus;
+>-    PCII440FXState *i440fx_state;
+>     int piix3_devfn =3D -1;
+>     qemu_irq smi_irq;
+>     GSIState *gsi_state;
+>@@ -203,7 +202,6 @@ static void pc_init1(MachineState *machine,
+>=20
+>         pci_bus =3D i440fx_init(host_type,
+>                               pci_type,
+>-                              &i440fx_state,
+>                               system_memory, system_io, machine->ram_siz=
+e,
+>                               x86ms->below_4g_mem_size,
+>                               x86ms->above_4g_mem_size,
+>@@ -217,7 +215,6 @@ static void pc_init1(MachineState *machine,
+>         isa_bus =3D ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa=2E0")=
+);
+>     } else {
+>         pci_bus =3D NULL;
+>-        i440fx_state =3D NULL;
+>         isa_bus =3D isa_bus_new(NULL, get_system_memory(), system_io,
+>                               &error_abort);
+>         pcms->hpet_enabled =3D false;
+>diff --git a/hw/pci-host/i440fx=2Ec b/hw/pci-host/i440fx=2Ec
+>index e08716142b=2E=2E1c5ad5f918 100644
+>--- a/hw/pci-host/i440fx=2Ec
+>+++ b/hw/pci-host/i440fx=2Ec
+>@@ -238,7 +238,6 @@ static void i440fx_realize(PCIDevice *dev, Error **er=
+rp)
+> }
+>=20
+> PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+>-                    PCII440FXState **pi440fx_state,
+>                     MemoryRegion *address_space_mem,
+>                     MemoryRegion *address_space_io,
+>                     ram_addr_t ram_size,
+>@@ -264,8 +263,7 @@ PCIBus *i440fx_init(const char *host_type, const char=
+ *pci_type,
+>     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>=20
+>     d =3D pci_create_simple(b, 0, pci_type);
+>-    *pi440fx_state =3D I440FX_PCI_DEVICE(d);
+>-    f =3D *pi440fx_state;
+>+    f =3D I440FX_PCI_DEVICE(d);
+>     f->system_memory =3D address_space_mem;
+>     f->pci_address_space =3D pci_address_space;
+>     f->ram_memory =3D ram_memory;
+>diff --git a/include/hw/pci-host/i440fx=2Eh b/include/hw/pci-host/i440fx=
+=2Eh
+>index f068aaba8f=2E=2E52518dbf08 100644
+>--- a/include/hw/pci-host/i440fx=2Eh
+>+++ b/include/hw/pci-host/i440fx=2Eh
+>@@ -36,7 +36,6 @@ struct PCII440FXState {
+> #define TYPE_IGD_PASSTHROUGH_I440FX_PCI_DEVICE "igd-passthrough-i440FX"
+>=20
+> PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+>-                    PCII440FXState **pi440fx_state,
+>                     MemoryRegion *address_space_mem,
+>                     MemoryRegion *address_space_io,
+>                     ram_addr_t ram_size,
 
