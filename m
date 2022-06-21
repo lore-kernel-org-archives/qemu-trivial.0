@@ -1,66 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o3BYu-0004qD-QQ
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jun 2022 03:11:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48782)
+	id 1o3avC-0002VT-Kh
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jun 2022 06:15:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o3BYq-0004oB-6G; Mon, 20 Jun 2022 03:11:00 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:33490)
+ (Exim 4.90_1)
+ (envelope-from <prvs=16408edfd=anthony.perard@citrix.com>)
+ id 1o3avB-0002VC-M0; Tue, 21 Jun 2022 06:15:45 -0400
+Received: from esa1.hc3370-68.iphmx.com ([216.71.145.142]:13246)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o3BYn-0007dD-EL; Mon, 20 Jun 2022 03:10:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=GDCDtTYAR3HGpH8dDi6CchK0q/fpoc6D2cHWlf0tQic=; b=ouCmtTFFN24McajADXRPn/fgoL
- ojBZzphteWAbbRUZlEePU9YJUIMAT4rsO1iQk322N0swiY7b/CN9pM00RQRikha67/HlPnrw/nA6c
- qIsX2qaUqoGwQ0IuEmBoGPBVl9N/RcsyoRig8RJCoE/Pj12Tftso3OZhsfJKTm8VUt1Xs4s+54ADY
- HYXdIF4RPMjUwQngvFtJkNTP/PdjlUAS+MzRQWJ4rtbTiSXbT1IhssQAbP0B5mWCZa4zBeFx/Irpy
- 2EpHkHND5hngZgC0QxY6/2zjrLHA6JCH2+DTG/Va1RWnZChwP+1E2Bx/wgx71kVJSTAZBAnhcSOUS
- Jh5Rm+hvE6TQ6/PScNg6w20GsE8RuqzsPzNBlLeb02UIA407zQ6pqpDyozUjz6iYSoEVfJM33QxKs
- vdyFB1fHy1/o7sExx3e5JF22VbJ9FZJIP/ZcEfLKqKmX6OWKtExWYiQE9RTb4LkvOdnTAV667LHXx
- vnPLZYWajLTXRyvsO6zqnZ+Ei8T2aiGTaOao48z464bi9kHDL1jMFBfPPhDUu5m3B32kMXbP8BPJG
- Qe0AC1BFyPH/m3aul+mR4BeeaVciCIn7P8ImY8RjzZJz1Gr00hifdfX7w7arWMID5AVFHmlYDGCs4
- 1mSgPujpVWL8TK2KB7FaoxTwxF5W47WFRmeYnElDw=;
-Received: from [2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1o3BXW-00084r-EF; Mon, 20 Jun 2022 08:09:42 +0100
-Message-ID: <9175c24f-e026-3fcd-5a0e-4861d9668a62@ilande.co.uk>
-Date: Mon, 20 Jun 2022 08:10:45 +0100
+ (Exim 4.90_1)
+ (envelope-from <prvs=16408edfd=anthony.perard@citrix.com>)
+ id 1o3av9-0003eW-5I; Tue, 21 Jun 2022 06:15:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=citrix.com; s=securemail; t=1655806543;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=QcSpgKS225JamIFv9EzQROZ047pLLv+YqmxHeJjalYQ=;
+ b=CHdOSs0HPhcuFBIlcoC+UtiNTZl9b9GRn9yygo864QiZjgRT6fI/huyC
+ Q12zLHCNBeneeaYCpWjHTxy6jp1W1j1xmQUH3LcrLM90nWiZLHZ0EAh10
+ 3R+CphAtC9O7IHgyTz4NtHVPFTVbQEyVqkDNclfQ4llNOye6zQ3VcNbyY w=;
+Authentication-Results: esa1.hc3370-68.iphmx.com;
+ dkim=none (message not signed) header.i=none
+X-SBRS: 5.1
+X-MesageID: 74479126
+X-Ironport-Server: esa1.hc3370-68.iphmx.com
+X-Remote-IP: 162.221.156.83
+X-Policy: $RELAYED
+IronPort-Data: A9a23:Cy6BZa5aSvgBW2sqn/pT8QxRtCLHchMFZxGqfqrLsTDasY5as4F+v
+ jQdWD/Xb/yDYGXweN9+bN+yo0hUv8WEndBqSQNuryhkHi5G8cbLO4+Ufxz6V8+wwmwvb67FA
+ +E2MISowBUcFyeEzvuVGuG96yE6j8lkf5KkYAL+EnkZqTRMFWFw03qPp8Zj2tQy2YbjWlvU0
+ T/Pi5a31GGNimYc3l08s8pvmDs31BglkGpF1rCWTakjUG72zxH5PrpGTU2CByKQrr1vNvy7X
+ 47+IISRpQs1yfuP5uSNyd4XemVSKlLb0JPnZnB+A8BOiTAazsA+PzpS2FPxpi67hh3Q9+2dx
+ umhurThd1gmF7LVmdgaXkRUTx9iZJdL27b+dC3XXcy7lyUqclPpyvRqSko3IZcZ6qB8BmQmG
+ f4wcW5XKErZ3qTvnez9GrIEascLdaEHOKsWvG1gyjfIS+4rW5nZT43B5MNC3Sd2jcdLdRrbT
+ 5VFNWU+NU6eC/FJEnwRWMoVsuuKvEvUcwII73iwmq0bvGeGmWSd15CyaYGIK7RmX/59h0udu
+ yfa5WXnAxgeHNqYzzWD7zSrnOCntTjgRIsYGbm89/hrqF6e3GoeDFsRT1TTieGwl0qWS99Zb
+ UsO9UIGp7I59FGgTcvVVhq85nWDu3Y0QtdVDqg25R+AzoLS5ACWAHVCSSROAPQ2uclzSTE02
+ 1uhm9LyGScpoLCTUWia9LqfsXW1Iyd9EIMZTXZaF01fuYCl+dxtyEKUJjp+LEKrpozLRj7Z3
+ CmLkC8z2rlPs9JS7aiY9GmS1lpAuaP1oh4JChT/Bzz4s1wmOd77OORE+nCAs68ecd/xok2p+
+ SFdxpPAtL1m4YSlznTlfQkbIF2+Cx9p2hX4iEUnIZQu/i/FF5WLLdEJu2EWyKuE3685ld7Vj
+ Kz741o5CGd7ZifCUEOOS9vZ5z4W5abhD8/5cfvfc8BDZJN8HCfeonwzOhPIhz+3yRlz+U3aB
+ Xt8WZ/0ZUv29Iw9lGbmLwvj+eRDKt8CKZP7GsmgkkXPPUu2b3+JU7YVWGazghQCxPrc+m39q
+ o8HX+PTkkU3eLCvOUH/rN9MRW3m2FBmXPgaXeQMLr7dSuencUl8Y8LsLUQJIdc6xP4KzLmWo
+ xlQmCZwkTLCuJEOEi3SAlgLVV8ldcwnxZ7nFUTA5WqV5kU=
+IronPort-HdrOrdr: A9a23:7qOdMqH/+cPYMaaRpLqE6MeALOsnbusQ8zAXP0AYc3Jom+ij5q
+ STdZUgpHrJYVkqNU3I9ertBEDEewK6yXcX2/hyAV7BZmnbUQKTRekIh7cKgQeQeBEWntQts5
+ uIGJIeNDSfNzdHsfo=
+X-IronPort-AV: E=Sophos;i="5.92,209,1650945600"; d="scan'208";a="74479126"
+Date: Tue, 21 Jun 2022 11:15:05 +0100
+From: Anthony PERARD <anthony.perard@citrix.com>
+To: Chuck Zmudzinski <brchuckz@aol.com>
+CC: <qemu-devel@nongnu.org>, <xen-devel@lists.xenproject.org>,
+ <qemu-trivial@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>, Paul
+ Durrant <paul@xen.org>
+Subject: Re: [PATCH v2] xen/pass-through: don't create needless register group
+Message-ID: <YrGaKdx+af+7g2HY@perard.uk.xensource.com>
+References: <4d4b58473beb0565876687e9d8a53b76a7cf3fbb.1655490576.git.brchuckz.ref@aol.com>
+ <4d4b58473beb0565876687e9d8a53b76a7cf3fbb.1655490576.git.brchuckz@aol.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Content-Language: en-US
-To: B <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org
-References: <20220612192800.40813-1-shentey@gmail.com>
- <14F9EAAB-1FF2-4718-BA5B-9F5971099C94@gmail.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <14F9EAAB-1FF2-4718-BA5B-9F5971099C94@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8ba4:e500:b82f:56f9:46d7:80ab
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH] hw/pci-host/i440fx: Remove unused parameter from
- i440fx_init()
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <4d4b58473beb0565876687e9d8a53b76a7cf3fbb.1655490576.git.brchuckz@aol.com>
+Received-SPF: pass client-ip=216.71.145.142;
+ envelope-from=prvs=16408edfd=anthony.perard@citrix.com;
+ helo=esa1.hc3370-68.iphmx.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,95 +83,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jun 2022 07:11:02 -0000
+X-List-Received-Date: Tue, 21 Jun 2022 10:15:45 -0000
 
-On 19/06/2022 22:44, B wrote:
-
-> Am 12. Juni 2022 19:28:00 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->> pi440fx_state is an out-parameter which is never read by the caller.
->>
->> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+On Fri, Jun 17, 2022 at 03:13:33PM -0400, Chuck Zmudzinski wrote:
+> Currently we are creating a register group for the Intel IGD OpRegion
+> for every device we pass through, but the XEN_PCI_INTEL_OPREGION
+> register group is only valid for an Intel IGD. Add a check to make
+> sure the device is an Intel IGD and a check that the administrator has
+> enabled gfx_passthru in the xl domain configuration. Require both checks
+> to be true before creating the register group. Use the existing
+> is_igd_vga_passthrough() function to check for a graphics device from
+> any vendor and that the administrator enabled gfx_passthru in the xl
+> domain configuration, but further require that the vendor be Intel,
+> because only Intel IGD devices have an Intel OpRegion. These are the
+> same checks hvmloader and libxl do to determine if the Intel OpRegion
+> needs to be mapped into the guest's memory. Also, move the comment
+> about trapping 0xfc for the Intel OpRegion where it belongs after
+> applying this patch.
 > 
-> Ping
-> 
->> ---
->> hw/i386/pc_piix.c            | 3 ---
->> hw/pci-host/i440fx.c         | 4 +---
->> include/hw/pci-host/i440fx.h | 1 -
->> 3 files changed, 1 insertion(+), 7 deletions(-)
->>
->> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
->> index 0fc2361ffe..a234989ac3 100644
->> --- a/hw/i386/pc_piix.c
->> +++ b/hw/i386/pc_piix.c
->> @@ -82,7 +82,6 @@ static void pc_init1(MachineState *machine,
->>      MemoryRegion *system_io = get_system_io();
->>      PCIBus *pci_bus;
->>      ISABus *isa_bus;
->> -    PCII440FXState *i440fx_state;
->>      int piix3_devfn = -1;
->>      qemu_irq smi_irq;
->>      GSIState *gsi_state;
->> @@ -203,7 +202,6 @@ static void pc_init1(MachineState *machine,
->>
->>          pci_bus = i440fx_init(host_type,
->>                                pci_type,
->> -                              &i440fx_state,
->>                                system_memory, system_io, machine->ram_size,
->>                                x86ms->below_4g_mem_size,
->>                                x86ms->above_4g_mem_size,
->> @@ -217,7 +215,6 @@ static void pc_init1(MachineState *machine,
->>          isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa.0"));
->>      } else {
->>          pci_bus = NULL;
->> -        i440fx_state = NULL;
->>          isa_bus = isa_bus_new(NULL, get_system_memory(), system_io,
->>                                &error_abort);
->>          pcms->hpet_enabled = false;
->> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
->> index e08716142b..1c5ad5f918 100644
->> --- a/hw/pci-host/i440fx.c
->> +++ b/hw/pci-host/i440fx.c
->> @@ -238,7 +238,6 @@ static void i440fx_realize(PCIDevice *dev, Error **errp)
->> }
->>
->> PCIBus *i440fx_init(const char *host_type, const char *pci_type,
->> -                    PCII440FXState **pi440fx_state,
->>                      MemoryRegion *address_space_mem,
->>                      MemoryRegion *address_space_io,
->>                      ram_addr_t ram_size,
->> @@ -264,8 +263,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
->>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->>
->>      d = pci_create_simple(b, 0, pci_type);
->> -    *pi440fx_state = I440FX_PCI_DEVICE(d);
->> -    f = *pi440fx_state;
->> +    f = I440FX_PCI_DEVICE(d);
->>      f->system_memory = address_space_mem;
->>      f->pci_address_space = pci_address_space;
->>      f->ram_memory = ram_memory;
->> diff --git a/include/hw/pci-host/i440fx.h b/include/hw/pci-host/i440fx.h
->> index f068aaba8f..52518dbf08 100644
->> --- a/include/hw/pci-host/i440fx.h
->> +++ b/include/hw/pci-host/i440fx.h
->> @@ -36,7 +36,6 @@ struct PCII440FXState {
->> #define TYPE_IGD_PASSTHROUGH_I440FX_PCI_DEVICE "igd-passthrough-i440FX"
->>
->> PCIBus *i440fx_init(const char *host_type, const char *pci_type,
->> -                    PCII440FXState **pi440fx_state,
->>                      MemoryRegion *address_space_mem,
->>                      MemoryRegion *address_space_io,
->>                      ram_addr_t ram_size,
+> Signed-off-by: Chuck Zmudzinski <brchuckz@aol.com>
 
-Looks good to me, so:
+Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Thanks,
 
-In fact that whole i440fx_init() function looks like it's another candidate for 
-QOM-ification...
-
-
-ATB,
-
-Mark.
+-- 
+Anthony PERARD
 
