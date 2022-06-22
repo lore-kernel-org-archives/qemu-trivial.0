@@ -1,75 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o3avC-0002VT-Kh
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jun 2022 06:15:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49382)
+	id 1o40xL-0007Gc-AZ
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Jun 2022 10:03:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53088)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=16408edfd=anthony.perard@citrix.com>)
- id 1o3avB-0002VC-M0; Tue, 21 Jun 2022 06:15:45 -0400
-Received: from esa1.hc3370-68.iphmx.com ([216.71.145.142]:13246)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1o40xK-0007FY-1p
+ for qemu-trivial@nongnu.org; Wed, 22 Jun 2022 10:03:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:40880)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=16408edfd=anthony.perard@citrix.com>)
- id 1o3av9-0003eW-5I; Tue, 21 Jun 2022 06:15:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=citrix.com; s=securemail; t=1655806543;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=QcSpgKS225JamIFv9EzQROZ047pLLv+YqmxHeJjalYQ=;
- b=CHdOSs0HPhcuFBIlcoC+UtiNTZl9b9GRn9yygo864QiZjgRT6fI/huyC
- Q12zLHCNBeneeaYCpWjHTxy6jp1W1j1xmQUH3LcrLM90nWiZLHZ0EAh10
- 3R+CphAtC9O7IHgyTz4NtHVPFTVbQEyVqkDNclfQ4llNOye6zQ3VcNbyY w=;
-Authentication-Results: esa1.hc3370-68.iphmx.com;
- dkim=none (message not signed) header.i=none
-X-SBRS: 5.1
-X-MesageID: 74479126
-X-Ironport-Server: esa1.hc3370-68.iphmx.com
-X-Remote-IP: 162.221.156.83
-X-Policy: $RELAYED
-IronPort-Data: A9a23:Cy6BZa5aSvgBW2sqn/pT8QxRtCLHchMFZxGqfqrLsTDasY5as4F+v
- jQdWD/Xb/yDYGXweN9+bN+yo0hUv8WEndBqSQNuryhkHi5G8cbLO4+Ufxz6V8+wwmwvb67FA
- +E2MISowBUcFyeEzvuVGuG96yE6j8lkf5KkYAL+EnkZqTRMFWFw03qPp8Zj2tQy2YbjWlvU0
- T/Pi5a31GGNimYc3l08s8pvmDs31BglkGpF1rCWTakjUG72zxH5PrpGTU2CByKQrr1vNvy7X
- 47+IISRpQs1yfuP5uSNyd4XemVSKlLb0JPnZnB+A8BOiTAazsA+PzpS2FPxpi67hh3Q9+2dx
- umhurThd1gmF7LVmdgaXkRUTx9iZJdL27b+dC3XXcy7lyUqclPpyvRqSko3IZcZ6qB8BmQmG
- f4wcW5XKErZ3qTvnez9GrIEascLdaEHOKsWvG1gyjfIS+4rW5nZT43B5MNC3Sd2jcdLdRrbT
- 5VFNWU+NU6eC/FJEnwRWMoVsuuKvEvUcwII73iwmq0bvGeGmWSd15CyaYGIK7RmX/59h0udu
- yfa5WXnAxgeHNqYzzWD7zSrnOCntTjgRIsYGbm89/hrqF6e3GoeDFsRT1TTieGwl0qWS99Zb
- UsO9UIGp7I59FGgTcvVVhq85nWDu3Y0QtdVDqg25R+AzoLS5ACWAHVCSSROAPQ2uclzSTE02
- 1uhm9LyGScpoLCTUWia9LqfsXW1Iyd9EIMZTXZaF01fuYCl+dxtyEKUJjp+LEKrpozLRj7Z3
- CmLkC8z2rlPs9JS7aiY9GmS1lpAuaP1oh4JChT/Bzz4s1wmOd77OORE+nCAs68ecd/xok2p+
- SFdxpPAtL1m4YSlznTlfQkbIF2+Cx9p2hX4iEUnIZQu/i/FF5WLLdEJu2EWyKuE3685ld7Vj
- Kz741o5CGd7ZifCUEOOS9vZ5z4W5abhD8/5cfvfc8BDZJN8HCfeonwzOhPIhz+3yRlz+U3aB
- Xt8WZ/0ZUv29Iw9lGbmLwvj+eRDKt8CKZP7GsmgkkXPPUu2b3+JU7YVWGazghQCxPrc+m39q
- o8HX+PTkkU3eLCvOUH/rN9MRW3m2FBmXPgaXeQMLr7dSuencUl8Y8LsLUQJIdc6xP4KzLmWo
- xlQmCZwkTLCuJEOEi3SAlgLVV8ldcwnxZ7nFUTA5WqV5kU=
-IronPort-HdrOrdr: A9a23:7qOdMqH/+cPYMaaRpLqE6MeALOsnbusQ8zAXP0AYc3Jom+ij5q
- STdZUgpHrJYVkqNU3I9ertBEDEewK6yXcX2/hyAV7BZmnbUQKTRekIh7cKgQeQeBEWntQts5
- uIGJIeNDSfNzdHsfo=
-X-IronPort-AV: E=Sophos;i="5.92,209,1650945600"; d="scan'208";a="74479126"
-Date: Tue, 21 Jun 2022 11:15:05 +0100
-From: Anthony PERARD <anthony.perard@citrix.com>
-To: Chuck Zmudzinski <brchuckz@aol.com>
-CC: <qemu-devel@nongnu.org>, <xen-devel@lists.xenproject.org>,
- <qemu-trivial@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>, Paul
- Durrant <paul@xen.org>
-Subject: Re: [PATCH v2] xen/pass-through: don't create needless register group
-Message-ID: <YrGaKdx+af+7g2HY@perard.uk.xensource.com>
-References: <4d4b58473beb0565876687e9d8a53b76a7cf3fbb.1655490576.git.brchuckz.ref@aol.com>
- <4d4b58473beb0565876687e9d8a53b76a7cf3fbb.1655490576.git.brchuckz@aol.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1o40xE-0001h0-GH
+ for qemu-trivial@nongnu.org; Wed, 22 Jun 2022 10:03:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1655906615;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=LIWjinE2AJh0qaz5Kku0jJs1fQUMaBcf4Q9GPcpSMDI=;
+ b=B8sUNBkbv/8EtnlAzgNmcbjvNfviODu1SposUZZQPrGbRKpoQs8okbxTCt9vkpJ0+V9eKS
+ PUECLLNpdLby34motyefIQN+SPhJaiX3B//5lmSrK06+eCXNzGc8g6NgUO3XpMbuMhW2hd
+ fSjhFog6X3O3o5Yt3GyyWkODyV8BgAY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-605-WjjHLPqIPSuh1Q6j6DUjSA-1; Wed, 22 Jun 2022 10:03:33 -0400
+X-MC-Unique: WjjHLPqIPSuh1Q6j6DUjSA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 316068117B0;
+ Wed, 22 Jun 2022 14:03:33 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.193.85])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5C4FE1121314;
+ Wed, 22 Jun 2022 14:03:31 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Riku Voipio <riku.voipio@iki.fi>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] common-user: Only compile the common user code if have_user
+ is set
+Date: Wed, 22 Jun 2022 16:03:28 +0200
+Message-Id: <20220622140328.383961-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <4d4b58473beb0565876687e9d8a53b76a7cf3fbb.1655490576.git.brchuckz@aol.com>
-Received-SPF: pass client-ip=216.71.145.142;
- envelope-from=prvs=16408edfd=anthony.perard@citrix.com;
- helo=esa1.hc3370-68.iphmx.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,30 +65,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jun 2022 10:15:45 -0000
+X-List-Received-Date: Wed, 22 Jun 2022 14:03:42 -0000
 
-On Fri, Jun 17, 2022 at 03:13:33PM -0400, Chuck Zmudzinski wrote:
-> Currently we are creating a register group for the Intel IGD OpRegion
-> for every device we pass through, but the XEN_PCI_INTEL_OPREGION
-> register group is only valid for an Intel IGD. Add a check to make
-> sure the device is an Intel IGD and a check that the administrator has
-> enabled gfx_passthru in the xl domain configuration. Require both checks
-> to be true before creating the register group. Use the existing
-> is_igd_vga_passthrough() function to check for a graphics device from
-> any vendor and that the administrator enabled gfx_passthru in the xl
-> domain configuration, but further require that the vendor be Intel,
-> because only Intel IGD devices have an Intel OpRegion. These are the
-> same checks hvmloader and libxl do to determine if the Intel OpRegion
-> needs to be mapped into the guest's memory. Also, move the comment
-> about trapping 0xfc for the Intel OpRegion where it belongs after
-> applying this patch.
-> 
-> Signed-off-by: Chuck Zmudzinski <brchuckz@aol.com>
+There is no need to waste cycles here if we only compile the system
+binaries or tools. Additionally, this change is even a hard requirement
+for building the tools on systems that do not have an entry in the
+common-user/host/ folder (since common-user/meson.build is trying
+to add such a path via the include_directories() command).
 
-Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+Reported-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ common-user/meson.build | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Thanks,
-
+diff --git a/common-user/meson.build b/common-user/meson.build
+index 26212dda5c..ac9de5b9e3 100644
+--- a/common-user/meson.build
++++ b/common-user/meson.build
+@@ -1,3 +1,7 @@
++if not have_user
++   subdir_done()
++endif
++
+ common_user_inc += include_directories('host/' / host_arch)
+ 
+ user_ss.add(files(
 -- 
-Anthony PERARD
+2.31.1
+
 
