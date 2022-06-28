@@ -1,59 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o6ITP-0001n3-4c
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 17:10:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40046)
+	id 1o6Jdc-00066A-Da
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 18:24:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52666)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
- id 1o6ITK-0001mF-Mp; Tue, 28 Jun 2022 17:10:11 -0400
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1]:45578)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1o6Jdb-00064e-BG; Tue, 28 Jun 2022 18:24:51 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:52221)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
- id 1o6ITE-0007uM-0O; Tue, 28 Jun 2022 17:10:10 -0400
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 7EC7B61865;
- Tue, 28 Jun 2022 21:09:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59CB1C341C8;
- Tue, 28 Jun 2022 21:09:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1656450595;
- bh=1QJk4e5j0/pz9uIpQ4JWK8nVogVrZMYPM6m/PAoDjys=;
- h=Date:From:To:cc:Subject:In-Reply-To:References:From;
- b=nsBw1UXuvcxUmPH3tNOnNFdZmPyjltPcid9fynO3ewZauLE/h0Zh18vREFpG4Nqzu
- OURDTsKPHFaUrB6xAS/uDBdZlT6nup9UQFWqRhV7bVH6dvrG2vyOgconcovvPAiI8T
- YjNjQtMDgVUJPw8gTKybzJR8uJnlc6pUBGobQBf2CENvKROG01H7xvF7nKGdEiIvNp
- 05spaUErlHtzYRv6eXBbkgHYR3MmWa6k64+oOwWq4PkEy/1+g6OHMldslx6Cd72eOE
- kxE6BeyIZl2aTxC9kXzoZny7+GOf5ELCBrK194czS1pUKo3lMpZGRQ7A/j3ZPYBo4U
- FdTV4tqNYeaEQ==
-Date: Tue, 28 Jun 2022 14:09:39 -0700 (PDT)
-From: Stefano Stabellini <sstabellini@kernel.org>
-X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
-To: B <shentey@gmail.com>
-cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org, 
- Eduardo Habkost <eduardo@habkost.net>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
-Subject: Re: [PATCH 0/2] Decouple Xen-HVM from PIIX
-In-Reply-To: <D8EF825B-45A2-4DE5-A787-8FE7BE88D2E6@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2206281408490.247593@ubuntu-linux-20-04-desktop>
-References: <20220626094656.15673-1-shentey@gmail.com>
- <D8EF825B-45A2-4DE5-A787-8FE7BE88D2E6@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1o6JdZ-0001gD-KS; Tue, 28 Jun 2022 18:24:51 -0400
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MvsMz-1np3Kf27eB-00srJY; Wed, 29 Jun 2022 00:24:34 +0200
+Message-ID: <46b178af-57f6-ade9-dea0-f0482d47fb10@vivier.eu>
+Date: Wed, 29 Jun 2022 00:24:32 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=sstabellini@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -71
-X-Spam_score: -7.2
-X-Spam_bar: -------
-X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 1/2] hw/i386/xen/xen-hvm: Allow for stubbing
+ xen_set_pci_link_route()
+Content-Language: fr
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
+References: <20220626094656.15673-1-shentey@gmail.com>
+ <20220626094656.15673-2-shentey@gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20220626094656.15673-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:SpNdfX8QSasU2Zj6YI+XAVj3/X+6V1WNzWw1qrVY5PUTKnJqE3a
+ 2T+d26KufAEUmLYQ5OvBneg+brKZ1xqSj44bLjahNgMpA1kq1y64PZYAQwcLQowBzruV5bu
+ a+JMy/xu1r0NUB/QA9ZE3YIchtpn0cLNLjaxOV95GeohVHFBmU4/yexbkGfvEIRqhU9xX1F
+ fQ9mfJkJVmk1Qto45GZuQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:paBfxqDRFb4=:826bM7cbaeOz7uyu4iPfOA
+ /rloibS8b+EtqsAZ52CS2h1nf6B2149Ms8hGxpizsg4c/1aUwmrWpdE3hv02ECDg7ajuAUDhu
+ yDVQ1zRK8JTT4v/i5JXOk9Q/zl2YKKLt4PB8hRpXDMvxgtPpwR9HItESD7j47FjNyC9tiqPZ3
+ p9AombP4PPO0dUGwhMXl9Kdn75AbJ1cgKb5BpF1tqUYNep/pTFJsQdwCLdF+SDE5ciG5P9UAz
+ i6NcBFhgXVLkZ0H0AKFMG9F2uWF+T/uHgNLgz4RFajfK2wgQ7E5+SBQjnqW40R9/nh+jTqpYS
+ keKfVVWMDKAVItAGVPHuMKYzJcFQ8xoTZsxUUaSalbN+IghxiJYBaRhXBqEqd3lm3L3avcw38
+ yuox4/r45PSNHHPNku35OASKxiBl1Q/IWFdH3Kay3zUKNuXCjbMId2Mhu/NzFcpfOHu6yQlZ4
+ DGGGg4QrAJ1mg5t+4CpDmX/9OrCf6d2Yc4KJL/cT7gEI1ZTD6ahtSEqGJhRrX8AUWgkg03Zix
+ 5F31V6khkjUzWOaWVBSCHCl0oT0k8j3zvgPWOT7KXoohZZSJ0IPH8Wz1FZmxLDtnPNSA5yLNZ
+ 0YcaD9Y06UqmjNxfoEokPTtuZvDXj4sJ+H7TMmpG8SCZW3awC+lAKDDN4BSmFXL/6mDE9NC7w
+ QHO0Jvf0Pmm5U39b7qQk0BdrcGC0sieGmupSGFENTwxSq36SHExA1cXMNH75Rrjh+HNfVkzok
+ XwDc4JGRo+eZolUd/dO/5fDLIKL8h02cjS4Iaw==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -67,48 +70,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jun 2022 21:10:11 -0000
+X-List-Received-Date: Tue, 28 Jun 2022 22:24:51 -0000
 
-On Tue, 28 Jun 2022, B wrote:
-> Am 26. Juni 2022 09:46:54 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
-> >hw/i386/xen/xen-hvm.c contains logic which is PIIX-specific. This makes xen-hvm.c depend on PIIX which can be avoided if PIIX logic was isolated in PIIX itself.
-> >
-> >
-> >
-> >Bernhard Beschow (2):
-> >
-> >  hw/i386/xen/xen-hvm: Allow for stubbing xen_set_pci_link_route()
-> >
-> >  hw/i386/xen/xen-hvm: Inline xen_piix_pci_write_config_client() and
-> >
-> >    remove it
-> >
-> >
-> >
-> > hw/i386/xen/xen-hvm.c       | 17 ++---------------
-> >
-> > hw/isa/piix3.c              | 15 ++++++++++++++-
-> >
-> > include/hw/xen/xen.h        |  2 +-
-> >
-> > include/hw/xen/xen_common.h |  6 ------
-> >
-> > stubs/xen-hw-stub.c         |  3 ++-
-> >
-> > 5 files changed, 19 insertions(+), 24 deletions(-)
-> >
-> >
-> >
-> >-- >
-> >2.36.1
-> >
-> >
-> >
+Le 26/06/2022 à 11:46, Bernhard Beschow a écrit :
+> The only user of xen_set_pci_link_route() is
+> xen_piix_pci_write_config_client() which implements PIIX-specific logic in
+> the xen namespace. This makes xen-hvm depend on PIIX which could be
+> avoided if xen_piix_pci_write_config_client() was implemented in PIIX. In
+> order to do this, xen_set_pci_link_route() needs to be stubbable which
+> this patch addresses.
 > 
-> Hi Laurent,
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/i386/xen/xen-hvm.c       | 7 ++++++-
+>   include/hw/xen/xen.h        | 1 +
+>   include/hw/xen/xen_common.h | 6 ------
+>   stubs/xen-hw-stub.c         | 5 +++++
+>   4 files changed, 12 insertions(+), 7 deletions(-)
 > 
-> would you like to queue this as well? Both patches have been reviewed at least once, piix twice. Or would you rather keep the review period open for longer?
- 
-Paul reviewed them both -- I don't think we need further reviews.
-Laurent could just take them.
+> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+> index 0731f70410..204fda7949 100644
+> --- a/hw/i386/xen/xen-hvm.c
+> +++ b/hw/i386/xen/xen-hvm.c
+> @@ -161,11 +161,16 @@ void xen_piix_pci_write_config_client(uint32_t address, uint32_t val, int len)
+>           }
+>           v &= 0xf;
+>           if (((address + i) >= PIIX_PIRQCA) && ((address + i) <= PIIX_PIRQCD)) {
+> -            xen_set_pci_link_route(xen_domid, address + i - PIIX_PIRQCA, v);
+> +            xen_set_pci_link_route(address + i - PIIX_PIRQCA, v);
+>           }
+>       }
+>   }
+>   
+> +int xen_set_pci_link_route(uint8_t link, uint8_t irq)
+> +{
+> +    return xendevicemodel_set_pci_link_route(xen_dmod, xen_domid, link, irq);
+> +}
+> +
+>   int xen_is_pirq_msi(uint32_t msi_data)
+>   {
+>       /* If vector is 0, the msi is remapped into a pirq, passed as
+> diff --git a/include/hw/xen/xen.h b/include/hw/xen/xen.h
+> index 0f9962b1c1..13bffaef53 100644
+> --- a/include/hw/xen/xen.h
+> +++ b/include/hw/xen/xen.h
+> @@ -21,6 +21,7 @@ extern enum xen_mode xen_mode;
+>   extern bool xen_domid_restrict;
+>   
+>   int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num);
+> +int xen_set_pci_link_route(uint8_t link, uint8_t irq);
+>   void xen_piix3_set_irq(void *opaque, int irq_num, int level);
+>   void xen_piix_pci_write_config_client(uint32_t address, uint32_t val, int len);
+>   void xen_hvm_inject_msi(uint64_t addr, uint32_t data);
+> diff --git a/include/hw/xen/xen_common.h b/include/hw/xen/xen_common.h
+> index 179741ff79..77ce17d8a4 100644
+> --- a/include/hw/xen/xen_common.h
+> +++ b/include/hw/xen/xen_common.h
+> @@ -316,12 +316,6 @@ static inline int xen_set_pci_intx_level(domid_t domid, uint16_t segment,
+>                                                device, intx, level);
+>   }
+>   
+> -static inline int xen_set_pci_link_route(domid_t domid, uint8_t link,
+> -                                         uint8_t irq)
+> -{
+> -    return xendevicemodel_set_pci_link_route(xen_dmod, domid, link, irq);
+> -}
+> -
+>   static inline int xen_inject_msi(domid_t domid, uint64_t msi_addr,
+>                                    uint32_t msi_data)
+>   {
+> diff --git a/stubs/xen-hw-stub.c b/stubs/xen-hw-stub.c
+> index 15f3921a76..743967623f 100644
+> --- a/stubs/xen-hw-stub.c
+> +++ b/stubs/xen-hw-stub.c
+> @@ -23,6 +23,11 @@ void xen_piix_pci_write_config_client(uint32_t address, uint32_t val, int len)
+>   {
+>   }
+>   
+> +int xen_set_pci_link_route(uint8_t link, uint8_t irq)
+> +{
+> +    return -1;
+> +}
+> +
+>   void xen_hvm_inject_msi(uint64_t addr, uint32_t data)
+>   {
+>   }
+
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
