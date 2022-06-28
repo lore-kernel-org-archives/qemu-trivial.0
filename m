@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o681L-0005eb-Uj
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 06:00:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45640)
+	id 1o6821-00064r-Nl
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 06:01:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45894)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o681K-0005co-2E; Tue, 28 Jun 2022 06:00:34 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:34675)
+ id 1o681u-0005yA-25; Tue, 28 Jun 2022 06:01:13 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:44519)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o681I-0004Zj-EC; Tue, 28 Jun 2022 06:00:33 -0400
+ id 1o681e-0004hb-50; Tue, 28 Jun 2022 06:01:05 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M9Ezx-1o2Xe13qp5-006N0q; Tue, 28 Jun 2022 12:00:19 +0200
-Message-ID: <7b0382a6-ce91-7611-7b31-e9b5872e3c4d@vivier.eu>
-Date: Tue, 28 Jun 2022 12:00:17 +0200
+ 1M5xDJ-1nzFKl2wwt-007Sso; Tue, 28 Jun 2022 12:00:48 +0200
+Message-ID: <a433a77b-c22a-afa9-5b80-67098b881aba@vivier.eu>
+Date: Tue, 28 Jun 2022 12:00:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH 2/4] hw/ide/core: Clear LBA and drive bits for EXECUTE
- DEVICE DIAGNOSTIC
+Subject: Re: [PATCH 3/4] piix_ide_reset: Use pci_set_* functions instead of
+ direct access
 Content-Language: fr
 To: Lev Kujawski <lkujaw@member.fsf.org>, qemu-trivial@nongnu.org
 References: <20220528210250.175832-1-lkujaw@member.fsf.org>
- <20220528210250.175832-2-lkujaw@member.fsf.org>
+ <20220528210250.175832-3-lkujaw@member.fsf.org>
 Cc: John Snow <jsnow@redhat.com>, qemu-block@nongnu.org
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220528210250.175832-2-lkujaw@member.fsf.org>
+In-Reply-To: <20220528210250.175832-3-lkujaw@member.fsf.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:CtZwn66s2uQmFLtGLPUwVTNmRP4qwCh30DXeG4tm3DY6BHniJqu
- uTGBhkcDFrWhlIYDK5Z6WnnZApYhVnqfCBB0v7qDtAtfHN1v4xDXSRbaPm3psSNFJVTpA/Q
- 9eSNWWqeDnzm2/Biap1+eWNNuew81L0eTVCLKnWdfLcGEuHYrNIfcw43phUBkppG3xn+Bex
- FhNXeAV2bwMrP0IH9wNyA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:qqj9aYK4gLQ=:qXqRd5M1tD+W4RNSs4kwyN
- 9yHlQf9tJ1XgMawuwPaoOA9jo4XbPxQ+23L2zQvJBrd9nKimLd1RuwcRLMlx0rctl4X1ZO4mH
- H7MyJgBJVBuLe376TDi+gq+5OGx48HKtrJEYv2Du8Q6S+0XRb+qrmfEkgm2O1Gm0eTiQEoxoL
- 5lgMuEm6kZoeT9NBNVaSeIA2+2gBo7bwMk9RE3SueGLzwWe8WeoPtPNpc2nSQUtKFvOWda6/d
- 6B+8PtSNzxUtSlwsgzq4acJVth5FjLt3Tq20XiDWZN7jRjEkOPjzCyon3kGcgolGH86t7ZEtW
- q5pNYQDFJGbzjYq9q2/SHsbhe+zUfB03YSRiSmTjPdopBt8M75RFYeZQZgNwqfKXHCF3WR73c
- 5jJAjzC7/AYyNPVXzHBc9XTt8oL3n7EvvCTcLxzFBuGtRhkGz8FVvN3EFnudT4IYO94mXJEqJ
- idD3kOuWBuSyZuFz/IrDiuD3yPbX53f1pBnuIK86VMC9MEYZqq+nx0wey+cZpxMLxBF1ZaJXU
- Sz1RXMt9fESe5P4khzvD3vl4bAMMo5O5s3n4TlmFG91GEKMcsGtytXl27bP4rOnS00lD4nD+Q
- tcbq0ee1Im+iURV1vN6rEvnPUrzzJ99e1U1HY88EiAqAQ6tHB1ZOrRaVkQ2Ykf4eJKF2z7VKY
- qZ3+Fssyzgj450Jd5Sl35A6yjlNVE0VbRFKxWQ8EtPYQsyBMd9vYZoY94FLFrB+gsdM6A018u
- HKswR/cM50v9PP+rgZiO9XeaSDvY7SBFy0D+kA==
+X-Provags-ID: V03:K1:QB8L/Hf7JFj0Rtw7LImGclAgnhIyGwK6burNGGhJbP0wbxMcT3r
+ RJPrrI2KW6LEJxqxrhXU9PpTy1XM31rK7QTh2MkgyBJRiB945bQ17zwiU8lwkr5Aoh9x/04
+ jerwkOfb475XgZmsXmWYUkFTcEnuHGBJxGnT2ZIIeTbd/80C1DIGDE1QWGK0qjJW14n4uWJ
+ kKLlg/xv2ao98W0sIi7aQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:L6LyS9Kv+vI=:IErAANAlYl0caFWjH4P/Gi
+ WOTexCnta+qs38gzxyqKlgNZEz5/kFurWQ2rTe5zq1w0+vV8rGqvetLa2C8gq+Xmqt6nN1ouB
+ 5EuTXF4SLDVZgEnj+8VEuUSCGNSObZqhZ/LAJhUs+JYRCNFGnqWxW/0f516OmiBVt5hmN2XKQ
+ /sY/TXbKAy9e9ICqONy7pUWIbPeEmLdtM8VbrV4UyTSkjrMDPz0PpPzg4d/dwjssXVauCy87g
+ AddqY3s6+/gs8bFVmEKTPY88MvLV5tViSeTCrVMmEDqlX24iTkbuTJIdVNzg879nTLMcocXa/
+ B1eFxteHVaz5/E04k+JpvwbV413YL2THbtsdyHh3KqO/KakUa94h/vqealWIrz4m3rAsZtjr4
+ EX3syC5kHydbcC1HGth0e1XbtJmE/i3PmQ9FoBpk1sl00fgo3qBVU2kt2t7hhaUCz4OjEBflj
+ HtDxPtUmiOMOd+siusPlI0OtOIP1L3H/N+wHfyGgr73qORpZHsC1p7/45pwaVYFqYRmdIlBP7
+ aFgtWN94px8QzY6ocahbMyKoj8TuKQaVOMckmxoFYrV7ZZAhXvYQJJMVHFmnx3wnchuyxySMR
+ 34Mo0cQOADmoJ58249ol6RxFxYi5b199EaxDTrTZf0KAGLDJ1pGqgw+JqZ/hcqEGNLC7Uy176
+ ALFT0841kFFlELXABAEAC58QbqYuFdEjgZep93/Etg1l/dQoX2L+wI25xsQupGQXqWc2DpOE3
+ vYLYJg7lE7IGeor6w+ILqSqI2WR4q0t+gU60wA==
 Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -64,7 +64,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jun 2022 10:00:34 -0000
+X-List-Received-Date: Tue, 28 Jun 2022 10:01:16 -0000
 
 CC:
 
@@ -72,39 +72,51 @@ John Snow <jsnow@redhat.com> (supporter:IDE)
 qemu-block@nongnu.org (open list:IDE)
 
 Le 28/05/2022 à 23:02, Lev Kujawski a écrit :
-> Prior to this patch, cmd_exec_dev_diagnostic relied upon
-> ide_set_signature to clear the device register.  While the
-> preservation of the drive bit by ide_set_signature is necessary for
-> the DEVICE RESET, IDENTIFY DEVICE, and READ SECTOR commands,
-> ATA/ATAPI-6 specifies that "DEV shall be cleared to zero" for EXECUTE
-> DEVICE DIAGNOSTIC.
-> 
-> This deviation was uncovered by the ATACT Device Testing Program
-> written by Hale Landis.
+> Eliminates the remaining TODOs in hw/ide/piix.c by:
+> - Using pci_set_{size} functions to write the PIIX PCI configuration
+>    space instead of manipulating it directly as an array; and
+> - Documenting default register values by reference to the controlling
+>    specification.
 > 
 > Signed-off-by: Lev Kujawski <lkujaw@member.fsf.org>
 > ---
->   hw/ide/core.c | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   hw/ide/piix.c | 17 +++++++++--------
+>   1 file changed, 9 insertions(+), 8 deletions(-)
 > 
-> diff --git a/hw/ide/core.c b/hw/ide/core.c
-> index c2caa54285..5a24547e49 100644
-> --- a/hw/ide/core.c
-> +++ b/hw/ide/core.c
-> @@ -1704,8 +1704,14 @@ static bool cmd_identify_packet(IDEState *s, uint8_t cmd)
->       return false;
+> diff --git a/hw/ide/piix.c b/hw/ide/piix.c
+> index ce89fd0aa3..76ea8fd9f6 100644
+> --- a/hw/ide/piix.c
+> +++ b/hw/ide/piix.c
+> @@ -21,6 +21,10 @@
+>    * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+>    * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+>    * THE SOFTWARE.
+> + *
+> + * References:
+> + *  [1] 82371FB (PIIX) AND 82371SB (PIIX3) PCI ISA IDE XCELERATOR,
+> + *      290550-002, Intel Corporation, April 1997.
+>    */
+>   
+>   #include "qemu/osdep.h"
+> @@ -114,14 +118,11 @@ static void piix_ide_reset(DeviceState *dev)
+>           ide_bus_reset(&d->bus[i]);
+>       }
+>   
+> -    /* TODO: this is the default. do not override. */
+> -    pci_conf[PCI_COMMAND] = 0x00;
+> -    /* TODO: this is the default. do not override. */
+> -    pci_conf[PCI_COMMAND + 1] = 0x00;
+> -    /* TODO: use pci_set_word */
+> -    pci_conf[PCI_STATUS] = PCI_STATUS_FAST_BACK;
+> -    pci_conf[PCI_STATUS + 1] = PCI_STATUS_DEVSEL_MEDIUM >> 8;
+> -    pci_conf[0x20] = 0x01; /* BMIBA: 20-23h */
+> +    /* PCI command register default value (0000h) per [1, p.48].  */
+> +    pci_set_word(pci_conf + PCI_COMMAND, 0x0000);
+> +    pci_set_word(pci_conf + PCI_STATUS,
+> +                 PCI_STATUS_DEVSEL_MEDIUM | PCI_STATUS_FAST_BACK);
+> +    pci_set_byte(pci_conf + 0x20, 0x01);  /* BMIBA: 20-23h */
 >   }
 >   
-> +/* EXECUTE DEVICE DIAGNOSTIC */
->   static bool cmd_exec_dev_diagnostic(IDEState *s, uint8_t cmd)
->   {
-> +    /*
-> +     * Clear the device register per the ATA (v6) specification,
-> +     * because ide_set_signature does not clear LBA or drive bits.
-> +     */
-> +    s->select = (ATA_DEV_ALWAYS_ON);
->       ide_set_signature(s);
->   
->       if (s->drive_kind == IDE_CD) {
+>   static int pci_piix_init_ports(PCIIDEState *d)
 
 
