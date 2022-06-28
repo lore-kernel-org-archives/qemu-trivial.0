@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o67Fo-0002z0-Iq
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 05:11:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57154)
+	id 1o67pV-0003bt-Gf
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 05:48:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41214)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o67Fi-0002w6-BM; Tue, 28 Jun 2022 05:11:23 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:44297)
+ id 1o67pT-0003bF-G8; Tue, 28 Jun 2022 05:48:19 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:56013)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o67Fg-0003FR-1X; Tue, 28 Jun 2022 05:11:22 -0400
+ id 1o67pR-0002Ie-QQ; Tue, 28 Jun 2022 05:48:19 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N3bb3-1nfGtP3hkh-010alJ; Tue, 28 Jun 2022 11:11:13 +0200
-Message-ID: <713cf57f-0a53-340b-e89c-c1d6151dfd1f@vivier.eu>
-Date: Tue, 28 Jun 2022 11:11:11 +0200
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MvaO8-1norcr0uOM-00siEW; Tue, 28 Jun 2022 11:48:11 +0200
+Message-ID: <d7416b7e-50bd-900a-9cc9-b8421b7a3f24@vivier.eu>
+Date: Tue, 28 Jun 2022 11:48:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH] hw/pci-host/i440fx: Remove unused parameter from
- i440fx_init()
+Subject: Re: [PATCH] common-user: Only compile the common user code if
+ have_user is set
 Content-Language: fr
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org
-References: <20220612192800.40813-1-shentey@gmail.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Riku Voipio <riku.voipio@iki.fi>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20220622140328.383961-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220612192800.40813-1-shentey@gmail.com>
+In-Reply-To: <20220622140328.383961-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:7mYohewAmdVKGNIt1fka+jUeaOlpZELNvbZdC5kZkca8osWMDGJ
- Z2DTRWU8yzSuyQcbexKLuh0cB+HbeTJVRBromW+fTqf3K/kpwj+It5Agtz+3NETe+FeaClq
- JdNXQnZoSUzq6ArYdZx99wotpFQicxGl5UXZKKlDKrgv2/4cKTX1Fmh6Rt97GRoG1+Bh0Rt
- hRDP3I//p/jBcRKgDqTyA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Jo23dqjCsMQ=:cWHrapqY4xTOwi74Q8njP/
- AMJ86dlWS5abg7pt4qeA3kKGp8h7YA4ZnykLc5l1gy3E/nd2P4e4rlqSau/0h8BU4+GxwxGGz
- KOEVtzPEotmpaP/hRLBELAzkg3ltF8qGtcJKqHyTnTQIOkWhAcQtAqWeXbonbPpJ/E6/ZeXQ2
- fnBwUGEy1Fli6xk+Y4dxXXRUPSIEgQWmbp3ZZSQyjEXKKxFcj9oXNXu6hof54HXDVz1RMS3v2
- eI2LDOBiN/hLxIb2L0WD7/76Mr3UfNErZJMCfrvviGnDY92LbMvj4gD67xgzVMVISevviv+2+
- d5oe7vbq3THVB/ixAJbEx4IGBMbh/NNInQ/mcucqtWTDmVueErbIp9dgxIrkktrMV4PYj/67d
- HclSf3WipUd8b+2cG+lB7zlUO5E2rLUb/TNIP01uZ3qnW4K4eIml1BZG6A5RZMul5hS5O8+w5
- kSR/B8J787p+N11XhOgWtAODCg79RLK+UMHuqiHt2hxPfYUFwjRg503jVRhtL9CethKCHcHsq
- 94r8b+TIk4Tz0XMa4rU7U/mHpm917cqhIVhBCgDS5Z2Igy9tMgGkFqBU91/Q9St1LEgssd1mB
- lr5Iiw+E5/fxWz2qOcCpVlGuMBHEOPqmplObhjK30PQaHKPmDIDLptZxHsdOzpYRpdxfi+nwt
- 3995QQ8Sct+NTPoUA2c5U/J7122e77Qw3aor116XKbL9CmJrpqVpeM6abW+PNs7mOfMrqx3Hr
- TYhIR8jYqfzNogEIvd7Tb5HtwlsYgPLyYMUEdg==
+X-Provags-ID: V03:K1:X9Bdq1Gbr713/7D4Gp3Yk57p+D+7DE4GrbzflyMgM4fOSge71WR
+ 1248Kbf3qSNqXFVHWLCeujCWJYRSBTXnYAW8ZZty1/pmUQa35RxP19s7EX4Z6IKkmgcaNDy
+ B2qoKnGvQPdqMPHof6XfsrXy9u3EQHVgJLCy8KeJg8NlpEX38s+1+4/VIYasHShT4Sv5NZU
+ jafMp1me0h4Vzb7e5Emug==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6WrskKG8piA=:6sQqjnvaiAYMYXM9CP6nWO
+ fI1/mBpG7UOV7oUrDHFUnbk2uwAbVPX82gSGDKuoaRH5NTl3iffvkaaiGUVkLQtoJRJ4yMtcW
+ XNL2nWfP/jwMO0vWtgFNVujGf0jE44I7nRKNbDooFtmKMve3poOcgas/UyRWzvqpL/NTlucgr
+ oZqhPQtzgfxx6ymzg5ySUFnk5i3a5zeIh1ZrXdxIsmBFHwUogKeIOb2ILooY1j2by1chwKYQf
+ SdXa6eXWwh9c6fXJLbV/Jdf8vQ6FREYKKYyxu47wrqW884xFu2Wz40WlRxOCvdKhEp0B/v6NR
+ hrn6zfjNeCduN2Q2SzBbPrYVtQbg4f5UhjyeE6pJdixD0xZEJp6xcFGI6AsB2DbAq3Zod746A
+ c9sR6ikb2oo/k8eUvFf8wEWQYs2vDVcMqrhMI+wNUlkQTrZ19BW+5iMCOyndoDmBH3JtpXoU2
+ v24oDcZDR3e6xz5yjVwx5OtUCTYF3STFsxio/ItJ2l7OPn74Ydt4jAt8OZc5Pkc3GnY2tVDgU
+ s0EYS1xsfR4eELNh5jXvemVJq0deGavm27b83Yz0T+USjH2h+AqF55IymRhs7tQtFpdnuuDwR
+ UJcnK8NKGsiAhTpXr3rnBKuhnIytOHXhK93G7I/NEg+xKt37VwLjur1hYEIaSc7pwbIKlB4FQ
+ gaexd5DqVxRTy8Li80F2J55rPeGNuf0a1H8LDIsxjUjsW2xeb/BJ4PjOZ/P6DISLRBsxHPsGU
+ N+sV2va/jH1+8+Gmxh3+mpV40fqEwsGxeqEM8Q==
 Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -67,80 +65,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jun 2022 09:11:25 -0000
+X-List-Received-Date: Tue, 28 Jun 2022 09:48:19 -0000
 
-Le 12/06/2022 à 21:28, Bernhard Beschow a écrit :
-> pi440fx_state is an out-parameter which is never read by the caller.
+Le 22/06/2022 à 16:03, Thomas Huth a écrit :
+> There is no need to waste cycles here if we only compile the system
+> binaries or tools. Additionally, this change is even a hard requirement
+> for building the tools on systems that do not have an entry in the
+> common-user/host/ folder (since common-user/meson.build is trying
+> to add such a path via the include_directories() command).
 > 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Reported-by: Michael Tokarev <mjt@tls.msk.ru>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   hw/i386/pc_piix.c            | 3 ---
->   hw/pci-host/i440fx.c         | 4 +---
->   include/hw/pci-host/i440fx.h | 1 -
->   3 files changed, 1 insertion(+), 7 deletions(-)
+>   common-user/meson.build | 4 ++++
+>   1 file changed, 4 insertions(+)
 > 
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 0fc2361ffe..a234989ac3 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -82,7 +82,6 @@ static void pc_init1(MachineState *machine,
->       MemoryRegion *system_io = get_system_io();
->       PCIBus *pci_bus;
->       ISABus *isa_bus;
-> -    PCII440FXState *i440fx_state;
->       int piix3_devfn = -1;
->       qemu_irq smi_irq;
->       GSIState *gsi_state;
-> @@ -203,7 +202,6 @@ static void pc_init1(MachineState *machine,
+> diff --git a/common-user/meson.build b/common-user/meson.build
+> index 26212dda5c..ac9de5b9e3 100644
+> --- a/common-user/meson.build
+> +++ b/common-user/meson.build
+> @@ -1,3 +1,7 @@
+> +if not have_user
+> +   subdir_done()
+> +endif
+> +
+>   common_user_inc += include_directories('host/' / host_arch)
 >   
->           pci_bus = i440fx_init(host_type,
->                                 pci_type,
-> -                              &i440fx_state,
->                                 system_memory, system_io, machine->ram_size,
->                                 x86ms->below_4g_mem_size,
->                                 x86ms->above_4g_mem_size,
-> @@ -217,7 +215,6 @@ static void pc_init1(MachineState *machine,
->           isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa.0"));
->       } else {
->           pci_bus = NULL;
-> -        i440fx_state = NULL;
->           isa_bus = isa_bus_new(NULL, get_system_memory(), system_io,
->                                 &error_abort);
->           pcms->hpet_enabled = false;
-> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
-> index e08716142b..1c5ad5f918 100644
-> --- a/hw/pci-host/i440fx.c
-> +++ b/hw/pci-host/i440fx.c
-> @@ -238,7 +238,6 @@ static void i440fx_realize(PCIDevice *dev, Error **errp)
->   }
->   
->   PCIBus *i440fx_init(const char *host_type, const char *pci_type,
-> -                    PCII440FXState **pi440fx_state,
->                       MemoryRegion *address_space_mem,
->                       MemoryRegion *address_space_io,
->                       ram_addr_t ram_size,
-> @@ -264,8 +263,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
->       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->   
->       d = pci_create_simple(b, 0, pci_type);
-> -    *pi440fx_state = I440FX_PCI_DEVICE(d);
-> -    f = *pi440fx_state;
-> +    f = I440FX_PCI_DEVICE(d);
->       f->system_memory = address_space_mem;
->       f->pci_address_space = pci_address_space;
->       f->ram_memory = ram_memory;
-> diff --git a/include/hw/pci-host/i440fx.h b/include/hw/pci-host/i440fx.h
-> index f068aaba8f..52518dbf08 100644
-> --- a/include/hw/pci-host/i440fx.h
-> +++ b/include/hw/pci-host/i440fx.h
-> @@ -36,7 +36,6 @@ struct PCII440FXState {
->   #define TYPE_IGD_PASSTHROUGH_I440FX_PCI_DEVICE "igd-passthrough-i440FX"
->   
->   PCIBus *i440fx_init(const char *host_type, const char *pci_type,
-> -                    PCII440FXState **pi440fx_state,
->                       MemoryRegion *address_space_mem,
->                       MemoryRegion *address_space_io,
->                       ram_addr_t ram_size,
+>   user_ss.add(files(
 
 Applied to my trivial-patches branch.
 
