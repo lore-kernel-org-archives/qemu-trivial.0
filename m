@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o6821-00064r-Nl
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 06:01:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45894)
+	id 1o682f-0006s6-LH
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 06:01:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o681u-0005yA-25; Tue, 28 Jun 2022 06:01:13 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:44519)
+ id 1o682d-0006lY-90; Tue, 28 Jun 2022 06:01:55 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:57841)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o681e-0004hb-50; Tue, 28 Jun 2022 06:01:05 -0400
+ id 1o682Z-0004nC-Vp; Tue, 28 Jun 2022 06:01:54 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M5xDJ-1nzFKl2wwt-007Sso; Tue, 28 Jun 2022 12:00:48 +0200
-Message-ID: <a433a77b-c22a-afa9-5b80-67098b881aba@vivier.eu>
-Date: Tue, 28 Jun 2022 12:00:47 +0200
+ 1MGyl3-1nsfmn2gEt-00E2Qv; Tue, 28 Jun 2022 12:01:42 +0200
+Message-ID: <322be953-a8a5-179c-438f-4ec240a6aa7f@vivier.eu>
+Date: Tue, 28 Jun 2022 12:01:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH 3/4] piix_ide_reset: Use pci_set_* functions instead of
- direct access
+Subject: Re: [PATCH 4/4] hw/ide/piix: Ignore writes of hardwired PCI command
+ register bits
 Content-Language: fr
 To: Lev Kujawski <lkujaw@member.fsf.org>, qemu-trivial@nongnu.org
 References: <20220528210250.175832-1-lkujaw@member.fsf.org>
- <20220528210250.175832-3-lkujaw@member.fsf.org>
+ <20220528210250.175832-4-lkujaw@member.fsf.org>
 Cc: John Snow <jsnow@redhat.com>, qemu-block@nongnu.org
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220528210250.175832-3-lkujaw@member.fsf.org>
+In-Reply-To: <20220528210250.175832-4-lkujaw@member.fsf.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QB8L/Hf7JFj0Rtw7LImGclAgnhIyGwK6burNGGhJbP0wbxMcT3r
- RJPrrI2KW6LEJxqxrhXU9PpTy1XM31rK7QTh2MkgyBJRiB945bQ17zwiU8lwkr5Aoh9x/04
- jerwkOfb475XgZmsXmWYUkFTcEnuHGBJxGnT2ZIIeTbd/80C1DIGDE1QWGK0qjJW14n4uWJ
- kKLlg/xv2ao98W0sIi7aQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:L6LyS9Kv+vI=:IErAANAlYl0caFWjH4P/Gi
- WOTexCnta+qs38gzxyqKlgNZEz5/kFurWQ2rTe5zq1w0+vV8rGqvetLa2C8gq+Xmqt6nN1ouB
- 5EuTXF4SLDVZgEnj+8VEuUSCGNSObZqhZ/LAJhUs+JYRCNFGnqWxW/0f516OmiBVt5hmN2XKQ
- /sY/TXbKAy9e9ICqONy7pUWIbPeEmLdtM8VbrV4UyTSkjrMDPz0PpPzg4d/dwjssXVauCy87g
- AddqY3s6+/gs8bFVmEKTPY88MvLV5tViSeTCrVMmEDqlX24iTkbuTJIdVNzg879nTLMcocXa/
- B1eFxteHVaz5/E04k+JpvwbV413YL2THbtsdyHh3KqO/KakUa94h/vqealWIrz4m3rAsZtjr4
- EX3syC5kHydbcC1HGth0e1XbtJmE/i3PmQ9FoBpk1sl00fgo3qBVU2kt2t7hhaUCz4OjEBflj
- HtDxPtUmiOMOd+siusPlI0OtOIP1L3H/N+wHfyGgr73qORpZHsC1p7/45pwaVYFqYRmdIlBP7
- aFgtWN94px8QzY6ocahbMyKoj8TuKQaVOMckmxoFYrV7ZZAhXvYQJJMVHFmnx3wnchuyxySMR
- 34Mo0cQOADmoJ58249ol6RxFxYi5b199EaxDTrTZf0KAGLDJ1pGqgw+JqZ/hcqEGNLC7Uy176
- ALFT0841kFFlELXABAEAC58QbqYuFdEjgZep93/Etg1l/dQoX2L+wI25xsQupGQXqWc2DpOE3
- vYLYJg7lE7IGeor6w+ILqSqI2WR4q0t+gU60wA==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:HpVKv2jlB0AG9K8AuNSxfjQa7cmTO7tqStMdkfM3+yR9Ole/Rna
+ lXVoMstANwN7RJ7kCYQ2PuO9CfZa+s8fmIakYiNn6/Dpe2p3V3vsdTDFkrRsF3ZoWacUWCr
+ YmRILcjpeysOKysnNLcd4SER5apyxmQpEGPyXhjEVIn6C7KSEW3+GQRHqlOWT8SEMowmNN8
+ 3YoL+nQLJjFyfc1lySdAw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6JEkxZd6+H8=:plPwBxvJpia/wZpEYMAsnT
+ CF62Vl3BHpgtNu1InIpSXpmNE974olRG6sFHO4H9vUnLknVSWfmWee46P+FRlLwfmXSxWlfXw
+ E8HDvTlFzJuzZtSHmxwpreS3YDlub5hhfafihYlg2FxqMbs/zosmmPS3Xl8KP6We7rsAmm1RC
+ cFPsIOOx1dH4g3dF+Cfn6r7Ps4kt/igriyIDm7XtX4W4boFBvWmhCTH2QNHud2VnDRhlAU23A
+ qsj56lP5HFcH9wYgyTjUU0yCDozVGBEBMXNRRvDAdYlBPn0lc2V69XhAk8S9z2Kd3VQv2BjK+
+ eczynCjKlk1udO6K0nJx+sTrS3nFAwO2W+DZxTiQsR+Fj4Qt09sGnhwJK5em+FkEf491cEqZX
+ rZvpG1ieJNRQYRSawSe5CPq9oiaCcrHWOiMnA6bEtI+uRHcWFkRup9aGDQOWHSvSoK0aZrv1G
+ WPOtcIHtuTbmF5v0Ty815j1EBVWeoRQ+k0MqN8ImuHdve/ABR/1hSpZBWRv0UMO+KtjM7Nz53
+ 1G8ZgmMkzYIPEx3PXezafSsEE4rXZvbPICks8SrbI6Sg5sCy/vd7k7Im0ZvoztIE/KbQV8nOh
+ MStnF6FCeS6M4YOI4K62QIThfYnvondrWdi0U1KbDTb3s6XVXHpY9lEqm4IsqjIXsxAKS97cH
+ RPAVyCE7zVoIt7AU0GLSvwcHSWwbAOEKFtGJ5PMXFAlv9hoCxozaRNSWDC1MFR5jywvc8265m
+ Bs1xfv9GgEkZBQQ4n77xo267hCE8yvJPXI5gHA==
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,7 +64,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jun 2022 10:01:16 -0000
+X-List-Received-Date: Tue, 28 Jun 2022 10:01:55 -0000
 
 CC:
 
@@ -72,51 +72,81 @@ John Snow <jsnow@redhat.com> (supporter:IDE)
 qemu-block@nongnu.org (open list:IDE)
 
 Le 28/05/2022 à 23:02, Lev Kujawski a écrit :
-> Eliminates the remaining TODOs in hw/ide/piix.c by:
-> - Using pci_set_{size} functions to write the PIIX PCI configuration
->    space instead of manipulating it directly as an array; and
-> - Documenting default register values by reference to the controlling
->    specification.
+> One method to enable PCI bus mastering for IDE controllers, often used
+> by x86 firmware, is to write 0x7 to the PCI command register.  Neither
+> the PIIX3 specification nor actual hardware (a Tyan S1686D system)
+> permit modification of the Memory Space Enable (MSE) bit, 1, and thus
+> the command register would be left in an unspecified state without
+> this patch.
 > 
 > Signed-off-by: Lev Kujawski <lkujaw@member.fsf.org>
 > ---
->   hw/ide/piix.c | 17 +++++++++--------
->   1 file changed, 9 insertions(+), 8 deletions(-)
+>   hw/ide/piix.c | 25 +++++++++++++++++++++++++
+>   1 file changed, 25 insertions(+)
 > 
 > diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-> index ce89fd0aa3..76ea8fd9f6 100644
+> index 76ea8fd9f6..f1d1168ecd 100644
 > --- a/hw/ide/piix.c
 > +++ b/hw/ide/piix.c
-> @@ -21,6 +21,10 @@
->    * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
->    * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
->    * THE SOFTWARE.
-> + *
-> + * References:
-> + *  [1] 82371FB (PIIX) AND 82371SB (PIIX3) PCI ISA IDE XCELERATOR,
-> + *      290550-002, Intel Corporation, April 1997.
+> @@ -25,6 +25,8 @@
+>    * References:
+>    *  [1] 82371FB (PIIX) AND 82371SB (PIIX3) PCI ISA IDE XCELERATOR,
+>    *      290550-002, Intel Corporation, April 1997.
+> + *  [2] 82371AB PCI-TO-ISA / IDE XCELERATOR (PIIX4), 290562-001,
+> + *      Intel Corporation, April 1997.
 >    */
 >   
 >   #include "qemu/osdep.h"
-> @@ -114,14 +118,11 @@ static void piix_ide_reset(DeviceState *dev)
->           ide_bus_reset(&d->bus[i]);
+> @@ -32,6 +34,7 @@
+>   #include "migration/vmstate.h"
+>   #include "qapi/error.h"
+>   #include "qemu/module.h"
+> +#include "qemu/range.h"
+>   #include "sysemu/block-backend.h"
+>   #include "sysemu/blockdev.h"
+>   #include "sysemu/dma.h"
+> @@ -220,6 +223,26 @@ static void pci_piix_ide_exitfn(PCIDevice *dev)
 >       }
->   
-> -    /* TODO: this is the default. do not override. */
-> -    pci_conf[PCI_COMMAND] = 0x00;
-> -    /* TODO: this is the default. do not override. */
-> -    pci_conf[PCI_COMMAND + 1] = 0x00;
-> -    /* TODO: use pci_set_word */
-> -    pci_conf[PCI_STATUS] = PCI_STATUS_FAST_BACK;
-> -    pci_conf[PCI_STATUS + 1] = PCI_STATUS_DEVSEL_MEDIUM >> 8;
-> -    pci_conf[0x20] = 0x01; /* BMIBA: 20-23h */
-> +    /* PCI command register default value (0000h) per [1, p.48].  */
-> +    pci_set_word(pci_conf + PCI_COMMAND, 0x0000);
-> +    pci_set_word(pci_conf + PCI_STATUS,
-> +                 PCI_STATUS_DEVSEL_MEDIUM | PCI_STATUS_FAST_BACK);
-> +    pci_set_byte(pci_conf + 0x20, 0x01);  /* BMIBA: 20-23h */
 >   }
 >   
->   static int pci_piix_init_ports(PCIIDEState *d)
+> +static void piix_pci_config_write(PCIDevice *d, uint32_t addr,
+> +                                  uint32_t val, int l)
+> +{
+> +    /*
+> +     * Mask all IDE PCI command register bits except for Bus Master
+> +     * Function Enable (bit 2) and I/O Space Enable (bit 1), as the
+> +     * remainder are hardwired to 0 [1, p.48] [2, p.89-90].
+> +     *
+> +     * NOTE: According to the PIIX3 datasheet [1], the Memory Space
+> +     * Enable (MSE bit) is hardwired to 1, but this is contradicted by
+> +     * actual PIIX3 hardware, the datasheet itself (viz., Default
+> +     * Value: 0000h), and the PIIX4 datasheet [2].
+> +     */
+> +    if (range_covers_byte(addr, l, PCI_COMMAND)) {
+> +        val &= ~(0xfffa << ((PCI_COMMAND - addr) << 3));
+> +    }
+> +
+> +    pci_default_write_config(d, addr, val, l);
+> +}
+> +
+>   /* NOTE: for the PIIX3, the IRQs and IOports are hardcoded */
+>   static void piix3_ide_class_init(ObjectClass *klass, void *data)
+>   {
+> @@ -232,6 +255,7 @@ static void piix3_ide_class_init(ObjectClass *klass, void *data)
+>       k->vendor_id = PCI_VENDOR_ID_INTEL;
+>       k->device_id = PCI_DEVICE_ID_INTEL_82371SB_1;
+>       k->class_id = PCI_CLASS_STORAGE_IDE;
+> +    k->config_write = piix_pci_config_write;
+>       set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+>       dc->hotpluggable = false;
+>   }
+> @@ -260,6 +284,7 @@ static void piix4_ide_class_init(ObjectClass *klass, void *data)
+>       k->vendor_id = PCI_VENDOR_ID_INTEL;
+>       k->device_id = PCI_DEVICE_ID_INTEL_82371AB;
+>       k->class_id = PCI_CLASS_STORAGE_IDE;
+> +    k->config_write = piix_pci_config_write;
+>       set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+>       dc->hotpluggable = false;
+>   }
 
 
