@@ -1,61 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o6Jnj-00030n-6t
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2022 18:35:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53974)
+	id 1o6QoX-0001Zt-VT
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 02:04:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6Jnh-00030Y-SZ; Tue, 28 Jun 2022 18:35:17 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:39687)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6Jng-0003L2-5b; Tue, 28 Jun 2022 18:35:17 -0400
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N0X4c-1nlNC81nTI-00wSOD; Wed, 29 Jun 2022 00:34:56 +0200
-Message-ID: <cbd043e0-0fe6-5540-c78d-dc2e3cb42179@vivier.eu>
-Date: Wed, 29 Jun 2022 00:34:54 +0200
+ (Exim 4.90_1) (envelope-from <brchuckz@aim.com>) id 1o6QoU-0001Y8-Tl
+ for qemu-trivial@nongnu.org; Wed, 29 Jun 2022 02:04:36 -0400
+Received: from sonic314-21.consmr.mail.gq1.yahoo.com ([98.137.69.84]:35400)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <brchuckz@aim.com>) id 1o6QoS-0004rv-8Q
+ for qemu-trivial@nongnu.org; Wed, 29 Jun 2022 02:04:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
+ t=1656482668; bh=zXI8lOjk5jak20Wr8hBYS9pShh6LSGwvLeCNZDO/jUI=;
+ h=From:To:Cc:Subject:Date:References:From:Subject:Reply-To;
+ b=VDftd59DYcE9LQ5W+YhKifpwd9op51H4T/Uvvt6NlnIXT46SOIZ9vv6j7NbFcaBDWHWjcXRpPREm+Dn96WZWqs8ZzvbsZaViMvnW60snqFBdQj9T417tXWQheM+7u8I/HXWymBl9n3TP7FAoOsj2MO+rpIEc7IlocQRGLq/RBP4hAENrIHDUY1Eob2aRr8h/GDoILLOK3sFtvKUP5kFR1mZZfXeYQvjBMayccfcyTWR639HaFS6vEFszPV/IHzcVfLsbKAnBnMGf4mwwhvJRE/kHEju3XZBP5wzLhEuGTEVZCTsmiMFh+lnxgzMSvWzIgXRBYPzX6oqYB7Se7ITM3g==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1656482668; bh=LkoGCfHrTahP0imugLWlseCDSzbQlQ262ug1rjpAhv0=;
+ h=X-Sonic-MF:From:To:Subject:Date:From:Subject;
+ b=ZiuGxlcj9Mmr1Su7jtfgyvesfzMIyg/H/UDS19SDoXnwURDVkERYIxCU3XA+DDkd8GwSv6BK4p1rujVWNJBHjhKbLjSjvZK/QghwAuloJuSGRgLJa7tMQuzLzoLITgdlC1kkUV8VwbHzlxRp7mPis5dhUYRXmpPlHM6O9wiExNnUnc137uBO0FhVf/4sWF7fU6TAic780M+bkQeK5KRbRlq8gYUaN2gyWi1nzPpANdP9ecr4QvZcLBS5vA8xNfPmmOqMXmouTY1HCn6FQ5Ry1WzsuBNtiXUHF4a7geckSjZXjw2FdNt9Rk8G3+cp5S5uURyZDaxlw6l7VuiVl6pmEQ==
+X-YMail-OSG: IOMYgPEVM1nbZllUnd57vB752F9AROM_emUXMjv3mvYZOiS4728Z4TylVTWrq8h
+ i.XKC7ut2cRilCwqGAjHk9eoDv.reJ5jySqIHio0O7zBvglQ4f4SKCCX_AOqdgpPDsGvu3D_2iOa
+ VEOCPpIvFKlbfcwKXNdNMRdjWEJYgeJTs_R7iIsfRxWwhxxNyvsrIoG8q8SfGDZEysItTPyCqSLw
+ IqX4mY410irWfToPt5aHDjzwEqmnYH0A_gHvJ22ft7471yrd4snoDrr3j782v8UbktfMlXnNVMQF
+ J9BPKl_DEf_NGd5IIb_ZI_FrgmZCeauA59F_mF1BecFb0gKQWExiU.y_3gNyEMb6SaIVEHBnqv1z
+ w2snb5VJgEoY00.8UwC5R2ZuaUr.ZwNrtumkgSFF9Lh3uaZ6DBmS.kB36ueXVHGwGjAnn65J_y92
+ 0OSzVK18COeNhlv37fgBURcTEHH1TPRKeN96qQ8mlepUxKW0mSBihyC2QXGCraJMwQL12ojkkJ7E
+ VYkVaonSrDbRjtLcLJkoCuwFaA54iLVxogRYRzfZLRbUXQ_IEdXghYQNfHWNiqVX2VWVqqpmKvMx
+ EJiQQdaCYTQ8RNunPPVabP8k9Qb4QQ7NgkK4UsabUZ4YYM9UmJBMhWqcUmyuGnr3symErenMnGth
+ oSefk3QWMS7thC7z58ZzvSMkWRZj_1x2vH7NIOCFZQ7.8khryypzJTcbxyhMq7ZRv5e7lZviVtvl
+ BwTUnMVVT5Xv91Xp_O.uqKrV.jw_kuNtjFOpcQmGyoyco783JVTRltvjOplBWNJXbqi5N8WBbIeZ
+ ccPaOCXFppnxaR6W54wTbhP2Lt65GlDc.7.FFxBKEhqG.7uGaX6D8y606pXcTZlcMA9I4p1YYLFD
+ xTIdBILPzJYqUZkm7zZYK9uYCgoHdVGbW.FfIRBzi1x6CzxG8TJfxMPgVkK024fSZkaCCppXiXTG
+ XpUa4EbQNwEbeITGXuW1FIzJV4eRcsLh5f1owJU0aGah1pz3ssRrOSYR04QKr5_CoZazkbTDjk92
+ DHdV3KCKVsXXo0hvAdfMqO.citeHlVvmDZto9Jvj2PVqBQx8XHzldBGBXd3ZSQ4yG0nFnfzeJUo.
+ ha7d84AqKJ1wvRowgHzDWwGGwWAtmnwcxzUt.8r7YjTYm1keCTVKEJeyClF37QQv6U5OkO6IoR5q
+ 7yDcF83re2LfK35c85A.emg8Ng3qpWKSCIViW2GBqrzP5z6HH_NSwu.vPnyGUcVk6snjRozFkjG5
+ TN43guIvR_RsJOP4wBJtYCUku_cdlYimyH8tVs_e.iHzWM7mrWT6sQwhiu2bSI5RW8G61KEygBue
+ rZQG0J_dVUdrDByhaXkPE6y9fKLD038abIbRKiVTaqM1_CE47CKsmdr3mGGEIUAlWWyp8Oq3tThF
+ nrcejJ62fbmDgWs_DMxaNb.GSD.3UCqFeP72YbERBxhVSWDd5RJ6dFwv4VPlhI.8gdZXPnHAT6VD
+ yGX8QZi1OF3iFm4xBjcQydTi.Ac_rd2ZnKZvSxq6cP09hB6fzKtTXtHzViGJxgLluYR7u9E4Q9QS
+ e9eBmQgO26QBDQxqA8It0ZRYEBSt2a3e2ts9.4ZYpv3i7bnwmVjAhGqBtmpdxjk.171zgWMqCzW4
+ FXK6yITcPuxid9ESk.QV0MV2zQD_tdbGB77VrCB6Sn7exBwJCg7LPAK3NN5h8uAlQjl5LyauAeyT
+ zk1fysr.7Z.eYrHgJ.LI3ZW.Ew2EYyFNJpTbcT.DGBv7p4B3ma7n3pbLYbtUdoLGpBnQ1o0qLMpe
+ Nu.imlxP8Z_X2PImPWKH6bPt6Iwp.nupWkVJ0kYS2Kq73rA3jOjfr0NXRjvfPk7GnYEztUmiZDSo
+ JP22UzKUrDE.qctdwUy.g3S6t81hcatRLPt2x1GZLKK7rAM5jCFpRwi4hDWZQE7tRZGSjiLIt8H2
+ 6MCF8CxZXnpLEgivV4RRw4gRWW_JPNHcp8Bhx7YivwJFbnBYmc2BUuITR1VBWo.1RBDCRma_.zgd
+ 3KIuTKpBZ3sZEwtD0qLGmVZk1eLNVDl_aPitugeI4qat_veRLH1eA4xQai8hNAkLMjqCI.buzHEY
+ SfkTKyG1RRgj9Zw97mnM.gdTAZsFfCRi4gm5XvrE0G6.K7hcWmwKJ9j4VOCn6QoA6R.4EbvisqTz
+ ra_p7oGmZ61PMzMWCWPtjHDwUh7oOjmevTI3DXE2JUKnMQbkL6a8eiLlyw_dagzemYuQuUJ8-
+X-Sonic-MF: <brchuckz@aim.com>
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic314.consmr.mail.gq1.yahoo.com with HTTP; Wed, 29 Jun 2022 06:04:28 +0000
+Received: by hermes--production-ne1-7864dcfd54-q4948 (Yahoo Inc. Hermes SMTP
+ Server) with ESMTPA ID 2814da2f277392d570820fdc55e6888d; 
+ Wed, 29 Jun 2022 06:04:25 +0000 (UTC)
+From: Chuck Zmudzinski <brchuckz@aol.com>
+To: qemu-devel@nongnu.org
+Cc: xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org,
+ qemu-stable@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
+Subject: [PATCH v3] xen/pass-through: don't create needless register group
+Date: Wed, 29 Jun 2022 02:04:05 -0400
+Message-Id: <c76dff6369ccf2256bd9eed5141da1db767293d2.1656480662.git.brchuckz@aol.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [RESEND PATCH] hw/dma: fix crash caused by race condition
-Content-Language: fr
-To: Tong Zhang <t.zhang2@samsung.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "ztong0001@gmail.com" <ztong0001@gmail.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Francisco Londono <f.londono@samsung.com>
-References: <CGME20220506163106uscas1p20aa8ba0a290a9b50be54df6ec4f9cee0@uscas1p2.samsung.com>
- <20220506163059.2517-1-t.zhang2@samsung.com>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220506163059.2517-1-t.zhang2@samsung.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:yIuuQwWfkdJX3v3izuMGkhesk1QaQKLrcsyjXugUqMRU50OergO
- Z5D0oj9ykKYHzAQe6CZe0ZO3er9KWV5SQ5ZgngfUEZMkU1bKI2Ysg1jL0yWNlKcOLm+RQPt
- hks0NadWuOlqY8f+2VFWjPqfZqdf8+0woXVR38rtSsBOeRanVod9Fs40mGa7UxKtv7wNtpO
- NUpS2h2PNhv+VcEbsWfWA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RExie5HD0l8=:kTG+4ocKmViUXL984hRVGC
- LYBprfpzL+5BrkrhdpZLC/0kPBl78wUE1K3WrNIr7cqAkkiAlK/XTCrFhlD5ra9vp/TrbTew2
- Mt0KrwHp+yv9qblUtwsBy4qKUsl1szxuh4Nc3E+kLaC/y6tSfi9RTDO2YggVVIsql5XDiq24T
- JQ38fqYN7M+AJHyd2SMrNUXBVDvV30kWkaqgeGExS4DcIZyZcp9GAhpxQM0ptKwF/XrgKCqmS
- u3MwEBZTL1lAs0wH0YZ8oEDKaQWES0W9w2xomFh4bw0gMQ7FozVND6axkfx9e1BeajQYKBaqC
- jyIk78hTaV6hbAZLtMjtXowp1J8OpkaGXQjGNzNM+rmkft21pW9Wi5n3TPh7muGF/OGoRyPq2
- oBmuox9D7z+T82qLCZHHMZx4odVFVBJKBTaS5Zg9DyudH6jWcVh5qePTVfptaUhok8yb4ANwW
- ryJNpEOdkwOhSuGDkJWrkeruqRfhkNOuJhEe7XBFbxB36wL7YnX5AAs4acc5pF5o+Dgi6N6V7
- SNio//QYzVPh766IHyEEIOdRyJND8BtLCfDU2/RVZuAmkkHhSpf5ps9d+DMP7lPXVbAntewr/
- oABxN+1Pm6JHDKPG85jIxG4lA35TYB5/y758SLIMpQ1z8gpOWJYnDZ9BV2JwxPXB0ZZO1mLTi
- hX+9jaqSqGDwCUbY8oZ+EUyVmsfME1oeXoZLRjAEXrPSAgpfHxVxChD9qhkQ0zB4KePH8I5UD
- R+AwOrLfKeO/H9uukcoqJzC59SX62YAz1x8Bow==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <c76dff6369ccf2256bd9eed5141da1db767293d2.1656480662.git.brchuckz.ref@aol.com>
+Received-SPF: pass client-ip=98.137.69.84; envelope-from=brchuckz@aim.com;
+ helo=sonic314-21.consmr.mail.gq1.yahoo.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,40 +87,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jun 2022 22:35:18 -0000
+X-List-Received-Date: Wed, 29 Jun 2022 06:04:36 -0000
 
-Le 06/05/2022 à 18:31, Tong Zhang a écrit :
-> assert(dbs->acb) is meant to check the return value of io_func per
-> documented in commit 6bee44ea34 ("dma: the passed io_func does not
-> return NULL"). However, there is a chance that after calling
-> aio_context_release(dbs->ctx); the dma_blk_cb function is called before
-> the assertion and dbs->acb is set to NULL again at line 121. Thus when
-> we run assert at line 181 it will fail.
-> 
->    softmmu/dma-helpers.c:181: dma_blk_cb: Assertion `dbs->acb' failed.
-> 
-> Reported-by: Francisco Londono <f.londono@samsung.com>
-> Signed-off-by: Tong Zhang <t.zhang2@samsung.com>
-> ---
->   softmmu/dma-helpers.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/softmmu/dma-helpers.c b/softmmu/dma-helpers.c
-> index 7820fec54c..cb81017928 100644
-> --- a/softmmu/dma-helpers.c
-> +++ b/softmmu/dma-helpers.c
-> @@ -177,8 +177,8 @@ static void dma_blk_cb(void *opaque, int ret)
->       aio_context_acquire(dbs->ctx);
->       dbs->acb = dbs->io_func(dbs->offset, &dbs->iov,
->                               dma_blk_cb, dbs, dbs->io_func_opaque);
-> -    aio_context_release(dbs->ctx);
->       assert(dbs->acb);
-> +    aio_context_release(dbs->ctx);
->   }
->   
->   static void dma_aio_cancel(BlockAIOCB *acb)
+Currently we are creating a register group for the Intel IGD OpRegion
+for every device we pass through, but the XEN_PCI_INTEL_OPREGION
+register group is only valid for an Intel IGD. Add a check to make
+sure the device is an Intel IGD and a check that the administrator has
+enabled gfx_passthru in the xl domain configuration. Require both checks
+to be true before creating the register group. Use the existing
+is_igd_vga_passthrough() function to check for a graphics device from
+any vendor and that the administrator enabled gfx_passthru in the xl
+domain configuration, but further require that the vendor be Intel,
+because only Intel IGD devices have an Intel OpRegion. These are the
+same checks hvmloader and libxl do to determine if the Intel OpRegion
+needs to be mapped into the guest's memory. Also, move the comment
+about trapping 0xfc for the Intel OpRegion where it belongs after
+applying this patch.
 
-Fixes: 1919631e6b55 ("block: explicitly acquire aiocontext in bottom halves that need it")
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Chuck Zmudzinski <brchuckz@aol.com>
+Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+---
+v2: * Move the comment to an appropriate place after applying this patch
+    * Mention that the comment is moved in the commit message
+
+v2 addresses the comment by Anthony Perard on the original
+version of this patch.
+
+v3: * Add Reviewed-By: Anthony Perard <anthony.perard@citrix.com>
+    * Add qemu-stable@nongnu.org to recipients to indicate the patch
+      may be suitable for backport to Qemu stable
+
+Thank you, Anthony, for taking the time to review this patch.
+
+ hw/xen/xen_pt_config_init.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+index c5c4e943a8..cad4aeba84 100644
+--- a/hw/xen/xen_pt_config_init.c
++++ b/hw/xen/xen_pt_config_init.c
+@@ -2031,12 +2031,16 @@ void xen_pt_config_init(XenPCIPassthroughState *s, Error **errp)
+             }
+         }
+ 
+-        /*
+-         * By default we will trap up to 0x40 in the cfg space.
+-         * If an intel device is pass through we need to trap 0xfc,
+-         * therefore the size should be 0xff.
+-         */
+         if (xen_pt_emu_reg_grps[i].grp_id == XEN_PCI_INTEL_OPREGION) {
++            if (!is_igd_vga_passthrough(&s->real_device) ||
++                s->real_device.vendor_id != PCI_VENDOR_ID_INTEL) {
++                continue;
++            }
++            /*
++             * By default we will trap up to 0x40 in the cfg space.
++             * If an intel device is pass through we need to trap 0xfc,
++             * therefore the size should be 0xff.
++             */
+             reg_grp_offset = XEN_PCI_INTEL_OPREGION;
+         }
+ 
+-- 
+2.36.1
 
 
