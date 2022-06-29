@@ -1,44 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o6ThK-0000mc-F6
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 05:09:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34092)
+	id 1o6ThM-0000oo-CB
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 05:09:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34254)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6Th0-0000fi-4B; Wed, 29 Jun 2022 05:09:02 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:55345)
+ id 1o6ThA-0000iC-W3; Wed, 29 Jun 2022 05:09:13 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:58471)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6Tgy-0003Wy-2l; Wed, 29 Jun 2022 05:09:01 -0400
+ id 1o6Th7-0003YJ-Fo; Wed, 29 Jun 2022 05:09:12 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue106
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MdeOl-1nXh2I412X-00ZfzS; Wed, 29
- Jun 2022 11:08:52 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MMFZQ-1oNabJ3iNS-00JNWb; Wed, 29
+ Jun 2022 11:08:56 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 00/11] Trivial branch for 7.1 patches
-Date: Wed, 29 Jun 2022 11:08:38 +0200
-Message-Id: <20220629090849.1350227-1-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Klaus Jensen <k.jensen@samsung.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 04/11] Trivial: 3 char repeat typos
+Date: Wed, 29 Jun 2022 11:08:42 +0200
+Message-Id: <20220629090849.1350227-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220629090849.1350227-1-laurent@vivier.eu>
+References: <20220629090849.1350227-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:gb3sCFyzwkALJP/DFYVXsVRbj6UO8HF3jp7TjRqfXt8fy1W/6GZ
- ruW7vW4acbxGthDm3DRtlIQgttb6z/gqmHEYsggE2LE6WDayxogcGnmB/7cpPPDS0m16gB/
- Zs/C/7hS1IuVea0qoWSrBa1yi3Rv/YrHexegb7vibQPBQUwa9C6UcEqS5aBqDxMeCA/yCtd
- pYCcfJKNOaAl297nMj8GQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5A886fuqHvU=:hyr69LegdfQnoQnD3Vc7Rs
- MO3/mS9Xh5drXZSvxEETpVGzuxhPPItYVWTb1pKtyTDcluGAxjqBLeGjCTlhxnXhv0i4CBE6h
- QFVJlgXDHURAVCNlYJ+flf8Jb0dflSmmm1xZzia6spYJWR8vz2zxejLJLlWe+xl/pJKr/wu/H
- pB3uYBaRA2TsTgM80XkPQCIkX7uEdMvNzuvXhacUS5G9PXIA/12u96+PpQ5rHbMxs86eYk7B+
- PLXKHody+BuSNFIt2n51beTi8H+bl0+D6zdTYYswugJLn7bQfNCPcvnqMyJK4ZKnT8X2NjNeb
- /r9pi7EfHQLXocCDNiWWEswxc70L8vRuLrhs4NaNP/DABMiPhPa7e/Eu3UXjNZKnHrC9JtxkQ
- wMoJYT1rgyL9xTAG4orvbmX2QEMLB9Zw8Y7VGxOJ6vh2IIy2pQWJWILF9/ynBiaSvfzEXBVvO
- 84CXcmsY3i+HsVuK1fGFr93ELzh6CIcAes+1CKu8z1AhM9/2sd6CHzJik6FbPnHA3vu77svqB
- nO5w5dNs09rateqHDzmnpI7g8fySPoizAso5dRcw79WLIbKlcc5BjkMKPD7axir370T7Yo99H
- CWEdrM3/5NPpeCWE16MkyzH9xpH/7swxK1YAdq88qp1ikOhr6SNKfAzdMbAOETnZg7fb1stKY
- RxLmzzXTEqTGOodWDusykrolULlC0+R0Dj8NZXHOOMCiGyqN1Ktxhh8o7RrJrDqzh5m7XVutt
- wVEhoAPCWI45YeXDqLSHimD/ZQYwOSo2wzQStg==
+X-Provags-ID: V03:K1:Gv0Mt8zBgpMXUNczN7rVgALsdsBgreuq62exH7QyFAfOPPw1BVg
+ MzX8y85d7atk9994RCBSZU04lLJfyD7YusenrOSbNcxDvIKWP/eRJvVKaumSHTXVW8bYU+z
+ AUZlwfceyI2G/MQ33vNtitRPFSYHlPgDcY7i3+KHx2gWTBN88fm8M8n8RMvm9NoO1Q9CxXH
+ JMHMZPylEshbqbdyf4YHg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:AZp0CD+6sis=:2JhQMXswH954DQDV1WwZbJ
+ 54Ti6E+eDWyJMy2f4C82ymMvfgFBYJ2BaGyp3m0ptOp3hdUpjChqPeqgEY8ERcsbqo7MBOyM1
+ u0yQGCbkRid6w5z1svUigHCJEjFMjCxIHMmoD86ugqGpylhAufvpAKorP43qzZPzeqsjuAqYf
+ znS4Js8ob4um3CXIPwj+1KfCu8D3Qqiw59EyIMZMuNnG+lqSXu+YBCqutohGIsLRxONEi5D8a
+ BgvNQRvNhXxIIiG+2sPpPqYWfSDJMDm2Dz7iBjlMlIKOmNLbbcnevsIAOUfwXbvn53STR/5Pl
+ 6bebbruuvZxfUqoB9c6j3ISVbuaID4wkYqnzimuQl1lf0qejY1K0E7p2Mx+K1+wnqrz2cWzOC
+ GOEiBP7IA/nLDSTk4KIaI0rmeYLbwF+jjVo3NZsvBRyZtC+IIoZbKxlWekqUYJtSUe70rVCFK
+ R+ijfnndCn9fu/ggPFrknp5zgJ2VetoivKmAgLy/m9bxC9l/WhZ8aFCHdhV9Ss4ZdFZuSk/DE
+ Jn1tM0HEMgEiExiMeBMZhkXUCj2RLTjnrvQ2McAn8FEOZzkkVZJuAL9SvPgOdO/2zifsqjijL
+ 0eoaOxwHwEO2RsBzoyWpUy47ZEw88N8L40jVYnmI3cSX9Sn51LdID3rH37F+Mk0xaqHZ1BWCt
+ pLeYcXVbGnTh3mOpUR1ZK4mwvmiANXt5F5L6eHZUfpH0nX/AB//9jjqrlP3Pb1WB74iWct8gC
+ 70YaryaV7yj/7HWCTYYOPKfTe8PMOQovN2ezrw==
 Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -58,82 +60,148 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Jun 2022 09:09:02 -0000
+X-List-Received-Date: Wed, 29 Jun 2022 09:09:13 -0000
 
-The following changes since commit ad4c7f529a279685da84297773b4ec8080153c2d:
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-  Merge tag 'pull-semi-20220628' of https://gitlab.com/rth7680/qemu into staging (2022-06-28 10:24:31 +0530)
+Inspired by Julia Lawall's fixing of Linux
+kernel comments, I looked at qemu, although I did it manually.
 
-are available in the Git repository at:
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
+Message-Id: <20220614104045.85728-2-dgilbert@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/intc/openpic.c                | 2 +-
+ hw/net/imx_fec.c                 | 2 +-
+ hw/pci/pcie_aer.c                | 2 +-
+ hw/pci/shpc.c                    | 3 ++-
+ hw/ppc/spapr_caps.c              | 2 +-
+ hw/scsi/spapr_vscsi.c            | 2 +-
+ qapi/net.json                    | 2 +-
+ tools/virtiofsd/passthrough_ll.c | 2 +-
+ ui/input.c                       | 2 +-
+ 9 files changed, 10 insertions(+), 9 deletions(-)
 
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.1-pull-request
-
-for you to fetch changes up to c379bd7551f34e42c4c935783c0c08bab41d70c1:
-
-  hw/i386/xen/xen-hvm: Inline xen_piix_pci_write_config_client() and remove it (2022-06-29 00:24:59 +0200)
-
-----------------------------------------------------------------
-trivial patches pull request 20220629
-
-----------------------------------------------------------------
-
-Bernhard Beschow (3):
-  hw/pci-host/i440fx: Remove unused parameter from i440fx_init()
-  hw/i386/xen/xen-hvm: Allow for stubbing xen_set_pci_link_route()
-  hw/i386/xen/xen-hvm: Inline xen_piix_pci_write_config_client() and
-    remove it
-
-Dr. David Alan Gilbert (2):
-  Trivial: 3 char repeat typos
-  trivial typos: namesapce
-
-Eugenio Pérez (1):
-  util: Return void on iova_tree_remove
-
-Guo Zhi (1):
-  vga: avoid crash if no default vga card
-
-Lev Kujawski (1):
-  hw/ide/atapi.c: Correct typos (CD-CDROM -> CD-ROM)
-
-Markus Armbruster (1):
-  MAINTAINERS: Add softmmu/runstate.c to "Main loop"
-
-Philippe Mathieu-Daudé (1):
-  qom/object: Remove circular include dependency
-
-Thomas Huth (1):
-  common-user: Only compile the common user code if have_user is set
-
- MAINTAINERS                      |  1 +
- common-user/meson.build          |  4 ++++
- hw/9pfs/9p-xattr-user.c          |  8 ++++----
- hw/acpi/nvdimm.c                 |  2 +-
- hw/i386/pc_piix.c                |  3 ---
- hw/i386/xen/xen-hvm.c            | 17 ++---------------
- hw/ide/atapi.c                   |  4 ++--
- hw/intc/openpic.c                |  2 +-
- hw/isa/piix3.c                   | 15 ++++++++++++++-
- hw/net/imx_fec.c                 |  2 +-
- hw/nvme/ctrl.c                   |  2 +-
- hw/pci-host/i440fx.c             |  4 +---
- hw/pci/pcie_aer.c                |  2 +-
- hw/pci/shpc.c                    |  3 ++-
- hw/ppc/spapr_caps.c              |  2 +-
- hw/scsi/spapr_vscsi.c            |  2 +-
- include/hw/pci-host/i440fx.h     |  1 -
- include/hw/xen/xen.h             |  2 +-
- include/hw/xen/xen_common.h      |  6 ------
- include/qemu/iova-tree.h         |  4 +---
- include/qom/object.h             |  1 -
- qapi/net.json                    |  2 +-
- softmmu/vl.c                     |  3 ++-
- stubs/xen-hw-stub.c              |  3 ++-
- tools/virtiofsd/passthrough_ll.c |  2 +-
- ui/input.c                       |  2 +-
- util/iova-tree.c                 |  4 +---
- 27 files changed, 47 insertions(+), 56 deletions(-)
-
+diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
+index 49504e740f33..b0787e8ee78c 100644
+--- a/hw/intc/openpic.c
++++ b/hw/intc/openpic.c
+@@ -729,7 +729,7 @@ static void openpic_tmr_set_tmr(OpenPICTimer *tmr, uint32_t val, bool enabled)
+ }
+ 
+ /*
+- * Returns the currrent tccr value, i.e., timer value (in clocks) with
++ * Returns the current tccr value, i.e., timer value (in clocks) with
+  * appropriate TOG.
+  */
+ static uint64_t openpic_tmr_get_timer(OpenPICTimer *tmr)
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 0db9aaf76a01..8c11b237de70 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -438,7 +438,7 @@ static void imx_eth_update(IMXFECState *s)
+      *   assignment fail.
+      *
+      * To ensure that all versions of Linux work, generate ENET_INT_MAC
+-     * interrrupts on both interrupt lines. This should be changed if and when
++     * interrupts on both interrupt lines. This should be changed if and when
+      * qemu supports IOMUX.
+      */
+     if (s->regs[ENET_EIR] & s->regs[ENET_EIMR] &
+diff --git a/hw/pci/pcie_aer.c b/hw/pci/pcie_aer.c
+index 92bd0530dd24..eff62f394557 100644
+--- a/hw/pci/pcie_aer.c
++++ b/hw/pci/pcie_aer.c
+@@ -323,7 +323,7 @@ static void pcie_aer_msg_root_port(PCIDevice *dev, const PCIEAERMsg *msg)
+          */
+     }
+ 
+-    /* Errro Message Received: Root Error Status register */
++    /* Error Message Received: Root Error Status register */
+     switch (msg->severity) {
+     case PCI_ERR_ROOT_CMD_COR_EN:
+         if (root_status & PCI_ERR_ROOT_COR_RCV) {
+diff --git a/hw/pci/shpc.c b/hw/pci/shpc.c
+index f822f18b9806..e71f3a748378 100644
+--- a/hw/pci/shpc.c
++++ b/hw/pci/shpc.c
+@@ -480,7 +480,8 @@ static const MemoryRegionOps shpc_mmio_ops = {
+     .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         /* SHPC ECN requires dword accesses, but the original 1.0 spec doesn't.
+-         * It's easier to suppport all sizes than worry about it. */
++         * It's easier to support all sizes than worry about it.
++         */
+         .min_access_size = 1,
+         .max_access_size = 4,
+     },
+diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
+index 655ab856a01b..b4283055c121 100644
+--- a/hw/ppc/spapr_caps.c
++++ b/hw/ppc/spapr_caps.c
+@@ -553,7 +553,7 @@ static void cap_ccf_assist_apply(SpaprMachineState *spapr, uint8_t val,
+              * instruction is a harmless no-op.  It won't correctly
+              * implement the cache count flush *but* if we have
+              * count-cache-disabled in the host, that flush is
+-             * unnnecessary.  So, specifically allow this case.  This
++             * unnecessary.  So, specifically allow this case.  This
+              * allows us to have better performance on POWER9 DD2.3,
+              * while still working on POWER9 DD2.2 and POWER8 host
+              * cpus.
+diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
+index a07a8e1523f6..e320ccaa2385 100644
+--- a/hw/scsi/spapr_vscsi.c
++++ b/hw/scsi/spapr_vscsi.c
+@@ -1013,7 +1013,7 @@ static int vscsi_send_capabilities(VSCSIState *s, vscsi_req *req)
+     }
+ 
+     /*
+-     * Current implementation does not suppport any migration or
++     * Current implementation does not support any migration or
+      * reservation capabilities. Construct the response telling the
+      * guest not to use them.
+      */
+diff --git a/qapi/net.json b/qapi/net.json
+index d6f7cfd4d656..9af11e9a3bb2 100644
+--- a/qapi/net.json
++++ b/qapi/net.json
+@@ -298,7 +298,7 @@
+ #
+ # @udp: use the udp version of l2tpv3 encapsulation
+ #
+-# @cookie64: use 64 bit coookies
++# @cookie64: use 64 bit cookies
+ #
+ # @counter: have sequence counter
+ #
+diff --git a/tools/virtiofsd/passthrough_ll.c b/tools/virtiofsd/passthrough_ll.c
+index b15c631ca512..7a73dfcce901 100644
+--- a/tools/virtiofsd/passthrough_ll.c
++++ b/tools/virtiofsd/passthrough_ll.c
+@@ -2319,7 +2319,7 @@ static int do_lo_create(fuse_req_t req, struct lo_inode *parent_inode,
+          * If security.selinux has not been remapped and selinux is enabled,
+          * use fscreate to set context before file creation. If not, use
+          * tmpfile method for regular files. Otherwise fallback to
+-         * non-atomic method of file creation and xattr settting.
++         * non-atomic method of file creation and xattr setting.
+          */
+         if (!mapped_name && lo->use_fscreate) {
+             err = do_create_secctx_fscreate(req, parent_inode, name, mode, fi,
+diff --git a/ui/input.c b/ui/input.c
+index 8ac407dec485..e2a90af889ee 100644
+--- a/ui/input.c
++++ b/ui/input.c
+@@ -364,7 +364,7 @@ void qemu_input_event_send(QemuConsole *src, InputEvent *evt)
+      * when 'alt+print' was pressed. This flaw is now fixed and the
+      * 'sysrq' key serves no further purpose. We normalize it to
+      * 'print', so that downstream receivers of the event don't
+-     * neeed to deal with this mistake
++     * need to deal with this mistake
+      */
+     if (evt->type == INPUT_EVENT_KIND_KEY &&
+         evt->u.key.data->key->u.qcode.data == Q_KEY_CODE_SYSRQ) {
 -- 
 2.36.1
 
