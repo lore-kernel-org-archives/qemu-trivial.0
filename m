@@ -1,71 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o6Y8Z-000058-HB
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 09:53:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50604)
+	id 1o6bA8-0003D3-6a
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 13:07:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ztong0001@gmail.com>)
- id 1o6T6q-0002pR-Dy; Wed, 29 Jun 2022 04:31:40 -0400
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f]:34778)
+ (Exim 4.90_1) (envelope-from <brchuckz@aim.com>) id 1o6bA6-000388-OJ
+ for qemu-trivial@nongnu.org; Wed, 29 Jun 2022 13:07:34 -0400
+Received: from sonic312-24.consmr.mail.gq1.yahoo.com ([98.137.69.205]:38331)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ztong0001@gmail.com>)
- id 1o6T6o-00048l-Fq; Wed, 29 Jun 2022 04:31:40 -0400
-Received: by mail-yb1-xb2f.google.com with SMTP id i15so26717453ybp.1;
- Wed, 29 Jun 2022 01:31:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WRjCsVoCS8Yl2Ph+nNsGtNFuuBJlgWaCpVUwhLN9JT8=;
- b=NTnEu64BpT9npPNJsh22dwHx1uVs/OB6UK/5PUz3e3hK7Mm0BlF/bTxAootHBm2u1e
- cvW4dMsF4/9k+envvjplQMQNK72d2B7OTbNiYP3waWQl79mBh53fv76a+CYCkQEi+kxG
- GBSvfzlbC5ymBbudvMfdL7rAqdfSlgZkkgXUAZxBOCaBU/ocohSdv8WUs+eEzhp3sgJj
- O/IQIivV4qofHOEF7/AXfLogt+MJhjmzYRHwWS0WNf5E7/HK/+FXzuKyFyV+P90Be94/
- Hr52GzOTwZ7MdxvUxlaAfcIlNdfcuzUkx3HkrzDGJa9niIlY4Q9HFYr4Dq4Tkyjh7QTS
- Ppyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WRjCsVoCS8Yl2Ph+nNsGtNFuuBJlgWaCpVUwhLN9JT8=;
- b=0DbHHvnI3W9HAWVF2kF5u5qxMFoo/thnF//mpcI00kOwkGvXDhnT5Mjdz2nV/iiddv
- tqo8linrqElimaPxY0Brdb8dU3AbmBrPBeIv8Sx68BevLG07h7dVHSW/jhFqGgPyEXQf
- VE0ThS7DWDmRjLLDZz1pTRdFkp5OEREqlJWgPsF/LnjqchtulV7pXxe1NBZaz5wyXmxs
- x3Ia3fE4C4nbUHdPIKH5Cgd8bVgWSGBI0EidAKj7svImeetI8S2DIUFWsHmZiEZ1aviS
- TovU2/LOT8vWjHz4mckYZZp7Yo2egBmNwz0Qf0GUnewv4SfNI7BrAHcEBRmhcf9iZZNx
- cU1w==
-X-Gm-Message-State: AJIora8RCxksmrV5mgWOBBok4R6mBCVbGjhkMKDKFWPTjFXen/x/unZ2
- 4L6Jcx1CD/U7rWVoZCvDiYbr0KEG8RT/TYoOdGM=
-X-Google-Smtp-Source: AGRyM1uF/1ME20ncqrcUNdH4ZYZ+jk2eg2H7zojrxhFrOqGKD9Az46l8G4l3M0wwT/shcGTB7kzGgLxTLnCShTKZ5QM=
-X-Received: by 2002:a25:2e50:0:b0:669:9a76:beb with SMTP id
- b16-20020a252e50000000b006699a760bebmr1998186ybn.597.1656491496173; Wed, 29
- Jun 2022 01:31:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <brchuckz@aim.com>) id 1o6bA2-0004p5-9Q
+ for qemu-trivial@nongnu.org; Wed, 29 Jun 2022 13:07:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aol.com; s=a2048;
+ t=1656522446; bh=KGleZCrK1ory7vZwxUmrZsedjLqWV8c6qrWiB0U6mow=;
+ h=From:To:Cc:Subject:Date:References:From:Subject:Reply-To;
+ b=mr80KzqVqatPdlmBEV9f0VtMfWq45miGJA2WQ0/YScGHp0WLX/IsRongAc7X6/4dJiKxYsWXgMVeN84sK+Ok8qx4ORAroEVDYBObI4y7u6QLp8emcy/is0xcnocST6dFC26JbsG1s4OnYL0DnCy4xiuqzkW95rIekWcrrKI1ayaxt/ybV6aEC5Po0y3i7Ostl+hVuKP/WUc04py+PMOP2ddUvmQjGfu3ulMwtXl0T9yFHy4s1FxQgqFYoGj+p010zGJ9/her2PjCQ1+Q0o/qafIU7/kRqggl7dCrQ7zzH3P8tVyco/xeIjnkYZdntLmt74hemEva/nM/QdUsEEuNTA==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1656522446; bh=vADSH42mt0SrfQIwqiqm56R6UvOcvPatZYtPdEu/k6D=;
+ h=X-Sonic-MF:From:To:Subject:Date:From:Subject;
+ b=D5V4w92Ebw+iFrzLrQn38NPfeAMwbCaSTip/5373qeg5aSoVrGsQPB2mWWzSoSngAmBKnAGDSPafqUpPGmPap+8ozN7nbSR1orUxuycow+zG/+tEk29BqCAe4hj2MzxXjnD3GPYphwOIEICM22CKEOKhOqBlLpj+IqAj7DM5wWJjcrHbiWRubhUk+8QCJLlI5vnPyjXkZUR2y0bfQ/ylSsAWsLPfiecDsHqTaTrKiTAuvPTCAKcoXmwMUZAbEHpziJ1QDkDUMXCPPSomiCHYYLjrlWm4cSUvI/+VYrY11LuoMpCxgMnPd/QW48aeWl5A+zy8sYy0jPiRRjmDpbfGJQ==
+X-YMail-OSG: GbWx56UVM1kDP1w7PXqGFTZw8a8.Q5vCHL21ZWJMlsWuRDhGaiptXkInk7wrSDt
+ WqjPVDDtKHzugx9w4kWGTrZ3L4oo8G_6oVwPvn52QxMqzpsPOSLM1oe5oDGkE9XC91PE0ZVB9A.9
+ zuWpvh_MqscHNfethKiY5ud1XdPBi7rzkEbAKpDUR9BXVH0iAtgCYMSOKgTvzBrv3MZgefiUaxYb
+ EAbaDk_9VPpqE50LYKI1hNW9ShAlkPfa9UIzcwmhc0JjTSZ7DVMG4iDsfaG1WjSBkHNtwgQLHDAq
+ qd0IkT5MhxgbI.V8lDONULHbfamPzFdbrdjABZc9T7XZ29vYkpjh1lngLKYOBSr6i_AwM1eQajHw
+ qxcsMRUoQFaSa43gmAsqj.UAdklSHIlSwN91Yj8UFfKW4S83YpMNnJ8pPSnT0hLLkQcvP1nuuz96
+ bIt77kd2ahfl92RW5.LV7swi2EE5P1rlgEA66ZO75S3Bdu3IkZAavbqolA2LrnWL1393Xkk6sY0h
+ 4VB1GZdWkc9MHEWlIBG9dJGpGdhnPC42XMV5tRf.b5u1EsXGhEf2WteK2o6_1DJcbFygj5KK211C
+ 9ml2hfZW3GwzbZhsPocDBlBLnTvM2_vtByT2ICPi9SwntfNqlZoDnS2KxUc8xYYSbFwQz0Kc2yHj
+ 8O4BaQWIqm5381VXtTARTBGIykK6zsi9qrGFoExFTmR2FTSJGrS52A.SHXjjnCBsaqcJ.H.F71hO
+ dLb9kpPtdq0lUoBFxRYdk7k9op6HHfuQYM1oA3NsEiigzC7lvVxC9lOL8Hw7LkdJduIObxWTq4t8
+ UjRNs0imI3Pn_.FkNVIbUItb0gCfu2cqhRQP_PahIxalZWw.trnSjMqF2X9gYfDKtMjx1Gl4.R.s
+ ZeZUIvuSLpnaEzQIezThSVsPMGOPgvMSBsTUacYTecP1Amq_aOzkf_Z.PO.TpXh6A6zlyY16uidE
+ usL94ull_vzItEZefaS7_vhZXP2vXHWEGR3KZK7RSf2jfxXUs_wK9PTCtdxQh5BNDvBKKicfPqgW
+ inXWQbY42JbLnfpGe7wXteNTV05qh13Yw0J3ON4K8h7VqtWsqCrEy0YPX0V.zGdXfqbaKFKQRXOA
+ kgg5PX5yiMcA56BhTCzzqVZj2o53brTapquMZp.PgVf2TT5q5coSQ5bWIRtABpOWKzCECRr59Py_
+ muhaJ7IBQ3VY4tiy4rqFY3BtL8HF9GSkygBhCplpSFfs_Kq47q39ZBmSIAqQUN3Ys9TU_gjipivm
+ EteGqxxiz844dHP7lGR5tIrV1XJgUKfJEPLkwCvPQB_qktOxc7tHwn3eW5jQAexeqJfDOsnF5yzv
+ VoW.74X2mxfskf6cWOS.MHgMTMQ7Q5WgX6zhPDXzLDknwZBStTJu4AT50Gn4U4SyNoROmhBiG8Ts
+ 4FzKWqUIGBefJkzH4WYRxV2I4KCyyCyuOUm36.17pILXJPXde.7ytSol31oc0LQ.OSU81k.30WW4
+ hbh8v8moTaoK_h5Sdo82aiBj2A1J58dUgSfMTTF9Alf97l89tVJiciqwrXEQDMLHMN_pDdoKf1Ox
+ e06_aew0t2sA1qijSZxnqZt9rT9A.PBfuwnkdT3V24xQMX0LILO.F5.R0IRtXrGFhjR8y6I.ZHYC
+ kz6JXJx6gTFCDWi_zU3aRUawuI9QPWv._E86kq3sMjs4NHdVKwvnRfpuh7G.16UcuTHfe9kQcNle
+ TP.LGr5p0yrnB6lNi7gykkWluTZ51o67FCZ8NDTTT.FtS7wvye1V7gpbm6kEcGHVgddsFsxiWWdb
+ K03_bbYLpAcj.IPhtd4w7cH3hoL3GsVZcgFYcay2oN6mRO3twBPLyY.CyTPBF4kQrzoriOdHxUhi
+ h1L4XN811tvB40ZD6vt9u6RW9eFygNVmfFo4XwYgjyNJIDnDORv3gsOnsIH4X4UpUhUiePeYRZ_i
+ FqddYkVykq69N_6m0VWeDzEMHCHgXhFUufc9GU0AP8cGhoia9gMnjJMdAgpCY7ByIz1XdGwFNxEx
+ HNOMG6LAVgAD48q0JHgFEn7WSF2rPL6eMkAUtMGA.W_BDH3J2AwRcg44TbtZM5jLk5daTXv1PWEB
+ PEDt.MZh_I1WAhwrDOL21ukap9hVMw3YNJOrcMGL_A2QcWmSm2ZX0GCOnfw5RY.efllqYkFxWs1r
+ .fAK4y1jBqwR8Me2GJp5tGvXs.V_bBkjmBWsQV_wgn1x6Gja6hJfiDhMUfhVIPS3bCrc7hifOPLq
+ sXlY-
+X-Sonic-MF: <brchuckz@aim.com>
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic312.consmr.mail.gq1.yahoo.com with HTTP; Wed, 29 Jun 2022 17:07:26 +0000
+Received: by hermes--production-ne1-7864dcfd54-q4948 (Yahoo Inc. Hermes SMTP
+ Server) with ESMTPA ID b6ab6cb55138359f47e14faeedf2220c; 
+ Wed, 29 Jun 2022 17:07:21 +0000 (UTC)
+From: Chuck Zmudzinski <brchuckz@aol.com>
+To: qemu-devel@nongnu.org
+Cc: xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org,
+ qemu-stable@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
+Subject: [PATCH v5] xen/pass-through: merge emulated bits correctly
+Date: Wed, 29 Jun 2022 13:07:12 -0400
+Message-Id: <e4392535d8e5266063dc5461d0f1d301e3dd5951.1656522217.git.brchuckz@aol.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-References: <CGME20220506163106uscas1p20aa8ba0a290a9b50be54df6ec4f9cee0@uscas1p2.samsung.com>
- <20220506163059.2517-1-t.zhang2@samsung.com>
- <b3fd052f-658f-2e39-816b-9e5b9e521ec7@redhat.com>
-In-Reply-To: <b3fd052f-658f-2e39-816b-9e5b9e521ec7@redhat.com>
-From: Tong Zhang <ztong0001@gmail.com>
-Date: Wed, 29 Jun 2022 01:31:25 -0700
-Message-ID: <CAA5qM4C15k3k6TSngp0tbTN50kCFLfmBvrwf_pbHheVmoXpO4g@mail.gmail.com>
-Subject: Re: [RESEND PATCH] hw/dma: fix crash caused by race condition
-To: David Hildenbrand <david@redhat.com>
-Cc: Francisco Londono <f.londono@samsung.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Stefan Hajnoczi <stefanha@gmail.com>, Tong Zhang <t.zhang2@samsung.com>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Content-Type: multipart/alternative; boundary="00000000000033f58605e291fb33"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
- envelope-from=ztong0001@gmail.com; helo=mail-yb1-xb2f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Transfer-Encoding: 8bit
+References: <e4392535d8e5266063dc5461d0f1d301e3dd5951.1656522217.git.brchuckz.ref@aol.com>
+Received-SPF: pass client-ip=98.137.69.205; envelope-from=brchuckz@aim.com;
+ helo=sonic312-24.consmr.mail.gq1.yahoo.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 29 Jun 2022 09:53:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,138 +88,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Jun 2022 08:31:41 -0000
+X-List-Received-Date: Wed, 29 Jun 2022 17:07:35 -0000
 
---00000000000033f58605e291fb33
-Content-Type: text/plain; charset="UTF-8"
+In xen_pt_config_reg_init(), there is an error in the merging of the
+emulated data with the host value. With the current Qemu, instead of
+merging the emulated bits with the host bits as defined by emu_mask,
+the emulated bits are merged with the host bits as defined by the
+inverse of emu_mask. In some cases, depending on the data in the
+registers on the host, the way the registers are setup, and the
+initial values of the emulated bits, the end result will be that
+the register is initialized with the wrong value.
 
-On Wed, Jun 29, 2022 at 12:29 AM David Hildenbrand <david@redhat.com> wrote:
+To correct this error, use the XEN_PT_MERGE_VALUE macro to help ensure
+the merge is done correctly.
 
-> On 06.05.22 18:31, Tong Zhang wrote:
-> > assert(dbs->acb) is meant to check the return value of io_func per
-> > documented in commit 6bee44ea34 ("dma: the passed io_func does not
-> > return NULL"). However, there is a chance that after calling
-> > aio_context_release(dbs->ctx); the dma_blk_cb function is called before
-> > the assertion and dbs->acb is set to NULL again at line 121. Thus when
-> > we run assert at line 181 it will fail.
-> >
-> >   softmmu/dma-helpers.c:181: dma_blk_cb: Assertion `dbs->acb' failed.
-> >
-> > Reported-by: Francisco Londono <f.londono@samsung.com>
-> > Signed-off-by: Tong Zhang <t.zhang2@samsung.com>
-> > ---
-> >  softmmu/dma-helpers.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/softmmu/dma-helpers.c b/softmmu/dma-helpers.c
-> > index 7820fec54c..cb81017928 100644
-> > --- a/softmmu/dma-helpers.c
-> > +++ b/softmmu/dma-helpers.c
-> > @@ -177,8 +177,8 @@ static void dma_blk_cb(void *opaque, int ret)
-> >      aio_context_acquire(dbs->ctx);
-> >      dbs->acb = dbs->io_func(dbs->offset, &dbs->iov,
-> >                              dma_blk_cb, dbs, dbs->io_func_opaque);
-> > -    aio_context_release(dbs->ctx);
-> >      assert(dbs->acb);
-> > +    aio_context_release(dbs->ctx);
-> >  }
-> >
-> >  static void dma_aio_cancel(BlockAIOCB *acb)
->
-> Please don't resend patches if the previous submission came to the
-> conclusion that it's unclear how this should help.
->
->
-> https://lkml.kernel.org/r/CAJSP0QW396RY_g8LS1mncDZcOv5GamURy+xv+s8zMcdq03OOMA@mail.gmail.com
->
->
-> I *still* don't understand the interaction between the lock and the
-> assertion and so far nobody was able to clarify.
->
-> --
-> Thanks,
->
-> David / dhildenb
->
-hello
+This correction is needed to resolve Qemu project issue #1061, which
+describes the failure of Xen HVM Linux guests to boot in certain
+configurations with passed through PCI devices, that is, when this error
+disables instead of enables the PCI_STATUS_CAP_LIST bit of the
+PCI_STATUS register of a passed through PCI device, which in turn
+disables the MSI-X capability of the device in Linux guests with the end
+result being that the Linux guest never completes the boot process.
 
-This message is sent way before the discussion
+Fixes: 2e87512eccf3 ("xen/pt: Sync up the dev.config and data values")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1061
+Buglink: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=988333
 
+Signed-off-by: Chuck Zmudzinski <brchuckz@aol.com>
+Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+---
+v2: Edit the commit message to more accurately describe the cause
+of the error.
 
->
+v3: * Add Reviewed-By: Anthony Perard <anthony.perard@citrix.com>
+    * Add qemu-stable@nongnu.org to recipients to indicate the patch
+      may be suitable for backport to Qemu stable
 
---00000000000033f58605e291fb33
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+v4: * Add Fixed commit subject to Fixes: 2e87512eccf3
 
-<div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Wed, Jun 29, 2022 at 12:29 AM David Hildenbrand &lt;<a h=
-ref=3D"mailto:david@redhat.com">david@redhat.com</a>&gt; wrote:<br></div><b=
-lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
-ft-width:1px;border-left-style:solid;padding-left:1ex;border-left-color:rgb=
-(204,204,204)">On 06.05.22 18:31, Tong Zhang wrote:<br>
-&gt; assert(dbs-&gt;acb) is meant to check the return value of io_func per<=
-br>
-&gt; documented in commit 6bee44ea34 (&quot;dma: the passed io_func does no=
-t<br>
-&gt; return NULL&quot;). However, there is a chance that after calling<br>
-&gt; aio_context_release(dbs-&gt;ctx); the dma_blk_cb function is called be=
-fore<br>
-&gt; the assertion and dbs-&gt;acb is set to NULL again at line 121. Thus w=
-hen<br>
-&gt; we run assert at line 181 it will fail.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0softmmu/dma-helpers.c:181: dma_blk_cb: Assertion `dbs-&gt;=
-acb&#39; failed.<br>
-&gt; <br>
-&gt; Reported-by: Francisco Londono &lt;<a href=3D"mailto:f.londono@samsung=
-.com" target=3D"_blank">f.londono@samsung.com</a>&gt;<br>
-&gt; Signed-off-by: Tong Zhang &lt;<a href=3D"mailto:t.zhang2@samsung.com" =
-target=3D"_blank">t.zhang2@samsung.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 softmmu/dma-helpers.c | 2 +-<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt; <br>
-&gt; diff --git a/softmmu/dma-helpers.c b/softmmu/dma-helpers.c<br>
-&gt; index 7820fec54c..cb81017928 100644<br>
-&gt; --- a/softmmu/dma-helpers.c<br>
-&gt; +++ b/softmmu/dma-helpers.c<br>
-&gt; @@ -177,8 +177,8 @@ static void dma_blk_cb(void *opaque, int ret)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 aio_context_acquire(dbs-&gt;ctx);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 dbs-&gt;acb =3D dbs-&gt;io_func(dbs-&gt;offset, &a=
-mp;dbs-&gt;iov,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dma_blk_cb, dbs, dbs-&gt;io_func_opaque)=
-;<br>
-&gt; -=C2=A0 =C2=A0 aio_context_release(dbs-&gt;ctx);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 assert(dbs-&gt;acb);<br>
-&gt; +=C2=A0 =C2=A0 aio_context_release(dbs-&gt;ctx);<br>
-&gt;=C2=A0 }<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 static void dma_aio_cancel(BlockAIOCB *acb)<br>
-<br>
-Please don&#39;t resend patches if the previous submission came to the<br>
-conclusion that it&#39;s unclear how this should help.<br>
-<br>
-<a href=3D"https://lkml.kernel.org/r/CAJSP0QW396RY_g8LS1mncDZcOv5GamURy+xv+=
-s8zMcdq03OOMA@mail.gmail.com" rel=3D"noreferrer" target=3D"_blank">https://=
-lkml.kernel.org/r/CAJSP0QW396RY_g8LS1mncDZcOv5GamURy+xv+s8zMcdq03OOMA@mail.=
-gmail.com</a><br>
-<br>
-<br>
-I *still* don&#39;t understand the interaction between the lock and the<br>
-assertion and so far nobody was able to clarify.<br>
-<br>
--- <br>
-Thanks,<br>
-<br>
-David / dhildenb<br>
-</blockquote><div dir=3D"auto">hello</div><div dir=3D"auto"><br></div><div =
-dir=3D"auto">This message is sent way before the discussion=C2=A0</div><div=
- dir=3D"auto"><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
-px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left=
-:1ex;border-left-color:rgb(204,204,204)"><br>
-</blockquote></div></div>
+Sorry for the extra noise with v4 (I thought the Fixed commit subject
+would be automatically added).
 
---00000000000033f58605e291fb33--
+v5: * Coding style fix: move block comment leading /* and trailing */
+      to separate lines
+
+Again, sorry for the noise, but the style of the comment was wrong
+before v5.
+
+Thank you, Anthony, again, for taking the time to review this patch.
+
+ hw/xen/xen_pt_config_init.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+index cad4aeba84..4758514ddf 100644
+--- a/hw/xen/xen_pt_config_init.c
++++ b/hw/xen/xen_pt_config_init.c
+@@ -1965,11 +1965,12 @@ static void xen_pt_config_reg_init(XenPCIPassthroughState *s,
+ 
+         if ((data & host_mask) != (val & host_mask)) {
+             uint32_t new_val;
+-
+-            /* Mask out host (including past size). */
+-            new_val = val & host_mask;
+-            /* Merge emulated ones (excluding the non-emulated ones). */
+-            new_val |= data & host_mask;
++            /*
++             * Merge the emulated bits (data) with the host bits (val)
++             * and mask out the bits past size to enable restoration
++             * of the proper value for logging below.
++             */
++            new_val = XEN_PT_MERGE_VALUE(val, data, host_mask) & size_mask;
+             /* Leave intact host and emulated values past the size - even though
+              * we do not care as we write per reg->size granularity, but for the
+              * logging below lets have the proper value. */
+-- 
+2.36.1
+
 
