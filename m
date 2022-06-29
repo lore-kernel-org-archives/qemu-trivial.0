@@ -1,46 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o6ThY-00019y-WF
+	id 1o6ThZ-0001CL-I7
 	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 05:09:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34350)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6ThD-0000k6-CH; Wed, 29 Jun 2022 05:09:21 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:42617)
+ id 1o6ThC-0000k0-5J; Wed, 29 Jun 2022 05:09:20 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:35561)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6Th9-0003YK-8O; Wed, 29 Jun 2022 05:09:15 -0400
+ id 1o6Th9-0003ZV-8N; Wed, 29 Jun 2022 05:09:13 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue106
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MPXMa-1oKHDm2M4I-00MfJl; Wed, 29
- Jun 2022 11:08:56 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MCs9W-1nxiFS2LWS-008pgN; Wed, 29
+ Jun 2022 11:08:54 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Klaus Jensen <k.jensen@samsung.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 05/11] trivial typos: namesapce
-Date: Wed, 29 Jun 2022 11:08:43 +0200
-Message-Id: <20220629090849.1350227-6-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 02/11] qom/object: Remove circular include dependency
+Date: Wed, 29 Jun 2022 11:08:40 +0200
+Message-Id: <20220629090849.1350227-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220629090849.1350227-1-laurent@vivier.eu>
 References: <20220629090849.1350227-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qxsvthMUJQXPZdEjDzghaMoaRrYcSc280reHISYYXR8m6VwjOeO
- c27rRotK7MTu4hzDMhjSj+j4IZOOi7VXMQZQWi6ID27CcpD121uKsFCFKM1hgCMM2rvbLgq
- LupR7MnX2HCVoXbmsWnX6OP+4U/sT9XS/uOQ9gLg6T+cKEIIb0jUcEPirByDIFNtL6uKDWq
- D1EyOpaI/QJSBkVQYulQg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:tqVxDB8dg8k=:2jz7OiMwCmtJb1w8ClQZw8
- gOzBcFFLzmgOlYCJKbeVLcgBQB1GwxL0/ShZHSFsYZ6690sTX5dYYM9TPm0Hh4q5dJ75uKOYv
- YYwNIq466sH7qwBj3MsnTgvFSRFGvBgzYuveb3mRLDZg3LZqXpSMYovxzJ1l7T+os+r0Dgn/l
- 5WE0YuDkDMTQENZ/CTJxjnR9oODTz5f8caT0P++LL73xjAr8Vn7aCM0thK7+7/7fEsoDPvCWM
- XzM5OWXm3t+6/V0mboPVLNYUzjrQSW2cOP4uqD6k6bwxqQyarwaG3r2kz4jySu7Yvi3Tji3o9
- NItdCsGhCXHCWNGgxLw4LDz+OLg4okZGlO59eUmEvdI4V28qw0/zwbX+6pCIXDEAAs1hVPLKa
- dRpfxRk8RVz9zbnNXRu1qit3OO0gA5gVY2xhabfgyi4g9nWVZoelihZZmmo9GP4hdmfmFLpc0
- XJQPOJWyQt8Xc10CzjJ8HV/P94nsQl3BlzHO1AnzqMFeNCaZ4trzA+JPgOnamAQ9bx3cxX51d
- EeWtbrFS1KtyX9WRndq4ZiW2R4a8nQjaSITEaINr0LeaPYXtdyB4xg/mlHXzEPVa3GgsxGBD1
- xygFU5Qtq1wxm0G5PNec9NE8SVqU/FWhFpqVwxc2WJx/aAwDT47w+dC3ph68byVdUBG883cmT
- KqRdsmVS8UC3x52FnxioqfqQBSzjuh8CYdPSF0mZvT7BgG7xRj2W4lqDIx0QH+grtK7H4XJ2m
- Z1NtwY9S/ocY+Ig7+vO2tqTS01m73i/Hvv7aeg==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:XVOeTItIsmtsh/ZS23VfCIf2jpA/NmPvJcxexAWW6fNkcGI99QA
+ fIKmPMArv53+FnlaSNKBcfCWnfcbR0904n1LgTa6m7X5YTBKrIgYka7y7LLS6nAGoF924qk
+ 5t3qdyMq1mAJKfiUX+v4xxEeCr3+MU1Ue0azMNUhPQdrX7hlEtyxs1QCvE1rlCA/ruZ/zw6
+ NxjHut+5ceUQje8x3kg9Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7fXEQMb6Qis=:z4dsr4NxUIWwlFjIBFsBF/
+ MB6H0Bus42PkEx/VZsqvDKZzE9iMKSHPImVWA7dM+Syhq88YLGhu/0JgrbRrwShotntl0dq0Y
+ yrVLA3KOCd8Ty0uh3KVDGL2NhgOCcqwtM++j+4zwvbwo5YQvqKkN77u0C5g/N+wDZtxYlPFWe
+ oZ2YN0I45yyknW5jbxkul+DDJl2UBh6HiEANA2zwuIxUd9dVgaf9azpI/L//xUgL3t5xz3D+x
+ YHkUk4zJH9JPIDrHD8KQtEx09CrlYPzgj6sTB94PxVKhI+w/Mlhxy2a9WbxX1zQW1YJkC5Nwy
+ xBx5frzp597K6YehpUgrXhVIhlZLYe7MXrKcsnB4b+QB2W6rUopLHxfQWN4QCAnarX6yOkDKA
+ Vf6LQCgzpK5oj0MeH6ujuG7yqb3BZuVidZOwBoHzupRgL0J9gIaUygJRRY8tG0Arr821Kprvw
+ qo7iZzED95G45eOmoBK2+Y/uMk6LLAERWb9C6cwc7vcle1Chntc97MZRLlA8Fqa8KTlecRoyb
+ S0G1TjNoUOjokZjzh5P8EbMdHKoiy6eajujSb0PQRfQgcu7KTbG/gfwJUTdtmV4aMKsBV+b6P
+ ol1SM4LgDVHQUBasI9XzHiOzWpK3B4gxXFMlXugjmo3+3XO1MBCcuUdWB7sToSHO0V7wlauvL
+ HezdLSMprPfBFRoEmjx96EE8OHpCLn0m68tGHRndBzQxetVpRQ8MyJZK+i4U60CyjEWqk69DH
+ jzLs94jO79j8i8nI0/PzNhsvOGzWTLL9TYHW/g==
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,88 +64,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Jun 2022 09:09:22 -0000
+X-List-Received-Date: Wed, 29 Jun 2022 09:09:24 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-'namespace' is misspelled in a bunch of places.
+"qom/object.h" doesn't need to include itself.
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
-Message-Id: <20220614104045.85728-3-dgilbert@redhat.com>
+Fixes: db1015e92e04 ("Move QOM typedefs and add missing includes")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20220509084659.52076-1-philippe.mathieu.daude@gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/9pfs/9p-xattr-user.c | 8 ++++----
- hw/acpi/nvdimm.c        | 2 +-
- hw/nvme/ctrl.c          | 2 +-
- 3 files changed, 6 insertions(+), 6 deletions(-)
+ include/qom/object.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/9pfs/9p-xattr-user.c b/hw/9pfs/9p-xattr-user.c
-index f2ae9582e610..535677ed609b 100644
---- a/hw/9pfs/9p-xattr-user.c
-+++ b/hw/9pfs/9p-xattr-user.c
-@@ -27,7 +27,7 @@ static ssize_t mp_user_getxattr(FsContext *ctx, const char *path,
- {
-     if (strncmp(name, "user.virtfs.", 12) == 0) {
-         /*
--         * Don't allow fetch of user.virtfs namesapce
-+         * Don't allow fetch of user.virtfs namespace
-          * in case of mapped security
-          */
-         errno = ENOATTR;
-@@ -49,7 +49,7 @@ static ssize_t mp_user_listxattr(FsContext *ctx, const char *path,
-             name_size -= 12;
-         } else {
-             /*
--             * Don't allow fetch of user.virtfs namesapce
-+             * Don't allow fetch of user.virtfs namespace
-              * in case of mapped security
-              */
-             return 0;
-@@ -74,7 +74,7 @@ static int mp_user_setxattr(FsContext *ctx, const char *path, const char *name,
- {
-     if (strncmp(name, "user.virtfs.", 12) == 0) {
-         /*
--         * Don't allow fetch of user.virtfs namesapce
-+         * Don't allow fetch of user.virtfs namespace
-          * in case of mapped security
-          */
-         errno = EACCES;
-@@ -88,7 +88,7 @@ static int mp_user_removexattr(FsContext *ctx,
- {
-     if (strncmp(name, "user.virtfs.", 12) == 0) {
-         /*
--         * Don't allow fetch of user.virtfs namesapce
-+         * Don't allow fetch of user.virtfs namespace
-          * in case of mapped security
-          */
-         errno = EACCES;
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 0d43da19ea42..5f85b1632706 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -476,7 +476,7 @@ struct NvdimmFuncGetLabelDataOut {
-     /* the size of buffer filled by QEMU. */
-     uint32_t len;
-     uint32_t func_ret_status; /* return status code. */
--    uint8_t out_buf[]; /* the data got via Get Namesapce Label function. */
-+    uint8_t out_buf[]; /* the data got via Get Namespace Label function. */
- } QEMU_PACKED;
- typedef struct NvdimmFuncGetLabelDataOut NvdimmFuncGetLabelDataOut;
- QEMU_BUILD_BUG_ON(sizeof(NvdimmFuncGetLabelDataOut) > NVDIMM_DSM_MEMORY_SIZE);
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index d349b3e42620..ca335dd7da6d 100644
---- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -76,7 +76,7 @@
-  *   the SUBNQN field in the controller will report the NQN of the subsystem
-  *   device. This also enables multi controller capability represented in
-  *   Identify Controller data structure in CMIC (Controller Multi-path I/O and
-- *   Namesapce Sharing Capabilities).
-+ *   Namespace Sharing Capabilities).
-  *
-  * - `aerl`
-  *   The Asynchronous Event Request Limit (AERL). Indicates the maximum number
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 5f3d5b5bf532..ef7258a5e149 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -16,7 +16,6 @@
+ 
+ #include "qapi/qapi-builtin-types.h"
+ #include "qemu/module.h"
+-#include "qom/object.h"
+ 
+ struct TypeImpl;
+ typedef struct TypeImpl *Type;
 -- 
 2.36.1
 
