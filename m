@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o6ThV-000110-Ja
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 05:09:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34304)
+	id 1o6ThW-00012Z-FF
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 05:09:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6ThC-0000k1-5a; Wed, 29 Jun 2022 05:09:20 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:49557)
+ id 1o6ThC-0000k4-Ny; Wed, 29 Jun 2022 05:09:21 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:60003)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6Th9-0003Z6-8M; Wed, 29 Jun 2022 05:09:13 -0400
+ id 1o6Th9-0003Z8-8Q; Wed, 29 Jun 2022 05:09:14 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue106
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1N7AAk-1nYbix3LNk-017VJb; Wed, 29
- Jun 2022 11:09:00 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MkIEJ-1nMjji15Ev-00kdGw; Wed, 29
+ Jun 2022 11:09:03 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Zhang Chen <chen.zhang@intel.com>,
+Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Paul Durrant <paul@xen.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 08/11] common-user: Only compile the common user code if
- have_user is set
-Date: Wed, 29 Jun 2022 11:08:46 +0200
-Message-Id: <20220629090849.1350227-9-laurent@vivier.eu>
+Subject: [PULL 11/11] hw/i386/xen/xen-hvm: Inline
+ xen_piix_pci_write_config_client() and remove it
+Date: Wed, 29 Jun 2022 11:08:49 +0200
+Message-Id: <20220629090849.1350227-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220629090849.1350227-1-laurent@vivier.eu>
 References: <20220629090849.1350227-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:vo5/ky3HxCpxN4GiWAWnszRGsYnJW6gcn4kq766y3yUrJqDKk4I
- Ok9IhxcCenMq7EbR5P+9CcmluxY/ESX5GPcTe96UH5q5g0Mry/zN3uZEewfGdQG/5ZD4ckS
- +VtXswVlTZKfpCrHsIoWrJCNUwNGFfwPZ56clu218QJ0NK5c3Gf6Scz2NhC0iw6ALf1yJL0
- dWFSV5PPlNefU5y5Dd0Rg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1UxnVJbY/k8=:7RyiZALtVjlhPLJi0D1xvV
- sufY/llIy2vCvCtofxt/eJO7RFNWkC9sYC5se5oR3XdWeOkjtafNdLREtzW5u0YHNCum9Cyfu
- FCQ9Y206Kw7wHZ8GIVSune8DPV6Kn0cPcamJ6osHU0reg7BMq88LtItRNYJTJ40/kaOi1Xf8W
- qc/+GpQDzCO57eUKueSw/T0X0iqsmlKGYGKdrkXtFB2xBk5uG2bQxpapcRpls5rdAawz3UOE6
- UVPds7T+VQTLwIALRFHCdB2aXPQ3H/cHp7Bul2Kr2LQnCuL4FPbp24nviTAdlKvwq+LT893a9
- B1aMuoouWgC6NL0YGT5MkbFGJsPfT0lLAUdqzM4If/YphSMt97qJwhUj7YmpD7P26bPEzOXaQ
- 7x4zDLjy9ywn9OksmSurmTWSROFVCFCdBm1EA64SGu+1ukiEQX6z7PqIRp648DFAIjPEa265O
- M9HT7fjuC7nMNerEyAZp1LJgNYJUXJheNw5iXpQKY6igqjw3Ye8UnlsiY6fABrimJf72wSWi5
- cUHXAIVuv6ZmW7HzUzg+HdmW071OS0Uejxf+85WLD82jCcdi6iXvbK+LFA6gjyuz3KuPdl4hl
- wR7d6Xvgn9SLDgGRav315slZ2Ip8XDcAm7elGP6JvzFx+OB9lS7Rj94GrL8a+bBdUfumNC/4u
- 2TlEw85DDw18DxY4gib/4/kbvTlvUYc5n9buL6IrIwm40K0Auhcwgx9bKObcILl3fHXM0zxIQ
- ImF83ts/l5wHUCKvZfaHmuHd1lI8ASr6kSeq9w==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:qBv/7UjwxrbeNckl58IzS2rHwDjbiPxTtEFcB+M7dqM77+2Mkpk
+ wM9kC20r6k7lkq/3A21YGRsnp5L5mFL30pQtFBsCvffQhXV9R5AAm5AgFskNK9kE9yy5s5M
+ moG7/Q1H+P1oNSB2TFdMTmvtGv3TXB7iOQmsG1eiptSD+zz0gp897Xrf5kPAFkIV5TisL7W
+ 6SqLQ5cy21B2RrH6DXEtw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:s5UxDHgrId0=:4aTgmPwCC8K+pzl/8C9Zuw
+ e6qVFO9I/jtzX5beSvz6BZVUg/t06DDBjk9iVDgw1nPPAL4pXMIq1r+EFjRJzbzbsxUX3dCTg
+ wTTSOcGp8GFox3rWaNfp0DBn2BxGF8ooYcC4ZPsesdayqvKm+6EAin+F/xkmsWeIgOarCMuf0
+ 4Dr62daujhoylvH3WR8SHeNHX6dF9Q/D8BIVThNQk0bsGKLmXfQfFAUGbE+KCuZ//Oy6nje2c
+ Px8ee4GR2jnSeTK3qSb1txiVe5dKhF2xmpheS7RRmvjsdMrzr6Lpv5gFx10mtHQZzH1aScBDZ
+ RG3A1CExHrc7JSdddIUzWOA4r2Rg7Nr9l4V+y2oHwXSdA33UycIgULA9sV3tTn5eWgB3hxdEK
+ BmBihsYJoWzxWLtRWYbOKSWbpt1aPenEZbRM2AbtqseYmWNPsaju/F0XxlKSyxsEger8IYRYc
+ OjyWuQuJ+uP2fkfQ6zGqlsVRVd1dE1CbvldFciK2jhModavQ4ERaSEAjwFyM0cb+EbT/FJbCL
+ ZURybfYFV2PzgujAzn75ngAGzLBPfWKFW/d8tn8kgRWtg9XRNQVfiArxHkDQEKuugdUnJxh7c
+ rFHWtftKO8qMjGMlcTexITJfAnbEL+8HFiIpUH7lCZskVJxgEFsQRlX1Ft2ik7MfmTBltpOls
+ 9+glxXzE63eDy6D31tyyo7EpTQ0Cluvc1sQ6lIO6RXhGZOeGZMNpIef1wHoZCe4nucW9MFQ9t
+ RkolODep46ZwIhhT64ms5jk04Il0+BZdW+4P/g==
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,35 +63,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 29 Jun 2022 09:09:22 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Bernhard Beschow <shentey@gmail.com>
 
-There is no need to waste cycles here if we only compile the system
-binaries or tools. Additionally, this change is even a hard requirement
-for building the tools on systems that do not have an entry in the
-common-user/host/ folder (since common-user/meson.build is trying
-to add such a path via the include_directories() command).
+xen_piix_pci_write_config_client() is implemented in the xen sub tree and
+uses PIIX constants internally, thus creating a direct dependency on
+PIIX. Now that xen_set_pci_link_route() is stubbable, the logic of
+xen_piix_pci_write_config_client() can be moved to PIIX which resolves
+the dependency.
 
-Reported-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Zhang Chen <chen.zhang@intel.com>
-Message-Id: <20220622140328.383961-1-thuth@redhat.com>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Paul Durrant <paul@xen.org>
+Message-Id: <20220626094656.15673-3-shentey@gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- common-user/meson.build | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/i386/xen/xen-hvm.c | 18 ------------------
+ hw/isa/piix3.c        | 15 ++++++++++++++-
+ include/hw/xen/xen.h  |  1 -
+ stubs/xen-hw-stub.c   |  4 ----
+ 4 files changed, 14 insertions(+), 24 deletions(-)
 
-diff --git a/common-user/meson.build b/common-user/meson.build
-index 26212dda5c7a..ac9de5b9e3f5 100644
---- a/common-user/meson.build
-+++ b/common-user/meson.build
-@@ -1,3 +1,7 @@
-+if not have_user
-+   subdir_done()
-+endif
-+
- common_user_inc += include_directories('host/' / host_arch)
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index 204fda7949d9..e4293d6d666a 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -15,7 +15,6 @@
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_host.h"
+ #include "hw/i386/pc.h"
+-#include "hw/southbridge/piix.h"
+ #include "hw/irq.h"
+ #include "hw/hw.h"
+ #include "hw/i386/apic-msidef.h"
+@@ -149,23 +148,6 @@ void xen_piix3_set_irq(void *opaque, int irq_num, int level)
+                            irq_num & 3, level);
+ }
  
- user_ss.add(files(
+-void xen_piix_pci_write_config_client(uint32_t address, uint32_t val, int len)
+-{
+-    int i;
+-
+-    /* Scan for updates to PCI link routes (0x60-0x63). */
+-    for (i = 0; i < len; i++) {
+-        uint8_t v = (val >> (8 * i)) & 0xff;
+-        if (v & 0x80) {
+-            v = 0;
+-        }
+-        v &= 0xf;
+-        if (((address + i) >= PIIX_PIRQCA) && ((address + i) <= PIIX_PIRQCD)) {
+-            xen_set_pci_link_route(address + i - PIIX_PIRQCA, v);
+-        }
+-    }
+-}
+-
+ int xen_set_pci_link_route(uint8_t link, uint8_t irq)
+ {
+     return xendevicemodel_set_pci_link_route(xen_dmod, xen_domid, link, irq);
+diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
+index 6388558f92d4..48f9ab109645 100644
+--- a/hw/isa/piix3.c
++++ b/hw/isa/piix3.c
+@@ -138,7 +138,20 @@ static void piix3_write_config(PCIDevice *dev,
+ static void piix3_write_config_xen(PCIDevice *dev,
+                                    uint32_t address, uint32_t val, int len)
+ {
+-    xen_piix_pci_write_config_client(address, val, len);
++    int i;
++
++    /* Scan for updates to PCI link routes (0x60-0x63). */
++    for (i = 0; i < len; i++) {
++        uint8_t v = (val >> (8 * i)) & 0xff;
++        if (v & 0x80) {
++            v = 0;
++        }
++        v &= 0xf;
++        if (((address + i) >= PIIX_PIRQCA) && ((address + i) <= PIIX_PIRQCD)) {
++            xen_set_pci_link_route(address + i - PIIX_PIRQCA, v);
++        }
++    }
++
+     piix3_write_config(dev, address, val, len);
+ }
+ 
+diff --git a/include/hw/xen/xen.h b/include/hw/xen/xen.h
+index 13bffaef531f..afdf9c436afc 100644
+--- a/include/hw/xen/xen.h
++++ b/include/hw/xen/xen.h
+@@ -23,7 +23,6 @@ extern bool xen_domid_restrict;
+ int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num);
+ int xen_set_pci_link_route(uint8_t link, uint8_t irq);
+ void xen_piix3_set_irq(void *opaque, int irq_num, int level);
+-void xen_piix_pci_write_config_client(uint32_t address, uint32_t val, int len);
+ void xen_hvm_inject_msi(uint64_t addr, uint32_t data);
+ int xen_is_pirq_msi(uint32_t msi_data);
+ 
+diff --git a/stubs/xen-hw-stub.c b/stubs/xen-hw-stub.c
+index 743967623f00..34a22f2ad72e 100644
+--- a/stubs/xen-hw-stub.c
++++ b/stubs/xen-hw-stub.c
+@@ -19,10 +19,6 @@ void xen_piix3_set_irq(void *opaque, int irq_num, int level)
+ {
+ }
+ 
+-void xen_piix_pci_write_config_client(uint32_t address, uint32_t val, int len)
+-{
+-}
+-
+ int xen_set_pci_link_route(uint8_t link, uint8_t irq)
+ {
+     return -1;
 -- 
 2.36.1
 
