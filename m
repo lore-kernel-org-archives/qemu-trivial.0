@@ -1,55 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1o6ThB-0000jX-9Q
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 05:09:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34128)
+	id 1o6ThK-0000mc-F6
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Jun 2022 05:09:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6Th0-0000fy-WF; Wed, 29 Jun 2022 05:09:10 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:51105)
+ id 1o6Th0-0000fi-4B; Wed, 29 Jun 2022 05:09:02 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:55345)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1o6Tgy-0003XS-Ok; Wed, 29 Jun 2022 05:09:02 -0400
+ id 1o6Tgy-0003Wy-2l; Wed, 29 Jun 2022 05:09:01 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue106
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MORR2-1oGytr3Vra-00Px6P; Wed, 29
- Jun 2022 11:08:58 +0200
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MdeOl-1nXh2I412X-00ZfzS; Wed, 29
+ Jun 2022 11:08:52 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 07/11] hw/pci-host/i440fx: Remove unused parameter from
- i440fx_init()
-Date: Wed, 29 Jun 2022 11:08:45 +0200
-Message-Id: <20220629090849.1350227-8-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 00/11] Trivial branch for 7.1 patches
+Date: Wed, 29 Jun 2022 11:08:38 +0200
+Message-Id: <20220629090849.1350227-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220629090849.1350227-1-laurent@vivier.eu>
-References: <20220629090849.1350227-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:UW6Qo2efnOFQMuP8uIVAPpQiETGQYtE3AzDHIo8hEKTtE6rQ50l
- yNqReuLs1Hm8z1SUrxYAP7jRPf20FwclvABlTsWYBA33urNzdH99FqzKO6887N98WyH3H/3
- cnU22Um8afgH+lR4ltWrUYai7XoLawIk98O0CyVa+YU1AZ477dkp2gxwX60pC8CtDP2JfQQ
- vvVJYfgnSqmnYUn4fi/Ug==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QAkajim2xxQ=:Ryjfal/zWPojTfZLL22m3s
- bsm76jbIpB/VNE5LPEzRaHuDNztxgx8Joy/fO4vPX4XdRO6O8HVe+pZvdS0LYBP13Z2LSId72
- WJS7H2syW3684N9iaGtQoMt+bs341zPfMyhifP/H/lWdZOTHlWddlRSWeshBw6iNDHghIwYnO
- /yvidqT837lCDfO6XQVe4dcYdDuHeh74sU/dnc6/fCZnL8fNuiwco+UHzOYt8m85Eo89nXtAN
- mX+YxcZeQJWyKqEnMfdNdzcNhTQdTZFwx3REDAhcd410nDYMQZQFToHzkyPFfzYf0qSYQJDez
- BmgxI/OB9uCrChEV9Q4SYFXSY8VySKmHu7myIvdHmaIocM+bnVoyv8V/8jBeI32+iF3sX0Dmk
- Jxy0lIajEF7pq1wetPk7t/vLtCuRSvpoE8w6+q0YL5o+JLVb3mNBiemm8GXhF7x0sYd/OvLPk
- 6Y19SyXXkv74IthA8JM8S07WN2d1c3vOeWra0v0Ec6YSIT6mip+M0Irvr4uF+0ZUlk+760Jaw
- NS0XLg80PJ4dn7IctMimWA81oHp/Ojsrn57teeGZwieR7obZwZE7KlVvbpxBwA5PGKKhNOGCJ
- fM8Y4KNsOJGMBDND2Oze8K3YrkvkKrUe+Otq4eGdL0Ft60okTJJR5cVDFTueWJwPhJLIjSRvF
- oakkGImgfMmNEhwtgY1LsfReGq3lx1qCnEWTBItpYrg1F0+oGXqOnyMIpD7NoNW3alHWirhbW
- 5wIdpka0rlyMEup3FqnfZBpyCNxpg5WKrci9VQ==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:gb3sCFyzwkALJP/DFYVXsVRbj6UO8HF3jp7TjRqfXt8fy1W/6GZ
+ ruW7vW4acbxGthDm3DRtlIQgttb6z/gqmHEYsggE2LE6WDayxogcGnmB/7cpPPDS0m16gB/
+ Zs/C/7hS1IuVea0qoWSrBa1yi3Rv/YrHexegb7vibQPBQUwa9C6UcEqS5aBqDxMeCA/yCtd
+ pYCcfJKNOaAl297nMj8GQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5A886fuqHvU=:hyr69LegdfQnoQnD3Vc7Rs
+ MO3/mS9Xh5drXZSvxEETpVGzuxhPPItYVWTb1pKtyTDcluGAxjqBLeGjCTlhxnXhv0i4CBE6h
+ QFVJlgXDHURAVCNlYJ+flf8Jb0dflSmmm1xZzia6spYJWR8vz2zxejLJLlWe+xl/pJKr/wu/H
+ pB3uYBaRA2TsTgM80XkPQCIkX7uEdMvNzuvXhacUS5G9PXIA/12u96+PpQ5rHbMxs86eYk7B+
+ PLXKHody+BuSNFIt2n51beTi8H+bl0+D6zdTYYswugJLn7bQfNCPcvnqMyJK4ZKnT8X2NjNeb
+ /r9pi7EfHQLXocCDNiWWEswxc70L8vRuLrhs4NaNP/DABMiPhPa7e/Eu3UXjNZKnHrC9JtxkQ
+ wMoJYT1rgyL9xTAG4orvbmX2QEMLB9Zw8Y7VGxOJ6vh2IIy2pQWJWILF9/ynBiaSvfzEXBVvO
+ 84CXcmsY3i+HsVuK1fGFr93ELzh6CIcAes+1CKu8z1AhM9/2sd6CHzJik6FbPnHA3vu77svqB
+ nO5w5dNs09rateqHDzmnpI7g8fySPoizAso5dRcw79WLIbKlcc5BjkMKPD7axir370T7Yo99H
+ CWEdrM3/5NPpeCWE16MkyzH9xpH/7swxK1YAdq88qp1ikOhr6SNKfAzdMbAOETnZg7fb1stKY
+ RxLmzzXTEqTGOodWDusykrolULlC0+R0Dj8NZXHOOMCiGyqN1Ktxhh8o7RrJrDqzh5m7XVutt
+ wVEhoAPCWI45YeXDqLSHimD/ZQYwOSo2wzQStg==
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,84 +58,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Jun 2022 09:09:10 -0000
+X-List-Received-Date: Wed, 29 Jun 2022 09:09:02 -0000
 
-From: Bernhard Beschow <shentey@gmail.com>
+The following changes since commit ad4c7f529a279685da84297773b4ec8080153c2d:
 
-pi440fx_state is an out-parameter which is never read by the caller.
+  Merge tag 'pull-semi-20220628' of https://gitlab.com/rth7680/qemu into staging (2022-06-28 10:24:31 +0530)
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-Id: <20220612192800.40813-1-shentey@gmail.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/i386/pc_piix.c            | 3 ---
- hw/pci-host/i440fx.c         | 4 +---
- include/hw/pci-host/i440fx.h | 1 -
- 3 files changed, 1 insertion(+), 7 deletions(-)
+are available in the Git repository at:
 
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 0fc2361ffeda..a234989ac363 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -82,7 +82,6 @@ static void pc_init1(MachineState *machine,
-     MemoryRegion *system_io = get_system_io();
-     PCIBus *pci_bus;
-     ISABus *isa_bus;
--    PCII440FXState *i440fx_state;
-     int piix3_devfn = -1;
-     qemu_irq smi_irq;
-     GSIState *gsi_state;
-@@ -203,7 +202,6 @@ static void pc_init1(MachineState *machine,
- 
-         pci_bus = i440fx_init(host_type,
-                               pci_type,
--                              &i440fx_state,
-                               system_memory, system_io, machine->ram_size,
-                               x86ms->below_4g_mem_size,
-                               x86ms->above_4g_mem_size,
-@@ -217,7 +215,6 @@ static void pc_init1(MachineState *machine,
-         isa_bus = ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa.0"));
-     } else {
-         pci_bus = NULL;
--        i440fx_state = NULL;
-         isa_bus = isa_bus_new(NULL, get_system_memory(), system_io,
-                               &error_abort);
-         pcms->hpet_enabled = false;
-diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
-index e08716142b6e..1c5ad5f918a2 100644
---- a/hw/pci-host/i440fx.c
-+++ b/hw/pci-host/i440fx.c
-@@ -238,7 +238,6 @@ static void i440fx_realize(PCIDevice *dev, Error **errp)
- }
- 
- PCIBus *i440fx_init(const char *host_type, const char *pci_type,
--                    PCII440FXState **pi440fx_state,
-                     MemoryRegion *address_space_mem,
-                     MemoryRegion *address_space_io,
-                     ram_addr_t ram_size,
-@@ -264,8 +263,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
-     d = pci_create_simple(b, 0, pci_type);
--    *pi440fx_state = I440FX_PCI_DEVICE(d);
--    f = *pi440fx_state;
-+    f = I440FX_PCI_DEVICE(d);
-     f->system_memory = address_space_mem;
-     f->pci_address_space = pci_address_space;
-     f->ram_memory = ram_memory;
-diff --git a/include/hw/pci-host/i440fx.h b/include/hw/pci-host/i440fx.h
-index f068aaba8fda..52518dbf08e6 100644
---- a/include/hw/pci-host/i440fx.h
-+++ b/include/hw/pci-host/i440fx.h
-@@ -36,7 +36,6 @@ struct PCII440FXState {
- #define TYPE_IGD_PASSTHROUGH_I440FX_PCI_DEVICE "igd-passthrough-i440FX"
- 
- PCIBus *i440fx_init(const char *host_type, const char *pci_type,
--                    PCII440FXState **pi440fx_state,
-                     MemoryRegion *address_space_mem,
-                     MemoryRegion *address_space_io,
-                     ram_addr_t ram_size,
+  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.1-pull-request
+
+for you to fetch changes up to c379bd7551f34e42c4c935783c0c08bab41d70c1:
+
+  hw/i386/xen/xen-hvm: Inline xen_piix_pci_write_config_client() and remove it (2022-06-29 00:24:59 +0200)
+
+----------------------------------------------------------------
+trivial patches pull request 20220629
+
+----------------------------------------------------------------
+
+Bernhard Beschow (3):
+  hw/pci-host/i440fx: Remove unused parameter from i440fx_init()
+  hw/i386/xen/xen-hvm: Allow for stubbing xen_set_pci_link_route()
+  hw/i386/xen/xen-hvm: Inline xen_piix_pci_write_config_client() and
+    remove it
+
+Dr. David Alan Gilbert (2):
+  Trivial: 3 char repeat typos
+  trivial typos: namesapce
+
+Eugenio Pérez (1):
+  util: Return void on iova_tree_remove
+
+Guo Zhi (1):
+  vga: avoid crash if no default vga card
+
+Lev Kujawski (1):
+  hw/ide/atapi.c: Correct typos (CD-CDROM -> CD-ROM)
+
+Markus Armbruster (1):
+  MAINTAINERS: Add softmmu/runstate.c to "Main loop"
+
+Philippe Mathieu-Daudé (1):
+  qom/object: Remove circular include dependency
+
+Thomas Huth (1):
+  common-user: Only compile the common user code if have_user is set
+
+ MAINTAINERS                      |  1 +
+ common-user/meson.build          |  4 ++++
+ hw/9pfs/9p-xattr-user.c          |  8 ++++----
+ hw/acpi/nvdimm.c                 |  2 +-
+ hw/i386/pc_piix.c                |  3 ---
+ hw/i386/xen/xen-hvm.c            | 17 ++---------------
+ hw/ide/atapi.c                   |  4 ++--
+ hw/intc/openpic.c                |  2 +-
+ hw/isa/piix3.c                   | 15 ++++++++++++++-
+ hw/net/imx_fec.c                 |  2 +-
+ hw/nvme/ctrl.c                   |  2 +-
+ hw/pci-host/i440fx.c             |  4 +---
+ hw/pci/pcie_aer.c                |  2 +-
+ hw/pci/shpc.c                    |  3 ++-
+ hw/ppc/spapr_caps.c              |  2 +-
+ hw/scsi/spapr_vscsi.c            |  2 +-
+ include/hw/pci-host/i440fx.h     |  1 -
+ include/hw/xen/xen.h             |  2 +-
+ include/hw/xen/xen_common.h      |  6 ------
+ include/qemu/iova-tree.h         |  4 +---
+ include/qom/object.h             |  1 -
+ qapi/net.json                    |  2 +-
+ softmmu/vl.c                     |  3 ++-
+ stubs/xen-hw-stub.c              |  3 ++-
+ tools/virtiofsd/passthrough_ll.c |  2 +-
+ ui/input.c                       |  2 +-
+ util/iova-tree.c                 |  4 +---
+ 27 files changed, 47 insertions(+), 56 deletions(-)
+
 -- 
 2.36.1
 
