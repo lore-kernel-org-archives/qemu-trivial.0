@@ -1,58 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oB039-00036f-Nb
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Jul 2022 16:30:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33670)
+	id 1oB04q-000584-Az
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Jul 2022 16:32:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1oB037-00035D-Ch
- for qemu-trivial@nongnu.org; Mon, 11 Jul 2022 16:30:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:34390)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1oB04p-00055J-33
+ for qemu-trivial@nongnu.org; Mon, 11 Jul 2022 16:32:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:37321)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1oB034-0001F5-TY
- for qemu-trivial@nongnu.org; Mon, 11 Jul 2022 16:30:32 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1oB04n-00033V-FV
+ for qemu-trivial@nongnu.org; Mon, 11 Jul 2022 16:32:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1657571430;
+ s=mimecast20190719; t=1657571537;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=TLrcIlM+JoKqFwKcxXSLKZFwgjJVx62DbtgUizDbsOw=;
- b=LGjeambyJUM4n/KJS3pUp2tAzNKnQydaeT/MSsA3oxdebhmPaTSL7lB/68mPCw9r5ms1Va
- vdAGZdlAQ5NhenL+FDYOzl5yp82GC4G/Wk+my0MrupGjgkwUHOgqNuGuoqhaGvR+WRvLqn
- IOC3ZXPet0TrNoW0i/KA8AAgcP8vPeY=
-Received: from mail-ua1-f71.google.com (mail-ua1-f71.google.com
- [209.85.222.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=7HG9eHXoE/+meVQfmCQ1igxAVZE16X/PlscuL2I1tNE=;
+ b=i8sXkr8kxrYwjKWhSSlA2C4iUzw2pjO7ggf+mIwA45grJh87J8VrjkTq+ZPfuIR7rYQvVA
+ 791IR7k3KLRMOOCvkv5Ur0FMl2B/8ySDhMaCexg+JTwegm4EjzKQXF85VAGB0EJ+kcM2qP
+ QcZvp4nFyZhAyQPksyYfaFFqTnlRHto=
+Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
+ [209.85.222.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-266-dlSamfaAOcO0vVa7lN58Ww-1; Mon, 11 Jul 2022 16:30:23 -0400
-X-MC-Unique: dlSamfaAOcO0vVa7lN58Ww-1
-Received: by mail-ua1-f71.google.com with SMTP id
- n92-20020ab044e5000000b003832a97a536so679761uan.7
- for <qemu-trivial@nongnu.org>; Mon, 11 Jul 2022 13:30:23 -0700 (PDT)
+ us-mta-548-drEVPYwKOgOr_yaD2rLPnQ-1; Mon, 11 Jul 2022 16:32:10 -0400
+X-MC-Unique: drEVPYwKOgOr_yaD2rLPnQ-1
+Received: by mail-ua1-f72.google.com with SMTP id
+ u43-20020a9f35ee000000b00383589e193aso561905uad.14
+ for <qemu-trivial@nongnu.org>; Mon, 11 Jul 2022 13:32:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=TLrcIlM+JoKqFwKcxXSLKZFwgjJVx62DbtgUizDbsOw=;
- b=wUohQdmhlc76G6fasAQhikEQ4V+zYYA8ElLcNvxE3oLF5diSICOuk5Vs0cOsIxVV8t
- a4Ml16bhYYimthmO+dsOnnS5Ly/zCYE2sVsPEKY7o2qDSKDjYR0f1BHx9QHi+xYPTrnZ
- W/7chy7oE7zSTqFbs2IS/Z5XrPTlC+YihFto1yuDU+Ew8DemK6wxo/af3mdOETXsJgAt
- bBEsIlaAKuL6JsoSHUy1J1FCLVP1Cp6QjnFVIMWQKsAP60SgBGmMln4SjicjQba64kzh
- vp30+Je/cK4zTwMEJHcWflWo+TEd7ogDF2tFx60zY6QtzDO7a8pv/SrLXIcNSD/CAL7H
- w8gw==
-X-Gm-Message-State: AJIora9XLG6Y5HPE+jjY0dR0aTnRmjNl0ZSXSF4RLrnT3kD/vCWqDpTT
- PHZDenwLdV1osOt6QSSj/WeY/XD5qfMoxuZCjdx14er2oAeLSXBzpYTiHt7vQkkLjxTxWs9GFGF
- mhb0RLeWKJ94Rlv8ALgPq5JLeCSAv2i880g==
-X-Received: by 2002:ab0:7706:0:b0:383:589e:1925 with SMTP id
- z6-20020ab07706000000b00383589e1925mr2082936uaq.42.1657571422588; 
- Mon, 11 Jul 2022 13:30:22 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uw3exorh1eIDkc79sVUmvJ9ADptNJquZDGRq3t0UYjZ88CIePD468zfBU3GrGML9ISGrXz4rjmHUGSe2RnktQ=
-X-Received: by 2002:ab0:7706:0:b0:383:589e:1925 with SMTP id
- z6-20020ab07706000000b00383589e1925mr2082925uaq.42.1657571422317; Mon, 11 Jul
- 2022 13:30:22 -0700 (PDT)
+ bh=7HG9eHXoE/+meVQfmCQ1igxAVZE16X/PlscuL2I1tNE=;
+ b=zdWWxXm7K12o2TG5Te6slW9EdgflY5Waa7O/1qOktUcbjA521gI0gMCdFwZYaq8gJg
+ 9g3/qXVgETBMxli6RwMFVGgA/gJD62bVx52ObXwkgNG2Plf0TiIRKTB0UOpRXbK45EUo
+ yGfEZ7QmQRe1rioQO2Lwi7pqmTlYrAulvDTg8N3wsocIEh9Fve/8RrbWiid/tPiW0FAg
+ 9uqyRa9fHVj2CnrjB2IVq6KzDGjlY1X81My8Cz//uIzPCAlL7fZdaJPERbS63ofNDnzP
+ z9NyG/oYH9EBdcoKvFEO+vu0d0ZxI5JvPZzeJPHJo6DhUSCUJ97V9dw8gFBGUyF+0y6g
+ tm0w==
+X-Gm-Message-State: AJIora9xzN6+8xrn3urZkA7i7WZVi2lDngIsOuAJ0neURjDOUJ21x5mO
+ bLFGryll0GoTMrHpdvKcqW9TixPL0MNOpOarHi5pvvXhf1auMhU6Ur84+juod24qGnfF6ETdnIs
+ fQiJQlE0LgbEBDPIUFLncg4FQh25R95WZyg==
+X-Received: by 2002:a05:6102:31ac:b0:357:530e:6496 with SMTP id
+ d12-20020a05610231ac00b00357530e6496mr3150888vsh.38.1657571529227; 
+ Mon, 11 Jul 2022 13:32:09 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1stgBxUAHkbS5fDRwhEP/3w1TJQkxoV5MFg6TBiwXcxIEHRtukQo6/lqbrMk0mwYahHwBOytH2X7adcCfbYUAM=
+X-Received: by 2002:a05:6102:31ac:b0:357:530e:6496 with SMTP id
+ d12-20020a05610231ac00b00357530e6496mr3150880vsh.38.1657571528925; Mon, 11
+ Jul 2022 13:32:08 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220711095721.61280-1-thuth@redhat.com>
-In-Reply-To: <20220711095721.61280-1-thuth@redhat.com>
+ <CAFn=p-ZKR-1W-4yuXSEh10mu5M-PEZdf693vpWsEtEAOHL2gaw@mail.gmail.com>
+In-Reply-To: <CAFn=p-ZKR-1W-4yuXSEh10mu5M-PEZdf693vpWsEtEAOHL2gaw@mail.gmail.com>
 From: John Snow <jsnow@redhat.com>
-Date: Mon, 11 Jul 2022 16:30:11 -0400
-Message-ID: <CAFn=p-ZKR-1W-4yuXSEh10mu5M-PEZdf693vpWsEtEAOHL2gaw@mail.gmail.com>
+Date: Mon, 11 Jul 2022 16:31:58 -0400
+Message-ID: <CAFn=p-Y3FPBnDOxs38SAaPnorPsgdWz_77iC5da-dtUAapZq-g@mail.gmail.com>
 Subject: Re: [PATCH] python/qemu/qmp/legacy: Replace 'returns-whitelist' with
  the correct type
 To: Thomas Huth <thuth@redhat.com>
@@ -84,43 +85,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jul 2022 20:30:33 -0000
+X-List-Received-Date: Mon, 11 Jul 2022 20:32:19 -0000
 
-On Mon, Jul 11, 2022 at 5:57 AM Thomas Huth <thuth@redhat.com> wrote:
+On Mon, Jul 11, 2022 at 4:30 PM John Snow <jsnow@redhat.com> wrote:
 >
-> 'returns-whitelist' has been renamed to 'command-returns-exceptions' in
-> commit b86df3747848 ("qapi: Rename pragma *-whitelist to *-exceptions").
+> On Mon, Jul 11, 2022 at 5:57 AM Thomas Huth <thuth@redhat.com> wrote:
+> >
+> > 'returns-whitelist' has been renamed to 'command-returns-exceptions' in
+> > commit b86df3747848 ("qapi: Rename pragma *-whitelist to *-exceptions").
+> >
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> > ---
+> >  python/qemu/qmp/legacy.py | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/python/qemu/qmp/legacy.py b/python/qemu/qmp/legacy.py
+> > index 03b5574618..1951754455 100644
+> > --- a/python/qemu/qmp/legacy.py
+> > +++ b/python/qemu/qmp/legacy.py
+> > @@ -50,7 +50,7 @@
+> >
+> >  # QMPMessage can be outgoing commands or incoming events/returns.
+> >  # QMPReturnValue is usually a dict/json object, but due to QAPI's
+> > -# 'returns-whitelist', it can actually be anything.
+> > +# 'command-returns-exceptions', it can actually be anything.
+> >  #
+> >  # {'return': {}} is a QMPMessage,
+> >  # {} is the QMPReturnValue.
+> > --
+> > 2.31.1
+> >
 >
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  python/qemu/qmp/legacy.py | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> May I cajole you to send a MR to
+> https://gitlab.com/qemu-project/python-qemu-qmp ?
 >
-> diff --git a/python/qemu/qmp/legacy.py b/python/qemu/qmp/legacy.py
-> index 03b5574618..1951754455 100644
-> --- a/python/qemu/qmp/legacy.py
-> +++ b/python/qemu/qmp/legacy.py
-> @@ -50,7 +50,7 @@
+> (Sorry for the duplicated effort while the library isn't 100% split
+> out of the tree yet.)
 >
->  # QMPMessage can be outgoing commands or incoming events/returns.
->  # QMPReturnValue is usually a dict/json object, but due to QAPI's
-> -# 'returns-whitelist', it can actually be anything.
-> +# 'command-returns-exceptions', it can actually be anything.
->  #
->  # {'return': {}} is a QMPMessage,
->  # {} is the QMPReturnValue.
-> --
-> 2.31.1
+> In this case, for qemu.git:
 >
+> Reviewed-by: John Snow <jsnow@redhat.com>
 
-May I cajole you to send a MR to
-https://gitlab.com/qemu-project/python-qemu-qmp ?
+Queued.
 
-(Sorry for the duplicated effort while the library isn't 100% split
-out of the tree yet.)
-
-In this case, for qemu.git:
-
-Reviewed-by: John Snow <jsnow@redhat.com>
+--js
 
 
