@@ -1,78 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oBMUg-0005IF-Fc
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jul 2022 16:28:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53574)
+	id 1oBscJ-0000gv-Jl
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jul 2022 02:46:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oBMUe-0005BL-Pv; Tue, 12 Jul 2022 16:28:28 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:45687)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oBMUd-0004q2-84; Tue, 12 Jul 2022 16:28:28 -0400
-Received: by mail-wr1-x431.google.com with SMTP id a5so12737367wrx.12;
- Tue, 12 Jul 2022 13:28:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=W9YnMTm4KQVfXFw96DY2vqBiBt5aZrVruQ2F7I8t9nE=;
- b=G6y+tRPf7xPUv0nP0Kbk7DcgMELlTXAfePcwTlxvQArVz0lQqBUsJ1yb2rUysPtYCs
- KZQtvJ0RBQDvpoatD/eYHHEV0TkcDG5RSRRUlevNbRJr75Q0A0iUZLPlgA2hC7hn5c76
- 0m3aY3D36TfH/utD1FwG4mndkcseynfKDdAWKJFKc5PPVHl3Vd3SyEt0xiltIuy+XhCt
- IgvntjbonKhEsIsOjhuRZScYj1aeKYwPBeEJn019YsbTi+22dPyAdxjPLigeonUa+YkY
- rHgM/yBX7oSkxGPY0fMDlrln6+Br2t4k8F8VANjdl7GnJiGingRCxjcEG0J2I3faeAb1
- cPAQ==
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1oBsbu-0000Z7-N8
+ for qemu-trivial@nongnu.org; Thu, 14 Jul 2022 02:46:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50430)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1oBsbr-0001iH-7a
+ for qemu-trivial@nongnu.org; Thu, 14 Jul 2022 02:46:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1657781162;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=45/uBJ3XkVb+HV7V/4yo5w1BdLx660KgqsVvVl/a6VA=;
+ b=anXmRriEdB3Flmgn0hT0Ss/eLUF6xlQlG7v2zA4NYq8oC42A72pasyT8+gp7ILLvR4Va43
+ C8BoUL/A872h9ICkl2wS3G18A/xE1EuTtXht+RfTQtuDQd70cDmZTe3cpfKGykzoao1eQh
+ JCFHcv7DbaHxJGnNQswEXXOz1GBywIA=
+Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
+ [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-160-DwS5CawlPH-9kwRWCVG_5Q-1; Thu, 14 Jul 2022 02:45:59 -0400
+X-MC-Unique: DwS5CawlPH-9kwRWCVG_5Q-1
+Received: by mail-lj1-f199.google.com with SMTP id
+ bg37-20020a05651c0ba500b0025d68341139so152945ljb.10
+ for <qemu-trivial@nongnu.org>; Wed, 13 Jul 2022 23:45:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=W9YnMTm4KQVfXFw96DY2vqBiBt5aZrVruQ2F7I8t9nE=;
- b=clxAkuB+UoML2AQbvXDuqP3hOzGHdNP1lNnUP7Pdwg+5Jg4WVbehQBVh+rcANk1Aoy
- 2i1JeBiDgaiFyH9/wBhd1kGJ+HdWL6Art+jrXEWtms4VvW6TJQhoY2eGPZdjwA6d7VxC
- J4gR8aANI5zQQJ0q9NZWHEm6Davv368BPH+RZzSCmhh4yCtBeXO+K4YGnTEtag8vSUSu
- 301fcfVbAv5CtD0SYFTA5YL+qrkOS+IVCUNe2x66/6AI34OVsfCRXL9rKfBKq7I+cyGo
- 32mE5u9X6zAnoV9GPs2rn+loJC96nbXYc1ZisZyj9zF8rvUwRwUmD2umSLKiTQ/NnbVA
- tFEQ==
-X-Gm-Message-State: AJIora+ZOI0Ee8uxj1FzSONl+u2/wOYtGxQGc+IGaQUYRCgmybRjrpml
- 2Ol8VTnj4p53EsienmQtXqvfhbmiZj9GOBWW
-X-Google-Smtp-Source: AGRyM1uUP+SPl9xBJtV+UqpJRpOjL+vCxYBUFpxR72VfGSwBRCUfwBmoqgSgfRo6ey9LSXEzwvaslA==
-X-Received: by 2002:a05:6000:81e:b0:21d:8811:777b with SMTP id
- bt30-20020a056000081e00b0021d8811777bmr24020366wrb.647.1657657705692; 
- Tue, 12 Jul 2022 13:28:25 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- p129-20020a1c2987000000b003a17ab4e7c8sm14235580wmp.39.2022.07.12.13.28.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Jul 2022 13:28:25 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <ba682c99-de50-eea9-1ade-89aba0a54388@amsat.org>
-Date: Tue, 12 Jul 2022 22:13:00 +0200
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=45/uBJ3XkVb+HV7V/4yo5w1BdLx660KgqsVvVl/a6VA=;
+ b=AUnrx8kmnq0J0IB3IA5heuoEyV0JL1Rbnu+FI7u3gV0FQegQwQVUK16coTVBnZBJgl
+ UiZlxtl+8Z1LTRyIibiZ0P5tMdu9CXpiDw5cqTVRpGQTn1fVcnCOHK2kDlWw4HX+0Xkg
+ YgegeA8HFVCuiVl/0bFv4UUNBxrbU6uy/TdW8ZwWGa4is2JUtDPoqzN3Act2iRRb3j23
+ RJOz57HnX3skiK+kqYZZ0ihv6lZobTd6wBU6O3ked3HnIYqRslh48lMqugsYGZddn+wl
+ Uhexyd1J9AVEw2XdsX1BOMU0L5MGZw2uLLQ7U0YUGOtS0UC8lG3vzE7TdiN/SsU2nE1E
+ UMyw==
+X-Gm-Message-State: AJIora9pyw/VA9iKoezTsaXjuBwmwGpV2xXZl33uqoYjS8513vbS95e7
+ QRKAH0TV5FNW9c2LrydZC2r0+frse0pyH1rSsDkVZNMNBm63cvfgceqx7Nv+ypE1qhqouEYG4EL
+ sQgFxWbOO3rSvDBQy5MqJAyEf06KjcXI1VQ==
+X-Received: by 2002:a05:6512:3d8a:b0:489:c93c:5970 with SMTP id
+ k10-20020a0565123d8a00b00489c93c5970mr4347638lfv.575.1657781158446; 
+ Wed, 13 Jul 2022 23:45:58 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vTA4Pukgvcn6+wXIkU0I9/Ab2DgYEFbymCUdj2ZosRxNKfaawKC9mIp67vdOeqckmZ8VFaWR1X6j2jUSFM99c=
+X-Received: by 2002:a05:6512:3d8a:b0:489:c93c:5970 with SMTP id
+ k10-20020a0565123d8a00b00489c93c5970mr4347628lfv.575.1657781158214; Wed, 13
+ Jul 2022 23:45:58 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.11.0
-Subject: Re: [PATCH] MAINTAINERS: Add myself as Guest Agent reviewer
-Content-Language: en-US
-To: Konstantin Kostiuk <kkostiuk@redhat.com>, qemu-devel@nongnu.org,
- Michael Roth <michael.roth@amd.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+References: <20220712071524.2144723-1-eperezma@redhat.com>
+In-Reply-To: <20220712071524.2144723-1-eperezma@redhat.com>
+From: Jason Wang <jasowang@redhat.com>
+Date: Thu, 14 Jul 2022 14:45:47 +0800
+Message-ID: <CACGkMEvYZy=nWC4oNTDGp+WPuK_vG8FADUz9=g4U_5gTdOnLtg@mail.gmail.com>
+Subject: Re: [PATCH] vdpa: Clean vhost_vdpa_dev_start(dev, false)
+To: =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>,
  QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20220712092715.2136898-1-kkostiuk@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220712092715.2136898-1-kkostiuk@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,26 +88,118 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jul 2022 20:28:29 -0000
+X-List-Received-Date: Thu, 14 Jul 2022 06:46:26 -0000
 
-On 12/7/22 11:27, Konstantin Kostiuk wrote:
-> Signed-off-by: Konstantin Kostiuk <kkostiuk@redhat.com>
+On Tue, Jul 12, 2022 at 3:15 PM Eugenio P=C3=A9rez <eperezma@redhat.com> wr=
+ote:
+>
+> Return value is never checked and is a clean path, so assume success
+>
+> Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
 > ---
->   MAINTAINERS | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 450abd0252..b1e73d99f3 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2880,6 +2880,7 @@ T: git https://repo.or.cz/qemu/armbru.git qapi-next
->   
->   QEMU Guest Agent
->   M: Michael Roth <michael.roth@amd.com>
-> +R: Konstantin Kostiuk <kkostiuk@redhat.com>
->   S: Maintained
->   F: qga/
->   F: docs/interop/qemu-ga.rst
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Jason Wang <jasowang@redhat.com>
+
+>  hw/virtio/vhost-vdpa.c | 33 ++++++++++-----------------------
+>  1 file changed, 10 insertions(+), 23 deletions(-)
+>
+> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
+> index 66f054a12c..d6ba4a492a 100644
+> --- a/hw/virtio/vhost-vdpa.c
+> +++ b/hw/virtio/vhost-vdpa.c
+> @@ -872,41 +872,35 @@ static int vhost_vdpa_svq_set_fds(struct vhost_dev =
+*dev,
+>  /**
+>   * Unmap a SVQ area in the device
+>   */
+> -static bool vhost_vdpa_svq_unmap_ring(struct vhost_vdpa *v,
+> +static void vhost_vdpa_svq_unmap_ring(struct vhost_vdpa *v,
+>                                        const DMAMap *needle)
+>  {
+>      const DMAMap *result =3D vhost_iova_tree_find_iova(v->iova_tree, nee=
+dle);
+>      hwaddr size;
+> -    int r;
+>
+>      if (unlikely(!result)) {
+>          error_report("Unable to find SVQ address to unmap");
+> -        return false;
+> +        return;
+>      }
+>
+>      size =3D ROUND_UP(result->size, qemu_real_host_page_size());
+> -    r =3D vhost_vdpa_dma_unmap(v, result->iova, size);
+> -    return r =3D=3D 0;
+> +    vhost_vdpa_dma_unmap(v, result->iova, size);
+>  }
+>
+> -static bool vhost_vdpa_svq_unmap_rings(struct vhost_dev *dev,
+> +static void vhost_vdpa_svq_unmap_rings(struct vhost_dev *dev,
+>                                         const VhostShadowVirtqueue *svq)
+>  {
+>      DMAMap needle =3D {};
+>      struct vhost_vdpa *v =3D dev->opaque;
+>      struct vhost_vring_addr svq_addr;
+> -    bool ok;
+>
+>      vhost_svq_get_vring_addr(svq, &svq_addr);
+>
+>      needle.translated_addr =3D svq_addr.desc_user_addr;
+> -    ok =3D vhost_vdpa_svq_unmap_ring(v, &needle);
+> -    if (unlikely(!ok)) {
+> -        return false;
+> -    }
+> +    vhost_vdpa_svq_unmap_ring(v, &needle);
+>
+>      needle.translated_addr =3D svq_addr.used_user_addr;
+> -    return vhost_vdpa_svq_unmap_ring(v, &needle);
+> +    vhost_vdpa_svq_unmap_ring(v, &needle);
+>  }
+>
+>  /**
+> @@ -1066,23 +1060,19 @@ err:
+>      return false;
+>  }
+>
+> -static bool vhost_vdpa_svqs_stop(struct vhost_dev *dev)
+> +static void vhost_vdpa_svqs_stop(struct vhost_dev *dev)
+>  {
+>      struct vhost_vdpa *v =3D dev->opaque;
+>
+>      if (!v->shadow_vqs) {
+> -        return true;
+> +        return;
+>      }
+>
+>      for (unsigned i =3D 0; i < v->shadow_vqs->len; ++i) {
+>          VhostShadowVirtqueue *svq =3D g_ptr_array_index(v->shadow_vqs, i=
+);
+> -        bool ok =3D vhost_vdpa_svq_unmap_rings(dev, svq);
+> -        if (unlikely(!ok)) {
+> -            return false;
+> -        }
+> +        vhost_vdpa_svq_unmap_rings(dev, svq);
+>      }
+>
+> -    return true;
+>  }
+>
+>  static int vhost_vdpa_dev_start(struct vhost_dev *dev, bool started)
+> @@ -1099,10 +1089,7 @@ static int vhost_vdpa_dev_start(struct vhost_dev *=
+dev, bool started)
+>          }
+>          vhost_vdpa_set_vring_ready(dev);
+>      } else {
+> -        ok =3D vhost_vdpa_svqs_stop(dev);
+> -        if (unlikely(!ok)) {
+> -            return -1;
+> -        }
+> +        vhost_vdpa_svqs_stop(dev);
+>          vhost_vdpa_host_notifiers_uninit(dev, dev->nvqs);
+>      }
+>
+> --
+> 2.31.1
+>
+
 
