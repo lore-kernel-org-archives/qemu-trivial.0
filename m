@@ -1,81 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oBscJ-0000gv-Jl
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jul 2022 02:46:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32980)
+	id 1oDVgG-00073x-LM
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jul 2022 14:41:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1oBsbu-0000Z7-N8
- for qemu-trivial@nongnu.org; Thu, 14 Jul 2022 02:46:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50430)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oDVgE-0006rI-4Z
+ for qemu-trivial@nongnu.org; Mon, 18 Jul 2022 14:41:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:50680)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1oBsbr-0001iH-7a
- for qemu-trivial@nongnu.org; Thu, 14 Jul 2022 02:46:04 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oDVgA-0006x9-I2
+ for qemu-trivial@nongnu.org; Mon, 18 Jul 2022 14:41:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1657781162;
+ s=mimecast20190719; t=1658169673;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=45/uBJ3XkVb+HV7V/4yo5w1BdLx660KgqsVvVl/a6VA=;
- b=anXmRriEdB3Flmgn0hT0Ss/eLUF6xlQlG7v2zA4NYq8oC42A72pasyT8+gp7ILLvR4Va43
- C8BoUL/A872h9ICkl2wS3G18A/xE1EuTtXht+RfTQtuDQd70cDmZTe3cpfKGykzoao1eQh
- JCFHcv7DbaHxJGnNQswEXXOz1GBywIA=
-Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
- [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=TXRen2tAOoch5MduIIDI7Qix/hl7pOSwsoHijkebK7c=;
+ b=Q3418eNin38xNtfSN4ooViH9DQKiWjVcqxvtqcwm9n5vsnRalrJU+FiPOgQ0LTa1P8j9ER
+ WHUqi4x3QNC3KOrP1xmNnUWjwWBiO6qimw46YVq/t2Tbp9ByrJ7C1cD/xsvWEe7gbR/o6x
+ WiH3zbgqBJz4Y3IwwkCS3qxCiTAxACo=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-160-DwS5CawlPH-9kwRWCVG_5Q-1; Thu, 14 Jul 2022 02:45:59 -0400
-X-MC-Unique: DwS5CawlPH-9kwRWCVG_5Q-1
-Received: by mail-lj1-f199.google.com with SMTP id
- bg37-20020a05651c0ba500b0025d68341139so152945ljb.10
- for <qemu-trivial@nongnu.org>; Wed, 13 Jul 2022 23:45:59 -0700 (PDT)
+ us-mta-50-UMf6yb0XMgWNQUI3RYQlcg-1; Mon, 18 Jul 2022 14:41:12 -0400
+X-MC-Unique: UMf6yb0XMgWNQUI3RYQlcg-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ a6-20020a05600c348600b003a2d72b7a15so9056416wmq.9
+ for <qemu-trivial@nongnu.org>; Mon, 18 Jul 2022 11:41:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=45/uBJ3XkVb+HV7V/4yo5w1BdLx660KgqsVvVl/a6VA=;
- b=AUnrx8kmnq0J0IB3IA5heuoEyV0JL1Rbnu+FI7u3gV0FQegQwQVUK16coTVBnZBJgl
- UiZlxtl+8Z1LTRyIibiZ0P5tMdu9CXpiDw5cqTVRpGQTn1fVcnCOHK2kDlWw4HX+0Xkg
- YgegeA8HFVCuiVl/0bFv4UUNBxrbU6uy/TdW8ZwWGa4is2JUtDPoqzN3Act2iRRb3j23
- RJOz57HnX3skiK+kqYZZ0ihv6lZobTd6wBU6O3ked3HnIYqRslh48lMqugsYGZddn+wl
- Uhexyd1J9AVEw2XdsX1BOMU0L5MGZw2uLLQ7U0YUGOtS0UC8lG3vzE7TdiN/SsU2nE1E
- UMyw==
-X-Gm-Message-State: AJIora9pyw/VA9iKoezTsaXjuBwmwGpV2xXZl33uqoYjS8513vbS95e7
- QRKAH0TV5FNW9c2LrydZC2r0+frse0pyH1rSsDkVZNMNBm63cvfgceqx7Nv+ypE1qhqouEYG4EL
- sQgFxWbOO3rSvDBQy5MqJAyEf06KjcXI1VQ==
-X-Received: by 2002:a05:6512:3d8a:b0:489:c93c:5970 with SMTP id
- k10-20020a0565123d8a00b00489c93c5970mr4347638lfv.575.1657781158446; 
- Wed, 13 Jul 2022 23:45:58 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vTA4Pukgvcn6+wXIkU0I9/Ab2DgYEFbymCUdj2ZosRxNKfaawKC9mIp67vdOeqckmZ8VFaWR1X6j2jUSFM99c=
-X-Received: by 2002:a05:6512:3d8a:b0:489:c93c:5970 with SMTP id
- k10-20020a0565123d8a00b00489c93c5970mr4347628lfv.575.1657781158214; Wed, 13
- Jul 2022 23:45:58 -0700 (PDT)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=TXRen2tAOoch5MduIIDI7Qix/hl7pOSwsoHijkebK7c=;
+ b=nu39ofoLoPlw7Mn7Af8MbM1tdXo+YHYrHZ/FvAetr2GXPYP1+SrzDQGPPlXGNOR+YG
+ aNH3zK1weS6yGzZSM3KmZb193N2q7RrBh9p5OxB6J/+iM+V1OIKVhIa8dNJarKlcL3r3
+ cTs7qD4AShOvhKYfP9h/+tWZcdCcoj7PuFoh/+iSV427p+0X6QkK5APnVSyG7gq4Wp7V
+ khuDK4b6sAXEWlzO7GEsDSUZ5ZSamR9w54T4qeFkfhEWz5ztkjNzzBBRm2beNoE/5Txr
+ JC5+tpjIuNAs0PtTSnqwfWHHBEw+rsuR6HALroMPBQ2RojC3UD8ieJeapRLmDE0PWFgd
+ r5Fw==
+X-Gm-Message-State: AJIora8Rfb0ejFzywOzyLgeEw5sNjKrNL+5wr+lyQ96kpuKQrO7SBtiG
+ 15dOoXSu/9hFiMaHIF7GNnZLCADKI8XIbycIKbJ/qlR3qRPF8w7+14EoamtwsKEmj9DM0qzhsD0
+ HxjupVaxNZLGaJoYcKw==
+X-Received: by 2002:a05:600c:4c22:b0:3a3:181e:887 with SMTP id
+ d34-20020a05600c4c2200b003a3181e0887mr9037122wmp.85.1658169671177; 
+ Mon, 18 Jul 2022 11:41:11 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sRDbSnoUYvlWXbl8jF+uNfswwy1urWYdUffeVHm0mjj1zbyD3lZOQGhpB08zygY/NS+b9ysg==
+X-Received: by 2002:a05:600c:4c22:b0:3a3:181e:887 with SMTP id
+ d34-20020a05600c4c2200b003a3181e0887mr9037107wmp.85.1658169670974; 
+ Mon, 18 Jul 2022 11:41:10 -0700 (PDT)
+Received: from [192.168.8.104] (tmo-096-80.customers.d1-online.com.
+ [80.187.96.80]) by smtp.gmail.com with ESMTPSA id
+ q7-20020a05600c2e4700b003a03be171b1sm15118260wmf.43.2022.07.18.11.41.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 Jul 2022 11:41:10 -0700 (PDT)
+Message-ID: <c75f1ad5-765d-65fd-0beb-19c31679eda4@redhat.com>
+Date: Mon, 18 Jul 2022 20:41:09 +0200
 MIME-Version: 1.0
-References: <20220712071524.2144723-1-eperezma@redhat.com>
-In-Reply-To: <20220712071524.2144723-1-eperezma@redhat.com>
-From: Jason Wang <jasowang@redhat.com>
-Date: Thu, 14 Jul 2022 14:45:47 +0800
-Message-ID: <CACGkMEvYZy=nWC4oNTDGp+WPuK_vG8FADUz9=g4U_5gTdOnLtg@mail.gmail.com>
-Subject: Re: [PATCH] vdpa: Clean vhost_vdpa_dev_start(dev, false)
-To: =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] python/qemu/qmp/legacy: Replace 'returns-whitelist' with
+ the correct type
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, Markus Armbruster
+ <armbru@redhat.com>, qemu-trivial@nongnu.org
+References: <20220711095721.61280-1-thuth@redhat.com>
+ <CAFn=p-ZKR-1W-4yuXSEh10mu5M-PEZdf693vpWsEtEAOHL2gaw@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <CAFn=p-ZKR-1W-4yuXSEh10mu5M-PEZdf693vpWsEtEAOHL2gaw@mail.gmail.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SORBS_WEB=1.5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,118 +97,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Jul 2022 06:46:26 -0000
+X-List-Received-Date: Mon, 18 Jul 2022 18:41:18 -0000
 
-On Tue, Jul 12, 2022 at 3:15 PM Eugenio P=C3=A9rez <eperezma@redhat.com> wr=
-ote:
->
-> Return value is never checked and is a clean path, so assume success
->
-> Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
-> ---
+On 11/07/2022 22.30, John Snow wrote:
+> On Mon, Jul 11, 2022 at 5:57 AM Thomas Huth <thuth@redhat.com> wrote:
+>>
+>> 'returns-whitelist' has been renamed to 'command-returns-exceptions' in
+>> commit b86df3747848 ("qapi: Rename pragma *-whitelist to *-exceptions").
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>   python/qemu/qmp/legacy.py | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/python/qemu/qmp/legacy.py b/python/qemu/qmp/legacy.py
+>> index 03b5574618..1951754455 100644
+>> --- a/python/qemu/qmp/legacy.py
+>> +++ b/python/qemu/qmp/legacy.py
+>> @@ -50,7 +50,7 @@
+>>
+>>   # QMPMessage can be outgoing commands or incoming events/returns.
+>>   # QMPReturnValue is usually a dict/json object, but due to QAPI's
+>> -# 'returns-whitelist', it can actually be anything.
+>> +# 'command-returns-exceptions', it can actually be anything.
+>>   #
+>>   # {'return': {}} is a QMPMessage,
+>>   # {} is the QMPReturnValue.
+>> --
+>> 2.31.1
+>>
+> 
+> May I cajole you to send a MR to
+> https://gitlab.com/qemu-project/python-qemu-qmp ?
 
-Acked-by: Jason Wang <jasowang@redhat.com>
+Sure, done now:
 
->  hw/virtio/vhost-vdpa.c | 33 ++++++++++-----------------------
->  1 file changed, 10 insertions(+), 23 deletions(-)
->
-> diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
-> index 66f054a12c..d6ba4a492a 100644
-> --- a/hw/virtio/vhost-vdpa.c
-> +++ b/hw/virtio/vhost-vdpa.c
-> @@ -872,41 +872,35 @@ static int vhost_vdpa_svq_set_fds(struct vhost_dev =
-*dev,
->  /**
->   * Unmap a SVQ area in the device
->   */
-> -static bool vhost_vdpa_svq_unmap_ring(struct vhost_vdpa *v,
-> +static void vhost_vdpa_svq_unmap_ring(struct vhost_vdpa *v,
->                                        const DMAMap *needle)
->  {
->      const DMAMap *result =3D vhost_iova_tree_find_iova(v->iova_tree, nee=
-dle);
->      hwaddr size;
-> -    int r;
->
->      if (unlikely(!result)) {
->          error_report("Unable to find SVQ address to unmap");
-> -        return false;
-> +        return;
->      }
->
->      size =3D ROUND_UP(result->size, qemu_real_host_page_size());
-> -    r =3D vhost_vdpa_dma_unmap(v, result->iova, size);
-> -    return r =3D=3D 0;
-> +    vhost_vdpa_dma_unmap(v, result->iova, size);
->  }
->
-> -static bool vhost_vdpa_svq_unmap_rings(struct vhost_dev *dev,
-> +static void vhost_vdpa_svq_unmap_rings(struct vhost_dev *dev,
->                                         const VhostShadowVirtqueue *svq)
->  {
->      DMAMap needle =3D {};
->      struct vhost_vdpa *v =3D dev->opaque;
->      struct vhost_vring_addr svq_addr;
-> -    bool ok;
->
->      vhost_svq_get_vring_addr(svq, &svq_addr);
->
->      needle.translated_addr =3D svq_addr.desc_user_addr;
-> -    ok =3D vhost_vdpa_svq_unmap_ring(v, &needle);
-> -    if (unlikely(!ok)) {
-> -        return false;
-> -    }
-> +    vhost_vdpa_svq_unmap_ring(v, &needle);
->
->      needle.translated_addr =3D svq_addr.used_user_addr;
-> -    return vhost_vdpa_svq_unmap_ring(v, &needle);
-> +    vhost_vdpa_svq_unmap_ring(v, &needle);
->  }
->
->  /**
-> @@ -1066,23 +1060,19 @@ err:
->      return false;
->  }
->
-> -static bool vhost_vdpa_svqs_stop(struct vhost_dev *dev)
-> +static void vhost_vdpa_svqs_stop(struct vhost_dev *dev)
->  {
->      struct vhost_vdpa *v =3D dev->opaque;
->
->      if (!v->shadow_vqs) {
-> -        return true;
-> +        return;
->      }
->
->      for (unsigned i =3D 0; i < v->shadow_vqs->len; ++i) {
->          VhostShadowVirtqueue *svq =3D g_ptr_array_index(v->shadow_vqs, i=
-);
-> -        bool ok =3D vhost_vdpa_svq_unmap_rings(dev, svq);
-> -        if (unlikely(!ok)) {
-> -            return false;
-> -        }
-> +        vhost_vdpa_svq_unmap_rings(dev, svq);
->      }
->
-> -    return true;
->  }
->
->  static int vhost_vdpa_dev_start(struct vhost_dev *dev, bool started)
-> @@ -1099,10 +1089,7 @@ static int vhost_vdpa_dev_start(struct vhost_dev *=
-dev, bool started)
->          }
->          vhost_vdpa_set_vring_ready(dev);
->      } else {
-> -        ok =3D vhost_vdpa_svqs_stop(dev);
-> -        if (unlikely(!ok)) {
-> -            return -1;
-> -        }
-> +        vhost_vdpa_svqs_stop(dev);
->          vhost_vdpa_host_notifiers_uninit(dev, dev->nvqs);
->      }
->
-> --
-> 2.31.1
->
+https://gitlab.com/qemu-project/python-qemu-qmp/-/merge_requests/9
+
+  Thomas
 
 
