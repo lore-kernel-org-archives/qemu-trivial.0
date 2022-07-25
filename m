@@ -1,75 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oFSIt-0000wR-Ia
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Jul 2022 23:29:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58994)
+	id 1oG2UU-0002JY-Ch
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2022 14:07:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45542)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oFSIr-0000uC-Py
- for qemu-trivial@nongnu.org; Sat, 23 Jul 2022 23:29:13 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535]:38568)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oFSIp-0000JX-LP
- for qemu-trivial@nongnu.org; Sat, 23 Jul 2022 23:29:13 -0400
-Received: by mail-pg1-x535.google.com with SMTP id e132so7504908pgc.5
- for <qemu-trivial@nongnu.org>; Sat, 23 Jul 2022 20:29:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=Fk5/EHmltq8muk397Lh0BmtKD4Eiis0rT70GirW3F9M=;
- b=VDpnmEgbLzShTj55DG/yIFSpIGC/Yf1KQpNoGp+YYNZnmK9/v6bVgUfVBUFdSkfFK6
- PSjRTVSUqjvZ1UFf0mru2BIHvUv0cjPS+AJES81xvoqH+6zOjWH1aU9ZQaCCqqTknM6f
- x7DTZ59ABfF0x0Om3osPnjcGXUGlO2I4djUyZSuHrKx517kGVdyQW0EnLRFqYGjVJXY/
- XB9LOTdDm/YO1xb7RBHSIyHO70XaxazOXYyMiF2ykcurrlR5mfk4sS+cA+tMhv1T1y6q
- g0JHQq2veXM0gIhHtLmtp3pXOHTf1fyYyA76eqOO0l5OwFHRMFcQIIT5V0OM1qDoFj3t
- Uwhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Fk5/EHmltq8muk397Lh0BmtKD4Eiis0rT70GirW3F9M=;
- b=6S+aJy4S68BZslFo6S5zRC+2M2RIHDwkGTqmD+IRA4qxDsJEZo8ANK2sdI0HvdsNpq
- hksdK1uCzghi2V+ZnQOXkS5IeYxxzqHk5w0NHKlWDf0T0GFkYLG5kJocasZzsabazozn
- wtmt1wPJ9B72LBh0J1ZjP3KFZ1bfHPy1qmF3Y+5I/74S0gIxLzMKIzGtuxJMGmaFg5Ik
- 46jD+twkEDwzPtsUsmzy58MW2C1Hf2NDUGSfFU9KezDhcbw2l90ZQgBU676OZge27kDL
- mGkIhl4oFrOjXS9sGsroDkqZ2OZnbB0ouNHe9QTixmbRbgKxMtZJiOW/fXlxyG/AAdcS
- /wyg==
-X-Gm-Message-State: AJIora+ioTMzKd6h/OKWibOUOMDG5g6ufpqXICCj5LN2znxpdhXKg2Uh
- OVYy0mo4HVvOgO/OunhID1KX7Q==
-X-Google-Smtp-Source: AGRyM1t5MNvwbeDIAoGcet5vI9vfDxxLjIIjNJKJSfUeqnMy+BunZh+KdVmGe8KejLyWt9HKZMK6Fw==
-X-Received: by 2002:a05:6a00:b92:b0:52a:e60d:dfbb with SMTP id
- g18-20020a056a000b9200b0052ae60ddfbbmr7088588pfj.72.1658633350012; 
- Sat, 23 Jul 2022 20:29:10 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1549:801:f4b6:8b1e:fb15:2af6?
- ([2602:ae:1549:801:f4b6:8b1e:fb15:2af6])
- by smtp.gmail.com with ESMTPSA id
- c4-20020a170903234400b0016bea26bb2asm4534409plh.245.2022.07.23.20.29.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 23 Jul 2022 20:29:09 -0700 (PDT)
-Message-ID: <40b70415-dd01-039e-9c69-e2fd566f5f6d@linaro.org>
-Date: Sat, 23 Jul 2022 20:29:06 -0700
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oG2US-0002JM-Tl
+ for qemu-trivial@nongnu.org; Mon, 25 Jul 2022 14:07:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44302)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oG2UP-0004fT-PB
+ for qemu-trivial@nongnu.org; Mon, 25 Jul 2022 14:07:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1658772452;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=DevWWlgm6GlTpF6XqeS9krz79brtNqqQyHUWT5+mB7g=;
+ b=EjbnYy+/2s2s8RPN+DuzcLXgrsrqBkEizvgIEJhfq9VHrM0/vmx5+Thcd5W1qZHd0T6SMQ
+ fgAGSs+T0bFuJFNsxomDFzPRnBgShmMWI8BTBXYsuKzWmOrsJ1Miq7SSVopF0ZRNmK0z+W
+ WiU0/Ug+99SZQjjuquuCHp7ipm9lh84=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-85-1wgT9EGEM_aScCklbwK00w-1; Mon, 25 Jul 2022 14:07:30 -0400
+X-MC-Unique: 1wgT9EGEM_aScCklbwK00w-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2B5D385A587;
+ Mon, 25 Jul 2022 18:07:30 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.194.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 04517492C3B;
+ Mon, 25 Jul 2022 18:07:30 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D077121E6930; Mon, 25 Jul 2022 20:07:28 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org,  raphael.norwitz@nutanix.com,  mst@redhat.com
+Subject: Re: [PATCH] contrib/vhost-user-blk: Clean up deallocation of
+ VuVirtqElement
+References: <20220630085219.1305519-1-armbru@redhat.com>
+Date: Mon, 25 Jul 2022 20:07:28 +0200
+In-Reply-To: <20220630085219.1305519-1-armbru@redhat.com> (Markus Armbruster's
+ message of "Thu, 30 Jun 2022 10:52:19 +0200")
+Message-ID: <87tu75nk0v.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] include/qemu/host-utils.h: Simplify the compiler check in
- mulu128()
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20220721074809.1513357-1-thuth@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220721074809.1513357-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,18 +69,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Jul 2022 03:29:14 -0000
+X-List-Received-Date: Mon, 25 Jul 2022 18:07:37 -0000
 
-On 7/21/22 13:18, Thomas Huth wrote:
-> We currently require at least GCC 7.4 or Clang 6.0 for compiling QEMU.
-> GCC has __builtin_mul_overflow since version 5 already, and Clang 6.0
-> also provides this built-in function (see its documentation on this page:
-> https://releases.llvm.org/6.0.0/tools/clang/docs/LanguageExtensions.html ).
-> So we can simplify the #if statement here.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Could this go via qemu-trivial now?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Markus Armbruster <armbru@redhat.com> writes:
 
-r~
+> We allocate VuVirtqElement with g_malloc() in
+> virtqueue_alloc_element(), but free it with free() in
+> vhost-user-blk.c.  Harmless, but use g_free() anyway.
+>
+> One of the calls is guarded by a "not null" condition.  Useless,
+> because it cannot be null (it's dereferenced right before), and even
+> it it could be, free() and g_free() do the right thing.  Drop the
+> conditional.
+>
+> Fixes: Coverity CID 1490290
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+> Not even compile-tested, because I can't figure out how this thing is
+> supposed to be built.  Its initial commit message says "make
+> vhost-user-blk", but that doesn't work anymore.
+>
+>  contrib/vhost-user-blk/vhost-user-blk.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
+>
+> diff --git a/contrib/vhost-user-blk/vhost-user-blk.c b/contrib/vhost-user-blk/vhost-user-blk.c
+> index 9cb78ca1d0..d6932a2645 100644
+> --- a/contrib/vhost-user-blk/vhost-user-blk.c
+> +++ b/contrib/vhost-user-blk/vhost-user-blk.c
+> @@ -106,10 +106,7 @@ static void vub_req_complete(VubReq *req)
+>                    req->size + 1);
+>      vu_queue_notify(vu_dev, req->vq);
+>  
+> -    if (req->elem) {
+> -        free(req->elem);
+> -    }
+> -
+> +    g_free(req->elem);
+>      g_free(req);
+>  }
+>  
+> @@ -243,7 +240,7 @@ static int vub_virtio_process_req(VubDev *vdev_blk,
+>      /* refer to hw/block/virtio_blk.c */
+>      if (elem->out_num < 1 || elem->in_num < 1) {
+>          fprintf(stderr, "virtio-blk request missing headers\n");
+> -        free(elem);
+> +        g_free(elem);
+>          return -1;
+>      }
+>  
+> @@ -325,7 +322,7 @@ static int vub_virtio_process_req(VubDev *vdev_blk,
+>      return 0;
+>  
+>  err:
+> -    free(elem);
+> +    g_free(elem);
+>      g_free(req);
+>      return -1;
+>  }
+
 
