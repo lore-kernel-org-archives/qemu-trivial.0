@@ -1,61 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oG2UU-0002JY-Ch
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2022 14:07:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45542)
+	id 1oGLpk-00041H-5G
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Jul 2022 10:46:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oG2US-0002JM-Tl
- for qemu-trivial@nongnu.org; Mon, 25 Jul 2022 14:07:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:44302)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oGLph-000402-SW
+ for qemu-trivial@nongnu.org; Tue, 26 Jul 2022 10:46:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:46195)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oG2UP-0004fT-PB
- for qemu-trivial@nongnu.org; Mon, 25 Jul 2022 14:07:35 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oGLpf-0007eG-IM
+ for qemu-trivial@nongnu.org; Tue, 26 Jul 2022 10:46:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1658772452;
+ s=mimecast20190719; t=1658846806;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=DevWWlgm6GlTpF6XqeS9krz79brtNqqQyHUWT5+mB7g=;
- b=EjbnYy+/2s2s8RPN+DuzcLXgrsrqBkEizvgIEJhfq9VHrM0/vmx5+Thcd5W1qZHd0T6SMQ
- fgAGSs+T0bFuJFNsxomDFzPRnBgShmMWI8BTBXYsuKzWmOrsJ1Miq7SSVopF0ZRNmK0z+W
- WiU0/Ug+99SZQjjuquuCHp7ipm9lh84=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=0BTI12aY0BMggaoc5W9golNQ7eHfw1JPtj5zdy0VNkM=;
+ b=LyMWVKvq9Lr/vHfUQitspBoRpBetbcjMGJPMXLwqY/Ledv6SjcFrhcEkVVDp01IJlB8l11
+ j1a9mLTpZl7cqNPBjVFlnwDivW+njL0GiI94Mpm1/JVJYbQ5PpdTXFqZAIQxRGU9tst6T4
+ 1+HXSUBeMW0TlL35B88JLyz7U9lhWuk=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-85-1wgT9EGEM_aScCklbwK00w-1; Mon, 25 Jul 2022 14:07:30 -0400
-X-MC-Unique: 1wgT9EGEM_aScCklbwK00w-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2B5D385A587;
- Mon, 25 Jul 2022 18:07:30 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.194.81])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 04517492C3B;
- Mon, 25 Jul 2022 18:07:30 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D077121E6930; Mon, 25 Jul 2022 20:07:28 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,  raphael.norwitz@nutanix.com,  mst@redhat.com
+ us-mta-436-ZoEfhbCsP4u2k2H2I__sAw-1; Tue, 26 Jul 2022 10:46:42 -0400
+X-MC-Unique: ZoEfhbCsP4u2k2H2I__sAw-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ z20-20020a1c4c14000000b003a3020da654so5471832wmf.5
+ for <qemu-trivial@nongnu.org>; Tue, 26 Jul 2022 07:46:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+ bh=0BTI12aY0BMggaoc5W9golNQ7eHfw1JPtj5zdy0VNkM=;
+ b=OUJoMFA4cRO54CsJVZ/LuJcFFqo7fkCuSwE6Ax4l9EbTABBeR9Szdp3fAnpG0DnL8K
+ nwAB5ZtswzpIN9UZgrTMxwE6bh6d5/IQqguL6x0TfLqKh1LDsAPQzewzIYh/DfQKzTW8
+ icyfPCkVDyZOjTRAG2ORgMkWBbzcGjJnxQ/MpStdIi2pVyLEi85iJjXmDk2S5vhOM35q
+ dM7O48e+Tr5ZSQImgOMBQKv3y/Umiq9Uz9qCSnnqYB1vnzfqLmD7+RZfZ7ce9ElOW6ng
+ NpFCIkl6848GgEYtP7thZaTfiHLjJKACTotB49rerPEYOeM40Rj+mZiH7vO+vpbCl3lY
+ lfpA==
+X-Gm-Message-State: AJIora+MbDk79mgkApxUk+Lcx8xOOTKgzfE2NISnNeYv8glKSLOXALR6
+ 0u9k676X1DJsevMFfplyd64ObqtdcN+xyDK20myTix5uwt7dZUFukIXzkkquRGQO93h83C5dWvu
+ 483tYDCMbGtpgQiao6g==
+X-Received: by 2002:a05:600c:49a4:b0:3a2:fec4:954c with SMTP id
+ h36-20020a05600c49a400b003a2fec4954cmr25492010wmp.163.1658846801574; 
+ Tue, 26 Jul 2022 07:46:41 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u0dHzMLinriIU+ORcOjO+6DBOfyMl5Ru97NZiRZRf4Jrw41/vcbjQ7pLBT2rOrY9blF37ppg==
+X-Received: by 2002:a05:600c:49a4:b0:3a2:fec4:954c with SMTP id
+ h36-20020a05600c49a400b003a2fec4954cmr25491992wmp.163.1658846801162; 
+ Tue, 26 Jul 2022 07:46:41 -0700 (PDT)
+Received: from redhat.com ([2.55.4.105]) by smtp.gmail.com with ESMTPSA id
+ a21-20020a05600c349500b003a317ee3036sm18856376wmq.2.2022.07.26.07.46.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Jul 2022 07:46:40 -0700 (PDT)
+Date: Tue, 26 Jul 2022 10:46:37 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, raphael.norwitz@nutanix.com, qemu-trivial@nongnu.org
 Subject: Re: [PATCH] contrib/vhost-user-blk: Clean up deallocation of
  VuVirtqElement
+Message-ID: <20220726104620-mutt-send-email-mst@kernel.org>
 References: <20220630085219.1305519-1-armbru@redhat.com>
-Date: Mon, 25 Jul 2022 20:07:28 +0200
-In-Reply-To: <20220630085219.1305519-1-armbru@redhat.com> (Markus Armbruster's
- message of "Thu, 30 Jun 2022 10:52:19 +0200")
-Message-ID: <87tu75nk0v.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+In-Reply-To: <20220630085219.1305519-1-armbru@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -69,31 +88,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jul 2022 18:07:37 -0000
+X-List-Received-Date: Tue, 26 Jul 2022 14:46:50 -0000
 
-Could this go via qemu-trivial now?
-
-Markus Armbruster <armbru@redhat.com> writes:
-
+On Thu, Jun 30, 2022 at 10:52:19AM +0200, Markus Armbruster wrote:
 > We allocate VuVirtqElement with g_malloc() in
 > virtqueue_alloc_element(), but free it with free() in
 > vhost-user-blk.c.  Harmless, but use g_free() anyway.
->
+> 
 > One of the calls is guarded by a "not null" condition.  Useless,
 > because it cannot be null (it's dereferenced right before), and even
 > it it could be, free() and g_free() do the right thing.  Drop the
 > conditional.
->
+> 
 > Fixes: Coverity CID 1490290
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
+
+Thanks!
+
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+
+trivial tree pls.
+
+
 > ---
 > Not even compile-tested, because I can't figure out how this thing is
 > supposed to be built.  Its initial commit message says "make
 > vhost-user-blk", but that doesn't work anymore.
->
+> 
 >  contrib/vhost-user-blk/vhost-user-blk.c | 9 +++------
 >  1 file changed, 3 insertions(+), 6 deletions(-)
->
+> 
 > diff --git a/contrib/vhost-user-blk/vhost-user-blk.c b/contrib/vhost-user-blk/vhost-user-blk.c
 > index 9cb78ca1d0..d6932a2645 100644
 > --- a/contrib/vhost-user-blk/vhost-user-blk.c
@@ -128,5 +152,7 @@ Markus Armbruster <armbru@redhat.com> writes:
 >      g_free(req);
 >      return -1;
 >  }
+> -- 
+> 2.35.3
 
 
