@@ -1,71 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oH0Bt-0004sG-FW
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2022 05:52:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40894)
+	id 1oH9iV-0001qg-Rd
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2022 16:02:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oH0Br-0004oS-U0
- for qemu-trivial@nongnu.org; Thu, 28 Jul 2022 05:52:23 -0400
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f]:34586)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1oH9iU-0001mk-3j; Thu, 28 Jul 2022 16:02:42 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:33301)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oH0Bp-0004Mh-OJ
- for qemu-trivial@nongnu.org; Thu, 28 Jul 2022 05:52:23 -0400
-Received: by mail-yb1-xb2f.google.com with SMTP id 204so1273052yba.1
- for <qemu-trivial@nongnu.org>; Thu, 28 Jul 2022 02:52:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CclOETi+Vhv48j6oliPuKoZdSQm5aSmbz7ClPj8Nf6Q=;
- b=cP/oE+UtU6ThfpsGMTT3iXPJRWKJQkYfhT3pH8B9SGqwHe9fZu642gXsRYvPAOurXH
- DdzHu2msUaZTZxtLs7BinD1npVTExIyQRavT4M1N6DMdR1UmFv5DgazRPyU2G0EHVSRy
- pwTMuQxAHCXAmxFgP+hIEnV2HWA1mRspuFQoYs61ZwLlbkEGpgh+2JibbNsagtRiQKWi
- dZaeNwRnbR55Iqk3sFzXFrUhMz2gawm12w+qmNXnnXBxbGxbMMYpxrVqfHX7bCo1LNo1
- VPYN5yUfeZZT3IlJpxrLMEg0bk8WPpzsKE/+4Rafl+yIxHLXSnEOlYnZv59Vss15LHSH
- UWTQ==
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1oH9iN-0002mB-KU; Thu, 28 Jul 2022 16:02:40 -0400
+Received: by mail-pg1-x536.google.com with SMTP id 72so2389867pge.0;
+ Thu, 28 Jul 2022 13:02:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=m0zl3TeCn86IKoa6p7FYTXNlI7C9XKjHCM/vPgbzrgU=;
+ b=o+RuaQN5cUrs+EpP306vJ4Il4tfN8lU/SNviH6RuqnJOuUdNpNvKe3w8v9/EjMocWK
+ bSGKujdFHak9x8BYhSc3YOUEyci3w4mKHc08Nh+YMLO18q46sHnNPnjTsYdB/z6spLC9
+ eR4lVsVAPMqkZrgHI+2D4/Mew2UHT9TPZHo1wyC/6ircaaEMrn/gbmoVdJ5mAXsvC/c8
+ 9epbZQ3uxPct+utZg/W/zdYNRADnAnMfmZBJYU0PT3rDGwqcZqw+HlmePgNZNiRNOdqM
+ VJTU20OlojCHLw+6TTJQObHYKIzOBgblnqHFe6A4wGynAmTGYhuwQIhULHeLBOdFxh04
+ /12A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CclOETi+Vhv48j6oliPuKoZdSQm5aSmbz7ClPj8Nf6Q=;
- b=aW34KRNbboJyh6oMx3lOok7+EPVngwGZQN7aq+DyqSZtBTg1q8ARJutyZnM7D2IG7v
- VeHAmR/rZfd8783XbvW2hrsm9xsdA7GUO2jvOn18anD0rtQy4w9P2C3yu9okW6OwaEl2
- xhi38CB96u5HLAN911BJP71BXliw1CZBJdXWPus2n9uym9sVeNAHlHn1zkxlkqKe1Eb1
- Ky2Sn2Vr3g2Ui7s9Si3UxbRy5tRc8fySGGxHbt/wPOpMjI8ZWywaS57bqcB7ZtxMag75
- hShvJtUz3bJgfll4Oongq6ANWBR52FNefFcDXk4RzQuejUMzjJdkTJwmMXa63MfsPKKU
- AtXg==
-X-Gm-Message-State: AJIora945O7BDc//u+Ef5VXAgqmih0M3BS8O+jcMQ+Y5+E8j1wIqspUa
- mwnAno3ElNMZ7flcT7U1570NvMokfFKm+YhkwcXn/Q==
-X-Google-Smtp-Source: AGRyM1tXSCPAokZuHC4uAYhHtx4dip4JA7ZEV5g+NULYfPj5lhm0vy8I2KpX9Q6M7wvSB1cwsUVV9FyffRr6VM4m9TA=
-X-Received: by 2002:a5b:7c6:0:b0:670:6ba6:d046 with SMTP id
- t6-20020a5b07c6000000b006706ba6d046mr20070880ybq.140.1659001940607; Thu, 28
- Jul 2022 02:52:20 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=m0zl3TeCn86IKoa6p7FYTXNlI7C9XKjHCM/vPgbzrgU=;
+ b=uHty7xeo9SHVJCt2lqpGB4cfnqZqNTZJZy56V4+Ki4prVnLq+2jCat+Neeumqccmjb
+ 46jDPk1exEaYxN7oriSfeq67qtdhuul3KH6llHdCovpu1ufMphDRpc8fLb6R1tU688Jd
+ RTN4CRLV3wPRnzlzTFoSHgiZK4i8wtMXuruyrhZs+qfuqFQPP+e/cQaeSKpK+fK3Gx7Z
+ t9uppfb1lzaIJMACsZQv2Oq+9JJ6NTOm/UpsILMEZHjDabpkBOdMpKOlL95U2lnsfUwk
+ zh//n6npovVz620mjGj0SA6nPYzJ1emQFcodPxxayRrEAr6vS7TfHEyt2mIpGrPMrsdf
+ 7heA==
+X-Gm-Message-State: AJIora9DlJcz87ut0b64SLgRsAllHFwPPOnbtGGs7HZQgjZmWCIpMFpZ
+ Yl1Y4DOd6to0I6GHAxxXSDpEv84ckV0=
+X-Google-Smtp-Source: AGRyM1uctSGcSdfbixw8v0yLsFtwToVkzWNLsgfD9utbtR1vdExZP7bw/Z/wM38+WTXFbAgFwem+fA==
+X-Received: by 2002:a05:6a00:998:b0:52a:db4c:541b with SMTP id
+ u24-20020a056a00099800b0052adb4c541bmr179638pfg.35.1659038553474; 
+ Thu, 28 Jul 2022 13:02:33 -0700 (PDT)
+Received: from localhost.localdomain ([103.94.185.75])
+ by smtp.googlemail.com with ESMTPSA id
+ g197-20020a6252ce000000b0052531985e3esm1219294pfb.22.2022.07.28.13.02.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Jul 2022 13:02:33 -0700 (PDT)
+From: Yonggang Luo <luoyonggang@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-trivial@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Yonggang Luo <luoyonggang@gmail.com>
+Subject: [PATCH] ci: Upgrade msys2 release to 20220603
+Date: Fri, 29 Jul 2022 04:02:14 +0800
+Message-Id: <20220728200214.1943-1-luoyonggang@gmail.com>
+X-Mailer: git-send-email 2.36.1.windows.1
 MIME-Version: 1.0
-References: <20220630085219.1305519-1-armbru@redhat.com>
- <20220701043032.GA28338@raphael-debian-dev>
- <87wncx2xw4.fsf@pond.sub.org>
- <CAFEAcA993Z7ty7FvxEX7JjLZCFWrcPRuy2eMJKwoVTZJ1Z7_vQ@mail.gmail.com>
- <20220727172759.GA30765@raphael-debian-dev>
-In-Reply-To: <20220727172759.GA30765@raphael-debian-dev>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 Jul 2022 10:51:40 +0100
-Message-ID: <CAFEAcA_g-7uM3WN6ijL4RFcb5qRatX11vyeVvSwNHRNXbuAjgg@mail.gmail.com>
-Subject: Re: [PATCH] contrib/vhost-user-blk: Clean up deallocation of
- VuVirtqElement
-To: Raphael Norwitz <raphael.norwitz@nutanix.com>
-Cc: Markus Armbruster <armbru@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- "mst@redhat.com" <mst@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,34 +77,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Jul 2022 09:52:24 -0000
+X-List-Received-Date: Thu, 28 Jul 2022 20:02:42 -0000
 
-On Wed, 27 Jul 2022 at 18:28, Raphael Norwitz
-<raphael.norwitz@nutanix.com> wrote:
->
-> On Tue, Jul 26, 2022 at 03:57:42PM +0100, Peter Maydell wrote:
-> > On Fri, 1 Jul 2022 at 06:41, Markus Armbruster <armbru@redhat.com> wrote:
-> > > Could we use a contrib/README with an explanation what "contrib" means,
-> > > and how to build and use the stuff there?
-> >
-> > I would rather we got rid of contrib/ entirely. Our git repo
-> > should contain things we care about enough to really support
-> > and believe in, in which case they should be in top level
-> > directories matching what they are (eg tools/). If we don't
-> > believe in these things enough to really support them, then
-> > we should drop them, and let those who do care maintain them
-> > as out-of-tree tools if they like.
-> >
->
-> I can't speak for a lot of stuff in contrib/ but I find the vhost-user
-> backends like vhost-user-blk and vhost-user-scsi helpful for testing and
-> development. I would like to keep maintaining those two at least.
+Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+---
+ .cirrus.yml              | 2 +-
+ .gitlab-ci.d/windows.yml | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Right, I don't mean we should just delete contrib/, but for the
-things currently in it that we do care about, we should define
-what their relationship to QEMU is and put them in a part of
-the source tree that says what they actually are. contrib/
-just means "nobody thought about it".
+diff --git a/.cirrus.yml b/.cirrus.yml
+index 20843a420c..4ffef6105b 100644
+--- a/.cirrus.yml
++++ b/.cirrus.yml
+@@ -12,7 +12,7 @@ windows_msys2_task:
+     CIRRUS_SHELL: powershell
+     MSYS: winsymlinks:nativestrict
+     MSYSTEM: MINGW64
+-    MSYS2_URL: https://github.com/msys2/msys2-installer/releases/download/2022-05-03/msys2-base-x86_64-20220503.sfx.exe
++    MSYS2_URL: https://github.com/msys2/msys2-installer/releases/download/2022-06-03/msys2-base-x86_64-20220603.sfx.exe
+     MSYS2_FINGERPRINT: 0
+     MSYS2_PACKAGES: "
+       diffutils git grep make pkg-config sed
+diff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windows.yml
+index 1b2ede49e1..da80fabe2c 100644
+--- a/.gitlab-ci.d/windows.yml
++++ b/.gitlab-ci.d/windows.yml
+@@ -17,7 +17,7 @@
+     }
+   - If ( !(Test-Path -Path msys64\var\cache\msys2.exe ) ) {
+       Invoke-WebRequest
+-      "https://github.com/msys2/msys2-installer/releases/download/2022-05-03/msys2-base-x86_64-20220503.sfx.exe"
++      "https://github.com/msys2/msys2-installer/releases/download/2022-06-03/msys2-base-x86_64-20220603.sfx.exe"
+       -outfile "msys64\var\cache\msys2.exe"
+     }
+   - msys64\var\cache\msys2.exe -y
+-- 
+2.36.1.windows.1
 
--- PMM
 
