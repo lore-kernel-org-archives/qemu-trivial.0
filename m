@@ -1,67 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oH9rO-00088x-BG
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2022 16:11:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54974)
+	id 1oHBEA-0004hB-Jj
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2022 17:39:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1oH9rN-00088c-5M; Thu, 28 Jul 2022 16:11:53 -0400
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229]:44587)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oHBE6-0004fY-GG; Thu, 28 Jul 2022 17:39:28 -0400
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34]:46042)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1oH9rL-0005LV-Ms; Thu, 28 Jul 2022 16:11:52 -0400
-Received: by mail-oi1-x229.google.com with SMTP id bb16so3594944oib.11;
- Thu, 28 Jul 2022 13:11:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oHBE5-0007IH-0Q; Thu, 28 Jul 2022 17:39:26 -0400
+Received: by mail-oa1-x34.google.com with SMTP id
+ 586e51a60fabf-10d845dcf92so3885774fac.12; 
+ Thu, 28 Jul 2022 14:39:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hiEjRFlAgoccjxp61aUxpMG3U9muC5EC79x0NFbjkGA=;
- b=R3i6WMa7algu6EIe+z6MB3pPPvrqTizE3Xt02OcZgW4Eq6HBEpw9yBavlGudFaXFoR
- JEOcP3rJUQtm/ayzvix/y47HrFr+YdOuTGC9EeUw7N08RKZK3jHvsaUF2zXSScPRoXqE
- SZB7cVsaZgUyjTLGF9+UU6y4oSm/mYX5sVRkY+fH2/NdIsFieCqje3CfSpi5VbdWYSZ2
- gekVEOMB5ier3HM+A1qxyv8R2QwpfSikeoVSoDfUFakMxQ8bWow+uuMqL3rulhtJdYF4
- UOOwL3NH3DBYHKRpavxNOflW9MdEgb00ipbzO5wJ692gRtomPLh4YR4X+eJuyfLugDii
- M3Sw==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=8l+S4QlLQ8zxU1HMTKEhFAH35d+PyqAlLtuQMK1u3sk=;
+ b=bcXNCX3zF6U0m3gY5VH9CIcnej0I/3Dazsw8KOoV01rufzxvg48SWqcoN1eM/avhbS
+ DHtKXv729Tw9N17L0vZZrHTmBEl9b7H2Qynx0G2OQ+7Y+20HPuFccG9JvR6Jfa3roEdp
+ SGyTnvt3PK1WV5yDkxWGkb4Xz3Wqy3t7v1/0zZSzI5UhC2A3KY+W5wIQ6F4WBs1y+80P
+ y04NjYcz6jSFOQToC4bno1KRq2uSHh7ytC9nTAFtJ3S68elxFIwlpvnu48ccFk97t6t/
+ AN6eatOj0NDKaK6hdcMwl8r3DQ8Yo5Fz2MIlW6Ab/jVMT1VM1WMr4R/Poq5NZ58hb2B3
+ m5Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=hiEjRFlAgoccjxp61aUxpMG3U9muC5EC79x0NFbjkGA=;
- b=fkab7/DpCCsIdPJ608OVUpuccy0E11hbB0IRJAZF/fzihuvy7zDm+16nBGa8/4xrNn
- TF5KcEhFv8CtJUkBTOyKn8kZLSODR3n0iBBfeg1TL0viLxCLnoeDchu7fw9Su7y0hWGM
- 46KfqJKXr+kcjGKSfJtBrL3AQ6wDy6T+cQZ0CWP3WzTKftxxl+5CLdm0FfTw7WODEUP9
- CMfeCs7KayhKNnyteSn1Lzj0n4JZMUeLUg9p+KZJWgztvLK7defCK6A14wzu+ZnIe9n6
- iOTTYnz5LM9KBFKxdYo4UrXLmWCymziSJDWOEaseam/YZD08DJuT+vatoF3ihj2rBtag
- IF0g==
-X-Gm-Message-State: AJIora/mMGKE8tPVRFQHDBAtZlfemaktmmIw6Md48REfL8VhCBKLFtjg
- /qJFmQQNJdzbrI9P03MbHJo+OaFlq/w=
-X-Google-Smtp-Source: AGRyM1uTNgBSEl9ELlCkLsMSPPZt3fPaMq+EzJARj/gKlTFtOBtynjMfS+Gs3b16b98tUAFTqGQ+Fg==
-X-Received: by 2002:a05:6808:1586:b0:33a:b957:4491 with SMTP id
- t6-20020a056808158600b0033ab9574491mr492998oiw.288.1659039109451; 
- Thu, 28 Jul 2022 13:11:49 -0700 (PDT)
-Received: from localhost.localdomain ([103.94.185.75])
- by smtp.googlemail.com with ESMTPSA id
- o14-20020a9d6d0e000000b0061c4a7a37fasm677434otp.41.2022.07.28.13.11.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Jul 2022 13:11:49 -0700 (PDT)
-From: Yonggang Luo <luoyonggang@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- qemu-ppc@nongnu.org, Yonggang Luo <luoyonggang@gmail.com>
-Subject: [PATCH] ppc: Remove redundant macro MSR_BOOK3S_MASK.
-Date: Fri, 29 Jul 2022 04:11:35 +0800
-Message-Id: <20220728201135.223-1-luoyonggang@gmail.com>
-X-Mailer: git-send-email 2.36.1.windows.1
+ bh=8l+S4QlLQ8zxU1HMTKEhFAH35d+PyqAlLtuQMK1u3sk=;
+ b=le5V0tH4seOnBx/oLzNV7SWKLvxyQaJas+T9b4dc5MFG7UIS1G9XZQ9GbjO5/gSi3q
+ KCNgT48BTvuByYF/cyl2qCf6JrPF6W8oyF4gyQ3PD06oJIXzcgdAsBmtPMhMnlKvuL9S
+ tKgbXhG8iqKaiJgYTqS7nOmC/JrnFi7N7roXGdYwV2a11Di+PxjvAHJI4DCyq6t+IlNt
+ LW2VVQWiPRd78mctO0Wz2y0YJrao6ElvIQ3INuzH9K11FFkH7ZrJddisXjVCwG6vFls3
+ eZ8r/ckbfT1z/D+Jni3pi9UCyVajtIJze5DKuEkPGHYyskMB73MZN9fYKmrnUjkEzgaP
+ LFTg==
+X-Gm-Message-State: AJIora+4wtTrJT4McWFpWzr12SmbfOd2EG2kMt8upmKVz80f3KnS78s6
+ IQeO2zXgIp4jXKoqb7BXv5g=
+X-Google-Smtp-Source: AGRyM1vgUJTXWve0vXhu6GLQOn09cWnnZIOuUe2Do1xN+0sDMg7JAQrgaNTl+OSPxVaoKV1zSFwocA==
+X-Received: by 2002:a05:6870:14c7:b0:f2:c44c:d054 with SMTP id
+ l7-20020a05687014c700b000f2c44cd054mr320891oab.70.1659044363057; 
+ Thu, 28 Jul 2022 14:39:23 -0700 (PDT)
+Received: from [192.168.10.102] ([179.225.208.46])
+ by smtp.gmail.com with ESMTPSA id
+ f24-20020a056870899800b0010db1a8d931sm951036oaq.28.2022.07.28.14.39.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Jul 2022 14:39:22 -0700 (PDT)
+Message-ID: <222e2084-3090-517c-170d-ae098a79aff8@gmail.com>
+Date: Thu, 28 Jul 2022 18:39:18 -0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::229;
- envelope-from=luoyonggang@gmail.com; helo=mail-oi1-x229.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] ppc: Remove redundant macro MSR_BOOK3S_MASK.
+Content-Language: en-US
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ qemu-trivial@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org
+References: <20220728201135.223-1-luoyonggang@gmail.com>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20220728201135.223-1-luoyonggang@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::34;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x34.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -76,26 +83,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Jul 2022 20:11:53 -0000
+X-List-Received-Date: Thu, 28 Jul 2022 21:39:28 -0000
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- target/ppc/excp_helper.c | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-index cb752b184a..7550aafed6 100644
---- a/target/ppc/excp_helper.c
-+++ b/target/ppc/excp_helper.c
-@@ -2015,7 +2015,6 @@ void helper_rfi(CPUPPCState *env)
-     do_rfi(env, env->spr[SPR_SRR0], env->spr[SPR_SRR1] & 0xfffffffful);
- }
- 
--#define MSR_BOOK3S_MASK
- #if defined(TARGET_PPC64)
- void helper_rfid(CPUPPCState *env)
- {
--- 
-2.36.1.windows.1
 
+On 7/28/22 17:11, Yonggang Luo wrote:
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>   target/ppc/excp_helper.c | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+> index cb752b184a..7550aafed6 100644
+> --- a/target/ppc/excp_helper.c
+> +++ b/target/ppc/excp_helper.c
+> @@ -2015,7 +2015,6 @@ void helper_rfi(CPUPPCState *env)
+>       do_rfi(env, env->spr[SPR_SRR0], env->spr[SPR_SRR1] & 0xfffffffful);
+>   }
+>   
+> -#define MSR_BOOK3S_MASK
+
+The tag was introduced by a2e71b28e832 ("ppc: Fix rfi/rfid/hrfi/... emulation").
+Even back then it wasn't being used.
+
+
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+
+
+Laurent, I believe this is qemu-trivial material. Let me know if you want
+me to get it via the ppc tree instead.
+
+
+Daniel
+
+
+>   #if defined(TARGET_PPC64)
+>   void helper_rfid(CPUPPCState *env)
+>   {
 
