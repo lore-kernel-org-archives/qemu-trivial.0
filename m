@@ -1,64 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oHFQl-0004zN-8G
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2022 22:08:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55826)
+	id 1oHQ4t-0001iT-9E
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jul 2022 09:30:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1oHFQj-0004yt-MB; Thu, 28 Jul 2022 22:08:45 -0400
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a]:37857)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1oHQ4e-0001gV-Vr
+ for qemu-trivial@nongnu.org; Fri, 29 Jul 2022 09:30:41 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:47076)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1oHFQh-0001i2-Mg; Thu, 28 Jul 2022 22:08:45 -0400
-Received: by mail-qt1-x82a.google.com with SMTP id l14so2460761qtv.4;
- Thu, 28 Jul 2022 19:08:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=H8LAnQEdgaQwy5buPc63lvVf8AswWrRTySnIeNXG+HM=;
- b=Z+TTBc8cZ4ihdw5K1Z3U2MMiJNJUX8q6S0dC6M7WOkmuZlG87vCuVbw3/NS1EyNpiD
- wNv0r01N18uEKIPu1f3nLSkLz80D4VzyfTqKTeXtdjduViOh/ee9poak91dYOOmcbvtZ
- mRB/bGJ5zh6yp6/yClfexjyabNnLh2mjhJ0lTSq8nJL5dZ/9Wsd8LR+sHAuSb1prsZFO
- LJL0SciHAB4G1UQ0RDaKvw0AkN9Je9RERXEgiWCcIm/cFuAvY0cIkbCJsQ1xhPtrxJA+
- 3DJjFlcVxNiDSQ6ljSUljaMBSHKTxaH8a+Z0nhH+iA5dkqcuP7vP+KjaKmbs9sBcIZMk
- FJeg==
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1oHQ4c-0007gl-Do
+ for qemu-trivial@nongnu.org; Fri, 29 Jul 2022 09:30:40 -0400
+Received: by mail-wr1-x431.google.com with SMTP id l4so6004374wrm.13
+ for <qemu-trivial@nongnu.org>; Fri, 29 Jul 2022 06:30:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:date:in-reply-to
+ :message-id:mime-version:content-transfer-encoding;
+ bh=/xs9rtWTsJJa1n27V/Xiqs2Fe6ZxcaaSL73gS/RZlFA=;
+ b=IOZhWZgBzxEZtzTlozyPpUqfcW9BnpCrAyFw5dtsHg0ajDQAUbhhlqVEykoDzSSFrV
+ WXoNTVxqVUnBUO0YA0sq9xuGMR/Le1+QMRA1/JoBocqsRyj2ApNLg/8NS1gTlThKGzmt
+ 9DbfN0ue6lBRi3xcNBva9rkUtOuPvxNB3EcDr8fmoPuMDP2M+AC7ZKV0rjIBp4Dfluua
+ 5f6ezmcPLhuPIDrC0VpDA9DPB0cEewXZVR3btUM8rqNKZkokuEP2OH51UqUPDVuHMFWV
+ 51BnpHbqjH7+E9rs+dlrs6ZEe0WyrAWuF5vXQfempTlu+TK/v5GMBn9NMRsgoF/813ia
+ +yAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=H8LAnQEdgaQwy5buPc63lvVf8AswWrRTySnIeNXG+HM=;
- b=Q8XBnuuEzxYeuJDcqd3iNOrbkNWZiP0s4K14IBguBTfNfhQ4AeMdcACK+4eV/O/tEy
- nEc+lUbghJmmcmcTmT6RBXdTaGvMxATDqqe76/oaeyPvS+LVxOIwOvyMvAcy8aobfeBp
- gvtNuXTRw1y/4MupDtjMNLP/XvawXJOkD1pPAxo52Y2/ISm0S2P/WER5ur2AeSZx1VlB
- dTXwWXSNtfal4HtzUeScWDBStVfup4YP3Pg2pnmWks/yr9jhjT1lqM9+6hw9yWIanPnq
- lrCNSg/f7AUx0OmEMoNgQRmSrPZkTvOCiSuEc+QYY+VQc0T2yBg7wCV3RKGKaTIh2yqy
- ADVA==
-X-Gm-Message-State: AJIora9XymXhLUtqJHO1epAM5WHwkZ0z9mVo2BkUNtxvUAnEGXr8MEJT
- 2bneRXdDJHsSPR06hXBCZAZ2tu/sizCr6awgFC8=
-X-Google-Smtp-Source: AGRyM1uPixyKdDGjR9XjBB8SxppuBUipfCWtH6nBwIdkhLDUGvzerdUoDyzG9eyqe0M+jAhmr6eJbnS6LEon6LJjwZo=
-X-Received: by 2002:a05:622a:100d:b0:31f:25e3:7a45 with SMTP id
- d13-20020a05622a100d00b0031f25e37a45mr1622316qte.365.1659060521536; Thu, 28
- Jul 2022 19:08:41 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
+ :in-reply-to:message-id:mime-version:content-transfer-encoding;
+ bh=/xs9rtWTsJJa1n27V/Xiqs2Fe6ZxcaaSL73gS/RZlFA=;
+ b=KdO88gdg6YDAfmTsfGRjzv5wP49SnPz1dRCyLTFSQKZXb2/JY8nrW8wCV6YDPORDw+
+ Kv71gIeJ8P8avUqBxXzbMd6rktIZt8ZgHj8gWe2JJMwgdJbPuA+8gK73QxTGpfTWDJ7X
+ RFUpDiPSFU+e82Lu0twRllGRznUHbSg5uHpw4vplasm0f0dSCXjCojL//jz4PqvXmRl2
+ jUBCr78CncQy5Vr5v3k1jlJIYHbvg8KXJwvpOA2D5gvJGbjn+/gMYr04nnbuhEXpW6q4
+ MFylK7JY7TcCf7c/Rg1X1+ivmoabB211MV4iBI7D5m7GGAOQGYETYG3YmNbcdjCmWH9t
+ Wg7w==
+X-Gm-Message-State: ACgBeo16XVAGJNdIKJSVnFxm0IHihzQP/OiLHtf3rHMTDSk9adQoXvJ/
+ KXD0B8R41HqnOz49R7/gsOOo/Q==
+X-Google-Smtp-Source: AA6agR6LTVcJgSAsIOI1iBkMxqR9Vj6+Om/W2i9LMSwds1Kc5jGUQvS/a1qWqjc0p004tqu529XC5w==
+X-Received: by 2002:a05:6000:79b:b0:21e:9709:2c28 with SMTP id
+ bu27-20020a056000079b00b0021e97092c28mr2399001wrb.539.1659101436688; 
+ Fri, 29 Jul 2022 06:30:36 -0700 (PDT)
+Received: from zen.linaroharston ([185.81.254.11])
+ by smtp.gmail.com with ESMTPSA id
+ f10-20020a5d4dca000000b0021f0cf9e543sm2467064wru.2.2022.07.29.06.30.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Jul 2022 06:30:12 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 97D801FFB7;
+ Fri, 29 Jul 2022 14:30:11 +0100 (BST)
 References: <20220728200422.1502-1-luoyonggang@gmail.com>
-In-Reply-To: <20220728200422.1502-1-luoyonggang@gmail.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Fri, 29 Jul 2022 10:08:30 +0800
-Message-ID: <CAEUhbmWrLJ5=AGbPAF3jdE5i3SGPebbd42o70OQ4JnfzaH8=HA@mail.gmail.com>
-Subject: Re: [PATCH v2] ci: Upgrade msys2 release to 20220603
+User-agent: mu4e 1.7.27; emacs 28.1.90
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Yonggang Luo <luoyonggang@gmail.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Beraldo Leal <bleal@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82a;
- envelope-from=bmeng.cn@gmail.com; helo=mail-qt1-x82a.google.com
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-trivial@nongnu.org, Wainer dos Santos Moschetta
+ <wainersm@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>, Beraldo Leal <bleal@redhat.com>
+Subject: Re: [PATCH v2] ci: Upgrade msys2 release to 20220603
+Date: Fri, 29 Jul 2022 14:30:04 +0100
+In-reply-to: <20220728200422.1502-1-luoyonggang@gmail.com>
+Message-ID: <87o7x8f3mk.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -73,16 +84,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jul 2022 02:08:46 -0000
+X-List-Received-Date: Fri, 29 Jul 2022 13:30:42 -0000
 
-On Fri, Jul 29, 2022 at 4:04 AM Yonggang Luo <luoyonggang@gmail.com> wrote:
->
+
+Yonggang Luo <luoyonggang@gmail.com> writes:
+
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
 >  .cirrus.yml              | 2 +-
 >  .gitlab-ci.d/windows.yml | 2 +-
 >  2 files changed, 2 insertions(+), 2 deletions(-)
->
 
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Queued to testing/next, thanks.
+
+
+--=20
+Alex Benn=C3=A9e
 
