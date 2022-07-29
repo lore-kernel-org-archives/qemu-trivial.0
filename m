@@ -1,76 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oHBEA-0004hB-Jj
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2022 17:39:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41960)
+	id 1oHFGJ-0001it-5b
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2022 21:57:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54376)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1oHBE6-0004fY-GG; Thu, 28 Jul 2022 17:39:28 -0400
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34]:46042)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1oHFGH-0001iU-Ow; Thu, 28 Jul 2022 21:57:57 -0400
+Received: from mail-vs1-xe32.google.com ([2607:f8b0:4864:20::e32]:40488)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1oHBE5-0007IH-0Q; Thu, 28 Jul 2022 17:39:26 -0400
-Received: by mail-oa1-x34.google.com with SMTP id
- 586e51a60fabf-10d845dcf92so3885774fac.12; 
- Thu, 28 Jul 2022 14:39:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1oHFGF-0007QI-QQ; Thu, 28 Jul 2022 21:57:57 -0400
+Received: by mail-vs1-xe32.google.com with SMTP id 125so3244479vsx.7;
+ Thu, 28 Jul 2022 18:57:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=8l+S4QlLQ8zxU1HMTKEhFAH35d+PyqAlLtuQMK1u3sk=;
- b=bcXNCX3zF6U0m3gY5VH9CIcnej0I/3Dazsw8KOoV01rufzxvg48SWqcoN1eM/avhbS
- DHtKXv729Tw9N17L0vZZrHTmBEl9b7H2Qynx0G2OQ+7Y+20HPuFccG9JvR6Jfa3roEdp
- SGyTnvt3PK1WV5yDkxWGkb4Xz3Wqy3t7v1/0zZSzI5UhC2A3KY+W5wIQ6F4WBs1y+80P
- y04NjYcz6jSFOQToC4bno1KRq2uSHh7ytC9nTAFtJ3S68elxFIwlpvnu48ccFk97t6t/
- AN6eatOj0NDKaK6hdcMwl8r3DQ8Yo5Fz2MIlW6Ab/jVMT1VM1WMr4R/Poq5NZ58hb2B3
- m5Vg==
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=n5BMPSZaVmiciNNOqsqksGzFcgWI6WjVm0np7FbSEoo=;
+ b=Nh1aBwxyRcH/Lvmyp1jZPA0hSf3c+tK7tskrIDwMwuOro0B+gklVWVgkSq17dIdKJ2
+ 5Yl3cN8p5SiWEBLZ3JJZCCnWpCSXSm4mXQA2NjZIQ5jqRFxyq0/bi2gDVPiR+C+cWV3F
+ FH5F+sQfc82+itgl2wynkfOoDOR3xbUqhXZgq5g9twrtZc6p115s5COKGb49J2o9Le4l
+ U4w84gtwl/KBbm8O36nOIq2zrKSSs+oXNOt5Q9OkD3za1jSpnldotCTqx+oEXdVApAOD
+ VBYvsqb5TEdjDVm0e3Mbo1VrznqJCABsKdBD5kXSYkioSxz5ofylDmv+ztrXUAbY5HDm
+ Gr+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=8l+S4QlLQ8zxU1HMTKEhFAH35d+PyqAlLtuQMK1u3sk=;
- b=le5V0tH4seOnBx/oLzNV7SWKLvxyQaJas+T9b4dc5MFG7UIS1G9XZQ9GbjO5/gSi3q
- KCNgT48BTvuByYF/cyl2qCf6JrPF6W8oyF4gyQ3PD06oJIXzcgdAsBmtPMhMnlKvuL9S
- tKgbXhG8iqKaiJgYTqS7nOmC/JrnFi7N7roXGdYwV2a11Di+PxjvAHJI4DCyq6t+IlNt
- LW2VVQWiPRd78mctO0Wz2y0YJrao6ElvIQ3INuzH9K11FFkH7ZrJddisXjVCwG6vFls3
- eZ8r/ckbfT1z/D+Jni3pi9UCyVajtIJze5DKuEkPGHYyskMB73MZN9fYKmrnUjkEzgaP
- LFTg==
-X-Gm-Message-State: AJIora+4wtTrJT4McWFpWzr12SmbfOd2EG2kMt8upmKVz80f3KnS78s6
- IQeO2zXgIp4jXKoqb7BXv5g=
-X-Google-Smtp-Source: AGRyM1vgUJTXWve0vXhu6GLQOn09cWnnZIOuUe2Do1xN+0sDMg7JAQrgaNTl+OSPxVaoKV1zSFwocA==
-X-Received: by 2002:a05:6870:14c7:b0:f2:c44c:d054 with SMTP id
- l7-20020a05687014c700b000f2c44cd054mr320891oab.70.1659044363057; 
- Thu, 28 Jul 2022 14:39:23 -0700 (PDT)
-Received: from [192.168.10.102] ([179.225.208.46])
- by smtp.gmail.com with ESMTPSA id
- f24-20020a056870899800b0010db1a8d931sm951036oaq.28.2022.07.28.14.39.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Jul 2022 14:39:22 -0700 (PDT)
-Message-ID: <222e2084-3090-517c-170d-ae098a79aff8@gmail.com>
-Date: Thu, 28 Jul 2022 18:39:18 -0300
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=n5BMPSZaVmiciNNOqsqksGzFcgWI6WjVm0np7FbSEoo=;
+ b=KjBhz1DgeTDnETUK6kXQP9+gXGN5rEqOo3LdCJKrHWT8BtQhR80OBe8YBdmdYxYnpN
+ 6wYW+N2Qf4ZFDqYVx3CeqPimXI9PzOzGMfgAfa5/MaKGsmGJBv9QBeGFfoBAEN0jxKAu
+ BllakGJamuZT6IfBKJc0bRfbRz25rAnnpAPBi3N7OjpDcoSdac4Ih9vowRH+ah11TjaI
+ j+Y56Hb/hM7av7HlR/yF3ftU/kajOScxLMbKEg6PQ6FxN5n5shoDPKc24d0in2prSxuw
+ cJ0rOqnA/75AnOcG7zRYU9BJmswNufb1LfyuY7qUXEb3UuKRt+EIzmWKOsCMeoGa9hSy
+ YvxA==
+X-Gm-Message-State: AJIora9CzcUWPdM+qinbn2gXTiCEaffu3n4ud1BXIY/+epDOSJrVNPeX
+ hFBuleoowPrkfeuB+O3umDHh4sNh1KW91XewUpqPC0jYgcI=
+X-Google-Smtp-Source: AGRyM1tXEj5w1CWA8AR6aXs9EOIesjWh2rVSnAKJBnhxjhC7Tz1gUNoTdBnu15EBzvB2ppwaXMlXyLuIv3dbwj0Tp1c=
+X-Received: by 2002:a05:6102:3177:b0:358:5ba9:683d with SMTP id
+ l23-20020a056102317700b003585ba9683dmr536758vsm.17.1659059873137; Thu, 28 Jul
+ 2022 18:57:53 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH] ppc: Remove redundant macro MSR_BOOK3S_MASK.
-Content-Language: en-US
-To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- qemu-trivial@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- Greg Kurz <groug@kaod.org>, qemu-ppc@nongnu.org
-References: <20220728201135.223-1-luoyonggang@gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20220728201135.223-1-luoyonggang@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::34;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x34.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20220728200422.1502-1-luoyonggang@gmail.com>
+In-Reply-To: <20220728200422.1502-1-luoyonggang@gmail.com>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Fri, 29 Jul 2022 09:57:38 +0800
+Message-ID: <CAE2XoE-KAPu_1=6x6m84SXGd0W4nLYjhSVX0MmaYJ3WxPy=EaQ@mail.gmail.com>
+Subject: Re: [PATCH v2] ci: Upgrade msys2 release to 20220603
+To: qemu-level <qemu-devel@nongnu.org>
+Cc: Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Beraldo Leal <bleal@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000066498005e4e7faad"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e32;
+ envelope-from=luoyonggang@gmail.com; helo=mail-vs1-xe32.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,41 +74,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Jul 2022 21:39:28 -0000
+X-List-Received-Date: Fri, 29 Jul 2022 01:57:58 -0000
 
+--00000000000066498005e4e7faad
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+Seems this fixes the gitlab ci
+I've running multiple times
+https://gitlab.com/lygstate/qemu/-/jobs/2785244516
+https://gitlab.com/lygstate/qemu/-/jobs/2785245299
+all succeed.
 
-On 7/28/22 17:11, Yonggang Luo wrote:
+On Fri, Jul 29, 2022 at 4:04 AM Yonggang Luo <luoyonggang@gmail.com> wrote:
+>
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
->   target/ppc/excp_helper.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-> index cb752b184a..7550aafed6 100644
-> --- a/target/ppc/excp_helper.c
-> +++ b/target/ppc/excp_helper.c
-> @@ -2015,7 +2015,6 @@ void helper_rfi(CPUPPCState *env)
->       do_rfi(env, env->spr[SPR_SRR0], env->spr[SPR_SRR1] & 0xfffffffful);
->   }
->   
-> -#define MSR_BOOK3S_MASK
+>  .cirrus.yml              | 2 +-
+>  .gitlab-ci.d/windows.yml | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/.cirrus.yml b/.cirrus.yml
+> index 20843a420c..4ffef6105b 100644
+> --- a/.cirrus.yml
+> +++ b/.cirrus.yml
+> @@ -12,7 +12,7 @@ windows_msys2_task:
+>      CIRRUS_SHELL: powershell
+>      MSYS: winsymlinks:nativestrict
+>      MSYSTEM: MINGW64
+> -    MSYS2_URL:
+https://github.com/msys2/msys2-installer/releases/download/2022-05-03/msys2=
+-base-x86_64-20220503.sfx.exe
+> +    MSYS2_URL:
+https://github.com/msys2/msys2-installer/releases/download/2022-06-03/msys2=
+-base-x86_64-20220603.sfx.exe
+>      MSYS2_FINGERPRINT: 0
+>      MSYS2_PACKAGES: "
+>        diffutils git grep make pkg-config sed
+> diff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windows.yml
+> index 1b2ede49e1..da80fabe2c 100644
+> --- a/.gitlab-ci.d/windows.yml
+> +++ b/.gitlab-ci.d/windows.yml
+> @@ -17,7 +17,7 @@
+>      }
+>    - If ( !(Test-Path -Path msys64\var\cache\msys2.exe ) ) {
+>        Invoke-WebRequest
+> -      "
+https://github.com/msys2/msys2-installer/releases/download/2022-05-03/msys2=
+-base-x86_64-20220503.sfx.exe
+"
+> +      "
+https://github.com/msys2/msys2-installer/releases/download/2022-06-03/msys2=
+-base-x86_64-20220603.sfx.exe
+"
+>        -outfile "msys64\var\cache\msys2.exe"
+>      }
+>    - msys64\var\cache\msys2.exe -y
+> --
+> 2.36.1.windows.1
+>
 
-The tag was introduced by a2e71b28e832 ("ppc: Fix rfi/rfid/hrfi/... emulation").
-Even back then it wasn't being used.
 
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 
-Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+--00000000000066498005e4e7faad
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><div><br></div>Seems this fixes the gitlab ci<div>I&#39;ve=
+ running multiple times</div><div><a href=3D"https://gitlab.com/lygstate/qe=
+mu/-/jobs/2785244516">https://gitlab.com/lygstate/qemu/-/jobs/2785244516</a=
+></div><div><a href=3D"https://gitlab.com/lygstate/qemu/-/jobs/2785245299">=
+https://gitlab.com/lygstate/qemu/-/jobs/2785245299</a></div><div>all succee=
+d.<br><br>On Fri, Jul 29, 2022 at 4:04 AM Yonggang Luo &lt;<a href=3D"mailt=
+o:luoyonggang@gmail.com">luoyonggang@gmail.com</a>&gt; wrote:<br>&gt;<br>&g=
+t; Signed-off-by: Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com"=
+>luoyonggang@gmail.com</a>&gt;<br>&gt; ---<br>&gt; =C2=A0.cirrus.yml =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>&gt; =C2=A0.gitlab-ci.d=
+/windows.yml | 2 +-<br>&gt; =C2=A02 files changed, 2 insertions(+), 2 delet=
+ions(-)<br>&gt;<br>&gt; diff --git a/.cirrus.yml b/.cirrus.yml<br>&gt; inde=
+x 20843a420c..4ffef6105b 100644<br>&gt; --- a/.cirrus.yml<br>&gt; +++ b/.ci=
+rrus.yml<br>&gt; @@ -12,7 +12,7 @@ windows_msys2_task:<br>&gt; =C2=A0 =C2=
+=A0 =C2=A0CIRRUS_SHELL: powershell<br>&gt; =C2=A0 =C2=A0 =C2=A0MSYS: winsym=
+links:nativestrict<br>&gt; =C2=A0 =C2=A0 =C2=A0MSYSTEM: MINGW64<br>&gt; - =
+=C2=A0 =C2=A0MSYS2_URL: <a href=3D"https://github.com/msys2/msys2-installer=
+/releases/download/2022-05-03/msys2-base-x86_64-20220503.sfx.exe">https://g=
+ithub.com/msys2/msys2-installer/releases/download/2022-05-03/msys2-base-x86=
+_64-20220503.sfx.exe</a><br>&gt; + =C2=A0 =C2=A0MSYS2_URL: <a href=3D"https=
+://github.com/msys2/msys2-installer/releases/download/2022-06-03/msys2-base=
+-x86_64-20220603.sfx.exe">https://github.com/msys2/msys2-installer/releases=
+/download/2022-06-03/msys2-base-x86_64-20220603.sfx.exe</a><br>&gt; =C2=A0 =
+=C2=A0 =C2=A0MSYS2_FINGERPRINT: 0<br>&gt; =C2=A0 =C2=A0 =C2=A0MSYS2_PACKAGE=
+S: &quot;<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0diffutils git grep make pkg-co=
+nfig sed<br>&gt; diff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windo=
+ws.yml<br>&gt; index 1b2ede49e1..da80fabe2c 100644<br>&gt; --- a/.gitlab-ci=
+.d/windows.yml<br>&gt; +++ b/.gitlab-ci.d/windows.yml<br>&gt; @@ -17,7 +17,=
+7 @@<br>&gt; =C2=A0 =C2=A0 =C2=A0}<br>&gt; =C2=A0 =C2=A0- If ( !(Test-Path =
+-Path msys64\var\cache\msys2.exe ) ) {<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0I=
+nvoke-WebRequest<br>&gt; - =C2=A0 =C2=A0 =C2=A0&quot;<a href=3D"https://git=
+hub.com/msys2/msys2-installer/releases/download/2022-05-03/msys2-base-x86_6=
+4-20220503.sfx.exe">https://github.com/msys2/msys2-installer/releases/downl=
+oad/2022-05-03/msys2-base-x86_64-20220503.sfx.exe</a>&quot;<br>&gt; + =C2=
+=A0 =C2=A0 =C2=A0&quot;<a href=3D"https://github.com/msys2/msys2-installer/=
+releases/download/2022-06-03/msys2-base-x86_64-20220603.sfx.exe">https://gi=
+thub.com/msys2/msys2-installer/releases/download/2022-06-03/msys2-base-x86_=
+64-20220603.sfx.exe</a>&quot;<br>&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0-outfile &=
+quot;msys64\var\cache\msys2.exe&quot;<br>&gt; =C2=A0 =C2=A0 =C2=A0}<br>&gt;=
+ =C2=A0 =C2=A0- msys64\var\cache\msys2.exe -y<br>&gt; --<br>&gt; 2.36.1.win=
+dows.1<br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=
+=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =
+=C2=A0 sincerely,<br>Yonggang Luo</div></div>
 
-Laurent, I believe this is qemu-trivial material. Let me know if you want
-me to get it via the ppc tree instead.
-
-
-Daniel
-
-
->   #if defined(TARGET_PPC64)
->   void helper_rfid(CPUPPCState *env)
->   {
+--00000000000066498005e4e7faad--
 
