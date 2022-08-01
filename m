@@ -1,69 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oIaG4-0001pN-CE
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Aug 2022 14:35:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51392)
+	id 1oIaUH-00009D-SC
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Aug 2022 14:49:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oIaFX-0001nQ-Mh
- for qemu-trivial@nongnu.org; Mon, 01 Aug 2022 14:34:45 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129]:42734)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oIaFU-0003AX-5H
- for qemu-trivial@nongnu.org; Mon, 01 Aug 2022 14:34:42 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-2ef5380669cso118118067b3.9
- for <qemu-trivial@nongnu.org>; Mon, 01 Aug 2022 11:34:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc;
- bh=MpGeQT6s0YX1+NQTP5j7T+A4ZNR6hwbDPB2RG6eBKSY=;
- b=iK/L8kXvcCTczHyZzw1JbJ9i06WDze+Rgco/YtnLLutdb4PNxT1pAEGe0Gr4hLu/Yz
- OGW2MBA+sPwWz7koLHBaM2HU4ft9K/NHOs9DYw5MCeCqwzS0DguIGV2rsyXbEvVybgUo
- 3yaasLGrTcw+NX4oTTW7qe/XhkH17mu5hr4wgIe/kI01pGt8fsQc6xHeU7bxZkWpLrPG
- +m155nyMABnu5Ilg6f9LiZAD+U9P+HJhq+lA0CO7Hia+DVqBrXJG/WSIbjTfZfr4yeJI
- HU3rd2OECBafIIa4jS3Dwvd/jco5Bp8pZf7reyKaHOVq6ooua0mwZQRhSMZ3DP4NJi3n
- SeHQ==
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1oIaTj-00008H-IF
+ for qemu-trivial@nongnu.org; Mon, 01 Aug 2022 14:49:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:45945)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1oIaTg-0005ln-WC
+ for qemu-trivial@nongnu.org; Mon, 01 Aug 2022 14:49:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1659379759;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1DyuBJvY+MrGZL/PBVorid0eqH2nEtTinQv79WS6skc=;
+ b=atWuD9qJkOMuikQT6bk3MSwfagTMGJKKGheUt7PdB0MVAtVmWMBNhW6i815zYm6zNk3g0w
+ +qeEbTcqk3h/8ELPP/ji4rLrsov24HfQsKhKQu2z9ck8jlQdh9Ig33wgdchG44cNicxYLO
+ XEYCPW0Dy4bG5fyz0uakma/GQ1Zaf3I=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-358--9Zir1-3NU2DPz8VZ8Z6qQ-1; Mon, 01 Aug 2022 14:49:18 -0400
+X-MC-Unique: -9Zir1-3NU2DPz8VZ8Z6qQ-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ h8-20020a05620a284800b006b5c98f09fbso9985112qkp.21
+ for <qemu-trivial@nongnu.org>; Mon, 01 Aug 2022 11:49:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
- bh=MpGeQT6s0YX1+NQTP5j7T+A4ZNR6hwbDPB2RG6eBKSY=;
- b=SBez8n2ec5on5lRpdYWVL6izza+FUkFuwSNL7BaPjhBtZo1GkgqqgBURGsaXZgXyR7
- kUqWsp7VHz+6lCOt+qKPEnGBNS0G6IRm9AoQfYyvjt5+zEtOdO/drl0amq+2L7PzH+F4
- gWMUYA3vARPXm/n8kc02kh1gJ7oDHdB5LDBynGYYJyxY7GL3YDVwSC25wQv/MNuEPOjg
- fDMujbOleTTMQo4prSTyR7tCmbJsEPJOyF0rDpRy0U6kMPmtY4xUZWhiI8QcPIXK0zco
- Z5wPhqKEL41nugOSiNWjuf62mgL+FmbB5yywytMiSODHWsFBSwz2FQEeMhOlYzW+1tYj
- qR2Q==
-X-Gm-Message-State: ACgBeo1LRYHKVa4PGm+1ppS72Msu+KJpks0gaKvcxN6kd6VJJ/MZRyNW
- HoNjghj8LzbxyR2j9G/THwp9nujwrXH4PgMGqPKaIg==
-X-Google-Smtp-Source: AA6agR59Sh4ARqMG6PKE4XsBkLm3ILRtf5HGDiaWbWvEO9PEGWuQdi1HAzVIiEEFmb1ByIfHmHM5k+YGqVOMlDcnO+A=
-X-Received: by 2002:a81:a247:0:b0:31d:72da:e931 with SMTP id
- z7-20020a81a247000000b0031d72dae931mr14642572ywg.469.1659378879062; Mon, 01
- Aug 2022 11:34:39 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=1DyuBJvY+MrGZL/PBVorid0eqH2nEtTinQv79WS6skc=;
+ b=WbcqwQ8bi7rrIY+w1CzX+oV6fCz+Ps3sh9DwyFDbPrduON52t012bss9nyjTZmPyrd
+ N3Ll5e2xwRWtvxUlBWIBI/yPg+gWvepAq7PDh98hlnASv1w4ewDtdxV6hv+ARjBOlLn2
+ SDapigVtByZ7uf0tOj442MM/isHt9ZOWFOQtPEztGK1kIHvuH/NSMxnCQPDsEZEGkjoN
+ Q5eWD5I3NMUnI39POXNvA4kT4Pjg9sTNnn26kWs7xJOEf7N2xodNC77PnmDCr1k+lPmb
+ rQFWcpCgIXvybFJHsQ6j8URztCqUOB1RUJ62Mh5g9hIggRJcmSskwp7DdqzuY+xOkiP1
+ G9qQ==
+X-Gm-Message-State: AJIora+uN+/HLaTCaqVlvfHQnmnPomfscML86g3s45ztvWZXOTYqwO4R
+ bPZhG+8Sv+VKhb8uWYAL1lYphIlGZjzHP6i7dgK5KdtyDNl8QMadnAAoCfZXB21eRHJD6R/xrN7
+ /MkOJx3BBlMv6+LUixZ/pd53ni7+CnGE4Vg==
+X-Received: by 2002:a05:620a:2a13:b0:6b5:c197:d565 with SMTP id
+ o19-20020a05620a2a1300b006b5c197d565mr12695023qkp.255.1659379757809; 
+ Mon, 01 Aug 2022 11:49:17 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tMLT7te1kfOxDcVXaULYH0Wnz6f8c5fMA5qFaOxDAWQM80lIGR01Qga4nHcX44A45VLDMB7YL92eH9i3uVYs8=
+X-Received: by 2002:a05:620a:2a13:b0:6b5:c197:d565 with SMTP id
+ o19-20020a05620a2a1300b006b5c197d565mr12695015qkp.255.1659379757570; Mon, 01
+ Aug 2022 11:49:17 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220801144714.181644-1-eperezma@redhat.com>
  <b649292a-7d80-1d8f-8179-e8d74f5a9310@redhat.com>
-In-Reply-To: <b649292a-7d80-1d8f-8179-e8d74f5a9310@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Aug 2022 19:33:58 +0100
-Message-ID: <CAFEAcA85_e8v+RoWM_29c96_bDV1OAbM6cq-vL_68ZX+AY07ew@mail.gmail.com>
+ <CAFEAcA85_e8v+RoWM_29c96_bDV1OAbM6cq-vL_68ZX+AY07ew@mail.gmail.com>
+In-Reply-To: <CAFEAcA85_e8v+RoWM_29c96_bDV1OAbM6cq-vL_68ZX+AY07ew@mail.gmail.com>
+From: Eugenio Perez Martin <eperezma@redhat.com>
+Date: Mon, 1 Aug 2022 20:48:41 +0200
+Message-ID: <CAJaqyWeCGRCKqULG9HOiOJmX+3v3P9h1B8x09k3aZbx7rJw5Jw@mail.gmail.com>
 Subject: Re: [PATCH] vdpa: Fix file descriptor leak on get features error
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, 
- qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>, 
- "Michael S . Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Laurent Vivier <lvivier@redhat.com>, qemu-level <qemu-devel@nongnu.org>, 
+ Jason Wang <jasowang@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ qemu-trivial@nongnu.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eperezma@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,57 +88,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Aug 2022 18:34:57 -0000
+X-List-Received-Date: Mon, 01 Aug 2022 18:49:32 -0000
 
-On Mon, 1 Aug 2022 at 19:31, Laurent Vivier <lvivier@redhat.com> wrote:
+On Mon, Aug 1, 2022 at 8:34 PM Peter Maydell <peter.maydell@linaro.org> wro=
+te:
 >
-> On 01/08/2022 16:47, Eugenio P=C3=A9rez wrote:
-> > File descriptor vdpa_device_fd is not free in the case of returning
-> > error from vhost_vdpa_get_features. Fixing it by making all errors go t=
-o
-> > the same error path.
+> On Mon, 1 Aug 2022 at 19:31, Laurent Vivier <lvivier@redhat.com> wrote:
 > >
-> > Resolves: Coverity CID 1490785
-> > Fixes: 8170ab3f43 ("vdpa: Extract get features part from vhost_vdpa_get=
-_max_queue_pairs")
+> > On 01/08/2022 16:47, Eugenio P=C3=A9rez wrote:
+> > > File descriptor vdpa_device_fd is not free in the case of returning
+> > > error from vhost_vdpa_get_features. Fixing it by making all errors go=
+ to
+> > > the same error path.
+> > >
+> > > Resolves: Coverity CID 1490785
+> > > Fixes: 8170ab3f43 ("vdpa: Extract get features part from vhost_vdpa_g=
+et_max_queue_pairs")
+> > >
+> > > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
+> > > ---
+> > >   net/vhost-vdpa.c | 4 ++--
+> > >   1 file changed, 2 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
+> > > index 6abad276a6..303447a68e 100644
+> > > --- a/net/vhost-vdpa.c
+> > > +++ b/net/vhost-vdpa.c
+> > > @@ -566,7 +566,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, con=
+st char *name,
+> > >       g_autofree NetClientState **ncs =3D NULL;
+> > >       g_autoptr(VhostIOVATree) iova_tree =3D NULL;
+> > >       NetClientState *nc;
+> > > -    int queue_pairs, r, i, has_cvq =3D 0;
+> > > +    int queue_pairs, r, i =3D 0, has_cvq =3D 0;
+> > >
+> > >       assert(netdev->type =3D=3D NET_CLIENT_DRIVER_VHOST_VDPA);
+> > >       opts =3D &netdev->u.vhost_vdpa;
+> > > @@ -582,7 +582,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, con=
+st char *name,
+> > >
+> > >       r =3D vhost_vdpa_get_features(vdpa_device_fd, &features, errp);
+> > >       if (unlikely(r < 0)) {
+> > > -        return r;
+> > > +        goto err;
 > >
-> > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
-> > ---
-> >   net/vhost-vdpa.c | 4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
-> > index 6abad276a6..303447a68e 100644
-> > --- a/net/vhost-vdpa.c
-> > +++ b/net/vhost-vdpa.c
-> > @@ -566,7 +566,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, const=
- char *name,
-> >       g_autofree NetClientState **ncs =3D NULL;
-> >       g_autoptr(VhostIOVATree) iova_tree =3D NULL;
-> >       NetClientState *nc;
-> > -    int queue_pairs, r, i, has_cvq =3D 0;
-> > +    int queue_pairs, r, i =3D 0, has_cvq =3D 0;
-> >
-> >       assert(netdev->type =3D=3D NET_CLIENT_DRIVER_VHOST_VDPA);
-> >       opts =3D &netdev->u.vhost_vdpa;
-> > @@ -582,7 +582,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, const=
- char *name,
-> >
-> >       r =3D vhost_vdpa_get_features(vdpa_device_fd, &features, errp);
-> >       if (unlikely(r < 0)) {
-> > -        return r;
-> > +        goto err;
+> > Why don't you use "goto err_svq"?
 >
-> Why don't you use "goto err_svq"?
+> This patch is kind of half of the idea discussed in the thread where
+> this problem was reported, which is that by setting i =3D 0 you can
+> then consistently have all the error handling be 'goto err' and that
+> frees everything that needs to be freed regardless of whether it's
+> called after or before the initialization of the ncs[] entries. But it
+> doesn't do the other half of the job, which is making all the other
+> error handling code in the function also use 'goto err', so it looks
+> a bit odd as it stands.
+>
 
-This patch is kind of half of the idea discussed in the thread where
-this problem was reported, which is that by setting i =3D 0 you can
-then consistently have all the error handling be 'goto err' and that
-frees everything that needs to be freed regardless of whether it's
-called after or before the initialization of the ncs[] entries. But it
-doesn't do the other half of the job, which is making all the other
-error handling code in the function also use 'goto err', so it looks
-a bit odd as it stands.
+That's right, I thought just fixing the issue about the leaked file
+descriptor was the right thing to do in the hard feature freeze, and
+that other part should be left for the next dev phase. Is the unified
+error handling code acceptable for this period? I can send a patch
+either on top of this one or squashed if so for sure.
 
--- PMM
+Thanks!
+
 
