@@ -1,53 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oIq1P-0004OP-GA
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Aug 2022 07:25:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56724)
+	id 1oIq1Q-0004Qx-6V
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Aug 2022 07:25:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1oIq1L-0004Jz-Ap
+ id 1oIq1K-0004JV-Qd
  for qemu-trivial@nongnu.org; Tue, 02 Aug 2022 07:25:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:60913)
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:47753)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1oIq1F-0007Bg-VI
- for qemu-trivial@nongnu.org; Tue, 02 Aug 2022 07:25:05 -0400
+ id 1oIq1E-0007BH-9V
+ for qemu-trivial@nongnu.org; Tue, 02 Aug 2022 07:25:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659439497;
+ s=mimecast20190719; t=1659439493;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TZ83/2iKBYgUumgQVCnyKZLgWLPFYMPqVj7+h/Iq+ts=;
- b=RrULY+z5sFGnscOaxTk4Tc+FRnBBjUdqH5JqJjl89p+ruz3QjWZ+ch82L3sesn5rAVjTQk
- 4+cjyB6owyHTp05Gvd8MmDji6aO4B7zYVOcboredBadqrcQg6oHLF/rtKzgX3LtofE3tAG
- Aao2vXpfR6RP9UXgpFCBl5fgFtXqJZU=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=L3zD4A7tmJtCK/i64q2Vph9qXAUw9fW33Z/y7Frkur4=;
+ b=ef0Tu66ThDR+Zpv5g6dabsDRBBKAKUCzSJu2itqT3zQSbihDCriA2Nn+BXXATgxgLmJAgC
+ v1ft2ThPbzL0X+WLmtjRpkmIyujU4yRV+ieQk9ISr0uM+L6jUP04e5SUgTAWDBV5FU98NF
+ cJEMgL+yWHMw0HY+P4j2wC2EP4/Zhts=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-643-6goJY07LPsqLpb6R5PmlpA-1; Tue, 02 Aug 2022 07:24:53 -0400
-X-MC-Unique: 6goJY07LPsqLpb6R5PmlpA-1
+ us-mta-423-QFzzQGcQOdOBtZ7oZsDGSQ-1; Tue, 02 Aug 2022 07:24:51 -0400
+X-MC-Unique: QFzzQGcQOdOBtZ7oZsDGSQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1C13A18A0161;
- Tue,  2 Aug 2022 11:24:53 +0000 (UTC)
-Received: from eperezma.remote.csb (unknown [10.39.193.7])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DB2F42026D07;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 85FD5801231;
  Tue,  2 Aug 2022 11:24:51 +0000 (UTC)
+Received: from eperezma.remote.csb (unknown [10.39.193.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3C6992026D4C;
+ Tue,  2 Aug 2022 11:24:50 +0000 (UTC)
 From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Jason Wang <jasowang@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Subject: [PATCH 1/2] vdpa: Fix file descriptor leak on get features error
-Date: Tue,  2 Aug 2022 13:24:46 +0200
-Message-Id: <20220802112447.249436-2-eperezma@redhat.com>
-In-Reply-To: <20220802112447.249436-1-eperezma@redhat.com>
-References: <20220802112447.249436-1-eperezma@redhat.com>
+Subject: [PATCH 0/2] vdpa: Merge all net_init_vhost_vdpa error goto
+Date: Tue,  2 Aug 2022 13:24:45 +0200
+Message-Id: <20220802112447.249436-1-eperezma@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=eperezma@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -72,41 +69,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 02 Aug 2022 11:25:08 -0000
 
-File descriptor vdpa_device_fd is not free in the case of returning
-error from vhost_vdpa_get_features. Fixing it by making all errors go to
-the same error path.
-
-Resolves: Coverity CID 1490785
-Fixes: 8170ab3f43 ("vdpa: Extract get features part from vhost_vdpa_get_max_queue_pairs")
-
-Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
----
- net/vhost-vdpa.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
-index 6abad276a6..303447a68e 100644
---- a/net/vhost-vdpa.c
-+++ b/net/vhost-vdpa.c
-@@ -566,7 +566,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
-     g_autofree NetClientState **ncs = NULL;
-     g_autoptr(VhostIOVATree) iova_tree = NULL;
-     NetClientState *nc;
--    int queue_pairs, r, i, has_cvq = 0;
-+    int queue_pairs, r, i = 0, has_cvq = 0;
- 
-     assert(netdev->type == NET_CLIENT_DRIVER_VHOST_VDPA);
-     opts = &netdev->u.vhost_vdpa;
-@@ -582,7 +582,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
- 
-     r = vhost_vdpa_get_features(vdpa_device_fd, &features, errp);
-     if (unlikely(r < 0)) {
--        return r;
-+        goto err;
-     }
- 
-     queue_pairs = vhost_vdpa_get_max_queue_pairs(vdpa_device_fd, features,
--- 
-2.31.1
+Few steps allocate new resources, and all of the allocated can be=0D
+checked to avoid trying to free an invalid one.=0D
+=0D
+This series includes an already posted patch [1], because it must be applie=
+d=0D
+on top of that.=0D
+=0D
+[1] https://lists.nongnu.org/archive/html/qemu-devel/2022-08/msg00089.html=
+=0D
+=0D
+Eugenio P=C3=A9rez (2):=0D
+  vdpa: Fix file descriptor leak on get features error=0D
+  vdpa: Merge all net_init_vhost_vdpa error goto=0D
+=0D
+ net/vhost-vdpa.c | 10 ++++------=0D
+ 1 file changed, 4 insertions(+), 6 deletions(-)=0D
+=0D
+-- =0D
+2.31.1=0D
+=0D
 
 
