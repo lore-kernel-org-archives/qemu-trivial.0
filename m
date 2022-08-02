@@ -1,60 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oIq1Q-0004Qx-6V
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Aug 2022 07:25:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56688)
+	id 1oIqAj-0004ql-Cj
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Aug 2022 07:34:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58948)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1oIq1K-0004JV-Qd
- for qemu-trivial@nongnu.org; Tue, 02 Aug 2022 07:25:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:47753)
+ (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
+ id 1oIqAh-0004qZ-Se; Tue, 02 Aug 2022 07:34:47 -0400
+Received: from kylie.crudebyte.com ([5.189.157.229]:50005)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1oIq1E-0007BH-9V
- for qemu-trivial@nongnu.org; Tue, 02 Aug 2022 07:25:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659439493;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=L3zD4A7tmJtCK/i64q2Vph9qXAUw9fW33Z/y7Frkur4=;
- b=ef0Tu66ThDR+Zpv5g6dabsDRBBKAKUCzSJu2itqT3zQSbihDCriA2Nn+BXXATgxgLmJAgC
- v1ft2ThPbzL0X+WLmtjRpkmIyujU4yRV+ieQk9ISr0uM+L6jUP04e5SUgTAWDBV5FU98NF
- cJEMgL+yWHMw0HY+P4j2wC2EP4/Zhts=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-423-QFzzQGcQOdOBtZ7oZsDGSQ-1; Tue, 02 Aug 2022 07:24:51 -0400
-X-MC-Unique: QFzzQGcQOdOBtZ7oZsDGSQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 85FD5801231;
- Tue,  2 Aug 2022 11:24:51 +0000 (UTC)
-Received: from eperezma.remote.csb (unknown [10.39.193.7])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3C6992026D4C;
- Tue,  2 Aug 2022 11:24:50 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Subject: [PATCH 0/2] vdpa: Merge all net_init_vhost_vdpa error goto
-Date: Tue,  2 Aug 2022 13:24:45 +0200
-Message-Id: <20220802112447.249436-1-eperezma@redhat.com>
+ (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
+ id 1oIqAg-0004JO-3R; Tue, 02 Aug 2022 07:34:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=crudebyte.com; s=kylie; h=Content-Type:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+ Content-ID:Content-Description;
+ bh=2jutLbbDTOLcA0VBGC/s3qrdQohT1L0p+rr5yokHnOI=; b=u9U7m8+2SMd9lHxIItXlrp57nZ
+ vGyLKJVOWqPBTUE12aKMXcVjPWLMBCG+RM+liqkJfOhq/KRFL97imVpKxT3C1nM1QjLfwpnanjKOf
+ ya/djAwrS5YY6SoEORYO7jnXsTkmQyG177gWcoQC//cYZ6sAar9eNu0RPGIkqdZA4e2aWd4b5ULiU
+ r5LOzFVXaKOpESsAG+A31May8gavphFa5zxqssxsBDqXA4cvnWROA9y12vKF4zyWMUF5E4z/uHQMW
+ oERLRYNoUqsKxMosDLtIQZj1qbluOvKtxvfMIra0XTYi3uVFVspSGdJ6McTu524HSjACnF5EUBBN4
+ PfxoBttVgKWkRx4Rv0i4ebQO6NgNuoKxeNB4NJlbRi9adM0PjkRhQgfbz72HvxDBI3aLMKd6RgKTf
+ qFwxEHWtAmyVcOAdqHhwpgoJogXul/qkL04NKPhM9ZoJvhSUCpYd1AUEVPX4fzYSuPAQnWaJZS9JV
+ +3IpCejM/GIA5hNHVLBGXL6oMPhRl5HTzVkeErVbucFSew4N80ZG21XavRkHbxUzJrDN0SiCZL+46
+ WxLo5pUDWCwXHhBBBbM6v3NFRpZywVrV3OoFC54tUc5FtV3IWhpkCyPVjC+79gZeNGKJY3/iFmcbi
+ X6lERlJcNb/xu++SH4YseuE+PZ2fuma/DWBMjsZOo=;
+From: Christian Schoenebeck <qemu_oss@crudebyte.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, kraxel@redhat.com,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH] docs/about/removed-features: Move the -soundhw into the
+ right section
+Date: Tue, 02 Aug 2022 13:34:38 +0200
+Message-ID: <1719315.SO3xn117Sn@silver>
+In-Reply-To: <20220802075611.346835-1-thuth@redhat.com>
+References: <20220802075611.346835-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+Received-SPF: pass client-ip=5.189.157.229;
+ envelope-from=qemu_oss@crudebyte.com; helo=kylie.crudebyte.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,27 +56,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Aug 2022 11:25:08 -0000
+X-List-Received-Date: Tue, 02 Aug 2022 11:34:48 -0000
 
-Few steps allocate new resources, and all of the allocated can be=0D
-checked to avoid trying to free an invalid one.=0D
-=0D
-This series includes an already posted patch [1], because it must be applie=
-d=0D
-on top of that.=0D
-=0D
-[1] https://lists.nongnu.org/archive/html/qemu-devel/2022-08/msg00089.html=
-=0D
-=0D
-Eugenio P=C3=A9rez (2):=0D
-  vdpa: Fix file descriptor leak on get features error=0D
-  vdpa: Merge all net_init_vhost_vdpa error goto=0D
-=0D
- net/vhost-vdpa.c | 10 ++++------=0D
- 1 file changed, 4 insertions(+), 6 deletions(-)=0D
-=0D
--- =0D
-2.31.1=0D
-=0D
+On Dienstag, 2. August 2022 09:56:11 CEST Thomas Huth wrote:
+> The note about the removal of '-soundhw' has been accidentally added
+> to the section of removed "linux-user mode CPUs" ... it should reside
+> in the section about removed "System emulator command line arguments"
+> instead.
+> 
+> Fixes: 039a68373c ("introduce -audio as a replacement for -soundhw")
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+
+Reviewed-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
+
+That can easily happen unfortunately, as the hierarchy syntax here, like in 
+MAINTAINERS BTW, is not exactly perfect for the human eye.
+
+>  docs/about/removed-features.rst | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+> 
+> diff --git a/docs/about/removed-features.rst
+> b/docs/about/removed-features.rst index c7b9dadd5d..925e22016f 100644
+> --- a/docs/about/removed-features.rst
+> +++ b/docs/about/removed-features.rst
+> @@ -396,6 +396,13 @@ Use ``-display sdl`` instead.
+> 
+>  Use ``-display curses`` instead.
+> 
+> +Creating sound card devices using ``-soundhw`` (removed in 7.1)
+> +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> +
+> +Sound card devices should be created using ``-device`` or ``-audio``.
+> +The exception is ``pcspk`` which can be activated using ``-machine
+> +pcspk-audiodev=<name>``.
+> +
+> 
+>  QEMU Machine Protocol (QMP) commands
+>  ------------------------------------
+> @@ -681,13 +688,6 @@ tripped up the CI testing and was suspected to be quite
+> broken. For that reason the maintainers strongly suspected no one actually
+> used it.
+> 
+> 
+> -Creating sound card devices using ``-soundhw`` (removed in 7.1)
+> -'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> -
+> -Sound card devices should be created using ``-device`` or ``-audio``.
+> -The exception is ``pcspk`` which can be activated using ``-machine
+> -pcspk-audiodev=<name>``.
+> -
+>  TCG introspection features
+>  --------------------------
+
 
 
