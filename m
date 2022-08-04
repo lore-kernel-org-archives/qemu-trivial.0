@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oJZJ8-00009P-9n
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2022 07:46:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58500)
+	id 1oJZKg-0000pV-3s
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2022 07:48:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1oJZJ4-00005t-Dt
- for qemu-trivial@nongnu.org; Thu, 04 Aug 2022 07:46:26 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58799)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1oJZKN-0000lq-2r; Thu, 04 Aug 2022 07:47:47 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:36857)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>) id 1oJZJ2-00035r-NC
- for qemu-trivial@nongnu.org; Thu, 04 Aug 2022 07:46:26 -0400
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1oJZKL-0003CS-FC; Thu, 04 Aug 2022 07:47:46 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M2gt5-1oHepF3sHn-0048bM for <qemu-trivial@nongnu.org>; Thu, 04 Aug 2022
- 13:46:23 +0200
-Message-ID: <e482dc53-61f3-b3a1-2da9-3d772b92eae2@vivier.eu>
-Date: Thu, 4 Aug 2022 13:46:22 +0200
+ 1MRk8w-1nqSve3aGI-00TGKM; Thu, 04 Aug 2022 13:47:41 +0200
+Message-ID: <8730b368-6ca7-6ae1-61b0-2f86ed05083e@vivier.eu>
+Date: Thu, 4 Aug 2022 13:47:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH 1/2] vdpa: Fix file descriptor leak on get features error
+Subject: Re: [PATCH] docs/about/removed-features: Move the -soundhw into the
+ right section
 Content-Language: fr
-To: qemu-trivial@nongnu.org
-References: <20220802112447.249436-1-eperezma@redhat.com>
- <20220802112447.249436-2-eperezma@redhat.com>
+To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ kraxel@redhat.com, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Christian Schoenebeck <qemu_oss@crudebyte.com>
+References: <20220802075611.346835-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220802112447.249436-2-eperezma@redhat.com>
+In-Reply-To: <20220802075611.346835-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:PmuB7fNwfv28AfORleXovvCAWicLWyVZSPbSXc5CTwsuekRt4qN
- X9cdZxzN2VljhDnBPzTjzjyr1XUgnTJqUCWkpRZiz4CqXK3Zkh95tNCKA7FXhuJjWvtPE+q
- I+iUpKuY6fD6pTilWmPTsMMPsQtOu4L0A21ty3foCA9Wr/eOFGdwViZ8n5hI5NjsrAjmD0w
- kXeJPypvjHRehM7ATwcQw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PNN8ahzpaNY=:ENclnoO/qErfR1LBtiqAnw
- IOV5XuiqyAKaKLLpQkSw1eNymAlYezQn4uPS5pnDPMExsUfh68B2e3ao+OE+0IA/4BxrM6uJJ
- NPSZ+tihTiLo1S+pP/c6On2jnrki9GZToohYtKYdfQNSpLCv5IfaYQvSh1cMeKvrNmYxhknqC
- fz6dt6ESpjVFJoduoqPPdkKIgB/lLI8GC+e6FqOCxb61uQJgIJE/DTctalekoCYJ8LMreeEPT
- IZ8RqZb3XwGpWV91Z89yyJk6Mulxt1XfC/UmKv2i/oe3L+wgPTYSWgjTGb42zGi42EFi9OvS5
- 9S5jODirK2AnW3xaI+xJKlXveXggNIQpJP1THbA6iarKwWEO+Mxf76R4sm4NW1veHInZK4FQT
- /keW2y4a6S2BtG/lRpnV5ZLrDAizwm5844+v3jbeIjiqVr8n3rVLMX1nW29wgmdhAubxGCr6J
- w5GdVA8QzR5Ze0JUDRfbdDoxeEjBOa0AxKJVNOuctmIL0RC7TOrgP0ymAHTXFb2KjZ+K0FJwb
- /r7yM8iyzcV054vcU2og+gLGRo4CSKS8oGhcjrN9Kh/z2FK6aoyNp/EQEciLsmA0yAWjfYivk
- V/pqTAB7yiK2gaiiTeRsizbFXEJ/ABNIiyJz17fTLc8kMBK6jLlKtsdawjUVifnyhRy815/02
- P6ofG+vl1kjdQbnXtrLWzVb2U4SNZPDPiZPslcidIn//Qw1DzryC9oloapccbPHJHy3gC/8jZ
- zkNbxawftcpgkcDiacgSz0/i8keUIZAfsVZILQ==
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:65rk9GhZ8wWdrWyrLgdHFDx6GnqOAZmfj9IsZ1lS+xK+U9nN+jC
+ putsRZClsooBoeNZTG9MhgDzSdI4MoVz7TindESAfKQU7d3q7RDh2bXoxfc417BPO0oldwo
+ GTRuIKNnDeKiasqJGVKmsU22d3UW4KtxoPEQ4gID2agk5ajeFQyCtOjxKl+ce7ok21qAzfy
+ hUhXJClJM8YIhxcUOrFkQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:qZrhiYkDPvk=:VHwa/CWIHVfXUOG0zFA9Fu
+ 6fcQKxyMFZmDgwhyTBhUYM4dsK8sF4wghQh0geVgypeyTPgTt804J6TbvQOeKB6zcGt3N25Db
+ DFVcNoCA4G4C91+49Iq52DCI5bxpZFRKUbLAIR8I++RQaiw4Sa8ZXKM6OJSen4jecsmMl7AED
+ 2zBGxZYmcG0EmtnoOA100k2R/rWQr4lNW7k4ymbb8Vy/ICOdtGj9t+grCv5SnlFU8Fi4KiHIr
+ xbdBYAlW7gP0HQSUkb4UwFSLnv2IFaTpHduZgPiUgCJmfKbne8pR7NRpkvoVlQ4tg18WEcO0E
+ ZHZSsL8nUOfdwP6FMiZA1Rw1NY3oXOcJHJr3Ih1R8TmxzBGUY5oDDcV6pT6FkoTxIzS7b4Bn4
+ l7Fc5sF8hQFnGSVd/C4gt8C9/pGHGk8JUMvqtH4dcZBjsWx9YeLrx4yV4LMqBtgYqwqq/AU4S
+ NU6LM4Cn1w4ifL8Q3XewYUPJV4l0azGTKwvJZ8V9J7zRFStWhmqbAgFRubjJDaRW9/6XbF0RU
+ YlfdpPc8jYlhg8s8sDUP5kNZpZa6/t3DApF6OBBeYyWZCz89GbQtiAOz8WJ577A+S1324VBOY
+ FoHdbh6vyZvLea/mPCMC5Q1ZHIFGOxdUt5YGCp+IFXAkHQdaQyZLR/RhCAKll2hbU0bHUOuad
+ daQv3Zqvz3wcl4JI+ec9xI9IosK9ubNFjh+ghPWxN9C7rnS0fg0nJX8qHnPCL9SdobGOpJhPA
+ SQqJ8C6Dr9GbJ27ogEqK5bvKkfZITUnaIov1zw==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -63,43 +64,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Aug 2022 11:46:28 -0000
+X-List-Received-Date: Thu, 04 Aug 2022 11:48:01 -0000
 
-Le 02/08/2022 à 13:24, Eugenio Pérez a écrit :
-> File descriptor vdpa_device_fd is not free in the case of returning
-> error from vhost_vdpa_get_features. Fixing it by making all errors go to
-> the same error path.
+Le 02/08/2022 à 09:56, Thomas Huth a écrit :
+> The note about the removal of '-soundhw' has been accidentally added
+> to the section of removed "linux-user mode CPUs" ... it should reside
+> in the section about removed "System emulator command line arguments"
+> instead.
 > 
-> Resolves: Coverity CID 1490785
-> Fixes: 8170ab3f43 ("vdpa: Extract get features part from vhost_vdpa_get_max_queue_pairs")
-> 
-> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+> Fixes: 039a68373c ("introduce -audio as a replacement for -soundhw")
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   net/vhost-vdpa.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   docs/about/removed-features.rst | 14 +++++++-------
+>   1 file changed, 7 insertions(+), 7 deletions(-)
 > 
-> diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
-> index 6abad276a6..303447a68e 100644
-> --- a/net/vhost-vdpa.c
-> +++ b/net/vhost-vdpa.c
-> @@ -566,7 +566,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
->       g_autofree NetClientState **ncs = NULL;
->       g_autoptr(VhostIOVATree) iova_tree = NULL;
->       NetClientState *nc;
-> -    int queue_pairs, r, i, has_cvq = 0;
-> +    int queue_pairs, r, i = 0, has_cvq = 0;
+> diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+> index c7b9dadd5d..925e22016f 100644
+> --- a/docs/about/removed-features.rst
+> +++ b/docs/about/removed-features.rst
+> @@ -396,6 +396,13 @@ Use ``-display sdl`` instead.
 >   
->       assert(netdev->type == NET_CLIENT_DRIVER_VHOST_VDPA);
->       opts = &netdev->u.vhost_vdpa;
-> @@ -582,7 +582,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
+>   Use ``-display curses`` instead.
 >   
->       r = vhost_vdpa_get_features(vdpa_device_fd, &features, errp);
->       if (unlikely(r < 0)) {
-> -        return r;
-> +        goto err;
->       }
+> +Creating sound card devices using ``-soundhw`` (removed in 7.1)
+> +'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> +
+> +Sound card devices should be created using ``-device`` or ``-audio``.
+> +The exception is ``pcspk`` which can be activated using ``-machine
+> +pcspk-audiodev=<name>``.
+> +
 >   
->       queue_pairs = vhost_vdpa_get_max_queue_pairs(vdpa_device_fd, features,
+>   QEMU Machine Protocol (QMP) commands
+>   ------------------------------------
+> @@ -681,13 +688,6 @@ tripped up the CI testing and was suspected to be quite broken. For that
+>   reason the maintainers strongly suspected no one actually used it.
+>   
+>   
+> -Creating sound card devices using ``-soundhw`` (removed in 7.1)
+> -'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+> -
+> -Sound card devices should be created using ``-device`` or ``-audio``.
+> -The exception is ``pcspk`` which can be activated using ``-machine
+> -pcspk-audiodev=<name>``.
+> -
+>   TCG introspection features
+>   --------------------------
+>   
 
 Applied to my trivial-patches branch.
 
