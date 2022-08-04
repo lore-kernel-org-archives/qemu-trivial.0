@@ -1,45 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oJgQb-0006Wv-Ia
+	id 1oJgQb-0006XW-P5
 	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2022 15:22:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44368)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44374)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oJgQZ-0006UF-Ok; Thu, 04 Aug 2022 15:22:40 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:37617)
+ id 1oJgQZ-0006UI-Qn; Thu, 04 Aug 2022 15:22:40 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:58589)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oJgQJ-0002ht-A2; Thu, 04 Aug 2022 15:22:39 -0400
+ id 1oJgQJ-0002iJ-FI; Thu, 04 Aug 2022 15:22:39 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MbRwP-1niguO3uun-00bokS; Thu, 04
- Aug 2022 21:22:18 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1M9nhF-1oNEnW0KJh-005nrA; Thu, 04
+ Aug 2022 21:22:19 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 0/5] Trivial branch for 7.1 patches
-Date: Thu,  4 Aug 2022 21:22:11 +0200
-Message-Id: <20220804192216.1958922-1-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Subject: [PULL 2/5] vdpa: Fix file descriptor leak on get features error
+Date: Thu,  4 Aug 2022 21:22:13 +0200
+Message-Id: <20220804192216.1958922-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.1
+In-Reply-To: <20220804192216.1958922-1-laurent@vivier.eu>
+References: <20220804192216.1958922-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:vS8JngDuQTLLbfZS+yfYrz31zqLTxOuLMsdN1ZoY+/YYLd2+Tzw
- /8vWWO4LVObysUy31owHZkS3xj7itdunrPec4FriFW3KK3yS489AEYVr4HFkoYVOeeqx8Wi
- aovgK6YL9cynC9aQ0mO8ceBSZAvzusxVxL3r2NobVvy+uWajRZDL1aZYNjvLJrpb4Q1gJRX
- wFG+vquxirBj2isF2BqJQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DKBo9ftZiUw=:WrCfP+hKYLSKpN/r60sc8u
- BkfIVUMCZQUMUYBxc2x+DCEPkXm0F8JFTrutJBNdM8c2yj4z5nJHkRau3DsYSocslrgjwsMBn
- 5uUU3CZ+FUErcoDlF0oCBOne9qMtPPpSbWuoSyEAgJODANO9svuHaA+GdObMmEceJpBIuzM94
- /UudXyBO4SZW+eFn9Gg0EgSH61NBfJgmYlSICN5WhEvdChcx/+oKmK1Y4wTrPLi5ejeAlmyMo
- CidVL2aJemmM3qjQMdDhO+LybQrc3wPebRE8sOuKVusmZg1mFf0gh26mxI2GzM6YhYdXUkImw
- T0cssWaIB9C8SpyEw3lluo90oVKeBZpUFYrSlxXhBIzh7mdfJzwsa8NEk2chIvdeoqHoNYdIP
- s9lJI7TTcGD6/qYWkm1wM+d9Wm31MWnXv1L8ZbFhvWIfx3KsL0IlYTfQz80gSh0riWD97IPeO
- uczzMgEpdAG2kJ2TcgRQhOTu0o2hmRzvUur6pHt3/hF4U5tLfXOTn2Wd9UGVb926nN9CQ+XQo
- hpppFoYSDDAMzR3X145pisrMhks+1th5Gf3ipwWwu9jJawYGjd9qMdC64688pMWPY87LOa4Hq
- jT9EBH483DrlltuRzH7P/7cIwNCyS+KhCGEVi3tn3Oeqb/xles5MS8iQTDm6YUqK5lmLdgAJT
- 0KKTcpYNk7MLPiDsVHAwhEqRvtNAR494sBYElzQWfVY30Ul0VMzgsPa+Emlsl9hWsiC5d/f62
- pQWEc0vSpjXSJh9ceba6nqijd+kn1/l6bvOKlA==
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:PlZEuQe6wSNNL5X/r8CICuAdM952zMYMC/hWWDjDoXTNU6HwTGh
+ d68/QkLvYlRWn/C3cC/tugAScBcTmgmMOuNGD2E5BJEFOzVBYFdfeCjTcVqm8cEKzN+k0hL
+ N4Q+y2zZgx0qKxsaqlBky0Di8COR9aK9vPudHo8Da5nwaJ3qs4BOjzzVT7gzUsPI1wSkvsn
+ 3S7OX3M2l/DIRt2XCIm4g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:X4j78tE9pa8=:13U/IYdnftaUiecrIzzeVA
+ prZCs9NRtA0KVfEcRPY0mRmauACCqKjjaEWF4SkDR4cgLCXscwWOtXQKMfyEz3l+3q78/wp9x
+ 4U6JHxdKfzFy0Jh0fMSF5Uuy+49rO3kIdM78SKsBTMUPrKsk2W1eMEWYuim0AVk9wtE0/1G5y
+ 12NbjlMFxq6ZAZ8cpZ8nNsGHZkhkEvZ+FXqsvX0yIci6fK2q3j5kjDT1BhkLk7zKxW1tTJdj1
+ HBXs7HIo4cQalR2+aRwqVBiwWhmM5BeOAKmEWJXUd6KxNAW8sDlsF2gHND6nHIUVW48ixI2Vh
+ hcl1AsEUmaDnnX40i458ahJj+zGUF4iwWd0SvOZOjIJAjBwLdt09U0lasEm84eAqzEiOSFMKc
+ vN9o9dzlyRzC80zLc+C9xBDfh4lP1Km778rPp597WS2Z+Pc8GiKn+i2YX6UsffnAL5FCb6YRU
+ yJlIF2y6nNnyqY4NvkzMKLGBuPjuMGShuK0BIWghUewR2VuFvtjLDuGY0puw3z28F+aB3SEgL
+ zm4V5wpXRxs1LsHQQHfmAnzmAWTFZaXj6Q+6s6Fb8rg7nTcIwv9BnGfIuroWRSZuOHaPDwFx0
+ uCknciSGswIZawweMcnjWbWnKG7qP804yIU24rbsH79k0W2HxKSIN/k8G6aAd74TI4voW2cvl
+ 2goqZMZu6v6XTxRxSjbtVvOOtdQ5ZXEpH2c7AS9kGq8IavPEYzo7t+tGmm3kOIVkmFEqkw5si
+ nkorMlyqWOP6w39EYm6rill+JXneL7+kfcnKpA==
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -59,45 +62,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Aug 2022 19:22:40 -0000
+X-List-Received-Date: Thu, 04 Aug 2022 19:22:41 -0000
 
-The following changes since commit 2480f3bbd03814b0651a1f74959f5c6631ee5819:
+From: Eugenio Pérez <eperezma@redhat.com>
 
-  Merge tag 'linux-user-for-7.1-pull-request' of https://gitlab.com/laurent_vivier/qemu into staging (2022-08-03 08:32:44 -0700)
+File descriptor vdpa_device_fd is not free in the case of returning
+error from vhost_vdpa_get_features. Fixing it by making all errors go to
+the same error path.
 
-are available in the Git repository at:
+Resolves: Coverity CID 1490785
+Fixes: 8170ab3f43 ("vdpa: Extract get features part from vhost_vdpa_get_max_queue_pairs")
 
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.1-pull-request
+Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20220802112447.249436-2-eperezma@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ net/vhost-vdpa.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-for you to fetch changes up to 21d4e557e2fd0cb7f10b632b35f51146a1b6d892:
-
-  include/qemu/host-utils.h: Simplify the compiler check in mulu128() (2022-08-04 13:49:47 +0200)
-
-----------------------------------------------------------------
-Pull request trivial branch 20220804
-
-----------------------------------------------------------------
-
-Cornelia Huck (1):
-  README.rst: fix link formatting
-
-Eugenio Pérez (1):
-  vdpa: Fix file descriptor leak on get features error
-
-Thomas Huth (2):
-  docs/about/removed-features: Move the -soundhw into the right section
-  include/qemu/host-utils.h: Simplify the compiler check in mulu128()
-
-Yonggang Luo (1):
-  ppc: Remove redundant macro MSR_BOOK3S_MASK.
-
- README.rst                      |  4 ++--
- docs/about/removed-features.rst | 14 +++++++-------
- include/qemu/host-utils.h       |  3 +--
- net/vhost-vdpa.c                |  4 ++--
- target/ppc/excp_helper.c        |  1 -
- 5 files changed, 12 insertions(+), 14 deletions(-)
-
+diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
+index 6abad276a61a..303447a68e8b 100644
+--- a/net/vhost-vdpa.c
++++ b/net/vhost-vdpa.c
+@@ -566,7 +566,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
+     g_autofree NetClientState **ncs = NULL;
+     g_autoptr(VhostIOVATree) iova_tree = NULL;
+     NetClientState *nc;
+-    int queue_pairs, r, i, has_cvq = 0;
++    int queue_pairs, r, i = 0, has_cvq = 0;
+ 
+     assert(netdev->type == NET_CLIENT_DRIVER_VHOST_VDPA);
+     opts = &netdev->u.vhost_vdpa;
+@@ -582,7 +582,7 @@ int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
+ 
+     r = vhost_vdpa_get_features(vdpa_device_fd, &features, errp);
+     if (unlikely(r < 0)) {
+-        return r;
++        goto err;
+     }
+ 
+     queue_pairs = vhost_vdpa_get_max_queue_pairs(vdpa_device_fd, features,
 -- 
 2.37.1
 
