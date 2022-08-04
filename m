@@ -1,50 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oJgQR-0006Rs-PH
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2022 15:22:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44326)
+	id 1oJgQU-0006T0-WB
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2022 15:22:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oJgQP-0006R6-Ro; Thu, 04 Aug 2022 15:22:29 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:57051)
+ id 1oJgQR-0006RK-8s; Thu, 04 Aug 2022 15:22:31 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:37771)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oJgQK-0002iT-A2; Thu, 04 Aug 2022 15:22:29 -0400
+ id 1oJgQM-0002if-7A; Thu, 04 Aug 2022 15:22:31 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M6lYs-1oLIzF33Xi-008GYx; Thu, 04
- Aug 2022 21:22:19 +0200
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MPGBR-1o3UzB3UnV-00Pf5Y; Thu, 04
+ Aug 2022 21:22:21 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
  Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>
-Subject: [PULL 3/5] docs/about/removed-features: Move the -soundhw into the
- right section
-Date: Thu,  4 Aug 2022 21:22:14 +0200
-Message-Id: <20220804192216.1958922-4-laurent@vivier.eu>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 5/5] include/qemu/host-utils.h: Simplify the compiler check in
+ mulu128()
+Date: Thu,  4 Aug 2022 21:22:16 +0200
+Message-Id: <20220804192216.1958922-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.1
 In-Reply-To: <20220804192216.1958922-1-laurent@vivier.eu>
 References: <20220804192216.1958922-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:luPvrACtIbj4IbMrkXlqYNiy5vKf3lwkofsHIWpn8mxUj3hrlRC
- Dzo2XA5tXnjhXe6vvbP52yllcmQBoWRx+0zYXwguYBIlh2HBgCvtdiyCFiEm6o7+dU7ePUB
- +t9fcaaF5+FHV7LC4WFiQIP57j6SahY9Vyp7k28+3kZL135ykb8A0yVK/YCpWu7N+T/N9Ae
- MHwCeER/npt/FGvrcvDmw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ukKcctbwkBE=:QQlKjrJ5kKRvQpjjU+SYYu
- TwLrO0dpNr23T3SDFLqCaLbPC9ENW/1wSlfEcHtpKxOTuQdFhdFaozn9Tfe9BNUVNAN98vRJK
- U4fTvl4nxg8YJcTwRGOrI2x4YMuAeWxyP59++CiO7a8gtP6Tof5f74aHbM/i+maMHprxSdKxN
- Ue94w94JvVoipmVslEFU2E1cL/ODAA6M9StQMkGPqjnSU8gQ7q67/Z2UYu+egn2gkhefj3xob
- 6dgqg3to2p3ziBuYVKqhWeKFQfTeE0kpiwKQxzvqe1LGg2TECAyrGZf9dHW9odCabg2Kfkvt7
- 2ApzRywFl0cbT6jxYsvlcTF62YVQGAM52gF0sg08dVhaQJQ4rKiy7yfAMzDyYRoJZ2Ne0qQLP
- bVE0iafZvMpJWfIQ0Kn5rKEh2bQ/l6p+OzqmRouN9FVHTkmTQxy62DNb7UqGyiItBcQrOVulw
- 3d2jYzRV+v6ZlahyoSWzbx7OkJMlzc64VWThtFl5n9h6OkRto2OaJnloGxuhnNEax0KAPr81w
- +WOrKl31MV5D1XyIThGJosjDImdoe9RnRbpkFJtp4/2W8yjBnndN12EpHBA1+lRQ/RMGDBbDe
- xD/FsuypXdt5QvV8FzRDTAbXUatALjnjYNN46Zdo1uehYXfcHLNPcWxfIGZbThKCmWMOAFv4l
- nda4o5Eewxt+2mbAIku5mB24y2uj15IsF7mFYmn/oZY3y+F5xsvPcDMdyfgNY+7cKHSUXhoX/
- YdqvR1uBB8Q/yPNqqd6p20UIyhwfrwFHodq3og==
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:fToQe7giDyBb7KJ3ybR2y5r5tcTHRf7O5dM1W+g4EV+AJ3qwwDg
+ 7HWiBTTCCsUWlSjIxoWW14fPIXXLFSKOw7CdhnZ8jeLvhR30FKUwq6EThpXrtImSMT2+i+L
+ wwEpXJYTudxKHPRWpDZzLyxGdXYrVSMK72Yz+lZ+hDAT0DM2Avn9PdVrgF0mhksw/+8Fkgg
+ n2MBXjN9LioFOBRCdM/cQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:VRh3Kr4llsE=:V1XJNVRNCn9rbz1vi3EgvC
+ KIPq63KUuzeJUliqJxI0HrPN9cjvXqduRi/2Y3xcIPQ0oDyXHzZVk1mvegOA9aRfFdnAUs7zU
+ G9BgGImujdmjkZb+Jme/DFXN2SwRK5tqN6Dszpi740TwR41EOL66IxmIlsJMT2aZ4akjmWwCf
+ 8v+txTL6mdq5u46PFBDy1P1M7vDg6gfdglVTmBg0wzfS+tESbhz0ujwill132tYJqVWp1jPrL
+ 0ETyiWxwefmkU2e0vV8MUleouSsxZ8E/ACKoOuu9aY5ASeHDyiiE7Tfwt1Hu2TgTPuYZjoxXc
+ JS9aEra1Wb9i4zJ19l6HROqzM6bDvcgaKBxin2+DVfUNe9B28Efd32AHM6HVVVo+z/t0zY00i
+ 9VITZuB+D4nLM0q7gCd8SHpT9EGgySzhoZYgJzKYEPPyHfQ8kUuuAnMurPIwvWXPi6BdL0I6X
+ BU+IUsIhCcbx/RtgmZ3yjOzK7YcsdAtTQWxmi4gHzW3xeSSwFdjff5aIe83QTNhHh5tFxsBhI
+ RSAdO2GBId8I2Lj7F3J04iPZDjG9YqX+BwQzFYWXhOLkuV+IBgtabm8BbbtPLVDLi2BlTK6E0
+ IWgoiFydf07fDhZuGRZ6CrDd7REf/ExIwphbOx9GsPqDaQ8AfzEhh7v6GIl+LJ7GV8RPCUpdX
+ HHIJbdEXM4oEAfkRhRKWtUp86Ea7P0WmM/1hyhtuDCpNkKSY0hcmHn+/tS2lIdLJLRdxV/vA8
+ 96dDDfjz0azJVkDB4xETAeOvRF1fC+aswhshGw==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,57 +62,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Aug 2022 19:22:30 -0000
+X-List-Received-Date: Thu, 04 Aug 2022 19:22:31 -0000
 
 From: Thomas Huth <thuth@redhat.com>
 
-The note about the removal of '-soundhw' has been accidentally added
-to the section of removed "linux-user mode CPUs" ... it should reside
-in the section about removed "System emulator command line arguments"
-instead.
+We currently require at least GCC 7.4 or Clang 6.0 for compiling QEMU.
+GCC has __builtin_mul_overflow since version 5 already, and Clang 6.0
+also provides this built-in function (see its documentation on this page:
+https://releases.llvm.org/6.0.0/tools/clang/docs/LanguageExtensions.html ).
+So we can simplify the #if statement here.
 
-Fixes: 039a68373c ("introduce -audio as a replacement for -soundhw")
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
-Message-Id: <20220802075611.346835-1-thuth@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220721074809.1513357-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/about/removed-features.rst | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ include/qemu/host-utils.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index c7b9dadd5d63..925e22016f98 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -396,6 +396,13 @@ Use ``-display sdl`` instead.
- 
- Use ``-display curses`` instead.
- 
-+Creating sound card devices using ``-soundhw`` (removed in 7.1)
-+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+Sound card devices should be created using ``-device`` or ``-audio``.
-+The exception is ``pcspk`` which can be activated using ``-machine
-+pcspk-audiodev=<name>``.
-+
- 
- QEMU Machine Protocol (QMP) commands
- ------------------------------------
-@@ -681,13 +688,6 @@ tripped up the CI testing and was suspected to be quite broken. For that
- reason the maintainers strongly suspected no one actually used it.
- 
- 
--Creating sound card devices using ``-soundhw`` (removed in 7.1)
--'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
--
--Sound card devices should be created using ``-device`` or ``-audio``.
--The exception is ``pcspk`` which can be activated using ``-machine
--pcspk-audiodev=<name>``.
--
- TCG introspection features
- --------------------------
- 
+diff --git a/include/qemu/host-utils.h b/include/qemu/host-utils.h
+index 29f3a9987880..88d476161ccb 100644
+--- a/include/qemu/host-utils.h
++++ b/include/qemu/host-utils.h
+@@ -533,8 +533,7 @@ static inline bool umul64_overflow(uint64_t x, uint64_t y, uint64_t *ret)
+  */
+ static inline bool mulu128(uint64_t *plow, uint64_t *phigh, uint64_t factor)
+ {
+-#if defined(CONFIG_INT128) && \
+-    (__has_builtin(__builtin_mul_overflow) || __GNUC__ >= 5)
++#if defined(CONFIG_INT128)
+     bool res;
+     __uint128_t r;
+     __uint128_t f = ((__uint128_t)*phigh << 64) | *plow;
 -- 
 2.37.1
 
