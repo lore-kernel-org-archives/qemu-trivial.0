@@ -1,74 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oJmeM-000100-B6
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Aug 2022 22:01:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43702)
+	id 1oJqG9-00043k-Qr
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Aug 2022 01:52:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oJmeL-0000ze-6p
- for qemu-trivial@nongnu.org; Thu, 04 Aug 2022 22:01:17 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535]:38602)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oJmeJ-0004RI-F7
- for qemu-trivial@nongnu.org; Thu, 04 Aug 2022 22:01:16 -0400
-Received: by mail-pg1-x535.google.com with SMTP id j17so1467726pgl.5
- for <qemu-trivial@nongnu.org>; Thu, 04 Aug 2022 19:01:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=Pqu47x7W4wexSp4qZ2CrcNr+QUzLwDDGCE74dZ0b1IE=;
- b=wWsaMxY2WdWH+Ch+J+GrcRsffHGdXg4hwN+YRdWDy3SQXI3aQiSZHaYAqBcwQFA3Hn
- Z/yRVRLD3ur8HbuHv/uQJpRducoYyAF4K2BmzeM+LxBpjYKhpg+IAvsPns6lq28ZeRm1
- x06teWIGbGalJrOtOnJnvYe1XzO00TxTmKsGJdOAOvKvbuho3+s0LxheQWJq1EvLMT/F
- TNk2dmiDVx0gmjeZ9wwr86cIuGGK00h7JR5t6kahYg/TBP9TNrOgEols5obtze+lovZo
- /l+VROrHH046LJI6jhIGtiZ1YYWKYllvddvkm8t5nhvgzV3Qkfud1qo+v7xpkeKRB7OD
- MgRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Pqu47x7W4wexSp4qZ2CrcNr+QUzLwDDGCE74dZ0b1IE=;
- b=Y8ERBvFTIf2YU0q/RhqxHRwtuUVLlsizgVvECjOzMqe4AlsJwieVrBnMxy1xkKjHUY
- wbMkH2mAqZYEY4ssre/TH3dQNnnV2jqgcPOLXA/zz7cLwt2eVnX8CjNk57BT1F14t6gb
- Y1tU+VasjLS7ogYogpjTy2ewC0JJazMtYUh8xBPyfZpJtcCkh6iD5bgY02tvYrh6Cj3l
- 8YskKUK22QaDmyknqN73lWWNzsQdgA+MZgExLNsV4Eq6Gk8wxH9EnmkLQymzgEMh+FXj
- aKXZGe77h89aeHK8xgjOWuXoO8Dpg7YTMNRfhVCvozVgaMcf+1E+jkodlGwBX7B65mS3
- XHuQ==
-X-Gm-Message-State: ACgBeo2Tm5oUBZhsrjvVGrp95dfD7T+gSWtgIeqw/6n/uzOrsdFppncF
- inP/0AQopWLEXX81LWAVtzW2eA==
-X-Google-Smtp-Source: AA6agR5M5uxh/JcLv/RJWS7LrqdVACeslUz+239A9z0MYwgbCzlPQRYaJE+9EsnSZi+xIPaH6gWXlw==
-X-Received: by 2002:a63:1361:0:b0:41a:861c:f870 with SMTP id
- 33-20020a631361000000b0041a861cf870mr3883889pgt.463.1659664870429; 
- Thu, 04 Aug 2022 19:01:10 -0700 (PDT)
-Received: from ?IPV6:2602:ae:154e:e201:7f4d:e9ce:ef99:81bf?
- ([2602:ae:154e:e201:7f4d:e9ce:ef99:81bf])
- by smtp.gmail.com with ESMTPSA id
- b76-20020a63344f000000b0040caab35e5bsm477073pga.89.2022.08.04.19.01.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Aug 2022 19:01:09 -0700 (PDT)
-Message-ID: <b8c9f6ad-9a4a-6bf1-5b82-cbf19085fffb@linaro.org>
-Date: Thu, 4 Aug 2022 19:01:07 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oJqG8-00043K-9c
+ for qemu-trivial@nongnu.org; Fri, 05 Aug 2022 01:52:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:26561)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oJqFx-0006nt-1o
+ for qemu-trivial@nongnu.org; Fri, 05 Aug 2022 01:52:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1659678739;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=do2V4y+D+logwXTA583fZNGbfyxxqtbmn4ueP1LUDuc=;
+ b=W+A02AJdrWkmKnJYYAzyWQf5UpRRMr7XypQ8PMEl91gXfEYj87YWBMbyHoRGP5erR3YZnb
+ F0NSLgP9Lazr9EJZVO7PRUcNf/0Y88KHZ87fZS1V2O4lpWguJYeTdbHHUewcI9Q6Or/j/K
+ S6iz90IXSCbojprRqts7kIotzweujIo=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-493-Ds1_eOsHOKmZ7ikmzRowzg-1; Fri, 05 Aug 2022 01:52:15 -0400
+X-MC-Unique: Ds1_eOsHOKmZ7ikmzRowzg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 074D4185A7B2;
+ Fri,  5 Aug 2022 05:52:15 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.194.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D0E2B1121315;
+ Fri,  5 Aug 2022 05:52:14 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id AD33D21E6930; Fri,  5 Aug 2022 07:52:13 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
 Subject: Re: [PULL 0/5] Trivial branch for 7.1 patches
-Content-Language: en-US
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
 References: <20220804192216.1958922-1-laurent@vivier.eu>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220804192216.1958922-1-laurent@vivier.eu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Date: Fri, 05 Aug 2022 07:52:13 +0200
+In-Reply-To: <20220804192216.1958922-1-laurent@vivier.eu> (Laurent Vivier's
+ message of "Thu, 4 Aug 2022 21:22:11 +0200")
+Message-ID: <87r11v9r02.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -82,52 +68,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Aug 2022 02:01:17 -0000
+X-List-Received-Date: Fri, 05 Aug 2022 05:52:32 -0000
 
-On 8/4/22 12:22, Laurent Vivier wrote:
-> The following changes since commit 2480f3bbd03814b0651a1f74959f5c6631ee5819:
-> 
->    Merge tag 'linux-user-for-7.1-pull-request' of https://gitlab.com/laurent_vivier/qemu into staging (2022-08-03 08:32:44 -0700)
-> 
-> are available in the Git repository at:
-> 
->    https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.1-pull-request
-> 
-> for you to fetch changes up to 21d4e557e2fd0cb7f10b632b35f51146a1b6d892:
-> 
->    include/qemu/host-utils.h: Simplify the compiler check in mulu128() (2022-08-04 13:49:47 +0200)
-> 
-> ----------------------------------------------------------------
-> Pull request trivial branch 20220804
+I was hoping for "[PATCH] contrib/vhost-user-blk: Clean up deallocation
+of VuVirtqElement".
 
-Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/7.1 as appropriate.
+https://patchew.org/QEMU/20220630085219.1305519-1-armbru@redhat.com/
 
-
-r~
-
-
-> 
-> ----------------------------------------------------------------
-> 
-> Cornelia Huck (1):
->    README.rst: fix link formatting
-> 
-> Eugenio Pérez (1):
->    vdpa: Fix file descriptor leak on get features error
-> 
-> Thomas Huth (2):
->    docs/about/removed-features: Move the -soundhw into the right section
->    include/qemu/host-utils.h: Simplify the compiler check in mulu128()
-> 
-> Yonggang Luo (1):
->    ppc: Remove redundant macro MSR_BOOK3S_MASK.
-> 
->   README.rst                      |  4 ++--
->   docs/about/removed-features.rst | 14 +++++++-------
->   include/qemu/host-utils.h       |  3 +--
->   net/vhost-vdpa.c                |  4 ++--
->   target/ppc/excp_helper.c        |  1 -
->   5 files changed, 12 insertions(+), 14 deletions(-)
-> 
+Next time, perhaps?
 
 
