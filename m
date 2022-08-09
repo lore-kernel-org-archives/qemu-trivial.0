@@ -1,54 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oLSWe-0003c8-Hr
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2022 12:56:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44848)
+	id 1oLX25-0002qe-3L
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2022 17:45:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43672)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oLSWV-0003Xn-0S; Tue, 09 Aug 2022 12:56:07 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:53343)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oLSWT-0000Wd-7e; Tue, 09 Aug 2022 12:56:06 -0400
-Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue010
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1N63i4-1nJcUo2YlU-016QAL; Tue, 09
- Aug 2022 18:55:58 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Qiang Liu <cyruscyliu@gmail.com>,
- Thomas Huth <thuth@redhat.com>, Frederic Konrad <fkonrad@amd.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 2/2] xlnx_dp: drop unsupported AUXCommand in
- xlnx_dp_aux_set_command
-Date: Tue,  9 Aug 2022 18:55:55 +0200
-Message-Id: <20220809165555.2415931-3-laurent@vivier.eu>
-X-Mailer: git-send-email 2.37.1
-In-Reply-To: <20220809165555.2415931-1-laurent@vivier.eu>
-References: <20220809165555.2415931-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oLX1y-0002pD-3B
+ for qemu-trivial@nongnu.org; Tue, 09 Aug 2022 17:44:56 -0400
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431]:40557)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1oLX1w-0003dO-AS
+ for qemu-trivial@nongnu.org; Tue, 09 Aug 2022 17:44:53 -0400
+Received: by mail-pf1-x431.google.com with SMTP id y141so11967553pfb.7
+ for <qemu-trivial@nongnu.org>; Tue, 09 Aug 2022 14:44:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=3CaougpuiT/ULDXL1MbNFO4WvxAk75A8gskseTwEqdE=;
+ b=n9hrtkHFtsrWQQK9JwFx3k60cYVS5+sMKfE0/LfrUVg/Oq4iqWrSdRDGANvslyKZoZ
+ 8LrMGwwXkBwZpo+reMgagtDyiFHoRBWVBhlJkGFXKNoUBCEqNHIEsZHFkO5jPSGpqW/P
+ tkE6DUh75N9zbDK+N2TDggr0QqU9ZoAhYupUvXxO12X4lfrsRpfk4BQMDD9F+ejwhNKd
+ lFDv9Ocy/9lkQuVBgdX0EXziM1sYywd4Q9tK6+UVmOtw75LJ73X/8TWa7BV2DjBX10In
+ m0beltm0WLYedRGkmMyy3gTIjuagj/MaB8fhBua0SSj2XIhfyuYQGobRSZSurLaFhG6L
+ ZCFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=3CaougpuiT/ULDXL1MbNFO4WvxAk75A8gskseTwEqdE=;
+ b=rgE0OR2/TXWe71maUpHoFMYMD9Qn0bqqvCuY6ofU1VCJCeaDuCdlLyChmiIdvRFlNE
+ lMVSktR+Q897MrFVTfaX/ljvkUBXw8LVt/BD5FrYb37GDpMgf1yrWK27mVb01GZXvk+R
+ 1zeBgzN5kTPkk2vjaNAVuaMirFFra5TcQyuRPgnkgtANs6aCkdHoHRS7IxJTE9H6zYH9
+ ZoORhFdLk8fi7kFd+W1uHo0detDBDTGV4h1g/C5DUhJNOCUMvhQVXYvpikV7a7gE/eNS
+ Mmr6yU2rKl/54Tv12y0qTA8sV0gjbnuxXIKO5qbEgrIeQsNEF/cYn3H0uaMT+9U2rAUj
+ cO9A==
+X-Gm-Message-State: ACgBeo38rQ6JPnGV7RN1L8TH58yKit1MuN+wxyC3tZZdkf6obOfMwNAG
+ KUVpwkFWtDAcgtNSuhcxfKIazw==
+X-Google-Smtp-Source: AA6agR6mIna2gBaqo7NJrPgcpN1cxXxPcAAcaaQYZa8IO/m6xx5SaCQecMsAqFs10P3chKA+WVQn6w==
+X-Received: by 2002:a63:5a4e:0:b0:41d:f6f6:4a0d with SMTP id
+ k14-20020a635a4e000000b0041df6f64a0dmr70262pgm.85.1660081490214; 
+ Tue, 09 Aug 2022 14:44:50 -0700 (PDT)
+Received: from ?IPV6:2602:ae:154e:e201:409:90e8:ee9:8fec?
+ ([2602:ae:154e:e201:409:90e8:ee9:8fec])
+ by smtp.gmail.com with ESMTPSA id
+ s1-20020a170902ea0100b0016f0d6614b8sm11331615plg.291.2022.08.09.14.44.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Aug 2022 14:44:49 -0700 (PDT)
+Message-ID: <22094624-6d07-09b1-8633-c90419438d77@linaro.org>
+Date: Tue, 9 Aug 2022 14:44:48 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:tvVm9Hwo5pM5k4ybRnZg0pEMJYU0xo7Rj7Q583DlJO4dXFLiE8B
- maom5z3gL4GbaBHp6+dh5XHKyl3wzlu7C+mk64KglLuh0rkec7SMG1ViJwcRxUrEIHkm9+r
- ZHIemQqSGHz/rWVQXvmrm4m6d8rQZno1ix0dc9YMKNgYlOgiWQD2wU0uFRjz5FfeQLBRo2a
- ZHTd97xFo96ru/aB+EiqQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:A0Dm9r/BfsQ=:v3sD8C1DJrfwR4hl0WkC9p
- HNtICvgBf9npsAD3wn7AdVHESQvWOOsjg3uLBKSbMuvC//GaXRgEdc0EnHW1T/0VYS9Yx6ayW
- hmcjEoAmwSxfGbzS3ThVRrWiMIV2uCrtiUmRLsJUmb8LCbSqvLnhrcyytGe8fULej0+Je5AZW
- pPQBx1PHCqkShCbFML49XvfjGF6l8dQdKX/eENMjJxcTfYryJKfhkwXa4fOqe7H3Qbj0EUKGk
- Bl6TJauHvhbnaQOX5qdP3HEFzGnZeQgQ/oqGS9K7E5ADMn34LGJR1MX0+C2R4d46691tdzmdy
- 15iR6pk/nOXtdDPeeXF58uAz9C3z1AcXF8YyJOptAghH2+hrqaexZfwOsklhIIPfqDzuarH3/
- C/dSobMZoyV2cODvM9vSOr7X4WEIEihkxA0cegjIcyrHo0ddgBJgTpkQKNajLZe9rXjvSTP2h
- qyEWV00Kmarl2DJutl+PZ3wtOlt+2itjkn3pLmBxgmjaDHBoxhYA06xW1Mtjq78DD4cNa7JJo
- VEeLqkzfuvD8vcUrEjdWpZxvDrUFL1SpBGJlxR72j8zMFac8/1ReNHW1BRf2drTc83FOaRzhI
- h9faYOxsKdRSOgDbKjI7yRN4hbqzMzd4u+gy6O6rxIpZ2t1KRxD6Qu3I/HfvSODDAZWkZy4hl
- Aoerv3w96HkXj1uNght776a1grKz+QEnUu69GJLLk2YQuh0yfDaUQLvNY0tGYtGCwRVc0c0q3
- p0oWXhbYkrcWgfy39ARdizJYcjs8JvkhBVLjjA==
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PULL 0/2] Trivial branch for 7.1 patches
+Content-Language: en-US
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20220809165555.2415931-1-laurent@vivier.eu>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20220809165555.2415931-1-laurent@vivier.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,45 +82,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Aug 2022 16:56:10 -0000
+X-List-Received-Date: Tue, 09 Aug 2022 21:44:56 -0000
 
-From: Qiang Liu <cyruscyliu@gmail.com>
+On 8/9/22 09:55, Laurent Vivier wrote:
+> The following changes since commit c669f22f1a47897e8d1d595d6b8a59a572f9158c:
+> 
+>    Merge tag 'pull-la-20220805' of https://gitlab.com/rth7680/qemu into staging (2022-08-05 12:55:53 -0700)
+> 
+> are available in the Git repository at:
+> 
+>    https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.1-pull-request
+> 
+> for you to fetch changes up to 9390da5ef29a5e0f98e5b482dceeeb287c452f17:
+> 
+>    xlnx_dp: drop unsupported AUXCommand in xlnx_dp_aux_set_command (2022-08-08 11:40:06 +0200)
+> 
+> ----------------------------------------------------------------
+> Pull request trivial branch 20220809
 
-In xlnx_dp_aux_set_command, when the command leads to the default
-branch, xlxn-dp will abort and then crash.
+Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/7.1 as appropriate.
 
-This patch removes this abort and drops this operation.
 
-Fixes: 58ac482 ("introduce xlnx-dp")
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/411
-Reported-by: Qiang Liu <cyruscyliu@gmail.com>
-Tested-by: Qiang Liu <cyruscyliu@gmail.com>
-Suggested-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Qiang Liu <cyruscyliu@gmail.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Frederic Konrad <fkonrad@amd.com>
-Message-Id: <20220808080116.2184881-1-cyruscyliu@gmail.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/display/xlnx_dp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+r~
 
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index a071c818833b..b0828d65aa86 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -532,8 +532,8 @@ static void xlnx_dp_aux_set_command(XlnxDPState *s, uint32_t value)
-         qemu_log_mask(LOG_UNIMP, "xlnx_dp: Write i2c status not implemented\n");
-         break;
-     default:
--        error_report("%s: invalid command: %u", __func__, cmd);
--        abort();
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid command: %u", __func__, cmd);
-+        return;
-     }
- 
-     s->core_registers[DP_INTERRUPT_SIGNAL_STATE] |= 0x04;
--- 
-2.37.1
+
+> 
+> ----------------------------------------------------------------
+> 
+> Markus Armbruster (1):
+>    contrib/vhost-user-blk: Clean up deallocation of VuVirtqElement
+> 
+> Qiang Liu (1):
+>    xlnx_dp: drop unsupported AUXCommand in xlnx_dp_aux_set_command
+> 
+>   contrib/vhost-user-blk/vhost-user-blk.c | 9 +++------
+>   hw/display/xlnx_dp.c                    | 4 ++--
+>   2 files changed, 5 insertions(+), 8 deletions(-)
+> 
 
 
