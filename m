@@ -1,80 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oL40z-0001xn-NQ
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Aug 2022 10:45:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48446)
+	id 1oLSWY-0003YX-2V
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2022 12:56:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1oL40x-0001xV-Mc
- for qemu-trivial@nongnu.org; Mon, 08 Aug 2022 10:45:55 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:34809)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1oL40v-0003Kf-TI
- for qemu-trivial@nongnu.org; Mon, 08 Aug 2022 10:45:55 -0400
-Received: by mail-wr1-x431.google.com with SMTP id j1so11198409wrw.1
- for <qemu-trivial@nongnu.org>; Mon, 08 Aug 2022 07:45:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:from:to:cc;
- bh=LirsAiipfXb+QWMHSbcKE6U5374CRC2uE46mpJ53z9A=;
- b=WfSXXXW2w2YDmuEk/EUN/y3LICiaO+8APaw2fI4U68c0+FyJF5nJzDH4pkAOxiw2Y5
- qBdk2AmsB9xoVcf8vPjaCTR5oOsVXWIAS8u1VvNM85BPGhZ4MJ6gJw2uejxV6/2DVvvc
- PQhWPAdx8pArfYZb+O70hjtVzKf3HsvRrhR7I92TD5bIJTBa1cLKqF4wh+4nkGVOxxA9
- qoyjLZVEBO/u395MNxy/gTmwQqHKnz4nbSAZuzpAlXVBNtLRQttKRusFLtEQTrJikagH
- ZMODitNZ4JVtNpM+7Xgh6D970FQZBXOqU+aECcWaz1GEQjpiNCkjdaCcPXnzNlTOzbJJ
- 6aHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
- :cc; bh=LirsAiipfXb+QWMHSbcKE6U5374CRC2uE46mpJ53z9A=;
- b=IFTNlD83RZ4VVyR42mRei/FxtIeqgZXoOCGPn+674/4e12VsaxQw4mVmKJJ2sX9e6o
- KQlUyj/rgd60OcPPzBUxkr7l820DV4ebUCmKA7LVzFJnZKIOtLq1IvWRSmpf0lgp2XPK
- JyNnZhjRNZOsmahuBV29nX/1wyqHtjsOivnrXCTL0eCVibCsIxiat33/IribfwNa9CW/
- lvyco5U3yG12FzoTr4Bvjn2qrAg2FQ8cnMlcRXC20cQNYU8S0y1uyK50imRhkGnvwUl3
- WYDaoeqBYH1MVqlf8ESWdtVn/zKjvF0Ctf9N5FsGjHgXKEfCevHUcrrGSr/RiLQ4BzCn
- NPyw==
-X-Gm-Message-State: ACgBeo2ISE++B5iQPyq63JKD18nRXBCt9WmJgqoGzrAeYPmDdOI90hmK
- 1/ppAl22evz5wMW3EE5Ju68dcQ==
-X-Google-Smtp-Source: AA6agR5fCiXRiope2TrKTZ9DpW8+oFeUhHRTIz2fRK0pYUITFFr43wNW+EztZubwUOC30RkyhHIEAA==
-X-Received: by 2002:a5d:560d:0:b0:21f:1619:ba0 with SMTP id
- l13-20020a5d560d000000b0021f16190ba0mr11599904wrv.318.1659969951925; 
- Mon, 08 Aug 2022 07:45:51 -0700 (PDT)
-Received: from zen.linaroharston ([185.81.254.11])
- by smtp.gmail.com with ESMTPSA id
- r3-20020a05600c424300b003a53de38c0dsm4912645wmm.14.2022.08.08.07.45.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Aug 2022 07:45:51 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 613861FFB7;
- Mon,  8 Aug 2022 15:45:50 +0100 (BST)
-References: <20220630085219.1305519-1-armbru@redhat.com>
- <20220701043032.GA28338@raphael-debian-dev> <87wncx2xw4.fsf@pond.sub.org>
- <CAFEAcA993Z7ty7FvxEX7JjLZCFWrcPRuy2eMJKwoVTZJ1Z7_vQ@mail.gmail.com>
- <20220727172759.GA30765@raphael-debian-dev>
- <CAFEAcA_g-7uM3WN6ijL4RFcb5qRatX11vyeVvSwNHRNXbuAjgg@mail.gmail.com>
-User-agent: mu4e 1.8.8; emacs 28.1.91
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>, Markus Armbruster
- <armbru@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [PATCH] contrib/vhost-user-blk: Clean up deallocation of
- VuVirtqElement
-Date: Mon, 08 Aug 2022 15:37:19 +0100
-In-reply-to: <CAFEAcA_g-7uM3WN6ijL4RFcb5qRatX11vyeVvSwNHRNXbuAjgg@mail.gmail.com>
-Message-ID: <87czdaoktd.fsf@linaro.org>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1oLSWQ-0003Wp-EI; Tue, 09 Aug 2022 12:56:04 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:55077)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1oLSWO-0000W8-Ml; Tue, 09 Aug 2022 12:56:02 -0400
+Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue010
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1N95Rn-1nIF3K0gsx-0169qg; Tue, 09
+ Aug 2022 18:55:57 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 0/2] Trivial branch for 7.1 patches
+Date: Tue,  9 Aug 2022 18:55:53 +0200
+Message-Id: <20220809165555.2415931-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.37.1
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:4wgleWVivobzNZNRt39nKXmMum4Ruv2EYMv1DlcGGLCGZ25Z00D
+ a1/0dFk4M2eCUOtwHQVzB1zL5UVZdxcKA9+ZoP6br7YKqo08apu8OEcQj0niS7wv9GL3Q30
+ f0pqsDqTywkLJfOUSisNGFE/gEnRyPwLmB1fMYr1iAkb0K0Kfic88RYVTXwMck3ni3FXXz7
+ e/5YGNSWqy3B2gl+rxzIA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2+LIsI8gSt8=:2srpe/tStOiFmzmc77p86F
+ yu1IVncl3seNzLcmw/nFNoBZP9SR1PxNGm6zvfKHQ8LEbV1IyizboA6tJ4XsChGKmDbgvTlqP
+ cQy9tODKy5ERp+eUTc/aUfx54uz4QTA7NoD0VLyrquBMvILGsTQP/nk3owjQg2yxv5UaG76Ss
+ cuHjyhe3IW9QUTS7gZdIZSvbt5BIKnjiWi9YXzyzPAPIu5ThcuiwDRu/+EfFJHvTwd7xh8zAT
+ 5SMUJDJeqoJtYnXEI8MjRPuw+eozys65bqL7GevxI2QMBca5lKG1cgtkdiHn8MwWa39cQf3dt
+ wSRtL/9VRJlYSRTDpQjLs4+e/JlChER8Z81I56lhPZ0WtR+s+iATph5o4qv847sIUJ7TAa+6R
+ juukftLysyusWaza2t1khn7cmi6ldv/V0wN+rbbVUQZ+sQnFsSgJHAyLTBFpG8Yw2DXdJqzxB
+ GYF6U2exo9HV8q+iPRl3w6JYHt2Em6r4s25bGu3/DQtBUjjUWs5nQi3ecpsPuykSB10VVSis7
+ CM8zsJSzxJSAj3OKlX6EuIU+qdjJEZUNWGloO2Rpg5mLCJmbZ8WVM+RPQlL0l356by/R2+9uX
+ PJmfRUOWjbKtrNibwXXvPbfnk85OdEU0NqVVJWhLtHQ7Flt3whUw3pynDKsL8y//gPCAZfiTz
+ POILnUMSad25ph8/FYdWTBGCYp77uaheAV21OAxWLZ+dyv7p9eE0fRrH7nIo0aEf5STgn39j3
+ oxKw5Keu+9SJ1LHWoanX6s3KxCRzRkSn4oGSFg==
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -88,57 +59,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Aug 2022 14:45:56 -0000
+X-List-Received-Date: Tue, 09 Aug 2022 16:56:06 -0000
 
+The following changes since commit c669f22f1a47897e8d1d595d6b8a59a572f9158c:
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+  Merge tag 'pull-la-20220805' of https://gitlab.com/rth7680/qemu into staging (2022-08-05 12:55:53 -0700)
 
-> On Wed, 27 Jul 2022 at 18:28, Raphael Norwitz
-> <raphael.norwitz@nutanix.com> wrote:
->>
->> On Tue, Jul 26, 2022 at 03:57:42PM +0100, Peter Maydell wrote:
->> > On Fri, 1 Jul 2022 at 06:41, Markus Armbruster <armbru@redhat.com> wro=
-te:
->> > > Could we use a contrib/README with an explanation what "contrib" mea=
-ns,
->> > > and how to build and use the stuff there?
->> >
->> > I would rather we got rid of contrib/ entirely. Our git repo
->> > should contain things we care about enough to really support
->> > and believe in, in which case they should be in top level
->> > directories matching what they are (eg tools/). If we don't
->> > believe in these things enough to really support them, then
->> > we should drop them, and let those who do care maintain them
->> > as out-of-tree tools if they like.
->> >
->>
->> I can't speak for a lot of stuff in contrib/ but I find the vhost-user
->> backends like vhost-user-blk and vhost-user-scsi helpful for testing and
->> development. I would like to keep maintaining those two at least.
->
-> Right, I don't mean we should just delete contrib/, but for the
-> things currently in it that we do care about, we should define
-> what their relationship to QEMU is and put them in a part of
-> the source tree that says what they actually are. contrib/
-> just means "nobody thought about it".
+are available in the Git repository at:
 
-I split plugins a while ago between:
+  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.1-pull-request
 
-  tests/plugin
-  contrib/plugins
+for you to fetch changes up to 9390da5ef29a5e0f98e5b482dceeeb287c452f17:
 
-where the former are really basic plugins that show usage, exercise the
-API and are included in the check-tcg tests. The contrib plugins are
-slightly more random mix of useful (e.g. cache, execlog), downright
-experimental (lockstep) and stuff I can't actually test (e.g. drcov).
+  xlnx_dp: drop unsupported AUXCommand in xlnx_dp_aux_set_command (2022-08-08 11:40:06 +0200)
 
-I'll quite happily continue to process patches that update and enhance
-contrib/plugins but at a push a few could be promoted to less of a
-dumping ground (tools/tcg-plugins?).
+----------------------------------------------------------------
+Pull request trivial branch 20220809
 
-I guess it would only really matter if we were installing plugins as
-part of "make install"?
+----------------------------------------------------------------
 
---=20
-Alex Benn=C3=A9e
+Markus Armbruster (1):
+  contrib/vhost-user-blk: Clean up deallocation of VuVirtqElement
+
+Qiang Liu (1):
+  xlnx_dp: drop unsupported AUXCommand in xlnx_dp_aux_set_command
+
+ contrib/vhost-user-blk/vhost-user-blk.c | 9 +++------
+ hw/display/xlnx_dp.c                    | 4 ++--
+ 2 files changed, 5 insertions(+), 8 deletions(-)
+
+-- 
+2.37.1
+
 
