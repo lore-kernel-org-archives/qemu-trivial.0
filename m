@@ -1,75 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oLX25-0002qe-3L
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2022 17:45:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43672)
+	id 1oM7g6-0001XL-IM
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Aug 2022 08:52:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oLX1y-0002pD-3B
- for qemu-trivial@nongnu.org; Tue, 09 Aug 2022 17:44:56 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431]:40557)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1oLX1w-0003dO-AS
- for qemu-trivial@nongnu.org; Tue, 09 Aug 2022 17:44:53 -0400
-Received: by mail-pf1-x431.google.com with SMTP id y141so11967553pfb.7
- for <qemu-trivial@nongnu.org>; Tue, 09 Aug 2022 14:44:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=3CaougpuiT/ULDXL1MbNFO4WvxAk75A8gskseTwEqdE=;
- b=n9hrtkHFtsrWQQK9JwFx3k60cYVS5+sMKfE0/LfrUVg/Oq4iqWrSdRDGANvslyKZoZ
- 8LrMGwwXkBwZpo+reMgagtDyiFHoRBWVBhlJkGFXKNoUBCEqNHIEsZHFkO5jPSGpqW/P
- tkE6DUh75N9zbDK+N2TDggr0QqU9ZoAhYupUvXxO12X4lfrsRpfk4BQMDD9F+ejwhNKd
- lFDv9Ocy/9lkQuVBgdX0EXziM1sYywd4Q9tK6+UVmOtw75LJ73X/8TWa7BV2DjBX10In
- m0beltm0WLYedRGkmMyy3gTIjuagj/MaB8fhBua0SSj2XIhfyuYQGobRSZSurLaFhG6L
- ZCFQ==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oM7g4-0001Qi-Vx
+ for qemu-trivial@nongnu.org; Thu, 11 Aug 2022 08:52:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:45076)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oM7g1-0007Ym-Ky
+ for qemu-trivial@nongnu.org; Thu, 11 Aug 2022 08:52:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1660222361;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ccHKV60GUy43jU9rl4e6LjFMRT/GAai6MdkD4oo/FDM=;
+ b=F/KM5Nil5Awe5ScWXT2acy2v0C4D8Q9RvaDLp+Jm1dug4UVL4wkc33XvIMVG8Tv4xMX31F
+ ikAbBF7vTUY0/BO1BCM2RI+4QxY3NnaUaP8lZBDHchgZn9SgTaywtdrRAfOB0U/fDCnE7f
+ afeJy6eF09KGX3pg2PuN3nRqCriCUm0=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-553-KcrGri9_M865k26Q8euqUQ-1; Thu, 11 Aug 2022 08:52:37 -0400
+X-MC-Unique: KcrGri9_M865k26Q8euqUQ-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ f21-20020a1cc915000000b003a3551598a1so1629193wmb.0
+ for <qemu-trivial@nongnu.org>; Thu, 11 Aug 2022 05:52:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3CaougpuiT/ULDXL1MbNFO4WvxAk75A8gskseTwEqdE=;
- b=rgE0OR2/TXWe71maUpHoFMYMD9Qn0bqqvCuY6ofU1VCJCeaDuCdlLyChmiIdvRFlNE
- lMVSktR+Q897MrFVTfaX/ljvkUBXw8LVt/BD5FrYb37GDpMgf1yrWK27mVb01GZXvk+R
- 1zeBgzN5kTPkk2vjaNAVuaMirFFra5TcQyuRPgnkgtANs6aCkdHoHRS7IxJTE9H6zYH9
- ZoORhFdLk8fi7kFd+W1uHo0detDBDTGV4h1g/C5DUhJNOCUMvhQVXYvpikV7a7gE/eNS
- Mmr6yU2rKl/54Tv12y0qTA8sV0gjbnuxXIKO5qbEgrIeQsNEF/cYn3H0uaMT+9U2rAUj
- cO9A==
-X-Gm-Message-State: ACgBeo38rQ6JPnGV7RN1L8TH58yKit1MuN+wxyC3tZZdkf6obOfMwNAG
- KUVpwkFWtDAcgtNSuhcxfKIazw==
-X-Google-Smtp-Source: AA6agR6mIna2gBaqo7NJrPgcpN1cxXxPcAAcaaQYZa8IO/m6xx5SaCQecMsAqFs10P3chKA+WVQn6w==
-X-Received: by 2002:a63:5a4e:0:b0:41d:f6f6:4a0d with SMTP id
- k14-20020a635a4e000000b0041df6f64a0dmr70262pgm.85.1660081490214; 
- Tue, 09 Aug 2022 14:44:50 -0700 (PDT)
-Received: from ?IPV6:2602:ae:154e:e201:409:90e8:ee9:8fec?
- ([2602:ae:154e:e201:409:90e8:ee9:8fec])
- by smtp.gmail.com with ESMTPSA id
- s1-20020a170902ea0100b0016f0d6614b8sm11331615plg.291.2022.08.09.14.44.49
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc;
+ bh=ccHKV60GUy43jU9rl4e6LjFMRT/GAai6MdkD4oo/FDM=;
+ b=VXRHTUDFXkst/hqffN9nt7L7QQS/YIpmlRGaf3fQ6m2jUadxYPWK71EWOv+ab/KH8+
+ zKxJSMqgLhRCKi5FD4gu9M/GzxWWChWDDd+aRl9RAZHFiFf5yS/jBcjjUoFKTZBOvLja
+ SjjmK+ZDv2bYi+MvSnsONISmXDQbK6AVoFK5Hze5Ll27r5bPaCjAJ/jYoD94cgyVx1td
+ BdZJZI28nwBbv7ThyTzNNdkb8wRiV8wmZLeTAb1svMm7uoHtOpAa5krMufggzP9kF0zi
+ h1Vt53XG9mCR7B+8yWAamYuqhp5zR3q4U9DbAW/VVHWkEhFbjqD8r0O6PVRpHHJRegwx
+ eC5w==
+X-Gm-Message-State: ACgBeo2XgWP+JJZOaC8gDlVaiZ33yCw2IIgWDxjn6D+IKjaa9QpQjCbG
+ J38ebe1QUTLxzCKubvWocJDzGV5kae5eX9S/iAjjlAeDzcTiO5133K0Ynfgz0PMYdrWkpWm61h4
+ jEa5x+T4OcJTLz5yRtA==
+X-Received: by 2002:a5d:64e5:0:b0:220:7859:7bc with SMTP id
+ g5-20020a5d64e5000000b00220785907bcmr18788674wri.669.1660222356752; 
+ Thu, 11 Aug 2022 05:52:36 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7gaBV7mIJu9yk69aGmTrdJwTF3MhfFPuzS82xXMiFSbDWF4gQ0mkJVJpcyVdG52+GOF/WjpA==
+X-Received: by 2002:a5d:64e5:0:b0:220:7859:7bc with SMTP id
+ g5-20020a5d64e5000000b00220785907bcmr18788661wri.669.1660222356534; 
+ Thu, 11 Aug 2022 05:52:36 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-42-115-19.web.vodafone.de.
+ [109.42.115.19]) by smtp.gmail.com with ESMTPSA id
+ p10-20020a05600c064a00b003a54f49c1c8sm5978048wmm.12.2022.08.11.05.52.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Aug 2022 14:44:49 -0700 (PDT)
-Message-ID: <22094624-6d07-09b1-8633-c90419438d77@linaro.org>
-Date: Tue, 9 Aug 2022 14:44:48 -0700
+ Thu, 11 Aug 2022 05:52:36 -0700 (PDT)
+Message-ID: <55aa1d93-f026-9a47-8502-96f648a37e4b@redhat.com>
+Date: Thu, 11 Aug 2022 14:52:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PULL 0/2] Trivial branch for 7.1 patches
+ Thunderbird/91.12.0
+Subject: Re: [PATCH] tests/qtest: misc tweaks to readconfig
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20220809093854.168438-1-berrange@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20220809093854.168438-1-berrange@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20220809165555.2415931-1-laurent@vivier.eu>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20220809165555.2415931-1-laurent@vivier.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,42 +94,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Aug 2022 21:44:56 -0000
+X-List-Received-Date: Thu, 11 Aug 2022 12:52:45 -0000
 
-On 8/9/22 09:55, Laurent Vivier wrote:
-> The following changes since commit c669f22f1a47897e8d1d595d6b8a59a572f9158c:
+On 09/08/2022 11.38, Daniel P. Berrangé wrote:
+> The property name parameter is ignored when visiting a top
+> level type, but the obvious typo should be fixed to avoid
+> confusion. A few indentation issues were tidied up. We
+> can break out of the loop when finding the RNG device.
+> Finally, close the temp FD immediately when no longer
+> needed.
 > 
->    Merge tag 'pull-la-20220805' of https://gitlab.com/rth7680/qemu into staging (2022-08-05 12:55:53 -0700)
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>   tests/qtest/readconfig-test.c | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> are available in the Git repository at:
-> 
->    https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.1-pull-request
-> 
-> for you to fetch changes up to 9390da5ef29a5e0f98e5b482dceeeb287c452f17:
-> 
->    xlnx_dp: drop unsupported AUXCommand in xlnx_dp_aux_set_command (2022-08-08 11:40:06 +0200)
-> 
-> ----------------------------------------------------------------
-> Pull request trivial branch 20220809
+> diff --git a/tests/qtest/readconfig-test.c b/tests/qtest/readconfig-test.c
+> index 2e604d7c2d..c7a9b0c7dd 100644
+> --- a/tests/qtest/readconfig-test.c
+> +++ b/tests/qtest/readconfig-test.c
+> @@ -33,13 +33,12 @@ static QTestState *qtest_init_with_config(const char *cfgdata)
+>       g_assert_cmpint(cfgfd, >=, 0);
+>   
+>       ret = qemu_write_full(cfgfd, cfgdata, strlen(cfgdata));
+> +    close(cfgfd);
+>       if (ret < 0) {
+>           unlink(cfgpath);
+>       }
+>       g_assert_cmpint(ret, ==, strlen(cfgdata));
+>   
+> -    close(cfgfd);
+> -
+>       args = g_strdup_printf("-nodefaults -machine none -readconfig %s", cfgpath);
+>   
+>       qts = qtest_init(args);
+> @@ -79,7 +78,7 @@ static void test_x86_memdev(void)
+>           "size = \"200\"";
+>   
+>       qts = qtest_init_with_config(cfgdata);
+> -   /* Test valid command */
+> +    /* Test valid command */
+>       resp = qtest_qmp(qts, "{ 'execute': 'query-memdev' }");
+>       test_x86_memdev_resp(qdict_get(resp, "return"));
+>       qobject_unref(resp);
+> @@ -96,7 +95,7 @@ static void test_spice_resp(QObject *res)
+>   
+>       g_assert(res);
+>       v = qobject_input_visitor_new(res);
+> -    visit_type_SpiceInfo(v, "spcie", &spice, &error_abort);
+> +    visit_type_SpiceInfo(v, "spice", &spice, &error_abort);
+>   
+>       g_assert(spice);
+>       g_assert(spice->enabled);
+> @@ -114,7 +113,7 @@ static void test_spice(void)
+>           "unix = \"on\"\n";
+>   
+>       qts = qtest_init_with_config(cfgdata);
+> -   /* Test valid command */
+> +    /* Test valid command */
+>       resp = qtest_qmp(qts, "{ 'execute': 'query-spice' }");
+>       test_spice_resp(qdict_get(resp, "return"));
+>       qobject_unref(resp);
+> @@ -144,6 +143,7 @@ static void test_object_rng_resp(QObject *res)
+>           if (g_str_equal(obj->name, "rng0") &&
+>               g_str_equal(obj->type, "child<rng-builtin>")) {
+>               seen_rng = true;
+> +            break;
+>           }
+>   
+>           tmp = tmp->next;
+> @@ -164,7 +164,7 @@ static void test_object_rng(void)
+>           "id = \"rng0\"\n";
+>   
+>       qts = qtest_init_with_config(cfgdata);
+> -   /* Test valid command */
+> +    /* Test valid command */
+>       resp = qtest_qmp(qts,
+>                        "{ 'execute': 'qom-list',"
+>                        "  'arguments': {'path': '/objects' }}");
 
-Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/7.1 as appropriate.
-
-
-r~
-
-
-> 
-> ----------------------------------------------------------------
-> 
-> Markus Armbruster (1):
->    contrib/vhost-user-blk: Clean up deallocation of VuVirtqElement
-> 
-> Qiang Liu (1):
->    xlnx_dp: drop unsupported AUXCommand in xlnx_dp_aux_set_command
-> 
->   contrib/vhost-user-blk/vhost-user-blk.c | 9 +++------
->   hw/display/xlnx_dp.c                    | 4 ++--
->   2 files changed, 5 insertions(+), 8 deletions(-)
-> 
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
