@@ -1,39 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oMPXf-0007OB-PA
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Aug 2022 03:57:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52058)
+	id 1oMRhm-0006Bk-9S
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Aug 2022 06:15:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1oMPXe-0007Nz-F1; Fri, 12 Aug 2022 03:57:14 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:44296
- helo=mail.v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1oMPXb-0008RK-QM; Fri, 12 Aug 2022 03:57:13 -0400
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id C9260DA046A;
- Fri, 12 Aug 2022 09:57:07 +0200 (CEST)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
- id 2459046001C; Fri, 12 Aug 2022 09:57:07 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org,
-	Hongren Zheng <i@zenithal.me>
-Cc: libvir-list@redhat.com, "Canokeys . org" <contact@canokeys.org>,
- qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH for-7.1?] Fix some typos in documentation (most of them found
- by codespell)
-Date: Fri, 12 Aug 2022 09:56:42 +0200
-Message-Id: <20220812075642.1200578-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oMRhl-0006BE-4w
+ for qemu-trivial@nongnu.org; Fri, 12 Aug 2022 06:15:49 -0400
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b]:42808)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oMRhi-0004ip-Ky
+ for qemu-trivial@nongnu.org; Fri, 12 Aug 2022 06:15:48 -0400
+Received: by mail-yb1-xb2b.google.com with SMTP id 199so758984ybl.9
+ for <qemu-trivial@nongnu.org>; Fri, 12 Aug 2022 03:15:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc;
+ bh=1Kv/7Qh8sV7qc8d6b4Ku+Yv3mZMFgfBPgj3eNPlwIDI=;
+ b=SpdggizlS/fPySYxoQBlCjD5OIqfr/cevKrPRPNUYHzItYmWDLOb7uO1CSqKKg4wzG
+ o6T4TBSG312Md4n9Awt+SGY3gKnwhRU/IEykNzHrrLOOtJFHLiryTugUavDgS1AmWN8P
+ l7Q/ZWFbh90+bu4awrO8CB8Dk9VcnEdoA4i/BBS2sBSZCXUR11U24KwWZMfQ5ibC0xHu
+ 8nAiE1MBqnMXT5LI3AFyxhWXu4MhMZcvnPiZduADbYO51lbv9wlcqI/5rtAsWPQc1Ngj
+ zZJUmS5JTe+cfXkQ9JGxqxtBydQETtpy3J7nh9fQ9bB0PyIbSRdnD6cnZxqeJazBgKKs
+ oAiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc;
+ bh=1Kv/7Qh8sV7qc8d6b4Ku+Yv3mZMFgfBPgj3eNPlwIDI=;
+ b=sytenZqKcyTFgZ8Bgfs0ga74Ao8R9zBaT0qfdXRlx+Rzgi0HxvcE0kDqjOOYTM/Jnw
+ gHdumx/U59V6Urym0oVGz2pYT7jlglvICIwxBQHt1XV8UOSDE9wXOpyXLh40VbmlQRa2
+ IFO9h2Ny1/Uv1MIgm/B4bQViGLjQ7tag6JmkO/NKJSDQTkhnNbL4MHrVlrAvju1SL1zE
+ ckwPLcGX4PV5HMz4p/xY62Q+Ztr8OawwHfPRov8+D4drx51373oJ7JxCkM2dDvd9kiVR
+ 4ez/daLxRt9QNpWV3C6ZQVec0+Sk6xK46WBInOpjBjyuR6BydJbQdCrGhMRN23SGk828
+ tu4g==
+X-Gm-Message-State: ACgBeo06iBSBqqQq3Rl+ztnmjcBAfT172Su+NW+5xpoygjAyrMw65p1X
+ vKEEXL3ZfEyQYFL9xid21dgr9Fqxkl9K01cxL5b9Tw==
+X-Google-Smtp-Source: AA6agR6PrTQ2teFKCgCTqCtQ6vxs+ZSKA69vZoTNZ17pE2C5E1gDv2eq8YxBeDO05KAHz3y9Yx/gCqzZbtPddaR9SS0=
+X-Received: by 2002:a25:d4a:0:b0:671:6d11:d14e with SMTP id
+ 71-20020a250d4a000000b006716d11d14emr2878452ybn.479.1660299345331; Fri, 12
+ Aug 2022 03:15:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20220812075642.1200578-1-sw@weilnetz.de>
+In-Reply-To: <20220812075642.1200578-1-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Aug 2022 11:15:34 +0100
+Message-ID: <CAFEAcA-QqFh8hCxu5A86ReGgo1=vm57FJAHraRU28NzBa-dNWA@mail.gmail.com>
+Subject: Re: [PATCH for-7.1?] Fix some typos in documentation (most of them
+ found by codespell)
+To: Stefan Weil <sw@weilnetz.de>
+Cc: qemu-devel@nongnu.org, Hongren Zheng <i@zenithal.me>,
+ libvir-list@redhat.com, 
+ "Canokeys . org" <contact@canokeys.org>, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -46,135 +74,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Aug 2022 07:57:14 -0000
+X-List-Received-Date: Fri, 12 Aug 2022 10:15:49 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- docs/about/deprecated.rst       |  2 +-
- docs/specs/acpi_erst.rst        |  4 ++--
- docs/system/devices/canokey.rst |  8 ++++----
- docs/system/devices/cxl.rst     | 12 ++++++------
- 4 files changed, 13 insertions(+), 13 deletions(-)
+On Fri, 12 Aug 2022 at 08:59, Stefan Weil via <qemu-devel@nongnu.org> wrote:
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 7ee26626d5..91b03115ee 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -297,7 +297,7 @@ by using ``-machine graphics=off``.
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- 
- In QEMU versions 6.1, 6.2 and 7.0, the ``nvme-ns`` generates an EUI-64
--identifer that is not globally unique. If an EUI-64 identifer is required, the
-+identifier that is not globally unique. If an EUI-64 identifier is required, the
- user must set it explicitly using the ``nvme-ns`` device parameter ``eui64``.
- 
- ``-device nvme,use-intel-id=on|off`` (since 7.1)
-diff --git a/docs/specs/acpi_erst.rst b/docs/specs/acpi_erst.rst
-index a8a9d22d25..2339b60ad7 100644
---- a/docs/specs/acpi_erst.rst
-+++ b/docs/specs/acpi_erst.rst
-@@ -108,7 +108,7 @@ Slot 0 contains a backend storage header that identifies the contents
- as ERST and also facilitates efficient access to the records.
- Depending upon the size of the backend storage, additional slots will
- be designated to be a part of the slot 0 header. For example, at 8KiB,
--the slot 0 header can accomodate 1021 records. Thus a storage size
-+the slot 0 header can accommodate 1021 records. Thus a storage size
- of 8MiB (8KiB * 1024) requires an additional slot for use by the
- header. In this scenario, slot 0 and slot 1 form the backend storage
- header, and records can be stored starting at slot 2.
-@@ -196,5 +196,5 @@ References
- [2] "Unified Extensible Firmware Interface Specification",
-     version 2.1, October 2008.
- 
--[3] "Windows Hardware Error Architecture", specfically
-+[3] "Windows Hardware Error Architecture", specifically
-     "Error Record Persistence Mechanism".
-diff --git a/docs/system/devices/canokey.rst b/docs/system/devices/canokey.rst
-index c2c58ae3e7..cfa6186e48 100644
---- a/docs/system/devices/canokey.rst
-+++ b/docs/system/devices/canokey.rst
-@@ -28,9 +28,9 @@ With the same software configuration as a hardware key,
- the guest OS can use all the functionalities of a secure key as if
- there was actually an hardware key plugged in.
- 
--CanoKey QEMU provides much convenience for debuging:
-+CanoKey QEMU provides much convenience for debugging:
- 
--* libcanokey-qemu supports debuging output thus developers can
-+* libcanokey-qemu supports debugging output thus developers can
-   inspect what happens inside a secure key
- * CanoKey QEMU supports trace event thus event
- * QEMU USB stack supports pcap thus USB packet between the guest
-@@ -102,8 +102,8 @@ and find CanoKey QEMU there:
- 
- You may setup the key as guided in [6]_. The console for the key is at [7]_.
- 
--Debuging
--========
-+Debugging
-+=========
- 
- CanoKey QEMU consists of two parts, ``libcanokey-qemu.so`` and ``canokey.c``,
- the latter of which resides in QEMU. The former provides core functionality
-diff --git a/docs/system/devices/cxl.rst b/docs/system/devices/cxl.rst
-index 36031325cc..f25783a4ec 100644
---- a/docs/system/devices/cxl.rst
-+++ b/docs/system/devices/cxl.rst
-@@ -83,7 +83,7 @@ CXL Fixed Memory Windows (CFMW)
- A CFMW consists of a particular range of Host Physical Address space
- which is routed to particular CXL Host Bridges.  At time of generic
- software initialization it will have a particularly interleaving
--configuration and associated Quality of Serice Throtling Group (QTG).
-+configuration and associated Quality of Service Throttling Group (QTG).
- This information is available to system software, when making
- decisions about how to configure interleave across available CXL
- memory devices.  It is provide as CFMW Structures (CFMWS) in
-@@ -98,7 +98,7 @@ specification defined register interface called CXL Host Bridge
- Component Registers (CHBCR). The location of this CHBCR MMIO
- space is described to system software via a CXL Host Bridge
- Structure (CHBS) in the CEDT ACPI table.  The actual interfaces
--are identical to those used for other parts of the CXL heirarchy
-+are identical to those used for other parts of the CXL hierarchy
- as CXL Component Registers in PCI BARs.
- 
- Interfaces provided include:
-@@ -143,7 +143,7 @@ CXL Memory Devices - Type 3
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~
- CXL type 3 devices use a PCI class code and are intended to be supported
- by a generic operating system driver. They have HDM decoders
--though in these EP devices, the decoder is reponsible not for
-+though in these EP devices, the decoder is responsible not for
- routing but for translation of the incoming host physical address (HPA)
- into a Device Physical Address (DPA).
- 
-@@ -209,7 +209,7 @@ Notes:
-     ranges of the system physical address map.  Each CFMW has
-     particular interleave setup across the CXL Host Bridges (HB)
-     CFMW0 provides uninterleaved access to HB0, CFW2 provides
--    uninterleaved acess to HB1. CFW1 provides interleaved memory access
-+    uninterleaved access to HB1. CFW1 provides interleaved memory access
-     across HB0 and HB1.
- 
- (2) **Two CXL Host Bridges**. Each of these has 2 CXL Root Ports and
-@@ -282,7 +282,7 @@ Example topology involving a switch::
-             ---------------------------------------------------
-            |    Switch 0  USP as PCI 0d:00.0                   |
-            |    USP has HDM decoder which direct traffic to    |
--           |    appropiate downstream port                     |
-+           |    appropriate downstream port                    |
-            |    Switch BUS appears as 0e                       |
-            |x__________________________________________________|
-             |                  |               |              |
-@@ -366,7 +366,7 @@ An example of 4 devices below a switch suitable for 1, 2 or 4 way interleave::
- Kernel Configuration Options
- ----------------------------
- 
--In Linux 5.18 the followings options are necessary to make use of
-+In Linux 5.18 the following options are necessary to make use of
- OS management of CXL memory devices as described here.
- 
- * CONFIG_CXL_BUS
--- 
-2.30.2
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
+-- PMM
 
