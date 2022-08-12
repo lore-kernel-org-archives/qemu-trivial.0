@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oMRhm-0006Bk-9S
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Aug 2022 06:15:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50346)
+	id 1oMRnV-0000WL-VJ
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Aug 2022 06:21:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51026)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oMRhl-0006BE-4w
- for qemu-trivial@nongnu.org; Fri, 12 Aug 2022 06:15:49 -0400
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b]:42808)
+ id 1oMRnT-0000Vu-Cl
+ for qemu-trivial@nongnu.org; Fri, 12 Aug 2022 06:21:43 -0400
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135]:34346)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oMRhi-0004ip-Ky
- for qemu-trivial@nongnu.org; Fri, 12 Aug 2022 06:15:48 -0400
-Received: by mail-yb1-xb2b.google.com with SMTP id 199so758984ybl.9
- for <qemu-trivial@nongnu.org>; Fri, 12 Aug 2022 03:15:46 -0700 (PDT)
+ id 1oMRnR-0005Oa-PS
+ for qemu-trivial@nongnu.org; Fri, 12 Aug 2022 06:21:43 -0400
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-31f443e276fso5821417b3.1
+ for <qemu-trivial@nongnu.org>; Fri, 12 Aug 2022 03:21:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc;
- bh=1Kv/7Qh8sV7qc8d6b4Ku+Yv3mZMFgfBPgj3eNPlwIDI=;
- b=SpdggizlS/fPySYxoQBlCjD5OIqfr/cevKrPRPNUYHzItYmWDLOb7uO1CSqKKg4wzG
- o6T4TBSG312Md4n9Awt+SGY3gKnwhRU/IEykNzHrrLOOtJFHLiryTugUavDgS1AmWN8P
- l7Q/ZWFbh90+bu4awrO8CB8Dk9VcnEdoA4i/BBS2sBSZCXUR11U24KwWZMfQ5ibC0xHu
- 8nAiE1MBqnMXT5LI3AFyxhWXu4MhMZcvnPiZduADbYO51lbv9wlcqI/5rtAsWPQc1Ngj
- zZJUmS5JTe+cfXkQ9JGxqxtBydQETtpy3J7nh9fQ9bB0PyIbSRdnD6cnZxqeJazBgKKs
- oAiQ==
+ bh=9ajT5T91DJU6yQAET/XmN0QwtvVk+eRLbBY0xk2u+ns=;
+ b=jcnVIDAkbGi3eAOzPaAC8nbQ/pH7N3Q1VWv7VtL+hi6kX8vlq+ZWUnLspbqZ6D49/5
+ i2xOKp7Hbpbl4a4StOKgjEWh/63IfQi9Sz5OzzufM0GQ3gkD5uzpjhrzX6xM4y031n1y
+ bmuoVp00CdFnL1S+XH6tfoI1E75tTnVJsvvpGCeJxIyd/ZjEnnC3XO1wINcjJfKXtjw0
+ 5No2lL2xVsJOeKqUhNpwT/IAmyVQSdP9bMUK3NbnAYkPwD+4E5+McuV9nBPlP5gxe8Ap
+ zFpeG/RH4i6DvwZ5uSEQbZBabcGd1EbJ9mFentYKBy9BwZRS52ANFVHn467CH1bY76Lh
+ TOIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc;
- bh=1Kv/7Qh8sV7qc8d6b4Ku+Yv3mZMFgfBPgj3eNPlwIDI=;
- b=sytenZqKcyTFgZ8Bgfs0ga74Ao8R9zBaT0qfdXRlx+Rzgi0HxvcE0kDqjOOYTM/Jnw
- gHdumx/U59V6Urym0oVGz2pYT7jlglvICIwxBQHt1XV8UOSDE9wXOpyXLh40VbmlQRa2
- IFO9h2Ny1/Uv1MIgm/B4bQViGLjQ7tag6JmkO/NKJSDQTkhnNbL4MHrVlrAvju1SL1zE
- ckwPLcGX4PV5HMz4p/xY62Q+Ztr8OawwHfPRov8+D4drx51373oJ7JxCkM2dDvd9kiVR
- 4ez/daLxRt9QNpWV3C6ZQVec0+Sk6xK46WBInOpjBjyuR6BydJbQdCrGhMRN23SGk828
- tu4g==
-X-Gm-Message-State: ACgBeo06iBSBqqQq3Rl+ztnmjcBAfT172Su+NW+5xpoygjAyrMw65p1X
- vKEEXL3ZfEyQYFL9xid21dgr9Fqxkl9K01cxL5b9Tw==
-X-Google-Smtp-Source: AA6agR6PrTQ2teFKCgCTqCtQ6vxs+ZSKA69vZoTNZ17pE2C5E1gDv2eq8YxBeDO05KAHz3y9Yx/gCqzZbtPddaR9SS0=
-X-Received: by 2002:a25:d4a:0:b0:671:6d11:d14e with SMTP id
- 71-20020a250d4a000000b006716d11d14emr2878452ybn.479.1660299345331; Fri, 12
- Aug 2022 03:15:45 -0700 (PDT)
+ bh=9ajT5T91DJU6yQAET/XmN0QwtvVk+eRLbBY0xk2u+ns=;
+ b=luPuB8bkjOkc3BP4fjruxTTYP2s2AkqaPi1RLZRZx8uxbgEl0EdUSxlnzTAhDJi311
+ rbjLcmK2QldnYgb9iQsWWlmLyPRNrpXCinp6lk8MgITZet0KyXCnGcr0ZwxT0g3Bd/vo
+ P4HlzVKI4eMBTRN70MvBTQ8Ebvf+Hdx4ZJ+Kj99rULxAHiuanK7hpxw/VRbUA1T3AWnT
+ NCZJrGeb3A2fR9dZrAY+fdzuZH3KwdxdneXMX4VewDRSQjx1CgJbvYYegafQWKPsEbPY
+ 3vEwek3zbRGEBKzCw/h0AdpQ5azwDRvLxI0NI6sRI/4QFBnSwFPiG8uqCgub4647kiXv
+ FIzQ==
+X-Gm-Message-State: ACgBeo0h2Vot5z1+YgYRQpoXRpnYbefRM6VGg90AQjp6QwHQE8zx6jwN
+ QVZiQ4l7RXtUT2U5K8WaOEk2SkG9q6/2Dzbc1+k1IQ==
+X-Google-Smtp-Source: AA6agR4FF6vdMED5rFWqHgpyhJfzg07gdV231qt5rOMWvfZT3yLPBacKYwit3dj7FxjNR4aWijxqGqKp773Dd5BzKKs=
+X-Received: by 2002:a81:13c5:0:b0:32a:8e40:d469 with SMTP id
+ 188-20020a8113c5000000b0032a8e40d469mr3346142ywt.64.1660299700467; Fri, 12
+ Aug 2022 03:21:40 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220812075642.1200578-1-sw@weilnetz.de>
 In-Reply-To: <20220812075642.1200578-1-sw@weilnetz.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Aug 2022 11:15:34 +0100
-Message-ID: <CAFEAcA-QqFh8hCxu5A86ReGgo1=vm57FJAHraRU28NzBa-dNWA@mail.gmail.com>
+Date: Fri, 12 Aug 2022 11:21:29 +0100
+Message-ID: <CAFEAcA_bsKODn=fh1wipOouqPy3A6On-9aO-vyj4BxSbm3d+NQ@mail.gmail.com>
 Subject: Re: [PATCH for-7.1?] Fix some typos in documentation (most of them
  found by codespell)
 To: Stefan Weil <sw@weilnetz.de>
@@ -53,8 +54,8 @@ Cc: qemu-devel@nongnu.org, Hongren Zheng <i@zenithal.me>,
  libvir-list@redhat.com, 
  "Canokeys . org" <contact@canokeys.org>, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -74,14 +75,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Aug 2022 10:15:49 -0000
+X-List-Received-Date: Fri, 12 Aug 2022 10:21:43 -0000
 
 On Fri, 12 Aug 2022 at 08:59, Stefan Weil via <qemu-devel@nongnu.org> wrote:
 >
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
+>  docs/about/deprecated.rst       |  2 +-
+>  docs/specs/acpi_erst.rst        |  4 ++--
+>  docs/system/devices/canokey.rst |  8 ++++----
+>  docs/system/devices/cxl.rst     | 12 ++++++------
+>  4 files changed, 13 insertions(+), 13 deletions(-)
+>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Docs patches are safe for rc3. I have to do a target-arm
+pullreq anyway for rc3, so I'll take this via that, unless
+anybody objects.
 
 thanks
 -- PMM
