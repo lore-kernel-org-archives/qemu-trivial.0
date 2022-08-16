@@ -1,48 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oNtDL-0004Fq-VD
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2022 05:50:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39180)
+	id 1oO1gt-000489-Kn
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2022 14:53:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1oNtDH-0004CP-Mn; Tue, 16 Aug 2022 05:50:19 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:3951)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1oNtD6-0007fA-Ub; Tue, 16 Aug 2022 05:50:19 -0400
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.57])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4M6RCV4HYxzhYQn;
- Tue, 16 Aug 2022 17:47:50 +0800 (CST)
-Received: from kwepemm600016.china.huawei.com (7.193.23.20) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Tue, 16 Aug 2022 17:50:01 +0800
-Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.224) by
- kwepemm600016.china.huawei.com (7.193.23.20) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Tue, 16 Aug 2022 17:50:00 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Eric Auger
- <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, Igor Mammedov
- <imammedo@redhat.com>, <wanghaibin.wang@huawei.com>
-Subject: [PATCH v2] hw/acpi: Add ospm_status hook implementation for acpi-ged
-Date: Tue, 16 Aug 2022 17:49:57 +0800
-Message-ID: <20220816094957.31700-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1oO1gr-000464-S8; Tue, 16 Aug 2022 14:53:25 -0400
+Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e]:35661)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1oO1gq-00069N-6W; Tue, 16 Aug 2022 14:53:25 -0400
+Received: by mail-vs1-xe2e.google.com with SMTP id 67so11061475vsv.2;
+ Tue, 16 Aug 2022 11:53:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:reply-to:in-reply-to:references
+ :mime-version:from:to:cc;
+ bh=HBJP/aoaRsPzKK29DgOJQMP+JRmo5AETUm/mMw7Qeb0=;
+ b=CdPkJoSnFBdLf/pOHvon72PHB74mKt4vknDC5Ajk590uVNaTeBxlwRWHoZJilPctbD
+ IAcTuxg+bKPUgVDUFpMvOIwYi4Jodu/pWqvqPscag7T7bzNoCl8kO4p5KA8PKIuUknYN
+ nGv3jXBHcvi8CglP1OfwM8Hiv0CklvuzTAHP2a9B6ZRF6TB7vOpz8Ijal4fJ87KPC0UE
+ BBu1uS0l6FlJHs6g6t+C2QDnVuo12qc0GKTQQHHhZqRfqseM0YbKRGESZVB9hNAdxz9m
+ 0NU9szBeO4xcLR9Hf3xv/tGgkpDB19G6DNDZZWHMD3TyNyzvtIWOs0S3ncUsXA3E+soD
+ 4NyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:reply-to:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc;
+ bh=HBJP/aoaRsPzKK29DgOJQMP+JRmo5AETUm/mMw7Qeb0=;
+ b=mAaT4o/VyC0pDIRzdSLl2Iczxs1wbZddaTYgvh7nB6EAC9t5KbWvKcEGACPjprtyPG
+ lbu1QQqqTFFPhWab3WzrPCfKhuiAWXCK6mCZxepzMHnhG2QpLlwMcgh3JjzGm/whY1Qv
+ d5yVTsgtnPzuNfo9OkN75di2JhJJdmVqW1bcR4TNry22wwO1BAocDPGgGWJOfsH8almh
+ sci/G+pjXhDUhFsMt/bQ3lR+rO9rqisjOnDot0P0YYvvKkhm08TQk6hVJh0gOZcuYqnV
+ RdchKkOIdy4hIhpvwVtRpysqrs8IsrnE9kYs6NmH6xMJNtUWDZm/U+x+c1L72xgSip+m
+ iBeQ==
+X-Gm-Message-State: ACgBeo2DqA2jn6TZDrWQSnfofqz77szvah2Qe/Go4bbunfL8HfaCLFK6
+ X0FmJ3ObvnyZZZdsJVRdGDZBc8urMWd7oaJgpfE=
+X-Google-Smtp-Source: AA6agR53HeI0LHCwRsSrijq24GEzNjGYgBSl/+AQSeOjoqsD1fa5EvlVeoMGEQ4SgDFA67N9xEeLWJKgA3Ow8QnCZYY=
+X-Received: by 2002:a67:c814:0:b0:385:1a6b:7284 with SMTP id
+ u20-20020a67c814000000b003851a6b7284mr9010041vsk.15.1660676002290; Tue, 16
+ Aug 2022 11:53:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.224]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- kwepemm600016.china.huawei.com (7.193.23.20)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=zhukeqian1@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20220728200422.1502-1-luoyonggang@gmail.com>
+ <8721edcf-9f67-5428-4ca9-eba3bd94075e@linaro.org>
+In-Reply-To: <8721edcf-9f67-5428-4ca9-eba3bd94075e@linaro.org>
+Reply-To: luoyonggang@gmail.com
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Wed, 17 Aug 2022 02:53:10 +0800
+Message-ID: <CAE2XoE8M+Tz3t=zh5GhX+vYCipNRdZUYieSjtAO2OUsJcYnAPw@mail.gmail.com>
+Subject: Re: [PATCH v2] ci: Upgrade msys2 release to 20220603
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-trivial@nongnu.org, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Beraldo Leal <bleal@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000034271905e660437b"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e2e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-vs1-xe2e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -55,58 +76,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Aug 2022 09:50:22 -0000
+X-List-Received-Date: Tue, 16 Aug 2022 18:53:26 -0000
 
-Setup an ARM virtual machine of machine virt and execute qmp "query-acpi-ospm-status"
-causes segmentation fault with following dumpstack:
- #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
- #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
- #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
- #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
- #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
- #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
- #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
- #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
- #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
- #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
- #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
- #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
- #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
- #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
+--00000000000034271905e660437b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
----
- hw/acpi/generic_event_device.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+I have reason to think that's msys2-64 bit failed because out of memory
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index e28457a7d1..a3d31631fe 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -267,6 +267,13 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-     }
- }
- 
-+static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
-+{
-+    AcpiGedState *s = ACPI_GED(adev);
-+
-+    acpi_memory_ospm_status(&s->memhp_state, list);
-+}
-+
- static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
- {
-     AcpiGedState *s = ACPI_GED(adev);
-@@ -409,6 +416,7 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
-     hc->unplug_request = acpi_ged_unplug_request_cb;
-     hc->unplug = acpi_ged_unplug_cb;
- 
-+    adevc->ospm_status = acpi_ged_ospm_status;
-     adevc->send_event = acpi_ged_send_event;
- }
- 
--- 
-2.33.0
+I tried to show the memory size of the windows docker, it's result
+are 6224352KB, that's less than 6GB?
+https://gitlab.com/lygstate/qemu/-/jobs/2891399652
 
+Can we increase the memory size to 16GB
+
+
+On Sat, Jul 30, 2022 at 3:24 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
+>
+> On 7/28/22 13:04, Yonggang Luo wrote:
+> > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> > ---
+> >   .cirrus.yml              | 2 +-
+> >   .gitlab-ci.d/windows.yml | 2 +-
+> >   2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> Thanks.  Applied to master as a hot-fix.
+>
+>
+> r~
+
+
+
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
+
+--00000000000034271905e660437b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I have reason to think that&#39;s msys2-64 bit failed beca=
+use out of memory<div><br></div><div>I tried to show the memory size of the=
+ windows docker, it&#39;s result are=C2=A06224352KB, that&#39;s less than 6=
+GB?</div><div><a href=3D"https://gitlab.com/lygstate/qemu/-/jobs/2891399652=
+">https://gitlab.com/lygstate/qemu/-/jobs/2891399652</a></div><div><br></di=
+v><div>Can we increase the memory size to 16GB</div><div><br><br>On Sat, Ju=
+l 30, 2022 at 3:24 AM Richard Henderson &lt;<a href=3D"mailto:richard.hende=
+rson@linaro.org">richard.henderson@linaro.org</a>&gt; wrote:<br>&gt;<br>&gt=
+; On 7/28/22 13:04, Yonggang Luo wrote:<br>&gt; &gt; Signed-off-by: Yonggan=
+g Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail.com</a=
+>&gt;<br>&gt; &gt; ---<br>&gt; &gt; =C2=A0 .cirrus.yml =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>&gt; &gt; =C2=A0 .gitlab-ci.d/windows=
+.yml | 2 +-<br>&gt; &gt; =C2=A0 2 files changed, 2 insertions(+), 2 deletio=
+ns(-)<br>&gt;<br>&gt; Thanks.=C2=A0 Applied to master as a hot-fix.<br>&gt;=
+<br>&gt;<br>&gt; r~<br><br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=
+=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</div></div>
+
+--00000000000034271905e660437b--
 
