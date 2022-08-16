@@ -1,68 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oNsua-0004qW-S4
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2022 05:31:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33542)
+	id 1oNt2v-0003oS-7j
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2022 05:39:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oNsuZ-0004on-9P
- for qemu-trivial@nongnu.org; Tue, 16 Aug 2022 05:30:59 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133]:44689)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oNsuW-0004eN-Ce
- for qemu-trivial@nongnu.org; Tue, 16 Aug 2022 05:30:59 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-33387bf0c4aso30834557b3.11
- for <qemu-trivial@nongnu.org>; Tue, 16 Aug 2022 02:30:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc;
- bh=k9yhOzbAv3N+c0AtEF+yTLdEsUyzC8mSG2SFKCHHnl0=;
- b=xHTTa09EaDd6uea0vKPGrhC3oegBv1bRKOnOfiTmq0fdw2uw4MHYLVah3mzB1sTAc4
- EvEAITmC2TbdQ6Q3bKGkFkOPTjPbaG22eAf5Lm+6wYM+hhWqOwvyVFsLKPo1kbkieso1
- 4fQ0GVJYINS75cjRsFXPpJ0COC92GUrY+YnhXSc0ZUyfVNyfOKpzqHY7U5c7qAMcbejF
- ESijpDpG1xXYcD+1rCgtO50FtxtqvIKkQ+vSa4EOCna+S1QereEqfGBXeeVPSSa2E16S
- q77Od5bppfvKy6Am2/qF/xhic7y4QlMyss85I9G0M6M4Qxnj52mgP9eIvOZTyhaqRzKi
- mx5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc;
- bh=k9yhOzbAv3N+c0AtEF+yTLdEsUyzC8mSG2SFKCHHnl0=;
- b=tdnKXtlB6wLhU4nE+qFFoX1mIdXNMIWzG6yfhtS6RUKVppQq/JeRsLjCZhy3A5+kbK
- cqXQyTTnAW5Nk8XwaGbPbA7U/aDUWVM/oeOl5hahMUe99G3vCiNZFbZG5LHqgpdgDI1N
- 3jDT8iAY6MSr/rNQSOXCnRZKJpQwb+oo/fvAY5WvXVsIHwISGZPvez2W1LvQ/QQ1cEwZ
- 9Jn1nQq+znyrv59WmkZJykc3mK0PUO440xNm7tZUD6ZNt2ndQEuoPBcZ1asOsVbqa1mL
- mQ/dXfKpBN+nCVb3MXqHl6CTE+pCJJDrFZkHmkknUWRmsKGFQS+lcCvLapyQOXbwDBNK
- pKZw==
-X-Gm-Message-State: ACgBeo1ZEDWjbzCj87zVJ7HgogXj37UVFDfAay3kR7mYbVdfAbP320xu
- HszrkR47A02hkyZRL+UE5MIycBHvNx2USOgR4rzPBw==
-X-Google-Smtp-Source: AA6agR6/qPSxlR5+QVuCYzULSD3nx7At6HNT1S0KIcrjiQAsy3BMgjhM60G8K5PteLGrq5DQLiJbp5hf9E8e30BqOiU=
-X-Received: by 2002:a81:13c5:0:b0:32a:8e40:d469 with SMTP id
- 188-20020a8113c5000000b0032a8e40d469mr16803900ywt.64.1660642255338; Tue, 16
- Aug 2022 02:30:55 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1oNt2t-0003lN-8J; Tue, 16 Aug 2022 05:39:35 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:4519)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1oNt2p-0005mJ-AB; Tue, 16 Aug 2022 05:39:34 -0400
+Received: from dggpeml500023.china.huawei.com (unknown [172.30.72.54])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4M6Qxy5SSxzkWNl;
+ Tue, 16 Aug 2022 17:36:06 +0800 (CST)
+Received: from dggpeml100022.china.huawei.com (7.185.36.176) by
+ dggpeml500023.china.huawei.com (7.185.36.114) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Tue, 16 Aug 2022 17:39:26 +0800
+Received: from kwepemm600016.china.huawei.com (7.193.23.20) by
+ dggpeml100022.china.huawei.com (7.185.36.176) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Tue, 16 Aug 2022 17:39:26 +0800
+Received: from kwepemm600016.china.huawei.com ([7.193.23.20]) by
+ kwepemm600016.china.huawei.com ([7.193.23.20]) with mapi id 15.01.2375.024;
+ Tue, 16 Aug 2022 17:39:25 +0800
+From: zhukeqian <zhukeqian1@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>, Eric Auger
+ <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, Igor Mammedov
+ <imammedo@redhat.com>, "Wanghaibin (D)" <wanghaibin.wang@huawei.com>
+Subject: =?utf-8?B?562U5aSNOiBbUEFUQ0hdIGFjcGlfZ2VkOiBBZGQgb3NwbV9zdGF0dXMgaG9v?=
+ =?utf-8?Q?k_implementation?=
+Thread-Topic: [PATCH] acpi_ged: Add ospm_status hook implementation
+Thread-Index: AQHYsVJa+vqGTE7yt0qRXZ8lKONLy62wvNAAgACG/8A=
+Date: Tue, 16 Aug 2022 09:39:25 +0000
+Message-ID: <47f60df98b514502b422adee6b970880@huawei.com>
 References: <20220816092624.15168-1-zhukeqian1@huawei.com>
-In-Reply-To: <20220816092624.15168-1-zhukeqian1@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Aug 2022 10:30:12 +0100
-Message-ID: <CAFEAcA8UN=NABfNzzP-m5b3ki5mKH1qyfwgi6_yiT__6u_-1ng@mail.gmail.com>
-Subject: Re: [PATCH] acpi_ged: Add ospm_status hook implementation
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Eric Auger <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, 
- Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ <CAFEAcA8UN=NABfNzzP-m5b3ki5mKH1qyfwgi6_yiT__6u_-1ng@mail.gmail.com>
+In-Reply-To: <CAFEAcA8UN=NABfNzzP-m5b3ki5mKH1qyfwgi6_yiT__6u_-1ng@mail.gmail.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.187.224]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,63 +68,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Aug 2022 09:30:59 -0000
+X-List-Received-Date: Tue, 16 Aug 2022 09:39:35 -0000
 
-On Tue, 16 Aug 2022 at 10:26, Keqian Zhu <zhukeqian1@huawei.com> wrote:
->
-> This fixes a bug that causes segmentation fault with following dumpstack:
->  #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
->  #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
->  #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
->  #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
->  #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
->  #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
->  #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
->  #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
->  #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
->  #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
->  #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
->  #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
->  #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
->  #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
-
-What are the conditions required to trigger the segfault?
-
-
-> Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> ---
->  hw/acpi/generic_event_device.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index e28457a7d1..a3d31631fe 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -267,6 +267,13 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
->      }
->  }
->
-> +static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
-> +{
-> +    AcpiGedState *s = ACPI_GED(adev);
-> +
-> +    acpi_memory_ospm_status(&s->memhp_state, list);
-> +}
-> +
->  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
->  {
->      AcpiGedState *s = ACPI_GED(adev);
-> @@ -409,6 +416,7 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
->      hc->unplug_request = acpi_ged_unplug_request_cb;
->      hc->unplug = acpi_ged_unplug_cb;
->
-> +    adevc->ospm_status = acpi_ged_ospm_status;
->      adevc->send_event = acpi_ged_send_event;
->  }
->
-> --
-
-thanks
--- PMM
+SGkgUGV0ZXIsDQoNClNldHVwIGFuIEFSTSB2aXJ0dWFsIG1hY2hpbmUgb2YgbWFjaGluZSB2aXJ0
+IGFuZCBleGVjdXRlIHFtcCAicXVlcnktYWNwaS1vc3BtLXN0YXR1cyIgY2FuIHRyaWdnZXIgdGhp
+cyBidWcuDQoNClRoYW5rcy4NCg0KLS0tLS3pgq7ku7bljp/ku7YtLS0tLQ0K5Y+R5Lu25Lq6OiBR
+ZW11LWRldmVsIFttYWlsdG86cWVtdS1kZXZlbC1ib3VuY2VzK3podWtlcWlhbjE9aHVhd2VpLmNv
+bUBub25nbnUub3JnXSDku6PooaggUGV0ZXIgTWF5ZGVsbA0K5Y+R6YCB5pe26Ze0OiAyMDIy5bm0
+OOaciDE25pelIDE3OjMwDQrmlLbku7bkuro6IHpodWtlcWlhbiA8emh1a2VxaWFuMUBodWF3ZWku
+Y29tPg0K5oqE6YCBOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtYXJtQG5vbmdudS5vcmc7
+IHFlbXUtdHJpdmlhbEBub25nbnUub3JnOyBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhpbG1k
+QHJlZGhhdC5jb20+OyBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+OyBQZXRlciBY
+dSA8cGV0ZXJ4QHJlZGhhdC5jb20+OyBJZ29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQuY29t
+PjsgV2FuZ2hhaWJpbiAoRCkgPHdhbmdoYWliaW4ud2FuZ0BodWF3ZWkuY29tPg0K5Li76aKYOiBS
+ZTogW1BBVENIXSBhY3BpX2dlZDogQWRkIG9zcG1fc3RhdHVzIGhvb2sgaW1wbGVtZW50YXRpb24N
+Cg0KT24gVHVlLCAxNiBBdWcgMjAyMiBhdCAxMDoyNiwgS2VxaWFuIFpodSA8emh1a2VxaWFuMUBo
+dWF3ZWkuY29tPiB3cm90ZToNCj4NCj4gVGhpcyBmaXhlcyBhIGJ1ZyB0aGF0IGNhdXNlcyBzZWdt
+ZW50YXRpb24gZmF1bHQgd2l0aCBmb2xsb3dpbmcgZHVtcHN0YWNrOg0KPiAgIzEgIDB4MDAwMGFh
+YWFhYjY0MjM1YyBpbiBxbXBfcXVlcnlfYWNwaV9vc3BtX3N0YXR1cyANCj4gKGVycnA9ZXJycEBl
+bnRyeT0weGZmZmZmZmZmZjAzMCkgYXQgLi4vbW9uaXRvci9xbXAtY21kcy5jOjMxMg0KPiAgIzIg
+IDB4MDAwMGFhYWFhYmZjNGUyMCBpbiBxbXBfbWFyc2hhbF9xdWVyeV9hY3BpX29zcG1fc3RhdHVz
+IA0KPiAoYXJncz08b3B0aW1pemVkIG91dD4sIHJldD0weGZmZmZlYTRmZmU5MCwgZXJycD0weGZm
+ZmZlYTRmZmU4OCkgYXQgDQo+IHFhcGkvcWFwaS1jb21tYW5kcy1hY3BpLmM6NjMNCj4gICMzICAw
+eDAwMDBhYWFhYWJmZjhiYTAgaW4gZG9fcW1wX2Rpc3BhdGNoX2JoIChvcGFxdWU9MHhmZmZmZWE0
+ZmZlOTgpIA0KPiBhdCAuLi9xYXBpL3FtcC1kaXNwYXRjaC5jOjEyOA0KPiAgIzQgIDB4MDAwMGFh
+YWFhYzAyZTU5NCBpbiBhaW9fYmhfY2FsbCAoYmg9MHhmZmZmZTAwMDRkODApIGF0IA0KPiAuLi91
+dGlsL2FzeW5jLmM6MTUwDQo+ICAjNSAgYWlvX2JoX3BvbGwgKGN0eD1jdHhAZW50cnk9MHhhYWFh
+YWQwZjYwNDApIGF0IC4uL3V0aWwvYXN5bmMuYzoxNzgNCj4gICM2ICAweDAwMDBhYWFhYWMwMGJk
+NDAgaW4gYWlvX2Rpc3BhdGNoIChjdHg9Y3R4QGVudHJ5PTB4YWFhYWFkMGY2MDQwKSANCj4gYXQg
+Li4vdXRpbC9haW8tcG9zaXguYzo0MjENCj4gICM3ICAweDAwMDBhYWFhYWMwMmUwMTAgaW4gYWlv
+X2N0eF9kaXNwYXRjaCAoc291cmNlPTB4YWFhYWFkMGY2MDQwLCANCj4gY2FsbGJhY2s9PG9wdGlt
+aXplZCBvdXQ+LCB1c2VyX2RhdGE9PG9wdGltaXplZCBvdXQ+KSBhdCANCj4gLi4vdXRpbC9hc3lu
+Yy5jOjMyMA0KPiAgIzggIDB4MDAwMGZmZmZmNzZmNjg4NCBpbiBnX21haW5fY29udGV4dF9kaXNw
+YXRjaCAoKSBhdCANCj4gL3Vzci9saWI2NC9saWJnbGliLTIuMC5zby4wDQo+ICAjOSAgMHgwMDAw
+YWFhYWFjMDQ1MmQ0IGluIGdsaWJfcG9sbGZkc19wb2xsICgpIGF0IA0KPiAuLi91dGlsL21haW4t
+bG9vcC5jOjI5Nw0KPiAgIzEwIG9zX2hvc3RfbWFpbl9sb29wX3dhaXQgKHRpbWVvdXQ9MCkgYXQg
+Li4vdXRpbC9tYWluLWxvb3AuYzozMjANCj4gICMxMSBtYWluX2xvb3Bfd2FpdCAobm9uYmxvY2tp
+bmc9bm9uYmxvY2tpbmdAZW50cnk9MCkgYXQgDQo+IC4uL3V0aWwvbWFpbi1sb29wLmM6NTk2DQo+
+ICAjMTIgMHgwMDAwYWFhYWFiNWM5ZTUwIGluIHFlbXVfbWFpbl9sb29wICgpIGF0IA0KPiAuLi9z
+b2Z0bW11L3J1bnN0YXRlLmM6NzM0DQo+ICAjMTMgMHgwMDAwYWFhYWFiMTg1MzcwIGluIHFlbXVf
+bWFpbiAoYXJnYz1hcmdjQGVudHJ5PTQ3LCANCj4gYXJndj1hcmd2QGVudHJ5PTB4ZmZmZmZmZmZm
+NTE4LCBlbnZwPWVudnBAZW50cnk9MHgwKSBhdCANCj4gLi4vc29mdG1tdS9tYWluLmM6MzgNCj4g
+ICMxNCAweDAwMDBhYWFhYWIxNmY5OWMgaW4gbWFpbiAoYXJnYz00NywgYXJndj0weGZmZmZmZmZm
+ZjUxOCkgYXQgDQo+IC4uL3NvZnRtbXUvbWFpbi5jOjQ3DQoNCldoYXQgYXJlIHRoZSBjb25kaXRp
+b25zIHJlcXVpcmVkIHRvIHRyaWdnZXIgdGhlIHNlZ2ZhdWx0Pw0KDQoNCj4gRml4ZXM6IGViYjYy
+MDc1MDIxYSAoImh3L2FjcGk6IEFkZCBBQ1BJIEdlbmVyaWMgRXZlbnQgRGV2aWNlIFN1cHBvcnQi
+KQ0KPiBTaWduZWQtb2ZmLWJ5OiBLZXFpYW4gWmh1IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+DQo+
+IC0tLQ0KPiAgaHcvYWNwaS9nZW5lcmljX2V2ZW50X2RldmljZS5jIHwgOCArKysrKysrKw0KPiAg
+MSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQ0KPg0KPiBkaWZmIC0tZ2l0IGEvaHcvYWNw
+aS9nZW5lcmljX2V2ZW50X2RldmljZS5jIA0KPiBiL2h3L2FjcGkvZ2VuZXJpY19ldmVudF9kZXZp
+Y2UuYyBpbmRleCBlMjg0NTdhN2QxLi5hM2QzMTYzMWZlIDEwMDY0NA0KPiAtLS0gYS9ody9hY3Bp
+L2dlbmVyaWNfZXZlbnRfZGV2aWNlLmMNCj4gKysrIGIvaHcvYWNwaS9nZW5lcmljX2V2ZW50X2Rl
+dmljZS5jDQo+IEBAIC0yNjcsNiArMjY3LDEzIEBAIHN0YXRpYyB2b2lkIGFjcGlfZ2VkX3VucGx1
+Z19jYihIb3RwbHVnSGFuZGxlciAqaG90cGx1Z19kZXYsDQo+ICAgICAgfQ0KPiAgfQ0KPg0KPiAr
+c3RhdGljIHZvaWQgYWNwaV9nZWRfb3NwbV9zdGF0dXMoQWNwaURldmljZUlmICphZGV2LCBBQ1BJ
+T1NUSW5mb0xpc3QgDQo+ICsqKipsaXN0KSB7DQo+ICsgICAgQWNwaUdlZFN0YXRlICpzID0gQUNQ
+SV9HRUQoYWRldik7DQo+ICsNCj4gKyAgICBhY3BpX21lbW9yeV9vc3BtX3N0YXR1cygmcy0+bWVt
+aHBfc3RhdGUsIGxpc3QpOyB9DQo+ICsNCj4gIHN0YXRpYyB2b2lkIGFjcGlfZ2VkX3NlbmRfZXZl
+bnQoQWNwaURldmljZUlmICphZGV2LCANCj4gQWNwaUV2ZW50U3RhdHVzQml0cyBldikgIHsNCj4g
+ICAgICBBY3BpR2VkU3RhdGUgKnMgPSBBQ1BJX0dFRChhZGV2KTsgQEAgLTQwOSw2ICs0MTYsNyBA
+QCBzdGF0aWMgdm9pZCANCj4gYWNwaV9nZWRfY2xhc3NfaW5pdChPYmplY3RDbGFzcyAqY2xhc3Ms
+IHZvaWQgKmRhdGEpDQo+ICAgICAgaGMtPnVucGx1Z19yZXF1ZXN0ID0gYWNwaV9nZWRfdW5wbHVn
+X3JlcXVlc3RfY2I7DQo+ICAgICAgaGMtPnVucGx1ZyA9IGFjcGlfZ2VkX3VucGx1Z19jYjsNCj4N
+Cj4gKyAgICBhZGV2Yy0+b3NwbV9zdGF0dXMgPSBhY3BpX2dlZF9vc3BtX3N0YXR1czsNCj4gICAg
+ICBhZGV2Yy0+c2VuZF9ldmVudCA9IGFjcGlfZ2VkX3NlbmRfZXZlbnQ7ICB9DQo+DQo+IC0tDQoN
+CnRoYW5rcw0KLS0gUE1NDQoNCg==
 
