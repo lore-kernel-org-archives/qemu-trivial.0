@@ -1,53 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oNtBX-0002jw-7E
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2022 05:48:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38578)
+	id 1oNtDL-0004Fq-VD
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2022 05:50:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1oNtBU-0002hJ-A1; Tue, 16 Aug 2022 05:48:28 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:5170)
+ id 1oNtDH-0004CP-Mn; Tue, 16 Aug 2022 05:50:19 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:3951)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1oNtBS-0007RE-6e; Tue, 16 Aug 2022 05:48:27 -0400
-Received: from dggpeml500023.china.huawei.com (unknown [172.30.72.55])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4M6RBK4H39zGpVy;
- Tue, 16 Aug 2022 17:46:49 +0800 (CST)
+ id 1oNtD6-0007fA-Ub; Tue, 16 Aug 2022 05:50:19 -0400
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.57])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4M6RCV4HYxzhYQn;
+ Tue, 16 Aug 2022 17:47:50 +0800 (CST)
 Received: from kwepemm600016.china.huawei.com (7.193.23.20) by
- dggpeml500023.china.huawei.com (7.185.36.114) with Microsoft SMTP Server
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Tue, 16 Aug 2022 17:48:20 +0800
-Received: from kwepemm600016.china.huawei.com ([7.193.23.20]) by
- kwepemm600016.china.huawei.com ([7.193.23.20]) with mapi id 15.01.2375.024;
- Tue, 16 Aug 2022 17:48:20 +0800
-From: zhukeqian <zhukeqian1@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Eric Auger <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, "Igor
- Mammedov" <imammedo@redhat.com>, "Wanghaibin (D)"
- <wanghaibin.wang@huawei.com>
-Subject: =?utf-8?B?562U5aSNOiBbUEFUQ0hdIGFjcGlfZ2VkOiBBZGQgb3NwbV9zdGF0dXMgaG9v?=
- =?utf-8?Q?k_implementation?=
-Thread-Topic: [PATCH] acpi_ged: Add ospm_status hook implementation
-Thread-Index: AQHYsVJa+vqGTE7yt0qRXZ8lKONLy62wvNAAgACG/8D//3xFgIAAh8JQ
-Date: Tue, 16 Aug 2022 09:48:20 +0000
-Message-ID: <bd7cf21fa43541bb8d52801e928d7312@huawei.com>
-References: <20220816092624.15168-1-zhukeqian1@huawei.com>
- <CAFEAcA8UN=NABfNzzP-m5b3ki5mKH1qyfwgi6_yiT__6u_-1ng@mail.gmail.com>
- <47f60df98b514502b422adee6b970880@huawei.com>
- <CAFEAcA-DtHrfCF0nfvnrW6bTmjRco_rxu=vj3yNciBkM_0iUog@mail.gmail.com>
-In-Reply-To: <CAFEAcA-DtHrfCF0nfvnrW6bTmjRco_rxu=vj3yNciBkM_0iUog@mail.gmail.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.187.224]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ 15.1.2375.24; Tue, 16 Aug 2022 17:50:01 +0800
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.224) by
+ kwepemm600016.china.huawei.com (7.193.23.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Tue, 16 Aug 2022 17:50:00 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Eric Auger
+ <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>, Igor Mammedov
+ <imammedo@redhat.com>, <wanghaibin.wang@huawei.com>
+Subject: [PATCH v2] hw/acpi: Add ospm_status hook implementation for acpi-ged
+Date: Tue, 16 Aug 2022 17:49:57 +0800
+Message-ID: <20220816094957.31700-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.224]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemm600016.china.huawei.com (7.193.23.20)
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=zhukeqian1@huawei.com; helo=szxga03-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga01-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -66,21 +55,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Aug 2022 09:48:29 -0000
+X-List-Received-Date: Tue, 16 Aug 2022 09:50:22 -0000
 
-T0ssIEknbGwgc2VuZCB2MiBzb29uLg0KDQotLS0tLemCruS7tuWOn+S7ti0tLS0tDQrlj5Hku7bk
-uro6IFBldGVyIE1heWRlbGwgW21haWx0bzpwZXRlci5tYXlkZWxsQGxpbmFyby5vcmddIA0K5Y+R
-6YCB5pe26Ze0OiAyMDIy5bm0OOaciDE25pelIDE3OjQyDQrmlLbku7bkuro6IHpodWtlcWlhbiA8
-emh1a2VxaWFuMUBodWF3ZWkuY29tPg0K5oqE6YCBOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFl
-bXUtYXJtQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3JnOyBQaGlsaXBwZSBNYXRo
-aWV1LURhdWTDqSA8cGhpbG1kQHJlZGhhdC5jb20+OyBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJl
-ZGhhdC5jb20+OyBQZXRlciBYdSA8cGV0ZXJ4QHJlZGhhdC5jb20+OyBJZ29yIE1hbW1lZG92IDxp
-bWFtbWVkb0ByZWRoYXQuY29tPjsgV2FuZ2hhaWJpbiAoRCkgPHdhbmdoYWliaW4ud2FuZ0BodWF3
-ZWkuY29tPg0K5Li76aKYOiBSZTogW1BBVENIXSBhY3BpX2dlZDogQWRkIG9zcG1fc3RhdHVzIGhv
-b2sgaW1wbGVtZW50YXRpb24NCg0KT24gVHVlLCAxNiBBdWcgMjAyMiBhdCAxMDo0MCwgemh1a2Vx
-aWFuIDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+IHdyb3RlOg0KPg0KPiBIaSBQZXRlciwNCj4NCj4g
-U2V0dXAgYW4gQVJNIHZpcnR1YWwgbWFjaGluZSBvZiBtYWNoaW5lIHZpcnQgYW5kIGV4ZWN1dGUg
-cW1wICJxdWVyeS1hY3BpLW9zcG0tc3RhdHVzIiBjYW4gdHJpZ2dlciB0aGlzIGJ1Zy4NCg0KVGhh
-bmtzLiBUaGF0IGlzIHdvcnRoIHN0YXRpbmcgaW4gdGhlIGNvbW1pdCBtZXNzYWdlLCBJIHRoaW5r
-Lg0KDQotLSBQTW0NCg==
+Setup an ARM virtual machine of machine virt and execute qmp "query-acpi-ospm-status"
+causes segmentation fault with following dumpstack:
+ #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
+ #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
+ #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
+ #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
+ #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
+ #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
+ #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
+ #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
+ #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
+ #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
+ #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
+ #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
+ #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
+ #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
+
+Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+---
+ hw/acpi/generic_event_device.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index e28457a7d1..a3d31631fe 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -267,6 +267,13 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+     }
+ }
+ 
++static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
++{
++    AcpiGedState *s = ACPI_GED(adev);
++
++    acpi_memory_ospm_status(&s->memhp_state, list);
++}
++
+ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+ {
+     AcpiGedState *s = ACPI_GED(adev);
+@@ -409,6 +416,7 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
+     hc->unplug_request = acpi_ged_unplug_request_cb;
+     hc->unplug = acpi_ged_unplug_cb;
+ 
++    adevc->ospm_status = acpi_ged_ospm_status;
+     adevc->send_event = acpi_ged_send_event;
+ }
+ 
+-- 
+2.33.0
+
 
