@@ -1,97 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oQS1K-0003e7-Q9
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Aug 2022 07:24:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53204)
+	id 1oQVQd-0006lf-Pz
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Aug 2022 11:02:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oQS1G-0003aj-79
- for qemu-trivial@nongnu.org; Tue, 23 Aug 2022 07:24:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:25470)
+ (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
+ id 1oQUEz-00053E-GW; Tue, 23 Aug 2022 09:46:57 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131]:41190)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oQS19-0008IW-Nk
- for qemu-trivial@nongnu.org; Tue, 23 Aug 2022 07:24:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1661253862;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=t7fVkRcVO+6ojv6BT3Wrp7kEjscmxNtzv9sJKYbpZ2M=;
- b=ShEKPYnbRJLYxD3wqYeRNMVaEVPW95avS+j+mAh9KFx92CWv0eVWpxLk2ryZ7g7WcCWDwM
- QmFiXiwd1ScXT+CIbq06TUMMMtb2uV08Eo6gt90ZkS8g1N2nl1G3aw3G/txPthPdYAbmPP
- i3BzS9D42kDoFyGGR+SaDT/0WoVNLJU=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-315-KCEk--ngNYe2bVeDGKYdow-1; Tue, 23 Aug 2022 07:24:19 -0400
-X-MC-Unique: KCEk--ngNYe2bVeDGKYdow-1
-Received: by mail-wm1-f70.google.com with SMTP id
- b16-20020a05600c4e1000b003a5a47762c3so7804046wmq.9
- for <qemu-trivial@nongnu.org>; Tue, 23 Aug 2022 04:24:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc;
- bh=t7fVkRcVO+6ojv6BT3Wrp7kEjscmxNtzv9sJKYbpZ2M=;
- b=59URF9cEbTHTPB98AQrhIAUidSZZtNB7nsUPP6kgojco5glO8Ja7hKHYIiO5UppGXc
- N/HW6ShMiWuIor2j2XNRl0IcmXE6ZPAbe4D9JA8rj+dbe9gML5JmfIm/vz4uZ3VinlZa
- EzhbICQq4QmsnIe7ED9b7B2G/2Q/ZCU++A4Bt9Ho37UclKaAdDmfY0eThRjZ7x1UK6v1
- PajGlge5/rjp/W2w1TPlvQ3CNFySAQ03UkyYoMStughGhoKICBSOyBJn8/JLLM6GIwrQ
- ed2z06a5rWFpiAZmWHayeiUMReS4nLe0s3NuFUFoCKpLlI4qXmKv9Hif70RkxQbRd3OR
- soGg==
-X-Gm-Message-State: ACgBeo2n0qNIoAZFIQQj1ZEoEs+srIY/jOLFgTwJWpIwLJXkSau6ZcWh
- rn68Y6iN+HKktPPRr4W5g8ynCyCRIaRF0EnLTUFpFiIfyyguY0opRlEs0B2s907Z0KuRhB+BzCv
- +Tlc8sqI5EIYAub/DpA==
-X-Received: by 2002:a05:600c:1e88:b0:3a6:2ca2:e34f with SMTP id
- be8-20020a05600c1e8800b003a62ca2e34fmr1898461wmb.146.1661253858280; 
- Tue, 23 Aug 2022 04:24:18 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR55Wv1UpM2xtkmhbWdFegYsSSikUOLUpRCYuFP4hlf5ubPDHw7BUthLbdsz+qBw97N9+JjnpA==
-X-Received: by 2002:a05:600c:1e88:b0:3a6:2ca2:e34f with SMTP id
- be8-20020a05600c1e8800b003a62ca2e34fmr1898440wmb.146.1661253858061; 
- Tue, 23 Aug 2022 04:24:18 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-178-217.web.vodafone.de.
- [109.43.178.217]) by smtp.gmail.com with ESMTPSA id
- h3-20020a05600c2ca300b003a5ea1cc63csm21469277wmc.39.2022.08.23.04.24.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Aug 2022 04:24:17 -0700 (PDT)
-Message-ID: <03cd9c13-04aa-b541-c5fe-c76181c13530@redhat.com>
-Date: Tue, 23 Aug 2022 13:24:16 +0200
+ (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
+ id 1oQUEu-0001cJ-NL; Tue, 23 Aug 2022 09:46:48 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27NDOEtl026392;
+ Tue, 23 Aug 2022 13:46:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding;
+ s=qcppdkim1; bh=twYIkrtgSF1v/CFlcx1QyWukV3sAqjGtwOwsndwFWYY=;
+ b=eY12KHLFRLySZuPv6wjFZ3++3EiCH/vjMD6lBqRZ0MV7q1hX0dRBA1It9lspJsP1rWQu
+ 4a9GUCjVq2eM6cAG+73cWLbG/YdOWTMlztwNJRbwAPRqxoM1/S7A7Gnfh7ikPZFEXzE8
+ bQkaLpLj51qf1Z0k5ln7HkRiFz9h2paT2Ta6Yebge0/SFzq21si8aHUSETdKQsWHRAAj
+ 09Z16Jw8hIwKNZdeRGu0tc/pnBHtWrjwBPQkOoDDzunsvpavVWo76XpSjD0rEgIwv0Za
+ MLHY7lI7KvMreRNSGGcz2DamuEJ45YPJLj/VPAXLV2WjM5npUSpO+MZaB66bTYIRsO/T 6A== 
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com
+ [129.46.96.20])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3j4vxdrwu1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 23 Aug 2022 13:46:21 +0000
+Received: from hu-devc-sd-u20-a-1.qualcomm.com (hu-mathbern-lv.qualcomm.com
+ [10.47.235.147])
+ by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 27NDkKLb022614
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 23 Aug 2022 13:46:20 GMT
+Received: by hu-devc-sd-u20-a-1.qualcomm.com (Postfix, from userid 4229910)
+ id 02BEB5F8; Tue, 23 Aug 2022 10:46:19 -0300 (-03)
+From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] docs/devel/testing: fix minor typo
+Date: Tue, 23 Aug 2022 10:46:19 -0300
+Message-Id: <421fb28678d1077c0b14978e359b4e1469cc0168.1661262376.git.quic_mathbern@quicinc.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH v2] ci: Upgrade msys2 release to 20220603
-To: luoyonggang@gmail.com, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Beraldo Leal <bleal@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20220728200422.1502-1-luoyonggang@gmail.com>
- <8721edcf-9f67-5428-4ca9-eba3bd94075e@linaro.org>
- <CAE2XoE8M+Tz3t=zh5GhX+vYCipNRdZUYieSjtAO2OUsJcYnAPw@mail.gmail.com>
- <2ac21034-c728-04ad-cb33-07870c1f0cc3@redhat.com>
- <YwNUMLxx2HqWUCXs@redhat.com>
- <CAE2XoE9ALbmwDt9=25HewGBBNN0Z=4sJV+4BMkcowCFuWfXkGQ@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <CAE2XoE9ALbmwDt9=25HewGBBNN0Z=4sJV+4BMkcowCFuWfXkGQ@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-ORIG-GUID: YvIu_V-RxPsyrZoRP77NLESTCB8LYOCz
+X-Proofpoint-GUID: YvIu_V-RxPsyrZoRP77NLESTCB8LYOCz
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-08-23_05,2022-08-22_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 malwarescore=0
+ bulkscore=0 lowpriorityscore=0 adultscore=0 spamscore=0 clxscore=1011
+ mlxlogscore=999 mlxscore=0 priorityscore=1501 impostorscore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2207270000
+ definitions=main-2208230055
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=mathbern@qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 23 Aug 2022 11:02:55 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,16 +78,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Aug 2022 11:24:31 -0000
+X-List-Received-Date: Tue, 23 Aug 2022 13:46:59 -0000
 
-On 22/08/2022 16.39, 罗勇刚(Yonggang Luo) wrote:
-> After digging, it seems to be a memory issue, cirrus also uses 8gb, that's 
-> rather weird...
+Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+---
+ docs/devel/testing.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-If it's a memory issue, it might help to remove the "-j2" from the 
-invocation of "make", so that only one file is compiled at once...?
-
-  Thomas
-
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 3f6ebd5073..f35f117d95 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -297,7 +297,7 @@ build and test QEMU in predefined and widely accessible Linux
+ environments. This makes it possible to expand the test coverage
+ across distros, toolchain flavors and library versions. The support
+ was originally written for Docker although we also support Podman as
+-an alternative container runtime. Although the many of the target
++an alternative container runtime. Although many of the target
+ names and scripts are prefixed with "docker" the system will
+ automatically run on whichever is configured.
+ 
+-- 
+2.25.1
 
 
