@@ -1,71 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oQsKN-0000Pg-L9
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Aug 2022 11:30:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38558)
+	id 1oRDSC-0006m7-AH
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Aug 2022 10:03:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pjm0616@gmail.com>)
- id 1oQpoK-0004Zf-1r; Wed, 24 Aug 2022 08:48:44 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:36451)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1oRDS9-0006kK-4r; Thu, 25 Aug 2022 10:03:25 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:33690)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pjm0616@gmail.com>)
- id 1oQpoI-0002f4-9w; Wed, 24 Aug 2022 08:48:43 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id c2so15591745plo.3;
- Wed, 24 Aug 2022 05:48:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1oRDS3-0007vs-Md; Thu, 25 Aug 2022 10:03:24 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id g189so3926543pgc.0;
+ Thu, 25 Aug 2022 07:03:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc;
- bh=cgl+VQ9YlMizuM+yGKqALI233IBvK5ikfdNhgructpQ=;
- b=MLFcN+5d8h2aDViMf2I6Mes1ZDawmh1ziOOyphUWO3QfK2esOS1LvOwGXRkXc9Iwie
- mJNecgCThE1El6GKeI4f9rlderqoS/rwkP2wOeGS5wbQn6LM6dA6sMj/+dCazv6nLa0m
- Byr5vCEAPTYoGJUUav/nZnIWPydxv3gQ/i1s/owJ5zXNNmf8fel/5EcK3psOD/TeGONa
- GgcdsrsU3qQtiHMVycEWTSzUdSbX6/B5FK+MZtEbYhC8m+EnkpWM9w7kA4IzCv9xR6T5
- mvzK++Q+eO0ffhZ8ZeBeOo4+D7a8uqqL9khHcAKlPgjUu4DdpGE+TaHSupTjY7VlvaPT
- MBmg==
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :sender:from:to:cc;
+ bh=ampgdjCqAvWsgy0ONMh5K2rN4VlRw5ot8+dNDYAXEQk=;
+ b=U+xkDRBmHu0o73HTYykout9virWIpp8mA+faHkGO4NBW5TgTO0Az3glpeKHC+Qi4UB
+ y6436CPZ58J15pf14NEjhaS4vqwK8qxWvEKVZ34lnAi5cyrrQkyARsWyGeF1kU4WCKSV
+ zxKAQBIfBS8FDoust++aT52YKMXRE+o5/iUggLzXBf/oSugZSmDag3DKp30ETp1B7l0m
+ atgPvEnuhej0frlY7JBVHnxoS6axZMeNflD40qgkxc3TsFKz00YDz8e/p65PzzWZhZAK
+ dqYBN4hQW2oC3DR7Q+RJe6hRQ8r0XzTiZHAL58FwiyQv8AFw2rOPDF2Z0lfOStJMp+kN
+ VeZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc;
- bh=cgl+VQ9YlMizuM+yGKqALI233IBvK5ikfdNhgructpQ=;
- b=bVAErBerfvI5/G4C1kCZhf0wYjOd0YDoQpgm61lJfoOpxkOm+Is1sHs7orl/OoQaF2
- rnHEo9L5ZEq69sW9N55SidUph5hLwUUL/dvHQrZBv5vnCadeDILURr53d9XSRL2k4T7r
- 0WAe5FYBf/q3DhG13TzxtL7OA0UxRnmj3SA2f0CvSOj9H2t3tDqcC8+zjPcMnHUERpiT
- ZXfIgOzhHJUvcDIFERHPuwNQJ+xL13cFYiZ8YJ/MvN/PWCyWUaMC7I6Cb9ZjZJvCed5W
- n4FFvfUsPJ6vVnGCTPVWDTKdlOlgEeskgojoRHRt7T1Xd95Z8+vDJK8mDJkGWAeK4f7H
- tffQ==
-X-Gm-Message-State: ACgBeo1Kc9AVU1uxdStOTabhWBR6ikHGSG0NE3DL4IPbRMmFfTdDpBRt
- w2RexS4ld+IUzqeLSNctPlQQ5hwVtQj43FKY
-X-Google-Smtp-Source: AA6agR441b1z/tTifzGyLnSwrT/8jmt2jk8AV636NDvGbhSSuAcNP0l5eSaLpNgvo4bvpwBDV1h2QQ==
-X-Received: by 2002:a17:903:2585:b0:172:9ac6:30f3 with SMTP id
- jb5-20020a170903258500b001729ac630f3mr28863757plb.0.1661345319663; 
- Wed, 24 Aug 2022 05:48:39 -0700 (PDT)
-Received: from pjm0616-laptop.. ([59.10.96.165])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :sender:x-gm-message-state:from:to:cc;
+ bh=ampgdjCqAvWsgy0ONMh5K2rN4VlRw5ot8+dNDYAXEQk=;
+ b=HEjVv5sQj3r8GKVCCbLnjmKjGSKhftUpAAFZm2YXcrPx0EHY1zRfuK4rCQ1mnoJcY+
+ XMzK7571QalJjHEdOhpWUEli3gKiIpk0zbIyeMwWcFs2JSmSzopeOjL/S7eHFTM9imvo
+ 6yz88sPmK/9DKPIy3Ptd0qtgXQy/PY/zh3F2mdQrSQeHQEkhdGJVnp3jKNJ/2EgLMY3z
+ O36wOnT1gHbQOPke/mJr3306XpKpKzDHAZJKqNYO2pSL4EZmn8RYaLyxlagSoNkyG56x
+ pdPdvSVfdojRB1wocgBYrFAdQlUATl6YspNGU5jP/JhdkDHBXBvv3AbLGXJ6H6XHz5Z5
+ ETfQ==
+X-Gm-Message-State: ACgBeo0KT8650vgcgNWsbCcKM/o5Vxbgy7+kClNv6x4ssTJk5iU+6TEX
+ wWRLa301fm+G/VJzg9SZFu0=
+X-Google-Smtp-Source: AA6agR6OGRsP4zvrbqLyiG8JHWBibhszMh5zTlyokYgozY0U/Q0h5OKFQSO3sBirA618QHyPVhfyDA==
+X-Received: by 2002:a63:c1f:0:b0:41a:9b73:a89e with SMTP id
+ b31-20020a630c1f000000b0041a9b73a89emr3389999pgl.342.1661436197755; 
+ Thu, 25 Aug 2022 07:03:17 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- l10-20020a17090aaa8a00b001fb277223bdsm1318157pjq.2.2022.08.24.05.48.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Aug 2022 05:48:39 -0700 (PDT)
-From: Jungmin Park <pjm0616@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Jungmin Park <pjm0616@gmail.com>
-Subject: [PATCH] crypto/luks: Support creating LUKS image on Darwin
-Date: Wed, 24 Aug 2022 21:37:06 +0900
-Message-Id: <20220824123705.2084720-1-pjm0616@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ l7-20020a63ba47000000b0040caab35e5bsm9923670pgu.89.2022.08.25.07.03.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 25 Aug 2022 07:03:17 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <8276f599-58f8-8d5d-3334-8d123bb80ff1@amsat.org>
+Date: Thu, 25 Aug 2022 16:03:12 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.12.0
+Subject: Re: [PATCH] tests/avocado: Fix trivial typo
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>
+Cc: qemu-trivial@nongnu.org, Wainer dos Santos Moschetta
+ <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>
+References: <20220824080926.568935-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20220824080926.568935-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=pjm0616@gmail.com; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 24 Aug 2022 11:29:56 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,70 +85,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Aug 2022 12:49:13 -0000
+X-List-Received-Date: Thu, 25 Aug 2022 14:03:25 -0000
 
-When the user creates a LUKS-encrypted qcow2 image using the qemu-img
-program, the passphrase is hashed using PBKDF2 with a dynamic
-number of iterations. The number of iterations is determined by
-measuring thread cpu time usage, such that it takes approximately
-2 seconds to compute the hash.
+On 24/8/22 10:09, Thomas Huth wrote:
+> The intention was likely to use "intend" instead of "indent" here.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   tests/avocado/avocado_qemu/__init__.py | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-Because Darwin doesn't implement getrusage(RUSAGE_THREAD), we get an
-error message:
-> qemu-img: test.qcow2: Unable to calculate thread CPU usage on this platform
-for this command:
-> qemu-img create --object secret,id=key,data=1234 -f qcow2 -o 'encrypt.format=luks,encrypt.key-secret=key' test.qcow2 100M
-
-This patch implements qcrypto_pbkdf2_get_thread_cpu() for Darwin so that
-the above command works.
-
-Signed-off-by: Jungmin Park <pjm0616@gmail.com>
----
- crypto/pbkdf.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
-
-diff --git a/crypto/pbkdf.c b/crypto/pbkdf.c
-index 3775ddc6c5..8d198c152c 100644
---- a/crypto/pbkdf.c
-+++ b/crypto/pbkdf.c
-@@ -24,6 +24,11 @@
- #ifndef _WIN32
- #include <sys/resource.h>
- #endif
-+#ifdef CONFIG_DARWIN
-+#include <mach/mach_init.h>
-+#include <mach/thread_act.h>
-+#include <mach/mach_port.h>
-+#endif
- 
- 
- static int qcrypto_pbkdf2_get_thread_cpu(unsigned long long *val_ms,
-@@ -45,6 +50,24 @@ static int qcrypto_pbkdf2_get_thread_cpu(unsigned long long *val_ms,
-     /* QuadPart is units of 100ns and we want ms as unit */
-     *val_ms = thread_time.QuadPart / 10000ll;
-     return 0;
-+#elif defined(CONFIG_DARWIN)
-+    mach_port_t thread;
-+    kern_return_t kr;
-+    mach_msg_type_number_t count;
-+    thread_basic_info_data_t info;
-+
-+    thread = mach_thread_self();
-+    count = THREAD_BASIC_INFO_COUNT;
-+    kr = thread_info(thread, THREAD_BASIC_INFO, (thread_info_t)&info, &count);
-+    mach_port_deallocate(mach_task_self(), thread);
-+    if (kr != KERN_SUCCESS || (info.flags & TH_FLAGS_IDLE) != 0) {
-+        error_setg_errno(errp, errno, "Unable to get thread CPU usage");
-+        return -1;
-+    }
-+
-+    *val_ms = ((info.user_time.seconds * 1000ll) +
-+               (info.user_time.microseconds / 1000));
-+    return 0;
- #elif defined(RUSAGE_THREAD)
-     struct rusage ru;
-     if (getrusage(RUSAGE_THREAD, &ru) < 0) {
--- 
-2.34.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
