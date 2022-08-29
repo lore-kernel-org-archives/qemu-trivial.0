@@ -1,146 +1,161 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oSiAm-0001KK-UU
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Aug 2022 13:03:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34636)
+	id 1oSigk-0007ZC-1h
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Aug 2022 13:36:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33514)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dongli.zhang@oracle.com>)
- id 1oSiAk-0001CU-Tp; Mon, 29 Aug 2022 13:03:38 -0400
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32]:25214)
+ id 1oSigi-0007VJ-A5; Mon, 29 Aug 2022 13:36:40 -0400
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32]:17232)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dongli.zhang@oracle.com>)
- id 1oSiAW-0000ki-Cz; Mon, 29 Aug 2022 13:03:37 -0400
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27TGiXgl019453;
- Mon, 29 Aug 2022 17:03:21 GMT
+ id 1oSigf-00060B-Ie; Mon, 29 Aug 2022 13:36:39 -0400
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27TGiNY1019780;
+ Mon, 29 Aug 2022 17:36:33 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : content-transfer-encoding : content-type :
- mime-version; s=corp-2022-7-12;
- bh=QdtIyzKaxKQJErKdZYL69y697O2wrfsmWsCAmfCUPZ8=;
- b=2P/cqn3l9nsIrAAylA04Trt5hxWSUcezcmcf7sUHYvb/QCCZeUwX3umr+/hbAh7OwBfM
- jn+VIERpnVhQ66+z+APAwv6iCdP2YhUErM244Au6v6MvriojjiwwUfprLxlDB55JnT+I
- vxHSpk9xg7u+WyJnHMV5PmYNkNA9vvAy1SCr6vTQOa38IBpBJXmExrlvFavwFZE4Xt2O
- i1fYa2jaE6985tYhqzon2SFmjtRpehvVtT7QdBsuCc3ThpEoksCWiXB3liYfcFmk/5a+
- U2McYjN4hLwIiuaWIHAQe4vGUCqXgn8Yx6Ttl9TkEoYkOFEjwsfHpV05MAZmCxIubSQm qw== 
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3j7b59ux4k-1
+ h=subject : from : to :
+ cc : references : message-id : date : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=corp-2022-7-12;
+ bh=nVXurOdq8mGHUj9W39yS4+K995/3jpRzMrKhUiStQ6s=;
+ b=VTdEo9G0+iyg8MVXNkOcDIsnrfWmNKB2ZtR5vOaHS0RjHZTj7LuCx9roVUBCsC8ditnd
+ ul6iWoCMf1B+bHljAni/5CpMWFL2t0KlGNIYW2sTtaWj945tXdc3i5hvhurc5lfmRkMO
+ cBXoL1b/PrPz8YvTqQhbX99PNEm9r/My+kpw/fw5rmD18Fv2NcoKsa7sjXZOcN79F54N
+ nywiXOb6sTGIlMJg2+CXvCX14OgE0JnBEBV6bvWIMUeOJGOLod3PKkcox4A2bvcQda+e
+ RmDT009b0GWVtWfjin0WxmzxWxoB816cS4gBaX8VMhyLK+47yeEQCwqellKbrL+Y9Z0E oA== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3j79v0m3vv-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 29 Aug 2022 17:03:20 +0000
+ Mon, 29 Aug 2022 17:36:33 +0000
 Received: from pps.filterd
- (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
- with ESMTP id 27TG5tIU033354; Mon, 29 Aug 2022 17:03:19 GMT
-Received: from nam10-bn7-obe.outbound.protection.outlook.com
- (mail-bn7nam10lp2104.outbound.protection.outlook.com [104.47.70.104])
- by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3j79q2ne14-1
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
+ with ESMTP id 27TFo1Gm003211; Mon, 29 Aug 2022 17:36:32 GMT
+Received: from nam10-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10lp2106.outbound.protection.outlook.com [104.47.58.106])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3j79q2ygk2-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 29 Aug 2022 17:03:19 +0000
+ Mon, 29 Aug 2022 17:36:32 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hM+H4JoZzwdP2NkLV454OeUB1sK80b6DNUuBceAh648kGVJAcb3UsgDGn8QgntV3c6+Yw3GRaCGG+ZOiPW8+sWvxH6XVUdUxslg+mKi/PS36FldI8Y8KJCQ8GQjzysDZGhP+boPmpM46E9eWW/FWLJ7Dt3OH7jTWuLkoppFmCjDTiqJNng74oxru/tI4svQf0h1khRohX8S6fDgKoHKStdn+idG3RtesksHAy6Z8k2D2aKPLl6GLyAF2/AH0EKwn+z1U80CBCOKXNS/9iJGgVO+h4DAxs6uz3ttWP/kKHg2DwOYM4JMOXIE/y/bPZHNZixSlKNVgtPK9VOuwqLaqvQ==
+ b=WGtGeWjb/b4x+WtjlqN2ZZ3NLpg0fbGb8jNCjEr48T4/z6XySTJYXV2Z16tArYKsnOyZzKQKqK8nSeoXZ3P6ko4SAb144TdMWBy8MaUMUpRCpCiyHWFM6tpN5BM9DEtHNCMdKV8xNtyEtEcTliGPklNZupT6hyYro9msozrC+u2+8Lsx76vTrZDZAaqGKfEXLzBYphEU4oX3Go658aOxawXi+kpbJeZ2OerDnMJ2Q//zuxTEzLGOFtnvnFXcyFZ9VvecxuypfZxm6tXYc+SvCqzszrP+J0IOEOQzsfHbIgu3VSkVMimB8cwC9mcRM8vQXixWKCpPUpOB7bLiC1uxaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QdtIyzKaxKQJErKdZYL69y697O2wrfsmWsCAmfCUPZ8=;
- b=LntLRKln2LmYqq1oB7taPX+nsL74EJ41QX4dl8bz1ZXWkA5MtlYLe3Xe46McwGjMnsGwLTakLtcNoDu5D3s8nPq/G3arjGWQpgtzuuby+aWmcJhNkWlVfk1Kx4DfoA2R6PjtdQllJ+fH6jWERRS0Qz0zIoshhFahflYV5514J6EJjE3FIuFCXnJY+4FxWLmnYkbF/ZIKWQMwU6NC0XCi+UWBHIuEmqHIyjCWpTnH7OViSju/jNPu8OXd5cLERYp2lvakDSLXS2/kArAaAVRLLdnrNay4Zvhi3rVTrPyqw/H6Uhyebm8qCW/XzKg6LQN78JVEp7q7JbFXAIufcOSTBw==
+ bh=nVXurOdq8mGHUj9W39yS4+K995/3jpRzMrKhUiStQ6s=;
+ b=Y5RjxYJfaN6T/j/A6NGzxk+xutFMzclGIYXNW7Pd6yVvlUi0zHKXSCFOG1hAV7mrslvYBRowrB6BWXpArVi2IlBYbAb0A35j858U32fVv+ikuMy27ijx3oN71x+4zCnOfk+qBNyqXakIANYLCPdN12G1JKzFm5/XNnAqhPtTYYz8llC7dQ+gMyUTXf7hIr6nl7ALtXJu98HyAMhUXqaYOaMEHaNVFTqqpPLn44D51GybDKJ1HXQgcttDgdTXfBU7Q08rbr/PPl1UmmuDHsKQV4fVo5MTS0vQs+DTcEyYpz2RJAumt+RC28pxLUidGzBCAPJFL/+nOSeTuE3ITVpWzg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
  dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QdtIyzKaxKQJErKdZYL69y697O2wrfsmWsCAmfCUPZ8=;
- b=h0BwRs1Wmt9vwno4taHTrabpJvKMKgcM2SdIsodHxIt67SH12OFvUzi1Lh9uILgXxw4Sl31Nu6tw6Lx1sl2aOkmlsP9QqmeHEoI0UtI4We4HjhWzcRSS3qEFFG4dnhhRvDQk4IW0ccjUEiLE9LJrPNj/vtyZVPesvoczW3HnLRI=
+ bh=nVXurOdq8mGHUj9W39yS4+K995/3jpRzMrKhUiStQ6s=;
+ b=T4I6bjWy2WG+Cc3l9oOy0WGiGebBghj2kCead+8ZJRR8QnV2QPy+sXJlQB9eNHy6scQJprhYdnwwq3h1BrD2MGRXiHcCuEoVZ03WVndzjgUZ1GLug4ZBOP9v7tWQnE7iIZWep/TCF7AI1qWBeWbbhU4Czm7JEr5/N7L7JapUntU=
 Received: from BYAPR10MB2663.namprd10.prod.outlook.com (2603:10b6:a02:a9::20)
- by MN2PR10MB3629.namprd10.prod.outlook.com (2603:10b6:208:112::24)
+ by MWHPR10MB1517.namprd10.prod.outlook.com (2603:10b6:300:23::22)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5566.19; Mon, 29 Aug
- 2022 17:03:17 +0000
+ 2022 17:36:30 +0000
 Received: from BYAPR10MB2663.namprd10.prod.outlook.com
  ([fe80::95ab:eb8e:a0a7:3f0d]) by BYAPR10MB2663.namprd10.prod.outlook.com
  ([fe80::95ab:eb8e:a0a7:3f0d%5]) with mapi id 15.20.5566.021; Mon, 29 Aug 2022
- 17:03:17 +0000
+ 17:36:30 +0000
+Subject: Re: [PATCH 1/1] monitor/hmp: print trace as option in help for log
+ command
 From: Dongli Zhang <dongli.zhang@oracle.com>
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Cc: dgilbert@redhat.com, joe.jin@oracle.com
-Subject: [PATCH v2 1/1] monitor/hmp: print trace as option in help for log
- command
-Date: Mon, 29 Aug 2022 10:03:16 -0700
-Message-Id: <20220829170316.3053-1-dongli.zhang@oracle.com>
-X-Mailer: git-send-email 2.34.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: DM6PR02CA0124.namprd02.prod.outlook.com
- (2603:10b6:5:1b4::26) To BYAPR10MB2663.namprd10.prod.outlook.com
+References: <20220829100447.1530-1-dongli.zhang@oracle.com>
+Message-ID: <b5244f97-fbef-49d3-afac-1baa680b538e@oracle.com>
+Date: Mon, 29 Aug 2022 10:36:26 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.1
+In-Reply-To: <20220829100447.1530-1-dongli.zhang@oracle.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SN6PR16CA0045.namprd16.prod.outlook.com
+ (2603:10b6:805:ca::22) To BYAPR10MB2663.namprd10.prod.outlook.com
  (2603:10b6:a02:a9::20)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b0a90374-ad59-4ad2-1a36-08da89e05e43
-X-MS-TrafficTypeDiagnostic: MN2PR10MB3629:EE_
+X-MS-Office365-Filtering-Correlation-Id: 89ca254d-d87d-4fcc-f76d-08da89e501c5
+X-MS-TrafficTypeDiagnostic: MWHPR10MB1517:EE_
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: eViDddY3dOXd833RTP79jfz+qJgV7P5u0iyy2XNfQKVTg0Qm3yt8coGLmWRbUltjaD517MhmcsY7ebErDIgHzYmQBWDUprD28OlP2jYa60yRgUVk7QGnuS/bNjw7ciqaraGD18Uyiiopi454ZaSEQeaXNIxpIVJGm4PT1JkxHD4lLG2ieBhkr2lJRZqIpeBvk1SEP9iQruuJNHTZIJHFDM41zHf95vgVhjfPpv1+0MBFTO9dplXHnpwFPZD9pz/rRH/zXZ0cMEttEL1VG4SvOvP9G8954Iri8NgjPl6t3wsECgTumn+6qO8f0w6jXiHw/tRAvfJWvEwjQSlX3GbGrUau/E72WlFEvIjaiioMVVccXw0UcTk0BZw/Ag+7T2ddC5KNH77g/3Ue4a9pUHJ5TeSusib1FndX2op/BoSWELrYLwiU6OujN0zalnZNg03XHpM9TsCINO7h7judFCA8uudMBrvmX5fgUFB1c6zATZofUCUfaft5c/EfH89jme/mxvvv32z9aDdf58PvjdbLT49LDBjvQFA0wid6ECmJir+HIk/hBDWcDI/oNbYv3Bfl6MuUfj72AB9jtunLSguw5WspcJwLb7FoLijvrqYnPHwILzzGPH44OFd4wY9l9mzdllXZqY+uDYKlx6IWUu835WKfaRri1yS96efVzAysAW/+eTREbYAOxQs8TVJYzTxy4MR5rXOmFK/Mke7gSiLqlQ==
+X-Microsoft-Antispam-Message-Info: L9bzhtaTkaktmu3HhCHA/CUQE6DNujryf66XO1CvJhjyf03isYjn8sJ6UYxi0810RDnCWYIVoRPqSyeLDMfPsUd9xFC2xydk+iS9HmmfVwoFjNTSgvToikqjc9cFxVyRAPKPNg/l+07CPbOrBIbI5eHWdCU7KSs20tirD0GOW8s96K5LrSVF0wjueD8zQrKEat9o88qz2exyom4Ayg8hIo9jYTyhxo+pdFjMrEEHTTcRu28BuF6l2rMP/r+vrHltmH/dO6WhVe9e2lBGZkhbFdEZTeh+4Ib7oXiz8qhFCAi/Jpa7gPDjtxQs6vWlNxE2JyZdK+EeL9CmAimrnmJVe1TQHt79EUYh17OvzlCFcIC57FFpL1ceCPX2wstQsbsDhB1FN7LM/RQUGhYPke8U+XCtTO1R8nSRvGjAHzSjZ4Q5YuRaGSD9wdk/89J+4ykLGCSs2gyKXOKG4NuqweMZ93re+lOR7LRFBvygAOaF7muUUmbGx35mt98bWFeOxOUz/7D72aNgJX6YT9KG+IWDi9okewE7fWy1zrPixZBsBFjWnuRtD3A6eMosfw9HrBKsUQtgi+cSbiLE2JjJuNFvUSdIQBvkLN5wZYbxqH6vQuHeI4vz8DcJbpygtClf5vgKChWAW5BpKSXuhf4bNAtbl0oY/LgMlwNKSh9YvUFasDEJ5Png2zGRR4ne4Yx3EqEA9PnZycmUzF4xFz52uI5RqMJRWSasApFd0cC+DfmIdZ0O8RikFytCsRY+Q8pjgjFBfytfOMlGXNEBiekW3csumOspnRd91+VjBYTmt4uPHoaElHN5vc2jtTrV64DN76Hq
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BYAPR10MB2663.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(39860400002)(136003)(376002)(396003)(366004)(346002)(8676002)(66556008)(66476007)(66946007)(4326008)(316002)(38100700002)(5660300002)(2906002)(8936002)(44832011)(36756003)(86362001)(6506007)(6512007)(107886003)(26005)(6486002)(478600001)(83380400001)(2616005)(41300700001)(1076003)(186003);
+ SFS:(13230016)(366004)(376002)(136003)(39860400002)(396003)(346002)(41300700001)(107886003)(53546011)(6506007)(478600001)(6512007)(6666004)(83380400001)(966005)(6486002)(186003)(2906002)(2616005)(66476007)(8936002)(44832011)(5660300002)(316002)(4326008)(66556008)(8676002)(66946007)(31686004)(86362001)(31696002)(36756003)(38100700002)(45980500001)(43740500002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HKYha8P0EdpO8CFQ8ogXGBh+EnsrCOYbI/FaOmnd9bi7p3zPiili7bmzMXqf?=
- =?us-ascii?Q?kk1LJswsuvCGY3un7ob2CcG4Ig0E2heeIee5iyVsIjCun6/5LvZPZfpErrgh?=
- =?us-ascii?Q?OC05hu+TVk0Ods9hxm7eCVXwumiLvFQyGt79oVQzyKjoNLt9v8l/A4XZ9Eu2?=
- =?us-ascii?Q?ZGkUNheWCaHIdku9cHp/OvtlaBLQBs9A19EV3ta9QvhBEdHhcjlClGLC8okP?=
- =?us-ascii?Q?1xkwxEbQTz5wct798eqqtP8bAS+LnSF+c6JnbOvd/4jwwgyh/nyp8o6wafaT?=
- =?us-ascii?Q?X4OSWNoT+v0SzWhNuxJuYvQO/Jc4YCknLxEJD3uUuedr54X3MyZzd0Grclu5?=
- =?us-ascii?Q?wOivtLxJH8ajaDMpcrbTKP1cI+kt3CC+8cAD3sliW+ry24zRe8Xo7Y0B/lCL?=
- =?us-ascii?Q?6zE5RE3DWyjXCVdXYitwV8IET0dzBoMoa0Fbzcevb8A42F/b2edQnYo++1om?=
- =?us-ascii?Q?d7i2WiqSRH9DaRe+64ygRwjQG3OnZc5hhF+hKO5dD9AfWVL3gXDX3ExbwN/Z?=
- =?us-ascii?Q?hucBkatNvsKycPakgWPbj7PnYw5vhT7WZzY/+I+CxltKVArBjfTVWXUk6YsE?=
- =?us-ascii?Q?URV4mQMiP7sElzt1G0ogQBBgikC1oRxZHX8WBAAzDY+B5oEzQtXRt3N5TFsd?=
- =?us-ascii?Q?aSnL6PxaTj1fL79PI1gopo7LmLj1wBuSLxQppeK/Pxywd6Afdq5QMmpmYfP7?=
- =?us-ascii?Q?ls+fT2fLua5srtXLPQDS3u6OKTEO/YGNyY5i+JC8ZVeZf9SD7DdAOHHSfiaC?=
- =?us-ascii?Q?51So+XldJq52kqy6rgEVh3eJW/GV4KORWtOyMQHqcgY97Mr7U/oz9lN0tjDf?=
- =?us-ascii?Q?LbFBuCVUKRa7D686YS0uWA1muJ1F/FsgV69Af+uch9L2f1Fsp5fpSm3gU3g2?=
- =?us-ascii?Q?s3V9qqxoibLIMNPZ62v2ZxUySDC8fDYQi6VAWHPCNZRn9NWiQqL9k+uIUXnb?=
- =?us-ascii?Q?+33RAQofHBKdKFW4JZk0rohCxlEcsGGR3IkEJHeKqE+Xl+C95n7OqhZGwmc8?=
- =?us-ascii?Q?kiGRFmaNWwRHQBHG0dKBuOdeaPaG1cJ/MZFs4fkTv51eJ0QSMhqXgoCHJIs4?=
- =?us-ascii?Q?FkQN14ofVKkMP7AeAGfpbIsDhojReYvHB8BsU7in91ALOi2PDRmATpEoTuYD?=
- =?us-ascii?Q?vfjaJWwGuL0iS7/5OlH1wrIpyZBi05vEElvRSRiINgJFPu/TBDMld/h/mmm7?=
- =?us-ascii?Q?Su+xQQd5F8+2tRkVv19BUuivxSd4J0PfbN5c6jFd7SLNBmKPL5yZM7/prrAd?=
- =?us-ascii?Q?RwilwPxGQD3sRi+jVIwtUac0dYDkHu17Mp6S+mRFfK5KSyxSAWXH4K/Bgc0J?=
- =?us-ascii?Q?CnRWoK3SmDNs1k3wVnERIf6xaVwokskQPP9/WkYCw3q3le7YYm1MwbWu3bfV?=
- =?us-ascii?Q?VvdfQXcigNG8LnkOuN69Ia+nWFink4ZNsgSFv62r/Ac17uRCPiRKc6Sg0bpU?=
- =?us-ascii?Q?xXXyxPYSnyS7XcMdCKNvb4Lrk5UE+gL7Fq5frP03eJiMNa/QtpkOQelnp/Vp?=
- =?us-ascii?Q?TPCZoMX/mzKlAl8QHhc2smIAHjsMhzbZ+s58P3USt6rCe2+Tm1xRj/CmoIWS?=
- =?us-ascii?Q?uu0BfkBhz6oZ+CFt3KDJjKIde2jGTFcC1mMhPlmR?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YklRdUhIZ1krUWswbG9qcUgzS2t4Yk9QZmEzZlBhRHBPckNLaXhsTDJadnB5?=
+ =?utf-8?B?SHczeWgvSGhDZUdFaDNKUnlmNnRkQzBhQndLK2J3RFE4MXczQjBRajZKelBz?=
+ =?utf-8?B?UWRUOTNJNFRnVGFKN1BuNkJDd1k2QmdCZXJmeFNCQWxUeWoxZWJna29MaGlB?=
+ =?utf-8?B?Z3gyVkV1L056aWh0WTZSQlc2VkJnc3FhYjBMNk80dFNHYmg0U3lBcTlDVk13?=
+ =?utf-8?B?V1J4RFY0QWl6N2sxRytTaHZJRGJpR2k0L2o3c3o3Rk5NZlBXSG1RNGd4NmVG?=
+ =?utf-8?B?TTg0RTI2eVQzOTlRZ2ttKzRGL21lNC9wbDlUeXFrU1BRMU5BTnNuWkk3cWts?=
+ =?utf-8?B?VUNpQzZiNWV4d0ljc3NaWUliYmwya1IwdklKMzVhcGNVWVJtYTlhQkxJU0RT?=
+ =?utf-8?B?QmYrbEg2UHJTb2ErUnIzR09RSGRYSHIxM29iUURhSU0xNzV5NFJ1Qzg0K213?=
+ =?utf-8?B?ZmJ5RlNweTZybW83L0t1czBrMk9xbTJGVFVlYXp1NmJmWU9Xa3hjYnVFVkg1?=
+ =?utf-8?B?QmZZaVVYZUVkdXIwWk1PalZqckRqSjAvVkowSys5bG1QakxoK1lIb0lHSFpM?=
+ =?utf-8?B?cU1tNE45bEdHWEQ2RGNYWW9VQmRJbk9oeW15eEZMR2I3aDhqeUptUzl6U0F6?=
+ =?utf-8?B?K1kxazhnbndpR290bUZEemkrODVhVHQxcDNlTFNWbGR3V2JxVnpBZkszZUpM?=
+ =?utf-8?B?NW9Fd1pvNEdZcTUrS1RWeEhMVEZ5MTVBSStLWnJUb2t0RGZ1b2cxYnFROVR1?=
+ =?utf-8?B?TEoxcW9MazZFNGZpRytERDRwZzg0U0dlNWhiUGxVZkZHMGNjcWN0VlROWEQz?=
+ =?utf-8?B?TS9jZmRsMGlMREs1VjFNazlpcmZlV08rU25TMGx2NUVpVjdWb3ZLdU95THEr?=
+ =?utf-8?B?MHFLSGtNS3ZrVHB6d0tYck50QlFKSXk2RjhxZFcwUWJRbnJOcTkzK1BTTXox?=
+ =?utf-8?B?L3hBWGJFdjdVZUpkVHB3Kzd6YVlpbTM3TXdYb2Irc3M1NzBqRjg0MkxGQzN6?=
+ =?utf-8?B?TlRjTEVZVzMyWVdaM2s0dHpQRjlLTjg4dEFCM1g2UlRmdVhWdDFuMEthM1U0?=
+ =?utf-8?B?OGpZYkU5NGZzdTZUL1h4ODQyV1dZa05HSFQvR0doQ0FWa2J4OHpUZ1VXVFJI?=
+ =?utf-8?B?R2N3YWZOa0R3TXlQS0NDSGFCYjJPamJVdXI3RkhIaXlzQlJabUJ2QTVvb2I1?=
+ =?utf-8?B?ZkhVWWJuYktzRURpK2FtTFBCTUgzL1lGUnpJdVlVK2srMW5nWXByZk11aTVQ?=
+ =?utf-8?B?QjByQ2tnbkJhQm9xOWhGU0ZMaGx4R3M1VmdrL0ZiM1lvYTY2ZDhYZFV5ZEpw?=
+ =?utf-8?B?VWV3UDZTVWhEUjZGUENReVlwQVlVMjVwdndtSjErTjBQd2g5SGNabVdiRlcx?=
+ =?utf-8?B?bDBmbGZaREhQOHZWZXc0VkJIc1Z2NkhtQkh2MVU5TG5vS0lvMXVuclJIVVF1?=
+ =?utf-8?B?clFSWUovQmRobHp5K3ZuWmdqQlE2YWRkR2hQRkFnVXZ2Q01MaC9kUm9JWWU2?=
+ =?utf-8?B?SkM5QVVES2RWWVpnZVNKY1NYbWVnakV6N1dyelU1OHRwcmtkQzdNcXV2UmRC?=
+ =?utf-8?B?dVc2ejVaeExVRWxHSUNiNklkZEpwWmJFbUVKMUFVS3lXb1pTQWpQN1Fqc1Np?=
+ =?utf-8?B?V0NQQWhYem8zYTFscEZJM0xHV2xaaVUwNmt2a1lIeXY2UUJnSmNDY1dkaUZv?=
+ =?utf-8?B?RHA1RVNpd1NWcXFsR0VmWUxxdFU0QXJxMi9hc0UreDlYUTFhWGp2L3UxYzhr?=
+ =?utf-8?B?UmhMeEVZYUxFSWlodEl2TDVyUmdhS0lHYWZWaGoxSjdVd0lGOXluWWRoYWZx?=
+ =?utf-8?B?N2lEbExOVERHMzFYM2VxNDBCUXlDK3UydmVxcmxoeGZjUUpSNk9FNHR3RU9t?=
+ =?utf-8?B?ZUZ5UnNQTWxJeHNGSjdTc1ZxczVZQnkyNDVLdHRYZFlqMmdKbzNBQkU1Nlpl?=
+ =?utf-8?B?MnNUclBBVEk2VjlOY2tEVDJzWFVSZDBkd2x5aFRFUVVtMkdXL285RnI4aFc5?=
+ =?utf-8?B?dEFvZVhnblEyeVFLai9oL0ZRYnkya2xrUVRZOFoxTGdKakh1NnVPVHFxbUlS?=
+ =?utf-8?B?UWxiZnI0MTd1ZEpZVVV6a3NoQWhXTzhvY0hlMnJjRWIvMTUzT2c3L2l0bUx4?=
+ =?utf-8?B?TXhucXcwYjIzWU91Ujd0QnprbUFpZG1lUlhhbk1HVkVhVU1tOGpuS3pDM2Q2?=
+ =?utf-8?Q?qRJYy4iozw8f1Kj3jqvmxUY=3D?=
 X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b0a90374-ad59-4ad2-1a36-08da89e05e43
+X-MS-Exchange-CrossTenant-Network-Message-Id: 89ca254d-d87d-4fcc-f76d-08da89e501c5
 X-MS-Exchange-CrossTenant-AuthSource: BYAPR10MB2663.namprd10.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2022 17:03:17.4731 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2022 17:36:30.0832 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7UgUsbD8A6zhIFOtPwwVw7lCP3IIk+ME16ZVUuOuaUfk2lePBSINz+J71FksYRxPsDEyISxzLrlXOJi62qg6zQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR10MB3629
+X-MS-Exchange-CrossTenant-UserPrincipalName: WQ3A9XXAdQPQ9o5wbuHvDaq5zQLFRq0QDay16CqgBh0VsBA+hwT5LofUlvpG493FGDweUOp2ILYpGzvTii96og==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR10MB1517
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-08-29_08,2022-08-25_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- malwarescore=0 mlxscore=0
- spamscore=0 mlxlogscore=999 phishscore=0 suspectscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2207270000
- definitions=main-2208290079
-X-Proofpoint-ORIG-GUID: 3dpgCj27cDCPyeP5iiQ5_u7JCj9BdHAq
-X-Proofpoint-GUID: 3dpgCj27cDCPyeP5iiQ5_u7JCj9BdHAq
+ definitions=2022-08-29_09,2022-08-25_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxlogscore=999
+ suspectscore=0 adultscore=0 bulkscore=0 mlxscore=0 spamscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2207270000 definitions=main-2208290081
+X-Proofpoint-GUID: sQyPUNEHQIVNQmxsAsCN8eGZgEX6oTQF
+X-Proofpoint-ORIG-GUID: sQyPUNEHQIVNQmxsAsCN8eGZgEX6oTQF
 Received-SPF: pass client-ip=205.220.165.32;
  envelope-from=dongli.zhang@oracle.com; helo=mx0a-00069f02.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -154,51 +169,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Aug 2022 17:03:39 -0000
+X-List-Received-Date: Mon, 29 Aug 2022 17:36:40 -0000
 
-The below is printed when printing help information in qemu-system-x86_64
-command line, and when CONFIG_TRACE_LOG is enabled:
+Sorry that the format for "none" should be changed as well.
 
-$ qemu-system-x86_64 -d help
-... ...
-trace:PATTERN   enable trace events
+I have sent a v2:
 
-Use "-d trace:help" to get a list of trace events.
+https://lists.gnu.org/archive/html/qemu-devel/2022-08/msg04445.html
 
-However, they are not printed in hmp "help log" command.
+Thank you very much!
 
-Cc: Joe Jin <joe.jin@oracle.com>
-Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
----
-Changed since v1:
-- change format for "none" as well.
+Dongli Zhang
 
- monitor/hmp.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
-
-diff --git a/monitor/hmp.c b/monitor/hmp.c
-index 15ca047..467fc84 100644
---- a/monitor/hmp.c
-+++ b/monitor/hmp.c
-@@ -285,10 +285,15 @@ void help_cmd(Monitor *mon, const char *name)
-         if (!strcmp(name, "log")) {
-             const QEMULogItem *item;
-             monitor_printf(mon, "Log items (comma separated):\n");
--            monitor_printf(mon, "%-10s %s\n", "none", "remove all logs");
-+            monitor_printf(mon, "%-15s %s\n", "none", "remove all logs");
-             for (item = qemu_log_items; item->mask != 0; item++) {
--                monitor_printf(mon, "%-10s %s\n", item->name, item->help);
-+                monitor_printf(mon, "%-15s %s\n", item->name, item->help);
-             }
-+#ifdef CONFIG_TRACE_LOG
-+            monitor_printf(mon, "trace:PATTERN   enable trace events\n");
-+            monitor_printf(mon, "\nUse \"info trace-events\" to get a list of "
-+                                "trace events.\n\n");
-+#endif
-             return;
-         }
- 
--- 
-1.8.3.1
-
+On 8/29/22 3:04 AM, Dongli Zhang wrote:
+> The below is printed when printing help information in qemu-system-x86_64
+> command line, and when CONFIG_TRACE_LOG is enabled:
+> 
+> $ qemu-system-x86_64 -d help
+> ... ...
+> trace:PATTERN   enable trace events
+> 
+> Use "-d trace:help" to get a list of trace events.
+> 
+> However, they are not printed in hmp "help log" command.
+> 
+> Cc: Joe Jin <joe.jin@oracle.com>
+> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+> ---
+>  monitor/hmp.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/monitor/hmp.c b/monitor/hmp.c
+> index 15ca047..9f48b70 100644
+> --- a/monitor/hmp.c
+> +++ b/monitor/hmp.c
+> @@ -287,8 +287,13 @@ void help_cmd(Monitor *mon, const char *name)
+>              monitor_printf(mon, "Log items (comma separated):\n");
+>              monitor_printf(mon, "%-10s %s\n", "none", "remove all logs");
+>              for (item = qemu_log_items; item->mask != 0; item++) {
+> -                monitor_printf(mon, "%-10s %s\n", item->name, item->help);
+> +                monitor_printf(mon, "%-15s %s\n", item->name, item->help);
+>              }
+> +#ifdef CONFIG_TRACE_LOG
+> +            monitor_printf(mon, "trace:PATTERN   enable trace events\n");
+> +            monitor_printf(mon, "\nUse \"info trace-events\" to get a list of "
+> +                                "trace events.\n\n");
+> +#endif
+>              return;
+>          }
+>  
+> 
 
