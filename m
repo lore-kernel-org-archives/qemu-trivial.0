@@ -1,80 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oV9BH-0000gt-Iw
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Sep 2022 06:18:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59480)
+	id 1oVBzM-0000VJ-Cx
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Sep 2022 09:18:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1oV9BF-0000bp-Pc
- for qemu-trivial@nongnu.org; Mon, 05 Sep 2022 06:18:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:40246)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1oV9B4-00050i-JU
- for qemu-trivial@nongnu.org; Mon, 05 Sep 2022 06:18:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1662373081;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=+/XZpaWOatQvZlf69VdQZSO4CQFd856M9KwjqSmktZ0=;
- b=BkDpaeIe9dPIXA1WhcRrDUi55CTtxjIF5AD7Zr74Yha9WZcfq+9jg7AFhDhnAmbdIOKb6q
- DNDA9ZiQlXuGWRfT0TA5R00SdKq/wB+XIJzMzPtCqwTl7F+o35iQ0hgvqsK5qDMXbF/3pe
- aKYnta3rfrUEaN5OIlcjmEjRUHTo6rA=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-75-QfT7G49fMuCEv_HHqBxMtw-1; Mon, 05 Sep 2022 06:18:00 -0400
-X-MC-Unique: QfT7G49fMuCEv_HHqBxMtw-1
-Received: by mail-ej1-f71.google.com with SMTP id
- gs35-20020a1709072d2300b00730e14fd76eso2156890ejc.15
- for <qemu-trivial@nongnu.org>; Mon, 05 Sep 2022 03:18:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oVBzK-0000P6-F8; Mon, 05 Sep 2022 09:18:06 -0400
+Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36]:46747)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1oVBzB-0005a3-M7; Mon, 05 Sep 2022 09:18:04 -0400
+Received: by mail-oa1-x36.google.com with SMTP id
+ 586e51a60fabf-127a3a39131so539078fac.13; 
+ Mon, 05 Sep 2022 06:17:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date;
+ bh=t83j+U/1eMk0gktE26i27s5AYMjt+l6rvM96lRQV0JM=;
+ b=LMRshvVhIEEruHXQtifjX8t5qJQxFaX+zS7k4gKJIDKAmc1nKOXnteU63DS2fRcbjQ
+ L47eWgxMq7IHpbtDcbEklgVMbc975/EHDsA05AauywGh8bSs5acWWY4pMxIGtJe+J46C
+ EfVfedY0W8ONZP2/5UF49ArkUpEJuxITV9tWCti6Bau9N33IIfdLYYSU3mJmtAXSDXqj
+ Loi4mYJ8rijEmasPtlPKaiGj+gBx/mp0uftqd6Tg//7lobJiewB2g+dJFznhM1+CJmht
+ 9JsbzgTiDweW3tugCfK2itTtMoYHrR5wKeNVh0b7Kdp1/rKJUn9Lci+/xMk99lSxvHlA
+ g2dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date;
- bh=+/XZpaWOatQvZlf69VdQZSO4CQFd856M9KwjqSmktZ0=;
- b=t8fZBe9h1ViO3GKqjCgW932JJLYtJVg7i1Oo1MNbXfSxpnJ9JNcWFR9PDwM+HbmM6K
- QQdmvunQi31FMNOr3KPsQjbGixv4l/FvqQiNyBZxWLlVh+U2HsWl2273BcP73FCuQtrS
- C+hg3vd4gY2yiTbu0hoKA8TahhNwS6YO+S+edjjVFlC76bIZANjcecV0WzV8jKNWBnar
- 46mQnsnFqdL1DjhqLsVeV7G7qzSSGXevT/T6+R4kdLEspM3swFiRtMi1oiQUn3FLQ6TW
- iqri9GjP/TmpHoj2we1kMlKASIZPG5KPCgVcztYilIe+jnZMp3QYTM1u+X840d76ONOa
- Q0og==
-X-Gm-Message-State: ACgBeo3ZJsfwVw5SN/oM4hQ1HmyjJNe62i95U7UE1VHUK1uloDZb4t7h
- ZZKqA2Mvlou9CHypHyy10J2n2OWwV7dJjqxGNIXJQsvsWno+MvdhJzjnSTUeWFAiL5ELNDNBs1o
- ZX2AZerVFysjwuIBFBw==
-X-Received: by 2002:a17:906:ef8c:b0:73d:db28:dc32 with SMTP id
- ze12-20020a170906ef8c00b0073ddb28dc32mr33280198ejb.224.1662373079278; 
- Mon, 05 Sep 2022 03:17:59 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR57mWLJv3beC2dLnAUla5ului5IjGab7WMsDKaxi1ZYCa3ohhjs6K6+rOV4D5vjiBgTZOcS9Q==
-X-Received: by 2002:a17:906:ef8c:b0:73d:db28:dc32 with SMTP id
- ze12-20020a170906ef8c00b0073ddb28dc32mr33280188ejb.224.1662373078940; 
- Mon, 05 Sep 2022 03:17:58 -0700 (PDT)
-Received: from goa-sendmail ([2001:b07:6468:f312:2f4b:62da:3159:e077])
- by smtp.gmail.com with ESMTPSA id
- d21-20020a170906305500b0073d6ab5bcaasm4822930ejd.212.2022.09.05.03.17.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Sep 2022 03:17:58 -0700 (PDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] spapr_pci: fix leak in spapr_phb_vfio_get_loc_code
-Date: Mon,  5 Sep 2022 12:17:57 +0200
-Message-Id: <20220905101757.19885-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.37.2
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=t83j+U/1eMk0gktE26i27s5AYMjt+l6rvM96lRQV0JM=;
+ b=J9FnJFHtdA5rirDKghALU9HR40U/Tusitd03odIz5ktVWWZzALM4HZuNO4djtMDKO8
+ FSdOkErUf0c942fVAQsdLValEuN+90hDQbtd/LcNXm16V5EClx+7PX7gHutTpaWZVBSI
+ gVyCExxd9j39Z8WVs99LQ8UDasPAn9pnEdGwSaeUNxCxSUtkMcmGih8foUQptqakPeHa
+ H8Z3SB5FQpGmFBJP7qg4ljX5YLbgIOBFy329K/7jo4Mn3w1tCINVFDfURXldedimuzEd
+ veLHnp0DY3lgw6hnn05cbpA03cfF8ar3Jqco6zT+rX7/RF2GTROc9VleOJlCpeJMe1p4
+ WPbg==
+X-Gm-Message-State: ACgBeo0k2p+bC8KzPtqtmgl/4jrvLvwHQsKfBX7nu1NaE3impuWrq5P8
+ HpwZ6h7n/qgTg4yj/01dNxM=
+X-Google-Smtp-Source: AA6agR5bFYfCAIT6fcDaJ8goBaD2twP3nQrLkEuboRr6i/XPe4o+en2tbpBHhn7/qmOF7MX6aaNVuQ==
+X-Received: by 2002:a05:6870:a992:b0:11e:6d35:62d8 with SMTP id
+ ep18-20020a056870a99200b0011e6d3562d8mr9142097oab.225.1662383875688; 
+ Mon, 05 Sep 2022 06:17:55 -0700 (PDT)
+Received: from [192.168.10.102] (200-207-147-180.dsl.telesp.net.br.
+ [200.207.147.180]) by smtp.gmail.com with ESMTPSA id
+ em39-20020a0568705ba700b0010e20d0b2e3sm4855787oab.44.2022.09.05.06.17.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Sep 2022 06:17:55 -0700 (PDT)
+Message-ID: <d8020d82-4002-8b27-b887-9c4d14dda7d0@gmail.com>
+Date: Mon, 5 Sep 2022 10:17:50 -0300
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH 01/19] target/ppc: Remove extra space from s128 field in
+ ppc_vsr_t
+Content-Language: en-US
+To: =?UTF-8?Q?V=c3=adctor_Colombo?= <victor.colombo@eldorado.org.br>,
+ qemu-devel@nongnu.org, qemu-ppc@nongnu.org
+Cc: clg@kaod.org, david@gibson.dropbear.id.au, groug@kaod.org,
+ richard.henderson@linaro.org, matheus.ferst@eldorado.org.br,
+ lucas.araujo@eldorado.org.br, leandro.lupori@eldorado.org.br,
+ lucas.coutinho@eldorado.org.br, qemu-trivial@nongnu.org
+References: <20220901131756.26060-1-victor.colombo@eldorado.org.br>
+ <20220901131756.26060-2-victor.colombo@eldorado.org.br>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20220901131756.26060-2-victor.colombo@eldorado.org.br>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2001:4860:4864:20::36;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x36.google.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-1.716,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,31 +88,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Sep 2022 10:18:14 -0000
+X-List-Received-Date: Mon, 05 Sep 2022 13:18:07 -0000
 
-Overwriting "path" in the second call to g_strdup_printf() causes a memory leak,
-even if the variable itself is g_autofree.
 
-Reported by Coverity as CID 1460454.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- hw/ppc/spapr_pci.c | 1 +
- 1 file changed, 1 insertion(+)
+On 9/1/22 10:17, Víctor Colombo wrote:
+> Very trivial rogue space removal. There are two spaces between Int128
+> and s128 in ppc_vsr_t struct, where it should be only one.
+> 
+> Signed-off-by: Víctor Colombo <victor.colombo@eldorado.org.br>
+> ---
 
-diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-index 67e9d468aa..57c8a4f085 100644
---- a/hw/ppc/spapr_pci.c
-+++ b/hw/ppc/spapr_pci.c
-@@ -800,6 +800,7 @@ static char *spapr_phb_vfio_get_loc_code(SpaprPhbState *sphb,  PCIDevice *pdev)
-     }
- 
-     /* Construct and read from host device tree the loc-code */
-+    g_free(path);
-     path = g_strdup_printf("/proc/device-tree%s/ibm,loc-code", devspec);
-     if (!g_file_get_contents(path, &buf, NULL, NULL)) {
-         return NULL;
--- 
-2.37.2
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
+
+Ccing qemu-trivial since this can be picked up by them as well.
+
+
+Thanks,
+
+Daniel
+
+
+
+>   target/ppc/cpu.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+> index a4c893cfad..985ff86f55 100644
+> --- a/target/ppc/cpu.h
+> +++ b/target/ppc/cpu.h
+> @@ -246,7 +246,7 @@ typedef union _ppc_vsr_t {
+>   #ifdef CONFIG_INT128
+>       __uint128_t u128;
+>   #endif
+> -    Int128  s128;
+> +    Int128 s128;
+>   } ppc_vsr_t;
+>   
+>   typedef ppc_vsr_t ppc_avr_t;
 
