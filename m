@@ -1,62 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oU5j4-0008WI-3T
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Sep 2022 08:24:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33598)
+	id 1oV9BH-0000gt-Iw
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Sep 2022 06:18:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59480)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oU5j1-0008MJ-Ac
- for qemu-trivial@nongnu.org; Fri, 02 Sep 2022 08:24:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:20207)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1oV9BF-0000bp-Pc
+ for qemu-trivial@nongnu.org; Mon, 05 Sep 2022 06:18:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:40246)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oU5iu-00076D-MH
- for qemu-trivial@nongnu.org; Fri, 02 Sep 2022 08:24:38 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1oV9B4-00050i-JU
+ for qemu-trivial@nongnu.org; Mon, 05 Sep 2022 06:18:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1662121473;
+ s=mimecast20190719; t=1662373081;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=fagiu3S6Uxv6Yz7PML1jQ3HeI43WY5afgWElyarQ7gg=;
- b=AfwPNWngknZYCwyyeXpjo6dVmdeZCkYEb/I1/fWmpLeQngRznXHwutWEWJ0lg9doQUH1Ir
- dAu4Ww2LbqnGT5q5ar/2aHWfXYlYWnYEa/Ruf+QCL3tkl+pAtkl7N5dS3gHPnjpbPIt6vH
- 0o9HOvkyyKvKY9tiQZZrot239VSUhKs=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-590-LPe-5qJHNpuVRQ5g2FXfHw-1; Fri, 02 Sep 2022 08:24:32 -0400
-X-MC-Unique: LPe-5qJHNpuVRQ5g2FXfHw-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C0443811E81;
- Fri,  2 Sep 2022 12:24:31 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.166])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9417B492CA2;
- Fri,  2 Sep 2022 12:24:31 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 5097021E6900; Fri,  2 Sep 2022 14:24:30 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  dgilbert@redhat.com,
- armbru@redhat.com,  joe.jin@oracle.com
-Subject: Re: [PATCH v3 1/1] monitor/hmp: print trace as option in help for
- log command
-References: <20220831213943.8155-1-dongli.zhang@oracle.com>
-Date: Fri, 02 Sep 2022 14:24:30 +0200
-In-Reply-To: <20220831213943.8155-1-dongli.zhang@oracle.com> (Dongli Zhang's
- message of "Wed, 31 Aug 2022 14:39:43 -0700")
-Message-ID: <87h71qrmkh.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=+/XZpaWOatQvZlf69VdQZSO4CQFd856M9KwjqSmktZ0=;
+ b=BkDpaeIe9dPIXA1WhcRrDUi55CTtxjIF5AD7Zr74Yha9WZcfq+9jg7AFhDhnAmbdIOKb6q
+ DNDA9ZiQlXuGWRfT0TA5R00SdKq/wB+XIJzMzPtCqwTl7F+o35iQ0hgvqsK5qDMXbF/3pe
+ aKYnta3rfrUEaN5OIlcjmEjRUHTo6rA=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-75-QfT7G49fMuCEv_HHqBxMtw-1; Mon, 05 Sep 2022 06:18:00 -0400
+X-MC-Unique: QfT7G49fMuCEv_HHqBxMtw-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ gs35-20020a1709072d2300b00730e14fd76eso2156890ejc.15
+ for <qemu-trivial@nongnu.org>; Mon, 05 Sep 2022 03:18:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=+/XZpaWOatQvZlf69VdQZSO4CQFd856M9KwjqSmktZ0=;
+ b=t8fZBe9h1ViO3GKqjCgW932JJLYtJVg7i1Oo1MNbXfSxpnJ9JNcWFR9PDwM+HbmM6K
+ QQdmvunQi31FMNOr3KPsQjbGixv4l/FvqQiNyBZxWLlVh+U2HsWl2273BcP73FCuQtrS
+ C+hg3vd4gY2yiTbu0hoKA8TahhNwS6YO+S+edjjVFlC76bIZANjcecV0WzV8jKNWBnar
+ 46mQnsnFqdL1DjhqLsVeV7G7qzSSGXevT/T6+R4kdLEspM3swFiRtMi1oiQUn3FLQ6TW
+ iqri9GjP/TmpHoj2we1kMlKASIZPG5KPCgVcztYilIe+jnZMp3QYTM1u+X840d76ONOa
+ Q0og==
+X-Gm-Message-State: ACgBeo3ZJsfwVw5SN/oM4hQ1HmyjJNe62i95U7UE1VHUK1uloDZb4t7h
+ ZZKqA2Mvlou9CHypHyy10J2n2OWwV7dJjqxGNIXJQsvsWno+MvdhJzjnSTUeWFAiL5ELNDNBs1o
+ ZX2AZerVFysjwuIBFBw==
+X-Received: by 2002:a17:906:ef8c:b0:73d:db28:dc32 with SMTP id
+ ze12-20020a170906ef8c00b0073ddb28dc32mr33280198ejb.224.1662373079278; 
+ Mon, 05 Sep 2022 03:17:59 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR57mWLJv3beC2dLnAUla5ului5IjGab7WMsDKaxi1ZYCa3ohhjs6K6+rOV4D5vjiBgTZOcS9Q==
+X-Received: by 2002:a17:906:ef8c:b0:73d:db28:dc32 with SMTP id
+ ze12-20020a170906ef8c00b0073ddb28dc32mr33280188ejb.224.1662373078940; 
+ Mon, 05 Sep 2022 03:17:58 -0700 (PDT)
+Received: from goa-sendmail ([2001:b07:6468:f312:2f4b:62da:3159:e077])
+ by smtp.gmail.com with ESMTPSA id
+ d21-20020a170906305500b0073d6ab5bcaasm4822930ejd.212.2022.09.05.03.17.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Sep 2022 03:17:58 -0700 (PDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] spapr_pci: fix leak in spapr_phb_vfio_get_loc_code
+Date: Mon,  5 Sep 2022 12:17:57 +0200
+Message-Id: <20220905101757.19885-1-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -70,74 +87,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Sep 2022 12:24:43 -0000
+X-List-Received-Date: Mon, 05 Sep 2022 10:18:14 -0000
 
-Dongli Zhang <dongli.zhang@oracle.com> writes:
+Overwriting "path" in the second call to g_strdup_printf() causes a memory leak,
+even if the variable itself is g_autofree.
 
-> The below is printed when printing help information in qemu-system-x86_64
-> command line, and when CONFIG_TRACE_LOG is enabled:
->
-> ----------------------------
-> $ qemu-system-x86_64 -d help
-> ... ...
-> trace:PATTERN   enable trace events
->
-> Use "-d trace:help" to get a list of trace events.
-> ----------------------------
->
-> However, the options of "trace:PATTERN" are only printed by
-> "qemu-system-x86_64 -d help", but missing in hmp "help log" command.
->
-> Fixes: c84ea00dc2 ("log: add "-d trace:PATTERN"")
-> Cc: Joe Jin <joe.jin@oracle.com>
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-> ---
-> Changed since v1:
-> - change format for "none" as well.
-> Changed since v2:
-> - use "log trace:help" in help message.
-> - add more clarification in commit message.
-> - add 'Fixes' tag.
-> ---
->  monitor/hmp.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
->
-> diff --git a/monitor/hmp.c b/monitor/hmp.c
-> index 15ca04735c..a3375d0341 100644
-> --- a/monitor/hmp.c
-> +++ b/monitor/hmp.c
-> @@ -285,10 +285,15 @@ void help_cmd(Monitor *mon, const char *name)
->          if (!strcmp(name, "log")) {
->              const QEMULogItem *item;
->              monitor_printf(mon, "Log items (comma separated):\n");
-> -            monitor_printf(mon, "%-10s %s\n", "none", "remove all logs");
-> +            monitor_printf(mon, "%-15s %s\n", "none", "remove all logs");
->              for (item = qemu_log_items; item->mask != 0; item++) {
-> -                monitor_printf(mon, "%-10s %s\n", item->name, item->help);
-> +                monitor_printf(mon, "%-15s %s\n", item->name, item->help);
->              }
-> +#ifdef CONFIG_TRACE_LOG
-> +            monitor_printf(mon, "trace:PATTERN   enable trace events\n");
-> +            monitor_printf(mon, "\nUse \"log trace:help\" to get a list of "
-> +                           "trace events.\n\n");
-> +#endif
->              return;
->          }
+Reported by Coverity as CID 1460454.
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ hw/ppc/spapr_pci.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Not this patch's fault:
-
-1. "-d help" terminates with exit status 1, "-d trace:help" with 0.  The
-   former is wrong.
-
-2. HMP "log trace:help" prints to stdout instead of the current monitor.
-
-3. Output of HMP "log trace:help" sometimes is truncated for me.
-
-4. Output of "log trace:help" and "info trace-events" is unwieldy.
-   Sorted output could be a bit less unwieldy.
-
-5. Could "log trace:help" and "info trace-events" share code?
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 67e9d468aa..57c8a4f085 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -800,6 +800,7 @@ static char *spapr_phb_vfio_get_loc_code(SpaprPhbState *sphb,  PCIDevice *pdev)
+     }
+ 
+     /* Construct and read from host device tree the loc-code */
++    g_free(path);
+     path = g_strdup_printf("/proc/device-tree%s/ibm,loc-code", devspec);
+     if (!g_file_get_contents(path, &buf, NULL, NULL)) {
+         return NULL;
+-- 
+2.37.2
 
 
