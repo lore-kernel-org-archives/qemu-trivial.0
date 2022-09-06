@@ -1,81 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oVZUi-0003t5-Vr
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Sep 2022 10:24:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39706)
+	id 1oVc7B-0005IX-1g
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Sep 2022 13:11:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oVZUg-0003lh-Mi
- for qemu-trivial@nongnu.org; Tue, 06 Sep 2022 10:24:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58412)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oVZUe-0002El-58
- for qemu-trivial@nongnu.org; Tue, 06 Sep 2022 10:24:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1662474239;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=i6127IC2/fyddAz9RCJslzgJzlxCcBlp7fhZfdxkwwM=;
- b=SDQmnfraWayx6RDCyD8z1bl2O2sY9q4Vk6FHsHZcx3eZRJEPDq4BZoA2nmESm1DAkQFSbE
- yNXs4vD8zCFq1jrjDbNX40gcnHkouJlw9xwGRp2SFvGIQu6n9MZHv1xffm7unH01kVS9yu
- BqOlogRyOlgYe7Ky1WYSJFO7NvzYPKk=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-138-cBVFQFfCNNqMaOUPFBj38w-1; Tue, 06 Sep 2022 10:23:58 -0400
-X-MC-Unique: cBVFQFfCNNqMaOUPFBj38w-1
-Received: by mail-ed1-f71.google.com with SMTP id
- m15-20020a056402430f00b00448af09b674so7684727edc.13
- for <qemu-trivial@nongnu.org>; Tue, 06 Sep 2022 07:23:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1oVc79-0005Hy-Sq; Tue, 06 Sep 2022 13:11:55 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:34550)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1oVc78-000767-8v; Tue, 06 Sep 2022 13:11:55 -0400
+Received: by mail-ej1-x629.google.com with SMTP id y3so24858582ejc.1;
+ Tue, 06 Sep 2022 10:11:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date;
+ bh=iCbl2Bo2GGqi8Q4D8vzanf/Dko4W88sy8tL+zZ0DhEg=;
+ b=LaZ2A5AAicTwvocspPFRUF6axWFnT3zattyvbPJGsjtM0W1asDifOfgbBvNk1mQiB3
+ utdzkmu+BwCbMwcRFkVvmGjgx4hosCM5OO6GCL3aZ+feNK/jeKxH/zqH0iFdRyY4oloG
+ goHLuRa+0YLNT+5edJuE2J1wkgZKnSukLIoOigxczVRum59ca+HCq2WE9HG3ppfrh2av
+ u8rTvvYB5DnrErwf4Xet/8WjndBIpxQ1GnuSg+lVAor1/ajCjeExmjuLiLi2pUVs+rtU
+ KSw0robA6sMrKTCzodYM/eZyLAJFYYwq2z6hnguMKIG3kCr8xvINNp3Ewo72R075TzOn
+ emyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=i6127IC2/fyddAz9RCJslzgJzlxCcBlp7fhZfdxkwwM=;
- b=uGdoZBKy3PXH9CC403DEi3uWulEl+0FybEQ7KmQcK8kCrG1mWNdG+0JdNQzT4zKlLP
- 4SW+F7ltZb+2DZkHaaNAT03KVxguP2w913s5SEFAX1b60nAEIDYGkUelmMoAx/ARwE9G
- GHOqjIRPn8Wt/GfJg6hkwx+IfRg+NdxsFF+Vlw6wh7TJoZzLKzs4JcencohxH1s6zLr7
- 4qJk2WXV0Ig/JAnfA6KQgmBZvc3bKVvYF6a+XonnFTV5ywrPAIG2pF+hI7zqdoPL/4I6
- unsww7U1CtsprDZ3ygt3z+dncSamltCbkFdnrTzlu3kCEKZTH71T+FFo8Ur3VjfmriuJ
- hVoA==
-X-Gm-Message-State: ACgBeo3CaiyCLvooGv1dbRhbOLsyNIMKl9aROwnzUEWf1d6dhi1Sy1Ut
- WuYk1qimECwHFmwv9j0d/o0AM+6rVvLVhk/nqR0DaR3dPahmhP2ALfvZWSvfCzg8lh8sU6gcqW2
- BsNBVmhRELM9I5AE8mw==
-X-Received: by 2002:a17:907:c002:b0:73d:d96c:c632 with SMTP id
- ss2-20020a170907c00200b0073dd96cc632mr37873394ejc.543.1662474237151; 
- Tue, 06 Sep 2022 07:23:57 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR5LC+ccekWY4PAjtk56YDkBYJVLK2Nkbs8y2fJi886WGHh/jz49E0BRxzRnnP1Kl5z+bx6mMA==
-X-Received: by 2002:a17:907:c002:b0:73d:d96c:c632 with SMTP id
- ss2-20020a170907c00200b0073dd96cc632mr37873375ejc.543.1662474236912; 
- Tue, 06 Sep 2022 07:23:56 -0700 (PDT)
-Received: from redhat.com ([2.52.135.118]) by smtp.gmail.com with ESMTPSA id
- 10-20020a170906218a00b0073ddfe1ea69sm6735718eju.111.2022.09.06.07.23.55
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=iCbl2Bo2GGqi8Q4D8vzanf/Dko4W88sy8tL+zZ0DhEg=;
+ b=7y2ubecmAPHnDTQe+qPU+RXvwW38KXjOP/psGhUbP1nm8/EkiigFc1llpfTYWRkUAe
+ d4UxNYRILjVG8AJxdI5KHnXFKYbWm1P0ksCUNiWwa6D6dfK/4DFP9e2REB3gF3BZEU9Q
+ 3pagBE/BId1d/RIvvawNaXL+5SNOnlyh8/6wSGtlfjvZEwoyvvRNuVHeU4woMinrfUJX
+ YCQaLbZ1EfxpdeCDL8RuoPzm2lX+Z0QWBodvgKPUd8Tp/MQNfQVRDpUrFfAG35vjzLLm
+ 4TSLyNSPF5zvFBjNWdhqLC3uw80h29DJoVX3WCGDUXqTO6rHzzwotMwOtaygFvYdjeZ6
+ V7MQ==
+X-Gm-Message-State: ACgBeo2vzagvMEpwFtAqgxYZ/Azd5nMFfmysd2lknT4jlYMF76sPzObj
+ KYwnh3yxkv4cGx3uZwTqosHp3mY5rL8=
+X-Google-Smtp-Source: AA6agR5h2rlcKoFXUJbAmgDLfvF6XQWGarBh76l5l0gpfe5vJpwIYoL3WZicOYLyde+jJZQa2q8rlw==
+X-Received: by 2002:a17:906:cc5d:b0:741:38a8:a50a with SMTP id
+ mm29-20020a170906cc5d00b0074138a8a50amr34555160ejb.650.1662484311198; 
+ Tue, 06 Sep 2022 10:11:51 -0700 (PDT)
+Received: from localhost.localdomain
+ (dynamic-077-188-175-122.77.188.pool.telefonica.de. [77.188.175.122])
+ by smtp.gmail.com with ESMTPSA id
+ 1-20020a170906218100b0073a644ef803sm6979657eju.101.2022.09.06.10.11.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Sep 2022 07:23:56 -0700 (PDT)
-Date: Tue, 6 Sep 2022 10:23:53 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Lev Kujawski <lkujaw@member.fsf.org>
-Cc: qemu-trivial@nongnu.org, f4bug@amsat.org, John Snow <jsnow@redhat.com>,
- "open list:IDE" <qemu-block@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2] hw/ide/piix: Ignore writes of hardwired PCI command
- register bits
-Message-ID: <20220906102155-mutt-send-email-mst@kernel.org>
-References: <20220602204731.18706-1-lkujaw@member.fsf.org>
+ Tue, 06 Sep 2022 10:11:50 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH] hw/virtio/vhost-shadow-virtqueue: Silence GCC error
+ "maybe-uninitialized"
+Date: Tue,  6 Sep 2022 19:11:14 +0200
+Message-Id: <20220906171114.14839-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-In-Reply-To: <20220602204731.18706-1-lkujaw@member.fsf.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,77 +77,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Sep 2022 14:24:03 -0000
+X-List-Received-Date: Tue, 06 Sep 2022 17:11:56 -0000
 
-On Thu, Jun 02, 2022 at 08:47:31PM +0000, Lev Kujawski wrote:
-> One method to enable PCI bus mastering for IDE controllers, often used
-> by x86 firmware, is to write 0x7 to the PCI command register.  Neither
-> the PIIX3 specification nor actual hardware (a Tyan S1686D system)
-> permit modification of the Memory Space Enable (MSE) bit, 1, and thus
-> the command register would be left in an unspecified state without
-> this patch.
-> 
-> Signed-off-by: Lev Kujawski <lkujaw@member.fsf.org>
+GCC issues a false positive warning, resulting in build failure with -Werror:
 
+  In file included from /usr/include/glib-2.0/glib.h:114,
+                   from /home/zcone-pisint/Projects/qemu/src/include/glib-compat.h:32,
+                   from /home/zcone-pisint/Projects/qemu/src/include/qemu/osdep.h:144,
+                   from ../src/hw/virtio/vhost-shadow-virtqueue.c:10:
+  In function ‘g_autoptr_cleanup_generic_gfree’,
+      inlined from ‘vhost_handle_guest_kick’ at ../src/hw/virtio/vhost-shadow-virtqueue.c:292:42:
+  /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘elem’ may be used uninitialized [-Werror=maybe-uninitialized]
+     28 |   g_free (*pp);
+        |   ^~~~~~~~~~~~
+  ../src/hw/virtio/vhost-shadow-virtqueue.c: In function ‘vhost_handle_guest_kick’:
+  ../src/hw/virtio/vhost-shadow-virtqueue.c:292:42: note: ‘elem’ was declared here
+    292 |             g_autofree VirtQueueElement *elem;
+        |                                          ^~~~
+  cc1: all warnings being treated as errors
 
-I don't think this is appropriate in trivial at all.
+There is actually no problem since "elem" is initialized in both branches.
+Silence the warning by initializig it with "NULL".
 
+Fixes: 9c2ab2f1ec333be8614cc12272d4b91960704dbe ("vhost: stop transfer elem ownership in vhost_handle_guest_kick")
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/virtio/vhost-shadow-virtqueue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-> ---
-> This revised patch uses QEMU's built-in PCI bit-masking support rather
-> than attempting to manually filter writes.  Thanks to Philippe Mathieu-
-> Daude and Michael S. Tsirkin for review and the pointer.
-
-But pls note I wrote:
-
-	Might need machine compat machinery
-	for this.
-
-without said machinery, if guest set one of the other
-bits, migration will fail.
-
-
->  hw/ide/piix.c | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
-> 
-> diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-> index 76ea8fd9f6..bd3f397de8 100644
-> --- a/hw/ide/piix.c
-> +++ b/hw/ide/piix.c
-> @@ -25,6 +25,8 @@
->   * References:
->   *  [1] 82371FB (PIIX) AND 82371SB (PIIX3) PCI ISA IDE XCELERATOR,
->   *      290550-002, Intel Corporation, April 1997.
-> + *  [2] 82371AB PCI-TO-ISA / IDE XCELERATOR (PIIX4), 290562-001,
-> + *      Intel Corporation, April 1997.
->   */
->  
->  #include "qemu/osdep.h"
-> @@ -160,6 +162,19 @@ static void pci_piix_ide_realize(PCIDevice *dev, Error **errp)
->      uint8_t *pci_conf = dev->config;
->      int rc;
->  
-> +    /*
-> +     * Mask all IDE PCI command register bits except for Bus Master
-> +     * Function Enable (bit 2) and I/O Space Enable (bit 1), as the
-> +     * remainder are hardwired to 0 [1, p.48] [2, p.89-90].
-> +     *
-> +     * NOTE: According to the PIIX3 datasheet [1], the Memory Space
-> +     * Enable (MSE bit) is hardwired to 1, but this is contradicted by
-> +     * actual PIIX3 hardware, the datasheet itself (viz., Default
-> +     * Value: 0000h), and the PIIX4 datasheet [2].
-> +     */
-> +    pci_set_word(dev->wmask + PCI_COMMAND,
-> +                 PCI_COMMAND_MASTER | PCI_COMMAND_IO);
-> +
->      pci_conf[PCI_CLASS_PROG] = 0x80; // legacy ATA mode
->  
->      bmdma_setup_bar(d);
-> -- 
-> 2.34.1
-> 
-> 
-> 
+diff --git a/hw/virtio/vhost-shadow-virtqueue.c b/hw/virtio/vhost-shadow-virtqueue.c
+index e8e5bbc368..596d4434d2 100644
+--- a/hw/virtio/vhost-shadow-virtqueue.c
++++ b/hw/virtio/vhost-shadow-virtqueue.c
+@@ -289,7 +289,7 @@ static void vhost_handle_guest_kick(VhostShadowVirtqueue *svq)
+         virtio_queue_set_notification(svq->vq, false);
+ 
+         while (true) {
+-            g_autofree VirtQueueElement *elem;
++            g_autofree VirtQueueElement *elem = NULL;
+             int r;
+ 
+             if (svq->next_guest_avail_elem) {
+-- 
+2.37.3
 
 
