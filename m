@@ -1,67 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oWccR-0005WG-D7
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Sep 2022 07:56:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42798)
+	id 1oX29O-0001TL-Kv
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Sep 2022 11:12:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50678)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oWccP-0005Ul-4b; Fri, 09 Sep 2022 07:56:21 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:40734)
+ id 1oX29I-0001S4-LC; Sat, 10 Sep 2022 11:12:02 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:43582)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oWccN-0007bN-DW; Fri, 09 Sep 2022 07:56:20 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id l14so3396872eja.7;
- Fri, 09 Sep 2022 04:56:18 -0700 (PDT)
+ id 1oX29F-00047B-30; Sat, 10 Sep 2022 11:11:59 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id v16so10563634ejr.10;
+ Sat, 10 Sep 2022 08:11:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date;
- bh=0wiBO4Qgn2f/oAakm74MKrsEpWN33LSkfekcwpwrDqM=;
- b=l1DV4LNaM7TfOH03d96Hac2koM5RRNCRhYI/DJeKzfbn/0HCxPD3XDBL9KdVihyrjy
- GpmfFzM9q5mKje2N5cnZzsWz2zqiArHKIljMEI8ChHaxpD3XYH/HVWKTtjcaHt/ilP1k
- sFyTRAskVanN0W3eiyre7UcXPXV9d8IewQJa1QAAQ1LlFvIHHhcYnEMbBygAs2EGUqw3
- 74/3mljsMPttmFqJhRvOXkOTc0g9DuGehEXva/BYvchXW6YyEKpKJ1z3E2uzNYKIesSf
- RBWpsHl9+IF0GnsnuiR9INF8D9oumGH2QVNmnKMvD9HgZqEuotgKIK/BHDqMiZXp+uF/
- sdOA==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date;
+ bh=I+GXoMtsvnMhLgL7ULYr+soHxCdrKX4pcoCICaaAZxY=;
+ b=fu1qhQkwUVq2N2o+Q8XHgxd349FeNdrrRJvG83oLq5mFBkWKp/FiVa0ho14lN3Emfx
+ JhUKGZZP7doEZutFppP19QP6+VGZMbEvJpuu89xD+h0WQQyhRB1rUGvYhljfBVajDkwK
+ rCdxu+X/cE7ld1R6SfKxeW6WdnQNJM41OCyrnwi+L8YpP7PvoTG4iQmZAeqiTBPkEcfU
+ VZ7pWse460l2aasaNu0sksI7iuhNMzU8oPwBYDDWQ1jUN7iZUSy8DkkPutHRm763QA44
+ F0u5bcYVwsGSUYTMwtZ/WlD62u7nGSZmb9BMgSoxqeraJodvfm4++8XdWwR7VSrYrGnt
+ yyQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date;
- bh=0wiBO4Qgn2f/oAakm74MKrsEpWN33LSkfekcwpwrDqM=;
- b=RWhF2iYBirHDK40uO59PGOqfTT1OrQsiK4/dAXH80plAwEORo1L2e8720qaneylAvy
- VCVdkZldyVoo+39LVEgnWOf06jasG6VFm47B7p+o/KtEvSwrjfMNNStlnyGDrYmM3d47
- 5AQew84hOQQlP83hVUkylAVLeBEaW8rz3by9Ah0EogXcnKKAFToe8SR/RclJEXpQe4Fn
- BQ7EqbNE/xmrCUDDFnove1wGPtUavjlRcEHT15KiVj63GGxFtcw/Myw5p7L2dffd/ovd
- h2aQg4LCit9Ws0j2c1/w9DzhuRTAv8vRhYFepNTMKXczOFFXGAkx+Ej5JcFxq/gcn1lq
- k7bw==
-X-Gm-Message-State: ACgBeo0P9UoFnJdlIzqZxhmndGjXqUUDfQuw6cHIwgC1YaCqyrAZzB3g
- Sa0qEbzcb+pLvcMVKhpO6m8=
-X-Google-Smtp-Source: AA6agR61XgdBp/nnXRnvwje5mUz5OiG+ZStCuNEt2RNzVJxXohUZML6JXaqjrEAVNuW3xEu5DvQioQ==
-X-Received: by 2002:a17:906:770d:b0:73c:a08f:593c with SMTP id
- q13-20020a170906770d00b0073ca08f593cmr10133491ejm.182.1662724576959; 
- Fri, 09 Sep 2022 04:56:16 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-183-180-255.77.183.pool.telefonica.de.
- [77.183.180.255]) by smtp.gmail.com with ESMTPSA id
- kw14-20020a170907770e00b0076f0a723f6bsm190439ejc.58.2022.09.09.04.56.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Sep 2022 04:56:16 -0700 (PDT)
-Date: Fri, 09 Sep 2022 11:56:12 +0000
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=I+GXoMtsvnMhLgL7ULYr+soHxCdrKX4pcoCICaaAZxY=;
+ b=W84t1FicMpij5UuNQnB5qJkOsshwoGknK7qU/QRXN7YM+6GZ7TbT11h3hPpw0Y6iUu
+ Ha9GqptjsBpCxDNjhm7SySBko8iEqySqukcJJIhx1JQEerqTWaGxzswuujbBlHoFwvGe
+ t80dB2yJTihd7FourAPMrckvdmzvZDbCbCfHiVtAj30zbgyIdHM1pFAvp9W2V7QQWyIE
+ G5jE0abcMSs5TSQjuTHLEduLG294NXQv0zgtxKugduVnRDIJxpd2a2lkTY4s+P5XtGw0
+ 05TnJflPy4L1Nsb0m1XKX0CC9rHsRfKHCZns9LNkxMX4Qce3uH7wtd9kEbenVw/njHTe
+ qcDw==
+X-Gm-Message-State: ACgBeo11deZVIE9DBFbw1gyRHpgxrDUXNzuu49vUFmKk37rPcQvYiNyK
+ 3Q7NOC2yGHwVzuy4q8MALm7PU6sxcDk=
+X-Google-Smtp-Source: AA6agR4p5d8qs+4UEBqPFApBAZh+Zc0TzC+izCinlGXFWzzy41u0GGZiNa/TPa2waZSQqTBlLxPHOg==
+X-Received: by 2002:a17:907:2d23:b0:730:acf0:4907 with SMTP id
+ gs35-20020a1709072d2300b00730acf04907mr13508906ejc.700.1662822713807; 
+ Sat, 10 Sep 2022 08:11:53 -0700 (PDT)
+Received: from localhost.localdomain
+ (dynamic-089-012-029-149.89.12.pool.telefonica.de. [89.12.29.149])
+ by smtp.gmail.com with ESMTPSA id
+ o15-20020a170906768f00b0077826b92d99sm1858968ejm.12.2022.09.10.08.11.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 10 Sep 2022 08:11:53 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
-CC: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH=5D_hw/virtio/vhost-shadow-virtque?=
- =?US-ASCII?Q?ue=3A_Silence_GCC_error_=22maybe-uninitialized=22?=
-In-Reply-To: <CAAdtpL49zYJUum+Q79iWHbffy2ZCf8095WSUjvwAnnAX-j_raQ@mail.gmail.com>
-References: <20220906171114.14839-1-shentey@gmail.com>
- <CAAdtpL49zYJUum+Q79iWHbffy2ZCf8095WSUjvwAnnAX-j_raQ@mail.gmail.com>
-Message-ID: <CE6CBCA6-EF79-48E7-95B9-4381AA51209D@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v2] hw/virtio/vhost-shadow-virtqueue: Silence GCC error
+ "maybe-uninitialized"
+Date: Sat, 10 Sep 2022 17:11:17 +0200
+Message-Id: <20220910151117.6665-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62c.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -81,83 +77,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Sep 2022 11:56:21 -0000
+X-List-Received-Date: Sat, 10 Sep 2022 15:12:04 -0000
 
-Am 6=2E September 2022 17:52:24 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <=
-f4bug@amsat=2Eorg>:
->On Tue, Sep 6, 2022 at 7:12 PM Bernhard Beschow <shentey@gmail=2Ecom> wro=
-te:
->>
->> GCC issues a false positive warning, resulting in build failure with -W=
-error:
->>
->>   In file included from /usr/include/glib-2=2E0/glib=2Eh:114,
->>                    from /home/zcone-pisint/Projects/qemu/src/include/gl=
-ib-compat=2Eh:32,
->>                    from /home/zcone-pisint/Projects/qemu/src/include/qe=
-mu/osdep=2Eh:144,
->>                    from =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec=
-:10:
->>   In function =E2=80=98g_autoptr_cleanup_generic_gfree=E2=80=99,
->>       inlined from =E2=80=98vhost_handle_guest_kick=E2=80=99 at =2E=2E/=
-src/hw/virtio/vhost-shadow-virtqueue=2Ec:292:42:
->>   /usr/include/glib-2=2E0/glib/glib-autocleanups=2Eh:28:3: error: =E2=
-=80=98elem=E2=80=99 may be used uninitialized [-Werror=3Dmaybe-uninitialize=
-d]
->>      28 |   g_free (*pp);
->>         |   ^~~~~~~~~~~~
->>   =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec: In function =E2=80=
-=98vhost_handle_guest_kick=E2=80=99:
->>   =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec:292:42: note: =E2=80=
-=98elem=E2=80=99 was declared here
->>     292 |             g_autofree VirtQueueElement *elem;
->>         |                                          ^~~~
->>   cc1: all warnings being treated as errors
->>
->> There is actually no problem since "elem" is initialized in both branch=
-es=2E
->> Silence the warning by initializig it with "NULL"=2E
->
->Could you amend the first line of `gcc --version`?
+GCC issues a false positive warning, resulting in build failure with -Werror:
 
-Hi Phil,
+  In file included from /usr/include/glib-2.0/glib.h:114,
+                   from src/include/glib-compat.h:32,
+                   from src/include/qemu/osdep.h:144,
+                   from ../src/hw/virtio/vhost-shadow-virtqueue.c:10:
+  In function ‘g_autoptr_cleanup_generic_gfree’,
+      inlined from ‘vhost_handle_guest_kick’ at ../src/hw/virtio/vhost-shadow-virtqueue.c:292:42:
+  /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘elem’ may be used uninitialized [-Werror=maybe-uninitialized]
+     28 |   g_free (*pp);
+        |   ^~~~~~~~~~~~
+  ../src/hw/virtio/vhost-shadow-virtqueue.c: In function ‘vhost_handle_guest_kick’:
+  ../src/hw/virtio/vhost-shadow-virtqueue.c:292:42: note: ‘elem’ was declared here
+    292 |             g_autofree VirtQueueElement *elem;
+        |                                          ^~~~
+  cc1: all warnings being treated as errors
 
-Yes, will do in v2=2E
+There is actually no problem since "elem" is initialized in both branches.
+Silence the warning by initializig it with "NULL".
 
-Sorry for getting off-topic, but have you recognized my vt82c686 series? Y=
-our opinion would matter there and I'm not sure if my mail bounced=2E In my=
- case Gmail likes to put your mail in the spam box :/
+$ gcc --version
+gcc (GCC) 12.2.0
 
-Regards,
-Bernhard
->
->Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=2Eorg>
->
->> Fixes: 9c2ab2f1ec333be8614cc12272d4b91960704dbe ("vhost: stop transfer =
-elem ownership in vhost_handle_guest_kick")
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>  hw/virtio/vhost-shadow-virtqueue=2Ec | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/virtio/vhost-shadow-virtqueue=2Ec b/hw/virtio/vhost-sha=
-dow-virtqueue=2Ec
->> index e8e5bbc368=2E=2E596d4434d2 100644
->> --- a/hw/virtio/vhost-shadow-virtqueue=2Ec
->> +++ b/hw/virtio/vhost-shadow-virtqueue=2Ec
->> @@ -289,7 +289,7 @@ static void vhost_handle_guest_kick(VhostShadowVirt=
-queue *svq)
->>          virtio_queue_set_notification(svq->vq, false);
->>
->>          while (true) {
->> -            g_autofree VirtQueueElement *elem;
->> +            g_autofree VirtQueueElement *elem =3D NULL;
->>              int r;
->>
->>              if (svq->next_guest_avail_elem) {
->> --
->> 2=2E37=2E3
->>
->>
+Fixes: 9c2ab2f1ec333be8614cc12272d4b91960704dbe ("vhost: stop transfer elem ownership in vhost_handle_guest_kick")
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/virtio/vhost-shadow-virtqueue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/virtio/vhost-shadow-virtqueue.c b/hw/virtio/vhost-shadow-virtqueue.c
+index e8e5bbc368..596d4434d2 100644
+--- a/hw/virtio/vhost-shadow-virtqueue.c
++++ b/hw/virtio/vhost-shadow-virtqueue.c
+@@ -289,7 +289,7 @@ static void vhost_handle_guest_kick(VhostShadowVirtqueue *svq)
+         virtio_queue_set_notification(svq->vq, false);
+ 
+         while (true) {
+-            g_autofree VirtQueueElement *elem;
++            g_autofree VirtQueueElement *elem = NULL;
+             int r;
+ 
+             if (svq->next_guest_avail_elem) {
+-- 
+2.37.3
 
 
