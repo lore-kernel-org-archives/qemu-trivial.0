@@ -1,71 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oX6y7-0006o5-0s
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Sep 2022 16:20:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53394)
+	id 1oYmut-00024W-1g
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Sep 2022 07:20:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oX6y2-0006nX-4k; Sat, 10 Sep 2022 16:20:43 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:44595)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oX6y0-0003ss-GP; Sat, 10 Sep 2022 16:20:41 -0400
-Received: by mail-ed1-x534.google.com with SMTP id t5so7347426edc.11;
- Sat, 10 Sep 2022 13:20:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date;
- bh=8SkgFcyHTx5PG0No+rZdbUWbc0oOZ3PzWtLyAPABCek=;
- b=MOF239z/7iNdGM4XKI7Wi/W+3AVbJAidXkeI5ygs4wI3XsJLSJITyw99lvL9t4QmjJ
- 86fWe08jQ/xCfM3sNHj1gCjWf2RwMKcnkDB9V1RJHqW8qySk8hTlh/8tC18/blMbEDzF
- 7eTP/TJOszqscqzDbKS7BDnFgWhyXDiofE+D69wM7MH5g7oFsaa3lToEQOHiLDI1c/cr
- q5j6td6zr5B8fYE4XDmERbTq9iMiH4GJ7396MgERnRMeGhe7OHEwIZ/0abf9xU2gSDpL
- kEQNv6nq5sfmLJ4OdVge1qWq+4X90I/kvDTSoqkh6jZXeuwOl0P4NMkROvzVkFvwWlsv
- PWBA==
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1oYmur-00024K-RE
+ for qemu-trivial@nongnu.org; Thu, 15 Sep 2022 07:20:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:29828)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1oYmun-00072S-QD
+ for qemu-trivial@nongnu.org; Thu, 15 Sep 2022 07:20:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1663240816;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=X2A89qUt9k1eVlTo0J4woTB0AtjK6aoqdBMp0/a77N0=;
+ b=UOSDxftN2BBbntw0vS5NAI190OJE51y0ph1WL+JdqCKmSjJ3Y6B3Fo2fNy8xthRfC8/sx1
+ yJHKl+XdpgveWQwvf9cfpZvKGDHAU6f8q+tuNDH6HkXjNpGpxsSoZCIAlT3FFWM5qOcvMB
+ veLGi5yThXk+GIc2fKsMsiOAOQxi91w=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-635-_yGdg541M0eA1_MXTSBhCw-1; Thu, 15 Sep 2022 07:20:14 -0400
+X-MC-Unique: _yGdg541M0eA1_MXTSBhCw-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ c128-20020a1c3586000000b003b324bb08c5so12296006wma.9
+ for <qemu-trivial@nongnu.org>; Thu, 15 Sep 2022 04:20:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date;
- bh=8SkgFcyHTx5PG0No+rZdbUWbc0oOZ3PzWtLyAPABCek=;
- b=axHXEYLBGxgnZKcgtEKejdjDGADI9w+Qcr1zzDdvENoRhhsAFSFZOeszTjqs5/lVvw
- dAJwCogvKodascl70d2NjiugYSGoofNRMvQXUlTCQW4PVh+ZpyE/3crp+8m6ncOJM82n
- 8G/uQOj20P64jIQd/iihCAcolNZcUUlqcxHzneYxzJjZXu1nbULDNCZ+wY2dIRHb/bl1
- LKFI+RvgPs0e6zhYzR/WrsILhurYKYAi/lXrHDdFLeA4lf1yQAEjlg/D3gpEEvcVgOPy
- u1JIPgPfMlHw5FDc0QmrEwgyn9uE4sJE93GFcNRtlrz2jGjwX+AuzJpHHocRU8r6/bnr
- QA2g==
-X-Gm-Message-State: ACgBeo3OBbmoRT/x/CEDK3U5eO/vxG2O2VdEmjnTXmOUeYcCvUdpf3Pn
- iKpl4v8HMEAT5j/7MRjcU0yeN9+dIMM=
-X-Google-Smtp-Source: AA6agR6bnXflL96pkjJWjLDAJLCQicVrG6RNRiwuxGXRQUg7kr8KDtx5+PrsmRZwWlXop1bct/YYMQ==
-X-Received: by 2002:a05:6402:84c:b0:44d:6274:ab66 with SMTP id
- b12-20020a056402084c00b0044d6274ab66mr16174696edz.239.1662841237298; 
- Sat, 10 Sep 2022 13:20:37 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-089-012-029-149.89.12.pool.telefonica.de.
- [89.12.29.149]) by smtp.gmail.com with ESMTPSA id
- eu16-20020a170907299000b0073872f367cesm2078410ejc.112.2022.09.10.13.20.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 10 Sep 2022 13:20:36 -0700 (PDT)
-Date: Sat, 10 Sep 2022 20:20:26 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-CC: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2=5D_hw/virtio/vhost-shadow-virtqu?=
- =?US-ASCII?Q?eue=3A_Silence_GCC_error_=22maybe-uninitialized=22?=
-In-Reply-To: <20220910151117.6665-1-shentey@gmail.com>
-References: <20220910151117.6665-1-shentey@gmail.com>
-Message-ID: <52E205FD-5EE7-4DF5-878F-693165AE049A@gmail.com>
+ bh=X2A89qUt9k1eVlTo0J4woTB0AtjK6aoqdBMp0/a77N0=;
+ b=1kvZNCa2lCrCX8znjnxttKU1UTJ5ZjEOOKxgIhAmuvDnWBH4Vg20Ld5WI1qXO9ZKgr
+ lokcOkIQXs+M6+IvQXWsUAln2mWrVVTk/kV7mEPUP1x++EACEHvxCr5P5UYuwUkLbFZ+
+ X/1olQyvpJ7euHwUVba9wV/+3etI/UOvQQFNGikm6w5/6uzVX4mHRzs2N6ynaVPTh9pA
+ o125AW4u7nj/J2azs4CYO7hInuT8WgnizrXq/ABn5cEc/BfPuoWn9j5JdEW8o/Nv/ll4
+ u628yaZLa4FHF28QcL4DnlX6r4JNRMvvYbuBeGy8dQL/06r7QBt/yoxYDKiiV9Mre3vS
+ zy+A==
+X-Gm-Message-State: ACgBeo1nU57LCZ0/DsmRqWPeT+2rXN4OoV1XLE0LKns9OgpqHsiCQLC4
+ CBisuUK3bqwuZNGcj88/cdyRnnQ9eyJSY4kCJI1/3dFZLLpF0VUdNkRm9p45JCl14sSsehMpP8y
+ igevWaiN+Fn4Xa6plVw==
+X-Received: by 2002:a05:600c:255:b0:3aa:2150:b184 with SMTP id
+ 21-20020a05600c025500b003aa2150b184mr6374380wmj.138.1663240813697; 
+ Thu, 15 Sep 2022 04:20:13 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6P+YxEjNVL1mc6xU/Hn79S8gle4be+HDxvTqLZ8j2cSQa3Xa5nmtyEoffSNaIYWPuYBXOy+g==
+X-Received: by 2002:a05:600c:255:b0:3aa:2150:b184 with SMTP id
+ 21-20020a05600c025500b003aa2150b184mr6374368wmj.138.1663240813482; 
+ Thu, 15 Sep 2022 04:20:13 -0700 (PDT)
+Received: from work-vm (cpc109025-salf6-2-0-cust480.10-2.cable.virginm.net.
+ [82.30.61.225]) by smtp.gmail.com with ESMTPSA id
+ j5-20020a5d4485000000b002205cbc1c74sm2335324wrq.101.2022.09.15.04.20.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Sep 2022 04:20:13 -0700 (PDT)
+Date: Thu, 15 Sep 2022 12:20:11 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Dongli Zhang <dongli.zhang@oracle.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, armbru@redhat.com,
+ joe.jin@oracle.com
+Subject: Re: [PATCH v3 1/1] monitor/hmp: print trace as option in help for
+ log command
+Message-ID: <YyMKa64248tyWrEe@work-vm>
+References: <20220831213943.8155-1-dongli.zhang@oracle.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20220831213943.8155-1-dongli.zhang@oracle.com>
+User-Agent: Mutt/2.2.7 (2022-08-07)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,66 +92,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Sep 2022 20:20:44 -0000
+X-List-Received-Date: Thu, 15 Sep 2022 11:20:22 -0000
 
-Am 10=2E September 2022 15:11:17 UTC schrieb Bernhard Beschow <shentey@gmai=
-l=2Ecom>:
->GCC issues a false positive warning, resulting in build failure with -Wer=
-ror:
->
->  In file included from /usr/include/glib-2=2E0/glib=2Eh:114,
->                   from src/include/glib-compat=2Eh:32,
->                   from src/include/qemu/osdep=2Eh:144,
->                   from =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec:1=
-0:
->  In function =E2=80=98g_autoptr_cleanup_generic_gfree=E2=80=99,
->      inlined from =E2=80=98vhost_handle_guest_kick=E2=80=99 at =2E=2E/sr=
-c/hw/virtio/vhost-shadow-virtqueue=2Ec:292:42:
->  /usr/include/glib-2=2E0/glib/glib-autocleanups=2Eh:28:3: error: =E2=80=
-=98elem=E2=80=99 may be used uninitialized [-Werror=3Dmaybe-uninitialized]
->     28 |   g_free (*pp);
->        |   ^~~~~~~~~~~~
->  =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec: In function =E2=80=98v=
-host_handle_guest_kick=E2=80=99:
->  =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec:292:42: note: =E2=80=98=
-elem=E2=80=99 was declared here
->    292 |             g_autofree VirtQueueElement *elem;
->        |                                          ^~~~
->  cc1: all warnings being treated as errors
->
->There is actually no problem since "elem" is initialized in both branches=
-=2E
->Silence the warning by initializig it with "NULL"=2E
->
->$ gcc --version
->gcc (GCC) 12=2E2=2E0
->
->Fixes: 9c2ab2f1ec333be8614cc12272d4b91960704dbe ("vhost: stop transfer el=
-em ownership in vhost_handle_guest_kick")
->Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+* Dongli Zhang (dongli.zhang@oracle.com) wrote:
+> The below is printed when printing help information in qemu-system-x86_64
+> command line, and when CONFIG_TRACE_LOG is enabled:
+> 
+> ----------------------------
+> $ qemu-system-x86_64 -d help
+> ... ...
+> trace:PATTERN   enable trace events
+> 
+> Use "-d trace:help" to get a list of trace events.
+> ----------------------------
+> 
+> However, the options of "trace:PATTERN" are only printed by
+> "qemu-system-x86_64 -d help", but missing in hmp "help log" command.
+> 
+> Fixes: c84ea00dc2 ("log: add "-d trace:PATTERN"")
+> Cc: Joe Jin <joe.jin@oracle.com>
+> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
 
-Forgot to add from v1:
+Queued
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=2Eorg>
-
->---
-> hw/virtio/vhost-shadow-virtqueue=2Ec | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
->
->diff --git a/hw/virtio/vhost-shadow-virtqueue=2Ec b/hw/virtio/vhost-shado=
-w-virtqueue=2Ec
->index e8e5bbc368=2E=2E596d4434d2 100644
->--- a/hw/virtio/vhost-shadow-virtqueue=2Ec
->+++ b/hw/virtio/vhost-shadow-virtqueue=2Ec
->@@ -289,7 +289,7 @@ static void vhost_handle_guest_kick(VhostShadowVirtqu=
-eue *svq)
->         virtio_queue_set_notification(svq->vq, false);
->=20
->         while (true) {
->-            g_autofree VirtQueueElement *elem;
->+            g_autofree VirtQueueElement *elem =3D NULL;
->             int r;
->=20
->             if (svq->next_guest_avail_elem) {
+> ---
+> Changed since v1:
+> - change format for "none" as well.
+> Changed since v2:
+> - use "log trace:help" in help message.
+> - add more clarification in commit message.
+> - add 'Fixes' tag.
+> ---
+>  monitor/hmp.c | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/monitor/hmp.c b/monitor/hmp.c
+> index 15ca04735c..a3375d0341 100644
+> --- a/monitor/hmp.c
+> +++ b/monitor/hmp.c
+> @@ -285,10 +285,15 @@ void help_cmd(Monitor *mon, const char *name)
+>          if (!strcmp(name, "log")) {
+>              const QEMULogItem *item;
+>              monitor_printf(mon, "Log items (comma separated):\n");
+> -            monitor_printf(mon, "%-10s %s\n", "none", "remove all logs");
+> +            monitor_printf(mon, "%-15s %s\n", "none", "remove all logs");
+>              for (item = qemu_log_items; item->mask != 0; item++) {
+> -                monitor_printf(mon, "%-10s %s\n", item->name, item->help);
+> +                monitor_printf(mon, "%-15s %s\n", item->name, item->help);
+>              }
+> +#ifdef CONFIG_TRACE_LOG
+> +            monitor_printf(mon, "trace:PATTERN   enable trace events\n");
+> +            monitor_printf(mon, "\nUse \"log trace:help\" to get a list of "
+> +                           "trace events.\n\n");
+> +#endif
+>              return;
+>          }
+>  
+> -- 
+> 2.17.1
+> 
+-- 
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
