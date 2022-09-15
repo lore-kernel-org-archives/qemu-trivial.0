@@ -1,85 +1,112 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oYmut-00024W-1g
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Sep 2022 07:20:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41122)
+	id 1oYt90-0004oJ-Jf
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Sep 2022 13:59:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33106)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1oYmur-00024K-RE
- for qemu-trivial@nongnu.org; Thu, 15 Sep 2022 07:20:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:29828)
+ (Exim 4.90_1) (envelope-from <t.zhang2@samsung.com>)
+ id 1oYt8y-0004na-9H; Thu, 15 Sep 2022 13:59:20 -0400
+Received: from mailout2.w2.samsung.com ([211.189.100.12]:12327)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1oYmun-00072S-QD
- for qemu-trivial@nongnu.org; Thu, 15 Sep 2022 07:20:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663240816;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=X2A89qUt9k1eVlTo0J4woTB0AtjK6aoqdBMp0/a77N0=;
- b=UOSDxftN2BBbntw0vS5NAI190OJE51y0ph1WL+JdqCKmSjJ3Y6B3Fo2fNy8xthRfC8/sx1
- yJHKl+XdpgveWQwvf9cfpZvKGDHAU6f8q+tuNDH6HkXjNpGpxsSoZCIAlT3FFWM5qOcvMB
- veLGi5yThXk+GIc2fKsMsiOAOQxi91w=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-635-_yGdg541M0eA1_MXTSBhCw-1; Thu, 15 Sep 2022 07:20:14 -0400
-X-MC-Unique: _yGdg541M0eA1_MXTSBhCw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- c128-20020a1c3586000000b003b324bb08c5so12296006wma.9
- for <qemu-trivial@nongnu.org>; Thu, 15 Sep 2022 04:20:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date;
- bh=X2A89qUt9k1eVlTo0J4woTB0AtjK6aoqdBMp0/a77N0=;
- b=1kvZNCa2lCrCX8znjnxttKU1UTJ5ZjEOOKxgIhAmuvDnWBH4Vg20Ld5WI1qXO9ZKgr
- lokcOkIQXs+M6+IvQXWsUAln2mWrVVTk/kV7mEPUP1x++EACEHvxCr5P5UYuwUkLbFZ+
- X/1olQyvpJ7euHwUVba9wV/+3etI/UOvQQFNGikm6w5/6uzVX4mHRzs2N6ynaVPTh9pA
- o125AW4u7nj/J2azs4CYO7hInuT8WgnizrXq/ABn5cEc/BfPuoWn9j5JdEW8o/Nv/ll4
- u628yaZLa4FHF28QcL4DnlX6r4JNRMvvYbuBeGy8dQL/06r7QBt/yoxYDKiiV9Mre3vS
- zy+A==
-X-Gm-Message-State: ACgBeo1nU57LCZ0/DsmRqWPeT+2rXN4OoV1XLE0LKns9OgpqHsiCQLC4
- CBisuUK3bqwuZNGcj88/cdyRnnQ9eyJSY4kCJI1/3dFZLLpF0VUdNkRm9p45JCl14sSsehMpP8y
- igevWaiN+Fn4Xa6plVw==
-X-Received: by 2002:a05:600c:255:b0:3aa:2150:b184 with SMTP id
- 21-20020a05600c025500b003aa2150b184mr6374380wmj.138.1663240813697; 
- Thu, 15 Sep 2022 04:20:13 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6P+YxEjNVL1mc6xU/Hn79S8gle4be+HDxvTqLZ8j2cSQa3Xa5nmtyEoffSNaIYWPuYBXOy+g==
-X-Received: by 2002:a05:600c:255:b0:3aa:2150:b184 with SMTP id
- 21-20020a05600c025500b003aa2150b184mr6374368wmj.138.1663240813482; 
- Thu, 15 Sep 2022 04:20:13 -0700 (PDT)
-Received: from work-vm (cpc109025-salf6-2-0-cust480.10-2.cable.virginm.net.
- [82.30.61.225]) by smtp.gmail.com with ESMTPSA id
- j5-20020a5d4485000000b002205cbc1c74sm2335324wrq.101.2022.09.15.04.20.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Sep 2022 04:20:13 -0700 (PDT)
-Date: Thu, 15 Sep 2022 12:20:11 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, armbru@redhat.com,
- joe.jin@oracle.com
-Subject: Re: [PATCH v3 1/1] monitor/hmp: print trace as option in help for
- log command
-Message-ID: <YyMKa64248tyWrEe@work-vm>
-References: <20220831213943.8155-1-dongli.zhang@oracle.com>
+ (Exim 4.90_1) (envelope-from <t.zhang2@samsung.com>)
+ id 1oYt8v-0000vs-RA; Thu, 15 Sep 2022 13:59:19 -0400
+Received: from uscas1p1.samsung.com (unknown [182.198.245.206])
+ by mailout2.w2.samsung.com (KnoxPortal) with ESMTP id
+ 20220915175906usoutp0234a6daf1d45605646457e4e1d0a4f410~VGnltQwgT2964229642usoutp02J;
+ Thu, 15 Sep 2022 17:59:06 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w2.samsung.com
+ 20220915175906usoutp0234a6daf1d45605646457e4e1d0a4f410~VGnltQwgT2964229642usoutp02J
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1663264746;
+ bh=24mldY0PCcXqT5qVgqmgcl3UHVvw8VlXjSTF6WT9nDk=;
+ h=From:To:CC:Subject:Date:References:From;
+ b=nWe8JREZTTxwb72BE1wPJv3hEJ+5/PX/1kElmJpLHmJmHugOEyz+zTdynMTwBmAQa
+ lOD2BeuLPFWhStr7/fGaW3XVELAy1jd3R0quNitPHz1NKQVRWx61iKENVv6xkYiw5A
+ EpEt4DK/jx9HMrWEHbT97ZMfjewr0PAe3cJpjt7U=
+Received: from ussmges2new.samsung.com (u111.gpu85.samsung.co.kr
+ [203.254.195.111]) by uscas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20220915175906uscas1p1b3338e62653f57a0cbcce3055ea3b8db~VGnlhHAye1009410094uscas1p1l;
+ Thu, 15 Sep 2022 17:59:06 +0000 (GMT)
+Received: from uscas1p2.samsung.com ( [182.198.245.207]) by
+ ussmges2new.samsung.com (USCPEMTA) with SMTP id A7.40.18126.9E763236; Thu,
+ 15 Sep 2022 13:59:05 -0400 (EDT)
+Received: from ussmgxs1new.samsung.com (u89.gpu85.samsung.co.kr
+ [203.254.195.89]) by uscas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20220915175905uscas1p122c0408beff433071df5df348553be22~VGnlOciXi2171821718uscas1p1G;
+ Thu, 15 Sep 2022 17:59:05 +0000 (GMT)
+X-AuditID: cbfec36f-ff9ff700000146ce-0b-632367e9f4b8
+Received: from SSI-EX2.ssi.samsung.com ( [105.128.2.145]) by
+ ussmgxs1new.samsung.com (USCPEXMTA) with SMTP id 3D.B4.19363.9E763236; Thu,
+ 15 Sep 2022 13:59:05 -0400 (EDT)
+Received: from SSI-EX2.ssi.samsung.com (105.128.2.227) by
+ SSI-EX2.ssi.samsung.com (105.128.2.227) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.1.2375.24; Thu, 15 Sep 2022 10:59:04 -0700
+Received: from SSI-EX2.ssi.samsung.com ([105.128.2.227]) by
+ SSI-EX2.ssi.samsung.com ([105.128.2.227]) with mapi id 15.01.2375.024; Thu,
+ 15 Sep 2022 10:59:04 -0700
+From: Tong Zhang <t.zhang2@samsung.com>
+To: Ben Widawsky <ben.widawsky@intel.com>, Jonathan Cameron
+ <jonathan.cameron@huawei.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: "ztong0001@gmail.com" <ztong0001@gmail.com>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Tong Zhang <t.zhang2@samsung.com>
+Subject: [PATCH] mem/cxl_type3: fix GPF DVSEC
+Thread-Topic: [PATCH] mem/cxl_type3: fix GPF DVSEC
+Thread-Index: AQHYySzYu7wI4rSEKUmzQ9Q4nFspbg==
+Date: Thu, 15 Sep 2022 17:59:04 +0000
+Message-ID: <20220915175853.2902-1-t.zhang2@samsung.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [105.128.2.176]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <20220831213943.8155-1-dongli.zhang@oracle.com>
-User-Agent: Mutt/2.2.7 (2022-08-07)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-CFilter-Loop: Reflected
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprCKsWRmVeSWpSXmKPExsWy7djX87ov05WTDU6cNrfoetbPbLFq4TU2
+ i+O9O1gs1p6Zy2px8tV5NgdWj52z7rJ7tBx5y+qxeM9LJo8n1zYzBbBEcdmkpOZklqUW6dsl
+ cGWc7GpmLZjOVjH12gamBsYjLF2MnBwSAiYS87qXsHYxcnEICaxklHi58h8LhNPKJPHhWQMr
+ TNXO/11MEIm1jEDOGijnE6PEw87FUP3LGCWOXf7BDtLCJqAu8atzERtIQkSgj1Hi98aDzCAO
+ s0Ano8S+JzvBBgsL6EocuLABzBYRMJI4vXMRE4StJzHx2mGwE1kEVCUeLTwCVsMrYCEx7eQC
+ sBpGATGJ76fWgNnMAuISt57MZ4I4VlBi0ew9zBC2mMS/XQ/ZIGxFifvfX7JD1OtJ3Jg6hQ3C
+ 1pZYtvA1M8R8QYmTM59Ag0ZS4uCKG+DQkBCYySEx/+UFoAYOIMdFYt8kJYgaaYmr16dC7aqX
+ mHnrByNEfQ+jxJoj69khEtYSv47ugVrMJ/H31yNGiDm8Eh1tQhMYlWYheWEWkvNmITlvFpLz
+ FjCyrGIULy0uzk1PLTbKSy3XK07MLS7NS9dLzs/dxAhMOKf/Hc7fwXj91ke9Q4xMHIyHGCU4
+ mJVEePtCFJKFeFMSK6tSi/Lji0pzUosPMUpzsCiJ8y7L3JAoJJCeWJKanZpakFoEk2Xi4JRq
+ YPL4sTVsynHVNucbO3e3T/hZoL/vqFdjNPe/61e0i66syuF1KXiXdulmg2TO3o/GmvwXHxu8
+ KosQdduZcXMDb3383vlZ90Orc9jjDV37fLbkKZp+mrvufpdPDOs61ykmLUePx1l0T8458/f7
+ qWldeWvf3fA5eet//cze437lC3akJznFL2zv4Fj6rfKP/lYfxorAwIcvePfudJNYdfvP6mKV
+ mwfSI1jWdbpzBm0wcH53wKVp3tmylRN6jOwjjq4y3hk5saZPKVJXQkjhGbvcitvBZ/yiW0NN
+ dy75+HRbRMQWoTdXW4QKsiZOOCHCeONeu/Iu6+QrE/kWcAd4qr7jm+z0gYF5Ul9Dp5F/ic6B
+ SUosxRmJhlrMRcWJAL4TFO6nAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFuplkeLIzCtJLcpLzFFi42LJbGCaqPsyXTnZ4MFGFYuuZ/3MFqsWXmOz
+ ON67g8Vi7Zm5rBYnX51nc2D12DnrLrtHy5G3rB6L97xk8nhybTNTAEsUl01Kak5mWWqRvl0C
+ V8bJrmbWgulsFVOvbWBqYDzC0sXIySEhYCKx838XE4gtJLCaUeLlavUuRi4g+xOjxJclbUwQ
+ zjJGiW2H1zKDVLEJqEv86lzEBpIQEehjlPi98SAziMMs0Mkose/JTlaQKmEBXYkDFzaA2SIC
+ RhKndy5igrD1JCZeOwy2m0VAVeLRwiNgNbwCFhLTTi4Aq2EUEJP4fmoNmM0sIC5x68l8Johb
+ BSSW7DnPDGGLSrx8/I8VwlaUuP/9JTtEvZ7EjalT2CBsbYllC18zQ8wXlDg58wnUz5ISB1fc
+ YJnAKDoLyYpZSNpnIWmfhaR9ASPLKkbx0uLi3PSKYsO81HK94sTc4tK8dL3k/NxNjMAYO/3v
+ cOQOxqO3PuodYmTiYDzEKMHBrCTC2xeikCzEm5JYWZValB9fVJqTWnyIUZqDRUmcV8h1YryQ
+ QHpiSWp2ampBahFMlomDU6qBibt+6RNGrqh5JqdZ4pedjuz55LOa0W7mrLdTVDZN0fWRbi5Z
+ NDUn2vOA5/FXH7uPaT39k2BQfZp95vuCnGeN069aiNxeoMqw/RVXyeoJ/4Qadv5eV2OtsktC
+ w7no7sRHXaG8m/oF7CIvbw3j7tn4kV+r3vNSolv87HyJA2v/fd6wOPlAsOuxoyLrczUrH501
+ 36U2V3OBvUcnpx6b7uz0aXOurw1syY2MZiwW+GWs+1w2UFrvq1F0h3ZpemHExksTmsRbtK6F
+ XHe0dd0379qFzW3hbK+f+PVYX4jK3qSQmpharmqqv9ix5FG5taBZ2Kf1LqVKG5VZs3WuXnhx
+ 8pTNunWTD96aJ5xotOdj+mkZJZbijERDLeai4kQAggOe9SADAAA=
+X-CMS-MailID: 20220915175905uscas1p122c0408beff433071df5df348553be22
+CMS-TYPE: 301P
+X-CMS-RootMailID: 20220915175905uscas1p122c0408beff433071df5df348553be22
+References: <CGME20220915175905uscas1p122c0408beff433071df5df348553be22@uscas1p1.samsung.com>
+Received-SPF: pass client-ip=211.189.100.12; envelope-from=t.zhang2@samsung.com;
+ helo=mailout2.w2.samsung.com
+X-Spam_score_int: -70
+X-Spam_score: -7.1
+X-Spam_bar: -------
+X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_HI=-5, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,66 +119,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Sep 2022 11:20:22 -0000
+X-List-Received-Date: Thu, 15 Sep 2022 17:59:20 -0000
 
-* Dongli Zhang (dongli.zhang@oracle.com) wrote:
-> The below is printed when printing help information in qemu-system-x86_64
-> command line, and when CONFIG_TRACE_LOG is enabled:
-> 
-> ----------------------------
-> $ qemu-system-x86_64 -d help
-> ... ...
-> trace:PATTERN   enable trace events
-> 
-> Use "-d trace:help" to get a list of trace events.
-> ----------------------------
-> 
-> However, the options of "trace:PATTERN" are only printed by
-> "qemu-system-x86_64 -d help", but missing in hmp "help log" command.
-> 
-> Fixes: c84ea00dc2 ("log: add "-d trace:PATTERN"")
-> Cc: Joe Jin <joe.jin@oracle.com>
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+The structure is for device dvsec not port dvsec. Change type to fix
+this issue.
 
-Queued
+Signed-off-by: Tong Zhang <t.zhang2@samsung.com>
+---
+ hw/mem/cxl_type3.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
-> Changed since v1:
-> - change format for "none" as well.
-> Changed since v2:
-> - use "log trace:help" in help message.
-> - add more clarification in commit message.
-> - add 'Fixes' tag.
-> ---
->  monitor/hmp.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
-> 
-> diff --git a/monitor/hmp.c b/monitor/hmp.c
-> index 15ca04735c..a3375d0341 100644
-> --- a/monitor/hmp.c
-> +++ b/monitor/hmp.c
-> @@ -285,10 +285,15 @@ void help_cmd(Monitor *mon, const char *name)
->          if (!strcmp(name, "log")) {
->              const QEMULogItem *item;
->              monitor_printf(mon, "Log items (comma separated):\n");
-> -            monitor_printf(mon, "%-10s %s\n", "none", "remove all logs");
-> +            monitor_printf(mon, "%-15s %s\n", "none", "remove all logs");
->              for (item = qemu_log_items; item->mask != 0; item++) {
-> -                monitor_printf(mon, "%-10s %s\n", item->name, item->help);
-> +                monitor_printf(mon, "%-15s %s\n", item->name, item->help);
->              }
-> +#ifdef CONFIG_TRACE_LOG
-> +            monitor_printf(mon, "trace:PATTERN   enable trace events\n");
-> +            monitor_printf(mon, "\nUse \"log trace:help\" to get a list of "
-> +                           "trace events.\n\n");
-> +#endif
->              return;
->          }
->  
-> -- 
-> 2.17.1
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-
+diff --git a/hw/mem/cxl_type3.c b/hw/mem/cxl_type3.c
+index 3bf2869573..ada2108fac 100644
+--- a/hw/mem/cxl_type3.c
++++ b/hw/mem/cxl_type3.c
+@@ -49,7 +49,7 @@ static void build_dvsecs(CXLType3Dev *ct3d)
+         .phase2_power =3D 0x33, /* 0x33 miliwatts */
+     };
+     cxl_component_create_dvsec(cxl_cstate, CXL2_TYPE3_DEVICE,
+-                               GPF_DEVICE_DVSEC_LENGTH, GPF_PORT_DVSEC,
++                               GPF_DEVICE_DVSEC_LENGTH, GPF_DEVICE_DVSEC,
+                                GPF_DEVICE_DVSEC_REVID, dvsec);
+ }
+=20
+--=20
+2.25.1
 
