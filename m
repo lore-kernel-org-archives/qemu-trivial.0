@@ -1,78 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oZCTD-000111-Nz
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2022 10:37:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59034)
+	id 1oZCzo-0005eY-VZ
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2022 11:11:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oZCSy-0000wd-Hd; Fri, 16 Sep 2022 10:37:27 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029]:45690)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oZCSw-0004ZE-Pm; Fri, 16 Sep 2022 10:37:16 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- p1-20020a17090a2d8100b0020040a3f75eso20494576pjd.4; 
- Fri, 16 Sep 2022 07:37:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:from:to:cc:subject:date;
- bh=vcvsZUpJWHPMkraQWN0s9tUJHFYUik65uBj1LFzhKHc=;
- b=bgGsXorTyxzXWx8phjVP1m0XAbaXvzjIUW+UiCYclOW/uS7zKbT3Wvx2gfAlrmKjrh
- HkLM5hc7UR5bMF8DrNpd6iVWb+MW4IheMP3mUpjnzxRGOCiXxqpVUODwup2s+3JChgje
- ZQ2zjeI9EYqE7xzJk29nb4+ymgfD2Fd9eaD3tAtJKmOElZpfafn0potDT7x39E9kImR7
- BmfoqHV/dG0CEAFo3p5YJCSdp7So9atU35EWZKHQ3YSZ9NjvOrB5Up7MO/wrvlmUn78g
- y88qhauVoe5y4GCqHYuenCr3avjWHCalsCODCpqNwsxMAEDhFtbd6Hvb5XXW/lM2P1ti
- E6/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:x-gm-message-state:from:to:cc:subject:date;
- bh=vcvsZUpJWHPMkraQWN0s9tUJHFYUik65uBj1LFzhKHc=;
- b=a7D2roBtPyoW7viz4AKgrMO38BtH9kxSGycFOsj3a9dnvJwBWaxUtrVDibqp39Pwzk
- 3EN33PNdlrXw2EML737nL5l5jbuEHnoMVDYK4iRlnKpDgKIzZp0qA+L5kD8ZMtllapvt
- 7B47UoYKARE+0en1xi/AJKdcHWLls2uMW9hmgsQrkUemXBVPV7E+GCXH2+xygJs1J6a9
- NKn4+CImA1lvmHZ5aYLMqEq7QDWRYovPSRktaXlScneRuGVESDnJXx7EyGoTwBanhreh
- feDYFl6qNGKd4yTPb2VV/Jrrmd83zMWf3SeStKYo9uXCv/+jSkVypO6bG4tI9qb+yclK
- cLCA==
-X-Gm-Message-State: ACrzQf2TxIoddWEnX3GrpSmMft4aY5cTiWv5d/vV1luxO6OnkjZj1l4A
- YZfm3hJMYvm3ZXHEes+Z6aEwAYBkYU9e6A==
-X-Google-Smtp-Source: AMsMyM7/dqenNVSGiwhIFUzkzfjhvSugRFYKt87ZwGBKu6KGJS8oH47cTO7JAsbciYFizqUqXMOqRw==
-X-Received: by 2002:a17:902:e94f:b0:173:d0d:c4f5 with SMTP id
- b15-20020a170902e94f00b001730d0dc4f5mr124595pll.167.1663339033009; 
- Fri, 16 Sep 2022 07:37:13 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- r6-20020a170902be0600b00178682d5806sm4327714pls.191.2022.09.16.07.37.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Sep 2022 07:37:12 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <1263ad1b-55fd-67e3-9647-2b49421acd34@amsat.org>
-Date: Fri, 16 Sep 2022 16:37:09 +0200
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oZCes-0006US-Fa; Fri, 16 Sep 2022 10:49:34 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56]:2695)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1oZCep-0006vU-Ky; Fri, 16 Sep 2022 10:49:33 -0400
+Received: from fraeml741-chm.china.huawei.com (unknown [172.18.147.201])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4MTcPM1s7lz67P77;
+ Fri, 16 Sep 2022 22:47:51 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ fraeml741-chm.china.huawei.com (10.206.15.222) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Fri, 16 Sep 2022 16:49:19 +0200
+Received: from localhost (10.202.226.42) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Fri, 16 Sep
+ 2022 15:49:19 +0100
+Date: Fri, 16 Sep 2022 15:49:18 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Tong Zhang <t.zhang2@samsung.com>
+CC: Ben Widawsky <ben.widawsky@intel.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "ztong0001@gmail.com" <ztong0001@gmail.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] mem/cxl_type3: fix GPF DVSEC
+Message-ID: <20220916154918.0000710a@huawei.com>
+In-Reply-To: <20220915175853.2902-1-t.zhang2@samsung.com>
+References: <CGME20220915175905uscas1p122c0408beff433071df5df348553be22@uscas1p1.samsung.com>
+ <20220915175853.2902-1-t.zhang2@samsung.com>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.13.0
-Subject: Re: [PATCH] .gitignore: add .cache/ to .gitignore
-Content-Language: en-US
-To: "Wang, Lei" <lei4.wang@intel.com>, qemu-devel@nongnu.org
-Cc: alex.bennee@linaro.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20220907150010.2047037-1-lei4.wang@intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20220907150010.2047037-1-lei4.wang@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x1029.google.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.816,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.226.42]
+X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 16 Sep 2022 11:11:08 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,18 +60,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Sep 2022 14:37:28 -0000
+X-List-Received-Date: Fri, 16 Sep 2022 14:49:35 -0000
 
-On 7/9/22 17:00, Wang, Lei wrote:
-> $PROJECT/.cache/clangd/index is the intended location for project index
-> data when using clangd as the language server. Ignore this directory to
-> keep the git status clean.
+On Thu, 15 Sep 2022 17:59:04 +0000
+Tong Zhang <t.zhang2@samsung.com> wrote:
+
+> The structure is for device dvsec not port dvsec. Change type to fix
+> this issue.
 > 
-> Signed-off-by: Wang, Lei <lei4.wang@intel.com>
-> ---
->   .gitignore | 1 +
->   1 file changed, 1 insertion(+)
+> Signed-off-by: Tong Zhang <t.zhang2@samsung.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+> ---
+>  hw/mem/cxl_type3.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/mem/cxl_type3.c b/hw/mem/cxl_type3.c
+> index 3bf2869573..ada2108fac 100644
+> --- a/hw/mem/cxl_type3.c
+> +++ b/hw/mem/cxl_type3.c
+> @@ -49,7 +49,7 @@ static void build_dvsecs(CXLType3Dev *ct3d)
+>          .phase2_power = 0x33, /* 0x33 miliwatts */
+>      };
+>      cxl_component_create_dvsec(cxl_cstate, CXL2_TYPE3_DEVICE,
+> -                               GPF_DEVICE_DVSEC_LENGTH, GPF_PORT_DVSEC,
+> +                               GPF_DEVICE_DVSEC_LENGTH, GPF_DEVICE_DVSEC,
+>                                 GPF_DEVICE_DVSEC_REVID, dvsec);
+>  }
+>  
 
 
