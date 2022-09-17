@@ -1,54 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oZCzo-0005eY-VZ
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2022 11:11:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39168)
+	id 1oZWML-0007m7-GQ
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Sep 2022 07:51:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1oZCes-0006US-Fa; Fri, 16 Sep 2022 10:49:34 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56]:2695)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1oZWMJ-0007kR-Dr; Sat, 17 Sep 2022 07:51:43 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:29948)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1oZCep-0006vU-Ky; Fri, 16 Sep 2022 10:49:33 -0400
-Received: from fraeml741-chm.china.huawei.com (unknown [172.18.147.201])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4MTcPM1s7lz67P77;
- Fri, 16 Sep 2022 22:47:51 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- fraeml741-chm.china.huawei.com (10.206.15.222) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Fri, 16 Sep 2022 16:49:19 +0200
-Received: from localhost (10.202.226.42) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Fri, 16 Sep
- 2022 15:49:19 +0100
-Date: Fri, 16 Sep 2022 15:49:18 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Tong Zhang <t.zhang2@samsung.com>
-CC: Ben Widawsky <ben.widawsky@intel.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "ztong0001@gmail.com" <ztong0001@gmail.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] mem/cxl_type3: fix GPF DVSEC
-Message-ID: <20220916154918.0000710a@huawei.com>
-In-Reply-To: <20220915175853.2902-1-t.zhang2@samsung.com>
-References: <CGME20220915175905uscas1p122c0408beff433071df5df348553be22@uscas1p1.samsung.com>
- <20220915175853.2902-1-t.zhang2@samsung.com>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.226.42]
-X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1oZWMG-0001rS-O9; Sat, 17 Sep 2022 07:51:42 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id DA8ED759B50;
+ Sat, 17 Sep 2022 13:51:36 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id A32EF746E06; Sat, 17 Sep 2022 13:51:36 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH] Remove unused MAX_IDE_BUS define
+To: qemu-devel@nongnu.org,
+    qemu-trivial@nongnu.org
+Cc: richard.henderson@linaro.org, deller@gmx.de, chenhuacai@kernel.org,
+ f4bug@amsat.org, 
+ jiaxun.yang@flygoat.com,aurelien@aurel32.net,hpoussin@reactos.org,
+ mark.cave-ayland@ilande.co.uk
+Message-Id: <20220917115136.A32EF746E06@zero.eik.bme.hu>
+Date: Sat, 17 Sep 2022 13:51:36 +0200 (CEST)
+X-Spam-Probability: 8%
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 16 Sep 2022 11:11:08 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,34 +44,99 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Sep 2022 14:49:35 -0000
+X-List-Received-Date: Sat, 17 Sep 2022 11:51:43 -0000
 
-On Thu, 15 Sep 2022 17:59:04 +0000
-Tong Zhang <t.zhang2@samsung.com> wrote:
 
-> The structure is for device dvsec not port dvsec. Change type to fix
-> this issue.
-> 
-> Signed-off-by: Tong Zhang <t.zhang2@samsung.com>
+Several machines have an unused MAX_IDE_BUS define. Remove it from
+these machines that don't need it.
 
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
+ hw/alpha/dp264.c    | 2 --
+ hw/hppa/machine.c   | 2 --
+ hw/mips/fuloong2e.c | 1 -
+ hw/mips/malta.c     | 2 --
+ hw/ppc/prep.c       | 2 --
+ hw/sparc64/sun4u.c  | 1 -
+ 6 files changed, 10 deletions(-)
 
-> ---
->  hw/mem/cxl_type3.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/mem/cxl_type3.c b/hw/mem/cxl_type3.c
-> index 3bf2869573..ada2108fac 100644
-> --- a/hw/mem/cxl_type3.c
-> +++ b/hw/mem/cxl_type3.c
-> @@ -49,7 +49,7 @@ static void build_dvsecs(CXLType3Dev *ct3d)
->          .phase2_power = 0x33, /* 0x33 miliwatts */
->      };
->      cxl_component_create_dvsec(cxl_cstate, CXL2_TYPE3_DEVICE,
-> -                               GPF_DEVICE_DVSEC_LENGTH, GPF_PORT_DVSEC,
-> +                               GPF_DEVICE_DVSEC_LENGTH, GPF_DEVICE_DVSEC,
->                                 GPF_DEVICE_DVSEC_REVID, dvsec);
->  }
->  
+diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+index f4349eba83..c502c8c62a 100644
+--- a/hw/alpha/dp264.c
++++ b/hw/alpha/dp264.c
+@@ -20,8 +20,6 @@
+ #include "qemu/datadir.h"
+ #include "net/net.h"
+ 
+-#define MAX_IDE_BUS 2
+-
+ static uint64_t cpu_alpha_superpage_to_phys(void *opaque, uint64_t addr)
+ {
+     if (((addr >> 41) & 3) == 2) {
+diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+index e53d5f0fa7..355b3aac2e 100644
+--- a/hw/hppa/machine.c
++++ b/hw/hppa/machine.c
+@@ -30,8 +30,6 @@
+ #include "qemu/log.h"
+ #include "net/net.h"
+ 
+-#define MAX_IDE_BUS 2
+-
+ #define MIN_SEABIOS_HPPA_VERSION 6 /* require at least this fw version */
+ 
+ #define HPA_POWER_BUTTON (FIRMWARE_END - 0x10)
+diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
+index 5ee546f5f6..8c747ac1a0 100644
+--- a/hw/mips/fuloong2e.c
++++ b/hw/mips/fuloong2e.c
+@@ -49,7 +49,6 @@
+ 
+ /* Fuloong 2e has a 512k flash: Winbond W39L040AP70Z */
+ #define BIOS_SIZE               (512 * KiB)
+-#define MAX_IDE_BUS             2
+ 
+ /*
+  * PMON is not part of qemu and released with BSD license, anyone
+diff --git a/hw/mips/malta.c b/hw/mips/malta.c
+index 0e932988e0..5099ed9592 100644
+--- a/hw/mips/malta.c
++++ b/hw/mips/malta.c
+@@ -69,8 +69,6 @@
+ 
+ #define FLASH_SIZE          0x400000
+ 
+-#define MAX_IDE_BUS         2
+-
+ typedef struct {
+     MemoryRegion iomem;
+     MemoryRegion iomem_lo; /* 0 - 0x900 */
+diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+index f08714f2ec..fcbe4c5837 100644
+--- a/hw/ppc/prep.c
++++ b/hw/ppc/prep.c
+@@ -50,8 +50,6 @@
+ /* SMP is not enabled, for now */
+ #define MAX_CPUS 1
+ 
+-#define MAX_IDE_BUS 2
+-
+ #define CFG_ADDR 0xf0000510
+ 
+ #define KERNEL_LOAD_ADDR 0x01000000
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index 0e27715ac4..387181ff77 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -66,7 +66,6 @@
+ #define PBM_PCI_IO_BASE      (PBM_SPECIAL_BASE + 0x02000000ULL)
+ #define PROM_FILENAME        "openbios-sparc64"
+ #define NVRAM_SIZE           0x2000
+-#define MAX_IDE_BUS          2
+ #define BIOS_CFG_IOPORT      0x510
+ #define FW_CFG_SPARC64_WIDTH (FW_CFG_ARCH_LOCAL + 0x00)
+ #define FW_CFG_SPARC64_HEIGHT (FW_CFG_ARCH_LOCAL + 0x01)
+-- 
+2.30.4
 
 
