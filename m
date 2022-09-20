@@ -1,71 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oaVpA-0007ah-Ko
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Sep 2022 01:29:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39198)
+	id 1oaaN3-0002N5-3H
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Sep 2022 06:20:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oaVp8-0007aI-Px; Tue, 20 Sep 2022 01:29:34 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:37868)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1oaVp6-0005wU-Ue; Tue, 20 Sep 2022 01:29:34 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id a26so3496037ejc.4;
- Mon, 19 Sep 2022 22:29:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date;
- bh=E5CYXRUhkGL8C7j/V79FqD1/q2dkBqCAsiH+yU6lV6s=;
- b=Z1WbMHAT0/QUxdQDfBxY88t8bQuYSfkZqnDFxpQIco+NhXwzP0+E7TmMYERiq08U26
- 75yT3eCLaG8Jg8Camnj83aP/f8NU2zY9rJr/ZntoufF9OKBZpfQKf0795LNaLL7kGHHE
- iLK6nkiqeXFPlmWnhY0TonDSv4Xw4XfKhUyRvzt1kDQW4bl5Lo0u4aFmzgOQAbz2UgvL
- ibeyHxynuDVhcEOzywzYx8xSXNZVN1LmxfteQ+ioUaHTvsjHbORottp6nkSUh34dtLv8
- ude7tvYtDUIERKgmU8ykJ4wXCUDlj86EdjRLovh6oe0JAgqPQNZl2Vi4rjkhdpxib+eA
- wjBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date;
- bh=E5CYXRUhkGL8C7j/V79FqD1/q2dkBqCAsiH+yU6lV6s=;
- b=PNa9X6APW+yjxYh0mat9N5XruE8to2EHOXSzrc5ZIpzCWzPM0BIx4EaSfy0HZ5RnpR
- 7xVyuP8mFtMLE6nnI/yDvXxP3kBbRRIc5qmH2GVgVjxIxrPp/Ac9AYZhQxvWKkZxPSr8
- sP/rEiB8k2QQOdCSZMsGpG7OyPOSg4pqVtHPFYgABr3a1s4kRpRwI9k8jfXZi8gyWNo1
- NDHSYIRL0roP3LUn5LVVz7Tq1V9qiXPSOldDd9a1MQjBhyoLgBYL9XUNa3gPwdePJtbL
- 5r7tdEimgfwReWHU+AkkUyml96OlYOEseFgihR1smb0r3DDP5iZrYdhVf2LTdH8cbcEo
- hpIA==
-X-Gm-Message-State: ACrzQf2OoQF5EG1Uv25hBLKj1/L5Qn5hjbHlT3KvjltJIW232CqZfrhK
- BoSZaq5ksd1hyYvexMHZlAWbgF5MFwk=
-X-Google-Smtp-Source: AMsMyM4dXSl73YqZG/WkYWNwsk+wG9Zub5uwn9le6AQGD+V64KBIrPkM00kvmhfqHHd2xG6jvOr8oQ==
-X-Received: by 2002:a17:907:968f:b0:774:d10f:a98e with SMTP id
- hd15-20020a170907968f00b00774d10fa98emr15687832ejc.750.1663651770606; 
- Mon, 19 Sep 2022 22:29:30 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-011-222-172.77.11.pool.telefonica.de.
- [77.11.222.172]) by smtp.gmail.com with ESMTPSA id
- n21-20020a5099d5000000b0044e7f40c48esm525886edb.62.2022.09.19.22.29.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Sep 2022 22:29:30 -0700 (PDT)
-Date: Tue, 20 Sep 2022 05:29:25 +0000
-From: Bernhard Beschow <shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oaaN1-0002HX-0S
+ for qemu-trivial@nongnu.org; Tue, 20 Sep 2022 06:20:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:40977)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1oaaMz-0002AN-Hd
+ for qemu-trivial@nongnu.org; Tue, 20 Sep 2022 06:20:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1663669249;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=7uHps3Thjn5xYZ28emrVBs1Vu+A0RPVOfk+x+1E5wUE=;
+ b=UMTflB6IdA5GHYgtN3su4pcfFUaKo1USjwlRE+5jYZi8m+bNBSQ+bETHLh0NyIjHMWnu6k
+ YIf6NwT2Wlb+nwTYeN30MthMda2gA0XvBUxprPkp3dZL2hB2tGscnG/twExEnlLVy1p3oe
+ Rp0dC4bU93G4eZDesqdYX7lyQpnmvCQ=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-231-AqS_A-YrMdS6g9ps1X242w-1; Tue, 20 Sep 2022 06:20:45 -0400
+X-MC-Unique: AqS_A-YrMdS6g9ps1X242w-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2379729ABA3A;
+ Tue, 20 Sep 2022 10:20:45 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.193.88])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D46881400C39;
+ Tue, 20 Sep 2022 10:20:43 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
-CC: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2=5D_hw/virtio/vhost-shadow-virtqu?=
- =?US-ASCII?Q?eue=3A_Silence_GCC_error_=22maybe-uninitialized=22?=
-In-Reply-To: <20220910151117.6665-1-shentey@gmail.com>
-References: <20220910151117.6665-1-shentey@gmail.com>
-Message-ID: <D1ED14E5-CFF9-4525-96C5-60262DB17309@gmail.com>
+Cc: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Brad Smith <brad@comstyle.com>, qemu-trivial@nongnu.org
+Subject: [PATCH] gitlab-ci: Update the FreeBSD 13 job from 13.0 to 13.1
+Date: Tue, 20 Sep 2022 12:20:41 +0200
+Message-Id: <20220920102041.45067-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,64 +64,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Sep 2022 05:29:35 -0000
+X-List-Received-Date: Tue, 20 Sep 2022 10:20:51 -0000
 
-Am 10=2E September 2022 15:11:17 UTC schrieb Bernhard Beschow <shentey@gmai=
-l=2Ecom>:
->GCC issues a false positive warning, resulting in build failure with -Wer=
-ror:
->
->  In file included from /usr/include/glib-2=2E0/glib=2Eh:114,
->                   from src/include/glib-compat=2Eh:32,
->                   from src/include/qemu/osdep=2Eh:144,
->                   from =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec:1=
-0:
->  In function =E2=80=98g_autoptr_cleanup_generic_gfree=E2=80=99,
->      inlined from =E2=80=98vhost_handle_guest_kick=E2=80=99 at =2E=2E/sr=
-c/hw/virtio/vhost-shadow-virtqueue=2Ec:292:42:
->  /usr/include/glib-2=2E0/glib/glib-autocleanups=2Eh:28:3: error: =E2=80=
-=98elem=E2=80=99 may be used uninitialized [-Werror=3Dmaybe-uninitialized]
->     28 |   g_free (*pp);
->        |   ^~~~~~~~~~~~
->  =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec: In function =E2=80=98v=
-host_handle_guest_kick=E2=80=99:
->  =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec:292:42: note: =E2=80=98=
-elem=E2=80=99 was declared here
->    292 |             g_autofree VirtQueueElement *elem;
->        |                                          ^~~~
->  cc1: all warnings being treated as errors
->
->There is actually no problem since "elem" is initialized in both branches=
-=2E
->Silence the warning by initializig it with "NULL"=2E
->
->$ gcc --version
->gcc (GCC) 12=2E2=2E0
->
->Fixes: 9c2ab2f1ec333be8614cc12272d4b91960704dbe ("vhost: stop transfer el=
-em ownership in vhost_handle_guest_kick")
->Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->---
+The FreeBSD 13 job in our CI started failing since the python port
+stopped working after 13.1 has been released. Thus update our CI
+job to FreeBSD 13.1 to get it working again.
 
-Ping
+Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ .gitlab-ci.d/cirrus.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> hw/virtio/vhost-shadow-virtqueue=2Ec | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
->
->diff --git a/hw/virtio/vhost-shadow-virtqueue=2Ec b/hw/virtio/vhost-shado=
-w-virtqueue=2Ec
->index e8e5bbc368=2E=2E596d4434d2 100644
->--- a/hw/virtio/vhost-shadow-virtqueue=2Ec
->+++ b/hw/virtio/vhost-shadow-virtqueue=2Ec
->@@ -289,7 +289,7 @@ static void vhost_handle_guest_kick(VhostShadowVirtqu=
-eue *svq)
->         virtio_queue_set_notification(svq->vq, false);
->=20
->         while (true) {
->-            g_autofree VirtQueueElement *elem;
->+            g_autofree VirtQueueElement *elem =3D NULL;
->             int r;
->=20
->             if (svq->next_guest_avail_elem) {
+diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
+index 609c364308..d70da61248 100644
+--- a/.gitlab-ci.d/cirrus.yml
++++ b/.gitlab-ci.d/cirrus.yml
+@@ -63,7 +63,7 @@ x64-freebsd-13-build:
+     NAME: freebsd-13
+     CIRRUS_VM_INSTANCE_TYPE: freebsd_instance
+     CIRRUS_VM_IMAGE_SELECTOR: image_family
+-    CIRRUS_VM_IMAGE_NAME: freebsd-13-0
++    CIRRUS_VM_IMAGE_NAME: freebsd-13-1
+     CIRRUS_VM_CPUS: 8
+     CIRRUS_VM_RAM: 8G
+     UPDATE_COMMAND: pkg update
+-- 
+2.31.1
 
 
