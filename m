@@ -1,83 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oadWL-0002zi-9W
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Sep 2022 09:42:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59906)
+	id 1oahTY-0001Rt-Et
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Sep 2022 13:56:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50918)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
- id 1oadWK-0002wp-2t; Tue, 20 Sep 2022 09:42:40 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131]:27332)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
- id 1oadWG-0005hY-88; Tue, 20 Sep 2022 09:42:38 -0400
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28KDGCsn012051;
- Tue, 20 Sep 2022 13:42:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=from : to : cc :
- subject : date : message-id : mime-version : content-transfer-encoding;
- s=qcppdkim1; bh=qk2eUGGj4YJYP5WUeUWDhqbpZAYKxz0Xq66hrR3pg3Q=;
- b=G+cbVO3qNZLHUofDdoOo9mveBRLw2XMU35sK3Zk4ZNZSiAO37V8zD3Jq3KEypkveTjIt
- FAbbqfWqs4Ze+PzT512OSvmZGewX0D7bmuqytWZ+ncIk97lZVjNMc9N0SrQYEpoxCAYQ
- qBX8vnXfxnw8TZmPnSSqDmsRynKAo2CDOK9LMyDA8weTmC5u6cDYU+9LI7ecE+qbyb9b
- eqFggAokT4pRGfaLUv6djf7sg01iCoi350YeaG0uUstgjixUTXrrAILrzHlKutT3VYyk
- C+n7Qh8JTJKmIRWGHiQ2vAdamssujG0/GAGKf30/DuchGrRGXkxraOT4+tNFL0UajbSi cQ== 
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com
- [129.46.96.20])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3jqa1k8sxq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 20 Sep 2022 13:42:32 +0000
-Received: from pps.filterd (NALASPPMTA03.qualcomm.com [127.0.0.1])
- by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTP id 28KDfaMk009863; 
- Tue, 20 Sep 2022 13:42:31 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 3jnqmj1c6g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 20 Sep 2022 13:42:31 +0000
-Received: from NALASPPMTA03.qualcomm.com (NALASPPMTA03.qualcomm.com
- [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 28KDgVxL010640;
- Tue, 20 Sep 2022 13:42:31 GMT
-Received: from hu-devc-sd-u20-a-1.qualcomm.com (hu-mathbern-lv.qualcomm.com
- [10.47.235.147])
- by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 28KDgVEX010639
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 20 Sep 2022 13:42:31 +0000
-Received: by hu-devc-sd-u20-a-1.qualcomm.com (Postfix, from userid 4229910)
- id 3943A4DD1; Tue, 20 Sep 2022 10:42:31 -0300 (-03)
-From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
-To: qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, qemu-trivial@nongnu.org
-Subject: [PATCH] checkpatch: ignore target/hexagon/imported/* files
-Date: Tue, 20 Sep 2022 10:42:28 -0300
-Message-Id: <e3b6a345a88807a1c4daa45f638b2a90af538fd5.1663681339.git.quic_mathbern@quicinc.com>
-X-Mailer: git-send-email 2.37.2
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1oahTT-0001NP-Vy; Tue, 20 Sep 2022 13:56:00 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:41533)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1oahTR-0006yE-AM; Tue, 20 Sep 2022 13:55:59 -0400
+Received: by mail-wr1-x434.google.com with SMTP id t14so5638135wrx.8;
+ Tue, 20 Sep 2022 10:55:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :sender:from:to:cc:subject:date;
+ bh=Y0wHt8iEqm25SFbGyqcH5xO9yMmfKLoRPBVWoNmTQSU=;
+ b=eLTMThgOeGG2gls3GbGAdqDWZBWgLT9hOkLae5Hfw4m651H+4pOuLWMYqv/hozAWaV
+ /DX0iED3CrVNJpPArtYLA/QI9fxgsJ7Yvo2OiPeCFRX/tF69mf0cY2/2U7FZpLsWd5Dd
+ F2sMOQg4LoG+88lSY6oDvX8BNAMFWeXfMgYY1Yo3+m50CNjKxbZvQKX5Tp0w1x9wuH5n
+ 3NSYAjfPxJ7xxsYVyfq6TZorCQEkT10DNfiACbgtbpwfdDl5TkI85xdQKXFFZMraMpAo
+ pwsc3GTV65jr2wMGQ4Kh204CzzFlO1b6/pP+tOXNLOniNSExVyBReidkFZPd7p9J2rWy
+ tJ0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :sender:x-gm-message-state:from:to:cc:subject:date;
+ bh=Y0wHt8iEqm25SFbGyqcH5xO9yMmfKLoRPBVWoNmTQSU=;
+ b=WBCbDxvhbo+as16gVPiaSbcbCXdkRVd5Ep7zlET09ghvWyCHkZoF1k3IOkQfIO4Lte
+ 3XTYOjhzD9cgBfRf2iC76Uyy9djknaFW9XPd3vZaVKmlalBIk8srFBd3TTZU1BTS2r6f
+ qkWajy8F0SEnvtplGgMq+TPYPBf1pQrzcnjMADxrliWnnorxMooDTgkhJSzMZm+WeU7y
+ lJV4Ht/EKxkGXHqvMF+b5aQcKgbWEFW5TDpdKLfUvbJo91XVGBHSQEWH3cj/puHHChoc
+ 7muF+FPVP8eq8XWrQIbPPQLQLai4f5NN+xAX6hPPn9sXHrHLw74StQxb31eSUGbXeykj
+ 1hzg==
+X-Gm-Message-State: ACrzQf0RDtHQCydZzN6vBkkvNdeq6XOd0Zqra3CumgN0NvVJy7Dmxdf+
+ VDsRoTuhjfSp0pyPdq3jglE=
+X-Google-Smtp-Source: AMsMyM6b9tvvI4m1HNEsOYIRF60eomKYnRyiPLbbfK2C/+GVtqZTsMahqBQ9vTPTyR0x9jWHQgN8bA==
+X-Received: by 2002:a05:6000:15c5:b0:22a:49be:8000 with SMTP id
+ y5-20020a05600015c500b0022a49be8000mr14663371wry.664.1663696553567; 
+ Tue, 20 Sep 2022 10:55:53 -0700 (PDT)
+Received: from [192.168.232.175] (29.red-88-29-182.dynamicip.rima-tde.net.
+ [88.29.182.29]) by smtp.gmail.com with ESMTPSA id
+ m18-20020a5d56d2000000b0022878c0cc5esm405419wrw.69.2022.09.20.10.55.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Sep 2022 10:55:53 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+Message-ID: <feecbc71-ce8e-5ed1-a7a8-b258b67caa24@amsat.org>
+Date: Tue, 20 Sep 2022 19:55:50 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.13.0
+Subject: Re: [PATCH] checkpatch: ignore target/hexagon/imported/* files
+Content-Language: en-US
+To: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>,
+ qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, qemu-trivial@nongnu.org
+References: <e3b6a345a88807a1c4daa45f638b2a90af538fd5.1663681339.git.quic_mathbern@quicinc.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <e3b6a345a88807a1c4daa45f638b2a90af538fd5.1663681339.git.quic_mathbern@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-QCInternal: smtphost
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-GUID: TI7EEx4XLMDbRf0iyU4m6uDlFsHyKEZq
-X-Proofpoint-ORIG-GUID: TI7EEx4XLMDbRf0iyU4m6uDlFsHyKEZq
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
- definitions=2022-09-20_04,2022-09-20_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 malwarescore=0
- adultscore=0 priorityscore=1501 suspectscore=0 bulkscore=0 phishscore=0
- mlxscore=0 impostorscore=0 clxscore=1015 mlxlogscore=683
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2209130000 definitions=main-2209200080
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=mathbern@qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.182,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -91,30 +84,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Sep 2022 13:42:40 -0000
+X-List-Received-Date: Tue, 20 Sep 2022 17:56:02 -0000
 
-These files come from an external project (the hexagon archlib), so they
-deliberately do not follow QEMU's coding style. To avoid false positives
-from checkpatch.pl, let's disable the checking for those.
+On 20/9/22 15:42, Matheus Tavares Bernardino wrote:
+> These files come from an external project (the hexagon archlib), so they
+> deliberately do not follow QEMU's coding style. To avoid false positives
+> from checkpatch.pl, let's disable the checking for those.
+> 
+> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+> ---
+>   scripts/checkpatch.pl | 1 +
+>   1 file changed, 1 insertion(+)
 
-Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
----
- scripts/checkpatch.pl | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index d900d18048..e3e3b43076 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -1667,6 +1667,7 @@ sub process {
- # some scripts we imported from other projects.
- 		next if ($realfile =~ /\.(s|S)$/);
- 		next if ($realfile =~ /(checkpatch|get_maintainer)\.pl$/);
-+		next if ($realfile =~ /^target\/hexagon\/imported\/*/);
- 
- 		if ($rawline =~ /^\+.*\t/) {
- 			my $herevet = "$here\n" . cat_vet($rawline) . "\n";
--- 
-2.37.2
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 
