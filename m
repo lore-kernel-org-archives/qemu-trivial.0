@@ -1,68 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oad6j-0004To-Mj
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Sep 2022 09:16:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46956)
+	id 1oadWL-0002zi-9W
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Sep 2022 09:42:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oad6R-0004MO-1l
- for qemu-trivial@nongnu.org; Tue, 20 Sep 2022 09:16:11 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:39456)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oad6N-0001nP-N7
- for qemu-trivial@nongnu.org; Tue, 20 Sep 2022 09:15:53 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id y17so6065456ejo.6
- for <qemu-trivial@nongnu.org>; Tue, 20 Sep 2022 06:15:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=TrnugepzyDHJ0f5GMzdE63nuUd2SxAXrOn2Xa+cxfDQ=;
- b=soZ0pI2JApzQw+JlKi1OFMWDaC82/PZ6zJhTtJuA6Wcvq0mi9KVZTuGLs/uFyPuahv
- GOHnlVE0LBTlCWnMmN59XeqAUhCCgAFYqTn9IGMdCz6m/8o1Ct8lWAF97HCH9vB+GSBF
- T8zR46GKtMPtbnfFJ754EsuGEbcOK/QJvqRHGwG9fLmGG9Y5PSbHmJrjccb1bw5knZ+T
- 9SxWyYI9XzYzPe9j1shLf+ExnrrivMlMTyx4cL6em+H/2SDednb1/+F+9Ee3jbYu/Px2
- LmlkKKCaJSOFywVl/+IJ/zqfzPOfBQpMtt5uqBgswvhjr66UmwB/USlCABJKRlv080uI
- fGsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=TrnugepzyDHJ0f5GMzdE63nuUd2SxAXrOn2Xa+cxfDQ=;
- b=Fz9ofXkfh+JU/9GEUyTlEQUdiWW+HfbUQs3JB40R2FgqytPkh8NW4A7nt2SwW6nhTn
- X3HEz8RORCflInYj1Mu7sF9hJ549aDgCUttycMtJIUeSKuiVCGxZnkw26Z0FWVZzt54L
- Oz33aTP76erjWLUi89xo8t88RJCAH8H9IfLSWr3GFqip/QyCPItvU4QuZKP0/BKUUbYT
- ZLl3oSTqdkiIHspvHB6HcjAJy3M1c5ag+9DhMHhkzBTACXzl0V/gxgeyye1Ja03enEuA
- I8sf9+xEFaX3WQ6I18sfdkccua1jzDpRxg+de00HxTWLjR+KRjLg8oe8aXwsMLUf9LVq
- S5aQ==
-X-Gm-Message-State: ACrzQf1s5qNjcMu7Uj9P+wiELe46ei/uEXs8V6GYZG4BvCuqgsUqWtHZ
- KrDz/amJvRaRviMHodRxSRuUifGY1fJM9pWr9JaU2w==
-X-Google-Smtp-Source: AMsMyM6rx0P+ofEMPTdJuWRqMilHQkD5fBXD+5Ja3OaHMyw7Bidvy3ZCbSSU6ByvTkxnUGZoaaz63TW2BhC/poH+Ikk=
-X-Received: by 2002:a17:906:db05:b0:741:5730:270e with SMTP id
- xj5-20020a170906db0500b007415730270emr16213595ejb.609.1663679747638; Tue, 20
- Sep 2022 06:15:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
+ id 1oadWK-0002wp-2t; Tue, 20 Sep 2022 09:42:40 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131]:27332)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
+ id 1oadWG-0005hY-88; Tue, 20 Sep 2022 09:42:38 -0400
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28KDGCsn012051;
+ Tue, 20 Sep 2022 13:42:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding;
+ s=qcppdkim1; bh=qk2eUGGj4YJYP5WUeUWDhqbpZAYKxz0Xq66hrR3pg3Q=;
+ b=G+cbVO3qNZLHUofDdoOo9mveBRLw2XMU35sK3Zk4ZNZSiAO37V8zD3Jq3KEypkveTjIt
+ FAbbqfWqs4Ze+PzT512OSvmZGewX0D7bmuqytWZ+ncIk97lZVjNMc9N0SrQYEpoxCAYQ
+ qBX8vnXfxnw8TZmPnSSqDmsRynKAo2CDOK9LMyDA8weTmC5u6cDYU+9LI7ecE+qbyb9b
+ eqFggAokT4pRGfaLUv6djf7sg01iCoi350YeaG0uUstgjixUTXrrAILrzHlKutT3VYyk
+ C+n7Qh8JTJKmIRWGHiQ2vAdamssujG0/GAGKf30/DuchGrRGXkxraOT4+tNFL0UajbSi cQ== 
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com
+ [129.46.96.20])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3jqa1k8sxq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 20 Sep 2022 13:42:32 +0000
+Received: from pps.filterd (NALASPPMTA03.qualcomm.com [127.0.0.1])
+ by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTP id 28KDfaMk009863; 
+ Tue, 20 Sep 2022 13:42:31 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 3jnqmj1c6g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 20 Sep 2022 13:42:31 +0000
+Received: from NALASPPMTA03.qualcomm.com (NALASPPMTA03.qualcomm.com
+ [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 28KDgVxL010640;
+ Tue, 20 Sep 2022 13:42:31 GMT
+Received: from hu-devc-sd-u20-a-1.qualcomm.com (hu-mathbern-lv.qualcomm.com
+ [10.47.235.147])
+ by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 28KDgVEX010639
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 20 Sep 2022 13:42:31 +0000
+Received: by hu-devc-sd-u20-a-1.qualcomm.com (Postfix, from userid 4229910)
+ id 3943A4DD1; Tue, 20 Sep 2022 10:42:31 -0300 (-03)
+From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+To: qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, qemu-trivial@nongnu.org
+Subject: [PATCH] checkpatch: ignore target/hexagon/imported/* files
+Date: Tue, 20 Sep 2022 10:42:28 -0300
+Message-Id: <e3b6a345a88807a1c4daa45f638b2a90af538fd5.1663681339.git.quic_mathbern@quicinc.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-References: <20220816094957.31700-1-zhukeqian1@huawei.com>
- <20220824170433.7ba675ca@redhat.com>
-In-Reply-To: <20220824170433.7ba675ca@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Sep 2022 14:15:36 +0100
-Message-ID: <CAFEAcA8jdjkZc24FqXBbw+LBJZ5HiCygqY3Y0S2TtmRzdx1P-A@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
- acpi-ged
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- qemu-trivial@nongnu.org, Eric Auger <eric.auger@redhat.com>, 
- Peter Xu <peterx@redhat.com>, wanghaibin.wang@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: TI7EEx4XLMDbRf0iyU4m6uDlFsHyKEZq
+X-Proofpoint-ORIG-GUID: TI7EEx4XLMDbRf0iyU4m6uDlFsHyKEZq
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
+ definitions=2022-09-20_04,2022-09-20_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 malwarescore=0
+ adultscore=0 priorityscore=1501 suspectscore=0 bulkscore=0 phishscore=0
+ mlxscore=0 impostorscore=0 clxscore=1015 mlxlogscore=683
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2209200080
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=mathbern@qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,38 +91,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Sep 2022 13:16:11 -0000
+X-List-Received-Date: Tue, 20 Sep 2022 13:42:40 -0000
 
-On Wed, 24 Aug 2022 at 16:04, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> On Tue, 16 Aug 2022 17:49:57 +0800
-> Keqian Zhu <zhukeqian1@huawei.com> wrote:
->
-> > Setup an ARM virtual machine of machine virt and execute qmp "query-acpi-ospm-status"
-> > causes segmentation fault with following dumpstack:
-> >  #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
-> >  #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
-> >  #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
-> >  #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
-> >  #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
-> >  #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
-> >  #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
-> >  #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
-> >  #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
-> >  #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
-> >  #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
-> >  #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
-> >  #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
-> >  #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
-> >
-> > Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
-> > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
->
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+These files come from an external project (the hexagon archlib), so they
+deliberately do not follow QEMU's coding style. To avoid false positives
+from checkpatch.pl, let's disable the checking for those.
 
-I notice this doesn't seem to have gone in yet -- whose tree is it
-going to go via?
+Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+---
+ scripts/checkpatch.pl | 1 +
+ 1 file changed, 1 insertion(+)
 
-thanks
--- PMM
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index d900d18048..e3e3b43076 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1667,6 +1667,7 @@ sub process {
+ # some scripts we imported from other projects.
+ 		next if ($realfile =~ /\.(s|S)$/);
+ 		next if ($realfile =~ /(checkpatch|get_maintainer)\.pl$/);
++		next if ($realfile =~ /^target\/hexagon\/imported\/*/);
+ 
+ 		if ($rawline =~ /^\+.*\t/) {
+ 			my $herevet = "$here\n" . cat_vet($rawline) . "\n";
+-- 
+2.37.2
+
 
