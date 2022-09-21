@@ -1,82 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oazgP-0005Te-VJ
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Sep 2022 09:22:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51902)
+	id 1ob1Nb-0007Lc-Fo
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Sep 2022 11:11:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36616)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1oazgO-0005P5-Di
- for qemu-trivial@nongnu.org; Wed, 21 Sep 2022 09:22:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:50413)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ob1NZ-0007J7-3y
+ for qemu-trivial@nongnu.org; Wed, 21 Sep 2022 11:11:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:60983)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1oazgI-0003zn-Vb
- for qemu-trivial@nongnu.org; Wed, 21 Sep 2022 09:22:29 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ob1NU-00081j-5P
+ for qemu-trivial@nongnu.org; Wed, 21 Sep 2022 11:11:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663766544;
+ s=mimecast20190719; t=1663773067;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3/foKuq3LrMFu91ZFKCszSU+NXTM6Rf9iWUcrpxd2pU=;
- b=Eytg2zjVyLkG5115pnQddwgmBYZ25cud4VGpkif0jTWq2fGomh/5WzPa3f7vtHS5AYMofX
- u0TVwhedpqaTIqMMSVofoYdFq9Oykg0PUWWR4aW0CMEApiZBJt7qgAckHJmftwh63KjP7A
- vvCvdCR677MST7ypIrom5BxGJFfgbFE=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-133-JU6AfteGN8eU_n6ipUBrVA-1; Wed, 21 Sep 2022 09:22:23 -0400
-X-MC-Unique: JU6AfteGN8eU_n6ipUBrVA-1
-Received: by mail-ej1-f70.google.com with SMTP id
- xh12-20020a170906da8c00b007413144e87fso3108115ejb.14
- for <qemu-trivial@nongnu.org>; Wed, 21 Sep 2022 06:22:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date;
- bh=3/foKuq3LrMFu91ZFKCszSU+NXTM6Rf9iWUcrpxd2pU=;
- b=ORyWuiekUYEAU5q+ZcUD0NCy4jmrtnbTdiXbVRO5RSfXHYQg382d7VD/Ld7j8yWzU1
- DFUKDG/1CT8VgqYxyqKjp2/qoox8irGAtmWd6kfHQWTQl+vT+QYGiM9z8BXzzdVgW5Gh
- jFcLopSGCmK6kO1NWhUrw5WCTabXu+duYvd1tvYuO09LOmt+DEEsXtNwaIlivC+Awlal
- ZrrFzytCkpK2LZ0fGsSMbhonWb0HNzrB+nFNgvWg+rfvbWNKbZntvUgZE1U/WNIHlBtL
- GBWcWXHrreWXCFPqKPz/fKI0JMW2dq/1A/HhhbaPnHK3wLPsI//ChokJdVhY9GRW8MB0
- AlWQ==
-X-Gm-Message-State: ACrzQf3OO4iYmFr0fhbDiM/+eQ99TZIEwk5LNKiRLdNBSh7sXMpC4oty
- 3IcR7ARezpm7gypi81dejtDuR3ScTkpDxetXWDA85hxG/kXs/z9SLlT5AQBYZjmwsHQj8e6X1A2
- RY3/U/t66AzD3Jz/F+w==
-X-Received: by 2002:a05:6402:1d4f:b0:450:fd05:628c with SMTP id
- dz15-20020a0564021d4f00b00450fd05628cmr25168254edb.419.1663766540755; 
- Wed, 21 Sep 2022 06:22:20 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM6v+p2CjnGXpxRu4mooXPo8reYgaZAccwLzcSiGhLaWsQlMobOjlDRPcMk7UokBDCIDfzT+oA==
-X-Received: by 2002:a05:6402:1d4f:b0:450:fd05:628c with SMTP id
- dz15-20020a0564021d4f00b00450fd05628cmr25168226edb.419.1663766540452; 
- Wed, 21 Sep 2022 06:22:20 -0700 (PDT)
-Received: from localhost (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id
- la17-20020a170907781100b007821f4bc328sm643970ejc.178.2022.09.21.06.22.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Sep 2022 06:22:19 -0700 (PDT)
-Date: Wed, 21 Sep 2022 15:22:18 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org, Eric Auger
- <eric.auger@redhat.com>, Peter Xu <peterx@redhat.com>,
- wanghaibin.wang@huawei.com
-Subject: Re: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
- acpi-ged
-Message-ID: <20220921152218.7b55dc76@redhat.com>
-In-Reply-To: <CAFEAcA8jdjkZc24FqXBbw+LBJZ5HiCygqY3Y0S2TtmRzdx1P-A@mail.gmail.com>
-References: <20220816094957.31700-1-zhukeqian1@huawei.com>
- <20220824170433.7ba675ca@redhat.com>
- <CAFEAcA8jdjkZc24FqXBbw+LBJZ5HiCygqY3Y0S2TtmRzdx1P-A@mail.gmail.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
+ bh=E9tb5K0ATjyE5IMNLpugAdTFo+8PR9GChQYy7CO3LbM=;
+ b=i/EZ7Ln+E2Cu+9k+/v5sQ2azIH3dJFsfXwmqcBq07u43vozE0L+bTjs/u9AqTB9ehvJ64r
+ +Nk86YoW+SQdGCR5Jbln0H/g5ZYOIqSsi+vVnoJx+qHbmnYP2BDdbxsfM32bSjliEERaq2
+ IaWK7YByibWzrHtHpwmEr0KlhSpuH/U=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-589-x1bE_8J3MriBWaJdVBohDQ-1; Wed, 21 Sep 2022 11:11:05 -0400
+X-MC-Unique: x1bE_8J3MriBWaJdVBohDQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5CDAD803912;
+ Wed, 21 Sep 2022 15:11:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 12043C4C9D6;
+ Wed, 21 Sep 2022 15:11:05 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id B568621E6900; Wed, 21 Sep 2022 17:11:03 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Dongli Zhang <dongli.zhang@oracle.com>
+Cc: Markus Armbruster <armbru@redhat.com>,  qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org,  dgilbert@redhat.com,  joe.jin@oracle.com,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v3 1/1] monitor/hmp: print trace as option in help for
+ log command
+References: <20220831213943.8155-1-dongli.zhang@oracle.com>
+ <87h71qrmkh.fsf@pond.sub.org>
+ <d4ed9983-586e-ea44-90ad-0fc0f259acfc@amsat.org>
+ <4c0425d5-65fa-72e8-5950-abcee7a3a8ce@oracle.com>
+Date: Wed, 21 Sep 2022 17:11:03 +0200
+In-Reply-To: <4c0425d5-65fa-72e8-5950-abcee7a3a8ce@oracle.com> (Dongli Zhang's
+ message of "Sun, 18 Sep 2022 23:49:25 -0700")
+Message-ID: <87edw4ahko.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -97,47 +76,139 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Sep 2022 13:22:33 -0000
+X-List-Received-Date: Wed, 21 Sep 2022 15:11:13 -0000
 
-On Tue, 20 Sep 2022 14:15:36 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
+Dongli Zhang <dongli.zhang@oracle.com> writes:
 
-> On Wed, 24 Aug 2022 at 16:04, Igor Mammedov <imammedo@redhat.com> wrote:
-> >
-> > On Tue, 16 Aug 2022 17:49:57 +0800
-> > Keqian Zhu <zhukeqian1@huawei.com> wrote:
-> >  
-> > > Setup an ARM virtual machine of machine virt and execute qmp "query-acpi-ospm-status"
-> > > causes segmentation fault with following dumpstack:
-> > >  #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
-> > >  #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
-> > >  #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
-> > >  #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
-> > >  #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
-> > >  #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
-> > >  #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
-> > >  #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
-> > >  #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
-> > >  #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
-> > >  #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
-> > >  #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
-> > >  #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
-> > >  #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
-> > >
-> > > Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
-> > > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>  
-> >
-> > Reviewed-by: Igor Mammedov <imammedo@redhat.com>  
-> 
-> I notice this doesn't seem to have gone in yet -- whose tree is it
-> going to go via?
+> Hi Markus,
+>
+> On 9/17/22 2:44 PM, Philippe Mathieu-Daud=C3=A9 via wrote:
+>> Hi Markus,
+>>=20
+>> On 2/9/22 14:24, Markus Armbruster wrote:
+>>> Dongli Zhang <dongli.zhang@oracle.com> writes:
+>>>
+>>>> The below is printed when printing help information in qemu-system-x86=
+_64
+>>>> command line, and when CONFIG_TRACE_LOG is enabled:
+>>>>
+>>>> ----------------------------
+>>>> $ qemu-system-x86_64 -d help
+>>>> ... ...
+>>>> trace:PATTERN=C2=A0=C2=A0 enable trace events
+>>>>
+>>>> Use "-d trace:help" to get a list of trace events.
+>>>> ----------------------------
+>>>>
+>>>> However, the options of "trace:PATTERN" are only printed by
+>>>> "qemu-system-x86_64 -d help", but missing in hmp "help log" command.
+>>>>
+>>>> Fixes: c84ea00dc2 ("log: add "-d trace:PATTERN"")
+>>>> Cc: Joe Jin <joe.jin@oracle.com>
+>>>> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+>>>> ---
+>>>> Changed since v1:
+>>>> - change format for "none" as well.
+>>>> Changed since v2:
+>>>> - use "log trace:help" in help message.
+>>>> - add more clarification in commit message.
+>>>> - add 'Fixes' tag.
+>>>> ---
+>>>> =C2=A0 monitor/hmp.c | 9 +++++++--
+>>>> =C2=A0 1 file changed, 7 insertions(+), 2 deletions(-)
+>>=20
+>>> Not this patch's fault:
+>>>
+>>> 1. "-d help" terminates with exit status 1, "-d trace:help" with 0.=C2=
+=A0 The
+>>> =C2=A0=C2=A0=C2=A0 former is wrong.
+>
+> May I assume it is expected to have exit status 1 when "-d help"?
 
-I'd guess ARM tree (due to almost sole user virt-arm).
-(there are toy users like microvm and new loongarch)
+Non-zero exit status means error.  Asking for and receiving help is not
+an error.  Therefore, "-d help" should exit with status 0, just like
+"-help", "-device help", "-machine help", ...
 
-> 
-> thanks
-> -- PMM
-> 
+> According to the output of "-d", there is even not a "help" option, but o=
+nly a
+> "-d trace:help" option. That is, "-d help" is not officially supported.
+
+It *is* documented:
+
+    $ qemu-system-x86_64 -help | grep -- '^-d '
+    -d item1,...    enable logging of specified items (use '-d help' for a =
+list of log items)
+
+> The below example use "-d hellworld" but not "help".
+>
+> # qemu-system-x86_64 -d helloworld
+> Log items (comma separated):
+> out_asm         show generated host assembly code for each compiled TB
+> in_asm          show target assembly code for each compiled TB
+> op              show micro ops for each compiled TB
+> op_opt          show micro ops after optimization
+> op_ind          show micro ops before indirect lowering
+> int             show interrupts/exceptions in short format
+> exec            show trace before each executed TB (lots of logs)
+> cpu             show CPU registers before entering a TB (lots of logs)
+> fpu             include FPU registers in the 'cpu' logging
+> mmu             log MMU-related activities
+> pcall           x86 only: show protected mode far calls/returns/exceptions
+> cpu_reset       show CPU state before CPU resets
+> unimp           log unimplemented functionality
+> guest_errors    log when the guest OS does something invalid (eg accessin=
+g a
+> non-existent register)
+> page            dump pages at beginning of user mode emulation
+> nochain         do not chain compiled TBs so that "exec" and "cpu" show
+> complete traces
+> plugin          output from TCG plugins
+>
+> strace          log every user-mode syscall, its input, and its result
+> tid             open a separate log file per thread; filename must contai=
+n '%d'
+> trace:PATTERN   enable trace events
+>
+> Use "-d trace:help" to get a list of trace events.
+>
+>
+> According to the source code, the qemu_str_to_log_mask() expects either l=
+og
+> items or "trace". For any other inputs (e.g., "help" or "helloworld"),
+> qemu_str_to_log_mask() returns 0 (no bit set in the mask).
+
+You're right.
+
+>                                                            That indicates=
+ the
+> input (e.g., "help") is not an expected input.
+
+No, it indicates laziness :)
+
+> Therefore, can I assume this is not a bug? I do not think something like =
+below
+> is very helpful.
+>
+> diff --git a/softmmu/vl.c b/softmmu/vl.c
+> index 263f029a8e..54c8e624bf 100644
+> --- a/softmmu/vl.c
+> +++ b/softmmu/vl.c
+> @@ -2389,6 +2389,8 @@ static void qemu_process_early_options(void)
+>              mask =3D qemu_str_to_log_mask(log_mask);
+>              if (!mask) {
+>                  qemu_print_log_usage(stdout);
+> +                if (g_str_equal(log_mask, "help"))
+> +                    exit(0)
+>                  exit(1);
+>              }
+>          }
+
+Let's make "-d help" print help to stdout and terminate successfully,
+and "-d crap" report an error and terminate unsuccessfully.  Just like
+other options, such as -device and -machine.
+
+> Thank you very much!
+
+You're welcome!
 
 
