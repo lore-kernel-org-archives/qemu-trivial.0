@@ -1,81 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1obJ50-0005tk-Mp
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Sep 2022 06:05:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35936)
+	id 1obK6O-0008UV-5K
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Sep 2022 07:10:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38262)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1obJ4l-0005pi-5J
- for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 06:05:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58186)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1obJ4d-0003Xz-CY
- for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 06:04:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663841090;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=UTbSku4IMGq+dqke5u44orpZdaAzL25RBDqR1N0gPI0=;
- b=fUccHrRHIwenU3iqztCaNijhGKK1F1eL0GeoYTnzedgetWpyAt8iG0r3OcQSTYzbCTfDZI
- WqiPkSIwdjDgvMx4tyD8o6MLv86VXcvCLRJF+iJZUt3yG/SBQsl20ykhVLB0a+RBcTFrQ9
- EFvRmdqwoWKU6xqEoffeOHVWkLp9ht4=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-510-YSph5aB7OA6pQ47QLbg8KA-1; Thu, 22 Sep 2022 06:04:46 -0400
-X-MC-Unique: YSph5aB7OA6pQ47QLbg8KA-1
-Received: by mail-wm1-f70.google.com with SMTP id
- f25-20020a7bc8d9000000b003b4768dcd9cso563477wml.9
- for <qemu-trivial@nongnu.org>; Thu, 22 Sep 2022 03:04:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1obK5c-0008A0-C1
+ for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 07:10:11 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:34559)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1obK5W-0006cY-T8
+ for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 07:09:53 -0400
+Received: by mail-ej1-x634.google.com with SMTP id y3so20250570ejc.1
+ for <qemu-trivial@nongnu.org>; Thu, 22 Sep 2022 04:09:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=DBxu8oBCazvdB2SbjQpjzcq6y/5GSsJwjR9oyLAsvp0=;
+ b=YmZ7hGCm6qyWfHGM8guRCCMCiz7RUUL94N+1XE3WjJzFhpF9JmnjxH+tpzAR5YqQQa
+ KHTWfKd89jrJRpRGUK76HRUsESRNTpxUEOwhGLM/PER9ozfAj8zyQZvoT48FCxcVeOqV
+ r/xEm4PCtvBVGTUxDKYpRZftQ2xqik+BHaqVdFjUsqDPFwmzX/FnoAsENOt5KO4t43OV
+ YC+H8dgbA/BnUkZOLzTa+eKs1ReLGQMLc3NiYxH81EGX3QORnhV6pN2SjHDxOke2fkzG
+ LSgLEbAL2ipPuj5AFQflIu6kKLbaJzo4ykzGk+2vlI9tIb4xO2jHVM4n7amHsl/7tx0A
+ 7zkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=UTbSku4IMGq+dqke5u44orpZdaAzL25RBDqR1N0gPI0=;
- b=Iw4t3aItWeBf1oX175bTT3YD7qbiQHOpVAIfoju5VPBjQJSIABJnRVcIk5dzkbk9Mh
- NIKHr8+xwFcToIpCw/OkqE3t5vyQqV2loHGzPtGCqc7sj+R4v8Tz41aI8bLeEAcesDPr
- BA7le2HXs9glfiXctLBaylwVB/PULAVPST2hKl1g7cc7JE6zhqr3AdkwwHgj8be/4RHs
- ExaUVih1UTIW4k3wjnZQO3tMxNC2fEi+UwzxRFrV9M31KZxyDa2DiUb92wS16OO0L1H3
- wNeYwQrYnqq8KTpL8WkBLLqH7pXSMOEu6+cxyZfiuI6ZN6a1WSHEt1FgW3fotlP5159Q
- dbbA==
-X-Gm-Message-State: ACrzQf1qrreDIDNaNPEUXJRZBOmViX5EgAgxE1EAug5yam5cX9KxwSWW
- /e/GybIbqH+J4uPENe1x7FSAHItcfKPtdOswhPwVrccsNQ6n82jL0SK1THfJbZNhN9bLYbPE59C
- ULvqOMcmItDWN8rpF9Q==
-X-Received: by 2002:adf:f90d:0:b0:20c:de32:4d35 with SMTP id
- b13-20020adff90d000000b0020cde324d35mr1455314wrr.583.1663841085744; 
- Thu, 22 Sep 2022 03:04:45 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7a/v0WBRJd0us2BuaLGyPTPCHAjjstdesNMlCKVtAxKaQ5jpfOzYZzAJP/iUlEny8gQszzbQ==
-X-Received: by 2002:adf:f90d:0:b0:20c:de32:4d35 with SMTP id
- b13-20020adff90d000000b0020cde324d35mr1455304wrr.583.1663841085495; 
- Thu, 22 Sep 2022 03:04:45 -0700 (PDT)
-Received: from redhat.com ([2.55.16.18]) by smtp.gmail.com with ESMTPSA id
- z6-20020a05600c220600b003b492753826sm5338556wml.43.2022.09.22.03.04.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Sep 2022 03:04:44 -0700 (PDT)
-Date: Thu, 22 Sep 2022 06:04:41 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Lev Kujawski <lkujaw@member.fsf.org>
-Cc: qemu-trivial@nongnu.org, f4bug@amsat.org, John Snow <jsnow@redhat.com>,
- "open list:IDE" <qemu-block@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2] hw/ide/piix: Ignore writes of hardwired PCI command
- register bits
-Message-ID: <20220922060325-mutt-send-email-mst@kernel.org>
-References: <20220602204731.18706-1-lkujaw@member.fsf.org>
- <20220906102155-mutt-send-email-mst@kernel.org>
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=DBxu8oBCazvdB2SbjQpjzcq6y/5GSsJwjR9oyLAsvp0=;
+ b=jqPPEJAjxYUS+TBrlNEolclqQiPSqTeODykJaT8nL2GieWNyZgIrYv6tnAKKNvp/ev
+ ORpfVNZOfdipGCiwpQCuDm05w0OXCOLNA9aJB/9rJicKyz0aHt4+7aiJvfHZF8A7mMjd
+ eIzQBipd4Sh4Vy2yoi6xjXhAq2wDHiTdDkwc+9IOIL5x44dDbVQAayWX8P1IhQubEAPJ
+ BTRHxcH5lR4Va8vB7ol87pOsbvUyRPjO68AtKk5l94EGkWswnWSkpzG4eHdcU7HwBReh
+ RND1GAQ+1xYMwIczrh0a01XpQkSFnKY4420Bknf4eA63a9eFOUrSTdMOzPwSJjOtBhIg
+ 2i7Q==
+X-Gm-Message-State: ACrzQf2uUyF5lBsj/u8XPtTxMu3ON/Zlof/ixvKywieulc8Dm1KpQOC6
+ zP3cT7YF7nHqiYPglMfD1eKYwAI+6boqnNWVAWsF/A==
+X-Google-Smtp-Source: AMsMyM62ESiD3F99OGbcGMcZBAboiuIz8h51AJkDM1WdTxVVjuo6ZDja6kLauIxXporJN138NN9juSlhYS3Jyz+QS6c=
+X-Received: by 2002:a17:906:db05:b0:741:5730:270e with SMTP id
+ xj5-20020a170906db0500b007415730270emr2222292ejb.609.1663844985713; Thu, 22
+ Sep 2022 04:09:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20220906102155-mutt-send-email-mst@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20220816094957.31700-1-zhukeqian1@huawei.com>
+ <20220824170433.7ba675ca@redhat.com>
+ <CAFEAcA8jdjkZc24FqXBbw+LBJZ5HiCygqY3Y0S2TtmRzdx1P-A@mail.gmail.com>
+ <20220921152218.7b55dc76@redhat.com>
+In-Reply-To: <20220921152218.7b55dc76@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 22 Sep 2022 12:09:34 +0100
+Message-ID: <CAFEAcA_jgrcrhJjxuBRUR0w2Z6-4kaPJHD=3oqUGWePnhSX5GQ@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
+ acpi-ged
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, 
+ qemu-trivial@nongnu.org, Eric Auger <eric.auger@redhat.com>, 
+ Peter Xu <peterx@redhat.com>, wanghaibin.wang@huawei.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -89,81 +78,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Sep 2022 10:05:12 -0000
+X-List-Received-Date: Thu, 22 Sep 2022 11:10:27 -0000
 
-On Tue, Sep 06, 2022 at 10:23:57AM -0400, Michael S. Tsirkin wrote:
-> On Thu, Jun 02, 2022 at 08:47:31PM +0000, Lev Kujawski wrote:
-> > One method to enable PCI bus mastering for IDE controllers, often used
-> > by x86 firmware, is to write 0x7 to the PCI command register.  Neither
-> > the PIIX3 specification nor actual hardware (a Tyan S1686D system)
-> > permit modification of the Memory Space Enable (MSE) bit, 1, and thus
-> > the command register would be left in an unspecified state without
-> > this patch.
-> > 
-> > Signed-off-by: Lev Kujawski <lkujaw@member.fsf.org>
-> 
-> 
-> I don't think this is appropriate in trivial at all.
-> 
-> 
-> 
-> > ---
-> > This revised patch uses QEMU's built-in PCI bit-masking support rather
-> > than attempting to manually filter writes.  Thanks to Philippe Mathieu-
-> > Daude and Michael S. Tsirkin for review and the pointer.
-> 
-> But pls note I wrote:
-> 
-> 	Might need machine compat machinery
-> 	for this.
-> 
-> without said machinery, if guest set one of the other
-> bits, migration will fail.
+On Wed, 21 Sept 2022 at 14:22, Igor Mammedov <imammedo@redhat.com> wrote:
+>
+> On Tue, 20 Sep 2022 14:15:36 +0100
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> > On Wed, 24 Aug 2022 at 16:04, Igor Mammedov <imammedo@redhat.com> wrote:
+> > >
+> > > On Tue, 16 Aug 2022 17:49:57 +0800
+> > > Keqian Zhu <zhukeqian1@huawei.com> wrote:
+> > >
+> > > > Setup an ARM virtual machine of machine virt and execute qmp "query-acpi-ospm-status"
+> > > > causes segmentation fault with following dumpstack:
+> > > >  #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
+> > > >  #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
+> > > >  #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
+> > > >  #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
+> > > >  #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
+> > > >  #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
+> > > >  #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
+> > > >  #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
+> > > >  #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
+> > > >  #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
+> > > >  #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
+> > > >  #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
+> > > >  #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
+> > > >  #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
+> > > >
+> > > > Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
+> > > > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> > >
+> > > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> >
+> > I notice this doesn't seem to have gone in yet -- whose tree is it
+> > going to go via?
+>
+> I'd guess ARM tree (due to almost sole user virt-arm).
+> (there are toy users like microvm and new loongarch)
 
-I assume v3 will be forthcoming, right?
+OK; applied to target-arm.next, thanks.
 
-
-> 
-> >  hw/ide/piix.c | 15 +++++++++++++++
-> >  1 file changed, 15 insertions(+)
-> > 
-> > diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-> > index 76ea8fd9f6..bd3f397de8 100644
-> > --- a/hw/ide/piix.c
-> > +++ b/hw/ide/piix.c
-> > @@ -25,6 +25,8 @@
-> >   * References:
-> >   *  [1] 82371FB (PIIX) AND 82371SB (PIIX3) PCI ISA IDE XCELERATOR,
-> >   *      290550-002, Intel Corporation, April 1997.
-> > + *  [2] 82371AB PCI-TO-ISA / IDE XCELERATOR (PIIX4), 290562-001,
-> > + *      Intel Corporation, April 1997.
-> >   */
-> >  
-> >  #include "qemu/osdep.h"
-> > @@ -160,6 +162,19 @@ static void pci_piix_ide_realize(PCIDevice *dev, Error **errp)
-> >      uint8_t *pci_conf = dev->config;
-> >      int rc;
-> >  
-> > +    /*
-> > +     * Mask all IDE PCI command register bits except for Bus Master
-> > +     * Function Enable (bit 2) and I/O Space Enable (bit 1), as the
-> > +     * remainder are hardwired to 0 [1, p.48] [2, p.89-90].
-> > +     *
-> > +     * NOTE: According to the PIIX3 datasheet [1], the Memory Space
-> > +     * Enable (MSE bit) is hardwired to 1, but this is contradicted by
-> > +     * actual PIIX3 hardware, the datasheet itself (viz., Default
-> > +     * Value: 0000h), and the PIIX4 datasheet [2].
-> > +     */
-> > +    pci_set_word(dev->wmask + PCI_COMMAND,
-> > +                 PCI_COMMAND_MASTER | PCI_COMMAND_IO);
-> > +
-> >      pci_conf[PCI_CLASS_PROG] = 0x80; // legacy ATA mode
-> >  
-> >      bmdma_setup_bar(d);
-> > -- 
-> > 2.34.1
-> > 
-> > 
-> > 
-
+-- PMM
 
