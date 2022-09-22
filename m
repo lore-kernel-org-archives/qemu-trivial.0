@@ -1,70 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1obK6O-0008UV-5K
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Sep 2022 07:10:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38262)
+	id 1obOGs-0002AJ-TA
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Sep 2022 11:37:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37838)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1obK5c-0008A0-C1
- for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 07:10:11 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:34559)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1obK5W-0006cY-T8
- for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 07:09:53 -0400
-Received: by mail-ej1-x634.google.com with SMTP id y3so20250570ejc.1
- for <qemu-trivial@nongnu.org>; Thu, 22 Sep 2022 04:09:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=DBxu8oBCazvdB2SbjQpjzcq6y/5GSsJwjR9oyLAsvp0=;
- b=YmZ7hGCm6qyWfHGM8guRCCMCiz7RUUL94N+1XE3WjJzFhpF9JmnjxH+tpzAR5YqQQa
- KHTWfKd89jrJRpRGUK76HRUsESRNTpxUEOwhGLM/PER9ozfAj8zyQZvoT48FCxcVeOqV
- r/xEm4PCtvBVGTUxDKYpRZftQ2xqik+BHaqVdFjUsqDPFwmzX/FnoAsENOt5KO4t43OV
- YC+H8dgbA/BnUkZOLzTa+eKs1ReLGQMLc3NiYxH81EGX3QORnhV6pN2SjHDxOke2fkzG
- LSgLEbAL2ipPuj5AFQflIu6kKLbaJzo4ykzGk+2vlI9tIb4xO2jHVM4n7amHsl/7tx0A
- 7zkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=DBxu8oBCazvdB2SbjQpjzcq6y/5GSsJwjR9oyLAsvp0=;
- b=jqPPEJAjxYUS+TBrlNEolclqQiPSqTeODykJaT8nL2GieWNyZgIrYv6tnAKKNvp/ev
- ORpfVNZOfdipGCiwpQCuDm05w0OXCOLNA9aJB/9rJicKyz0aHt4+7aiJvfHZF8A7mMjd
- eIzQBipd4Sh4Vy2yoi6xjXhAq2wDHiTdDkwc+9IOIL5x44dDbVQAayWX8P1IhQubEAPJ
- BTRHxcH5lR4Va8vB7ol87pOsbvUyRPjO68AtKk5l94EGkWswnWSkpzG4eHdcU7HwBReh
- RND1GAQ+1xYMwIczrh0a01XpQkSFnKY4420Bknf4eA63a9eFOUrSTdMOzPwSJjOtBhIg
- 2i7Q==
-X-Gm-Message-State: ACrzQf2uUyF5lBsj/u8XPtTxMu3ON/Zlof/ixvKywieulc8Dm1KpQOC6
- zP3cT7YF7nHqiYPglMfD1eKYwAI+6boqnNWVAWsF/A==
-X-Google-Smtp-Source: AMsMyM62ESiD3F99OGbcGMcZBAboiuIz8h51AJkDM1WdTxVVjuo6ZDja6kLauIxXporJN138NN9juSlhYS3Jyz+QS6c=
-X-Received: by 2002:a17:906:db05:b0:741:5730:270e with SMTP id
- xj5-20020a170906db0500b007415730270emr2222292ejb.609.1663844985713; Thu, 22
- Sep 2022 04:09:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1obOGh-00022V-NS
+ for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 11:37:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:42057)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1obOGc-00018S-18
+ for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 11:37:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1663861052;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ITKm2bQwYtn3Eacqn/yPvepVgtjVsnnfD/bbbRmj20M=;
+ b=WUne2QCFIse08PRR/nExvFCpguuI29vgVooWvRewcRC4UeOj1epdJcaGC6CJ9BJjtNU7Yt
+ 3sD7DmBYu11OhTRUuaxHEH/sOA7+PoLt9x5hlLJuDxyZDFd8GZjTDRAP+8ebRwWnydEKZA
+ Sh29MnqQ5ZPiM68vNcpWDjl7tgNuLRc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-139-optX-UEaMhaWk8ZZjlj9LQ-1; Thu, 22 Sep 2022 11:37:29 -0400
+X-MC-Unique: optX-UEaMhaWk8ZZjlj9LQ-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7D08B185A792;
+ Thu, 22 Sep 2022 15:37:28 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.193.156])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 33F6F47505E;
+ Thu, 22 Sep 2022 15:37:23 +0000 (UTC)
+Date: Thu, 22 Sep 2022 17:37:21 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
+ qemu-block@nongnu.org, John Snow <jsnow@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Max Reitz <mreitz@redhat.com>
+Subject: Re: [PATCH] block/qcow2-bitmap: Add missing cast to silent GCC error
+Message-ID: <YyyBMe72wjTK3l0x@redhat.com>
+References: <20220919182755.51967-1-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20220816094957.31700-1-zhukeqian1@huawei.com>
- <20220824170433.7ba675ca@redhat.com>
- <CAFEAcA8jdjkZc24FqXBbw+LBJZ5HiCygqY3Y0S2TtmRzdx1P-A@mail.gmail.com>
- <20220921152218.7b55dc76@redhat.com>
-In-Reply-To: <20220921152218.7b55dc76@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Sep 2022 12:09:34 +0100
-Message-ID: <CAFEAcA_jgrcrhJjxuBRUR0w2Z6-4kaPJHD=3oqUGWePnhSX5GQ@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/acpi: Add ospm_status hook implementation for
- acpi-ged
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- qemu-trivial@nongnu.org, Eric Auger <eric.auger@redhat.com>, 
- Peter Xu <peterx@redhat.com>, wanghaibin.wang@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220919182755.51967-1-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,47 +72,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Sep 2022 11:10:27 -0000
+X-List-Received-Date: Thu, 22 Sep 2022 15:37:47 -0000
 
-On Wed, 21 Sept 2022 at 14:22, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> On Tue, 20 Sep 2022 14:15:36 +0100
-> Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> > On Wed, 24 Aug 2022 at 16:04, Igor Mammedov <imammedo@redhat.com> wrote:
-> > >
-> > > On Tue, 16 Aug 2022 17:49:57 +0800
-> > > Keqian Zhu <zhukeqian1@huawei.com> wrote:
-> > >
-> > > > Setup an ARM virtual machine of machine virt and execute qmp "query-acpi-ospm-status"
-> > > > causes segmentation fault with following dumpstack:
-> > > >  #1  0x0000aaaaab64235c in qmp_query_acpi_ospm_status (errp=errp@entry=0xfffffffff030) at ../monitor/qmp-cmds.c:312
-> > > >  #2  0x0000aaaaabfc4e20 in qmp_marshal_query_acpi_ospm_status (args=<optimized out>, ret=0xffffea4ffe90, errp=0xffffea4ffe88) at qapi/qapi-commands-acpi.c:63
-> > > >  #3  0x0000aaaaabff8ba0 in do_qmp_dispatch_bh (opaque=0xffffea4ffe98) at ../qapi/qmp-dispatch.c:128
-> > > >  #4  0x0000aaaaac02e594 in aio_bh_call (bh=0xffffe0004d80) at ../util/async.c:150
-> > > >  #5  aio_bh_poll (ctx=ctx@entry=0xaaaaad0f6040) at ../util/async.c:178
-> > > >  #6  0x0000aaaaac00bd40 in aio_dispatch (ctx=ctx@entry=0xaaaaad0f6040) at ../util/aio-posix.c:421
-> > > >  #7  0x0000aaaaac02e010 in aio_ctx_dispatch (source=0xaaaaad0f6040, callback=<optimized out>, user_data=<optimized out>) at ../util/async.c:320
-> > > >  #8  0x0000fffff76f6884 in g_main_context_dispatch () at /usr/lib64/libglib-2.0.so.0
-> > > >  #9  0x0000aaaaac0452d4 in glib_pollfds_poll () at ../util/main-loop.c:297
-> > > >  #10 os_host_main_loop_wait (timeout=0) at ../util/main-loop.c:320
-> > > >  #11 main_loop_wait (nonblocking=nonblocking@entry=0) at ../util/main-loop.c:596
-> > > >  #12 0x0000aaaaab5c9e50 in qemu_main_loop () at ../softmmu/runstate.c:734
-> > > >  #13 0x0000aaaaab185370 in qemu_main (argc=argc@entry=47, argv=argv@entry=0xfffffffff518, envp=envp@entry=0x0) at ../softmmu/main.c:38
-> > > >  #14 0x0000aaaaab16f99c in main (argc=47, argv=0xfffffffff518) at ../softmmu/main.c:47
-> > > >
-> > > > Fixes: ebb62075021a ("hw/acpi: Add ACPI Generic Event Device Support")
-> > > > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > >
-> > > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> >
-> > I notice this doesn't seem to have gone in yet -- whose tree is it
-> > going to go via?
->
-> I'd guess ARM tree (due to almost sole user virt-arm).
-> (there are toy users like microvm and new loongarch)
+Am 19.09.2022 um 20:27 hat Philippe Mathieu-Daudé geschrieben:
+> Commit d1258dd0c8 ("qcow2: autoloading dirty bitmaps") added the
+> set_readonly_helper() GFunc handler, correctly casting the gpointer
+> user_data in both the g_slist_foreach() caller and the handler.
+> Few commits later (commit 1b6b0562db), the handler is reused in
+> qcow2_reopen_bitmaps_rw() but missing the gpointer cast, resulting
+> in the following error when using Homebrew GCC 12.2.0:
+> 
+>   [2/658] Compiling C object libblock.fa.p/block_qcow2-bitmap.c.o
+>   ../../block/qcow2-bitmap.c: In function 'qcow2_reopen_bitmaps_rw':
+>   ../../block/qcow2-bitmap.c:1211:60: error: incompatible type for argument 3 of 'g_slist_foreach'
+>    1211 |     g_slist_foreach(ro_dirty_bitmaps, set_readonly_helper, false);
+>         |                                                            ^~~~~
+>         |                                                            |
+>         |                                                            _Bool
+>   In file included from /opt/homebrew/Cellar/glib/2.72.3_1/include/glib-2.0/glib/gmain.h:26,
+>                    from /opt/homebrew/Cellar/glib/2.72.3_1/include/glib-2.0/glib/giochannel.h:33,
+>                    from /opt/homebrew/Cellar/glib/2.72.3_1/include/glib-2.0/glib.h:54,
+>                    from /Users/philmd/source/qemu/include/glib-compat.h:32,
+>                    from /Users/philmd/source/qemu/include/qemu/osdep.h:144,
+>                    from ../../block/qcow2-bitmap.c:28:
+>   /opt/homebrew/Cellar/glib/2.72.3_1/include/glib-2.0/glib/gslist.h:127:61: note: expected 'gpointer' {aka 'void *'} but argument is of type '_Bool'
+>     127 |                                           gpointer          user_data);
+>         |                                           ~~~~~~~~~~~~~~~~~~^~~~~~~~~
+>   At top level:
+>   FAILED: libblock.fa.p/block_qcow2-bitmap.c.o
+> 
+> Fix by adding the missing gpointer cast.
+> 
+> Fixes: 1b6b0562db ("qcow2: support .bdrv_reopen_bitmaps_rw")
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-OK; applied to target-arm.next, thanks.
+Thanks, applied to the block branch. And in case qemu-trivial picks it
+up anyway:
 
--- PMM
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+
 
