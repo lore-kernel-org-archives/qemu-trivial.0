@@ -1,61 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ob1Nb-0007Lc-Fo
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Sep 2022 11:11:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36616)
+	id 1obJ50-0005tk-Mp
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Sep 2022 06:05:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35936)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ob1NZ-0007J7-3y
- for qemu-trivial@nongnu.org; Wed, 21 Sep 2022 11:11:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:60983)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1obJ4l-0005pi-5J
+ for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 06:05:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:58186)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ob1NU-00081j-5P
- for qemu-trivial@nongnu.org; Wed, 21 Sep 2022 11:11:11 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1obJ4d-0003Xz-CY
+ for qemu-trivial@nongnu.org; Thu, 22 Sep 2022 06:04:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663773067;
+ s=mimecast20190719; t=1663841090;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=E9tb5K0ATjyE5IMNLpugAdTFo+8PR9GChQYy7CO3LbM=;
- b=i/EZ7Ln+E2Cu+9k+/v5sQ2azIH3dJFsfXwmqcBq07u43vozE0L+bTjs/u9AqTB9ehvJ64r
- +Nk86YoW+SQdGCR5Jbln0H/g5ZYOIqSsi+vVnoJx+qHbmnYP2BDdbxsfM32bSjliEERaq2
- IaWK7YByibWzrHtHpwmEr0KlhSpuH/U=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-589-x1bE_8J3MriBWaJdVBohDQ-1; Wed, 21 Sep 2022 11:11:05 -0400
-X-MC-Unique: x1bE_8J3MriBWaJdVBohDQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5CDAD803912;
- Wed, 21 Sep 2022 15:11:05 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 12043C4C9D6;
- Wed, 21 Sep 2022 15:11:05 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B568621E6900; Wed, 21 Sep 2022 17:11:03 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-Cc: Markus Armbruster <armbru@redhat.com>,  qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org,  dgilbert@redhat.com,  joe.jin@oracle.com,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v3 1/1] monitor/hmp: print trace as option in help for
- log command
-References: <20220831213943.8155-1-dongli.zhang@oracle.com>
- <87h71qrmkh.fsf@pond.sub.org>
- <d4ed9983-586e-ea44-90ad-0fc0f259acfc@amsat.org>
- <4c0425d5-65fa-72e8-5950-abcee7a3a8ce@oracle.com>
-Date: Wed, 21 Sep 2022 17:11:03 +0200
-In-Reply-To: <4c0425d5-65fa-72e8-5950-abcee7a3a8ce@oracle.com> (Dongli Zhang's
- message of "Sun, 18 Sep 2022 23:49:25 -0700")
-Message-ID: <87edw4ahko.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ bh=UTbSku4IMGq+dqke5u44orpZdaAzL25RBDqR1N0gPI0=;
+ b=fUccHrRHIwenU3iqztCaNijhGKK1F1eL0GeoYTnzedgetWpyAt8iG0r3OcQSTYzbCTfDZI
+ WqiPkSIwdjDgvMx4tyD8o6MLv86VXcvCLRJF+iJZUt3yG/SBQsl20ykhVLB0a+RBcTFrQ9
+ EFvRmdqwoWKU6xqEoffeOHVWkLp9ht4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-510-YSph5aB7OA6pQ47QLbg8KA-1; Thu, 22 Sep 2022 06:04:46 -0400
+X-MC-Unique: YSph5aB7OA6pQ47QLbg8KA-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ f25-20020a7bc8d9000000b003b4768dcd9cso563477wml.9
+ for <qemu-trivial@nongnu.org>; Thu, 22 Sep 2022 03:04:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=UTbSku4IMGq+dqke5u44orpZdaAzL25RBDqR1N0gPI0=;
+ b=Iw4t3aItWeBf1oX175bTT3YD7qbiQHOpVAIfoju5VPBjQJSIABJnRVcIk5dzkbk9Mh
+ NIKHr8+xwFcToIpCw/OkqE3t5vyQqV2loHGzPtGCqc7sj+R4v8Tz41aI8bLeEAcesDPr
+ BA7le2HXs9glfiXctLBaylwVB/PULAVPST2hKl1g7cc7JE6zhqr3AdkwwHgj8be/4RHs
+ ExaUVih1UTIW4k3wjnZQO3tMxNC2fEi+UwzxRFrV9M31KZxyDa2DiUb92wS16OO0L1H3
+ wNeYwQrYnqq8KTpL8WkBLLqH7pXSMOEu6+cxyZfiuI6ZN6a1WSHEt1FgW3fotlP5159Q
+ dbbA==
+X-Gm-Message-State: ACrzQf1qrreDIDNaNPEUXJRZBOmViX5EgAgxE1EAug5yam5cX9KxwSWW
+ /e/GybIbqH+J4uPENe1x7FSAHItcfKPtdOswhPwVrccsNQ6n82jL0SK1THfJbZNhN9bLYbPE59C
+ ULvqOMcmItDWN8rpF9Q==
+X-Received: by 2002:adf:f90d:0:b0:20c:de32:4d35 with SMTP id
+ b13-20020adff90d000000b0020cde324d35mr1455314wrr.583.1663841085744; 
+ Thu, 22 Sep 2022 03:04:45 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7a/v0WBRJd0us2BuaLGyPTPCHAjjstdesNMlCKVtAxKaQ5jpfOzYZzAJP/iUlEny8gQszzbQ==
+X-Received: by 2002:adf:f90d:0:b0:20c:de32:4d35 with SMTP id
+ b13-20020adff90d000000b0020cde324d35mr1455304wrr.583.1663841085495; 
+ Thu, 22 Sep 2022 03:04:45 -0700 (PDT)
+Received: from redhat.com ([2.55.16.18]) by smtp.gmail.com with ESMTPSA id
+ z6-20020a05600c220600b003b492753826sm5338556wml.43.2022.09.22.03.04.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 22 Sep 2022 03:04:44 -0700 (PDT)
+Date: Thu, 22 Sep 2022 06:04:41 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Lev Kujawski <lkujaw@member.fsf.org>
+Cc: qemu-trivial@nongnu.org, f4bug@amsat.org, John Snow <jsnow@redhat.com>,
+ "open list:IDE" <qemu-block@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v2] hw/ide/piix: Ignore writes of hardwired PCI command
+ register bits
+Message-ID: <20220922060325-mutt-send-email-mst@kernel.org>
+References: <20220602204731.18706-1-lkujaw@member.fsf.org>
+ <20220906102155-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+In-Reply-To: <20220906102155-mutt-send-email-mst@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -76,139 +89,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Sep 2022 15:11:13 -0000
+X-List-Received-Date: Thu, 22 Sep 2022 10:05:12 -0000
 
-Dongli Zhang <dongli.zhang@oracle.com> writes:
+On Tue, Sep 06, 2022 at 10:23:57AM -0400, Michael S. Tsirkin wrote:
+> On Thu, Jun 02, 2022 at 08:47:31PM +0000, Lev Kujawski wrote:
+> > One method to enable PCI bus mastering for IDE controllers, often used
+> > by x86 firmware, is to write 0x7 to the PCI command register.  Neither
+> > the PIIX3 specification nor actual hardware (a Tyan S1686D system)
+> > permit modification of the Memory Space Enable (MSE) bit, 1, and thus
+> > the command register would be left in an unspecified state without
+> > this patch.
+> > 
+> > Signed-off-by: Lev Kujawski <lkujaw@member.fsf.org>
+> 
+> 
+> I don't think this is appropriate in trivial at all.
+> 
+> 
+> 
+> > ---
+> > This revised patch uses QEMU's built-in PCI bit-masking support rather
+> > than attempting to manually filter writes.  Thanks to Philippe Mathieu-
+> > Daude and Michael S. Tsirkin for review and the pointer.
+> 
+> But pls note I wrote:
+> 
+> 	Might need machine compat machinery
+> 	for this.
+> 
+> without said machinery, if guest set one of the other
+> bits, migration will fail.
 
-> Hi Markus,
->
-> On 9/17/22 2:44 PM, Philippe Mathieu-Daud=C3=A9 via wrote:
->> Hi Markus,
->>=20
->> On 2/9/22 14:24, Markus Armbruster wrote:
->>> Dongli Zhang <dongli.zhang@oracle.com> writes:
->>>
->>>> The below is printed when printing help information in qemu-system-x86=
-_64
->>>> command line, and when CONFIG_TRACE_LOG is enabled:
->>>>
->>>> ----------------------------
->>>> $ qemu-system-x86_64 -d help
->>>> ... ...
->>>> trace:PATTERN=C2=A0=C2=A0 enable trace events
->>>>
->>>> Use "-d trace:help" to get a list of trace events.
->>>> ----------------------------
->>>>
->>>> However, the options of "trace:PATTERN" are only printed by
->>>> "qemu-system-x86_64 -d help", but missing in hmp "help log" command.
->>>>
->>>> Fixes: c84ea00dc2 ("log: add "-d trace:PATTERN"")
->>>> Cc: Joe Jin <joe.jin@oracle.com>
->>>> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
->>>> ---
->>>> Changed since v1:
->>>> - change format for "none" as well.
->>>> Changed since v2:
->>>> - use "log trace:help" in help message.
->>>> - add more clarification in commit message.
->>>> - add 'Fixes' tag.
->>>> ---
->>>> =C2=A0 monitor/hmp.c | 9 +++++++--
->>>> =C2=A0 1 file changed, 7 insertions(+), 2 deletions(-)
->>=20
->>> Not this patch's fault:
->>>
->>> 1. "-d help" terminates with exit status 1, "-d trace:help" with 0.=C2=
-=A0 The
->>> =C2=A0=C2=A0=C2=A0 former is wrong.
->
-> May I assume it is expected to have exit status 1 when "-d help"?
+I assume v3 will be forthcoming, right?
 
-Non-zero exit status means error.  Asking for and receiving help is not
-an error.  Therefore, "-d help" should exit with status 0, just like
-"-help", "-device help", "-machine help", ...
 
-> According to the output of "-d", there is even not a "help" option, but o=
-nly a
-> "-d trace:help" option. That is, "-d help" is not officially supported.
-
-It *is* documented:
-
-    $ qemu-system-x86_64 -help | grep -- '^-d '
-    -d item1,...    enable logging of specified items (use '-d help' for a =
-list of log items)
-
-> The below example use "-d hellworld" but not "help".
->
-> # qemu-system-x86_64 -d helloworld
-> Log items (comma separated):
-> out_asm         show generated host assembly code for each compiled TB
-> in_asm          show target assembly code for each compiled TB
-> op              show micro ops for each compiled TB
-> op_opt          show micro ops after optimization
-> op_ind          show micro ops before indirect lowering
-> int             show interrupts/exceptions in short format
-> exec            show trace before each executed TB (lots of logs)
-> cpu             show CPU registers before entering a TB (lots of logs)
-> fpu             include FPU registers in the 'cpu' logging
-> mmu             log MMU-related activities
-> pcall           x86 only: show protected mode far calls/returns/exceptions
-> cpu_reset       show CPU state before CPU resets
-> unimp           log unimplemented functionality
-> guest_errors    log when the guest OS does something invalid (eg accessin=
-g a
-> non-existent register)
-> page            dump pages at beginning of user mode emulation
-> nochain         do not chain compiled TBs so that "exec" and "cpu" show
-> complete traces
-> plugin          output from TCG plugins
->
-> strace          log every user-mode syscall, its input, and its result
-> tid             open a separate log file per thread; filename must contai=
-n '%d'
-> trace:PATTERN   enable trace events
->
-> Use "-d trace:help" to get a list of trace events.
->
->
-> According to the source code, the qemu_str_to_log_mask() expects either l=
-og
-> items or "trace". For any other inputs (e.g., "help" or "helloworld"),
-> qemu_str_to_log_mask() returns 0 (no bit set in the mask).
-
-You're right.
-
->                                                            That indicates=
- the
-> input (e.g., "help") is not an expected input.
-
-No, it indicates laziness :)
-
-> Therefore, can I assume this is not a bug? I do not think something like =
-below
-> is very helpful.
->
-> diff --git a/softmmu/vl.c b/softmmu/vl.c
-> index 263f029a8e..54c8e624bf 100644
-> --- a/softmmu/vl.c
-> +++ b/softmmu/vl.c
-> @@ -2389,6 +2389,8 @@ static void qemu_process_early_options(void)
->              mask =3D qemu_str_to_log_mask(log_mask);
->              if (!mask) {
->                  qemu_print_log_usage(stdout);
-> +                if (g_str_equal(log_mask, "help"))
-> +                    exit(0)
->                  exit(1);
->              }
->          }
-
-Let's make "-d help" print help to stdout and terminate successfully,
-and "-d crap" report an error and terminate unsuccessfully.  Just like
-other options, such as -device and -machine.
-
-> Thank you very much!
-
-You're welcome!
+> 
+> >  hw/ide/piix.c | 15 +++++++++++++++
+> >  1 file changed, 15 insertions(+)
+> > 
+> > diff --git a/hw/ide/piix.c b/hw/ide/piix.c
+> > index 76ea8fd9f6..bd3f397de8 100644
+> > --- a/hw/ide/piix.c
+> > +++ b/hw/ide/piix.c
+> > @@ -25,6 +25,8 @@
+> >   * References:
+> >   *  [1] 82371FB (PIIX) AND 82371SB (PIIX3) PCI ISA IDE XCELERATOR,
+> >   *      290550-002, Intel Corporation, April 1997.
+> > + *  [2] 82371AB PCI-TO-ISA / IDE XCELERATOR (PIIX4), 290562-001,
+> > + *      Intel Corporation, April 1997.
+> >   */
+> >  
+> >  #include "qemu/osdep.h"
+> > @@ -160,6 +162,19 @@ static void pci_piix_ide_realize(PCIDevice *dev, Error **errp)
+> >      uint8_t *pci_conf = dev->config;
+> >      int rc;
+> >  
+> > +    /*
+> > +     * Mask all IDE PCI command register bits except for Bus Master
+> > +     * Function Enable (bit 2) and I/O Space Enable (bit 1), as the
+> > +     * remainder are hardwired to 0 [1, p.48] [2, p.89-90].
+> > +     *
+> > +     * NOTE: According to the PIIX3 datasheet [1], the Memory Space
+> > +     * Enable (MSE bit) is hardwired to 1, but this is contradicted by
+> > +     * actual PIIX3 hardware, the datasheet itself (viz., Default
+> > +     * Value: 0000h), and the PIIX4 datasheet [2].
+> > +     */
+> > +    pci_set_word(dev->wmask + PCI_COMMAND,
+> > +                 PCI_COMMAND_MASTER | PCI_COMMAND_IO);
+> > +
+> >      pci_conf[PCI_CLASS_PROG] = 0x80; // legacy ATA mode
+> >  
+> >      bmdma_setup_bar(d);
+> > -- 
+> > 2.34.1
+> > 
+> > 
+> > 
 
 
