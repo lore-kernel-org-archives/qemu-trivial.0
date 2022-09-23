@@ -1,73 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1obg84-0001Jb-4m
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Sep 2022 06:41:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56054)
+	id 1obhMC-0001j7-PM
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Sep 2022 08:00:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1obg80-0001HY-1x
- for qemu-trivial@nongnu.org; Fri, 23 Sep 2022 06:41:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:29014)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1obhMA-0001gC-6J
+ for qemu-trivial@nongnu.org; Fri, 23 Sep 2022 08:00:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:48390)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1obg7w-0003MJ-MK
- for qemu-trivial@nongnu.org; Fri, 23 Sep 2022 06:41:50 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1obhM6-0000AF-Ex
+ for qemu-trivial@nongnu.org; Fri, 23 Sep 2022 08:00:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663929707;
+ s=mimecast20190719; t=1663934429;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=pLx155w8BDoTqc6QRal5/+onAcSfuDPOYdgLujAM65A=;
- b=bYoelj+ztvwAoaXmnU6toJcSwLDXzAIL3AaizW5T8E1PBHtOpm3UTkI7931a2writNNxB1
- TZcVJQIdNC711j+Qw9HoJGog5vYJseDM4hAXV0PXfJfhXUZzFXZxebLv4yxGNnTy2Jsv+1
- qUEwMwe9//ZEk6r7d6zDDXFMoJr11cI=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-449-g0jFQEB8PheSDoZFj5f_RQ-1; Fri, 23 Sep 2022 06:41:46 -0400
-X-MC-Unique: g0jFQEB8PheSDoZFj5f_RQ-1
-Received: by mail-wr1-f69.google.com with SMTP id
- d30-20020adfa41e000000b00228c0e80c49so3883392wra.21
- for <qemu-trivial@nongnu.org>; Fri, 23 Sep 2022 03:41:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=pLx155w8BDoTqc6QRal5/+onAcSfuDPOYdgLujAM65A=;
- b=z41W+oRRP0RKm/k898+UxwXGwETnPCsg3WeS1OAnkQVM7GtjdBfii8BVkGEzM+DDWe
- RPTbWxp4fclKqnTslgikt73j7Vv5R0g+2msgI9Wra730MCZEiHNtfo+Dm3GDGFmk9nH0
- GbGhIl/IThD/1OThV6lbY5h99cdqxgYoKCN5r6Nw5SxD8rIUPwE/hfFNjPAFMoCIuGi8
- SWknv1q9qRbLE+e7QqNTZ9Ld7Kk98k0eHVqP0hjiSegmueFSqFCQtM6Ed8LB4nCRSHzF
- 4Ub8EFSP0maMF+/b/WyY7qzfhPv7/ad3tNWn/94QzVZYYkwhSUC3uS/65dHASloEuQ8V
- v85A==
-X-Gm-Message-State: ACrzQf1RgFhnLWgl5xP9U3KWF+3sZ2ysgtkNhgAiEzwq2gfXD7UZpNPa
- X21+hQsOwhlMv/PfT1f/xwzX19gktkNVUxhCDMz7NcRpK/dnD5XlAWJA2AsdCkjE0GmJ7EyLwRb
- 1bADh8+7NFaOn259Buw==
-X-Received: by 2002:a5d:64e8:0:b0:22a:bbb0:fa with SMTP id
- g8-20020a5d64e8000000b0022abbb000famr4945428wri.372.1663929704964; 
- Fri, 23 Sep 2022 03:41:44 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM71iGCiHT1nISlB1kQv525RGZtQuVBJ5zIsrEw0J78y/UbsiUtjxmFhR3TkrCVz30GapLn48w==
-X-Received: by 2002:a5d:64e8:0:b0:22a:bbb0:fa with SMTP id
- g8-20020a5d64e8000000b0022abbb000famr4945409wri.372.1663929704699; 
- Fri, 23 Sep 2022 03:41:44 -0700 (PDT)
-Received: from redhat.com ([2.55.47.213]) by smtp.gmail.com with ESMTPSA id
- p8-20020a05600c1d8800b003a342933727sm2301380wms.3.2022.09.23.03.41.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Sep 2022 03:41:44 -0700 (PDT)
-Date: Fri, 23 Sep 2022 06:41:40 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, elena.ufimtseva@oracle.com, jag.raman@oracle.com,
- john.g.johnson@oracle.com, pizhenwei@bytedance.com,
- arei.gonglei@huawei.com, huangy81@chinatelecom.cn,
- quintela@redhat.com, dgilbert@redhat.com, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] Use g_new() & friends where that makes obvious sense
-Message-ID: <20220923064130-mutt-send-email-mst@kernel.org>
-References: <20220923084254.4173111-1-armbru@redhat.com>
+ bh=qKD5dj5BRbB/dUJ9ghUyxSIdmCnlPxmqIrhKCIATiRM=;
+ b=TqxGgJZkkCycUKi/qaQ5V9UhxmqZ5LBCzuYz8GJ5RPiaWU1pXdbQAE6uFWBaKQElwMP8a8
+ C3jD0swmUdlmt9/eYQ8JpqW0LJaIbzgWkcGQSOoN4/e6mQjH/kLs+Cso4t5BrLb5uIwOr/
+ Rzf9zlUbIwmqpCtxdBOI27hl/Alzk8M=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-380-JcE96BXGMQiG8MwW8D2Zvw-1; Fri, 23 Sep 2022 08:00:28 -0400
+X-MC-Unique: JcE96BXGMQiG8MwW8D2Zvw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id ACE8386865C;
+ Fri, 23 Sep 2022 12:00:27 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.163])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 58E20C15BB9;
+ Fri, 23 Sep 2022 12:00:27 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 2746121E691D; Fri, 23 Sep 2022 14:00:25 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH 2/3] Drop useless casts from g_malloc() & friends to pointer
+Date: Fri, 23 Sep 2022 14:00:24 +0200
+Message-Id: <20220923120025.448759-3-armbru@redhat.com>
+In-Reply-To: <20220923120025.448759-1-armbru@redhat.com>
+References: <20220923120025.448759-1-armbru@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20220923084254.4173111-1-armbru@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Content-type: text/plain
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -88,100 +68,191 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Sep 2022 10:41:54 -0000
+X-List-Received-Date: Fri, 23 Sep 2022 12:00:34 -0000
 
-On Fri, Sep 23, 2022 at 10:42:54AM +0200, Markus Armbruster wrote:
-> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-> for two reasons.  One, it catches multiplication overflowing size_t.
-> Two, it returns T * rather than void *, which lets the compiler catch
-> more type errors.
-> 
-> This commit only touches allocations with size arguments of the form
-> sizeof(T).
-> 
-> Patch created mechanically with:
-> 
->     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
-> 	     --macro-file scripts/cocci-macro-file.h FILES...
-> 
-> The previous iteration was commit a95942b50c.
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+These memory allocation functions return void *, and casting to
+another pointer type is useless clutter.  Drop these casts.
 
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+If you really want another pointer type, consider g_new().
 
-> ---
->  hw/remote/iommu.c         | 2 +-
->  hw/virtio/virtio-crypto.c | 2 +-
->  migration/dirtyrate.c     | 4 ++--
->  softmmu/dirtylimit.c      | 4 ++--
->  4 files changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/remote/iommu.c b/hw/remote/iommu.c
-> index fd723d91f3..1391dd712c 100644
-> --- a/hw/remote/iommu.c
-> +++ b/hw/remote/iommu.c
-> @@ -47,7 +47,7 @@ static AddressSpace *remote_iommu_find_add_as(PCIBus *pci_bus,
->      elem = g_hash_table_lookup(iommu->elem_by_devfn, INT2VOIDP(devfn));
->  
->      if (!elem) {
-> -        elem = g_malloc0(sizeof(RemoteIommuElem));
-> +        elem = g_new0(RemoteIommuElem, 1);
->          g_hash_table_insert(iommu->elem_by_devfn, INT2VOIDP(devfn), elem);
->      }
->  
-> diff --git a/hw/virtio/virtio-crypto.c b/hw/virtio/virtio-crypto.c
-> index c1243c3f93..df4bde210b 100644
-> --- a/hw/virtio/virtio-crypto.c
-> +++ b/hw/virtio/virtio-crypto.c
-> @@ -710,7 +710,7 @@ virtio_crypto_handle_asym_req(VirtIOCrypto *vcrypto,
->      uint8_t *src = NULL;
->      uint8_t *dst = NULL;
->  
-> -    asym_op_info = g_malloc0(sizeof(CryptoDevBackendAsymOpInfo));
-> +    asym_op_info = g_new0(CryptoDevBackendAsymOpInfo, 1);
->      src_len = ldl_le_p(&req->para.src_data_len);
->      dst_len = ldl_le_p(&req->para.dst_data_len);
->  
-> diff --git a/migration/dirtyrate.c b/migration/dirtyrate.c
-> index 795fab5c37..d6f1e01a70 100644
-> --- a/migration/dirtyrate.c
-> +++ b/migration/dirtyrate.c
-> @@ -119,9 +119,9 @@ static DirtyPageRecord *vcpu_dirty_stat_alloc(VcpuStat *stat)
->      }
->  
->      stat->nvcpu = nvcpu;
-> -    stat->rates = g_malloc0(sizeof(DirtyRateVcpu) * nvcpu);
-> +    stat->rates = g_new0(DirtyRateVcpu, nvcpu);
->  
-> -    records = g_malloc0(sizeof(DirtyPageRecord) * nvcpu);
-> +    records = g_new0(DirtyPageRecord, nvcpu);
->  
->      return records;
->  }
-> diff --git a/softmmu/dirtylimit.c b/softmmu/dirtylimit.c
-> index 8d98cb7f2c..12668555f2 100644
-> --- a/softmmu/dirtylimit.c
-> +++ b/softmmu/dirtylimit.c
-> @@ -154,7 +154,7 @@ void vcpu_dirty_rate_stat_initialize(void)
->  
->      vcpu_dirty_rate_stat->stat.nvcpu = max_cpus;
->      vcpu_dirty_rate_stat->stat.rates =
-> -        g_malloc0(sizeof(DirtyRateVcpu) * max_cpus);
-> +        g_new0(DirtyRateVcpu, max_cpus);
->  
->      vcpu_dirty_rate_stat->running = false;
->  }
-> @@ -198,7 +198,7 @@ void dirtylimit_state_initialize(void)
->      dirtylimit_state = g_malloc0(sizeof(*dirtylimit_state));
->  
->      dirtylimit_state->states =
-> -            g_malloc0(sizeof(VcpuDirtyLimitState) * max_cpus);
-> +            g_new0(VcpuDirtyLimitState, max_cpus);
->  
->      for (i = 0; i < max_cpus; i++) {
->          dirtylimit_state->states[i].cpu_index = i;
-> -- 
-> 2.37.2
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/arm/nseries.c            | 4 ++--
+ hw/char/exynos4210_uart.c   | 2 +-
+ hw/display/blizzard.c       | 2 +-
+ hw/misc/cbus.c              | 6 +++---
+ hw/nvram/eeprom93xx.c       | 2 +-
+ hw/usb/ccid-card-emulated.c | 2 +-
+ target/i386/kvm/kvm.c       | 3 +--
+ target/i386/whpx/whpx-all.c | 5 ++---
+ target/s390x/kvm/kvm.c      | 2 +-
+ ui/vnc-enc-hextile.c        | 4 ++--
+ 10 files changed, 15 insertions(+), 17 deletions(-)
+
+diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
+index 692c94ceb4..b151113c27 100644
+--- a/hw/arm/nseries.c
++++ b/hw/arm/nseries.c
+@@ -702,7 +702,7 @@ static uint32_t mipid_txrx(void *opaque, uint32_t cmd, int len)
+ 
+ static void *mipid_init(void)
+ {
+-    struct mipid_s *s = (struct mipid_s *) g_malloc0(sizeof(*s));
++    struct mipid_s *s = g_malloc0(sizeof(*s));
+ 
+     s->id = 0x838f03;
+     mipid_reset(s);
+@@ -1300,7 +1300,7 @@ static int n810_atag_setup(const struct arm_boot_info *info, void *p)
+ static void n8x0_init(MachineState *machine,
+                       struct arm_boot_info *binfo, int model)
+ {
+-    struct n800_s *s = (struct n800_s *) g_malloc0(sizeof(*s));
++    struct n800_s *s = g_malloc0(sizeof(*s));
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+ 
+     if (machine->ram_size != mc->default_ram_size) {
+diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
+index addcd59b02..7b7c56b6ef 100644
+--- a/hw/char/exynos4210_uart.c
++++ b/hw/char/exynos4210_uart.c
+@@ -211,7 +211,7 @@ static void fifo_reset(Exynos4210UartFIFO *q)
+     g_free(q->data);
+     q->data = NULL;
+ 
+-    q->data = (uint8_t *)g_malloc0(q->size);
++    q->data = g_malloc0(q->size);
+ 
+     q->sp = 0;
+     q->rp = 0;
+diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
+index 105241577d..ebe230dd0a 100644
+--- a/hw/display/blizzard.c
++++ b/hw/display/blizzard.c
+@@ -1007,7 +1007,7 @@ static const GraphicHwOps blizzard_ops = {
+ 
+ void *s1d13745_init(qemu_irq gpio_int)
+ {
+-    BlizzardState *s = (BlizzardState *) g_malloc0(sizeof(*s));
++    BlizzardState *s = g_malloc0(sizeof(*s));
+     DisplaySurface *surface;
+ 
+     s->fb = g_malloc(0x180000);
+diff --git a/hw/misc/cbus.c b/hw/misc/cbus.c
+index 3c3721ad2d..653e8ddcd5 100644
+--- a/hw/misc/cbus.c
++++ b/hw/misc/cbus.c
+@@ -133,7 +133,7 @@ static void cbus_sel(void *opaque, int line, int level)
+ 
+ CBus *cbus_init(qemu_irq dat)
+ {
+-    CBusPriv *s = (CBusPriv *) g_malloc0(sizeof(*s));
++    CBusPriv *s = g_malloc0(sizeof(*s));
+ 
+     s->dat_out = dat;
+     s->cbus.clk = qemu_allocate_irq(cbus_clk, s, 0);
+@@ -388,7 +388,7 @@ static void retu_io(void *opaque, int rw, int reg, uint16_t *val)
+ 
+ void *retu_init(qemu_irq irq, int vilma)
+ {
+-    CBusRetu *s = (CBusRetu *) g_malloc0(sizeof(*s));
++    CBusRetu *s = g_malloc0(sizeof(*s));
+ 
+     s->irq = irq;
+     s->irqen = 0xffff;
+@@ -604,7 +604,7 @@ static void tahvo_io(void *opaque, int rw, int reg, uint16_t *val)
+ 
+ void *tahvo_init(qemu_irq irq, int betty)
+ {
+-    CBusTahvo *s = (CBusTahvo *) g_malloc0(sizeof(*s));
++    CBusTahvo *s = g_malloc0(sizeof(*s));
+ 
+     s->irq = irq;
+     s->irqen = 0xffff;
+diff --git a/hw/nvram/eeprom93xx.c b/hw/nvram/eeprom93xx.c
+index a1b9c78844..1081e2cc0d 100644
+--- a/hw/nvram/eeprom93xx.c
++++ b/hw/nvram/eeprom93xx.c
+@@ -315,7 +315,7 @@ eeprom_t *eeprom93xx_new(DeviceState *dev, uint16_t nwords)
+         addrbits = 6;
+     }
+ 
+-    eeprom = (eeprom_t *)g_malloc0(sizeof(*eeprom) + nwords * 2);
++    eeprom = g_malloc0(sizeof(*eeprom) + nwords * 2);
+     eeprom->size = nwords;
+     eeprom->addrbits = addrbits;
+     /* Output DO is tristate, read results in 1. */
+diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+index 1ddf7297f6..ee41a81801 100644
+--- a/hw/usb/ccid-card-emulated.c
++++ b/hw/usb/ccid-card-emulated.c
+@@ -140,7 +140,7 @@ static void emulated_apdu_from_guest(CCIDCardState *base,
+     const uint8_t *apdu, uint32_t len)
+ {
+     EmulatedState *card = EMULATED_CCID_CARD(base);
+-    EmulEvent *event = (EmulEvent *)g_malloc(sizeof(EmulEvent) + len);
++    EmulEvent *event = g_malloc(sizeof(EmulEvent) + len);
+ 
+     assert(event);
+     event->p.data.type = EMUL_GUEST_APDU;
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index a1fd1f5379..c8f4d500ea 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -2252,8 +2252,7 @@ static int kvm_get_supported_feature_msrs(KVMState *s)
+     }
+ 
+     assert(msr_list.nmsrs > 0);
+-    kvm_feature_msrs = (struct kvm_msr_list *) \
+-        g_malloc0(sizeof(msr_list) +
++    kvm_feature_msrs = g_malloc0(sizeof(msr_list) +
+                  msr_list.nmsrs * sizeof(msr_list.indices[0]));
+ 
+     kvm_feature_msrs->nmsrs = msr_list.nmsrs;
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index b22a3314b4..fbb728a36f 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1164,9 +1164,8 @@ static void whpx_translate_cpu_breakpoints(
+         (breakpoints->breakpoints ? breakpoints->breakpoints->used : 0);
+ 
+     struct whpx_breakpoint_collection *new_breakpoints =
+-        (struct whpx_breakpoint_collection *)g_malloc0(
+-        sizeof(struct whpx_breakpoint_collection) +
+-            max_breakpoints * sizeof(struct whpx_breakpoint));
++        g_malloc0(sizeof(struct whpx_breakpoint_collection)
++                  + max_breakpoints * sizeof(struct whpx_breakpoint));
+ 
+     new_breakpoints->allocated = max_breakpoints;
+     new_breakpoints->used = 0;
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index 7bd8db0e7b..32d23fb617 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -1031,7 +1031,7 @@ int kvm_arch_remove_hw_breakpoint(target_ulong addr,
+         }
+         size = nb_hw_breakpoints * sizeof(struct kvm_hw_breakpoint);
+         hw_breakpoints =
+-             (struct kvm_hw_breakpoint *)g_realloc(hw_breakpoints, size);
++             g_realloc(hw_breakpoints, size);
+     } else {
+         g_free(hw_breakpoints);
+         hw_breakpoints = NULL;
+diff --git a/ui/vnc-enc-hextile.c b/ui/vnc-enc-hextile.c
+index 4215bd7daf..c763256f29 100644
+--- a/ui/vnc-enc-hextile.c
++++ b/ui/vnc-enc-hextile.c
+@@ -50,8 +50,8 @@ int vnc_hextile_send_framebuffer_update(VncState *vs, int x,
+     int has_fg, has_bg;
+     uint8_t *last_fg, *last_bg;
+ 
+-    last_fg = (uint8_t *) g_malloc(VNC_SERVER_FB_BYTES);
+-    last_bg = (uint8_t *) g_malloc(VNC_SERVER_FB_BYTES);
++    last_fg = g_malloc(VNC_SERVER_FB_BYTES);
++    last_bg = g_malloc(VNC_SERVER_FB_BYTES);
+     has_fg = has_bg = 0;
+     for (j = y; j < (y + h); j += 16) {
+         for (i = x; i < (x + w); i += 16) {
+-- 
+2.37.2
 
 
