@@ -1,58 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1obeyv-0004rJ-1o
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Sep 2022 05:28:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35358)
+	id 1obg84-0001Jb-4m
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Sep 2022 06:41:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56054)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1obeyZ-0004nl-Tk; Fri, 23 Sep 2022 05:28:10 -0400
-Received: from mail-vs1-f50.google.com ([209.85.217.50]:44656)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1obeyW-0000RI-Rp; Fri, 23 Sep 2022 05:28:03 -0400
-Received: by mail-vs1-f50.google.com with SMTP id h1so13015751vsr.11;
- Fri, 23 Sep 2022 02:28:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1obg80-0001HY-1x
+ for qemu-trivial@nongnu.org; Fri, 23 Sep 2022 06:41:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:29014)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1obg7w-0003MJ-MK
+ for qemu-trivial@nongnu.org; Fri, 23 Sep 2022 06:41:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1663929707;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=pLx155w8BDoTqc6QRal5/+onAcSfuDPOYdgLujAM65A=;
+ b=bYoelj+ztvwAoaXmnU6toJcSwLDXzAIL3AaizW5T8E1PBHtOpm3UTkI7931a2writNNxB1
+ TZcVJQIdNC711j+Qw9HoJGog5vYJseDM4hAXV0PXfJfhXUZzFXZxebLv4yxGNnTy2Jsv+1
+ qUEwMwe9//ZEk6r7d6zDDXFMoJr11cI=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-449-g0jFQEB8PheSDoZFj5f_RQ-1; Fri, 23 Sep 2022 06:41:46 -0400
+X-MC-Unique: g0jFQEB8PheSDoZFj5f_RQ-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ d30-20020adfa41e000000b00228c0e80c49so3883392wra.21
+ for <qemu-trivial@nongnu.org>; Fri, 23 Sep 2022 03:41:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date;
- bh=1fZ3phByiX51M1NegfUMUajhFEsY8uvOlYPU9nf0HiM=;
- b=rTThUFo+AFyoPlynALsOPq412N9aCqEpCOs+48VFoWfYWTmJYarpprdpv/BN3NTBfc
- gXnY1KwreRxcqR18rLyhxvXA4y6rhTWXpsYRR/mb4HFAs0zw0Sb/sdkZvQP4n9xcWJB6
- SPTB4AsPht+dET0ZzhRR3AYW1EdHDDiIsjGk1C7b0tbdc3/dn0ZECZQYbbws7Y7t0+d3
- sCJaE8TSMaA3tdPD/gxRJ9zqyml/R0xIq5yPGZiiKip0QlG1KVDd3SP9wCku+sV8h4TV
- UxgeddQP1W+zhgmUzRjAwuiSxrHWZmx4iggktEOLEXdvTnK0WovUxmn1t4b4oTwt1XPQ
- njbg==
-X-Gm-Message-State: ACrzQf1zNjP+5sNbGjmC34TFjdwLXfORB8/EWuxo8UcBBh27ItmeiscX
- Wq5MPmCTnJzi2S2MuWpYlxT6Fgf+VXUEvAE7cig=
-X-Google-Smtp-Source: AMsMyM72lGAexl+jkPy8PUzKfA3I5iFzpNrn1G8D2QBFS58jZud80mzkWyDx8WMBw0NT8xavRkM3EUOK/VNBH03dcdE=
-X-Received: by 2002:a67:ab0a:0:b0:39a:c8e4:fde9 with SMTP id
- u10-20020a67ab0a000000b0039ac8e4fde9mr3180706vse.23.1663925279325; Fri, 23
- Sep 2022 02:27:59 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220923090428.93529-1-armbru@redhat.com>
-In-Reply-To: <20220923090428.93529-1-armbru@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Fri, 23 Sep 2022 11:27:47 +0200
-Message-ID: <CAAdtpL7TikHLMEtYhZ1NbXcKwiRswpi0qjWevaN3kkkE3tja_w@mail.gmail.com>
-Subject: Re: [PATCH] Drop superfluous conditionals around g_free()
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=pLx155w8BDoTqc6QRal5/+onAcSfuDPOYdgLujAM65A=;
+ b=z41W+oRRP0RKm/k898+UxwXGwETnPCsg3WeS1OAnkQVM7GtjdBfii8BVkGEzM+DDWe
+ RPTbWxp4fclKqnTslgikt73j7Vv5R0g+2msgI9Wra730MCZEiHNtfo+Dm3GDGFmk9nH0
+ GbGhIl/IThD/1OThV6lbY5h99cdqxgYoKCN5r6Nw5SxD8rIUPwE/hfFNjPAFMoCIuGi8
+ SWknv1q9qRbLE+e7QqNTZ9Ld7Kk98k0eHVqP0hjiSegmueFSqFCQtM6Ed8LB4nCRSHzF
+ 4Ub8EFSP0maMF+/b/WyY7qzfhPv7/ad3tNWn/94QzVZYYkwhSUC3uS/65dHASloEuQ8V
+ v85A==
+X-Gm-Message-State: ACrzQf1RgFhnLWgl5xP9U3KWF+3sZ2ysgtkNhgAiEzwq2gfXD7UZpNPa
+ X21+hQsOwhlMv/PfT1f/xwzX19gktkNVUxhCDMz7NcRpK/dnD5XlAWJA2AsdCkjE0GmJ7EyLwRb
+ 1bADh8+7NFaOn259Buw==
+X-Received: by 2002:a5d:64e8:0:b0:22a:bbb0:fa with SMTP id
+ g8-20020a5d64e8000000b0022abbb000famr4945428wri.372.1663929704964; 
+ Fri, 23 Sep 2022 03:41:44 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM71iGCiHT1nISlB1kQv525RGZtQuVBJ5zIsrEw0J78y/UbsiUtjxmFhR3TkrCVz30GapLn48w==
+X-Received: by 2002:a5d:64e8:0:b0:22a:bbb0:fa with SMTP id
+ g8-20020a5d64e8000000b0022abbb000famr4945409wri.372.1663929704699; 
+ Fri, 23 Sep 2022 03:41:44 -0700 (PDT)
+Received: from redhat.com ([2.55.47.213]) by smtp.gmail.com with ESMTPSA id
+ p8-20020a05600c1d8800b003a342933727sm2301380wms.3.2022.09.23.03.41.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 23 Sep 2022 03:41:44 -0700 (PDT)
+Date: Fri, 23 Sep 2022 06:41:40 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, 
- Paolo Bonzini <pbonzini@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>, 
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.217.50;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-vs1-f50.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Cc: qemu-devel@nongnu.org, elena.ufimtseva@oracle.com, jag.raman@oracle.com,
+ john.g.johnson@oracle.com, pizhenwei@bytedance.com,
+ arei.gonglei@huawei.com, huangy81@chinatelecom.cn,
+ quintela@redhat.com, dgilbert@redhat.com, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] Use g_new() & friends where that makes obvious sense
+Message-ID: <20220923064130-mutt-send-email-mst@kernel.org>
+References: <20220923084254.4173111-1-armbru@redhat.com>
+MIME-Version: 1.0
+In-Reply-To: <20220923084254.4173111-1-armbru@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,19 +88,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Sep 2022 09:28:20 -0000
+X-List-Received-Date: Fri, 23 Sep 2022 10:41:54 -0000
 
-On Fri, Sep 23, 2022 at 11:13 AM Markus Armbruster <armbru@redhat.com> wrot=
-e:
->
-> There is no need to guard g_free(P) with if (P): g_free(NULL) is safe.
->
+On Fri, Sep 23, 2022 at 10:42:54AM +0200, Markus Armbruster wrote:
+> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+> for two reasons.  One, it catches multiplication overflowing size_t.
+> Two, it returns T * rather than void *, which lets the compiler catch
+> more type errors.
+> 
+> This commit only touches allocations with size arguments of the form
+> sizeof(T).
+> 
+> Patch created mechanically with:
+> 
+>     $ spatch --in-place --sp-file scripts/coccinelle/use-g_new-etc.cocci \
+> 	     --macro-file scripts/cocci-macro-file.h FILES...
+> 
+> The previous iteration was commit a95942b50c.
+> 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  replay/replay.c             |  6 ++----
->  target/i386/kvm/kvm.c       | 12 ++++--------
->  target/i386/whpx/whpx-all.c | 14 ++++++--------
->  3 files changed, 12 insertions(+), 20 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+> ---
+>  hw/remote/iommu.c         | 2 +-
+>  hw/virtio/virtio-crypto.c | 2 +-
+>  migration/dirtyrate.c     | 4 ++--
+>  softmmu/dirtylimit.c      | 4 ++--
+>  4 files changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/remote/iommu.c b/hw/remote/iommu.c
+> index fd723d91f3..1391dd712c 100644
+> --- a/hw/remote/iommu.c
+> +++ b/hw/remote/iommu.c
+> @@ -47,7 +47,7 @@ static AddressSpace *remote_iommu_find_add_as(PCIBus *pci_bus,
+>      elem = g_hash_table_lookup(iommu->elem_by_devfn, INT2VOIDP(devfn));
+>  
+>      if (!elem) {
+> -        elem = g_malloc0(sizeof(RemoteIommuElem));
+> +        elem = g_new0(RemoteIommuElem, 1);
+>          g_hash_table_insert(iommu->elem_by_devfn, INT2VOIDP(devfn), elem);
+>      }
+>  
+> diff --git a/hw/virtio/virtio-crypto.c b/hw/virtio/virtio-crypto.c
+> index c1243c3f93..df4bde210b 100644
+> --- a/hw/virtio/virtio-crypto.c
+> +++ b/hw/virtio/virtio-crypto.c
+> @@ -710,7 +710,7 @@ virtio_crypto_handle_asym_req(VirtIOCrypto *vcrypto,
+>      uint8_t *src = NULL;
+>      uint8_t *dst = NULL;
+>  
+> -    asym_op_info = g_malloc0(sizeof(CryptoDevBackendAsymOpInfo));
+> +    asym_op_info = g_new0(CryptoDevBackendAsymOpInfo, 1);
+>      src_len = ldl_le_p(&req->para.src_data_len);
+>      dst_len = ldl_le_p(&req->para.dst_data_len);
+>  
+> diff --git a/migration/dirtyrate.c b/migration/dirtyrate.c
+> index 795fab5c37..d6f1e01a70 100644
+> --- a/migration/dirtyrate.c
+> +++ b/migration/dirtyrate.c
+> @@ -119,9 +119,9 @@ static DirtyPageRecord *vcpu_dirty_stat_alloc(VcpuStat *stat)
+>      }
+>  
+>      stat->nvcpu = nvcpu;
+> -    stat->rates = g_malloc0(sizeof(DirtyRateVcpu) * nvcpu);
+> +    stat->rates = g_new0(DirtyRateVcpu, nvcpu);
+>  
+> -    records = g_malloc0(sizeof(DirtyPageRecord) * nvcpu);
+> +    records = g_new0(DirtyPageRecord, nvcpu);
+>  
+>      return records;
+>  }
+> diff --git a/softmmu/dirtylimit.c b/softmmu/dirtylimit.c
+> index 8d98cb7f2c..12668555f2 100644
+> --- a/softmmu/dirtylimit.c
+> +++ b/softmmu/dirtylimit.c
+> @@ -154,7 +154,7 @@ void vcpu_dirty_rate_stat_initialize(void)
+>  
+>      vcpu_dirty_rate_stat->stat.nvcpu = max_cpus;
+>      vcpu_dirty_rate_stat->stat.rates =
+> -        g_malloc0(sizeof(DirtyRateVcpu) * max_cpus);
+> +        g_new0(DirtyRateVcpu, max_cpus);
+>  
+>      vcpu_dirty_rate_stat->running = false;
+>  }
+> @@ -198,7 +198,7 @@ void dirtylimit_state_initialize(void)
+>      dirtylimit_state = g_malloc0(sizeof(*dirtylimit_state));
+>  
+>      dirtylimit_state->states =
+> -            g_malloc0(sizeof(VcpuDirtyLimitState) * max_cpus);
+> +            g_new0(VcpuDirtyLimitState, max_cpus);
+>  
+>      for (i = 0; i < max_cpus; i++) {
+>          dirtylimit_state->states[i].cpu_index = i;
+> -- 
+> 2.37.2
+
 
