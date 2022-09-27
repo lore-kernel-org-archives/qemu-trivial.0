@@ -1,77 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1odAGf-00006m-El
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Sep 2022 09:04:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42842)
+	id 1odIka-0001Tb-Me
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Sep 2022 18:08:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1odAGa-0008T6-SL
- for qemu-trivial@nongnu.org; Tue, 27 Sep 2022 09:04:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:40822)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1odAGW-0002Yg-MY
- for qemu-trivial@nongnu.org; Tue, 27 Sep 2022 09:04:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664283887;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=R/nDiVQA20P7VZph7pRT+g/FUfk+b1+o+fvuh1NkUZU=;
- b=XPs8kOHfgWUZOOGNwHcSfaahG6a43wlg+lFuyetwpHx/xxCrmR6Xl4qaQzrP1eH47wST/V
- bGS1VehTbbFSdrFylpQMCzIM6P5YeHjiuSM0zwWWOZttcfqTuKcvkZE9AJdRoFscqCcu3p
- VtAG5V+z2yTSQHqO4PoHe3bFsnGqZ3s=
-Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com
- [209.85.167.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-73-rjSrjAtHM2WNfZNDbJcWLA-1; Tue, 27 Sep 2022 09:04:46 -0400
-X-MC-Unique: rjSrjAtHM2WNfZNDbJcWLA-1
-Received: by mail-oi1-f198.google.com with SMTP id
- q11-20020a0568080a8b00b0034fbbc585f3so3185326oij.4
- for <qemu-trivial@nongnu.org>; Tue, 27 Sep 2022 06:04:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1odIkS-0001Ra-Lr; Tue, 27 Sep 2022 18:08:18 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:36358)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1odIkQ-0003MD-Hl; Tue, 27 Sep 2022 18:08:16 -0400
+Received: by mail-ej1-x630.google.com with SMTP id 13so23514668ejn.3;
+ Tue, 27 Sep 2022 15:08:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date;
+ bh=LSsZ7Zzodm+J4AdIzVzrt59xtXzFIQYAp4B1mMdCnlg=;
+ b=LPeWtOvHCHtcV3r8r6TSpSuv4ZSQP9jOAQvZi1WC35/SHJW7rkkI2ClNC+Uh6n557X
+ 6Ljm9g3AULCm+twQjljeRuT/o4TBWXSf5LfE+6RuMDQZQqpLqn4ndZx9BN9ySdCXD4g3
+ 39ebMnDUC22Wrzf6BvzV+IuEod0BGSHs1bsPxHedtCwqbuDNinXmpTPOr5ImL3QuxNds
+ u93mH6i3VKiGarfuwGuk9m9sg7GfiVdwQCs/LFgb3ttO7ki3Er8zI/cX3TMQXYsKHX1N
+ Tf5zNphkLpLuYXxf/qzFIqEQ+GX545ZjaO+LMJCECbsZiORLCXlrLyS/Up0BmehPh6Dp
+ aueA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date;
- bh=R/nDiVQA20P7VZph7pRT+g/FUfk+b1+o+fvuh1NkUZU=;
- b=2jx4LnYnLQGYm+ggVI0oKDFmYkwGpURvu8IO3TdnOHqnx9HtDlPsJTJaOthQfFv9Ij
- ZjicxTMiEUA3zfzhzBBr6V06HRwrtDyIpt+s4BlAdFKC+tpEySJoe3M+DOnkuPOEin3R
- 5KhPcnYBr2TYj1XnSL0rL/t4l+N8O7UNWMbEag+O3xNAq8xFeemcBz4ppOPDxw00j16V
- QwdkV/hxyV+T2fCg1SSQP+hOw+Q+3FC+CpkxxvHwyUyPEjInAdNMDXHCA/tQG4r/8GYx
- g9kIpEraIcZlFO4Nxghih8ox+e45VFXiA/xG/rApeAQWojyeC/EKjUlT56Vl8IGe3xyv
- teeg==
-X-Gm-Message-State: ACrzQf1g5z5uB7IUojOWOYnrwaRBxuBXp1pgxoZXoa2j9DO7Y4W5g524
- FPvFCc/Qq9R5d5m9LnlXF2rBnkiqxTAOC5EDo1AttXtkD53Qz+aQaMhGhx1EqjXIgI0JvWndXQU
- tX80kBqOzUHCz9M4ioJqB718WDzf68BxcCQ==
-X-Received: by 2002:a05:6870:c1d4:b0:127:ad2c:3d74 with SMTP id
- i20-20020a056870c1d400b00127ad2c3d74mr2179703oad.205.1664283885575; 
- Tue, 27 Sep 2022 06:04:45 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7/ShVe25SRmO5ykQrSsj7gAY8paC+y17VY0v2t55rBEdMDajlg1A638949DsgnyZ+SCcgLgUaxxvyfDUQaJzo=
-X-Received: by 2002:a05:6870:c1d4:b0:127:ad2c:3d74 with SMTP id
- i20-20020a056870c1d400b00127ad2c3d74mr2179688oad.205.1664283885302; Tue, 27
- Sep 2022 06:04:45 -0700 (PDT)
+ bh=LSsZ7Zzodm+J4AdIzVzrt59xtXzFIQYAp4B1mMdCnlg=;
+ b=ZN6RgnWQgYunN1C56spYOE82bTGPxq0y9OYjnZ9aJJXSOhXXOy+Nr2nztC1HXxnlSd
+ EwDcV87jmQtzLO6CZUWioVJRhm09nVW1FOAwDxUx6n63odu3+mqBlb8mUEUxWQpf8Um4
+ 4sE+a19gypalWvbTeWtew95YVNnvIzeknq9dBiTD0caCdXrgpFGPhyLoOedK1xzKeNUl
+ eBx+seJGI5ha+Sk5mlLuj2juiY0pRBAzlGp7WpkmqGA+Dt9eImvn6gVj4ri88KmjqLoG
+ MXM72HfooCgVjfaPfaQffOYVK9/nmy6xDcxunk2TytochFzcDCH/dOuDuFcQzcn7l6qz
+ 4VEg==
+X-Gm-Message-State: ACrzQf1KDFSkGengMHVa68FOe1wCko+FQQ0tgeGrZsLZpWnTyHCscj/E
+ TPEYTjbEb7DxQ03u8LE9fGHc8NkD594=
+X-Google-Smtp-Source: AMsMyM5MA6KriOHoVUm0p8EoaEQq9w5QAs7lNgyaMBHoiCEt8x4wUPFesO1kiywgXD3iflQjqiUODA==
+X-Received: by 2002:a17:907:3e06:b0:733:693:600e with SMTP id
+ hp6-20020a1709073e0600b007330693600emr23486571ejc.410.1664316489914; 
+ Tue, 27 Sep 2022 15:08:09 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-077-011-044-017.77.11.pool.telefonica.de.
+ [77.11.44.17]) by smtp.gmail.com with ESMTPSA id
+ k20-20020aa7d8d4000000b00457d9c16fb2sm557877eds.23.2022.09.27.15.08.09
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 27 Sep 2022 15:08:09 -0700 (PDT)
+Date: Tue, 27 Sep 2022 22:08:06 +0000
+From: B <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+CC: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2=5D_hw/virtio/vhost-shadow-virtqu?=
+ =?US-ASCII?Q?eue=3A_Silence_GCC_error_=22maybe-uninitialized=22?=
+In-Reply-To: <D1ED14E5-CFF9-4525-96C5-60262DB17309@gmail.com>
+References: <20220910151117.6665-1-shentey@gmail.com>
+ <D1ED14E5-CFF9-4525-96C5-60262DB17309@gmail.com>
+Message-ID: <3565DD2F-D779-4EEA-9273-EC11963BC3C0@gmail.com>
 MIME-Version: 1.0
-References: <20220927122146.2787854-1-stefanb@linux.ibm.com>
-In-Reply-To: <20220927122146.2787854-1-stefanb@linux.ibm.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Tue, 27 Sep 2022 17:04:33 +0400
-Message-ID: <CAMxuvayyxizLFdHgYtjJZ412wUD4hq57NXKxUSHuJMKVGr4EQA@mail.gmail.com>
-Subject: Re: [PATCH] docs: Update TPM documentation for usage of a TPM 2
-To: Stefan Berger <stefanb@linux.ibm.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.082,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,121 +79,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Sep 2022 13:04:55 -0000
-
-On Tue, Sep 27, 2022 at 4:21 PM Stefan Berger <stefanb@linux.ibm.com> wrote=
-:
->
-> Update the TPM documentation for usage of a TPM 2 rather than a TPM 1.2.
-> Adjust the command lines and expected outputs inside the VM accordingly.
-> Update the command line to start a TPM 2 with swtpm.
->
-> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
-
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+X-List-Received-Date: Tue, 27 Sep 2022 22:08:20 -0000
 
 
-> ---
->  docs/specs/tpm.rst | 44 ++++++++++++++++++++++++--------------------
->  1 file changed, 24 insertions(+), 20 deletions(-)
->
-> diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-> index 3be190343a..535912a92b 100644
-> --- a/docs/specs/tpm.rst
-> +++ b/docs/specs/tpm.rst
-> @@ -250,24 +250,25 @@ hardware TPM ``/dev/tpm0``:
->
->  The following commands should result in similar output inside the VM
->  with a Linux kernel that either has the TPM TIS driver built-in or
-> -available as a module:
-> +available as a module (assuming a TPM 2 is passed through):
->
->  .. code-block:: console
->
->    # dmesg | grep -i tpm
-> -  [    0.711310] tpm_tis 00:06: 1.2 TPM (device=3Did 0x1, rev-id 1)
-> -
-> -  # dmesg | grep TCPA
-> -  [    0.000000] ACPI: TCPA 0x0000000003FFD191C 000032 (v02 BOCHS  \
-> -      BXPCTCPA 0000001 BXPC 00000001)
-> +  [    0.012560] ACPI: TPM2 0x000000000BFFD1900 00004C (v04 BOCHS  \
-> +      BXPC     0000001 BXPC 00000001)
->
->    # ls -l /dev/tpm*
-> -  crw-------. 1 root root 10, 224 Jul 11 10:11 /dev/tpm0
-> +  crw-rw----. 1 tss root  10,   224 Sep  6 12:36 /dev/tpm0
-> +  crw-rw----. 1 tss rss  253, 65536 Sep  6 12:36 /dev/tpmrm0
->
-> -  # find /sys/devices/ | grep pcrs$ | xargs cat
-> -  PCR-00: 35 4E 3B CE 23 9F 38 59 ...
-> +  Starting with Linux 5.12 there are PCR entries for TPM 2 in sysfs:
-> +  # find /sys/devices/ -type f | grep pcr-sha
-> +  ...
-> +  /sys/devices/LNXSYSTEM:00/LNXSYBUS:00/MSFT0101:00/tpm/tpm0/pcr-sha256/=
-1
-> +  ...
-> +  /sys/devices/LNXSYSTEM:00/LNXSYBUS:00/MSFT0101:00/tpm/tpm0/pcr-sha256/=
-9
->    ...
-> -  PCR-23: 00 00 00 00 00 00 00 00 ...
->
->  The QEMU TPM emulator device
->  ----------------------------
-> @@ -304,6 +305,7 @@ a socket interface. They do not need to be run as roo=
-t.
->    mkdir /tmp/mytpm1
->    swtpm socket --tpmstate dir=3D/tmp/mytpm1 \
->      --ctrl type=3Dunixio,path=3D/tmp/mytpm1/swtpm-sock \
-> +    --tpm2 \
->      --log level=3D20
->
->  Command line to start QEMU with the TPM emulator device communicating
-> @@ -365,19 +367,20 @@ available as a module:
->  .. code-block:: console
->
->    # dmesg | grep -i tpm
-> -  [    0.711310] tpm_tis 00:06: 1.2 TPM (device=3Did 0x1, rev-id 1)
-> -
-> -  # dmesg | grep TCPA
-> -  [    0.000000] ACPI: TCPA 0x0000000003FFD191C 000032 (v02 BOCHS  \
-> -      BXPCTCPA 0000001 BXPC 00000001)
-> +  [    0.012560] ACPI: TPM2 0x000000000BFFD1900 00004C (v04 BOCHS  \
-> +      BXPC     0000001 BXPC 00000001)
->
->    # ls -l /dev/tpm*
-> -  crw-------. 1 root root 10, 224 Jul 11 10:11 /dev/tpm0
-> +  crw-rw----. 1 tss root  10,   224 Sep  6 12:36 /dev/tpm0
-> +  crw-rw----. 1 tss rss  253, 65536 Sep  6 12:36 /dev/tpmrm0
->
-> -  # find /sys/devices/ | grep pcrs$ | xargs cat
-> -  PCR-00: 35 4E 3B CE 23 9F 38 59 ...
-> +  Starting with Linux 5.12 there are PCR entries for TPM 2 in sysfs:
-> +  # find /sys/devices/ -type f | grep pcr-sha
-> +  ...
-> +  /sys/devices/LNXSYSTEM:00/LNXSYBUS:00/MSFT0101:00/tpm/tpm0/pcr-sha256/=
-1
-> +  ...
-> +  /sys/devices/LNXSYSTEM:00/LNXSYBUS:00/MSFT0101:00/tpm/tpm0/pcr-sha256/=
-9
->    ...
-> -  PCR-23: 00 00 00 00 00 00 00 00 ...
->
->  Migration with the TPM emulator
->  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D
-> @@ -398,7 +401,8 @@ In a 1st terminal start an instance of a swtpm using =
-the following command:
->    mkdir /tmp/mytpm1
->    swtpm socket --tpmstate dir=3D/tmp/mytpm1 \
->      --ctrl type=3Dunixio,path=3D/tmp/mytpm1/swtpm-sock \
-> -    --log level=3D20 --tpm2
-> +    --tpm2 \
-> +    --log level=3D20
->
->  In a 2nd terminal start the VM:
->
-> --
-> 2.37.2
->
 
+Am 20=2E September 2022 05:29:25 UTC schrieb Bernhard Beschow <shentey@gma=
+il=2Ecom>:
+>Am 10=2E September 2022 15:11:17 UTC schrieb Bernhard Beschow <shentey@gm=
+ail=2Ecom>:
+>>GCC issues a false positive warning, resulting in build failure with -We=
+rror:
+>>
+>>  In file included from /usr/include/glib-2=2E0/glib=2Eh:114,
+>>                   from src/include/glib-compat=2Eh:32,
+>>                   from src/include/qemu/osdep=2Eh:144,
+>>                   from =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec:=
+10:
+>>  In function =E2=80=98g_autoptr_cleanup_generic_gfree=E2=80=99,
+>>      inlined from =E2=80=98vhost_handle_guest_kick=E2=80=99 at =2E=2E/s=
+rc/hw/virtio/vhost-shadow-virtqueue=2Ec:292:42:
+>>  /usr/include/glib-2=2E0/glib/glib-autocleanups=2Eh:28:3: error: =E2=80=
+=98elem=E2=80=99 may be used uninitialized [-Werror=3Dmaybe-uninitialized]
+>>     28 |   g_free (*pp);
+>>        |   ^~~~~~~~~~~~
+>>  =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec: In function =E2=80=98=
+vhost_handle_guest_kick=E2=80=99:
+>>  =2E=2E/src/hw/virtio/vhost-shadow-virtqueue=2Ec:292:42: note: =E2=80=
+=98elem=E2=80=99 was declared here
+>>    292 |             g_autofree VirtQueueElement *elem;
+>>        |                                          ^~~~
+>>  cc1: all warnings being treated as errors
+>>
+>>There is actually no problem since "elem" is initialized in both branche=
+s=2E
+>>Silence the warning by initializig it with "NULL"=2E
+>>
+>>$ gcc --version
+>>gcc (GCC) 12=2E2=2E0
+>>
+>>Fixes: 9c2ab2f1ec333be8614cc12272d4b91960704dbe ("vhost: stop transfer e=
+lem ownership in vhost_handle_guest_kick")
+>>Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>>---
+>
+>Ping
+
+Ping2
+
+>
+>> hw/virtio/vhost-shadow-virtqueue=2Ec | 2 +-
+>> 1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>>diff --git a/hw/virtio/vhost-shadow-virtqueue=2Ec b/hw/virtio/vhost-shad=
+ow-virtqueue=2Ec
+>>index e8e5bbc368=2E=2E596d4434d2 100644
+>>--- a/hw/virtio/vhost-shadow-virtqueue=2Ec
+>>+++ b/hw/virtio/vhost-shadow-virtqueue=2Ec
+>>@@ -289,7 +289,7 @@ static void vhost_handle_guest_kick(VhostShadowVirtq=
+ueue *svq)
+>>         virtio_queue_set_notification(svq->vq, false);
+>>=20
+>>         while (true) {
+>>-            g_autofree VirtQueueElement *elem;
+>>+            g_autofree VirtQueueElement *elem =3D NULL;
+>>             int r;
+>>=20
+>>             if (svq->next_guest_avail_elem) {
+>
 
