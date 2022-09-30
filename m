@@ -1,57 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1odzH6-0007D5-84
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2022 15:32:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53762)
+	id 1oeMWD-0004Ww-LT
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2022 16:21:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55286)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1odzH3-0007BQ-Am; Thu, 29 Sep 2022 15:32:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:42041)
+ id 1oeMWB-0004WI-UJ; Fri, 30 Sep 2022 16:21:55 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:32967)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1odzH1-0000UR-In; Thu, 29 Sep 2022 15:32:45 -0400
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MlwBf-1p4UGb3ewF-00iyqd; Thu, 29 Sep 2022 21:32:31 +0200
-Message-ID: <be8beef7-7b80-bacb-3ebf-247f03c55374@vivier.eu>
-Date: Thu, 29 Sep 2022 21:32:27 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH] docs: Update TPM documentation for usage of a TPM 2
-Content-Language: fr
-To: Stefan Berger <stefanb@linux.ibm.com>, qemu-trivial@nongnu.org,
- marcandre.lureau@redhat.com
-Cc: qemu-devel@nongnu.org
-References: <20220927122146.2787854-1-stefanb@linux.ibm.com>
+ id 1oeMWA-0004aq-4n; Fri, 30 Sep 2022 16:21:55 -0400
+Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue109
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MvJsF-1pUx0F1VLt-00rFwl; Fri, 30
+ Sep 2022 22:21:46 +0200
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220927122146.2787854-1-stefanb@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 0/8] Trivial branch for 7.2 patches
+Date: Fri, 30 Sep 2022 22:21:36 +0200
+Message-Id: <20220930202144.1109310-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.37.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:cfL69kB2Iz7MMRk9pqUpufHu3JHZivc1zVgQI/5B1oZmsoxddT9
- A1WDVk03t8FfGlDm4WrNgR4dC2eSiN2/R7yOSvoWC72P9g1lzHtpomu4BnsJVsOJfDcRDSq
- wPItuBibYT1Lh0AefyefLmnDkbqcH+tMXHk4tyznh1PlRpGQlj01v5/lm/VjU/o0m0VEe7J
- oRtYmXVseKva7H1Vg/hwA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:p4Amm9zq5rw=:3FFBrSaZKmdLXong38W5E4
- dBP0Kxv3b72KlgBZsOHzuM1gqhn7STyLFdMmeTtNrT798O9hzcoxHtlQnQJK3XCghlFDNLBxh
- GJYedq7W7iFuCXKwWT34d/cU3SepzJnRxRE+i1uSEAIWOTRuEOdWU1isqWfNGENb6rOYImSiK
- AzoPF9PkjsGpJbl1qXmBBYBslMFQYmIBkogO8mqznmAwtTFezobIFoi8CTGA5NF75+tL8hbqr
- CGqwKEzQhyOVA+4HoiZsQIAon55JaCLZDbf3tiG1VVzW5/espG9HQwlfetbfEiEMm2XD19+5/
- eZ+P6K4kebgtsw5T9AQhblEVEAxFZ2b0VpOBUOCo/31Aw4CIojelkoCFfWkz1qKCMHTMYxPXc
- Wj1KtLkgoE3eJVtXOiIemz5u3uFNg4Qgwm4DB7krvDQI3ffQafwXaDJy24as+XqR6Ji8Liuz6
- KYfVE2NDUbVDTzAEPnboHAT3uLhHGSvVK8kKCkt63k4R3/Xo4qEstpQa1aCJzjwtds3K/SGpi
- elSmx/j3X8DhgskjA13IVfPmUPC4avwb5t1dL9uFbi3dVh54LHXY6MJZnGimtZ8GI2zaxGwy0
- pAgeJjbOP3Jwmh8JzS3hqo08zuKA9aK2xhNv+ISGE6I8Va1O19PykCMmBzp6HKp7NjrgNEEk5
- B8XfujKXvO1VfeRevRJ2m3xnZoyNV02ppQMuOP5B+CEKUQ0c6KmraliAKFoOfA8iyccBqMpr+
- pfiHJQ/htFjAn1E5LbaNUE1b2Lo3fHoS2G4pV5UYa7C5igLEmokAA7cIERqoQFellVFiVnJMv
- kcqfIi6
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:B4vW5OmhCq6SyGacy58LbFS0/QJMlWvimpYsl3Qmu011c/cEYaS
+ eIvod/jJChK3V+VN7UhyNVkLmwxIj9hOapGTc+ZMEwdMt4Oxp5RoFaFpZtwIUjQMT8CaI3Q
+ q675An8CG/q73z+v3140ATfZCCwn+NkH3kO1Pl5GgdcHwXM3QGL7hUeNuZpnq2d7am7W4CQ
+ LzhjQOPOeXMpyJZHTCBcg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:cMnAHlUWubE=:XtUmd69tPEn+233WN77/1g
+ jsLjEJH0FKPaoRbCd7ZTUWirdvcIWnvMEOCe8sVdujTreTVR27ygRO6yaB9p2a6uZByk9vmzu
+ NAshfSfJf9vVa9K/xZlPCta06lDPbIagmJUnLI0thcWjfkzVN22jobAT2dM9t0+BIzmWsO9c4
+ 4hhx7Kgd9gtqVFY/dTa4rq4J1ZQOY4amM7VjNmDW1uLJ+5o2QsyF1n9LXEOsAA078EvOYYFAU
+ YV0MeDcR8Po6aaY+Y5D4EsoHdXdioRuUVbihUwIcSRMbTIMsl1eY8KuWJxtaF0M+yoqowedo4
+ KOLIdw3jVWqSjyeh+QDJTLdnbiDoE6yA+DqRIZoJeARQiId3bSqVHhYS6XYVG4w0z3y7lTlxj
+ R5Uigf0iYXImrY1YhjivLlS14PztikFIJbvJ+eGYp5n+JCYSCxQt+srlbVEwI0OlCXO7/k722
+ OxgY3la5JD9uMNEN6oVHXT/rRuulhvv41Z01OIjHX0QtMbHNXmnPmqBr9oQCyMa/mel50jqn6
+ RbBsFGE0M5TriSAN1Qp8WJT/0fWUyjMeSMPgThHaRum2ZibtlCeCgphiupNTKD4QF4jMMqrve
+ khUhb+U9hCQA/a/TKG1l5rfJRw4aCmP/sAiX61D2yIWbII0av/7I8x9WIGnQRuv02LlG0ePNA
+ aPFprVmsG0n1csevTT/4TZZScV0+rMoS5sumzRaTIcw6xB5Wij7eJgf79ISrlzh9krEWE9AZ7
+ agCa31BWL6RgpPROGsassnGTf7Ss8c7w3CewwtnW0qtDhjreI6QBs+39CdFtwEUE/7dVhXZYm
+ Sdobr0I
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-Spam_score_int: -59
-X-Spam_score: -6.0
-X-Spam_bar: ------
-X-Spam_report: (-6.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-4.099,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,111 +59,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Sep 2022 19:32:45 -0000
+X-List-Received-Date: Fri, 30 Sep 2022 20:21:56 -0000
 
-Le 27/09/2022 à 14:21, Stefan Berger a écrit :
-> Update the TPM documentation for usage of a TPM 2 rather than a TPM 1.2.
-> Adjust the command lines and expected outputs inside the VM accordingly.
-> Update the command line to start a TPM 2 with swtpm.
-> 
-> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
-> ---
->   docs/specs/tpm.rst | 44 ++++++++++++++++++++++++--------------------
->   1 file changed, 24 insertions(+), 20 deletions(-)
-> 
-> diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-> index 3be190343a..535912a92b 100644
-> --- a/docs/specs/tpm.rst
-> +++ b/docs/specs/tpm.rst
-> @@ -250,24 +250,25 @@ hardware TPM ``/dev/tpm0``:
->   
->   The following commands should result in similar output inside the VM
->   with a Linux kernel that either has the TPM TIS driver built-in or
-> -available as a module:
-> +available as a module (assuming a TPM 2 is passed through):
->   
->   .. code-block:: console
->   
->     # dmesg | grep -i tpm
-> -  [    0.711310] tpm_tis 00:06: 1.2 TPM (device=id 0x1, rev-id 1)
-> -
-> -  # dmesg | grep TCPA
-> -  [    0.000000] ACPI: TCPA 0x0000000003FFD191C 000032 (v02 BOCHS  \
-> -      BXPCTCPA 0000001 BXPC 00000001)
-> +  [    0.012560] ACPI: TPM2 0x000000000BFFD1900 00004C (v04 BOCHS  \
-> +      BXPC     0000001 BXPC 00000001)
->   
->     # ls -l /dev/tpm*
-> -  crw-------. 1 root root 10, 224 Jul 11 10:11 /dev/tpm0
-> +  crw-rw----. 1 tss root  10,   224 Sep  6 12:36 /dev/tpm0
-> +  crw-rw----. 1 tss rss  253, 65536 Sep  6 12:36 /dev/tpmrm0
->   
-> -  # find /sys/devices/ | grep pcrs$ | xargs cat
-> -  PCR-00: 35 4E 3B CE 23 9F 38 59 ...
-> +  Starting with Linux 5.12 there are PCR entries for TPM 2 in sysfs:
-> +  # find /sys/devices/ -type f | grep pcr-sha
-> +  ...
-> +  /sys/devices/LNXSYSTEM:00/LNXSYBUS:00/MSFT0101:00/tpm/tpm0/pcr-sha256/1
-> +  ...
-> +  /sys/devices/LNXSYSTEM:00/LNXSYBUS:00/MSFT0101:00/tpm/tpm0/pcr-sha256/9
->     ...
-> -  PCR-23: 00 00 00 00 00 00 00 00 ...
->   
->   The QEMU TPM emulator device
->   ----------------------------
-> @@ -304,6 +305,7 @@ a socket interface. They do not need to be run as root.
->     mkdir /tmp/mytpm1
->     swtpm socket --tpmstate dir=/tmp/mytpm1 \
->       --ctrl type=unixio,path=/tmp/mytpm1/swtpm-sock \
-> +    --tpm2 \
->       --log level=20
->   
->   Command line to start QEMU with the TPM emulator device communicating
-> @@ -365,19 +367,20 @@ available as a module:
->   .. code-block:: console
->   
->     # dmesg | grep -i tpm
-> -  [    0.711310] tpm_tis 00:06: 1.2 TPM (device=id 0x1, rev-id 1)
-> -
-> -  # dmesg | grep TCPA
-> -  [    0.000000] ACPI: TCPA 0x0000000003FFD191C 000032 (v02 BOCHS  \
-> -      BXPCTCPA 0000001 BXPC 00000001)
-> +  [    0.012560] ACPI: TPM2 0x000000000BFFD1900 00004C (v04 BOCHS  \
-> +      BXPC     0000001 BXPC 00000001)
->   
->     # ls -l /dev/tpm*
-> -  crw-------. 1 root root 10, 224 Jul 11 10:11 /dev/tpm0
-> +  crw-rw----. 1 tss root  10,   224 Sep  6 12:36 /dev/tpm0
-> +  crw-rw----. 1 tss rss  253, 65536 Sep  6 12:36 /dev/tpmrm0
->   
-> -  # find /sys/devices/ | grep pcrs$ | xargs cat
-> -  PCR-00: 35 4E 3B CE 23 9F 38 59 ...
-> +  Starting with Linux 5.12 there are PCR entries for TPM 2 in sysfs:
-> +  # find /sys/devices/ -type f | grep pcr-sha
-> +  ...
-> +  /sys/devices/LNXSYSTEM:00/LNXSYBUS:00/MSFT0101:00/tpm/tpm0/pcr-sha256/1
-> +  ...
-> +  /sys/devices/LNXSYSTEM:00/LNXSYBUS:00/MSFT0101:00/tpm/tpm0/pcr-sha256/9
->     ...
-> -  PCR-23: 00 00 00 00 00 00 00 00 ...
->   
->   Migration with the TPM emulator
->   ===============================
-> @@ -398,7 +401,8 @@ In a 1st terminal start an instance of a swtpm using the following command:
->     mkdir /tmp/mytpm1
->     swtpm socket --tpmstate dir=/tmp/mytpm1 \
->       --ctrl type=unixio,path=/tmp/mytpm1/swtpm-sock \
-> -    --log level=20 --tpm2
-> +    --tpm2 \
-> +    --log level=20
->   
->   In a 2nd terminal start the VM:
->   
+The following changes since commit c8de6ec63d766ca1998c5af468483ce912fdc0c2:
 
-Applied to my trivial-patches branch.
+  Merge tag 'pull-request-2022-09-28' of https://gitlab.com/thuth/qemu into staging (2022-09-28 17:04:11 -0400)
 
-Thanks,
-Laurent
+are available in the Git repository at:
 
+  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.2-pull-request
+
+for you to fetch changes up to a40ee29bbf3c169597d85f0871d189398b667d9f:
+
+  docs: Update TPM documentation for usage of a TPM 2 (2022-09-29 21:31:56 +0200)
+
+----------------------------------------------------------------
+Pull request trivial patches branch 20220930
+
+----------------------------------------------------------------
+
+Bernhard Beschow (1):
+  hw/virtio/vhost-shadow-virtqueue: Silence GCC error
+    "maybe-uninitialized"
+
+Markus Armbruster (2):
+  Drop superfluous conditionals around g_free()
+  Use g_new() & friends where that makes obvious sense
+
+Matheus Tavares Bernardino (1):
+  checkpatch: ignore target/hexagon/imported/* files
+
+Philippe Mathieu-Daudé via (1):
+  block/qcow2-bitmap: Add missing cast to silent GCC error
+
+Stefan Berger (1):
+  docs: Update TPM documentation for usage of a TPM 2
+
+Tong Zhang (1):
+  mem/cxl_type3: fix GPF DVSEC
+
+Wang, Lei (1):
+  .gitignore: add .cache/ to .gitignore
+
+ .gitignore                         |  1 +
+ block/qcow2-bitmap.c               |  2 +-
+ docs/specs/tpm.rst                 | 44 ++++++++++++++++--------------
+ hw/mem/cxl_type3.c                 |  2 +-
+ hw/remote/iommu.c                  |  2 +-
+ hw/virtio/vhost-shadow-virtqueue.c |  2 +-
+ hw/virtio/virtio-crypto.c          |  2 +-
+ migration/dirtyrate.c              |  4 +--
+ replay/replay.c                    |  6 ++--
+ scripts/checkpatch.pl              |  1 +
+ softmmu/dirtylimit.c               |  4 +--
+ target/i386/kvm/kvm.c              | 12 +++-----
+ target/i386/whpx/whpx-all.c        | 14 ++++------
+ 13 files changed, 47 insertions(+), 49 deletions(-)
+
+-- 
+2.37.3
 
 
