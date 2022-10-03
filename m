@@ -1,57 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oeMWI-0004gy-KB
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2022 16:22:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55288)
+	id 1ofQkT-0002px-Aa
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Oct 2022 15:05:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44460)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oeMWG-0004bl-4W; Fri, 30 Sep 2022 16:22:00 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:34905)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oeMWE-0004b3-8o; Fri, 30 Sep 2022 16:21:59 -0400
-Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MiagL-1p7Njp4AAZ-00fn4b; Fri, 30
- Sep 2022 22:21:47 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 1/8] hw/virtio/vhost-shadow-virtqueue: Silence GCC error
- "maybe-uninitialized"
-Date: Fri, 30 Sep 2022 22:21:37 +0200
-Message-Id: <20220930202144.1109310-2-laurent@vivier.eu>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220930202144.1109310-1-laurent@vivier.eu>
-References: <20220930202144.1109310-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1ofQkQ-0002l2-9O; Mon, 03 Oct 2022 15:05:02 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136]:33776)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1ofQkM-0008BY-QU; Mon, 03 Oct 2022 15:05:00 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-354c7abf786so115748297b3.0; 
+ Mon, 03 Oct 2022 12:04:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date;
+ bh=esBiXswA+5QoGiY+j9rDHgI1CxhwYwh/qhah7CMJWWU=;
+ b=UPa6VAXIHYLpBVle+g04jSZoeiOz0GlYd0ynBSe3r0cgSs5PVlMcM9P4awHOaS5Y0+
+ a7QqUwUerwR3xcoa0mc8Pzl72GPSxgrTYlsUzMXttwmJ9uxfUk/HAkHUJXYmbIC5DulE
+ jTLWwrUI65jpteq4GEJA+aXKCCQB+ghpGbYRMNM63tGZSy41PXl6RwvovPyf9ad0dGAS
+ DXS5/Z8G9TdYtQUF0yxyem6nSXBI6Go8r01QLSj14ux0OrWjQAJYtKHiHQt79SaLs1zO
+ 8hMPXynRMSo/QhPGVfTult4iJoN9zH1U89MzylBPRZ+2qHlwI3sXgZ/oPPGbn1KP+nhW
+ XCiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=esBiXswA+5QoGiY+j9rDHgI1CxhwYwh/qhah7CMJWWU=;
+ b=pdPAmk/zyqRfbWXbrP/GqUOC/WLKN3/vyG7Zmak6qW4UAobbb5Q7e2OURwPW/YPyKk
+ lkRUaYWVFUhVxC1cunFZ0PgIUpyD4QgwMqOtQaSuEbdkDrROn3d3vqyjfya2zAbWIuca
+ 0nJ+YYNvWnNkJO5SqraMe3HifmTj/efS2jRYQR83uBQfGuL03A7TRaY9s3133yKcwpJ/
+ R/Rks8Ia+4JK7fumZZTC9GW/og2XebdxMfJNvbfPqq+FTk4vycBpEN3v3CaXXk83U2kF
+ wGJc3vhaSpqf8Zc/WdNOYGHUL9dXQJZnNUg48Ms/wDg4O/meo4fQ0dNX+gcbcSaAtinX
+ JdXA==
+X-Gm-Message-State: ACrzQf1gjjq+yEPIncUxpk+DUd6IqlyBdqj7pwVZjYUnLBneZRurDDJw
+ s40lwrxVeqLep1N7h1ZI8KrGh02xlWcCJ6+vDqtBFwq/b7U=
+X-Google-Smtp-Source: AMsMyM4YfWsdnuXTLYanE4EsSynbdOCdBb9Hp2vB7kEg/i09J8BxsveEzyDP76FmbKa8nLv+pHl0I/7IWoR/Ock5Iu0=
+X-Received: by 2002:a81:14cc:0:b0:356:4ab:7b08 with SMTP id
+ 195-20020a8114cc000000b0035604ab7b08mr16666123ywu.62.1664823897048; Mon, 03
+ Oct 2022 12:04:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:dXPxFCZRmDTaGVm2OSMLY4Jgdh7wB+4if6nrWq4Sls6m+hJajcs
- c0UNeMgthGX3gWu8yXgz8lQJb0qzPQPAYNCJuisTFTASU/eb2vKM/5ihdVRbdvQ1nhC9/PX
- ZerSSmo7vLV9rZzieVXeNNXNWQVDfwK+ZJk8AUBjZnKyuoBUjmWet+Ub4gwQim0Ttef0VS4
- z4Zg6y2YXIN/qdCR9hrxw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DPRji3VTWFA=:xUGqjGcduMNuXZM8uocp/8
- XSivpZqeeO5nAXBMDRBB4ygnosdt43Fatd2Ht906zlVgxKQ7BxdpdAnhBfHBr2hRqjzUSlNfg
- oAKJxJT/oq8hpcqYW4l9o3nphG3uYZrr0uofpLiZLHeVW1Iu0TBxTYsFGk8v4Yx1np6NVLkO8
- UpubTi1YIm+q3EPg33imL9IefvYsKkUkeVYIXwFh1nYiQKNust21DZPlZxY7+RQg2oqSm2LSV
- F5MWgH1piBIO+h6vT0tHObBIPYAcQCezgn5SI+8dopsmfnwYHBvDAR0aSWlXNEwFqVdsi2/RH
- RnqK9j/O1ZbJfysiojaJEBkRz3f56DYkSSnm/gLUx6CrTF2rA+tUd6JF5mgVFOv1tp42qliJr
- 9EafjTcHKDtSd5x9sJYGbwNjsZGZ+dsDUa6xgmcwyfKz4xt8brlL70WkL644A18RGA7dHoGlx
- O9gtmu/THmjPlE+p8ELD75nK9z4E9q3+GHSDlCn9RlDc3JyNJWOpSF9IhaRztiBqQb1RnZzZj
- SHYmeoN2drs+JQBMH0GoGxt4tk3f/JsLgBdulTaW3/3Qrrwf6LUFPfO8X2cSn9/OmL+W9nMjn
- vYjFPWajiVOud4TpdL7kMzJI/jJ5ApSddRAqFnpuB52BUwc5oj9p6azm6fpvfIKpGAB1Myriw
- TH38O2BNZlt2iqqi4kvXsy8rtdkj1CaMqGUVn0Mfc8LTHSdARbeBXfLNts2eABvOgJCyWorr6
- GU0xY6R6B/mJKE5MDi7iL8PLAL/j46qqzOcYdeKU7vsa9QZyQymnMreS9pxlsCfpfXTcV7Awu
- OJ13EE8
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20220930202144.1109310-1-laurent@vivier.eu>
+In-Reply-To: <20220930202144.1109310-1-laurent@vivier.eu>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Mon, 3 Oct 2022 15:04:45 -0400
+Message-ID: <CAJSP0QWbDj42NmV=Yk3DMt7_Skt4k7x+jsJpetWdnr=bbYW2oA@mail.gmail.com>
+Subject: Re: [PULL 0/8] Trivial branch for 7.2 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=stefanha@gmail.com; helo=mail-yw1-x1136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,57 +74,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Sep 2022 20:22:01 -0000
+X-List-Received-Date: Mon, 03 Oct 2022 19:05:03 -0000
 
-From: Bernhard Beschow <shentey@gmail.com>
+On Fri, 30 Sept 2022 at 16:22, Laurent Vivier <laurent@vivier.eu> wrote:
+> Philippe Mathieu-Daud=C3=A9 via (1):
+>   block/qcow2-bitmap: Add missing cast to silent GCC error
 
-GCC issues a false positive warning, resulting in build failure with -Werror:
+Hi Laurent,
+This commit uses a mailing list email, probably due to DKIM/SPF issues:
+Author: Philippe Mathieu-Daud=C3=A9 via <qemu-devel@nongnu.org>
 
-  In file included from /usr/include/glib-2.0/glib.h:114,
-                   from src/include/glib-compat.h:32,
-                   from src/include/qemu/osdep.h:144,
-                   from ../src/hw/virtio/vhost-shadow-virtqueue.c:10:
-  In function ‘g_autoptr_cleanup_generic_gfree’,
-      inlined from ‘vhost_handle_guest_kick’ at ../src/hw/virtio/vhost-shadow-virtqueue.c:292:42:
-  /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘elem’ may be used uninitialized [-Werror=maybe-uninitialized]
-     28 |   g_free (*pp);
-        |   ^~~~~~~~~~~~
-  ../src/hw/virtio/vhost-shadow-virtqueue.c: In function ‘vhost_handle_guest_kick’:
-  ../src/hw/virtio/vhost-shadow-virtqueue.c:292:42: note: ‘elem’ was declared here
-    292 |             g_autofree VirtQueueElement *elem;
-        |                                          ^~~~
-  cc1: all warnings being treated as errors
+I think the policy is to reject such pull requests and fix the
+authorship. Could you update your pull request and resend?
 
-There is actually no problem since "elem" is initialized in both branches.
-Silence the warning by initializig it with "NULL".
+Thanks!
 
-$ gcc --version
-gcc (GCC) 12.2.0
-
-Fixes: 9c2ab2f1ec333be8614cc12272d4b91960704dbe ("vhost: stop transfer elem ownership in vhost_handle_guest_kick")
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220910151117.6665-1-shentey@gmail.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/virtio/vhost-shadow-virtqueue.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/virtio/vhost-shadow-virtqueue.c b/hw/virtio/vhost-shadow-virtqueue.c
-index e8e5bbc368dd..596d4434d289 100644
---- a/hw/virtio/vhost-shadow-virtqueue.c
-+++ b/hw/virtio/vhost-shadow-virtqueue.c
-@@ -289,7 +289,7 @@ static void vhost_handle_guest_kick(VhostShadowVirtqueue *svq)
-         virtio_queue_set_notification(svq->vq, false);
- 
-         while (true) {
--            g_autofree VirtQueueElement *elem;
-+            g_autofree VirtQueueElement *elem = NULL;
-             int r;
- 
-             if (svq->next_guest_avail_elem) {
--- 
-2.37.3
-
+Stefan
 
