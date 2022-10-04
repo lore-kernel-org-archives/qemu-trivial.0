@@ -1,57 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ofThP-0003GN-4m
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Oct 2022 18:14:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45918)
+	id 1ofcIF-0001Ip-O9
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Oct 2022 03:24:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42800)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ofThM-0003CH-4o; Mon, 03 Oct 2022 18:14:04 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:56259)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ofcI3-0001GG-1p
+ for qemu-trivial@nongnu.org; Tue, 04 Oct 2022 03:24:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:20400)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1ofThB-00069t-AL; Mon, 03 Oct 2022 18:14:03 -0400
-Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue012
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M4384-1ofTh52cYy-0000OB; Tue, 04
- Oct 2022 00:13:47 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 1/8] hw/virtio/vhost-shadow-virtqueue: Silence GCC error
- "maybe-uninitialized"
-Date: Tue,  4 Oct 2022 00:13:38 +0200
-Message-Id: <20221003221345.1324140-2-laurent@vivier.eu>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20221003221345.1324140-1-laurent@vivier.eu>
-References: <20221003221345.1324140-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ofcI0-0003GQ-Sk
+ for qemu-trivial@nongnu.org; Tue, 04 Oct 2022 03:24:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1664868267;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UWVs1cTuwscJkSS42I84gijtmuoLGEo4ErFizwjdrec=;
+ b=H/sIYzcPyI2kYGZEOEVTI+uVpquTEGfpOhzCQSiRaLzMLGkQQgpmHaUXSOJo4PsRBb9fyV
+ GPnTgJUOhTweYhNowbLalLZzAWQb+DrQGRhqO6zeHVgfjZJ5j+MCEBa5zeTTWpyNc2M1x6
+ dZe7cHTRjK4R8OfIUqRJpXx7NS6eEmo=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-659-ZbLg4Hv9OvSColPSeM6Diw-1; Tue, 04 Oct 2022 03:23:46 -0400
+X-MC-Unique: ZbLg4Hv9OvSColPSeM6Diw-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ p36-20020a05600c1da400b003b4faefa2b9so7444638wms.6
+ for <qemu-trivial@nongnu.org>; Tue, 04 Oct 2022 00:23:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=UWVs1cTuwscJkSS42I84gijtmuoLGEo4ErFizwjdrec=;
+ b=uW80Is6iJDihqhk6BAMkzXj7SBITXQ7Hl2CcKe7VGb+FvSg0JxytH8Usak0pAALxbr
+ km7I0BqIWqX9gnXFuBiinl/LLc0lXRLn/YSiw059tM8fUugN4E13Qfjz2ej/sBI8iOXL
+ d+QzNxvWeqU0yJj4O7HEmHkltTdlsV2PfGtNg5WsPiOrdqr4oQJSiGdn1wIcbqCKedf3
+ u8DzM80WbQfKmx35ufoXmcoUejQvqSixPeiNcemRawzMyXCYqjLI1wcLvF3dQLSHYXE0
+ Y/YMkKlOYTrTN4D2fWQSWzKADxAlCsRCzS261R1OjCnMj4P+ZlyGDZ/XG2bjm0URH2HY
+ Tytg==
+X-Gm-Message-State: ACrzQf1oMmVRH2NRY5jY1YgXwIAgTIFmMsM9mjMmNSrqIYjvkrX/Fj1F
+ GGttCN8Iwai/of2w2u65ir5WAnpxrAy1iczUDgfd+8iFqWr5bIaU+tye9s4kx9SCbb2y73LYp+Z
+ +JHIw+Vv1wky1P7mImw==
+X-Received: by 2002:a5d:4b8b:0:b0:22e:4185:bcc7 with SMTP id
+ b11-20020a5d4b8b000000b0022e4185bcc7mr4248171wrt.174.1664868225738; 
+ Tue, 04 Oct 2022 00:23:45 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5uYqM6iYVkvlJbJ8tnOGWXgtn9QXWKGJXejI9Ijd+uUBx1A2pLnVX/iXZhoBEBi5E732dmCQ==
+X-Received: by 2002:a5d:4b8b:0:b0:22e:4185:bcc7 with SMTP id
+ b11-20020a5d4b8b000000b0022e4185bcc7mr4248153wrt.174.1664868225507; 
+ Tue, 04 Oct 2022 00:23:45 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-178-246.web.vodafone.de.
+ [109.43.178.246]) by smtp.gmail.com with ESMTPSA id
+ fc10-20020a05600c524a00b003b435c41103sm27284158wmb.0.2022.10.04.00.23.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Oct 2022 00:23:44 -0700 (PDT)
+Message-ID: <14d32128-7855-2109-6a1a-1d8eabbab54e@redhat.com>
+Date: Tue, 4 Oct 2022 09:23:43 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH] net: improve error message for missing netdev backend
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Jason Wang <jasowang@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20221003100612.596845-1-berrange@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20221003100612.596845-1-berrange@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:d6qcJAaRRXqlWlgF4rkO0jCOlH/xs9Vp+9OWhZsbKDKEXx/9wT4
- hQbynoNqhSozS39Cp5UzbGekCNLpv/jsaTN1n04qg7m7eHrv0CDLoPJGoIwHDrdZg7xVSkh
- NENk8FLxiWpid1IjP72k8ptulfHFPOq6r5fS7/fCMIKI4oryNA9w+Ip5S3WV8S5lOKHUOMh
- QyQGqvPGz6CjHWKSq9d5A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:MKXYLJFRk8A=:awj5qvlWYYUXbqRV9XuTjK
- QvXf0AZ0Ao3+tatlRldt78FkpqEjm1e3txhYadABkBqmHuV61yq9z1yOmaNljMzzezXyosT8B
- B1z0+bPslnsq/lDVAbT7MPashKUZmxaDrA/iP+OvPU/LuZoVh3ZCiYCUAah00pQSlUzfmFaUi
- A0QNz1r5I9zoosJ2h+ktS1NydVfsBYLJ9Yikf4lrN0k+l4jo+sxUqv38SYL91KyzhMJwJ1nk+
- nL8Zo75GnT3Nho3lv+/GJp6Zq8vTYnaf6Kh6FGJiz2L5zggMHhTBYXj37HD3fmyVzyzsUaClB
- n0MWkLnf1/5b9poq1cFdiCikoJY0I3mjzVEeZ805TQi2gIPfhVXGiDyO63bL6p1gX6o5bDKkv
- 7AV+BLN9GH/mhgNohlivOQ/ZirU2t3KGrczoYMhbbVISyFnNC9300tl5QJOIVj5byLmaQrxBK
- L4iDPIe5E8cW5IMXhAKXzMEHxAnuXqVckY9EzieWD7/a0Wjrd/hIq9ixJcocz0PIBJOXxIKNj
- DOOeKDoekbOO/dLbfEwlY/khIX6l0bIt6TPnCbQu2NJGqqC7AowG9F6v/oWeErafv/+ro2Opk
- R3o/eTd1USZkwPggFh2e8wRgQqFcxFlGdpMWQ51gKAJ0d1yRbpX/4RRDUXd/mXlMOuSW5Kzj7
- lIyngeBnTF7GUiyU61jdmO9OYiAWJ0z4GO8RcLq/m74rr/t6Bt/+PacrAg3Ca4JyUC2ovMTtN
- ycwF4rCErKHrknawHbjV/Rkrvsh78b3BtLVuccolyVy1LL/tggHIiphDpej/6Xf2W6e+ff5E/
- lZnDlLa
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.467, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,57 +94,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Oct 2022 22:14:04 -0000
+X-List-Received-Date: Tue, 04 Oct 2022 07:24:35 -0000
 
-From: Bernhard Beschow <shentey@gmail.com>
+On 03/10/2022 12.06, Daniel P. Berrangé wrote:
+> The current message when using '-net user...' with SLIRP disabled at
+> compile time is:
+> 
+>    qemu-system-x86_64: -net user: Parameter 'type' expects a net backend type (maybe it is not compiled into this binary)
+> 
+> An observation is that we're using the 'netdev->type' field here which
+> is an enum value, produced after QAPI has converted from its string
+> form.
+> 
+> IOW, at this point in the code, we know that the user's specified
+> type name was a valid network backend. The only possible scenario that
+> can make the backend init function be NULL, is if support for that
+> backend was disabled at build time. Given this, we don't need to caveat
+> our error message with a 'maybe' hint, we can be totally explicit.
+> 
+> The use of QERR_INVALID_PARAMETER_VALUE doesn't really lend itself to
+> user friendly error message text. Since this is not used to set a
+> specific QAPI error class, we can simply stop using this pre-formatted
+> error text and provide something better.
+> 
+> Thus the new message is:
+> 
+>    qemu-system-x86_64: -net user: network backend 'user' is not compiled into this binary
+> 
+> The case of passing 'hubport' for -net is also given a message reminding
+> people they should have used -netdev/-nic instead, as this backend type
+> is only valid for the modern syntax.
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+> 
+> NB, this does not make any difference to people who were relying on the
+> QEMU built-in default hub that was created if you don't list any -net /
+> -netdev / -nic argument, only those using explicit args.
+> 
+>   net/net.c | 18 +++++++++++-------
+>   1 file changed, 11 insertions(+), 7 deletions(-)
+> 
+> diff --git a/net/net.c b/net/net.c
+> index 2db160e063..8ddafacf13 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -1036,19 +1036,23 @@ static int net_client_init1(const Netdev *netdev, bool is_netdev, Error **errp)
+>       if (is_netdev) {
+>           if (netdev->type == NET_CLIENT_DRIVER_NIC ||
+>               !net_client_init_fun[netdev->type]) {
+> -            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "type",
+> -                       "a netdev backend type");
+> +            error_setg(errp, "network backend '%s' is not compiled into this binary",
+> +                       NetClientDriver_str(netdev->type));
+>               return -1;
+>           }
+>       } else {
+>           if (netdev->type == NET_CLIENT_DRIVER_NONE) {
+>               return 0; /* nothing to do */
+>           }
+> -        if (netdev->type == NET_CLIENT_DRIVER_HUBPORT ||
+> -            !net_client_init_fun[netdev->type]) {
+> -            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "type",
+> -                       "a net backend type (maybe it is not compiled "
+> -                       "into this binary)");
+> +        if (netdev->type == NET_CLIENT_DRIVER_HUBPORT) {
+> +            error_setg(errp, "network backend '%s' is only supported with -netdev/-nic",
+> +                       NetClientDriver_str(netdev->type));
+> +            return -1;
+> +        }
+> +
+> +        if (!net_client_init_fun[netdev->type]) {
+> +            error_setg(errp, "network backend '%s' is not compiled into this binary",
+> +                       NetClientDriver_str(netdev->type));
+>               return -1;
+>           }
+>   
 
-GCC issues a false positive warning, resulting in build failure with -Werror:
-
-  In file included from /usr/include/glib-2.0/glib.h:114,
-                   from src/include/glib-compat.h:32,
-                   from src/include/qemu/osdep.h:144,
-                   from ../src/hw/virtio/vhost-shadow-virtqueue.c:10:
-  In function ‘g_autoptr_cleanup_generic_gfree’,
-      inlined from ‘vhost_handle_guest_kick’ at ../src/hw/virtio/vhost-shadow-virtqueue.c:292:42:
-  /usr/include/glib-2.0/glib/glib-autocleanups.h:28:3: error: ‘elem’ may be used uninitialized [-Werror=maybe-uninitialized]
-     28 |   g_free (*pp);
-        |   ^~~~~~~~~~~~
-  ../src/hw/virtio/vhost-shadow-virtqueue.c: In function ‘vhost_handle_guest_kick’:
-  ../src/hw/virtio/vhost-shadow-virtqueue.c:292:42: note: ‘elem’ was declared here
-    292 |             g_autofree VirtQueueElement *elem;
-        |                                          ^~~~
-  cc1: all warnings being treated as errors
-
-There is actually no problem since "elem" is initialized in both branches.
-Silence the warning by initializig it with "NULL".
-
-$ gcc --version
-gcc (GCC) 12.2.0
-
-Fixes: 9c2ab2f1ec333be8614cc12272d4b91960704dbe ("vhost: stop transfer elem ownership in vhost_handle_guest_kick")
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20220910151117.6665-1-shentey@gmail.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/virtio/vhost-shadow-virtqueue.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/virtio/vhost-shadow-virtqueue.c b/hw/virtio/vhost-shadow-virtqueue.c
-index e8e5bbc368dd..596d4434d289 100644
---- a/hw/virtio/vhost-shadow-virtqueue.c
-+++ b/hw/virtio/vhost-shadow-virtqueue.c
-@@ -289,7 +289,7 @@ static void vhost_handle_guest_kick(VhostShadowVirtqueue *svq)
-         virtio_queue_set_notification(svq->vq, false);
- 
-         while (true) {
--            g_autofree VirtQueueElement *elem;
-+            g_autofree VirtQueueElement *elem = NULL;
-             int r;
- 
-             if (svq->next_guest_avail_elem) {
--- 
-2.37.3
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
