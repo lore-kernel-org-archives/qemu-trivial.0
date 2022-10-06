@@ -1,63 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1og5Aj-0000ZH-MT
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Oct 2022 10:14:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48158)
+	id 1ogUHO-0008Q4-VZ
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Oct 2022 13:03:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1og5Ae-0000Re-Et
- for qemu-trivial@nongnu.org; Wed, 05 Oct 2022 10:14:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:35781)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1og5Aa-0006fT-Jg
- for qemu-trivial@nongnu.org; Wed, 05 Oct 2022 10:14:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1664979284;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Z1xp3m0B3raXTA2Ul7qlJxxgpFD8rAJ0UOTbRFN1h7k=;
- b=QQN+FYHOTon7NFh7Cbikh22LPqrFh12AbF7LubRi6hC0mIKeR0UVrTA50vTDs8zSwa3W+E
- GmN+jXJD5n/35rnRaMG22ivto6WUqKsdnMgnA7UssRHZZStQCqhg7m03uWRHLLEt4yTipr
- o6/Ukj6i3gfInfbdiXff+8fOUFjR0Ow=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-536-LWIeERb0PaCxmAz2_a17VA-1; Wed, 05 Oct 2022 10:14:40 -0400
-X-MC-Unique: LWIeERb0PaCxmAz2_a17VA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 65C5D29DD9A5;
- Wed,  5 Oct 2022 14:14:40 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.70])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CB94B483EFB;
- Wed,  5 Oct 2022 14:14:39 +0000 (UTC)
-Date: Wed, 5 Oct 2022 10:14:38 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PULL 0/8] Trivial branch for 7.2 patches
-Message-ID: <Yz2RTkfl45oU59xp@fedora>
-References: <20221003221345.1324140-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <sisshiki@isshiki-clinic.com>)
+ id 1ogTo7-0008Ji-Bl
+ for qemu-trivial@nongnu.org; Thu, 06 Oct 2022 12:33:12 -0400
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529]:44573)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sisshiki@isshiki-clinic.com>)
+ id 1ogTo5-0000w6-Ez
+ for qemu-trivial@nongnu.org; Thu, 06 Oct 2022 12:33:11 -0400
+Received: by mail-pg1-x529.google.com with SMTP id c7so2287215pgt.11
+ for <qemu-trivial@nongnu.org>; Thu, 06 Oct 2022 09:33:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=isshiki-clinic-com.20210112.gappssmtp.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=x+ax/ATrYzaQ5B/UVAZA4kqtENYvIwK5HmJOHghSjNM=;
+ b=Pqnr1bOKr4RioA6UpYEG+EagCqMGGZhZlSTNnAaib2f6LdbPG+mBoXyvz0Bwy/GuPl
+ mluj4C/9ynjR/kbn1zfnqHUnnNY2VEzWS4RegIS2ibjRDaaSXWGFdEY5uHfyt9pkJ+0l
+ 5z0PNv9QukGvb3k0kHnVDTE7WMxGJylchwztVjV8fwo208uxsLdXo9sF5Ad4fOXFycqJ
+ /F86gC78oXQI59UwuN3GpZcsEqPHVop9MhY8uyQxDWx49/Co9fqrgFHXfXQPZgi6m1pj
+ vJkgZ6RH7A7SbiK1etPo2jKz8RNc4FXCYuudZS9It5KEtFxJMk457fSDMjOg9vnlCDDo
+ oadw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=x+ax/ATrYzaQ5B/UVAZA4kqtENYvIwK5HmJOHghSjNM=;
+ b=6ywAycCCmXGeksXOp68Ws6jqDDZedifvoxyjnG93AdPzkYURZpyUfehfvelWCMtnXi
+ 1j9RZLxpUyGK5YQ8Ti99Z/xGVS/C3EGfKpQEVXwojDoe12+C5BWYHhJIqRCwaw5LcATw
+ 1omw7POrrsj0zYxqz+y6mOkZHXb+rgTEGWX9AVbdRxWTiwoiERK08CRSY46GRD3ugJxN
+ IGa9nrNCEOO++2Qflwi0bSHDODqDeUDbeGemdOxN/LGQG/EwA2kL5OolB5TSqXdaVbGk
+ QV58VuUYfhRlNpVts4wKaRJjhf6pN6/BlT6ClITJPMV9SB6CnLcOauoqxOrqlojmCg2i
+ jtaw==
+X-Gm-Message-State: ACrzQf1HCa5I6xpcEnzc/UcSJa2eunqEdCN2lzOudIXVADzLBEAJ+S4d
+ iEzc0XklRlpWyETqeQRhyVvapg==
+X-Google-Smtp-Source: AMsMyM4xlc4j0x3ajskrEU7aqtqVwG/1Q+ZwUimKccIX1p5uL2K+VQvsjkahFpQ4Aiwi+Cc5dW8duQ==
+X-Received: by 2002:a63:494e:0:b0:448:5163:4788 with SMTP id
+ y14-20020a63494e000000b0044851634788mr540492pgk.507.1665073985712; 
+ Thu, 06 Oct 2022 09:33:05 -0700 (PDT)
+Received: from DESKTOP-8TCEJFK.localdomain
+ (215.134.178.217.shared.user.transix.jp. [217.178.134.215])
+ by smtp.gmail.com with ESMTPSA id
+ e88-20020a17090a6fe100b00205d85cfb30sm3079679pjk.20.2022.10.06.09.33.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Oct 2022 09:33:04 -0700 (PDT)
+From: Soichiro Isshiki <sisshiki@isshiki-clinic.com>
+X-Google-Original-From: Soichiro Isshiki <sisshiki@mac.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: sisshiki1969 <sisshiki@mac.com>
+Subject: [PATCH] linux-user: mprotect() should returns 0 when len is 0.
+Date: Fri,  7 Oct 2022 00:38:43 +0900
+Message-Id: <20221006153841.10750-1-sisshiki@mac.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="KbIwE7KlM2J+t8dv"
-Content-Disposition: inline
-In-Reply-To: <20221003221345.1324140-1-laurent@vivier.eu>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::529;
+ envelope-from=sisshiki@isshiki-clinic.com; helo=mail-pg1-x529.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 06 Oct 2022 13:03:25 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,32 +80,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Oct 2022 14:14:49 -0000
+X-List-Received-Date: Thu, 06 Oct 2022 16:33:15 -0000
 
+From: sisshiki1969 <sisshiki@mac.com>
 
---KbIwE7KlM2J+t8dv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+For now, qemu-x86_64 returns ENOMEM when mprotect() was called with an argument
+len is 0 from a guest process.
+This behavior is incompatible with the current Linux implementation,
+which mprotect() with len = 0 does nothing and returns 0,
+although it does not appear to be explicitly described in man.
 
-Applied, thanks.
+This is due to the following function which always returns false if len = 0.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/7.2 for any user-visible changes.
+```C
+static inline bool guest_range_valid_untagged(abi_ulong start, abi_ulong len)
+{
+    return len - 1 <= GUEST_ADDR_MAX && start <= GUEST_ADDR_MAX - len + 1;
+}
 
---KbIwE7KlM2J+t8dv
-Content-Type: application/pgp-signature; name="signature.asc"
+```
 
------BEGIN PGP SIGNATURE-----
+This patch fix this incompatibility problem.
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmM9kU4ACgkQnKSrs4Gr
-c8icnwf/XuiY4oAGo2fthpGBrfsAJpJGZJ0uJrOVz9jjbcuqEmxSQfb5shKyezEb
-3Glj4slky9tkK3RzeItXNXev8NIpU2icrGTbLyLwB+fjDnVuL3vfG4lBXHZiw6cf
-82yjhhyn7jnn20Jv1IrOXn/IhBe6FKattkpblcWHMtuvKO+aoZUrW5bTOZnuxYwd
-g8yyhyVcrDgRmNMoxLQ74uU74Z+8+y5h9X8o2D5kGsepNFUmyH8YOkPQHALMt5xy
-aU4q5PEX/TnjTxU1yyzPdfYK7FGcLXfIE1GZfadbTvIaB7hpf03tfGrygqJ+5Gl7
-9zmRp8y0L10o3naEf0A3AMl6xb4nMw==
-=gmhX
------END PGP SIGNATURE-----
+Signed-off-by: sisshiki1969 <sisshiki@mac.com>
+---
+ linux-user/mmap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
---KbIwE7KlM2J+t8dv--
+diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+index 28f3bc85ed..1ed79459ea 100644
+--- a/linux-user/mmap.c
++++ b/linux-user/mmap.c
+@@ -130,12 +130,12 @@ int target_mprotect(abi_ulong start, abi_ulong len, int target_prot)
+     }
+     len = TARGET_PAGE_ALIGN(len);
+     end = start + len;
+-    if (!guest_range_valid_untagged(start, len)) {
+-        return -TARGET_ENOMEM;
+-    }
+     if (len == 0) {
+         return 0;
+     }
++    if (!guest_range_valid_untagged(start, len)) {
++        return -TARGET_ENOMEM;
++    }
+ 
+     mmap_lock();
+     host_start = start & qemu_host_page_mask;
+-- 
+2.25.1
 
 
