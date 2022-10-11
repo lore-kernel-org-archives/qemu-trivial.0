@@ -1,75 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oh9Yf-00030l-7G
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Oct 2022 09:08:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35312)
+	id 1oiM4C-0006sR-8L
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Oct 2022 16:41:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60082)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sisshiki@isshiki-clinic.com>)
- id 1oh9Yd-0002yO-Cr
- for qemu-trivial@nongnu.org; Sat, 08 Oct 2022 09:07:59 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:35514)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sisshiki@isshiki-clinic.com>)
- id 1oh9Yb-0004Rl-GD
- for qemu-trivial@nongnu.org; Sat, 08 Oct 2022 09:07:59 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- i7-20020a17090a65c700b0020ad9666a86so9515682pjs.0
- for <qemu-trivial@nongnu.org>; Sat, 08 Oct 2022 06:07:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=isshiki-clinic-com.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=vAROz0sAFRZA2tLTAQPXPO1fuYDIUeuWvfgiObT8Qxg=;
- b=eHMD6canhjiaKP29pHC9gkrM1elTz46gEyxcS5O9fcQ1wlXXZy3eEZEqSBJBu6/5n/
- mSehoDC30KDUBjYu9wptzGKBxt/Jz9he4a5m821SD4tGFDXAoJKcoBjfZ+GRc9AoYE7N
- DBu7/P/cS33g9kwBOgOOAfA/eEp2djgHyGP91ac0F3RVAh9gWq4iEZkzaXte06zVnoAP
- bwNnLHlkSsvNs4gKzWzsgrR7chbBwLS0nj4rSIuzb2ND5qxvbWmgOT4+XeZAkDRdWC63
- hCqMYulUpypB404pReid3HvzFRbxLtWULWnl9FgQXwxQUsmUlgEN1WWQS2DurYX5eg33
- E6+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=vAROz0sAFRZA2tLTAQPXPO1fuYDIUeuWvfgiObT8Qxg=;
- b=7c3ZJ50/blSjoYvN26XfJmWkeclt4so3Us9o5KuMe0KUOdzG1ckdaBBK2FrgloiOEv
- pSO23ludcNldhxH/7pXwBC1YeeLWsXVItCC2OJQwumX1B4F6XvDwY64KYjrdXrNgOsSN
- QzWhhf0wjhZZgrk7woRtGD9V7EoMoz6+BxChcK2GmcKu0Z5H0XMCkZD8DasJRh5kP7/8
- s5n4Jh90uN5vw1lJKbUeLyTccsJy4DZfHnDyxVMM+AhXKYH/YTtaaOF9C11o1QD8ltPq
- tsx6c0+e6ULNMWyS60lDCI0HTqigd0AAX1PAC4SNyAgRH0XqwgrYIA+41DxfCoUJkqgQ
- e4jw==
-X-Gm-Message-State: ACrzQf0YwwkjbI9id2oARr0g2lMbmtXnQhlh2Pb+se3BOrgBB5GcUgWP
- Dh3LF7sa3M0bTXRVnIqnFZo3Rg==
-X-Google-Smtp-Source: AMsMyM5858reGsNJRJWxWON8fbmM4KdBVQcgTQQThVR2YcewTVS4pVBeZ50uPwkDZbpmJ+41GhJneA==
-X-Received: by 2002:a17:902:a611:b0:178:6b71:2ee5 with SMTP id
- u17-20020a170902a61100b001786b712ee5mr9716531plq.53.1665234474570; 
- Sat, 08 Oct 2022 06:07:54 -0700 (PDT)
-Received: from DESKTOP-8TCEJFK.localdomain
- (215.134.178.217.shared.user.transix.jp. [217.178.134.215])
- by smtp.gmail.com with ESMTPSA id
- u204-20020a6279d5000000b00535da15a252sm3458718pfc.165.2022.10.08.06.07.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 08 Oct 2022 06:07:53 -0700 (PDT)
-From: Soichiro Isshiki <sisshiki@isshiki-clinic.com>
-X-Google-Original-From: Soichiro Isshiki <sisshiki@mac.com>
-To: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Soichiro Isshiki <sisshiki@mac.com>
-Subject: [PATCH v3] linux-user: mprotect() should returns 0 when len is 0.
-Date: Sat,  8 Oct 2022 22:06:43 +0900
-Message-Id: <20221008130642.2158-1-sisshiki@mac.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <smitterl@redhat.com>)
+ id 1oiGws-0003UT-4H
+ for qemu-trivial@nongnu.org; Tue, 11 Oct 2022 11:13:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:47629)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <smitterl@redhat.com>)
+ id 1oiGwp-0000dF-M6
+ for qemu-trivial@nongnu.org; Tue, 11 Oct 2022 11:13:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1665501210;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=6M0TxInMFLEYVUqXH7zLeBF60EeWWGKXkxks3lC0MOs=;
+ b=Rgbp51bCwi0EtKRYwFeKvY+O4dXunmR/HwMAPCtPhXBa6PhIwqU3WsmaML2HuDHhKL1WXs
+ rp4kI5wQdWDIXw0vDPW76kg+MlM42ffE8fjEnKm5XjLYnA+Z7fwEN7chLS89Z4+UcmEc3S
+ qgUrQZ3bfyuYwwa9OvsxJ/1S6aqsTN0=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-47-Xfro8_jLOKidYuAGEuPTgA-1; Tue, 11 Oct 2022 11:12:18 -0400
+X-MC-Unique: Xfro8_jLOKidYuAGEuPTgA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5F76D29AB42F;
+ Tue, 11 Oct 2022 15:12:18 +0000 (UTC)
+Received: from fedora.. (unknown [10.39.192.241])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 600682166B26;
+ Tue, 11 Oct 2022 15:12:17 +0000 (UTC)
+From: Sebastian Mitterle <smitterl@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: kraxel@redhat.com,
+	thuth@redhat.com,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] qemu-edid: Restrict input parameter -d to avoid division by
+ zero
+Date: Tue, 11 Oct 2022 17:12:16 +0200
+Message-Id: <20221011151216.64897-1-smitterl@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::1035;
- envelope-from=sisshiki@isshiki-clinic.com; helo=mail-pj1-x1035.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=smitterl@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 11 Oct 2022 16:41:30 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,48 +68,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Oct 2022 13:07:59 -0000
+X-List-Received-Date: Tue, 11 Oct 2022 15:13:40 -0000
 
-On Sat, Oct 8, 2022 at 12:41 AM Soichiro Isshiki <sisshiki@isshiki-clinic.com> wrote:
-> A validation for wrap-around was added, I think it is neccesory.
+A zero value for dpi will lead to a division by zero in qemu_edid_dpi_to_mm().
+Tested by runnig qemu-edid -dX, X = 0, 100.
 
-I noticed the validation for wrap-around is *not* necessary, because it is done
-by guest_range_valid_untagged().
+Resolves: qemu-project/qemu#1249
 
-Signed-off-by: Soichiro Isshiki <sisshiki@mac.com>
+Suggested-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Sebastian Mitterle <smitterl@redhat.com>
 ---
- linux-user/mmap.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ qemu-edid.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index 28f3bc85ed..6f23a1ac39 100644
---- a/linux-user/mmap.c
-+++ b/linux-user/mmap.c
-@@ -124,17 +124,17 @@ int target_mprotect(abi_ulong start, abi_ulong len, int target_prot)
-     if ((start & ~TARGET_PAGE_MASK) != 0) {
-         return -TARGET_EINVAL;
-     }
--    page_flags = validate_prot_to_pageflags(&host_prot, target_prot);
--    if (!page_flags) {
--        return -TARGET_EINVAL;
-+    if (len == 0) {
-+        return 0;
-     }
-     len = TARGET_PAGE_ALIGN(len);
--    end = start + len;
-     if (!guest_range_valid_untagged(start, len)) {
-         return -TARGET_ENOMEM;
-     }
--    if (len == 0) {
--        return 0;
-+    end = start + len;
-+    page_flags = validate_prot_to_pageflags(&host_prot, target_prot);
-+    if (!page_flags) {
-+        return -TARGET_EINVAL;
-     }
- 
-     mmap_lock();
+diff --git a/qemu-edid.c b/qemu-edid.c
+index 20c958d9c7..92e1a660a7 100644
+--- a/qemu-edid.c
++++ b/qemu-edid.c
+@@ -92,6 +92,10 @@ int main(int argc, char *argv[])
+                 fprintf(stderr, "not a number: %s\n", optarg);
+                 exit(1);
+             }
++            if (dpi == 0) {
++                fprintf(stderr, "cannot be zero: %s\n", optarg);
++                exit(1);
++            }
+             break;
+         case 'v':
+             info.vendor = optarg;
 -- 
-2.25.1
+2.37.3
 
 
