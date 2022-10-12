@@ -1,104 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oii22-00019d-Vw
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2022 16:08:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49746)
+	id 1oik6k-00089P-Cl
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2022 18:21:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <benoitdudu38@hotmail.fr>)
- id 1oigWs-0006Iu-Id
- for qemu-trivial@nongnu.org; Wed, 12 Oct 2022 14:32:32 -0400
-Received: from mail-db8eur05olkn20802.outbound.protection.outlook.com
- ([2a01:111:f400:7e1a::802]:5134
- helo=EUR05-DB8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <benoitdudu38@hotmail.fr>)
- id 1oigWq-0003hp-SU
- for qemu-trivial@nongnu.org; Wed, 12 Oct 2022 14:32:30 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EGTHtN8mNkb7DfYUWFbxx/sJyMT+s2zl9yLyS/6AN3DvdVB5/5lr2nW67wyF1HY2vT+A1D0G2kb7n3cXNNnzWdejrFzz1wJrMO7pfxgeGPJtN/IwUSsEeGI04WOz6WdLWTcXlwR+7XLW3325+zBdesAkJaJdvBR53t5OFUjhV2XdHCkyjIYzs7vr1aRDNzCEtACwG/cenUcRi60uNq5R/MMHxjRk/IUlmytvV+hYydy1jtAEi/x3P73dKG2VY4EmjW0Eov0eIdU9sBHORp/Tx1AVIdrlVrf8K41fxHsHFWx5MhzhDRs4H2gvATM/q7gSM0sQMuFRhW3c4W0duC0Q/A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xSlx0dcJ2a4ufwIBppeisTsmRMP0hVyy2IJOVzpQfEM=;
- b=MZLPa/bv1mtxEGQ1EMOn6PFIysY2zMmGEssHYyBheTklLVPanmn0hmi+VvQb1vee5/w7F3G2XQqLKq9Npu91SqnBbMQM8bbxO527c7mcrOeqMPuE3f3l7mkhot/k2t+g7FLGAkv+E3HQYSx1vULU4ejEzO0FZX2x+o6XYKPA2TVtRqyz3DbIWAyGU4AoI659QRTuSpcMtHjEGW4apTCtdtevVByMvW1dgNM5wS/370ZSRXWoALso6ewp7m/KbzKHcz+qrUwlxlhwVEQn+SqaqB9XD570W8WK/tVdEWtcGdSY1iga1A1s/JbwQFKNim2vLI5flhIorwpkl8qFXUluxw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from PR3PR07MB6761.eurprd07.prod.outlook.com (2603:10a6:102:70::12)
- by DB9PR07MB7260.eurprd07.prod.outlook.com (2603:10a6:10:21c::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.20; Wed, 12 Oct
- 2022 18:27:23 +0000
-Received: from PR3PR07MB6761.eurprd07.prod.outlook.com
- ([fe80::228e:3882:7dbb:4c14]) by PR3PR07MB6761.eurprd07.prod.outlook.com
- ([fe80::228e:3882:7dbb:4c14%4]) with mapi id 15.20.5723.020; Wed, 12 Oct 2022
- 18:27:23 +0000
-From: <benoitdudu38@hotmail.fr>
-To: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: GCC9 compilation warning treated as error
-Thread-Topic: GCC9 compilation warning treated as error
-Thread-Index: AQHY3mccir+w+fGwo0OvxkLYuxbiWw==
-Date: Wed, 12 Oct 2022 18:27:23 +0000
-Message-ID: <PR3PR07MB676110594DCDCA29B33704ABE2229@PR3PR07MB6761.eurprd07.prod.outlook.com>
-Accept-Language: fr-FR, en-US
-Content-Language: fr-FR
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tmn: [OcFY1Hj8BZ+udVrE4r73E5XAYwSVxWyexDEi1BjPuRWzmY49qL7GMFPgCraoZ5Od]
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PR3PR07MB6761:EE_|DB9PR07MB7260:EE_
-x-ms-office365-filtering-correlation-id: 70c00447-2766-452b-5d41-08daac7f6821
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Lxs6Qrt6IdS6dU1qB/AzVDod0DTu3ost/Pff+thzU7Xkeu6BciLcQVKCKJZmPptQlvLUHK/1MVSPjifxnEBwYtgP9/lQWuK1JcjbKEgPBuato1H0Byr44O2ECK/1pT4n5xB2BE2p7lXqjaRDSn0JdrJmGTARX9PudmC1i3aIbNuLtUGRhos7JxyMkcYiEiP9q9FLp16SPSsZEz6cCdq7gbBLlaE1HexZh4KiCDJAsNZr17vu360LuU5MwOZpaG/8d5D/3SAHlBxr4+Cl74QXnc/4F4x2YnRCcjT4mg/KuIHm9EXjiLl+0VZJrW95nL1GartX3BJkbhrs4AcQwEa3T6SbVUOckZNNDCVRN4tYy9nDZ4Z68BUa12NFGTY5xHC1pCBziLOl1rsAt1I3UywyGezximCV8JhM8KsGbuC60ynYu7a8SS5/Pd6aF3FluElvzs/msqc6PAE2qLamrc12BmiKDvTc/vjidfS1ws0o/I+Z5k1IVVkH80pODfGXvn94/Ac/dV4RmYl2YNRpDLaOSJ05mEoEv6dOx69bRtscJoGjY+IkcdsDMcDcokwCNTOSVb6y/wXY2f/ooHs5NN/nkYWxbYsJYktRrTTiLyFSiz1R0fcJVzmiBCHtkTof9FPOCVyBdJzs8rILWUMBH3enlA==
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?UkyC6WaLAl4G48OeK7vjsTT+WIZiBTb3BltKPBOV5rFWdC2h2y4aCZJ3Tq?=
- =?iso-8859-1?Q?wB4STdI6/SUGnwGFiiTPufmnmAP1YOMTi6AY60SakHU0jUm4wQnUK+5waq?=
- =?iso-8859-1?Q?qB9Y2Dgx261WTRlyXNoMpvWqiDCehlXixJ+gR0FX1+WiqedwATpqdD9/sr?=
- =?iso-8859-1?Q?/kP3Q5n2UxS2eTjoCwYwvacSE0VRrYVsjPbth0N0TpiXESiut3QNbh5kn3?=
- =?iso-8859-1?Q?JktOdGmg58IpnzCoAGgU7NzYiVHPEgG4cad9U1dBaSMhjJkaSCc4wHvIk/?=
- =?iso-8859-1?Q?gfpKUJT4guCPIt0/5Ba+YruoNGhEXewNnOUNtlRTup1ig3QD4IkQuQ0hDK?=
- =?iso-8859-1?Q?ZeAEAvdNr2LzmDUpXuLUuv8gXw+LEtWth+fuTUxauiD6agk1xlj1IOHme8?=
- =?iso-8859-1?Q?AFKaXVYh3yfIXhfsKJ2ObbPQ9wRa0SiE+wumxDIz2Sr0SYjH4Wo0ADAOTH?=
- =?iso-8859-1?Q?f1MhhrR19goNQulnuXQu6uY9lmuH7doGWmD4vCD7rHDlYR3oSapu4rtnZi?=
- =?iso-8859-1?Q?+3grs0DFVqZfLxmAYD9Hiw4Ca7Hg4UJQA0lXfldUEueHSJeP3QSi/+OpME?=
- =?iso-8859-1?Q?sm86S3iHytzL6oVBNdGHZ45g+ns0tCTm2wJrSL1vVSxgRGOWETukh4KFdP?=
- =?iso-8859-1?Q?ihEFYeVhaSA16ei+mt6KzmSYNJ2vHzrLODBK9Yi78M8zu3pSC/iClp3McL?=
- =?iso-8859-1?Q?mwF4Tb+U4uLNrK0oNKW9J1igb8BMHZQwpVV7+q45OE7A31eZ/pgVsl4U7K?=
- =?iso-8859-1?Q?ZPIhdK5ZOt0iHAXWOMJVR5j+VxVFrpYy/YXHcY6UEeGY9jmCt+8pdSAPI8?=
- =?iso-8859-1?Q?oJ9wEEyhyCcRASdidfsdIRqGr1udSLfAfx/FkrvFB/+TMWQecmJu2WUyv4?=
- =?iso-8859-1?Q?+DUVU208X9peYwyjI4xRBTZjTyzxGTho3EHZMlF4GavoVqnL3LSDAVG+V9?=
- =?iso-8859-1?Q?b8YQRhIMIDF5eRBcRDL2qxztHOcdq26w9v4uTfMUFlmo1200orBk2cVONz?=
- =?iso-8859-1?Q?Xbd6BJMgFuqdcF3TbeNR7xm7UilBInLia30q6GvalrQw4JQxLe/rnsJFgx?=
- =?iso-8859-1?Q?FyVrq2Yo9rNMTJMs/PLSOYQBZJDzF80DJMM/ePQqIgjemJDMaKMHdSEjae?=
- =?iso-8859-1?Q?Z5XQ2KAkj7JtTuKorHAQ4obr7f1ctVqnSp1gdSJIBHGl+TrBWrV1ewymxF?=
- =?iso-8859-1?Q?vg5v4eE55JYABhKyAeNz7dWc9MurAhld+36ZJBk8DNJkQABCPNZ3xK6Zd6?=
- =?iso-8859-1?Q?ssdApcvICMQJyG+WCefudQA3TnpUdKpuYUFpmB7u+8ustzTnbUra7TnHze?=
- =?iso-8859-1?Q?ToYyR6tYs1TSR878rmupeo2PsvbQrLw0OD5MZmI6J4R1iH8dVcN7ad6QD6?=
- =?iso-8859-1?Q?6ZkNdDCWF7ou9hawU8rVBsFIMtkENpKA=3D=3D?=
-Content-Type: multipart/alternative;
- boundary="_000_PR3PR07MB676110594DCDCA29B33704ABE2229PR3PR07MB6761eurp_"
+ (Exim 4.90_1) (envelope-from <cwrogg@umich.edu>) id 1oijtl-0006Iy-Bz
+ for qemu-trivial@nongnu.org; Wed, 12 Oct 2022 18:08:21 -0400
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e]:35606)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cwrogg@umich.edu>) id 1oijti-000226-6I
+ for qemu-trivial@nongnu.org; Wed, 12 Oct 2022 18:08:19 -0400
+Received: by mail-yb1-xb2e.google.com with SMTP id e20so66605ybh.2
+ for <qemu-trivial@nongnu.org>; Wed, 12 Oct 2022 15:08:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=umich.edu; s=google-2016-06-03;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=KkHguknvAFk7BEm9X9Q7YbQ0YifkJ0YknRfDZIpP6m0=;
+ b=dmOyThPaD4Sg/qN5e9vGIj0g2ntJJzxIDs0rw0pISOuQ8t9ejgslWEV08skLiDtKAM
+ Oh8Z28PEG2sVjBow64sxY9T3vDcR9ZULkI9tb+ceMWXpGrRtvUH5Lqsl5nJLHzqxre/T
+ Op0b8ct7lzABhJcUAPAkKNt0VR87LyCieMN1j+U57QTgtF6z8j3PbYEgWVF7GcQRJO22
+ lysWn4MHovwWUAZXlguYgPOXLJYDT0EZ1YVClmBB1n7jLJXZ9VcFr6DJFyGni600Ic7h
+ Oxz1+YOqGcgbtXiVQfNfD6yxw3XJNgey2g5178PL7HevBU2RL3unQRW4+Q4CDiDT9iE4
+ 6/ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=KkHguknvAFk7BEm9X9Q7YbQ0YifkJ0YknRfDZIpP6m0=;
+ b=Nxq0geraHAiL7oKeLoSNxgY5KbC7hqZzyZ3OgSSVvoeJpcrJ+x9T1bcKWG5L5ur7kK
+ ZYmLYu4+99AhdcURDOqBu9GnJurOsynELmL6InUdUSmx5gD2Hoigw4lESK3C2iychlwV
+ /JKP5KoD0huQRJaaaJGalnhiXwsfiqq2lx/RXGM2oKrVktxSDkTp7EUajDNKaZz7s210
+ 3ao7AxWQ2ebQ09ZD59YaHaAdi/mhmgbtOwNgJTbTaREDqkfmRBJtNLIXmnqz/t98xmQ0
+ WHG97zAoc1sqS1UwEgJqC5H3mdZLzzQlX58k5Bz5VAjiVkxTgqkwAST+0Viu5zWs1Pen
+ AIFg==
+X-Gm-Message-State: ACrzQf3nhCQcKTqK4FmR1XRlCm+q+z3ntfB8/Eg+RJp2I80FL4jlF3oG
+ fgZOK3VJ/5Em7w6ViM4rU/GXEfzd3vwwhf+Us9xaqg==
+X-Google-Smtp-Source: AMsMyM4y2jlRpqz7QkGFqjWPV/aL2mPv5SarBXlUlMyBieAIgI0zQgUQu/w0lMbSrAJE5S8vky3Ue7qF+wz5T4+1Vx8=
+X-Received: by 2002:a5b:a0f:0:b0:691:6fea:deda with SMTP id
+ k15-20020a5b0a0f000000b006916feadedamr30106867ybq.377.1665612493341; Wed, 12
+ Oct 2022 15:08:13 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: sct-15-20-4778-2-msonline-outlook-1105a.templateTenant
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PR3PR07MB6761.eurprd07.prod.outlook.com
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-Network-Message-Id: 70c00447-2766-452b-5d41-08daac7f6821
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Oct 2022 18:27:23.3875 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR07MB7260
-Received-SPF: pass client-ip=2a01:111:f400:7e1a::802;
- envelope-from=benoitdudu38@hotmail.fr;
- helo=EUR05-DB8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+From: Christopher Wrogg <cwrogg@umich.edu>
+Date: Wed, 12 Oct 2022 18:08:02 -0400
+Message-ID: <CAG7Es25Xv=WmA3VbgB2DzMZ7D9XYLe9CAnA3q2mHxiKHONvjcg@mail.gmail.com>
+Subject: [PATCH v2] Properly sign extend BBIT branch offset during calculation
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ qemu-trivial@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Content-Type: multipart/alternative; boundary="000000000000ffd8dd05eadda0bc"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
+ envelope-from=cwrogg@umich.edu; helo=mail-yb1-xb2e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 12 Oct 2022 16:08:44 -0400
+X-Mailman-Approved-At: Wed, 12 Oct 2022 18:21:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,111 +71,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Oct 2022 18:32:33 -0000
+X-List-Received-Date: Wed, 12 Oct 2022 22:08:22 -0000
 
---_000_PR3PR07MB676110594DCDCA29B33704ABE2229PR3PR07MB6761eurp_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+--000000000000ffd8dd05eadda0bc
+Content-Type: text/plain; charset="UTF-8"
 
-A small fix for a compilation warning.
+The Octeon specific BBIT instruction incorrectly computes
+the branch offset. The 16 bit value is not sign extended.
 
-
-From ce76d128bf7a3101cb16d3397a396640c35e4a0d Mon Sep 17 00:00:00 2001
-From: Benoit Dumas <benoitdudu38@hotmail.fr>
-Date: Wed, 12 Oct 2022 20:05:09 +0200
-Subject: [PATCH] Signed-off-by: Benoit Dumas <benoitdudu38@hotmail.fr>
-
-fix a compilation warning treated as error by GCC9
-
-Signed-off-by: Benoit Dumas <benoitdudu38@hotmail.fr>
+Signed-off-by: Christopher Wrogg <cwrogg@umich.edu>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1251
 ---
- tests/qtest/vhost-user-test.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/mips/tcg/octeon_translate.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/vhost-user-test.c b/tests/qtest/vhost-user-test.c
-index 84498941a6..5a17ed5d03 100644
---- a/tests/qtest/vhost-user-test.c
-+++ b/tests/qtest/vhost-user-test.c
-@@ -493,7 +493,7 @@ static TestServer *test_server_new(const gchar *name,
-
-     tmpfs =3D g_dir_make_tmp("vhost-test-XXXXXX", &err);
-     if (!tmpfs) {
--        g_test_message("g_dir_make_tmp on path (%s): %s", tmpfs,
-+        g_test_message("g_dir_make_tmp on path: %s",
-                        err->message);
-         g_error_free(err);
+diff --git a/target/mips/tcg/octeon_translate.c
+b/target/mips/tcg/octeon_translate.c
+index 6a207d2e7e..90f7b105cb 100644
+--- a/target/mips/tcg/octeon_translate.c
++++ b/target/mips/tcg/octeon_translate.c
+@@ -38,7 +38,10 @@ static bool trans_BBIT(DisasContext *ctx, arg_BBIT *a)
      }
---
-2.17.1
 
---_000_PR3PR07MB676110594DCDCA29B33704ABE2229PR3PR07MB6761eurp_
-Content-Type: text/html; charset="iso-8859-1"
+     ctx->hflags |= MIPS_HFLAG_BC;
+-    ctx->btarget = ctx->base.pc_next + 4 + a->offset * 4;
++    a->offset *= 4;
++    a->offset = (target_long)(int16_t)a->offset;
++    ctx->btarget = ctx->base.pc_next + 4 + a->offset;
++
+     ctx->hflags |= MIPS_HFLAG_BDS32;
+
+     tcg_temp_free(t0);
+-- 
+2.30.2
+
+--000000000000ffd8dd05eadda0bc
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;=
- color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" class=3D"eleme=
-ntToProof">
-A small fix for a compilation warning.<br>
-<br>
-<br>
-</div>
-<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;=
- color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" class=3D"eleme=
-ntToProof ContentPasted0">
-From ce76d128bf7a3101cb16d3397a396640c35e4a0d Mon Sep 17 00:00:00 2001
-<div class=3D"ContentPasted0">From: Benoit Dumas &lt;benoitdudu38@hotmail.f=
-r&gt;</div>
-<div class=3D"ContentPasted0">Date: Wed, 12 Oct 2022 20:05:09 +0200</div>
-<div class=3D"ContentPasted0">Subject: [PATCH] Signed-off-by: Benoit Dumas =
-&lt;benoitdudu38@hotmail.fr&gt;</div>
-<div><br class=3D"ContentPasted0">
-</div>
-<div class=3D"ContentPasted0">fix a compilation warning treated as error by=
- GCC9</div>
-<div><br class=3D"ContentPasted0">
-</div>
-<div class=3D"ContentPasted0">Signed-off-by: Benoit Dumas &lt;benoitdudu38@=
-hotmail.fr&gt;</div>
-<div class=3D"ContentPasted0">---</div>
-<div class=3D"ContentPasted0">&nbsp;tests/qtest/vhost-user-test.c | 2 +-</d=
-iv>
-<div class=3D"ContentPasted0">&nbsp;1 file changed, 1 insertion(+), 1 delet=
-ion(-)</div>
-<div><br class=3D"ContentPasted0">
-</div>
-<div class=3D"ContentPasted0">diff --git a/tests/qtest/vhost-user-test.c b/=
-tests/qtest/vhost-user-test.c</div>
-<div class=3D"ContentPasted0">index 84498941a6..5a17ed5d03 100644</div>
-<div class=3D"ContentPasted0">--- a/tests/qtest/vhost-user-test.c</div>
-<div class=3D"ContentPasted0">+++ b/tests/qtest/vhost-user-test.c</div>
-<div class=3D"ContentPasted0">@@ -493,7 +493,7 @@ static TestServer *test_s=
-erver_new(const gchar *name,</div>
-<div class=3D"ContentPasted0">&nbsp;</div>
-<div class=3D"ContentPasted0">&nbsp; &nbsp; &nbsp;tmpfs =3D g_dir_make_tmp(=
-&quot;vhost-test-XXXXXX&quot;, &amp;err);</div>
-<div class=3D"ContentPasted0">&nbsp; &nbsp; &nbsp;if (!tmpfs) {</div>
-<div class=3D"ContentPasted0">- &nbsp; &nbsp; &nbsp; &nbsp;g_test_message(&=
-quot;g_dir_make_tmp on path (%s): %s&quot;, tmpfs,</div>
-<div class=3D"ContentPasted0">+ &nbsp; &nbsp; &nbsp; &nbsp;g_test_message(&=
-quot;g_dir_make_tmp on path: %s&quot;,</div>
-<div class=3D"ContentPasted0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; err-&gt;message);</div>
-<div class=3D"ContentPasted0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;g_error_fre=
-e(err);</div>
-<div class=3D"ContentPasted0">&nbsp; &nbsp; &nbsp;}</div>
-<div class=3D"ContentPasted0">-- </div>
-2.17.1<br>
-</div>
-</body>
-</html>
+<div dir=3D"ltr">The Octeon specific BBIT instruction incorrectly computes<=
+br>the branch offset. The 16 bit value is not sign extended.<br><br>Signed-=
+off-by: Christopher Wrogg &lt;<a href=3D"mailto:cwrogg@umich.edu">cwrogg@um=
+ich.edu</a>&gt;<br>Resolves: <a href=3D"https://gitlab.com/qemu-project/qem=
+u/-/issues/1251">https://gitlab.com/qemu-project/qemu/-/issues/1251</a><br>=
+---<br>=C2=A0target/mips/tcg/octeon_translate.c | 5 ++++-<br>=C2=A01 file c=
+hanged, 4 insertions(+), 1 deletion(-)<br><br>diff --git a/target/mips/tcg/=
+octeon_translate.c b/target/mips/tcg/octeon_translate.c<br>index 6a207d2e7e=
+..90f7b105cb 100644<br>--- a/target/mips/tcg/octeon_translate.c<br>+++ b/ta=
+rget/mips/tcg/octeon_translate.c<br>@@ -38,7 +38,10 @@ static bool trans_BB=
+IT(DisasContext *ctx, arg_BBIT *a)<br>=C2=A0 =C2=A0 =C2=A0}<br>=C2=A0<br>=
+=C2=A0 =C2=A0 =C2=A0ctx-&gt;hflags |=3D MIPS_HFLAG_BC;<br>- =C2=A0 =C2=A0ct=
+x-&gt;btarget =3D ctx-&gt;base.pc_next + 4 + a-&gt;offset * 4;<br>+ =C2=A0 =
+=C2=A0a-&gt;offset *=3D 4;<br>+ =C2=A0 =C2=A0a-&gt;offset =3D (target_long)=
+(int16_t)a-&gt;offset;<br>+ =C2=A0 =C2=A0ctx-&gt;btarget =3D ctx-&gt;base.p=
+c_next + 4 + a-&gt;offset;<br>+<br>=C2=A0 =C2=A0 =C2=A0ctx-&gt;hflags |=3D =
+MIPS_HFLAG_BDS32;<br>=C2=A0<br>=C2=A0 =C2=A0 =C2=A0tcg_temp_free(t0);<br>--=
+ <br>2.30.2<br></div>
 
---_000_PR3PR07MB676110594DCDCA29B33704ABE2229PR3PR07MB6761eurp_--
+--000000000000ffd8dd05eadda0bc--
 
