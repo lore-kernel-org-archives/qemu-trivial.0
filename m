@@ -1,77 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oj386-0006fI-HL
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2022 14:40:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57400)
+	id 1oj6ov-0004W4-GE
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2022 18:36:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oj385-0006b8-0z; Thu, 13 Oct 2022 14:40:25 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:51974)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1oj383-0001dh-3X; Thu, 13 Oct 2022 14:40:24 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id cl1so2683443pjb.1;
- Thu, 13 Oct 2022 11:40:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:from:to:cc:subject:date:message-id:reply-to;
- bh=s9heAK0+f3TTB/yifb8y+1GwxSs7xj8xyiac31cGOBo=;
- b=QeAI6tB1NfspYNkNA9hR7GqN/6Ox8Xv3kuhKthCMmnuPlhdi4FoZhnzDt5/p/TpAtQ
- PFf7H0s6ITAYsxAUfMFTyemABU5zsn0goo6WC2r5wZh0aV99+Ni8zrjVv7IZBqArTxla
- HP+fUkG37YVaXX9Ctg/FCoILjG6YgyqOXjjSmgwIEOtX/45gjHWMEAjyxNWmGSsWZ+FX
- Xy2c4VP8lqP39xyv6NQpF6xz5ppcfVEG4yUIdYG3aH+UU1RplS/qOJxNV6Mu7zS7XtIu
- qUipsMNzFE0EcK4Wk3VeY/ljw/El7/7ZuM/aM3Bf75xTwsjUTPm31/K4SsqrXY2XSzOO
- 5dCw==
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1oj6ot-0004VQ-Fr
+ for qemu-trivial@nongnu.org; Thu, 13 Oct 2022 18:36:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124]:58258)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1oj6oq-0004W3-4t
+ for qemu-trivial@nongnu.org; Thu, 13 Oct 2022 18:36:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1665700604;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=SvSIAUrjJP/aI3e3XHwepb+xAJAqJVl68OPw0QQP/f0=;
+ b=i9U9DyiRfy2C2kxs8ZwjHx11Kmp2oa0s1FcrFE20Uf1xVOjWtsX0hDs4XVg7/XisJavt5P
+ 7xACl6yo5jkLO3VW3qR0AT/0WSl7e3DtLEGeWUewYuOgFEzs3mQvB7ZwLnGMf/nEHMmI7k
+ jz8qUBZ8bPfcLhRQxucu/nmjasLeuR0=
+Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
+ [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-477-InxU4ojKPqe8_FPjvNlzxA-1; Thu, 13 Oct 2022 18:36:42 -0400
+X-MC-Unique: InxU4ojKPqe8_FPjvNlzxA-1
+Received: by mail-lj1-f197.google.com with SMTP id
+ z13-20020a2e7e0d000000b0026fa9710fb3so1366843ljc.12
+ for <qemu-trivial@nongnu.org>; Thu, 13 Oct 2022 15:36:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=s9heAK0+f3TTB/yifb8y+1GwxSs7xj8xyiac31cGOBo=;
- b=6lodeqWulHgnwrpIQx7ntk4sSoj2GKnjkrLwYWcqndA1h7wUMUB/xZqthyDH/6jmzs
- rDnRD37Yh+uhhuQUB/89JRYPmtIVIhD09KB89gAci+ZRKq0fybMt7bTgwm6DaIQmVbkp
- YfVmbD7n4Q9oJJ53/vsElfO8LJ8xAn/KKaSokXTVemuzEjoyGZgMSY0CV6f62P7q4zLT
- XWFgKhc+YWApJIBkGtdTHUVRNLyGne0G1Ul3n3RqVc1HO8kTZ/RVtlR90TLaizXT7mry
- LoSHqVt7lucuLeVE2W8FvNSpv9AgS2cOI5xEBQntz+o668X4lwOrqlnODbOLHJvBtfu2
- Gu4g==
-X-Gm-Message-State: ACrzQf1wnDECjCfPOVNScD7jHjFEziJ336fW7t6lv0wxtAx3pF0SzigY
- wJ+CB9Go+jT5Jg+rAF0UGJY=
-X-Google-Smtp-Source: AMsMyM4lk/VfqOQRMGXCdClaNzXQ7Us7aIlgQ+kT8Z/iQnLIs773+rmUBghOtwQ4suiSX43s00BmAA==
-X-Received: by 2002:a17:90a:b103:b0:20d:69aa:a350 with SMTP id
- z3-20020a17090ab10300b0020d69aaa350mr12488578pjq.178.1665686420880; 
- Thu, 13 Oct 2022 11:40:20 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- p3-20020a170903248300b00176d218889esm164190plw.228.2022.10.13.11.40.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Oct 2022 11:40:20 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-Message-ID: <838812c9-f03e-7d78-51c0-923ba4174a1d@amsat.org>
-Date: Thu, 13 Oct 2022 20:40:14 +0200
+ bh=SvSIAUrjJP/aI3e3XHwepb+xAJAqJVl68OPw0QQP/f0=;
+ b=oq3QL5XSzU24SYNXIA40n6ts2M3JBHFYuGQA767o3+31Es4XdRt9dm8l/tEIDHxLfV
+ bElptCihxUrYLl2kskgZYasZcw626VMmrkKAqkIh+qYZ+jFAC+xHpEb/DG/wXWyq0uSs
+ p4YKClx2LSV34LIL5cyM+wnWYdQMPVmkY3ZIHGYFU/ybBVKl3JxpZ7XWkzl0BmgvuO/c
+ jp9iMgA7iBWy0EeSjzz9jI/c47eshrLAM5p+Rgs/AUCiJeGBn2kf3pq0UgUiyOVQV6aK
+ 037LlBGYfiasR+T0/vBeNO53K87p5irKPC37Cs1lmSFRSXjv5LGW0TE9HdQlo443bE30
+ HJkQ==
+X-Gm-Message-State: ACrzQf1cpzk4hLthPrjYV2fn4wj0P6J2PYQVFPPUuYY271nyAidp9CaB
+ z0e7hJrV2YN/00RhJocwYfSgKSiOonLzz1U3kYyE1etUlsseBVaijjhcOkdkNpAXgAVaszkHqvz
+ 4Apf6nQcyNqsAefzFSKZ4lmlRwZpdnottXQ==
+X-Received: by 2002:a05:6512:228b:b0:4a2:3e53:4af2 with SMTP id
+ f11-20020a056512228b00b004a23e534af2mr620640lfu.280.1665700601198; 
+ Thu, 13 Oct 2022 15:36:41 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6fdH4KoOQy6vl8PIbovVmy4awWaxfxMjwZvwx2puvwO8P3YMpgHM+U7eyw4DadkVYCKk9ISoX9v8N8u6asFLs=
+X-Received: by 2002:a05:6512:228b:b0:4a2:3e53:4af2 with SMTP id
+ f11-20020a056512228b00b004a23e534af2mr620634lfu.280.1665700600983; Thu, 13
+ Oct 2022 15:36:40 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.13.1
-Subject: Re: [PATCH] include/hw/scsi/scsi.h: Remove unused
- scsi_legacy_handle_cmdline() prototype
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+References: <20220928090312.2537-1-dinglimin@cmss.chinamobile.com>
+In-Reply-To: <20220928090312.2537-1-dinglimin@cmss.chinamobile.com>
+From: John Snow <jsnow@redhat.com>
+Date: Thu, 13 Oct 2022 18:36:29 -0400
+Message-ID: <CAFn=p-Yw3mjzfV-WaaX+D4zVGrPQ_zcrVXf9U2+7TRuBuLNEog@mail.gmail.com>
+Subject: Re: [PATCH] vmstate-static-checker:remove this redundant return
+To: dinglimin <dinglimin@cmss.chinamobile.com>
+Cc: thuth@redhat.com, alex.bennee@linaro.org, qemu-devel@nongnu.org, 
  qemu-trivial@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>
-References: <20221013130500.967432-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20221013130500.967432-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.25,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -86,19 +82,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Oct 2022 18:40:25 -0000
+X-List-Received-Date: Thu, 13 Oct 2022 22:36:51 -0000
 
-On 13/10/22 15:05, Peter Maydell wrote:
-> In commit 1454509726719e0933c80 we removed the function
-> scsi_legacy_handle_cmdline() and all of its callers, but forgot to
-> delete the prototype from the header function.  Delete the prototype
-> too.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Wed, Sep 28, 2022 at 5:06 AM dinglimin
+<dinglimin@cmss.chinamobile.com> wrote:
+>
+> Jump statements, such as return and continue let you
+> change the default flow of program execution,
+> but jump statements that direct the control flow to
+> the original direction are just a waste of keystrokes.
+>
+> Signed-off-by: dinglimin <dinglimin@cmss.chinamobile.com>
 > ---
->   include/hw/scsi/scsi.h | 1 -
->   1 file changed, 1 deletion(-)
+>  scripts/vmstate-static-checker.py | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/scripts/vmstate-static-checker.py b/scripts/vmstate-static-checker.py
+> index b369388360..dfeee8231a 100755
+> --- a/scripts/vmstate-static-checker.py
+> +++ b/scripts/vmstate-static-checker.py
+> @@ -367,7 +367,6 @@ def check_machine_type(s, d):
+>      if s["Name"] != d["Name"]:
+>          print("Warning: checking incompatible machine types:", end=' ')
+>          print("\"" + s["Name"] + "\", \"" + d["Name"] + "\"")
+> -    return
+>
+>
+>  def main():
+> --
+> 2.30.0.windows.2
+>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+This can go through the trivial branch.
+
+Reviewed-by: John Snow <jsnow@redhat.com>
 
 
