@@ -1,76 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1olSOG-0005A4-FH
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2022 06:03:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35676)
+	id 1olUQM-0001wO-0V
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2022 08:13:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1olSNR-00050d-8o
- for qemu-trivial@nongnu.org; Thu, 20 Oct 2022 06:02:20 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:35594)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1olSNL-0000ld-3M
- for qemu-trivial@nongnu.org; Thu, 20 Oct 2022 06:02:09 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- m29-20020a05600c3b1d00b003c6bf423c71so1956802wms.0
- for <qemu-trivial@nongnu.org>; Thu, 20 Oct 2022 03:02:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=sQyNETfTNB3h78Gt5uMdRXMfACFruPoCjru66jOvVCw=;
- b=NfRxlAXmOdmv7sivtcvHH4NA4wQ4d+ZtNlEn/2MBHenEu99PUrgN2PEjbBnWQ0m9eH
- YMB12lHYUvGiDii6UszUvU56PLZ10fg2dLAGSzx+3iDG6dBllP4Aq0HZOd6W5+3yrb+x
- 3CTLvrmXuMmm9kXoIhGJH21rh21iJXTG/eRf9lcb0eIH+TK8UOPqsUSX1dgELBtue75P
- vlCtAzv1Xjkvg+dS58QiDlVo9BMRXdt7qZu76D0pVEqLTB0GvoyC8z7hU8MnoEU725Lh
- mLlA9ENLqQsHIfZTXUjuJCHMhFBhk40e+YHc9uA4ZLM5Gza1uoN8v/mAtN+he2NvjGeR
- Yv/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sQyNETfTNB3h78Gt5uMdRXMfACFruPoCjru66jOvVCw=;
- b=cQiS0t9B56RFYXG4A+Ro8ZZ9vMI/KiTHipaMH8/g+dymEv9GiAcJ3QG6sYq22buZm0
- AgFowOKKJvK8TioLVeQ17Yr3VHzfGTMEzQRvIhcq4I9Kh0oX8zvADEMRlGilDC+A+tcN
- cZArEZ0KSqQCNPesXYInSBu9QucNzae9cTnjvfg3Nd9eaGXLRBeDX4bklEC+WcAKyiwq
- nGzC96UKGLBwZS5ViTPC7HyGSP5aBs99OI1nKpEOp5UuIQ6rMR6wHhXCG1zoyYfDMZDC
- 3k+UkU2QeYzyIj7i3ptKpMhP0lvzfTwgZnWukiRWq2KO63NbrGIPmTRfgKQpFR3bRbfH
- pZuw==
-X-Gm-Message-State: ACrzQf0M02FkO15mOMQYfN6ChbICtJ69fIiqxbwvbQHLoGTeyRDQKAyC
- hI4ox4JU4/KouswpSWTGJbPwSg==
-X-Google-Smtp-Source: AMsMyM67B1FxcwJrfLr0ZqYiggYcBCVfRXjldI0hLolifFqjihfA5oZSKa9WG4BgJsucLdgJk3GRGg==
-X-Received: by 2002:a1c:2507:0:b0:3b3:3681:f774 with SMTP id
- l7-20020a1c2507000000b003b33681f774mr30213251wml.134.1666260125284; 
- Thu, 20 Oct 2022 03:02:05 -0700 (PDT)
-Received: from [10.50.0.10]
- (ec2-54-194-108-71.eu-west-1.compute.amazonaws.com. [54.194.108.71])
- by smtp.gmail.com with ESMTPSA id
- o16-20020a056000011000b0022e38c93195sm15625663wrx.34.2022.10.20.03.02.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Oct 2022 03:02:04 -0700 (PDT)
-Message-ID: <5d6bb70f-ce60-f8d4-2dba-1a8e488b1653@linaro.org>
-Date: Thu, 20 Oct 2022 12:02:02 +0200
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1olUQ2-0001aY-5k
+ for qemu-trivial@nongnu.org; Thu, 20 Oct 2022 08:13:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:36317)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1olUPw-0007RK-CU
+ for qemu-trivial@nongnu.org; Thu, 20 Oct 2022 08:12:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1666267973;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=bImTESfjJnuUtLWNSEADaNzhEhJ1vF2ocBmTYqaJyHU=;
+ b=RMrgrkEkCVH082tu+zTEpsGAvIMtBGpFE5s+BOeWwpXvC0KXRkGXzyxaAgSST+h+vSl07H
+ AAvQvI+Ul8R03oEmClmWrH5HxcVZxeUa3BI59VKlGBExnXypWRUV7eUh6KJigWXmmX3/qQ
+ TuuGR09mKLLRaD9VTXWxpK9fA2iODeY=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-454-lbNAJJ6KPzieksABaudXsA-1; Thu, 20 Oct 2022 08:12:50 -0400
+X-MC-Unique: lbNAJJ6KPzieksABaudXsA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3EF062A2AD4C;
+ Thu, 20 Oct 2022 12:12:50 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.195.118])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1E24F1121315;
+ Thu, 20 Oct 2022 12:12:50 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id EA78B21E6808; Thu, 20 Oct 2022 14:12:48 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+Subject: Re: [PATCH 0/3] Drop useless casts from void * to pointer
+References: <20220923120025.448759-1-armbru@redhat.com>
+Date: Thu, 20 Oct 2022 14:12:48 +0200
+In-Reply-To: <20220923120025.448759-1-armbru@redhat.com> (Markus Armbruster's
+ message of "Fri, 23 Sep 2022 14:00:22 +0200")
+Message-ID: <87a65qbsn3.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.3.2
-Subject: Re: [PATCH] .gitignore: add multiple items to .gitignore
-Content-Language: en-US
-To: "Wang, Lei" <lei4.wang@intel.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, alex.bennee@linaro.org, f4bug@amsat.org,
- laurent@vivier.eu
-References: <20221020171921.1078533-1-lei4.wang@intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221020171921.1078533-1-lei4.wang@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,24 +68,8 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Oct 2022 10:02:30 -0000
+X-List-Received-Date: Thu, 20 Oct 2022 12:13:15 -0000
 
-On 20/10/22 19:19, Wang, Lei wrote:
-> Add /.vscode/, .clang-format and .gdb_history to .gitignore because:
-> 
->   - For VSCode, workspace settings as well as debugging and task
->   configurations are stored at the root in a .vscode folder;
->   - For ClangFormat, the .clang-format file is searched relative to
->   the current working directory when reading stdin;
->   - For GDB, GDB command history file defaults to the value of the
->   environment variable GDBHISTFILE, or to ./.gdb_history if this
->   variable is not set.
-> 
-> Signed-off-by: Wang, Lei <lei4.wang@intel.com>
-> ---
->   .gitignore | 3 +++
->   1 file changed, 3 insertions(+)
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Could this go via qemu-trivial now?
 
 
