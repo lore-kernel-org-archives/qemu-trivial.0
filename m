@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1okmCq-00042V-2c
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Oct 2022 09:00:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55494)
+	id 1olSOG-0005A4-FH
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2022 06:03:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35676)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1okg8P-0008Kr-Js
- for qemu-trivial@nongnu.org; Tue, 18 Oct 2022 02:31:31 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:40775)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1olSNR-00050d-8o
+ for qemu-trivial@nongnu.org; Thu, 20 Oct 2022 06:02:20 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:35594)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1okg8N-0001rf-Fv
- for qemu-trivial@nongnu.org; Tue, 18 Oct 2022 02:31:28 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id w18so21834726wro.7
- for <qemu-trivial@nongnu.org>; Mon, 17 Oct 2022 23:31:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1olSNL-0000ld-3M
+ for qemu-trivial@nongnu.org; Thu, 20 Oct 2022 06:02:09 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ m29-20020a05600c3b1d00b003c6bf423c71so1956802wms.0
+ for <qemu-trivial@nongnu.org>; Thu, 20 Oct 2022 03:02:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Hh8zsqHJtwQF473GCq9gdY3bX2hu2pNt2YAuA7QJWFE=;
- b=y3LqrjSxrBNh/KXL+fFvNSRZD/lkyyVoV/aS8nM2UuJEly704218mJEsV3Knt1KEj4
- dBJyfBR0+3HtWF4zxK6sRn0Q3j/EReirFM2XEkg5SDUxp5Zm8zGIqyAxtWgfDB9w2WAt
- zjLzzPJYlcQJ2dohB8BGLjgp+Q8h2G0gAQSKySpDEhAuJoWWd/T8ljeoCZoDSWO6+PYI
- wOz+z/ZAy7gRUx7OoSkZ6t/TiU5j2HsyVqS8KjEgKiLhC/P2snttjfkunmDfgld7EPAI
- dfmQQIR6K/au3A4LcZcWlDkiYmAbvj7uBLV7Nq8wVoRsSRG3+0hAnIRGIs3GrWZ8NwVk
- k/3w==
+ bh=sQyNETfTNB3h78Gt5uMdRXMfACFruPoCjru66jOvVCw=;
+ b=NfRxlAXmOdmv7sivtcvHH4NA4wQ4d+ZtNlEn/2MBHenEu99PUrgN2PEjbBnWQ0m9eH
+ YMB12lHYUvGiDii6UszUvU56PLZ10fg2dLAGSzx+3iDG6dBllP4Aq0HZOd6W5+3yrb+x
+ 3CTLvrmXuMmm9kXoIhGJH21rh21iJXTG/eRf9lcb0eIH+TK8UOPqsUSX1dgELBtue75P
+ vlCtAzv1Xjkvg+dS58QiDlVo9BMRXdt7qZu76D0pVEqLTB0GvoyC8z7hU8MnoEU725Lh
+ mLlA9ENLqQsHIfZTXUjuJCHMhFBhk40e+YHc9uA4ZLM5Gza1uoN8v/mAtN+he2NvjGeR
+ Yv/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Hh8zsqHJtwQF473GCq9gdY3bX2hu2pNt2YAuA7QJWFE=;
- b=Lq21E8/UuoFgKMP3ipRrRk9m1YMYXZgAwnFmUFHDJ/+wwfG6v739LiyVGXyZV09+Ud
- 6XDnUhKro3F/JUhNUVLeLwwLtGAyny1zWXplSk1iuKE+pcXFo1a2rDAambJQfFW8XhHT
- flRqqP69I35vfzHhZ/9nTi0oUW50rId744gvM7TbfTAflhKlBGHpSyWZWMppi3VNkXWX
- ds6b3e1L4yKhW9mnZS87a+73DFkxTYFRLpFH2Lp5J/JWPsbApOduFwqUwDv7JHjyhg9T
- Un05JkFVdCzWbV4X6I8hN8QT8Trmcfi9O0MkB0zAIzpO3h9AAxQ0382zoamis8F119tU
- 9aEw==
-X-Gm-Message-State: ACrzQf0HKs11Zmi9bZ4YAe9hvR9Pjm0s+KImbMauCoqcjW2LyES5pIeC
- ujW8bSsHbfObuxv7pgwnK6aYXQ==
-X-Google-Smtp-Source: AMsMyM7uBzGgTinJlAJchm+mw1xT/FDi39lz0p00QuUTHoULBdBX1mye9jcUrbej+U9xHdaIvFUDTg==
-X-Received: by 2002:adf:d1ed:0:b0:230:9355:8da3 with SMTP id
- g13-20020adfd1ed000000b0023093558da3mr811952wrd.258.1666074685547; 
- Mon, 17 Oct 2022 23:31:25 -0700 (PDT)
-Received: from [192.168.130.175] (151.red-88-29-167.dynamicip.rima-tde.net.
- [88.29.167.151]) by smtp.gmail.com with ESMTPSA id
- n10-20020a05600c500a00b003c6f0ebf988sm8830966wmr.30.2022.10.17.23.31.23
+ bh=sQyNETfTNB3h78Gt5uMdRXMfACFruPoCjru66jOvVCw=;
+ b=cQiS0t9B56RFYXG4A+Ro8ZZ9vMI/KiTHipaMH8/g+dymEv9GiAcJ3QG6sYq22buZm0
+ AgFowOKKJvK8TioLVeQ17Yr3VHzfGTMEzQRvIhcq4I9Kh0oX8zvADEMRlGilDC+A+tcN
+ cZArEZ0KSqQCNPesXYInSBu9QucNzae9cTnjvfg3Nd9eaGXLRBeDX4bklEC+WcAKyiwq
+ nGzC96UKGLBwZS5ViTPC7HyGSP5aBs99OI1nKpEOp5UuIQ6rMR6wHhXCG1zoyYfDMZDC
+ 3k+UkU2QeYzyIj7i3ptKpMhP0lvzfTwgZnWukiRWq2KO63NbrGIPmTRfgKQpFR3bRbfH
+ pZuw==
+X-Gm-Message-State: ACrzQf0M02FkO15mOMQYfN6ChbICtJ69fIiqxbwvbQHLoGTeyRDQKAyC
+ hI4ox4JU4/KouswpSWTGJbPwSg==
+X-Google-Smtp-Source: AMsMyM67B1FxcwJrfLr0ZqYiggYcBCVfRXjldI0hLolifFqjihfA5oZSKa9WG4BgJsucLdgJk3GRGg==
+X-Received: by 2002:a1c:2507:0:b0:3b3:3681:f774 with SMTP id
+ l7-20020a1c2507000000b003b33681f774mr30213251wml.134.1666260125284; 
+ Thu, 20 Oct 2022 03:02:05 -0700 (PDT)
+Received: from [10.50.0.10]
+ (ec2-54-194-108-71.eu-west-1.compute.amazonaws.com. [54.194.108.71])
+ by smtp.gmail.com with ESMTPSA id
+ o16-20020a056000011000b0022e38c93195sm15625663wrx.34.2022.10.20.03.02.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Oct 2022 23:31:25 -0700 (PDT)
-Message-ID: <f9dc0616-e706-45a6-f417-a254a8718a91@linaro.org>
-Date: Tue, 18 Oct 2022 08:31:22 +0200
+ Thu, 20 Oct 2022 03:02:04 -0700 (PDT)
+Message-ID: <5d6bb70f-ce60-f8d4-2dba-1a8e488b1653@linaro.org>
+Date: Thu, 20 Oct 2022 12:02:02 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.13.1
-Subject: Re: [PATCH] qga: Fix memory leak in split_list
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.3.2
+Subject: Re: [PATCH] .gitignore: add multiple items to .gitignore
 Content-Language: en-US
-To: Miaoqian Lin <linmq006@gmail.com>, QEMU Trivial
- <qemu-trivial@nongnu.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>
-References: <20221018044645.863859-1-linmq006@gmail.com>
-Cc: Michael Roth <michael.roth@amd.com>, qemu-devel@nongnu.org,
- Konstantin Kostiuk <kkostiuk@redhat.com>, "Denis V. Lunev" <den@openvz.org>
+To: "Wang, Lei" <lei4.wang@intel.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, alex.bennee@linaro.org, f4bug@amsat.org,
+ laurent@vivier.eu
+References: <20221020171921.1078533-1-lei4.wang@intel.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221018044645.863859-1-linmq006@gmail.com>
+In-Reply-To: <20221020171921.1078533-1-lei4.wang@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -72,7 +72,6 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 18 Oct 2022 09:00:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,31 +83,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Oct 2022 06:31:31 -0000
+X-List-Received-Date: Thu, 20 Oct 2022 10:02:30 -0000
 
-On 18/10/22 06:46, Miaoqian Lin wrote:
-> We should use g_strfreev to free the memory allocated by g_strsplit().
-> Use g_free() will cause a memory leak.
+On 20/10/22 19:19, Wang, Lei wrote:
+> Add /.vscode/, .clang-format and .gdb_history to .gitignore because:
 > 
-> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+>   - For VSCode, workspace settings as well as debugging and task
+>   configurations are stored at the root in a .vscode folder;
+>   - For ClangFormat, the .clang-format file is searched relative to
+>   the current working directory when reading stdin;
+>   - For GDB, GDB command history file defaults to the value of the
+>   environment variable GDBHISTFILE, or to ./.gdb_history if this
+>   variable is not set.
+> 
+> Signed-off-by: Wang, Lei <lei4.wang@intel.com>
 > ---
->   qga/main.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qga/main.c b/qga/main.c
-> index 5a9d8252e075..04902076b25d 100644
-> --- a/qga/main.c
-> +++ b/qga/main.c
-> @@ -934,7 +934,7 @@ static GList *split_list(const gchar *str, const gchar *delim)
->       for (i = 0; strv[i]; i++) {
->           list = g_list_prepend(list, strv[i]);
->       }
-> -    g_free(strv);
-> +    g_strfreev(strv);
->   
->       return list;
->   }
+>   .gitignore | 3 +++
+>   1 file changed, 3 insertions(+)
 
-Fixes: 4bca81ceed ("qga: make split_list() return allocated strings")
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 
