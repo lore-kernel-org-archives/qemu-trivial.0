@@ -1,69 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1omPMZ-000733-Th
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 21:01:15 -0400
+	id 1omRPv-0008Uz-Cs
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 23:12:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cwrogg@umich.edu>) id 1omPMU-00072j-L1
- for qemu-trivial@nongnu.org; Sat, 22 Oct 2022 21:01:11 -0400
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cwrogg@umich.edu>) id 1omPMN-0007GC-7H
- for qemu-trivial@nongnu.org; Sat, 22 Oct 2022 21:01:08 -0400
-Received: by mail-yb1-xb29.google.com with SMTP id o70so7433068yba.7
- for <qemu-trivial@nongnu.org>; Sat, 22 Oct 2022 18:00:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=umich.edu; s=google-2016-06-03;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=OQB31h/f7oxhL9xYPOAuqTWH3J9NzAV+OOP/48g+sZM=;
- b=sbI7KZ7McT7sdhBy7Wen7dpK4kUjgyX52xo4lkniikaA5pmGIvwn5rOKI2FSpzKyjC
- Y+9KLYPRlHosHfGCNAhK7zSkqqByZxh7GEyQgAy5/CrNM/JcTQ8Ra1B1Ycl/lKTHUW1k
- khIb/s39lPcejDPb9dDld/S6HFIGc5uiJX8deJdV7Za47YJW8yTjAtHx3uz6Xxa2bErz
- 9DNeDYgryR/KF7hO0h6XSuxGegnUn+EuY+DJy793g7KLvrum+62oLtBX+EssjgZ1O8mf
- dFCgvbtLXjhhfCgpNlt9DtxyJ0hAhn4Sv/ylzdDhIAB39fXO0ZRnH4zrpd2gbKLUn6O8
- 60MQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=OQB31h/f7oxhL9xYPOAuqTWH3J9NzAV+OOP/48g+sZM=;
- b=3638pyLtKVJzLEegSe9a4DcS9D3GF2hmElwUuzPAPM0IG6epd08P5NpvY5/vGiDsLV
- mmNV0HWlnfFSz5C7BwNKs81+m9NRmmcHHpMuhmnEX5FUFUTS8yuoOBkmmYV4n8KX7uUb
- HkplA0+5XylDOa55Wv4XRai9oischdEiQmiVa334lIgfAyBxAUzNth951Qa5vEUm7yup
- XRoL8JjFa3Y7MdiBhlPPukCzY00EqocmGKVq04J2d1Va5bAkyLPvzEv+tmgVt/e/l7tT
- y4Ao0DQrfgZS35iqk7VPkL+BVV6QRvCbNcmHfmIBQ4aTueVvl8hYrtQ79xgHyqH0z+SN
- Xupw==
-X-Gm-Message-State: ACrzQf0Owl1AdkxmCX5b+IMuwp8q0GQrXkfYlNvxSAorJSnDUtQFhPu5
- FfG4y93UqkLUrg+sFTGFr77dEFFGn5Yy+VqQO3UwiA==
-X-Google-Smtp-Source: AMsMyM7sM40JvHtg4nnXsdmJ5ryUncSWWNw0EtK267ZXtRDdmQ+AC9rna4Lb1t56DQJQR9q8NT5nc+cRoHEpOJKGG10=
-X-Received: by 2002:a5b:a0f:0:b0:691:6fea:deda with SMTP id
- k15-20020a5b0a0f000000b006916feadedamr23132024ybq.377.1666486853330; Sat, 22
- Oct 2022 18:00:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
+ id 1omRPp-0008UT-FA; Sat, 22 Oct 2022 23:12:46 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
+ id 1omRPn-0001md-NM; Sat, 22 Oct 2022 23:12:45 -0400
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29N32aEV006270;
+ Sun, 23 Oct 2022 03:12:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding;
+ s=qcppdkim1; bh=mqNKx9EOZOwNOpbZ70ssiGwhbr9TjejI4qFljTpkUyo=;
+ b=UD5fFWRg2WxID8NFN6A9uedFqofWSyEFTiKhRJoa+jnoK+rcSmBh2Qbzk3OAZ5UqG8mX
+ t32gNgdBKPr3Ig9UomkM6R3+4JrxvehpnL0mhSdg26bhyi87DlTa7voyplNe9trMU29r
+ 9hAwwlTdmkgKXnviePvch5yhUB7o/n24N9PqEjTjrNzYQ/wjgDgP8A2Ek2YGqjNZ3K2m
+ SrogFpOkA9oH8Z2n1quyNqLreFV9VidWrjhwLwjoEKEV5iWCw9rcJYnWbEUtTai8o2Rz
+ pBerUHblykntOa/vPyTAGaQNTICZJjSZzaTkgEOlyOh+gEkMLxoHGvDHjIla8SRP+abQ Pw== 
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com
+ [129.46.96.20])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3kc99qsk6x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 23 Oct 2022 03:12:39 +0000
+Received: from hu-devc-sd-u20-a-1.qualcomm.com (hu-mathbern-lv.qualcomm.com
+ [10.47.235.147])
+ by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 29N3Cc2T022545
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 23 Oct 2022 03:12:38 GMT
+Received: by hu-devc-sd-u20-a-1.qualcomm.com (Postfix, from userid 4229910)
+ id 600373BB; Fri, 21 Oct 2022 14:36:08 -0300 (-03)
+From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] accel/tcg/tcg-accel-ops-rr: fix trivial typo
+Date: Fri, 21 Oct 2022 14:36:06 -0300
+Message-Id: <5dc556dbe241ae03859b7890d1998de5c77b7c6c.1666373742.git.quic_mathbern@quicinc.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-References: <CAG7Es25Xv=WmA3VbgB2DzMZ7D9XYLe9CAnA3q2mHxiKHONvjcg@mail.gmail.com>
- <2b16297e-5c4a-fcae-6385-1a30e4c3a817@linaro.org>
-In-Reply-To: <2b16297e-5c4a-fcae-6385-1a30e4c3a817@linaro.org>
-From: Christopher Wrogg <cwrogg@umich.edu>
-Date: Sat, 22 Oct 2022 21:00:42 -0400
-Message-ID: <CAG7Es26=SX9ffj0GxVuB4L1G+FiU0tafD==pM84hWf6wZnjqJA@mail.gmail.com>
-Subject: Re: [PATCH v2] Properly sign extend BBIT branch offset during
- calculation
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-trivial@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Content-Type: multipart/alternative; boundary="000000000000ea78c005eba934ad"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
- envelope-from=cwrogg@umich.edu; helo=mail-yb1-xb29.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: YIozH9cmKc1sX8ow_U_XJFe-TXC7fNs3
+X-Proofpoint-ORIG-GUID: YIozH9cmKc1sX8ow_U_XJFe-TXC7fNs3
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-10-21_04,2022-10-21_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxlogscore=661
+ malwarescore=0 suspectscore=0 lowpriorityscore=0 mlxscore=0 phishscore=0
+ priorityscore=1501 bulkscore=0 adultscore=0 impostorscore=0 clxscore=1011
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2210230019
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=mathbern@qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,153 +77,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 23 Oct 2022 01:01:14 -0000
+X-List-Received-Date: Sun, 23 Oct 2022 03:12:49 -0000
 
---000000000000ea78c005eba934ad
-Content-Type: text/plain; charset="UTF-8"
-
-I agree. Here is the corrected patch.
-Signed-off-by: Christopher Wrogg <cwrogg@umich.edu>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1251
+Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
 ---
- target/mips/tcg/octeon.decode | 2 +-
+ accel/tcg/tcg-accel-ops-rr.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/mips/tcg/octeon.decode b/target/mips/tcg/octeon.decode
-index 8929ad088e..0c787cb498 100644
---- a/target/mips/tcg/octeon.decode
-+++ b/target/mips/tcg/octeon.decode
-@@ -12,7 +12,7 @@
- # BBIT132    111110 ..... ..... ................
+diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
+index cc8adc2380..cc912df108 100644
+--- a/accel/tcg/tcg-accel-ops-rr.c
++++ b/accel/tcg/tcg-accel-ops-rr.c
+@@ -51,7 +51,7 @@ void rr_kick_vcpu_thread(CPUState *unused)
+  *
+  * The kick timer is responsible for moving single threaded vCPU
+  * emulation on to the next vCPU. If more than one vCPU is running a
+- * timer event with force a cpu->exit so the next vCPU can get
++ * timer event we force a cpu->exit so the next vCPU can get
+  * scheduled.
+  *
+  * The timer is removed if all vCPUs are idle and restarted again once
+-- 
+2.37.2
 
- %bbit_p      28:1 16:5
--BBIT         11 set:1 . 10 rs:5 ..... offset:16 p=%bbit_p
-+BBIT         11 set:1 . 10 rs:5 ..... offset:s16 p=%bbit_p
-
- # Arithmetic
- # BADDU rd, rs, rt
---
-2.30.2
-
-On Thu, Oct 13, 2022 at 2:33 PM Richard Henderson <
-richard.henderson@linaro.org> wrote:
-
-> On 10/13/22 15:08, Christopher Wrogg wrote:
-> > The Octeon specific BBIT instruction incorrectly computes
-> > the branch offset. The 16 bit value is not sign extended.
-> >
-> > Signed-off-by: Christopher Wrogg <cwrogg@umich.edu <mailto:
-> cwrogg@umich.edu>>
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1251
-> > <https://gitlab.com/qemu-project/qemu/-/issues/1251>
-> > ---
-> >   target/mips/tcg/octeon_translate.c | 5 ++++-
-> >   1 file changed, 4 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/target/mips/tcg/octeon_translate.c
-> b/target/mips/tcg/octeon_translate.c
-> > index 6a207d2e7e..90f7b105cb 100644
-> > --- a/target/mips/tcg/octeon_translate.c
-> > +++ b/target/mips/tcg/octeon_translate.c
-> > @@ -38,7 +38,10 @@ static bool trans_BBIT(DisasContext *ctx, arg_BBIT *a)
-> >       }
-> >
-> >       ctx->hflags |= MIPS_HFLAG_BC;
-> > -    ctx->btarget = ctx->base.pc_next + 4 + a->offset * 4;
-> > +    a->offset *= 4;
-> > +    a->offset = (target_long)(int16_t)a->offset;
-> > +    ctx->btarget = ctx->base.pc_next + 4 + a->offset;
->
-> This looks wrong, because you're sign-extending after scaling, which gives
-> you only 14
-> bits of offset instead of 16.
->
-> The correct fix should be earlier in decode:
->
-> - BBIT         11 set:1 . 10 rs:5 ..... offset:16 p=%bbit_p
-> + BBIT         11 set:1 . 10 rs:5 ..... offset:s16 p=%bbit_p
->
-> to indicate a extract a signed field from the instruction.
->
->
-> r~
->
-
---000000000000ea78c005eba934ad
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">I agree. Here is the corrected patch.<div><span class=3D"g=
-mail-im" style=3D"color:rgb(80,0,80)">Signed-off-by: Christopher Wrogg &lt;=
-<a href=3D"mailto:cwrogg@umich.edu" target=3D"_blank">cwrogg@umich.edu</a>&=
-gt;<br>Resolves:=C2=A0<a href=3D"https://gitlab.com/qemu-project/qemu/-/iss=
-ues/1251" target=3D"_blank">https://gitlab.com/qemu-project/qemu/-/issues/1=
-251</a><br></span><div>---<br>=C2=A0target/mips/tcg/octeon.decode | 2 +-<br=
->=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br><br>diff --git a/ta=
-rget/mips/tcg/octeon.decode b/target/mips/tcg/octeon.decode<br>index 8929ad=
-088e..0c787cb498 100644<br>--- a/target/mips/tcg/octeon.decode<br>+++ b/tar=
-get/mips/tcg/octeon.decode<br>@@ -12,7 +12,7 @@<br>=C2=A0# BBIT132 =C2=A0 =
-=C2=A0111110 ..... ..... ................<br>=C2=A0<br>=C2=A0%bbit_p =C2=A0=
- =C2=A0 =C2=A028:1 16:5<br>-BBIT =C2=A0 =C2=A0 =C2=A0 =C2=A0 11 set:1 . 10 =
-rs:5 ..... offset:16 p=3D%bbit_p<br>+BBIT =C2=A0 =C2=A0 =C2=A0 =C2=A0 11 se=
-t:1 . 10 rs:5 ..... offset:s16 p=3D%bbit_p<br>=C2=A0<br>=C2=A0# Arithmetic<=
-br>=C2=A0# BADDU rd, rs, rt<font color=3D"#888888"><br>--<br>2.30.2</font><=
-/div></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
-mail_attr">On Thu, Oct 13, 2022 at 2:33 PM Richard Henderson &lt;<a href=3D=
-"mailto:richard.henderson@linaro.org">richard.henderson@linaro.org</a>&gt; =
-wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0=
-px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 10/13/=
-22 15:08, Christopher Wrogg wrote:<br>
-&gt; The Octeon specific BBIT instruction incorrectly computes<br>
-&gt; the branch offset. The 16 bit value is not sign extended.<br>
-&gt; <br>
-&gt; Signed-off-by: Christopher Wrogg &lt;<a href=3D"mailto:cwrogg@umich.ed=
-u" target=3D"_blank">cwrogg@umich.edu</a> &lt;mailto:<a href=3D"mailto:cwro=
-gg@umich.edu" target=3D"_blank">cwrogg@umich.edu</a>&gt;&gt;<br>
-&gt; Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/125=
-1" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-project/qem=
-u/-/issues/1251</a> <br>
-&gt; &lt;<a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/1251" rel=
-=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-project/qemu/-/is=
-sues/1251</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0target/mips/tcg/octeon_translate.c | 5 ++++-<br>
-&gt;=C2=A0 =C2=A01 file changed, 4 insertions(+), 1 deletion(-)<br>
-&gt; <br>
-&gt; diff --git a/target/mips/tcg/octeon_translate.c b/target/mips/tcg/octe=
-on_translate.c<br>
-&gt; index 6a207d2e7e..90f7b105cb 100644<br>
-&gt; --- a/target/mips/tcg/octeon_translate.c<br>
-&gt; +++ b/target/mips/tcg/octeon_translate.c<br>
-&gt; @@ -38,7 +38,10 @@ static bool trans_BBIT(DisasContext *ctx, arg_BBIT =
-*a)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0ctx-&gt;hflags |=3D MIPS_HFLAG_BC;<br>
-&gt; - =C2=A0 =C2=A0ctx-&gt;btarget =3D ctx-&gt;base.pc_next + 4 + a-&gt;of=
-fset * 4;<br>
-&gt; + =C2=A0 =C2=A0a-&gt;offset *=3D 4;<br>
-&gt; + =C2=A0 =C2=A0a-&gt;offset =3D (target_long)(int16_t)a-&gt;offset;<br=
->
-&gt; + =C2=A0 =C2=A0ctx-&gt;btarget =3D ctx-&gt;base.pc_next + 4 + a-&gt;of=
-fset;<br>
-<br>
-This looks wrong, because you&#39;re sign-extending after scaling, which gi=
-ves you only 14 <br>
-bits of offset instead of 16.<br>
-<br>
-The correct fix should be earlier in decode:<br>
-<br>
-- BBIT=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A011 set:1 . 10 rs:5 ..... offset:16 =
-p=3D%bbit_p<br>
-+ BBIT=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A011 set:1 . 10 rs:5 ..... offset:s16=
- p=3D%bbit_p<br>
-<br>
-to indicate a extract a signed field from the instruction.<br>
-<br>
-<br>
-r~<br>
-</blockquote></div>
-
---000000000000ea78c005eba934ad--
 
