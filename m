@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1omLuO-0008H7-Du
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 17:19:56 -0400
+	id 1omLwF-0008R6-Qc
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 17:21:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omLuN-0008Gr-4O; Sat, 22 Oct 2022 17:19:55 -0400
-Received: from mout.kundenserver.de ([217.72.192.74])
+ id 1omLwD-0008Qo-Nm; Sat, 22 Oct 2022 17:21:49 -0400
+Received: from mout.kundenserver.de ([217.72.192.73])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omLuL-0001qf-IB; Sat, 22 Oct 2022 17:19:54 -0400
+ id 1omLwC-0002Be-5C; Sat, 22 Oct 2022 17:21:49 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MlwFp-1pVLUS4Bdb-00iyb7; Sat, 22 Oct 2022 23:19:44 +0200
-Message-ID: <203ceff3-5251-c03e-8d43-802eab45de64@vivier.eu>
-Date: Sat, 22 Oct 2022 23:19:42 +0200
+ 1MwQOx-1p3Bvm0Rkr-00sR0G; Sat, 22 Oct 2022 23:21:43 +0200
+Message-ID: <9c4a9734-ce67-8538-40b2-227755bf9e0b@vivier.eu>
+Date: Sat, 22 Oct 2022 23:21:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.1
-Subject: Re: [PATCH] vmstate-static-checker:remove this redundant return
+Subject: Re: [PATCH] include/hw/scsi/scsi.h: Remove unused
+ scsi_legacy_handle_cmdline() prototype
 Content-Language: fr
-To: dinglimin <dinglimin@cmss.chinamobile.com>, thuth@redhat.com
-Cc: alex.bennee@linaro.org, jsnow@redhat.com, qemu-devel@nongnu.org,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20220928090312.2537-1-dinglimin@cmss.chinamobile.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>
+References: <20221013130500.967432-1-peter.maydell@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220928090312.2537-1-dinglimin@cmss.chinamobile.com>
+In-Reply-To: <20221013130500.967432-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:YoxcKFFygAIimmOLiNZcaNwwj5PBQjEoHGgsyXxHPYsXmhQys9b
- accYB8T9SsDt35VU63qH2X8AAhTNHo8VgwEkKUmPkYarCdck/1Np4Y0yVJdfgRg5Cx8f+XT
- 8SX5Qf9kkfx3QkgzjjD5KlcWoOszTC4UufkC6gGlW2kSnV3H/6fbX2dLppPBUcfdR5fke67
- Ev4OcFZ+3F+bqeLOvsecQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ruHY1dDL3XY=:d8lbMj+XdvI/0zk5Krew4o
- 6fa0KzwfrbThZiebWOBSFLEfQYvw/ZCOWRCUEIX4haEDunKbJqObTEP8JqE/3y88hVN66xPtv
- O88Q9Nw4Q2O81gz+eftNNlicj/S1bXSexiFLLttmJbCVix66rOkBz/zR1W2NibuUpSvszV1uh
- KH3/x7EXCla0nLMTNsrvlG/meB+AXbVbPfpNxTzHtdNofoOfCMo/+Y09xZqXuDpIrHFO4uLjc
- lXRZDLN2TlkhPDGAX6bmJeNvObCvP9Aei831TObUWTT8gwXX3mStM2QznFc9z9wHYsVkgEEyP
- v3Nq36boWo7GfSb7ZsO/VivZ7TRSKPev3H5s3RHEVpKKZfy67cN0o190hl6rpvUqe3rijxNuj
- nQ+oXiLqcZJWRU5IP70qRuTvj/KLT0zaHrFNciC0NryhkxiLPvNHsc480EVSPVk15t1kw3Vvg
- QwR8FDDUkwEKoJ9PB6W8Pe/GGGl5Bo/q1MP5jIw6C9PrMtRXL6dcnxziS1vc2YfdaoL7VSEMK
- NDvNHvrsEhb4rdC9BzT53oQ9vlu2cIh8xEgPK2+IPVfxIfWtYQSoN7tXaET9dTeaFQ3sDUiw6
- oU8Jy4v3FrOuIyYLavESSYJGkrpmU2qO4bw98QZPhW8jvTupExFQIpb/qbo1qFw3U1KHh6nYy
- VrxVDzpHS5GONKWW5rhyLoZKrhvityWNqjaYpngbEacUxz/NGcuypTLozQfNPgarEz2/g6RmB
- STYhGxmn/AfPGw6euVp77WfrfgKviyIOICRd9CvncmdXUMFM62hf080NtYbCUB3zSKAez8btM
- f/402HH
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:ANN8iw0ocjPvmF4HfcM7fffJgduOLOa7hgk0w6oiWuEJwSzkUrn
+ R4AF+XIhQ9kWD7zn9Zh/7bFEzdZ4zJ+jt7dE6U0kjBHcZjD0F3lfyUuc3JS+xSFljl8wBFM
+ 2pPoNl7XWW7Ob6EDYuVF2BgnK1yivwmzSSbjiIOm3mW+TFsKQcPEJyJCvKpMrtO4f2LRMtI
+ FQIfo/MWontCSZEK7k3GA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0XIpKEmp6E4=:x09ZBlVX1QJ+U59I2KmKxg
+ KJTFYNOUjjonqOcZYrdK/OxhI6IjZ48nJVKM0BJiiEFzFGJWYyRkRpSeGcVn2bdit3hpCiPxp
+ dyOm9NfaYtywefh37atbOf+0IRfooWmeGBPJPMSWp4mLXOK8GQMDHjVC3aH4YoE2MHl/mQToc
+ ro5pCL5vIVXUb1J9DLt9l6Smxk4cM5zRN+NDxS8kBY4Iea3vdsKSIDubknU+gp3ZlmZ1KKpBa
+ DQB+2Zwx+2LXMG/oy/lKy0KqziOlvqQJJ2gsRakKHrbRqFhv8S0f882OG/9Xg80X3HI4OlxYW
+ o5kYbJ2oWIOCOsNrDtwYykC0VzNSKP+uUGNuBe/o7D3ll3X4oGV51flfO9mnfVsBxj7BCSHCf
+ WLL0SAwT1ej35l9oIITd/rNhL8Uz8KV1DQn+T+RbgAzwibmnYkaj1V7Ze0QlvTG+iwnwopFrn
+ NFusgVGbjVnrQzhSNKETJ2BT/MseS/HxY4qLTD8CCgmpywKzGNoX8Yzl1zSMbR8E1iXgiSppR
+ ervBsfbGIP/Lj2CT2Fo982uziBAEvVPfZDuK0K6PUJk+qp22Wtgf9qgasEMcF9XCeZSgGnJLF
+ xyqBxKlllK6yH/gn4tAjOT/cRSmnAAOHEODBTXx+CQU9UgmKMo5gfRua9N1PG+y6eZcm7tNGu
+ fjC+h33JwG9bwRuy8DZBJD8QtV0OV0XxsqJKnzUYphsbgIi7Z1GaJiikH74JrLFrrNF3lU/jY
+ zS7Joct6Wvia3bA7fe47eFT5cYRil2oihu4V5tpPR3dVI3wVUd2sADY2iQngLcRsX7xl/q+hM
+ iMCVhWy
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,35 +65,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Oct 2022 21:19:55 -0000
+X-List-Received-Date: Sat, 22 Oct 2022 21:21:50 -0000
 
-Le 28/09/2022 à 11:03, dinglimin a écrit :
-> Jump statements, such as return and continue let you
-> change the default flow of program execution,
-> but jump statements that direct the control flow to
-> the original direction are just a waste of keystrokes.
+Le 13/10/2022 à 15:05, Peter Maydell a écrit :
+> In commit 1454509726719e0933c80 we removed the function
+> scsi_legacy_handle_cmdline() and all of its callers, but forgot to
+> delete the prototype from the header function.  Delete the prototype
+> too.
 > 
-> Signed-off-by: dinglimin <dinglimin@cmss.chinamobile.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   scripts/vmstate-static-checker.py | 1 -
+>   include/hw/scsi/scsi.h | 1 -
 >   1 file changed, 1 deletion(-)
 > 
-> diff --git a/scripts/vmstate-static-checker.py b/scripts/vmstate-static-checker.py
-> index b369388360..dfeee8231a 100755
-> --- a/scripts/vmstate-static-checker.py
-> +++ b/scripts/vmstate-static-checker.py
-> @@ -367,7 +367,6 @@ def check_machine_type(s, d):
->       if s["Name"] != d["Name"]:
->           print("Warning: checking incompatible machine types:", end=' ')
->           print("\"" + s["Name"] + "\", \"" + d["Name"] + "\"")
-> -    return
+> diff --git a/include/hw/scsi/scsi.h b/include/hw/scsi/scsi.h
+> index 001103488c2..9ad86b25bb4 100644
+> --- a/include/hw/scsi/scsi.h
+> +++ b/include/hw/scsi/scsi.h
+> @@ -187,7 +187,6 @@ SCSIDevice *scsi_bus_legacy_add_drive(SCSIBus *bus, BlockBackend *blk,
+>                                         BlockdevOnError werror,
+>                                         const char *serial, Error **errp);
+>   void scsi_bus_legacy_handle_cmdline(SCSIBus *bus);
+> -void scsi_legacy_handle_cmdline(void);
 >   
->   
->   def main():
+>   SCSIRequest *scsi_req_alloc(const SCSIReqOps *reqops, SCSIDevice *d,
+>                               uint32_t tag, uint32_t lun, void *hba_private);
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
 
