@@ -1,55 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1omLQw-0006A7-QF
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 16:49:30 -0400
+	id 1omLSL-0006JC-32
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 16:50:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omLQv-00069w-BH; Sat, 22 Oct 2022 16:49:29 -0400
-Received: from mout.kundenserver.de ([217.72.192.75])
+ id 1omLSI-0006Im-Cu; Sat, 22 Oct 2022 16:50:54 -0400
+Received: from mout.kundenserver.de ([217.72.192.73])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omLQt-00058C-Q0; Sat, 22 Oct 2022 16:49:29 -0400
+ id 1omLSD-0005Xo-38; Sat, 22 Oct 2022 16:50:53 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MsIfc-1p6lkj3vzu-00tnkB; Sat, 22 Oct 2022 22:48:40 +0200
-Message-ID: <2c44912b-6e82-61b5-65f3-c2fe9d5664aa@vivier.eu>
-Date: Sat, 22 Oct 2022 22:48:38 +0200
+ 1Mnqfc-1pSqwD3gwU-00pJd9; Sat, 22 Oct 2022 22:50:44 +0200
+Message-ID: <b5a02733-c6cd-b3e4-aac0-4db1190ffbc4@vivier.eu>
+Date: Sat, 22 Oct 2022 22:50:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.1
-Subject: Re: [PATCH] .gitignore: add multiple items to .gitignore
+Subject: Re: [PATCH 1/3] hw/core: Tidy up unnecessary casting away of const
 Content-Language: fr
-To: "Wang, Lei" <lei4.wang@intel.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, alex.bennee@linaro.org, f4bug@amsat.org
-References: <20221020171921.1078533-1-lei4.wang@intel.com>
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20220923120025.448759-1-armbru@redhat.com>
+ <20220923120025.448759-2-armbru@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221020171921.1078533-1-lei4.wang@intel.com>
+In-Reply-To: <20220923120025.448759-2-armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:G5CmO9bbS37OZvAxDIwY7ILV1Y/SXiaUsPGPw7BhJMW7+3zePjH
- DLKcRfMDGZoTs+5KA6Ywj0v1UimmNhzhjb9zaZk539ZxlIv6p3HwJ93+3Rr+qtKIhMhnKAw
- eQNrQzNp+GsM5Kaz+kK2BL6c9vmrn23LF2giJrzFfOnBBTUt8LlbN/wAccO74+Rv8iSTxVb
- Ntx8w7iViA84kDO15bjNw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:y+qs+buk/XY=:ctdSE0i7lYVPjInvxAMHqT
- UAMmtUO3vwT1UiXvcOug4r7389ly45sAxqmQZgmXkirDYrYNG3PAWVt7ddMvWINDf4IZjSfBa
- xHQ/W/bvFkFPoP4NBasyOnWWtpW5RuAYIT7Gn+lJ3AUbaQqgNekdRx8mG0CFbHC+hqZBGe2jm
- r1DBir+VkUpOPGKRQfyJG/3YgzzRGGqZboqA4gyun8t9bs4b5X+GC4BBJgNJsDgegnPgyLM+y
- Ek6NDeiSWRcCcr/u+JTGkrx3GasHShclu/HzKcb3yZbcA3pjSAWlqxO5FYjP4Ozt3Gfxo1ZmQ
- kOlUZzawlHkt01HehiNkUbZmh00LvEvE+NU/w0ikWnt5FWN9mNJKJ+IemoWxvP28sAMgKTld3
- vfsWfsc4c4ICUXGawIPa7B62N2yQz7ZrEgJinRR3YKSRWFcOFd2bzyhVBwFk5j5AAVc9DS0HZ
- YVWMChhY+CQbCxZ1TFlD/eOQcAdaHE8BEL2N+Dmil+O+m3BbZ/6/WFiCz6q7tVQIBGK09C8js
- 1NgNbLfsNwGoTDWCGdqPHXsze+RWMuLIJI+n1u/f0WGJ4mIxSN9tQZTmDyzyEAqadXDfXzSKx
- vHDlkuCgQ35FMMnfHEZvYEKjgWxt9SfZR9PU+FYpCy6D7Hecm/iq/sQ7QPj8Ga3X6Yz4tVTDB
- +4GETLjYy8OGT7O32z3ZKKjqpmSLPdspbstkPyGkZ7NfG1erw8G8PewYy7V2+YPHxJNKT0QKf
- GYw4p2nblbxXGGxWJsmzMv0fbNTxmv7OAW3kjl5CIKTjtcKhiSJplrXW1HIFbhbdYU+P2pRJd
- a8+DOM0
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:kuG1vvnWXqugm2bGBdgBSLZmxO7UyUuVRGCI3pwB9PDG0J1hI+Z
+ UgX9reB11jvLPoxa59Q/CjVHfnNb9xB4NFudRE4JZ0hk+rm7hrMRDhTiQFCrbgifjd0vR5V
+ DrDDf5o8OUOxwC5hInkmG09RLdswH6EORwW/tvRPh+76/CHdcTPAo6KMdIdACqg08AK8kZo
+ VnbXglsDXm4Do3N+BJdrQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sOznZ3IkF7w=:C00F2Hfudeofsi/jBRJOZ3
+ 46x1kHD894ANqcImdqzbOEoN1pb82FS1MDe996/uoYPvRu1a7XrtgZd6j+uMoiC0hAlCMpirP
+ Wlshv+vGYVS7ijdshlBGiuvZcI51AEoVsoN0456GYE1evCPvL60rCbSlvjN1E0HxHoKR0QV0J
+ NYdhAwPgIgGhTgAkcEh2QZSC8I1zBRBvAe9bH14R8fw4hazg1xLwrfPTTg2hZoeOmoqNJVPgK
+ BuaRnW8M9c/N58Bg76J8l/Nqu0zYvaZUbxqv2ShMytCAiF+b43dXHMStwKiOfkFhSR0GtIZbB
+ 1eLeJ6PpgSWR9K6kTuPXxcQx3kdLcRYiRF1qv93JYBicFBeZCOg9OD+UKN4hIHwMnZVE7TZH0
+ l4VTxeu3xmF/vxm0lb3K6vg2NNerf2nk8yoeABAfIdsedIcnp3wscO957e6RLDAMPpGr/i9ED
+ SXPD6uw3lSiZB/k90I/NVf57/2eSK/TPuGNxyuS3FkO3l0xLWCOi9Hqxp5E7YZCyGFK/TNvrg
+ x0wGo2z8JfYyNUvhGhZmWCTxTtsdbfunZhi7YQzdcoWskZ4bJE/Qev0keG6n9MPTeUgQLpx7M
+ CSbykN44X+qdf2MCaRKc332lLblrlLbcs6yJy9fVXZLbuAN6gpUrcEi5gs9QW1cnCCMiIDwkz
+ 4VV2mOO8LecCcm9vM/FZFMDJsUXtmcZK8mzyhebRawQ0vdjGegqoJcLul+JM9TFho80Xdu23E
+ sR/4+MOk4ntBCKHBZdVvmRBXiVhBB+i0WyPMTkOrCkGpR7TC4JnZO05+V3ep9CmohrMTpUvyD
+ QXKqxAx
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -63,46 +64,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Oct 2022 20:49:29 -0000
+X-List-Received-Date: Sat, 22 Oct 2022 20:50:54 -0000
 
-Le 20/10/2022 à 19:19, Wang, Lei a écrit :
-> Add /.vscode/, .clang-format and .gdb_history to .gitignore because:
-> 
->   - For VSCode, workspace settings as well as debugging and task
->   configurations are stored at the root in a .vscode folder;
->   - For ClangFormat, the .clang-format file is searched relative to
->   the current working directory when reading stdin;
->   - For GDB, GDB command history file defaults to the value of the
->   environment variable GDBHISTFILE, or to ./.gdb_history if this
->   variable is not set.
-> 
-> Signed-off-by: Wang, Lei <lei4.wang@intel.com>
+Le 23/09/2022 à 14:00, Markus Armbruster a écrit :
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->   .gitignore | 3 +++
->   1 file changed, 3 insertions(+)
+>   hw/core/sysbus-fdt.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/.gitignore b/.gitignore
-> index 8aab671265..61fa39967b 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -1,10 +1,13 @@
->   /GNUmakefile
->   /build/
->   /.cache/
-> +/.vscode/
->   *.pyc
->   .sdk
->   .stgit-*
->   .git-submodule-status
-> +.clang-format
-> +.gdb_history
->   cscope.*
->   tags
->   TAGS
+> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> index edb0c49b19..eebcd28f9a 100644
+> --- a/hw/core/sysbus-fdt.c
+> +++ b/hw/core/sysbus-fdt.c
+> @@ -299,7 +299,8 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
+>       void *guest_fdt = data->fdt, *host_fdt;
+>       const void *r;
+>       int i, prop_len;
+> -    uint32_t *irq_attr, *reg_attr, *host_clock_phandles;
+> +    uint32_t *irq_attr, *reg_attr;
+> +    const uint32_t *host_clock_phandles;
+>       uint64_t mmio_base, irq_number;
+>       uint32_t guest_clock_phandles[2];
+>   
+> @@ -339,7 +340,7 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
+>           error_report("%s clocks property should contain 2 handles", __func__);
+>           exit(1);
+>       }
+> -    host_clock_phandles = (uint32_t *)r;
+> +    host_clock_phandles = r;
+>       guest_clock_phandles[0] = qemu_fdt_alloc_phandle(guest_fdt);
+>       guest_clock_phandles[1] = qemu_fdt_alloc_phandle(guest_fdt);
+>   
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
 
