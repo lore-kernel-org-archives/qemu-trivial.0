@@ -1,55 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1olhMj-00040t-TS
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2022 22:02:29 -0400
+	id 1omFFs-0003Qz-87
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 10:13:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <viktor.prutyanov@phystech.edu>)
- id 1olhMi-00040b-Ig; Thu, 20 Oct 2022 22:02:28 -0400
-Received: from forward503o.mail.yandex.net ([2a02:6b8:0:1a2d::613])
+ (Exim 4.90_1) (envelope-from <volker.ruemelin@t-online.de>)
+ id 1omFFk-0003QQ-Jr; Sat, 22 Oct 2022 10:13:32 -0400
+Received: from mailout12.t-online.de ([194.25.134.22])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <viktor.prutyanov@phystech.edu>)
- id 1olhMg-0004eT-KW; Thu, 20 Oct 2022 22:02:28 -0400
-Received: from iva2-0a73a57cc944.qloud-c.yandex.net
- (iva2-0a73a57cc944.qloud-c.yandex.net
- [IPv6:2a02:6b8:c0c:6985:0:640:a73:a57c])
- by forward503o.mail.yandex.net (Yandex) with ESMTP id 2BAED5C4211;
- Fri, 21 Oct 2022 05:02:14 +0300 (MSK)
-Received: by iva2-0a73a57cc944.qloud-c.yandex.net (smtp/Yandex) with ESMTPSA
- id 1KrHBvAx8X-2CTKEcrU; Fri, 21 Oct 2022 05:02:14 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=phystech.edu; s=mail;
- t=1666317734; bh=oCFR5B7SdOBNbg1BLpcG/K8dQ/tdtqQfwdbdBQrkxdM=;
- h=Cc:References:Date:Message-ID:In-Reply-To:From:To:Subject;
- b=Y16l8l0d44WZbc/DnbG/tqjyTGP4lLE63Jec5eayCcpETSI8qg/ptCBsg4w9Y7XxU
- PMOfPOa5S1Ae3MinZlMaRbL945yzu8B6XhmmW1VMoJZcHPxs67sVM1mrO9OmpnvOcC
- dsFpVJQwIisphXvvq0R/9lpVBBs8BAqK7ru2U9yE=
-Authentication-Results: iva2-0a73a57cc944.qloud-c.yandex.net;
- dkim=pass header.i=@phystech.edu
-Subject: Re: [PATCH RESEND] elf2dmp: free memory in failure
-To: luzhipeng <luzhipeng@cestc.cn>, qemu-devel <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20221007020128.760-1-luzhipeng@cestc.cn>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Viktor Prutyanov <viktor.prutyanov@redhat.com>
-From: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
-Message-ID: <226f401e-b147-a44e-6264-182d5858151d@phystech.edu>
-Date: Fri, 21 Oct 2022 05:02:12 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <volker.ruemelin@t-online.de>)
+ id 1omFFi-0001HZ-PQ; Sat, 22 Oct 2022 10:13:32 -0400
+Received: from fwd74.dcpf.telekom.de (fwd74.aul.t-online.de [10.223.144.100])
+ by mailout12.t-online.de (Postfix) with SMTP id 790B7BCB8;
+ Sat, 22 Oct 2022 16:12:06 +0200 (CEST)
+Received: from linpower.localnet ([84.175.228.229]) by fwd74.t-online.de
+ with (TLSv1.3:TLS_AES_256_GCM_SHA384 encrypted)
+ esmtp id 1omFEK-3i8pnt0; Sat, 22 Oct 2022 16:12:04 +0200
+Received: by linpower.localnet (Postfix, from userid 1000)
+ id 1AC9F2000A4; Sat, 22 Oct 2022 16:12:04 +0200 (CEST)
+From: =?UTF-8?q?Volker=20R=C3=BCmelin?= <vr_qemu@t-online.de>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: [PATCH] ui: remove useless typecasts
+Date: Sat, 22 Oct 2022 16:12:04 +0200
+Message-Id: <20221022141204.29358-1-vr_qemu@t-online.de>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-In-Reply-To: <20221007020128.760-1-luzhipeng@cestc.cn>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a02:6b8:0:1a2d::613;
- envelope-from=viktor.prutyanov@phystech.edu; helo=forward503o.mail.yandex.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TOI-EXPURGATEID: 150726::1666447924-CACB7B6F-C9A8A810/0/0 CLEAN NORMAL
+X-TOI-MSGID: fc122d45-d8f3-49cb-b22a-ec1a9c890cf5
+Received-SPF: none client-ip=194.25.134.22;
+ envelope-from=volker.ruemelin@t-online.de; helo=mailout12.t-online.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,36 +50,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Oct 2022 02:02:29 -0000
+X-List-Received-Date: Sat, 22 Oct 2022 14:13:38 -0000
 
-On 10/7/22 5:01 AM, luzhipeng wrote:
-> From: lu zhipeng <luzhipeng@cestc.cn>
-> 
-> The 'kdgb' is allocating memory in get_kdbg(), but it is not freed in
-> error path. So fix that.
-> 
-> Signed-off-by: lu zhipeng <luzhipeng@cestc.cn>
-> ---
->   contrib/elf2dmp/main.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/contrib/elf2dmp/main.c b/contrib/elf2dmp/main.c
-> index b9fc6d230c..d77b8f98f7 100644
-> --- a/contrib/elf2dmp/main.c
-> +++ b/contrib/elf2dmp/main.c
-> @@ -125,6 +125,7 @@ static KDDEBUGGER_DATA64 *get_kdbg(uint64_t KernBase, struct pdb_reader *pdb,
->   
->       if (va_space_rw(vs, KdDebuggerDataBlock, kdbg, kdbg_hdr.Size, 0)) {
->           eprintf("Failed to extract entire KDBG\n");
-> +        free(kdbg);
->           return NULL;
->       }
->   
-> 
+Commit 8f9abdf586 ("chardev: src buffer const for write functions")
+changed the type of the second parameter of qemu_chr_be_write()
+from uint8_t * to const uint8_t *. Remove the now useless type
+casts from qemu_chr_be_write() function calls in ui/console.c and
+ui/gtk.c.
 
-I suppose Philippe's R-b should be on this version of the patch, not 
-previous one. Also I'm not sure if this patch should go through Paolo's 
-branch or QEMU Trivial.
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Volker Rümelin <vr_qemu@t-online.de>
+---
+ ui/console.c | 2 +-
+ ui/gtk.c     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Viktor Prutyanov <viktor.prutyanov@phystech.edu>
+diff --git a/ui/console.c b/ui/console.c
+index 49da6a91df..65c117874c 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -1297,7 +1297,7 @@ static void kbd_send_chars(QemuConsole *s)
+         uint32_t size;
+ 
+         buf = fifo8_pop_buf(&s->out_fifo, MIN(len, avail), &size);
+-        qemu_chr_be_write(s->chr, (uint8_t *)buf, size);
++        qemu_chr_be_write(s->chr, buf, size);
+         len = qemu_chr_be_can_write(s->chr);
+         avail -= size;
+     }
+diff --git a/ui/gtk.c b/ui/gtk.c
+index 92daaa6a6e..7ec21f7798 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -1763,7 +1763,7 @@ static void gd_vc_send_chars(VirtualConsole *vc)
+         uint32_t size;
+ 
+         buf = fifo8_pop_buf(&vc->vte.out_fifo, MIN(len, avail), &size);
+-        qemu_chr_be_write(vc->vte.chr, (uint8_t *)buf, size);
++        qemu_chr_be_write(vc->vte.chr, buf, size);
+         len = qemu_chr_be_can_write(vc->vte.chr);
+         avail -= size;
+     }
+-- 
+2.35.3
+
 
