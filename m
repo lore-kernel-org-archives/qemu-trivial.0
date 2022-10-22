@@ -1,51 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1omLmI-0007nj-35
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 17:11:34 -0400
+	id 1omLsC-0008BQ-Fw
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 17:17:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omLmG-0007nK-1c; Sat, 22 Oct 2022 17:11:32 -0400
-Received: from mout.kundenserver.de ([212.227.17.10])
+ id 1omLsA-0008Az-5o; Sat, 22 Oct 2022 17:17:38 -0400
+Received: from mout.kundenserver.de ([212.227.17.24])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omLmE-0007G2-Gf; Sat, 22 Oct 2022 17:11:31 -0400
+ id 1omLs8-0001gA-0d; Sat, 22 Oct 2022 17:17:37 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1M58OQ-1olFJK3xLQ-0017jz; Sat, 22 Oct 2022 23:11:19 +0200
-Message-ID: <f7119867-2674-d074-5fc5-9b0fa58b6bef@vivier.eu>
-Date: Sat, 22 Oct 2022 23:11:16 +0200
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MF39S-1osxZd2bua-00FUIX; Sat, 22 Oct 2022 23:17:25 +0200
+Message-ID: <066ae14c-d92f-de2c-1787-6bc2553b19df@vivier.eu>
+Date: Sat, 22 Oct 2022 23:17:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.1
-Subject: Re: [PATCH RESEND] elf2dmp: free memory in failure
+Subject: Re: [PATCH v2 1/2] tests/qtest: migration-test: Fix
+ [-Werror=format-overflow=] build warning
 Content-Language: fr
-To: luzhipeng <luzhipeng@cestc.cn>, qemu-devel <qemu-devel@nongnu.org>
-Cc: Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20221007020128.760-1-luzhipeng@cestc.cn>
+To: Bin Meng <bmeng.cn@gmail.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, Bin Meng <bin.meng@windriver.com>, 
+ Shengjiang Wu <shengjiang.wu@windriver.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+References: <20221017132023.2228641-1-bmeng.cn@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221007020128.760-1-luzhipeng@cestc.cn>
+In-Reply-To: <20221017132023.2228641-1-bmeng.cn@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9nUX6QiKlOE2ALsphTTYY6arNzY/rZyYq2NFMtcGqvZ9IDQIyma
- DeoIvXfVull7T5avQLZ327bfcQT6Cipt+7IVb2sC157dL3RCyxyvPL8jvV+ZBBLvoj5kxiv
- Z/SzMwBs1hTqIkQOuf2bGSCyDkEVYmUXxFDYATkL+zZ73aIL8X3Nj5aO7q5HH3eyiU0pfOG
- 3shm7kBKm/C5Z/PeODBNw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:VKGElcgkXN0=:nBXv+LU6fUyXDUI82Hk0B/
- p4kt63TCIPTqk/ZSTDlArLHOcPzLeWHwK0IJW8VX2Xevco3V1kA8OcBzGSCeDvug0YkgUw+jw
- 0n4QbYsdnQ+ulPbV1ll3/NWsAO3XI05IppykeUCk+dBN23laMujsznoi06oWtn03nUmsCWOau
- sDjbWj/7dTgAb21NgShN8aydfMybgznL039gfgIc2uZh7NFXywTfUH/7eOe0gtyGpaZiYyLbn
- x/F4wZ6pXnUETMJStunm0/0iWIaN3NFxIQqIUdqhHO2atrBEsNMmpd4uo0leJBnBvSQPDUJH6
- pQ8JOEEJjxp1vJXYVcsDK33YgGN2qK/TSph2Gcrjo9toY6VFQXcTtUP5JN14S5LIJQe7qRcwH
- 69Sr+lEVAronEYnO7m81iNLuA+yN0g3ZqUq/rXoWaqhdN3NRF5sMdwadl2W0MF4CLJcyX70DG
- sgWxN7ILzQCHoe9P/W88rZNAmILdMLBX+mdoQRY0PxIVQmtTCT+5ugH1XMANUnq+HEPcHan5S
- umvSfyo1QZCr8/OtOVCQnenci64UeO7HOpMA+mB0veliObdgC5SVsu0wU4xod8bkMOElpe+ZZ
- hF+FNCm9xRbexYdKn3S9BgoVjG5Zh5+JGORyseJQgI1WAxBz0C2ck5TUDC4FNN57YJ6ADEVkR
- nmqdKvh52GYO57AM37KK18Fh1qvFOoZHh1HdN6o2RDDj0B/mKa69KslZo9gu3r3rk1qFhb2Ts
- Vc699kkS9OL9w1qMI4F3J9GhCvOc15p4J1dH/AC18gi/12WIM4KrmUwWFsEyp4En7NA6PGi6P
- 3aimgp0
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:sapLzfozshUtiaLd8l7X0xNnxBp0GR3F/R79nK/8eGYKHNoUTL+
+ wSh0y3WlRqaiXDhcRENm1/aIAKygTAMAGX9d+n5Ax2La6aO6eurJhvV4sjikzXDrtMw4LGr
+ gHHz0JoE2KrnxdfPDa3bRDALfJiX2P82etxASDzoobvdRhNmXG5Tk96rCtph6LE+7SMToZj
+ AMr/XhhpeQ2SfcaLYzO5g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:c/HvC6j+9Bs=:fQqMdsPatckbGbCZYEd+yW
+ W8Ak3/Rr/493kQbwacSiluVoJa23crTqJ/+1SBghrLiN3vjDgAlRqYsVKZ9WUKK2xzk2Sui7y
+ XrM8kJLbHpPshIRlDV3a0fKybd66HJwNWrbL1i2RhFemWk1yXV9SmpJRFUWIbdRVt0LigHuSx
+ kTWdRbLcL2FE4CuUQWHqupK33HFEioiv8OAIMB7kqYLaYiABKS5mmSXtEvQZ4WZ8TParyI2mS
+ LdUuNz8xEZ8bj1Zhm6s9BMK5uRfb3d1oIDF6tctt7vDHb+PImtThQ7bD6rqWTLYxxvdcdiIRf
+ wQXPvit+ssn0YPbvTT5ucxHsQBsFInh1OVjZgHYXV4u6cOGGJ8nRiY9xQWfGCuEOIkxrbV9as
+ RP0TDran11ZlyGAklIueI1TbBrrd5bIY5QuykQm90dHj7MA2kWKlztRKeVQTAG0itxNZB9rcu
+ tsNxK1t+90L1Ueax4N3cm7MgmZKlpdXGUnQLBZETuOqsvVgDsL9ipi45fSyKHwYHFyIoks3/v
+ gxBrvVK7EI9T5//iOlOVsuJBBLLoSYYBr23/XiMlhmgPRDoMueJSw2wDrAQR+7RbbmE88tCBF
+ RaFVS5VqitzsicIZ5vcNdtDwxNffTPjZ36ZNznDWXGFGZMa7qLb25kc59ntj20yFx981bHOXi
+ YE7AWfpBwbP2zER4uR5VpC+9wTUv1GwYqPJdHc6eyixyRc8EvKbek8Uml61Tcsaj0H8WJ0VqM
+ 97uecdJjWqrVeH3NypHNtXK1uDQ7WUlx8R5x/u0XiaFQ9HvB29oFKoe8K7hzwAap5QAZ7BTsH
+ bnpMPR9
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -65,35 +69,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Oct 2022 21:11:32 -0000
+X-List-Received-Date: Sat, 22 Oct 2022 21:17:38 -0000
 
-Le 07/10/2022 à 04:01, luzhipeng a écrit :
-> From: lu zhipeng <luzhipeng@cestc.cn>
+Le 17/10/2022 à 15:20, Bin Meng a écrit :
+> From: Bin Meng <bin.meng@windriver.com>
 > 
-> The 'kdgb' is allocating memory in get_kdbg(), but it is not freed in
-> error path. So fix that.
+> When tmpfs is NULL, a build warning is seen with GCC 9.3.0.
+> It's strange that GCC 11.2.0 on Ubuntu 22.04 does not catch this,
+> neither did the QEMU CI.
 > 
-> Signed-off-by: lu zhipeng <luzhipeng@cestc.cn>
+> While we are here, improve the error message as well.
+> 
+> Reported-by: Shengjiang Wu <shengjiang.wu@windriver.com>
+> Fixes: e5553c1b8d28 ("tests/qtest: migration-test: Avoid using hardcoded /tmp")
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 > ---
->   contrib/elf2dmp/main.c | 1 +
->   1 file changed, 1 insertion(+)
 > 
-> diff --git a/contrib/elf2dmp/main.c b/contrib/elf2dmp/main.c
-> index b9fc6d230c..d77b8f98f7 100644
-> --- a/contrib/elf2dmp/main.c
-> +++ b/contrib/elf2dmp/main.c
-> @@ -125,6 +125,7 @@ static KDDEBUGGER_DATA64 *get_kdbg(uint64_t KernBase, struct pdb_reader *pdb,
+> Changes in v2:
+> - improve the error message
+> 
+>   tests/qtest/migration-test.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+> index ef4427ff4d..aa1ba179fa 100644
+> --- a/tests/qtest/migration-test.c
+> +++ b/tests/qtest/migration-test.c
+> @@ -2481,8 +2481,8 @@ int main(int argc, char **argv)
 >   
->       if (va_space_rw(vs, KdDebuggerDataBlock, kdbg, kdbg_hdr.Size, 0)) {
->           eprintf("Failed to extract entire KDBG\n");
-> +        free(kdbg);
->           return NULL;
+>       tmpfs = g_dir_make_tmp("migration-test-XXXXXX", &err);
+>       if (!tmpfs) {
+> -        g_test_message("g_dir_make_tmp on path (%s): %s", tmpfs,
+> -                       err->message);
+> +        g_test_message("Can't create temporary directory in %s: %s",
+> +                       g_get_tmp_dir(), err->message);
 >       }
+>       g_assert(tmpfs);
 >   
-
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
 
