@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1omLsC-0008BQ-Fw
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 17:17:40 -0400
+	id 1omLsR-0008CG-Kq
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2022 17:17:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omLsA-0008Az-5o; Sat, 22 Oct 2022 17:17:38 -0400
-Received: from mout.kundenserver.de ([212.227.17.24])
+ id 1omLsP-0008Bq-Sj; Sat, 22 Oct 2022 17:17:53 -0400
+Received: from mout.kundenserver.de ([217.72.192.74])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omLs8-0001gA-0d; Sat, 22 Oct 2022 17:17:37 -0400
+ id 1omLsO-0001ha-1d; Sat, 22 Oct 2022 17:17:53 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MF39S-1osxZd2bua-00FUIX; Sat, 22 Oct 2022 23:17:25 +0200
-Message-ID: <066ae14c-d92f-de2c-1787-6bc2553b19df@vivier.eu>
-Date: Sat, 22 Oct 2022 23:17:21 +0200
+ 1M7JvO-1oj1Q62MO4-007pLV; Sat, 22 Oct 2022 23:17:38 +0200
+Message-ID: <1de34fa6-dbe8-d3e6-b097-a44d09dc32e7@vivier.eu>
+Date: Sat, 22 Oct 2022 23:17:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.1
-Subject: Re: [PATCH v2 1/2] tests/qtest: migration-test: Fix
+Subject: Re: [PATCH v2 2/2] tests/qtest: vhost-user-test: Fix
  [-Werror=format-overflow=] build warning
 Content-Language: fr
 To: Bin Meng <bmeng.cn@gmail.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>, Bin Meng <bin.meng@windriver.com>, 
  Shengjiang Wu <shengjiang.wu@windriver.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
 References: <20221017132023.2228641-1-bmeng.cn@gmail.com>
+ <20221017132023.2228641-2-bmeng.cn@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221017132023.2228641-1-bmeng.cn@gmail.com>
+In-Reply-To: <20221017132023.2228641-2-bmeng.cn@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:sapLzfozshUtiaLd8l7X0xNnxBp0GR3F/R79nK/8eGYKHNoUTL+
- wSh0y3WlRqaiXDhcRENm1/aIAKygTAMAGX9d+n5Ax2La6aO6eurJhvV4sjikzXDrtMw4LGr
- gHHz0JoE2KrnxdfPDa3bRDALfJiX2P82etxASDzoobvdRhNmXG5Tk96rCtph6LE+7SMToZj
- AMr/XhhpeQ2SfcaLYzO5g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:c/HvC6j+9Bs=:fQqMdsPatckbGbCZYEd+yW
- W8Ak3/Rr/493kQbwacSiluVoJa23crTqJ/+1SBghrLiN3vjDgAlRqYsVKZ9WUKK2xzk2Sui7y
- XrM8kJLbHpPshIRlDV3a0fKybd66HJwNWrbL1i2RhFemWk1yXV9SmpJRFUWIbdRVt0LigHuSx
- kTWdRbLcL2FE4CuUQWHqupK33HFEioiv8OAIMB7kqYLaYiABKS5mmSXtEvQZ4WZ8TParyI2mS
- LdUuNz8xEZ8bj1Zhm6s9BMK5uRfb3d1oIDF6tctt7vDHb+PImtThQ7bD6rqWTLYxxvdcdiIRf
- wQXPvit+ssn0YPbvTT5ucxHsQBsFInh1OVjZgHYXV4u6cOGGJ8nRiY9xQWfGCuEOIkxrbV9as
- RP0TDran11ZlyGAklIueI1TbBrrd5bIY5QuykQm90dHj7MA2kWKlztRKeVQTAG0itxNZB9rcu
- tsNxK1t+90L1Ueax4N3cm7MgmZKlpdXGUnQLBZETuOqsvVgDsL9ipi45fSyKHwYHFyIoks3/v
- gxBrvVK7EI9T5//iOlOVsuJBBLLoSYYBr23/XiMlhmgPRDoMueJSw2wDrAQR+7RbbmE88tCBF
- RaFVS5VqitzsicIZ5vcNdtDwxNffTPjZ36ZNznDWXGFGZMa7qLb25kc59ntj20yFx981bHOXi
- YE7AWfpBwbP2zER4uR5VpC+9wTUv1GwYqPJdHc6eyixyRc8EvKbek8Uml61Tcsaj0H8WJ0VqM
- 97uecdJjWqrVeH3NypHNtXK1uDQ7WUlx8R5x/u0XiaFQ9HvB29oFKoe8K7hzwAap5QAZ7BTsH
- bnpMPR9
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:++HFi38NnpqG2tTgSgWFdqpORQfoiIA+nsE6qUaqfA28cKM14c4
+ bGBgo2hnT1Y4pY5g+0jfsRlAG13SVDTqWOBZDLQr4k1bDguN+NQX2LQ4LhFxPg/fNOl4J0Z
+ ju8vujbc9NqQulwIsUgzMkcC7amkX47rPzHcn1NCIlpRCNTjJ4nANDESUm1O+WfyBlxQi3s
+ ET0sNiXYdBvp9/olBq5GA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:mwtVYedkVog=:xLV2xJYItZESUHU+m1VXU5
+ KfTVwgBQRpsom6ccxUWpshlhRIo27L9AOMiPLvTTV7le5IT95HnLmCyqTyv7TsXQWzFsLhGsr
+ wIFwWP0bjCBbwtdhiRiqHAuTuJ2FvkCF0YuxnKgooEeQZTw9K8y4EYBCdyjrtgRJBj5QR3g3C
+ uizqJYILTjGLQZPsKPsqk02bLXj+KQAvDvCxRWtLMYw6XFywRg8O7zsr6KIQCT5l2dPiwknL+
+ xP7bXS5dpg2suwNvtJ4JOAFzWKhJ5/8E+CC7tqJ0kgjlSEdyG6cIQbhkvpCvbQxpZTwNSc8qk
+ HUeoGSZGAga/2VrY8aELyXWolEVTHoN8sVXWFY0agpjV/nTZBRC1UZV1eGyNabTtQCEsn3bAL
+ vJINaHlCz9CQ3ObMipWNsAUzGJwtupGnK/Wzyo4mUbO71VHZ6WDIS3RCTKHQ0DVSszm4KYAMx
+ qCnHqzYonpjWnKpoLa+9cq9ZgBD/IuufTDLvI2pk13w1dlqiHJnkLQOiPtgKk/jU2vf4AU8Lc
+ xGjAajJWTdxTmrCcPwTJsHNLLTUfzatHhF7sP4xqeBwEQ92sVKHuQdbWxfYg7rNUNVcrMKp95
+ ZzERQeMSeZ0AL9CkCPHE1tQL6C3OqB0S97oDT1LBg5gsl1ZWfBvpnu6qWNXHv3PCcyPLJUn4u
+ VUmSx+YAfBdY1dOotNRazsXiBK5u5O+Ncxh1unF9/tZtAF12LWwmmWeyX3jkYu7ur2u4nULsQ
+ GpTQO0YHhgZKABFNIRCpcy6T+geOnjUVL47I7QRvRq7QeSB6aXs7KIKh/IlOC1bAavBTwjDH0
+ neQrspQ
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -69,7 +69,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Oct 2022 21:17:38 -0000
+X-List-Received-Date: Sat, 22 Oct 2022 21:17:54 -0000
 
 Le 17/10/2022 à 15:20, Bin Meng a écrit :
 > From: Bin Meng <bin.meng@windriver.com>
@@ -81,7 +81,7 @@ Le 17/10/2022 à 15:20, Bin Meng a écrit :
 > While we are here, improve the error message as well.
 > 
 > Reported-by: Shengjiang Wu <shengjiang.wu@windriver.com>
-> Fixes: e5553c1b8d28 ("tests/qtest: migration-test: Avoid using hardcoded /tmp")
+> Fixes: e6efe236c1d1 ("tests/qtest: vhost-user-test: Avoid using hardcoded /tmp")
 > Signed-off-by: Bin Meng <bin.meng@windriver.com>
 > Reviewed-by: Markus Armbruster <armbru@redhat.com>
 > ---
@@ -89,24 +89,25 @@ Le 17/10/2022 à 15:20, Bin Meng a écrit :
 > Changes in v2:
 > - improve the error message
 > 
->   tests/qtest/migration-test.c | 4 ++--
+>   tests/qtest/vhost-user-test.c | 4 ++--
 >   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-> index ef4427ff4d..aa1ba179fa 100644
-> --- a/tests/qtest/migration-test.c
-> +++ b/tests/qtest/migration-test.c
-> @@ -2481,8 +2481,8 @@ int main(int argc, char **argv)
+> diff --git a/tests/qtest/vhost-user-test.c b/tests/qtest/vhost-user-test.c
+> index e8d2da7228..bf9f7c4248 100644
+> --- a/tests/qtest/vhost-user-test.c
+> +++ b/tests/qtest/vhost-user-test.c
+> @@ -571,8 +571,8 @@ static TestServer *test_server_new(const gchar *name,
 >   
->       tmpfs = g_dir_make_tmp("migration-test-XXXXXX", &err);
+>       tmpfs = g_dir_make_tmp("vhost-test-XXXXXX", &err);
 >       if (!tmpfs) {
 > -        g_test_message("g_dir_make_tmp on path (%s): %s", tmpfs,
 > -                       err->message);
 > +        g_test_message("Can't create temporary directory in %s: %s",
 > +                       g_get_tmp_dir(), err->message);
+>           g_error_free(err);
 >       }
 >       g_assert(tmpfs);
->   
+
 Applied to my trivial-patches branch.
 
 Thanks,
