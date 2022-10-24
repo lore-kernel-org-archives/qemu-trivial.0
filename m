@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1omvrZ-0008AD-3H
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Oct 2022 07:43:32 -0400
+	id 1omvsN-0000ax-BU
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Oct 2022 07:44:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omvrR-00086Z-1U; Mon, 24 Oct 2022 07:43:20 -0400
-Received: from mout.kundenserver.de ([212.227.126.135])
+ id 1omvsL-0000aR-Cl; Mon, 24 Oct 2022 07:44:13 -0400
+Received: from mout.kundenserver.de ([212.227.126.134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1omvrP-00052T-5Z; Mon, 24 Oct 2022 07:43:16 -0400
+ id 1omvsJ-0005A7-Jj; Mon, 24 Oct 2022 07:44:13 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N0Fl9-1oyoNV1cYB-00xIq2; Mon, 24 Oct 2022 13:43:10 +0200
-Message-ID: <01d737a4-96a8-61e3-d0e5-b798c8e51299@vivier.eu>
-Date: Mon, 24 Oct 2022 13:43:09 +0200
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N45th-1pDdo70U5p-0107FU; Mon, 24 Oct 2022 13:44:06 +0200
+Message-ID: <3299fbe2-4ff3-10ee-6ae6-1d82717a2cb0@vivier.eu>
+Date: Mon, 24 Oct 2022 13:44:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.1
-Subject: Re: [PATCH] ui: remove useless typecasts
+Subject: Re: [PATCH] accel/tcg/tcg-accel-ops-rr: fix trivial typo
 Content-Language: fr
-To: =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>,
- Gerd Hoffmann <kraxel@redhat.com>
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20221022141204.29358-1-vr_qemu@t-online.de>
+To: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <5dc556dbe241ae03859b7890d1998de5c77b7c6c.1666373742.git.quic_mathbern@quicinc.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221022141204.29358-1-vr_qemu@t-online.de>
+In-Reply-To: <5dc556dbe241ae03859b7890d1998de5c77b7c6c.1666373742.git.quic_mathbern@quicinc.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1U4+H6JG2c13uMhGcNc5N/e4hxUtO4GlfDeMl3FMoTj4jP7O/Xh
- seGfLlAjkXBniJnl0sn4PXzo69HyS85rp/zWk7WiutyqOhukeKSc0Xn6hcY63NUt1GCH0wp
- HgpoYKICyKtk1l/vHH4DY0HDowCE7DphOEc1+qRYeCN2DpuQ+gRM8Qp3X6nlwMkdBCbfvo5
- AoCmgGUmAlsNlFXB8PqfQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TrtPyIB4r8k=:Z3yTEVP/hdBBuLmupUG6ol
- 4hZBkO0d07AWsjFtvFw4Mi8QbOaMeUkzKztQk8bv8LUf4e5BO9rKpI6IiCnxhHWl5XtjjO5Aa
- ZhNKlu9lkUiW9coIF6F2iUWKVzmEabThMsUj7tVlD8mAKmPIuArusiDZZCm1jaQuAUS3NczzK
- I/iz+mHh80kZg7Fas9m5vZoRbOkCdlzl3ojDz+C/4paeEsD2zknc3DhMp16yczDNKb5jV6pmQ
- CULIRxwFVZETggvW72FP/ijnz5CJr3RA/wx4ikoNijthpQAS4awiV1YDvboxli2qglxWVuaOV
- KnexKNailX5kJB61L1YAJJ02W7qOYae1SzIw3V8BlYyZummQCELGcq8S4FRWgm8V/mBepEvuJ
- fDwZCQ7V8v/KEFWwzs9EI56dzxgyQinNcU0wZRnXKZ3zAYgsrAnb6ESR4s64NvFSCu6HsqabI
- CVUYkLvox1nMdZ5jjiWWqMZ20hoQ2Cz3TrsyyfQYr5SeE1XgBBoKgOj5t8XJNY3fM+oB9r5fi
- h4SXTrKYyrellel2E+s9JGsS3NXwnUyK3HXEVKp0ErgIlyqY/m2p4nRsPbkBWbQM7I56toHCU
- ssBH7x4N3TkoMGfVRjHZns5nw86bCVz8n848nWIe69sDsJWIJSf44Rbix3MiD+iWcba9YlrNg
- G5d1ZPtcTKztnhIn6kclqKe39eVFVC79k6R+d1OH/oUioo5I/blDAXcT5cirDffyovgz8hmr5
- pmfRaSzDHQ2uUl/d0OAYber6H6XZ6Z7HVMfkDn9t5lurWpaC1XaMost6slDW5YHrEm8MxU7ig
- fk9YuN4
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:d8WW1St7Tt7gGVUGCSGNMeLdQV+aiKFYQKvwiDyL4D4Hw5eaBvV
+ IYh9iWSkg5wfAd4UMBYmS6PztAQxLnJOpNNQ8B6fkAmfJRZUDfdE04CKF01c/1YT8V4yExx
+ TXdhox57VC7HDHq2SpuGg220pnG/t6Ucfl/NkBwShlFJ1qXe/ajflrp7Njl3ciuXKmeqZdj
+ X8Wd9k2TaNf2KGqeywVZQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ubK1oiUUQxI=:jLkFxYaUtSYSZ/TeEsl8nu
+ BVU39CVfmnLwd86RstmR5EluYS7EGYD1odG9bliaKZ9KH7/NxozuuXQBIkrtFhHQavPdyrUED
+ zjci6gQMcXotHuSyIZKtKLTHLD7DG4rlW47eguutkOEU4+0YC1yTCWJj9GI5o3WBrRLWFZDo3
+ Ugm9YN8PsD/16DLywLyaP6aGWXI3qcQ564SD3thofAIvPVtlQlh2LWTHFWVUpgBbTdy6pjH2k
+ cjKZbNEZvI03amIDCDq8FRdTdhkwhCwh7N4P4qjMLpQAfcDtffxB6BdYyIEuG0hxgRnAvtwbi
+ 8okrHMZeI1NRRzuJ0oIMp6EwAI/rE8Uo4SCzN/Uh5XMIMDZawrzPiMJ7+YvbU16cqJ0q5JiJR
+ dgQwQrEw6q9ng+ifQJBGOxhYGulszdFfByF75V4pD+IiRGEAaHnsMslfuIDEAeRFCN9BHEEit
+ arZsHK9gAPY4i4+DNigQhg8Fa2I+uISAjxfiAYpFvExsagK0gTzQ40x5MALevAIN3rxXHcxhD
+ CYmdAO5hX/ULQgclDHXbnLmzacoIKkwQua7YFkIu0CaSG+TG/FlKX5Vgm48KhcOGCkHvVfNrv
+ GFnmjm0f76AslYqitbh3t6GHtLsnEj92GAyUQ1009Ai3OZYdqBNT0EOdymbuMLL/fhwIiFcrU
+ XXRd4IhDCUktdwDjvn1cPEzIF5yk24JYCuDGKnJBaoStT51eHVkoL6vLXa9Bbvka6TXr+9iS6
+ Spg1R6sN+bn+fkprrLvwj3HaEq0Qn4GRqWLPEwwe15tyQ87dj7dYjIk6jJa696e02k8T946/O
+ uNHu1R1
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -65,48 +64,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Oct 2022 11:43:22 -0000
+X-List-Received-Date: Mon, 24 Oct 2022 11:44:13 -0000
 
-Le 22/10/2022 à 16:12, Volker Rümelin a écrit :
-> Commit 8f9abdf586 ("chardev: src buffer const for write functions")
-> changed the type of the second parameter of qemu_chr_be_write()
-> from uint8_t * to const uint8_t *. Remove the now useless type
-> casts from qemu_chr_be_write() function calls in ui/console.c and
-> ui/gtk.c.
-> 
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Volker Rümelin <vr_qemu@t-online.de>
+Le 21/10/2022 à 19:36, Matheus Tavares Bernardino a écrit :
+> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
 > ---
->   ui/console.c | 2 +-
->   ui/gtk.c     | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
+>   accel/tcg/tcg-accel-ops-rr.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/ui/console.c b/ui/console.c
-> index 49da6a91df..65c117874c 100644
-> --- a/ui/console.c
-> +++ b/ui/console.c
-> @@ -1297,7 +1297,7 @@ static void kbd_send_chars(QemuConsole *s)
->           uint32_t size;
->   
->           buf = fifo8_pop_buf(&s->out_fifo, MIN(len, avail), &size);
-> -        qemu_chr_be_write(s->chr, (uint8_t *)buf, size);
-> +        qemu_chr_be_write(s->chr, buf, size);
->           len = qemu_chr_be_can_write(s->chr);
->           avail -= size;
->       }
-> diff --git a/ui/gtk.c b/ui/gtk.c
-> index 92daaa6a6e..7ec21f7798 100644
-> --- a/ui/gtk.c
-> +++ b/ui/gtk.c
-> @@ -1763,7 +1763,7 @@ static void gd_vc_send_chars(VirtualConsole *vc)
->           uint32_t size;
->   
->           buf = fifo8_pop_buf(&vc->vte.out_fifo, MIN(len, avail), &size);
-> -        qemu_chr_be_write(vc->vte.chr, (uint8_t *)buf, size);
-> +        qemu_chr_be_write(vc->vte.chr, buf, size);
->           len = qemu_chr_be_can_write(vc->vte.chr);
->           avail -= size;
->       }
+> diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
+> index cc8adc2380..cc912df108 100644
+> --- a/accel/tcg/tcg-accel-ops-rr.c
+> +++ b/accel/tcg/tcg-accel-ops-rr.c
+> @@ -51,7 +51,7 @@ void rr_kick_vcpu_thread(CPUState *unused)
+>    *
+>    * The kick timer is responsible for moving single threaded vCPU
+>    * emulation on to the next vCPU. If more than one vCPU is running a
+> - * timer event with force a cpu->exit so the next vCPU can get
+> + * timer event we force a cpu->exit so the next vCPU can get
+>    * scheduled.
+>    *
+>    * The timer is removed if all vCPUs are idle and restarted again once
 
 Applied to my trivial-patches branch.
 
