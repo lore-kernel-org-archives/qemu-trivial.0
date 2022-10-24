@@ -1,68 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1omrEb-0002zj-RM
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Oct 2022 02:46:53 -0400
+	id 1omrG1-0005GS-SI
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Oct 2022 02:48:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1omrE2-0002fP-4f
- for qemu-trivial@nongnu.org; Mon, 24 Oct 2022 02:46:32 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1omrG0-0005CG-Lq
+ for qemu-trivial@nongnu.org; Mon, 24 Oct 2022 02:48:20 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1omrE0-0000Cc-3D
- for qemu-trivial@nongnu.org; Mon, 24 Oct 2022 02:46:17 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id a14so11772171wru.5
- for <qemu-trivial@nongnu.org>; Sun, 23 Oct 2022 23:46:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1omrFy-0000hu-U9
+ for qemu-trivial@nongnu.org; Mon, 24 Oct 2022 02:48:20 -0400
+Received: by mail-wr1-x436.google.com with SMTP id bu30so14587543wrb.8
+ for <qemu-trivial@nongnu.org>; Sun, 23 Oct 2022 23:48:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Epqq8F0IEXyV5guURf9EVUBuC8wp/Vyr34qWgjLBpvY=;
- b=RXZRd48qAwMNvCj1cfJN9wdSvqG767liJqY8dXcMULV/dIClfmxNaZxAgvbypPGmmB
- cbqQuY1G4VG2bOvppoLFrr5ZLZR4jAvmJtmRSW+AGiQwwLNYkpYR4fzOv99Etws9pYxI
- hy5xE9GNmydc2uzeYKgNfwTLXPz9bWKVAzUoIIqWYT6bVVrQoJjVjmiNxOlpxTjIfwoH
- F17UQUoHNi8COmtr9ERargKfsjWFwJu5SIJUSWgx2xGD65zPBZXGr/5t59NNyekcY9ej
- E43meXGdKFHZPI+9EbQicxbW6PFqQ1jTWkeBqBoxUPqtEYEYFbmCFyqLLYzYqYYQXa8c
- XQ/A==
+ bh=ai1ej37o9Hc4blbbw1ItSj94465SUXhgj2+sX0zsi70=;
+ b=lnO1GnOQ6ikEQ7BTDT/MS85rsUC7O0Qly+usCLldr6siPRC+SNMRjic7jLELG86O8R
+ Oi9JW8nDQRRf+8hnM/7uHqWvjUBd+d+/I6cs1/UXYZM1RNmCTm7rMJIjznJJd+xBhH8v
+ gMH4li/Xdg1WF2K113QNofJF3z77olQR2uSED2UegR9qjDcRggaidDh4tJ/DulFRfZJ9
+ yJkRrvzfmshcpR4nSZsYRmTOQRAAGeHa8xqrcOTu2vl1P/BmiDuilBhoDgNl/oQe+l3i
+ Oy3nN5Dkyu4RFrDOA2ieEC5giDHAsLfiC27SOCLbPuTJv4qVAT/Q7nhryjgjmJKT/DHo
+ l15A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Epqq8F0IEXyV5guURf9EVUBuC8wp/Vyr34qWgjLBpvY=;
- b=sFoy9vPsp05pdL+uO4ctYNDh3ZiImytjYC5LNzraMJYMfKQhE3w6sZz2tPvpSYSlQ4
- LPNlUxc/uvBLFjPif2tjnGey8yIZ+o/IYBaCWm9PW1muA25SFbF2XiCaxYsvwImpbVV8
- kcha8r4kPqLOmu15pR0EbMpWeEdyYqUuOQkRxRlG3jNxzkg9nN5iidzanfyrTGu2jA9U
- zMvl+MSBXMnFgQ9F6X/Gqzt9HMqFW99k//+KIUY+H6YNyx3tjzdlpnazpCEWrX2TP31t
- G+ageN05N7K/0k/2Lhh4VWuyJvJJcciRxe4SBSrVNAWBFQWGTXT+3tQ7IeA1cLaJ6Nzc
- tLhA==
-X-Gm-Message-State: ACrzQf0SPS6Acfbf67fWWJw8iPG9tBb49jNBnHZnM8zFVCse1jc600S9
- rcsysSF/hbDiKPmFcYMQOEv3jw==
-X-Google-Smtp-Source: AMsMyM7KBAZIQN0kLXHsSd72SZeJPOnbCv9mhLlKTkQj6cfkrWYrCq8m/gCyK3rP71y99Owz80GMFQ==
-X-Received: by 2002:adf:e305:0:b0:22e:6b55:3ed9 with SMTP id
- b5-20020adfe305000000b0022e6b553ed9mr19664878wrj.684.1666593974501; 
- Sun, 23 Oct 2022 23:46:14 -0700 (PDT)
+ bh=ai1ej37o9Hc4blbbw1ItSj94465SUXhgj2+sX0zsi70=;
+ b=nYsljApO65S9/bg8YOYdnQCWYu5DHEiBOFMdGcvA04Um3EoPoXAxPmNecor/Gwj8pN
+ jr44d74R/n5oztfNXk9LCqFOxT8ZHriW5jpTofwCv5dZZcww9lypxfneX4ISdU46y+Ei
+ WGVrthRynnLE/048wYTS/kO1Gn5vnEmzDF9n63fNPWMcRHkvmBnepQeOcvPCHZqE5UNT
+ k5pSJnlMQclnzZeg9d8Jl+bOJi2H08DTqWH0NIFMxuLcq9WJTzno4oQU3KFwPwCVjcij
+ N2/V2pxN/2KAkiscM6NahCRoxKFRaR9uAPZZHurhE6vQzo2lHWskAAsee4qZes/+24FZ
+ JJJg==
+X-Gm-Message-State: ACrzQf3jnueNVoh3xP/L/Af5Di0/0ifTZNgCQJsiJyAXk6oeOaKSXsUQ
+ P8wE6K5/w83OVRbiGS7sIsMbYQ==
+X-Google-Smtp-Source: AMsMyM72OPCKnPFtkcMLwDKciusoCpI3XTboVC47HY6VuktKgA7I3THdw6Nuked/Dotvr5FFlhtpTg==
+X-Received: by 2002:a05:6000:69b:b0:22e:36aa:5f1 with SMTP id
+ bo27-20020a056000069b00b0022e36aa05f1mr19767017wrb.430.1666594095508; 
+ Sun, 23 Oct 2022 23:48:15 -0700 (PDT)
 Received: from [10.50.0.10]
  (ec2-54-194-108-71.eu-west-1.compute.amazonaws.com. [54.194.108.71])
  by smtp.gmail.com with ESMTPSA id
- k16-20020a5d6290000000b0022ae4f8395dsm24836852wru.96.2022.10.23.23.46.13
+ r18-20020a05600c35d200b003c6c182bef9sm9202775wmq.36.2022.10.23.23.48.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 23 Oct 2022 23:46:13 -0700 (PDT)
-Message-ID: <87119fc5-bd0c-5046-7651-65e1ba833178@linaro.org>
-Date: Mon, 24 Oct 2022 08:46:12 +0200
+ Sun, 23 Oct 2022 23:48:15 -0700 (PDT)
+Message-ID: <814a7987-dece-6fc5-0bae-06b72c202b0c@linaro.org>
+Date: Mon, 24 Oct 2022 08:48:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.3.2
-Subject: Re: [PATCH] accel/tcg/tcg-accel-ops-rr: fix trivial typo
+Subject: Re: [PATCH] ui: remove useless typecasts
 Content-Language: en-US
-To: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <5dc556dbe241ae03859b7890d1998de5c77b7c6c.1666373742.git.quic_mathbern@quicinc.com>
+To: =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20221022141204.29358-1-vr_qemu@t-online.de>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <5dc556dbe241ae03859b7890d1998de5c77b7c6c.1666373742.git.quic_mathbern@quicinc.com>
+In-Reply-To: <20221022141204.29358-1-vr_qemu@t-online.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -82,13 +83,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Oct 2022 06:46:42 -0000
+X-List-Received-Date: Mon, 24 Oct 2022 06:48:21 -0000
 
-On 21/10/22 19:36, Matheus Tavares Bernardino wrote:
-> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+On 22/10/22 16:12, Volker Rümelin wrote:
+> Commit 8f9abdf586 ("chardev: src buffer const for write functions")
+> changed the type of the second parameter of qemu_chr_be_write()
+> from uint8_t * to const uint8_t *. Remove the now useless type
+> casts from qemu_chr_be_write() function calls in ui/console.c and
+> ui/gtk.c.
+> 
+> Cc: qemu-trivial@nongnu.org
+> Signed-off-by: Volker Rümelin <vr_qemu@t-online.de>
 > ---
->   accel/tcg/tcg-accel-ops-rr.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   ui/console.c | 2 +-
+>   ui/gtk.c     | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
