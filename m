@@ -1,76 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1omrG1-0005GS-SI
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Oct 2022 02:48:21 -0400
+	id 1omsfA-0006JC-4J
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Oct 2022 04:18:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1omrG0-0005CG-Lq
- for qemu-trivial@nongnu.org; Mon, 24 Oct 2022 02:48:20 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1omrFy-0000hu-U9
- for qemu-trivial@nongnu.org; Mon, 24 Oct 2022 02:48:20 -0400
-Received: by mail-wr1-x436.google.com with SMTP id bu30so14587543wrb.8
- for <qemu-trivial@nongnu.org>; Sun, 23 Oct 2022 23:48:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ai1ej37o9Hc4blbbw1ItSj94465SUXhgj2+sX0zsi70=;
- b=lnO1GnOQ6ikEQ7BTDT/MS85rsUC7O0Qly+usCLldr6siPRC+SNMRjic7jLELG86O8R
- Oi9JW8nDQRRf+8hnM/7uHqWvjUBd+d+/I6cs1/UXYZM1RNmCTm7rMJIjznJJd+xBhH8v
- gMH4li/Xdg1WF2K113QNofJF3z77olQR2uSED2UegR9qjDcRggaidDh4tJ/DulFRfZJ9
- yJkRrvzfmshcpR4nSZsYRmTOQRAAGeHa8xqrcOTu2vl1P/BmiDuilBhoDgNl/oQe+l3i
- Oy3nN5Dkyu4RFrDOA2ieEC5giDHAsLfiC27SOCLbPuTJv4qVAT/Q7nhryjgjmJKT/DHo
- l15A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ai1ej37o9Hc4blbbw1ItSj94465SUXhgj2+sX0zsi70=;
- b=nYsljApO65S9/bg8YOYdnQCWYu5DHEiBOFMdGcvA04Um3EoPoXAxPmNecor/Gwj8pN
- jr44d74R/n5oztfNXk9LCqFOxT8ZHriW5jpTofwCv5dZZcww9lypxfneX4ISdU46y+Ei
- WGVrthRynnLE/048wYTS/kO1Gn5vnEmzDF9n63fNPWMcRHkvmBnepQeOcvPCHZqE5UNT
- k5pSJnlMQclnzZeg9d8Jl+bOJi2H08DTqWH0NIFMxuLcq9WJTzno4oQU3KFwPwCVjcij
- N2/V2pxN/2KAkiscM6NahCRoxKFRaR9uAPZZHurhE6vQzo2lHWskAAsee4qZes/+24FZ
- JJJg==
-X-Gm-Message-State: ACrzQf3jnueNVoh3xP/L/Af5Di0/0ifTZNgCQJsiJyAXk6oeOaKSXsUQ
- P8wE6K5/w83OVRbiGS7sIsMbYQ==
-X-Google-Smtp-Source: AMsMyM72OPCKnPFtkcMLwDKciusoCpI3XTboVC47HY6VuktKgA7I3THdw6Nuked/Dotvr5FFlhtpTg==
-X-Received: by 2002:a05:6000:69b:b0:22e:36aa:5f1 with SMTP id
- bo27-20020a056000069b00b0022e36aa05f1mr19767017wrb.430.1666594095508; 
- Sun, 23 Oct 2022 23:48:15 -0700 (PDT)
-Received: from [10.50.0.10]
- (ec2-54-194-108-71.eu-west-1.compute.amazonaws.com. [54.194.108.71])
- by smtp.gmail.com with ESMTPSA id
- r18-20020a05600c35d200b003c6c182bef9sm9202775wmq.36.2022.10.23.23.48.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 23 Oct 2022 23:48:15 -0700 (PDT)
-Message-ID: <814a7987-dece-6fc5-0bae-06b72c202b0c@linaro.org>
-Date: Mon, 24 Oct 2022 08:48:13 +0200
+ (Exim 4.90_1) (envelope-from <pisa@cmp.felk.cvut.cz>)
+ id 1omsf0-0006G5-Ae; Mon, 24 Oct 2022 04:18:21 -0400
+Received: from mailgw.felk.cvut.cz ([147.32.82.15])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pisa@cmp.felk.cvut.cz>)
+ id 1omsep-0005xB-Hq; Mon, 24 Oct 2022 04:18:08 -0400
+Received: from mailgw.felk.cvut.cz (localhost.localdomain [127.0.0.1])
+ by mailgw.felk.cvut.cz (Proxmox) with ESMTP id 019E530B295F;
+ Mon, 24 Oct 2022 10:17:47 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ cmp.felk.cvut.cz; h=cc:cc:content-transfer-encoding:content-type
+ :content-type:date:from:from:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=felkmail; bh=OpivM
+ Pimy9uqEgZO+2MV5XjVRs/s41WV3GonaK+h8k0=; b=DzoB07Vck/1zEbjNgOW11
+ U/avwviKRjVNuuqzp9kI6ADUKCMs2txj4t3TgdGp2IGhJaV1jAbV86WJ7XnCrNru
+ SGM1g3h77KRDJCYOZbg9D4+kUTu2C1nEUVDdHl5NUoMy+DMFVwoD45NmZd/zQJr8
+ 01BV452HiQeqCP34j8E2lVBMQvJ7VR6UXqI5hRz98q6vfaYP6LjVQZrpfr1pnnJQ
+ r4CtumoToTgBVvOqJRVU3N2njVBIDyvyDeYMrwehWRF3/aLBOT1vemTvs2oA5+AB
+ htYPws3zBlJtluvEX11XC7DwIiJBL1pTHe2CCslRehBcueP3x2CjMgZu4xdg10cV
+ Q==
+Received: from cmp.felk.cvut.cz (haar.felk.cvut.cz [147.32.84.19])
+ by mailgw.felk.cvut.cz (Proxmox) with ESMTPS id 2C08730ADE53;
+ Mon, 24 Oct 2022 10:17:46 +0200 (CEST)
+Received: from haar.felk.cvut.cz (localhost [127.0.0.1])
+ by cmp.felk.cvut.cz (8.14.0/8.12.3/SuSE Linux 0.6) with ESMTP id
+ 29O8Hjpb026444; Mon, 24 Oct 2022 10:17:45 +0200
+Received: (from pisa@localhost)
+ by haar.felk.cvut.cz (8.14.0/8.13.7/Submit) id 29O8HjdN026443;
+ Mon, 24 Oct 2022 10:17:45 +0200
+X-Authentication-Warning: haar.felk.cvut.cz: pisa set sender to
+ pisa@cmp.felk.cvut.cz using -f
+From: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+To: Bin Meng <bmeng@tinyclub.github.io>
+Subject: Re: [PATCH] treewide: Remove the unnecessary space before semicolon
+Date: Mon, 24 Oct 2022 10:17:39 +0200
+User-Agent: KMail/1.9.10
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Jason Wang <jasowang@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Vikram Garhwal <fnu.vikram@xilinx.com>,
+ Yoshinori Sato <ysato@users.osdn.me>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org
+References: <20221024072802.457832-1-bmeng@tinylab.org>
+In-Reply-To: <20221024072802.457832-1-bmeng@tinylab.org>
+X-KMail-QuotePrefix: > 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.3.2
-Subject: Re: [PATCH] ui: remove useless typecasts
-Content-Language: en-US
-To: =?UTF-8?Q?Volker_R=c3=bcmelin?= <vr_qemu@t-online.de>,
- Gerd Hoffmann <kraxel@redhat.com>
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20221022141204.29358-1-vr_qemu@t-online.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221022141204.29358-1-vr_qemu@t-online.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: Text/Plain;
+  charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+Message-Id: <202210241017.39626.pisa@cmp.felk.cvut.cz>
+Received-SPF: none client-ip=147.32.82.15; envelope-from=pisa@cmp.felk.cvut.cz;
+ helo=mailgw.felk.cvut.cz
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,22 +79,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Oct 2022 06:48:21 -0000
+X-List-Received-Date: Mon, 24 Oct 2022 08:18:22 -0000
 
-On 22/10/22 16:12, Volker Rümelin wrote:
-> Commit 8f9abdf586 ("chardev: src buffer const for write functions")
-> changed the type of the second parameter of qemu_chr_be_write()
-> from uint8_t * to const uint8_t *. Remove the now useless type
-> casts from qemu_chr_be_write() function calls in ui/console.c and
-> ui/gtk.c.
-> 
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Volker Rümelin <vr_qemu@t-online.de>
+Hllo Bin Meng,
+
+I ACK the change for SJA1000.
+
+On Monday 24 of October 2022 09:28:02 Bin Meng wrote:
+> %s/return ;/return;
+>
+> Signed-off-by: Bin Meng <bmeng@tinylab.org>
 > ---
->   ui/console.c | 2 +-
->   ui/gtk.c     | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
+>
+>  include/hw/elf_ops.h         | 2 +-
+>  hw/9pfs/9p.c                 | 2 +-
+>  hw/dma/pl330.c               | 2 +-
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>  hw/net/can/can_sja1000.c     | 2 +-
+
+Acked-by: Pave Pisa <pisa@cmp.felk.cvut.cz>
+
+>  hw/timer/renesas_cmt.c       | 2 +-
+>  hw/timer/renesas_tmr.c       | 8 ++++----
+>  hw/virtio/virtio-pci.c       | 2 +-
+>  target/riscv/vector_helper.c | 2 +-
+>  target/rx/op_helper.c        | 4 ++--
+>  ui/vnc-jobs.c                | 2 +-
+>  ui/vnc.c                     | 2 +-
+>  11 files changed, 15 insertions(+), 15 deletions(-)
+>
+
+> diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
+> index e0f76d3eb3..73201f9139 100644
+> --- a/hw/net/can/can_sja1000.c
+> +++ b/hw/net/can/can_sja1000.c
+> @@ -431,7 +431,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr,
+> uint64_t val, (unsigned long long)val, (unsigned int)addr);
+>
+>      if (addr > CAN_SJA_MEM_SIZE) {
+> -        return ;
+> +        return;
+>      }
+>
+>      if (s->clock & 0x80) { /* PeliCAN Mode */
+
+-- 
+
+                Pavel Pisa
+    phone:      +420 603531357
+    e-mail:     pisa@cmp.felk.cvut.cz
+    Department of Control Engineering FEE CVUT
+    Karlovo namesti 13, 121 35, Prague 2
+    university: http://control.fel.cvut.cz/
+    personal:   http://cmp.felk.cvut.cz/~pisa
+    projects:   https://www.openhub.net/accounts/ppisa
+    CAN related:http://canbus.pages.fel.cvut.cz/
+    RISC-V education: https://comparch.edu.cvut.cz/
+    Open Technologies Research Education and Exchange Services
+    https://gitlab.fel.cvut.cz/otrees/org/-/wikis/home
 
 
