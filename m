@@ -1,52 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1onElX-0005Sd-FK
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 03:54:27 -0400
+	id 1onGJx-0001Ih-S2
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 05:34:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1onElN-0005LA-PU; Tue, 25 Oct 2022 03:54:23 -0400
-Received: from mout.kundenserver.de ([217.72.192.75])
+ id 1onGJr-0000FZ-6D; Tue, 25 Oct 2022 05:34:00 -0400
+Received: from mout.kundenserver.de ([212.227.126.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1onElI-0005x6-7J; Tue, 25 Oct 2022 03:54:15 -0400
-Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue108
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1M8QJq-1oiouF4BGa-004Stp; Tue, 25
- Oct 2022 09:54:00 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 00/11] Trivial branch for 7.2 patches
-Date: Tue, 25 Oct 2022 09:53:47 +0200
-Message-Id: <20221025075358.3117373-1-laurent@vivier.eu>
-X-Mailer: git-send-email 2.37.3
+ id 1onGJp-0007Vl-2i; Tue, 25 Oct 2022 05:33:58 -0400
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M1HuU-1oouDK3kYk-002sUB; Tue, 25 Oct 2022 11:33:53 +0200
+Message-ID: <0caceb01-c363-9b28-1989-661ecf00bf22@vivier.eu>
+Date: Tue, 25 Oct 2022 11:33:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PULL 00/11] Trivial branch for 7.2 patches
+Content-Language: fr
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20221025073955.3115315-1-laurent@vivier.eu>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20221025073955.3115315-1-laurent@vivier.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/dMz+oyeDLMYBhdyptjAxx+F/JW0/4qXyyMIH8cghuboH21s1vm
- 4f22HougajdxhZhI44wVUwo5FqlqGTXkAOaqUG6ib1m8nJu/18poOh3kVRsiC1V4xTwzu8U
- xfPlx3GjBG8Udp+S6mbaE/Edisdq8ZkYMFFgLEYPLQaDNCCQepkyCeiTlyx3Zlh9iNS4Jh7
- CdQxQPDM2dW/Ygs3orECA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AX0JYpgHa2E=:x6rsbFZNiThNdL3ZjHK0R+
- qvdhk8VMe3xGKsXMvKA1Vy0h6uoIasgofo275F1aDe4/HguK5twQ/VKGWvWIQrZAvqv3LgLR1
- NVUIbSTg1gkIzWBB4Eoce7SYZSfyILeuwwVokd8BJUUwVhRQB1XYiPNc1hjJsSEva0NEfczxb
- nufOvhPxS9dQOhj8rowkVmKTVDDQubwFpAkSLHhP7ypArDvZF8W90Udl+vt30YacliJT0mt/a
- EgpODb+8a+gVHrSSVBOAOaWryjqyc5MsDmac6C3ZoyXkSss9yhpqWA9aL1A6ZJS9ankEoFozC
- NpjORuPWP8BgdP2yjJqlabNv8ijehU3cdxQ3Z+bGXqMUJKDelvRVAHaGyudoQHZObW2lZCFev
- LeT5NCI3ZQlrOtpFtnFVwg7hWiiaY3VF1BPx83Dc9+tip4ZbE6gw7fOdJ/L1O1ezAIjwOgNfL
- S2AONE0ER91fBhQWj8XG649wmu3g+dLUAcYzM3dFZNGqKSAXYi2bdeQ+kVpKSl5vMqsMitJd0
- psDdLfIyJwDW5lNk0a98/cKBgxXok8nAAdpV32S1ud7i+K4uI/MFLqctLabHkW8A1Bf8wxiWN
- p5GSl9liLaImezPhJ9sKgl8JdtZNdqUqfzCl7KV1yafXp7Tu9C4Q5Moc8QwS5dx5licKL+LMm
- 2UcR9nz+CV3SUsxQAB9FmKDixoviJ/pWf/aSxAEf7kW1v+UFdNvMAm4lly8fin6GYZYAyCMLG
- reNrdysap0uMqN1/EyMMNy9A/71/zZFAJmu7r6aokO1e/Yon/4dxIkYfudcwJwMCGUQLt4Z3u
- ode0bxA
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:f0Xzghwij6QDkBepPH9eHGThNNxDveIvWxwAxEnCLDhBsThMwrG
+ j41ohPr6gAB3NK9rsVvFkVyh5CBHZTfzUEc7PyG8WOHz6yXWb5j9rxeMlUp4vgCSykmd/Rn
+ 56tVMg+v8HtFwwUxvH01omkkDgvuXVpRzFTkwfW9WKRqykM5vxdxgAp5SRCZD6AJjYEY8hL
+ P/IpFOvil/9h2uqLsCoMA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8eY1eVCeiN0=:8Fk7UxXlA7WGYnGDBS4ka0
+ 4e3wNpGx3E20dhqxeO0xyV5t36skH2Z7goxPZX3r/JU5Yt91WbAhSJuWYhyWqv73u/wbl3Z4N
+ F6aKf1u3/oIc56Qz5zXJQ7Zhz4x0m00VeawmcEeLnheGJTKIfLIKY7P57+8/U4ebowJbwEgeA
+ OrO1yqTa8DQ6volJOE8L/vC2fpcgKaQmC+UpyQQqeoXuHcTjcCyzRdf2Ei/KlLvPuJyB3ZU8g
+ nNdBaW1H0nywYH+MGnluuC/MYLGT6RXV2WESRaKiW47lICa7k3Ke2OhZRDIhO2ZEyQ1yyKg2e
+ THHX1TY8uSXjwxj+Bt/18Wu0+he58ziGOQSDQ40Ki3K+ZNiGe41VIb1ScLtMTgCW6e6DGuaeZ
+ zwqxZv9zIrl3bbp0ibRkR4SSNvxdBj/NA3Nk7OG6tuQuwX/uv9Q+1xHGzpze6rAk32HHmMdZ5
+ W3KSmiZ0EPvi2MXuUelOnEtgowJiYCFbLBt8qVPvxsz19gl5cbdr1Mf7QZr+HzOM/xnykEnq5
+ XKdoPJ0K97sX6HA/Cb4Jv8R1VM3cQwNv+vxpSgt1koiE6quQmb/PXTGs6iHDFeTo2oae6eGay
+ SDOKvawR04MF3upV0yFLNhAO/vcAtXJeWXZMliLLvOirZtHig/1LJS2jQgyu6b1uGPYG9Ukqf
+ QqE2c7c6cDrtATNBif2ByxekEhURvHtwKzQ3pqna8W+Jc9SZal27blyTROhAgQh0DmGTsQWpf
+ GtnFJW+hipunfnwGNgW1z6BrWzvQ7/HQC9DjP1K+WCI8D2JUAWM+ByVsSQ21M6evVU/9Tasd8
+ QF7jA4q
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,89 +63,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Oct 2022 07:54:25 -0000
+X-List-Received-Date: Tue, 25 Oct 2022 09:34:01 -0000
 
-The following changes since commit 0529245488865038344d64fff7ee05864d3d17f6:
+Le 25/10/2022 à 09:39, Laurent Vivier a écrit :
+> The following changes since commit 0529245488865038344d64fff7ee05864d3d17f6:
+> 
+>    Merge tag 'pull-target-arm-20221020' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2022-10-20 14:36:12 -0400)
+> 
+> are available in the Git repository at:
+> 
+>    https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.2-pull-request
+> 
+> for you to fetch changes up to 046ab3b80891f4aa6d0cfd7db15c622b1933e598:
+> 
+>    accel/tcg/tcg-accel-ops-rr: fix trivial typo (2022-10-24 13:43:42 +0200)
+> 
+> ----------------------------------------------------------------
+> Trivial branch pull request 20221025
+> 
+> ----------------------------------------------------------------
+> 
 
-  Merge tag 'pull-target-arm-20221020' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2022-10-20 14:36:12 -0400)
+Sorry for the duplicate messages but I have some issues with git-publish that doesn't send the emails.
 
-are available in the Git repository at:
+This PR is correct and the tags has been updated correctly in my repo (HEAD 046ab3b80891)
 
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.2-pull-request
-
-for you to fetch changes up to 046ab3b80891f4aa6d0cfd7db15c622b1933e598:
-
-  accel/tcg/tcg-accel-ops-rr: fix trivial typo (2022-10-24 13:43:42 +0200)
-
-----------------------------------------------------------------
-Pull request
-
-----------------------------------------------------------------
-
-Bin Meng (3):
-  tests/qtest: migration-test: Fix [-Werror=format-overflow=] build
-    warning
-  tests/qtest: vhost-user-test: Fix [-Werror=format-overflow=] build
-    warning
-  treewide: Remove the unnecessary space before semicolon
-
-Markus Armbruster (2):
-  hw/core: Tidy up unnecessary casting away of const
-  Drop useless casts from g_malloc() & friends to pointer
-
-Matheus Tavares Bernardino (1):
-  accel/tcg/tcg-accel-ops-rr: fix trivial typo
-
-Peter Maydell (1):
-  include/hw/scsi/scsi.h: Remove unused scsi_legacy_handle_cmdline()
-    prototype
-
-Volker Rümelin (1):
-  ui: remove useless typecasts
-
-Wang, Lei (1):
-  .gitignore: add multiple items to .gitignore
-
-dinglimin (1):
-  vmstate-static-checker:remove this redundant return
-
-lu zhipeng (1):
-  elf2dmp: free memory in failure
-
- .gitignore                        | 3 +++
- accel/tcg/tcg-accel-ops-rr.c      | 2 +-
- contrib/elf2dmp/main.c            | 1 +
- hw/9pfs/9p.c                      | 2 +-
- hw/arm/nseries.c                  | 4 ++--
- hw/char/exynos4210_uart.c         | 2 +-
- hw/core/sysbus-fdt.c              | 5 +++--
- hw/display/blizzard.c             | 2 +-
- hw/dma/pl330.c                    | 2 +-
- hw/misc/cbus.c                    | 6 +++---
- hw/net/can/can_sja1000.c          | 2 +-
- hw/nvram/eeprom93xx.c             | 2 +-
- hw/timer/renesas_cmt.c            | 2 +-
- hw/timer/renesas_tmr.c            | 8 ++++----
- hw/usb/ccid-card-emulated.c       | 2 +-
- hw/virtio/virtio-pci.c            | 2 +-
- include/hw/elf_ops.h              | 2 +-
- include/hw/scsi/scsi.h            | 1 -
- scripts/vmstate-static-checker.py | 1 -
- target/i386/kvm/kvm.c             | 3 +--
- target/i386/whpx/whpx-all.c       | 5 ++---
- target/riscv/vector_helper.c      | 2 +-
- target/rx/op_helper.c             | 4 ++--
- target/s390x/kvm/kvm.c            | 2 +-
- tests/qtest/migration-test.c      | 4 ++--
- tests/qtest/vhost-user-test.c     | 4 ++--
- ui/console.c                      | 2 +-
- ui/gtk.c                          | 2 +-
- ui/vnc-enc-hextile.c              | 4 ++--
- ui/vnc-jobs.c                     | 2 +-
- ui/vnc.c                          | 2 +-
- 31 files changed, 44 insertions(+), 43 deletions(-)
-
--- 
-2.37.3
-
+Thanks,
+Laurent
 
