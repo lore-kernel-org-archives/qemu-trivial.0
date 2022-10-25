@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1onTgU-0005Ga-7E
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 19:50:14 -0400
+	id 1onTgX-0005Wg-OF
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 19:50:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1onTgS-0004zz-8o
- for qemu-trivial@nongnu.org; Tue, 25 Oct 2022 19:50:12 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1onTgW-0005U4-F0
+ for qemu-trivial@nongnu.org; Tue, 25 Oct 2022 19:50:16 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1onTgQ-0002xz-Bo
- for qemu-trivial@nongnu.org; Tue, 25 Oct 2022 19:50:12 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- v130-20020a1cac88000000b003bcde03bd44so296139wme.5
- for <qemu-trivial@nongnu.org>; Tue, 25 Oct 2022 16:50:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1onTgU-0002z4-Rp
+ for qemu-trivial@nongnu.org; Tue, 25 Oct 2022 19:50:16 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ i5-20020a1c3b05000000b003cf47dcd316so299635wma.4
+ for <qemu-trivial@nongnu.org>; Tue, 25 Oct 2022 16:50:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=1v4OfOhcWozZ/CgeCzudetGzG1PeA7rd0snr6NhxT5c=;
- b=BLaJEAS93rQEHJoeSyFY4yt7y1XeQVSvrLbKgGgx3S2IUItsry1gGbC0s7jyhbtGnb
- EIHIAp0juE2A1bO3g4EhWBV5LvQNICwsPmVHOhX2D3RdB82iud0wtCzxY2NZ/uj+SWlD
- gerTUraiEmPsqcu3QO38XILbeXI0zea46DafHB2jb+XML2puTflHhYbLyjfycellVg8R
- ceRm0IHlJuOECR//86+ZdGyYJv7EEi2EGAmK/5mGoGAhy79CvPdJHyeUx5dmZ97zyeIb
- 4bpd9kWMXkJdn8/CeyeO85CUxhkDNbiWU6MgAD/1Tzu0ioSX5LIBdzFB1Zv3iiZ9OxDg
- pVdg==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=83SXE8AE3IXPEXq0sb4zKw6WXURfWcnz2Ug5j96SE0k=;
+ b=yXaYxH8FwywYwB75qCnMBhfGCd5FILaWtTqb117ghpk+Df6r+3ZORvJSKLBePcClFh
+ uZmYRwDcdqVq6rtnsDuQwQsE73wLVaHKKXiKjp3UCRHWHD6Cfh0fm6BWpqqh1kuAdsZn
+ m/lFMPlOHMIg9ip6sFEVlJISmEHPNgsyHlk+5Nz8XR/4k1y4uRFPjgYPyAmULAWkfpxf
+ uDcGhG3QLlvU9U3BLdLn0QpO9k6COGCprNaSUQTECm77PtsbsuZ82GtfbedHylheSX/f
+ YOIjNvslgdSPMNYSkolKWCJ1qzHp4HETAeAiaEqV/nJPPJl6dNtO9VB3c3zz9wRkZ9pZ
+ OJhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1v4OfOhcWozZ/CgeCzudetGzG1PeA7rd0snr6NhxT5c=;
- b=7wih4X9HqKSNgUsCxUoDb8kJT9bo/SG+/h+GP7UMJA+b/m/w9QHwaQ2VnDcAUMvW1d
- w0pJMbPM0YeSo5mO8rnwFzTdmtjuf6FqXphjOhBgqUCy0GE4umipJpnlLwuz+yvsa+Pe
- V6eS62hzGxjHhHgV0KtjJhDGmSVXDgVngf8uryjz4JWfyx9e4epDdOoNNZIb3OkRncjI
- bgNIi1CtdEqbqSGk8U8mfJzVOCWe8zipLLrDxxWdGdLM9LrZmHZpqfPgtK3P+Ik3K+ds
- vB33SQsdIyps0PisGWiSiucVGQRPoUJh8TzPl49qc8zZR1FbZp0hypt/g6sFqSd94gdr
- 0EiA==
-X-Gm-Message-State: ACrzQf1J7/xFhL0cX0qwDxhnbajr7hGLdsOHggSkGQq3YDF46qiLhXFt
- 27N5S1KB8ICWgnkc81sTdmYgJw==
-X-Google-Smtp-Source: AMsMyM5Be01EAZChao5dc6p6LQcRZbzYpCplWJ/MUFX93N5cYku8HJZBCoe1GCJtPAsGpJPBNItEdQ==
-X-Received: by 2002:a05:600c:6003:b0:3c6:f6e8:25fc with SMTP id
- az3-20020a05600c600300b003c6f6e825fcmr442085wmb.50.1666741808576; 
- Tue, 25 Oct 2022 16:50:08 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=83SXE8AE3IXPEXq0sb4zKw6WXURfWcnz2Ug5j96SE0k=;
+ b=ZFZsoJUpQlOjf93f+DYpK6KkE7FNiK6VobOPchE77eMFwKS0aFLYCxg7D2Wnpxdv++
+ x1kx2mAKvcCUhCbAr+aRPF3S4p7JH4EOSXA1bRLPU025UtdnJFCglvBSD9S7tH+1yG4C
+ JxfbOA3BacrKGySLuDkI1SzQrbL396txD0r5Xs+03PriKMjmorjzIZtXCBsL+m1TUYaP
+ oys1NqacuBCXWOOm1dnAYDRY/3tZG4KFlhi25VLRi5Cu6tNkFkcgU/31Q1iFfM4O6xmI
+ 1nPWzmjuvrZqtIo6LqB8ayRbNePPCORk2cYjb9k6Kd2PE6in1sPcByXSyRZluYlAYi/t
+ KziQ==
+X-Gm-Message-State: ACrzQf2ZXlerTdVBJYOhWTewwz4Ybxp79k+Nzt1fM42pdrCgyspImnP/
+ LAEvN1nj6v8RKrva/Y5aN+CYaQ==
+X-Google-Smtp-Source: AMsMyM55/nSwiHjEHNbkvqWITV1++7a2MRGEL63QQt612HugqiyEzh7TsTeEvp4rcx5iWN7va3wFbA==
+X-Received: by 2002:a05:600c:42c6:b0:3c6:f27e:cac8 with SMTP id
+ j6-20020a05600c42c600b003c6f27ecac8mr410140wme.175.1666741813559; 
+ Tue, 25 Oct 2022 16:50:13 -0700 (PDT)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- u17-20020a05600c19d100b003a3442f1229sm299303wmq.29.2022.10.25.16.50.07
+ r29-20020adfa15d000000b002365f326037sm4649107wrr.63.2022.10.25.16.50.12
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 25 Oct 2022 16:50:08 -0700 (PDT)
+ Tue, 25 Oct 2022 16:50:13 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -54,15 +55,17 @@ Cc: David Hildenbrand <david@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>, Cornelia Huck <cohuck@redhat.com>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 0/3] target: Rename headers using .def extension to .h.inc
-Date: Wed, 26 Oct 2022 01:50:03 +0200
-Message-Id: <20221025235006.7215-1-philmd@linaro.org>
+Subject: [PATCH 1/3] target/m68k: Rename qregs.def -> qregs.h.inc
+Date: Wed, 26 Oct 2022 01:50:04 +0200
+Message-Id: <20221025235006.7215-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20221025235006.7215-1-philmd@linaro.org>
+References: <20221025235006.7215-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -82,7 +85,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Oct 2022 23:50:12 -0000
+X-List-Received-Date: Tue, 25 Oct 2022 23:50:16 -0000
 
 We use the .h.inc extension to include C headers. To be consistent
 with the rest of the codebase, rename the C headers using the .def
@@ -91,24 +94,39 @@ extension.
 IDE/tools using our .editorconfig / .gitattributes will leverage
 this consistency.
 
-Philippe Mathieu-Daudé (3):
-  target/m68k: Rename qregs.def -> qregs.h.inc
-  target/s390x: Rename insn-data/format.def -> insn-data/format.h.inc
-  target/tricore: Rename csfr.def -> csfr.h.inc
-
- target/m68k/{qregs.def => qregs.h.inc}                 |  0
- target/m68k/translate.c                                |  4 ++--
- target/s390x/tcg/{insn-data.def => insn-data.h.inc}    |  2 +-
- .../s390x/tcg/{insn-format.def => insn-format.h.inc}   |  0
- target/s390x/tcg/translate.c                           | 10 +++++-----
- target/tricore/{csfr.def => csfr.h.inc}                |  0
- target/tricore/translate.c                             |  4 ++--
- 7 files changed, 10 insertions(+), 10 deletions(-)
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/m68k/{qregs.def => qregs.h.inc} | 0
+ target/m68k/translate.c                | 4 ++--
+ 2 files changed, 2 insertions(+), 2 deletions(-)
  rename target/m68k/{qregs.def => qregs.h.inc} (100%)
- rename target/s390x/tcg/{insn-data.def => insn-data.h.inc} (99%)
- rename target/s390x/tcg/{insn-format.def => insn-format.h.inc} (100%)
- rename target/tricore/{csfr.def => csfr.h.inc} (100%)
 
+diff --git a/target/m68k/qregs.def b/target/m68k/qregs.h.inc
+similarity index 100%
+rename from target/m68k/qregs.def
+rename to target/m68k/qregs.h.inc
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index 9df17aa4b2..f018fa9eb0 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -39,7 +39,7 @@
+ 
+ #define DEFO32(name, offset) static TCGv QREG_##name;
+ #define DEFO64(name, offset) static TCGv_i64 QREG_##name;
+-#include "qregs.def"
++#include "qregs.h.inc"
+ #undef DEFO32
+ #undef DEFO64
+ 
+@@ -75,7 +75,7 @@ void m68k_tcg_init(void)
+ #define DEFO64(name, offset) \
+     QREG_##name = tcg_global_mem_new_i64(cpu_env, \
+         offsetof(CPUM68KState, offset), #name);
+-#include "qregs.def"
++#include "qregs.h.inc"
+ #undef DEFO32
+ #undef DEFO64
+ 
 -- 
 2.37.3
 
