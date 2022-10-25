@@ -1,56 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1onGJx-0001Ih-S2
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 05:34:06 -0400
+	id 1onTgU-0005Ga-7E
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 19:50:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1onGJr-0000FZ-6D; Tue, 25 Oct 2022 05:34:00 -0400
-Received: from mout.kundenserver.de ([212.227.126.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1onGJp-0007Vl-2i; Tue, 25 Oct 2022 05:33:58 -0400
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M1HuU-1oouDK3kYk-002sUB; Tue, 25 Oct 2022 11:33:53 +0200
-Message-ID: <0caceb01-c363-9b28-1989-661ecf00bf22@vivier.eu>
-Date: Tue, 25 Oct 2022 11:33:52 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PULL 00/11] Trivial branch for 7.2 patches
-Content-Language: fr
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1onTgS-0004zz-8o
+ for qemu-trivial@nongnu.org; Tue, 25 Oct 2022 19:50:12 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1onTgQ-0002xz-Bo
+ for qemu-trivial@nongnu.org; Tue, 25 Oct 2022 19:50:12 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ v130-20020a1cac88000000b003bcde03bd44so296139wme.5
+ for <qemu-trivial@nongnu.org>; Tue, 25 Oct 2022 16:50:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=1v4OfOhcWozZ/CgeCzudetGzG1PeA7rd0snr6NhxT5c=;
+ b=BLaJEAS93rQEHJoeSyFY4yt7y1XeQVSvrLbKgGgx3S2IUItsry1gGbC0s7jyhbtGnb
+ EIHIAp0juE2A1bO3g4EhWBV5LvQNICwsPmVHOhX2D3RdB82iud0wtCzxY2NZ/uj+SWlD
+ gerTUraiEmPsqcu3QO38XILbeXI0zea46DafHB2jb+XML2puTflHhYbLyjfycellVg8R
+ ceRm0IHlJuOECR//86+ZdGyYJv7EEi2EGAmK/5mGoGAhy79CvPdJHyeUx5dmZ97zyeIb
+ 4bpd9kWMXkJdn8/CeyeO85CUxhkDNbiWU6MgAD/1Tzu0ioSX5LIBdzFB1Zv3iiZ9OxDg
+ pVdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=1v4OfOhcWozZ/CgeCzudetGzG1PeA7rd0snr6NhxT5c=;
+ b=7wih4X9HqKSNgUsCxUoDb8kJT9bo/SG+/h+GP7UMJA+b/m/w9QHwaQ2VnDcAUMvW1d
+ w0pJMbPM0YeSo5mO8rnwFzTdmtjuf6FqXphjOhBgqUCy0GE4umipJpnlLwuz+yvsa+Pe
+ V6eS62hzGxjHhHgV0KtjJhDGmSVXDgVngf8uryjz4JWfyx9e4epDdOoNNZIb3OkRncjI
+ bgNIi1CtdEqbqSGk8U8mfJzVOCWe8zipLLrDxxWdGdLM9LrZmHZpqfPgtK3P+Ik3K+ds
+ vB33SQsdIyps0PisGWiSiucVGQRPoUJh8TzPl49qc8zZR1FbZp0hypt/g6sFqSd94gdr
+ 0EiA==
+X-Gm-Message-State: ACrzQf1J7/xFhL0cX0qwDxhnbajr7hGLdsOHggSkGQq3YDF46qiLhXFt
+ 27N5S1KB8ICWgnkc81sTdmYgJw==
+X-Google-Smtp-Source: AMsMyM5Be01EAZChao5dc6p6LQcRZbzYpCplWJ/MUFX93N5cYku8HJZBCoe1GCJtPAsGpJPBNItEdQ==
+X-Received: by 2002:a05:600c:6003:b0:3c6:f6e8:25fc with SMTP id
+ az3-20020a05600c600300b003c6f6e825fcmr442085wmb.50.1666741808576; 
+ Tue, 25 Oct 2022 16:50:08 -0700 (PDT)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ u17-20020a05600c19d100b003a3442f1229sm299303wmq.29.2022.10.25.16.50.07
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 25 Oct 2022 16:50:08 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20221025073955.3115315-1-laurent@vivier.eu>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221025073955.3115315-1-laurent@vivier.eu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Cc: David Hildenbrand <david@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/3] target: Rename headers using .def extension to .h.inc
+Date: Wed, 26 Oct 2022 01:50:03 +0200
+Message-Id: <20221025235006.7215-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.37.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:f0Xzghwij6QDkBepPH9eHGThNNxDveIvWxwAxEnCLDhBsThMwrG
- j41ohPr6gAB3NK9rsVvFkVyh5CBHZTfzUEc7PyG8WOHz6yXWb5j9rxeMlUp4vgCSykmd/Rn
- 56tVMg+v8HtFwwUxvH01omkkDgvuXVpRzFTkwfW9WKRqykM5vxdxgAp5SRCZD6AJjYEY8hL
- P/IpFOvil/9h2uqLsCoMA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8eY1eVCeiN0=:8Fk7UxXlA7WGYnGDBS4ka0
- 4e3wNpGx3E20dhqxeO0xyV5t36skH2Z7goxPZX3r/JU5Yt91WbAhSJuWYhyWqv73u/wbl3Z4N
- F6aKf1u3/oIc56Qz5zXJQ7Zhz4x0m00VeawmcEeLnheGJTKIfLIKY7P57+8/U4ebowJbwEgeA
- OrO1yqTa8DQ6volJOE8L/vC2fpcgKaQmC+UpyQQqeoXuHcTjcCyzRdf2Ei/KlLvPuJyB3ZU8g
- nNdBaW1H0nywYH+MGnluuC/MYLGT6RXV2WESRaKiW47lICa7k3Ke2OhZRDIhO2ZEyQ1yyKg2e
- THHX1TY8uSXjwxj+Bt/18Wu0+he58ziGOQSDQ40Ki3K+ZNiGe41VIb1ScLtMTgCW6e6DGuaeZ
- zwqxZv9zIrl3bbp0ibRkR4SSNvxdBj/NA3Nk7OG6tuQuwX/uv9Q+1xHGzpze6rAk32HHmMdZ5
- W3KSmiZ0EPvi2MXuUelOnEtgowJiYCFbLBt8qVPvxsz19gl5cbdr1Mf7QZr+HzOM/xnykEnq5
- XKdoPJ0K97sX6HA/Cb4Jv8R1VM3cQwNv+vxpSgt1koiE6quQmb/PXTGs6iHDFeTo2oae6eGay
- SDOKvawR04MF3upV0yFLNhAO/vcAtXJeWXZMliLLvOirZtHig/1LJS2jQgyu6b1uGPYG9Ukqf
- QqE2c7c6cDrtATNBif2ByxekEhURvHtwKzQ3pqna8W+Jc9SZal27blyTROhAgQh0DmGTsQWpf
- GtnFJW+hipunfnwGNgW1z6BrWzvQ7/HQC9DjP1K+WCI8D2JUAWM+ByVsSQ21M6evVU/9Tasd8
- QF7jA4q
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,31 +82,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Oct 2022 09:34:01 -0000
+X-List-Received-Date: Tue, 25 Oct 2022 23:50:12 -0000
 
-Le 25/10/2022 à 09:39, Laurent Vivier a écrit :
-> The following changes since commit 0529245488865038344d64fff7ee05864d3d17f6:
-> 
->    Merge tag 'pull-target-arm-20221020' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2022-10-20 14:36:12 -0400)
-> 
-> are available in the Git repository at:
-> 
->    https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.2-pull-request
-> 
-> for you to fetch changes up to 046ab3b80891f4aa6d0cfd7db15c622b1933e598:
-> 
->    accel/tcg/tcg-accel-ops-rr: fix trivial typo (2022-10-24 13:43:42 +0200)
-> 
-> ----------------------------------------------------------------
-> Trivial branch pull request 20221025
-> 
-> ----------------------------------------------------------------
-> 
+We use the .h.inc extension to include C headers. To be consistent
+with the rest of the codebase, rename the C headers using the .def
+extension.
 
-Sorry for the duplicate messages but I have some issues with git-publish that doesn't send the emails.
+IDE/tools using our .editorconfig / .gitattributes will leverage
+this consistency.
 
-This PR is correct and the tags has been updated correctly in my repo (HEAD 046ab3b80891)
+Philippe Mathieu-Daudé (3):
+  target/m68k: Rename qregs.def -> qregs.h.inc
+  target/s390x: Rename insn-data/format.def -> insn-data/format.h.inc
+  target/tricore: Rename csfr.def -> csfr.h.inc
 
-Thanks,
-Laurent
+ target/m68k/{qregs.def => qregs.h.inc}                 |  0
+ target/m68k/translate.c                                |  4 ++--
+ target/s390x/tcg/{insn-data.def => insn-data.h.inc}    |  2 +-
+ .../s390x/tcg/{insn-format.def => insn-format.h.inc}   |  0
+ target/s390x/tcg/translate.c                           | 10 +++++-----
+ target/tricore/{csfr.def => csfr.h.inc}                |  0
+ target/tricore/translate.c                             |  4 ++--
+ 7 files changed, 10 insertions(+), 10 deletions(-)
+ rename target/m68k/{qregs.def => qregs.h.inc} (100%)
+ rename target/s390x/tcg/{insn-data.def => insn-data.h.inc} (99%)
+ rename target/s390x/tcg/{insn-format.def => insn-format.h.inc} (100%)
+ rename target/tricore/{csfr.def => csfr.h.inc} (100%)
+
+-- 
+2.37.3
+
 
