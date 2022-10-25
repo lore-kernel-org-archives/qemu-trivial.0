@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1onEg9-00013F-PZ
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 03:48:53 -0400
+	id 1onEhg-0003H7-GR
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 03:50:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1onEg8-00011q-FH; Tue, 25 Oct 2022 03:48:52 -0400
-Received: from mout.kundenserver.de ([212.227.17.10])
+ id 1onEhZ-0003A5-Bx; Tue, 25 Oct 2022 03:50:21 -0400
+Received: from mout.kundenserver.de ([212.227.126.130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1onEg6-0005AA-LJ; Tue, 25 Oct 2022 03:48:52 -0400
-Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue109
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MNKuK-1oSwth1tMo-00Oo1n; Tue, 25
- Oct 2022 09:48:47 +0200
+ id 1onEhX-0005RP-G4; Tue, 25 Oct 2022 03:50:21 -0400
+Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue010
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1Mzi3l-1p04eP1Jtx-00veZ3; Tue, 25
+ Oct 2022 09:50:16 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	Laurent Vivier <laurent@vivier.eu>
 Subject: [PULL 00/11] Trivial branch for 7.2 patches
-Date: Tue, 25 Oct 2022 09:48:34 +0200
-Message-Id: <20221025074845.3116478-1-laurent@vivier.eu>
+Date: Tue, 25 Oct 2022 09:50:04 +0200
+Message-Id: <20221025075015.3116812-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nZ8nJ+zT0JkzgMapCNvFLGyDVQ/8Sj4xdnPCiaEMFdTIYg6Nwcw
- CljAs87FeH5VOuEJrvYrYylUDY9TgfwMBB6KCwNYP8Y7BFY2TlD71j5Ie5xzfh0oiqwAkOg
- 9ki6fTuXOiGcyzhXdM+uFErvNA81su2zI47AKaRHJpW8aIjmA1fE2HwjMo6tJxV/WwfheR1
- gVVRMtgMumWV2cicMiJLA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:VbQ/siUCqto=:55oAJqxXvbdzmTXa3MAQGo
- sE0MJhJWxfKAdoN5jS+Bb1Ea+omI5oZG0dAaE3NX/J2LFtrlhifvu0aS/HsclKfEaxMPnl/+9
- xuTfgIa5JHGMS/Q9ZI4zJp+kJdn/N0wMYrGx4ydm0HMu5ys8d05PHy8sWzoHrmSgHeG1KjdCx
- Ym0+tCZRyqm/iCLD3lcqFr1Lzww1XAg693Qk/yQohdwPpWaP8KYODGmxP5TVoaIFuEPU7afZQ
- /Fv9HErS89p2nkF1iOWemwgl00uCm+vjJJyzvc22LknYITXZyA1X86ZVCWj5reM0B6od8pWfL
- ao6hnlvK35Ez8s37cmRFEx/W4iB9Nu8JY8J/zB+fedYG/19ugJ+kvrzwZ2PyWde/Eqvj7tBbD
- 0ZvbVMDCOVHx0MeOMAAUv83t4fyirKlj8JmwZIpM9XPAC+mbE1tRv/B1VVZsnhynY0D8YPbZc
- zw6XV9GVsMhmJCDjLNj2GVqIwl9HyW6AhT7dBSe7Nn4ehHBiybF7PsFmRGeZ/sj1Bgxd2QE6x
- TkFCetd51Zdz6W/oHgzxBTMQd/NQcE7E751rcfNGKOm/2jzVDBkHDDgIOINkYuIDBWk3+aKJ+
- IX/XColu6klYxPncDWiQrJ6OLblp69EuCh2B88ilIw7PVgdVZ53b4oRWLLklmX1t27NZ+dr6i
- m9mgjUZ4ZIBf1ZCms1F5DLy1VRnX0SpeaUiEMh4vw2RBBM8ok4ZgoWiKij1fMEFKS1R1yUoRW
- D5YCH2zc8rqUZyoquc9PNZ1E5Vcfse65nz5JF0+QdUmXkbY+5wq+2VEfVo1W1Mt1I2KAf6wQh
- PS2fKfL
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:Dc4UKg/Uiem+73wlv+YPryZwMbDr+e3y71yhtdzaDZTJpxNLWPl
+ 14exfw2QqQiCl5RP67+4iDLmmsiSLrzVUfETsd2AMJNk5p+FbDKt/KuHeDbY9/DjFPdnrU/
+ b1O0ufHOCE/QEFVlKOO8zOjGSGe3bRggAPOsw0OAFN//k4PM4nAvxZULBS9TSI+sy8UKkvI
+ ZsrkuvnL2Jv3cb98Uziiw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OT2mff0NQO8=:mnQUzmgRi18A73VbgP+muk
+ 50TsXEJouw5pIBq3UTWXcERt/ItK5FeQDuFME/ifX7GNTwvsD4jpU7AtEhHoBLlI6fhnAWElu
+ yGn0br0d9Bq9yVMuZOQGDCQ8Rp3Hn2Ob2K2FPeifgC1sym96+U1Ta54Tzc+f9aSjus00HuZsv
+ KCfaWnTWjJ3fGzLPGGzKbMIU5Lm3k82X+kzB9FXX3mfrFC6XeGL3sMVf3plRnZ/1Er2cngiSg
+ zT55fVO0mS+wtvM3YBot+ZpTQOxfZ1uSl9G28knEeiuj051yf1QM/ByqrHP4r1ggHaQbtx88+
+ XIIkdhW8PqwdQIzW49LhA3FA32s3UeRmZ+JhOX/JW5/vMYiNCNzUtBchMhtjkeGxKqkHMTLd4
+ plwy7AHY3kxfAeWZP9kX5g3sxq5ysWSzFFlBjho6p+tInpduoYXr7Zxvchp7aLP01BbbXpe9p
+ ExDLknGvx8PwCqBWDqf1rYsdr0HG/i1mIlbkMF8CjN6Z6huhSqqixWYEHAR48NWP7qWOrzNwe
+ uECHDwTlUUrNTM/hrR+EczMQwc/JynP+4zWdov6cpZ3Zofe9hTnZ4JcwjjEhs4+JwqYs75k8g
+ AWh8jjRFNbBK0ZhXqdA+JNDSOcjElIM2HgxAd0h/ajNNNn9pME+nl6lQeoAEBoFJdArnZ/ILW
+ iVg4t9a9RnZfmwqrqgcGOtgDYNRrN8lojGc85hpHmRy/Aiw4pvrhbNvjszrJH53MMv56UcYAS
+ JUoZgPAuP2zQpIX4/3HXhytSM7d3s+o08sY9KwBaAQ/e7fLYs6p6LgPUmN4DbM3l6ElGg2QRu
+ OUYpgG1
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,7 +60,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Oct 2022 07:48:52 -0000
+X-List-Received-Date: Tue, 25 Oct 2022 07:50:23 -0000
 
 The following changes since commit 0529245488865038344d64fff7ee05864d3d17f6:
 
