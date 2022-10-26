@@ -1,61 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1onh6o-0006AO-MT
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2022 10:10:18 -0400
+	id 1oniK2-00050f-Dw
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2022 11:28:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1onh6n-0005w4-3d
- for qemu-trivial@nongnu.org; Wed, 26 Oct 2022 10:10:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1onh6l-0006KQ-CV
- for qemu-trivial@nongnu.org; Wed, 26 Oct 2022 10:10:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666793406;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=H/BPisbILzvIK20yKYmtR60yC2wL3JdKno5fDTD3QBU=;
- b=AYTB3UqMsN+qLSR7XTLsSUCDQ/japqjdEESyrw8nOWDVaVwOeVllmDVhPYqhHRwbEPh0qH
- J3m05nWjqth7sYeL79t9FIID9JU8FGyJzmJYKujr/iqbHI+eXm+p9QEZ44lLbZflwqy4dH
- 1U4PGBv+IKVEgrA3AJjgC5fM/xG/kqg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-417-WxppnJ1wOz6LUO8gdyJObw-1; Wed, 26 Oct 2022 10:10:04 -0400
-X-MC-Unique: WxppnJ1wOz6LUO8gdyJObw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D0181805AC5;
- Wed, 26 Oct 2022 14:10:03 +0000 (UTC)
-Received: from localhost (unknown [10.39.195.215])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6359540E80E3;
- Wed, 26 Oct 2022 14:10:03 +0000 (UTC)
-Date: Wed, 26 Oct 2022 10:01:25 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PULL 00/11] Trivial branch for 7.2 patches
-Message-ID: <Y1k9tVDUsEh/rN1j@fedora>
-References: <20221025075358.3117373-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oniK0-00050N-6I
+ for qemu-trivial@nongnu.org; Wed, 26 Oct 2022 11:28:00 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oniJy-00054u-9z
+ for qemu-trivial@nongnu.org; Wed, 26 Oct 2022 11:27:59 -0400
+Received: by mail-wr1-x433.google.com with SMTP id y16so16501831wrt.12
+ for <qemu-trivial@nongnu.org>; Wed, 26 Oct 2022 08:27:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=llJSft3OmNHzZnv4t1YE9SRm/1h70y6NT8GRvYoGJow=;
+ b=DXXw3Tp0gdtcsGD7j5KEqYQjrQMl9XU/szxqcDxj/mJCsRJlR63Dp6XvAF58xG0b25
+ LEegnWV/QYmk0enwb7B3tJXm3fvRHg7xZLf2sRSzp2Y6D2Flwedp1wkzsT1uRK82AmAg
+ 0MLYV7/8WR19sYpAHA4+dqHKxWSucWz0MWgSk7b9+Y0XrXKNYqOAyIPz5TPiq8s/QZgf
+ j3yIBd/Zuv8bbCCJ9+SmXwJnuVXBJxKi6RhAQ7ZuL9z3LPDn31dx+wihGaOl+h0z6uam
+ YzvwLWo/SL8Kw3r4i9dWcO9+XYLwi+wuZRfThv0kznbkKWpq7PtyTeTuwnm/Es8jNXaF
+ 4nWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=llJSft3OmNHzZnv4t1YE9SRm/1h70y6NT8GRvYoGJow=;
+ b=eAh3Cejn2Rgggcu+N/Qx1zTn5S980ZrDPRbzH9TBElLQZ1IgK318Vv0ZBCki8hMNQ1
+ f/TLRySSeb7LHXyZErCWT+LC5rk8ISyqjER8kVi6NG1gm6UwSBmA0qAwF2DxFmlcsUyN
+ VcMN7SuN/XqIxt+p9FOeEVJ1jufukLDIESEfg3n7ZFi4xqNozaT9hJSKyuuSZChR6eil
+ UWWb5jHydsRskbWbdrQZuq2qfYTKk+7bQwncU2WBLlx4+ZnYyqoKv9cCj7XdRXjrlINR
+ qmAACCPR7IeaPF2O7qrzDVQ5BQhFipDnent+9z0wZfX9f1tnRHw4wHYe28wLnM9ty/Aj
+ YTAA==
+X-Gm-Message-State: ACrzQf2QyjlzTlOIbFS9e+EcxPhlzAh8a1YMLu4kPSwMUFvk5nNHI8Zn
+ XKpVsA+pDrO32wgm6FHIYRtDYw==
+X-Google-Smtp-Source: AMsMyM7Qnne7//uGT5L0X0uFGlQIdroIa0Ppb4INT7skrgxwWlSxGvnfXqLqL4cToYCKdYZ+rKalcg==
+X-Received: by 2002:adf:fd87:0:b0:236:7ad7:d3c4 with SMTP id
+ d7-20020adffd87000000b002367ad7d3c4mr8145028wrr.687.1666798076082; 
+ Wed, 26 Oct 2022 08:27:56 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ a18-20020a5d4d52000000b00236576c8eddsm5413010wru.12.2022.10.26.08.27.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 26 Oct 2022 08:27:55 -0700 (PDT)
+Message-ID: <4dcf7da8-e1f2-6e44-db80-ab2f17341469@linaro.org>
+Date: Wed, 26 Oct 2022 17:27:54 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="U/PXoOHO9AmtP53w"
-Content-Disposition: inline
-In-Reply-To: <20221025075358.3117373-1-laurent@vivier.eu>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.0
+Subject: Re: [PATCH 1/4] hw/i386/acpi-build: Remove unused struct
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
+ Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20221026133110.91828-1-shentey@gmail.com>
+ <20221026133110.91828-2-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221026133110.91828-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.515,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -69,32 +85,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Oct 2022 14:10:17 -0000
+X-List-Received-Date: Wed, 26 Oct 2022 15:28:00 -0000
 
+On 26/10/22 15:31, Bernhard Beschow wrote:
+> Ammends commit b23046abe78f48498a423b802d6d86ba0172d57f 'pc: acpi-build:
+> simplify PCI bus tree generation'.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/i386/acpi-build.c | 7 -------
+>   1 file changed, 7 deletions(-)
 
---U/PXoOHO9AmtP53w
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/7.2 for any user-visible changes.
-
---U/PXoOHO9AmtP53w
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmNZPbUACgkQnKSrs4Gr
-c8g22gf/QLIPKpibbTK/zgJcjIbOW8t1YtaPl1LQlAVKRUhYBuYmtLUfuZqvpnyC
-WHjKOuQE3N4ro/JNCZPr39V8JMxBmnyoEoDJoLspm8T0Fi7p+rPfdaBM1l8xDFiF
-uqT/Ku+UZtOo0IIBo9a1tWkEmohKFlq2qGdOMJD8HyejlbvRAnNPO/sPennKkem6
-dTRQtRDG24vMMZsYaXWQJtHOBEvbup4QwXC+D8rd0kYnDHI67JyNMCn+muf5NVgX
-PmoInOx8gT/GP07zmqx6zITXNzt3f5ns01q/fu9QnOEpi65rXK7ShW44rRSDKd5n
-F84oK9zOfH+e0wEho5QVweTyNhJMAQ==
-=DQTg
------END PGP SIGNATURE-----
-
---U/PXoOHO9AmtP53w--
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
