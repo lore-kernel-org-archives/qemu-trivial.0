@@ -1,77 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1onTgi-00064C-Gt
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Oct 2022 19:50:28 -0400
+	id 1onbiz-0001ds-MI
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2022 04:25:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1onTgg-00063H-NH
- for qemu-trivial@nongnu.org; Tue, 25 Oct 2022 19:50:26 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1onTge-0003Ex-Kz
- for qemu-trivial@nongnu.org; Tue, 25 Oct 2022 19:50:26 -0400
-Received: by mail-wr1-x435.google.com with SMTP id bp11so23135786wrb.9
- for <qemu-trivial@nongnu.org>; Tue, 25 Oct 2022 16:50:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vh73FyzeCa96lyMftRBslatxPlyeRzpgoLs0z6zLidE=;
- b=HMVOiDeE3V1JH++uUgxjWnJW6G4ec7mcKLTYRfvpLG82g/ZjrgGM9eU7ZiHSLMlaDb
- MoVyuElbihL4e2VoHFCSkv445EQUXLJrgjrFnjq9368SEOsHa7/o3ToJB/+usB5R0ob/
- MPlSNE1xsTo4k1I7q16mhgQiNbIyiRIQRJnvak1MG0uFmiC82JPqLJwOTxSTo3T9qE17
- IoDqwdsauryDeBZkOnyy2ynIwaOPf9Qt10fpQJn+pSOHQamjxoHdF/fOvstmUdg4sgL8
- NeZZ7u2PIVcB1dONLXWPJAwZOPiDo7fhA+tAtx0e7YQuL/RnuePNzjlJli8odrQryf4l
- vNgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vh73FyzeCa96lyMftRBslatxPlyeRzpgoLs0z6zLidE=;
- b=aqPNKKlLNocABw2010LFcIX4+jBolZdFKu7zP7FRrlbaMkYTKxhgEcc06XhYuRXwQc
- Zpu/HParggbUXxwuUG3iCZe9Oov4wos4XjdYxDXcw7iCFESqsLbnbL+UQsBmilxWcAfA
- Hb0s9sfjODuTjCim1LkPVsBplKAMyzQDN42mMNR+hzpgsRgF9+kDyPmDaZiRn2/EkSq+
- jbiX2tfcNHM81yDchY/iM0UyuG/VXRuCYpoIZgD0OnD9RGH1CHSRUaaqmA3KPwWdC15I
- 0U4vuXeDgw5YNw0755R5PN1sElobgPoa8QLqJ3XMHMOSca9mekTxu6kHZ9KUOLPWs8EB
- jjRg==
-X-Gm-Message-State: ACrzQf0fnx99UZ3J71Xc9hNHpkHJe84WCfrjepsud/N3w5hiYRs3QVvE
- HEjNKH+xKxBHkhvyQlDfIwOy/bcp5YaJlCmJ
-X-Google-Smtp-Source: AMsMyM7atsIWnHxc5tlGKhKd2SER+6gCpgUemRSoyAux99kZnvCJlQ4Hqegz7AUMclEs+CQ/k9WlIQ==
-X-Received: by 2002:adf:e84a:0:b0:236:5f2d:9027 with SMTP id
- d10-20020adfe84a000000b002365f2d9027mr13170317wrn.89.1666741823233; 
- Tue, 25 Oct 2022 16:50:23 -0700 (PDT)
-Received: from localhost.localdomain ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- a2-20020a056000050200b0023662245d3csm3718909wrf.95.2022.10.25.16.50.22
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 25 Oct 2022 16:50:22 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1onbin-0000SJ-ET; Wed, 26 Oct 2022 04:25:13 -0400
+Received: from nylar.uni-paderborn.de ([2001:638:502:c003::18])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1onbil-0002qJ-CF; Wed, 26 Oct 2022 04:25:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+ Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=nal9yY5+jbtZQncP5ExWXkdZOnU6mbqERL0Gghhmgu8=; b=EmOHUJLEeLveL3l5u9C4I0hkfx
+ Z0Wf01eBOK3Uhbp6159O3DhviYXvZy35pugvgKMPlWbESpUCt/D9SMgdL8BG63kyDm02xHLf3cwKN
+ wQZ5BEZnTwcNvQJ7tTd7iJTZ7VqTAkm4M5JNwZeymV8avtiwUdUurY5ImnsII/Yf7Lrc=;
+Date: Wed, 26 Oct 2022 10:21:09 +0200
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
  Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Cornelia Huck <cohuck@redhat.com>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 3/3] target/tricore: Rename csfr.def -> csfr.h.inc
-Date: Wed, 26 Oct 2022 01:50:06 +0200
-Message-Id: <20221025235006.7215-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20221025235006.7215-1-philmd@linaro.org>
+ Laurent Vivier <laurent@vivier.eu>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH 3/3] target/tricore: Rename csfr.def -> csfr.h.inc
+Message-ID: <20221026082109.gpigbvjtg25udlqo@schnipp.zuhause>
 References: <20221025235006.7215-1-philmd@linaro.org>
+ <20221025235006.7215-4-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20221025235006.7215-4-philmd@linaro.org>
+X-IMT-Source: Extern
+X-IMT-Spam-Score: 0.0 ()
+X-Sophos-SenderHistory: ip=84.154.186.130, fs=7174324, da=154381760, mc=35,
+ sc=0, hc=35, sp=0, fso=7174324, re=0, sd=0, hd=0
+X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
+ Antispam-Data: 2022.10.26.81519, AntiVirus-Engine: 5.94.0,
+ AntiVirus-Data: 2022.10.20.5940000
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+Received-SPF: pass client-ip=2001:638:502:c003::18;
+ envelope-from=kbastian@mail.uni-paderborn.de; helo=nylar.uni-paderborn.de
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,49 +63,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Oct 2022 23:50:26 -0000
+X-List-Received-Date: Wed, 26 Oct 2022 08:25:20 -0000
 
-We use the .h.inc extension to include C headers. To be consistent
-with the rest of the codebase, rename the C headers using the .def
-extension.
+On Wed, Oct 26, 2022 at 01:50:06AM +0200, Philippe Mathieu-Daudé wrote:
+> We use the .h.inc extension to include C headers. To be consistent
+> with the rest of the codebase, rename the C headers using the .def
+> extension.
+> 
+> IDE/tools using our .editorconfig / .gitattributes will leverage
+> this consistency.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  target/tricore/{csfr.def => csfr.h.inc} | 0
+>  target/tricore/translate.c              | 4 ++--
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>  rename target/tricore/{csfr.def => csfr.h.inc} (100%)
 
-IDE/tools using our .editorconfig / .gitattributes will leverage
-this consistency.
+Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 
-Signed-off-by: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
----
- target/tricore/{csfr.def => csfr.h.inc} | 0
- target/tricore/translate.c              | 4 ++--
- 2 files changed, 2 insertions(+), 2 deletions(-)
- rename target/tricore/{csfr.def => csfr.h.inc} (100%)
-
-diff --git a/target/tricore/csfr.def b/target/tricore/csfr.h.inc
-similarity index 100%
-rename from target/tricore/csfr.def
-rename to target/tricore/csfr.h.inc
-diff --git a/target/tricore/translate.c b/target/tricore/translate.c
-index a0558ead71..f02090945d 100644
---- a/target/tricore/translate.c
-+++ b/target/tricore/translate.c
-@@ -388,7 +388,7 @@ static inline void gen_mfcr(DisasContext *ctx, TCGv ret, int32_t offset)
-         gen_helper_psw_read(ret, cpu_env);
-     } else {
-         switch (offset) {
--#include "csfr.def"
-+#include "csfr.h.inc"
-         }
-     }
- }
-@@ -418,7 +418,7 @@ static inline void gen_mtcr(DisasContext *ctx, TCGv r1,
-             gen_helper_psw_write(cpu_env, r1);
-         } else {
-             switch (offset) {
--#include "csfr.def"
-+#include "csfr.h.inc"
-             }
-         }
-     } else {
--- 
-2.37.3
-
+Cheers,
+Bastian
 
