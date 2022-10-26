@@ -1,77 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ongVw-00064G-OW
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2022 09:32:12 -0400
+	id 1onh6o-0006AO-MT
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2022 10:10:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ongVs-0005x1-Mt; Wed, 26 Oct 2022 09:32:08 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ongVp-0007kx-Rq; Wed, 26 Oct 2022 09:32:08 -0400
-Received: by mail-ed1-x535.google.com with SMTP id a67so41441511edf.12;
- Wed, 26 Oct 2022 06:32:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sxDRbgVA64cXKgk3YgNb+L46+FS+6e7D3e8U1RBDU4w=;
- b=FV0NkI61Kgpnj3y5oi2vS+Fv0pXbnA+9ZovE5nlZZJ4rXejV9SR8SgZz+utXqjtQr0
- x2LP03EdPHwpk3UpP/0SdzCmlYjKWcI1WRd8P9E9ViYeCiJtXdvJpskmboL4CiQvbNb9
- Jv8h84R3vF1baKuBQar+/sBQxsoVlVwPz57ar4s/AzLuKGoAfv8cnj0UU0iNQ4ID5fQE
- 52wI7qa/qJddgm/BwHJYEdpM9el+UeLZeZ/XeshdLOPryFHMHLjd6yZffQ8uINqqsjHq
- j3AM1jCwb3cIxy7na0gbf164ctGJKkePCq68UsYorPOkF3V0ye4tlVerG59by3eJx3pj
- i8nQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sxDRbgVA64cXKgk3YgNb+L46+FS+6e7D3e8U1RBDU4w=;
- b=dKRwuEUxunKnZHmrCjhhxl788ah/V3RhId+mEdvBqK9M5N/77BpfjI4nOhk+PM3DND
- 424NPmnmZ+JyYJUxEBuvhZCVzvkFYOBOvt6z6WSb8SHrFi0QgSbUQCFS2jVTmzFxin/O
- AkH6O5aT62Y+9y9CLnMb/Q0qMe9FfUiIETCJbrsCs6sGc+wLk8mV+6M4D4+MzA80M3kn
- axM5BhLTQ9l9xF3siE46r0nCX3LqMQjWWOJ3yt0GnZ4PdcXTz/5HSVpL7xNqTkVYfHFv
- itOfwOmX2EPgfaRJ5CUJT47G7GD75wTIv429pp1yeOph+8V+dWHtsPvuafVAy0zd7D0I
- xtSw==
-X-Gm-Message-State: ACrzQf08VscCFwohUlMQOSaOKVZnHO3+wW2iURDIl8F6y4UpgIL71dF9
- lyj9eRZelJ6W5bhro9FMD8IzZFt7Eds=
-X-Google-Smtp-Source: AMsMyM4Rh6YSxzRrJC3z7r81u6bNfmpQ19kabqvR1fmbTwSikVHb9p/ztJS8nzT1qkVnI7aC3NHc6g==
-X-Received: by 2002:a05:6402:1e8d:b0:454:79a9:201f with SMTP id
- f13-20020a0564021e8d00b0045479a9201fmr41615767edf.176.1666791119070; 
- Wed, 26 Oct 2022 06:31:59 -0700 (PDT)
-Received: from osoxes.fritz.box
- (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
- [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
- by smtp.gmail.com with ESMTPSA id
- 13-20020a170906328d00b00730b3bdd8d7sm3032524ejw.179.2022.10.26.06.31.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Oct 2022 06:31:58 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
- Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 4/4] hw/i386/acpi-build: Generate AML for north and south
- bridges separately
-Date: Wed, 26 Oct 2022 15:31:10 +0200
-Message-Id: <20221026133110.91828-5-shentey@gmail.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221026133110.91828-1-shentey@gmail.com>
-References: <20221026133110.91828-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1onh6n-0005w4-3d
+ for qemu-trivial@nongnu.org; Wed, 26 Oct 2022 10:10:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1onh6l-0006KQ-CV
+ for qemu-trivial@nongnu.org; Wed, 26 Oct 2022 10:10:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1666793406;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=H/BPisbILzvIK20yKYmtR60yC2wL3JdKno5fDTD3QBU=;
+ b=AYTB3UqMsN+qLSR7XTLsSUCDQ/japqjdEESyrw8nOWDVaVwOeVllmDVhPYqhHRwbEPh0qH
+ J3m05nWjqth7sYeL79t9FIID9JU8FGyJzmJYKujr/iqbHI+eXm+p9QEZ44lLbZflwqy4dH
+ 1U4PGBv+IKVEgrA3AJjgC5fM/xG/kqg=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-417-WxppnJ1wOz6LUO8gdyJObw-1; Wed, 26 Oct 2022 10:10:04 -0400
+X-MC-Unique: WxppnJ1wOz6LUO8gdyJObw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D0181805AC5;
+ Wed, 26 Oct 2022 14:10:03 +0000 (UTC)
+Received: from localhost (unknown [10.39.195.215])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6359540E80E3;
+ Wed, 26 Oct 2022 14:10:03 +0000 (UTC)
+Date: Wed, 26 Oct 2022 10:01:25 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [PULL 00/11] Trivial branch for 7.2 patches
+Message-ID: <Y1k9tVDUsEh/rN1j@fedora>
+References: <20221025075358.3117373-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="U/PXoOHO9AmtP53w"
+Content-Disposition: inline
+In-Reply-To: <20221025075358.3117373-1-laurent@vivier.eu>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.515,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,87 +69,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Oct 2022 13:32:11 -0000
+X-List-Received-Date: Wed, 26 Oct 2022 14:10:17 -0000
 
-The code currently assumes Q35 iff ICH9 and i440fx iff PIIX. This is
-slightly confusing when trying to understand the code. Split north and
-south bridge code to communicate which piece of code assumes which type
-of bridge.
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/i386/acpi-build.c | 22 ++++++++++++++--------
- 1 file changed, 14 insertions(+), 8 deletions(-)
+--U/PXoOHO9AmtP53w
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index f0a20c8b21..8fbe223d08 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -60,6 +60,7 @@
- #include "hw/i386/fw_cfg.h"
- #include "hw/i386/ich9.h"
- #include "hw/pci/pci_bus.h"
-+#include "hw/pci-host/i440fx.h"
- #include "hw/pci-host/q35.h"
- #include "hw/i386/x86-iommu.h"
- 
-@@ -1437,6 +1438,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-            AcpiPmInfo *pm, AcpiMiscInfo *misc,
-            Range *pci_hole, Range *pci_hole64, MachineState *machine)
- {
-+    Object *i440fx = object_resolve_type_unambiguous(TYPE_I440FX_PCI_HOST_BRIDGE);
-+    Object *q35 = object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVICE);
-     Object *piix = object_resolve_type_unambiguous(TYPE_PIIX3_PCI_DEVICE);
-     Object *ich9 = object_resolve_type_unambiguous(TYPE_ICH9_LPC_DEVICE);
-     CrsRangeEntry *entry;
-@@ -1459,13 +1462,14 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-     AcpiTable table = { .sig = "DSDT", .rev = 1, .oem_id = x86ms->oem_id,
-                         .oem_table_id = x86ms->oem_table_id };
- 
-+    assert(!!i440fx != !!q35);
-     assert(!!piix != !!ich9);
- 
-     acpi_table_begin(&table, table_data);
-     dsdt = init_aml_allocator();
- 
-     build_dbg_aml(dsdt);
--    if (piix) {
-+    if (i440fx) {
-         sb_scope = aml_scope("_SB");
-         dev = aml_device("PCI0");
-         aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
-@@ -1473,13 +1477,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-         aml_append(dev, aml_name_decl("_UID", aml_int(pcmc->pci_root_uid)));
-         aml_append(sb_scope, dev);
-         aml_append(dsdt, sb_scope);
--
--        build_piix4_isa_bridge(dsdt);
--        if (pm->pcihp_bridge_en || pm->pcihp_root_en) {
--            build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
--        }
--        build_piix4_pci0_int(dsdt);
--    } else if (ich9) {
-+    } else if (q35) {
-         sb_scope = aml_scope("_SB");
-         dev = aml_device("PCI0");
-         aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
-@@ -1518,7 +1516,15 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-         }
- 
-         aml_append(dsdt, sb_scope);
-+    }
- 
-+    if (piix) {
-+        build_piix4_isa_bridge(dsdt);
-+        if (pm->pcihp_bridge_en || pm->pcihp_root_en) {
-+            build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
-+        }
-+        build_piix4_pci0_int(dsdt);
-+    } else if (ich9) {
-         build_q35_isa_bridge(dsdt);
-         if (pm->pcihp_bridge_en) {
-             build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
--- 
-2.38.1
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/7.2 for any user-visible changes.
+
+--U/PXoOHO9AmtP53w
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmNZPbUACgkQnKSrs4Gr
+c8g22gf/QLIPKpibbTK/zgJcjIbOW8t1YtaPl1LQlAVKRUhYBuYmtLUfuZqvpnyC
+WHjKOuQE3N4ro/JNCZPr39V8JMxBmnyoEoDJoLspm8T0Fi7p+rPfdaBM1l8xDFiF
+uqT/Ku+UZtOo0IIBo9a1tWkEmohKFlq2qGdOMJD8HyejlbvRAnNPO/sPennKkem6
+dTRQtRDG24vMMZsYaXWQJtHOBEvbup4QwXC+D8rd0kYnDHI67JyNMCn+muf5NVgX
+PmoInOx8gT/GP07zmqx6zITXNzt3f5ns01q/fu9QnOEpi65rXK7ShW44rRSDKd5n
+F84oK9zOfH+e0wEho5QVweTyNhJMAQ==
+=DQTg
+-----END PGP SIGNATURE-----
+
+--U/PXoOHO9AmtP53w--
 
 
