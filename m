@@ -1,56 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1onbiz-0001ds-MI
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2022 04:25:26 -0400
+	id 1onczA-0001w5-64
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Oct 2022 05:46:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
- id 1onbin-0000SJ-ET; Wed, 26 Oct 2022 04:25:13 -0400
-Received: from nylar.uni-paderborn.de ([2001:638:502:c003::18])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
- id 1onbil-0002qJ-CF; Wed, 26 Oct 2022 04:25:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=nal9yY5+jbtZQncP5ExWXkdZOnU6mbqERL0Gghhmgu8=; b=EmOHUJLEeLveL3l5u9C4I0hkfx
- Z0Wf01eBOK3Uhbp6159O3DhviYXvZy35pugvgKMPlWbESpUCt/D9SMgdL8BG63kyDm02xHLf3cwKN
- wQZ5BEZnTwcNvQJ7tTd7iJTZ7VqTAkm4M5JNwZeymV8avtiwUdUurY5ImnsII/Yf7Lrc=;
-Date: Wed, 26 Oct 2022 10:21:09 +0200
-From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,
- Cornelia Huck <cohuck@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH 3/3] target/tricore: Rename csfr.def -> csfr.h.inc
-Message-ID: <20221026082109.gpigbvjtg25udlqo@schnipp.zuhause>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1oncz4-0001Ot-E5
+ for qemu-trivial@nongnu.org; Wed, 26 Oct 2022 05:46:05 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1oncz2-0000eF-Ld
+ for qemu-trivial@nongnu.org; Wed, 26 Oct 2022 05:46:01 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id k8so16734501wrh.1
+ for <qemu-trivial@nongnu.org>; Wed, 26 Oct 2022 02:45:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=H0UgyfzlT/a0gWe9TnMunp4QM08vfgN2VW6aHHLTXxw=;
+ b=zCtBRj1u6Dt87DepoXI6GqJDPggtCDxOMNzycQdlqxD+Y/6DbXN/g3dIeKAPhq2VWZ
+ eSHJFSXeaYylxTVUw7xFiGlpAzQbPUIboqEJpsNCar/GzvH9DPIuHFWPIgYqBb8bCkiB
+ aCdXhyqIOD5nlDa7f0BSNq5Ra6FeRCDel4ionQAL8kTynFK3Gnmr2HzwReTPDb/3DBmp
+ Pt/xv/1axjo3q1Lz6+FXqe9rZatpNElBaw5JoOTFJTMVGSUZjci4Ii/9STnZOxa10oIG
+ jbqAO/zx77Gg3CgN/WqHPBO8Bue1N14VMqM/Dsd9BhKinlK8aGaAYK57ue49G9qC9beT
+ R28g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=H0UgyfzlT/a0gWe9TnMunp4QM08vfgN2VW6aHHLTXxw=;
+ b=mF/7uXzOdz4wGAhWqTNfLM3W+Ur0mUjTdPdh5PBRM/9nslstsCTaWjuide/MG8hOql
+ cAriGM6/Q/oHJhKr3Hufl/uQoUkz7590ridwh0G1MZRsnTPkO7Jv62Hn3NMnuAIR9rxt
+ mYyIGvtJK+cBRLr7Ght/o2lhuv6ER5SsRJmMOwAxJ148c8Cvr2uiEso9uPxrXc/cXbar
+ 6wKGXLfbJboU074R3wqKCvqodqFs4+pXlAZmqs5SxGhulYOsF/dAz1Dz2icJDbI+Gksr
+ SRD4sJ8H6fpnC3k9TiJUa1g/VwRLo0qq6U1Qd5tgQaCgc6XjNH4Fp7BQq1bq4QbAVilA
+ kVKw==
+X-Gm-Message-State: ACrzQf04i9vhb+zypHrL8TCPR87QtbBlVcETK5xQuOV5tpsIo5b/CxE0
+ CLf/U57E6/Sl12nBdTUAhPfRkQ==
+X-Google-Smtp-Source: AMsMyM6aSHfWqUYwWRuAiQHTZDBTVPt0M2c4YHMWYzvZecS6apvWcunX4LwLP6zRUQyoK4dm0Bc1fQ==
+X-Received: by 2002:a5d:66ca:0:b0:236:6d69:e1a0 with SMTP id
+ k10-20020a5d66ca000000b002366d69e1a0mr11661421wrw.558.1666777558413; 
+ Wed, 26 Oct 2022 02:45:58 -0700 (PDT)
+Received: from zen.linaroharston ([185.81.254.11])
+ by smtp.gmail.com with ESMTPSA id
+ co30-20020a0560000a1e00b0022cce7689d3sm6084656wrb.36.2022.10.26.02.45.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 26 Oct 2022 02:45:58 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 76AB81FFB7;
+ Wed, 26 Oct 2022 10:45:57 +0100 (BST)
 References: <20221025235006.7215-1-philmd@linaro.org>
- <20221025235006.7215-4-philmd@linaro.org>
+User-agent: mu4e 1.9.1; emacs 28.2.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: David Hildenbrand <david@redhat.com>, Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>, Thomas Huth <thuth@redhat.com>,
+ qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH 0/3] target: Rename headers using .def extension to .h.inc
+Date: Wed, 26 Oct 2022 10:45:52 +0100
+In-reply-to: <20221025235006.7215-1-philmd@linaro.org>
+Message-ID: <87y1t25356.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221025235006.7215-4-philmd@linaro.org>
-X-IMT-Source: Extern
-X-IMT-Spam-Score: 0.0 ()
-X-Sophos-SenderHistory: ip=84.154.186.130, fs=7174324, da=154381760, mc=35,
- sc=0, hc=35, sp=0, fso=7174324, re=0, sd=0, hd=0
-X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
- Antispam-Data: 2022.10.26.81519, AntiVirus-Engine: 5.94.0,
- AntiVirus-Data: 2022.10.20.5940000
-X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
-Received-SPF: pass client-ip=2001:638:502:c003::18;
- envelope-from=kbastian@mail.uni-paderborn.de; helo=nylar.uni-paderborn.de
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,25 +87,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Oct 2022 08:25:20 -0000
+X-List-Received-Date: Wed, 26 Oct 2022 09:46:06 -0000
 
-On Wed, Oct 26, 2022 at 01:50:06AM +0200, Philippe Mathieu-Daudé wrote:
+
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+
 > We use the .h.inc extension to include C headers. To be consistent
 > with the rest of the codebase, rename the C headers using the .def
 > extension.
-> 
+>
 > IDE/tools using our .editorconfig / .gitattributes will leverage
 > this consistency.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  target/tricore/{csfr.def => csfr.h.inc} | 0
->  target/tricore/translate.c              | 4 ++--
->  2 files changed, 2 insertions(+), 2 deletions(-)
->  rename target/tricore/{csfr.def => csfr.h.inc} (100%)
 
-Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Cheers,
-Bastian
+--=20
+Alex Benn=C3=A9e
 
