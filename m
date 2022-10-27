@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ooArf-0007d9-Gb
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2022 17:56:39 -0400
+	id 1ooAs0-0007hx-EZ
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2022 17:57:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooArd-0007cy-Pv
- for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 17:56:37 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooAry-0007gS-GH
+ for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 17:56:58 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooArc-0001Qq-6r
- for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 17:56:37 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id w14so4415168wru.8
- for <qemu-trivial@nongnu.org>; Thu, 27 Oct 2022 14:56:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooArw-0001Sd-Qm
+ for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 17:56:58 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ fn7-20020a05600c688700b003b4fb113b86so2263276wmb.0
+ for <qemu-trivial@nongnu.org>; Thu, 27 Oct 2022 14:56:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=nOg72UALDVd3KSQFLEOohh1wmwLYUEPyPpGK8sUrnyU=;
- b=TH/PChwo52iRMrM16F5/+rYXsK2J9NShr/ct2FRG2cbn8DQ0zPlA0ePX+XAx3S0h4u
- 2mf1ZlIWxiyipqwGzr9wQwe185IMIANJgtZiQDd0IuTkiaeJz6GDqloAN5dpGAFi8Zri
- Ix3tMDfSsZBu+5jurLRZ96D9vb14fRnQoSesU6x5E5NX2XJb1yRo6QjlJBp2n1UeNUxA
- TE820N/zlExXdYaL78hyg6HH3PJsnJkPsvCJrmUrjXzgNTSpakZIy7J5HPsrl2sZisw9
- a+hBwUz9IeBekQVXrrWWcAtFmxV3v3NYOsON75zkF3fwiF/yw2U15r5gwuLXnEKXLYBu
- zAqw==
+ bh=LrEvYQ/d6pQCn55yDPGCE1ADzGSM2bZdesm7hXoQz5g=;
+ b=VRz5kKOLFB2bZ6raLT4xx22zl1du6yoFzrnIuQEGfYL7Pl0jBrAVJDyFmOQZ0QlJvg
+ MpUB56Yt0v4gFF4QMo1U3YI7vVy0VmQuxKVh2MJHud5GnMl7ePqHsMCVEXtnEP5e+3zT
+ WtYtOyQkznA62EcEdbPrEUs2qzMisSlFeHUBvswg095ojdKRXU7iheiWnEkfmjse/nPW
+ mdmYEr2TGQYy74TMaybM+V80MpeuxpuH/f2OaIT/8oNvf3dSBXZhRN+m8Rlfz8zbRTNq
+ we0MXWsf6XC9c9NV6/cHWIfZFFxjgmx9m9qyz5oz2m1Kdk6HHjnEmvDBLjfILNYwAeYG
+ rX/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nOg72UALDVd3KSQFLEOohh1wmwLYUEPyPpGK8sUrnyU=;
- b=n2VGgOayzDB9k418W1C8pjiaRjmTIgPZ0VDaZ182Bd0cdWvD4GF2zn7e0cjt1KF7cj
- RZfreKCId+eruC9Ws9lpAZZACB+o9/c5u9MT1zP/M/2eTZbpU73Wkrgr/6IR49JRpEBx
- a2xxdHbHKEzn9mFk2fVOgrYUNPq4MPnWOIjJYCTeISFx2FSNpehCDWQYNVGHoQwSbWlx
- I/FfFDMVUybPThkrAGjWjF55uZQiUmYnBTLKOQTsQT5x5NTXlxhwxd4lX1SWSzb28GSr
- koM7beJQLXtH3bXRJ1sJanpeTPx2vza8ceuM/SELVHN9IlrR2dOsm9gLkqFvOXUVR99X
- BsSA==
-X-Gm-Message-State: ACrzQf1sEgPYGh3JyIR5h+ofsXVloRDwh/g1JRgpQXYQjxxNrIgZm4Vo
- zcvX04WKUvATD6vOHZE80GYZ1g==
-X-Google-Smtp-Source: AMsMyM4+9ejxfcT42bXQR82w6aVfbOrM7r9ENza0FgCOsSCEC8z2dJSMWXCKGXod5/wjL2BgMA3Leg==
-X-Received: by 2002:a05:6000:1549:b0:22e:519e:f39d with SMTP id
- 9-20020a056000154900b0022e519ef39dmr33484093wry.703.1666907794824; 
- Thu, 27 Oct 2022 14:56:34 -0700 (PDT)
+ bh=LrEvYQ/d6pQCn55yDPGCE1ADzGSM2bZdesm7hXoQz5g=;
+ b=wN9DI81U0tWzCUUIrlbScyHWuOsrVUWxH7Bm9oM2xpQPIOnvx/Gt/PnnoNZwbDKq4a
+ 0WdLflipAJ5YmE5QLOZ0YIRaaDC6Coi5yJr/cEW3hdiN3HgQDHSSVy/ix0K3ZX8huDcO
+ 4zlHZzEqQIpqw12jQewsBf4ATjXG4z289NJBkDdW+wnpdH1mP6j4BlAo0dnYDaU/aFq+
+ NV0AVR2pSpQQ7iHoUfpV24duyr6UKjHg/34Sq9p4Cplp80fTKXQYWA9Tj2ow3kAXLQHL
+ yzqH0GqN38MlELTb+/mRSIdLjCG+IcnJFr814ePoSHI8EierWUKi+sY5cbADDj0bmUEU
+ H5rA==
+X-Gm-Message-State: ACrzQf2YL8NCSZkVSgWw4Extuefg5V4PLYT5RkXqOyI5v7NC7z+SmErg
+ PtTXVelnAHiG/INB8/luKUZuyk8R6rUSrHey
+X-Google-Smtp-Source: AMsMyM5Ey2/SRoWEr+5AQ5QciRq6/SuG2U8O6SIjtTELV1KFSqJESP/XlcwhX3b6rf94qKTi6ASiFg==
+X-Received: by 2002:a7b:cb8d:0:b0:3cf:4969:9bc7 with SMTP id
+ m13-20020a7bcb8d000000b003cf49699bc7mr7470429wmi.71.1666907815469; 
+ Thu, 27 Oct 2022 14:56:55 -0700 (PDT)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- bv27-20020a0560001f1b00b0022dc6e76bbdsm2247688wrb.46.2022.10.27.14.56.33
+ h9-20020a05600c350900b003b4935f04a4sm3314614wmq.5.2022.10.27.14.56.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Oct 2022 14:56:34 -0700 (PDT)
-Message-ID: <736a625c-11ce-dea4-2404-dccaaba27800@linaro.org>
-Date: Thu, 27 Oct 2022 23:56:32 +0200
+ Thu, 27 Oct 2022 14:56:54 -0700 (PDT)
+Message-ID: <d8f9dd49-e06d-c0a3-056c-30600c0f7388@linaro.org>
+Date: Thu, 27 Oct 2022 23:56:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.4.0
-Subject: Re: [PATCH 4/4] hw/i386/acpi-build: Generate AML for north and south
- bridges separately
+Subject: Re: [PATCH 3/4] hw/i386/acpi-build: Resolve PIIX ISA bridge rather
+ than ACPI controller
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -60,13 +61,13 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20221026133110.91828-1-shentey@gmail.com>
- <20221026133110.91828-5-shentey@gmail.com>
+ <20221026133110.91828-4-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221026133110.91828-5-shentey@gmail.com>
+In-Reply-To: <20221026133110.91828-4-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,18 +87,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Oct 2022 21:56:38 -0000
+X-List-Received-Date: Thu, 27 Oct 2022 21:56:58 -0000
 
 On 26/10/22 15:31, Bernhard Beschow wrote:
-> The code currently assumes Q35 iff ICH9 and i440fx iff PIIX. This is
-> slightly confusing when trying to understand the code. Split north and
-> south bridge code to communicate which piece of code assumes which type
-> of bridge.
+> Resolving the PIIX ISA bridge rather than the PIIX ACPI controller mirrors
+> the ICH9 code one line below.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/i386/acpi-build.c | 22 ++++++++++++++--------
->   1 file changed, 14 insertions(+), 8 deletions(-)
+>   hw/i386/acpi-build.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
