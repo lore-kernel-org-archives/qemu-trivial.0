@@ -1,69 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oo6Vi-0004Gs-CN
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2022 13:17:42 -0400
+	id 1oo6cL-00088m-CU
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2022 13:24:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oo6Va-0004DV-LG
- for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 13:17:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oo6VX-00076q-RO
- for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 13:17:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666891051;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=iu1svqQ4f3xiNzjvCMN4+iRLdeioE0gTOzfKVRYrLnA=;
- b=VPTJbpl0+vi/eRspr+NCX1VWn98xo3cYd9SG8jc4cdjEtyu5Z2MLCQQ/I21vUuAec5pO3W
- zdRL4gtCco7KGDLnqEiDygi/qjBzPdtoSiXF2jFyY3vMwrDUEDgoiX25IDtW6WQ/MR4IwU
- VnWlXS7a7xC5fBfCFSlvfCnTvjOKp+k=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-212-BhxY-oExMcSm2JQInedMGw-1; Thu, 27 Oct 2022 13:17:27 -0400
-X-MC-Unique: BhxY-oExMcSm2JQInedMGw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 57E6C1C0BC69;
- Thu, 27 Oct 2022 17:17:26 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.195.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 89C061415117;
- Thu, 27 Oct 2022 17:17:25 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7CBCE21E6921; Thu, 27 Oct 2022 19:17:24 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org,
- David Hildenbrand <david@redhat.com>,  Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>,  Thomas Huth <thuth@redhat.com>,
- qemu-s390x@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,  Cornelia Huck <cohuck@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH 0/3] target: Rename headers using .def extension to .h.inc
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oo6cJ-00086x-HT
+ for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 13:24:31 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oo6cH-0008As-Uc
+ for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 13:24:31 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id io19so2225003plb.8
+ for <qemu-trivial@nongnu.org>; Thu, 27 Oct 2022 10:24:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Kwfk3gz7PC13LMB2IWM5ktSZ8KPzYZNjFGpc+j9dang=;
+ b=TOp+3teF/valMu22OFyHulMSXZwx2syQYPl2darOTgbqNBmlNFVbcV5zxq5sKJ7EFN
+ 9+uVVpiuwYE001Y8AIbUsnmINIXLbn2QnBV4hqCwdUH6TbUB+HTnl4laQ8FahVmN8BZy
+ +Hv2RLCMuso1UAGaW4maUV/6iaMIzCUMnqjd6Ro5AfK5XYyR3G4wqwtslwY/cJAGVL4Q
+ EJ2utOYUCeIhppScKbnmvHhKVa6D1CLhE+eED5OtJ655ogxpgqcgNWmxsyz3t8wB6GB0
+ VKo1KPNieVgBJQJne2cLV37XSJ78w8JQ2MvtL/bB/zu4hc/7E2ybsxZf80BN3vqXpJJ/
+ TGSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Kwfk3gz7PC13LMB2IWM5ktSZ8KPzYZNjFGpc+j9dang=;
+ b=NN4D6wdZ28Hd/HXe2Lw5tj7xhX3R/2qysS1wOtect5OTsYlQIC14M/AEdjq7r1U7Le
+ 7Fx5OPvUfHKB6P8xQ09MzA5hZgt57IwNVxjS8ZtO/cgdpR3IIDpGBeOAkhEyr7X8BtbB
+ UFi7xuf9WjcqtK301WKbMCYju57JZKqz4r25HMYzJlVSNNChP9UluOX8WV/9h5pF+f+q
+ 7W/ZQXobvWFGhVnWi6upLm5C6EswE8P3YsH9y+PM/hOQ2FZo8DbjGJtNv8zkT+FT7yhw
+ MnFn2PmG7YZEV/lulGGyvLg594KgOy0kJvUaLYet6Mq979Znj3XJAobUfCV2kuzbT2D+
+ 0I8Q==
+X-Gm-Message-State: ACrzQf2ugJ7+hPWGHN7/VEZV6d97+SCzMAyAf/ZXnjsAFByBpndAIKBh
+ jSLqrs4PBZMpecyaEYLkcP9g1ktQ9z4FfG4cmx2XIg==
+X-Google-Smtp-Source: AMsMyM7I9AsmV8XvX1JCWXghdrMnt2pIegOJgVYgnQ3w63ANiLIwLXIcwGlXVLUWLmJ6BLOagqeqXCPJDfmjSY2fyzU=
+X-Received: by 2002:a17:902:7c97:b0:17f:5abf:9450 with SMTP id
+ y23-20020a1709027c9700b0017f5abf9450mr48734918pll.19.1666891468480; Thu, 27
+ Oct 2022 10:24:28 -0700 (PDT)
+MIME-Version: 1.0
 References: <20221025235006.7215-1-philmd@linaro.org>
  <87bkpxl4a1.fsf@pond.sub.org>
  <CAFEAcA_WefVz8fefKTVq8vkiOkdXhrXkcwj4G6bSZPaFoRTSMg@mail.gmail.com>
-Date: Thu, 27 Oct 2022 19:17:24 +0200
-In-Reply-To: <CAFEAcA_WefVz8fefKTVq8vkiOkdXhrXkcwj4G6bSZPaFoRTSMg@mail.gmail.com>
- (Peter Maydell's message of "Thu, 27 Oct 2022 16:01:01 +0100")
-Message-ID: <87r0ytjie3.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+ <87r0ytjie3.fsf@pond.sub.org>
+In-Reply-To: <87r0ytjie3.fsf@pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Oct 2022 18:24:16 +0100
+Message-ID: <CAFEAcA_-udYfzGNzfARvK1G2ZVKCP+_spEUKa3THroRQ+9SMMQ@mail.gmail.com>
+Subject: Re: [PATCH 0/3] target: Rename headers using .def extension to .h.inc
+To: Markus Armbruster <armbru@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, 
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, 
+ Cornelia Huck <cohuck@redhat.com>, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.515,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,28 +81,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Oct 2022 17:17:35 -0000
+X-List-Received-Date: Thu, 27 Oct 2022 17:24:31 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On Thu, 27 Oct 2022 at 15:40, Markus Armbruster <armbru@redhat.com> wrote:
->> I wonder why we use any of .def, .h.inc, .inc.h, .c.inc, .inc.c.  Why
->> not .h and call it a day?  No need to configure each and every editor to
->> tread these as C code.
+On Thu, 27 Oct 2022 at 18:17, Markus Armbruster <armbru@redhat.com> wrote:
 >
-> It says "this isn't actually a header in the usual sense". That's
-> useful for automated scripted checks (eg we don't want
-> scripts/clean-header-guards.pl to add the standard #include header
-> guards to this sort of file) and for humans (if you see one of these
-> files included as part of the normal #include block at the top of
-> a .c file that's probably a mistake; if you see it being used then
-> you know there's likely multiple-inclusion shenanigans going on.)
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+> > On Thu, 27 Oct 2022 at 15:40, Markus Armbruster <armbru@redhat.com> wrote:
+> >> I wonder why we use any of .def, .h.inc, .inc.h, .c.inc, .inc.c.  Why
+> >> not .h and call it a day?  No need to configure each and every editor to
+> >> tread these as C code.
+> >
+> > It says "this isn't actually a header in the usual sense". That's
+> > useful for automated scripted checks (eg we don't want
+> > scripts/clean-header-guards.pl to add the standard #include header
+> > guards to this sort of file) and for humans (if you see one of these
+> > files included as part of the normal #include block at the top of
+> > a .c file that's probably a mistake; if you see it being used then
+> > you know there's likely multiple-inclusion shenanigans going on.)
+>
+> scripts/clean-header-guards.pl needs exclude patterns anyway.
 
-scripts/clean-header-guards.pl needs exclude patterns anyway.
+Yes, in theory instead of having a systematic convention for
+filenames we could instead give the files names that don't
+let you easily distinguish them from plain old header files and
+require every use like this to update clean-header-guards.pl,
+but that seems to me to be clearly worse than maintaining the
+filename convention that we already have.
 
-Comments would likely work better for humans than obscure naming
-conventions.
+> Comments would likely work better for humans than obscure naming
+> conventions.
+>
+> Make them stylized, and they work for scripts, too.
 
-Make them stylized, and they work for scripts, too.
+We already have a stylized convention, it's the filename...
+Comments inside the .inc file are also helpful, of course.
 
+-- PMM
 
