@@ -1,72 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oo6cL-00088m-CU
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2022 13:24:34 -0400
+	id 1ooAol-0005GJ-RC
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2022 17:53:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oo6cJ-00086x-HT
- for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 13:24:31 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooAoj-0005FO-OD
+ for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 17:53:37 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oo6cH-0008As-Uc
- for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 13:24:31 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id io19so2225003plb.8
- for <qemu-trivial@nongnu.org>; Thu, 27 Oct 2022 10:24:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooAoi-0000nE-8R
+ for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 17:53:37 -0400
+Received: by mail-wr1-x432.google.com with SMTP id w14so4404856wru.8
+ for <qemu-trivial@nongnu.org>; Thu, 27 Oct 2022 14:53:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Kwfk3gz7PC13LMB2IWM5ktSZ8KPzYZNjFGpc+j9dang=;
- b=TOp+3teF/valMu22OFyHulMSXZwx2syQYPl2darOTgbqNBmlNFVbcV5zxq5sKJ7EFN
- 9+uVVpiuwYE001Y8AIbUsnmINIXLbn2QnBV4hqCwdUH6TbUB+HTnl4laQ8FahVmN8BZy
- +Hv2RLCMuso1UAGaW4maUV/6iaMIzCUMnqjd6Ro5AfK5XYyR3G4wqwtslwY/cJAGVL4Q
- EJ2utOYUCeIhppScKbnmvHhKVa6D1CLhE+eED5OtJ655ogxpgqcgNWmxsyz3t8wB6GB0
- VKo1KPNieVgBJQJne2cLV37XSJ78w8JQ2MvtL/bB/zu4hc/7E2ybsxZf80BN3vqXpJJ/
- TGSg==
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/gR4v2T1q4sZL6MEvxezMFInQdUFeiDMJM3BIOJJCDM=;
+ b=r3caRZCdhsp0V1nvkI25sWXaiCHfko1CS4P001TX7YaRzxcBWr06jZar302Kr9QqAF
+ Xm+OzeoQ4BUQ3GJA3aSF4QnCjLPccyOqmkp48VJe5st8vnzH1QGnwc2WKZLIAAjCr0Go
+ wpmxTqYcQsgiFfJCe9uLhmn2acbYj3wrA7aJkunu9EtN1VEgnx3gAcBgxVGnWSYNMKDt
+ Os2ElaQqEZQlJouvwV7wCAtVlIBgwm+7QZQm3DXN9YY5DshX4RkFM7tmSaPQZP6CdqJ+
+ g+5cpjE+WiFjKwYm56FB8cqXc7NaFTayoM/hsFQBVzpPPXbqwPQdDn/WE3h5yc5gQSvB
+ YESw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Kwfk3gz7PC13LMB2IWM5ktSZ8KPzYZNjFGpc+j9dang=;
- b=NN4D6wdZ28Hd/HXe2Lw5tj7xhX3R/2qysS1wOtect5OTsYlQIC14M/AEdjq7r1U7Le
- 7Fx5OPvUfHKB6P8xQ09MzA5hZgt57IwNVxjS8ZtO/cgdpR3IIDpGBeOAkhEyr7X8BtbB
- UFi7xuf9WjcqtK301WKbMCYju57JZKqz4r25HMYzJlVSNNChP9UluOX8WV/9h5pF+f+q
- 7W/ZQXobvWFGhVnWi6upLm5C6EswE8P3YsH9y+PM/hOQ2FZo8DbjGJtNv8zkT+FT7yhw
- MnFn2PmG7YZEV/lulGGyvLg594KgOy0kJvUaLYet6Mq979Znj3XJAobUfCV2kuzbT2D+
- 0I8Q==
-X-Gm-Message-State: ACrzQf2ugJ7+hPWGHN7/VEZV6d97+SCzMAyAf/ZXnjsAFByBpndAIKBh
- jSLqrs4PBZMpecyaEYLkcP9g1ktQ9z4FfG4cmx2XIg==
-X-Google-Smtp-Source: AMsMyM7I9AsmV8XvX1JCWXghdrMnt2pIegOJgVYgnQ3w63ANiLIwLXIcwGlXVLUWLmJ6BLOagqeqXCPJDfmjSY2fyzU=
-X-Received: by 2002:a17:902:7c97:b0:17f:5abf:9450 with SMTP id
- y23-20020a1709027c9700b0017f5abf9450mr48734918pll.19.1666891468480; Thu, 27
- Oct 2022 10:24:28 -0700 (PDT)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/gR4v2T1q4sZL6MEvxezMFInQdUFeiDMJM3BIOJJCDM=;
+ b=pL4MkQj10Id3jttqHoyIy2BaP/QIgSvLtFyr04MGyjONe6r8D64YN58wDEi2HjB2vT
+ j5bAShlBpWAOGIqbFD7lZ3undhA8G+m6LEWr7OnP0cFWRg8hef1B/UEtFY8l281y/2Dh
+ yFULB/ycH2Zes1ML7mf2aw2QIN2bTeoxylq2cib9sxQkNX77ftg8Hrxy3iwjRRkJ5otq
+ Gh998f5B+yaUT/0BFpqoZZEXfuasQ+qj12d5dW8bcnOB69RAZQoB77mZMwpfnXGRiAAC
+ 5k5/U3uBADTAKVjOBFQupdy1DPyNQPXB75RNcfbzy0eJnls3+L7mY0z/akcnUdaYWAGj
+ 2oQQ==
+X-Gm-Message-State: ACrzQf19+nG9pv2BZ8jv8m663jt9Qd12Kj5eH8+gCObkkJF51A405Yfl
+ OY5SQxTmblV/xwbUb6B8mY/HDw==
+X-Google-Smtp-Source: AMsMyM7ueT9j/qdRqAdfro6Nd8qGi8Wmd/vFLJJM7D/Qz2ffDliiek/KQVclnw822/mlRgOMniGvpQ==
+X-Received: by 2002:adf:e19e:0:b0:22e:64de:39fa with SMTP id
+ az30-20020adfe19e000000b0022e64de39famr31886618wrb.369.1666907614065; 
+ Thu, 27 Oct 2022 14:53:34 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ l3-20020a05600c4f0300b003a5f3f5883dsm6249707wmq.17.2022.10.27.14.53.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 Oct 2022 14:53:33 -0700 (PDT)
+Message-ID: <49249e65-1ac5-7803-e617-5a2a774d3ec7@linaro.org>
+Date: Thu, 27 Oct 2022 23:53:32 +0200
 MIME-Version: 1.0
-References: <20221025235006.7215-1-philmd@linaro.org>
- <87bkpxl4a1.fsf@pond.sub.org>
- <CAFEAcA_WefVz8fefKTVq8vkiOkdXhrXkcwj4G6bSZPaFoRTSMg@mail.gmail.com>
- <87r0ytjie3.fsf@pond.sub.org>
-In-Reply-To: <87r0ytjie3.fsf@pond.sub.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Oct 2022 18:24:16 +0100
-Message-ID: <CAFEAcA_-udYfzGNzfARvK1G2ZVKCP+_spEUKa3THroRQ+9SMMQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] target: Rename headers using .def extension to .h.inc
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, 
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org, 
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.0
+Subject: Re: [PATCH 2/4] hw/i386/acpi-build: Resolve redundant attribute
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
+ Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, 
- Cornelia Huck <cohuck@redhat.com>, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62e.google.com
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20221026133110.91828-1-shentey@gmail.com>
+ <20221026133110.91828-3-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221026133110.91828-3-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -81,41 +85,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Oct 2022 17:24:31 -0000
+X-List-Received-Date: Thu, 27 Oct 2022 21:53:38 -0000
 
-On Thu, 27 Oct 2022 at 18:17, Markus Armbruster <armbru@redhat.com> wrote:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > On Thu, 27 Oct 2022 at 15:40, Markus Armbruster <armbru@redhat.com> wrote:
-> >> I wonder why we use any of .def, .h.inc, .inc.h, .c.inc, .inc.c.  Why
-> >> not .h and call it a day?  No need to configure each and every editor to
-> >> tread these as C code.
-> >
-> > It says "this isn't actually a header in the usual sense". That's
-> > useful for automated scripted checks (eg we don't want
-> > scripts/clean-header-guards.pl to add the standard #include header
-> > guards to this sort of file) and for humans (if you see one of these
-> > files included as part of the normal #include block at the top of
-> > a .c file that's probably a mistake; if you see it being used then
-> > you know there's likely multiple-inclusion shenanigans going on.)
->
-> scripts/clean-header-guards.pl needs exclude patterns anyway.
+On 26/10/22 15:31, Bernhard Beschow wrote:
+> The is_piix4 attribute is set once in one location and read once in
+> another. Doing both in one location allows for removing the attribute
+> altogether.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/i386/acpi-build.c | 20 ++++++--------------
+>   1 file changed, 6 insertions(+), 14 deletions(-)
 
-Yes, in theory instead of having a systematic convention for
-filenames we could instead give the files names that don't
-let you easily distinguish them from plain old header files and
-require every use like this to update clean-header-guards.pl,
-but that seems to me to be clearly worse than maintaining the
-filename convention that we already have.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> Comments would likely work better for humans than obscure naming
-> conventions.
->
-> Make them stylized, and they work for scripts, too.
-
-We already have a stylized convention, it's the filename...
-Comments inside the .inc file are also helpful, of course.
-
--- PMM
 
