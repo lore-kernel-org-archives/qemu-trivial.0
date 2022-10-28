@@ -1,71 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ooH7c-0005Vq-O0
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2022 00:37:32 -0400
+	id 1ooMi9-0006mA-6B
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2022 06:35:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ooH7b-0005VC-Av
- for qemu-trivial@nongnu.org; Fri, 28 Oct 2022 00:37:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ooH7Z-0007e7-SZ
- for qemu-trivial@nongnu.org; Fri, 28 Oct 2022 00:37:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666931847;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=HevUNu4VTikP1BMjmTn5V8YmUzjfRoIqIjueXrq84+E=;
- b=GP76/WvuQ/8r9Z1fZYsnG3J3NCvTy3t5cQX0nEUy9quZMGfpQeH6D6RIocJrhjyf48R6wG
- R9ANEczRBuhODjDpeOVCcXZPUJGQtItnEG6PCyrRPii6Ne0CZlyXn3K0yOstC/pmYpaoWa
- 4MErWRiCmpa2q6v/xh+I1yvhK0kTa50=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-640-DA71Fa3MMBKhJn64oNvr3g-1; Fri, 28 Oct 2022 00:37:23 -0400
-X-MC-Unique: DA71Fa3MMBKhJn64oNvr3g-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 99AE63C0D86A;
- Fri, 28 Oct 2022 04:37:22 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.195.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D3D77492B16;
- Fri, 28 Oct 2022 04:37:15 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C171721E6921; Fri, 28 Oct 2022 06:37:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org,
- David Hildenbrand <david@redhat.com>,  Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>,  Thomas Huth <thuth@redhat.com>,
- qemu-s390x@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,  Cornelia Huck <cohuck@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH 0/3] target: Rename headers using .def extension to .h.inc
-References: <20221025235006.7215-1-philmd@linaro.org>
- <87bkpxl4a1.fsf@pond.sub.org>
- <CAFEAcA_WefVz8fefKTVq8vkiOkdXhrXkcwj4G6bSZPaFoRTSMg@mail.gmail.com>
- <87r0ytjie3.fsf@pond.sub.org>
- <CAFEAcA_-udYfzGNzfARvK1G2ZVKCP+_spEUKa3THroRQ+9SMMQ@mail.gmail.com>
-Date: Fri, 28 Oct 2022 06:37:13 +0200
-In-Reply-To: <CAFEAcA_-udYfzGNzfARvK1G2ZVKCP+_spEUKa3THroRQ+9SMMQ@mail.gmail.com>
- (Peter Maydell's message of "Thu, 27 Oct 2022 18:24:16 +0100")
-Message-ID: <87pmecimx2.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1ooMi7-0006lg-E4; Fri, 28 Oct 2022 06:35:35 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1ooMi5-0001jN-Pf; Fri, 28 Oct 2022 06:35:35 -0400
+Received: by mail-ed1-x532.google.com with SMTP id a5so7212676edb.11;
+ Fri, 28 Oct 2022 03:35:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sjyyw6XSUvwVzBhL8WZKkTOeS8jyps+AR2UJlYWQ3zA=;
+ b=ZdygQ7GZAFpUsMCLjc1nqC0+GDRsdXWukUMqPXF63SKq7nrUGi6BrQhuLv+84u97M5
+ etD6o8asQCsdcvVnvTY4dYvd3AF1HecC9GRZ6HojRdRhdmNR0iv8gVh/aRT6a1gUSU8E
+ ST4DW1EnG6KBsYeCR7Tf/JcJgTj4SFvJIc89Sh1B5UX6HW62ntPHTjQEe9F97pFKdixM
+ Q/U5GEsGkX7psYa/swxY9wk8NUYGX1jvXHCGricw/WCuldb1Vug9qikG674/Ot3/mf0y
+ FA1HA6BOWXyjcKLiTMi47OuTMCtaecBKRY1Ejr+7Ygm3LCTwbc+jv6MnM+z/5wHgzb39
+ 2wgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sjyyw6XSUvwVzBhL8WZKkTOeS8jyps+AR2UJlYWQ3zA=;
+ b=5TORlt8TpbOgsljMzO92H6bNTYdjZXkC1u+SA5QOjiGOW615jFL066dZVkt2No0JWC
+ ajB0YMszsiyuAMrvv6AV7L7hmfArnssqyIraRiQ3jzrPTZZO3rvzNnsWTJVRvnVpC1y+
+ L19V953RQGE1WR0b+WEtBQ6R58BAN4AO2LPiGDWYIKjkJr3kx5de+N6Czjx+PXKpxwru
+ AzR9uLEU4LjCRmN/yx2qZl5hU8emqVO0YkY44GMHnqH8+dgd16qx/7sme0okJdbGiI43
+ 0Ngp0dAsdSLicXxzP2uNvUlopPHeQW7maDZ9qMbNZZRWto2UyJcihTdlIpu6tSmeLDIc
+ fErA==
+X-Gm-Message-State: ACrzQf3kxHbsSKV4nWhmQPwqCxvwSoD6RX646RC02zFvSzodhK31XDFo
+ PCct4Y4zCIuk0Imi5s2ZeAfYrmhyy9I=
+X-Google-Smtp-Source: AMsMyM7FlzSUqRxrHkPo5Va1RZIhnkJoqBD4tizYoXfci8rmMdqaWukxF+zLFoV1uIcdVwB1/HtceQ==
+X-Received: by 2002:a05:6402:40d0:b0:462:7b99:d424 with SMTP id
+ z16-20020a05640240d000b004627b99d424mr9809679edb.62.1666953331765; 
+ Fri, 28 Oct 2022 03:35:31 -0700 (PDT)
+Received: from osoxes.fritz.box
+ (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
+ [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
+ by smtp.gmail.com with ESMTPSA id
+ p1-20020a17090653c100b0078128c89439sm2050527ejo.6.2022.10.28.03.35.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 Oct 2022 03:35:31 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v2 3/3] hw/i386/acpi-build: Resolve north rather than south
+ bridges
+Date: Fri, 28 Oct 2022 12:34:19 +0200
+Message-Id: <20221028103419.93398-4-shentey@gmail.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221028103419.93398-1-shentey@gmail.com>
+References: <20221028103419.93398-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.515,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,57 +86,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Oct 2022 04:37:31 -0000
+X-List-Received-Date: Fri, 28 Oct 2022 10:35:36 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+The code currently assumes Q35 iff ICH9 and i440fx iff PIIX. Now that more
+AML generation has been moved into the south bridges and since the
+machines define themselves primarily through their north bridges, let's
+switch to resolving the north bridges for AML generation instead. This
+also allows for easier experimentation with different south bridges in
+the "pc" machine, e.g. with PIIX4 and VT82xx.
 
-> On Thu, 27 Oct 2022 at 18:17, Markus Armbruster <armbru@redhat.com> wrote:
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->> > On Thu, 27 Oct 2022 at 15:40, Markus Armbruster <armbru@redhat.com> wrote:
->> >> I wonder why we use any of .def, .h.inc, .inc.h, .c.inc, .inc.c.  Why
->> >> not .h and call it a day?  No need to configure each and every editor to
->> >> tread these as C code.
->> >
->> > It says "this isn't actually a header in the usual sense". That's
->> > useful for automated scripted checks (eg we don't want
->> > scripts/clean-header-guards.pl to add the standard #include header
->> > guards to this sort of file) and for humans (if you see one of these
->> > files included as part of the normal #include block at the top of
->> > a .c file that's probably a mistake; if you see it being used then
->> > you know there's likely multiple-inclusion shenanigans going on.)
->>
->> scripts/clean-header-guards.pl needs exclude patterns anyway.
->
-> Yes, in theory instead of having a systematic convention for
-> filenames we could instead give the files names that don't
-> let you easily distinguish them from plain old header files and
-> require every use like this to update clean-header-guards.pl,
-> but that seems to me to be clearly worse than maintaining the
-> filename convention that we already have.
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/i386/acpi-build.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-Handle that just like for plain .h: when you re-run the script, you fix
-its complaints either by fixing the header or by adding it to the
-exclude pattern.
-
->> Comments would likely work better for humans than obscure naming
->> conventions.
->>
->> Make them stylized, and they work for scripts, too.
->
-> We already have a stylized convention, it's the filename...
-
-True.  But its opaque both for tools (editors mostly) and humans.  Tools
-need to be configured, and humans need to be taught.
-
-Moreover, we don't have *a* stylized convention, we have *two*: funny
-filenames (several patterns, but that's fixable), and exclude patterns.
-
-> Comments inside the .inc file are also helpful, of course.
-
-Let's add a third!  Stylized comments!
-
-I'll shut up now :)
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 73d8a59737..d9eaa5fc4d 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -60,6 +60,7 @@
+ #include "hw/i386/fw_cfg.h"
+ #include "hw/i386/ich9.h"
+ #include "hw/pci/pci_bus.h"
++#include "hw/pci-host/i440fx.h"
+ #include "hw/pci-host/q35.h"
+ #include "hw/i386/x86-iommu.h"
+ 
+@@ -1322,8 +1323,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+            AcpiPmInfo *pm, AcpiMiscInfo *misc,
+            Range *pci_hole, Range *pci_hole64, MachineState *machine)
+ {
+-    Object *piix = object_resolve_type_unambiguous(TYPE_PIIX4_PM);
+-    Object *lpc = object_resolve_type_unambiguous(TYPE_ICH9_LPC_DEVICE);
++    Object *i440fx = object_resolve_type_unambiguous(TYPE_I440FX_PCI_HOST_BRIDGE);
++    Object *q35 = object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVICE);
+     CrsRangeEntry *entry;
+     Aml *dsdt, *sb_scope, *scope, *dev, *method, *field, *pkg, *crs;
+     CrsRangeSet crs_range_set;
+@@ -1344,13 +1345,13 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+     AcpiTable table = { .sig = "DSDT", .rev = 1, .oem_id = x86ms->oem_id,
+                         .oem_table_id = x86ms->oem_table_id };
+ 
+-    assert(!!piix != !!lpc);
++    assert(!!i440fx != !!q35);
+ 
+     acpi_table_begin(&table, table_data);
+     dsdt = init_aml_allocator();
+ 
+     build_dbg_aml(dsdt);
+-    if (piix) {
++    if (i440fx) {
+         sb_scope = aml_scope("_SB");
+         dev = aml_device("PCI0");
+         aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
+@@ -1363,7 +1364,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+             build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
+         }
+         build_piix4_pci0_int(dsdt);
+-    } else if (lpc) {
++    } else if (q35) {
+         sb_scope = aml_scope("_SB");
+         dev = aml_device("PCI0");
+         aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
+-- 
+2.38.1
 
 
