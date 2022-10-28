@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ooMi9-0006mA-6B
+	id 1ooMi9-0006mS-KJ
 	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2022 06:35:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ooMi7-0006lg-E4; Fri, 28 Oct 2022 06:35:35 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ id 1ooMi4-0006l3-G9; Fri, 28 Oct 2022 06:35:32 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1ooMi5-0001jN-Pf; Fri, 28 Oct 2022 06:35:35 -0400
-Received: by mail-ed1-x532.google.com with SMTP id a5so7212676edb.11;
- Fri, 28 Oct 2022 03:35:33 -0700 (PDT)
+ id 1ooMi2-0001hx-Pt; Fri, 28 Oct 2022 06:35:32 -0400
+Received: by mail-ej1-x631.google.com with SMTP id k2so11990633ejr.2;
+ Fri, 28 Oct 2022 03:35:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sjyyw6XSUvwVzBhL8WZKkTOeS8jyps+AR2UJlYWQ3zA=;
- b=ZdygQ7GZAFpUsMCLjc1nqC0+GDRsdXWukUMqPXF63SKq7nrUGi6BrQhuLv+84u97M5
- etD6o8asQCsdcvVnvTY4dYvd3AF1HecC9GRZ6HojRdRhdmNR0iv8gVh/aRT6a1gUSU8E
- ST4DW1EnG6KBsYeCR7Tf/JcJgTj4SFvJIc89Sh1B5UX6HW62ntPHTjQEe9F97pFKdixM
- Q/U5GEsGkX7psYa/swxY9wk8NUYGX1jvXHCGricw/WCuldb1Vug9qikG674/Ot3/mf0y
- FA1HA6BOWXyjcKLiTMi47OuTMCtaecBKRY1Ejr+7Ygm3LCTwbc+jv6MnM+z/5wHgzb39
- 2wgg==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=x2wvle4IUZUyCZpPS19a02GuZUVBZifORD3IMu+5UOA=;
+ b=oOJ4l5UNzQf3kLMyvTdC55nZ7uqKtPOCcTAncZQDuT//ugQLqDBkrplWgdEhGViZZm
+ 06KkuZEyHylqPi2s9E55zUjIU12i+ycqgprspPFQjD9nuZivm2xI/wGBhnEc3Yce3a2K
+ L4lBJmeUltI+i0ke6Q8xyToGr+olEBr5W/co+8GTr/NbW2yeE98ElMdfVPEf3FkROx5v
+ gha4TIMfJ2lI3RSM/AJU21P0/8Gfg+kgJLB3LFEA/wh5ZC01RpTFBOIpXanGyaI7uwCi
+ ZhE2ftloYOnxu9yhod3uPIdwunow60yDv5sy1vJy7r68FKK4WxDJEzLFPyd1qhrHAvWG
+ /SQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sjyyw6XSUvwVzBhL8WZKkTOeS8jyps+AR2UJlYWQ3zA=;
- b=5TORlt8TpbOgsljMzO92H6bNTYdjZXkC1u+SA5QOjiGOW615jFL066dZVkt2No0JWC
- ajB0YMszsiyuAMrvv6AV7L7hmfArnssqyIraRiQ3jzrPTZZO3rvzNnsWTJVRvnVpC1y+
- L19V953RQGE1WR0b+WEtBQ6R58BAN4AO2LPiGDWYIKjkJr3kx5de+N6Czjx+PXKpxwru
- AzR9uLEU4LjCRmN/yx2qZl5hU8emqVO0YkY44GMHnqH8+dgd16qx/7sme0okJdbGiI43
- 0Ngp0dAsdSLicXxzP2uNvUlopPHeQW7maDZ9qMbNZZRWto2UyJcihTdlIpu6tSmeLDIc
- fErA==
-X-Gm-Message-State: ACrzQf3kxHbsSKV4nWhmQPwqCxvwSoD6RX646RC02zFvSzodhK31XDFo
- PCct4Y4zCIuk0Imi5s2ZeAfYrmhyy9I=
-X-Google-Smtp-Source: AMsMyM7FlzSUqRxrHkPo5Va1RZIhnkJoqBD4tizYoXfci8rmMdqaWukxF+zLFoV1uIcdVwB1/HtceQ==
-X-Received: by 2002:a05:6402:40d0:b0:462:7b99:d424 with SMTP id
- z16-20020a05640240d000b004627b99d424mr9809679edb.62.1666953331765; 
- Fri, 28 Oct 2022 03:35:31 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=x2wvle4IUZUyCZpPS19a02GuZUVBZifORD3IMu+5UOA=;
+ b=STSA4ONKL/VTECPcPaFp2qD48zvDGiCRHJA9nFojXOPlgqzUqdcrEZrX3e58iPcGtJ
+ B8Vc89sd3rVsArjQ10KGmuhfoNAggNHZvUzcif5dZ7ZduuzPf6+5R87MGYLb97ZFJ5tD
+ gYnyKikLZOaRP/+XSz1bs/9zJooM4LxJuhGKcwfz+3C5Jf4pYO7AC5frlb54lVbQi2qi
+ wEcWsDATHi36OAOv4cYMfh+gtSPW2DQqtP07p99A+KUYoBnkUZdW8thR4scFlPyd/aB/
+ 3H2klBUgdb782h9rj2twzRrZkArlfFgKb/o65OLLKC1QfZsm6KcZvlgyI4HTG7qmg2hn
+ dBhw==
+X-Gm-Message-State: ACrzQf0PMXrelQ0vpKLkYpPUmP9c0+nQ7b7ET0g4WSBMDGqN5wxTfwXV
+ 7NewBXB/Li+7K/7JbAMMMM5anmmjy5Q=
+X-Google-Smtp-Source: AMsMyM6A2aEOUMKAQceL29Kt19ZR7ZHY2fO6Xm5ljPmkDSYgaVUqz8ZduqvSq5hsV0JSs+QVmQQshQ==
+X-Received: by 2002:a17:907:75ef:b0:7aa:3373:e7d8 with SMTP id
+ jz15-20020a17090775ef00b007aa3373e7d8mr20908236ejc.231.1666953328469; 
+ Fri, 28 Oct 2022 03:35:28 -0700 (PDT)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- p1-20020a17090653c100b0078128c89439sm2050527ejo.6.2022.10.28.03.35.30
+ p1-20020a17090653c100b0078128c89439sm2050527ejo.6.2022.10.28.03.35.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Oct 2022 03:35:31 -0700 (PDT)
+ Fri, 28 Oct 2022 03:35:28 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -56,17 +55,16 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Eduardo Habkost <eduardo@habkost.net>,
  "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <ani@anisinha.ca>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 3/3] hw/i386/acpi-build: Resolve north rather than south
+Subject: [PATCH v2 0/3] hw/i386: Cleanup AML generation for north and south
  bridges
-Date: Fri, 28 Oct 2022 12:34:19 +0200
-Message-Id: <20221028103419.93398-4-shentey@gmail.com>
+Date: Fri, 28 Oct 2022 12:34:16 +0200
+Message-Id: <20221028103419.93398-1-shentey@gmail.com>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221028103419.93398-1-shentey@gmail.com>
-References: <20221028103419.93398-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x532.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,69 +84,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Oct 2022 10:35:36 -0000
+X-List-Received-Date: Fri, 28 Oct 2022 10:35:34 -0000
 
-The code currently assumes Q35 iff ICH9 and i440fx iff PIIX. Now that more
-AML generation has been moved into the south bridges and since the
-machines define themselves primarily through their north bridges, let's
-switch to resolving the north bridges for AML generation instead. This
-also allows for easier experimentation with different south bridges in
-the "pc" machine, e.g. with PIIX4 and VT82xx.
-
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/i386/acpi-build.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 73d8a59737..d9eaa5fc4d 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -60,6 +60,7 @@
- #include "hw/i386/fw_cfg.h"
- #include "hw/i386/ich9.h"
- #include "hw/pci/pci_bus.h"
-+#include "hw/pci-host/i440fx.h"
- #include "hw/pci-host/q35.h"
- #include "hw/i386/x86-iommu.h"
- 
-@@ -1322,8 +1323,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-            AcpiPmInfo *pm, AcpiMiscInfo *misc,
-            Range *pci_hole, Range *pci_hole64, MachineState *machine)
- {
--    Object *piix = object_resolve_type_unambiguous(TYPE_PIIX4_PM);
--    Object *lpc = object_resolve_type_unambiguous(TYPE_ICH9_LPC_DEVICE);
-+    Object *i440fx = object_resolve_type_unambiguous(TYPE_I440FX_PCI_HOST_BRIDGE);
-+    Object *q35 = object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVICE);
-     CrsRangeEntry *entry;
-     Aml *dsdt, *sb_scope, *scope, *dev, *method, *field, *pkg, *crs;
-     CrsRangeSet crs_range_set;
-@@ -1344,13 +1345,13 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-     AcpiTable table = { .sig = "DSDT", .rev = 1, .oem_id = x86ms->oem_id,
-                         .oem_table_id = x86ms->oem_table_id };
- 
--    assert(!!piix != !!lpc);
-+    assert(!!i440fx != !!q35);
- 
-     acpi_table_begin(&table, table_data);
-     dsdt = init_aml_allocator();
- 
-     build_dbg_aml(dsdt);
--    if (piix) {
-+    if (i440fx) {
-         sb_scope = aml_scope("_SB");
-         dev = aml_device("PCI0");
-         aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
-@@ -1363,7 +1364,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-             build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
-         }
-         build_piix4_pci0_int(dsdt);
--    } else if (lpc) {
-+    } else if (q35) {
-         sb_scope = aml_scope("_SB");
-         dev = aml_device("PCI0");
-         aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
--- 
-2.38.1
-
+This series extends Igor's "x86: clean up ACPI PCI code part 2" series, doi=
+ng=0D
+some further cleanup. It also simplifies experimentation with different sou=
+th=0D
+bridges (PIIX4 and VT82xx) in the pc machine [1].=0D
+=0D
+Testing done:=0D
+* `mache check`=0D
+* Start a live CD using "pc" and "q35" machine types=0D
+=0D
+v2:=0D
+* Rebase onto https://patchew.org/QEMU/20221017102146.2254096-1-imammedo@re=
+dhat.com/=0D
+* Squash and rework patches 3 and 4=0D
+=0D
+[1] https://github.com/shentok/qemu/tree/pc-via=0D
+=0D
+Based-on: <20221017102146.2254096-1-imammedo@redhat.com>=0D
+=0D
+Bernhard Beschow (3):=0D
+  hw/i386/acpi-build: Remove unused struct=0D
+  hw/i386/acpi-build: Resolve redundant attribute=0D
+  hw/i386/acpi-build: Resolve north rather than south bridges=0D
+=0D
+ hw/i386/acpi-build.c | 28 +++++++---------------------=0D
+ 1 file changed, 7 insertions(+), 21 deletions(-)=0D
+=0D
+-- =0D
+2.38.1=0D
+=0D
 
