@@ -1,80 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ooAs0-0007hx-EZ
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Oct 2022 17:57:03 -0400
+	id 1ooH7c-0005Vq-O0
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2022 00:37:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooAry-0007gS-GH
- for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 17:56:58 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ooArw-0001Sd-Qm
- for qemu-trivial@nongnu.org; Thu, 27 Oct 2022 17:56:58 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- fn7-20020a05600c688700b003b4fb113b86so2263276wmb.0
- for <qemu-trivial@nongnu.org>; Thu, 27 Oct 2022 14:56:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=LrEvYQ/d6pQCn55yDPGCE1ADzGSM2bZdesm7hXoQz5g=;
- b=VRz5kKOLFB2bZ6raLT4xx22zl1du6yoFzrnIuQEGfYL7Pl0jBrAVJDyFmOQZ0QlJvg
- MpUB56Yt0v4gFF4QMo1U3YI7vVy0VmQuxKVh2MJHud5GnMl7ePqHsMCVEXtnEP5e+3zT
- WtYtOyQkznA62EcEdbPrEUs2qzMisSlFeHUBvswg095ojdKRXU7iheiWnEkfmjse/nPW
- mdmYEr2TGQYy74TMaybM+V80MpeuxpuH/f2OaIT/8oNvf3dSBXZhRN+m8Rlfz8zbRTNq
- we0MXWsf6XC9c9NV6/cHWIfZFFxjgmx9m9qyz5oz2m1Kdk6HHjnEmvDBLjfILNYwAeYG
- rX/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LrEvYQ/d6pQCn55yDPGCE1ADzGSM2bZdesm7hXoQz5g=;
- b=wN9DI81U0tWzCUUIrlbScyHWuOsrVUWxH7Bm9oM2xpQPIOnvx/Gt/PnnoNZwbDKq4a
- 0WdLflipAJ5YmE5QLOZ0YIRaaDC6Coi5yJr/cEW3hdiN3HgQDHSSVy/ix0K3ZX8huDcO
- 4zlHZzEqQIpqw12jQewsBf4ATjXG4z289NJBkDdW+wnpdH1mP6j4BlAo0dnYDaU/aFq+
- NV0AVR2pSpQQ7iHoUfpV24duyr6UKjHg/34Sq9p4Cplp80fTKXQYWA9Tj2ow3kAXLQHL
- yzqH0GqN38MlELTb+/mRSIdLjCG+IcnJFr814ePoSHI8EierWUKi+sY5cbADDj0bmUEU
- H5rA==
-X-Gm-Message-State: ACrzQf2YL8NCSZkVSgWw4Extuefg5V4PLYT5RkXqOyI5v7NC7z+SmErg
- PtTXVelnAHiG/INB8/luKUZuyk8R6rUSrHey
-X-Google-Smtp-Source: AMsMyM5Ey2/SRoWEr+5AQ5QciRq6/SuG2U8O6SIjtTELV1KFSqJESP/XlcwhX3b6rf94qKTi6ASiFg==
-X-Received: by 2002:a7b:cb8d:0:b0:3cf:4969:9bc7 with SMTP id
- m13-20020a7bcb8d000000b003cf49699bc7mr7470429wmi.71.1666907815469; 
- Thu, 27 Oct 2022 14:56:55 -0700 (PDT)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- h9-20020a05600c350900b003b4935f04a4sm3314614wmq.5.2022.10.27.14.56.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Oct 2022 14:56:54 -0700 (PDT)
-Message-ID: <d8f9dd49-e06d-c0a3-056c-30600c0f7388@linaro.org>
-Date: Thu, 27 Oct 2022 23:56:52 +0200
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ooH7b-0005VC-Av
+ for qemu-trivial@nongnu.org; Fri, 28 Oct 2022 00:37:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ooH7Z-0007e7-SZ
+ for qemu-trivial@nongnu.org; Fri, 28 Oct 2022 00:37:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1666931847;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=HevUNu4VTikP1BMjmTn5V8YmUzjfRoIqIjueXrq84+E=;
+ b=GP76/WvuQ/8r9Z1fZYsnG3J3NCvTy3t5cQX0nEUy9quZMGfpQeH6D6RIocJrhjyf48R6wG
+ R9ANEczRBuhODjDpeOVCcXZPUJGQtItnEG6PCyrRPii6Ne0CZlyXn3K0yOstC/pmYpaoWa
+ 4MErWRiCmpa2q6v/xh+I1yvhK0kTa50=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-640-DA71Fa3MMBKhJn64oNvr3g-1; Fri, 28 Oct 2022 00:37:23 -0400
+X-MC-Unique: DA71Fa3MMBKhJn64oNvr3g-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 99AE63C0D86A;
+ Fri, 28 Oct 2022 04:37:22 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.195.118])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D3D77492B16;
+ Fri, 28 Oct 2022 04:37:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id C171721E6921; Fri, 28 Oct 2022 06:37:13 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ David Hildenbrand <david@redhat.com>,  Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>,  Thomas Huth <thuth@redhat.com>,
+ qemu-s390x@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,  Cornelia Huck <cohuck@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH 0/3] target: Rename headers using .def extension to .h.inc
+References: <20221025235006.7215-1-philmd@linaro.org>
+ <87bkpxl4a1.fsf@pond.sub.org>
+ <CAFEAcA_WefVz8fefKTVq8vkiOkdXhrXkcwj4G6bSZPaFoRTSMg@mail.gmail.com>
+ <87r0ytjie3.fsf@pond.sub.org>
+ <CAFEAcA_-udYfzGNzfARvK1G2ZVKCP+_spEUKa3THroRQ+9SMMQ@mail.gmail.com>
+Date: Fri, 28 Oct 2022 06:37:13 +0200
+In-Reply-To: <CAFEAcA_-udYfzGNzfARvK1G2ZVKCP+_spEUKa3THroRQ+9SMMQ@mail.gmail.com>
+ (Peter Maydell's message of "Thu, 27 Oct 2022 18:24:16 +0100")
+Message-ID: <87pmecimx2.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.0
-Subject: Re: [PATCH 3/4] hw/i386/acpi-build: Resolve PIIX ISA bridge rather
- than ACPI controller
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
- Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20221026133110.91828-1-shentey@gmail.com>
- <20221026133110.91828-4-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221026133110.91828-4-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.515,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,17 +78,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Oct 2022 21:56:58 -0000
+X-List-Received-Date: Fri, 28 Oct 2022 04:37:31 -0000
 
-On 26/10/22 15:31, Bernhard Beschow wrote:
-> Resolving the PIIX ISA bridge rather than the PIIX ACPI controller mirrors
-> the ICH9 code one line below.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/i386/acpi-build.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> On Thu, 27 Oct 2022 at 18:17, Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>> > On Thu, 27 Oct 2022 at 15:40, Markus Armbruster <armbru@redhat.com> wrote:
+>> >> I wonder why we use any of .def, .h.inc, .inc.h, .c.inc, .inc.c.  Why
+>> >> not .h and call it a day?  No need to configure each and every editor to
+>> >> tread these as C code.
+>> >
+>> > It says "this isn't actually a header in the usual sense". That's
+>> > useful for automated scripted checks (eg we don't want
+>> > scripts/clean-header-guards.pl to add the standard #include header
+>> > guards to this sort of file) and for humans (if you see one of these
+>> > files included as part of the normal #include block at the top of
+>> > a .c file that's probably a mistake; if you see it being used then
+>> > you know there's likely multiple-inclusion shenanigans going on.)
+>>
+>> scripts/clean-header-guards.pl needs exclude patterns anyway.
+>
+> Yes, in theory instead of having a systematic convention for
+> filenames we could instead give the files names that don't
+> let you easily distinguish them from plain old header files and
+> require every use like this to update clean-header-guards.pl,
+> but that seems to me to be clearly worse than maintaining the
+> filename convention that we already have.
+
+Handle that just like for plain .h: when you re-run the script, you fix
+its complaints either by fixing the header or by adding it to the
+exclude pattern.
+
+>> Comments would likely work better for humans than obscure naming
+>> conventions.
+>>
+>> Make them stylized, and they work for scripts, too.
+>
+> We already have a stylized convention, it's the filename...
+
+True.  But its opaque both for tools (editors mostly) and humans.  Tools
+need to be configured, and humans need to be taught.
+
+Moreover, we don't have *a* stylized convention, we have *two*: funny
+filenames (several patterns, but that's fixable), and exclude patterns.
+
+> Comments inside the .inc file are also helpful, of course.
+
+Let's add a third!  Stylized comments!
+
+I'll shut up now :)
 
 
