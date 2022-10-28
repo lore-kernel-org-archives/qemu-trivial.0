@@ -1,69 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ooN4G-0002Em-92
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2022 06:58:28 -0400
+	id 1ooS1J-0005Ls-7c
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2022 12:15:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1ooN4D-00027J-WF
- for qemu-trivial@nongnu.org; Fri, 28 Oct 2022 06:58:26 -0400
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1ooS13-0005HZ-0V; Fri, 28 Oct 2022 12:15:35 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1ooN48-0004yy-64
- for qemu-trivial@nongnu.org; Fri, 28 Oct 2022 06:58:21 -0400
-Received: by mail-qk1-x731.google.com with SMTP id a5so3136990qkl.6
- for <qemu-trivial@nongnu.org>; Fri, 28 Oct 2022 03:58:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=li8ne5+9LiRWxfVk4YkaTUHE07vjTVEDZzOBuh12RyU=;
- b=uAcViUlhatpU/E2iq7LdU2tO0j4TPugvfkEmHi7tRkjxN+s4VnXpMwG8G+T7UX0+fI
- Gtm09MznDkPhwMZsc7W43+IRl83EW9+w7i1/BiHZONxzYEqNad4nz5/T3zwVrC8Ldeq+
- FskFLSwn0d24TKO1SP6OwciF3uUYV5hskKjdJVl5D+H2C1UQt+b2uQvOarV+WsPrzrg7
- K8foYwLYuql1oQ9zZ9qCKuvAFrh4yMAuWFGCR/TjquRfPZ/l0xiS6c70Q/hRJMilQF2N
- k9SdaaSBln0Rs91SnAs90g585DdFJ3DJ70cd78Jt8h5mHO4Mdh++sJD7ZgnCsWk7gvhX
- ihfQ==
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1ooS0z-0007Pd-OF; Fri, 28 Oct 2022 12:15:27 -0400
+Received: by mail-wr1-x430.google.com with SMTP id k8so7243516wrh.1;
+ Fri, 28 Oct 2022 09:15:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=/9hq9o6NxFEyg2gpljDDY2TxXkQ6qvo5TmUtxPOEhWo=;
+ b=D7gnQY2a1S4Z2hAEFhnDbtm4BEnmZF9MQ6F6q7SYHDqCOVAFlMpWvQ3CK6HeXbzE70
+ T0Ccq2cN0yS1+BFy8jbe/7gRipNsGtaycP+IRXdL9AOsWs0eiSIgkV7QH2mRZzNnc6MX
+ 501xoT9b9mV+wxzzOiR1zJvHIbx17BfLrXg0OMscg77zf3PEJsJn7O0Ijr18pgUUPhCq
+ a3oC2kom22gfZY6/SSTIS1bODyXBOiEk3RRN718oPKQVTKdQf1ky9Yfywg1r+ONwA3m0
+ 2R7ukXeRmAJSQraVV/mbTE6x1xJG/ASa4gujiT0BAY7GyByQM0vg8wB2FXYp0+P0NI36
+ QedA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=li8ne5+9LiRWxfVk4YkaTUHE07vjTVEDZzOBuh12RyU=;
- b=AGeBzWxTg1N3mYWmSgDK2Ho4c1os0IiwZjVcGH7T68N3h9Ir8H/lSW0vnf3rV/EecB
- soBg8OKtDWzWcY3lge9Cdv8khCldk3LImF5mMreSAM9nbsv3DikuTJxN7VrB2MsJiBIu
- YkqRH5D+vQui/Y9kz5KrTSQHSMT1FM+7ETBfc3SVhk/S0x+1LN36qANfTahrLNSwMUtQ
- OdIneMhPGYZ8RK5rwzkKFEU5Syy8lGqot6MVWmJpxtwe/vSccQ2Yh+OfrewJq8cXnK0R
- I75BNmgVDO/CB8ZHVJTGOPbWtpjlRzpf0E2lCygwVksb2xEen1kAfZil11jOSzhB1wFV
- bnAQ==
-X-Gm-Message-State: ACrzQf28tPc5SpCEJCyklJ0hPO29xBJHQk9U4mYz3ejq0T6AKlRKC/VB
- xSceL7XI6f5CFjLBlD57SmO42IHzS91AWLVNfYKTdw==
-X-Google-Smtp-Source: AMsMyM6d6OPFw8WOBM53MQ7gWsqzGEK8Jfyii8T4aiKPKNwQU4aul7PGjbi1KzaVhlt7QyDLfK+9fVof2yDyizSV5Xs=
-X-Received: by 2002:a05:620a:294f:b0:6cf:920e:4f3a with SMTP id
- n15-20020a05620a294f00b006cf920e4f3amr37810584qkp.66.1666954698705; Fri, 28
- Oct 2022 03:58:18 -0700 (PDT)
-MIME-Version: 1.0
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=/9hq9o6NxFEyg2gpljDDY2TxXkQ6qvo5TmUtxPOEhWo=;
+ b=wQrg7YR0IHJ5l/C3qFZN+cewb8Nh9QRRn/SukR9PiE877d2zuQcOukcxvLns9A3IfO
+ zlsm7FP9KOMbOfikFxsp/WaYDb8BWaUMJABygg4btyZGr8KYTp6cc3gM6YW+xg4knVFO
+ J6k94HPN3y1J8iSLV/u46rs+LlJcLVzxKplojuUbIYioPckuR9VelDYTN1xuBuRvDFwr
+ ZOVMsmjBNHVPRGMrOgty6qJkzue8lZ9VekLDTA0NKR1WBpYxlDXOX2iL6zq7igD0zo85
+ slgjIASN3aPc9RQOnBkvCggr9GLYJKUb/tCeUhM1cHItx1jnxxV3ATdKIpr3wPvGkhhZ
+ zNLA==
+X-Gm-Message-State: ACrzQf3DbkQblI5HLjSMidnmoZkVW2pgIbLA5ug+UP4j8RaUJQ91zFL9
+ y4otY2qNiT4sbGyQJONteLY=
+X-Google-Smtp-Source: AMsMyM7M0C5lr+VBbRCJb640hcEkiqHTECVDOFy47xxPGp8ySfAWSo33i5o2fHDiFRSUGQLsC0cGvw==
+X-Received: by 2002:a5d:4143:0:b0:236:4b40:bbd1 with SMTP id
+ c3-20020a5d4143000000b002364b40bbd1mr99403wrq.26.1666973722944; 
+ Fri, 28 Oct 2022 09:15:22 -0700 (PDT)
+Received: from ?IPv6:::1?
+ (p200300faaf0bb200bd2f89c083d9cbe6.dip0.t-ipconnect.de.
+ [2003:fa:af0b:b200:bd2f:89c0:83d9:cbe6])
+ by smtp.gmail.com with ESMTPSA id
+ a9-20020adffb89000000b0022cc0a2cbecsm3993633wrr.15.2022.10.28.09.15.21
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 28 Oct 2022 09:15:21 -0700 (PDT)
+Date: Fri, 28 Oct 2022 16:15:18 +0000
+From: B <shentey@gmail.com>
+To: Ani Sinha <ani@anisinha.ca>
+CC: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_3/3=5D_hw/i386/acpi-build=3A_?=
+ =?US-ASCII?Q?Resolve_north_rather_than_south_bridges?=
+In-Reply-To: <CAARzgwyMiEQUc=DEd5iJb=hgsoMn8tQaNeOnzKAG8qaxWhdRYw@mail.gmail.com>
 References: <20221028103419.93398-1-shentey@gmail.com>
  <20221028103419.93398-4-shentey@gmail.com>
-In-Reply-To: <20221028103419.93398-4-shentey@gmail.com>
-From: Ani Sinha <ani@anisinha.ca>
-Date: Fri, 28 Oct 2022 16:28:07 +0530
-Message-ID: <CAARzgwyMiEQUc=DEd5iJb=hgsoMn8tQaNeOnzKAG8qaxWhdRYw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] hw/i386/acpi-build: Resolve north rather than
- south bridges
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Igor Mammedov <imammedo@redhat.com>, qemu-trivial@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: none client-ip=2607:f8b0:4864:20::731;
- envelope-from=ani@anisinha.ca; helo=mail-qk1-x731.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ <CAARzgwyMiEQUc=DEd5iJb=hgsoMn8tQaNeOnzKAG8qaxWhdRYw@mail.gmail.com>
+Message-ID: <8EA83461-41EC-40E1-AD22-C4107216870B@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,75 +87,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Oct 2022 10:58:26 -0000
+X-List-Received-Date: Fri, 28 Oct 2022 16:15:42 -0000
 
-On Fri, Oct 28, 2022 at 4:05 PM Bernhard Beschow <shentey@gmail.com> wrote:
->
-> The code currently assumes Q35 iff ICH9 and i440fx iff PIIX. Now that more
-> AML generation has been moved into the south bridges and since the
-> machines define themselves primarily through their north bridges, let's
-> switch to resolving the north bridges for AML generation instead. This
-> also allows for easier experimentation with different south bridges in
-> the "pc" machine, e.g. with PIIX4 and VT82xx.
 
-Unfortunately this patch does not apply on the latest master. Also the
-code seems to be off. Can you rebase and rework the patch?
 
+Am 28=2E Oktober 2022 10:58:07 UTC schrieb Ani Sinha <ani@anisinha=2Eca>:
+>On Fri, Oct 28, 2022 at 4:05 PM Bernhard Beschow <shentey@gmail=2Ecom> wr=
+ote:
+>>
+>> The code currently assumes Q35 iff ICH9 and i440fx iff PIIX=2E Now that=
+ more
+>> AML generation has been moved into the south bridges and since the
+>> machines define themselves primarily through their north bridges, let's
+>> switch to resolving the north bridges for AML generation instead=2E Thi=
+s
+>> also allows for easier experimentation with different south bridges in
+>> the "pc" machine, e=2Eg=2E with PIIX4 and VT82xx=2E
 >
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->  hw/i386/acpi-build.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
+>Unfortunately this patch does not apply on the latest master=2E Also the
+>code seems to be off=2E Can you rebase and rework the patch?
+
+I've rebased onto Igor's series to avoid merge conflicts, that's why it do=
+esn't apply onto master=2E It applies fine there [1]=2E
+
+The first two patches of this series apply fine on both branches, so could=
+ possibly be pulled already if Igor's series doesn't make it for 7=2E2=2E
+
+Best regards,
+Bernhard
+
+[1] https://github=2Ecom/patchew-project/qemu/commits/patchew/202210281034=
+19=2E93398-1-shentey%40gmail=2Ecom
 >
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 73d8a59737..d9eaa5fc4d 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -60,6 +60,7 @@
->  #include "hw/i386/fw_cfg.h"
->  #include "hw/i386/ich9.h"
->  #include "hw/pci/pci_bus.h"
-> +#include "hw/pci-host/i440fx.h"
->  #include "hw/pci-host/q35.h"
->  #include "hw/i386/x86-iommu.h"
->
-> @@ -1322,8 +1323,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->             AcpiPmInfo *pm, AcpiMiscInfo *misc,
->             Range *pci_hole, Range *pci_hole64, MachineState *machine)
->  {
-> -    Object *piix = object_resolve_type_unambiguous(TYPE_PIIX4_PM);
-> -    Object *lpc = object_resolve_type_unambiguous(TYPE_ICH9_LPC_DEVICE);
-> +    Object *i440fx = object_resolve_type_unambiguous(TYPE_I440FX_PCI_HOST_BRIDGE);
-> +    Object *q35 = object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVICE);
->      CrsRangeEntry *entry;
->      Aml *dsdt, *sb_scope, *scope, *dev, *method, *field, *pkg, *crs;
->      CrsRangeSet crs_range_set;
-> @@ -1344,13 +1345,13 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->      AcpiTable table = { .sig = "DSDT", .rev = 1, .oem_id = x86ms->oem_id,
->                          .oem_table_id = x86ms->oem_table_id };
->
-> -    assert(!!piix != !!lpc);
-> +    assert(!!i440fx != !!q35);
->
->      acpi_table_begin(&table, table_data);
->      dsdt = init_aml_allocator();
->
->      build_dbg_aml(dsdt);
-> -    if (piix) {
-> +    if (i440fx) {
->          sb_scope = aml_scope("_SB");
->          dev = aml_device("PCI0");
->          aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
-> @@ -1363,7 +1364,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->              build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
->          }
->          build_piix4_pci0_int(dsdt);
-> -    } else if (lpc) {
-> +    } else if (q35) {
->          sb_scope = aml_scope("_SB");
->          dev = aml_device("PCI0");
->          aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
-> --
-> 2.38.1
->
+>>
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>  hw/i386/acpi-build=2Ec | 11 ++++++-----
+>>  1 file changed, 6 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/hw/i386/acpi-build=2Ec b/hw/i386/acpi-build=2Ec
+>> index 73d8a59737=2E=2Ed9eaa5fc4d 100644
+>> --- a/hw/i386/acpi-build=2Ec
+>> +++ b/hw/i386/acpi-build=2Ec
+>> @@ -60,6 +60,7 @@
+>>  #include "hw/i386/fw_cfg=2Eh"
+>>  #include "hw/i386/ich9=2Eh"
+>>  #include "hw/pci/pci_bus=2Eh"
+>> +#include "hw/pci-host/i440fx=2Eh"
+>>  #include "hw/pci-host/q35=2Eh"
+>>  #include "hw/i386/x86-iommu=2Eh"
+>>
+>> @@ -1322,8 +1323,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker=
+,
+>>             AcpiPmInfo *pm, AcpiMiscInfo *misc,
+>>             Range *pci_hole, Range *pci_hole64, MachineState *machine)
+>>  {
+>> -    Object *piix =3D object_resolve_type_unambiguous(TYPE_PIIX4_PM);
+>> -    Object *lpc =3D object_resolve_type_unambiguous(TYPE_ICH9_LPC_DEVI=
+CE);
+>> +    Object *i440fx =3D object_resolve_type_unambiguous(TYPE_I440FX_PCI=
+_HOST_BRIDGE);
+>> +    Object *q35 =3D object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVI=
+CE);
+>>      CrsRangeEntry *entry;
+>>      Aml *dsdt, *sb_scope, *scope, *dev, *method, *field, *pkg, *crs;
+>>      CrsRangeSet crs_range_set;
+>> @@ -1344,13 +1345,13 @@ build_dsdt(GArray *table_data, BIOSLinker *link=
+er,
+>>      AcpiTable table =3D { =2Esig =3D "DSDT", =2Erev =3D 1, =2Eoem_id =
+=3D x86ms->oem_id,
+>>                          =2Eoem_table_id =3D x86ms->oem_table_id };
+>>
+>> -    assert(!!piix !=3D !!lpc);
+>> +    assert(!!i440fx !=3D !!q35);
+>>
+>>      acpi_table_begin(&table, table_data);
+>>      dsdt =3D init_aml_allocator();
+>>
+>>      build_dbg_aml(dsdt);
+>> -    if (piix) {
+>> +    if (i440fx) {
+>>          sb_scope =3D aml_scope("_SB");
+>>          dev =3D aml_device("PCI0");
+>>          aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
+>> @@ -1363,7 +1364,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker=
+,
+>>              build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
+>>          }
+>>          build_piix4_pci0_int(dsdt);
+>> -    } else if (lpc) {
+>> +    } else if (q35) {
+>>          sb_scope =3D aml_scope("_SB");
+>>          dev =3D aml_device("PCI0");
+>>          aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
+>> --
+>> 2=2E38=2E1
+>>
 
