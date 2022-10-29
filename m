@@ -1,88 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oohMh-0002jU-8y
-	for mharc-qemu-trivial@gnu.org; Sat, 29 Oct 2022 04:38:52 -0400
+	id 1oopn2-0008Ds-T5
+	for mharc-qemu-trivial@gnu.org; Sat, 29 Oct 2022 13:38:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oohMa-0002iB-QP
- for qemu-trivial@nongnu.org; Sat, 29 Oct 2022 04:38:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1oohMY-0004rY-R6
- for qemu-trivial@nongnu.org; Sat, 29 Oct 2022 04:38:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667032721;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ckmLE3kxnFMLn5rEZm8wyFY/mcrLm0M+yzigAPZbKzk=;
- b=WxfEvDOC0JKmTODqFCN6h3ifaEVu5KuPzMJFLO+jRjQSE5XzlTwSR3eLBZWGvk72OlX24F
- MtfBKKMuhD5znoK6ZwwTIvdg/GBT23d95Nb9ajWy00NGGDX9ug9f51Irl9Te3ZTZfregC2
- xnHqZzHJ8uEojnJ+T1bUUNGPbnu0eIo=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-551-IJ7-Cu0LOBSI8muXrgUwog-1; Sat, 29 Oct 2022 04:38:38 -0400
-X-MC-Unique: IJ7-Cu0LOBSI8muXrgUwog-1
-Received: by mail-wm1-f69.google.com with SMTP id
- i128-20020a1c3b86000000b003cf4ff1b917so3437252wma.2
- for <qemu-trivial@nongnu.org>; Sat, 29 Oct 2022 01:38:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oopmy-0008Cp-Dw
+ for qemu-trivial@nongnu.org; Sat, 29 Oct 2022 13:38:33 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oopmw-0006hF-UW
+ for qemu-trivial@nongnu.org; Sat, 29 Oct 2022 13:38:32 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id l14so10479208wrw.2
+ for <qemu-trivial@nongnu.org>; Sat, 29 Oct 2022 10:38:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mD0vQ7lx4v91sQldjSAzM7wWl2q8MAz9pIxZQfshjaU=;
+ b=dzRCENklr+RHhjruGUFPFj5oRnSeGkvJ8DhR0iDj6Io7eKAGRW5op4B63FdQ6Q4FzX
+ 7ldxXFuiXlEe1S3FWMUG63sfLqajF3rjtB+wKlKY96vjvbN2tLIgXRSKuOVlnDo6KpoL
+ wHX/2lNH8bRf9krsd0vQWrzR7GTc7P8SYuLuL2R+NFXfVVrMEDK33oI2FtZLMrJ5Mkeu
+ ntCwpRlibNl+/N6uZwZhaMsiu1H8BAWtb79Wz8lcKlXSKxTOehk5bnqTXzFP+HEQWEL9
+ 0VfncS27ZbUfYr/9/r9jmDMT+RNyx/TDtGO3fcajupTUcq5zxZ0rccKCOa3LkLv4QuvD
+ gkTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ckmLE3kxnFMLn5rEZm8wyFY/mcrLm0M+yzigAPZbKzk=;
- b=nid0c2xFTNYrDP7HVWnQcflXs97ZaoRMs8aoLXtHTEfSfTN5KOwqrDAuHoJNfM+CFx
- ivug0WSvjZTR8gnpNkGJoDqhBNTQLVLCjZAghl2ElPX4SgyIK82dbPyDyng2+gE+4mkq
- RZUR/CtXhUkXQDTgeMWMKqP+pHYLKFIUzIAEOEVyx0vG8NbAPJO7KNdI4j6JHNZDnvlU
- 5Ir86X5lt6znyqTDZD6Ou8UBYRJBfvlmRkBxL5dAIVZthgT9IcTZHmJAcwydOmATqyRI
- TFioEESzo7iQmdj7nN+LbgM4KxSlH/wVodR63SqRhAu9LXqry/bYnoqnHQUeGg6MDdyc
- neiQ==
-X-Gm-Message-State: ACrzQf01h6SittBVYDxNNpRRpJbMa61uSGfqOFKgz9mOxI3LsRLb/iKw
- MCDvEv3QlfOKQ85LaDfUB3phztaZmB1oeG+H/cNJl5j+nd0jfVb6YtJ99BulS486jLnDz4pnisJ
- qIpoBXDTXJI+CmTDkqg==
-X-Received: by 2002:adf:e64e:0:b0:236:76a9:446 with SMTP id
- b14-20020adfe64e000000b0023676a90446mr1841898wrn.696.1667032717158; 
- Sat, 29 Oct 2022 01:38:37 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5CgNuWqFG0Dnhy+itJ4YZf2hJu7Zus+Xe12RerUQeZ1dAj6prrgbHt3tvX7mMfMLUQDllj9A==
-X-Received: by 2002:adf:e64e:0:b0:236:76a9:446 with SMTP id
- b14-20020adfe64e000000b0023676a90446mr1841882wrn.696.1667032716912; 
- Sat, 29 Oct 2022 01:38:36 -0700 (PDT)
-Received: from redhat.com ([2.52.15.189]) by smtp.gmail.com with ESMTPSA id
- j13-20020a05600c410d00b003c6bd12ac27sm944862wmi.37.2022.10.29.01.38.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 29 Oct 2022 01:38:36 -0700 (PDT)
-Date: Sat, 29 Oct 2022 04:38:33 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Ani Sinha <ani@anisinha.ca>
-Cc: B <shentey@gmail.com>, qemu-devel@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH v2 3/3] hw/i386/acpi-build: Resolve north rather than
- south bridges
-Message-ID: <20221029043803-mutt-send-email-mst@kernel.org>
-References: <20221028103419.93398-1-shentey@gmail.com>
- <20221028103419.93398-4-shentey@gmail.com>
- <CAARzgwyMiEQUc=DEd5iJb=hgsoMn8tQaNeOnzKAG8qaxWhdRYw@mail.gmail.com>
- <8EA83461-41EC-40E1-AD22-C4107216870B@gmail.com>
- <CAARzgwyRJbQuUFBOSsnm_PHLWoOBcKYX8WucKk7_VeQ=Xan0kg@mail.gmail.com>
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mD0vQ7lx4v91sQldjSAzM7wWl2q8MAz9pIxZQfshjaU=;
+ b=oLadf/GEXSGw1Xy8FnUmnTIOSb4QkvvWZju3eKxpRyZIKR053vkvOnUnFPMjLnGHEB
+ ZABHoYJMZEB+veyq08x2gpellAVYQSq1VNup4eoFOGXVbgqJJPuhx+K0V1kDvpzgiXAD
+ M7l/CqlZnoQZbaX/tJ0McFN1Fq5yChJZZvNB0vN0sbxv/UzKTwdQe/6X+5dcBfFzBWP8
+ hKc+n3U+ZVuRhogJxpW9gi0LJtXT73+AEzCbfIJusOaLc+I3SKrlgAGgtd2A/uPVsCw1
+ GjOMIF/LYUJiBZ5TSDM+Cs/r7y5iahyuxh/kaEYc2wgtPgKkSEB1UnssCEV/cWtCHqZW
+ IQmA==
+X-Gm-Message-State: ACrzQf1eKkX9fUE3g2/SbKdXFrfzNMCaQkbgs/BcjYyvlvQWvEwvQniH
+ lWcRdB7Aixy/R85k5RHHU+dNTQ==
+X-Google-Smtp-Source: AMsMyM6zttN1NbnB4pAUmTE0lYqOhBSmQ871tpaXlQp0ZMZWIJJfx2UoDrDQKW8QOvLFFauLbT7ikg==
+X-Received: by 2002:adf:e610:0:b0:236:737f:8e5d with SMTP id
+ p16-20020adfe610000000b00236737f8e5dmr2939597wrm.316.1667065109021; 
+ Sat, 29 Oct 2022 10:38:29 -0700 (PDT)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ h5-20020adff185000000b00236863c02f5sm1982892wro.96.2022.10.29.10.38.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 29 Oct 2022 10:38:28 -0700 (PDT)
+Message-ID: <bb32d789-cf34-d605-630e-321aa91c3398@linaro.org>
+Date: Sat, 29 Oct 2022 19:38:26 +0200
 MIME-Version: 1.0
-In-Reply-To: <CAARzgwyRJbQuUFBOSsnm_PHLWoOBcKYX8WucKk7_VeQ=Xan0kg@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.0
+Subject: Re: [PATCH 0/3] libvhost-user: Add format attribute and fix format
+ strings
+Content-Language: en-US
+To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20220422070144.1043697-1-sw@weilnetz.de>
+ <46857c41-3a6f-ca04-8bb7-3ce3d1eb2c8d@weilnetz.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <46857c41-3a6f-ca04-8bb7-3ce3d1eb2c8d@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.516,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -96,97 +85,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 29 Oct 2022 08:38:46 -0000
+X-List-Received-Date: Sat, 29 Oct 2022 17:38:33 -0000
 
-On Fri, Oct 28, 2022 at 10:18:43PM +0530, Ani Sinha wrote:
-> On Fri, Oct 28, 2022 at 9:45 PM B <shentey@gmail.com> wrote:
-> >
-> >
-> >
-> > Am 28. Oktober 2022 10:58:07 UTC schrieb Ani Sinha <ani@anisinha.ca>:
-> > >On Fri, Oct 28, 2022 at 4:05 PM Bernhard Beschow <shentey@gmail.com> wrote:
-> > >>
-> > >> The code currently assumes Q35 iff ICH9 and i440fx iff PIIX. Now that more
-> > >> AML generation has been moved into the south bridges and since the
-> > >> machines define themselves primarily through their north bridges, let's
-> > >> switch to resolving the north bridges for AML generation instead. This
-> > >> also allows for easier experimentation with different south bridges in
-> > >> the "pc" machine, e.g. with PIIX4 and VT82xx.
-> > >
-> > >Unfortunately this patch does not apply on the latest master. Also the
-> > >code seems to be off. Can you rebase and rework the patch?
-> >
-> > I've rebased onto Igor's series to avoid merge conflicts,
+On 29/10/22 06:52, Stefan Weil via wrote:
+> Am 22.04.22 um 09:01 schrieb Stefan Weil:
+>> At least the 1st two patches could also be applied via qemu-trivial.
+>> One of them missed release 7.0, so hopefully the fixes will be
+>> included in the next QEMU release.
+>>
+>> Stefan W.
+>>
+>> [PATCH 1/3] libvhost-user: Fix wrong type of argument to formatting
+>> [PATCH 2/3] libvhost-user: Fix format strings
+>> [PATCH 3/3] libvhost-user: Add format attribute to local function
 > 
-> Ok I will let Igor deal with this then since I have not followed his patchset.
+> Who will send a pull request? All patches were reviewed, but are still 
+> missing in the master branch.
 
-should you want to review this, it's all in my tree right now.
-
-> > that's why it doesn't apply onto master. It applies fine there [1].
-> >
-> > The first two patches of this series apply fine on both branches, so could possibly be pulled already if Igor's series doesn't make it for 7.2.
-> >
-> > Best regards,
-> > Bernhard
-> >
-> > [1] https://github.com/patchew-project/qemu/commits/patchew/20221028103419.93398-1-shentey%40gmail.com
-> > >
-> > >>
-> > >> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> > >> ---
-> > >>  hw/i386/acpi-build.c | 11 ++++++-----
-> > >>  1 file changed, 6 insertions(+), 5 deletions(-)
-> > >>
-> > >> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> > >> index 73d8a59737..d9eaa5fc4d 100644
-> > >> --- a/hw/i386/acpi-build.c
-> > >> +++ b/hw/i386/acpi-build.c
-> > >> @@ -60,6 +60,7 @@
-> > >>  #include "hw/i386/fw_cfg.h"
-> > >>  #include "hw/i386/ich9.h"
-> > >>  #include "hw/pci/pci_bus.h"
-> > >> +#include "hw/pci-host/i440fx.h"
-> > >>  #include "hw/pci-host/q35.h"
-> > >>  #include "hw/i386/x86-iommu.h"
-> > >>
-> > >> @@ -1322,8 +1323,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-> > >>             AcpiPmInfo *pm, AcpiMiscInfo *misc,
-> > >>             Range *pci_hole, Range *pci_hole64, MachineState *machine)
-> > >>  {
-> > >> -    Object *piix = object_resolve_type_unambiguous(TYPE_PIIX4_PM);
-> > >> -    Object *lpc = object_resolve_type_unambiguous(TYPE_ICH9_LPC_DEVICE);
-> > >> +    Object *i440fx = object_resolve_type_unambiguous(TYPE_I440FX_PCI_HOST_BRIDGE);
-> > >> +    Object *q35 = object_resolve_type_unambiguous(TYPE_Q35_HOST_DEVICE);
-> > >>      CrsRangeEntry *entry;
-> > >>      Aml *dsdt, *sb_scope, *scope, *dev, *method, *field, *pkg, *crs;
-> > >>      CrsRangeSet crs_range_set;
-> > >> @@ -1344,13 +1345,13 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-> > >>      AcpiTable table = { .sig = "DSDT", .rev = 1, .oem_id = x86ms->oem_id,
-> > >>                          .oem_table_id = x86ms->oem_table_id };
-> > >>
-> > >> -    assert(!!piix != !!lpc);
-> > >> +    assert(!!i440fx != !!q35);
-> > >>
-> > >>      acpi_table_begin(&table, table_data);
-> > >>      dsdt = init_aml_allocator();
-> > >>
-> > >>      build_dbg_aml(dsdt);
-> > >> -    if (piix) {
-> > >> +    if (i440fx) {
-> > >>          sb_scope = aml_scope("_SB");
-> > >>          dev = aml_device("PCI0");
-> > >>          aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
-> > >> @@ -1363,7 +1364,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-> > >>              build_x86_acpi_pci_hotplug(dsdt, pm->pcihp_io_base);
-> > >>          }
-> > >>          build_piix4_pci0_int(dsdt);
-> > >> -    } else if (lpc) {
-> > >> +    } else if (q35) {
-> > >>          sb_scope = aml_scope("_SB");
-> > >>          dev = aml_device("PCI0");
-> > >>          aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
-> > >> --
-> > >> 2.38.1
-> > >>
+qemu-trivial?
 
 
