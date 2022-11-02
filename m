@@ -1,62 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqIVp-0000Mt-3l
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2022 14:30:53 -0400
+	id 1oqKGR-0000dm-LV
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2022 16:23:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqIVi-0000F7-HV; Wed, 02 Nov 2022 14:30:50 -0400
-Received: from mout.kundenserver.de ([217.72.192.74])
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1oqKGP-0000dO-R7; Wed, 02 Nov 2022 16:23:05 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqIVf-0002GU-Pl; Wed, 02 Nov 2022 14:30:45 -0400
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1ML9ds-1oYDOL2Wqw-00I9rU; Wed, 02 Nov 2022 19:30:36 +0100
-Message-ID: <89444fcc-d071-aa83-16d4-95f15fe53d6d@vivier.eu>
-Date: Wed, 2 Nov 2022 19:30:31 +0100
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1oqKGO-00013C-0v; Wed, 02 Nov 2022 16:23:05 -0400
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 0E150DA0277;
+ Wed,  2 Nov 2022 21:23:00 +0100 (CET)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id 04F264621B3; Wed,  2 Nov 2022 21:23:00 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH for 7.2] Fix broken configure with -Wunused-parameter
+Date: Wed,  2 Nov 2022 21:22:58 +0100
+Message-Id: <20221102202258.456359-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH 3/3] target/tricore: Rename csfr.def -> csfr.h.inc
-Content-Language: fr
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>, qemu-trivial@nongnu.org
-References: <20221025235006.7215-1-philmd@linaro.org>
- <20221025235006.7215-4-philmd@linaro.org>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221025235006.7215-4-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9lK6Jhn2Gt4juTJ/IK4+paYwy5vhVr3rm2RiDFsvFOn9MjyB78p
- evoiievk4tzJIcCZmsLtDlpr1DyMcKOMlGK6d1oIggSuzEcmHCGLlo0W2prS5oHMmWT7tMq
- hlBCIw1/0rO5YGFHbbk1MCF/qPmCuZD+lOWWEIG62sleBe7m2RD2GJVHeiQkLb+8UTdojmX
- +idGHcc7BU4sH2OQwbjIA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gSK8k0AKow4=:K63to3yqtTWxq4ADsPYX4+
- mAF//y5KZ93ph/3PbxeUEDaHKiKNK6iazM2y2h6Y2Q+sMJfVoOjwJY3qMGzSbOKN+z+xZY5WP
- 6+OGIOAO9tSCOm0yF7P1Hh+FdzmWLt2ScYIYWs7bZmfWPIeDzSmTyBvqL2wA9dXWyhqVI90LG
- c7/PsdVqIlDzWzNa+OrbDlMDUd2fOt64aqaEqgTYTkiubhjXUSCxFKi3n17gGW3TLNG1HA9F6
- p2i3En6cKsCSN8wvVMO6cNuKh9DsDPu7FcSZHexGt1d5qXMW7g+CyPGYIYFjprEKB1rWHy5HC
- U9555SNOAHbFbpMhA7fIE593yJsXG8Vu+H67BJPR3+g+TGvhCBc8wIdkTq55TnPwdHnOQqErG
- d5lpz9+sBKXewM6B3AU4b7D0QoE2kjpeXAmky6de8s23DLBBwcLXLQv0rXov2VBS//Blj0Mvc
- XUbNGjxmQsHnk4cqmIGR/iYzzvCfwBPqNWJXYiZL8hTLKJqLiq8vtTnws1OoxSJfZoX8Xt+/a
- FwIg0U9i6WtPxfkVTc8hYLW7UJrs0RxIP8TzHfYVUNIaMRHzbbNJzkMaggGrgHULH4hXBZkGC
- yxPw1pTp/ggz4lf2uBqWoxUXWi6m766/N4bTI9gEkZ938iQqetKR2Uhw7IEuOT02GWNG5o5/m
- GDqloIcqfnAhdJ23NJsvzb1mzXFoGyJCtQcubee57s72dEr+MNbw7VQLXtOBJFWvcu5zpuwfJ
- vcFVkt/sxw9TjNZwCQn160PzeVVTkeXMFxMP7ht7CA+XFQDThaDQ3h8nJuAr3a6W3zAVMDVuP
- /b/WDi+
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -69,54 +44,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2022 18:30:51 -0000
+X-List-Received-Date: Wed, 02 Nov 2022 20:23:06 -0000
 
-Le 26/10/2022 à 01:50, Philippe Mathieu-Daudé a écrit :
-> We use the .h.inc extension to include C headers. To be consistent
-> with the rest of the codebase, rename the C headers using the .def
-> extension.
-> 
-> IDE/tools using our .editorconfig / .gitattributes will leverage
-> this consistency.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   target/tricore/{csfr.def => csfr.h.inc} | 0
->   target/tricore/translate.c              | 4 ++--
->   2 files changed, 2 insertions(+), 2 deletions(-)
->   rename target/tricore/{csfr.def => csfr.h.inc} (100%)
-> 
-> diff --git a/target/tricore/csfr.def b/target/tricore/csfr.h.inc
-> similarity index 100%
-> rename from target/tricore/csfr.def
-> rename to target/tricore/csfr.h.inc
-> diff --git a/target/tricore/translate.c b/target/tricore/translate.c
-> index a0558ead71..f02090945d 100644
-> --- a/target/tricore/translate.c
-> +++ b/target/tricore/translate.c
-> @@ -388,7 +388,7 @@ static inline void gen_mfcr(DisasContext *ctx, TCGv ret, int32_t offset)
->           gen_helper_psw_read(ret, cpu_env);
->       } else {
->           switch (offset) {
-> -#include "csfr.def"
-> +#include "csfr.h.inc"
->           }
->       }
->   }
-> @@ -418,7 +418,7 @@ static inline void gen_mtcr(DisasContext *ctx, TCGv r1,
->               gen_helper_psw_write(cpu_env, r1);
->           } else {
->               switch (offset) {
-> -#include "csfr.def"
-> +#include "csfr.h.inc"
->               }
->           }
->       } else {
+The configure script fails because it tries to compile small C programs
+with a main function which is declared with arguments argc and argv
+although those arguments are unused.
 
-Applied to my trivial-patches branch.
+Running `configure -extra-cflags=-Wunused-parameter` triggers the problem.
+configure for a native build does abort but shows the error in config.log.
+A cross build configure for Windows with Debian stable aborts with an
+error.
 
-Thanks,
-Laurent
+Avoiding unused arguments fixes this.
 
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+
+See https://gitlab.com/qemu-project/qemu/-/issues/1295.
+
+I noticed the problem because I often compile with -Wextra.
+
+Stefan
+
+ configure | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/configure b/configure
+index 4275f5419f..1106c04fea 100755
+--- a/configure
++++ b/configure
+@@ -1258,6 +1258,7 @@ if test "$stack_protector" != "no"; then
+   cat > $TMPC << EOF
+ int main(int argc, char *argv[])
+ {
++    (void)argc;
+     char arr[64], *p = arr, *c = argv[0];
+     while (*c) {
+         *p++ = *c++;
+@@ -1607,7 +1608,7 @@ fi
+ 
+ if test "$safe_stack" = "yes"; then
+ cat > $TMPC << EOF
+-int main(int argc, char *argv[])
++int main(void)
+ {
+ #if ! __has_feature(safe_stack)
+ #error SafeStack Disabled
+@@ -1629,7 +1630,7 @@ EOF
+   fi
+ else
+ cat > $TMPC << EOF
+-int main(int argc, char *argv[])
++int main(void)
+ {
+ #if defined(__has_feature)
+ #if __has_feature(safe_stack)
+@@ -1675,7 +1676,7 @@ static const int Z = 1;
+ #define TAUT(X) ((X) == Z)
+ #define PAREN(X, Y) (X == Y)
+ #define ID(X) (X)
+-int main(int argc, char *argv[])
++int main(void)
+ {
+     int x = 0, y = 0;
+     x = ID(x);
+-- 
+2.30.2
 
 
