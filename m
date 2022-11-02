@@ -1,58 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqION-0003ZJ-DV
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2022 14:23:11 -0400
+	id 1oqIPi-0004qT-Ss
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2022 14:24:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqIOH-0003TV-2t; Wed, 02 Nov 2022 14:23:09 -0400
-Received: from mout.kundenserver.de ([212.227.17.13])
+ id 1oqIPh-0004nM-Ib; Wed, 02 Nov 2022 14:24:33 -0400
+Received: from mout.kundenserver.de ([217.72.192.73])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqIOC-00012d-KG; Wed, 02 Nov 2022 14:23:02 -0400
+ id 1oqIPf-0001Dy-M1; Wed, 02 Nov 2022 14:24:33 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MnpwC-1pMZ7m0b4k-00pNy5; Wed, 02 Nov 2022 19:22:44 +0100
-Message-ID: <c2fc4156-1806-a252-56ac-e21267f525f5@vivier.eu>
-Date: Wed, 2 Nov 2022 19:22:41 +0100
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MpDa5-1pNw0f1zmp-00qkrx; Wed, 02 Nov 2022 19:24:22 +0100
+Message-ID: <d858ba61-8eac-fa7c-66fd-237ba8754046@vivier.eu>
+Date: Wed, 2 Nov 2022 19:24:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.1
-Subject: Re: [PATCH 2/3] libvhost-user: Fix format strings
+Subject: Re: [PATCH 3/3] libvhost-user: Add format attribute to local function
+ vu_panic
 Content-Language: fr
 To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  Raphael Norwitz <raphael.norwitz@nutanix.com>,
  "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 References: <20220422070144.1043697-1-sw@weilnetz.de>
- <20220422070144.1043697-3-sw@weilnetz.de>
+ <20220422070144.1043697-4-sw@weilnetz.de>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20220422070144.1043697-3-sw@weilnetz.de>
+In-Reply-To: <20220422070144.1043697-4-sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:FIMmzHBT+anSYt/ziwIW7cCwh9hYquiiLuK3FoUgwqWAF01tfHZ
- /Li+wDaeYJaZiimT49JD/kSLm7Cj0EijR7mRnfWcL6L/yOn01DnNGKwJcsWpFf/iDh1Hi98
- aL6n1WhjFzx0sgJfbuyqXG2vlACmkLboRm6IwB3yXn8czZq5sKK0oADFkUNvEAE9xv9rKwL
- TJrI3DW1ytdtRaxiJMKiQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wLpyzC56O2g=:C8KbDaC6oydcvfRM58PNjC
- K+SJU8mHO1LsM/pcRYR7IWVjZnTnM4zDbJo9JgzVKd1M4stLKjT3IR/WncA7oxVboHg4lBz25
- TAe1axAM4clCBVgl8er8a3xU6ApXCIrez1QVVxepFaElbJzHhYgRYUnsm6KVZENw7S95UrwSf
- 4WtOxkCr4F2ewBAQMPaHXSlYqMEqHTbKEcd5pUyLHiKRGn4AzH7dv7cyGdjGm/UH+lprEe5Yo
- mYUDXC4K2xYzZ6/Cm+uU9fvyKNOIcsVucEqQuTg5LC2S7+bxykf3H5s6Mi0I7/jClDr/m9o1r
- I3CDp6K0uCLxl6lziwfZDsCIQM88oe/xThRDQTXHx3Eh9h83/wHwI6TdfphZPntmzLJ0Md30/
- 5FDqrKEf3ez9axjMMCtC6yFOyS5jenhg2CRj1b1ATahGDZiDoTq40KpanlSEdIaWCdhcSOA7w
- V8612BB6uAybCPGOHua3hoDC8YM5P74/TXs5y5UnqiDqhb0eRufJGUvyiRtB6D1qUJX29vOws
- XSr5dtAV975pNZvXTcxfd0NjBKgpFaXqwYYPXL4OejRzJUBtTMlFdppVvIJlzSRsBhlHiEguy
- TcVGBAQv2eIB9wUIQqgEV1qGc0GScZBukL0MxSGPONgD/96EUlnYKInja4EkLH1++WLtKOFBe
- StMeFASp3UKaMJmOG9xLvFKWg3w9uHYlPB5omcaJsW9jaSO6yJzarGV80Sgsqcu6f883k3yJs
- c3vJg1gMW9/m5uQdSwmUuTcNYJr89dTTOoxdnhWFbhEJfw87NAWHk6aYM9WPPELar6CKAgt+Q
- BmSdix+
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:cfNNMLk/m4Ne1/lTYmikSwTpHMn3OLifEmAcDYl/GyaY87DtrGy
+ UrDNIoZLVgJGNHq+FKPTwunSzleoq2kGVWWjYtGjbEtwMP8a87aTD4lZJwriC4caW4CoGT8
+ QC552RI5TF04SuPfwFr/eSGoqYRHfHQZwSDwAvBVZGTijWhX6FXrLYknkZ6Ohr6zI93w5Gr
+ 3LRz2T3qpw+GJPlkgB4Lg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1S9LHDjKw4M=:v/Ox/6An25EXelk0i4z6jX
+ Nh3ax12a7KmfqQwQQWyvcPFxrC+pai67beWqJF0CN3N7SOkPufkrE1BlVXLTCqD3OLft9jBir
+ X2l90A7OzJJd02Rf0F+LxSL/5OICq2a1O1rsLXsAI4+slIATGnFV9I+UUJWTsyjSQw0t3yfDq
+ 6xIM/wNwby2jGmHyBueUXn8rzO6jPdTtcAfe0X6s8HNuHU4GUC2dEGAR0OWshRBnwfnkT2Cbo
+ Qx2jSxsbCchMtWIXLMFvZcPTfA2EFMfEVjSA1TKlAzIOWdKG+zAVjBAgc98iteQw9xw/uPhuL
+ UIah5rluHatSGAkKxUxJ8Zv3Vl6fyL+1l0GFMZ9XqUzGmgplLpz9ABFW29OMjW4COQxGiKnOc
+ d+AZaPDUTUXVqP3Uh1qMV8pGpIH4S8/LblGNavaBjvIfLsy8OZATZ/yTof4t49VsGvZaKSN67
+ mfstO0p9tIPDWa47qg/jWDy5cOAJk7f0YxVCCGViHUfJAjQa0EC5DSY9nj5WC6JM/zW0xzxhf
+ zFCPKSjBrDEhdyt0jKJVRbvCeG445kxJocZiFXg0KNyuxsDnLGxggfjHHjVW1whPpayj1wp5j
+ 4vsU/P7JlEcvcMp3aZBa+m5OXQc6NvWCm8cGQY/5jRcuzR0AD8yLcLaMLnPdzNWVLKsQIV0Z1
+ THDYy37te+T32/DXIUL4qYoA43W73r/II3jFnbBF1h25v9xcOZCQ+WQfeuDEboEf7wt6yCw+m
+ Ym8oTBTkDKGEZ5ti7wu05tAx5k7QtAuZXDLPqM5Z2rgPxhNdGQOa4980xxqXaoN8qQEJJlBWK
+ oMPL9kJ
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -66,40 +67,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2022 18:23:09 -0000
+X-List-Received-Date: Wed, 02 Nov 2022 18:24:34 -0000
 
 Le 22/04/2022 à 09:01, Stefan Weil a écrit :
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->   subprojects/libvhost-user/libvhost-user.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> It would be good to add format attributes to local functions, too (like
+> it is done here) to avoid future format bugs.
+> 
+> The changes here could be simplified by including a glib header,
+> but from the comments I assumed that is unwanted here?
+> 
+>   subprojects/libvhost-user/libvhost-user.c | 13 ++++++++++++-
+>   1 file changed, 12 insertions(+), 1 deletion(-)
 > 
 > diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
-> index 2d29140a8f..94645f9154 100644
+> index 94645f9154..29ab85fc9d 100644
 > --- a/subprojects/libvhost-user/libvhost-user.c
 > +++ b/subprojects/libvhost-user/libvhost-user.c
-> @@ -700,7 +700,7 @@ vu_add_mem_reg(VuDev *dev, VhostUserMsg *vmsg) {
->       if (vmsg->size < VHOST_USER_MEM_REG_SIZE) {
->           close(vmsg->fds[0]);
->           vu_panic(dev, "VHOST_USER_ADD_MEM_REG requires a message size of at "
-> -                      "least %d bytes and only %d bytes were received",
-> +                      "least %zu bytes and only %d bytes were received",
->                         VHOST_USER_MEM_REG_SIZE, vmsg->size);
->           return false;
+> @@ -45,6 +45,17 @@
+>   #include "libvhost-user.h"
+>   
+>   /* usually provided by GLib */
+> +#if     __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ > 4)
+> +#if !defined(__clang__) && (__GNUC__ == 4 && __GNUC_MINOR__ == 4)
+> +#define G_GNUC_PRINTF(format_idx, arg_idx) \
+> +  __attribute__((__format__(gnu_printf, format_idx, arg_idx)))
+> +#else
+> +#define G_GNUC_PRINTF(format_idx, arg_idx) \
+> +  __attribute__((__format__(__printf__, format_idx, arg_idx)))
+> +#endif
+> +#else   /* !__GNUC__ */
+> +#define G_GNUC_PRINTF(format_idx, arg_idx)
+> +#endif  /* !__GNUC__ */
+>   #ifndef MIN
+>   #define MIN(x, y) ({                            \
+>               typeof(x) _min1 = (x);              \
+> @@ -151,7 +162,7 @@ vu_request_to_string(unsigned int req)
 >       }
-> @@ -833,7 +833,7 @@ vu_rem_mem_reg(VuDev *dev, VhostUserMsg *vmsg) {
->       if (vmsg->size < VHOST_USER_MEM_REG_SIZE) {
->           close(vmsg->fds[0]);
->           vu_panic(dev, "VHOST_USER_REM_MEM_REG requires a message size of at "
-> -                      "least %d bytes and only %d bytes were received",
-> +                      "least %zu bytes and only %d bytes were received",
->                         VHOST_USER_MEM_REG_SIZE, vmsg->size);
->           return false;
->       }
+>   }
+>   
+> -static void
+> +static void G_GNUC_PRINTF(2, 3)
+>   vu_panic(VuDev *dev, const char *msg, ...)
+>   {
+>       char *buf = NULL;
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
 
