@@ -1,80 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqdpk-0007lh-F6
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 13:16:52 -0400
+	id 1oqdvW-0003tY-L7
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 13:22:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1oqdpj-0007l0-DE
- for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 13:16:51 -0400
+ id 1oqdvV-0003rm-Fx
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 13:22:49 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1oqdpf-0001Lk-IK
- for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 13:16:51 -0400
+ id 1oqdvU-0002Nm-5M
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 13:22:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667495806;
+ s=mimecast20190719; t=1667496167;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xn/zV/1aq9MhX7PhWTYe4I0LHq8bpkljniNKNkFlny4=;
- b=cYwZSs1mweiDMY1NQWUbbI7/VhbrLyJPPlyHYjGAdfxmXG+JMEbRwBD2+CkAQqJad0Z7eD
- S6DNPULqA4aVsGpr2JjBaUJ6i583S23ZcexceZPANsWXfX1+jjHRMecuHRTirz1VzHsPv0
- uRPG3irAZTBHjEisgi+YCq62P4xRMYc=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=EMtLscuM+GkhtCSMJR6gBFiXWZfzwaCGy/BE14Qb5hs=;
+ b=AmdIyIEObmyXJdCE/qfuC9NJcMqktDeTQHTQTskIsZWhbYVsYkOkccnnIJsL43qIpTu9/+
+ kBi4knGH95MTEUNZnk4shrfP9lLmnq4wRjbc6jHRCBsYzlKkSRYFrRMNiEJS/3rj26rQap
+ YmU5I0BNL1Nlai20DDp9NbbJ5Bs+NIE=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-536-6jR-7MoqOPSRZgxbeUuOWQ-1; Thu, 03 Nov 2022 13:16:45 -0400
-X-MC-Unique: 6jR-7MoqOPSRZgxbeUuOWQ-1
-Received: by mail-ej1-f69.google.com with SMTP id
- sc40-20020a1709078a2800b007ae024e5e82so1665404ejc.13
- for <qemu-trivial@nongnu.org>; Thu, 03 Nov 2022 10:16:45 -0700 (PDT)
+ us-mta-446-S_LFk-dUNT2QoexjnLMEEg-1; Thu, 03 Nov 2022 13:22:45 -0400
+X-MC-Unique: S_LFk-dUNT2QoexjnLMEEg-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ z11-20020a056402274b00b00461dba91468so1819055edd.6
+ for <qemu-trivial@nongnu.org>; Thu, 03 Nov 2022 10:22:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xn/zV/1aq9MhX7PhWTYe4I0LHq8bpkljniNKNkFlny4=;
- b=FpbzNgyoYUGnV6zh9zqA3gjUsoi6QhX3H+n5poeGMF6T/X10B8D5gBp5ff1+AQF259
- 9dPYAzBlbGJc8jfxvQ+ABmMdyjXNIzuyqKI5PCsF4cMABoEEHyft8BLcgqdkeO7Tzed1
- 4aEwJytwsjOOy0vBooqZsd9fFg/DnpADF1yN6BwbnnyHKGVPFLRNf/EVMDWSp1tBryuk
- gJao5aWuvvpuWi6p9xJpM0c/xJkohQhI+b7J06mRF3QaPv44ZRxvKGopWiwnfpFFpB5L
- Bt4cHwu5dRoozQMqG01rmri1tf7tl7BYEigt+ZCwi5MeDPN4bdxX7IIS9uWAUPeKWqIC
- RG7w==
-X-Gm-Message-State: ACrzQf2fVVY6TT18jGyKKcc+OU3xkmtI9QyyyTUc+Ptw6QcHw0ZyG0Yc
- /IRAKq7oib/IWfWPvH/urCmzWFb/62nO9+JMj+hCqZ2QEF/c+7fLLbQEsV+r4c+lYZZojjB4KAu
- dx8s2wXo2bR/KnofOmA==
-X-Received: by 2002:a05:6402:2706:b0:461:b93c:cbd8 with SMTP id
- y6-20020a056402270600b00461b93ccbd8mr31293231edd.254.1667495803975; 
- Thu, 03 Nov 2022 10:16:43 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM4QjnBHGfFoAfgEM2ztdg7SS78UGof8XXaYIWFdMVFWucs2caMxZuS+Vpg/qPah3jPSkgTpYQ==
-X-Received: by 2002:a05:6402:2706:b0:461:b93c:cbd8 with SMTP id
- y6-20020a056402270600b00461b93ccbd8mr31293093edd.254.1667495802183; 
- Thu, 03 Nov 2022 10:16:42 -0700 (PDT)
+ bh=EMtLscuM+GkhtCSMJR6gBFiXWZfzwaCGy/BE14Qb5hs=;
+ b=w9TR+WRaiBP7I1FcvGSQQBNiVluBPqzbzRbLkzZPsttW0llWQyUcrYqm5P+hhdimeZ
+ NRIwAtGOCEs2BwgfOJVU2qAl2Cc27A/irZyZyfavEGTL6Dmhe5UZbefdUtgPLU+Ajp+k
+ T7eABimW1TxL73VLj3flBw+6IVQCWvT0qBdcx3XKg9GCb4uyZ2BFh2Bnnpxzj0a/+ul5
+ 0dK0SEJ7lXpL4VkrDMA55aXJAYPFK6h3p33KbGIN2nUNEqPZVz1afMVfCLwNU4FdU8O0
+ 3iua+KSsOsymDW8tS7Tt73uqGqNH1l1yhr9P0AbuqlU9j53F+lFwrQY0kOUm4fgKpaKX
+ R6Mg==
+X-Gm-Message-State: ACrzQf0rqPRjYUTMimeJyAPo4kfPmQuxv1SK6dpFaxsec8qsmt/hhPoe
+ +MDotfSAvsstdRTyRU4xOebrfSINIZWXt6jMum/RiizjmABrP8/GAFOvH7P3ylBnRTntg/Zu1Zp
+ ODwzkF/KEIKLvv+UawA==
+X-Received: by 2002:a17:906:6a8d:b0:741:6a3b:536e with SMTP id
+ p13-20020a1709066a8d00b007416a3b536emr30756308ejr.11.1667496163850; 
+ Thu, 03 Nov 2022 10:22:43 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6ZRZ4cw0H8szIxejDDMt3WKonsXorBEMr+lfN1kHangTCJRJTwO2xj6P6cKdNMt/6lFAKHRA==
+X-Received: by 2002:a17:906:6a8d:b0:741:6a3b:536e with SMTP id
+ p13-20020a1709066a8d00b007416a3b536emr30756299ejr.11.1667496163664; 
+ Thu, 03 Nov 2022 10:22:43 -0700 (PDT)
 Received: from ?IPV6:2001:b07:6468:f312:1c09:f536:3de6:228c?
  ([2001:b07:6468:f312:1c09:f536:3de6:228c])
  by smtp.googlemail.com with ESMTPSA id
- q3-20020a170906a08300b0078d9c2c8250sm728017ejy.84.2022.11.03.10.16.41
+ qq18-20020a17090720d200b007aa9156f7e9sm732511ejb.32.2022.11.03.10.22.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Nov 2022 10:16:41 -0700 (PDT)
-Message-ID: <e9bc7a8c-2d7f-99b9-b9b6-6318a3a56372@redhat.com>
-Date: Thu, 3 Nov 2022 18:16:40 +0100
+ Thu, 03 Nov 2022 10:22:43 -0700 (PDT)
+Message-ID: <2b1a92c2-c081-aacd-da05-aa434f50bbaa@redhat.com>
+Date: Thu, 3 Nov 2022 18:22:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.0
 Subject: Re: [PATCH for 7.2] Fix broken configure with -Wunused-parameter
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Stefan Weil <sw@weilnetz.de>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20221102202258.456359-1-sw@weilnetz.de>
- <Y2OCyLSw2hurfemT@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <Y2OCyLSw2hurfemT@redhat.com>
+In-Reply-To: <20221102202258.456359-1-sw@weilnetz.de>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
@@ -83,7 +81,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.047,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,31 +94,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2022 17:16:51 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 17:22:49 -0000
 
-On 11/3/22 09:58, Daniel P. Berrangé wrote:
-> On Wed, Nov 02, 2022 at 09:22:58PM +0100, Stefan Weil via wrote:
->> The configure script fails because it tries to compile small C programs
->> with a main function which is declared with arguments argc and argv
->> although those arguments are unused.
->>
->> Running `configure -extra-cflags=-Wunused-parameter` triggers the problem.
->> configure for a native build does abort but shows the error in config.log.
->> A cross build configure for Windows with Debian stable aborts with an
->> error.
->>
->> Avoiding unused arguments fixes this.
-> I'm not convinced that we should allow -extra-cflags to influence
-> the configure compile checks at all, as there are likely more cases
-> where arbitrary -W$warn flag will impact the checks, potentially
-> causing configure to silently take the wrong action.
+On 11/2/22 21:22, Stefan Weil via wrote:
+> != "no"; then
+>     cat > $TMPC << EOF
+>   int main(int argc, char *argv[])
+>   {
+> +    (void)argc;
+>       char arr[64], *p = arr, *c = argv[0];
 
-Meson cc.compiles/cc.links tests never use -Werror to avoid this (which 
-has a different set of issues, but if you want you can add the argument 
-manually and 0.64 will also add a "werror: true|false" argument).  Since 
-the last configure tests will go away in 8.0, I'm fine with just 
-applying this patch in the meanwhile.
+You could use argv[argc - 1] instead.
 
 Paolo
+
+>       while (*c) {
+>           *p++ = *c++;
 
 
