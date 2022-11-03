@@ -1,43 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqKLu-0003SX-U1
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2022 16:28:46 -0400
+	id 1oqUJ5-0002s4-Q3
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 03:06:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1oqKLt-0003SI-1z; Wed, 02 Nov 2022 16:28:45 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1oqKLr-0001pl-E8; Wed, 02 Nov 2022 16:28:44 -0400
-Received: from [192.168.178.185] (p57907e6e.dip0.t-ipconnect.de
- [87.144.126.110])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id CBF3BDA0277;
- Wed,  2 Nov 2022 21:28:37 +0100 (CET)
-Message-ID: <01dd0ae1-b9f2-169a-e8e0-f622ce9b9c0a@weilnetz.de>
-Date: Wed, 2 Nov 2022 21:28:37 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oqUJ4-0002rs-Dp
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 03:06:30 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oqUJ2-0006Jx-TA
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 03:06:30 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id j15so1288280wrq.3
+ for <qemu-trivial@nongnu.org>; Thu, 03 Nov 2022 00:06:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xmmt1VFgqqmw3JbVsjL9/NxTUd7IhQvG2sty4Lc05eo=;
+ b=g+vduDRgyLTEuHL11jfx5u+irKIrkrIPyEQDqJmTk5EB9SqfJxUeh41MpJ3av6MVuS
+ YZlVb/Ki1edprcJTTS9FU9XS2jRjHTWMTAzKqAofTvLyIrqGMS/KqQuoIOoUMjfyXS/v
+ r6z85yG+hGRa5sd3ykvYN7y8Ebzm8I5kXG28c5d77N8LwfoyEU+Hgnn9igqQvJJVIJCV
+ odj8Dszpan35T3gYyhSkO+yZX4Pfzwk6VaIENqn6dRgD3xJn/KzbnVfvVFPwPnFIsA5H
+ lcJ+3qihJ4iRhCDl5IpdiOdDom+Tq7tEH543JCryfUfa2Q3at7nXhN/QzDoitRXZa9HR
+ Ek/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xmmt1VFgqqmw3JbVsjL9/NxTUd7IhQvG2sty4Lc05eo=;
+ b=Pt06sEDU2newwVvnEOMxhArPAl8qBH1RVmPuh4DgzzaITIvF6Xbi5TK3NiC8sTPnFj
+ n7ijrECTB8fKchy3DSBTygbffQbzdbAVDXWcsarqOTBI0FZ9qT/BD70Uea/mI03Zf/M3
+ DlJkdouuuQLzWJ6T7JJiggCTrBOfF9tivb//W7vIBlUd4/JlVKOlPULfu6bosBBirIyP
+ gs9/8dAvVkayLuJIrB9worcGddwlnra0DpEy9rQ+HEF0jop7SZ83Nr8LeiF9teMMhSxX
+ ell1qWZu8YwvgjSMQ/QUaZ1EHoakp6BIyueee65NTtN07pWCbvT7OrK2euPTicObZgFq
+ +GaQ==
+X-Gm-Message-State: ACrzQf0kqfvdPby1zPelqFjgH6GswNS9VG0Ulg/0o7XCfNS5ob5tpTMg
+ DcSf4e18X6CoQaamkvC4qc7NpA==
+X-Google-Smtp-Source: AMsMyM7oxd5Ax01H/F5np74378P9Sz7Eysm6ZMStzIgrtRHC6vlX5r/Y2c/4djj8RpDDHVVD/wUXYQ==
+X-Received: by 2002:a05:6000:614:b0:236:747d:47d5 with SMTP id
+ bn20-20020a056000061400b00236747d47d5mr17643357wrb.457.1667459186827; 
+ Thu, 03 Nov 2022 00:06:26 -0700 (PDT)
+Received: from [192.168.11.175] (216.red-88-29-181.dynamicip.rima-tde.net.
+ [88.29.181.216]) by smtp.gmail.com with ESMTPSA id
+ e6-20020a5d65c6000000b00236cb3fec8fsm40147wrw.9.2022.11.03.00.06.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 03 Nov 2022 00:06:25 -0700 (PDT)
+Message-ID: <3827e4e1-c095-25a4-9836-88972cc4a7ef@linaro.org>
+Date: Thu, 3 Nov 2022 08:06:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.4.1
-Subject: Re: [PATCH] Run docker probe only if docker or podman are available
-To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-References: <20221030083510.310584-1-sw@weilnetz.de>
-From: Stefan Weil <sw@weilnetz.de>
-In-Reply-To: <20221030083510.310584-1-sw@weilnetz.de>
+Subject: Re: [PATCH] tests/qtest/libqos/e1000e: Refer common PCI ID definitions
+Content-Language: en-US
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Yan Vugenfirer <yan@daynix.com>,
+ Yuri Benditovich <yuri.benditovich@daynix.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20221103015017.19947-1-akihiko.odaki@daynix.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221103015017.19947-1-akihiko.odaki@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -50,42 +84,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2022 20:28:45 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 07:06:30 -0000
 
-Am 30.10.22 um 09:35 schrieb Stefan Weil:
-
-> The docker probe uses "sudo -n" which can cause an e-mail with a security warning
-> each time when configure is run. Therefore run docker probe only if either docker
-> or podman are available.
->
-> That avoids the problematic "sudo -n" on build environments which have neither
-> docker nor podman installed.
->
-> Fixes: c4575b59155e2e00 ("configure: store container engine in config-host.mak")
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On 3/11/22 02:50, Akihiko Odaki wrote:
+> This is yet another minor cleanup to ease understanding and
+> future refactoring of the tests.
+> 
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > ---
->   configure | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/configure b/configure
-> index 81561be7c1..3af99282b7 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1779,7 +1779,7 @@ fi
->   # functions to probe cross compilers
+>   tests/qtest/libqos/e1000e.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tests/qtest/libqos/e1000e.c b/tests/qtest/libqos/e1000e.c
+> index 2ea5db65d8..1f2ccccb8f 100644
+> --- a/tests/qtest/libqos/e1000e.c
+> +++ b/tests/qtest/libqos/e1000e.c
+> @@ -18,6 +18,7 @@
 >   
->   container="no"
-> -if test $use_containers = "yes"; then
-> +if test $use_containers = "yes" && (has "docker" || has "podman"); then
->       case $($python "$source_path"/tests/docker/docker.py probe) in
->           *docker) container=docker ;;
->           podman) container=podman ;;
+>   #include "qemu/osdep.h"
+>   #include "hw/net/e1000_regs.h"
+> +#include "hw/pci/pci_ids.h"
+>   #include "../libqtest.h"
+>   #include "pci-pc.h"
+>   #include "qemu/sockets.h"
+> @@ -217,8 +218,8 @@ static void *e1000e_pci_create(void *pci_bus, QGuestAllocator *alloc,
+>   static void e1000e_register_nodes(void)
+>   {
+>       QPCIAddress addr = {
+> -        .vendor_id = 0x8086,
+> -        .device_id = 0x10D3,
+> +        .vendor_id = PCI_VENDOR_ID_INTEL,
+> +        .device_id = E1000_DEV_ID_82574L,
+>       };
+>   
+>       /* FIXME: every test using this node needs to setup a -netdev socket,id=hs0
 
-
-Can this patch be applied by qemu-trivial? For me those security e-mails 
-are a bug and should be at least avoided as far as possible in the new 
-QEMU release.
-
-Thanks, Stefan
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
