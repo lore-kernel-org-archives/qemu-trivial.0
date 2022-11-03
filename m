@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqcvs-0001ic-O5
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 12:19:08 -0400
+	id 1oqcvt-0001o3-7I
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 12:19:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuR-0000oR-Lu; Thu, 03 Nov 2022 12:18:00 -0400
+ id 1oqcuT-0000p1-Jo; Thu, 03 Nov 2022 12:18:00 -0400
 Received: from mout.kundenserver.de ([212.227.126.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuO-00085X-QX; Thu, 03 Nov 2022 12:17:39 -0400
+ id 1oqcuO-00085S-Rq; Thu, 03 Nov 2022 12:17:39 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue009
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1Mwfj0-1pE4y83nLO-00y8uq; Thu, 03
- Nov 2022 17:17:31 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MRCFw-1oeTpw0D4e-00N9ju; Thu, 03
+ Nov 2022 17:17:32 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 04/10] libvhost-user: Fix wrong type of argument to formatting
- function (reported by LGTM)
-Date: Thu,  3 Nov 2022 17:17:21 +0100
-Message-Id: <20221103161727.4116147-5-laurent@vivier.eu>
+Subject: [PULL 06/10] libvhost-user: Add format attribute to local function
+ vu_panic
+Date: Thu,  3 Nov 2022 17:17:23 +0100
+Message-Id: <20221103161727.4116147-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221103161727.4116147-1-laurent@vivier.eu>
 References: <20221103161727.4116147-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:DRx/k9FrF3CT7v/leTeBoqsMrLA3YzW11Mk/egNgsQZzlXaZl7/
- GBQPo5f2uWN4kaaSDC0SavYb4BNqUStO4bddj1F1Tz4dm6cDM+x9A4yrBpCTJe4EBxpOxNN
- VxwcYq2L9BJvuxnHW+qiw+zBEMgYoGyvUEPn169twa/FfRrLULOeHV0/EHrM5qleSj4Y/Dn
- ilqp4AEbHFVhpoZqnorUA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6QWw3QR2Hmg=:OfRFcUsb2VroKZGwJ69juo
- uRah2E7SOaudj4i/A+osJTTU5F8+ovsHm7rPtBLvDBUFmpNWavycqg/LLFmW52WMAC3sHBAhd
- HDfHnw/Ss96wYIAC+ecjKqQG7ct0oVLA+aZDxjjOCjEyBiVrENt7Cb1gyIp/4J4kqbwi62YA4
- RsNIVpVAcBRFIIOBfGDnhMX6WBIB9hVQTBidFJxPegPIW7zVHfIJIE0gOxSBJ80clB69ZWm1F
- ivqCA84Ynf5WEmHAR/ZhDrzgGDT86QpjQjeA41Lq9V1LL/KLvGhUv4GTzpAghiWU7F/xCCAaU
- HG6fH9si7HZyKR4P4VPi3Tnm7sLUCXwOwHcWLugt1+VQ96UtnuzOBWpTgY4ZT21t5bsduIIR7
- PLfgyKMsjLl3YkO/2q6vzn7iCCWwrxW+vrvz7IJIa7uIVosvVFxI2LSYKKb5gM0K1mhGF+WSl
- spdtO3A7Th/KLnvX+DjbZm3zToT6PcjCrbk9qtuG10Iu7kzuXtyXggOAh56yTiCCsIABF4Wjp
- VHM7FR3JPw7mNzhlHeQu820C6cMQU2PTvtURwokjNMTErEvKmPTGcEK/tLHMstyQKM6GDhq6c
- btrsp2/4viobF5S95lmjauhUD70xtjoM++nRxaiWTdLP9zVTTLM7pjn/y3wjmFfM6RohSl2ua
- lAY8LKl8TwSS/mVHh7go0ayCzl1ipY2swKi2wm6V2rH8bRUSj68+ingGl3/M+mDDsFcqtl3gq
- EAx6RMj5DIPZy8CeLT3Nd9Px41iNa0w7hO/x38j0pJQzpsUUo8CfvGbJvxE01hrTXn9a1cttD
- JqYdfBz
+X-Provags-ID: V03:K1:mrZi9Ar49V9DYdY7q+vZdNvimd9kXbpNmAiL1FYMaMxqK4wnDxP
+ f9Pa7XcepjHX/7ImXsEV3nFqJklNQJHc9HaUC0SSNOk74DKvtfprntO7caHnHUAoTfxL+No
+ icFkLS3eBqLtATAfrlXOPl6OFnuFzNhZNR3vlX4YVuTN+QcsNyag//NjA8NCxhRcNol9hXk
+ RUvIOzoUf7Am8jlvXR/6w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4qpTGFmweS4=:nteVoG6tyJzcpQ4k4Zz4wZ
+ fBXmFs48upxQE0JTZv9k3uPYuy2frg2LPamXUtt7k/zyH8dcxJUN/FT6B2p1Zt77x7PhM0qtU
+ agmdX4Fqh7bjk6fZvwOWKkLJi4oZJ3/n6Nvsn+5yi6ohZ8JAysOlVnX9Bm6H7GtdhditcoUGl
+ 6fn/0GLhe74J+4IlvcgWcES4wrAcoO05KK3ojsXxTbdOIHjhl4SDykvQLwGDCobIaPX0fzWgk
+ pal9eBDGuf3S0eg/zVrQVdgFJVhoN+CAHExnBbMRXJ/cePROROMCMDOYZCR0Nk4LVYAVfD2Lf
+ MpCUiH2TzfksxtsDspPZFFW1VOPNDizhvHfmzMbsKswG5g8JMvT6F48iZlh/E2YCWH2rRp1Ii
+ zxVeJZqGFqGwnKtGV5YmbAq8LHYNcN6KyZPvGdaBGwzWNfsbMXV2LWoIX3ICRRTzUSEBEXy29
+ Xgz3XSRaMFxQ7iE5P9UUrQta0CmD3/yBv/mExAxYBzO3vj9g03lg4S3ikYCi4Ug5sXqaWpcu9
+ iaBpTkTQ3qDbuGduRerIm1K/ZpwLZIlSVVJu07SrP/fxCNfFK0U3Wwwmxw0kZBqKjEGXZYr/X
+ GG9IbQJ8jbzxh1Zr1O4m/yDTnEU1hAfBz+lScmMUaf40SY7G8XNZM+8MkLrLhnr1bBzYqqaF7
+ PyC6zkn6yE3KUdP4L8UYpUOzPLUq/FvxAo8XS2zDPWWCaNOXWcTAZfcWk1jgDvjfcTPUbB4QP
+ detxOh/d+wV6fvFnrkRByuqBLYh6hcohg2dC9neb3AvXuAD2QgMIDbvsmoz9cEqIeOVMS6/T8
+ ND3g2YU
 Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -65,30 +65,49 @@ List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 03 Nov 2022 16:18:03 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 16:18:03 -0000
 
 From: Stefan Weil <sw@weilnetz.de>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Message-Id: <20220422070144.1043697-2-sw@weilnetz.de>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20220422070144.1043697-4-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- subprojects/libvhost-user/libvhost-user.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ subprojects/libvhost-user/libvhost-user.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
-index ffed4729a3dc..d9a6e3e5560f 100644
+index d67953a1c39c..f7b45b3066c1 100644
 --- a/subprojects/libvhost-user/libvhost-user.c
 +++ b/subprojects/libvhost-user/libvhost-user.c
-@@ -651,7 +651,7 @@ generate_faults(VuDev *dev) {
+@@ -45,6 +45,17 @@
+ #include "libvhost-user.h"
  
-         if (ioctl(dev->postcopy_ufd, UFFDIO_REGISTER, &reg_struct)) {
-             vu_panic(dev, "%s: Failed to userfault region %d "
--                          "@%p + size:%zx offset: %zx: (ufd=%d)%s\n",
-+                          "@%" PRIx64 " + size:%zx offset: %zx: (ufd=%d)%s\n",
-                      __func__, i,
-                      dev_region->mmap_addr,
-                      dev_region->size, dev_region->mmap_offset,
+ /* usually provided by GLib */
++#if     __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ > 4)
++#if !defined(__clang__) && (__GNUC__ == 4 && __GNUC_MINOR__ == 4)
++#define G_GNUC_PRINTF(format_idx, arg_idx) \
++  __attribute__((__format__(gnu_printf, format_idx, arg_idx)))
++#else
++#define G_GNUC_PRINTF(format_idx, arg_idx) \
++  __attribute__((__format__(__printf__, format_idx, arg_idx)))
++#endif
++#else   /* !__GNUC__ */
++#define G_GNUC_PRINTF(format_idx, arg_idx)
++#endif  /* !__GNUC__ */
+ #ifndef MIN
+ #define MIN(x, y) ({                            \
+             typeof(x) _min1 = (x);              \
+@@ -151,7 +162,7 @@ vu_request_to_string(unsigned int req)
+     }
+ }
+ 
+-static void
++static void G_GNUC_PRINTF(2, 3)
+ vu_panic(VuDev *dev, const char *msg, ...)
+ {
+     char *buf = NULL;
 -- 
 2.37.3
 
