@@ -1,46 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqcuP-0000kp-OS
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 12:17:37 -0400
+	id 1oqcuq-0000y7-H5
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 12:18:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuN-0000ff-5u; Thu, 03 Nov 2022 12:17:35 -0400
-Received: from mout.kundenserver.de ([212.227.126.134])
+ id 1oqcuQ-0000m2-Qu; Thu, 03 Nov 2022 12:17:39 -0400
+Received: from mout.kundenserver.de ([212.227.126.133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuK-00084L-Gh; Thu, 03 Nov 2022 12:17:34 -0400
+ id 1oqcuO-00085V-QS; Thu, 03 Nov 2022 12:17:38 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue009
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MNss4-1ofZEO2BkO-00OGCU; Thu, 03
- Nov 2022 17:17:28 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MqJuN-1pKRgb1fL1-00nRhV; Thu, 03
+ Nov 2022 17:17:34 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 00/10] Trivial branch for 7.2 patches
-Date: Thu,  3 Nov 2022 17:17:17 +0100
-Message-Id: <20221103161727.4116147-1-laurent@vivier.eu>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 10/10] tests/unit: simpler variable sequence for test-io-channel
+Date: Thu,  3 Nov 2022 17:17:27 +0100
+Message-Id: <20221103161727.4116147-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20221103161727.4116147-1-laurent@vivier.eu>
+References: <20221103161727.4116147-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:CS/ef4TvcNMijeb9VfAa9DX4Y4p0ywcrvbe8CLqkgOM/o10/bFy
- FLvrTgYOpDojRsZxrVVmH+igUQpPjYXBA3N6h33CoQjKxjEyLMgP3VEDI58m95jZGZLSvN6
- CcZCH2LJAr89syuxTDxDQ2dAY1knC3NLtNW+6eJishRAwkxa5ksy1L4eY0vrsqRqSuP7eKa
- dB49qQeR25GpT6O6HYxzQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+Z3lqpX7xQM=:1m4Im9d/fhMkEBU/icmkgJ
- m0m9DmBHBHaOCHM/eAw6qOYFbsPvRm8lSBf/fsB4HICMSCZ69r+CQDRIoC3kdLgv0oExqlcyl
- DlnGwkt9k60msMK5s1hqrswZOm7BbEunFIe3nelD3wpl/408xKG/wvnJjBQWe11CsTsH3uPoM
- /6sUXFrMF8ASxzDMuGuy1EaGIZ3zRXK6pbkf0gKYfJenyNPuGck9LdEvm9x2uYaXWjyz6RrdK
- gpLw8sgsF3sot2T0elRCJMKV0lrbWpzPcvf4RRK/zL7PrO1kzQTjQ/MVc2WtO/7tfdSC5gA25
- s7j2H2fyjq2o2aqa1mw6s3qs1PeVuudK+zAyBJ51Yal04frgabfNnECQ7O/hyFt75cf816nyj
- ofd/2YNb88zU3YhM995MX2uPJ3nBny2z/FVjlhfNE3TJM6FPr+kna7fjyGcRr7NSE+uDBb3gl
- S7JVXi7HViW74ltXajDasg9UD5Nm8nhvFNCTWWAPOOEWBxvHC7eJ13jO+zQ2bE+QcI+sJ6kJP
- KSND8K6fTJBJHW2Pzg2nrrgBgsn/xn8xYK97trx7cZWMhuJ2/ZWDy2d3n3YU6Ba08FRvXv9+i
- ciHg4Tl01Fz7zL6WBLNVC/zTBIMe4B44T/sf8OE5VFAGa18TIAEY8oYM9q8+nkppMKFpWcGPj
- k+eSiEuGwn54+lvxWLlN2sSOqztSCc8uKtk8gEAynFRJCAxFdDCyg2Npfa3ObDQMjm7fWDSNn
- kOCU1bOl+Wg1tVgn6OFM2XPMEkJiwuuZ/fXOlXwwypsHV/5SncAvLGmfpUjT2Kct661inJpSO
- Wn/tuTH
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:c/GXiQlgCQTRKFlS7hWkhPX2gAqA09KgnpcFLaMdH187e47V6oD
+ ZGgXEuGej375hBe7kZ/yI309c1Ja/Y/RYCJY/u+Tujg+uRIhCdnwYOmJ5H2S87aE+Xn5prz
+ hVx8a6TVtCbnElour7K0zd+el+Y0Fnl5IpNF9OjZ4H9m0C6f+qbitMf3F9iHdIDceJtYcEw
+ ITeatCIQzuVOxf22Mtegg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:T4mLWOp+/RY=:qTX80NiRnnUdDHGm9srG3B
+ J03kqOKIRKfQwXOM1YLO4STSS8O8OdveKoOmGwxNwMtdLpetBASX2NMPKUg9bmpbj0XI6erkC
+ OVYwNadwV1R4N5kGC7yHFAqQs/xVgYCJB0TygROECijucE55pwvgpfY38Bxb9IebR2vRZj85Z
+ 6IjtXHmwIgvoq9oN79W0XnK8KHjKkJTRINlCN8fi9GvzwikyBrBNpWt9VF2tFo79FTcrcTX9+
+ bQsQZX5kRiSLKfcPdMDy1vJAuEw5KZBSgePSUdtYgKIUSMTJpFNksZdYlyJWwBMd/3laHsjjG
+ 70z9bCK52ZlIfFIZsD/TbJNjMNoCYf8Z329IyO6yYgG4j3SLuYO8n4rOWXx6SAFKEijPO26L8
+ NNY8LSKzv6MThA3Cfj8WfioPJQHfztaIUfFC7XOfMtqXwKEBp4El0ZfbURUL65BpQ+cHHEpnH
+ dsm62+aqjrphpsh4neVOFTTtQkAp6jZ6/ZRiu/4nRCg2EfDla4XFxMhIWf1YvKbOJl7BP1447
+ a3ZKXzhQ6SbT7yJ7cf/3N/z0FZLgMTcQdYBKX3Lkg+jsB0URDz/Q6LPsr98OZ9W3tUdHGzUhM
+ 1Ob/KplVvBOWHPtwxMKznfajRruIR3/SRFKyKJY6+ymTg6Mj0TRIUoB3pr9EzpzX1MbE0Wyau
+ FUzJpPqoDW0yGW2npDZrEAy5cHAceZNmxunJxDVv/j7d5vh9FGzze9TUmhne19wvI5O7p3ndi
+ yBc/SBK8EW/gZgOcpfrQWqKTfLWoZelfzbC+H4fSd1DTlQ0eyllgN7NY646Qxkcv3QAS6ghB6
+ FS7fQbQ
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -60,72 +64,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2022 16:17:35 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 16:17:39 -0000
 
-The following changes since commit a11f65ec1b8adcb012b89c92819cbda4dc25aaf1:
+From: Alex Bennée <alex.bennee@linaro.org>
 
-  Merge tag 'block-pull-request' of https://gitlab.com/stefanha/qemu into staging (2022-11-01 13:49:33 -0400)
+This avoids some compilers complaining about a potentially
+un-initialised [src|dst]argv. In retrospect using GString was overkill
+for what we are constructing.
 
-are available in the Git repository at:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20221103102329.2581508-1-alex.bennee@linaro.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ tests/unit/test-io-channel-command.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
 
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.2-pull-request
-
-for you to fetch changes up to 489db95896b86dacdde9dab1de84745880449e37:
-
-  tests/unit: simpler variable sequence for test-io-channel (2022-11-03 17:16:34 +0100)
-
-----------------------------------------------------------------
-Pull request trivial branch 20221103
-
-----------------------------------------------------------------
-
-Alex Bennée (1):
-  tests/unit: simpler variable sequence for test-io-channel
-
-Chuck Zmudzinski (1):
-  xen/pt: fix syntax error that causes FTBFS in some configurations
-
-Han Han (1):
-  qapi: virtio: Fix the introduced version
-
-Philippe Mathieu-Daudé (3):
-  target/m68k: Rename qregs.def -> qregs.h.inc
-  target/s390x: Rename insn-data/format.def -> insn-data/format.h.inc
-  target/tricore: Rename csfr.def -> csfr.h.inc
-
-Stefan Weil (4):
-  Fix some typos in documentation and comments
-  libvhost-user: Fix wrong type of argument to formatting function
-    (reported by LGTM)
-  libvhost-user: Fix format strings
-  libvhost-user: Add format attribute to local function vu_panic
-
- docs/devel/testing.rst                        |  2 +-
- docs/system/arm/cpu-features.rst              |  2 +-
- docs/system/loongarch/loongson3.rst           |  2 +-
- docs/tools/virtiofsd.rst                      |  2 +-
- hw/xen/meson.build                            |  2 +-
- include/exec/memory.h                         |  2 +-
- qapi/qom.json                                 |  2 +-
- qapi/virtio.json                              | 34 +++++++++----------
- qemu-options.hx                               | 10 +++---
- qga/qapi-schema.json                          |  2 +-
- subprojects/libvhost-user/libvhost-user.c     | 19 ++++++++---
- target/m68k/{qregs.def => qregs.h.inc}        |  0
- target/m68k/translate.c                       |  4 +--
- .../tcg/{insn-data.def => insn-data.h.inc}    |  2 +-
- .../{insn-format.def => insn-format.h.inc}    |  0
- target/s390x/tcg/translate.c                  | 10 +++---
- target/tricore/{csfr.def => csfr.h.inc}       |  0
- target/tricore/translate.c                    |  4 +--
- tests/qtest/libqtest.h                        |  2 +-
- tests/unit/test-io-channel-command.c          | 14 +++-----
- 20 files changed, 60 insertions(+), 55 deletions(-)
- rename target/m68k/{qregs.def => qregs.h.inc} (100%)
- rename target/s390x/tcg/{insn-data.def => insn-data.h.inc} (99%)
- rename target/s390x/tcg/{insn-format.def => insn-format.h.inc} (100%)
- rename target/tricore/{csfr.def => csfr.h.inc} (100%)
-
+diff --git a/tests/unit/test-io-channel-command.c b/tests/unit/test-io-channel-command.c
+index 43e29c8cfbf4..19f72eab961d 100644
+--- a/tests/unit/test-io-channel-command.c
++++ b/tests/unit/test-io-channel-command.c
+@@ -33,19 +33,13 @@ static void test_io_channel_command_fifo(bool async)
+ {
+     g_autofree gchar *tmpdir = g_dir_make_tmp("qemu-test-io-channel.XXXXXX", NULL);
+     g_autofree gchar *fifo = g_strdup_printf("%s/%s", tmpdir, TEST_FIFO);
+-    g_autoptr(GString) srcargs = g_string_new(socat);
+-    g_autoptr(GString) dstargs = g_string_new(socat);
+-    g_auto(GStrv) srcargv;
+-    g_auto(GStrv) dstargv;
++    g_autofree gchar *srcargs = g_strdup_printf("%s - PIPE:%s,wronly", socat, fifo);
++    g_autofree gchar *dstargs = g_strdup_printf("%s PIPE:%s,rdonly -", socat, fifo);
++    g_auto(GStrv) srcargv = g_strsplit(srcargs, " ", -1);
++    g_auto(GStrv) dstargv = g_strsplit(dstargs, " ", -1);
+     QIOChannel *src, *dst;
+     QIOChannelTest *test;
+ 
+-    g_string_append_printf(srcargs, " - PIPE:%s,wronly", fifo);
+-    g_string_append_printf(dstargs, " PIPE:%s,rdonly -", fifo);
+-
+-    srcargv = g_strsplit(srcargs->str, " ", -1);
+-    dstargv = g_strsplit(dstargs->str, " ", -1);
+-
+     src = QIO_CHANNEL(qio_channel_command_new_spawn((const char **) srcargv,
+                                                     O_WRONLY,
+                                                     &error_abort));
 -- 
 2.37.3
 
