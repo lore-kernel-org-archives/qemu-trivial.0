@@ -1,61 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqWqB-0000qc-R8
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 05:48:53 -0400
+	id 1oqY5P-0001cv-Nc
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 07:08:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqWpb-0000by-EG; Thu, 03 Nov 2022 05:48:21 -0400
-Received: from mout.kundenserver.de ([217.72.192.75])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqWpZ-00068J-JM; Thu, 03 Nov 2022 05:48:15 -0400
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mirb8-1pV6N11Hgi-00exNt; Thu, 03 Nov 2022 10:48:07 +0100
-Message-ID: <0790f70d-2b8a-ade7-c847-91e856b532dc@vivier.eu>
-Date: Thu, 3 Nov 2022 10:48:04 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oqY5A-0001Xf-8O
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 07:08:26 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oqY58-0001qM-JN
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 07:08:23 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ m7-20020a05600c090700b003cf8a105d9eso944521wmp.5
+ for <qemu-trivial@nongnu.org>; Thu, 03 Nov 2022 04:08:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xIbQCrkcJfImG8cdWqyClu3+i6GpExPlrGJWMiW5x9o=;
+ b=yk6tk2s2b60kXcaAhe4wNfxkBtYWpFA1K2NaPuVRgbUZumyWUlqzUQDH867PcyR3DI
+ o6FNVY6aOSKXv6p3IQQKbOn7BQgmn1lfym4m/xJgZAS8QAfyDpr+rRRP+jKafFOFtpPu
+ 8jz9YqIPg8dWdyiN02aGEmIJLdA/jYQ2GRRmYLA6jiKrGikbBxFs8Eyi9m0gQlD78Afk
+ bcxOeuwxE9fqT6exOoos9Q10znLhHQlsUl2U/cojNdlsbqiCKUnnAxYM9vvt6jU+G/Z6
+ JcRDmOPBsf0rMUxoDXpLkTvztI//wtSGQDegXAX8aXs+Iv5U0Edxd28c452y0mHpSC0X
+ U6MA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xIbQCrkcJfImG8cdWqyClu3+i6GpExPlrGJWMiW5x9o=;
+ b=jrVS/PDTyZUL8DOr3SArbW19twF0X7GMxLhEiCLfvhRS5OM2lMP4MFgxFuBBRrpJtp
+ jgbS2JbjFIvUOvQudYic3F/UDEmjDcsod8y5lHI6pGNtZubTvtm/NoHFggdSQyHwJBN0
+ 0SAfttAZZ8G0bkT0bV2bNxWAf//HgK+YD8avw9eLp519rX3W9MmYp2OHTACYeNxdpnq4
+ jSeSGz+n2IlPmyOEhDzl7OOXrWwu2+Hxen3farikV4tlpLC80+P9NeZi23sx3vvV9GwM
+ IYTnkhGOSz4Oh+gSElRjj0L5IjMbx/Aa+sdEjF3zoasgCRiu2yZ0qqrsrvfJ9OWhS5su
+ X+dw==
+X-Gm-Message-State: ACrzQf052/nD6Y7aVD1uBOqQqhEStqNd9lBzu2hxIExxRHka/hPKpcX/
+ rUFapu4/9E5CDNIHE9CveQZ/mjX2JNm1AQ==
+X-Google-Smtp-Source: AMsMyM6r4RIbo5Gvq6pAOFS7Yja9gtbO0j6tdOjHtDepDH1TdPZDF/PaWbzAL8K42W2zswCgNGvN4A==
+X-Received: by 2002:a05:600c:468e:b0:3c6:f510:735c with SMTP id
+ p14-20020a05600c468e00b003c6f510735cmr18638999wmo.179.1667473701169; 
+ Thu, 03 Nov 2022 04:08:21 -0700 (PDT)
+Received: from [192.168.182.175] (216.red-88-29-181.dynamicip.rima-tde.net.
+ [88.29.181.216]) by smtp.gmail.com with ESMTPSA id
+ h1-20020a05600c350100b003c6c182bef9sm5625522wmq.36.2022.11.03.04.08.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 03 Nov 2022 04:08:20 -0700 (PDT)
+Message-ID: <77d8aaea-cab9-6e79-7fea-b228b7a9d82d@linaro.org>
+Date: Thu, 3 Nov 2022 12:08:18 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH] tests/unit/test-io-channel-command: Silence GCC error
- "maybe-uninitialized"
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20221101213937.21149-1-shentey@gmail.com>
- <875yfxkssf.fsf@linaro.org>
-Content-Language: fr
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <875yfxkssf.fsf@linaro.org>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.1
+Subject: Re: [PATCH] Add missing include statement for global xml_builtin
+Content-Language: en-US
+To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20221103083815.464612-1-sw@weilnetz.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221103083815.464612-1-sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/0lAFdeYb9bsFKPtW3cIFO8aFAAj5LFisFUoXXE25srucbY/CGW
- FLIAbE0l0O7I8FK1qe9jAfwL3v689YgeuDiYxgBHeX9ESNpK6b6MTBgXsJtQVWExYPYG6xG
- puIeHOhJGkdgYV0xF2JZGQ5RAFvrdDYXyNgLRNyTutM6eJbVnjXxLsIardqlBzP/1MtWcBZ
- 1VYUTingVKwgscyY5Q1Fg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:IXVsWJcOPaI=:GxvVTsDcPKyDGmZ7X54hsM
- 6QmumtVLmGYoRIE+F+cPPpe7LKB+/RfDbkSgNmY/yhvRruZZg8W0jCOWFRbzqwqF0dgcXiVSu
- IRERlcz8MWLMsGi7nEsu79+nwmKz5Pcg/xzpwAtw5EgP/rSJzShleWc59Iy+AS9m3RX2Spxmn
- tt+AFh0y5bzX5GPltSgbPuBdr4feEAhJDJLwt8uawF/7XhP5wWlKzeSob4KRUu1QmiK5479B2
- fRdvbvOAdNsbJegHfjILBXFUi2r90NH++uNW8xnfnG0YPEngAHVlp3OSHDo2PItkva0Q19KkI
- t2rrJ3NK/PPtelIp8lknrimBU6NnX3N4zD7HAho+t6NigIlEN454+vkz8ZbmdcXJmqGOr+71I
- uhjZ6Qw9neFuoBAKOoLf9xJXu85Pg4Mrr4C/NXPMJhDbf13dG4LgN7DH1UAeYUbYdAGsDbDdS
- LAIjU17vGOyz3Av9YZK2XR0Xa/TM3eUvBsJz10Oa5J5sm1RS9m39osrsAP72rLyc61A+k8DpG
- M4vOXJQQCle9HoEsV/HaYmZmGU7cEmDNTiu8oP3DJ6nXnIYJPyzMqcJU/nUgKJXcbLcMnso9A
- 8HrTK02bt0u7/0TY8z5jUqRLwILN2VyNdtdXWoafzzK5p8lQL7nf7UZlLLUefU0KXf8bEgNP6
- A9DKktH061k1BKNo2GH7AHHiEwecDRhCed4Wgr3ri9RlqbdIaD4TQpeEeh7I/g60xIhhHieZC
- CUVMgO3iypFIwuBKBA3R6V48+Agy+Iue2Pe7Z7TzDb27HuZfTPCarlc+xZk+g1+9V+T4QUtcs
- 3953pFe
-Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,105 +81,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2022 09:48:41 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 11:08:28 -0000
 
-Le 02/11/2022 à 21:24, Alex Bennée a écrit :
+On 3/11/22 09:38, Stefan Weil via wrote:
+> This fixes some compiler warnings with compiler flag
+> -Wmissing-variable-declarations (tested with clang):
 > 
-> Bernhard Beschow <shentey@gmail.com> writes:
+>      aarch64_be-linux-user-gdbstub-xml.c:564:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
+>      aarch64-linux-user-gdbstub-xml.c:564:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
+>      aarch64-softmmu-gdbstub-xml.c:1763:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
 > 
->> GCC issues a false positive warning, resulting in build failure with -Werror:
->>
->>    In file included from /usr/lib/glib-2.0/include/glibconfig.h:9,
->>                     from /usr/include/glib-2.0/glib/gtypes.h:34,
->>                     from /usr/include/glib-2.0/glib/galloca.h:34,
->>                     from /usr/include/glib-2.0/glib.h:32,
->>                     from ../src/include/glib-compat.h:32,
->>                     from ../src/include/qemu/osdep.h:144,
->>                     from ../src/tests/unit/test-io-channel-command.c:21:
->>    /usr/include/glib-2.0/glib/gmacros.h: In function ‘test_io_channel_command_fifo’:
->>    /usr/include/glib-2.0/glib/gmacros.h:1333:105: error: ‘dstargv’ may be used uninitialized [-Werror=maybe-uninitialized]
->>     1333 |   static G_GNUC_UNUSED inline void _GLIB_AUTO_FUNC_NAME(TypeName) (TypeName *_ptr) { if (*_ptr != none) (func) (*_ptr); }     \
->>          |                                                                                                         ^
->>    ../src/tests/unit/test-io-channel-command.c:39:19: note: ‘dstargv’ was declared here
->>       39 |     g_auto(GStrv) dstargv;
->>          |                   ^~~~~~~
->>    /usr/include/glib-2.0/glib/gmacros.h:1333:105: error: ‘srcargv’ may
->> be used uninitialized [-Werror=maybe-uninitialized]
->>     1333 | static G_GNUC_UNUSED inline void
->> _GLIB_AUTO_FUNC_NAME(TypeName) (TypeName *_ptr) { if (*_ptr != none)
->> (func) (*_ptr); } \
->>          |                                                                                                         ^
->>    ../src/tests/unit/test-io-channel-command.c:38:19: note: ‘srcargv’ was declared here
->>       38 |     g_auto(GStrv) srcargv;
->>          |                   ^~~~~~~
->>    cc1: all warnings being treated as errors
->>
->> GCC version:
->>
->>    $ gcc --version
->>    gcc (GCC) 12.2.0
->>
->> Fixes: 68406d10859385c88da73d0106254a7f47e6652e ('tests/unit: cleanups for test-io-channel-command')
->> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->> ---
->>   tests/unit/test-io-channel-command.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/tests/unit/test-io-channel-command.c b/tests/unit/test-io-channel-command.c
->> index 43e29c8cfb..ba0717d3c3 100644
->> --- a/tests/unit/test-io-channel-command.c
->> +++ b/tests/unit/test-io-channel-command.c
->> @@ -35,8 +35,8 @@ static void test_io_channel_command_fifo(bool async)
->>       g_autofree gchar *fifo = g_strdup_printf("%s/%s", tmpdir, TEST_FIFO);
->>       g_autoptr(GString) srcargs = g_string_new(socat);
->>       g_autoptr(GString) dstargs = g_string_new(socat);
->> -    g_auto(GStrv) srcargv;
->> -    g_auto(GStrv) dstargv;
->> +    g_auto(GStrv) srcargv = NULL;
->> +    g_auto(GStrv) dstargv = NULL;
->>       QIOChannel *src, *dst;
->>       QIOChannelTest *test;
-> 
-> Another approach would be to drop the GString usage which is premature
-> and then we can allocate everything in order:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>   scripts/feature_to_c.sh | 1 +
+>   1 file changed, 1 insertion(+)
 
-Yes, it looks like a better approach. I'm going to drop this patch from the trivial branch.
-
-Could you send a patch?
-
-Thanks,
-Laurent
-
-> 
-> --8<---------------cut here---------------start------------->8---
-> modified   tests/unit/test-io-channel-command.c
-> @@ -33,19 +33,13 @@ static void test_io_channel_command_fifo(bool async)
->   {
->       g_autofree gchar *tmpdir = g_dir_make_tmp("qemu-test-io-channel.XXXXXX", NULL);
->       g_autofree gchar *fifo = g_strdup_printf("%s/%s", tmpdir, TEST_FIFO);
-> -    g_autoptr(GString) srcargs = g_string_new(socat);
-> -    g_autoptr(GString) dstargs = g_string_new(socat);
-> -    g_auto(GStrv) srcargv;
-> -    g_auto(GStrv) dstargv;
-> +    g_autofree gchar *srcargs = g_strdup_printf("%s - PIPE:%s,wronly", socat, fifo);
-> +    g_autofree gchar *dstargs = g_strdup_printf("%s PIPE:%s,rdonly -", socat, fifo);
-> +    g_auto(GStrv) srcargv = g_strsplit(srcargs, " ", -1);
-> +    g_auto(GStrv) dstargv = g_strsplit(dstargs, " ", -1);
->       QIOChannel *src, *dst;
->       QIOChannelTest *test;
->   
-> -    g_string_append_printf(srcargs, " - PIPE:%s,wronly", fifo);
-> -    g_string_append_printf(dstargs, " PIPE:%s,rdonly -", fifo);
-> -
-> -    srcargv = g_strsplit(srcargs->str, " ", -1);
-> -    dstargv = g_strsplit(dstargs->str, " ", -1);
-> -
->       src = QIO_CHANNEL(qio_channel_command_new_spawn((const char **) srcargv,
->                                                       O_WRONLY,
-> --8<---------------cut here---------------end--------------->8---
-> 
-> 
-> 
-> 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
