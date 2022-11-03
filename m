@@ -1,72 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqY5P-0001cv-Nc
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 07:08:42 -0400
+	id 1oqYix-0006sJ-Nj
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 07:49:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oqY5A-0001Xf-8O
- for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 07:08:26 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oqYic-0006mR-Bf
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 07:49:21 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oqY58-0001qM-JN
- for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 07:08:23 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- m7-20020a05600c090700b003cf8a105d9eso944521wmp.5
- for <qemu-trivial@nongnu.org>; Thu, 03 Nov 2022 04:08:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1oqYiZ-0000Cz-Pk
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 07:49:09 -0400
+Received: by mail-pf1-x435.google.com with SMTP id m6so1393272pfb.0
+ for <qemu-trivial@nongnu.org>; Thu, 03 Nov 2022 04:49:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xIbQCrkcJfImG8cdWqyClu3+i6GpExPlrGJWMiW5x9o=;
- b=yk6tk2s2b60kXcaAhe4wNfxkBtYWpFA1K2NaPuVRgbUZumyWUlqzUQDH867PcyR3DI
- o6FNVY6aOSKXv6p3IQQKbOn7BQgmn1lfym4m/xJgZAS8QAfyDpr+rRRP+jKafFOFtpPu
- 8jz9YqIPg8dWdyiN02aGEmIJLdA/jYQ2GRRmYLA6jiKrGikbBxFs8Eyi9m0gQlD78Afk
- bcxOeuwxE9fqT6exOoos9Q10znLhHQlsUl2U/cojNdlsbqiCKUnnAxYM9vvt6jU+G/Z6
- JcRDmOPBsf0rMUxoDXpLkTvztI//wtSGQDegXAX8aXs+Iv5U0Edxd28c452y0mHpSC0X
- U6MA==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=JaaT6AL6V4GSHM3aZ04xCdYXCqKPVK5C7p0zfX1D8jA=;
+ b=HypRgTJYVOfkTEmo++FQRvYPY7/Y+kRwYQJIsfUBdKFnTq07ODBVlKy/jBDdlh8Bw1
+ Agknywkz9440iqbg2MfsAWrbGP0uapwg0WJl1wiUH+ek8KlN86MXYkK/cu6kA60+sMFj
+ ByZhMsbFCWb6hFwX3TBEA4H3IZpzlKYlg8DnvV16JOXWX/YrLQBpvnJSIV4LTxSq5Nok
+ Ns/qQDexlXNevTJQsmSf0dgmNH4orwBbgFvv+RIYJ4rYcbNMvOcr1Ollk3Z+faa3SNvw
+ 4NfT4RKdgL6cIPQ0MiQU4y+R69INrpCzbids6txOTMXGBNFhNFNstJqHRRKBRw9O2nyn
+ CmTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xIbQCrkcJfImG8cdWqyClu3+i6GpExPlrGJWMiW5x9o=;
- b=jrVS/PDTyZUL8DOr3SArbW19twF0X7GMxLhEiCLfvhRS5OM2lMP4MFgxFuBBRrpJtp
- jgbS2JbjFIvUOvQudYic3F/UDEmjDcsod8y5lHI6pGNtZubTvtm/NoHFggdSQyHwJBN0
- 0SAfttAZZ8G0bkT0bV2bNxWAf//HgK+YD8avw9eLp519rX3W9MmYp2OHTACYeNxdpnq4
- jSeSGz+n2IlPmyOEhDzl7OOXrWwu2+Hxen3farikV4tlpLC80+P9NeZi23sx3vvV9GwM
- IYTnkhGOSz4Oh+gSElRjj0L5IjMbx/Aa+sdEjF3zoasgCRiu2yZ0qqrsrvfJ9OWhS5su
- X+dw==
-X-Gm-Message-State: ACrzQf052/nD6Y7aVD1uBOqQqhEStqNd9lBzu2hxIExxRHka/hPKpcX/
- rUFapu4/9E5CDNIHE9CveQZ/mjX2JNm1AQ==
-X-Google-Smtp-Source: AMsMyM6r4RIbo5Gvq6pAOFS7Yja9gtbO0j6tdOjHtDepDH1TdPZDF/PaWbzAL8K42W2zswCgNGvN4A==
-X-Received: by 2002:a05:600c:468e:b0:3c6:f510:735c with SMTP id
- p14-20020a05600c468e00b003c6f510735cmr18638999wmo.179.1667473701169; 
- Thu, 03 Nov 2022 04:08:21 -0700 (PDT)
-Received: from [192.168.182.175] (216.red-88-29-181.dynamicip.rima-tde.net.
- [88.29.181.216]) by smtp.gmail.com with ESMTPSA id
- h1-20020a05600c350100b003c6c182bef9sm5625522wmq.36.2022.11.03.04.08.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Nov 2022 04:08:20 -0700 (PDT)
-Message-ID: <77d8aaea-cab9-6e79-7fea-b228b7a9d82d@linaro.org>
-Date: Thu, 3 Nov 2022 12:08:18 +0100
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JaaT6AL6V4GSHM3aZ04xCdYXCqKPVK5C7p0zfX1D8jA=;
+ b=M0q4dTDQYsYCYWQWPXAj39EW/hAZ2poV0h4ZXwzikwCU3zd7TamxWZ5Qz6t/z85Hxg
+ PFQvzjFKLjK6dyxgvAg89y6cN/fydF7Sd5On7Kw6dYVfyH1Ogj+vhQgiSSqaN8CMZ7AE
+ HbTIx7603q6MRSx4ksWxECzQd8zxjfhrnbS717RFli2gg9+ddaNrcS+jXYGXz/zUAScS
+ 8BlTw1nnxkYlfDpopQ+qFINiinMsn+/z4EaCOeWo32adjL2uCNdqW+LCu02KbbQRMpho
+ FChnFmVWswmpIvex3RqejwUlnYTOfguOnnnCiZOa6qTFpgpCQewm4xXhlanpYYRViBVB
+ y6bA==
+X-Gm-Message-State: ACrzQf0ll4hyNp5ZyKnWXPzrZN9CqWtkuZyt/q8LqZGhwKbB0VudArSI
+ AQFUxUb8uPOmlh+dCg30ydGIBjWuZXVq9EYrCpSHhvF5Cd8=
+X-Google-Smtp-Source: AMsMyM4kWIk/lbJYayUZH0dYcHtkmELEclLVbUXPSUQK6dv61g3esCG3n9Iwa7YilWJnbe+3jNu8Kzgc3g9H/73EgZk=
+X-Received: by 2002:a63:84c6:0:b0:46f:f8b0:ba09 with SMTP id
+ k189-20020a6384c6000000b0046ff8b0ba09mr10186227pgd.192.1667476145363; Thu, 03
+ Nov 2022 04:49:05 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.1
-Subject: Re: [PATCH] Add missing include statement for global xml_builtin
-Content-Language: en-US
-To: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-References: <20221103083815.464612-1-sw@weilnetz.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221103083815.464612-1-sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+References: <20221102202258.456359-1-sw@weilnetz.de>
+In-Reply-To: <20221102202258.456359-1-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Nov 2022 11:48:53 +0000
+Message-ID: <CAFEAcA_qLBPvn02wGcAuyQQObgF0PVb=V3OtnG+C51N69xhCjQ@mail.gmail.com>
+Subject: Re: [PATCH for 7.2] Fix broken configure with -Wunused-parameter
+To: Stefan Weil <sw@weilnetz.de>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -81,21 +72,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2022 11:08:28 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 11:49:21 -0000
 
-On 3/11/22 09:38, Stefan Weil via wrote:
-> This fixes some compiler warnings with compiler flag
-> -Wmissing-variable-declarations (tested with clang):
-> 
->      aarch64_be-linux-user-gdbstub-xml.c:564:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
->      aarch64-linux-user-gdbstub-xml.c:564:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
->      aarch64-softmmu-gdbstub-xml.c:1763:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
-> 
+On Wed, 2 Nov 2022 at 20:24, Stefan Weil via <qemu-devel@nongnu.org> wrote:
+>
+> The configure script fails because it tries to compile small C programs
+> with a main function which is declared with arguments argc and argv
+> although those arguments are unused.
+>
+> Running `configure -extra-cflags=-Wunused-parameter` triggers the problem.
+> configure for a native build does abort but shows the error in config.log.
+> A cross build configure for Windows with Debian stable aborts with an
+> error.
+>
+> Avoiding unused arguments fixes this.
+>
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
->   scripts/feature_to_c.sh | 1 +
->   1 file changed, 1 insertion(+)
+>
+> See https://gitlab.com/qemu-project/qemu/-/issues/1295.
+>
+> I noticed the problem because I often compile with -Wextra.
+>
+> Stefan
+>
+>  configure | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+>
+> diff --git a/configure b/configure
+> index 4275f5419f..1106c04fea 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1258,6 +1258,7 @@ if test "$stack_protector" != "no"; then
+>    cat > $TMPC << EOF
+>  int main(int argc, char *argv[])
+>  {
+> +    (void)argc;
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+I'm not a huge fan of this syntax, and it doesn't match the way
+we deal with "argument is unused" elsewhere in the codebase
+(where we either don't care about it or else use the GCC 'unused'
+attribute hidden behind the glib G_GNUC_UNUSED macro).
 
+I am surprised that this didn't get caught by the check in
+do_compiler_werror(), which is supposed to report "this
+configure test passed without -Werror but failed with
+-Werror, so configure is probably buggy.". That's what's
+supposed to catch "your compiler warns on stuff our doesn't
+in the test case programs".
+
+If you're building with --disable-werror then configure
+should be OK anyway. This is probably a good idea if you want
+to build with extra warning arguments in --extra-cflags.
+If it doesn't work right even with --disable-werror that's
+also something we should investigate.
+
+>      char arr[64], *p = arr, *c = argv[0];
+>      while (*c) {
+>          *p++ = *c++;
+> @@ -1607,7 +1608,7 @@ fi
+>
+>  if test "$safe_stack" = "yes"; then
+>  cat > $TMPC << EOF
+> -int main(int argc, char *argv[])
+> +int main(void)
+>  {
+>  #if ! __has_feature(safe_stack)
+>  #error SafeStack Disabled
+> @@ -1629,7 +1630,7 @@ EOF
+>    fi
+>  else
+>  cat > $TMPC << EOF
+> -int main(int argc, char *argv[])
+> +int main(void)
+>  {
+>  #if defined(__has_feature)
+>  #if __has_feature(safe_stack)
+> @@ -1675,7 +1676,7 @@ static const int Z = 1;
+>  #define TAUT(X) ((X) == Z)
+>  #define PAREN(X, Y) (X == Y)
+>  #define ID(X) (X)
+> -int main(int argc, char *argv[])
+> +int main(void)
+>  {
+>      int x = 0, y = 0;
+>      x = ID(x);
+
+No objection to the cases where we can pass "void", that's
+a neater way to write the test anyway.
+
+thanks
+-- PMM
 
