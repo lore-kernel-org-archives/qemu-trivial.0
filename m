@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqcuq-0000y7-H5
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 12:18:06 -0400
+	id 1oqcvs-0001ic-O5
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 12:19:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuQ-0000m2-Qu; Thu, 03 Nov 2022 12:17:39 -0400
-Received: from mout.kundenserver.de ([212.227.126.133])
+ id 1oqcuR-0000oR-Lu; Thu, 03 Nov 2022 12:18:00 -0400
+Received: from mout.kundenserver.de ([212.227.126.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuO-00085V-QS; Thu, 03 Nov 2022 12:17:38 -0400
+ id 1oqcuO-00085X-QX; Thu, 03 Nov 2022 12:17:39 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue009
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MqJuN-1pKRgb1fL1-00nRhV; Thu, 03
- Nov 2022 17:17:34 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1Mwfj0-1pE4y83nLO-00y8uq; Thu, 03
+ Nov 2022 17:17:31 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 10/10] tests/unit: simpler variable sequence for test-io-channel
-Date: Thu,  3 Nov 2022 17:17:27 +0100
-Message-Id: <20221103161727.4116147-11-laurent@vivier.eu>
+Subject: [PULL 04/10] libvhost-user: Fix wrong type of argument to formatting
+ function (reported by LGTM)
+Date: Thu,  3 Nov 2022 17:17:21 +0100
+Message-Id: <20221103161727.4116147-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221103161727.4116147-1-laurent@vivier.eu>
 References: <20221103161727.4116147-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:c/GXiQlgCQTRKFlS7hWkhPX2gAqA09KgnpcFLaMdH187e47V6oD
- ZGgXEuGej375hBe7kZ/yI309c1Ja/Y/RYCJY/u+Tujg+uRIhCdnwYOmJ5H2S87aE+Xn5prz
- hVx8a6TVtCbnElour7K0zd+el+Y0Fnl5IpNF9OjZ4H9m0C6f+qbitMf3F9iHdIDceJtYcEw
- ITeatCIQzuVOxf22Mtegg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:T4mLWOp+/RY=:qTX80NiRnnUdDHGm9srG3B
- J03kqOKIRKfQwXOM1YLO4STSS8O8OdveKoOmGwxNwMtdLpetBASX2NMPKUg9bmpbj0XI6erkC
- OVYwNadwV1R4N5kGC7yHFAqQs/xVgYCJB0TygROECijucE55pwvgpfY38Bxb9IebR2vRZj85Z
- 6IjtXHmwIgvoq9oN79W0XnK8KHjKkJTRINlCN8fi9GvzwikyBrBNpWt9VF2tFo79FTcrcTX9+
- bQsQZX5kRiSLKfcPdMDy1vJAuEw5KZBSgePSUdtYgKIUSMTJpFNksZdYlyJWwBMd/3laHsjjG
- 70z9bCK52ZlIfFIZsD/TbJNjMNoCYf8Z329IyO6yYgG4j3SLuYO8n4rOWXx6SAFKEijPO26L8
- NNY8LSKzv6MThA3Cfj8WfioPJQHfztaIUfFC7XOfMtqXwKEBp4El0ZfbURUL65BpQ+cHHEpnH
- dsm62+aqjrphpsh4neVOFTTtQkAp6jZ6/ZRiu/4nRCg2EfDla4XFxMhIWf1YvKbOJl7BP1447
- a3ZKXzhQ6SbT7yJ7cf/3N/z0FZLgMTcQdYBKX3Lkg+jsB0URDz/Q6LPsr98OZ9W3tUdHGzUhM
- 1Ob/KplVvBOWHPtwxMKznfajRruIR3/SRFKyKJY6+ymTg6Mj0TRIUoB3pr9EzpzX1MbE0Wyau
- FUzJpPqoDW0yGW2npDZrEAy5cHAceZNmxunJxDVv/j7d5vh9FGzze9TUmhne19wvI5O7p3ndi
- yBc/SBK8EW/gZgOcpfrQWqKTfLWoZelfzbC+H4fSd1DTlQ0eyllgN7NY646Qxkcv3QAS6ghB6
- FS7fQbQ
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:DRx/k9FrF3CT7v/leTeBoqsMrLA3YzW11Mk/egNgsQZzlXaZl7/
+ GBQPo5f2uWN4kaaSDC0SavYb4BNqUStO4bddj1F1Tz4dm6cDM+x9A4yrBpCTJe4EBxpOxNN
+ VxwcYq2L9BJvuxnHW+qiw+zBEMgYoGyvUEPn169twa/FfRrLULOeHV0/EHrM5qleSj4Y/Dn
+ ilqp4AEbHFVhpoZqnorUA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6QWw3QR2Hmg=:OfRFcUsb2VroKZGwJ69juo
+ uRah2E7SOaudj4i/A+osJTTU5F8+ovsHm7rPtBLvDBUFmpNWavycqg/LLFmW52WMAC3sHBAhd
+ HDfHnw/Ss96wYIAC+ecjKqQG7ct0oVLA+aZDxjjOCjEyBiVrENt7Cb1gyIp/4J4kqbwi62YA4
+ RsNIVpVAcBRFIIOBfGDnhMX6WBIB9hVQTBidFJxPegPIW7zVHfIJIE0gOxSBJ80clB69ZWm1F
+ ivqCA84Ynf5WEmHAR/ZhDrzgGDT86QpjQjeA41Lq9V1LL/KLvGhUv4GTzpAghiWU7F/xCCAaU
+ HG6fH9si7HZyKR4P4VPi3Tnm7sLUCXwOwHcWLugt1+VQ96UtnuzOBWpTgY4ZT21t5bsduIIR7
+ PLfgyKMsjLl3YkO/2q6vzn7iCCWwrxW+vrvz7IJIa7uIVosvVFxI2LSYKKb5gM0K1mhGF+WSl
+ spdtO3A7Th/KLnvX+DjbZm3zToT6PcjCrbk9qtuG10Iu7kzuXtyXggOAh56yTiCCsIABF4Wjp
+ VHM7FR3JPw7mNzhlHeQu820C6cMQU2PTvtURwokjNMTErEvKmPTGcEK/tLHMstyQKM6GDhq6c
+ btrsp2/4viobF5S95lmjauhUD70xtjoM++nRxaiWTdLP9zVTTLM7pjn/y3wjmFfM6RohSl2ua
+ lAY8LKl8TwSS/mVHh7go0ayCzl1ipY2swKi2wm6V2rH8bRUSj68+ingGl3/M+mDDsFcqtl3gq
+ EAx6RMj5DIPZy8CeLT3Nd9Px41iNa0w7hO/x38j0pJQzpsUUo8CfvGbJvxE01hrTXn9a1cttD
+ JqYdfBz
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,51 +64,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2022 16:17:39 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 16:18:03 -0000
 
-From: Alex Bennée <alex.bennee@linaro.org>
+From: Stefan Weil <sw@weilnetz.de>
 
-This avoids some compilers complaining about a potentially
-un-initialised [src|dst]argv. In retrospect using GString was overkill
-for what we are constructing.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20221103102329.2581508-1-alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Message-Id: <20220422070144.1043697-2-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/unit/test-io-channel-command.c | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
+ subprojects/libvhost-user/libvhost-user.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/unit/test-io-channel-command.c b/tests/unit/test-io-channel-command.c
-index 43e29c8cfbf4..19f72eab961d 100644
---- a/tests/unit/test-io-channel-command.c
-+++ b/tests/unit/test-io-channel-command.c
-@@ -33,19 +33,13 @@ static void test_io_channel_command_fifo(bool async)
- {
-     g_autofree gchar *tmpdir = g_dir_make_tmp("qemu-test-io-channel.XXXXXX", NULL);
-     g_autofree gchar *fifo = g_strdup_printf("%s/%s", tmpdir, TEST_FIFO);
--    g_autoptr(GString) srcargs = g_string_new(socat);
--    g_autoptr(GString) dstargs = g_string_new(socat);
--    g_auto(GStrv) srcargv;
--    g_auto(GStrv) dstargv;
-+    g_autofree gchar *srcargs = g_strdup_printf("%s - PIPE:%s,wronly", socat, fifo);
-+    g_autofree gchar *dstargs = g_strdup_printf("%s PIPE:%s,rdonly -", socat, fifo);
-+    g_auto(GStrv) srcargv = g_strsplit(srcargs, " ", -1);
-+    g_auto(GStrv) dstargv = g_strsplit(dstargs, " ", -1);
-     QIOChannel *src, *dst;
-     QIOChannelTest *test;
+diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
+index ffed4729a3dc..d9a6e3e5560f 100644
+--- a/subprojects/libvhost-user/libvhost-user.c
++++ b/subprojects/libvhost-user/libvhost-user.c
+@@ -651,7 +651,7 @@ generate_faults(VuDev *dev) {
  
--    g_string_append_printf(srcargs, " - PIPE:%s,wronly", fifo);
--    g_string_append_printf(dstargs, " PIPE:%s,rdonly -", fifo);
--
--    srcargv = g_strsplit(srcargs->str, " ", -1);
--    dstargv = g_strsplit(dstargs->str, " ", -1);
--
-     src = QIO_CHANNEL(qio_channel_command_new_spawn((const char **) srcargv,
-                                                     O_WRONLY,
-                                                     &error_abort));
+         if (ioctl(dev->postcopy_ufd, UFFDIO_REGISTER, &reg_struct)) {
+             vu_panic(dev, "%s: Failed to userfault region %d "
+-                          "@%p + size:%zx offset: %zx: (ufd=%d)%s\n",
++                          "@%" PRIx64 " + size:%zx offset: %zx: (ufd=%d)%s\n",
+                      __func__, i,
+                      dev_region->mmap_addr,
+                      dev_region->size, dev_region->mmap_offset,
 -- 
 2.37.3
 
