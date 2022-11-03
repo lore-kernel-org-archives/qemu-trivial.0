@@ -1,56 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqcw2-0002j1-Vh
+	id 1oqcw3-0002nO-Eu
 	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 12:19:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuf-0000uM-3U; Thu, 03 Nov 2022 12:18:00 -0400
-Received: from mout.kundenserver.de ([212.227.126.130])
+ id 1oqcuf-0000uN-4J; Thu, 03 Nov 2022 12:18:00 -0400
+Received: from mout.kundenserver.de ([212.227.126.134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuN-00084o-8R; Thu, 03 Nov 2022 12:17:50 -0400
+ id 1oqcuR-00087M-Jg; Thu, 03 Nov 2022 12:17:45 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue009
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1M4s91-1oquHz2WN5-00227l; Thu, 03
- Nov 2022 17:17:32 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MyseA-1pBt793ZYY-00vvzg; Thu, 03
+ Nov 2022 17:17:34 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PULL 07/10] target/m68k: Rename qregs.def -> qregs.h.inc
-Date: Thu,  3 Nov 2022 17:17:24 +0100
-Message-Id: <20221103161727.4116147-8-laurent@vivier.eu>
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 09/10] target/tricore: Rename csfr.def -> csfr.h.inc
+Date: Thu,  3 Nov 2022 17:17:26 +0100
+Message-Id: <20221103161727.4116147-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221103161727.4116147-1-laurent@vivier.eu>
 References: <20221103161727.4116147-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:dvSvIvrw089J35lQcZ5ZNwsAyp6pHEQriT/6QC8+EUZR+X4Sysz
- 28+Jn1wuzMsEsT6wJPY5SkEhAgpIzyC1oSt0roITnQ1CxpTEHTiNk3qgWXtaeTEDXa33tqk
- eLqGUJaVKpwHGZdGgTlJverFgwGiv3ocM9TBFw/hv7sS1QMWsA5bQbhLTw7Ed9k/o/QvZKg
- OhtK7PqEcPBdthzHB31VQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sAzmYMz7mPg=:ECIKIPHBSWip6pktqXpVrB
- +OoxHulp9tErouyS/IeFpTChZNP7G92dOMBDwIWr+U6/OWcSPYGbtq7qoczE0K/Fk0Ui+fizv
- tCcfI6mLb8Yzs2h1O4jqgJWeqoNCXagCCTT+WvGjZPv61QSVbnQ8Pzu8L1TDjm4ppB8JJQpuw
- Jc6vfEir2GRqU8pi231M2CDW5l+SsuH5QIALchzJQGEZvADk7NUhLDvsV+myMFYZu6dt03XOa
- JW/2huczSe+tniR89O5rziuuIhB5Qr47rwxFD/MQJwSn2ex3SrNHHunVpIIxM68pmjOIHamRr
- DZqTOmhZ4gQj8aWKQFBU5/a7HxvmlIhn23AV8UwS3b9cqlnxuEGv9t9bJ31Psi40QTtJnx/n/
- AfnbZHaWAUb4TT58+6Wd/G+Dq+PlnApQIc0wRwt4J/inZHWJgji3qRYXI/nMz7sy7RC8lykKF
- XdoI8heTc15+bokNl0TAZjN7Cs9cVaHcLB7ug4/RlmlVuf4DcnKklIqETW11mqjHzAN6xt9Ae
- R9vAiVotWibOUtzoYXjkZKlVmFrASzz1jo0XGFHnjpg7Pbt5hO7lZeoJo3hQRRn+WpqXOkdkb
- eivO8yRe6syipZcErU1spehQGovNDwKT05tNQyVhkUtObx8HUtANZJi9qrgehuSAtYhMaPWm4
- ZLDB4PXYsWGZ/pGZH65Hhu2Jy5ZUCoLg7rIKGq7aQa1CysklsMCSU4rGgmIHpaolncbvyV7NB
- 01lOTRgOhsfh26eylvKwECVVn8OsLhiTI5v9hOFfoSbA/H+e2bRInWvxI0rc/RM/O5byJJhq1
- HTabcWH
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:8E4dBtgYRVoAC+EnsgpeE+/ot8vvhCoHU3BGrydozZryu+ic0iv
+ WZZjWNa8FkQhtRKyUyrZqMFNZxXhCt/YneHlQRoPfLsN4GrekzAXqJv/oFne5I5Ea8EKwGF
+ vEknyxaUD2FL9CMQ2TZnVqKCbXRd2GmOSmT5/bJo5gd2pvbBJsrmimJ6HMhPQbUZf7MSTFJ
+ PAsOT6DxANB4K+vURDnsA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6Z5eQ/yeXMs=:8fSExvAy4KMEnQrxN0gOqt
+ Xxuuellsnm9W42jJMm0vJ/ffDNYdP9GTAGN5joPLFYhI/muJHdhHlM5NXYaTAqsObRFZKxPTh
+ wbSWaVENaRtz1968b6iigKP460kO5QapB2Bp3cCV4xwxrkw5Xqo/bWXAve1+Kq33/y4jnuJEa
+ u7wkSdMgmqgHm/kZL8ZiNPRweWNY54Cv2gh1pxNPmTdAqYx3Xgf03c8AZXaQgh6RtFIOZomOW
+ ASB7bVCH7uAC3pCxC31PAxf21Fy4Ftz6Pl3r5Sf6BM3YaGubD7/FJ2CYM/7bF4iMg7lY5VmpG
+ SV05gVs+fAULH8pY0iB8gjsrvaBhCj8ACqGDwZtUHioMv3QOMzOtJQPR1hbsmHpWA7b9MdpLJ
+ hTNBBAlp4ekCeHroe2WFsqzWVZQ5uG2sYnYqO1dh8zBHoPOrVA8cA4vz7EmB3YqzWgpqT2WY1
+ TEcAHBXsLM+zQx9Q5gl2euEfcciEKtKC0nBzCmwkakUE9sNQPaB6Tzp+J4m9APvxeWYn2krTH
+ DLSBC/21cRJ2Nov5Bq5JoGUBpDzT4pq6HDAbLLC1CwqyQQEevUYEsmbeVsWJPUDYbaMLVBaFI
+ cgSfbapu+d3OcVWdm7UYcuQmByQy0iOTwpATBT72I1YccyVBApYTV5LZra/eMD7IAlJ2SFvkj
+ 3X6u9R9sYkS8dkVJycUXOAhd5LL6CxrgRTKZIBt+zTdIHLpB8EyBZgny7nK/xDsBavkCPJVcD
+ YM+zO5127dJxsWu13JyGa7PPTai87U/khmEQXmd9bp0ILsBrAKtPmd/iEM4r14fxlsjvUrIiN
+ gIQzbrv
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_NONE=0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,7 +65,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2022 16:18:13 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 16:18:15 -0000
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
@@ -75,42 +77,42 @@ IDE/tools using our .editorconfig / .gitattributes will leverage
 this consistency.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20221025235006.7215-2-philmd@linaro.org>
+Message-Id: <20221025235006.7215-4-philmd@linaro.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/m68k/{qregs.def => qregs.h.inc} | 0
- target/m68k/translate.c                | 4 ++--
+ target/tricore/{csfr.def => csfr.h.inc} | 0
+ target/tricore/translate.c              | 4 ++--
  2 files changed, 2 insertions(+), 2 deletions(-)
- rename target/m68k/{qregs.def => qregs.h.inc} (100%)
+ rename target/tricore/{csfr.def => csfr.h.inc} (100%)
 
-diff --git a/target/m68k/qregs.def b/target/m68k/qregs.h.inc
+diff --git a/target/tricore/csfr.def b/target/tricore/csfr.h.inc
 similarity index 100%
-rename from target/m68k/qregs.def
-rename to target/m68k/qregs.h.inc
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 5cbde4be3404..18418312b14b 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -39,7 +39,7 @@
- 
- #define DEFO32(name, offset) static TCGv QREG_##name;
- #define DEFO64(name, offset) static TCGv_i64 QREG_##name;
--#include "qregs.def"
-+#include "qregs.h.inc"
- #undef DEFO32
- #undef DEFO64
- 
-@@ -75,7 +75,7 @@ void m68k_tcg_init(void)
- #define DEFO64(name, offset) \
-     QREG_##name = tcg_global_mem_new_i64(cpu_env, \
-         offsetof(CPUM68KState, offset), #name);
--#include "qregs.def"
-+#include "qregs.h.inc"
- #undef DEFO32
- #undef DEFO64
- 
+rename from target/tricore/csfr.def
+rename to target/tricore/csfr.h.inc
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index c5b7bfbf2013..df9e46c6495e 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -388,7 +388,7 @@ static inline void gen_mfcr(DisasContext *ctx, TCGv ret, int32_t offset)
+         gen_helper_psw_read(ret, cpu_env);
+     } else {
+         switch (offset) {
+-#include "csfr.def"
++#include "csfr.h.inc"
+         }
+     }
+ }
+@@ -418,7 +418,7 @@ static inline void gen_mtcr(DisasContext *ctx, TCGv r1,
+             gen_helper_psw_write(cpu_env, r1);
+         } else {
+             switch (offset) {
+-#include "csfr.def"
++#include "csfr.h.inc"
+             }
+         }
+     } else {
 -- 
 2.37.3
 
