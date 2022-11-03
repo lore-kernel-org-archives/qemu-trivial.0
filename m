@@ -1,58 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqcw3-0002nO-Eu
+	id 1oqcw3-0002p8-QS
 	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 12:19:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuf-0000uN-4J; Thu, 03 Nov 2022 12:18:00 -0400
-Received: from mout.kundenserver.de ([212.227.126.134])
+ id 1oqcuU-0000p2-K7; Thu, 03 Nov 2022 12:18:00 -0400
+Received: from mout.kundenserver.de ([212.227.126.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1oqcuR-00087M-Jg; Thu, 03 Nov 2022 12:17:45 -0400
+ id 1oqcuP-00085v-40; Thu, 03 Nov 2022 12:17:39 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue009
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MyseA-1pBt793ZYY-00vvzg; Thu, 03
- Nov 2022 17:17:34 +0100
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1N49Yn-1oyuQk1rXN-0100kB; Thu, 03
+ Nov 2022 17:17:31 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 09/10] target/tricore: Rename csfr.def -> csfr.h.inc
-Date: Thu,  3 Nov 2022 17:17:26 +0100
-Message-Id: <20221103161727.4116147-10-laurent@vivier.eu>
+Subject: [PULL 05/10] libvhost-user: Fix format strings
+Date: Thu,  3 Nov 2022 17:17:22 +0100
+Message-Id: <20221103161727.4116147-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221103161727.4116147-1-laurent@vivier.eu>
 References: <20221103161727.4116147-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8E4dBtgYRVoAC+EnsgpeE+/ot8vvhCoHU3BGrydozZryu+ic0iv
- WZZjWNa8FkQhtRKyUyrZqMFNZxXhCt/YneHlQRoPfLsN4GrekzAXqJv/oFne5I5Ea8EKwGF
- vEknyxaUD2FL9CMQ2TZnVqKCbXRd2GmOSmT5/bJo5gd2pvbBJsrmimJ6HMhPQbUZf7MSTFJ
- PAsOT6DxANB4K+vURDnsA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6Z5eQ/yeXMs=:8fSExvAy4KMEnQrxN0gOqt
- Xxuuellsnm9W42jJMm0vJ/ffDNYdP9GTAGN5joPLFYhI/muJHdhHlM5NXYaTAqsObRFZKxPTh
- wbSWaVENaRtz1968b6iigKP460kO5QapB2Bp3cCV4xwxrkw5Xqo/bWXAve1+Kq33/y4jnuJEa
- u7wkSdMgmqgHm/kZL8ZiNPRweWNY54Cv2gh1pxNPmTdAqYx3Xgf03c8AZXaQgh6RtFIOZomOW
- ASB7bVCH7uAC3pCxC31PAxf21Fy4Ftz6Pl3r5Sf6BM3YaGubD7/FJ2CYM/7bF4iMg7lY5VmpG
- SV05gVs+fAULH8pY0iB8gjsrvaBhCj8ACqGDwZtUHioMv3QOMzOtJQPR1hbsmHpWA7b9MdpLJ
- hTNBBAlp4ekCeHroe2WFsqzWVZQ5uG2sYnYqO1dh8zBHoPOrVA8cA4vz7EmB3YqzWgpqT2WY1
- TEcAHBXsLM+zQx9Q5gl2euEfcciEKtKC0nBzCmwkakUE9sNQPaB6Tzp+J4m9APvxeWYn2krTH
- DLSBC/21cRJ2Nov5Bq5JoGUBpDzT4pq6HDAbLLC1CwqyQQEevUYEsmbeVsWJPUDYbaMLVBaFI
- cgSfbapu+d3OcVWdm7UYcuQmByQy0iOTwpATBT72I1YccyVBApYTV5LZra/eMD7IAlJ2SFvkj
- 3X6u9R9sYkS8dkVJycUXOAhd5LL6CxrgRTKZIBt+zTdIHLpB8EyBZgny7nK/xDsBavkCPJVcD
- YM+zO5127dJxsWu13JyGa7PPTai87U/khmEQXmd9bp0ILsBrAKtPmd/iEM4r14fxlsjvUrIiN
- gIQzbrv
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:DaAzxpunnE4Trt5uAmlU5MSU3Szgv3nMuT8A+6hWxO2xE+/myHE
+ 1AkAsavioJvVsBH8HijkdqFuBx68ZLXpxrjFgMhYUIVQ3Y5/OL7Yc81mUsKIj6ZXXbzwpps
+ TPa4GkwOI5WG0NvgDqSuduFn7mgNABCY/f8AGDgCLvV2mOREkKjNjtZezN6zPEi0748y/xl
+ hqbel2qfBJXEbAwtB5jVA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:X3oWzjLM9Fs=:DF3uP6tbNHT+f+HjTYmqcU
+ aYBD3NXAo+GDAhb3yfkBIt0RcUMb80eP7kBwplOoQO4bSGcP5ck4przsZH0sE93TKX8DJxBIX
+ 6QZIG6m73GnPDpE+yN88QPs3Lafd7jiDIHbyEsCJ4yItoUrM8hwez1IcmWecrDKcpH2M80lRA
+ gaaDipje2I+ZNxQnxyF6GrEodjYh9NXr8bz03U1RpnrpUt+iwJBpp5dOWpRR2siNV0790XHOG
+ E+fY3Wi0bodHo8zuLyK9pN4l4TgbuGGlkvy3CWSORsIulnFdkAxnUCP1ZPpIKYLpPWbxFXJuc
+ BH6pbmMVM6c04oq43Sg2Re1P/D/zArXWL5lE7WechfI7Gdb9wUxkbg7JCUcv04C7V9RRwdFbK
+ fFEeYyJKbucciW/lDYqyI/8bxrnPn55omS+Prlbq2XlAOMvbk18LzMs3Y4DPdGbYX1SWTdq1R
+ zumstXa19CPA0rqGtySuZ51PbNfpx5KqcPrvDBFBlPm7FVxCbTDTIFXVZdi8SJS6njaqMqcCg
+ 37gyKRYyLT+OnX4T3HcfSxijXBTLovw8Sc+UeI6hqzQ+TnAOiGFDnwww56OTeuqJBTmLYHUgW
+ xWuVWGWSBNjT8xbPZ/yH62hhV8dJqtwcR32xgPiX9Vi9IuH1LiL0xUBLAL5aBWe9r9706v98+
+ A8Gm67IZI5P3vTRgCgnAJz0f3HmsndGrgTiMyHowNyfbyarBkPywR7XkAAbD6N+7h8nDmp4+k
+ qmIvRAEcQBHZ2VqJitkNgBVBGXKK10SBT3RqyhICIdnqj+upBWCNKw0oKbpQsY8wilEhTLVnA
+ zg9CaCT
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_NONE=0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,54 +63,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2022 16:18:15 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 16:18:16 -0000
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Stefan Weil <sw@weilnetz.de>
 
-We use the .h.inc extension to include C headers. To be consistent
-with the rest of the codebase, rename the C headers using the .def
-extension.
-
-IDE/tools using our .editorconfig / .gitattributes will leverage
-this consistency.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20221025235006.7215-4-philmd@linaro.org>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20220422070144.1043697-3-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/tricore/{csfr.def => csfr.h.inc} | 0
- target/tricore/translate.c              | 4 ++--
- 2 files changed, 2 insertions(+), 2 deletions(-)
- rename target/tricore/{csfr.def => csfr.h.inc} (100%)
+ subprojects/libvhost-user/libvhost-user.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/tricore/csfr.def b/target/tricore/csfr.h.inc
-similarity index 100%
-rename from target/tricore/csfr.def
-rename to target/tricore/csfr.h.inc
-diff --git a/target/tricore/translate.c b/target/tricore/translate.c
-index c5b7bfbf2013..df9e46c6495e 100644
---- a/target/tricore/translate.c
-+++ b/target/tricore/translate.c
-@@ -388,7 +388,7 @@ static inline void gen_mfcr(DisasContext *ctx, TCGv ret, int32_t offset)
-         gen_helper_psw_read(ret, cpu_env);
-     } else {
-         switch (offset) {
--#include "csfr.def"
-+#include "csfr.h.inc"
-         }
+diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
+index d9a6e3e5560f..d67953a1c39c 100644
+--- a/subprojects/libvhost-user/libvhost-user.c
++++ b/subprojects/libvhost-user/libvhost-user.c
+@@ -700,7 +700,7 @@ vu_add_mem_reg(VuDev *dev, VhostUserMsg *vmsg) {
+     if (vmsg->size < VHOST_USER_MEM_REG_SIZE) {
+         close(vmsg->fds[0]);
+         vu_panic(dev, "VHOST_USER_ADD_MEM_REG requires a message size of at "
+-                      "least %d bytes and only %d bytes were received",
++                      "least %zu bytes and only %d bytes were received",
+                       VHOST_USER_MEM_REG_SIZE, vmsg->size);
+         return false;
      }
- }
-@@ -418,7 +418,7 @@ static inline void gen_mtcr(DisasContext *ctx, TCGv r1,
-             gen_helper_psw_write(cpu_env, r1);
-         } else {
-             switch (offset) {
--#include "csfr.def"
-+#include "csfr.h.inc"
-             }
-         }
-     } else {
+@@ -826,7 +826,7 @@ vu_rem_mem_reg(VuDev *dev, VhostUserMsg *vmsg) {
+     if (vmsg->size < VHOST_USER_MEM_REG_SIZE) {
+         vmsg_close_fds(vmsg);
+         vu_panic(dev, "VHOST_USER_REM_MEM_REG requires a message size of at "
+-                      "least %d bytes and only %d bytes were received",
++                      "least %zu bytes and only %d bytes were received",
+                       VHOST_USER_MEM_REG_SIZE, vmsg->size);
+         return false;
+     }
 -- 
 2.37.3
 
