@@ -1,36 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqVk6-00020D-VL
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 04:38:30 -0400
+	id 1oqW3w-0004gj-86
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2022 04:59:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1oqVjz-0001yt-Fa; Thu, 03 Nov 2022 04:38:25 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1oqW3u-0004fp-M7
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 04:58:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1oqVjx-0002W8-Pj; Thu, 03 Nov 2022 04:38:23 -0400
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 2BB31DA0439;
- Thu,  3 Nov 2022 09:38:17 +0100 (CET)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
- id 10CA14621B3; Thu,  3 Nov 2022 09:38:17 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH] Add missing include statement for global xml_builtin
-Date: Thu,  3 Nov 2022 09:38:15 +0100
-Message-Id: <20221103083815.464612-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1oqW3s-0006fO-SL
+ for qemu-trivial@nongnu.org; Thu, 03 Nov 2022 04:58:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1667465935;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=wxSKoxafMKvWF0ywBsQCAbUM4AgroH712lc68iJqXfA=;
+ b=Y+0e8Dg6D3ywRjvwlbdzSM/V0j/G6uLZi6Cg0kWdCZ1+G5amWArRkitVyOo8sxbn+4ziXa
+ tE97kxniyf2fiwCcngYGz6PKjuOl3yQpBf68OfjRWakvmciwtBwLGGfoBHDT+wcjkq9W/r
+ hhfSEHlorKqvTnjyzQ5cijGXmY4yAbA=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-609-OfkXP7iMO1Sukff95TFNXw-1; Thu, 03 Nov 2022 04:58:52 -0400
+X-MC-Unique: OfkXP7iMO1Sukff95TFNXw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B574E85A5A6;
+ Thu,  3 Nov 2022 08:58:51 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.63])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E55BF1415117;
+ Thu,  3 Nov 2022 08:58:50 +0000 (UTC)
+Date: Thu, 3 Nov 2022 08:58:48 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH for 7.2] Fix broken configure with -Wunused-parameter
+Message-ID: <Y2OCyLSw2hurfemT@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20221102202258.456359-1-sw@weilnetz.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20221102202258.456359-1-sw@weilnetz.de>
+User-Agent: Mutt/2.2.7 (2022-08-07)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.048,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -44,33 +69,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2022 08:38:27 -0000
+X-List-Received-Date: Thu, 03 Nov 2022 08:58:59 -0000
 
-This fixes some compiler warnings with compiler flag
--Wmissing-variable-declarations (tested with clang):
+On Wed, Nov 02, 2022 at 09:22:58PM +0100, Stefan Weil via wrote:
+> The configure script fails because it tries to compile small C programs
+> with a main function which is declared with arguments argc and argv
+> although those arguments are unused.
+> 
+> Running `configure -extra-cflags=-Wunused-parameter` triggers the problem.
+> configure for a native build does abort but shows the error in config.log.
+> A cross build configure for Windows with Debian stable aborts with an
+> error.
+> 
+> Avoiding unused arguments fixes this.
 
-    aarch64_be-linux-user-gdbstub-xml.c:564:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
-    aarch64-linux-user-gdbstub-xml.c:564:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
-    aarch64-softmmu-gdbstub-xml.c:1763:19: warning: no previous extern declaration for non-static variable 'xml_builtin' [-Wmissing-variable-declarations]
+I'm not convinced that we should allow -extra-cflags to influence
+the configure compile checks at all, as there are likely more cases
+where arbitrary -W$warn flag will impact the checks, potentially
+causing configure to silently take the wrong action.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- scripts/feature_to_c.sh | 1 +
- 1 file changed, 1 insertion(+)
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+> 
+> See https://gitlab.com/qemu-project/qemu/-/issues/1295.
+> 
+> I noticed the problem because I often compile with -Wextra.
+> 
+> Stefan
+> 
+>  configure | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/configure b/configure
+> index 4275f5419f..1106c04fea 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1258,6 +1258,7 @@ if test "$stack_protector" != "no"; then
+>    cat > $TMPC << EOF
+>  int main(int argc, char *argv[])
+>  {
+> +    (void)argc;
+>      char arr[64], *p = arr, *c = argv[0];
+>      while (*c) {
+>          *p++ = *c++;
+> @@ -1607,7 +1608,7 @@ fi
+>  
+>  if test "$safe_stack" = "yes"; then
+>  cat > $TMPC << EOF
+> -int main(int argc, char *argv[])
+> +int main(void)
+>  {
+>  #if ! __has_feature(safe_stack)
+>  #error SafeStack Disabled
+> @@ -1629,7 +1630,7 @@ EOF
+>    fi
+>  else
+>  cat > $TMPC << EOF
+> -int main(int argc, char *argv[])
+> +int main(void)
+>  {
+>  #if defined(__has_feature)
+>  #if __has_feature(safe_stack)
+> @@ -1675,7 +1676,7 @@ static const int Z = 1;
+>  #define TAUT(X) ((X) == Z)
+>  #define PAREN(X, Y) (X == Y)
+>  #define ID(X) (X)
+> -int main(int argc, char *argv[])
+> +int main(void)
+>  {
+>      int x = 0, y = 0;
+>      x = ID(x);
+> -- 
+> 2.30.2
+> 
+> 
 
-diff --git a/scripts/feature_to_c.sh b/scripts/feature_to_c.sh
-index b1169899c1..c1f67c8f6a 100644
---- a/scripts/feature_to_c.sh
-+++ b/scripts/feature_to_c.sh
-@@ -56,6 +56,7 @@ for input; do
- done
- 
- echo
-+echo '#include "exec/gdbstub.h"'
- echo "const char *const xml_builtin[][2] = {"
- 
- for input; do
+With regards,
+Daniel
 -- 
-2.30.2
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
