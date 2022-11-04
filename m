@@ -1,66 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oqxrG-0003xu-KC
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Nov 2022 10:39:46 -0400
+	id 1oqzNP-0001tb-Pc
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Nov 2022 12:17:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1oqxrE-0003xT-CP; Fri, 04 Nov 2022 10:39:44 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1oqxrC-0003k6-5n; Fri, 04 Nov 2022 10:39:44 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-36cbcda2157so45044347b3.11; 
- Fri, 04 Nov 2022 07:39:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=B/BHVOj8xAoG7l9QBbuTtX2+IW6S1ePSCEuZKYXcStU=;
- b=PrkF7zjeA0YwmHUrXyOQle7YDncoGEWyp+OMhCd+F4GO7+nXtrv8Yn9A1M3a5vuhxY
- J38dZenVTOn4prm6PpJskkkcK8GpQqz9AGUh819X+ZOSQksJgEzl9yRBxOUpvFYca3AA
- JPRrzsrLOYVaFwsn5Tubej5rDmtHFyA/tVQqt8+9MaPAy3EXmGFegdWxc6wI+6JYMusH
- +vQxFGmeiuAPqc7ZSUl5GQcpdcLShgIxmfSd8Wh711f9xO6Axcpx1SgOvB9g3Oi3heYy
- gmHBkA7LZm0cQ4+PWEAY5ZH4TI6ZTpz5K7Hw7ceCzSvCLMS15eRuiukY4hkzzlmRdRf8
- ul5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=B/BHVOj8xAoG7l9QBbuTtX2+IW6S1ePSCEuZKYXcStU=;
- b=NLi0j389A7tFzq5IdBKGY8uD82VzIBzddlsVKYZlOI+kL4lHTA9R5ToQOL0JwnpuMW
- 0T7Y7Qyc+fJ33uyAsRcPnReSjG2LOQObljvsf8abu0DfZz4bx/h7msnlGhl1Y80g4mg4
- CZK5vsn1qh+V3Cy4rODT0gj0VUVEFXh8NwnbWCBv0CTf6gtgJEtCnTNgQuyzpZjvzCFG
- C9IOIbsOZswUzX3D+NLtiFLYUK6LrOvmiKkXgLzy5Wi65Y7ZhRwZvHImETqK3cnEfHA1
- PsoAspfR1/nHZCQJQtxKWOx+u/Wep6jwAg366hz1ZhTiwQ7dBcCl7K3I4DmmkZKO/JHq
- 45sg==
-X-Gm-Message-State: ACrzQf2TdECbGKZhPcm7fNPQ0hLrBlzlgRy10O2VlwmWqnI1+8/xW9u2
- iF27ylrmP/mjTRwWotygzdqqKgrB3arhQ0HJkZI=
-X-Google-Smtp-Source: AMsMyM6r+2FqQhNintFYwF9bXMWF6gjNl4DO2jVne7laAYBhGbuC++687BF+n2rkPAX1RCCIQqqfHphOHbIWe3H/SoI=
-X-Received: by 2002:a81:8445:0:b0:36c:c302:8926 with SMTP id
- u66-20020a818445000000b0036cc3028926mr35527313ywf.296.1667572780133; Fri, 04
- Nov 2022 07:39:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1oqzNF-0001QN-5v; Fri, 04 Nov 2022 12:16:56 -0400
+Received: from mout.kundenserver.de ([217.72.192.74])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1oqzND-0000vB-I3; Fri, 04 Nov 2022 12:16:52 -0400
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MirfG-1pTbuj0Gge-00eshM; Fri, 04 Nov 2022 17:16:45 +0100
+Message-ID: <ba853014-e45e-7fab-fc40-fc11487c51cd@vivier.eu>
+Date: Fri, 4 Nov 2022 17:16:42 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PULL 04/10] libvhost-user: Fix wrong type of argument to
+ formatting function (reported by LGTM)
+Content-Language: fr
+To: Stefan Weil <sw@weilnetz.de>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 References: <20221103161727.4116147-1-laurent@vivier.eu>
-In-Reply-To: <20221103161727.4116147-1-laurent@vivier.eu>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-Date: Fri, 4 Nov 2022 10:39:28 -0400
-Message-ID: <CAJSP0QUG8_sx5Jct1XjGX8_kdYGpJ6akQnnyZbZ8ODNZsfemAQ@mail.gmail.com>
-Subject: Re: [PULL 00/10] Trivial branch for 7.2 patches
-To: Laurent Vivier <laurent@vivier.eu>, Stefan Weil <sw@weilnetz.de>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=stefanha@gmail.com; helo=mail-yw1-x1129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <20221103161727.4116147-5-laurent@vivier.eu>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20221103161727.4116147-5-laurent@vivier.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:KuT1KaIO1ChXtoEym2/L3KO6XIhmNaaqpknWrxxY0nxTVElfmeV
+ aB4749vTloDnN2dZ0mGy2e8tf4hChgesgmp13+U2bWR44SvS7KQUkvKK4NW3+sLZoZ6cv8u
+ 72KeAYCB5pHs69BFVg4jHP8Lt2i7GnJnpPB3KuFJ0409suuKD+vlsGVvqbyQOIHKIYsELVa
+ t7OdcKe8bX0Gqb+uilbkg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jkE46CQltzQ=:xzY35CHNu2mUDB8lU8F24r
+ aJ91UNT1ahkYV0t++Xmvec3d22eIDt0aHSNS5xYBEbE+8On7D7GSPVhIW1HMKMmPWP/WzIrx9
+ xwwWtpg8W86fgrcBn7kviVr5GTlM36+z+z/TJC+HJrcjy3F1LMkdnCLV9xjvaD1AVOrdTu4dw
+ fLiOKIzoh+nqMYWnSlclkJroYy8JWUyHBIUQrHVDHaUYfIGgVnkOfQQrZCefGU871jh48OwBo
+ wY9fgruhvbZtMoWArT5Ug8uCv9sbKCpwho/G/yB6dTR/kH20YRjV6Kh6uce4Vgj1Njj+PVkee
+ Kfmk5iFUdpNy4UR7TOYk1FC4ttwAENQIRGoz6yB0H2TzAaJaD/ktVLZ7FUzGueSDVThzCxW/4
+ VSWqofEm2yBg9P5+1yNtpdGn9+/vBHke1qaQmK7jdp867ID0e+yDj+ymh0Pt0tGiBQ57dlVJZ
+ cJ9ekf0hw/p8vOD05ctBVc5P8bkyAKlBgATJcgSQ6YuMouxHfjAazNBqYszqmYDkHX6+ZcN/O
+ kchi5rqx98t4E6Mck4eIGuXu08ubBIP/nCR4FJUV+KXWI2sV6nOdiR6g0oL4qJULLwRnO3BfP
+ wYUcWxU2R01sHlGPzMMniAcoJiH0/XD2VvepCK6t/h2W+A66ll/1n/YMN0API7JLZsuxXY2AU
+ CkJy37dwY9/a729lQJVuPKiJ7j3Z67p3pweRTmHY+20tGn4B5mFwY6q4+Y/oeAXDOSvevBJYC
+ 5OrGDigDGd+6THtcknnR03M74nV4004VXPqjifxGuGptgwRxvk/jsWyErTgf7SdiLaqqUnflF
+ joN1qE8
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,144 +66,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Nov 2022 14:39:44 -0000
+X-List-Received-Date: Fri, 04 Nov 2022 16:17:01 -0000
 
-Hi Stefan and Laurent,
-Please take a look at this CI failure, I think it's triggered by this
-pull request:
+Hi Stefan,
 
-arm-linux-gnueabi-gcc -Isubprojects/libvhost-user/libvhost-user.a.p
--Isubprojects/libvhost-user -I../subprojects/libvhost-user
--fdiagnostics-color=3Dauto -Wall -Winvalid-pch -Werror -std=3Dgnu11 -O2 -g
--U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3D2 -D_FILE_OFFSET_BITS=3D64
--D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wundef
--Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common
--fwrapv -Wold-style-declaration -Wold-style-definition -Wtype-limits
--Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers
--Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined
--Wimplicit-fallthrough=3D2 -Wno-missing-include-dirs
--Wno-shift-negative-value -Wno-psabi -fstack-protector-strong -fPIE
--pthread -D_GNU_SOURCE -MD -MQ
-subprojects/libvhost-user/libvhost-user.a.p/libvhost-user.c.o -MF
-subprojects/libvhost-user/libvhost-user.a.p/libvhost-user.c.o.d -o
-subprojects/libvhost-user/libvhost-user.a.p/libvhost-user.c.o -c
-../subprojects/libvhost-user/libvhost-user.c
-../subprojects/libvhost-user/libvhost-user.c: In function =E2=80=98generate=
-_faults=E2=80=99:
-../subprojects/libvhost-user/libvhost-user.c:664:27: error: format
-=E2=80=98%zx=E2=80=99 expects argument of type =E2=80=98size_t=E2=80=99, bu=
-t argument 6 has type
-=E2=80=98uint64_t=E2=80=99 {aka =E2=80=98long long unsigned int=E2=80=99} [=
--Werror=3Dformat=3D]
-664 | vu_panic(dev, "%s: Failed to userfault region %d "
-| ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-......
-668 | dev_region->size, dev_region->mmap_offset,
-| ~~~~~~~~~~~~~~~~
-| |
-| uint64_t {aka long long unsigned int}
-../subprojects/libvhost-user/libvhost-user.c:665:50: note: format
-string is defined here
-665 | "@%" PRIx64 " + size:%zx offset: %zx: (ufd=3D%d)%s\n",
-| ~~^
-| |
-| unsigned int
-| %llx
-../subprojects/libvhost-user/libvhost-user.c:664:27: error: format
-=E2=80=98%zx=E2=80=99 expects argument of type =E2=80=98size_t=E2=80=99, bu=
-t argument 7 has type
-=E2=80=98uint64_t=E2=80=99 {aka =E2=80=98long long unsigned int=E2=80=99} [=
--Werror=3Dformat=3D]
-664 | vu_panic(dev, "%s: Failed to userfault region %d "
-| ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-......
-668 | dev_region->size, dev_region->mmap_offset,
-| ~~~~~~~~~~~~~~~~~~~~~~~
-| |
-| uint64_t {aka long long unsigned int}
-../subprojects/libvhost-user/libvhost-user.c:665:62: note: format
-string is defined here
-665 | "@%" PRIx64 " + size:%zx offset: %zx: (ufd=3D%d)%s\n",
-| ~~^
-| |
-| unsigned int
-| %llx
-cc1: all warnings being treated as errors
+Le 03/11/2022 à 17:17, Laurent Vivier a écrit :
+> From: Stefan Weil <sw@weilnetz.de>
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Message-Id: <20220422070144.1043697-2-sw@weilnetz.de>
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+> ---
+>   subprojects/libvhost-user/libvhost-user.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
+> index ffed4729a3dc..d9a6e3e5560f 100644
+> --- a/subprojects/libvhost-user/libvhost-user.c
+> +++ b/subprojects/libvhost-user/libvhost-user.c
+> @@ -651,7 +651,7 @@ generate_faults(VuDev *dev) {
+>   
+>           if (ioctl(dev->postcopy_ufd, UFFDIO_REGISTER, &reg_struct)) {
+>               vu_panic(dev, "%s: Failed to userfault region %d "
+> -                          "@%p + size:%zx offset: %zx: (ufd=%d)%s\n",
+> +                          "@%" PRIx64 " + size:%zx offset: %zx: (ufd=%d)%s\n",
+>                        __func__, i,
+>                        dev_region->mmap_addr,
+>                        dev_region->size, dev_region->mmap_offset,
 
-https://gitlab.com/qemu-project/qemu/-/jobs/3275327714
+They all need PRIx64:
 
-On Thu, 3 Nov 2022 at 12:20, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit a11f65ec1b8adcb012b89c92819cbda4dc25aa=
-f1:
->
->   Merge tag 'block-pull-request' of https://gitlab.com/stefanha/qemu into=
- staging (2022-11-01 13:49:33 -0400)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.2-=
-pull-request
->
-> for you to fetch changes up to 489db95896b86dacdde9dab1de84745880449e37:
->
->   tests/unit: simpler variable sequence for test-io-channel (2022-11-03 1=
-7:16:34 +0100)
->
-> ----------------------------------------------------------------
-> Pull request trivial branch 20221103
->
-> ----------------------------------------------------------------
->
-> Alex Benn=C3=A9e (1):
->   tests/unit: simpler variable sequence for test-io-channel
->
-> Chuck Zmudzinski (1):
->   xen/pt: fix syntax error that causes FTBFS in some configurations
->
-> Han Han (1):
->   qapi: virtio: Fix the introduced version
->
-> Philippe Mathieu-Daud=C3=A9 (3):
->   target/m68k: Rename qregs.def -> qregs.h.inc
->   target/s390x: Rename insn-data/format.def -> insn-data/format.h.inc
->   target/tricore: Rename csfr.def -> csfr.h.inc
->
-> Stefan Weil (4):
->   Fix some typos in documentation and comments
->   libvhost-user: Fix wrong type of argument to formatting function
->     (reported by LGTM)
->   libvhost-user: Fix format strings
->   libvhost-user: Add format attribute to local function vu_panic
->
->  docs/devel/testing.rst                        |  2 +-
->  docs/system/arm/cpu-features.rst              |  2 +-
->  docs/system/loongarch/loongson3.rst           |  2 +-
->  docs/tools/virtiofsd.rst                      |  2 +-
->  hw/xen/meson.build                            |  2 +-
->  include/exec/memory.h                         |  2 +-
->  qapi/qom.json                                 |  2 +-
->  qapi/virtio.json                              | 34 +++++++++----------
->  qemu-options.hx                               | 10 +++---
->  qga/qapi-schema.json                          |  2 +-
->  subprojects/libvhost-user/libvhost-user.c     | 19 ++++++++---
->  target/m68k/{qregs.def =3D> qregs.h.inc}        |  0
->  target/m68k/translate.c                       |  4 +--
->  .../tcg/{insn-data.def =3D> insn-data.h.inc}    |  2 +-
->  .../{insn-format.def =3D> insn-format.h.inc}    |  0
->  target/s390x/tcg/translate.c                  | 10 +++---
->  target/tricore/{csfr.def =3D> csfr.h.inc}       |  0
->  target/tricore/translate.c                    |  4 +--
->  tests/qtest/libqtest.h                        |  2 +-
->  tests/unit/test-io-channel-command.c          | 14 +++-----
->  20 files changed, 60 insertions(+), 55 deletions(-)
->  rename target/m68k/{qregs.def =3D> qregs.h.inc} (100%)
->  rename target/s390x/tcg/{insn-data.def =3D> insn-data.h.inc} (99%)
->  rename target/s390x/tcg/{insn-format.def =3D> insn-format.h.inc} (100%)
->  rename target/tricore/{csfr.def =3D> csfr.h.inc} (100%)
->
-> --
-> 2.37.3
->
->
+typedef struct VuDevRegion {
+     /* Guest Physical address. */
+     uint64_t gpa;
+     /* Memory region size. */
+     uint64_t size;
+     /* QEMU virtual address (userspace). */
+     uint64_t qva;
+     /* Starting offset in our mmaped space. */
+     uint64_t mmap_offset;
+     /* Start address of mmaped space. */
+     uint64_t mmap_addr;
+} VuDevRegion;
+
+Could you fix your patch?
+
+Thanks,
+Laurent
 
