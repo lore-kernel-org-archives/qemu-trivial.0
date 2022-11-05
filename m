@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orPDb-0008Dm-Iq
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 15:52:39 -0400
+	id 1orPDc-0008Eq-QE
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 15:52:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDZ-0008Bg-Ir; Sat, 05 Nov 2022 15:52:37 -0400
-Received: from mout.kundenserver.de ([212.227.17.10])
+ id 1orPDb-0008Ct-34; Sat, 05 Nov 2022 15:52:39 -0400
+Received: from mout.kundenserver.de ([212.227.17.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDX-0003aD-Tt; Sat, 05 Nov 2022 15:52:37 -0400
+ id 1orPDZ-0003aQ-Bs; Sat, 05 Nov 2022 15:52:38 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mrggc-1pKuYf323A-00niqp; Sat, 05
- Nov 2022 20:52:33 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1N2EHo-1p0dUX0X1i-013ajx; Sat, 05
+ Nov 2022 20:52:31 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Chuck Zmudzinski <brchuckz@aol.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 7/7] tests/unit: simpler variable sequence for test-io-channel
-Date: Sat,  5 Nov 2022 20:52:27 +0100
-Message-Id: <20221105195227.354769-8-laurent@vivier.eu>
+Subject: [PULL 3/7] xen/pt: fix syntax error that causes FTBFS in some
+ configurations
+Date: Sat,  5 Nov 2022 20:52:23 +0100
+Message-Id: <20221105195227.354769-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221105195227.354769-1-laurent@vivier.eu>
 References: <20221105195227.354769-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:idn9M6w809Wg0kzBDRVKIgdKyAQZl8yRNnohGPOT3bZ8wB2D+Tj
- 59UHgvUOKM1J99pNc7Jft31BH0W584DHj4A1OhIHktv/9ZichgK3/NlVlE18d/LihG1iEHu
- wnI47fZTP/vSf1iOByTurVGxfqLz3kK/KMES15S3tiykv8/annIApX/iwqxSgfabytFqJYL
- bGcBlbOq1S75nMfOZEAZA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pdIXSVdsuio=:HfKm1WmNnl4jFUYsHPF+1w
- LpS6eNISJg7qhj8o8W55RTiSt3kVaUg4025Ii63CpJtdr/IZhYCEPfAQeNm0iBBJcIweOK/4C
- J9f6Hoknr24yl668j1RJHQ9FpqSBLDyv8ckHQ2ToCiaeyuw8NGc4Z/JdokKkZGu+PBYKkWdzs
- t7s8VA1C2Eksy1GCc7b10eW0a8JK/8E8cQVPZe+CxAYtkqqTbWyhGmxfHgX74s52iex8SCmqE
- J5ivpV1StuASh9HmyVH/pm7YOOBnLQGe+Keo53oGoTCZMixyaUGYqUAeloLv65t09yyHmMk6i
- OV04LRrVYhaljGgFV2Shg/7kv0WXyIwmZTsRUYDtcckcPFvmgMik4jQ1okD1eu5L2K/zTKTCW
- 4E4ZTxCXHXAWKu6bpfZnYmUt61BAl7aquxpwpoENiVUoeOj3XYxueSuNfiUdLJMRbVAINBLGn
- 3q5lLLHxpDUYpfK6CM/lOQvfrnan2f8q6cs2p/gsn5qS1trfZsFu6Ve78C6A2XM6NLx8JrHht
- ulavEWCTmJS7sg3KxgjfsWmgLXn8ommlJE81MVZbeHnL/NXY+RLFb3mFYT0yjaLY92XoywAiO
- oRV78bGv2SO8gNxsDQmI4jKXmy/7NvS22Z10gT+vqE6Yi07HOSwdXQlKgBevTv5i+uhT+iiHn
- OKp7aNmEZta222iLwbN/Yhm+Bl2uZKkk22LLAWoH/puGOu8zE+RKSh57UQnFMuGNMShxruZbw
- PvlMxiuv1pRq7fI1dWcwIbiO4mfxxLpNJoxxRTE1S+dNe+PGfbeDw2oQpoAlW9/4dwsBoqtMK
- i80+zr0
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:cF7pQnyMj3zkUn98Bq+nsABEkYPPift2ikhTQsHi89/JeT5LHe9
+ QYmkZkV1hR0Lh0O/4gbb/W+ndmsBVHf1GW25Dz9pB+I39bvxxu4VpRUc6Y94ba5ii+j3m66
+ ux7hiNmf+LJE6bDhk5ElCZa0seDTCuq0VIhVryHRse6sMYNOHAeMPy+Z3dx64Pw9VGYpLBT
+ 5xJ1W3dJr30dWVM2uvOYA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:n9OfBEKRMZ8=:N99XNzBEcKu/Appa5ZYMqr
+ d4GNoYKg1MEjBGYGP54ft+A/i4EouprzAQr2IlmsnW2xqWjBIRc4l6GR+JB9jjVfjIHzvA70r
+ fKwnKiOhCUxtKPn6anfh2h3reyMwnPm3k5GP+EflD2DIVaIavKE96t87dH/Zwz4JzVQRAo3KA
+ xAM1l3en8JXoaM377Qo3ZygIvgpYoEjesrMQZiOYFeKcVAHNoQtpPeREAGY7OSeOdDE3rYr4D
+ 8c5k9/VJlN/cZtHTeX43HbZSt8o7AvRstQd9ft9bdkNtMN0SCqTHuonGEKyZmHnX1+KgctbIP
+ W1Wrn6ljN8RTqOZPsmyRvPg0qsJxsZaWQYbuM7tzFxxOf8DbbZ+iGmNY4LQcE7cOV9V5N0ouX
+ rv57Uxmh2SzFM9uAN3gLIVPU00zMczxXlHLghjTyYIiLyFC4v9+bygTE57JmWcHXLfvZ44x4D
+ Dij+s8fNKXWNZyZu2iMGhF53982ic+/4Zj3UwcujtFGVuktWqRYx5FJhl9Wdu3uqRY1MnDXLN
+ craW66atmQwsMZqZmNozQuasAa8NO5ITgsXM2Jwn/2FQbBX9asF1AfUAKVigwuqqvCffI73xE
+ 3qr0WBAaI1hKQdcrO4e0MaQmPhJixDGx+Trcds6Zq+IvjT93hKoePISz0B9sHoSWJs78sG/fy
+ svBYluPul0FG5myUePs+PrGYEGGz+3vCEGx6wiptI+RP5SBO5kqW4TvwLxA3Edq2h4A3SfA6g
+ OUQV8tJS12rPKYqSpbAtvr5HYGTyLEhm8YZzPkUPDRKagJ83BJNMttOlhpOhMBR7VXXWoN6cX
+ 8CQGr49
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,51 +64,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2022 19:52:37 -0000
+X-List-Received-Date: Sat, 05 Nov 2022 19:52:39 -0000
 
-From: Alex Bennée <alex.bennee@linaro.org>
+From: Chuck Zmudzinski <brchuckz@aol.com>
 
-This avoids some compilers complaining about a potentially
-un-initialised [src|dst]argv. In retrospect using GString was overkill
-for what we are constructing.
+When Qemu is built with --enable-xen and --disable-xen-pci-passthrough
+and the target os is linux, the build fails with:
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+meson.build:3477:2: ERROR: File xen_pt_stub.c does not exist.
+
+Fixes: 582ea95f5f93 ("meson: convert hw/xen")
+
+Signed-off-by: Chuck Zmudzinski <brchuckz@aol.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20221103102329.2581508-1-alex.bennee@linaro.org>
+Message-Id: <5f1342a13c09af77b1a7b0aeaba5955bcea89731.1667242033.git.brchuckz@aol.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/unit/test-io-channel-command.c | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
+ hw/xen/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/unit/test-io-channel-command.c b/tests/unit/test-io-channel-command.c
-index 43e29c8cfbf4..19f72eab961d 100644
---- a/tests/unit/test-io-channel-command.c
-+++ b/tests/unit/test-io-channel-command.c
-@@ -33,19 +33,13 @@ static void test_io_channel_command_fifo(bool async)
- {
-     g_autofree gchar *tmpdir = g_dir_make_tmp("qemu-test-io-channel.XXXXXX", NULL);
-     g_autofree gchar *fifo = g_strdup_printf("%s/%s", tmpdir, TEST_FIFO);
--    g_autoptr(GString) srcargs = g_string_new(socat);
--    g_autoptr(GString) dstargs = g_string_new(socat);
--    g_auto(GStrv) srcargv;
--    g_auto(GStrv) dstargv;
-+    g_autofree gchar *srcargs = g_strdup_printf("%s - PIPE:%s,wronly", socat, fifo);
-+    g_autofree gchar *dstargs = g_strdup_printf("%s PIPE:%s,rdonly -", socat, fifo);
-+    g_auto(GStrv) srcargv = g_strsplit(srcargs, " ", -1);
-+    g_auto(GStrv) dstargv = g_strsplit(dstargs, " ", -1);
-     QIOChannel *src, *dst;
-     QIOChannelTest *test;
+diff --git a/hw/xen/meson.build b/hw/xen/meson.build
+index 08dc1f685738..ae0ace3046b8 100644
+--- a/hw/xen/meson.build
++++ b/hw/xen/meson.build
+@@ -18,7 +18,7 @@ if have_xen_pci_passthrough
+     'xen_pt_msi.c',
+   ))
+ else
+-  xen_specific_ss.add('xen_pt_stub.c')
++  xen_specific_ss.add(files('xen_pt_stub.c'))
+ endif
  
--    g_string_append_printf(srcargs, " - PIPE:%s,wronly", fifo);
--    g_string_append_printf(dstargs, " PIPE:%s,rdonly -", fifo);
--
--    srcargv = g_strsplit(srcargs->str, " ", -1);
--    dstargv = g_strsplit(dstargs->str, " ", -1);
--
-     src = QIO_CHANNEL(qio_channel_command_new_spawn((const char **) srcargv,
-                                                     O_WRONLY,
-                                                     &error_abort));
+ specific_ss.add_all(when: ['CONFIG_XEN', xen], if_true: xen_specific_ss)
 -- 
 2.37.3
 
