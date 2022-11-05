@@ -1,47 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orPDb-0008DE-8J
+	id 1orPDb-0008Dm-Iq
 	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 15:52:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDZ-0008Bi-K0; Sat, 05 Nov 2022 15:52:37 -0400
-Received: from mout.kundenserver.de ([212.227.17.24])
+ id 1orPDZ-0008Bg-Ir; Sat, 05 Nov 2022 15:52:37 -0400
+Received: from mout.kundenserver.de ([212.227.17.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDX-0003a2-4Q; Sat, 05 Nov 2022 15:52:37 -0400
+ id 1orPDX-0003aD-Tt; Sat, 05 Nov 2022 15:52:37 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MZCKd-1oVhSG371l-00V64U; Sat, 05
- Nov 2022 20:52:29 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1Mrggc-1pKuYf323A-00niqp; Sat, 05
+ Nov 2022 20:52:33 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Han Han <hhan@redhat.com>,
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 1/7] qapi: virtio: Fix the introduced version
-Date: Sat,  5 Nov 2022 20:52:21 +0100
-Message-Id: <20221105195227.354769-2-laurent@vivier.eu>
+Subject: [PULL 7/7] tests/unit: simpler variable sequence for test-io-channel
+Date: Sat,  5 Nov 2022 20:52:27 +0100
+Message-Id: <20221105195227.354769-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221105195227.354769-1-laurent@vivier.eu>
 References: <20221105195227.354769-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:GqfFrXNjcQTzegjZbwXCZ4PBVMAjIpDh8xID31h0V05cZGwkafX
- NjplMS3h/cBOlJE6YatAlE+fuo6CwvS6A32l65nbgnIYW2pbex7/XSsTf1DDG43y0uBOVto
- dCIXDEUgKrm1Nv2WSH7ig1WnyxSldmCI2R5piui4lsVz5Z7OXnCOLQ5+cPaqC88mOLbBKE3
- KhtK5U5GSV02w/HtjbmXA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wN4IuNOOg/Q=:vAJZ0FgSa/SRJB23LFjf2p
- R2fd18Y+v2Cyz5u2lbuTZkHYFQ5f+x8FFnfosnc4IsBncVtJ+kbQ5U/lGlG64vXmVzrnxDue9
- MWCyQbykkE3QGNYrwXm9zMq8KuMpV89uTUyT0bCzDu+N79ltMj23lAQZG/DFAjhP4r+zv0FHP
- vvtGZOlPi87q14q257fTdZEFGm0nFBOzQO2v4NFT/PXsZDlR16+md64Q/wvmSz96PrAW3+nU8
- 79RVi9pFie8O+zvAMHg+8emy0teY/HZjcx6IUN2JjRn3uUZo2IjRgvnYUEEzJcznTk2UBxx4L
- BYt7oAShQy5kmyGuP/Z4+Jvp926nvmafTn6Cz4SCkc3y2OGYlR29GQjkmTQ8AFm3Jt1obyff/
- lctP61TvVsc9uzysYlbu7tEUGqJ0y302xHrRj8zXcYqNW1JZ86E2OmfU1eNNSYWTmMtzKGwaM
- fdC1nSuQCsV68+3lvYAJ3v6o6fKG6sbvCSGkmeMuWa8Hwcr88mdp4VW+SFgKwhhichbNGU9sa
- SfVDqDWK3BsAlY9xQwO2/bHxKc4yzGIus6N4elLGbLAUKz7gbBFHA7Htt8am9FAKkOv39jWM+
- sXwgnhMzyQoCbVs6Hb48QAhPEuVhnK8kIpENbtqcT1V1RruEu4yxrvG+u2TQ1jP5SEUK5tFK6
- pYO7+qQOPGN9uvO7YOaFt7m/HdHLghXyyl41/gJV2IB7LbD0pJKyd5BUksmbQCqbjo0r7MW8F
- AKNyIjeJR/NqzF6lqWODIX/leQMg9uimWbf0l1LZgsVSqNr5iBPV5R3ZvFmfO2S61Q2vQ02Wo
- QzuaQlw
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:idn9M6w809Wg0kzBDRVKIgdKyAQZl8yRNnohGPOT3bZ8wB2D+Tj
+ 59UHgvUOKM1J99pNc7Jft31BH0W584DHj4A1OhIHktv/9ZichgK3/NlVlE18d/LihG1iEHu
+ wnI47fZTP/vSf1iOByTurVGxfqLz3kK/KMES15S3tiykv8/annIApX/iwqxSgfabytFqJYL
+ bGcBlbOq1S75nMfOZEAZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pdIXSVdsuio=:HfKm1WmNnl4jFUYsHPF+1w
+ LpS6eNISJg7qhj8o8W55RTiSt3kVaUg4025Ii63CpJtdr/IZhYCEPfAQeNm0iBBJcIweOK/4C
+ J9f6Hoknr24yl668j1RJHQ9FpqSBLDyv8ckHQ2ToCiaeyuw8NGc4Z/JdokKkZGu+PBYKkWdzs
+ t7s8VA1C2Eksy1GCc7b10eW0a8JK/8E8cQVPZe+CxAYtkqqTbWyhGmxfHgX74s52iex8SCmqE
+ J5ivpV1StuASh9HmyVH/pm7YOOBnLQGe+Keo53oGoTCZMixyaUGYqUAeloLv65t09yyHmMk6i
+ OV04LRrVYhaljGgFV2Shg/7kv0WXyIwmZTsRUYDtcckcPFvmgMik4jQ1okD1eu5L2K/zTKTCW
+ 4E4ZTxCXHXAWKu6bpfZnYmUt61BAl7aquxpwpoENiVUoeOj3XYxueSuNfiUdLJMRbVAINBLGn
+ 3q5lLLHxpDUYpfK6CM/lOQvfrnan2f8q6cs2p/gsn5qS1trfZsFu6Ve78C6A2XM6NLx8JrHht
+ ulavEWCTmJS7sg3KxgjfsWmgLXn8ommlJE81MVZbeHnL/NXY+RLFb3mFYT0yjaLY92XoywAiO
+ oRV78bGv2SO8gNxsDQmI4jKXmy/7NvS22Z10gT+vqE6Yi07HOSwdXQlKgBevTv5i+uhT+iiHn
+ OKp7aNmEZta222iLwbN/Yhm+Bl2uZKkk22LLAWoH/puGOu8zE+RKSh57UQnFMuGNMShxruZbw
+ PvlMxiuv1pRq7fI1dWcwIbiO4mfxxLpNJoxxRTE1S+dNe+PGfbeDw2oQpoAlW9/4dwsBoqtMK
+ i80+zr0
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -61,178 +64,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2022 19:52:38 -0000
+X-List-Received-Date: Sat, 05 Nov 2022 19:52:37 -0000
 
-From: Han Han <hhan@redhat.com>
+From: Alex Bennée <alex.bennee@linaro.org>
 
-The items of qapi/virtio.json are introduced at a5ebce38576. They will be
-in the version 7.2 not 7.1.
+This avoids some compilers complaining about a potentially
+un-initialised [src|dst]argv. In retrospect using GString was overkill
+for what we are constructing.
 
-Signed-off-by: Han Han <hhan@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20221101014647.3000801-1-hhan@redhat.com>
+Message-Id: <20221103102329.2581508-1-alex.bennee@linaro.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qapi/virtio.json | 34 +++++++++++++++++-----------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
+ tests/unit/test-io-channel-command.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
 
-diff --git a/qapi/virtio.json b/qapi/virtio.json
-index e47a8fb2e0a9..872c7e36236c 100644
---- a/qapi/virtio.json
-+++ b/qapi/virtio.json
-@@ -15,7 +15,7 @@
- #
- # @name: Name of the VirtIODevice
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
- { 'struct': 'VirtioInfo',
-@@ -32,7 +32,7 @@
- #
- # Returns: List of gathered VirtIODevices
- #
--# Since: 7.1
-+# Since: 7.2
- #
- # Example:
- #
-@@ -97,7 +97,7 @@
- #
- # @log-size: vhost_dev log_size
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
+diff --git a/tests/unit/test-io-channel-command.c b/tests/unit/test-io-channel-command.c
+index 43e29c8cfbf4..19f72eab961d 100644
+--- a/tests/unit/test-io-channel-command.c
++++ b/tests/unit/test-io-channel-command.c
+@@ -33,19 +33,13 @@ static void test_io_channel_command_fifo(bool async)
+ {
+     g_autofree gchar *tmpdir = g_dir_make_tmp("qemu-test-io-channel.XXXXXX", NULL);
+     g_autofree gchar *fifo = g_strdup_printf("%s/%s", tmpdir, TEST_FIFO);
+-    g_autoptr(GString) srcargs = g_string_new(socat);
+-    g_autoptr(GString) dstargs = g_string_new(socat);
+-    g_auto(GStrv) srcargv;
+-    g_auto(GStrv) dstargv;
++    g_autofree gchar *srcargs = g_strdup_printf("%s - PIPE:%s,wronly", socat, fifo);
++    g_autofree gchar *dstargs = g_strdup_printf("%s PIPE:%s,rdonly -", socat, fifo);
++    g_auto(GStrv) srcargv = g_strsplit(srcargs, " ", -1);
++    g_auto(GStrv) dstargv = g_strsplit(dstargs, " ", -1);
+     QIOChannel *src, *dst;
+     QIOChannelTest *test;
  
-@@ -167,7 +167,7 @@
- #             Present if the given VirtIODevice has an active vhost
- #             device.
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
- 
-@@ -206,7 +206,7 @@
- #
- # Returns: VirtioStatus of the virtio device
- #
--# Since: 7.1
-+# Since: 7.2
- #
- # Examples:
- #
-@@ -452,7 +452,7 @@
- #
- # @unknown-statuses: Virtio device statuses bitmap that have not been decoded
- #
--# Since: 7.1
-+# Since: 7.2
- ##
- 
- { 'struct': 'VirtioDeviceStatus',
-@@ -471,7 +471,7 @@
- # @unknown-protocols: Vhost user device protocol features bitmap that
- #                     have not been decoded
- #
--# Since: 7.1
-+# Since: 7.2
- ##
- 
- { 'struct': 'VhostDeviceProtocols',
-@@ -492,7 +492,7 @@
- # @unknown-dev-features: Virtio device features bitmap that have not
- #                        been decoded
- #
--# Since: 7.1
-+# Since: 7.2
- ##
- 
- { 'struct': 'VirtioDeviceFeatures',
-@@ -535,7 +535,7 @@
- #
- # @signalled-used-valid: VirtQueue signalled_used_valid flag
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
- 
-@@ -576,7 +576,7 @@
- #        shadow_avail_idx will not be displayed in the case where
- #        the selected VirtIODevice has a running vhost device.
- #
--# Since: 7.1
-+# Since: 7.2
- #
- # Examples:
- #
-@@ -666,7 +666,7 @@
- #
- # @used-size: vhost_virtqueue used_size
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
- 
-@@ -699,7 +699,7 @@
- #
- # Returns: VirtVhostQueueStatus of the vhost_virtqueue
- #
--# Since: 7.1
-+# Since: 7.2
- #
- # Examples:
- #
-@@ -767,7 +767,7 @@
- #
- # @flags: List of descriptor flags
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
- 
-@@ -787,7 +787,7 @@
- #
- # @ring: VRingAvail ring[] entry at provided index
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
- 
-@@ -805,7 +805,7 @@
- #
- # @idx: VRingUsed index
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
- 
-@@ -829,7 +829,7 @@
- #
- # @used: VRingUsed info
- #
--# Since: 7.1
-+# Since: 7.2
- #
- ##
- 
-@@ -857,7 +857,7 @@
- #
- # Returns: VirtioQueueElement information
- #
--# Since: 7.1
-+# Since: 7.2
- #
- # Examples:
- #
+-    g_string_append_printf(srcargs, " - PIPE:%s,wronly", fifo);
+-    g_string_append_printf(dstargs, " PIPE:%s,rdonly -", fifo);
+-
+-    srcargv = g_strsplit(srcargs->str, " ", -1);
+-    dstargv = g_strsplit(dstargs->str, " ", -1);
+-
+     src = QIO_CHANNEL(qio_channel_command_new_spawn((const char **) srcargv,
+                                                     O_WRONLY,
+                                                     &error_abort));
 -- 
 2.37.3
 
