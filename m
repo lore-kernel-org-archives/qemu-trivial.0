@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orPDc-0008F3-V1
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 15:52:40 -0400
+	id 1orPDf-0008GP-7T
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 15:52:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDb-0008DY-Cw; Sat, 05 Nov 2022 15:52:39 -0400
-Received: from mout.kundenserver.de ([212.227.17.13])
+ id 1orPDc-0008EI-2m; Sat, 05 Nov 2022 15:52:40 -0400
+Received: from mout.kundenserver.de ([212.227.17.24])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDZ-0003aR-DK; Sat, 05 Nov 2022 15:52:39 -0400
+ id 1orPDZ-0003aY-QS; Sat, 05 Nov 2022 15:52:39 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MNLZc-1oftfY28Hi-00OoP7; Sat, 05
- Nov 2022 20:52:30 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MZCKd-1oVhNg0dzF-00V64U; Sat, 05
+ Nov 2022 20:52:33 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 2/7] Fix some typos in documentation and comments
-Date: Sat,  5 Nov 2022 20:52:22 +0100
-Message-Id: <20221105195227.354769-3-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 6/7] target/tricore: Rename csfr.def -> csfr.h.inc
+Date: Sat,  5 Nov 2022 20:52:26 +0100
+Message-Id: <20221105195227.354769-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221105195227.354769-1-laurent@vivier.eu>
 References: <20221105195227.354769-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:jUoxG7KVms0lYRtN7gFTyP5WHtUVFb6qygmOdDAP7I6JtVNW64o
- sU5pA7544q+1VTmrAKFIcI3tJe4iklbvkcMl8DOd8xegIotJgCijqdwnrBiTGBCqVdWBf3Y
- CZxaqynA+YyBc0CBHUmcD9Q+TjY9MDlMqrr9+WsqnuVuJTCSlaumW2B3Rtgaiwhy+Ao3gYk
- jTlDdGmJBJuDA6kr51CMw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ejuui6/e7cc=:6Ce9JTuYGAi6WD+WZ2hjSR
- j7xlANyNQ7fQaxBkicYHGgsWcvHlJ7DaDlioiaIz+uIZURbnwdBBkqEvQJQ+0GdRkTOTNHvZ3
- +C8V3jDtgHifI6vEnq0+QrVHKE5Gbl+7llNS8Rf1FI4b/GbgS4qTu9E6Js6D01x8SkC/QMUVa
- 2w2uiJm/ldrole56vI4a3ETb5P/A5LK1ZbvAQ8w0Fbc1UCLVG5nW84oGhhjOdmPUH1zPs2YY+
- GUXJM0KZ52mSlJLEADBcE789uxuRfkYmEMFTFjJHysAhkvjE9SlAQj1rAXTozO1vwqe/j5yQT
- P67Ov+sR4LrPAt9dGGaGCwTgBxu7khRWbGlwGJSf3RBiDeECAY6O5MEsTLYynqpEkdbiipFbO
- 5wZbJVS6wQSGVBkLQyaDFyOiKlKd5ePcuMuvBNSTDphpp2KyS1j6DXY4NFO5izgX96vfRf0Ib
- wpAywzZ/KUheGH+1S/SJZo/7qwKbQoL8UG2Va95jw0TSpDY4jJWUhza78Tv6Pxk0wlYwewzjV
- CaSoKTJQwgXzqRnV4P/uvYK4uieuUspC4du7djrSk+av6aGlMIbT4D4xRBu6+89oKZtzDUUUv
- 8HnmBuwoOZGwTvyooRIXzBsWy2PtBERgjNlpLYZhZif5KpOx9LVXj1NW+HD6dXizJUDssXFQS
- poB+/p0k9hubKmCD+RPiaIn5QhM5yHvE8r5wHGCmG9i0X5m5KYAnKTi/yyouyH5bWvrA/yNJ0
- BGciF038WaBq5HIh11eNA0dRYgdIUBwruF46sqgf585qdDwp+a3dCbTsZoDTbaJT0MhxJBCM+
- Hzn0aHi
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:RtbVOQA8DmxeMJwho8KRYg9YuM379GzqaklNLJ6TdWj/0LLFbF6
+ VTg3y5ocosSbG8bZoe9yDnQ9CMtQGYJ+IKbUt/vaPIhRTgjwhZoECPOZKuT+CB51yeWz9Yk
+ EeIbegpzq4DewUHkdoAE1PfKU8IyuXOcvBhx8ftOH+HZdMqQDE86D8aoaBni30ui41KooD+
+ RLh/AQ2gD4pCVjNO4OL4A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:tT3W9eOWObY=:t0FbwXx4RB0G3Cy/NoUDmH
+ 9TNaR3QHz61hy0ql3Ym0+4B4kITZd8Gt6PWRTor7ArQqe5mown98iBsKCOIhbmTXtr2mIc4E9
+ H9ZGeE+dIfUz3aIfMSlv9MmG1uN+XeU21UpYySGpQAUhlbchZ966+9pwX0O+qk9YASfANSkZM
+ KQuCvj1PrBpJENHDEJ7g5SGw14TV+Tc1aCfizloyy1+SsmRSUeTlYjT3aBEv6wjkNB3y+G5fG
+ Nv8VD95bi0arFwrY7b+E0VeQ1nD1flwb1K0KTSUTMkHlmw5fT4V8qhHdvXrgO+4uoGTcErSrS
+ tO1tP23CMJ6N0Xh28fSJlAYfFxX2ak1ZsQzQd3TP0MyT3JYnNLA13o0uPK1eUaxykFN9d1xHa
+ Y28QGndM3cRzpqqT0LWkkhCBG4IZrLESBJOuM+LuN762cLfAhsxvpxHPkmMRsHATSUNt3Tpnq
+ 5PYIY2UplggOpIhXs1++Gb6p5y1Q/I/mseI2jbKe3rlcUL6RMXDo67L+OKnA83cSWoNrXUVtn
+ fGuj+Hd277AiwwnxZGJe1MzSOqKO8b0sMaOuskCJkQpzfWNuLnHlMfX0fv5VG2zNYxtVFG/DI
+ PUpsJb4t0xV3PWDa0/oRdfOaYGtlUmW8iZumpFRBnhcUr1zY2owG3CziDpAnQv6uouGqCT5hz
+ yjLcttOulctQl9InQtmeCqUOB8XMlybVIUezXNggAqNBlXHnzJonu97x84qt/gL/Rw9Gr3/QC
+ 8R7J/qMs/tlZIMsCN+D9NXzjv3gxAfPvtojYjVdskpFHTnO4D8yBz3s3jgp35ds47VkQbZ/O1
+ qIqOdYp
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -62,176 +65,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2022 19:52:39 -0000
+X-List-Received-Date: Sat, 05 Nov 2022 19:52:40 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Most of them were found and fixed using codespell.
+We use the .h.inc extension to include C headers. To be consistent
+with the rest of the codebase, rename the C headers using the .def
+extension.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <20221030105944.311940-1-sw@weilnetz.de>
+IDE/tools using our .editorconfig / .gitattributes will leverage
+this consistency.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20221025235006.7215-4-philmd@linaro.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/devel/testing.rst              |  2 +-
- docs/system/arm/cpu-features.rst    |  2 +-
- docs/system/loongarch/loongson3.rst |  2 +-
- docs/tools/virtiofsd.rst            |  2 +-
- include/exec/memory.h               |  2 +-
- qapi/qom.json                       |  2 +-
- qemu-options.hx                     | 10 +++++-----
- qga/qapi-schema.json                |  2 +-
- tests/qtest/libqtest.h              |  2 +-
- 9 files changed, 13 insertions(+), 13 deletions(-)
+ target/tricore/{csfr.def => csfr.h.inc} | 0
+ target/tricore/translate.c              | 4 ++--
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+ rename target/tricore/{csfr.def => csfr.h.inc} (100%)
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index fbb98faabeed..e10c47b5a7ca 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -99,7 +99,7 @@ successfully on various hosts. The following list shows some best practices:
- * If your test cases uses the blkdebug feature, use relative path to pass
-   the config and image file paths in the command line as Windows absolute
-   path contains the delimiter ":" which will confuse the blkdebug parser.
--* Use double quotes in your extra QEMU commmand line in your test cases
-+* Use double quotes in your extra QEMU command line in your test cases
-   instead of single quotes, as Windows does not drop single quotes when
-   passing the command line to QEMU.
- * Windows opens a file in text mode by default, while a POSIX compliant
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index c2c01ec7d265..00c444042ff5 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -433,7 +433,7 @@ additional constraints on the set of vector lengths supported by SME.
- SME User-mode Default Vector Length Property
- --------------------------------------------
- 
--For qemu-aarch64, the cpu propery ``sme-default-vector-length=N`` is
-+For qemu-aarch64, the cpu property ``sme-default-vector-length=N`` is
- defined to mirror the Linux kernel parameter file
- ``/proc/sys/abi/sme_default_vector_length``.  The default length, ``N``,
- is in units of bytes and must be between 16 and 8192.
-diff --git a/docs/system/loongarch/loongson3.rst b/docs/system/loongarch/loongson3.rst
-index 1bdab44e2728..489ea20f8ff7 100644
---- a/docs/system/loongarch/loongson3.rst
-+++ b/docs/system/loongarch/loongson3.rst
-@@ -41,7 +41,7 @@ can be accessed by following steps.
- 
-   $ qemu-system-loongarch64 -machine virt -m 4G -cpu la464-loongarch-cpu \
-       -smp 1 -bios QEMU_EFI.fd -kernel vmlinuz.efi -initrd initrd.img \
--      -append "root=/dev/ram rdinit=/sbin/init consol e=ttyS0,115200" \
-+      -append "root=/dev/ram rdinit=/sbin/init console=ttyS0,115200" \
-       --nographic
- 
- Note: The running speed may be a little slow, as the performance of our
-diff --git a/docs/tools/virtiofsd.rst b/docs/tools/virtiofsd.rst
-index 5f5ac9dd56a3..995a754a7bf9 100644
---- a/docs/tools/virtiofsd.rst
-+++ b/docs/tools/virtiofsd.rst
-@@ -232,7 +232,7 @@ e.g.:
- 
-   ``:ok:server::security.:``
- 
--  will pass 'securty.' xattr's in listxattr from the server
-+  will pass 'security.' xattr's in listxattr from the server
-   and ignore following rules.
- 
-   ``:ok:all:::``
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index bfb1de8eeae1..a751c111bd3d 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -1970,7 +1970,7 @@ void memory_region_clear_dirty_bitmap(MemoryRegion *mr, hwaddr start,
-  * querying the same page multiple times, which is especially useful for
-  * display updates where the scanlines often are not page aligned.
-  *
-- * The dirty bitmap region which gets copyed into the snapshot (and
-+ * The dirty bitmap region which gets copied into the snapshot (and
-  * cleared afterwards) can be larger than requested.  The boundaries
-  * are rounded up/down so complete bitmap longs (covering 64 pages on
-  * 64bit hosts) can be copied over into the bitmap snapshot.  Which
-diff --git a/qapi/qom.json b/qapi/qom.json
-index 87fcad2423ae..4db956f07e6c 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -589,7 +589,7 @@
- #
- # @size: size of the memory region in bytes
- #
--# @x-use-canonical-path-for-ramblock-id: if true, the canoncial path is used
-+# @x-use-canonical-path-for-ramblock-id: if true, the canonical path is used
- #                                        for ramblock-id. Disable this for 4.0
- #                                        machine types or older to allow
- #                                        migration with newer QEMU versions.
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 911d82afa5af..dbdf9c301b02 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1051,7 +1051,7 @@ SRST
-     details on the external interface.
- 
- ``-device isa-ipmi-kcs,bmc=id[,ioport=val][,irq=val]``
--    Add a KCS IPMI interafce on the ISA bus. This also adds a
-+    Add a KCS IPMI interface on the ISA bus. This also adds a
-     corresponding ACPI and SMBIOS entries, if appropriate.
- 
-     ``bmc=id``
-@@ -1071,7 +1071,7 @@ SRST
-     is 0xe4 and the default interrupt is 5.
- 
- ``-device pci-ipmi-kcs,bmc=id``
--    Add a KCS IPMI interafce on the PCI bus.
-+    Add a KCS IPMI interface on the PCI bus.
- 
-     ``bmc=id``
-         The BMC to connect to, one of ipmi-bmc-sim or ipmi-bmc-extern above.
-@@ -5283,8 +5283,8 @@ SRST
-         read the colo-compare git log.
- 
-     ``-object cryptodev-backend-builtin,id=id[,queues=queues]``
--        Creates a cryptodev backend which executes crypto opreation from
--        the QEMU cipher APIS. The id parameter is a unique ID that will
-+        Creates a cryptodev backend which executes crypto operations from
-+        the QEMU cipher APIs. The id parameter is a unique ID that will
-         be used to reference this cryptodev backend from the
-         ``virtio-crypto`` device. The queues parameter is optional,
-         which specify the queue number of cryptodev backend, the default
-@@ -5551,7 +5551,7 @@ SRST
-                        file=/etc/qemu/vnc.allow
- 
-         Finally the ``/etc/qemu/vnc.allow`` file would contain the list
--        of x509 distingished names that are permitted access
-+        of x509 distinguished names that are permitted access
- 
-         ::
- 
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-index 026a56f76caf..796434ed346f 100644
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -392,7 +392,7 @@
- ##
- # @guest-file-flush:
- #
--# Write file changes bufferred in userspace to disk/kernel buffers
-+# Write file changes buffered in userspace to disk/kernel buffers
- #
- # @handle: filehandle returned by guest-file-open
- #
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index 91a5f7edd94d..fcf1c3c3b36f 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -736,7 +736,7 @@ bool qtest_has_device(const char *device);
-  * qtest_qmp_device_add_qdict:
-  * @qts: QTestState instance to operate on
-  * @drv: Name of the device that should be added
-- * @arguments: QDict with properties for the device to intialize
-+ * @arguments: QDict with properties for the device to initialize
-  *
-  * Generic hot-plugging test via the device_add QMP command with properties
-  * supplied in form of QDict. Use NULL for empty properties list.
+diff --git a/target/tricore/csfr.def b/target/tricore/csfr.h.inc
+similarity index 100%
+rename from target/tricore/csfr.def
+rename to target/tricore/csfr.h.inc
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index c5b7bfbf2013..df9e46c6495e 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -388,7 +388,7 @@ static inline void gen_mfcr(DisasContext *ctx, TCGv ret, int32_t offset)
+         gen_helper_psw_read(ret, cpu_env);
+     } else {
+         switch (offset) {
+-#include "csfr.def"
++#include "csfr.h.inc"
+         }
+     }
+ }
+@@ -418,7 +418,7 @@ static inline void gen_mtcr(DisasContext *ctx, TCGv r1,
+             gen_helper_psw_write(cpu_env, r1);
+         } else {
+             switch (offset) {
+-#include "csfr.def"
++#include "csfr.h.inc"
+             }
+         }
+     } else {
 -- 
 2.37.3
 
