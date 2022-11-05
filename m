@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orGc6-0004UI-Ma
+	id 1orGc6-0004US-Ra
 	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 06:41:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGc5-0004TY-7w; Sat, 05 Nov 2022 06:41:21 -0400
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
+ id 1orGc5-0004Tb-I4; Sat, 05 Nov 2022 06:41:21 -0400
+Received: from smtp.mail.uni-mannheim.de ([2001:7c0:2900:60::869b:6050])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGbq-00036f-2i; Sat, 05 Nov 2022 06:41:20 -0400
+ id 1orGbq-00036i-3t; Sat, 05 Nov 2022 06:41:21 -0400
 Received: from localhost (localhost [127.0.0.1])
- by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id CE3C8100CBB;
- Sat,  5 Nov 2022 11:25:16 +0100 (CET)
+ by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 0711C100CFE;
+ Sat,  5 Nov 2022 11:25:20 +0100 (CET)
 X-Virus-Scanned: amavisd-new at uni-mannheim.de
 Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
  by localhost (mail-r83.rz.uni-mannheim.de [127.0.0.1]) (amavisd-new,
  port 10024)
- with ESMTP id HqtemuOWmXpp; Sat,  5 Nov 2022 11:25:16 +0100 (CET)
+ with ESMTP id g6E-RqwaLwB3; Sat,  5 Nov 2022 11:25:19 +0100 (CET)
 Received: from bss11.bib.uni-mannheim.de (unknown
  [IPv6:2001:7c0:2900:8024::869b:24a1])
- by smtp.mail.uni-mannheim.de (Postfix) with ESMTPS id ADCDC100C07;
- Sat,  5 Nov 2022 11:25:16 +0100 (CET)
+ by smtp.mail.uni-mannheim.de (Postfix) with ESMTPS id DFDED100C07;
+ Sat,  5 Nov 2022 11:25:19 +0100 (CET)
 Received: from stweil by bss11.bib.uni-mannheim.de with local (Exim 4.94.2)
  (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGMW-001pbx-Dv; Sat, 05 Nov 2022 11:25:16 +0100
+ id 1orGMZ-001pcB-Kh; Sat, 05 Nov 2022 11:25:19 +0100
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
 Cc: Stefan Hajnoczi <stefanha@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
  Stefan Weil <sw@weilnetz.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 1/4] libvhost-user: Fix wrong type of argument to
- formatting function (reported by LGTM)
-Date: Sat,  5 Nov 2022 11:24:45 +0100
-Message-Id: <20221105102448.436469-2-sw@weilnetz.de>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v2 4/4] libvhost-user: Add format attribute to local function
+ vu_panic
+Date: Sat,  5 Nov 2022 11:24:48 +0100
+Message-Id: <20221105102448.436469-5-sw@weilnetz.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20221105102448.436469-1-sw@weilnetz.de>
 References: <20221105102448.436469-1-sw@weilnetz.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=134.155.96.80;
+Received-SPF: none client-ip=2001:7c0:2900:60::869b:6050;
  envelope-from=stweil@bss11.bib.uni-mannheim.de; helo=smtp.mail.uni-mannheim.de
 X-Spam_score_int: -15
 X-Spam_score: -1.6
@@ -62,27 +62,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 05 Nov 2022 10:41:21 -0000
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Message-Id: <20220422070144.1043697-2-sw@weilnetz.de>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20220422070144.1043697-4-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- subprojects/libvhost-user/libvhost-user.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ subprojects/libvhost-user/libvhost-user.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
-index ffed4729a3..d9a6e3e556 100644
+index 80f9952e71..d6ee6e7d91 100644
 --- a/subprojects/libvhost-user/libvhost-user.c
 +++ b/subprojects/libvhost-user/libvhost-user.c
-@@ -651,7 +651,7 @@ generate_faults(VuDev *dev) {
+@@ -45,6 +45,17 @@
+ #include "libvhost-user.h"
  
-         if (ioctl(dev->postcopy_ufd, UFFDIO_REGISTER, &reg_struct)) {
-             vu_panic(dev, "%s: Failed to userfault region %d "
--                          "@%p + size:%zx offset: %zx: (ufd=%d)%s\n",
-+                          "@%" PRIx64 " + size:%zx offset: %zx: (ufd=%d)%s\n",
-                      __func__, i,
-                      dev_region->mmap_addr,
-                      dev_region->size, dev_region->mmap_offset,
+ /* usually provided by GLib */
++#if     __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ > 4)
++#if !defined(__clang__) && (__GNUC__ == 4 && __GNUC_MINOR__ == 4)
++#define G_GNUC_PRINTF(format_idx, arg_idx) \
++  __attribute__((__format__(gnu_printf, format_idx, arg_idx)))
++#else
++#define G_GNUC_PRINTF(format_idx, arg_idx) \
++  __attribute__((__format__(__printf__, format_idx, arg_idx)))
++#endif
++#else   /* !__GNUC__ */
++#define G_GNUC_PRINTF(format_idx, arg_idx)
++#endif  /* !__GNUC__ */
+ #ifndef MIN
+ #define MIN(x, y) ({                            \
+             typeof(x) _min1 = (x);              \
+@@ -151,7 +162,7 @@ vu_request_to_string(unsigned int req)
+     }
+ }
+ 
+-static void
++static void G_GNUC_PRINTF(2, 3)
+ vu_panic(VuDev *dev, const char *msg, ...)
+ {
+     char *buf = NULL;
 -- 
 2.30.2
 
