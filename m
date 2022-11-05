@@ -1,46 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orPDa-0008CI-8w
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 15:52:38 -0400
+	id 1orPDb-0008D1-3P
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 15:52:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDY-0008BU-Te; Sat, 05 Nov 2022 15:52:36 -0400
-Received: from mout.kundenserver.de ([212.227.17.24])
+ id 1orPDZ-0008Bh-Im; Sat, 05 Nov 2022 15:52:37 -0400
+Received: from mout.kundenserver.de ([212.227.17.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDX-0003Zp-1w; Sat, 05 Nov 2022 15:52:36 -0400
+ id 1orPDX-0003a1-5t; Sat, 05 Nov 2022 15:52:37 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MDPuq-1oguol04s2-00AW93; Sat, 05
- Nov 2022 20:52:29 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MHndY-1olIWv3VSA-00Evzt; Sat, 05
+ Nov 2022 20:52:32 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 0/7] Trivial branch for 7.2 patches
-Date: Sat,  5 Nov 2022 20:52:20 +0100
-Message-Id: <20221105195227.354769-1-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PULL 4/7] target/m68k: Rename qregs.def -> qregs.h.inc
+Date: Sat,  5 Nov 2022 20:52:24 +0100
+Message-Id: <20221105195227.354769-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20221105195227.354769-1-laurent@vivier.eu>
+References: <20221105195227.354769-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:AxNwMz8Hh7V73idUpDDu8RxxJlkmZUtyHcQH3gkYFvih1ZM424k
- BKhKO+1KlQCzTaodrmt8s75laitO5j+bgxEVC30qLkcrRhg+2oE1PnAnNaaXy6GfIvHIaJH
- gHjVT82L7BrEZhLdhNiOP9zUdc7JB5HaZWFeMN2POnoGDOHWY5HVeJuBcNN3GXZ3czPO3oI
- aqm1IuhhgFQUHjyqmCfSQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:SofKvfEUtT8=:VnXwDx2CqSCugeB0kT6siR
- pRwaBE/Zu9sgVB9XPVJYoKxtovl9K1l2Imd1ac4H749TeghzRL8UKo0BzSsDLm2+JQK2r6frg
- amtJ3u7mymZmBJRDdefTp5Huhc4Cc6yTlIdy1Yj7gUM6oXavAsX32TAti2nXspr07qLNpfQqg
- d50HuIDcLqBx90F1hRiW/jbAVWCm8866TTU23Mx3VcTRbSi1xbQuUWGs8xBm/f0gyFmG7l3hK
- idVkj3CWHEYe85nLSCF9oDKgB2W3nS1OXj9957o68kFcpXst5NXZK46jsVcNtcPm4w3DvoLST
- bU/wBj93vmkHTVjbpnTgPJr2D00ANC5Y+bCK5k8ZZvxwPuqg42Rllnh2JIZYmEFJzloXtEhWf
- mHuyRqqqQ8a37AVCBAU7kTokh+PHsBleI3+rri2KN6tUlp/ynTeHWKBaYV9gVZ1qg5hPBuIy2
- oHjDbM2hKZ6HjPuclKYW5HCdJqMBzs/DUc9rf51fnYVm1fJreO8nGtWSAoK3P56E1RSJLijAd
- glNhzL0lxWI/DC3vUSvQk1Vb+RjZsq07yYYl5hwFKUPUKWE28zyZJg2tiOrZHWqiFvnwc7btT
- ycy6SzophT4WCfZSGS2H8lBA/yWZvuDQ7hZ+V+gkNBpDcB4BDB7BfYfnnx49yKQZO/gnNkQv0
- +vl0VVZzQ8zPv/xs8ZMV23q56cSBkpfF+7F8/1BQpZoQ8YD7ZadYXlPoWnyizCGbv+qkA8Fgi
- uqqmqLcQOU+ui+7ZYaK2XkQHP2zvHp3ibCiS/Thnhr1fomQTU+SOUvIOQ4qyz5szPOY65yBnV
- lGjiTX9
-Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:KqkWFJF4qEqDsMz6J3gdsinnXe2P7pXNcsCTwHrIej+gWXe98oG
+ a2tESZt5gPPY9Gqw1l6uRJic0KOM2iz1k+Nn9usf9eaWrOUSwwCzqw5KO+b0t3yd6yEkqzS
+ tBU5AsZY8DnHfP0ho4n/fpeB+ivJ/Yi7Gmnajaz3EE0QaT3vei4/ODADFm550kNMSPr7tNx
+ oOwayi/18+eCWm6aLopdQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:SrQzScEA6PM=:yHwhGHzyrD84uoWJiXOK72
+ JgCP/newo+WK1943wd878jfSFHWKSdbF0xIjsF/sPxrcBIOHMcJePuG9fBF0DM5DO24Z6vQtj
+ A+iHGdKdXBPWNsrWcSxN6mcQ3aVvB7c+DCDT4o2wY+eSP3YxzV8j40+FBJHPjNiOAYmOiipiI
+ xnht9+yX+Her5xgnuqcA94oALnIdcTryj9t5r50KJtdztpwmbQ+fMTCjB7crMV+LCHtkJWZUQ
+ HZId6LK/MStqhaJt/CR0UNnv7gWU4+UlSwKZ6YRpSSJzvodnDYVRcUGHw9N9QF7dtltuRJwli
+ GWl8Rs11wj4zU5mghOZgdnfpNmpWqDzOaaF9hw/GH5d3032bF1dZSeKsZHq0Yw6pUNOZ9B9KC
+ PK+MjC/YpsRASnD3SeJkK1S1hyjZZoI76X0ctPJ+HsLu9Im2oAuhKFJSvGX93Elamk48yb9+f
+ teU7l6Tufmkyr5s1MEZoguBW1ldEtoBKUCx8KxHJy4tcBYeTITQl+AeHOoXKhQlZGfbCR7MHW
+ WZXssddRC/3eRI/FpdexMh4Ez9KUdhc9k1+FHDi2WHYkS7jx7tIH0Lj92Erms2a+S19igAQTl
+ 02rZ3LwmUCbuLst1uAbBo8xIhIQxNrO1zIFP3YtuowfQVV8a3i/cKtT4VFDskU4ABEyq/gfDy
+ CnrIUW5xxMQiGTsjk21D/8VNF++M0VLvTkOLc9MTC9p+ClWKANNVGVRyILw6DEpLI4ocNiV2K
+ 2shWdwNoBI88fw0qUwVX4V7pdQf9KjYDWUuTE6xouWFCGgW92CpTldMBjNs/mCuHPr2K/bFKM
+ IrWgKc1
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -62,65 +66,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 05 Nov 2022 19:52:37 -0000
 
-The following changes since commit 6295a58ad1b73985b9c32d184de7d2ed1fbe1774:
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-  Merge tag 'pull-target-arm-20221104' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2022-11-04 11:01:17 -0400)
+We use the .h.inc extension to include C headers. To be consistent
+with the rest of the codebase, rename the C headers using the .def
+extension.
 
-are available in the Git repository at:
+IDE/tools using our .editorconfig / .gitattributes will leverage
+this consistency.
 
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-7.2-pull-request
-
-for you to fetch changes up to 5a820d5d07cb101752c731799a326648a5aa185a:
-
-  tests/unit: simpler variable sequence for test-io-channel (2022-11-05 20:35:45 +0100)
-
-----------------------------------------------------------------
-Pull request trivial branch 20221103-v2
-
-----------------------------------------------------------------
-
-Alex Bennée (1):
-  tests/unit: simpler variable sequence for test-io-channel
-
-Chuck Zmudzinski (1):
-  xen/pt: fix syntax error that causes FTBFS in some configurations
-
-Han Han (1):
-  qapi: virtio: Fix the introduced version
-
-Philippe Mathieu-Daudé (3):
-  target/m68k: Rename qregs.def -> qregs.h.inc
-  target/s390x: Rename insn-data/format.def -> insn-data/format.h.inc
-  target/tricore: Rename csfr.def -> csfr.h.inc
-
-Stefan Weil (1):
-  Fix some typos in documentation and comments
-
- docs/devel/testing.rst                        |  2 +-
- docs/system/arm/cpu-features.rst              |  2 +-
- docs/system/loongarch/loongson3.rst           |  2 +-
- docs/tools/virtiofsd.rst                      |  2 +-
- hw/xen/meson.build                            |  2 +-
- include/exec/memory.h                         |  2 +-
- qapi/qom.json                                 |  2 +-
- qapi/virtio.json                              | 34 +++++++++----------
- qemu-options.hx                               | 10 +++---
- qga/qapi-schema.json                          |  2 +-
- target/m68k/{qregs.def => qregs.h.inc}        |  0
- target/m68k/translate.c                       |  4 +--
- .../tcg/{insn-data.def => insn-data.h.inc}    |  2 +-
- .../{insn-format.def => insn-format.h.inc}    |  0
- target/s390x/tcg/translate.c                  | 10 +++---
- target/tricore/{csfr.def => csfr.h.inc}       |  0
- target/tricore/translate.c                    |  4 +--
- tests/qtest/libqtest.h                        |  2 +-
- tests/unit/test-io-channel-command.c          | 14 +++-----
- 19 files changed, 45 insertions(+), 51 deletions(-)
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20221025235006.7215-2-philmd@linaro.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ target/m68k/{qregs.def => qregs.h.inc} | 0
+ target/m68k/translate.c                | 4 ++--
+ 2 files changed, 2 insertions(+), 2 deletions(-)
  rename target/m68k/{qregs.def => qregs.h.inc} (100%)
- rename target/s390x/tcg/{insn-data.def => insn-data.h.inc} (99%)
- rename target/s390x/tcg/{insn-format.def => insn-format.h.inc} (100%)
- rename target/tricore/{csfr.def => csfr.h.inc} (100%)
 
+diff --git a/target/m68k/qregs.def b/target/m68k/qregs.h.inc
+similarity index 100%
+rename from target/m68k/qregs.def
+rename to target/m68k/qregs.h.inc
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index 5cbde4be3404..18418312b14b 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -39,7 +39,7 @@
+ 
+ #define DEFO32(name, offset) static TCGv QREG_##name;
+ #define DEFO64(name, offset) static TCGv_i64 QREG_##name;
+-#include "qregs.def"
++#include "qregs.h.inc"
+ #undef DEFO32
+ #undef DEFO64
+ 
+@@ -75,7 +75,7 @@ void m68k_tcg_init(void)
+ #define DEFO64(name, offset) \
+     QREG_##name = tcg_global_mem_new_i64(cpu_env, \
+         offsetof(CPUM68KState, offset), #name);
+-#include "qregs.def"
++#include "qregs.h.inc"
+ #undef DEFO32
+ #undef DEFO64
+ 
 -- 
 2.37.3
 
