@@ -1,51 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orGcA-0004Ws-Vh
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 06:41:27 -0400
+	id 1orH0a-0006Xi-5y
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 07:06:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGc6-0004UE-KX; Sat, 05 Nov 2022 06:41:22 -0400
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1orH0N-0006U0-30; Sat, 05 Nov 2022 07:06:28 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGbq-00036g-3l; Sat, 05 Nov 2022 06:41:22 -0400
-Received: from localhost (localhost [127.0.0.1])
- by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 1750A100CEE;
- Sat,  5 Nov 2022 11:25:19 +0100 (CET)
-X-Virus-Scanned: amavisd-new at uni-mannheim.de
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
- by localhost (mail-r83.rz.uni-mannheim.de [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id vwk6p0GHZo8h; Sat,  5 Nov 2022 11:25:19 +0100 (CET)
-Received: from bss11.bib.uni-mannheim.de (unknown
- [IPv6:2001:7c0:2900:8024::869b:24a1])
- by smtp.mail.uni-mannheim.de (Postfix) with ESMTPS id F2448100C07;
- Sat,  5 Nov 2022 11:25:18 +0100 (CET)
-Received: from stweil by bss11.bib.uni-mannheim.de with local (Exim 4.94.2)
- (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGMY-001pc7-NC; Sat, 05 Nov 2022 11:25:18 +0100
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Stefan Hajnoczi <stefanha@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH v2 3/4] libvhost-user: Fix two more format strings
-Date: Sat,  5 Nov 2022 11:24:47 +0100
-Message-Id: <20221105102448.436469-4-sw@weilnetz.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20221105102448.436469-1-sw@weilnetz.de>
-References: <20221105102448.436469-1-sw@weilnetz.de>
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1orH09-0007iA-Nj; Sat, 05 Nov 2022 07:06:26 -0400
+Received: from [192.168.44.88] (unknown [185.238.219.80])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 34E46DA08BC;
+ Sat,  5 Nov 2022 12:06:10 +0100 (CET)
+Message-ID: <9e580f85-9b3b-fad3-be16-a47d61a1f964@weilnetz.de>
+Date: Sat, 5 Nov 2022 12:06:09 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=134.155.96.80;
- envelope-from=stweil@bss11.bib.uni-mannheim.de; helo=smtp.mail.uni-mannheim.de
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.1
+Subject: Re: [PATCH v2 3/4] libvhost-user: Fix two more format strings
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+References: <20221105102448.436469-1-sw@weilnetz.de>
+ <20221105102448.436469-4-sw@weilnetz.de>
+From: Stefan Weil <sw@weilnetz.de>
+In-Reply-To: <20221105102448.436469-4-sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -58,32 +49,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2022 10:41:23 -0000
+X-List-Received-Date: Sat, 05 Nov 2022 11:06:30 -0000
 
-This fix is required for 32 bit host. The bug was detected by CI
-for arm-linux, but is also relevant for i386-linux.
+Am 05.11.22 um 11:24 schrieb Stefan Weil via:
 
-Reported-by: Stefan Hajnoczi <stefanha@gmail.com>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- subprojects/libvhost-user/libvhost-user.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+> This fix is required for 32 bit host. The bug was detected by CI
+> for arm-linux, but is also relevant for i386-linux.
 
-diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
-index d67953a1c3..80f9952e71 100644
---- a/subprojects/libvhost-user/libvhost-user.c
-+++ b/subprojects/libvhost-user/libvhost-user.c
-@@ -651,7 +651,8 @@ generate_faults(VuDev *dev) {
- 
-         if (ioctl(dev->postcopy_ufd, UFFDIO_REGISTER, &reg_struct)) {
-             vu_panic(dev, "%s: Failed to userfault region %d "
--                          "@%" PRIx64 " + size:%zx offset: %zx: (ufd=%d)%s\n",
-+                          "@%" PRIx64 " + size:%" PRIx64 " offset: %" PRIx64
-+                          ": (ufd=%d)%s\n",
-                      __func__, i,
-                      dev_region->mmap_addr,
-                      dev_region->size, dev_region->mmap_offset,
--- 
-2.30.2
+
+s/host/hosts/
+
+I won't send a v3 for that. Maybe it can be fixed when merging this patch.
+
+Stefan
 
 
