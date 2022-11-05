@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orGcA-0004WK-D2
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 06:41:26 -0400
+	id 1orGcA-0004Ws-Vh
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 06:41:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGc7-0004Ut-7l; Sat, 05 Nov 2022 06:41:24 -0400
+ id 1orGc6-0004UE-KX; Sat, 05 Nov 2022 06:41:22 -0400
 Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGbq-00036h-3n; Sat, 05 Nov 2022 06:41:22 -0400
+ id 1orGbq-00036g-3l; Sat, 05 Nov 2022 06:41:22 -0400
 Received: from localhost (localhost [127.0.0.1])
- by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id CFBF8100C18;
- Sat,  5 Nov 2022 11:25:04 +0100 (CET)
+ by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 1750A100CEE;
+ Sat,  5 Nov 2022 11:25:19 +0100 (CET)
 X-Virus-Scanned: amavisd-new at uni-mannheim.de
 Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
  by localhost (mail-r83.rz.uni-mannheim.de [127.0.0.1]) (amavisd-new,
  port 10024)
- with ESMTP id MiwTwciaZCnz; Sat,  5 Nov 2022 11:25:04 +0100 (CET)
+ with ESMTP id vwk6p0GHZo8h; Sat,  5 Nov 2022 11:25:19 +0100 (CET)
 Received: from bss11.bib.uni-mannheim.de (unknown
  [IPv6:2001:7c0:2900:8024::869b:24a1])
- by smtp.mail.uni-mannheim.de (Postfix) with ESMTPS id B3E34100C07;
- Sat,  5 Nov 2022 11:25:04 +0100 (CET)
+ by smtp.mail.uni-mannheim.de (Postfix) with ESMTPS id F2448100C07;
+ Sat,  5 Nov 2022 11:25:18 +0100 (CET)
 Received: from stweil by bss11.bib.uni-mannheim.de with local (Exim 4.94.2)
  (envelope-from <stweil@bss11.bib.uni-mannheim.de>)
- id 1orGMK-001pbt-Eh; Sat, 05 Nov 2022 11:25:04 +0100
+ id 1orGMY-001pc7-NC; Sat, 05 Nov 2022 11:25:18 +0100
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Cc: Stefan Hajnoczi <stefanha@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2 for-7.2 0/4] libvhost-user: Add format attribute and fix
- format strings
-Date: Sat,  5 Nov 2022 11:24:44 +0100
-Message-Id: <20221105102448.436469-1-sw@weilnetz.de>
+Cc: Stefan Hajnoczi <stefanha@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH v2 3/4] libvhost-user: Fix two more format strings
+Date: Sat,  5 Nov 2022 11:24:47 +0100
+Message-Id: <20221105102448.436469-4-sw@weilnetz.de>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20221105102448.436469-1-sw@weilnetz.de>
+References: <20221105102448.436469-1-sw@weilnetz.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=134.155.96.80;
@@ -57,13 +58,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2022 10:41:24 -0000
+X-List-Received-Date: Sat, 05 Nov 2022 10:41:23 -0000
 
-v2: Add patch 3 to fix two more format strings before applying patch 4
+This fix is required for 32 bit host. The bug was detected by CI
+for arm-linux, but is also relevant for i386-linux.
 
-[PATCH v2 1/4] libvhost-user: Fix wrong type of argument to
-[PATCH v2 2/4] libvhost-user: Fix format strings
-[PATCH v2 3/4] libvhost-user: Fix two more format strings
-[PATCH v2 4/4] libvhost-user: Add format attribute to local function
+Reported-by: Stefan Hajnoczi <stefanha@gmail.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ subprojects/libvhost-user/libvhost-user.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
+index d67953a1c3..80f9952e71 100644
+--- a/subprojects/libvhost-user/libvhost-user.c
++++ b/subprojects/libvhost-user/libvhost-user.c
+@@ -651,7 +651,8 @@ generate_faults(VuDev *dev) {
+ 
+         if (ioctl(dev->postcopy_ufd, UFFDIO_REGISTER, &reg_struct)) {
+             vu_panic(dev, "%s: Failed to userfault region %d "
+-                          "@%" PRIx64 " + size:%zx offset: %zx: (ufd=%d)%s\n",
++                          "@%" PRIx64 " + size:%" PRIx64 " offset: %" PRIx64
++                          ": (ufd=%d)%s\n",
+                      __func__, i,
+                      dev_region->mmap_addr,
+                      dev_region->size, dev_region->mmap_offset,
+-- 
+2.30.2
 
 
