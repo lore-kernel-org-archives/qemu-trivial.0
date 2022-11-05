@@ -1,39 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orHbG-0004Fk-Bg
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 07:44:35 -0400
+	id 1orHfp-0005il-7q
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 07:49:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1orHbD-0004CY-Hc; Sat, 05 Nov 2022 07:44:31 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1orHfo-0005hu-2I; Sat, 05 Nov 2022 07:49:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1orHbB-0005mI-ME; Sat, 05 Nov 2022 07:44:31 -0400
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id B9771DA08BC;
- Sat,  5 Nov 2022 12:44:25 +0100 (CET)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
- id 9C0644621B3; Sat,  5 Nov 2022 12:44:25 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH for-7.2] accel/tcg: Suppress compiler warning with flag
- -Wclobbered
-Date: Sat,  5 Nov 2022 12:44:24 +0100
-Message-Id: <20221105114424.622563-1-sw@weilnetz.de>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1orHfm-0006Sw-FS; Sat, 05 Nov 2022 07:49:15 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 1169140650;
+ Sat,  5 Nov 2022 14:48:55 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 9E2203FD;
+ Sat,  5 Nov 2022 14:48:59 +0300 (MSK)
+Received: (nullmailer pid 306260 invoked by uid 1000);
+ Sat, 05 Nov 2022 11:48:53 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH trivial for 7.2 2/2] hw/virtio/virtio.c: spelling: suppoted
+Date: Sat,  5 Nov 2022 14:48:51 +0300
+Message-Id: <20221105114851.306206-2-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20221105114851.306206-1-mjt@tls.msk.ru>
+References: <20221105114851.306206-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: none client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -46,38 +48,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2022 11:44:32 -0000
+X-List-Received-Date: Sat, 05 Nov 2022 11:49:16 -0000
 
-At least some versions of gcc show a warning when compiler flag -Wclobbered
-is used (tested with gcc on Debian bookworm i386 and with cross gcc for
-Windows on Debian bullseye).
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Fixes: f3034ad71fcd0a6a58bc37830f182b307f089159
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- accel/tcg/translate-all.c | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/virtio/virtio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 921944a5ab..90191d97ec 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -743,6 +743,8 @@ void page_collection_unlock(struct page_collection *set)
- #endif /* !CONFIG_USER_ONLY */
- 
- /* Called with mmap_lock held for user mode emulation.  */
-+#pragma GCC diagnostic push
-+#pragma GCC diagnostic ignored "-Wclobbered"
- TranslationBlock *tb_gen_code(CPUState *cpu,
-                               target_ulong pc, target_ulong cs_base,
-                               uint32_t flags, int cflags)
-@@ -1020,6 +1022,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
-     }
-     return tb;
- }
-+#pragma GCC diagnostic pop
- 
- /* user-mode: call with mmap_lock held */
- void tb_check_watchpoint(CPUState *cpu, uintptr_t retaddr)
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 808446b4c9..e76218bdd5 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -340,7 +340,7 @@ qmp_virtio_feature_map_t virtio_net_feature_map[] = {
+ qmp_virtio_feature_map_t virtio_scsi_feature_map[] = {
+     FEATURE_ENTRY(VIRTIO_SCSI_F_INOUT, \
+             "VIRTIO_SCSI_F_INOUT: Requests including read and writable data "
+-            "buffers suppoted"),
++            "buffers supported"),
+     FEATURE_ENTRY(VIRTIO_SCSI_F_HOTPLUG, \
+             "VIRTIO_SCSI_F_HOTPLUG: Reporting and handling hot-plug events "
+             "supported"),
 -- 
 2.30.2
 
