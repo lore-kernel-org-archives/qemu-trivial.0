@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orHfp-0005io-Dp
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 07:49:17 -0400
+	id 1orHk2-0007kF-SG
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 07:53:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1orHfo-0005ht-21; Sat, 05 Nov 2022 07:49:16 -0400
+ id 1orHk0-0007jj-Ue; Sat, 05 Nov 2022 07:53:36 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1orHfi-0006Sx-7E; Sat, 05 Nov 2022 07:49:15 -0400
+ id 1orHjz-0007Gc-C9; Sat, 05 Nov 2022 07:53:36 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id EAC3440547;
- Sat,  5 Nov 2022 14:48:54 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 06FB940653;
+ Sat,  5 Nov 2022 14:53:34 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 7F2703D3;
- Sat,  5 Nov 2022 14:48:59 +0300 (MSK)
-Received: (nullmailer pid 306257 invoked by uid 1000);
- Sat, 05 Nov 2022 11:48:52 -0000
+ by tsrv.corpit.ru (Postfix) with SMTP id 94C3F3D3;
+ Sat,  5 Nov 2022 14:53:38 +0300 (MSK)
+Received: (nullmailer pid 306579 invoked by uid 1000);
+ Sat, 05 Nov 2022 11:53:33 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Thomas Huth <thuth@redhat.com>
-Subject: [PATCH trivial for 7.2 1/2] hw/usb/hcd-xhci.c: spelling: tranfer
-Date: Sat,  5 Nov 2022 14:48:50 +0300
-Message-Id: <20221105114851.306206-1-mjt@msgid.tls.msk.ru>
+ Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>
+Subject: [PATCH trivial for 7.2] hw/ssi/sifive_spi.c: spelling: reigster
+Date: Sat,  5 Nov 2022 14:53:29 +0300
+Message-Id: <20221105115329.306527-1-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -46,27 +46,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2022 11:49:16 -0000
+X-List-Received-Date: Sat, 05 Nov 2022 11:53:37 -0000
 
-Fixes: effaf5a240e03020f4ae953e10b764622c3e87cc
+Fixes: 0694dabe9763847f3010b54ab3ec7d367d2f0ff0
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/usb/hcd-xhci.c | 2 +-
+ hw/ssi/sifive_spi.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index 8299f35e66..b89b618ec2 100644
---- a/hw/usb/hcd-xhci.c
-+++ b/hw/usb/hcd-xhci.c
-@@ -796,7 +796,7 @@ static int xhci_ring_chain_length(XHCIState *xhci, const XHCIRing *ring)
-          */
-     } while (length < TRB_LINK_LIMIT * 65536 / TRB_SIZE);
+diff --git a/hw/ssi/sifive_spi.c b/hw/ssi/sifive_spi.c
+index 03540cf5ca..1b4a401ca1 100644
+--- a/hw/ssi/sifive_spi.c
++++ b/hw/ssi/sifive_spi.c
+@@ -267,7 +267,7 @@ static void sifive_spi_write(void *opaque, hwaddr addr,
+     case R_RXDATA:
+     case R_IP:
+         qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: invalid write to read-only reigster 0x%"
++                      "%s: invalid write to read-only register 0x%"
+                       HWADDR_PRIx " with 0x%x\n", __func__, addr << 2, value);
+         break;
  
--    qemu_log_mask(LOG_GUEST_ERROR, "%s: exceeded maximum tranfer ring size!\n",
-+    qemu_log_mask(LOG_GUEST_ERROR, "%s: exceeded maximum transfer ring size!\n",
-                           __func__);
- 
-     return -1;
 -- 
 2.30.2
 
