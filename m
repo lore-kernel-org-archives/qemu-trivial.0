@@ -1,50 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1orPDb-0008D1-3P
+	id 1orPDb-0008DE-8J
 	for mharc-qemu-trivial@gnu.org; Sat, 05 Nov 2022 15:52:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDZ-0008Bh-Im; Sat, 05 Nov 2022 15:52:37 -0400
-Received: from mout.kundenserver.de ([212.227.17.10])
+ id 1orPDZ-0008Bi-K0; Sat, 05 Nov 2022 15:52:37 -0400
+Received: from mout.kundenserver.de ([212.227.17.24])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1orPDX-0003a1-5t; Sat, 05 Nov 2022 15:52:37 -0400
+ id 1orPDX-0003a2-4Q; Sat, 05 Nov 2022 15:52:37 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue107
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MHndY-1olIWv3VSA-00Evzt; Sat, 05
- Nov 2022 20:52:32 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MZCKd-1oVhSG371l-00V64U; Sat, 05
+ Nov 2022 20:52:29 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PULL 4/7] target/m68k: Rename qregs.def -> qregs.h.inc
-Date: Sat,  5 Nov 2022 20:52:24 +0100
-Message-Id: <20221105195227.354769-5-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Han Han <hhan@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 1/7] qapi: virtio: Fix the introduced version
+Date: Sat,  5 Nov 2022 20:52:21 +0100
+Message-Id: <20221105195227.354769-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20221105195227.354769-1-laurent@vivier.eu>
 References: <20221105195227.354769-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:KqkWFJF4qEqDsMz6J3gdsinnXe2P7pXNcsCTwHrIej+gWXe98oG
- a2tESZt5gPPY9Gqw1l6uRJic0KOM2iz1k+Nn9usf9eaWrOUSwwCzqw5KO+b0t3yd6yEkqzS
- tBU5AsZY8DnHfP0ho4n/fpeB+ivJ/Yi7Gmnajaz3EE0QaT3vei4/ODADFm550kNMSPr7tNx
- oOwayi/18+eCWm6aLopdQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:SrQzScEA6PM=:yHwhGHzyrD84uoWJiXOK72
- JgCP/newo+WK1943wd878jfSFHWKSdbF0xIjsF/sPxrcBIOHMcJePuG9fBF0DM5DO24Z6vQtj
- A+iHGdKdXBPWNsrWcSxN6mcQ3aVvB7c+DCDT4o2wY+eSP3YxzV8j40+FBJHPjNiOAYmOiipiI
- xnht9+yX+Her5xgnuqcA94oALnIdcTryj9t5r50KJtdztpwmbQ+fMTCjB7crMV+LCHtkJWZUQ
- HZId6LK/MStqhaJt/CR0UNnv7gWU4+UlSwKZ6YRpSSJzvodnDYVRcUGHw9N9QF7dtltuRJwli
- GWl8Rs11wj4zU5mghOZgdnfpNmpWqDzOaaF9hw/GH5d3032bF1dZSeKsZHq0Yw6pUNOZ9B9KC
- PK+MjC/YpsRASnD3SeJkK1S1hyjZZoI76X0ctPJ+HsLu9Im2oAuhKFJSvGX93Elamk48yb9+f
- teU7l6Tufmkyr5s1MEZoguBW1ldEtoBKUCx8KxHJy4tcBYeTITQl+AeHOoXKhQlZGfbCR7MHW
- WZXssddRC/3eRI/FpdexMh4Ez9KUdhc9k1+FHDi2WHYkS7jx7tIH0Lj92Erms2a+S19igAQTl
- 02rZ3LwmUCbuLst1uAbBo8xIhIQxNrO1zIFP3YtuowfQVV8a3i/cKtT4VFDskU4ABEyq/gfDy
- CnrIUW5xxMQiGTsjk21D/8VNF++M0VLvTkOLc9MTC9p+ClWKANNVGVRyILw6DEpLI4ocNiV2K
- 2shWdwNoBI88fw0qUwVX4V7pdQf9KjYDWUuTE6xouWFCGgW92CpTldMBjNs/mCuHPr2K/bFKM
- IrWgKc1
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:GqfFrXNjcQTzegjZbwXCZ4PBVMAjIpDh8xID31h0V05cZGwkafX
+ NjplMS3h/cBOlJE6YatAlE+fuo6CwvS6A32l65nbgnIYW2pbex7/XSsTf1DDG43y0uBOVto
+ dCIXDEUgKrm1Nv2WSH7ig1WnyxSldmCI2R5piui4lsVz5Z7OXnCOLQ5+cPaqC88mOLbBKE3
+ KhtK5U5GSV02w/HtjbmXA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wN4IuNOOg/Q=:vAJZ0FgSa/SRJB23LFjf2p
+ R2fd18Y+v2Cyz5u2lbuTZkHYFQ5f+x8FFnfosnc4IsBncVtJ+kbQ5U/lGlG64vXmVzrnxDue9
+ MWCyQbykkE3QGNYrwXm9zMq8KuMpV89uTUyT0bCzDu+N79ltMj23lAQZG/DFAjhP4r+zv0FHP
+ vvtGZOlPi87q14q257fTdZEFGm0nFBOzQO2v4NFT/PXsZDlR16+md64Q/wvmSz96PrAW3+nU8
+ 79RVi9pFie8O+zvAMHg+8emy0teY/HZjcx6IUN2JjRn3uUZo2IjRgvnYUEEzJcznTk2UBxx4L
+ BYt7oAShQy5kmyGuP/Z4+Jvp926nvmafTn6Cz4SCkc3y2OGYlR29GQjkmTQ8AFm3Jt1obyff/
+ lctP61TvVsc9uzysYlbu7tEUGqJ0y302xHrRj8zXcYqNW1JZ86E2OmfU1eNNSYWTmMtzKGwaM
+ fdC1nSuQCsV68+3lvYAJ3v6o6fKG6sbvCSGkmeMuWa8Hwcr88mdp4VW+SFgKwhhichbNGU9sa
+ SfVDqDWK3BsAlY9xQwO2/bHxKc4yzGIus6N4elLGbLAUKz7gbBFHA7Htt8am9FAKkOv39jWM+
+ sXwgnhMzyQoCbVs6Hb48QAhPEuVhnK8kIpENbtqcT1V1RruEu4yxrvG+u2TQ1jP5SEUK5tFK6
+ pYO7+qQOPGN9uvO7YOaFt7m/HdHLghXyyl41/gJV2IB7LbD0pJKyd5BUksmbQCqbjo0r7MW8F
+ AKNyIjeJR/NqzF6lqWODIX/leQMg9uimWbf0l1LZgsVSqNr5iBPV5R3ZvFmfO2S61Q2vQ02Wo
+ QzuaQlw
+Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -64,54 +61,178 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Nov 2022 19:52:37 -0000
+X-List-Received-Date: Sat, 05 Nov 2022 19:52:38 -0000
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Han Han <hhan@redhat.com>
 
-We use the .h.inc extension to include C headers. To be consistent
-with the rest of the codebase, rename the C headers using the .def
-extension.
+The items of qapi/virtio.json are introduced at a5ebce38576. They will be
+in the version 7.2 not 7.1.
 
-IDE/tools using our .editorconfig / .gitattributes will leverage
-this consistency.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Han Han <hhan@redhat.com>
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20221025235006.7215-2-philmd@linaro.org>
+Message-Id: <20221101014647.3000801-1-hhan@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/m68k/{qregs.def => qregs.h.inc} | 0
- target/m68k/translate.c                | 4 ++--
- 2 files changed, 2 insertions(+), 2 deletions(-)
- rename target/m68k/{qregs.def => qregs.h.inc} (100%)
+ qapi/virtio.json | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/target/m68k/qregs.def b/target/m68k/qregs.h.inc
-similarity index 100%
-rename from target/m68k/qregs.def
-rename to target/m68k/qregs.h.inc
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 5cbde4be3404..18418312b14b 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -39,7 +39,7 @@
+diff --git a/qapi/virtio.json b/qapi/virtio.json
+index e47a8fb2e0a9..872c7e36236c 100644
+--- a/qapi/virtio.json
++++ b/qapi/virtio.json
+@@ -15,7 +15,7 @@
+ #
+ # @name: Name of the VirtIODevice
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
+ { 'struct': 'VirtioInfo',
+@@ -32,7 +32,7 @@
+ #
+ # Returns: List of gathered VirtIODevices
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ # Example:
+ #
+@@ -97,7 +97,7 @@
+ #
+ # @log-size: vhost_dev log_size
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
  
- #define DEFO32(name, offset) static TCGv QREG_##name;
- #define DEFO64(name, offset) static TCGv_i64 QREG_##name;
--#include "qregs.def"
-+#include "qregs.h.inc"
- #undef DEFO32
- #undef DEFO64
+@@ -167,7 +167,7 @@
+ #             Present if the given VirtIODevice has an active vhost
+ #             device.
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
  
-@@ -75,7 +75,7 @@ void m68k_tcg_init(void)
- #define DEFO64(name, offset) \
-     QREG_##name = tcg_global_mem_new_i64(cpu_env, \
-         offsetof(CPUM68KState, offset), #name);
--#include "qregs.def"
-+#include "qregs.h.inc"
- #undef DEFO32
- #undef DEFO64
+@@ -206,7 +206,7 @@
+ #
+ # Returns: VirtioStatus of the virtio device
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ # Examples:
+ #
+@@ -452,7 +452,7 @@
+ #
+ # @unknown-statuses: Virtio device statuses bitmap that have not been decoded
+ #
+-# Since: 7.1
++# Since: 7.2
+ ##
  
+ { 'struct': 'VirtioDeviceStatus',
+@@ -471,7 +471,7 @@
+ # @unknown-protocols: Vhost user device protocol features bitmap that
+ #                     have not been decoded
+ #
+-# Since: 7.1
++# Since: 7.2
+ ##
+ 
+ { 'struct': 'VhostDeviceProtocols',
+@@ -492,7 +492,7 @@
+ # @unknown-dev-features: Virtio device features bitmap that have not
+ #                        been decoded
+ #
+-# Since: 7.1
++# Since: 7.2
+ ##
+ 
+ { 'struct': 'VirtioDeviceFeatures',
+@@ -535,7 +535,7 @@
+ #
+ # @signalled-used-valid: VirtQueue signalled_used_valid flag
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
+ 
+@@ -576,7 +576,7 @@
+ #        shadow_avail_idx will not be displayed in the case where
+ #        the selected VirtIODevice has a running vhost device.
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ # Examples:
+ #
+@@ -666,7 +666,7 @@
+ #
+ # @used-size: vhost_virtqueue used_size
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
+ 
+@@ -699,7 +699,7 @@
+ #
+ # Returns: VirtVhostQueueStatus of the vhost_virtqueue
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ # Examples:
+ #
+@@ -767,7 +767,7 @@
+ #
+ # @flags: List of descriptor flags
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
+ 
+@@ -787,7 +787,7 @@
+ #
+ # @ring: VRingAvail ring[] entry at provided index
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
+ 
+@@ -805,7 +805,7 @@
+ #
+ # @idx: VRingUsed index
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
+ 
+@@ -829,7 +829,7 @@
+ #
+ # @used: VRingUsed info
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ ##
+ 
+@@ -857,7 +857,7 @@
+ #
+ # Returns: VirtioQueueElement information
+ #
+-# Since: 7.1
++# Since: 7.2
+ #
+ # Examples:
+ #
 -- 
 2.37.3
 
