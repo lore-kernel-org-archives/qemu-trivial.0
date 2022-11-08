@@ -1,54 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1os8LI-0004Zb-5d
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2022 15:03:36 -0500
+	id 1osKNA-0005ap-4V
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Nov 2022 03:54:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1os8LH-0004W8-3G
- for qemu-trivial@nongnu.org; Mon, 07 Nov 2022 15:03:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1osKN5-0005aK-03
+ for qemu-trivial@nongnu.org; Tue, 08 Nov 2022 03:54:18 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1os8LF-0004dN-9n
- for qemu-trivial@nongnu.org; Mon, 07 Nov 2022 15:03:34 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1osKN3-0004n1-JS
+ for qemu-trivial@nongnu.org; Tue, 08 Nov 2022 03:54:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667851412;
+ s=mimecast20190719; t=1667897652;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=r8QFEJ32ctNPVM/9A5wTwait9ztGQbLWLh8IxzYx9tE=;
- b=ID+4yFZzp3QwNaCcLTa6t922LJToeFp/OFVJ9+XXqAb+T+o3LLeF9XG+0r586oZlmg490Z
- K2DpVb0Sw2+4HGAB6PidNZHygIih+4/Sm4O1sFze3Xb1AtNIU5mxtRYh2E+orUo1ravDjk
- VTO384UvPQ8W0vZCZ080xp8fV7+1NOE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-459-PU9-6LoYPH-KzlZuYf9NJw-1; Mon, 07 Nov 2022 15:03:30 -0500
-X-MC-Unique: PU9-6LoYPH-KzlZuYf9NJw-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 18268185A7A9;
- Mon,  7 Nov 2022 20:03:30 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.151])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 90EE4492B13;
- Mon,  7 Nov 2022 20:03:28 +0000 (UTC)
-Date: Mon, 7 Nov 2022 15:03:27 -0500
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PULL 0/7] Trivial branch for 7.2 patches
-Message-ID: <Y2lkj8O61xJ0xdKA@fedora>
-References: <20221105195227.354769-1-laurent@vivier.eu>
+ bh=5ewUlNdGcfZW60UY5SA4vb9ylWXeeb9MQjl4DijEkN8=;
+ b=Y6DGfci0hmLA/qZ2lQwl7npWYcqnoq2BYpZPTGQdEedYZaG1YHV2haidzY0jxSTfKJmqdL
+ vyKmEa+Hbf7XuhUUDodTpu/QmHdfsMNE9x4ZOQCrNLBLQRijbkYArlwUKlLWNMJipIkEyT
+ rtIVTVzEyHWBqM0MaQ4lTlCSQqisbpQ=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-216--Bp8kiphNzCAmRa7kf70Ug-1; Tue, 08 Nov 2022 03:54:11 -0500
+X-MC-Unique: -Bp8kiphNzCAmRa7kf70Ug-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ ew11-20020a05622a514b00b003a524196d31so9778437qtb.2
+ for <qemu-trivial@nongnu.org>; Tue, 08 Nov 2022 00:54:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5ewUlNdGcfZW60UY5SA4vb9ylWXeeb9MQjl4DijEkN8=;
+ b=H3JgRD7ipxCYIV/W534X0q8BwOIcxNtOcAhkHQGsaK3iwkaGR4DdPS9mr3o/V/QrLS
+ 7JKAB25JBpvro9SK+v0J60F8lvb1Az2jJcLHXuQYoe39SeLwg0C74fGgXShzZoxQ87Uj
+ hPreMh6jXLWwnpFbibNWVG1N/nCZT8aqGAd03K31HAdPRZBXN4AMNl7BaYhLo/VUUbFO
+ MNrcr+RR/nqHwCgbbmv7+vLNUJ1GkpFE1IrwTlMrkdsgncKn4WniBmUPHbQcyJno46Tz
+ qu8aKEHAtgFLHqE3VjA62ALBrQ2iQ/i9kgYBgbmAvnDfkqN7WrqYyAloFPNwc9H/aaVo
+ hdRQ==
+X-Gm-Message-State: ACrzQf183NS2dCrPBgy4Wxn97qpC80b6GO7D+ooM1FXDHqKssqGq3Lgn
+ fN5H6SxaoWocIFK/nsDMWmAFVXqqZVIgoxK1gmcs1L+CKLOEBY9BLGiqDryzrP+jOKHpRJT/9pd
+ fRSNJZCwFe2jpFea3Cw==
+X-Received: by 2002:a05:620a:916:b0:6fa:2149:c535 with SMTP id
+ v22-20020a05620a091600b006fa2149c535mr35550113qkv.413.1667897650745; 
+ Tue, 08 Nov 2022 00:54:10 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM68bNdFA5hamgqrmGaIin1zDvq4vRkXdX9lQFT3zVShCSeKrgRBP/OujzDuExjXVGoS76juqA==
+X-Received: by 2002:a05:620a:916:b0:6fa:2149:c535 with SMTP id
+ v22-20020a05620a091600b006fa2149c535mr35550107qkv.413.1667897650485; 
+ Tue, 08 Nov 2022 00:54:10 -0800 (PST)
+Received: from redhat.com ([138.199.52.3]) by smtp.gmail.com with ESMTPSA id
+ l2-20020ac80782000000b00343057845f7sm7653275qth.20.2022.11.08.00.54.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Nov 2022 00:54:10 -0800 (PST)
+Date: Tue, 8 Nov 2022 03:54:05 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: jianchunfu <jianchunfu@cmss.chinamobile.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH] libvhost-user: Handling potential memory allocation
+ failures
+Message-ID: <20221108033133-mutt-send-email-mst@kernel.org>
+References: <20221108080141.5756-1-jianchunfu@cmss.chinamobile.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="tzMDNuCE65u5dRa5"
+In-Reply-To: <20221108080141.5756-1-jianchunfu@cmss.chinamobile.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20221105195227.354769-1-laurent@vivier.eu>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -69,32 +87,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Nov 2022 20:03:35 -0000
+X-List-Received-Date: Tue, 08 Nov 2022 08:54:19 -0000
+
+On Tue, Nov 08, 2022 at 04:01:41PM +0800, jianchunfu wrote:
+> Add malloc check of virtqueue element in libvhost-user.
+> 
+> Signed-off-by: jianchunfu <jianchunfu@cmss.chinamobile.com>
+> ---
+>  subprojects/libvhost-user/libvhost-user.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
+> index 47d2efc60f..901cd7a2c0 100644
+> --- a/subprojects/libvhost-user/libvhost-user.c
+> +++ b/subprojects/libvhost-user/libvhost-user.c
+> @@ -2551,6 +2551,10 @@ virtqueue_alloc_element(size_t sz,
+>  
+>      assert(sz >= sizeof(VuVirtqElement));
+>      elem = malloc(out_sg_end);
+> +    if (!elem) {
+> +        DPRINT("%s: failed to malloc virtqelement\n", __func__);
+> +        exit(0);
+> +    }
+
+exit is certainly not the right way to handle such errors.
 
 
---tzMDNuCE65u5dRa5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/7.2 for any user-visible changes.
-
---tzMDNuCE65u5dRa5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmNpZI8ACgkQnKSrs4Gr
-c8iQzwf+JZjwt3On4jqJ08y/MlUnFYkGqLA7UMAyXKHttKthxUtlFjQ3J8KjVMqE
-avUN15ZM9FcDFlpYY7FHkBZZIpGIb1GzzPi5H+GonmUXiuctxKaEUvA4ZVU/uZzo
-Q8UVB/E4I3HTYNIsDVH3wjJ9AdDu+juxRSTV14aDjWHrvh48ExkYchJIKNuwAgvJ
-A9ewetKbnA9xf1F5R/Y7twsfkapsRQZ5HN81H2brVya8tW6uDeOoxWHfG9LG82pk
-gsyjqVcqywZwbUgk98NzaaZcbGofCralBv7TFsPzWqIzqf8VZGA4TCOVsuqCNgIw
-lHY/drKRGqJpiAiP2XR36faJUdZlLw==
-=9tnz
------END PGP SIGNATURE-----
-
---tzMDNuCE65u5dRa5--
+>      elem->out_num = out_num;
+>      elem->in_num = in_num;
+>      elem->in_sg = (void *)elem + in_sg_ofs;
+> -- 
+> 2.18.4
+> 
+> 
 
 
