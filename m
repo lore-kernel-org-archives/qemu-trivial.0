@@ -1,74 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1osfrI-0000Qi-6p
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Nov 2022 02:50:55 -0500
+	id 1osp1Y-00037I-4h
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Nov 2022 12:38:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1osfr5-0000Q1-19
- for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 02:50:39 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1osfr3-0006u7-4q
- for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 02:50:38 -0500
-Received: by mail-wr1-x433.google.com with SMTP id v1so24427870wrt.11
- for <qemu-trivial@nongnu.org>; Tue, 08 Nov 2022 23:50:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4rnijDnAeAElMiR+cCUbab9N8bv/5YhO4uhULJeH4fM=;
- b=kJ9fnWV2FyhgfNYw5gj2LT5zWV2RX7fUXiO/ADnom1v3hbUvNOHfIK+gCyZGglzdVU
- WjRYeQ2nGCSsT4u/JPu0Qyt0ORRI1AMx3HemKWRnjeMe/QRBlEUQWiPY7+Y/pfY5NARH
- jAzSiKCdzMV9w7pUy/ugzAvpH1rV99ZmgqQxXQEBibXEwnL0QXeBlTGTODuIwoZg90nx
- pd3AX8G6MT46JdIoTNCNhDkHkuNuHFGidcTSsc+WHJVb4s8QB6cGY9bLt36XBz9HjX+H
- I8KKoKlLh0PhR4Xv7n/YbTSZYs3SIQjGW3dijDtAXXJL+/lYN/JVCV4VhIAMLrXxTk5C
- 8cHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4rnijDnAeAElMiR+cCUbab9N8bv/5YhO4uhULJeH4fM=;
- b=wE873hYIuPrm1mMHSpaEFFWxXYC0Gdms6xUu5me98rg5bn28+UQSAJu/81g4h59rUc
- n8JWiuxFONocsmX8ec/Uz2WmaXHHXCeJpWRxvnI+7djsQsVPWYuKT3IqDX7/Lt6Yg+pj
- VIWSHbGLKcfFbZPVarmekao5dYtXWeqBW3TfX/t1adBKlMNQ0jCgpELijwWfpUJ+G/FU
- K6YQ0A/wFMP/w5o3IHj445gsNwyS6a9nuFQTlBD4lMVKm3qYkyNz2qTjwzMl+2RMspSe
- PAGK9uYXWJf+eu+t/Q0jboHu+Ms1WNbaKEHCprgUwG4yaH78EpEbO4iBFIduhEkUZiPU
- /QBQ==
-X-Gm-Message-State: ACrzQf071AiKZIMW9tKAQ2VHnQ2RyHva+JIqiKCteL+sWgJIMjPErul5
- 060JnkufmNspwYukWPq7JRhcGA==
-X-Google-Smtp-Source: AMsMyM4YnScOBPC2RNxEmt1e/q1U3YPQHS/VJ/YOt0hRejJB7zNQb7y3n4s4LqLIawfrP7ZCbqsVKw==
-X-Received: by 2002:a5d:4004:0:b0:236:cc0a:7c64 with SMTP id
- n4-20020a5d4004000000b00236cc0a7c64mr31418515wrp.149.1667980235164; 
- Tue, 08 Nov 2022 23:50:35 -0800 (PST)
-Received: from [192.168.63.175] (218.red-88-29-178.dynamicip.rima-tde.net.
- [88.29.178.218]) by smtp.gmail.com with ESMTPSA id
- u6-20020a05600c19c600b003b497138093sm685216wmq.47.2022.11.08.23.50.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Nov 2022 23:50:34 -0800 (PST)
-Message-ID: <c3881f4d-53f8-22d0-766f-77ab1b0a51d9@linaro.org>
-Date: Wed, 9 Nov 2022 08:50:31 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1osp1W-00036j-9g
+ for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 12:38:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1osp1U-0000ZT-PC
+ for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 12:38:02 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1668015478;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=p9DadWsfbhoRGq3z9v34ziSUK6XmXD9LiCzBp9VE1I0=;
+ b=U4z6OjZrk9Zsr/CNDDu9gmlY5DYq6I+rkaePxrCFTlf9+eaUJPId1gSPjKpZi94VQQ2p0n
+ nbGjIeji/HsoTQ1DUUm8p8NGInXRD20FKNrgsYpfWUEgJzuUT4n9rcB4AcZxI0av1XwtVX
+ bWDJm0fIVvE25Sz0AxkBE+ZpSkDOrqA=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-561-pXpn3LBkOv2WuYhdDCV-Mg-1; Wed, 09 Nov 2022 12:37:55 -0500
+X-MC-Unique: pXpn3LBkOv2WuYhdDCV-Mg-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1CC622999B24;
+ Wed,  9 Nov 2022 17:37:55 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.113])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9FE64492B17;
+ Wed,  9 Nov 2022 17:37:53 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Konstantin Kostiuk <kkostiuk@redhat.com>
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] qga: Allow building of the guest agent without system
+ emulators or tools
+Date: Wed,  9 Nov 2022 18:37:50 +0100
+Message-Id: <20221109173750.201615-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.1
-Subject: Re: [PATCH trivial for 7.2] hw/ssi/sifive_spi.c: spelling: reigster
-Content-Language: en-US
-To: Palmer Dabbelt <palmer@dabbelt.com>, mjt@tls.msk.ru
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alistair@alistair23.me,
- bin.meng@windriver.com, "Michael S. Tsirkin" <mst@redhat.com>
-References: <mhng-33f90530-6bed-4501-913a-0ce40f4d9e0b@palmer-ri-x1c9a>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <mhng-33f90530-6bed-4501-913a-0ce40f4d9e0b@palmer-ri-x1c9a>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,36 +65,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Nov 2022 07:50:39 -0000
+X-List-Received-Date: Wed, 09 Nov 2022 17:38:03 -0000
 
-On 8/11/22 23:11, Palmer Dabbelt wrote:
-> On Sat, 05 Nov 2022 04:53:29 PDT (-0700), mjt@tls.msk.ru wrote:
->> Fixes: 0694dabe9763847f3010b54ab3ec7d367d2f0ff0
-> 
-> Not sure if I missed something in QEMU land, but those are usually 
-> listed more like
-> 
-> Fixes: 0694dabe97 ("hw/ssi: Add SiFive SPI controller support")
+If configuring with "--disable-system --disable-user --enable-guest-agent"
+the linking currently fails with:
 
-MST suggested once to try to restrict the 'Fixes:' tag to bug /
-regressions, as it might help downstream distributions to filter
-commits to cherry-pick.
+qga/qemu-ga.p/commands.c.o: In function `qmp_command_info':
+build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference to `qmp_command_name'
+build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference to `qmp_command_is_enabled'
+build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference to `qmp_has_success_response'
+qga/qemu-ga.p/commands.c.o: In function `qmp_guest_info':
+build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference to `qmp_for_each_command'
+qga/qemu-ga.p/commands.c.o: In function `qmp_guest_exec':
+build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined reference to `qbase64_decode'
+qga/qemu-ga.p/channel-posix.c.o: In function `ga_channel_open':
+build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined reference to `unix_listen'
+build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined reference to `socket_parse'
+build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined reference to `socket_listen'
+qga/qemu-ga.p/commands-posix.c.o: In function `qmp_guest_file_write':
+build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined reference to `qbase64_decode'
 
-Since it might be useful to have the offending commit sha1 in the
-description, when it is simply an omission or improvement I use
-the an inline form instead of a tag:
+Let's make sure that we also compile and link the required files if
+the system emulators have not been enabled.
 
-   Fixes the typo introduced in commit 0694dabe97 ("hw/ssi: Add SiFive
-   SPI controller support").
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ qapi/meson.build  | 2 +-
+ stubs/meson.build | 2 +-
+ util/meson.build  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-Although in this particular use-case it is not really useful ;)
+diff --git a/qapi/meson.build b/qapi/meson.build
+index 9a36c15c04..fbdb442fdf 100644
+--- a/qapi/meson.build
++++ b/qapi/meson.build
+@@ -13,7 +13,7 @@ util_ss.add(files(
+ if have_system
+   util_ss.add(files('qapi-type-helpers.c'))
+ endif
+-if have_system or have_tools
++if have_system or have_tools or have_ga
+   util_ss.add(files(
+     'qmp-dispatch.c',
+     'qmp-event.c',
+diff --git a/stubs/meson.build b/stubs/meson.build
+index 4314161f5f..c96a74f095 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -49,7 +49,7 @@ stub_ss.add(files('vmstate.c'))
+ stub_ss.add(files('vm-stop.c'))
+ stub_ss.add(files('win32-kbd-hook.c'))
+ stub_ss.add(files('cpu-synchronize-state.c'))
+-if have_block
++if have_block or have_ga
+   stub_ss.add(files('replay-tools.c'))
+ endif
+ if have_system
+diff --git a/util/meson.build b/util/meson.build
+index 59c1f467bb..b260539bd5 100644
+--- a/util/meson.build
++++ b/util/meson.build
+@@ -68,7 +68,7 @@ if have_system
+   util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
+ endif
+ 
+-if have_block
++if have_block or have_ga
+   util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
+   util_ss.add(files('base64.c'))
+   util_ss.add(files('buffer.c'))
+-- 
+2.31.1
 
-Another example:
-
-   When adding <the feature> in commit <sha1 ("<subject>")>, we forgot
-   to fill the API prototype description. Do it now.
-
-Regards,
-
-Phil.
 
