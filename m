@@ -1,79 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ospE6-0008AV-6u
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Nov 2022 12:51:02 -0500
+	id 1ost4F-0005n9-Jn
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Nov 2022 16:57:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1ospE0-00088Z-NR
- for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 12:50:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1ospDb-0006A0-BT
- for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 12:50:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668016229;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=GHYU0JIm2iHxzs+XgGB1gIOgEP7otH5jvvoCxzNRhTk=;
- b=KWXG/5L9gUgsS9VjLsQRZEqeDG6jiOQFVxxhxAGNSWEOefN2LHRWKBIk3hzYgfP+ZQ063k
- vbsJ6kFeJ3ZX7XXzAOdCmZ1QBUWoq5k1rSSywRNlpigcjdbxYIMF2FmLBEke4QawmNs+Ib
- tICdRo5Gy5ri/MXmWq6+98hIXpg/OtE=
-Received: from mail-ot1-f69.google.com (mail-ot1-f69.google.com
- [209.85.210.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-563-olNj1c7HMTymdAJi9V1uuw-1; Wed, 09 Nov 2022 12:50:27 -0500
-X-MC-Unique: olNj1c7HMTymdAJi9V1uuw-1
-Received: by mail-ot1-f69.google.com with SMTP id
- l12-20020a9d6a8c000000b0066c33f1649cso8509104otq.2
- for <qemu-trivial@nongnu.org>; Wed, 09 Nov 2022 09:50:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ost4C-0005mQ-Qn
+ for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 16:57:05 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ost49-00016d-Dn
+ for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 16:57:04 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ h133-20020a1c218b000000b003cf4d389c41so2180701wmh.3
+ for <qemu-trivial@nongnu.org>; Wed, 09 Nov 2022 13:56:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=rHXZIaE29nYOF5EyFZCXz8u1hwobcwLMEfjofPvO06g=;
+ b=aqY4j2aXWbKGg4e1cscj6z5kawS8oMt/MiZb1Hhyuk7sUjA10M6MyFMmqZHkeZOHH7
+ XWHJwKaHHkjGiLu3/iI6ZiJvj+P4zu4YoKXprKXnnRh3gQ57FHXPmWhgKHY0vNwwrK/R
+ PPekffax6mM4e7EvCHIJDe8yk7PPyR7P2HUDguBWlup1rbbpyx5YPWlgUGBSfSm4HieN
+ BEM6ozcBZuyE3LV6uEzKmYeC88zi/6m0SjAgRoDj9cxw9f/GCF5pfQPd2ctKXP5W+BNB
+ VpLKDxHycRoQYjD1ikC5Y4oNgGlqjEe41X+MtiTaBZ/HX61fLYMVqNJl425GVncIGdch
+ ECug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GHYU0JIm2iHxzs+XgGB1gIOgEP7otH5jvvoCxzNRhTk=;
- b=dbMrNTBMG6ko/Y1eawH1r5FSM5o/Irm3cGxt0U7v2tzFPtG5ZyXdzIYvNmcY3adLI2
- +bQcE3GR9faLnXGlKzba7ay98FIFEbjiB0e6PXHSJIY6Y69zFsyfstJWC4lhXBrVQtEf
- FvlsGi/EhfDP+7aUkVU/bhZqB/1Lxux8zf4YoAcJJ0styZVJKgY1aGHAgyz2lS8R0D10
- obUPkzeTPLsuhsac5ek79GO9Qxp4LuTqIPjej57PtcYCaViTlq0rbATMDvBDZhkS0Q63
- N4QctgsGGTqwSTGSJq+shry9yzL6ZPm19nJF2CJllF32/zmC/gxdAtfo+SZ6KSi4xKIU
- 9cOQ==
-X-Gm-Message-State: ACrzQf2Xf7O9Xbu0ACu3ovcxDbheGF+8ERIm0qomfyo/Gr8j/7LFD02D
- SQFSxTF7hQd2UxuYiekRZ+xwdWXbbMZozRPoZLMskwNArf4nem0vfrxqXkX6YCD0WqS2JeljYD/
- 8TK2LEYWOKoU7ZOtgFo202Omkzh7D6BLiGQ==
-X-Received: by 2002:a05:6870:15d1:b0:12b:91ce:e419 with SMTP id
- k17-20020a05687015d100b0012b91cee419mr43823902oad.14.1668016227151; 
- Wed, 09 Nov 2022 09:50:27 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM5yv+ccsubs/PGj8bItbK6/MSIaa3LR/PkyminxqhFdew8Gc1OCVAkR6/x2KAY3WRZgTPoTqsQRhEFA/s2DnD8=
-X-Received: by 2002:a05:6870:15d1:b0:12b:91ce:e419 with SMTP id
- k17-20020a05687015d100b0012b91cee419mr43823887oad.14.1668016226917; Wed, 09
- Nov 2022 09:50:26 -0800 (PST)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=rHXZIaE29nYOF5EyFZCXz8u1hwobcwLMEfjofPvO06g=;
+ b=WdFLzz1A9P15Xyu9ziFgvv3Atbmbpmo5u9TSvMWfoy0upQ2B63/njja5O8nC8sYmc0
+ U0sa0+dcTkOTRafc2n9oTtsm+BGdyNMig1nMc/FLOdryMlI4GydSy3EfYRpQr4EeCjBb
+ GphXNzNmIlMPmY7jk/qG5MLwEsjz+UbLkehnoDG5WIjk2ylwTYvy8/jmzilvYfZmgZP7
+ YkBx1b6afNb+QWHOHwBRE7JupkjWyIyvFZ7piT5QlzyuXJjTzZCTCF7SA9D5KhPV6viI
+ rt2Gq9or/rHv3uhXwodrgHNQ3eWvtrZl1hktqFTfpM60qL+/uEO0/k2GnNQjO34JPj+p
+ 5Nng==
+X-Gm-Message-State: ANoB5pk/sDm2MtufBtaybi/y0JbXkgVdXPsolYz7BPY/HEtck+HuWeGk
+ fUV/Tpqd+rSGYHT6i1zHXiCXqQ==
+X-Google-Smtp-Source: AA0mqf4J0WKClfVKZK8wx6rldeoVnCQtGxHkycBNjLbZJA1szha8QGqd/uRPqmW/OKWjlDpzrwZa8A==
+X-Received: by 2002:a05:600c:4f0f:b0:3cf:b73f:bf86 with SMTP id
+ l15-20020a05600c4f0f00b003cfb73fbf86mr7513116wmq.137.1668031017986; 
+ Wed, 09 Nov 2022 13:56:57 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ z9-20020a5d6409000000b00228d67db06esm14118889wru.21.2022.11.09.13.56.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Nov 2022 13:56:57 -0800 (PST)
+Message-ID: <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org>
+Date: Wed, 9 Nov 2022 22:56:56 +0100
 MIME-Version: 1.0
-References: <20221109173750.201615-1-thuth@redhat.com>
-In-Reply-To: <20221109173750.201615-1-thuth@redhat.com>
-From: Konstantin Kostiuk <kkostiuk@redhat.com>
-Date: Wed, 9 Nov 2022 19:50:14 +0200
-Message-ID: <CAPMcbCqngW+KsXWWKx1tUdLiDZCc44OPBP2AsJubqwOtnLE9CQ@mail.gmail.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.1
 Subject: Re: [PATCH] qga: Allow building of the guest agent without system
  emulators or tools
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000af768205ed0d4aa3"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kkostiuk@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Konstantin Kostiuk <kkostiuk@redhat.com>
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20221109173750.201615-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221109173750.201615-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,192 +84,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Nov 2022 17:50:59 -0000
+X-List-Received-Date: Wed, 09 Nov 2022 21:57:05 -0000
 
---000000000000af768205ed0d4aa3
-Content-Type: text/plain; charset="UTF-8"
-
-Reviewed-by: Konstantin Kostiuk <kkostiuk@redhat.com>
-
-On Wed, Nov 9, 2022 at 7:37 PM Thomas Huth <thuth@redhat.com> wrote:
-
+On 9/11/22 18:37, Thomas Huth wrote:
 > If configuring with "--disable-system --disable-user --enable-guest-agent"
 > the linking currently fails with:
->
+> 
 > qga/qemu-ga.p/commands.c.o: In function `qmp_command_info':
-> build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference
-> to `qmp_command_name'
-> build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference
-> to `qmp_command_is_enabled'
-> build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference
-> to `qmp_has_success_response'
+> build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference to `qmp_command_name'
+> build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference to `qmp_command_is_enabled'
+> build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference to `qmp_has_success_response'
 > qga/qemu-ga.p/commands.c.o: In function `qmp_guest_info':
-> build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference
-> to `qmp_for_each_command'
+> build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference to `qmp_for_each_command'
 > qga/qemu-ga.p/commands.c.o: In function `qmp_guest_exec':
-> build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined reference
-> to `qbase64_decode'
+> build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined reference to `qbase64_decode'
 > qga/qemu-ga.p/channel-posix.c.o: In function `ga_channel_open':
-> build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined
-> reference to `unix_listen'
-> build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined
-> reference to `socket_parse'
-> build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined
-> reference to `socket_listen'
+> build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined reference to `unix_listen'
+> build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined reference to `socket_parse'
+> build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined reference to `socket_listen'
 > qga/qemu-ga.p/commands-posix.c.o: In function `qmp_guest_file_write':
-> build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined
-> reference to `qbase64_decode'
->
+> build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined reference to `qbase64_decode'
+> 
 > Let's make sure that we also compile and link the required files if
 > the system emulators have not been enabled.
->
+> 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  qapi/meson.build  | 2 +-
->  stubs/meson.build | 2 +-
->  util/meson.build  | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/qapi/meson.build b/qapi/meson.build
-> index 9a36c15c04..fbdb442fdf 100644
-> --- a/qapi/meson.build
-> +++ b/qapi/meson.build
-> @@ -13,7 +13,7 @@ util_ss.add(files(
->  if have_system
->    util_ss.add(files('qapi-type-helpers.c'))
->  endif
-> -if have_system or have_tools
-> +if have_system or have_tools or have_ga
->    util_ss.add(files(
->      'qmp-dispatch.c',
->      'qmp-event.c',
-> diff --git a/stubs/meson.build b/stubs/meson.build
-> index 4314161f5f..c96a74f095 100644
-> --- a/stubs/meson.build
-> +++ b/stubs/meson.build
-> @@ -49,7 +49,7 @@ stub_ss.add(files('vmstate.c'))
->  stub_ss.add(files('vm-stop.c'))
->  stub_ss.add(files('win32-kbd-hook.c'))
->  stub_ss.add(files('cpu-synchronize-state.c'))
-> -if have_block
-> +if have_block or have_ga
->    stub_ss.add(files('replay-tools.c'))
->  endif
->  if have_system
+>   qapi/meson.build  | 2 +-
+>   stubs/meson.build | 2 +-
+>   util/meson.build  | 2 +-
+>   3 files changed, 3 insertions(+), 3 deletions(-)
+
 > diff --git a/util/meson.build b/util/meson.build
 > index 59c1f467bb..b260539bd5 100644
 > --- a/util/meson.build
 > +++ b/util/meson.build
 > @@ -68,7 +68,7 @@ if have_system
->    util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
->  endif
->
+>     util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
+>   endif
+>   
 > -if have_block
 > +if have_block or have_ga
->    util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
->    util_ss.add(files('base64.c'))
->    util_ss.add(files('buffer.c'))
-> --
-> 2.31.1
->
->
+>     util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
+>     util_ss.add(files('base64.c'))
+>     util_ss.add(files('buffer.c'))
 
---000000000000af768205ed0d4aa3
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This can be eventually reduced for 'have_ga':
 
-<div dir=3D"ltr">Reviewed-by: Konstantin Kostiuk &lt;<a href=3D"mailto:kkos=
-tiuk@redhat.com" target=3D"_blank">kkostiuk@redhat.com</a>&gt;</div><br><di=
-v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Nov 9=
-, 2022 at 7:37 PM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth=
-@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">If configuring with &quot;--disable-system --disable-user --enab=
-le-guest-agent&quot;<br>
-the linking currently fails with:<br>
-<br>
-qga/qemu-ga.p/commands.c.o: In function `qmp_command_info&#39;:<br>
-build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference to=
- `qmp_command_name&#39;<br>
-build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference to=
- `qmp_command_is_enabled&#39;<br>
-build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference to=
- `qmp_has_success_response&#39;<br>
-qga/qemu-ga.p/commands.c.o: In function `qmp_guest_info&#39;:<br>
-build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference to=
- `qmp_for_each_command&#39;<br>
-qga/qemu-ga.p/commands.c.o: In function `qmp_guest_exec&#39;:<br>
-build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined reference t=
-o `qbase64_decode&#39;<br>
-qga/qemu-ga.p/channel-posix.c.o: In function `ga_channel_open&#39;:<br>
-build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined refere=
-nce to `unix_listen&#39;<br>
-build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined refere=
-nce to `socket_parse&#39;<br>
-build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined refere=
-nce to `socket_listen&#39;<br>
-qga/qemu-ga.p/commands-posix.c.o: In function `qmp_guest_file_write&#39;:<b=
-r>
-build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined refer=
-ence to `qbase64_decode&#39;<br>
-<br>
-Let&#39;s make sure that we also compile and link the required files if<br>
-the system emulators have not been enabled.<br>
-<br>
-Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank">thuth@redhat.com</a>&gt;<br>
----<br>
-=C2=A0qapi/meson.build=C2=A0 | 2 +-<br>
-=C2=A0stubs/meson.build | 2 +-<br>
-=C2=A0util/meson.build=C2=A0 | 2 +-<br>
-=C2=A03 files changed, 3 insertions(+), 3 deletions(-)<br>
-<br>
-diff --git a/qapi/meson.build b/qapi/meson.build<br>
-index 9a36c15c04..fbdb442fdf 100644<br>
---- a/qapi/meson.build<br>
-+++ b/qapi/meson.build<br>
-@@ -13,7 +13,7 @@ util_ss.add(files(<br>
-=C2=A0if have_system<br>
-=C2=A0 =C2=A0util_ss.add(files(&#39;qapi-type-helpers.c&#39;))<br>
-=C2=A0endif<br>
--if have_system or have_tools<br>
-+if have_system or have_tools or have_ga<br>
-=C2=A0 =C2=A0util_ss.add(files(<br>
-=C2=A0 =C2=A0 =C2=A0&#39;qmp-dispatch.c&#39;,<br>
-=C2=A0 =C2=A0 =C2=A0&#39;qmp-event.c&#39;,<br>
-diff --git a/stubs/meson.build b/stubs/meson.build<br>
-index 4314161f5f..c96a74f095 100644<br>
---- a/stubs/meson.build<br>
-+++ b/stubs/meson.build<br>
-@@ -49,7 +49,7 @@ stub_ss.add(files(&#39;vmstate.c&#39;))<br>
-=C2=A0stub_ss.add(files(&#39;vm-stop.c&#39;))<br>
-=C2=A0stub_ss.add(files(&#39;win32-kbd-hook.c&#39;))<br>
-=C2=A0stub_ss.add(files(&#39;cpu-synchronize-state.c&#39;))<br>
--if have_block<br>
-+if have_block or have_ga<br>
-=C2=A0 =C2=A0stub_ss.add(files(&#39;replay-tools.c&#39;))<br>
-=C2=A0endif<br>
-=C2=A0if have_system<br>
-diff --git a/util/meson.build b/util/meson.build<br>
-index 59c1f467bb..b260539bd5 100644<br>
---- a/util/meson.build<br>
-+++ b/util/meson.build<br>
-@@ -68,7 +68,7 @@ if have_system<br>
-=C2=A0 =C2=A0util_ss.add(when: &#39;CONFIG_LINUX&#39;, if_true: files(&#39;=
-userfaultfd.c&#39;))<br>
-=C2=A0endif<br>
-<br>
--if have_block<br>
-+if have_block or have_ga<br>
-=C2=A0 =C2=A0util_ss.add(files(&#39;aiocb.c&#39;, &#39;async.c&#39;, &#39;a=
-io-wait.c&#39;))<br>
-=C2=A0 =C2=A0util_ss.add(files(&#39;base64.c&#39;))<br>
-=C2=A0 =C2=A0util_ss.add(files(&#39;buffer.c&#39;))<br>
--- <br>
-2.31.1<br>
-<br>
-</blockquote></div>
+-- 8< --
+diff --git a/util/meson.build b/util/meson.build
+index 59c1f467bbe..690e8be903e 100644
+--- a/util/meson.build
++++ b/util/meson.build
+@@ -68,28 +68,30 @@
+    util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
+  endif
 
---000000000000af768205ed0d4aa3--
+-if have_block
++if have_block or have_ga
+    util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
+    util_ss.add(files('base64.c'))
++ 
+util_ss.add(files('coroutine-@0@.c'.format(config_host['CONFIG_COROUTINE_BACKEND'])))
++  util_ss.add(files('lockcnt.c'))
++  util_ss.add(files('main-loop.c'))
++  util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c', 
+'qemu-coroutine-io.c'))
++  util_ss.add(files('qemu-coroutine-sleep.c'))
++  util_ss.add(files('qemu-co-shared-resource.c'))
++  util_ss.add(files('qemu-co-timeout.c'))
++  util_ss.add(files('iov.c', 'qemu-sockets.c', 'uri.c'))
++  util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
++endif
++if have_block
+    util_ss.add(files('buffer.c'))
+    util_ss.add(files('bufferiszero.c'))
+- 
+util_ss.add(files('coroutine-@0@.c'.format(config_host['CONFIG_COROUTINE_BACKEND'])))
+    util_ss.add(files('hbitmap.c'))
+    util_ss.add(files('hexdump.c'))
+    util_ss.add(files('iova-tree.c'))
+-  util_ss.add(files('iov.c', 'qemu-sockets.c', 'uri.c'))
+-  util_ss.add(files('lockcnt.c'))
+-  util_ss.add(files('main-loop.c'))
+    util_ss.add(files('nvdimm-utils.c'))
+-  util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c', 
+'qemu-coroutine-io.c'))
+    util_ss.add(when: 'CONFIG_LINUX', if_true: [
+      files('vhost-user-server.c'), vhost_user
+    ])
+    util_ss.add(files('block-helpers.c'))
+-  util_ss.add(files('qemu-coroutine-sleep.c'))
+-  util_ss.add(files('qemu-co-shared-resource.c'))
+-  util_ss.add(files('qemu-co-timeout.c'))
+-  util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
+    util_ss.add(files('readline.c'))
+    util_ss.add(files('throttle.c'))
+    util_ss.add(files('timed-average.c'))
+---
+
+Regardless:
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
