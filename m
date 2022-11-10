@@ -1,80 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ot2yn-0002ia-Iv
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2022 03:32:14 -0500
+	id 1ot32S-0004MV-OJ
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2022 03:35:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ot2yi-0002i7-6p
- for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 03:32:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ot32I-0004Lh-Tq
+ for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 03:35:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ot2yg-00038M-HM
- for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 03:32:03 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ot32F-0006BK-Fp
+ for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 03:35:46 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668069120;
+ s=mimecast20190719; t=1668069342;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=eFk+uOvePePducUXaZeu4GHxGs0dtk98peYuso2lFYE=;
- b=dnNsfTXYAzCRdcK+CADXVsCA1ETHwhFo3HD0fef1xAeCmGM5R1XMwmPZD5n9LdDlwvsOD0
- 4S/M/67x1F9jyxh7vVJl4fNpvyN8IizKTJRuEmaJNL+jLIYDaQR0Y/8pM6wf8XrwNxRWpi
- mSV+1I1By4FDwMH/5nSRDgUn2SrBH9E=
-Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
- [209.85.215.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=tscDa6AmG9WbHj2MOjQ0frbeGfMOMs/REQUmYYKUHKw=;
+ b=bAJG+K2Ag9SzP5Ow/usmZlCHqNtAjLPPcObyfyYVS2DnHR4nuShUAGeHd3+sYNp6Eg3Z6B
+ nqki1wGbhSdS72CMasDPKnOFfqjqIriGGs9G84+v1MhI+PW0NljT9f7o50TpiwBMVdxOt9
+ CWdHpQXwimN2d5s2sTivqJnetxE4Nog=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-487-9jesc-YeMnWIfe9LVNvOmg-1; Thu, 10 Nov 2022 03:31:59 -0500
-X-MC-Unique: 9jesc-YeMnWIfe9LVNvOmg-1
-Received: by mail-pg1-f200.google.com with SMTP id
- a33-20020a630b61000000b00429d91cc649so666474pgl.8
- for <qemu-trivial@nongnu.org>; Thu, 10 Nov 2022 00:31:59 -0800 (PST)
+ us-mta-306-fbCSxM_yOPKahs9kug3Y3g-1; Thu, 10 Nov 2022 03:35:40 -0500
+X-MC-Unique: fbCSxM_yOPKahs9kug3Y3g-1
+Received: by mail-pl1-f200.google.com with SMTP id
+ t3-20020a170902e84300b00186ab03043dso948068plg.20
+ for <qemu-trivial@nongnu.org>; Thu, 10 Nov 2022 00:35:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eFk+uOvePePducUXaZeu4GHxGs0dtk98peYuso2lFYE=;
- b=sF4RzI74CnfGczdYbuOIDVaHK9xuogGIfoGnvRdhdtEn9JER5O4cIneix2vxj8H01f
- 3umZLEuyn0SyXn8M8t7PV+mQrDXD97qle1GtLyvvdyeTi2j/7PgyCoNF0zEy3NF4Pta6
- oATBN+P7DjeZWftGW+hCxOWs6HRnlToH5BNv/dRO/BJpgzUyIQk6AbhoF5VLElwvIsPe
- Sv9donnK5kN61EZz9HUqwwZBB7ffOA365DLxxKv6YwFUhmAcneH+cIM5S5BHUPQYqS4P
- neLhi12bG5R+DpOGMJbdkPd9D4Y8VHFjiif2L2uJW9PfJCECkuHsSsshgKG3FQSgW2p6
- VzeQ==
-X-Gm-Message-State: ACrzQf2Tk/0pBxd+E2IndxMgKS667renlF+wYPB4yVpIUlUcylJGUNed
- GbvZBWywaCev4EAfdGoY4xPDLQNWnaR14bXfukUfyipIijB/nELzuVHVxrUXp0dCOyJ6GEJ/yfk
- FRfFnxU1Qo2gVL0InrA==
-X-Received: by 2002:a63:194b:0:b0:457:7295:8de0 with SMTP id
- 11-20020a63194b000000b0045772958de0mr55788224pgz.612.1668069118522; 
- Thu, 10 Nov 2022 00:31:58 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM5pvZQanjZShdcO3Dzx3Tv/Pu2r9yiFN4pv24n4Ij4cY3ZtF90dv0t2dR8Sp4tQdKHmsY88AA==
-X-Received: by 2002:a63:194b:0:b0:457:7295:8de0 with SMTP id
- 11-20020a63194b000000b0045772958de0mr55788209pgz.612.1668069118229; 
- Thu, 10 Nov 2022 00:31:58 -0800 (PST)
+ bh=tscDa6AmG9WbHj2MOjQ0frbeGfMOMs/REQUmYYKUHKw=;
+ b=T9NY2cIqauHleZeTwwq82+PhTrqpd6O8CoFRLP+md3yzlIrNhs31APNBp0EoLuRh8d
+ s8P5v2agTjm9yqFD5StXIMpEjSNk1bDx0jZV8YBKzczJ9O3P2KZUu/hN5j81nFwd5+eM
+ vlme45i+pVbn6ZcLuh8IaRB+1MYoNyUtmlTnPHzSY4iYItHYdlWtAtE47XrK5BZhHbRl
+ FoAvYEbZNfTMO8YkVB3aTyIfSwMrQpFmgW6M0PRHpgZVubf3NX9vl6u6B+CL2qPukGUO
+ ylOdyihu8b/vFpJTfIKi9Kxdyc1eFQI5KGT1IPONcA6LIehSOnQMRwOJlO6WYKM+208h
+ dtaQ==
+X-Gm-Message-State: ACrzQf2A2MUnxZzVuNx8Kk8A/30uzyZzOtcGlangvELplf6kCUF+mjIx
+ +cD/+9Rb9aPaYVJKgJCXBVmKoo7ijYUzAfgxYz7p/AlKq8OvEhpqP38tRorY8gXDpCf8gJElN+K
+ 9rCzThLOdoSf5Zk9vDA==
+X-Received: by 2002:a63:8bc2:0:b0:46f:5bbb:7370 with SMTP id
+ j185-20020a638bc2000000b0046f5bbb7370mr55300572pge.70.1668069339018; 
+ Thu, 10 Nov 2022 00:35:39 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM5UNF8I+ZxmGdEIkxEfkzjX23o9fgKXenC6zGBMkfyQqaSQ3xYwnl/6fFopP1Qzta4dHF4OAw==
+X-Received: by 2002:a63:8bc2:0:b0:46f:5bbb:7370 with SMTP id
+ j185-20020a638bc2000000b0046f5bbb7370mr55300561pge.70.1668069338714; 
+ Thu, 10 Nov 2022 00:35:38 -0800 (PST)
 Received: from [10.33.192.232] (nat-pool-str-t.redhat.com. [149.14.88.106])
  by smtp.gmail.com with ESMTPSA id
- n6-20020a170902e54600b0017f5c7d3931sm10551154plf.282.2022.11.10.00.31.53
+ l65-20020a622544000000b0056be4dbd4besm9634865pfl.111.2022.11.10.00.35.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Nov 2022 00:31:57 -0800 (PST)
-Message-ID: <d7bd4f37-0f0f-b191-e813-ea6ed4cad309@redhat.com>
-Date: Thu, 10 Nov 2022 09:31:50 +0100
+ Thu, 10 Nov 2022 00:35:38 -0800 (PST)
+Message-ID: <cee224a9-b107-9bf1-66d5-b631d5a88345@redhat.com>
+Date: Thu, 10 Nov 2022 09:35:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
 Subject: Re: [PATCH] qga: Allow building of the guest agent without system
  emulators or tools
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Konstantin Kostiuk <kkostiuk@redhat.com>
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Konstantin Kostiuk <kkostiuk@redhat.com>,
+ qemu-trivial@nongnu.org, Michael Roth <michael.roth@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20221109173750.201615-1-thuth@redhat.com>
  <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org>
+ <87wn83jr54.fsf@pond.sub.org>
 From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org>
+In-Reply-To: <87wn83jr54.fsf@pond.sub.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -95,78 +97,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Nov 2022 08:32:04 -0000
+X-List-Received-Date: Thu, 10 Nov 2022 08:35:52 -0000
 
-On 09/11/2022 22.56, Philippe Mathieu-Daudé wrote:
-> On 9/11/22 18:37, Thomas Huth wrote:
->> If configuring with "--disable-system --disable-user --enable-guest-agent"
->> the linking currently fails with:
->>
->> qga/qemu-ga.p/commands.c.o: In function `qmp_command_info':
->> build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference 
->> to `qmp_command_name'
->> build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference 
->> to `qmp_command_is_enabled'
->> build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference 
->> to `qmp_has_success_response'
->> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_info':
->> build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference 
->> to `qmp_for_each_command'
->> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_exec':
->> build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined reference 
->> to `qbase64_decode'
->> qga/qemu-ga.p/channel-posix.c.o: In function `ga_channel_open':
->> build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined 
->> reference to `unix_listen'
->> build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined 
->> reference to `socket_parse'
->> build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined 
->> reference to `socket_listen'
->> qga/qemu-ga.p/commands-posix.c.o: In function `qmp_guest_file_write':
->> build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined 
->> reference to `qbase64_decode'
->>
->> Let's make sure that we also compile and link the required files if
->> the system emulators have not been enabled.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   qapi/meson.build  | 2 +-
->>   stubs/meson.build | 2 +-
->>   util/meson.build  | 2 +-
->>   3 files changed, 3 insertions(+), 3 deletions(-)
+On 10/11/2022 06.49, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
 > 
->> diff --git a/util/meson.build b/util/meson.build
->> index 59c1f467bb..b260539bd5 100644
->> --- a/util/meson.build
->> +++ b/util/meson.build
->> @@ -68,7 +68,7 @@ if have_system
->>     util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
->>   endif
->> -if have_block
->> +if have_block or have_ga
->>     util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
->>     util_ss.add(files('base64.c'))
->>     util_ss.add(files('buffer.c'))
+>> On 9/11/22 18:37, Thomas Huth wrote:
+>>> If configuring with "--disable-system --disable-user --enable-guest-agent"
+>>> the linking currently fails with:
+>>>
+>>> qga/qemu-ga.p/commands.c.o: In function `qmp_command_info':
+>>> build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference to `qmp_command_name'
+>>> build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference to `qmp_command_is_enabled'
+>>> build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference to `qmp_has_success_response'
+>>> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_info':
+>>> build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference to `qmp_for_each_command'
+>>> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_exec':
+>>> build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined reference to `qbase64_decode'
+>>> qga/qemu-ga.p/channel-posix.c.o: In function `ga_channel_open':
+>>> build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined reference to `unix_listen'
+>>> build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined reference to `socket_parse'
+>>> build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined reference to `socket_listen'
+>>> qga/qemu-ga.p/commands-posix.c.o: In function `qmp_guest_file_write':
+>>> build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined reference to `qbase64_decode'
+>>>
+>>> Let's make sure that we also compile and link the required files if
+>>> the system emulators have not been enabled.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > 
-> This can be eventually reduced for 'have_ga':
+> I wonder for how long this has been broken.
 > 
-> -- 8< --
-> diff --git a/util/meson.build b/util/meson.build
-> index 59c1f467bbe..690e8be903e 100644
-> --- a/util/meson.build
-> +++ b/util/meson.build
-> @@ -68,28 +68,30 @@
->     util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
->   endif
-> 
-> -if have_block
-> +if have_block or have_ga
->     util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
+> Should we add such a configuration to CI?
 
-Thanks for the idea! By breaking up the lines that contain multiple files, 
-it seems that it can even be refined further.
-I'll send a v2.
+Some month ago, I'd say: Sure! ... but considering that gitlab now limits 
+the available CI minutes and that apparently nobody really cares about this 
+configuration (otherwise someone would have complained about this earlier), 
+I think it's not that important to have a separate CI test for this 
+configuration.
 
   Thomas
 
