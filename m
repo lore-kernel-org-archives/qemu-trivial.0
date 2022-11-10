@@ -1,68 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ot0RG-0007el-Kp
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2022 00:49:22 -0500
+	id 1ot1un-0005Sm-8u
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2022 02:23:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ot0RF-0007cn-Ha
- for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 00:49:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ot0RD-0000iR-3K
- for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 00:49:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668059357;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Eyu3qAyscRJ9HLcDUSiYOfGJ3hRRiKbI5lQ/nKzbM6s=;
- b=Dhoiv7j4lFqE8BJrCVecPx974zFI+an1iq/KyRF/LL0jYy/98NzvqHDDlOr4dP+iREy5GC
- VUWQvlcJk5RHRQmBHRPqltx/K28IFvUwdfYuv14u7X1HQqE7vKNKNF58SaWCUpVr7WGqMR
- pHKC33K4sPsmLPMG3r7V1qjdUEZF4iQ=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-41-JkaqUcWsMoaYV_ASIUngEg-1; Thu, 10 Nov 2022 00:49:14 -0500
-X-MC-Unique: JkaqUcWsMoaYV_ASIUngEg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 151101C0879D;
- Thu, 10 Nov 2022 05:49:14 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.175])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B3BF340C83D9;
- Thu, 10 Nov 2022 05:49:13 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 5E15021E6921; Thu, 10 Nov 2022 06:49:11 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>,  qemu-devel@nongnu.org,  Konstantin
- Kostiuk <kkostiuk@redhat.com>,  qemu-trivial@nongnu.org,  Michael Roth
- <michael.roth@amd.com>,  Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH] qga: Allow building of the guest agent without system
- emulators or tools
-References: <20221109173750.201615-1-thuth@redhat.com>
- <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org>
-Date: Thu, 10 Nov 2022 06:49:11 +0100
-In-Reply-To: <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 9 Nov 2022 22:56:56
- +0100")
-Message-ID: <87wn83jr54.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <jianchunfu@cmss.chinamobile.com>)
+ id 1ot1ue-0005QB-SB; Thu, 10 Nov 2022 02:23:50 -0500
+Received: from cmccmta1.chinamobile.com ([221.176.66.79])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <jianchunfu@cmss.chinamobile.com>)
+ id 1ot1ub-00064z-5h; Thu, 10 Nov 2022 02:23:48 -0500
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from spf.mail.chinamobile.com (unknown[172.16.121.87])
+ by rmmx-syy-dmz-app03-12003 (RichMail) with SMTP id 2ee3636ca6f4920-597a1;
+ Thu, 10 Nov 2022 15:23:33 +0800 (CST)
+X-RM-TRANSID: 2ee3636ca6f4920-597a1
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from localhost.localdomain (unknown[223.108.79.103])
+ by rmsmtp-syy-appsvrnew04-12029 (RichMail) with SMTP id 2efd636ca6e9fc8-94cc0; 
+ Thu, 10 Nov 2022 15:23:32 +0800 (CST)
+X-RM-TRANSID: 2efd636ca6e9fc8-94cc0
+From: jianchunfu <jianchunfu@cmss.chinamobile.com>
+To: mst@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ jianchunfu <jianchunfu@cmss.chinamobile.com>
+Subject: [RFC] libvhost-user: Add report when allocation failures
+Date: Thu, 10 Nov 2022 15:21:57 +0800
+Message-Id: <20221110072157.4242-1-jianchunfu@cmss.chinamobile.com>
+X-Mailer: git-send-email 2.18.4
+In-Reply-To: <20221108033133-mutt-send-email-mst@kernel.org>
+References: <20221108033133-mutt-send-email-mst@kernel.org>
+Received-SPF: pass client-ip=221.176.66.79;
+ envelope-from=jianchunfu@cmss.chinamobile.com; helo=cmccmta1.chinamobile.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,129 +50,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Nov 2022 05:49:21 -0000
+X-List-Received-Date: Thu, 10 Nov 2022 07:23:54 -0000
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Add error report when malloc fails of virtqueue element.
+It's a little pointless to return NULL, wouldn't it be right
+to report error and exit when malloc fails since it is in a
+standalone project while not QEMU.
 
-> On 9/11/22 18:37, Thomas Huth wrote:
->> If configuring with "--disable-system --disable-user --enable-guest-agen=
-t"
->> the linking currently fails with:
->>=20
->> qga/qemu-ga.p/commands.c.o: In function `qmp_command_info':
->> build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference=
- to `qmp_command_name'
->> build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference=
- to `qmp_command_is_enabled'
->> build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference=
- to `qmp_has_success_response'
->> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_info':
->> build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference=
- to `qmp_for_each_command'
->> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_exec':
->> build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined referenc=
-e to `qbase64_decode'
->> qga/qemu-ga.p/channel-posix.c.o: In function `ga_channel_open':
->> build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined ref=
-erence to `unix_listen'
->> build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined ref=
-erence to `socket_parse'
->> build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined ref=
-erence to `socket_listen'
->> qga/qemu-ga.p/commands-posix.c.o: In function `qmp_guest_file_write':
->> build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined re=
-ference to `qbase64_decode'
->>=20
->> Let's make sure that we also compile and link the required files if
->> the system emulators have not been enabled.
->>=20
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: jianchunfu <jianchunfu@cmss.chinamobile.com>
+---
+ subprojects/libvhost-user/libvhost-user.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-I wonder for how long this has been broken.
+diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
+index 47d2efc60f..c2bdf0fcc1 100644
+--- a/subprojects/libvhost-user/libvhost-user.c
++++ b/subprojects/libvhost-user/libvhost-user.c
+@@ -2551,6 +2551,10 @@ virtqueue_alloc_element(size_t sz,
+ 
+     assert(sz >= sizeof(VuVirtqElement));
+     elem = malloc(out_sg_end);
++    if (!elem) {
++        DPRINT("%s: failed to malloc virtqelement\n", __func__);
++        return NULL;
++    }
+     elem->out_num = out_num;
+     elem->in_num = in_num;
+     elem->in_sg = (void *)elem + in_sg_ofs;
+-- 
+2.18.4
 
-Should we add such a configuration to CI?
 
->> ---
->>   qapi/meson.build  | 2 +-
->>   stubs/meson.build | 2 +-
->>   util/meson.build  | 2 +-
->>   3 files changed, 3 insertions(+), 3 deletions(-)
->
->> diff --git a/util/meson.build b/util/meson.build
->> index 59c1f467bb..b260539bd5 100644
->> --- a/util/meson.build
->> +++ b/util/meson.build
->> @@ -68,7 +68,7 @@ if have_system
->>     util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
->>   endif
->>=20=20=20
->> -if have_block
->> +if have_block or have_ga
->>     util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
->>     util_ss.add(files('base64.c'))
->>     util_ss.add(files('buffer.c'))
->
-> This can be eventually reduced for 'have_ga':
->
-> -- 8< --
-> diff --git a/util/meson.build b/util/meson.build
-> index 59c1f467bbe..690e8be903e 100644
-> --- a/util/meson.build
-> +++ b/util/meson.build
-> @@ -68,28 +68,30 @@
->    util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
->  endif
->
-> -if have_block
-> +if have_block or have_ga
->    util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
->    util_ss.add(files('base64.c'))
-> +=20
-> util_ss.add(files('coroutine-@0@.c'.format(config_host['CONFIG_COROUTINE_=
-BACKEND'])))
-> +  util_ss.add(files('lockcnt.c'))
-> +  util_ss.add(files('main-loop.c'))
-> +  util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c',=20
-> 'qemu-coroutine-io.c'))
-> +  util_ss.add(files('qemu-coroutine-sleep.c'))
-> +  util_ss.add(files('qemu-co-shared-resource.c'))
-> +  util_ss.add(files('qemu-co-timeout.c'))
-> +  util_ss.add(files('iov.c', 'qemu-sockets.c', 'uri.c'))
-> +  util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
-> +endif
-> +if have_block
->    util_ss.add(files('buffer.c'))
->    util_ss.add(files('bufferiszero.c'))
-> -=20
-> util_ss.add(files('coroutine-@0@.c'.format(config_host['CONFIG_COROUTINE_=
-BACKEND'])))
->    util_ss.add(files('hbitmap.c'))
->    util_ss.add(files('hexdump.c'))
->    util_ss.add(files('iova-tree.c'))
-> -  util_ss.add(files('iov.c', 'qemu-sockets.c', 'uri.c'))
-> -  util_ss.add(files('lockcnt.c'))
-> -  util_ss.add(files('main-loop.c'))
->    util_ss.add(files('nvdimm-utils.c'))
-> -  util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c',=20
-> 'qemu-coroutine-io.c'))
->    util_ss.add(when: 'CONFIG_LINUX', if_true: [
->      files('vhost-user-server.c'), vhost_user
->    ])
->    util_ss.add(files('block-helpers.c'))
-> -  util_ss.add(files('qemu-coroutine-sleep.c'))
-> -  util_ss.add(files('qemu-co-shared-resource.c'))
-> -  util_ss.add(files('qemu-co-timeout.c'))
-> -  util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
->    util_ss.add(files('readline.c'))
->    util_ss.add(files('throttle.c'))
->    util_ss.add(files('timed-average.c'))
-
-Better!
-
-> ---
->
-> Regardless:
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
 
