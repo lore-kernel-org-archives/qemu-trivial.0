@@ -1,66 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ot4R7-0002P2-Iw
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2022 05:05:29 -0500
+	id 1ot7L3-0006qj-Fn
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2022 08:11:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1ot4R5-0002OU-Av
- for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 05:05:27 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ot7Kz-0006ov-Oy
+ for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 08:11:21 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1ot4R3-0004aX-M6
- for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 05:05:27 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ot7Kx-0005YN-Im
+ for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 08:11:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668074725;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8lF/g+Q6YWL6nd5o1iF9ARYMzfPToen/Bov8npDn2S8=;
- b=d6TzTz9RBIa8Pz5ALxWTcOWKUYLxotc7h68dTL2yMiFOtUBE6LdP841tNXld+vy5bpIlAF
- iLkwa5ltKPwC6GuAHAW//QL0qmx7HXEFGjvWj1eW61LDJ/QvaAqTAKEfsYzSTqHCHGg8Ul
- q/4pbmejWs707aX5nZmk7UQ2CG4VJRA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1668085878;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=v3gw2G1IKycHc6COf+xO6RDQKjVqpoUfJQ2fqEx2HX8=;
+ b=ZMfBnHNiFPuxjl21n7xtwc6/q+xp3qlP2NGEIbbZBUxILqgyliKw++NyhNnbIR24s4OhFt
+ mzHdh63liL6p8s2Y7WlngUAR7PD+DR6ikT8HLqkB6LXZDpYCX5qvcmsd/zX1IrypiZvSZN
+ j773xQ5s7CB8pgs08Ak7F/Ru/2uXAXo=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-436-_GXYJR-zOYKTAXIFMA8fVg-1; Thu, 10 Nov 2022 05:05:21 -0500
-X-MC-Unique: _GXYJR-zOYKTAXIFMA8fVg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
+ us-mta-206-N_uLEFG8OYiWQI8ezntmog-1; Thu, 10 Nov 2022 08:11:15 -0500
+X-MC-Unique: N_uLEFG8OYiWQI8ezntmog-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 73427800B30;
- Thu, 10 Nov 2022 10:05:21 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.115])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3CA431415114;
- Thu, 10 Nov 2022 10:05:20 +0000 (UTC)
-Date: Thu, 10 Nov 2022 10:05:17 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- Konstantin Kostiuk <kkostiuk@redhat.com>, qemu-trivial@nongnu.org,
- Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH] qga: Allow building of the guest agent without system
- emulators or tools
-Message-ID: <Y2zM3RvoD9IXyMKF@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20221109173750.201615-1-thuth@redhat.com>
- <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org>
- <87wn83jr54.fsf@pond.sub.org>
- <cee224a9-b107-9bf1-66d5-b631d5a88345@redhat.com>
- <208d1191-6852-c74c-2a06-d65a6a657f4d@linaro.org>
- <0b29d9e3-9ce2-633c-1d73-cb5b0b9105ee@redhat.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EBB5B1C05AE8;
+ Thu, 10 Nov 2022 13:11:14 +0000 (UTC)
+Received: from thuth.com (dhcp-192-232.str.redhat.com [10.33.192.232])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D63E3112131B;
+ Thu, 10 Nov 2022 13:11:13 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org, mrezanin@redhat.com,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>
+Subject: [PATCH] libdecnumber/dpd/decimal64: Fix compiler warning from Clang 15
+Date: Thu, 10 Nov 2022 14:11:12 +0100
+Message-Id: <20221110131112.104283-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <0b29d9e3-9ce2-633c-1d73-cb5b0b9105ee@redhat.com>
-User-Agent: Mutt/2.2.7 (2022-08-07)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -81,67 +65,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Nov 2022 10:05:27 -0000
+X-List-Received-Date: Thu, 10 Nov 2022 13:11:22 -0000
 
-On Thu, Nov 10, 2022 at 10:57:27AM +0100, Thomas Huth wrote:
-> On 10/11/2022 10.49, Philippe Mathieu-Daudé wrote:
-> > On 10/11/22 09:35, Thomas Huth wrote:
-> > > On 10/11/2022 06.49, Markus Armbruster wrote:
-> > > > Philippe Mathieu-Daudé <philmd@linaro.org> writes:
-> > > > 
-> > > > > On 9/11/22 18:37, Thomas Huth wrote:
-> > > > > > If configuring with "--disable-system --disable-user --enable-guest-agent"
-> > > > > > the linking currently fails with:
-> > > > > > 
-> > > > > > qga/qemu-ga.p/commands.c.o: In function `qmp_command_info':
-> > > > > > build/../../home/thuth/devel/qemu/qga/commands.c:70:
-> > > > > > undefined reference to `qmp_command_name'
-> > 
-> > > > > > Let's make sure that we also compile and link the required files if
-> > > > > > the system emulators have not been enabled.
-> > > > > > 
-> > > > > > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > > > 
-> > > > I wonder for how long this has been broken.
-> > > > 
-> > > > Should we add such a configuration to CI?
-> > > 
-> > > Some month ago, I'd say: Sure! ... but considering that gitlab now
-> > > limits the available CI minutes and that apparently nobody really
-> > > cares about this configuration (otherwise someone would have
-> > > complained about this earlier), I think it's not that important to
-> > > have a separate CI test for this configuration.
-> > 
-> > We could eventually add a job restricted to qemu-project CI (not in
-> > forks).
-> 
-> The problem is: Who's going to create such jobs? Someone needs to write the
-> yaml stuff and test it first. And at least I pretty much lost motivation to
-> work on new yaml stuff, since this burns my private CI minutes (which I
-> rather need for my maintainer duties instead).
+Clang 15 from Fedora 37 complains:
 
-Top tip: if you're working on GitLab CI changes, create a separate
-QEMU fork in a different namespace for your adhoc testing, separate
-from your normal maintainer work.
+ ../libdecnumber/dpd/decimal64.c:620:8: error: variable 'n' set but
+ not used [-Werror,-Wunused-but-set-variable]
+   Int  n;                     /* output bunch counter */
+        ^
+ 1 error generated.
 
-CI minutes are limited per namespace, ie group or user account, and
-AFAIK, there is no limit on the number of groups you can create.
+Remove the unused variable to silence the compiler warning.
 
-eg, create a group called /thuth-ci, and fork QEMU into that and
-you've doubled the number of CI minutes available, so you can afford
-to mess around with CI changes and not risk ability to do your other
-normal work.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ libdecnumber/dpd/decimal64.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Now of course this ability to create many groups can be abused and
-I expect GitLab would take a dim view of such abuse. So I would only
-use this creation of extra groups for this very specific use case of
-needing to battle test CI YAML changes.
-
-With regards,
-Daniel
+diff --git a/libdecnumber/dpd/decimal64.c b/libdecnumber/dpd/decimal64.c
+index 4816176410..290dbe8177 100644
+--- a/libdecnumber/dpd/decimal64.c
++++ b/libdecnumber/dpd/decimal64.c
+@@ -617,7 +617,6 @@ static const uInt multies[]={131073, 26215, 5243, 1049, 210};
+ #endif
+ void decDigitsToDPD(const decNumber *dn, uInt *targ, Int shift) {
+   Int  cut;		      /* work */
+-  Int  n;		      /* output bunch counter */
+   Int  digits=dn->digits;     /* digit countdown */
+   uInt dpd;		      /* densely packed decimal value */
+   uInt bin;		      /* binary value 0-999 */
+@@ -676,7 +675,7 @@ void decDigitsToDPD(const decNumber *dn, uInt *targ, Int shift) {
+     bin=0;			   /* [keep compiler quiet] */
+   #endif
+ 
+-  for(n=0; digits>0; n++) {	   /* each output bunch */
++  while (digits > 0) {             /* each output bunch */
+     #if DECDPUN==3		   /* fast path, 3-at-a-time */
+       bin=*inu;			   /* 3 digits ready for convert */
+       digits-=3;		   /* [may go negative] */
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.31.1
 
 
