@@ -1,77 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ost4F-0005n9-Jn
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Nov 2022 16:57:07 -0500
+	id 1ot0RG-0007el-Kp
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2022 00:49:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ost4C-0005mQ-Qn
- for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 16:57:05 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ost49-00016d-Dn
- for qemu-trivial@nongnu.org; Wed, 09 Nov 2022 16:57:04 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- h133-20020a1c218b000000b003cf4d389c41so2180701wmh.3
- for <qemu-trivial@nongnu.org>; Wed, 09 Nov 2022 13:56:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=rHXZIaE29nYOF5EyFZCXz8u1hwobcwLMEfjofPvO06g=;
- b=aqY4j2aXWbKGg4e1cscj6z5kawS8oMt/MiZb1Hhyuk7sUjA10M6MyFMmqZHkeZOHH7
- XWHJwKaHHkjGiLu3/iI6ZiJvj+P4zu4YoKXprKXnnRh3gQ57FHXPmWhgKHY0vNwwrK/R
- PPekffax6mM4e7EvCHIJDe8yk7PPyR7P2HUDguBWlup1rbbpyx5YPWlgUGBSfSm4HieN
- BEM6ozcBZuyE3LV6uEzKmYeC88zi/6m0SjAgRoDj9cxw9f/GCF5pfQPd2ctKXP5W+BNB
- VpLKDxHycRoQYjD1ikC5Y4oNgGlqjEe41X+MtiTaBZ/HX61fLYMVqNJl425GVncIGdch
- ECug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rHXZIaE29nYOF5EyFZCXz8u1hwobcwLMEfjofPvO06g=;
- b=WdFLzz1A9P15Xyu9ziFgvv3Atbmbpmo5u9TSvMWfoy0upQ2B63/njja5O8nC8sYmc0
- U0sa0+dcTkOTRafc2n9oTtsm+BGdyNMig1nMc/FLOdryMlI4GydSy3EfYRpQr4EeCjBb
- GphXNzNmIlMPmY7jk/qG5MLwEsjz+UbLkehnoDG5WIjk2ylwTYvy8/jmzilvYfZmgZP7
- YkBx1b6afNb+QWHOHwBRE7JupkjWyIyvFZ7piT5QlzyuXJjTzZCTCF7SA9D5KhPV6viI
- rt2Gq9or/rHv3uhXwodrgHNQ3eWvtrZl1hktqFTfpM60qL+/uEO0/k2GnNQjO34JPj+p
- 5Nng==
-X-Gm-Message-State: ANoB5pk/sDm2MtufBtaybi/y0JbXkgVdXPsolYz7BPY/HEtck+HuWeGk
- fUV/Tpqd+rSGYHT6i1zHXiCXqQ==
-X-Google-Smtp-Source: AA0mqf4J0WKClfVKZK8wx6rldeoVnCQtGxHkycBNjLbZJA1szha8QGqd/uRPqmW/OKWjlDpzrwZa8A==
-X-Received: by 2002:a05:600c:4f0f:b0:3cf:b73f:bf86 with SMTP id
- l15-20020a05600c4f0f00b003cfb73fbf86mr7513116wmq.137.1668031017986; 
- Wed, 09 Nov 2022 13:56:57 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- z9-20020a5d6409000000b00228d67db06esm14118889wru.21.2022.11.09.13.56.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Nov 2022 13:56:57 -0800 (PST)
-Message-ID: <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org>
-Date: Wed, 9 Nov 2022 22:56:56 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.1
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ot0RF-0007cn-Ha
+ for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 00:49:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ot0RD-0000iR-3K
+ for qemu-trivial@nongnu.org; Thu, 10 Nov 2022 00:49:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1668059357;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Eyu3qAyscRJ9HLcDUSiYOfGJ3hRRiKbI5lQ/nKzbM6s=;
+ b=Dhoiv7j4lFqE8BJrCVecPx974zFI+an1iq/KyRF/LL0jYy/98NzvqHDDlOr4dP+iREy5GC
+ VUWQvlcJk5RHRQmBHRPqltx/K28IFvUwdfYuv14u7X1HQqE7vKNKNF58SaWCUpVr7WGqMR
+ pHKC33K4sPsmLPMG3r7V1qjdUEZF4iQ=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-41-JkaqUcWsMoaYV_ASIUngEg-1; Thu, 10 Nov 2022 00:49:14 -0500
+X-MC-Unique: JkaqUcWsMoaYV_ASIUngEg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 151101C0879D;
+ Thu, 10 Nov 2022 05:49:14 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.175])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B3BF340C83D9;
+ Thu, 10 Nov 2022 05:49:13 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 5E15021E6921; Thu, 10 Nov 2022 06:49:11 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>,  qemu-devel@nongnu.org,  Konstantin
+ Kostiuk <kkostiuk@redhat.com>,  qemu-trivial@nongnu.org,  Michael Roth
+ <michael.roth@amd.com>,  Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [PATCH] qga: Allow building of the guest agent without system
  emulators or tools
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Konstantin Kostiuk <kkostiuk@redhat.com>
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20221109173750.201615-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221109173750.201615-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+ <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org>
+Date: Thu, 10 Nov 2022 06:49:11 +0100
+In-Reply-To: <b81930e5-9df7-a80a-5db4-09290a3b71f3@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 9 Nov 2022 22:56:56
+ +0100")
+Message-ID: <87wn83jr54.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,107 +75,129 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Nov 2022 21:57:05 -0000
+X-List-Received-Date: Thu, 10 Nov 2022 05:49:21 -0000
 
-On 9/11/22 18:37, Thomas Huth wrote:
-> If configuring with "--disable-system --disable-user --enable-guest-agent"
-> the linking currently fails with:
-> 
-> qga/qemu-ga.p/commands.c.o: In function `qmp_command_info':
-> build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference to `qmp_command_name'
-> build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference to `qmp_command_is_enabled'
-> build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference to `qmp_has_success_response'
-> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_info':
-> build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference to `qmp_for_each_command'
-> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_exec':
-> build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined reference to `qbase64_decode'
-> qga/qemu-ga.p/channel-posix.c.o: In function `ga_channel_open':
-> build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined reference to `unix_listen'
-> build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined reference to `socket_parse'
-> build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined reference to `socket_listen'
-> qga/qemu-ga.p/commands-posix.c.o: In function `qmp_guest_file_write':
-> build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined reference to `qbase64_decode'
-> 
-> Let's make sure that we also compile and link the required files if
-> the system emulators have not been enabled.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   qapi/meson.build  | 2 +-
->   stubs/meson.build | 2 +-
->   util/meson.build  | 2 +-
->   3 files changed, 3 insertions(+), 3 deletions(-)
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
+> On 9/11/22 18:37, Thomas Huth wrote:
+>> If configuring with "--disable-system --disable-user --enable-guest-agen=
+t"
+>> the linking currently fails with:
+>>=20
+>> qga/qemu-ga.p/commands.c.o: In function `qmp_command_info':
+>> build/../../home/thuth/devel/qemu/qga/commands.c:70: undefined reference=
+ to `qmp_command_name'
+>> build/../../home/thuth/devel/qemu/qga/commands.c:71: undefined reference=
+ to `qmp_command_is_enabled'
+>> build/../../home/thuth/devel/qemu/qga/commands.c:72: undefined reference=
+ to `qmp_has_success_response'
+>> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_info':
+>> build/../../home/thuth/devel/qemu/qga/commands.c:82: undefined reference=
+ to `qmp_for_each_command'
+>> qga/qemu-ga.p/commands.c.o: In function `qmp_guest_exec':
+>> build/../../home/thuth/devel/qemu/qga/commands.c:410: undefined referenc=
+e to `qbase64_decode'
+>> qga/qemu-ga.p/channel-posix.c.o: In function `ga_channel_open':
+>> build/../../home/thuth/devel/qemu/qga/channel-posix.c:214: undefined ref=
+erence to `unix_listen'
+>> build/../../home/thuth/devel/qemu/qga/channel-posix.c:228: undefined ref=
+erence to `socket_parse'
+>> build/../../home/thuth/devel/qemu/qga/channel-posix.c:234: undefined ref=
+erence to `socket_listen'
+>> qga/qemu-ga.p/commands-posix.c.o: In function `qmp_guest_file_write':
+>> build/../../home/thuth/devel/qemu/qga/commands-posix.c:527: undefined re=
+ference to `qbase64_decode'
+>>=20
+>> Let's make sure that we also compile and link the required files if
+>> the system emulators have not been enabled.
+>>=20
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+I wonder for how long this has been broken.
+
+Should we add such a configuration to CI?
+
+>> ---
+>>   qapi/meson.build  | 2 +-
+>>   stubs/meson.build | 2 +-
+>>   util/meson.build  | 2 +-
+>>   3 files changed, 3 insertions(+), 3 deletions(-)
+>
+>> diff --git a/util/meson.build b/util/meson.build
+>> index 59c1f467bb..b260539bd5 100644
+>> --- a/util/meson.build
+>> +++ b/util/meson.build
+>> @@ -68,7 +68,7 @@ if have_system
+>>     util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
+>>   endif
+>>=20=20=20
+>> -if have_block
+>> +if have_block or have_ga
+>>     util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
+>>     util_ss.add(files('base64.c'))
+>>     util_ss.add(files('buffer.c'))
+>
+> This can be eventually reduced for 'have_ga':
+>
+> -- 8< --
 > diff --git a/util/meson.build b/util/meson.build
-> index 59c1f467bb..b260539bd5 100644
+> index 59c1f467bbe..690e8be903e 100644
 > --- a/util/meson.build
 > +++ b/util/meson.build
-> @@ -68,7 +68,7 @@ if have_system
->     util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
->   endif
->   
+> @@ -68,28 +68,30 @@
+>    util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
+>  endif
+>
 > -if have_block
 > +if have_block or have_ga
->     util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
->     util_ss.add(files('base64.c'))
->     util_ss.add(files('buffer.c'))
+>    util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
+>    util_ss.add(files('base64.c'))
+> +=20
+> util_ss.add(files('coroutine-@0@.c'.format(config_host['CONFIG_COROUTINE_=
+BACKEND'])))
+> +  util_ss.add(files('lockcnt.c'))
+> +  util_ss.add(files('main-loop.c'))
+> +  util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c',=20
+> 'qemu-coroutine-io.c'))
+> +  util_ss.add(files('qemu-coroutine-sleep.c'))
+> +  util_ss.add(files('qemu-co-shared-resource.c'))
+> +  util_ss.add(files('qemu-co-timeout.c'))
+> +  util_ss.add(files('iov.c', 'qemu-sockets.c', 'uri.c'))
+> +  util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
+> +endif
+> +if have_block
+>    util_ss.add(files('buffer.c'))
+>    util_ss.add(files('bufferiszero.c'))
+> -=20
+> util_ss.add(files('coroutine-@0@.c'.format(config_host['CONFIG_COROUTINE_=
+BACKEND'])))
+>    util_ss.add(files('hbitmap.c'))
+>    util_ss.add(files('hexdump.c'))
+>    util_ss.add(files('iova-tree.c'))
+> -  util_ss.add(files('iov.c', 'qemu-sockets.c', 'uri.c'))
+> -  util_ss.add(files('lockcnt.c'))
+> -  util_ss.add(files('main-loop.c'))
+>    util_ss.add(files('nvdimm-utils.c'))
+> -  util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c',=20
+> 'qemu-coroutine-io.c'))
+>    util_ss.add(when: 'CONFIG_LINUX', if_true: [
+>      files('vhost-user-server.c'), vhost_user
+>    ])
+>    util_ss.add(files('block-helpers.c'))
+> -  util_ss.add(files('qemu-coroutine-sleep.c'))
+> -  util_ss.add(files('qemu-co-shared-resource.c'))
+> -  util_ss.add(files('qemu-co-timeout.c'))
+> -  util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
+>    util_ss.add(files('readline.c'))
+>    util_ss.add(files('throttle.c'))
+>    util_ss.add(files('timed-average.c'))
 
-This can be eventually reduced for 'have_ga':
+Better!
 
--- 8< --
-diff --git a/util/meson.build b/util/meson.build
-index 59c1f467bbe..690e8be903e 100644
---- a/util/meson.build
-+++ b/util/meson.build
-@@ -68,28 +68,30 @@
-    util_ss.add(when: 'CONFIG_LINUX', if_true: files('userfaultfd.c'))
-  endif
-
--if have_block
-+if have_block or have_ga
-    util_ss.add(files('aiocb.c', 'async.c', 'aio-wait.c'))
-    util_ss.add(files('base64.c'))
-+ 
-util_ss.add(files('coroutine-@0@.c'.format(config_host['CONFIG_COROUTINE_BACKEND'])))
-+  util_ss.add(files('lockcnt.c'))
-+  util_ss.add(files('main-loop.c'))
-+  util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c', 
-'qemu-coroutine-io.c'))
-+  util_ss.add(files('qemu-coroutine-sleep.c'))
-+  util_ss.add(files('qemu-co-shared-resource.c'))
-+  util_ss.add(files('qemu-co-timeout.c'))
-+  util_ss.add(files('iov.c', 'qemu-sockets.c', 'uri.c'))
-+  util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
-+endif
-+if have_block
-    util_ss.add(files('buffer.c'))
-    util_ss.add(files('bufferiszero.c'))
-- 
-util_ss.add(files('coroutine-@0@.c'.format(config_host['CONFIG_COROUTINE_BACKEND'])))
-    util_ss.add(files('hbitmap.c'))
-    util_ss.add(files('hexdump.c'))
-    util_ss.add(files('iova-tree.c'))
--  util_ss.add(files('iov.c', 'qemu-sockets.c', 'uri.c'))
--  util_ss.add(files('lockcnt.c'))
--  util_ss.add(files('main-loop.c'))
-    util_ss.add(files('nvdimm-utils.c'))
--  util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c', 
-'qemu-coroutine-io.c'))
-    util_ss.add(when: 'CONFIG_LINUX', if_true: [
-      files('vhost-user-server.c'), vhost_user
-    ])
-    util_ss.add(files('block-helpers.c'))
--  util_ss.add(files('qemu-coroutine-sleep.c'))
--  util_ss.add(files('qemu-co-shared-resource.c'))
--  util_ss.add(files('qemu-co-timeout.c'))
--  util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
-    util_ss.add(files('readline.c'))
-    util_ss.add(files('throttle.c'))
-    util_ss.add(files('timed-average.c'))
----
-
-Regardless:
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>
+> Regardless:
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
 
