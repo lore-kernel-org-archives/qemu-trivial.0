@@ -1,92 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1otPLH-0003n4-4K
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Nov 2022 03:24:51 -0500
+	id 1otPmM-0004gc-Dn
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Nov 2022 03:52:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1otPLF-0003jD-Sy
- for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 03:24:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1otPLE-0000dy-37
- for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 03:24:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668155087;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=khR7LBLZxLsDMTigqjxaJirmDpWh4RieDwn2RD3iyDU=;
- b=jD9r+aeFgb9szGc4v9G6XSQphnrUBEfjGwHLa5fkVrhmffL4TnudofgG5N2lbYei0/3fw+
- x+I53DM/ftd+XrHHm6a0W+qKCafJxBAM2yPrHz8cIwEDa6uyYQelh9LTvFOg3pqvopgXhL
- ohYzC6xtgKvYTxKjCJcG7mPNd4WbFBA=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-537-NogQcRYEM9KRB5AlIr88dA-1; Fri, 11 Nov 2022 03:24:45 -0500
-X-MC-Unique: NogQcRYEM9KRB5AlIr88dA-1
-Received: by mail-qt1-f199.google.com with SMTP id
- i13-20020ac8764d000000b003a4ec8693dcso3211095qtr.14
- for <qemu-trivial@nongnu.org>; Fri, 11 Nov 2022 00:24:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otPmL-0004ea-6d
+ for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 03:52:49 -0500
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otPmI-0003xp-So
+ for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 03:52:48 -0500
+Received: by mail-pj1-x1033.google.com with SMTP id
+ b1-20020a17090a7ac100b00213fde52d49so4173496pjl.3
+ for <qemu-trivial@nongnu.org>; Fri, 11 Nov 2022 00:52:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Niv9UTdehWhRNPj4LJiEgip92ka/9MjHPhUEUKlQlG0=;
+ b=VevghG9nG0yMVpheg7EfNucPkWGqjPEx3LzLp14MFpHKBzRDycC0xaj0CktzzCM6f/
+ tCO4dlbybCXOjvYxzsncQEBtBwZjhcAFXf6ZKEPhBiDtkPKtzdze/w3iC/4EN/uz3sHu
+ LRxUPt6d/cO7uGTJNe33OYUWPMn2qtidVkB/1W2hbLmshKjUAfgsZ7wC9Q8Wsw91A4eP
+ gNvyU5Dma7dl8M4xbGNmYWzpAxHsw7sBaifZIG9L9VtgYdnMoA7X1oAm7tusmTIjP9vy
+ mm6WO3uZwqlMrL5ef2m9fMpTJZ1ISKt+3yUryucqPnxmqqwRx6vvVpO5e85kjL4GiPS8
+ 1c6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=khR7LBLZxLsDMTigqjxaJirmDpWh4RieDwn2RD3iyDU=;
- b=o2Sc8g2cZlv3xxB2IiQcvjAsMaglLYOIA4yV9+U2OjLf06DxKbohzECarV46OtmMTU
- NunL3nIE3+YcL2bJUc4bNtcHUwvzZ5kQedwqYYbtyYVgBE2amk8yUHBpz3yDR+HxlDDz
- t9MpozjkUpnxt3xBKJbZC13yJE4FnyXuN5JUWhHeKq952F1QNEhhXN+3XGOVsCs+f90J
- Auq/CqlJrz1D/WlWAL/3Wixekm2L9OCC1HTmXS2a5FbM28MnY7eZyTby5vPBtdyvp/X5
- IuDZ2mvoc40oerSd8jNshqUdNkFIxj6IqAi9mAzUhu2g7r2m+c/DISq+Pt2hH8CO0zQY
- 5s9A==
-X-Gm-Message-State: ANoB5pl+zDrKIi2uRfKpdLBhM2J+am83N5aMAG8okOVRiH2dWmqNpUIE
- QZucTGno1xzmUvNQcdJd7pVZD00kvF99L0atBnYOi9WTU17WajqCzbvWFqd3JrEUFyZwgNIBLoE
- +g2ZYE1xercGNm+MeVA==
-X-Received: by 2002:a37:752:0:b0:6ec:5262:42ef with SMTP id
- 79-20020a370752000000b006ec526242efmr250025qkh.318.1668155085340; 
- Fri, 11 Nov 2022 00:24:45 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf6JwrCAaqV/t0WIer9Je0FExmLgZmgqtDOI60ux0A3qF0V+Yfz73qB+4ibVrem99hS4Lft0+A==
-X-Received: by 2002:a37:752:0:b0:6ec:5262:42ef with SMTP id
- 79-20020a370752000000b006ec526242efmr250015qkh.318.1668155085093; 
- Fri, 11 Nov 2022 00:24:45 -0800 (PST)
-Received: from [10.33.192.232] (nat-pool-str-t.redhat.com. [149.14.88.106])
- by smtp.gmail.com with ESMTPSA id
- l19-20020a05620a28d300b006cfaee39ccesm1074097qkp.114.2022.11.11.00.24.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 11 Nov 2022 00:24:44 -0800 (PST)
-Message-ID: <60bec893-c0eb-d0a3-eee7-bcd7bc482361@redhat.com>
-Date: Fri, 11 Nov 2022 09:24:42 +0100
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Niv9UTdehWhRNPj4LJiEgip92ka/9MjHPhUEUKlQlG0=;
+ b=qc1jm0j57mdCJn4Jt0+5WsGMsb9SB2rLsqDjhF5ilKHDnQyo95Vxzb2li7qoH8QHQ3
+ MdN6XNZWKxe7lXBfV4tbABvSyTny4Ms7dVKe3GuB4iQzeu3b7B/gl3eImcRKC1VH645J
+ Fmo4QyFbeW3tHe3yFvmDFUYjRZtpoCxfg1M22HrKuubCEYwvHWCet+XTo4V+CqcuJd3w
+ b6kSJ11UKg1Sy8WgzhzO2Upyyiq651l1Leexpof+CcViZEUOHXruzbHAC8Vqj5cs2Efn
+ N3lt7U8Tldj4LxkNkqa97uCkNnz6grVkXYy2WQiam9O2c2MJkXvxQkgYxYD1LlwD/KHm
+ gKDQ==
+X-Gm-Message-State: ANoB5pnzMz/4U+t4Za1W8VM7u9cEjP018GlD0vDnNpr9BLLASBofYGuK
+ GcNuE5r5ljXSjtw+CUPgmm0uPA==
+X-Google-Smtp-Source: AA0mqf6m3Bot3aPI44r+d8Rq+LOX6OlXCisYmQA5osvUaFnMFvM6kU29Prc3T/zcv/baKAZieYLSFQ==
+X-Received: by 2002:a17:90a:2f47:b0:213:c302:695e with SMTP id
+ s65-20020a17090a2f4700b00213c302695emr860267pjd.131.1668156765061; 
+ Fri, 11 Nov 2022 00:52:45 -0800 (PST)
+Received: from anisinha-lenovo.ba.nuagenetworks.net ([115.96.143.216])
+ by smtp.googlemail.com with ESMTPSA id
+ i13-20020a056a00004d00b0056286c552ecsm1036421pfk.184.2022.11.11.00.52.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Nov 2022 00:52:44 -0800 (PST)
+From: Ani Sinha <ani@anisinha.ca>
+To: Ani Sinha <ani@anisinha.ca>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [PATCH] acpi/tests/avocado/bits: some misc fixes and spelling
+ corrections
+Date: Fri, 11 Nov 2022 14:22:20 +0530
+Message-Id: <20221111085221.1216196-1-ani@anisinha.ca>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH for-7.2] Fix several typos in documentation (found by
- codespell)
-To: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Ani Sinha <ani@anisinha.ca>, Fam Zheng <fam@euphon.net>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>
-References: <20221110190825.879620-1-sw@weilnetz.de>
- <CAFEAcA_BC8yK8LSPkJ=whtg3K6-zgSCxjOgkwhFMAVdk04Pv2w@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <CAFEAcA_BC8yK8LSPkJ=whtg3K6-zgSCxjOgkwhFMAVdk04Pv2w@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=ani@anisinha.ca; helo=mail-pj1-x1033.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,64 +81,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Nov 2022 08:24:50 -0000
+X-List-Received-Date: Fri, 11 Nov 2022 08:52:49 -0000
 
-On 10/11/2022 21.10, Peter Maydell wrote:
-> On Thu, 10 Nov 2022 at 19:09, Stefan Weil via <qemu-devel@nongnu.org> wrote:
->>
->> Those typos are in files which are used to generate the QEMU manual.
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>
->> I did not fix memory_region_init_resizeable_ram. That might be done after 7.2.
->>
->> Stefan
->>
->>   docs/devel/acpi-bits.rst       | 2 +-
->>   docs/system/devices/can.rst    | 2 +-
->>   hw/scsi/esp.c                  | 6 +++---
->>   include/exec/memory.h          | 6 +++---
->>   qapi/virtio.json               | 4 ++--
->>   qemu-options.hx                | 6 +++---
->>   tests/qtest/libqos/qgraph.h    | 2 +-
->>   tests/qtest/libqos/virtio-9p.c | 2 +-
->>   8 files changed, 15 insertions(+), 15 deletions(-)
->>
->> diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
->> index c9564d871a..5e22be8ef6 100644
->> --- a/docs/devel/acpi-bits.rst
->> +++ b/docs/devel/acpi-bits.rst
->> @@ -132,7 +132,7 @@ Under ``tests/avocado/`` as the root we have:
->>
->>      (a) They are python2.7 based scripts and not python 3 scripts.
->>      (b) They are run from within the bios bits VM and is not subjected to QEMU
->> -       build/test python script maintainance and dependency resolutions.
->> +       build/test python script maintenance and dependency resolutions.
->>      (c) They need not be loaded by avocado framework when running tests.
->>
->>
->> diff --git a/docs/system/devices/can.rst b/docs/system/devices/can.rst
->> index fe37af8223..24b0d4cf41 100644
->> --- a/docs/system/devices/can.rst
->> +++ b/docs/system/devices/can.rst
->> @@ -169,7 +169,7 @@ and with bitrate switch::
->>
->>     cangen can0 -b
->>
->> -The test can be run viceversa, generate messages in the guest system and capture them
->> +The test can be run vice-versa, generate messages in the guest system and capture them
->>   in the host one and much more combinations.
-> 
-> This isn't a grammatical use of vice-versa, so if we're touching it
-> then I think the sentence should be recast, eg:
-> "The test can also be run the other way around, generating
-> messages in the guest system and capturing them in the host system.
-> Other combinations are also possible."
+Most of the changes are cosmetic. The bits test timeout has now been increased
+to 90 seconds in order to accommodate slower systems and fewer unnecessary
+failures. One spelling correction in docs along with removal of the reference
+to non-existent README file.
 
-Sounds reasonable! ... I'm currently assembling a pull request for misc 
-fixes - I can add the patch there and fix the sentence while picking it up.
+CC: Thomas Huth <thuth@redhat.com>
+CC: qemu-trivial@nongnu.org
+Signed-off-by: Ani Sinha <ani@anisinha.ca>
+---
+ docs/devel/acpi-bits.rst   | 3 +--
+ tests/avocado/acpi-bits.py | 5 +++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-  Thomas
+diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
+index c9564d871a..a9020adb2d 100644
+--- a/docs/devel/acpi-bits.rst
++++ b/docs/devel/acpi-bits.rst
+@@ -41,7 +41,6 @@ Under ``tests/avocado/`` as the root we have:
+    │ │ ├── smbios.py2
+    │ │ ├── testacpi.py2
+    │ │ └── testcpuid.py2
+-   │ └── README
+    ├── acpi-bits.py
+ 
+ * ``tests/avocado``:
+@@ -132,7 +131,7 @@ Under ``tests/avocado/`` as the root we have:
+ 
+    (a) They are python2.7 based scripts and not python 3 scripts.
+    (b) They are run from within the bios bits VM and is not subjected to QEMU
+-       build/test python script maintainance and dependency resolutions.
++       build/test python script maintenance and dependency resolutions.
+    (c) They need not be loaded by avocado framework when running tests.
+ 
+ 
+diff --git a/tests/avocado/acpi-bits.py b/tests/avocado/acpi-bits.py
+index 8745a58a76..5ebe8c14a2 100644
+--- a/tests/avocado/acpi-bits.py
++++ b/tests/avocado/acpi-bits.py
+@@ -385,8 +385,9 @@ def test_acpi_smbios_bits(self):
+         self._vm.launch()
+         # biosbits has been configured to run all the specified test suites
+         # in batch mode and then automatically initiate a vm shutdown.
+-        # sleep for maximum of one minute
+-        max_sleep_time = time.monotonic() + 60
++        # sleep for maximum of a minute and a half to accomomodate even slower
++        # test setups.
++        max_sleep_time = time.monotonic() + 90
+         while self._vm.is_running() and time.monotonic() < max_sleep_time:
+             time.sleep(1)
+ 
+-- 
+2.34.1
 
 
