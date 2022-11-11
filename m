@@ -1,71 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1otSzS-0007lI-8R
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Nov 2022 07:18:34 -0500
+	id 1otTBy-00009D-QX
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Nov 2022 07:31:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otSzP-0007cp-Vu
- for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 07:18:32 -0500
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otTBv-00008X-8G
+ for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 07:31:27 -0500
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otSzO-0000DF-6C
- for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 07:18:31 -0500
-Received: by mail-il1-x12d.google.com with SMTP id 7so2430759ilg.11
- for <qemu-trivial@nongnu.org>; Fri, 11 Nov 2022 04:18:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otTBt-0004nr-5o
+ for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 07:31:26 -0500
+Received: by mail-pf1-x42e.google.com with SMTP id k22so4794308pfd.3
+ for <qemu-trivial@nongnu.org>; Fri, 11 Nov 2022 04:31:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/9cnSLRv6PF9YQiKuF1YZUDfLXKh5Z2p06g+3JNU0y8=;
- b=MgSF3NPQ2VOIf3XmuFtfeCvM7/l7Zc+a1IVruvjOIkyiupUIdxljlxJ/ZeKA7SRIYn
- ky+p82NESK20uRPGuVMj8ZxX2xAH+2T/KjsYGO4Sp/PCMprNALMYOUWvWXnX/Un0NFzO
- 2sAk3C/h0P0fy1gxVWQtgCjoE31XGNKIh69B2e7ccecNGXPeRYthl8vGN9Ty/ohFEp3s
- KUa/VuZvExgZVdJ12qnpMudd1m0fnCgusRe8zY/G6JAqDRwC+z/2jHBoekd4QGQ5WRbF
- WynqUd9nadM+jc1UIe3HVNLZlOBCpPMKtMS/1Tn2I16lgyXOP/P8cL5Tn6V7YOI7f+zM
- x5zQ==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=LFR6YxEE4rEtvs8RF1SO5pq8xTjjIT/h7YDoNcp+bW0=;
+ b=LehIN7KZKl7ndDb50VRFfSUCPlOOhy1J2TXGpzc2L1rTUhIPbaUqoblaCYCLrXqzFW
+ 1FbbxCxh/L41gljA0iphUJzF2vKtjdupWOrEk3MqZSEG/8Zc4arsH9sTu0kNcwFw51tR
+ B6d0NI80XriJMRQf1jlGJrNOGg52rAoeZUw2J68/C6A1myRCfKYUP2pDo72Bw5gSRxnc
+ gbnMcUDudzxz8bepqTovHNWJ9ynS7wNMDDwY9bpAM9/cJ3d4Fr0HYFIKK9WDjRDYRK3o
+ 9HNIHV9F1w2Jg/lbvc3KL6bhs52b8KMib3gv+bwdIZI6FW3Qb2E5WRSYWbdMFReEo+Rt
+ VlMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/9cnSLRv6PF9YQiKuF1YZUDfLXKh5Z2p06g+3JNU0y8=;
- b=i12VdktJQESEAa7+k4aiODgEpg0nBeiBHarFv7YF1TErPYNuLyMagIopof0ALb9HBd
- cwlA0kfCa2OgC9F8LEPM20yD6Mpnj4xkewHjHXNSexyCFfQ3PDDKkoFlgYxm1asTeQFC
- nhnriyvI6yiShnjj7jxC8NPZLkAbdmm0/hksB4VEiIdQzwPG9AeWujDI6Uv6YqWzhUN1
- cho60pgEQZCZWBgycHUyhBCRAfAPr0r9BzBuVpDa9xMAo/gYljJ49rg2U/VFpckek6Q0
- am3LPqTYXvkpJKKH05qLZZxkWWZZwPuAm38OUiGWXPMnPS3II/m6LlFQOD4/Qb20dvFQ
- LrHw==
-X-Gm-Message-State: ANoB5pknooDXRxQ6oIyimnC4UpYwHb/chC4mVPjyvffa2jRK7oK+472m
- V3I6nQRst7auvUUXB7oEDYd8X3VI0oKmqdvD83JLpg==
-X-Google-Smtp-Source: AA0mqf4pQTIUdR2aC90AZ9ID1NiOL0jU5FoVLTjxevzRSUPnqhySmaaGFS+S3YmgGb6pmAz61/or8stZtBONAakPM+I=
-X-Received: by 2002:a92:c745:0:b0:2f9:8a1e:914b with SMTP id
- y5-20020a92c745000000b002f98a1e914bmr911848ilp.259.1668169108697; Fri, 11 Nov
- 2022 04:18:28 -0800 (PST)
-MIME-Version: 1.0
-References: <20221111085221.1216196-1-ani@anisinha.ca>
- <8bd0cd78-0a69-0e0e-e764-0375ff627fd8@redhat.com>
-In-Reply-To: <8bd0cd78-0a69-0e0e-e764-0375ff627fd8@redhat.com>
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LFR6YxEE4rEtvs8RF1SO5pq8xTjjIT/h7YDoNcp+bW0=;
+ b=UURwADQBs5aeI2Z6ccs9eIiATbZ74q7fGbKFJuDVEJReRLiLf7UP8WJT2a6FFu00Q6
+ QceWbAlXS87NJD4cKMJJ+4as+KKgswe0oE3gkSylCqexLXlEgU07unXjOJxjCGWYwo0F
+ dzwUz5ZV1fUfYc0unjVCFI20jQFlCW5g01+bf0oeAu10GfePmzbPyZesjShss9w8YfuG
+ GJzaCatfpMMrpnaOdu7C07XPE7F7C5Nmbfj7VJK4PXFNiCYy7YoOYiMh0e1c08/ezv/m
+ gPpGxdpmpg2n3NKBcSn/JhGp3dzFu2UF2ENgpFyhpTFUPHvg4FBogrdolpYFo0RGBjta
+ 2nsw==
+X-Gm-Message-State: ANoB5pnbETDS/okFE+pXGEdliQMY3F4LrPwG+L1opHxT8V0o/iina1+A
+ SIcznhzHS3X3BI6FiK5GvOwfNg==
+X-Google-Smtp-Source: AA0mqf5nikmw782+/MDCAkLJqXRuTJ3wcpwTUoGBL/HhUDCyGd9DGnkof0IE3byv9YM5e9b3gMFvSg==
+X-Received: by 2002:a05:6a00:10c8:b0:56d:2317:4565 with SMTP id
+ d8-20020a056a0010c800b0056d23174565mr2417226pfu.54.1668169883321; 
+ Fri, 11 Nov 2022 04:31:23 -0800 (PST)
+Received: from anisinha-lenovo.ba.nuagenetworks.net ([115.96.143.216])
+ by smtp.googlemail.com with ESMTPSA id
+ v129-20020a622f87000000b0056bf24f0837sm1465453pfv.166.2022.11.11.04.31.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Nov 2022 04:31:22 -0800 (PST)
 From: Ani Sinha <ani@anisinha.ca>
-Date: Fri, 11 Nov 2022 17:48:17 +0530
-Message-ID: <CAARzgwwohqW6bFpFQZjJruO6ywmDZ7mnmHoEOSW7dmM5CoOO1Q@mail.gmail.com>
-Subject: Re: [PATCH] acpi/tests/avocado/bits: some misc fixes and spelling
- corrections
-To: Thomas Huth <thuth@redhat.com>
-Cc: Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+To: Ani Sinha <ani@anisinha.ca>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, qemu-trivial@nongnu.org, 
+ Beraldo Leal <bleal@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
  qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: none client-ip=2607:f8b0:4864:20::12d;
- envelope-from=ani@anisinha.ca; helo=mail-il1-x12d.google.com
+Subject: [PATCH v2] acpi/tests/avocado/bits: some misc fixes
+Date: Fri, 11 Nov 2022 18:01:08 +0530
+Message-Id: <20221111123108.1231451-1-ani@anisinha.ca>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=ani@anisinha.ca; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,96 +79,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Nov 2022 12:18:32 -0000
+X-List-Received-Date: Fri, 11 Nov 2022 12:31:27 -0000
 
-On Fri, Nov 11, 2022 at 2:36 PM Thomas Huth <thuth@redhat.com> wrote:
->
-> On 11/11/2022 09.52, Ani Sinha wrote:
-> > Most of the changes are cosmetic. The bits test timeout has now been in=
-creased
-> > to 90 seconds in order to accommodate slower systems and fewer unnecess=
-ary
-> > failures. One spelling correction in docs along with removal of the ref=
-erence
-> > to non-existent README file.
-> >
-> > CC: Thomas Huth <thuth@redhat.com>
-> > CC: qemu-trivial@nongnu.org
-> > Signed-off-by: Ani Sinha <ani@anisinha.ca>
-> > ---
-> >   docs/devel/acpi-bits.rst   | 3 +--
-> >   tests/avocado/acpi-bits.py | 5 +++--
-> >   2 files changed, 4 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
-> > index c9564d871a..a9020adb2d 100644
-> > --- a/docs/devel/acpi-bits.rst
-> > +++ b/docs/devel/acpi-bits.rst
-> > @@ -41,7 +41,6 @@ Under ``tests/avocado/`` as the root we have:
-> >      =E2=94=82 =E2=94=82 =E2=94=9C=E2=94=80=E2=94=80 smbios.py2
-> >      =E2=94=82 =E2=94=82 =E2=94=9C=E2=94=80=E2=94=80 testacpi.py2
-> >      =E2=94=82 =E2=94=82 =E2=94=94=E2=94=80=E2=94=80 testcpuid.py2
->
-> That leaves the second "|" dangling around ... should those second pipe
-> characters now be removed, too?
+Most of the changes are trivial. The bits test timeout has now been increased
+to 110 seconds in order to accommodate slower systems and fewer unnecessary
+failures. Removed of the reference to non-existent README file in docs.
 
-No, the second "|" is for everything under "acpi-bits" directory,
-which is "bits-config" and "bits-test" directories. README was a file
-under the same hierarchy which now we want to remove, leaving only the
-directories there.
+CC: Thomas Huth <thuth@redhat.com>
+CC: qemu-trivial@nongnu.org
+Signed-off-by: Ani Sinha <ani@anisinha.ca>
+---
+ changed from v1: address Thomas' suggestions.
 
->
-> > -   =E2=94=82 =E2=94=94=E2=94=80=E2=94=80 README
-> >      =E2=94=9C=E2=94=80=E2=94=80 acpi-bits.py
-> >
-> >   * ``tests/avocado``:
-> > @@ -132,7 +131,7 @@ Under ``tests/avocado/`` as the root we have:
-> >
-> >      (a) They are python2.7 based scripts and not python 3 scripts.
-> >      (b) They are run from within the bios bits VM and is not subjected=
- to QEMU
-> > -       build/test python script maintainance and dependency resolution=
-s.
-> > +       build/test python script maintenance and dependency resolutions=
-.
->
-> FWIW, this will also be fixed by Stefan Weil's current pending doc update=
- patch.
+ docs/devel/acpi-bits.rst   | 7 +++----
+ tests/avocado/acpi-bits.py | 5 +++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-Since you pulled his patch, I will drop this change.
+diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
+index c9564d871a..2c776ab166 100644
+--- a/docs/devel/acpi-bits.rst
++++ b/docs/devel/acpi-bits.rst
+@@ -38,10 +38,9 @@ Under ``tests/avocado/`` as the root we have:
+    │ ├── bits-config
+    │ │ └── bits-cfg.txt
+    │ ├── bits-tests
+-   │ │ ├── smbios.py2
+-   │ │ ├── testacpi.py2
+-   │ │ └── testcpuid.py2
+-   │ └── README
++   │   ├── smbios.py2
++   │   ├── testacpi.py2
++   │   └── testcpuid.py2
+    ├── acpi-bits.py
+ 
+ * ``tests/avocado``:
+diff --git a/tests/avocado/acpi-bits.py b/tests/avocado/acpi-bits.py
+index 8745a58a76..2edc36fc26 100644
+--- a/tests/avocado/acpi-bits.py
++++ b/tests/avocado/acpi-bits.py
+@@ -385,8 +385,9 @@ def test_acpi_smbios_bits(self):
+         self._vm.launch()
+         # biosbits has been configured to run all the specified test suites
+         # in batch mode and then automatically initiate a vm shutdown.
+-        # sleep for maximum of one minute
+-        max_sleep_time = time.monotonic() + 60
++        # sleep for maximum of a minute and 50 seconds in order to accommodate
++        # even slower test setups.
++        max_sleep_time = time.monotonic() + 110
+         while self._vm.is_running() and time.monotonic() < max_sleep_time:
+             time.sleep(1)
+ 
+-- 
+2.34.1
 
->
-> >      (c) They need not be loaded by avocado framework when running test=
-s.
-> >
-> >
-> > diff --git a/tests/avocado/acpi-bits.py b/tests/avocado/acpi-bits.py
-> > index 8745a58a76..5ebe8c14a2 100644
-> > --- a/tests/avocado/acpi-bits.py
-> > +++ b/tests/avocado/acpi-bits.py
-> > @@ -385,8 +385,9 @@ def test_acpi_smbios_bits(self):
-> >           self._vm.launch()
-> >           # biosbits has been configured to run all the specified test =
-suites
-> >           # in batch mode and then automatically initiate a vm shutdown=
-.
-> > -        # sleep for maximum of one minute
-> > -        max_sleep_time =3D time.monotonic() + 60
-> > +        # sleep for maximum of a minute and a half to accomomodate eve=
-n slower
->
-> s/accomomodate/accomodate/
-
-Ugh! Will fix it too.
-
->
-> > +        # test setups.
-> > +        max_sleep_time =3D time.monotonic() + 90
-> >           while self._vm.is_running() and time.monotonic() < max_sleep_=
-time:
-> >               time.sleep(1)
-> >
->
->   Thomas
->
 
