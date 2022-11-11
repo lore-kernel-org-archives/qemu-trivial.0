@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1otMba-0004mB-1N
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Nov 2022 00:29:30 -0500
+	id 1otNyP-0002M1-K2
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Nov 2022 01:57:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otMbY-0004lq-Ng
- for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 00:29:28 -0500
-Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otNyL-0002Jg-OJ
+ for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 01:57:07 -0500
+Received: from mail-il1-x133.google.com ([2607:f8b0:4864:20::133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otMbW-0006Sl-Gl
- for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 00:29:28 -0500
-Received: by mail-il1-x12b.google.com with SMTP id l6so2110703ilq.3
- for <qemu-trivial@nongnu.org>; Thu, 10 Nov 2022 21:29:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1otNyJ-0004i2-Qr
+ for qemu-trivial@nongnu.org; Fri, 11 Nov 2022 01:57:05 -0500
+Received: by mail-il1-x133.google.com with SMTP id o13so2157557ilc.7
+ for <qemu-trivial@nongnu.org>; Thu, 10 Nov 2022 22:57:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=byLP0mZctjOIrZv4IpFBIkplHPkZtWg4db8T1v7HpNY=;
- b=PRwJOSpI08V6Hu1IMWiF+MOqeqYBPvA2NWt1bCLjXRxsta+NQXJ41bWJqDNolMCVkR
- K/ByrgsXGk5Iqgsux7Yr/v/Cz59PHLCu9kvLntV1SgirXplG0MNw7861pWXYmqeaRry1
- fXHoFeN2c6upJ74YXWT4cuw8QvxlMd+kwbRl0Epkgey7IMudTcfGw4O/9M1BAhM/Yfsy
- dFBYkrNBsF/zxlTEp8azp72FezEQSMXzR9C4FGXLPRO5IkvoukoDp50Kx1psew4HGePJ
- Z5sAdRgdxYXkdwpcAlxiCvjwxjjNvK935YD4ImeXXViO5M6zGKcgOee1oDr7yIap/xDh
- D0BA==
+ bh=dwxPKaTKuqFCxlTt0EAmk64pqWsofw6qrkLiqHT60S8=;
+ b=qChbM/esLFzbrLe5hZCuw3Xiw+x6Q4lMtKQPdUL10ovGh7kJPKPzC1td2kpkHawOpq
+ V/XHLoOsgHUy1064VPhApuVVewAhQ6I1qlBHAfkZRDQ5QMmLPTCeX9fomITg5ayxrw8E
+ rshnXZg/G4p0I+pKLaY3zRrhuAuO+ip2ne4c9QqNy/c3TcacuZM+q/ujv0bLwhqx3Aa6
+ tOoCiRvDKuTvjUBP3ZpZoVp9IxY/zGA26eAVmw7NBCFOwxZCkNzWge993P/sVuD/KZoS
+ 4MMWAoUE2SAsgSSDSixaU8trY18TdgIVIIblR2WBxVAxqv2kJpNSNPtn85rOXKRLfsE1
+ nEHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=byLP0mZctjOIrZv4IpFBIkplHPkZtWg4db8T1v7HpNY=;
- b=v8iDjEeG4xsdvxXvGNY3u+Ge25mDGwqtMmUU6l2b/xGN4GcOsWIIBMydzMpIV8HQ5q
- oLEPzNxhssvm16Q+NbzyfV8f+zXuIsHY9lNVKq8TyMle4Zfsn4aw05P9xxH8vhiAR9Cs
- UFVziCPfiZDrULYhZ4GsTtDzJzUEisHdXFL3nTy3ahWwYQh7KpdDK0Jtt0rrBcV5l4oz
- IFPAg9i3rLXzQoEuqKOAwubpq+AqDAvmTi/oRSsF4OkN9mDChODQd/Kf29DUUismz0Px
- V+9HyriF6rpPI59eLHvr2xyQbVCMyb3Kfup/hMzRhBMrTL0Rz95lD4YAIbUdDSGVJ5cl
- FDxw==
-X-Gm-Message-State: ANoB5pmiqyTNoOx1GuiAIlXuwr50qgRi13OOVBr60qWae2UJjsrhTHKC
- hbY+utvoiqWv+z7zxMc7gL5zbn+shTEUp5J2Lur6kQ==
-X-Google-Smtp-Source: AA0mqf4/fxCqrUwwslniT7Lz7dIGlG0slz6LMQ12tNn+U6NAldg2ItRTBiwpNLvp+uV+rAeJ+lKZMlJLQAgfQONPiQs=
-X-Received: by 2002:a05:6e02:104f:b0:300:d794:1f00 with SMTP id
- p15-20020a056e02104f00b00300d7941f00mr380639ilj.63.1668144565044; Thu, 10 Nov
- 2022 21:29:25 -0800 (PST)
+ bh=dwxPKaTKuqFCxlTt0EAmk64pqWsofw6qrkLiqHT60S8=;
+ b=P+26UQf7HVNUwGyQfLmj/0XHofSDBxX6x7ukpOBJDPiAQRdI0hH2AxB3pa9825yTGj
+ iYHblOKAm7nYkl1L+AfEHbk5OKN/kA00UhCtC/jScKB0sk8vcNs/bmyQAJiNU6GhIq0s
+ mhKnSBW81DDjQiF/Rb/sZgzfMRbFZCRUwgEPpRRWuV9FIZRH2ib6AAgx2bDg3NxhX3in
+ qOB76mFqLKZ7H/Q8Rnw3DTMhgU6YsGhLnpk+X6kKDyi8MZUkwRaidSKI+Olk+pmqbOIm
+ w9/eRJM6JY8ns5D9+hP/HkhSYyTwBY7mDig7gIA/BpEvAGy0S0Koc1nK7Jg5R9Mef0E0
+ 51uA==
+X-Gm-Message-State: ANoB5pkrwcHCrM/P33WLuBaLUWStmf7J8NMtXZ43MP5ZUC7DEVrMT0h4
+ iZkJizNLr4cDAyV2G0SMIXvWg/jcIXSSVSurfMmd/g==
+X-Google-Smtp-Source: AA0mqf4ChH7QtdIMlwl+RHpzLpPrv1nZa5fw5gzb6V615BmBjwafLZcdbBKZpPoOH+XLBPZS7FN0I1sEOMHcXD2k3vw=
+X-Received: by 2002:a92:c745:0:b0:2f9:8a1e:914b with SMTP id
+ y5-20020a92c745000000b002f98a1e914bmr453814ilp.259.1668149822442; Thu, 10 Nov
+ 2022 22:57:02 -0800 (PST)
 MIME-Version: 1.0
 References: <20221110190825.879620-1-sw@weilnetz.de>
-In-Reply-To: <20221110190825.879620-1-sw@weilnetz.de>
+ <CAARzgwwcXhnUJe0gHLAf7Vb6oGUQ+cGRp82T9qdD3adoWCrnrA@mail.gmail.com>
+In-Reply-To: <CAARzgwwcXhnUJe0gHLAf7Vb6oGUQ+cGRp82T9qdD3adoWCrnrA@mail.gmail.com>
 From: Ani Sinha <ani@anisinha.ca>
-Date: Fri, 11 Nov 2022 10:59:14 +0530
-Message-ID: <CAARzgwwcXhnUJe0gHLAf7Vb6oGUQ+cGRp82T9qdD3adoWCrnrA@mail.gmail.com>
+Date: Fri, 11 Nov 2022 12:26:51 +0530
+Message-ID: <CAARzgwzYLccKdJ6tXE3A5bzHNesAo7+8iy6D7BvmitX7dTL8bg@mail.gmail.com>
 Subject: Re: [PATCH for-7.2] Fix several typos in documentation (found by
  codespell)
 To: Stefan Weil <sw@weilnetz.de>
@@ -56,14 +57,14 @@ Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
  Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
  "Michael S . Tsirkin" <mst@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: none client-ip=2607:f8b0:4864:20::12b;
- envelope-from=ani@anisinha.ca; helo=mail-il1-x12b.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::133;
+ envelope-from=ani@anisinha.ca; helo=mail-il1-x133.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,201 +77,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Nov 2022 05:29:28 -0000
+X-List-Received-Date: Fri, 11 Nov 2022 06:57:07 -0000
 
-On Fri, Nov 11, 2022 at 12:38 AM Stefan Weil <sw@weilnetz.de> wrote:
+On Fri, Nov 11, 2022 at 10:59 AM Ani Sinha <ani@anisinha.ca> wrote:
 >
-> Those typos are in files which are used to generate the QEMU manual.
+> On Fri, Nov 11, 2022 at 12:38 AM Stefan Weil <sw@weilnetz.de> wrote:
+> >
+> > Those typos are in files which are used to generate the QEMU manual.
+> >
+> > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 >
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> For acpi-bits.rst,
+> Reviewed-by: Ani Sinha <ani@anisinha.ca>
+>
+> > ---
+> >
+> > I did not fix memory_region_init_resizeable_ram. That might be done after 7.2.
+> >
+> > Stefan
+> >
+> >  docs/devel/acpi-bits.rst       | 2 +-
+> >  docs/system/devices/can.rst    | 2 +-
+> >  hw/scsi/esp.c                  | 6 +++---
+> >  include/exec/memory.h          | 6 +++---
+> >  qapi/virtio.json               | 4 ++--
+> >  qemu-options.hx                | 6 +++---
+> >  tests/qtest/libqos/qgraph.h    | 2 +-
+> >  tests/qtest/libqos/virtio-9p.c | 2 +-
+> >  8 files changed, 15 insertions(+), 15 deletions(-)
+> >
+> > diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
+> > index c9564d871a..5e22be8ef6 100644
+> > --- a/docs/devel/acpi-bits.rst
+> > +++ b/docs/devel/acpi-bits.rst
+> > @@ -132,7 +132,7 @@ Under ``tests/avocado/`` as the root we have:
+> >
+> >     (a) They are python2.7 based scripts and not python 3 scripts.
+> >     (b) They are run from within the bios bits VM and is not subjected to QEMU
+> > -       build/test python script maintainance and dependency resolutions.
+> > +       build/test python script maintenance and dependency resolutions.
+> >     (c) They need not be loaded by avocado framework when running tests.
 
-For acpi-bits.rst,
-Reviewed-by: Ani Sinha <ani@anisinha.ca>
+btw, if we are going to fix this doc file for typo before the release,
+may I also suggest another trivial fix?
 
-> ---
->
-> I did not fix memory_region_init_resizeable_ram. That might be done after 7.2.
->
-> Stefan
->
->  docs/devel/acpi-bits.rst       | 2 +-
->  docs/system/devices/can.rst    | 2 +-
->  hw/scsi/esp.c                  | 6 +++---
->  include/exec/memory.h          | 6 +++---
->  qapi/virtio.json               | 4 ++--
->  qemu-options.hx                | 6 +++---
->  tests/qtest/libqos/qgraph.h    | 2 +-
->  tests/qtest/libqos/virtio-9p.c | 2 +-
->  8 files changed, 15 insertions(+), 15 deletions(-)
->
-> diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
-> index c9564d871a..5e22be8ef6 100644
-> --- a/docs/devel/acpi-bits.rst
-> +++ b/docs/devel/acpi-bits.rst
-> @@ -132,7 +132,7 @@ Under ``tests/avocado/`` as the root we have:
->
->     (a) They are python2.7 based scripts and not python 3 scripts.
->     (b) They are run from within the bios bits VM and is not subjected to QEMU
-> -       build/test python script maintainance and dependency resolutions.
-> +       build/test python script maintenance and dependency resolutions.
->     (c) They need not be loaded by avocado framework when running tests.
->
->
-> diff --git a/docs/system/devices/can.rst b/docs/system/devices/can.rst
-> index fe37af8223..24b0d4cf41 100644
-> --- a/docs/system/devices/can.rst
-> +++ b/docs/system/devices/can.rst
-> @@ -169,7 +169,7 @@ and with bitrate switch::
->
->    cangen can0 -b
->
-> -The test can be run viceversa, generate messages in the guest system and capture them
-> +The test can be run vice-versa, generate messages in the guest system and capture them
->  in the host one and much more combinations.
->
->  Links to other resources
-> diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
-> index e5b281e836..e52188d022 100644
-> --- a/hw/scsi/esp.c
-> +++ b/hw/scsi/esp.c
-> @@ -515,7 +515,7 @@ static void do_dma_pdma_cb(ESPState *s)
->          } else {
->              /*
->               * Extra message out bytes received: update cmdfifo_cdb_offset
-> -             * and then switch to commmand phase
-> +             * and then switch to command phase
->               */
->              s->cmdfifo_cdb_offset = fifo8_num_used(&s->cmdfifo);
->              s->rregs[ESP_RSTAT] = STAT_TC | STAT_CD;
-> @@ -627,7 +627,7 @@ static void esp_do_dma(ESPState *s)
->          } else {
->              /*
->               * Extra message out bytes received: update cmdfifo_cdb_offset
-> -             * and then switch to commmand phase
-> +             * and then switch to command phase
->               */
->              s->cmdfifo_cdb_offset = fifo8_num_used(&s->cmdfifo);
->              s->rregs[ESP_RSTAT] = STAT_TC | STAT_CD;
-> @@ -738,7 +738,7 @@ static void esp_do_nodma(ESPState *s)
->          } else {
->              /*
->               * Extra message out bytes received: update cmdfifo_cdb_offset
-> -             * and then switch to commmand phase
-> +             * and then switch to command phase
->               */
->              s->cmdfifo_cdb_offset = fifo8_num_used(&s->cmdfifo);
->              s->rregs[ESP_RSTAT] = STAT_TC | STAT_CD;
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index 80fa75baa1..91f8a2395a 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -561,7 +561,7 @@ typedef void (*ReplayRamDiscard)(MemoryRegionSection *section, void *opaque);
->   * A #RamDiscardManager coordinates which parts of specific RAM #MemoryRegion
->   * regions are currently populated to be used/accessed by the VM, notifying
->   * after parts were discarded (freeing up memory) and before parts will be
-> - * populated (consuming memory), to be used/acessed by the VM.
-> + * populated (consuming memory), to be used/accessed by the VM.
->   *
->   * A #RamDiscardManager can only be set for a RAM #MemoryRegion while the
->   * #MemoryRegion isn't mapped yet; it cannot change while the #MemoryRegion is
-> @@ -585,7 +585,7 @@ typedef void (*ReplayRamDiscard)(MemoryRegionSection *section, void *opaque);
->   * Listeners are called in multiples of the minimum granularity (unless it
->   * would exceed the registered range) and changes are aligned to the minimum
->   * granularity within the #MemoryRegion. Listeners have to prepare for memory
-> - * becomming discarded in a different granularity than it was populated and the
-> + * becoming discarded in a different granularity than it was populated and the
->   * other way around.
->   */
->  struct RamDiscardManagerClass {
-> @@ -1247,7 +1247,7 @@ void memory_region_init_ram_flags_nomigrate(MemoryRegion *mr,
->                                              Error **errp);
->
->  /**
-> - * memory_region_init_resizeable_ram:  Initialize memory region with resizeable
-> + * memory_region_init_resizeable_ram:  Initialize memory region with resizable
->   *                                     RAM.  Accesses into the region will
->   *                                     modify memory directly.  Only an initial
->   *                                     portion of this RAM is actually used.
-> diff --git a/qapi/virtio.json b/qapi/virtio.json
-> index 872c7e3623..019d2d1987 100644
-> --- a/qapi/virtio.json
-> +++ b/qapi/virtio.json
-> @@ -321,7 +321,7 @@
->  #          },
->  #          "backend-features": {
->  #              "dev-features": [
-> -#                  "VHOST_USER_F_PROTOCOL_FEATURES: Vhost-user protocol features negotation supported",
-> +#                  "VHOST_USER_F_PROTOCOL_FEATURES: Vhost-user protocol features negotiation supported",
->  #                  "VIRTIO_NET_F_GSO: Handling GSO-type packets supported",
->  #                  "VIRTIO_NET_F_CTRL_MAC_ADDR: MAC address set through control channel",
->  #                  "VIRTIO_NET_F_GUEST_ANNOUNCE: Driver sending gratuitous packets supported",
-> @@ -394,7 +394,7 @@
->  #          },
->  #          "host-features": {
->  #              "dev-features": [
-> -#                  "VHOST_USER_F_PROTOCOL_FEATURES: Vhost-user protocol features negotation supported",
-> +#                  "VHOST_USER_F_PROTOCOL_FEATURES: Vhost-user protocol features negotiation supported",
->  #                  "VIRTIO_NET_F_GSO: Handling GSO-type packets supported",
->  #                  "VIRTIO_NET_F_CTRL_MAC_ADDR: MAC address set through control channel",
->  #                  "VIRTIO_NET_F_GUEST_ANNOUNCE: Driver sending gratuitous packets supported",
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 8b8a4a5d01..7f99d15b23 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -139,7 +139,7 @@ SRST
->          interleave requirements before enabling the memory devices.
->
->          ``targets.X=target`` provides the mapping to CXL host bridges
-> -        which may be identified by the id provied in the -device entry.
-> +        which may be identified by the id provided in the -device entry.
->          Multiple entries are needed to specify all the targets when
->          the fixed memory window represents interleaved memory. X is the
->          target index from 0.
-> @@ -362,7 +362,7 @@ SRST
->    \
->  ``-numa cpu,node-id=node[,socket-id=x][,core-id=y][,thread-id=z]``
->    \
-> -``-numa hmat-lb,initiator=node,target=node,hierarchy=hierarchy,data-type=tpye[,latency=lat][,bandwidth=bw]``
-> +``-numa hmat-lb,initiator=node,target=node,hierarchy=hierarchy,data-type=type[,latency=lat][,bandwidth=bw]``
->    \
->  ``-numa hmat-cache,node-id=node,size=size,level=level[,associativity=str][,policy=str][,line=size]``
->      Define a NUMA node and assign RAM and VCPUs to it. Set the NUMA
-> @@ -1785,7 +1785,7 @@ SRST
->      directory on host is made directly accessible by guest as a pass-through
->      file system by using the 9P network protocol for communication between
->      host and guests, if desired even accessible, shared by several guests
-> -    simultaniously.
-> +    simultaneously.
->
->      Note that ``-virtfs`` is actually just a convenience shortcut for its
->      generalized form ``-fsdev -device virtio-9p-pci``.
-> diff --git a/tests/qtest/libqos/qgraph.h b/tests/qtest/libqos/qgraph.h
-> index 5c0046e989..287022a67c 100644
-> --- a/tests/qtest/libqos/qgraph.h
-> +++ b/tests/qtest/libqos/qgraph.h
-> @@ -381,7 +381,7 @@ QOSGraphObject *qos_driver_new(QOSGraphNode *node, QOSGraphObject *parent,
->   * mind: only tests with a path down from the actual test case node (leaf) up
->   * to the graph's root node are actually executed by the qtest framework. And
->   * the qtest framework uses QMP to automatically check which QEMU drivers are
-> - * actually currently available, and accordingly qos marks certain pathes as
-> + * actually currently available, and accordingly qos marks certain paths as
->   * 'unavailable' in such cases (e.g. when QEMU was compiled without support for
->   * a certain feature).
->   */
-> diff --git a/tests/qtest/libqos/virtio-9p.c b/tests/qtest/libqos/virtio-9p.c
-> index ae9b0a20e2..7f21028256 100644
-> --- a/tests/qtest/libqos/virtio-9p.c
-> +++ b/tests/qtest/libqos/virtio-9p.c
-> @@ -31,7 +31,7 @@
->  static QGuestAllocator *alloc;
->  static char *local_test_path;
->
-> -/* Concatenates the passed 2 pathes. Returned result must be freed. */
-> +/* Concatenates the passed 2 paths. Returned result must be freed. */
->  static char *concat_path(const char* a, const char* b)
->  {
->      return g_build_filename(a, b, NULL);
-> --
-> 2.30.2
->
+https://gitlab.com/anisinha/qemu/-/commit/4bd915a7390d799b332c11f23b6d5982efac5dac#9dedb1d2dec506845c6145696c561451a8b4b659_44_44
+
+(removal of the reference to README from the doc).
 
