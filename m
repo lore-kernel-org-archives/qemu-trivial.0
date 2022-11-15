@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ouuoj-0004Ui-G4
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 07:13:29 -0500
+	id 1ouuok-0004Yn-LP
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 07:13:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouuoi-0004Rh-3F
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 07:13:28 -0500
+ id 1ouuoh-0004Qj-Lg
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 07:13:27 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouuog-0004h0-NT
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 07:13:27 -0500
+ id 1ouuof-0004gF-4Z
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 07:13:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668514406;
+ s=mimecast20190719; t=1668514404;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dg3mCFE8uw/wfOpkRNh1WTdMqbNPgtOyxMHit2mecd8=;
- b=fPAx7jpwlOLiT6PAFxd1FvrTBItL6aC5QsMWXkgY7Rdzv03boT96Rbc2e+581nQFvGWP7U
- QRQHcD9GIJWB/crCyAo7750AHlPxGPmdQXWyzgPXu17JyjdeOZX6k2MHDE/G/j+269iUfb
- mQSrkXco9T7TXzA8BuSPmZ8ryC2ExiI=
+ bh=KYeIQe/j3B37yyq4ayWjo2p+YUwHJONfvHLwiEzscgk=;
+ b=aTgLJ3vV4fhPdDRkPVwLL+GApsmtE0lrB+RMMptv7xsBCskexdRPx6C10nASmzxm3Co+gB
+ QnlS+c1W5AWsYaJlpHj/CHeCzp1lc6iObVTlzUN63cVW7y7h5Dxp8L3LwiTLm4D7UJp8t2
+ P1Gn23XdP22vd4u/+oP12t5o5ZawmeM=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-272-nacXecD6ONCsmXJUu7wibQ-1; Tue, 15 Nov 2022 07:13:23 -0500
-X-MC-Unique: nacXecD6ONCsmXJUu7wibQ-1
+ us-mta-618-oET5cDffOBOROZXucjMW1A-1; Tue, 15 Nov 2022 07:13:20 -0500
+X-MC-Unique: oET5cDffOBOROZXucjMW1A-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 868192999B2E;
- Tue, 15 Nov 2022 12:13:22 +0000 (UTC)
-Received: from secure.mitica (unknown [10.39.195.11])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0D03D492B05;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B98C32999B36;
  Tue, 15 Nov 2022 12:13:19 +0000 (UTC)
+Received: from secure.mitica (unknown [10.39.195.11])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 38DB4492B05;
+ Tue, 15 Nov 2022 12:13:17 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
@@ -47,10 +47,9 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Peter Xu <peterx@redhat.com>, Juan Quintela <quintela@redhat.com>
-Subject: [PATCH 15/30] migration: Take bitmap mutex when completing ram
- migration
-Date: Tue, 15 Nov 2022 13:12:11 +0100
-Message-Id: <20221115121226.26609-16-quintela@redhat.com>
+Subject: [PATCH 14/30] migration: Disable multifd explicitly with compression
+Date: Tue, 15 Nov 2022 13:12:10 +0100
+Message-Id: <20221115121226.26609-15-quintela@redhat.com>
 In-Reply-To: <20221115121226.26609-1-quintela@redhat.com>
 References: <20221115121226.26609-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -64,7 +63,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,43 +76,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Nov 2022 12:13:28 -0000
+X-List-Received-Date: Tue, 15 Nov 2022 12:13:27 -0000
 
 From: Peter Xu <peterx@redhat.com>
 
-Any call to ram_find_and_save_block() needs to take the bitmap mutex.  We
-used to not take it for most of ram_save_complete() because we thought
-we're the only one left using the bitmap, but it's not true after the
-preempt full patchset applied, since the return path can be taking it too.
+Multifd thread model does not work for compression, explicitly disable it.
+
+Note that previuosly even we can enable both of them, nothing will go
+wrong, because the compression code has higher priority so multifd feature
+will just be ignored.  Now we'll fail even earlier at config time so the
+user should be aware of the consequence better.
+
+Note that there can be a slight chance of breaking existing users, but
+let's assume they're not majority and not serious users, or they should
+have found that multifd is not working already.
+
+With that, we can safely drop the check in ram_save_target_page() for using
+multifd, because when multifd=on then compression=off, then the removed
+check on save_page_use_compression() will also always return false too.
 
 Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 2 ++
- 1 file changed, 2 insertions(+)
+ migration/migration.c |  7 +++++++
+ migration/ram.c       | 11 +++++------
+ 2 files changed, 12 insertions(+), 6 deletions(-)
 
+diff --git a/migration/migration.c b/migration/migration.c
+index 0bc3fce4b7..9fbed8819a 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -1370,6 +1370,13 @@ static bool migrate_caps_check(bool *cap_list,
+         }
+     }
+ 
++    if (cap_list[MIGRATION_CAPABILITY_MULTIFD]) {
++        if (cap_list[MIGRATION_CAPABILITY_COMPRESS]) {
++            error_setg(errp, "Multifd is not compatible with compress");
++            return false;
++        }
++    }
++
+     return true;
+ }
+ 
 diff --git a/migration/ram.c b/migration/ram.c
-index 2fcce796d0..96fa521813 100644
+index c0f5d6d287..2fcce796d0 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -3434,6 +3434,7 @@ static int ram_save_complete(QEMUFile *f, void *opaque)
-         /* try transferring iterative blocks of memory */
+@@ -2333,13 +2333,12 @@ static int ram_save_target_page(RAMState *rs, PageSearchStatus *pss)
+     }
  
-         /* flush all remaining blocks regardless of rate limiting */
-+        qemu_mutex_lock(&rs->bitmap_mutex);
-         while (true) {
-             int pages;
+     /*
+-     * Do not use multifd for:
+-     * 1. Compression as the first page in the new block should be posted out
+-     *    before sending the compressed page
+-     * 2. In postcopy as one whole host page should be placed
++     * Do not use multifd in postcopy as one whole host page should be
++     * placed.  Meanwhile postcopy requires atomic update of pages, so even
++     * if host page size == guest page size the dest guest during run may
++     * still see partially copied pages which is data corruption.
+      */
+-    if (!save_page_use_compression(rs) && migrate_use_multifd()
+-        && !migration_in_postcopy()) {
++    if (migrate_use_multifd() && !migration_in_postcopy()) {
+         return ram_save_multifd_page(rs, block, offset);
+     }
  
-@@ -3447,6 +3448,7 @@ static int ram_save_complete(QEMUFile *f, void *opaque)
-                 break;
-             }
-         }
-+        qemu_mutex_unlock(&rs->bitmap_mutex);
- 
-         flush_compressed_data(rs);
-         ram_control_after_iterate(f, RAM_CONTROL_FINISH);
 -- 
 2.38.1
 
