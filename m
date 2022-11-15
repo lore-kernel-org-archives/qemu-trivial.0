@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ouuod-0004GC-In
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 07:13:23 -0500
+	id 1ouuoe-0004I0-2N
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 07:13:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouuoU-000462-FO
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 07:13:17 -0500
+ id 1ouuoZ-00049a-K6
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 07:13:19 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouuoS-0004cx-VA
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 07:13:14 -0500
+ id 1ouuoY-0004eP-Ac
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 07:13:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668514392;
+ s=mimecast20190719; t=1668514397;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8sTZ2tLPTwfI8PVRQNhye5uLdMdQcsdyAavf636xeAI=;
- b=E3oFS/X4rohgISzyTZ8AhlWUM0QN4Qj1TilZEFkGIOjYOz/XCd4jSWXoAORFjAU8+TFSLP
- Wu7Uakz49iRwltsFVKao4ODhuMpFVCnaGOvStY8GOv8eBCjrCPPv+Wt2C0/W1IqJ8ugFhC
- EgL8rzfCknMSCnOX/GNXR+F34jQsxCw=
+ bh=ZlQ9DFV5GZb35HrLiQSeerG6Q9JfAHXY/TevqMaHCpQ=;
+ b=QfpQ3z3Kl2I7YzlW+J/lIevGbJm7oFYkNvgg20BmvP9owgGM6tAibGzc/Xp0MV5eZJDEAp
+ OSNrSmkJaxun73jpCPeeQyqME6mn59eVrYajg9kx6h5TsMWLUZ4pLZWLTJw8w65bfp050k
+ YeJXtqQI18482XpIMaIqaQiRR4fCb8M=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-615-_8tfqTi3PW-qJrKLiwU84A-1; Tue, 15 Nov 2022 07:13:09 -0500
-X-MC-Unique: _8tfqTi3PW-qJrKLiwU84A-1
+ us-mta-661-lZH1mqr0Ow-aKey7E_VARg-1; Tue, 15 Nov 2022 07:13:14 -0500
+X-MC-Unique: lZH1mqr0Ow-aKey7E_VARg-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 77BEA811E75;
- Tue, 15 Nov 2022 12:13:08 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1A2F685A59D;
+ Tue, 15 Nov 2022 12:13:14 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.11])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EE63F492B05;
- Tue, 15 Nov 2022 12:13:05 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 910C0492B05;
+ Tue, 15 Nov 2022 12:13:11 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
@@ -47,10 +47,10 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Peter Xu <peterx@redhat.com>, Juan Quintela <quintela@redhat.com>
-Subject: [PATCH 10/30] migration: Fix possible infinite loop of ram save
- process
-Date: Tue, 15 Nov 2022 13:12:06 +0100
-Message-Id: <20221115121226.26609-11-quintela@redhat.com>
+Subject: [PATCH 12/30] migration: Disallow postcopy preempt to be used with
+ compress
+Date: Tue, 15 Nov 2022 13:12:08 +0100
+Message-Id: <20221115121226.26609-13-quintela@redhat.com>
 In-Reply-To: <20221115121226.26609-1-quintela@redhat.com>
 References: <20221115121226.26609-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -64,7 +64,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,58 +77,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Nov 2022 12:13:17 -0000
+X-List-Received-Date: Tue, 15 Nov 2022 12:13:19 -0000
 
 From: Peter Xu <peterx@redhat.com>
 
-When starting ram saving procedure (especially at the completion phase),
-always set last_seen_block to non-NULL to make sure we can always correctly
-detect the case where "we've migrated all the dirty pages".
-
-Then we'll guarantee both last_seen_block and pss.block will be valid
-always before the loop starts.
-
-See the comment in the code for some details.
+The preempt mode requires the capability to assign channel for each of the
+page, while the compression logic will currently assign pages to different
+compress thread/local-channel so potentially they're incompatible.
 
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ migration/migration.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/migration/ram.c b/migration/ram.c
-index bb4f08bfed..c0f5d6d287 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -2574,14 +2574,22 @@ static int ram_find_and_save_block(RAMState *rs)
-         return pages;
+diff --git a/migration/migration.c b/migration/migration.c
+index 406a9e2f72..0bc3fce4b7 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -1357,6 +1357,17 @@ static bool migrate_caps_check(bool *cap_list,
+             error_setg(errp, "Postcopy preempt requires postcopy-ram");
+             return false;
+         }
++
++        /*
++         * Preempt mode requires urgent pages to be sent in separate
++         * channel, OTOH compression logic will disorder all pages into
++         * different compression channels, which is not compatible with the
++         * preempt assumptions on channel assignments.
++         */
++        if (cap_list[MIGRATION_CAPABILITY_COMPRESS]) {
++            error_setg(errp, "Postcopy preempt not compatible with compress");
++            return false;
++        }
      }
  
-+    /*
-+     * Always keep last_seen_block/last_page valid during this procedure,
-+     * because find_dirty_block() relies on these values (e.g., we compare
-+     * last_seen_block with pss.block to see whether we searched all the
-+     * ramblocks) to detect the completion of migration.  Having NULL value
-+     * of last_seen_block can conditionally cause below loop to run forever.
-+     */
-+    if (!rs->last_seen_block) {
-+        rs->last_seen_block = QLIST_FIRST_RCU(&ram_list.blocks);
-+        rs->last_page = 0;
-+    }
-+
-     pss.block = rs->last_seen_block;
-     pss.page = rs->last_page;
-     pss.complete_round = false;
- 
--    if (!pss.block) {
--        pss.block = QLIST_FIRST_RCU(&ram_list.blocks);
--    }
--
-     do {
-         again = true;
-         found = get_queued_page(rs, &pss);
+     return true;
 -- 
 2.38.1
 
