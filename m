@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ouxzR-0006Oc-TJ
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 10:36:45 -0500
+	id 1ouxzS-0006Px-No
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 10:36:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouxz0-00068W-EL
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:18 -0500
+ id 1ouxzC-0006BY-Fx
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:39 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouxyz-0008RX-4r
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:18 -0500
+ id 1ouxzB-0008Tu-1f
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668526576;
+ s=mimecast20190719; t=1668526588;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0ib/Nn4e1ptwb4ggHnzmqlth4juAjFEriRfMckzYNJo=;
- b=GbZbP8UG0GfKBOwBObvg0Ptq5Vj8DO2AkgMgcEvGnI0hv8LN7vCL0ptj9OuK035PQRuwX6
- IxTz6rCEEcGWPcaZeyY3AsB8P24mLHqhvjNWkhNePg75REmf1qD3A07HLUgRjlvxFI4YTk
- EetRX/tMyfqEo7Za5+SCsPrhFUMy2Pw=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=W4gYdFB8JnzXjKUrplhGzUi3gnS4DOZf/usoccN+O3g=;
+ b=GmkzCMCFi3DWxA+7LvIClZa0HTaBsnAR2annZ6mByMOmiYRsSMDJB/+6Oaj0zg2FRlIm4V
+ 19xs0gz403mVqAnL+cqV5XiexMCzieb+U4GVKLl1r9PRzoIgRGKkASoTdmYJZpqp5CYbCJ
+ d6VkP5SI3qLoMUhNF5G5HBxLePf3gaU=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-507-ZLEDA2CWMuajf1_W3dp2cw-1; Tue, 15 Nov 2022 10:36:12 -0500
-X-MC-Unique: ZLEDA2CWMuajf1_W3dp2cw-1
+ us-mta-557-0JuTS73pNOiKF-7wBFu88w-1; Tue, 15 Nov 2022 10:36:25 -0500
+X-MC-Unique: 0JuTS73pNOiKF-7wBFu88w-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CD1B4811E75;
- Tue, 15 Nov 2022 15:36:11 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BD3A12A5956D;
+ Tue, 15 Nov 2022 15:36:24 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.11])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 44C272166B2B;
- Tue, 15 Nov 2022 15:36:09 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1A49F2166B2B;
+ Tue, 15 Nov 2022 15:36:21 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -48,9 +48,10 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Fam Zheng <fam@euphon.net>
-Subject: [PULL 16/30] migration: Add postcopy_preempt_active()
-Date: Tue, 15 Nov 2022 16:35:00 +0100
-Message-Id: <20221115153514.28003-17-quintela@redhat.com>
+Subject: [PULL 20/30] migration: Yield bitmap_mutex properly when
+ sending/sleeping
+Date: Tue, 15 Nov 2022 16:35:04 +0100
+Message-Id: <20221115153514.28003-21-quintela@redhat.com>
 In-Reply-To: <20221115153514.28003-1-quintela@redhat.com>
 References: <20221115153514.28003-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -77,54 +78,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Nov 2022 15:36:18 -0000
+X-List-Received-Date: Tue, 15 Nov 2022 15:36:43 -0000
 
 From: Peter Xu <peterx@redhat.com>
 
-Add the helper to show that postcopy preempt enabled, meanwhile active.
+Don't take the bitmap mutex when sending pages, or when being throttled by
+migration_rate_limit() (which is a bit tricky to call it here in ram code,
+but seems still helpful).
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+It prepares for the possibility of concurrently sending pages in >1 threads
+using the function ram_save_host_page() because all threads may need the
+bitmap_mutex to operate on bitmaps, so that either sendmsg() or any kind of
+qemu_sem_wait() blocking for one thread will not block the other from
+progressing.
+
 Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ migration/ram.c | 46 +++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 35 insertions(+), 11 deletions(-)
 
 diff --git a/migration/ram.c b/migration/ram.c
-index 96fa521813..52c851eb56 100644
+index ebc5664dcc..6428138194 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -190,6 +190,11 @@ out:
-     return ret;
- }
+@@ -2480,9 +2480,14 @@ static void postcopy_preempt_reset_channel(RAMState *rs)
+  * a host page in which case the remainder of the hostpage is sent.
+  * Only dirty target pages are sent. Note that the host page size may
+  * be a huge page for this block.
++ *
+  * The saving stops at the boundary of the used_length of the block
+  * if the RAMBlock isn't a multiple of the host page size.
+  *
++ * The caller must be with ram_state.bitmap_mutex held to call this
++ * function.  Note that this function can temporarily release the lock, but
++ * when the function is returned it'll make sure the lock is still held.
++ *
+  * Returns the number of pages written or negative on error
+  *
+  * @rs: current RAM state
+@@ -2490,6 +2495,7 @@ static void postcopy_preempt_reset_channel(RAMState *rs)
+  */
+ static int ram_save_host_page(RAMState *rs, PageSearchStatus *pss)
+ {
++    bool page_dirty, preempt_active = postcopy_preempt_active();
+     int tmppages, pages = 0;
+     size_t pagesize_bits =
+         qemu_ram_pagesize(pss->block) >> TARGET_PAGE_BITS;
+@@ -2513,22 +2519,40 @@ static int ram_save_host_page(RAMState *rs, PageSearchStatus *pss)
+             break;
+         }
  
-+static bool postcopy_preempt_active(void)
-+{
-+    return migrate_postcopy_preempt() && migration_in_postcopy();
-+}
++        page_dirty = migration_bitmap_clear_dirty(rs, pss->block, pss->page);
 +
- bool ramblock_is_ignored(RAMBlock *block)
- {
-     return !qemu_ram_is_migratable(block) ||
-@@ -2461,7 +2466,7 @@ static void postcopy_preempt_choose_channel(RAMState *rs, PageSearchStatus *pss)
- /* We need to make sure rs->f always points to the default channel elsewhere */
- static void postcopy_preempt_reset_channel(RAMState *rs)
- {
--    if (migrate_postcopy_preempt() && migration_in_postcopy()) {
-+    if (postcopy_preempt_active()) {
-         rs->postcopy_channel = RAM_CHANNEL_PRECOPY;
-         rs->f = migrate_get_current()->to_dst_file;
-         trace_postcopy_preempt_reset_channel();
-@@ -2499,7 +2504,7 @@ static int ram_save_host_page(RAMState *rs, PageSearchStatus *pss)
-         return 0;
-     }
- 
--    if (migrate_postcopy_preempt() && migration_in_postcopy()) {
-+    if (postcopy_preempt_active()) {
-         postcopy_preempt_choose_channel(rs, pss);
-     }
- 
+         /* Check the pages is dirty and if it is send it */
+-        if (migration_bitmap_clear_dirty(rs, pss->block, pss->page)) {
++        if (page_dirty) {
++            /*
++             * Properly yield the lock only in postcopy preempt mode
++             * because both migration thread and rp-return thread can
++             * operate on the bitmaps.
++             */
++            if (preempt_active) {
++                qemu_mutex_unlock(&rs->bitmap_mutex);
++            }
+             tmppages = ram_save_target_page(rs, pss);
+-            if (tmppages < 0) {
+-                return tmppages;
++            if (tmppages >= 0) {
++                pages += tmppages;
++                /*
++                 * Allow rate limiting to happen in the middle of huge pages if
++                 * something is sent in the current iteration.
++                 */
++                if (pagesize_bits > 1 && tmppages > 0) {
++                    migration_rate_limit();
++                }
+             }
+-
+-            pages += tmppages;
+-            /*
+-             * Allow rate limiting to happen in the middle of huge pages if
+-             * something is sent in the current iteration.
+-             */
+-            if (pagesize_bits > 1 && tmppages > 0) {
+-                migration_rate_limit();
++            if (preempt_active) {
++                qemu_mutex_lock(&rs->bitmap_mutex);
+             }
++        } else {
++            tmppages = 0;
++        }
++
++        if (tmppages < 0) {
++            return tmppages;
+         }
++
+         pss->page = migration_bitmap_find_dirty(rs, pss->block, pss->page);
+     } while ((pss->page < hostpage_boundary) &&
+              offset_in_ramblock(pss->block,
 -- 
 2.38.1
 
