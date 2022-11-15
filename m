@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ouxyx-00065o-Sv
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 10:36:15 -0500
+	id 1ouxyq-0005uE-Az
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 10:36:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouxyv-00061X-DZ
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:13 -0500
+ id 1ouxya-0005mV-4L
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:35:56 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouxyn-0008OH-Nj
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:13 -0500
+ id 1ouxyY-0008Ll-ON
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:35:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668526565;
+ s=mimecast20190719; t=1668526549;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZlQ9DFV5GZb35HrLiQSeerG6Q9JfAHXY/TevqMaHCpQ=;
- b=d7PhWzh+4wZCFeKbVfU0BWXHxtDvffr70YAi3hdiGmYl89RiT3WPD3KH6o7PXRfbp2FXDK
- VgcSb3pzccegaMx1Z91tQy7QDGmQ6IPiL4jDoEkhXZAMjB3RJn9O65E9Kj/nPfw4AgSZSI
- ccY53PYcO/JEt7x/lRDzrtjqhhNR8sc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=5bcf1jlJmj+rMhBBQmZWe72vDpPf5dtep2kn+uX8o/s=;
+ b=f4IzKLhLB70wIkx4yhHPzz24vmg1nTKP6oy6Uc/olGpgDlQLN2KePeIKM0uYcI7Nh2eWt8
+ FI6b+y85TuKxllqJIBLza9cefCLYq4xayT6g6ixUVoYqrsabJhlQjiYYuhAw6Q3sjbpeFa
+ LSyDfmDkoQCuiwvgJOiDpNSpVaBsUto=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-77-FJCKyW-yPtCJUOGE1Yj42w-1; Tue, 15 Nov 2022 10:36:02 -0500
-X-MC-Unique: FJCKyW-yPtCJUOGE1Yj42w-1
+ us-mta-489-FzqY7oaePjyLHy3uDRnYkA-1; Tue, 15 Nov 2022 10:35:44 -0500
+X-MC-Unique: FzqY7oaePjyLHy3uDRnYkA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 30F1D87A9EA;
- Tue, 15 Nov 2022 15:36:00 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2FB7A1C0754E;
+ Tue, 15 Nov 2022 15:35:44 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.11])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 83F7A2166B2C;
- Tue, 15 Nov 2022 15:35:57 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 755F92166B2B;
+ Tue, 15 Nov 2022 15:35:41 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -47,11 +47,10 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
  Thomas Huth <thuth@redhat.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fam Zheng <fam@euphon.net>
-Subject: [PULL 12/30] migration: Disallow postcopy preempt to be used with
- compress
-Date: Tue, 15 Nov 2022 16:34:56 +0100
-Message-Id: <20221115153514.28003-13-quintela@redhat.com>
+ Fam Zheng <fam@euphon.net>, Leonardo Bras <leobras@redhat.com>
+Subject: [PULL 07/30] migration: Export ram_release_page()
+Date: Tue, 15 Nov 2022 16:34:51 +0100
+Message-Id: <20221115153514.28003-8-quintela@redhat.com>
 In-Reply-To: <20221115153514.28003-1-quintela@redhat.com>
 References: <20221115153514.28003-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -59,12 +58,12 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,44 +77,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Nov 2022 15:36:13 -0000
+X-List-Received-Date: Tue, 15 Nov 2022 15:36:03 -0000
 
-From: Peter Xu <peterx@redhat.com>
-
-The preempt mode requires the capability to assign channel for each of the
-page, while the compression logic will currently assign pages to different
-compress thread/local-channel so potentially they're incompatible.
-
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Leonardo Bras <leobras@redhat.com>
 ---
- migration/migration.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ migration/ram.h | 1 +
+ migration/ram.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index 406a9e2f72..0bc3fce4b7 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -1357,6 +1357,17 @@ static bool migrate_caps_check(bool *cap_list,
-             error_setg(errp, "Postcopy preempt requires postcopy-ram");
-             return false;
-         }
-+
-+        /*
-+         * Preempt mode requires urgent pages to be sent in separate
-+         * channel, OTOH compression logic will disorder all pages into
-+         * different compression channels, which is not compatible with the
-+         * preempt assumptions on channel assignments.
-+         */
-+        if (cap_list[MIGRATION_CAPABILITY_COMPRESS]) {
-+            error_setg(errp, "Postcopy preempt not compatible with compress");
-+            return false;
-+        }
-     }
+diff --git a/migration/ram.h b/migration/ram.h
+index e844966f69..038d52f49f 100644
+--- a/migration/ram.h
++++ b/migration/ram.h
+@@ -66,6 +66,7 @@ int ram_load_postcopy(QEMUFile *f, int channel);
+ void ram_handle_compressed(void *host, uint8_t ch, uint64_t size);
  
-     return true;
+ void ram_transferred_add(uint64_t bytes);
++void ram_release_page(const char *rbname, uint64_t offset);
+ 
+ int ramblock_recv_bitmap_test(RAMBlock *rb, void *host_addr);
+ bool ramblock_recv_bitmap_test_byte_offset(RAMBlock *rb, uint64_t byte_offset);
+diff --git a/migration/ram.c b/migration/ram.c
+index 00a06b2c16..67e41dd2c0 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -1234,7 +1234,7 @@ static void migration_bitmap_sync_precopy(RAMState *rs)
+     }
+ }
+ 
+-static void ram_release_page(const char *rbname, uint64_t offset)
++void ram_release_page(const char *rbname, uint64_t offset)
+ {
+     if (!migrate_release_ram() || !migration_in_postcopy()) {
+         return;
 -- 
 2.38.1
 
