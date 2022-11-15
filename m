@@ -1,70 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ov0LC-00064D-Ji
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 13:07:29 -0500
+	id 1ov18B-00006D-C8
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 13:57:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1ov0Kp-0005sE-ID
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 13:07:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1ov0Kn-0000AU-2r
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 13:06:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668535616;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=wLFVxskAtfRCt0VbZH3NOHtmAV81HJWEQRhQIy6av5E=;
- b=JFztlH6DHLhI8c/2czMYmBm++rSyd8fFsez7l4zSsBBdWxf/FvmZQts8UCccCE5Q4Ykac5
- jwZ9raJRDSEq/ytcqvubGSWDJq6hOISjjnj5i4+ARuqAS6LsMcamYXOlP60Ipst8WhZ6W7
- Y7wP0jqXVRgluP1ZaoA7l8EmpQAzqD8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-393-dvGclg9mPBqRTlTujjOQgA-1; Tue, 15 Nov 2022 13:06:53 -0500
-X-MC-Unique: dvGclg9mPBqRTlTujjOQgA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B81E7811E84;
- Tue, 15 Nov 2022 18:06:51 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.74])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1723440C6EC3;
- Tue, 15 Nov 2022 18:06:48 +0000 (UTC)
-Date: Tue, 15 Nov 2022 18:06:44 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Juan Quintela <quintela@redhat.com>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- David Hildenbrand <david@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fam Zheng <fam@euphon.net>
-Subject: Re: [PULL 00/30] Next patches
-Message-ID: <Y3PVNNl9+TQD/9fc@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20221115153514.28003-1-quintela@redhat.com>
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1ov189-00005f-5N; Tue, 15 Nov 2022 13:57:57 -0500
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1ov186-00021b-SY; Tue, 15 Nov 2022 13:57:56 -0500
+Received: by mail-yb1-xb32.google.com with SMTP id 205so3773040ybe.7;
+ Tue, 15 Nov 2022 10:57:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=QxX2rBcAL8aKt5qWCOv+ZU81c/fF/ceAnCzVGa4aveo=;
+ b=ZRE5KtiWCxLEY14GkwYX9XnFx/1H0tfaL1WgF7bY+3mrrOSTV6MCSBkshUNiWOcxZn
+ xxzFakWzviktsBbZ7TvdZ1IwwUvsz3806StiOg/GKBp8UmwbIM6BfUIIUAbtX2hen7ZD
+ vaa/2qT7vwEjjGKkpFIKqVhDxw1GgjKaifBL0NaxZiSlHsiTAlUX6toYimxOAo9wmqkT
+ Zw5IEFiood3EVD6dUPj7ovXju9g4wdhVWYW81q6Uqrf/wY+O7JkThULExCebrB3vj/Ao
+ QBVa6Vpb+zAeT21ca78pw1HmGkXr5GD4Vc+S+vQl34byXIbHbMnI9Jn14Y/fa22pBs1y
+ pDsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=QxX2rBcAL8aKt5qWCOv+ZU81c/fF/ceAnCzVGa4aveo=;
+ b=syqXeytXBkm4KK80iLr2WVqGcJVcIRi/ZJESkwfu/gK56Wc2YPyKI/Gwclmiz0f3GA
+ 1pnL70KDrV9gacRy3cHoY4Qqx9ZQ37svP2V9F8XEekvFSqjtlkyzw3Y5ZIE4jMG5Ae3k
+ cBvUQnzwUnxxXHozycWKraBar78u6eiRh8wjt5NOxotjgkNwuLT2B9omyDMew/uvN01K
+ tsrk2vCMqXa45vyqBAkV6G36F/sEFh1AEsK5mGQxTGmpIqgAV0QRn4GAZ52AeV14wgkP
+ kxxKukhunUeoLqvdpC7VkZKEKjqLkuRhdOJKKeazjUCnyOUIPg4uMoIub89gGNGBqb0S
+ T7XQ==
+X-Gm-Message-State: ANoB5pmby/FCYZuW1PIfDIS1Y+AK7fiyidcc6gf7vFIn3765rhUspqD2
+ +mRTkDIDNxMhrt39kbRbmq+TedUjiSu4FiRsYmE=
+X-Google-Smtp-Source: AA0mqf6eCiQIWTfOVkOv/xKmRAJdce76luyyM2HCIbIc7Lh+2WmuA8IAoxCqeE7EpliaxubacpaRRJavsPqUhPBojD8=
+X-Received: by 2002:a25:344f:0:b0:6c9:e3ba:b37a with SMTP id
+ b76-20020a25344f000000b006c9e3bab37amr18453192yba.642.1668538673007; Tue, 15
+ Nov 2022 10:57:53 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+References: <20221115153514.28003-1-quintela@redhat.com>
 In-Reply-To: <20221115153514.28003-1-quintela@redhat.com>
-User-Agent: Mutt/2.2.7 (2022-08-07)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Tue, 15 Nov 2022 13:57:41 -0500
+Message-ID: <CAJSP0QXFMx3dopk7iXZAM75J-JYyiTFjsRkfNGLQoQEVa2f=HQ@mail.gmail.com>
+Subject: Re: [PULL 00/30] Next patches
+To: Juan Quintela <quintela@redhat.com>, ling xu <ling1.xu@intel.com>, 
+ Zhou Zhao <zhou.zhao@intel.com>, Jun Jin <jun.i.jin@intel.com>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ David Hildenbrand <david@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Peter Xu <peterx@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Fam Zheng <fam@euphon.net>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
+ envelope-from=stefanha@gmail.com; helo=mail-yb1-xb32.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,37 +80,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Nov 2022 18:07:04 -0000
+X-List-Received-Date: Tue, 15 Nov 2022 18:57:58 -0000
 
-Please don't merge this PULL request,
-
-It contains changes to the "io" subsystem in patch 3 that I
-have not reviewed nor acked yet, and which should be been
-split as a separate patch from the migration changes too.
-
-With regards,
-Daniel
-
-On Tue, Nov 15, 2022 at 04:34:44PM +0100, Juan Quintela wrote:
+On Tue, 15 Nov 2022 at 10:40, Juan Quintela <quintela@redhat.com> wrote:
+>
 > The following changes since commit 98f10f0e2613ba1ac2ad3f57a5174014f6dcb03d:
-> 
+>
 >   Merge tag 'pull-target-arm-20221114' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2022-11-14 13:31:17 -0500)
-> 
+>
 > are available in the Git repository at:
-> 
+>
 >   https://gitlab.com/juan.quintela/qemu.git tags/next-pull-request
-> 
+>
 > for you to fetch changes up to d896a7a40db13fc2d05828c94ddda2747530089c:
-> 
+>
 >   migration: Block migration comment or code is wrong (2022-11-15 10:31:06 +0100)
-> 
+>
 > ----------------------------------------------------------------
 > Migration PULL request (take 2)
-> 
+>
 > Hi
-> 
+>
 > This time properly signed.
-> 
+>
 > [take 1]
 > It includes:
 > - Leonardo fix for zero_copy flush
@@ -118,25 +112,25 @@ On Tue, Nov 15, 2022 at 04:34:44PM +0100, Juan Quintela wrote:
 > - Patches ready from zero page (me)
 > - AVX2 support (ling)
 > - fix for slow networking and reordering of first packets (manish)
-> 
+>
 > Please, apply.
-> 
+>
 > ----------------------------------------------------------------
-> 
+>
 > Fiona Ebner (1):
 >   migration/channel-block: fix return value for
 >     qio_channel_block_{readv,writev}
-> 
+>
 > Juan Quintela (5):
 >   multifd: Create page_size fields into both MultiFD{Recv,Send}Params
 >   multifd: Create page_count fields into both MultiFD{Recv,Send}Params
 >   migration: Export ram_transferred_ram()
 >   migration: Export ram_release_page()
 >   migration: Block migration comment or code is wrong
-> 
+>
 > Leonardo Bras (1):
 >   migration/multifd/zero-copy: Create helper function for flushing
-> 
+>
 > Peter Xu (20):
 >   migration: Fix possible infinite loop of ram save process
 >   migration: Fix race on qemu_file_shutdown()
@@ -158,14 +152,112 @@ On Tue, Nov 15, 2022 at 04:34:44PM +0100, Juan Quintela wrote:
 >   migration: Send requested page directly in rp-return thread
 >   migration: Remove old preempt code around state maintainance
 >   migration: Drop rs->f
-> 
+>
 > ling xu (2):
 >   Update AVX512 support for xbzrle_encode_buffer
 >   Unit test code and benchmark code
-> 
+
+This commit causes the following CI failure:
+
+cc -m64 -mcx16 -Ilibauthz.fa.p -I. -I.. -Iqapi -Itrace -Iui/shader
+-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+-fdiagnostics-color=auto -Wall -Winvalid-pch -Werror -std=gnu11 -O2 -g
+-isystem /builds/qemu-project/qemu/linux-headers -isystem
+linux-headers -iquote . -iquote /builds/qemu-project/qemu -iquote
+/builds/qemu-project/qemu/include -iquote
+/builds/qemu-project/qemu/tcg/i386 -pthread -U_FORTIFY_SOURCE
+-D_FORTIFY_SOURCE=2 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
+-D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wundef
+-Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common
+-fwrapv -Wold-style-declaration -Wold-style-definition -Wtype-limits
+-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers
+-Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined
+-Wimplicit-fallthrough=2 -Wno-missing-include-dirs
+-Wno-shift-negative-value -Wno-psabi -fstack-protector-strong -fPIE
+-MD -MQ libauthz.fa.p/authz_simple.c.o -MF
+libauthz.fa.p/authz_simple.c.o.d -o libauthz.fa.p/authz_simple.c.o -c
+../authz/simple.c
+In file included from ../authz/simple.c:23:
+../authz/trace.h:1:10: fatal error: trace/trace-authz.h: No such file
+or directory
+1 | #include "trace/trace-authz.h"
+| ^~~~~~~~~~~~~~~~~~~~~
+
+https://gitlab.com/qemu-project/qemu/-/jobs/3326576115
+
+I think the issue is that the test links against objects that aren't
+present when qemu-user only build is performed. That's my first guess,
+I might be wrong but it is definitely this commit that causes the
+failure (I bisected it).
+
+There is a second CI failure here:
+
+clang -m64 -mcx16 -Itests/bench/xbzrle-bench.p -Itests/bench
+-I../tests/bench -I. -Iqapi -Itrace -Iui -Iui/shader
+-I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
+-I/usr/include/sysprof-4 -flto -fcolor-diagnostics -Wall -Winvalid-pch
+-Werror -std=gnu11 -O2 -g -isystem
+/builds/qemu-project/qemu/linux-headers -isystem linux-headers -iquote
+. -iquote /builds/qemu-project/qemu -iquote
+/builds/qemu-project/qemu/include -iquote
+/builds/qemu-project/qemu/tcg/i386 -pthread -D_GNU_SOURCE
+-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes
+-Wredundant-decls -Wundef -Wwrite-strings -Wmissing-prototypes
+-fno-strict-aliasing -fno-common -fwrapv -Wold-style-definition
+-Wtype-limits -Wformat-security -Wformat-y2k -Winit-self
+-Wignored-qualifiers -Wempty-body -Wnested-externs -Wendif-labels
+-Wexpansion-to-defined -Wno-initializer-overrides
+-Wno-missing-include-dirs -Wno-shift-negative-value
+-Wno-string-plus-int -Wno-typedef-redefinition
+-Wno-tautological-type-limit-compare -Wno-psabi
+-Wno-gnu-variable-sized-type-not-at-end -fstack-protector-strong
+-fsanitize=safe-stack -fsanitize=cfi-icall
+-fsanitize-cfi-icall-generalize-pointers -fno-sanitize-trap=cfi-icall
+-fPIE -MD -MQ tests/bench/xbzrle-bench.p/xbzrle-bench.c.o -MF
+tests/bench/xbzrle-bench.p/xbzrle-bench.c.o.d -o
+tests/bench/xbzrle-bench.p/xbzrle-bench.c.o -c
+../tests/bench/xbzrle-bench.c
+../tests/bench/xbzrle-bench.c:84:15: error: implicit declaration of
+function 'xbzrle_encode_buffer_avx512' is invalid in C99
+[-Werror,-Wimplicit-function-declaration]
+dlen512 = xbzrle_encode_buffer_avx512(buffer512, buffer512, XBZRLE_PAGE_SIZE,
+^
+../tests/bench/xbzrle-bench.c:84:15: note: did you mean 'xbzrle_encode_buffer'?
+./../migration/xbzrle.h:17:5: note: 'xbzrle_encode_buffer' declared here
+int xbzrle_encode_buffer(uint8_t *old_buf, uint8_t *new_buf, int slen,
+^
+../tests/bench/xbzrle-bench.c:146:15: error: implicit declaration of
+function 'xbzrle_encode_buffer_avx512' is invalid in C99
+[-Werror,-Wimplicit-function-declaration]
+dlen512 = xbzrle_encode_buffer_avx512(test512, test512, XBZRLE_PAGE_SIZE,
+^
+../tests/bench/xbzrle-bench.c:205:15: error: implicit declaration of
+function 'xbzrle_encode_buffer_avx512' is invalid in C99
+[-Werror,-Wimplicit-function-declaration]
+dlen512 = xbzrle_encode_buffer_avx512(buffer512, test512, XBZRLE_PAGE_SIZE,
+^
+../tests/bench/xbzrle-bench.c:268:13: error: implicit declaration of
+function 'xbzrle_encode_buffer_avx512' is invalid in C99
+[-Werror,-Wimplicit-function-declaration]
+rc512 = xbzrle_encode_buffer_avx512(buffer512, test512, XBZRLE_PAGE_SIZE,
+^
+../tests/bench/xbzrle-bench.c:345:15: error: implicit declaration of
+function 'xbzrle_encode_buffer_avx512' is invalid in C99
+[-Werror,-Wimplicit-function-declaration]
+dlen512 = xbzrle_encode_buffer_avx512(test512, buffer512, XBZRLE_PAGE_SIZE,
+^
+../tests/bench/xbzrle-bench.c:414:15: error: implicit declaration of
+function 'xbzrle_encode_buffer_avx512' is invalid in C99
+[-Werror,-Wimplicit-function-declaration]
+dlen512 = xbzrle_encode_buffer_avx512(test512, buffer512, XBZRLE_PAGE_SIZE,
+^
+
+https://gitlab.com/qemu-project/qemu/-/jobs/3326576144
+
+>
 > manish.mishra (1):
 >   migration: check magic value for deciding the mapping of channels
-> 
+>
 >  meson.build                   |  16 +
 >  include/exec/ram_addr.h       |  11 +-
 >  include/exec/ramblock.h       |   3 +
@@ -196,16 +288,9 @@ On Tue, Nov 15, 2022 at 04:34:44PM +0100, Juan Quintela wrote:
 >  tests/bench/meson.build       |   4 +
 >  28 files changed, 1379 insertions(+), 522 deletions(-)
 >  create mode 100644 tests/bench/xbzrle-bench.c
-> 
-> -- 
+>
+> --
 > 2.38.1
-> 
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+>
+>
 
