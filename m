@@ -1,15 +1,15 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ouxz0-00068c-Nb
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 10:36:18 -0500
+	id 1ouxz0-000695-Tl
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 10:36:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouxyw-00064x-Ok
+ id 1ouxyw-000654-PE
  for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouxys-0008PF-Hy
+ id 1ouxys-0008PL-Vd
  for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1668526570;
@@ -17,24 +17,24 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lv4vZEI7OQUfHArHUOc7UL/dhPGExU7enAwFsaFQkm8=;
- b=HY2IXyfG2CXzOIj6OiN4vvmuI5ZK6ZHJDjTW+1AbMT2/cAGYOOfav85PBK7WGeFyIZ+jnC
- L5CZaLbCu1/LyN6KWrcW371VtLW8TeZF5Qona8LmUnI6BJdGZNd5JVPwVedXjergeIkSmm
- WbmCYz2lqdVFfQXFmfOB6G7fff6a15w=
+ bh=KYeIQe/j3B37yyq4ayWjo2p+YUwHJONfvHLwiEzscgk=;
+ b=HyzlPi5Y8fRPuc2qGPdl2RwjqHknY/tdZpbkt6Q8WOPCIq9CKGgkk0ossOth7mr+ztqFpl
+ RwOts2Przi8Q55KajqwukC01cFRSK70BJMK+A5Tsnm6dqbcx8dVjqcCl5AIwWIE5Bta1/n
+ hAWrmPYo6B1wzvnpPUMapfdwp4jFk/4=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-379-rRnEhYIOP4ePxd5R-PsBpQ-1; Tue, 15 Nov 2022 10:36:02 -0500
-X-MC-Unique: rRnEhYIOP4ePxd5R-PsBpQ-1
+ us-mta-608-ldi5aoEdNZG6nfzwo5Frpg-1; Tue, 15 Nov 2022 10:36:06 -0500
+X-MC-Unique: ldi5aoEdNZG6nfzwo5Frpg-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3BB843C0F7EF;
- Tue, 15 Nov 2022 15:35:57 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2877A1C075B6;
+ Tue, 15 Nov 2022 15:36:06 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.11])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8462F2166B2B;
- Tue, 15 Nov 2022 15:35:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 739082166B2C;
+ Tue, 15 Nov 2022 15:36:03 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -48,22 +48,22 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Fam Zheng <fam@euphon.net>
-Subject: [PULL 11/30] migration: Fix race on qemu_file_shutdown()
-Date: Tue, 15 Nov 2022 16:34:55 +0100
-Message-Id: <20221115153514.28003-12-quintela@redhat.com>
+Subject: [PULL 14/30] migration: Disable multifd explicitly with compression
+Date: Tue, 15 Nov 2022 16:34:58 +0100
+Message-Id: <20221115153514.28003-15-quintela@redhat.com>
 In-Reply-To: <20221115153514.28003-1-quintela@redhat.com>
 References: <20221115153514.28003-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -81,90 +81,70 @@ X-List-Received-Date: Tue, 15 Nov 2022 15:36:15 -0000
 
 From: Peter Xu <peterx@redhat.com>
 
-In qemu_file_shutdown(), there's a possible race if with current order of
-operation.  There're two major things to do:
+Multifd thread model does not work for compression, explicitly disable it.
 
-  (1) Do real shutdown() (e.g. shutdown() syscall on socket)
-  (2) Update qemufile's last_error
+Note that previuosly even we can enable both of them, nothing will go
+wrong, because the compression code has higher priority so multifd feature
+will just be ignored.  Now we'll fail even earlier at config time so the
+user should be aware of the consequence better.
 
-We must do (2) before (1) otherwise there can be a race condition like:
+Note that there can be a slight chance of breaking existing users, but
+let's assume they're not majority and not serious users, or they should
+have found that multifd is not working already.
 
-      page receiver                     other thread
-      -------------                     ------------
-      qemu_get_buffer()
-                                        do shutdown()
-        returns 0 (buffer all zero)
-        (meanwhile we didn't check this retcode)
-      try to detect IO error
-        last_error==NULL, IO okay
-      install ALL-ZERO page
-                                        set last_error
-      --> guest crash!
+With that, we can safely drop the check in ram_save_target_page() for using
+multifd, because when multifd=on then compression=off, then the removed
+check on save_page_use_compression() will also always return false too.
 
-To fix this, we can also check retval of qemu_get_buffer(), but not all
-APIs can be properly checked and ultimately we still need to go back to
-qemu_file_get_error().  E.g. qemu_get_byte() doesn't return error.
-
-Maybe some day a rework of qemufile API is really needed, but for now keep
-using qemu_file_get_error() and fix it by not allowing that race condition
-to happen.  Here shutdown() is indeed special because the last_error was
-emulated.  For real -EIO errors it'll always be set when e.g. sendmsg()
-error triggers so we won't miss those ones, only shutdown() is a bit tricky
-here.
-
-Cc: Daniel P. Berrange <berrange@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/qemu-file.c | 27 ++++++++++++++++++++++++---
- 1 file changed, 24 insertions(+), 3 deletions(-)
+ migration/migration.c |  7 +++++++
+ migration/ram.c       | 11 +++++------
+ 2 files changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/migration/qemu-file.c b/migration/qemu-file.c
-index 4f400c2e52..2d5f74ffc2 100644
---- a/migration/qemu-file.c
-+++ b/migration/qemu-file.c
-@@ -79,6 +79,30 @@ int qemu_file_shutdown(QEMUFile *f)
-     int ret = 0;
- 
-     f->shutdown = true;
-+
-+    /*
-+     * We must set qemufile error before the real shutdown(), otherwise
-+     * there can be a race window where we thought IO all went though
-+     * (because last_error==NULL) but actually IO has already stopped.
-+     *
-+     * If without correct ordering, the race can happen like this:
-+     *
-+     *      page receiver                     other thread
-+     *      -------------                     ------------
-+     *      qemu_get_buffer()
-+     *                                        do shutdown()
-+     *        returns 0 (buffer all zero)
-+     *        (we didn't check this retcode)
-+     *      try to detect IO error
-+     *        last_error==NULL, IO okay
-+     *      install ALL-ZERO page
-+     *                                        set last_error
-+     *      --> guest crash!
-+     */
-+    if (!f->last_error) {
-+        qemu_file_set_error(f, -EIO);
-+    }
-+
-     if (!qio_channel_has_feature(f->ioc,
-                                  QIO_CHANNEL_FEATURE_SHUTDOWN)) {
-         return -ENOSYS;
-@@ -88,9 +112,6 @@ int qemu_file_shutdown(QEMUFile *f)
-         ret = -EIO;
+diff --git a/migration/migration.c b/migration/migration.c
+index 0bc3fce4b7..9fbed8819a 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -1370,6 +1370,13 @@ static bool migrate_caps_check(bool *cap_list,
+         }
      }
  
--    if (!f->last_error) {
--        qemu_file_set_error(f, -EIO);
--    }
-     return ret;
++    if (cap_list[MIGRATION_CAPABILITY_MULTIFD]) {
++        if (cap_list[MIGRATION_CAPABILITY_COMPRESS]) {
++            error_setg(errp, "Multifd is not compatible with compress");
++            return false;
++        }
++    }
++
+     return true;
  }
+ 
+diff --git a/migration/ram.c b/migration/ram.c
+index c0f5d6d287..2fcce796d0 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -2333,13 +2333,12 @@ static int ram_save_target_page(RAMState *rs, PageSearchStatus *pss)
+     }
+ 
+     /*
+-     * Do not use multifd for:
+-     * 1. Compression as the first page in the new block should be posted out
+-     *    before sending the compressed page
+-     * 2. In postcopy as one whole host page should be placed
++     * Do not use multifd in postcopy as one whole host page should be
++     * placed.  Meanwhile postcopy requires atomic update of pages, so even
++     * if host page size == guest page size the dest guest during run may
++     * still see partially copied pages which is data corruption.
+      */
+-    if (!save_page_use_compression(rs) && migrate_use_multifd()
+-        && !migration_in_postcopy()) {
++    if (migrate_use_multifd() && !migration_in_postcopy()) {
+         return ram_save_multifd_page(rs, block, offset);
+     }
  
 -- 
 2.38.1
