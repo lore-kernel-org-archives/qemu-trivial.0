@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ouxyq-0005uE-Az
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 10:36:08 -0500
+	id 1ouxz0-00068c-Nb
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Nov 2022 10:36:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouxya-0005mV-4L
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:35:56 -0500
+ id 1ouxyw-00064x-Ok
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:14 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ouxyY-0008Ll-ON
- for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:35:51 -0500
+ id 1ouxys-0008PF-Hy
+ for qemu-trivial@nongnu.org; Tue, 15 Nov 2022 10:36:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1668526549;
+ s=mimecast20190719; t=1668526570;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5bcf1jlJmj+rMhBBQmZWe72vDpPf5dtep2kn+uX8o/s=;
- b=f4IzKLhLB70wIkx4yhHPzz24vmg1nTKP6oy6Uc/olGpgDlQLN2KePeIKM0uYcI7Nh2eWt8
- FI6b+y85TuKxllqJIBLza9cefCLYq4xayT6g6ixUVoYqrsabJhlQjiYYuhAw6Q3sjbpeFa
- LSyDfmDkoQCuiwvgJOiDpNSpVaBsUto=
+ bh=lv4vZEI7OQUfHArHUOc7UL/dhPGExU7enAwFsaFQkm8=;
+ b=HY2IXyfG2CXzOIj6OiN4vvmuI5ZK6ZHJDjTW+1AbMT2/cAGYOOfav85PBK7WGeFyIZ+jnC
+ L5CZaLbCu1/LyN6KWrcW371VtLW8TeZF5Qona8LmUnI6BJdGZNd5JVPwVedXjergeIkSmm
+ WbmCYz2lqdVFfQXFmfOB6G7fff6a15w=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-489-FzqY7oaePjyLHy3uDRnYkA-1; Tue, 15 Nov 2022 10:35:44 -0500
-X-MC-Unique: FzqY7oaePjyLHy3uDRnYkA-1
+ us-mta-379-rRnEhYIOP4ePxd5R-PsBpQ-1; Tue, 15 Nov 2022 10:36:02 -0500
+X-MC-Unique: rRnEhYIOP4ePxd5R-PsBpQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2FB7A1C0754E;
- Tue, 15 Nov 2022 15:35:44 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3BB843C0F7EF;
+ Tue, 15 Nov 2022 15:35:57 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.11])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 755F92166B2B;
- Tue, 15 Nov 2022 15:35:41 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8462F2166B2B;
+ Tue, 15 Nov 2022 15:35:54 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -47,10 +47,10 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
  Thomas Huth <thuth@redhat.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fam Zheng <fam@euphon.net>, Leonardo Bras <leobras@redhat.com>
-Subject: [PULL 07/30] migration: Export ram_release_page()
-Date: Tue, 15 Nov 2022 16:34:51 +0100
-Message-Id: <20221115153514.28003-8-quintela@redhat.com>
+ Fam Zheng <fam@euphon.net>
+Subject: [PULL 11/30] migration: Fix race on qemu_file_shutdown()
+Date: Tue, 15 Nov 2022 16:34:55 +0100
+Message-Id: <20221115153514.28003-12-quintela@redhat.com>
 In-Reply-To: <20221115153514.28003-1-quintela@redhat.com>
 References: <20221115153514.28003-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -77,40 +77,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Nov 2022 15:36:03 -0000
+X-List-Received-Date: Tue, 15 Nov 2022 15:36:15 -0000
 
+From: Peter Xu <peterx@redhat.com>
+
+In qemu_file_shutdown(), there's a possible race if with current order of
+operation.  There're two major things to do:
+
+  (1) Do real shutdown() (e.g. shutdown() syscall on socket)
+  (2) Update qemufile's last_error
+
+We must do (2) before (1) otherwise there can be a race condition like:
+
+      page receiver                     other thread
+      -------------                     ------------
+      qemu_get_buffer()
+                                        do shutdown()
+        returns 0 (buffer all zero)
+        (meanwhile we didn't check this retcode)
+      try to detect IO error
+        last_error==NULL, IO okay
+      install ALL-ZERO page
+                                        set last_error
+      --> guest crash!
+
+To fix this, we can also check retval of qemu_get_buffer(), but not all
+APIs can be properly checked and ultimately we still need to go back to
+qemu_file_get_error().  E.g. qemu_get_byte() doesn't return error.
+
+Maybe some day a rework of qemufile API is really needed, but for now keep
+using qemu_file_get_error() and fix it by not allowing that race condition
+to happen.  Here shutdown() is indeed special because the last_error was
+emulated.  For real -EIO errors it'll always be set when e.g. sendmsg()
+error triggers so we won't miss those ones, only shutdown() is a bit tricky
+here.
+
+Cc: Daniel P. Berrange <berrange@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Leonardo Bras <leobras@redhat.com>
 ---
- migration/ram.h | 1 +
- migration/ram.c | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ migration/qemu-file.c | 27 ++++++++++++++++++++++++---
+ 1 file changed, 24 insertions(+), 3 deletions(-)
 
-diff --git a/migration/ram.h b/migration/ram.h
-index e844966f69..038d52f49f 100644
---- a/migration/ram.h
-+++ b/migration/ram.h
-@@ -66,6 +66,7 @@ int ram_load_postcopy(QEMUFile *f, int channel);
- void ram_handle_compressed(void *host, uint8_t ch, uint64_t size);
+diff --git a/migration/qemu-file.c b/migration/qemu-file.c
+index 4f400c2e52..2d5f74ffc2 100644
+--- a/migration/qemu-file.c
++++ b/migration/qemu-file.c
+@@ -79,6 +79,30 @@ int qemu_file_shutdown(QEMUFile *f)
+     int ret = 0;
  
- void ram_transferred_add(uint64_t bytes);
-+void ram_release_page(const char *rbname, uint64_t offset);
- 
- int ramblock_recv_bitmap_test(RAMBlock *rb, void *host_addr);
- bool ramblock_recv_bitmap_test_byte_offset(RAMBlock *rb, uint64_t byte_offset);
-diff --git a/migration/ram.c b/migration/ram.c
-index 00a06b2c16..67e41dd2c0 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -1234,7 +1234,7 @@ static void migration_bitmap_sync_precopy(RAMState *rs)
+     f->shutdown = true;
++
++    /*
++     * We must set qemufile error before the real shutdown(), otherwise
++     * there can be a race window where we thought IO all went though
++     * (because last_error==NULL) but actually IO has already stopped.
++     *
++     * If without correct ordering, the race can happen like this:
++     *
++     *      page receiver                     other thread
++     *      -------------                     ------------
++     *      qemu_get_buffer()
++     *                                        do shutdown()
++     *        returns 0 (buffer all zero)
++     *        (we didn't check this retcode)
++     *      try to detect IO error
++     *        last_error==NULL, IO okay
++     *      install ALL-ZERO page
++     *                                        set last_error
++     *      --> guest crash!
++     */
++    if (!f->last_error) {
++        qemu_file_set_error(f, -EIO);
++    }
++
+     if (!qio_channel_has_feature(f->ioc,
+                                  QIO_CHANNEL_FEATURE_SHUTDOWN)) {
+         return -ENOSYS;
+@@ -88,9 +112,6 @@ int qemu_file_shutdown(QEMUFile *f)
+         ret = -EIO;
      }
+ 
+-    if (!f->last_error) {
+-        qemu_file_set_error(f, -EIO);
+-    }
+     return ret;
  }
  
--static void ram_release_page(const char *rbname, uint64_t offset)
-+void ram_release_page(const char *rbname, uint64_t offset)
- {
-     if (!migrate_release_ram() || !migration_in_postcopy()) {
-         return;
 -- 
 2.38.1
 
