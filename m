@@ -1,72 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ovXaA-0005fu-Q7
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Nov 2022 00:37:06 -0500
+	id 1ovZoE-0001Bt-KJ
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Nov 2022 02:59:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1ovXa9-0005ff-Sl
- for qemu-trivial@nongnu.org; Thu, 17 Nov 2022 00:37:01 -0500
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1ovXa8-00072x-16
- for qemu-trivial@nongnu.org; Thu, 17 Nov 2022 00:37:01 -0500
-Received: by mail-qv1-xf36.google.com with SMTP id x13so548239qvn.6
- for <qemu-trivial@nongnu.org>; Wed, 16 Nov 2022 21:36:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=PNJskpCv5bZH7FJsEWQg4Ok2Mg4NZEtrtXSnwsK7iFg=;
- b=RwaXxBJymzsMH4BU6IC0jKI483hLzpcbTyBcWCGq339LGPH8P1sLHOfe87XC0yszsj
- I8PJT7eEj8+1sL9prdlM4z0hbwCNHM0X6wNoB+X2J+J7Ns3EA9G2xKA22JduS0VNtCWp
- yweASgUia7gyBWejkB6cyb6gqbFjtbSo33lb3dR5GNZ9KSLcnslga/QK4edTGVnwXh70
- cfnFl2WijFUET5I/aPlh1lfzL5qEURa2jzPTopONHYiSNgOMv9WqKDejEIbn2aZvtEzN
- b7GxF56kkmRhFxW6HyU2n/pzVRbyKP4z4sDzYzv0qYRzGqwQDB8YF/MgKhJoHeG4XU96
- Gg1Q==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ovZoD-0001BW-QS
+ for qemu-trivial@nongnu.org; Thu, 17 Nov 2022 02:59:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ovZoC-00041E-Be
+ for qemu-trivial@nongnu.org; Thu, 17 Nov 2022 02:59:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1668671979;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dyA421Tvv3Oyb9M+FFZH3DI5Jt12pXv59WnDZRJFImY=;
+ b=hwWK4g48mX6bnxbNktmjVr2ULHJG/N0c0ubnze5aWDl0OkakVmVb8nGx69OszKYgv/9f5r
+ RV3vxYYQ40NuSJ/13YsFU1NgrazP9diq/BS18bwAhhdClXlyxY5dnwMjnRrLW+dKC4ZQlk
+ AT59C2oS35dVNZB6i3ixMpDVmHPCO6s=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-349-BOQHlqjhO8GDyk2QxqNtew-1; Thu, 17 Nov 2022 02:59:38 -0500
+X-MC-Unique: BOQHlqjhO8GDyk2QxqNtew-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ d10-20020adfa34a000000b00236616a168bso360137wrb.18
+ for <qemu-trivial@nongnu.org>; Wed, 16 Nov 2022 23:59:37 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=PNJskpCv5bZH7FJsEWQg4Ok2Mg4NZEtrtXSnwsK7iFg=;
- b=hSVAgdcbcEYEeRjl5ARSHBUaAJhTTJHgxO1AQ3T7Jm+He2LZ32XYKvNk0npc7xdr4a
- AlHOFV/Vm+gRzBjXP0qU+C+Dv5AlcfXlSt1jsDCzyzzL06tG8SCVUpDcyEax6LQbHhJQ
- AXb+qTTbJVPex3hTbweMw7JdWMV6XC3baHI+Aly1adrxq04fgYrRY3mjbTsOBla00XH/
- 52B/0G5doxVIivP2ELTe5xRvTi05puu9DLzWVviih9cWPKB2nxtyf6GXmFGwRFJo/pxx
- 0VpAdiAzJQ+5Wduq0tGlzQeyoo0vUEcrhUBBoKDasbIdtsK4x9NfXWkXykRJJ6VGfYy3
- N8yw==
-X-Gm-Message-State: ANoB5pmDSp6l48yhpB7OsiKwivJhK51qr9bcBxTloaJPSi/LbCdrP3Nj
- t7eyjslwdSid0tbLVH29FtUyFg==
-X-Google-Smtp-Source: AA0mqf5ShAm7t9HHtz7qYe1g4YDE9LcUUU1K+iOJ/S+qS5p13V1FaynjrGxCeksJjCGXQclQizzriw==
-X-Received: by 2002:a0c:f208:0:b0:4b1:ae16:ee41 with SMTP id
- h8-20020a0cf208000000b004b1ae16ee41mr1366133qvk.0.1668663418499; 
- Wed, 16 Nov 2022 21:36:58 -0800 (PST)
-Received: from anisinha-lenovo.apac.nsn-net.net ([131.228.104.90])
- by smtp.googlemail.com with ESMTPSA id
- de43-20020a05620a372b00b006fbb4b98a25sm1708299qkb.109.2022.11.16.21.36.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Nov 2022 21:36:58 -0800 (PST)
-From: Ani Sinha <ani@anisinha.ca>
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=dyA421Tvv3Oyb9M+FFZH3DI5Jt12pXv59WnDZRJFImY=;
+ b=NZoloUc1Ciw8qTAP+4jip7mwP46xHOYVeQH/r0oWiOX3ISTWpAnYc3btiQVttg8OtR
+ 3j0s/xBQOvJ+ZOrrp7hUghNonMHkUAi2l/IsMGFBmDMuisBnaqCcR9YeclmIa73097EF
+ 3XuzbHAktRjz++O3I4PtYL6AlHOziBuXQRffHhZg5U4OGD8DRblskr+Qq9iVDYMhilcH
+ zhUZhlvLC22t+MMQRu9Yx2Tyc/8x7HT5o/o3JITw9R96nekgRM5ZqIDdy1hBHbZ7lbxE
+ yLpA2W2SsNN1/4x+9Okat2MDzASXQdUSpfQCn+CysY6K/0O+5IrCkRmDKWK1uNiUi6d1
+ 2uTA==
+X-Gm-Message-State: ANoB5pmHwk1vDOVA8mZ4dw5vlAfho3c9mFyW6V64+esuuHUZB5Hfk7bv
+ rWCReKPFc0ovM6rWbLt0Q5kXGF4lso2FiXgv9CJrQeTVyTTczyKCGaRjJfsIuzoLFMOLkBxjnTH
+ fS0kg+9k1eX6wRiP+1w==
+X-Received: by 2002:a05:600c:3d08:b0:3cf:e84d:6010 with SMTP id
+ bh8-20020a05600c3d0800b003cfe84d6010mr796711wmb.197.1668671977001; 
+ Wed, 16 Nov 2022 23:59:37 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf481+uDpiPsnHUvdX8H2mnAUVwmMxO+QKHZsZy5L4lyKxscxztZIiMawc9LowqAjCOsQS985A==
+X-Received: by 2002:a05:600c:3d08:b0:3cf:e84d:6010 with SMTP id
+ bh8-20020a05600c3d0800b003cfe84d6010mr796696wmb.197.1668671976726; 
+ Wed, 16 Nov 2022 23:59:36 -0800 (PST)
+Received: from [192.168.0.5] (ip-109-43-177-4.web.vodafone.de. [109.43.177.4])
+ by smtp.gmail.com with ESMTPSA id
+ f8-20020a5d4dc8000000b002366c3eefccsm178153wru.109.2022.11.16.23.59.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 16 Nov 2022 23:59:36 -0800 (PST)
+Message-ID: <640d43d0-f39b-af8b-697c-117451fda0d3@redhat.com>
+Date: Thu, 17 Nov 2022 08:59:34 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v5] acpi/tests/avocado/bits: some misc fixes
 To: Ani Sinha <ani@anisinha.ca>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v5] acpi/tests/avocado/bits: some misc fixes
-Date: Thu, 17 Nov 2022 11:06:44 +0530
-Message-Id: <20221117053644.516649-1-ani@anisinha.ca>
-X-Mailer: git-send-email 2.34.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::f36;
- envelope-from=ani@anisinha.ca; helo=mail-qv1-xf36.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20221117053644.516649-1-ani@anisinha.ca>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20221117053644.516649-1-ani@anisinha.ca>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,76 +95,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Nov 2022 05:37:02 -0000
+X-List-Received-Date: Thu, 17 Nov 2022 07:59:42 -0000
 
-Most of the changes are trivial. The bits test timeout has now been increased
-to 200 seconds in order to accommodate slower systems and fewer unnecessary
-failures. Removed of the reference to non-existent README file in docs. Some
-minor corrections in the doc file.
+On 17/11/2022 06.36, Ani Sinha wrote:
+> Most of the changes are trivial. The bits test timeout has now been increased
+> to 200 seconds in order to accommodate slower systems and fewer unnecessary
+> failures. Removed of the reference to non-existent README file in docs. Some
+> minor corrections in the doc file.
+> 
+> CC: Thomas Huth <thuth@redhat.com>
+> CC: Michael S. Tsirkin <mst@redhat.com>
+> CC: qemu-trivial@nongnu.org
+> Signed-off-by: Ani Sinha <ani@anisinha.ca>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   docs/devel/acpi-bits.rst   | 12 ++++--------
+>   tests/avocado/acpi-bits.py |  3 +++
+>   2 files changed, 7 insertions(+), 8 deletions(-)
 
-CC: Thomas Huth <thuth@redhat.com>
-CC: Michael S. Tsirkin <mst@redhat.com>
-CC: qemu-trivial@nongnu.org
-Signed-off-by: Ani Sinha <ani@anisinha.ca>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- docs/devel/acpi-bits.rst   | 12 ++++--------
- tests/avocado/acpi-bits.py |  3 +++
- 2 files changed, 7 insertions(+), 8 deletions(-)
+Look fine to me ... if nobody else is planning to pick this up, I can put 
+this into my next pull request (I'm planning one for later today or tomorrow).
 
-changes from v1: address Thomas' suggestions.
-changes from v2: more minor corrections in doc, tags added.
-changes from v3: raised timeout to 200 secs overriding the default
-avocado timeout of 120 secs.
-changes from v4: rebased to adjust for changes from john's patch 
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg921975.html
-
-diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
-index c9564d871a..56e76338c3 100644
---- a/docs/devel/acpi-bits.rst
-+++ b/docs/devel/acpi-bits.rst
-@@ -16,11 +16,8 @@ end user. The other is that we have more control of what we wanted to test
- and how by directly using acpica interpreter on top of the bios on a running
- system. More details on the inspiration for developing biosbits and its real
- life uses can be found in [#a]_ and [#b]_.
--This directory contains tests written in python using avocado framework that
--exercises the QEMU bios components using biosbits and reports test failures.
- For QEMU, we maintain a fork of bios bits in gitlab along with all the
--dependent submodules:
--https://gitlab.com/qemu-project/biosbits-bits
-+dependent submodules here: https://gitlab.com/qemu-project/biosbits-bits
- This fork contains numerous fixes, a newer acpica and changes specific to
- running this avocado QEMU tests using bits. The author of this document
- is the sole maintainer of the QEMU fork of bios bits repo.
-@@ -38,10 +35,9 @@ Under ``tests/avocado/`` as the root we have:
-    │ ├── bits-config
-    │ │ └── bits-cfg.txt
-    │ ├── bits-tests
--   │ │ ├── smbios.py2
--   │ │ ├── testacpi.py2
--   │ │ └── testcpuid.py2
--   │ └── README
-+   │   ├── smbios.py2
-+   │   ├── testacpi.py2
-+   │   └── testcpuid.py2
-    ├── acpi-bits.py
- 
- * ``tests/avocado``:
-diff --git a/tests/avocado/acpi-bits.py b/tests/avocado/acpi-bits.py
-index dd1f238ae2..ec2261893d 100644
---- a/tests/avocado/acpi-bits.py
-+++ b/tests/avocado/acpi-bits.py
-@@ -134,6 +134,9 @@ class AcpiBitsTest(QemuBaseTest): #pylint: disable=too-many-instance-attributes
-     :avocado: tags=acpi
- 
-     """
-+    # in slower systems the test can take as long as 3 minutes to complete.
-+    timeout = 200
-+
-     def __init__(self, *args, **kwargs):
-         super().__init__(*args, **kwargs)
-         self._vm = None
--- 
-2.34.1
+  Thomas
 
 
