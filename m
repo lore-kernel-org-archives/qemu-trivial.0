@@ -1,69 +1,105 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oxu79-00049y-PD
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Nov 2022 13:04:51 -0500
+	id 1oxwh8-0008L7-5L
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Nov 2022 15:50:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oxu71-00047t-Md
- for qemu-trivial@nongnu.org; Wed, 23 Nov 2022 13:04:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <huanyu.zhai@outlook.com>)
+ id 1oxuJn-0001DD-8p; Wed, 23 Nov 2022 13:17:57 -0500
+Received: from mail-db8eur05acsn20805.outbound.protection.outlook.com
+ ([2a01:111:f400:7e1a::805]
+ helo=EUR05-DB8-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1oxu6z-0001lF-JY
- for qemu-trivial@nongnu.org; Wed, 23 Nov 2022 13:04:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1669226680;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HCH2za2MjP2QdnBehC8p2e7jV3L9Ifwd/1qFRaAaDB4=;
- b=CWlr9KYt3sIPuiYJ0PtoVi3wouf0sKa5V0urDweA+08PDxaRK8QIfEhJH5et6YXdJUHMnc
- gQCYtuESNy2MmZ2JsC3JtcXpbHOqyBwrIZkBnxfqannkO7hnrwcetPQAK5Oox1QU2gNOaK
- m9uCxVj5uWFzig/PzI7rMOlddz76svA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-368-69tOiElONUy83TIiF3NFbg-1; Wed, 23 Nov 2022 13:04:31 -0500
-X-MC-Unique: 69tOiElONUy83TIiF3NFbg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5F388101A52A;
- Wed, 23 Nov 2022 18:04:31 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.19])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 30B782024CBE;
- Wed, 23 Nov 2022 18:04:31 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C748921E6921; Wed, 23 Nov 2022 19:04:27 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org,  Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PATCH v2] Drop more useless casts from void * to pointer
-References: <20221123133811.1398562-1-armbru@redhat.com>
- <alpine.LMD.2.03.2211231441480.26886@eik.bme.hu>
- <Y34on7NQk44e07cM@redhat.com> <871qpt674n.fsf@pond.sub.org>
- <6faedfd0-c77c-5ac5-7dfd-32a15c10dae7@eik.bme.hu>
-Date: Wed, 23 Nov 2022 19:04:27 +0100
-In-Reply-To: <6faedfd0-c77c-5ac5-7dfd-32a15c10dae7@eik.bme.hu> (BALATON
- Zoltan's message of "Wed, 23 Nov 2022 17:29:27 +0100 (CET)")
-Message-ID: <8735a94kes.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <huanyu.zhai@outlook.com>)
+ id 1oxuJl-0004Un-3J; Wed, 23 Nov 2022 13:17:54 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=m+dpEQnr+yp294MWwTeTL5aTYMXYNergiLkJuXxzA8iimAeLWfcmMk/lIWbkot9sZ6aEI2FTISEwSe+whkb3VAonGCdjk1EnjCsliG6oI6rPCdP4FMRSsx2V1Ffvj/smWgy2qlPBq8uiT/+uD9Ck0IzdD9YOVol8oUIva/JkoaJH04U7Vaq2jqG44YewkzxO28U/MtJLcFiV7MlR62d/TU7Li41+NKqOPMC63fFsIzYVsf3IQzKQNP0N07v13t829eomt51Qo9FPsDw4z8fnMIHLr9gSt8eQJQntHy4he5iCuDmllickDJ0EX6QHxOS5LYCpf2DJgVv+yCTMXf6fFw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UpZr+SXRaC8ZmtLmpUkIdKY4DJ4vNagxc7Ive5WKN6A=;
+ b=AEkQAsmQmbPrTJazGCh1+eZJ+GMvvw3707PDOIbgmTSdfbefVKwes/HQCBUl7M7F/M+5zd82EPsVhNhlhJqzXuqZIjJ5yq2JU3unCwT+iNjsqs0h1gdPHaPFe0CVEayYvvli6WOJx2/0jq/ey1YzBz9isdTsXva24vSrHs61N4CVFvHLJwvVPQE40v7pqGsVopCtJvt+vGqX3Ru7Y3QzW2rUU+oOXrKXvPfBFLh2mKKoLODMWxcqlYvor5MfNN2C2DpWp+NDCo0AaX167nR7xM/DlqxMit+9+o9GSgdgGlxdxZLtyh7OcdYx/SHp25xuGB1kZ5Q1XLUXAG3fZXPhNw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UpZr+SXRaC8ZmtLmpUkIdKY4DJ4vNagxc7Ive5WKN6A=;
+ b=Fa8SK1jNdxXnsRvQFdeHgVBR6ih0woWk9SgJOQ/8etgFOUrPAKIYIIaBsFmdnfcYWWWbco/KXQZh+db2ky36POYJKrnwzRxxtuyLj9M7iH3DhdcL/Ey7/fUBMJItUh0iuprNXS71yeuy8AVMl4UCqHp+7Mct9TRtlSkkxvjcZmwt2qJB1Z6irVLA+BHJPTMMPvYmoPEiUQLgRZ4y/wDNUARDuCjH/RmC5OZkV/fU+9VCZSMwlV6l2knuIQMEtq4feyRc8akRWz43Eq1HhmH4zBK8ZAH6uG7TNczQGfEKPc+Ns/gagDWqyCweUOGubjOZ894OTI+JNNocV3YIDLH7Cg==
+Received: from AS4P190MB2021.EURP190.PROD.OUTLOOK.COM (2603:10a6:20b:519::16)
+ by DBAP190MB0999.EURP190.PROD.OUTLOOK.COM (2603:10a6:10:1af::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5834.15; Wed, 23 Nov
+ 2022 18:17:48 +0000
+Received: from AS4P190MB2021.EURP190.PROD.OUTLOOK.COM
+ ([fe80::f177:ba24:c669:47bb]) by AS4P190MB2021.EURP190.PROD.OUTLOOK.COM
+ ([fe80::f177:ba24:c669:47bb%3]) with mapi id 15.20.5834.015; Wed, 23 Nov 2022
+ 18:17:48 +0000
+From: Huanyu ZHAI <huanyu.zhai@outlook.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Subject: [PATCH] cpu/i386: update xsave components after CPUID filtering
+Thread-Topic: [PATCH] cpu/i386: update xsave components after CPUID filtering
+Thread-Index: Adj/Z1Q576NQ8Xr5QByylpzq/8jNfQ==
+Date: Wed, 23 Nov 2022 18:17:48 +0000
+Message-ID: <AS4P190MB202188766937CF16EC4F1DAFF60C9@AS4P190MB2021.EURP190.PROD.OUTLOOK.COM>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-tmn: [P6IagM4yeNONZyjkev79b7HySZiWdHE5]
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: AS4P190MB2021:EE_|DBAP190MB0999:EE_
+x-ms-office365-filtering-correlation-id: 8417e05d-88a9-4249-ee2f-08dacd7f06a9
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: VCXpWhYOyvbTREJuaR7k3hf0KkI5cfrkOSWQ9UwV2CgZZbq3sUGO5hO97BFbXxn4K4aCL9ZUmbQwIum4xyja4ppN/qcDg95UkiPvaSahO/uhI03hWpvnOZnk/3H+U09jtjsbS7s7SwFERMVcf8LJxW+5bQa48m0drjMbXbO4SA7sJr4/6cWXXvDdgdX3Wf6eMa6RF15O8HXR2q8H/iVArnzow2eQfF6sehakXufcF0b1GXykudFHc74SrAg+vSEbCP2amukCvMfb+lzmyKIwmUYWEZjRkaUbDGYaCGCZJDWD0B/tCQIvzTys+3dyai+U1HRNvMdgILF9iP+w5fwe9s21Af9NBxTAJdoohbTAjylFo1xFotMtqrIqEMgpKPidFaSyTXcnxb7/OR+UJBuHtilEmsOH2NuFujDosoTKFR6Ab4gsj0pf32qTJpaGVByyWwUVXDTsNNdyKQ2dalPBj0RzfnqvZAwstWMQuOBuQbgEHtbrxzW6/Hn1gyhkajlZQfCTLZnqhWEOMAU6WxK4D1zfMxFourMhLWLlVEkfudZfKpXjhG6NsXe5ZSCzkJpNsZ0hZ/2l0PoheB7CVn0j6A==
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?yLx2ahdgTmn+mUthT3D0V437RojEtrm3YOpmKT+K8NdKIQ35nTki/kG4nLrV?=
+ =?us-ascii?Q?ZIhz3JmjzqRSeag3UWyapnf0JaOCMAhzGNGqCyXFPSnoOqguInKu/X+zqx8Q?=
+ =?us-ascii?Q?WqN+XSZMXVH9CqX2b29Df+fcEgpXxh0dd4BeUfAOP2fJHMR3WjtVrQueOrxq?=
+ =?us-ascii?Q?3gfXrOuqQUjKp8DHGx+tVFi3hvomIvpkJenOL5B87e3qn1RB1SZ/vVNO29t6?=
+ =?us-ascii?Q?4ogQ4mC8HlpIkuunaf14QSFG3hlrPPX87pNlHkUJ4gbu7wghOefzZC0o5NFr?=
+ =?us-ascii?Q?4KP67jcRRkPPPTVnxXBIt7iEsuCy/L9ndPyIyTEu24EzNWu4MkogXb6YCUco?=
+ =?us-ascii?Q?4rGgcm9JKbIu8Z2+hnm6T5bVbKdBuiOMbkW1Dbf/APAb6fuRhC+t+p76i3Gf?=
+ =?us-ascii?Q?9cwXS2m0eJyKd21LM4aqIqrA0lkG8a4MjS/YAIAQJ5vuzdDQfTMAhYBmhhGs?=
+ =?us-ascii?Q?x72UHOmCM1+mSVjL9e/Fc/fTlF6Xc2Xn34FVzomxhZYi1EulJm0o0/cdXCNR?=
+ =?us-ascii?Q?DnSQd95kjP1bJ4HKtceTgW7oALAH8EZyxLf5VZWErMJxL6yeAx3vgcqpeDrm?=
+ =?us-ascii?Q?3/Xix5IirMJso7Reabaia0velMHIkrcQjpLjHsC5VSNU6eWR8t8jw+8yIBUX?=
+ =?us-ascii?Q?OibPBI85uunzaP7qcctf3Dr29aI6Y9aNHEaHZOh0d+n6C3MN4ZQM+seTx3Q1?=
+ =?us-ascii?Q?JBLNP+Fl7Cp8dnplJ1G5hVj+bTCaB8k3COqekbMhzNrxYZxGte4p5YXZ5dod?=
+ =?us-ascii?Q?UPzvUgFzWbyj2WLL5f5Lnz7HtYtM4DCiSS1vTVeNzR8xTW4nNgqojs3U50gh?=
+ =?us-ascii?Q?EB/gKqePOJg/4qbSRXoPVda8dnTTV3vhhHbwg2bem8CsUeq33+tE81UhXs+P?=
+ =?us-ascii?Q?Ttxi6Uax5/TkfvthQKQkgfseOvqRqmrFJ1QqO13YIFK0i8o/UJ+mRkUnjvQm?=
+ =?us-ascii?Q?10xWaGAIc+PtPRpE7rtfoq4bOlJB6OvaWLXrl8QJpJvqGWerDIHeVrIxTQi5?=
+ =?us-ascii?Q?EUShGaF7pfnp7hkVyavEaqfTP0vwOv9/zpeT0+YqKAgYs+s7d1t3l4gjmEEk?=
+ =?us-ascii?Q?wVLBO2s2UrIzB177K4ttEfGdmSB393xvPYYOBMNbkW5rulbtDVwcKMPPXn/3?=
+ =?us-ascii?Q?WPyrVojuv70j4pEuTBDHzJfJiEz4Pnq5gTV9kRhrkHaYhPfMfytcggI/wwGI?=
+ =?us-ascii?Q?76qWbkAzm3dUXDVNg4HCJYvtKn8yqvlgnbQtFH3vjmT6WTlYT50JefLcZdxQ?=
+ =?us-ascii?Q?WG4STNaUJvA41MDAAxRmHGea3HjotLZxgjRC8xzw3g=3D=3D?=
+Content-Type: multipart/alternative;
+ boundary="_000_AS4P190MB202188766937CF16EC4F1DAFF60C9AS4P190MB2021EURP_"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: AS4P190MB2021.EURP190.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8417e05d-88a9-4249-ee2f-08dacd7f06a9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Nov 2022 18:17:48.2374 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBAP190MB0999
+Received-SPF: pass client-ip=2a01:111:f400:7e1a::805;
+ envelope-from=huanyu.zhai@outlook.com;
+ helo=EUR05-DB8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ GB_FREEMAIL_DISPTO=0.5, HTML_MESSAGE=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 23 Nov 2022 15:50:05 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,77 +111,205 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Nov 2022 18:04:49 -0000
+X-List-Received-Date: Wed, 23 Nov 2022 18:18:08 -0000
 
-BALATON Zoltan <balaton@eik.bme.hu> writes:
+--_000_AS4P190MB202188766937CF16EC4F1DAFF60C9AS4P190MB2021EURP_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 
-> On Wed, 23 Nov 2022, Markus Armbruster wrote:
->> Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
->>> On Wed, Nov 23, 2022 at 02:51:49PM +0100, BALATON Zoltan wrote:
->>>> On Wed, 23 Nov 2022, Markus Armbruster wrote:
->>>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->>>>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
->>>>> ---
->>>>> v2:
->>>>> * PATCH 1+2 merged as commit 0a553c12c7 and 3f7febc937
->>>>> * PATCH 3 change to util/coroutine-ucontext.c dropped [Laurent]
->>>>>
->>>>> bsd-user/elfload.c                      | 2 +-
->>>>> contrib/plugins/cache.c                 | 8 ++++----
->>>>> contrib/vhost-user-blk/vhost-user-blk.c | 2 +-
->>>>> hw/core/qdev-clock.c                    | 2 +-
->>>>> hw/hyperv/vmbus.c                       | 2 +-
->>>>> hw/net/cadence_gem.c                    | 2 +-
->>>>> hw/net/virtio-net.c                     | 2 +-
->>>>> hw/nvme/ctrl.c                          | 4 ++--
->>>>> hw/rdma/vmw/pvrdma_cmd.c                | 9 +++------
->>>>> hw/rdma/vmw/pvrdma_qp_ops.c             | 6 +++---
->>>>> hw/virtio/virtio-iommu.c                | 3 +--
->>>>> linux-user/syscall.c                    | 2 +-
->>>>> target/i386/hax/hax-all.c               | 2 +-
->>>>> tests/tcg/aarch64/system/semiheap.c     | 4 ++--
->>>>> util/vfio-helpers.c                     | 2 +-
->>>>> 15 files changed, 24 insertions(+), 28 deletions(-)
->>>>>
->>>>> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
->>>>> index f8edb22f2a..fbcdc94b96 100644
->>>>> --- a/bsd-user/elfload.c
->>>>> +++ b/bsd-user/elfload.c
->>>>> @@ -156,7 +156,7 @@ static abi_ulong copy_elf_strings(int argc, char =
-**argv, void **page,
->>>>>             --p; --tmp; --len;
->>>>>             if (--offset < 0) {
->>>>>                 offset =3D p % TARGET_PAGE_SIZE;
->>>>> -                pag =3D (char *)page[p / TARGET_PAGE_SIZE];
->>>>> +                pag =3D page[p / TARGET_PAGE_SIZE];
->>>>
->>>> I think arithmetic on void pointer was undefined at least in the past =
-so
->>>> some compilers may warn for it but not sure if this is still the case =
-for
->>>> the compilers we care about. Apparently not if this now compiles but t=
-hat
->>>> explains why this cast was not useless.
->>
->> I don't think so :)
->>
->> @pag is char *.
->>
->> @page is void **.
->>
->> page[p / TARGET_PAGE_SIZE] is void *.  No need to cast to char * before
->> assigning to @pag.
+Subject: [PATCH] cpu/i386: update xsave components after CPUID filtering
+
+On i386 platform, CPUID data are setup through three consecutive steps: CPU=
+ model definition, expansion and filtering.
+XSAVE components are enabled during the expansion stage, by checking if the=
+y are enabled in CPUID. However, it is still
+probable that some XSAVE features will be enabled/disabled during the filte=
+ring stage and the XSAVE components left unchanged.
+Inconsistency between XSAVE features and enabled XSAVE components can lead =
+to problems on some Linux guests in the absence of
+the following patch in the kernel:
+
+https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1452368.html
+
+A simple case to reproduce this problem is to start a SUSE 12 SP3 guest wit=
+h cpu model set to Skylake-Server:
+$ qemu-system-x86_64 -cpu Skylake-Server ...
+
+In the SUSE 12 SP3 guest, one can observe that PKRU will be enabled without=
+ Intel PKU's presence.
+That's because on platform with Skylake-Server cpus, Intel PKU is disabled =
+during x86_cpu_filter_features(),
+but the XSAVE PKRU bit was enabled by x86_cpu_expand_features().
+
+Signed-off-by: Huanyu ZHAI zhaihuanyu@huawei.com<mailto:zhaihuanyu@huawei.c=
+om>
+Signed-off-by: Xin Wang wangxinxin.wang@huawei.com<mailto:wangxinxin.wang@h=
+uawei.com>
+---
+target/i386/cpu.c | 3 +++
+1 file changed, 3 insertions(+)
+
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 22b681ca37..2ee574cf05 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -6362,6 +6362,9 @@ static void x86_cpu_filter_features(X86CPU *cpu, bool=
+ verbose)
+             mark_unavailable_features(cpu, FEAT_7_0_EBX, CPUID_7_0_EBX_INT=
+EL_PT, prefix);
+         }
+     }
++
++    /* Update XSAVE components again based on the filtered CPU feature fla=
+gs */
++    x86_cpu_enable_xsave_components(cpu);
+}
+
+static void x86_cpu_hyperv_realize(X86CPU *cpu)
+--
+2.27.0
+
+
+--_000_AS4P190MB202188766937CF16EC4F1DAFF60C9AS4P190MB2021EURP_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
 >
-> You are right. Although I'm not sure what page[] counts as because it add=
-s an offset to the pointer but [] is higher priority than (type) cast so it=
-=20
-> does not matter and that cast is not needed here then. Maybe I should be =
-more attentive to details but I did not take the time to look at it more=20
-> carefully. I did not say we should keep the cast anyway (considering only=
- gcc and clang are targeted), I was just trying to understand why it might=
-=20
-> have been there in the first place.
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:DengXian;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"\@DengXian";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:DengXian;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:DengXian;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:DengXian;}
+/* Page Definitions */
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"ZH-CN" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:=
+break-word;text-justify-trim:punctuation">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Subject: [PATCH] cpu/i386: upda=
+te xsave components after CPUID filtering<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">On i386 platform, CPUID data ar=
+e setup through three consecutive steps: CPU model definition, expansion an=
+d filtering.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">XSAVE components are enabled du=
+ring the expansion stage, by checking if they are enabled in CPUID. However=
+, it is still<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">probable that some XSAVE featur=
+es will be enabled/disabled during the filtering stage and the XSAVE compon=
+ents left unchanged.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Inconsistency between XSAVE fea=
+tures and enabled XSAVE components can lead to problems on some Linux guest=
+s in the absence of<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">the following patch in the kern=
+el:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><a href=3D"https://www.mail-arc=
+hive.com/linux-kernel@vger.kernel.org/msg1452368.html">https://www.mail-arc=
+hive.com/linux-kernel@vger.kernel.org/msg1452368.html</a><o:p></o:p></span>=
+</p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">A simple case to reproduce this=
+ problem is to start a SUSE 12 SP3 guest with cpu model set to Skylake-Serv=
+er:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">$ qemu-system-x86_64 -cpu Skyla=
+ke-Server ...<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">In the SUSE 12 SP3 guest, one c=
+an observe that PKRU will be enabled without Intel PKU's presence.<o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">That's because on platform with=
+ Skylake-Server cpus, Intel PKU is disabled during x86_cpu_filter_features(=
+),<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">but the XSAVE PKRU bit was enab=
+led by x86_cpu_expand_features().<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Signed-off-by: Huanyu ZHAI <a h=
+ref=3D"mailto:zhaihuanyu@huawei.com">
+zhaihuanyu@huawei.com</a><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Signed-off-by: Xin Wang <a href=
+=3D"mailto:wangxinxin.wang@huawei.com">
+wangxinxin.wang@huawei.com</a><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">---<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">target/i386/cpu.c | 3 +++<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">1 file changed, 3 insertions(+)=
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">diff --git a/target/i386/cpu.c =
+b/target/i386/cpu.c<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">index 22b681ca37..2ee574cf05 10=
+0644<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">--- a/target/i386/cpu.c<o:p></o=
+:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">+++ b/target/i386/cpu.c<o:p></o=
+:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">@@ -6362,6 +6362,9 @@ static vo=
+id x86_cpu_filter_features(X86CPU *cpu, bool verbose)<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mark_unavailable_features(cpu, FE=
+AT_7_0_EBX, CPUID_7_0_EBX_INTEL_PT, prefix);<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp; }<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp;&nbsp; }<o:p>=
+</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">+&nbsp;&nbsp;&nbsp; /* Update X=
+SAVE components again based on the filtered CPU feature flags */<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">+&nbsp;&nbsp;&nbsp; x86_cpu_ena=
+ble_xsave_components(cpu);<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">}<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">static void x86_cpu_hyperv_real=
+ize(X86CPU *cpu)<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-- <o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">2.27.0<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+</div>
+</body>
+</html>
 
-And that's perfectly okay!
-
+--_000_AS4P190MB202188766937CF16EC4F1DAFF60C9AS4P190MB2021EURP_--
 
