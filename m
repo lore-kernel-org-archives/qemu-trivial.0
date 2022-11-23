@@ -1,94 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ox9Uz-0004SR-Rk
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Nov 2022 11:18:21 -0500
+	id 1oxjLm-00012d-50
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Nov 2022 01:35:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ox9Uv-0004RF-34
- for qemu-trivial@nongnu.org; Mon, 21 Nov 2022 11:18:18 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1oxjLi-0000vp-V0; Wed, 23 Nov 2022 01:35:11 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1ox9Ut-0007cp-2j
- for qemu-trivial@nongnu.org; Mon, 21 Nov 2022 11:18:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1669047492;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=ETzG5NiBaxztGPuhC/VPplUI9WEkw79/a1Nmk6TI7ck=;
- b=SHCGEyUc7skQWo3Cv1iBkyr8XWixBxn98jvaARSqqA89MYl3KHjgo/02RKtVJiGrAjHx7Q
- /496Ab4S0Dt+cn+6LtHOorBG0Ut+u3k7UyN0YWWcbMDXRm8pLxuRANWJvITcBrsMDA52hC
- 2UGBGLB7YU9B0VjoGtse6alOqFqGdh8=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-201-fPWlBQMGPQKFSIL3XkjtEQ-1; Mon, 21 Nov 2022 11:18:10 -0500
-X-MC-Unique: fPWlBQMGPQKFSIL3XkjtEQ-1
-Received: by mail-wr1-f70.google.com with SMTP id
- t12-20020adfa2cc000000b0022adcbb248bso3351461wra.1
- for <qemu-trivial@nongnu.org>; Mon, 21 Nov 2022 08:18:10 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=mime-version:message-id:date:reply-to:user-agent:references
- :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ETzG5NiBaxztGPuhC/VPplUI9WEkw79/a1Nmk6TI7ck=;
- b=0HB7OKJjS3k8r351Me5mFR/Wh8lEgRi8I6/zr8H9FOkRZ56KNiH2/dBpLL3GyjJ2fp
- hyzfm3sDOd83wuXN4/dyeScfpiZ+MeEd/et/EEOl+pbnD5CAex1mAIGhWCjUP2I0upMp
- LLU8nUiyc4IFrTK8++kPSYIBJaJ9GU3i1U/YHNQQYW99hv7/hsI7de9JOVKt0WMxRpXK
- ICntFrO1LhaXJBE8mBfH5coC1V9mUUkg7k/MuSQ/DLW8NNppeZ1t4T3GKq7CBIOVx0nh
- h/7qOJeHxiMQgaXB+rhSDQYqjExNasPFdPAP5Du+q1O4m6JvOzefirdSPYoCHM23kj7s
- wP5w==
-X-Gm-Message-State: ANoB5pk7Krmt1eYfsfGN/tuzut0cpzyCSlMR6MpumuBUdqlvRcVTgbQF
- LxjjYa5XfkV1B+MqNAnmfxn3JuSL88ZrxMyml8vJMKbDpJIYPLGFMe3GF2oYPS8zoe6bSLc2nb6
- 0tlAOTCgjhbSKsjqWOg==
-X-Received: by 2002:a5d:474c:0:b0:234:d495:d3ae with SMTP id
- o12-20020a5d474c000000b00234d495d3aemr4631674wrs.448.1669047489469; 
- Mon, 21 Nov 2022 08:18:09 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7wcx6jXQZgMzHBKzYPA/BoQ2jrIKgAjQSNF/qvPeVPt6y0z0SjRBJ+CEEPsOy+7rrqI7gwag==
-X-Received: by 2002:a5d:474c:0:b0:234:d495:d3ae with SMTP id
- o12-20020a5d474c000000b00234d495d3aemr4631659wrs.448.1669047489216; 
- Mon, 21 Nov 2022 08:18:09 -0800 (PST)
-Received: from redhat.com (62.117.240.223.dyn.user.ono.com. [62.117.240.223])
- by smtp.gmail.com with ESMTPSA id
- y15-20020a1c4b0f000000b003cf7292c553sm14115058wma.13.2022.11.21.08.18.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Nov 2022 08:18:08 -0800 (PST)
-From: Juan Quintela <quintela@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,  =?utf-8?Q?Marc-Andr?=
- =?utf-8?Q?=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Fam
- Zheng <fam@euphon.net>,  Peter Xu <peterx@redhat.com>,  Michael Tokarev
- <mjt@tls.msk.ru>,  Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-block@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
- David Hildenbrand <david@redhat.com>,  qemu-trivial@nongnu.org,  Laurent
- Vivier <laurent@vivier.eu>
-Subject: Re: [PATCH 00/19] Migration patches for 8.8
-In-Reply-To: <20221121132717.63070-1-quintela@redhat.com> (Juan Quintela's
- message of "Mon, 21 Nov 2022 14:26:58 +0100")
-References: <20221121132717.63070-1-quintela@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.1 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Mon, 21 Nov 2022 17:18:07 +0100
-Message-ID: <87wn7ol1s0.fsf@secure.mitica>
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1oxjLg-0006wq-Og; Wed, 23 Nov 2022 01:35:10 -0500
+Received: from [192.168.178.59] (p5b151d14.dip0.t-ipconnect.de [91.21.29.20])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 9EDF7DA0D81;
+ Wed, 23 Nov 2022 07:35:02 +0100 (CET)
+Message-ID: <cf752a2d-edb7-4b04-0b21-6e2f38112d6d@weilnetz.de>
+Date: Wed, 23 Nov 2022 07:35:02 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.0
+Subject: Re: [PATCH for-7.2 v2 3/4] libvhost-user: Fix two more format strings
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+References: <20221105102448.436469-1-sw@weilnetz.de>
+ <20221105102448.436469-4-sw@weilnetz.de>
+ <4a950024-4758-b328-5968-656d0e72b043@weilnetz.de>
+In-Reply-To: <4a950024-4758-b328-5968-656d0e72b043@weilnetz.de>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------c1zlSDdUO3MRTYB7iqc8AXCn"
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,54 +51,194 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Nov 2022 16:18:18 -0000
+X-List-Received-Date: Wed, 23 Nov 2022 06:35:11 -0000
 
-Juan Quintela <quintela@redhat.com> wrote:
-> Hi
->
-> Based-on:  <20221121125907.62469-1-quintela@redhat.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------c1zlSDdUO3MRTYB7iqc8AXCn
+Content-Type: multipart/mixed; boundary="------------0CDQ0DNJ5lsFKKXMNIlAzn9V";
+ protected-headers="v1"
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+Message-ID: <cf752a2d-edb7-4b04-0b21-6e2f38112d6d@weilnetz.de>
+Subject: Re: [PATCH for-7.2 v2 3/4] libvhost-user: Fix two more format strings
+References: <20221105102448.436469-1-sw@weilnetz.de>
+ <20221105102448.436469-4-sw@weilnetz.de>
+ <4a950024-4758-b328-5968-656d0e72b043@weilnetz.de>
+In-Reply-To: <4a950024-4758-b328-5968-656d0e72b043@weilnetz.de>
 
-The subject should put 8.0 not 8.8.
+--------------0CDQ0DNJ5lsFKKXMNIlAzn9V
+Content-Type: multipart/mixed; boundary="------------5FtIYPEYdbpvJ7rxoaIkE5HF"
 
-Sorry, Juan.
+--------------5FtIYPEYdbpvJ7rxoaIkE5HF
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
->
-> This are the patches that I had to drop form the last PULL request because they werent fixes:
-> - AVX2 is dropped, intel posted a fix, I have to redo it
-> - Fix for out of order channels is out
->   Daniel nacked it and I need to redo it
->
-> Juan Quintela (4):
->   multifd: Create page_size fields into both MultiFD{Recv,Send}Params
->   multifd: Create page_count fields into both MultiFD{Recv,Send}Params
->   migration: Export ram_transferred_ram()
->   migration: Export ram_release_page()
->
-> Peter Xu (15):
->   migration: Take bitmap mutex when completing ram migration
->   migration: Add postcopy_preempt_active()
->   migration: Cleanup xbzrle zero page cache update logic
->   migration: Trivial cleanup save_page_header() on same block check
->   migration: Remove RAMState.f references in compression code
->   migration: Yield bitmap_mutex properly when sending/sleeping
->   migration: Use atomic ops properly for page accountings
->   migration: Teach PSS about host page
->   migration: Introduce pss_channel
->   migration: Add pss_init()
->   migration: Make PageSearchStatus part of RAMState
->   migration: Move last_sent_block into PageSearchStatus
->   migration: Send requested page directly in rp-return thread
->   migration: Remove old preempt code around state maintainance
->   migration: Drop rs->f
->
->  migration/migration.h    |   7 -
->  migration/multifd.h      |   8 +
->  migration/ram.h          |  23 ++
->  migration/migration.c    |  47 +--
->  migration/multifd-zlib.c |  14 +-
->  migration/multifd-zstd.c |  12 +-
->  migration/multifd.c      |  27 +-
->  migration/ram.c          | 735 ++++++++++++++++++---------------------
->  8 files changed, 422 insertions(+), 451 deletions(-)
+QW0gMTUuMTEuMjIgdW0gMDg6MjUgc2NocmllYiBTdGVmYW4gV2VpbDoNCj4gQW0gMDUuMTEu
+MjIgdW0gMTE6MjQgc2NocmllYiBTdGVmYW4gV2VpbDoNCj4gDQo+PiBUaGlzIGZpeCBpcyBy
+ZXF1aXJlZCBmb3IgMzIgYml0IGhvc3QuIFRoZSBidWcgd2FzIGRldGVjdGVkIGJ5IENJDQo+
+PiBmb3IgYXJtLWxpbnV4LCBidXQgaXMgYWxzbyByZWxldmFudCBmb3IgaTM4Ni1saW51eC4N
+Cj4+DQo+PiBSZXBvcnRlZC1ieTogU3RlZmFuIEhham5vY3ppIDxzdGVmYW5oYUBnbWFpbC5j
+b20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBTdGVmYW4gV2VpbCA8c3dAd2VpbG5ldHouZGU+DQo+
+PiAtLS0NCj4+IMKgIHN1YnByb2plY3RzL2xpYnZob3N0LXVzZXIvbGlidmhvc3QtdXNlci5j
+IHwgMyArKy0NCj4+IMKgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVs
+ZXRpb24oLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvc3VicHJvamVjdHMvbGlidmhvc3QtdXNl
+ci9saWJ2aG9zdC11c2VyLmMgDQo+PiBiL3N1YnByb2plY3RzL2xpYnZob3N0LXVzZXIvbGli
+dmhvc3QtdXNlci5jDQo+PiBpbmRleCBkNjc5NTNhMWMzLi44MGY5OTUyZTcxIDEwMDY0NA0K
+Pj4gLS0tIGEvc3VicHJvamVjdHMvbGlidmhvc3QtdXNlci9saWJ2aG9zdC11c2VyLmMNCj4+
+ICsrKyBiL3N1YnByb2plY3RzL2xpYnZob3N0LXVzZXIvbGlidmhvc3QtdXNlci5jDQo+PiBA
+QCAtNjUxLDcgKzY1MSw4IEBAIGdlbmVyYXRlX2ZhdWx0cyhWdURldiAqZGV2KSB7DQo+PiDC
+oMKgwqDCoMKgwqDCoMKgwqAgaWYgKGlvY3RsKGRldi0+cG9zdGNvcHlfdWZkLCBVRkZESU9f
+UkVHSVNURVIsICZyZWdfc3RydWN0KSkgew0KPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgdnVfcGFuaWMoZGV2LCAiJXM6IEZhaWxlZCB0byB1c2VyZmF1bHQgcmVnaW9uICVkICIN
+Cj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCAiQCUiIFBSSXg2NCAiICsgc2l6ZTolenggb2Zmc2V0OiAleng6IA0KPj4gKHVmZD0lZCkl
+c1xuIiwNCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCAiQCUiIFBSSXg2NCAiICsgc2l6ZTolIiBQUkl4NjQgIiBvZmZzZXQ6ICUiIA0K
+Pj4gUFJJeDY0DQo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgIjogKHVmZD0lZCklc1xuIiwNCj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIF9fZnVuY19fLCBpLA0KPj4gwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGV2X3JlZ2lvbi0+bW1hcF9hZGRy
+LA0KPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGV2
+X3JlZ2lvbi0+c2l6ZSwgZGV2X3JlZ2lvbi0+bW1hcF9vZmZzZXQsDQo+IA0KPiANCj4gVGhl
+cmUgaXMgc3RpbGwgbm8gcmV2aWV3IGZvciB0aGlzIHBhdGNoLg0KPiANCj4gSSBhZGRlZCAi
+Zm9yLTcuMiIgdG8gdGhlIHN1YmplY3QgaGVyZSBpbiBteSBhbnN3ZXIuIEhvdyBjYW4gd2Ug
+Z2V0IGFsbCA0IA0KPiBwYXRjaGVzIG9mIHRoaXMgc2VyaWVzIGludG8gdGhlIG5ldyByZWxl
+YXNlPw0KPiANCj4gU3RlZmFuDQoNClBpbmc/IFRob3NlIGJ1ZyBmaXhlcyBhcmUgc3RpbGwg
+bWlzc2luZyBpbiAtcmMyLg0KDQpTdGVmYW4NCg==
+--------------5FtIYPEYdbpvJ7rxoaIkE5HF
+Content-Type: application/pgp-keys; name="OpenPGP_0xE08C21D5677450AD.asc"
+Content-Disposition: attachment; filename="OpenPGP_0xE08C21D5677450AD.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
 
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+T7uiC0aTwAsniiln1XFlGBISNLB1HL/gUc9FJj8qmYgvUBZIzUjmm56up6er8ca9
+2tARdBylQF3E9MJ/E4dVrmTyvOlddAb/MG1Ge425mjt0dRfOx8Qc7Pxs+d3UNVSu
+Bm+WtuSgk+JNIT08c+WSXec8mE4hVdrKbAvCo9dcT5Gal2r6FSvRVY5kba3t280x
+utLSp470k3+DO+AgVigbHr3scXlJXZe1m4luqBSkEBDNH2sAQoBrNVwVaCZqZRTN
+TFN0ZWZhbiBXZWlsIChVbml2ZXJzaXTDpHRzYmlibGlvdGhlayBNYW5uaGVpbSkg
+PHN0ZWZhbi53ZWlsQHVuaS1tYW5uaGVpbS5kZT7CwY4EEwEIADgWIQRJI2/qdcld
+aY7Ct4rgjCHVZ3RQrQUCYlMdZAIbAwULCQgHAwUVCgkICwUWAgMBAAIeBQIXgAAK
+CRDgjCHVZ3RQrRo6D/9MSqnSGOjWrcsiXbUsQmNKzI1JZOuabam3P9V/rILU7K4/
+b9E6Bk5Vjo/6A4xMtC9y6L244Upn4MTdUofkBdd9dMG8eZ2oofsMGIeEmr4EFfKb
+/LoZtIUJaNfiwvd3YakEmaAfd+AWIEAVYlVSxWHeCMowTNYxbSW+/M0ExGw1BErt
+oFiz3Ti8iYNfgz2l9cwrKhQEnzZlHUq06AIbzch/nXFFcc3EBDz+J6x//DCclb6Y
+8oLJRerrOJqpcpTYrwr+UDbh8JOqiUWUQ1BrbIZb+J5rU+DghBmNAWpd6yTbxX0T
+I7g2Hu7gPdzhrLLRO+rQsDK3T+JdVQ9xyoWugFIw4YepAad5uo/2e+q38a+h57EK
+Vsy4xfAEV/Mr4hl9KCY2hkiQYMKHvN1EZp72crAiPgDZxh6wTJZ979RHY2apq8XM
+Y41uP5mwdHxFA1Al/5+syajNlTzsNdYB5Ucx5TwNU0TifM13exHw8lQZOaWbDZS4
+QYwzeFWuEFse9ESmCQX5Pggw+ABFXOtPeqEfIO8v3QbT1vFlJ57iFBUiem967/JV
+a0RQyEvAKj0T5124N8Hi1oa8TPk5oSe8id5jSgGD9twbS0HX2KcmwAF/A5MgP7hx
+0X4EfhsJtDxFDy5PnoC8ADE2wcKDsTgqfDS/EQc6OeQCKceR45wyOT0Y3kbEa87B
+TQRV3J49ARAAt9nArtjFnqmRHL0oY5KCrF5ONph6xm3rof74lZ/CTkG0zu9OhmbW
+s6MMNsHgM7lRGIcKou7vUQE8/TEXh3+0eRdCiEYXP9jYTTXosU/+y/hOY33x9Sw/
+tCEHXiz6M+rp74O1P+zqXSlmx8zzNy33dDdXUT+bF1C6Y7WEChIIjlOfLHOBeazN
+dCqDxRDM/CKeI/UWx/wm0z1DNEuD8crUXIgdxY3dBAm1bBK041+3GXP8gYLN4qew
+T1VoG35Ya3PrrTC/zMAumagjiF3/1NCAmH6eSOzw21EloDBR76K1noDGCfRM2dp0
+78rS/BO+QtlN4+UWQLkB+crHxqXWk0u+gka2A7ZBHFYky/oUVIK1/ar6swnTRHj2
+0Ga+rukzcdxQRJ2kwGeRrqLH1JO8p72ptvswMyzVPhk8sE2S9llPrbznj6fc9f5m
+y5x9i5Fh4Mt2z7u+wBSdck2wV5eThEPz7UziXgtbq74Hja7tuoQxUhcpOIBXKl8b
+MLtjxlO7VmH312VzfiBYqQku9fHg3E/Hi+uon2fJaifFbuViZqfZq9bKT/UWG0+0
+cKc2d4os+3uwGcjraUjCFSXmGU27YqiW8jeM7pIa03QoAhWIH9ApAOVBqWF6drFz
+6/oFcSl9qbY/4IneJ/eb0eyjHllegydGEuIShrXYZLiQqSX4yj/3vE8AEQEAAcLB
+XwQYAQgACQUCVdyePQIbDAAKCRDgjCHVZ3RQrWEaEACTrt0WUxL1AT6BarJ3fOPV
+ZjiioO+3LPhw98ci7afeScEK84cGv+KLgxawvOo7dbwEX6VceQvJ0LTZ1oYPuYeZ
+MjiG7Qdf9uwgk3VwHf4S9pNxsqyVxHPotN9RPWwqoH9ihmO/ml7uC3gH0SFiU/RR
+lc3c9X/u+6SbkSEUZrUrPFQKJ3dpfjnA3RCPTI3fTKr8jycA5A5A77Daba3L+MXj
+c71/tn6MZCZmK7unSfpXq4rbGrIgMWnFKMBgeRONUWRFIOm5lReEjLHiABCli8t4
+Txr2ATswA4atmC4JzP8J/WPWe2xDMvsOXu+bGgW5BSO053MQz1JyJf1ExClNTkYu
+Vlm712JFE7Xzc2cg9P796KI3CKGbytTpaTrVx3ZajqHY1xfZy3vHolR8pfGZ8xcY
+XhFtkD71/BSyqpkrPVvbGkLZOm4b/SzWCGCDYx9xBB//m25lfpZ+Du2u91pvC97Z
+6Qty5nRp9kZvAeidmSunItU0Q4jKQlFnn6ZyLhPk4mwuVSUec8dGIdda8cQRaG/J
+lpLUZi2cnhKAnGaAaLGycQ/NEMVjtN8z6ZHCe3eAa1bEPwSZAbRHuCZ+Iqh6gPzn
+K88LhGUr/vzHYKKn25QWYQ7rJi2H1cu8BQ3lQpRunkCIithJ5gwoS0ZFSEM25FdI
+hvjSVVSRyxiu/zrDuO/s6g=3D=3D
+=3DumGL
+-----END PGP PUBLIC KEY BLOCK-----
+
+--------------5FtIYPEYdbpvJ7rxoaIkE5HF--
+
+--------------0CDQ0DNJ5lsFKKXMNIlAzn9V--
+
+--------------c1zlSDdUO3MRTYB7iqc8AXCn
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEESSNv6nXJXWmOwreK4Iwh1Wd0UK0FAmN9vxYFAwAAAAAACgkQ4Iwh1Wd0UK3A
+kg/9FivwVzx4r+VcLGLLJ5hc93ikooXIounK50saP+CsYFsxRqgoZ5QyVAG+Wr7ZE/TzlrNeH44x
+UfMKjEQ8fvyzvL94PpO1FKdSCs/r8B9UsCt/A1LU9r+LFfFAe+O7mOysTqIhLZ2AuDcznrD1brRs
+75T7Pscc6m2zdZYjfmf/T6w1768dKUNqOfIX+5UR9224xDA4vvLF9dF6728pus3A9fTBEYtgGtbs
+BHxHfKdfcCuxhbMASS+dAKzf1ebYwlmeX8n2z/J8OETWrK30A3aX0rPTGzBQzU6NV1IuLNO9g36q
+K8o02FaKjvfmtboDFGuIFEnOpSrSslKunT5HzcvPeb/H85aZcGE6IY2X3E5ZWZgxy+9XiolBoK+m
++hDckxhwQ7RzMi7X8i7OvDH/JlcJ+Di9ioxbvuy5089qO8vVoo0X9Dlf233hQe4ujUHdMQHAgwyi
+3iMhEAhisEn5grChDkTZeyAW3MDNWcvcrTk8r+diD54nUfTDcKE5D99FN2OBWw1yNcyJtKFiKLqM
+vY01sFUwP+kXPJz0h3ph0GKmmNswuEPEt4wBFJaHz9Y8R5qBMKgbOYfHDTTfcmAmvVm/4I8S9t17
+oOIKnd2f3fNeE3u+s60B3rRyCxpozvQMMKU56I9KBr2i92OsjSCVdonheZOvJZRLfG2HsazLSZbn
++ck=
+=WB75
+-----END PGP SIGNATURE-----
+
+--------------c1zlSDdUO3MRTYB7iqc8AXCn--
 
