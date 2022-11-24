@@ -1,76 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oyDev-0001gU-Kq
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Nov 2022 09:57:01 -0500
+	id 1oyDzm-0002Lf-7Z
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Nov 2022 10:18:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1oyDet-0001f9-Sk
- for qemu-trivial@nongnu.org; Thu, 24 Nov 2022 09:57:00 -0500
-Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oyDzk-0002It-8C
+ for qemu-trivial@nongnu.org; Thu, 24 Nov 2022 10:18:32 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1oyDer-00039q-RQ
- for qemu-trivial@nongnu.org; Thu, 24 Nov 2022 09:56:59 -0500
-Received: by mail-io1-xd2a.google.com with SMTP id q21so1355291iod.4
- for <qemu-trivial@nongnu.org>; Thu, 24 Nov 2022 06:56:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=KY4f8p07/7XjfVAh6K2YSLPpB0sFJLfy6Elxjys+V0A=;
- b=zeMgXuBnc5oIP5COTjhWsoaydh13iF5/ZzQvAjL17wETx1P3xfNdx4i9/+x/pACGqF
- gtFZ47bv6En665/A9OuKM2r4N4X6Mg0Jz+WVj9w41SzLtrLdJfkHNj5hraFMBKA/VVdt
- t0UCITqabxKB6XHWf6JXfz3J4GoO+vGfsH8FxtTk++YtwzEcp8QA4ldMaEBhrzbAbr/f
- v7oiTROxrP/K/WRIMuzt8HMv1nTWNHPYf1UsJnN9rxJ5TmZf2uBImqSXXToWgWdNvS0U
- CQ7DVwO7ZReQNx6o26IoV6g2nbkeJOl61LdlbwkBIgcno5EcuX1obR7LR6CBL8ZLJ8kw
- 84xQ==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oyDzb-00057L-FP
+ for qemu-trivial@nongnu.org; Thu, 24 Nov 2022 10:18:31 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id s5so2929597wru.1
+ for <qemu-trivial@nongnu.org>; Thu, 24 Nov 2022 07:18:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=eqBdcOgiBpx0VbgqJAjqsk8wkUHCZp9MWtstHXhLDno=;
+ b=R7kbepsygh273fUkxwzM7Sm1lCfSPTYHMpZ1fRt3GbiHAPUYJLszcIiAOgqnSLoHDL
+ AMvwPKovUy07HenKa3BqjhX22jBEXBqXr+zyT7ZNFlN8lNuwOgGCh5QRNU/CZTdTMWmT
+ yl3tiCcv3yQ39YWrPP3xSE/D8O5YaQ2p5TK8brEKka3lOtM6VgbRjuOqMaOf/+blQMcD
+ MnkWxX97lxnbI1mHHZcdqHahQpc3HWcPFtETFmdl0ukaHg+5fk9V9ZkrE1L47oogLWDt
+ LL8spP0QfaKMUr/unEoZ24nVVK2C2+woXRi9RLFjHwm+u4c5wUxlI6Ne72TeoRhOBjwR
+ 0Sqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=KY4f8p07/7XjfVAh6K2YSLPpB0sFJLfy6Elxjys+V0A=;
- b=HHoI1ENb/7RqhzjQtYJdsF+Zpsendi1ueDaeRd7Lucz6EevB6yAZEomxZTIMXChZ0g
- uzPnWCCYHPcwQVIwgdqp51ZLbloqJmLdKJO0vKKUYFWbxJlz1pmYSJcJ9SQyRFMQYYgg
- /rZrkWCsVcQnm3BuXzmXCj4K3kemFGxQMVwZNbb5e8Y4eWbOR6oNFMgJZe2CV80m2q3c
- GwQ0hyhpZGVnz3eqoh3Y7/nHk+uP/V6+gwuowJXYhmTrKFfWpf4huk3YNkgyF6/Os99R
- eheQ+bhCt7+bgun73GFSygethUj1wUxavP2gwfvRRr+RrPEGXOE2YR+91GUXaa0Pv9Lc
- xxCg==
-X-Gm-Message-State: ANoB5pm9nOZ42VEM0yD8nYtgNQ41jHabA44GZoMO/xJsoxw2Cxkcggrz
- R3NlrKh0hlHBLHpgfYhZaO48p1Co6U9vfe33bHCpkg==
-X-Google-Smtp-Source: AA0mqf70M3imoKI/dX3oslJ+eNKbh9FpZlR+c0gUyiuFEbKp7JrcLXo1ai3JjEmb4Ht/FrMljbMpdwrcb4NH+wWx2tY=
-X-Received: by 2002:a6b:fe12:0:b0:6dd:e590:6628 with SMTP id
- x18-20020a6bfe12000000b006dde5906628mr7945834ioh.3.1669301816495; Thu, 24 Nov
- 2022 06:56:56 -0800 (PST)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=eqBdcOgiBpx0VbgqJAjqsk8wkUHCZp9MWtstHXhLDno=;
+ b=sgSqGt75uDsZCjWDM3SPFFxu1djEW5YqTRppRVAFbXYeq9NQV9UVTLqgyPKURIVNDh
+ +T6DdAD34iLcGiX/PG9Sllw120q1XHpmVpCpirkReLCjg9hZ6J9V47FyhkvgmtOZYq5x
+ GkL8ebiSqt7KCzDFzegE1Rgu3aoRX4JGSnckDaaeWgZ46epe4h9NjDrg6SIr2Dk+fnRS
+ RpNRL7EjeARyalL1ZmwtHtKnMFLi7CWzrLGyK898kPj2Kdhvnj09ujtWizsxid9dT2SQ
+ gBV0DL82uKAsTeu9TGiruRv9IIEPp3zQCMKOSHLPHzWhvTkwtPthK+0az/dbu3l0q6Iz
+ pM0w==
+X-Gm-Message-State: ANoB5pmS+XWyt47arLhzBqNvp5G2mQrlgi7XP+HjOZvny3+geR1zqUUi
+ gs3yO2pAv6fEzIdb184lkb0UkA==
+X-Google-Smtp-Source: AA0mqf6i5+Oz/4oYUPgeYNBPtxVOW6nBcy4Hn0kSfUQwmDhg7ySCJCjkphECjvLfJe05iSTqjRnGQA==
+X-Received: by 2002:a05:6000:124c:b0:236:2314:6d4b with SMTP id
+ j12-20020a056000124c00b0023623146d4bmr12850455wrx.112.1669303101838; 
+ Thu, 24 Nov 2022 07:18:21 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ ba17-20020a0560001c1100b00236695ff94fsm1734729wrb.34.2022.11.24.07.18.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 24 Nov 2022 07:18:21 -0800 (PST)
+Message-ID: <de787c6a-c524-a05d-2714-98ad125bd154@linaro.org>
+Date: Thu, 24 Nov 2022 16:18:19 +0100
 MIME-Version: 1.0
-References: <20221124135834.924426-1-ani@anisinha.ca>
- <20221124091625-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20221124091625-mutt-send-email-mst@kernel.org>
-From: Ani Sinha <ani@anisinha.ca>
-Date: Thu, 24 Nov 2022 20:26:45 +0530
-Message-ID: <CAARzgwxy0poHY5GbG9Pz0H6RnKjz6f_8PUiCWhUBJJ+gBU_9bg@mail.gmail.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.0
 Subject: Re: [PATCH] acpi/tests/avocado/bits: add SPDX license identifiers for
  bios bits tests
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+Content-Language: en-US
+To: Ani Sinha <ani@anisinha.ca>, Cleber Rosa <crosa@redhat.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, 
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Maydell Peter <peter.maydell@linaro.org>, 
- John Snow <jsnow@redhat.com>, Thomas Huth <thuth@redhat.com>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Igor Mammedov <imammedo@redhat.com>, qemu-trivial@nongnu.org,
+ Beraldo Leal <bleal@redhat.com>
+Cc: =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Maydell Peter
+ <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Igor Mammedov <imammedo@redhat.com>,
+ Michael Tsirkin <mst@redhat.com>, qemu-trivial@nongnu.org,
  qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: none client-ip=2607:f8b0:4864:20::d2a;
- envelope-from=ani@anisinha.ca; helo=mail-io1-xd2a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20221124135834.924426-1-ani@anisinha.ca>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221124135834.924426-1-ani@anisinha.ca>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,137 +88,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Nov 2022 14:57:00 -0000
+X-List-Received-Date: Thu, 24 Nov 2022 15:18:32 -0000
 
-On Thu, Nov 24, 2022 at 7:47 PM Michael S. Tsirkin <mst@redhat.com> wrote:
->
-> On Thu, Nov 24, 2022 at 07:28:34PM +0530, Ani Sinha wrote:
-> > Added the SPDX license identifiers for biosbits tests.
-> > Also added a comment on each of the test scripts to indicate that they =
-run
-> > from within the biosbits environment and hence are not subjected to the=
- regular
-> > maintanance acivities
->
->
-> activities?
+On 24/11/22 14:58, Ani Sinha wrote:
+> Added the SPDX license identifiers for biosbits tests.
+> Also added a comment on each of the test scripts to indicate that they run
+> from within the biosbits environment and hence are not subjected to the regular
+> maintanance acivities for QEMU and is excluded from the dependency management
 
-This came from John's suggestion here:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg899480.html .
+Typo "maintenance activities".
 
-"Could I please ask for a comment in each .py file that isn't designed
-to run directly in the host v/environment? Just a small nod to the fact
-that it runs in a special VM so I can exclude it from other regular
-maintenance operations / considerations for dependency management in the
-host testing env.
+> challenges in the host testing environment.
+> 
+> Cc: Daniel P. Berrangé <berrange@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Maydell Peter <peter.maydell@linaro.org>
+> Cc: John Snow <jsnow@redhat.com>
+> Cc: Thomas Huth <thuth@redhat.com>
+> Cc: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: Michael Tsirkin <mst@redhat.com>
+> Cc: Thomas Huth <thuth@redhat.com>
+> Cc: qemu-trivial@nongnu.org
+> Signed-off-by: Ani Sinha <ani@anisinha.ca>
+> ---
+>   tests/avocado/acpi-bits/bits-tests/smbios.py2    | 4 ++++
+>   tests/avocado/acpi-bits/bits-tests/testacpi.py2  | 4 ++++
+>   tests/avocado/acpi-bits/bits-tests/testcpuid.py2 | 4 ++++
+>   3 files changed, 12 insertions(+)
 
-# Designed to run only in the biosbits VM.
-
-would be more than sufficient.
-"
-I can reword this in any way that sounds better.
-
->
-> > for QEMU and is excluded from the dependency management
-> > challenges in the host testing environment.
-> >
-> > Cc: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> > Cc: Paolo Bonzini <pbonzini@redhat.com>
-> > Cc: Maydell Peter <peter.maydell@linaro.org>
-> > Cc: John Snow <jsnow@redhat.com>
-> > Cc: Thomas Huth <thuth@redhat.com>
-> > Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > Cc: Igor Mammedov <imammedo@redhat.com>
-> > Cc: Michael Tsirkin <mst@redhat.com>
-> > Cc: Thomas Huth <thuth@redhat.com>
-> > Cc: qemu-trivial@nongnu.org
-> > Signed-off-by: Ani Sinha <ani@anisinha.ca>
-> > ---
-> >  tests/avocado/acpi-bits/bits-tests/smbios.py2    | 4 ++++
-> >  tests/avocado/acpi-bits/bits-tests/testacpi.py2  | 4 ++++
-> >  tests/avocado/acpi-bits/bits-tests/testcpuid.py2 | 4 ++++
-> >  3 files changed, 12 insertions(+)
-> >
-> > Apologies for this. Somehow this patch fell off my tree between multipl=
-e
-> > revisions. Quite trivial and does not affect any QEMU codebase.
-> >
-> > diff --git a/tests/avocado/acpi-bits/bits-tests/smbios.py2 b/tests/avoc=
-ado/acpi-bits/bits-tests/smbios.py2
-> > index 9667d0542c..fc623de072 100644
-> > --- a/tests/avocado/acpi-bits/bits-tests/smbios.py2
-> > +++ b/tests/avocado/acpi-bits/bits-tests/smbios.py2
-> > @@ -1,6 +1,8 @@
-> >  # Copyright (c) 2015, Intel Corporation
-> >  # All rights reserved.
-> >  #
-> > +# SPDX-License-Identifier: BSD-3-Clause
-> > +#
-> >  # Redistribution and use in source and binary forms, with or without
-> >  # modification, are permitted provided that the following conditions a=
-re met:
-> >  #
-> > @@ -24,6 +26,8 @@
-> >  # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE US=
-E OF THIS
-> >  # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-> >
-> > +# This script runs only from the biosbits VM.
-> > +
-> >  """SMBIOS/DMI module."""
-> >
-> >  import bits
-> > diff --git a/tests/avocado/acpi-bits/bits-tests/testacpi.py2 b/tests/av=
-ocado/acpi-bits/bits-tests/testacpi.py2
-> > index dbc150076e..f818a9cce6 100644
-> > --- a/tests/avocado/acpi-bits/bits-tests/testacpi.py2
-> > +++ b/tests/avocado/acpi-bits/bits-tests/testacpi.py2
-> > @@ -1,6 +1,8 @@
-> >  # Copyright (c) 2015, Intel Corporation
-> >  # All rights reserved.
-> >  #
-> > +# SPDX-License-Identifier: BSD-3-Clause
-> > +#
-> >  # Redistribution and use in source and binary forms, with or without
-> >  # modification, are permitted provided that the following conditions a=
-re met:
-> >  #
-> > @@ -24,6 +26,8 @@
-> >  # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE US=
-E OF THIS
-> >  # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-> >
-> > +# This script runs only from the biosbits VM.
-> > +
-> >  """Tests for ACPI"""
-> >
-> >  import acpi
-> > diff --git a/tests/avocado/acpi-bits/bits-tests/testcpuid.py2 b/tests/a=
-vocado/acpi-bits/bits-tests/testcpuid.py2
-> > index ac55d912e1..7adefbe355 100644
-> > --- a/tests/avocado/acpi-bits/bits-tests/testcpuid.py2
-> > +++ b/tests/avocado/acpi-bits/bits-tests/testcpuid.py2
-> > @@ -1,6 +1,8 @@
-> >  # Copyright (c) 2012, Intel Corporation
-> >  # All rights reserved.
-> >  #
-> > +# SPDX-License-Identifier: BSD-3-Clause
-> > +#
-> >  # Redistribution and use in source and binary forms, with or without
-> >  # modification, are permitted provided that the following conditions a=
-re met:
-> >  #
-> > @@ -24,6 +26,8 @@
-> >  # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE US=
-E OF THIS
-> >  # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-> >
-> > +# This script runs only from the biosbits VM.
-> > +
-> >  """Tests and helpers for CPUID."""
-> >
-> >  import bits
-> > --
-> > 2.34.1
->
 
