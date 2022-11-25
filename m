@@ -1,66 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oybOn-00056U-Ok
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Nov 2022 11:17:57 -0500
+	id 1oyctO-0006rd-GT
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Nov 2022 12:53:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oybOD-00050O-52
- for qemu-trivial@nongnu.org; Fri, 25 Nov 2022 11:17:25 -0500
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oyctK-0006qe-Si
+ for qemu-trivial@nongnu.org; Fri, 25 Nov 2022 12:53:34 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1oybO6-0003yG-6o
- for qemu-trivial@nongnu.org; Fri, 25 Nov 2022 11:17:17 -0500
-Received: by mail-pj1-x1035.google.com with SMTP id
- hd14-20020a17090b458e00b0021909875bccso1820392pjb.1
- for <qemu-trivial@nongnu.org>; Fri, 25 Nov 2022 08:17:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1oyctH-0002zO-U5
+ for qemu-trivial@nongnu.org; Fri, 25 Nov 2022 12:53:34 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ ay14-20020a05600c1e0e00b003cf6ab34b61so6743081wmb.2
+ for <qemu-trivial@nongnu.org>; Fri, 25 Nov 2022 09:53:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=kpgfuKcMQQBvAsgvb4w86nfpcoKs8KK0mIriIaiWxDM=;
- b=sB9LQD1TUqOPp9EqS/lYcfYycK8/KRsjlASbkw15dulk21cRRko9bMW6Gkqvi/YFl4
- h1/mhb/VfToUiV3ENcanmoEIFtPstLRXZhPv9fI3S/MKs/wd7IFyA4WB3rQyETH8QWsR
- qis+dUPcJAQygpzGK++NtGmKKvhwF61VkV8oCpHCsH4CBUJq1yGTxqrN1VqyiZ4+aN0v
- fa9GpB0Y2tRMH2HSlyuigW1dhEe/yQVZxPbhrUfHLFAIl768rMBj4KdT1RXS/xXq2wH5
- nb2GCv3ValhJKy7gEGBu2rVrpuDQpL6G9QSxS9C0Kht6Al5836SAdn9iWoQNin0j4zrG
- Uy3w==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=INE6OZGY4azvCuediKuhsFQWrf2Zukrhm0RyaddTozE=;
+ b=hRW6lsgQ6liMwlidIbO1J1HmRlucVMFwxp+a0lD1rrcYlBPNbrfBJMQdiQSkVuq/FO
+ S75wTmiLheWm7lUVaChHwV6b6O55Bs8/aEBIsbndudkTP1p1Ef5KSUPKQYQFqwXdvvCV
+ rj28FTTHP8gsFePYkDBBE1NTkuy7eyHWQ4P9eLBz8LRqLo+mBVWM1yBwbo2aYpu5WO3f
+ K3qnulyl0FER8RO40fKpnGtGynZLltU5OSjt/2Yt6H2cRJ23mqnkOnIxUJhJUo10yEh2
+ tK9Wd1ST0Z6FCshd4vpJmVjLuVKQHIlNwZoov9ccPO9qcphFSZAE+RR2ZOHoMLBN5w/r
+ koBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=kpgfuKcMQQBvAsgvb4w86nfpcoKs8KK0mIriIaiWxDM=;
- b=zUQmKgOat5gohTp4FbiPLa7uszxa28CpYKKBW69aOAly15akr+Ka1+SblfoJdJZr+9
- zqS2+pddySXN6sLSdL4ImBZyEac7mzfahMl00lrVfc+jBusaRTQS6kYNnGCkw3GK3wDd
- gCJSk4zjvIaxNkyQUvS7VOJY4UpOvpC3jODqpX1dHPUNLp5hId55en5smV0pPuCmT5It
- /ncRnYRMacWB9V8tK/6/30uKZ0eZ7SBfYjp+/d3b7aUFuawoYBBcIkRicaAtdtzW7LWR
- U63B/yI3wf1FcZvf7z/tsCzlqvhaqSalDbSln9j6cyHFOpH8Gt6uMkgpX0YCcHf+8Ux4
- 4jPw==
-X-Gm-Message-State: ANoB5pnTUCUW+CB6unB4HfvRK0QFbygyGV5fYw5NSi/pxSf8z/G8JqEZ
- NWGtHXTq/txkRnkkzNJNLaFIt8B2xX3vTSCWwRvNHg==
-X-Google-Smtp-Source: AA0mqf7Eaneq2yK8m++DT4097ny4YBF42bAxV8fDTz8MERv3l7Zf+L7Qnk61Xv+vWgY88cOouVcu1mtcyWAOp70F4uk=
-X-Received: by 2002:a17:902:e149:b0:186:9295:2012 with SMTP id
- d9-20020a170902e14900b0018692952012mr24002642pla.19.1669393029559; Fri, 25
- Nov 2022 08:17:09 -0800 (PST)
+ bh=INE6OZGY4azvCuediKuhsFQWrf2Zukrhm0RyaddTozE=;
+ b=etKLLO2XBSidW50rJG6H4L3Qk3N6uTvQCSeOP43clEojxkTixRZoBlp9sNS/CRsRGG
+ ykSSYyyGRpu1WRr+UZ7xHT0FJs14Ts7LegNCtkjduGIyv/hf9eyD8B5f/wYHB/saVXDh
+ /Y8d+r5d+pEBlw2bTNYIKt4LeFts3SI4zAJDVq/HOtHmrHqiosNSTpjh0Q8wDRWbbfSr
+ 1xMJ6k8ttxoIWMN9GDMXIbfLyiuDeY7qdE7kLKx4AGsqoF5aaWZwVkfi1plvXgZM9Kwx
+ 6ebfVO1ODvyHokFm6yOv7vVwngAn2vj38L7PYsSzx65v0ut/DD6H0nNIBtvk6pXKSF+l
+ xpdg==
+X-Gm-Message-State: ANoB5pl2L6X5yxx8CYWmGXP2L6Rk/3AKev4Wk28o3j5k9sBI/uV+4VO0
+ D0n3eSdg1YlNLLst4czgUKLqVw==
+X-Google-Smtp-Source: AA0mqf6KiQjDXGkJquJfLa2xuqZXsioUyM3G+sZDqzxlpx/sGPWqi0g3axqaSN9KN8cVOWT6fcgtVA==
+X-Received: by 2002:a05:600c:4f82:b0:3cf:aa11:9394 with SMTP id
+ n2-20020a05600c4f8200b003cfaa119394mr17030921wmq.183.1669398810421; 
+ Fri, 25 Nov 2022 09:53:30 -0800 (PST)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ q6-20020a1c4306000000b003cf774c31a0sm9233776wma.16.2022.11.25.09.53.29
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 25 Nov 2022 09:53:29 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH-for-8.0] block/nbd: Add missing <qemu/bswap.h> include
+Date: Fri, 25 Nov 2022 18:53:28 +0100
+Message-Id: <20221125175328.48539-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-References: <20221125160849.23711-1-evgeny.v.ermakov@gmail.com>
-In-Reply-To: <20221125160849.23711-1-evgeny.v.ermakov@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 25 Nov 2022 16:16:55 +0000
-Message-ID: <CAFEAcA_Za5r6a7dNoGh-nS9tXKvGYzeWWyNsFxNsbXgsE4DozQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/display/next-fb: Fix comment typo
-To: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, huth@tuxfamily.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x1035.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,34 +80,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Nov 2022 16:17:26 -0000
+X-List-Received-Date: Fri, 25 Nov 2022 17:53:35 -0000
 
-On Fri, 25 Nov 2022 at 16:10, Evgeny Ermakov <evgeny.v.ermakov@gmail.com> wrote:
->
-> Signed-off-by: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
-> ---
->  hw/display/next-fb.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/display/next-fb.c b/hw/display/next-fb.c
-> index dd6a1aa8ae..8446ff3c00 100644
-> --- a/hw/display/next-fb.c
-> +++ b/hw/display/next-fb.c
-> @@ -126,7 +126,7 @@ static void nextfb_class_init(ObjectClass *oc, void *data)
->      set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
->      dc->realize = nextfb_realize;
->
-> -    /* Note: This device does not any state that we have to reset or migrate */
-> +    /* Note: This device does not have any state that we have to reset or migrate */
->  }
->
->  static const TypeInfo nextfb_info = {
-> --
-> 2.38.1
->
+The inlined nbd_readXX() functions call beXX_to_cpu(), themselves
+declared in <qemu/bswap.h>. This fixes when refactoring:
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+  In file included from ../../block/nbd.c:44:
+  include/block/nbd.h: In function 'nbd_read16':
+  include/block/nbd.h:383:12: error: implicit declaration of function 'be16_to_cpu' [-Werror=implicit-function-declaration]
+    383 |     *val = be##bits##_to_cpu(*val);                                     \
+        |            ^~
+  include/block/nbd.h:387:1: note: in expansion of macro 'DEF_NBD_READ_N'
+    387 | DEF_NBD_READ_N(16) /* Defines nbd_read16(). */
+        | ^~~~~~~~~~~~~~
 
-thanks
--- PMM
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/block/nbd.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/block/nbd.h b/include/block/nbd.h
+index 4ede3b2bd0..a4c98169c3 100644
+--- a/include/block/nbd.h
++++ b/include/block/nbd.h
+@@ -24,6 +24,7 @@
+ #include "io/channel-socket.h"
+ #include "crypto/tlscreds.h"
+ #include "qapi/error.h"
++#include "qemu/bswap.h"
+ 
+ extern const BlockExportDriver blk_exp_nbd;
+ 
+-- 
+2.38.1
+
 
