@@ -1,60 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1oygC3-0001BV-54
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Nov 2022 16:25:07 -0500
+	id 1ozIGi-0002AZ-PP
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Nov 2022 09:04:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1oygC1-0001BB-4h
- for qemu-trivial@nongnu.org; Fri, 25 Nov 2022 16:25:05 -0500
-Received: from forwardcorp1c.mail.yandex.net ([178.154.239.200])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1oygBy-0007MV-CB
- for qemu-trivial@nongnu.org; Fri, 25 Nov 2022 16:25:04 -0500
-Received: from sas1-c73b4b4f4b95.qloud-c.yandex.net
- (sas1-c73b4b4f4b95.qloud-c.yandex.net
- [IPv6:2a02:6b8:c08:12a9:0:640:c73b:4b4f])
- by forwardcorp1c.mail.yandex.net (Yandex) with ESMTP id D4C2D5E923;
- Sat, 26 Nov 2022 00:13:56 +0300 (MSK)
-Received: from [IPV6:2a02:6b8:b081:16::1:7] (unknown [2a02:6b8:b081:16::1:7])
- by sas1-c73b4b4f4b95.qloud-c.yandex.net (smtpcorp/Yandex) with
- ESMTPSA id tDU5B30OdSw1-ySaAKTd0; Sat, 26 Nov 2022 00:13:56 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; 
- t=1669410836; bh=koqoox0cuwA1chtDOGVfx0x/4xgr7dkKRnmnkhlyed0=;
- h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
- b=11RDIj68d+tAhgNnASeRWcUGYAr3/g66ar6EwN0rrbySgKyBLkOIz9EtKF3Wm5W+9
- mRM98iZPjyOTMkstPWDfm9DY6/jdkCBLgEJYueYeH2+KJL8gN82xKHD5Nlq/vznunW
- wVxWuSzEwgm7PoUUYyXi8Ggy34eSx4RLrB+jeYXI=
-Authentication-Results: sas1-c73b4b4f4b95.qloud-c.yandex.net;
- dkim=pass header.i=@yandex-team.ru
-Message-ID: <3e098edf-f513-bca2-41ae-182b950afc61@yandex-team.ru>
-Date: Sat, 26 Nov 2022 00:13:55 +0300
+ (Exim 4.90_1) (envelope-from <hoanguyen@ucdavis.edu>)
+ id 1oz8FR-0004My-EH
+ for qemu-trivial@nongnu.org; Sat, 26 Nov 2022 22:22:29 -0500
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <hoanguyen@ucdavis.edu>)
+ id 1oz8FP-0004jg-0w
+ for qemu-trivial@nongnu.org; Sat, 26 Nov 2022 22:22:28 -0500
+Received: by mail-pf1-x42f.google.com with SMTP id q12so3331114pfn.10
+ for <qemu-trivial@nongnu.org>; Sat, 26 Nov 2022 19:22:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucdavis.edu; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=mod3Ock7PvHPA+PuypUzbvv9VmCPX7bzLwcapdra0I4=;
+ b=pmaK4pYIZNlbkmq+UQxTPDis8DHOPVqlZLsK75lEbAWnFiJHMaKDZYFh6s7JFj/1CB
+ +/T7xtpWz9EY7eYvTJr6lsAPoGW6A6atdNqhfNwmRHGGrwiGoWCctsXqVloCamHP526O
+ fLT9JlkQia/1r1OxEMo5VepcVlM5pFMtJtRlY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=mod3Ock7PvHPA+PuypUzbvv9VmCPX7bzLwcapdra0I4=;
+ b=pAiUocBu5dxjyRK/PJNhww40osgkdkGD86FZ38u1jhCbp4Goij/R2uv+IS496H7hn4
+ mGARrVnjHeUv+vGwOrqkj0EoKdhG92mSUHK0Bxdi/7f7YItSmW2WRc4gLbX31BrkJ6Jk
+ W8zc4YXt41ugtG+OGNK0q5lAvbuiIbR77oQsnT8RKvUaD9AeAopfTVeC/8jHSWS9ZYIo
+ p11UYzuUFCr5BD2sNMKcT/qkvnkH62FPQh+9RwaTXUU9UaW+IEWYigHYl5TiEY4EAzMC
+ IJwWLimTpKVUyAr4EuCz5YWNvItSta/N4Vq/oZamqAvCpDaBb0h2pR3gNteZ54uQG2RG
+ lmYw==
+X-Gm-Message-State: ANoB5plkvVVVH/38Q9ItojUUWnuVwdn2M4j7jWZtPwlJ2bxRJ99YtzHl
+ umMTx6ajs8nNswAhf9iFK9odqg==
+X-Google-Smtp-Source: AA0mqf7cNsA8EIDlAAsb1NPOVXzs01jgSbX7Bv0yQSF3BwLwQA7NMZm3abhvG0Y147kAF+5xxRrCGg==
+X-Received: by 2002:a63:d948:0:b0:46f:1081:f517 with SMTP id
+ e8-20020a63d948000000b0046f1081f517mr41357590pgj.297.1669519344341; 
+ Sat, 26 Nov 2022 19:22:24 -0800 (PST)
+Received: from penguin.lxd (c-73-41-83-143.hsd1.ca.comcast.net. [73.41.83.143])
+ by smtp.gmail.com with ESMTPSA id
+ u10-20020a170902e5ca00b00188f07c10c9sm6037121plf.192.2022.11.26.19.22.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 26 Nov 2022 19:22:23 -0800 (PST)
+From: Hoa Nguyen <hoanguyen@ucdavis.edu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Hoa Nguyen <hoanguyen@ucdavis.edu>
+Subject: [PATCH] hw/cxl/cxl-host: Fix an error message typo
+Date: Sat, 26 Nov 2022 19:22:20 -0800
+Message-Id: <20221127032220.2649-1-hoanguyen@ucdavis.edu>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH-for-8.0] block/nbd: Add missing <qemu/bswap.h> include
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
- Hanna Reitz <hreitz@redhat.com>
-References: <20221125175328.48539-1-philmd@linaro.org>
-From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-In-Reply-To: <20221125175328.48539-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=178.154.239.200;
- envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1c.mail.yandex.net
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=hoanguyen@ucdavis.edu; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 27 Nov 2022 09:04:28 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,28 +75,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Nov 2022 21:25:05 -0000
+X-List-Received-Date: Sun, 27 Nov 2022 03:22:29 -0000
 
-On 11/25/22 20:53, Philippe Mathieu-Daudé wrote:
-> The inlined nbd_readXX() functions call beXX_to_cpu(), themselves
-> declared in <qemu/bswap.h>. This fixes when refactoring:
-> 
->    In file included from ../../block/nbd.c:44:
->    include/block/nbd.h: In function 'nbd_read16':
->    include/block/nbd.h:383:12: error: implicit declaration of function 'be16_to_cpu' [-Werror=implicit-function-declaration]
->      383 |     *val = be##bits##_to_cpu(*val);                                     \
->          |            ^~
->    include/block/nbd.h:387:1: note: in expansion of macro 'DEF_NBD_READ_N'
->      387 | DEF_NBD_READ_N(16) /* Defines nbd_read16(). */
->          | ^~~~~~~~~~~~~~
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+Signed-off-by: Hoa Nguyen <hoanguyen@ucdavis.edu>
+---
+ hw/cxl/cxl-host.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-
+diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+index 1adf61231a..3c1ec8732a 100644
+--- a/hw/cxl/cxl-host.c
++++ b/hw/cxl/cxl-host.c
+@@ -47,7 +47,7 @@ static void cxl_fixed_memory_window_config(CXLState *cxl_state,
+ 
+     if (object->size % (256 * MiB)) {
+         error_setg(errp,
+-                   "Size of a CXL fixed memory window must my a multiple of 256MiB");
++                   "Size of a CXL fixed memory window must be a multiple of 256MiB");
+         return;
+     }
+     fw->size = object->size;
 -- 
-Best regards,
-Vladimir
+2.30.2
 
 
