@@ -1,69 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ozIGi-0002AZ-PP
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Nov 2022 09:04:28 -0500
+	id 1ozOly-0006zQ-7o
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Nov 2022 16:01:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hoanguyen@ucdavis.edu>)
- id 1oz8FR-0004My-EH
- for qemu-trivial@nongnu.org; Sat, 26 Nov 2022 22:22:29 -0500
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ozOln-0006qK-VY
+ for qemu-trivial@nongnu.org; Sun, 27 Nov 2022 16:01:03 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hoanguyen@ucdavis.edu>)
- id 1oz8FP-0004jg-0w
- for qemu-trivial@nongnu.org; Sat, 26 Nov 2022 22:22:28 -0500
-Received: by mail-pf1-x42f.google.com with SMTP id q12so3331114pfn.10
- for <qemu-trivial@nongnu.org>; Sat, 26 Nov 2022 19:22:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucdavis.edu; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=mod3Ock7PvHPA+PuypUzbvv9VmCPX7bzLwcapdra0I4=;
- b=pmaK4pYIZNlbkmq+UQxTPDis8DHOPVqlZLsK75lEbAWnFiJHMaKDZYFh6s7JFj/1CB
- +/T7xtpWz9EY7eYvTJr6lsAPoGW6A6atdNqhfNwmRHGGrwiGoWCctsXqVloCamHP526O
- fLT9JlkQia/1r1OxEMo5VepcVlM5pFMtJtRlY=
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ozOll-0007Is-7D
+ for qemu-trivial@nongnu.org; Sun, 27 Nov 2022 16:00:58 -0500
+Received: by mail-wr1-x434.google.com with SMTP id w15so766308wrl.9
+ for <qemu-trivial@nongnu.org>; Sun, 27 Nov 2022 13:00:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=m7pcSe4QkFFO4dwmR4n54BvePW4DaDycxfIOra4AoS4=;
+ b=aF2feRUKYH7rDLHsioamPnZ3PS3yom/ehK29WjRZ8pt4IxyPme3iLOp45dLRCLgr9T
+ 0nyIGk4bdRypXYncF+pZVsmDs5X0CJwTsQAhKfj2rJ2V+vIJWUFWqWfeq+V/iVYpYh+G
+ KbnznG3y7q8pu4ZJggKIt2q57IkdapOXy6Vpv1wfYv0m7/TJpwbMFyArWykAMWQ/Wt/K
+ wv7t8RPRmat4QMlMhluThPhShGYVe93Z5N8hILpHiDx0uOoZqIKrqKkzuFNQpVWFQiA0
+ n4Z8V9SpOH8ERlmDWWQoy2dc1s6XfYJqpipcn4qavEYtOuxjVXOKy8/40/Ri8x5zh51N
+ yn2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=mod3Ock7PvHPA+PuypUzbvv9VmCPX7bzLwcapdra0I4=;
- b=pAiUocBu5dxjyRK/PJNhww40osgkdkGD86FZ38u1jhCbp4Goij/R2uv+IS496H7hn4
- mGARrVnjHeUv+vGwOrqkj0EoKdhG92mSUHK0Bxdi/7f7YItSmW2WRc4gLbX31BrkJ6Jk
- W8zc4YXt41ugtG+OGNK0q5lAvbuiIbR77oQsnT8RKvUaD9AeAopfTVeC/8jHSWS9ZYIo
- p11UYzuUFCr5BD2sNMKcT/qkvnkH62FPQh+9RwaTXUU9UaW+IEWYigHYl5TiEY4EAzMC
- IJwWLimTpKVUyAr4EuCz5YWNvItSta/N4Vq/oZamqAvCpDaBb0h2pR3gNteZ54uQG2RG
- lmYw==
-X-Gm-Message-State: ANoB5plkvVVVH/38Q9ItojUUWnuVwdn2M4j7jWZtPwlJ2bxRJ99YtzHl
- umMTx6ajs8nNswAhf9iFK9odqg==
-X-Google-Smtp-Source: AA0mqf7cNsA8EIDlAAsb1NPOVXzs01jgSbX7Bv0yQSF3BwLwQA7NMZm3abhvG0Y147kAF+5xxRrCGg==
-X-Received: by 2002:a63:d948:0:b0:46f:1081:f517 with SMTP id
- e8-20020a63d948000000b0046f1081f517mr41357590pgj.297.1669519344341; 
- Sat, 26 Nov 2022 19:22:24 -0800 (PST)
-Received: from penguin.lxd (c-73-41-83-143.hsd1.ca.comcast.net. [73.41.83.143])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=m7pcSe4QkFFO4dwmR4n54BvePW4DaDycxfIOra4AoS4=;
+ b=FpxRXhOF1m1leyJ5efwshOIGkJ97FEyjQ75xdPcDmcm+MFcTImcGYPRJlkFrB641ri
+ mqab/EE88uwQuV9z3t00W6B9axvkLv0TEaT5AougiCSXypSxqSWT5Y3DtaPR+7uB2tDX
+ lezPqhpnn/6aVDtwTIZPQjarJE7Tnaloae88tjrm5lWKTGthhQc63cRX+fq4dAVZ9Lsv
+ e3MEgQVFA975TD2+uHvWZLZ94CCPmhy/GCMFDnU8pIk1zV0jauWireepdRxENjquKo+C
+ z8GYiD7gVZg24NXKWThwyitUiy5XGMjAdGFAOyzVBc8J4ANgkO+MPZv+YXkOuaRkS7hM
+ opIQ==
+X-Gm-Message-State: ANoB5pnEsHj+CY2JevkX8INRO6yCFArrzTniR0EUcDHUiGII7bxp1VnP
+ D1AoS3klV02Qbpy2zWW0Fbf9Xw==
+X-Google-Smtp-Source: AA0mqf6Tcs2My+hwRte5J07tTEbdftoYPRm8VZ+Zyv+Bx/InepwVb3x6LzIsnxkelpqCtmy00mfZsA==
+X-Received: by 2002:a5d:51cf:0:b0:238:3fcb:31ce with SMTP id
+ n15-20020a5d51cf000000b002383fcb31cemr23200977wrv.655.1669582849164; 
+ Sun, 27 Nov 2022 13:00:49 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- u10-20020a170902e5ca00b00188f07c10c9sm6037121plf.192.2022.11.26.19.22.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Nov 2022 19:22:23 -0800 (PST)
-From: Hoa Nguyen <hoanguyen@ucdavis.edu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Hoa Nguyen <hoanguyen@ucdavis.edu>
-Subject: [PATCH] hw/cxl/cxl-host: Fix an error message typo
-Date: Sat, 26 Nov 2022 19:22:20 -0800
-Message-Id: <20221127032220.2649-1-hoanguyen@ucdavis.edu>
-X-Mailer: git-send-email 2.30.2
+ r8-20020a05600c458800b003cf4d99fd2asm2774261wmo.6.2022.11.27.13.00.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 27 Nov 2022 13:00:48 -0800 (PST)
+Message-ID: <eed03d1f-fe2c-78d4-f94c-0d8d3590141d@linaro.org>
+Date: Sun, 27 Nov 2022 22:00:47 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.0
+Subject: Re: [PATCH] hw/cxl/cxl-host: Fix an error message typo
+Content-Language: en-US
+To: Hoa Nguyen <hoanguyen@ucdavis.edu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20221127032220.2649-1-hoanguyen@ucdavis.edu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20221127032220.2649-1-hoanguyen@ucdavis.edu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=hoanguyen@ucdavis.edu; helo=mail-pf1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.257,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 27 Nov 2022 09:04:28 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,27 +80,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Nov 2022 03:22:29 -0000
+X-List-Received-Date: Sun, 27 Nov 2022 21:01:03 -0000
 
-Signed-off-by: Hoa Nguyen <hoanguyen@ucdavis.edu>
----
- hw/cxl/cxl-host.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 27/11/22 04:22, Hoa Nguyen wrote:
+> Signed-off-by: Hoa Nguyen <hoanguyen@ucdavis.edu>
+> ---
+>   hw/cxl/cxl-host.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
-index 1adf61231a..3c1ec8732a 100644
---- a/hw/cxl/cxl-host.c
-+++ b/hw/cxl/cxl-host.c
-@@ -47,7 +47,7 @@ static void cxl_fixed_memory_window_config(CXLState *cxl_state,
- 
-     if (object->size % (256 * MiB)) {
-         error_setg(errp,
--                   "Size of a CXL fixed memory window must my a multiple of 256MiB");
-+                   "Size of a CXL fixed memory window must be a multiple of 256MiB");
-         return;
-     }
-     fw->size = object->size;
--- 
-2.30.2
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
