@@ -1,66 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ozOly-0006zQ-7o
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Nov 2022 16:01:10 -0500
+	id 1ozYF2-0002jz-JZ
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2022 02:07:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ozOln-0006qK-VY
- for qemu-trivial@nongnu.org; Sun, 27 Nov 2022 16:01:03 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ozYF1-0002jj-Cx
+ for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 02:07:47 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ozOll-0007Is-7D
- for qemu-trivial@nongnu.org; Sun, 27 Nov 2022 16:00:58 -0500
-Received: by mail-wr1-x434.google.com with SMTP id w15so766308wrl.9
- for <qemu-trivial@nongnu.org>; Sun, 27 Nov 2022 13:00:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ozYEz-0007bp-PF
+ for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 02:07:47 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id bs21so15238384wrb.4
+ for <qemu-trivial@nongnu.org>; Sun, 27 Nov 2022 23:07:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=m7pcSe4QkFFO4dwmR4n54BvePW4DaDycxfIOra4AoS4=;
- b=aF2feRUKYH7rDLHsioamPnZ3PS3yom/ehK29WjRZ8pt4IxyPme3iLOp45dLRCLgr9T
- 0nyIGk4bdRypXYncF+pZVsmDs5X0CJwTsQAhKfj2rJ2V+vIJWUFWqWfeq+V/iVYpYh+G
- KbnznG3y7q8pu4ZJggKIt2q57IkdapOXy6Vpv1wfYv0m7/TJpwbMFyArWykAMWQ/Wt/K
- wv7t8RPRmat4QMlMhluThPhShGYVe93Z5N8hILpHiDx0uOoZqIKrqKkzuFNQpVWFQiA0
- n4Z8V9SpOH8ERlmDWWQoy2dc1s6XfYJqpipcn4qavEYtOuxjVXOKy8/40/Ri8x5zh51N
- yn2Q==
+ bh=LOgwOJnM40lY8hFBwKqGD5oiCB2hIHsLKvK+NmLl044=;
+ b=Pc5dnpHdpxq+QiHNOkL6Za2fDt4M3ByBwwN6rnoewJrpEGDoZuSPErSqp272hY+YVI
+ zQDN7N3WDF6xtonamOVEST5ixjM/sWn2DSnDfXIuFND9ahAAUqDcSj+MVrpi6hxSyVOP
+ 97pbHcd9ZhiJjPxxxAqSYYgHESsuqWh6FzctlMEfjSPVhjC+/JcrZiOTpfXgg8EVOVpT
+ 39ReG3feD0qOJVssmf2aX+rGxZVwSK15X3IQJJPuAOEYdHzkd/qCAXRseSjZkjwdhTSg
+ S8PrRQgHXAKss02vq+KCmDFl8UNDINhv0miqkKla+Kl6G1x3j/nQzSZBBAqpZbwUrecd
+ VisA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=m7pcSe4QkFFO4dwmR4n54BvePW4DaDycxfIOra4AoS4=;
- b=FpxRXhOF1m1leyJ5efwshOIGkJ97FEyjQ75xdPcDmcm+MFcTImcGYPRJlkFrB641ri
- mqab/EE88uwQuV9z3t00W6B9axvkLv0TEaT5AougiCSXypSxqSWT5Y3DtaPR+7uB2tDX
- lezPqhpnn/6aVDtwTIZPQjarJE7Tnaloae88tjrm5lWKTGthhQc63cRX+fq4dAVZ9Lsv
- e3MEgQVFA975TD2+uHvWZLZ94CCPmhy/GCMFDnU8pIk1zV0jauWireepdRxENjquKo+C
- z8GYiD7gVZg24NXKWThwyitUiy5XGMjAdGFAOyzVBc8J4ANgkO+MPZv+YXkOuaRkS7hM
- opIQ==
-X-Gm-Message-State: ANoB5pnEsHj+CY2JevkX8INRO6yCFArrzTniR0EUcDHUiGII7bxp1VnP
- D1AoS3klV02Qbpy2zWW0Fbf9Xw==
-X-Google-Smtp-Source: AA0mqf6Tcs2My+hwRte5J07tTEbdftoYPRm8VZ+Zyv+Bx/InepwVb3x6LzIsnxkelpqCtmy00mfZsA==
-X-Received: by 2002:a5d:51cf:0:b0:238:3fcb:31ce with SMTP id
- n15-20020a5d51cf000000b002383fcb31cemr23200977wrv.655.1669582849164; 
- Sun, 27 Nov 2022 13:00:49 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- r8-20020a05600c458800b003cf4d99fd2asm2774261wmo.6.2022.11.27.13.00.48
+ bh=LOgwOJnM40lY8hFBwKqGD5oiCB2hIHsLKvK+NmLl044=;
+ b=ol7P7FydBLDPwyyw0EGe5CMQzWW+Vl6D6++sZPGnjGp01CLxXpFJMBTWhLxTa9pOp8
+ aYf//mcmt2/rhvaDMFE+aToJvSb3hRBfoSGfGaf7CrfT+8qoZei5sedjTFj1/yG9uXhg
+ O3TCM1QbyYReYnaMY0Vd0b/bwuKWpY1lpHnxidub1MqVHtrFPBYSnUeyOSVu4kLp9rbG
+ 1cijMMxqGPImDF7qOuQzcCOvekbE6kFp0kqOZd2Nj2XgtnmAczv/FMjVBRl01foSYBoE
+ dmdhi3cphARAkx/nfmkcB8efMBRAx0MV/lrGwN1C8RiUKYM0shwO5tOeDusrHRBeSPn8
+ d55A==
+X-Gm-Message-State: ANoB5pkLc/GlQOtUI7QcZDuZoK+awayVE1J8QJKQTY8D+KMF++TRyBH2
+ /362QM9efTzdCmPNijXGSXdzKQ==
+X-Google-Smtp-Source: AA0mqf6eoIJNq4L6bVFZm2MPHTZ4ESiDSHOhOT+IMjvfyjHDfaBQnDhN1lK3QL3hh0lWt3lbDVrMEw==
+X-Received: by 2002:adf:bb04:0:b0:241:f868:578e with SMTP id
+ r4-20020adfbb04000000b00241f868578emr13112315wrg.516.1669619264067; 
+ Sun, 27 Nov 2022 23:07:44 -0800 (PST)
+Received: from [192.168.1.175] (49.red-88-29-176.dynamicip.rima-tde.net.
+ [88.29.176.49]) by smtp.gmail.com with ESMTPSA id
+ e9-20020adff349000000b0023657e1b980sm9953236wrp.53.2022.11.27.23.07.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 27 Nov 2022 13:00:48 -0800 (PST)
-Message-ID: <eed03d1f-fe2c-78d4-f94c-0d8d3590141d@linaro.org>
-Date: Sun, 27 Nov 2022 22:00:47 +0100
+ Sun, 27 Nov 2022 23:07:43 -0800 (PST)
+Message-ID: <c8aca9fa-ea8f-bd68-960e-f579a28243b9@linaro.org>
+Date: Mon, 28 Nov 2022 08:07:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.5.0
-Subject: Re: [PATCH] hw/cxl/cxl-host: Fix an error message typo
+Subject: Re: [PATCH] hw/display/next-fb: Fix comment typo
+To: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, huth@tuxfamily.org
+References: <20221125160849.23711-1-evgeny.v.ermakov@gmail.com>
 Content-Language: en-US
-To: Hoa Nguyen <hoanguyen@ucdavis.edu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20221127032220.2649-1-hoanguyen@ucdavis.edu>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221127032220.2649-1-hoanguyen@ucdavis.edu>
+In-Reply-To: <20221125160849.23711-1-evgeny.v.ermakov@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
@@ -80,12 +80,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Nov 2022 21:01:03 -0000
+X-List-Received-Date: Mon, 28 Nov 2022 07:07:47 -0000
 
-On 27/11/22 04:22, Hoa Nguyen wrote:
-> Signed-off-by: Hoa Nguyen <hoanguyen@ucdavis.edu>
+On 25/11/22 17:08, Evgeny Ermakov wrote:
+> Signed-off-by: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
 > ---
->   hw/cxl/cxl-host.c | 2 +-
+>   hw/display/next-fb.c | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
