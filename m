@@ -1,72 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ozYF2-0002jz-JZ
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2022 02:07:48 -0500
+	id 1ozeIS-0006bW-Sz
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2022 08:35:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ozYF1-0002jj-Cx
- for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 02:07:47 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ozYEz-0007bp-PF
- for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 02:07:47 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id bs21so15238384wrb.4
- for <qemu-trivial@nongnu.org>; Sun, 27 Nov 2022 23:07:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=LOgwOJnM40lY8hFBwKqGD5oiCB2hIHsLKvK+NmLl044=;
- b=Pc5dnpHdpxq+QiHNOkL6Za2fDt4M3ByBwwN6rnoewJrpEGDoZuSPErSqp272hY+YVI
- zQDN7N3WDF6xtonamOVEST5ixjM/sWn2DSnDfXIuFND9ahAAUqDcSj+MVrpi6hxSyVOP
- 97pbHcd9ZhiJjPxxxAqSYYgHESsuqWh6FzctlMEfjSPVhjC+/JcrZiOTpfXgg8EVOVpT
- 39ReG3feD0qOJVssmf2aX+rGxZVwSK15X3IQJJPuAOEYdHzkd/qCAXRseSjZkjwdhTSg
- S8PrRQgHXAKss02vq+KCmDFl8UNDINhv0miqkKla+Kl6G1x3j/nQzSZBBAqpZbwUrecd
- VisA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LOgwOJnM40lY8hFBwKqGD5oiCB2hIHsLKvK+NmLl044=;
- b=ol7P7FydBLDPwyyw0EGe5CMQzWW+Vl6D6++sZPGnjGp01CLxXpFJMBTWhLxTa9pOp8
- aYf//mcmt2/rhvaDMFE+aToJvSb3hRBfoSGfGaf7CrfT+8qoZei5sedjTFj1/yG9uXhg
- O3TCM1QbyYReYnaMY0Vd0b/bwuKWpY1lpHnxidub1MqVHtrFPBYSnUeyOSVu4kLp9rbG
- 1cijMMxqGPImDF7qOuQzcCOvekbE6kFp0kqOZd2Nj2XgtnmAczv/FMjVBRl01foSYBoE
- dmdhi3cphARAkx/nfmkcB8efMBRAx0MV/lrGwN1C8RiUKYM0shwO5tOeDusrHRBeSPn8
- d55A==
-X-Gm-Message-State: ANoB5pkLc/GlQOtUI7QcZDuZoK+awayVE1J8QJKQTY8D+KMF++TRyBH2
- /362QM9efTzdCmPNijXGSXdzKQ==
-X-Google-Smtp-Source: AA0mqf6eoIJNq4L6bVFZm2MPHTZ4ESiDSHOhOT+IMjvfyjHDfaBQnDhN1lK3QL3hh0lWt3lbDVrMEw==
-X-Received: by 2002:adf:bb04:0:b0:241:f868:578e with SMTP id
- r4-20020adfbb04000000b00241f868578emr13112315wrg.516.1669619264067; 
- Sun, 27 Nov 2022 23:07:44 -0800 (PST)
-Received: from [192.168.1.175] (49.red-88-29-176.dynamicip.rima-tde.net.
- [88.29.176.49]) by smtp.gmail.com with ESMTPSA id
- e9-20020adff349000000b0023657e1b980sm9953236wrp.53.2022.11.27.23.07.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 27 Nov 2022 23:07:43 -0800 (PST)
-Message-ID: <c8aca9fa-ea8f-bd68-960e-f579a28243b9@linaro.org>
-Date: Mon, 28 Nov 2022 08:07:41 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ozeIE-0006Yu-Rh
+ for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 08:35:38 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ozeID-0006EH-EC
+ for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 08:35:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1669642528;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=7canvGOQLQ8xGcNBRV1oL6tkKd0wqtuphf5WnxljrmY=;
+ b=YSzZHqwbTPeyWNHKwZasCY2Snh+vGNVViuRWnnA9z2oiwnHT0j6fHnyeS38F+Dz+vn+qH6
+ 16qPmMvxOh5vX9EP8qVrBl+qyP5P6iAgAPr6JxcdZRViVfY/lqLW02sTcKR1fxS3ZdBzWC
+ hPPN3liUfInYoESGQqU4ZMsB7YraPHs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-204-ergRC35KPHe9I8FoF16M_w-1; Mon, 28 Nov 2022 08:35:25 -0500
+X-MC-Unique: ergRC35KPHe9I8FoF16M_w-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 69D13800186;
+ Mon, 28 Nov 2022 13:35:25 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.223])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4EDBF2166B2E;
+ Mon, 28 Nov 2022 13:35:24 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH for-8.0] monitor/misc: Remove superfluous include statements
+Date: Mon, 28 Nov 2022 14:35:14 +0100
+Message-Id: <20221128133514.220919-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.0
-Subject: Re: [PATCH] hw/display/next-fb: Fix comment typo
-To: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, huth@tuxfamily.org
-References: <20221125160849.23711-1-evgeny.v.ermakov@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221125160849.23711-1-evgeny.v.ermakov@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.257,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,14 +64,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Nov 2022 07:07:47 -0000
+X-List-Received-Date: Mon, 28 Nov 2022 13:35:42 -0000
 
-On 25/11/22 17:08, Evgeny Ermakov wrote:
-> Signed-off-by: Evgeny Ermakov <evgeny.v.ermakov@gmail.com>
-> ---
->   hw/display/next-fb.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+These #includes are not required anymore (the likely got superfluous
+with commit da76ee76f7 - "hmp-commands-info: move info_cmds content
+out of monitor.c").
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ monitor/misc.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/monitor/misc.c b/monitor/misc.c
+index 205487e2b9..e2c017d69c 100644
+--- a/monitor/misc.c
++++ b/monitor/misc.c
+@@ -25,10 +25,8 @@
+ #include "qemu/osdep.h"
+ #include "monitor-internal.h"
+ #include "monitor/qdev.h"
+-#include "hw/usb.h"
+ #include "hw/pci/pci.h"
+ #include "sysemu/watchdog.h"
+-#include "hw/loader.h"
+ #include "exec/gdbstub.h"
+ #include "net/net.h"
+ #include "net/slirp.h"
+@@ -39,16 +37,13 @@
+ #include "ui/input.h"
+ #include "audio/audio.h"
+ #include "disas/disas.h"
+-#include "sysemu/balloon.h"
+ #include "qemu/timer.h"
+ #include "qemu/log.h"
+ #include "sysemu/hw_accel.h"
+ #include "sysemu/runstate.h"
+ #include "authz/list.h"
+ #include "qapi/util.h"
+-#include "sysemu/blockdev.h"
+ #include "sysemu/sysemu.h"
+-#include "sysemu/tpm.h"
+ #include "sysemu/device_tree.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qerror.h"
+@@ -77,7 +72,6 @@
+ #include "qapi/qapi-init-commands.h"
+ #include "qapi/error.h"
+ #include "qapi/qmp-event.h"
+-#include "sysemu/cpus.h"
+ #include "qemu/cutils.h"
+ 
+ #if defined(TARGET_S390X)
+-- 
+2.31.1
 
 
