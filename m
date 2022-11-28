@@ -1,39 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ozenG-0004xT-D1
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2022 09:07:35 -0500
+	id 1ozfZ8-0005Kf-VQ
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2022 09:57:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrey.drobyshev@virtuozzo.com>)
- id 1ozdli-0003Xt-42
- for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 08:02:00 -0500
-Received: from relay.virtuozzo.com ([130.117.225.111])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ozfZ6-0005K7-7r
+ for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 09:57:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrey.drobyshev@virtuozzo.com>)
- id 1ozdld-00086u-Bj
- for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 08:01:52 -0500
-Received: from [192.168.16.189] (helo=roughy.sw.ru)
- by relay.virtuozzo.com with esmtp (Exim 4.95)
- (envelope-from <andrey.drobyshev@virtuozzo.com>) id 1ozdlS-00CG4w-4o;
- Mon, 28 Nov 2022 14:01:38 +0100
-From: Andrey Drobyshev <andrey.drobyshev@virtuozzo.com>
-To: qemu-trivial@nongnu.org
-Cc: andrey.drobyshev@virtuozzo.com,
-	den@virtuozzo.com
-Subject: [PATCH] qga-win: replace libpcre with libpcre2 in MSI package
-Date: Mon, 28 Nov 2022 15:02:21 +0200
-Message-Id: <20221128130221.389454-1-andrey.drobyshev@virtuozzo.com>
-X-Mailer: git-send-email 2.38.1
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ozfZ4-0004nb-Tt
+ for qemu-trivial@nongnu.org; Mon, 28 Nov 2022 09:56:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1669647418;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=cSuRlOJXTajkrvNKSPiVVCEWAgMrR7lp0I7cgNejk/4=;
+ b=QtZAO4+aFNEeOlfv6sZsSvhTQjSp8x36u7TcTC3xBL/pPlRAP5QctIb0XIUiDywqyz1c7Y
+ wUc+40bRo55dJ0WunpYsag5H7RlHTT04glGiq8UWVvbTCjWsGLguXKG4GFJTV44Rhj3Ram
+ xgJUdE2YTOxbzSA9DQRihuvyHZ1vh+I=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-621-OgN8cd67PJWy2eR5UcZ6oQ-1; Mon, 28 Nov 2022 09:56:54 -0500
+X-MC-Unique: OgN8cd67PJWy2eR5UcZ6oQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3453C101A5AD;
+ Mon, 28 Nov 2022 14:56:54 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1148E17582;
+ Mon, 28 Nov 2022 14:56:54 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E219E21E6921; Mon, 28 Nov 2022 15:56:50 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH for-8.0] monitor/misc: Remove superfluous include
+ statements
+References: <20221128133514.220919-1-thuth@redhat.com>
+Date: Mon, 28 Nov 2022 15:56:50 +0100
+In-Reply-To: <20221128133514.220919-1-thuth@redhat.com> (Thomas Huth's message
+ of "Mon, 28 Nov 2022 14:35:14 +0100")
+Message-ID: <87zgcbnn4d.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=130.117.225.111;
- envelope-from=andrey.drobyshev@virtuozzo.com; helo=relay.virtuozzo.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 28 Nov 2022 09:07:13 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,46 +70,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Nov 2022 13:02:04 -0000
+X-List-Received-Date: Mon, 28 Nov 2022 14:57:00 -0000
 
-According to GLib changelog [1], since version 2.73.2 GLib is using
-libpcre2 instead of libpcre.  As a result, qemu-ga MSI installation
-fails due to missing DLL.
+Thomas Huth <thuth@redhat.com> writes:
 
-This commit makes wixl to put libpcre2-8-0.dll into the MSI bundle.
+> These #includes are not required anymore (the likely got superfluous
+> with commit da76ee76f7 - "hmp-commands-info: move info_cmds content
+> out of monitor.c").
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-[1] https://gitlab.gnome.org/GNOME/glib/-/releases#2.73.2
+Appreciated!
 
-Signed-off-by: Andrey Drobyshev <andrey.drobyshev@virtuozzo.com>
----
- qga/installer/qemu-ga.wxs | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/qga/installer/qemu-ga.wxs b/qga/installer/qemu-ga.wxs
-index 813d1c6ca6..73ce2c4965 100644
---- a/qga/installer/qemu-ga.wxs
-+++ b/qga/installer/qemu-ga.wxs
-@@ -101,8 +101,8 @@
-           <Component Id="libwinpthread" Guid="{6C117C78-0F47-4B07-8F34-6BEE11643829}">
-             <File Id="libwinpthread_1.dll" Name="libwinpthread-1.dll" Source="$(var.BIN_DIR)/libwinpthread-1.dll" KeyPath="yes" DiskId="1"/>
-           </Component>
--          <Component Id="libpcre" Guid="{7A86B45E-A009-489A-A849-CE3BACF03CD0}">
--            <File Id="libpcre_1.dll" Name="libpcre-1.dll" Source="$(var.BIN_DIR)/libpcre-1.dll" KeyPath="yes" DiskId="1"/>
-+          <Component Id="libpcre2" Guid="{F92A3804-B59C-419D-8F29-99A30352C156}">
-+            <File Id="libpcre2_8_0.dll" Name="libpcre2-8-0.dll" Source="$(var.BIN_DIR)/libpcre2-8-0.dll" KeyPath="yes" DiskId="1"/>
-           </Component>
-           <Component Id="registry_entries" Guid="{D075D109-51CA-11E3-9F8B-000C29858960}">
-             <RegistryKey Root="HKLM"
-@@ -153,7 +153,7 @@
-       <ComponentRef Id="libssp" />
-       <ComponentRef Id="libwinpthread" />
-       <ComponentRef Id="registry_entries" />
--      <ComponentRef Id="libpcre" />
-+      <ComponentRef Id="libpcre2" />
-     </Feature>
- 
-     <InstallExecuteSequence>
--- 
-2.38.1
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
 
