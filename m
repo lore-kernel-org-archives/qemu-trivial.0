@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p28E0-0004vy-CF
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:57:26 -0500
+	id 1p28EM-00054L-J0
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:57:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28Dt-0004tL-AE
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:57:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1p28E9-0004xW-Tt
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:57:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28Dr-0007tL-O2
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:57:17 -0500
+ id 1p28E3-0007ug-3P
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:57:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1670234233;
+ s=mimecast20190719; t=1670234245;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8T5xObxYus8mUaDCig1/nmq01TyjcG4leYqxs3OOcvM=;
- b=K12nNI/tCKsZ3we50IHjABywZ/9NDawu0B/AhsXiF7qZt/biXy7cBNNE3+Tu/Pt+w2yKuQ
- iZHKBf1GDQDSpL9NlQMedQQAZiPgnPZg4ogWQQFUAk1OL26SN86blNkflmfTZ0cG/8nLsE
- wS+1MBJFGzx1lWu95k/RYpR/Vk43xbQ=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=H71cToLy64HTbBPdrL5diYAVzVjBcZDaRr6Ge6ZYDPU=;
+ b=gdX+hUglomZDGUXjftWVPon70AN/rPmlQihzoJHf7jKAk+7jVAlbAhArRGIRlwgf2BtBBX
+ XPx7Ojt7+vQVD48JlWpUPBuGd6KAcn5EIAAlucywwHt7+lfRw2zkv+pjRdkwYLldI2rwFf
+ mWaq/0Pd5FP4A7ti2g2LElDNf/wDtIk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-470-6RQIp25AOr-MD9trX-mdGQ-1; Mon, 05 Dec 2022 04:57:07 -0500
-X-MC-Unique: 6RQIp25AOr-MD9trX-mdGQ-1
+ us-mta-657-d2NlJdFvOkaYSLTVrpInFQ-1; Mon, 05 Dec 2022 04:57:15 -0500
+X-MC-Unique: d2NlJdFvOkaYSLTVrpInFQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 71DE43814946;
- Mon,  5 Dec 2022 09:57:06 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4037587B2A7;
+ Mon,  5 Dec 2022 09:57:14 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E28662166B29;
- Mon,  5 Dec 2022 09:56:58 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C7D6C2166B29;
+ Mon,  5 Dec 2022 09:57:06 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
@@ -65,16 +65,16 @@ Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
  Keith Busch <kbusch@kernel.org>, David Hildenbrand <david@redhat.com>,
  qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
  Peter Xu <peterx@redhat.com>
-Subject: [PATCH v2 34/51] migration: Cleanup xbzrle zero page cache update
- logic
-Date: Mon,  5 Dec 2022 10:52:11 +0100
-Message-Id: <20221205095228.1314-35-quintela@redhat.com>
+Subject: [PATCH v2 35/51] migration: Trivial cleanup save_page_header() on
+ same block check
+Date: Mon,  5 Dec 2022 10:52:12 +0100
+Message-Id: <20221205095228.1314-36-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -95,57 +95,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Dec 2022 09:57:18 -0000
+X-List-Received-Date: Mon, 05 Dec 2022 09:57:41 -0000
 
 From: Peter Xu <peterx@redhat.com>
 
-The major change is to replace "!save_page_use_compression()" with
-"xbzrle_enabled" to make it clear.
-
-Reasonings:
-
-(1) When compression enabled, "!save_page_use_compression()" is exactly the
-    same as checking "xbzrle_enabled".
-
-(2) When compression disabled, "!save_page_use_compression()" always return
-    true.  We used to try calling the xbzrle code, but after this change we
-    won't, and we shouldn't need to.
-
-Since at it, drop the xbzrle_enabled check in xbzrle_cache_zero_page()
-because with this change it's not needed anymore.
+The 2nd check on RAM_SAVE_FLAG_CONTINUE is a bit redundant.  Use a boolean
+to be clearer.
 
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ migration/ram.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/migration/ram.c b/migration/ram.c
-index 00a2e30322..7124ff531c 100644
+index 7124ff531c..41475431fc 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -741,10 +741,6 @@ void mig_throttle_counter_reset(void)
-  */
- static void xbzrle_cache_zero_page(RAMState *rs, ram_addr_t current_addr)
+@@ -661,14 +661,15 @@ static size_t save_page_header(RAMState *rs, QEMUFile *f,  RAMBlock *block,
+                                ram_addr_t offset)
  {
--    if (!rs->xbzrle_enabled) {
--        return;
--    }
--
-     /* We don't care if this fails to allocate a new cache page
-      * as long as it updated an old one */
-     cache_insert(XBZRLE.cache, current_addr, XBZRLE.zero_target_page,
-@@ -2301,7 +2297,7 @@ static int ram_save_target_page(RAMState *rs, PageSearchStatus *pss)
-         /* Must let xbzrle know, otherwise a previous (now 0'd) cached
-          * page would be stale
-          */
--        if (!save_page_use_compression(rs)) {
-+        if (rs->xbzrle_enabled) {
-             XBZRLE_cache_lock();
-             xbzrle_cache_zero_page(rs, block->offset + offset);
-             XBZRLE_cache_unlock();
+     size_t size, len;
++    bool same_block = (block == rs->last_sent_block);
+ 
+-    if (block == rs->last_sent_block) {
++    if (same_block) {
+         offset |= RAM_SAVE_FLAG_CONTINUE;
+     }
+     qemu_put_be64(f, offset);
+     size = 8;
+ 
+-    if (!(offset & RAM_SAVE_FLAG_CONTINUE)) {
++    if (!same_block) {
+         len = strlen(block->idstr);
+         qemu_put_byte(f, len);
+         qemu_put_buffer(f, (uint8_t *)block->idstr, len);
 -- 
 2.38.1
 
