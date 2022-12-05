@@ -1,87 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p28GN-00079Z-4l
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:59:51 -0500
+	id 1p2CNb-0001Zm-Ek
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 09:23:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28GE-0006zL-38
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:59:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28G6-0008IT-CD
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:59:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1670234365;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JsXt0Mo+YraOe+nVpUCs7+EEHIwsfkziC7U7eKyeVHo=;
- b=dOQ77eZqz4XczAwdBc70971pzrS3jim/3Pk2B/0ufA+KvfKPTt7DkRG6ja5TgDrHfVDB7m
- I4mcjrGdHIGTMKl+KyUsftua12jBjmWtQ341bjyqJob2vY/L0zY85J1f+mwMG2Wtx8Zvbv
- F56kyl0xNoyW7TPiBKRtwHsknwuq/so=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-563-GxyJAN8aPheGjp7hlT7Stg-1; Mon, 05 Dec 2022 04:59:22 -0500
-X-MC-Unique: GxyJAN8aPheGjp7hlT7Stg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 10C38185A794;
- Mon,  5 Dec 2022 09:59:21 +0000 (UTC)
-Received: from secure.mitica (unknown [10.39.194.135])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 15D182166B29;
- Mon,  5 Dec 2022 09:59:11 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
- Viresh Kumar <viresh.kumar@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Eric Blake <eblake@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Raphael Norwitz <raphael.norwitz@nutanix.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Juan Quintela <quintela@redhat.com>,
- virtio-fs@redhat.com,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, qemu-block@nongnu.org,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Thomas Huth <thuth@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Eduardo Habkost <eduardo@habkost.net>, Gerd Hoffmann <kraxel@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Eric Farman <farman@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Jason Wang <jasowang@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Song Gao <gaosong@loongson.cn>, qemu-s390x@nongnu.org,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Klaus Jensen <its@irrelevant.dk>, John Snow <jsnow@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Keith Busch <kbusch@kernel.org>, David Hildenbrand <david@redhat.com>,
- qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>
-Subject: [PATCH v2 51/51] migration: simplify migration_iteration_run()
-Date: Mon,  5 Dec 2022 10:52:28 +0100
-Message-Id: <20221205095228.1314-52-quintela@redhat.com>
-In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
-References: <20221205095228.1314-1-quintela@redhat.com>
+ (Exim 4.90_1) (envelope-from <pyr@spootnik.org>) id 1p25tQ-00009w-3S
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 02:28:03 -0500
+Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pyr@spootnik.org>) id 1p25tN-0006Ve-KD
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 02:27:59 -0500
+Received: by mail-ua1-x934.google.com with SMTP id 97so3632904uam.0
+ for <qemu-trivial@nongnu.org>; Sun, 04 Dec 2022 23:27:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=spootnik-org.20210112.gappssmtp.com; s=20210112;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=NFj9JzMxET4JuwYsA9SoLEEUFTyQMQvj7IJf2l90eKE=;
+ b=trkn1VnevCLvjhGtVSpwN1Ymgaa9i2RRPMArGt2pKOM6y11EdRzJTlOFHs1lZYtq8i
+ CwXXngw6FO3+BREiY9vOz3v2YvSSy1GD6R9hQSB0L1V45jkLn1lQq1RgJXSPg+lnj2X3
+ ieouORQ05CdQpcimENAjlDPJiitBY120tBFj38VWRP4b+0MivCnAYDcwCFOkcEpWjabb
+ +GVwEYVWXjbv7ULssyK/uAznI7X6UKGzDvEax27MTt4BEIWwdJ/7BZOti2QGT/55oZxx
+ rPvLw01RsBaB1G02Dd1fp/xcEIUra+cpKhD6s5iDan7AHRFXSX5YivgRl28k7IqchT3N
+ Up3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=NFj9JzMxET4JuwYsA9SoLEEUFTyQMQvj7IJf2l90eKE=;
+ b=xo6eCcy7TmGEA7D/vS0KbcdJ3GYKMmzxnjDSV92abG0tjMf2if6He3cFzJxamY0Upy
+ KLHbPp6i/qDQ22Ipj819j8hO0SHDlEXlCVB1G27GIVPn4BTEZ/CG4GXGFEwa7CBvb1nj
+ 0XNmNTXbucoYTooShujcTaCyxucYCq3CbbpWX9pAxB0/GjC9rFwqcFU6JKDnx+IeEXs5
+ Na/VAgNkvyAe+fa70eQEfrFgJCqfpkQTkl9oz7n+IqJczOqsI+9FNqlvmnZicNUTITQ8
+ rYWwr3z/1nra8qfLb8ik3YhwTUBBn6Yi4I4MhJw7L4K177OyLueALSJ3Q5eqXiKFQll+
+ Cydg==
+X-Gm-Message-State: ANoB5pniMhmQ2ZbgWMZ08IbRnsluZb84cyfTUOD/Lk9kS5+NFQIJw1Wc
+ xwOdV0EbQdUlRocncoYucV9Twc5fenAQxVQaToILYAxwc8BP4UBQhyk=
+X-Google-Smtp-Source: AA0mqf4vgrYp6BZtEpSv4V0vxdsGqgEg+/7+KpmzF8WMBzYmF583pL4A6h0KMCI7p1VL45H8d2htw4aeuAmv4CDwa+w=
+X-Received: by 2002:ab0:4986:0:b0:414:4bb5:3e54 with SMTP id
+ e6-20020ab04986000000b004144bb53e54mr37577284uad.121.1670225275437; Sun, 04
+ Dec 2022 23:27:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20221202151202.24851-1-pyr@spootnik.org>
+In-Reply-To: <20221202151202.24851-1-pyr@spootnik.org>
+From: Pierre-Yves Ritschard <pyr@spootnik.org>
+Date: Mon, 5 Dec 2022 08:27:44 +0100
+Message-ID: <CAJwCgu9L4PrkEUymRGfiZLbzP-Rpn0gYoYih3HUptG474XJTxg@mail.gmail.com>
+Subject: Fwd: [PATCH] ui/vnc.c: Allow websocket connections over AF_UNIX
+ sockets
+To: qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000003cd72005ef0fa096"
+Received-SPF: none client-ip=2607:f8b0:4864:20::934;
+ envelope-from=pyr@spootnik.org; helo=mail-ua1-x934.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 05 Dec 2022 09:23:33 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,55 +70,126 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Dec 2022 09:59:44 -0000
+X-List-Received-Date: Mon, 05 Dec 2022 07:28:04 -0000
 
-Signed-off-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+--0000000000003cd72005ef0fa096
+Content-Type: text/plain; charset="UTF-8"
+
+I forgot to publish the patch here
+
+---------- Forwarded message ---------
+From: Pierre-Yves Ritschard <pyr@spootnik.org>
+Date: Fri, Dec 2, 2022 at 4:12 PM
+Subject: [PATCH] ui/vnc.c: Allow websocket connections over AF_UNIX sockets
+To: Gerd Hoffmann <kraxel@redhat.com>, <qemu-devel@nongnu.org>
+Cc: Pierre-Yves Ritschard <pyr@spootnik.org>
+
+
+Hi,
+
+The provided patch allows the VNC websocket server of a qemu process to
+be provided over AF_UNIX as it is already possible for standard TCP VNC
+servers.
+
+Now that many clients support websocket connections, some exclusively,
+it can be useful to expose the VNC server. One such case is when a
+proxy is present on a host machine, allowing it to proxy to a
+deterministic location withouth having to keep track of port mappings.
+
+Removing the condition as is done in the provided patch creates a
+functional server. If there's a downside to this approach I could not
+figure it out while reading the code. My hunch was that the condition
+was there for a reason, but it did not jump at me.
+
+Cheers,
+  - pyr
+
 ---
- migration/migration.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ ui/vnc.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index b54e4657ce..b2c974f166 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -3769,23 +3769,23 @@ static MigIterateState migration_iteration_run(MigrationState *s)
-         trace_migrate_pending_exact(pending_size, s->threshold_size, pend_pre, pend_post);
-     }
- 
--    if (pending_size && pending_size >= s->threshold_size) {
--        /* Still a significant amount to transfer */
--        if (!in_postcopy && pend_pre <= s->threshold_size &&
--            qatomic_read(&s->start_postcopy)) {
--            if (postcopy_start(s)) {
--                error_report("%s: postcopy failed to start", __func__);
--            }
--            return MIG_ITERATE_SKIP;
+diff --git ui/vnc.c ui/vnc.c
+index 88f55cbf3c..b01a655400 100644
+--- ui/vnc.c
++++ ui/vnc.c
+@@ -3729,11 +3729,6 @@ static int vnc_display_get_address(const char
+*addrstr,
+         addr->type = SOCKET_ADDRESS_TYPE_UNIX;
+         addr->u.q_unix.path = g_strdup(addrstr + 5);
+
+-        if (websocket) {
+-            error_setg(errp, "UNIX sockets not supported with websock");
+-            goto cleanup;
 -        }
--        /* Just another iteration step */
--        qemu_savevm_state_iterate(s->to_dst_file, in_postcopy);
--    } else {
-+    if (pending_size < s->threshold_size) {
-         trace_migration_thread_low_pending(pending_size);
-         migration_completion(s);
-         return MIG_ITERATE_BREAK;
-     }
- 
-+    /* Still a significant amount to transfer */
-+    if (!in_postcopy && pend_pre <= s->threshold_size &&
-+        qatomic_read(&s->start_postcopy)) {
-+        if (postcopy_start(s)) {
-+            error_report("%s: postcopy failed to start", __func__);
-+        }
-+        return MIG_ITERATE_SKIP;
-+    }
-+
-+    /* Just another iteration step */
-+    qemu_savevm_state_iterate(s->to_dst_file, in_postcopy);
-     return MIG_ITERATE_RESUME;
- }
- 
+-
+         if (to) {
+             error_setg(errp, "Port range not support with UNIX socket");
+             goto cleanup;
 -- 
 2.38.1
 
+--0000000000003cd72005ef0fa096
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I forgot to publish the patch here<br><div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded=
+ message ---------<br>From: <b class=3D"gmail_sendername" dir=3D"auto">Pier=
+re-Yves Ritschard</b> <span dir=3D"auto">&lt;<a href=3D"mailto:pyr@spootnik=
+.org">pyr@spootnik.org</a>&gt;</span><br>Date: Fri, Dec 2, 2022 at 4:12 PM<=
+br>Subject: [PATCH] ui/vnc.c: Allow websocket connections over AF_UNIX sock=
+ets<br>To: Gerd Hoffmann &lt;<a href=3D"mailto:kraxel@redhat.com">kraxel@re=
+dhat.com</a>&gt;,  &lt;<a href=3D"mailto:qemu-devel@nongnu.org">qemu-devel@=
+nongnu.org</a>&gt;<br>Cc: Pierre-Yves Ritschard &lt;<a href=3D"mailto:pyr@s=
+pootnik.org">pyr@spootnik.org</a>&gt;<br></div><br><br>Hi,<br>
+<br>
+The provided patch allows the VNC websocket server of a qemu process to<br>
+be provided over AF_UNIX as it is already possible for standard TCP VNC<br>
+servers.<br>
+<br>
+Now that many clients support websocket connections, some exclusively,<br>
+it can be useful to expose the VNC server. One such case is when a<br>
+proxy is present on a host machine, allowing it to proxy to a<br>
+deterministic location withouth having to keep track of port mappings.<br>
+<br>
+Removing the condition as is done in the provided patch creates a <br>
+functional server. If there&#39;s a downside to this approach I could not<b=
+r>
+figure it out while reading the code. My hunch was that the condition<br>
+was there for a reason, but it did not jump at me.<br>
+<br>
+Cheers,<br>
+=C2=A0 - pyr<br>
+<br>
+---<br>
+=C2=A0ui/vnc.c | 5 -----<br>
+=C2=A01 file changed, 5 deletions(-)<br>
+<br>
+diff --git ui/vnc.c ui/vnc.c<br>
+index 88f55cbf3c..b01a655400 100644<br>
+--- ui/vnc.c<br>
++++ ui/vnc.c<br>
+@@ -3729,11 +3729,6 @@ static int vnc_display_get_address(const char *addrs=
+tr,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0addr-&gt;type =3D SOCKET_ADDRESS_TYPE_UNI=
+X;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0addr-&gt;u.q_unix.path =3D g_strdup(addrs=
+tr + 5);<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (websocket) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;UNIX sock=
+ets not supported with websock&quot;);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 goto cleanup;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+-<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (to) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_setg(errp, &quot;Port=
+ range not support with UNIX socket&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto cleanup;<br>
+-- <br>
+2.38.1<br>
+<br>
+</div></div></div>
+
+--0000000000003cd72005ef0fa096--
 
