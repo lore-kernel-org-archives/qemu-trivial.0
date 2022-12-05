@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p28Ab-00015G-By
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:53:53 -0500
+	id 1p28Aj-0001CT-Ne
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:54:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28AZ-00013v-E0
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:53:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1p28Aj-0001B4-4z
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:54:01 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28AY-0006XJ-2B
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:53:51 -0500
+ id 1p28Ag-0006Yi-6i
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:53:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1670234029;
+ s=mimecast20190719; t=1670234037;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=sWawvSWadu0bL+au53S7AJrJqJZVUFdCmV8iHivocyk=;
- b=PDljk0TU25jyrR+ic5TTkvNnd94sLgZdtHR0kpvDpx+I2iDVC6iJ+9BSsmq7YIdOidXX6W
- IOfqhsBS/cQjAC2tmvp/AxOEJ2apSSZcuQ/iZ/qku41yzmdNVDZ03VxGJ2ptlYcU2p4ev4
- vipwQz41zl5heiOh49/m/wcEAtqolxw=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Yv32VybYVhxmtkUKSRTxJbrtrMCQayUU3iWUHvoUh0A=;
+ b=Ba0PjfBYqsGNha7bwMsmQa4zsgJI4yZa+Lml6lMqnaArp+b/U9AmufIfAkO+sig8GFGJpP
+ kIZz8TWwiOMI7gZxzbOiJi3vOKYF6UmbOeiNRrR9TLkat1mh/RgYc82Dq5lqm5eUl7L+41
+ D8D7eVEsIPH6KwsfhN9kh2CaZ9RTGyQ=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-392-aAy9LTFLPj6yCjW41-Z7hg-1; Mon, 05 Dec 2022 04:53:45 -0500
-X-MC-Unique: aAy9LTFLPj6yCjW41-Z7hg-1
+ us-mta-553-4ZY-NG3LODKLWCT2EFEwLQ-1; Mon, 05 Dec 2022 04:53:53 -0500
+X-MC-Unique: 4ZY-NG3LODKLWCT2EFEwLQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2C0F185A588;
- Mon,  5 Dec 2022 09:53:44 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 26DC53C0F663;
+ Mon,  5 Dec 2022 09:53:52 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D73122166B29;
- Mon,  5 Dec 2022 09:53:36 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7A9DD2166B29;
+ Mon,  5 Dec 2022 09:53:44 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
@@ -64,18 +64,19 @@ Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
  Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Keith Busch <kbusch@kernel.org>, David Hildenbrand <david@redhat.com>,
  qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 08/51] hw/display/qxl: Assert memory slot fits in
- preallocated MemoryRegion
-Date: Mon,  5 Dec 2022 10:51:45 +0100
-Message-Id: <20221205095228.1314-9-quintela@redhat.com>
+Subject: [PATCH v2 09/51] block-backend: avoid bdrv_unregister_buf() NULL
+ pointer deref
+Date: Mon,  5 Dec 2022 10:51:46 +0100
+Message-Id: <20221205095228.1314-10-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -96,29 +97,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Dec 2022 09:53:51 -0000
+X-List-Received-Date: Mon, 05 Dec 2022 09:54:01 -0000
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Stefan Hajnoczi <stefanha@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+bdrv_*() APIs expect a valid BlockDriverState. Calling them with bs=NULL
+leads to undefined behavior.
+
+Jonathan Cameron reported this following NULL pointer dereference when a
+VM with a virtio-blk device and a memory-backend-file object is
+terminated:
+1. qemu_cleanup() closes all drives, setting blk->root to NULL
+2. qemu_cleanup() calls user_creatable_cleanup(), which results in a RAM
+   block notifier callback because the memory-backend-file is destroyed.
+3. blk_unregister_buf() is called by virtio-blk's BlockRamRegistrar
+   notifier callback and undefined behavior occurs.
+
+Fixes: baf422684d73 ("virtio-blk: use BDRV_REQ_REGISTERED_BUF optimization hint")
+Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <20221128202741.4945-6-philmd@linaro.org>
+Message-Id: <20221121211923.1993171-1-stefanha@redhat.com>
 ---
- hw/display/qxl.c | 1 +
- 1 file changed, 1 insertion(+)
+ block/block-backend.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-index 0b21626aad..6772849dec 100644
---- a/hw/display/qxl.c
-+++ b/hw/display/qxl.c
-@@ -1384,6 +1384,7 @@ static int qxl_add_memslot(PCIQXLDevice *d, uint32_t slot_id, uint64_t delta,
-         qxl_set_guest_bug(d, "%s: pci_region = %d", __func__, pci_region);
-         return 1;
-     }
-+    assert(guest_end - pci_start <= memory_region_size(mr));
+diff --git a/block/block-backend.c b/block/block-backend.c
+index b48c91f4e1..d98a96ff37 100644
+--- a/block/block-backend.c
++++ b/block/block-backend.c
+@@ -2576,14 +2576,25 @@ static void blk_root_drained_end(BdrvChild *child, int *drained_end_counter)
  
-     virt_start = (intptr_t)memory_region_get_ram_ptr(mr);
-     memslot.slot_id = slot_id;
+ bool blk_register_buf(BlockBackend *blk, void *host, size_t size, Error **errp)
+ {
++    BlockDriverState *bs = blk_bs(blk);
++
+     GLOBAL_STATE_CODE();
+-    return bdrv_register_buf(blk_bs(blk), host, size, errp);
++
++    if (bs) {
++        return bdrv_register_buf(bs, host, size, errp);
++    }
++    return true;
+ }
+ 
+ void blk_unregister_buf(BlockBackend *blk, void *host, size_t size)
+ {
++    BlockDriverState *bs = blk_bs(blk);
++
+     GLOBAL_STATE_CODE();
+-    bdrv_unregister_buf(blk_bs(blk), host, size);
++
++    if (bs) {
++        bdrv_unregister_buf(bs, host, size);
++    }
+ }
+ 
+ int coroutine_fn blk_co_copy_range(BlockBackend *blk_in, int64_t off_in,
 -- 
 2.38.1
 
