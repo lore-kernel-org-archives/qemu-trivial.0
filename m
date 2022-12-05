@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p28EM-00054L-J0
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:57:46 -0500
+	id 1p28ET-0005BA-83
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:57:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28E9-0004xW-Tt
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:57:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1p28EB-0004xn-IF
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:57:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28E3-0007ug-3P
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:57:32 -0500
+ id 1p28E5-0007vL-Og
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:57:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1670234245;
+ s=mimecast20190719; t=1670234248;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=H71cToLy64HTbBPdrL5diYAVzVjBcZDaRr6Ge6ZYDPU=;
- b=gdX+hUglomZDGUXjftWVPon70AN/rPmlQihzoJHf7jKAk+7jVAlbAhArRGIRlwgf2BtBBX
- XPx7Ojt7+vQVD48JlWpUPBuGd6KAcn5EIAAlucywwHt7+lfRw2zkv+pjRdkwYLldI2rwFf
- mWaq/0Pd5FP4A7ti2g2LElDNf/wDtIk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=MyOOzG/IByBPCSi/RuF6EO6mdBGoKRDsMNpVGRjYHyo=;
+ b=YA82wt88OEfM8Rce18vmfAXgOeisCA4Q4K6bGcgI3mxvNEL1IcdEGBClBzUOz2hHQRMYCF
+ uzY7yrVpJgNTzh79wNeAwhWKjqN/Vws62CJaW7UIAOkIdmKbCaBCkb3yuACyr259Wej1ll
+ HffIJHRkpgHU8j4jhbdTFDhXg2n00WA=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-657-d2NlJdFvOkaYSLTVrpInFQ-1; Mon, 05 Dec 2022 04:57:15 -0500
-X-MC-Unique: d2NlJdFvOkaYSLTVrpInFQ-1
+ us-mta-454-mDjzPx4ePvSGdoy5QNK39A-1; Mon, 05 Dec 2022 04:57:23 -0500
+X-MC-Unique: mDjzPx4ePvSGdoy5QNK39A-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4037587B2A7;
- Mon,  5 Dec 2022 09:57:14 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 11A17299E755;
+ Mon,  5 Dec 2022 09:57:22 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C7D6C2166B29;
- Mon,  5 Dec 2022 09:57:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8E45D2166B29;
+ Mon,  5 Dec 2022 09:57:14 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
@@ -65,16 +65,16 @@ Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
  Keith Busch <kbusch@kernel.org>, David Hildenbrand <david@redhat.com>,
  qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
  Peter Xu <peterx@redhat.com>
-Subject: [PATCH v2 35/51] migration: Trivial cleanup save_page_header() on
- same block check
-Date: Mon,  5 Dec 2022 10:52:12 +0100
-Message-Id: <20221205095228.1314-36-quintela@redhat.com>
+Subject: [PATCH v2 36/51] migration: Remove RAMState.f references in
+ compression code
+Date: Mon,  5 Dec 2022 10:52:13 +0100
+Message-Id: <20221205095228.1314-37-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -99,39 +99,79 @@ X-List-Received-Date: Mon, 05 Dec 2022 09:57:41 -0000
 
 From: Peter Xu <peterx@redhat.com>
 
-The 2nd check on RAM_SAVE_FLAG_CONTINUE is a bit redundant.  Use a boolean
-to be clearer.
+Removing referencing to RAMState.f in compress_page_with_multi_thread() and
+flush_compressed_data().
+
+Compression code by default isn't compatible with having >1 channels (or it
+won't currently know which channel to flush the compressed data), so to
+make it simple we always flush on the default to_dst_file port until
+someone wants to add >1 ports support, as rs->f right now can really
+change (after postcopy preempt is introduced).
+
+There should be no functional change at all after patch applied, since as
+long as rs->f referenced in compression code, it must be to_dst_file.
 
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ migration/ram.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/migration/ram.c b/migration/ram.c
-index 7124ff531c..41475431fc 100644
+index 41475431fc..6e3dc845c5 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -661,14 +661,15 @@ static size_t save_page_header(RAMState *rs, QEMUFile *f,  RAMBlock *block,
-                                ram_addr_t offset)
+@@ -1461,6 +1461,7 @@ static bool save_page_use_compression(RAMState *rs);
+ 
+ static void flush_compressed_data(RAMState *rs)
  {
-     size_t size, len;
-+    bool same_block = (block == rs->last_sent_block);
++    MigrationState *ms = migrate_get_current();
+     int idx, len, thread_count;
  
--    if (block == rs->last_sent_block) {
-+    if (same_block) {
-         offset |= RAM_SAVE_FLAG_CONTINUE;
+     if (!save_page_use_compression(rs)) {
+@@ -1479,7 +1480,7 @@ static void flush_compressed_data(RAMState *rs)
+     for (idx = 0; idx < thread_count; idx++) {
+         qemu_mutex_lock(&comp_param[idx].mutex);
+         if (!comp_param[idx].quit) {
+-            len = qemu_put_qemu_file(rs->f, comp_param[idx].file);
++            len = qemu_put_qemu_file(ms->to_dst_file, comp_param[idx].file);
+             /*
+              * it's safe to fetch zero_page without holding comp_done_lock
+              * as there is no further request submitted to the thread,
+@@ -1498,11 +1499,11 @@ static inline void set_compress_params(CompressParam *param, RAMBlock *block,
+     param->offset = offset;
+ }
+ 
+-static int compress_page_with_multi_thread(RAMState *rs, RAMBlock *block,
+-                                           ram_addr_t offset)
++static int compress_page_with_multi_thread(RAMBlock *block, ram_addr_t offset)
+ {
+     int idx, thread_count, bytes_xmit = -1, pages = -1;
+     bool wait = migrate_compress_wait_thread();
++    MigrationState *ms = migrate_get_current();
+ 
+     thread_count = migrate_compress_threads();
+     qemu_mutex_lock(&comp_done_lock);
+@@ -1510,7 +1511,8 @@ retry:
+     for (idx = 0; idx < thread_count; idx++) {
+         if (comp_param[idx].done) {
+             comp_param[idx].done = false;
+-            bytes_xmit = qemu_put_qemu_file(rs->f, comp_param[idx].file);
++            bytes_xmit = qemu_put_qemu_file(ms->to_dst_file,
++                                            comp_param[idx].file);
+             qemu_mutex_lock(&comp_param[idx].mutex);
+             set_compress_params(&comp_param[idx], block, offset);
+             qemu_cond_signal(&comp_param[idx].cond);
+@@ -2263,7 +2265,7 @@ static bool save_compress_page(RAMState *rs, RAMBlock *block, ram_addr_t offset)
+         return false;
      }
-     qemu_put_be64(f, offset);
-     size = 8;
  
--    if (!(offset & RAM_SAVE_FLAG_CONTINUE)) {
-+    if (!same_block) {
-         len = strlen(block->idstr);
-         qemu_put_byte(f, len);
-         qemu_put_buffer(f, (uint8_t *)block->idstr, len);
+-    if (compress_page_with_multi_thread(rs, block, offset) > 0) {
++    if (compress_page_with_multi_thread(block, offset) > 0) {
+         return true;
+     }
+ 
 -- 
 2.38.1
 
