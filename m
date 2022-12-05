@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p28Cg-0003Ph-BC
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:56:02 -0500
+	id 1p28Ck-0003Yd-D6
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:56:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28CT-00034X-8s
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:55:53 -0500
+ id 1p28Ch-0003T9-Kv
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:56:03 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28CP-0007RF-83
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:55:48 -0500
+ id 1p28Cf-0007Wy-UA
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:56:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1670234144;
+ s=mimecast20190719; t=1670234161;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dnkYOrTgO+HGLMQelFOS97QjJMRgo81PYH7NJKA+HKk=;
- b=FVZBslVKzQsq674mtc4+SHUEvEewPLZFVaE69zTq+tw8cqGMZaJrx/Uu3C38W/gpR4gwPH
- UFD/lVVYA75AC3mci8aF0ZZdOlDfG36voJTa5DqkUfXm8vloqbOHBqkn2Zaw96rIURUdUK
- p53+/Qj8U+aVrkHJreuk9JHWmpzv06s=
+ bh=9oxN9dTnRZHuYgKUJ7HxItN5TO/8EAdFWU0o+By2T4Y=;
+ b=XzehB5fnVR15A2v31KP1tTpazAdZgL9wcH/NPSd4OG16TW5I5vbEe8Oz0sx03hyDoUnjAC
+ bRhgAV4z9lPzsjgtdwoGRMH2WI5s4JINeX3Fm1mAvkvtlFXLx9TpX5JbY/EFOTEXNf6qM/
+ tSyt50mMyjXD6d4e+dJBPr09CdtCVb0=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-5-8t4q3dc7PkiPR_2Ty-aeZg-1; Mon, 05 Dec 2022 04:55:40 -0500
-X-MC-Unique: 8t4q3dc7PkiPR_2Ty-aeZg-1
+ us-mta-37-lXKRaxyeNXqve1TTpz4ZMw-1; Mon, 05 Dec 2022 04:55:57 -0500
+X-MC-Unique: lXKRaxyeNXqve1TTpz4ZMw-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5829B185A794;
- Mon,  5 Dec 2022 09:55:39 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D9D8185A7A9;
+ Mon,  5 Dec 2022 09:55:55 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F35CF2166B29;
- Mon,  5 Dec 2022 09:55:31 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A0C2B2166B2A;
+ Mon,  5 Dec 2022 09:55:47 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
@@ -64,14 +64,16 @@ Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
  Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Keith Busch <kbusch@kernel.org>, David Hildenbrand <david@redhat.com>,
  qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
- Daniel Hoffman <dhoff749@gmail.com>
-Subject: [PATCH v2 23/51] target/i386: Always completely initialize
- TranslateFault
-Date: Mon,  5 Dec 2022 10:52:00 +0100
-Message-Id: <20221205095228.1314-24-quintela@redhat.com>
+ Bin Meng <bmeng@tinylab.org>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v2 25/51] tests/qtest/migration-test: Fix unlink error and
+ memory leaks
+Date: Mon,  5 Dec 2022 10:52:02 +0100
+Message-Id: <20221205095228.1314-26-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
@@ -95,93 +97,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Dec 2022 09:55:57 -0000
+X-List-Received-Date: Mon, 05 Dec 2022 09:56:03 -0000
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
 
-In get_physical_address, the canonical address check failed to
-set TranslateFault.stage2, which resulted in an uninitialized
-read from the struct when reporting the fault in x86_cpu_tlb_fill.
+When running the migration test compiled with Clang from Fedora 37
+and sanitizers enabled, there is an error complaining about unlink():
 
-Adjust all error paths to use structure assignment so that the
-entire struct is always initialized.
+ ../tests/qtest/migration-test.c:1072:12: runtime error: null pointer
+  passed as argument 1, which is declared to never be null
+ /usr/include/unistd.h:858:48: note: nonnull attribute specified here
+ SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
+  ../tests/qtest/migration-test.c:1072:12 in
+ (test program exited with status code 1)
+ TAP parsing error: Too few tests run (expected 33, got 20)
 
-Reported-by: Daniel Hoffman <dhoff749@gmail.com>
-Fixes: 9bbcf372193a ("target/i386: Reorg GET_HPHYS")
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20221201074522.178498-1-richard.henderson@linaro.org>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1324
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+The data->clientcert and data->clientkey pointers can indeed be unset
+in some tests, so we have to check them before calling unlink() with
+those.
+
+While we're at it, I also noticed that the code is only freeing
+some but not all of the allocated strings in this function, and
+indeed, valgrind is also complaining about memory leaks here.
+So let's call g_free() on all allocated strings to avoid leaking
+memory here.
+
+Message-Id: <20221125083054.117504-1-thuth@redhat.com>
+Tested-by: Bin Meng <bmeng@tinylab.org>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- target/i386/tcg/sysemu/excp_helper.c | 34 ++++++++++++++++------------
- 1 file changed, 19 insertions(+), 15 deletions(-)
+ tests/qtest/migration-test.c | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
 
-diff --git a/target/i386/tcg/sysemu/excp_helper.c b/target/i386/tcg/sysemu/excp_helper.c
-index 405a5d414a..55bd1194d3 100644
---- a/target/i386/tcg/sysemu/excp_helper.c
-+++ b/target/i386/tcg/sysemu/excp_helper.c
-@@ -71,10 +71,11 @@ static bool ptw_translate(PTETranslate *inout, hwaddr addr)
-         TranslateFault *err = inout->err;
+diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+index 442998d9eb..dbde726adf 100644
+--- a/tests/qtest/migration-test.c
++++ b/tests/qtest/migration-test.c
+@@ -1066,15 +1066,27 @@ test_migrate_tls_x509_finish(QTestState *from,
+     TestMigrateTLSX509Data *data = opaque;
  
-         assert(inout->ptw_idx == MMU_NESTED_IDX);
--        err->exception_index = 0; /* unused */
--        err->error_code = inout->env->error_code;
--        err->cr2 = addr;
--        err->stage2 = S2_GPT;
-+        *err = (TranslateFault){
-+            .error_code = inout->env->error_code,
-+            .cr2 = addr,
-+            .stage2 = S2_GPT,
-+        };
-         return false;
-     }
-     return true;
-@@ -431,10 +432,11 @@ do_check_protect_pse36:
-                                   MMU_NESTED_IDX, true,
-                                   &pte_trans.haddr, &full, 0);
-         if (unlikely(flags & TLB_INVALID_MASK)) {
--            err->exception_index = 0; /* unused */
--            err->error_code = env->error_code;
--            err->cr2 = paddr;
--            err->stage2 = S2_GPA;
-+            *err = (TranslateFault){
-+                .error_code = env->error_code,
-+                .cr2 = paddr,
-+                .stage2 = S2_GPA,
-+            };
-             return false;
-         }
- 
-@@ -494,10 +496,11 @@ do_check_protect_pse36:
-         }
-         break;
-     }
--    err->exception_index = EXCP0E_PAGE;
--    err->error_code = error_code;
--    err->cr2 = addr;
--    err->stage2 = S2_NONE;
-+    *err = (TranslateFault){
-+        .exception_index = EXCP0E_PAGE,
-+        .error_code = error_code,
-+        .cr2 = addr,
-+    };
-     return false;
+     test_tls_cleanup(data->keyfile);
++    g_free(data->keyfile);
++
+     unlink(data->cacert);
++    g_free(data->cacert);
+     unlink(data->servercert);
++    g_free(data->servercert);
+     unlink(data->serverkey);
+-    unlink(data->clientcert);
+-    unlink(data->clientkey);
++    g_free(data->serverkey);
++
++    if (data->clientcert) {
++        unlink(data->clientcert);
++        g_free(data->clientcert);
++    }
++    if (data->clientkey) {
++        unlink(data->clientkey);
++        g_free(data->clientkey);
++    }
++
+     rmdir(data->workdir);
+-
+     g_free(data->workdir);
+-    g_free(data->keyfile);
++
+     g_free(data);
  }
- 
-@@ -564,9 +567,10 @@ static bool get_physical_address(CPUX86State *env, vaddr addr,
-                 int shift = in.pg_mode & PG_MODE_LA57 ? 56 : 47;
-                 int64_t sext = (int64_t)addr >> shift;
-                 if (sext != 0 && sext != -1) {
--                    err->exception_index = EXCP0D_GPF;
--                    err->error_code = 0;
--                    err->cr2 = addr;
-+                    *err = (TranslateFault){
-+                        .exception_index = EXCP0D_GPF,
-+                        .cr2 = addr,
-+                    };
-                     return false;
-                 }
-             }
+ #endif /* CONFIG_TASN1 */
 -- 
 2.38.1
 
