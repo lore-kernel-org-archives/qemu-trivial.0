@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p28Bp-0002Zf-0n
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:55:09 -0500
+	id 1p28Bw-0002n1-Lr
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Dec 2022 04:55:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28Bn-0002W2-Ki
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:55:07 -0500
+ id 1p28Bu-0002j8-Gj
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:55:14 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p28Bl-00075L-Sp
- for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:55:07 -0500
+ id 1p28Br-0007GN-NJ
+ for qemu-trivial@nongnu.org; Mon, 05 Dec 2022 04:55:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1670234105;
+ s=mimecast20190719; t=1670234111;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JPkwFkSSfq3t5RKWyqYzwK48WCnzhdeFXKl8nUjSzoI=;
- b=UdECobnge++f1hcFTaD2d03PHzViLpH6m7Q69ShfwC9flrjXE6PjTHhjZyAekGBo0SDjz/
- pP+QOrSLO4xGW3aawYJ1fRu1zi/vOsQlgTHh9S/Od2O5+BlCHkHSYRPlSDWJ3CGVX0ZIwT
- /fYUe96iuiNV6p1A9A1VZrLqNwIOQkw=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=NlagijAifTdV86tivIA25I3dGfVhQXxNyB5r7aWw5KE=;
+ b=Y31Bpqx/K+y1vnx6fMv5IrfHKSgQxBgEN35NpbDd1ViM5YEXhySPW7c6Fikl3Ryzfjy53z
+ iZWCotAgl67ZC9L34Glu0eGN8nIsoeVU8CAp3f8NeABLsoIaPuKNSJ+I2yyCPJTNMIbwyJ
+ KNoZiZIJ/U/GK12QtFtpyskSfyBweWs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-581-E6DdkZKJPsuP8izcGK-kCA-1; Mon, 05 Dec 2022 04:55:02 -0500
-X-MC-Unique: E6DdkZKJPsuP8izcGK-kCA-1
+ us-mta-607-3HH99AajNVmMvwQ0_5_3JA-1; Mon, 05 Dec 2022 04:55:10 -0500
+X-MC-Unique: 3HH99AajNVmMvwQ0_5_3JA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E02493C0F663;
- Mon,  5 Dec 2022 09:55:00 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8CA10101A52A;
+ Mon,  5 Dec 2022 09:55:08 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.135])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 820FC2166B29;
- Mon,  5 Dec 2022 09:54:53 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 388902166B29;
+ Mon,  5 Dec 2022 09:55:01 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
@@ -65,9 +65,9 @@ Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <huth@tuxfamily.org>,
  Keith Busch <kbusch@kernel.org>, David Hildenbrand <david@redhat.com>,
  qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
  Klaus Jensen <k.jensen@samsung.com>
-Subject: [PATCH v2 18/51] hw/nvme: fix aio cancel in flush
-Date: Mon,  5 Dec 2022 10:51:55 +0100
-Message-Id: <20221205095228.1314-19-quintela@redhat.com>
+Subject: [PATCH v2 19/51] hw/nvme: fix aio cancel in zone reset
+Date: Mon,  5 Dec 2022 10:51:56 +0100
+Message-Id: <20221205095228.1314-20-quintela@redhat.com>
 In-Reply-To: <20221205095228.1314-1-quintela@redhat.com>
 References: <20221205095228.1314-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -94,105 +94,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Dec 2022 09:55:07 -0000
+X-List-Received-Date: Mon, 05 Dec 2022 09:55:14 -0000
 
 From: Klaus Jensen <k.jensen@samsung.com>
 
-Make sure that iocb->aiocb is NULL'ed when cancelling.
+If the zone reset operation is cancelled but the block unmap operation
+completes normally, the callback will continue resetting the next zone
+since it neglects to check iocb->ret which will have been set to
+-ECANCELED. Make sure that this is checked and bail out if an error is
+present.
 
-Fix a potential use-after-free by removing the bottom half and enqueuing
-the completion directly.
+Secondly, fix a potential use-after-free by removing the bottom half and
+enqueuing the completion directly.
 
-Fixes: 38f4ac65ac88 ("hw/nvme: reimplement flush to allow cancellation")
+Fixes: 63d96e4ffd71 ("hw/nvme: reimplement zone reset to allow cancellation")
 Reviewed-by: Keith Busch <kbusch@kernel.org>
 Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
 ---
- hw/nvme/ctrl.c | 21 ++++++---------------
- 1 file changed, 6 insertions(+), 15 deletions(-)
+ hw/nvme/ctrl.c | 36 +++++++++++-------------------------
+ 1 file changed, 11 insertions(+), 25 deletions(-)
 
 diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index 9bc56075f6..fede5af6af 100644
+index fede5af6af..bf4abf73f7 100644
 --- a/hw/nvme/ctrl.c
 +++ b/hw/nvme/ctrl.c
-@@ -3160,7 +3160,6 @@ typedef struct NvmeFlushAIOCB {
+@@ -3712,7 +3712,6 @@ typedef struct NvmeZoneResetAIOCB {
      BlockAIOCB common;
      BlockAIOCB *aiocb;
      NvmeRequest *req;
 -    QEMUBH *bh;
      int ret;
  
-     NvmeNamespace *ns;
-@@ -3176,6 +3175,7 @@ static void nvme_flush_cancel(BlockAIOCB *acb)
- 
-     if (iocb->aiocb) {
-         blk_aio_cancel_async(iocb->aiocb);
-+        iocb->aiocb = NULL;
-     }
- }
- 
-@@ -3185,6 +3185,8 @@ static const AIOCBInfo nvme_flush_aiocb_info = {
-     .get_aio_context = nvme_get_aio_context,
+     bool all;
+@@ -3741,17 +3740,6 @@ static const AIOCBInfo nvme_zone_reset_aiocb_info = {
+     .cancel_async = nvme_zone_reset_cancel,
  };
  
-+static void nvme_do_flush(NvmeFlushAIOCB *iocb);
-+
- static void nvme_flush_ns_cb(void *opaque, int ret)
- {
-     NvmeFlushAIOCB *iocb = opaque;
-@@ -3206,13 +3208,11 @@ static void nvme_flush_ns_cb(void *opaque, int ret)
+-static void nvme_zone_reset_bh(void *opaque)
+-{
+-    NvmeZoneResetAIOCB *iocb = opaque;
+-
+-    iocb->common.cb(iocb->common.opaque, iocb->ret);
+-
+-    qemu_bh_delete(iocb->bh);
+-    iocb->bh = NULL;
+-    qemu_aio_unref(iocb);
+-}
+-
+ static void nvme_zone_reset_cb(void *opaque, int ret);
+ 
+ static void nvme_zone_reset_epilogue_cb(void *opaque, int ret)
+@@ -3762,14 +3750,8 @@ static void nvme_zone_reset_epilogue_cb(void *opaque, int ret)
+     int64_t moff;
+     int count;
+ 
+-    if (ret < 0) {
+-        nvme_zone_reset_cb(iocb, ret);
+-        return;
+-    }
+-
+-    if (!ns->lbaf.ms) {
+-        nvme_zone_reset_cb(iocb, 0);
+-        return;
++    if (ret < 0 || iocb->ret < 0 || !ns->lbaf.ms) {
++        goto out;
      }
  
- out:
--    iocb->aiocb = NULL;
--    qemu_bh_schedule(iocb->bh);
-+    nvme_do_flush(iocb);
+     moff = nvme_moff(ns, iocb->zone->d.zslba);
+@@ -3779,6 +3761,9 @@ static void nvme_zone_reset_epilogue_cb(void *opaque, int ret)
+                                         BDRV_REQ_MAY_UNMAP,
+                                         nvme_zone_reset_cb, iocb);
+     return;
++
++out:
++    nvme_zone_reset_cb(iocb, ret);
  }
  
--static void nvme_flush_bh(void *opaque)
-+static void nvme_do_flush(NvmeFlushAIOCB *iocb)
- {
--    NvmeFlushAIOCB *iocb = opaque;
+ static void nvme_zone_reset_cb(void *opaque, int ret)
+@@ -3787,7 +3772,9 @@ static void nvme_zone_reset_cb(void *opaque, int ret)
      NvmeRequest *req = iocb->req;
-     NvmeCtrl *n = nvme_ctrl(req);
-     int i;
-@@ -3239,14 +3239,8 @@ static void nvme_flush_bh(void *opaque)
-     return;
+     NvmeNamespace *ns = req->ns;
+ 
+-    if (ret < 0) {
++    if (iocb->ret < 0) {
++        goto done;
++    } else if (ret < 0) {
+         iocb->ret = ret;
+         goto done;
+     }
+@@ -3835,9 +3822,9 @@ static void nvme_zone_reset_cb(void *opaque, int ret)
  
  done:
--    qemu_bh_delete(iocb->bh);
--    iocb->bh = NULL;
--
-     iocb->common.cb(iocb->common.opaque, iocb->ret);
--
-     qemu_aio_unref(iocb);
--
--    return;
+     iocb->aiocb = NULL;
+-    if (iocb->bh) {
+-        qemu_bh_schedule(iocb->bh);
+-    }
++
++    iocb->common.cb(iocb->common.opaque, iocb->ret);
++    qemu_aio_unref(iocb);
  }
  
- static uint16_t nvme_flush(NvmeCtrl *n, NvmeRequest *req)
-@@ -3258,7 +3252,6 @@ static uint16_t nvme_flush(NvmeCtrl *n, NvmeRequest *req)
-     iocb = qemu_aio_get(&nvme_flush_aiocb_info, NULL, nvme_misc_cb, req);
+ static uint16_t nvme_zone_mgmt_send_zrwa_flush(NvmeCtrl *n, NvmeZone *zone,
+@@ -3942,7 +3929,6 @@ static uint16_t nvme_zone_mgmt_send(NvmeCtrl *n, NvmeRequest *req)
+                            nvme_misc_cb, req);
  
-     iocb->req = req;
--    iocb->bh = qemu_bh_new(nvme_flush_bh, iocb);
-     iocb->ret = 0;
-     iocb->ns = NULL;
-     iocb->nsid = 0;
-@@ -3280,13 +3273,11 @@ static uint16_t nvme_flush(NvmeCtrl *n, NvmeRequest *req)
-     }
- 
-     req->aiocb = &iocb->common;
--    qemu_bh_schedule(iocb->bh);
-+    nvme_do_flush(iocb);
- 
-     return NVME_NO_COMPLETE;
- 
- out:
--    qemu_bh_delete(iocb->bh);
--    iocb->bh = NULL;
-     qemu_aio_unref(iocb);
- 
-     return status;
+         iocb->req = req;
+-        iocb->bh = qemu_bh_new(nvme_zone_reset_bh, iocb);
+         iocb->ret = 0;
+         iocb->all = all;
+         iocb->idx = zone_idx;
 -- 
 2.38.1
 
