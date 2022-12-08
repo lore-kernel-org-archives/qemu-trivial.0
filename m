@@ -1,72 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p3Jtn-0005or-PY
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Dec 2022 11:37:27 -0500
+	id 1p3KOC-0008KB-Ui
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Dec 2022 12:08:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1p3Jtm-0005oZ-5M
- for qemu-trivial@nongnu.org; Thu, 08 Dec 2022 11:37:26 -0500
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1p3KO9-0008JY-AC
+ for qemu-trivial@nongnu.org; Thu, 08 Dec 2022 12:08:49 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1p3Jtj-0001an-LH
- for qemu-trivial@nongnu.org; Thu, 08 Dec 2022 11:37:25 -0500
-Received: by mail-pl1-x633.google.com with SMTP id y17so2021950plp.3
- for <qemu-trivial@nongnu.org>; Thu, 08 Dec 2022 08:37:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1p3KO7-0003kg-Py
+ for qemu-trivial@nongnu.org; Thu, 08 Dec 2022 12:08:49 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id ay40so1595464wmb.2
+ for <qemu-trivial@nongnu.org>; Thu, 08 Dec 2022 09:08:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vXcE76ICUqhqhzKyohZ9h8giOFBqg/8aTbB5SlwfUW4=;
- b=Q2o/wRvJq1Q5RMbesH5EKSPkkn1sfOeSm7dYagT6KPDAdemUlUkQ0dk5GjcQv9Lcss
- tmRFZVjPxEt4ejpHm2OOwzFko+WNZi2MGEpsqD+sH1hnIikX306GN3Db9d8gbOSEyZuh
- 42GlmDe8lYep4HXw3hy2kGo3jcfM/fbkfcbaL/oxBMBwhkcndkRN+q9fIWYCvIHwAP6o
- 3EdA+MVTDknnX8u0Qv0uHlFjgqpbnwdJix+CFtGC93PdCCSimDR3Gi+nDsbAEs19YHY4
- OWW3pMhHub9ZmekNA1+V9viQSxrgNN751jzOcQFs6RcPu2ikG9pXQcKlx9bfJw+Jifhl
- i9eQ==
+ bh=LXHH0/2Ot0/BzL3xix9wMWxmVvmmV4W5umcIlzr5PDs=;
+ b=nDdOmL2EA5NbijInSvKpp0CNF2ax4tb1ti6CgUIFAcslHtcdK7rP1yq01yx24/7ZMt
+ L934ETdTBA+/IIHWyqhSafBoZxaVx4SFdnusvEmFmkrAPWoAdsGL16H/7ZU/af8zRnKy
+ oJYuHhooARkuLK3wkId3nlNglntLX6E5m+X/y/a5sqwufJSWI7QeD7NTfQplNiM6KgdW
+ SfxV2rZtbLoRJFGN3xi3T49hcN/kcnSl40IepdRknM7xvMHY9LKYY55BezjGTIR8cU4J
+ qZ2SuMtOShoRkOkYfr5folqsLUum8rGjZfFyNwKaFWQ8/jHsvIfLwCeca+VMKnmfnwjM
+ vdOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vXcE76ICUqhqhzKyohZ9h8giOFBqg/8aTbB5SlwfUW4=;
- b=rvZBQTQSKixQ32w7gnka2JsmlvzGFFEeu8lmALBHOdf3Z2bqUUrT3xNVdKWDZF4X8G
- JhlV3CQHQLuylOfYL4E5+5i1dd3T3UGsvl19/YEILElWKcf+itzEalRSt6g8xZEUwxRR
- suYlhW+YZXFN4geojbZxhUlnB+l7r07I7OSLsRLVpziyF0k9dOfXDlMCfa82Mz/JhtDv
- z6Eb9R4C/WhqUnjtnBVW8Of48/Qrl4SgJWTebng1FxmL+tkUytD2NpZDh7NzDCK8LS67
- /6ZWl0Q7VbQ/Ig6OM7juRKJ/i527ilOFPv4I3sYX+EcdXT3UoXxSxF6cytLWvuuGeaAI
- QLkA==
-X-Gm-Message-State: ANoB5plMdsDO+rlf/pe2MjAqvKVppKoneU5wkpxP6waJeuoDgHP6V7++
- gp2pWqwbdAzYTP1Owm4/vv6J7XlHhvbTdPNejh0ktQ==
-X-Google-Smtp-Source: AA0mqf4vZTqn7nWmhrvnLvSADQfsCP0pahS64uCRTbakOJeBdquCA7Qeq1GLFuQAw9p06zz24pfwvgfxj20yJghL2z8=
-X-Received: by 2002:a17:902:70c5:b0:189:b0a3:cf4a with SMTP id
- l5-20020a17090270c500b00189b0a3cf4amr35029492plt.60.1670517428956; Thu, 08
- Dec 2022 08:37:08 -0800 (PST)
-MIME-Version: 1.0
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=LXHH0/2Ot0/BzL3xix9wMWxmVvmmV4W5umcIlzr5PDs=;
+ b=SAjXa1liGqz4gGh17XwO8klvbj+HAZH192jcKUEQGh9A3D12M2iGa/sy3jL12K0Com
+ xqN/xbk9oS1418OAy6uYQYfz1CX1gosCHZJKdPmC29H+SYAwih8YPHepgP3OkOC/Q4IH
+ DKypqWxFw74iIDPU54q4J5PX7rhgf6m4MdqORbeMNO9rWNjSA6W1zgAp/+pnXy+sjcGa
+ 2wu21iht3Brk1M8yabkqTMhRYTsg8J/Yk9X48A3IRQYxPbwwDYoRukAVg+yxWEod0aFP
+ XsNW/bIO/mUSk1tKIJJYk2P7wnDZanzK3MAGTE5Iid2bn8PTzhxXG7Lj4YKK/XiaUzA0
+ 3rnQ==
+X-Gm-Message-State: ANoB5pmwwDX0I5cAX4KurkDWNqNK+tbXTlHLT3cRtAUjVi+n54ZRdQYi
+ iAWVAGMUACf8+pm6R3+HjgA01A==
+X-Google-Smtp-Source: AA0mqf4p8WFPpKw14d1sVu0OPKPZyoT90RWAzfosxxGz4Cm4YOIVbeIeVnx81p6HIoq4tX/hqsHuuw==
+X-Received: by 2002:a05:600c:5125:b0:3c6:e62e:2e8a with SMTP id
+ o37-20020a05600c512500b003c6e62e2e8amr2632209wms.37.1670519325867; 
+ Thu, 08 Dec 2022 09:08:45 -0800 (PST)
+Received: from zen.linaroharston ([185.81.254.11])
+ by smtp.gmail.com with ESMTPSA id
+ w1-20020a5d5441000000b002422b462975sm21700819wrv.34.2022.12.08.09.08.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Dec 2022 09:08:45 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id B34F61FFB7;
+ Thu,  8 Dec 2022 17:08:44 +0000 (GMT)
 References: <20221208162051.29509-1-philmd@linaro.org>
-In-Reply-To: <20221208162051.29509-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Dec 2022 16:36:57 +0000
-Message-ID: <CAFEAcA9eanPZi=62xhAod_9VK5S_RzCwY5-DjkrnMgn7V_heQw@mail.gmail.com>
+User-agent: mu4e 1.9.3; emacs 29.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta
+ <wainersm@redhat.com>, qemu-trivial@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, Eric Blake <eblake@redhat.com>, Beraldo Leal
+ <bleal@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
 Subject: Re: [PATCH] scripts/archive-source: Use more portable argument with
  tar command
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- qemu-trivial@nongnu.org, 
- Thomas Huth <thuth@redhat.com>, Eric Blake <eblake@redhat.com>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Beraldo Leal <bleal@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Date: Thu, 08 Dec 2022 17:06:59 +0000
+In-reply-to: <20221208162051.29509-1-philmd@linaro.org>
+Message-ID: <874ju5su03.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,11 +87,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Dec 2022 16:37:26 -0000
+X-List-Received-Date: Thu, 08 Dec 2022 17:08:49 -0000
 
-On Thu, 8 Dec 2022 at 16:21, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
+
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+
 > When using the archive-source.sh script on Darwin we get:
 >
 >   tar: Option --concatenate is not supported
@@ -114,14 +122,15 @@ ub_file"
 > -    tar --concatenate --file "$tar_file" "$sub_file"
 > +    tar -c -f "$tar_file" "$sub_file"
 
-'-c' is not the short-form option of '--concatenate': that would
-be '-A'. The problem is not long vs short options, but that
-BSD-style tar does not support the --concatenate functionality at all.
+I'm not sure that is correct. The gnu shortform for --concatenate is -A,
+-c is specifically create so I suspect you end up re-creating the
+tarball rather than adding to it.
 
 >      test $? -ne 0 && error "failed append submodule $sm to $tar_file"
 >  done
 >  exit 0
 
-thanks
--- PMM
+
+--=20
+Alex Benn=C3=A9e
 
