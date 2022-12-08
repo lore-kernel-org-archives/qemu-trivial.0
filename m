@@ -1,75 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p3Hgb-0001Pd-IP
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Dec 2022 09:15:41 -0500
+	id 1p3JFQ-0006US-2e
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Dec 2022 10:55:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3HgO-0001NT-Qc
- for qemu-trivial@nongnu.org; Thu, 08 Dec 2022 09:15:29 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3JFO-0006UD-Il
+ for qemu-trivial@nongnu.org; Thu, 08 Dec 2022 10:55:42 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3HgN-0007an-Ai
- for qemu-trivial@nongnu.org; Thu, 08 Dec 2022 09:15:28 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- ja4-20020a05600c556400b003cf6e77f89cso4342339wmb.0
- for <qemu-trivial@nongnu.org>; Thu, 08 Dec 2022 06:15:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p3JFM-0006nf-B6
+ for qemu-trivial@nongnu.org; Thu, 08 Dec 2022 10:55:42 -0500
+Received: by mail-wr1-x436.google.com with SMTP id co23so2131088wrb.4
+ for <qemu-trivial@nongnu.org>; Thu, 08 Dec 2022 07:55:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=974RMRBrU08RTywMT98iYPCm+BUAxCZIE5SqJfaL4QU=;
- b=i6OAvdQwvXFo1MWopLClOUURI6i990HRPUrGA0/XnDDUozNfw0gWhi/SHlu0mlrtJQ
- 3FZFO7iS/gkRoRGQ1a3StcL3DAQaBjplZ2p1p5VA1S/YglpDF1mszlS+WVjO0lAy/htc
- JPbc1Tn8HRdVcPxIs/S9qd5Pa2zFXHvHHt0nlwtc9++gpUK+ohTqD7ZZTYjYKuSsFHR5
- Iuzqth1VqbLyuVmo8mzW7gF3vuPa4/y4vsqktEWaQ7PsR6oNrsv6HWFYABfWQEbFQR8o
- NT0w/gyzwj1UTqwhGj1puiXFJyi5aQAzBEzk/DAeqBBG+TjbkZBwnvGb8qu0NHAbwicW
- EXUg==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=7A3byq1utFqojjZtid/q3Srkf2m+eyCvlQeEL4Mq9ng=;
+ b=rzQUl3ASQWU2AYBZMDRTxz0qu7ilDoTvuphNiUEX/0Pd/Pa5sNTG04nOVe3CcCv8MX
+ Y8RvKKOGoIk8E77EjHDboBXQwTumg8/cddZskOjJ+a89gKNbVrDCdbZX5cjmkZq4ixbc
+ C/zjXwTE4MMFqELTgeGQmkCPRSY+wjN7ig/40rl5H/G/7LWr0OeyY5DlwXHHDk11llZ3
+ iKjPeKS5eVTwYfC7SI5wDzMqEgOsbAqHLPdfz9R8Yga7CxXpVEE/JVg0ubJbr3pjaMVw
+ yk7F5K2/UIshFjVNjcZQBnAXTfqMFvzPqtqU5/Qd/Xg8gIuXiTNnNMSWIonZJfiGb7Ro
+ Lbqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=974RMRBrU08RTywMT98iYPCm+BUAxCZIE5SqJfaL4QU=;
- b=U6Y4xjS78TwtIZvoQmzBizm7NkBzm6hRYj6u3k4GPGA+RBHJ1Ns541PSyPKv/QHFLN
- UeU9UmjjgCD0ng2MJO45GaAPYB/zX09TRBPYvF09cTtoxf7gFOD8iTlOv0itmk6cBvDC
- rE7MuJ5eOdpI5CNzKshS3Xi3TDp5PPIKGkhJZX9qqEu3XcbsbYFQJTEvW4eZKaYrv+wZ
- PhiB9oXykBPJ4EJ/yXCDV/ShMkn425267sX+xyQAqWeplflHBv/723nr2RGiOX+iGryk
- nT0KQR6yK1M+mJQ40cX7khmvxDfTFnxnXhCp2e12untcB9Q3KSJjr7l103WuUPAnbNvx
- PlyA==
-X-Gm-Message-State: ANoB5plKge5UP3diwbF2PgFMlGo9ebt5YKOr2jv2qAb/XOGzjP1QK5j8
- 3pUp932SUrlCaSQw1VyvGo4ZRA==
-X-Google-Smtp-Source: AA0mqf7iwer/9Yxa1Ld6rXdcdNB0UjzJnzILnCelC5NXK09gRsL20M6pkP7f0D781FEnSJS3+9zVBg==
-X-Received: by 2002:a05:600c:384b:b0:3cf:4ec9:385d with SMTP id
- s11-20020a05600c384b00b003cf4ec9385dmr2166571wmr.19.1670508924679; 
- Thu, 08 Dec 2022 06:15:24 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- s1-20020adfdb01000000b002420a2cdc96sm21984923wri.70.2022.12.08.06.15.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Dec 2022 06:15:24 -0800 (PST)
-Message-ID: <cc480ae0-81b5-b3bc-93ab-4f7edce451f1@linaro.org>
-Date: Thu, 8 Dec 2022 15:15:23 +0100
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7A3byq1utFqojjZtid/q3Srkf2m+eyCvlQeEL4Mq9ng=;
+ b=QsN4GyqzksTJ9l/K4sUIiyPBS/cwkIBbRRPDWyjvCcmpFaGH7uMW+iw71fEjq3OCKp
+ W9lNzB+sbW7U6Y4U1WtCgB9UPIWUwpBRchPrg3BvBR16mY22sHetWVT8Joaz2pCXmPs4
+ /tFm0UaKQtmB4N5COXeyqbQd2f4R1hYwtdffE1l41zFd6aouisGvvWh9cijAQS2hiMMB
+ SBvqEozIXROBPbDc+1r8H0/4kuM8D6bmuIDcEVExNm7HcAHW+ppeRkCPDAoKyjxkNvVb
+ OqL3swAXpAlcGyKH3SflRmQ7tXDt/LuPLjnJ1EqQWOScUXVJTCCmtgKKHOoR8K9PcSWK
+ DYUQ==
+X-Gm-Message-State: ANoB5plPCjGR4fwOwb5VjklTu2u+XvWfgKMpSoTqQitpXpSzVsghfbWs
+ THlbndZ9EONvYZNcf0lEsOHlzg==
+X-Google-Smtp-Source: AA0mqf64/7Mh8ta/hWro/rT3PMne0gMDVb4GThgUC8hdMHM0EF6PvLMu7VXHVCNxj58g28+/JqNCmA==
+X-Received: by 2002:adf:fe89:0:b0:242:2722:f08 with SMTP id
+ l9-20020adffe89000000b0024227220f08mr1716190wrr.12.1670514937575; 
+ Thu, 08 Dec 2022 07:55:37 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ l7-20020a5d4107000000b00242246c2f7csm22516687wrp.101.2022.12.08.07.55.36
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 08 Dec 2022 07:55:37 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>, Stefan Hajnoczi <stefanha@redhat.com>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] mailmap: Fix Stefan Weil author email
+Date: Thu,  8 Dec 2022 16:55:35 +0100
+Message-Id: <20221208155535.28363-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.1
-Subject: Re: [PATCH] util/oslib-win32: Remove obsolete reference to g_poll code
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Stefan Weil <sw@weilnetz.de>
-Cc: =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-trivial@nongnu.org
-References: <20221208133257.95673-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221208133257.95673-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.266,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,19 +77,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Dec 2022 14:15:31 -0000
+X-List-Received-Date: Thu, 08 Dec 2022 15:55:42 -0000
 
-On 8/12/22 14:32, Thomas Huth wrote:
-> The comment about g_poll is not required here anymore since
-> the corresponding code has been removed a while ago already.
-> 
-> Fixes: b4c6036faa ("configure: bump min required glib version to 2.56")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   util/oslib-win32.c | 4 ----
->   1 file changed, 4 deletions(-)
+Fix authorship of commits 266aaedc37~..ac14949821. See commit
+3bd2608db7 ("maint: Add .mailmap entries for patches claiming
+list authorship") for rationale.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ .mailmap | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/.mailmap b/.mailmap
+index 35dddbe27b..fad2aff5aa 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -45,6 +45,7 @@ Ed Swierk <eswierk@skyportsystems.com> Ed Swierk via Qemu-devel <qemu-devel@nong
+ Ian McKellar <ianloic@google.com> Ian McKellar via Qemu-devel <qemu-devel@nongnu.org>
+ Julia Suvorova <jusual@mail.ru> Julia Suvorova via Qemu-devel <qemu-devel@nongnu.org>
+ Justin Terry (VM) <juterry@microsoft.com> Justin Terry (VM) via Qemu-devel <qemu-devel@nongnu.org>
++Stefan Weil <sw@weilnetz.de> Stefan Weil via <qemu-devel@nongnu.org>
+ 
+ # Next, replace old addresses by a more recent one.
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <aleksandar.markovic@mips.com>
+-- 
+2.38.1
 
 
