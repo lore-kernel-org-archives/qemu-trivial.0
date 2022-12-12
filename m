@@ -1,71 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p4k88-0007vk-Mk
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Dec 2022 09:50:08 -0500
+	id 1p4kGD-00041W-Vh
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Dec 2022 09:58:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lilydjwg@gmail.com>)
- id 1p4eQp-0006Sb-Te; Mon, 12 Dec 2022 03:45:03 -0500
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lilydjwg@gmail.com>)
- id 1p4eQo-0007aM-7E; Mon, 12 Dec 2022 03:45:03 -0500
-Received: by mail-pj1-x1035.google.com with SMTP id
- k88-20020a17090a4ce100b00219d0b857bcso11458549pjh.1; 
- Mon, 12 Dec 2022 00:45:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=UmXPjAUajQdk1U2qMMfcyJGlLHMeT9O8lEpVL9CZ6nE=;
- b=RwG5DFtSz45JyPeI5Jn9LerZp46JXznB02rxZEisZNG37PeYpclbw5UAEfcYjEmyyZ
- Flir1Z8Kr4qF7T+i9qF4EXTo7qohX/xYvimyhRXS0dVQq8pmPQPv/pSH7IB1I5/O25z1
- wW//nip3De8mZwTrNskOugnE2123Mb49RICvwSea0KqVaVltX2NH3kclbewk9opH8LFK
- xFiQqgqsPVhpuSrZAl5+TunmUEVVnDqcO+78rct+UobZRVudTuVrj8Gc2Ftt4IDP5rLP
- jdDsdxzwYxk5wKFzSXQ8G498NFj4pcVYY7prYt8fLooRFF1HA5D9l6gPc7f2l651YFAe
- hJZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=UmXPjAUajQdk1U2qMMfcyJGlLHMeT9O8lEpVL9CZ6nE=;
- b=Vd0x/tEp416aGd7rgDvEw5IZTumuPwlNdCLLA/o/qBBZcP8zX1NlrjGLkUsyB+5L9P
- FYK211zz477PrUejPE8pXcgFjfw38rG/D4zuu7bZy17msn8KAHZ34KSrJPlK5cthRxEr
- FHXMVVztOh1w3bx6lS1zvHbZSTV0RfS01ZNTaQ5fBrYQa+7bqMt7A6HpQG4glKy/kdg4
- YPkX2/7hQrIueTxsWnYBl4E74FNL2MT/v981PoRWKaBbIHckEYiN3TMYfG6/3xgYT78c
- j3jC+a9+dIhOhz1f8sizcjNbpXvZSJrYZ8sAKJkIx/709xanOET7tFsxceS67lo6Vj4I
- i+xw==
-X-Gm-Message-State: ANoB5plLbTuCrZY0NCgQpknI6Xxld8uRyl2ujvwVv1yCyTdONqAvX0f8
- Es74FNa30f0l10CvC15pRVOrvMBiqZqBvITm
-X-Google-Smtp-Source: AA0mqf7Ed899neyFH7orxQIWpnXUfoof5fPI3h7jGUhUdggBek4sDmg2HEuRMWeXom/SKkcEDxSqPA==
-X-Received: by 2002:a17:90b:38f:b0:219:9331:2781 with SMTP id
- ga15-20020a17090b038f00b0021993312781mr15958480pjb.17.1670834699089; 
- Mon, 12 Dec 2022 00:44:59 -0800 (PST)
-Received: from localhost ([2a0c:b641:69c:e9b8:1::1])
- by smtp.gmail.com with ESMTPSA id
- 71-20020a17090a09cd00b002191ffeac8esm4922471pjo.20.2022.12.12.00.44.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Dec 2022 00:44:58 -0800 (PST)
-From: lilydjwg@gmail.com
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- lilydjwg <lilydjwg@gmail.com>
-Subject: [PATCH] ui/gtk: use correct scale for cursors
-Date: Mon, 12 Dec 2022 16:44:43 +0800
-Message-Id: <20221212084443.1064207-1-lilydjwg@gmail.com>
-X-Mailer: git-send-email 2.38.1
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1p4kGA-00040E-TY
+ for qemu-trivial@nongnu.org; Mon, 12 Dec 2022 09:58:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1p4kG9-000177-9a
+ for qemu-trivial@nongnu.org; Mon, 12 Dec 2022 09:58:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1670857103;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=uyBPOCYTlm8buL/eo+jVVWH/ySNEx049dp5TL0XCRd0=;
+ b=APW7UfYcVvMohwjC4fbPt+TTRN1OMA9nszmX21C0hKfSlS2bQ/LOOo4gjaztzeDUfPweI4
+ WqIfN+nNeT2BGxVqHBWrw31JWiSfs9o+Fyx+ufKfKb1oCCq5w/pEFr6278RkQGQleBiSbN
+ idDwlpDBUFQiofFkj9ZMjy7f/hoRQoM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-634-GmPJeMPlOyecFc2arvJ1TQ-1; Mon, 12 Dec 2022 09:58:19 -0500
+X-MC-Unique: GmPJeMPlOyecFc2arvJ1TQ-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 73D988039A2;
+ Mon, 12 Dec 2022 14:58:19 +0000 (UTC)
+Received: from localhost (unknown [10.39.195.208])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CA64B492B01;
+ Mon, 12 Dec 2022 14:58:18 +0000 (UTC)
+Date: Mon, 12 Dec 2022 09:58:15 -0500
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] mailmap: Fix Stefan Weil author email
+Message-ID: <Y5dBh5Ssw8Aotmzo@fedora>
+References: <20221208155535.28363-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=lilydjwg@gmail.com; helo=mail-pj1-x1035.google.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="NQDKM8IakA9wkc/5"
+Content-Disposition: inline
+In-Reply-To: <20221208155535.28363-1-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 12 Dec 2022 09:50:04 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,53 +69,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Dec 2022 08:45:04 -0000
+X-List-Received-Date: Mon, 12 Dec 2022 14:58:28 -0000
 
-From: lilydjwg <lilydjwg@gmail.com>
 
-gdk_cursor_new_from_pixbuf always uses scale=1 and causes blurry large
-cursors on HiDPI screens (scale=2). Create a cairo surface ourselves to
-pass the desired scale.
+--NQDKM8IakA9wkc/5
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: lilydjwg <lilydjwg@gmail.com>
----
- ui/gtk.c | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+On Thu, Dec 08, 2022 at 04:55:35PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Fix authorship of commits 266aaedc37~..ac14949821. See commit
+> 3bd2608db7 ("maint: Add .mailmap entries for patches claiming
+> list authorship") for rationale.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
+> ---
+>  .mailmap | 1 +
+>  1 file changed, 1 insertion(+)
 
-diff --git a/ui/gtk.c b/ui/gtk.c
-index 4817623c8f..984a5a4c67 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -469,7 +469,10 @@ static void gd_cursor_define(DisplayChangeListener *dcl,
- {
-     VirtualConsole *vc = container_of(dcl, VirtualConsole, gfx.dcl);
-     GdkPixbuf *pixbuf;
-+    GdkWindow *window;
-     GdkCursor *cursor;
-+    cairo_surface_t *surface;
-+    int scale;
- 
-     if (!gtk_widget_get_realized(vc->gfx.drawing_area)) {
-         return;
-@@ -479,10 +482,14 @@ static void gd_cursor_define(DisplayChangeListener *dcl,
-                                       GDK_COLORSPACE_RGB, true, 8,
-                                       c->width, c->height, c->width * 4,
-                                       NULL, NULL);
--    cursor = gdk_cursor_new_from_pixbuf
-+    window = gtk_widget_get_window(vc->gfx.drawing_area);
-+    scale = gdk_window_get_scale_factor(window);
-+    surface = gdk_cairo_surface_create_from_pixbuf(pixbuf, scale, window);
-+    cursor = gdk_cursor_new_from_surface
-         (gtk_widget_get_display(vc->gfx.drawing_area),
--         pixbuf, c->hot_x, c->hot_y);
--    gdk_window_set_cursor(gtk_widget_get_window(vc->gfx.drawing_area), cursor);
-+         surface, c->hot_x / scale, c->hot_y / scale);
-+    cairo_surface_destroy(surface);
-+    gdk_window_set_cursor(window, cursor);
-     g_object_unref(pixbuf);
-     g_object_unref(cursor);
- }
--- 
-2.38.1
+Sorry about that! I didn't notice I merged commits with mangled email
+addresses.
+
+I'll merge this after the release has been made on Tuesday.
+
+Stefan
+
+>=20
+> diff --git a/.mailmap b/.mailmap
+> index 35dddbe27b..fad2aff5aa 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -45,6 +45,7 @@ Ed Swierk <eswierk@skyportsystems.com> Ed Swierk via Qe=
+mu-devel <qemu-devel@nong
+>  Ian McKellar <ianloic@google.com> Ian McKellar via Qemu-devel <qemu-deve=
+l@nongnu.org>
+>  Julia Suvorova <jusual@mail.ru> Julia Suvorova via Qemu-devel <qemu-deve=
+l@nongnu.org>
+>  Justin Terry (VM) <juterry@microsoft.com> Justin Terry (VM) via Qemu-dev=
+el <qemu-devel@nongnu.org>
+> +Stefan Weil <sw@weilnetz.de> Stefan Weil via <qemu-devel@nongnu.org>
+> =20
+>  # Next, replace old addresses by a more recent one.
+>  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <aleksandar.markov=
+ic@mips.com>
+> --=20
+> 2.38.1
+>=20
+
+--NQDKM8IakA9wkc/5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmOXQYYACgkQnKSrs4Gr
+c8hikQf/bOCbo0iKa5aGrURsAhRzcabVP00vpJC+e0PtlhIoIOr7jqpA/JgcbU0U
+EJZ266k0WySw+G3Lw0MK20xLFR7HZ/UGBzTMW0r2lI+WhvouCoXqx3m1nqBM7PTC
+OYb41PFyrJotn7gIlKxJf+bXdsiNsJhbE1gE2rKKFwiGJqbTZwj//Mz5WuXzEL1Q
+D1ZearM8CwUiMLZ2I5MqpwG0EJRFUlvYJf89H6pvmzswOEWZFVSF9EP0T9zCemIz
+4wzBVrnKsSnRtMvqXEdBdBLMuK4s+I+kI0Nxp7ZB5TLub1KsiKF0Gpz3HId/V0u9
+dN/MAbq8rLeb4K63A+CNqyLPiKBipg==
+=ssUG
+-----END PGP SIGNATURE-----
+
+--NQDKM8IakA9wkc/5--
 
 
