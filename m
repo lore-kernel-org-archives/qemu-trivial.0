@@ -1,73 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p5U65-0007j9-Cp
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Dec 2022 10:55:05 -0500
+	id 1p5U74-0000Mg-LA
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Dec 2022 10:56:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1p5U63-0007ib-9Y
- for qemu-trivial@nongnu.org; Wed, 14 Dec 2022 10:55:03 -0500
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1p5U72-0000Kc-7s
+ for qemu-trivial@nongnu.org; Wed, 14 Dec 2022 10:56:04 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1p5U60-0005CA-PA
- for qemu-trivial@nongnu.org; Wed, 14 Dec 2022 10:55:03 -0500
-Received: by mail-wr1-x435.google.com with SMTP id h12so140537wrv.10
- for <qemu-trivial@nongnu.org>; Wed, 14 Dec 2022 07:55:00 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1p5U70-0005Z0-DQ
+ for qemu-trivial@nongnu.org; Wed, 14 Dec 2022 10:56:03 -0500
+Received: by mail-wm1-x330.google.com with SMTP id ja17so8738706wmb.3
+ for <qemu-trivial@nongnu.org>; Wed, 14 Dec 2022 07:56:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=anisinha-ca.20210112.gappssmtp.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vQ12kQ8GJlUpybjgHiW4SL+jDsM6U/tVV4jQZXS1Pts=;
- b=3tMc5nR8fW0OUso/NAHkN8xIBH1DpyYlfwuoRZZJyRlT7mVNJholywYkeccZPA6rnr
- rmzIV8HkU9otz38sWpsKDm3hcDkdBEaAZQRdii/EtjaAF4oDsJTBjMNbNRuI4roczjqv
- 07uHSzWXlP71nzyRsmlXGkQwRvnw6YYNe16Zdt3X1pF7NntSkVbQXKiRMP3ZCcqwWFK9
- ee7UfgAAskIvHR3p3kt9KdZfc19PJ+Z8NCdXPig3Tj222nDY66zcJwF4HST8xXpEOEua
- GMmGfbrtH4sUm24HLeka3tsbXbEM1xWa0XKeXXrSJftHFTJs5N2Odgx5XzlzrtX9eYKo
- Rgfg==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=ASc0yeNpS0LBJzq7UnF5zrxoCeXzDliiC3DYV25XDZ8=;
+ b=gL49x+Rt73lJS2J66ADa7UkmGYRnM1+zuk1P25G95CGmpRZVUFlBJLO8wBglG+AAgU
+ wBBfLUqXwPY/tQTykBuV/zO3Q9XD2CC5Hj2it/iLGKuwHzyYnzPFqxrm0wGkMuyvTDT+
+ XXe+Dcask3LHvMZUzjkYdbzt+UhEAzQRRf/Ma+u7+enx+814QgzQ8b7r/ms4gVaBauQW
+ b53VLGs2eGM9IXdzhGOXTriw64i1qI0hR1XOeHOm/hrmI+BkRwMa/RB6MOjkjy2fmaae
+ nif14+5jA7RMtBsPcQrfeJ3OV61ZV5qXaUiFKg+iqzEvhdONhb4kwdvY6N+AiHXD+yRC
+ NUoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vQ12kQ8GJlUpybjgHiW4SL+jDsM6U/tVV4jQZXS1Pts=;
- b=KcMvKgGr+sL+Q76iZdLvsBOU85o72C9yRK8wIOD9SajcO7UFnHFdHnyYrv+XN7eLpY
- G3Bfly3xQkxmtFJ2t1aYbzLS6v7kivpneKPz5ypf/hsSKbc7P8fmMId8/uykKFbMrmdW
- ss1hvcdHCg5jAUBYu9OowcCI8BY6VAu5T2LLBT3bRsqMchnWXwC75XaoZpf/6K0fXkgh
- HYyrttKPnUyU13YU3jcocz4XP7cm+ZMxaWXf5UK4U6F7XKZN656/Plzg9pjd0awaYb2P
- A3JPXwtKAf4qMfQmrLRJUPaPda4TRCXuC3U0eHebtSEfPj5gtEI9rpi3ac6tjuHCbwMC
- Mt8A==
-X-Gm-Message-State: ANoB5plXRkgtSf6/Hy0UftQiZxSNPlJZ1N3p5Jk9N1MHLajkCbXckI9Y
- EQTdiIuTBa7p5iYblBARqh8TZ/gRV+Zbstwa3++rEA==
-X-Google-Smtp-Source: AA0mqf7VtE8Ri0zRJ0vykO9JSi3b7hf+ODJF1/JYWw0kfIwYtmQbpUPQcZN6Frhv364udyt1NZNC271dtB70mdDsvJA=
-X-Received: by 2002:adf:eecd:0:b0:242:3d24:5474 with SMTP id
- a13-20020adfeecd000000b002423d245474mr17258669wrp.681.1671033299225; Wed, 14
- Dec 2022 07:54:59 -0800 (PST)
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ASc0yeNpS0LBJzq7UnF5zrxoCeXzDliiC3DYV25XDZ8=;
+ b=x8ZkDhnSVqRk8FGwDLU+f1xIe3MZveVfDLKaZO03E0q3Hgm6DSSEKoh5+LyTVQ/fbt
+ 77+6GhDovell8poAQeVG/RLj0Yg4iI7ppu2SnY2iIrLSChm1le+0yLWdR2+QN4iAgNvU
+ d21s9UuByzaoOnPWU8MI0GZTCE9oTRbY8pG6QzYlNjOpc7ev5OV2iBLXMk6EjfYPYohj
+ z90Y6elIt90B9F6kL44MS3QKUMbHtiWAig9hMT9IpIYHH/e1iSnoLMSI3SSayalbYbiu
+ Kh8FTn9wKRmkBMPnPxr0Ojo6l8hzBqVp9XyJii7Cq/oETFWcsJmbL6277vQqv4DweEk3
+ B19Q==
+X-Gm-Message-State: ANoB5pkoWOjcmn2ubqVyLj+C19rxD7UOnTTMiI108L6AFAIOKpUyBv6Z
+ RYRVxacaAUslVUK1rJHbNl/MpjiygzzdYvkmwU4okMMp8zh/iAn2
+X-Google-Smtp-Source: AA0mqf7YccPsLkZjarN+yVikAU8REkEJva2tiZrCJFDxv/rsoid+RdN598iFmvHQN1YGifbMAlPMElRSz6X+mk+a4ik=
+X-Received: by 2002:a05:600c:1d8e:b0:3d1:cda5:bdc7 with SMTP id
+ p14-20020a05600c1d8e00b003d1cda5bdc7mr162519wms.204.1671033360862; Wed, 14
+ Dec 2022 07:56:00 -0800 (PST)
 MIME-Version: 1.0
-References: <20221125044138.962137-1-ani@anisinha.ca>
- <CAARzgwy=m4tN69cSn1msrZg1thkzL2ZfQ8_yOLw6Y77AzfFP-g@mail.gmail.com>
- <20221129000647-mutt-send-email-mst@kernel.org>
- <CAARzgwzS0tvV-Vz7PByrWfxrs9Gc6vyuvDVKriDMQMoJ1HWtPg@mail.gmail.com>
- <874juirvrr.fsf@pond.sub.org>
- <CAARzgwzgtP93NKdiC-p_k5LLzgY_eEruFgeGC8wOcH9AvSrwtA@mail.gmail.com>
-In-Reply-To: <CAARzgwzgtP93NKdiC-p_k5LLzgY_eEruFgeGC8wOcH9AvSrwtA@mail.gmail.com>
+References: <20221203132346.34479-1-ani@anisinha.ca>
+ <6e398f40b980f314b0316746e3e8d9c41c3894a7.camel@wdc.com>
+In-Reply-To: <6e398f40b980f314b0316746e3e8d9c41c3894a7.camel@wdc.com>
 From: Ani Sinha <ani@anisinha.ca>
-Date: Wed, 14 Dec 2022 21:24:48 +0530
-Message-ID: <CAARzgwyX9yLrok2rePbEqE2O187k68LWwJ6OuO1Uw6ywPzFfew@mail.gmail.com>
-Subject: Re: [PATCH v2] acpi/tests/avocado/bits: add SPDX license identifiers
- for bios bits tests
-To: Markus Armbruster <armbru@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Beraldo Leal <bleal@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>, 
- Maydell Peter <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Wed, 14 Dec 2022 21:25:49 +0530
+Message-ID: <CAARzgwy4Lp_KP2OrPo4cz9GqhUMu-kXpHa42sfgfK2fTeFpWyw@mail.gmail.com>
+Subject: Re: [PATCH] docs/acpi/bits: document BITS_DEBUG environment variable
+To: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Cc: "mst@redhat.com" <mst@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: none client-ip=2a00:1450:4864:20::435;
- envelope-from=ani@anisinha.ca; helo=mail-wr1-x435.google.com
+Received-SPF: none client-ip=2a00:1450:4864:20::330;
+ envelope-from=ani@anisinha.ca; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -86,63 +73,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Dec 2022 15:55:03 -0000
+X-List-Received-Date: Wed, 14 Dec 2022 15:56:05 -0000
 
-On Tue, Nov 29, 2022 at 3:41 PM Ani Sinha <ani@anisinha.ca> wrote:
+On Mon, Dec 5, 2022 at 3:39 AM Wilfred Mallawa <wilfred.mallawa@wdc.com> wrote:
 >
-> On Tue, Nov 29, 2022 at 2:18 PM Markus Armbruster <armbru@redhat.com> wro=
-te:
+> On Sat, 2022-12-03 at 13:23 +0000, Ani Sinha wrote:
+> > Debug specific actions can be enabled in bios bits acpi tests by
+> > passing
+> > BITS_DEBUG in the environment variable while running the test.
+> > Document that.
 > >
-> > Ani Sinha <ani@anisinha.ca> writes:
-> >
-> > > On Tue, Nov 29, 2022 at 10:37 AM Michael S. Tsirkin <mst@redhat.com> =
-wrote:
-> > >>
-> > >> On Tue, Nov 29, 2022 at 08:02:15AM +0530, Ani Sinha wrote:
-> > >> >
-> > >> >
-> > >> > On Fri, Nov 25, 2022 at 10:11 AM Ani Sinha <ani@anisinha.ca> wrote=
-:
-> > >> >
-> > >> >     Added the SPDX license identifiers for biosbits tests.
-> > >> >     Also added a comment on each of the test scripts to indicate t=
-hat they run
-> > >> >     from within the biosbits environment and hence are not subject=
-ed to the
-> > >> >     regular
-> > >> >     maintenance activities for QEMU and is excluded from the depen=
-dency
-> > >> >     management
-> > >> >     challenges in the host testing environment.
-> > >> >
-> > >> >     Cc: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> > >> >     Cc: Paolo Bonzini <pbonzini@redhat.com>
-> > >> >     Cc: Maydell Peter <peter.maydell@linaro.org>
-> > >> >     Cc: John Snow <jsnow@redhat.com>
-> > >> >     Cc: Thomas Huth <thuth@redhat.com>
-> > >> >     Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > >> >     Cc: Igor Mammedov <imammedo@redhat.com>
-> > >> >     Cc: Michael Tsirkin <mst@redhat.com>
-> > >> >     Cc: Thomas Huth <thuth@redhat.com>
-> > >> >     Cc: qemu-trivial@nongnu.org
-> > >> >     Signed-off-by: Ani Sinha <ani@anisinha.ca>
+> > CC: qemu-trivial@nongnu.org
+> > Signed-off-by: Ani Sinha <ani@anisinha.ca>
+> > ---
+> >  docs/devel/acpi-bits.rst | 3 +++
+> >  1 file changed, 3 insertions(+)
+> Reviewed-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
 
-Reminder: michael, please queue this for your next PR.
+michael, reminder to queue this for the next PR.
 
-> > >> >
-> > >> >
-> > >> > Is anyone going to queue this for 7.2 given it's quite trivial?
-> > >>
-> > >> Don't see why we should bother.
-> > >
-> > > Completeness?
 > >
-> > We're about to tag -rc3.  It's too late for trivial stuff.  Anything bu=
-t
-> > release-critical fixes would be madness at this stage.
+> > diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
+> > index 4a94c7d83d..9eb4b9e666 100644
+> > --- a/docs/devel/acpi-bits.rst
+> > +++ b/docs/devel/acpi-bits.rst
+> > @@ -52,6 +52,9 @@ Under ``tests/avocado/`` as the root we have:
+> >     for their tests. In order to enable debugging, you can set
+> > **V=1**
+> >     environment variable. This enables verbose mode for the test and
+> > also dumps
+> >     the entire log from bios bits and more information in case
+> > failure happens.
+> > +   You can also set **BITS_DEBUG=1** to turn on debug mode. It will
+> > enable
+> > +   verbose logs and also retain the temporary work directory the
+> > test used for
+> > +   you to inspect and run the specific commands manually.
 > >
-> > I recommend to route this via qemu-trivial into the next release.
+> >     In order to run this test, please perform the following steps
+> > from the QEMU
+> >     build directory:
 >
-> Sounds good. I'll make sure I remind people again after the release
-> and before I go underground for xmas.
 
