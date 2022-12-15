@@ -1,73 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p5npZ-0007yA-Ao
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 07:59:21 -0500
+	id 1p5rMx-0007Gs-90
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 11:46:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p5npK-0007m5-3I
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 07:59:07 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p5rMj-0007D2-PV
+ for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 11:45:53 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p5npI-0008FM-Hl
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 07:59:05 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id u12so2919159wrr.11
- for <qemu-trivial@nongnu.org>; Thu, 15 Dec 2022 04:59:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1p5rMg-0005uY-OI
+ for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 11:45:49 -0500
+Received: by mail-pl1-x631.google.com with SMTP id t2so7473673ply.2
+ for <qemu-trivial@nongnu.org>; Thu, 15 Dec 2022 08:45:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Pd+WzUnCc/vHhF8+sUjSCch9sSXxilWUxKZQJ8mNWko=;
- b=ahetI8rUU0jeearRSq9Cf5B17q3LlFsAlIEiN8xz0Cysm0PM1BMfTFB9gpVAFcpgY2
- cGmfjmWhZn2MoLzi+IH7qR8iYIS9KM3qFcdUL7ZgBTjYzRWzix7eAv1/tDLWLAuDFUJk
- M+Y4W7HAS33PvRkQFyNQZjMhZ3IWScpzBFmUf8SHjzFExGVGYpllnK+rYKhSL7P2OmJQ
- XN1ThjhDZjl83/B7Erb2nA2OzQdFkdLbH8eLHIAmawtydhuVUmlLs7G5NL4PJfQRqJPn
- oUVraUVqBNSwMlhqUeWhE1kWOthKGubHtoEaGwdVfgFKDmWuK3R/mNFDG+yR2050u1XO
- mgvA==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=/rqcgn4WX9nPlUTev8T7Xnxc9HhLauECVRkKx4aqr/I=;
+ b=ULqCtbIsHV/NL7xPMz7Ilu0PeMDj1+DiutV8Av/xLSVz6nLPINGBhTjdSuKsLaGWrT
+ al2/9dXGcS2F8/Hbj63GAcSGf74xcrV5AYEBnsjme0+MPfkwnx9DT8vgb+YULX6ZBWrc
+ Dsx9V33jIBhQJsi1GvZcuQwurE0eA/rm3DBxkU81RmwwzpADGmgINFu6H4h6EpAVtLOr
+ amCIOrifEHVGmyA6aiXnT+XHrcmdGuXPZUBpV18PwFHKHS5N/mrim0isf3LGlz3n122l
+ qSbqEMNSsEOlxv2hWFyb41jKMS71qZysBaVMHVI0wuUmI13T3WrxscJIUtUIi28QVLkZ
+ 322Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Pd+WzUnCc/vHhF8+sUjSCch9sSXxilWUxKZQJ8mNWko=;
- b=CUMWODEU/BoZRQCq1tJSC3vcp26BZu5vsa8JKD2dqWDdySnFhxHU50Da0n9yqhHfn0
- tCoQOEq8RrQGJMOfxGVFhyQyw2X7g3NLEMYxhY2vxtLenWPbl3brnVNQ42s2Ef70OOP+
- SRnB00Ay8ZAwhKyM0KckykylwrETiwkqFOjH/9JmlSvmMw5lAIzdPyzxToHr6lO+6EDo
- DTqv8VidkXcJ7MYQ4uHfIJqz8rNVTG9AzAj54yDhKl088RibNAUnseRsAZ7hBlVO/ing
- 2/OKr+CL/m0bF5TgHVitjCQkLAJj4t+oKSro02mF7Fcarvj7SptywGYeSfGY0oFziQAs
- uh2Q==
-X-Gm-Message-State: ANoB5pmESGhA+yRV+9Q/MQ5byGoDyjGxl8n8VRvpPPJmxM9918UDvvRy
- wAltmqWxhuBgOhdXERWKdG1akw==
-X-Google-Smtp-Source: AA0mqf7NE++WZsl6mdQKb9zoxC0dCeim79pm9DnY7GJBbSMfQbHGWQoi493fWb85cghdXpRTZi7G9Q==
-X-Received: by 2002:a5d:51cd:0:b0:242:17d3:a9f9 with SMTP id
- n13-20020a5d51cd000000b0024217d3a9f9mr17346084wrv.68.1671109142967; 
- Thu, 15 Dec 2022 04:59:02 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- b8-20020a05600003c800b0024258722a7fsm6062964wrg.37.2022.12.15.04.59.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Dec 2022 04:59:02 -0800 (PST)
-Message-ID: <1c926e93-2118-b8c7-a40b-51ca537dfb6c@linaro.org>
-Date: Thu, 15 Dec 2022 13:59:01 +0100
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/rqcgn4WX9nPlUTev8T7Xnxc9HhLauECVRkKx4aqr/I=;
+ b=tUr/Ddb09I/W5v2VebDtmnYeS0puPaUbgBCZdW1QaeusM6Rm7jcpsCH0jTCk1pPQNl
+ 7eSBSsdT9qDBdeZwey2VCizAQGXXYPhOQj9RSREMZXzjXBuGx9/tWNk1V3tvYxZMIdGU
+ kjSy26GiQYLJf2h4ReHmB0u6hubrqLEvoTLUw3cOuOEYAGqza66IBwus65dmc8B2URJV
+ GHTEWNvVuRlhQ15OyHMiEulc1j5nVRdUJa77eWlI09Z0EgznzXa5UjgMrJVPihnv1Wbk
+ gwa2oYX13yO73FXruyAvOLK/6/ZnnJ1ggLkO8eyZvikBxx8eMLjRpjmBWjGNCldTAU7S
+ 5nXw==
+X-Gm-Message-State: ANoB5pkQB1TuI2gEHP3s73flRceEl0oHqnhmnFfU/hXWrOdPAAk6E4jW
+ BTE/0rZ6WvYfyyfg3EwzkfgpCuC4leeDfamh4fa88g==
+X-Google-Smtp-Source: AA0mqf7xzhpL3oVvU0leYZBljwKjI1taK91ZV+o3UwofbsEzrteT9/wEFJByaXgJ36+EDs0ZUWRJmo8pSma+CENfn/Q=
+X-Received: by 2002:a17:903:2053:b0:189:cdc8:7261 with SMTP id
+ q19-20020a170903205300b00189cdc87261mr23454409pla.168.1671122745045; Thu, 15
+ Dec 2022 08:45:45 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.1
-Subject: Re: [PATCH Trivial] hw/cxl/cxl-cdat.c: spelling: missmatch
-Content-Language: en-US
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Ben Widawsky <ben.widawsky@intel.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>
-References: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+References: <20221215093849.4771-1-quintela@redhat.com>
+In-Reply-To: <20221215093849.4771-1-quintela@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 15 Dec 2022 16:45:33 +0000
+Message-ID: <CAFEAcA_iSJ7UgGLemK_Pv1XTDW1cKu7x0P=3odgWWz4UfU994Q@mail.gmail.com>
+Subject: Re: [PULL 00/19] Next 8.0 patches
+To: Juan Quintela <quintela@redhat.com>
+Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
+ Peter Xu <peterx@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-trivial@nongnu.org, qemu-block@nongnu.org, 
+ Stefan Hajnoczi <stefanha@redhat.com>, David Hildenbrand <david@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Fam Zheng <fam@euphon.net>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,17 +80,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Dec 2022 12:59:07 -0000
+X-List-Received-Date: Thu, 15 Dec 2022 16:45:54 -0000
 
-On 15/12/22 13:37, Michael Tokarev wrote:
-> Introduced by: aba578bdace5303a441f8a37aad781b5cb06f38c
-> 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->   hw/cxl/cxl-cdat.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+On Thu, 15 Dec 2022 at 09:39, Juan Quintela <quintela@redhat.com> wrote:
+>
+> The following changes since commit 5204b499a6cae4dfd9fe762d5e6e82224892383b:
+>
+>   mailmap: Fix Stefan Weil author email (2022-12-13 15:56:57 -0500)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/juan.quintela/qemu.git tags/next-8.0-pull-request
+>
+> for you to fetch changes up to 7f401b80445e8746202a6d643410ba1b9eeb3cb1:
+>
+>   migration: Drop rs->f (2022-12-15 10:30:37 +0100)
+>
+> ----------------------------------------------------------------
+> Migration patches for 8.0
+>
+> Hi
+>
+> This are the patches that I had to drop form the last PULL request because they werent fixes:
+> - AVX2 is dropped, intel posted a fix, I have to redo it
+> - Fix for out of order channels is out
+>   Daniel nacked it and I need to redo it
+>
+> ----------------------------------------------------------------
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+Applied, thanks.
 
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.0
+for any user-visible changes.
+
+-- PMM
 
