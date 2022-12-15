@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p5khr-0007rZ-Dq
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 04:39:11 -0500
+	id 1p5khw-0007tj-5Z
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 04:39:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p5kho-0007pN-Ll
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:08 -0500
+ id 1p5khu-0007tA-Nw
+ for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:14 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p5khm-0000TW-B9
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:07 -0500
+ id 1p5kht-0000V9-5s
+ for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1671097145;
+ s=mimecast20190719; t=1671097152;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UZm70PSygUPn7UXNAT5LnhWWt6V/uNbWzHaNnNPhKro=;
- b=dMRNuTvjgBL8sEUz95WnBJOLV8WkINoIM/+QG3RcQoQ+L5m1juOdlu34W27EY/+OJDSzdT
- VCyVkKml62KW6UUkeEeyDa6bh9kA7nC23TLl79MUVwftXGNqJUo3rrVE0qAFgnDLQHFKFj
- h8IvZO3Sq7XNPuAIRxIYM7CEgV0yBSs=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=82n06ypGY49Plz4M2tcMx6flFk5mja5S3ptKNYMoHNk=;
+ b=d2CMrJ6zcK9oLC3dVpdWOqFvgtMyU5gjFSAIa7srnJHXQ3PlMbmvaa62oy07TjsaXk8qVo
+ xUxgSf4R44gp79RFgI5wJKql6/yXgoPv8Ke4xCoJcvj+RdwgZWBMtzNmy075XjYwdH5Bnp
+ iua/BC6rY1HHNbhP+z4m9Y6uWPYHc9w=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-63-ai9kY6qwM7a3ztZV2jIetQ-1; Thu, 15 Dec 2022 04:38:59 -0500
-X-MC-Unique: ai9kY6qwM7a3ztZV2jIetQ-1
+ us-mta-259-JaNZi2dgOAuqLlhsxuIbTw-1; Thu, 15 Dec 2022 04:39:09 -0500
+X-MC-Unique: JaNZi2dgOAuqLlhsxuIbTw-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 59F853C10693;
- Thu, 15 Dec 2022 09:38:59 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BCAB885C6E4;
+ Thu, 15 Dec 2022 09:39:08 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.192.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6AC3940C2064;
- Thu, 15 Dec 2022 09:38:56 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F2C6740C2064;
+ Thu, 15 Dec 2022 09:39:05 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
@@ -47,10 +47,9 @@ Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
  Fam Zheng <fam@euphon.net>, Leonardo Bras <leobras@redhat.com>
-Subject: [PULL 01/19] multifd: Create page_size fields into both MultiFD{Recv,
- Send}Params
-Date: Thu, 15 Dec 2022 10:38:31 +0100
-Message-Id: <20221215093849.4771-2-quintela@redhat.com>
+Subject: [PULL 04/19] migration: Export ram_release_page()
+Date: Thu, 15 Dec 2022 10:38:34 +0100
+Message-Id: <20221215093849.4771-5-quintela@redhat.com>
 In-Reply-To: <20221215093849.4771-1-quintela@redhat.com>
 References: <20221215093849.4771-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -77,233 +76,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Dec 2022 09:39:08 -0000
-
-We were calling qemu_target_page_size() left and right.
+X-List-Received-Date: Thu, 15 Dec 2022 09:39:15 -0000
 
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 Reviewed-by: Leonardo Bras <leobras@redhat.com>
 ---
- migration/multifd.h      |  4 ++++
- migration/multifd-zlib.c | 14 ++++++--------
- migration/multifd-zstd.c | 12 +++++-------
- migration/multifd.c      | 18 ++++++++----------
- 4 files changed, 23 insertions(+), 25 deletions(-)
+ migration/ram.h | 1 +
+ migration/ram.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/migration/multifd.h b/migration/multifd.h
-index 519f498643..86fb9982b3 100644
---- a/migration/multifd.h
-+++ b/migration/multifd.h
-@@ -80,6 +80,8 @@ typedef struct {
-     bool registered_yank;
-     /* packet allocated len */
-     uint32_t packet_len;
-+    /* guest page size */
-+    uint32_t page_size;
-     /* multifd flags for sending ram */
-     int write_flags;
+diff --git a/migration/ram.h b/migration/ram.h
+index e844966f69..038d52f49f 100644
+--- a/migration/ram.h
++++ b/migration/ram.h
+@@ -66,6 +66,7 @@ int ram_load_postcopy(QEMUFile *f, int channel);
+ void ram_handle_compressed(void *host, uint8_t ch, uint64_t size);
  
-@@ -143,6 +145,8 @@ typedef struct {
-     QIOChannel *c;
-     /* packet allocated len */
-     uint32_t packet_len;
-+    /* guest page size */
-+    uint32_t page_size;
+ void ram_transferred_add(uint64_t bytes);
++void ram_release_page(const char *rbname, uint64_t offset);
  
-     /* syncs main thread and channels */
-     QemuSemaphore sem_sync;
-diff --git a/migration/multifd-zlib.c b/migration/multifd-zlib.c
-index 18213a9513..37770248e1 100644
---- a/migration/multifd-zlib.c
-+++ b/migration/multifd-zlib.c
-@@ -116,7 +116,6 @@ static void zlib_send_cleanup(MultiFDSendParams *p, Error **errp)
- static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
- {
-     struct zlib_data *z = p->data;
--    size_t page_size = qemu_target_page_size();
-     z_stream *zs = &z->zs;
-     uint32_t out_size = 0;
-     int ret;
-@@ -135,8 +134,8 @@ static int zlib_send_prepare(MultiFDSendParams *p, Error **errp)
-          * with compression. zlib does not guarantee that this is safe,
-          * therefore copy the page before calling deflate().
-          */
--        memcpy(z->buf, p->pages->block->host + p->normal[i], page_size);
--        zs->avail_in = page_size;
-+        memcpy(z->buf, p->pages->block->host + p->normal[i], p->page_size);
-+        zs->avail_in = p->page_size;
-         zs->next_in = z->buf;
- 
-         zs->avail_out = available;
-@@ -242,12 +241,11 @@ static void zlib_recv_cleanup(MultiFDRecvParams *p)
- static int zlib_recv_pages(MultiFDRecvParams *p, Error **errp)
- {
-     struct zlib_data *z = p->data;
--    size_t page_size = qemu_target_page_size();
-     z_stream *zs = &z->zs;
-     uint32_t in_size = p->next_packet_size;
-     /* we measure the change of total_out */
-     uint32_t out_size = zs->total_out;
--    uint32_t expected_size = p->normal_num * page_size;
-+    uint32_t expected_size = p->normal_num * p->page_size;
-     uint32_t flags = p->flags & MULTIFD_FLAG_COMPRESSION_MASK;
-     int ret;
-     int i;
-@@ -274,7 +272,7 @@ static int zlib_recv_pages(MultiFDRecvParams *p, Error **errp)
-             flush = Z_SYNC_FLUSH;
-         }
- 
--        zs->avail_out = page_size;
-+        zs->avail_out = p->page_size;
-         zs->next_out = p->host + p->normal[i];
- 
-         /*
-@@ -288,8 +286,8 @@ static int zlib_recv_pages(MultiFDRecvParams *p, Error **errp)
-         do {
-             ret = inflate(zs, flush);
-         } while (ret == Z_OK && zs->avail_in
--                             && (zs->total_out - start) < page_size);
--        if (ret == Z_OK && (zs->total_out - start) < page_size) {
-+                             && (zs->total_out - start) < p->page_size);
-+        if (ret == Z_OK && (zs->total_out - start) < p->page_size) {
-             error_setg(errp, "multifd %u: inflate generated too few output",
-                        p->id);
-             return -1;
-diff --git a/migration/multifd-zstd.c b/migration/multifd-zstd.c
-index d788d309f2..f4a8e1ed1f 100644
---- a/migration/multifd-zstd.c
-+++ b/migration/multifd-zstd.c
-@@ -113,7 +113,6 @@ static void zstd_send_cleanup(MultiFDSendParams *p, Error **errp)
- static int zstd_send_prepare(MultiFDSendParams *p, Error **errp)
- {
-     struct zstd_data *z = p->data;
--    size_t page_size = qemu_target_page_size();
-     int ret;
-     uint32_t i;
- 
-@@ -128,7 +127,7 @@ static int zstd_send_prepare(MultiFDSendParams *p, Error **errp)
-             flush = ZSTD_e_flush;
-         }
-         z->in.src = p->pages->block->host + p->normal[i];
--        z->in.size = page_size;
-+        z->in.size = p->page_size;
-         z->in.pos = 0;
- 
-         /*
-@@ -241,8 +240,7 @@ static int zstd_recv_pages(MultiFDRecvParams *p, Error **errp)
- {
-     uint32_t in_size = p->next_packet_size;
-     uint32_t out_size = 0;
--    size_t page_size = qemu_target_page_size();
--    uint32_t expected_size = p->normal_num * page_size;
-+    uint32_t expected_size = p->normal_num * p->page_size;
-     uint32_t flags = p->flags & MULTIFD_FLAG_COMPRESSION_MASK;
-     struct zstd_data *z = p->data;
-     int ret;
-@@ -265,7 +263,7 @@ static int zstd_recv_pages(MultiFDRecvParams *p, Error **errp)
- 
-     for (i = 0; i < p->normal_num; i++) {
-         z->out.dst = p->host + p->normal[i];
--        z->out.size = page_size;
-+        z->out.size = p->page_size;
-         z->out.pos = 0;
- 
-         /*
-@@ -279,8 +277,8 @@ static int zstd_recv_pages(MultiFDRecvParams *p, Error **errp)
-         do {
-             ret = ZSTD_decompressStream(z->zds, &z->out, &z->in);
-         } while (ret > 0 && (z->in.size - z->in.pos > 0)
--                         && (z->out.pos < page_size));
--        if (ret > 0 && (z->out.pos < page_size)) {
-+                         && (z->out.pos < p->page_size));
-+        if (ret > 0 && (z->out.pos < p->page_size)) {
-             error_setg(errp, "multifd %u: decompressStream buffer too small",
-                        p->id);
-             return -1;
-diff --git a/migration/multifd.c b/migration/multifd.c
-index 509bbbe3bf..efffa77a76 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -87,15 +87,14 @@ static void nocomp_send_cleanup(MultiFDSendParams *p, Error **errp)
- static int nocomp_send_prepare(MultiFDSendParams *p, Error **errp)
- {
-     MultiFDPages_t *pages = p->pages;
--    size_t page_size = qemu_target_page_size();
- 
-     for (int i = 0; i < p->normal_num; i++) {
-         p->iov[p->iovs_num].iov_base = pages->block->host + p->normal[i];
--        p->iov[p->iovs_num].iov_len = page_size;
-+        p->iov[p->iovs_num].iov_len = p->page_size;
-         p->iovs_num++;
+ int ramblock_recv_bitmap_test(RAMBlock *rb, void *host_addr);
+ bool ramblock_recv_bitmap_test_byte_offset(RAMBlock *rb, uint64_t byte_offset);
+diff --git a/migration/ram.c b/migration/ram.c
+index 2cbe707bfc..8aad17c429 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -1234,7 +1234,7 @@ static void migration_bitmap_sync_precopy(RAMState *rs)
      }
- 
--    p->next_packet_size = p->normal_num * page_size;
-+    p->next_packet_size = p->normal_num * p->page_size;
-     p->flags |= MULTIFD_FLAG_NOCOMP;
-     return 0;
  }
-@@ -139,7 +138,6 @@ static void nocomp_recv_cleanup(MultiFDRecvParams *p)
- static int nocomp_recv_pages(MultiFDRecvParams *p, Error **errp)
+ 
+-static void ram_release_page(const char *rbname, uint64_t offset)
++void ram_release_page(const char *rbname, uint64_t offset)
  {
-     uint32_t flags = p->flags & MULTIFD_FLAG_COMPRESSION_MASK;
--    size_t page_size = qemu_target_page_size();
- 
-     if (flags != MULTIFD_FLAG_NOCOMP) {
-         error_setg(errp, "multifd %u: flags received %x flags expected %x",
-@@ -148,7 +146,7 @@ static int nocomp_recv_pages(MultiFDRecvParams *p, Error **errp)
-     }
-     for (int i = 0; i < p->normal_num; i++) {
-         p->iov[i].iov_base = p->host + p->normal[i];
--        p->iov[i].iov_len = page_size;
-+        p->iov[i].iov_len = p->page_size;
-     }
-     return qio_channel_readv_all(p->c, p->iov, p->normal_num, errp);
- }
-@@ -281,8 +279,7 @@ static void multifd_send_fill_packet(MultiFDSendParams *p)
- static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
- {
-     MultiFDPacket_t *packet = p->packet;
--    size_t page_size = qemu_target_page_size();
--    uint32_t page_count = MULTIFD_PACKET_SIZE / page_size;
-+    uint32_t page_count = MULTIFD_PACKET_SIZE / p->page_size;
-     RAMBlock *block;
-     int i;
- 
-@@ -344,7 +341,7 @@ static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
-     for (i = 0; i < p->normal_num; i++) {
-         uint64_t offset = be64_to_cpu(packet->offset[i]);
- 
--        if (offset > (block->used_length - page_size)) {
-+        if (offset > (block->used_length - p->page_size)) {
-             error_setg(errp, "multifd: offset too long %" PRIu64
-                        " (max " RAM_ADDR_FMT ")",
-                        offset, block->used_length);
-@@ -433,8 +430,7 @@ static int multifd_send_pages(QEMUFile *f)
-     p->packet_num = multifd_send_state->packet_num++;
-     multifd_send_state->pages = p->pages;
-     p->pages = pages;
--    transferred = ((uint64_t) pages->num) * qemu_target_page_size()
--                + p->packet_len;
-+    transferred = ((uint64_t) pages->num) * p->page_size + p->packet_len;
-     qemu_file_acct_rate_limit(f, transferred);
-     ram_counters.multifd_bytes += transferred;
-     ram_counters.transferred += transferred;
-@@ -947,6 +943,7 @@ int multifd_save_setup(Error **errp)
-         /* We need one extra place for the packet header */
-         p->iov = g_new0(struct iovec, page_count + 1);
-         p->normal = g_new0(ram_addr_t, page_count);
-+        p->page_size = qemu_target_page_size();
- 
-         if (migrate_use_zero_copy_send()) {
-             p->write_flags = QIO_CHANNEL_WRITE_FLAG_ZERO_COPY;
-@@ -1194,6 +1191,7 @@ int multifd_load_setup(Error **errp)
-         p->name = g_strdup_printf("multifdrecv_%d", i);
-         p->iov = g_new0(struct iovec, page_count);
-         p->normal = g_new0(ram_addr_t, page_count);
-+        p->page_size = qemu_target_page_size();
-     }
- 
-     for (i = 0; i < thread_count; i++) {
+     if (!migrate_release_ram() || !migration_in_postcopy()) {
+         return;
 -- 
 2.38.1
 
