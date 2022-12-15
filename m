@@ -1,69 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p5kih-0000E3-5l
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 04:40:03 -0500
+	id 1p5nV4-0001xr-Ox
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 07:38:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p5kig-0000Cc-5N
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:40:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1p5nV2-0001xI-GU; Thu, 15 Dec 2022 07:38:08 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p5kie-0001MD-Lk
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:40:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1671097200;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=W+GlhHy1Aw+J2S/PdKkSiWceIYryK6JZft0nwXoxTSo=;
- b=b5yp2i9WW9oBIqvNbY9kV0GNGOni1OJJz0VfDdN3476S774cAr706w+0Atq1Pgvw5Nasvk
- rhGin0DcQ0R2vl+RlfRnIupbIEs8wXzuTATrYf37SkTxBusxIq/hJcfZ418WOw0El47fbF
- VGzKUrhEs8tYGus9Qr54NEK5pYMA0bY=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-65-VMKIeb5iPUOGL6QgjVGS9A-1; Thu, 15 Dec 2022 04:39:54 -0500
-X-MC-Unique: VMKIeb5iPUOGL6QgjVGS9A-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 58CF43C10697;
- Thu, 15 Dec 2022 09:39:54 +0000 (UTC)
-Received: from secure.mitica (unknown [10.39.192.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B408540C2064;
- Thu, 15 Dec 2022 09:39:51 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1p5nV0-0007vk-L7; Thu, 15 Dec 2022 07:38:08 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 43739401D9;
+ Thu, 15 Dec 2022 15:37:53 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 50B023B9;
+ Thu, 15 Dec 2022 15:37:52 +0300 (MSK)
+Received: (nullmailer pid 1026825 invoked by uid 1000);
+ Thu, 15 Dec 2022 12:37:52 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Peter Xu <peterx@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-trivial@nongnu.org, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Fam Zheng <fam@euphon.net>
-Subject: [PULL 19/19] migration: Drop rs->f
-Date: Thu, 15 Dec 2022 10:38:49 +0100
-Message-Id: <20221215093849.4771-20-quintela@redhat.com>
-In-Reply-To: <20221215093849.4771-1-quintela@redhat.com>
-References: <20221215093849.4771-1-quintela@redhat.com>
+Cc: qemu-trivial@nongnu.org, Ben Widawsky <ben.widawsky@intel.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH Trivial] hw/cxl/cxl-cdat.c: spelling: missmatch
+Date: Thu, 15 Dec 2022 15:37:49 +0300
+Message-Id: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: none client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,87 +47,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Dec 2022 09:40:02 -0000
+X-List-Received-Date: Thu, 15 Dec 2022 12:38:09 -0000
 
-From: Peter Xu <peterx@redhat.com>
+Introduced by: aba578bdace5303a441f8a37aad781b5cb06f38c
 
-Now with rs->pss we can already cache channels in pss->pss_channels.  That
-pss_channel contains more infromation than rs->f because it's per-channel.
-So rs->f could be replaced by rss->pss[RAM_CHANNEL_PRECOPY].pss_channel,
-while rs->f itself is a bit vague now.
-
-Note that vanilla postcopy still send pages via pss[RAM_CHANNEL_PRECOPY],
-that's slightly confusing but it reflects the reality.
-
-Then, after the replacement we can safely drop rs->f.
-
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Signed-off-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- migration/ram.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ hw/cxl/cxl-cdat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/migration/ram.c b/migration/ram.c
-index 1ae093fb61..334309f1c6 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -323,8 +323,6 @@ struct RAMSrcPageRequest {
- 
- /* State of RAM for migration */
- struct RAMState {
--    /* QEMUFile used for this migration */
--    QEMUFile *f;
-     /*
-      * PageSearchStatus structures for the channels when send pages.
-      * Protected by the bitmap_mutex.
-@@ -2532,8 +2530,6 @@ static int ram_find_and_save_block(RAMState *rs)
-         }
- 
-         if (found) {
--            /* Cache rs->f in pss_channel (TODO: remove rs->f) */
--            pss->pss_channel = rs->f;
-             pages = ram_save_host_page(rs, pss);
-         }
-     } while (!pages && again);
-@@ -3089,7 +3085,7 @@ static void ram_state_resume_prepare(RAMState *rs, QEMUFile *out)
-     ram_state_reset(rs);
- 
-     /* Update RAMState cache of output QEMUFile */
--    rs->f = out;
-+    rs->pss[RAM_CHANNEL_PRECOPY].pss_channel = out;
- 
-     trace_ram_state_resume_prepare(pages);
- }
-@@ -3180,7 +3176,7 @@ static int ram_save_setup(QEMUFile *f, void *opaque)
-             return -1;
-         }
+diff --git a/hw/cxl/cxl-cdat.c b/hw/cxl/cxl-cdat.c
+index 3653aa56f0..137abd0992 100644
+--- a/hw/cxl/cxl-cdat.c
++++ b/hw/cxl/cxl-cdat.c
+@@ -146,7 +146,7 @@ static void ct3_load_cdat(CDATObject *cdat, Error **errp)
+         num_ent++;
      }
--    (*rsp)->f = f;
-+    (*rsp)->pss[RAM_CHANNEL_PRECOPY].pss_channel = f;
- 
-     WITH_RCU_READ_LOCK_GUARD() {
-         qemu_put_be64(f, ram_bytes_total_common(true) | RAM_SAVE_FLAG_MEM_SIZE);
-@@ -3315,7 +3311,7 @@ static int ram_save_iterate(QEMUFile *f, void *opaque)
- out:
-     if (ret >= 0
-         && migration_is_setup_or_active(migrate_get_current()->state)) {
--        ret = multifd_send_sync_main(rs->f);
-+        ret = multifd_send_sync_main(rs->pss[RAM_CHANNEL_PRECOPY].pss_channel);
-         if (ret < 0) {
-             return ret;
-         }
-@@ -3385,7 +3381,7 @@ static int ram_save_complete(QEMUFile *f, void *opaque)
-         return ret;
+     if (i != file_size) {
+-        error_setg(errp, "CDAT: File length missmatch");
++        error_setg(errp, "CDAT: File length mismatch");
+         return;
      }
  
--    ret = multifd_send_sync_main(rs->f);
-+    ret = multifd_send_sync_main(rs->pss[RAM_CHANNEL_PRECOPY].pss_channel);
-     if (ret < 0) {
-         return ret;
-     }
 -- 
-2.38.1
+2.30.2
 
 
