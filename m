@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p5kiB-00087a-55
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 04:39:31 -0500
+	id 1p5kiH-0008AV-6D
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 04:39:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p5kiA-00085j-2u
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1p5kiF-0008AI-Ri
+ for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p5ki8-0000a6-K0
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:29 -0500
+ id 1p5kiD-0000b1-Sk
+ for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1671097168;
+ s=mimecast20190719; t=1671097173;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MyOOzG/IByBPCSi/RuF6EO6mdBGoKRDsMNpVGRjYHyo=;
- b=X/MFirhAuinxYLUZOS+aflRBW1SwNAj8nA07LV8HmFdJryXsKkJXzlePddY3JIQb/qLMED
- 0tBptivWRo5s89oxO5sLUv+rP6XUeInHaL5n/WgruP1xJVIQucuxgaeXuTEBcLUFG2cXh7
- xA/O0p/Yv8bEtUp22tbiyuqjSdTAJYI=
+ bh=KjyAtJBI1Le1Avp7uOYNzGtZI6T2gunZpw5nO71qFnU=;
+ b=RK6D4h3VaGAlJxvmMcfh799S3UBy60G9wgX/aQBbJjFEPQahDMHXsnZdkDD+XpmDhrnd29
+ a3xjBPoi7jOS2p6LN475GIBVuIBYa59O0V7I5sCJbADlQTBfZu7MzOW7kiz1Bs1uNo1D4U
+ GDKTDh0MuUNhV0SMzcVmyIVvAVUdoAI=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-130-YZbwd-jRNpCaKPnLOrez9A-1; Thu, 15 Dec 2022 04:39:24 -0500
-X-MC-Unique: YZbwd-jRNpCaKPnLOrez9A-1
+ us-mta-449-5l1YKOMkO5GxnkCMdcM19w-1; Thu, 15 Dec 2022 04:39:30 -0500
+X-MC-Unique: 5l1YKOMkO5GxnkCMdcM19w-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8F9323813F2C;
- Thu, 15 Dec 2022 09:39:23 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 28906299E74D;
+ Thu, 15 Dec 2022 09:39:30 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.192.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E094240C2064;
- Thu, 15 Dec 2022 09:39:20 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 03EF240C2064;
+ Thu, 15 Dec 2022 09:39:26 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
@@ -47,16 +47,15 @@ Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
  Fam Zheng <fam@euphon.net>
-Subject: [PULL 09/19] migration: Remove RAMState.f references in compression
- code
-Date: Thu, 15 Dec 2022 10:38:39 +0100
-Message-Id: <20221215093849.4771-10-quintela@redhat.com>
+Subject: [PULL 11/19] migration: Use atomic ops properly for page accountings
+Date: Thu, 15 Dec 2022 10:38:41 +0100
+Message-Id: <20221215093849.4771-12-quintela@redhat.com>
 In-Reply-To: <20221215093849.4771-1-quintela@redhat.com>
 References: <20221215093849.4771-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -64,7 +63,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,83 +76,251 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Dec 2022 09:39:30 -0000
+X-List-Received-Date: Thu, 15 Dec 2022 09:39:36 -0000
 
 From: Peter Xu <peterx@redhat.com>
 
-Removing referencing to RAMState.f in compress_page_with_multi_thread() and
-flush_compressed_data().
+To prepare for thread-safety on page accountings, at least below counters
+need to be accessed only atomically, they are:
 
-Compression code by default isn't compatible with having >1 channels (or it
-won't currently know which channel to flush the compressed data), so to
-make it simple we always flush on the default to_dst_file port until
-someone wants to add >1 ports support, as rs->f right now can really
-change (after postcopy preempt is introduced).
+        ram_counters.transferred
+        ram_counters.duplicate
+        ram_counters.normal
+        ram_counters.postcopy_bytes
 
-There should be no functional change at all after patch applied, since as
-long as rs->f referenced in compression code, it must be to_dst_file.
+There are a lot of other counters but they won't be accessed outside
+migration thread, then they're still safe to be accessed without atomic
+ops.
 
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/ram.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ migration/ram.h       | 20 ++++++++++++++++++++
+ migration/migration.c | 10 +++++-----
+ migration/multifd.c   |  4 ++--
+ migration/ram.c       | 40 ++++++++++++++++++++++++----------------
+ 4 files changed, 51 insertions(+), 23 deletions(-)
 
+diff --git a/migration/ram.h b/migration/ram.h
+index 038d52f49f..81cbb0947c 100644
+--- a/migration/ram.h
++++ b/migration/ram.h
+@@ -32,7 +32,27 @@
+ #include "qapi/qapi-types-migration.h"
+ #include "exec/cpu-common.h"
+ #include "io/channel.h"
++#include "qemu/stats64.h"
+ 
++/*
++ * These are the migration statistic counters that need to be updated using
++ * atomic ops (can be accessed by more than one thread).  Here since we
++ * cannot modify MigrationStats directly to use Stat64 as it was defined in
++ * the QAPI scheme, we define an internal structure to hold them, and we
++ * propagate the real values when QMP queries happen.
++ *
++ * IOW, the corresponding fields within ram_counters on these specific
++ * fields will be always zero and not being used at all; they're just
++ * placeholders to make it QAPI-compatible.
++ */
++typedef struct {
++    Stat64 transferred;
++    Stat64 duplicate;
++    Stat64 normal;
++    Stat64 postcopy_bytes;
++} MigrationAtomicStats;
++
++extern MigrationAtomicStats ram_atomic_counters;
+ extern MigrationStats ram_counters;
+ extern XBZRLECacheStats xbzrle_counters;
+ extern CompressionStats compression_counters;
+diff --git a/migration/migration.c b/migration/migration.c
+index f485eea5fb..de83c50f51 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -1049,13 +1049,13 @@ static void populate_ram_info(MigrationInfo *info, MigrationState *s)
+ 
+     info->has_ram = true;
+     info->ram = g_malloc0(sizeof(*info->ram));
+-    info->ram->transferred = ram_counters.transferred;
++    info->ram->transferred = stat64_get(&ram_atomic_counters.transferred);
+     info->ram->total = ram_bytes_total();
+-    info->ram->duplicate = ram_counters.duplicate;
++    info->ram->duplicate = stat64_get(&ram_atomic_counters.duplicate);
+     /* legacy value.  It is not used anymore */
+     info->ram->skipped = 0;
+-    info->ram->normal = ram_counters.normal;
+-    info->ram->normal_bytes = ram_counters.normal * page_size;
++    info->ram->normal = stat64_get(&ram_atomic_counters.normal);
++    info->ram->normal_bytes = info->ram->normal * page_size;
+     info->ram->mbps = s->mbps;
+     info->ram->dirty_sync_count = ram_counters.dirty_sync_count;
+     info->ram->dirty_sync_missed_zero_copy =
+@@ -1066,7 +1066,7 @@ static void populate_ram_info(MigrationInfo *info, MigrationState *s)
+     info->ram->pages_per_second = s->pages_per_second;
+     info->ram->precopy_bytes = ram_counters.precopy_bytes;
+     info->ram->downtime_bytes = ram_counters.downtime_bytes;
+-    info->ram->postcopy_bytes = ram_counters.postcopy_bytes;
++    info->ram->postcopy_bytes = stat64_get(&ram_atomic_counters.postcopy_bytes);
+ 
+     if (migrate_use_xbzrle()) {
+         info->has_xbzrle_cache = true;
+diff --git a/migration/multifd.c b/migration/multifd.c
+index b8dc559d24..000ca4d4ec 100644
+--- a/migration/multifd.c
++++ b/migration/multifd.c
+@@ -432,7 +432,7 @@ static int multifd_send_pages(QEMUFile *f)
+     transferred = ((uint64_t) pages->num) * p->page_size + p->packet_len;
+     qemu_file_acct_rate_limit(f, transferred);
+     ram_counters.multifd_bytes += transferred;
+-    ram_counters.transferred += transferred;
++    stat64_add(&ram_atomic_counters.transferred, transferred);
+     qemu_mutex_unlock(&p->mutex);
+     qemu_sem_post(&p->sem);
+ 
+@@ -624,7 +624,7 @@ int multifd_send_sync_main(QEMUFile *f)
+         p->pending_job++;
+         qemu_file_acct_rate_limit(f, p->packet_len);
+         ram_counters.multifd_bytes += p->packet_len;
+-        ram_counters.transferred += p->packet_len;
++        stat64_add(&ram_atomic_counters.transferred, p->packet_len);
+         qemu_mutex_unlock(&p->mutex);
+         qemu_sem_post(&p->sem);
+ 
 diff --git a/migration/ram.c b/migration/ram.c
-index 41475431fc..6e3dc845c5 100644
+index 5379164749..f4cd9038f4 100644
 --- a/migration/ram.c
 +++ b/migration/ram.c
-@@ -1461,6 +1461,7 @@ static bool save_page_use_compression(RAMState *rs);
- 
- static void flush_compressed_data(RAMState *rs)
- {
-+    MigrationState *ms = migrate_get_current();
-     int idx, len, thread_count;
- 
-     if (!save_page_use_compression(rs)) {
-@@ -1479,7 +1480,7 @@ static void flush_compressed_data(RAMState *rs)
-     for (idx = 0; idx < thread_count; idx++) {
-         qemu_mutex_lock(&comp_param[idx].mutex);
-         if (!comp_param[idx].quit) {
--            len = qemu_put_qemu_file(rs->f, comp_param[idx].file);
-+            len = qemu_put_qemu_file(ms->to_dst_file, comp_param[idx].file);
-             /*
-              * it's safe to fetch zero_page without holding comp_done_lock
-              * as there is no further request submitted to the thread,
-@@ -1498,11 +1499,11 @@ static inline void set_compress_params(CompressParam *param, RAMBlock *block,
-     param->offset = offset;
+@@ -425,18 +425,25 @@ uint64_t ram_bytes_remaining(void)
+                        0;
  }
  
--static int compress_page_with_multi_thread(RAMState *rs, RAMBlock *block,
--                                           ram_addr_t offset)
-+static int compress_page_with_multi_thread(RAMBlock *block, ram_addr_t offset)
++/*
++ * NOTE: not all stats in ram_counters are used in reality.  See comments
++ * for struct MigrationAtomicStats.  The ultimate result of ram migration
++ * counters will be a merged version with both ram_counters and the atomic
++ * fields in ram_atomic_counters.
++ */
+ MigrationStats ram_counters;
++MigrationAtomicStats ram_atomic_counters;
+ 
+ void ram_transferred_add(uint64_t bytes)
  {
-     int idx, thread_count, bytes_xmit = -1, pages = -1;
-     bool wait = migrate_compress_wait_thread();
-+    MigrationState *ms = migrate_get_current();
+     if (runstate_is_running()) {
+         ram_counters.precopy_bytes += bytes;
+     } else if (migration_in_postcopy()) {
+-        ram_counters.postcopy_bytes += bytes;
++        stat64_add(&ram_atomic_counters.postcopy_bytes, bytes);
+     } else {
+         ram_counters.downtime_bytes += bytes;
+     }
+-    ram_counters.transferred += bytes;
++    stat64_add(&ram_atomic_counters.transferred, bytes);
+ }
  
-     thread_count = migrate_compress_threads();
-     qemu_mutex_lock(&comp_done_lock);
-@@ -1510,7 +1511,8 @@ retry:
-     for (idx = 0; idx < thread_count; idx++) {
-         if (comp_param[idx].done) {
-             comp_param[idx].done = false;
--            bytes_xmit = qemu_put_qemu_file(rs->f, comp_param[idx].file);
-+            bytes_xmit = qemu_put_qemu_file(ms->to_dst_file,
-+                                            comp_param[idx].file);
-             qemu_mutex_lock(&comp_param[idx].mutex);
-             set_compress_params(&comp_param[idx], block, offset);
-             qemu_cond_signal(&comp_param[idx].cond);
-@@ -2263,7 +2265,7 @@ static bool save_compress_page(RAMState *rs, RAMBlock *block, ram_addr_t offset)
-         return false;
+ void dirty_sync_missed_zero_copy(void)
+@@ -725,7 +732,7 @@ void mig_throttle_counter_reset(void)
+ 
+     rs->time_last_bitmap_sync = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
+     rs->num_dirty_pages_period = 0;
+-    rs->bytes_xfer_prev = ram_counters.transferred;
++    rs->bytes_xfer_prev = stat64_get(&ram_atomic_counters.transferred);
+ }
+ 
+ /**
+@@ -1085,8 +1092,9 @@ uint64_t ram_pagesize_summary(void)
+ 
+ uint64_t ram_get_total_transferred_pages(void)
+ {
+-    return  ram_counters.normal + ram_counters.duplicate +
+-                compression_counters.pages + xbzrle_counters.pages;
++    return  stat64_get(&ram_atomic_counters.normal) +
++        stat64_get(&ram_atomic_counters.duplicate) +
++        compression_counters.pages + xbzrle_counters.pages;
+ }
+ 
+ static void migration_update_rates(RAMState *rs, int64_t end_time)
+@@ -1145,8 +1153,8 @@ static void migration_trigger_throttle(RAMState *rs)
+ {
+     MigrationState *s = migrate_get_current();
+     uint64_t threshold = s->parameters.throttle_trigger_threshold;
+-
+-    uint64_t bytes_xfer_period = ram_counters.transferred - rs->bytes_xfer_prev;
++    uint64_t bytes_xfer_period =
++        stat64_get(&ram_atomic_counters.transferred) - rs->bytes_xfer_prev;
+     uint64_t bytes_dirty_period = rs->num_dirty_pages_period * TARGET_PAGE_SIZE;
+     uint64_t bytes_dirty_threshold = bytes_xfer_period * threshold / 100;
+ 
+@@ -1209,7 +1217,7 @@ static void migration_bitmap_sync(RAMState *rs)
+         /* reset period counters */
+         rs->time_last_bitmap_sync = end_time;
+         rs->num_dirty_pages_period = 0;
+-        rs->bytes_xfer_prev = ram_counters.transferred;
++        rs->bytes_xfer_prev = stat64_get(&ram_atomic_counters.transferred);
+     }
+     if (migrate_use_events()) {
+         qapi_event_send_migration_pass(ram_counters.dirty_sync_count);
+@@ -1285,7 +1293,7 @@ static int save_zero_page(RAMState *rs, RAMBlock *block, ram_addr_t offset)
+     int len = save_zero_page_to_file(rs, rs->f, block, offset);
+ 
+     if (len) {
+-        ram_counters.duplicate++;
++        stat64_add(&ram_atomic_counters.duplicate, 1);
+         ram_transferred_add(len);
+         return 1;
+     }
+@@ -1322,9 +1330,9 @@ static bool control_save_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
      }
  
--    if (compress_page_with_multi_thread(rs, block, offset) > 0) {
-+    if (compress_page_with_multi_thread(block, offset) > 0) {
-         return true;
+     if (bytes_xmit > 0) {
+-        ram_counters.normal++;
++        stat64_add(&ram_atomic_counters.normal, 1);
+     } else if (bytes_xmit == 0) {
+-        ram_counters.duplicate++;
++        stat64_add(&ram_atomic_counters.duplicate, 1);
      }
  
+     return true;
+@@ -1354,7 +1362,7 @@ static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
+         qemu_put_buffer(rs->f, buf, TARGET_PAGE_SIZE);
+     }
+     ram_transferred_add(TARGET_PAGE_SIZE);
+-    ram_counters.normal++;
++    stat64_add(&ram_atomic_counters.normal, 1);
+     return 1;
+ }
+ 
+@@ -1410,7 +1418,7 @@ static int ram_save_multifd_page(RAMState *rs, RAMBlock *block,
+     if (multifd_queue_page(rs->f, block, offset) < 0) {
+         return -1;
+     }
+-    ram_counters.normal++;
++    stat64_add(&ram_atomic_counters.normal, 1);
+ 
+     return 1;
+ }
+@@ -1448,7 +1456,7 @@ update_compress_thread_counts(const CompressParam *param, int bytes_xmit)
+     ram_transferred_add(bytes_xmit);
+ 
+     if (param->zero_page) {
+-        ram_counters.duplicate++;
++        stat64_add(&ram_atomic_counters.duplicate, 1);
+         return;
+     }
+ 
+@@ -2623,9 +2631,9 @@ void acct_update_position(QEMUFile *f, size_t size, bool zero)
+     uint64_t pages = size / TARGET_PAGE_SIZE;
+ 
+     if (zero) {
+-        ram_counters.duplicate += pages;
++        stat64_add(&ram_atomic_counters.duplicate, pages);
+     } else {
+-        ram_counters.normal += pages;
++        stat64_add(&ram_atomic_counters.normal, pages);
+         ram_transferred_add(size);
+         qemu_file_credit_transfer(f, size);
+     }
 -- 
 2.38.1
 
