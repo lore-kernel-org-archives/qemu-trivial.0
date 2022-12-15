@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p5khp-0007pd-Cm
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 04:39:09 -0500
+	id 1p5khq-0007qu-87
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Dec 2022 04:39:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p5khl-0007og-Uf
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1p5khp-0007pb-7S
+ for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1p5khi-0000Sr-KJ
- for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:05 -0500
+ id 1p5khn-0000Ts-LU
+ for qemu-trivial@nongnu.org; Thu, 15 Dec 2022 04:39:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1671097141;
+ s=mimecast20190719; t=1671097147;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=evYJqi5zEXiuLwYwwhqAyRQnEba/pwRsvNNtpvDy334=;
- b=Pdv6VRzM8/mfVIeb/va7S7/ybiiOxdInstcdmM83EO4pVOpEan5l+I8eBY2tUQsyUVZltx
- OcCkdxnHjZSDLm/jMS1oDcocrwYesvEftJidIJx95b9w8K8tI78J3lYWVG6c3i8Pm1WoDe
- QW2ibcsrLPbMVjVIeYujTydS+uMMlt4=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9tm0aYZytXya9yAOHxEbm0Rd0xivxdFo7KkNO5L47xU=;
+ b=G9etn2tTseUi4BBc8NJeUUwg+T4no8Urg1ImONr1YO4hhrYllx6W9LpqpZv7WD1Y5tZimu
+ knIHPa8UgOccCtgv7IuO9W3FpSyEEUpvWw6lqy5vPRUeYGYvJhpSSlnJ8foh4k8DFAgu8J
+ 1aPBlxC6ZkOF5B8MlISL5Zy8EGnH920=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-435-z5c0TSBrO-OypislMZ4zaQ-1; Thu, 15 Dec 2022 04:38:56 -0500
-X-MC-Unique: z5c0TSBrO-OypislMZ4zaQ-1
+ us-mta-10-2NounEEJPGywfGxq94Fkdg-1; Thu, 15 Dec 2022 04:39:02 -0500
+X-MC-Unique: 2NounEEJPGywfGxq94Fkdg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 23F0C3813F2C;
- Thu, 15 Dec 2022 09:38:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6F50B85C6E8;
+ Thu, 15 Dec 2022 09:39:02 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.192.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6F66440C2064;
- Thu, 15 Dec 2022 09:38:52 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A0E5D40C2064;
+ Thu, 15 Dec 2022 09:38:59 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
@@ -45,15 +46,17 @@ Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Juan Quintela <quintela@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
  David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Fam Zheng <fam@euphon.net>
-Subject: [PULL 00/19] Next 8.0 patches
-Date: Thu, 15 Dec 2022 10:38:30 +0100
-Message-Id: <20221215093849.4771-1-quintela@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+ Fam Zheng <fam@euphon.net>, Leonardo Bras <leobras@redhat.com>
+Subject: [PULL 02/19] multifd: Create page_count fields into both MultiFD{Recv,
+ Send}Params
+Date: Thu, 15 Dec 2022 10:38:32 +0100
+Message-Id: <20221215093849.4771-3-quintela@redhat.com>
+In-Reply-To: <20221215093849.4771-1-quintela@redhat.com>
+References: <20221215093849.4771-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -61,7 +64,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,65 +77,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Dec 2022 09:39:07 -0000
+X-List-Received-Date: Thu, 15 Dec 2022 09:39:09 -0000
 
-The following changes since commit 5204b499a6cae4dfd9fe762d5e6e82224892383b:
+We were recalculating it left and right.  We plan to change that
+values on next patches.
 
-  mailmap: Fix Stefan Weil author email (2022-12-13 15:56:57 -0500)
+Signed-off-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Leonardo Bras <leobras@redhat.com>
+---
+ migration/multifd.h | 4 ++++
+ migration/multifd.c | 7 ++++---
+ 2 files changed, 8 insertions(+), 3 deletions(-)
 
-are available in the Git repository at:
-
-  https://gitlab.com/juan.quintela/qemu.git tags/next-8.0-pull-request
-
-for you to fetch changes up to 7f401b80445e8746202a6d643410ba1b9eeb3cb1:
-
-  migration: Drop rs->f (2022-12-15 10:30:37 +0100)
-
-----------------------------------------------------------------
-Migration patches for 8.0
-
-Hi
-
-This are the patches that I had to drop form the last PULL request because they werent fixes:
-- AVX2 is dropped, intel posted a fix, I have to redo it
-- Fix for out of order channels is out
-  Daniel nacked it and I need to redo it
-
-----------------------------------------------------------------
-
-Juan Quintela (4):
-  multifd: Create page_size fields into both MultiFD{Recv,Send}Params
-  multifd: Create page_count fields into both MultiFD{Recv,Send}Params
-  migration: Export ram_transferred_ram()
-  migration: Export ram_release_page()
-
-Peter Xu (15):
-  migration: Take bitmap mutex when completing ram migration
-  migration: Add postcopy_preempt_active()
-  migration: Cleanup xbzrle zero page cache update logic
-  migration: Trivial cleanup save_page_header() on same block check
-  migration: Remove RAMState.f references in compression code
-  migration: Yield bitmap_mutex properly when sending/sleeping
-  migration: Use atomic ops properly for page accountings
-  migration: Teach PSS about host page
-  migration: Introduce pss_channel
-  migration: Add pss_init()
-  migration: Make PageSearchStatus part of RAMState
-  migration: Move last_sent_block into PageSearchStatus
-  migration: Send requested page directly in rp-return thread
-  migration: Remove old preempt code around state maintainance
-  migration: Drop rs->f
-
- migration/migration.h    |   7 -
- migration/multifd.h      |   8 +
- migration/ram.h          |  23 ++
- migration/migration.c    |  47 +--
- migration/multifd-zlib.c |  14 +-
- migration/multifd-zstd.c |  12 +-
- migration/multifd.c      |  27 +-
- migration/ram.c          | 735 ++++++++++++++++++---------------------
- 8 files changed, 422 insertions(+), 451 deletions(-)
-
+diff --git a/migration/multifd.h b/migration/multifd.h
+index 86fb9982b3..e2802a9ce2 100644
+--- a/migration/multifd.h
++++ b/migration/multifd.h
+@@ -82,6 +82,8 @@ typedef struct {
+     uint32_t packet_len;
+     /* guest page size */
+     uint32_t page_size;
++    /* number of pages in a full packet */
++    uint32_t page_count;
+     /* multifd flags for sending ram */
+     int write_flags;
+ 
+@@ -147,6 +149,8 @@ typedef struct {
+     uint32_t packet_len;
+     /* guest page size */
+     uint32_t page_size;
++    /* number of pages in a full packet */
++    uint32_t page_count;
+ 
+     /* syncs main thread and channels */
+     QemuSemaphore sem_sync;
+diff --git a/migration/multifd.c b/migration/multifd.c
+index efffa77a76..b8dc559d24 100644
+--- a/migration/multifd.c
++++ b/migration/multifd.c
+@@ -279,7 +279,6 @@ static void multifd_send_fill_packet(MultiFDSendParams *p)
+ static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
+ {
+     MultiFDPacket_t *packet = p->packet;
+-    uint32_t page_count = MULTIFD_PACKET_SIZE / p->page_size;
+     RAMBlock *block;
+     int i;
+ 
+@@ -306,10 +305,10 @@ static int multifd_recv_unfill_packet(MultiFDRecvParams *p, Error **errp)
+      * If we received a packet that is 100 times bigger than expected
+      * just stop migration.  It is a magic number.
+      */
+-    if (packet->pages_alloc > page_count) {
++    if (packet->pages_alloc > p->page_count) {
+         error_setg(errp, "multifd: received packet "
+                    "with size %u and expected a size of %u",
+-                   packet->pages_alloc, page_count) ;
++                   packet->pages_alloc, p->page_count) ;
+         return -1;
+     }
+ 
+@@ -944,6 +943,7 @@ int multifd_save_setup(Error **errp)
+         p->iov = g_new0(struct iovec, page_count + 1);
+         p->normal = g_new0(ram_addr_t, page_count);
+         p->page_size = qemu_target_page_size();
++        p->page_count = page_count;
+ 
+         if (migrate_use_zero_copy_send()) {
+             p->write_flags = QIO_CHANNEL_WRITE_FLAG_ZERO_COPY;
+@@ -1191,6 +1191,7 @@ int multifd_load_setup(Error **errp)
+         p->name = g_strdup_printf("multifdrecv_%d", i);
+         p->iov = g_new0(struct iovec, page_count);
+         p->normal = g_new0(ram_addr_t, page_count);
++        p->page_count = page_count;
+         p->page_size = qemu_target_page_size();
+     }
+ 
 -- 
 2.38.1
 
