@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6D2P-0001ex-7P
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 10:54:21 -0500
+	id 1p6DDZ-0000UI-GE
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 11:05:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1p6D2K-0001aD-Gt; Fri, 16 Dec 2022 10:54:12 -0500
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1p6DCz-0000Gn-Ud; Fri, 16 Dec 2022 11:05:14 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1p6D2G-0008Pl-EJ; Fri, 16 Dec 2022 10:54:11 -0500
-Received: by mail-lj1-x22d.google.com with SMTP id g14so2557066ljh.10;
- Fri, 16 Dec 2022 07:54:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1p6DCx-0004F4-NL; Fri, 16 Dec 2022 11:05:13 -0500
+Received: by mail-ej1-x635.google.com with SMTP id gh17so7228679ejb.6;
+ Fri, 16 Dec 2022 08:05:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=vApu+GYCXSbLDDidMzR4XeX+hdUDS9FFXN7m1mFyaWY=;
- b=pejz2Z42LfQIMmxrPzN8pH9ilLu7T+LAByN7EYRxD70LoOU4UbG99S3mvj9UDxAzIC
- C+kQNBmukFi9hWSkSm5qPhUrCD95zpo1Cz+6AyPpusae66cfNXE9m0xhvoDu2Gmr92bK
- OsEGnTr8vwu0ZDRt321O4pMW+rNfDENgVwySfQi/SaWk7bwbLSuiQH7ivK9Yb2HHknuG
- 0KoJstbHg+wB/aWibv7zf5l6Ktq5Vw7buVM+8k9nGUT+27+Wt5eO3+m6wbdmBsEiQb0J
- YzGTyciyCnNBuLQP1ToWC8ICaornFNEVfHK3/Z1MWwMPnL7dzbvRIr50l1lPiDQqMsD3
- yBcQ==
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=cGTR19520e9lj9/GpNytbDDCk06coXfVIA7Esk39O44=;
+ b=fV920C/wnisLkJHvcbFvXSX0DZn8W56UpeJ7qaJvU6yAo3+gr66ypWsk0e8ac7spGV
+ Xn9ulV+tLP7N8k978eISvFvvd9sD38bJ8x/2yFT+JmHfS4/dHqFQKyxHeEWmWS5t8Xeo
+ S4dFDGxR5mnoiXMCQsi3ZUcu3YNSl7A11UMK7YUpsO4LUDG6W1mWF8DRX43qHua3+D4/
+ e+ypyOsvYHffce18A+6rT2LqG46JoV2B37Gh4eVzcdDzhc9uVK5fXmmRwQqsFuygW4B4
+ Oku6mrlze2nPUp4O+G3M2yYKJF4257oTA2ShBPg6B3Zo24fyxi2mAquFQY0BD4CI/VGM
+ AoOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vApu+GYCXSbLDDidMzR4XeX+hdUDS9FFXN7m1mFyaWY=;
- b=o2pFYTJUr0dWmSnVrd0ADx7K/rEd2lwPPY14XyUNCbgHWE87ftEFCpQzq18lhpArRW
- MH+WWOBiekNfRTfTFE1L1EfAQc59M3l/MMQ7G25UM5lpO7oeIbsTwZu6f/pgTmyT0aSo
- wAitckL/6yFz9Y/4hI0avDlZhsc5/Lqqu+/rCDfY4QJsx8cl3eX0ai5NpGlNVxgdgznB
- 49nvps0MNKj9i2xbgSMOdBdjN3GOa9NGAJ9c6KTa0f/xfS4+LI2B/sJ+m5CveDHgKUs5
- fy+FKEkHlu4xi7gS4C5B2etgGImkpIYsJwZhajg7eVZKLn+7qz9HSivnXoh8EsWTy1xb
- gdPg==
-X-Gm-Message-State: ANoB5pn5Qpc7C8uhEMN2UaWBRGgg5odL3RHr05QdCzkBT9+1QYrUzYeO
- ln2txhxEszg98OIDiXy+/g4=
-X-Google-Smtp-Source: AA0mqf5bIoPgEzj1P1l9vahfl7u3HflDcKXrggMPBm1LJBr9djM1ZCg6340UwyyFf+r9sqbBG822dw==
-X-Received: by 2002:a05:651c:2110:b0:27c:552a:f968 with SMTP id
- a16-20020a05651c211000b0027c552af968mr4709877ljq.17.1671206044808; 
- Fri, 16 Dec 2022 07:54:04 -0800 (PST)
-Received: from gmail.com (81-232-4-135-no39.tbcn.telia.com. [81.232.4.135])
- by smtp.gmail.com with ESMTPSA id
- h10-20020ac2596a000000b004b4b69af17dsm246106lfp.214.2022.12.16.07.54.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Dec 2022 07:54:04 -0800 (PST)
-Date: Fri, 16 Dec 2022 16:54:03 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=cGTR19520e9lj9/GpNytbDDCk06coXfVIA7Esk39O44=;
+ b=UX/M0Og5mwUudw5D7UxWMsea6lfEY5gzp1mLvSqDn7sDX4eL6FC00Ux1Da8D9DE9F9
+ TJjMObT2ZBXbBjC13CKXxApoBbnEbT7BeZYWgOwVhTeywkAmWDfQeBvJfFXNVBlKjLWT
+ 1nOoONpv/8gfsJh45j2L/pMuPOicxxiQs/kJoYMVzSuPUtD3KMivczTq36qKk+rFkm3F
+ vP/wlXw49+GcnlFpPWyHVN/5vGW7RnkN5tuni5DhT8jDlwMu9QHlVirPxLZAm3aoN4gT
+ smx3VE6w6wG2g/wepIRbtHJj9Nx98ZqvTL4/l37dEgn8+lHGdCuRFhfLIS6xpKfZvEKg
+ RvPQ==
+X-Gm-Message-State: ANoB5pnR67YCwORTuoXdimnD/Tm1nz58O110MBe6rcUT3MhFXVSZf21a
+ KYI97dip2PcmxZFRT6rBLRg=
+X-Google-Smtp-Source: AA0mqf5BxqebrZJprMod2U4e7fzLNXx+2kVw0W6vc6+f19d/klNwUS96LR3r5O0cFZZUKH6zBvuJ5Q==
+X-Received: by 2002:a17:906:2249:b0:7c0:e23d:12c4 with SMTP id
+ 9-20020a170906224900b007c0e23d12c4mr28240264ejr.63.1671206706052; 
+ Fri, 16 Dec 2022 08:05:06 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-078-055-138-012.78.55.pool.telefonica.de.
+ [78.55.138.12]) by smtp.gmail.com with ESMTPSA id
+ kk20-20020a170907767400b0078db18d7972sm983422ejc.117.2022.12.16.08.05.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Dec 2022 08:05:05 -0800 (PST)
+Date: Fri, 16 Dec 2022 16:04:52 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
+CC: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>,
- David Gibson <david@gibson.dropbear.id.au>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Greg Kurz <groug@kaod.org>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH 3/6] hw/ppc/virtex_ml507: Prefer local over global variable
-Message-ID: <Y5yUm8dndqzGJbCC@toto>
+ David Gibson <david@gibson.dropbear.id.au>, Michael Tokarev <mjt@tls.msk.ru>, 
+ qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Greg Kurz <groug@kaod.org>
+Subject: Re: [PATCH 0/6] Trivial PPC cleanups
+In-Reply-To: <832b5af6-dffd-7fa1-d648-3068834f8a15@kaod.org>
 References: <20221216145709.271940-1-shentey@gmail.com>
- <20221216145709.271940-4-shentey@gmail.com>
+ <832b5af6-dffd-7fa1-d648-3068834f8a15@kaod.org>
+Message-ID: <96C50C7E-28BD-4A1F-9940-170432338A6C@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221216145709.271940-4-shentey@gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22d.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -83,32 +83,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Dec 2022 15:54:14 -0000
-
-On Fri, Dec 16, 2022 at 03:57:06PM +0100, Bernhard Beschow wrote:
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-
-Reviewed-by: Edgar E. Iglesias <edgar@zeroasic.com>
+X-List-Received-Date: Fri, 16 Dec 2022 16:05:18 -0000
 
 
-> ---
->  hw/ppc/virtex_ml507.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-> index 13cace229b..f2f81bd425 100644
-> --- a/hw/ppc/virtex_ml507.c
-> +++ b/hw/ppc/virtex_ml507.c
-> @@ -157,7 +157,7 @@ static int xilinx_load_device_tree(MachineState *machine,
->      int r;
->      const char *dtb_filename;
->  
-> -    dtb_filename = current_machine->dtb;
-> +    dtb_filename = machine->dtb;
->      if (dtb_filename) {
->          fdt = load_device_tree(dtb_filename, &fdt_size);
->          if (!fdt) {
-> -- 
-> 2.39.0
-> 
+
+Am 16=2E Dezember 2022 15:32:00 UTC schrieb "C=C3=A9dric Le Goater" <clg@k=
+aod=2Eorg>:
+>On 12/16/22 15:57, Bernhard Beschow wrote:
+>> These are some patches which helped me when getting a u-boot image to r=
+un on ppce500 machine=2E
+>
+>Nice=2E Did you simply use the qemu-ppce500_defconfig ? or an u-boot old =
+image ?
+
+I used P1020RDB-PC_NAND_defconfig from the u-boot repository plus my branc=
+h https://github=2Ecom/shentok/qemu/commits/e500-u-boot =2E I had to commen=
+t out the fdt handling in u-boot for now since I didn't figure out yet how =
+to include the dt blob in the elf binary=2E Anyway, with this I get a u-boo=
+t shell!
+
+>
+>We could update the qemu_ppc_e500mc_defconfig in buildroot to generate th=
+e
+>uboot=2Ebin if that worked=2E
+
+I haven't looked into that yet but this sounds interesting!
+
+Best regards,
+Bernhard
+
+>
+>
+>>=20
+>> Testing done:
+>> - `make check`
+>> - `make check-avocado`
+>>=20
+>> Bernhard Beschow (6):
+>>    target/ppc/mmu_common: Log which effective address had no TLB entry
+>>      found
+>>    target/ppc/mmu_common: Fix table layout of "info tlb" HMP command
+>>    hw/ppc/virtex_ml507: Prefer local over global variable
+>>    hw/ppc/e500: Prefer local variable over qdev_get_machine()
+>>    hw/ppc/e500: Resolve variable shadowing
+>>    hw/ppc/e500: Move comment to more appropriate place
+>>=20
+>>   hw/ppc/e500=2Ec           | 10 ++++------
+>>   hw/ppc/virtex_ml507=2Ec   |  2 +-
+>>   target/ppc/mmu_common=2Ec |  5 +++--
+>>   3 files changed, 8 insertions(+), 9 deletions(-)
+>>=20
+>
+>
+>Reviewed-by: C=C3=A9dric Le Goater <clg@kaod=2Eorg>
+>
+>Thanks,
+>
+>C=2E
 
