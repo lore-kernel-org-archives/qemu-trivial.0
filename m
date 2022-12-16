@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6AP0-0004wv-O2
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 08:05:28 -0500
+	id 1p6AP4-00053d-55
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 08:05:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p6AOF-0004eV-KC; Fri, 16 Dec 2022 08:04:41 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1p6AOH-0004fs-Mb; Fri, 16 Dec 2022 08:04:41 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p6AOD-00086n-PQ; Fri, 16 Dec 2022 08:04:39 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id a16so3509511edb.9;
- Fri, 16 Dec 2022 05:04:35 -0800 (PST)
+ id 1p6AOG-00087A-0r; Fri, 16 Dec 2022 08:04:41 -0500
+Received: by mail-ed1-x531.google.com with SMTP id c66so3542164edf.5;
+ Fri, 16 Dec 2022 05:04:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=lmWkf40YF9rxEeuvUggH9110DycmE6xIVyiiroawu3w=;
- b=KfK7fKHS8mq06q3A7KXjIgje8ABQgIsE00IB2S9PuI/Qy5VonElsauuRbTxoq9i6tW
- 1OvEomiNEhpu6HY8YN4i2tZtMEJBk2hG1yz3Rv9D1p34zSywTO2N7LiuMEDDDjvuzVk1
- mdbSBJKR5CgfHItLExF0Q7MjA2ZJxdL59YGh9rSOn5FtNObkbfiD41sOS2yPYAaFhlrh
- NuhmNXtyIxZofaI4auyfe0NfanEhr4P4e2scl4Pc/zj7ApgftyyKS+a3eWVhTliyKAmn
- tWN9lXLRlUSKCCYG3ofMh2YDO6aXkWtHZ4JH4SFididbUH4sGmIrEpGXvjysoTc/hbN/
- f7Jw==
+ bh=oJiZVmApEjALEzHYNXTV+R4bMMwnVoZOSSUYbCCbzzk=;
+ b=P2YkkhOx76iLEaq0w8O8dVHot9xc1QFNyDWi19nOAwPS44ZPSn/s3CVUDsC/lIjq68
+ rqLlNvIfJoRFyJfptqdIzEEy1aaLaPTTzT3lyIdSkK9kAttwd5z0CuvlJTJfyNa+QFQU
+ +f4wQh2K7dgpycRfEOqI+8fvzNz/N9QCsNWMUu1n8QbwhUHrEl15qca+oePJE6LE6HAJ
+ 2WkEs4A4F2Uc5I3Z8Ew46iVPJvh1qqXSu4TP7w5+AUfJT/dxG6sKKJ9qq7ABjxrp+lbh
+ 7Nx8Vc1mjeMU7rVDhFQN4jIyrRri/hYfA4XE6Xbr6dfk/ohwZL2XUxXoq0lI/YLwMytP
+ JVDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=lmWkf40YF9rxEeuvUggH9110DycmE6xIVyiiroawu3w=;
- b=JoOrFO+2jBzraYtsdQcfOZJUK+Gde8vxH0O3RlF3SEUKTMK4fdl09GjtT8aA3sr70o
- U2scf28NRMUnhbOVCsKqPDzXuWRZniNOp3iDTS/nUC1lK3oTkIAFnN4PmBhhd7l489m/
- ttRL136ghHUS5+q9WNXFjGs957zQj0ykTQafoLCdDWFgjNw+yxQeakqGr7Uw//UqTtoM
- vt/JwHl64X3gGaObgcEWWd9LtjMTB3RKzEQgnuxTM+YU3W69Q/cPMxlWd5MzfyQaPHWj
- ZxJPVDgCoPXGEKcnlSs3FuJFG7u2TkOvLfyNVHK9Bwc0d5YtvDG/8qBHr2zj3GUCx08W
- NRiw==
-X-Gm-Message-State: ANoB5pkJgkvwwWRKmQ5R/JApBhchfSYnYQR6RjVPdoGmjUwtlycGpQU2
- 3YtHztMKuC8JiXqpP9K+MMrD1z2Z78s=
-X-Google-Smtp-Source: AA0mqf5qxjSQX6AQurrzPFlNTIPb0R9PynkFintqzSrONCG0qz79TfFTLPnHqo3C52i94PLywttxEg==
-X-Received: by 2002:a05:6402:540b:b0:45c:835c:c6d0 with SMTP id
- ev11-20020a056402540b00b0045c835cc6d0mr27963008edb.1.1671195873945; 
- Fri, 16 Dec 2022 05:04:33 -0800 (PST)
+ bh=oJiZVmApEjALEzHYNXTV+R4bMMwnVoZOSSUYbCCbzzk=;
+ b=UAciOaw69yzSCO1co2Q/g11G62R6O/czls9Ft9mf94HrcDithaquaRgfPvEr1AzdSK
+ 3ye85KPNdOHDTdT/LIa5pf0DKLkMR2P/NSokd6aNKoL9NNCLNP98qHgDCsXu7DBWhIBw
+ 2khnCKtEs4AvetjE8ndn4KwVKv8p5+z+X9U3YHx3GzivOUx0t/xRB5TdhgtWHog1OkBI
+ 7WSFHgnXBQvrirJQlhVyvpd8ZspOL4xnyYRiSDw/4lgNXHS/QwWXNZDAiZe8oUCpavxQ
+ kPlLTkfOeLlRTea/qsrHf4SDSDGbnlp2FutBekJSkwyec+OZMMd6/EeMsKsP29b785JR
+ 556w==
+X-Gm-Message-State: ANoB5pmp1wEumU3FuKYsZzSt3mBeutWkdvQx5IAjcsJH3owOqd3kY35p
+ yaortcA15WQ7WRcdIzqJZkxBvKsFTzo=
+X-Google-Smtp-Source: AA0mqf78CmYjAmi+4nbeqY0bC9nUJ9wtiwrOytdB8z971kfMpnbtUS3Lfr5uKZYjoxX3KyRnizhA/w==
+X-Received: by 2002:aa7:c917:0:b0:46d:8aeb:bc03 with SMTP id
+ b23-20020aa7c917000000b0046d8aebbc03mr29622009edt.22.1671195877953; 
+ Fri, 16 Dec 2022 05:04:37 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-078-055-138-012.78.55.pool.telefonica.de. [78.55.138.12])
  by smtp.gmail.com with ESMTPSA id
- g11-20020aa7c58b000000b0046b1d63cfc1sm828444edq.88.2022.12.16.05.04.31
+ g11-20020aa7c58b000000b0046b1d63cfc1sm828444edq.88.2022.12.16.05.04.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Dec 2022 05:04:32 -0800 (PST)
+ Fri, 16 Dec 2022 05:04:37 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -55,17 +55,17 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
  Ani Sinha <ani@anisinha.ca>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 1/7] hw/acpi/Kconfig: Rename ACPI_X86_ICH to ACPI_ICH9
-Date: Fri, 16 Dec 2022 14:03:49 +0100
-Message-Id: <20221216130355.41667-2-shentey@gmail.com>
+Subject: [PATCH v2 3/7] hw/acpi/Kconfig: Do not needlessly build TYPE_PIIX4_PM
+ in non-PC/Malta machines
+Date: Fri, 16 Dec 2022 14:03:51 +0100
+Message-Id: <20221216130355.41667-4-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20221216130355.41667-1-shentey@gmail.com>
 References: <20221216130355.41667-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,70 +85,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Dec 2022 13:04:59 -0000
+X-List-Received-Date: Fri, 16 Dec 2022 13:05:01 -0000
 
-Although the ICH9 ACPI controller may currently be tied to x86 it
-doesn't have to. Furthermore, the source files this configuration switch
-manages contain a '9', so this name fits more.
+TYPE_PIIX4_PM is only used in machines where PIIX chipsets are used
+which is currently PC and Malta. There is no point building it for the
+other ACPI_X86 machines.
+
+Note that this also removes unneeded ACPI_PIIX4 from PEGASOS2.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/acpi/Kconfig     | 2 +-
- hw/acpi/meson.build | 2 +-
- hw/i2c/meson.build  | 2 +-
- hw/isa/Kconfig      | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ hw/acpi/Kconfig | 1 -
+ hw/i386/Kconfig | 1 +
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-index 3703aca212..14694c75b4 100644
+index 704cbc6236..b7006e18c8 100644
 --- a/hw/acpi/Kconfig
 +++ b/hw/acpi/Kconfig
-@@ -13,7 +13,7 @@ config ACPI_X86
+@@ -9,7 +9,6 @@ config ACPI_X86
+     select ACPI_CPU_HOTPLUG
+     select ACPI_MEMORY_HOTPLUG
+     select ACPI_HMAT
+-    select ACPI_PIIX4
      select ACPI_PCIHP
      select ACPI_ERST
  
--config ACPI_X86_ICH
-+config ACPI_ICH9
-     bool
-     select ACPI_X86
- 
-diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-index f8c820ca94..cfae2f58f6 100644
---- a/hw/acpi/meson.build
-+++ b/hw/acpi/meson.build
-@@ -22,7 +22,7 @@ acpi_ss.add(when: 'CONFIG_ACPI_PIIX4', if_true: files('piix4.c'))
- acpi_ss.add(when: 'CONFIG_ACPI_PCIHP', if_true: files('pcihp.c'))
- acpi_ss.add(when: 'CONFIG_ACPI_PCIHP', if_false: files('acpi-pci-hotplug-stub.c'))
- acpi_ss.add(when: 'CONFIG_ACPI_VIOT', if_true: files('viot.c'))
--acpi_ss.add(when: 'CONFIG_ACPI_X86_ICH', if_true: files('ich9.c', 'tco.c'))
-+acpi_ss.add(when: 'CONFIG_ACPI_ICH9', if_true: files('ich9.c', 'tco.c'))
- acpi_ss.add(when: 'CONFIG_ACPI_ERST', if_true: files('erst.c'))
- acpi_ss.add(when: 'CONFIG_IPMI', if_true: files('ipmi.c'), if_false: files('ipmi-stub.c'))
- acpi_ss.add(when: 'CONFIG_PC', if_false: files('acpi-x86-stub.c'))
-diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
-index d3df273251..6e7340aaac 100644
---- a/hw/i2c/meson.build
-+++ b/hw/i2c/meson.build
-@@ -2,7 +2,7 @@ i2c_ss = ss.source_set()
- i2c_ss.add(when: 'CONFIG_I2C', if_true: files('core.c'))
- i2c_ss.add(when: 'CONFIG_SMBUS', if_true: files('smbus_slave.c', 'smbus_master.c'))
- i2c_ss.add(when: 'CONFIG_ACPI_SMBUS', if_true: files('pm_smbus.c'))
--i2c_ss.add(when: 'CONFIG_ACPI_X86_ICH', if_true: files('smbus_ich9.c'))
-+i2c_ss.add(when: 'CONFIG_ACPI_ICH9', if_true: files('smbus_ich9.c'))
- i2c_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_i2c.c'))
- i2c_ss.add(when: 'CONFIG_BITBANG_I2C', if_true: files('bitbang_i2c.c'))
- i2c_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_i2c.c'))
-diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
-index 18b5c6bf3f..01f330d941 100644
---- a/hw/isa/Kconfig
-+++ b/hw/isa/Kconfig
-@@ -78,4 +78,4 @@ config LPC_ICH9
-     select I8257
-     select ISA_BUS
+diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+index d22ac4a4b9..3a92566701 100644
+--- a/hw/i386/Kconfig
++++ b/hw/i386/Kconfig
+@@ -69,6 +69,7 @@ config I440FX
+     imply E1000_PCI
+     imply VMPORT
+     imply VMMOUSE
++    select ACPI_PIIX4
+     select PC_PCI
+     select PC_ACPI
      select ACPI_SMBUS
--    select ACPI_X86_ICH
-+    select ACPI_ICH9
 -- 
 2.39.0
 
