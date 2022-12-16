@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6C9x-0003vM-6z
+	id 1p6C9x-0003w9-E0
 	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 09:58:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p6C9p-0003kN-2o; Fri, 16 Dec 2022 09:57:53 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1p6C9p-0003kM-2O; Fri, 16 Dec 2022 09:57:53 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p6C9h-0001zv-No; Fri, 16 Dec 2022 09:57:51 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id m19so3948919edj.8;
- Fri, 16 Dec 2022 06:57:43 -0800 (PST)
+ id 1p6C9m-00024E-SL; Fri, 16 Dec 2022 09:57:52 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id bj12so6646757ejb.13;
+ Fri, 16 Dec 2022 06:57:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7QrgXciOmyiSTsdYt3UoXwdRH/orhMrXOFwHsg7Kr3Q=;
- b=jQx6X7rVROm4EVAdOibxLcSY4YMTjtzVPoweri7PUkNnEzKHnL4aG5KmlEK+7/ovfk
- v9Q8WmTUyIZp7TJ8au9IGdXpYsQmPNwM0MVJ5OA/uh9O/5Kuq4IOxFoaHWpCpGpLAzqB
- QxPY1qrR6mnMaQb+kO7efKgb0lxQe9R+XybUQ2oy8sjulI5nacJVJmkmc7qAEiI/+gOI
- 20jX04wMK6AAekSlCtbDeCwBJz2GfUiN5O/8l6Ox31JlyXEd8VpRIC6Hcv1f71wZ9RUH
- 5tPcOFwqOMjuaaH3fRbk5q/Fj4Jjippt6UlYwpOESfU+AJQqOsWB6O1/E5wx+/W8Vxzt
- m4Xw==
+ bh=M+Y2J9PDP4DZ4iDoia/puViG/9DauPlN51y/+zVmrBg=;
+ b=bSgYVQEBucb3IAA+n5YpWx2Oh3MZeFkuyOojYS2S9ws6LAMjAjZI5dLcwV2HifSFkQ
+ CxPQ+amtPc+wX5F9QldKQPDHrEzYP3NctlfpWBGnUjgENdruX0vrmdb6d5L6fx7msqAr
+ /nSeWw97hD0HpTomxqnK9y9KjUDJSIdTyPYgLp7M4+fAd951RZIjKjoGknARL14F/LyZ
+ 98wX1Z6i/k5JD3rzAEx0n2I3Jzqg1/G4kAtIxmXYcYxLSelIrCy9JnZj1MvwkafpOerl
+ t0t+Y2OwY4RuyMRYeQ0hAYXAQ5rJTyPdHYCB+Wv9XxW6FSai5QXOHB0ZDDCUiZ2oPXS5
+ selQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7QrgXciOmyiSTsdYt3UoXwdRH/orhMrXOFwHsg7Kr3Q=;
- b=GEjMaSXL+FDwIHih/gWUATBjM4TPzr9kJRtvBqTHGeT3ReewSTqaC611jKrUR9oltb
- 3IatdExnBOgUdna/2R+q6ttsVqWGbSm6X1DQVIOanRRbAEnHOQoEYlJaEdiLoyn7dPep
- B4hSjSO4661khvRkDSaYcS0FIrGxHoQpBN8DmVoaJ6Fi6inHpfuSIiQPUP90luSeBsxU
- tvwudP4ITyxThntaHJByChtuxuGP2B1Rn6Uo+426D7KtNH70UwJuI113/bsW5H8v0PEQ
- kTHBIuWtQvQUjlUJaTrxFNA1uakmtQB0Z4DqKSMGq0Isccpl6xMsxW94+x6Ih+kwyB9F
- XBKw==
-X-Gm-Message-State: AFqh2kpwn84AGjfMCCOO5G9tOvvZkVidMmrXpBjIG8+z8SZquv4u/K7A
- vZONzNTtkGxPwcnm4DCu6HyfWsdLS7Y=
-X-Google-Smtp-Source: AMrXdXu8zlWvJ8K1eWq8BInUXFcv/FhaCRNeWFodNxqRZfoZNUJUddglteFHinEsKz7mvEKbZWl/7Q==
-X-Received: by 2002:aa7:d6da:0:b0:474:c69:9af5 with SMTP id
- x26-20020aa7d6da000000b004740c699af5mr5697743edr.22.1671202662714; 
- Fri, 16 Dec 2022 06:57:42 -0800 (PST)
+ bh=M+Y2J9PDP4DZ4iDoia/puViG/9DauPlN51y/+zVmrBg=;
+ b=BN8J4Khf4BPEE7sihpfXVWZepGrbwXbvJN20hWIKFxrMCpRs6JOGTQfNLb/7r4AlpB
+ 4AeGA71iPdlcpXxsO/Px+Zm9eNJNSqodtnBnNoLIqvhTZgqRW6Fq0sEjG277W/nWeH9L
+ VFvsnUZtNkMhw9y0Cotb3VDAB/S5Ukg+8Kn2Qr7h6Y2HJF3DRFo//Wb2h/7qyNe+FhgY
+ 7eXQXheICtGIRa/6EigTRCyPq/Q9TPenoFKYDhf+5T9wvFDIkSpJEfTwMp7WSux4kzWJ
+ fNS5ZSIT9yMHZTHoOgexahD3kbLajVBJySlEQC7fRopX7RNcv/xJIH5aCNRZnyidO5jn
+ aQfQ==
+X-Gm-Message-State: ANoB5pm1BuR4T1NcVtAXykYnrkCuXM0AKJ28v2NxyfRYRL4VHxtGvEt0
+ d6W6wvgGsEKGCmeYGZD9KQZFrL9t/Hk=
+X-Google-Smtp-Source: AA0mqf7EtylOk2nnta7VowpXeOBUt/z0+Nkf93makFpS1oTX94E7BmPEFbGVwboQpstFseD7SLT3VA==
+X-Received: by 2002:a17:906:351b:b0:7c0:a6a9:64e9 with SMTP id
+ r27-20020a170906351b00b007c0a6a964e9mr37948814eja.36.1671202668616; 
+ Fri, 16 Dec 2022 06:57:48 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-078-055-138-012.78.55.pool.telefonica.de. [78.55.138.12])
  by smtp.gmail.com with ESMTPSA id
- g18-20020aa7c852000000b00467c3cbab6fsm942225edt.77.2022.12.16.06.57.41
+ g18-20020aa7c852000000b00467c3cbab6fsm942225edt.77.2022.12.16.06.57.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Dec 2022 06:57:42 -0800 (PST)
+ Fri, 16 Dec 2022 06:57:47 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -56,17 +56,16 @@ Cc: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Greg Kurz <groug@kaod.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 1/6] target/ppc/mmu_common: Log which effective address had no
- TLB entry found
-Date: Fri, 16 Dec 2022 15:57:04 +0100
-Message-Id: <20221216145709.271940-2-shentey@gmail.com>
+Subject: [PATCH 5/6] hw/ppc/e500: Resolve variable shadowing
+Date: Fri, 16 Dec 2022 15:57:08 +0100
+Message-Id: <20221216145709.271940-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20221216145709.271940-1-shentey@gmail.com>
 References: <20221216145709.271940-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -88,28 +87,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 16 Dec 2022 14:57:57 -0000
 
-Let's not leave developers in the dark where this log message comes
-from.
+Assign to the outer variable instead which even saves some code.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- target/ppc/mmu_common.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/ppc/e500.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/target/ppc/mmu_common.c b/target/ppc/mmu_common.c
-index 89107a6af2..49067c05e6 100644
---- a/target/ppc/mmu_common.c
-+++ b/target/ppc/mmu_common.c
-@@ -811,7 +811,8 @@ static int mmubooke206_check_tlb(CPUPPCState *env, ppcmas_tlb_t *tlb,
-         }
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index ad83924004..104a85ad22 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -883,7 +883,7 @@ void ppce500_init(MachineState *machine)
+     bool kernel_as_payload;
+     hwaddr bios_entry = 0;
+     target_long payload_size;
+-    struct boot_info *boot_info;
++    struct boot_info *boot_info = NULL;
+     int dt_size;
+     int i;
+     unsigned int smp_cpus = machine->smp.cpus;
+@@ -938,7 +938,6 @@ void ppce500_init(MachineState *machine)
+         /* Register reset handler */
+         if (!i) {
+             /* Primary CPU */
+-            struct boot_info *boot_info;
+             boot_info = g_new0(struct boot_info, 1);
+             qemu_register_reset(ppce500_cpu_reset, cpu);
+             env->load_info = boot_info;
+@@ -1217,7 +1216,6 @@ void ppce500_init(MachineState *machine)
      }
+     assert(dt_size < DTB_MAX_SIZE);
  
--     qemu_log_mask(CPU_LOG_MMU, "%s: TLB entry not found\n", __func__);
-+    qemu_log_mask(CPU_LOG_MMU, "%s: No TLB entry found for effective address "
-+                  "0x" TARGET_FMT_lx "\n", __func__, address);
-     return -1;
- 
- found_tlb:
+-    boot_info = env->load_info;
+     boot_info->entry = bios_entry;
+     boot_info->dt_base = dt_base;
+     boot_info->dt_size = dt_size;
 -- 
 2.39.0
 
