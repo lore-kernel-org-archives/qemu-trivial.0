@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6C26-0006BG-Gn
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 09:49:54 -0500
+	id 1p6C7v-0000iH-IF
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 09:55:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1p6C24-000682-Sf; Fri, 16 Dec 2022 09:49:52 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ id 1p6C7m-0000ga-1L; Fri, 16 Dec 2022 09:55:46 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1p6C23-0007ub-EB; Fri, 16 Dec 2022 09:49:52 -0500
+ id 1p6C7d-0001Ru-VV; Fri, 16 Dec 2022 09:55:45 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 9BC94748130;
- Fri, 16 Dec 2022 15:48:05 +0100 (CET)
+ by localhost (Postfix) with SMTP id E04B474900C;
+ Fri, 16 Dec 2022 15:53:51 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 63C1C74812D; Fri, 16 Dec 2022 15:48:05 +0100 (CET)
+ id ADF7874813B; Fri, 16 Dec 2022 15:53:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 619B9746307;
- Fri, 16 Dec 2022 15:48:05 +0100 (CET)
-Date: Fri, 16 Dec 2022 15:48:05 +0100 (CET)
+ by zero.eik.bme.hu (Postfix) with ESMTP id ACE7F74812D;
+ Fri, 16 Dec 2022 15:53:51 +0100 (CET)
+Date: Fri, 16 Dec 2022 15:53:51 +0100 (CET)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: Bernhard Beschow <shentey@gmail.com>
 cc: qemu-devel@nongnu.org, 
@@ -27,22 +27,22 @@ cc: qemu-devel@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
  Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org, 
  Ani Sinha <ani@anisinha.ca>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: Re: [PATCH v2 6/7] i386, mips: Resolve redundant ACPI and APM
- dependencies
-In-Reply-To: <20221216130355.41667-7-shentey@gmail.com>
-Message-ID: <773f556a-5fee-b4c7-93af-3cf1b607858a@eik.bme.hu>
+Subject: Re: [PATCH v2 7/7] hw/ppc/Kconfig: Remove unused dependencies from
+ PEGASOS2
+In-Reply-To: <20221216130355.41667-8-shentey@gmail.com>
+Message-ID: <7047cf26-4e54-b177-afe4-e99d04bd7f8f@eik.bme.hu>
 References: <20221216130355.41667-1-shentey@gmail.com>
- <20221216130355.41667-7-shentey@gmail.com>
+ <20221216130355.41667-8-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII; format=flowed
 X-Spam-Probability: 9%
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -55,63 +55,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Dec 2022 14:49:53 -0000
+X-List-Received-Date: Fri, 16 Dec 2022 14:55:49 -0000
 
 On Fri, 16 Dec 2022, Bernhard Beschow wrote:
-> Now that all ACPI controllers select the ACPI and APM dependencies
-> themselves, these explicit dependencies became redundant. Remove them.
+> Removes the following dependencies from ppc-softmmu:
+> - CONFIG_ACPI_CPU_HOTPLUG
+> - CONFIG_ACPI_CXL
+> - CONFIG_ACPI_HMAT
+> - CONFIG_ACPI_MEMORY_HOTPLUG
+> - CONFIG_ACPI_NVDIMM
+> - CONFIG_ACPI_PCIHP
+> - CONFIG_ACPI_X86
+> - CONFIG_MEM_DEVICE
 >
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+
+Thanks for sorting this out.
+
 > ---
-> configs/devices/mips-softmmu/common.mak | 3 ---
-> hw/i386/Kconfig                         | 2 --
-> 2 files changed, 5 deletions(-)
+> hw/ppc/Kconfig | 2 --
+> 1 file changed, 2 deletions(-)
 >
-> diff --git a/configs/devices/mips-softmmu/common.mak b/configs/devices/mips-softmmu/common.mak
-> index 416161f833..88aff94625 100644
-> --- a/configs/devices/mips-softmmu/common.mak
-> +++ b/configs/devices/mips-softmmu/common.mak
-> @@ -17,9 +17,7 @@ CONFIG_I8254=y
-> CONFIG_PCSPK=y
-> CONFIG_PCKBD=y
-> CONFIG_FDC=y
-> -CONFIG_ACPI=y
-> CONFIG_ACPI_PIIX4=y
-> -CONFIG_APM=y
-> CONFIG_I8257=y
-> CONFIG_PIIX4=y
-> CONFIG_IDE_ISA=y
-> @@ -32,6 +30,5 @@ CONFIG_MIPS_ITU=y
-> CONFIG_MALTA=y
-> CONFIG_PCNET_PCI=y
-> CONFIG_MIPSSIM=y
-> -CONFIG_ACPI_SMBUS=y
-> CONFIG_SMBUS_EEPROM=y
-> CONFIG_TEST_DEVICES=y
-> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-> index 3a92566701..c4fb5b49bd 100644
-> --- a/hw/i386/Kconfig
-> +++ b/hw/i386/Kconfig
-> @@ -51,7 +51,6 @@ config PC_PCI
+> diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
+> index b8d2522f45..0087369f5b 100644
+> --- a/hw/ppc/Kconfig
+> +++ b/hw/ppc/Kconfig
+> @@ -76,8 +76,6 @@ config PEGASOS2
+>     select VT82C686
+>     select SMBUS_EEPROM
+>     select VOF
+> -# This should come with VT82C686
+> -    select ACPI_X86
+>
+> config PREP
 >     bool
->     select APIC
->     select IOAPIC
-> -    select APM
->     select PC
 >
-> config PC_ACPI
-> @@ -72,7 +71,6 @@ config I440FX
->     select ACPI_PIIX4
->     select PC_PCI
->     select PC_ACPI
-> -    select ACPI_SMBUS
->     select PCI_I440FX
->     select PIIX3
->     select IDE_PIIX
->
-
-Is select APM now redundant in VT82686 too?
-
-Regards,
-BALATON Zoltan
 
