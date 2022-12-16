@@ -1,77 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6ErE-0000ej-Ig
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 12:50:52 -0500
+	id 1p6Jbl-0000K0-1q
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 17:55:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1p6ErC-0000b7-FX; Fri, 16 Dec 2022 12:50:50 -0500
-Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p6Jbj-0000JT-L9
+ for qemu-trivial@nongnu.org; Fri, 16 Dec 2022 17:55:11 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1p6ErA-0005L9-KL; Fri, 16 Dec 2022 12:50:50 -0500
-Received: by mail-ot1-x32e.google.com with SMTP id
- x25-20020a056830115900b00670932eff32so1807300otq.3; 
- Fri, 16 Dec 2022 09:50:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=+4rwcmR0CfVG5rF+8pjo2VgduZA8mnqHQp+fEREIlNc=;
- b=JS8fSZ3z9FuDZE9dVlkD149BQN5mU+ssPo+HpNLvFPKB8P16zw9xdLjK9myOEWlY/S
- HrgxEpIz31bRu22gErw61JEVbHkWjbvK6NVGpJ0hlesTYjEfAwqQWatLLA1qOg1+oXSK
- 1utL98ud8V7inSRDMih+wzJfP3eDxW5AQZpADj0WcqUrHKbdGaqEixLZ5ri3nDzw0Nrw
- TquJGs8/xhaLujdb/4rNpoyvDp2SNGhWHcI6Qx96lZnDF3K1f6Al7395Bg5iSoMtCtJi
- ta9Dj5bH1dBqe+Q32EuaQeXZfXiKeo3bmsEMEPU0kgy4xf7AVCVMBi8UlaOVfl2X67e4
- ImSQ==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p6Jbg-0008NO-Tn
+ for qemu-trivial@nongnu.org; Fri, 16 Dec 2022 17:55:11 -0500
+Received: by mail-ej1-x631.google.com with SMTP id vv4so9533926ejc.2
+ for <qemu-trivial@nongnu.org>; Fri, 16 Dec 2022 14:55:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=v/YOV179n9CJl3E8APthvcSa5yzKT5bj6FVc9BAjukk=;
+ b=fh7WkwcZfQc1Ki+wwx5L/2nuYN3JkcTXqFnmnEjndqp/p+5XKvtrHXNwR0iQ4CiPK6
+ BRiLVWg36eWFaa40OQ5MIt81dO1v71B0c8bue/L0fSCobhJ4TqzNbu3bqhaigyTi7HeH
+ LWPNn2fch99FvG/+McIa9W6h+gFmgEqlTt3T2OHUKVphbBhsRz4px4vu51Y4pNOrp/2M
+ cLtOt88n7WQIDskAijY6zPI9ZCMJRLe5epwvnSCVc3T/k5Pq/DhDuZxpGyNF4pe+a39d
+ RKbHiDXhKUNzBXEOnpewQL0GtQGOZjwk/P6dfQKo3P1WoDg42AWlBMKARmq0v7fuX8bW
+ XT6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+4rwcmR0CfVG5rF+8pjo2VgduZA8mnqHQp+fEREIlNc=;
- b=tsE8XEVFgSO/ZDOf/fpcI5xH8fqb9y4b6YoDKSLR5EPUTys/RdwDhua/wEq/0c7Nng
- 7g3mct9QcmQOquPJTnG4LFlavhUyG1icooYXCSSJE6GwnPulCzM6O2z1mrw5JQ6YeqhO
- l9semrL9fhO0ECXGttVhal5IowFQ5x7mywAjYde2mTo1eIaD5OsVGrO78G592u5dSRvX
- 3ez97K4irBoVgqrL+sMUPnF0c+tJGC86MgM42vJ0rpCF1D3UAWAPXxkE8xLEdUFwwFoH
- qAuR5hJuF3jsVoTmS2PQEyabI4HkkdsmaelwpPW9jflXYUDgGzEe03NFSFCZ3yvTDH3R
- V22Q==
-X-Gm-Message-State: ANoB5pl506j+Rk1kZsuXGboM+brp6ZgfV7RUVdu8sLZMevkaoRnuZyui
- 1oUuHSu70Ttw1Vhk52JrpP8=
-X-Google-Smtp-Source: AA0mqf6TfXgca3JAJ+q2+buGs2UFpqzuDaFXUosglRLAZZ0EX6I3r1C6UuUs2Ii5ZLj9TrLtSf0SLg==
-X-Received: by 2002:a05:6830:144d:b0:670:7c74:2616 with SMTP id
- w13-20020a056830144d00b006707c742616mr15282349otp.11.1671213046043; 
- Fri, 16 Dec 2022 09:50:46 -0800 (PST)
-Received: from [192.168.68.106] (201-43-103-101.dsl.telesp.net.br.
- [201.43.103.101]) by smtp.gmail.com with ESMTPSA id
- k19-20020a056830169300b00666a5b5d20fsm1090544otr.32.2022.12.16.09.50.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Dec 2022 09:50:45 -0800 (PST)
-Message-ID: <6fc82e52-b7a4-778b-1510-4831570a50a3@gmail.com>
-Date: Fri, 16 Dec 2022 14:50:41 -0300
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=v/YOV179n9CJl3E8APthvcSa5yzKT5bj6FVc9BAjukk=;
+ b=PhVUZRkBSRQOQT7um8OMWMgcd5dBkEpL0N4c7NE1jqtIyEsJaqebyyxi/+6/2+aRYb
+ OJyHzmDaXDwSzN1/aoiaS3tDLNmRv6ImmR/9ADeeu6GT5QAnsddWT/WLmd91QIwS47UW
+ i/m3nWNNPQS9AfE7c9iWFeYoahpdshFZoZ4S8ap6bieAWbZMQgdNXQAtO+OZ/Uej4lM7
+ 1gYP5mtwTkgFPBTd+ZV/DIM9YeDpMqcwAVncTgyNUuN6foOYs05J9e2REF+rNHxzribM
+ bnjvHnAl31hj+yiJgRrKQA2q+gc/LrX8ExG/w7OGwupAJwgtqOr60yq3TfmcVbNZuSV7
+ q2qw==
+X-Gm-Message-State: AFqh2ko/kfiezKb5cVaJH47gnnAN1mUFceIwHtQs4fOQGFk0Luov6AdE
+ 8wdElQRcWcSlzFd5xhVvcPmCUbJYwTqo9gB3nAU=
+X-Google-Smtp-Source: AMrXdXv3yW7pH0MQTx2jABdiFzV7ZOaOM6drfLC4o9mvCJZyDFSZyTCKvCCGiYQTFRYcvqUWmccSgA==
+X-Received: by 2002:a17:906:9f26:b0:7cd:dbe8:e4f7 with SMTP id
+ fy38-20020a1709069f2600b007cddbe8e4f7mr8861349ejc.77.1671231307564; 
+ Fri, 16 Dec 2022 14:55:07 -0800 (PST)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ 26-20020a170906319a00b007c0c679ca2fsm1306174ejy.26.2022.12.16.14.55.06
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 16 Dec 2022 14:55:07 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] scripts/git.orderfile: Display MAINTAINERS changes first
+Date: Fri, 16 Dec 2022 23:55:05 +0100
+Message-Id: <20221216225505.26052-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH 0/6] Trivial PPC cleanups
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>,
- David Gibson <david@gibson.dropbear.id.au>, Michael Tokarev
- <mjt@tls.msk.ru>, qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-References: <20221216145709.271940-1-shentey@gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20221216145709.271940-1-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32e;
- envelope-from=danielhb413@gmail.com; helo=mail-ot1-x32e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -86,32 +76,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Dec 2022 17:50:51 -0000
+X-List-Received-Date: Fri, 16 Dec 2022 22:55:11 -0000
 
-Queued in gitlab.com/danielhb/qemu/tree/ppc-next. Thanks,
+If we get custom to see MAINTAINERS changes first,
+we might catch missing MAINTAINERS updates easier.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ scripts/git.orderfile | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Daniel
+diff --git a/scripts/git.orderfile b/scripts/git.orderfile
+index b32203b710..8edac0380b 100644
+--- a/scripts/git.orderfile
++++ b/scripts/git.orderfile
+@@ -9,6 +9,8 @@
+ #   git config diff.orderFile scripts/git.orderfile
+ #
+ 
++MAINTAINERS
++
+ # Documentation
+ docs/*
+ *.rst
+-- 
+2.38.1
 
-On 12/16/22 11:57, Bernhard Beschow wrote:
-> These are some patches which helped me when getting a u-boot image to run on ppce500 machine.
-> 
-> Testing done:
-> - `make check`
-> - `make check-avocado`
-> 
-> Bernhard Beschow (6):
->    target/ppc/mmu_common: Log which effective address had no TLB entry
->      found
->    target/ppc/mmu_common: Fix table layout of "info tlb" HMP command
->    hw/ppc/virtex_ml507: Prefer local over global variable
->    hw/ppc/e500: Prefer local variable over qdev_get_machine()
->    hw/ppc/e500: Resolve variable shadowing
->    hw/ppc/e500: Move comment to more appropriate place
-> 
->   hw/ppc/e500.c           | 10 ++++------
->   hw/ppc/virtex_ml507.c   |  2 +-
->   target/ppc/mmu_common.c |  5 +++--
->   3 files changed, 8 insertions(+), 9 deletions(-)
-> 
 
