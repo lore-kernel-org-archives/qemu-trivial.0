@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6AOr-0004rj-Th
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 08:05:17 -0500
+	id 1p6AOs-0004sV-Mo
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 08:05:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p6AOQ-0004hG-Kn; Fri, 16 Dec 2022 08:04:57 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1p6AOM-0004gx-P5; Fri, 16 Dec 2022 08:04:57 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p6AOP-0008A0-0w; Fri, 16 Dec 2022 08:04:50 -0500
-Received: by mail-ed1-x533.google.com with SMTP id v8so3562165edi.3;
- Fri, 16 Dec 2022 05:04:47 -0800 (PST)
+ id 1p6AOK-00087y-Np; Fri, 16 Dec 2022 08:04:46 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id r26so3495967edc.10;
+ Fri, 16 Dec 2022 05:04:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iAyiiRFMOei2neaEExJFUVT8MX/WkWUhbFfRb/f3ByU=;
- b=i0CqKTeF/SprrDS5MlxHNxwSfDgDKxSDl0i5O75wN74NVzRB8mVorpFGho9KkaPdEG
- cvOmDvA0DS6gOQDy8Y6nb+1nVKbD9fiks0udp1ZaaXQKbbkVINFAIQoJQytzMVhNKnBw
- mwq+8VP0AJoQPGDLOIRU2x570s+DtgtadIZpIfjiGsb55ifUar2djRorRdMoRPy7wttC
- 176KymFLQ4VKdzjmJfvoAU/NupTBnw0/mYZ+PlxIoIu+3BRILAi649wxr0CLDFizTgev
- b1qvChfWjFSjVkiN/glcu5m4U9KeSEapD9EZ/hCslWwVAs7FDFlkXprqbQvb0TE+nrip
- pPEw==
+ bh=+ZEyqEMBEtqlHQnJS2z60kGnt73/BnxbYpNYss1OKsw=;
+ b=DwYwqa0NBdSQqrsOROBbqfQ6bX9Le82HJ80Lo/ZN2ab4dXt7QVvZbzHiIfAdK5vxzd
+ pqEH/y9RLHw52Kqf0g0PJBHaKRwo+svkITawUWZ8vbb8xAIjeUc56o+5vSVRI5nr26ui
+ QM6q5lZXOzFTTKXU/sngpJMyMvZHP1+b4DDEBzAzScaOjC/3EihyXbB0W0lDK0/FQpks
+ n0h4XcY6o/HF++WgtjA5YwhfEXDSSfTMcxbq0oP61eu4mGmGFLdlK/spCin6sfH5uAZT
+ lkw1dJ0HfyLiiDi/3YgKkCveNp/ZYYzM8nWCr52Go03WVN4IISnkHnmOGjRB7DbkZRfi
+ MxBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=iAyiiRFMOei2neaEExJFUVT8MX/WkWUhbFfRb/f3ByU=;
- b=03zn1ATlkfWy9Wl6CcLvZXeG0qeCUXYDzyHH0g46YZNCqLl8ILB3kTGJgCsoIychYN
- bye/3SWzrpw3aWOD/oRNg8vclCJafcv9n9/JBwQKcQZvT6OJ5tBP9rMb6L6/kHsro6wW
- aXzu7Ld9USiJ3Xu9E2OMkdA7RISMk7kPauZhg62p4mbWsPcgs0V3QRc7pgohVqs36pDY
- udB2OVp43Q1C+GIQbJ25+PUVHG/6b6wTDUuQRP1jBk5x1fJUJdkC/G2ZkuztMkUfiVqA
- nA7tzaZXEWAHiDqUqM6V2wW+rev5qMWHipJvge6waSBn1agb0MEOogVm9okGZZC9H3IY
- 82mA==
-X-Gm-Message-State: ANoB5plRkqrG6KzY9Gl+a5TIuYR1bVy+uBUpyBvKT6R+9nxrnCpC8/T+
- BiaG51ureRlqCvbVdxVJfHxC4o3hD9Q=
-X-Google-Smtp-Source: AA0mqf7CKgIqU4HSt9yanvYvE38aFgKlQEkSRS7h7MsTiHAuYrNegktcSut6ftppFOmxWKg9LJJqkA==
-X-Received: by 2002:a05:6402:c07:b0:46b:203:f388 with SMTP id
- co7-20020a0564020c0700b0046b0203f388mr27240340edb.39.1671195886816; 
- Fri, 16 Dec 2022 05:04:46 -0800 (PST)
+ bh=+ZEyqEMBEtqlHQnJS2z60kGnt73/BnxbYpNYss1OKsw=;
+ b=Ge+GlKqu3wsBQZeL3sgU3ngsK+VF0plpvlUwlqnZAfJmqbe84PMDI6Hg1s0hjUGazB
+ d1zXjoHmZNREW3S2AEztpn7EUsN4QACbIE84d9mRuKbdoz+xQU46/7WnRT2oK871PiMo
+ AJu+IqxoE2bpLLt11CHje2DH0dwdrinLLfYxVDnf+08AJEGyet3T9snZOBvHoo9SoX3D
+ X2uyGPamygp+oBCLJelWBFsyIiB7pl5ZsJg2mQdEzHmtMvyk7RkaZPuiNxgO14xLeipk
+ ZCLJS7nBU0jv5na/DNtdMMj+z15PFQsHpVMrPrbgmfXtLhavv7JcNXAd+yNKf+WcDlWl
+ AlSQ==
+X-Gm-Message-State: ANoB5pntccRHxEpx3Wk2tMOZ/OwjpxSRRLh0uiZrLzS6aSr+Z1JnJS+v
+ sbg0VSMdbJBqHiYqy9O1dkzgPtBGD4g=
+X-Google-Smtp-Source: AA0mqf6dI/1HdPf3mXOvGQ5f9oo/83YiuWAZyk+cozO3gvVYfwCC4xMtUOymv9ZcJ1DyVxGFCASkIA==
+X-Received: by 2002:a05:6402:f29:b0:46f:a2c2:405b with SMTP id
+ i41-20020a0564020f2900b0046fa2c2405bmr14928319eda.37.1671195882632; 
+ Fri, 16 Dec 2022 05:04:42 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-078-055-138-012.78.55.pool.telefonica.de. [78.55.138.12])
  by smtp.gmail.com with ESMTPSA id
- g11-20020aa7c58b000000b0046b1d63cfc1sm828444edq.88.2022.12.16.05.04.44
+ g11-20020aa7c58b000000b0046b1d63cfc1sm828444edq.88.2022.12.16.05.04.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Dec 2022 05:04:46 -0800 (PST)
+ Fri, 16 Dec 2022 05:04:42 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -55,17 +55,16 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
  Ani Sinha <ani@anisinha.ca>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 7/7] hw/ppc/Kconfig: Remove unused dependencies from
- PEGASOS2
-Date: Fri, 16 Dec 2022 14:03:55 +0100
-Message-Id: <20221216130355.41667-8-shentey@gmail.com>
+Subject: [PATCH v2 5/7] hw/isa/Kconfig: Add missing dependency to VT82C686
+Date: Fri, 16 Dec 2022 14:03:53 +0100
+Message-Id: <20221216130355.41667-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20221216130355.41667-1-shentey@gmail.com>
 References: <20221216130355.41667-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,36 +84,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Dec 2022 13:05:08 -0000
+X-List-Received-Date: Fri, 16 Dec 2022 13:05:03 -0000
 
-Removes the following dependencies from ppc-softmmu:
-- CONFIG_ACPI_CPU_HOTPLUG
-- CONFIG_ACPI_CXL
-- CONFIG_ACPI_HMAT
-- CONFIG_ACPI_MEMORY_HOTPLUG
-- CONFIG_ACPI_NVDIMM
-- CONFIG_ACPI_PCIHP
-- CONFIG_ACPI_X86
-- CONFIG_MEM_DEVICE
+The ACPIREGS are provided by TYPE_VIA_PM, so needs to select ACPI.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/ppc/Kconfig | 2 --
- 1 file changed, 2 deletions(-)
+ hw/isa/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
-index b8d2522f45..0087369f5b 100644
---- a/hw/ppc/Kconfig
-+++ b/hw/ppc/Kconfig
-@@ -76,8 +76,6 @@ config PEGASOS2
-     select VT82C686
-     select SMBUS_EEPROM
-     select VOF
--# This should come with VT82C686
--    select ACPI_X86
- 
- config PREP
+diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+index 0a6a04947c..0156a66889 100644
+--- a/hw/isa/Kconfig
++++ b/hw/isa/Kconfig
+@@ -52,6 +52,7 @@ config PIIX4
+ config VT82C686
      bool
+     select ISA_SUPERIO
++    select ACPI
+     select ACPI_SMBUS
+     select SERIAL_ISA
+     select FDC_ISA
 -- 
 2.39.0
 
