@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6C9z-00041X-Ch
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 09:58:03 -0500
+	id 1p6CA1-00043h-1F
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 09:58:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p6C9p-0003kO-37; Fri, 16 Dec 2022 09:57:53 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ id 1p6C9i-0003ji-Ms; Fri, 16 Dec 2022 09:57:48 -0500
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p6C9l-00022a-Q3; Fri, 16 Dec 2022 09:57:51 -0500
-Received: by mail-ed1-x535.google.com with SMTP id r26so3930139edc.10;
- Fri, 16 Dec 2022 06:57:48 -0800 (PST)
+ id 1p6C9g-0001zp-97; Fri, 16 Dec 2022 09:57:46 -0500
+Received: by mail-ed1-x529.google.com with SMTP id i15so4000515edf.2;
+ Fri, 16 Dec 2022 06:57:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=dS5n2fq1nBhOITgWTEOZdjZdz9mPAjrDpmZNofzIba4=;
- b=pu8S5YX3Mi8K5ZwB8FDpDxnCJ4WHvXM/V1w98nDhWoQ0cI65AA2s0tUy9M9jr2Do+E
- iwIszzYChGjFM28pKjTJSC/RKfxGlbAMcc0FbhCFnsKSnRoSHiDCELM1/ADdUq+ctnPk
- 1iYkwtMjw+TD9O5AF0rhUyKYYxgAttxs28I47S3Yrl3+nNyeexh1Ue60A83mAZRy7wES
- H0v3rgQ/DKYhcUciw4pBGIbBvf6Q2jZ50Xo5C9IKCRt6Oar3c9CeSIvPzImmyLWx+YsK
- rLDpoyP8A1dDN6w3vP49sbil9QdmEect078cPoPTqlmJcaOgyj0wTXusaolKxV/pEI7G
- TJHQ==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=fhTJ7nT8+xkifb2NL/PzXfnL3Zp3ULldt2qmukepgTc=;
+ b=o+CfEsg6lMXgXvtSQ/Fy6sdJPPzvzGrtSIUzE8MMhp7Ltm+47c9Vg/EhwvJXawx+eV
+ ahXwg7Rg4WzBNMR1Gae0LCURg/yEUbZKisN5noiR3aeWPe7F/3DCJs4DTejy3GUvaLYj
+ FccO8DvC8apzAFTFn8l6ehas2VfeJyBnSbvG3jVjHGTW2uOLfAjZOF2Pb/LJ76CLsYtL
+ KFUb0vP78NswNdGubm2UAM/9910C7Es1ll9vi/RW4Y+H15mSMsbJudEY8pnLhjYMXOVE
+ EQlYu3ywvRJTJ5pv/wo21aUhAZSRKEHs8O1ZXN3/km/sas3vtsSBE9pOjAji7pp0QDXP
+ Jujw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dS5n2fq1nBhOITgWTEOZdjZdz9mPAjrDpmZNofzIba4=;
- b=61H8oWwRirgwTOYfFaHzBL0aSIkABhFTNA8/buY9oPNnMKtXv43A1/fblU89xQ9LV+
- +k6iFPXqLkDXIZf4hVOejW2E181uNY2Qf5qj49PXt1J1DSr+hWT8BVxHyimbtH/9c2D5
- MMx3Jo6FoFmAry8jHlnG5FXX3OzDm3BMkf8xD8d44w6seaYI/O1H4aI83zXivy3dIlcv
- DkpXzaQhM2UbvqxDWLZlf03m/qsJ7NrEa8egCy2zi4lQt9qCbzQjLFcceIHF8rwb14na
- uzJD52xbydJpc1ifDnCk5mwwsZ9ta3AmcfJYzjnikzkY82PWgFjLqJPO2zff6lyso1Tu
- OkSg==
-X-Gm-Message-State: AFqh2kpWPOfzOs4IGAemyLxQi5ybKJKBmZ7EdB6HDkjj9/Gy3lYJOsf7
- WyRFHr+DImsESZbaK8NxbSqMYM8NEUY=
-X-Google-Smtp-Source: AMrXdXseq/4pW/6RhZaLLO9ZCNOKERrBXihNkSlPkgjZIOHVUV6iwN05ZN0gbFfIeK42D72/py6JBQ==
-X-Received: by 2002:aa7:c649:0:b0:475:de4a:373f with SMTP id
- z9-20020aa7c649000000b00475de4a373fmr1866757edr.30.1671202666929; 
- Fri, 16 Dec 2022 06:57:46 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=fhTJ7nT8+xkifb2NL/PzXfnL3Zp3ULldt2qmukepgTc=;
+ b=gieaqqS1nj9DqHmdkUfCKiqerhPtmUNxIVlGaVu9FuspqU8kEy3KabjOgnHWy1nEOr
+ m5Y3PQF+18da1KA9r21ccw/CxRFTtU8E4c11/ZtWYLzFa+fold/uI0Tk8wcLpQ3916ci
+ p9Qk/9AfM0nCnDfJ+gNOy/v6u5QVvzVeQsWmFWt4UamBpcJi394ZmTV7Ul719dkExOM3
+ p1YDZ93jVPLs+oXa2bDZVI3RRoGIyxLSyKLx346XFcZX5hEiS/fDtPUF2i+115re9Xlw
+ 2To8ElHvBT0x9usALBFDIzLsUw7o1+sd9FrxmAYYp7xFzkiQpTF+5f/WT7jeJsSwxB4Y
+ fvRA==
+X-Gm-Message-State: ANoB5pnlVINcyGsC9jWcbGlTFzx964YXejV9TOT5XxPX17UwcVLxd18Q
+ kB5pdN2afT6VirylSuC4C87MBvAHdh4=
+X-Google-Smtp-Source: AA0mqf5XxBAtPUnPFpXXBqM3royNCYgWXpqcJshUkIJ3HtBVWPAvX3JyIvTl/aGW4bFEz+vhu33JUQ==
+X-Received: by 2002:aa7:da02:0:b0:46c:f631:c0dc with SMTP id
+ r2-20020aa7da02000000b0046cf631c0dcmr27870380eds.12.1671202661308; 
+ Fri, 16 Dec 2022 06:57:41 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-078-055-138-012.78.55.pool.telefonica.de. [78.55.138.12])
  by smtp.gmail.com with ESMTPSA id
- g18-20020aa7c852000000b00467c3cbab6fsm942225edt.77.2022.12.16.06.57.45
+ g18-20020aa7c852000000b00467c3cbab6fsm942225edt.77.2022.12.16.06.57.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Dec 2022 06:57:46 -0800 (PST)
+ Fri, 16 Dec 2022 06:57:40 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -56,16 +55,15 @@ Cc: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Greg Kurz <groug@kaod.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 4/6] hw/ppc/e500: Prefer local variable over qdev_get_machine()
-Date: Fri, 16 Dec 2022 15:57:07 +0100
-Message-Id: <20221216145709.271940-5-shentey@gmail.com>
+Subject: [PATCH 0/6] Trivial PPC cleanups
+Date: Fri, 16 Dec 2022 15:57:03 +0100
+Message-Id: <20221216145709.271940-1-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20221216145709.271940-1-shentey@gmail.com>
-References: <20221216145709.271940-1-shentey@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,36 +83,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Dec 2022 14:57:57 -0000
+X-List-Received-Date: Fri, 16 Dec 2022 14:57:58 -0000
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/ppc/e500.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 2fe496677c..ad83924004 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -959,7 +959,7 @@ void ppce500_init(MachineState *machine)
-     memory_region_add_subregion(address_space_mem, 0, machine->ram);
- 
-     dev = qdev_new("e500-ccsr");
--    object_property_add_child(qdev_get_machine(), "e500-ccsr",
-+    object_property_add_child(OBJECT(machine), "e500-ccsr",
-                               OBJECT(dev));
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     ccsr = CCSR(dev);
-@@ -1002,7 +1002,7 @@ void ppce500_init(MachineState *machine)
- 
-     /* PCI */
-     dev = qdev_new("e500-pcihost");
--    object_property_add_child(qdev_get_machine(), "pci-host", OBJECT(dev));
-+    object_property_add_child(OBJECT(machine), "pci-host", OBJECT(dev));
-     qdev_prop_set_uint32(dev, "first_slot", pmc->pci_first_slot);
-     qdev_prop_set_uint32(dev, "first_pin_irq", pci_irq_nrs[0]);
-     s = SYS_BUS_DEVICE(dev);
--- 
-2.39.0
-
+These are some patches which helped me when getting a u-boot image to run o=
+n ppce500 machine.=0D
+=0D
+Testing done:=0D
+- `make check`=0D
+- `make check-avocado`=0D
+=0D
+Bernhard Beschow (6):=0D
+  target/ppc/mmu_common: Log which effective address had no TLB entry=0D
+    found=0D
+  target/ppc/mmu_common: Fix table layout of "info tlb" HMP command=0D
+  hw/ppc/virtex_ml507: Prefer local over global variable=0D
+  hw/ppc/e500: Prefer local variable over qdev_get_machine()=0D
+  hw/ppc/e500: Resolve variable shadowing=0D
+  hw/ppc/e500: Move comment to more appropriate place=0D
+=0D
+ hw/ppc/e500.c           | 10 ++++------=0D
+ hw/ppc/virtex_ml507.c   |  2 +-=0D
+ target/ppc/mmu_common.c |  5 +++--=0D
+ 3 files changed, 8 insertions(+), 9 deletions(-)=0D
+=0D
+-- =0D
+2.39.0=0D
+=0D
 
