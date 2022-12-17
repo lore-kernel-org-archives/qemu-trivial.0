@@ -1,77 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6KVo-0003Fs-Vk
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Dec 2022 18:53:08 -0500
+	id 1p6eqU-0004bX-24
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2022 16:35:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1p6KVn-0003FS-9k
- for qemu-trivial@nongnu.org; Fri, 16 Dec 2022 18:53:07 -0500
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1p6eqS-0004bJ-QY; Sat, 17 Dec 2022 16:35:48 -0500
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1p6KVh-0003Ie-Ef
- for qemu-trivial@nongnu.org; Fri, 16 Dec 2022 18:53:02 -0500
-Received: by mail-pl1-x62c.google.com with SMTP id l10so3797518plb.8
- for <qemu-trivial@nongnu.org>; Fri, 16 Dec 2022 15:53:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=h6Iz1AvUm84xNhXXYxc+Has9u5k+1iauq7kw/Vcr/D0=;
- b=soChDyooUD/2nxfjujFPjL+GJmVXKcCrvyPP8jf4prpD6w7drLQJdpz/TiFj6fCs7B
- aCXWA9yqDFktra6OAv+zZwNlMjL9Y+Q4UZg9A0of6YebAbdF4bbxKN5lOei8nSPfKCzb
- wICgozws68HgXFsYZxMMR7Fa4N4U9zadVjJuKEN6WZgdqODo5xiGDJHfYHNN9RoXUTlT
- 1ZVhIrueFhFSZiclQOjK1qElX2kwx+OVazlw27bul1NvsV7Sk3FSgwjL4Fo9K0o45CAz
- 3GtB6RdR2VCn6+mmJd36VxZ4Igujh4jvjO4yHiU8wyZqMVeLy8gSONEf735n00xOQa72
- YB8A==
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1p6eqR-0001jb-9j; Sat, 17 Dec 2022 16:35:48 -0500
+Received: by mail-ej1-x632.google.com with SMTP id bj12so13557935ejb.13;
+ Sat, 17 Dec 2022 13:35:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=68Ne7Avk+6V4LFaKUB4ZA7pUxtVZMEXNV7IESQ+heac=;
+ b=dUlVdVLXPkH2vO96U9ViiL6t1F9ItlxK8seIN4Lzcjpa3hljwEmxjZ+xFRBcHfpreA
+ h64cuIEeE+RJoC2rLcFfJ4rvxJHbEbn6lNlhih+RCmHrUFQ5nHgVEdfyOvywKvc0iixN
+ UFL2FeYF8SIrf6ehv+aimRS1U2hmp1yI71cscwJoXYA7AUnUVX9S269TeIl5zLe4P0kM
+ GWgIHNtbnN5JuwGy20IVZM4/7WVcEr6Olcj1ry8WM4n59CjSsjECxIQ2thhKjXdrPxbi
+ 6FIaJd1JMaTjKh02WAR4lE1vKuUo+leBpKowqBzhlKgGt9vunqkbBkbcosW6XtqN9xYF
+ l9SA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=h6Iz1AvUm84xNhXXYxc+Has9u5k+1iauq7kw/Vcr/D0=;
- b=glyLoAaq7T+pD/xkh/Bu/98UAHXSSGE3QSK2wnsu9AoUOIpbLZdvxa53AJTwjiGFL0
- 7zPB/yN12+IGkjfI+UE2yyJwYJlYO51f9T60ra1qyCUmsc3/DlwjBMROXRTOccvyUbHE
- qcGYnQ2ISzjyeILKK89ZPk80GD+hen4TD2yWJA/v2lBbJx1YySG9/cegKwlmS0acTt7x
- EVbSXD5748PIFjNvEyD05PktSpcFuzDldiTpYQG6WY4UKDpzzEgEkHYjlkfl78fMm9Oz
- +kXBVoj30XFj57pvHQ2PYsUJqpKg37dXp7JTA8xqoAcOh7mLScaku8RUz8U9XTToiIlS
- krHg==
-X-Gm-Message-State: ANoB5pnGDWuFZyhG/t2Y2pYFixXlp8dZRuodL/v2PrKngkv5rlMYX9XL
- 8blDU485uwbFsqEIsNsWv0LDBg==
-X-Google-Smtp-Source: AA0mqf49iz6EbF5PaghmwPo+HePsw6/Hom1i+KDKiNhoRLotsIhw5XQGdz5XtrtQaNcYCab7XAMk+w==
-X-Received: by 2002:a05:6a20:a58e:b0:ac:44ab:be3b with SMTP id
- bc14-20020a056a20a58e00b000ac44abbe3bmr42967372pzb.60.1671234779155; 
- Fri, 16 Dec 2022 15:52:59 -0800 (PST)
-Received: from ?IPV6:2602:47:d48c:8101:c606:9489:98df:6a3b?
- ([2602:47:d48c:8101:c606:9489:98df:6a3b])
- by smtp.gmail.com with ESMTPSA id
- r7-20020a63b107000000b00478bd458bdfsm1992221pgf.88.2022.12.16.15.52.58
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=68Ne7Avk+6V4LFaKUB4ZA7pUxtVZMEXNV7IESQ+heac=;
+ b=b9baSXp5x/B795mltnfU4WPwuOxB1laiFnD90U755rxZck4iEq+VSrJHdMYfzXT18T
+ hiqB9ju5KlP13l5ue5Hdb0LCyMD93y2eZewl0VN6Uii806mXFbh8O9n7gSyETSKl7w6F
+ sxKqNzGlTeBR6678w6mBS2aRm3Avb7tr/VWTKx38/4N7dVk6iRn6pof6bm4ntOWKq82C
+ 7mj48iBXZpjb+lNaq4bgOK1HcT5jkfS+7imPL5VP6bPmu7ClLK+vvilfpXTjhAuFv8wJ
+ vQ9jV9wHjkxy8DXq487IeA0gOIueg2NryOUxvz+Mc0Uo0ZH0JwVxxlrbRAjFGGq9q+6X
+ KPvw==
+X-Gm-Message-State: ANoB5pnWxvxfYWFYikr9m7uLCawGMbVvLzeQKTEP5TLCuJjvffd25Z6f
+ 1cSAfMtJ51h1Qo6kZSgtHjDblXAXa6Q=
+X-Google-Smtp-Source: AA0mqf40MsEIClmGb6Bf0W5pZS9E7iaa9WS/aknAEwcrw2fvsjdc4fqzy7iHBtIH+LyUhmrDCBzPIA==
+X-Received: by 2002:a17:906:1914:b0:7c1:311f:352f with SMTP id
+ a20-20020a170906191400b007c1311f352fmr32058865eje.48.1671312944351; 
+ Sat, 17 Dec 2022 13:35:44 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-077-191-115-237.77.191.pool.telefonica.de.
+ [77.191.115.237]) by smtp.gmail.com with ESMTPSA id
+ ky16-20020a170907779000b007ae38d837c5sm2428311ejc.174.2022.12.17.13.35.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Dec 2022 15:52:58 -0800 (PST)
-Message-ID: <645c9d12-7a54-c4ff-7f79-2b545fef3f03@linaro.org>
-Date: Fri, 16 Dec 2022 15:52:57 -0800
+ Sat, 17 Dec 2022 13:35:43 -0800 (PST)
+Date: Sat, 17 Dec 2022 21:35:40 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+CC: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
+ Ani Sinha <ani@anisinha.ca>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: Re: [PATCH v2 0/7] Clean up dependencies of ACPI controllers
+In-Reply-To: <20221216130355.41667-1-shentey@gmail.com>
+References: <20221216130355.41667-1-shentey@gmail.com>
+Message-ID: <D366A677-0348-4073-80A8-B169B4561624@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH] scripts/git.orderfile: Display MAINTAINERS changes first
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
-References: <20221216225505.26052-1-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20221216225505.26052-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,19 +83,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Dec 2022 23:53:07 -0000
-
-On 12/16/22 14:55, Philippe Mathieu-Daudé wrote:
-> If we get custom to see MAINTAINERS changes first,
-> we might catch missing MAINTAINERS updates easier.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   scripts/git.orderfile | 2 ++
->   1 file changed, 2 insertions(+)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+X-List-Received-Date: Sat, 17 Dec 2022 21:35:49 -0000
 
 
-r~
+
+Am 16=2E Dezember 2022 13:03:48 UTC schrieb Bernhard Beschow <shentey@gmai=
+l=2Ecom>:
+>This small series establishes consistency between ICH9, PIIX4 and VT82C68=
+6 ACPI
+>
+>controllers to select ACPI, ACPI_SMBUS and APM since they are provided by=
+ the
+>
+>device models=2E
+>
+>
+>
+>Due to the PIIX4 PM cleanup PEGASOS2's dependency can be reduced to just =
+ACPI,
+>
+>eliminating 9 dependencies from the softmmu-ppc build=2E
+>
+>
+>
+>v2:
+>
+>- Turn "depends on ACPI" into "select ACPI" (Phil)
+>
+>- Remove "select ACPI" from PEGASOS2 (Phil)
+>
+
+Ping
+
+Patches 4 & 6 still need review=2E
+
+>- Move already reviewed patches to bottom
+>
+>- Split some patches into "add missing dependencies" and "remove redundan=
+t
+>
+>  dependencies" for ease of review
+>
+>
+>
+>Bernhard Beschow (7):
+>
+>  hw/acpi/Kconfig: Rename ACPI_X86_ICH to ACPI_ICH9
+>
+>  hw/acpi/Kconfig: Add missing dependencies to ACPI_ICH9
+>
+>  hw/acpi/Kconfig: Do not needlessly build TYPE_PIIX4_PM in non-PC/Malta
+=
+>
+>    machines
+>
+>  hw/acpi/Kconfig: Add missing dependencies to ACPI_PIIX4
+>
+>  hw/isa/Kconfig: Add missing dependency to VT82C686
+>
+>  i386, mips: Resolve redundant ACPI and APM dependencies
+>
+>  hw/ppc/Kconfig: Remove unused dependencies from PEGASOS2
+>
+>
+>
+> configs/devices/mips-softmmu/common=2Emak | 3 ---
+>
+> hw/acpi/Kconfig                         | 9 ++++++---
+>
+> hw/acpi/meson=2Ebuild                     | 2 +-
+>
+> hw/i2c/meson=2Ebuild                      | 2 +-
+>
+> hw/i386/Kconfig                         | 3 +--
+>
+> hw/isa/Kconfig                          | 4 ++--
+>
+> hw/ppc/Kconfig                          | 2 --
+>
+> 7 files changed, 11 insertions(+), 14 deletions(-)
+>
+>
+>
+>-- >
+>2=2E39=2E0
+>
+>
+>
 
