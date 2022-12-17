@@ -1,57 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6gWp-0003l5-R6
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2022 18:23:39 -0500
+	id 1p6gfu-0005tS-6G
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2022 18:33:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p6gWo-0003kn-HA
- for qemu-trivial@nongnu.org; Sat, 17 Dec 2022 18:23:38 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p6gfn-0005pU-VC
+ for qemu-trivial@nongnu.org; Sat, 17 Dec 2022 18:32:56 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p6gWk-0002dC-S7
- for qemu-trivial@nongnu.org; Sat, 17 Dec 2022 18:23:38 -0500
-Received: by mail-ej1-x630.google.com with SMTP id ud5so13961717ejc.4
- for <qemu-trivial@nongnu.org>; Sat, 17 Dec 2022 15:23:32 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p6gfl-0004O0-UG
+ for qemu-trivial@nongnu.org; Sat, 17 Dec 2022 18:32:55 -0500
+Received: by mail-ej1-x633.google.com with SMTP id bj12so13860668ejb.13
+ for <qemu-trivial@nongnu.org>; Sat, 17 Dec 2022 15:32:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=HfXav//8T82iCnQiklTOmg8jHsb0owctZLmTtuC27f8=;
- b=OYU0AnogR9HbbI7515BfgaqEQMLWxR55bDmY0cNa+sMCxbK7S+NtRb2IwZmehs1nqJ
- OjDYvBcYiG93/9pmVsmY/g9dnTCytnJm+qvKEGxX5GK8/ayVR1daU9VUL60PJL2bpvFn
- yW1XiMmtomFnFp/yHOL6lEO61+wXJD9YKqk733ZXoSUKqRfNVUVBgl4AGOvdriXlrFKh
- DWjXC2Sz+ePH7LRe2QTWDDhBrrA1l2CLET5YFI/UeMgdlDGNPEXnmc3jRgZg1ZmSNu+q
- o0A+lIWD4GnXN9SA9wC7zs6bFKBAs7rrYI0Bh8QrQ0aMhYubF5QL/0LLehNjunWuOx/4
- lYzQ==
+ bh=oJBWpFPz9Gn0Zq0uuU3uOpARGDx+9nGXGOsTMP6eo/A=;
+ b=fl1ATgwgCbjlFzO/pKFefr7ule/XFeg3CFxbvJOQwm8qJURhppwUpc8VbWmteqTdJb
+ kkpk0dr3pXHZnIk1VAGi4GKlSauoZloo5G67A7mPK6bcVKDRE5ETHgrPLr0l9fRhLSUh
+ 8CZUre2Tg4LzY/W6LpF6zUZsT2iqKdaRSRB8o7Plbb+QHvu+HZZmrlgxuRZ8seMmX8uy
+ c5zpvaw2zzQxUpQJhQrTSnrcw8gXAuF/v99+QgxHSOpnBWhRfAs8R8riklU1q+8nmJrr
+ Y3XbtSPnjd93caZFFlDouCW27j8nGJfO0Gf5qzRXiWp9vSIyCZ/FDXq8x+2gJkgI/dRe
+ IJUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=HfXav//8T82iCnQiklTOmg8jHsb0owctZLmTtuC27f8=;
- b=W3vjrcBpoYXwaLb38D/KUosHWnbScMICOcJes8npMOArOqEDyLfB2nxeqh/MCeJgkX
- l2QYs7DzMtcWttkFgLK8Xe2cuBdW+wnelD6VtFAhM299CQGI5WCCFiVmnGT96mUaB/7E
- nXin8ORyZdX/txo6fGic1hdK2wHP5zpDxJDi3bmh+ZkrxDZ6S8fcD4Z40RvjsAw9sXeS
- OAu1LDYZXLxrGMUGEpu1Jzyci+EE+ChnhB2FQKhHa/nbyai1xEl2F4mL89UskJ2NgDHG
- 1z50gwgTh8a3UosG5Ycu9W3UUpapjoM9OODZVQrIx5SSIHQdpK9yee2Sn6p74NdILKW6
- KBnw==
-X-Gm-Message-State: ANoB5pmj9LwMHSPeJaY6awG5xXf94r6NoXRUVU55Nq8zmnu8CEXrrziq
- OGrvW1sVtZV6huu39jljInX22g==
-X-Google-Smtp-Source: AA0mqf5o0xVjshIrEY3F8ADCm2FYU+vpQV9Dp6wMXS+vE4FM+wmghqBozXXe9I/M1VHRWTLejiO2Pg==
-X-Received: by 2002:a17:906:5e07:b0:7c1:22a6:818e with SMTP id
- n7-20020a1709065e0700b007c122a6818emr29987536eju.24.1671319411471; 
- Sat, 17 Dec 2022 15:23:31 -0800 (PST)
+ bh=oJBWpFPz9Gn0Zq0uuU3uOpARGDx+9nGXGOsTMP6eo/A=;
+ b=m3VzRd2i6HgAFoj9z1P7E1nCN1Gu0ddIpL/rHr00UYEssjL7ArO/0cdm5sFwWQIJSm
+ slvxIFfeFn7WI+XYf/bjihkJF4K50t3JwV/aOPY1DsCVl3XO9KRq6mI6A7LR1wU8oshd
+ TX6SBKbOHGAMy2nw/E8Dl8oQr9IeaarMNTFdcrKeWCG0HB1RAomTQ08sFWWz8dZuQQaz
+ fhXyRWjGwymixP1nv9KVYyp/raa+OrME5qIWTz1N5YCZR0NdEES2Ug8c/lpT0uP5AXex
+ KvzDV/Kxkwxc3JHXrQmlFlnpV5exRYNAlMjzUk0fOYkoXXv8i3FmwIazhYReuQwhaQfJ
+ THhg==
+X-Gm-Message-State: ANoB5pmXFAer61pD6WUJzaQQh0SLGRFf9hvsnsChuMDmPvLo6Uxikm7N
+ 0yNBZuyJOqRT06g1ZuxzqRNf8Q==
+X-Google-Smtp-Source: AA0mqf7kVLnOBhfj5csGFXR+MteHRgBrKxrlNrL3qfl7Sy7P+GUyJk040G4E4rLlKt/VBUe3v7ocoQ==
+X-Received: by 2002:a17:907:d12:b0:7c1:54b9:c688 with SMTP id
+ gn18-20020a1709070d1200b007c154b9c688mr37314773ejc.60.1671319972337; 
+ Sat, 17 Dec 2022 15:32:52 -0800 (PST)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- mc1-20020a170906eb4100b007c4f9bb250fsm2488204ejb.74.2022.12.17.15.23.27
+ et8-20020a170907294800b007ae10525550sm2478889ejc.47.2022.12.17.15.32.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 17 Dec 2022 15:23:30 -0800 (PST)
-Message-ID: <5bd06de0-f136-edcb-c978-d27e97c0d6c2@linaro.org>
-Date: Sun, 18 Dec 2022 00:23:25 +0100
+ Sat, 17 Dec 2022 15:32:51 -0800 (PST)
+Message-ID: <476e90c9-92c9-8721-1d3a-052778438d71@linaro.org>
+Date: Sun, 18 Dec 2022 00:32:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.5.1
-Subject: Re: [PATCH v2 4/7] hw/acpi/Kconfig: Add missing dependencies to
- ACPI_PIIX4
+Subject: Re: [PATCH v2 5/7] hw/isa/Kconfig: Add missing dependency to VT82C686
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -60,13 +59,13 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
  Ani Sinha <ani@anisinha.ca>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 References: <20221216130355.41667-1-shentey@gmail.com>
- <20221216130355.41667-5-shentey@gmail.com>
+ <20221216130355.41667-6-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221216130355.41667-5-shentey@gmail.com>
+In-Reply-To: <20221216130355.41667-6-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,18 +85,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Dec 2022 23:23:38 -0000
+X-List-Received-Date: Sat, 17 Dec 2022 23:32:57 -0000
 
 On 16/12/22 14:03, Bernhard Beschow wrote:
-> piix4_pm_realize() uses apm_init() and pm_smbus_init(), so both APM and
-> ACPI_SMBUS are provided by the device model managed by ACPI_PIIX4.
-> 
-> The ACPIREGS are also provided by ACPI_PIIX4, so needs to select ACPI.
+> The ACPIREGS are provided by TYPE_VIA_PM, so needs to select ACPI.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/acpi/Kconfig | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
+>   hw/isa/Kconfig | 1 +
+>   1 file changed, 1 insertion(+)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
