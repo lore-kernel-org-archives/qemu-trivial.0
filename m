@@ -1,79 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p6gj2-0001C0-8B
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Dec 2022 18:36:16 -0500
+	id 1p7DVf-0005uc-WF
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Dec 2022 05:36:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p6giz-00018o-6y
- for qemu-trivial@nongnu.org; Sat, 17 Dec 2022 18:36:13 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1p6giw-00051u-L4
- for qemu-trivial@nongnu.org; Sat, 17 Dec 2022 18:36:12 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id bj12so13868838ejb.13
- for <qemu-trivial@nongnu.org>; Sat, 17 Dec 2022 15:36:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=VphACfB/7phHMqrkMR/3jr+u9i8pF2YALiB/psTTwCI=;
- b=gU7OColdC5Z+fW+EwLc/9RuspQ+iw+FcNX4ZhQZVlldEXpbasGywPfBf03MWHzwKBL
- 0HtnjstTWsCzyLMGZIP9JvvOFwxpfQqEs9krKkFQcmtJMp/z1WySxBXpW6txm3Xr+rRU
- AOjL8RBErRo04ulHDoq/0zYgYm6zYyEnxIwRK/puOMRIkDgLyZz91SHwqYeVo3d0/Y78
- Jw8S8gg0pcWUfKbxgqJ8L0WIJIDnN1kxcgDLa1dhME9BtRkMpHL/EeGeJjK94t4or9oT
- 3bfDgMXb90II4brlfehwDi9mB8ObrO9rjcFt8NeaEiqkW3RJ6+XpwXK5hOCDpuWxZ63P
- npnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VphACfB/7phHMqrkMR/3jr+u9i8pF2YALiB/psTTwCI=;
- b=yNdXNRNAOZ1MLJx/xhGI5r6tAmCz0rTVC7KV3LcoQLOszp2CkUOWFh6bIEDRmhx2Rg
- oeiNgKHhI4GVbR5NUFh21igJk4qqm89GWTvXOLXWTQetYqxO9ZhFqs7cCqUWIDZhWlk5
- ZZ3AapXSFZYdQ+8Z/Bre/ZkpEvYUNEqJ2GM06/lNiGD2BtwxnilUoeAuUEA+b6gUT5A6
- h90tYEQybu8egBla6DGGGFzhdjeF++twiGezWuVxQfjPim4dxonRP80x5TzEKv4VBJwq
- lk9xFIgmBZC09N8edKJzJ97JwbBlqmKhKADMcPf5nmWEpzAjjzhttgOmeEu8jjQhSck7
- A1/g==
-X-Gm-Message-State: ANoB5pncnO+DRwg9o8J8SfAqnJO0l7IJRxAqApNILPFbNygrYYHx4bPx
- 1IZP6O8RtwB8HXdj5EdCGRbWVw==
-X-Google-Smtp-Source: AA0mqf5qiRUgOEIJTvyS4Z1drtvU4Cqgw0y9QfvS22g8pniB9zlhCK1byUbQOBwFBj3ypunqJ5MJIw==
-X-Received: by 2002:a17:907:789a:b0:7c1:2980:7fd8 with SMTP id
- ku26-20020a170907789a00b007c129807fd8mr34313916ejc.17.1671320169071; 
- Sat, 17 Dec 2022 15:36:09 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- i16-20020a17090671d000b0079800b81709sm2489221ejk.219.2022.12.17.15.36.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 17 Dec 2022 15:36:08 -0800 (PST)
-Message-ID: <046af7cb-96ed-8292-4ae4-039025557275@linaro.org>
-Date: Sun, 18 Dec 2022 00:36:06 +0100
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1p7DVZ-0005ru-BZ; Mon, 19 Dec 2022 05:36:36 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1p7DVX-0001ZJ-3y; Mon, 19 Dec 2022 05:36:33 -0500
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4NbGHK2CJsz6HJYk;
+ Mon, 19 Dec 2022 18:32:29 +0800 (CST)
+Received: from localhost (10.45.149.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Mon, 19 Dec
+ 2022 10:36:26 +0000
+Date: Mon, 19 Dec 2022 10:36:22 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+CC: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>,
+ <qemu-trivial@nongnu.org>, Ben Widawsky <ben.widawsky@intel.com>
+Subject: Re: [PATCH Trivial] hw/cxl/cxl-cdat.c: spelling: missmatch
+Message-ID: <20221219103622.000074e8@Huawei.com>
+In-Reply-To: <1c926e93-2118-b8c7-a40b-51ca537dfb6c@linaro.org>
+References: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
+ <1c926e93-2118-b8c7-a40b-51ca537dfb6c@linaro.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.5.1
-Subject: Re: [PATCH v2 7/7] hw/ppc/Kconfig: Remove unused dependencies from
- PEGASOS2
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
- Ani Sinha <ani@anisinha.ca>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <20221216130355.41667-1-shentey@gmail.com>
- <20221216130355.41667-8-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20221216130355.41667-8-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.45.149.76]
+X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,24 +55,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Dec 2022 23:36:13 -0000
+X-List-Received-Date: Mon, 19 Dec 2022 10:36:37 -0000
 
-On 16/12/22 14:03, Bernhard Beschow wrote:
-> Removes the following dependencies from ppc-softmmu:
-> - CONFIG_ACPI_CPU_HOTPLUG
-> - CONFIG_ACPI_CXL
-> - CONFIG_ACPI_HMAT
-> - CONFIG_ACPI_MEMORY_HOTPLUG
-> - CONFIG_ACPI_NVDIMM
-> - CONFIG_ACPI_PCIHP
-> - CONFIG_ACPI_X86
-> - CONFIG_MEM_DEVICE
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/ppc/Kconfig | 2 --
->   1 file changed, 2 deletions(-)
+On Thu, 15 Dec 2022 13:59:01 +0100
+Philippe Mathieu-Daud=E9 <philmd@linaro.org> wrote:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> On 15/12/22 13:37, Michael Tokarev wrote:
+> > Introduced by: aba578bdace5303a441f8a37aad781b5cb06f38c
+> >=20
+> > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> > ---
+> >   hw/cxl/cxl-cdat.c | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-) =20
+>=20
+> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
+>=20
+>=20
 
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
