@@ -1,47 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p7DVf-0005uc-WF
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Dec 2022 05:36:41 -0500
+	id 1p7lI4-0001v5-IK
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Dec 2022 17:40:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1p7DVZ-0005ru-BZ; Mon, 19 Dec 2022 05:36:36 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1p7DVX-0001ZJ-3y; Mon, 19 Dec 2022 05:36:33 -0500
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4NbGHK2CJsz6HJYk;
- Mon, 19 Dec 2022 18:32:29 +0800 (CST)
-Received: from localhost (10.45.149.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Mon, 19 Dec
- 2022 10:36:26 +0000
-Date: Mon, 19 Dec 2022 10:36:22 +0000
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-CC: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>,
- <qemu-trivial@nongnu.org>, Ben Widawsky <ben.widawsky@intel.com>
-Subject: Re: [PATCH Trivial] hw/cxl/cxl-cdat.c: spelling: missmatch
-Message-ID: <20221219103622.000074e8@Huawei.com>
-In-Reply-To: <1c926e93-2118-b8c7-a40b-51ca537dfb6c@linaro.org>
-References: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
- <1c926e93-2118-b8c7-a40b-51ca537dfb6c@linaro.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1p7lI0-0001uI-6a; Tue, 20 Dec 2022 17:40:49 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1p7lHw-0003bL-6J; Tue, 20 Dec 2022 17:40:47 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id jo4so23800544ejb.7;
+ Tue, 20 Dec 2022 14:40:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=bI4Joi+jVDZA74/MSyty5D4nS7kDbDF6pKWOHeIzIGI=;
+ b=Drc0WOT/XIbJXSmRlD0qMU3RBKzVqz7jTqXF4DsrrrpLjcOIzo7OMZyjJgESQU18d2
+ YG6Hzoh+VyPTnauOWyl8UUfVreNbB76nDJkaNVOrqpANi2UwpBGuV2L6dnkaNQbktHeE
+ tn1afMjULSJNijGD/6ZKfuAAg0sX4gqKEg6uZbRUqHyvVwu6u+Bp3AJUohkckFh7IvK5
+ xEUtS+YHpOwx/v/m8vUtoqq5LVK08ldDPoTVfMUqd5DjUO+9pWOIPTUa0Q198fyIa9Nh
+ FCLkTGqiYPI6iXyW5N9GV6rvRZJasm/o2XZ8m0bEftRg5c1+0VK9mqutgh73mqapAny0
+ XGsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=bI4Joi+jVDZA74/MSyty5D4nS7kDbDF6pKWOHeIzIGI=;
+ b=4+auovCXyeMEn6+i5mgEz/+qrTQ45l2537l0EHz4ubBq45IdgSNRliJVEjEl7TiGXW
+ l2KNwinM0ty9YoMGxLctnkL4/H59uGZAP8J2fTeeimV5BAyiA+4WvNXz3qkHd59o9okc
+ dNrjo9LGlJ2eFao5m8v5hefd3IceidhJjR2e/rpYc3HZvh2X2pA0SX4Bemh9qvtlIZLV
+ orsFuSYwkaIJsGKW4liQ8CIKda78V7broc/Lsadp50JKAf6gPnKATWFaUwiZ4xIHwa81
+ +QKc0wJ7P9rTAXsArEdevhGW/tZqrEG6CfRV6OJiycoS8ufeC/m6EulZjdlIMBf7LLVU
+ X9fA==
+X-Gm-Message-State: ANoB5pmXYcKlDJknlY72KXnbNKM+jTpj0oS41+X1D9HcsoC4mOBn0825
+ 0eCt7uj39th4BkarZTuCUHM=
+X-Google-Smtp-Source: AA0mqf5SprCriyxymP8dS6Xqm3A5hiT6evERnmm6G6jaYR7KlhOeF1qgODPXV3Io3FJzmatd1zv+ug==
+X-Received: by 2002:a17:907:90d4:b0:7c0:db61:dbd5 with SMTP id
+ gk20-20020a17090790d400b007c0db61dbd5mr35056002ejb.62.1671576034570; 
+ Tue, 20 Dec 2022 14:40:34 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-089-014-170-133.89.14.pool.telefonica.de.
+ [89.14.170.133]) by smtp.gmail.com with ESMTPSA id
+ b18-20020a1709063cb200b007be3aa82543sm6247223ejh.35.2022.12.20.14.40.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Dec 2022 14:40:34 -0800 (PST)
+Date: Tue, 20 Dec 2022 22:40:25 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+CC: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>,
+ David Gibson <david@gibson.dropbear.id.au>, Michael Tokarev <mjt@tls.msk.ru>, 
+ qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>,
+ =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>
+Subject: Re: [PATCH 0/6] Trivial PPC cleanups
+In-Reply-To: <6fc82e52-b7a4-778b-1510-4831570a50a3@gmail.com>
+References: <20221216145709.271940-1-shentey@gmail.com>
+ <6fc82e52-b7a4-778b-1510-4831570a50a3@gmail.com>
+Message-ID: <FBA6F5D9-F6B5-445D-BC47-12FD202BC929@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.45.149.76]
-X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,22 +83,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Dec 2022 10:36:37 -0000
+X-List-Received-Date: Tue, 20 Dec 2022 22:40:50 -0000
 
-On Thu, 15 Dec 2022 13:59:01 +0100
-Philippe Mathieu-Daud=E9 <philmd@linaro.org> wrote:
 
-> On 15/12/22 13:37, Michael Tokarev wrote:
-> > Introduced by: aba578bdace5303a441f8a37aad781b5cb06f38c
-> >=20
-> > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> > ---
-> >   hw/cxl/cxl-cdat.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-) =20
->=20
-> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
->=20
->=20
 
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Am 16=2E Dezember 2022 17:50:41 UTC schrieb Daniel Henrique Barboza <danie=
+lhb413@gmail=2Ecom>:
+>Queued in gitlab=2Ecom/danielhb/qemu/tree/ppc-next=2E Thanks,
+
+Thanks Daniel!
+
+Is there a way we could accomodate for Zoltan's comment still? It's just c=
+osmetics, so should be pretty simple=2E
+
+Best regards,
+Bernhard
+>
+>
+>Daniel
+>
+>On 12/16/22 11:57, Bernhard Beschow wrote:
+>> These are some patches which helped me when getting a u-boot image to r=
+un on ppce500 machine=2E
+>>=20
+>> Testing done:
+>> - `make check`
+>> - `make check-avocado`
+>>=20
+>> Bernhard Beschow (6):
+>>    target/ppc/mmu_common: Log which effective address had no TLB entry
+>>      found
+>>    target/ppc/mmu_common: Fix table layout of "info tlb" HMP command
+>>    hw/ppc/virtex_ml507: Prefer local over global variable
+>>    hw/ppc/e500: Prefer local variable over qdev_get_machine()
+>>    hw/ppc/e500: Resolve variable shadowing
+>>    hw/ppc/e500: Move comment to more appropriate place
+>>=20
+>>   hw/ppc/e500=2Ec           | 10 ++++------
+>>   hw/ppc/virtex_ml507=2Ec   |  2 +-
+>>   target/ppc/mmu_common=2Ec |  5 +++--
+>>   3 files changed, 8 insertions(+), 9 deletions(-)
+>>=20
 
