@@ -1,80 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p7wKR-0005IV-09
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2022 05:28:03 -0500
+	id 1p7yng-0006LZ-C0
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2022 08:06:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1p7wKN-0005Hm-J0; Wed, 21 Dec 2022 05:27:59 -0500
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1p7wKM-0001mg-48; Wed, 21 Dec 2022 05:27:59 -0500
-Received: by mail-oi1-x22c.google.com with SMTP id c129so12995211oia.0;
- Wed, 21 Dec 2022 02:27:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/BUjnBHekT9+TsSSJ6Bv43vx8pYCPSOPjBAWe1TO7dM=;
- b=PF+41CITZk6m4WzTOVML9KACLW4U7gj+htHF8QmxS/gAo3BNmCjRPFFzA0TJ7uh3jo
- NHqYgkBPNjBWdw5AYosFzP5hHJsPL2YotV8vxan1Ha6QDb1cG4SdBdYcYVj40xhbfeKi
- fGe7r1qpTPXvsLYngmLMBk45XllkmJl3ghkc50rpsnU0VryEF7G1pPEUhpYPOWE3bvwu
- E4gACQH6ISjHdoa8xChyvzr+2CjGO/L09yP/C6Z9kFwMG9H+o8kmOTwO9H+HwOdzWcfh
- N2pTIZgg6T365+4SGtyj2JYAr5+x0/kNGDpaX3xz74CtAnMC1W4sMqe9zExybIpq6V6H
- xcjg==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1p7ynL-0005y9-0g
+ for qemu-trivial@nongnu.org; Wed, 21 Dec 2022 08:06:06 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1p7ynI-0004Ma-H0
+ for qemu-trivial@nongnu.org; Wed, 21 Dec 2022 08:06:02 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1671627959;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nZlrgmM6CqobNLR1u/ctWVcjTri0rIQMOg6qCNFy3iM=;
+ b=VZmTtOI5JJl3RcKjzT5IFNqkb6ksWYME3/QckoN90Jr2CBY7jALNjibG6fMgoYU7snQyGd
+ YfKYiOJawKI/7zHy7E5jpZ/cmDY1p90pkvf24mcWZbYM+lqD9qxpUBBa58jCMC2iQEidzh
+ NzDli3iRCRV/fLHU2LAV5dxxqDEEUUM=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-463-5b2zJ2UKPTCqWo7lT5Yc3g-1; Wed, 21 Dec 2022 08:05:58 -0500
+X-MC-Unique: 5b2zJ2UKPTCqWo7lT5Yc3g-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ i187-20020a1c3bc4000000b003d634aca337so1766110wma.1
+ for <qemu-trivial@nongnu.org>; Wed, 21 Dec 2022 05:05:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/BUjnBHekT9+TsSSJ6Bv43vx8pYCPSOPjBAWe1TO7dM=;
- b=rMPXSBaB1dpQ/6W4EzCFWNjiSt4+Ct+D7Mw5V3F9XMkn/ebqopkPco/462OmuGmis0
- avCqRhcBgpZW3t7CpZGdoZ8E56Wp/gjqGnIGf14bP/wcXDXYPrlo48yVaBv84wly362Y
- +P213XVL2VlBkySMafN6qO2zwFnQ1kAq+oghCarXPZPYv3NJbinxu2f+xRzVpO3Mik2P
- 4B1QVcpXyf8RYrp0cBmwpBEYeDZv8JP5er5mlKMVrX7MWXKFobmpqgVVH0YbcvB6It7z
- dWMyiLcs5aHK82GHIMgIG4rcEtJ9IwNlDVzCu5sbLajszVbHC+ehnTxJLU/c3Wh3qAQa
- 6CZw==
-X-Gm-Message-State: AFqh2ko0Rs7Re3lVYuuGik1p+IITa0ZrECpR9o64JoAyWva25AMAETH7
- vPaMup4e2U9ngwBb2V3UnRA=
-X-Google-Smtp-Source: AMrXdXsIoDdoXIylbXFxf87ukFAEyXXVi6trHe/VKHJD51rhYR8/7kQevljEb79TmdHO0/4KIqoMfw==
-X-Received: by 2002:aca:210a:0:b0:35e:de12:d768 with SMTP id
- 10-20020aca210a000000b0035ede12d768mr413363oiz.53.1671618476245; 
- Wed, 21 Dec 2022 02:27:56 -0800 (PST)
-Received: from [192.168.68.106] (201-43-103-101.dsl.telesp.net.br.
- [201.43.103.101]) by smtp.gmail.com with ESMTPSA id
- 36-20020a9d02a7000000b0066f7e1188f0sm6655520otl.68.2022.12.21.02.27.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Dec 2022 02:27:56 -0800 (PST)
-Message-ID: <f1b4f4c2-2e54-fd75-555a-7694748b1eb7@gmail.com>
-Date: Wed, 21 Dec 2022 07:27:51 -0300
+ bh=nZlrgmM6CqobNLR1u/ctWVcjTri0rIQMOg6qCNFy3iM=;
+ b=qz4pvbBjDVBufArLbcyujZ+kRBzvTHIJvBNyGc7T6fIxmvemVCPjun6YIdmixLdApo
+ k/obDGIEBzMtDg510oW+Xfvmzkse/i7g1lU3iR8aQDd0BhBJhLCAgSs8tfRYaAh3sxtb
+ 2UrXJNbEZm/sviaedPcvKXbPOzL31ACd9gKddWFRfJmYOmKoMQi/VNclEPgoHNYdpLZr
+ 3VBAPr35pwo31kVi4c5cgDz7f3xRvkBQ6BB2T/XSViQbfdmKtuJel3EgMi6Tl9yyFQKN
+ x2CQB88yPC4uHxQVh29036sxJLHG7iiX4PTr4oM/fCXf2B6wGNCgN0opqXoFNrAB+qUz
+ 4nrA==
+X-Gm-Message-State: AFqh2krvgJ3+8IGDika11Q2j3ePGtusRK1dYV14zUab6KhmuJMkwILVS
+ l3+O3FNTCk4Ii5SMrOqiuAVvcPHmDm560u6TGWOXvuwdGIv/6aJZU+CyefGAt5iinmF0324zeS0
+ RQG1CtqtudOKugq1Tcg==
+X-Received: by 2002:adf:aa9d:0:b0:242:436e:c6ac with SMTP id
+ h29-20020adfaa9d000000b00242436ec6acmr1165390wrc.21.1671627957312; 
+ Wed, 21 Dec 2022 05:05:57 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuVS8xMUKJkhynJWhPKPMYBJiHFouDFVhhLAMtAVpzFmI73UsiTn+diEtUUF2Q/yIZO+kv98w==
+X-Received: by 2002:adf:aa9d:0:b0:242:436e:c6ac with SMTP id
+ h29-20020adfaa9d000000b00242436ec6acmr1165378wrc.21.1671627957107; 
+ Wed, 21 Dec 2022 05:05:57 -0800 (PST)
+Received: from redhat.com ([2.52.8.61]) by smtp.gmail.com with ESMTPSA id
+ bn8-20020a056000060800b002365b759b65sm15456675wrb.86.2022.12.21.05.05.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 21 Dec 2022 05:05:56 -0800 (PST)
+Date: Wed, 21 Dec 2022 08:05:53 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Ani Sinha <ani@anisinha.ca>,
+ Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
+ Thomas Huth <thuth@redhat.com>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Michael Tsirkin <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+Subject: [PULL 26/41] acpi/tests/avocado/bits: add SPDX license identifiers
+ for bios bits tests
+Message-ID: <20221221130339.1234592-27-mst@redhat.com>
+References: <20221221130339.1234592-1-mst@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH 0/6] Trivial PPC cleanups
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>,
- David Gibson <david@gibson.dropbear.id.au>, Michael Tokarev
- <mjt@tls.msk.ru>, qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-References: <20221216145709.271940-1-shentey@gmail.com>
- <6fc82e52-b7a4-778b-1510-4831570a50a3@gmail.com>
- <FBA6F5D9-F6B5-445D-BC47-12FD202BC929@gmail.com>
- <1B1DB7AC-0775-4A8D-B804-7AF826D1BDFE@gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <1B1DB7AC-0775-4A8D-B804-7AF826D1BDFE@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22c;
- envelope-from=danielhb413@gmail.com; helo=mail-oi1-x22c.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-1.161,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20221221130339.1234592-1-mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -88,63 +101,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Dec 2022 10:28:01 -0000
+X-List-Received-Date: Wed, 21 Dec 2022 13:06:10 -0000
 
+From: Ani Sinha <ani@anisinha.ca>
 
+Added the SPDX license identifiers for biosbits tests.
+Also added a comment on each of the test scripts to indicate that they run
+from within the biosbits environment and hence are not subjected to the regular
+maintenance activities for QEMU and is excluded from the dependency management
+challenges in the host testing environment.
 
-On 12/20/22 19:53, Bernhard Beschow wrote:
-> 
-> 
-> Am 20. Dezember 2022 22:40:25 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
->>
->>
->> Am 16. Dezember 2022 17:50:41 UTC schrieb Daniel Henrique Barboza <danielhb413@gmail.com>:
->>> Queued in gitlab.com/danielhb/qemu/tree/ppc-next. Thanks,
->>
->> Thanks Daniel!
->>
->> Is there a way we could accomodate for Zoltan's comment still? It's just cosmetics, so should be pretty simple.
-> 
-> Yeah, you sent a pull request already! Thanks!
-> 
-> I''ll address Zoltan's comment in a future series since I'm working on e500 anyway.
+Cc: Daniel P. Berrangé <berrange@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Maydell Peter <peter.maydell@linaro.org>
+Cc: John Snow <jsnow@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>
+Cc: Alex Bennée <alex.bennee@linaro.org>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Michael Tsirkin <mst@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Ani Sinha <ani@anisinha.ca>
+Message-Id: <20221125044138.962137-1-ani@anisinha.ca>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ tests/avocado/acpi-bits/bits-tests/smbios.py2    | 4 ++++
+ tests/avocado/acpi-bits/bits-tests/testacpi.py2  | 4 ++++
+ tests/avocado/acpi-bits/bits-tests/testcpuid.py2 | 4 ++++
+ 3 files changed, 12 insertions(+)
 
-I'll have to respin the pull request due to a clang error. I'll take the
-opportunity to amend patch 4 with mister Balaton's suggestion.
+diff --git a/tests/avocado/acpi-bits/bits-tests/smbios.py2 b/tests/avocado/acpi-bits/bits-tests/smbios.py2
+index 9667d0542c..fc623de072 100644
+--- a/tests/avocado/acpi-bits/bits-tests/smbios.py2
++++ b/tests/avocado/acpi-bits/bits-tests/smbios.py2
+@@ -1,6 +1,8 @@
+ # Copyright (c) 2015, Intel Corporation
+ # All rights reserved.
+ #
++# SPDX-License-Identifier: BSD-3-Clause
++#
+ # Redistribution and use in source and binary forms, with or without
+ # modification, are permitted provided that the following conditions are met:
+ #
+@@ -24,6 +26,8 @@
+ # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
++# This script runs only from the biosbits VM.
++
+ """SMBIOS/DMI module."""
+ 
+ import bits
+diff --git a/tests/avocado/acpi-bits/bits-tests/testacpi.py2 b/tests/avocado/acpi-bits/bits-tests/testacpi.py2
+index dbc150076e..f818a9cce6 100644
+--- a/tests/avocado/acpi-bits/bits-tests/testacpi.py2
++++ b/tests/avocado/acpi-bits/bits-tests/testacpi.py2
+@@ -1,6 +1,8 @@
+ # Copyright (c) 2015, Intel Corporation
+ # All rights reserved.
+ #
++# SPDX-License-Identifier: BSD-3-Clause
++#
+ # Redistribution and use in source and binary forms, with or without
+ # modification, are permitted provided that the following conditions are met:
+ #
+@@ -24,6 +26,8 @@
+ # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
++# This script runs only from the biosbits VM.
++
+ """Tests for ACPI"""
+ 
+ import acpi
+diff --git a/tests/avocado/acpi-bits/bits-tests/testcpuid.py2 b/tests/avocado/acpi-bits/bits-tests/testcpuid.py2
+index ac55d912e1..7adefbe355 100644
+--- a/tests/avocado/acpi-bits/bits-tests/testcpuid.py2
++++ b/tests/avocado/acpi-bits/bits-tests/testcpuid.py2
+@@ -1,6 +1,8 @@
+ # Copyright (c) 2012, Intel Corporation
+ # All rights reserved.
+ #
++# SPDX-License-Identifier: BSD-3-Clause
++#
+ # Redistribution and use in source and binary forms, with or without
+ # modification, are permitted provided that the following conditions are met:
+ #
+@@ -24,6 +26,8 @@
+ # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
++# This script runs only from the biosbits VM.
++
+ """Tests and helpers for CPUID."""
+ 
+ import bits
+-- 
+MST
 
-
-Daniel
-
-> 
-> Best regards,
-> Bernhard
-> 
->>
->> Best regards,
->> Bernhard
->>>
->>>
->>> Daniel
->>>
->>> On 12/16/22 11:57, Bernhard Beschow wrote:
->>>> These are some patches which helped me when getting a u-boot image to run on ppce500 machine.
->>>>
->>>> Testing done:
->>>> - `make check`
->>>> - `make check-avocado`
->>>>
->>>> Bernhard Beschow (6):
->>>>     target/ppc/mmu_common: Log which effective address had no TLB entry
->>>>       found
->>>>     target/ppc/mmu_common: Fix table layout of "info tlb" HMP command
->>>>     hw/ppc/virtex_ml507: Prefer local over global variable
->>>>     hw/ppc/e500: Prefer local variable over qdev_get_machine()
->>>>     hw/ppc/e500: Resolve variable shadowing
->>>>     hw/ppc/e500: Move comment to more appropriate place
->>>>
->>>>    hw/ppc/e500.c           | 10 ++++------
->>>>    hw/ppc/virtex_ml507.c   |  2 +-
->>>>    target/ppc/mmu_common.c |  5 +++--
->>>>    3 files changed, 8 insertions(+), 9 deletions(-)
->>>>
 
