@@ -1,72 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1p82Wr-0005GL-SO
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2022 12:05:17 -0500
+	id 1p83L6-0005hL-Cr
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2022 12:57:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p82Wm-0005Cw-0g; Wed, 21 Dec 2022 12:05:13 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ id 1p83L4-0005h2-QW; Wed, 21 Dec 2022 12:57:10 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1p82Wk-0000m9-Ds; Wed, 21 Dec 2022 12:05:11 -0500
-Received: by mail-ed1-x532.google.com with SMTP id d14so22819653edj.11;
- Wed, 21 Dec 2022 09:05:09 -0800 (PST)
+ id 1p83L2-0003Uw-AX; Wed, 21 Dec 2022 12:57:10 -0500
+Received: by mail-ej1-x636.google.com with SMTP id kw15so38581936ejc.10;
+ Wed, 21 Dec 2022 09:57:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7gEnt/QLMcsTzMecV7cXs67rFH18YUSDra5/MgXAK6g=;
- b=cmtTBLMv9QPUFJaDORUyaFFN4nrCHQxSEVndfdmsx0TKhii54n/n8J88ioqewsFFxD
- aK+2hnFz7MCViqM2lz+MTsbsf5mOmA6hqg8cNDJo9WCP5huvejMdyZNsx4ohfeoWVQLk
- Ev3ccEJvY1vz3zr3dPfk8DHLkp77C2iBAdk8nkD3oo+Y/xXjhAXL7bQq8pCPF5Xp2dWQ
- qptdsSj93taiPfijcQJdgQZ4WY2Z5W2mbTX6ZMKwFBu1JGPqJrNfPDzMSoppeOF2YUyG
- X/2S9z0St+fhuPOYb1z4wa/DU+QuTDj7advMKcM/8dYybIWteEALFCe6MHFSoBql+Mrp
- Nscg==
+ bh=ye3VY8tpP28nCJkID+3wbmwgFphQ/DL5sC+uBPt3Hi0=;
+ b=KaxzB5cTQsMmNUY93sw/pJkcdfInpqzNGOMmX+Sm/Ip2LCRJ0E2bKKEKYhMJ/V2+tE
+ bS0Wbf6DGZ+xwzzno2sZI86TDPL28DcTFAfYj9WCgc5+MlFAtWDZsEBhfA4zACHBvRI6
+ 8r4HPHN2p/7EFtywgHxqUpfhFMsQYVLFe9mBzbRzRrEFO3nRCBomQ10z3o6fDfCV/TgU
+ VwEnrO9EXx2mlFFg8f7pqJuFAUxql66hsOz4LAD2QsM7Hr4e0jO6NnLdurj18xVDVCNl
+ ymlJAUEI5Vt5yoSaWYXti3BPcImqjSIQyPPZWe2Lj8XndcKrSdVCIIqWCMnnbR9KCT3J
+ Fa5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7gEnt/QLMcsTzMecV7cXs67rFH18YUSDra5/MgXAK6g=;
- b=BAzxEjVv7BXuNddaBtV54/F6v+UluZtZwDVAHssIjOMnadrO8/X0SMpcVMv/RkTpet
- 5xtB5MLIMP/LLFyi1eDvBn1Q8LfP9u29aUn5kB5UeF/01unIYYKA0THsDcvY4ilq5YaE
- vS6qkOAFCgbOIIhsNHSBhSAlQMUw1ihk7XhWwtG3+FXTQKvxMZBDfEMKpPsQbU2ELb7F
- 8WR5oWaxlP86t5BApNKBP0krre13eb9DNSn2wImKvL/k6mLQPd0nc1ke/W64IneJUBi/
- oRSJpcoCkV21mm8Jo2hwdimJYiEm62AxzvLjNHCPDx8Yj+vUviUbOGBA3gRHj7U4gr1M
- nbfA==
-X-Gm-Message-State: AFqh2krxZMUeC6PjQA2GE2ufYJdRbzbCZmtSoXh63RF0o6aRKLeycUSJ
- HwuhJdeJHh+24B1atdpVmFs=
-X-Google-Smtp-Source: AMrXdXvbeGe6PDDMAoYqHnbirsJ0lbBCSm1DCKLuzcHW5wi37q2RN7od7C10LyADmcvHzMKQ2x7yLg==
-X-Received: by 2002:a05:6402:7ca:b0:461:5b2f:2d81 with SMTP id
- u10-20020a05640207ca00b004615b2f2d81mr2099927edy.33.1671642308147; 
- Wed, 21 Dec 2022 09:05:08 -0800 (PST)
+ bh=ye3VY8tpP28nCJkID+3wbmwgFphQ/DL5sC+uBPt3Hi0=;
+ b=tJnp5c8bEhJ1e/cX5CpVjf9jYOGfC94VDtX3Qjal87ECryqB64rQYcdN/EU6ch/Wjp
+ wepU+68tG+cV9ctKT1wxb+pboxKyM/gs71oExyT1CEBikdCskePZCKOelG+dyYlEPCCO
+ JPlxVhOt9/I6SRwg6W1kI4d9NgU/7tnNOFjJcbx1TB4GCLqTujPptZNMEh5MXVYcZ47I
+ OhRbKaaCQ6gHFCZinXgpvSSYW89TV9V/+MAjC7XJAxyvrj3MNNfuTY21TrZqQ+ltwAc5
+ WDmW7CAkTlm1B3eSB3ZjPif2lviTPKccHl5rIsmrMD9C3lAWifettW0BZ0bym5208R2+
+ g9ow==
+X-Gm-Message-State: AFqh2kp7p3lujNGBC6KWQN2Urh5Lz0vJpZS8DaR656B0Zyl1y6Akc3S4
+ AToi0E72fu+z+EpTZ6tPuqjglODYSJQ=
+X-Google-Smtp-Source: AMrXdXtxE+hYsLTfO/n+2voy420WdvX+603juZt+aa0mSfuDMi/0PIHTyGHgdmDkB06U5u4biqGsNw==
+X-Received: by 2002:a17:907:6746:b0:840:758a:9155 with SMTP id
+ qm6-20020a170907674600b00840758a9155mr1827002ejc.12.1671645426398; 
+ Wed, 21 Dec 2022 09:57:06 -0800 (PST)
 Received: from [127.0.0.1] (dynamic-092-224-051-061.92.224.pool.telefonica.de.
  [92.224.51.61]) by smtp.gmail.com with ESMTPSA id
- er7-20020a056402448700b0046bf7ebbbadsm7247323edb.42.2022.12.21.09.05.07
+ g4-20020a1709063b0400b007bdc2de90e6sm7283086ejf.42.2022.12.21.09.57.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Dec 2022 09:05:07 -0800 (PST)
-Date: Wed, 21 Dec 2022 17:04:57 +0000
+ Wed, 21 Dec 2022 09:57:06 -0800 (PST)
+Date: Wed, 21 Dec 2022 17:56:56 +0000
 From: Bernhard Beschow <shentey@gmail.com>
-To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
-CC: qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>,
- David Gibson <david@gibson.dropbear.id.au>, Michael Tokarev <mjt@tls.msk.ru>, 
- qemu-trivial@nongnu.org, Greg Kurz <groug@kaod.org>,
- =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>
-Subject: Re: [PATCH 0/6] Trivial PPC cleanups
-In-Reply-To: <f1b4f4c2-2e54-fd75-555a-7694748b1eb7@gmail.com>
-References: <20221216145709.271940-1-shentey@gmail.com>
- <6fc82e52-b7a4-778b-1510-4831570a50a3@gmail.com>
- <FBA6F5D9-F6B5-445D-BC47-12FD202BC929@gmail.com>
- <1B1DB7AC-0775-4A8D-B804-7AF826D1BDFE@gmail.com>
- <f1b4f4c2-2e54-fd75-555a-7694748b1eb7@gmail.com>
-Message-ID: <55D50BF4-7563-4661-81E8-817C942DEF9A@gmail.com>
+To: qemu-devel@nongnu.org
+CC: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
+ Ani Sinha <ani@anisinha.ca>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: Re: [PATCH v2 0/7] Clean up dependencies of ACPI controllers
+In-Reply-To: <20221216130355.41667-1-shentey@gmail.com>
+References: <20221216130355.41667-1-shentey@gmail.com>
+Message-ID: <1D3E3781-4A9C-41DE-BC98-06C44894A5D0@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x532.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,80 +83,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Dec 2022 17:05:16 -0000
+X-List-Received-Date: Wed, 21 Dec 2022 17:57:11 -0000
 
 
 
-Am 21=2E Dezember 2022 10:27:51 UTC schrieb Daniel Henrique Barboza <danie=
-lhb413@gmail=2Ecom>:
+Am 16=2E Dezember 2022 13:03:48 UTC schrieb Bernhard Beschow <shentey@gmai=
+l=2Ecom>:
+>This small series establishes consistency between ICH9, PIIX4 and VT82C68=
+6 ACPI
+>
+>controllers to select ACPI, ACPI_SMBUS and APM since they are provided by=
+ the
+>
+>device models=2E
 >
 >
->On 12/20/22 19:53, Bernhard Beschow wrote:
->>=20
->>=20
->> Am 20=2E Dezember 2022 22:40:25 UTC schrieb Bernhard Beschow <shentey@g=
-mail=2Ecom>:
->>>=20
->>>=20
->>> Am 16=2E Dezember 2022 17:50:41 UTC schrieb Daniel Henrique Barboza <d=
-anielhb413@gmail=2Ecom>:
->>>> Queued in gitlab=2Ecom/danielhb/qemu/tree/ppc-next=2E Thanks,
->>>=20
->>> Thanks Daniel!
->>>=20
->>> Is there a way we could accomodate for Zoltan's comment still? It's ju=
-st cosmetics, so should be pretty simple=2E
->>=20
->> Yeah, you sent a pull request already! Thanks!
->>=20
->> I''ll address Zoltan's comment in a future series since I'm working on =
-e500 anyway=2E
 >
->I'll have to respin the pull request due to a clang error=2E I'll take th=
-e
->opportunity to amend patch 4 with mister Balaton's suggestion=2E
+>Due to the PIIX4 PM cleanup PEGASOS2's dependency can be reduced to just =
+ACPI,
+>
+>eliminating 9 dependencies from the softmmu-ppc build=2E
+>
 
-Yay!
+Ping
+
+Looks like all patches are reviewed, i=2Ee=2E ready to be queued=2E
 
 Best regards,
 Bernhard
+
 >
 >
->Daniel
+>v2:
 >
->>=20
->> Best regards,
->> Bernhard
->>=20
->>>=20
->>> Best regards,
->>> Bernhard
->>>>=20
->>>>=20
->>>> Daniel
->>>>=20
->>>> On 12/16/22 11:57, Bernhard Beschow wrote:
->>>>> These are some patches which helped me when getting a u-boot image t=
-o run on ppce500 machine=2E
->>>>>=20
->>>>> Testing done:
->>>>> - `make check`
->>>>> - `make check-avocado`
->>>>>=20
->>>>> Bernhard Beschow (6):
->>>>>     target/ppc/mmu_common: Log which effective address had no TLB en=
-try
->>>>>       found
->>>>>     target/ppc/mmu_common: Fix table layout of "info tlb" HMP comman=
-d
->>>>>     hw/ppc/virtex_ml507: Prefer local over global variable
->>>>>     hw/ppc/e500: Prefer local variable over qdev_get_machine()
->>>>>     hw/ppc/e500: Resolve variable shadowing
->>>>>     hw/ppc/e500: Move comment to more appropriate place
->>>>>=20
->>>>>    hw/ppc/e500=2Ec           | 10 ++++------
->>>>>    hw/ppc/virtex_ml507=2Ec   |  2 +-
->>>>>    target/ppc/mmu_common=2Ec |  5 +++--
->>>>>    3 files changed, 8 insertions(+), 9 deletions(-)
->>>>>=20
+>- Turn "depends on ACPI" into "select ACPI" (Phil)
+>
+>- Remove "select ACPI" from PEGASOS2 (Phil)
+>
+>- Move already reviewed patches to bottom
+>
+>- Split some patches into "add missing dependencies" and "remove redundan=
+t
+>
+>  dependencies" for ease of review
+>
+>
+>
+>Bernhard Beschow (7):
+>
+>  hw/acpi/Kconfig: Rename ACPI_X86_ICH to ACPI_ICH9
+>
+>  hw/acpi/Kconfig: Add missing dependencies to ACPI_ICH9
+>
+>  hw/acpi/Kconfig: Do not needlessly build TYPE_PIIX4_PM in non-PC/Malta
+=
+>
+>    machines
+>
+>  hw/acpi/Kconfig: Add missing dependencies to ACPI_PIIX4
+>
+>  hw/isa/Kconfig: Add missing dependency to VT82C686
+>
+>  i386, mips: Resolve redundant ACPI and APM dependencies
+>
+>  hw/ppc/Kconfig: Remove unused dependencies from PEGASOS2
+>
+>
+>
+> configs/devices/mips-softmmu/common=2Emak | 3 ---
+>
+> hw/acpi/Kconfig                         | 9 ++++++---
+>
+> hw/acpi/meson=2Ebuild                     | 2 +-
+>
+> hw/i2c/meson=2Ebuild                      | 2 +-
+>
+> hw/i386/Kconfig                         | 3 +--
+>
+> hw/isa/Kconfig                          | 4 ++--
+>
+> hw/ppc/Kconfig                          | 2 --
+>
+> 7 files changed, 11 insertions(+), 14 deletions(-)
+>
+>
+>
+>-- >
+>2=2E39=2E0
+>
+>
+>
 
