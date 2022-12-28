@@ -1,58 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pAX40-0003U5-Vc
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Dec 2022 09:05:48 -0500
+	id 1pAX4g-0003dZ-6U
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Dec 2022 09:06:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pAX3z-0003TG-HE
- for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 09:05:47 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pAX3x-0000sk-I3
- for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 09:05:47 -0500
-Received: by mail-ej1-x630.google.com with SMTP id t17so38565240eju.1
- for <qemu-trivial@nongnu.org>; Wed, 28 Dec 2022 06:05:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qa1Un2aD6MzOChXpW2lvo7PrB2fYJUYolba5PD+0kxU=;
- b=bgdgeIEN0ymgrgBkrlPWoAACMkGVFu3yQCTxD1XFVC/9Bm1nMbIWaE65ImRQnmVORk
- YivS6/NCdAIcbx+eHLaJNfJj2UF8VSmTTZhl8/K8Sb+cJFhm+7lbAGgiXiUd0A8+5a8R
- vIBOoaF9cGZkaDaSuPAZNksQeewxwYr2XCJ7YPZXT6DyDX73EggMCwcoLKDguPpW6oLQ
- R4w4l4Za6UdBmkJlTWFY4jSqein+5h7XVU+hPxZ9aMlvcIV25x1J1/FJ9D/8VsNrKpOo
- 7mgRj2IkOPASy2ur//3aRBQp1jadZN78WsyW56joBTMomDVPfZaEiCKO+MjEtVRJ13xL
- sEMw==
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1pAX4c-0003Yj-9s
+ for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 09:06:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1pAX4X-00017U-Vy
+ for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 09:06:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1672236380;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uqA4P/8KFf5DgTfeuilT+Z8Vn+oQqfQojNVKUAZoO1Q=;
+ b=MpvUFsZG0taO6VTaTGWvjtMhsCDZj1QtFWaYCpnqxHViVkai/j7dCURRI5NFeUz+oDbcDG
+ NPDQOwAA+JrdnlVi914LzJCGffxsNzV62jZ7fw+a74FcZgiJIFVAWYVFo/dLtxBF5+laAM
+ K3amhTJfWXHJBsTFLPPkswpqK7L2S64=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-360-_FoAJR-dNqmRjbjT3dduEg-1; Wed, 28 Dec 2022 09:06:19 -0500
+X-MC-Unique: _FoAJR-dNqmRjbjT3dduEg-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ m10-20020adfa3ca000000b00288d176460bso202035wrb.11
+ for <qemu-trivial@nongnu.org>; Wed, 28 Dec 2022 06:06:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=qa1Un2aD6MzOChXpW2lvo7PrB2fYJUYolba5PD+0kxU=;
- b=LR+JDj40loFov5UVGVTWP3IhPk3E6hzgWSmIJg0ddq1fasqfc7ohN/opMjuna4Otjj
- ZCf1L0PqugkB3/MFAvd87UN55AkheOC9ziTMiI34LW9KTiLAORURuigD5j/qSSBzi0JE
- pp3AguC0LGSBPXPR70k3C4O0xShGrZuS1BeMJygNrX0Kt061i/70+gSvWTXlZ9PSNPz7
- Rrwn5cTzBM8JTuQwOJ4bND9ouRAj4sSE4n8VZzPScC2iYwSHdBIL1lXvwvn127PsRi5B
- HrDSJcb1QqVKMcAwNHg9M6tuJhJlGSUj0KzwBvfxCUFIruU4h5W9JitvqcTPpLLDHtsj
- RWxA==
-X-Gm-Message-State: AFqh2krTwV6q7AWvk9I2REznjes1+fxmp4oMjZbRgeJAI3U0b0S0qH26
- CFTCKVyXi2J+h/Tg3N+kSdf7AQ==
-X-Google-Smtp-Source: AMrXdXvInCyxWng1spL2lajh1TX2U28tgdxPwTbUS+oJTeLxMkgde1znoo+79B+GZpG03BEObk+x4Q==
-X-Received: by 2002:a17:907:214d:b0:837:4378:dbd6 with SMTP id
- rk13-20020a170907214d00b008374378dbd6mr21853776ejb.22.1672236333905; 
- Wed, 28 Dec 2022 06:05:33 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- h10-20020a05600c2caa00b003c701c12a17sm27698540wmc.12.2022.12.28.06.05.32
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=uqA4P/8KFf5DgTfeuilT+Z8Vn+oQqfQojNVKUAZoO1Q=;
+ b=AnvoF2hOyYhAcTG2+KxWR+Wv8H4azbeFEYTYlAVcCvU+IA864XuD/SQ+O+BRZOndKB
+ sdPW5wfT//9UwicDHVAKWox2nNonkTR1/zTBG/w/v1turaatcSS/1L55jI5MFTeQ5LO8
+ WYXZIodhKf7SNu6AyCYwYvcExZNcyzaqEZ9M7HYpwaiUSkpE+Tdkm577JH9uyjDFxu2C
+ g32S/EuOZOeNfP9EBDk0+HQt2BqRPetKroVGJDVUC7GNMC41mNkEIuiYJVmwTITrLEpy
+ igV0U401EJkeaAW2UKe/7eCR0mDWmkRzO7avbcByAss5Xd+Q6YX6RZl2or/1sFkZTkvF
+ tzSA==
+X-Gm-Message-State: AFqh2kq0P3PmCMY4DuVn7gWNfEM9gR0sYmSTRVKzvVzt2i5QnYQr2+E/
+ supMLWt0mzMPtVUxI+1bRf7XeSa5MgNfHiA+Uzge6vUzz20MNOfdIPs8qQHX+s7WGlO5+dtZUQP
+ xa5T2LlFjx30MZj9VDA==
+X-Received: by 2002:a05:600c:3d0e:b0:3d1:ee97:980 with SMTP id
+ bh14-20020a05600c3d0e00b003d1ee970980mr23093012wmb.7.1672236378159; 
+ Wed, 28 Dec 2022 06:06:18 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvbwJhjS7bN/qNbKEhFeSVQo1kQpJ3mgf2aLhT5M/tZcORR8X6qm/Yz/JwELjhpzo6VBhOB8w==
+X-Received: by 2002:a05:600c:3d0e:b0:3d1:ee97:980 with SMTP id
+ bh14-20020a05600c3d0e00b003d1ee970980mr23092994wmb.7.1672236377895; 
+ Wed, 28 Dec 2022 06:06:17 -0800 (PST)
+Received: from ?IPV6:2003:d8:2f16:1800:a9b4:1776:c5d9:1d9a?
+ (p200300d82f161800a9b41776c5d91d9a.dip0.t-ipconnect.de.
+ [2003:d8:2f16:1800:a9b4:1776:c5d9:1d9a])
+ by smtp.gmail.com with ESMTPSA id
+ m22-20020a05600c4f5600b003d995a704fdsm2289461wmq.33.2022.12.28.06.06.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Dec 2022 06:05:33 -0800 (PST)
-Message-ID: <8a2fb7aa-316d-b6bc-1e8d-da5678008825@linaro.org>
-Date: Wed, 28 Dec 2022 15:05:32 +0100
+ Wed, 28 Dec 2022 06:06:17 -0800 (PST)
+Message-ID: <6a533ba5-5613-1f96-866a-974530fb10bc@redhat.com>
+Date: Wed, 28 Dec 2022 15:06:16 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
 Subject: Re: [PATCH v1 10/12] virtio-mem: Fix typo in
  virito_mem_intersect_memory_section() function name
-Content-Language: en-US
-To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost
  <ehabkost@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
@@ -64,19 +77,24 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost
  kvm@vger.kernel.org, QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20211027124531.57561-1-david@redhat.com>
  <20211027124531.57561-11-david@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20211027124531.57561-11-david@redhat.com>
+ <8a2fb7aa-316d-b6bc-1e8d-da5678008825@linaro.org>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <8a2fb7aa-316d-b6bc-1e8d-da5678008825@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.147,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.147, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,75 +107,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Dec 2022 14:05:47 -0000
+X-List-Received-Date: Wed, 28 Dec 2022 14:06:28 -0000
 
-On 27/10/21 14:45, David Hildenbrand wrote:
-> It's "virtio", not "virito".
+On 28.12.22 15:05, Philippe Mathieu-Daudé wrote:
+> On 27/10/21 14:45, David Hildenbrand wrote:
+>> It's "virtio", not "virito".
+>>
+>> Signed-off-by: David Hildenbrand <david@redhat.com>
+>> ---
+>>    hw/virtio/virtio-mem.c | 12 ++++++------
+>>    1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> ---
->   hw/virtio/virtio-mem.c | 12 ++++++------
->   1 file changed, 6 insertions(+), 6 deletions(-)
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+I already queued your patch :)
 
-> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
-> index d5a578142b..0f5eae4a7e 100644
-> --- a/hw/virtio/virtio-mem.c
-> +++ b/hw/virtio/virtio-mem.c
-> @@ -177,7 +177,7 @@ static int virtio_mem_for_each_unplugged_range(const VirtIOMEM *vmem, void *arg,
->    *
->    * Returns false if the intersection is empty, otherwise returns true.
->    */
-> -static bool virito_mem_intersect_memory_section(MemoryRegionSection *s,
-> +static bool virtio_mem_intersect_memory_section(MemoryRegionSection *s,
->                                                   uint64_t offset, uint64_t size)
->   {
->       uint64_t start = MAX(s->offset_within_region, offset);
-> @@ -215,7 +215,7 @@ static int virtio_mem_for_each_plugged_section(const VirtIOMEM *vmem,
->                                         first_bit + 1) - 1;
->           size = (last_bit - first_bit + 1) * vmem->block_size;
->   
-> -        if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
-> +        if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
->               break;
->           }
->           ret = cb(&tmp, arg);
-> @@ -247,7 +247,7 @@ static int virtio_mem_for_each_unplugged_section(const VirtIOMEM *vmem,
->                                    first_bit + 1) - 1;
->           size = (last_bit - first_bit + 1) * vmem->block_size;
->   
-> -        if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
-> +        if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
->               break;
->           }
->           ret = cb(&tmp, arg);
-> @@ -283,7 +283,7 @@ static void virtio_mem_notify_unplug(VirtIOMEM *vmem, uint64_t offset,
->       QLIST_FOREACH(rdl, &vmem->rdl_list, next) {
->           MemoryRegionSection tmp = *rdl->section;
->   
-> -        if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
-> +        if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
->               continue;
->           }
->           rdl->notify_discard(rdl, &tmp);
-> @@ -299,7 +299,7 @@ static int virtio_mem_notify_plug(VirtIOMEM *vmem, uint64_t offset,
->       QLIST_FOREACH(rdl, &vmem->rdl_list, next) {
->           MemoryRegionSection tmp = *rdl->section;
->   
-> -        if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
-> +        if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
->               continue;
->           }
->           ret = rdl->notify_populate(rdl, &tmp);
-> @@ -316,7 +316,7 @@ static int virtio_mem_notify_plug(VirtIOMEM *vmem, uint64_t offset,
->               if (rdl2 == rdl) {
->                   break;
->               }
-> -            if (!virito_mem_intersect_memory_section(&tmp, offset, size)) {
-> +            if (!virtio_mem_intersect_memory_section(&tmp, offset, size)) {
->                   continue;
->               }
->               rdl2->notify_discard(rdl2, &tmp);
+https://github.com/davidhildenbrand/qemu.git mem-next
+
+-- 
+Thanks,
+
+David / dhildenb
 
 
