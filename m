@@ -1,90 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pAWrF-000788-Po
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Dec 2022 08:52:37 -0500
+	id 1pAX40-0003U5-Vc
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Dec 2022 09:05:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1pAWrA-00077M-CP
- for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 08:52:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1pAWr7-0000eI-Kr
- for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 08:52:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1672235547;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=S5Wq+Fxq9ot3xTqboGh9OTYKSt9TuvKa4JlbXMoPVsc=;
- b=G/tEeuUFC8jraRx7kezg3q4MB6q/4Y7qj0asu80GjLvdqkvw9t5WTmvrZ5Hu1SBQn0Shri
- 4IYK1v9ibOvFDihDC8FuIQWJEqR9mLjQqn/FA/cnmV8nzaJT2DtSR54MGlDIMCflfRd6o0
- kWPtkuOg1/xDdr1NPEO/lKEJT5KR4A8=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-391-D2NY0vaZNgSqL8ys3o38Lg-1; Wed, 28 Dec 2022 08:52:26 -0500
-X-MC-Unique: D2NY0vaZNgSqL8ys3o38Lg-1
-Received: by mail-wm1-f71.google.com with SMTP id
- f20-20020a7bc8d4000000b003d1cda5bd6fso3914317wml.9
- for <qemu-trivial@nongnu.org>; Wed, 28 Dec 2022 05:52:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pAX3z-0003TG-HE
+ for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 09:05:47 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pAX3x-0000sk-I3
+ for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 09:05:47 -0500
+Received: by mail-ej1-x630.google.com with SMTP id t17so38565240eju.1
+ for <qemu-trivial@nongnu.org>; Wed, 28 Dec 2022 06:05:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=qa1Un2aD6MzOChXpW2lvo7PrB2fYJUYolba5PD+0kxU=;
+ b=bgdgeIEN0ymgrgBkrlPWoAACMkGVFu3yQCTxD1XFVC/9Bm1nMbIWaE65ImRQnmVORk
+ YivS6/NCdAIcbx+eHLaJNfJj2UF8VSmTTZhl8/K8Sb+cJFhm+7lbAGgiXiUd0A8+5a8R
+ vIBOoaF9cGZkaDaSuPAZNksQeewxwYr2XCJ7YPZXT6DyDX73EggMCwcoLKDguPpW6oLQ
+ R4w4l4Za6UdBmkJlTWFY4jSqein+5h7XVU+hPxZ9aMlvcIV25x1J1/FJ9D/8VsNrKpOo
+ 7mgRj2IkOPASy2ur//3aRBQp1jadZN78WsyW56joBTMomDVPfZaEiCKO+MjEtVRJ13xL
+ sEMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:organization:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=S5Wq+Fxq9ot3xTqboGh9OTYKSt9TuvKa4JlbXMoPVsc=;
- b=ms5uRqp/cIhW1Ob7DmmY5t4k2LLSMiEKxBAjUOak6dmd93Lg99n/onvh43FvLj0ALv
- 4SEbN+QXZiraPp0D9J0HHpNbUPpdsN6GbVBEzt/90hEu8KprVpVXXuiFKhNOcV6uHOIC
- 2WOT4vrDVMJCdcOmR41JB7sJUQnf0DxuxnnGNgjLKjyhPrAj2Hv2ZA1zBwyp49HwNUsi
- E6/6+j0gp5lmbKMfSOXalh0GVHK3osoPI0kGrULhSP/tAG555MXYtbZe9hY6GVifb/L1
- +QNrzO80WAIzQP8k3uopWUSUXqoF/8UBCeSXFPWBAG3jTSZTf2kC8eUZ6bgy22LhKK3K
- pvng==
-X-Gm-Message-State: AFqh2krc3BvnXLLKIv4CAJMv/bOE7hQkFHNB3YssSYuNXqKePGiliN6P
- HqD9ZW8Zccma5YTmt07Z9ejhOk7IOMxihm0cva/HLp4dy/4OisDicUM1ctzhU0IAV5J06bS5UrN
- HUJQ6muYRSe6Gh9ymDg==
-X-Received: by 2002:adf:c648:0:b0:275:618c:83ea with SMTP id
- u8-20020adfc648000000b00275618c83eamr12729796wrg.29.1672235545274; 
- Wed, 28 Dec 2022 05:52:25 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXs9R4iN0V/YqDxj/huSeSNN6PQ7wIC98AjtSEBSMO2LPH3LXADkxDzEyDHki1ecdnM3GSZ30g==
-X-Received: by 2002:adf:c648:0:b0:275:618c:83ea with SMTP id
- u8-20020adfc648000000b00275618c83eamr12729787wrg.29.1672235544982; 
- Wed, 28 Dec 2022 05:52:24 -0800 (PST)
-Received: from ?IPV6:2003:d8:2f16:1800:a9b4:1776:c5d9:1d9a?
- (p200300d82f161800a9b41776c5d91d9a.dip0.t-ipconnect.de.
- [2003:d8:2f16:1800:a9b4:1776:c5d9:1d9a])
- by smtp.gmail.com with ESMTPSA id
- m15-20020a056000008f00b00267e918d1ecsm15423473wrx.24.2022.12.28.05.52.24
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=qa1Un2aD6MzOChXpW2lvo7PrB2fYJUYolba5PD+0kxU=;
+ b=LR+JDj40loFov5UVGVTWP3IhPk3E6hzgWSmIJg0ddq1fasqfc7ohN/opMjuna4Otjj
+ ZCf1L0PqugkB3/MFAvd87UN55AkheOC9ziTMiI34LW9KTiLAORURuigD5j/qSSBzi0JE
+ pp3AguC0LGSBPXPR70k3C4O0xShGrZuS1BeMJygNrX0Kt061i/70+gSvWTXlZ9PSNPz7
+ Rrwn5cTzBM8JTuQwOJ4bND9ouRAj4sSE4n8VZzPScC2iYwSHdBIL1lXvwvn127PsRi5B
+ HrDSJcb1QqVKMcAwNHg9M6tuJhJlGSUj0KzwBvfxCUFIruU4h5W9JitvqcTPpLLDHtsj
+ RWxA==
+X-Gm-Message-State: AFqh2krTwV6q7AWvk9I2REznjes1+fxmp4oMjZbRgeJAI3U0b0S0qH26
+ CFTCKVyXi2J+h/Tg3N+kSdf7AQ==
+X-Google-Smtp-Source: AMrXdXvInCyxWng1spL2lajh1TX2U28tgdxPwTbUS+oJTeLxMkgde1znoo+79B+GZpG03BEObk+x4Q==
+X-Received: by 2002:a17:907:214d:b0:837:4378:dbd6 with SMTP id
+ rk13-20020a170907214d00b008374378dbd6mr21853776ejb.22.1672236333905; 
+ Wed, 28 Dec 2022 06:05:33 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ h10-20020a05600c2caa00b003c701c12a17sm27698540wmc.12.2022.12.28.06.05.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Dec 2022 05:52:24 -0800 (PST)
-Message-ID: <2d847cbf-687b-cd44-7737-393a96460d7f@redhat.com>
-Date: Wed, 28 Dec 2022 14:52:23 +0100
+ Wed, 28 Dec 2022 06:05:33 -0800 (PST)
+Message-ID: <8a2fb7aa-316d-b6bc-1e8d-da5678008825@linaro.org>
+Date: Wed, 28 Dec 2022 15:05:32 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH] virtio-mem: Fix typo in function name
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Chenyi Qiang <chenyi.qiang@intel.com>
-References: <20221228130956.80515-1-philmd@linaro.org>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20221228130956.80515-1-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH v1 10/12] virtio-mem: Fix typo in
+ virito_mem_intersect_memory_section() function name
 Content-Language: en-US
+To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost
+ <ehabkost@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <ani@anisinha.ca>, Peter Xu <peterx@redhat.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Hui Zhu <teawater@gmail.com>, Sebastien Boeuf <sebastien.boeuf@intel.com>,
+ kvm@vger.kernel.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20211027124531.57561-1-david@redhat.com>
+ <20211027124531.57561-11-david@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20211027124531.57561-11-david@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.147, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.147,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,19 +89,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Dec 2022 13:52:36 -0000
+X-List-Received-Date: Wed, 28 Dec 2022 14:05:47 -0000
 
-On 28.12.22 14:09, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On 27/10/21 14:45, David Hildenbrand wrote:
+> It's "virtio", not "virito".
+> 
+> Signed-off-by: David Hildenbrand <david@redhat.com>
 > ---
 >   hw/virtio/virtio-mem.c | 12 ++++++------
 >   1 file changed, 6 insertions(+), 6 deletions(-)
-> 
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 > diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
-> index d96bde1fab..c252027391 100644
+> index d5a578142b..0f5eae4a7e 100644
 > --- a/hw/virtio/virtio-mem.c
 > +++ b/hw/virtio/virtio-mem.c
-> @@ -207,7 +207,7 @@ static int virtio_mem_for_each_unplugged_range(const VirtIOMEM *vmem, void *arg,
+> @@ -177,7 +177,7 @@ static int virtio_mem_for_each_unplugged_range(const VirtIOMEM *vmem, void *arg,
 >    *
 >    * Returns false if the intersection is empty, otherwise returns true.
 >    */
@@ -118,7 +114,7 @@ On 28.12.22 14:09, Philippe Mathieu-Daudé wrote:
 >                                                   uint64_t offset, uint64_t size)
 >   {
 >       uint64_t start = MAX(s->offset_within_region, offset);
-> @@ -245,7 +245,7 @@ static int virtio_mem_for_each_plugged_section(const VirtIOMEM *vmem,
+> @@ -215,7 +215,7 @@ static int virtio_mem_for_each_plugged_section(const VirtIOMEM *vmem,
 >                                         first_bit + 1) - 1;
 >           size = (last_bit - first_bit + 1) * vmem->block_size;
 >   
@@ -127,7 +123,7 @@ On 28.12.22 14:09, Philippe Mathieu-Daudé wrote:
 >               break;
 >           }
 >           ret = cb(&tmp, arg);
-> @@ -277,7 +277,7 @@ static int virtio_mem_for_each_unplugged_section(const VirtIOMEM *vmem,
+> @@ -247,7 +247,7 @@ static int virtio_mem_for_each_unplugged_section(const VirtIOMEM *vmem,
 >                                    first_bit + 1) - 1;
 >           size = (last_bit - first_bit + 1) * vmem->block_size;
 >   
@@ -136,7 +132,7 @@ On 28.12.22 14:09, Philippe Mathieu-Daudé wrote:
 >               break;
 >           }
 >           ret = cb(&tmp, arg);
-> @@ -313,7 +313,7 @@ static void virtio_mem_notify_unplug(VirtIOMEM *vmem, uint64_t offset,
+> @@ -283,7 +283,7 @@ static void virtio_mem_notify_unplug(VirtIOMEM *vmem, uint64_t offset,
 >       QLIST_FOREACH(rdl, &vmem->rdl_list, next) {
 >           MemoryRegionSection tmp = *rdl->section;
 >   
@@ -145,7 +141,7 @@ On 28.12.22 14:09, Philippe Mathieu-Daudé wrote:
 >               continue;
 >           }
 >           rdl->notify_discard(rdl, &tmp);
-> @@ -329,7 +329,7 @@ static int virtio_mem_notify_plug(VirtIOMEM *vmem, uint64_t offset,
+> @@ -299,7 +299,7 @@ static int virtio_mem_notify_plug(VirtIOMEM *vmem, uint64_t offset,
 >       QLIST_FOREACH(rdl, &vmem->rdl_list, next) {
 >           MemoryRegionSection tmp = *rdl->section;
 >   
@@ -154,7 +150,7 @@ On 28.12.22 14:09, Philippe Mathieu-Daudé wrote:
 >               continue;
 >           }
 >           ret = rdl->notify_populate(rdl, &tmp);
-> @@ -346,7 +346,7 @@ static int virtio_mem_notify_plug(VirtIOMEM *vmem, uint64_t offset,
+> @@ -316,7 +316,7 @@ static int virtio_mem_notify_plug(VirtIOMEM *vmem, uint64_t offset,
 >               if (rdl2 == rdl) {
 >                   break;
 >               }
@@ -163,17 +159,5 @@ On 28.12.22 14:09, Philippe Mathieu-Daudé wrote:
 >                   continue;
 >               }
 >               rdl2->notify_discard(rdl2, &tmp);
-
-Yeah, I already included a fix in a different series that I yet have to 
-follow up:
-
-https://lkml.kernel.org/r/20211013103330.26869-12-david@redhat.com
-
-Most probably I'll simply queue this fix here.
-
--- 
-Thanks,
-
-David / dhildenb
 
 
