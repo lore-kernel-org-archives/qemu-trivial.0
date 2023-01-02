@@ -1,96 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pAcAJ-0000Xb-Of
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Dec 2022 14:32:39 -0500
+	id 1pCMEn-0003Gz-4h
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Jan 2023 09:56:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pAcA6-0000Wj-Hh
- for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 14:32:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pAcA3-0006l1-Lx
- for qemu-trivial@nongnu.org; Wed, 28 Dec 2022 14:32:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1672255941;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=142198HEzvZ/6B0fkFKSXEo1rKqVVe9NcGrG45nJG8A=;
- b=BAtDY9Rk6DDoTHy26Eq7zCYHNOyTUMJf/ROOCcwDowhEeGuX+D92qlRNQilH5a85ikHBkR
- TWGHh5LosiJT8hzEL9qQbJ6S+D5Pjv30kQNbdGomDroen+BAvoEeLVJxccHDna9ODD+UIW
- 8o5ChYnIpkWnfVlnRTRCUvhiw9k39AU=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-121-nY7LrMbPNhCBaLQ47y-rnA-1; Wed, 28 Dec 2022 14:32:19 -0500
-X-MC-Unique: nY7LrMbPNhCBaLQ47y-rnA-1
-Received: by mail-wr1-f72.google.com with SMTP id
- r10-20020adfa14a000000b0025ba73dff40so2186634wrr.12
- for <qemu-trivial@nongnu.org>; Wed, 28 Dec 2022 11:32:19 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <blue@cmd.nu>) id 1pCDqC-0007os-Nq
+ for qemu-trivial@nongnu.org; Mon, 02 Jan 2023 00:58:32 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <blue@cmd.nu>) id 1pCDqB-00032c-0N
+ for qemu-trivial@nongnu.org; Mon, 02 Jan 2023 00:58:32 -0500
+Received: by mail-ed1-x536.google.com with SMTP id g1so24529860edj.8
+ for <qemu-trivial@nongnu.org>; Sun, 01 Jan 2023 21:58:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cmd.nu; s=google;
+ h=cc:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Foi7/x1gD9aRS6Wu+MR5MBq6sIENBWZthvbUi4hjXtE=;
+ b=TdtzQBQI5h/vtghRznY87bny5qadwjvkKam+0OWcaJs4m4rw1HgdGHw3MvsNqe2V0N
+ Dplcl9baoPoUghC5iDsrYb2ASZ5ba68rU2Ii/GqQR10obFJ4dmtI+Sds+z7kWLt7blBU
+ PBCci6UWvslixfnyrd2TV1xUMQFNUNA2mEGvw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ h=cc:subject:message-id:date:from:in-reply-to:references:mime-version
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=142198HEzvZ/6B0fkFKSXEo1rKqVVe9NcGrG45nJG8A=;
- b=CtaNQDyB1tvO6BBBCnlvreDcs1illulY1LM6VFDzves6gCgmhO3GuT+FaNQFkorTBn
- 8n/q7E513uu4dIrR6b082Q09kMzTCYr8sh1fG+S2DqnakxfYfFo6J1xsXXTxE7lGE9hf
- Bvdbw03tZwrc4dB/3ZpHmwp1jwspSJgDaQql6cwGNDvkKzdpNwfpkCmpvenPqryjkwXh
- 8jvirNNa+bTePfo6oIDElEqJaH6PQyuP2lTDlPSfs7XlgBOetTbCvZfV4pOGFwKNChzY
- 7zdHelByQSvvkH0ukDZf5j5P0sqkAZNyXTcmkkJTgD5C14Xxj13N7i5vhmQ2Qc6AIDCA
- h+6Q==
-X-Gm-Message-State: AFqh2kqYGRQUHEt+k1dlaCHn0FUJjD2RT4W1PKeowla4WQ9zCtsjNMTe
- M4qjKv7ITOqE9DTn71EKxZcf5OO6L+Zt8IVcq4GqVp+R3yK/VIqc4Y5YjmSnKAUy+BdLgnpXJLo
- AWrlZ/tnmfBE6lsMpLA==
-X-Received: by 2002:adf:f4c1:0:b0:27e:7f5:6634 with SMTP id
- h1-20020adff4c1000000b0027e07f56634mr6898520wrp.60.1672255938656; 
- Wed, 28 Dec 2022 11:32:18 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXttxRlmz1AaO6ButbiNgP8QAIhIgXd8QUqetGf6Ce04vOkw1LivuwXhw0+6+3wVnAYQ56mk7Q==
-X-Received: by 2002:adf:f4c1:0:b0:27e:7f5:6634 with SMTP id
- h1-20020adff4c1000000b0027e07f56634mr6898510wrp.60.1672255938453; 
- Wed, 28 Dec 2022 11:32:18 -0800 (PST)
-Received: from [192.168.0.5] (ip-109-42-113-203.web.vodafone.de.
- [109.42.113.203]) by smtp.gmail.com with ESMTPSA id
- f6-20020a05600c154600b003d98a7aa12csm8232963wmg.16.2022.12.28.11.32.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Dec 2022 11:32:17 -0800 (PST)
-Message-ID: <6cd36e7e-dae7-6258-736a-44630cee9010@redhat.com>
-Date: Wed, 28 Dec 2022 20:32:14 +0100
+ bh=Foi7/x1gD9aRS6Wu+MR5MBq6sIENBWZthvbUi4hjXtE=;
+ b=qLQs4kr6mwc5vTRWd8AFfs4dYH152ztlSaXiT2tEZS0PAi0v9Dl0CmchOB5VKZQgMd
+ 4/LHlteDwTPPeSmlhsNoTSJlfklntW4/hoy7QsBbidh0Ppe9YHZ/oZKNCLH9aaAxltJV
+ P3k08etf+rehJF7QT/m5pni6azes97f8l7dGxyH9dFKKMJcycxINORAj9AI4BArM23Jy
+ h+oSyolMKmIcbct/ZPK+5/skhn9fMSZcpDOq1UcxNnp5eEpOYrzVGIGpUt989jNhrkCA
+ rnkoO3IrmeZweuGJdSQgo25KcQyjel+9uKKqGy9W5AJu9KVj1XvPG0XgdekU5tXKEQwE
+ zT7A==
+X-Gm-Message-State: AFqh2kqN3tCuRXsWco4S5SEHehuxVHeDjh1Q/PtyrUbYcRFkip4QnXYb
+ Hop7gYQk4A+2Kadmgtod0g+PGmrVnAwMgnhExWjuLg==
+X-Received: by 2002:a50:fe18:0:b0:483:9ad4:3435 with SMTP id
+ f24-20020a50fe18000000b004839ad43435mt3794554edt.301.1672639108504; Sun, 01
+ Jan 2023 21:58:28 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v3] hw/pvrdma: Protect against buggy or malicious guest
- driver
-To: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Claudio Fontana <cfontana@suse.de>,
- qemu devel list <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, wxhusst@gmail.com,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20220403095234.2210-1-yuval.shaia.ml@gmail.com>
- <CAC_L=vXsKpai6Wr0Fi2r5sr4U+tshPB9VizqntDppqE=1_FbVQ@mail.gmail.com>
- <339b8c7d-1f54-a515-8854-c22d10f79d1d@suse.de>
- <CAMPkWoOFXfyx=ZOv8i6AJ8Lv2GFKt11gnXYZ2W_4roS9UP9m5w@mail.gmail.com>
- <CAC_L=vUD2vVNSaP7UcDuRUCyd8XNmb4iRY_LXK0UNEE-+Rr4TQ@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <CAC_L=vUD2vVNSaP7UcDuRUCyd8XNmb4iRY_LXK0UNEE-+Rr4TQ@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.147, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20221230202710.115187-1-blue@cmd.nu>
+In-Reply-To: <20221230202710.115187-1-blue@cmd.nu>
+From: Christian Svensson <blue@cmd.nu>
+Date: Mon, 2 Jan 2023 06:58:18 +0100
+Message-ID: <CADiuDARG-zoaPHHL6iyBu_Np2MwJ4_=wF4oes=Puy_UStFqEuQ@mail.gmail.com>
+Subject: Re: [PATCH] net: Increase L2TPv3 buffer to fit jumboframes
+Cc: Jason Wang <jasowang@redhat.com>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000e7f95505f141a397"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536; envelope-from=blue@cmd.nu;
+ helo=mail-ed1-x536.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ MISSING_HEADERS=1.021, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 02 Jan 2023 09:56:24 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,92 +67,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Dec 2022 19:32:30 -0000
+X-List-Received-Date: Mon, 02 Jan 2023 05:58:33 -0000
 
-On 19/12/2022 12.21, Marcel Apfelbaum wrote:
-> On Mon, Dec 19, 2022 at 10:57 AM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
->>
->> Can anyone else pick this one?
-> 
-> Adding Thomas,
-> 
-> I dropped the ball with this one, I am sorry about that, maybe it
-> doesn't worth a Pull Request only for it.
+--000000000000e7f95505f141a397
+Content-Type: text/plain; charset="UTF-8"
 
-Why not? Pull request for single patches aren't that uncommon.
++qemu-trivial
 
-> Maybe it can go through the Misc tree?
+On Fri, Dec 30, 2022, 21:27 Christian Svensson <blue@cmd.nu> wrote:
 
-hw/rdma/ is really not my turf, but since the patch is small, it sounds like 
-a good candidate for qemu-trivial, I think.
+> Increase the allocated buffer size to fit larger packets.
+> Given that jumboframes can commonly be up to 9000 bytes the closest
+> suitable
+> value seems to be 16 KiB.
+>
+> Tested by running qemu towards a Linux L2TPv3 endpoint and pushing
+> jumboframe traffic through the interfaces.
+>
+> Signed-off-by: Christian Svensson <blue@cmd.nu>
+> ---
+>  net/l2tpv3.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/net/l2tpv3.c b/net/l2tpv3.c
+> index 5852e42738..3d5c6d11d3 100644
+> --- a/net/l2tpv3.c
+> +++ b/net/l2tpv3.c
+> @@ -42,7 +42,7 @@
+>   */
+>
+>  #define BUFFER_ALIGN sysconf(_SC_PAGESIZE)
+> -#define BUFFER_SIZE 2048
+> +#define BUFFER_SIZE 16384
+>  #define IOVSIZE 2
+>  #define MAX_L2TPV3_MSGCNT 64
+>  #define MAX_L2TPV3_IOVCNT (MAX_L2TPV3_MSGCNT * IOVSIZE)
+> --
+> 2.36.2
+>
+>
 
-  Thomas
+--000000000000e7f95505f141a397
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"auto"><div>+qemu-trivial<br><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Fri, Dec 30, 2022, 21:27 Christian Sve=
+nsson &lt;<a href=3D"mailto:blue@cmd.nu">blue@cmd.nu</a>&gt; wrote:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:=
+1px #ccc solid;padding-left:1ex">Increase the allocated buffer size to fit =
+larger packets.<br>
+Given that jumboframes can commonly be up to 9000 bytes the closest suitabl=
+e<br>
+value seems to be 16 KiB.<br>
+<br>
+Tested by running qemu towards a Linux L2TPv3 endpoint and pushing<br>
+jumboframe traffic through the interfaces.<br>
+<br>
+Signed-off-by: Christian Svensson &lt;<a href=3D"mailto:blue@cmd.nu" target=
+=3D"_blank" rel=3D"noreferrer">blue@cmd.nu</a>&gt;<br>
+---<br>
+=C2=A0net/l2tpv3.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/net/l2tpv3.c b/net/l2tpv3.c<br>
+index 5852e42738..3d5c6d11d3 100644<br>
+--- a/net/l2tpv3.c<br>
++++ b/net/l2tpv3.c<br>
+@@ -42,7 +42,7 @@<br>
+=C2=A0 */<br>
+<br>
+=C2=A0#define BUFFER_ALIGN sysconf(_SC_PAGESIZE)<br>
+-#define BUFFER_SIZE 2048<br>
++#define BUFFER_SIZE 16384<br>
+=C2=A0#define IOVSIZE 2<br>
+=C2=A0#define MAX_L2TPV3_MSGCNT 64<br>
+=C2=A0#define MAX_L2TPV3_IOVCNT (MAX_L2TPV3_MSGCNT * IOVSIZE)<br>
+-- <br>
+2.36.2<br>
+<br>
+</blockquote></div></div></div>
 
->> On Wed, 7 Dec 2022 at 17:05, Claudio Fontana <cfontana@suse.de> wrote:
->>>
->>> On 4/5/22 12:31, Marcel Apfelbaum wrote:
->>>> Hi Yuval,
->>>> Thank you for the changes.
->>>>
->>>> On Sun, Apr 3, 2022 at 11:54 AM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
->>>>>
->>>>> Guest driver might execute HW commands when shared buffers are not yet
->>>>> allocated.
->>>>> This could happen on purpose (malicious guest) or because of some other
->>>>> guest/host address mapping error.
->>>>> We need to protect againts such case.
->>>>>
->>>>> Fixes: CVE-2022-1050
->>>>>
->>>>> Reported-by: Raven <wxhusst@gmail.com>
->>>>> Signed-off-by: Yuval Shaia <yuval.shaia.ml@gmail.com>
->>>>> ---
->>>>> v1 -> v2:
->>>>>          * Commit message changes
->>>>> v2 -> v3:
->>>>>          * Exclude cosmetic changes
->>>>> ---
->>>>>   hw/rdma/vmw/pvrdma_cmd.c | 6 ++++++
->>>>>   1 file changed, 6 insertions(+)
->>>>>
->>>>> diff --git a/hw/rdma/vmw/pvrdma_cmd.c b/hw/rdma/vmw/pvrdma_cmd.c
->>>>> index da7ddfa548..89db963c46 100644
->>>>> --- a/hw/rdma/vmw/pvrdma_cmd.c
->>>>> +++ b/hw/rdma/vmw/pvrdma_cmd.c
->>>>> @@ -796,6 +796,12 @@ int pvrdma_exec_cmd(PVRDMADev *dev)
->>>>>
->>>>>       dsr_info = &dev->dsr_info;
->>>>>
->>>>> +    if (!dsr_info->dsr) {
->>>>> +            /* Buggy or malicious guest driver */
->>>>> +            rdma_error_report("Exec command without dsr, req or rsp buffers");
->>>>> +            goto out;
->>>>> +    }
->>>>> +
->>>>>       if (dsr_info->req->hdr.cmd >= sizeof(cmd_handlers) /
->>>>>                         sizeof(struct cmd_handler)) {
->>>>>           rdma_error_report("Unsupported command");
->>>>> --
->>>>> 2.20.1
->>>>>
->>>>
->>>> cc-ing Peter and Philippe for a question:
->>>> Do we have a "Security Fixes" or a "Misc" subtree? Otherwise it will
->>>> have to wait a week or so.
->>>>
->>>> Reviewed by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
->>>> Thanks,
->>>> Marcel
->>>>
->>>
->>> Hi all,
->>>
->>> patch is reviewed, anything holding back the inclusion of this security fix?
->>>
->>> Thanks,
->>>
->>> Claudio
-> 
-
+--000000000000e7f95505f141a397--
 
