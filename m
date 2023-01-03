@@ -1,84 +1,95 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pCNcJ-0001qq-LF
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jan 2023 11:24:51 -0500
+	id 1pCg2w-0006hN-G4
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Jan 2023 07:05:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
- id 1pCNXx-0008KX-MZ
- for qemu-trivial@nongnu.org; Mon, 02 Jan 2023 11:20:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pCg2l-0006bi-C6
+ for qemu-trivial@nongnu.org; Tue, 03 Jan 2023 07:05:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
- id 1pCNXv-0008BS-QY
- for qemu-trivial@nongnu.org; Mon, 02 Jan 2023 11:20:21 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pCg2j-0006dV-MK
+ for qemu-trivial@nongnu.org; Tue, 03 Jan 2023 07:05:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1672676418;
+ s=mimecast20190719; t=1672747520;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=CdAO3V5czTy0X88W7hYG5g3peA7hf+xDXphD1iqfGHM=;
- b=dvhlAJi0yk7j8W9XYS7RWvUW//i9NgOJHx78YRwWkqeDegtuKV9H2t4N+80wSHm67k+hHD
- TZoo/VKzKPToxjv+ydEEewN5qhzfLxvfDslq9Flm36SRhoRuDTZJ6KOVwHA+AVM9Fg8Ona
- 8BbmiuMjrGw2fbOXmg1mZMjCKB+KRNE=
-Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
- [209.85.210.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KunRRQUaMrs4fxxOeg85c8Ty+qkUePbiYBVbHpgULag=;
+ b=MpolhWN1paM2An0RDme77fLvdY3Y0tsSII+8ihyWsTz7JveMnkiC3XIsA1Lwe1ZIvu1Ebg
+ je2ZrrcczcXsu/c1emI1higiStPrAvGgINKpuadRdyQpNwxWh1eSDFKjg6DWh8lfK/3+E8
+ xOV0nqElvPZpDa8nqAJF6+y6/Nbp1U4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-107-vAiLNaPfObKuuxblVoIrZg-1; Mon, 02 Jan 2023 11:19:12 -0500
-X-MC-Unique: vAiLNaPfObKuuxblVoIrZg-1
-Received: by mail-ot1-f70.google.com with SMTP id
- by2-20020a056830608200b00683e3e829d5so10479963otb.17
- for <qemu-trivial@nongnu.org>; Mon, 02 Jan 2023 08:19:12 -0800 (PST)
+ us-mta-668-WKQUpRhsMYGTZKrZmUFimg-1; Tue, 03 Jan 2023 07:05:19 -0500
+X-MC-Unique: WKQUpRhsMYGTZKrZmUFimg-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ q16-20020adfab10000000b00271460582b6so3526891wrc.5
+ for <qemu-trivial@nongnu.org>; Tue, 03 Jan 2023 04:05:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CdAO3V5czTy0X88W7hYG5g3peA7hf+xDXphD1iqfGHM=;
- b=spqPMxYxMCsTnp/Myx+9WA8caeWqRGc6FRUdnaJLJNO+Zpwg+JLlttk+zXKFHAarnK
- GXdOk8kvigPheh1De0D6M/RxOEael7xv5snNcLLK1N+hsIqeHxurRUEf5kIvk1Nf8KHB
- OAqCuTQMT91OCuIGzjvTGcs2AdsDrYwpQAbqUu5oouCClQv0k1sT5oWH0igf3bJiu5ff
- 2Qy0ZmStcN5yJ7T1Ske8SidXT4OSz8gKCvB6V+ddGwEcUrmOB2GWWaqz1FYYIu8G10Vx
- zlPWPmQqwjn2OeOFAKVzI6UtMR/Js1bS7bGv7GTZ4zcGHQZXe/1UyWJjNbuiSPkqs8l4
- 31OA==
-X-Gm-Message-State: AFqh2kpGUk0I1jR6QYQmS2JzQnYcsFC6kA0YRu3/vMb2mPlKoGz1+vrD
- rrBVAq4uZOJc+NVQQAXMqTtpGBfUS4zje/F2yUugLj0pxEOXwGTwGGo4KhN57VHO7IdZPQqsPpS
- enQ6943xqBiXC0Q/8/g==
-X-Received: by 2002:a05:6870:ed4e:b0:144:c097:dc14 with SMTP id
- ex14-20020a056870ed4e00b00144c097dc14mr19911105oab.4.1672676352133; 
- Mon, 02 Jan 2023 08:19:12 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXul5p/kJRS2oQvbLM3fVX2Sa29GUMBG9x2mKKR5G87wP85+VsqoJlyIypXcus02BNGpMEQHzQ==
-X-Received: by 2002:a05:6870:ed4e:b0:144:c097:dc14 with SMTP id
- ex14-20020a056870ed4e00b00144c097dc14mr19911098oab.4.1672676351871; 
- Mon, 02 Jan 2023 08:19:11 -0800 (PST)
-Received: from casantos.remote.csb ([179.181.73.41])
- by smtp.gmail.com with ESMTPSA id
- cy4-20020a056870b68400b0013bc40b09dasm13086446oab.17.2023.01.02.08.19.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Jan 2023 08:19:11 -0800 (PST)
-From: casantos@redhat.com
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Carlos Santos <casantos@redhat.com>
-Subject: [PATCH] meson: allow disablind the installation of keymaps
-Date: Mon,  2 Jan 2023 13:19:03 -0300
-Message-Id: <20230102161903.3857354-1-casantos@redhat.com>
-X-Mailer: git-send-email 2.31.1
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=KunRRQUaMrs4fxxOeg85c8Ty+qkUePbiYBVbHpgULag=;
+ b=ZkkBceT5ytVmrQIt45aXajPiqCCmvMyJt84gz2zJnd0dE4NFRTx1a77KecU9lCom8X
+ 1sQpHkR1iEqgLhA4YiT0XRsnyy/UwhTy+c05zmJryvhWCaV8OBFCgjj8pY8NmrMKCB04
+ k13OV43QPQ8N0XlqGvw/V9T6e6d41LDyY6lx8GYy4A1u8BFXYfpg/S4jF+hEpd8rmZII
+ IZ5YHy+qmjvo/SQbWanjJFFJzbLUDO+JpWInqSfJ66ht1EX9MN2oHiBiJArk4r6uLtkH
+ 9/Pb8YGEP4+8pT2u3zOhljd1MmF9KG3Dq2gGpOpWAcNXWUBn1vsg30MNTNOjdetEXlM0
+ fgWg==
+X-Gm-Message-State: AFqh2koUUJXilhXIR6RTCuzDYkbZdydKWvoMmChvl/AkUcbowvrKIOwZ
+ s6+euBuxM9ziGA3vCgYE1IIFApOf7jMMEE2HyRxliJPiaxJYRF2ymguntq5x7gh7bueC7L2U/e1
+ hjt+Nvj+z5iEn9aX2lw==
+X-Received: by 2002:a05:600c:6016:b0:3d3:3c93:af5e with SMTP id
+ az22-20020a05600c601600b003d33c93af5emr31066938wmb.35.1672747518595; 
+ Tue, 03 Jan 2023 04:05:18 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvIgd57MuoPYxOEzwNhVdGEv3hv1wd14QinGgfv0CGV9NsSPBNZ72+zU3bCJcZSRHbnzH0d2w==
+X-Received: by 2002:a05:600c:6016:b0:3d3:3c93:af5e with SMTP id
+ az22-20020a05600c601600b003d33c93af5emr31066910wmb.35.1672747518312; 
+ Tue, 03 Jan 2023 04:05:18 -0800 (PST)
+Received: from [192.168.0.5] (ip-109-43-177-55.web.vodafone.de.
+ [109.43.177.55]) by smtp.gmail.com with ESMTPSA id
+ j34-20020a05600c1c2200b003d98438a43asm32889533wms.34.2023.01.03.04.05.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 Jan 2023 04:05:16 -0800 (PST)
+Message-ID: <acd0951b-c1ee-78ae-0de5-235c97186932@redhat.com>
+Date: Tue, 3 Jan 2023 13:05:13 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 01/10] ccid-card-emulated: fix cast warning/error
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20230103110814.3726795-1-marcandre.lureau@redhat.com>
+ <20230103110814.3726795-2-marcandre.lureau@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230103110814.3726795-2-marcandre.lureau@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=casantos@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-3.103, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 02 Jan 2023 11:24:50 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,92 +101,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jan 2023 16:20:21 -0000
+X-List-Received-Date: Tue, 03 Jan 2023 12:05:31 -0000
 
-From: Carlos Santos <casantos@redhat.com>
+On 03/01/2023 12.08, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+> 
+> ../hw/usb/ccid-card-emulated.c: In function 'handle_apdu_thread':
+> ../hw/usb/ccid-card-emulated.c:251:24: error: cast from pointer to integer of different size [-Werror=pointer-to-int-cast]
+>    251 |                 assert((unsigned long)event > 1000);
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>   hw/usb/ccid-card-emulated.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+> index ee41a81801..c328660075 100644
+> --- a/hw/usb/ccid-card-emulated.c
+> +++ b/hw/usb/ccid-card-emulated.c
+> @@ -248,7 +248,7 @@ static void *handle_apdu_thread(void* arg)
+>           WITH_QEMU_LOCK_GUARD(&card->vreader_mutex) {
+>               while (!QSIMPLEQ_EMPTY(&card->guest_apdu_list)) {
+>                   event = QSIMPLEQ_FIRST(&card->guest_apdu_list);
+> -                assert((unsigned long)event > 1000);
+> +                assert(event != NULL);
+>                   QSIMPLEQ_REMOVE_HEAD(&card->guest_apdu_list, entry);
+>                   if (event->p.data.type != EMUL_GUEST_APDU) {
+>                       DPRINTF(card, 1, "unexpected message in handle_apdu_thread\n");
 
-There are situatuions in which the keyboard maps are not necessary (e.g.
-when building only tools or linux-user emulator). Add an option to avoid
-installing them, as already possible to do with firmware blobs.
-
-Signed-off-by: Carlos Santos <casantos@redhat.com>
----
- configure                     | 2 ++
- meson_options.txt             | 2 ++
- pc-bios/keymaps/meson.build   | 6 ++++--
- scripts/meson-buildoptions.sh | 4 ++++
- 4 files changed, 12 insertions(+), 2 deletions(-)
-
-diff --git a/configure b/configure
-index 789a4f6cc9..c6ed6a23d0 100755
---- a/configure
-+++ b/configure
-@@ -889,6 +889,8 @@ for opt do
-   ;;
-   --disable-blobs) meson_option_parse --disable-install-blobs ""
-   ;;
-+  --disable-keymaps) meson_option_parse --disable-install-keymaps ""
-+  ;;
-   --enable-vfio-user-server) vfio_user_server="enabled"
-   ;;
-   --disable-vfio-user-server) vfio_user_server="disabled"
-diff --git a/meson_options.txt b/meson_options.txt
-index 559a571b6b..be27137e98 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -48,6 +48,8 @@ option('module_upgrades', type : 'boolean', value : false,
-        description: 'try to load modules from alternate paths for upgrades')
- option('install_blobs', type : 'boolean', value : true,
-        description: 'install provided firmware blobs')
-+option('install_keymaps', type : 'boolean', value : true,
-+       description: 'install provided keyboard maps')
- option('sparse', type : 'feature', value : 'auto',
-        description: 'sparse checker')
- option('guest_agent', type : 'feature', value : 'auto',
-diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
-index 06c75e646b..7d80c23005 100644
---- a/pc-bios/keymaps/meson.build
-+++ b/pc-bios/keymaps/meson.build
-@@ -47,7 +47,7 @@ if native_qemu_keymap.found()
-                        build_by_default: true,
-                        output: km,
-                        command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
--                       install: true,
-+                       install: get_option('install_keymaps'),
-                        install_dir: qemu_datadir / 'keymaps')
-   endforeach
- 
-@@ -56,4 +56,6 @@ else
-   install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps')
- endif
- 
--install_data(['sl', 'sv'], install_dir: qemu_datadir / 'keymaps')
-+if get_option('install_keymaps')
-+  install_data(['sl', 'sv'], install_dir: qemu_datadir / 'keymaps')
-+endif
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index aa6e30ea91..f17d9c196e 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -11,6 +11,8 @@ meson_options_help() {
-   printf "%s\n" '  --datadir=VALUE          Data file directory [share]'
-   printf "%s\n" '  --disable-coroutine-pool coroutine freelist (better performance)'
-   printf "%s\n" '  --disable-install-blobs  install provided firmware blobs'
-+  printf "%s\n" '  --disable-install-keymaps'
-+  printf "%s\n" '                           install provided keyboard maps'
-   printf "%s\n" '  --docdir=VALUE           Base directory for documentation installation'
-   printf "%s\n" '                           (can be empty) [share/doc]'
-   printf "%s\n" '  --enable-block-drv-whitelist-in-tools'
-@@ -291,6 +293,8 @@ _meson_option_parse() {
-     --includedir=*) quote_sh "-Dincludedir=$2" ;;
-     --enable-install-blobs) printf "%s" -Dinstall_blobs=true ;;
-     --disable-install-blobs) printf "%s" -Dinstall_blobs=false ;;
-+    --enable-install-keymaps) printf "%s" -Dinstall_keymaps=true ;;
-+    --disable-install-keymaps) printf "%s" -Dinstall_keymaps=false ;;
-     --interp-prefix=*) quote_sh "-Dinterp_prefix=$2" ;;
-     --enable-jack) printf "%s" -Djack=enabled ;;
-     --disable-jack) printf "%s" -Djack=disabled ;;
--- 
-2.31.1
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
