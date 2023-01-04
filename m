@@ -1,70 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pCqAg-0004VZ-2o
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Jan 2023 17:54:14 -0500
+	id 1pD560-00027f-68
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Jan 2023 09:50:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arthur.sengileyev@gmail.com>)
- id 1pCpXf-0003cX-0s; Tue, 03 Jan 2023 17:13:55 -0500
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <arthur.sengileyev@gmail.com>)
- id 1pCpXd-0005sQ-CE; Tue, 03 Jan 2023 17:13:54 -0500
-Received: by mail-lj1-x22b.google.com with SMTP id v23so23351040ljj.9;
- Tue, 03 Jan 2023 14:13:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=4CBsNfZnHtVejQ7fN3O5WRGyxEti+Gcan/bCKkdwSrw=;
- b=JeCsmkyYgqKHJvbYHUvfDygER9mE6qOGXDqjKOzmgg5oyTNgPlPBC6vMWE+vCyALZw
- zMm6+N0prc0wJyoguv0MLsUbdaRAu3sIOl7TCazpLp/XPfp695w80cnJv2bORBg0BlvK
- NxMRsBwDgndvP1NmwYhXTOcDQJVcQfULfanijqIbG0TLdvkFlbwt4dQgwpQXyG8zysNP
- LD0iMjYjoOOstVrNzcrljxGNufJQKyW+075TJ26uIUNfHQvQv97x794jmkNOLw8DtgkN
- NRXHhWQGkAaLPRGwF/uJed51Ieg9ZVb38Lh9wf7Y1BpXofZfTKUp0S8tmaXGmlmtEmUm
- +LHg==
+ (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
+ id 1pD55n-0001yP-8R
+ for qemu-trivial@nongnu.org; Wed, 04 Jan 2023 09:50:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
+ id 1pD55l-0005ag-Dr
+ for qemu-trivial@nongnu.org; Wed, 04 Jan 2023 09:50:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1672843807;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wl5J0kvuLH8aBUCriSM5kEzfMBD+WGe38HAuKXgNWGE=;
+ b=E/2PR87N3YhSwPub2bUrYrjk2wX+PiILJ23iVBRvRhEQcTStJRpQqici2HA0OScb9TNvHa
+ eJMduF+v8JNnehGji2BI1CNMVAd7ddFjTBC/o7CAJtAWWz2/DaNTvS4oG8g4Sy1GNYb1Bp
+ fuXbvyTA6fAspMvlnEqNrZ1rTFmcPjs=
+Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
+ [209.85.210.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-271-vIkb68yLMuKaQq-6HGZyfg-1; Wed, 04 Jan 2023 09:50:06 -0500
+X-MC-Unique: vIkb68yLMuKaQq-6HGZyfg-1
+Received: by mail-ot1-f70.google.com with SMTP id
+ x26-20020a9d6d9a000000b00672c2f06716so18070798otp.21
+ for <qemu-trivial@nongnu.org>; Wed, 04 Jan 2023 06:50:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=4CBsNfZnHtVejQ7fN3O5WRGyxEti+Gcan/bCKkdwSrw=;
- b=xHqntnBu1SNJtJQVaioM2a2M42dkFozS6oQYeivYLaUIsPmRVLCoHyg332mCB1TmMs
- hRp25uEKpFgMdQqM9GEroDy2jsKAcFJgVxxIntQphbh+i6/1mj5vEkU0XRUhZSrSAyon
- ouI0ZQzL5xdzWHaICpI8vxR6GkQEA7tmY+sJIkjoHFr0BTn63bm1/JHSYY+GNrywvoqB
- cofBnp9fBJjWHlNVt5JEbg4A85dC+OWUjqlAMLiUgfIYEsyk7FNL3hHC81AmAAbW9yA/
- f70rMr7/uyZ5Gefmp9LiiN0a4r3xkQLZ7/l+Jc/jGfPokt8S4368qOA48sHX/x+HB3Eg
- xIrg==
-X-Gm-Message-State: AFqh2kprtjpkviSRQqTFxty0rqSufx6ZP+8Y7H4xyNR70xoo/OJICGr3
- /Iv7/iJhWhMeday/ot+xq18=
-X-Google-Smtp-Source: AMrXdXuvdCsjt/agD4VPUKkAi+0Cm9Ap0RY29V68UEDbSZjrFKS/hBDNnfn35b47c2sopvOvWIbXPw==
-X-Received: by 2002:a2e:910d:0:b0:27f:da83:c50c with SMTP id
- m13-20020a2e910d000000b0027fda83c50cmr4678955ljg.0.1672784030610; 
- Tue, 03 Jan 2023 14:13:50 -0800 (PST)
-Received: from Arturss-MBP-2.lan ([87.246.149.32])
- by smtp.gmail.com with ESMTPSA id
- d2-20020a2e3602000000b0027fc03a8547sm2587061lja.37.2023.01.03.14.13.49
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 03 Jan 2023 14:13:50 -0800 (PST)
-From: Arthur Sengileyev <arthur.sengileyev@gmail.com>
-To: arthur.sengileyev@gmail.com
-Cc: sw@weilnetz.de, jsnow@redhat.com, crosa@redhat.com, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: [PATCH] Windows installer: keep dependency cache
-Date: Wed,  4 Jan 2023 00:13:49 +0200
-Message-Id: <20230103221349.74160-1-arthur.sengileyev@gmail.com>
-X-Mailer: git-send-email 2.39.0
+ bh=wl5J0kvuLH8aBUCriSM5kEzfMBD+WGe38HAuKXgNWGE=;
+ b=JWKDqw4mqS6YDNDvygcDUua2EASwR3J3urAnZHqoXDpdueEgYjU/GEiXG2+psn4kpN
+ yz8CzhuyWdnEe6o5p4Ezk1CE2ylZuJpBYbGyJ8VYdp2ZYEKUjfoKjAbpDzGkNxvLFAmb
+ kSFjESQQSJDmeUQ0dGJ2eMVWswY1ghp9AkbDR4nbZWfFq7kYeWpq7570mDPWqqs9aFco
+ iItvu0K1wYf+Cgy0CKTOfOTHVcml75swgLavDwoOLAsOt3fn8deVfalFQmdajN6emryk
+ x34hPxPfmyJN0BwU++t9X/k0CzBbOy+3QO9GH7gACDv95WDSi9MMwpiYFUx+5l7F800I
+ fnnw==
+X-Gm-Message-State: AFqh2kryLzv26jJgAwP3tirExWayRyVrUc1ZZarwh/u/fhGuLAkHrDDK
+ u3vgSf80b5w9MQh4B9uzB1z02KJcm+0t1tYF1nDc2P0hdJzntrQxuJjfar8ucGJjO29CwTfkUoK
+ 0CTnKBIMc7wvhpg5KmxwsGs64gUBV8ZeYAg==
+X-Received: by 2002:a05:6830:103:b0:678:2666:2441 with SMTP id
+ i3-20020a056830010300b0067826662441mr3196520otp.94.1672843805428; 
+ Wed, 04 Jan 2023 06:50:05 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvBXze/utDGH3+DaXrDomMHqHl33lF8zql3U9aPxspUKGtZyVgn7Jr7J9B8EfuJ5Vj7d2sjU+mjnjmv5eEx+HY=
+X-Received: by 2002:a05:6830:103:b0:678:2666:2441 with SMTP id
+ i3-20020a056830010300b0067826662441mr3196518otp.94.1672843805147; Wed, 04 Jan
+ 2023 06:50:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=arthur.sengileyev@gmail.com; helo=mail-lj1-x22b.google.com
+References: <20230102161903.3857354-1-casantos@redhat.com>
+In-Reply-To: <20230102161903.3857354-1-casantos@redhat.com>
+From: Carlos Santos <casantos@redhat.com>
+Date: Wed, 4 Jan 2023 11:49:50 -0300
+Message-ID: <CAC1VKkOzUsh-EZfwSRbGRC13auykBL5jmszpStw=GHcgx9G6Vw@mail.gmail.com>
+Subject: Re: [PATCH] meson: allow disablind the installation of keymaps
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=casantos@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 03 Jan 2023 17:54:13 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,37 +83,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Jan 2023 22:13:55 -0000
+X-List-Received-Date: Wed, 04 Jan 2023 14:50:13 -0000
 
-It should be possible to reuse cache built by previous iteration
-processing next executables. Already processed dependencies are
-already skipped later based on dll name.
+On Mon, Jan 2, 2023 at 1:19 PM <casantos@redhat.com> wrote:
+>
+> From: Carlos Santos <casantos@redhat.com>
+>
+> There are situatuions in which the keyboard maps are not necessary (e.g.
+> when building only tools or linux-user emulator). Add an option to avoid
+> installing them, as already possible to do with firmware blobs.
+>
+> Signed-off-by: Carlos Santos <casantos@redhat.com>
+> ---
+>  configure                     | 2 ++
+>  meson_options.txt             | 2 ++
+>  pc-bios/keymaps/meson.build   | 6 ++++--
+>  scripts/meson-buildoptions.sh | 4 ++++
+>  4 files changed, 12 insertions(+), 2 deletions(-)
+>
+> diff --git a/configure b/configure
+> index 789a4f6cc9..c6ed6a23d0 100755
+> --- a/configure
+> +++ b/configure
+> @@ -889,6 +889,8 @@ for opt do
+>    ;;
+>    --disable-blobs) meson_option_parse --disable-install-blobs ""
+>    ;;
+> +  --disable-keymaps) meson_option_parse --disable-install-keymaps ""
+> +  ;;
+>    --enable-vfio-user-server) vfio_user_server="enabled"
+>    ;;
+>    --disable-vfio-user-server) vfio_user_server="disabled"
+> diff --git a/meson_options.txt b/meson_options.txt
+> index 559a571b6b..be27137e98 100644
+> --- a/meson_options.txt
+> +++ b/meson_options.txt
+> @@ -48,6 +48,8 @@ option('module_upgrades', type : 'boolean', value : false,
+>         description: 'try to load modules from alternate paths for upgrades')
+>  option('install_blobs', type : 'boolean', value : true,
+>         description: 'install provided firmware blobs')
+> +option('install_keymaps', type : 'boolean', value : true,
+> +       description: 'install provided keyboard maps')
+>  option('sparse', type : 'feature', value : 'auto',
+>         description: 'sparse checker')
+>  option('guest_agent', type : 'feature', value : 'auto',
+> diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
+> index 06c75e646b..7d80c23005 100644
+> --- a/pc-bios/keymaps/meson.build
+> +++ b/pc-bios/keymaps/meson.build
+> @@ -47,7 +47,7 @@ if native_qemu_keymap.found()
+>                         build_by_default: true,
+>                         output: km,
+>                         command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
+> -                       install: true,
+> +                       install: get_option('install_keymaps'),
+>                         install_dir: qemu_datadir / 'keymaps')
+>    endforeach
+>
+> @@ -56,4 +56,6 @@ else
+>    install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps')
+>  endif
+>
+> -install_data(['sl', 'sv'], install_dir: qemu_datadir / 'keymaps')
+> +if get_option('install_keymaps')
+> +  install_data(['sl', 'sv'], install_dir: qemu_datadir / 'keymaps')
+> +endif
+> diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
+> index aa6e30ea91..f17d9c196e 100644
+> --- a/scripts/meson-buildoptions.sh
+> +++ b/scripts/meson-buildoptions.sh
+> @@ -11,6 +11,8 @@ meson_options_help() {
+>    printf "%s\n" '  --datadir=VALUE          Data file directory [share]'
+>    printf "%s\n" '  --disable-coroutine-pool coroutine freelist (better performance)'
+>    printf "%s\n" '  --disable-install-blobs  install provided firmware blobs'
+> +  printf "%s\n" '  --disable-install-keymaps'
+> +  printf "%s\n" '                           install provided keyboard maps'
+>    printf "%s\n" '  --docdir=VALUE           Base directory for documentation installation'
+>    printf "%s\n" '                           (can be empty) [share/doc]'
+>    printf "%s\n" '  --enable-block-drv-whitelist-in-tools'
+> @@ -291,6 +293,8 @@ _meson_option_parse() {
+>      --includedir=*) quote_sh "-Dincludedir=$2" ;;
+>      --enable-install-blobs) printf "%s" -Dinstall_blobs=true ;;
+>      --disable-install-blobs) printf "%s" -Dinstall_blobs=false ;;
+> +    --enable-install-keymaps) printf "%s" -Dinstall_keymaps=true ;;
+> +    --disable-install-keymaps) printf "%s" -Dinstall_keymaps=false ;;
+>      --interp-prefix=*) quote_sh "-Dinterp_prefix=$2" ;;
+>      --enable-jack) printf "%s" -Djack=enabled ;;
+>      --disable-jack) printf "%s" -Djack=disabled ;;
+> --
+> 2.31.1
+>
 
-Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
----
- scripts/nsis.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Thinking a bit more about this patch, I think the correct approach
+would be to install blobs and keymaps depending on have_system:
 
-diff --git a/scripts/nsis.py b/scripts/nsis.py
-index 03ed7608a2..a2e52df556 100644
---- a/scripts/nsis.py
-+++ b/scripts/nsis.py
-@@ -91,12 +91,13 @@ def main():
-         print("Searching '%s' for the dependent dlls ..." % search_path)
-         dlldir = os.path.join(destdir + prefix, "dll")
-         os.mkdir(dlldir)
-+        depscache = set()
- 
-         for exe in glob.glob(os.path.join(destdir + prefix, "*.exe")):
-             signcode(exe)
- 
-             # find all dll dependencies
--            deps = set(find_deps(exe, search_path, set()))
-+            deps = set(find_deps(exe, search_path, depscache))
-             deps.remove(exe)
- 
-             # copy all dlls to the DLLDIR
+    [...]
+    install: have_system,
+    [...]
+
+And use the same approach for trace-events-all, in trace/meson.build:
+
+    [...]
+    install: have_linux_user or have_bsd_user or have_system,
+    [...]
+
+This would prevent installing useless data.
+
 -- 
-2.39.0
+Carlos Santos
+Senior Software Maintenance Engineer
+Red Hat
+casantos@redhat.com    T: +55-11-3534-6186
 
 
