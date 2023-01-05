@@ -1,80 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pD6wB-0006TN-4H
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Jan 2023 11:48:23 -0500
+	id 1pDRQO-0006Wc-HL
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Jan 2023 09:40:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
- id 1pD6w9-0006Sw-Mg
- for qemu-trivial@nongnu.org; Wed, 04 Jan 2023 11:48:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
- id 1pD6w6-0001yk-EN
- for qemu-trivial@nongnu.org; Wed, 04 Jan 2023 11:48:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1672850897;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=v1Fk3+3TCIGEv94YACVWImh/c4q2TJs7f2t1FTOZE8M=;
- b=RxLpHaPzMoDP6j7/MiQqU6wEoWBCQZ4/GUhWADggei+91jXBBphXz3o7UaJYFtycKjpTpR
- LZNegdeOwcR7/koD9p8OqDsdrc1q7j3rfoq4GEWqGV3WhZP54IfJ0nyxA7mNNSYlwn+BfJ
- x1nMmBMExFObXpeq1z0QokeitSUDeLY=
-Received: from mail-oa1-f72.google.com (mail-oa1-f72.google.com
- [209.85.160.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-591-B1YZjO8WOcSTsQvLU--AFw-1; Wed, 04 Jan 2023 11:48:14 -0500
-X-MC-Unique: B1YZjO8WOcSTsQvLU--AFw-1
-Received: by mail-oa1-f72.google.com with SMTP id
- 586e51a60fabf-1515cee658eso544393fac.20
- for <qemu-trivial@nongnu.org>; Wed, 04 Jan 2023 08:48:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDRQJ-0006PU-Qx
+ for qemu-trivial@nongnu.org; Thu, 05 Jan 2023 09:40:54 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pDRQH-0003Ey-Mz
+ for qemu-trivial@nongnu.org; Thu, 05 Jan 2023 09:40:51 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ b24-20020a05600c4a9800b003d21efdd61dso1471285wmp.3
+ for <qemu-trivial@nongnu.org>; Thu, 05 Jan 2023 06:40:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=oNDOqnsLbyhoDi5uMGk8/4UUP00n8RzWnJNlr2mmXCw=;
+ b=u+oblYgDY7fD5KbasUEDoj5ricSGpo9z6Te0DEHS/SThi1t0rp/Fv8scGCdmt2GIlP
+ pmEYoaESJHTQuCXvJJtnzTVnh3o1fFNZDG2hqM3P57ynBy/iCXkKPjOpYe/IsLcDBDVs
+ YZg+LabRFF4d5wpM4fJRxknQE8NjxVGDVbnjfadaSXx92E2N6TSo8ZUIYRnWasGhoepP
+ vJ04VRV9EO1n3/LbREv8uBGkuGjrpF3EBybBAcZ9tonptuJYB4chEPts6IW9UZJb6mpy
+ 7q8VcLuABMf5Pj5kmf60/EO8BqcCyBigeAk94CHtEUB0dPlH2fMDC1Y+MTea1ntE5OLv
+ a5qA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=v1Fk3+3TCIGEv94YACVWImh/c4q2TJs7f2t1FTOZE8M=;
- b=1RJO3PXXeNsmPt/sF9ULLuDh5chJkdi+X9Xv9mqmdUHwHQ8bZuUqmGzhvpHfFMz6jn
- hNf4A3cSMbb7LXuSjs1+5JfX4Yo3VOB2ZpGSPsS8T8gQl+mIyGg2B6fv1l0d2tXSob8J
- 5kZYM7m6NTLTt/Q62+oOuTaRMXfStv1kwH1nHrkW/snGhtwrCk1YOJ551I+ip9SNBoy/
- S1e9cAJDfWtDadQ6Ht/wyJbs8Cys7ouiGK0KJwaD2J3XX+lT3CdWr+IeA3ZejRqjRhPc
- lm2GNLbZFonYXsqH1r8DV9JRA66V6g17Ve1TIMR65h0DDPqLcOh5px+L74VUxuehFooI
- x1TQ==
-X-Gm-Message-State: AFqh2kpn/1IIvE8JhTXLf4vrhs8f2y8GOKJT4aOr00amY9T7tfY7Q3Bg
- m72i80Gm/aWfbVV6C9udBgYpn9mjgsBPzjJ6YA4hcnnt5yEZQIohQQNwkkG3CQv9repjHfzljql
- eKlrN/X5C3oNmDfqkX8Iha4bESlIc5cFIoA==
-X-Received: by 2002:a05:6870:468d:b0:144:1ba:d778 with SMTP id
- a13-20020a056870468d00b0014401bad778mr3004280oap.170.1672850893463; 
- Wed, 04 Jan 2023 08:48:13 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXt00h9Vw1F7xjxJhrEVOeliX8j4n6mEVBPWCnLaFrbVfGxH6M9Bkw81Sjn7AP5DqVLd/Fnpj9BH5xzPZX2+MZY=
-X-Received: by 2002:a05:6870:468d:b0:144:1ba:d778 with SMTP id
- a13-20020a056870468d00b0014401bad778mr3004279oap.170.1672850893198; Wed, 04
- Jan 2023 08:48:13 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oNDOqnsLbyhoDi5uMGk8/4UUP00n8RzWnJNlr2mmXCw=;
+ b=RWTM4SVSeFqpDSvKQDWbfMH4q7tZwCSD1Bn3B0z2nBDBLruvYluRox6QPtDN40sTy7
+ 1zIlA2XMSGMjyP3gfSfam95ajymIxkIgIGpuhbCHvnz3ynqn8rogywCeWmr4yRuErIIc
+ o9erF8adld4fbb3V+FsncYJpTdIQmlVkvqq9GF4w5rfA5aK+d/ONY6F+MB/3Ki9u81YT
+ nNOnXFQWCBS59FA+14wsfagagV3QSTVDZ/weriI2s7jMHxLIAPwOUzHaIQvczAI2nuhd
+ wr5tvawx3u954ziXjb66bG/+uEh9HwaUgOat0Xvcmu8tJoZ2oqxmCMEBtQ1qMfH+FtP0
+ J2yg==
+X-Gm-Message-State: AFqh2krwHbl31hphGGr+fZdnd07VRO/DF9gpQAZs2+ExVtXgjrotpMjR
+ WHiJ+JgvWHigskQo1ASJhJigvQ==
+X-Google-Smtp-Source: AMrXdXtUdzQfZCdaIthHpZ1bmoKgUfFFqEdVMcyrdI0LWmObweZ2PwXERpr2EM259hg0RYgppYWG3g==
+X-Received: by 2002:a05:600c:2217:b0:3d2:267d:64da with SMTP id
+ z23-20020a05600c221700b003d2267d64damr35326920wml.10.1672929646406; 
+ Thu, 05 Jan 2023 06:40:46 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ z25-20020a1c4c19000000b003d1e1f421bfsm2622176wmf.10.2023.01.05.06.40.45
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 05 Jan 2023 06:40:45 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw/i386/pc: Remove unused 'owner' argument from
+ pc_pci_as_mapping_init
+Date: Thu,  5 Jan 2023 15:40:44 +0100
+Message-Id: <20230105144044.51822-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-References: <20230102161903.3857354-1-casantos@redhat.com>
- <CAC1VKkOzUsh-EZfwSRbGRC13auykBL5jmszpStw=GHcgx9G6Vw@mail.gmail.com>
- <4c891001-4744-c174-7459-d13903037990@linaro.org>
-In-Reply-To: <4c891001-4744-c174-7459-d13903037990@linaro.org>
-From: Carlos Santos <casantos@redhat.com>
-Date: Wed, 4 Jan 2023 13:48:02 -0300
-Message-ID: <CAC1VKkO6XWNOFHPM+tFHu-3caAzjYp2kxhPLNp7q1e43SRXoLQ@mail.gmail.com>
-Subject: Re: [PATCH] meson: allow disablind the installation of keymaps
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=casantos@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,141 +82,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Jan 2023 16:48:22 -0000
+X-List-Received-Date: Thu, 05 Jan 2023 14:40:55 -0000
 
-On Wed, Jan 4, 2023 at 12:15 PM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> On 4/1/23 15:49, Carlos Santos wrote:
-> > On Mon, Jan 2, 2023 at 1:19 PM <casantos@redhat.com> wrote:
-> >>
-> >> From: Carlos Santos <casantos@redhat.com>
-> >>
-> >> There are situatuions in which the keyboard maps are not necessary (e.=
-g.
-> >> when building only tools or linux-user emulator). Add an option to avo=
-id
-> >> installing them, as already possible to do with firmware blobs.
-> >>
-> >> Signed-off-by: Carlos Santos <casantos@redhat.com>
-> >> ---
-> >>   configure                     | 2 ++
-> >>   meson_options.txt             | 2 ++
-> >>   pc-bios/keymaps/meson.build   | 6 ++++--
-> >>   scripts/meson-buildoptions.sh | 4 ++++
-> >>   4 files changed, 12 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/configure b/configure
-> >> index 789a4f6cc9..c6ed6a23d0 100755
-> >> --- a/configure
-> >> +++ b/configure
-> >> @@ -889,6 +889,8 @@ for opt do
-> >>     ;;
-> >>     --disable-blobs) meson_option_parse --disable-install-blobs ""
-> >>     ;;
-> >> +  --disable-keymaps) meson_option_parse --disable-install-keymaps ""
-> >> +  ;;
-> >>     --enable-vfio-user-server) vfio_user_server=3D"enabled"
-> >>     ;;
-> >>     --disable-vfio-user-server) vfio_user_server=3D"disabled"
-> >> diff --git a/meson_options.txt b/meson_options.txt
-> >> index 559a571b6b..be27137e98 100644
-> >> --- a/meson_options.txt
-> >> +++ b/meson_options.txt
-> >> @@ -48,6 +48,8 @@ option('module_upgrades', type : 'boolean', value : =
-false,
-> >>          description: 'try to load modules from alternate paths for up=
-grades')
-> >>   option('install_blobs', type : 'boolean', value : true,
-> >>          description: 'install provided firmware blobs')
-> >> +option('install_keymaps', type : 'boolean', value : true,
-> >> +       description: 'install provided keyboard maps')
-> >>   option('sparse', type : 'feature', value : 'auto',
-> >>          description: 'sparse checker')
-> >>   option('guest_agent', type : 'feature', value : 'auto',
-> >> diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
-> >> index 06c75e646b..7d80c23005 100644
-> >> --- a/pc-bios/keymaps/meson.build
-> >> +++ b/pc-bios/keymaps/meson.build
-> >> @@ -47,7 +47,7 @@ if native_qemu_keymap.found()
-> >>                          build_by_default: true,
-> >>                          output: km,
-> >>                          command: [native_qemu_keymap, '-f', '@OUTPUT@=
-', args.split()],
-> >> -                       install: true,
-> >> +                       install: get_option('install_keymaps'),
-> >>                          install_dir: qemu_datadir / 'keymaps')
-> >>     endforeach
-> >>
-> >> @@ -56,4 +56,6 @@ else
-> >>     install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps'=
-)
-> >>   endif
-> >>
-> >> -install_data(['sl', 'sv'], install_dir: qemu_datadir / 'keymaps')
-> >> +if get_option('install_keymaps')
-> >> +  install_data(['sl', 'sv'], install_dir: qemu_datadir / 'keymaps')
-> >> +endif
-> >> diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoption=
-s.sh
-> >> index aa6e30ea91..f17d9c196e 100644
-> >> --- a/scripts/meson-buildoptions.sh
-> >> +++ b/scripts/meson-buildoptions.sh
-> >> @@ -11,6 +11,8 @@ meson_options_help() {
-> >>     printf "%s\n" '  --datadir=3DVALUE          Data file directory [s=
-hare]'
-> >>     printf "%s\n" '  --disable-coroutine-pool coroutine freelist (bett=
-er performance)'
-> >>     printf "%s\n" '  --disable-install-blobs  install provided firmwar=
-e blobs'
-> >> +  printf "%s\n" '  --disable-install-keymaps'
-> >> +  printf "%s\n" '                           install provided keyboard=
- maps'
-> >>     printf "%s\n" '  --docdir=3DVALUE           Base directory for doc=
-umentation installation'
-> >>     printf "%s\n" '                           (can be empty) [share/do=
-c]'
-> >>     printf "%s\n" '  --enable-block-drv-whitelist-in-tools'
-> >> @@ -291,6 +293,8 @@ _meson_option_parse() {
-> >>       --includedir=3D*) quote_sh "-Dincludedir=3D$2" ;;
-> >>       --enable-install-blobs) printf "%s" -Dinstall_blobs=3Dtrue ;;
-> >>       --disable-install-blobs) printf "%s" -Dinstall_blobs=3Dfalse ;;
-> >> +    --enable-install-keymaps) printf "%s" -Dinstall_keymaps=3Dtrue ;;
-> >> +    --disable-install-keymaps) printf "%s" -Dinstall_keymaps=3Dfalse =
-;;
-> >>       --interp-prefix=3D*) quote_sh "-Dinterp_prefix=3D$2" ;;
-> >>       --enable-jack) printf "%s" -Djack=3Denabled ;;
-> >>       --disable-jack) printf "%s" -Djack=3Ddisabled ;;
-> >> --
-> >> 2.31.1
-> >>
-> >
-> > Thinking a bit more about this patch, I think the correct approach
-> > would be to install blobs and keymaps depending on have_system:
-> >
-> >      [...]
-> >      install: have_system,
-> >      [...]
-> >
-> > And use the same approach for trace-events-all, in trace/meson.build:
-> >
-> >      [...]
-> >      install: have_linux_user or have_bsd_user or have_system,
-> >      [...]
-> >
-> > This would prevent installing useless data.
->
-> Yes, similar to:
-> https://lore.kernel.org/qemu-devel/20210323155132.238193-1-f4bug@amsat.or=
-g/
->
+This argument was added 9 years ago in commit 83d08f2673
+and has never been used since, so remote it.
 
-Apparently it was reviewed and ack-ed but never applied. :-(
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/i386/pc.c         | 2 +-
+ hw/pci-host/i440fx.c | 3 +--
+ hw/pci-host/q35.c    | 3 +--
+ include/hw/i386/pc.h | 2 +-
+ 4 files changed, 4 insertions(+), 6 deletions(-)
 
---=20
-Carlos Santos
-Senior Software Maintenance Engineer
-Red Hat
-casantos@redhat.com    T: +55-11-3534-6186
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index d489ecc0d1..6e592bd969 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -782,7 +782,7 @@ void pc_guest_info_init(PCMachineState *pcms)
+ }
+ 
+ /* setup pci memory address space mapping into system address space */
+-void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
++void pc_pci_as_mapping_init(MemoryRegion *system_memory,
+                             MemoryRegion *pci_address_space)
+ {
+     /* Set to lower priority than RAM */
+diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+index d5426ef4a5..262f82c303 100644
+--- a/hw/pci-host/i440fx.c
++++ b/hw/pci-host/i440fx.c
+@@ -272,8 +272,7 @@ PCIBus *i440fx_init(const char *pci_type,
+                      IO_APIC_DEFAULT_ADDRESS - 1);
+ 
+     /* setup pci memory mapping */
+-    pc_pci_as_mapping_init(OBJECT(f), f->system_memory,
+-                           f->pci_address_space);
++    pc_pci_as_mapping_init(f->system_memory, f->pci_address_space);
+ 
+     /* if *disabled* show SMRAM to all CPUs */
+     memory_region_init_alias(&f->smram_region, OBJECT(d), "smram-region",
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index 20da121374..26390863d6 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -574,8 +574,7 @@ static void mch_realize(PCIDevice *d, Error **errp)
+     }
+ 
+     /* setup pci memory mapping */
+-    pc_pci_as_mapping_init(OBJECT(mch), mch->system_memory,
+-                           mch->pci_address_space);
++    pc_pci_as_mapping_init(mch->system_memory, mch->pci_address_space);
+ 
+     /* if *disabled* show SMRAM to all CPUs */
+     memory_region_init_alias(&mch->smram_region, OBJECT(mch), "smram-region",
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 991f905f5d..88a120bc23 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -156,7 +156,7 @@ void pc_guest_info_init(PCMachineState *pcms);
+ #define PCI_HOST_ABOVE_4G_MEM_SIZE     "above-4g-mem-size"
+ 
+ 
+-void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
++void pc_pci_as_mapping_init(MemoryRegion *system_memory,
+                             MemoryRegion *pci_address_space);
+ 
+ void xen_load_linux(PCMachineState *pcms);
+-- 
+2.38.1
 
 
