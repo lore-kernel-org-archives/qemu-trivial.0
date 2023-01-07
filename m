@@ -1,75 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pDueh-00010H-M0
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jan 2023 16:53:39 -0500
+	id 1pEBYx-000386-9L
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Jan 2023 10:56:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1pDueg-0000zt-4H
- for qemu-trivial@nongnu.org; Fri, 06 Jan 2023 16:53:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1pDuee-0005OY-Je
- for qemu-trivial@nongnu.org; Fri, 06 Jan 2023 16:53:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673042015;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=WSZ1vKIzqHWk12uOpvcGAlHxJQrcJ0JSD/fWdpVNtdU=;
- b=ChxrU2dHqLC8fbRHyxVwfPtNdkGx0GMGJgZFBska3M4NY2W1QU2wsk27Of30YF7AbSgYIT
- e4YkiEAIyxW0es0vj9zJb2snvSsf/nkiZj6K2Rr5H/554Y8KhVe0s3j3Wxe1ZpBVdhATXR
- PQ4Rxj8fBYfre/RbztsxkRLHv84Mpaw=
-Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
- [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-558-AD9AvNvoPsip6qt2LgJdrg-1; Fri, 06 Jan 2023 16:53:34 -0500
-X-MC-Unique: AD9AvNvoPsip6qt2LgJdrg-1
-Received: by mail-lf1-f70.google.com with SMTP id
- a24-20020ac25e78000000b004b5b7587537so987549lfr.18
- for <qemu-trivial@nongnu.org>; Fri, 06 Jan 2023 13:53:33 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1pEBYv-00037J-4Z; Sat, 07 Jan 2023 10:56:49 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1pEBYt-0001MQ-LA; Sat, 07 Jan 2023 10:56:48 -0500
+Received: by mail-ed1-x533.google.com with SMTP id c34so6295238edf.0;
+ Sat, 07 Jan 2023 07:56:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=RvfRUzjthLXddsXQvHVsBIgnCwlCTjah2T7aWa1s2kw=;
+ b=RIsxzeRG7ym3X4JcHhS61j7xSXIsgv5GK81KcDdOJJ169i0YvlKEPZ/GPcXVmXYsBP
+ 3zMvGICcG2jiPcKOKSrQeZ3Zgn7mBYAcsdo9L+hShTz9HFT9IVfLprFxzRJojPI+Kgcy
+ CBXxVQiP/GtFSyhPO3hJwOlHrgjjBMZZ8wtUJI4Mh57o6/aBLjN0z2K3whtK5q3rYA8V
+ j106NXSwv7mTzzcTkFRk3xy61l5aCXpXqwPs1PG8Cq67RBRcV7FMacP0bd05oVlGOA1y
+ SUZ9OmBmRjeml58XVqReO9pIda+Mf5P1QUFHKdStURRUKEr+XWOLgJPsjUD18cpvKWIU
+ F6kA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=WSZ1vKIzqHWk12uOpvcGAlHxJQrcJ0JSD/fWdpVNtdU=;
- b=PbiO/DCkRY4HGHTv0L9S++13iDQOjgdNvBGvBquUI/Wu1/H/yQyYxmMkEvAc80X2a9
- bj0hirc/SOvYFrkjGvtsqPnU6PcR4TBq9t2UmhNU/bh6LnLPf9/qk6JgsilvVTsGRMPe
- 5zLqjfeVDRsDhoWesl6TmFsV4EMUvjrKqthgo2Ay/ic8msxrOIEatP9arwn1giIRy3cc
- 0jetk7UkWbZyX+DwyhIi4B8HzC3gQTFl3D4El/OpOi5Di2oV6QIphbG+HGpy9iqsoJsc
- b9muV9UdrkLLx0VRfPQu2wg6da9RXpXioIpadqMXMSBzNYoM3YjNhLM+z+4kxtRcDCeI
- IGEw==
-X-Gm-Message-State: AFqh2kqD89PSHtSTo/gYS2RhsCMRS6pU9NRWSbZODR1N4aelkWONjbhi
- XFcjpw15fciwdebfk/Jbk8V42N4Grin84BwLYohuvFnKfn2pdNYgwBCvsqhtgDKcge/K+0WImKt
- r9oV6SWbJc/Ai5Niq7ssNrY8fF6Fts1xqhw==
-X-Received: by 2002:a2e:a58a:0:b0:27f:d4ca:d927 with SMTP id
- m10-20020a2ea58a000000b0027fd4cad927mr1658969ljp.184.1673042012679; 
- Fri, 06 Jan 2023 13:53:32 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuo6kU2kefNw7018JBlFbc0adqkuQt3Pk/bXeVbDdSuafZzdzqK5FbVi+RdaSS2Tiovd/x2Ypub1pgc9XAClo0=
-X-Received: by 2002:a2e:a58a:0:b0:27f:d4ca:d927 with SMTP id
- m10-20020a2ea58a000000b0027fd4cad927mr1658963ljp.184.1673042012334; Fri, 06
- Jan 2023 13:53:32 -0800 (PST)
+ bh=RvfRUzjthLXddsXQvHVsBIgnCwlCTjah2T7aWa1s2kw=;
+ b=0TR8mLFjQ13SVNOH2hK/drERFdCdiYfHQlWhNN1oB9gE/DZeCcIKKIhBM0jkmiipPj
+ UU9ZQ7up1YvwyLtIQT1a+QZDr5RaWb/+okA3QfYvlMI/PtbnpAbUIn5f01uwLEJz31RM
+ JsjytAJ2mI7OZ2i0v3Dhe/u+oAOEePB2xMxtFjdNChj2ZoSmaa30DWwVitfjNfWxpryJ
+ BGcKGfExYxGMFpywvQrL0O9t0NvKWrq63WEIIAFXveoeU1D709Bh0hE43bpcNTh0il3P
+ cTarMZTFZCN7efLN3tOQ4Vn0A1fOhtRxxxSOqFzWyF0ftjwaq4vfcW2HDvttC5Ztichn
+ MWXQ==
+X-Gm-Message-State: AFqh2kpkZxjuS93rKv+Zt7WpU+58NKYy2HYzq/7Gp3TiqfIOE0Xba2HS
+ P+0Zp5/nKC7sSAN94DskBibIkRdAqNbYOKBqQDQ=
+X-Google-Smtp-Source: AMrXdXvTXNWWQqGpFrv8Wz/3JE6oGOS0eD28z9lfiVnCZFynQ3Yl2Vs1QgXCnoJ8x79XMkEk3opl0//NtzzF4JWBtCs=
+X-Received: by 2002:a05:6402:1394:b0:48a:eac7:2b9f with SMTP id
+ b20-20020a056402139400b0048aeac72b9fmr2670310edv.91.1673107005405; Sat, 07
+ Jan 2023 07:56:45 -0800 (PST)
 MIME-Version: 1.0
 References: <20230103221349.74160-1-arthur.sengileyev@gmail.com>
 In-Reply-To: <20230103221349.74160-1-arthur.sengileyev@gmail.com>
-From: John Snow <jsnow@redhat.com>
-Date: Fri, 6 Jan 2023 16:53:20 -0500
-Message-ID: <CAFn=p-bBtypjDK75sGDyji45rsykvFXbwsQAg1_CWGi9XrGzuQ@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sat, 7 Jan 2023 23:56:34 +0800
+Message-ID: <CAEUhbmUxfow6JQq3P1CpKNcZehA6dQ+EOYYoMvymxOVk_t0_5Q@mail.gmail.com>
 Subject: Re: [PATCH] Windows installer: keep dependency cache
 To: Arthur Sengileyev <arthur.sengileyev@gmail.com>
-Cc: sw@weilnetz.de, crosa@redhat.com, qemu-devel@nongnu.org, 
+Cc: sw@weilnetz.de, jsnow@redhat.com, crosa@redhat.com, qemu-devel@nongnu.org, 
  qemu-trivial@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,13 +71,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jan 2023 21:53:38 -0000
+X-List-Received-Date: Sat, 07 Jan 2023 15:56:49 -0000
 
-On Tue, Jan 3, 2023 at 5:13 PM Arthur Sengileyev
+On Wed, Jan 4, 2023 at 6:54 AM Arthur Sengileyev
 <arthur.sengileyev@gmail.com> wrote:
 >
 > It should be possible to reuse cache built by previous iteration
 > processing next executables. Already processed dependencies are
+
+s/processing/to process
+
 > already skipped later based on dll name.
 >
 > Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
@@ -105,6 +97,9 @@ On Tue, Jan 3, 2023 at 5:13 PM Arthur Sengileyev
 >          dlldir = os.path.join(destdir + prefix, "dll")
 >          os.mkdir(dlldir)
 > +        depscache = set()
+
+nits: I would use deps_cache as the name
+
 >
 >          for exe in glob.glob(os.path.join(destdir + prefix, "*.exe")):
 >              signcode(exe)
@@ -116,12 +111,7 @@ On Tue, Jan 3, 2023 at 5:13 PM Arthur Sengileyev
 >
 >              # copy all dlls to the DLLDIR
 > --
-> 2.39.0
->
 
-ACK for python changes, which seem sane. I've not used the NSIS script
-before, though, so I won't grant RB/TB here.
-
---js
-
+Otherwise LGTM
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
 
