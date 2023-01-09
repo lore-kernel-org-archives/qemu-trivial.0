@@ -1,62 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pEBYx-000386-9L
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Jan 2023 10:56:51 -0500
+	id 1pEnij-0005eB-01
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Jan 2023 03:41:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1pEBYv-00037J-4Z; Sat, 07 Jan 2023 10:56:49 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEnig-0005cs-ME
+ for qemu-trivial@nongnu.org; Mon, 09 Jan 2023 03:41:26 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1pEBYt-0001MQ-LA; Sat, 07 Jan 2023 10:56:48 -0500
-Received: by mail-ed1-x533.google.com with SMTP id c34so6295238edf.0;
- Sat, 07 Jan 2023 07:56:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=RvfRUzjthLXddsXQvHVsBIgnCwlCTjah2T7aWa1s2kw=;
- b=RIsxzeRG7ym3X4JcHhS61j7xSXIsgv5GK81KcDdOJJ169i0YvlKEPZ/GPcXVmXYsBP
- 3zMvGICcG2jiPcKOKSrQeZ3Zgn7mBYAcsdo9L+hShTz9HFT9IVfLprFxzRJojPI+Kgcy
- CBXxVQiP/GtFSyhPO3hJwOlHrgjjBMZZ8wtUJI4Mh57o6/aBLjN0z2K3whtK5q3rYA8V
- j106NXSwv7mTzzcTkFRk3xy61l5aCXpXqwPs1PG8Cq67RBRcV7FMacP0bd05oVlGOA1y
- SUZ9OmBmRjeml58XVqReO9pIda+Mf5P1QUFHKdStURRUKEr+XWOLgJPsjUD18cpvKWIU
- F6kA==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pEnif-0001e5-7L
+ for qemu-trivial@nongnu.org; Mon, 09 Jan 2023 03:41:26 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ k22-20020a05600c1c9600b003d1ee3a6289so5997596wms.2
+ for <qemu-trivial@nongnu.org>; Mon, 09 Jan 2023 00:41:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=B7l2Ne5QgaT9qY5iZJA1B6ys6kOA6AyFQ52dwLgtzLg=;
+ b=iP864h/QCRmS1WRmtx7jLD+JiCBRkWvl75Ju0RXaqK5laEwzIMVwwHk2oIIBfoyhL0
+ 1xkQc7YSuV1s7t7tZpJWgdTYd75UO3+sa41QzGxzagXmA4nHw1keU3E2BXB8We4PDWKB
+ xveVYQfxlJSCxi55YRq6rbUkmd971XkP1MFskoTZvi8VjWjxgJVOUG2XS8yrETUZQjjW
+ c2BooFMIw7JcnCWi606teSzL9LgJLVEXWTznekzfeszBYxYTUlvoLcL30/ObNGDv39v6
+ XfmHdcB+Ze0eyAdBBFNBBVXjTqNEraqKPv90ici+1vHp+bOhe6vj48G3/MmRqHgGuTTm
+ ST5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=RvfRUzjthLXddsXQvHVsBIgnCwlCTjah2T7aWa1s2kw=;
- b=0TR8mLFjQ13SVNOH2hK/drERFdCdiYfHQlWhNN1oB9gE/DZeCcIKKIhBM0jkmiipPj
- UU9ZQ7up1YvwyLtIQT1a+QZDr5RaWb/+okA3QfYvlMI/PtbnpAbUIn5f01uwLEJz31RM
- JsjytAJ2mI7OZ2i0v3Dhe/u+oAOEePB2xMxtFjdNChj2ZoSmaa30DWwVitfjNfWxpryJ
- BGcKGfExYxGMFpywvQrL0O9t0NvKWrq63WEIIAFXveoeU1D709Bh0hE43bpcNTh0il3P
- cTarMZTFZCN7efLN3tOQ4Vn0A1fOhtRxxxSOqFzWyF0ftjwaq4vfcW2HDvttC5Ztichn
- MWXQ==
-X-Gm-Message-State: AFqh2kpkZxjuS93rKv+Zt7WpU+58NKYy2HYzq/7Gp3TiqfIOE0Xba2HS
- P+0Zp5/nKC7sSAN94DskBibIkRdAqNbYOKBqQDQ=
-X-Google-Smtp-Source: AMrXdXvTXNWWQqGpFrv8Wz/3JE6oGOS0eD28z9lfiVnCZFynQ3Yl2Vs1QgXCnoJ8x79XMkEk3opl0//NtzzF4JWBtCs=
-X-Received: by 2002:a05:6402:1394:b0:48a:eac7:2b9f with SMTP id
- b20-20020a056402139400b0048aeac72b9fmr2670310edv.91.1673107005405; Sat, 07
- Jan 2023 07:56:45 -0800 (PST)
+ bh=B7l2Ne5QgaT9qY5iZJA1B6ys6kOA6AyFQ52dwLgtzLg=;
+ b=2qYPGqhSNuKpfAvrrvGeftKGf8/4LiaMvJYIp7yTYLMFgqeI8xIlYjsPXTw97RfIfZ
+ RHxElhsxOqhbxwUPlFs+BZ45d0cNtbUoO6XO8egrCUoR/eYSifuwJDcXFlxlfUDRA5nH
+ ROC+84N0WpUg/Wweay/eVzo0Fq4QIHkD1NEI3s4rmdfm8je2c0ytYhLh/nQVc/maBnOj
+ OHda4Pw79ecOZXBCdqzbSzwBSkcv2sRhIWkYQdw5TkHvfv+AwjXtMqke0rlE3uNQAW/q
+ KuGhznWgtTNZQ3pJ/0/kwsrRymNEEGYXBzBKA1JQNGwhmsF/r2fRx00xJ/zSt64Dx416
+ Qs2A==
+X-Gm-Message-State: AFqh2kp9SqDVl3VjIfcwk2DmxjZCdlSzVOgfIajXwkF5XmtgErVkJhe6
+ 9vcjlTLcY/hv1zbBv0vYaw1+rw==
+X-Google-Smtp-Source: AMrXdXvw+2Cvuai1bwcvfvtxgNrRsJ0nOufX2/AC1IZ0sz1RMSb2toblswUIvXcfWEZoNikYlcF/0Q==
+X-Received: by 2002:a05:600c:6003:b0:3d6:10e:68a8 with SMTP id
+ az3-20020a05600c600300b003d6010e68a8mr46566564wmb.0.1673253683565; 
+ Mon, 09 Jan 2023 00:41:23 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ h15-20020a05600c314f00b003d99469ece1sm16017146wmo.24.2023.01.09.00.41.22
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 09 Jan 2023 00:41:23 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/5] hw/i2c/bitbang_i2c: Housekeeping
+Date: Mon,  9 Jan 2023 09:41:16 +0100
+Message-Id: <20230109084121.72138-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-References: <20230103221349.74160-1-arthur.sengileyev@gmail.com>
-In-Reply-To: <20230103221349.74160-1-arthur.sengileyev@gmail.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sat, 7 Jan 2023 23:56:34 +0800
-Message-ID: <CAEUhbmUxfow6JQq3P1CpKNcZehA6dQ+EOYYoMvymxOVk_t0_5Q@mail.gmail.com>
-Subject: Re: [PATCH] Windows installer: keep dependency cache
-To: Arthur Sengileyev <arthur.sengileyev@gmail.com>
-Cc: sw@weilnetz.de, jsnow@redhat.com, crosa@redhat.com, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=bmeng.cn@gmail.com; helo=mail-ed1-x533.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -71,47 +79,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Jan 2023 15:56:49 -0000
+X-List-Received-Date: Mon, 09 Jan 2023 08:41:26 -0000
 
-On Wed, Jan 4, 2023 at 6:54 AM Arthur Sengileyev
-<arthur.sengileyev@gmail.com> wrote:
->
-> It should be possible to reuse cache built by previous iteration
-> processing next executables. Already processed dependencies are
+- Remove unused dummy MemoryRegion
+- Convert DPRINTF() to using trace events
 
-s/processing/to process
+(series used as base for follow-up, better if merged via ARM tree)
 
-> already skipped later based on dll name.
->
-> Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
-> ---
->  scripts/nsis.py | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/scripts/nsis.py b/scripts/nsis.py
-> index 03ed7608a2..a2e52df556 100644
-> --- a/scripts/nsis.py
-> +++ b/scripts/nsis.py
-> @@ -91,12 +91,13 @@ def main():
->          print("Searching '%s' for the dependent dlls ..." % search_path)
->          dlldir = os.path.join(destdir + prefix, "dll")
->          os.mkdir(dlldir)
-> +        depscache = set()
+Philippe Mathieu-Daudé (5):
+  hw/i2c/bitbang_i2c: Define TYPE_GPIO_I2C in public header
+  hw/i2c/bitbang_i2c: Remove unused dummy MemoryRegion
+  hw/i2c/bitbang_i2c: Change state calling bitbang_i2c_set_state()
+    helper
+  hw/i2c/bitbang_i2c: Trace state changes
+  hw/i2c/bitbang_i2c: Convert DPRINTF() to trace events
 
-nits: I would use deps_cache as the name
+ hw/arm/musicpal.c            |  3 +-
+ hw/i2c/bitbang_i2c.c         | 81 +++++++++++++++++++++++-------------
+ hw/i2c/trace-events          |  7 ++++
+ include/hw/i2c/bitbang_i2c.h |  2 +
+ 4 files changed, 62 insertions(+), 31 deletions(-)
 
->
->          for exe in glob.glob(os.path.join(destdir + prefix, "*.exe")):
->              signcode(exe)
->
->              # find all dll dependencies
-> -            deps = set(find_deps(exe, search_path, set()))
-> +            deps = set(find_deps(exe, search_path, depscache))
->              deps.remove(exe)
->
->              # copy all dlls to the DLLDIR
-> --
+-- 
+2.38.1
 
-Otherwise LGTM
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
 
