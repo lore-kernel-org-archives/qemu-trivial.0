@@ -1,76 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pFWoY-0003Bd-5W
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jan 2023 03:50:30 -0500
+	id 1pFWoa-0003FC-Dt
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jan 2023 03:50:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFWoU-0003A4-B7
- for qemu-trivial@nongnu.org; Wed, 11 Jan 2023 03:50:26 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFWoR-00036C-4Y
+ for qemu-trivial@nongnu.org; Wed, 11 Jan 2023 03:50:24 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFWoS-0007bc-Ny
- for qemu-trivial@nongnu.org; Wed, 11 Jan 2023 03:50:26 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id co23so14307095wrb.4
- for <qemu-trivial@nongnu.org>; Wed, 11 Jan 2023 00:50:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pFWoO-0007Zd-GF
+ for qemu-trivial@nongnu.org; Wed, 11 Jan 2023 03:50:22 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ k22-20020a05600c1c9600b003d1ee3a6289so12050403wms.2
+ for <qemu-trivial@nongnu.org>; Wed, 11 Jan 2023 00:50:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rqfudLgvWami2CjesLmeGlPtQtwdVZ+Jj9zyr+J7ES0=;
- b=jczFMNTWQboy88S4lf0GnHBvBod3ophmlNQm+X0fkQYN7Yokkl3HfouvXkX31GbR6+
- MJHIeWdz/SlJq1NJ6q4pW1Bze91qgjXOAz0rbizPv+dOB8ZSLRTCTryqugLb4bMb2K2H
- ECuv+f9ZxNzWY+xv8H2Dhl9tev8bTIEmhT6TW2BuZLEUK5s2aF2jSv16PdlAwKXXuwFR
- IugBfUVMwKurlWsV85+PhOjU5boR+ZwP9L1bTRYuo78xJgFt5/NnwWKXN+rjnvqe4Z+t
- qyPFm9ZAkd2XOmM1EOA0ZxPBG+B/wTkaAhn/JlAYqAnhjHRNWhDGymseT1uDmoM0tfpd
- 3xGQ==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=mT+LWt01/sleIbh0MDOTvrE02y2MJEW1VXEk+avLKDA=;
+ b=x2s+qJAlrhg+yHrXRGGRBWjDq/nLh5awC5PjogaxNASQjMgZtNrCUEsl4t7lIgzF9F
+ +dTEwmDS+8mrFlfuo/gDBBZ2c9jSuvyFwK1Go6G/Zck7kHq6XWuyPMYIL1lYCi7ZyfRs
+ F6n9CCooSKo2uuI9WPnQOixNgDL0KDSduaRv28mlQQos2mSVv9WOkcUHL9MWQYSvbmJW
+ swShtN2dDBHdDYe7EfL53SgVtALZLQKK1uidJwelI4b7fkYJFWr90J9ApbINvyD5Vds2
+ IhRQSW90VQ3Go3GJWjcnM5QCZ2mXk8mGl9e1lMHXLq3ktBC+pgd3c43Xu3CxSXjz5dtR
+ zbTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=rqfudLgvWami2CjesLmeGlPtQtwdVZ+Jj9zyr+J7ES0=;
- b=c6Banz1CxYM5pvoipeN/W7EYNFw/LLmscKPTBdQPJ0Zkt26kRbdTHcnOSUtT6cSZyc
- sxov9rsqIcFaeskwhZnZna+1l7jHx3loQI69XZN7KlFeGye+BmpeRjAVhj5CPV2Pd5oF
- hSmLH2T6py9wJRmauIMPCrMRzNl7oim5QzfZI0AGcmZCdlyzDuTx5QfDH8/gp/RMHJoS
- qZe8RUCYcyfSpUxUMmJbDncCS2BdR/G8NEJ5v9ul/bpFhjCP1y/cnVRp+XMTqJGb2q7c
- 0TRUik41NVl5Fdv9ZUlKyH4v/s57fxVJtT9KFhYd3d7ndzrD9ZX5g3g3pibHDTdv4dC1
- xAXg==
-X-Gm-Message-State: AFqh2kqdhJauj00ApnijxJufV61d31cOC2TdHjxd39/jjTWQD3zZvh1Q
- J8hSGSxIib5+EhIo/JuYd1DE7w==
-X-Google-Smtp-Source: AMrXdXt2Lqa1eiSSWrgLTZZ+bwhrCwbEzp7pDW0x7yQbTNrOST4Kz1qbz25egPuPorP8+f9SLJCeTQ==
-X-Received: by 2002:a05:6000:1e04:b0:273:e385:1a89 with SMTP id
- bj4-20020a0560001e0400b00273e3851a89mr43507356wrb.67.1673427023360; 
- Wed, 11 Jan 2023 00:50:23 -0800 (PST)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=mT+LWt01/sleIbh0MDOTvrE02y2MJEW1VXEk+avLKDA=;
+ b=SnoHYMGeiCEVkQC5rPdD8asKueNjDFZ2AO3CyGtu+eYyKWMJ8Ko2XMCwk49PaxGJat
+ 7RjGPFxJ8m56e8EX++166zbUNP7RTVeE9fIeH2c3S2gdGO9b0e00Ru1VQrdhbMEPCPVf
+ OUNY3O8E3+i3PhI8uzdwVMrh9rZMZxwUYQvRAujmz94y2JI54K8rBPzR8dE8S6QmB4HM
+ 58Bbzi17kMglFDDJ7622Xo6sMD/fhYDGcaTZeH/J/FCkG2LyyBs/VtHbbLEMwZ9nVFcG
+ G6g7uLhSwf2Bi1KpW+tC9PTr+lLepyuSjwVyQE275rDMpYFPQ4hpoYA5j+X/tdiQW6Ma
+ 0Xnw==
+X-Gm-Message-State: AFqh2kpghYnHwvht2bt5nN+rwRFSsPYJeHUpf7zL0ksk6r7n9IPUj3bS
+ K9We2eK00yMEGfiDSQvZe0YrsA==
+X-Google-Smtp-Source: AMrXdXs+oh3vX3rKv9pdXy9CMzdYw2W698GBsDzCjlq0EsVH1Q6Ia6kuB7DH13yNTT7fmxRfm50O+w==
+X-Received: by 2002:a05:600c:19d1:b0:3d9:ea0a:19c5 with SMTP id
+ u17-20020a05600c19d100b003d9ea0a19c5mr9697883wmq.38.1673427018104; 
+ Wed, 11 Jan 2023 00:50:18 -0800 (PST)
 Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- j17-20020adff011000000b002a64e575b4esm13421054wro.47.2023.01.11.00.50.22
+ u21-20020a7bc055000000b003d9aa76dc6asm26107920wmc.0.2023.01.11.00.50.17
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 11 Jan 2023 00:50:22 -0800 (PST)
+ Wed, 11 Jan 2023 00:50:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Thomas Huth <thuth@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
  qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v3 1/5] hw/i2c/bitbang_i2c: Define TYPE_GPIO_I2C in public
- header
-Date: Wed, 11 Jan 2023 09:50:12 +0100
-Message-Id: <20230111085016.44551-2-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 0/5] hw/i2c/bitbang_i2c: Housekeeping
+Date: Wed, 11 Jan 2023 09:50:11 +0100
+Message-Id: <20230111085016.44551-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230111085016.44551-1-philmd@linaro.org>
-References: <20230111085016.44551-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,65 +79,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jan 2023 08:50:28 -0000
+X-List-Received-Date: Wed, 11 Jan 2023 08:50:25 -0000
 
-Define TYPE_GPIO_I2C in the public "hw/i2c/bitbang_i2c.h"
-header and use it in hw/arm/musicpal.c.
+Series fully reviewed.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- hw/arm/musicpal.c            | 3 ++-
- hw/i2c/bitbang_i2c.c         | 1 -
- include/hw/i2c/bitbang_i2c.h | 2 ++
- 3 files changed, 4 insertions(+), 2 deletions(-)
+Since v2:
+- Use array of const pointers to const (Richard)
 
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index b65c020115..813232682f 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -25,6 +25,7 @@
- #include "hw/block/flash.h"
- #include "ui/console.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/i2c/bitbang_i2c.h"
- #include "hw/irq.h"
- #include "hw/or-irq.h"
- #include "hw/audio/wm8750.h"
-@@ -1300,7 +1301,7 @@ static void musicpal_init(MachineState *machine)
- 
-     dev = sysbus_create_simple(TYPE_MUSICPAL_GPIO, MP_GPIO_BASE,
-                                qdev_get_gpio_in(pic, MP_GPIO_IRQ));
--    i2c_dev = sysbus_create_simple("gpio_i2c", -1, NULL);
-+    i2c_dev = sysbus_create_simple(TYPE_GPIO_I2C, -1, NULL);
-     i2c = (I2CBus *)qdev_get_child_bus(i2c_dev, "i2c");
- 
-     lcd_dev = sysbus_create_simple(TYPE_MUSICPAL_LCD, MP_LCD_BASE, NULL);
-diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
-index e9a0612a04..ac84bf0262 100644
---- a/hw/i2c/bitbang_i2c.c
-+++ b/hw/i2c/bitbang_i2c.c
-@@ -162,7 +162,6 @@ void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus)
- 
- /* GPIO interface.  */
- 
--#define TYPE_GPIO_I2C "gpio_i2c"
- OBJECT_DECLARE_SIMPLE_TYPE(GPIOI2CState, GPIO_I2C)
- 
- struct GPIOI2CState {
-diff --git a/include/hw/i2c/bitbang_i2c.h b/include/hw/i2c/bitbang_i2c.h
-index 92334e9016..a079e6d70f 100644
---- a/include/hw/i2c/bitbang_i2c.h
-+++ b/include/hw/i2c/bitbang_i2c.h
-@@ -3,6 +3,8 @@
- 
- #include "hw/i2c/i2c.h"
- 
-+#define TYPE_GPIO_I2C "gpio_i2c"
-+
- typedef struct bitbang_i2c_interface bitbang_i2c_interface;
- 
- #define BITBANG_I2C_SDA 0
+Since v1:
+- Fixed overwritten RECEIVING_BIT7 entry (Richard)
+- Picked R-b tags
+
+- Remove unused dummy MemoryRegion
+- Convert DPRINTF() to using trace events
+
+(series used as base for follow-up, better if merged via ARM tree)
+
+Philippe Mathieu-Daudé (5):
+  hw/i2c/bitbang_i2c: Define TYPE_GPIO_I2C in public header
+  hw/i2c/bitbang_i2c: Remove unused dummy MemoryRegion
+  hw/i2c/bitbang_i2c: Change state calling bitbang_i2c_set_state()
+    helper
+  hw/i2c/bitbang_i2c: Trace state changes
+  hw/i2c/bitbang_i2c: Convert DPRINTF() to trace events
+
+ hw/arm/musicpal.c            |  3 +-
+ hw/i2c/bitbang_i2c.c         | 80 ++++++++++++++++++++++--------------
+ hw/i2c/trace-events          |  7 ++++
+ include/hw/i2c/bitbang_i2c.h |  2 +
+ 4 files changed, 61 insertions(+), 31 deletions(-)
+
 -- 
 2.38.1
 
