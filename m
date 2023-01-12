@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pFxxl-0001kS-4c
+	id 1pFxxl-0001ko-CB
 	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2023 08:49:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxh-0001fb-6L
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxf-0001ek-N9
  for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxf-0003A0-NZ
- for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:44 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxd-00038m-C3
+ for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673531383;
+ s=mimecast20190719; t=1673531380;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RykjkEh7BQO6RxxlX7tvf65xg6DR3UMVDcJmXk8iCIo=;
- b=KPSKgYZ04f1/noqERffcAI5eTisC97Aj/qC62Dyd3mPDUuvFmfIYH4HwIjM0u6qEHM5sA+
- puwIMZq+GTsSxGNOLWbjKUyjt56MqlesJfQQ5nlwI0WNOoBrjmPkxoi3bgXFIfJDQC5CEm
- MAJtPTA/JEVrcJCjUUDWIHkzF+L/4d0=
+ bh=I2MazIJlglkEzIo5AdsUjj8BWJ7NmMe7Yj6yOWjXLWg=;
+ b=GT1lVKw7Fu6zZTbvOnzmS3QCCpMX6nUbV3KTLRjy1X7lQC7tNJkggMOYqCnlf6VuUIonBK
+ papRBJvEPjH3KbHryNqt4oh39seQb51PjQ/Ni8sszSMOwtxuZK2su40GKbIpA7T/rtzwhz
+ aHG3vv3YUvmgUySijsn/nf6DxTtU0DM=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-459-r0mE9uT9Nb-XouMuzEupdg-1; Thu, 12 Jan 2023 08:49:39 -0500
-X-MC-Unique: r0mE9uT9Nb-XouMuzEupdg-1
+ us-mta-150-v_BMhGuCM4yNYsR-HDmVFQ-1; Thu, 12 Jan 2023 08:49:37 -0500
+X-MC-Unique: v_BMhGuCM4yNYsR-HDmVFQ-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 69C68181E3EE;
- Thu, 12 Jan 2023 13:49:39 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 331C6811E6E;
+ Thu, 12 Jan 2023 13:49:37 +0000 (UTC)
 Received: from thuth.com (unknown [10.39.193.2])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9822C40C2004;
- Thu, 12 Jan 2023 13:49:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6269F40C2064;
+ Thu, 12 Jan 2023 13:49:36 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	qemu-trivial@nongnu.org
-Subject: [PATCH 7/7] hw/usb: Mark the XLNX_VERSAL-related files as
- target-independent
-Date: Thu, 12 Jan 2023 14:49:28 +0100
-Message-Id: <20230112134928.1026006-8-thuth@redhat.com>
+Subject: [PATCH 5/7] hw/cpu: Mark arm11 and realview mpcore as
+ target-independent code
+Date: Thu, 12 Jan 2023 14:49:26 +0100
+Message-Id: <20230112134928.1026006-6-thuth@redhat.com>
 In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
 References: <20230112134928.1026006-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -75,24 +75,22 @@ can be moved to softmmu_ss to avoid that they get compiled twice
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/usb/meson.build | 4 ++--
+ hw/cpu/meson.build | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/usb/meson.build b/hw/usb/meson.build
-index 793df42e21..bdf34cbd3e 100644
---- a/hw/usb/meson.build
-+++ b/hw/usb/meson.build
-@@ -30,8 +30,8 @@ softmmu_ss.add(when: 'CONFIG_TUSB6010', if_true: files('tusb6010.c'))
- softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('chipidea.c'))
- softmmu_ss.add(when: 'CONFIG_IMX_USBPHY', if_true: files('imx-usb-phy.c'))
- softmmu_ss.add(when: 'CONFIG_VT82C686', if_true: files('vt82c686-uhci-pci.c'))
--specific_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
--specific_ss.add(when: 'CONFIG_XLNX_USB_SUBSYS', if_true: files('xlnx-usb-subsystem.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_USB_SUBSYS', if_true: files('xlnx-usb-subsystem.c'))
+diff --git a/hw/cpu/meson.build b/hw/cpu/meson.build
+index 9e52fee9e7..e37490074f 100644
+--- a/hw/cpu/meson.build
++++ b/hw/cpu/meson.build
+@@ -1,6 +1,6 @@
+ softmmu_ss.add(files('core.c', 'cluster.c'))
  
- # emulated usb devices
- softmmu_ss.add(when: 'CONFIG_USB', if_true: files('dev-hub.c'))
+-specific_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
+-specific_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
++softmmu_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
++softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
+ specific_ss.add(when: 'CONFIG_A9MPCORE', if_true: files('a9mpcore.c'))
+ specific_ss.add(when: 'CONFIG_A15MPCORE', if_true: files('a15mpcore.c'))
 -- 
 2.31.1
 
