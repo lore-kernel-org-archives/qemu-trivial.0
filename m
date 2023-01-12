@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pFxxc-0001YF-Pp
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2023 08:49:40 -0500
+	id 1pFxxi-0001gM-0P
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2023 08:49:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxZ-0001U6-MU
- for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:39 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxc-0001XZ-9F
+ for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxY-00036D-4I
- for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:37 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxa-00037D-7k
+ for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673531375;
+ s=mimecast20190719; t=1673531377;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=L5Ma7NoWMjnQIWPm9s6/4puDT9z5FHFGeiaRUEE8C0E=;
- b=Z2BD8OJs7YOFwZvjZ4B/SvmIt8Vkly+34yFMP9y+ny465nI/0ups5Gv8J6yDo6YffMDaGB
- IkDkAMdW9IavjnV52jWvW8OA8aiEJnSXJGRE+e54kBbYH729ry9ZbLt2sZMNLIyO7h9IYL
- pE3YQH9h+dB21mJPjWSDy6YT9NSmqY0=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vOQJFkscjh9Ma+HtAaeij+iWQQPW9lxux+5N19vSX5w=;
+ b=AHiwbN/Y/WWXVx1MVrXGyVRlIA3v9j2BCn3Wr9Ly1+z5OJR74cBUqHBC3faFJTXR2eIQ/1
+ +gWpwAPNjFgjzKr5WitYxYTTiXe4YsOUcCCPNl1ajH3kawAuIYZd9HsRzowl+uslp0GtAg
+ j648x/AZxQjpNHb59VKwPLDkoH96vNE=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-157-SZ2NblZVOpCk4JlM3vTYfg-1; Thu, 12 Jan 2023 08:49:32 -0500
-X-MC-Unique: SZ2NblZVOpCk4JlM3vTYfg-1
+ us-mta-228-u-LP_qjpNbKq6iHEiRhR5Q-1; Thu, 12 Jan 2023 08:49:34 -0500
+X-MC-Unique: u-LP_qjpNbKq6iHEiRhR5Q-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 97BCE85D061;
- Thu, 12 Jan 2023 13:49:31 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DC488101A55E;
+ Thu, 12 Jan 2023 13:49:33 +0000 (UTC)
 Received: from thuth.com (unknown [10.39.193.2])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CA05F40C2064;
- Thu, 12 Jan 2023 13:49:30 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1563340C2064;
+ Thu, 12 Jan 2023 13:49:32 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	qemu-trivial@nongnu.org
-Subject: [PATCH 0/7] Trivial: Mark some more files as target-independant 
-Date: Thu, 12 Jan 2023 14:49:21 +0100
-Message-Id: <20230112134928.1026006-1-thuth@redhat.com>
+Subject: [PATCH 2/7] hw/intc: Move some files out of the target-specific
+ source set
+Date: Thu, 12 Jan 2023 14:49:23 +0100
+Message-Id: <20230112134928.1026006-3-thuth@redhat.com>
+In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
+References: <20230112134928.1026006-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -64,35 +68,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2023 13:49:39 -0000
+X-List-Received-Date: Thu, 12 Jan 2023 13:49:40 -0000
 
-Here's a collection of low-hanging fruits to mark some more files
-as target-independent (so that they do not have to be compiled twice,
-once for qemu-system-arm and once for qemu-system-aarch64).
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Philippe's patches have been on the list before, but I slightly
-modified some of them (like fixing typos in the subject etc.).
-My patches are new.
+The Goldfish interrupt controller is not target specific.
 
-Philippe Mathieu-Daudé (4):
-  hw/display: Move omap_lcdc.c out of target-specific source set
-  hw/intc: Move some files out of the target-specific source set
-  hw/tpm: Move tpm_ppi.c out of target-specific source set
-  hw/arm: Move various units to softmmu_ss[]
+While the Exynos interrupt combiner is only used by the ARM
+targets, we can build this device once for all.
 
-Thomas Huth (3):
-  hw/cpu: Mark arm11 and realview mpcore as target-independent code
-  hw/intc: Mark more interrupt-controller files as target independent
-  hw/usb: Mark the XLNX_VERSAL-related files as target-independent
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20221209170042.71169-3-philmd@linaro.org>
+[thuth: Change patch title, and also move 'exynos4210_gic.c']
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/intc/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- hw/arm/meson.build     | 11 +++++++----
- hw/cpu/meson.build     |  4 ++--
- hw/display/meson.build |  2 +-
- hw/intc/meson.build    | 12 ++++++------
- hw/tpm/meson.build     |  4 ++--
- hw/usb/meson.build     |  4 ++--
- 6 files changed, 20 insertions(+), 17 deletions(-)
-
+diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+index bcbf22ff51..eeb45db58e 100644
+--- a/hw/intc/meson.build
++++ b/hw/intc/meson.build
+@@ -13,6 +13,8 @@ softmmu_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files(
+   'arm_gicv3_redist.c',
+ ))
+ softmmu_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_pic.c'))
++softmmu_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_gic.c', 'exynos4210_combiner.c'))
++softmmu_ss.add(when: 'CONFIG_GOLDFISH_PIC', if_true: files('goldfish_pic.c'))
+ softmmu_ss.add(when: 'CONFIG_HEATHROW_PIC', if_true: files('heathrow_pic.c'))
+ softmmu_ss.add(when: 'CONFIG_I8259', if_true: files('i8259_common.c', 'i8259.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_avic.c', 'imx_gpcv2.c'))
+@@ -33,7 +35,6 @@ specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
+ specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'TARGET_AARCH64'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
+ specific_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
+ specific_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_vic.c'))
+-specific_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_gic.c', 'exynos4210_combiner.c'))
+ specific_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_irqmp.c'))
+ specific_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic.c'))
+ specific_ss.add(when: 'CONFIG_LOONGSON_LIOINTC', if_true: files('loongson_liointc.c'))
+@@ -60,7 +61,6 @@ specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('xics_spapr.c', 'spapr_xi
+ specific_ss.add(when: 'CONFIG_XIVE', if_true: files('xive.c'))
+ specific_ss.add(when: ['CONFIG_KVM', 'CONFIG_XIVE'],
+ 		if_true: files('spapr_xive_kvm.c'))
+-specific_ss.add(when: 'CONFIG_GOLDFISH_PIC', if_true: files('goldfish_pic.c'))
+ specific_ss.add(when: 'CONFIG_M68K_IRQC', if_true: files('m68k_irqc.c'))
+ specific_ss.add(when: 'CONFIG_NIOS2_VIC', if_true: files('nios2_vic.c'))
+ specific_ss.add(when: 'CONFIG_LOONGARCH_IPI', if_true: files('loongarch_ipi.c'))
 -- 
 2.31.1
 
