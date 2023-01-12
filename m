@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pFxxj-0001iZ-Mp
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2023 08:49:47 -0500
+	id 1pFxxl-0001kS-4c
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2023 08:49:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxe-0001bq-Q7
- for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:42 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxh-0001fb-6L
+ for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:45 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxc-000382-9B
- for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:42 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pFxxf-0003A0-NZ
+ for qemu-trivial@nongnu.org; Thu, 12 Jan 2023 08:49:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673531379;
+ s=mimecast20190719; t=1673531383;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1KUTSENUDqoXrb8Lk8ln5lSj0uVJXRa4hAjhpEkVc1k=;
- b=X+nF4H+oYrcDDKP/m/h6Y5BZ3L40IFzWj3YAUWG3qcUpaPp4h/zW9XFwZmSqXpYYobxKKx
- MjmJeDTaF+/HwHt4GIgD2bCLckmkBw8Bjy4Anz42z26FU65XKqcc6Gh5Wh4CalbZjq5nSM
- jGUPv0FFkbhsur/GQJYZr+0oBYcG25E=
+ bh=RykjkEh7BQO6RxxlX7tvf65xg6DR3UMVDcJmXk8iCIo=;
+ b=KPSKgYZ04f1/noqERffcAI5eTisC97Aj/qC62Dyd3mPDUuvFmfIYH4HwIjM0u6qEHM5sA+
+ puwIMZq+GTsSxGNOLWbjKUyjt56MqlesJfQQ5nlwI0WNOoBrjmPkxoi3bgXFIfJDQC5CEm
+ MAJtPTA/JEVrcJCjUUDWIHkzF+L/4d0=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-375-Nzq2B019O5GOMTlinKwguA-1; Thu, 12 Jan 2023 08:49:36 -0500
-X-MC-Unique: Nzq2B019O5GOMTlinKwguA-1
+ us-mta-459-r0mE9uT9Nb-XouMuzEupdg-1; Thu, 12 Jan 2023 08:49:39 -0500
+X-MC-Unique: r0mE9uT9Nb-XouMuzEupdg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1AC8D811E6E;
- Thu, 12 Jan 2023 13:49:36 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 69C68181E3EE;
+ Thu, 12 Jan 2023 13:49:39 +0000 (UTC)
 Received: from thuth.com (unknown [10.39.193.2])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 49C1040C2004;
- Thu, 12 Jan 2023 13:49:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9822C40C2004;
+ Thu, 12 Jan 2023 13:49:38 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	qemu-trivial@nongnu.org
-Subject: [PATCH 4/7] hw/arm: Move various units to softmmu_ss[]
-Date: Thu, 12 Jan 2023 14:49:25 +0100
-Message-Id: <20230112134928.1026006-5-thuth@redhat.com>
+Subject: [PATCH 7/7] hw/usb: Mark the XLNX_VERSAL-related files as
+ target-independent
+Date: Thu, 12 Jan 2023 14:49:28 +0100
+Message-Id: <20230112134928.1026006-8-thuth@redhat.com>
 In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
 References: <20230112134928.1026006-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
@@ -67,71 +67,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2023 13:49:43 -0000
+X-List-Received-Date: Thu, 12 Jan 2023 13:49:46 -0000
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+Seems like there is nothing target-specific in here, so these files
+can be moved to softmmu_ss to avoid that they get compiled twice
+(once for qemu-system-arm and once for qemu-system-aarch64).
 
-arm_ss[] units are built twice: once for 32-bit word size and
-once for 64-bit. The following units don't require any word
-size knowledge and can be moved to softmmu_ss[] (where they
-are built once):
-
- - smmu-common.c
- - exynos4_boards.c
- - bcm2835_peripherals.c
- - tosa.c
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230110164406.94366-2-philmd@linaro.org>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/arm/meson.build | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ hw/usb/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 92f9f6e000..4babaa8dfc 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -3,7 +3,6 @@ arm_ss.add(files('boot.c'), fdt)
- arm_ss.add(when: 'CONFIG_ARM_VIRT', if_true: files('virt.c'))
- arm_ss.add(when: 'CONFIG_ACPI', if_true: files('virt-acpi-build.c'))
- arm_ss.add(when: 'CONFIG_DIGIC', if_true: files('digic_boards.c'))
--arm_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
- arm_ss.add(when: 'CONFIG_EMCRAFT_SF2', if_true: files('msf2-som.c'))
- arm_ss.add(when: 'CONFIG_HIGHBANK', if_true: files('highbank.c'))
- arm_ss.add(when: 'CONFIG_INTEGRATOR', if_true: files('integratorcp.c'))
-@@ -18,7 +17,6 @@ arm_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
- arm_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
- arm_ss.add(when: 'CONFIG_GUMSTIX', if_true: files('gumstix.c'))
- arm_ss.add(when: 'CONFIG_SPITZ', if_true: files('spitz.c'))
--arm_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
- arm_ss.add(when: 'CONFIG_Z2', if_true: files('z2.c'))
- arm_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview.c'))
- arm_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa-ref.c'))
-@@ -38,7 +36,7 @@ arm_ss.add(when: 'CONFIG_OMAP', if_true: files('omap1.c', 'omap2.c'))
- arm_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
- arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubieboard.c'))
- arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
--arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c', 'bcm2836.c', 'raspi.c'))
-+arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
- arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
-@@ -59,8 +57,13 @@ arm_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-soc.c'))
- arm_ss.add(when: 'CONFIG_MUSCA', if_true: files('musca.c'))
- arm_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
- arm_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
--arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c', 'smmuv3.c'))
-+arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
- arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
- arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+diff --git a/hw/usb/meson.build b/hw/usb/meson.build
+index 793df42e21..bdf34cbd3e 100644
+--- a/hw/usb/meson.build
++++ b/hw/usb/meson.build
+@@ -30,8 +30,8 @@ softmmu_ss.add(when: 'CONFIG_TUSB6010', if_true: files('tusb6010.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('chipidea.c'))
+ softmmu_ss.add(when: 'CONFIG_IMX_USBPHY', if_true: files('imx-usb-phy.c'))
+ softmmu_ss.add(when: 'CONFIG_VT82C686', if_true: files('vt82c686-uhci-pci.c'))
+-specific_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
+-specific_ss.add(when: 'CONFIG_XLNX_USB_SUBSYS', if_true: files('xlnx-usb-subsystem.c'))
++softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
++softmmu_ss.add(when: 'CONFIG_XLNX_USB_SUBSYS', if_true: files('xlnx-usb-subsystem.c'))
  
-+softmmu_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
-+softmmu_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
-+softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
-+softmmu_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
-+
- hw_arch += {'arm': arm_ss}
+ # emulated usb devices
+ softmmu_ss.add(when: 'CONFIG_USB', if_true: files('dev-hub.c'))
 -- 
 2.31.1
 
