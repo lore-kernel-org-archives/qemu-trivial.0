@@ -1,76 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pGPbK-0006YP-Lm
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Jan 2023 14:20:30 -0500
+	id 1pGQFH-0003WO-8z
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Jan 2023 15:01:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pGPbJ-0006XU-Nm
- for qemu-trivial@nongnu.org; Fri, 13 Jan 2023 14:20:29 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGQFF-0003Uy-3m
+ for qemu-trivial@nongnu.org; Fri, 13 Jan 2023 15:01:45 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pGPbG-0006ZS-Qq
- for qemu-trivial@nongnu.org; Fri, 13 Jan 2023 14:20:29 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id
- z4-20020a17090a170400b00226d331390cso25333974pjd.5
- for <qemu-trivial@nongnu.org>; Fri, 13 Jan 2023 11:20:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pGQFD-0006kW-9a
+ for qemu-trivial@nongnu.org; Fri, 13 Jan 2023 15:01:44 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ f25-20020a1c6a19000000b003da221fbf48so1825273wmc.1
+ for <qemu-trivial@nongnu.org>; Fri, 13 Jan 2023 12:01:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=kXa9R5xB7y2gNG/9s3BDnYDPFcXLhmiSz7dWIOzeb/w=;
- b=fhXHp+Wjg5X7om/gU4Lljdb7HPZn3iBMN5TvmdGo7HFTsQ50frYpmxl9iBZKtW93rN
- PLMF1lvn1QJOJ8E3UEuZRR/IWjOjB6yYUVzriGTh2duABX3MoCu4C33vF3vY+ndkVJiJ
- JaP024nTBTueEzUiWU2q6rQQfBV1sUGDWnur+6d8KlMaWwzi7DVrYJEf6Y0pqKATUBlH
- ZNIORuQmZbGELCujK/9Zkl5gVpFznUuN1IIh/1bN/kUPv7IIO6wn1P0utDe6wnkrIkkA
- N6H9NvK41K8cOZ4ZIxjkF/cdTy6od2cx46TLRZfMuq0yqRb6inT4hgpJ9YrMX/ynGHHn
- lxPA==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=4h32Jp869ZqboavElIPakrsSsrqP8c1Xy1WEU51P8z8=;
+ b=vy1NDW2b8KQqG+096/fDeOCSOB9pljhDQn3VUQrjqLJ3+j/0ofIBo/qhQjyF4quVTY
+ 6G7ctubWc92GMA+DCs+xLCJplrYNAbEqZKZMtOaQHH+oXnCrzeVMkgX0z+L1ObdQSUPT
+ kQZsj8/5/MQ8a6Tt+MQGjpyROLvTxLt6qfISVEDaKPRygmmQn12f2srVRf0EO2XWgy55
+ 2L4L4lZB/tZigslDXTfNsTo9d4LraTrpS+EDgo8nva8oVgFmDqll820zzCPMTfvnlbb+
+ HUj0i3pHW74alG1M6uchPP4cSCFoLCUTlWwuoD3vx726IBMCPJfEYTFWVrc791Glfscl
+ jb1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kXa9R5xB7y2gNG/9s3BDnYDPFcXLhmiSz7dWIOzeb/w=;
- b=GOQyGncIwxJ3/4YzBTrXfg/nZbJwdxktDf+jkAtdmDtfbMmboHIMAAmdGlNvbA8ivR
- mQhuLj0kTTO4Gb9hm7pIsHpXyWukFQUNNOMD541EfV05CqVqhR3KVJTy95aUJ2j9IYZQ
- 7ALbWFMq1mOrQ9/vd4NYcNtHEOVQ8sBU9EpReyk5ezaoyK2n1XLl9/RTC+mq1VDTnUxr
- SrKMdV1OunQ/K0W+8irnxmF3LNRF7EnXneGYTgdL9483u+NlmXqWRlmxQW3HhE+LSfy6
- Z1oaY5rGyD5fpWwuLyOhOfPzB3leET7lgjb0FcXhL6A2ZQqbRobFGl0uJfh/a90auCST
- Rimw==
-X-Gm-Message-State: AFqh2kpo0MEJ43At2Zs9GLkuaKZ106yG0N9i5oXE0jbYr2Dq2dr55w+0
- Z4v5zvaESYYcpF28Bs4ubR84fQ==
-X-Google-Smtp-Source: AMrXdXu177KGW5cbN5/zlX1czytuQKEoqA6e8i3hnpxX4q4C8W59oaEOEdiKOubiQdpF/L9Jru+ygw==
-X-Received: by 2002:a05:6a20:d819:b0:b2:3b40:32b1 with SMTP id
- iv25-20020a056a20d81900b000b23b4032b1mr92074700pzb.57.1673637624926; 
- Fri, 13 Jan 2023 11:20:24 -0800 (PST)
-Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com.
- [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
- e17-20020aa798d1000000b0058ba98f16a3sm3281267pfm.171.2023.01.13.11.20.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Jan 2023 11:20:24 -0800 (PST)
-Message-ID: <21a11ed5-839b-d466-86bf-571fb473d56f@linaro.org>
-Date: Fri, 13 Jan 2023 09:20:21 -1000
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4h32Jp869ZqboavElIPakrsSsrqP8c1Xy1WEU51P8z8=;
+ b=Zbt3JUXSV1RybD74Ngqs8wzVpuXbLVOfWWXXZwlxcOz8zvibRS+awXINHy7fUCBzaP
+ vse2+iYIsCapkFVzJXOzpSwcoQTTL++Q0dlzTABbNWt/p5uy/LoD7mkaaO5eAMNTHs+y
+ J+X94c3deDNq+xqrx0OTQTdSMMkQTTnrMrie/le7UykYdZo51LxoBx1iN70jK6TqjbGQ
+ CpP4pOZ5wflTP4UCPRPpdhaBhUfKmxZOwA7ibXcwjqPSEkSYnDeO9Rnykby4MTzwv0/u
+ vHRdUoHje5Zm2ZadTr1VnXzuxbvLqzhp3U3tk/YTcLLTztLdYDEcDYXpmaDQPUO2ERpj
+ Mthw==
+X-Gm-Message-State: AFqh2krQZe/Zz5EaNumqdAiGa4eYxZ6LRUkEmRWgR7ZG6hq4iOJGfBON
+ kFB/RwBpFF9iCh/4u/oWYDA7aw==
+X-Google-Smtp-Source: AMrXdXvbOy4rnQLsrZvKqPs3pvNuXQ/HDc0JQMb78qkoA20sj3GDEeO3E6A7oANujI/RV6DoryWWvw==
+X-Received: by 2002:a05:600c:4f4f:b0:3d8:e0d3:ee24 with SMTP id
+ m15-20020a05600c4f4f00b003d8e0d3ee24mr60245630wmq.37.1673640101616; 
+ Fri, 13 Jan 2023 12:01:41 -0800 (PST)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ f15-20020a7bcd0f000000b003d9a71ee54dsm24909242wmj.36.2023.01.13.12.01.40
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 13 Jan 2023 12:01:41 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/4] hw: QOM housekeeping around IOTHREAD / IRQ types
+Date: Fri, 13 Jan 2023 21:01:34 +0100
+Message-Id: <20230113200138.52869-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 0/7] Trivial: Mark some more files as target-independant
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-References: <20230112134928.1026006-1-thuth@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230112134928.1026006-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,21 +80,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Jan 2023 19:20:30 -0000
+X-List-Received-Date: Fri, 13 Jan 2023 20:01:45 -0000
 
-On 1/12/23 05:49, Thomas Huth wrote:
-> Philippe Mathieu-Daudé (4):
->    hw/display: Move omap_lcdc.c out of target-specific source set
->    hw/intc: Move some files out of the target-specific source set
->    hw/tpm: Move tpm_ppi.c out of target-specific source set
->    hw/arm: Move various units to softmmu_ss[]
-> 
-> Thomas Huth (3):
->    hw/cpu: Mark arm11 and realview mpcore as target-independent code
->    hw/intc: Mark more interrupt-controller files as target independent
->    hw/usb: Mark the XLNX_VERSAL-related files as target-independent
+- remove unused code
+- use recent QOM macros
+- use CamelCase typedef
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Philippe Mathieu-Daudé (4):
+  iothread: Remove unused IOThreadClass / IOTHREAD_CLASS
+  hw/irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
+  hw/or-irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
+  hw: Replace qemu_or_irq typedef by OrIRQState
 
-r~
+ hw/arm/exynos4210.c                  |  4 ++--
+ hw/arm/mps2-tz.c                     |  2 +-
+ hw/core/irq.c                        |  9 ++++-----
+ hw/core/or-irq.c                     | 18 +++++++++---------
+ hw/pci-host/raven.c                  |  2 +-
+ include/hw/arm/armsse.h              |  6 +++---
+ include/hw/arm/bcm2835_peripherals.h |  2 +-
+ include/hw/arm/exynos4210.h          |  4 ++--
+ include/hw/arm/stm32f205_soc.h       |  2 +-
+ include/hw/arm/stm32f405_soc.h       |  2 +-
+ include/hw/arm/xlnx-versal.h         |  6 +++---
+ include/hw/arm/xlnx-zynqmp.h         |  2 +-
+ include/hw/or-irq.h                  |  5 +----
+ iothread.c                           |  4 ----
+ 14 files changed, 30 insertions(+), 38 deletions(-)
+
+-- 
+2.38.1
+
 
