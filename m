@@ -1,61 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pGlRs-0007Ht-Hv
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Jan 2023 13:40:12 -0500
+	id 1pH4kh-0003GS-S1
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Jan 2023 10:16:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arthur.sengileyev@gmail.com>)
- id 1pGlRp-0007HP-CG; Sat, 14 Jan 2023 13:40:09 -0500
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1pH4ke-0003Fn-6q; Sun, 15 Jan 2023 10:16:52 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <arthur.sengileyev@gmail.com>)
- id 1pGlRn-0003n3-DK; Sat, 14 Jan 2023 13:40:08 -0500
-Received: by mail-lf1-x131.google.com with SMTP id f34so37435742lfv.10;
- Sat, 14 Jan 2023 10:40:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1pH4kc-0003gs-HO; Sun, 15 Jan 2023 10:16:51 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id x10so34735303edd.10;
+ Sun, 15 Jan 2023 07:16:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=MsHX5UEju+lzhwooYvdRwiB/qSc/iNAZ8yKoVJZ9+84=;
- b=Aw7S07lpzS9Eo3jd68XoVLqtU6xaXu519qdcSqb4A6XIn42+c0PVIkG0idSsInI9ou
- N83Ul3/Ue7CJI5fEF78Shheg4XwWiEpuva/Y6++BI8KV5OAjQaSPP8I7qk2zWUw3cjCT
- RFdtEHaz+Q3qcoKFA3rKhqx1H8ifuFScnT5dGFR1ysVoGFA1GcEG0O0779JnM6yJ0iud
- ac9gs0f95y15n2KFoBgoy0ETSRH5Y9qIFGy+6r2mV0lySDpSuYIpIRHBo+UUC+2yGQMn
- k8nFCPOrQre509B1twKKrVoWjkAWdoh5JKkK8y8cieVWuIJoe2tfTQIMsz+l2tN5TEFq
- 74iQ==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=0kQTxjhe2QsuwMEpdSBpZ/e+3rJmR/hA3tmVAJedXyU=;
+ b=SsHpL1hfYAXHtRGHS516+mZgsei0cMGOAUJcfVuDMJ9PiuOpvaWRPi00eu0T/W488l
+ kEvMlzCwRuPzaHLpBHM4daXqkfoGgxixhrKDWOSokr/qdMoUzf0PJ21TU8xVp64qcVld
+ mk0EL65TFBoW1IVMEY7StKjbkhDm4gCaHW+RwdIZhJEwi0lKDN2JOX3fGGz6cn2LUn8o
+ nIOSO7YGCfiIBJx8MLgs0iblbjGKirEWR4Nj+xCVDgjUGUH8LEszHLZLijPQIUFMHb0z
+ SchfRllS/1AM+PVGqRgVOh8FMANYvL9E/Y9+sB30Lt860CIHlkFFE7WcqmacqznfhAOt
+ aERg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=MsHX5UEju+lzhwooYvdRwiB/qSc/iNAZ8yKoVJZ9+84=;
- b=Cuuutk3mBGVyIZG2keJbaRj7JOQjocOM+g2RYa+krA9uxf9eJiRyvACTrmWQ/lFbSL
- Z+R4KCbnpLEB6DYNW9V8NjxB8M2clbF6RldkLcH9Se5/70oLrD9RYtc3EM7z7tHcpK+j
- oaqDtMCxhsR9aaX8UR8N7EBoKeC8BiB7/ajIz2ALZBOfo/os7ok2Jzi9UqzIqVjAHSdW
- woerpNLzqGhsCLZmkzC6VPeFlEuqQo/4RPDT13vcnoEb3xF8nTU10rlicLInlCAaAE+x
- 0ySfWulYuTPhaq3P0dZeHWwR8+JGRdpKX6W/g9z7bhBzGTW+GC8lU5EiwKFDD0OIFTh4
- +o3g==
-X-Gm-Message-State: AFqh2kr0Z/DU/v4SAhGZFLNEpKHOxc6ickiaJ9LR3E3jsodnDQuAGQRx
- Irc2KPC2JwAyIC98qscJ6QI=
-X-Google-Smtp-Source: AMrXdXsbYkFRp08yBI+378Db9QZ3scZw4s2+g1HOJoq3nc/4ox8diPC97j5KpIYv27TI7yxXNUcJ/A==
-X-Received: by 2002:a05:6512:3b0c:b0:4b1:4cc1:5ac6 with SMTP id
- f12-20020a0565123b0c00b004b14cc15ac6mr27388075lfv.49.1673721604895; 
- Sat, 14 Jan 2023 10:40:04 -0800 (PST)
-Received: from Arturss-MBP-2.lan ([87.246.149.32])
- by smtp.gmail.com with ESMTPSA id
- c15-20020a056512238f00b004cb3fbc7925sm4352185lfv.77.2023.01.14.10.40.04
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 14 Jan 2023 10:40:04 -0800 (PST)
-From: Arthur Sengileyev <arthur.sengileyev@gmail.com>
-To: arthur.sengileyev@gmail.com
-Cc: sw@weilnetz.de, jsnow@redhat.com, crosa@redhat.com, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, bmeng.cn@gmail.com
-Subject: [PATCH v2] Windows installer: keep dependency cache
-Date: Sat, 14 Jan 2023 20:40:03 +0200
-Message-Id: <20230114184003.76193-1-arthur.sengileyev@gmail.com>
-X-Mailer: git-send-email 2.39.0
+ bh=0kQTxjhe2QsuwMEpdSBpZ/e+3rJmR/hA3tmVAJedXyU=;
+ b=6vK38sB+uAT+c4/u3O3EEaMmW6C1rMPSNzcc2++z3PJm61ReuLHjXV98kLIojdSaBI
+ JoLzV+kL8osd+crukvUJJ6vEpxtoXkWZwm/fZo2abS9ZpoMCmD2A+jeKMENEhuNf/uQO
+ JWTKI4duBv+TL9X/sH6ZrVohaWV7XiACK5jcf02LJmpGm4XR0cSCb1izD8+dFGcl2QZL
+ rjjh3+qf/jYVF63JWu1NHWIGAafr6EX64HzN/eMWkZGjVQAwefVrenI4iKL5A4mM7nWn
+ FtH31xeEknYh4asasB/OY02ffJKMmkXqLjIAcYfVfKxXKDkuHUJ/REzWOCS2RuouPBdW
+ zxOA==
+X-Gm-Message-State: AFqh2kq6nQwilOac3WAoF3zB4QW9U2q3rwsvLvyYvjNBLgG1w+fH9LWw
+ nZMnNSpwqN+195liYo8mCj0aAvnSMgpunFy7sZw=
+X-Google-Smtp-Source: AMrXdXu4V+oZXYJgc59LeJixNtINYpnEJXTFx4TUivtOU/efKW5DOIxWkxb+YpxLQY/ekPJhPZ3kzuDOSBnQuHtJ/kI=
+X-Received: by 2002:aa7:d80f:0:b0:499:dfa:1c6b with SMTP id
+ v15-20020aa7d80f000000b004990dfa1c6bmr3528007edq.202.1673795808286; Sun, 15
+ Jan 2023 07:16:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::131;
- envelope-from=arthur.sengileyev@gmail.com; helo=mail-lf1-x131.google.com
+References: <20230114184003.76193-1-arthur.sengileyev@gmail.com>
+In-Reply-To: <20230114184003.76193-1-arthur.sengileyev@gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 15 Jan 2023 23:16:36 +0800
+Message-ID: <CAEUhbmVYWu2oH0w2iLBncxrVgh2uBRoQQkiV83bCkrN9q7AnfQ@mail.gmail.com>
+Subject: Re: [PATCH v2] Windows installer: keep dependency cache
+To: Arthur Sengileyev <arthur.sengileyev@gmail.com>
+Cc: sw@weilnetz.de, jsnow@redhat.com, crosa@redhat.com, qemu-devel@nongnu.org, 
+ qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -75,42 +71,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 14 Jan 2023 18:40:09 -0000
+X-List-Received-Date: Sun, 15 Jan 2023 15:16:53 -0000
 
-It should be possible to reuse cache built by previous iteration
-to process next executables. Processed dependencies are already
-skipped later based on dll name.
+On Sun, Jan 15, 2023 at 2:40 AM Arthur Sengileyev
+<arthur.sengileyev@gmail.com> wrote:
+>
+> It should be possible to reuse cache built by previous iteration
+> to process next executables. Processed dependencies are already
+> skipped later based on dll name.
+>
+> Changes for v2:
+> (1) changed variable name
+> (2) changed wording in description
 
-Changes for v2:
-(1) changed variable name
-(2) changed wording in description
+The changelog should not be in the commit message.
 
-Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
----
- scripts/nsis.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
+> Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+> ---
+>  scripts/nsis.py | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/scripts/nsis.py b/scripts/nsis.py
+> index 03ed7608a2..7cffba70ff 100644
+> --- a/scripts/nsis.py
+> +++ b/scripts/nsis.py
+> @@ -91,12 +91,13 @@ def main():
+>          print("Searching '%s' for the dependent dlls ..." % search_path)
+>          dlldir = os.path.join(destdir + prefix, "dll")
+>          os.mkdir(dlldir)
+> +        deps_cache = set()
+>
+>          for exe in glob.glob(os.path.join(destdir + prefix, "*.exe")):
+>              signcode(exe)
+>
+>              # find all dll dependencies
+> -            deps = set(find_deps(exe, search_path, set()))
+> +            deps = set(find_deps(exe, search_path, deps_cache))
+>              deps.remove(exe)
+>
+>              # copy all dlls to the DLLDIR
+> --
 
-diff --git a/scripts/nsis.py b/scripts/nsis.py
-index 03ed7608a2..7cffba70ff 100644
---- a/scripts/nsis.py
-+++ b/scripts/nsis.py
-@@ -91,12 +91,13 @@ def main():
-         print("Searching '%s' for the dependent dlls ..." % search_path)
-         dlldir = os.path.join(destdir + prefix, "dll")
-         os.mkdir(dlldir)
-+        deps_cache = set()
- 
-         for exe in glob.glob(os.path.join(destdir + prefix, "*.exe")):
-             signcode(exe)
- 
-             # find all dll dependencies
--            deps = set(find_deps(exe, search_path, set()))
-+            deps = set(find_deps(exe, search_path, deps_cache))
-             deps.remove(exe)
- 
-             # copy all dlls to the DLLDIR
--- 
-2.39.0
-
+Regards,
+Bin
 
