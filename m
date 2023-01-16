@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHP5G-0005GC-Lm
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 07:59:30 -0500
+	id 1pHP5J-0005Np-R7
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 07:59:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pHP5F-0005FC-3V; Mon, 16 Jan 2023 07:59:29 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ id 1pHP5H-0005Ji-El; Mon, 16 Jan 2023 07:59:31 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pHP5D-00016o-J2; Mon, 16 Jan 2023 07:59:28 -0500
-Received: by mail-ej1-x633.google.com with SMTP id vm8so67883277ejc.2;
- Mon, 16 Jan 2023 04:59:26 -0800 (PST)
+ id 1pHP5F-000177-QE; Mon, 16 Jan 2023 07:59:31 -0500
+Received: by mail-ed1-x536.google.com with SMTP id v30so40612050edb.9;
+ Mon, 16 Jan 2023 04:59:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HGFA1IAZGe7qEvZ3mo0CJqcNUUJ0fER/+h+Iq3ohYkY=;
- b=YoHcmawVVJYoZ/xrwe1bot5g9gk5c/5y5oOXkBWCZzNGaU0/vVwBgERLjsqfRc+M4J
- Df5vudY9rRAzeDq8JuRTT7aL4bmSuK6s21q7xVq7kNHlzvUcmVlXwRaytwq1F0AviwxZ
- HLkJf+L3+6JbdQ8K75sBeVA3AK/UhQMH2dhYjOxOwb+7nOSHd5HxuM4KnOLBD2A412qd
- GMHh8LtE6ZxUX9DB6AT1E8RLEwU4Ryv3Z8iGjzkYReqh/E8/9OtU3sHqYn7VJP45onBG
- jZmoX7SDU4xGVyP7wr9V+skqaH0sgatq+do0moM2zpR2AHcOeuRh0x6ILhlnu2+wxWhK
- mUWw==
+ bh=FIPjagYbHti5a3V5WvuYNbsfsB1fpcKo6VchvNPRZ9g=;
+ b=F7ZPnD4XT5mWnoeM2E3NdFooCIT+5e+U5H2dyjTW7th/CyZsTccUkJs7c3u/mn7FmZ
+ WFic/GIT8wPVvLnI//8oGq4swpALSAjxtz/lOESnp/KsZK4dAHMpG3I/oAjeXM71nJNk
+ xMWvE+T8lB2RtUFauLwJYoGEsmo2RfeiOOhP4B3N8W1yS6xikK7rIJAYAPysQYTZ1eqh
+ OLOuHoX7K9blmvh3c59VTHDao37GVubNRFyQE/sQ/vgFBuJnzuCc3Meotza2EJjbb/wV
+ vloJ+7TEmR6HAddO1Ze56ybwldcLs40IUx4jyAQnp13Ue+uQbi+A12GgpIZTP6YY0276
+ 26Kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=HGFA1IAZGe7qEvZ3mo0CJqcNUUJ0fER/+h+Iq3ohYkY=;
- b=Bp6dgBa6fC7X+ZdU5F8Cb1E2UxBujZgtoJGhi7ME/macnNlo7NKNdaC5TgSLdsJplo
- 10YWwKxYTR8vWt2zRyW7R2mxE37cRoKorOXVhOn94gk/CmTcv9Js68jZvvCNaJShVZAT
- I2BzqGxj+kTa401XzYu7Qntps+G9dpVJ4ZlaTgCMbYgO4VqTGj+D7Dmff+cF6MSI9M0p
- Bff9mZxPrp3ebrwf3WCn4uIvJNM8smNJhIaiU+2/vHpPn87aLy1Iq8uT4DLMEGrKvYTt
- xSGvzAYaQSUu0gabi2kc1qGntMTNn4fIGzjfpsgmUZunFzdJLzPA2UNV/lS6gKnA6e/k
- T/bw==
-X-Gm-Message-State: AFqh2kq4CFw5pwF0ehWPQI49QF03g97vCz/j7bepzvlWwF2PH4RI1SVA
- OB0Hp4g9FKZvofEZbtR7l3+UnTQ82NE=
-X-Google-Smtp-Source: AMrXdXvKNr/TKo+mPQjGCVIho/bgmIyTLlM8UZgKNjMfqHzIfpMGM1T/fBIG6cxFLHubUVcDpJM0eg==
-X-Received: by 2002:a17:906:fcc8:b0:863:e38b:5b0a with SMTP id
- qx8-20020a170906fcc800b00863e38b5b0amr16698142ejb.65.1673873965691; 
- Mon, 16 Jan 2023 04:59:25 -0800 (PST)
+ bh=FIPjagYbHti5a3V5WvuYNbsfsB1fpcKo6VchvNPRZ9g=;
+ b=jtuaFyop040JrypSpyc+SY1iLrgKWBCy1nmmvEYzCpEAuFE0Yso2Nv4s1+szbaluuC
+ jx/49OV/za0mmcIt9k7An2IJ4/zPEnyycvDuSboYR8eSBKugvkvZPq/iE7egVoRhYWSu
+ aTKuWz/Hy1Lto3WOig/PPEZL+jGq90JpZ1O4Vm7DE1+8xjlcA2cYFXXJdbNp7RU72duV
+ o0MutRNeJpZS/saqcFexUW2HnDBQgekHGvXrI/mHA15E8JGbjjC4X5j3H1Mr86y0co8f
+ pVrGvdKfAirWN/GpDwYNfrh6QiTezbX9gkLKWNOugFoJXmXpM4RthlIYKtM3nrzD/kbh
+ 0TuQ==
+X-Gm-Message-State: AFqh2krJdXkL0kS48SOIG4mIXPv3JVZHjqnpFpw2lJgBaCiI6aX7ZPW+
+ w5WzC/NO6cUxG4wTyPL0AWDE3OfjTt0=
+X-Google-Smtp-Source: AMrXdXv/OpveEDg7glaD//1HABJ+nKEsos6Xd5m2FP1qD2MkND7/EVZSTh6BzCsXGnThAgu6EAt57w==
+X-Received: by 2002:a05:6402:381b:b0:497:233d:3ef4 with SMTP id
+ es27-20020a056402381b00b00497233d3ef4mr42279349edb.22.1673873967653; 
+ Mon, 16 Jan 2023 04:59:27 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-077-191-143-217.77.191.pool.telefonica.de. [77.191.143.217])
  by smtp.gmail.com with ESMTPSA id
- um41-20020a170907cb2900b0086c4fbb8507sm3201517ejc.225.2023.01.16.04.59.23
+ um41-20020a170907cb2900b0086c4fbb8507sm3201517ejc.225.2023.01.16.04.59.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Jan 2023 04:59:25 -0800 (PST)
+ Mon, 16 Jan 2023 04:59:27 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>,
@@ -57,17 +57,17 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 4/8] hw/acpi/piix4: No need to #include
- "hw/southbridge/piix.h"
-Date: Mon, 16 Jan 2023 13:58:38 +0100
-Message-Id: <20230116125842.66817-5-shentey@gmail.com>
+Subject: [PATCH v2 5/8] hw/i386/acpi-build: Remove unused attributes
+Date: Mon, 16 Jan 2023 13:58:39 +0100
+Message-Id: <20230116125842.66817-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230116125842.66817-1-shentey@gmail.com>
 References: <20230116125842.66817-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -87,27 +87,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 12:59:29 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 12:59:32 -0000
 
-hw/acpi/piix4 has its own header with its structure definition etc.
+Ammends commit 3db119da7915 'pc: acpi: switch to AML API composed DSDT'.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/acpi/piix4.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/i386/acpi-build.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index 4d0d4fdeeb..2e19a55526 100644
---- a/hw/acpi/piix4.c
-+++ b/hw/acpi/piix4.c
-@@ -20,7 +20,6 @@
-  */
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 0be3960a37..428328dc2d 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -117,8 +117,6 @@ typedef struct AcpiMiscInfo {
+ #ifdef CONFIG_TPM
+     TPMVersion tpm_version;
+ #endif
+-    const unsigned char *dsdt_code;
+-    unsigned dsdt_size;
+ } AcpiMiscInfo;
  
- #include "qemu/osdep.h"
--#include "hw/southbridge/piix.h"
- #include "hw/irq.h"
- #include "hw/isa/apm.h"
- #include "hw/i2c/pm_smbus.h"
+ typedef struct FwCfgTPMConfig {
 -- 
 2.39.0
 
