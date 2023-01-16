@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHU1r-0006Yp-8E
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 13:16:19 -0500
+	id 1pHUFn-0004Ki-2y
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 13:30:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHU1o-0006T3-9q; Mon, 16 Jan 2023 13:16:16 -0500
-Received: from mout.kundenserver.de ([212.227.126.131])
+ id 1pHUFm-0004K5-0l; Mon, 16 Jan 2023 13:30:42 -0500
+Received: from mout.kundenserver.de ([212.227.126.135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHU1m-0004pI-G0; Mon, 16 Jan 2023 13:16:16 -0500
+ id 1pHUFk-00088A-C4; Mon, 16 Jan 2023 13:30:41 -0500
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1Mzz6s-1oURsl2tCY-00x7Ti; Mon, 16 Jan 2023 19:16:09 +0100
-Message-ID: <3693854c-579c-390d-7027-205cfaeddcf8@vivier.eu>
-Date: Mon, 16 Jan 2023 19:16:08 +0100
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MGQ85-1pVX1V2XaH-00Gq0H; Mon, 16 Jan 2023 19:30:28 +0100
+Message-ID: <4ecdef61-2013-1896-d05c-b014cd9c8dc4@vivier.eu>
+Date: Mon, 16 Jan 2023 19:30:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH] hw/cxl/cxl-host: Fix an error message typo
+Subject: Re: [PATCH trivial for 7.2] hw/ssi/sifive_spi.c: spelling: reigster
 Content-Language: fr
-To: Hoa Nguyen <hoanguyen@ucdavis.edu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20221127032220.2649-1-hoanguyen@ucdavis.edu>
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Bin Meng <bin.meng@windriver.com>
+References: <20221105115329.306527-1-mjt@msgid.tls.msk.ru>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221127032220.2649-1-hoanguyen@ucdavis.edu>
+In-Reply-To: <20221105115329.306527-1-mjt@msgid.tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:RRTdGtnH0sSXhSz616EgrFlBmW8QHr59dmvhj2V1xpA+jk+JJPD
- 0cokdUeVSs0FdAXfwoGrmph5rYhQag/Cy1aFO5ofTmWesHU7JVnL2WvdnH4EdW/hQ8PKvLa
- GIErcEwo+ss8bFjzU/tYILAgzBy5HIFl4ghUfkve37k9XazQMKvR4JZIufmEGcf3hnYDUsk
- WjUbNt9Wvx8jb6eKgBTSw==
-UI-OutboundReport: notjunk:1;M01:P0:nNDxwijKf6o=;zyfXSvh+NqzuYTBaxlPbdVW30X4
- TrS2Z5j3B2I26mDYFJZ/Gvcu2uqcLGVrKaJ1I7YiXh+LrK7hSYi/wXSQ9Z/VK1od+Q0ZDUzPp
- 8v4p6O+iJ54vvs+IIUIR2RZzhNEI/qGvQykk8dbey1hE+RcE49yzoSXux5u833D9WcIsIEdnq
- V1/iHAx+IYKDbnAv/6cfAvDAPEWPXFMhjaMc3FQDzLDBnY0dP/rs+IawtpMNJuun9J/3iPFjJ
- fWQjWf2IvVrNCGufkYnPpGzNY5Za7kmc4IHTrK4gFROx53YN5ODKIF5IWccWcA8IYuaSLvoQt
- lEkqjly2lPFRlpGzKDDD1YNxfZS7QCfZ9JYIas0+yo2lWWcOnDVgMoR3LREBJHZcMfzcuAcOl
- fhaEXWTt2VmPriTG9CvZxpUTMddbko4TeqhoD+i8CiRmemSb41GiShtz+79mwfm7ltu5jq4P+
- eEN7pk2aR3nR/OZgX07EGubbUS0L+jkY2eS5o8qseJ8b24znP6Tvmrc26RJpxdJosXy5hvat/
- nSfG/mmsUGGB2plXZ6NVAGZPwG2r7NYZvgFfNAl3CcY4j/BSjoqDJcPxrdRY9+hlzJCYRXytd
- In9tNgjWfR38tUg+PhY2CtCD9ouS7Vwp9t9VAzpUL9+oVVn6Ka92am7CF13mjjpAPWLn7YUuq
- cAjDZJLqO+y56sYpmoSWa+TjLTLpg0Vg6m8ad7opdw==
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:qYPt+aAoLlPhvBUChHthX3QKokSt6Dex/jqbG3G0oOK6u5L5Lrz
+ xUI+4zaRWXwbKTKyDd2kkyK7k85gLgB/94duQWc2nDHszzeyF8F3FgB203JLyazifDMrlCA
+ 2uHQuWUOZdxJHfeMUio4nQbpZfU45k5gluMkWsThmYLCrjYdTA9yxbbIqyeacw+WXkoE2qM
+ PNn69mC7CIjfaANHgZuiw==
+UI-OutboundReport: notjunk:1;M01:P0:WGrr2d4wcrk=;otGs34qk3jfSuKL/T+8qRYZlJlu
+ SrT5wX5bQKES2MJfWevZ+u48dEYwjPeKfP/p88gtzpgRyy2KMXmFuOD5MVoCDXDrYchb+RE3I
+ dhYieYuB6ZBVHtfhwb/HSC216Jv+ks+OEgBqahzZ/3Jxu/u0UGM/YIG4UZ5i3BkQxm5UWuNot
+ CLgcRs0Lid243tIA3wc8ks/18u4TnE1oXOf1XN17Ai1o27mi1LsQ+xD7ctqAnhEL9DPND1aYz
+ SsGBKa1PCSWA1ew4+6U5QC8RVSF4PujRfCBVYcSFIxE7lu++/EDLTardxcpKXKAd9chKa3Lo9
+ on2KSWZsWKVORNJQ7ufkviKeUPIVas1PrjkG3+NmNOWjBYi7QW9YsovrL2FVQJ+NX0BnM4e8c
+ wzziQsZqTDn+BWjT7P2Xa4N0KQu/0QNxaEqOL4P0gmocZApfQYFxkUfZU+e7CbLatxsKXOQ8t
+ boviLbbnsUPV7wEPxFiHVLXbfmtklJ1jYPJhpv239E5TOdzDcSy9Ysip6BGS+btPxIRwAugVZ
+ 2Sbjb01F7+7Ok0haXmN4kcRw2O9CvhBTe3p+kXtigqHJZK6IHGMFPYoL5l3KQj8bncBcK3kiQ
+ NcQz4aCfWhaa2l8zdIXeTRembPh8ftf+AOEG46pey1dbu6bRmHZI5rF1gkOP4/g1BOZ90LPdW
+ tXWlP1yMTmliJjXLceKfZnRYL19yC1kLVj5bBdW1fA==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -19
 X-Spam_score: -2.0
@@ -61,27 +62,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 18:16:18 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 18:30:42 -0000
 
-Le 27/11/2022 à 04:22, Hoa Nguyen a écrit :
-> Signed-off-by: Hoa Nguyen <hoanguyen@ucdavis.edu>
+Le 05/11/2022 à 12:53, Michael Tokarev a écrit :
+> Fixes: 0694dabe9763847f3010b54ab3ec7d367d2f0ff0
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   hw/cxl/cxl-host.c | 2 +-
+>   hw/ssi/sifive_spi.c | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
-> index 1adf61231a..3c1ec8732a 100644
-> --- a/hw/cxl/cxl-host.c
-> +++ b/hw/cxl/cxl-host.c
-> @@ -47,7 +47,7 @@ static void cxl_fixed_memory_window_config(CXLState *cxl_state,
+> diff --git a/hw/ssi/sifive_spi.c b/hw/ssi/sifive_spi.c
+> index 03540cf5ca..1b4a401ca1 100644
+> --- a/hw/ssi/sifive_spi.c
+> +++ b/hw/ssi/sifive_spi.c
+> @@ -267,7 +267,7 @@ static void sifive_spi_write(void *opaque, hwaddr addr,
+>       case R_RXDATA:
+>       case R_IP:
+>           qemu_log_mask(LOG_GUEST_ERROR,
+> -                      "%s: invalid write to read-only reigster 0x%"
+> +                      "%s: invalid write to read-only register 0x%"
+>                         HWADDR_PRIx " with 0x%x\n", __func__, addr << 2, value);
+>           break;
 >   
->       if (object->size % (256 * MiB)) {
->           error_setg(errp,
-> -                   "Size of a CXL fixed memory window must my a multiple of 256MiB");
-> +                   "Size of a CXL fixed memory window must be a multiple of 256MiB");
->           return;
->       }
->       fw->size = object->size;
 
 Applied to my trivial-patches branch.
 
