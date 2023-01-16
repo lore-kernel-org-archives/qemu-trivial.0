@@ -1,71 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHFYU-00086D-Uq
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Jan 2023 21:49:02 -0500
+	id 1pHK0V-0007R2-Fb
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 02:34:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1pHFYS-00084d-NZ; Sun, 15 Jan 2023 21:49:00 -0500
-Received: from mail-vs1-xe32.google.com ([2607:f8b0:4864:20::e32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1pHFYQ-0000PE-LO; Sun, 15 Jan 2023 21:49:00 -0500
-Received: by mail-vs1-xe32.google.com with SMTP id d66so15338067vsd.9;
- Sun, 15 Jan 2023 18:48:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BDIUpumaRud4TSL3Rzqc8YTQU2bmATKtwd+TLtpjfXo=;
- b=GiGFyfzOhpe9EQg1F3O0/MqHIhJImLov5TRi28L0TC5oUS6XCyN2+5UoXOPla8zKwa
- 2zGd5w8S6/f8VWvJFXceE8f8uCZnRe2t7P91GuEnsrvJ0fnKPILQe7SJX8bO3sRPSN60
- tlhIRz7eH8jsTtBZC0q/QeJGdzI9ZAwDCA1U0PIipGr8qj7uGmhxxWqslhEiK89GkeoS
- WDoSQLbQhesHvPmkpqwVCfDxejan0td7FGHucgOgfqjkwSCu5uUIK5+Rm5WRBhKyK1m7
- jKmiNKR7u8lkJXL6YFzJYGEh1EpfWJqqW1RK54reYZNn9F+n4uaSsBc4U0lLyTu8PuJ1
- BtUQ==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pHK0O-0007QD-87
+ for qemu-trivial@nongnu.org; Mon, 16 Jan 2023 02:34:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pHK0L-0006Hs-4h
+ for qemu-trivial@nongnu.org; Mon, 16 Jan 2023 02:34:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1673854441;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NV0pppOAzVzVaClvcdHFO+fCIMRHZ1mZd2hFzGqc5wM=;
+ b=hmxHdqxCEadGuawporVBXNFkZEEjpWZyqXts1Bex7VgvbmhgvNLnxgLL/Cleqjt4E9S8q0
+ StpsRtNZconsSbtxQuphnsStQK9/SUf/TboQ6Xl0uiZLEjAa1eQqom1ADbVMbD75SYSseH
+ ZXzykxbPCNDAPsod7M5/LRR5iUO+0jc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-635-YHuOp4NAMoWS_KjbXpdE2w-1; Mon, 16 Jan 2023 02:34:00 -0500
+X-MC-Unique: YHuOp4NAMoWS_KjbXpdE2w-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ o11-20020adf8b8b000000b002be143c4827so14395wra.19
+ for <qemu-trivial@nongnu.org>; Sun, 15 Jan 2023 23:34:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=BDIUpumaRud4TSL3Rzqc8YTQU2bmATKtwd+TLtpjfXo=;
- b=AcBzARZa9Grqv73bkwFZAjUb22C/5lEOLuMTTjhHMqrYnA6hZ2/kCPyQNZsltLbn//
- WmpEyH+kv2ym4tx6tr+khe+GIZZma2t6fGQykThns4ZHel1dqw9Q9q0D4SyU0UHMWkx1
- 9z+dhvTvRpGQs95ijJDudnBLgtL9MDQAHk93EI3P3TLGcMbQwfSwdXgcpJHWIJaAUfLR
- uBQmZsXaY2mzNKdPKSCGRBqDqHZIzdKbydZRQOH7Gb6u+t62jNJ1+YG05Y0qVHtYnZmE
- E+kVOWRiz1WDmJxZBMW4XjJpeAULYVzz82tpCGj5ztaL/1pbQ2qp4vqwC6UK6rPrZ2bK
- bryw==
-X-Gm-Message-State: AFqh2kqWPOZvTeWhCMG/0S0JhUpKtgojg8HtUIOPCB9GRNPTbKriO6Dg
- SXdGO4MAi2aN3kMJxzYj8withL8aiAHTQizTtso=
-X-Google-Smtp-Source: AMrXdXsunv1YfOoSeRNqNrl0srCXjlPsfAJxfym/TtrpXTWTzhLfpCPlq+VzjgL5X5MDn3FxBjTmk6ffzBLdg+OjOLI=
-X-Received: by 2002:a67:e052:0:b0:3d0:c2e9:cb77 with SMTP id
- n18-20020a67e052000000b003d0c2e9cb77mr3001266vsl.54.1673837336497; Sun, 15
- Jan 2023 18:48:56 -0800 (PST)
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=NV0pppOAzVzVaClvcdHFO+fCIMRHZ1mZd2hFzGqc5wM=;
+ b=GkYXEdQ7cYsBpqlNMxwtfZDmwfIGUqRFtFRtg+WXGZfHhiuwQjDtPSeWERZ9b4YJiy
+ sCN7Nn4CYiZjeKxUTHlks0peKdS1dFMlpLJudDDkFGdVdWF0E9Oy1g2omElViTAh2cgG
+ ASYqMQI0+KY924J2VgNAYWg9jt6J8MQqTCoMwbEn97ia8z0u3wCAuptWGy0rCCqOV1E5
+ 8HVmdqk4dHWzobwDRS4CsLgciqccsvbmLs8RGErkhl3ao8QrEVmRcxhjk5bLW/IaDf59
+ y8B2bzeJiaOmUFIFbApdMfWniJra0oEJcoCxajws7rhFCp5ukfLg9gS2o/AhxbiArHX0
+ +IHg==
+X-Gm-Message-State: AFqh2kpqa/32CJaJCThQuYebP1IZQkKec4hPh6++VrIuQ+QDnV9409oH
+ h07+jzOL0jIYS2Cf0Uqyz7sKKf74k1EWo68m3pNNEb6J5+HlhH5Tbw5hqjFJmN+gQZWbfnvGG6z
+ BrUP7ZYWPgkkqgtGgLg==
+X-Received: by 2002:a5d:5484:0:b0:2bd:e150:bf54 with SMTP id
+ h4-20020a5d5484000000b002bde150bf54mr6875126wrv.60.1673854439382; 
+ Sun, 15 Jan 2023 23:33:59 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXuxJvMDFDkMjKqZuyP9E6NRlPK76TZXD6Koc0gRLkRyhDTiY80stciW78WUoCbQTrj5Y4cIxA==
+X-Received: by 2002:a5d:5484:0:b0:2bd:e150:bf54 with SMTP id
+ h4-20020a5d5484000000b002bde150bf54mr6875102wrv.60.1673854439024; 
+ Sun, 15 Jan 2023 23:33:59 -0800 (PST)
+Received: from [192.168.0.2] (ip-109-43-177-109.web.vodafone.de.
+ [109.43.177.109]) by smtp.gmail.com with ESMTPSA id
+ l1-20020adfe9c1000000b00289bdda07b7sm24903761wrn.92.2023.01.15.23.33.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 15 Jan 2023 23:33:56 -0800 (PST)
+Message-ID: <400cebe9-96ef-1877-a07c-63e78fa12099@redhat.com>
+Date: Mon, 16 Jan 2023 08:33:54 +0100
 MIME-Version: 1.0
-References: <20230113200138.52869-1-philmd@linaro.org>
- <20230113200138.52869-5-philmd@linaro.org>
-In-Reply-To: <20230113200138.52869-5-philmd@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 16 Jan 2023 12:48:30 +1000
-Message-ID: <CAKmqyKN9Hggf9Gv8UPnXH5ra+xVOfOA=POOPdvYnNHhoZHW9iw@mail.gmail.com>
-Subject: Re: [PATCH 4/4] hw: Replace qemu_or_irq typedef by OrIRQState
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org, 
- Alistair Francis <alistair@alistair23.me>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e32;
- envelope-from=alistair23@gmail.com; helo=mail-vs1-xe32.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: Call qemu_socketpair() instead of socketpair() when possible
+To: Guoyi Tu <tugy@chinatelecom.cn>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ marcandre.lureau@gmail.com
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <cd28916a-f1f3-b54e-6ade-8a3647c3a9a5@chinatelecom.cn>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <cd28916a-f1f3-b54e-6ade-8a3647c3a9a5@chinatelecom.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,317 +98,118 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 02:49:01 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 07:34:09 -0000
 
-On Sat, Jan 14, 2023 at 6:04 AM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> OBJECT_DECLARE_SIMPLE_TYPE() macro provides the OrIRQState
-> declaration for free. Besides, the QOM code style is to use
-> the structure name as typedef, and QEMU style is to use Camel
-> Case, so rename qemu_or_irq as OrIRQState.
->
-> Mechanical change using:
->
->   $ sed -i -e 's/qemu_or_irq/OrIRQState/g' $(git grep -l qemu_or_irq)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+On 16/01/2023 05.56, Guoyi Tu wrote:
+> As qemu_socketpair() was introduced in commit 3c63b4e9
+> ("oslib-posix: Introduce qemu_socketpair()"), it's time
+> to replace the other existing socketpair() calls with
+> qemu_socketpair() if possible
+> 
+> Signed-off-by: Guoyi Tu <tugy@chinatelecom.cn>
 > ---
->  hw/arm/exynos4210.c                  |  4 ++--
->  hw/arm/mps2-tz.c                     |  2 +-
->  hw/core/or-irq.c                     | 18 +++++++++---------
->  hw/pci-host/raven.c                  |  2 +-
->  include/hw/arm/armsse.h              |  6 +++---
->  include/hw/arm/bcm2835_peripherals.h |  2 +-
->  include/hw/arm/exynos4210.h          |  4 ++--
->  include/hw/arm/stm32f205_soc.h       |  2 +-
->  include/hw/arm/stm32f405_soc.h       |  2 +-
->  include/hw/arm/xlnx-versal.h         |  6 +++---
->  include/hw/arm/xlnx-zynqmp.h         |  2 +-
->  include/hw/or-irq.h                  |  2 --
->  12 files changed, 25 insertions(+), 27 deletions(-)
->
-> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-> index 8dafa2215b..6f2dda13f6 100644
-> --- a/hw/arm/exynos4210.c
-> +++ b/hw/arm/exynos4210.c
-> @@ -507,7 +507,7 @@ static uint64_t exynos4210_calc_affinity(int cpu)
->      return (0x9 << ARM_AFF1_SHIFT) | cpu;
->  }
->
-> -static DeviceState *pl330_create(uint32_t base, qemu_or_irq *orgate,
-> +static DeviceState *pl330_create(uint32_t base, OrIRQState *orgate,
->                                   qemu_irq irq, int nreq, int nevents, in=
-t width)
->  {
->      SysBusDevice *busdev;
-> @@ -806,7 +806,7 @@ static void exynos4210_init(Object *obj)
->
->      for (i =3D 0; i < ARRAY_SIZE(s->pl330_irq_orgate); i++) {
->          char *name =3D g_strdup_printf("pl330-irq-orgate%d", i);
-> -        qemu_or_irq *orgate =3D &s->pl330_irq_orgate[i];
-> +        OrIRQState *orgate =3D &s->pl330_irq_orgate[i];
->
->          object_initialize_child(obj, name, orgate, TYPE_OR_IRQ);
->          g_free(name);
-> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-> index 284c09c91d..07aecd9497 100644
-> --- a/hw/arm/mps2-tz.c
-> +++ b/hw/arm/mps2-tz.c
-> @@ -152,7 +152,7 @@ struct MPS2TZMachineState {
->      TZMSC msc[4];
->      CMSDKAPBUART uart[6];
->      SplitIRQ sec_resp_splitter;
-> -    qemu_or_irq uart_irq_orgate;
-> +    OrIRQState uart_irq_orgate;
->      DeviceState *lan9118;
->      SplitIRQ cpu_irq_splitter[MPS2TZ_NUMIRQ_MAX];
->      Clock *sysclk;
-> diff --git a/hw/core/or-irq.c b/hw/core/or-irq.c
-> index d8f3754e96..1df4bc05a7 100644
-> --- a/hw/core/or-irq.c
-> +++ b/hw/core/or-irq.c
-> @@ -31,7 +31,7 @@
->
->  static void or_irq_handler(void *opaque, int n, int level)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(opaque);
-> +    OrIRQState *s =3D OR_IRQ(opaque);
->      int or_level =3D 0;
->      int i;
->
-> @@ -46,7 +46,7 @@ static void or_irq_handler(void *opaque, int n, int lev=
-el)
->
->  static void or_irq_reset(DeviceState *dev)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(dev);
-> +    OrIRQState *s =3D OR_IRQ(dev);
->      int i;
->
->      for (i =3D 0; i < MAX_OR_LINES; i++) {
-> @@ -56,7 +56,7 @@ static void or_irq_reset(DeviceState *dev)
->
->  static void or_irq_realize(DeviceState *dev, Error **errp)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(dev);
-> +    OrIRQState *s =3D OR_IRQ(dev);
->
->      assert(s->num_lines <=3D MAX_OR_LINES);
->
-> @@ -65,7 +65,7 @@ static void or_irq_realize(DeviceState *dev, Error **er=
-rp)
->
->  static void or_irq_init(Object *obj)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(obj);
-> +    OrIRQState *s =3D OR_IRQ(obj);
->
->      qdev_init_gpio_out(DEVICE(obj), &s->out_irq, 1);
->  }
-> @@ -84,7 +84,7 @@ static void or_irq_init(Object *obj)
->
->  static bool vmstate_extras_needed(void *opaque)
->  {
-> -    qemu_or_irq *s =3D OR_IRQ(opaque);
-> +    OrIRQState *s =3D OR_IRQ(opaque);
->
->      return s->num_lines >=3D OLD_MAX_OR_LINES;
->  }
-> @@ -95,7 +95,7 @@ static const VMStateDescription vmstate_or_irq_extras =
-=3D {
->      .minimum_version_id =3D 1,
->      .needed =3D vmstate_extras_needed,
->      .fields =3D (VMStateField[]) {
-> -        VMSTATE_VARRAY_UINT16_UNSAFE(levels, qemu_or_irq, num_lines, 0,
-> +        VMSTATE_VARRAY_UINT16_UNSAFE(levels, OrIRQState, num_lines, 0,
->                                       vmstate_info_bool, bool),
->          VMSTATE_END_OF_LIST(),
->      },
-> @@ -106,7 +106,7 @@ static const VMStateDescription vmstate_or_irq =3D {
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
->      .fields =3D (VMStateField[]) {
-> -        VMSTATE_BOOL_SUB_ARRAY(levels, qemu_or_irq, 0, OLD_MAX_OR_LINES)=
-,
-> +        VMSTATE_BOOL_SUB_ARRAY(levels, OrIRQState, 0, OLD_MAX_OR_LINES),
->          VMSTATE_END_OF_LIST(),
->      },
->      .subsections =3D (const VMStateDescription*[]) {
-> @@ -116,7 +116,7 @@ static const VMStateDescription vmstate_or_irq =3D {
->  };
->
->  static Property or_irq_properties[] =3D {
-> -    DEFINE_PROP_UINT16("num-lines", qemu_or_irq, num_lines, 1),
-> +    DEFINE_PROP_UINT16("num-lines", OrIRQState, num_lines, 1),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->
-> @@ -136,7 +136,7 @@ static void or_irq_class_init(ObjectClass *klass, voi=
-d *data)
->  static const TypeInfo or_irq_type_info =3D {
->     .name =3D TYPE_OR_IRQ,
->     .parent =3D TYPE_DEVICE,
-> -   .instance_size =3D sizeof(qemu_or_irq),
-> +   .instance_size =3D sizeof(OrIRQState),
->     .instance_init =3D or_irq_init,
->     .class_init =3D or_irq_class_init,
->  };
-> diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
-> index 2c96ddf8fe..5e0a5b9303 100644
-> --- a/hw/pci-host/raven.c
-> +++ b/hw/pci-host/raven.c
-> @@ -60,7 +60,7 @@ DECLARE_INSTANCE_CHECKER(PREPPCIState, RAVEN_PCI_HOST_B=
-RIDGE,
->  struct PRePPCIState {
->      PCIHostState parent_obj;
->
-> -    qemu_or_irq *or_irq;
-> +    OrIRQState *or_irq;
->      qemu_irq pci_irqs[PCI_NUM_PINS];
->      PCIBus pci_bus;
->      AddressSpace pci_io_as;
-> diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-> index 9648e7a419..cd0931d0a0 100644
-> --- a/include/hw/arm/armsse.h
-> +++ b/include/hw/arm/armsse.h
-> @@ -155,12 +155,12 @@ struct ARMSSE {
->      TZPPC apb_ppc[NUM_INTERNAL_PPCS];
->      TZMPC mpc[IOTS_NUM_MPC];
->      CMSDKAPBTimer timer[3];
-> -    qemu_or_irq ppc_irq_orgate;
-> +    OrIRQState ppc_irq_orgate;
->      SplitIRQ sec_resp_splitter;
->      SplitIRQ ppc_irq_splitter[NUM_PPCS];
->      SplitIRQ mpc_irq_splitter[IOTS_NUM_EXP_MPC + IOTS_NUM_MPC];
-> -    qemu_or_irq mpc_irq_orgate;
-> -    qemu_or_irq nmi_orgate;
-> +    OrIRQState mpc_irq_orgate;
-> +    OrIRQState nmi_orgate;
->
->      SplitIRQ cpu_irq_splitter[NUM_SSE_IRQS];
->
-> diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm283=
-5_peripherals.h
-> index c9d25d493e..d724a2fc28 100644
-> --- a/include/hw/arm/bcm2835_peripherals.h
-> +++ b/include/hw/arm/bcm2835_peripherals.h
-> @@ -56,7 +56,7 @@ struct BCM2835PeripheralState {
->      BCM2835AuxState aux;
->      BCM2835FBState fb;
->      BCM2835DMAState dma;
-> -    qemu_or_irq orgated_dma_irq;
-> +    OrIRQState orgated_dma_irq;
->      BCM2835ICState ic;
->      BCM2835PropertyState property;
->      BCM2835RngState rng;
-> diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
-> index 97353f1c02..68db19f0cb 100644
-> --- a/include/hw/arm/exynos4210.h
-> +++ b/include/hw/arm/exynos4210.h
-> @@ -96,8 +96,8 @@ struct Exynos4210State {
->      MemoryRegion boot_secondary;
->      MemoryRegion bootreg_mem;
->      I2CBus *i2c_if[EXYNOS4210_I2C_NUMBER];
-> -    qemu_or_irq pl330_irq_orgate[EXYNOS4210_NUM_DMA];
-> -    qemu_or_irq cpu_irq_orgate[EXYNOS4210_NCPUS];
-> +    OrIRQState pl330_irq_orgate[EXYNOS4210_NUM_DMA];
-> +    OrIRQState cpu_irq_orgate[EXYNOS4210_NCPUS];
->      A9MPPrivState a9mpcore;
->      Exynos4210GicState ext_gic;
->      Exynos4210CombinerState int_combiner;
-> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_so=
-c.h
-> index 849d3ed889..5a4f776264 100644
-> --- a/include/hw/arm/stm32f205_soc.h
-> +++ b/include/hw/arm/stm32f205_soc.h
-> @@ -63,7 +63,7 @@ struct STM32F205State {
->      STM32F2XXADCState adc[STM_NUM_ADCS];
->      STM32F2XXSPIState spi[STM_NUM_SPIS];
->
-> -    qemu_or_irq *adc_irqs;
-> +    OrIRQState *adc_irqs;
->
->      MemoryRegion sram;
->      MemoryRegion flash;
-> diff --git a/include/hw/arm/stm32f405_soc.h b/include/hw/arm/stm32f405_so=
-c.h
-> index 249ab5434e..c968ce3ab2 100644
-> --- a/include/hw/arm/stm32f405_soc.h
-> +++ b/include/hw/arm/stm32f405_soc.h
-> @@ -63,7 +63,7 @@ struct STM32F405State {
->      STM32F4xxExtiState exti;
->      STM32F2XXUsartState usart[STM_NUM_USARTS];
->      STM32F2XXTimerState timer[STM_NUM_TIMERS];
-> -    qemu_or_irq adc_irqs;
-> +    OrIRQState adc_irqs;
->      STM32F2XXADCState adc[STM_NUM_ADCS];
->      STM32F2XXSPIState spi[STM_NUM_SPIS];
->
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index cbe8a19c10..b6786e9832 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -85,7 +85,7 @@ struct Versal {
->          } rpu;
->
->          struct {
-> -            qemu_or_irq irq_orgate;
-> +            OrIRQState irq_orgate;
->              XlnxXramCtrl ctrl[XLNX_VERSAL_NR_XRAM];
->          } xram;
->
-> @@ -103,7 +103,7 @@ struct Versal {
->                  XlnxCSUDMA dma_src;
->                  XlnxCSUDMA dma_dst;
->                  MemoryRegion linear_mr;
-> -                qemu_or_irq irq_orgate;
-> +                OrIRQState irq_orgate;
->              } ospi;
->          } iou;
->
-> @@ -113,7 +113,7 @@ struct Versal {
->          XlnxVersalEFuseCtrl efuse_ctrl;
->          XlnxVersalEFuseCache efuse_cache;
->
-> -        qemu_or_irq apb_irq_orgate;
-> +        OrIRQState apb_irq_orgate;
->      } pmc;
->
->      struct {
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index 20bdf894aa..687c75e3b0 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -130,7 +130,7 @@ struct XlnxZynqMPState {
->      XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
->      XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
->      XlnxCSUDMA qspi_dma;
-> -    qemu_or_irq qspi_irq_orgate;
-> +    OrIRQState qspi_irq_orgate;
->      XlnxZynqMPAPUCtrl apu_ctrl;
->      XlnxZynqMPCRF crf;
->      CadenceTTCState ttc[XLNX_ZYNQMP_NUM_TTC];
-> diff --git a/include/hw/or-irq.h b/include/hw/or-irq.h
-> index 131abc2e0c..c0a42f3711 100644
-> --- a/include/hw/or-irq.h
-> +++ b/include/hw/or-irq.h
-> @@ -35,8 +35,6 @@
->   */
->  #define MAX_OR_LINES      48
->
-> -typedef struct OrIRQState qemu_or_irq;
-> -
->  OBJECT_DECLARE_SIMPLE_TYPE(OrIRQState, OR_IRQ)
->
->  struct OrIRQState {
-> --
-> 2.38.1
->
->
+>   backends/tpm/tpm_emulator.c         | 2 +-
+>   tests/qtest/dbus-display-test.c     | 5 +++--
+>   tests/qtest/migration-test.c        | 2 +-
+>   tests/unit/test-crypto-tlssession.c | 4 ++--
+>   tests/unit/test-io-channel-tls.c    | 2 +-
+>   5 files changed, 8 insertions(+), 7 deletions(-)
+> 
+> diff --git a/backends/tpm/tpm_emulator.c b/backends/tpm/tpm_emulator.c
+> index 49cc3d749d..67e7b212e3 100644
+> --- a/backends/tpm/tpm_emulator.c
+> +++ b/backends/tpm/tpm_emulator.c
+> @@ -553,7 +553,7 @@ static int tpm_emulator_prepare_data_fd(TPMEmulator 
+> *tpm_emu)
+>       Error *err = NULL;
+>       int fds[2] = { -1, -1 };
+> 
+> -    if (socketpair(AF_UNIX, SOCK_STREAM, 0, fds) < 0) {
+> +    if (qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, fds) < 0) {
+>           error_report("tpm-emulator: Failed to create socketpair");
+>           return -1;
+>       }
+> diff --git a/tests/qtest/dbus-display-test.c b/tests/qtest/dbus-display-test.c
+> index cb1b62d1d1..fef025ac6f 100644
+> --- a/tests/qtest/dbus-display-test.c
+> +++ b/tests/qtest/dbus-display-test.c
+> @@ -1,5 +1,6 @@
+>   #include "qemu/osdep.h"
+>   #include "qemu/dbus.h"
+> +#include "qemu/sockets.h"
+>   #include <gio/gio.h>
+>   #include <gio/gunixfdlist.h>
+>   #include "libqtest.h"
+> @@ -36,7 +37,7 @@ test_setup(QTestState **qts, GDBusConnection **conn)
+> 
+>       *qts = qtest_init("-display dbus,p2p=yes -name dbus-test");
+> 
+> -    g_assert_cmpint(socketpair(AF_UNIX, SOCK_STREAM, 0, pair), ==, 0);
+> +    g_assert_cmpint(qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, pair), ==, 0);
+> 
+>       qtest_qmp_add_client(*qts, "@dbus-display", pair[1]);
+> 
+> @@ -152,7 +153,7 @@ test_dbus_display_console(void)
+> 
+>       test_setup(&qts, &conn);
+> 
+> -    g_assert_cmpint(socketpair(AF_UNIX, SOCK_STREAM, 0, pair), ==, 0);
+> +    g_assert_cmpint(qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, pair), ==, 0);
+>       fd_list = g_unix_fd_list_new();
+>       idx = g_unix_fd_list_append(fd_list, pair[1], NULL);
+> 
+> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+> index dbde726adf..1dd32c9506 100644
+> --- a/tests/qtest/migration-test.c
+> +++ b/tests/qtest/migration-test.c
+> @@ -1661,7 +1661,7 @@ static void *test_migrate_fd_start_hook(QTestState *from,
+>       int pair[2];
+> 
+>       /* Create two connected sockets for migration */
+> -    ret = socketpair(PF_LOCAL, SOCK_STREAM, 0, pair);
+> +    ret = qemu_socketpair(PF_LOCAL, SOCK_STREAM, 0, pair);
+>       g_assert_cmpint(ret, ==, 0);
+> 
+>       /* Send the 1st socket to the target */
+> diff --git a/tests/unit/test-crypto-tlssession.c 
+> b/tests/unit/test-crypto-tlssession.c
+> index 615a1344b4..b12e7b6879 100644
+> --- a/tests/unit/test-crypto-tlssession.c
+> +++ b/tests/unit/test-crypto-tlssession.c
+> @@ -82,7 +82,7 @@ static void test_crypto_tls_session_psk(void)
+>       int ret;
+> 
+>       /* We'll use this for our fake client-server connection */
+> -    ret = socketpair(AF_UNIX, SOCK_STREAM, 0, channel);
+> +    ret = qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, channel);
+>       g_assert(ret == 0);
+> 
+>       /*
+> @@ -236,7 +236,7 @@ static void test_crypto_tls_session_x509(const void 
+> *opaque)
+>       int ret;
+> 
+>       /* We'll use this for our fake client-server connection */
+> -    ret = socketpair(AF_UNIX, SOCK_STREAM, 0, channel);
+> +    ret = qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, channel);
+>       g_assert(ret == 0);
+> 
+>       /*
+> diff --git a/tests/unit/test-io-channel-tls.c 
+> b/tests/unit/test-io-channel-tls.c
+> index cc39247556..e036ac5df4 100644
+> --- a/tests/unit/test-io-channel-tls.c
+> +++ b/tests/unit/test-io-channel-tls.c
+> @@ -121,7 +121,7 @@ static void test_io_channel_tls(const void *opaque)
+>       GMainContext *mainloop;
+> 
+>       /* We'll use this for our fake client-server connection */
+> -    g_assert(socketpair(AF_UNIX, SOCK_STREAM, 0, channel) == 0);
+> +    g_assert(qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, channel) == 0);
+> 
+>   #define CLIENT_CERT_DIR "tests/test-io-channel-tls-client/"
+>   #define SERVER_CERT_DIR "tests/test-io-channel-tls-server/"
+
+Acked-by: Thomas Huth <thuth@redhat.com>
+
 
