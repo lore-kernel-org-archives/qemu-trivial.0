@@ -1,61 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHSae-0002x4-Ga
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 11:44:08 -0500
+	id 1pHScH-0004YG-8W
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 11:45:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHSad-0002wh-3S; Mon, 16 Jan 2023 11:44:07 -0500
-Received: from mout.kundenserver.de ([212.227.126.187])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pHScC-0004Nj-QG
+ for qemu-trivial@nongnu.org; Mon, 16 Jan 2023 11:45:46 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHSaZ-0004Hm-MO; Mon, 16 Jan 2023 11:44:06 -0500
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1Ml3ym-1osFdJ1jnY-00lTjE; Mon, 16 Jan 2023 17:43:41 +0100
-Message-ID: <d0404ac2-08aa-407a-1faa-5974870ded31@vivier.eu>
-Date: Mon, 16 Jan 2023 17:43:38 +0100
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pHScA-0004iQ-Q3
+ for qemu-trivial@nongnu.org; Mon, 16 Jan 2023 11:45:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1673887540;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AJHPTUqOm06iuk5CQ3eyuo7SM6vCmzGcotUi5cguy1Q=;
+ b=A29F8t2fNO7jeN6BTLb3lySi7IpH6aDIesqcZU9pUwxQpD4N9j9qL5odwDSMKSLMBt/mvO
+ 6KFnU1mjRvkiBodSlWiUEKMpw2AnT+v2ZWG4n1AMOom451bGZONLKR+9FZ/Wme/siEiqmH
+ XldhPYG97Tib1U3O27F2v2lTD3AY2E4=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-189-DThTR2zKOwatT1zCr2uKyg-1; Mon, 16 Jan 2023 11:45:39 -0500
+X-MC-Unique: DThTR2zKOwatT1zCr2uKyg-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ z20-20020a05640240d400b0049e1b5f6175so1738931edb.8
+ for <qemu-trivial@nongnu.org>; Mon, 16 Jan 2023 08:45:38 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AJHPTUqOm06iuk5CQ3eyuo7SM6vCmzGcotUi5cguy1Q=;
+ b=JHurBB8eiYyh1/Bs/pIGLB7Rh6CESPZmm3VKVYHs2yddtVkW9ykH842zicv9JEyZK6
+ ioDJr4nvDMtYR/FenA2AOHMM1aOLjcEo9q9vEArrNDJ91LiE8PxIOEQ8pOBcPY32v4uK
+ xbxAf30e3OSCvK5RT+ixvpb4TzEvQyF3Nn83EWEGsNQ0kfR8x36k0PpsrCYKq57fY0nS
+ O2S5UI3RAIi7pTLd3u7uLC1EUr3p2QJVKLi1cm2Ue5mMLrzRjBPAYEhoMe2usm1QH1+t
+ OgPqPw9FHMDyypGCDAtM4iYmneS4mwJOy4+OEEh0DG4HOnY5a2z7HfqXCPmrY1FaSRQi
+ jNVg==
+X-Gm-Message-State: AFqh2krBrolPXvbDyMtJXNs+P2sRiWoSwNoehzsgnQbDEzJKgeVhUVLv
+ sP52CNLIqCkv2GmV2y5eu4pHCV78CwPpdY1VrT9JNS1yWGVyzhg88VJxMmWGepOHGbmbHwONsbD
+ nb45BQ3c6stOKH9/Pqw==
+X-Received: by 2002:a05:6402:d55:b0:499:c294:77b6 with SMTP id
+ ec21-20020a0564020d5500b00499c29477b6mr22961871edb.9.1673887538052; 
+ Mon, 16 Jan 2023 08:45:38 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsCazXPP0HauozXCEt2CwHd8Z+/34G6TSrL38/C75Z+zuyYXDO4r0hoJI3UW8Tp4Se8Fyb99Q==
+X-Received: by 2002:a05:6402:d55:b0:499:c294:77b6 with SMTP id
+ ec21-20020a0564020d5500b00499c29477b6mr22961853edb.9.1673887537869; 
+ Mon, 16 Jan 2023 08:45:37 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ s1-20020aa7d781000000b0048ecd372fc9sm11704919edq.2.2023.01.16.08.45.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Jan 2023 08:45:36 -0800 (PST)
+Date: Mon, 16 Jan 2023 17:45:35 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Markus
+ Armbruster <armbru@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <ani@anisinha.ca>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Aurelien Jarno
+ <aurelien@aurel32.net>
+Subject: Re: [PATCH v3 5/7] hw/i386/acpi-build: Remove unused attributes
+Message-ID: <20230116174535.197cd4e2@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230116152908.147275-6-shentey@gmail.com>
+References: <20230116152908.147275-1-shentey@gmail.com>
+ <20230116152908.147275-6-shentey@gmail.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.36; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: Call qemu_socketpair() instead of socketpair() when possible
-Content-Language: fr
-To: Guoyi Tu <tugy@chinatelecom.cn>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- marcandre.lureau@gmail.com
-Cc: qemu-devel@nongnu.org, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <cd28916a-f1f3-b54e-6ade-8a3647c3a9a5@chinatelecom.cn>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <cd28916a-f1f3-b54e-6ade-8a3647c3a9a5@chinatelecom.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:s0VWY0FdsdgPSUClKHkl4MuGbYPK8DxhC5wokRzDykp/6J38D9e
- 4sWHgy3SMlraUnoLKmFjEC8VKoSKQ3HzVc2+epa9PzXCjoUj3ricVCZJX/d8F4nTZ29Kj5h
- 7OxAjFdhidio37iP1hgNpRyqhxQRaQqdkzFlfVsgpeUUhNK8VNU5FrWXoFyByOYoifIePLc
- tb6f1+0gj7BQb0KRksLeA==
-UI-OutboundReport: notjunk:1;M01:P0:LlV3uA5VNl0=;eSAzWAmCUZvyTjWUjWoRWGmS/NN
- Jk4y7bkk6jLp1n8JxpFzG0h9qcBGQcqP6PGvpvI3LqBaKoC7kbjUpKKM3t+wmzm5+rlJcufMk
- J6NMeOb8aoEjcoyYrfWAdEe33p5w6nLn1xknLleX53qm56c1anXFdXLaNtcq9Y6dAAC98AsFj
- oLz2rSJkdWBUhOkfd+WFmD2Hq9qnKS7Obfh7gA56Emtzc65jRTWwczOUAg44Q7UV8zaJ+jmJt
- AQQLtvlJ3vKu3KiZOet2eLM9F3fBXw5rIvvJyqRku7VKrG8weMtJRh4WQMePtxyeN+4gf0K+b
- CN64wWyKB4z1WNou5F8fCmQMwq6HeHRmEvjg1KEMQQvXwdhlc7rGfACsJxY8zokfB7UH26tf2
- fB4Ne+nKFhioJY7+6IILtnUEzy1Xy0igd49SEKDJFPta1y1V5vQZQTFH3iTAY/QTNxa95nL/+
- 8ob/eYmxMREc0cbnS3O69g2lLC9WzaTMRkZ3vNi9AZX4s9hKFulyoo2KL1Tfk/L7GvDiAx63B
- BX7aH/Sp06ZEN4+UeTqVdPrp4oxzeTOA6N9DxtQciCSsXIxm52v7TAKvhHm1W/m0nEecrvk0w
- bnWmJIl5DMXocB2FKCvaQePY9umPZBLmtjXTcjNpTtyHx8iISfZlAcNu+6bqLbNZSvnUrMxii
- x+CwRAJFGOxhMy83btn6jpGlq+3wRmrYzmrsh/IYFg==
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.097,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,117 +98,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 16:44:07 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 16:45:47 -0000
 
-Le 16/01/2023 à 05:56, Guoyi Tu a écrit :
-> As qemu_socketpair() was introduced in commit 3c63b4e9
-> ("oslib-posix: Introduce qemu_socketpair()"), it's time
-> to replace the other existing socketpair() calls with
-> qemu_socketpair() if possible
-> 
-> Signed-off-by: Guoyi Tu <tugy@chinatelecom.cn>
+On Mon, 16 Jan 2023 16:29:06 +0100
+Bernhard Beschow <shentey@gmail.com> wrote:
+
+> Ammends commit 3db119da7915 'pc: acpi: switch to AML API composed DSDT'.
+>=20
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
->   backends/tpm/tpm_emulator.c         | 2 +-
->   tests/qtest/dbus-display-test.c     | 5 +++--
->   tests/qtest/migration-test.c        | 2 +-
->   tests/unit/test-crypto-tlssession.c | 4 ++--
->   tests/unit/test-io-channel-tls.c    | 2 +-
->   5 files changed, 8 insertions(+), 7 deletions(-)
-> 
-> diff --git a/backends/tpm/tpm_emulator.c b/backends/tpm/tpm_emulator.c
-> index 49cc3d749d..67e7b212e3 100644
-> --- a/backends/tpm/tpm_emulator.c
-> +++ b/backends/tpm/tpm_emulator.c
-> @@ -553,7 +553,7 @@ static int tpm_emulator_prepare_data_fd(TPMEmulator *tpm_emu)
->       Error *err = NULL;
->       int fds[2] = { -1, -1 };
-> 
-> -    if (socketpair(AF_UNIX, SOCK_STREAM, 0, fds) < 0) {
-> +    if (qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, fds) < 0) {
->           error_report("tpm-emulator: Failed to create socketpair");
->           return -1;
->       }
-> diff --git a/tests/qtest/dbus-display-test.c b/tests/qtest/dbus-display-test.c
-> index cb1b62d1d1..fef025ac6f 100644
-> --- a/tests/qtest/dbus-display-test.c
-> +++ b/tests/qtest/dbus-display-test.c
-> @@ -1,5 +1,6 @@
->   #include "qemu/osdep.h"
->   #include "qemu/dbus.h"
-> +#include "qemu/sockets.h"
->   #include <gio/gio.h>
->   #include <gio/gunixfdlist.h>
->   #include "libqtest.h"
-> @@ -36,7 +37,7 @@ test_setup(QTestState **qts, GDBusConnection **conn)
-> 
->       *qts = qtest_init("-display dbus,p2p=yes -name dbus-test");
-> 
-> -    g_assert_cmpint(socketpair(AF_UNIX, SOCK_STREAM, 0, pair), ==, 0);
-> +    g_assert_cmpint(qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, pair), ==, 0);
-> 
->       qtest_qmp_add_client(*qts, "@dbus-display", pair[1]);
-> 
-> @@ -152,7 +153,7 @@ test_dbus_display_console(void)
-> 
->       test_setup(&qts, &conn);
-> 
-> -    g_assert_cmpint(socketpair(AF_UNIX, SOCK_STREAM, 0, pair), ==, 0);
-> +    g_assert_cmpint(qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, pair), ==, 0);
->       fd_list = g_unix_fd_list_new();
->       idx = g_unix_fd_list_append(fd_list, pair[1], NULL);
-> 
-> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-> index dbde726adf..1dd32c9506 100644
-> --- a/tests/qtest/migration-test.c
-> +++ b/tests/qtest/migration-test.c
-> @@ -1661,7 +1661,7 @@ static void *test_migrate_fd_start_hook(QTestState *from,
->       int pair[2];
-> 
->       /* Create two connected sockets for migration */
-> -    ret = socketpair(PF_LOCAL, SOCK_STREAM, 0, pair);
-> +    ret = qemu_socketpair(PF_LOCAL, SOCK_STREAM, 0, pair);
->       g_assert_cmpint(ret, ==, 0);
-> 
->       /* Send the 1st socket to the target */
-> diff --git a/tests/unit/test-crypto-tlssession.c b/tests/unit/test-crypto-tlssession.c
-> index 615a1344b4..b12e7b6879 100644
-> --- a/tests/unit/test-crypto-tlssession.c
-> +++ b/tests/unit/test-crypto-tlssession.c
-> @@ -82,7 +82,7 @@ static void test_crypto_tls_session_psk(void)
->       int ret;
-> 
->       /* We'll use this for our fake client-server connection */
-> -    ret = socketpair(AF_UNIX, SOCK_STREAM, 0, channel);
-> +    ret = qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, channel);
->       g_assert(ret == 0);
-> 
->       /*
-> @@ -236,7 +236,7 @@ static void test_crypto_tls_session_x509(const void *opaque)
->       int ret;
-> 
->       /* We'll use this for our fake client-server connection */
-> -    ret = socketpair(AF_UNIX, SOCK_STREAM, 0, channel);
-> +    ret = qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, channel);
->       g_assert(ret == 0);
-> 
->       /*
-> diff --git a/tests/unit/test-io-channel-tls.c b/tests/unit/test-io-channel-tls.c
-> index cc39247556..e036ac5df4 100644
-> --- a/tests/unit/test-io-channel-tls.c
-> +++ b/tests/unit/test-io-channel-tls.c
-> @@ -121,7 +121,7 @@ static void test_io_channel_tls(const void *opaque)
->       GMainContext *mainloop;
-> 
->       /* We'll use this for our fake client-server connection */
-> -    g_assert(socketpair(AF_UNIX, SOCK_STREAM, 0, channel) == 0);
-> +    g_assert(qemu_socketpair(AF_UNIX, SOCK_STREAM, 0, channel) == 0);
-> 
->   #define CLIENT_CERT_DIR "tests/test-io-channel-tls-client/"
->   #define SERVER_CERT_DIR "tests/test-io-channel-tls-server/"
-
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
+>  hw/i386/acpi-build.c | 2 --
+>  1 file changed, 2 deletions(-)
+>=20
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 0be3960a37..428328dc2d 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -117,8 +117,6 @@ typedef struct AcpiMiscInfo {
+>  #ifdef CONFIG_TPM
+>      TPMVersion tpm_version;
+>  #endif
+> -    const unsigned char *dsdt_code;
+> -    unsigned dsdt_size;
+>  } AcpiMiscInfo;
+> =20
+>  typedef struct FwCfgTPMConfig {
 
 
