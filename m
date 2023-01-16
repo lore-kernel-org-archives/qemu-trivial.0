@@ -1,80 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHQ3J-0005FF-1r
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 09:01:33 -0500
+	id 1pHRQd-0001FF-0l
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 10:29:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHQ3H-0005EF-JF
- for qemu-trivial@nongnu.org; Mon, 16 Jan 2023 09:01:31 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pHRQa-0001Ee-QC; Mon, 16 Jan 2023 10:29:40 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHQ3G-0000Mb-0d
- for qemu-trivial@nongnu.org; Mon, 16 Jan 2023 09:01:31 -0500
-Received: by mail-wm1-x331.google.com with SMTP id q8so8257694wmo.5
- for <qemu-trivial@nongnu.org>; Mon, 16 Jan 2023 06:01:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=t4SC3LDronBq7O67yFthuNI67hPNRC3wNRgZUFqO9ck=;
- b=CDhP6DgbaUpI/l1/SWV6otiklfDwhk9KRpy411M5Vz2K7hqYCZ/5+o9iKD99pk2gFX
- K46iNsu8SHoq2wj32up48+8UahiqWiuz8AE0OUkRipbg/JKxD/jGBsl7bd/Q/PBnnMuj
- sBGf/5ZTxNh9q/C3ewwGzunA9U0fnWwMJkRMKA9h3ZHfC6Z2YMu6uPVaoPmwNlkdpEW3
- ZeqpigTYoA3m/t2SulbKAjvuPsQdlzxvv7UsQ9igRA2JCJyiDHvpN5/jVYQhRabwbrqi
- MOzgbFpqLnytYtVlqbuyOvQ9LiNs17TBy5SPm16nM3r/i30+GA8DZeVFZbOlmkm3kI7l
- /Q4A==
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pHRQY-00086C-FZ; Mon, 16 Jan 2023 10:29:40 -0500
+Received: by mail-ej1-x635.google.com with SMTP id u19so68854644ejm.8;
+ Mon, 16 Jan 2023 07:29:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=R1qab2GuaBWoD3Ko1VX21FFzHNBd133I47ejcbwuseM=;
+ b=X/Wany2VqVwt9wYKYvFEdegtS56zfG2HaDtSKsoWJ3ZAVMsh/5D98X0eyk7cw/ujam
+ LEEECaz+HFUuwWO6jpYANgaOePc1JRRs2rSgBvUgLCYeaqxuL2iB2LURL/nfa4Fa3Gir
+ 6hH+0MaNC9+x/it6xq8ctQWRfAyoJv1e+OhT8Qq3hBK/C+ew/5yPElg2wYlHxBnXUlF/
+ /MdtfRAV5wBE1hiPc5hGsAdqjcB0jiD0r74lgUJzxu1/Y0bSdA37iH6SbFxJ/Grm8wrk
+ ubip/aAZzrTJhO1Eu632R34Kl8V2GO6aD17RfCUtwVCTknpQgleOTCp6nTKUVdLNyneV
+ Cmqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=t4SC3LDronBq7O67yFthuNI67hPNRC3wNRgZUFqO9ck=;
- b=UP6CSW1l5JRO+BRURwbZLMiT72gGjHF9LquOycFn0kvf2AZunnmJu/YBwh0E67crMB
- 5d0sXMYG41FvEUedT21ZvRP/V5L9R23MuPMkg8owdeRJf/ZAeAATslrPWlyiHopb+H3h
- xd5C+Jao0koacUxAUYpngU8rS996D3OgK+BnKNXD4EKIn29y3PhEhXV9ruY8zwTQPClL
- 13TQEVNhIFUwDgsbe503wfzuZ/gYmyCSjNMMwRMs9PMJ42396q9D30zLOWgfUnfYGUvl
- GDqIN3KLoWM/NFo9VE0n9yqBHuMtEOu8K33skcfAYz4gEdkYBFU1ugNZo33askLRW/ZO
- jUOg==
-X-Gm-Message-State: AFqh2kpbQHqdrBB1px2zXEf1KWzi4+QanJkwyCT7afK1AB66XoQm82+8
- SdiU+7koq6PaMI2/q5qKEGYmFg==
-X-Google-Smtp-Source: AMrXdXvtu+0qc7ioecYVNQKdkSIdixJkFCP+XbkaNX2hX/eBWuY81MvpJWHDtg4SA+vc0p8h4NuAbQ==
-X-Received: by 2002:a05:600c:89a:b0:3cf:6e78:e2ca with SMTP id
- l26-20020a05600c089a00b003cf6e78e2camr8280702wmp.5.1673877687530; 
- Mon, 16 Jan 2023 06:01:27 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- n7-20020a05600c4f8700b003c6bd12ac27sm37891291wmq.37.2023.01.16.06.01.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Jan 2023 06:01:27 -0800 (PST)
-Message-ID: <96def17d-2c66-cfb1-d7b7-91b7a9183bab@linaro.org>
-Date: Mon, 16 Jan 2023 15:01:25 +0100
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=R1qab2GuaBWoD3Ko1VX21FFzHNBd133I47ejcbwuseM=;
+ b=ipX52mEb6w5bVrfs+liI10elNkjDA6AvpIm5pfhgJDX5Jw9Pdj5qUdwJxI4HVkuCzi
+ H8uuWM1OqL8WZ+kSryNdX7eACWyl2AeGFWQrQaIheKUIrKcgIhD7nCdayAT5ORzixcZI
+ mJHQDpVx5xJ42+VryARQKyJpKj5oIb4krf03mGRj8rGol2WhHvg+OrLYKotss8vqvnIS
+ iO9pRdz5MhgdJqbUiqu6bdVWALEmGd2iPMDHEPH1D1Cz58SZjXl/Hh+5VWWT/8izTWbC
+ NQe0H98cIqcHoxL3FDod6QpdJwzhdZyf4Wb5z1P9B0gJzQXaLOgHwLM0xosnZDSV+Yt9
+ S5TQ==
+X-Gm-Message-State: AFqh2kqZDEvHgSjWE2MZoE6aJFOt92HZfBj2SlSgdWKz6ccgVLic3Ydj
+ svAplKv0pcVZe0S5d3RG258dVGEFg+U=
+X-Google-Smtp-Source: AMrXdXuSccHenHmdmKLXLCIQxikos/WbhiBN4t5nflFDA8+w5aAd4uxqXnwPBOHrWEqSK3st+Iyp4Q==
+X-Received: by 2002:a17:906:5254:b0:7c0:efb4:71fb with SMTP id
+ y20-20020a170906525400b007c0efb471fbmr76459829ejm.28.1673882976216; 
+ Mon, 16 Jan 2023 07:29:36 -0800 (PST)
+Received: from localhost.localdomain
+ (dynamic-077-191-143-217.77.191.pool.telefonica.de. [77.191.143.217])
+ by smtp.gmail.com with ESMTPSA id
+ x3-20020a170906b08300b007c0688a68cbsm12180764ejy.176.2023.01.16.07.29.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Jan 2023 07:29:35 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v3 0/7] AML Housekeeping
+Date: Mon, 16 Jan 2023 16:29:01 +0100
+Message-Id: <20230116152908.147275-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v2 4/8] hw/acpi/piix4: No need to #include
- "hw/southbridge/piix.h"
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Ani Sinha <ani@anisinha.ca>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20230116125842.66817-1-shentey@gmail.com>
- <20230116125842.66817-5-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230116125842.66817-5-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.097,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,19 +84,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 14:01:31 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 15:29:41 -0000
 
-On 16/1/23 13:58, Bernhard Beschow wrote:
-> hw/acpi/piix4 has its own header with its structure definition etc.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/acpi/piix4.c | 1 -
->   1 file changed, 1 deletion(-)
-
-Indeed, since 2bfd0845f0 ("hw/acpi/piix4: move PIIX4PMState into 
-separate piix4.h header").
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+This series resolves the AcpiDeviceIfClass::madt_cpu function pointer. It t=
+urns=0D
+out that it isn't needed and it even frees the ACPI controllers from assign=
+ing=0D
+it an x86 specific function. This is especially interesting for the PIIX4 P=
+M=0D
+which is also used in MIPS only contexts.=0D
+=0D
+Furthermore, the series introduces qbus_build_aml() which then gets=0D
+used to resolve isa_build_aml().=0D
+=0D
+v3:=0D
+- Clean up includes in AcpiDeviceIfClass::madt_cpu sub series last (Markus)=
+=0D
+- Restructure qbus_build_aml() sub series (Phil, me)=0D
+=0D
+v2:=0D
+- Don't inline qbus_build_aml() (Phil)=0D
+- Add 'hw/acpi/piix4: No need to #include "hw/southbridge/piix.h"'=0D
+=0D
+Testing done:=0D
+* `make check`=0D
+* `make check-avocado`=0D
+* `qemu-system-x86_64 -M pc -m 2G -cdrom manjaro-kde-21.2.6-220416-linux515=
+.iso`=0D
+* `qemu-system-x86_64 -M q35 -m 2G -cdrom \=0D
+   manjaro-kde-21.2.6-220416-linux515.iso`=0D
+=0D
+Bernhard Beschow (7):=0D
+  hw/acpi/acpi_dev_interface: Remove unused parameter from=0D
+    AcpiDeviceIfClass::madt_cpu=0D
+  hw/acpi/acpi_dev_interface: Resolve AcpiDeviceIfClass::madt_cpu=0D
+  hw/acpi/acpi_dev_interface: Remove now unused #include "hw/boards.h"=0D
+  hw/acpi/piix4: No need to #include "hw/southbridge/piix.h"=0D
+  hw/i386/acpi-build: Remove unused attributes=0D
+  hw/isa/isa-bus: Turn isa_build_aml() into qbus_build_aml()=0D
+  piix3, ich9: Reuse qbus_build_aml()=0D
+=0D
+ hw/acpi/hmat.h                       |  3 ++-=0D
+ hw/i386/acpi-common.h                |  7 +++++--=0D
+ include/hw/acpi/acpi_aml_interface.h |  3 +++=0D
+ include/hw/acpi/acpi_dev_interface.h |  4 ----=0D
+ include/hw/acpi/cpu.h                |  6 +++++-=0D
+ include/hw/i386/pc.h                 |  6 ------=0D
+ include/hw/isa/isa.h                 |  1 -=0D
+ hw/acpi/acpi-x86-stub.c              |  7 -------=0D
+ hw/acpi/acpi_interface.c             | 10 ++++++++++=0D
+ hw/acpi/cpu.c                        | 12 +++++-------=0D
+ hw/acpi/hmat.c                       |  1 +=0D
+ hw/acpi/memory_hotplug.c             |  1 +=0D
+ hw/acpi/piix4.c                      |  3 ---=0D
+ hw/i2c/smbus_ich9.c                  |  5 +----=0D
+ hw/i386/acpi-build.c                 |  7 ++-----=0D
+ hw/i386/acpi-common.c                | 10 ++++------=0D
+ hw/i386/acpi-microvm.c               |  6 +++---=0D
+ hw/i386/generic_event_device_x86.c   |  9 ---------=0D
+ hw/isa/isa-bus.c                     | 10 ----------=0D
+ hw/isa/lpc_ich9.c                    |  6 +-----=0D
+ hw/isa/piix3.c                       |  5 +----=0D
+ monitor/qmp-cmds.c                   |  1 +=0D
+ 22 files changed, 45 insertions(+), 78 deletions(-)=0D
+=0D
+-- =0D
+2.39.0=0D
+=0D
 
