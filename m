@@ -1,60 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHTdT-0006rs-Eg
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:51:07 -0500
+	id 1pHTjP-0001OC-57
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:57:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTdP-0006oz-Iz; Mon, 16 Jan 2023 12:51:05 -0500
-Received: from mout.kundenserver.de ([212.227.126.187])
+ id 1pHTjN-0001Kp-3B; Mon, 16 Jan 2023 12:57:13 -0500
+Received: from mout.kundenserver.de ([212.227.126.130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTdN-0007qu-U8; Mon, 16 Jan 2023 12:51:03 -0500
+ id 1pHTjL-0000av-EH; Mon, 16 Jan 2023 12:57:12 -0500
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MPXpS-1p4uYX0H4M-00MgVZ; Mon, 16 Jan 2023 18:50:55 +0100
-Message-ID: <5779382f-9f8d-439e-b474-1ac1606d65a5@vivier.eu>
-Date: Mon, 16 Jan 2023 18:50:53 +0100
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MDhV1-1pPTno0hd9-00AnJj; Mon, 16 Jan 2023 18:56:59 +0100
+Message-ID: <0edbf3eb-0c7b-9d27-7d10-162434d7e739@vivier.eu>
+Date: Mon, 16 Jan 2023 18:56:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH v3] hw/pvrdma: Protect against buggy or malicious guest
- driver
+Subject: Re: [PATCH Trivial] hw/cxl/cxl-cdat.c: spelling: missmatch
 Content-Language: fr
-To: Thomas Huth <thuth@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Claudio Fontana <cfontana@suse.de>,
- qemu devel list <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, wxhusst@gmail.com,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20220403095234.2210-1-yuval.shaia.ml@gmail.com>
- <CAC_L=vXsKpai6Wr0Fi2r5sr4U+tshPB9VizqntDppqE=1_FbVQ@mail.gmail.com>
- <339b8c7d-1f54-a515-8854-c22d10f79d1d@suse.de>
- <CAMPkWoOFXfyx=ZOv8i6AJ8Lv2GFKt11gnXYZ2W_4roS9UP9m5w@mail.gmail.com>
- <CAC_L=vUD2vVNSaP7UcDuRUCyd8XNmb4iRY_LXK0UNEE-+Rr4TQ@mail.gmail.com>
- <6cd36e7e-dae7-6258-736a-44630cee9010@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Ben Widawsky <ben.widawsky@intel.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>
+References: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <6cd36e7e-dae7-6258-736a-44630cee9010@redhat.com>
+In-Reply-To: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:BnCFwTYr6spPmi1x3NHeIxeGK1hSqln4kBvkyhP9r/giIwIpLer
- 6YDc3Db6xLYrwR41vGGM8+9csOR1dUvn383nsSNziXDtbcGfSoRkOS5gL8EAmGDP473DIjx
- WN9dmbZA9nRvhV704YIeqd1QR4Pk1xyTips64cSuj+XForrDAtZWiSkIOaq7ecGz9ubeSgs
- Z67jHIvWsOXeFuq/v+gcw==
-UI-OutboundReport: notjunk:1;M01:P0:5ofr3XoCD80=;WSuLp/X075elb172bdbH61+VCrL
- oMw8ptscoSEAnFdbUAGi2bgH1i+q6/fYlubejxyhXtEVCqMHt+/e5LUHG3kmmNpAT8lOeiBdS
- Tu4CBWHHg/x+wzcakg4iCGoDLlmzwRCXi/exLuybubdI+MJ3MgaLFG21gvmZJ7i0xJv8iGdh6
- PuETxsstWRYYh82XHotId3qY+7NA4aiAwSNRaz27WdOBycMFwhwPYdkg5M5Yqs2aHdVnnQuBf
- rhpV2RCY21EWLewZWRbUu+dfU7jX/QvNuUAC3QN4dpC0FuQytzasdWQ79M0p4uNcOJ0BwWOU0
- JPniCKf81c92yZCPEvIqmocsa2QInSiiXJh9TefKQ8Osn4HQ2oJpWA6f0SujU3+eYMnyKj9GI
- uBmV8ECdXp174WkuF/SWZJc7dLuWJjvZ7J13XBDT+gg5e7ZREH+Qjnb2mgfBOXQpFQBYrwMlY
- fuu63CvYNrEM5cEyHwy35ndK2QQCM+ziTXB/oXyhEXcaghYKEP/eYSKHGez+HXyLAp1QzpWIW
- 1/aZFLhwx2rq+T8gfrVpGO4xQH5TQXLyNv5E2H1g+SO3/YaFG8h3/ZPj2Q0YaiCsPFutG/hCk
- dwpZu7CDuysvdJhnyinmrWvvtStXB7vckqswsoW3tciyvGmdDqWxqAT80xj308cFSVmHUBVK2
- h3DC/j+T4aY4gh/mxKW3rk0sHX9AHucJtTmfggnQjg==
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:WI2uHqG/6xo9QjqQ75KauhaHzNJnFKWYOSdWw3C5ZyXt/k4jpA1
+ CSns9Mu14MxH7xV8av0ACNSAXv/86X3NlOmiN4PUZ/UDnQp00Z85G1vDmhB7wBT6VeID/Kf
+ NG1m1spn1ZxbmRiH9gFL1DXzu8wWajpkK9TNsxYQF20d0c+a9+inC7a6M58axL9fSMQfEdI
+ x/Iy8gSN5D+cyHIw6kKrg==
+UI-OutboundReport: notjunk:1;M01:P0:bo98o1yqk4Y=;EgtQP4Sbvf7X7VIlBbaW1Ijl9Db
+ mWrM+9JDW5y7yzHz86KtISc5nAdgQCPw5G4oBqtUCcPA+YuvY4oT53yWVTWP4OOk3nkSjNxFM
+ 0bc8f2xiNgTwt0+dgoQnT7n2AoS+SZ3xdpm8u9w8GLv2A0ymiQZqSvN3cGjkcRsYjJ0zLa/5O
+ ppsvTdKOVAgmtcppjL4BJY5GDUPrvSkP1vzML9NQabdMyhroTsYJ+Ic+T0k885niPBIgwg3ra
+ vekfQwTq06pbT7Ipm4P2VVwjzXL9gc3YncO+ScVENTCY2fJCgFoSsf+c7MWrFTrz9XrpXlJ6N
+ L+lMugBIOwtSWT/RGYl3cN8TAp/DnERmfvfFUd6hA3Q/j2DcuRiKPJKJsd+zH3QWh9U9EQMMi
+ fODWalR/jrANucBN6tblqMHgiP0ME4F48ZHJhB86zq19LK35Vsdp0Slww3lsxJzfXR7vj93d3
+ 2NP+0KraxbiuNakhQ7hvBNEgiJdCSYbBwjgZn2FVrU4YgthSrx96dv3OMN/vbPu90cbZZOqoZ
+ XJfbLclpJVvlCwnmOOilSD+pB+SEERcNDsAHkbCjuXV++lDjAOxbSf8wvbN3N5Hxx/lw/D+cK
+ CmX0Df0IcDZBuKSyMOiRRrNDeNh3Br5V2wWNxDqkkm2qhSE6B55/SlVw51Es8Nd1d6NSaHR1S
+ shyPzLfuI0GRT75h2e1r0N8Jh4xyVYJPt1FSEDK2yQ==
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -19
 X-Spam_score: -2.0
@@ -74,101 +62,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 17:51:06 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 17:57:13 -0000
 
-Le 28/12/2022 à 20:32, Thomas Huth a écrit :
-> On 19/12/2022 12.21, Marcel Apfelbaum wrote:
->> On Mon, Dec 19, 2022 at 10:57 AM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
->>>
->>> Can anyone else pick this one?
->>
->> Adding Thomas,
->>
->> I dropped the ball with this one, I am sorry about that, maybe it
->> doesn't worth a Pull Request only for it.
+Le 15/12/2022 à 13:37, Michael Tokarev a écrit :
+> Introduced by: aba578bdace5303a441f8a37aad781b5cb06f38c
 > 
-> Why not? Pull request for single patches aren't that uncommon.
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>   hw/cxl/cxl-cdat.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
->> Maybe it can go through the Misc tree?
-> 
-> hw/rdma/ is really not my turf, but since the patch is small, it sounds like a good candidate for 
-> qemu-trivial, I think.
+> diff --git a/hw/cxl/cxl-cdat.c b/hw/cxl/cxl-cdat.c
+> index 3653aa56f0..137abd0992 100644
+> --- a/hw/cxl/cxl-cdat.c
+> +++ b/hw/cxl/cxl-cdat.c
+> @@ -146,7 +146,7 @@ static void ct3_load_cdat(CDATObject *cdat, Error **errp)
+>           num_ent++;
+>       }
+>       if (i != file_size) {
+> -        error_setg(errp, "CDAT: File length missmatch");
+> +        error_setg(errp, "CDAT: File length mismatch");
+>           return;
+>       }
+>   
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
-> 
->   Thomas
-> 
-> 
->>> On Wed, 7 Dec 2022 at 17:05, Claudio Fontana <cfontana@suse.de> wrote:
->>>>
->>>> On 4/5/22 12:31, Marcel Apfelbaum wrote:
->>>>> Hi Yuval,
->>>>> Thank you for the changes.
->>>>>
->>>>> On Sun, Apr 3, 2022 at 11:54 AM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
->>>>>>
->>>>>> Guest driver might execute HW commands when shared buffers are not yet
->>>>>> allocated.
->>>>>> This could happen on purpose (malicious guest) or because of some other
->>>>>> guest/host address mapping error.
->>>>>> We need to protect againts such case.
->>>>>>
->>>>>> Fixes: CVE-2022-1050
->>>>>>
->>>>>> Reported-by: Raven <wxhusst@gmail.com>
->>>>>> Signed-off-by: Yuval Shaia <yuval.shaia.ml@gmail.com>
->>>>>> ---
->>>>>> v1 -> v2:
->>>>>>          * Commit message changes
->>>>>> v2 -> v3:
->>>>>>          * Exclude cosmetic changes
->>>>>> ---
->>>>>>   hw/rdma/vmw/pvrdma_cmd.c | 6 ++++++
->>>>>>   1 file changed, 6 insertions(+)
->>>>>>
->>>>>> diff --git a/hw/rdma/vmw/pvrdma_cmd.c b/hw/rdma/vmw/pvrdma_cmd.c
->>>>>> index da7ddfa548..89db963c46 100644
->>>>>> --- a/hw/rdma/vmw/pvrdma_cmd.c
->>>>>> +++ b/hw/rdma/vmw/pvrdma_cmd.c
->>>>>> @@ -796,6 +796,12 @@ int pvrdma_exec_cmd(PVRDMADev *dev)
->>>>>>
->>>>>>       dsr_info = &dev->dsr_info;
->>>>>>
->>>>>> +    if (!dsr_info->dsr) {
->>>>>> +            /* Buggy or malicious guest driver */
->>>>>> +            rdma_error_report("Exec command without dsr, req or rsp buffers");
->>>>>> +            goto out;
->>>>>> +    }
->>>>>> +
->>>>>>       if (dsr_info->req->hdr.cmd >= sizeof(cmd_handlers) /
->>>>>>                         sizeof(struct cmd_handler)) {
->>>>>>           rdma_error_report("Unsupported command");
->>>>>> -- 
->>>>>> 2.20.1
->>>>>>
->>>>>
->>>>> cc-ing Peter and Philippe for a question:
->>>>> Do we have a "Security Fixes" or a "Misc" subtree? Otherwise it will
->>>>> have to wait a week or so.
->>>>>
->>>>> Reviewed by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
->>>>> Thanks,
->>>>> Marcel
->>>>>
->>>>
->>>> Hi all,
->>>>
->>>> patch is reviewed, anything holding back the inclusion of this security fix?
->>>>
->>>> Thanks,
->>>>
->>>> Claudio
->>
-> 
-> 
 
 
