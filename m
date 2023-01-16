@@ -1,52 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHTOS-0007ZG-4h
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:35:38 -0500
+	id 1pHTQ5-000468-O0
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:37:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTOJ-0007Jd-4H; Mon, 16 Jan 2023 12:35:29 -0500
-Received: from mout.kundenserver.de ([212.227.126.135])
+ id 1pHTQ2-00041C-R0; Mon, 16 Jan 2023 12:37:14 -0500
+Received: from mout.kundenserver.de ([212.227.126.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTOG-00054D-Gj; Mon, 16 Jan 2023 12:35:26 -0500
+ id 1pHTQ1-0005O8-5w; Mon, 16 Jan 2023 12:37:14 -0500
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MgiPE-1oneLT49RE-00h48n; Mon, 16 Jan 2023 18:35:20 +0100
-Message-ID: <02ca716e-12a0-017f-9d81-5f7750cbad57@vivier.eu>
-Date: Mon, 16 Jan 2023 18:35:18 +0100
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MQMm9-1p45Gn1DsH-00MOzV; Mon, 16 Jan 2023 18:37:08 +0100
+Message-ID: <bd0503db-f6fb-ffa8-9698-9911e9356f4c@vivier.eu>
+Date: Mon, 16 Jan 2023 18:37:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH-for-8.0] block/nbd: Add missing <qemu/bswap.h> include
+Subject: Re: [PATCH] tests/qtest/test-hmp: Improve the check for verbose mode
 Content-Language: fr
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>
-References: <20221125175328.48539-1-philmd@linaro.org>
- <07ccf64d-1400-b19d-145e-6c0f25685d46@linaro.org>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20230109101306.271444-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <07ccf64d-1400-b19d-145e-6c0f25685d46@linaro.org>
+In-Reply-To: <20230109101306.271444-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Ys/stV8Dur32OhmKaaOLvt3lbqkbkbBXXvUx/IdgiNZpCU66wMh
- XoqnmGMJP0ENr/xNbrUv9N959C6FvCfO8d6L2DB+fTMFnUht3gzVM7rFhosdNq8XErDYFjg
- eRPjN+ZLFHN2WuKo69FzhpnruuZh0FPEELfuW4RAIvWmZOAe2k01JcFilcdTbLaxA12gG8X
- RIMJw0rrpcmmYXHgarxTQ==
-UI-OutboundReport: notjunk:1;M01:P0:BAvf18fCahk=;zhXuaEwxVGHzKTeeP0eR2MuHxmh
- ag145+xtGG4YY8mqXeyBLancGWladzWB+295XrYJ4ZwLnAw17jCVMqU/vSJhwPhfC4AXIb/fD
- RRtyOWyEeFpOPbQJhIUpStsGVXCXxQwN62KWA4+oGeAu+oD2rw7UdqAPVOEdiAnDWyFKwwmCm
- 2Qz9NdpT0sjQAKKX68Vbae7Temx9xcHWLNGwXQlGE62tgE3IQRGoVZr3mrTxh/26QPOkaSVR/
- g4PDsiM8OKtNpB+cpcvTjdHc4yOTiXJeKX1WjqojBZa8nJobQlUUYoBlqrR4U4PeSrCNnnczl
- NfLea48wBObpxOs/g1jz/ni+/ZY4jVtq0hYrblsX2wL7FWAJkliGEJWNDC7Uf8OWJBdurQDeR
- vAuW1XJ+lHuEi0AnXA0qiCjP3TZ4lOYJMUDhanDvI4ik72zM1hDur7QAlLIIGdLf5pcrLsSdm
- YIN0MSnQDRIY/GyCEnWh2IgnL6jiC8CWVHeWpgjnPfXM6umaw6mtnngKqbcffojNiTvE70oiG
- GOQwExX9QOkqpsMrJi/hHebK3j8ZYH2UkubTb2InB3Eu+tBg3oTTpOpFZh7fcXg5WQajtNhrX
- vC6JvTq1fniBVHy3zwKq06Zm5yR0yJpFPOW1uB4VTTl76itGBHafCHBugHYfYRsc4zyCxHnUF
- FxbswhGBwda8fyIV4cRNXd/hAbij/7f1gaTsi7l2ZQ==
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:W8K5KZHD/xRtP6FcHN8f89a7BZBC/jsrOYQ7wmFFcorrK5ksCdz
+ o+NOThyfErVBRU8ulld/EYr+EjDQGb6Eqcr6fAjh3bC2Yelw/bxkJ+3Qde5ajgXNjF5wXYP
+ UHCEaI1bXGLZ64d3tqHkx60NuzIGPajlfbOk/2XwQxbO+ruLRtQ+gSo+ZLx2CcFRzMWSK9h
+ PMcRnzVMrG8qLq2m75fPg==
+UI-OutboundReport: notjunk:1;M01:P0:StbGY7NX92M=;VegWylu5OquQYlW7HyOEpgB1tOk
+ HBJ8VCzpOqv0TxeAYwbAInA3mUyLN3WC0qY6/pMrv6u7qDDJSpKAhFhrgxu6MEhsu6bVlbMMR
+ 5z5Q+Ojlp7oKY5zKHAP+rAq/dIvE7MftbicB9zOW8zsrtUSPAExK1lPjI0WlcjQNIOBLPQhRf
+ GeHORDRrvIZYS1w8eoeBy0lvPi7+qc7vomixXCLmNUdt1WBAGv2TZzBkhw+nVK6pyWo1Kw2Oo
+ xJtf2A94oDGWuLNEc4xI+L0D1fvJBjXpqzIvZp28BGSqj1e4mpQXcHuo9juVaeYzxBajPE9nO
+ kbEEegKYUViBFs81JW06eTJKTmjqHLg1eH8epXm5NUdrVOOLnvTAznRgZhAUKJIifN9b8O7WG
+ MKLtRo4Cw4ujzSosWkuCrEmbvy9wc4EBq7NjIfoQWGxhngv3BpptZ1ak0gyEOH69Iu0x6M6/X
+ P9fEtjoK7yxHLMPERqpP9ONBMvn9ku54WYFnXwVUsEr0Cj55rpIRFV7Hwx7J5OjX+Et+3Xjuc
+ jCaDkiWxNQgELeqglNntCp11tpZG9Looq2vyNkuB3j/vkcsN2OBACgfs5cnuPF2W0qYrYB9S1
+ fs3OTvYhNT0iIWVdrXTccEjkfcUtjahOTTv56lAWIf3slqdxG0lxDWDLiqNExrwcAxQY19yGW
+ PTDDVMl37d0dfu7ohsP0KdwlmtU8i37nfEN4qmYdLA==
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -19
 X-Spam_score: -2.0
@@ -66,47 +63,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 17:35:32 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 17:37:15 -0000
 
-Le 12/01/2023 à 13:00, Philippe Mathieu-Daudé a écrit :
-> Hi, can this reviewed patch get merged via a block tree?
+Le 09/01/2023 à 11:13, Thomas Huth a écrit :
+> Running the test-hmp with V=2 up to V=9 runs the test in verbose mode,
+> but running for example with V=10 falls back to non-verbose mode ...
+> Improve this oddity by properly treating the argument as a number.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   tests/qtest/test-hmp.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
+> index f8b22abe4c..b4a920df89 100644
+> --- a/tests/qtest/test-hmp.c
+> +++ b/tests/qtest/test-hmp.c
+> @@ -151,7 +151,7 @@ int main(int argc, char **argv)
+>   {
+>       char *v_env = getenv("V");
+>   
+> -    if (v_env && *v_env >= '2') {
+> +    if (v_env && atoi(v_env) >= 2) {
+>           verbose = true;
+>       }
+>   
 
-I can take this via trivial.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
 
-> 
-> On 25/11/22 18:53, Philippe Mathieu-Daudé wrote:
->> The inlined nbd_readXX() functions call beXX_to_cpu(), themselves
->> declared in <qemu/bswap.h>. This fixes when refactoring:
->>
->>    In file included from ../../block/nbd.c:44:
->>    include/block/nbd.h: In function 'nbd_read16':
->>    include/block/nbd.h:383:12: error: implicit declaration of function 'be16_to_cpu' 
->> [-Werror=implicit-function-declaration]
->>      383 |     *val = be##bits##_to_cpu(*val);                                     \
->>          |            ^~
->>    include/block/nbd.h:387:1: note: in expansion of macro 'DEF_NBD_READ_N'
->>      387 | DEF_NBD_READ_N(16) /* Defines nbd_read16(). */
->>          | ^~~~~~~~~~~~~~
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/block/nbd.h | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/include/block/nbd.h b/include/block/nbd.h
->> index 4ede3b2bd0..a4c98169c3 100644
->> --- a/include/block/nbd.h
->> +++ b/include/block/nbd.h
->> @@ -24,6 +24,7 @@
->>   #include "io/channel-socket.h"
->>   #include "crypto/tlscreds.h"
->>   #include "qapi/error.h"
->> +#include "qemu/bswap.h"
->>   extern const BlockExportDriver blk_exp_nbd;
-> 
-> 
 
 
