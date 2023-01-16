@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHTjP-0001OC-57
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:57:15 -0500
+	id 1pHTwI-00033h-JT
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 13:10:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTjN-0001Kp-3B; Mon, 16 Jan 2023 12:57:13 -0500
-Received: from mout.kundenserver.de ([212.227.126.130])
+ id 1pHTwF-000311-Iy; Mon, 16 Jan 2023 13:10:31 -0500
+Received: from mout.kundenserver.de ([212.227.126.134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTjL-0000av-EH; Mon, 16 Jan 2023 12:57:12 -0500
+ id 1pHTwD-00034s-JX; Mon, 16 Jan 2023 13:10:31 -0500
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MDhV1-1pPTno0hd9-00AnJj; Mon, 16 Jan 2023 18:56:59 +0100
-Message-ID: <0edbf3eb-0c7b-9d27-7d10-162434d7e739@vivier.eu>
-Date: Mon, 16 Jan 2023 18:56:56 +0100
+ 1MhDIw-1on4rz3KDq-00ePZR; Mon, 16 Jan 2023 19:10:17 +0100
+Message-ID: <a117f627-a043-4801-db65-114b0b0cc0a6@vivier.eu>
+Date: Mon, 16 Jan 2023 19:10:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH Trivial] hw/cxl/cxl-cdat.c: spelling: missmatch
+Subject: Re: [PATCH 1/1] Fix some typos
 Content-Language: fr
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Ben Widawsky <ben.widawsky@intel.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>
-References: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Dongdong Zhang <zhangdongdong@eswincomputing.com>, qemu-devel@nongnu.org
+Cc: jsnow@redhat.com, crosa@redhat.com, bleal@redhat.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20221130015358.6998-1-zhangdongdong@eswincomputing.com>
+ <20221130015358.6998-2-zhangdongdong@eswincomputing.com>
+ <d6fc6751-1fe2-78de-49f5-2a34554767af@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
+In-Reply-To: <d6fc6751-1fe2-78de-49f5-2a34554767af@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:WI2uHqG/6xo9QjqQ75KauhaHzNJnFKWYOSdWw3C5ZyXt/k4jpA1
- CSns9Mu14MxH7xV8av0ACNSAXv/86X3NlOmiN4PUZ/UDnQp00Z85G1vDmhB7wBT6VeID/Kf
- NG1m1spn1ZxbmRiH9gFL1DXzu8wWajpkK9TNsxYQF20d0c+a9+inC7a6M58axL9fSMQfEdI
- x/Iy8gSN5D+cyHIw6kKrg==
-UI-OutboundReport: notjunk:1;M01:P0:bo98o1yqk4Y=;EgtQP4Sbvf7X7VIlBbaW1Ijl9Db
- mWrM+9JDW5y7yzHz86KtISc5nAdgQCPw5G4oBqtUCcPA+YuvY4oT53yWVTWP4OOk3nkSjNxFM
- 0bc8f2xiNgTwt0+dgoQnT7n2AoS+SZ3xdpm8u9w8GLv2A0ymiQZqSvN3cGjkcRsYjJ0zLa/5O
- ppsvTdKOVAgmtcppjL4BJY5GDUPrvSkP1vzML9NQabdMyhroTsYJ+Ic+T0k885niPBIgwg3ra
- vekfQwTq06pbT7Ipm4P2VVwjzXL9gc3YncO+ScVENTCY2fJCgFoSsf+c7MWrFTrz9XrpXlJ6N
- L+lMugBIOwtSWT/RGYl3cN8TAp/DnERmfvfFUd6hA3Q/j2DcuRiKPJKJsd+zH3QWh9U9EQMMi
- fODWalR/jrANucBN6tblqMHgiP0ME4F48ZHJhB86zq19LK35Vsdp0Slww3lsxJzfXR7vj93d3
- 2NP+0KraxbiuNakhQ7hvBNEgiJdCSYbBwjgZn2FVrU4YgthSrx96dv3OMN/vbPu90cbZZOqoZ
- XJfbLclpJVvlCwnmOOilSD+pB+SEERcNDsAHkbCjuXV++lDjAOxbSf8wvbN3N5Hxx/lw/D+cK
- CmX0Df0IcDZBuKSyMOiRRrNDeNh3Br5V2wWNxDqkkm2qhSE6B55/SlVw51Es8Nd1d6NSaHR1S
- shyPzLfuI0GRT75h2e1r0N8Jh4xyVYJPt1FSEDK2yQ==
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:EhjKJl+//Rx5KWpU6h1soI6IILQgavQVskr9lys7JR22T4ZGtQp
+ Z7kTj6GKWZetRmAXKF43z/aXAFyZtDd0k8gnq6pvcONSDgl4S9/EZU7vlCzSddKlFrcRABY
+ bw+iqc2uPQzbFGKg/JV1+2tWDZjE6kdsA77OQtm2g5sNV1ukadGWCLNPrhjX6mIQfk3sUph
+ MnIysRbhQiY5wn88VZSHQ==
+UI-OutboundReport: notjunk:1;M01:P0:12nWvpCGJHI=;qUsU5fytm1L8cbRj/saihQKaAeS
+ reRV22uvOw498bFIhEwd9mBvea6nyCnjdhciMnumemUG54J86qZg7OsxSjLzjOJbBNN5GUgVF
+ xbenKnId8Ct4XJDcUI0Pvo8r1PVM4+l4QKhsF+KtdVBPxvY3Ftl/fC+wGYGJ2v2USSPSOSo8h
+ NKLcDjFtt0b2KrCGr9iKo9yW/3FOi6rdRHKiWXax8oF0Zk9WyIkhwRE8eLkipkJANCFnt6Hiy
+ 4r0hjVa2EgdSPHP/XuPtXejUAGywPD+N1YFrPpudwdKUnMsJ/0kMM1fBj0lbNxbeQ9qqvbZ5P
+ CuYP76Dhi4+fkXcx+YU68ZF43hXB9ID/5wxd2YS3Ojo3SynpqYKv4EUmN2ZpUKqoT1Oj4hYxq
+ ALOByMqURdcoaMQkNnwV7U0jbKdpPcNf90N7DBjbdL2kwdzETXt/ooK3bNqg5vKJ1SBbluz0D
+ FPnNWmFyW5Dge1LRNdd3HqWh7lMZvVoTmjinwPIhQGaTnGAOvLKIEYLeMLNmJmjjDvqZW81oM
+ 4R4MTTSKu6lVkU2nlG9XeJgv7yPCLCyW0IBx0EsYG5eF9XAtGsNvcDJjqUEt2Y9qKIsQNsjOe
+ i8d4Zq42tym+hwnJdBQ19kMYNoGcWOnHSPrTVISZLY30dEKR3/wjWNvtkhIaeuaMCR89W/PyC
+ J8TeHHCTdAbMKsIDGVt66ntGxrVfR7OCIjLlKA4NcA==
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -19
 X-Spam_score: -2.0
@@ -62,33 +65,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 17:57:13 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 18:10:33 -0000
 
-Le 15/12/2022 à 13:37, Michael Tokarev a écrit :
-> Introduced by: aba578bdace5303a441f8a37aad781b5cb06f38c
+Le 30/11/2022 à 09:29, Philippe Mathieu-Daudé a écrit :
+> On 30/11/22 02:53, Dongdong Zhang wrote:
+>> Fix some typos in 'python' directory.
+>>
+>> Signed-off-by: Dongdong Zhang <zhangdongdong@eswincomputing.com>
 > 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->   hw/cxl/cxl-cdat.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
-> diff --git a/hw/cxl/cxl-cdat.c b/hw/cxl/cxl-cdat.c
-> index 3653aa56f0..137abd0992 100644
-> --- a/hw/cxl/cxl-cdat.c
-> +++ b/hw/cxl/cxl-cdat.c
-> @@ -146,7 +146,7 @@ static void ct3_load_cdat(CDATObject *cdat, Error **errp)
->           num_ent++;
->       }
->       if (i != file_size) {
-> -        error_setg(errp, "CDAT: File length missmatch");
-> +        error_setg(errp, "CDAT: File length mismatch");
->           return;
->       }
->   
+>> ---
+>>   python/qemu/machine/console_socket.py | 2 +-
+>>   python/qemu/machine/qtest.py          | 2 +-
+>>   python/qemu/qmp/protocol.py           | 2 +-
+>>   python/qemu/qmp/qmp_tui.py            | 6 +++---
+>>   4 files changed, 6 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/python/qemu/machine/console_socket.py b/python/qemu/machine/console_socket.py
+>> index 8c4ff598ad..4e28ba9bb2 100644
+>> --- a/python/qemu/machine/console_socket.py
+>> +++ b/python/qemu/machine/console_socket.py
+>> @@ -68,7 +68,7 @@ def _thread_start(self) -> threading.Thread:
+>>           """Kick off a thread to drain the socket."""
+>>           # Configure socket to not block and timeout.
+>>           # This allows our drain thread to not block
+>> -        # on recieve and exit smoothly.
+>> +        # on receive and exit smoothly.
+>>           socket.socket.setblocking(self, False)
+>>           socket.socket.settimeout(self, 1)
+>>           drain_thread = threading.Thread(target=self._drain_fn)
+>> diff --git a/python/qemu/machine/qtest.py b/python/qemu/machine/qtest.py
+>> index 1a1fc6c9b0..906bd13298 100644
+>> --- a/python/qemu/machine/qtest.py
+>> +++ b/python/qemu/machine/qtest.py
+>> @@ -42,7 +42,7 @@ class QEMUQtestProtocol:
+>>       :raise socket.error: on socket connection errors
+>>       .. note::
+>> -       No conection is estabalished by __init__(), this is done
+>> +       No connection is estabalished by __init__(), this is done
+>>          by the connect() or accept() methods.
+>>       """
+>>       def __init__(self, address: SocketAddrT,
+>> diff --git a/python/qemu/qmp/protocol.py b/python/qemu/qmp/protocol.py
+>> index 6ea86650ad..15909b7dba 100644
+>> --- a/python/qemu/qmp/protocol.py
+>> +++ b/python/qemu/qmp/protocol.py
+>> @@ -812,7 +812,7 @@ def _done(task: Optional['asyncio.Future[Any]']) -> bool:
+>>       @bottom_half
+>>       async def _bh_close_stream(self, error_pathway: bool = False) -> None:
+>> -        # NB: Closing the writer also implcitly closes the reader.
+>> +        # NB: Closing the writer also implicitly closes the reader.
+>>           if not self._writer:
+>>               return
+>> diff --git a/python/qemu/qmp/qmp_tui.py b/python/qemu/qmp/qmp_tui.py
+>> index ce239d8979..8369144723 100644
+>> --- a/python/qemu/qmp/qmp_tui.py
+>> +++ b/python/qemu/qmp/qmp_tui.py
+>> @@ -71,7 +71,7 @@ def format_json(msg: str) -> str:
+>>       due to an decoding error then a simple string manipulation is done to
+>>       achieve a single line JSON string.
+>> -    Converting into single line is more asthetically pleasing when looking
+>> +    Converting into single line is more aesthetically pleasing when looking
+>>       along with error messages.
+>>       Eg:
+>> @@ -91,7 +91,7 @@ def format_json(msg: str) -> str:
+>>           [1, true, 3]: QMP message is not a JSON object.
+>> -    The single line mode is more asthetically pleasing.
+>> +    The single line mode is more aesthetically pleasing.
+>>       :param msg:
+>>           The message to formatted into single line.
+>> @@ -498,7 +498,7 @@ def __init__(self, parent: App) -> None:
+>>   class HistoryBox(urwid.ListBox):
+>>       """
+>>       This widget is modelled using the ListBox widget, contains the list of
+>> -    all messages both QMP messages and log messsages to be shown in the TUI.
+>> +    all messages both QMP messages and log messages to be shown in the TUI.
+>>       The messages are urwid.Text widgets. On every append of a message, the
+>>       focus is shifted to the last appended message.
+> 
+> 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
+
 
 
