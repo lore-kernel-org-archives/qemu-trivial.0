@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHTQ5-000468-O0
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:37:18 -0500
+	id 1pHTV6-0007dY-Il
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:42:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTQ2-00041C-R0; Mon, 16 Jan 2023 12:37:14 -0500
-Received: from mout.kundenserver.de ([212.227.126.131])
+ id 1pHTV5-0007dC-6m; Mon, 16 Jan 2023 12:42:27 -0500
+Received: from mout.kundenserver.de ([212.227.126.187])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTQ1-0005O8-5w; Mon, 16 Jan 2023 12:37:14 -0500
+ id 1pHTV3-0006EE-8g; Mon, 16 Jan 2023 12:42:26 -0500
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MQMm9-1p45Gn1DsH-00MOzV; Mon, 16 Jan 2023 18:37:08 +0100
-Message-ID: <bd0503db-f6fb-ffa8-9698-9911e9356f4c@vivier.eu>
-Date: Mon, 16 Jan 2023 18:37:07 +0100
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M4384-1pHTUx3BnE-0008T6; Mon, 16 Jan 2023 18:42:19 +0100
+Message-ID: <8bf2f4f8-7df1-c2d4-1664-4d245a68eaae@vivier.eu>
+Date: Mon, 16 Jan 2023 18:42:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH] tests/qtest/test-hmp: Improve the check for verbose mode
+Subject: Re: [PATCH v2] hw/i386/pc: Remove unused 'owner' argument from
+ pc_pci_as_mapping_init
 Content-Language: fr
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20230109101306.271444-1-thuth@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20230105173826.56748-1-philmd@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20230109101306.271444-1-thuth@redhat.com>
+In-Reply-To: <20230105173826.56748-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:W8K5KZHD/xRtP6FcHN8f89a7BZBC/jsrOYQ7wmFFcorrK5ksCdz
- o+NOThyfErVBRU8ulld/EYr+EjDQGb6Eqcr6fAjh3bC2Yelw/bxkJ+3Qde5ajgXNjF5wXYP
- UHCEaI1bXGLZ64d3tqHkx60NuzIGPajlfbOk/2XwQxbO+ruLRtQ+gSo+ZLx2CcFRzMWSK9h
- PMcRnzVMrG8qLq2m75fPg==
-UI-OutboundReport: notjunk:1;M01:P0:StbGY7NX92M=;VegWylu5OquQYlW7HyOEpgB1tOk
- HBJ8VCzpOqv0TxeAYwbAInA3mUyLN3WC0qY6/pMrv6u7qDDJSpKAhFhrgxu6MEhsu6bVlbMMR
- 5z5Q+Ojlp7oKY5zKHAP+rAq/dIvE7MftbicB9zOW8zsrtUSPAExK1lPjI0WlcjQNIOBLPQhRf
- GeHORDRrvIZYS1w8eoeBy0lvPi7+qc7vomixXCLmNUdt1WBAGv2TZzBkhw+nVK6pyWo1Kw2Oo
- xJtf2A94oDGWuLNEc4xI+L0D1fvJBjXpqzIvZp28BGSqj1e4mpQXcHuo9juVaeYzxBajPE9nO
- kbEEegKYUViBFs81JW06eTJKTmjqHLg1eH8epXm5NUdrVOOLnvTAznRgZhAUKJIifN9b8O7WG
- MKLtRo4Cw4ujzSosWkuCrEmbvy9wc4EBq7NjIfoQWGxhngv3BpptZ1ak0gyEOH69Iu0x6M6/X
- P9fEtjoK7yxHLMPERqpP9ONBMvn9ku54WYFnXwVUsEr0Cj55rpIRFV7Hwx7J5OjX+Et+3Xjuc
- jCaDkiWxNQgELeqglNntCp11tpZG9Looq2vyNkuB3j/vkcsN2OBACgfs5cnuPF2W0qYrYB9S1
- fs3OTvYhNT0iIWVdrXTccEjkfcUtjahOTTv56lAWIf3slqdxG0lxDWDLiqNExrwcAxQY19yGW
- PTDDVMl37d0dfu7ohsP0KdwlmtU8i37nfEN4qmYdLA==
-Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:6lSI1c2vxYbKbrU87eelG1YLTH1vm3jhcEYnsQO7ys8tKM1I5eO
+ 2nDug7qlIkjMQCXTH4nXizvLRONc3lTHduLp2geeIox6NUTgkuxHw3G0hyFTG1QshC0uL5E
+ 2yg5cqucQXqwtUpCt56jz+JHsjpqLbcJBYni25ZcxsV+vh36gYdct/OkD9CfFTC7bMiFHG7
+ Asr3hmbjW47HAHPhGoVww==
+UI-OutboundReport: notjunk:1;M01:P0:ECO5kY8j6JE=;jw0ERFA3R5uMEGg6hfmKCadzX1b
+ y6IFTAUFy6EEa1OP5MKSQtDXx9O5fGvTQGgSkgbJt3h4U7MniAx4e/wAqiy47ksz9gsh2ehvz
+ 70fuJ6Ke0Dpr54Yni2SxOuu+486jqipOpfwGGmbUhtBzwXKLpsaXtz+n8KAULVNSZLifsWdwB
+ nyk5OwAu2rh32Ghpr6/fUp7HZ51PTOhBjYXiE+Vwy32AyiXEFk5B1RZKA35Hrg2vGxJ0P0aR0
+ /YgoRBmA0/CSmUP0axJO41lXFPx7f5tdEBm++zzMS+hHcvtciNsHVIzwG35S1MZvz3pWUftwp
+ Jvxy0x9iz16xG2mF8445HZUj61UrSam+w7to2YOtE/L0fY2po9w9xoSPmGHgxDa0ubyggFXR/
+ 8kQRSGHo9aSqDSNeUFdznwasPYdbz2PtqxIhHlKFssqbk5cKPCJ3l0P4fu1oqSwGjHxcvxfx7
+ 7Kr3Nzy1LfzwC4J73/kvfFM8SH8Syn5uH6vr95zYfe2IZQN2/bhDxbrrcrmlatx2LNK0kY4bd
+ 4o2ouG/uz1r6WHRmO6+fSDXFBXxlh5CqQ0ojbJFPO1FDBGAamunLS2MFXTxiPeWrYRMqGldOb
+ QpFmwTQIP+ToWEo1dHG0Z9ZHunlxEuP1KfGWM6cwJvbh4wn6CoMqFvNP9Pw0t//Uusi5PYaaY
+ Wf1+6luyZpTRClFZWdQ6XAJcJ21CfyVaSvSd4dXV+w==
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -19
 X-Spam_score: -2.0
@@ -63,36 +67,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 17:37:15 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 17:42:27 -0000
 
-Le 09/01/2023 à 11:13, Thomas Huth a écrit :
-> Running the test-hmp with V=2 up to V=9 runs the test in verbose mode,
-> but running for example with V=10 falls back to non-verbose mode ...
-> Improve this oddity by properly treating the argument as a number.
+Le 05/01/2023 à 18:38, Philippe Mathieu-Daudé a écrit :
+> This argument was added 9 years ago in commit 83d08f2673
+> ("pc: map PCI address space as catchall region for not mapped
+> addresses") and has never been used since, so remove it.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   tests/qtest/test-hmp.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/i386/pc.c         | 2 +-
+>   hw/pci-host/i440fx.c | 3 +--
+>   hw/pci-host/q35.c    | 3 +--
+>   include/hw/i386/pc.h | 2 +-
+>   4 files changed, 4 insertions(+), 6 deletions(-)
 > 
-> diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
-> index f8b22abe4c..b4a920df89 100644
-> --- a/tests/qtest/test-hmp.c
-> +++ b/tests/qtest/test-hmp.c
-> @@ -151,7 +151,7 @@ int main(int argc, char **argv)
->   {
->       char *v_env = getenv("V");
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index d489ecc0d1..6e592bd969 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -782,7 +782,7 @@ void pc_guest_info_init(PCMachineState *pcms)
+>   }
 >   
-> -    if (v_env && *v_env >= '2') {
-> +    if (v_env && atoi(v_env) >= 2) {
->           verbose = true;
+>   /* setup pci memory address space mapping into system address space */
+> -void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
+> +void pc_pci_as_mapping_init(MemoryRegion *system_memory,
+>                               MemoryRegion *pci_address_space)
+>   {
+>       /* Set to lower priority than RAM */
+> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+> index d5426ef4a5..262f82c303 100644
+> --- a/hw/pci-host/i440fx.c
+> +++ b/hw/pci-host/i440fx.c
+> @@ -272,8 +272,7 @@ PCIBus *i440fx_init(const char *pci_type,
+>                        IO_APIC_DEFAULT_ADDRESS - 1);
+>   
+>       /* setup pci memory mapping */
+> -    pc_pci_as_mapping_init(OBJECT(f), f->system_memory,
+> -                           f->pci_address_space);
+> +    pc_pci_as_mapping_init(f->system_memory, f->pci_address_space);
+>   
+>       /* if *disabled* show SMRAM to all CPUs */
+>       memory_region_init_alias(&f->smram_region, OBJECT(d), "smram-region",
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 20da121374..26390863d6 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -574,8 +574,7 @@ static void mch_realize(PCIDevice *d, Error **errp)
 >       }
 >   
+>       /* setup pci memory mapping */
+> -    pc_pci_as_mapping_init(OBJECT(mch), mch->system_memory,
+> -                           mch->pci_address_space);
+> +    pc_pci_as_mapping_init(mch->system_memory, mch->pci_address_space);
+>   
+>       /* if *disabled* show SMRAM to all CPUs */
+>       memory_region_init_alias(&mch->smram_region, OBJECT(mch), "smram-region",
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 991f905f5d..88a120bc23 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -156,7 +156,7 @@ void pc_guest_info_init(PCMachineState *pcms);
+>   #define PCI_HOST_ABOVE_4G_MEM_SIZE     "above-4g-mem-size"
+>   
+>   
+> -void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
+> +void pc_pci_as_mapping_init(MemoryRegion *system_memory,
+>                               MemoryRegion *pci_address_space);
+>   
+>   void xen_load_linux(PCMachineState *pcms);
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
-
 
