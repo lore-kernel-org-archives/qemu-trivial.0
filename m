@@ -1,49 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHTKB-0003yn-CU
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:31:11 -0500
+	id 1pHTOS-0007ZG-4h
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2023 12:35:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTK8-0003vI-BK; Mon, 16 Jan 2023 12:31:08 -0500
+ id 1pHTOJ-0007Jd-4H; Mon, 16 Jan 2023 12:35:29 -0500
 Received: from mout.kundenserver.de ([212.227.126.135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pHTK3-0004MC-HP; Mon, 16 Jan 2023 12:31:08 -0500
+ id 1pHTOG-00054D-Gj; Mon, 16 Jan 2023 12:35:26 -0500
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
  (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N8n8I-1odJTA0Z9y-015uBF; Mon, 16 Jan 2023 18:30:58 +0100
-Message-ID: <86fc15b7-6880-b628-c9c6-c4cc1d602eeb@vivier.eu>
-Date: Mon, 16 Jan 2023 18:30:57 +0100
+ 1MgiPE-1oneLT49RE-00h48n; Mon, 16 Jan 2023 18:35:20 +0100
+Message-ID: <02ca716e-12a0-017f-9d81-5f7750cbad57@vivier.eu>
+Date: Mon, 16 Jan 2023 18:35:18 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH v3 0/5] hw/i2c/bitbang_i2c: Housekeeping
+Subject: Re: [PATCH-for-8.0] block/nbd: Add missing <qemu/bswap.h> include
 Content-Language: fr
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
- qemu-trivial@nongnu.org
-References: <20230111085016.44551-1-philmd@linaro.org>
+Cc: Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ qemu-trivial@nongnu.org, Hanna Reitz <hreitz@redhat.com>
+References: <20221125175328.48539-1-philmd@linaro.org>
+ <07ccf64d-1400-b19d-145e-6c0f25685d46@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20230111085016.44551-1-philmd@linaro.org>
+In-Reply-To: <07ccf64d-1400-b19d-145e-6c0f25685d46@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:b9ptuYCHik5xG1OgcoUTvkqqqkyAxdf1o6ga4eJI3WcDOJBOQ1s
- IJop18Xc1WQuYOslxrIxE7fnhUKT8chDVMrDBJpl8RhY0Is869/lPu6l9XVhkYNhyusFNTP
- qGqyvFEjmrtkqg7+JgKEyyuVXH76DtAjvRqxNoJc9aA8igWp2Ac8GGhJMaTFjRKdcPPEWjn
- HUZ24VmNuVOqL1/FYSQyg==
-UI-OutboundReport: notjunk:1;M01:P0:rY6nDk+mIxw=;bRCHoBhDAr5elq5hGg5UoXq2IBQ
- golH4bjRB4apnR4toGVjKKXyIy20uukdN6xS5vP898TLXzJINW5iGAy9bof/IuvlTcwo9E0jF
- sqpeBVdc3C4sCFGDXv/b7Et5jn4dsD8xAGfSg98IMf4tMvC3we39kBuUhTyp4Zua5eJCExVNs
- WSiHaqmhn9JEEhS/xaDfn3lBdZES/7kATSyTfNCOl1SmzDGYeVhG2SOXjCZUfHBPrcxp2VnFN
- oawiFp0J+iMggrpUTRMSsEyVsfIogEid6rPAoRLuy+A7Ku7UYzCrPmTWa72u0E4S5OlfzbKv4
- 7QvkBixdj5BzpDU9kgLLNBfeDfGwUDHneOWdZH/Ef2PY6FsasvmIwUNWj9ORYwdndnfcuJgj+
- UPKEhz4SaW+WhYIPf4JQO73SC5ia/ZxGrnyHkd5Ea9qXo45EE7KfNw8OotoWYbw5Ot8cWeQxt
- WUizynKJuHnOh6bL6B2ZjiHnsuIh0OcKVIdo7rkgzfUo9UIfN5xpa9BdlW4Q0NK4h/WlR7qiy
- JF+FG9NuR5JWj4+Sq2RLd2Vh90GhibUNikAEHxKY2GFpTM3VtopS4JdtBJGGKS5DZDwTJf70m
- RZtwPfbTcMzI3fCbQD2855mJt5VQY7wQafBlH8BmC7pzIyXcVgSXNwxnP5ggUKqVZmdUuFHJP
- hPLscQUHNFAC3Aikzy59GpR6ZopT5E60Szz8xS8nUg==
+X-Provags-ID: V03:K1:Ys/stV8Dur32OhmKaaOLvt3lbqkbkbBXXvUx/IdgiNZpCU66wMh
+ XoqnmGMJP0ENr/xNbrUv9N959C6FvCfO8d6L2DB+fTMFnUht3gzVM7rFhosdNq8XErDYFjg
+ eRPjN+ZLFHN2WuKo69FzhpnruuZh0FPEELfuW4RAIvWmZOAe2k01JcFilcdTbLaxA12gG8X
+ RIMJw0rrpcmmYXHgarxTQ==
+UI-OutboundReport: notjunk:1;M01:P0:BAvf18fCahk=;zhXuaEwxVGHzKTeeP0eR2MuHxmh
+ ag145+xtGG4YY8mqXeyBLancGWladzWB+295XrYJ4ZwLnAw17jCVMqU/vSJhwPhfC4AXIb/fD
+ RRtyOWyEeFpOPbQJhIUpStsGVXCXxQwN62KWA4+oGeAu+oD2rw7UdqAPVOEdiAnDWyFKwwmCm
+ 2Qz9NdpT0sjQAKKX68Vbae7Temx9xcHWLNGwXQlGE62tgE3IQRGoVZr3mrTxh/26QPOkaSVR/
+ g4PDsiM8OKtNpB+cpcvTjdHc4yOTiXJeKX1WjqojBZa8nJobQlUUYoBlqrR4U4PeSrCNnnczl
+ NfLea48wBObpxOs/g1jz/ni+/ZY4jVtq0hYrblsX2wL7FWAJkliGEJWNDC7Uf8OWJBdurQDeR
+ vAuW1XJ+lHuEi0AnXA0qiCjP3TZ4lOYJMUDhanDvI4ik72zM1hDur7QAlLIIGdLf5pcrLsSdm
+ YIN0MSnQDRIY/GyCEnWh2IgnL6jiC8CWVHeWpgjnPfXM6umaw6mtnngKqbcffojNiTvE70oiG
+ GOQwExX9QOkqpsMrJi/hHebK3j8ZYH2UkubTb2InB3Eu+tBg3oTTpOpFZh7fcXg5WQajtNhrX
+ vC6JvTq1fniBVHy3zwKq06Zm5yR0yJpFPOW1uB4VTTl76itGBHafCHBugHYfYRsc4zyCxHnUF
+ FxbswhGBwda8fyIV4cRNXd/hAbij/7f1gaTsi7l2ZQ==
 Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -19
@@ -64,41 +66,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jan 2023 17:31:10 -0000
+X-List-Received-Date: Mon, 16 Jan 2023 17:35:32 -0000
 
-Le 11/01/2023 à 09:50, Philippe Mathieu-Daudé a écrit :
-> Series fully reviewed.
-> 
-> Since v2:
-> - Use array of const pointers to const (Richard)
-> 
-> Since v1:
-> - Fixed overwritten RECEIVING_BIT7 entry (Richard)
-> - Picked R-b tags
-> 
-> - Remove unused dummy MemoryRegion
-> - Convert DPRINTF() to using trace events
-> 
-> (series used as base for follow-up, better if merged via ARM tree)
+Le 12/01/2023 à 13:00, Philippe Mathieu-Daudé a écrit :
+> Hi, can this reviewed patch get merged via a block tree?
 
-I can take this via trivial, what do you prefer?
+I can take this via trivial.
 
+Thanks,
 Laurent
 
 > 
-> Philippe Mathieu-Daudé (5):
->    hw/i2c/bitbang_i2c: Define TYPE_GPIO_I2C in public header
->    hw/i2c/bitbang_i2c: Remove unused dummy MemoryRegion
->    hw/i2c/bitbang_i2c: Change state calling bitbang_i2c_set_state()
->      helper
->    hw/i2c/bitbang_i2c: Trace state changes
->    hw/i2c/bitbang_i2c: Convert DPRINTF() to trace events
+> On 25/11/22 18:53, Philippe Mathieu-Daudé wrote:
+>> The inlined nbd_readXX() functions call beXX_to_cpu(), themselves
+>> declared in <qemu/bswap.h>. This fixes when refactoring:
+>>
+>>    In file included from ../../block/nbd.c:44:
+>>    include/block/nbd.h: In function 'nbd_read16':
+>>    include/block/nbd.h:383:12: error: implicit declaration of function 'be16_to_cpu' 
+>> [-Werror=implicit-function-declaration]
+>>      383 |     *val = be##bits##_to_cpu(*val);                                     \
+>>          |            ^~
+>>    include/block/nbd.h:387:1: note: in expansion of macro 'DEF_NBD_READ_N'
+>>      387 | DEF_NBD_READ_N(16) /* Defines nbd_read16(). */
+>>          | ^~~~~~~~~~~~~~
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   include/block/nbd.h | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/include/block/nbd.h b/include/block/nbd.h
+>> index 4ede3b2bd0..a4c98169c3 100644
+>> --- a/include/block/nbd.h
+>> +++ b/include/block/nbd.h
+>> @@ -24,6 +24,7 @@
+>>   #include "io/channel-socket.h"
+>>   #include "crypto/tlscreds.h"
+>>   #include "qapi/error.h"
+>> +#include "qemu/bswap.h"
+>>   extern const BlockExportDriver blk_exp_nbd;
 > 
->   hw/arm/musicpal.c            |  3 +-
->   hw/i2c/bitbang_i2c.c         | 80 ++++++++++++++++++++++--------------
->   hw/i2c/trace-events          |  7 ++++
->   include/hw/i2c/bitbang_i2c.h |  2 +
->   4 files changed, 61 insertions(+), 31 deletions(-)
 > 
 
 
