@@ -1,64 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHoeK-0003Da-Ij
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2023 11:17:24 -0500
+	id 1pHqur-0001wz-6v
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2023 13:42:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1pHoeI-0003BR-Dv
- for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 11:17:22 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1pHoeG-0004Xp-58
- for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 11:17:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673972239;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=dS//4CC9MWKZdhc6dDGuWag5X3V5/eWtf6zZq+T21N0=;
- b=SIPE/aQNxPBI/nFLfmqD5zoKfw5BOkb+Eygv86JTe1mCVF0zjsh1YDke6me5G9Z3QClctt
- Klq6aH3Hw26NxTrs3RcvBKNT1dUfzCgmuC1uD6Bw4uTzRijI731ncJbLkqLCNfeIIUs99s
- U20/fgXBzDgJfJ/f2XHpnx1+Ms2WwP4=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-14-hNhV7_I3Ma2ZgfCj843hIQ-1; Tue, 17 Jan 2023 11:17:02 -0500
-X-MC-Unique: hNhV7_I3Ma2ZgfCj843hIQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3C0143815F94;
- Tue, 17 Jan 2023 16:15:03 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.48])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B11962026D76;
- Tue, 17 Jan 2023 16:15:02 +0000 (UTC)
-Date: Tue, 17 Jan 2023 11:15:00 -0500
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH 0/4] hw: QOM housekeeping around IOTHREAD / IRQ types
-Message-ID: <Y8bJhDWrIhP2Uq7C@fedora>
-References: <20230113200138.52869-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHque-0001sy-2I
+ for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 13:42:28 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHqub-0000iv-VG
+ for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 13:42:23 -0500
+Received: by mail-ej1-x636.google.com with SMTP id ud5so77552301ejc.4
+ for <qemu-trivial@nongnu.org>; Tue, 17 Jan 2023 10:42:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=0tE4B310nUB0gFBo/wzLg+119jqLd4O6fykhWT0X0zM=;
+ b=GRwQuj3FSMLOS9E9vz4DqUakntCuQ/r9l/lcm7Latb0IUlN7qgRlyr3a7HA99Z12cf
+ IAgIz+eL8JtqMNZ/rWFHbjUtant2ZeAvuJD63BO6RtZqpl9n3n1mMNQasyEpW1IS/D2E
+ Ufp8XXGRctpKIbKpTBf1ppKqBbSi4D/zha0Q8NR8F9ZuyYmheRaklPrSbc8mbqZY/jW4
+ eA/BeQffsqa9E4EtGRd+O9ULFiyZ21TLfMplphWun37cV9D/k3AX8hxFyBgzTSJXYsRD
+ lweYZkhJ1qSFMPAJuPC6/sU63Tawao5VHdgABYjVA0uaXffVL/cTeAc60C/+C66LBSlG
+ MGCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0tE4B310nUB0gFBo/wzLg+119jqLd4O6fykhWT0X0zM=;
+ b=iU+PbEWPCX89MCKf9NbW0LcgLSup7vfjQKB/4VtfR7F+ST64pYmVOacfiElSi6rp41
+ KQ/OON2K5dJSwi+vkWA2tb2mc1QCoWs3snzL2U/XD/SeHxa5bEqkbyXHaqlN9g2jPs89
+ 98shudxA3rIrjM5XstmqCvhyyHZ4F1lGQSqe6cYDnbpT0bXpJxm3dj94HvlFD3EKsYBH
+ Nqccxf6UettdzOsDz0s2WCrM29tkSuirQaOHr3G0h+YKfQknXLQG0k3RZMDjN0wkUdaH
+ 0WnSQwbT0q5BuBOYZn3/GglI00aylQqM6f6voPNNFH4Mq1sGMCKKhviDRV6XTacfcJlv
+ BiTQ==
+X-Gm-Message-State: AFqh2kry/xpxonxoDcw2+cyXWJ6Sy+IJkZwlGetB2kbCqKH7/AK/BV7M
+ vcWmYsdqgX4CrnfXuXjYjlQVUXuN7z+a2OOm
+X-Google-Smtp-Source: AMrXdXsjujbr8EWCfNKDN4D/DZiZa4lQs0U4OiaLv6QqK8kWZ3KRGRuGOqjY5D+UhttpidCwpzIfLg==
+X-Received: by 2002:a17:906:474a:b0:7c0:d60b:2883 with SMTP id
+ j10-20020a170906474a00b007c0d60b2883mr3822514ejs.50.1673980940101; 
+ Tue, 17 Jan 2023 10:42:20 -0800 (PST)
+Received: from localhost.localdomain ([185.126.107.38])
+ by smtp.gmail.com with ESMTPSA id
+ 21-20020a170906319500b0086faa5b06d4sm3524214ejy.181.2023.01.17.10.42.18
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 17 Jan 2023 10:42:19 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] target/tricore: Remove unused fields from CPUTriCoreState
+Date: Tue, 17 Jan 2023 19:42:17 +0100
+Message-Id: <20230117184217.83305-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="kASuhU4CZ/BEMZkj"
-Content-Disposition: inline
-In-Reply-To: <20230113200138.52869-1-philmd@linaro.org>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,62 +77,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Jan 2023 16:17:22 -0000
+X-List-Received-Date: Tue, 17 Jan 2023 18:42:34 -0000
 
+Remove dead code:
+- unused fields in CPUTriCoreState
+- (unexisting) tricore_def_t structure
+- forward declaration of tricore_boot_info structure
+  (declared in "hw/tricore/tricore.h", used once in
+   hw/tricore/tricore_testboard.c).
 
---kASuhU4CZ/BEMZkj
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/tricore/cpu.h | 11 -----------
+ 1 file changed, 11 deletions(-)
 
-On Fri, Jan 13, 2023 at 09:01:34PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> - remove unused code
-> - use recent QOM macros
-> - use CamelCase typedef
->=20
-> Philippe Mathieu-Daud=E9 (4):
->   iothread: Remove unused IOThreadClass / IOTHREAD_CLASS
->   hw/irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
->   hw/or-irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
->   hw: Replace qemu_or_irq typedef by OrIRQState
->=20
->  hw/arm/exynos4210.c                  |  4 ++--
->  hw/arm/mps2-tz.c                     |  2 +-
->  hw/core/irq.c                        |  9 ++++-----
->  hw/core/or-irq.c                     | 18 +++++++++---------
->  hw/pci-host/raven.c                  |  2 +-
->  include/hw/arm/armsse.h              |  6 +++---
->  include/hw/arm/bcm2835_peripherals.h |  2 +-
->  include/hw/arm/exynos4210.h          |  4 ++--
->  include/hw/arm/stm32f205_soc.h       |  2 +-
->  include/hw/arm/stm32f405_soc.h       |  2 +-
->  include/hw/arm/xlnx-versal.h         |  6 +++---
->  include/hw/arm/xlnx-zynqmp.h         |  2 +-
->  include/hw/or-irq.h                  |  5 +----
->  iothread.c                           |  4 ----
->  14 files changed, 30 insertions(+), 38 deletions(-)
->=20
-> --=20
-> 2.38.1
->=20
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---kASuhU4CZ/BEMZkj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmPGyYQACgkQnKSrs4Gr
-c8jskAgAr2qJn9PIVLPHgAOTV9G77je0Td+PM0xLKU8TeWqolhsn/ree/BmAu2+G
-trFb150VcsfhMWy4Fp59wJSE7xOQynwVEoAPLl77THlWtkrID7Ig9DW4mnlemDKe
-hvEM7t+fiddEcdXEVgReKi7QOZyrLGXtmGXgkJgRkJ47IXODrnhAQ3hN2Azo9RbR
-ucvCqPVjw3ng1ZuI9NG01Y0hfEXM7SlHG/p097AWOUPlp8D078E82RNLndnFkYXG
-5b3TL5sCbrbdM2a348P/jx4vMjxcGfORfh9kwzreisAL/0g23EUBQzESZsDMXr20
-mEcN3SisKSgWRkTUC1WeO74//yrYYg==
-=wQRH
------END PGP SIGNATURE-----
-
---kASuhU4CZ/BEMZkj--
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index 3b9c533a7c..47d0ffb745 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -25,10 +25,6 @@
+ #include "qemu/cpu-float.h"
+ #include "tricore-defs.h"
+ 
+-struct tricore_boot_info;
+-
+-typedef struct tricore_def_t tricore_def_t;
+-
+ typedef struct CPUArchState {
+     /* GPR Register */
+     uint32_t gpr_a[16];
+@@ -179,16 +175,9 @@ typedef struct CPUArchState {
+     uint32_t M3CNT;
+     /* Floating Point Registers */
+     float_status fp_status;
+-    /* QEMU */
+-    int error_code;
+-    uint32_t hflags;    /* CPU State */
+ 
+     /* Internal CPU feature flags.  */
+     uint64_t features;
+-
+-    const tricore_def_t *cpu_model;
+-    void *irq[8];
+-    struct QEMUTimer *timer; /* Internal timer */
+ } CPUTriCoreState;
+ 
+ /**
+-- 
+2.38.1
 
 
