@@ -1,70 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHqur-0001wz-6v
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2023 13:42:39 -0500
+	id 1pHrf6-0002LF-KF
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2023 14:30:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHque-0001sy-2I
- for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 13:42:28 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHrf4-0002Is-VB
+ for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 14:30:22 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHqub-0000iv-VG
- for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 13:42:23 -0500
-Received: by mail-ej1-x636.google.com with SMTP id ud5so77552301ejc.4
- for <qemu-trivial@nongnu.org>; Tue, 17 Jan 2023 10:42:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pHrf2-0007vw-5R
+ for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 14:30:22 -0500
+Received: by mail-ej1-x630.google.com with SMTP id qx13so19425111ejb.13
+ for <qemu-trivial@nongnu.org>; Tue, 17 Jan 2023 11:30:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=0tE4B310nUB0gFBo/wzLg+119jqLd4O6fykhWT0X0zM=;
- b=GRwQuj3FSMLOS9E9vz4DqUakntCuQ/r9l/lcm7Latb0IUlN7qgRlyr3a7HA99Z12cf
- IAgIz+eL8JtqMNZ/rWFHbjUtant2ZeAvuJD63BO6RtZqpl9n3n1mMNQasyEpW1IS/D2E
- Ufp8XXGRctpKIbKpTBf1ppKqBbSi4D/zha0Q8NR8F9ZuyYmheRaklPrSbc8mbqZY/jW4
- eA/BeQffsqa9E4EtGRd+O9ULFiyZ21TLfMplphWun37cV9D/k3AX8hxFyBgzTSJXYsRD
- lweYZkhJ1qSFMPAJuPC6/sU63Tawao5VHdgABYjVA0uaXffVL/cTeAc60C/+C66LBSlG
- MGCQ==
+ bh=l7/Pf3QFy7tCNP1T2A2CbqV1qRDD69xfRcKghv8dT2E=;
+ b=B4cgeNkLMnxoXm6wGLj82xnvRcoJ7RK6qZZ9lfNNEI3Zbpp5QhksaHfSrqzNJmaQin
+ x6sioJHeRR9TwkeZluIUlX0Gd4OQV2ijDzbRe3zKFz8AMTTYLwMh+HGFhvc+rC9aE4Wk
+ d6h1rLkS2s+ikTdV3z5tS3b6SAZ6kCc5ZqDMOcHTa3Lt7yETZ4dNfi9oN7yoRwSyO8PI
+ ffSrsf+XXUfDuMSzc1leB2VhNK3IOdH9AD83RDgVSVMgdXJzseFnTiLeHnQTuig/32kc
+ u0IgBYLwOXnGCQETkstFpO1qVeEUmQ/2KD7w3Qv6Zruh3sFTjxRj7LNgvixOBFzna67i
+ xcXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=0tE4B310nUB0gFBo/wzLg+119jqLd4O6fykhWT0X0zM=;
- b=iU+PbEWPCX89MCKf9NbW0LcgLSup7vfjQKB/4VtfR7F+ST64pYmVOacfiElSi6rp41
- KQ/OON2K5dJSwi+vkWA2tb2mc1QCoWs3snzL2U/XD/SeHxa5bEqkbyXHaqlN9g2jPs89
- 98shudxA3rIrjM5XstmqCvhyyHZ4F1lGQSqe6cYDnbpT0bXpJxm3dj94HvlFD3EKsYBH
- Nqccxf6UettdzOsDz0s2WCrM29tkSuirQaOHr3G0h+YKfQknXLQG0k3RZMDjN0wkUdaH
- 0WnSQwbT0q5BuBOYZn3/GglI00aylQqM6f6voPNNFH4Mq1sGMCKKhviDRV6XTacfcJlv
- BiTQ==
-X-Gm-Message-State: AFqh2kry/xpxonxoDcw2+cyXWJ6Sy+IJkZwlGetB2kbCqKH7/AK/BV7M
- vcWmYsdqgX4CrnfXuXjYjlQVUXuN7z+a2OOm
-X-Google-Smtp-Source: AMrXdXsjujbr8EWCfNKDN4D/DZiZa4lQs0U4OiaLv6QqK8kWZ3KRGRuGOqjY5D+UhttpidCwpzIfLg==
-X-Received: by 2002:a17:906:474a:b0:7c0:d60b:2883 with SMTP id
- j10-20020a170906474a00b007c0d60b2883mr3822514ejs.50.1673980940101; 
- Tue, 17 Jan 2023 10:42:20 -0800 (PST)
+ bh=l7/Pf3QFy7tCNP1T2A2CbqV1qRDD69xfRcKghv8dT2E=;
+ b=C6g/4LPKPThcyo1jJx5GEJyBuCWUzERoeazFhHE59ZE0/Yu1Deg5mU/oWHNJEgAKuO
+ PmTIXp/Ti+K3XgsI86msYHdLS9VHiqytQ5Zv5SvcdDNIAK1MKHg18/rRZ7dmfBRieRvZ
+ yOQ9lpQiVW6b2mLTLlvBamuqh5tWYY47/p5My/DXkLjx7iP90HfBw2niBQyGlLk0LXXB
+ PeBfQfScW7++xq6wQCvm6MFF7oNGvrQbJCDwBE9PD7KufsfttTilr2tqJ9RswOdonlGl
+ mdtpg74SatJnBm2KJA0eMVU7UYTTkM/5QP7DqnzPT8vZL7ZlM2mZSosLpcRylP8e4ou7
+ pXYw==
+X-Gm-Message-State: AFqh2krPEvJBf6PH/zf7M9iJa+CpcZjgm6mqRASzdDgo0rhEK0a02EJc
+ 3NuCc7Fp6NhWzry6R2nbVVcKYw==
+X-Google-Smtp-Source: AMrXdXuLKKgn08/M18hhdbqATnoBnF+NC8pFG0tMxrlMBOpQ2BGwL12drIzp0zh60xPlzduaHVyVow==
+X-Received: by 2002:a17:906:e2cd:b0:870:2aa7:6509 with SMTP id
+ gr13-20020a170906e2cd00b008702aa76509mr4329544ejb.43.1673983818290; 
+ Tue, 17 Jan 2023 11:30:18 -0800 (PST)
 Received: from localhost.localdomain ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- 21-20020a170906319500b0086faa5b06d4sm3524214ejy.181.2023.01.17.10.42.18
+ ia2-20020a170907a06200b00868c5005e13sm6323824ejc.98.2023.01.17.11.30.16
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 17 Jan 2023 10:42:19 -0800 (PST)
+ Tue, 17 Jan 2023 11:30:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+Cc: Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] target/tricore: Remove unused fields from CPUTriCoreState
-Date: Tue, 17 Jan 2023 19:42:17 +0100
-Message-Id: <20230117184217.83305-1-philmd@linaro.org>
+Subject: [PATCH] hw: Use TYPE_PCI_BUS definition where appropriate
+Date: Tue, 17 Jan 2023 20:30:14 +0100
+Message-Id: <20230117193014.83502-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,52 +79,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Jan 2023 18:42:34 -0000
+X-List-Received-Date: Tue, 17 Jan 2023 19:30:23 -0000
 
-Remove dead code:
-- unused fields in CPUTriCoreState
-- (unexisting) tricore_def_t structure
-- forward declaration of tricore_boot_info structure
-  (declared in "hw/tricore/tricore.h", used once in
-   hw/tricore/tricore_testboard.c).
+Use the proper QOM type definition instead of magic string.
+This also helps during eventual refactor while using git-grep.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/tricore/cpu.h | 11 -----------
- 1 file changed, 11 deletions(-)
+ hw/arm/smmu-common.c     | 3 ++-
+ hw/virtio/virtio-iommu.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-index 3b9c533a7c..47d0ffb745 100644
---- a/target/tricore/cpu.h
-+++ b/target/tricore/cpu.h
-@@ -25,10 +25,6 @@
- #include "qemu/cpu-float.h"
- #include "tricore-defs.h"
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 54186f31cb..733c964778 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -535,7 +535,8 @@ static void smmu_base_reset_hold(Object *obj)
  
--struct tricore_boot_info;
--
--typedef struct tricore_def_t tricore_def_t;
--
- typedef struct CPUArchState {
-     /* GPR Register */
-     uint32_t gpr_a[16];
-@@ -179,16 +175,9 @@ typedef struct CPUArchState {
-     uint32_t M3CNT;
-     /* Floating Point Registers */
-     float_status fp_status;
--    /* QEMU */
--    int error_code;
--    uint32_t hflags;    /* CPU State */
+ static Property smmu_dev_properties[] = {
+     DEFINE_PROP_UINT8("bus_num", SMMUState, bus_num, 0),
+-    DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus, "PCI", PCIBus *),
++    DEFINE_PROP_LINK("primary-bus", SMMUState, primary_bus,
++                     TYPE_PCI_BUS, PCIBus *),
+     DEFINE_PROP_END_OF_LIST(),
+ };
  
-     /* Internal CPU feature flags.  */
-     uint64_t features;
--
--    const tricore_def_t *cpu_model;
--    void *irq[8];
--    struct QEMUTimer *timer; /* Internal timer */
- } CPUTriCoreState;
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 23c470977e..1cd258135d 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -1366,7 +1366,8 @@ static const VMStateDescription vmstate_virtio_iommu = {
+ };
  
- /**
+ static Property virtio_iommu_properties[] = {
+-    DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus, "PCI", PCIBus *),
++    DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
++                     TYPE_PCI_BUS, PCIBus *),
+     DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
+     DEFINE_PROP_END_OF_LIST(),
+ };
 -- 
 2.38.1
 
