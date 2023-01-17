@@ -1,66 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pHlSq-00085R-1u
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2023 07:53:20 -0500
+	id 1pHlVT-00019Q-VK
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2023 07:56:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1pHlSn-000857-7H
- for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 07:53:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1pHlSl-0002MK-5F
- for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 07:53:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673959994;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=VhcJLKwuBxCuv4Oo7bnHNv76JbTzvFLW/c10noHB0fs=;
- b=YM3PZmKyGG1j616PZCUAhkBG81NukAvypwwWqURIWZku0QPSYmTOPM4cOdk4L53zbLP7Ue
- MtrH5o+llOsRJgXPCsxBEUtMawuHI5T4NMmnlB3UI6vphzsM/F5BOuU46iycYGHX1xgZRu
- mm0cwpTCT/TeFIfkQBGy8iQhWTqDtBo=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-410-FoVl8ZrZNqG-2NDfCNM6Fw-1; Tue, 17 Jan 2023 07:53:13 -0500
-X-MC-Unique: FoVl8ZrZNqG-2NDfCNM6Fw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DEC4E802BF3;
- Tue, 17 Jan 2023 12:53:11 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.69])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 31B9540C6EC4;
- Tue, 17 Jan 2023 12:53:11 +0000 (UTC)
-Date: Tue, 17 Jan 2023 12:53:09 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Laurent Vivier <laurent@vivier.eu>,
- Pierre-Yves Ritschard <pyr@spootnik.org>, qemu-devel@nongnu.org,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] ui/vnc.c: Allow websocket connections over AF_UNIX sockets
-Message-ID: <Y8aaNY8oVZ4z8hTt@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+ (Exim 4.90_1) (envelope-from <pyr@spootnik.org>) id 1pHlVR-00018x-9M
+ for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 07:56:01 -0500
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pyr@spootnik.org>) id 1pHlVP-0002wJ-Cu
+ for qemu-trivial@nongnu.org; Tue, 17 Jan 2023 07:56:01 -0500
+Received: by mail-yb1-xb29.google.com with SMTP id l139so33836355ybl.12
+ for <qemu-trivial@nongnu.org>; Tue, 17 Jan 2023 04:55:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=spootnik-org.20210112.gappssmtp.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=yO9Vu3cBKQTr12+wvjXMHm+04X1bo11H22tQFuYfSHo=;
+ b=FTU7eMGyMBYMBEfem4GHU7SE+lMUkJL78FzyRdeQz0KFYuBfUhrajOkbi+3VbX9A75
+ GZP2ygZ3Cb2tz0HLe+CgW7OtnOp4ZwAroFFzTAu/oyPx8W88VvxbT1uiraaUQcEZCkO3
+ 3+f5O5HLprbVr31+e+157+P4wUuzaNleXfdgvc6DxXIg8eiChmcX9JT6nrQqDowohkHK
+ B/+UfdM8FcDJhcQYU8Z4BZ3uaXW2e1WuWKu0lgFcMUl3W+mu2Ou/oqGBNKKkrsx/fYd0
+ iKVplSndcADa6tjCF9nng7AIj+wUINxJGgNvTXMkdhyj+21DM9hbKC6m0NqTpRuiEYAt
+ V7gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=yO9Vu3cBKQTr12+wvjXMHm+04X1bo11H22tQFuYfSHo=;
+ b=urZIZ0pY1eRBGjpNwY5TVDjYkP68dxS+jB/zbSJxQq4cuojfmg9MN92f0ptfeoWlra
+ uYl47+7T1TLTdYh0PXGUkiKa1/Kh5ubdpnj2NjzoyKONLjxuPpAAMEfpGAO2KlSaLzP0
+ XVU68YB7W/92V5HGOlP4mMJrbjCktWXF6KzFjLoywVfix+dXXgrRTAsUfvvIPA7iprKw
+ ZB0KLSOUDgWbd/GnNUcPsN8xdGFUoLiRgX51dYcomPKLQXdhsk5wWlONRP1NdXdUoOZN
+ ZxjR40czlzNBNhiFF3+IGGqQR2LtF/b6K1/T3qst2V6E1zXHNMeQLWBdCPHlp/TrPUgQ
+ iICg==
+X-Gm-Message-State: AFqh2ko/EtUA3P/X9lOf5IOAHFSUYPJWVN7UY1PkXCDrsHzoEcLQZz26
+ f0PkkdyXCyh99z145kekNJ1P6RQWnJL+RFwdioIzEw==
+X-Google-Smtp-Source: AMrXdXsyBdYbKu+X4I21OtHCAHuhKEoq3tlQB03GOGJpX+6NTNwV6+loSKuQ5lqU17O1tYdVodNohLvN8hNcnpCzvbI=
+X-Received: by 2002:a25:cf52:0:b0:759:65ed:fe8a with SMTP id
+ f79-20020a25cf52000000b0075965edfe8amr426283ybg.310.1673960157768; Tue, 17
+ Jan 2023 04:55:57 -0800 (PST)
+MIME-Version: 1.0
 References: <20221202151202.24851-1-pyr@spootnik.org>
  <45ba2636-bf79-560e-e22b-f9b56823658e@vivier.eu>
  <20230117124312.ebe4qpp6p3hjew32@sirius.home.kraxel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20230117124312.ebe4qpp6p3hjew32@sirius.home.kraxel.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <Y8aaNY8oVZ4z8hTt@redhat.com>
+In-Reply-To: <Y8aaNY8oVZ4z8hTt@redhat.com>
+From: Pierre-Yves Ritschard <pyr@spootnik.org>
+Date: Tue, 17 Jan 2023 13:56:02 +0100
+Message-ID: <CAJwCgu-YHcZH-QoOZjvBk5j7AC3nL_FDf5M+x_53SDHqp=jcoQ@mail.gmail.com>
+Subject: Re: [PATCH] ui/vnc.c: Allow websocket connections over AF_UNIX sockets
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-devel@nongnu.org, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Content-Type: multipart/alternative; boundary="00000000000092901f05f27538bb"
+Received-SPF: none client-ip=2607:f8b0:4864:20::b29;
+ envelope-from=pyr@spootnik.org; helo=mail-yb1-xb29.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,27 +74,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Jan 2023 12:53:17 -0000
+X-List-Received-Date: Tue, 17 Jan 2023 12:56:01 -0000
 
-On Tue, Jan 17, 2023 at 01:43:12PM +0100, Gerd Hoffmann wrote:
-> On Mon, Jan 16, 2023 at 07:15:08PM +0100, Laurent Vivier wrote:
-> > Hi Gerd,
-> > 
-> > If this patch is correct I can queue it via trivial branch.
-> 
-> proxying tcp websocket connections to a unix socket looks like
-> a reasonable use case to me.
-> 
-> Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+--00000000000092901f05f27538bb
+Content-Type: text/plain; charset="UTF-8"
 
-Please don't queue, this patch is not correct becasue it is failing
-to validate the 'websocket' parameter at all.
+> Please don't queue, this patch is not correct becasue it is failing
+> to validate the 'websocket' parameter at all.
+>
+>
+Hi,
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Thanks for the review! I'm happy to adapt the patch to add validation,
+though I am not quite sure what additional validation you would like to
+see occur here.
 
+Cheers,
+Pierre-Yves
+
+--00000000000092901f05f27538bb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Please don&#39;t queue, this patch is not correct becasue it is failing<br>
+to validate the &#39;websocket&#39; parameter at all.<br>
+<br></blockquote><div><br></div><div>Hi,</div><div><br></div><div>Thanks fo=
+r the review! I&#39;m happy to adapt the patch to add validation,</div><div=
+>though I am not quite sure what additional validation you would like to</d=
+iv><div>see occur here.</div><div><br></div><div>Cheers,</div><div>Pierre-Y=
+ves<br></div></div></div>
+
+--00000000000092901f05f27538bb--
 
