@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pI3FY-0001th-NI
+	id 1pI3FY-0001uS-VA
 	for mharc-qemu-trivial@gnu.org; Wed, 18 Jan 2023 02:52:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pI3FV-0001qi-JU; Wed, 18 Jan 2023 02:52:45 -0500
+ id 1pI3FW-0001r0-16; Wed, 18 Jan 2023 02:52:46 -0500
 Received: from mout.kundenserver.de ([212.227.17.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pI3FT-00022D-Sb; Wed, 18 Jan 2023 02:52:45 -0500
+ id 1pI3FU-00022X-Ek; Wed, 18 Jan 2023 02:52:45 -0500
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue108
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MKKhF-1p0nkG14Pv-00LoIK; Wed, 18
- Jan 2023 08:52:39 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MUooJ-1p90gr1ndp-00QoFa; Wed, 18
+ Jan 2023 08:52:40 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 04/15] hw/tpm: Move tpm_ppi.c out of target-specific source set
-Date: Wed, 18 Jan 2023 08:52:23 +0100
-Message-Id: <20230118075234.2322131-5-laurent@vivier.eu>
+Subject: [PULL 06/15] hw/cpu: Mark arm11 and realview mpcore as
+ target-independent code
+Date: Wed, 18 Jan 2023 08:52:25 +0100
+Message-Id: <20230118075234.2322131-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230118075234.2322131-1-laurent@vivier.eu>
 References: <20230118075234.2322131-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:4hciKJQLb+ncwQShOYcADmPKZxhXHBFuOhNgSrF34KLiGYmKHOp
- N9JR62WOcIIl4ay54cQuS/eyQ+zjeIGJvwzM0hTDacc3DOQOMVsu+uweCQEOIm5yOS9ZxQL
- FWbnZD4FXO1bOEcn14wVUZxX341uCfRegnwHtO6tbqfVwFHtSNy+cwjR/aEJIpyizQSan32
- SVrcE+0wg7zefnSVobrsA==
-UI-OutboundReport: notjunk:1;M01:P0:JH/fIg5DEoo=;lkvQwm69xOxRvNeHStBUrLW0hsl
- yFUvpOEeJqMYlrdSIYeu8o+Owllla7pU9aE0XbV5n2TVbV7HpTmcYlpg0fCfWo07DBcbhUcBw
- Rn0XdftaI2vunJ3D92JD+gLP1dtwnJwHKX8kUoWiGyIb9YwHeWI19tjFCxP8JJpM2hbSJ/JpD
- C0CbWYbKNCC/IhvYYwfxK2mLtCKa0WooqA3oZCpZSyqLmrvPKMLG1Z6Y8bfyx1OJi2dd6sH5G
- 7ygDVog8bCebTZ+Kyu/I7fpK+K60UIP2g5ACpyCjppqQdWc6SQjhn4JO1yNlX8kYGhn8CUeNa
- PcK3zMIDDFsT9Cb0TWZYsqx1F0zuF4wjWjtDfN776DSuSRfdHf1wShbwb3v53cUFZzncrsKCV
- ea/aqQbVsnh7deDtX+UKEuoBgVw6NY6UubyDO/nj5ZL9Ysez5xkKXqWN4q/OyBLWxmg2PC25e
- BbOoFQt+damhwvNcVxWDUP1IGXj3RBwwVF54PEIycCmSXnrU3qDdiv7HTcMqds6aq3pot2FHB
- 3S9cn3u3TtNdSwUcf27EY7c2gBLsU122mGbAznZd6QjayXP+AdKlKwT1IXwMHzYCJzxeuFqGV
- xqPTnqg+/Bi10B4YIiqUqdenid2ZXxIJcYqIe1018rNpo+V5eNlriu/j2nF4r55+c9oas0rYQ
- bf6LLQ1N/F2X49IsSjGKi1dFDBj9p6wuwhrmN92UCg==
+X-Provags-ID: V03:K1:t6NiMFPRVAM3GS9YH1X/Ayw2z21UADbEHyddBcaeVDVHVhdl7vc
+ U066daolYxZ+Co57tmMuZxWukyxjBjJqBM4AW7MyBXEmnBJV7k+jloSVaPYPiIT5d9PwiMR
+ GOVAkaOzH0ZmpS9FRtsqOPkUAhQ3Z57SQj7g5W3aBtgXOFtFbt7Bc4EuqJlETTZpA6yU56y
+ pKorlRY7Rivsm20fngkVA==
+UI-OutboundReport: notjunk:1;M01:P0:UqziQDf/oI4=;eqgjyGcGAQL7rR7+erqu7+Z0W9Z
+ RNcV4qa3y6laVqPl78cHxFk7JxM1QmP7o6Z3aRLj2QxLhqsKtTu7cOTOCc3D769zpuE9vRg8o
+ BEVuTxxyjFodB6KpcyOrDQA00LNysd9eGrZOsWL5JJOS9LaC94gHEEDy/38hM1rZ2+lLuZou7
+ GK4U9azEZgNWhQrXeby/E1GEkb1zRX2TLxDiVCUWBEwBl+t5cPWoQNr/qYQUV8c5NYANqb4uc
+ Gm8y2nd5bVKV9+0mNaQu9kvSQYnag1h4XDYMzZxN++Uqyv6DwDe8AMhDQ2QRrNorxxdCi7MGf
+ fUMnmQIJDc9Wmup8NMycVQEB2KoHRKFgcK9iOkVM6Al90EcPoFzIqV76zbzkDMMDltXY3GE0o
+ pM325f5s1ceeiyiDNNglkcZGAaA7MERzktSVYehdtcgV4Hk4Teo7wuugaOCKndpGxHSmMN6/1
+ OY5HAxAuLfjOZdf5Tvg6NbAC1keJaucLW6nAT2C5G7NRQiifgCcXXl7qb3Bzvwl507ImOtdOo
+ 5BTtBVVBniIg09DNlDIqocI2Zc5o5aQLmcWxNGeGqBRTzWVFaUw6hGOZdwYAOg5eHiH4AXh00
+ KpY3o84nz1lp0CIfTn3JqcRUVn/6zj1yGsqkRWPaQrhk744LGihT79fqwdTuQBq1fJQI0CJD2
+ M5Q/QYI66ycyDHl4sdfj2Y4X1nHiV/ob92NKHRR+3w==
 Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
@@ -63,38 +61,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jan 2023 07:52:45 -0000
+X-List-Received-Date: Wed, 18 Jan 2023 07:52:46 -0000
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
 
-The TPM Physical Presence Interface is not target specific.
-Build this file once for all targets.
+Seems like there is nothing target-specific in here, so these files
+can be moved to softmmu_ss to avoid that they get compiled twice
+(once for qemu-system-arm and once for qemu-system-aarch64).
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20221209170042.71169-4-philmd@linaro.org>
-[thuth: Drop the CONFIG_SOFTMMU statements, they are not needed here]
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230112134928.1026006-4-thuth@redhat.com>
+Message-Id: <20230112134928.1026006-6-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/tpm/meson.build | 4 ++--
+ hw/cpu/meson.build | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
-index 1c68d81d6ab2..7abc2d794a84 100644
---- a/hw/tpm/meson.build
-+++ b/hw/tpm/meson.build
-@@ -2,7 +2,7 @@ softmmu_ss.add(when: 'CONFIG_TPM_TIS', if_true: files('tpm_tis_common.c'))
- softmmu_ss.add(when: 'CONFIG_TPM_TIS_ISA', if_true: files('tpm_tis_isa.c'))
- softmmu_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: files('tpm_tis_sysbus.c'))
- softmmu_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
-+softmmu_ss.add(when: 'CONFIG_TPM_TIS', if_true: files('tpm_ppi.c'))
-+softmmu_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_ppi.c'))
+diff --git a/hw/cpu/meson.build b/hw/cpu/meson.build
+index 9e52fee9e778..e37490074f5e 100644
+--- a/hw/cpu/meson.build
++++ b/hw/cpu/meson.build
+@@ -1,6 +1,6 @@
+ softmmu_ss.add(files('core.c', 'cluster.c'))
  
--specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_TIS'], if_true: files('tpm_ppi.c'))
--specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_CRB'], if_true: files('tpm_ppi.c'))
- specific_ss.add(when: 'CONFIG_TPM_SPAPR', if_true: files('tpm_spapr.c'))
+-specific_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
+-specific_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
++softmmu_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
++softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
+ specific_ss.add(when: 'CONFIG_A9MPCORE', if_true: files('a9mpcore.c'))
+ specific_ss.add(when: 'CONFIG_A15MPCORE', if_true: files('a15mpcore.c'))
 -- 
 2.38.1
 
