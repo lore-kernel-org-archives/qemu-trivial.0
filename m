@@ -1,51 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pI4Rl-0006z7-SI
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Jan 2023 04:09:29 -0500
+	id 1pI4p1-0005QH-DC
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Jan 2023 04:33:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
- id 1pI4Rj-0006yC-EV; Wed, 18 Jan 2023 04:09:27 -0500
-Received: from collins.uni-paderborn.de ([2001:638:502:c003::14])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
- id 1pI4Rg-0006cV-4n; Wed, 18 Jan 2023 04:09:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=ejXWxr0YLrzKjCzpcF5P5egrNTo3WPZB6fBqBWz8LKQ=; b=H5Cx0Atw++Kz8ZSX4Q1t/k7Y+C
- 5zlBBPeyDps3uPHHhSXOoHvfkz1tWGp+74GDLsn3S4AtHXYevvrQT06OqNI8qIJDAd5zoc/52Ygx6
- kb1ERggQK4Kj3iFbS9/14Cp6UF2+qDzYnL9gNVQMT/opVI9FO15L9mKWxoL4Rcf6EJY0=;
-Date: Wed, 18 Jan 2023 10:05:02 +0100
-From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] target/tricore: Remove unused fields from CPUTriCoreState
-Message-ID: <20230118090502.yzulfps3gccwa6t4@schnipp.zuhause>
-References: <20230117184217.83305-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pI4oy-0005P1-Ab
+ for qemu-trivial@nongnu.org; Wed, 18 Jan 2023 04:33:28 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pI4ow-00027s-KN
+ for qemu-trivial@nongnu.org; Wed, 18 Jan 2023 04:33:28 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ c10-20020a05600c0a4a00b003db0636ff84so1052700wmq.0
+ for <qemu-trivial@nongnu.org>; Wed, 18 Jan 2023 01:33:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=H/razzPsUsorwhmjUmtJZoXvlXx8u4fd+lsUzclwjxM=;
+ b=P759FQeq7o8lRdaky0h7R6JkgjHxUXaGx+g/6vKo5IYgMgCEroXirXvqTZT5QVeQSS
+ 6m29eSC58YwquV0IY2mmES9orA6sS6QV4g7cTf9Jnv7lMT4zpH8AdGK2q5Y6V05p2Rnu
+ Z/pLRUNPI/mTaIzapVBSpZzSszhs+Q/DDhVQQItJ5b4UxAC9ECnJCOZL7E4FQYKDeTUQ
+ ssZe8EYd25eiTvBjIjpPCFVlJ4cQ1tt01w/7vWzUEgMDk/i02LqslyzXrkzALywc5H3o
+ 12KfMa+HLigoDSGiP94VgwINfpaidLRnU4K6AnzSlNiZmDBkm2z1LCfWYIj+TjjErgjU
+ zACw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=H/razzPsUsorwhmjUmtJZoXvlXx8u4fd+lsUzclwjxM=;
+ b=BStN4ImQobL5Bzan3VH2LNiVm3n2l2giam1jZQgow9yPP/rkRanYgNQpsy5Q2KfIzi
+ 9RQdQaTywCuXnV8bwAWESKgqA9YnAy1fP8EwcryAdWSEVoD7EX8i6FEs7qxju3c8zjm+
+ koXBIKt5xPXdS41oyN4QcI3BGi5gFIFNIlwT0eNlb8mQi+DwzjFILE0Nlpi/6A1Bphg3
+ 7uR9XqGVAZVJB5jDuR33+EM1fNKa9gXCJlQO/OL/b2KjaGgRMqyclGQCUSBL3Ka0MdDB
+ 2PKUriV982ai8w4zyfzjDQOSVkQbwecKJO6InGRzN0HsCeylFe1j1qm0Uulo1eKaHuoS
+ yWJA==
+X-Gm-Message-State: AFqh2kopCcOx7omJtuPVsIXq+rKy1Usw7X/+DSE1kZOCd6let4D2dl7X
+ 1ymtF5SDmp7f2Hh9gmZfshD34g==
+X-Google-Smtp-Source: AMrXdXukImYkpDjcD8XMQd8YgNy8KuZZpdJlWkM9mjrEfSyqQEzO6R3y3Bb3aD9J920Aq+9uAEcbVg==
+X-Received: by 2002:a05:600c:3acc:b0:3d9:efe8:a424 with SMTP id
+ d12-20020a05600c3acc00b003d9efe8a424mr6246353wms.34.1674034404128; 
+ Wed, 18 Jan 2023 01:33:24 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ f24-20020a05600c491800b003d9e74dd9b2sm1394901wmp.9.2023.01.18.01.33.23
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 18 Jan 2023 01:33:23 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2] target/tricore: Remove unused fields from CPUTriCoreState
+Date: Wed, 18 Jan 2023 10:33:22 +0100
+Message-Id: <20230118093322.49307-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230117184217.83305-1-philmd@linaro.org>
-X-IMT-Source: Extern
-X-IMT-Spam-Score: 0.0 ()
-X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
- Antispam-Data: 2023.1.18.90316, AntiVirus-Engine: 5.96.0,
- AntiVirus-Data: 2022.12.20.5960002
-X-Sophos-SenderHistory: ip=84.154.186.130, fs=14434589, da=161642025, mc=69,
- sc=0, hc=69, sp=0, fso=14434589, re=0, sd=0, hd=0
-X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
-Received-SPF: pass client-ip=2001:638:502:c003::14;
- envelope-from=kbastian@mail.uni-paderborn.de; helo=collins.uni-paderborn.de
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -58,25 +79,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jan 2023 09:09:28 -0000
+X-List-Received-Date: Wed, 18 Jan 2023 09:33:28 -0000
 
-On Tue, Jan 17, 2023 at 07:42:17PM +0100, Philippe Mathieu-Daudé wrote:
-> Remove dead code:
-> - unused fields in CPUTriCoreState
-> - (unexisting) tricore_def_t structure
-> - forward declaration of tricore_boot_info structure
->   (declared in "hw/tricore/tricore.h", used once in
->    hw/tricore/tricore_testboard.c).
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  target/tricore/cpu.h | 11 -----------
->  1 file changed, 11 deletions(-)
+Remove dead code:
+- unused fields in CPUTriCoreState
+- (unexisting) tricore_def_t structure
+- forward declaration of tricore_boot_info structure
+  (declared in "hw/tricore/tricore.h", used once in
+   hw/tricore/tricore_testboard.c).
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Signed-off-by: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
+---
+v2: Do not remove 'hflags' in case it used:
+    https://lore.kernel.org/qemu-devel/20230118090319.32n4uto7ogy3gfr6@schnipp.zuhause/
+---
+ target/tricore/cpu.h | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-I assume this goes through qemu-trivial, so I will not pick this up.
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index 3b9c533a7c..4f6d936824 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -25,10 +25,6 @@
+ #include "qemu/cpu-float.h"
+ #include "tricore-defs.h"
+ 
+-struct tricore_boot_info;
+-
+-typedef struct tricore_def_t tricore_def_t;
+-
+ typedef struct CPUArchState {
+     /* GPR Register */
+     uint32_t gpr_a[16];
+@@ -180,15 +176,10 @@ typedef struct CPUArchState {
+     /* Floating Point Registers */
+     float_status fp_status;
+     /* QEMU */
+-    int error_code;
+     uint32_t hflags;    /* CPU State */
+ 
+     /* Internal CPU feature flags.  */
+     uint64_t features;
+-
+-    const tricore_def_t *cpu_model;
+-    void *irq[8];
+-    struct QEMUTimer *timer; /* Internal timer */
+ } CPUTriCoreState;
+ 
+ /**
+-- 
+2.38.1
 
-Cheers,
-Bastian
 
