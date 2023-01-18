@@ -1,71 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pIDJO-0006yK-JC
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Jan 2023 13:37:27 -0500
+	id 1pIDh7-00075U-I4
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Jan 2023 14:01:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pIDJF-0006uu-04
- for qemu-trivial@nongnu.org; Wed, 18 Jan 2023 13:37:17 -0500
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ id 1pIDh5-000758-WF
+ for qemu-trivial@nongnu.org; Wed, 18 Jan 2023 14:01:56 -0500
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pIDJD-00055H-FC
- for qemu-trivial@nongnu.org; Wed, 18 Jan 2023 13:37:16 -0500
-Received: by mail-pf1-x434.google.com with SMTP id w2so11519705pfc.11
- for <qemu-trivial@nongnu.org>; Wed, 18 Jan 2023 10:37:07 -0800 (PST)
+ id 1pIDh3-0001hO-VL
+ for qemu-trivial@nongnu.org; Wed, 18 Jan 2023 14:01:55 -0500
+Received: by mail-pj1-x1031.google.com with SMTP id
+ y3-20020a17090a390300b00229add7bb36so3119476pjb.4
+ for <qemu-trivial@nongnu.org>; Wed, 18 Jan 2023 11:01:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=dDaCUfUgdAQIteC/9iGEwgmtWI88IUGOoB20m9fBcnc=;
- b=ynAyhyVVH9qkV/R546Q00OK8lFIOlu1NA5bl0gK3ZPncBZm5onB3T5XExBspqOj0je
- 0bFrJsUe89uVsu9gkHyr9nBgmxmVAdguIPVV89aYt3bPXFeepDpoZYXbX6PerUSzXRPb
- 5kgg2yqxKtSCKgML/SH1gRbfgcY51kYYuyRM3jSr4uRX1ll0ES/GHgnJp0RuDhL1RmSM
- DGxdOljdYzyD+JUkRUdDs5cNWl0Cg4MBv0SFwwowWcxWYeyWHMzEi0O9lh9GTnWVdZhm
- bo+ItA2oFVgDX9A2bMatSUfjUuXLaUaCqhGfWHR39mfXM6+U+KKQRAonWRliUuOJe/Kp
- JNsQ==
+ bh=/k89b5Z2Ac8Ya5icS0puj1BpWvgAYj/fNxfmLVTRJSo=;
+ b=Qc3cWwP1QloRx+zGqPjs5C5+JazzxYfoQ0wRj9WBFE3slgWtRJJllydfN/w0cRu4dr
+ SPXJDchtNxX8ZleoX+KoSkQ/BMkA8nt2gqZgvzKwaq68S6i+WuOJi1XRGxD/otCMb8mm
+ 7TiN8JRHKUQhw7wV6slenOK2H9irO7IoYbEnuuffDYQGkoJs61GFBc9NeT9VbFWScLXU
+ s22WiDT7IS2TmjO4Y5P/iMtgTI85Mo8IfhcuhhtOQmH2aqJydrMkzMbCKhzcWWfhMRe5
+ hX8DrrEX6gYZs9sxiVp4key2hUZ6gYLja5fcaBp9v5e3+0UoeAi3UQdpme+A1hILClTb
+ lczA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=dDaCUfUgdAQIteC/9iGEwgmtWI88IUGOoB20m9fBcnc=;
- b=j4UDeT89EegokhtK3qI3AvWXTdN8vtKgZURTg+2y5HXiGMmh9pkNSJb9MEiGozkfm1
- L4K62pRRL8t8sMTw0sQ4TU87Py6islDBMxKHJ0m2AxVK1g1KwiwAKVGm1/90L+V+OkUF
- a/IJJPG1YteIy844CkHRlNigLYAh2Ehq1JSDStd2iaLr9gT8l1ugLShBQB0N9w2r708M
- k3VCJKbju6AmYaJbstWmhIIQ6PmEJUJjoniPUaGM1eASIf5AnctuRgExcun4PwzYWu7s
- b6hSVqLOOgRMjtUh541Ie264sZDrkxzQ9AdC/d/CyVehxBkmu5n/EuD3XI41thaQ02Ow
- j2dA==
-X-Gm-Message-State: AFqh2kqvYP1AK393hM8fOe+n7LrpoJQxoBAzk+b2e37lT3XYHmYakiNu
- 7MA+0FJcC53hKhdOw9uy0vtUEQ==
-X-Google-Smtp-Source: AMrXdXtP9tg2YJ+yG//i8ipE7GZFP8WoTTWHwqeBJCRape+Ojq1yM4fxKQfJwaZ5vo/ARviLMWs9Xg==
-X-Received: by 2002:a05:6a00:4289:b0:583:319a:4425 with SMTP id
- bx9-20020a056a00428900b00583319a4425mr8371713pfb.29.1674067026171; 
- Wed, 18 Jan 2023 10:37:06 -0800 (PST)
+ bh=/k89b5Z2Ac8Ya5icS0puj1BpWvgAYj/fNxfmLVTRJSo=;
+ b=TF54yEquvp/iZvlAzfVeXjqTo2x8ggQyn2iMmYRBnL4tJx1am9m88Np3c2G7yQlDyu
+ n6ALb6dE+fMBGrys2tkQU76gCOAyQ3ldniPD/N/NiNODTx/dpCZbtpMPjKKh5Dld1hub
+ Ua1XrekyIXqYXCGGKTx2Y4Jts9pCou/gySEZTxUE4+wd4y/8wubDID9ag2lvHEKlVn71
+ XXfNvhVAsbBNcpx+/CxYAK7hTfvtCeHiTr4CxD9/2xDGEQ9hXiusdXw2tA97Yqug76al
+ XuB9tKlIvHip6f6j4Z7wohYimKEWYdG5+y7QO/pWnsYJuF4kDFCdBVz+HTqLOg9xdUwM
+ BIbw==
+X-Gm-Message-State: AFqh2kqZZlJ1Q3VEPC5BicsM9Lje7gk2xNkevEKCoGQwwja50x5JNLu/
+ QdxGe3wdZyooBUe/QMSYAOiQNw==
+X-Google-Smtp-Source: AMrXdXsBVqvlbHV8ix7StsPwzpQINDQP/H2bEq1IPfZ+CSmKXcvNZiCcQezrW2XAfY1vmiKehNLd+A==
+X-Received: by 2002:a17:902:9688:b0:192:55ab:88fe with SMTP id
+ n8-20020a170902968800b0019255ab88femr7779232plp.56.1674068512349; 
+ Wed, 18 Jan 2023 11:01:52 -0800 (PST)
 Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com.
  [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
- i6-20020aa796e6000000b005884d68d54fsm18797610pfq.1.2023.01.18.10.37.04
+ j5-20020a170902758500b00192d9258512sm23458419pll.154.2023.01.18.11.01.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Jan 2023 10:37:05 -0800 (PST)
-Message-ID: <226e6b9f-b95f-0198-fb45-eb3407d015d6@linaro.org>
-Date: Wed, 18 Jan 2023 08:37:01 -1000
+ Wed, 18 Jan 2023 11:01:51 -0800 (PST)
+Message-ID: <50ed4971-3fe4-327f-932f-51c0be6acb7a@linaro.org>
+Date: Wed, 18 Jan 2023 09:01:48 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH] target/tricore: Remove unused fields from CPUTriCoreState
-To: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20230117184217.83305-1-philmd@linaro.org>
- <6da18e97-c80e-1ac2-edca-34fb243edd81@linaro.org>
- <20230118090319.32n4uto7ogy3gfr6@schnipp.zuhause>
+Subject: Re: [PATCH v2] target/tricore: Remove unused fields from
+ CPUTriCoreState
 Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+References: <20230118093322.49307-1-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230118090319.32n4uto7ogy3gfr6@schnipp.zuhause>
+In-Reply-To: <20230118093322.49307-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -85,38 +86,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jan 2023 18:37:19 -0000
+X-List-Received-Date: Wed, 18 Jan 2023 19:01:56 -0000
 
-On 1/17/23 23:03, Bastian Koppelmann wrote:
-> I'm not sure of the purpose of the hflags. I assume they are hidden flags that
-> hold some hidden state of the emulated CPU. However are privilege levels really
-> hidden state? At least in the TriCore any guest software can read PSW at any
-> privilege level and see its own privilige level. Is there a typical usecase when
-> I would use hflags?
+On 1/17/23 23:33, Philippe Mathieu-Daudé wrote:
+> Remove dead code:
+> - unused fields in CPUTriCoreState
+> - (unexisting) tricore_def_t structure
+> - forward declaration of tricore_boot_info structure
+>    (declared in "hw/tricore/tricore.h", used once in
+>     hw/tricore/tricore_testboard.c).
+> 
+> Reviewed-by: Richard Henderson<richard.henderson@linaro.org>
+> Reviewed-by: Bastian Koppelmann<kbastian@mail.uni-paderborn.de>
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+> v2: Do not remove 'hflags' in case it used:
+>      https://lore.kernel.org/qemu-devel/20230118090319.32n4uto7ogy3gfr6@schnipp.zuhause/
 
-I'm sure env->hflags was copied from i386 or mips.  It would be used to cache cpu state 
-that is not easy to recompute.  There doesn't seem to be any of that in TriCore.
-
-
-> I do wonder why there is the extra step via the flags of a TranslationBlock. Why
-> can't we sync directly using CPUState?
-
-We need the data in the TranslationBlock in order for the data to be hashed and compared, 
-so that we do not attempt to run the same code with the wrong privilege.
-
-
-> I first thought to differentiated the
-> TranslationBlocks for the different privilege level. However isn't that done
-> using the softmmu_idx?
-
-No, it's not.  The only thing that's used to select TranslationBlocks is the data 
-retrieved by cpu_get_tb_cpu_state.
-
-
-> Yes, everything runs in the highest privilege mode. I'll look into properly
-> implementing privilege levels, but for now we can remove this dead code.
-
-Ok.
+No, remove it, I don't expect it would ever be used.
 
 
 r~
