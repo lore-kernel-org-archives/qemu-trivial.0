@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pI3Ff-0001zL-77
+	id 1pI3Ff-0001za-D8
 	for mharc-qemu-trivial@gnu.org; Wed, 18 Jan 2023 02:52:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pI3FY-0001tu-Pc; Wed, 18 Jan 2023 02:52:48 -0500
-Received: from mout.kundenserver.de ([217.72.192.73])
+ id 1pI3FZ-0001ux-3r; Wed, 18 Jan 2023 02:52:49 -0500
+Received: from mout.kundenserver.de ([217.72.192.74])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pI3FX-00023w-4d; Wed, 18 Jan 2023 02:52:48 -0500
+ id 1pI3FX-000249-Em; Wed, 18 Jan 2023 02:52:48 -0500
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue108
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MVNJ3-1p7MGS0eBT-00SS8u; Wed, 18
- Jan 2023 08:52:43 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MulyX-1oQMX941Br-00rrGG; Wed, 18
+ Jan 2023 08:52:45 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 11/15] ccid-card-emulated: fix cast warning/error
-Date: Wed, 18 Jan 2023 08:52:30 +0100
-Message-Id: <20230118075234.2322131-12-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 13/15] hw/cxl/cxl-cdat.c: spelling: missmatch
+Date: Wed, 18 Jan 2023 08:52:32 +0100
+Message-Id: <20230118075234.2322131-14-laurent@vivier.eu>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230118075234.2322131-1-laurent@vivier.eu>
 References: <20230118075234.2322131-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:J7tTA/l8mOTAgK9vXFIO7KZ3YwptmGer1KuWDAKCqAjMsxI4bmt
- Qs++Gu4J3rLU2sOsouklo473EM7XUtM07jNTfjr18wKuOE57SYoFzB9omRyAy+kP96GEYPY
- aqzNn/olt+x0I2aY0qQtkudQRQCN3NnR/tgn9KOFsgQSnkThrWp+yxYoAajc5cc8p6Vq3ZC
- GrNS6vJseUaYWlXbSP7TA==
-UI-OutboundReport: notjunk:1;M01:P0:qeBzdlQ8CSU=;+58mGJxI1VuQ7LS5rEUy4AW9wXc
- DmItn5V74b8naTZAvSy/y9qa1DLkqC2qx05bAOn6w6D9Kg+s75I28BfouROhkTXkwPGmQ6foZ
- XBjy2tEdMeXtl8Mz6A+9qFISx4mTUX1VC0YSjdTTwU7KYGJHw/kC6chq+PO9BuBxIBUk8OiOb
- k5BzgY/G4ZfFYRdsqea3rsho1HD1F2sGO18jdf6ixrD/yUuVkzA7MqnjXaaRv92yXsc/OZHv+
- MpVcHqEecoq1MKbTpKZ+P2fRcRxHsPvapGxaL8SV3PEQcSNLo2wmhcV7v4sxzjkEkvChmYupO
- WgMCI1n2QPckXmWkJeqzfKxiLLEmsp4kk/2HRvvv17vN8HES4Hjb2ydgNhnTKPtQA5cFS1Aw7
- YJ7DgQucvglVOUaOJ+PR3+OG59HEKy0UmcxE+oikcF6DIpA7B+8ZvesahzBbvEb6GsggWuCBd
- 9H/eWridGd5BhUpWPX0fvBO88qbYmHj5BAncMKuBK/g+a7wda9gRb3afhG/MZs5l96pJrSd+F
- KGXQLdgDyIyaOl3QJGlhpqRpry81eSK4/Gk31Hhhcyl+YGgHbHqQYoc7P8W5mZnsB20Dq2b/M
- pdWPRz/Z1oBTxj114K6XpMIZxVZD7J0bolCPEgNYSRjApZzufm9LLpcvcj1E3RYlc6gSFjtJB
- r2VeanSXp+IV2WPdunysYv/xDzu5bxWCsGivow5pmA==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:NQn6hB7qVWEBGdCpbIDPgmw6SUIGxdKd6bjYC8ApMCv0Z6tR1kH
+ P/tMJNHDncrE3IVn8V1tdYh4mS3etHskp+kuf6HP1V4FcACyif7E0yfJ3SSGmsm6LC7bHoi
+ 2+ac3MLUl6nIAjrjqj/uCjN58ON0vqy1QC7DuQY1GxUdWLd4b6q1fKUoka12+rLCnpAmpRP
+ w8171sdMTYRNQ2OxVflrQ==
+UI-OutboundReport: notjunk:1;M01:P0:m0d6hqx0Rwo=;k8/nn/VNht+SDR0SkPUNyPIrQdD
+ bCTN/pXhEOsJYYPPuxtuM2D/eM2XEPdXhlFcHr7cvaYIMAZmIxF3+InIgRl/URTsCYpnBZSUZ
+ rKyuEVeduZ/MZ5h/zD8HKvyTtxf1Y3Dvi0GHO7jFEgEbUEk+UXZauQPHbEN92D0xim5D4gBxO
+ e1tztomvkZ1s9R56BWzlk4EU4w7YFk/P5QxfbFWSwdYuy4P5akbar7wPTpfeRjuqn8ZPAi5+3
+ Ct15b6Mj+17nUeW5hJl2D6FkwwqIv4W7l8Hf6r3tciu1oLT7GklUsGgd+rtKuVRn9SDBVhgRV
+ xdYnkXAj4BAKmVObihV9J4ATGk9s81IFYpNp2t2Ud2pdovz2tD9vgqVxywQQqfWzxasLqs5A2
+ 1pKrsnJt1MVlVndBaRVbd7o1yRwLtFG2Jhbs47g9t9mw8rHIBdzWRPfJOafxNoYy7uXdUXuid
+ /Zj7CO7Le3fBvVVGW3d/IaLSZF+g7SdEoIryDfWZLdjvV01J2yddv3gH5mDOPHxKt48+jzmk5
+ JIOzs2vfpupJZmF94uaKa3jWiTrqqoLKTMqLDitPPmV5MIJbESMnTsv01GInNv2Ual+ljuBE2
+ 7n36rzgrpIfsUd2SxjuUC2QD+HI/4dBeUrM6St+mGzqWTv32mFMhQC5TcUx7zAcI3n81PA6MP
+ g/J5Abg9WiwV/bg5jmI8ImdyQzU6B33sXbjVQYGJZg==
+Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- TVD_SPACE_RATIO=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,33 +63,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 18 Jan 2023 07:52:49 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
 
-../hw/usb/ccid-card-emulated.c: In function 'handle_apdu_thread':
-../hw/usb/ccid-card-emulated.c:251:24: error: cast from pointer to integer of different size [-Werror=pointer-to-int-cast]
-  251 |                 assert((unsigned long)event > 1000);
+Introduced by: aba578bdace5303a441f8a37aad781b5cb06f38c
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230103110814.3726795-2-marcandre.lureau@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20221215123749.1026775-1-mjt@msgid.tls.msk.ru>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/usb/ccid-card-emulated.c | 2 +-
+ hw/cxl/cxl-cdat.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-index ee41a818014b..c32866007549 100644
---- a/hw/usb/ccid-card-emulated.c
-+++ b/hw/usb/ccid-card-emulated.c
-@@ -248,7 +248,7 @@ static void *handle_apdu_thread(void* arg)
-         WITH_QEMU_LOCK_GUARD(&card->vreader_mutex) {
-             while (!QSIMPLEQ_EMPTY(&card->guest_apdu_list)) {
-                 event = QSIMPLEQ_FIRST(&card->guest_apdu_list);
--                assert((unsigned long)event > 1000);
-+                assert(event != NULL);
-                 QSIMPLEQ_REMOVE_HEAD(&card->guest_apdu_list, entry);
-                 if (event->p.data.type != EMUL_GUEST_APDU) {
-                     DPRINTF(card, 1, "unexpected message in handle_apdu_thread\n");
+diff --git a/hw/cxl/cxl-cdat.c b/hw/cxl/cxl-cdat.c
+index 3653aa56f0d4..137abd0992cb 100644
+--- a/hw/cxl/cxl-cdat.c
++++ b/hw/cxl/cxl-cdat.c
+@@ -146,7 +146,7 @@ static void ct3_load_cdat(CDATObject *cdat, Error **errp)
+         num_ent++;
+     }
+     if (i != file_size) {
+-        error_setg(errp, "CDAT: File length missmatch");
++        error_setg(errp, "CDAT: File length mismatch");
+         return;
+     }
+ 
 -- 
 2.38.1
 
