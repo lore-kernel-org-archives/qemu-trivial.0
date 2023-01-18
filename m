@@ -1,47 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pI3Fd-0001xE-Gg
+	id 1pI3Fd-0001xW-LK
 	for mharc-qemu-trivial@gnu.org; Wed, 18 Jan 2023 02:52:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pI3FX-0001rZ-5V; Wed, 18 Jan 2023 02:52:47 -0500
-Received: from mout.kundenserver.de ([212.227.17.10])
+ id 1pI3FY-0001tH-Bs; Wed, 18 Jan 2023 02:52:48 -0500
+Received: from mout.kundenserver.de ([217.72.192.73])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pI3FV-00022y-In; Wed, 18 Jan 2023 02:52:46 -0500
+ id 1pI3FV-000230-VU; Wed, 18 Jan 2023 02:52:48 -0500
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue108
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MfHMj-1ooWBu29hT-00glSG; Wed, 18
- Jan 2023 08:52:41 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MORIm-1p5UiC2avG-00PutN; Wed, 18
+ Jan 2023 08:52:42 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 08/15] hw/usb: Mark the XLNX_VERSAL-related files as
- target-independent
-Date: Wed, 18 Jan 2023 08:52:27 +0100
-Message-Id: <20230118075234.2322131-9-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 10/15] hw/i386/pc: Remove unused 'owner' argument from
+ pc_pci_as_mapping_init
+Date: Wed, 18 Jan 2023 08:52:29 +0100
+Message-Id: <20230118075234.2322131-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230118075234.2322131-1-laurent@vivier.eu>
 References: <20230118075234.2322131-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hvs3qR2uYkI3sVXjP6KBaYwM5OfkinMVZldKEPaMTDRAkLmzOjy
- nBEN99LqTs0Jh24nIGkZWzOrpOyv7ZOG6cWHYygFCFyQ2GBRiwvoElqKZ/D6wO0Ke0cV2UE
- NWN7N6z4ujNmoNJqjHaPk3BI22HRnoEwQq5y8H+NxrgunfTotqs7SGaZKVglA/hysvZRmWw
- agpc1A8HM6hVb9ZlNJCBw==
-UI-OutboundReport: notjunk:1;M01:P0:ENuNSenOShQ=;qWt7dnVd84Y515OQDkw7sdtLAqS
- n7cuJwjfZNmATKlAPGLA8Fit0eyQkWksMwyex9ntlmXJGmMVEwOkOWHAy/3lusKCahrSqfGnO
- iqigdwM/3FWqoHx5r0Ac6tcx3tXZ0pBMPiELEz1lT8ulBZbRQO5joXDm8njrYACDxxG9wdfbH
- DRAzBFw2K2UAC3yzhOJeke8uRE2sktwU7tZKrIr657R1LXvS75ri4n80ubXbzhqaDfV5lFpV+
- sfTniYIXBYl/C8TdRPz72M3TEYj13SGPAktjmyBgW4+UuboE+YUYEDfTQSOiw6ixVE7ViY/7i
- ccsdwI2Q3Lt+wfawHkhcqxo6aLwBD23QdtFpOecno0IElEMW2sSaagrD1opCfiJBcNmuI0EPd
- 3MVzMfJ6VGa/GOBcdahtFvM0PtmcyWWrlqGVgdHqZo9a5bVIUBHBCQ3GXK36/OpNYSjB6iZ8L
- mmcsX+2CuIG5sgvGJ3pAwi7kkztHv5axvmd/3uuQ+1N6v7dsgyJ+mTKceZ4+csROEqozAptfc
- BeYHJxQ6DopB7y4oeGgBilKCMBifgjiKnmo1TBqE8lxgkF+VbhPI79PVbLzlc3EfFPijWPomY
- 1Qq7BaoTrD+6bQ34LIxfXU42uyKzpho46U16GR9FGSTC2HXlzz+kqv5o6XIBhucZak49ew/fi
- foBbE6hdYIyDaV4wEs4lrfB3GgEuyylNHk4NrOb7kA==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:F0YiJPenFfWcYGA+MM30ktuEF6rYVafptZDUXIh6L4vyVxHLpKx
+ 7Ps4RVPIh1u4hlVV+duIGOd02Qw2FwP8uDHB+SXG9yxJ+ExFKs9WJ1/wnpa/R1cPbfaFhJD
+ +aQn/9KjfzHxM1FzCX6xE03QEEW1EQtDyYWlgygZFTst0Y/GE7eKCYKE4v2BDQwWH1ctIkB
+ 3p5n+93pKvVkgGVQDQbMA==
+UI-OutboundReport: notjunk:1;M01:P0:MBaRvVOEQEw=;lvSSvDIVhQWROAr54DTrr0ttxE9
+ YRndgDTmKe6iHedgegVvsgVemhab9w7V0WViUGI4Qt5FwtBd6vp0DEediXUYxaYZrHwJVKC9j
+ D1q5QPAhxUPd1SC8bDubhoV0jmctJKokxv4eT6xi81XZp2CMWknQq29h0ZF625vk225UYNT0o
+ CcXMxSircQKc7HU2DfVWZ2LXgGdYmXpPpjC8vwYbaeLmQrnC0teqE93D/xr2O7GtJlLW6y/hs
+ pY6ClVPI7ImFZLyQEDNFfs5I28y5YDop7fmraO+agSi4mwhcT1zNt0dPo3rIZhtNpoJkX3N/e
+ A6hk5o6WwtIgZkthXBokb12JavgiMt/N97WtacRd3s8DoPV52p0/u7PrmnnQ0Nz3/TFz5Iv+E
+ Xqhzln0AyL5/4Cm05Xj8kBiWY1hZx7WaRflTZw+/RTqtyrpx0P9hhnVP5cIYIKjcUWd8AYp7M
+ E0TJjEEck2aJTUN5monBBtOSbn8W7Iej3Hjlzb3w145t+BjmvE4FayhfegyY+fYS2R+D2oRN4
+ Htdhr0K6u1sgvgoyQQ5Ba8/R0PH3xisGSHSfI+2nyDy/5hWNQE6t/4aiuxKbWuv0ypQiCIu4F
+ VnkslBlcEMIlCW+vxHP3oTLrdwZ3URN1AoqLzzBsOnYWZL7BJcJNbTh0rojxP6Ju+SxvguZCl
+ g+RYN5lCpmvtHdSrmgZo8ivU9yuKTLc4lvjjEBsGEQ==
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -61,37 +62,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jan 2023 07:52:47 -0000
+X-List-Received-Date: Wed, 18 Jan 2023 07:52:48 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Seems like there is nothing target-specific in here, so these files
-can be moved to softmmu_ss to avoid that they get compiled twice
-(once for qemu-system-arm and once for qemu-system-aarch64).
+This argument was added 9 years ago in commit 83d08f2673
+("pc: map PCI address space as catchall region for not mapped
+addresses") and has never been used since, so remove it.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230112134928.1026006-8-thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Bernhard Beschow <shentey@gmail.com>
+Message-Id: <20230105173826.56748-1-philmd@linaro.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/usb/meson.build | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/i386/pc.c         | 2 +-
+ hw/pci-host/i440fx.c | 3 +--
+ hw/pci-host/q35.c    | 3 +--
+ include/hw/i386/pc.h | 2 +-
+ 4 files changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/hw/usb/meson.build b/hw/usb/meson.build
-index 793df42e2127..bdf34cbd3e30 100644
---- a/hw/usb/meson.build
-+++ b/hw/usb/meson.build
-@@ -30,8 +30,8 @@ softmmu_ss.add(when: 'CONFIG_TUSB6010', if_true: files('tusb6010.c'))
- softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('chipidea.c'))
- softmmu_ss.add(when: 'CONFIG_IMX_USBPHY', if_true: files('imx-usb-phy.c'))
- softmmu_ss.add(when: 'CONFIG_VT82C686', if_true: files('vt82c686-uhci-pci.c'))
--specific_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
--specific_ss.add(when: 'CONFIG_XLNX_USB_SUBSYS', if_true: files('xlnx-usb-subsystem.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-usb2-ctrl-regs.c'))
-+softmmu_ss.add(when: 'CONFIG_XLNX_USB_SUBSYS', if_true: files('xlnx-usb-subsystem.c'))
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index d489ecc0d1cd..6e592bd969aa 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -782,7 +782,7 @@ void pc_guest_info_init(PCMachineState *pcms)
+ }
  
- # emulated usb devices
- softmmu_ss.add(when: 'CONFIG_USB', if_true: files('dev-hub.c'))
+ /* setup pci memory address space mapping into system address space */
+-void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
++void pc_pci_as_mapping_init(MemoryRegion *system_memory,
+                             MemoryRegion *pci_address_space)
+ {
+     /* Set to lower priority than RAM */
+diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+index d5426ef4a53c..262f82c30380 100644
+--- a/hw/pci-host/i440fx.c
++++ b/hw/pci-host/i440fx.c
+@@ -272,8 +272,7 @@ PCIBus *i440fx_init(const char *pci_type,
+                      IO_APIC_DEFAULT_ADDRESS - 1);
+ 
+     /* setup pci memory mapping */
+-    pc_pci_as_mapping_init(OBJECT(f), f->system_memory,
+-                           f->pci_address_space);
++    pc_pci_as_mapping_init(f->system_memory, f->pci_address_space);
+ 
+     /* if *disabled* show SMRAM to all CPUs */
+     memory_region_init_alias(&f->smram_region, OBJECT(d), "smram-region",
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index 20da1213747c..26390863d605 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -574,8 +574,7 @@ static void mch_realize(PCIDevice *d, Error **errp)
+     }
+ 
+     /* setup pci memory mapping */
+-    pc_pci_as_mapping_init(OBJECT(mch), mch->system_memory,
+-                           mch->pci_address_space);
++    pc_pci_as_mapping_init(mch->system_memory, mch->pci_address_space);
+ 
+     /* if *disabled* show SMRAM to all CPUs */
+     memory_region_init_alias(&mch->smram_region, OBJECT(mch), "smram-region",
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 991f905f5d25..88a120bc234b 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -156,7 +156,7 @@ void pc_guest_info_init(PCMachineState *pcms);
+ #define PCI_HOST_ABOVE_4G_MEM_SIZE     "above-4g-mem-size"
+ 
+ 
+-void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
++void pc_pci_as_mapping_init(MemoryRegion *system_memory,
+                             MemoryRegion *pci_address_space);
+ 
+ void xen_load_linux(PCMachineState *pcms);
 -- 
 2.38.1
 
