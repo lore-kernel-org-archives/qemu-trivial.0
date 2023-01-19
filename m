@@ -1,73 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pIVHS-0003fO-9o
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Jan 2023 08:48:38 -0500
+	id 1pIVaw-0008FR-Ua
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Jan 2023 09:08:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIVHK-0003Rp-Oq
- for qemu-trivial@nongnu.org; Thu, 19 Jan 2023 08:48:32 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1pIVat-0008CL-CP
+ for qemu-trivial@nongnu.org; Thu, 19 Jan 2023 09:08:45 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIVHI-0004OL-D5
- for qemu-trivial@nongnu.org; Thu, 19 Jan 2023 08:48:30 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- f19-20020a1c6a13000000b003db0ef4dedcso3601982wmc.4
- for <qemu-trivial@nongnu.org>; Thu, 19 Jan 2023 05:48:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1pIVal-0008AT-Ll
+ for qemu-trivial@nongnu.org; Thu, 19 Jan 2023 09:08:40 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ fl11-20020a05600c0b8b00b003daf72fc844so3682862wmb.0
+ for <qemu-trivial@nongnu.org>; Thu, 19 Jan 2023 06:08:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=VjGBJqpR99FrJW9Q1eGoDtDK/LjXiiboItATnzbt0MQ=;
- b=uIlpHz54UCzFwofQcXfPn88IWJnN0/FS5f629Xacrv6bK1+GWLcBoJJY6dLadEdypt
- 4THuPIyAqnYAg4lPPkpOHrMTGb5IQ2MjGgiH/PWrJVF4LK8E01l47+zDEphdrK1taX78
- zYUvXpKvMy/ABnbQm35vTF4KEBzLpW8otaPSTQdn9gErl+lL5CeBXgGVv3/eqZoTKSCY
- YZdlMuJBm3UsiENZdBdrEohCes5nZJ6OyWwmxX4omu/TpEti57VkhmAHUYMo3JuVWBM4
- PtdhJ7HpyjT9Ua0bG2yGo+YhVlMgApCrNC5jPdZxKRhVEg6B5mUjuyOEwH5XsGXMwFhN
- MDAA==
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JL1SMttpj19w2ErFMwOyVgiuXmFT0epzkZciEVlAPrI=;
+ b=OqqY2Fa3KMlTvIopfHlCiT5ruc0VmXiYJwGxmgYKiwFTgNcZFHaQudlkK0luONffiL
+ wdgvupUtXZc4idMO4/awE8IOfU2F0IlcPKwlzIn5c7fYavNtZ4SCqorG4gWf9+QwBVXT
+ HSdNXnlYkgAZxy6IHTeCdCgbj3/6e+DuEMl58ziOhs6D7B/8IcpdyfRHFOODq2Qjjn67
+ 8Qwo34T49imMh7hJ0ufbzATTgrWXfu3Plrxd9un1syuy5JbqyFE8WNhQE4w0CJDvdT1d
+ B9/qXeLWYVWMKv7dg4UbqQJPipw+V5SQHJ0yVA7xiebetxCfT6Hn+z7ZRRWspQVsLTHS
+ x8aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VjGBJqpR99FrJW9Q1eGoDtDK/LjXiiboItATnzbt0MQ=;
- b=Hv/ICsaj1xHVe7K2u/Nxzg7VVSnwBhUVmsen2snIxp4PqJRVmCO4M7OVdypInLPxSP
- V7BUt2bsXYjNrF3wu82pNH+g/hhlrroLyvpDPLVAQkZpMdaujcS1HdAsRTNcdnSvWPo8
- +37LuZd28SoCYo0hlwXUWeBllM+VboeazR6fedHzmQlg0YrrM2Z21mkfqojGms/zG7Rs
- rORjV1dowATBJk7FYCbdgmJKZY8f05HthmF9CotZ1fkp71Y6AP52E1/7/hWOz94/MYnB
- NbgD0zDTUhn6G6oFolcuqSW2jQlxLPQmOu8wz1nnGKRRaEU+Y9Satg0hac3UXdAe5MEg
- dXgw==
-X-Gm-Message-State: AFqh2kquAb6ld+iy6yF+ixn5A8BSAOuenMzDM3hJVK8lYPxiF9Mo8WpS
- HsIF9ut/tr58L88v8Lbtvr2Jnw==
-X-Google-Smtp-Source: AMrXdXtQ6/BfaVuVrTH8tXVtvL0ecydV/HxHWvPs0YEZWHijTBgmeJVqtppbPTDi+msArRJK9dqMCg==
-X-Received: by 2002:a05:600c:a29f:b0:3d9:f42c:56c5 with SMTP id
- hu31-20020a05600ca29f00b003d9f42c56c5mr10509114wmb.4.1674136106928; 
- Thu, 19 Jan 2023 05:48:26 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- v20-20020a05600c215400b003d358beab9dsm4732124wml.47.2023.01.19.05.48.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Jan 2023 05:48:26 -0800 (PST)
-Message-ID: <6b48d4b1-fae4-b0a2-5948-1963ec775ad8@linaro.org>
-Date: Thu, 19 Jan 2023 14:48:25 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH] MAINTAINERS: Fix the entry for tests/tcg/nios2
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
- Marek Vasut <marex@denx.de>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=JL1SMttpj19w2ErFMwOyVgiuXmFT0epzkZciEVlAPrI=;
+ b=aYg29qVoIKYMrVt9A01GKEFb3D6xHxLCLEYD7XrIoVixwUFEFjDV8D2QII2zJ3JJhO
+ a82EaKjmPAOYN5uvcyscIqb/Fiv+L2kjMsSQBUovP2Z82eftxmwEIX2jZr2XeTeTBARb
+ gFlpyOiFlXCI9wY8lfXJFRq58SYyLGzH2k0eRdzk7c9aOQWgSDsL4oyB64+/2caKD7MA
+ zADkZgoLNeoU/Qt26EvZK/6GCTQ7ZUZE86Qqp5TD7I8xdfco1ayRZk92pAuv58x/zc2j
+ dRVB1RSBFdoVO9vpqq06cCZkCFcnBZzB2Rd/VjH7jq86wBnZV9vCPenScgMxUlwVrxe4
+ e2JA==
+X-Gm-Message-State: AFqh2kpMwNKRJjY/OGW8Kguz7NqKNRRZttb2hyOJUfS8yJjbyWh+SgIO
+ Fr7g7Nn7IJ8u6oIIQkVnfJxwqg==
+X-Google-Smtp-Source: AMrXdXvgxzDvLfzT2IIKh1NFgfiua6zOi3rNg44KKUG096TcrY0/wTqx3M+rtSRTKPJS26eYwNaWtg==
+X-Received: by 2002:a05:600c:1c86:b0:3da:fa75:ce58 with SMTP id
+ k6-20020a05600c1c8600b003dafa75ce58mr14442007wms.21.1674137313872; 
+ Thu, 19 Jan 2023 06:08:33 -0800 (PST)
+Received: from zen.linaroharston ([185.81.254.11])
+ by smtp.gmail.com with ESMTPSA id
+ e12-20020a05600c218c00b003d9ddc82450sm4775204wme.45.2023.01.19.06.08.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Jan 2023 06:08:33 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id EC6B71FFB7;
+ Thu, 19 Jan 2023 14:08:32 +0000 (GMT)
 References: <20230119130326.2030297-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230119130326.2030297-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+User-agent: mu4e 1.9.15; emacs 29.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] MAINTAINERS: Fix the entry for tests/tcg/nios2
+Date: Thu, 19 Jan 2023 14:08:26 +0000
+In-reply-to: <20230119130326.2030297-1-thuth@redhat.com>
+Message-ID: <875yd2zkf3.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -82,21 +85,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Jan 2023 13:48:33 -0000
+X-List-Received-Date: Thu, 19 Jan 2023 14:08:46 -0000
 
-On 19/1/23 14:03, Thomas Huth wrote:
+
+Thomas Huth <thuth@redhat.com> writes:
+
 > tests/tcg/nios2/Makefile.target has accidentally been added
 > to the Microblaze section. Move it into the correct nios2
 > section instead - and while we're at it, it should also cover
 > the whole folder, and not only the Makefile.
-> 
-> Fixes: 67f80eb4d0 ("tests/tcg: enable debian-nios2-cross for test building")
+>
+> Fixes: 67f80eb4d0 ("tests/tcg: enable debian-nios2-cross for test buildin=
+g")
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   MAINTAINERS | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Queued to testing/next, thanks.
 
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
