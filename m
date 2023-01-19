@@ -1,57 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pIUaL-0003Sh-NV
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Jan 2023 08:04:21 -0500
+	id 1pIVGn-0002oO-3f
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Jan 2023 08:47:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pIUa1-0003MB-NB
- for qemu-trivial@nongnu.org; Thu, 19 Jan 2023 08:03:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pIUZx-0003pZ-In
- for qemu-trivial@nongnu.org; Thu, 19 Jan 2023 08:03:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674133415;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=pcnXCrIEO4ykvZN4gaikHQ1CzwNuHPIrvoRcgyRtgdA=;
- b=QZhQhTURfRtC9vlF4uN/fuMJZxCx//MwX+hA8RBpz4YNAvLEQMRAn8kyhVpCzqpiwzGbrt
- VAAzNs4V/dALNbLI660pHEZtlXKaTUtT1HbZhINZpZZsMpFfemmbeCxPX0nTTV59LBVJbu
- jJMf2qpKTEBaiCSM3kvgQqnu5SfdUY8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-608-bpSGbKQGO-SK52bnZml8cg-1; Thu, 19 Jan 2023 08:03:29 -0500
-X-MC-Unique: bpSGbKQGO-SK52bnZml8cg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DFFC8100F903;
- Thu, 19 Jan 2023 13:03:28 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.193.2])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BFF67492B02;
- Thu, 19 Jan 2023 13:03:27 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] MAINTAINERS: Fix the entry for tests/tcg/nios2
-Date: Thu, 19 Jan 2023 14:03:26 +0100
-Message-Id: <20230119130326.2030297-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIVGk-0002ns-Td
+ for qemu-trivial@nongnu.org; Thu, 19 Jan 2023 08:47:55 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pIVGi-0004KJ-88
+ for qemu-trivial@nongnu.org; Thu, 19 Jan 2023 08:47:54 -0500
+Received: by mail-wm1-x330.google.com with SMTP id l8so1568627wms.3
+ for <qemu-trivial@nongnu.org>; Thu, 19 Jan 2023 05:47:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=M9bXHeVoIwT+PFteQaUrDnF54U3Z1lr4pR5sb9PrLKo=;
+ b=UZZpvSb4HeeCGugClpiXUn0wdsWW+TuXI4dyAXbKgqI691dXcSWVmUs9ufQDp0iddi
+ xmQYed+iCc+i609dG0nv18sljoe5q45gArshR27Oz7+pHwgLdmmZeo5dO0wNjOqSskg7
+ DBKxsaNMDGtbEfQppznD76T1wMinxwpRDvKyQ5aL8e6mIr/Q2ZLUGCfiLsnFCFv6yMT4
+ SniebIt8AZQd1UgTWAs3tKI0Abpfv8ThUjYAte7cRX0B8PSLoVwnAvhcvLc9ddcodJgN
+ 0ACIqkZZ7zQIpYZLE1dUVPAs1j3eSAlMBuEwMgxRdhwiILUQEHuwVWg+Y183I4KYJd4U
+ ld+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=M9bXHeVoIwT+PFteQaUrDnF54U3Z1lr4pR5sb9PrLKo=;
+ b=qdcPQR+pB0n0FbnKGbTDHGQfkwgP/16a3xym1//O5CTq+yu0tywwETa0m7d26KnAIN
+ hstMWSQIdtqONHoLwjqCCOjlR7Yi28I5Oopyno1M5CG0Yft7GOqvnOPi2mVCbDb7FXOb
+ 5pKwE+/zGUt90NOWL6fd0dJm2M8IfNWrJ/hmKrWXS8ei2J37kFrd/KFRIQaNHTQxcbhP
+ ZEFLDVIzUcbu95z8Q/xJJ5WNa41qS1aeHIlRT9D8K4+wv7r0lLa1ew0J1bPDei+PqBA7
+ msCZ5DFcaM+AM9fUWqIWRcJb/yj0fx4jrTMlRvaBxsFIAB5nANmglvyTXt52Cnw+auoF
+ DihA==
+X-Gm-Message-State: AFqh2kpeYugKJALSiH5jETz3ib5ljXYo56uN2wJl32Yw9zP+msT6ubj/
+ lNHVlbfV76ayyCcsGS/mDB7lUw==
+X-Google-Smtp-Source: AMrXdXtI9XL85z8VUY4QYxeYDFuacm97AViyYtNU0fx9peSC7l2A/xkDBE0lg8/rPN3GjRUdogGNBw==
+X-Received: by 2002:a05:600c:a690:b0:3d5:64bf:ccb8 with SMTP id
+ ip16-20020a05600ca69000b003d564bfccb8mr10260651wmb.12.1674136070678; 
+ Thu, 19 Jan 2023 05:47:50 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ t20-20020a05600c199400b003d9de0c39fasm6447017wmq.36.2023.01.19.05.47.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Jan 2023 05:47:50 -0800 (PST)
+Message-ID: <b99714ad-8191-f830-26f0-4ed3f12a0d8f@linaro.org>
+Date: Thu, 19 Jan 2023 14:47:49 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH] configs/targets/nios2-softmmu: Add TARGET_NEED_FDT=y to
+ the nios2 config
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
+ Marek Vasut <marex@denx.de>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
+References: <20230119125745.2028814-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230119125745.2028814-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -65,40 +81,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Jan 2023 13:03:57 -0000
+X-List-Received-Date: Thu, 19 Jan 2023 13:47:55 -0000
 
-tests/tcg/nios2/Makefile.target has accidentally been added
-to the Microblaze section. Move it into the correct nios2
-section instead - and while we're at it, it should also cover
-the whole folder, and not only the Makefile.
+On 19/1/23 13:57, Thomas Huth wrote:
+> qemu-system-nios2 uses the functions from libfdt in hw/nios2/boot.c,
+> so this target has to be marked with TARGET_NEED_FDT=y in its config
+> file.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   configs/targets/nios2-softmmu.mak | 1 +
+>   1 file changed, 1 insertion(+)
 
-Fixes: 67f80eb4d0 ("tests/tcg: enable debian-nios2-cross for test building")
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 08ad1e5341..e73b04194a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -240,7 +240,6 @@ F: target/microblaze/
- F: hw/microblaze/
- F: disas/microblaze.c
- F: tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
--F: tests/tcg/nios2/Makefile.target
- 
- MIPS TCG CPUs
- M: Philippe Mathieu-Daudé <philmd@linaro.org>
-@@ -262,6 +261,7 @@ F: hw/nios2/
- F: disas/nios2.c
- F: configs/devices/nios2-softmmu/default.mak
- F: tests/docker/dockerfiles/debian-nios2-cross.d/build-toolchain.sh
-+F: tests/tcg/nios2/
- 
- OpenRISC TCG CPUs
- M: Stafford Horne <shorne@gmail.com>
--- 
-2.31.1
 
 
