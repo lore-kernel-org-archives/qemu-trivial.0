@@ -1,81 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pKj0u-0000rG-Kq
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 11:52:44 -0500
+	id 1pKjOd-0002P4-4m
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 12:17:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1pKj0t-0000r7-Ve
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 11:52:43 -0500
+ (Exim 4.90_1) (envelope-from <smitterl@redhat.com>)
+ id 1pKjOb-0002Om-OY
+ for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 12:17:13 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1pKj0s-00083n-Ir
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 11:52:43 -0500
+ (Exim 4.90_1) (envelope-from <smitterl@redhat.com>)
+ id 1pKjOS-0003Op-SW
+ for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 12:17:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674665562;
+ s=mimecast20190719; t=1674667021;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bSFmnHFGif7dgrE59zWYMnyVoDjL3xoXVax/u2hth6o=;
- b=FWPhxklSWBzsnfGjxM6XvaEHJgeMzCBvwv0qHNf42aCQBo39YeNeu12n+oMmfQErHnH/QD
- JzQRQQTGMOuclQHzjMqGbledCVlwSDoaVDjunDDuSrxDrRm2W0Z9k/mX6JbFnZtTfIkH94
- EKoWRCsHKktMIaezVdMxEuONLZRrn68=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-456-48I1IftUMpuk17E2L-V6rQ-1; Wed, 25 Jan 2023 11:52:41 -0500
-X-MC-Unique: 48I1IftUMpuk17E2L-V6rQ-1
-Received: by mail-ed1-f71.google.com with SMTP id
- q20-20020a056402519400b0049e5b8c71b3so13278843edd.17
- for <qemu-trivial@nongnu.org>; Wed, 25 Jan 2023 08:52:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=bSFmnHFGif7dgrE59zWYMnyVoDjL3xoXVax/u2hth6o=;
- b=xmIuKvlAh8MmG9tkdth8t1aJ7/x6vInLzEjB2+946JP0XdDQ4n3XLm9RxgUf6HHuim
- C8CSKikAhACpAdiOB1HBhKaM/GIfyEwVT1oDKtzjlfNYa1MMWHUw0Pmq1jAs7SeGKxI2
- XiJv7+F41L1iJsc5jYYwS16B2ejIvKt1RqZaoIrdE+GSlc3kbqmOfquaC1DlTyXmj4z0
- y99tU4p/Cmjcn7WzMG4XACnPxwWlafUB3E/C5Ly1T+y1KEDdmN9dcAm/gZTtG8hMMX62
- HKBT/xUrIgQTTpM37ZJ/JZJ/rWfFdCphReLWhbNrnYCGoSLLngQgrU3RpcgIDiVKza+D
- vkwQ==
-X-Gm-Message-State: AFqh2koxcPDyFw18ov71IJemKpfdL/GLydyqqedqek3TeoGG8Pd5r30/
- m4/9S9PSlfeuK94ufiYtarsvjAqGj6YZ58xFq2Gt36Es8Gbpe5O99ELiZ8vPkBCbZ3r/BJclt12
- PZdUVW8tstwgoUyPp8g==
-X-Received: by 2002:a17:907:1b0f:b0:86b:93ea:3366 with SMTP id
- mp15-20020a1709071b0f00b0086b93ea3366mr46888778ejc.3.1674665557624; 
- Wed, 25 Jan 2023 08:52:37 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXuvwKNwkk7b3j/FZhpfOtszP+AtX5qfK2YHT1FcgIQM8YqPEaJM3dgNzMET184mrHeMz/9Mng==
-X-Received: by 2002:a17:907:1b0f:b0:86b:93ea:3366 with SMTP id
- mp15-20020a1709071b0f00b0086b93ea3366mr46888754ejc.3.1674665557480; 
- Wed, 25 Jan 2023 08:52:37 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- bp12-20020a170907918c00b007c0d6b34d54sm2561901ejb.129.2023.01.25.08.52.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Jan 2023 08:52:35 -0800 (PST)
-Date: Wed, 25 Jan 2023 17:52:34 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, Eduardo
- Habkost <eduardo@habkost.net>, Ani Sinha <ani@anisinha.ca>, "Michael S.
- Tsirkin" <mst@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
- <philmd@linaro.org>, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v4 0/7] AML Housekeeping
-Message-ID: <20230125175234.2984e90d@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20230121151941.24120-1-shentey@gmail.com>
-References: <20230121151941.24120-1-shentey@gmail.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.36; x86_64-redhat-linux-gnu)
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=RTjLRZXhiXJBykDxZuNmXAcx9d/wKSbsdnWLy82R26s=;
+ b=RS3Jn2i2n9teecK8K7cFwk1J7HENg9XSQbE4j0DP6+RElSQt9wlLvrcNzF1gilGMLvAxx6
+ FM03KhwcqXazcAlY0OW210XwWDuw5cXSUMLEnZ8y4K8tXpXxpnuKX43XBav1t8Q+wLvU/r
+ 6jhMS+2ds4j05f4mS0r2qZUwtgRmJps=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-219-ZrerjKkuMTit_m3Kuzfxmw-1; Wed, 25 Jan 2023 12:15:33 -0500
+X-MC-Unique: ZrerjKkuMTit_m3Kuzfxmw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AF17E3813F29;
+ Wed, 25 Jan 2023 17:15:32 +0000 (UTC)
+Received: from fedora.. (ovpn-194-166.brq.redhat.com [10.40.194.166])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 153A12026D4B;
+ Wed, 25 Jan 2023 17:15:30 +0000 (UTC)
+From: Sebastian Mitterle <smitterl@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, qemu-trivial@nongnu.org, thuth@redhat.com,
+ clegoate@redhat.com, cohuck@redhat.com
+Subject: [PATCH] docs/s390x/pcidevices: document pci devices on s390x
+Date: Wed, 25 Jan 2023 18:15:30 +0100
+Message-Id: <20230125171530.49542-1-smitterl@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=smitterl@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -96,77 +65,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jan 2023 16:52:44 -0000
+X-List-Received-Date: Wed, 25 Jan 2023 17:17:14 -0000
 
-On Sat, 21 Jan 2023 16:19:34 +0100
-Bernhard Beschow <shentey@gmail.com> wrote:
+Add some documentation about the zpci device and how
+to use it with pci devices on s390x.
 
-> This series factors out AcpiCpuAmlIfClass::madt_cpu from AcpiDeviceIfClass.
-> By letting the (x86) CPUs implement the new interface, AML generation is
-> delegated to the CPUs, freeing the ACPI controllers from worrying about x86 CPU
-> specifics. The delegation to the CPUs is especially interesting for the PIIX4 PM
-> since it is also used in MIPS only contexts where no ACPI bios is available.
-> 
-> Furthermore, the series introduces qbus_build_aml() which replaces
-> isa_build_aml() and resolves some open coding.
+Used source: Cornelia Huck's blog post
+https://people.redhat.com/~cohuck/2018/02/19/notes-on-pci-on-s390x.html
 
-I'm done with this series review
-(skipped 6-7/7, since they depend on 5/7 which seems unnecessary to me)
+Signed-off-by: Sebastian Mitterle <smitterl@redhat.com>
+---
+ docs/system/s390x/pcidevices.rst | 34 ++++++++++++++++++++++++++++++++
+ docs/system/target-s390x.rst     |  1 +
+ 2 files changed, 35 insertions(+)
+ create mode 100644 docs/system/s390x/pcidevices.rst
 
-> 
-> v4:
-> - Squash qbus_build_aml() patches into one (Igor)
-> - Don't use a bare function pointer for AcpiDeviceIfClass::madt_cpu (Igor)
-> 
-> Testing done:
-> * `make check`
-> * `qemu-system-x86_64 -M pc -m 2G -cdrom manjaro-kde-21.2.6-220416-linux515.iso`
-> * `qemu-system-x86_64 -M q35 -m 2G -cdrom \
->    manjaro-kde-21.2.6-220416-linux515.iso`
-> 
-> v3:
-> - Clean up includes in AcpiDeviceIfClass::madt_cpu sub series last (Markus)
-> - Restructure qbus_build_aml() sub series (Phil, me)
-> 
-> v2:
-> - Don't inline qbus_build_aml() (Phil)
-> - Add 'hw/acpi/piix4: No need to #include "hw/southbridge/piix.h"'
-> 
-> Bernhard Beschow (7):
->   hw/i386/acpi-build: Remove unused attributes
->   hw/isa/isa-bus: Turn isa_build_aml() into qbus_build_aml()
->   hw/acpi/piix4: No need to #include "hw/southbridge/piix.h"
->   hw/acpi/acpi_dev_interface: Remove unused parameter from
->     AcpiDeviceIfClass::madt_cpu
->   hw/acpi/acpi_dev_interface: Factor out TYPE_ACPI_CPU_AML_IF
->   hw/acpi/acpi_dev_interface: Remove now unused #include "hw/boards.h"
->   hw/i386/pc: Unexport pc_madt_cpu_entry()
-> 
->  hw/acpi/hmat.h                       |  3 +-
->  hw/i386/acpi-common.h                |  3 +-
->  include/hw/acpi/acpi_aml_interface.h |  3 ++
->  include/hw/acpi/acpi_cpu_interface.h | 26 ++++++++++++++++
->  include/hw/acpi/acpi_dev_interface.h |  4 ---
->  include/hw/i386/pc.h                 |  6 ----
->  include/hw/isa/isa.h                 |  1 -
->  hw/acpi/acpi-x86-stub.c              |  7 -----
->  hw/acpi/acpi_interface.c             | 18 ++++++++++-
->  hw/acpi/cpu.c                        | 13 ++++----
->  hw/acpi/hmat.c                       |  1 +
->  hw/acpi/memory_hotplug.c             |  1 +
->  hw/acpi/piix4.c                      |  3 --
->  hw/i2c/smbus_ich9.c                  |  5 +--
->  hw/i386/acpi-build.c                 |  5 +--
->  hw/i386/acpi-common.c                | 42 +++----------------------
->  hw/i386/acpi-microvm.c               |  6 ++--
->  hw/i386/generic_event_device_x86.c   |  9 ------
->  hw/isa/isa-bus.c                     | 10 ------
->  hw/isa/lpc_ich9.c                    |  6 +---
->  hw/isa/piix3.c                       |  5 +--
->  monitor/qmp-cmds.c                   |  1 +
->  target/i386/cpu.c                    | 46 ++++++++++++++++++++++++++++
->  23 files changed, 117 insertions(+), 107 deletions(-)
->  create mode 100644 include/hw/acpi/acpi_cpu_interface.h
-> 
+diff --git a/docs/system/s390x/pcidevices.rst b/docs/system/s390x/pcidevices.rst
+new file mode 100644
+index 0000000000..2086c1ca29
+--- /dev/null
++++ b/docs/system/s390x/pcidevices.rst
+@@ -0,0 +1,34 @@
++PCI devices on s390x
++====================
++
++PCI devices on s390x work differently than on other architectures.
++
++To start with, using a PCI device requires the additional ``zpci`` device. For example,
++in order to pass a PCI device ``0000:00:00.0`` through you'd specify::
++
++ qemu-system-s390x ... \
++                   -device zpci,uid=1,fid=0,target=hostdev0,id=zpci1 \ 
++                   -device vfio-pci,host=0000:00:00.0,id=hostdev0
++
++Here, the zpci device is joined with the PCI device via the ``target`` property.
++
++Note that we don't set bus, slot or function here for the guest as is common in other
++PCI implementations. Topology information is not available on s390x. Instead, ``uid``
++and ``fid`` determine how the device is presented to the guest operating system.
++
++In case of Linux, ``uid`` will be used in the ``domain`` part of the PCI identifier, and
++``fid`` identifies the physical slot, i.e.::
++
++ qemu-system-s390x ... \
++                   -device zpci,uid=7,fid=8,target=hostdev0,id=zpci1 \
++                   ...
++
++will be presented in the guest as::
++
++ # lspci -v
++ 0007:00:00.0 ...
++ Physical Slot: 00000008
++ ...
++
++Finally, note that you might have to enable the ``zpci`` feature in the cpu model in oder to use
++it.
+diff --git a/docs/system/target-s390x.rst b/docs/system/target-s390x.rst
+index c636f64113..fe8251bdef 100644
+--- a/docs/system/target-s390x.rst
++++ b/docs/system/target-s390x.rst
+@@ -33,3 +33,4 @@ Architectural features
+ .. toctree::
+    s390x/bootdevices
+    s390x/protvirt
++   s390x/pcidevices
+-- 
+2.37.3
 
 
