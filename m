@@ -1,55 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pKctr-0003MY-Oa
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 05:21:03 -0500
+	id 1pKe0Z-00015f-21
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 06:32:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pKctq-0003MA-KA
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 05:21:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pKcto-0005pT-UA
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 05:21:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674642060;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=PSv0jllAclgkXV9e3XG7dLmpbzt+XcF97XzPOjOogS0=;
- b=VNpsbuYEcmIUd3XMNA/gYYjVeedU4BYKxCmQk36uWm9C/v6PGyclslLz0AD9/NLdUs29WA
- TN3YX2Hh6ygs/fS3pOLRCcU7V/8l9wo7OJvGE+X0DUozuSe3NQc91iA7lupIp4q2+Nt6Wz
- lFnqgIZ1PcxFm30mLaEWD631laMSr8c=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-213-Ayx7E7rUOQC2of0h4J9C4Q-1; Wed, 25 Jan 2023 05:20:56 -0500
-X-MC-Unique: Ayx7E7rUOQC2of0h4J9C4Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7C9981C270AC;
- Wed, 25 Jan 2023 10:20:56 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.193.19])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AE0CA42203;
- Wed, 25 Jan 2023 10:20:55 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	wenchao.wang@intel.com
-Subject: [PATCH] docs/about/deprecated: Mark HAXM as deprecated
-Date: Wed, 25 Jan 2023 11:20:53 +0100
-Message-Id: <20230125102053.902098-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pKe0X-00015F-EB
+ for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 06:32:01 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pKe0V-00084r-LV
+ for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 06:32:01 -0500
+Received: by mail-wr1-x435.google.com with SMTP id t18so3903904wro.1
+ for <qemu-trivial@nongnu.org>; Wed, 25 Jan 2023 03:31:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=aWzIeQYx7+uRvsu0aoBUBUuKpHuCt29sqw2DF3nu6Qc=;
+ b=LMGw5NSxskvNz7x9scCCLkWx3CsJ0hLxPu03VB4Yh9hbvGvyK6PeZMK3PRmB0bEj9T
+ HlKvWJehAuokwWdHS9lT03ndZXAoJSBCKwOiVuQucVAArQ8Bp9zGc2bUUzlzqZq5h/da
+ Gc8olF8exgudT7+bVTnvBezSq4w9er1wp1Pc2INIZOjP5xjcpHRMxbYSU5Gnviz89plx
+ Au5u5EMZ5VjK/Nj4DxTc2kUrcLar7iAbJfCto652onIGr78SHROlAB7gR/VGAF2Yly/Y
+ fuFcVgu8GZjBuOColZZYhpwhkFEcjhTPDzZMK3dR/4PrY9cF931Ypm/UjsIEYrE7fEME
+ aUsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=aWzIeQYx7+uRvsu0aoBUBUuKpHuCt29sqw2DF3nu6Qc=;
+ b=z4XY/8M2y081WAYh0VR3kS2r/GT4+rws/WxvP+BweovKlHHBE6Uyl2V2HOhD8Rh1BQ
+ cXBKjnGu74/dRRuETIK7iGRX/6cXYGLMP7H8vCMlykBcAxLqZXAToU5uxD9KEMq233Vg
+ i60AVv10/kSsK2zkbMWjmlNbAhNJShWMGtN9sW3ADXsougiPZewCvQ1YhDyqX7etuukW
+ IISiANPgQyTRvNFJfja5l8ZWXPCZxArviGkTespxNPxfzuHvMhAYK90cfO12FmUQ5MTo
+ m5oMKWuSEWrEY9+L/TahOeGWSBdrujuZCvwbnk8N+lxNovS5rDn+8AzXJxkWWIRb+UXZ
+ q/Zw==
+X-Gm-Message-State: AFqh2kopU/+X8kaPswpCmiFcrFPOekvTS7IAF7gSlLCSF6ltJi0GwT++
+ HB0uK4JGdyNdbGXq2zWXaqSdzg==
+X-Google-Smtp-Source: AMrXdXt75mHo4XI2ZxLF9uUXy3Kv3j8DOiGD6JRymoBxwsUwWL+5A12Q6gNuYlYjJShOhdPtfAqQpA==
+X-Received: by 2002:a05:6000:1049:b0:242:15d6:1a75 with SMTP id
+ c9-20020a056000104900b0024215d61a75mr25031725wrx.66.1674646317849; 
+ Wed, 25 Jan 2023 03:31:57 -0800 (PST)
+Received: from [192.168.0.114] ([196.77.22.181])
+ by smtp.gmail.com with ESMTPSA id
+ a17-20020a5d53d1000000b0024274a5db0asm4277248wrw.2.2023.01.25.03.31.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Jan 2023 03:31:57 -0800 (PST)
+Message-ID: <4c15f40f-1c70-d867-99e1-c8552e0b6f04@linaro.org>
+Date: Wed, 25 Jan 2023 12:31:55 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH] docs/about/deprecated: Mark HAXM as deprecated
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, wenchao.wang@intel.com
+References: <20230125102053.902098-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230125102053.902098-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -63,36 +80,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jan 2023 10:21:02 -0000
+X-List-Received-Date: Wed, 25 Jan 2023 11:32:01 -0000
 
-The HAXM project has been retired (see https://github.com/intel/haxm#status),
-so we should mark the code in QEMU as deprecated (and finally remove it
-unless somebody else picks the project up again - which is quite unlikely
-since there are now whpx and hvf on these operating systems, too).
+On 25/1/23 11:20, Thomas Huth wrote:
+> The HAXM project has been retired (see https://github.com/intel/haxm#status),
+> so we should mark the code in QEMU as deprecated (and finally remove it
+> unless somebody else picks the project up again - which is quite unlikely
+> since there are now whpx and hvf on these operating systems, too).
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   docs/about/deprecated.rst | 6 ++++++
+>   1 file changed, 6 insertions(+)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- docs/about/deprecated.rst | 6 ++++++
- 1 file changed, 6 insertions(+)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 3f4d678eb4..da2e6fe63d 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -93,6 +93,12 @@ form is preferred.
- The HPET setting has been turned into a machine property.
- Use ``-machine hpet=off`` instead.
- 
-+``-accel hax`` (since 8.0)
-+''''''''''''''''''''''''''
-+
-+The HAXM project has been retired (see https://github.com/intel/haxm#status).
-+Use "whpx" (on Windows) or "hvf" (on macOS) instead.
-+
- 
- QEMU Machine Protocol (QMP) commands
- ------------------------------------
--- 
-2.31.1
 
 
