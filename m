@@ -1,85 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pKewS-000181-Ay
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 07:31:52 -0500
+	id 1pKfOr-0002bq-N2
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 08:01:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pKewQ-00017g-9b
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 07:31:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pKewO-0002Wk-6I
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 07:31:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674649906;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZQ+xCPbHIXJ+lJ5MVABsbpA8jJWLpZk0wM9mEPQAZLM=;
- b=WoxnjIhF3YFxqSZxZW/YbCgKgS+ALCggk/UEM1o5t2ezlHfUv3HX4w7ls36Zwx0CZglYDX
- qEyS+bKsUVSbEkKj9enWall7urdEgn1vvrfy4VEgJjv49yyYlWbd+Yj/8AWZDcHWwX4KDd
- BtYhbUgq/SQ7t1JbPnPo17CL1PaOn0I=
-Received: from mail-vk1-f197.google.com (mail-vk1-f197.google.com
- [209.85.221.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-191-VPJNzLcgNDS7b3j2yqXUDw-1; Wed, 25 Jan 2023 07:31:44 -0500
-X-MC-Unique: VPJNzLcgNDS7b3j2yqXUDw-1
-Received: by mail-vk1-f197.google.com with SMTP id
- x22-20020a1f3116000000b003c67dc01d12so7290478vkx.17
- for <qemu-trivial@nongnu.org>; Wed, 25 Jan 2023 04:31:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pKfOd-0002XI-Qj; Wed, 25 Jan 2023 08:01:08 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pKfOW-0007TR-B8; Wed, 25 Jan 2023 08:00:59 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ e19-20020a05600c439300b003db1cac0c1fso1150386wmn.5; 
+ Wed, 25 Jan 2023 05:00:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=g7zzJwGyzr20GldkTcYz5CjZEoK6PbgeSuI+8jSMybs=;
+ b=WUlteI5grwU1OcpdqTcrqAQYZtoUbMqkqqZIBre5fOUtQ/V9XqaZL2V5oJ0dZrNBbV
+ i2sWVQueIsmxu7dwsny+VdMUqIXvm85r5lMszhHZORHkGNRnwMGMDu6pwc3LX6NjnYJj
+ 2iu+oFwMUoj8EmpAL1d4WRL7OHewu914dLPxpLZogAd8Oo8jhelxMSjjweqO/asBoYdy
+ P2ZSJ3ZWXIDvfPLYK1pdTC3fE/frF74ZijVo5OLJX4fY9tyXdABEjI1gcxa7bdzgBEzT
+ I4l469QLtylyYaXvk14nYktxfrnprjvP0ySt4qXzogtSvSy5fkCaHsoqv8CeiKBqHhXT
+ ghHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZQ+xCPbHIXJ+lJ5MVABsbpA8jJWLpZk0wM9mEPQAZLM=;
- b=kSAuAOEDMVrJYkRTS5hSxz+iXwALNGIoKtWMBElv5DzF192q5YVZsq71iAX50Gtw7A
- QBfTGrEi5WSb6jLy/JMXCbl/aZTuRd/CbJ2iikzkHLga6Jx817E07f5YmA/0ij7guehF
- vcAUqUX7dkaJrOGIIZri0m3bHPY6uH96WNfCneDX53NJBw0J6md4TOFxtcmK9AONl5pK
- g2e1yC0yALUfe8em4pSlTHuNct4PgT9NCn3borxmdaUt9gKTFvfOkZaNBqGJysKJXeoR
- qI1whOgpPGdb3nU0ww46QakvbNRam1BW8PqK4A2EArpew2ThRIYvNParZRv8sirHkfyd
- O9QA==
-X-Gm-Message-State: AFqh2koHExOV73UXctBDyLdUKp/EImMFQdk3YU+g0P3JILGPpSgOLmwu
- jF2tStMYSxWgqrQpqREFJplGkpZf2tCv1r1cPlGkbUO7dDCVbBxzVriWVjUuIuPbcmUbHmO+hzR
- 5o2ZwCl1dbPRQ+rsjsQ==
-X-Received: by 2002:a1f:1dc7:0:b0:3e1:b028:3c71 with SMTP id
- d190-20020a1f1dc7000000b003e1b0283c71mr18275909vkd.10.1674649904041; 
- Wed, 25 Jan 2023 04:31:44 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXunnK3eKo7KQr2F0B+sF+nOke9s31W3EjxQ/3z2K4tufY9mWqUc6qg/5goQukjGCI0dOGsjqQ==
-X-Received: by 2002:a1f:1dc7:0:b0:3e1:b028:3c71 with SMTP id
- d190-20020a1f1dc7000000b003e1b0283c71mr18275849vkd.10.1674649903376; 
- Wed, 25 Jan 2023 04:31:43 -0800 (PST)
-Received: from [192.168.0.2] (ip-109-43-178-209.web.vodafone.de.
- [109.43.178.209]) by smtp.gmail.com with ESMTPSA id
- o24-20020a05620a229800b006eeb3165565sm3320023qkh.80.2023.01.25.04.31.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Jan 2023 04:31:42 -0800 (PST)
-Message-ID: <f413e1d6-370c-8552-592e-e58187af9bd5@redhat.com>
-Date: Wed, 25 Jan 2023 13:31:40 +0100
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=g7zzJwGyzr20GldkTcYz5CjZEoK6PbgeSuI+8jSMybs=;
+ b=k9CuWr1VN5syZ6btqWQ6HLf5yI2fK+6/kuxUhhI6UD44zn0lv/w8xrAH24hM/Rm6co
+ v1YRMXVvr8Ft9mZyq9m7Pgfiwooc2bxSDjan5j9cPP1CkJHN7DEXoipGrYK5cYcs53T+
+ ogV83Ey0Jl/sfFclX9fok2KiWTBGCDxbuvFBjaM7WMxHLcvSZ+eMYhCpmXwgC8B9tfp3
+ hytsQEid4mM4Z9ZFhqb/ZcdNkhNRT8p+YzNJLV0HySWlf3nN6a2n4cgogpnKHT9erUCK
+ Zke2zBP2q+XereNGjeyvHLFUVm3uH/3ow2lGQpgNWZ1Gu/nkSkfvCCnO57ls11Fd/lRn
+ 3ofQ==
+X-Gm-Message-State: AFqh2kopUAngOSNtykdS906qE4ZiSspYcroQx7PhtRH+ZItzyXXFGM71
+ /BJn6ogR5+AEh4xES7AkB+zILnQ5xz2PVg==
+X-Google-Smtp-Source: AMrXdXvzyEbDIsukZxW0+OI1FpHjo4U2JKUhaFg7Pq3ZfvC6XpAGdyFt5NFUrQjeWP5MQkHvULtVYA==
+X-Received: by 2002:a05:600c:1c02:b0:3d2:3b8d:21e5 with SMTP id
+ j2-20020a05600c1c0200b003d23b8d21e5mr31828125wms.14.1674651648058; 
+ Wed, 25 Jan 2023 05:00:48 -0800 (PST)
+Received: from osoxes.fritz.box
+ (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
+ [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
+ by smtp.gmail.com with ESMTPSA id
+ s15-20020a05600c384f00b003d9de0c39fasm2078828wmr.36.2023.01.25.05.00.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 25 Jan 2023 05:00:47 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 0/4] E500 cleanups and enhancements
+Date: Wed, 25 Jan 2023 14:00:20 +0100
+Message-Id: <20230125130024.158721-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.39.1
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH] docs/about/deprecated: Mark HAXM as deprecated
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, wenchao.wang@intel.com
-References: <20230125102053.902098-1-thuth@redhat.com>
- <Y9Eb4ZMm0ll4xcM9@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <Y9Eb4ZMm0ll4xcM9@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.148, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,42 +79,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jan 2023 12:31:50 -0000
+X-List-Received-Date: Wed, 25 Jan 2023 13:01:10 -0000
 
-On 25/01/2023 13.09, Daniel P. Berrangé wrote:
-> On Wed, Jan 25, 2023 at 11:20:53AM +0100, Thomas Huth wrote:
->> The HAXM project has been retired (see https://github.com/intel/haxm#status),
->> so we should mark the code in QEMU as deprecated (and finally remove it
->> unless somebody else picks the project up again - which is quite unlikely
->> since there are now whpx and hvf on these operating systems, too).
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   docs/about/deprecated.rst | 6 ++++++
->>   1 file changed, 6 insertions(+)
->>
->> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
->> index 3f4d678eb4..da2e6fe63d 100644
->> --- a/docs/about/deprecated.rst
->> +++ b/docs/about/deprecated.rst
->> @@ -93,6 +93,12 @@ form is preferred.
->>   The HPET setting has been turned into a machine property.
->>   Use ``-machine hpet=off`` instead.
->>   
->> +``-accel hax`` (since 8.0)
->> +''''''''''''''''''''''''''
->> +
->> +The HAXM project has been retired (see https://github.com/intel/haxm#status).
->> +Use "whpx" (on Windows) or "hvf" (on macOS) instead.
->> +
-> 
-> Should we print a warning message from meson when someone enables this ?
-
-Or maybe rather to hax_accel_init() , so that people who run the binary see 
-the message?
-
-... I can add it there (though I have no means of testing it).
-
-  Thomas
-
+This series includes some cleanups I came across when working on the ppce50=
+0=0D
+machine. Furthermore, it enables support for the 'dumpdtb' QMP/HMP command=
+=0D
+which was missing so far.=0D
+=0D
+Bernhard Beschow (4):=0D
+  hw/ppc: Set machine->fdt in e500 machines=0D
+  hw/ppc/e500{,plat}: Drop redundant checks for presence of platform bus=0D
+  hw/ppc/e500.c: Avoid hardcoding parent device in=0D
+    create_devtree_etsec()=0D
+  hw/ppc/e500.c: Attach eSDHC unimplemented region to ccsr_addr_space=0D
+=0D
+ hw/ppc/e500.c     | 24 ++++++++++++++++--------=0D
+ hw/ppc/e500plat.c |  9 +++------=0D
+ 2 files changed, 19 insertions(+), 14 deletions(-)=0D
+=0D
+-- =0D
+2.39.1=0D
+=0D
 
