@@ -1,65 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pKfOr-0002bq-N2
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 08:01:13 -0500
+	id 1pKfOs-0002cE-2x
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 08:01:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pKfOd-0002XI-Qj; Wed, 25 Jan 2023 08:01:08 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1pKfOf-0002Xb-Tt; Wed, 25 Jan 2023 08:01:08 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pKfOW-0007TR-B8; Wed, 25 Jan 2023 08:00:59 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- e19-20020a05600c439300b003db1cac0c1fso1150386wmn.5; 
- Wed, 25 Jan 2023 05:00:49 -0800 (PST)
+ id 1pKfOd-0007Tq-IJ; Wed, 25 Jan 2023 08:01:01 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ d4-20020a05600c3ac400b003db1de2aef0so1236507wms.2; 
+ Wed, 25 Jan 2023 05:00:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=g7zzJwGyzr20GldkTcYz5CjZEoK6PbgeSuI+8jSMybs=;
- b=WUlteI5grwU1OcpdqTcrqAQYZtoUbMqkqqZIBre5fOUtQ/V9XqaZL2V5oJ0dZrNBbV
- i2sWVQueIsmxu7dwsny+VdMUqIXvm85r5lMszhHZORHkGNRnwMGMDu6pwc3LX6NjnYJj
- 2iu+oFwMUoj8EmpAL1d4WRL7OHewu914dLPxpLZogAd8Oo8jhelxMSjjweqO/asBoYdy
- P2ZSJ3ZWXIDvfPLYK1pdTC3fE/frF74ZijVo5OLJX4fY9tyXdABEjI1gcxa7bdzgBEzT
- I4l469QLtylyYaXvk14nYktxfrnprjvP0ySt4qXzogtSvSy5fkCaHsoqv8CeiKBqHhXT
- ghHQ==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=uoQgTm6KxRr/NTQpjZmPPpUvLTia7O3X8jkSnsZs31Q=;
+ b=cr3VdEJz+5dH/UoNV4LWbUOjCF4cMKNZSM8TLXN5943jh6RBpAYLFw258ZbedGIuoY
+ c5NbEikmou6bn5EpcpiX0eS5g28CvHNJ/TohTXAw/4MHghBGv9/M2KGwIdV7j1sFWoO4
+ Nz5KJMyTbhbFfaG0wNqnhLqxxP8WYIQxzTeIBf/x7setH60o+XfCb9Cb973ROVqDGkqN
+ jX2EFnXuvvLaR3Ke/4yat+c/l+IV/0WwJKTlVRy2ua90udzgD3fRddPZeep7h3AMiq8R
+ c7PFwHvAzY9fjj+cj5F1E4ulwkVpKGuM5/ghy0v0bDk4Qww41HgFV3z7pHeJCZqyRbWB
+ NkCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=g7zzJwGyzr20GldkTcYz5CjZEoK6PbgeSuI+8jSMybs=;
- b=k9CuWr1VN5syZ6btqWQ6HLf5yI2fK+6/kuxUhhI6UD44zn0lv/w8xrAH24hM/Rm6co
- v1YRMXVvr8Ft9mZyq9m7Pgfiwooc2bxSDjan5j9cPP1CkJHN7DEXoipGrYK5cYcs53T+
- ogV83Ey0Jl/sfFclX9fok2KiWTBGCDxbuvFBjaM7WMxHLcvSZ+eMYhCpmXwgC8B9tfp3
- hytsQEid4mM4Z9ZFhqb/ZcdNkhNRT8p+YzNJLV0HySWlf3nN6a2n4cgogpnKHT9erUCK
- Zke2zBP2q+XereNGjeyvHLFUVm3uH/3ow2lGQpgNWZ1Gu/nkSkfvCCnO57ls11Fd/lRn
- 3ofQ==
-X-Gm-Message-State: AFqh2kopUAngOSNtykdS906qE4ZiSspYcroQx7PhtRH+ZItzyXXFGM71
- /BJn6ogR5+AEh4xES7AkB+zILnQ5xz2PVg==
-X-Google-Smtp-Source: AMrXdXvzyEbDIsukZxW0+OI1FpHjo4U2JKUhaFg7Pq3ZfvC6XpAGdyFt5NFUrQjeWP5MQkHvULtVYA==
-X-Received: by 2002:a05:600c:1c02:b0:3d2:3b8d:21e5 with SMTP id
- j2-20020a05600c1c0200b003d23b8d21e5mr31828125wms.14.1674651648058; 
- Wed, 25 Jan 2023 05:00:48 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=uoQgTm6KxRr/NTQpjZmPPpUvLTia7O3X8jkSnsZs31Q=;
+ b=kHyB/MYMuYV9iGUSthFGaC8/WloBnTiUvW44M2o8cLd7iM0rdFs8B5+/SMjdyfbcI+
+ /z7hq/dHZO3p+kbAahmLS/IHfmOqTsSaDHwHCLEI+YGt9r9tVBux9TiFISl9hunqs0e5
+ xCV5xIwN1BEoTVGT1ceUeiHWaR2OfWzQe2kn+et+D6sb+4dF2I7zbYR8cz+noB8gbukd
+ gYgES6OWmVIsktW5WxsbQFw/0rCG34WNx7lN/wq9GhWgUv5axTnaIK5IWx72uSOkjcWA
+ YPIwHIsNrfOYd8RgrjaSHXfElldCpRQun4HtDHYsvIqpJJEJ+3XcDgybptJrBIRrr2Wl
+ PZog==
+X-Gm-Message-State: AFqh2koeOrdqxTfiQ3zn4X9E1iX8DFJpqslwCURVQ4Mf13ajDX9PiP5r
+ 91iHv5xeVNsE6Vklqha8WjClRnpPIazuMw==
+X-Google-Smtp-Source: AMrXdXsVyDdMhe8TAL5VafQB7xIuh26Y9+z6acpiLotsUp3cqS+liPs0IJchlfDUxAMSXuW7voyBjg==
+X-Received: by 2002:a05:600c:4928:b0:3cf:a41d:844b with SMTP id
+ f40-20020a05600c492800b003cfa41d844bmr30097893wmp.5.1674651650642; 
+ Wed, 25 Jan 2023 05:00:50 -0800 (PST)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- s15-20020a05600c384f00b003d9de0c39fasm2078828wmr.36.2023.01.25.05.00.47
+ s15-20020a05600c384f00b003d9de0c39fasm2078828wmr.36.2023.01.25.05.00.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Jan 2023 05:00:47 -0800 (PST)
+ Wed, 25 Jan 2023 05:00:50 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 0/4] E500 cleanups and enhancements
-Date: Wed, 25 Jan 2023 14:00:20 +0100
-Message-Id: <20230125130024.158721-1-shentey@gmail.com>
+Subject: [PATCH 3/4] hw/ppc/e500.c: Avoid hardcoding parent device in
+ create_devtree_etsec()
+Date: Wed, 25 Jan 2023 14:00:23 +0100
+Message-Id: <20230125130024.158721-4-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20230125130024.158721-1-shentey@gmail.com>
+References: <20230125130024.158721-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x336.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -81,24 +84,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 25 Jan 2023 13:01:10 -0000
 
-This series includes some cleanups I came across when working on the ppce50=
-0=0D
-machine. Furthermore, it enables support for the 'dumpdtb' QMP/HMP command=
-=0D
-which was missing so far.=0D
-=0D
-Bernhard Beschow (4):=0D
-  hw/ppc: Set machine->fdt in e500 machines=0D
-  hw/ppc/e500{,plat}: Drop redundant checks for presence of platform bus=0D
-  hw/ppc/e500.c: Avoid hardcoding parent device in=0D
-    create_devtree_etsec()=0D
-  hw/ppc/e500.c: Attach eSDHC unimplemented region to ccsr_addr_space=0D
-=0D
- hw/ppc/e500.c     | 24 ++++++++++++++++--------=0D
- hw/ppc/e500plat.c |  9 +++------=0D
- 2 files changed, 19 insertions(+), 14 deletions(-)=0D
-=0D
--- =0D
-2.39.1=0D
-=0D
+The "platform" node is available through data->node, so use that instead
+of making assumptions about the parent device.
+
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/ppc/e500.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index 48288c0b41..e3b29d1d97 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -241,7 +241,7 @@ static int create_devtree_etsec(SysBusDevice *sbdev, PlatformDevtreeData *data)
+     int irq0 = platform_bus_get_irqn(pbus, sbdev, 0);
+     int irq1 = platform_bus_get_irqn(pbus, sbdev, 1);
+     int irq2 = platform_bus_get_irqn(pbus, sbdev, 2);
+-    gchar *node = g_strdup_printf("/platform/ethernet@%"PRIx64, mmio0);
++    gchar *node = g_strdup_printf("%s/ethernet@%"PRIx64, data->node, mmio0);
+     gchar *group = g_strdup_printf("%s/queue-group", node);
+     void *fdt = data->fdt;
+ 
+-- 
+2.39.1
+
 
