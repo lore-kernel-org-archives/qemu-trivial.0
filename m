@@ -1,68 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pKfOs-0002cE-2x
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 08:01:14 -0500
+	id 1pKfOt-0002dH-Am
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 08:01:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pKfOf-0002Xb-Tt; Wed, 25 Jan 2023 08:01:08 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1pKfOf-0002XZ-Nt; Wed, 25 Jan 2023 08:01:08 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pKfOd-0007Tq-IJ; Wed, 25 Jan 2023 08:01:01 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- d4-20020a05600c3ac400b003db1de2aef0so1236507wms.2; 
- Wed, 25 Jan 2023 05:00:52 -0800 (PST)
+ id 1pKfOW-0007TW-Rr; Wed, 25 Jan 2023 08:01:00 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ f19-20020a1c6a13000000b003db0ef4dedcso1156104wmc.4; 
+ Wed, 25 Jan 2023 05:00:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=uoQgTm6KxRr/NTQpjZmPPpUvLTia7O3X8jkSnsZs31Q=;
- b=cr3VdEJz+5dH/UoNV4LWbUOjCF4cMKNZSM8TLXN5943jh6RBpAYLFw258ZbedGIuoY
- c5NbEikmou6bn5EpcpiX0eS5g28CvHNJ/TohTXAw/4MHghBGv9/M2KGwIdV7j1sFWoO4
- Nz5KJMyTbhbFfaG0wNqnhLqxxP8WYIQxzTeIBf/x7setH60o+XfCb9Cb973ROVqDGkqN
- jX2EFnXuvvLaR3Ke/4yat+c/l+IV/0WwJKTlVRy2ua90udzgD3fRddPZeep7h3AMiq8R
- c7PFwHvAzY9fjj+cj5F1E4ulwkVpKGuM5/ghy0v0bDk4Qww41HgFV3z7pHeJCZqyRbWB
- NkCw==
+ bh=t02FRM54QiiL1KMyr24MelBP+lEUcbY35sk426ekZB4=;
+ b=bis3miJPU464uOeuau7Gx4RsHqD4qcjUDtUgG3eGz7aI5CkjgaeAYKk5V7lDAyqmXW
+ JdH6I8BPP3WidDwACMXXrJmPyRHbY82xSUWn3BE8t1l+G6Yf+59KUSuFIJfMyXaEMqfk
+ RM+wCfqf998fqmFUhB3LlEOQNp+3JCRce4adeWhiGPAJzKMwFKkHUeqRsqdVMZ+9Yjjx
+ n3ArJbv04hkv9Dix0L5irSBIchIvok0vMv7zJoLMSDp8/T7M36qTRAwJpjE8m/g0zyAG
+ IYTimsaZ42rx49W+DYpTqKdj+5x8cv61XoHci5mppJ0antZchQRQLjikK5ZmHv9rvfHf
+ Uf6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=uoQgTm6KxRr/NTQpjZmPPpUvLTia7O3X8jkSnsZs31Q=;
- b=kHyB/MYMuYV9iGUSthFGaC8/WloBnTiUvW44M2o8cLd7iM0rdFs8B5+/SMjdyfbcI+
- /z7hq/dHZO3p+kbAahmLS/IHfmOqTsSaDHwHCLEI+YGt9r9tVBux9TiFISl9hunqs0e5
- xCV5xIwN1BEoTVGT1ceUeiHWaR2OfWzQe2kn+et+D6sb+4dF2I7zbYR8cz+noB8gbukd
- gYgES6OWmVIsktW5WxsbQFw/0rCG34WNx7lN/wq9GhWgUv5axTnaIK5IWx72uSOkjcWA
- YPIwHIsNrfOYd8RgrjaSHXfElldCpRQun4HtDHYsvIqpJJEJ+3XcDgybptJrBIRrr2Wl
- PZog==
-X-Gm-Message-State: AFqh2koeOrdqxTfiQ3zn4X9E1iX8DFJpqslwCURVQ4Mf13ajDX9PiP5r
- 91iHv5xeVNsE6Vklqha8WjClRnpPIazuMw==
-X-Google-Smtp-Source: AMrXdXsVyDdMhe8TAL5VafQB7xIuh26Y9+z6acpiLotsUp3cqS+liPs0IJchlfDUxAMSXuW7voyBjg==
-X-Received: by 2002:a05:600c:4928:b0:3cf:a41d:844b with SMTP id
- f40-20020a05600c492800b003cfa41d844bmr30097893wmp.5.1674651650642; 
- Wed, 25 Jan 2023 05:00:50 -0800 (PST)
+ bh=t02FRM54QiiL1KMyr24MelBP+lEUcbY35sk426ekZB4=;
+ b=JGxOfCZ0g8zfjD2RJYeKLW5Bvf5fEsl/qxt7Gmi3aFfvUFJTXne+4sQMA0G4OBmanR
+ M8TKajSW0jyK8YHADztcDwDMTZwedZqmKV/3VqPjvhLU1irdwMX2lB66pwxZdKS3h0dT
+ CmOgSJy5ELcV/nuXkNbOWhy7xmQ1a3mb9TRNL/G5sL+0mTvFA4/4qAsyVHZGgRLDGuyE
+ /gDhbh0s+EgVnafjeqtQiy47RySKSZl9lRo7BYVSDIeLBXAFqE+o3czx295pKrCnYYNQ
+ ejyS/YvW0R3byeYJDpoHCR4M4+0sEgznozbdSC8DhQITDRsRjqgu/vp0LVpjdafpb+SB
+ ORcA==
+X-Gm-Message-State: AFqh2krWx+RAaUyt9wKUT5/nUO64ABxPSsrKgQ+sEfKYmBxUQPXSWjhW
+ 9482iC7XkJMjjt1t0fCyDx0fmoU3m0l24w==
+X-Google-Smtp-Source: AMrXdXsJpiIyLvT0V50OcCg47F3Pqqorcx6AEZ8+RFeDc75W05h47yF/qTXiDh2iP1t/NTkWo4kx0A==
+X-Received: by 2002:a05:600c:310e:b0:3db:eb0:6f6 with SMTP id
+ g14-20020a05600c310e00b003db0eb006f6mr28361253wmo.13.1674651648787; 
+ Wed, 25 Jan 2023 05:00:48 -0800 (PST)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- s15-20020a05600c384f00b003d9de0c39fasm2078828wmr.36.2023.01.25.05.00.49
+ s15-20020a05600c384f00b003d9de0c39fasm2078828wmr.36.2023.01.25.05.00.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Jan 2023 05:00:50 -0800 (PST)
+ Wed, 25 Jan 2023 05:00:48 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 3/4] hw/ppc/e500.c: Avoid hardcoding parent device in
- create_devtree_etsec()
-Date: Wed, 25 Jan 2023 14:00:23 +0100
-Message-Id: <20230125130024.158721-4-shentey@gmail.com>
+Subject: [PATCH 1/4] hw/ppc: Set machine->fdt in e500 machines
+Date: Wed, 25 Jan 2023 14:00:21 +0100
+Message-Id: <20230125130024.158721-2-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230125130024.158721-1-shentey@gmail.com>
 References: <20230125130024.158721-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,27 +83,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 25 Jan 2023 13:01:10 -0000
 
-The "platform" node is available through data->node, so use that instead
-of making assumptions about the parent device.
+This enables support for the 'dumpdtb' QMP/HMP command for all
+e500 machines.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/ppc/e500.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/ppc/e500.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 48288c0b41..e3b29d1d97 100644
+index 9fa1f8e6cf..7239993acc 100644
 --- a/hw/ppc/e500.c
 +++ b/hw/ppc/e500.c
-@@ -241,7 +241,7 @@ static int create_devtree_etsec(SysBusDevice *sbdev, PlatformDevtreeData *data)
-     int irq0 = platform_bus_get_irqn(pbus, sbdev, 0);
-     int irq1 = platform_bus_get_irqn(pbus, sbdev, 1);
-     int irq2 = platform_bus_get_irqn(pbus, sbdev, 2);
--    gchar *node = g_strdup_printf("/platform/ethernet@%"PRIx64, mmio0);
-+    gchar *node = g_strdup_printf("%s/ethernet@%"PRIx64, data->node, mmio0);
-     gchar *group = g_strdup_printf("%s/queue-group", node);
-     void *fdt = data->fdt;
+@@ -659,9 +659,14 @@ done:
+     if (!dry_run) {
+         qemu_fdt_dumpdtb(fdt, fdt_size);
+         cpu_physical_memory_write(addr, fdt, fdt_size);
++
++        /* Set machine->fdt for 'dumpdtb' QMP/HMP command */
++        g_free(machine->fdt);
++        machine->fdt = fdt;
++    } else {
++        g_free(fdt);
+     }
+     ret = fdt_size;
+-    g_free(fdt);
  
+ out:
+     g_free(pci_map);
 -- 
 2.39.1
 
