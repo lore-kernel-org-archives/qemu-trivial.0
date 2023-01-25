@@ -1,57 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pKjOd-0002P4-4m
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 12:17:15 -0500
+	id 1pKp1C-0006GX-8G
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 18:17:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <smitterl@redhat.com>)
- id 1pKjOb-0002Om-OY
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 12:17:13 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <smitterl@redhat.com>)
- id 1pKjOS-0003Op-SW
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 12:17:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674667021;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=RTjLRZXhiXJBykDxZuNmXAcx9d/wKSbsdnWLy82R26s=;
- b=RS3Jn2i2n9teecK8K7cFwk1J7HENg9XSQbE4j0DP6+RElSQt9wlLvrcNzF1gilGMLvAxx6
- FM03KhwcqXazcAlY0OW210XwWDuw5cXSUMLEnZ8y4K8tXpXxpnuKX43XBav1t8Q+wLvU/r
- 6jhMS+2ds4j05f4mS0r2qZUwtgRmJps=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-219-ZrerjKkuMTit_m3Kuzfxmw-1; Wed, 25 Jan 2023 12:15:33 -0500
-X-MC-Unique: ZrerjKkuMTit_m3Kuzfxmw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AF17E3813F29;
- Wed, 25 Jan 2023 17:15:32 +0000 (UTC)
-Received: from fedora.. (ovpn-194-166.brq.redhat.com [10.40.194.166])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 153A12026D4B;
- Wed, 25 Jan 2023 17:15:30 +0000 (UTC)
-From: Sebastian Mitterle <smitterl@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, qemu-trivial@nongnu.org, thuth@redhat.com,
- clegoate@redhat.com, cohuck@redhat.com
-Subject: [PATCH] docs/s390x/pcidevices: document pci devices on s390x
-Date: Wed, 25 Jan 2023 18:15:30 +0100
-Message-Id: <20230125171530.49542-1-smitterl@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pKp1A-0006G1-JA
+ for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 18:17:24 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pKp18-0006sC-W3
+ for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 18:17:24 -0500
+Received: by mail-wm1-x329.google.com with SMTP id fl24so94048wmb.1
+ for <qemu-trivial@nongnu.org>; Wed, 25 Jan 2023 15:17:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=y8BDiINBwSD7It7TkhO32XcJz4B1GuSdShR7bB+F+Ps=;
+ b=pCbbWjzs1gTnvcW1PHk6BArNYwJvmWLWnj0xRrHdeiltD1hB9rVeL9eyvR5ywlH9GV
+ hsF2jXqA5o8fHGPaqGk+EJXmIDKn5W6wsF2aCdrInTPISF0oJIV8r3vbodP1RxNfcTUo
+ 01N+89UC+peMf9xKEYGyXHIqhNlW3RWz/695kqvxg0ct5A4dvqkINb0jSEeEqDePCjv1
+ 5/m16DQSNw6M/1qNjr3ex5ouuQRqzCC+4yMAbLvEXKx8aZBQ5zpEpNALfMAKPDhUnLG7
+ 5whsDVtMphgiESsG4wla1ahWL9UDTY8QYVlA6j6PZDBYuSlxdYQOWFZG4GspqGG7QGvx
+ wPVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=y8BDiINBwSD7It7TkhO32XcJz4B1GuSdShR7bB+F+Ps=;
+ b=v+Es7iXHWsW4doGurfZQ/xq374Y1aIvKJ4ePFwLJfgHIeWskEbWI+/afsfZ4YYvpw1
+ NwRdDsXWyYaadsTNiGL/D1Mr5oF+8LxGIAyivkgqooYkd2vRXhuZSaOmbSLKjWO/w/Ww
+ 0YOHOcIpBz59XqwQCqzPj/xF3FjsT6d/E/qlO+0zkKqqdEnnEaoVWuyJEayjeM3pZpm0
+ FIUwPb+FUYy3wdsY1RQLLXkcr4yxtgupUNwJRQx1wY2Zpl8EiLzZw5BHjdFxudvSiWyv
+ 4y91BSlV/7rA0wnZMBdFeTSr8+QN2559GpoPlqzoH58o2vkgJ9XJyNLnD1qbkGbQdh5z
+ KZxQ==
+X-Gm-Message-State: AFqh2kpZ/G6WfgdxljJ482g/9oQ6DgSL8TgMP8xcqF3WBYZSb1aCcL1Q
+ CwCMZJFaxMPxyBeXZwzeo/+ptw==
+X-Google-Smtp-Source: AMrXdXuZAaX5KZzmd5K+MaCU7oCKprcUUe/Fd7WEsJerpJWfFfLs9c0h+rsbZZwLXGBF50i2tuB9Uw==
+X-Received: by 2002:a05:600c:19d0:b0:3dc:c05:9db6 with SMTP id
+ u16-20020a05600c19d000b003dc0c059db6mr9025513wmq.33.1674688641285; 
+ Wed, 25 Jan 2023 15:17:21 -0800 (PST)
+Received: from [192.168.0.114] ([196.77.22.181])
+ by smtp.gmail.com with ESMTPSA id
+ n6-20020a7bcbc6000000b003d237d60318sm2965294wmi.2.2023.01.25.15.17.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Jan 2023 15:17:20 -0800 (PST)
+Message-ID: <f1cdb635-f02d-3ce0-1123-199293abef5a@linaro.org>
+Date: Thu, 26 Jan 2023 00:17:19 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH 4/4] hw/ppc/e500.c: Attach eSDHC unimplemented region to
+ ccsr_addr_space
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
+References: <20230125130024.158721-1-shentey@gmail.com>
+ <20230125130024.158721-5-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230125130024.158721-5-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=smitterl@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -65,71 +82,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jan 2023 17:17:14 -0000
+X-List-Received-Date: Wed, 25 Jan 2023 23:17:24 -0000
 
-Add some documentation about the zpci device and how
-to use it with pci devices on s390x.
+On 25/1/23 14:00, Bernhard Beschow wrote:
+> Makes the unimplemented region move together with the CCSR address space
+> if moved by a bootloader. Moving the CCSR address space isn't
+> implemented yet but this patch is a preparation for it.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/ppc/e500.c | 10 +++++++---
+>   1 file changed, 7 insertions(+), 3 deletions(-)
 
-Used source: Cornelia Huck's blog post
-https://people.redhat.com/~cohuck/2018/02/19/notes-on-pci-on-s390x.html
-
-Signed-off-by: Sebastian Mitterle <smitterl@redhat.com>
----
- docs/system/s390x/pcidevices.rst | 34 ++++++++++++++++++++++++++++++++
- docs/system/target-s390x.rst     |  1 +
- 2 files changed, 35 insertions(+)
- create mode 100644 docs/system/s390x/pcidevices.rst
-
-diff --git a/docs/system/s390x/pcidevices.rst b/docs/system/s390x/pcidevices.rst
-new file mode 100644
-index 0000000000..2086c1ca29
---- /dev/null
-+++ b/docs/system/s390x/pcidevices.rst
-@@ -0,0 +1,34 @@
-+PCI devices on s390x
-+====================
-+
-+PCI devices on s390x work differently than on other architectures.
-+
-+To start with, using a PCI device requires the additional ``zpci`` device. For example,
-+in order to pass a PCI device ``0000:00:00.0`` through you'd specify::
-+
-+ qemu-system-s390x ... \
-+                   -device zpci,uid=1,fid=0,target=hostdev0,id=zpci1 \ 
-+                   -device vfio-pci,host=0000:00:00.0,id=hostdev0
-+
-+Here, the zpci device is joined with the PCI device via the ``target`` property.
-+
-+Note that we don't set bus, slot or function here for the guest as is common in other
-+PCI implementations. Topology information is not available on s390x. Instead, ``uid``
-+and ``fid`` determine how the device is presented to the guest operating system.
-+
-+In case of Linux, ``uid`` will be used in the ``domain`` part of the PCI identifier, and
-+``fid`` identifies the physical slot, i.e.::
-+
-+ qemu-system-s390x ... \
-+                   -device zpci,uid=7,fid=8,target=hostdev0,id=zpci1 \
-+                   ...
-+
-+will be presented in the guest as::
-+
-+ # lspci -v
-+ 0007:00:00.0 ...
-+ Physical Slot: 00000008
-+ ...
-+
-+Finally, note that you might have to enable the ``zpci`` feature in the cpu model in oder to use
-+it.
-diff --git a/docs/system/target-s390x.rst b/docs/system/target-s390x.rst
-index c636f64113..fe8251bdef 100644
---- a/docs/system/target-s390x.rst
-+++ b/docs/system/target-s390x.rst
-@@ -33,3 +33,4 @@ Architectural features
- .. toctree::
-    s390x/bootdevices
-    s390x/protvirt
-+   s390x/pcidevices
--- 
-2.37.3
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
