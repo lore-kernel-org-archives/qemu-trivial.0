@@ -1,68 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pKfOt-0002ds-LH
+	id 1pKfOt-0002eL-Qx
 	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 08:01:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pKfOd-0002XJ-Uc; Wed, 25 Jan 2023 08:01:08 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1pKfOf-0002Xa-OH; Wed, 25 Jan 2023 08:01:08 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pKfOW-0007Ti-Qo; Wed, 25 Jan 2023 08:00:59 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- f12-20020a7bc8cc000000b003daf6b2f9b9so1155289wml.3; 
- Wed, 25 Jan 2023 05:00:51 -0800 (PST)
+ id 1pKfOd-0007VX-IJ; Wed, 25 Jan 2023 08:01:00 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ bg13-20020a05600c3c8d00b003d9712b29d2so1167169wmb.2; 
+ Wed, 25 Jan 2023 05:00:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=syan58S3sCnjyIRk7Y6RWSpgxK4N2Gg8GaazVOwZOpQ=;
- b=ehxKewQGImTzgN1gyT5ml6LlP7kfGjnv56QNI+EiiUAaZ2ORTiaHiDDeNv6471nW8k
- 0z2RzAsfPGydxFB9wmH78YKOFE6BT/i4+e64h3XLmDdsHhRwc0B2JRBDJRMfqGJNsKdd
- d6pueDtWq2l4ygpyYHRiwLZqnB8bLvv57l9j8oXtvEwiG/dr3DlhtE11YFaDVRNTMD3g
- OQP11kWtbJb1rPpcB9KKrzKcimRwYSRgQP88OGa2FDyVT1gJISHZjXrS106YbAHdLAkR
- HhH8PnEy8YncNLXx+A+uEKUHE+O2mIUgNPKMOfBaM9W11Xr8D86Kq+hVRDvXgLd8RUsj
- q3dA==
+ bh=Tm2HfgjxNCIKiUMmVm5C1G/KwgcC7AB6x1Fwz+gWZxc=;
+ b=Map46ZWWhIB8ypFmRC8j6jD09Enul8Vs7UtdDpmj95Azbsq7mwyHIqldc8OJpMCavl
+ EgitrG3IDwDMInNRLM6CzumZN/fuIQzDiUe8La2Xm/40OqVOIKVyj7tBIIEK1U4Pgqk7
+ kZ+F6t6JajTByjU0y/d12fOLPJ3HBeLTkvWIHzbewtzDZnVqkfcZZKCcZx4gTs0FOYSb
+ UD5Z6way+Jbj1Jsy3M0ncVWuC525+lynPOfHEB49H80jXwr5DlQwnr0Sc55/jjibO4Bg
+ DTTFFB2KP1taE3VpDU0xSHIuyp6cBzqlr1/qHDnD9MytL5k0Rco6cNrU6d+f2KIWdQmf
+ 15Mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=syan58S3sCnjyIRk7Y6RWSpgxK4N2Gg8GaazVOwZOpQ=;
- b=PcE28+Xvuf5Skp3U/aa6TsP2vsXuAKmQ8JQGYfhd/ZKooaY9hEJUd9ZiW9nosH8bZj
- Jdxw1L6WGI8rCLXY43r1gt+EwSNyb/NjBY1ma++UkYL2m1MUSfduMgDJr9Qni0lFD+d0
- J453mRiCPn1OtjoABY1aDpTUX7RkyhsQlt3uZcBQ8DXVC3JTkQKfR/PdyRWhm+VWYBKF
- SqcDgDt1ogAKcB8DTeKqKhnz8EZyeOZe7pXnC6vGhpALMTnUydaTitoxTsC2d1wuee5N
- uQt2hkr3gY9W2hbzrc4hs0WN/Fy9ATtftNSv/J6LQBtKSSAQJNwP7JNPfMyf3Odu7BNl
- /xZA==
-X-Gm-Message-State: AFqh2krlaO+bd1cdwkYX9qKCKK7FHt2zlCN8fCzZ9bL5rDQSoGv05XCE
- BAJ7rbS7gn+KFOnepRIbDfljgf8ipoSVoA==
-X-Google-Smtp-Source: AMrXdXuwIh1yBF/HnnHX5bRhYw4wLRF8VXpmoNUZyO+fcbCjFk+FxfEugzXbtclJofXqXymzBCzqEw==
-X-Received: by 2002:a05:600c:225a:b0:3d3:5c21:dd99 with SMTP id
- a26-20020a05600c225a00b003d35c21dd99mr30951681wmm.18.1674651649554; 
- Wed, 25 Jan 2023 05:00:49 -0800 (PST)
+ bh=Tm2HfgjxNCIKiUMmVm5C1G/KwgcC7AB6x1Fwz+gWZxc=;
+ b=yWAdlihpujbxhRdeFCkp6tkFEBhwo6x/aY+1Wva19LAe6rVMXrdcx3ib1fk6X6kM+q
+ VkdW1HnccwxmrZDt5d7vlvbxKQ9z5Roc+R09/qmS9PtDyvhFY7nPYUhBN8wxuwDpFcua
+ c+M7TPBrHdR3NIE22gJxtY55cXEzuPkYb1d5CRXihL4CC/9KNBQ/gPbD4w22CDFfAL3N
+ Nc94obOvoKRptShd0a4XOiLDtz8RqgXxHuSU7KbeozRZ9r0bvRL0tsfzx/xhnvEl9KTQ
+ AbtRrnm+5Xqqws5YmNgchWkuIIusv7vbx9hjeQGK19eiJaGYCcDB8n9WU5sNrcTHNzos
+ uxQg==
+X-Gm-Message-State: AFqh2ko856ABHW3Oj6lgKPNPjLbALf0gXFgRKmov5TFGOIj/ZctjBOjM
+ FwUT9ixGNwGqAu0mggAk7OvU0DbucBow9Q==
+X-Google-Smtp-Source: AMrXdXsOS80jTF/ecIuDAMH8iNQWlDb91Xg8nKHdxrGW1ptMD8YVGncW8fTDWV2/uEIX0Lnhy/t71g==
+X-Received: by 2002:a05:600c:3d10:b0:3d9:ee3d:2f54 with SMTP id
+ bh16-20020a05600c3d1000b003d9ee3d2f54mr39569863wmb.13.1674651651485; 
+ Wed, 25 Jan 2023 05:00:51 -0800 (PST)
 Received: from osoxes.fritz.box
  (p200300faaf0bb2009c4947838afc41b6.dip0.t-ipconnect.de.
  [2003:fa:af0b:b200:9c49:4783:8afc:41b6])
  by smtp.gmail.com with ESMTPSA id
- s15-20020a05600c384f00b003d9de0c39fasm2078828wmr.36.2023.01.25.05.00.48
+ s15-20020a05600c384f00b003d9de0c39fasm2078828wmr.36.2023.01.25.05.00.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Jan 2023 05:00:49 -0800 (PST)
+ Wed, 25 Jan 2023 05:00:51 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 2/4] hw/ppc/e500{,
- plat}: Drop redundant checks for presence of platform bus
-Date: Wed, 25 Jan 2023 14:00:22 +0100
-Message-Id: <20230125130024.158721-3-shentey@gmail.com>
+Subject: [PATCH 4/4] hw/ppc/e500.c: Attach eSDHC unimplemented region to
+ ccsr_addr_space
+Date: Wed, 25 Jan 2023 14:00:24 +0100
+Message-Id: <20230125130024.158721-5-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230125130024.158721-1-shentey@gmail.com>
 References: <20230125130024.158721-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,53 +84,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 25 Jan 2023 13:01:10 -0000
 
-This is a follow-up on commit 47a0b1dff7e9 'hw/ppc/mpc8544ds: Add
-platform bus': Both mpc85xx boards now have a platform bus
-unconditionally.
+Makes the unimplemented region move together with the CCSR address space
+if moved by a bootloader. Moving the CCSR address space isn't
+implemented yet but this patch is a preparation for it.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/ppc/e500.c     | 5 ++---
- hw/ppc/e500plat.c | 9 +++------
- 2 files changed, 5 insertions(+), 9 deletions(-)
+ hw/ppc/e500.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 7239993acc..48288c0b41 100644
+index e3b29d1d97..117c9c08ed 100644
 --- a/hw/ppc/e500.c
 +++ b/hw/ppc/e500.c
-@@ -643,9 +643,8 @@ static int ppce500_load_device_tree(PPCE500MachineState *pms,
-     }
-     g_free(soc);
+@@ -1022,9 +1022,13 @@ void ppce500_init(MachineState *machine)
  
--    if (pms->pbus_dev) {
--        platform_bus_create_devtree(pms, fdt, mpic);
--    }
-+    platform_bus_create_devtree(pms, fdt, mpic);
-+
-     g_free(mpic);
+     /* eSDHC */
+     if (pmc->has_esdhc) {
+-        create_unimplemented_device("esdhc",
+-                                    pmc->ccsrbar_base + MPC85XX_ESDHC_REGS_OFFSET,
+-                                    MPC85XX_ESDHC_REGS_SIZE);
++        dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
++        qdev_prop_set_string(dev, "name", "esdhc");
++        qdev_prop_set_uint64(dev, "size", MPC85XX_ESDHC_REGS_SIZE);
++        s = SYS_BUS_DEVICE(dev);
++        sysbus_realize_and_unref(s, &error_fatal);
++        memory_region_add_subregion(ccsr_addr_space, MPC85XX_ESDHC_REGS_OFFSET,
++                                    sysbus_mmio_get_region(s, 0));
  
-     pmc->fixup_devtree(fdt);
-diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
-index 44bf874b0f..3032bd3f6d 100644
---- a/hw/ppc/e500plat.c
-+++ b/hw/ppc/e500plat.c
-@@ -46,13 +46,10 @@ static void e500plat_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-                                             DeviceState *dev, Error **errp)
- {
-     PPCE500MachineState *pms = PPCE500_MACHINE(hotplug_dev);
-+    MachineClass *mc = MACHINE_GET_CLASS(pms);
- 
--    if (pms->pbus_dev) {
--        MachineClass *mc = MACHINE_GET_CLASS(pms);
--
--        if (device_is_dynamic_sysbus(mc, dev)) {
--            platform_bus_link_device(pms->pbus_dev, SYS_BUS_DEVICE(dev));
--        }
-+    if (device_is_dynamic_sysbus(mc, dev)) {
-+        platform_bus_link_device(pms->pbus_dev, SYS_BUS_DEVICE(dev));
-     }
- }
- 
+         /*
+          * Compatible with:
 -- 
 2.39.1
 
