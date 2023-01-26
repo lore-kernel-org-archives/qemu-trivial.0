@@ -1,75 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pKp1C-0006GX-8G
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 18:17:26 -0500
+	id 1pKt2a-0006JY-Ur
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jan 2023 22:35:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pKp1A-0006G1-JA
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 18:17:24 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pKt2a-0006JP-6A
+ for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 22:35:08 -0500
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pKp18-0006sC-W3
- for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 18:17:24 -0500
-Received: by mail-wm1-x329.google.com with SMTP id fl24so94048wmb.1
- for <qemu-trivial@nongnu.org>; Wed, 25 Jan 2023 15:17:22 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pKt2Y-0004FE-IY
+ for qemu-trivial@nongnu.org; Wed, 25 Jan 2023 22:35:07 -0500
+Received: by mail-pj1-x1035.google.com with SMTP id
+ e10-20020a17090a630a00b0022bedd66e6dso4142605pjj.1
+ for <qemu-trivial@nongnu.org>; Wed, 25 Jan 2023 19:35:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=y8BDiINBwSD7It7TkhO32XcJz4B1GuSdShR7bB+F+Ps=;
- b=pCbbWjzs1gTnvcW1PHk6BArNYwJvmWLWnj0xRrHdeiltD1hB9rVeL9eyvR5ywlH9GV
- hsF2jXqA5o8fHGPaqGk+EJXmIDKn5W6wsF2aCdrInTPISF0oJIV8r3vbodP1RxNfcTUo
- 01N+89UC+peMf9xKEYGyXHIqhNlW3RWz/695kqvxg0ct5A4dvqkINb0jSEeEqDePCjv1
- 5/m16DQSNw6M/1qNjr3ex5ouuQRqzCC+4yMAbLvEXKx8aZBQ5zpEpNALfMAKPDhUnLG7
- 5whsDVtMphgiESsG4wla1ahWL9UDTY8QYVlA6j6PZDBYuSlxdYQOWFZG4GspqGG7QGvx
- wPVg==
+ bh=dDScx//a87dxLoQohvQY1QUup8T0Y2nk5LUfGW/gtcw=;
+ b=lbhDnOIjAppM55ee5j71GlkiYCsEJ3JlX37TcXNcg2C5ilQFmqfq+RFeig90hl52oQ
+ gDCIgNQF5M8QdreRfJ7AeTjOY2DHIDRojnNMs5Nqdt0LsQse1iWfvcuz1/K7hyO6poW7
+ dBl5nPdzEZSptgKxYkUzG/7n6bzRAbJHod0oHTX2CU8XLLkNzeL5Ms0U24HBrB82MN2G
+ Ze1E7mq2rFZ82IQ1oOWvvcv6Po91+vUiD8CZN3/r1Hi4KJIyEzyP+lnoHAoiIErETKVK
+ 3nIgvOhFADLaQ8mxByW4kGOeyybN7OtNjMUW4Ydnpen+jjoUXs9GJOUGV6hpCKs7oLMV
+ RDHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=y8BDiINBwSD7It7TkhO32XcJz4B1GuSdShR7bB+F+Ps=;
- b=v+Es7iXHWsW4doGurfZQ/xq374Y1aIvKJ4ePFwLJfgHIeWskEbWI+/afsfZ4YYvpw1
- NwRdDsXWyYaadsTNiGL/D1Mr5oF+8LxGIAyivkgqooYkd2vRXhuZSaOmbSLKjWO/w/Ww
- 0YOHOcIpBz59XqwQCqzPj/xF3FjsT6d/E/qlO+0zkKqqdEnnEaoVWuyJEayjeM3pZpm0
- FIUwPb+FUYy3wdsY1RQLLXkcr4yxtgupUNwJRQx1wY2Zpl8EiLzZw5BHjdFxudvSiWyv
- 4y91BSlV/7rA0wnZMBdFeTSr8+QN2559GpoPlqzoH58o2vkgJ9XJyNLnD1qbkGbQdh5z
- KZxQ==
-X-Gm-Message-State: AFqh2kpZ/G6WfgdxljJ482g/9oQ6DgSL8TgMP8xcqF3WBYZSb1aCcL1Q
- CwCMZJFaxMPxyBeXZwzeo/+ptw==
-X-Google-Smtp-Source: AMrXdXuZAaX5KZzmd5K+MaCU7oCKprcUUe/Fd7WEsJerpJWfFfLs9c0h+rsbZZwLXGBF50i2tuB9Uw==
-X-Received: by 2002:a05:600c:19d0:b0:3dc:c05:9db6 with SMTP id
- u16-20020a05600c19d000b003dc0c059db6mr9025513wmq.33.1674688641285; 
- Wed, 25 Jan 2023 15:17:21 -0800 (PST)
-Received: from [192.168.0.114] ([196.77.22.181])
- by smtp.gmail.com with ESMTPSA id
- n6-20020a7bcbc6000000b003d237d60318sm2965294wmi.2.2023.01.25.15.17.20
+ bh=dDScx//a87dxLoQohvQY1QUup8T0Y2nk5LUfGW/gtcw=;
+ b=1kG9JtaUJNSaCbWFrNeFeffe0eAeCBqPTPCjTOY3mt2xYJ8EDK+k74o93H9V7PIi19
+ xVquOmRG7nf32Le5DM52UeoCDqITFwYGL/6lq7lbAOR3FDFsInyD2jKLOSa4qIhoN4gc
+ HOZntOM2KsXmw8Ok+vDdXQqvpufuj9pyzt8hIUUM1/NZPDxmwu420U9fF4RrKgsrODlR
+ 4TCgO0kMPWCs2CJtN6KIALNqyufKrgzlHdkH3p7iD4Qt3bTUasRnOuRaik9pjfaUYZIg
+ 2k1fs6yC2sIS00r3YQYfLvnDxA2Fn87e29dCiCr8b0A8OiP5kNDBCrxw9S1B61FNZbwm
+ c/Iw==
+X-Gm-Message-State: AO0yUKV7goiUEh7xf4XQMUVnGTwsSS/NrLC71nWSiO9OP1kPygtu3aSM
+ Zrtt2yPgGESRbWjbYvn+XS6RXQ==
+X-Google-Smtp-Source: AK7set+os+6sOsE+zsprZBKSjr+ThRclWO9o19IAbQIxp2TxI7kR8GLafiKjBEDmkkkinnfqSK1cUg==
+X-Received: by 2002:a17:903:41cc:b0:196:37a4:775b with SMTP id
+ u12-20020a17090341cc00b0019637a4775bmr3150345ple.33.1674704103788; 
+ Wed, 25 Jan 2023 19:35:03 -0800 (PST)
+Received: from [192.168.50.174] (rrcs-173-197-98-118.west.biz.rr.com.
+ [173.197.98.118]) by smtp.gmail.com with ESMTPSA id
+ g5-20020a1709026b4500b0018b025d9a40sm123259plt.256.2023.01.25.19.35.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Jan 2023 15:17:20 -0800 (PST)
-Message-ID: <f1cdb635-f02d-3ce0-1123-199293abef5a@linaro.org>
-Date: Thu, 26 Jan 2023 00:17:19 +0100
+ Wed, 25 Jan 2023 19:35:03 -0800 (PST)
+Message-ID: <f527ecff-7597-33f4-2909-1ebe7126447f@linaro.org>
+Date: Wed, 25 Jan 2023 17:34:57 -1000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH 4/4] hw/ppc/e500.c: Attach eSDHC unimplemented region to
- ccsr_addr_space
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH qemu 1/1] Remove a stray "@end table" marker
 Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-References: <20230125130024.158721-1-shentey@gmail.com>
- <20230125130024.158721-5-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230125130024.158721-5-shentey@gmail.com>
+To: ~gurjeet <gurjeet@singh.im>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost
+ <eduardo@habkost.net>, qemu-trivial <qemu-trivial@nongnu.org>
+References: <167470125128.13083.10933855577484761075-1@git.sr.ht>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <167470125128.13083.10933855577484761075-1@git.sr.ht>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,18 +84,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jan 2023 23:17:24 -0000
+X-List-Received-Date: Thu, 26 Jan 2023 03:35:08 -0000
 
-On 25/1/23 14:00, Bernhard Beschow wrote:
-> Makes the unimplemented region move together with the CCSR address space
-> if moved by a bootloader. Moving the CCSR address space isn't
-> implemented yet but this patch is a preparation for it.
+On 1/25/23 16:12, ~gurjeet wrote:
+> From: Gurjeet Singh <gurjeet@singh.im>
 > 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Signed-off-by: Gurjeet Singh <gurjeet@singh.im>
 > ---
->   hw/ppc/e500.c | 10 +++++++---
->   1 file changed, 7 insertions(+), 3 deletions(-)
+>   docs/system/cpu-models-x86.rst.inc | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/docs/system/cpu-models-x86.rst.inc b/docs/system/cpu-models-x86.rst.inc
+> index 7f6368f999..261da6e21d 100644
+> --- a/docs/system/cpu-models-x86.rst.inc
+> +++ b/docs/system/cpu-models-x86.rst.inc
+> @@ -25,7 +25,7 @@ Two ways to configure CPU models with QEMU / KVM
+>       typically refer to specific generations of hardware released by
+>       Intel and AMD.  These allow the guest VMs to have a degree of
+>       isolation from the host CPU, allowing greater flexibility in live
+> -    migrating between hosts with differing hardware.  @end table
+> +    migrating between hosts with differing hardware.
+>   
+>   In both cases, it is possible to optionally add or remove individual CPU
+>   features, to alter what is presented to the guest by default.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Cc: qemu-trivial.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
 
