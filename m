@@ -1,75 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pL4e0-00017h-4y
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Jan 2023 10:58:32 -0500
+	id 1pL5HI-00070A-Cu
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Jan 2023 11:39:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pL4dt-00016x-M1; Thu, 26 Jan 2023 10:58:26 -0500
-Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pL5HE-0006zM-JW; Thu, 26 Jan 2023 11:39:06 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pL4dq-0005JP-P0; Thu, 26 Jan 2023 10:58:24 -0500
-Received: by mail-oo1-xc33.google.com with SMTP id
- t14-20020a4ad0ae000000b004f51f61de9fso275400oor.13; 
- Thu, 26 Jan 2023 07:58:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pL5HC-00062L-8D; Thu, 26 Jan 2023 11:39:03 -0500
+Received: by mail-ej1-x635.google.com with SMTP id ss4so6539671ejb.11;
+ Thu, 26 Jan 2023 08:39:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=W7hCS+Ci7ofNY4mOh2zjmg8I55xxdF5g9xpkT+cgXF8=;
- b=CC1R4Rmlv1eg9ZDWkzrAsucyyIv/ZI8xPzQ/4tHWZ3NitElkwab9Gsb/ik2AeHiYQO
- SLsqXJabYd4v+YO1MI+YlgDHa/jbxohvxqXq11d4ngOb12xRJ42KHEts7cjrvDeFuhsc
- 6BOW4GUEm7vLWK+63/NVbbnTuOwqvbFJne0jSmEgrH4OB7N+c7BWJtAt8t/WFf4DlFgE
- fHUfimcGmBB0ZaabeTAieOBFEzqAWRfL7RQOoqeonEAwPC50yJP/0lRLl+SXoHxpJxQZ
- Fl6QqFT+CtcBjdqO7NZg4HrZupMyLfAUXo58b0C87ffVFwPzYaNX01E29VYofT1eMuQd
- d8xw==
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=/M+AwHoOb6Q/cbcuqucdNLzy+SDrxKDNkvEggvENf8M=;
+ b=QRUfcYE5S6lFRpdpsXIChdtMUZ4A2bg/horWHc1TCO+EPHqSgKSlLSG2XlvTPVKyCw
+ mO8viffwY72Vx9JDEig9t+AtalqdkKgQsSa+cztfN97kGhOECI4vglu0hRT5MXeUBu6g
+ +b0+xwc4eUvo3ldC7QHQq0+Fv/IT7wqQizaGD4/flppfrmpeU1RzAi6innf7d7dqhkK6
+ oQI7D+++O15C6/BOcQYZqAvwmiT0pCR17Am0bVoyiC78oiQQdVG/DAZ2yNN95bq1C9Mn
+ Wai+EPUh4d8d8FLLg71N/ECLrRiSxmW9H59OA4GkubMn7jyaOBniWwweMu0iwUxkCC9b
+ xv0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=W7hCS+Ci7ofNY4mOh2zjmg8I55xxdF5g9xpkT+cgXF8=;
- b=6SOwtgT8D6NGtNQSsC7JVsIH807JKiakdg//Piaiqq3BqDzmmaEjTs0mP0Hvbmv2Iq
- 2tgzOYmL1Qj/SLr979o3CmtIIlKAGGVD1ae3di+KSaGcZDzPf+TFM1i2ZZr3rXoTIQN+
- llSLDFsVHVMjgxIPCK5fyjvAiNkGnSha7DP6PSWRsWkdPyzbn9IfA+N8+zKLZtLLRlUW
- 5cMnwttgeXfITPf09uDTFu2LpsLN9nMrDrYGSAHLOOxYctmRnv3v9czRZBT0brtMd/yL
- DwBeLFnV28ZLOHkh+BVe4r9ESMdjh6Ls/V4m1kwlqTCAkJgs2WHKQEIMOVbWyUli79nR
- 8eDg==
-X-Gm-Message-State: AFqh2krZYFcyMAlXmgxWNgwbN3dOyQgEbiTgIFF9yylgI+SZgEWtq5Ot
- 4BTI9zmo+6CQsi/IHMENgdo=
-X-Google-Smtp-Source: AMrXdXs47m/ybA2nu22d7kF+pT4zXWtAwwh/oA5PHuauOmvntv7qplCdSa5hsIXukxdLOND8UwYwyg==
-X-Received: by 2002:a4a:e802:0:b0:4fb:cef6:5c9d with SMTP id
- b2-20020a4ae802000000b004fbcef65c9dmr13574447oob.9.1674748700949; 
- Thu, 26 Jan 2023 07:58:20 -0800 (PST)
-Received: from [192.168.68.107] (200-148-13-157.dsl.telesp.net.br.
- [200.148.13.157]) by smtp.gmail.com with ESMTPSA id
- d13-20020a4a520d000000b004f22e40ad6fsm693242oob.2.2023.01.26.07.58.19
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=/M+AwHoOb6Q/cbcuqucdNLzy+SDrxKDNkvEggvENf8M=;
+ b=o3rFefrvLsql9CkE9ceSBqUYSebWEsgQOP0dfdch/NGpSCN18+wjIFF7mdrkmIt2sW
+ sgGJshM1LH9VPUlgtv1Uz0c5mFQ//d35RW111ySjp1xvNuEkPpQAiGIgRIjoEHauRnUm
+ mxyKUBbAmIbKLsW0IkcTvfOCPffy2/llor4La9PyLhfXdDurorcqHrTPaNR9/e4rPvaW
+ JncJm0nPIjHr8KauepKv/fTKTrlu+jPv36ypJ5/d14P9MRgV42g1QOjgTfdXEEZHUxNp
+ 30bJuQIHe8tMJzgXBZPnXxXOK4f+hvMOviWz7N+LR+d50kV1CJJQjGvNHBudef1WeZGk
+ ONdQ==
+X-Gm-Message-State: AFqh2kqUfXiyLzmHDp5BgVGh9LBL4b4G7fZ3fFWlu2BZAPphkWhqbvoT
+ tW67tO8rr8J7wsunyFGbEDg=
+X-Google-Smtp-Source: AMrXdXvSLTcBzgozYyovCI9AByUcSwLQ51lcdAI3jw+v1E27RnwUgxBMNPOSrliR7b27G01SdrnLJQ==
+X-Received: by 2002:a17:907:c30c:b0:86e:a013:c269 with SMTP id
+ tl12-20020a170907c30c00b0086ea013c269mr44558289ejc.9.1674751139976; 
+ Thu, 26 Jan 2023 08:38:59 -0800 (PST)
+Received: from ?IPv6:::1?
+ (p200300faaf0bb2004c1ba1824932b7f6.dip0.t-ipconnect.de.
+ [2003:fa:af0b:b200:4c1b:a182:4932:b7f6])
+ by smtp.gmail.com with ESMTPSA id
+ bq21-20020a056402215500b0046c7c3755a7sm977500edb.17.2023.01.26.08.38.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 Jan 2023 07:58:20 -0800 (PST)
-Message-ID: <4c36b71c-15c4-1a84-a14d-c675bb7bd313@gmail.com>
-Date: Thu, 26 Jan 2023 12:58:18 -0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
+ Thu, 26 Jan 2023 08:38:59 -0800 (PST)
+Date: Thu, 26 Jan 2023 16:38:54 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+CC: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
 Subject: Re: [PATCH 1/4] hw/ppc: Set machine->fdt in e500 machines
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <4c36b71c-15c4-1a84-a14d-c675bb7bd313@gmail.com>
 References: <20230125130024.158721-1-shentey@gmail.com>
  <20230125130024.158721-2-shentey@gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20230125130024.158721-2-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c33;
- envelope-from=danielhb413@gmail.com; helo=mail-oo1-xc33.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-1.15,
+ <4c36b71c-15c4-1a84-a14d-c675bb7bd313@gmail.com>
+Message-ID: <A41F1D92-0A76-4DC7-8881-359632850441@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -84,75 +83,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Jan 2023 15:58:30 -0000
+X-List-Received-Date: Thu, 26 Jan 2023 16:39:07 -0000
 
 
 
-On 1/25/23 10:00, Bernhard Beschow wrote:
-> This enables support for the 'dumpdtb' QMP/HMP command for all
-> e500 machines.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/ppc/e500.c | 7 ++++++-
->   1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-> index 9fa1f8e6cf..7239993acc 100644
-> --- a/hw/ppc/e500.c
-> +++ b/hw/ppc/e500.c
-> @@ -659,9 +659,14 @@ done:
->       if (!dry_run) {
->           qemu_fdt_dumpdtb(fdt, fdt_size);
->           cpu_physical_memory_write(addr, fdt, fdt_size);
-> +
-> +        /* Set machine->fdt for 'dumpdtb' QMP/HMP command */
-> +        g_free(machine->fdt);
-> +        machine->fdt = fdt;
-> +    } else {
-> +        g_free(fdt);
->       }
->       ret = fdt_size;
-> -    g_free(fdt);
->   
+Am 26=2E Januar 2023 15:58:18 UTC schrieb Daniel Henrique Barboza <danielh=
+b413@gmail=2Ecom>:
+>
+>
+>On 1/25/23 10:00, Bernhard Beschow wrote:
+>> This enables support for the 'dumpdtb' QMP/HMP command for all
+>> e500 machines=2E
+>>=20
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>   hw/ppc/e500=2Ec | 7 ++++++-
+>>   1 file changed, 6 insertions(+), 1 deletion(-)
+>>=20
+>> diff --git a/hw/ppc/e500=2Ec b/hw/ppc/e500=2Ec
+>> index 9fa1f8e6cf=2E=2E7239993acc 100644
+>> --- a/hw/ppc/e500=2Ec
+>> +++ b/hw/ppc/e500=2Ec
+>> @@ -659,9 +659,14 @@ done:
+>>       if (!dry_run) {
+>>           qemu_fdt_dumpdtb(fdt, fdt_size);
+>>           cpu_physical_memory_write(addr, fdt, fdt_size);
+>> +
+>> +        /* Set machine->fdt for 'dumpdtb' QMP/HMP command */
+>> +        g_free(machine->fdt);
+>> +        machine->fdt =3D fdt;
+>> +    } else {
+>> +        g_free(fdt);
+>>       }
+>>       ret =3D fdt_size;
+>> -    g_free(fdt);
+>>  =20
+>
+>I tried to do this change last year when introducing 'dumpdtb' and Phil h=
+ad some
+>comments in how the FDT was being handled by the e500 board:
+>
+>https://lists=2Egnu=2Eorg/archive/html/qemu-devel/2022-09/msg03256=2Ehtml
+>
+>
+>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+>+
+>+    /*
+>+     * Update the machine->fdt pointer to enable support for the
+>+     * 'dumpdtb' QMP/HMP command=2E
+>+     *
+>+     * The FDT is re-created during reset,
+>
+>Why are we doing that? Is it really necessary? This seems to be only requ=
+ired at cold power-on=2E
 
-I tried to do this change last year when introducing 'dumpdtb' and Phil had some
-comments in how the FDT was being handled by the e500 board:
+The e500 boards have user-creatable eTSEC nics which are registered with t=
+he machine via the platform bus mechanism=2E IIUC this mechanism causes the=
+se nics to show up only after reset=2E The nics need to show up in the devi=
+ce tree, so the reset trigger was apparently chosen to create the fdt=2E
 
-https://lists.gnu.org/archive/html/qemu-devel/2022-09/msg03256.html
+N=2EB=2E: The size of the fdt needs to be known during machine_init to che=
+ck whether it fits into guest ram=2E That's what the dry_run parameter is f=
+or=2E
 
+Does that explanation help?
 
-================
+Best regards,
+Bernhard
 
-+
-+    /*
-+     * Update the machine->fdt pointer to enable support for the
-+     * 'dumpdtb' QMP/HMP command.
-+     *
-+     * The FDT is re-created during reset,
-
-Why are we doing that? Is it really necessary? This seems to be only required at cold power-on.
-
-+ so free machine->fdt
-+     * to avoid leaking the old FDT.
-+     */
-+    g_free(machine->fdt);
-+    machine->fdt = fdt;
-================
-
-I ended up not going after Phil's concern. I don't think it's required to accept
-this change, but it would simplify it a bit if the FDT isn't required to be
-re-generated on boot.
-
-
-I'm CCing Phil in case he wants to comment on it as well.
-
-
-
-
-Daniel
-
-
->   out:
->       g_free(pci_map);
+>
+>+ so free machine->fdt
+>+     * to avoid leaking the old FDT=2E
+>+     */
+>+    g_free(machine->fdt);
+>+    machine->fdt =3D fdt;
+>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+>I ended up not going after Phil's concern=2E I don't think it's required =
+to accept
+>this change, but it would simplify it a bit if the FDT isn't required to =
+be
+>re-generated on boot=2E
+>
+>
+>I'm CCing Phil in case he wants to comment on it as well=2E
+>
+>
+>
+>
+>Daniel
+>
+>
+>>   out:
+>>       g_free(pci_map);
 
