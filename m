@@ -1,52 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pLM04-0008MR-7w
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2023 05:30:29 -0500
+	id 1pLNXr-0001lo-I5
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2023 07:09:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pLM02-0008Lw-5j
- for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 05:30:27 -0500
+ (Exim 4.90_1) (envelope-from <smitterl@redhat.com>)
+ id 1pLNXm-0001lD-U2
+ for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 07:09:25 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pLM00-0007hN-Hm
- for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 05:30:25 -0500
+ (Exim 4.90_1) (envelope-from <smitterl@redhat.com>)
+ id 1pLNXl-0005Ah-Ar
+ for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 07:09:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674815423;
+ s=mimecast20190719; t=1674821359;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=qAJjxH4056mS2hC4Dl+naq125voeuwyxSHx/fFJ1a1U=;
- b=CCJ5yzBAk+EEI52bLefYS3Ex9lpihI+O+lUMYsS41MaG96CjZ+qki+ZY4RJJ4DEbhBhL5t
- tRcjDPJJJquz/kgPc8lpK4ZXxSBZmBQoCV69kp4UT9k2KmacEDiVmpLb1BXSrFgnnND41+
- JaK3AELbfLcmVyo23Hke7f+8rLT4qEc=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-125-yAe9yX9xPLS11QAihDp9Og-1; Fri, 27 Jan 2023 05:30:18 -0500
-X-MC-Unique: yAe9yX9xPLS11QAihDp9Og-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AA413280BCBB;
- Fri, 27 Jan 2023 10:30:16 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.2])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 104C114171C0;
- Fri, 27 Jan 2023 10:30:15 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Sebastian Mitterle <smitterl@redhat.com>, qemu-devel@nongnu.org
-Cc: thuth@redhat.com, clegoate@redhat.com, qemu-trivial@nongnu.org,
- qemu-s390x@nongnu.org
-Subject: Re: [PATCH v2] docs/s390x/pcidevices: document pci devices on s390x
-In-Reply-To: <20230127084604.53175-1-smitterl@redhat.com>
-Organization: Red Hat GmbH
-References: <20230127084604.53175-1-smitterl@redhat.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Fri, 27 Jan 2023 11:30:13 +0100
-Message-ID: <87h6wcuv62.fsf@redhat.com>
+ bh=oN4tyfQtB+VIjrVxVFLEiOZrPcbl5758PCnNZ1GxC64=;
+ b=PWPdIN1s+whpqMaFWrsQIKBpt0Vtk9t20r3vRK81XVtZ4MpezZSIvSIJUkglXntNggXyuG
+ xT9/RUgw7FcpraeDa/QgfTAU9WIe9EJCgRr9m7LnWGufwU64/bcn9w0VGStsYrteZXeTJL
+ 2YOfc9Y6ou+yrfJOlrjlx1ZL1upGtPE=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-341-g2DasfrfMN-hms8DY_VkkA-1; Fri, 27 Jan 2023 07:09:15 -0500
+X-MC-Unique: g2DasfrfMN-hms8DY_VkkA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ m10-20020a05600c3b0a00b003dafe7451deso2682532wms.4
+ for <qemu-trivial@nongnu.org>; Fri, 27 Jan 2023 04:09:15 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oN4tyfQtB+VIjrVxVFLEiOZrPcbl5758PCnNZ1GxC64=;
+ b=R29tPcJG967Sk5J22T4+mN00fnRBLwaiUVRGmkHn1TdXdUoyCEIyBJGm0HM8Og3PSx
+ 0aL0P9DcGOlDIjU7R1mvM8vlijjmh5R0zMBRr4Iu5Uq4zc/pTgocGcHxxjhRqxMUaQYB
+ 14dQAFe/vsH37+BPn4W+xpqFBDUP6R0aQ82/0LAoyUGhtbdExX7OmXkTUCJs3kUm6qRH
+ fqfi1bHBEvyBu/xTGxxuzeb32HTji4D+IYZzEHS5CKTsM0k+JhFm7KD6QAFIF8yDeOoo
+ 3i1sY57+Ax3xDczyOmlrishb3jujRQOMb/OaTPzhoj7/vgAwVoi7vVN6yrRkHo56+2aN
+ K/xw==
+X-Gm-Message-State: AFqh2kowbWybLDzKn30UdzuZjc0LcB9p4YYKckyKOZDFyb+ohzMODYd+
+ p6oM0yJcMT/2zkz3FeTwVPCa8Qw3aetpyjFj6mE/GejGJ66xauAtF9zLyr4XHdfwRxVfDKKcAHq
+ F1BqRHzIe6Zlnasam+mnMPoV2ziCFaddw2g==
+X-Received: by 2002:a7b:ce8f:0:b0:3d9:e033:e2ee with SMTP id
+ q15-20020a7bce8f000000b003d9e033e2eemr2200897wmj.117.1674821354747; 
+ Fri, 27 Jan 2023 04:09:14 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvTj9z88Zzv3k4g/NfuH0NJUUgwEuzscGt8rgm5qXRuwsz18kZ2IoboRecZ+PYR1a/RDf0WJGYQOBMCxRnjGSI=
+X-Received: by 2002:a7b:ce8f:0:b0:3d9:e033:e2ee with SMTP id
+ q15-20020a7bce8f000000b003d9e033e2eemr2200892wmj.117.1674821354398; Fri, 27
+ Jan 2023 04:09:14 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+References: <20230127084604.53175-1-smitterl@redhat.com>
+ <46642f8f-d514-798b-1e4e-bc337a206c38@redhat.com>
+In-Reply-To: <46642f8f-d514-798b-1e4e-bc337a206c38@redhat.com>
+From: Sebastian Mitterle <smitterl@redhat.com>
+Date: Fri, 27 Jan 2023 13:08:38 +0100
+Message-ID: <CAKgrZ6+=kPizSUh=0Bq3PRgbjLGGkeSGbUbgLhsREbqKtMa6uw@mail.gmail.com>
+Subject: Re: [PATCH v2] docs/s390x/pcidevices: document pci devices on s390x
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, cohuck@redhat.com, clegoate@redhat.com, 
+ qemu-trivial@nongnu.org, qemu-s390x@nongnu.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=smitterl@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -67,90 +85,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jan 2023 10:30:27 -0000
+X-List-Received-Date: Fri, 27 Jan 2023 12:09:26 -0000
 
-On Fri, Jan 27 2023, Sebastian Mitterle <smitterl@redhat.com> wrote:
-
-> Add some documentation about the zpci device and how
-> to use it with pci devices on s390x.
+On Fri, Jan 27, 2023 at 10:24 AM Thomas Huth <thuth@redhat.com> wrote:
 >
-> Used source: Cornelia Huck's blog post
-> https://people.redhat.com/~cohuck/2018/02/19/notes-on-pci-on-s390x.html
+> On 27/01/2023 09.46, Sebastian Mitterle wrote:
+> > Add some documentation about the zpci device and how
+> > to use it with pci devices on s390x.
 >
-> Signed-off-by: Sebastian Mitterle <smitterl@redhat.com>
-> ---
-> v2: move section below 'Device support'
-> ---
->  docs/system/s390x/pcidevices.rst | 34 ++++++++++++++++++++++++++++++++
->  docs/system/target-s390x.rst     |  1 +
->  2 files changed, 35 insertions(+)
->  create mode 100644 docs/system/s390x/pcidevices.rst
+> Thanks for tackling this! ... some comments below...
 >
-> diff --git a/docs/system/s390x/pcidevices.rst b/docs/system/s390x/pcidevices.rst
-> new file mode 100644
-> index 0000000000..fec905d6e6
-> --- /dev/null
-> +++ b/docs/system/s390x/pcidevices.rst
-> @@ -0,0 +1,34 @@
-> +PCI devices on s390x
-> +====================
-> +
-> +PCI devices on s390x work differently than on other architectures.
-
-add "and need to be configured in a slightly different way." ?
-
-> +
-> +To start with, using a PCI device requires the additional ``zpci`` device. For example,
-
-I think the "zpci" device is not technically "required" (ISTR that we
-autogenerate it, if needed); however, you need it if you actually want
-to specify uid/fid/... what about:
-
-"Every PCI device is linked with an additional ``zpci`` device. While
-the ``zpci`` device will be autogenerated if not specified, it is
-recommended to specify it explicitly so that you can pass s390-specific
-PCI configuration."
-
-?
-
-> +in order to pass a PCI device ``0000:00:00.0`` through you'd specify::
-> +
-> + qemu-system-s390x ... \
-> +                   -device zpci,uid=1,fid=0,target=hostdev0,id=zpci1 \
-> +                   -device vfio-pci,host=0000:00:00.0,id=hostdev0
-> +
-> +Here, the zpci device is joined with the PCI device via the ``target`` property.
-> +
-> +Note that we don't set bus, slot or function here for the guest as is common in other
-> +PCI implementations. Topology information is not available on s390x. Instead, ``uid``
-
-"Topology information is not available on s390x, and the guest will not
-see any of the bus/slot/function information specified on the command
-line."
-
-?
-
-> +and ``fid`` determine how the device is presented to the guest operating system.
-> +
-> +In case of Linux, ``uid`` will be used in the ``domain`` part of the PCI identifier, and
-> +``fid`` identifies the physical slot, i.e.::
-> +
-> + qemu-system-s390x ... \
-> +                   -device zpci,uid=7,fid=8,target=hostdev0,id=zpci1 \
-> +                   ...
-> +
-> +will be presented in the guest as::
-> +
-> + # lspci -v
-> + 0007:00:00.0 ...
-> + Physical Slot: 00000008
-> + ...
-> +
-> +Finally, note that you might have to enable the ``zpci`` feature in the cpu model in oder to use
-> +it.
-
-I'm wondering what the current state of that feature is -- is it present
-by default in the newer named models? (My original blog entry was
-written nearly five years ago ;)
+> > Used source: Cornelia Huck's blog post
+> > https://people.redhat.com/~cohuck/2018/02/19/notes-on-pci-on-s390x.html
+> >
+> > Signed-off-by: Sebastian Mitterle <smitterl@redhat.com>
+> > ---
+> > v2: move section below 'Device support'
+> > ---
+> >   docs/system/s390x/pcidevices.rst | 34 ++++++++++++++++++++++++++++++++
+> >   docs/system/target-s390x.rst     |  1 +
+> >   2 files changed, 35 insertions(+)
+> >   create mode 100644 docs/system/s390x/pcidevices.rst
+> >
+> > diff --git a/docs/system/s390x/pcidevices.rst b/docs/system/s390x/pcidevices.rst
+> > new file mode 100644
+> > index 0000000000..fec905d6e6
+> > --- /dev/null
+> > +++ b/docs/system/s390x/pcidevices.rst
+> > @@ -0,0 +1,34 @@
+> > +PCI devices on s390x
+> > +====================
+> > +
+> > +PCI devices on s390x work differently than on other architectures.
+> > +
+> > +To start with, using a PCI device requires the additional ``zpci`` device. For example,
+>
+> Please wrap lines at 80 columns (if possible)
+>
+> > +in order to pass a PCI device ``0000:00:00.0`` through you'd specify::
+>
+> I'd suggest to be more explicit here:
+>
+> in order to pass a host PCI device ``0000:00:00.0`` through to the guest,
+> you would specify::
+>
+> > + qemu-system-s390x ... \
+> > +                   -device zpci,uid=1,fid=0,target=hostdev0,id=zpci1 \
+> > +                   -device vfio-pci,host=0000:00:00.0,id=hostdev0
+> > +
+> > +Here, the zpci device is joined with the PCI device via the ``target`` property.
+> > +
+> > +Note that we don't set bus, slot or function here for the guest as is common in other
+>
+> "as *it* is common" ?
+>
+I checked linguee.com and it seems to me it's correct to omit the 'it' here.
+> > +PCI implementations. Topology information is not available on s390x. Instead, ``uid``
+> > +and ``fid`` determine how the device is presented to the guest operating system.
+> > +
+> > +In case of Linux, ``uid`` will be used in the ``domain`` part of the PCI identifier, and
+> > +``fid`` identifies the physical slot, i.e.::
+> > +
+> > + qemu-system-s390x ... \
+> > +                   -device zpci,uid=7,fid=8,target=hostdev0,id=zpci1 \
+> > +                   ...
+> > +
+> > +will be presented in the guest as::
+> > +
+> > + # lspci -v
+> > + 0007:00:00.0 ...
+> > + Physical Slot: 00000008
+> > + ...
+> > +
+> > +Finally, note that you might have to enable the ``zpci`` feature in the cpu model in oder to use
+>
+> s/oder/order/
+>
+> (and it's a very long line again, please wrap at 80 columns)
+>
+> > +it.
+>
+> Should we also add some information about virtio devices? (can also be added
+> later, not necessarily in your patch already)
+>
+I don't have experience with virtio pci devices on s390x. Therefore I
+prefer not to add this information this time.
+>   Thomas
+>
 
 
