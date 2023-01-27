@@ -1,77 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pLKy0-0001dC-UL
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2023 04:24:21 -0500
+	id 1pLKyi-0001nT-I0
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2023 04:25:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pLKxy-0001cp-Ig
- for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 04:24:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
+ id 1pLKyh-0001n2-PB
+ for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 04:24:59 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pLKxw-0003oX-UL
- for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 04:24:14 -0500
+ (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
+ id 1pLKye-0004cU-VN
+ for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 04:24:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1674811452;
+ s=mimecast20190719; t=1674811495;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IZpBPAmNs37lFbHisocXNi1mrCynDUloBAOaoI6PFLc=;
- b=gotLkDJB1GP2lRamXu1uVm/1YWBmHcuptzBinU2I56k9MlxHdO9oZ11SM4dHC1kmnNM8h8
- HzAIvxeEuHKPKvXro9/0eOzYfD3ueuPC8uz6w9Q30gWF9/pzZH+lnZHvK+aR8SD6QMnjeH
- qww8qNpZhTSc4q3puLXIIbnFl7jwi7c=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=L3BaXnZwSRYami6lWXFihpFr1wdXWA1/2+waWSKM4oA=;
+ b=F11+WUDF5dqpW6B14F2f7tL3QDsgte30EDyQeMMABTNqeWrr1tIndpm2dy6thaPRTStI9S
+ WrUpcZKAYHG2eeiPOnNkVqwFuoRZ6cq3raWFh5JZ850uGeGlaX+0yrl6sbOGsFclWDvBLM
+ +T1uAGHk9l313nWjd5sZHyisGABCbSg=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-636-34oRdjBZNKelpsTS8IqtPQ-1; Fri, 27 Jan 2023 04:24:09 -0500
-X-MC-Unique: 34oRdjBZNKelpsTS8IqtPQ-1
-Received: by mail-qv1-f72.google.com with SMTP id
- kr11-20020a0562142b8b00b005355b472a65so2520863qvb.7
- for <qemu-trivial@nongnu.org>; Fri, 27 Jan 2023 01:24:09 -0800 (PST)
+ us-mta-21-e6g5qaAOMayvKK66wZxGtg-1; Fri, 27 Jan 2023 04:24:54 -0500
+X-MC-Unique: e6g5qaAOMayvKK66wZxGtg-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ bm30-20020a05620a199e00b007090f3c5ec0so2679635qkb.21
+ for <qemu-trivial@nongnu.org>; Fri, 27 Jan 2023 01:24:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
- :content-language:user-agent:mime-version:date:message-id
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=IZpBPAmNs37lFbHisocXNi1mrCynDUloBAOaoI6PFLc=;
- b=LoU2AkBiApS4fJaDy7P0IlPwnToHijZYwC4Z5eGpoNMsErqhgr+oylZeLPrY0vz/dv
- GT40pTp48TypYu5lRlraFrfhFMU4nghpIE1U3xAtts0dKKdVTOHO0RCXwLTv37AD1Lr3
- pWC/ieeDo4ZSYRCl4vi9JPvaQ3RqmGHenoZrkwXWgwmGIcuAU6awYyOfuDmu1bNTnAiQ
- UNoywj1uRbCy+Yg0o+RZ6zuo1KIZzGOd+RLnFvcW1fFrdnnxHbmuiXL2gMu6RYNVEPPO
- 41mrBZC+sDXsZAbaQe7kKQbtXhu2U/Yh57ZfP7oTTmpfOslB/OG8P23Gg0PEs4drRY5h
- zIpg==
-X-Gm-Message-State: AO0yUKUVbVEs7JqNGO8Nipfw5G1HnCkVain38nk3M066sm9ZecT1Ivtx
- dTG0mcKJlRzJkEMPA70BUQ3DGdsV+8mKEYwMqEj++tPAmORNrGdPGQ7p6vTBTXChEf3G1AyX6u2
- Ffg1Q+EO6QWAsXZth2g==
-X-Received: by 2002:ad4:44b3:0:b0:537:7ca2:6087 with SMTP id
- n19-20020ad444b3000000b005377ca26087mr8908634qvt.49.1674811448743; 
- Fri, 27 Jan 2023 01:24:08 -0800 (PST)
-X-Google-Smtp-Source: AK7set9TPW4lG4Wen8dK58SkhRmIDsfYsy4RCDoOpKwkayWlk5fA125Bjz7pg+kUI0yEfuLPNKAqog==
-X-Received: by 2002:ad4:44b3:0:b0:537:7ca2:6087 with SMTP id
- n19-20020ad444b3000000b005377ca26087mr8908617qvt.49.1674811448536; 
- Fri, 27 Jan 2023 01:24:08 -0800 (PST)
-Received: from [192.168.0.2] (ip-109-43-177-44.web.vodafone.de.
- [109.43.177.44]) by smtp.gmail.com with ESMTPSA id
- x64-20020a379543000000b007090f7a4f2asm2087621qkd.82.2023.01.27.01.24.06
+ bh=L3BaXnZwSRYami6lWXFihpFr1wdXWA1/2+waWSKM4oA=;
+ b=GRartH9qSV09CrMv3WG9rLG8jR5ZoeYPVFUm7W4P3aGWdUMC8pmyLiRRPcD7FIlQzm
+ 7fATYudvscND4R0fzZXlasjYMRXt7J6J3uXp/892IusRkiZirE9UXuhEYnjfVAkG+PGS
+ HUzQm1hEWZ0n68qyVxCmvmShPazC1w4nHkIeR0Vjy7e0MpDVk6sNJHvl+qepZNCRSove
+ zLvdxRUkSISRhxWqxGG0uHMuVNGH6cquvwopPCAUen3U0yZK9XoAYJ8M58dKsMkEJyPs
+ wzRkqYzpv0MYQzi3V1zUXCiA+RhQkYlogjcNGmv1MGwcbZHDr3yGFbMM4xZw5v7tFVep
+ Fttg==
+X-Gm-Message-State: AFqh2kr0rDQyJy9K1Ce+7maQFJvnx/sGLdZ8fkSvNRgzyAcAq63Oq7rE
+ OYZVI2Pi3ONuyhkFTHdTHccjQ4Yfxz2TaTu+eaG+UZ10xdgUXWNXMP4DhSE1hoFpyaggwvMYkg5
+ vj9gBkFNpXz1qLcgeWw==
+X-Received: by 2002:a05:622a:22a6:b0:39c:da20:f7af with SMTP id
+ ay38-20020a05622a22a600b0039cda20f7afmr57708475qtb.12.1674811494057; 
+ Fri, 27 Jan 2023 01:24:54 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvSQ88y1d32wqprPAjGmYZH4lrRJbdO3L6AlhQgTbMwKY0juVJqlaoA6fHzmGJ7e+iC/iPgtQ==
+X-Received: by 2002:a05:622a:22a6:b0:39c:da20:f7af with SMTP id
+ ay38-20020a05622a22a600b0039cda20f7afmr57708462qtb.12.1674811493755; 
+ Fri, 27 Jan 2023 01:24:53 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
+ ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
+ by smtp.gmail.com with ESMTPSA id
+ p25-20020a05620a22b900b00706c1f7a608sm274094qkh.89.2023.01.27.01.24.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Jan 2023 01:24:07 -0800 (PST)
-Message-ID: <46642f8f-d514-798b-1e4e-bc337a206c38@redhat.com>
-Date: Fri, 27 Jan 2023 10:24:05 +0100
+ Fri, 27 Jan 2023 01:24:53 -0800 (PST)
+Message-ID: <7fdfe6af-cb74-a29c-67bd-bfa0480397c0@redhat.com>
+Date: Fri, 27 Jan 2023 10:24:51 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v2] docs/s390x/pcidevices: document pci devices on s390x
 To: Sebastian Mitterle <smitterl@redhat.com>, qemu-devel@nongnu.org
-Cc: cohuck@redhat.com, clegoate@redhat.com, qemu-trivial@nongnu.org,
+Cc: thuth@redhat.com, cohuck@redhat.com, qemu-trivial@nongnu.org,
  qemu-s390x@nongnu.org
 References: <20230127084604.53175-1-smitterl@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v2] docs/s390x/pcidevices: document pci devices on s390x
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clegoate@redhat.com>
 In-Reply-To: <20230127084604.53175-1-smitterl@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clegoate@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -32
 X-Spam_score: -3.3
@@ -79,7 +82,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-1.15, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,18 +95,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jan 2023 09:24:15 -0000
+X-List-Received-Date: Fri, 27 Jan 2023 09:25:00 -0000
 
-On 27/01/2023 09.46, Sebastian Mitterle wrote:
+On 1/27/23 09:46, Sebastian Mitterle wrote:
 > Add some documentation about the zpci device and how
 > to use it with pci devices on s390x.
-
-Thanks for tackling this! ... some comments below...
-
+> 
 > Used source: Cornelia Huck's blog post
 > https://people.redhat.com/~cohuck/2018/02/19/notes-on-pci-on-s390x.html
 > 
 > Signed-off-by: Sebastian Mitterle <smitterl@redhat.com>
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
 > ---
 > v2: move section below 'Device support'
 > ---
@@ -124,16 +134,8 @@ Thanks for tackling this! ... some comments below...
 > +PCI devices on s390x work differently than on other architectures.
 > +
 > +To start with, using a PCI device requires the additional ``zpci`` device. For example,
-
-Please wrap lines at 80 columns (if possible)
-
 > +in order to pass a PCI device ``0000:00:00.0`` through you'd specify::
-
-I'd suggest to be more explicit here:
-
-in order to pass a host PCI device ``0000:00:00.0`` through to the guest, 
-you would specify::
-
+> +
 > + qemu-system-s390x ... \
 > +                   -device zpci,uid=1,fid=0,target=hostdev0,id=zpci1 \
 > +                   -device vfio-pci,host=0000:00:00.0,id=hostdev0
@@ -141,9 +143,6 @@ you would specify::
 > +Here, the zpci device is joined with the PCI device via the ``target`` property.
 > +
 > +Note that we don't set bus, slot or function here for the guest as is common in other
-
-"as *it* is common" ?
-
 > +PCI implementations. Topology information is not available on s390x. Instead, ``uid``
 > +and ``fid`` determine how the device is presented to the guest operating system.
 > +
@@ -162,16 +161,18 @@ you would specify::
 > + ...
 > +
 > +Finally, note that you might have to enable the ``zpci`` feature in the cpu model in oder to use
-
-s/oder/order/
-
-(and it's a very long line again, please wrap at 80 columns)
-
 > +it.
-
-Should we also add some information about virtio devices? (can also be added 
-later, not necessarily in your patch already)
-
-  Thomas
+> diff --git a/docs/system/target-s390x.rst b/docs/system/target-s390x.rst
+> index c636f64113..f6f11433c7 100644
+> --- a/docs/system/target-s390x.rst
+> +++ b/docs/system/target-s390x.rst
+> @@ -26,6 +26,7 @@ or vfio-ap is also available.
+>      s390x/css
+>      s390x/3270
+>      s390x/vfio-ccw
+> +   s390x/pcidevices
+>   
+>   Architectural features
+>   ======================
 
 
