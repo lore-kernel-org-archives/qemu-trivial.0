@@ -1,79 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pLYas-0008IE-9c
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jan 2023 18:57:18 -0500
+	id 1pLuhV-0003r9-TX
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Jan 2023 18:33:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pLYar-0008Hw-Eq
- for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 18:57:17 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1pLuhT-0003pu-EQ; Sat, 28 Jan 2023 18:33:35 -0500
+Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pLYap-00083K-OD
- for qemu-trivial@nongnu.org; Fri, 27 Jan 2023 18:57:17 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- q10-20020a1cf30a000000b003db0edfdb74so6157558wmq.1
- for <qemu-trivial@nongnu.org>; Fri, 27 Jan 2023 15:57:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1pLuhR-0003tu-VT; Sat, 28 Jan 2023 18:33:35 -0500
+Received: by mail-oa1-x36.google.com with SMTP id
+ 586e51a60fabf-15085b8a2f7so10992933fac.2; 
+ Sat, 28 Jan 2023 15:33:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=83C/sqLpYcRoe72UESTSQaaVCL+73bpf4QRcam6XkOQ=;
- b=KsUF4JL9cfOoJtRyznvNR/BwaPQD7NpThV9G5oCpMmQ14t+0dU95I0IO8bOWUH4ArQ
- boN2ct+k+O39oW9PF0tjs6rSRtDGbOIGu4QJvk7Iqmz9kSTblMBSvbSkcpqFGhq1yg6Y
- 27WMuEjSGgRSPVcgfz6fH5LVZtwFSUQgx2hA7QAqwn8IjnT1cwZDLMoRXg4QIJsuhik0
- IVP2lq+OKg2UqCxALQqHNNsl+PdfDzh3CcV5s6h+ISZ6NDiZDmuPmoS8xRZuNMhnt567
- oPMXOIaC6EWp0q5Q7XfHSFyn3xU+pxCVUGtBzMkAQB4zIcJ+i87QcwLl4ijwM94suV5d
- xiUg==
+ bh=ZZe4VNlZtLr75fg+qhbbujaZ6qov/K5CAC/7EM1uyfc=;
+ b=BY4Mk1ind3fS+gCI3+prf0cpCLsNbkwyRdFg5E1pPhMpWPrUrRre/sr60UkOkZ6Apk
+ WWqocPzvBFnSr4ln5JzHcz6KIvifpqVDRrhFatXE00wRWsAReYCPcx4S3FA4Ng4Ft4p8
+ yHzozwgyXEKcJiBRHHf8dLpGIsCUGXdQB0k1H5YZBiN0nqmVL9GGWQKHqz8BFAcfwoQs
+ 3dp/wJzfAWpJSlcZfQ/t7eN6BdWXpT3YzsyXYCmv7oYVZYq/n0OUy4odG1SIpoUUgzCz
+ tkd59HxHx9Q7945FPk9UJJK0L0W88dXmDQ86m+o4wsZcB9ss895uJqsFxPtg4rKkZ2cY
+ vBKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=83C/sqLpYcRoe72UESTSQaaVCL+73bpf4QRcam6XkOQ=;
- b=mzraqvnkZSVq8kTONElnvClnEndSGLXg50rIz68+1hgGFB3KtQwZjhhUgdTSypIBeP
- AtCLZFOWJ1tIfHB2DTSN4mdSLc2YYWFQqz5l+jlVf1n9otFDdBifcR81mnq+XMeMaos2
- OR4boL73hs6D6rtcqFwzdBg63dsLdqweJXxZEKQ1O0IijH/av7PEMbpjuNpSmMh2i/FU
- n7MPgy0wAyUmevHRwmJB3NHvWyac2udlLDAjH9ANU7kJ3RnmEs73Eb9k1YxQIts/MMXA
- Tu+8ySCfTvyoRLJcto3/fmaajglf4PWHB4yLx2+HL7wW5V49mq7hUJU66MFUAxt5JUZ7
- i8qA==
-X-Gm-Message-State: AFqh2kpYsETnbs8w/pJtkRGVOqfLVARSnQ0+PyGKOQEen3vG9+Y7xVeW
- XsUQMXB2DRVmfUVHsirNGbDBaQ==
-X-Google-Smtp-Source: AMrXdXtwL+SC1CEsaB+gZBcbt+ILUbPRKm89eURC+M+uo7XJxNmJawyVIaj/H+xHnHamksdM/k6fzg==
-X-Received: by 2002:a05:600c:5025:b0:3db:14dc:8cff with SMTP id
- n37-20020a05600c502500b003db14dc8cffmr37244799wmr.33.1674863834222; 
- Fri, 27 Jan 2023 15:57:14 -0800 (PST)
-Received: from [192.168.0.114] ([196.77.14.77])
- by smtp.gmail.com with ESMTPSA id
- bi5-20020a05600c3d8500b003db0bb81b6asm5975351wmb.1.2023.01.27.15.57.12
+ bh=ZZe4VNlZtLr75fg+qhbbujaZ6qov/K5CAC/7EM1uyfc=;
+ b=nWj71oRzlEk1iDF7+vR7RYO9VomFBCGYbHEZDNNQjlIfzdMWrzZ6wRHrPpUqWsFQEE
+ V9M0KIxuSBNIvh5HTWypZFKwWe3tcPmL3hH4I2IYp/YVi/nsoLuh8O5QjSjlR+9OpoB8
+ OyVpThqQInsg6WrbskxPwKHDjtQBLr/vRkHsTL63zbMHxTKJSkb1ZlUwqst4bTd0jAHf
+ 4LHocUm2pBI07RqnlFjIzC9AAK5l/5aelpRwYANxqz5XvxN6j+MHbn5a1spTTA0pknCT
+ KH3HWxG73Qo3YINVgzu3QzD8pDAUMWTN3bSpH4ICLrOD+zr1T45lwMHzujSwNQWSITll
+ GAyw==
+X-Gm-Message-State: AO0yUKVzC3IKQSRHrG6JGMEsoKlmS5T3UWH+Fc/8OLSY+3Be6pYX4zkz
+ uteGLjpErBmoj4EAB8613j0Nkkrl+xE=
+X-Google-Smtp-Source: AK7set/03+wUCwdyloCdqTXqRslHAsh3/mZbDzITJQqq+gqd+HobNkoLh9jK/gFvx5ULBPwGRv6KEA==
+X-Received: by 2002:a05:6870:17a5:b0:144:57b1:c8cf with SMTP id
+ r37-20020a05687017a500b0014457b1c8cfmr1557046oae.47.1674948812062; 
+ Sat, 28 Jan 2023 15:33:32 -0800 (PST)
+Received: from [192.168.68.107] (200-148-13-157.dsl.telesp.net.br.
+ [200.148.13.157]) by smtp.gmail.com with ESMTPSA id
+ j26-20020a4ad2da000000b00517425df590sm1298544oos.14.2023.01.28.15.33.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Jan 2023 15:57:13 -0800 (PST)
-Message-ID: <cd7b2036-b203-5cd7-4efe-281dfaa0c186@linaro.org>
-Date: Sat, 28 Jan 2023 00:57:12 +0100
+ Sat, 28 Jan 2023 15:33:31 -0800 (PST)
+Message-ID: <808dc3a5-eb7f-0331-99c1-d6cdbeb81cf7@gmail.com>
+Date: Sat, 28 Jan 2023 20:33:29 -0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH 7/7] hw/i386/pc: Initialize ram_memory variable directly
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH 0/4] E500 cleanups and enhancements
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini
- <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
-References: <20230127164718.98156-1-shentey@gmail.com>
- <20230127164718.98156-8-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230127164718.98156-8-shentey@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
+References: <20230125130024.158721-1-shentey@gmail.com>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20230125130024.158721-1-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::36;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x36.google.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-1.148,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,99 +82,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jan 2023 23:57:17 -0000
+X-List-Received-Date: Sat, 28 Jan 2023 23:33:35 -0000
 
-On 27/1/23 17:47, Bernhard Beschow wrote:
-> Going through pc_memory_init() seems quite complicated for a simple
-> assignment.
+
+
+On 1/25/23 10:00, Bernhard Beschow wrote:
+> This series includes some cleanups I came across when working on the ppce500
+> machine. Furthermore, it enables support for the 'dumpdtb' QMP/HMP command
+> which was missing so far.
 > 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Bernhard Beschow (4):
+>    hw/ppc: Set machine->fdt in e500 machines
+>    hw/ppc/e500{,plat}: Drop redundant checks for presence of platform bus
+>    hw/ppc/e500.c: Avoid hardcoding parent device in
+>      create_devtree_etsec()
+>    hw/ppc/e500.c: Attach eSDHC unimplemented region to ccsr_addr_space
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-> ---
->   include/hw/i386/pc.h | 1 -
->   hw/i386/pc.c         | 2 --
->   hw/i386/pc_piix.c    | 4 ++--
->   hw/i386/pc_q35.c     | 5 ++---
->   4 files changed, 4 insertions(+), 8 deletions(-)
+And queued in gitlab.com/danielhb/qemu/tree/ppc-next. Thanks,
+
+
+Daniel
+
 > 
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 88a120bc23..5331b9a5c5 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -163,7 +163,6 @@ void xen_load_linux(PCMachineState *pcms);
->   void pc_memory_init(PCMachineState *pcms,
->                       MemoryRegion *system_memory,
->                       MemoryRegion *rom_memory,
-> -                    MemoryRegion **ram_memory,
->                       uint64_t pci_hole64_size);
->   uint64_t pc_pci_hole64_start(void);
->   DeviceState *pc_vga_init(ISABus *isa_bus, PCIBus *pci_bus);
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 6e592bd969..8898cc9961 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -936,7 +936,6 @@ static hwaddr pc_max_used_gpa(PCMachineState *pcms, uint64_t pci_hole64_size)
->   void pc_memory_init(PCMachineState *pcms,
->                       MemoryRegion *system_memory,
->                       MemoryRegion *rom_memory,
-> -                    MemoryRegion **ram_memory,
->                       uint64_t pci_hole64_size)
->   {
->       int linux_boot, i;
-> @@ -994,7 +993,6 @@ void pc_memory_init(PCMachineState *pcms,
->        * Split single memory region and use aliases to address portions of it,
->        * done for backwards compatibility with older qemus.
->        */
-> -    *ram_memory = machine->ram;
->       ram_below_4g = g_malloc(sizeof(*ram_below_4g));
->       memory_region_init_alias(ram_below_4g, NULL, "ram-below-4g", machine->ram,
->                                0, x86ms->below_4g_mem_size);
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 5bde4533cc..00ba725656 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -143,6 +143,7 @@ static void pc_init1(MachineState *machine,
->       if (xen_enabled()) {
->           xen_hvm_init_pc(pcms, &ram_memory);
->       } else {
-> +        ram_memory = machine->ram;
->           if (!pcms->max_ram_below_4g) {
->               pcms->max_ram_below_4g = 0xe0000000; /* default: 3.5G */
->           }
-> @@ -205,8 +206,7 @@ static void pc_init1(MachineState *machine,
->   
->       /* allocate ram and load rom/bios */
->       if (!xen_enabled()) {
-> -        pc_memory_init(pcms, system_memory,
-> -                       rom_memory, &ram_memory, hole64_size);
-> +        pc_memory_init(pcms, system_memory, rom_memory, hole64_size);
->       } else {
->           pc_system_flash_cleanup_unused(pcms);
->           if (machine->kernel_filename != NULL) {
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index b97979bebb..8559924eb4 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -128,7 +128,7 @@ static void pc_q35_init(MachineState *machine)
->       MemoryRegion *system_io = get_system_io();
->       MemoryRegion *pci_memory;
->       MemoryRegion *rom_memory;
-> -    MemoryRegion *ram_memory;
-> +    MemoryRegion *ram_memory = machine->ram;
->       GSIState *gsi_state;
->       ISABus *isa_bus;
->       int i;
-> @@ -215,8 +215,7 @@ static void pc_q35_init(MachineState *machine)
->       }
->   
->       /* allocate ram and load rom/bios */
-> -    pc_memory_init(pcms, system_memory, rom_memory, &ram_memory,
-> -                   pci_hole64_size);
-> +    pc_memory_init(pcms, system_memory, rom_memory, pci_hole64_size);
->   
->       object_property_add_child(OBJECT(machine), "q35", OBJECT(phb));
->       object_property_set_link(OBJECT(phb), MCH_HOST_PROP_RAM_MEM,
-
+>   hw/ppc/e500.c     | 24 ++++++++++++++++--------
+>   hw/ppc/e500plat.c |  9 +++------
+>   2 files changed, 19 insertions(+), 14 deletions(-)
+> 
 
