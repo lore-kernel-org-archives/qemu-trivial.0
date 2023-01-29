@@ -1,73 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pLuhV-0003r9-TX
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Jan 2023 18:33:37 -0500
+	id 1pM5rb-000065-PV
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Jan 2023 06:28:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pLuhT-0003pu-EQ; Sat, 28 Jan 2023 18:33:35 -0500
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pM5rZ-0008Vf-RB; Sun, 29 Jan 2023 06:28:45 -0500
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pLuhR-0003tu-VT; Sat, 28 Jan 2023 18:33:35 -0500
-Received: by mail-oa1-x36.google.com with SMTP id
- 586e51a60fabf-15085b8a2f7so10992933fac.2; 
- Sat, 28 Jan 2023 15:33:33 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pM5rY-0007ig-2y; Sun, 29 Jan 2023 06:28:45 -0500
+Received: by mail-ej1-x62d.google.com with SMTP id dr8so2983141ejc.12;
+ Sun, 29 Jan 2023 03:28:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ZZe4VNlZtLr75fg+qhbbujaZ6qov/K5CAC/7EM1uyfc=;
- b=BY4Mk1ind3fS+gCI3+prf0cpCLsNbkwyRdFg5E1pPhMpWPrUrRre/sr60UkOkZ6Apk
- WWqocPzvBFnSr4ln5JzHcz6KIvifpqVDRrhFatXE00wRWsAReYCPcx4S3FA4Ng4Ft4p8
- yHzozwgyXEKcJiBRHHf8dLpGIsCUGXdQB0k1H5YZBiN0nqmVL9GGWQKHqz8BFAcfwoQs
- 3dp/wJzfAWpJSlcZfQ/t7eN6BdWXpT3YzsyXYCmv7oYVZYq/n0OUy4odG1SIpoUUgzCz
- tkd59HxHx9Q7945FPk9UJJK0L0W88dXmDQ86m+o4wsZcB9ss895uJqsFxPtg4rKkZ2cY
- vBKw==
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6zS27J37N2UUmxweePAIef88yb41ylNyxj2Tvro/HA8=;
+ b=LhEpHZnfMN9wtWyXGmVdcJc6ucQqr/xwYfxOSATNnqx8WmoCWSKrnGQ40teVnfM5nB
+ BVo9vFNaTXl5az3tzpVgarF7p8TC3gn2gGFjz1FmfHr1MAF/I+h2EfE06Byx+ikLg7yi
+ vv/Lrx3w8uXOrYls0DBggxLbHjfnX7pqbH5h6U5W5b/JOKr3EHadbgh89VinYkTZqDkT
+ fxoSg8fXmkcVij4BdNtbimJrHasZtMg4KYbNQyUyjcReNNkhcgVSZm0JgB+kmAxP50pP
+ 014N0rQx/qiRtegzkW3eaVm9Fq6BkDeWkhSftu4k0eyBcepuuNU5t1oJeiy3pIKn0Y//
+ GR9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZZe4VNlZtLr75fg+qhbbujaZ6qov/K5CAC/7EM1uyfc=;
- b=nWj71oRzlEk1iDF7+vR7RYO9VomFBCGYbHEZDNNQjlIfzdMWrzZ6wRHrPpUqWsFQEE
- V9M0KIxuSBNIvh5HTWypZFKwWe3tcPmL3hH4I2IYp/YVi/nsoLuh8O5QjSjlR+9OpoB8
- OyVpThqQInsg6WrbskxPwKHDjtQBLr/vRkHsTL63zbMHxTKJSkb1ZlUwqst4bTd0jAHf
- 4LHocUm2pBI07RqnlFjIzC9AAK5l/5aelpRwYANxqz5XvxN6j+MHbn5a1spTTA0pknCT
- KH3HWxG73Qo3YINVgzu3QzD8pDAUMWTN3bSpH4ICLrOD+zr1T45lwMHzujSwNQWSITll
- GAyw==
-X-Gm-Message-State: AO0yUKVzC3IKQSRHrG6JGMEsoKlmS5T3UWH+Fc/8OLSY+3Be6pYX4zkz
- uteGLjpErBmoj4EAB8613j0Nkkrl+xE=
-X-Google-Smtp-Source: AK7set/03+wUCwdyloCdqTXqRslHAsh3/mZbDzITJQqq+gqd+HobNkoLh9jK/gFvx5ULBPwGRv6KEA==
-X-Received: by 2002:a05:6870:17a5:b0:144:57b1:c8cf with SMTP id
- r37-20020a05687017a500b0014457b1c8cfmr1557046oae.47.1674948812062; 
- Sat, 28 Jan 2023 15:33:32 -0800 (PST)
-Received: from [192.168.68.107] (200-148-13-157.dsl.telesp.net.br.
- [200.148.13.157]) by smtp.gmail.com with ESMTPSA id
- j26-20020a4ad2da000000b00517425df590sm1298544oos.14.2023.01.28.15.33.30
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6zS27J37N2UUmxweePAIef88yb41ylNyxj2Tvro/HA8=;
+ b=IcxbgXSAjMma/QD8adJXHhcNQzwCLZs4bsgezmZsVhxgRzn/AWohLQ7frrlcVRzuwk
+ iAj3XYp85DH9/T3sUG3i76fJMtGKgQruYXOkK/Spx5XSPmv2SKb4BiwGA3AXwmgnsBJE
+ 7yGXpuIDbu1C/Jby15wLQ+Gejo6Qdv+l1TFx+EJ7VGSPoJMXy8F4qZCOe8uu6mpOYD5I
+ 1cxb3gD0248D+497y6UYik18OKQsoSDKaHqqKdFLj4uHHL+as0dCDlY5F1Mhr4EYVH+0
+ ZnF2K7Ru72AbEh3M5ICs8GG1zPyBWtdO/N5G7EWxlixNM0+CY2MTFA8JUWYE7lJL3Czy
+ pUaw==
+X-Gm-Message-State: AO0yUKU7njvcqZCCZVbCxLhgB60pXYNcJKWrRMqW7H3ialcZ8sMNBC6n
+ 79yUaSz6oTvu5Eo+YsylfVU=
+X-Google-Smtp-Source: AK7set/5CLka6uGOYmSjmoODWEahFE6F3BqdlcCveZtsFFWcRSp77UDwfqTCrttVnz3OUpL6B/haBg==
+X-Received: by 2002:a17:906:168a:b0:87d:f3e2:7f4d with SMTP id
+ s10-20020a170906168a00b0087df3e27f4dmr7727138ejd.25.1674991721703; 
+ Sun, 29 Jan 2023 03:28:41 -0800 (PST)
+Received: from ?IPv6:::1?
+ (p200300faaf1ccd00f0485d6be37e2312.dip0.t-ipconnect.de.
+ [2003:fa:af1c:cd00:f048:5d6b:e37e:2312])
+ by smtp.gmail.com with ESMTPSA id
+ kx8-20020a170907774800b0087221268e49sm279400ejc.186.2023.01.29.03.28.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 28 Jan 2023 15:33:31 -0800 (PST)
-Message-ID: <808dc3a5-eb7f-0331-99c1-d6cdbeb81cf7@gmail.com>
-Date: Sat, 28 Jan 2023 20:33:29 -0300
+ Sun, 29 Jan 2023 03:28:41 -0800 (PST)
+Date: Sun, 29 Jan 2023 11:28:34 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+CC: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_6/7=5D_hw/i386/pc=5F=7Bq35=2C_piix=7D?=
+ =?US-ASCII?Q?=3A_Minimize_usage_of_get=5Fsystem=5Fmemory=28=29?=
+In-Reply-To: <6858e30b-cd88-0ba3-e64e-0657786f8c55@eik.bme.hu>
+References: <20230127164718.98156-1-shentey@gmail.com>
+ <20230127164718.98156-7-shentey@gmail.com>
+ <6858e30b-cd88-0ba3-e64e-0657786f8c55@eik.bme.hu>
+Message-ID: <C4665294-4BAA-42E4-842D-807993762B30@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH 0/4] E500 cleanups and enhancements
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-References: <20230125130024.158721-1-shentey@gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20230125130024.158721-1-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::36;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x36.google.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-1.148,
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -82,32 +87,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Jan 2023 23:33:35 -0000
+X-List-Received-Date: Sun, 29 Jan 2023 11:28:46 -0000
 
 
 
-On 1/25/23 10:00, Bernhard Beschow wrote:
-> This series includes some cleanups I came across when working on the ppce500
-> machine. Furthermore, it enables support for the 'dumpdtb' QMP/HMP command
-> which was missing so far.
-> 
-> Bernhard Beschow (4):
->    hw/ppc: Set machine->fdt in e500 machines
->    hw/ppc/e500{,plat}: Drop redundant checks for presence of platform bus
->    hw/ppc/e500.c: Avoid hardcoding parent device in
->      create_devtree_etsec()
->    hw/ppc/e500.c: Attach eSDHC unimplemented region to ccsr_addr_space
+Am 27=2E Januar 2023 19:30:21 UTC schrieb BALATON Zoltan <balaton@eik=2Ebm=
+e=2Ehu>:
+>On Fri, 27 Jan 2023, Bernhard Beschow wrote:
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>
+>Why? I'd rather replace locals with direct call to function as it's not e=
+xpensive (just returns a global) and adding a local name to it is not much =
+shorter so why do that?
 
-Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+The function has the assumption baked in to return a global which I'd like=
+ to factor out into a single variable assignment=2E This allows for easier =
+experimentation with alternatives to global variables=2E
 
-And queued in gitlab.com/danielhb/qemu/tree/ppc-next. Thanks,
+Moreover, extrating to a single variable mirrors how similar things are do=
+ne in the pc and q35 machines=2E
 
-
-Daniel
-
-> 
->   hw/ppc/e500.c     | 24 ++++++++++++++++--------
->   hw/ppc/e500plat.c |  9 +++------
->   2 files changed, 19 insertions(+), 14 deletions(-)
-> 
+Best regards,
+Bernhard
+>
+>Regards,
+>BALATON Zoltan
+>
+>> ---
+>> hw/i386/pc_piix=2Ec | 2 +-
+>> hw/i386/pc_q35=2Ec  | 7 ++++---
+>> 2 files changed, 5 insertions(+), 4 deletions(-)
+>>=20
+>> diff --git a/hw/i386/pc_piix=2Ec b/hw/i386/pc_piix=2Ec
+>> index ee9d9a4175=2E=2E5bde4533cc 100644
+>> --- a/hw/i386/pc_piix=2Ec
+>> +++ b/hw/i386/pc_piix=2Ec
+>> @@ -241,7 +241,7 @@ static void pc_init1(MachineState *machine,
+>>         isa_bus =3D ISA_BUS(qdev_get_child_bus(DEVICE(piix3), "isa=2E0"=
+));
+>>     } else {
+>>         pci_bus =3D NULL;
+>> -        isa_bus =3D isa_bus_new(NULL, get_system_memory(), system_io,
+>> +        isa_bus =3D isa_bus_new(NULL, system_memory, system_io,
+>>                               &error_abort);
+>>         i8257_dma_init(isa_bus, 0);
+>>         pcms->hpet_enabled =3D false;
+>> diff --git a/hw/i386/pc_q35=2Ec b/hw/i386/pc_q35=2Ec
+>> index a97846ab9b=2E=2Eb97979bebb 100644
+>> --- a/hw/i386/pc_q35=2Ec
+>> +++ b/hw/i386/pc_q35=2Ec
+>> @@ -124,6 +124,7 @@ static void pc_q35_init(MachineState *machine)
+>>     DeviceState *lpc_dev;
+>>     BusState *idebus[MAX_SATA_PORTS];
+>>     ISADevice *rtc_state;
+>> +    MemoryRegion *system_memory =3D get_system_memory();
+>>     MemoryRegion *system_io =3D get_system_io();
+>>     MemoryRegion *pci_memory;
+>>     MemoryRegion *rom_memory;
+>> @@ -191,7 +192,7 @@ static void pc_q35_init(MachineState *machine)
+>>         rom_memory =3D pci_memory;
+>>     } else {
+>>         pci_memory =3D NULL;
+>> -        rom_memory =3D get_system_memory();
+>> +        rom_memory =3D system_memory;
+>>     }
+>>=20
+>>     pc_guest_info_init(pcms);
+>> @@ -214,7 +215,7 @@ static void pc_q35_init(MachineState *machine)
+>>     }
+>>=20
+>>     /* allocate ram and load rom/bios */
+>> -    pc_memory_init(pcms, get_system_memory(), rom_memory, &ram_memory,
+>> +    pc_memory_init(pcms, system_memory, rom_memory, &ram_memory,
+>>                    pci_hole64_size);
+>>=20
+>>     object_property_add_child(OBJECT(machine), "q35", OBJECT(phb));
+>> @@ -223,7 +224,7 @@ static void pc_q35_init(MachineState *machine)
+>>     object_property_set_link(OBJECT(phb), MCH_HOST_PROP_PCI_MEM,
+>>                              OBJECT(pci_memory), NULL);
+>>     object_property_set_link(OBJECT(phb), MCH_HOST_PROP_SYSTEM_MEM,
+>> -                             OBJECT(get_system_memory()), NULL);
+>> +                             OBJECT(system_memory), NULL);
+>>     object_property_set_link(OBJECT(phb), MCH_HOST_PROP_IO_MEM,
+>>                              OBJECT(system_io), NULL);
+>>     object_property_set_int(OBJECT(phb), PCI_HOST_BELOW_4G_MEM_SIZE,
+>>=20
 
