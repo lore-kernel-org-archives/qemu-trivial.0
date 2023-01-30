@@ -1,85 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMTXH-0001Gl-FG
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Jan 2023 07:45:23 -0500
+	id 1pMYad-0001WU-CM
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Jan 2023 13:09:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pMTXE-0001GG-TX
- for qemu-trivial@nongnu.org; Mon, 30 Jan 2023 07:45:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pMYab-0001VT-8v; Mon, 30 Jan 2023 13:09:09 -0500
+Received: from mout.kundenserver.de ([212.227.126.133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pMTXC-0006wL-AF
- for qemu-trivial@nongnu.org; Mon, 30 Jan 2023 07:45:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675082717;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9CVXrBe5a2eNQ25FgDB0FujlzBlyvMktuKhNnFySl0k=;
- b=cJ4LZRO7SqPa8EGnwLP7m/Tt69XLSke2If4Y763QzTFDtdM18VaTbjGFP0xspi1TouIY1T
- ELfm4R/QFSHcuXz/kVYsuQzg12HqnoOobzxraJMFTCNXW9HOs339rgPb9ympc2MEf/EkRe
- Uxqdcjis4/ER7uMq07gavA8hPlOb03U=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-674-WgqlSECpOR2WvB_xwvOr_w-1; Mon, 30 Jan 2023 07:45:16 -0500
-X-MC-Unique: WgqlSECpOR2WvB_xwvOr_w-1
-Received: by mail-qk1-f200.google.com with SMTP id
- s7-20020a05620a0bc700b006e08208eb31so6982211qki.3
- for <qemu-trivial@nongnu.org>; Mon, 30 Jan 2023 04:45:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9CVXrBe5a2eNQ25FgDB0FujlzBlyvMktuKhNnFySl0k=;
- b=dPYLEbu03MHIEw5rUzKdV5jKVW/EWrayw4Em807mm2ixq1TwWUW8MzzKTlRImScQlz
- RJzHdq/+76LARNTvfQkhSh6Z5w6rwk+cgLa0i8b3f7+oxrj28IE/0zb45oVP3YNP25gk
- WokyKwRIL3UF/qKarSuJ7DeVz6DrETElmLusjg/wGq313vlrfrGKMtttlCF9TS9SfnKg
- zQ/ExYio4smlqopt8L6wz+ZaIk1fgyIDoUr6z3EE2QY5PadRbFYo7Is0C7i/IgsuxkeE
- 368Pgp2xOZKXhBtOV2sIA8lrQIJ4aOhVy3hAdLtNbd3Efz0F3KDY7jxT2Pf/aM0/8+S7
- 5W7w==
-X-Gm-Message-State: AO0yUKV7LJmQgc3/ivNGk3rUX3GeGqm3lk6lLKrkHBVRZMAj/UL/qWHS
- r5Xy0VQ58bXPM1twSc09ZrtASbRgOmIh/cE8/xdjuUJwMiK5MaOJanrLncmHlYh63A1JMMUg0Gk
- uWV8Ke4KO6Usd8dQSYg==
-X-Received: by 2002:a0c:ec11:0:b0:534:bc47:8ef6 with SMTP id
- y17-20020a0cec11000000b00534bc478ef6mr9701036qvo.5.1675082716193; 
- Mon, 30 Jan 2023 04:45:16 -0800 (PST)
-X-Google-Smtp-Source: AK7set+DUjxr6yFgYp1z+A8hXAV4l6piyB8qm3Bv6PiZaeV/lBiDDGtS+6JV/d//sYMvpFB9cKvMrA==
-X-Received: by 2002:a0c:ec11:0:b0:534:bc47:8ef6 with SMTP id
- y17-20020a0cec11000000b00534bc478ef6mr9701021qvo.5.1675082715961; 
- Mon, 30 Jan 2023 04:45:15 -0800 (PST)
-Received: from [192.168.0.2] (ip-109-43-178-179.web.vodafone.de.
- [109.43.178.179]) by smtp.gmail.com with ESMTPSA id
- p64-20020a374243000000b006ee8874f5fasm7899658qka.53.2023.01.30.04.45.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Jan 2023 04:45:15 -0800 (PST)
-Message-ID: <ec298b45-ad69-4608-f6b3-b9c97bc7bf34@redhat.com>
-Date: Mon, 30 Jan 2023 13:45:13 +0100
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pMYaZ-00011E-HH; Mon, 30 Jan 2023 13:09:08 -0500
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MuV3i-1oWVvo1Dhi-00rc1G; Mon, 30 Jan 2023 19:09:02 +0100
+Message-ID: <2cc505db-517e-4129-9c9a-7a41637b75f2@vivier.eu>
+Date: Mon, 30 Jan 2023 19:09:01 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v3] docs/s390x/pcidevices: document pci devices on s390x
-To: Sebastian Mitterle <smitterl@redhat.com>, qemu-devel@nongnu.org
-Cc: cohuck@redhat.com, clegoate@redhat.com, qemu-trivial@nongnu.org,
- qemu-s390x@nongnu.org
-References: <20230127123349.55294-1-smitterl@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230127123349.55294-1-smitterl@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH qemu 0/1] MAC address falls to permanent
+Content-Language: fr
+To: ~vlaomao <vlaomao@gmail.com>
+Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>, Jason Wang <jasowang@redhat.com>
+References: <167510125533.6740.18222174398575558338-0@git.sr.ht>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <167510125533.6740.18222174398575558338-0@git.sr.ht>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Provags-ID: V03:K1:Id3xkcQpTvdI40qSXECT+E3qlUmUxDP7Y/s5heI0wsf7WxQy2iL
+ JRA9wzLF+zm5KeVeOqllEJjL0WvDp5WDDV2ctbXQtNYm7j8JN3F0uSUv2PIoMUz+7wIwOJi
+ eEVo+a2MHdjQJQsQmYq+hmoltdeMBSnYddXSjjYLEhyC7ORa6fw2eFRzP+KI7fYVXGN8qVZ
+ Toip/G4cignnTJohNEZ4w==
+UI-OutboundReport: notjunk:1;M01:P0:efwZuxWjHaw=;McfPzjbhdH/DErAhAKe0vbm3nC9
+ 8TW01qRjbUT2kIHuSxCP43NfqEGTOr+oTrYu/4z0DWdZnMp3C+Q8iW8oSmxJxAi2b4q5FKpBL
+ DAiOCfbs2UzpLs1V/+ejMNuRcyPCB4aU5dz1LP829EbRLdKM5wZKL04k7zNEg2xI1OAtKR3hR
+ vTQOb+12bEi9WrGvuGegGlZZyqu8UnZp7XpBafbcaNgd3YYNSOr4T6OEbAuqX7aH4gJmkqlkL
+ 76W5PAtjVwPz2brwDKZAVA+w0x7BC8CsCurfXy669go4oasXpf4zoXtwnfsZHdUzFYqo91px8
+ s+k0hMx2oF/3kYqvS6NwTEgN51WSewPRc935ltqCJzsyto8y0Ce4tqDMDO8xVJf1Jtk8DAF9G
+ oR6sskO8MK1Bcbm22WPerV13/UaehvNsNVDbkX7vWLzRvOvvyaKxPHhkUwkrSbssaIC86YfUB
+ LrS8q7+O1AAV75S9xVhm0am0q7nFwAXs8j+XDh0dcjj3hldskle1hzi7fZnw5Q68rLGWwyGJ0
+ CRZdyymNA5oLZ7MedDfoZxVPIKrGCCwXQU2GN40JMQ6o1bXqq/vbshnDsnIlccbF1VDLGCT4z
+ aNr9NJSfvnNjv/JtxauVHBG0O3Lgpn+v2woObrEYqOcYy6R9O6ugZLaLMTMtMkHLi/qXXvJAJ
+ SSrmb0B77CdRkc99Ooc0jFhEUPL57DLNmGPYIIPTrw==
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,33 +62,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Jan 2023 12:45:21 -0000
+X-List-Received-Date: Mon, 30 Jan 2023 18:09:10 -0000
 
-On 27/01/2023 13.33, Sebastian Mitterle wrote:
-> Add some documentation about the zpci device and how
-> to use it with pci devices on s390x.
+CC: maintainers and qemu-devel
+
+Use ./scripts/get_maintainer.pl to have the list of the maintainers.
+
+Always send your patches to qemu-devel&nongnu.org
+
+Thanks,
+Laurent
+
+Le 30/01/2023 à 18:54, ~vlaomao a écrit :
+> A bug was found with the vmxnet3 driver, after changing the MAC address
+> and rebooting, it falls into the category of a permanent address until
+> the VM is turned off. Here is log output:
 > 
-> Used source: Cornelia Huck's blog post
-> https://people.redhat.com/~cohuck/2018/02/19/notes-on-pci-on-s390x.html
+> -bash-4.4# ip a
+> 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
+> group default qlen 1
+>      link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+>      inet 127.0.0.1/8 scope host lo
+>         valid_lft forever preferred_lft forever
+> 2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
+> default qlen 1000
+>      link/ether 52:54:00:12:34:56 brd ff:ff:ff:ff:ff:ff
 > 
-> Signed-off-by: Sebastian Mitterle <smitterl@redhat.com>
-> Reviewed-by: Cédric Le Goater <clg@redhat.com>
-> ---
-> v3: add info zpci is autogenerated, fix typos and source formatting,
-> improve style as suggested
-> ---
->   docs/system/s390x/pcidevices.rst | 41 ++++++++++++++++++++++++++++++++
->   docs/system/target-s390x.rst     |  1 +
->   2 files changed, 42 insertions(+)
->   create mode 100644 docs/system/s390x/pcidevices.rst
-
-Thanks, looks fine now to me, too!
-
-Queued it to my staging branch:
-
-  https://gitlab.com/thuth/qemu/-/commits/staging
-
-  Thomas
-
+> -bash-4.4# ip link set dev ens3 address 33:33:33:33:33:33
+> -bash-4.4# ip a
+> 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
+> group default qlen 1
+>      link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+>      inet 127.0.0.1/8 scope host lo
+>         valid_lft forever preferred_lft forever
+> 2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
+> default qlen 1000
+>      link/ether 33:33:33:33:33:33 brd ff:ff:ff:ff:ff:ff
+> -bash-4.4# ethtool -P ens3
+> Permanent address: 52:54:00:12:34:56
+> -bash-4.4# reboot
+> 
+> //rebooting
+> 
+> 
+> -bash-4.4# ip a
+> 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
+> group default qlen 1
+>      link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+>      inet 127.0.0.1/8 scope host lo
+>         valid_lft forever preferred_lft forever
+> 2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
+> default qlen 1000
+>      link/ether 33:33:33:33:33:33 brd ff:ff:ff:ff:ff:ff
+> -bash-4.4# ethtool -P ens3
+> Permanent address: 33:33:33:33:33:33
+> -bash-4.4#
+> 
+> VlaoMao (1):
+>    vmxnet3: add mac address restore upon reset
+> 
+>   hw/net/vmxnet3.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
 
 
