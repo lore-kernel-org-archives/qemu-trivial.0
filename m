@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMpD4-00069A-0R
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:53:58 -0500
+	id 1pMpD5-0006Cj-Bd
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:53:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpD0-00060Y-SL; Tue, 31 Jan 2023 06:53:54 -0500
+ id 1pMpD4-00069n-4q; Tue, 31 Jan 2023 06:53:58 -0500
 Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpCz-0002Kz-CX; Tue, 31 Jan 2023 06:53:54 -0500
-Received: by mail-ed1-x534.google.com with SMTP id n6so11500332edo.9;
- Tue, 31 Jan 2023 03:53:52 -0800 (PST)
+ id 1pMpD2-0002Lu-I1; Tue, 31 Jan 2023 06:53:57 -0500
+Received: by mail-ed1-x534.google.com with SMTP id z11so14156594ede.1;
+ Tue, 31 Jan 2023 03:53:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=61dfWITivyOsWdkZHZZ+3qa///PN8JSZFtxNj4kIeZg=;
- b=KSZGjo0ogoBSW81ja62iNyQnTKVx/1uFWIHRfJwBHlRbidU0NFTtzbKt7Gu6RevuA5
- lnSQTI+CiPmweXXiQMfa8DUHU2mX1bJ2aphF4/TfUBz8CtH0txov3EzwzMXcNTnfGWcG
- AzyJgVGAOle2Ny7bxJ6BksGHjAgV2lBBUHJVL+J+b46RcKaDFXH28+xE/5YgdfSz4Ir1
- uOtv9bNgyhBK5f8dZauWA52oxBZZD7VgBxjSFnXTFJmTtCiFkpaJX36k+zfhWSVjEDuU
- OTOxkRWkd5kclUUgUjbOIScMzCsXD1W0lBIXg4ZrbhGo6tXrdnrCTAzKUQLTCGzSRpHR
- vPxw==
+ bh=TM72a0z+FhD5ZHMPDrVDIbYVXz3mYKr8EKyN+3lrNng=;
+ b=Pmc5Q7XvzfTV1Cnma1hYjjikyO1Y7OT0fKjDb7+QbAh/g3wj81zUpI2BurNIvB25xE
+ ZltEflif/8AtTPu6FGBsT3bFERIC17ZC0TArtmeGWp2RzVoKUH0BenNfBctY+k0miYfF
+ n5znlv8FX+ZL+aroLEIusUhCZdhz9K8U2l2JNhs+G+Cpv2/A+HWvSyiBQe5j8iNP3lUe
+ VOgoJ/Pr4J2Mh+z5Ig5cuKJ/TG9cHug1ZmLgFJg2gjDe338aTHnGA8lWR9r1lttIHE9i
+ pyjZvoKm/cMmlqCuT6kFqog7XZyhTk+6rZTpvbjXVpgTMo2ibnNCMHVtQP1XgtKGx37A
+ T3Bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=61dfWITivyOsWdkZHZZ+3qa///PN8JSZFtxNj4kIeZg=;
- b=p6b8YcBtmEEzPfOYTAkRKQazUskZL0Q0Ww3R+1sgBtHyVea6NNeGUk7QqrDX4BCO/e
- r4G7G5MfnCYB0ueb1/3XbU4S6o7mVpSl2BfBWmosjcS8Mpp11s//kIrCddYUENQ8vgcq
- m8P07ScS2msl5EMg1f7Z+zCBwcZPkfZuZn7Soqt4sWovT3Bl6ZVRVEw06N4E2Ynw1oDr
- OYvWtS22y3W4dEdDkcjR/SaTFNySn4OE52ycaEthvaFJfe7lX1PPdFHMvvUmvU45B9wU
- VKDJN9oajqF3oWSQJtkcKYEpQghXCYrpYrua+FkmGcQMWDclX/Gi4Sda743i0SsfzBXq
- w+2g==
-X-Gm-Message-State: AO0yUKWOpDpBI7MOcPkDapNwnjT3Mlg6ztJri+SJhcyihv4/u0vcWQhq
- UBhsKW5+75RD2AZ9H1IBGzzji9FkYTs=
-X-Google-Smtp-Source: AK7set9syy5v0Rd1yeW+Lwmz/PLeidz0LNhVsYV08ziIDnVfh6ZmZ3oPdnBB0U52sAPzuAq3QpT8nw==
-X-Received: by 2002:a05:6402:43cc:b0:49e:a0f7:9a75 with SMTP id
- p12-20020a05640243cc00b0049ea0f79a75mr3366934edc.12.1675166031354; 
- Tue, 31 Jan 2023 03:53:51 -0800 (PST)
+ bh=TM72a0z+FhD5ZHMPDrVDIbYVXz3mYKr8EKyN+3lrNng=;
+ b=Rwurj4VKaGOrrkOQs1ogDa+CH4JNd/yBQbC0XQ9jtJbEbZ8SSCWgcBxE49N55X7Pll
+ nSggQB4ojFydl1N/TLb478Be4NZd4ME4u8LZc901DTQ5Lo7w5eI18YtTRovtMvIt1h1e
+ 0vvo/6xQKq0M7cdWuI+kl3026AyVL/kyVvPudSOc3dgKjbIVCq7gG4bgUNN0zabI9CK5
+ pIQAWl9m9ZVSP0KuNHSy7LMTRPJW2yo4IALCzmBCS34eVV8lHu+FnTcQ8FJcp3GbJLrB
+ NruHV6zm5XEqtM2X6OP9JSXvLvDtIL917sWAzzI8wwfLpF7Y3aCg6y0oTOoMS5P0hB6G
+ BEgg==
+X-Gm-Message-State: AFqh2koJe2/ZaH5zHM2W9yExKpmg/S3R9bphV8cS/fthOf05adXRdXSp
+ ZSPuZwH2c7b7k1H9TvUFi8ULZWKglG8=
+X-Google-Smtp-Source: AMrXdXs69TSXdiAZ5xtBC15dMKgcdG/hCJmT8qZ6J7COIrDS7agTX2SuUL9M8AQawbYKXEK7gl6uGA==
+X-Received: by 2002:a05:6402:28ca:b0:49c:96f9:417e with SMTP id
+ ef10-20020a05640228ca00b0049c96f9417emr53090466edb.2.1675166034659; 
+ Tue, 31 Jan 2023 03:53:54 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-077-013-082-236.77.13.pool.telefonica.de. [77.13.82.236])
  by smtp.gmail.com with ESMTPSA id
- c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.53.50
+ c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.53.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 03:53:51 -0800 (PST)
+ Tue, 31 Jan 2023 03:53:54 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Igor Mammedov <imammedo@redhat.com>,
@@ -56,14 +56,17 @@ Cc: Igor Mammedov <imammedo@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <lvivier@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 02/20] hw/pci-host/q35: Inline sysbus_add_io()
-Date: Tue, 31 Jan 2023 12:53:08 +0100
-Message-Id: <20230131115326.12454-3-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 05/20] hw/i386/pc_{q35,
+ piix}: Reuse MachineClass::desc as SMB product name
+Date: Tue, 31 Jan 2023 12:53:11 +0100
+Message-Id: <20230131115326.12454-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230131115326.12454-1-shentey@gmail.com>
 References: <20230131115326.12454-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::534;
  envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
@@ -86,38 +89,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 11:53:55 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 11:53:58 -0000
 
-sysbus_add_io() just wraps memory_region_add_subregion() while also
-obscuring where the memory is attached. So use
-memory_region_add_subregion() directly and attach it to the existing
-memory region s->mch.address_space_io which is set as an alias to
-get_system_io() by the q35 machine.
+No need to repeat the descriptions.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/pci-host/q35.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/i386/pc_piix.c | 2 +-
+ hw/i386/pc_q35.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index 26390863d6..fa05844319 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -50,10 +50,12 @@ static void q35_host_realize(DeviceState *dev, Error **errp)
-     Q35PCIHost *s = Q35_HOST_DEVICE(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index df64dd8dcc..ee9d9a4175 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -197,7 +197,7 @@ static void pc_init1(MachineState *machine,
+     if (pcmc->smbios_defaults) {
+         MachineClass *mc = MACHINE_GET_CLASS(machine);
+         /* These values are guest ABI, do not change */
+-        smbios_set_defaults("QEMU", "Standard PC (i440FX + PIIX, 1996)",
++        smbios_set_defaults("QEMU", mc->desc,
+                             mc->name, pcmc->smbios_legacy_mode,
+                             pcmc->smbios_uuid_encoded,
+                             pcms->smbios_entry_point_type);
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 88324af91f..bc4fd06c1e 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -198,7 +198,7 @@ static void pc_q35_init(MachineState *machine)
  
--    sysbus_add_io(sbd, MCH_HOST_BRIDGE_CONFIG_ADDR, &pci->conf_mem);
-+    memory_region_add_subregion(s->mch.address_space_io,
-+                                MCH_HOST_BRIDGE_CONFIG_ADDR, &pci->conf_mem);
-     sysbus_init_ioports(sbd, MCH_HOST_BRIDGE_CONFIG_ADDR, 4);
- 
--    sysbus_add_io(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, &pci->data_mem);
-+    memory_region_add_subregion(s->mch.address_space_io,
-+                                MCH_HOST_BRIDGE_CONFIG_DATA, &pci->data_mem);
-     sysbus_init_ioports(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, 4);
- 
-     /* register q35 0xcf8 port as coalesced pio */
+     if (pcmc->smbios_defaults) {
+         /* These values are guest ABI, do not change */
+-        smbios_set_defaults("QEMU", "Standard PC (Q35 + ICH9, 2009)",
++        smbios_set_defaults("QEMU", mc->desc,
+                             mc->name, pcmc->smbios_legacy_mode,
+                             pcmc->smbios_uuid_encoded,
+                             pcms->smbios_entry_point_type);
 -- 
 2.39.1
 
