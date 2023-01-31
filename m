@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMpDI-0006wH-Ob
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:54:12 -0500
+	id 1pMpDK-00072z-6f
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:54:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpDG-0006pU-KY; Tue, 31 Jan 2023 06:54:10 -0500
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ id 1pMpDH-0006qS-Va; Tue, 31 Jan 2023 06:54:12 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpDE-0002QC-C3; Tue, 31 Jan 2023 06:54:10 -0500
-Received: by mail-ed1-x52d.google.com with SMTP id be12so2874325edb.4;
- Tue, 31 Jan 2023 03:54:07 -0800 (PST)
+ id 1pMpDG-0002N0-4J; Tue, 31 Jan 2023 06:54:11 -0500
+Received: by mail-ed1-x531.google.com with SMTP id x7so10899384edr.0;
+ Tue, 31 Jan 2023 03:54:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jK+HqWAF0i2+Iqc7sL+yhGP1FjJWW4+T+puMuZ1qqd4=;
- b=UIsY2UnGhNtrQxN/UhbVwa8QS7eNS4t+LpQIbBEihswqTMe+WDWLDiPhkKEfYqKBJX
- TTY9G+TxS1dEjHzQhWC7fifyQ83qs88TkOkqnupWe7Byn1qhOjAa8TKsIWu7jAUw6mdY
- QRWjDzJNXvFV5vRbh3BhIFsO2Rcm0U797YgDUY97HwLUObf2C2grDBNbIwF+qdJ4QLQf
- xuVC3VMr1m/lBXjR+paYrxCehjOTObVjIrv3A8I+/6QUTFgxBJn7BlL04CgIohCMatPD
- 8TH5sBpUpWSAnqO3Tx+qjTXWQprBnVDH685gNXxfCYw0YhMWJDuYj+B2P97nY68Z4phR
- l2LQ==
+ bh=VrUMT8KXOlwyP+wNgiIX+Cf413CiRY1aEg+ePqpscxE=;
+ b=TvB8Y25Ce/3Ie20AFkSnSditc4a+Yx0wW2YKy+ahdjomO0H6DQ0XtLYbnyQ0J6Dq27
+ t4Xib9hsaDZa8be45zIxy5aSvqQ2wLx/0d5aIN8Xk+/oS8qoY89THm6+1z+RmlnJZhjO
+ OqrbPvvpPO16D9MSUJ97FiCQ42hm1gVTC0JnDayA4ijmKCxWUpfX8idVI6zhqIsXlMBz
+ wy13573IHbQwHIRMtx7KdKl/X++kvoX5Jt2E/eD1fOcNcBI301BIlY+/SFYo1mSNXNWu
+ RjkREXql8hcjHDEdV+nvmxG3DabdHmZlHYAPLd+Z8LCjd08O2ng5qVDPS8mKXx6dzHPB
+ xwaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jK+HqWAF0i2+Iqc7sL+yhGP1FjJWW4+T+puMuZ1qqd4=;
- b=6UgbE5fczmKakQEKe8koh4kh2cO95xx5RDU8fOGuflfHYow5JmSYoUMd/bkJHF+bES
- p7DD4/lTHE9epYP1y4pRD1fYzPMPci3m8TQST7/y40k6OnTHHXXaw/6Ei6I1RS9M0eMd
- RovSy6WTlbwI7+6OAgM3ECFNQCcuDr2HdTgcScIqPujY9QVuzBA2ROuBJaM/pw4jhs0+
- l1pwryRRWELw42KEmhEv7bl38akW7osbF5XmN6a08UxhW0EpnragIxq/r4jdrPHwoM91
- 4H0v/GWpvxz6ruAbObr8j9r1O680GikeDWXwXoN9I/rOgS5nwZWhE9Anobhe23V7MOZR
- eXuw==
-X-Gm-Message-State: AO0yUKVdCTAnXnjYX0W47H6goed++3aJtThusUhYD/TUjB7PCjVIf/Ke
- pgMGXdGmHe8ithhjnIg1p6z7gIe642k=
-X-Google-Smtp-Source: AK7set9xeJ9vw/ZG+t6WJpUZcCy/RqYQdr+LhNLqJT6IKzCrl/wuFh1wn4qgOuGTWvljwmSS9+0aKw==
-X-Received: by 2002:a05:6402:1a5c:b0:4a0:8ea1:cce with SMTP id
- bf28-20020a0564021a5c00b004a08ea10ccemr27531815edb.25.1675166046150; 
- Tue, 31 Jan 2023 03:54:06 -0800 (PST)
+ bh=VrUMT8KXOlwyP+wNgiIX+Cf413CiRY1aEg+ePqpscxE=;
+ b=0BMHgN3IXy7LNlHr/13OgIG+WDP2xOmnkwOrmfz+WgMgUaLJtn+JEtJ640vRBd5CD9
+ iyQ6KDW/5MMoHhXS1nXJs9ksUdF+xfxtQAkwoEJNlS9sP3W7oUC+iPGksa+FiNNNyiHP
+ 9GI3z84LONK+DKCTDW4O8H/viNJO4hqvvJtf0buyhN3svCUr2LnlooKVmE+o2cCXkMfF
+ YPRDO2Vgsbm4bXfUbI1GnHZ0tW9jNocSTce73wqmolv9jFJwkyeGT3L/5oHZMd67Kl7z
+ bglFYPoppXPyOLabljVgslbRrR4eJHhFL0Fl9nQ2BjRQH1yyoQGxYFhuBsHWXYHU5DXj
+ aUHw==
+X-Gm-Message-State: AO0yUKXMmzW3c9Ef/WWa9ZAEoG70qZ8+Wdd4Q6mOrhHHvHDcVzsuNAJo
+ 0Q5iaEXM34/M3dgkFF6KidV82F1RNJM=
+X-Google-Smtp-Source: AK7set+OrWVv/Rc5aaTzF5R/Wv+rPWsHB8Enu8pOnLss/YUMuq5xAxMQo8ygOMlRE3H4fYzZz4wi1Q==
+X-Received: by 2002:a05:6402:f0c:b0:4a2:4ed3:c14b with SMTP id
+ i12-20020a0564020f0c00b004a24ed3c14bmr3587685eda.36.1675166048541; 
+ Tue, 31 Jan 2023 03:54:08 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-077-013-082-236.77.13.pool.telefonica.de. [77.13.82.236])
  by smtp.gmail.com with ESMTPSA id
- c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.54.05
+ c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.54.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 03:54:05 -0800 (PST)
+ Tue, 31 Jan 2023 03:54:08 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Igor Mammedov <imammedo@redhat.com>,
@@ -57,16 +57,16 @@ Cc: Igor Mammedov <imammedo@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <lvivier@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 15/20] hw/isa/lpc_ich9: Connect pm stuff to lpc internally
-Date: Tue, 31 Jan 2023 12:53:21 +0100
-Message-Id: <20230131115326.12454-16-shentey@gmail.com>
+Subject: [PATCH v2 17/20] hw/i386/ich9: Remove redundant GSI_NUM_PINS
+Date: Tue, 31 Jan 2023 12:53:23 +0100
+Message-Id: <20230131115326.12454-18-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230131115326.12454-1-shentey@gmail.com>
 References: <20230131115326.12454-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,153 +86,111 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 11:54:11 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 11:54:12 -0000
 
-Make TYPE_ICH9_LPC_DEVICE more self-contained by moving the call to
-ich9_lpc_pm_init() from board code to its realize function. In order
-to propagate x86_machine_is_smm_enabled(), introduce an "smm-enabled"
-property like we have in piix4.
+Most code uses IOAPIC_NUM_PINS. The only place where GSI_NUM_PINS defines
+the size of an array is ICH9LPCState::gsi which needs to match
+IOAPIC_NUM_PINS. Remove GSI_NUM_PINS for consistency.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/acpi/ich9.h | 6 ++----
- include/hw/i386/ich9.h | 2 --
- hw/acpi/ich9.c         | 8 ++------
- hw/i386/pc_q35.c       | 5 ++---
- hw/isa/lpc_ich9.c      | 8 +++++---
- 5 files changed, 11 insertions(+), 18 deletions(-)
+ include/hw/i386/ich9.h | 2 +-
+ include/hw/i386/x86.h  | 1 -
+ hw/i386/pc.c           | 6 +++---
+ hw/i386/pc_q35.c       | 3 ++-
+ hw/isa/lpc_ich9.c      | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/acpi/ich9.h b/include/hw/acpi/ich9.h
-index d41866a229..57a542c4b8 100644
---- a/include/hw/acpi/ich9.h
-+++ b/include/hw/acpi/ich9.h
-@@ -64,7 +64,7 @@ typedef struct ICH9LPCPMRegs {
-     uint8_t disable_s3;
-     uint8_t disable_s4;
-     uint8_t s4_val;
--    uint8_t smm_enabled;
-+    bool smm_enabled;
-     bool smm_compat;
-     bool enable_tco;
-     TCOIORegs tco_regs;
-@@ -72,9 +72,7 @@ typedef struct ICH9LPCPMRegs {
- 
- #define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
- 
--void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm,
--                  bool smm_enabled,
--                  qemu_irq sci_irq);
-+void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm, qemu_irq sci_irq);
- 
- void ich9_pm_iospace_update(ICH9LPCPMRegs *pm, uint32_t pm_io_base);
- extern const VMStateDescription vmstate_ich9_pm;
 diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
-index 52ea116f44..433c8942c9 100644
+index 433c8942c9..d29090a9b7 100644
 --- a/include/hw/i386/ich9.h
 +++ b/include/hw/i386/ich9.h
-@@ -8,8 +8,6 @@
- #include "hw/acpi/ich9.h"
- #include "qom/object.h"
+@@ -63,7 +63,7 @@ struct ICH9LPCState {
+     MemoryRegion rcrb_mem; /* root complex register block */
+     Notifier machine_ready;
  
--void ich9_lpc_pm_init(PCIDevice *pci_lpc, bool smm_enabled);
--
- void ich9_generate_smi(void);
+-    qemu_irq gsi[GSI_NUM_PINS];
++    qemu_irq gsi[IOAPIC_NUM_PINS];
+ };
  
- #define ICH9_CC_SIZE (16 * 1024) /* 16KB. Chipset configuration registers */
-diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-index a93c470e9d..54bb3d83b3 100644
---- a/hw/acpi/ich9.c
-+++ b/hw/acpi/ich9.c
-@@ -291,9 +291,7 @@ static void pm_powerdown_req(Notifier *n, void *opaque)
-     acpi_pm1_evt_power_down(&pm->acpi_regs);
- }
+ #define ICH9_MASK(bit, ms_bit, ls_bit) \
+diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
+index 62fa5774f8..0becd1460e 100644
+--- a/include/hw/i386/x86.h
++++ b/include/hw/i386/x86.h
+@@ -134,7 +134,6 @@ bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms);
  
--void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm,
--                  bool smm_enabled,
--                  qemu_irq sci_irq)
-+void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm, qemu_irq sci_irq)
- {
-     memory_region_init(&pm->io, OBJECT(lpc_pci), "ich9-pm", ICH9_PMIO_SIZE);
-     memory_region_set_enabled(&pm->io, false);
-@@ -303,7 +301,7 @@ void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm,
-     acpi_pm_tmr_init(&pm->acpi_regs, ich9_pm_update_sci_fn, &pm->io);
-     acpi_pm1_evt_init(&pm->acpi_regs, ich9_pm_update_sci_fn, &pm->io);
-     acpi_pm1_cnt_init(&pm->acpi_regs, &pm->io, pm->disable_s3, pm->disable_s4,
--                      pm->s4_val, !pm->smm_compat && !smm_enabled);
-+                      pm->s4_val, !pm->smm_compat && !pm->smm_enabled);
+ /* Global System Interrupts */
  
-     acpi_gpe_init(&pm->acpi_regs, ICH9_PMIO_GPE0_LEN);
-     memory_region_init_io(&pm->io_gpe, OBJECT(lpc_pci), &ich9_gpe_ops, pm,
-@@ -314,8 +312,6 @@ void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm,
-                           "acpi-smi", 8);
-     memory_region_add_subregion(&pm->io, ICH9_PMIO_SMI_EN, &pm->io_smi);
+-#define GSI_NUM_PINS IOAPIC_NUM_PINS
+ #define ACPI_BUILD_PCI_IRQS ((1<<5) | (1<<9) | (1<<10) | (1<<11))
  
--    pm->smm_enabled = smm_enabled;
--
-     if (pm->enable_tco) {
-         acpi_pm_tco_init(&pm->tco_regs, &pm->io);
+ typedef struct GSIState {
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 8898cc9961..cbca3f5db5 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -28,7 +28,7 @@
+ #include "hw/i386/pc.h"
+ #include "hw/char/serial.h"
+ #include "hw/char/parallel.h"
+-#include "hw/i386/apic.h"
++#include "hw/i386/ioapic.h"
+ #include "hw/i386/topology.h"
+ #include "hw/i386/fw_cfg.h"
+ #include "hw/i386/vmport.h"
+@@ -406,7 +406,7 @@ GSIState *pc_gsi_create(qemu_irq **irqs, bool pci_enabled)
+     if (kvm_ioapic_in_kernel()) {
+         kvm_pc_setup_irq_routing(pci_enabled);
      }
+-    *irqs = qemu_allocate_irqs(gsi_handler, s, GSI_NUM_PINS);
++    *irqs = qemu_allocate_irqs(gsi_handler, s, IOAPIC_NUM_PINS);
+ 
+     return s;
+ }
+@@ -1295,7 +1295,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
+         sysbus_realize_and_unref(SYS_BUS_DEVICE(hpet), &error_fatal);
+         sysbus_mmio_map(SYS_BUS_DEVICE(hpet), 0, HPET_BASE);
+ 
+-        for (i = 0; i < GSI_NUM_PINS; i++) {
++        for (i = 0; i < IOAPIC_NUM_PINS; i++) {
+             sysbus_connect_irq(SYS_BUS_DEVICE(hpet), i, gsi[i]);
+         }
+         pit_isa_irq = -1;
 diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 27a1fe351d..2b34b88dc2 100644
+index 2b34b88dc2..87f1ff94be 100644
 --- a/hw/i386/pc_q35.c
 +++ b/hw/i386/pc_q35.c
-@@ -236,6 +236,8 @@ static void pc_q35_init(MachineState *machine)
-     /* create ISA bus */
-     lpc = pci_new_multifunction(PCI_DEVFN(ICH9_LPC_DEV, ICH9_LPC_FUNC), true,
-                                 TYPE_ICH9_LPC_DEVICE);
-+    qdev_prop_set_bit(DEVICE(lpc), "smm-enabled",
-+                      x86_machine_is_smm_enabled(x86ms));
-     pci_realize_and_unref(lpc, host_bus, &error_fatal);
+@@ -43,6 +43,7 @@
+ #include "hw/i386/ich9.h"
+ #include "hw/i386/amd_iommu.h"
+ #include "hw/i386/intel_iommu.h"
++#include "hw/i386/ioapic.h"
+ #include "hw/display/ramfb.h"
+ #include "hw/firmware/smbios.h"
+ #include "hw/ide/pci.h"
+@@ -265,7 +266,7 @@ static void pc_q35_init(MachineState *machine)
+     gsi_state = pc_gsi_create(&x86ms->gsi, pcmc->pci_enabled);
  
-     object_property_add_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE_PROP,
-@@ -289,9 +291,6 @@ static void pc_q35_init(MachineState *machine)
-     pc_basic_device_init(pcms, isa_bus, x86ms->gsi, &rtc_state, !mc->no_floppy,
-                          0xff0104);
- 
--    /* connect pm stuff to lpc */
--    ich9_lpc_pm_init(lpc, x86_machine_is_smm_enabled(x86ms));
--
-     if (pcms->sata_enabled) {
-         /* ahci and SATA device, for q35 1 ahci controller is built-in */
-         ahci = pci_create_simple_multifunction(host_bus,
+     lpc_dev = DEVICE(lpc);
+-    for (i = 0; i < GSI_NUM_PINS; i++) {
++    for (i = 0; i < IOAPIC_NUM_PINS; i++) {
+         qdev_connect_gpio_out_named(lpc_dev, ICH9_GPIO_GSI, i, x86ms->gsi[i]);
+     }
+     isa_bus = ISA_BUS(qdev_get_child_bus(lpc_dev, "isa.0"));
 diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index 1b7e5585b3..7d21857d53 100644
+index b2842f2743..808c572ae4 100644
 --- a/hw/isa/lpc_ich9.c
 +++ b/hw/isa/lpc_ich9.c
-@@ -407,14 +407,13 @@ static void smi_features_ok_callback(void *opaque)
-     lpc->smi_features_ok = 1;
- }
+@@ -717,7 +717,7 @@ static void ich9_lpc_realize(PCIDevice *d, Error **errp)
+                                         ICH9_RST_CNT_IOPORT, &lpc->rst_cnt_mem,
+                                         1);
  
--void ich9_lpc_pm_init(PCIDevice *lpc_pci, bool smm_enabled)
-+static void ich9_lpc_pm_init(ICH9LPCState *lpc)
- {
--    ICH9LPCState *lpc = ICH9_LPC_DEVICE(lpc_pci);
-     qemu_irq sci_irq;
-     FWCfgState *fw_cfg = fw_cfg_find();
+-    qdev_init_gpio_out_named(dev, lpc->gsi, ICH9_GPIO_GSI, GSI_NUM_PINS);
++    qdev_init_gpio_out_named(dev, lpc->gsi, ICH9_GPIO_GSI, IOAPIC_NUM_PINS);
  
-     sci_irq = qemu_allocate_irq(ich9_set_sci, lpc, 0);
--    ich9_pm_init(lpc_pci, &lpc->pm, smm_enabled, sci_irq);
-+    ich9_pm_init(PCI_DEVICE(lpc), &lpc->pm, sci_irq);
+     isa_bus_irqs(isa_bus, lpc->gsi);
  
-     if (lpc->smi_host_features && fw_cfg) {
-         uint64_t host_features_le;
-@@ -731,6 +730,8 @@ static void ich9_lpc_realize(PCIDevice *d, Error **errp)
-     pci_bus_irqs(pci_bus, ich9_lpc_set_irq, d, ICH9_LPC_NB_PIRQS);
-     pci_bus_map_irqs(pci_bus, ich9_lpc_map_irq);
-     pci_bus_set_route_irq_fn(pci_bus, ich9_route_intx_pin_to_irq);
-+
-+    ich9_lpc_pm_init(lpc);
- }
- 
- static bool ich9_rst_cnt_needed(void *opaque)
-@@ -797,6 +798,7 @@ static const VMStateDescription vmstate_ich9_lpc = {
- static Property ich9_lpc_properties[] = {
-     DEFINE_PROP_BOOL("noreboot", ICH9LPCState, pin_strap.spkr_hi, false),
-     DEFINE_PROP_BOOL("smm-compat", ICH9LPCState, pm.smm_compat, false),
-+    DEFINE_PROP_BOOL("smm-enabled", ICH9LPCState, pm.smm_enabled, false),
-     DEFINE_PROP_BIT64("x-smi-broadcast", ICH9LPCState, smi_host_features,
-                       ICH9_LPC_SMI_F_BROADCAST_BIT, true),
-     DEFINE_PROP_BIT64("x-smi-cpu-hotplug", ICH9LPCState, smi_host_features,
 -- 
 2.39.1
 
