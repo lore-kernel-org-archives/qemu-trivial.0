@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMum5-0004qv-7J
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 12:50:29 -0500
+	id 1pMuyN-0007m5-9x
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 13:03:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pMum0-0004qX-2R; Tue, 31 Jan 2023 12:50:26 -0500
-Received: from mout.kundenserver.de ([212.227.126.133])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pMuy4-0007i8-FR
+ for qemu-trivial@nongnu.org; Tue, 31 Jan 2023 13:02:52 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pMuly-000700-C2; Tue, 31 Jan 2023 12:50:23 -0500
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MZAvp-1p9OEM2l7J-00VCET; Tue, 31 Jan 2023 18:50:11 +0100
-Message-ID: <a6fd96bc-2a63-7503-a848-171ac48de3d3@vivier.eu>
-Date: Tue, 31 Jan 2023 18:50:10 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pMuy2-0000xY-Tv
+ for qemu-trivial@nongnu.org; Tue, 31 Jan 2023 13:02:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1675188169;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=KLdxxr3qSHiOq28ONtW9plm5wXv9Oju859TBaSRrwu0=;
+ b=Svc+5Psflqrs0cbCL0naABWc2XELv6d0YPffU9kTFedyHOtvZFpfB3MTC0S2YzAbpnsFIU
+ yttOkrXnc5fmdBWoCQL3W7dZLsgykPOse9yrsqk94JgYyU9s4BPK8TclsCiAJO3FOhxnrW
+ xxbaVgZmsz7Hv2OxrRf5ATRvt6/LLA0=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-226-8ZkvvoGoMCWoXUDUK3rXCw-1; Tue, 31 Jan 2023 13:02:43 -0500
+X-MC-Unique: 8ZkvvoGoMCWoXUDUK3rXCw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5975885A588;
+ Tue, 31 Jan 2023 18:02:43 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B477D112132C;
+ Tue, 31 Jan 2023 18:02:41 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-trivial@nongnu.org,
+	anthony.perard@citrix.com,
+	berrange@redhat.com
+Subject: [PATCH] configure: Bump minimum Clang version to 10.0
+Date: Tue, 31 Jan 2023 19:02:39 +0100
+Message-Id: <20230131180239.1582302-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH qemu 1/1] vmxnet3: add mac address restore upon reset
-Content-Language: fr
-To: ~vlaomao <vlaomao@gmail.com>
-Cc: jasowang@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- dmitry@daynix.com
-References: <167510561992.30819.15402058368832100381-1@git.sr.ht>
-From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <167510561992.30819.15402058368832100381-1@git.sr.ht>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:M5VJPNEFF8EkaSGLk80pWtqP7PeO1yEJigUWiALdAb3BDcUrsH8
- GeYo0AkrUwKIKs4hxPQ8c2TFqEhW2MGFzCUvz94a0ZXYHYfqOJoi09uSM8/o6WUwsRzGHxo
- kqEyP22MGulYp7vc70Qu4qBeBHfzVDJE15AGphdNjdbDfrnzK1K8AQEziOIlia9zY/MvOdv
- jkBljVWRMVgFmB78yVPFg==
-UI-OutboundReport: notjunk:1;M01:P0:ZHgBXKhOkOE=;FD9oFICHA1pNNjwDIe2L+E4LGMw
- yzLNDoOLbncrkZUVwQt1XI4iHqbXmMwqnTGFFKuVbONsOsHEQmDeKO09Sm1n8rQj9bk7Ksjw9
- RLiorNtbyLuEWhLpfxwNgOtnUs3I/VrxaT+E3jeBJzand9P1F7vfNjuAsmiRgT7vchnzaJLm9
- h2mUUu6i8ZnBEL8/9ddxsfWcKdIWVPvsT5GTSv4nnzhd9YY0aKG8i0fRhnEnAW7W+N4UR/GQm
- f7PWasGr965OZatKXzRL64U3HIpjMYLdL7uZhmuqIHCxQL5MVKAXarf9fKYxwqzY+NoR2WYfN
- F7+IlKWTyCbIvzoedQH/pOy3ALwcMrcHtqT/1qEfAZtKgnfkQm42ydyfCzeT1rd45aAQO31mH
- UMRrk4X9UHdGdrxnHGJbLhJ/u3UNKfHAtMtK6Zs2yWzHP2EBIv84+4ew1MMrX2a6K4bhfckXO
- wf27+B2d51kovZ73FZyaMxubjKH95twE+NThNnW5YqZpqDh4kj6YbUiCXZX3R7dyYQZpCrThC
- 3VIjgvcH9Bb9BapTtqgyxI2fMPRmmaSqvvGT6yCLQpVPZnQog2lwGcS5ZN1tJ307lyC+JE+Kx
- qybb+TTih63Kjl28ekwXpHT4RWcWPWdyxYEgApuR9et1Vd+cBo4xIMXEM4evl6eiCEnp0Q4jg
- 9xN6yJIaMlDVN6bDK3/Zvy/iwGRv8bGyUslvmc+GvQ==
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.09,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,39 +65,102 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 17:50:27 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 18:02:56 -0000
 
-Le 30/01/2023 à 18:28, ~vlaomao a écrit :
-> From: VlaoMao <vlaomao@gmail.com>
-> 
-> Changing the address with a subsequent reboot makes this address permanent until the vm is turned off
-> ---
-> Signed-off-by: Vlao Mao <vlaomao@gmail.com>
+Anthony Perard recently reported some problems with Clang v6.0 from
+Ubuntu Bionic (with regards to the -Wmissing-braces configure test).
+Since we're not officially supporting that version of Ubuntu anymore,
+we should better bump our minimum version check in the configure script
+instead of using our time to fix problems of unsupported compilers.
+According to repology.org, our supported distros ship these versions
+of Clang (looking at the highest version only):
 
-As the Signed-off-by is part of the commit message it must be set before the signature signs ("---").
+              Fedora 36: 14.0.5
+      CentOS 8 (RHEL-8): 12.0.1
+              Debian 11: 13.0.1
+     OpenSUSE Leap 15.4: 13.0.1
+       Ubuntu LTS 20.04: 12.0.0
+          FreeBSD Ports: 15.0.7
+          NetBSD pkgsrc: 15.0.7
+               Homebrew: 15.0.7
+            MSYS2 mingw: 15.0.7
+            Haiku ports: 12.0.1
 
-And the "From:" field must have the same value as the "Signed-off-by:" field (a space is missing in 
-your "From:" field -> Vlao Mao).
+While it seems like we could update to v12.0.0 from that point of view,
+the default version on Ubuntu 20.04 is still v10.0, and we use that for
+our CI tests based via the tests/docker/dockerfiles/ubuntu2004.docker
+file.
 
-Thanks,
-Laurent
+Thus let's make v10.0 our minimum version now (which corresponds to
+Apple Clang version v12.0). The -Wmissing-braces check can then be
+removed, too, since both our minimum GCC and our minimum Clang version
+now handle this correctly.
 
-> 
->   hw/net/vmxnet3.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
-> index 04159c822..695ca2f92 100644
-> --- a/hw/net/vmxnet3.c
-> +++ b/hw/net/vmxnet3.c
-> @@ -1206,6 +1206,8 @@ static void vmxnet3_reset(VMXNET3State *s)
->       s->drv_shmem = 0;
->       s->tx_sop = true;
->       s->skip_current_tx_pkt = false;
-> +
-> +    vmxnet3_reset_mac(s);
->   }
->   
->   static void vmxnet3_update_rx_mode(VMXNET3State *s)
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ configure | 25 ++++++-------------------
+ 1 file changed, 6 insertions(+), 19 deletions(-)
+
+diff --git a/configure b/configure
+index 9e407ce2e3..17732736ca 100755
+--- a/configure
++++ b/configure
+@@ -1018,7 +1018,7 @@ cat << EOF
+   debug-tcg       TCG debugging (default is disabled)
+   debug-info      debugging information
+   safe-stack      SafeStack Stack Smash Protection. Depends on
+-                  clang/llvm >= 3.7 and requires coroutine backend ucontext.
++                  clang/llvm and requires coroutine backend ucontext.
+ 
+ NOTE: The object files are built at the place where configure is launched
+ EOF
+@@ -1138,12 +1138,12 @@ fi
+ cat > $TMPC << EOF
+ #if defined(__clang_major__) && defined(__clang_minor__)
+ # ifdef __apple_build_version__
+-#  if __clang_major__ < 10 || (__clang_major__ == 10 && __clang_minor__ < 0)
+-#   error You need at least XCode Clang v10.0 to compile QEMU
++#  if __clang_major__ < 12 || (__clang_major__ == 12 && __clang_minor__ < 0)
++#   error You need at least XCode Clang v12.0 to compile QEMU
+ #  endif
+ # else
+-#  if __clang_major__ < 6 || (__clang_major__ == 6 && __clang_minor__ < 0)
+-#   error You need at least Clang v6.0 to compile QEMU
++#  if __clang_major__ < 10 || (__clang_major__ == 10 && __clang_minor__ < 0)
++#   error You need at least Clang v10.0 to compile QEMU
+ #  endif
+ # endif
+ #elif defined(__GNUC__) && defined(__GNUC_MINOR__)
+@@ -1156,7 +1156,7 @@ cat > $TMPC << EOF
+ int main (void) { return 0; }
+ EOF
+ if ! compile_prog "" "" ; then
+-    error_exit "You need at least GCC v7.4 or Clang v6.0 (or XCode Clang v10.0)"
++    error_exit "You need at least GCC v7.4 or Clang v10.0 (or XCode Clang v12.0)"
+ fi
+ 
+ # Accumulate -Wfoo and -Wno-bar separately.
+@@ -1261,19 +1261,6 @@ EOF
+   fi
+ fi
+ 
+-# Disable -Wmissing-braces on older compilers that warn even for
+-# the "universal" C zero initializer {0}.
+-cat > $TMPC << EOF
+-struct {
+-  int a[2];
+-} x = {0};
+-EOF
+-if compile_object "-Werror" "" ; then
+-  :
+-else
+-  QEMU_CFLAGS="$QEMU_CFLAGS -Wno-missing-braces"
+-fi
+-
+ # Our module code doesn't support Windows
+ if test "$modules" = "yes" && test "$mingw32" = "yes" ; then
+   error_exit "Modules are not available for Windows"
+-- 
+2.31.1
 
 
