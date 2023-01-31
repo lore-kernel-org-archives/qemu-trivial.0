@@ -1,65 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMxY9-00017d-Jo
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 15:48:17 -0500
+	id 1pMxYC-0001Ao-DB
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 15:48:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vlaomao@gmail.com>)
- id 1pMvIV-0005J6-B7; Tue, 31 Jan 2023 13:23:59 -0500
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ id 1pMvzo-0006Hc-1l; Tue, 31 Jan 2023 14:08:44 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <vlaomao@gmail.com>)
- id 1pMvIT-00050y-Sj; Tue, 31 Jan 2023 13:23:59 -0500
-Received: by mail-pj1-x1029.google.com with SMTP id
- ha3-20020a17090af3c300b00230222051a6so1618418pjb.2; 
- Tue, 31 Jan 2023 10:23:57 -0800 (PST)
+ id 1pMvzm-0005rh-C2; Tue, 31 Jan 2023 14:08:43 -0500
+Received: by mail-ed1-x535.google.com with SMTP id u21so15421933edv.3;
+ Tue, 31 Jan 2023 11:08:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6cIpJ4gpd6TFREbsruT2XVU6Jcq/2UIIj9+nypPblTE=;
- b=bTMPjqcwSEOtSqSRwYBnmEjSTVrLqgufVZ+fP3DwvyAksxrbnfpUxWBWms0MZVCcUI
- 5a+wIVKfj2jNIIuQkJJNsHeDu8aFefMXow0CK6ibaOPiBfmyQ9q+Rkh3e7+YgpD01oWm
- 748han0Bv6yFbM+7XKT5Xxgbnrbeq0X6XF3cKe/MP61l9zwFGjzgqAq3WF98begZILER
- HPWg9wWRj9gl2/N2K6Nwoghz6Phypt2JaN/IqG/lIwJnStUKsKUVJR23O8KiDmQWl5r2
- nsbkbwKeuHRkS4ZyQ13XezF2EBCVzGWys6HjCzrYymA1hrIoZffORIoCenNUGxwCQv1T
- Yk/w==
+ bh=Rbx9lZKYybUGDiuqfOstHksGOjQZPphBpzZ3hm5xmLc=;
+ b=o8XGPlc4cAHUTZqwkt9f57rCkqBtZOWVomoovt/agau8LWpyfdU1n+uhy4NnWdrgVx
+ myfbhsWW3Ksr3aUCo3nkdIW+YwcqA6sw9oa9WuiEZ5WKN5HT451AHNvKeHbp8N1TBgon
+ JNJGWpxT1onlPW78eYmzJKrCMIxIvGmZUpTcMKgK8JgLs33+sVjpOkUt5pKITQmvffm+
+ y6zlT5KcV4s1Tbtd/7Zx4gmPKP7t1e+wtThkB21z0QRRCFT5APCwBbsgyC0fwB9DGcWE
+ Rzi/XapM3AE98fo1Wed/wZ6vNKAb/T9/UanwXZRY3FuWzeEFv+PJxtLHbF7ZM0kqzZ2n
+ WyNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6cIpJ4gpd6TFREbsruT2XVU6Jcq/2UIIj9+nypPblTE=;
- b=HWiNwDFzCZDlrAdOyvbuN8LU3Y7uQyQsjx3iaszCHBeR9jx0hFzlvrJfbYROzgjJf6
- ov7+6bt055XPIshJEwMQ0qh/VE3DztXXfuZdRFFx3wlVV2fi2GGN1A40JW66In5cbCxx
- Jypbwvw5m8i3WtGdZekWjvx1pJ4NpcfBd8sJLTZCqgfpG7PWY7w6sDVuWJcN8qGO2cGy
- rvZ6Byzdr3ERgg9k83J5oXm70LFt8QNGvYWefo2a2Ig7sSvNS199IWrQlZ6tXt4uUX4T
- V9tGFC3oACTjSB7OF4gvuJckTI2SZoAl9YfM+LlcdMPG+2rsrBrReCMGw6O5cGSmVkqj
- GsZw==
-X-Gm-Message-State: AO0yUKWK5NvZb9nceYlfGt9a9lFmLYlBJ2OEsSz0YkeyfbXmdxPKKHXj
- CviD8RdR5rk4bwLlwyN85yKy86TbNQsAZrB7
-X-Google-Smtp-Source: AK7set/nVxvtlX0eqxGQX9uAHJ7x0Z8qxiuc9VgaZfI5DCm4GpU6pW9pNP/PrrZGwF/uDlnr5oScqQ==
-X-Received: by 2002:a17:90b:38c7:b0:230:efe:69c3 with SMTP id
- nn7-20020a17090b38c700b002300efe69c3mr4208910pjb.25.1675189436063; 
- Tue, 31 Jan 2023 10:23:56 -0800 (PST)
-Received: from localhost.localdomain ([94.181.144.4])
- by smtp.googlemail.com with ESMTPSA id
- h18-20020a17090adb9200b001ef8ab65052sm9134313pjv.11.2023.01.31.10.23.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 10:23:55 -0800 (PST)
-From: Vlao Mao <vlaomao@gmail.com>
-To: dmitry@daynix.com
-Cc: jasowang@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- laurent@vivier.eu
-Subject: [PATCH qemu 1/1] vmxnet3: add mac address restore upon reset
-Date: Tue, 31 Jan 2023 21:23:37 +0300
-Message-Id: <20230131182337.15645-2-vlaomao@gmail.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20230131182337.15645-1-vlaomao@gmail.com>
-References: <20230131182337.15645-1-vlaomao@gmail.com>
+ bh=Rbx9lZKYybUGDiuqfOstHksGOjQZPphBpzZ3hm5xmLc=;
+ b=Vs4N7cdytwz1G4DDSGN6ZnqgIVojDi7qaexM6jC1Gk2Qn0jlptn7bTnZAmQjA0BFbp
+ /Dlbq8wJc0uTjkV+P74Q4RyWQaJCXTDsZMGGlPsKgbqmAL3Nyt8bL31dChWRs+um2kak
+ XwskrcVE6B00SNhdFDk96LWGP32U8FrNBgpV5raQqhpkPVX40z1g1P2DlEKSWSULymPK
+ Nh8lIGgHMH/9Y0qt78ngPW8ZXzSs0GRtEBGG4uezI3fp57XbUoMfdrk6osiY3nArBaAH
+ RTD4LQ9Lqdoq6Ozuiuj01b2amSjZiehjjn20xPUIpeebowKVVUSlKPcwO8EqeVCdGQjq
+ 0G6w==
+X-Gm-Message-State: AFqh2kpfFKvj4H+lOeqnaovS4KXRurpYQRGzW0HteRoM42qISWNG3eGO
+ MH8nlD8YJkHGRJ0ePrQIpf1fX0/OigSLxlSJexM=
+X-Google-Smtp-Source: AMrXdXu17HSJ/OpDBjSaTQe6MTkpMsv0mhGVRjGYz1WipMGiz8OcACISRX5lzfaMs+K9yBPdhth7CcAORdnloK7B4PQ=
+X-Received: by 2002:aa7:cc99:0:b0:499:cfee:8d96 with SMTP id
+ p25-20020aa7cc99000000b00499cfee8d96mr10462452edt.21.1675192119976; Tue, 31
+ Jan 2023 11:08:39 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=vlaomao@gmail.com; helo=mail-pj1-x1029.google.com
+References: <20230131182048.15535-1-vlaomao@gmail.com>
+ <CAFEAcA-7S75kL=GOiAO_pem=3RkacGL4mKe6dehibrbLc-k2uw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-7S75kL=GOiAO_pem=3RkacGL4mKe6dehibrbLc-k2uw@mail.gmail.com>
+From: =?UTF-8?B?0JLQu9Cw0LQg0JzQsNC+?= <vlaomao@gmail.com>
+Date: Tue, 31 Jan 2023 22:08:25 +0300
+Message-ID: <CALUgVpd_XoW_zi4s9KOhifmUL+-eAJzWWui+zD-8OE-w6iRnxg@mail.gmail.com>
+Subject: Re: [PATCH qemu 0/1] MAC address falls to permanent
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: dmitry@daynix.com, jasowang@redhat.com, qemu-trivial@nongnu.org, 
+ qemu-devel@nongnu.org, laurent@vivier.eu
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=vlaomao@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -68,7 +63,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 31 Jan 2023 15:48:14 -0500
+X-Mailman-Approved-At: Tue, 31 Jan 2023 15:48:15 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,29 +75,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 18:23:59 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 19:08:44 -0000
 
-Changing the address with a subsequent reboot makes this address permanent until the vm is turned off
+I cannot say for sure, but e1000 does not have this behavior, vmxnet3
+in vmware also does not behave this way.
+In addition, the address gets there only after a reboot, it does not
+get there during normal operation, as you can see from logs i
+attached. It seems to me that this is not quite the expected behavior,
+isn't it?
 
-Signed-off-by: Vlao Mao <vlaomao@gmail.com>
----
- hw/net/vmxnet3.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
-index 04159c8222..695ca2f923 100644
---- a/hw/net/vmxnet3.c
-+++ b/hw/net/vmxnet3.c
-@@ -1206,6 +1206,8 @@ static void vmxnet3_reset(VMXNET3State *s)
-     s->drv_shmem = 0;
-     s->tx_sop = true;
-     s->skip_current_tx_pkt = false;
-+
-+    vmxnet3_reset_mac(s);
- }
- 
- static void vmxnet3_update_rx_mode(VMXNET3State *s)
--- 
-2.35.1
-
+=D0=B2=D1=82, 31 =D1=8F=D0=BD=D0=B2. 2023 =D0=B3. =D0=B2 21:48, Peter Mayde=
+ll <peter.maydell@linaro.org>:
+>
+> On Tue, 31 Jan 2023 at 18:22, Vlao Mao <vlaomao@gmail.com> wrote:
+> >
+> > A bug was found with the vmxnet3 driver, after changing the MAC address
+> > and rebooting, it falls into the category of a permanent address until
+> > the VM is turned off.
+>
+> For some network device models (those where the hardware has an
+> EEPROM and we're modelling "guest programmed a new MAC address
+> into the EEPROM") that is the correct behaviour. Is the vmxnet3
+> definitely one of the kind which is not supposed to have a
+> permanent MAC address backing storage ? (It's paravirtual, so
+> this would hopefully be indicated in the specs for it.)
+>
+> thanks
+> -- PMM
 
