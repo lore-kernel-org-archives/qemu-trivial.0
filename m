@@ -1,40 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMa1E-0006yF-Af
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Jan 2023 14:40:44 -0500
+	id 1pMm5O-0007tD-0B
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 03:33:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pMZUd-000830-4V; Mon, 30 Jan 2023 14:07:03 -0500
-Received: from mail-b.sr.ht ([173.195.146.151])
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1pMm5L-0007sL-Kq; Tue, 31 Jan 2023 03:33:47 -0500
+Received: from forwardcorp1c.mail.yandex.net ([178.154.239.200])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pMZUb-0002qX-PD; Mon, 30 Jan 2023 14:07:02 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 3021211EF13;
- Mon, 30 Jan 2023 19:07:00 +0000 (UTC)
-From: ~vlaomao <vlaomao@git.sr.ht>
-Date: Mon, 30 Jan 2023 20:28:44 +0300
-Subject: [PATCH qemu 1/1] vmxnet3: add mac address restore upon reset
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1pMm5J-0000yR-MT; Tue, 31 Jan 2023 03:33:47 -0500
+Received: from myt6-23a5e62c0090.qloud-c.yandex.net
+ (myt6-23a5e62c0090.qloud-c.yandex.net
+ [IPv6:2a02:6b8:c12:1da3:0:640:23a5:e62c])
+ by forwardcorp1c.mail.yandex.net (Yandex) with ESMTP id CACF45E7B0;
+ Tue, 31 Jan 2023 11:33:24 +0300 (MSK)
+Received: from [IPV6:2a02:6b8:b081:b42f::1:11] (unknown
+ [2a02:6b8:b081:b42f::1:11])
+ by myt6-23a5e62c0090.qloud-c.yandex.net (smtpcorp/Yandex) with ESMTPSA id
+ MXQcqC0QYiE1-xQNVObYN; Tue, 31 Jan 2023 11:33:23 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
+ s=default; 
+ t=1675154003; bh=/ZzzXnxJEUhn1s6JzrmNCMDRn/vHMwKPIB2mhIMVEtg=;
+ h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+ b=UNWvpsrE/NP5qGkRgDHvkICtiAG4GotoGADlg4qZgB1KUoXTKpQBLxJYZlpHXOZvL
+ SfZqo1MfuoDmqNsUmsfE55g/WgnmbQdBsDO5I3oZ8/V2oVCRIP6WDf2XFWgRNwUTN6
+ bCXU6jO6JIEVahr3oVJOAqXPXuUQbigONyMI7yFQ=
+Authentication-Results: myt6-23a5e62c0090.qloud-c.yandex.net;
+ dkim=pass header.i=@yandex-team.ru
+Message-ID: <f37db85a-b0aa-b34a-7d5a-b1ab650f1683@yandex-team.ru>
+Date: Tue, 31 Jan 2023 11:33:22 +0300
 MIME-Version: 1.0
-Message-ID: <167510561992.30819.15402058368832100381-1@git.sr.ht>
-X-Mailer: git.sr.ht
-Reply-to: ~vlaomao <vlaomao@gmail.com>
-In-Reply-To: <167510561992.30819.15402058368832100381-0@git.sr.ht>
-To: dmitry@daynix.com
-Cc: jasowang@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- laurent@vivier.eu
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 2
-X-Spam_score: 0.2
-X-Spam_bar: /
-X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_REPLYTO=2.095,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v3] migration: Remove res_compatible parameter
+Content-Language: en-US
+To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ Hanna Reitz <hreitz@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Eric Blake <eblake@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Fam Zheng <fam@euphon.net>, David Hildenbrand <david@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, John Snow <jsnow@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Eric Farman <farman@linux.ibm.com>, qemu-s390x@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
+ Klaus Jensen <its@irrelevant.dk>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ Laurent Vivier <laurent@vivier.eu>, Xiaojuan Yang
+ <yangxiaojuan@loongson.cn>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Keith Busch <kbusch@kernel.org>, Thomas Huth <huth@tuxfamily.org>,
+ Song Gao <gaosong@loongson.cn>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ virtio-fs@redhat.com
+References: <20230130080608.2100-1-quintela@redhat.com>
+From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+In-Reply-To: <20230130080608.2100-1-quintela@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=178.154.239.200;
+ envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1c.mail.yandex.net
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 30 Jan 2023 14:40:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,31 +88,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Jan 2023 19:07:03 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 08:33:48 -0000
 
-From: VlaoMao <vlaomao@gmail.com>
+On 1/30/23 11:06, Juan Quintela wrote:
+> It was only used for RAM, and in that case, it means that this amount
+> of data was sent for memory.  Just delete the field in all callers.
 
-Changing the address with a subsequent reboot makes this address permanent un=
-til the vm is turned off
----
-Signed-off-by: Vlao Mao <vlaomao@gmail.com>
+Could you describe, why it's safe to change the behavior for RAM?
 
- hw/net/vmxnet3.c | 2 ++
- 1 file changed, 2 insertions(+)
+Also, I think it would be a lot better to split the change for RAM (s/res_compatible/res_postcopy) in one patch, and then drop the totally unused res_compatible file in the second patch
 
-diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
-index 04159c822..695ca2f92 100644
---- a/hw/net/vmxnet3.c
-+++ b/hw/net/vmxnet3.c
-@@ -1206,6 +1206,8 @@ static void vmxnet3_reset(VMXNET3State *s)
-     s->drv_shmem =3D 0;
-     s->tx_sop =3D true;
-     s->skip_current_tx_pkt =3D false;
-+
-+    vmxnet3_reset_mac(s);
- }
-=20
- static void vmxnet3_update_rx_mode(VMXNET3State *s)
---=20
-2.34.5
+
+-- 
+Best regards,
+Vladimir
+
 
