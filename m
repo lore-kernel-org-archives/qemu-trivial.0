@@ -1,79 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMpDk-00084q-E0
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:54:40 -0500
+	id 1pMqqq-000351-EQ
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 08:39:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpDX-0007ao-BN; Tue, 31 Jan 2023 06:54:34 -0500
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpDV-0002UD-Em; Tue, 31 Jan 2023 06:54:27 -0500
-Received: by mail-lf1-x133.google.com with SMTP id u12so13276773lfq.0;
- Tue, 31 Jan 2023 03:54:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=JpV0VXPFV+veIfQCqfhElqv7o/IlC5FYc5Xa7nt93Zs=;
- b=V2AWkvLELj5yqeXmX4sAv6Iyrmu7uRvYZ1nTwYFZ00ifFpdgkUsAza+NA+t569OKlj
- VXTuHaL0Bqoudee1Sqj0iI1LQePQu8vqyhHw5zPBid9kL9E7q3Zrs3X4H5fQdyQqS40S
- tSOZzH2oIAG4ygqvDF9kfBnz7qqV2evk8Xwu7YNYf90sDbXRrXWZGhB5Y0gsspL6U1zV
- FPAAZrSAXPT4OVt25l5ZoWo/8V4THUPk3POkxo121siLMAh7G4f26eHy63mxaa2+rbZP
- z3RzpgZW8PSUN5wwJKBUVSMu9NlDTe0TEA2tX1oWCWhCsiS6OXYJzomqxkD8JaXCTrnL
- xWew==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pMqqe-000313-2P
+ for qemu-trivial@nongnu.org; Tue, 31 Jan 2023 08:38:56 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pMqqb-0005N0-VS
+ for qemu-trivial@nongnu.org; Tue, 31 Jan 2023 08:38:55 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1675172332;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CsKL8LFDr+9eMvcpykI66QvN/ZpiJF7KXn1V4M2gCP8=;
+ b=HbXy4tmVW8WJ7ex1CHs+uSlufycb8Zx4mvE6ZFebdV3TNM/JI6D27wHsl01oISIYRbILP3
+ ZuTZ6bHtU+KohNzKY8WLswbsiyWOGHkYS3sLqKy/i0yFFxGftfn4AwXo69GBGw6zFKdxsL
+ a2zIN2DLBIuPxrQoxoM1F/UFRAbSja8=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-42-l7Ou5xJTMU-t1PoDyVRX3Q-1; Tue, 31 Jan 2023 08:38:49 -0500
+X-MC-Unique: l7Ou5xJTMU-t1PoDyVRX3Q-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ a3-20020a05620a438300b007069b068069so9041337qkp.2
+ for <qemu-trivial@nongnu.org>; Tue, 31 Jan 2023 05:38:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=JpV0VXPFV+veIfQCqfhElqv7o/IlC5FYc5Xa7nt93Zs=;
- b=DeHcfSjUFPyI9nGWmFP7GbrEub/YbFUKctp0BEciK3o7XQoBTaEV67z0ooiCz2z6Uy
- Mf3IC1llgxMgf4t8rvijnAilV9d7KUdYNCM/d6KLkZIcInl/qd5U5730BN6EVvU+3dYQ
- BtN8O94Es5nkf1PB4kjoECy4RLfaGr7jBaAQ4fOxQzYFxOSoSpT4slj6Wx/oBeba3y5d
- RkNTUxTPqYLl2kUMnz4OzBTEj+u3MM9ji9VIl+2O+Du5hoXsd1CFdykUX9KVsxgHIAIS
- os+m7sGA9G4Rf3JVZifAy4XxDWPy9jwGNwRUcNYvD2y0S2lCqsevpY4GT5o3uHM0fIep
- yqxA==
-X-Gm-Message-State: AO0yUKVnOEsI1ACLmVBKtJWfILqSeUNPt//k53S851Hlk7gZmAJswHHf
- 1YQ2KBUpH7z6pERP7OaB9NXPW6t5z48=
-X-Google-Smtp-Source: AMrXdXt+CAachw/qlayHkhZNQuju3cxnVqcd3SJaX5o6xKiwVoGI0Hm7PnTBgRgR6NsVJpGz2HnEbw==
-X-Received: by 2002:a05:6402:4447:b0:497:c96b:4dea with SMTP id
- o7-20020a056402444700b00497c96b4deamr122358538edb.5.1675166051869; 
- Tue, 31 Jan 2023 03:54:11 -0800 (PST)
-Received: from localhost.localdomain
- (dynamic-077-013-082-236.77.13.pool.telefonica.de. [77.13.82.236])
- by smtp.gmail.com with ESMTPSA id
- c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.54.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 03:54:11 -0800 (PST)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=CsKL8LFDr+9eMvcpykI66QvN/ZpiJF7KXn1V4M2gCP8=;
+ b=JehkBzo4rtxltkcltrctqbT3VmfUHH5kjOniPctrp1ixlvUHVmRGdiDVIOjCXar6k9
+ dhtKE+7Df4wkbDnbtevPUznHPMETR9vnqI1m74xkZYFak+TwdB+7k3MfVQwknDeAGcN7
+ RPNB1m/ojUSvIHlR4IqKhcvwfLbtsqYPdN6Jh73xAV+sUFsaMnEDPrPIDAR3cvAhgZhV
+ mmXaTj6GxedSlhkbVljVQFh3Mi21K1WoPmHM03FSMZW/HrqtbHVSJt3gAn7uSXw1uMM5
+ NC5wX6wmz20xcdLlNx4hFB0l3gIB1/OKUwugtpv22tvrS0X52QrIvQf/NBCEKHKe/1of
+ 0yww==
+X-Gm-Message-State: AO0yUKXJSqGj1t/CPIOJWOOpN30W2JEIySL9NETxrIadeyedTgLRvAip
+ 5sbzkcDkUfsISBT1mWOZuVvseGMlxUYXIUeICmKX+0qCcHTz28hOZgjEMPj8IqNuUGqXnO3FmlV
+ kt6PJL86muYGkJvzyhA==
+X-Received: by 2002:ad4:5aa6:0:b0:53c:4375:22f4 with SMTP id
+ u6-20020ad45aa6000000b0053c437522f4mr13482123qvg.26.1675172329085; 
+ Tue, 31 Jan 2023 05:38:49 -0800 (PST)
+X-Google-Smtp-Source: AK7set/ZrtYXOca10MoBtzglBZ1ZzpBQAbNs7XIPMmHbYinQ6dfCwEYu8g7xR6BfMlK/KU9xHWzD9Q==
+X-Received: by 2002:ad4:5aa6:0:b0:53c:4375:22f4 with SMTP id
+ u6-20020ad45aa6000000b0053c437522f4mr13482086qvg.26.1675172328843; 
+ Tue, 31 Jan 2023 05:38:48 -0800 (PST)
+Received: from [192.168.0.2] (ip-109-43-176-155.web.vodafone.de.
+ [109.43.176.155]) by smtp.gmail.com with ESMTPSA id
+ v4-20020a379304000000b006cec8001bf4sm9994395qkd.26.2023.01.31.05.38.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Jan 2023 05:38:48 -0800 (PST)
+Message-ID: <3008ba21-6d33-9944-420d-37349dd6ba25@redhat.com>
+Date: Tue, 31 Jan 2023 14:38:45 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v2 02/20] hw/pci-host/q35: Inline sysbus_add_io()
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ani Sinha <ani@anisinha.ca>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Ani Sinha
+ <ani@anisinha.ca>, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- Thomas Huth <thuth@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <lvivier@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 20/20] hw: Move ich9.h to southbridge/
-Date: Tue, 31 Jan 2023 12:53:26 +0100
-Message-Id: <20230131115326.12454-21-shentey@gmail.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230131115326.12454-1-shentey@gmail.com>
+ Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org
 References: <20230131115326.12454-1-shentey@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::133;
- envelope-from=shentey@gmail.com; helo=mail-lf1-x133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20230131115326.12454-3-shentey@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230131115326.12454-3-shentey@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,174 +98,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 11:54:38 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 13:39:02 -0000
 
-ICH9 is a south bridge which doesn't necessarily depend on x86, so move
-it into the southbridge folder, analoguous to PIIX.
+On 31/01/2023 12.53, Bernhard Beschow wrote:
+> sysbus_add_io() just wraps memory_region_add_subregion() while also
+> obscuring where the memory is attached. So use
+> memory_region_add_subregion() directly and attach it to the existing
+> memory region s->mch.address_space_io which is set as an alias to
+> get_system_io() by the q35 machine.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/pci-host/q35.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 26390863d6..fa05844319 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -50,10 +50,12 @@ static void q35_host_realize(DeviceState *dev, Error **errp)
+>       Q35PCIHost *s = Q35_HOST_DEVICE(dev);
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>   
+> -    sysbus_add_io(sbd, MCH_HOST_BRIDGE_CONFIG_ADDR, &pci->conf_mem);
+> +    memory_region_add_subregion(s->mch.address_space_io,
+> +                                MCH_HOST_BRIDGE_CONFIG_ADDR, &pci->conf_mem);
+>       sysbus_init_ioports(sbd, MCH_HOST_BRIDGE_CONFIG_ADDR, 4);
+>   
+> -    sysbus_add_io(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, &pci->data_mem);
+> +    memory_region_add_subregion(s->mch.address_space_io,
+> +                                MCH_HOST_BRIDGE_CONFIG_DATA, &pci->data_mem);
+>       sysbus_init_ioports(sbd, MCH_HOST_BRIDGE_CONFIG_DATA, 4);
+>   
+>       /* register q35 0xcf8 port as coalesced pio */
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- MAINTAINERS                             | 1 +
- include/hw/{i386 => southbridge}/ich9.h | 6 +++---
- hw/acpi/ich9.c                          | 2 +-
- hw/acpi/ich9_tco.c                      | 2 +-
- hw/i2c/smbus_ich9.c                     | 2 +-
- hw/i386/acpi-build.c                    | 2 +-
- hw/i386/pc_q35.c                        | 2 +-
- hw/isa/lpc_ich9.c                       | 2 +-
- hw/pci-bridge/i82801b11.c               | 2 +-
- tests/qtest/tco-test.c                  | 2 +-
- 10 files changed, 12 insertions(+), 11 deletions(-)
- rename include/hw/{i386 => southbridge}/ich9.h (99%)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f96e86c57b..8753fc066c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1670,6 +1670,7 @@ F: hw/i2c/smbus_ich9.c
- F: hw/acpi/piix4.c
- F: hw/acpi/ich9*.c
- F: include/hw/acpi/ich9*.h
-+F: include/hw/southbridge/ich9.h
- F: include/hw/southbridge/piix.h
- F: hw/misc/sga.c
- F: hw/isa/apm.c
-diff --git a/include/hw/i386/ich9.h b/include/hw/southbridge/ich9.h
-similarity index 99%
-rename from include/hw/i386/ich9.h
-rename to include/hw/southbridge/ich9.h
-index 3125863049..7004eecbf9 100644
---- a/include/hw/i386/ich9.h
-+++ b/include/hw/southbridge/ich9.h
-@@ -1,5 +1,5 @@
--#ifndef HW_ICH9_H
--#define HW_ICH9_H
-+#ifndef HW_SOUTHBRIDGE_ICH9_H
-+#define HW_SOUTHBRIDGE_ICH9_H
- 
- #include "hw/isa/apm.h"
- #include "hw/acpi/ich9.h"
-@@ -242,4 +242,4 @@ struct ICH9LPCState {
- #define ICH9_LPC_SMI_F_CPU_HOTPLUG_BIT          1
- #define ICH9_LPC_SMI_F_CPU_HOT_UNPLUG_BIT       2
- 
--#endif /* HW_ICH9_H */
-+#endif /* HW_SOUTHBRIDGE_ICH9_H */
-diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-index 54bb3d83b3..d23bfcaa6b 100644
---- a/hw/acpi/ich9.c
-+++ b/hw/acpi/ich9.c
-@@ -36,7 +36,7 @@
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/ich9_tco.h"
- 
--#include "hw/i386/ich9.h"
-+#include "hw/southbridge/ich9.h"
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
- 
-diff --git a/hw/acpi/ich9_tco.c b/hw/acpi/ich9_tco.c
-index fbf97f81f4..1540f4fd46 100644
---- a/hw/acpi/ich9_tco.c
-+++ b/hw/acpi/ich9_tco.c
-@@ -9,7 +9,7 @@
- 
- #include "qemu/osdep.h"
- #include "sysemu/watchdog.h"
--#include "hw/i386/ich9.h"
-+#include "hw/southbridge/ich9.h"
- #include "migration/vmstate.h"
- 
- #include "hw/acpi/ich9_tco.h"
-diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
-index c7fdf32db0..b3eb82bc2e 100644
---- a/hw/i2c/smbus_ich9.c
-+++ b/hw/i2c/smbus_ich9.c
-@@ -27,7 +27,7 @@
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- 
--#include "hw/i386/ich9.h"
-+#include "hw/southbridge/ich9.h"
- #include "qom/object.h"
- #include "hw/acpi/acpi_aml_interface.h"
- 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 266df7a153..44ed879c8a 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -55,10 +55,10 @@
- #include "hw/hyperv/vmbus-bridge.h"
- 
- /* Supported chipsets: */
-+#include "hw/southbridge/ich9.h"
- #include "hw/southbridge/piix.h"
- #include "hw/acpi/pcihp.h"
- #include "hw/i386/fw_cfg.h"
--#include "hw/i386/ich9.h"
- #include "hw/i386/pc.h"
- #include "hw/pci/pci_bus.h"
- #include "hw/pci-host/i440fx.h"
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index cd61d801c7..2c8c43834c 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -40,7 +40,6 @@
- #include "hw/qdev-properties.h"
- #include "hw/i386/x86.h"
- #include "hw/i386/pc.h"
--#include "hw/i386/ich9.h"
- #include "hw/i386/amd_iommu.h"
- #include "hw/i386/intel_iommu.h"
- #include "hw/display/ramfb.h"
-@@ -48,6 +47,7 @@
- #include "hw/ide/pci.h"
- #include "hw/ide/ahci.h"
- #include "hw/intc/ioapic.h"
-+#include "hw/southbridge/ich9.h"
- #include "hw/usb.h"
- #include "hw/usb/hcd-uhci.h"
- #include "qapi/error.h"
-diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index f508f6071e..2699dc574a 100644
---- a/hw/isa/lpc_ich9.c
-+++ b/hw/isa/lpc_ich9.c
-@@ -40,7 +40,7 @@
- #include "hw/irq.h"
- #include "hw/isa/apm.h"
- #include "hw/pci/pci.h"
--#include "hw/i386/ich9.h"
-+#include "hw/southbridge/ich9.h"
- #include "hw/i386/pc.h"
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/ich9.h"
-diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
-index f3b4a14611..0e83cd11b2 100644
---- a/hw/pci-bridge/i82801b11.c
-+++ b/hw/pci-bridge/i82801b11.c
-@@ -45,7 +45,7 @@
- #include "hw/pci/pci_bridge.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
--#include "hw/i386/ich9.h"
-+#include "hw/southbridge/ich9.h"
- 
- /*****************************************************************************/
- /* ICH9 DMI-to-PCI bridge */
-diff --git a/tests/qtest/tco-test.c b/tests/qtest/tco-test.c
-index d865e95dfc..0547d41173 100644
---- a/tests/qtest/tco-test.c
-+++ b/tests/qtest/tco-test.c
-@@ -14,7 +14,7 @@
- #include "libqos/pci-pc.h"
- #include "qapi/qmp/qdict.h"
- #include "hw/pci/pci_regs.h"
--#include "hw/i386/ich9.h"
-+#include "hw/southbridge/ich9.h"
- #include "hw/acpi/ich9.h"
- #include "hw/acpi/ich9_tco.h"
- 
--- 
-2.39.1
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
