@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMpD1-00060r-Jw
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:53:55 -0500
+	id 1pMpD3-00065g-4G
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:53:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpD0-000606-17; Tue, 31 Jan 2023 06:53:54 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ id 1pMpD1-000616-Mw; Tue, 31 Jan 2023 06:53:55 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpCy-0002Kh-8w; Tue, 31 Jan 2023 06:53:53 -0500
-Received: by mail-ed1-x530.google.com with SMTP id q19so4196317edd.2;
- Tue, 31 Jan 2023 03:53:51 -0800 (PST)
+ id 1pMpD0-0002LF-8p; Tue, 31 Jan 2023 06:53:55 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id cw4so9003683edb.13;
+ Tue, 31 Jan 2023 03:53:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+H/hm+NzJf5UK4Gy3W0jifT6di0xnThf7l7iJbMFcRQ=;
- b=J3/gfD35FFPJlaMStFUC2d5+NrMjog26RghZv65GWxfhwDcrsK9XQ9vgrxuuTc0zXG
- JyXcZ5bzYspEj6s1Fg99D6X/Q0GndW52E2anpfWhVywJ0Doa2qiPUTU+lqi97EBewdTm
- lb3DzEy2ezPnrjTTNjwUKmqPQU1en4a6MdCLZzOYPjlSDx4VEsdsqT5jblnIoYXXxXxE
- Gh2ao8yaNZWcEIhwG7ktsLrmrzrNwL7pUw/oMWCamAkzspOnkWBkIU9XmRKz4LA3jiNO
- OP2/yGseIPDthSaIPQe5AUAMyQUMOWZOHmQkYr4RHk79iDanxyDGWItrkk7t542hzeQ+
- a0Ag==
+ bh=P7kVESaQNShpQPsRNC9Brnvan+iBx6TlgfEej59IhxY=;
+ b=EvTAn7SlwPfJOKjNQ6MSEg5z8JIP3VQMLJGgxnVHMT9MhtnDDypLCc451j5f9z6wFU
+ Zr44/DKVsi6inZx1rzpkmJP5idOgtkWFojgX4MSyOeckhKV8rqDZH8VeecWy7lPlSf2J
+ e+lrZsS6358lrQd/0QbE0ur+RSW9tX7g/3uOUL/JT3UemshUshqQjkKCK5Ze9ZEk6Dl/
+ oAAMBBc9EyYHd4v+nkEgMAUsm79zUq6mbAQfInANb2spVDqpbIjKIPO2O3mJwmTMIjPr
+ s4/rLYj7hzmwwa46IJ9DpMsXs77XcoCWhk6YGPlyC8DNLIBx4acTltbSTa+WAYCX4nf6
+ v7ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+H/hm+NzJf5UK4Gy3W0jifT6di0xnThf7l7iJbMFcRQ=;
- b=3KjgVhzOAkco4yNNmwFAccaudwh/PmoUnC0e9oDJVKsd1HuTTe7QmCXtvSJf5oqAOi
- Glxzz+IB/l428R4tWUclMU8uoFH/gm/iYxhSeiELU2YRXbwWkOUNswdVUYGdn3Y/Frpw
- kblY1RcOCzPIL5pxnOuIxNsBjqTjee3HWtm+fS0lZUM/qnJOqih8AL8yntEqQC9GdYuN
- etywXSSLPGmpzlxCt30B8ZnT1oH26kAzWGrNlwySK0A+tlnJtlpaqYRu8zwf/40GNZGA
- T1NPENKHfI+1R58CNgVN3pR2rWPlnVJ7jBcK8L7NX+IFcIK/PS1ys/3b+ErjnnZt75Fn
- ZixA==
-X-Gm-Message-State: AO0yUKXOmfMgfDzuSw9meH2LDXHQR+4l3Ht8B+7PLqyCr22l+P61aUaF
- YhCmlyJlsFU6Qx2sgKnTewZK91+2m1w=
-X-Google-Smtp-Source: AK7set+V3mdoe10qLyNeSQ8OPSKDtF3Fi5eZ5vfwoiNyEmAb/bkM1ihxTPd/XHGB2bzRmBcSM6eWuA==
-X-Received: by 2002:a05:6402:1010:b0:4a0:b64e:3db9 with SMTP id
- c16-20020a056402101000b004a0b64e3db9mr21677271edu.16.1675166030082; 
- Tue, 31 Jan 2023 03:53:50 -0800 (PST)
+ bh=P7kVESaQNShpQPsRNC9Brnvan+iBx6TlgfEej59IhxY=;
+ b=vygCayUlOsLyXcjshvBbXW+EdL+b4jJRDn1u4RF0zVN3UCy6CxnetOnaEGkQbh1sAK
+ iRtD6X72fwCEHbSL1xl9FfesGqM2E8JSpPXR3165pPLzXZuXw9IUCMEQEDdQzjlumywl
+ auOb9MgnDSXa/TIBrNV8SpA5/YTqkxkvmMLtVGTDWFeTX3OuXyEuqYIO9u1QAM6cDtFr
+ wkxBwxespb4vzEoDe0aTPaszfrSfk0ScDrliHv/bfl712k4v91JvlJwyKQeW/sRdCJlX
+ rtmUooN9+8cyUm40tMhTBIBs4mDFrYKaN86eUJqpKiOuH5W7Q3emS9YAky8Gee8Ec3sk
+ kDzg==
+X-Gm-Message-State: AFqh2kpukFFn2e7Qn2L/PpLhJgJWLH+dx0R0VAejvURc8CxvxShKuMYC
+ qqEAck6bbtKMAdW1aditWEvvN5kxzMU=
+X-Google-Smtp-Source: AMrXdXt2uZhGrzz2/SvFp3GyQhX8ANN4eAnGmDAF4fvwIQ8JDl92k5yA/MAbBNDSV/6x4OFORmuBXg==
+X-Received: by 2002:a05:6402:28c6:b0:49b:98be:c38 with SMTP id
+ ef6-20020a05640228c600b0049b98be0c38mr58059296edb.11.1675166032329; 
+ Tue, 31 Jan 2023 03:53:52 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-077-013-082-236.77.13.pool.telefonica.de. [77.13.82.236])
  by smtp.gmail.com with ESMTPSA id
- c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.53.49
+ c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.53.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 03:53:49 -0800 (PST)
+ Tue, 31 Jan 2023 03:53:52 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Igor Mammedov <imammedo@redhat.com>,
@@ -57,16 +57,16 @@ Cc: Igor Mammedov <imammedo@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <lvivier@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 01/20] hw/pci-host/i440fx: Inline sysbus_add_io()
-Date: Tue, 31 Jan 2023 12:53:07 +0100
-Message-Id: <20230131115326.12454-2-shentey@gmail.com>
+Subject: [PATCH v2 03/20] hw/i386/pc_q35: Reuse machine parameter
+Date: Tue, 31 Jan 2023 12:53:09 +0100
+Message-Id: <20230131115326.12454-4-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230131115326.12454-1-shentey@gmail.com>
 References: <20230131115326.12454-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x530.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,44 +86,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 11:53:54 -0000
-
-sysbus_add_io() just wraps memory_region_add_subregion() while also
-obscuring where the memory is attached. So use
-memory_region_add_subregion() directly and attach it to the existing
-memory region s->bus->address_space_io which is set as an alias to
-get_system_io() by the pc machine.
+X-List-Received-Date: Tue, 31 Jan 2023 11:53:56 -0000
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/pci-host/i440fx.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/i386/pc_q35.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
-index 262f82c303..9c6882d3fc 100644
---- a/hw/pci-host/i440fx.c
-+++ b/hw/pci-host/i440fx.c
-@@ -27,6 +27,7 @@
- #include "qemu/range.h"
- #include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
-+#include "hw/pci/pci_bus.h"
- #include "hw/pci/pci_host.h"
- #include "hw/pci-host/i440fx.h"
- #include "hw/qdev-properties.h"
-@@ -217,10 +218,10 @@ static void i440fx_pcihost_realize(DeviceState *dev, Error **errp)
-     PCIHostState *s = PCI_HOST_BRIDGE(dev);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 83c57c6eb1..351ef25f69 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -218,7 +218,7 @@ static void pc_q35_init(MachineState *machine)
+     pc_memory_init(pcms, get_system_memory(), rom_memory, &ram_memory,
+                    pci_hole64_size);
  
--    sysbus_add_io(sbd, 0xcf8, &s->conf_mem);
-+    memory_region_add_subregion(s->bus->address_space_io, 0xcf8, &s->conf_mem);
-     sysbus_init_ioports(sbd, 0xcf8, 4);
- 
--    sysbus_add_io(sbd, 0xcfc, &s->data_mem);
-+    memory_region_add_subregion(s->bus->address_space_io, 0xcfc, &s->data_mem);
-     sysbus_init_ioports(sbd, 0xcfc, 4);
- 
-     /* register i440fx 0xcf8 port as coalesced pio */
+-    object_property_add_child(qdev_get_machine(), "q35", OBJECT(q35_host));
++    object_property_add_child(OBJECT(machine), "q35", OBJECT(q35_host));
+     object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_RAM_MEM,
+                              OBJECT(ram_memory), NULL);
+     object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_PCI_MEM,
 -- 
 2.39.1
 
