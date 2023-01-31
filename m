@@ -1,62 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMxY8-00016M-81
+	id 1pMxY8-00016R-DA
 	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 15:48:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vlaomao@gmail.com>)
- id 1pMvIQ-00054w-SD; Tue, 31 Jan 2023 13:23:54 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ id 1pMvFp-00026q-Fk; Tue, 31 Jan 2023 13:21:14 -0500
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <vlaomao@gmail.com>)
- id 1pMvIP-000504-6t; Tue, 31 Jan 2023 13:23:54 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id
- nm12-20020a17090b19cc00b0022c2155cc0bso15293001pjb.4; 
- Tue, 31 Jan 2023 10:23:52 -0800 (PST)
+ id 1pMvFm-0004dN-N5; Tue, 31 Jan 2023 13:21:11 -0500
+Received: by mail-pj1-x102f.google.com with SMTP id j5so14985311pjn.5;
+ Tue, 31 Jan 2023 10:21:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=nB4FdcsvBrWO7VIqQykQ2ib/SW/js5SiQH4Gj9RZKJo=;
- b=b6v2xTjrxxXl0ECb8AsUH4onX52F0gljwfTUytb407Y99M2z6B0XN8YhNfjsQUxxb2
- QTh+uBbS7TPNURkXloZWcp70MbHAixaYX8IYSTOmi77kVlBXBvu5jTAbmPTKrYx4/N2W
- XyFBmOFBs+3uZa04t1fOjPK7mvxxXz3gaBTW5ciQ91qlaKn5bX9n03DH3KEJFIWn6Hj+
- l3C+4HBO7wPsyr3QHpgeG64q+CZGeCfsa3U1orj6TlFm0KATgA8hsfULiFm2UXF69HX5
- 2qWdnXYATVqTz0FynfoihXNO44jk4NrmumhWLj6upP7mEvBVXpPuSS8nPMmYGcqi7B8Z
- s33A==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ysNCTqWaPnAGQ3dgjxnJlhfeW1HUqcrTZzoOO7atXzg=;
+ b=ju51IrIIBzsdQEdK9yRfKFbcHpBUt1rmTVxrY/WkriecAKv+6laxeXEDb/MI9oKrl4
+ SQYOn4sC+tpn4vsq5R67Fm7/m8S2WkcqfDtc+cnlo4a6+0ga44R+gzRJ52gQh46lXv9G
+ wOpty7+28yUgvgfoE4hm9No+qTUqUiO2Qd/Su+xz3FGIBwsjr6Ccgm9jwB83sen6Num0
+ jiJR0h5bvCz8lpxwS3C903umh9YvlRQH9RHWhJjfgGkvVV3vGLIHCK+4xfYHmmiUUGaP
+ V4bKzH8JV/tZ7qK4jS9z3l2RAFnMYlqK6+qiJQUcd5BHXpuPpO6eguxKmhmiJAasvx9r
+ i+Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=nB4FdcsvBrWO7VIqQykQ2ib/SW/js5SiQH4Gj9RZKJo=;
- b=Sco0O+Q+RJngO6+e3fXEAb871zuV7ThAqowUbYQDs5rkblJWaHxQ+VntuAYywmcgip
- Yc4q++u2Jdj1XOx79MMaPjfuJAiSORXlC+pSnxsBtyrg1OGPt1qCHxFQ6OiT9bnnw+OP
- JFW0sRk/1FC/YhBSxM48mBfsSz8V/22Dgs0l3AF+olA6DV2PcNlZAFuoCsWm/mMYgRfJ
- nIrfNEc4jmCtVdozJg2gUw8WCTeN7MjoBRUAy43nuKjF+uqD8nX94Krx2EekVWSgDyou
- 7dsQFT1ns5GeFr+/g0O8VQ7eDUkGICTad3OIvxKlFGwfGwIiDESMbQ4SoReBfri0fR6e
- BhDQ==
-X-Gm-Message-State: AO0yUKW4uCS82AEeIsWPL581JVpIfOp3Tb3+lYqTFrK2YBhzPzw88OH6
- sT1gGzMvJKOcHBfPHSFgTU+FKoK4DK+9iKxL
-X-Google-Smtp-Source: AK7set82N+b68fZfelIV69oPQ9DDhrLDBlGkUPWpJnbDti/bQ4R6AZpKSQPfB9YH2oBBSfZVyrRokw==
-X-Received: by 2002:a17:90b:2252:b0:22c:4efa:3412 with SMTP id
- hk18-20020a17090b225200b0022c4efa3412mr16853859pjb.24.1675189431229; 
- Tue, 31 Jan 2023 10:23:51 -0800 (PST)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ysNCTqWaPnAGQ3dgjxnJlhfeW1HUqcrTZzoOO7atXzg=;
+ b=K3fJxlVjWC0/ll55FoQDaMc+5NB3/VcajOOEDmcc0YO/hFIqdqqfqCs8kfX5OyUTWx
+ Z+eE/yfLJxv7Mgx1wxk01pBLOq1jn+uUwFCaXbwF20vzFaW4GUhnRIKlBNVzcWcjKbl3
+ +iTDCwfGDIdv+qzDJHm4nekP18Qg1JxPgQUDPwpSMq5HhQNkqbJD0EuzY6lKrPpmEBkr
+ iP4OIyf9Xn+Xl/oF7K1CzsGn5w+lL4dxVWxl7mTDUe3dy7vJgkOitEsF88Gr1paXe2ss
+ CQShxCG469ZLHMUuVinnWgR/f6SZaUolVIyU8m6EvpxUxuwFiBziAovD0hPJPO7HPhZt
+ F70Q==
+X-Gm-Message-State: AO0yUKUOjYL08fCOT2ShoLW8y8xLfrPX8ZCYMY2wb+Uxnp/OXrrw6eOv
+ vhotXHIn2f78lTYOl2RYwWw=
+X-Google-Smtp-Source: AK7set/kgR2snHeb4vw+gH/gBnwfCTfwcNHooGBHViHiGTeiQ6IDcMa2ld1RGlGt+Dfm3eKBsGGBSA==
+X-Received: by 2002:a17:903:1d1:b0:196:433e:236b with SMTP id
+ e17-20020a17090301d100b00196433e236bmr26017689plh.54.1675189267442; 
+ Tue, 31 Jan 2023 10:21:07 -0800 (PST)
 Received: from localhost.localdomain ([94.181.144.4])
  by smtp.googlemail.com with ESMTPSA id
- h18-20020a17090adb9200b001ef8ab65052sm9134313pjv.11.2023.01.31.10.23.46
+ jd13-20020a170903260d00b0019893d572bfsm2260414plb.211.2023.01.31.10.21.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 10:23:50 -0800 (PST)
+ Tue, 31 Jan 2023 10:21:07 -0800 (PST)
 From: Vlao Mao <vlaomao@gmail.com>
 To: dmitry@daynix.com
 Cc: jasowang@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- laurent@vivier.eu
-Subject: [PATCH qemu 0/1] MAC address falls to permanent
-Date: Tue, 31 Jan 2023 21:23:36 +0300
-Message-Id: <20230131182337.15645-1-vlaomao@gmail.com>
+ laurent@vivier.eu, VlaoMao <vlaomao@gmail.com>
+Subject: [PATCH qemu 1/1] vmxnet3: add mac address restore upon reset
+Date: Tue, 31 Jan 2023 21:20:48 +0300
+Message-Id: <20230131182048.15535-2-vlaomao@gmail.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20230131182048.15535-1-vlaomao@gmail.com>
+References: <20230131182048.15535-1-vlaomao@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=vlaomao@gmail.com; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=vlaomao@gmail.com; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -77,58 +79,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 18:23:55 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 18:21:17 -0000
 
-A bug was found with the vmxnet3 driver, after changing the MAC address
-and rebooting, it falls into the category of a permanent address until
-the VM is turned off. Here is log output:
+From: VlaoMao <vlaomao@gmail.com>
 
--bash-4.4# ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
-group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
-default qlen 1000
-    link/ether 52:54:00:12:34:56 brd ff:ff:ff:ff:ff:ff
+Changing the address with a subsequent reboot makes this address permanent until the vm is turned off
 
--bash-4.4# ip link set dev ens3 address 33:33:33:33:33:33
--bash-4.4# ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
-group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
-default qlen 1000
-    link/ether 33:33:33:33:33:33 brd ff:ff:ff:ff:ff:ff
--bash-4.4# ethtool -P ens3
-Permanent address: 52:54:00:12:34:56
--bash-4.4# reboot
-
-//rebooting
-
-
--bash-4.4# ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
-group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
-default qlen 1000
-    link/ether 33:33:33:33:33:33 brd ff:ff:ff:ff:ff:ff
--bash-4.4# ethtool -P ens3
-Permanent address: 33:33:33:33:33:33
--bash-4.4#
-
-Vlao Mao (1):
-  vmxnet3: add mac address restore upon reset
-
+Signed-off-by: Vlao Mao <vlaomao@gmail.com>
+---
  hw/net/vmxnet3.c | 2 ++
  1 file changed, 2 insertions(+)
 
+diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
+index 04159c8222..695ca2f923 100644
+--- a/hw/net/vmxnet3.c
++++ b/hw/net/vmxnet3.c
+@@ -1206,6 +1206,8 @@ static void vmxnet3_reset(VMXNET3State *s)
+     s->drv_shmem = 0;
+     s->tx_sop = true;
+     s->skip_current_tx_pkt = false;
++
++    vmxnet3_reset_mac(s);
+ }
+ 
+ static void vmxnet3_update_rx_mode(VMXNET3State *s)
 -- 
 2.35.1
 
