@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMpD8-0006Qg-I5
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:54:02 -0500
+	id 1pMpDB-0006gZ-Gs
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 06:54:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpD6-0006HV-SN; Tue, 31 Jan 2023 06:54:00 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1pMpD8-0006SG-QI; Tue, 31 Jan 2023 06:54:02 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pMpD5-0002Ld-AR; Tue, 31 Jan 2023 06:54:00 -0500
-Received: by mail-ed1-x533.google.com with SMTP id m8so4910819edd.10;
- Tue, 31 Jan 2023 03:53:58 -0800 (PST)
+ id 1pMpD7-0002N0-3w; Tue, 31 Jan 2023 06:54:02 -0500
+Received: by mail-ed1-x531.google.com with SMTP id x7so10898906edr.0;
+ Tue, 31 Jan 2023 03:54:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HjssvFKx3IZ7l0mShz5AWOIUaxXusJrli4FZYIRJEUs=;
- b=EkjItNl5IOzfYAIOPVp8tpE7kjkQ33LSTO/HG1D3aL0q0x701NnMDo0dbISRAbbPCX
- 5kKM/4pMy3Jte0Tu5zaFq1QAiwnsXjkd0PQOS6BQOFan3VJYXSbMUiwO+QYbGccXtfvZ
- 3uIfVUw4wVzrUgQMqioRDrdZf66IUjfmnIU34Jjp23Iw0Bjx6J/JlsM3bJYGh3CFULpe
- pGg0goHBUppva9TcKglePfzeIsid1d01+jdB1zCXa0k0ZC1YMKR76zyrp0yEG/2TnKcs
- Lf73nJ8c36lvcWbPbRf1GtOLEuqpSs+SiaRzoNjGE1/2RaJ4n4muiU0nIkPOMcOYQEWc
- DAXg==
+ bh=bR11ilDZxRVhc8S1OrHlRFd0u3m3X/MLZG9Khl8VZ48=;
+ b=XR9uRYBkQFset9dXTdmlev+sqxSZC25VcdSn9O8m0AQU0vvpm6Fzuv/tBgz/vXDv5n
+ jel7KLFXZxwxCMTbkoc2mpuyQW/MWhJX0KA+PmsywtoirlbC7FgRK8D8qP4ilw24DqVu
+ sRbCYxNMRcPKCtKULSLE7vghn2mpkloCE9ZnG+sPBtqzUscayVoh0HcJa15KXztMXz6s
+ YLdI+SOiEK1d9eMte5ZNzqvvamQB0qQALd9i6uTPcgjay8VvWlDMnlGpSb61suRGbFHP
+ qn0m5MYSQk1ABw4giB/pvmoAP90muzWK1Bul60tAZnUZyG2tDQFV145/5hOn3dElX7Qi
+ 7Esg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=HjssvFKx3IZ7l0mShz5AWOIUaxXusJrli4FZYIRJEUs=;
- b=KYFjdavw+4G7qGho0lAWBXHmNfHSt7Owpvbuft7exAP0yPDJrnQgcfGJzI78HPOu3/
- 58NFVrnrMt6E9iohGJ6JVB29k8VVhRxABru23sfSZHptWu+B0XvWYEbwk+bFO+A/t9lL
- eAa+1UFObgoNAT06gHKX0dxBfp/WXkK+kw47KtnYe32iff6azGSDkp5kFgOv0CxtM1cm
- NX1Lhomskl4MzWHMCNPdjvOKRLQjlhzxnp1R+4LlCkj814TgWKRDxGd68dECKbZXHVsT
- J3rN/e0mNwSHZBXahMB298v4iuR9kOfwx7Jkk+ZVYZmPHXUa9bnWktrIUVZ2jRXwPz1P
- 8E5A==
-X-Gm-Message-State: AO0yUKVQZ0yra7+M1QUoxkTSjQl3v7JJRAYPuBywaT4TQEDM1dtS8F8i
- hFmKik9lEPPewhNBVi0feXoKlS2PVh0=
-X-Google-Smtp-Source: AK7set+9G9dVpeOnLUU+a6PsXNYG6tcGXRow4RP5Am2bgNN1Hg2bSnAZN2xge0ESrSdC8HY0boLsaA==
-X-Received: by 2002:aa7:de1a:0:b0:474:a583:2e1a with SMTP id
- h26-20020aa7de1a000000b00474a5832e1amr3137843edv.12.1675166038038; 
- Tue, 31 Jan 2023 03:53:58 -0800 (PST)
+ bh=bR11ilDZxRVhc8S1OrHlRFd0u3m3X/MLZG9Khl8VZ48=;
+ b=UbIjk+RwRpvqxmEcxW+h3nNscwDGRLCuR+qlFAo55hgw2AlR+Dk27M52CCLmqCRqra
+ t4tjIuUuea5iSBXMRB8xTMRQXH/KHcbj6GA7EJTgCG/RksQiWw8OHe8cuZ/2t+4gHhlf
+ ud+DARU8yee8FE1Nx5gowifVZQHZuaTL5DW51EZLw4/97eKtPwVIXSP6rQJ6DoQEIoCa
+ rgm2jL36R1pvEqYFEnl9CHnTi+5vr7wf2vVqkjAIL6t902+SCKWikrvcER30ZTL/Og32
+ q8nfDdM98G1xfIN/PzDFC0rILqdyLZwhaZQTpfF28rG41W66ooEdtLHe9F8NI/UqijH5
+ NmFg==
+X-Gm-Message-State: AFqh2krf1e79vM98/Z2m6AAbNg757G9xrz775FNb/aKoxjBgcxnrXlzx
+ vgfMvhJSpkt0dr5BcjqzmQQVIomWxdc=
+X-Google-Smtp-Source: AMrXdXtLs/Z3DRGCYEc9WNPy0POlL61UXsTiTtKPaZvMZDOwV18fe8xnHfHrKrMdFn84d7pXZ2YYFg==
+X-Received: by 2002:aa7:de95:0:b0:49d:be2b:b9b1 with SMTP id
+ j21-20020aa7de95000000b0049dbe2bb9b1mr54137552edv.36.1675166039266; 
+ Tue, 31 Jan 2023 03:53:59 -0800 (PST)
 Received: from localhost.localdomain
  (dynamic-077-013-082-236.77.13.pool.telefonica.de. [77.13.82.236])
  by smtp.gmail.com with ESMTPSA id
- c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.53.57
+ c10-20020a056402100a00b00483dd234ac6sm8178318edu.96.2023.01.31.03.53.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 03:53:57 -0800 (PST)
+ Tue, 31 Jan 2023 03:53:58 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Igor Mammedov <imammedo@redhat.com>,
@@ -57,16 +57,16 @@ Cc: Igor Mammedov <imammedo@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <lvivier@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 08/20] hw/i386/ich9: Rename Q35_MASK to ICH9_MASK
-Date: Tue, 31 Jan 2023 12:53:14 +0100
-Message-Id: <20230131115326.12454-9-shentey@gmail.com>
+Subject: [PATCH v2 09/20] hw/isa/lpc_ich9: Unexport PIRQ functions
+Date: Tue, 31 Jan 2023 12:53:15 +0100
+Message-Id: <20230131115326.12454-10-shentey@gmail.com>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <20230131115326.12454-1-shentey@gmail.com>
 References: <20230131115326.12454-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,63 +86,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 11:54:01 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 11:54:03 -0000
 
-The Q35_MASK macro is already defined by TYPE_Q35_HOST_DEVICE, so let
-TYPE_ICH9_LPC_DEVICE have its own one to prevent potential name clash.
+No need to rely on the board to wire up the ICH9 PCI IRQs. All functions
+access private state of the LPC device which suggests that it should
+wire up the IRQs.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/i386/ich9.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ include/hw/i386/ich9.h |  3 ---
+ hw/i386/pc_q35.c       |  3 ---
+ hw/isa/lpc_ich9.c      | 11 ++++++++---
+ 3 files changed, 8 insertions(+), 9 deletions(-)
 
 diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
-index 222781e8b9..36e0ccd16a 100644
+index 36e0ccd16a..921e4c7ef6 100644
 --- a/include/hw/i386/ich9.h
 +++ b/include/hw/i386/ich9.h
-@@ -75,7 +75,7 @@ struct ICH9LPCState {
-     qemu_irq gsi[GSI_NUM_PINS];
- };
+@@ -9,9 +9,6 @@
+ #include "hw/acpi/ich9.h"
+ #include "qom/object.h"
  
--#define Q35_MASK(bit, ms_bit, ls_bit) \
-+#define ICH9_MASK(bit, ms_bit, ls_bit) \
- ((uint##bit##_t)(((1ULL << ((ms_bit) + 1)) - 1) & ~((1ULL << ls_bit) - 1)))
+-void ich9_lpc_set_irq(void *opaque, int irq_num, int level);
+-int ich9_lpc_map_irq(PCIDevice *pci_dev, int intx);
+-PCIINTxRoute ich9_route_intx_pin_to_irq(void *opaque, int pirq_pin);
+ void ich9_lpc_pm_init(PCIDevice *pci_lpc, bool smm_enabled);
+ I2CBus *ich9_smb_init(PCIBus *bus, int devfn, uint32_t smb_io_base);
  
- /* ICH9: Chipset Configuration Registers */
-@@ -137,13 +137,13 @@ struct ICH9LPCState {
- #define ICH9_LPC_NB_PIRQS                       8       /* PCI A-H */
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 50fa5aa9bc..83e4fb7868 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -267,9 +267,6 @@ static void pc_q35_init(MachineState *machine)
+     for (i = 0; i < GSI_NUM_PINS; i++) {
+         qdev_connect_gpio_out_named(lpc_dev, ICH9_GPIO_GSI, i, x86ms->gsi[i]);
+     }
+-    pci_bus_irqs(host_bus, ich9_lpc_set_irq, ich9_lpc, ICH9_LPC_NB_PIRQS);
+-    pci_bus_map_irqs(host_bus, ich9_lpc_map_irq);
+-    pci_bus_set_route_irq_fn(host_bus, ich9_route_intx_pin_to_irq);
+     isa_bus = ich9_lpc->isa_bus;
  
- #define ICH9_LPC_PMBASE                         0x40
--#define ICH9_LPC_PMBASE_BASE_ADDRESS_MASK       Q35_MASK(32, 15, 7)
-+#define ICH9_LPC_PMBASE_BASE_ADDRESS_MASK       ICH9_MASK(32, 15, 7)
- #define ICH9_LPC_PMBASE_RTE                     0x1
- #define ICH9_LPC_PMBASE_DEFAULT                 0x1
+     if (x86ms->pic == ON_OFF_AUTO_ON || x86ms->pic == ON_OFF_AUTO_AUTO) {
+diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+index 8d541e2b54..b444faacd2 100644
+--- a/hw/isa/lpc_ich9.c
++++ b/hw/isa/lpc_ich9.c
+@@ -259,7 +259,7 @@ static void ich9_lpc_update_apic(ICH9LPCState *lpc, int gsi)
+     qemu_set_irq(lpc->gsi[gsi], level);
+ }
  
- #define ICH9_LPC_ACPI_CTRL                      0x44
- #define ICH9_LPC_ACPI_CTRL_ACPI_EN              0x80
--#define ICH9_LPC_ACPI_CTRL_SCI_IRQ_SEL_MASK     Q35_MASK(8, 2, 0)
-+#define ICH9_LPC_ACPI_CTRL_SCI_IRQ_SEL_MASK     ICH9_MASK(8, 2, 0)
- #define ICH9_LPC_ACPI_CTRL_9                    0x0
- #define ICH9_LPC_ACPI_CTRL_10                   0x1
- #define ICH9_LPC_ACPI_CTRL_11                   0x2
-@@ -162,7 +162,7 @@ struct ICH9LPCState {
- #define ICH9_LPC_PIRQH_ROUT                     0x6b
+-void ich9_lpc_set_irq(void *opaque, int pirq, int level)
++static void ich9_lpc_set_irq(void *opaque, int pirq, int level)
+ {
+     ICH9LPCState *lpc = opaque;
+     int pic_irq, pic_dis;
+@@ -275,7 +275,7 @@ void ich9_lpc_set_irq(void *opaque, int pirq, int level)
+ /* return the pirq number (PIRQ[A-H]:0-7) corresponding to
+  * a given device irq pin.
+  */
+-int ich9_lpc_map_irq(PCIDevice *pci_dev, int intx)
++static int ich9_lpc_map_irq(PCIDevice *pci_dev, int intx)
+ {
+     BusState *bus = qdev_get_parent_bus(&pci_dev->qdev);
+     PCIBus *pci_bus = PCI_BUS(bus);
+@@ -286,7 +286,7 @@ int ich9_lpc_map_irq(PCIDevice *pci_dev, int intx)
+     return lpc->irr[PCI_SLOT(pci_dev->devfn)][intx];
+ }
  
- #define ICH9_LPC_PIRQ_ROUT_IRQEN                0x80
--#define ICH9_LPC_PIRQ_ROUT_MASK                 Q35_MASK(8, 3, 0)
-+#define ICH9_LPC_PIRQ_ROUT_MASK                 ICH9_MASK(8, 3, 0)
- #define ICH9_LPC_PIRQ_ROUT_DEFAULT              0x80
+-PCIINTxRoute ich9_route_intx_pin_to_irq(void *opaque, int pirq_pin)
++static PCIINTxRoute ich9_route_intx_pin_to_irq(void *opaque, int pirq_pin)
+ {
+     ICH9LPCState *lpc = opaque;
+     PCIINTxRoute route;
+@@ -680,6 +680,7 @@ static void ich9_lpc_realize(PCIDevice *d, Error **errp)
+ {
+     ICH9LPCState *lpc = ICH9_LPC_DEVICE(d);
+     DeviceState *dev = DEVICE(d);
++    PCIBus *pci_bus = pci_get_bus(d);
+     ISABus *isa_bus;
  
- #define ICH9_LPC_GEN_PMCON_1                    0xa0
-@@ -172,7 +172,7 @@ struct ICH9LPCState {
- #define ICH9_LPC_GEN_PMCON_LOCK                 0xa6
+     if ((lpc->smi_host_features & BIT_ULL(ICH9_LPC_SMI_F_CPU_HOT_UNPLUG_BIT)) &&
+@@ -728,6 +729,10 @@ static void ich9_lpc_realize(PCIDevice *d, Error **errp)
+     isa_bus_irqs(isa_bus, lpc->gsi);
  
- #define ICH9_LPC_RCBA                           0xf0
--#define ICH9_LPC_RCBA_BA_MASK                   Q35_MASK(32, 31, 14)
-+#define ICH9_LPC_RCBA_BA_MASK                   ICH9_MASK(32, 31, 14)
- #define ICH9_LPC_RCBA_EN                        0x1
- #define ICH9_LPC_RCBA_DEFAULT                   0x0
+     i8257_dma_init(isa_bus, 0);
++
++    pci_bus_irqs(pci_bus, ich9_lpc_set_irq, d, ICH9_LPC_NB_PIRQS);
++    pci_bus_map_irqs(pci_bus, ich9_lpc_map_irq);
++    pci_bus_set_route_irq_fn(pci_bus, ich9_route_intx_pin_to_irq);
+ }
  
+ static bool ich9_rst_cnt_needed(void *opaque)
 -- 
 2.39.1
 
