@@ -1,64 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMxY8-00016R-DA
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 15:48:16 -0500
+	id 1pMxY9-00017d-Jo
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 15:48:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vlaomao@gmail.com>)
- id 1pMvFp-00026q-Fk; Tue, 31 Jan 2023 13:21:14 -0500
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ id 1pMvIV-0005J6-B7; Tue, 31 Jan 2023 13:23:59 -0500
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <vlaomao@gmail.com>)
- id 1pMvFm-0004dN-N5; Tue, 31 Jan 2023 13:21:11 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id j5so14985311pjn.5;
- Tue, 31 Jan 2023 10:21:09 -0800 (PST)
+ id 1pMvIT-00050y-Sj; Tue, 31 Jan 2023 13:23:59 -0500
+Received: by mail-pj1-x1029.google.com with SMTP id
+ ha3-20020a17090af3c300b00230222051a6so1618418pjb.2; 
+ Tue, 31 Jan 2023 10:23:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ysNCTqWaPnAGQ3dgjxnJlhfeW1HUqcrTZzoOO7atXzg=;
- b=ju51IrIIBzsdQEdK9yRfKFbcHpBUt1rmTVxrY/WkriecAKv+6laxeXEDb/MI9oKrl4
- SQYOn4sC+tpn4vsq5R67Fm7/m8S2WkcqfDtc+cnlo4a6+0ga44R+gzRJ52gQh46lXv9G
- wOpty7+28yUgvgfoE4hm9No+qTUqUiO2Qd/Su+xz3FGIBwsjr6Ccgm9jwB83sen6Num0
- jiJR0h5bvCz8lpxwS3C903umh9YvlRQH9RHWhJjfgGkvVV3vGLIHCK+4xfYHmmiUUGaP
- V4bKzH8JV/tZ7qK4jS9z3l2RAFnMYlqK6+qiJQUcd5BHXpuPpO6eguxKmhmiJAasvx9r
- i+Mg==
+ bh=6cIpJ4gpd6TFREbsruT2XVU6Jcq/2UIIj9+nypPblTE=;
+ b=bTMPjqcwSEOtSqSRwYBnmEjSTVrLqgufVZ+fP3DwvyAksxrbnfpUxWBWms0MZVCcUI
+ 5a+wIVKfj2jNIIuQkJJNsHeDu8aFefMXow0CK6ibaOPiBfmyQ9q+Rkh3e7+YgpD01oWm
+ 748han0Bv6yFbM+7XKT5Xxgbnrbeq0X6XF3cKe/MP61l9zwFGjzgqAq3WF98begZILER
+ HPWg9wWRj9gl2/N2K6Nwoghz6Phypt2JaN/IqG/lIwJnStUKsKUVJR23O8KiDmQWl5r2
+ nsbkbwKeuHRkS4ZyQ13XezF2EBCVzGWys6HjCzrYymA1hrIoZffORIoCenNUGxwCQv1T
+ Yk/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ysNCTqWaPnAGQ3dgjxnJlhfeW1HUqcrTZzoOO7atXzg=;
- b=K3fJxlVjWC0/ll55FoQDaMc+5NB3/VcajOOEDmcc0YO/hFIqdqqfqCs8kfX5OyUTWx
- Z+eE/yfLJxv7Mgx1wxk01pBLOq1jn+uUwFCaXbwF20vzFaW4GUhnRIKlBNVzcWcjKbl3
- +iTDCwfGDIdv+qzDJHm4nekP18Qg1JxPgQUDPwpSMq5HhQNkqbJD0EuzY6lKrPpmEBkr
- iP4OIyf9Xn+Xl/oF7K1CzsGn5w+lL4dxVWxl7mTDUe3dy7vJgkOitEsF88Gr1paXe2ss
- CQShxCG469ZLHMUuVinnWgR/f6SZaUolVIyU8m6EvpxUxuwFiBziAovD0hPJPO7HPhZt
- F70Q==
-X-Gm-Message-State: AO0yUKUOjYL08fCOT2ShoLW8y8xLfrPX8ZCYMY2wb+Uxnp/OXrrw6eOv
- vhotXHIn2f78lTYOl2RYwWw=
-X-Google-Smtp-Source: AK7set/kgR2snHeb4vw+gH/gBnwfCTfwcNHooGBHViHiGTeiQ6IDcMa2ld1RGlGt+Dfm3eKBsGGBSA==
-X-Received: by 2002:a17:903:1d1:b0:196:433e:236b with SMTP id
- e17-20020a17090301d100b00196433e236bmr26017689plh.54.1675189267442; 
- Tue, 31 Jan 2023 10:21:07 -0800 (PST)
+ bh=6cIpJ4gpd6TFREbsruT2XVU6Jcq/2UIIj9+nypPblTE=;
+ b=HWiNwDFzCZDlrAdOyvbuN8LU3Y7uQyQsjx3iaszCHBeR9jx0hFzlvrJfbYROzgjJf6
+ ov7+6bt055XPIshJEwMQ0qh/VE3DztXXfuZdRFFx3wlVV2fi2GGN1A40JW66In5cbCxx
+ Jypbwvw5m8i3WtGdZekWjvx1pJ4NpcfBd8sJLTZCqgfpG7PWY7w6sDVuWJcN8qGO2cGy
+ rvZ6Byzdr3ERgg9k83J5oXm70LFt8QNGvYWefo2a2Ig7sSvNS199IWrQlZ6tXt4uUX4T
+ V9tGFC3oACTjSB7OF4gvuJckTI2SZoAl9YfM+LlcdMPG+2rsrBrReCMGw6O5cGSmVkqj
+ GsZw==
+X-Gm-Message-State: AO0yUKWK5NvZb9nceYlfGt9a9lFmLYlBJ2OEsSz0YkeyfbXmdxPKKHXj
+ CviD8RdR5rk4bwLlwyN85yKy86TbNQsAZrB7
+X-Google-Smtp-Source: AK7set/nVxvtlX0eqxGQX9uAHJ7x0Z8qxiuc9VgaZfI5DCm4GpU6pW9pNP/PrrZGwF/uDlnr5oScqQ==
+X-Received: by 2002:a17:90b:38c7:b0:230:efe:69c3 with SMTP id
+ nn7-20020a17090b38c700b002300efe69c3mr4208910pjb.25.1675189436063; 
+ Tue, 31 Jan 2023 10:23:56 -0800 (PST)
 Received: from localhost.localdomain ([94.181.144.4])
  by smtp.googlemail.com with ESMTPSA id
- jd13-20020a170903260d00b0019893d572bfsm2260414plb.211.2023.01.31.10.21.02
+ h18-20020a17090adb9200b001ef8ab65052sm9134313pjv.11.2023.01.31.10.23.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 10:21:07 -0800 (PST)
+ Tue, 31 Jan 2023 10:23:55 -0800 (PST)
 From: Vlao Mao <vlaomao@gmail.com>
 To: dmitry@daynix.com
 Cc: jasowang@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- laurent@vivier.eu, VlaoMao <vlaomao@gmail.com>
+ laurent@vivier.eu
 Subject: [PATCH qemu 1/1] vmxnet3: add mac address restore upon reset
-Date: Tue, 31 Jan 2023 21:20:48 +0300
-Message-Id: <20230131182048.15535-2-vlaomao@gmail.com>
+Date: Tue, 31 Jan 2023 21:23:37 +0300
+Message-Id: <20230131182337.15645-2-vlaomao@gmail.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20230131182048.15535-1-vlaomao@gmail.com>
-References: <20230131182048.15535-1-vlaomao@gmail.com>
+In-Reply-To: <20230131182337.15645-1-vlaomao@gmail.com>
+References: <20230131182337.15645-1-vlaomao@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=vlaomao@gmail.com; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=vlaomao@gmail.com; helo=mail-pj1-x1029.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -67,7 +68,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 31 Jan 2023 15:48:13 -0500
+X-Mailman-Approved-At: Tue, 31 Jan 2023 15:48:14 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,9 +80,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 18:21:17 -0000
-
-From: VlaoMao <vlaomao@gmail.com>
+X-List-Received-Date: Tue, 31 Jan 2023 18:23:59 -0000
 
 Changing the address with a subsequent reboot makes this address permanent until the vm is turned off
 
