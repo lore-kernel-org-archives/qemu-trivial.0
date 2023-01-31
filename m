@@ -1,91 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMrFf-0006o0-0X
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 09:04:47 -0500
+	id 1pMum5-0004qv-7J
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 12:50:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pMrFd-0006ns-FC
- for qemu-trivial@nongnu.org; Tue, 31 Jan 2023 09:04:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pMum0-0004qX-2R; Tue, 31 Jan 2023 12:50:26 -0500
+Received: from mout.kundenserver.de ([212.227.126.133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pMrFc-0002sx-08
- for qemu-trivial@nongnu.org; Tue, 31 Jan 2023 09:04:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675173883;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Svd+8sWUw8PYlJNHP3F0NKAwX2zot7PgklGR5ShTsz0=;
- b=f5qcdoe+ryISyofqGhSJLMH5rkNSTXSKabrytftRJhwT3l1UjMMlOAO1fqdiCngkR/+/vs
- sJhhW54HfXq8OLTx7fui50CYa/WCfR0I2hhq5wRJFgtGKp5gTOmtXNZC77crJMb/1tuAcw
- iGviFJ2iEhOAFTTs7y2+JqTVYk/ILJo=
-Received: from mail-yb1-f200.google.com (mail-yb1-f200.google.com
- [209.85.219.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-421-dhr61dTlPnW4SH7LziQPkA-1; Tue, 31 Jan 2023 09:04:41 -0500
-X-MC-Unique: dhr61dTlPnW4SH7LziQPkA-1
-Received: by mail-yb1-f200.google.com with SMTP id
- x8-20020a25e008000000b007cb4f1e3e57so11657373ybg.8
- for <qemu-trivial@nongnu.org>; Tue, 31 Jan 2023 06:04:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Svd+8sWUw8PYlJNHP3F0NKAwX2zot7PgklGR5ShTsz0=;
- b=Pzm9C1YLuxp1J7wuScc0e4QvrdwBTUGcc1ikIzKSxatQ+tjcmPxs6L8sM6bnM+A3PD
- bvowh56vOMQw491HvtZV2PSqnkkP7AucPJwWIF0SuwozQ6jrBYkdJ3Djod04G3rcEHX7
- 5tvCumW3ED9itXte4jm1Nzap4Px6y0Sn2bCniM/MMU2aJBLeZXuhQysMYrvI7nYRPzBM
- IfhYTp6WnUIDUzXKvUEuv4yZp1kDZ1MkW+//KsMQGJspNmWyk50X9L6c+bfNsD+gWSsW
- G3Q6UI95SHg65RpWmwOntLYYCB6vt06OKooaS+niwLAAAOife5kBezbqhgrRjcDj3FpM
- 4e/w==
-X-Gm-Message-State: AO0yUKVY/Dhz0aR8TrTAwwrU/C07up51QLdGwJJVG+RbkMbnxSmVhG1s
- qE9a1lDxDvDpPZBRbh5a2RpgLVIPEIbglEuLNY3IxdrhbVvykH44LxzPYXinG2XbxDTtU7AupIv
- bzAk2k+tBaPDhcWIKDg==
-X-Received: by 2002:a25:28c2:0:b0:83a:c1da:f0de with SMTP id
- o185-20020a2528c2000000b0083ac1daf0demr1012085ybo.46.1675173874214; 
- Tue, 31 Jan 2023 06:04:34 -0800 (PST)
-X-Google-Smtp-Source: AK7set9XC1mQUbpN4jCNTmaSOaCkUSADsDfVAISNUFf/qc0+/QaSvmJIlLE2VC+TK6ppdgBMM/bhrA==
-X-Received: by 2002:a25:28c2:0:b0:83a:c1da:f0de with SMTP id
- o185-20020a2528c2000000b0083ac1daf0demr1012064ybo.46.1675173873912; 
- Tue, 31 Jan 2023 06:04:33 -0800 (PST)
-Received: from [192.168.0.2] (ip-109-43-176-155.web.vodafone.de.
- [109.43.176.155]) by smtp.gmail.com with ESMTPSA id
- i1-20020a37b801000000b00702d1c6e7bbsm9876458qkf.130.2023.01.31.06.04.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 Jan 2023 06:04:33 -0800 (PST)
-Message-ID: <d72390b7-baab-c7d8-f827-cb9b0f11ac6c@redhat.com>
-Date: Tue, 31 Jan 2023 15:04:30 +0100
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pMuly-000700-C2; Tue, 31 Jan 2023 12:50:23 -0500
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MZAvp-1p9OEM2l7J-00VCET; Tue, 31 Jan 2023 18:50:11 +0100
+Message-ID: <a6fd96bc-2a63-7503-a848-171ac48de3d3@vivier.eu>
+Date: Tue, 31 Jan 2023 18:50:10 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v2 10/20] hw/isa/lpc_ich9: Eliminate ICH9LPCState::isa_bus
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Ani Sinha
- <ani@anisinha.ca>, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <lvivier@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org
-References: <20230131115326.12454-1-shentey@gmail.com>
- <20230131115326.12454-11-shentey@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230131115326.12454-11-shentey@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH qemu 1/1] vmxnet3: add mac address restore upon reset
+Content-Language: fr
+To: ~vlaomao <vlaomao@gmail.com>
+Cc: jasowang@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ dmitry@daynix.com
+References: <167510561992.30819.15402058368832100381-1@git.sr.ht>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <167510561992.30819.15402058368832100381-1@git.sr.ht>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:M5VJPNEFF8EkaSGLk80pWtqP7PeO1yEJigUWiALdAb3BDcUrsH8
+ GeYo0AkrUwKIKs4hxPQ8c2TFqEhW2MGFzCUvz94a0ZXYHYfqOJoi09uSM8/o6WUwsRzGHxo
+ kqEyP22MGulYp7vc70Qu4qBeBHfzVDJE15AGphdNjdbDfrnzK1K8AQEziOIlia9zY/MvOdv
+ jkBljVWRMVgFmB78yVPFg==
+UI-OutboundReport: notjunk:1;M01:P0:ZHgBXKhOkOE=;FD9oFICHA1pNNjwDIe2L+E4LGMw
+ yzLNDoOLbncrkZUVwQt1XI4iHqbXmMwqnTGFFKuVbONsOsHEQmDeKO09Sm1n8rQj9bk7Ksjw9
+ RLiorNtbyLuEWhLpfxwNgOtnUs3I/VrxaT+E3jeBJzand9P1F7vfNjuAsmiRgT7vchnzaJLm9
+ h2mUUu6i8ZnBEL8/9ddxsfWcKdIWVPvsT5GTSv4nnzhd9YY0aKG8i0fRhnEnAW7W+N4UR/GQm
+ f7PWasGr965OZatKXzRL64U3HIpjMYLdL7uZhmuqIHCxQL5MVKAXarf9fKYxwqzY+NoR2WYfN
+ F7+IlKWTyCbIvzoedQH/pOy3ALwcMrcHtqT/1qEfAZtKgnfkQm42ydyfCzeT1rd45aAQO31mH
+ UMRrk4X9UHdGdrxnHGJbLhJ/u3UNKfHAtMtK6Zs2yWzHP2EBIv84+4ew1MMrX2a6K4bhfckXO
+ wf27+B2d51kovZ73FZyaMxubjKH95twE+NThNnW5YqZpqDh4kj6YbUiCXZX3R7dyYQZpCrThC
+ 3VIjgvcH9Bb9BapTtqgyxI2fMPRmmaSqvvGT6yCLQpVPZnQog2lwGcS5ZN1tJ307lyC+JE+Kx
+ qybb+TTih63Kjl28ekwXpHT4RWcWPWdyxYEgApuR9et1Vd+cBo4xIMXEM4evl6eiCEnp0Q4jg
+ 9xN6yJIaMlDVN6bDK3/Zvy/iwGRv8bGyUslvmc+GvQ==
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,19 +62,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 14:04:45 -0000
+X-List-Received-Date: Tue, 31 Jan 2023 17:50:27 -0000
 
-On 31/01/2023 12.53, Bernhard Beschow wrote:
-> By using qdev_get_child_bus() we can eliminate ICH9LPCState::isa_bus and
-> spare the ich9_lpc variable in pc_q35, too.
+Le 30/01/2023 à 18:28, ~vlaomao a écrit :
+> From: VlaoMao <vlaomao@gmail.com>
 > 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Changing the address with a subsequent reboot makes this address permanent until the vm is turned off
 > ---
->   include/hw/i386/ich9.h | 3 ---
->   hw/i386/pc_q35.c       | 4 +---
->   hw/isa/lpc_ich9.c      | 5 +----
->   3 files changed, 2 insertions(+), 10 deletions(-)
+> Signed-off-by: Vlao Mao <vlaomao@gmail.com>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+As the Signed-off-by is part of the commit message it must be set before the signature signs ("---").
+
+And the "From:" field must have the same value as the "Signed-off-by:" field (a space is missing in 
+your "From:" field -> Vlao Mao).
+
+Thanks,
+Laurent
+
+> 
+>   hw/net/vmxnet3.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
+> index 04159c822..695ca2f92 100644
+> --- a/hw/net/vmxnet3.c
+> +++ b/hw/net/vmxnet3.c
+> @@ -1206,6 +1206,8 @@ static void vmxnet3_reset(VMXNET3State *s)
+>       s->drv_shmem = 0;
+>       s->tx_sop = true;
+>       s->skip_current_tx_pkt = false;
+> +
+> +    vmxnet3_reset_mac(s);
+>   }
+>   
+>   static void vmxnet3_update_rx_mode(VMXNET3State *s)
 
 
