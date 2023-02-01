@@ -1,61 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pMxYD-0001C2-6x
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 15:48:21 -0500
+	id 1pN0aR-0001tf-OR
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2023 19:02:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vlaomao@gmail.com>)
- id 1pMvFl-00020d-Gr; Tue, 31 Jan 2023 13:21:09 -0500
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pN0aP-0001ss-VQ; Tue, 31 Jan 2023 19:02:49 -0500
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <vlaomao@gmail.com>)
- id 1pMvFg-0004cY-Dw; Tue, 31 Jan 2023 13:21:08 -0500
-Received: by mail-pl1-x62a.google.com with SMTP id r8so9096511pls.2;
- Tue, 31 Jan 2023 10:21:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pN0aO-0002M2-Aj; Tue, 31 Jan 2023 19:02:49 -0500
+Received: by mail-ej1-x62d.google.com with SMTP id dr8so24971136ejc.12;
+ Tue, 31 Jan 2023 16:02:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=nB4FdcsvBrWO7VIqQykQ2ib/SW/js5SiQH4Gj9RZKJo=;
- b=dFdsDK3m160jh3IkQmQQtUd2W55YLHus2DH8sHpO6YLiiJUuKzb+W/GnBwCUFjZzQl
- WVNJtz2c2gVMW3cUFf2YFQc032YmK3hqgZHjOnS7hs26t4c3FXgCt5c7GOSjpq2hfDVF
- 3QDQOAgKZ75lwMPn6QDJ4vuRjb0hKys1gsOgbyZiRryL500Hf1sAFXaPTNbmBq3b/tR+
- /CPyJJf8cLDl8Mr/+to7DirIgkVVmfSXmtmz1BxRUVOO59Zil99u4Uj8mjCWVZ2Dz63e
- /DY1v2P2qDIA4Pj9V1gD1Z0YiG0+hgytpwRtW4+/kK5GnVXIoImwgXgyd04v0fsw7Eov
- 4B7w==
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sjOXovAmKjL7g3Che6Eyc3siPVLhgOZzBH9rNAH5fwI=;
+ b=CN3Zemqu1IZYEjBOttwDHThe1UwxG6oPnl5J7AvB0q+SFNiBnll/OWnZYh72yg2IXg
+ ShO6Ivs0oUTNEq+C+nDLB7UafENNlPamRJmKKnECUzKQEOlSRpSzrt9vQB+ZCsjqlP8J
+ ztcC/2Hly8GkWZQqg2YXEXWlnTYs8DXjzJZP2tmoCt401IcSM47UM5uxLu5beU6sa8TB
+ JzHQyEEDkXP13oi4uE75mm4piAx7kWgf/nZDegLzYoC+N1MhN2Fe4k1VjkWz1VWg+f1q
+ OCW4Y+M6vPDm+to3scljqnhQQidisGHQHgkXMcfwFKDBzeI5+peERVHKArcw8jbOZAdr
+ i7cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=nB4FdcsvBrWO7VIqQykQ2ib/SW/js5SiQH4Gj9RZKJo=;
- b=XfKH+K0F30VsjK0fMhipE1NEpmWkin4TUuHwELaxNAGHsEb6Z6+F9Xjt3Xe0zXYOu/
- DQllC6mi8++tWeMa+HiUftXKdUvnkMJ8zxOLiMMWZwuJ1BykOCYdsAhQn8Bd1QUm+2gO
- AEoA1slRHciczsqu64FyuH1f5Bp0QuPbiOu5t3SMC9UHINangB4B8ZQ10N1yuUXYj7qt
- 3Om5EngWivfdajXU29/bkGxiaeXdcTJ2l273PlZ1vXSluuuQhegXhHvot0wxSHZN6b83
- 5td7OXCgeQ13ozCvkFPQWexeFzimDh1P7YHsZKveiocZIIm0L8wunVem1tWymdoP+I/o
- gCew==
-X-Gm-Message-State: AO0yUKWIRw364VYZumqb4IDpI1P9qtYUPXESdFC1zOalbE1pO9Lw33Th
- 9/ZXljpUgc3Jsc6RCHY+SIs=
-X-Google-Smtp-Source: AK7set/FT1WcQvQaQvFToLrOa+JfNwEffH0a5KHDxZQUewiXlNGP1hb6UHNAnI2WLoYYy7hS6vr89w==
-X-Received: by 2002:a17:902:e54c:b0:196:2143:5eff with SMTP id
- n12-20020a170902e54c00b0019621435effmr31088172plf.24.1675189262086; 
- Tue, 31 Jan 2023 10:21:02 -0800 (PST)
-Received: from localhost.localdomain ([94.181.144.4])
- by smtp.googlemail.com with ESMTPSA id
- jd13-20020a170903260d00b0019893d572bfsm2260414plb.211.2023.01.31.10.20.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Jan 2023 10:21:01 -0800 (PST)
-From: Vlao Mao <vlaomao@gmail.com>
-To: dmitry@daynix.com
-Cc: jasowang@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- laurent@vivier.eu
-Subject: [PATCH qemu 0/1] MAC address falls to permanent
-Date: Tue, 31 Jan 2023 21:20:47 +0300
-Message-Id: <20230131182048.15535-1-vlaomao@gmail.com>
-X-Mailer: git-send-email 2.35.1
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sjOXovAmKjL7g3Che6Eyc3siPVLhgOZzBH9rNAH5fwI=;
+ b=kpkP0rcj+6x7YXLpt6mS5pmaf46XgS4v8FCHB/KCtxOKMO5GEl6FD/Q0Nz42D13aEu
+ 4InEeopAitYL9TRztn5Ltn4b2qpQDMbbGFfOdWoEqqunXIj/fEx5gys1iOJuwDhtuxFE
+ 8r5OX0lzb2J/03mNVodWFfZpqm2aRdahsnmaIGdMjufze3vstw4xWs+lYaSz8kMz24qw
+ TszkIsLeJCpmoUxLQhWy5uK9abenuSVwYe68HsNE9peT0FAs4I2nN4QPLVZYcIs+NZUx
+ ehR4FykDYVzx4YbdtjDgZj12Vs3xg89owfxIS+yl0fo3x9a/FltzeNkJvUjDkQH9Z3vk
+ sGLw==
+X-Gm-Message-State: AO0yUKV19FgrkjCjnv6W8u3npc52x5jaA61NfhhrDcvr58Q/T0CcDCKD
+ +2xty/JjJxqYuM+7yUnQu8vxtXbBb9U=
+X-Google-Smtp-Source: AK7set/u9IIWYmcVavlAPhGufEEdkHir3RgiGe0/fk0J4Nybl7MVKEFAiaQs3R/vCUYGecD70PagqA==
+X-Received: by 2002:a17:906:cc8f:b0:889:d998:1576 with SMTP id
+ oq15-20020a170906cc8f00b00889d9981576mr226864ejb.66.1675209765436; 
+ Tue, 31 Jan 2023 16:02:45 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-077-013-082-236.77.13.pool.telefonica.de.
+ [77.13.82.236]) by smtp.gmail.com with ESMTPSA id
+ la7-20020a170906ad8700b00872c0bccab2sm5275055ejb.35.2023.01.31.16.02.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Jan 2023 16:02:44 -0800 (PST)
+Date: Wed, 01 Feb 2023 00:02:32 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+CC: Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ani Sinha <ani@anisinha.ca>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Thomas Huth <thuth@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <lvivier@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_11/20=5D_hw/isa/lpc=5Fich9=3A_Reu?=
+ =?US-ASCII?Q?se_memory_and_io_address_space_of_PCI_bus?=
+In-Reply-To: <20230131115326.12454-12-shentey@gmail.com>
+References: <20230131115326.12454-1-shentey@gmail.com>
+ <20230131115326.12454-12-shentey@gmail.com>
+Message-ID: <F7A4EAA1-2150-4A4F-BD74-290FC22479CF@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=vlaomao@gmail.com; helo=mail-pl1-x62a.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -64,7 +76,6 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 31 Jan 2023 15:48:13 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,59 +87,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2023 18:21:10 -0000
-
-A bug was found with the vmxnet3 driver, after changing the MAC address
-and rebooting, it falls into the category of a permanent address until
-the VM is turned off. Here is log output:
-
--bash-4.4# ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
-group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
-default qlen 1000
-    link/ether 52:54:00:12:34:56 brd ff:ff:ff:ff:ff:ff
-
--bash-4.4# ip link set dev ens3 address 33:33:33:33:33:33
--bash-4.4# ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
-group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
-default qlen 1000
-    link/ether 33:33:33:33:33:33 brd ff:ff:ff:ff:ff:ff
--bash-4.4# ethtool -P ens3
-Permanent address: 52:54:00:12:34:56
--bash-4.4# reboot
-
-//rebooting
+X-List-Received-Date: Wed, 01 Feb 2023 00:02:50 -0000
 
 
--bash-4.4# ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
-group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: ens3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group
-default qlen 1000
-    link/ether 33:33:33:33:33:33 brd ff:ff:ff:ff:ff:ff
--bash-4.4# ethtool -P ens3
-Permanent address: 33:33:33:33:33:33
--bash-4.4#
 
-Vlao Mao (1):
-  vmxnet3: add mac address restore upon reset
+Am 31=2E Januar 2023 11:53:17 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>In pc_q35=2Ec the PCI host bridge's io and memory space is initialized
+>with get_system_memory() and get_system_io() respectively=2E Therefore,
+>using pci_address_space() and pci_address_space_io() is equivalent=2E
 
- hw/net/vmxnet3.c | 2 ++
- 1 file changed, 2 insertions(+)
+Self-NACK: pci_address_space() !=3D get_system_memory()=2E
 
--- 
-2.35.1
+Please ignore this patch=2E This patch can be omitted from the series w/o =
+any syntactic or semantic conflicts=2E I'll omit it in v3=2E
 
+>All
+>in all this makes the LPC function respect whatever memory spaces the
+>PCI bus was set up with=2E
+>
+>Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>---
+> hw/isa/lpc_ich9=2Ec | 6 +++---
+> 1 file changed, 3 insertions(+), 3 deletions(-)
+>
+>diff --git a/hw/isa/lpc_ich9=2Ec b/hw/isa/lpc_ich9=2Ec
+>index 9ab966ef88=2E=2E1b7e5585b3 100644
+>--- a/hw/isa/lpc_ich9=2Ec
+>+++ b/hw/isa/lpc_ich9=2Ec
+>@@ -506,10 +506,10 @@ static void ich9_lpc_rcba_update(ICH9LPCState *lpc,=
+ uint32_t rcba_old)
+>     uint32_t rcba =3D pci_get_long(lpc->d=2Econfig + ICH9_LPC_RCBA);
+>=20
+>     if (rcba_old & ICH9_LPC_RCBA_EN) {
+>-        memory_region_del_subregion(get_system_memory(), &lpc->rcrb_mem)=
+;
+>+        memory_region_del_subregion(pci_address_space(&lpc->d), &lpc->rc=
+rb_mem);
+>     }
+>     if (rcba & ICH9_LPC_RCBA_EN) {
+>-        memory_region_add_subregion_overlap(get_system_memory(),
+>+        memory_region_add_subregion_overlap(pci_address_space(&lpc->d),
+>                                             rcba & ICH9_LPC_RCBA_BA_MASK=
+,
+>                                             &lpc->rcrb_mem, 1);
+>     }
+>@@ -695,7 +695,7 @@ static void ich9_lpc_realize(PCIDevice *d, Error **er=
+rp)
+>         return;
+>     }
+>=20
+>-    isa_bus =3D isa_bus_new(DEVICE(d), get_system_memory(), get_system_i=
+o(),
+>+    isa_bus =3D isa_bus_new(dev, pci_address_space(d), pci_address_space=
+_io(d),
+>                           errp);
+>     if (!isa_bus) {
+>         return;
 
