@@ -1,72 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pNq8d-0006j9-2X
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2023 02:05:35 -0500
+	id 1pNt3e-0008LA-Sc
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2023 05:12:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNq8R-0006gT-Kf
- for qemu-trivial@nongnu.org; Fri, 03 Feb 2023 02:05:33 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNt3Z-0008Ii-Jo
+ for qemu-trivial@nongnu.org; Fri, 03 Feb 2023 05:12:33 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNq8P-0006BN-25
- for qemu-trivial@nongnu.org; Fri, 03 Feb 2023 02:05:23 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id m14so3740095wrg.13
- for <qemu-trivial@nongnu.org>; Thu, 02 Feb 2023 23:05:20 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pNt3V-0002Ej-JU
+ for qemu-trivial@nongnu.org; Fri, 03 Feb 2023 05:12:32 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ k8-20020a05600c1c8800b003dc57ea0dfeso5661687wms.0
+ for <qemu-trivial@nongnu.org>; Fri, 03 Feb 2023 02:12:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=7sLovERVS0o0wRpv1ojRh/w4w09gFQmhVcYCTU+hcos=;
- b=YWJzJmvxR+rzcE9FPS447X9BEWW5EsRA9VKA+baRLwKNDPhzz+7nl/PeuJajKxFfHV
- 3jCh87vsvrY9Skl6MMS5LQ4/fCy8HUz/UtTc2tmUJ0ZRvzPq6LigbwXABgNDyt8cSl6h
- NihyA8R1XaOflFqm6m8dBDLLv8nXcqiOfeOP3vPqZ5PD4q8ebAecOuvUrUJ+Oynzgvt6
- ikE8VWKzmL2zJUG3d14gKPCFY7f5h5DvhUOQZi33rmZVw625Kj9V5q9KhXMemyQti6A3
- 08Ut05/6GMxP6O2qdeYJfLZnUi1C+jsPWJJfyRBqBpeBdVfvZ1VF7/C84dd9wlwfTBMV
- +Wgg==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=LEOiYrWSQHlsAiuHuhCXDy1Rcvv1RyyMjqSxdpXj0GY=;
+ b=bAFZYsXNqhecxi1at/paRgFqbKwLYdYKYGVg2kUH/ZKlEHHHQpGlgpCMXuk1s3BVDb
+ ZcHj8NGxXeYdQLsH//cr8HmT4SUHltKwcy4TA5Ep68g13vMm8bNTKmg8/clsNnUsm0Yl
+ QzsBS1MG9xikLTSts0a2Rbl2Q+HUCEBlhXSrZgTqLj/EkZ5xMwx8ddtFNoLImAkq+qcF
+ rWxsqAjp6gmBw2UUD4ECYh+ZB6fu2FtQ4JjF1KraH7h0B6Wi7ctEG1VtSF0TxMzKTJdF
+ VJHUrr/cp/pjBPVAuDiKaOOlXkFJs1qPctE8NI0uf7qZuilhMPKAMbFcvNJFOklpmNUW
+ U+OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7sLovERVS0o0wRpv1ojRh/w4w09gFQmhVcYCTU+hcos=;
- b=pINxk9B4JpVJyDAZEo+xr9gYRYRj+YOqwgm+dCxGungIely1CQRFwuCUTTA279zzFP
- s3wdR0qG+7VFXccYSiMD2owP/lnsOmnRDfwAa/DwuHFU3cN1cmxrf0QfWTu+bs64NWEh
- 6lZ0CbPtsks3HxLJfgi0aMz8QfOVvQjyJWPR549Dmp5QMSlMcFfhCJXDqG7EPylFMw04
- UOtO4obbx1Wadat6QBZoPT5DQGQ2ePV+X/Rk9miCPOvkG4Du4lHj0SrXGPeer+pWGQ7P
- yShX84uOBHzMaFS0g9lFSCPjIjTdrF9Rc3vKHnsmnZM0sbiCk6rpfadygu2lG9gj+1wi
- 6D3Q==
-X-Gm-Message-State: AO0yUKX+u090tUf7BfXZRoAh/+grO5WQwxHH8os3oYyo9fKLAnN+fEIl
- b90FbqGCnPSGq3rxZQImo9OGug==
-X-Google-Smtp-Source: AK7set8Kzrt7CIgGv0oxj40D7FPK/ZoZ4PB4Q7lk5ny10LCjMwrdwrpSORYeQH7s7Jjjb/+ow/RMag==
-X-Received: by 2002:a5d:5958:0:b0:2bf:cfc0:ac71 with SMTP id
- e24-20020a5d5958000000b002bfcfc0ac71mr7134968wri.53.1675407918156; 
- Thu, 02 Feb 2023 23:05:18 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- e8-20020a5d6d08000000b00297dcfdc90fsm1306344wrq.24.2023.02.02.23.05.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Feb 2023 23:05:17 -0800 (PST)
-Message-ID: <1dd07be6-8079-0eea-1676-9e997677a53d@linaro.org>
-Date: Fri, 3 Feb 2023 08:05:16 +0100
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LEOiYrWSQHlsAiuHuhCXDy1Rcvv1RyyMjqSxdpXj0GY=;
+ b=fLQLB0OJv0+vF3VHz0jw4SMDOKbMGj9GI/Icsx8Qk6WZpQr3UB0Sdel2vZlPWIFvx3
+ YV8Aw42v172rqpt1ntUeIm9NSYf6OMtHloDSClgSj4JUqDUmGg+HlOn/jSxj5huUOosW
+ QDXcKJ8N66qFICuD10pcgCEwxNgbyBagGP1G2ailFN3N/OCkdC0p/1l7IFAHlmKCGhiO
+ GogMKIpU5bjHm2HdYLHw8Hy5zmoCC6Zg+ymlHrxFYGzVxLm7NyRUw3wVGCottrZhn6Bi
+ yj1hb80LqS1RFlmOH51EFNRPVuaDqxCeCbnPbO/iFgn7DPJw2OAIHdJylIDrZprrnabK
+ uMGg==
+X-Gm-Message-State: AO0yUKXGjDayV54WZdmrSm0bOmPtHk8zGdIeIb4NAHaB60XwnfDEhhb7
+ MGbnPAALfyOdYBYdGByrh0tVKg==
+X-Google-Smtp-Source: AK7set8Sfx4sgTskc6CJvtmAG4e4O/2we2YFWDFxaPFVcqS51ufENpnZBcGBp7bFDXSckNjoVPDB4Q==
+X-Received: by 2002:a05:600c:510e:b0:3dc:59e9:9285 with SMTP id
+ o14-20020a05600c510e00b003dc59e99285mr9945129wms.18.1675419147489; 
+ Fri, 03 Feb 2023 02:12:27 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
+ by smtp.gmail.com with ESMTPSA id
+ n36-20020a05600c3ba400b003dc54eef495sm2473728wms.24.2023.02.03.02.12.26
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 03 Feb 2023 02:12:27 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/4] hw/qdev-properties: Constify Property* in DeviceClass
+Date: Fri,  3 Feb 2023 11:12:20 +0100
+Message-Id: <20230203101224.25796-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v2] qemu-options.hx: remove stray quote
-To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Qemu-block <qemu-block@nongnu.org>
-References: <20230202223121.252073-1-jsnow@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230202223121.252073-1-jsnow@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,28 +79,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Feb 2023 07:05:34 -0000
+X-List-Received-Date: Fri, 03 Feb 2023 10:12:33 -0000
 
-On 2/2/23 23:31, John Snow wrote:
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> ---
->   qemu-options.hx | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index d59d19704bc..52d477547f5 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -1606,7 +1606,7 @@ SRST
->   
->       .. parsed-literal::
->   
-> -        |qemu_system_x86| -drive file=a -drive file=b"
-> +        |qemu_system_x86| -drive file=a -drive file=b
->   
->       is interpreted like:
->   
+Qualify some Property pointers as 'const' when the
+structure is accessed read-only.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Philippe Mathieu-Daudé (4):
+  hw/qdev-properties: Constify Property* in object_field_prop_ptr()
+  hw/qdev-properties: Constify Property* in PropertyInfo::print()
+    handler
+  hw/qdev-properties: Constify Property* in PropertyInfo::create()
+    handler
+  hw/qdev-properties: Constify DeviceClass::props_ field
+
+ hw/core/qdev-properties-system.c |  2 +-
+ hw/core/qdev-properties.c        | 14 +++++++-------
+ include/hw/qdev-core.h           |  2 +-
+ include/hw/qdev-properties.h     |  6 +++---
+ softmmu/qdev-monitor.c           |  4 ++--
+ 5 files changed, 14 insertions(+), 14 deletions(-)
+
+-- 
+2.38.1
 
 
