@@ -1,38 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pOGfv-0000J2-4g
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2023 06:25:43 -0500
+	id 1pOK6k-0000L1-8J
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2023 10:05:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1pOGfZ-0000GA-Vu; Sat, 04 Feb 2023 06:25:22 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1pOGfX-0002cz-80; Sat, 04 Feb 2023 06:25:21 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 0C0584001D;
- Sat,  4 Feb 2023 14:25:05 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 457349A;
- Sat,  4 Feb 2023 14:25:04 +0300 (MSK)
-Received: (nullmailer pid 2558790 invoked by uid 1000);
- Sat, 04 Feb 2023 11:25:03 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH] configure: normalize riscv* cpu types too
-Date: Sat,  4 Feb 2023 14:25:02 +0300
-Message-Id: <20230204112502.2558739-1-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pOK6i-0000Hy-5u
+ for qemu-trivial@nongnu.org; Sat, 04 Feb 2023 10:05:36 -0500
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pOK6g-0005vM-Mh
+ for qemu-trivial@nongnu.org; Sat, 04 Feb 2023 10:05:35 -0500
+Received: by mail-pl1-x62b.google.com with SMTP id h15so649097plk.12
+ for <qemu-trivial@nongnu.org>; Sat, 04 Feb 2023 07:05:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=76DNRTjLhsE3p7nnzjMQtgUW12HTRpj69nbID7cdQWA=;
+ b=OBgoZ9BM3zvGxKfUPw8EKvyX2UuDoP6TgdfwqMlUlfyMRFYsRBzsiPBvTfcAyAWTFZ
+ N7pAiQckBoZcBqM5l3fGiJ83mDiur9EqydmHziB5V0DPbV2EauXVkTLXXfixVOmnAe5Y
+ AQyre8R4+Q46TcDInDoaum3cwHzJfC/SA06gUn+9Te2yIkl6n1uNHo3yCNKHfgSznMzo
+ 1Qug4zkQkbiXw6kwF/yQE9pC5OiiDWrSOrQUJU5vAOPbtdKVRGMtVrqTz3/F3+/gEUvi
+ t5dOsNT2qEJIFvZZM9M8j/ZYGEymKAkzo27+oFRJKXMkTHkKEIChtW2MPHUH+MQSfEqZ
+ 1JZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=76DNRTjLhsE3p7nnzjMQtgUW12HTRpj69nbID7cdQWA=;
+ b=YV23yu5dJ9UPWfUjqLJ78lC2x5rNe6g8S09WUTQXgK+6OwYgCJ/q33nrDbT8NSk0Aj
+ 6Z/8CD6BZzRqKhAMJXAwfA5XsNvJJ5DlQEepoDS0W5NFuUwH2HlLxIm9chC/s9/ElTxi
+ V5PphBzTozy2BB3GZNNDYUGN5WyjI2EnOagq409XbDgaGwof/+Hetza57BSKm0buMhFf
+ Aewac9BN6spApamLf4Lu7abn19JN1KSuPoJ37UUm+lqYMyzQtLI9xEZDsAVVZUVsVA09
+ e/OFs/6P52ZIhXyV+7Mx43Yu97mCXkVTgJqqPqZbu/H9QjakRc80rOQXjGg2By/lLPaQ
+ taVg==
+X-Gm-Message-State: AO0yUKUfwuwAKSu7vyHJ4XMzRA2a9wM0OZ5Bj1iuh3VsLrS2s2nTrh+J
+ 2E2h5hLliuh/wV7x26zT0I0gEvX0+rSh/Xeur9WDMDqE0pz8AA==
+X-Google-Smtp-Source: AK7set+SRgiHdivWDUIKjDFpxboh9MmMtaq3KLGJe9vQh5z8rxtqGY3beWAoQGHjyUEpY2SSRemi5nf9hjfRc+cAtAE=
+X-Received: by 2002:a17:902:f552:b0:198:a5da:bf6c with SMTP id
+ h18-20020a170902f55200b00198a5dabf6cmr3317167plf.9.1675523132173; Sat, 04 Feb
+ 2023 07:05:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20230204112502.2558739-1-mjt@msgid.tls.msk.ru>
+In-Reply-To: <20230204112502.2558739-1-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 4 Feb 2023 15:05:21 +0000
+Message-ID: <CAFEAcA-cgoe9gzACaob=jBkCTQNG-+ahh41t0cYML4NM_DfNZA@mail.gmail.com>
+Subject: Re: [PATCH] configure: normalize riscv* cpu types too
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -45,46 +72,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Feb 2023 11:25:42 -0000
+X-List-Received-Date: Sat, 04 Feb 2023 15:05:36 -0000
 
-For most CPU types out there, ./configure normalizes all
-variations into base form plus, optionally, variations,
-to find the proper arch-specific code.  In particular,
-it's possible to use
-   ./configure --cpu=$(uname -m)
-and it will figure out the right base cpu family out of
-that. But this does not work for riscv64 for example,
-since there's no similar normalisation for that one.
+On Sat, 4 Feb 2023 at 11:26, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+> For most CPU types out there, ./configure normalizes all
+> variations into base form plus, optionally, variations,
+> to find the proper arch-specific code.  In particular,
+> it's possible to use
+>    ./configure --cpu=$(uname -m)
+> and it will figure out the right base cpu family out of
+> that. But this does not work for riscv64 for example,
+> since there's no similar normalisation for that one.
 
-For now, as far as I can see, there'no support for other
-riscv "sizes" (like riscv32 which actually esists as
-hardware). So for the time being, just normalize the
-cpu name to be "riscv" for all riscv* variants, just
-like it is done for arm and mips.  If/when support for
-other riscv variants will be added, this might be
-extended to distinguish them based on __LP64__ define
-or __riscv_xlen==32/64/128.
+I don't think that's something we should be encouraging
+users to do. The most common case should be "configure
+correctly detects the host CPU type by probing the
+compiler #defines, and the user does not need to specify".
+The next most common thing should be "the user has some
+special-case need to override this, and they know what
+they want, and they specify the right value, in this
+case "riscv".
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- configure | 3 +++
- 1 file changed, 3 insertions(+)
+We've put in some work to get configure away from its
+old habit of falling back to "guess based on uname -m",
+but that default code path is for the moment still there,
+and so the "canonicalize host CPU name" code also is
+still present, for:
+ (1) the cases when you get into that default fallback
+ (2) backwards-compatibility with users who are already
+     passing --cpu=armv4l or whatever
 
-diff --git a/configure b/configure
-index 9e407ce2e3..1deb65c95f 100755
---- a/configure
-+++ b/configure
-@@ -578,6 +578,9 @@ case "$cpu" in
-     cpu="ppc64"
-     CPU_CFLAGS="-m64 -mlittle-endian" ;;
- 
-+  riscv*)
-+    cpu="riscv" ;;
-+
-   s390)
-     CPU_CFLAGS="-m31" ;;
-   s390x)
--- 
-2.30.2
+But I don't think we should expand this legacy code
+and encourage users to pass more odd stuff to --cpu.
 
+We could probably deprecate-and-drop some of the
+canonicalization handling for other host architectures.
+
+thanks
+-- PMM
 
