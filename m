@@ -1,51 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pOKTE-00041m-Vx
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2023 10:28:53 -0500
+	id 1pOZhX-0004bw-Qu
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Feb 2023 02:44:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1pOKTC-00040z-MX; Sat, 04 Feb 2023 10:28:50 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1pOKTA-0000lZ-8R; Sat, 04 Feb 2023 10:28:50 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id A28EC746392;
- Sat,  4 Feb 2023 16:26:13 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 61BB974633D; Sat,  4 Feb 2023 16:26:13 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 605737456E3;
- Sat,  4 Feb 2023 16:26:13 +0100 (CET)
-Date: Sat, 4 Feb 2023 16:26:13 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Bernhard Beschow <shentey@gmail.com>
-cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org, 
- Laurent Vivier <lvivier@redhat.com>, 
- Sunil Muthuswamy <sunilmut@microsoft.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-Subject: Re: [PATCH v3 6/9] hw/i386/pc: Initialize ram_memory variable directly
-In-Reply-To: <20230204151027.39007-7-shentey@gmail.com>
-Message-ID: <d8ada3a2-c77a-bf77-89e8-c763efdb9b2c@eik.bme.hu>
-References: <20230204151027.39007-1-shentey@gmail.com>
- <20230204151027.39007-7-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
+ id 1pOXYV-0004vK-VW; Sun, 05 Feb 2023 00:27:13 -0500
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
+ id 1pOXYT-000101-8E; Sun, 05 Feb 2023 00:27:11 -0500
+Received: by mail-qv1-xf35.google.com with SMTP id e6so3230911qvp.1;
+ Sat, 04 Feb 2023 21:27:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=zkCXVLABK2qkEkox8WTVBUYOlF+Jr4yY8Kcm4bIe9FU=;
+ b=LaCaaXOivHjMyQfk+W/+TOSkem2yuiPzw/6nZejTSzQxZSpAKZbVv/2+EOikMCxSDl
+ JfeqPn7HKALDbjB9lL6cfsRVy2GGNMkPfE5qCf6C6v92czsm6EmkB+6RlyLTuXJNaK3Y
+ 4Ca8TXFK+jXtLgPAO5ej37k6MHe6CvESLm0ctVmEu0aKtCl1mhqmaM1dlIuW3k0MNL3L
+ 0VquhSTcmpQkZmLo3VeeySsV3GGv4g7o9/ymSaL6k5xo0baT9T5FNgL2vb02BLf/rGR8
+ 2zGkbmxJo2mNbbuyoILQCKa0W84gsAbcu4c+GQRDt7cjSfFVWexs6fTANU0h1DjwYPh8
+ S8NQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zkCXVLABK2qkEkox8WTVBUYOlF+Jr4yY8Kcm4bIe9FU=;
+ b=XSjexKxbEq7IaBYUJrgLjD4yn8WTBO249pVzAyn3YLjxL3ADG3Og0pRMCOjXACMFvp
+ taYrmjXiEz5Hpl6Voq+zerFh/yQWQafE5ljwZALW3YSmJO2MtcmxIXRfTlHSSHDHHnrq
+ fnrpehPDyozAiusmalt3rGwOs44Lt3IatecKA7D0xznNWLbn+GrKxcsE439I1eZKzzFb
+ isxFc7tOBZ5ajYUzi12wO4S2W93NQhOJD1pIwyO4+R8oFDPiya6RGtnqU4fasXty7uEb
+ u/YGquwzaVK5VCQUkZo7mMwesA0SC6S1oFmCTJo52L4IFUTznbJAej//smEHGhhnIQ35
+ 70cQ==
+X-Gm-Message-State: AO0yUKVXB1asJtlBjk+lqumlTDIisFYWCfA53GOC39peBmJxChMQAzcB
+ L/KeobbFb589HW9uiUwWJLwwPxNLKWP4zw==
+X-Google-Smtp-Source: AK7set9laWqKgFo+iZGVZ8f3QY4T/KlsQ0h4pq0IvdK/HjJ++c4nsshg0f2GqiBZcukGb63zyu0W8w==
+X-Received: by 2002:a05:6214:4a4f:b0:53a:a39f:b237 with SMTP id
+ ph15-20020a0562144a4f00b0053aa39fb237mr20606415qvb.24.1675574825734; 
+ Sat, 04 Feb 2023 21:27:05 -0800 (PST)
+Received: from debian.hsd1.ma.comcast.net ([2601:182:cc00:77b0::2bf5])
+ by smtp.gmail.com with ESMTPSA id
+ s20-20020a05620a16b400b0071f40a59fe5sm4956418qkj.127.2023.02.04.21.27.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 04 Feb 2023 21:27:05 -0800 (PST)
+From: Dinah Baum <dinahbaum123@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Dinah Baum <dinahbaum123@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH] configure: Add 'mkdir build' check
+Date: Sun,  5 Feb 2023 00:26:36 -0500
+Message-Id: <20230205052636.11822-1-dinahbaum123@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-172597582-1675524373=:44293"
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f35;
+ envelope-from=dinahbaum123@gmail.com; helo=mail-qv1-xf35.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 05 Feb 2023 02:44:37 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,115 +79,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Feb 2023 15:28:51 -0000
+X-List-Received-Date: Sun, 05 Feb 2023 05:27:15 -0000
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+QEMU configure script goes into an infinite error printing loop
+when in read only directory due to 'build' dir never being created.
 
---3866299591-172597582-1675524373=:44293
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Checking if 'mkdir dir' succeeds and if the directory is
+writeable prevents this error.
 
-On Sat, 4 Feb 2023, Bernhard Beschow wrote:
-> Going through pc_memory_init() seems quite complicated for a simple
-> assignment.
->
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> include/hw/i386/pc.h | 1 -
-> hw/i386/pc.c         | 2 --
-> hw/i386/pc_piix.c    | 4 ++--
-> hw/i386/pc_q35.c     | 5 ++---
-> 4 files changed, 4 insertions(+), 8 deletions(-)
->
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 66e3d059ef..b60b95921b 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -162,7 +162,6 @@ void xen_load_linux(PCMachineState *pcms);
-> void pc_memory_init(PCMachineState *pcms,
->                     MemoryRegion *system_memory,
->                     MemoryRegion *rom_memory,
-> -                    MemoryRegion **ram_memory,
->                     uint64_t pci_hole64_size);
-> uint64_t pc_pci_hole64_start(void);
-> DeviceState *pc_vga_init(ISABus *isa_bus, PCIBus *pci_bus);
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 6e592bd969..8898cc9961 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -936,7 +936,6 @@ static hwaddr pc_max_used_gpa(PCMachineState *pcms, uint64_t pci_hole64_size)
-> void pc_memory_init(PCMachineState *pcms,
->                     MemoryRegion *system_memory,
->                     MemoryRegion *rom_memory,
-> -                    MemoryRegion **ram_memory,
->                     uint64_t pci_hole64_size)
-> {
->     int linux_boot, i;
-> @@ -994,7 +993,6 @@ void pc_memory_init(PCMachineState *pcms,
->      * Split single memory region and use aliases to address portions of it,
->      * done for backwards compatibility with older qemus.
->      */
-> -    *ram_memory = machine->ram;
->     ram_below_4g = g_malloc(sizeof(*ram_below_4g));
->     memory_region_init_alias(ram_below_4g, NULL, "ram-below-4g", machine->ram,
->                              0, x86ms->below_4g_mem_size);
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 5bde4533cc..00ba725656 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -143,6 +143,7 @@ static void pc_init1(MachineState *machine,
->     if (xen_enabled()) {
->         xen_hvm_init_pc(pcms, &ram_memory);
->     } else {
-> +        ram_memory = machine->ram;
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/321
 
-Maybe you could just replace the few places it's used with machine->ram 
-directly and get rid of the local variable. There seems to be no advantage 
-storing it in a local just to use it once (in q35 below) or twice in 
-pc-piix. The local name is not even that much shorter so I don't see a 
-reason to have it in the first place,
+Signed-off-by: Dinah Baum <dinahbaum123@gmail.com>
+---
+ configure | 37 ++++++++++++++++++++++++++++++-------
+ 1 file changed, 30 insertions(+), 7 deletions(-)
 
-Regards,
-BALATON Zoltan
+diff --git a/configure b/configure
+index 64960c6000..fe9028991f 100755
+--- a/configure
++++ b/configure
+@@ -32,9 +32,11 @@ then
+     fi
+ 
+     mkdir build
+-    touch $MARKER
++    if [ -d build ] && [ -w build ]
++    then
++        touch $MARKER
+ 
+-    cat > GNUmakefile <<'EOF'
++        cat > GNUmakefile <<'EOF'
+ # This file is auto-generated by configure to support in-source tree
+ # 'make' command invocation
+ 
+@@ -56,8 +58,15 @@ force: ;
+ GNUmakefile: ;
+ 
+ EOF
+-    cd build
+-    exec "$source_path/configure" "$@"
++        cd build
++        exec "$source_path/configure" "$@"
++    elif ! [ -d build ]
++    then
++        echo "ERROR: Unable to create ./build dir, try using a ../qemu/configure build"
++    elif ! [ -w build ]
++    then
++        echo "ERROR: ./build dir not writeable, try using a ../qemu/configure build"
++    fi
+ fi
+ 
+ # Temporary directory used for files created while
+@@ -181,9 +190,12 @@ compile_prog() {
+ 
+ # symbolically link $1 to $2.  Portable version of "ln -sf".
+ symlink() {
+-  rm -rf "$2"
+-  mkdir -p "$(dirname "$2")"
+-  ln -s "$1" "$2"
++  if [ -d $source_path/build ] && [ -w $source_path/build ]
++  then
++      rm -rf "$2"
++      mkdir -p "$(dirname "$2")"
++      ln -s "$1" "$2"
++  fi
+ }
+ 
+ # check whether a command is available to this shell (may be either an
+@@ -2287,7 +2299,18 @@ fi
+ #######################################
+ # generate config-host.mak
+ 
++if ! [ -d $source_path/build ] || ! [ -w $source_path/build ]
++then
++    echo "ERROR: ./build dir unusable, exiting"
++    # cleanup
++    rm -f config.log
++    rm -f Makefile.prereqs
++    rm -r "$TMPDIR1"
++    exit 1
++fi
++
+ if ! (GIT="$git" "$source_path/scripts/git-submodule.sh" "$git_submodules_action" "$git_submodules"); then
++    echo "BAD"
+     exit 1
+ fi
+ 
+-- 
+2.30.2
 
->         if (!pcms->max_ram_below_4g) {
->             pcms->max_ram_below_4g = 0xe0000000; /* default: 3.5G */
->         }
-> @@ -205,8 +206,7 @@ static void pc_init1(MachineState *machine,
->
->     /* allocate ram and load rom/bios */
->     if (!xen_enabled()) {
-> -        pc_memory_init(pcms, system_memory,
-> -                       rom_memory, &ram_memory, hole64_size);
-> +        pc_memory_init(pcms, system_memory, rom_memory, hole64_size);
->     } else {
->         pc_system_flash_cleanup_unused(pcms);
->         if (machine->kernel_filename != NULL) {
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 8253b49296..88f0981f50 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -129,7 +129,7 @@ static void pc_q35_init(MachineState *machine)
->     MemoryRegion *system_io = get_system_io();
->     MemoryRegion *pci_memory;
->     MemoryRegion *rom_memory;
-> -    MemoryRegion *ram_memory;
-> +    MemoryRegion *ram_memory = machine->ram;
->     GSIState *gsi_state;
->     ISABus *isa_bus;
->     int i;
-> @@ -216,8 +216,7 @@ static void pc_q35_init(MachineState *machine)
->     }
->
->     /* allocate ram and load rom/bios */
-> -    pc_memory_init(pcms, system_memory, rom_memory, &ram_memory,
-> -                   pci_hole64_size);
-> +    pc_memory_init(pcms, system_memory, rom_memory, pci_hole64_size);
->
->     object_property_add_child(OBJECT(machine), "q35", OBJECT(q35_host));
->     object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_RAM_MEM,
->
---3866299591-172597582-1675524373=:44293--
 
