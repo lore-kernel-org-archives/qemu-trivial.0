@@ -1,73 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pOZhX-0004bw-Qu
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Feb 2023 02:44:42 -0500
+	id 1pOcpd-0005CG-TH
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Feb 2023 06:05:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
- id 1pOXYV-0004vK-VW; Sun, 05 Feb 2023 00:27:13 -0500
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pOcpb-0005Bo-Rw
+ for qemu-trivial@nongnu.org; Sun, 05 Feb 2023 06:05:12 -0500
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
- id 1pOXYT-000101-8E; Sun, 05 Feb 2023 00:27:11 -0500
-Received: by mail-qv1-xf35.google.com with SMTP id e6so3230911qvp.1;
- Sat, 04 Feb 2023 21:27:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=zkCXVLABK2qkEkox8WTVBUYOlF+Jr4yY8Kcm4bIe9FU=;
- b=LaCaaXOivHjMyQfk+W/+TOSkem2yuiPzw/6nZejTSzQxZSpAKZbVv/2+EOikMCxSDl
- JfeqPn7HKALDbjB9lL6cfsRVy2GGNMkPfE5qCf6C6v92czsm6EmkB+6RlyLTuXJNaK3Y
- 4Ca8TXFK+jXtLgPAO5ej37k6MHe6CvESLm0ctVmEu0aKtCl1mhqmaM1dlIuW3k0MNL3L
- 0VquhSTcmpQkZmLo3VeeySsV3GGv4g7o9/ymSaL6k5xo0baT9T5FNgL2vb02BLf/rGR8
- 2zGkbmxJo2mNbbuyoILQCKa0W84gsAbcu4c+GQRDt7cjSfFVWexs6fTANU0h1DjwYPh8
- S8NQ==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pOcpY-0006H1-Rr
+ for qemu-trivial@nongnu.org; Sun, 05 Feb 2023 06:05:11 -0500
+Received: by mail-ej1-x632.google.com with SMTP id dr8so26717059ejc.12
+ for <qemu-trivial@nongnu.org>; Sun, 05 Feb 2023 03:05:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=2osJA2OLrMFuNPfRJ1Jdiww7Q2EvwQbnvhrpg5YfAoo=;
+ b=WLQBh9Yb2w/zShfD3nnetooRUcaKrIQdn4ykcjpDnKkSV2Kfu3QU26Jk8Tne7G63j7
+ JWwO/oDMu50392Ft1Dy6KBqWFU1ErUVbxI4fteTEu4MXQHyOvAiHBMO6D4I82OL3X8dF
+ zhgxeL4NwY3WiQXj9tQ03V18U4sJLTow9D/qUmyyJuLn7Nt4OMx/5tpDKViYo7NKDjJ2
+ XcyR+nz5sZNSmweEOdt6sZUhOg8cFXl0to3i65jV50PeLbrtfv12McwkM9POkVMxB8JL
+ tPxy7ndgZTJ05eDeOBzedK98QJXA748CDxhyNYToFBH3Ott9nCtrb2NPs9/h8S1uP9iH
+ RC8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zkCXVLABK2qkEkox8WTVBUYOlF+Jr4yY8Kcm4bIe9FU=;
- b=XSjexKxbEq7IaBYUJrgLjD4yn8WTBO249pVzAyn3YLjxL3ADG3Og0pRMCOjXACMFvp
- taYrmjXiEz5Hpl6Voq+zerFh/yQWQafE5ljwZALW3YSmJO2MtcmxIXRfTlHSSHDHHnrq
- fnrpehPDyozAiusmalt3rGwOs44Lt3IatecKA7D0xznNWLbn+GrKxcsE439I1eZKzzFb
- isxFc7tOBZ5ajYUzi12wO4S2W93NQhOJD1pIwyO4+R8oFDPiya6RGtnqU4fasXty7uEb
- u/YGquwzaVK5VCQUkZo7mMwesA0SC6S1oFmCTJo52L4IFUTznbJAej//smEHGhhnIQ35
- 70cQ==
-X-Gm-Message-State: AO0yUKVXB1asJtlBjk+lqumlTDIisFYWCfA53GOC39peBmJxChMQAzcB
- L/KeobbFb589HW9uiUwWJLwwPxNLKWP4zw==
-X-Google-Smtp-Source: AK7set9laWqKgFo+iZGVZ8f3QY4T/KlsQ0h4pq0IvdK/HjJ++c4nsshg0f2GqiBZcukGb63zyu0W8w==
-X-Received: by 2002:a05:6214:4a4f:b0:53a:a39f:b237 with SMTP id
- ph15-20020a0562144a4f00b0053aa39fb237mr20606415qvb.24.1675574825734; 
- Sat, 04 Feb 2023 21:27:05 -0800 (PST)
-Received: from debian.hsd1.ma.comcast.net ([2601:182:cc00:77b0::2bf5])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2osJA2OLrMFuNPfRJ1Jdiww7Q2EvwQbnvhrpg5YfAoo=;
+ b=cISH5yzKxL/L+z3IHPsRwH6mlOC61pLuFEDRdReBHY9eCYHo25RYVAzeQlYeG5ggpr
+ zO0n5Gk1t5x0PfrSB6YsW8lMSs2rc74IHJTRxXUkP0JMJqncDwKNkX/222oWV6P3snlw
+ /SznMYhGvEHZm/8lUuyTIaxFNZagbUrYlvHoez6p5fz8BOkQFoVcA24BrbpV7Za4ftbK
+ 4LkRKjgE1G69ZoyQdaK0VwrvfCwgZlHg89sG6XFPnff46aPZfvyZmhFf/qC8iSYxbTbW
+ XZEJU+IpJKK+OVFB5MvQO/5Aq+SiJ0MOZYdy1iAvrWT95ljrAzxfnHMc9PgMgiL4Flrc
+ lNZA==
+X-Gm-Message-State: AO0yUKX6n9v8nmAwSNZ07mun6FOiw1DE01XnK5o+pwQnq+XQ4WOvDPGv
+ 0OHja5GUsti6LrmUKCGBZGsAGg==
+X-Google-Smtp-Source: AK7set88mVl33Musb2/VW/GRO5zyt3W8nhWkm9S3AFjV0fAwvLy9UWVMbfFK1xPm1acHtYhfn+c6iA==
+X-Received: by 2002:a17:906:2ed7:b0:878:5f7a:7aab with SMTP id
+ s23-20020a1709062ed700b008785f7a7aabmr15513230eji.39.1675595106928; 
+ Sun, 05 Feb 2023 03:05:06 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- s20-20020a05620a16b400b0071f40a59fe5sm4956418qkj.127.2023.02.04.21.27.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Feb 2023 21:27:05 -0800 (PST)
-From: Dinah Baum <dinahbaum123@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Dinah Baum <dinahbaum123@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PATCH] configure: Add 'mkdir build' check
-Date: Sun,  5 Feb 2023 00:26:36 -0500
-Message-Id: <20230205052636.11822-1-dinahbaum123@gmail.com>
-X-Mailer: git-send-email 2.30.2
+ c19-20020a17090603d300b0088519b9206bsm3964410eja.130.2023.02.05.03.05.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 05 Feb 2023 03:05:06 -0800 (PST)
+Message-ID: <0f994c3c-b90f-17da-3904-395e2536f843@linaro.org>
+Date: Sun, 5 Feb 2023 12:05:04 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.6.1
+Subject: Re: [PATCH v3 1/9] hw/pci-host/i440fx: Inline sysbus_add_io()
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <lvivier@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>
+References: <20230204151027.39007-1-shentey@gmail.com>
+ <20230204151027.39007-2-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230204151027.39007-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f35;
- envelope-from=dinahbaum123@gmail.com; helo=mail-qv1-xf35.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x632.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 05 Feb 2023 02:44:37 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,93 +88,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Feb 2023 05:27:15 -0000
+X-List-Received-Date: Sun, 05 Feb 2023 11:05:13 -0000
 
-QEMU configure script goes into an infinite error printing loop
-when in read only directory due to 'build' dir never being created.
+On 4/2/23 16:10, Bernhard Beschow wrote:
+> sysbus_add_io() just wraps memory_region_add_subregion() while also
+> obscuring where the memory is attached. So use
+> memory_region_add_subregion() directly and attach it to the existing
+> memory region s->bus->address_space_io which is set as an alias to
+> get_system_io() by the pc machine.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   hw/pci-host/i440fx.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+> index 262f82c303..9c6882d3fc 100644
+> --- a/hw/pci-host/i440fx.c
+> +++ b/hw/pci-host/i440fx.c
+> @@ -27,6 +27,7 @@
+>   #include "qemu/range.h"
+>   #include "hw/i386/pc.h"
+>   #include "hw/pci/pci.h"
+> +#include "hw/pci/pci_bus.h"
+>   #include "hw/pci/pci_host.h"
+>   #include "hw/pci-host/i440fx.h"
+>   #include "hw/qdev-properties.h"
+> @@ -217,10 +218,10 @@ static void i440fx_pcihost_realize(DeviceState *dev, Error **errp)
+>       PCIHostState *s = PCI_HOST_BRIDGE(dev);
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>   
+> -    sysbus_add_io(sbd, 0xcf8, &s->conf_mem);
+> +    memory_region_add_subregion(s->bus->address_space_io, 0xcf8, &s->conf_mem);
 
-Checking if 'mkdir dir' succeeds and if the directory is
-writeable prevents this error.
+address_space_io is internal to PCIBus. Better would be adding a helper
+like pci_bus_io_region() IMO. Anyhow, removing sysbus_add_io() uses is
+good, so:
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/321
-
-Signed-off-by: Dinah Baum <dinahbaum123@gmail.com>
----
- configure | 37 ++++++++++++++++++++++++++++++-------
- 1 file changed, 30 insertions(+), 7 deletions(-)
-
-diff --git a/configure b/configure
-index 64960c6000..fe9028991f 100755
---- a/configure
-+++ b/configure
-@@ -32,9 +32,11 @@ then
-     fi
- 
-     mkdir build
--    touch $MARKER
-+    if [ -d build ] && [ -w build ]
-+    then
-+        touch $MARKER
- 
--    cat > GNUmakefile <<'EOF'
-+        cat > GNUmakefile <<'EOF'
- # This file is auto-generated by configure to support in-source tree
- # 'make' command invocation
- 
-@@ -56,8 +58,15 @@ force: ;
- GNUmakefile: ;
- 
- EOF
--    cd build
--    exec "$source_path/configure" "$@"
-+        cd build
-+        exec "$source_path/configure" "$@"
-+    elif ! [ -d build ]
-+    then
-+        echo "ERROR: Unable to create ./build dir, try using a ../qemu/configure build"
-+    elif ! [ -w build ]
-+    then
-+        echo "ERROR: ./build dir not writeable, try using a ../qemu/configure build"
-+    fi
- fi
- 
- # Temporary directory used for files created while
-@@ -181,9 +190,12 @@ compile_prog() {
- 
- # symbolically link $1 to $2.  Portable version of "ln -sf".
- symlink() {
--  rm -rf "$2"
--  mkdir -p "$(dirname "$2")"
--  ln -s "$1" "$2"
-+  if [ -d $source_path/build ] && [ -w $source_path/build ]
-+  then
-+      rm -rf "$2"
-+      mkdir -p "$(dirname "$2")"
-+      ln -s "$1" "$2"
-+  fi
- }
- 
- # check whether a command is available to this shell (may be either an
-@@ -2287,7 +2299,18 @@ fi
- #######################################
- # generate config-host.mak
- 
-+if ! [ -d $source_path/build ] || ! [ -w $source_path/build ]
-+then
-+    echo "ERROR: ./build dir unusable, exiting"
-+    # cleanup
-+    rm -f config.log
-+    rm -f Makefile.prereqs
-+    rm -r "$TMPDIR1"
-+    exit 1
-+fi
-+
- if ! (GIT="$git" "$source_path/scripts/git-submodule.sh" "$git_submodules_action" "$git_submodules"); then
-+    echo "BAD"
-     exit 1
- fi
- 
--- 
-2.30.2
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
