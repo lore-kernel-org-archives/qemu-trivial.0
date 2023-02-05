@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pOcpd-0005CG-TH
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Feb 2023 06:05:13 -0500
+	id 1pOcwu-0000yf-5h
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Feb 2023 06:12:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pOcpb-0005Bo-Rw
- for qemu-trivial@nongnu.org; Sun, 05 Feb 2023 06:05:12 -0500
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pOcwm-0000y3-BW
+ for qemu-trivial@nongnu.org; Sun, 05 Feb 2023 06:12:37 -0500
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pOcpY-0006H1-Rr
- for qemu-trivial@nongnu.org; Sun, 05 Feb 2023 06:05:11 -0500
-Received: by mail-ej1-x632.google.com with SMTP id dr8so26717059ejc.12
- for <qemu-trivial@nongnu.org>; Sun, 05 Feb 2023 03:05:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pOcwj-0007k2-HD
+ for qemu-trivial@nongnu.org; Sun, 05 Feb 2023 06:12:35 -0500
+Received: by mail-ej1-x62e.google.com with SMTP id mc11so26772046ejb.10
+ for <qemu-trivial@nongnu.org>; Sun, 05 Feb 2023 03:12:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=2osJA2OLrMFuNPfRJ1Jdiww7Q2EvwQbnvhrpg5YfAoo=;
- b=WLQBh9Yb2w/zShfD3nnetooRUcaKrIQdn4ykcjpDnKkSV2Kfu3QU26Jk8Tne7G63j7
- JWwO/oDMu50392Ft1Dy6KBqWFU1ErUVbxI4fteTEu4MXQHyOvAiHBMO6D4I82OL3X8dF
- zhgxeL4NwY3WiQXj9tQ03V18U4sJLTow9D/qUmyyJuLn7Nt4OMx/5tpDKViYo7NKDjJ2
- XcyR+nz5sZNSmweEOdt6sZUhOg8cFXl0to3i65jV50PeLbrtfv12McwkM9POkVMxB8JL
- tPxy7ndgZTJ05eDeOBzedK98QJXA748CDxhyNYToFBH3Ott9nCtrb2NPs9/h8S1uP9iH
- RC8w==
+ bh=DeHh+xR57LSPi2nTg81r53yT1/n7w4mqze1stnrDkbY=;
+ b=kgCOqhDkmCcwQkf/ktzkh/3cgh2xwke0fuRjOhmBMqobccQHC6/b8HzbO3BGheHedg
+ jwmi8SyL0I5tKLHJKtoztXwkXqs9uqzj6OmKrgxqQJmf0e/aWArjY6pwbOnWUbak3JeQ
+ HRx/nR11lLEkyUGkHongKrJoquZQFHSLW439AlebPkwhidgrz5y0rGoJINoh6k3N3eun
+ 7q3hp5pzCHpwyU2z44gAu8RHKJSzcVojCxUZtk8VJ1GfY5l1d9PaZmOycVenv/1jBtGE
+ ovp/+7F+a5TJb8BDW6dQK8njjrwxZQcEFIJ97uK4jGSToCT0nWaLj4EyNIuped8pBohW
+ jFPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2osJA2OLrMFuNPfRJ1Jdiww7Q2EvwQbnvhrpg5YfAoo=;
- b=cISH5yzKxL/L+z3IHPsRwH6mlOC61pLuFEDRdReBHY9eCYHo25RYVAzeQlYeG5ggpr
- zO0n5Gk1t5x0PfrSB6YsW8lMSs2rc74IHJTRxXUkP0JMJqncDwKNkX/222oWV6P3snlw
- /SznMYhGvEHZm/8lUuyTIaxFNZagbUrYlvHoez6p5fz8BOkQFoVcA24BrbpV7Za4ftbK
- 4LkRKjgE1G69ZoyQdaK0VwrvfCwgZlHg89sG6XFPnff46aPZfvyZmhFf/qC8iSYxbTbW
- XZEJU+IpJKK+OVFB5MvQO/5Aq+SiJ0MOZYdy1iAvrWT95ljrAzxfnHMc9PgMgiL4Flrc
- lNZA==
-X-Gm-Message-State: AO0yUKX6n9v8nmAwSNZ07mun6FOiw1DE01XnK5o+pwQnq+XQ4WOvDPGv
- 0OHja5GUsti6LrmUKCGBZGsAGg==
-X-Google-Smtp-Source: AK7set88mVl33Musb2/VW/GRO5zyt3W8nhWkm9S3AFjV0fAwvLy9UWVMbfFK1xPm1acHtYhfn+c6iA==
-X-Received: by 2002:a17:906:2ed7:b0:878:5f7a:7aab with SMTP id
- s23-20020a1709062ed700b008785f7a7aabmr15513230eji.39.1675595106928; 
- Sun, 05 Feb 2023 03:05:06 -0800 (PST)
+ bh=DeHh+xR57LSPi2nTg81r53yT1/n7w4mqze1stnrDkbY=;
+ b=dMkidfv+8ZMYH3G4xowVORitwGE4Ba6JwY86dsAUebFZpPf4MaPNDQ902zNNQndQoM
+ QVRZUPjvRvU5EkibHta2bTkZoA9djtja0rtVhhRT3EmCex9+zUD8ysMZPLqNKprOv91z
+ KJ7AS1DCczhwGxEyDJzXthdgRR96CZ0iY6paDunX3ZrRMOFdCT2IZNGbVKPqEv/GXmMk
+ ohcbeyPO4fdL2pWYJ9YQEREFi6SEhkNX6vjoqdOvQ1I4u0w4uSJscMS+8tjg0SelQIQM
+ XuA/RH9mSVy9lNvStDKxCBItKALcgjz5wg52Xzo/WFwltYfn0EqEk+mGCqNUPeI3GLRO
+ s+KA==
+X-Gm-Message-State: AO0yUKXnTJosUgHvIkjR6EA7spHb8V6lzKexoUNH0DJ7QMxhNFFzD1QJ
+ Uep/z8fOOQ+o3mXyHP/ClfP/Pw==
+X-Google-Smtp-Source: AK7set9QHs76vz5NwISxPH8dW0MC2nx4hOQQJS0N6Aq8jAKta448AKkDkI/QApl5NjEVpF16I3tnPA==
+X-Received: by 2002:a17:906:c7da:b0:878:4d11:f868 with SMTP id
+ dc26-20020a170906c7da00b008784d11f868mr13867989ejb.2.1675595551095; 
+ Sun, 05 Feb 2023 03:12:31 -0800 (PST)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- c19-20020a17090603d300b0088519b9206bsm3964410eja.130.2023.02.05.03.05.05
+ g18-20020a170906595200b00878775876c5sm4023721ejr.73.2023.02.05.03.12.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 05 Feb 2023 03:05:06 -0800 (PST)
-Message-ID: <0f994c3c-b90f-17da-3904-395e2536f843@linaro.org>
-Date: Sun, 5 Feb 2023 12:05:04 +0100
+ Sun, 05 Feb 2023 03:12:29 -0800 (PST)
+Message-ID: <58531e21-311c-a747-3859-a621144feeda@linaro.org>
+Date: Sun, 5 Feb 2023 12:12:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: [PATCH v3 1/9] hw/pci-host/i440fx: Inline sysbus_add_io()
+Subject: Re: [PATCH v3 2/9] hw/pci-host/q35: Inline sysbus_add_io()
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -62,20 +62,20 @@ Cc: Thomas Huth <thuth@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>
 References: <20230204151027.39007-1-shentey@gmail.com>
- <20230204151027.39007-2-shentey@gmail.com>
+ <20230204151027.39007-3-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230204151027.39007-2-shentey@gmail.com>
+In-Reply-To: <20230204151027.39007-3-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x632.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,44 +88,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Feb 2023 11:05:13 -0000
+X-List-Received-Date: Sun, 05 Feb 2023 11:12:39 -0000
 
 On 4/2/23 16:10, Bernhard Beschow wrote:
 > sysbus_add_io() just wraps memory_region_add_subregion() while also
 > obscuring where the memory is attached. So use
 > memory_region_add_subregion() directly and attach it to the existing
-> memory region s->bus->address_space_io which is set as an alias to
-> get_system_io() by the pc machine.
+> memory region s->mch.address_space_io which is set as an alias to
+> get_system_io() by the q35 machine.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > Reviewed-by: Thomas Huth <thuth@redhat.com>
 > ---
->   hw/pci-host/i440fx.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
+>   hw/pci-host/q35.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
-> index 262f82c303..9c6882d3fc 100644
-> --- a/hw/pci-host/i440fx.c
-> +++ b/hw/pci-host/i440fx.c
-> @@ -27,6 +27,7 @@
->   #include "qemu/range.h"
->   #include "hw/i386/pc.h"
->   #include "hw/pci/pci.h"
-> +#include "hw/pci/pci_bus.h"
->   #include "hw/pci/pci_host.h"
->   #include "hw/pci-host/i440fx.h"
->   #include "hw/qdev-properties.h"
-> @@ -217,10 +218,10 @@ static void i440fx_pcihost_realize(DeviceState *dev, Error **errp)
->       PCIHostState *s = PCI_HOST_BRIDGE(dev);
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 26390863d6..fa05844319 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -50,10 +50,12 @@ static void q35_host_realize(DeviceState *dev, Error **errp)
+>       Q35PCIHost *s = Q35_HOST_DEVICE(dev);
 >       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
 >   
-> -    sysbus_add_io(sbd, 0xcf8, &s->conf_mem);
-> +    memory_region_add_subregion(s->bus->address_space_io, 0xcf8, &s->conf_mem);
+> -    sysbus_add_io(sbd, MCH_HOST_BRIDGE_CONFIG_ADDR, &pci->conf_mem);
+> +    memory_region_add_subregion(s->mch.address_space_io,
+> +                                MCH_HOST_BRIDGE_CONFIG_ADDR, &pci->conf_mem);
+>       sysbus_init_ioports(sbd, MCH_HOST_BRIDGE_CONFIG_ADDR, 4);
 
-address_space_io is internal to PCIBus. Better would be adding a helper
-like pci_bus_io_region() IMO. Anyhow, removing sysbus_add_io() uses is
-good, so:
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+This makes me wonder why MCH_PCI_DEVICE doesn't use the bus I/O space
+via pci_address_space_io(). IOW, why the MR like is in MCH_PCI_DEVICE
+and not Q35_HOST_DEVICE?
 
