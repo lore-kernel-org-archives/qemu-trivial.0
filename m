@@ -1,77 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pPP1U-0000Zf-Lt
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2023 09:32:40 -0500
+	id 1pPPaK-0002fp-CP
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2023 10:08:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pPP1T-0000ZJ-GG
- for qemu-trivial@nongnu.org; Tue, 07 Feb 2023 09:32:39 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pPPaI-0002d1-SY
+ for qemu-trivial@nongnu.org; Tue, 07 Feb 2023 10:08:38 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pPP1S-0007sK-3z
- for qemu-trivial@nongnu.org; Tue, 07 Feb 2023 09:32:39 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pPPaH-0007So-9C
+ for qemu-trivial@nongnu.org; Tue, 07 Feb 2023 10:08:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675780357;
+ s=mimecast20190719; t=1675782516;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=yTUAgDGs7FNCZw9NILePMRE3OtpQtsqIo+qh5Z1toTc=;
- b=Fw39vkI1G6VAx0GVKKWyRLevIk6T1d+XLeGZ5giZGmvVbmrP+ZKgg76KC638ZiBtPHq6+C
- sQcUT+AiKO6RAgWkewRHgWTH0U72PuVOZrz6cx60o1vUAu/8qP3sZWIYRmYzDdsIl+bRLW
- X3IYbgYeCpPvl/HNjO8Mny+OLSvn2nE=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=KI3RgQdPtYw8GUWyMez8C5CNhpplO8CmMk/Ip3SnJv8=;
+ b=GRODJLTI8ky/LZMP55fwsIZm+QM7R4P+sYHOGB8J4EdSpYu8e+smR+kEZysWNxOb6wEIVj
+ zD4vpI3nyQLd3MsNQ1QNtI4DjJ1Os/6wbB9b2+tw678TnNBe4pX/koJFa+BCJp8iKquG6E
+ NmDSaP4GMF6PXDeKyfOXDelq8oKa8lo=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-171-Goc6HpwCNtqV-vs4dVaMvA-1; Tue, 07 Feb 2023 09:32:28 -0500
-X-MC-Unique: Goc6HpwCNtqV-vs4dVaMvA-1
-Received: by mail-qt1-f198.google.com with SMTP id
- hf20-20020a05622a609400b003abcad051d2so8562523qtb.12
- for <qemu-trivial@nongnu.org>; Tue, 07 Feb 2023 06:32:28 -0800 (PST)
+ us-mta-463-dA0fknmkMxCFMmelT8NkzA-1; Tue, 07 Feb 2023 10:08:34 -0500
+X-MC-Unique: dA0fknmkMxCFMmelT8NkzA-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ p6-20020a05622a048600b003b9a3ab9153so8629487qtx.8
+ for <qemu-trivial@nongnu.org>; Tue, 07 Feb 2023 07:08:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yTUAgDGs7FNCZw9NILePMRE3OtpQtsqIo+qh5Z1toTc=;
- b=NLWWrkcJtMgTAt3EfXFra3hdVrONxIiBLx/o8YRWQlad3zPm93aIW5OQ0pUctmIout
- CqMWM/qbs7eijtM9UfHtbntVbwy30yldSxawXyGfrbdu22ujfh6j2NORl71KMAhk4B0y
- 1BSSnP4B8X7bDrpCIft7FiGKCmQX8TETN/6/gF2cD2y/i3hIbfSpurTvLwvOUdqQgmJ8
- XWFuWEaxzT00HCokpB6AqGXc52sSAo8Bi5aX6HpYQWg8du/sT0Tp3OjrpsAKVDriwPUX
- dBBVTCDvozk6LXtjN3FEZ7KsX+ASyeoZvTk8QpG9oD+DfuLbwwNzEFO1Zw2/6XDRiVOA
- jUcQ==
-X-Gm-Message-State: AO0yUKVAMIAvKblML0P/qBIJVhvINgXghTQE+IkZup0OAcPomXQ2KEdk
- zXbM4Jcz9MMBEYZ5kRnnNZXIAe1uCEs4DG2Hiu2XX5D8BfXVCLBTcJK60aygp1oV8liANsyoCpd
- YTD4ZPJd5WC5soncO8w==
-X-Received: by 2002:a05:6214:240b:b0:56b:f7e0:7fbf with SMTP id
- fv11-20020a056214240b00b0056bf7e07fbfmr5573117qvb.24.1675780348287; 
- Tue, 07 Feb 2023 06:32:28 -0800 (PST)
-X-Google-Smtp-Source: AK7set+WyNlCoH7Dgp7NX2+NzDQlVUoSLgIvVTCr+2hQMr65LRxa4tHOF2gcu1tF6jZ834e/Z2fs8A==
-X-Received: by 2002:a05:6214:240b:b0:56b:f7e0:7fbf with SMTP id
- fv11-20020a056214240b00b0056bf7e07fbfmr5573051qvb.24.1675780347543; 
- Tue, 07 Feb 2023 06:32:27 -0800 (PST)
+ bh=KI3RgQdPtYw8GUWyMez8C5CNhpplO8CmMk/Ip3SnJv8=;
+ b=Il7XGiUUhuMEIJemZsJ4EgjLcMJeEQpItWKy8t0cSWbk/BiGXkMMJlmBtGm/NAzRXx
+ vs8uYFLPjNKauOt5kYeL77r1G+XLc+2aChR2HculKe9qte48uso2wUAlzVC5Vb6lT41B
+ D3eIcefEc9y7FSEkXIm22BSxpOC5oiQtazdi3whSz1kMOKTYAmLf8LjVWtWcLtXR/fNb
+ VANdHQ72iYuwm4v2bURXyn1XeQAjAZM1Xrn3hs/79HqCTP//t6wSvr5msCiEdZZ742V+
+ ZNN0vDGy3w5KDgBWyLdg44eAgoekeHhXiYHAZRMULrDRdyg/jeldNq3x/dI4jSZBoKpk
+ j1Lw==
+X-Gm-Message-State: AO0yUKWM/h4oDh7H8xAZLSZmY466G4CQ3sLACA2q6oorIcIrYcOpRbGa
+ pNEzOi73CujFlYDBYmHdvLnp6PQZWwqVkVgRa05iFZQJjDZlMbg9b3XAu01TVxAJ7yPvl7rw+6w
+ grvGi08B9wcW0C2/sPQ==
+X-Received: by 2002:a05:622a:2c7:b0:3b8:6c4d:488a with SMTP id
+ a7-20020a05622a02c700b003b86c4d488amr6457374qtx.37.1675782514405; 
+ Tue, 07 Feb 2023 07:08:34 -0800 (PST)
+X-Google-Smtp-Source: AK7set/Y4pVpX+B3xPI4SKSATAD4woC9RI86y1CpZw+JiIUaqRTg6V0WemI42E752ahsybpqtWC9BQ==
+X-Received: by 2002:a05:622a:2c7:b0:3b8:6c4d:488a with SMTP id
+ a7-20020a05622a02c700b003b86c4d488amr6457282qtx.37.1675782513576; 
+ Tue, 07 Feb 2023 07:08:33 -0800 (PST)
 Received: from [192.168.0.2] (ip-109-43-176-120.web.vodafone.de.
  [109.43.176.120]) by smtp.gmail.com with ESMTPSA id
- b19-20020a05620a271300b0071a291f0a4asm9679242qkp.27.2023.02.07.06.32.25
+ w15-20020a05620a444f00b007296805f607sm9843364qkp.17.2023.02.07.07.08.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Feb 2023 06:32:26 -0800 (PST)
-Message-ID: <16128071-e551-f304-4824-2819d86678dd@redhat.com>
-Date: Tue, 7 Feb 2023 15:32:24 +0100
+ Tue, 07 Feb 2023 07:08:32 -0800 (PST)
+Message-ID: <0c85ac6c-0787-ba6f-3e19-5dbbc1619fac@redhat.com>
+Date: Tue, 7 Feb 2023 16:08:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
-Subject: Re: [PATCH 10/12] tests/qemu-iotests: Require virtio-scsi-pci
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- qemu-block@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20230206150416.4604-1-farosas@suse.de>
- <20230206150416.4604-11-farosas@suse.de>
+Subject: Re: [PATCH] Hexagon (meson.build): define min bison version
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Matheus Tavares Bernardino <quic_mathbern@quicinc.com>, qemu-devel@nongnu.org
+Cc: anjo@rev.ng, tsimpson@quicinc.com, bcain@quicinc.com,
+ quic_acaggian@quicinc.com, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <a6763f9f7b89ea310ab86f9a2b311a05254a1acd.1675779233.git.quic_mathbern@quicinc.com>
+ <53dd2acc-0eb7-5e49-e803-2625f0841880@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230206150416.4604-11-farosas@suse.de>
+In-Reply-To: <53dd2acc-0eb7-5e49-e803-2625f0841880@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -31
@@ -80,7 +83,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-1.148, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,30 +96,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Feb 2023 14:32:39 -0000
+X-List-Received-Date: Tue, 07 Feb 2023 15:08:39 -0000
 
-On 06/02/2023 16.04, Fabiano Rosas wrote:
-> Check that virtio-scsi-pci is present in the QEMU build before running
-> the tests.
+On 07/02/2023 15.54, Philippe Mathieu-Daudé wrote:
+> Cc'ing Paolo/Daniel/Thomas
 > 
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
-> ---
->   tests/qemu-iotests/186 | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/tests/qemu-iotests/186 b/tests/qemu-iotests/186
-> index 072e54e62b..eaf13c7a33 100755
-> --- a/tests/qemu-iotests/186
-> +++ b/tests/qemu-iotests/186
-> @@ -40,6 +40,7 @@ trap "_cleanup; exit \$status" 0 1 2 3 15
->   _supported_fmt qcow2
->   _supported_proto file fuse
->   _require_drivers null-co
-> +_require_devices virtio-scsi-pci
->   
->   if [ "$QEMU_DEFAULT_MACHINE" != "pc" ]; then
->       _notrun "Requires a PC machine"
+> On 7/2/23 15:52, Matheus Tavares Bernardino wrote:
+>> Hexagon's idef-parser machinery uses some bison features that are not
+>> available at older versions. The most preeminent example (as it can
+>> be used as a sentinel) is "%define parse.error verbose". This was
+>> introduced in version 3.0 of the tool, which is able to compile
+>> qemu-hexagon just fine. However, compilation fails with the previous
+>> minor bison release, v2.7. So let's assert the minimum version at
+>> meson.build to give a more comprehensive error message for those trying
+>> to compile QEMU.
+>>
+>> [1]: 
+>> https://www.gnu.org/software/bison/manual/html_node/_0025define-Summary.html#index-_0025define-parse_002eerror 
+>>
+>>
+>> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+>> ---
+>>   target/hexagon/meson.build | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/target/hexagon/meson.build b/target/hexagon/meson.build
+>> index c9d31d095c..42b03c81e6 100644
+>> --- a/target/hexagon/meson.build
+>> +++ b/target/hexagon/meson.build
+>> @@ -183,7 +183,7 @@ if idef_parser_enabled and 'hexagon-linux-user' in 
+>> target_dirs
+>>       )
+>>       bison = generator(
+>> -        find_program('bison'),
+>> +        find_program('bison', version: '>=3.0'),
+>>           output: ['@BASENAME@.tab.c', '@BASENAME@.tab.h'],
+>>           arguments: ['@INPUT@', '--defines=@OUTPUT1@', '--output=@OUTPUT0@']
+>>       )
+
+Looks reasonable, thus:
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+Out of curiosity: Where did you encounter this problem? After having a quick 
+look at https://repology.org/project/bison/versions it seems to me that all 
+our supported OS distros should already ship bison 3.0 or newer...
+
+  Thomas
 
 
