@@ -1,89 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pPPaK-0002fp-CP
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2023 10:08:40 -0500
+	id 1pPPjn-0001Z5-0q
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2023 10:18:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pPPaI-0002d1-SY
- for qemu-trivial@nongnu.org; Tue, 07 Feb 2023 10:08:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pPPaH-0007So-9C
- for qemu-trivial@nongnu.org; Tue, 07 Feb 2023 10:08:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675782516;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KI3RgQdPtYw8GUWyMez8C5CNhpplO8CmMk/Ip3SnJv8=;
- b=GRODJLTI8ky/LZMP55fwsIZm+QM7R4P+sYHOGB8J4EdSpYu8e+smR+kEZysWNxOb6wEIVj
- zD4vpI3nyQLd3MsNQ1QNtI4DjJ1Os/6wbB9b2+tw678TnNBe4pX/koJFa+BCJp8iKquG6E
- NmDSaP4GMF6PXDeKyfOXDelq8oKa8lo=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-463-dA0fknmkMxCFMmelT8NkzA-1; Tue, 07 Feb 2023 10:08:34 -0500
-X-MC-Unique: dA0fknmkMxCFMmelT8NkzA-1
-Received: by mail-qt1-f200.google.com with SMTP id
- p6-20020a05622a048600b003b9a3ab9153so8629487qtx.8
- for <qemu-trivial@nongnu.org>; Tue, 07 Feb 2023 07:08:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pPPjb-0001RV-9U; Tue, 07 Feb 2023 10:18:20 -0500
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pPPjY-0001D2-R8; Tue, 07 Feb 2023 10:18:14 -0500
+Received: by mail-vs1-xe2d.google.com with SMTP id a24so16620551vsl.2;
+ Tue, 07 Feb 2023 07:18:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=qCIrFd39avKPlw2r7zce1/kGjlqMZFpM3Z8F2/TZNQY=;
+ b=O3BmJAjEdHJhOmthIESdyVA91Me6EL5MobwLjydUPQY+cH30T6U8RYsJTL8lSlzkIK
+ 9FkZIVjOLgeGxpi0yrBDvnYNZXSBgkbKdrrXZZ8TtEbe7oP2H6I5ROjT7lHa9juwWHdv
+ EmDrtC0oEQ+Y7VKT7gtKNAVh9CgqGy6MeF/aHFDecKXyMPuqQMrGLvf/UUmkKo7WvI28
+ BTSSNw2uCKBaL4iVxJqzAeG2hHMTwHxeFKyy+p3FvAtyzbL4Yu7BEMbMs2xxIQTHU64B
+ iJk6Wh51tnVLEgGa3icEzBrEqq6a2PqyRhh267nsA87B5Vn5btz3FCzanbnR6BsNRTtL
+ HfcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KI3RgQdPtYw8GUWyMez8C5CNhpplO8CmMk/Ip3SnJv8=;
- b=Il7XGiUUhuMEIJemZsJ4EgjLcMJeEQpItWKy8t0cSWbk/BiGXkMMJlmBtGm/NAzRXx
- vs8uYFLPjNKauOt5kYeL77r1G+XLc+2aChR2HculKe9qte48uso2wUAlzVC5Vb6lT41B
- D3eIcefEc9y7FSEkXIm22BSxpOC5oiQtazdi3whSz1kMOKTYAmLf8LjVWtWcLtXR/fNb
- VANdHQ72iYuwm4v2bURXyn1XeQAjAZM1Xrn3hs/79HqCTP//t6wSvr5msCiEdZZ742V+
- ZNN0vDGy3w5KDgBWyLdg44eAgoekeHhXiYHAZRMULrDRdyg/jeldNq3x/dI4jSZBoKpk
- j1Lw==
-X-Gm-Message-State: AO0yUKWM/h4oDh7H8xAZLSZmY466G4CQ3sLACA2q6oorIcIrYcOpRbGa
- pNEzOi73CujFlYDBYmHdvLnp6PQZWwqVkVgRa05iFZQJjDZlMbg9b3XAu01TVxAJ7yPvl7rw+6w
- grvGi08B9wcW0C2/sPQ==
-X-Received: by 2002:a05:622a:2c7:b0:3b8:6c4d:488a with SMTP id
- a7-20020a05622a02c700b003b86c4d488amr6457374qtx.37.1675782514405; 
- Tue, 07 Feb 2023 07:08:34 -0800 (PST)
-X-Google-Smtp-Source: AK7set/Y4pVpX+B3xPI4SKSATAD4woC9RI86y1CpZw+JiIUaqRTg6V0WemI42E752ahsybpqtWC9BQ==
-X-Received: by 2002:a05:622a:2c7:b0:3b8:6c4d:488a with SMTP id
- a7-20020a05622a02c700b003b86c4d488amr6457282qtx.37.1675782513576; 
- Tue, 07 Feb 2023 07:08:33 -0800 (PST)
-Received: from [192.168.0.2] (ip-109-43-176-120.web.vodafone.de.
- [109.43.176.120]) by smtp.gmail.com with ESMTPSA id
- w15-20020a05620a444f00b007296805f607sm9843364qkp.17.2023.02.07.07.08.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Feb 2023 07:08:32 -0800 (PST)
-Message-ID: <0c85ac6c-0787-ba6f-3e19-5dbbc1619fac@redhat.com>
-Date: Tue, 7 Feb 2023 16:08:29 +0100
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=qCIrFd39avKPlw2r7zce1/kGjlqMZFpM3Z8F2/TZNQY=;
+ b=dGRi2f7McG35Dc/cn1hEfF2HM5RftnnkWbSwUidrektXEM5MAVFcL9mK1MIPYxee8h
+ U1XZNaQQIOGGLwty5A+Mg/3gqfOV3pwiE6xRxZhOGeRfn7aUHUN9e6Y6aYj4Ys3yhj4f
+ zmHW1bzvoOTVh6bvzzsDeZtKO6p83yC3kryAjh2TYXvovxcw8DniaevglrcU5TRjtC3O
+ B2+l5WkemjUa/7LRbdkBvpjYYI461SeYZA0LCTS5zatm8IeMkO9v8RTp0KkCA2uHJN0+
+ ck8maK18Dan+lPhH0mTrIeS3V8Elu/2yasZ7T1MblaZDTShJ289a8bDnZEup/ujr1EYU
+ SyDw==
+X-Gm-Message-State: AO0yUKUCl9j2zQCCBj1JpPl2KE4LUe4Hp9IKheSKrOYHPlHCz5NOMJi9
+ tQu32/+tL/Zi6fBuQALjRGLuxVQGA3GVATrOzTU=
+X-Google-Smtp-Source: AK7set8BBRXpFmebvZDVXzPezqhM5NvmV9x+unxeM04qdHVtEglrpmEPsgEUhr2jNTJzA32CtBJGNE6SS9kB5riHLtw=
+X-Received: by 2002:a05:6102:837:b0:411:ac71:dde0 with SMTP id
+ k23-20020a056102083700b00411ac71dde0mr55064vsb.38.1675783090046; Tue, 07 Feb
+ 2023 07:18:10 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH] Hexagon (meson.build): define min bison version
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Matheus Tavares Bernardino <quic_mathbern@quicinc.com>, qemu-devel@nongnu.org
-Cc: anjo@rev.ng, tsimpson@quicinc.com, bcain@quicinc.com,
- quic_acaggian@quicinc.com, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <a6763f9f7b89ea310ab86f9a2b311a05254a1acd.1675779233.git.quic_mathbern@quicinc.com>
- <53dd2acc-0eb7-5e49-e803-2625f0841880@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <53dd2acc-0eb7-5e49-e803-2625f0841880@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.148, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20230204151027.39007-1-shentey@gmail.com>
+ <20230204151027.39007-9-shentey@gmail.com>
+ <10bf125e-85a4-72cc-07de-0d6206941f62@linaro.org>
+ <87h6vzcdlb.fsf@secure.mitica>
+In-Reply-To: <87h6vzcdlb.fsf@secure.mitica>
+From: Bernhard Beschow <shentey@gmail.com>
+Date: Tue, 7 Feb 2023 16:17:56 +0100
+Message-ID: <CAG4p6K4woqhr2ZxyV6MbehASDXVB9=ssTzHrPMEB=0N+c3P3Yw@mail.gmail.com>
+Subject: Re: [PATCH v3 8/9] hw/i386/x86: Make TYPE_X86_MACHINE the owner of
+ smram
+To: quintela@redhat.com
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, 
+ qemu-trivial@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>, 
+ Laurent Vivier <lvivier@redhat.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <ani@anisinha.ca>, 
+ "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000cd8bd605f41da7a5"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e2d;
+ envelope-from=shentey@gmail.com; helo=mail-vs1-xe2d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,52 +84,159 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Feb 2023 15:08:39 -0000
+X-List-Received-Date: Tue, 07 Feb 2023 15:18:24 -0000
 
-On 07/02/2023 15.54, Philippe Mathieu-Daudé wrote:
-> Cc'ing Paolo/Daniel/Thomas
-> 
-> On 7/2/23 15:52, Matheus Tavares Bernardino wrote:
->> Hexagon's idef-parser machinery uses some bison features that are not
->> available at older versions. The most preeminent example (as it can
->> be used as a sentinel) is "%define parse.error verbose". This was
->> introduced in version 3.0 of the tool, which is able to compile
->> qemu-hexagon just fine. However, compilation fails with the previous
->> minor bison release, v2.7. So let's assert the minimum version at
->> meson.build to give a more comprehensive error message for those trying
->> to compile QEMU.
->>
->> [1]: 
->> https://www.gnu.org/software/bison/manual/html_node/_0025define-Summary.html#index-_0025define-parse_002eerror 
->>
->>
->> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
->> ---
->>   target/hexagon/meson.build | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/target/hexagon/meson.build b/target/hexagon/meson.build
->> index c9d31d095c..42b03c81e6 100644
->> --- a/target/hexagon/meson.build
->> +++ b/target/hexagon/meson.build
->> @@ -183,7 +183,7 @@ if idef_parser_enabled and 'hexagon-linux-user' in 
->> target_dirs
->>       )
->>       bison = generator(
->> -        find_program('bison'),
->> +        find_program('bison', version: '>=3.0'),
->>           output: ['@BASENAME@.tab.c', '@BASENAME@.tab.h'],
->>           arguments: ['@INPUT@', '--defines=@OUTPUT1@', '--output=@OUTPUT0@']
->>       )
+--000000000000cd8bd605f41da7a5
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Looks reasonable, thus:
+On Mon, Feb 6, 2023 at 11:06 AM Juan Quintela <quintela@redhat.com> wrote:
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+> > On 4/2/23 16:10, Bernhard Beschow wrote:
+> >> Treat the smram MemoryRegion analoguous to other memory regions such a=
+s
+> >> ram, pci, io, ... , making the used memory regions more explicit when
+> >> instantiating q35 or i440fx.
+> >> Note that the q35 device uses these memory regions only during the
+> >> realize phase which suggests that it shouldn't be the owner of smram.
+> >
+> > Few years ago I tried something similar and it wasn't accepted because
+> > the MR owner name is used in the migration stream, so this was breaking
+> > migrating from older machines.
+>
+> I don't remember the details O:-)
+>
+> Migration code, really depends on RAMBlocks names, not memory region
+> names.  But as far as I remember, that don't matter too much because the
+> memory region names ends tangled quite a bit with the RAMBlock name, righ=
+t?
+>
+> > Adding David/Juan for double-checking that.
+>
+>     trace_vmstate_save(se->idstr, se->vmsd ? se->vmsd->name : "(old)");
+>
+> You can try to enable this trace and see that every section has the same
+> name with and without your change (i.e. that memory region name is not
+> seen by the migration stream).
+>
+> But that is the only help that I can came with.
+>
+> The code that you are changing (smram) is something that I don't know
+> about to give you more help.
+>
+> Looking at the patch, it looks that the name was before and now the
+> "sram", so perhaps it could help.  But I don't know.
+>
+> In the i440fx you say that you only use it until realize, so you should
+> be safe.
+>
+> For q35, it is not clear to me.
+>
+> If the trace don't show new names, I will just try:
+> - migrate a i440fx machine from binary without your patch to one with
+>   your patch
+> - the same for q35.
+>
+> And depending on the result, we can go from there.
+>
 
-Out of curiosity: Where did you encounter this problem? After having a quick 
-look at https://repology.org/project/bison/versions it seems to me that all 
-our supported OS distros should already ship bison 3.0 or newer...
+Thanks for the pointers, Juan!
 
-  Thomas
+I took some inspiration and created four migration files,
+{pc,q35}-{before,after}.mig by running `qemu-system-x86_64 -M {pc,q35} -S`
+with qemu built from master and from my branch. Then I basically ran
+ `./scripts/analyze-migration.py -d desc -f *.mig > *.json` on the four
+files and compared the diffs. Both diffs were empty. AFAIU this proves that
+there is no binary change, right?
 
+Best regards,
+Bernhard
+>
+>
+> Later, Juan.
+>
+>
+
+--000000000000cd8bd605f41da7a5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 6, 2023 at 11:06 AM Juan =
+Quintela &lt;<a href=3D"mailto:quintela@redhat.com">quintela@redhat.com</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Phil=
+ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org" target=3D"=
+_blank">philmd@linaro.org</a>&gt; wrote:<br>
+&gt; On 4/2/23 16:10, Bernhard Beschow wrote:<br>
+&gt;&gt; Treat the smram MemoryRegion analoguous to other memory regions su=
+ch as<br>
+&gt;&gt; ram, pci, io, ... , making the used memory regions more explicit w=
+hen<br>
+&gt;&gt; instantiating q35 or i440fx.<br>
+&gt;&gt; Note that the q35 device uses these memory regions only during the=
+<br>
+&gt;&gt; realize phase which suggests that it shouldn&#39;t be the owner of=
+ smram.<br>
+&gt;<br>
+&gt; Few years ago I tried something similar and it wasn&#39;t accepted bec=
+ause<br>
+&gt; the MR owner name is used in the migration stream, so this was breakin=
+g<br>
+&gt; migrating from older machines.<br>
+<br>
+I don&#39;t remember the details O:-)<br>
+<br>
+Migration code, really depends on RAMBlocks names, not memory region<br>
+names.=C2=A0 But as far as I remember, that don&#39;t matter too much becau=
+se the<br>
+memory region names ends tangled quite a bit with the RAMBlock name, right?=
+<br>
+<br>
+&gt; Adding David/Juan for double-checking that.<br>
+<br>
+=C2=A0 =C2=A0 trace_vmstate_save(se-&gt;idstr, se-&gt;vmsd ? se-&gt;vmsd-&g=
+t;name : &quot;(old)&quot;);<br>
+<br>
+You can try to enable this trace and see that every section has the same<br=
+>
+name with and without your change (i.e. that memory region name is not<br>
+seen by the migration stream).<br>
+<br>
+But that is the only help that I can came with.<br>
+<br>
+The code that you are changing (smram) is something that I don&#39;t know<b=
+r>
+about to give you more help.<br>
+<br>
+Looking at the patch, it looks that the name was before and now the<br>
+&quot;sram&quot;, so perhaps it could help.=C2=A0 But I don&#39;t know.<br>
+<br>
+In the i440fx you say that you only use it until realize, so you should<br>
+be safe.<br>
+<br>
+For q35, it is not clear to me.<br>
+<br>
+If the trace don&#39;t show new names, I will just try:<br>
+- migrate a i440fx machine from binary without your patch to one with<br>
+=C2=A0 your patch<br>
+- the same for q35.<br>
+<br>
+And depending on the result, we can go from there.<br></blockquote><div><br=
+></div><div>Thanks for the pointers, Juan!</div><div><br></div>I took some =
+inspiration and created four migration files, {pc,q35}-{before,after}.mig b=
+y running `qemu-system-x86_64 -M {pc,q35} -S` with qemu built from master a=
+nd from my branch. Then I basically ran =C2=A0`./scripts/analyze-migration.=
+py -d desc -f *.mig &gt; *.json` on the four files and compared the diffs. =
+Both diffs were empty. AFAIU this proves that there is no binary change, ri=
+ght?<br><br>Best regards,<br>Bernhard<blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex">
+<br>
+Later, Juan.<br>
+<br>
+</blockquote></div></div>
+
+--000000000000cd8bd605f41da7a5--
 
