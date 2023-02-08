@@ -1,82 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pPWjP-0002jB-V7
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2023 17:46:32 -0500
+	id 1pPgCw-0004UI-Sv
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Feb 2023 03:53:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pPWjO-0002ii-7o; Tue, 07 Feb 2023 17:46:30 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pPWjM-0001tq-4T; Tue, 07 Feb 2023 17:46:29 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id dr8so46658210ejc.12;
- Tue, 07 Feb 2023 14:46:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+st8T/BF6T1vEgVee7KrmZBpJsZ3rPFpsi8sH95cAb0=;
- b=M/pIqa2MieRzE4mMB4kqF29AOdPSi3dp7JBXNoAOPCXQkgftRvzrwppqiDzyOyR2o+
- WvD8iZ2ASQifdWz/+ITUgA8kK3lfgZuHhMzPa/MKNrvjg4IvWRNhTkrCqusxSw4DypON
- l9catCEBqFaoXTVuya0moFq4jPiHcQxL3xuQOheUWSPYzV7MxGZlwg1Uhwn2fTWW8Gci
- 7Oe5GqMKyz4AMfmy+3eqxFWi41Vrm7i4GipzGZ7Lvat7BDr37aoqus8B/0BlsNTDIL3U
- hVO7xOrQpxkXOvxzK+oLIBlP9JJ5GhoGG3vLPLnsKb/XWVRem5wY9mxMjNG1nue6A3bO
- yLxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+st8T/BF6T1vEgVee7KrmZBpJsZ3rPFpsi8sH95cAb0=;
- b=wvatGoGrmpkvlFUw+pwaYqmecxR/I6lw6TwQG58vc9X8cAOjTamHlsu/GUwyMxFw+1
- KJ9efzK5qXadsg7OMYvx/i9VMUzaSGk7x26I91NxVThfntqHlVjkKNR0UbD0o6xmf1O/
- iEqdK7AYteZwGbL8GDSbj36okDSI9Gt3QOxcXjcA5hlnhzzU1MAfh8BkauWh+Nh0gT1r
- x0aXQvUowxn3kfXqsoVxAyrLvIgegDtvu/3jhJSYkEj/7PUaaqopYGMTJyN8kGnthnTE
- Fyh61wyxOWCozkZSFFBKtctSRjJhGw96fKEs/2GZOzDSsYbX8zOAUrWZSpSdYgl0gdZO
- 1K3g==
-X-Gm-Message-State: AO0yUKVk0s6aJ+hPmmvJdBXU7+DbVx+Mo7z2P8g1+4FmUOol1B9GCEhw
- iujg+Ox/hq7fp/vz+aDEboA=
-X-Google-Smtp-Source: AK7set/osjsX04Orc3jTk3ZAjCaHqoESAlO+Ea94/ODvgppVrBP+mpbdm5QtOJZK3S5l3gJVgLN7vA==
-X-Received: by 2002:a17:906:a194:b0:877:a7ec:5ff with SMTP id
- s20-20020a170906a19400b00877a7ec05ffmr5218658ejy.10.1675809986043; 
- Tue, 07 Feb 2023 14:46:26 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-089-014-074-246.89.14.pool.telefonica.de.
- [89.14.74.246]) by smtp.gmail.com with ESMTPSA id
- a26-20020a17090640da00b0087851a76573sm7470185ejk.74.2023.02.07.14.46.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Feb 2023 14:46:25 -0800 (PST)
-Date: Tue, 07 Feb 2023 22:46:19 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
- BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <lvivier@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v3_9/9=5D_target/i386/tcg/sysemu/?=
- =?US-ASCII?Q?tcg-cpu=3A_Avoid_own_opinion_about_smram_size?=
-In-Reply-To: <4aaafceb-848a-c4eb-2a06-0ad37899deb1@linaro.org>
-References: <20230204151027.39007-1-shentey@gmail.com>
- <20230204151027.39007-10-shentey@gmail.com>
- <4aaafceb-848a-c4eb-2a06-0ad37899deb1@linaro.org>
-Message-ID: <76428AAD-5BA6-444F-B58D-8F3CA290E189@gmail.com>
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1pPgCt-0004Tx-IQ; Wed, 08 Feb 2023 03:53:35 -0500
+Received: from zuban.uni-paderborn.de ([2001:638:502:c003::17])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1pPgCr-0004ZK-Ld; Wed, 08 Feb 2023 03:53:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+ Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=HkpMQQEfWCal40QkmDe9JyS7s8FezQX23s7696YGwFs=; b=cZL3B82m/A/nPioEBs6ZYzy739
+ GCG+1OJmGseSNML7b9KycCxvqO9vKlW3eMWmYJCTC5X+7fbJ17whG92rADsW7KHbSC/ZA0Cx6cbNh
+ o7tRbK06MXEiq3XPA7j+QDfApZzw5xqG+Krd70rHUYn/83uIxwBipFW3ngMNIrHni0+w=;
+Date: Wed, 8 Feb 2023 09:53:07 +0100
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>,
+ Matheus Tavares Bernardino <quic_mathbern@quicinc.com>,
+ qemu-devel@nongnu.org, anjo@rev.ng, tsimpson@quicinc.com,
+ bcain@quicinc.com, quic_acaggian@quicinc.com,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] Hexagon (meson.build): define min bison version
+Message-ID: <20230208085307.xigxhuca67gl3ag4@schnipp-desktop>
+References: <a6763f9f7b89ea310ab86f9a2b311a05254a1acd.1675779233.git.quic_mathbern@quicinc.com>
+ <53dd2acc-0eb7-5e49-e803-2625f0841880@linaro.org>
+ <0c85ac6c-0787-ba6f-3e19-5dbbc1619fac@redhat.com>
+ <2d3719ee-9144-b9bf-91c2-c3997305f5ba@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2d3719ee-9144-b9bf-91c2-c3997305f5ba@linaro.org>
+X-IMT-Source: Extern
+X-IMT-Spam-Score: 0.0 ()
+X-Sophos-SenderHistory: ip=84.154.177.181, fs=777544, da=163455460, mc=10, sc=0,
+ hc=10, sp=0, fso=777544, re=0, sd=0, hd=0
+X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
+ Antispam-Data: 2023.2.8.84216, AntiVirus-Engine: 5.96.0,
+ AntiVirus-Data: 2023.1.24.5960001
+X-IMT-Authenticated-Sender: uid=kbastian,ou=People,o=upb,c=de
+Received-SPF: pass client-ip=2001:638:502:c003::17;
+ envelope-from=kbastian@mail.uni-paderborn.de; helo=zuban.uni-paderborn.de
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,51 +66,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Feb 2023 22:46:30 -0000
+X-List-Received-Date: Wed, 08 Feb 2023 08:53:36 -0000
 
+Hi Phil,
 
+On Tue, Feb 07, 2023 at 05:11:10PM +0100, Philippe Mathieu-Daudé wrote:
+> +Bastian
+> 
+> On 7/2/23 16:08, Thomas Huth wrote:
+> > On 07/02/2023 15.54, Philippe Mathieu-Daudé wrote:
+> > > Cc'ing Paolo/Daniel/Thomas
+> > > 
+> > > On 7/2/23 15:52, Matheus Tavares Bernardino wrote:
+> > > > Hexagon's idef-parser machinery uses some bison features that are not
+> > > > available at older versions. The most preeminent example (as it can
+> > > > be used as a sentinel) is "%define parse.error verbose". This was
+> > > > introduced in version 3.0 of the tool, which is able to compile
+> > > > qemu-hexagon just fine. However, compilation fails with the previous
+> > > > minor bison release, v2.7. So let's assert the minimum version at
+> > > > meson.build to give a more comprehensive error message for those trying
+> > > > to compile QEMU.
+> > > > 
+> > > > [1]: https://www.gnu.org/software/bison/manual/html_node/_0025define-Summary.html#index-_0025define-parse_002eerror
+> > > > 
+> > > > Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+> > > > ---
+> > > >   target/hexagon/meson.build | 2 +-
+> > > >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > 
+> > > > diff --git a/target/hexagon/meson.build b/target/hexagon/meson.build
+> > > > index c9d31d095c..42b03c81e6 100644
+> > > > --- a/target/hexagon/meson.build
+> > > > +++ b/target/hexagon/meson.build
+> > > > @@ -183,7 +183,7 @@ if idef_parser_enabled and
+> > > > 'hexagon-linux-user' in target_dirs
+> > > >       )
+> > > >       bison = generator(
+> > > > -        find_program('bison'),
+> > > > +        find_program('bison', version: '>=3.0'),
+> > > >           output: ['@BASENAME@.tab.c', '@BASENAME@.tab.h'],
+> > > >           arguments: ['@INPUT@', '--defines=@OUTPUT1@',
+> > > > '--output=@OUTPUT0@']
+> > > >       )
+> > 
+> > Looks reasonable, thus:
+> > 
+> > Reviewed-by: Thomas Huth <thuth@redhat.com>
+> > 
+> > Out of curiosity: Where did you encounter this problem? After having a
+> > quick look at https://repology.org/project/bison/versions it seems to me
+> > that all our supported OS distros should already ship bison 3.0 or
+> > newer...
+> 
+> I suppose this fix the tricore container problem Peter reported last week:
+> https://lore.kernel.org/qemu-devel/CAFEAcA-Vr8=br=9jGU1Tr=HTyH6o+S9H79oG=6BqZb8FSp+2Tw@mail.gmail.com/
+> 
+> https://gitlab.com/qemu-project/qemu/-/jobs/3710561054
+> 
+> #6 43.63 ldlex.l: In function 'yy_input':
+> #6 43.63 ldlex.l:615:7: error: 'yy_current_buffer' undeclared (first
+> use in this function); did you mean 'yy_create_buffer'?
+> #6 43.63 {
+> #6 43.63 ^
+> #6 43.63 yy_create_buffer
 
-Am 5=2E Februar 2023 11:26:10 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
-hilmd@linaro=2Eorg>:
->On 4/2/23 16:10, Bernhard Beschow wrote:
->> When setting up the CPU's smram memory region alias, the code currently
->> assumes that the smram size is 4 GiB=2E While this is true, it repeats =
-a
->> decision made elsewhere which seems redundant and prone to
->> inconsistencies=2E Avoid this by reusing whatever size the smram region
->> was set to=2E
->>=20
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>   target/i386/tcg/sysemu/tcg-cpu=2Ec | 3 +--
->>   1 file changed, 1 insertion(+), 2 deletions(-)
->>=20
->> diff --git a/target/i386/tcg/sysemu/tcg-cpu=2Ec b/target/i386/tcg/sysem=
-u/tcg-cpu=2Ec
->> index c223c0fe9b=2E=2E8f5ce6093c 100644
->> --- a/target/i386/tcg/sysemu/tcg-cpu=2Ec
->> +++ b/target/i386/tcg/sysemu/tcg-cpu=2Ec
->> @@ -22,7 +22,6 @@
->>   #include "tcg/helper-tcg=2Eh"
->>     #include "sysemu/sysemu=2Eh"
->> -#include "qemu/units=2Eh"
->>   #include "exec/address-spaces=2Eh"
->>     #include "tcg/tcg-cpu=2Eh"
->> @@ -36,7 +35,7 @@ static void tcg_cpu_machine_done(Notifier *n, void *u=
-nused)
->>       if (smram) {
->>           cpu->smram =3D g_new(MemoryRegion, 1);
->>           memory_region_init_alias(cpu->smram, OBJECT(cpu), "smram",
->> -                                 smram, 0, 4 * GiB);
->> +                                 smram, 0, memory_region_size(smram));
->
->Or define SMRAM_REGION_SIZE and use it?
+Thanks, I think this would fix it. However, I want to include tricore-gcc/newlib to the
+docker image and created a toolchain release for that, so that we don't have to
+compile binutils/gcc/newlib ourself. So I don't think this is relevant for me
+anymore.
 
-This could still lead to inconsistencies if the size was changed in one pl=
-ace only, no?
-
->
->(subject header can be shortened to "target/i386:")=2E
-
-Okay=2E
+Cheers,
+Bastian
 
