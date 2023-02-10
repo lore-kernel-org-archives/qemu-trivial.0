@@ -1,57 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pQRaC-0003uX-BB
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2023 06:28:48 -0500
+	id 1pQSgb-0003FI-Up
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2023 07:39:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pQRaB-0003uJ-LF
- for qemu-trivial@nongnu.org; Fri, 10 Feb 2023 06:28:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pQRaA-0003L9-6F
- for qemu-trivial@nongnu.org; Fri, 10 Feb 2023 06:28:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676028525;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=zDbZlrbJ/utXp3myhk3LBSwncrLko7ExuWpjzcEFVJo=;
- b=csHwAVx/IciR7CX3rUt9boz2dy7+lRn7mbpLQtVB25X0JfSavBAEoCTbrS/KaF6MjfTI7O
- N0NJ9MFWgnfNotohG4jrsNgrLLhMgjKwZdrBroa1IxW5LQtJ1fcEOZU7We2UtiOuF2lmDf
- EObDjmFRoGgNdVlFUpUfsEnqSbIqv74=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-644-Wj8STmPJNrqFH4MFy4KWMA-1; Fri, 10 Feb 2023 06:28:44 -0500
-X-MC-Unique: Wj8STmPJNrqFH4MFy4KWMA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 837243C0D1AA;
- Fri, 10 Feb 2023 11:28:43 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.226])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 547E4140EBF4;
- Fri, 10 Feb 2023 11:28:42 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH] include/hw: Do not include hw.h from headers
-Date: Fri, 10 Feb 2023 12:28:35 +0100
-Message-Id: <20230210112835.1117966-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pQSgY-0003Ee-6K
+ for qemu-trivial@nongnu.org; Fri, 10 Feb 2023 07:39:28 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pQSgV-0003un-Vn
+ for qemu-trivial@nongnu.org; Fri, 10 Feb 2023 07:39:25 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id bk16so4920242wrb.11
+ for <qemu-trivial@nongnu.org>; Fri, 10 Feb 2023 04:39:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=aNsvsSAqwcg+4xbViCFC+/j3Ki0z4tY5GQRWMiE6ROI=;
+ b=R7VLD82W8+phs23c/3pOt7HebcDyz+RAnfrRyQq+/IwpVordqzLpC6OMNIK3bIKu4V
+ 3dBdf3Na0D0Np2537n9KyAozG5qEKHhMe3+gcTEnjWIXIe2XclezffZQl/P3CW7BZ6DO
+ bL9bfYf27Q9vqpjUXUlbr/sdKfz9MJNuL8bjuD3Y8UKGMHrqbfQ3h/NyzW13COQtyxdZ
+ y9YSkACCk7cU85QS19LP5Aqqf+smJw8vVDGvxuaZQrmijIm5ERZfvu+vAQYfi5cFLaDP
+ pDfTP2buKFkPu1U9tM9o0jTUvs2bnQeJQnJEk/IrKVAvyip/vl650A/IBrLW+LQ0iqTa
+ sAUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=aNsvsSAqwcg+4xbViCFC+/j3Ki0z4tY5GQRWMiE6ROI=;
+ b=avx6/NYLasnEtB7NeJJGKuOdrzQrqkrcVhOfxQs99hRw1HLZ5m0a1ba2YRBqD/ZlZU
+ o3LJDHss4xUS5CfiPRfJnptVnSy59QaF6cQY0mrHUEoXTDlL6vnEWWptQ2DFyhbPSXZn
+ oq2ET/7X3Wo8csd43xa/SJeAOjdMFgrHu9vw5GVUm13twq00enHytugoJbCH/Svi4szy
+ jKAzVHMb+DL3L+vzd6D4gKRpDB28Es4rBINYZVhGXcueCL5MauRYO2C3PpsMDNDyZ+Zb
+ 5chlsmuwuZAuNCx7Fo5BvVtTmMnRoMe5oVSdFSV3ne4WJMTOGzkZaPvJuvFdzoM8VSwh
+ Tjew==
+X-Gm-Message-State: AO0yUKWcznMrydI0LGpnRVto6i1CDunBuo0bhc2Y9X5rB8m6TA57vu0i
+ HOve5iReIykPkQsUoRXVqSHRXw==
+X-Google-Smtp-Source: AK7set/oWm69VERfmHNj+gfJ47eo94tn/HuBH9/yrAlsYlU6MsTFu0zMznyFpMCL0PciPL+FYS9KAg==
+X-Received: by 2002:adf:f350:0:b0:2c3:da3f:1def with SMTP id
+ e16-20020adff350000000b002c3da3f1defmr15690303wrp.7.1676032762461; 
+ Fri, 10 Feb 2023 04:39:22 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ d15-20020a056000114f00b002c53e8d86basm2946009wrx.83.2023.02.10.04.39.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Feb 2023 04:39:22 -0800 (PST)
+Message-ID: <a65c42ff-6e96-1051-558d-91c84432b5e8@linaro.org>
+Date: Fri, 10 Feb 2023 13:39:20 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.7.2
+Subject: Re: [RFC PATCH] Do not include "qemu/error-report.h" in headers that
+ do not need it
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Coiby Xu <Coiby.Xu@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20230210111931.1115489-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230210111931.1115489-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.149,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,41 +86,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Feb 2023 11:28:47 -0000
+X-List-Received-Date: Fri, 10 Feb 2023 12:39:28 -0000
 
-This include is not needed here, so drop that line.
+On 10/2/23 12:19, Thomas Huth wrote:
+> Include it in the .c files instead that use the error reporting
+> functions.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   RFC since it's more lines of code - but I think it's still cleaner
+>   this way.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- include/hw/ssi/ibex_spi_host.h          | 1 -
- include/hw/tricore/tricore_testdevice.h | 1 -
- 2 files changed, 2 deletions(-)
+This is less pressure on the various .c files including these .h,
+so it is an improvement IMO.
 
-diff --git a/include/hw/ssi/ibex_spi_host.h b/include/hw/ssi/ibex_spi_host.h
-index 8089cc1c31..5bd5557b9a 100644
---- a/include/hw/ssi/ibex_spi_host.h
-+++ b/include/hw/ssi/ibex_spi_host.h
-@@ -28,7 +28,6 @@
- #define IBEX_SPI_HOST_H
- 
- #include "hw/sysbus.h"
--#include "hw/hw.h"
- #include "hw/ssi/ssi.h"
- #include "qemu/fifo8.h"
- #include "qom/object.h"
-diff --git a/include/hw/tricore/tricore_testdevice.h b/include/hw/tricore/tricore_testdevice.h
-index 1e2b8942ac..8b4fe15f24 100644
---- a/include/hw/tricore/tricore_testdevice.h
-+++ b/include/hw/tricore/tricore_testdevice.h
-@@ -19,7 +19,6 @@
- #define HW_TRICORE_TESTDEVICE_H
- 
- #include "hw/sysbus.h"
--#include "hw/hw.h"
- 
- #define TYPE_TRICORE_TESTDEVICE "tricore_testdevice"
- #define TRICORE_TESTDEVICE(obj) \
--- 
-2.31.1
+>   include/hw/arm/allwinner-a10.h   | 1 -
+>   include/qemu/vhost-user-server.h | 1 -
+>   include/ui/console.h             | 1 -
+>   hw/display/vhost-user-gpu.c      | 1 +
+>   hw/display/virtio-gpu-virgl.c    | 1 +
+>   hw/misc/applesmc.c               | 1 +
+>   ui/console.c                     | 1 +
+>   ui/egl-headless.c                | 1 +
+>   ui/spice-app.c                   | 1 +
+>   ui/spice-display.c               | 1 +
+>   ui/udmabuf.c                     | 1 +
+>   ui/vdagent.c                     | 1 +
+>   util/vhost-user-server.c         | 1 +
+>   13 files changed, 10 insertions(+), 3 deletions(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
