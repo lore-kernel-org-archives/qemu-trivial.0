@@ -1,75 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pQSk2-0005Au-AG
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2023 07:43:05 -0500
+	id 1pQSmN-0006VC-W7
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Feb 2023 07:45:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pQSjk-00059S-NY
- for qemu-trivial@nongnu.org; Fri, 10 Feb 2023 07:42:45 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pQSmM-0006Uu-Nz
+ for qemu-trivial@nongnu.org; Fri, 10 Feb 2023 07:45:26 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pQSjf-0004fJ-I4
- for qemu-trivial@nongnu.org; Fri, 10 Feb 2023 07:42:44 -0500
-Received: by mail-wm1-x334.google.com with SMTP id n13so3721244wmr.4
- for <qemu-trivial@nongnu.org>; Fri, 10 Feb 2023 04:42:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pQSmL-0005BE-7L
+ for qemu-trivial@nongnu.org; Fri, 10 Feb 2023 07:45:26 -0500
+Received: by mail-wr1-x430.google.com with SMTP id j25so4963587wrc.4
+ for <qemu-trivial@nongnu.org>; Fri, 10 Feb 2023 04:45:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=DLKoEOi53ntCRmLckzHQeCiGjeaKRVkSvth34J8SILg=;
- b=NErTfGpYQ69Dp9kJYwD7sxLhh3/8q1y8dpSE63YDS13qLj5bM01asnroWhs7v+3lC+
- dGoapjndgNjOQda13V0Hxlp+zLxgedZiedoXJRX7q9suxyfbpBpaswPOWXDG371V/+Q6
- 4oX60YIZLbZOUqrZDGf7QxeoNKf5YwrRGhLg3FAgexc35WP8GkLtXUJooYchBvxAgkg8
- QhWp9t7Uo9j03xuZMZymi3ZWuosohm9F7z6uVkvYVgqVkMjY0YpiBT0NHTBqpymICC3V
- wIpR/PscIq4oU/MBJdalf3820R5L7WViD5PzW4ubccN8f8Ap68W1x14/T0A9MZXJtsSM
- kmyA==
+ bh=0fSnH1e4vyd2u4Kryqx30mRURqd4lKi6QXrHiBpdw1s=;
+ b=J8JlCuZYTh+hV/zbDLNGUIYLAst+EWpykoyqRcl//txtLxFtff1UQT6kNpk7M4gtGI
+ d7C+i7G5upIkEBXdntNuvl7ltMNpbvhDbgIPLE/djkf/tvuFB4yxRC7tSpmcOUYOwiD7
+ l743THN21Qjq/rh8iCbhbdKemhMfEyX33TSObtU1D5+e1FxkvyPeZRiI57HN2qVsDJoO
+ BpXp4HKY1cTjqptm6GRP+nAhfvmVj1ys37HCreoVGeFAuVpfImDRM33LOZWlW7cCwOMQ
+ 7ouuZgCJWE1CYbLx24iIUv7cHxdqJAOLflHOCNaNIEFORLuVM4efgbuBk+aIZ0WPM2IY
+ E0XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=DLKoEOi53ntCRmLckzHQeCiGjeaKRVkSvth34J8SILg=;
- b=GRSihr9LjCnnP8N6FMC4XlOTJS9btbnxvM162wCkDEqBMc4qCtbzKxV/DLBLFrKzTd
- MhqW5XorA5XPJpQXWVSap4kq915vEwvYDdHlk04S+Tmm9ie/GRtnzFhsmV4M7qDKt8qg
- iPh5Q1mqiofRBwIuQGjbh5qW6ykOytLyiBfAtn4J+4876PriHvRHZ1lIwcQoTYFE828u
- 6pQWBwme6qVQm3d3imn1UyO9FYXAx7Bb8vYIW077vpgCCSTZyj4tkHX9rLROKV13HrQA
- vRSI3LU/VKF/RT5sEzeHZxG7D9TE/g+ltyfzJsmQAFv26xoZ3fKg8mWA+DrpCN20SGzA
- Tniw==
-X-Gm-Message-State: AO0yUKXOWVNgKYghTlfmVgeaC0lwtOSpRPcPGM6TgMVBPRPJuyp65yQI
- /J9ji7RWVFGAxBWETuY4L0n6JA==
-X-Google-Smtp-Source: AK7set+G4ff/Yrqwcl/QBBPki/GxA9JNYr3vh5bthr4RewfC/A6ZKvaaeMlVQIzoVcP90rE8b8R+MQ==
-X-Received: by 2002:a05:600c:755:b0:3e0:6c4:6a3a with SMTP id
- j21-20020a05600c075500b003e006c46a3amr12832466wmn.22.1676032956589; 
- Fri, 10 Feb 2023 04:42:36 -0800 (PST)
+ bh=0fSnH1e4vyd2u4Kryqx30mRURqd4lKi6QXrHiBpdw1s=;
+ b=km3n6PZ+EW3r1N/Rex3utvwsYAu1kbLGrq/BUBUyoEmoYw/MSKT0x0vtopyZ5pR23a
+ 4jb9xDPOXrZVQrq4eO9I/QPvsZOoPoAGWvLTBWZVllfH5BZpVhQWpkUqYRCCYGqyUrPx
+ YIN5OzgU4gEIfWkVNKua6UArSQ0F2qs9grBQeL/7zFQCMS7Q9F/9rQ/+QIV6zaQJ8Zkb
+ 0UCKXvXJLdNbP5wAkEHW3XJgQTmOZTefBF3ZSC/yKWlHfsEo91h5u8YQ2pAJ/gPQ/ynC
+ 4g1/0LpzeLHxSuX+FgLzepZ7aRQ18gz6x95p58QsqbntiFN3JH5n1StfhXiTNdrR+/I0
+ 1CeA==
+X-Gm-Message-State: AO0yUKVakcRZahgce+DAxpW+CSxtFskj0g/kDgqakZeRvtHDDlB2oTR4
+ 99QUI/S9SA8XHUY330Op7zNGtw==
+X-Google-Smtp-Source: AK7set/J6FxMFQ1jau/ankFu1DXRadpO2AsUdYuE5mtyAsMo2HwU9ylbZZGoEyZskPFQj1rz4ew0sQ==
+X-Received: by 2002:adf:f145:0:b0:2c3:ee0d:563 with SMTP id
+ y5-20020adff145000000b002c3ee0d0563mr16133249wro.28.1676033122576; 
+ Fri, 10 Feb 2023 04:45:22 -0800 (PST)
 Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- w23-20020a1cf617000000b003db1d9553e7sm7951843wmc.32.2023.02.10.04.42.35
+ v18-20020a5d4a52000000b002c3f210e8c0sm3682578wrs.19.2023.02.10.04.45.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Feb 2023 04:42:36 -0800 (PST)
-Message-ID: <59c5bb4a-ece3-0e70-ea22-ae9408809d04@linaro.org>
-Date: Fri, 10 Feb 2023 13:42:34 +0100
+ Fri, 10 Feb 2023 04:45:22 -0800 (PST)
+Message-ID: <09b35ac7-367c-d039-b544-70b5cb1ab795@linaro.org>
+Date: Fri, 10 Feb 2023 13:45:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.7.2
-Subject: Re: [PATCH] include/hw: Do not include "hw/registerfields.h" in
- headers that don't need it
+Subject: Re: [PATCH] include/hw: Do not include hw.h from headers
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Eric Auger <eric.auger@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org, qemu-riscv@nongnu.org
-References: <20230210112315.1116966-1-thuth@redhat.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20230210112835.1117966-1-thuth@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230210112315.1116966-1-thuth@redhat.com>
+In-Reply-To: <20230210112835.1117966-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.149,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,60 +81,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Feb 2023 12:42:46 -0000
+X-List-Received-Date: Fri, 10 Feb 2023 12:45:26 -0000
 
-On 10/2/23 12:23, Thomas Huth wrote:
-> Include "hw/registerfields.h" in the .c files instead (if needed).
+On 10/2/23 12:28, Thomas Huth wrote:
+> This include is not needed here, so drop that line.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   include/hw/arm/smmuv3.h        | 1 -
->   include/hw/char/ibex_uart.h    | 1 -
->   include/hw/ssi/ibex_spi_host.h | 1 -
->   hw/char/ibex_uart.c            | 1 +
->   hw/ssi/ibex_spi_host.c         | 1 +
->   5 files changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index f1921fdf9e..b6dd087526 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -20,7 +20,6 @@
->   #define HW_ARM_SMMUV3_H
->   
->   #include "hw/arm/smmu-common.h"
-> -#include "hw/registerfields.h"
+>   include/hw/ssi/ibex_spi_host.h          | 1 -
+>   include/hw/tricore/tricore_testdevice.h | 1 -
+>   2 files changed, 2 deletions(-)
 
-Never required.
+Possibly more?
 
->   #define TYPE_SMMUV3_IOMMU_MEMORY_REGION "smmuv3-iommu-memory-region"
-> diff --git a/include/hw/char/ibex_uart.h b/include/hw/char/ibex_uart.h
-> index a39985516a..9deadf223b 100644
-> --- a/include/hw/char/ibex_uart.h
-> +++ b/include/hw/char/ibex_uart.h
-> @@ -26,7 +26,6 @@
->   #define HW_IBEX_UART_H
->   
->   #include "hw/sysbus.h"
-> -#include "hw/registerfields.h"
-
-Missed in bdc36ce649 ("hw/char/ibex_uart: Make the register layout 
-private").
-
->   #include "chardev/char-fe.h"
->   #include "qemu/timer.h"
->   #include "qom/object.h"
-> diff --git a/include/hw/ssi/ibex_spi_host.h b/include/hw/ssi/ibex_spi_host.h
-> index 1f6d077766..8089cc1c31 100644
-> --- a/include/hw/ssi/ibex_spi_host.h
-> +++ b/include/hw/ssi/ibex_spi_host.h
-> @@ -32,7 +32,6 @@
->   #include "hw/ssi/ssi.h"
->   #include "qemu/fifo8.h"
->   #include "qom/object.h"
-> -#include "hw/registerfields.h"
-
-Never required.
+$ git grep hw/hw.h $(git grep -L -w hw_error)
+hw/pci-host/mv64361.c:14:#include "hw/hw.h"
+hw/ppc/pegasos2.c:13:#include "hw/hw.h"
+hw/sensor/dps310.c:12:#include "hw/hw.h"
+include/hw/ssi/ibex_spi_host.h:31:#include "hw/hw.h"
+include/hw/tricore/tricore_testdevice.h:22:#include "hw/hw.h"
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
