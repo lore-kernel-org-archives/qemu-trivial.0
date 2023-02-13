@@ -1,78 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pQzvN-00016b-P4
-	for mharc-qemu-trivial@gnu.org; Sat, 11 Feb 2023 19:08:57 -0500
+	id 1pRWWH-0008M8-SD
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Feb 2023 05:57:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pQzvM-00016L-Vj
- for qemu-trivial@nongnu.org; Sat, 11 Feb 2023 19:08:56 -0500
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pRWWG-0008Km-Sv
+ for qemu-trivial@nongnu.org; Mon, 13 Feb 2023 05:57:12 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pQzvL-0001J6-Dh
- for qemu-trivial@nongnu.org; Sat, 11 Feb 2023 19:08:56 -0500
-Received: by mail-pl1-x62b.google.com with SMTP id m2so10240542plg.4
- for <qemu-trivial@nongnu.org>; Sat, 11 Feb 2023 16:08:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pRWWF-0003p7-6b
+ for qemu-trivial@nongnu.org; Mon, 13 Feb 2023 05:57:12 -0500
+Received: by mail-wr1-x430.google.com with SMTP id o15so8408637wrc.9
+ for <qemu-trivial@nongnu.org>; Mon, 13 Feb 2023 02:57:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=5pbn28NdBT7eR1musuMumktiGbVnjbmT92RPP1j+jpc=;
- b=ZQV+YEsOWYdEKKl/ojfbG1QxtlXNNV4qH3mQZNCIXuzBX2E9lwpo55lvX2MZ10SbZA
- rKJpvPUQG0WNOmeilpXoVQb5E+rnywGhvRssj9zYYzSJOGSjXtx6mPdntaSJDG8Naih3
- pdeivXKaDyQyow2Vqtq9wareBSrxwfKE1oEmVd3TfAYNNUqHe8j+4Y80OQCWDnXqUmca
- lztbyeUKfCYLAXDNJF4LPWcuqAmeK+lfGyDQVmfR2K9Ww2D8eN5tCA9gOJnJJRQJdPie
- pvNr9cjVFD2nrdZbXsP1ISD3C1IMs2OKOZPSUK0UQwXQh+hhQgBsd5emobN5QVJnGBQA
- tlKQ==
+ bh=S0TYYX60bvctx73xSjISvMUCGGrxXP6yKr6R1yR2uJE=;
+ b=By1zHRDbdfuaD2jXmKy1WACO6PITR1zw8BIsS9qSPZvg26xkR7h0Ou4BLjaxGMtjjL
+ 0KJh1SH14e/zTSTwFYOYHcDd5doTEeXuDAskhAxzwyj+J3IqLiRlXZbNk/He0cInCXpN
+ Zs7hju48A57iyyYm6qTTn5Jeu86NYFVDfdQIjPVToPEPp5IyAH8v9awP3XJUBbCq3klP
+ qw5jGXkIv70cCWsRjSvF94vfhEPiwxtVuwD/wx2wxMCaIXNczNUfyce8A531ZgGZYYgU
+ x/Xs4Y63qENhLgGb05wSolEp6xUUYU9oNRUuc3tfNFtivQdR6AUpw644zbgEZu4DzdXc
+ knyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=5pbn28NdBT7eR1musuMumktiGbVnjbmT92RPP1j+jpc=;
- b=hPel6dcyw6EM8HTt4sXe9LmltjeEoSxX2wl9nSTdSkTqf86tmQaTIt7PQjT8J0Bv0Y
- SCWtpUzzShTR5nXj3H3BBbMGg7oN1vPN/juQvbjL4bwy4qgzXotX28SYfpW5q2pOIVba
- Q7IgwZNew1tDZFJzngtTqmg4eP8HugOEP9ijlJEY63PW0z6kyjoF7a4mHBNQexXonAsg
- wkN17ysBlnzXhOWd6RaLERuyyT/6bJEtfiC+z7GVHbFy/9If1QdmfGHKfZfxlaefw+Jz
- 9CpVHfc4IR1C14jukph5H1Ep0mGPlxE+DybKm71wcqXI7ap1wV9YGxeSBFmkkZ+mwqnX
- hHhw==
-X-Gm-Message-State: AO0yUKVsu7qqTHzz2Y5d5Icegkf/U3nbtfrMBlmesIzbGrF93SnBPapt
- ptS/8ce7FoRuspFErTVI3xUnrg==
-X-Google-Smtp-Source: AK7set+KO9RMhfxUeGdpfJfSNMvJt006YIDR4RvxSTMIKvX7iZJabce8+FxC2xLXESbJeFl/p7+t4w==
-X-Received: by 2002:a05:6a21:620f:b0:be:e43f:df97 with SMTP id
- wm15-20020a056a21620f00b000bee43fdf97mr16018865pzb.14.1676160534066; 
- Sat, 11 Feb 2023 16:08:54 -0800 (PST)
-Received: from [192.168.101.227] (rrcs-74-87-59-234.west.biz.rr.com.
- [74.87.59.234]) by smtp.gmail.com with ESMTPSA id
- d14-20020aa78e4e000000b0059085684b54sm5565687pfr.140.2023.02.11.16.08.52
+ bh=S0TYYX60bvctx73xSjISvMUCGGrxXP6yKr6R1yR2uJE=;
+ b=hVxEyLTRSI6dd2w0ecyFtwBCGlCBp8ptp5ouOADDw4rso1mKBXceHTerPsSQb5v1k1
+ p4ersV/WZ237OaOL0w4N+cLoKIAZUd7yFpRbojqcir7rEScYyspyKuXokMB+XHcdStHO
+ 0iCOw+D0gFBw/4YyHp5LYReyOG3y7VFkwA1+LhXkTfIF0p1q25hxX5npICFw3QlnWuHE
+ Zb+c3AyQzuXGk/AnvIAQIYmuGBnBYn8CUifkzB0TTNsJvRO6aOZMrBKcnZ1VsvdtMeZp
+ zyg6anbDzJE1fo4wArEOgxJI5r+o4J1Ur94HMwXfA2tdJPhrjEIOrY9Bts/zDg1GJLez
+ EH2Q==
+X-Gm-Message-State: AO0yUKWq0PDbCFrl/qdHsH8H0CxhSvSQ3vwYTCQahXNO43+KypnhEDsy
+ 382K5FcxvVTdcD2WYPyqPPOeLA==
+X-Google-Smtp-Source: AK7set+CB8Ra22CLT/Dc3jNwJP926hGogpYBVyXqUl6HhqenXnA84p4dlvQhVK0VMltYdukC/ZRLJw==
+X-Received: by 2002:a5d:6ac3:0:b0:2c5:4e77:62d with SMTP id
+ u3-20020a5d6ac3000000b002c54e77062dmr6241338wrw.58.1676285829520; 
+ Mon, 13 Feb 2023 02:57:09 -0800 (PST)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ b5-20020a5d4d85000000b002c54b0e1405sm7736524wru.88.2023.02.13.02.57.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 11 Feb 2023 16:08:53 -0800 (PST)
-Message-ID: <b295255a-773f-a5c8-b1e8-d503a4e02f78@linaro.org>
-Date: Sat, 11 Feb 2023 14:08:50 -1000
+ Mon, 13 Feb 2023 02:57:09 -0800 (PST)
+Message-ID: <e3f5e1ff-de85-b85b-21c8-abb064b36f86@linaro.org>
+Date: Mon, 13 Feb 2023 11:57:08 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 1/2] hw/pci: Fix a typo
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.7.2
+Subject: Re: [PATCH] MAINTAINERS: update my email address for the clock
+ framework
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <20230211152239.88106-1-philmd@linaro.org>
- <20230211152239.88106-2-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230211152239.88106-2-philmd@linaro.org>
+To: Damien Hedde <damien.hedde@dahe.fr>, qemu-devel@nongnu.org
+Cc: luc@lmichel.fr, mark.burton@qti.qualcomm.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20230213105227.2357-1-damien.hedde@dahe.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230213105227.2357-1-damien.hedde@dahe.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.348,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,17 +81,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 12 Feb 2023 00:08:57 -0000
+X-List-Received-Date: Mon, 13 Feb 2023 10:57:13 -0000
 
-On 2/11/23 05:22, Philippe Mathieu-Daudé wrote:
-> Fix 'interrutp' typo.
+On 13/2/23 11:53, Damien Hedde wrote:
+> Also update mailmap
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> Signed-off-by: Damien Hedde <damien.hedde@dahe.fr>
 > ---
->   hw/pci/pci.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   MAINTAINERS | 2 +-
+>   .mailmap    | 1 +
+>   2 files changed, 2 insertions(+), 1 deletion(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Thanks,
 
-r~
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 
