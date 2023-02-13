@@ -1,80 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pRa2R-000375-Px
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Feb 2023 09:42:39 -0500
+	id 1pRbZK-0004Z5-Pw
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Feb 2023 11:20:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pRa2Q-00031G-QZ
- for qemu-trivial@nongnu.org; Mon, 13 Feb 2023 09:42:38 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pRbZI-0004YF-Q0; Mon, 13 Feb 2023 11:20:40 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pRa2O-0005mb-OL
- for qemu-trivial@nongnu.org; Mon, 13 Feb 2023 09:42:38 -0500
-Received: by mail-wr1-x430.google.com with SMTP id r2so12467689wrv.7
- for <qemu-trivial@nongnu.org>; Mon, 13 Feb 2023 06:42:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=u2rdAY72ubcEfGMqLpKt2lTeVI7nIjOxisBX9PwvecE=;
- b=XWiZnPxBEbdrs3uQ36EFfkB7lzi03ty7UjDPjAoGY/0+NZFEBWCtN5g2ggoP2AcYw5
- 6RAjvFnwc2+CXv3ybdYLARObW0Z4NMDWmPIYzRhlwJnx5eM8fMdeRUYE0gbJTY62xH8L
- 5jaEQODu69v0C3dVrIAiZxb4ou0aGVqLFoSWTPVlgRCX9hIw5ZYPioPFDT5svYGZYAAp
- 11xhtvXt9XoKRA3VhfSWZ2j7o0F/VQmU/6/s+GzCskbCZyisRjH2K0K3PV/QrAVu3wdo
- +mVvllhisnA+6VAUIydTcZ8cXgdEsXEHIfACalpFg9fKfgmQYK98XXSfdYwKTcCtncZc
- rinQ==
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pRbZG-0007vD-RT; Mon, 13 Feb 2023 11:20:40 -0500
+Received: by mail-ej1-x631.google.com with SMTP id sb24so9244869ejb.8;
+ Mon, 13 Feb 2023 08:20:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=CWeQEhkJ06ecAyh8L7LOO2aEbqr7bNhwpy+DgMqY1Vo=;
+ b=nKV+BRiPyBDuKBpBkqn9HNgy41DijQu6VM/A+nU6M3AXCpLwZMx/q+YmlCe7dp8kBY
+ 5pDCtzOx2Z1O/vNSDumF1IJcwNuEF7f8A/hA4ZZC0lzblSqqxGyikPFqtM7NBYKaze4p
+ 2ApvoRKuyBv92hpvGChinzrSIFWIp1emMGMKStR3B9Aorqeic2dzFp7zMBzZb/BVOVcq
+ Wwx2WjPwrrjKMonhNJ8wAXKn80VFId583SciwzILLm+ooOpL3+9cOy4v5koeiiOxiKeC
+ /MvT3e4NCBYSzjXOSkSjwXrD61efmRxGqbXBDO9R3uwwU032InLfGJtx5+9N6uC+16gO
+ b8/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=u2rdAY72ubcEfGMqLpKt2lTeVI7nIjOxisBX9PwvecE=;
- b=YUVo1+OHb7AGld9Z8Ir17p1Cv4qnuDih3EuAJIz0ykO40dSS21bDS62QyBScjvQ+Nx
- ITVFA+JsAeTOzLVRfsNWPMIlt2GfEvNh04FeP0VjgZ6Ffs5QhL2eN3Ugd78SS9zlT4VC
- xYpRuJiLz1sWUzijDnYivPEu+UV87IZZzWoeXehdFcHcM1zGxlzyHMQi33c9qJnOYqS+
- 23rsqAXSuhUNWhS3lT0zhsXVa+ZRaj3oG/C0FuR7p1+nNaTu7Mx7RA3kcr2T/pi58zUx
- IEG1I/qJxnqeuVsS1oo4kkqM8N1nmlkZ5OHTOx+Vmm3YHYWCIfNB7MNfPrJND5xvfNHd
- QwgQ==
-X-Gm-Message-State: AO0yUKX4Q07N/oWyTeTdM4XdmcbkHRo9Wz79FemMtxJLfMbRY902OCLM
- okZmkwNeUa0w5dyLTdEahEN1uA==
-X-Google-Smtp-Source: AK7set+XXFJxIH3dTNCzL28/nsat7NMXBAFORA5tpURl9Gwwd5ZblNQZ6kme6rFtnsY6iugfvzNSvA==
-X-Received: by 2002:a5d:4812:0:b0:2c5:557a:d7d3 with SMTP id
- l18-20020a5d4812000000b002c5557ad7d3mr3810574wrq.18.1676299355253; 
- Mon, 13 Feb 2023 06:42:35 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- t8-20020a7bc3c8000000b003e00c9888besm17175778wmj.30.2023.02.13.06.42.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Feb 2023 06:42:34 -0800 (PST)
-Message-ID: <dad95290-fef9-2b4a-7c62-14dbe3853289@linaro.org>
-Date: Mon, 13 Feb 2023 15:42:33 +0100
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=CWeQEhkJ06ecAyh8L7LOO2aEbqr7bNhwpy+DgMqY1Vo=;
+ b=ttpY/2L/lNqNH6Ix7q5JVczlQCu7j0OBJrqZI6vVGgjkS3eHDk8UCfiu6D5bsjYQr4
+ 6KcXC1h/3so76NqNWjh45fDE9MR2rp037LhsfdUjHPyrcTUEFrR0KmgtvToQrhvKky3H
+ MJeOu1XtE7zV9a2aMCfO4knnZzBgXyztUXxJTHFcd+Jz+OLIeMCLyzGDuxLd3hI1Aq/Q
+ xOSuZQspqtvi40Y+dB5JmH/p5DtKLA/QxR/cbJJP4DhRyUxiLUo4hfskodzn5eyO/Prq
+ /5SuyeQyAyIvxIlZLeUOumoOdyZrSYxjlzj9QiOHok8g1dSJ9CbveGuTtEs5F6aDsF51
+ PPVg==
+X-Gm-Message-State: AO0yUKWB5bVaOzEwu/HGkHNG81rBEE6eOoijtKfzEOqQWBmkCy4dWjlv
+ qXqWWugob2EOfiHbUxdzmqfVOBBrbGI=
+X-Google-Smtp-Source: AK7set8aYYsDPd/KMfDz0y0+kDDszQX7lhOPzyw8fZI+ej451czJ9tiUtvmeIypTjC7DPl4Qe9BnXQ==
+X-Received: by 2002:a17:906:fe49:b0:8aa:c0d6:2dc6 with SMTP id
+ wz9-20020a170906fe4900b008aac0d62dc6mr27539000ejb.29.1676305236320; 
+ Mon, 13 Feb 2023 08:20:36 -0800 (PST)
+Received: from localhost.localdomain
+ (dynamic-078-055-133-198.78.55.pool.telefonica.de. [78.55.133.198])
+ by smtp.gmail.com with ESMTPSA id
+ 20-20020a170906025400b008841aa86484sm6979952ejl.211.2023.02.13.08.20.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Feb 2023 08:20:35 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Juan Quintela <quintela@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
+ Laurent Vivier <lvivier@redhat.com>, Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v4 0/9] PC cleanups
+Date: Mon, 13 Feb 2023 17:19:55 +0100
+Message-Id: <20230213162004.2797-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.7.2
-Subject: Re: [RFC PATCH] Do not include "qemu/error-report.h" in headers that
- do not need it
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Coiby Xu <Coiby.Xu@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20230210111931.1115489-1-thuth@redhat.com>
- <87zg9lpre8.fsf@pond.sub.org>
- <383a2e03-7ee9-cc93-72d5-7f039314f932@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <383a2e03-7ee9-cc93-72d5-7f039314f932@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.345,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,54 +85,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Feb 2023 14:42:39 -0000
+X-List-Received-Date: Mon, 13 Feb 2023 16:20:41 -0000
 
-On 13/2/23 15:24, Thomas Huth wrote:
-> On 10/02/2023 14.43, Markus Armbruster wrote:
->> Thomas Huth <thuth@redhat.com> writes:
->>
->>> Include it in the .c files instead that use the error reporting
->>> functions.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>   RFC since it's more lines of code - but I think it's still cleaner
->>>   this way.
->>
->> Yes, please!
->>
->> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> 
-> FWIW, I just noticed (thanks to the gitlab CI) that I was missing two 
-> more hunks:
-> 
-> diff --git a/ui/dbus-console.c b/ui/dbus-console.c
-> --- a/ui/dbus-console.c
-> +++ b/ui/dbus-console.c
-> @@ -22,6 +22,7 @@
->    * THE SOFTWARE.
->    */
->   #include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
->   #include "qapi/error.h"
->   #include "ui/input.h"
->   #include "ui/kbd-state.h"
-> diff --git a/ui/gtk.c b/ui/gtk.c
-> --- a/ui/gtk.c
-> +++ b/ui/gtk.c
-> @@ -36,6 +36,7 @@
->   #include "qapi/qapi-commands-machine.h"
->   #include "qapi/qapi-commands-misc.h"
->   #include "qemu/cutils.h"
-> +#include "qemu/error-report.h"
->   #include "qemu/main-loop.h"
-
-Uses without include:
-
-$ git grep -L qemu/error-report.h \
-   $(git grep -wEl 
-'(error_report|error_report_once|error_report_once_cond)')
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+This series contains some cleanups I came across when working on the PC=0D
+machines. It consists of reducing the usage of global variables and elimina=
+ting=0D
+some redundancies.=0D
+=0D
+One notable change is that the SMRAM memory region gets moved from the i440=
+fx=0D
+and q35 host bridges into the x86 machine. This will simplify cleaning up t=
+hese=0D
+host bridges which will be done in a separate series. Note that the movemen=
+t of=0D
+the SMRAM memory region apparently doesn't change migration ABI for the pc =
+and=0D
+q35 machines (see below).=0D
+=0D
+Testing done:=0D
+* `make check`=0D
+' `make check-avocado`=0D
+* `qemu-system-x86_64 -M q35 -m 2G -cdrom \=0D
+   manjaro-kde-21.3.2-220704-linux515.iso`=0D
+* `qemu-system-x86_64 -M pc -m 2G -cdrom manjaro-kde-21.3.2-220704-linux515=
+.iso`=0D
+* Confirm that JSON representation of migration files (pc & q35) are empty:=
+=0D
+  1. Create four migration files {pc,q35}-{before,after}.mig by running=0D
+     `qemu-system-x86_64 -M {pc,q35} -S` with QEMU built from master and fr=
+om=0D
+     this series.=0D
+  2. Run `./scripts/analyze-migration.py -d desc -f *.mig > *.json` on the =
+four=0D
+     files=0D
+  3. Compare the diffs -> both are empty=0D
+=0D
+v4:=0D
+* Remove ram_memory variable in pc_q35 completely (Zoltan)=0D
+=0D
+v3:=0D
+* Add three patches regarding init_pam() and SMRAM.=0D
+* Drop 'hw/i386/pc_q35: Resolve redundant q35_host variable' since Phil pos=
+ted=0D
+  a similar patch in a more comprehensive series:=0D
+  https://lore.kernel.org/qemu-devel/20230203180914.49112-13-philmd@linaro.=
+org/=0D
+* Drop 'hw/isa/lpc_ich9: Reuse memory and io address space of PCI bus' sinc=
+e=0D
+  it inadvertantly changed the memory hierarchy.=0D
+* Drop ICH9 cleanups again in favor of a separate series.=0D
+=0D
+v2:=0D
+* Factor out 'hw/i386/pc_q35: Reuse machine parameter' from 'hw/i386/pc_q35=
+:=0D
+  Resolve redundant q35_host variable' (Zoltan)=0D
+* Lower type of phb to Object in 'hw/i386/pc_q35: Resolve redundant q35_hos=
+t=0D
+  variable' (Zoltan)=0D
+* Add ICH9 cleanups=0D
+=0D
+Bernhard Beschow (9):=0D
+  hw/pci-host/i440fx: Inline sysbus_add_io()=0D
+  hw/pci-host/q35: Inline sysbus_add_io()=0D
+  hw/i386/pc_q35: Reuse machine parameter=0D
+  hw/i386/pc_{q35,piix}: Reuse MachineClass::desc as SMB product name=0D
+  hw/i386/pc_{q35,piix}: Minimize usage of get_system_memory()=0D
+  hw/i386/pc: Initialize ram_memory variable directly=0D
+  hw/pci-host/pam: Make init_pam() usage more readable=0D
+  hw/i386/x86: Make TYPE_X86_MACHINE the owner of smram=0D
+  target/i386/tcg/sysemu/tcg-cpu: Avoid own opinion about smram size=0D
+=0D
+ include/hw/i386/pc.h             |  1 -=0D
+ include/hw/i386/x86.h            |  2 ++=0D
+ include/hw/pci-host/i440fx.h     |  7 ++++---=0D
+ include/hw/pci-host/pam.h        |  5 +++--=0D
+ include/hw/pci-host/q35.h        |  4 +++-=0D
+ hw/i386/pc.c                     |  2 --=0D
+ hw/i386/pc_piix.c                | 10 +++++-----=0D
+ hw/i386/pc_q35.c                 | 17 +++++++++--------=0D
+ hw/i386/x86.c                    |  4 ++++=0D
+ hw/pci-host/i440fx.c             | 28 +++++++++++++---------------=0D
+ hw/pci-host/pam.c                | 12 ++++++------=0D
+ hw/pci-host/q35.c                | 31 ++++++++++++++++---------------=0D
+ target/i386/tcg/sysemu/tcg-cpu.c |  3 +--=0D
+ 13 files changed, 66 insertions(+), 60 deletions(-)=0D
+=0D
+-- =0D
+2.39.1=0D
+=0D
 
