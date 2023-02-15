@@ -1,80 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pRbxC-0004AZ-MO
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Feb 2023 11:45:22 -0500
+	id 1pSJcS-0008KM-5q
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Feb 2023 10:22:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pRbxB-0004AJ-45; Mon, 13 Feb 2023 11:45:21 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pRbx9-00041j-6j; Mon, 13 Feb 2023 11:45:20 -0500
-Received: by mail-ej1-x633.google.com with SMTP id dr8so33303416ejc.12;
- Mon, 13 Feb 2023 08:45:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Uus+PB3PAwGM2OjocJM0cSAakTMGCbD6B2Qy8FUIyTU=;
- b=Og6w0QZiIc4Rrwh1PnZ8yGMsUl78WxFDLyFie8z+kUgO441BXOPDzQcNLvEtu4QpKs
- NrreCR//GNRExYg3Htiw2KQG/LiMOC1NRukAtR+wILVr3scjQZkrDL25ec4L/rADYp6M
- 65njEfMVUGLWZ3DEQijz1idCTnVUs3pp5Lt4xgVNAQI5TBFQEG8KLzWugupS7pvyZV/t
- spRVG3S+VoHYrfUx6nkSKHQ7DEtCPJTXT8cCiVp23UdBrV0QqGDNKn5xM7ndsipj6XBd
- mMJ2F0ftfMGWjlmg6d/hNnIbjaq0Kz3oxF4IkDOP6HBetph58GmR6eHLLp2NylTtweib
- FSVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Uus+PB3PAwGM2OjocJM0cSAakTMGCbD6B2Qy8FUIyTU=;
- b=b4nSyvqOHdOU3T8tMDr6reQCq3YmhCHPcvCGPvxmRazA7EZUebLbrkVr2BcCHQNWAy
- 1ImCp1lnxGoOcniwnqqQNmODW9dzvblHdKf60mSZxDVgUzW3hEMyiM9Br9SzJgt+RtSX
- +yD1GuUxbJ9uZb5W8MN9H9qlf+K4DkPM6QAycwpmmj03qidzBVFWqNFFa/EW5PxlAGQD
- AE0+JvbpyHp63QB/8G5wwNXeKHIl271SlrE1j2uo+NDHTUDrKnHVTy8lUhaOhoDv6Zbn
- sgc1oB7jXzxQ25uV7qC0vtbKcPWm6tz3mUKgDudLkWCWC6sP7JRIXoCeD/i6Y6gNddWz
- CSzw==
-X-Gm-Message-State: AO0yUKUy41VxOtF0AkgvePpT3m8eNTKLS+VxUTuVrvaHxwnFSPKhz5Mo
- mcw7Z4QIIkFOV7qE90Uel5cQXVSkjwk=
-X-Google-Smtp-Source: AK7set8upnJ9YmXXOuUVBZS98qpHrSenJo28x5CvEbryD7RbkHGjdbiCjvXnn6Z+ZaLAaBgOeTc50A==
-X-Received: by 2002:a17:906:4e54:b0:8af:2b57:b80f with SMTP id
- g20-20020a1709064e5400b008af2b57b80fmr14495600ejw.55.1676306713833; 
- Mon, 13 Feb 2023 08:45:13 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-078-055-133-198.78.55.pool.telefonica.de.
- [78.55.133.198]) by smtp.gmail.com with ESMTPSA id
- t16-20020a508d50000000b004acbe66e653sm3007997edt.84.2023.02.13.08.45.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Feb 2023 08:45:13 -0800 (PST)
-Date: Mon, 13 Feb 2023 16:45:05 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-CC: Paolo Bonzini <pbonzini@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Juan Quintela <quintela@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
- Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v4 0/9] PC cleanups
-In-Reply-To: <20230213162004.2797-1-shentey@gmail.com>
-References: <20230213162004.2797-1-shentey@gmail.com>
-Message-ID: <776DAC15-E708-47BF-9EF6-D511731DF56D@gmail.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pSJcM-0008JB-7d
+ for qemu-trivial@nongnu.org; Wed, 15 Feb 2023 10:22:46 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pSJcK-0002fa-Pj
+ for qemu-trivial@nongnu.org; Wed, 15 Feb 2023 10:22:45 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676474560;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=m9zJ7SKM0O5qupfAnN6HPv6VpT7eI/lifcK9QXvjYok=;
+ b=aOAyMFEmDFs+3EMrO86lvb8U587ybzRO5QvTb0YBi3OiFhS/SkALbVX/aatmDLtjHIBji9
+ ETJUzhKxBD5UAreu5JRWDoA+uQhPBmj8OSTfDLKpvegmz4zXhjK+8/5ZOusiwf116f7FVT
+ OOrFz4NjqOGmk301CR8p93rqrVNdKpQ=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-478-9qVihy_5NxitQ-opSEI9tA-1; Wed, 15 Feb 2023 10:22:37 -0500
+X-MC-Unique: 9qVihy_5NxitQ-opSEI9tA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 499C93815F7D;
+ Wed, 15 Feb 2023 15:22:36 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.198])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1FAD940C10FA;
+ Wed, 15 Feb 2023 15:22:34 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] include/hw/arm/allwinner-a10.h: Remove superfluous includes
+ from the header
+Date: Wed, 15 Feb 2023 16:22:33 +0100
+Message-Id: <20230215152233.210024-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,172 +66,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Feb 2023 16:45:21 -0000
+X-List-Received-Date: Wed, 15 Feb 2023 15:22:49 -0000
 
+pci_device.h is not needed at all in allwinner-a10.h, and serial.h
+is only needed by the corresponding .c file.
 
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ include/hw/arm/allwinner-a10.h | 2 --
+ hw/arm/allwinner-a10.c         | 1 +
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-Am 13=2E Februar 2023 16:19:55 UTC schrieb Bernhard Beschow <shentey@gmail=
-=2Ecom>:
->This series contains some cleanups I came across when working on the PC
->
->machines=2E It consists of reducing the usage of global variables and eli=
-minating
->
->some redundancies=2E
->
->
->
->One notable change is that the SMRAM memory region gets moved from the i4=
-40fx
->
->and q35 host bridges into the x86 machine=2E This will simplify cleaning =
-up these
->
->host bridges which will be done in a separate series=2E Note that the mov=
-ement of
->
->the SMRAM memory region apparently doesn't change migration ABI for the p=
-c and
->
->q35 machines (see below)=2E
->
->
->
->Testing done:
->
->* `make check`
->
->' `make check-avocado`
->
->* `qemu-system-x86_64 -M q35 -m 2G -cdrom \
->
->   manjaro-kde-21=2E3=2E2-220704-linux515=2Eiso`
->
->* `qemu-system-x86_64 -M pc -m 2G -cdrom manjaro-kde-21=2E3=2E2-220704-li=
-nux515=2Eiso`
->
->* Confirm that JSON representation of migration files (pc & q35) are empt=
-y:
->
->  1=2E Create four migration files {pc,q35}-{before,after}=2Emig by runni=
-ng
->
->     `qemu-system-x86_64 -M {pc,q35} -S` with QEMU built from master and =
-from
->
->     this series=2E
->
->  2=2E Run `=2E/scripts/analyze-migration=2Epy -d desc -f *=2Emig > *=2Ej=
-son` on the four
->
->     files
->
->  3=2E Compare the diffs -> both are empty
->
->
->
->v4:
->
->* Remove ram_memory variable in pc_q35 completely (Zoltan)
->
+diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
+index 79e0c80568..095afb225d 100644
+--- a/include/hw/arm/allwinner-a10.h
++++ b/include/hw/arm/allwinner-a10.h
+@@ -1,9 +1,7 @@
+ #ifndef HW_ARM_ALLWINNER_A10_H
+ #define HW_ARM_ALLWINNER_A10_H
+ 
+-#include "hw/char/serial.h"
+ #include "hw/arm/boot.h"
+-#include "hw/pci/pci_device.h"
+ #include "hw/timer/allwinner-a10-pit.h"
+ #include "hw/intc/allwinner-a10-pic.h"
+ #include "hw/net/allwinner_emac.h"
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index dc1966ff7a..b7ca795c71 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -18,6 +18,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "hw/char/serial.h"
+ #include "hw/sysbus.h"
+ #include "hw/arm/allwinner-a10.h"
+ #include "hw/misc/unimp.h"
+-- 
+2.31.1
 
-The last two patches still need review=2E Comments welcome!
-
->
->
->v3:
->
->* Add three patches regarding init_pam() and SMRAM=2E
->
->* Drop 'hw/i386/pc_q35: Resolve redundant q35_host variable' since Phil p=
-osted
->
->  a similar patch in a more comprehensive series:
->
->  https://lore=2Ekernel=2Eorg/qemu-devel/20230203180914=2E49112-13-philmd=
-@linaro=2Eorg/
->
->* Drop 'hw/isa/lpc_ich9: Reuse memory and io address space of PCI bus' si=
-nce
->
->  it inadvertantly changed the memory hierarchy=2E
->
->* Drop ICH9 cleanups again in favor of a separate series=2E
->
->
->
->v2:
->
->* Factor out 'hw/i386/pc_q35: Reuse machine parameter' from 'hw/i386/pc_q=
-35:
->
->  Resolve redundant q35_host variable' (Zoltan)
->
->* Lower type of phb to Object in 'hw/i386/pc_q35: Resolve redundant q35_h=
-ost
->
->  variable' (Zoltan)
->
->* Add ICH9 cleanups
->
->
->
->Bernhard Beschow (9):
->
->  hw/pci-host/i440fx: Inline sysbus_add_io()
->
->  hw/pci-host/q35: Inline sysbus_add_io()
->
->  hw/i386/pc_q35: Reuse machine parameter
->
->  hw/i386/pc_{q35,piix}: Reuse MachineClass::desc as SMB product name
->
->  hw/i386/pc_{q35,piix}: Minimize usage of get_system_memory()
->
->  hw/i386/pc: Initialize ram_memory variable directly
->
->  hw/pci-host/pam: Make init_pam() usage more readable
->
->  hw/i386/x86: Make TYPE_X86_MACHINE the owner of smram
->
->  target/i386/tcg/sysemu/tcg-cpu: Avoid own opinion about smram size
->
->
->
-> include/hw/i386/pc=2Eh             |  1 -
->
-> include/hw/i386/x86=2Eh            |  2 ++
->
-> include/hw/pci-host/i440fx=2Eh     |  7 ++++---
->
-> include/hw/pci-host/pam=2Eh        |  5 +++--
->
-> include/hw/pci-host/q35=2Eh        |  4 +++-
->
-> hw/i386/pc=2Ec                     |  2 --
->
-> hw/i386/pc_piix=2Ec                | 10 +++++-----
->
-> hw/i386/pc_q35=2Ec                 | 17 +++++++++--------
->
-> hw/i386/x86=2Ec                    |  4 ++++
->
-> hw/pci-host/i440fx=2Ec             | 28 +++++++++++++---------------
->
-> hw/pci-host/pam=2Ec                | 12 ++++++------
->
-> hw/pci-host/q35=2Ec                | 31 ++++++++++++++++---------------
-=
->
-> target/i386/tcg/sysemu/tcg-cpu=2Ec |  3 +--
->
-> 13 files changed, 66 insertions(+), 60 deletions(-)
->
->
->
->-- >
->2=2E39=2E1
->
->
->
 
