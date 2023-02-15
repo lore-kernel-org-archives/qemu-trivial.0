@@ -1,89 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pSKzT-0001wX-FJ
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Feb 2023 11:50:43 -0500
+	id 1pSLep-0001V7-2j
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Feb 2023 12:33:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1pSKzR-0001v6-GE
- for qemu-trivial@nongnu.org; Wed, 15 Feb 2023 11:50:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1pSKzP-0004vg-UP
- for qemu-trivial@nongnu.org; Wed, 15 Feb 2023 11:50:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676479838;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PJElrQ+SaBs2pWz1TyIluKMvkuy1aSWNqwkbjvufUgc=;
- b=SGBJNIL2Z/J2R4nqyr2OLl077jE2iC2BqTR440gTn3K58066c9Qt0dWf/gQyZuax36fZsH
- i8PcOC5SOWGPSNXo90wTo/hOswuGc86GU2rO7Uyj/TVg5aACX81kaPRlb5lW+BmIgjcc6q
- ACemPpCYPwDev2wMPq8w8X4Ng+Uuj0s=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-350-AFQqA_T6PdqQrRN99QV2Yw-1; Wed, 15 Feb 2023 11:50:36 -0500
-X-MC-Unique: AFQqA_T6PdqQrRN99QV2Yw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- j37-20020a05600c1c2500b003deaf780ab6so1425285wms.4
- for <qemu-trivial@nongnu.org>; Wed, 15 Feb 2023 08:50:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1pSLeo-0001Un-7T
+ for qemu-trivial@nongnu.org; Wed, 15 Feb 2023 12:33:26 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1pSLem-0000OI-0D
+ for qemu-trivial@nongnu.org; Wed, 15 Feb 2023 12:33:25 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ m20-20020a05600c3b1400b003e1e754657aso2161477wms.2
+ for <qemu-trivial@nongnu.org>; Wed, 15 Feb 2023 09:33:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=rdXwoM4rN1Ecq8SNcp05ArQ5wGy+n+9qKC2Z2MK2rKA=;
+ b=PMd0xhCML+hpv/JeQWJvZgW7dQN1Vfl+oB8YUQ0hR728VWOyIcCnN2Mw/p+pkWgvnz
+ aZNJXDc6+7aI1n/yBG4Pwgs2Xkk/V8fDyVMJ8dAknZ4RjGdRYs8b1s5vtbx3g+99IVSG
+ vY1t60MztC4OBHA3nyrPHdBRs/ZrqCflxaRuxEmUfUG2Qkh876KOUbYn/IOzJvQBZGAo
+ WGISrveJfvsI0i+8z3LQdF9zNwaQVNUqaHWLTXuBSrqq6Pj772gi3lkNE2ZVnKS2TtHF
+ qReKVBXkkiKEoH4MLG7VmXOpYQ/zS1UaCE5kTqd/lMn8rdHRirhuWO0nSr68WNu6XI4/
+ xyxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:reply-to
- :user-agent:references:in-reply-to:subject:cc:to:from
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=PJElrQ+SaBs2pWz1TyIluKMvkuy1aSWNqwkbjvufUgc=;
- b=JQCP9UmgwsvqsJNtpfbOyT/IHu2JmpgV5jAgOsfN2xao+161azdLy1RIAAZb3RCjNI
- 9uug5rz1o0PyQe6hpS8RIIMZp+Ghgr253eJKft1dHpRAwzPmG5Op7szDnxm/fDh3dm1Y
- bq0uDPPC/be6n+NabIAhzA0C0pobZgZEh6UvDxF5IucYkQOnM2TADk5BN0a6FPV0oIb5
- v8ig8HB2Antp/o33Bt/5lHZ2kafL5xfY85xwv1gbsMUZt3lMmJeqN3Wk2NwGJ0uHHLK5
- ASYo5pkuR4/PVp7GGRxAinGXxC5aCKKWB0jTJYEJAnlTekc6LoYwNKDLctJ0bawr1uxV
- AQbA==
-X-Gm-Message-State: AO0yUKUbfC5nnD3YxxSOe3bY7gyaswLw3g52fAE6IEIqsPtORCsBT2SD
- CW6AXTiOBHfg586Jx1GgFKm//WzIU9DUIOLNxsHCQEmSlqWnQaBOy4NFH9tz0d6J1y1QSiHrqnj
- 00u8RFJj26bUWCZQbVw==
-X-Received: by 2002:a05:600c:747:b0:3dc:5baf:df01 with SMTP id
- j7-20020a05600c074700b003dc5bafdf01mr2388282wmn.5.1676479835560; 
- Wed, 15 Feb 2023 08:50:35 -0800 (PST)
-X-Google-Smtp-Source: AK7set/w7LQlPPrgQJUJtU9Bzy/CRgVEH5jmJSwTETkM8O31vWDXotKhGTVKFzwfbsJTjTH9DEZNKg==
-X-Received: by 2002:a05:600c:747:b0:3dc:5baf:df01 with SMTP id
- j7-20020a05600c074700b003dc5bafdf01mr2388265wmn.5.1676479835323; 
- Wed, 15 Feb 2023 08:50:35 -0800 (PST)
-Received: from redhat.com ([46.136.252.173]) by smtp.gmail.com with ESMTPSA id
- l9-20020a05600c4f0900b003dff870ce0esm3054704wmq.2.2023.02.15.08.50.33
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=rdXwoM4rN1Ecq8SNcp05ArQ5wGy+n+9qKC2Z2MK2rKA=;
+ b=wWhxdQin1Hd9Ho68QXvZ01rlMoV1Ga67pAZd/LIT+b58DX+rcbsu1n4BAreTUtX+9l
+ DzoQ/kjuOcMXhXye0YOHvW19A3NOZV6IFgkSP+zZNN+JV5LuNRkVNPJAM+Vfyvl3vYL3
+ +qc4aTZqp9XkGoreyVSgY0/O69LAnD67lxb4nYfZrd6yo+wODxXax9IwRbK/BZ9SAktC
+ n90XJgi/01J7FZF8gYnjzjPSPgEOV8SFkiymFjRwkGXNnz4zIbRTBI3u7u2CGc2DzqCP
+ sny+j4lRXCsXkb9XnweMLUyW6eLvGf/glzfIf0ZergYyYphnUv5h6PfAXRiNdksvLraM
+ BQYA==
+X-Gm-Message-State: AO0yUKUPB+ojM5M3pLVHcKD56n7Ns4+MoO/Ly28dmXZpfrohNdeEwyPH
+ BsmVfSexX0KHpNWL36J95b7VcQ==
+X-Google-Smtp-Source: AK7set8XgeIzlPnRPSUPfXxOZxksN0/ZTYdsH4aXKvwBkDiW/byF0BPAF5HGV2JxnQssP4G8DuMZWA==
+X-Received: by 2002:a05:600c:4d22:b0:3d9:f769:2115 with SMTP id
+ u34-20020a05600c4d2200b003d9f7692115mr2514031wmp.26.1676482402064; 
+ Wed, 15 Feb 2023 09:33:22 -0800 (PST)
+Received: from zen.linaroharston ([85.9.250.243])
+ by smtp.gmail.com with ESMTPSA id
+ r19-20020a05600c459300b003dc47d458cdsm3088261wmo.15.2023.02.15.09.33.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Feb 2023 08:50:34 -0800 (PST)
-From: Juan Quintela <quintela@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Fam Zheng
- <fam@euphon.net>,  Stefan Hajnoczi <stefanha@redhat.com>,  "Dr. David Alan
- Gilbert" <dgilbert@redhat.com>,  qemu-block@nongnu.org
-Subject: Re: [PATCH] migration/block: Convert remaining DPRINTF() debug
- macro to trace events
-In-Reply-To: <20230215153517.30732-1-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 15 Feb 2023 16:35:17
- +0100")
-References: <20230215153517.30732-1-philmd@linaro.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Wed, 15 Feb 2023 17:50:32 +0100
-Message-ID: <87r0uq27qf.fsf@secure.mitica>
+ Wed, 15 Feb 2023 09:33:21 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 5D4F01FFB7;
+ Wed, 15 Feb 2023 17:33:21 +0000 (GMT)
+References: <20230215152233.210024-1-thuth@redhat.com>
+User-agent: mu4e 1.9.20; emacs 29.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Beniamino
+ Galvani <b.galvani@gmail.com>, Strahinja Jankovic
+ <strahinja.p.jankovic@gmail.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH] include/hw/arm/allwinner-a10.h: Remove superfluous
+ includes from the header
+Date: Wed, 15 Feb 2023 17:33:17 +0000
+In-reply-to: <20230215152233.210024-1-thuth@redhat.com>
+Message-ID: <87wn4i96la.fsf@linaro.org>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -97,18 +88,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Feb 2023 16:50:41 -0000
+X-List-Received-Date: Wed, 15 Feb 2023 17:33:26 -0000
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
-> Finish the conversion from commit fe80c0241d
-> ("migration: using trace_ to replace DPRINTF").
+
+Thomas Huth <thuth@redhat.com> writes:
+
+> pci_device.h is not needed at all in allwinner-a10.h, and serial.h
+> is only needed by the corresponding .c file.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-queued.
-
-Thanks.
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
