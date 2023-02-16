@@ -1,79 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pSLfO-0002H7-As
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Feb 2023 12:34:05 -0500
+	id 1pSfGJ-0006CC-JR
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Feb 2023 09:29:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1pSLfI-0002CA-46
- for qemu-trivial@nongnu.org; Wed, 15 Feb 2023 12:33:56 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1pSLfG-0000SW-K1
- for qemu-trivial@nongnu.org; Wed, 15 Feb 2023 12:33:55 -0500
-Received: by mail-wr1-x434.google.com with SMTP id o15so16634416wrc.9
- for <qemu-trivial@nongnu.org>; Wed, 15 Feb 2023 09:33:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DcVGeHtYBRBwgzlnj8UOcf+La3RPbj1Pw6zmXVeuBcc=;
- b=TY7dQXLP+3LKCNRuwKAhQmsMNW6yqGfShnlxc5kciH5j7CHP+SAxHky6xXlncBZX8n
- BSRTzK10dxcoqsQWFT6WpcC4ts45JbA73YMYClqbr8qB8vQM4QPLTySoSrxejp0q3EhB
- OzQYrzzV8cm6EH9EIpXR4FgnxdfxrSN+XZs5wybmiFW4XepspjZZU46ghYGMF5Sc7jQ0
- mFA/6gX52831D1p1t/G9uRZPGG8OyXYpv2TKYP6skVcjNd523BUCP9XAZgLNOqMnmvKq
- +va/iwCGtw5knvxrKiOY7JqgDep8sgKDqLp2xpItOUb7WFnF3Ad/zBZ7m2uDFP30urqx
- 4txQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=DcVGeHtYBRBwgzlnj8UOcf+La3RPbj1Pw6zmXVeuBcc=;
- b=3zB9iYsdkb0D200cr6SFLo5piKQgW1t3uSqLYT/DC7ykoaYaLpfLv/S7zi7ItDnR4d
- sBFYoTtB5oQGFrP06w97X1strqHtubHX48k8ZxCRSzgRbp49SbeK/ziT0De/lBETqjNU
- JkdfyE2lrWEOLhXe7fbpCjZ0v4pPH9fzH2IpK7jhnZctBlaGGIU+HNqFJWuM19AOMJc7
- UvuVp1Mz037kBb8w8HfO/UJVeCENNItfNxonsbwSS/sLOMXPTSB3WbsKlvesF2GQWcAL
- Mnm/9uRozL/utwfjI1QzGfkAX4MFRs0oOTR2oUgz448MkJRbB0XySkuJkk3MThKSotXd
- yZ6w==
-X-Gm-Message-State: AO0yUKWcTkD0nrEoXUyuGAbIF2ni1hCspGP/mcyS1oRc4DNQduTKJy5m
- hdLIRJqPmD/1s215RyG/kAoZP6BBsQY69R/x
-X-Google-Smtp-Source: AK7set+YVSC2ETEfLUAdM7ZmVXyP2J/zSok3OF7fsnYAGSVBSonf4LmvlhvvVw86fx22TDcCI9+cNA==
-X-Received: by 2002:adf:ee92:0:b0:2c3:ed68:5600 with SMTP id
- b18-20020adfee92000000b002c3ed685600mr2446540wro.38.1676482433071; 
- Wed, 15 Feb 2023 09:33:53 -0800 (PST)
-Received: from zen.linaroharston ([85.9.250.243])
- by smtp.gmail.com with ESMTPSA id
- c5-20020a5d4cc5000000b002c558869934sm8186388wrt.81.2023.02.15.09.33.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Feb 2023 09:33:52 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 5E55E1FFB7;
- Wed, 15 Feb 2023 17:33:52 +0000 (GMT)
-References: <20230215153451.30626-1-philmd@linaro.org>
-User-agent: mu4e 1.9.20; emacs 29.0.60
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] accel/xen: Remove dead code
-Date: Wed, 15 Feb 2023 17:33:48 +0000
-In-reply-to: <20230215153451.30626-1-philmd@linaro.org>
-Message-ID: <87sff696kf.fsf@linaro.org>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pSfGH-0006AK-5q
+ for qemu-trivial@nongnu.org; Thu, 16 Feb 2023 09:29:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pSfGF-00018H-5q
+ for qemu-trivial@nongnu.org; Thu, 16 Feb 2023 09:29:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676557761;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=NuGcz7UvG3kUxfW3zrHa2a+zSs661yz2THSIVxkHVFY=;
+ b=GUZEs7p2hN/2UpvLgGFN1W9NyhCp2NXeHY3TToAmg+/uWSx6VLdP+9ctvCNAV6q5pvxmmc
+ jHhdKwmavTU7ILDq6zVhCShUh288orSkv9xKgmegHTJQ7UCqEVZ+hTw1nRC5/BMparzaug
+ 4RvdHuR8wfaQcp4HLNZpw8NzvC4i7BU=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-284-Q7MNVhiIPF-y_sz2bg9dMg-1; Thu, 16 Feb 2023 09:29:18 -0500
+X-MC-Unique: Q7MNVhiIPF-y_sz2bg9dMg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E14221C09048;
+ Thu, 16 Feb 2023 14:29:17 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.233])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2A0752026D4B;
+ Thu, 16 Feb 2023 14:29:17 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2] Do not include hw/hw.h if it is not necessary
+Date: Thu, 16 Feb 2023 15:29:15 +0100
+Message-Id: <20230216142915.304481-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x434.google.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,19 +63,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Feb 2023 17:33:56 -0000
+X-List-Received-Date: Thu, 16 Feb 2023 14:29:25 -0000
 
+hw.h only contains the protoype of one function nowadays, hw_error(),
+so all files that do not use this function anymore also do not need
+to include this header anymore.
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2:
+ - Add .c files, too (thanks to Philippe for the hint)
+ - Changed the subject of the patch (was: "Do not include hw.h from headers")
 
-> Unused since introduction in commit 04b0de0ee8
-> ("xen: factor out common functions").
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+ include/hw/ssi/ibex_spi_host.h          | 1 -
+ include/hw/tricore/tricore_testdevice.h | 1 -
+ hw/pci-host/mv64361.c                   | 1 -
+ hw/ppc/pegasos2.c                       | 1 -
+ hw/sensor/dps310.c                      | 1 -
+ 5 files changed, 5 deletions(-)
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+diff --git a/include/hw/ssi/ibex_spi_host.h b/include/hw/ssi/ibex_spi_host.h
+index 8089cc1c31..5bd5557b9a 100644
+--- a/include/hw/ssi/ibex_spi_host.h
++++ b/include/hw/ssi/ibex_spi_host.h
+@@ -28,7 +28,6 @@
+ #define IBEX_SPI_HOST_H
+ 
+ #include "hw/sysbus.h"
+-#include "hw/hw.h"
+ #include "hw/ssi/ssi.h"
+ #include "qemu/fifo8.h"
+ #include "qom/object.h"
+diff --git a/include/hw/tricore/tricore_testdevice.h b/include/hw/tricore/tricore_testdevice.h
+index 1e2b8942ac..8b4fe15f24 100644
+--- a/include/hw/tricore/tricore_testdevice.h
++++ b/include/hw/tricore/tricore_testdevice.h
+@@ -19,7 +19,6 @@
+ #define HW_TRICORE_TESTDEVICE_H
+ 
+ #include "hw/sysbus.h"
+-#include "hw/hw.h"
+ 
+ #define TYPE_TRICORE_TESTDEVICE "tricore_testdevice"
+ #define TRICORE_TESTDEVICE(obj) \
+diff --git a/hw/pci-host/mv64361.c b/hw/pci-host/mv64361.c
+index f43f33fbd9..298564f1f5 100644
+--- a/hw/pci-host/mv64361.c
++++ b/hw/pci-host/mv64361.c
+@@ -11,7 +11,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+-#include "hw/hw.h"
+ #include "hw/sysbus.h"
+ #include "hw/pci/pci_device.h"
+ #include "hw/pci/pci_host.h"
+diff --git a/hw/ppc/pegasos2.c b/hw/ppc/pegasos2.c
+index a9563f4fb2..7cc375df05 100644
+--- a/hw/ppc/pegasos2.c
++++ b/hw/ppc/pegasos2.c
+@@ -10,7 +10,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
+-#include "hw/hw.h"
+ #include "hw/ppc/ppc.h"
+ #include "hw/sysbus.h"
+ #include "hw/pci/pci_host.h"
+diff --git a/hw/sensor/dps310.c b/hw/sensor/dps310.c
+index d60a18ac41..addee99b19 100644
+--- a/hw/sensor/dps310.c
++++ b/hw/sensor/dps310.c
+@@ -9,7 +9,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+-#include "hw/hw.h"
+ #include "hw/i2c/i2c.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+-- 
+2.31.1
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 
