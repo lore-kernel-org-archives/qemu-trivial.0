@@ -1,79 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pU7CH-0001ZZ-BD
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Feb 2023 09:31:17 -0500
+	id 1pU7Vw-0005ig-P2
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Feb 2023 09:51:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
- id 1pU7CF-0001Vi-ST; Mon, 20 Feb 2023 09:31:15 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pU7Vv-0005iQ-RH
+ for qemu-trivial@nongnu.org; Mon, 20 Feb 2023 09:51:35 -0500
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
- id 1pU7CD-0008ES-3U; Mon, 20 Feb 2023 09:31:14 -0500
-Received: by mail-wr1-x432.google.com with SMTP id l25so1021840wrb.3;
- Mon, 20 Feb 2023 06:31:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:organization:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:from:from:to:cc:subject:date:message-id:reply-to;
- bh=uapwYjG86j09Ao3mvRI6hLJtSjzf0Mx1ain+YxVd2BI=;
- b=hSQTdGUJEXGKq5Wud5TAYYDkn8KABInLFUYE+YusrDV5Ovf+HsD1rOdu/OnXW7yA9Y
- eLXGYOLqkjZwaniw06Fn35BRstiJPQqPptcg+lPynDycV+nnITZTXrDlzT9zq7VLHQgl
- 2NVvHbT+7iwVFKKFHGEk4JpNEEYReR/QAVNqh4USvu9GLyKxDHEYmpd+hQ+qiQvxWkSe
- bKtYvnnPls0hz5vSBMA7BtFrZb/wCyFT7zTjubhQF6XYPx7p/3fwQGq8c/oUna51Q/Oc
- 6iSm3PD/6+OHGjU0yeR+6tu1RGdsff/OGIn/FeV/Z/0K4qE1Y3xAWqY90dx31HrYwWSM
- CDlQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pU7Vu-0004gQ-Dy
+ for qemu-trivial@nongnu.org; Mon, 20 Feb 2023 09:51:35 -0500
+Received: by mail-pl1-x62a.google.com with SMTP id z2so1795072plf.12
+ for <qemu-trivial@nongnu.org>; Mon, 20 Feb 2023 06:51:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=OOqOv0S4AmruzS46bC7oAarcPy0QZ0WNgZoeBUtXMyE=;
+ b=kCw9gxkV3XUyAeW640WEPBn0SHim7nUUtaFFPTvZly9oULgDUrUn8Bh4GmnKzyCmI6
+ A5baRoJq+nRTcBktt6yyUDKe8lWN4R3zWYYaECXhKvDUd1nt03FxHDam60LJzBr7h1L+
+ wY3xSWkJceULw2dk8qqmEeEwgxxeiiqh8gfBbtbQTmM2fLTzQsgH4yN1/5wE1o0kY29J
+ VyB2fv9vbZW/8+036a5K/eHmBlflZaxcD4TF7IZItjrhWxmpgHkwth4F/Tp3jzdJ5hUm
+ AvrcS1G0f2phTOFos49j7kylxGKBf2grYrFxBfuilJxcHvgDZg+A0rGZEDoqWuwt8HB8
+ knnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:organization:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:from:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uapwYjG86j09Ao3mvRI6hLJtSjzf0Mx1ain+YxVd2BI=;
- b=NNxQDcrS+xmkkC1rZf1NU/lEphz4WzVZ2ekuA3mNfbnkiOhmyJrnDH5d/73z60pj0j
- 6NPKpk3LQsR3uZCttFGrEmmVgTa5eTRzQOluaSN/NxJv/5ERGXEL/HzCUBPcFs0ykDJY
- B3Rft0pzMBsCCnUxuxKsl+1JmiHF4xcMq32JYvwOQ9vx2thRRAYWbntXtPI7QymRqBrT
- VP0hhfsA5hKcRaFDM9GJ18BWLVBKGm3l27GxROKi48Mxoh4YIfo7KtulSzFLkzkTnFNW
- swRRwwjDM6LPPcE7e0F41tWEVQPP0UJRjtWQt9S6i3tm1krbNparD88S2dBtLHZknx2U
- iuLg==
-X-Gm-Message-State: AO0yUKX32g4iBEi3wV6vcASHVZAHLj3TeIZBLut0QNfcTHnmys4wBT58
- VPedRytn6g2Fxm/VRkuYZC0=
-X-Google-Smtp-Source: AK7set/rskOGDs/Z2znmzqCCaAutsqAyx0x+1Ja7sEXGjK57+P5aqoHZuUBPoOyvYEvouv1K55YXtQ==
-X-Received: by 2002:a5d:4cc7:0:b0:2c6:5168:7785 with SMTP id
- c7-20020a5d4cc7000000b002c651687785mr1520329wrt.28.1676903470855; 
- Mon, 20 Feb 2023 06:31:10 -0800 (PST)
-Received: from [10.85.37.29] (54-240-197-224.amazon.com. [54.240.197.224])
- by smtp.gmail.com with ESMTPSA id
- a17-20020adffad1000000b002c54e26bca5sm5769962wrs.49.2023.02.20.06.31.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Feb 2023 06:31:10 -0800 (PST)
-From: Paul Durrant <xadimgnik@gmail.com>
-X-Google-Original-From: Paul Durrant <paul@xen.org>
-Message-ID: <44b7cee5-5a8a-44fd-7cd9-e50864a6dfa8@xen.org>
-Date: Mon, 20 Feb 2023 14:31:09 +0000
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=OOqOv0S4AmruzS46bC7oAarcPy0QZ0WNgZoeBUtXMyE=;
+ b=7GVfzEh3LJ5qrMpq3RtzTR/EF2M5ltS+6XqKUQrukqRyBF5SaCsmKmnDpqMCak3u2+
+ eJWvccBQGwFAadoi712dqeIBYXR9QXbLsz9wegv2pmh4vcA+NtoHaguWHowhvk+GpYMc
+ 7MB+Udv3qUYQlmjF6mf4qkOmetUt/eVOVbAzbd87FjatjB9rLWfhqwdVVqhdd3WrFRCh
+ fgEHpwboaGCahzy4SWu1wMCWxMr40cvmRBNUvjf/BLr4rzEZz5gYUHfQIKx3tJ/KG6lj
+ TLCX2kCk3Wyrx3T1ClxJ2XusqzGP5SzHzoZW11Djmxt/PGwqt99uRRKdSggGbH9Quw0E
+ ahnQ==
+X-Gm-Message-State: AO0yUKXmAO8eOI7/PGvgBnq9gXgC13DXDs3T8Q3Qv1MWViWfLs83QUE4
+ iUi2+dCSY6hKjP8wVrRuhKlg/oORn2TKfn/oia/pPQ==
+X-Google-Smtp-Source: AK7set83ADB1IJfstA3oP75b2tQ5V6yysJiReOLVIIuCoVUaM9J9CLlqXi9pZ5RJxs5679TDiqg3K0pdmaeNRVT7b4Q=
+X-Received: by 2002:a17:90b:5109:b0:233:dcb5:ee15 with SMTP id
+ sc9-20020a17090b510900b00233dcb5ee15mr938178pjb.92.1676904692955; Mon, 20 Feb
+ 2023 06:51:32 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Reply-To: paul@xen.org
-Subject: Re: [PATCH] accel/xen: Remove dead code
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Anthony Perard <anthony.perard@citrix.com>,
- Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org,
+References: <20230215152233.210024-1-thuth@redhat.com>
+In-Reply-To: <20230215152233.210024-1-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Feb 2023 14:51:21 +0000
+Message-ID: <CAFEAcA9hRNqdvd99ZwXiTzJ+ChwSmrV+ukuNaZS08Fwmcr8RZA@mail.gmail.com>
+Subject: Re: [PATCH] include/hw/arm/allwinner-a10.h: Remove superfluous
+ includes from the header
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
  qemu-trivial@nongnu.org
-References: <20230215153451.30626-1-philmd@linaro.org>
-Organization: Xen Project
-In-Reply-To: <20230215153451.30626-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=xadimgnik@gmail.com; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -87,18 +76,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Feb 2023 14:31:16 -0000
+X-List-Received-Date: Mon, 20 Feb 2023 14:51:36 -0000
 
-On 15/02/2023 15:34, Philippe Mathieu-Daudé wrote:
-> Unused since introduction in commit 04b0de0ee8
-> ("xen: factor out common functions").
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Wed, 15 Feb 2023 at 15:22, Thomas Huth <thuth@redhat.com> wrote:
+>
+> pci_device.h is not needed at all in allwinner-a10.h, and serial.h
+> is only needed by the corresponding .c file.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   accel/xen/xen-all.c | 10 ----------
->   1 file changed, 10 deletions(-)
-> 
+>  include/hw/arm/allwinner-a10.h | 2 --
+>  hw/arm/allwinner-a10.c         | 1 +
+>  2 files changed, 1 insertion(+), 2 deletions(-)
 
-Acked-by: Paul Durrant <paul@xen.org>
+Applied to target-arm.next, thanks.
 
+-- PMM
 
