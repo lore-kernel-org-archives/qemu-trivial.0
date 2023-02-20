@@ -1,70 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pT7X1-0000O5-PD
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2023 15:40:35 -0500
+	id 1pU7CH-0001ZZ-BD
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Feb 2023 09:31:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
- id 1pT7Wy-0000LT-KV; Fri, 17 Feb 2023 15:40:32 -0500
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+ (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
+ id 1pU7CF-0001Vi-ST; Mon, 20 Feb 2023 09:31:15 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
- id 1pT7Wt-0000rq-ES; Fri, 17 Feb 2023 15:40:31 -0500
-Received: by mail-qt1-x831.google.com with SMTP id l23so1914299qtj.1;
- Fri, 17 Feb 2023 12:40:25 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
+ id 1pU7CD-0008ES-3U; Mon, 20 Feb 2023 09:31:14 -0500
+Received: by mail-wr1-x432.google.com with SMTP id l25so1021840wrb.3;
+ Mon, 20 Feb 2023 06:31:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=tUyuG/CRTSQnQCWXCu0mkyQIzHGiIdCBSGldULbzDRE=;
- b=GLyFXytDU/3BSAswHFdtOsELDH1MwRB8wzgc9tKlqn1CR+ZriXdAsGCFlUhkFOK3cw
- ZlmHWJMydGdD+Me2I8lMX00r1w0xxW0vUF+118JfnDO6lB/jkZegrRULgWpDfOk44Aml
- BsGLZL23moO4/lf/vHxPLA5YoMIi5loxOI4NlauJpgMRpYtPe1vigc5Y6Tv/8P60+lhU
- 0JTiTzKP8ygOPY5gw0xp6NkltcbEkA+owWEw3OJSmmrLkbbyfplsB1Sm1Lekw2CN5TqI
- tTcGsoG7ymgSic5RgFjG9J4ix25INPz2Vnq56FrQVmAVcqkIowHB0fS0xgfNaWvXG+iV
- Yr1g==
+ h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=uapwYjG86j09Ao3mvRI6hLJtSjzf0Mx1ain+YxVd2BI=;
+ b=hSQTdGUJEXGKq5Wud5TAYYDkn8KABInLFUYE+YusrDV5Ovf+HsD1rOdu/OnXW7yA9Y
+ eLXGYOLqkjZwaniw06Fn35BRstiJPQqPptcg+lPynDycV+nnITZTXrDlzT9zq7VLHQgl
+ 2NVvHbT+7iwVFKKFHGEk4JpNEEYReR/QAVNqh4USvu9GLyKxDHEYmpd+hQ+qiQvxWkSe
+ bKtYvnnPls0hz5vSBMA7BtFrZb/wCyFT7zTjubhQF6XYPx7p/3fwQGq8c/oUna51Q/Oc
+ 6iSm3PD/6+OHGjU0yeR+6tu1RGdsff/OGIn/FeV/Z/0K4qE1Y3xAWqY90dx31HrYwWSM
+ CDlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=tUyuG/CRTSQnQCWXCu0mkyQIzHGiIdCBSGldULbzDRE=;
- b=q/+thdLPOODi9FUW7xvZVU/a49MuZHc1gxbTeBERnavKllQggagkyU+FaVrl7IjeIl
- KhoCRytxFUzo6LC++jcPEtPcIVaRPoiKCeKzydENTrXLrMmvwNrpZyIVpt1nLSZBo6wo
- 8blmeJ4At41GDO1IBCis761h6InVyqZUut8eHyJSEH1AGrGXwV32YnnnDdZj18zkmcYU
- AOlv5i7bywFzCWdqX9W4GpVz2wXDkotIqURru6hV9G0ljw7Vr21O9c8JA9fkX4aikmTy
- VxRDdq0h86HeSSmK3xq1Vkcwz/LBnk+QIYrOSX5ukoZ43mYZLpnfiLHuH+Z7q2aqZVM0
- nKNg==
-X-Gm-Message-State: AO0yUKWDJe5Rm4P0UCgn9/o6QdFx+yiR5Jt0AnxMhYXl6Usn9vm+1xqW
- p79AheXNQPuXg46oONAAhiegdgIa1vC52w==
-X-Google-Smtp-Source: AK7set8LYT3/ODu1GLwPoHIRlbp21jXV+4sfRnKRcTqy2BcCUQ5azYuMOY/i60nBbWtmV6Z9y/3FXA==
-X-Received: by 2002:ac8:5742:0:b0:3b8:6dc8:a9b5 with SMTP id
- 2-20020ac85742000000b003b86dc8a9b5mr11528936qtx.34.1676666424970; 
- Fri, 17 Feb 2023 12:40:24 -0800 (PST)
-Received: from debian.hsd1.ma.comcast.net ([2601:182:cc00:77b0::2bf5])
+ h=content-transfer-encoding:in-reply-to:organization:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:from:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=uapwYjG86j09Ao3mvRI6hLJtSjzf0Mx1ain+YxVd2BI=;
+ b=NNxQDcrS+xmkkC1rZf1NU/lEphz4WzVZ2ekuA3mNfbnkiOhmyJrnDH5d/73z60pj0j
+ 6NPKpk3LQsR3uZCttFGrEmmVgTa5eTRzQOluaSN/NxJv/5ERGXEL/HzCUBPcFs0ykDJY
+ B3Rft0pzMBsCCnUxuxKsl+1JmiHF4xcMq32JYvwOQ9vx2thRRAYWbntXtPI7QymRqBrT
+ VP0hhfsA5hKcRaFDM9GJ18BWLVBKGm3l27GxROKi48Mxoh4YIfo7KtulSzFLkzkTnFNW
+ swRRwwjDM6LPPcE7e0F41tWEVQPP0UJRjtWQt9S6i3tm1krbNparD88S2dBtLHZknx2U
+ iuLg==
+X-Gm-Message-State: AO0yUKX32g4iBEi3wV6vcASHVZAHLj3TeIZBLut0QNfcTHnmys4wBT58
+ VPedRytn6g2Fxm/VRkuYZC0=
+X-Google-Smtp-Source: AK7set/rskOGDs/Z2znmzqCCaAutsqAyx0x+1Ja7sEXGjK57+P5aqoHZuUBPoOyvYEvouv1K55YXtQ==
+X-Received: by 2002:a5d:4cc7:0:b0:2c6:5168:7785 with SMTP id
+ c7-20020a5d4cc7000000b002c651687785mr1520329wrt.28.1676903470855; 
+ Mon, 20 Feb 2023 06:31:10 -0800 (PST)
+Received: from [10.85.37.29] (54-240-197-224.amazon.com. [54.240.197.224])
  by smtp.gmail.com with ESMTPSA id
- l28-20020ac8459c000000b003b9bf862c04sm3952363qtn.55.2023.02.17.12.40.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Feb 2023 12:40:24 -0800 (PST)
-From: Dinah Baum <dinahbaum123@gmail.com>
-To: dinahbaum123@gmail.com
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- qemu-devel@nongnu.org (open list:All patches CC here)
-Subject: [PATCH v3] configure: Add 'mkdir build' check
-Date: Fri, 17 Feb 2023 15:40:06 -0500
-Message-Id: <20230217204007.371525-1-dinahbaum123@gmail.com>
-X-Mailer: git-send-email 2.30.2
+ a17-20020adffad1000000b002c54e26bca5sm5769962wrs.49.2023.02.20.06.31.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 20 Feb 2023 06:31:10 -0800 (PST)
+From: Paul Durrant <xadimgnik@gmail.com>
+X-Google-Original-From: Paul Durrant <paul@xen.org>
+Message-ID: <44b7cee5-5a8a-44fd-7cd9-e50864a6dfa8@xen.org>
+Date: Mon, 20 Feb 2023 14:31:09 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Reply-To: paul@xen.org
+Subject: Re: [PATCH] accel/xen: Remove dead code
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Anthony Perard <anthony.perard@citrix.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org,
+ qemu-trivial@nongnu.org
+References: <20230215153451.30626-1-philmd@linaro.org>
+Organization: Xen Project
+In-Reply-To: <20230215153451.30626-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::831;
- envelope-from=dinahbaum123@gmail.com; helo=mail-qt1-x831.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=xadimgnik@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,42 +87,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Feb 2023 20:40:32 -0000
+X-List-Received-Date: Mon, 20 Feb 2023 14:31:16 -0000
 
-QEMU configure script goes into an infinite error printing loop
-when in read only directory due to 'build' dir never being created.
+On 15/02/2023 15:34, Philippe Mathieu-Daudé wrote:
+> Unused since introduction in commit 04b0de0ee8
+> ("xen: factor out common functions").
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   accel/xen/xen-all.c | 10 ----------
+>   1 file changed, 10 deletions(-)
+> 
 
-Checking if 'mkdir dir' succeeds prevents this error.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/321
-Signed-off-by: Dinah Baum <dinahbaum123@gmail.com>
----
-Changes since v2:
-Updated error message
-Reverted changes to 'help' command
-
- configure | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/configure b/configure
-index 00415f0b48..784f9d18a5 100755
---- a/configure
-+++ b/configure
-@@ -31,7 +31,12 @@ then
-         fi
-     fi
- 
--    mkdir build
-+    if ! mkdir build || ! touch $MARKER
-+    then
-+        echo "ERROR: Could not create ./build directory. Check the permissions on
-+            your source directory, or try doing an out-of-tree build."
-+        exit 1
-+    fi
-     touch $MARKER
- 
-     cat > GNUmakefile <<'EOF'
--- 
-2.30.2
+Acked-by: Paul Durrant <paul@xen.org>
 
 
