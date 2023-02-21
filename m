@@ -1,57 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pUDeQ-00012T-6j
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Feb 2023 16:24:46 -0500
+	id 1pUQU7-0006zl-DN
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2023 06:06:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pUDeO-00011n-SO
- for qemu-trivial@nongnu.org; Mon, 20 Feb 2023 16:24:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pUDeN-0003by-3F
- for qemu-trivial@nongnu.org; Mon, 20 Feb 2023 16:24:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676928282;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=5DO1mZwoAkYPQzfEzo8A1LTayfYDhjbuzjhIRR/8IX4=;
- b=P9swPUY+hEkZBQ4zUDWe+mw/pui+PDvtppDB9E1TB8R5n0HL09sLEMaeIgY/dwPmEUiIbY
- HGWI512mQOHsK5XcAyeozXjPaLNfm47aoxgC9PXg8wkyAY5tu3yODjqpkrMZbx4Qb2hN9D
- DGIEhlo8iY8B4HzOW5hF0QQ+9PEfGYY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-168-nTM0JD-GPsOLNeXQ4_LWzQ-1; Mon, 20 Feb 2023 16:24:38 -0500
-X-MC-Unique: nTM0JD-GPsOLNeXQ4_LWzQ-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6952E85A5A3;
- Mon, 20 Feb 2023 21:24:38 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 430ED492B04;
- Mon, 20 Feb 2023 21:24:38 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 32C7121E6A1F; Mon, 20 Feb 2023 22:24:37 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
+ id 1pUQU2-0006z7-UT; Tue, 21 Feb 2023 06:06:55 -0500
+Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
+ id 1pUQU0-00070E-UW; Tue, 21 Feb 2023 06:06:54 -0500
+Received: by mail-qt1-x834.google.com with SMTP id h19so1139512qtk.7;
+ Tue, 21 Feb 2023 03:06:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=H/7hifj/TdQErbbFrIHWXuABFcNzRKLymVMeIp6GJ6Y=;
+ b=We461EPJApD0WYFZm0Pkot1O9xzonXG/AFtJHl/iWetFJOWVXl0WDfLKV0rPOk2vg2
+ SZQ69wpa9O8LiuXe23awPvU6xNypc3IXy5FbHD30TOzU7JIs732EPpH7QqjjgC/gIXdq
+ Hpitce0fU9OWWAjg+EizyHL1/HJpLJY0Q67pYi9JNqqeMOOJR9sg5eulWhHlBD1eyyzO
+ tskIZfGS2mTfWSHnBAdiY2Q49DmxSEPie7DtgXafdP90akfDjybtCglsmsgiFRVU4Nvu
+ KyvNxGII13V/sjUXyo97OVAn4CC+hyShwsKWVNAnkVznjkV23wpJNF3p21+1Gsom8NAD
+ nwKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=H/7hifj/TdQErbbFrIHWXuABFcNzRKLymVMeIp6GJ6Y=;
+ b=rDHCwz6nV5oMbm2NKeRo/uN29Lrxl0Q6qRocraiUUynr7srk8+wzE1CkPz087UStrn
+ on3kG++Gk2kJPLZN4Pqn2mcdaUniBJ86+ltvxd+gjI4nfyqK5rEixnXQWpCk+0Y5bxud
+ 1vpQN0CFhO8eyIRe8uNlGqwI7W3iLpbUo+OYPyRHzqjRpXQcRsikzBs2JZ+EYjaGU04u
+ n5MLDU7zVg3VuXo4ZxGT5s+OXD/CZrjzL4UPex2ncMIgfZZ57R/QoHm2zGEN6JbxLeEh
+ cs9/EmL2nQnV3B/95STuYzloZFQv8f+BwU0VzMBRBYmRRxEC/xx0AY62l/e1i2+QKW47
+ US3A==
+X-Gm-Message-State: AO0yUKVWy4UdLxk8qW7XkTlAcefRjOpOQgg43+ccKqE/TTbyC7HFfXkN
+ RMuwtq96xWiNqZ5tX9MBoR4IWTnbi0Hlsw==
+X-Google-Smtp-Source: AK7set9AR23O2xW+O2Nvueep48RUF/Y6yuFw3RAt9IGpOeOVInX529pgehHFyrHG7iC6vklrir3sAg==
+X-Received: by 2002:ac8:5c08:0:b0:3b8:63fa:11be with SMTP id
+ i8-20020ac85c08000000b003b863fa11bemr5227631qti.66.1676977610905; 
+ Tue, 21 Feb 2023 03:06:50 -0800 (PST)
+Received: from debian.hsd1.ma.comcast.net ([2601:182:cc00:77b0::675])
+ by smtp.gmail.com with ESMTPSA id
+ q65-20020ae9dc44000000b0073bb50640d8sm7423871qkf.71.2023.02.21.03.06.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 21 Feb 2023 03:06:50 -0800 (PST)
+From: Dinah Baum <dinahbaum123@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, bwidawsk@kernel.org, Jonathan.Cameron@Huawei.com
-Subject: [PATCH] MAINTAINERS: Remove CXL maintainer Ben Widawsky
-Date: Mon, 20 Feb 2023 22:24:37 +0100
-Message-Id: <20230220212437.1462314-1-armbru@redhat.com>
+Cc: qemu-trivial@nongnu.org, Dinah Baum <dinahbaum123@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v4] configure: Add 'mkdir build' check
+Date: Tue, 21 Feb 2023 06:06:30 -0500
+Message-Id: <20230221110631.4142-1-dinahbaum123@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::834;
+ envelope-from=dinahbaum123@gmail.com; helo=mail-qt1-x834.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -65,32 +79,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Feb 2023 21:24:45 -0000
+X-List-Received-Date: Tue, 21 Feb 2023 11:06:55 -0000
 
-Ben is no longer with intel.  He told me he expected to get back to
-CXL, but it's not happening as quickly as he'd like, and that it's
-best to remove him as maintainer.  So let's do that.
+QEMU configure script goes into an infinite error printing loop
+when in read only directory due to 'build' dir never being created.
 
-Thank you for serving as maintainer, Ben!
+Checking if 'mkdir dir' succeeds prevents this error.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/321
+Signed-off-by: Dinah Baum <dinahbaum123@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS | 1 -
- 1 file changed, 1 deletion(-)
+ configure | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index fd54c1f140..c3e83a1a47 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2630,7 +2630,6 @@ T: git https://gitlab.com/jsnow/qemu.git jobs
- T: git https://gitlab.com/vsementsov/qemu.git block
+diff --git a/configure b/configure
+index cf6db3d551..1ef3e7f77d 100755
+--- a/configure
++++ b/configure
+@@ -31,7 +31,12 @@ then
+         fi
+     fi
  
- Compute Express Link
--M: Ben Widawsky <ben.widawsky@intel.com>
- M: Jonathan Cameron <jonathan.cameron@huawei.com>
- S: Supported
- F: hw/cxl/
+-    mkdir build
++    if ! mkdir build || ! touch $MARKER
++    then
++        echo "ERROR: Could not create ./build directory. Check the permissions on"
++        echo "your source directory, or try doing an out-of-tree build."
++        exit 1
++    fi
+     touch $MARKER
+ 
+     cat > GNUmakefile <<'EOF'
 -- 
-2.39.0
+2.30.2
 
 
