@@ -1,59 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pURi0-0003K4-DL
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2023 07:25:25 -0500
+	id 1pURuI-000870-Ka
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2023 07:38:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pURhp-0003JP-Ni
- for qemu-trivial@nongnu.org; Tue, 21 Feb 2023 07:25:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1pURuE-0007yd-R6; Tue, 21 Feb 2023 07:38:03 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pURhm-0002IB-G3
- for qemu-trivial@nongnu.org; Tue, 21 Feb 2023 07:25:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1676982297;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=COUpfO7V0vdDQF1zQcHqVR86UssH2a7JfJT9OjWEai0=;
- b=aou6GURx/FpI2zQLfElmWPHj9Me8926+Wd+UGHDrDZcWueKWaUtGMTdcO16KOM1gbnQxK3
- 5Tjmq9tX3g21N07+BFxscXthkkWcEsYKFCR9wQCfnDlCUQhyxCwF/I+7AfePa0yExBFbfZ
- xtBsHeOkpSVb9qGR+OyF7MXCrHHHyms=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-55-9G5Io1qjM0yASsGI5jDUWQ-1; Tue, 21 Feb 2023 07:24:54 -0500
-X-MC-Unique: 9G5Io1qjM0yASsGI5jDUWQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2709785CBE0;
- Tue, 21 Feb 2023 12:24:54 +0000 (UTC)
-Received: from thuth.com (dhcp-192-205.str.redhat.com [10.33.192.205])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0C997400DB36;
- Tue, 21 Feb 2023 12:24:52 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Steve Sistare <steven.sistare@oracle.com>, Thomas Huth <thuth@redhat.com>
-Subject: [PATCH] qemu-keymap: Silence memory leak warning from Clang's
- sanitizer
-Date: Tue, 21 Feb 2023 13:24:40 +0100
-Message-Id: <20230221122440.612281-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1pURuC-0005LZ-Cy; Tue, 21 Feb 2023 07:38:02 -0500
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.207])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4PLdws01QXz67bmq;
+ Tue, 21 Feb 2023 20:33:00 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.17; Tue, 21 Feb
+ 2023 12:37:44 +0000
+Date: Tue, 21 Feb 2023 12:37:43 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Markus Armbruster <armbru@redhat.com>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, <bwidawsk@kernel.org>
+Subject: Re: [PATCH] MAINTAINERS: Remove CXL maintainer Ben Widawsky
+Message-ID: <20230221123743.000048f3@Huawei.com>
+In-Reply-To: <20230220212437.1462314-1-armbru@redhat.com>
+References: <20230220212437.1462314-1-armbru@redhat.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -66,44 +53,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Feb 2023 12:25:17 -0000
+X-List-Received-Date: Tue, 21 Feb 2023 12:38:03 -0000
 
-When compiling QEMU with "--enable-sanitizers --enable-xkbcommon --cc=clang"
-there is a memory leak warning when running qemu-keymap:
+On Mon, 20 Feb 2023 22:24:37 +0100
+Markus Armbruster <armbru@redhat.com> wrote:
 
- $ ./qemu-keymap -f pc-bios/keymaps/de -l de
+> Ben is no longer with intel.  He told me he expected to get back to
+> CXL, but it's not happening as quickly as he'd like, and that it's
+> best to remove him as maintainer.  So let's do that.
+> 
+> Thank you for serving as maintainer, Ben!
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
- =================================================================
- ==610321==ERROR: LeakSanitizer: detected memory leaks
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
- Direct leak of 136 byte(s) in 1 object(s) allocated from:
-     #0 0x5642830d0820 in __interceptor_calloc.part.11 asan_malloc_linux.cpp.o
-     #1 0x7f31873b8d2b in xkb_state_new (/lib64/libxkbcommon.so.0+0x1dd2b) (BuildId: dd32581e2248833243f3f646324ae9b98469f025)
+Thanks for your hard work on getting the whole CXL Qemu emulation
+project off the ground and best wishes for what you have moved on
+to.  Hope you make it back one day!
 
- SUMMARY: AddressSanitizer: 136 byte(s) leaked in 1 allocation(s).
+Thanks,
 
-It can be silenced by properly releasing the "state" again
-after it has been used.
+Jonathan
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- qemu-keymap.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/qemu-keymap.c b/qemu-keymap.c
-index 4095b654a6..229866e004 100644
---- a/qemu-keymap.c
-+++ b/qemu-keymap.c
-@@ -226,6 +226,8 @@ int main(int argc, char *argv[])
- 
-     state = xkb_state_new(map);
-     xkb_keymap_key_for_each(map, walk_map, state);
-+    xkb_state_unref(state);
-+    state = NULL;
- 
-     /* add quirks */
-     fprintf(outfile,
--- 
-2.31.1
+> ---
+>  MAINTAINERS | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index fd54c1f140..c3e83a1a47 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2630,7 +2630,6 @@ T: git https://gitlab.com/jsnow/qemu.git jobs
+>  T: git https://gitlab.com/vsementsov/qemu.git block
+>  
+>  Compute Express Link
+> -M: Ben Widawsky <ben.widawsky@intel.com>
+>  M: Jonathan Cameron <jonathan.cameron@huawei.com>
+>  S: Supported
+>  F: hw/cxl/
 
 
