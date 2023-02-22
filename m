@@ -1,46 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pUgs5-0004NZ-Lo
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2023 23:36:49 -0500
+	id 1pUkNY-0004Wc-Kb
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2023 03:21:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1pUf1N-0002KQ-94; Tue, 21 Feb 2023 21:38:17 -0500
-Received: from mga09.intel.com ([134.134.136.24])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1pUf1K-0002kp-2Z; Tue, 21 Feb 2023 21:38:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677033494; x=1708569494;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=XKtWyhhMsv4S7QNMfNOSoCuHBO1JeUzgcxNUGHVZ7L8=;
- b=KjG5GleC/uFkb02VzDzYPXwRGIPI1jG5IA1Dcn42FWrskMLErTLZe5Af
- G5uN719ofR0Mi2Q7jMdF+M5Glf6Uk72NdPcwmW/Uk5UedHi09k2qlUBbi
- Kiz3L2mQpofzj4WDzaOUnbh+kHWq9Yndg442tVLXCTfT1MXl91X3fm0a5
- zsESqtZPOM94sGS2I3q87xBVryDNVVdOCuTwvQII4K2wdTkOfHyvY22IF
- /7kDuEaUPfLARa8hWsR5pGufz43033F6GjnhNb0EQVuVvzBDz8FxzNjWG
- ZXr8k6ZFFQbJ3IO+hUsWBi42ki3Wf/29o6K+ccbpkqrTqIXBzDJTn/s5x w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10628"; a="334178645"
-X-IronPort-AV: E=Sophos;i="5.97,317,1669104000"; d="scan'208";a="334178645"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Feb 2023 18:38:11 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10628"; a="673937160"
-X-IronPort-AV: E=Sophos;i="5.97,317,1669104000"; d="scan'208";a="673937160"
-Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.254.208.234])
- ([10.254.208.234])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Feb 2023 18:38:07 -0800
-Message-ID: <87e11e16-f9ad-bfb4-cc1c-d5288741ded3@intel.com>
-Date: Wed, 22 Feb 2023 10:38:04 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.8.0
-Subject: Re: [PATCH v4 6/9] hw/i386/pc: Initialize ram_memory variable directly
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pUkNX-0004WO-Af; Wed, 22 Feb 2023 03:21:31 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pUkNV-0005CD-9N; Wed, 22 Feb 2023 03:21:30 -0500
+Received: by mail-ed1-x535.google.com with SMTP id x10so26229037edd.13;
+ Wed, 22 Feb 2023 00:21:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=fRilIlHbt1tRuzNnHtzhblIoDQU4aWjMmETXbO/TVvo=;
+ b=P5wYetqkSy+rB9jJjoYrDnP6l8Bk/GREvy2zATjU5B3P8TxwpfbUP4xSin6aHAzR8H
+ R7d4bWxSFSL8WdGXfrnX4ArXOTs58tjlz/T6oFjkS/BNFxwyfOk1nn+wty0xKY5O/0bW
+ mFaZ1un0Ob6fQI6ed8OMq4a/d6SOwthTfpPmRlfXIS7uKPiJcQUEWRVUqHaKa2GWp+cR
+ +sDqYuEDzDRoUvzOIaOIXEaf8c2ijHemZ7NjaR9wtsGoX08+uYmlqPqKGITNvvkj5lbd
+ +qjgwxIaoQdgLfiqhZvbPIp+gqW72xvTZ7N18itg3hzsmCS1IyRf6kZ+7S/n4JHpO94a
+ Jkpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=fRilIlHbt1tRuzNnHtzhblIoDQU4aWjMmETXbO/TVvo=;
+ b=vLtm3Zwz+lvL5cZ/ixb9YLCiNpPh1+qnIeAiYv5+VV726v9ygHPbOQpI+tQBoG6kN7
+ AGP093v2buLVLwBnuN1ZMDhLdQ5i4d+pOdizq/8K0gRxg4YPQxbbvgPFiZ3QriZ8gVEV
+ +8w53mGarvGofKN4Zs7R/GbaKXFY1/MUdD7pvDpV/lwACJkHAOMRHdHDROMSUIleMtYX
+ A648Frrm7PAf37Yq5JTEfTDcO6geYejG4sa/J6sux+0Vk0T7oPS/6Ys6vIaRV+Q2GJm2
+ pal3bIoeVk5k/VjqZDe5RgpiUP3SMEcw4vfXJBzHEUzoJ/F3XCz/f5sYGATrj5B288eG
+ om6w==
+X-Gm-Message-State: AO0yUKVCIsrZnYlQcwpVxdKhIvpTwC4OtrDMxX9i5iObnv1d+/ZuC8zV
+ 5kQHSA8m+IW3GTaiFH8T9es=
+X-Google-Smtp-Source: AK7set/moUrrgbVAIj6iwtQhNhsFScHQQWkLGswhIzyotG4YG7SUKnTXCuNDDfoan4FmfBrYL5begQ==
+X-Received: by 2002:a17:907:7d90:b0:8e9:9e13:9290 with SMTP id
+ oz16-20020a1709077d9000b008e99e139290mr148072ejc.27.1677054085735; 
+ Wed, 22 Feb 2023 00:21:25 -0800 (PST)
+Received: from ?IPv6:::1?
+ (p200300faaf06ee001c45576075939c6f.dip0.t-ipconnect.de.
+ [2003:fa:af06:ee00:1c45:5760:7593:9c6f])
+ by smtp.gmail.com with ESMTPSA id
+ kq9-20020a170906abc900b008d9c518a318sm2906297ejb.142.2023.02.22.00.21.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 22 Feb 2023 00:21:25 -0800 (PST)
+Date: Wed, 22 Feb 2023 08:21:16 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Xiaoyao Li <xiaoyao.li@intel.com>, qemu-devel@nongnu.org
+CC: Paolo Bonzini <pbonzini@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -50,25 +60,28 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
  Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_6/9=5D_hw/i386/pc=3A_Init?=
+ =?US-ASCII?Q?ialize_ram=5Fmemory_variable_directly?=
+In-Reply-To: <87e11e16-f9ad-bfb4-cc1c-d5288741ded3@intel.com>
 References: <20230213162004.2797-1-shentey@gmail.com>
  <20230213162004.2797-7-shentey@gmail.com>
-From: Xiaoyao Li <xiaoyao.li@intel.com>
-In-Reply-To: <20230213162004.2797-7-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=134.134.136.24; envelope-from=xiaoyao.li@intel.com;
- helo=mga09.intel.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.999, NICE_REPLY_A=-0.095,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <87e11e16-f9ad-bfb4-cc1c-d5288741ded3@intel.com>
+Message-ID: <356429F3-BC92-4EC0-AC57-036606A96131@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 21 Feb 2023 23:36:47 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,43 +93,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Feb 2023 02:38:18 -0000
+X-List-Received-Date: Wed, 22 Feb 2023 08:21:31 -0000
 
-On 2/14/2023 12:20 AM, Bernhard Beschow wrote:
-> Going through pc_memory_init() seems quite complicated for a simple
-> assignment.
-> 
 
-...
 
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 5bde4533cc..00ba725656 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -143,6 +143,7 @@ static void pc_init1(MachineState *machine,
->       if (xen_enabled()) {
->           xen_hvm_init_pc(pcms, &ram_memory);
->       } else {
-> +        ram_memory = machine->ram;
->           if (!pcms->max_ram_below_4g) {
->               pcms->max_ram_below_4g = 0xe0000000; /* default: 3.5G */
->           }
-> @@ -205,8 +206,7 @@ static void pc_init1(MachineState *machine,
->   
->       /* allocate ram and load rom/bios */
->       if (!xen_enabled()) {
-> -        pc_memory_init(pcms, system_memory,
-> -                       rom_memory, &ram_memory, hole64_size);
+Am 22=2E Februar 2023 02:38:04 UTC schrieb Xiaoyao Li <xiaoyao=2Eli@intel=
+=2Ecom>:
+>On 2/14/2023 12:20 AM, Bernhard Beschow wrote:
+>> Going through pc_memory_init() seems quite complicated for a simple
+>> assignment=2E
+>>=20
+>
+>=2E=2E=2E
+>
+>> diff --git a/hw/i386/pc_piix=2Ec b/hw/i386/pc_piix=2Ec
+>> index 5bde4533cc=2E=2E00ba725656 100644
+>> --- a/hw/i386/pc_piix=2Ec
+>> +++ b/hw/i386/pc_piix=2Ec
+>> @@ -143,6 +143,7 @@ static void pc_init1(MachineState *machine,
+>>       if (xen_enabled()) {
+>>           xen_hvm_init_pc(pcms, &ram_memory);
 
-IMHO, it seems more proper to put
+In Xen mode, ram_memory is initialized here and machine->ram isn't used at=
+ all=2E
 
-+        ram_memory = machine->ram;
+>>       } else {
+>> +        ram_memory =3D machine->ram;
 
-here rather than above.
+The idea of moving the assignment here is to make the code more symmetric =
+to Xen and to establish the invariant of ram_memory being initialized after=
+ this if-else block=2E IOW one shouldn't need to use machine->ram directly =
+after this point=2E
 
-> +        pc_memory_init(pcms, system_memory, rom_memory, hole64_size);
->       } else {
->           pc_system_flash_cleanup_unused(pcms);
->           if (machine->kernel_filename != NULL) {
+>>           if (!pcms->max_ram_below_4g) {
+>>               pcms->max_ram_below_4g =3D 0xe0000000; /* default: 3=2E5G=
+ */
+>>           }
+>> @@ -205,8 +206,7 @@ static void pc_init1(MachineState *machine,
+>>         /* allocate ram and load rom/bios */
+>>       if (!xen_enabled()) {
+>> -        pc_memory_init(pcms, system_memory,
+>> -                       rom_memory, &ram_memory, hole64_size);
+>
+>IMHO, it seems more proper to put
+>
+>+        ram_memory =3D machine->ram;
+>
+>here rather than above=2E
 
+This patch allowed for further cleanup (establishing above invariant) whic=
+h I inlined for simplicity=2E
+
+Do you still see issues here?
+
+Thanks,
+Bernhard
+>
+>> +        pc_memory_init(pcms, system_memory, rom_memory, hole64_size);
+>>       } else {
+>>           pc_system_flash_cleanup_unused(pcms);
+>>           if (machine->kernel_filename !=3D NULL) {
+>
 
