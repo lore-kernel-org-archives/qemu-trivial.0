@@ -1,56 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pUmud-0004un-6c
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2023 06:03:51 -0500
+	id 1pUmwD-0005fh-Uk
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2023 06:05:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUmuX-0004u8-Rj
- for qemu-trivial@nongnu.org; Wed, 22 Feb 2023 06:03:45 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUmw4-0005er-8h
+ for qemu-trivial@nongnu.org; Wed, 22 Feb 2023 06:05:20 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUmuU-0006VW-TY
- for qemu-trivial@nongnu.org; Wed, 22 Feb 2023 06:03:45 -0500
-Received: by mail-wr1-x434.google.com with SMTP id r7so7149705wrz.6
- for <qemu-trivial@nongnu.org>; Wed, 22 Feb 2023 03:03:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUmvz-0006qc-Rh
+ for qemu-trivial@nongnu.org; Wed, 22 Feb 2023 06:05:17 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id o14so5712901wms.1
+ for <qemu-trivial@nongnu.org>; Wed, 22 Feb 2023 03:05:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=zSqbD1vCGG1cLRfDz2eQbVx1XeXdaWKM9P4oNFgGsJU=;
- b=SFXvAsuNrQ9RLTqVJY2efbLfqGsbCQSU9RSXm6PcdbMGjVY3egEzAYpp9LU+cRswqW
- fgKN2koYAAq/2zbXHqFFgNptTm+wMBFIH8E9hj9b+dkLpkFBYuOBT39Fe9VwPQ69gcec
- H0HBQRdw0uzSGzQfGDRlLHKmYbOfxWe3wRcNoi/u6O+esPZ6S9GE/EjxkQBkZyiS53It
- MvVUJxNcJkHb7dQq2SvJIgEbGOH8E4HIGENZkA/UHAsaWluVmyUp3n3R5/dF00ig0qjx
- kYQY3S2aNpxm5XVMyrIaaloUeKgIhbIUA2KSlK9WcodHuUx+BIxQdGppMx82NzhAv1Xz
- usZw==
+ bh=K+kgomDHpkSnrdgmz+gghLUeXTacAChli+ikmvB1LUo=;
+ b=jeBo7V/BvZ89uii38IMjuwBd9Qqt/iNat5XiIMYjxDl9gAuVwN2LDwJiH3c/88EBvg
+ umHBALPMkLDD5O0KvLW6y9ySCXiQ8tUzmf/wQvbGJy9MSLHHvaeWZ4wjXXKyzD7c5KUc
+ WrR0CcPQW3M0isTXl22LU13nvdZrIvQIvDgUChwBUGJ7VPQXKoAr+NJpBDhydqh2GM9/
+ 0JMTqOv0X1pKCUxbSVD9+VT0Pdgpp7lY7ps+GBg26+Eoq/Kr0hejbjWX+g5f/rzky799
+ 77Dot/KfSzdqXiuyCq7/1zIFPiKuKRZxKF5eBPLz4NJnbDlwW2n3B9/rG0az0h3SwdKA
+ puCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zSqbD1vCGG1cLRfDz2eQbVx1XeXdaWKM9P4oNFgGsJU=;
- b=dgvlsK4ziuuAZnZ6B/Fuk2Gubzvgvnr9cwZlzlQlEAhmTX9i9tfvIdD9Q61vKl9Egz
- R/CI8kB/7FoxSOzZxefPBb058aS9kXztnqopmmgapD9xt5KVOjncW1YwFFiYWDdReeZ3
- ErYTxJQOfseerrCL2dODJubLGuOnCH/YTHUTqe1psPPTfnplygzVpcDvuv7G9fFPWIcc
- ltf1sYekFYhANCZgTSoRLPJX1Y446Kz4UMoSnTOrXHhHF6Yo3Gkx6l00ADaIFqxi5IcS
- GlZVzmK/bceTwfnyKtHo8v6VkgyaSImuiJ7b7a0h4OQlCFonWMQ1ajB7Cml6Mt11gxaU
- f2PA==
-X-Gm-Message-State: AO0yUKXPHNGJh+m9JRf6bTIkwkVBmFhZGr9OMzCPbw0NhxDyz5AUz/46
- jALK7FLMBjv7sXBUpo62/oH7Lg==
-X-Google-Smtp-Source: AK7set/eODvoeRbxba4y666mMx434dGR1Z+R7XLfgvc4yxHKlqfLG3qU5XhQRxK9I2AkiufnxYvh5g==
-X-Received: by 2002:a5d:4b81:0:b0:2c5:4de1:ba23 with SMTP id
- b1-20020a5d4b81000000b002c54de1ba23mr6763511wrt.19.1677063821162; 
- Wed, 22 Feb 2023 03:03:41 -0800 (PST)
+ bh=K+kgomDHpkSnrdgmz+gghLUeXTacAChli+ikmvB1LUo=;
+ b=h8dEXqgcABojbaFf5RwI8GXhxkoW/KW1yMQ6lgY77HeAKepPZMYnBLA3Y0riB+lf7q
+ H+HIWE8yvZ6hS2kBoFyJNkA8D5TzXxnqzVnbF3yngQ42JqeWiwhJzs8GdfuFUqDTeBji
+ dKVnktRXWsjIGeFlNaCe5qQJOA9Q/ErTUn6ONZiL7EpqX7AdrsVMINY6SkH7PTHYFl1f
+ LdgYVKq19tBGBbY1MQISgiqV52tg327zjRYgaGncOw1DeTaGJgQZOqxEQ5pWudkqeyOj
+ hxXsymaF4ZJEn6l9BltrnrGVdUMIYB/+pe3HO+s++0hT6hG+gGKbL8mMp+7+acbMGy8k
+ w5Cw==
+X-Gm-Message-State: AO0yUKVzASm2H5qGhM+jexM64bbKDQ6hud4wfum40380mm5c0n2St30s
+ FDiPR52SVEEArPKIQFezElpY/Q==
+X-Google-Smtp-Source: AK7set8zPLnca2t3Z+Q5osLae87Qy8qYK5bb1j0bQx8TxdXStppbdBQR6FYgNnBKUXjTiusht1gYhQ==
+X-Received: by 2002:a05:600c:44c5:b0:3db:bc5:b2ae with SMTP id
+ f5-20020a05600c44c500b003db0bc5b2aemr5865166wmo.41.1677063913460; 
+ Wed, 22 Feb 2023 03:05:13 -0800 (PST)
 Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- j22-20020a5d4536000000b002c5a07e940csm7083448wra.33.2023.02.22.03.03.39
+ z6-20020adfe546000000b002425be3c9e2sm6710223wrm.60.2023.02.22.03.05.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Feb 2023 03:03:40 -0800 (PST)
-Message-ID: <9f80bb33-40e7-fc57-1515-c3764f57da46@linaro.org>
-Date: Wed, 22 Feb 2023 12:03:38 +0100
+ Wed, 22 Feb 2023 03:05:13 -0800 (PST)
+Message-ID: <85e92bb7-161e-41f8-2ea0-bb4f285d19aa@linaro.org>
+Date: Wed, 22 Feb 2023 12:05:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v4 3/9] hw/i386/pc_q35: Reuse machine parameter
+Subject: Re: [PATCH v4 5/9] hw/i386/pc_{q35, piix}: Minimize usage of
+ get_system_memory()
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -64,13 +65,13 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
  Laurent Vivier <lvivier@redhat.com>
 References: <20230213162004.2797-1-shentey@gmail.com>
- <20230213162004.2797-4-shentey@gmail.com>
+ <20230213162004.2797-6-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230213162004.2797-4-shentey@gmail.com>
+In-Reply-To: <20230213162004.2797-6-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -90,33 +91,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Feb 2023 11:03:46 -0000
+X-List-Received-Date: Wed, 22 Feb 2023 11:05:22 -0000
 
-On 13/2/23 17:19, Bernhard Beschow wrote:
+On 13/2/23 17:20, Bernhard Beschow wrote:
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > Reviewed-by: Thomas Huth <thuth@redhat.com>
 > ---
->   hw/i386/pc_q35.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 66cd718b70..dee2b38474 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -218,7 +218,7 @@ static void pc_q35_init(MachineState *machine)
->       pc_memory_init(pcms, get_system_memory(), rom_memory, &ram_memory,
->                      pci_hole64_size);
->   
-> -    object_property_add_child(qdev_get_machine(), "q35", OBJECT(q35_host));
-> +    object_property_add_child(OBJECT(machine), "q35", OBJECT(q35_host));
->       object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_RAM_MEM,
->                                OBJECT(ram_memory), NULL);
->       object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_PCI_MEM,
+>   hw/i386/pc_piix.c | 2 +-
+>   hw/i386/pc_q35.c  | 7 ++++---
+>   2 files changed, 5 insertions(+), 4 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Long term we should duplicate/extract Q35MachineState from
-PCMachineState and add a Q35PCIHost field, then use 
-object_initialize_child; removing this object_property_add_child()
-call.
 
