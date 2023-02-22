@@ -1,59 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pUtVF-0002Ut-7D
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2023 13:06:05 -0500
+	id 1pUvfn-0000TE-RN
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2023 15:25:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pUtVD-0002SV-Id; Wed, 22 Feb 2023 13:06:03 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pUtVB-0001oQ-U3; Wed, 22 Feb 2023 13:06:03 -0500
-Received: by mail-ed1-x534.google.com with SMTP id o12so34369611edb.9;
- Wed, 22 Feb 2023 10:06:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=HXN2YWJ8fsoE2fTAGHa2Bnnq5BnNnF691Tsq1xTjnrk=;
- b=d6pwgQRHUNi91/P5JNTW1ewJGs7gEup0VuZp1Qql+EtK2ycX/49je76OHHyA7V9CRl
- lYnpUelOEadp0DbbJ7woeuajf1oIKwGZEE1mprrt6SoGRO7s5b5UQAqc0VRKCnZoDpWR
- DhgT3b+KgHJKvw8kH6/VCYosF4emLN/ukExeeSr8/O3938SWSwAjVFxPtYgf96QhqM6k
- k6EGT5R6T0QuOLGacFUG/mzFBTwUTyt8v8g3vXLh0Brn86V0cO1tQKm7CUmhpGYj7wta
- dE2JLqJKyQmsRQNzqKYZQhpCKfT7+ivPtfsjd+vM8ro6Veb7XymiBdDZSkNbXJRIUhFN
- LaLw==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pUvfa-0000Qd-SG
+ for qemu-trivial@nongnu.org; Wed, 22 Feb 2023 15:24:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pUvfZ-0002cU-02
+ for qemu-trivial@nongnu.org; Wed, 22 Feb 2023 15:24:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677097492;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+ThRR9ZvME1UJFsVA+tDom+uoEmK2FkyktvVEkOXtTk=;
+ b=LZCLrr1379Om5WdMU3EwhLDYqssi4pO9ZnRkCxRrkif7hO4ifi6vkxeZOpEOtdDx98A+zO
+ 9/LpyQYoi7cP/T8JT6/okCDHRKm3G1lxzpiDmPgx4BdUHSUxAzX4l91pzGL0aSfcpgJMoz
+ pMqyvpffMO6/tc9xkJke/2mfr6k7Syk=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-171-nGkCiXiSPQWYyDnnEoDiOg-1; Wed, 22 Feb 2023 15:24:51 -0500
+X-MC-Unique: nGkCiXiSPQWYyDnnEoDiOg-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ i11-20020a5d584b000000b002c5400f5c76so2031551wrf.14
+ for <qemu-trivial@nongnu.org>; Wed, 22 Feb 2023 12:24:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=HXN2YWJ8fsoE2fTAGHa2Bnnq5BnNnF691Tsq1xTjnrk=;
- b=ViQdk5a3oQvUSzX8hB5RCUiboUGUFMbA4XVYN7oFlSLSYEwbaobL04A9uYJhMN0NRV
- it7Lftfk+OODZ/3EiQzqC/iyI9iV8+FC2QtWgzNXy0lK5OhlM9FYBNJ0INvflDdmnykp
- d2W4x9ss0btO4L0iBT72OV8dhPVIlU3iH5JApDuXxkurUo/rvox0z4Qfm3j5gs1WzgXs
- AYD0CR0hazZVPZfoxFvdj4spmbWHRhrWhyDEq+vnH2C4x6+db3BUNpVvjCPPW4tD5aL4
- mXOlBAeMO4np6hXq/FiZlsq/0Wdqp5Y5lmwoZ4wY5LWPwJsrnMnHLXBbjXJjl2Kb3Ujq
- p2yA==
-X-Gm-Message-State: AO0yUKVpm76q7bXxfHHy5YFOOfix2+qffLaLpqMNclxNXtnH4XhXNeEg
- oDEn9nMvuDdqMKlx25TlvDQ=
-X-Google-Smtp-Source: AK7set+hVkKI5LwDeVwWDyTsC144EdFv21dhLjOQd8CG9ZF6eZB/1DO0oceqRk2crUuMwlbJ52TrYA==
-X-Received: by 2002:a05:6402:329:b0:4ac:bcf9:6d6c with SMTP id
- q9-20020a056402032900b004acbcf96d6cmr8431032edw.36.1677089159932; 
- Wed, 22 Feb 2023 10:05:59 -0800 (PST)
-Received: from ?IPv6:::1?
- (p200300faaf06ee00dc7226af23ff2fba.dip0.t-ipconnect.de.
- [2003:fa:af06:ee00:dc72:26af:23ff:2fba])
- by smtp.gmail.com with ESMTPSA id
- i14-20020a50d74e000000b004acbde59e64sm4310567edj.8.2023.02.22.10.05.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Feb 2023 10:05:59 -0800 (PST)
-Date: Wed, 22 Feb 2023 18:05:51 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: Paolo Bonzini <pbonzini@redhat.com>,
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=+ThRR9ZvME1UJFsVA+tDom+uoEmK2FkyktvVEkOXtTk=;
+ b=Yoxgqr63aqg/NxMqDMT/ZQoenLPsAFcFQA24CZ5nowVvoYZyrZip7JnGM773l5sMds
+ yTIaT3piM0wL75Awgkb60N0TPrcjG4fXn0+D9mzhiqvZuPAtwEdY0URocq7pkPo7/vyH
+ fiesqWCRorGfng4WRspeXJ2Boo+FehVudUOdewkT7Biwmfr+a0AIoIDtzT/0uTPtj6xf
+ L/HpVcORY7rZWXFVII3uFdcWZzJKOfeu4f2YUSfmok9jzgJ7pg3/54uyYgZhAsfcW24a
+ 90m94OtApHY8yrxsyulRMwyq0zIfJt3YFADsLIJ2zMaFATJm6ZqnVhAZvjOMi3KHQoMV
+ PbnQ==
+X-Gm-Message-State: AO0yUKUmOj20G4ofU1Pkf/3mjJXYxSLLFxmeQH8VI7aC1F6B8H2B6ryu
+ KyTTW2RJEWrgzaRrGYXErQzgZmConD6Caa4RNMJAVvZJGfrrnpZnANlVhv3mhv+Spf3gppybGmV
+ W3/SJNV5gXAEaA+yStA==
+X-Received: by 2002:a05:600c:16c5:b0:3dc:37d0:e9df with SMTP id
+ l5-20020a05600c16c500b003dc37d0e9dfmr1885110wmn.14.1677097489951; 
+ Wed, 22 Feb 2023 12:24:49 -0800 (PST)
+X-Google-Smtp-Source: AK7set87/ouQZkQgYQmjpUh0hD8ezXB9tR/mdUReJu+xA7XG0mIcJ6pXah+0w57h6Tjj4QuA7nBrhw==
+X-Received: by 2002:a05:600c:16c5:b0:3dc:37d0:e9df with SMTP id
+ l5-20020a05600c16c500b003dc37d0e9dfmr1885094wmn.14.1677097489556; 
+ Wed, 22 Feb 2023 12:24:49 -0800 (PST)
+Received: from redhat.com ([2.52.2.78]) by smtp.gmail.com with ESMTPSA id
+ w18-20020a05600c475200b003e220998b6bsm10486554wmo.17.2023.02.22.12.24.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Feb 2023 12:24:48 -0800 (PST)
+Date: Wed, 22 Feb 2023 15:24:44 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
@@ -61,24 +66,27 @@ CC: Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
  Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v4 1/9] hw/pci-host/i440fx: Inline sysbus_add_io()
-In-Reply-To: <f865212d-6a08-8f9e-5ddd-6fe037fc5fa9@linaro.org>
+Subject: Re: [PATCH v4 3/9] hw/i386/pc_q35: Reuse machine parameter
+Message-ID: <20230222152331-mutt-send-email-mst@kernel.org>
 References: <20230213162004.2797-1-shentey@gmail.com>
- <20230213162004.2797-2-shentey@gmail.com>
- <f865212d-6a08-8f9e-5ddd-6fe037fc5fa9@linaro.org>
-Message-ID: <3ABCEE15-F73D-498F-8D95-F17B78795E14@gmail.com>
+ <20230213162004.2797-4-shentey@gmail.com>
+ <9f80bb33-40e7-fc57-1515-c3764f57da46@linaro.org>
+ <CAG4p6K6JSkv3VqwUc3CYhfq0EbR7feKLBquduP_p4143DnaGig@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
+In-Reply-To: <CAG4p6K6JSkv3VqwUc3CYhfq0EbR7feKLBquduP_p4143DnaGig@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -92,68 +100,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Feb 2023 18:06:04 -0000
+X-List-Received-Date: Wed, 22 Feb 2023 20:24:59 -0000
 
+On Wed, Feb 22, 2023 at 06:52:02PM +0100, Bernhard Beschow wrote:
+> Am 22. Februar 2023 11:03:38 UTC schrieb "Philippe Mathieu-Daudé"
+> <philmd@linaro.org>:
+> >On 13/2/23 17:19, Bernhard Beschow wrote:
+> >> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> >> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> >> ---
+> >>   hw/i386/pc_q35.c | 2 +-
+> >>   1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> >> index 66cd718b70..dee2b38474 100644
+> >> --- a/hw/i386/pc_q35.c
+> >> +++ b/hw/i386/pc_q35.c
+> >> @@ -218,7 +218,7 @@ static void pc_q35_init(MachineState *machine)
+> >>       pc_memory_init(pcms, get_system_memory(), rom_memory, &ram_memory,
+> >>                      pci_hole64_size);
+> >>   -    object_property_add_child(qdev_get_machine(), "q35", OBJECT(q35_host));
+> >> +    object_property_add_child(OBJECT(machine), "q35", OBJECT(q35_host));
+> >>       object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_RAM_MEM,
+> >>                                OBJECT(ram_memory), NULL);
+> >>       object_property_set_link(OBJECT(q35_host), MCH_HOST_PROP_PCI_MEM,
+> >
+> >Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> >
+> >Long term we should duplicate/extract Q35MachineState from
+> >PCMachineState and add a Q35PCIHost field, then use object_initialize_child; removing this object_property_add_child()
+> >call.
+> 
+> The Q35 and PC machines duplicate a lot of code indeed. So I was
+> thinking more along the lines of consolidating with pc_piix ;)
 
+The reason is that we are trying to limit changes to pc_piix and
+focus development on Q35.
 
-Am 22=2E Februar 2023 10:58:08 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <=
-philmd@linaro=2Eorg>:
->On 13/2/23 17:19, Bernhard Beschow wrote:
->> sysbus_add_io() just wraps memory_region_add_subregion() while also
->> obscuring where the memory is attached=2E So use
->> memory_region_add_subregion() directly and attach it to the existing
->> memory region s->bus->address_space_io which is set as an alias to
->> get_system_io() by the pc machine=2E
->>=20
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> Reviewed-by: Thomas Huth <thuth@redhat=2Ecom>
->> ---
->>   hw/pci-host/i440fx=2Ec | 5 +++--
->>   1 file changed, 3 insertions(+), 2 deletions(-)
->>=20
->> diff --git a/hw/pci-host/i440fx=2Ec b/hw/pci-host/i440fx=2Ec
->> index 262f82c303=2E=2E9c6882d3fc 100644
->> --- a/hw/pci-host/i440fx=2Ec
->> +++ b/hw/pci-host/i440fx=2Ec
->> @@ -27,6 +27,7 @@
->>   #include "qemu/range=2Eh"
->>   #include "hw/i386/pc=2Eh"
->>   #include "hw/pci/pci=2Eh"
->> +#include "hw/pci/pci_bus=2Eh"
->>   #include "hw/pci/pci_host=2Eh"
->>   #include "hw/pci-host/i440fx=2Eh"
->>   #include "hw/qdev-properties=2Eh"
->> @@ -217,10 +218,10 @@ static void i440fx_pcihost_realize(DeviceState *d=
-ev, Error **errp)
->>       PCIHostState *s =3D PCI_HOST_BRIDGE(dev);
->>       SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->>   -    sysbus_add_io(sbd, 0xcf8, &s->conf_mem);
->> +    memory_region_add_subregion(s->bus->address_space_io, 0xcf8, &s->c=
-onf_mem);
->
->To avoid accessing internal fields we should stick to the PCI API:
->
->    memory_region_add_subregion(pci_address_space_io(PCI_DEVICE(dev)),
->                                0xcf8, &s->conf_mem);
+> The
+> idea would be to get a peek preview into a configuration-driven future
+> where the PCI host bridges (Q35 or I440FX) are dynamically
+> instantiated based on configuration data. They would also be
+> configured through their QOM interfaces only.
+> 
+> I've submitted a series where the Q35 host bridge gets a QOM cleanup
+> [1] and I've got a series locally resolving i440fx_init(). Both series
+> combined bring these two device models close together regarding their
+> QOM interface. I've not submitted the i440fx series yet since it is
+> blocked by this series.
+> 
+> One further step for pc_q35 and pc_piix consolidation would be to
+> factor ICH9 PCI devices (not functions!) into self-contained models,
+> like is underway with PIIX(3). I've started with ICH9 cleanup already
+> [2] and I'm waiting for the PIIX consolidation to land in order to be
+> able to make more progress here.
+> 
+> Note that pc_q35 and pc_piix consolidation is just an idea for now
+> which could also turn out to be a bad one. If the two machines just
+> ended up sharing more code that could IMO be considered a success as
+> well.
+> 
+> Best regards,
+> Bernhard
+> 
+> [1] https://patchew.org/QEMU/20230214131441.101760-1-shentey@gmail.com/
+> [2] https://patchew.org/QEMU/20230213173033.98762-1-shentey@gmail.com/
 
-dev is of type PCIHostState which derives from SysBusDevice, not PCIDevice=
-=2E AFAICS there is no getter implemented on PCIBus=2E
-
->
->>       sysbus_init_ioports(sbd, 0xcf8, 4);
->>   -    sysbus_add_io(sbd, 0xcfc, &s->data_mem);
->> +    memory_region_add_subregion(s->bus->address_space_io, 0xcfc, &s->d=
-ata_mem);
->>       sysbus_init_ioports(sbd, 0xcfc, 4);
->
->Now all classes implementing PCI_HOST_BRIDGE register conf/data in I/O
->space, so this could be a pattern justifying reworking a bit the
->PCIHostBridgeClass or adding an helper in "hw/pci/pci_host=2Eh" to do
->that generically=2E
-
-What do you mean exactly? There are PCI hosts spawning two PCI buses and t=
-herefore have two such spaces=2E
-
-Best regards,
-Bernhard
 
