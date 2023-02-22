@@ -1,56 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pUkNY-0004Wc-Kb
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2023 03:21:32 -0500
+	id 1pUmpD-0001xl-Od
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Feb 2023 05:58:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pUkNX-0004WO-Af; Wed, 22 Feb 2023 03:21:31 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUmpC-0001xN-FT
+ for qemu-trivial@nongnu.org; Wed, 22 Feb 2023 05:58:14 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pUkNV-0005CD-9N; Wed, 22 Feb 2023 03:21:30 -0500
-Received: by mail-ed1-x535.google.com with SMTP id x10so26229037edd.13;
- Wed, 22 Feb 2023 00:21:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fRilIlHbt1tRuzNnHtzhblIoDQU4aWjMmETXbO/TVvo=;
- b=P5wYetqkSy+rB9jJjoYrDnP6l8Bk/GREvy2zATjU5B3P8TxwpfbUP4xSin6aHAzR8H
- R7d4bWxSFSL8WdGXfrnX4ArXOTs58tjlz/T6oFjkS/BNFxwyfOk1nn+wty0xKY5O/0bW
- mFaZ1un0Ob6fQI6ed8OMq4a/d6SOwthTfpPmRlfXIS7uKPiJcQUEWRVUqHaKa2GWp+cR
- +sDqYuEDzDRoUvzOIaOIXEaf8c2ijHemZ7NjaR9wtsGoX08+uYmlqPqKGITNvvkj5lbd
- +qjgwxIaoQdgLfiqhZvbPIp+gqW72xvTZ7N18itg3hzsmCS1IyRf6kZ+7S/n4JHpO94a
- Jkpg==
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pUmpA-0004NV-ND
+ for qemu-trivial@nongnu.org; Wed, 22 Feb 2023 05:58:14 -0500
+Received: by mail-wr1-x436.google.com with SMTP id v3so7218433wrp.2
+ for <qemu-trivial@nongnu.org>; Wed, 22 Feb 2023 02:58:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=SDFV6sjA7bpeZf1TS4HdmAQFBN9/WW+KGRG8n1XyCvA=;
+ b=iUKRFGcSIPhyUiRib7ZpEfX3BI67am7tzjisBcgiJy4iQAsA/jrD1J2B9/NcC9ss2Y
+ U9/7wQ7vS5zsgkj3mAzc3KADX1AV2AMgGHIMn67JpSBm3jXnO6jMYwsUGEylruaR1Pu/
+ YpO26mPygcH87ehd1Iogsdcd2+pWx9rV5I7KlaDc1t9Yr4YFazaVWJubPxrclEUAbe9w
+ iaEgAkOMp8ulFcfsqMU+x3jWnR6/mrlkkXXSabyuYZ4Cbe4U+CT9GA4LnmCAit8XPLUm
+ nD/vJV2mMSHeJRZIDJ5XChrO8AJykUtLZ2/VbC/5qFdbvdnxRgXFVtQjmoWjYbANH5ba
+ 6Z2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fRilIlHbt1tRuzNnHtzhblIoDQU4aWjMmETXbO/TVvo=;
- b=vLtm3Zwz+lvL5cZ/ixb9YLCiNpPh1+qnIeAiYv5+VV726v9ygHPbOQpI+tQBoG6kN7
- AGP093v2buLVLwBnuN1ZMDhLdQ5i4d+pOdizq/8K0gRxg4YPQxbbvgPFiZ3QriZ8gVEV
- +8w53mGarvGofKN4Zs7R/GbaKXFY1/MUdD7pvDpV/lwACJkHAOMRHdHDROMSUIleMtYX
- A648Frrm7PAf37Yq5JTEfTDcO6geYejG4sa/J6sux+0Vk0T7oPS/6Ys6vIaRV+Q2GJm2
- pal3bIoeVk5k/VjqZDe5RgpiUP3SMEcw4vfXJBzHEUzoJ/F3XCz/f5sYGATrj5B288eG
- om6w==
-X-Gm-Message-State: AO0yUKVCIsrZnYlQcwpVxdKhIvpTwC4OtrDMxX9i5iObnv1d+/ZuC8zV
- 5kQHSA8m+IW3GTaiFH8T9es=
-X-Google-Smtp-Source: AK7set/moUrrgbVAIj6iwtQhNhsFScHQQWkLGswhIzyotG4YG7SUKnTXCuNDDfoan4FmfBrYL5begQ==
-X-Received: by 2002:a17:907:7d90:b0:8e9:9e13:9290 with SMTP id
- oz16-20020a1709077d9000b008e99e139290mr148072ejc.27.1677054085735; 
- Wed, 22 Feb 2023 00:21:25 -0800 (PST)
-Received: from ?IPv6:::1?
- (p200300faaf06ee001c45576075939c6f.dip0.t-ipconnect.de.
- [2003:fa:af06:ee00:1c45:5760:7593:9c6f])
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=SDFV6sjA7bpeZf1TS4HdmAQFBN9/WW+KGRG8n1XyCvA=;
+ b=tRMCcJ1OTWwl6VQ3WZKlTFFSJJeOCX6YY1ip4lzkvdnwp0Zu845+TnOopYM8yKm3Fr
+ n8FZTSYLPFT+86qkcKu/vQKtzyw+etCGEb3SRZdmnZk8yaMqKaicCHq/o2RTgsrxhn7s
+ qGKmA2LsvSFmKW7ObjzvKFv+7uD+VHft4VfFsFhrOk3LfYfdwzH6ZuG4HtJHUQaPPmZV
+ T6gkFfRg4diBieKTxw+9ZzfidTIau//0jNPqVw0UJVAWZa4tUystFtxMJwD0gRYFzrWO
+ 7Hl1Z89q/1OZ2juWAo1waqjZnYH41PQKqWu7oGY9JWdoSGVFLAEU+NhWwxuDjPLWe6go
+ 5BBg==
+X-Gm-Message-State: AO0yUKXtn/MAtfsK1BH51RQSmMADddVr+Z2kTxzDGRm21i6MeEKUfUe3
+ O46F3KSZRS21/+i57rinmwGIRA==
+X-Google-Smtp-Source: AK7set/rBdpV4xHs/0AU3KHnrB3h+UiLRlBa6O+ysZMu185OnXZFGy0X5z122QHrLvKoU73r7D8WBQ==
+X-Received: by 2002:a5d:438c:0:b0:2c5:843e:7c4 with SMTP id
+ i12-20020a5d438c000000b002c5843e07c4mr6479604wrq.33.1677063490925; 
+ Wed, 22 Feb 2023 02:58:10 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- kq9-20020a170906abc900b008d9c518a318sm2906297ejb.142.2023.02.22.00.21.25
+ j27-20020a5d453b000000b002c577e2fc87sm8747418wra.15.2023.02.22.02.58.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Feb 2023 00:21:25 -0800 (PST)
-Date: Wed, 22 Feb 2023 08:21:16 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Xiaoyao Li <xiaoyao.li@intel.com>, qemu-devel@nongnu.org
-CC: Paolo Bonzini <pbonzini@redhat.com>,
+ Wed, 22 Feb 2023 02:58:10 -0800 (PST)
+Message-ID: <f865212d-6a08-8f9e-5ddd-6fe037fc5fa9@linaro.org>
+Date: Wed, 22 Feb 2023 11:58:08 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH v4 1/9] hw/pci-host/i440fx: Inline sysbus_add_io()
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -59,26 +62,20 @@ CC: Paolo Bonzini <pbonzini@redhat.com>,
  Juan Quintela <quintela@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
  Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
- Laurent Vivier <lvivier@redhat.com>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_6/9=5D_hw/i386/pc=3A_Init?=
- =?US-ASCII?Q?ialize_ram=5Fmemory_variable_directly?=
-In-Reply-To: <87e11e16-f9ad-bfb4-cc1c-d5288741ded3@intel.com>
+ Laurent Vivier <lvivier@redhat.com>
 References: <20230213162004.2797-1-shentey@gmail.com>
- <20230213162004.2797-7-shentey@gmail.com>
- <87e11e16-f9ad-bfb4-cc1c-d5288741ded3@intel.com>
-Message-ID: <356429F3-BC92-4EC0-AC57-036606A96131@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20230213162004.2797-2-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230213162004.2797-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.095,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -93,65 +90,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Feb 2023 08:21:31 -0000
+X-List-Received-Date: Wed, 22 Feb 2023 10:58:14 -0000
 
+On 13/2/23 17:19, Bernhard Beschow wrote:
+> sysbus_add_io() just wraps memory_region_add_subregion() while also
+> obscuring where the memory is attached. So use
+> memory_region_add_subregion() directly and attach it to the existing
+> memory region s->bus->address_space_io which is set as an alias to
+> get_system_io() by the pc machine.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   hw/pci-host/i440fx.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+> index 262f82c303..9c6882d3fc 100644
+> --- a/hw/pci-host/i440fx.c
+> +++ b/hw/pci-host/i440fx.c
+> @@ -27,6 +27,7 @@
+>   #include "qemu/range.h"
+>   #include "hw/i386/pc.h"
+>   #include "hw/pci/pci.h"
+> +#include "hw/pci/pci_bus.h"
+>   #include "hw/pci/pci_host.h"
+>   #include "hw/pci-host/i440fx.h"
+>   #include "hw/qdev-properties.h"
+> @@ -217,10 +218,10 @@ static void i440fx_pcihost_realize(DeviceState *dev, Error **errp)
+>       PCIHostState *s = PCI_HOST_BRIDGE(dev);
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>   
+> -    sysbus_add_io(sbd, 0xcf8, &s->conf_mem);
+> +    memory_region_add_subregion(s->bus->address_space_io, 0xcf8, &s->conf_mem);
 
+To avoid accessing internal fields we should stick to the PCI API:
 
-Am 22=2E Februar 2023 02:38:04 UTC schrieb Xiaoyao Li <xiaoyao=2Eli@intel=
-=2Ecom>:
->On 2/14/2023 12:20 AM, Bernhard Beschow wrote:
->> Going through pc_memory_init() seems quite complicated for a simple
->> assignment=2E
->>=20
->
->=2E=2E=2E
->
->> diff --git a/hw/i386/pc_piix=2Ec b/hw/i386/pc_piix=2Ec
->> index 5bde4533cc=2E=2E00ba725656 100644
->> --- a/hw/i386/pc_piix=2Ec
->> +++ b/hw/i386/pc_piix=2Ec
->> @@ -143,6 +143,7 @@ static void pc_init1(MachineState *machine,
->>       if (xen_enabled()) {
->>           xen_hvm_init_pc(pcms, &ram_memory);
+     memory_region_add_subregion(pci_address_space_io(PCI_DEVICE(dev)),
+                                 0xcf8, &s->conf_mem);
 
-In Xen mode, ram_memory is initialized here and machine->ram isn't used at=
- all=2E
+>       sysbus_init_ioports(sbd, 0xcf8, 4);
+>   
+> -    sysbus_add_io(sbd, 0xcfc, &s->data_mem);
+> +    memory_region_add_subregion(s->bus->address_space_io, 0xcfc, &s->data_mem);
+>       sysbus_init_ioports(sbd, 0xcfc, 4);
 
->>       } else {
->> +        ram_memory =3D machine->ram;
-
-The idea of moving the assignment here is to make the code more symmetric =
-to Xen and to establish the invariant of ram_memory being initialized after=
- this if-else block=2E IOW one shouldn't need to use machine->ram directly =
-after this point=2E
-
->>           if (!pcms->max_ram_below_4g) {
->>               pcms->max_ram_below_4g =3D 0xe0000000; /* default: 3=2E5G=
- */
->>           }
->> @@ -205,8 +206,7 @@ static void pc_init1(MachineState *machine,
->>         /* allocate ram and load rom/bios */
->>       if (!xen_enabled()) {
->> -        pc_memory_init(pcms, system_memory,
->> -                       rom_memory, &ram_memory, hole64_size);
->
->IMHO, it seems more proper to put
->
->+        ram_memory =3D machine->ram;
->
->here rather than above=2E
-
-This patch allowed for further cleanup (establishing above invariant) whic=
-h I inlined for simplicity=2E
-
-Do you still see issues here?
-
-Thanks,
-Bernhard
->
->> +        pc_memory_init(pcms, system_memory, rom_memory, hole64_size);
->>       } else {
->>           pc_system_flash_cleanup_unused(pcms);
->>           if (machine->kernel_filename !=3D NULL) {
->
+Now all classes implementing PCI_HOST_BRIDGE register conf/data in I/O
+space, so this could be a pattern justifying reworking a bit the
+PCIHostBridgeClass or adding an helper in "hw/pci/pci_host.h" to do
+that generically.
 
