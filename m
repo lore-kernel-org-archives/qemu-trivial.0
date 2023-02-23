@@ -1,86 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pVEo9-0004LG-6l
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Feb 2023 11:51:01 -0500
+	id 1pVJL4-0006vl-UG
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Feb 2023 16:41:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1pVEo2-00046u-AD
- for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 11:50:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1pVEnm-0005jM-0p
- for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 11:50:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677171035;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/2gWH/S72gDdN2u5PaLZkKIqmYndnLVCKBPjVK/9h2U=;
- b=IngEZu4he6Y+ZZdcyORRWg5CWwLTtov1SQsNS+ku2DnoZd/FhPj90+UtfMA9UBcaehg+Mw
- IitD9J1wqB01EiPKzy/SMh6pUaZ+3PyUW75okf3O/WLfoDP4CFw2PyhY48sdOE8BLpDgcZ
- ebVO7G/8f9kv+7dCLuS6svupOloCjJ4=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-350-hPD8-RQTOW-uiLuuiKGtmw-1; Thu, 23 Feb 2023 11:50:34 -0500
-X-MC-Unique: hPD8-RQTOW-uiLuuiKGtmw-1
-Received: by mail-wm1-f72.google.com with SMTP id
- p22-20020a7bcc96000000b003e2036a1516so5377120wma.7
- for <qemu-trivial@nongnu.org>; Thu, 23 Feb 2023 08:50:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVJL3-0006vb-Oo
+ for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 16:41:17 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVJL1-0004Yc-Vh
+ for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 16:41:17 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ m25-20020a7bcb99000000b003e7842b75f2so460054wmi.3
+ for <qemu-trivial@nongnu.org>; Thu, 23 Feb 2023 13:41:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=orvUdl7Yoqh+l75M4NGCyCqx8juccnOLmhhHtFnUiYQ=;
+ b=eWcLb6SkbwuVAk3nlRCT7+sVoFPaOwGyQS+KUlKChAHsjd3fEvM5ygLU7CtCtxq4uK
+ hDIEuBFX0hq6xAXi6yofKfsdvIfdQnn5lejV7W7lQKRhk39wieN8Hgzbbk6hq3xqzuB3
+ WTcnLfPp1SnUYngzOOp90qMYJi1IYMtk9xERNC9R7OvgMSvA/7Pj+lg4MQ4HiLJfNdKt
+ xxruo4BZGRiuCTL2IEOs6EXP3pDteg+YW9lwLa8Pj/xZfXjrE50v5iZ/Hs3LBdWUUHwH
+ vye8i3IdvSnQ2qcbi5QnqEhwRxgrzUWDmwFW6EOA2lOMWu/+8PNjn+qEKjESqCszz8MU
+ QaFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/2gWH/S72gDdN2u5PaLZkKIqmYndnLVCKBPjVK/9h2U=;
- b=O1dQQpPl4/9Q2JTY1sqvPIIFnBcgevg80wd1Koko86zjEThEEz1Xzl4O/sBaQAWhkn
- QPDr0RYGguzi/shj+x5CtDmpwvGDjQNKpo3bw3l+OjDrJ6wdbfzexwNLqUIb+9heetiG
- DhH0HCkSPQfzA51fF3S3tuhvSEF6UyDI6uebSkk7H1X7KD4WPrTaG3hY278Sj/Gro5x4
- FiGXxX4D3+3guixK9LK173qECq/9zFqKF6+Kd6hYMLhvAcywgxHQM3KleArYsj8+19z0
- Rdnc3wteF7/OaA21EWmBbDF8Ji6soXTjA7fKIDkPahxsfpZVr4ipZA0snyC8IVl3Rjt5
- ZjMA==
-X-Gm-Message-State: AO0yUKXdoN/yreUdOd6zXwCqE5NDeD7sREwIl1xZJ0EoEaU4Bog/InHU
- Sk7SGoiRtX4ql1Q4RJFDF/TeDV6diE+rOCAyeAw5ELNvjJa4j6M0Vcud7GDJgkWwjapHOVqxhtp
- 2LFHTzfaOVbK7o6+tvA==
-X-Received: by 2002:adf:f34f:0:b0:2c7:fcc:2501 with SMTP id
- e15-20020adff34f000000b002c70fcc2501mr2714009wrp.28.1677171033185; 
- Thu, 23 Feb 2023 08:50:33 -0800 (PST)
-X-Google-Smtp-Source: AK7set/2LXqumxbhzHznFAVZe6/GQJsc2TZtuNDmnndggqRzy29OKkcbNqlezMUfsP64iZfvezG8Jg==
-X-Received: by 2002:adf:f34f:0:b0:2c7:fcc:2501 with SMTP id
- e15-20020adff34f000000b002c70fcc2501mr2713995wrp.28.1677171032871; 
- Thu, 23 Feb 2023 08:50:32 -0800 (PST)
-Received: from work-vm
- (ward-16-b2-v4wan-166627-cust863.vm18.cable.virginm.net. [81.97.203.96])
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=orvUdl7Yoqh+l75M4NGCyCqx8juccnOLmhhHtFnUiYQ=;
+ b=wcMquVxPGPKlGcrKOUiaFnXpKPofpCzSIXImUMxbGeEV81kIV1DtmL6uKRMc1BNDoG
+ 1XYWfKUG35IkC30ZVXshOowJAAW5zfI6InhJn2EEFH9VHd3anHk94SDWAmLz/GxGdJMM
+ pBhK3MF/h/D9ht862rtBZFTVhKE4ZbzKAsCx8nSamZsSDRgrrVnu435heFNiogp5YU2H
+ eOzjZwjNTyY90QodXtHfj69zoojKLW/5oMYAmIHY66OkD4YIiixBzxuOjIe+Apd/BAKa
+ 7JQ2e0h+2d7SJTxSB9QOOtLwIOl+yOkBtwxS1VzDF8tbrW9GStOzHFe6Od97v7XGDfZf
+ GPtQ==
+X-Gm-Message-State: AO0yUKVob6/lu+FMhKDXriF1TVgKsW005yy/ohQPQc5twxkqyxqQBtPC
+ d3/D+i6+j7IS4dHqSu8rzqY8Bg==
+X-Google-Smtp-Source: AK7set/iU3xnFbO88lZzTdOI62CjP63hHfkiiVRio1rV1x759XZr6woYto2iTL2ij6Ff3DQ+TqQhdA==
+X-Received: by 2002:a05:600c:2e86:b0:3dc:55e6:fffd with SMTP id
+ p6-20020a05600c2e8600b003dc55e6fffdmr9276724wmn.15.1677188475099; 
+ Thu, 23 Feb 2023 13:41:15 -0800 (PST)
+Received: from [192.168.1.115] ([185.126.107.38])
  by smtp.gmail.com with ESMTPSA id
- t23-20020a05600c2f9700b003dc521f336esm11563735wmn.14.2023.02.23.08.50.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Feb 2023 08:50:32 -0800 (PST)
-Date: Thu, 23 Feb 2023 16:50:30 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Huanyu ZHAI <huanyu.zhai@outlook.com>, pbonzini@redhat.com,
- mtosatti@redhat.com
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] cpu/i386: update xsave components after CPUID filtering
-Message-ID: <Y/eZVh9Xvmolx4Wh@work-vm>
-References: <AS4P190MB202188766937CF16EC4F1DAFF60C9@AS4P190MB2021.EURP190.PROD.OUTLOOK.COM>
+ fm16-20020a05600c0c1000b003dd1bd0b915sm568678wmb.22.2023.02.23.13.41.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 23 Feb 2023 13:41:14 -0800 (PST)
+Message-ID: <fe9297e2-3f0e-2f25-1185-2b2f50d963d1@linaro.org>
+Date: Thu, 23 Feb 2023 22:41:13 +0100
 MIME-Version: 1.0
-In-Reply-To: <AS4P190MB202188766937CF16EC4F1DAFF60C9@AS4P190MB2021.EURP190.PROD.OUTLOOK.COM>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH] MAINTAINERS: Cover RCU documentation
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
+ Emanuele Giuseppe Esposito <eesposit@redhat.com>, qemu-trivial@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>
+References: <20230119102620.5669-1-philmd@linaro.org>
+ <120f942f-a460-cc69-545e-f99fd033501e@linaro.org>
+In-Reply-To: <120f942f-a460-cc69-545e-f99fd033501e@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,59 +84,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Feb 2023 16:50:58 -0000
+X-List-Received-Date: Thu, 23 Feb 2023 21:41:18 -0000
 
+ping^2
 
-* Huanyu ZHAI (huanyu.zhai@outlook.com) wrote:
-> Subject: [PATCH] cpu/i386: update xsave components after CPUID filtering
+On 7/2/23 10:11, Philippe Mathieu-Daudé wrote:
+> Ping?
 > 
-> On i386 platform, CPUID data are setup through three consecutive steps: CPU model definition, expansion and filtering.
-> XSAVE components are enabled during the expansion stage, by checking if they are enabled in CPUID. However, it is still
-> probable that some XSAVE features will be enabled/disabled during the filtering stage and the XSAVE components left unchanged.
-> Inconsistency between XSAVE features and enabled XSAVE components can lead to problems on some Linux guests in the absence of
-> the following patch in the kernel:
+> On 19/1/23 11:26, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   MAINTAINERS | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 0fe50d01e3..73e9cb33f5 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -2812,6 +2812,8 @@ F: qapi/run-state.json
+>>   Read, Copy, Update (RCU)
+>>   M: Paolo Bonzini <pbonzini@redhat.com>
+>>   S: Maintained
+>> +F: docs/devel/lockcnt.txt
+>> +F: docs/devel/rcu.txt
+>>   F: include/qemu/rcu*.h
+>>   F: tests/unit/rcutorture.c
+>>   F: tests/unit/test-rcu-*.c
 > 
-> https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1452368.html
-> 
-> A simple case to reproduce this problem is to start a SUSE 12 SP3 guest with cpu model set to Skylake-Server:
-> $ qemu-system-x86_64 -cpu Skylake-Server ...
-> 
-> In the SUSE 12 SP3 guest, one can observe that PKRU will be enabled without Intel PKU's presence.
-> That's because on platform with Skylake-Server cpus, Intel PKU is disabled during x86_cpu_filter_features(),
-> but the XSAVE PKRU bit was enabled by x86_cpu_expand_features().
-
-I just spotted this when trying to clear out my mail folder;
-this isn't a 'trivial'!
-
-I'm not sure if it's right or not, but I've cc'd in Paolo and Marcelo as
-x86 maintainers.
-
-Dave
-
-> Signed-off-by: Huanyu ZHAI zhaihuanyu@huawei.com<mailto:zhaihuanyu@huawei.com>
-> Signed-off-by: Xin Wang wangxinxin.wang@huawei.com<mailto:wangxinxin.wang@huawei.com>
-> ---
-> target/i386/cpu.c | 3 +++
-> 1 file changed, 3 insertions(+)
-> 
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index 22b681ca37..2ee574cf05 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -6362,6 +6362,9 @@ static void x86_cpu_filter_features(X86CPU *cpu, bool verbose)
->              mark_unavailable_features(cpu, FEAT_7_0_EBX, CPUID_7_0_EBX_INTEL_PT, prefix);
->          }
->      }
-> +
-> +    /* Update XSAVE components again based on the filtered CPU feature flags */
-> +    x86_cpu_enable_xsave_components(cpu);
-> }
-> 
-> static void x86_cpu_hyperv_realize(X86CPU *cpu)
-> --
-> 2.27.0
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
