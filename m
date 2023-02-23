@@ -1,71 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pVBlq-0007rz-Mj
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Feb 2023 08:36:26 -0500
+	id 1pVEo9-0004LG-6l
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Feb 2023 11:51:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pVBll-0007pm-Qa
- for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 08:36:21 -0500
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pVBli-000764-6q
- for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 08:36:19 -0500
-Received: by mail-pf1-x435.google.com with SMTP id g12so6009512pfi.0
- for <qemu-trivial@nongnu.org>; Thu, 23 Feb 2023 05:36:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ziMLKydJTay/BmNLV1+TS3AzWc2BBP9B0nqwN7+xrP4=;
- b=BtTRyxb7+dy2VMgw01VMpL1Hj91WrdUv/6B6g9evbk6SILXPsC8eFz0fB8OrhCdI5t
- RLDZOu5CZa+Esyp20IdmUDx+vj5xIpzcLbusF2E2rv3xJZMRAVsWdAv1DHZrJueI0SsZ
- 8tJuaMsr/YIDQ2FzKTu+e7bBKsdxfRVezbwrOy9zLndZuY6V7XCAb+DXLSh5MGuBXrlo
- fXg51bQ7L6zc4JYMV51nvwD7hINgqPyMLW54ekjJoPHPCtkYlHzLC+p7MnITo05wkxGy
- tdroeb1sFaGqf5Lfz/l3siJtM2mccO2XxUrG5BxXKHg63Jvnc0r2HMoVH5dghDORy+dw
- xDMQ==
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1pVEo2-00046u-AD
+ for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 11:50:57 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1pVEnm-0005jM-0p
+ for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 11:50:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677171035;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=/2gWH/S72gDdN2u5PaLZkKIqmYndnLVCKBPjVK/9h2U=;
+ b=IngEZu4he6Y+ZZdcyORRWg5CWwLTtov1SQsNS+ku2DnoZd/FhPj90+UtfMA9UBcaehg+Mw
+ IitD9J1wqB01EiPKzy/SMh6pUaZ+3PyUW75okf3O/WLfoDP4CFw2PyhY48sdOE8BLpDgcZ
+ ebVO7G/8f9kv+7dCLuS6svupOloCjJ4=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-350-hPD8-RQTOW-uiLuuiKGtmw-1; Thu, 23 Feb 2023 11:50:34 -0500
+X-MC-Unique: hPD8-RQTOW-uiLuuiKGtmw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ p22-20020a7bcc96000000b003e2036a1516so5377120wma.7
+ for <qemu-trivial@nongnu.org>; Thu, 23 Feb 2023 08:50:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ziMLKydJTay/BmNLV1+TS3AzWc2BBP9B0nqwN7+xrP4=;
- b=XnDMF7cQB+fTrvjq2iKlnosSHFV3FkS7PAKAASRzJHmI7lZBXgkCbxgoYod5YcbgRl
- 7CKPOs+nJZkpZyQN4yBx2ycxRzXxchBSoByocDhU7jUBebZTRmFvbzhNIk8FPrtf1WAI
- 26i91j69rGJ34evCgPg9cC9O33dIpoKIn8UPwZd/f5p+r7YA9cFbojRrj2TMOIvXtHkE
- y6EK5hX2t/Fbzh36NaVvSyPE1w031V4u1GBlRwpeP6cvgy8F01JJgwzC4P/ndY2DxdUr
- hPXzYiAB5WF0wJtFuK1B5IOkIPGEpygC15Dkoe64WdveVJeTa+Ltjbhj3VRGs2wAq9Yl
- y81Q==
-X-Gm-Message-State: AO0yUKUSYmFbp/sxXHF458W1PhgqR5zRPzgtAKyT9KoRXrkPwriBx3kI
- 9uztZq/aJvZTdHz8VBPLdKAAjGpLiyGJSDGIjVcg0w==
-X-Google-Smtp-Source: AK7set968R8ACxGV76QfmgC3Q1J6wAcT//jUUbrQA6Sbw+lr4pqpfoJcvdlxk5JiI2S3GaZOTJWK2B1aiEbDsTtqI2A=
-X-Received: by 2002:a63:7555:0:b0:4fd:4602:1b9a with SMTP id
- f21-20020a637555000000b004fd46021b9amr1833686pgn.9.1677159376680; Thu, 23 Feb
- 2023 05:36:16 -0800 (PST)
+ bh=/2gWH/S72gDdN2u5PaLZkKIqmYndnLVCKBPjVK/9h2U=;
+ b=O1dQQpPl4/9Q2JTY1sqvPIIFnBcgevg80wd1Koko86zjEThEEz1Xzl4O/sBaQAWhkn
+ QPDr0RYGguzi/shj+x5CtDmpwvGDjQNKpo3bw3l+OjDrJ6wdbfzexwNLqUIb+9heetiG
+ DhH0HCkSPQfzA51fF3S3tuhvSEF6UyDI6uebSkk7H1X7KD4WPrTaG3hY278Sj/Gro5x4
+ FiGXxX4D3+3guixK9LK173qECq/9zFqKF6+Kd6hYMLhvAcywgxHQM3KleArYsj8+19z0
+ Rdnc3wteF7/OaA21EWmBbDF8Ji6soXTjA7fKIDkPahxsfpZVr4ipZA0snyC8IVl3Rjt5
+ ZjMA==
+X-Gm-Message-State: AO0yUKXdoN/yreUdOd6zXwCqE5NDeD7sREwIl1xZJ0EoEaU4Bog/InHU
+ Sk7SGoiRtX4ql1Q4RJFDF/TeDV6diE+rOCAyeAw5ELNvjJa4j6M0Vcud7GDJgkWwjapHOVqxhtp
+ 2LFHTzfaOVbK7o6+tvA==
+X-Received: by 2002:adf:f34f:0:b0:2c7:fcc:2501 with SMTP id
+ e15-20020adff34f000000b002c70fcc2501mr2714009wrp.28.1677171033185; 
+ Thu, 23 Feb 2023 08:50:33 -0800 (PST)
+X-Google-Smtp-Source: AK7set/2LXqumxbhzHznFAVZe6/GQJsc2TZtuNDmnndggqRzy29OKkcbNqlezMUfsP64iZfvezG8Jg==
+X-Received: by 2002:adf:f34f:0:b0:2c7:fcc:2501 with SMTP id
+ e15-20020adff34f000000b002c70fcc2501mr2713995wrp.28.1677171032871; 
+ Thu, 23 Feb 2023 08:50:32 -0800 (PST)
+Received: from work-vm
+ (ward-16-b2-v4wan-166627-cust863.vm18.cable.virginm.net. [81.97.203.96])
+ by smtp.gmail.com with ESMTPSA id
+ t23-20020a05600c2f9700b003dc521f336esm11563735wmn.14.2023.02.23.08.50.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Feb 2023 08:50:32 -0800 (PST)
+Date: Thu, 23 Feb 2023 16:50:30 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Huanyu ZHAI <huanyu.zhai@outlook.com>, pbonzini@redhat.com,
+ mtosatti@redhat.com
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] cpu/i386: update xsave components after CPUID filtering
+Message-ID: <Y/eZVh9Xvmolx4Wh@work-vm>
+References: <AS4P190MB202188766937CF16EC4F1DAFF60C9@AS4P190MB2021.EURP190.PROD.OUTLOOK.COM>
 MIME-Version: 1.0
-References: <20230113200138.52869-1-philmd@linaro.org>
- <f8a83363-ce88-e424-4db5-2fead70e4ec4@linaro.org>
-In-Reply-To: <f8a83363-ce88-e424-4db5-2fead70e4ec4@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 Feb 2023 13:36:05 +0000
-Message-ID: <CAFEAcA_xqTmYHqv+4QZqouAYtFYRz=PrZNAk6y4arRPHjNrsug@mail.gmail.com>
-Subject: Re: [PATCH 0/4] hw: QOM housekeeping around IOTHREAD / IRQ types
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-arm@nongnu.org, 
- qemu-ppc@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x435.google.com
+In-Reply-To: <AS4P190MB202188766937CF16EC4F1DAFF60C9@AS4P190MB2021.EURP190.PROD.OUTLOOK.COM>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,44 +93,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Feb 2023 13:36:22 -0000
+X-List-Received-Date: Thu, 23 Feb 2023 16:50:58 -0000
 
-On Tue, 7 Feb 2023 at 09:17, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
-> Hi Peter,
->
-> On 13/1/23 21:01, Philippe Mathieu-Daud=C3=A9 wrote:
-> > - remove unused code
-> > - use recent QOM macros
-> > - use CamelCase typedef
-> >
-> > Philippe Mathieu-Daud=C3=A9 (4):
-> >    iothread: Remove unused IOThreadClass / IOTHREAD_CLASS
-> >    hw/irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
-> >    hw/or-irq: Declare QOM macros using OBJECT_DECLARE_SIMPLE_TYPE()
-> >    hw: Replace qemu_or_irq typedef by OrIRQState
-> >
-> >   hw/arm/exynos4210.c                  |  4 ++--
-> >   hw/arm/mps2-tz.c                     |  2 +-
-> >   hw/core/irq.c                        |  9 ++++-----
-> >   hw/core/or-irq.c                     | 18 +++++++++---------
-> >   hw/pci-host/raven.c                  |  2 +-
-> >   include/hw/arm/armsse.h              |  6 +++---
-> >   include/hw/arm/bcm2835_peripherals.h |  2 +-
-> >   include/hw/arm/exynos4210.h          |  4 ++--
-> >   include/hw/arm/stm32f205_soc.h       |  2 +-
-> >   include/hw/arm/stm32f405_soc.h       |  2 +-
-> >   include/hw/arm/xlnx-versal.h         |  6 +++---
-> >   include/hw/arm/xlnx-zynqmp.h         |  2 +-
-> >   include/hw/or-irq.h                  |  5 +----
-> >   iothread.c                           |  4 ----
-> >   14 files changed, 30 insertions(+), 38 deletions(-)
->
-> Since most changes concern ARM machines, can this (reviewed)
-> series go via your tree?
 
-Sure; applied to target-arm.next, thanks.
+* Huanyu ZHAI (huanyu.zhai@outlook.com) wrote:
+> Subject: [PATCH] cpu/i386: update xsave components after CPUID filtering
+> 
+> On i386 platform, CPUID data are setup through three consecutive steps: CPU model definition, expansion and filtering.
+> XSAVE components are enabled during the expansion stage, by checking if they are enabled in CPUID. However, it is still
+> probable that some XSAVE features will be enabled/disabled during the filtering stage and the XSAVE components left unchanged.
+> Inconsistency between XSAVE features and enabled XSAVE components can lead to problems on some Linux guests in the absence of
+> the following patch in the kernel:
+> 
+> https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1452368.html
+> 
+> A simple case to reproduce this problem is to start a SUSE 12 SP3 guest with cpu model set to Skylake-Server:
+> $ qemu-system-x86_64 -cpu Skylake-Server ...
+> 
+> In the SUSE 12 SP3 guest, one can observe that PKRU will be enabled without Intel PKU's presence.
+> That's because on platform with Skylake-Server cpus, Intel PKU is disabled during x86_cpu_filter_features(),
+> but the XSAVE PKRU bit was enabled by x86_cpu_expand_features().
 
--- PMM
+I just spotted this when trying to clear out my mail folder;
+this isn't a 'trivial'!
+
+I'm not sure if it's right or not, but I've cc'd in Paolo and Marcelo as
+x86 maintainers.
+
+Dave
+
+> Signed-off-by: Huanyu ZHAI zhaihuanyu@huawei.com<mailto:zhaihuanyu@huawei.com>
+> Signed-off-by: Xin Wang wangxinxin.wang@huawei.com<mailto:wangxinxin.wang@huawei.com>
+> ---
+> target/i386/cpu.c | 3 +++
+> 1 file changed, 3 insertions(+)
+> 
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 22b681ca37..2ee574cf05 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -6362,6 +6362,9 @@ static void x86_cpu_filter_features(X86CPU *cpu, bool verbose)
+>              mark_unavailable_features(cpu, FEAT_7_0_EBX, CPUID_7_0_EBX_INTEL_PT, prefix);
+>          }
+>      }
+> +
+> +    /* Update XSAVE components again based on the filtered CPU feature flags */
+> +    x86_cpu_enable_xsave_components(cpu);
+> }
+> 
+> static void x86_cpu_hyperv_realize(X86CPU *cpu)
+> --
+> 2.27.0
+> 
+-- 
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+
 
