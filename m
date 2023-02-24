@@ -1,86 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pVUNQ-0001H5-SQ
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2023 04:28:30 -0500
+	id 1pVa5X-0002CR-8R
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2023 10:34:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1pVUN3-00011l-4W
- for qemu-trivial@nongnu.org; Fri, 24 Feb 2023 04:28:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1pVUN1-00044L-Ri
- for qemu-trivial@nongnu.org; Fri, 24 Feb 2023 04:28:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677230883;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=IJ99hljLifP5zMmWxrnHoHgU3HnYYx4wsbtZvBoCXssP2LfDnZJN1c2lRmV5yWC11/JmLj
- C78SSV5ZajjDksvG6Ho4vZnvCw53YwimdtFV1ZVj27TjQdW86eFzkNFTl+uCkUO/dVPGgR
- 3G3aQ5ApyQdIh5l7xWVHRtkbGRt6Usc=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-556-eWu9zX9sPsqeyWpCFsmgkA-1; Fri, 24 Feb 2023 04:27:59 -0500
-X-MC-Unique: eWu9zX9sPsqeyWpCFsmgkA-1
-Received: by mail-ed1-f69.google.com with SMTP id
- ee6-20020a056402290600b004ad51f8fc36so18732889edb.22
- for <qemu-trivial@nongnu.org>; Fri, 24 Feb 2023 01:27:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVa5R-0002BR-7S
+ for qemu-trivial@nongnu.org; Fri, 24 Feb 2023 10:34:17 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVa5P-0004yJ-Hh
+ for qemu-trivial@nongnu.org; Fri, 24 Feb 2023 10:34:16 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id bo30so13758633wrb.0
+ for <qemu-trivial@nongnu.org>; Fri, 24 Feb 2023 07:34:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=yjM0RbXuosFrIrEm5/DdW20R5Mc7XEH9e5KQaaksw2M=;
+ b=X/hL6LNArIf747REIubU8yUm5N8zW7MRqk8dL5uCpgXwIidzawEs/L4s16KiVzfg2O
+ UZfyqVB9kx7XEMSJxBHdIWQR6+DaxEJ3t2op4A8S1oeMdVzBOpt0oPgNc69N++G04N2g
+ yh40x/79AlCDqGyPXZWYztds9htJGXW7/agx3YAXYOazreGoLnkZyOSvvoQpsuKfTL7m
+ LDCzNM+m2KPt/TXU6BLGhcV6gQ9NzUrsP1Y5vwS1f1QibHkgPUAJRbHa8UgBC6oxA2AD
+ ziCVMyeaAg+WqhbI8PjC9vZJaukmurrAjniF7PPITNhXqVWgCRzy1nvSeH3crkuTtHT8
+ 2+0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=FqxHh7S2rw10fG4ZZ1BWPKTHBThzNCn2ZkDHmELYDnCVFdGw2m7HQL8QOvO43Gn+LA
- zaO6wZ9PdOjtKa6T4YFSooXJNA0vZUCB5Jhmq8FAriDRmGbpK3UuXK+8FZwCK0N5XVym
- hyZ3+wySODYRfJ0+Lu0Vrz40QQSPw57zm8SE7IgpQYHe2nNFtIYDWZe61h96QX5BQHcv
- swBbuH/V7IhcfwsEGhnBv1NiAjDn5UPAKZeVJvsRUZQymzg64HT+ssQuWZhZY6W85aO8
- w8x7r9zmiWJ3uO4OJ/NAl/uLDUdNOSxWvEw1W6EEj8p3YSeVHj4eL7XpNsLY3/exWvtL
- J79A==
-X-Gm-Message-State: AO0yUKVLGTnigaLCmvzEvQ8qOiqvbKJkP0s0i9w33IiMf05RyBK6Bbql
- ChiBV08mYHH42YiQkpf55CFXR9R57Z/lCEONKoQgEKnSESOa27vPGASvq7uTQNTUZvXXZlgRCcY
- EamBa/e+cL5T9U5RTBQ==
-X-Received: by 2002:a17:906:16d9:b0:886:221b:44e5 with SMTP id
- t25-20020a17090616d900b00886221b44e5mr21651748ejd.62.1677230878877; 
- Fri, 24 Feb 2023 01:27:58 -0800 (PST)
-X-Google-Smtp-Source: AK7set9dVChQ13OYiC7tZJhaId9LPQjRUq07UelBvCKWdZiFOwi60dnHBAZx13NqlauHGSPvPxnz7Q==
-X-Received: by 2002:a17:906:16d9:b0:886:221b:44e5 with SMTP id
- t25-20020a17090616d900b00886221b44e5mr21651734ejd.62.1677230878537; 
- Fri, 24 Feb 2023 01:27:58 -0800 (PST)
-Received: from avogadro.local ([2001:b07:6468:f312:63a7:c72e:ea0e:6045])
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=yjM0RbXuosFrIrEm5/DdW20R5Mc7XEH9e5KQaaksw2M=;
+ b=1ceeT7uON5odm+7dOVpMrN8Ce/YiU4TN+OmkczHVMTCR5mFUxiwR9A5X+bbNISr5Dt
+ qiyx2Kakij9auZj9Wja5mhhGl5RWL87Q1eKAV63jsWAZuUaVBTPfvFzhrdu8LiNAUTgC
+ gp4DTEv6Qnm7S0/kB3tGARLdjdlhpcA36isvcaCaj5t4a7WeYKF8k9s4nq7W9tQl34NE
+ 93eNQqaIDbU8g59OPjA5kuvqzpG/geJ21qy32iwmNC7rTg1bTF4mzFBd0HnKt2Rld4O3
+ IPbpwLTnlqQXRESzMtc+fMfyhiHeSPQmiJYqyoeklNgXpMQTMd41wnvMmE/QmEzwzL6f
+ 1Xkw==
+X-Gm-Message-State: AO0yUKXqzH2avGTaY71p/N+yL78CHxoEc/wDn9liJU81oGNhNjeCMzW1
+ 2POJ3anE9PiHHlmdjbg9Zw5U1Kh0imysawON
+X-Google-Smtp-Source: AK7set/2Szl6eQoBgC2XYZnvZoAXR0Y8UP0KqQ54UuNNWqiRrIZEAZOmFArtqMMYgOqZXP5NRUiYGw==
+X-Received: by 2002:a5d:5959:0:b0:2c7:df22:1184 with SMTP id
+ e25-20020a5d5959000000b002c7df221184mr927733wri.56.1677252853912; 
+ Fri, 24 Feb 2023 07:34:13 -0800 (PST)
+Received: from localhost.localdomain ([81.0.6.76])
  by smtp.gmail.com with ESMTPSA id
- y21-20020a170906519500b008b2e4f88ed7sm9245882ejk.111.2023.02.24.01.27.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Feb 2023 01:27:57 -0800 (PST)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Emanuele Giuseppe Esposito <eesposit@redhat.com>, qemu-trivial@nongnu.org,
- Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH] MAINTAINERS: Cover RCU documentation
-Date: Fri, 24 Feb 2023 10:27:56 +0100
-Message-Id: <20230224092756.593742-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230119102620.5669-1-philmd@linaro.org>
-References: 
+ y7-20020a05600c364700b003e2096da239sm3242285wmq.7.2023.02.24.07.34.12
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 24 Feb 2023 07:34:13 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: John Snow <jsnow@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw/ide: Remove unuseful IDE_DMA__COUNT definition
+Date: Fri, 24 Feb 2023 16:34:10 +0100
+Message-Id: <20230224153410.19727-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,10 +77,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Feb 2023 09:28:05 -0000
+X-List-Received-Date: Fri, 24 Feb 2023 15:34:17 -0000
 
-Queued, thanks.
+First, IDE_DMA__COUNT represents the number of enumerated
+values, but is incorrectly listed as part of the enum.
 
-Paolo
+Second, IDE_DMA_CMD_str() is internal to core.c and only
+takes sane enums from ide_dma_cmd. So no need to check the
+'enval' argument is within the enum range. Only checks
+IDE_DMA_CMD_lookup[] entry is not NULL.
+
+Both combined, IDE_DMA__COUNT can go.
+
+Reduce IDE_DMA_CMD_lookup[] scope which is only used locally.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/ide/core.c             | 10 +++++-----
+ include/hw/ide/internal.h |  3 ---
+ 2 files changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/hw/ide/core.c b/hw/ide/core.c
+index 5d1039378f..8bf61e7267 100644
+--- a/hw/ide/core.c
++++ b/hw/ide/core.c
+@@ -63,19 +63,19 @@ static const int smart_attributes[][12] = {
+     { 190,  0x03, 0x00, 0x45, 0x45, 0x1f, 0x00, 0x1f, 0x1f, 0x00, 0x00, 0x32},
+ };
+ 
+-const char *IDE_DMA_CMD_lookup[IDE_DMA__COUNT] = {
++static const char *IDE_DMA_CMD_lookup[] = {
+     [IDE_DMA_READ] = "DMA READ",
+     [IDE_DMA_WRITE] = "DMA WRITE",
+     [IDE_DMA_TRIM] = "DMA TRIM",
+-    [IDE_DMA_ATAPI] = "DMA ATAPI"
++    [IDE_DMA_ATAPI] = "DMA ATAPI",
+ };
+ 
+ static const char *IDE_DMA_CMD_str(enum ide_dma_cmd enval)
+ {
+-    if ((unsigned)enval < IDE_DMA__COUNT) {
+-        return IDE_DMA_CMD_lookup[enval];
++    if (!IDE_DMA_CMD_lookup[enval]) {
++        return "DMA UNKNOWN CMD";
+     }
+-    return "DMA UNKNOWN CMD";
++    return IDE_DMA_CMD_lookup[enval];
+ }
+ 
+ static void ide_dummy_transfer_stop(IDEState *s);
+diff --git a/include/hw/ide/internal.h b/include/hw/ide/internal.h
+index fc0aa81a88..e864fe8caf 100644
+--- a/include/hw/ide/internal.h
++++ b/include/hw/ide/internal.h
+@@ -352,11 +352,8 @@ enum ide_dma_cmd {
+     IDE_DMA_WRITE,
+     IDE_DMA_TRIM,
+     IDE_DMA_ATAPI,
+-    IDE_DMA__COUNT
+ };
+ 
+-extern const char *IDE_DMA_CMD_lookup[IDE_DMA__COUNT];
+-
+ #define ide_cmd_is_read(s) \
+         ((s)->dma_cmd == IDE_DMA_READ)
+ 
+-- 
+2.38.1
 
 
