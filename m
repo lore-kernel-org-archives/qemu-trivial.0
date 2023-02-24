@@ -1,77 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pVJL4-0006vl-UG
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Feb 2023 16:41:18 -0500
+	id 1pVRby-0000l1-ML
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2023 01:31:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVJL3-0006vb-Oo
- for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 16:41:17 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pVJL1-0004Yc-Vh
- for qemu-trivial@nongnu.org; Thu, 23 Feb 2023 16:41:17 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- m25-20020a7bcb99000000b003e7842b75f2so460054wmi.3
- for <qemu-trivial@nongnu.org>; Thu, 23 Feb 2023 13:41:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=orvUdl7Yoqh+l75M4NGCyCqx8juccnOLmhhHtFnUiYQ=;
- b=eWcLb6SkbwuVAk3nlRCT7+sVoFPaOwGyQS+KUlKChAHsjd3fEvM5ygLU7CtCtxq4uK
- hDIEuBFX0hq6xAXi6yofKfsdvIfdQnn5lejV7W7lQKRhk39wieN8Hgzbbk6hq3xqzuB3
- WTcnLfPp1SnUYngzOOp90qMYJi1IYMtk9xERNC9R7OvgMSvA/7Pj+lg4MQ4HiLJfNdKt
- xxruo4BZGRiuCTL2IEOs6EXP3pDteg+YW9lwLa8Pj/xZfXjrE50v5iZ/Hs3LBdWUUHwH
- vye8i3IdvSnQ2qcbi5QnqEhwRxgrzUWDmwFW6EOA2lOMWu/+8PNjn+qEKjESqCszz8MU
- QaFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=orvUdl7Yoqh+l75M4NGCyCqx8juccnOLmhhHtFnUiYQ=;
- b=wcMquVxPGPKlGcrKOUiaFnXpKPofpCzSIXImUMxbGeEV81kIV1DtmL6uKRMc1BNDoG
- 1XYWfKUG35IkC30ZVXshOowJAAW5zfI6InhJn2EEFH9VHd3anHk94SDWAmLz/GxGdJMM
- pBhK3MF/h/D9ht862rtBZFTVhKE4ZbzKAsCx8nSamZsSDRgrrVnu435heFNiogp5YU2H
- eOzjZwjNTyY90QodXtHfj69zoojKLW/5oMYAmIHY66OkD4YIiixBzxuOjIe+Apd/BAKa
- 7JQ2e0h+2d7SJTxSB9QOOtLwIOl+yOkBtwxS1VzDF8tbrW9GStOzHFe6Od97v7XGDfZf
- GPtQ==
-X-Gm-Message-State: AO0yUKVob6/lu+FMhKDXriF1TVgKsW005yy/ohQPQc5twxkqyxqQBtPC
- d3/D+i6+j7IS4dHqSu8rzqY8Bg==
-X-Google-Smtp-Source: AK7set/iU3xnFbO88lZzTdOI62CjP63hHfkiiVRio1rV1x759XZr6woYto2iTL2ij6Ff3DQ+TqQhdA==
-X-Received: by 2002:a05:600c:2e86:b0:3dc:55e6:fffd with SMTP id
- p6-20020a05600c2e8600b003dc55e6fffdmr9276724wmn.15.1677188475099; 
- Thu, 23 Feb 2023 13:41:15 -0800 (PST)
-Received: from [192.168.1.115] ([185.126.107.38])
- by smtp.gmail.com with ESMTPSA id
- fm16-20020a05600c0c1000b003dd1bd0b915sm568678wmb.22.2023.02.23.13.41.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Feb 2023 13:41:14 -0800 (PST)
-Message-ID: <fe9297e2-3f0e-2f25-1185-2b2f50d963d1@linaro.org>
-Date: Thu, 23 Feb 2023 22:41:13 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pVRbv-0000iP-Dx
+ for qemu-trivial@nongnu.org; Fri, 24 Feb 2023 01:31:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1pVRbt-0000M5-BT
+ for qemu-trivial@nongnu.org; Fri, 24 Feb 2023 01:31:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677220270;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Rv/Q6xprvEjZqWKQXpaq8c9oK0tUARsAWgr/yl7LSfg=;
+ b=So89GEoOA32gwSRxexmGghhxBrcoikSEUtjpz/rDKlA1G5R8jQsRZPB9ND0CR6z3LyMz6K
+ 8pcKBittGxk6vAlUIjB1ttwGU8U7cSjLYruQTQ2YM3hnZhnvXzswmry/zeN/+nLCFNbqLe
+ 84Cbsuo7Ly1XewpNDpzJnywpZ6z3HAg=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-360-O2oDaAyqNp-mj5W-shOUKQ-1; Fri, 24 Feb 2023 01:31:08 -0500
+X-MC-Unique: O2oDaAyqNp-mj5W-shOUKQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B127A85A588;
+ Fri, 24 Feb 2023 06:31:07 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9096E140EBF4;
+ Fri, 24 Feb 2023 06:31:07 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 72BF321E6A1F; Fri, 24 Feb 2023 07:31:06 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  qemu-block@nongnu.org,  Emanuele Giuseppe Esposito
+ <eesposit@redhat.com>,  qemu-trivial@nongnu.org,  Markus Armbruster
+ <armbru@redhat.com>
 Subject: Re: [PATCH] MAINTAINERS: Cover RCU documentation
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
- Emanuele Giuseppe Esposito <eesposit@redhat.com>, qemu-trivial@nongnu.org,
- Markus Armbruster <armbru@redhat.com>
 References: <20230119102620.5669-1-philmd@linaro.org>
  <120f942f-a460-cc69-545e-f99fd033501e@linaro.org>
-In-Reply-To: <120f942f-a460-cc69-545e-f99fd033501e@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ <fe9297e2-3f0e-2f25-1185-2b2f50d963d1@linaro.org>
+Date: Fri, 24 Feb 2023 07:31:06 +0100
+In-Reply-To: <fe9297e2-3f0e-2f25-1185-2b2f50d963d1@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 23 Feb 2023 22:41:13
+ +0100")
+Message-ID: <87v8jr3785.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,32 +76,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Feb 2023 21:41:18 -0000
+X-List-Received-Date: Fri, 24 Feb 2023 06:31:15 -0000
 
-ping^2
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-On 7/2/23 10:11, Philippe Mathieu-Daudé wrote:
-> Ping?
-> 
-> On 19/1/23 11:26, Philippe Mathieu-Daudé wrote:
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   MAINTAINERS | 2 ++
->>   1 file changed, 2 insertions(+)
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 0fe50d01e3..73e9cb33f5 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -2812,6 +2812,8 @@ F: qapi/run-state.json
->>   Read, Copy, Update (RCU)
->>   M: Paolo Bonzini <pbonzini@redhat.com>
->>   S: Maintained
->> +F: docs/devel/lockcnt.txt
->> +F: docs/devel/rcu.txt
->>   F: include/qemu/rcu*.h
->>   F: tests/unit/rcutorture.c
->>   F: tests/unit/test-rcu-*.c
-> 
+> ping^2
+
+You misspelled "Paolo?"  You're welcome!  ;-P
 
 
