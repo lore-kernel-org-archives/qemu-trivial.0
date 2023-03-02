@@ -1,75 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pX0BA-0001nr-Bg
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2023 08:38:04 -0500
+	id 1pXkAB-0006wo-GY
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2023 09:44:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pX0B1-0001ms-Mo
- for qemu-trivial@nongnu.org; Tue, 28 Feb 2023 08:37:59 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pX0Az-0000nY-Rf
- for qemu-trivial@nongnu.org; Tue, 28 Feb 2023 08:37:55 -0500
-Received: by mail-wr1-x429.google.com with SMTP id v16so6965695wrn.0
- for <qemu-trivial@nongnu.org>; Tue, 28 Feb 2023 05:37:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=vrM+Jzvvr11us9zAruSNQhpzPzpITmPlXpsveZHFKTk=;
- b=E6w1O3HYm1H/aSnr4DLxh0YJCt/S5nx5bu+215cPhZ4TJZJ8puRvkNuJ0jgHhcyBYZ
- rSFBwh5+utUabnwo/bpFm4mK7JXIE6VNxvWQe8wPlwmLZGxoIS2pNPvVZtjIU3FNVF9b
- mRc8pi8WkSbd1bMV8CaCREQplAtyNDxT9Y3s0U7mkH5x1gNP1PHChW7CGLLYaURdAVMS
- P0i9iBKCjFDKHr+msVWPpK87KGG97DVkdDAqah7FhXkP89QndE6PE+vA0PdRh0+5hGfX
- 4QySbsHr3pqLP5qEklM2BRNoEAYe5vCvMztFMYlYCcwOCL5qHJBlCyPwpGybgHHHOlFw
- 51xA==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pXkAA-0006wd-MZ
+ for qemu-trivial@nongnu.org; Thu, 02 Mar 2023 09:44:06 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pXkA8-0006pu-Vw
+ for qemu-trivial@nongnu.org; Thu, 02 Mar 2023 09:44:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677768243;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=v2eKJJacejP9wXF+36LoJxQxXgDcyIduj+iFIB/0YPQ=;
+ b=LrD1OYHf+VeG8qQBFQlQegosLo/sdyNzZ3d2VvaEyCPVnEEte3lkJ7Q0cElUDkuqT3uqQL
+ yDWTIOf/2QwI8rdBY+m+97q+6dC70JmBdQ64eLps65h1mEO6IHP1VH9XANqvXzJQbI2DX3
+ OPq6odvp4/Ofb9gNeQiTY6zW1YIf2DI=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-113-rivQ66GtOFSOtnv3whOpYQ-1; Thu, 02 Mar 2023 09:43:59 -0500
+X-MC-Unique: rivQ66GtOFSOtnv3whOpYQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ bi27-20020a05600c3d9b00b003e9d0925341so5828610wmb.8
+ for <qemu-trivial@nongnu.org>; Thu, 02 Mar 2023 06:43:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vrM+Jzvvr11us9zAruSNQhpzPzpITmPlXpsveZHFKTk=;
- b=NvThAOsnsIVhTe5Yy5jFRQY/hnQw8m/bWYOfv+AVHbKOXvSYR1n0LnN2YwRcESoapl
- 5lrRNkySBfFMFV8HrF+YE0/2UHi631G4uaIUCsF9V0+O1PNKNQHX3Rq0uiL6tq0fT2aO
- PAuBrKpUDs4PCeLVK8MYjmVt58pTOoYJF7MHrUJmGUr0NwZjLIAzVwbXcwc6xrMzGisX
- ldUt3je3kDbRGDJXc4z/v1prl374q0xVfuJ1SSmlubc25REEJ2cnx97L9OIVaScMNWEh
- pqlskIKUA3UwllU6EMRYtt5CfyC2iFtxwW5aDP4YqOHLNcmOlNy3TchNBw2/x7A3vCog
- ic4A==
-X-Gm-Message-State: AO0yUKUVyVMgMg8rknomfnWRzf/0pqJH1jW4daDkldjJateAAYp0BHn0
- PvogXkl1Y8Vc4ruCmXHCU3XF4Q==
-X-Google-Smtp-Source: AK7set8KNstNyTWiyuOtFhNdwivjc0dlLuTCuPRqHufjP8g67QIZM+sWnHGTdTNPWnNSJN+cV3MYcg==
-X-Received: by 2002:a5d:5009:0:b0:2c5:5a65:79a0 with SMTP id
- e9-20020a5d5009000000b002c55a6579a0mr2497840wrt.53.1677591472007; 
- Tue, 28 Feb 2023 05:37:52 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- w15-20020adfee4f000000b002be5bdbe40csm9804458wro.27.2023.02.28.05.37.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Feb 2023 05:37:51 -0800 (PST)
-Message-ID: <0655fae9-80db-c26b-ded1-406fd82c1331@linaro.org>
-Date: Tue, 28 Feb 2023 14:37:50 +0100
+ d=1e100.net; s=20210112; t=1677768234;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=v2eKJJacejP9wXF+36LoJxQxXgDcyIduj+iFIB/0YPQ=;
+ b=kzYtYKXUYtpMmXNUCk9YFUo8tTWXw84li5SeWJO10srufUmySznoy/MOeqrmUGE845
+ PmOVFfVh/lUrg7j5/q6JShE3GeWLvQqSMweY1YESmkW+EZRkl6+qpd0Bp00i72AeX7Ut
+ uIk92icANEsnUOatCj9EY8RlFD3KxHQ+65qRnARO8Af3fiKIRhpTQ9DRqe26lXORu4Eg
+ tm4WSgQCmTFw392Rde0DGVYVVbdzDnWRb5IvXW424fag+JZPqZgot2+9ut1rpm2r3Zrx
+ 9jGyMNa/W5Vk306GfhycxYdvVQY2ZF94zHMOLUlDKvvmWLrZVT+tgA8RgBveXs3QHgYv
+ WifQ==
+X-Gm-Message-State: AO0yUKVCbTCLW3Dp8slNzhciObp4Bh1sg0wPzsCRiH2YSrT/GLB+I4NK
+ CuGeJHgcjg84e/fN6oa1Xhk8iA+/L1vtd273kHp7wyZwZ8q6TPXj98thdDOXbc/i8Fb1T4FImv/
+ 5oKA6UMYRf+Py6LisRQ==
+X-Received: by 2002:a5d:574d:0:b0:2c9:f488:5f54 with SMTP id
+ q13-20020a5d574d000000b002c9f4885f54mr7425558wrw.57.1677768233838; 
+ Thu, 02 Mar 2023 06:43:53 -0800 (PST)
+X-Google-Smtp-Source: AK7set908BUsMOH2KMIxEcThQWEXjCxBX/BTYV2OgIwSeT/uVIa+ayBdwtn8g7+HSgSBi5dq+1UAMg==
+X-Received: by 2002:a5d:574d:0:b0:2c9:f488:5f54 with SMTP id
+ q13-20020a5d574d000000b002c9f4885f54mr7425542wrw.57.1677768233567; 
+ Thu, 02 Mar 2023 06:43:53 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
+ by smtp.gmail.com with ESMTPSA id
+ g13-20020a05600c310d00b003eaf666cbe0sm3402780wmo.27.2023.03.02.06.43.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Mar 2023 06:43:51 -0800 (PST)
+Date: Thu, 2 Mar 2023 15:43:50 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Ani Sinha <ani@anisinha.ca>, "Michael S. Tsirkin" <mst@redhat.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>, Thomas
+ Huth <thuth@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <lvivier@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH v2 19/20] hw/i386/ich9: Clean up includes
+Message-ID: <20230302154350.0327f0c1@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230131115326.12454-20-shentey@gmail.com>
+References: <20230131115326.12454-1-shentey@gmail.com>
+ <20230131115326.12454-20-shentey@gmail.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.36; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH 2/2] hw/pci: Trace IRQ routing on PCI topology
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Bernhard Beschow <shentey@gmail.com>, BALATON Zoltan <balaton@eik.bme.hu>
-References: <20230211152239.88106-1-philmd@linaro.org>
- <20230211152239.88106-3-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230211152239.88106-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.092,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,61 +97,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Feb 2023 13:38:00 -0000
+X-List-Received-Date: Thu, 02 Mar 2023 14:44:06 -0000
 
-ping
+On Tue, 31 Jan 2023 12:53:25 +0100
+Bernhard Beschow <shentey@gmail.com> wrote:
 
-On 11/2/23 16:22, Philippe Mathieu-Daudé wrote:
-> Trace how IRQ are rooted from EP to RC.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+this lacks commit description explaining below movements
+
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/pci/pci.c        | 8 ++++++++
->   hw/pci/trace-events | 1 +
->   2 files changed, 9 insertions(+)
+>  include/hw/i386/ich9.h | 8 +++++---
+>  hw/i386/acpi-build.c   | 1 +
+>  hw/isa/lpc_ich9.c      | 2 +-
+>  3 files changed, 7 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 805e4b0c68..2e785e3aef 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -279,9 +279,13 @@ static void pci_change_irq_level(PCIDevice *pci_dev, int irq_num, int change)
->   {
->       PCIBus *bus;
->       for (;;) {
-> +        int dev_irq = irq_num;
->           bus = pci_get_bus(pci_dev);
->           assert(bus->map_irq);
->           irq_num = bus->map_irq(pci_dev, irq_num);
-> +        trace_pci_route_irq(dev_irq, DEVICE(pci_dev)->canonical_path, irq_num,
-> +                            pci_bus_is_root(bus) ? "root-complex"
-> +                                    : DEVICE(bus->parent_dev)->canonical_path);
->           if (bus->set_irq)
->               break;
->           pci_dev = bus->parent_dev;
-> @@ -1600,8 +1604,12 @@ PCIINTxRoute pci_device_route_intx_to_irq(PCIDevice *dev, int pin)
->       PCIBus *bus;
->   
->       do {
-> +        int dev_irq = pin;
->           bus = pci_get_bus(dev);
->           pin = bus->map_irq(dev, pin);
-> +        trace_pci_route_irq(dev_irq, DEVICE(dev)->canonical_path, pin,
-> +                            pci_bus_is_root(bus) ? "root-complex"
-> +                                    : DEVICE(bus->parent_dev)->canonical_path);
->           dev = bus->parent_dev;
->       } while (dev);
->   
-> diff --git a/hw/pci/trace-events b/hw/pci/trace-events
-> index aaf46bc92d..42430869ce 100644
-> --- a/hw/pci/trace-events
-> +++ b/hw/pci/trace-events
-> @@ -3,6 +3,7 @@
->   # pci.c
->   pci_update_mappings_del(const char *dev, uint32_t bus, uint32_t slot, uint32_t func, int bar, uint64_t addr, uint64_t size) "%s %02x:%02x.%x %d,0x%"PRIx64"+0x%"PRIx64
->   pci_update_mappings_add(const char *dev, uint32_t bus, uint32_t slot, uint32_t func, int bar, uint64_t addr, uint64_t size) "%s %02x:%02x.%x %d,0x%"PRIx64"+0x%"PRIx64
-> +pci_route_irq(int dev_irq, const char *dev_path, int parent_irq, const char *parent_path) "IRQ %d @%s -> IRQ %d @%s"
->   
->   # pci_host.c
->   pci_cfg_read(const char *dev, uint32_t bus, uint32_t slot, uint32_t func, unsigned offs, unsigned val) "%s %02x:%02x.%x @0x%x -> 0x%x"
+> diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
+> index d29090a9b7..3125863049 100644
+> --- a/include/hw/i386/ich9.h
+> +++ b/include/hw/i386/ich9.h
+> @@ -1,11 +1,13 @@
+>  #ifndef HW_ICH9_H
+>  #define HW_ICH9_H
+>  
+> -#include "hw/sysbus.h"
+> -#include "hw/i386/pc.h"
+>  #include "hw/isa/apm.h"
+> -#include "hw/acpi/acpi.h"
+>  #include "hw/acpi/ich9.h"
+> +#include "hw/intc/ioapic.h"
+> +#include "hw/pci/pci.h"
+> +#include "hw/pci/pci_device.h"
+> +#include "exec/memory.h"
+> +#include "qemu/notify.h"
+>  #include "qom/object.h"
+>  
+>  void ich9_generate_smi(void);
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 127c4e2d50..266df7a153 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -59,6 +59,7 @@
+>  #include "hw/acpi/pcihp.h"
+>  #include "hw/i386/fw_cfg.h"
+>  #include "hw/i386/ich9.h"
+> +#include "hw/i386/pc.h"
+>  #include "hw/pci/pci_bus.h"
+>  #include "hw/pci-host/i440fx.h"
+>  #include "hw/pci-host/q35.h"
+> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+> index 808c572ae4..f508f6071e 100644
+> --- a/hw/isa/lpc_ich9.c
+> +++ b/hw/isa/lpc_ich9.c
+> @@ -40,8 +40,8 @@
+>  #include "hw/irq.h"
+>  #include "hw/isa/apm.h"
+>  #include "hw/pci/pci.h"
+> -#include "hw/pci/pci_bridge.h"
+>  #include "hw/i386/ich9.h"
+> +#include "hw/i386/pc.h"
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/acpi/ich9.h"
+>  #include "hw/pci/pci_bus.h"
 
 
