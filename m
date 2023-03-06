@@ -1,85 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pZ4nG-0003T5-8z
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2023 01:57:58 -0500
+	id 1pZK3Q-0000ga-97
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2023 18:15:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pZ4nE-0003H1-7q; Mon, 06 Mar 2023 01:57:56 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pZ4nB-0001Xp-55; Mon, 06 Mar 2023 01:57:55 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id j3so4955771wms.2;
- Sun, 05 Mar 2023 22:57:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678085871;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ROFUnSEnxl2TBbaUggpz+pLim4EObH1XxtmbpnXyJeg=;
- b=Gbf8w6PRqq708WiAvYvwlPfs5m8rsncJHY9mRJRFaxhWeDWuefsu+1pOF1jXGvIATD
- XIZZSyRIAJj9HMutgd4aFmCKB/RIopiUGts/ahdTQbxn9fWvkC5wgn2+vzTzXmlmqgEP
- REmePisHCwZDNofp8eLyqWczEjD6EHLAaVK2C4Gsecj3CVKwR5HkeBHjbXAyFpmfX3iE
- psyFdJWThPqwxQbQXWZAU4wL8npiCd8KES5Or5rCGMxD72lkFzMcqxfF+Rm6VBirH8BN
- mngwZv9tIyUHlIalgi/rhEl3JLnXW76ZfHL/GqdoJ82MtSJTv+NLSTXfjdEP0wzNLf+i
- xhGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678085871;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ROFUnSEnxl2TBbaUggpz+pLim4EObH1XxtmbpnXyJeg=;
- b=NNFbpq7pUYdwpCaHqdEwvD1BzFXwriAToLRkjaIjcncNLZEGYt7nqNxFlBSqT3F7/2
- D5JMxuOllSGVIDaGABWcVZkqD57+VL/KhRvR+DZA0kUnx+hA+K8FVYc/Q30oxIWLrDDI
- FpCdFmpduzPfJRi35C9hhE84qDmuemu6/IO+rxqDjZi4q/ZTFOLXQrrf1oYFvetG8ZnS
- 0TZ4+8eu3ze3PrzgxECkypZjl2yzhQEczbgeIZz9dkWS+AdSVXtrb7KpPqM9xpDTVxJm
- ApnRUJfRlT+0T4t+PreFG8lzDFIYL5XA0CcqfVytU8DBuFoRRRTthZAe5kGYo75T8OJ8
- Va3Q==
-X-Gm-Message-State: AO0yUKX6AgT6YynEErKtaAnezqcm1WmRLjKIx+4583Namrl22Jj8BHIt
- 0cfJ/h7ENXLkbsHSAN7IKLE=
-X-Google-Smtp-Source: AK7set/ewuiHEzHh0iNpNycKs2yqLUJROAcfJdLlFmRBzPoo1sqPEaflKKKVkeHTFCDfSgScIPDHiA==
-X-Received: by 2002:a05:600c:4f15:b0:3eb:3998:36fa with SMTP id
- l21-20020a05600c4f1500b003eb399836famr8243613wmq.29.1678085871042; 
- Sun, 05 Mar 2023 22:57:51 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-077-183-189-218.77.183.pool.telefonica.de.
- [77.183.189.218]) by smtp.gmail.com with ESMTPSA id
- p16-20020a05600c359000b003e209b45f6bsm14294231wmq.29.2023.03.05.22.57.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 05 Mar 2023 22:57:50 -0800 (PST)
-Date: Mon, 06 Mar 2023 06:57:41 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: Paolo Bonzini <pbonzini@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Juan Quintela <quintela@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
- Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v4 1/9] hw/pci-host/i440fx: Inline sysbus_add_io()
-In-Reply-To: <3ABCEE15-F73D-498F-8D95-F17B78795E14@gmail.com>
-References: <20230213162004.2797-1-shentey@gmail.com>
- <20230213162004.2797-2-shentey@gmail.com>
- <f865212d-6a08-8f9e-5ddd-6fe037fc5fa9@linaro.org>
- <3ABCEE15-F73D-498F-8D95-F17B78795E14@gmail.com>
-Message-ID: <EA2E3787-179C-4A50-9305-969404D09702@gmail.com>
+ (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
+ id 1pZK3H-0000fm-QT; Mon, 06 Mar 2023 18:15:31 -0500
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mathbern@qualcomm.com>)
+ id 1pZK3F-0003UP-Mj; Mon, 06 Mar 2023 18:15:31 -0500
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 326Me1FE020398; Mon, 6 Mar 2023 23:15:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding;
+ s=qcppdkim1; bh=Ah+QrRcrh8BKeGPWfFyn+HMwziYE8pv49iXy/fSLX5A=;
+ b=FKm9+FbyQllN1XU9VNmOiTnMwJ1Lm4+nsh1ymeDA5c6/8/2igl2Sy/79z7FXERPZQf6C
+ ojw+rgMEsiOeN8PUJ+f1Yn/q7hs2q96Gcr7sGKNiPS8+Qw58YBOJWIVvD/Hv0K2nN2Qg
+ Hmqv4BYy8d7QMgDhn9NaQz/KckUKdI0g46GlzcflwfayR4H5pp6SxZcfOAxBCDPGNgxc
+ DwdSvcY/lLvJ8pqddR+PigZCl30bLDGMK9LgqsD8SktORHVEEiU0G21NBF5SzSIon9Ox
+ QIThqHV7Nd7bijAitRCMt7QbOmD52Tcqq784yqdeGYvay1QCybkAnh34jG68ZqcMmHvu cg== 
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com
+ [129.46.96.20])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3p420c66b1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 06 Mar 2023 23:15:25 +0000
+Received: from hu-devc-sd-u20-a-1.qualcomm.com (hu-mathbern-lv.qualcomm.com
+ [10.47.235.147])
+ by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 326NFNRH023133
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 6 Mar 2023 23:15:23 GMT
+Received: by hu-devc-sd-u20-a-1.qualcomm.com (Postfix, from userid 4229910)
+ id A8D1567C5; Mon,  6 Mar 2023 20:15:23 -0300 (-03)
+From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, antoine.damhet@shadow.tech,
+ charles.frey@shadow.tech, berrange@redhat.com
+Subject: [PATCH] io/channel-tls: plug memory leakage on GSource
+Date: Mon,  6 Mar 2023 20:15:21 -0300
+Message-Id: <98f750b6ded2dd2e8d0e4ffc9935d3d6e0cd59f4.1678144392.git.quic_mathbern@quicinc.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-ORIG-GUID: DuSwFJrmnh7q3i9ePBMJpzxheFBBdd5H
+X-Proofpoint-GUID: DuSwFJrmnh7q3i9ePBMJpzxheFBBdd5H
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-03-06_14,2023-03-06_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ lowpriorityscore=0 phishscore=0 spamscore=0 mlxscore=0 impostorscore=0
+ malwarescore=0 adultscore=0 clxscore=1011 suspectscore=0 mlxlogscore=999
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2303060202
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=mathbern@qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,75 +77,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Mar 2023 06:57:57 -0000
+X-List-Received-Date: Mon, 06 Mar 2023 23:15:33 -0000
 
+This leakage can be seen through test-io-channel-tls:
 
+$ ../configure --target-list=aarch64-softmmu --enable-sanitizers
+$ make ./tests/unit/test-io-channel-tls
+$ ./tests/unit/test-io-channel-tls
 
-Am 22=2E Februar 2023 18:05:51 UTC schrieb Bernhard Beschow <shentey@gmail=
-=2Ecom>:
->
->
->Am 22=2E Februar 2023 10:58:08 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
-<philmd@linaro=2Eorg>:
->>On 13/2/23 17:19, Bernhard Beschow wrote:
->>> sysbus_add_io() just wraps memory_region_add_subregion() while also
->>> obscuring where the memory is attached=2E So use
->>> memory_region_add_subregion() directly and attach it to the existing
->>> memory region s->bus->address_space_io which is set as an alias to
->>> get_system_io() by the pc machine=2E
->>>=20
->>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->>> Reviewed-by: Thomas Huth <thuth@redhat=2Ecom>
->>> ---
->>>   hw/pci-host/i440fx=2Ec | 5 +++--
->>>   1 file changed, 3 insertions(+), 2 deletions(-)
->>>=20
->>> diff --git a/hw/pci-host/i440fx=2Ec b/hw/pci-host/i440fx=2Ec
->>> index 262f82c303=2E=2E9c6882d3fc 100644
->>> --- a/hw/pci-host/i440fx=2Ec
->>> +++ b/hw/pci-host/i440fx=2Ec
->>> @@ -27,6 +27,7 @@
->>>   #include "qemu/range=2Eh"
->>>   #include "hw/i386/pc=2Eh"
->>>   #include "hw/pci/pci=2Eh"
->>> +#include "hw/pci/pci_bus=2Eh"
->>>   #include "hw/pci/pci_host=2Eh"
->>>   #include "hw/pci-host/i440fx=2Eh"
->>>   #include "hw/qdev-properties=2Eh"
->>> @@ -217,10 +218,10 @@ static void i440fx_pcihost_realize(DeviceState *=
-dev, Error **errp)
->>>       PCIHostState *s =3D PCI_HOST_BRIDGE(dev);
->>>       SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->>>   -    sysbus_add_io(sbd, 0xcf8, &s->conf_mem);
->>> +    memory_region_add_subregion(s->bus->address_space_io, 0xcf8, &s->=
-conf_mem);
->>
->>To avoid accessing internal fields we should stick to the PCI API:
->>
->>    memory_region_add_subregion(pci_address_space_io(PCI_DEVICE(dev)),
->>                                0xcf8, &s->conf_mem);
->
->dev is of type PCIHostState which derives from SysBusDevice, not PCIDevic=
-e=2E AFAICS there is no getter implemented on PCIBus=2E
+Indirect leak of 104 byte(s) in 1 object(s) allocated from:
+    #0 0x7f81d1725808 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:144
+    #1 0x7f81d135ae98 in g_malloc (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x57e98)
+    #2 0x55616c5d4c1b in object_new_with_propv ../qom/object.c:795
+    #3 0x55616c5d4a83 in object_new_with_props ../qom/object.c:768
+    #4 0x55616c5c5415 in test_tls_creds_create ../tests/unit/test-io-channel-tls.c:70
+    #5 0x55616c5c5a6b in test_io_channel_tls ../tests/unit/test-io-channel-tls.c:158
+    #6 0x7f81d137d58d  (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x7a58d)
 
-Ping
+Indirect leak of 32 byte(s) in 1 object(s) allocated from:
+    #0 0x7f81d1725a06 in __interceptor_calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cc:153
+    #1 0x7f81d1472a20 in gnutls_dh_params_init (/lib/x86_64-linux-gnu/libgnutls.so.30+0x46a20)
+    #2 0x55616c6485ff in qcrypto_tls_creds_x509_load ../crypto/tlscredsx509.c:634
+    #3 0x55616c648ba2 in qcrypto_tls_creds_x509_complete ../crypto/tlscredsx509.c:694
+    #4 0x55616c5e1fea in user_creatable_complete ../qom/object_interfaces.c:28
+    #5 0x55616c5d4c8c in object_new_with_propv ../qom/object.c:807
+    #6 0x55616c5d4a83 in object_new_with_props ../qom/object.c:768
+    #7 0x55616c5c5415 in test_tls_creds_create ../tests/unit/test-io-channel-tls.c:70
+    #8 0x55616c5c5a6b in test_io_channel_tls ../tests/unit/test-io-channel-tls.c:158
+    #9 0x7f81d137d58d  (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x7a58d)
 
->
->>
->>>       sysbus_init_ioports(sbd, 0xcf8, 4);
->>>   -    sysbus_add_io(sbd, 0xcfc, &s->data_mem);
->>> +    memory_region_add_subregion(s->bus->address_space_io, 0xcfc, &s->=
-data_mem);
->>>       sysbus_init_ioports(sbd, 0xcfc, 4);
->>
->>Now all classes implementing PCI_HOST_BRIDGE register conf/data in I/O
->>space, so this could be a pattern justifying reworking a bit the
->>PCIHostBridgeClass or adding an helper in "hw/pci/pci_host=2Eh" to do
->>that generically=2E
->
->What do you mean exactly? There are PCI hosts spawning two PCI buses and =
-therefore have two such spaces=2E
->
->Best regards,
->Bernhard
+...
+
+SUMMARY: AddressSanitizer: 49143 byte(s) leaked in 184 allocation(s).
+
+The docs for `g_source_add_child_source(source, child_source)` says
+"source will hold a reference on child_source while child_source is
+attached to it." Therefore, we should unreference the child source at
+`qio_channel_tls_read_watch()` after attaching it to `source`. With this
+change, ./tests/unit/test-io-channel-tls shows no leakages.
+
+Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+---
+ io/channel-tls.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/io/channel-tls.c b/io/channel-tls.c
+index 8052945ba0..5a7a3d48d6 100644
+--- a/io/channel-tls.c
++++ b/io/channel-tls.c
+@@ -446,6 +446,7 @@ qio_channel_tls_read_watch(QIOChannelTLS *tioc, GSource *source)
+     object_ref(OBJECT(tioc));
+ 
+     g_source_add_child_source(source, child);
++    g_source_unref(child);
+ }
+ 
+ static GSource *qio_channel_tls_create_watch(QIOChannel *ioc,
+-- 
+2.37.2
+
 
