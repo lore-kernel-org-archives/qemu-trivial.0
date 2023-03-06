@@ -1,62 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pYlJ5-0003t7-Dm
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Mar 2023 05:09:31 -0500
+	id 1pZ4nG-0003T5-8z
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2023 01:57:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pYlJ3-0003se-Iv
- for qemu-trivial@nongnu.org; Sun, 05 Mar 2023 05:09:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pYlJ0-0007zX-Me
- for qemu-trivial@nongnu.org; Sun, 05 Mar 2023 05:09:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1678010964;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=D3VYHQ4PlqwkN8xjpHytmxDsbfPL+rHNcX9cwZegjfY=;
- b=I0TPB+xhoCuGeugxbNsC+VNCk+mVk3G2bBBldqbQaBxZHrHZkIylW5lyBplEwDx5NrtDvJ
- meZDVAoRBFKZI2mx9QvmAz2OY2L39ceuqe0j1glsozfgSfkfKFowyR8pmY56yp94tW8xWi
- a3Svg4Z+BHx5FEpgJ/ElQHErwghrMHM=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-271-NXHhH8PcNcucMYkJV5Z__A-1; Sun, 05 Mar 2023 05:09:23 -0500
-X-MC-Unique: NXHhH8PcNcucMYkJV5Z__A-1
-Received: by mail-wm1-f70.google.com with SMTP id
- bi21-20020a05600c3d9500b003e836e354e0so2614763wmb.5
- for <qemu-trivial@nongnu.org>; Sun, 05 Mar 2023 02:09:22 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678010962;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pZ4nE-0003H1-7q; Mon, 06 Mar 2023 01:57:56 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pZ4nB-0001Xp-55; Mon, 06 Mar 2023 01:57:55 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id j3so4955771wms.2;
+ Sun, 05 Mar 2023 22:57:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1678085871;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=D3VYHQ4PlqwkN8xjpHytmxDsbfPL+rHNcX9cwZegjfY=;
- b=xi7M25GXshMib46Uz9Fbw7eImBaBEJgpeABrwmu3mJ8u89BrZaBSAzF+SovBRWJ++L
- EI6d5tnl1q9hKlqfbrHvbmLft8yjNg9d5y1ZUI9DLnwp7dDNzDBlEZdgFtLf2XGObV0G
- zS2RWaA4dEBifOpt80vMbWFf5VkkVqtjamMi2YpXjgRjTLYUTi+scVHPdHDYvQuefYu0
- R7Mwo0JmNuJxZKjUl1xsbmnnLIzh/tNmtPqo8csMdu/5t82axtWtFEPzy0UDxkpcsfI8
- DwNQmSdiokKZM9NTAnAWQct+cM78KHH6qdQgKQRVbmvf18ZgfQHloy5P3GUrtar7XKWG
- 5cGA==
-X-Gm-Message-State: AO0yUKXeJa+wPr1dwsSXjGazdlnwAx1h0yyIDtj1cQuVLWWkr3dbMl4n
- 5c8SkzRhx5NcqkwAOllE4JVDNMWswrZOdolIIZe2ZIYF87DLfNB6hDHpIA0gkZBXUGpCAy9V0+/
- 8Hg3M+cOcaQrypZN+Kg==
-X-Received: by 2002:a05:600c:3548:b0:3dc:5390:6499 with SMTP id
- i8-20020a05600c354800b003dc53906499mr6655970wmq.1.1678010961922; 
- Sun, 05 Mar 2023 02:09:21 -0800 (PST)
-X-Google-Smtp-Source: AK7set+URKRXmC0GV0fTXjL81xKWzVQj26hG/dXpwdaDR1u1LGow4fctGbG6Wpqp7X3ADBGEtfaHBQ==
-X-Received: by 2002:a05:600c:3548:b0:3dc:5390:6499 with SMTP id
- i8-20020a05600c354800b003dc53906499mr6655945wmq.1.1678010961586; 
- Sun, 05 Mar 2023 02:09:21 -0800 (PST)
-Received: from redhat.com ([2.52.23.160]) by smtp.gmail.com with ESMTPSA id
- w34-20020a05600c09a200b003e21f959453sm7279615wmp.32.2023.03.05.02.09.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Mar 2023 02:09:21 -0800 (PST)
-Date: Sun, 5 Mar 2023 05:09:17 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ bh=ROFUnSEnxl2TBbaUggpz+pLim4EObH1XxtmbpnXyJeg=;
+ b=Gbf8w6PRqq708WiAvYvwlPfs5m8rsncJHY9mRJRFaxhWeDWuefsu+1pOF1jXGvIATD
+ XIZZSyRIAJj9HMutgd4aFmCKB/RIopiUGts/ahdTQbxn9fWvkC5wgn2+vzTzXmlmqgEP
+ REmePisHCwZDNofp8eLyqWczEjD6EHLAaVK2C4Gsecj3CVKwR5HkeBHjbXAyFpmfX3iE
+ psyFdJWThPqwxQbQXWZAU4wL8npiCd8KES5Or5rCGMxD72lkFzMcqxfF+Rm6VBirH8BN
+ mngwZv9tIyUHlIalgi/rhEl3JLnXW76ZfHL/GqdoJ82MtSJTv+NLSTXfjdEP0wzNLf+i
+ xhGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1678085871;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ROFUnSEnxl2TBbaUggpz+pLim4EObH1XxtmbpnXyJeg=;
+ b=NNFbpq7pUYdwpCaHqdEwvD1BzFXwriAToLRkjaIjcncNLZEGYt7nqNxFlBSqT3F7/2
+ D5JMxuOllSGVIDaGABWcVZkqD57+VL/KhRvR+DZA0kUnx+hA+K8FVYc/Q30oxIWLrDDI
+ FpCdFmpduzPfJRi35C9hhE84qDmuemu6/IO+rxqDjZi4q/ZTFOLXQrrf1oYFvetG8ZnS
+ 0TZ4+8eu3ze3PrzgxECkypZjl2yzhQEczbgeIZz9dkWS+AdSVXtrb7KpPqM9xpDTVxJm
+ ApnRUJfRlT+0T4t+PreFG8lzDFIYL5XA0CcqfVytU8DBuFoRRRTthZAe5kGYo75T8OJ8
+ Va3Q==
+X-Gm-Message-State: AO0yUKX6AgT6YynEErKtaAnezqcm1WmRLjKIx+4583Namrl22Jj8BHIt
+ 0cfJ/h7ENXLkbsHSAN7IKLE=
+X-Google-Smtp-Source: AK7set/ewuiHEzHh0iNpNycKs2yqLUJROAcfJdLlFmRBzPoo1sqPEaflKKKVkeHTFCDfSgScIPDHiA==
+X-Received: by 2002:a05:600c:4f15:b0:3eb:3998:36fa with SMTP id
+ l21-20020a05600c4f1500b003eb399836famr8243613wmq.29.1678085871042; 
+ Sun, 05 Mar 2023 22:57:51 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-077-183-189-218.77.183.pool.telefonica.de.
+ [77.183.189.218]) by smtp.gmail.com with ESMTPSA id
+ p16-20020a05600c359000b003e209b45f6bsm14294231wmq.29.2023.03.05.22.57.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 05 Mar 2023 22:57:50 -0800 (PST)
+Date: Mon, 06 Mar 2023 06:57:41 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+CC: Paolo Bonzini <pbonzini@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
@@ -64,25 +60,25 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
  Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v4 0/9] PC cleanups
-Message-ID: <20230305050831-mutt-send-email-mst@kernel.org>
+Subject: Re: [PATCH v4 1/9] hw/pci-host/i440fx: Inline sysbus_add_io()
+In-Reply-To: <3ABCEE15-F73D-498F-8D95-F17B78795E14@gmail.com>
 References: <20230213162004.2797-1-shentey@gmail.com>
- <776DAC15-E708-47BF-9EF6-D511731DF56D@gmail.com>
- <4A6D076C-5091-42A5-BB83-695B5BF2F04D@gmail.com>
+ <20230213162004.2797-2-shentey@gmail.com>
+ <f865212d-6a08-8f9e-5ddd-6fe037fc5fa9@linaro.org>
+ <3ABCEE15-F73D-498F-8D95-F17B78795E14@gmail.com>
+Message-ID: <EA2E3787-179C-4A50-9305-969404D09702@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <4A6D076C-5091-42A5-BB83-695B5BF2F04D@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -96,174 +92,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Mar 2023 10:09:29 -0000
-
-On Sun, Mar 05, 2023 at 07:45:55AM +0000, Bernhard Beschow wrote:
-> 
-> 
-> Am 13. Februar 2023 16:45:05 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
-> >
-> >
-> >Am 13. Februar 2023 16:19:55 UTC schrieb Bernhard Beschow <shentey@gmail.com>:
-> >>This series contains some cleanups I came across when working on the PC
-> >>
-> >>machines. It consists of reducing the usage of global variables and eliminating
-> >>
-> >>some redundancies.
-> >>
-> >>
-> >>
-> >>One notable change is that the SMRAM memory region gets moved from the i440fx
-> >>
-> >>and q35 host bridges into the x86 machine. This will simplify cleaning up these
-> >>
-> >>host bridges which will be done in a separate series. Note that the movement of
-> >>
-> >>the SMRAM memory region apparently doesn't change migration ABI for the pc and
-> >>
-> >>q35 machines (see below).
-> >>
-> >>
-> >>
-> >>Testing done:
-> >>
-> >>* `make check`
-> >>
-> >>' `make check-avocado`
-> >>
-> >>* `qemu-system-x86_64 -M q35 -m 2G -cdrom \
-> >>
-> >>   manjaro-kde-21.3.2-220704-linux515.iso`
-> >>
-> >>* `qemu-system-x86_64 -M pc -m 2G -cdrom manjaro-kde-21.3.2-220704-linux515.iso`
-> >>
-> >>* Confirm that JSON representation of migration files (pc & q35) are empty:
-> >>
-> >>  1. Create four migration files {pc,q35}-{before,after}.mig by running
-> >>
-> >>     `qemu-system-x86_64 -M {pc,q35} -S` with QEMU built from master and from
-> >>
-> >>     this series.
-> >>
-> >>  2. Run `./scripts/analyze-migration.py -d desc -f *.mig > *.json` on the four
-> >>
-> >>     files
-> >>
-> >>  3. Compare the diffs -> both are empty
-> >>
-> >>
-> >>
-> >>v4:
-> >>
-> >>* Remove ram_memory variable in pc_q35 completely (Zoltan)
-> >>
-> >
-> >The last two patches still need review. Comments welcome!
-> 
-> Ping
-> 
-> Can we queue the reviewed patches (all but the last two) already?
-> 
-> Thanks,
-> Bernhard
-
-Philippe objected to patch 1 - he suggested using
-pci_address_space_io.
+X-List-Received-Date: Mon, 06 Mar 2023 06:57:57 -0000
 
 
 
+Am 22=2E Februar 2023 18:05:51 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>
+>
+>Am 22=2E Februar 2023 10:58:08 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
+<philmd@linaro=2Eorg>:
+>>On 13/2/23 17:19, Bernhard Beschow wrote:
+>>> sysbus_add_io() just wraps memory_region_add_subregion() while also
+>>> obscuring where the memory is attached=2E So use
+>>> memory_region_add_subregion() directly and attach it to the existing
+>>> memory region s->bus->address_space_io which is set as an alias to
+>>> get_system_io() by the pc machine=2E
+>>>=20
+>>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>>> Reviewed-by: Thomas Huth <thuth@redhat=2Ecom>
+>>> ---
+>>>   hw/pci-host/i440fx=2Ec | 5 +++--
+>>>   1 file changed, 3 insertions(+), 2 deletions(-)
+>>>=20
+>>> diff --git a/hw/pci-host/i440fx=2Ec b/hw/pci-host/i440fx=2Ec
+>>> index 262f82c303=2E=2E9c6882d3fc 100644
+>>> --- a/hw/pci-host/i440fx=2Ec
+>>> +++ b/hw/pci-host/i440fx=2Ec
+>>> @@ -27,6 +27,7 @@
+>>>   #include "qemu/range=2Eh"
+>>>   #include "hw/i386/pc=2Eh"
+>>>   #include "hw/pci/pci=2Eh"
+>>> +#include "hw/pci/pci_bus=2Eh"
+>>>   #include "hw/pci/pci_host=2Eh"
+>>>   #include "hw/pci-host/i440fx=2Eh"
+>>>   #include "hw/qdev-properties=2Eh"
+>>> @@ -217,10 +218,10 @@ static void i440fx_pcihost_realize(DeviceState *=
+dev, Error **errp)
+>>>       PCIHostState *s =3D PCI_HOST_BRIDGE(dev);
+>>>       SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>>>   -    sysbus_add_io(sbd, 0xcf8, &s->conf_mem);
+>>> +    memory_region_add_subregion(s->bus->address_space_io, 0xcf8, &s->=
+conf_mem);
+>>
+>>To avoid accessing internal fields we should stick to the PCI API:
+>>
+>>    memory_region_add_subregion(pci_address_space_io(PCI_DEVICE(dev)),
+>>                                0xcf8, &s->conf_mem);
+>
+>dev is of type PCIHostState which derives from SysBusDevice, not PCIDevic=
+e=2E AFAICS there is no getter implemented on PCIBus=2E
 
-> >
-> >>
-> >>
-> >>v3:
-> >>
-> >>* Add three patches regarding init_pam() and SMRAM.
-> >>
-> >>* Drop 'hw/i386/pc_q35: Resolve redundant q35_host variable' since Phil posted
-> >>
-> >>  a similar patch in a more comprehensive series:
-> >>
-> >>  https://lore.kernel.org/qemu-devel/20230203180914.49112-13-philmd@linaro.org/
-> >>
-> >>* Drop 'hw/isa/lpc_ich9: Reuse memory and io address space of PCI bus' since
-> >>
-> >>  it inadvertantly changed the memory hierarchy.
-> >>
-> >>* Drop ICH9 cleanups again in favor of a separate series.
-> >>
-> >>
-> >>
-> >>v2:
-> >>
-> >>* Factor out 'hw/i386/pc_q35: Reuse machine parameter' from 'hw/i386/pc_q35:
-> >>
-> >>  Resolve redundant q35_host variable' (Zoltan)
-> >>
-> >>* Lower type of phb to Object in 'hw/i386/pc_q35: Resolve redundant q35_host
-> >>
-> >>  variable' (Zoltan)
-> >>
-> >>* Add ICH9 cleanups
-> >>
-> >>
-> >>
-> >>Bernhard Beschow (9):
-> >>
-> >>  hw/pci-host/i440fx: Inline sysbus_add_io()
-> >>
-> >>  hw/pci-host/q35: Inline sysbus_add_io()
-> >>
-> >>  hw/i386/pc_q35: Reuse machine parameter
-> >>
-> >>  hw/i386/pc_{q35,piix}: Reuse MachineClass::desc as SMB product name
-> >>
-> >>  hw/i386/pc_{q35,piix}: Minimize usage of get_system_memory()
-> >>
-> >>  hw/i386/pc: Initialize ram_memory variable directly
-> >>
-> >>  hw/pci-host/pam: Make init_pam() usage more readable
-> >>
-> >>  hw/i386/x86: Make TYPE_X86_MACHINE the owner of smram
-> >>
-> >>  target/i386/tcg/sysemu/tcg-cpu: Avoid own opinion about smram size
-> >>
-> >>
-> >>
-> >> include/hw/i386/pc.h             |  1 -
-> >>
-> >> include/hw/i386/x86.h            |  2 ++
-> >>
-> >> include/hw/pci-host/i440fx.h     |  7 ++++---
-> >>
-> >> include/hw/pci-host/pam.h        |  5 +++--
-> >>
-> >> include/hw/pci-host/q35.h        |  4 +++-
-> >>
-> >> hw/i386/pc.c                     |  2 --
-> >>
-> >> hw/i386/pc_piix.c                | 10 +++++-----
-> >>
-> >> hw/i386/pc_q35.c                 | 17 +++++++++--------
-> >>
-> >> hw/i386/x86.c                    |  4 ++++
-> >>
-> >> hw/pci-host/i440fx.c             | 28 +++++++++++++---------------
-> >>
-> >> hw/pci-host/pam.c                | 12 ++++++------
-> >>
-> >> hw/pci-host/q35.c                | 31 ++++++++++++++++---------------
-> >>
-> >> target/i386/tcg/sysemu/tcg-cpu.c |  3 +--
-> >>
-> >> 13 files changed, 66 insertions(+), 60 deletions(-)
-> >>
-> >>
-> >>
-> >>-- >
-> >>2.39.1
-> >>
-> >>
-> >>
+Ping
 
+>
+>>
+>>>       sysbus_init_ioports(sbd, 0xcf8, 4);
+>>>   -    sysbus_add_io(sbd, 0xcfc, &s->data_mem);
+>>> +    memory_region_add_subregion(s->bus->address_space_io, 0xcfc, &s->=
+data_mem);
+>>>       sysbus_init_ioports(sbd, 0xcfc, 4);
+>>
+>>Now all classes implementing PCI_HOST_BRIDGE register conf/data in I/O
+>>space, so this could be a pattern justifying reworking a bit the
+>>PCIHostBridgeClass or adding an helper in "hw/pci/pci_host=2Eh" to do
+>>that generically=2E
+>
+>What do you mean exactly? There are PCI hosts spawning two PCI buses and =
+therefore have two such spaces=2E
+>
+>Best regards,
+>Bernhard
 
