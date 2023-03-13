@@ -1,49 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pbmxn-0001pr-6F
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Mar 2023 14:32:05 -0400
+	id 1pbn3Z-0006Pw-Pr
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Mar 2023 14:38:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pbmxk-0001p1-Pn; Mon, 13 Mar 2023 14:32:00 -0400
-Received: from mout.kundenserver.de ([217.72.192.74])
+ id 1pbn3R-0006PF-MS; Mon, 13 Mar 2023 14:37:57 -0400
+Received: from mout.kundenserver.de ([212.227.17.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pbmxi-0007GT-OY; Mon, 13 Mar 2023 14:32:00 -0400
+ id 1pbn3P-0008OY-Rx; Mon, 13 Mar 2023 14:37:53 -0400
 Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MA7Su-1phnVy3FKk-00Bd7T; Mon, 13 Mar 2023 19:31:44 +0100
-Message-ID: <e883606b-7559-bc1e-3cee-0d129ccc648c@vivier.eu>
-Date: Mon, 13 Mar 2023 19:31:43 +0100
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MLQl3-1psUp0421T-00IYTF; Mon, 13 Mar 2023 19:37:38 +0100
+Message-ID: <3a9bc837-9c77-aef2-cf26-b2213040629a@vivier.eu>
+Date: Mon, 13 Mar 2023 19:37:36 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH] MAINTAINERS: update my email address for the clock
- framework
+Subject: Re: [PATCH] MAINTAINERS: Remove CXL maintainer Ben Widawsky
 Content-Language: fr
-To: Damien Hedde <damien.hedde@dahe.fr>, qemu-devel@nongnu.org
-Cc: luc@lmichel.fr, mark.burton@qti.qualcomm.com, philmd@linaro.org,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20230213105227.2357-1-damien.hedde@dahe.fr>
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, bwidawsk@kernel.org, Jonathan.Cameron@Huawei.com
+References: <20230220212437.1462314-1-armbru@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20230213105227.2357-1-damien.hedde@dahe.fr>
+In-Reply-To: <20230220212437.1462314-1-armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:zega/+qjlXSck5SMhg8E5O9gJLeMJfra3kSxUdRr433N4a8x6nv
- I9bNRbwzqV4/uBmzHaB6U+BzLM937bGib5Jfwx1JGdUUMxuk1ATKiCUOomrCMcDTd3vwMy0
- E/SguQnTQbcH2FshEWNVFJ5hvILqwbP9iVZHTATl2XO2yvXSVY/1F5Q+zIxvI8HJBtCqx8J
- F12I/TLGqGGvNGintPzsg==
-UI-OutboundReport: notjunk:1;M01:P0:HLNdrVlkpxA=;sKTvaU7d9A0Tcrd2Gs/pdOZ0p7U
- uk6DsHurgSqxMuSijp0JrZB2CO1HHgEnn/nzwD9Oxp2KUhPU6BpSvMA2z7zRk0Dsii73afYnM
- qO8mh4FwIL6h8Dm4uOD09fS69sG6DXwdJH7t44S6cjFGrmElU2DZCSFeuR3JnfxujTADyixdr
- yrCzcpUkca5SexcmnmacmtIKkAOoiSbnX5EO9lb8qnKFaXPEO15RS/EnxoHdXV+3eLkDUUJWc
- 0/g9Bpdiws2ixL+UylL0dCt3evxDV1isK156cLQgqCbXXhG5V5wN2MpUpepL6TvzpssRhIUYB
- UAE0GmqgJU5NMZOiS9/+r2dsvpo4iptj0VNtngBHRNm4UFnbbHpHLYKWdAmj76Tm6YBadQ0cM
- XE5BZwZCUPIUhVbr4LZufGVI8c+u1kTvQVjWj10M1YDPZ7AOttcwsuaWCHTSFL2gOcuC6p0YG
- jR6tiuRDVtBoxvIyvxx8pKNlTj6dWS712URQcmXPoZyk8/a4AbpPxCCe7PS4MQUQ9WyYLpZRH
- 64hAssFGSLnYCBnasahOSAmHqzKRnQVZKKF9hmRcATN0ou3uDV63Lb1PpN2JzYp/qGfvqBmOh
- p8a4stIsX9cRQ/BmXyW4uNlczuuSOa3isd3bAQ53qO7Vrfpi2zj50IBZ+YquNtwOuaW1b4Y0m
- mIUQ5oZXcQnHWXaAR2FLOh+ViAu08xG1KDbg4leyGw==
-Received-SPF: none client-ip=217.72.192.74; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:9Z3lseaWR+7+T3lbPqzgKKLdnetuxSW8dz3iWmz20qws8fjvg70
+ vznM0lPTQc5ypSB43Hy9PfEj7g/SftarECKeUxHeOEgEgZUiqMZctlghVhzax1D1MMjKK2j
+ k9zLySNk900WtrL9z4uemkqqi7aphiA4RHUvFvzVWQNO1IV9uMhFU5PRA9/agaz1AjvN/rY
+ ybsKQRlkcls8nOQ5WUazg==
+UI-OutboundReport: notjunk:1;M01:P0:/EgkQGUOgjU=;7CbhuK5ZClWTMqLP9FUK1tlsil0
+ gC5O4bEkE3KOjO22WDzfq954YAza5W+Uot1nMxMe4t00S0Ue2HR5y4rmjBGK0TUnWxqDgAwSy
+ HaBxJ12NM8oPZGpwOzXUyQhnIflCU+kYo+GqzcYQ4y2LP5kJ8EiyP9i+aW0iFduyUOmZdDrTl
+ zQ57kbBe/I5AcvA5n7wDCm8g9dw9H+R6wZyta0LOa/pGTOOVQ7gwuFQ7SLCGncA4xMlkYwuSd
+ sXrLlT/m0Rvwj2KC5GI/9dAm1P/5R11UlWKV7eajV2mIs6PgiCPsi+qiEGNvIVSTiLwaNmEW5
+ 58/xOaSvSNmUtBqsixyk1jZMTuUAfE4l5Y1JT7qd3DFM2XGIFPfMWziB5VoxqzRi947kXTEYW
+ +y0gMKRetqZjbwVnFHyJv7g29XVGOCvUN1BPJ8udI3P43Jihlvh0rT8VYdQPzUU+/WWdzqvQc
+ TKwxN92gaCPAeT6PN2/12DxHgEYPhuAmy4DYMWbTJZh3iQp50Qs511V8p+Hk/yfnOdghzLI/b
+ jxzLN0QucQYuJEcnpQMOVJkuEmZvXDKtSMgtW9LvRrutNZpeFIUDXh+GNhWQZ4iZYqkW9W/IB
+ MhEDI1WQ9ICYbC46pwN7SaKNh613ZVNxB9/vJaIMtNvylr7/LtdE26Pb9d5KFO2SY3lpbVBji
+ NLSPUf2y+WnpMDNw8isjsbkeZKoCLJv6ZDH7irBB9A==
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -63,51 +61,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Mar 2023 18:32:01 -0000
+X-List-Received-Date: Mon, 13 Mar 2023 18:38:00 -0000
 
-Le 13/02/2023 à 11:53, Damien Hedde a écrit :
-> Also update mailmap
+Le 20/02/2023 à 22:24, Markus Armbruster a écrit :
+> Ben is no longer with intel.  He told me he expected to get back to
+> CXL, but it's not happening as quickly as he'd like, and that it's
+> best to remove him as maintainer.  So let's do that.
 > 
-> Signed-off-by: Damien Hedde <damien.hedde@dahe.fr>
+> Thank you for serving as maintainer, Ben!
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->   MAINTAINERS | 2 +-
->   .mailmap    | 1 +
->   2 files changed, 2 insertions(+), 1 deletion(-)
+>   MAINTAINERS | 1 -
+>   1 file changed, 1 deletion(-)
 > 
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 96e25f62ac..ceeda49d49 100644
+> index fd54c1f140..c3e83a1a47 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -3321,7 +3321,7 @@ F: .gitlab-ci.d/opensbi/
-> 
->   Clock framework
->   M: Luc Michel <luc@lmichel.fr>
-> -R: Damien Hedde <damien.hedde@greensocs.com>
-> +R: Damien Hedde <damien.hedde@dahe.fr>
->   S: Maintained
->   F: include/hw/clock.h
->   F: include/hw/qdev-clock.h
-> diff --git a/.mailmap b/.mailmap
-> index fad2aff5aa..7677047950 100644
-> --- a/.mailmap
-> +++ b/.mailmap
-> @@ -56,6 +56,7 @@ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> <aleksandar.rikalo@rt-rk.com>
->   Alexander Graf <agraf@csgraf.de> <agraf@suse.de>
->   Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
->   Christian Borntraeger <borntraeger@linux.ibm.com> <borntraeger@de.ibm.com>
-> +Damien Hedde <damien.hedde@dahe.fr> <damien.hedde@greensocs.com>
->   Filip Bozuta <filip.bozuta@syrmia.com> <filip.bozuta@rt-rk.com.com>
->   Frederic Konrad <konrad.frederic@yahoo.fr> <fred.konrad@greensocs.com>
->   Frederic Konrad <konrad.frederic@yahoo.fr> <konrad@adacore.com>
-> --
-> 2.37.0
-> 
-> 
-> 
+> @@ -2630,7 +2630,6 @@ T: git https://gitlab.com/jsnow/qemu.git jobs
+>   T: git https://gitlab.com/vsementsov/qemu.git block
+>   
+>   Compute Express Link
+> -M: Ben Widawsky <ben.widawsky@intel.com>
+>   M: Jonathan Cameron <jonathan.cameron@huawei.com>
+>   S: Supported
+>   F: hw/cxl/
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
