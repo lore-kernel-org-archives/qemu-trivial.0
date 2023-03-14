@@ -1,53 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pc52k-0001Oa-1i
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2023 09:50:22 -0400
+	id 1pc82N-0000uK-Ot
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2023 13:02:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pc52g-0001Nz-L9; Tue, 14 Mar 2023 09:50:19 -0400
-Received: from mout.kundenserver.de ([212.227.126.135])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pc52d-0002wr-Hz; Tue, 14 Mar 2023 09:50:18 -0400
-Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue011
- [212.227.15.167]) with ESMTPSA (Nemesis) id 1MtO4E-1qWmxb2b5K-00uoYy; Tue, 14
- Mar 2023 14:49:53 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 3/3] MAINTAINERS: Remove CXL maintainer Ben Widawsky
-Date: Tue, 14 Mar 2023 14:49:50 +0100
-Message-Id: <20230314134950.569342-4-laurent@vivier.eu>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230314134950.569342-1-laurent@vivier.eu>
-References: <20230314134950.569342-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pc82L-0000rw-MX
+ for qemu-trivial@nongnu.org; Tue, 14 Mar 2023 13:02:09 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pc82K-00056Z-3r
+ for qemu-trivial@nongnu.org; Tue, 14 Mar 2023 13:02:09 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ bh21-20020a05600c3d1500b003ed1ff06fb0so5235157wmb.3
+ for <qemu-trivial@nongnu.org>; Tue, 14 Mar 2023 10:02:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1678813326;
+ h=content-transfer-encoding:in-reply-to:from:cc:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5IRm3YZlwThVMhXnhMVS9Zy4d5EigIF+VlT2iswtqLY=;
+ b=yHBITPYD2eFg1t/9S8PnyxIt7+Cy6iK2fAQmibjfyvcJSPIyvHAqPloYlFUQFetAeA
+ hGyZTDIQ4jlaIqP3324V8wjPsWQPvxaxC7tmomV6GxHe/Oj/uVVVQuzjSRvTWsxjiq3b
+ Fr3kEEGwEPFq8/hEttQ/VjpkGUyjVHEi5TiOCrsVkeCc85eQbfs5jmxFQKRPyLNjWsXv
+ HWAZRbxWFbv3iEWNTUU2DTt9Cji/hBvX3RRnD1aK4Tdl23o1XURUBJzXOWePjSjNnI6D
+ bG4qt0MI14kxmGNF3T7Ag44TVYUiRwujb/3HIz/I5iNnnrY7hB4dVRe+rV2odA1yZuh1
+ R/oQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1678813326;
+ h=content-transfer-encoding:in-reply-to:from:cc:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=5IRm3YZlwThVMhXnhMVS9Zy4d5EigIF+VlT2iswtqLY=;
+ b=XJ92vovfoT7HGH0uEZguDX6pcwP9v9SF9YrBViho44+BrBLMwnd+pgGjbVdBeKNGfM
+ xbr7KMvoNJG1KSajyYcwvyRR/22XZkH8ozmk1xxLUePSzhxVgfv3UxbaF/+4ddn7XiAK
+ wxCFC7NGQzoD6WXolXBY7dYwC2iOv/vAv//g5aakduPNCRTU/5THxhWDTGPeTGGATwuN
+ YUst+Paui1J3Gm8lsdk40rNVhO6zS5Uza4v9v67m7yeFU9erQZ1EnZxbAsH0AWrH64GB
+ GmnPc374uiT3ORp8AYuJzRWoeizbZzHcLQHLTpqs5rMD3uA1tT3p/9vufCdveijmp11U
+ PFbQ==
+X-Gm-Message-State: AO0yUKWEyaYhkRUPOn1O5m+sU67oFto508eOwtlzDM82jmIu4kSwdYrU
+ NG2qf1PW88+ppFBFJqNaz4otHA==
+X-Google-Smtp-Source: AK7set8D6Hsnfej4QpHxq7vxTIyDkfQCggofXEzDH2Dg0nbdLcEUrmR6RvQGBmAhaFMgaItQplVQ8Q==
+X-Received: by 2002:a05:600c:5398:b0:3ed:2b49:5c77 with SMTP id
+ hg24-20020a05600c539800b003ed2b495c77mr3527431wmb.6.1678813325496; 
+ Tue, 14 Mar 2023 10:02:05 -0700 (PDT)
+Received: from [192.168.69.115] (lfbn-mon-1-678-16.w2-4.abo.wanadoo.fr.
+ [2.4.247.16]) by smtp.gmail.com with ESMTPSA id
+ x8-20020a5d60c8000000b002cea8664304sm2501492wrt.91.2023.03.14.10.01.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 14 Mar 2023 10:02:04 -0700 (PDT)
+Message-ID: <f8e7d037-18d7-d245-ab6e-936ec17610cc@linaro.org>
+Date: Tue, 14 Mar 2023 18:01:30 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH] scripts/git.orderfile: Display QAPI script changes before
+ schema ones
+Content-Language: en-US
+To: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+References: <20230224214114.26464-1-philmd@linaro.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230224214114.26464-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Sk+IoRfLSqzBI+ETs6E5p4hBPTdSB+e29aoH2v0DExEh9bXk9/P
- 9KVyvumRRZs0ZFThOzHjGdthHdayvFbVk7yMJUEohIyWhoUVnpgwVB5Fqc1BcTRgBGKzD0T
- 6/lfGyLB4QjI1o1X/tsFZro5qQHobAA5NqjxSwJtvzTn9nYmOIA8KSvDrtzf0FxvAXbXjal
- NXW/Lt5pyL6i/SqkCR5vw==
-UI-OutboundReport: notjunk:1;M01:P0:KmSDpMowXZk=;CzFrhTEemBIrfM1S7izGkeuy/wh
- taKhJwPjRc1JPjYrspZLbmZXpjv037ujn1ElZuKGvJLckU4BPorHNhxmP/qHLb3liqzMdk8x6
- xC5rkBLKJPvOnHA1FN2Hzu20yrUncWw0GJEaT2fcDQCybj5Ay9t2DQIaxfiXnzM8qIB9nfVeB
- U1TEfL11LrLdI22Ra2Rkkf7oNPyH27aePhVMRfIskk/mMzlsO2iYPU49C68fMLR4bD7gvhTvU
- CRCcn4qSr2/5BIhMQpguygcpSkyF42o1pLjVJSq6Faqm5lLkr9TRUHWuC9WHQuVFj4/8qU412
- dh4fnCk4Rbm2AA/E+CfnnwF5Pqcx6yv4cOjipXCjZpwvI09TbB/V1GiWhI85FT1+Og17FkP37
- a7m4/RzLhR3VarO5KitUGETF40plDk56YFlkX53CpEqBEAAlQFtayhzXAQuzGFfD1Z5/I2JTt
- ZOmRK33bU+3YjcUh8rleeezBRR1go0FWEqA1EtjaWkWgTvcqfggx+klRIxMmc8XHGTlnDyf/L
- FvAy6pf+W4AvG9hsq3kljrJDME1JSXlBqAxDHgYnBUjja2sAmR3qFgrcmlPoSRMXPaYcOkgU1
- XInrhwa7j0MbnUqw0X+Qi4sWjkQ91ImKxXXqnvNanGsOSQaDYk458lTB9DhpSDGG9qTx0uPUe
- I83VPrr5RJv0o1cxDV5FS/+OesE2kF+FPYXJxCNrrQ==
-Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -60,37 +83,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Mar 2023 13:50:20 -0000
+X-List-Received-Date: Tue, 14 Mar 2023 17:02:09 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+Cc'ing qemu-trivial@
 
-Ben is no longer with intel.  He told me he expected to get back to
-CXL, but it's not happening as quickly as he'd like, and that it's
-best to remove him as maintainer.  So let's do that.
-
-Thank you for serving as maintainer, Ben!
-
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Message-Id: <20230220212437.1462314-1-armbru@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- MAINTAINERS | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 883dc52063bf..7eab1a266fb8 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2666,7 +2666,6 @@ T: git https://gitlab.com/jsnow/qemu.git jobs
- T: git https://gitlab.com/vsementsov/qemu.git block
- 
- Compute Express Link
--M: Ben Widawsky <ben.widawsky@intel.com>
- M: Jonathan Cameron <jonathan.cameron@huawei.com>
- R: Fan Ni <fan.ni@samsung.com>
- S: Supported
--- 
-2.39.2
+On 24/2/23 22:41, Philippe Mathieu-Daudé wrote:
+> When modifying QAPI scripts and modifying C files along,
+> it makes sense to display QAPI changes first.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> Failed example:
+> https://lore.kernel.org/qemu-devel/20230224155451.20211-3-philmd@linaro.org/
+> ---
+>   scripts/git.orderfile | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
+> index 8edac0380b..70adc1a74a 100644
+> --- a/scripts/git.orderfile
+> +++ b/scripts/git.orderfile
+> @@ -22,6 +22,8 @@ Makefile*
+>   *.mak
+>   meson.build
+>   
+> +# qapi scripts
+> +scripts/qapi*
+>   # qapi schema
+>   qapi/*.json
+>   qga/*.json
 
 
