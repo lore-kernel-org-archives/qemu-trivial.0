@@ -1,53 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pbn3Z-0006Pw-Pr
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Mar 2023 14:38:02 -0400
+	id 1pc52K-0001Iw-P8
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2023 09:49:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pbn3R-0006PF-MS; Mon, 13 Mar 2023 14:37:57 -0400
-Received: from mout.kundenserver.de ([212.227.17.13])
+ id 1pc52J-0001Ig-Uf; Tue, 14 Mar 2023 09:49:55 -0400
+Received: from mout.kundenserver.de ([212.227.126.130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pbn3P-0008OY-Rx; Mon, 13 Mar 2023 14:37:53 -0400
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MLQl3-1psUp0421T-00IYTF; Mon, 13 Mar 2023 19:37:38 +0100
-Message-ID: <3a9bc837-9c77-aef2-cf26-b2213040629a@vivier.eu>
-Date: Mon, 13 Mar 2023 19:37:36 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH] MAINTAINERS: Remove CXL maintainer Ben Widawsky
-Content-Language: fr
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, bwidawsk@kernel.org, Jonathan.Cameron@Huawei.com
-References: <20230220212437.1462314-1-armbru@redhat.com>
+ id 1pc52I-0002eP-6E; Tue, 14 Mar 2023 09:49:55 -0400
+Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue011
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1N63mC-1qZU8N3bZ2-016NZ0; Tue, 14
+ Mar 2023 14:49:52 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-In-Reply-To: <20230220212437.1462314-1-armbru@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 0/3] Trivial branch for 8.0 patches
+Date: Tue, 14 Mar 2023 14:49:47 +0100
+Message-Id: <20230314134950.569342-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.39.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9Z3lseaWR+7+T3lbPqzgKKLdnetuxSW8dz3iWmz20qws8fjvg70
- vznM0lPTQc5ypSB43Hy9PfEj7g/SftarECKeUxHeOEgEgZUiqMZctlghVhzax1D1MMjKK2j
- k9zLySNk900WtrL9z4uemkqqi7aphiA4RHUvFvzVWQNO1IV9uMhFU5PRA9/agaz1AjvN/rY
- ybsKQRlkcls8nOQ5WUazg==
-UI-OutboundReport: notjunk:1;M01:P0:/EgkQGUOgjU=;7CbhuK5ZClWTMqLP9FUK1tlsil0
- gC5O4bEkE3KOjO22WDzfq954YAza5W+Uot1nMxMe4t00S0Ue2HR5y4rmjBGK0TUnWxqDgAwSy
- HaBxJ12NM8oPZGpwOzXUyQhnIflCU+kYo+GqzcYQ4y2LP5kJ8EiyP9i+aW0iFduyUOmZdDrTl
- zQ57kbBe/I5AcvA5n7wDCm8g9dw9H+R6wZyta0LOa/pGTOOVQ7gwuFQ7SLCGncA4xMlkYwuSd
- sXrLlT/m0Rvwj2KC5GI/9dAm1P/5R11UlWKV7eajV2mIs6PgiCPsi+qiEGNvIVSTiLwaNmEW5
- 58/xOaSvSNmUtBqsixyk1jZMTuUAfE4l5Y1JT7qd3DFM2XGIFPfMWziB5VoxqzRi947kXTEYW
- +y0gMKRetqZjbwVnFHyJv7g29XVGOCvUN1BPJ8udI3P43Jihlvh0rT8VYdQPzUU+/WWdzqvQc
- TKwxN92gaCPAeT6PN2/12DxHgEYPhuAmy4DYMWbTJZh3iQp50Qs511V8p+Hk/yfnOdghzLI/b
- jxzLN0QucQYuJEcnpQMOVJkuEmZvXDKtSMgtW9LvRrutNZpeFIUDXh+GNhWQZ4iZYqkW9W/IB
- MhEDI1WQ9ICYbC46pwN7SaKNh613ZVNxB9/vJaIMtNvylr7/LtdE26Pb9d5KFO2SY3lpbVBji
- NLSPUf2y+WnpMDNw8isjsbkeZKoCLJv6ZDH7irBB9A==
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:Gvf5cwvf/1NeGajh4sXsd1QUvtYjOIqYRg5l1beRw7puuNs+F36
+ aTCR4/lJpRlasmvriIAqoQrUaUG0hF2riC9jzr6vNkERM9fuysWnfRLEzDqwCK5MGIvBFPJ
+ SHQqEYinzIFMQrfhiq/fs1PIaBeBamCV+yyOkGHykIpaCFvZd3K4xg+0N8mXK6petvGg27m
+ fV5eB/D2brbyPkNH8PlOw==
+UI-OutboundReport: notjunk:1;M01:P0:V/Ej2nLwLOc=;qK6stN+Ncat95BLT1urnaTnEGZ5
+ dSkzLEjPao37avAdOEMkiFzufBB4N2E5T4QulKMEWZ34K/+5NU1xb5wwNQRaWyfkpY3JMfyoB
+ VDX/ElEXk7lj59DHfxIkyYGbfGrW+3tkNNGE1CcqVSOg1Cwr72klq3Umq/LmSUd4wu0TsWAmD
+ g+nHFVUv9sG8ry/M4LjstQ7VKqcsvKxB0M67+kOb+2DWsRbuL8Tk6DUN/cUP6An32wAoDgvQq
+ b2qy77mmjCJR3tfA9lRLfyeIM7yPLRI0cnqkPMIkcgucwY2hQBQVK/FG6eeR3a8n+wAlV+/nd
+ FdKkecU2lm4w60VLx/UyOiWub2eh9g0AWLPAGxyxh0nSgW/SdOsPkxhpHdUnqLRJxmrus4qoX
+ eonT5wCFI/yA0iVA8/0k1DT1fO+v38g96WavvCryDtfmPFRIasdie1LBEp75JVZKDzOb+6P+G
+ lNrqYXN3BwZUz83RsqFrVjDsjulul2xKtxbfaa/9ks8bJTDixW6DJSSQhXDooBOqFaHNd36Uo
+ IOeuWLwYmEaLZuvl1F7B2D8MRKRHSo/wi1RKjnIFLh/GHV0CaZEIb+fRiE23N5+BgodoMX/Rt
+ MrAvmOa51H6vd9kDduj15+2EwmbHE4d65yJv1ve2x2LaRDPeqkw/Z4rwLKjhD9AtPn6NRPQgK
+ KZur2/HVkQwQOMGZMtuchrAG4zyq4M4qBTTOwxTiOQ==
+Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -61,35 +58,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Mar 2023 18:38:00 -0000
+X-List-Received-Date: Tue, 14 Mar 2023 13:49:56 -0000
 
-Le 20/02/2023 à 22:24, Markus Armbruster a écrit :
-> Ben is no longer with intel.  He told me he expected to get back to
-> CXL, but it's not happening as quickly as he'd like, and that it's
-> best to remove him as maintainer.  So let's do that.
-> 
-> Thank you for serving as maintainer, Ben!
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->   MAINTAINERS | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index fd54c1f140..c3e83a1a47 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2630,7 +2630,6 @@ T: git https://gitlab.com/jsnow/qemu.git jobs
->   T: git https://gitlab.com/vsementsov/qemu.git block
->   
->   Compute Express Link
-> -M: Ben Widawsky <ben.widawsky@intel.com>
->   M: Jonathan Cameron <jonathan.cameron@huawei.com>
->   S: Supported
->   F: hw/cxl/
+The following changes since commit 284c52eec2d0a1b9c47f06c3eee46762c5fc0915:
 
-Applied to my trivial-patches branch.
+  Merge tag 'win-socket-pull-request' of https://gitlab.com/marcandre.lureau/qemu into staging (2023-03-13 13:44:17 +0000)
 
-Thanks,
-Laurent
+are available in the Git repository at:
+
+  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-8.0-pull-request
+
+for you to fetch changes up to fcc8f37ca3eca968932e5da716ec5e7fc05fdcf4:
+
+  MAINTAINERS: Remove CXL maintainer Ben Widawsky (2023-03-14 14:46:38 +0100)
+
+----------------------------------------------------------------
+trivial branch pull request 20230314
+
+Update MAINTAINER file
+Fix typo in qemu-options.hx
+
+----------------------------------------------------------------
+
+Damien Hedde (1):
+  MAINTAINERS: update my email address for the clock framework
+
+John Snow (1):
+  qemu-options.hx: remove stray quote
+
+Markus Armbruster (1):
+  MAINTAINERS: Remove CXL maintainer Ben Widawsky
+
+ .mailmap        | 1 +
+ MAINTAINERS     | 3 +--
+ qemu-options.hx | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+-- 
+2.39.2
+
 
