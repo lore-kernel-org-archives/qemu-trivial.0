@@ -1,76 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pc82N-0000uK-Ot
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2023 13:02:11 -0400
+	id 1pc84w-00035W-Qe
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2023 13:04:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pc82L-0000rw-MX
- for qemu-trivial@nongnu.org; Tue, 14 Mar 2023 13:02:09 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pc84t-00034q-Ea
+ for qemu-trivial@nongnu.org; Tue, 14 Mar 2023 13:04:47 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pc82K-00056Z-3r
- for qemu-trivial@nongnu.org; Tue, 14 Mar 2023 13:02:09 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- bh21-20020a05600c3d1500b003ed1ff06fb0so5235157wmb.3
- for <qemu-trivial@nongnu.org>; Tue, 14 Mar 2023 10:02:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pc84r-0005Ms-Co
+ for qemu-trivial@nongnu.org; Tue, 14 Mar 2023 13:04:46 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id j2so14999819wrh.9
+ for <qemu-trivial@nongnu.org>; Tue, 14 Mar 2023 10:04:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678813326;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
+ d=linaro.org; s=google; t=1678813484;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=5IRm3YZlwThVMhXnhMVS9Zy4d5EigIF+VlT2iswtqLY=;
- b=yHBITPYD2eFg1t/9S8PnyxIt7+Cy6iK2fAQmibjfyvcJSPIyvHAqPloYlFUQFetAeA
- hGyZTDIQ4jlaIqP3324V8wjPsWQPvxaxC7tmomV6GxHe/Oj/uVVVQuzjSRvTWsxjiq3b
- Fr3kEEGwEPFq8/hEttQ/VjpkGUyjVHEi5TiOCrsVkeCc85eQbfs5jmxFQKRPyLNjWsXv
- HWAZRbxWFbv3iEWNTUU2DTt9Cji/hBvX3RRnD1aK4Tdl23o1XURUBJzXOWePjSjNnI6D
- bG4qt0MI14kxmGNF3T7Ag44TVYUiRwujb/3HIz/I5iNnnrY7hB4dVRe+rV2odA1yZuh1
- R/oQ==
+ bh=XRSw/IHwDKK0p71VvxwdRzp1Ddb4oKY5ibSkEXnNCN8=;
+ b=S0Ne3XORjzD/KZ2AAJJvqgO1CtiV7lR/RIYQ8yiW2f6xM9KXK/NcuQiqhqGbEUtz1Z
+ yEzyiKAEap/1N1F5IkJXIWJyuyCqNfawc1U1j91mOifsGnfQ5KMS8YtpwrXXcS0skkrB
+ SO22Lmfss9+tXsJK3vBo3fWzmMHJbGZpl4tk+Dc/9XSp/G+wTfB2tA6UVSLvMhZGy8CD
+ dPNS1H+BfI9OdMgqRFUcaUhNDe+sU8fIE/bB5IVCp6i34pjkyDOa/SaGL+NIhAC/H/yP
+ YklmXQ5W/+cH45IlGMzXyKYCNYk75dQrwfIG/o7vg76WKNJzUUCpLjNjMsBDYo7QqaDD
+ bHfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678813326;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
+ d=1e100.net; s=20210112; t=1678813484;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=5IRm3YZlwThVMhXnhMVS9Zy4d5EigIF+VlT2iswtqLY=;
- b=XJ92vovfoT7HGH0uEZguDX6pcwP9v9SF9YrBViho44+BrBLMwnd+pgGjbVdBeKNGfM
- xbr7KMvoNJG1KSajyYcwvyRR/22XZkH8ozmk1xxLUePSzhxVgfv3UxbaF/+4ddn7XiAK
- wxCFC7NGQzoD6WXolXBY7dYwC2iOv/vAv//g5aakduPNCRTU/5THxhWDTGPeTGGATwuN
- YUst+Paui1J3Gm8lsdk40rNVhO6zS5Uza4v9v67m7yeFU9erQZ1EnZxbAsH0AWrH64GB
- GmnPc374uiT3ORp8AYuJzRWoeizbZzHcLQHLTpqs5rMD3uA1tT3p/9vufCdveijmp11U
- PFbQ==
-X-Gm-Message-State: AO0yUKWEyaYhkRUPOn1O5m+sU67oFto508eOwtlzDM82jmIu4kSwdYrU
- NG2qf1PW88+ppFBFJqNaz4otHA==
-X-Google-Smtp-Source: AK7set8D6Hsnfej4QpHxq7vxTIyDkfQCggofXEzDH2Dg0nbdLcEUrmR6RvQGBmAhaFMgaItQplVQ8Q==
-X-Received: by 2002:a05:600c:5398:b0:3ed:2b49:5c77 with SMTP id
- hg24-20020a05600c539800b003ed2b495c77mr3527431wmb.6.1678813325496; 
- Tue, 14 Mar 2023 10:02:05 -0700 (PDT)
+ bh=XRSw/IHwDKK0p71VvxwdRzp1Ddb4oKY5ibSkEXnNCN8=;
+ b=CCLmcQuUtaEoQ/wvrs8f7jH5LUDMQhGAnIS3+1b7INfstgPl/5hbfvQ7vfGuSUfhzT
+ zDQXSl0B2ktg3KlFjRPDN2jks9GpW87Z0VXtrp+taAGIp0oDFnFRIjXyBEqLg1fjEV7G
+ 7eRt+S2rQRobwBFSt6keYmKDxg6SX1oVAsR8/nujvrYlTTlEbN38g/62CHV97O7Dr9Qe
+ GTBlKdBTt+N7iRb3zro2Z/L77nGkR7sxeUPOVIJCmQ318413jSgNEs60f+DT1hpMFzGy
+ FEnripyhKhKzU3KwBEr+GCmThx7PtuZLsqejBcmpW6FPK6eW8jRt+vV7ypgiL0kAupLN
+ Qf/w==
+X-Gm-Message-State: AO0yUKVqmtsRkiJWAYOiz178zt11WkybabqbvX7OUqRiBh2gezEZirbM
+ V/MNKPf/8FU2Uwto6I6N1syisPMERvbpuEkuO3hyjQ==
+X-Google-Smtp-Source: AK7set++/AKSgONnDu9MYx6Kv4xzKYTM9CCYdTFV8NqgRkciBlPpZI6b3HDVqewojkMCMGsswIbOXA==
+X-Received: by 2002:adf:e703:0:b0:2c3:dd81:49ad with SMTP id
+ c3-20020adfe703000000b002c3dd8149admr25281259wrm.33.1678813483853; 
+ Tue, 14 Mar 2023 10:04:43 -0700 (PDT)
 Received: from [192.168.69.115] (lfbn-mon-1-678-16.w2-4.abo.wanadoo.fr.
  [2.4.247.16]) by smtp.gmail.com with ESMTPSA id
- x8-20020a5d60c8000000b002cea8664304sm2501492wrt.91.2023.03.14.10.01.51
+ g16-20020a5d46d0000000b002be505ab59asm2489963wrs.97.2023.03.14.10.04.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Mar 2023 10:02:04 -0700 (PDT)
-Message-ID: <f8e7d037-18d7-d245-ab6e-936ec17610cc@linaro.org>
-Date: Tue, 14 Mar 2023 18:01:30 +0100
+ Tue, 14 Mar 2023 10:04:43 -0700 (PDT)
+Message-ID: <378d53a4-6c3e-ecdc-78bc-93a8757f49f6@linaro.org>
+Date: Tue, 14 Mar 2023 18:04:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH] scripts/git.orderfile: Display QAPI script changes before
- schema ones
+Subject: Re: [PATCH] hw/ide: Remove unuseful IDE_DMA__COUNT definition
 Content-Language: en-US
-To: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-References: <20230224214114.26464-1-philmd@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>
+To: qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
+References: <20230224153410.19727-1-philmd@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230224214114.26464-1-philmd@linaro.org>
+In-Reply-To: <20230224153410.19727-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,34 +81,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Mar 2023 17:02:09 -0000
+X-List-Received-Date: Tue, 14 Mar 2023 17:04:48 -0000
 
-Cc'ing qemu-trivial@
+ping?
 
-On 24/2/23 22:41, Philippe Mathieu-Daudé wrote:
-> When modifying QAPI scripts and modifying C files along,
-> it makes sense to display QAPI changes first.
+On 24/2/23 16:34, Philippe Mathieu-Daudé wrote:
+> First, IDE_DMA__COUNT represents the number of enumerated
+> values, but is incorrectly listed as part of the enum.
+> 
+> Second, IDE_DMA_CMD_str() is internal to core.c and only
+> takes sane enums from ide_dma_cmd. So no need to check the
+> 'enval' argument is within the enum range. Only checks
+> IDE_DMA_CMD_lookup[] entry is not NULL.
+> 
+> Both combined, IDE_DMA__COUNT can go.
+> 
+> Reduce IDE_DMA_CMD_lookup[] scope which is only used locally.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
-> Failed example:
-> https://lore.kernel.org/qemu-devel/20230224155451.20211-3-philmd@linaro.org/
-> ---
->   scripts/git.orderfile | 2 ++
->   1 file changed, 2 insertions(+)
+>   hw/ide/core.c             | 10 +++++-----
+>   include/hw/ide/internal.h |  3 ---
+>   2 files changed, 5 insertions(+), 8 deletions(-)
 > 
-> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-> index 8edac0380b..70adc1a74a 100644
-> --- a/scripts/git.orderfile
-> +++ b/scripts/git.orderfile
-> @@ -22,6 +22,8 @@ Makefile*
->   *.mak
->   meson.build
+> diff --git a/hw/ide/core.c b/hw/ide/core.c
+> index 5d1039378f..8bf61e7267 100644
+> --- a/hw/ide/core.c
+> +++ b/hw/ide/core.c
+> @@ -63,19 +63,19 @@ static const int smart_attributes[][12] = {
+>       { 190,  0x03, 0x00, 0x45, 0x45, 0x1f, 0x00, 0x1f, 0x1f, 0x00, 0x00, 0x32},
+>   };
 >   
-> +# qapi scripts
-> +scripts/qapi*
->   # qapi schema
->   qapi/*.json
->   qga/*.json
+> -const char *IDE_DMA_CMD_lookup[IDE_DMA__COUNT] = {
+> +static const char *IDE_DMA_CMD_lookup[] = {
+>       [IDE_DMA_READ] = "DMA READ",
+>       [IDE_DMA_WRITE] = "DMA WRITE",
+>       [IDE_DMA_TRIM] = "DMA TRIM",
+> -    [IDE_DMA_ATAPI] = "DMA ATAPI"
+> +    [IDE_DMA_ATAPI] = "DMA ATAPI",
+>   };
+>   
+>   static const char *IDE_DMA_CMD_str(enum ide_dma_cmd enval)
+>   {
+> -    if ((unsigned)enval < IDE_DMA__COUNT) {
+> -        return IDE_DMA_CMD_lookup[enval];
+> +    if (!IDE_DMA_CMD_lookup[enval]) {
+> +        return "DMA UNKNOWN CMD";
+>       }
+> -    return "DMA UNKNOWN CMD";
+> +    return IDE_DMA_CMD_lookup[enval];
+>   }
+>   
+>   static void ide_dummy_transfer_stop(IDEState *s);
+> diff --git a/include/hw/ide/internal.h b/include/hw/ide/internal.h
+> index fc0aa81a88..e864fe8caf 100644
+> --- a/include/hw/ide/internal.h
+> +++ b/include/hw/ide/internal.h
+> @@ -352,11 +352,8 @@ enum ide_dma_cmd {
+>       IDE_DMA_WRITE,
+>       IDE_DMA_TRIM,
+>       IDE_DMA_ATAPI,
+> -    IDE_DMA__COUNT
+>   };
+>   
+> -extern const char *IDE_DMA_CMD_lookup[IDE_DMA__COUNT];
+> -
+>   #define ide_cmd_is_read(s) \
+>           ((s)->dma_cmd == IDE_DMA_READ)
+>   
 
 
