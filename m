@@ -1,67 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pcADb-0000g3-Dj
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2023 15:21:55 -0400
+	id 1pcM7w-0001iy-OI
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Mar 2023 04:04:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pcADa-0000ff-1n
- for qemu-trivial@nongnu.org; Tue, 14 Mar 2023 15:21:54 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pcM7v-0001iC-5c; Wed, 15 Mar 2023 04:04:51 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pcADY-0003YW-9w
- for qemu-trivial@nongnu.org; Tue, 14 Mar 2023 15:21:53 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- h12-20020a17090aea8c00b0023d1311fab3so6674721pjz.1
- for <qemu-trivial@nongnu.org>; Tue, 14 Mar 2023 12:21:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1pcM7t-0006kO-7Q; Wed, 15 Mar 2023 04:04:50 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id h8so28261840ede.8;
+ Wed, 15 Mar 2023 01:04:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678821711;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=SKrC58cpLzzekQXNHo2IJwvDEkYLoPjHxtHMnb7tZXA=;
- b=aBQXsAVXK6fm/12ELAf7gxQpqsT3xLJJhGEVtpafGnAUiZNq1NVl7+pZ6IAIuHjeiI
- lN1S7RnzjmP6rhxkAFA8h9x95gF0BkWBAl6uwYt9IfWhExt1aZt/T9AdN/DtlyLrnx6M
- uCBN5tfO+4eyASrogH8okynOX3VOmMUI5adNP3fUXP62N90GoZi8c9P+7GU8iVAzvdAc
- OW9nXagiHgTmxksZ8s7cQGvU5kZAgla2YO7Lx0hYiHQMmQVzjPAg/vOd6ItawUmaXc87
- JQ7CsRhGU7oZgh7C7pFWs9o5zX7Yig8FkWWhKx+KBtRERFqHJoDlWjzc6gV91UgA1Slp
- lx4g==
+ d=gmail.com; s=20210112; t=1678867486;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YurBgA+nMbR7AkLy32GjMl8+UoHagXCimqpt2BdimHw=;
+ b=HJhLxQakHnGQCR0BQ6oxZtxyMFVDQKSyGlTcUlm2cherXDB513CjhPiSBmvt1Imnig
+ H5kR/zkHp4D9eHLzeRhzYvSKMIRnS+Pw15kXTY62C9NHi8YT3K2ywZG7cZk9jwO39MUY
+ J5t6qbFGNK9/BjDCRE+3Uud5EhsQ7v+hRYv48eo7Z3DbM44NO4Bcr19duSKmI7+IilCf
+ OiW4f3QPXmEFWgcQj5kSQEL5xHg7o4gfywpFWJlVutgypS3JFhVzGzsAr+jkBYcqEJey
+ kNQ7eCmmtQSxDxIzLQJGV2iFoNNjMrHsfYq0W73PXe9CB7rbPkEM0ZDKoM3fXX/x5Df9
+ pQkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678821711;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=SKrC58cpLzzekQXNHo2IJwvDEkYLoPjHxtHMnb7tZXA=;
- b=PI93wNS9ZBFiDCcrdO4gb2NdJuJjY6NrPyP377RBhDNyo0ZuHD1CjgrhJ2B4Ji8M0N
- NPg7StDHCO/lIoqyX1PmWs1kHVP8ZFmdUSIKfHIHrrLWffts9/orcmXcMzlfiI3Eu87Y
- qXfWgGhweFJ1XV1bYzb8CLl9x+nlrt0El8L3kdGhFC401i6qNw1h0Fb2yLaVhnJc1N5x
- 0HORdxy/kq12Q/u+bqwJMoCQ2ylqbBqy5qDX8O/Z2hFQIRdgP85yB9kmqSIsY8lXnX8/
- lhXtTc2+WbkgI4Cb8pL2VxcFubXjfwZjQTFFsn9DlVgDvjOnreXxWGHntGS2jUIgGIFd
- shUg==
-X-Gm-Message-State: AO0yUKXPwI2rvhy+R1CEWzfDyzaDx8RiyVsy1/5KxxYONWsxO8Ru0q05
- ci5sCdNJvV+HeeA5RrmQqOSF+GNc/ECz/0cy19J5hcAXy5qlgaLK
-X-Google-Smtp-Source: AK7set+KxJTpDkvTgKMzaPArCtKcZ2LkVtEYyBkUGfiwkHvgGriqONIEh2mdVeFE0nK416TrVc+ZOpaofJFgYh5CRAc=
-X-Received: by 2002:a17:90a:d901:b0:23c:fa47:e763 with SMTP id
- c1-20020a17090ad90100b0023cfa47e763mr3209664pjv.0.1678821710839; Tue, 14 Mar
- 2023 12:21:50 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1678867486;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YurBgA+nMbR7AkLy32GjMl8+UoHagXCimqpt2BdimHw=;
+ b=PLykiVPTYwq3b4UmRjppShtQgUafJiYU2c4Ag3jDdbLzH+JOUuSgvdr3MsJz3ys4tl
+ K3y1Rz0TCyBM+j5+lUQjOxgxphh3x2XNSze9TXqUhouaTMnpXrcPFXkzxBCu5ZUYkYtr
+ cUE7WeGniRmghgMI4Qyr1oKLSiCeLjT3WuJ4wnVOaqAW7ijmUhNozYQ7mP3djQrGXMnb
+ /tMBsPiuzJWPRcow4hf458wLtm0M8sauV3K5w1MK4U0fkBKKJ3H8fY1NS2pIiroYokRi
+ ZWiTq6uwBctw1I9I0676TySSSgjDS3ZclRbAht2oE0LX1xEMIZqnjAa1HkO+5tLxJ8Cv
+ 11Zg==
+X-Gm-Message-State: AO0yUKXJA8zGB+MsDYYhft9xFXAnag0MrF/hhTRCczu7k33q9vpq/9QC
+ rm9GROqqa/FQx1WkdnYbBQvD2TY3GJc=
+X-Google-Smtp-Source: AK7set9OWhT5wbaei9ltz46pA0QXhAYYn13w2N8CTrT60DR6c5PikuQdekdIzYFOQBuYno0wIu8eCw==
+X-Received: by 2002:a17:906:2b50:b0:8aa:c2e1:6a64 with SMTP id
+ b16-20020a1709062b5000b008aac2e16a64mr5183727ejg.61.1678867486369; 
+ Wed, 15 Mar 2023 01:04:46 -0700 (PDT)
+Received: from [127.0.0.1] ([62.214.191.67]) by smtp.gmail.com with ESMTPSA id
+ kb1-20020a1709070f8100b00923f05b2931sm2118148ejc.118.2023.03.15.01.04.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Mar 2023 01:04:45 -0700 (PDT)
+Date: Wed, 15 Mar 2023 07:57:20 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+CC: Peter Xu <peterx@redhat.com>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH for 8.0] exec/memory: Fix kernel-doc warning
+In-Reply-To: <20230315072552.47117-1-shentey@gmail.com>
+References: <20230315072552.47117-1-shentey@gmail.com>
+Message-ID: <49850BA4-972F-4177-A18B-8E9C65FA60E9@gmail.com>
 MIME-Version: 1.0
-References: <20230314134950.569342-1-laurent@vivier.eu>
-In-Reply-To: <20230314134950.569342-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Mar 2023 19:21:39 +0000
-Message-ID: <CAFEAcA-_VsB3en6oKgUcBaACZ2HVUHfVNtXw7xhkRXMq-MJjdw@mail.gmail.com>
-Subject: Re: [PULL 0/3] Trivial branch for 8.0 patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x1034.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,35 +80,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Mar 2023 19:21:54 -0000
+X-List-Received-Date: Wed, 15 Mar 2023 08:04:52 -0000
 
-On Tue, 14 Mar 2023 at 13:53, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 284c52eec2d0a1b9c47f06c3eee46762c5fc0915:
->
->   Merge tag 'win-socket-pull-request' of https://gitlab.com/marcandre.lureau/qemu into staging (2023-03-13 13:44:17 +0000)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-8.0-pull-request
->
-> for you to fetch changes up to fcc8f37ca3eca968932e5da716ec5e7fc05fdcf4:
->
->   MAINTAINERS: Remove CXL maintainer Ben Widawsky (2023-03-14 14:46:38 +0100)
->
-> ----------------------------------------------------------------
-> trivial branch pull request 20230314
->
-> Update MAINTAINER file
-> Fix typo in qemu-options.hx
->
-> ----------------------------------------------------------------
++ qemu-trivial
 
-
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/8.0
-for any user-visible changes.
-
--- PMM
+Am 15=2E M=C3=A4rz 2023 07:25:52 UTC schrieb Bernhard Beschow <shentey@gma=
+il=2Ecom>:
+>During build the kernel-doc script complains about the following issue:
+>
+>  src/docs/=2E=2E/include/exec/memory=2Eh:1741: warning: Function paramet=
+er or member 'n' not described in 'memory_region_unmap_iommu_notifier_range=
+'
+>  src/docs/=2E=2E/include/exec/memory=2Eh:1741: warning: Excess function =
+parameter 'notifier' description in 'memory_region_unmap_iommu_notifier_ran=
+ge'
+>
+>Settle on "notifier" for consistency with other memory functions=2E
+>
+>Fixes: 7caebbf9ea53
+>       ("memory: introduce memory_region_unmap_iommu_notifier_range()")
+>Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>---
+> include/exec/memory=2Eh | 2 +-
+> softmmu/memory=2Ec      | 8 ++++----
+> 2 files changed, 5 insertions(+), 5 deletions(-)
+>
+>diff --git a/include/exec/memory=2Eh b/include/exec/memory=2Eh
+>index 6fa0b071f0=2E=2E15ade918ba 100644
+>--- a/include/exec/memory=2Eh
+>+++ b/include/exec/memory=2Eh
+>@@ -1738,7 +1738,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *=
+notifier,
+>  *
+>  * @notifier: the notifier to be notified
+>  */
+>-void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n);
+>+void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier);
+>=20
+>=20
+> /**
+>diff --git a/softmmu/memory=2Ec b/softmmu/memory=2Ec
+>index 4699ba55ec=2E=2E5305aca7ca 100644
+>--- a/softmmu/memory=2Ec
+>+++ b/softmmu/memory=2Ec
+>@@ -1996,17 +1996,17 @@ void memory_region_notify_iommu_one(IOMMUNotifier=
+ *notifier,
+>     }
+> }
+>=20
+>-void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n)
+>+void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier)
+> {
+>     IOMMUTLBEvent event;
+>=20
+>     event=2Etype =3D IOMMU_NOTIFIER_UNMAP;
+>     event=2Eentry=2Etarget_as =3D &address_space_memory;
+>-    event=2Eentry=2Eiova =3D n->start;
+>+    event=2Eentry=2Eiova =3D notifier->start;
+>     event=2Eentry=2Eperm =3D IOMMU_NONE;
+>-    event=2Eentry=2Eaddr_mask =3D n->end - n->start;
+>+    event=2Eentry=2Eaddr_mask =3D notifier->end - notifier->start;
+>=20
+>-    memory_region_notify_iommu_one(n, &event);
+>+    memory_region_notify_iommu_one(notifier, &event);
+> }
+>=20
+> void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
 
