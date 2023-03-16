@@ -1,73 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pcM7w-0001iy-OI
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Mar 2023 04:04:52 -0400
+	id 1pciPs-00082z-Ga
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Mar 2023 03:52:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pcM7v-0001iC-5c; Wed, 15 Mar 2023 04:04:51 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pciPl-00082E-1B
+ for qemu-trivial@nongnu.org; Thu, 16 Mar 2023 03:52:45 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pcM7t-0006kO-7Q; Wed, 15 Mar 2023 04:04:50 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id h8so28261840ede.8;
- Wed, 15 Mar 2023 01:04:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pciPf-0007ln-05
+ for qemu-trivial@nongnu.org; Thu, 16 Mar 2023 03:52:42 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ c8-20020a05600c0ac800b003ed2f97a63eso2539157wmr.3
+ for <qemu-trivial@nongnu.org>; Thu, 16 Mar 2023 00:52:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678867486;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YurBgA+nMbR7AkLy32GjMl8+UoHagXCimqpt2BdimHw=;
- b=HJhLxQakHnGQCR0BQ6oxZtxyMFVDQKSyGlTcUlm2cherXDB513CjhPiSBmvt1Imnig
- H5kR/zkHp4D9eHLzeRhzYvSKMIRnS+Pw15kXTY62C9NHi8YT3K2ywZG7cZk9jwO39MUY
- J5t6qbFGNK9/BjDCRE+3Uud5EhsQ7v+hRYv48eo7Z3DbM44NO4Bcr19duSKmI7+IilCf
- OiW4f3QPXmEFWgcQj5kSQEL5xHg7o4gfywpFWJlVutgypS3JFhVzGzsAr+jkBYcqEJey
- kNQ7eCmmtQSxDxIzLQJGV2iFoNNjMrHsfYq0W73PXe9CB7rbPkEM0ZDKoM3fXX/x5Df9
- pQkw==
+ d=linaro.org; s=google; t=1678953157;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=BTrmkopY2tQw1IttF9YHuZpiFo3j08F1TAzT3W1WWLs=;
+ b=ET4IWYg6r3Oq5oLFxoBSlMsnhxN/kQq9AGrfhYR8P5aojkorPurccZINch0Ai1UDek
+ ulWz6p2z/E76JW/tbPIAJIhAVWaioUHwyrjR2Q3ykp6RLh9HCxFn5UFT6IQyZ3A+HkY1
+ Vc4Kgh6pAkXTbLXMURWGRvjNu+7BckvZgAe3pUg0FB/4bFxhMFqEJaXhDzXwnFsfVUaY
+ 6i6aGrP0DbOuIsY5fn2lex5v6VDFLl/Gun5JNp6NQDImaur9gnlcLo5i1oZH1lwzrSxD
+ QX8E9V/mX6w56cB47oJX15IfL/0HMx8jd43RtZb3nCqJ2qIPipvVyUkIFdUCJ0D2xZi+
+ gcbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678867486;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=YurBgA+nMbR7AkLy32GjMl8+UoHagXCimqpt2BdimHw=;
- b=PLykiVPTYwq3b4UmRjppShtQgUafJiYU2c4Ag3jDdbLzH+JOUuSgvdr3MsJz3ys4tl
- K3y1Rz0TCyBM+j5+lUQjOxgxphh3x2XNSze9TXqUhouaTMnpXrcPFXkzxBCu5ZUYkYtr
- cUE7WeGniRmghgMI4Qyr1oKLSiCeLjT3WuJ4wnVOaqAW7ijmUhNozYQ7mP3djQrGXMnb
- /tMBsPiuzJWPRcow4hf458wLtm0M8sauV3K5w1MK4U0fkBKKJ3H8fY1NS2pIiroYokRi
- ZWiTq6uwBctw1I9I0676TySSSgjDS3ZclRbAht2oE0LX1xEMIZqnjAa1HkO+5tLxJ8Cv
- 11Zg==
-X-Gm-Message-State: AO0yUKXJA8zGB+MsDYYhft9xFXAnag0MrF/hhTRCczu7k33q9vpq/9QC
- rm9GROqqa/FQx1WkdnYbBQvD2TY3GJc=
-X-Google-Smtp-Source: AK7set9OWhT5wbaei9ltz46pA0QXhAYYn13w2N8CTrT60DR6c5PikuQdekdIzYFOQBuYno0wIu8eCw==
-X-Received: by 2002:a17:906:2b50:b0:8aa:c2e1:6a64 with SMTP id
- b16-20020a1709062b5000b008aac2e16a64mr5183727ejg.61.1678867486369; 
- Wed, 15 Mar 2023 01:04:46 -0700 (PDT)
-Received: from [127.0.0.1] ([62.214.191.67]) by smtp.gmail.com with ESMTPSA id
- kb1-20020a1709070f8100b00923f05b2931sm2118148ejc.118.2023.03.15.01.04.45
+ d=1e100.net; s=20210112; t=1678953157;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=BTrmkopY2tQw1IttF9YHuZpiFo3j08F1TAzT3W1WWLs=;
+ b=1KFJgsTYgtHcPKkeKC6zaC4X/fEhud4QoLmHY0+WL+rMoN6UP/a1G3cfLQQ7/Hs09r
+ qTar0KeRbGpCM71Wr7kGGacwis/WhqL4BJDITik0zVc9qHiOVlSnHJtQfDJtDJq6ibqS
+ J0CQLF5GeRvd8ndNoKW2SWnbkfKp9y194U1YpzW/hQlm0yL7eJbk4XcGJqzAtGoSWQRU
+ xe/S8K3EzRpH6Z/uUni7EKy0/h7HBD7zj8djf/FubwcnYRoT7TzeOhVcZrOeX1bQAhpI
+ KT6pUU7iYJuPT1ElZAUYWspMy3bgiP3mbfF+ku3s4kFZYxVd00qvgFOTkzHYa7GSznp2
+ KSMw==
+X-Gm-Message-State: AO0yUKU0z0Vy6Sm/xStwM3voT1l1E1FoLSm1b2e7Ad5pUF2BeNZNYqJJ
+ FbNsFQfDV+U1g2WEF9oPsrgzNA==
+X-Google-Smtp-Source: AK7set8/rWMpEXkBEaOJ0Ot+5pSA6ffLtoEqf2nm6yCpG+VyNMGhN5v7AH5OJlYCv9XeIGRvs/Emsg==
+X-Received: by 2002:a05:600c:3591:b0:3e2:1dac:b071 with SMTP id
+ p17-20020a05600c359100b003e21dacb071mr16915340wmq.13.1678953157301; 
+ Thu, 16 Mar 2023 00:52:37 -0700 (PDT)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ t14-20020a05600c198e00b003ed29899dfdsm4361354wmq.21.2023.03.16.00.52.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Mar 2023 01:04:45 -0700 (PDT)
-Date: Wed, 15 Mar 2023 07:57:20 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-CC: Peter Xu <peterx@redhat.com>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>
-Subject: Re: [PATCH for 8.0] exec/memory: Fix kernel-doc warning
-In-Reply-To: <20230315072552.47117-1-shentey@gmail.com>
-References: <20230315072552.47117-1-shentey@gmail.com>
-Message-ID: <49850BA4-972F-4177-A18B-8E9C65FA60E9@gmail.com>
+ Thu, 16 Mar 2023 00:52:36 -0700 (PDT)
+Message-ID: <c854655d-642c-21dc-61a5-4d93b98fc7b1@linaro.org>
+Date: Thu, 16 Mar 2023 08:52:35 +0100
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52f.google.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH v2] target/sh4: Honor QEMU_LOG_FILENAME with QEMU_LOG=cpu
+Content-Language: en-US
+To: Ilya Leoshkevich <iii@linux.ibm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20230316003411.129462-1-iii@linux.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230316003411.129462-1-iii@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,70 +83,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Mar 2023 08:04:52 -0000
+X-List-Received-Date: Thu, 16 Mar 2023 07:52:45 -0000
 
-+ qemu-trivial
+On 16/3/23 01:34, Ilya Leoshkevich wrote:
+> When using QEMU_LOG=cpu on sh4, QEMU_LOG_FILENAME is partially ignored.
+> Fix by using qemu_fprintf() instead of qemu_printf() in the respective
+> places.
+> 
+> Fixes: 90c84c560067 ("qom/cpu: Simplify how CPUClass:cpu_dump_state() prints")
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+> Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+> ---
+> 
+> Resend of https://patchew.org/QEMU/20220725142854.177451-1-iii@linux.ibm.com/
+> with a trivial rebase.
+> 
+>   target/sh4/translate.c | 14 +++++++-------
+>   1 file changed, 7 insertions(+), 7 deletions(-)
 
-Am 15=2E M=C3=A4rz 2023 07:25:52 UTC schrieb Bernhard Beschow <shentey@gma=
-il=2Ecom>:
->During build the kernel-doc script complains about the following issue:
->
->  src/docs/=2E=2E/include/exec/memory=2Eh:1741: warning: Function paramet=
-er or member 'n' not described in 'memory_region_unmap_iommu_notifier_range=
-'
->  src/docs/=2E=2E/include/exec/memory=2Eh:1741: warning: Excess function =
-parameter 'notifier' description in 'memory_region_unmap_iommu_notifier_ran=
-ge'
->
->Settle on "notifier" for consistency with other memory functions=2E
->
->Fixes: 7caebbf9ea53
->       ("memory: introduce memory_region_unmap_iommu_notifier_range()")
->Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->---
-> include/exec/memory=2Eh | 2 +-
-> softmmu/memory=2Ec      | 8 ++++----
-> 2 files changed, 5 insertions(+), 5 deletions(-)
->
->diff --git a/include/exec/memory=2Eh b/include/exec/memory=2Eh
->index 6fa0b071f0=2E=2E15ade918ba 100644
->--- a/include/exec/memory=2Eh
->+++ b/include/exec/memory=2Eh
->@@ -1738,7 +1738,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *=
-notifier,
->  *
->  * @notifier: the notifier to be notified
->  */
->-void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n);
->+void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier);
->=20
->=20
-> /**
->diff --git a/softmmu/memory=2Ec b/softmmu/memory=2Ec
->index 4699ba55ec=2E=2E5305aca7ca 100644
->--- a/softmmu/memory=2Ec
->+++ b/softmmu/memory=2Ec
->@@ -1996,17 +1996,17 @@ void memory_region_notify_iommu_one(IOMMUNotifier=
- *notifier,
->     }
-> }
->=20
->-void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n)
->+void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier)
-> {
->     IOMMUTLBEvent event;
->=20
->     event=2Etype =3D IOMMU_NOTIFIER_UNMAP;
->     event=2Eentry=2Etarget_as =3D &address_space_memory;
->-    event=2Eentry=2Eiova =3D n->start;
->+    event=2Eentry=2Eiova =3D notifier->start;
->     event=2Eentry=2Eperm =3D IOMMU_NONE;
->-    event=2Eentry=2Eaddr_mask =3D n->end - n->start;
->+    event=2Eentry=2Eaddr_mask =3D notifier->end - notifier->start;
->=20
->-    memory_region_notify_iommu_one(n, &event);
->+    memory_region_notify_iommu_one(notifier, &event);
-> }
->=20
-> void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 
