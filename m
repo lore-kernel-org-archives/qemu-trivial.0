@@ -1,75 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pcpSg-0001y1-Tw
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Mar 2023 11:24:14 -0400
+	id 1pdAuQ-0006WX-M6
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Mar 2023 10:18:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pcpSf-0001xe-JS
- for qemu-trivial@nongnu.org; Thu, 16 Mar 2023 11:24:13 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pcpSd-0006Bg-LO
- for qemu-trivial@nongnu.org; Thu, 16 Mar 2023 11:24:13 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- l9-20020a17090a3f0900b0023d32684e7fso5961648pjc.1
- for <qemu-trivial@nongnu.org>; Thu, 16 Mar 2023 08:24:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678980250;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aAJFppXBi3TBcLP0ImZXXsCfoShRC86wnPfDVJR0w6E=;
- b=iHqLlu11Vu2ptxjvJa/u2ACgTD/4yhfUTKZWg2wc1Rd3U85BsCMlWU77JRGo55Ztw1
- 90HAkMh1g5BsxtR9eaobWVN/4DbDxFF0aFTpXcvph2kzBLnL0N+8Ba/EoiYd5wkmkrAv
- WEops0tJk5N3DhasCmKj+ZkU/tOkHfHjgpfjShZei5CvGmMnXp2wmraaTi8My11hPmrq
- itOe6qlKl0ATKOPpZijPlt0kWa3EiSQcnQBsLVJ/ORrnGMCs5U2btul2BusHsguNwFVX
- 5/OCrCaYu1AzB/khT4piLsMgYCr75htxe902i1TGpShpCPxDh7L5G8I3PcJFBV4MnySF
- +ZBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678980250;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=aAJFppXBi3TBcLP0ImZXXsCfoShRC86wnPfDVJR0w6E=;
- b=IZIUm7CcVF0C/fqqy2LooHB0ylB1FvGNY3Af3ddLk7aXe2GBtsOuyK6jmDc3n1kOfo
- 66fn+k3Sq28K0TpVxHDFAAjgFbIyTTI6NN70QQrAjie4EHkNv4jOiqz1EjZhZKoL2Nmr
- Nsa+x/UTKIkO6xPgkePDNAZHVmncDIbxICSjlburrX1kAb9oOW99dPvT21BMj54fYQf0
- 0aPBty4PQFrrfVBGHc0FXxXfs5TXc0MfeTAmVjzr/a+o6OHd2cu5Seor6LM2ar3z2r35
- n1HSCXzdTptcR5Z9y8fGF/EexLIeXVJVoUorTvV5Y0NLxCcqs+nbtrm7GqPH+P/QcRU+
- hwQA==
-X-Gm-Message-State: AO0yUKUp872sGfYIjjNPUjli0yO7QD/qYub5nQQgrMArr6w5RTrtRGE/
- KDMhcQjW0w3NtgulpP2f3Gh052/QEncgCWTkq43/Wg==
-X-Google-Smtp-Source: AK7set9+uj8TEzIiWVY6g9EoSfSof0NbpfTymdEw83U/3PwwqLWlN22ZAJ57RGHyiHVWx+UwTcaIwbud7jgpyDNZff8=
-X-Received: by 2002:a17:902:e54c:b0:19a:5953:e85c with SMTP id
- n12-20020a170902e54c00b0019a5953e85cmr1615714plf.1.1678980250034; Thu, 16 Mar
- 2023 08:24:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pdAuO-0006WC-Dt; Fri, 17 Mar 2023 10:18:16 -0400
+Received: from mout.kundenserver.de ([212.227.17.13])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1pdAuM-0004t8-IN; Fri, 17 Mar 2023 10:18:16 -0400
+Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue108
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1MpDVx-1qImmj0ZTj-00ql7J; Fri, 17
+ Mar 2023 15:18:10 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 0/3] Trivial branch for 8.0 patches
+Date: Fri, 17 Mar 2023 15:18:05 +0100
+Message-Id: <20230317141808.826875-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20230314114431.1096972-1-peter.maydell@linaro.org>
- <8f048b8a-55f0-d124-3cb7-9a34e863149f@vivier.eu>
- <CAFEAcA_wAUgEiL1T_E9mKKW7PCpdRASKaBnTEydJuC9cPGme2w@mail.gmail.com>
- <67509d48-cf9d-bd01-e284-72f39c4d74f0@vivier.eu>
-In-Reply-To: <67509d48-cf9d-bd01-e284-72f39c4d74f0@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Mar 2023 15:23:58 +0000
-Message-ID: <CAFEAcA91vwRw409zFSQuRYiOVyeQ-GGcwE4QD0_Y2f7pebRHWA@mail.gmail.com>
-Subject: Re: [PATCH] docs/sphinx/kerneldoc.py: Honour --enable-werror
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Thomas Huth <thuth@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:LrgWGrO3jG4Os6eZUtHHUea7bQzbyGm34oquIGhYTbteK6V8XPn
+ iOIiN/VXzmVdqj93vlJv1et726CZ/qc2yrSnoGuI8QZQYhUuR0AuO0xqSMkg3EpCBQf2jSa
+ R+EKkprUGbaX096AaDZLt9Wn3EOiyhlA8Sz0hNUA3kKvjbh+hK+iF+oGUP3rxsKIjgYZBHL
+ EjoJnRxlzmZ76feXd790Q==
+UI-OutboundReport: notjunk:1;M01:P0:9SnXGM6ThRE=;/gzGBn3tbMWd1FGMzLG7h3kDHJz
+ y2mhvOdBt6aLe20nswkZTatnDuOyXGcwh2Kgu1pPVRbps4FzAnkxXj6fzlBe00AyJJEmcg4BP
+ CymkISmLNTTefzdlTqWsLAZP9V+LEnGypB2ew2tb57RjSCj+KrQKIiS08QuPI5DSoKYP9sTHH
+ 5Ubvr1/qXrSlMldJe64IlLi6HdFKh+ZFX2AXLhhAEuV/oRuh7nrRUlvL482MuUx6QsIxauilz
+ +LGWIT+kQz+POXSbpGOVv+G9lvUS5Alvf1tJB9YKqJ5EEpNT5UF4D2IopuYR+0Cnn6FcsLQoh
+ 5gJ845ooynktSRSv9csEZnL9QXuc0IZHwiCEXz1VY4af+f8uE35mxFpDN80mUEAU0MsLSE9sr
+ qnleK/9dJxTD0R2LgkAszAosd/HzF26xfUEUg3ezsYvmaDG5QLT4jeHTlTmtAFDRrzb5xegPb
+ JMdDP0zCENSDU3cRbUESUsrSHbVzsuoiV+eU0IkM8r8gxQJu1EYmCT7QNaoG1RJecKXWuNBwN
+ dO9RjZUxZKJ3NwuSbkHuucn+JSd4yB/l3xO1AC04QSJp+k22hvwcGjE1oNz2BElwzUtdm+C/j
+ 60gqROea8U1Zk7JShlfp9GE7ZG2wvlssl4eAOIvPYKF+GbqwIO9lwCDnuaAnO2VGp35FMvJ4G
+ mecXq/37owY/9wjiEUm6W6M6jv0bPurHLNdE9jDeMA==
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,65 +58,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Mar 2023 15:24:13 -0000
+X-List-Received-Date: Fri, 17 Mar 2023 14:18:16 -0000
 
-On Thu, 16 Mar 2023 at 15:16, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> Le 16/03/2023 =C3=A0 14:42, Peter Maydell a =C3=A9crit :
-> >
-> >
-> > On Thu, 16 Mar 2023 at 13:40, Laurent Vivier <laurent@vivier.eu <mailto=
-:laurent@vivier.eu>> wrote:
-> >  >
-> >  > Le 14/03/2023 =C3=A0 12:44, Peter Maydell a =C3=A9crit :
-> >  > > Currently, the kerneldoc Sphinx plugin doesn't honour the
-> >  > > --enable-werror configure option, so its warnings are never fatal.
-> >  > > This is because although we do pass sphinx-build the -W switch, th=
-e
-> >  > > warnings from kerneldoc are produced by the scripts/kernel-doc scr=
-ipt
-> >  > > directly and don't go through Sphinx's "emit a warning" function.
-> >  > >
-> >  > > When --enable-werror is in effect, pass sphinx-build an extra
-> >  > > argument -Dkerneldoc_werror=3D1.  The kerneldoc plugin can then us=
-e
-> >  > > this to determine whether it should be passing the kernel-doc scri=
-pt
-> >  > > -Werror.
-> >  > >
-> >  > > We do this because there is no documented mechanism for
-> >  > > a Sphinx plugin to determine whether sphinx-build was
-> >  > > passed -W or not; if one is provided then we can switch to
-> >  > > that at a later date:
-> >  > > https://github.com/sphinx-doc/sphinx/issues/11239
-> > <https://github.com/sphinx-doc/sphinx/issues/11239>
-> >  > >
-> >  > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org <mailto:pet=
-er.maydell@linaro.org>>
-> >  > > ---
-> >  > > NB: we need to land the fix for the current outstanding
-> >  > > warning before this one can go in...
-> >  > > https://lore.kernel.org/qemu-devel/20230310103123.2118519-11-alex.=
-bennee@linaro.org/
-> > <https://lore.kernel.org/qemu-devel/20230310103123.2118519-11-alex.benn=
-ee@linaro.org/>
-> >  > > ---
-> >  > >   docs/meson.build         | 2 +-
-> >  > >   docs/sphinx/kerneldoc.py | 5 +++++
-> >  > >   2 files changed, 6 insertions(+), 1 deletion(-)
-> >
-> >  > I've applied it to my trivial-patches branch,
-> >  > but if you want to apply it via some doc or misc branches, let me kn=
-ow.
-> >
-> > Trivial is fine, but make sure you've put in the fix for
-> > the outstanding warning first :-)
->
-> I didn't take this one but:
->
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg949558.html
+The following changes since commit 652737c8090eb3792f8b4c4b22ab12d7cc32073f:
 
-Yeah, that one has the same effect.
+  Update version for v8.0.0-rc0 release (2023-03-14 19:25:05 +0000)
 
--- PMM
+are available in the Git repository at:
+
+  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-8.0-pull-request
+
+for you to fetch changes up to 364206640c6b34bae3bb9e428817e51d23a794d0:
+
+  docs/sphinx/kerneldoc.py: Honour --enable-werror (2023-03-16 14:39:10 +0100)
+
+----------------------------------------------------------------
+Trivial branch pull request 20230317
+
+Fix doc
+Fix sh4 cpu log output
+
+----------------------------------------------------------------
+
+Bernhard Beschow (1):
+  exec/memory: Fix kernel-doc warning
+
+Ilya Leoshkevich (1):
+  target/sh4: Honor QEMU_LOG_FILENAME with QEMU_LOG=cpu
+
+Peter Maydell (1):
+  docs/sphinx/kerneldoc.py: Honour --enable-werror
+
+ docs/meson.build         |  2 +-
+ docs/sphinx/kerneldoc.py |  5 +++++
+ include/exec/memory.h    |  2 +-
+ softmmu/memory.c         |  8 ++++----
+ target/sh4/translate.c   | 14 +++++++-------
+ 5 files changed, 18 insertions(+), 13 deletions(-)
+
+-- 
+2.39.2
+
 
