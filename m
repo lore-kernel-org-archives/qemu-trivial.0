@@ -1,56 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pdAuY-0006ZH-EU
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Mar 2023 10:18:26 -0400
+	id 1pdDsK-0002vq-HF
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Mar 2023 13:28:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pdAuX-0006Yu-7f; Fri, 17 Mar 2023 10:18:25 -0400
-Received: from mout.kundenserver.de ([217.72.192.73])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pdAuV-0004w5-JE; Fri, 17 Mar 2023 10:18:24 -0400
-Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue108
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MqrwN-1qH8M61Mp7-00mtln; Fri, 17
- Mar 2023 15:18:11 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 2/3] target/sh4: Honor QEMU_LOG_FILENAME with QEMU_LOG=cpu
-Date: Fri, 17 Mar 2023 15:18:07 +0100
-Message-Id: <20230317141808.826875-3-laurent@vivier.eu>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230317141808.826875-1-laurent@vivier.eu>
-References: <20230317141808.826875-1-laurent@vivier.eu>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pdDsI-0002v8-Ds
+ for qemu-trivial@nongnu.org; Fri, 17 Mar 2023 13:28:18 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pdDsG-0002um-SB
+ for qemu-trivial@nongnu.org; Fri, 17 Mar 2023 13:28:18 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id k2so6031142pll.8
+ for <qemu-trivial@nongnu.org>; Fri, 17 Mar 2023 10:28:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1679074095;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=xduJVcuAgQuB7bxyjGWP8oKwzv/ArE6QVMLy0HUQ6XM=;
+ b=MW6pxty4jvCSJZsHjJCrZf4dRn6sk2QjmuTtOfKOeCbzGWGBNJ+IyTZrvq9cJSy6si
+ YJx/A/GeEmUlZzrvGzYzX4ZLGyh+0ZIN/+6WASKha19GGZ3PnVNcZD39mekK1dhLb3GU
+ QlwTCkVVTTK9JeGfuNhS+VGODwNt5U4JuDq7EWIfA/V46QD1TSKDz5G/H8H91tZVu+q7
+ CAPa4DagUeNjtuDetgGi41Qk9JsH77vtmznsASVmHWJD+q9n0ytU1FaZjMrVTojAByPQ
+ Y7dP8QRwHp+c5dXYNHzZPssF/R0OkKkSP9XO9K2pO8WOFcqrA+usheXLZQ4Hb/r4lQoD
+ 4y0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1679074095;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=xduJVcuAgQuB7bxyjGWP8oKwzv/ArE6QVMLy0HUQ6XM=;
+ b=D7ta44JwhOGIQvggQja1Vv8fr3sNuc5YidI3Gh/x5KK/nQimtYfx+M/rjk73UrTni6
+ M1XOlxCJQBEVWZD5wB/yF9Rd5SsGj21prmhyjGADGkjvamJgmGKOeX2SHQt4yy0yYq3Q
+ CtBdDgf/5iOyl2sBMMyTf+MxMWagUwbon01GBfspMq5Ta6rZ/QKC3M09LbmCSKooBhGw
+ vIaTkcYpzyn1UnWzuI7PB7Gv3MEHf+Wg0SZPy8rmPlmI6klyjSpEhZlUSq5ozMEVw7C9
+ bMJ71uM5IEQB1AhWwEUCKUZUH7+1SEr4oWXSYpyf9M986gdm8T7lHlFD02Oawp3UnmoW
+ rmMA==
+X-Gm-Message-State: AO0yUKXrUvoeDQ1BBDEsY2MnCOGmu91AMCdqcziwwf2FrCxt9uUvheb8
+ TWOaQJZ4IP8KppDJlR1uEiuouBKHFR+wW98jFYcDVQ==
+X-Google-Smtp-Source: AK7set/OIrPFz9AyfEBnv1dIVtVQHz69pK0hIzjNK2UtxQOTTtCRDQPfbRR/YCqmQCrrFfztA7wzO1LECTiwbiDT2lc=
+X-Received: by 2002:a17:903:24d:b0:19f:2339:b2ef with SMTP id
+ j13-20020a170903024d00b0019f2339b2efmr3267286plh.9.1679074095303; Fri, 17 Mar
+ 2023 10:28:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EIj+NJU9KlUXb/iuch3xmxLd/XK1NveMT1T9/vfq2jXLStFhjLI
- M+iv4e7qBaLdEQNB+r3Uv13b+hHsLnBWtvd2hZMmGJxNMVRGCKdFjvDM+aanHjlac9XPc6X
- IwVN4f2EEd7izCMYhqqIkPS073Scoh3Fal88ORu8XQkEFWNZVSiRcRkpwVAKjlVFbQ13z4b
- YrWpak1x4mgL/pjy6q0Ew==
-UI-OutboundReport: notjunk:1;M01:P0:H5mTWCljFz0=;q076jwn0eQy/tNgbQjkMLo2YnW/
- lN89AHm4YeGXEIk142/IgfdI2kB6sQx1P+65/NBKm6LMNkaw/zAYv7qgDLp1c0jlN9DbIS68K
- 9HvmKHKlmpCyQIKXuskVfnj4yhBcLigl/Q4iUGmgPvAFdvmhdOdPawebvEQZ5yI+bs3Ark5Vq
- BUrgvuGeEKIFinfh2lXtnj/TP0caFCjkD5Y5WeIt38Q0jA3yGRprGTVeqvvVNceRnnBhVQOI1
- cIkU1UOCLCRmk477EZb0UH4K3cVznKWtnY2rzGJ8Z2EKg96ZKdWpHKghyc9gy8jpbmSDD3FiM
- uq91L1OYlhMDseDvvqHLBLdyjkd4RW1Y9Cd5/gyLjeYX+pNlq52AXk41ULOnsQateOdtoatbe
- VoXZuhsUHg8uY7vSW9L4T5ia6LoVJf1HoQ+8CsFXN8OoHAKDL34Y39DiGAQ1+UAJQPRe33s1x
- DrMuR+TS9h9hk6X+rrGU7m81YxQcQos/EhZlcHEmhPhhHFYkFjH8fq+jJGw0BPwhdkSFFpc4S
- 8RouwxkRvqUxvKive0ETmBPlT8+qEUWLuPpny7qSnHD+fZa67Ewb2Iwdc8IHFAtsgXzY2ZxQX
- F6h83z07YYNLAmiIMMJA/+ksW8PGnTH5COIWooVe56ucmEO0wlcw0JpfFW8URt/neUQ4AKnx6
- yH75rLKpFJQenjQoJh9RS2WCg+OgidCQCcVwnlGvJw==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20230317141808.826875-1-laurent@vivier.eu>
+In-Reply-To: <20230317141808.826875-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Mar 2023 17:28:04 +0000
+Message-ID: <CAFEAcA-J3a8YM_g5uSLPGnVZc4iqpiJpy96yQKufUt1GiMbQzQ@mail.gmail.com>
+Subject: Re: [PULL 0/3] Trivial branch for 8.0 patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -63,54 +73,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Mar 2023 14:18:25 -0000
+X-List-Received-Date: Fri, 17 Mar 2023 17:28:18 -0000
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+On Fri, 17 Mar 2023 at 14:19, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 652737c8090eb3792f8b4c4b22ab12d7cc32073f:
+>
+>   Update version for v8.0.0-rc0 release (2023-03-14 19:25:05 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-8.0-pull-request
+>
+> for you to fetch changes up to 364206640c6b34bae3bb9e428817e51d23a794d0:
+>
+>   docs/sphinx/kerneldoc.py: Honour --enable-werror (2023-03-16 14:39:10 +0100)
+>
+> ----------------------------------------------------------------
+> Trivial branch pull request 20230317
+>
+> Fix doc
+> Fix sh4 cpu log output
+>
+> ----------------------------------------------------------------
 
-When using QEMU_LOG=cpu on sh4, QEMU_LOG_FILENAME is partially ignored.
-Fix by using qemu_fprintf() instead of qemu_printf() in the respective
-places.
 
-Fixes: 90c84c560067 ("qom/cpu: Simplify how CPUClass:cpu_dump_state() prints")
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230316003411.129462-1-iii@linux.ibm.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- target/sh4/translate.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+Applied, thanks.
 
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index 97da8bce488e..6e40d5dd6a1f 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -171,16 +171,16 @@ void superh_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-     qemu_fprintf(f, "sgr=0x%08x dbr=0x%08x delayed_pc=0x%08x fpul=0x%08x\n",
-                  env->sgr, env->dbr, env->delayed_pc, env->fpul);
-     for (i = 0; i < 24; i += 4) {
--        qemu_printf("r%d=0x%08x r%d=0x%08x r%d=0x%08x r%d=0x%08x\n",
--		    i, env->gregs[i], i + 1, env->gregs[i + 1],
--		    i + 2, env->gregs[i + 2], i + 3, env->gregs[i + 3]);
-+        qemu_fprintf(f, "r%d=0x%08x r%d=0x%08x r%d=0x%08x r%d=0x%08x\n",
-+                     i, env->gregs[i], i + 1, env->gregs[i + 1],
-+                     i + 2, env->gregs[i + 2], i + 3, env->gregs[i + 3]);
-     }
-     if (env->flags & TB_FLAG_DELAY_SLOT) {
--        qemu_printf("in delay slot (delayed_pc=0x%08x)\n",
--		    env->delayed_pc);
-+        qemu_fprintf(f, "in delay slot (delayed_pc=0x%08x)\n",
-+                     env->delayed_pc);
-     } else if (env->flags & TB_FLAG_DELAY_SLOT_COND) {
--        qemu_printf("in conditional delay slot (delayed_pc=0x%08x)\n",
--		    env->delayed_pc);
-+        qemu_fprintf(f, "in conditional delay slot (delayed_pc=0x%08x)\n",
-+                     env->delayed_pc);
-     } else if (env->flags & TB_FLAG_DELAY_SLOT_RTE) {
-         qemu_fprintf(f, "in rte delay slot (delayed_pc=0x%08x)\n",
-                      env->delayed_pc);
--- 
-2.39.2
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.0
+for any user-visible changes.
 
+-- PMM
 
