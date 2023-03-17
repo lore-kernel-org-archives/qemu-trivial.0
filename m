@@ -1,45 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pdAuS-0006XF-H5
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Mar 2023 10:18:21 -0400
+	id 1pdAuU-0006Xk-4u
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Mar 2023 10:18:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pdAuQ-0006WP-73; Fri, 17 Mar 2023 10:18:18 -0400
-Received: from mout.kundenserver.de ([212.227.17.10])
+ id 1pdAuR-0006Ww-I1; Fri, 17 Mar 2023 10:18:19 -0400
+Received: from mout.kundenserver.de ([217.72.192.73])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pdAuO-0004tn-CU; Fri, 17 Mar 2023 10:18:17 -0400
+ id 1pdAuP-0004tG-Th; Fri, 17 Mar 2023 10:18:19 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue108
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1M3DFj-1peYUI3Uyb-003h35; Fri, 17
- Mar 2023 15:18:12 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1N8GEY-1qYO7m2iga-0149VO; Fri, 17
+ Mar 2023 15:18:10 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 3/3] docs/sphinx/kerneldoc.py: Honour --enable-werror
-Date: Fri, 17 Mar 2023 15:18:08 +0100
-Message-Id: <20230317141808.826875-4-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 1/3] exec/memory: Fix kernel-doc warning
+Date: Fri, 17 Mar 2023 15:18:06 +0100
+Message-Id: <20230317141808.826875-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230317141808.826875-1-laurent@vivier.eu>
 References: <20230317141808.826875-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:48N5l6aiuxH0hdnn0k0TIWGrUEGIgZc5NQqJg76cXXi8XEoV+6I
- jizUdQQ6quBytLAw7DXT0xR0t5++T54bdMXJ2/I1Fy00AZPJur6EDXGBJ5LTy9bbLqWQJPi
- fCu4Y7IoUmr6l5chNGVztJ1W9kLRiQpO6CC4IboZXymtTx4oDC8U9guzDfwluIf2A1QoDu6
- G1hyBDV4HTzR8MKgrxdWQ==
-UI-OutboundReport: notjunk:1;M01:P0:kpVQatv5Nr0=;AieoV6LN/5SkR94CDn3ejECo2Uo
- rnmqJAJOG9glKnlYFJikYzT29ic5bTiyJJjTShlmYqca1YhGwX16dIhNRz5t27hCjwSQ9SBU7
- 2FyAlJewKNtLAJC8Ao4gQErfaiyeX9P5bx8Wy4LKRuE5n4LXq810v+D4htv2j43aQfEmBUC2s
- 1O0NzkSc8t761Bceg7vhneutvNcFSyWDCHezHdreQkWvWUNT4aBHPTdERlogwzDuwTs+1rGjZ
- mxqmsE825Qvn5MlkqOicn9YdCkuHvkLrvHJg8GznLiUZbB2Ing7ZdyIZ4/W2oJH7ERiSh26m6
- +Y6h7xe+Qh1dd12Qhpy2uoOZj59fHfbsPuESXdhOOYdAWiJNoHAQzzUxuyYlCZC/YKuVq9yHi
- FBvINxd62KgoXYXHg3yaJfWCpXlS844bgirA5EkWqL/mAL0dmIouvaK6ho2IgPaa048jzUZ5a
- +eBCryh5E/bFRsy4LF91NweUAuZQCKUV6WoSNsVAC4seIXxhyEPSQKwVC+/6UyGZ6G3jfvOpv
- bBXlmL2IBPi+7xzfCs8gyT4mw1N75e6r2oJ6RX7lo0qlVf8gUwjvF8P6LUTrjxcSI6LflaoHJ
- IpGLKj6UCZFB9eNkX8R07B3UaOoTsbEmqiLsYC6XOpF1cg4K7XovlqZ5oI0tmnq71tSiDoPhU
- iGUfGDHfpTDii3bguuh7Ka7moaVTmfoL4PIAMfo5cw==
-Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:dBnAfVPArdEqHVx+fuXn+g/trh5q9fGrrN1d64P8FsHjqhxkOie
+ IMf98NdGZeidrnW6JqeRYF+mla+0SHTUVonzQppjizz3kjIw9/pbrvtN8Ea/2XJwiwUoWdV
+ 6SMBD3FqYY2vkSTw9hZXW1QzwD+kQgxlxjPzQSfVJYp53KQTXbDrS4vOnWd93GOlYDGGcOx
+ kv8NpVaUZivdOAz9/jbtw==
+UI-OutboundReport: notjunk:1;M01:P0:wCCPaR57oIc=;jNdSCAwwUVMwR1q10XST+wMWSeu
+ AAw38cKaJldlJ15nUWxthnFNZPT3m5lkuUjJah/oCDRCZJiwNH1AtTjBEdrChbUXScCceeJb8
+ fOHrjZQYUXkPzIpgyNKVHrTnNhH/07ie0wbFtFbiXJCk55vo4O1lgiP5voqViKwKs8cqnivxJ
+ D6h5dQ2fmVxJXdQ3P4oMBHH+9eCaspzmSo1vesh/ep7bKMphC0aiX+bte4IN319bRUuIyYfJx
+ yWUQu1RvWDBdzwhIMN9ufiFgwqlYf28KTe1Rnm+qsXsrkbLrT+5dVquOaxQJWc1XKHgHO4JU7
+ XeH9MPc1xHEBDJ4kIXHgyVQF8tupnXe2Qfex4HmndJwkOiCdfpLJXiBjp6gT5WaG2xC3i8HWr
+ d63MlreeF2IjAM4LxhCKjkg6ZmRftg4JyQNjhcQwCW9UXJOWew5L2OuPjxS2t9QZxEqjWlV1+
+ N9yjJTjDVGQeUO+urTN+VDYGPgIfj3MpBGZLAOo7n4VWJ+3lXjVsYU2+3AWuinWM/ykrnnXpw
+ aMTjD7Tf+uayvhYy1PStcC3etAW7Lnwa9yYPVsMI8cyqsSOtOvNh3yf2fwcG4zazlxyBDIZJs
+ ze/d9eLmztgs/FG130Xi540nTEA5BhdswbeXdYKq7AV/xPVul6g3lwPri5Sck3/ftKQ0Yr0pq
+ 6kb8WL35x92+3Oe3csV67hSL0OoW/ITkdLLnAVR+4w==
+Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -59,72 +61,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Mar 2023 14:18:18 -0000
+X-List-Received-Date: Fri, 17 Mar 2023 14:18:19 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Bernhard Beschow <shentey@gmail.com>
 
-Currently, the kerneldoc Sphinx plugin doesn't honour the
---enable-werror configure option, so its warnings are never fatal.
-This is because although we do pass sphinx-build the -W switch, the
-warnings from kerneldoc are produced by the scripts/kernel-doc script
-directly and don't go through Sphinx's "emit a warning" function.
+During build the kernel-doc script complains about the following issue:
 
-When --enable-werror is in effect, pass sphinx-build an extra
-argument -Dkerneldoc_werror=1.  The kerneldoc plugin can then use
-this to determine whether it should be passing the kernel-doc script
--Werror.
+  src/docs/../include/exec/memory.h:1741: warning: Function parameter or member 'n' not described in 'memory_region_unmap_iommu_notifier_range'
+  src/docs/../include/exec/memory.h:1741: warning: Excess function parameter 'notifier' description in 'memory_region_unmap_iommu_notifier_range'
 
-We do this because there is no documented mechanism for
-a Sphinx plugin to determine whether sphinx-build was
-passed -W or not; if one is provided then we can switch to
-that at a later date:
-https://github.com/sphinx-doc/sphinx/issues/11239
+Settle on "notifier" for consistency with other memory functions.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230314114431.1096972-1-peter.maydell@linaro.org>
+Fixes: 7caebbf9ea53
+       ("memory: introduce memory_region_unmap_iommu_notifier_range()")
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230315072552.47117-1-shentey@gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/meson.build         | 2 +-
- docs/sphinx/kerneldoc.py | 5 +++++
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ include/exec/memory.h | 2 +-
+ softmmu/memory.c      | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/docs/meson.build b/docs/meson.build
-index bb72c10ea8c5..f220800e3e59 100644
---- a/docs/meson.build
-+++ b/docs/meson.build
-@@ -7,7 +7,7 @@ if sphinx_build.found()
-   SPHINX_ARGS = ['env', 'CONFDIR=' + qemu_confdir, sphinx_build, '-q']
-   # If we're making warnings fatal, apply this to Sphinx runs as well
-   if get_option('werror')
--    SPHINX_ARGS += [ '-W' ]
-+    SPHINX_ARGS += [ '-W', '-Dkerneldoc_werror=1' ]
-   endif
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 6fa0b071f04d..15ade918baa4 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -1738,7 +1738,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+  *
+  * @notifier: the notifier to be notified
+  */
+-void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n);
++void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier);
  
-   # This is a bit awkward but works: create a trivial document and
-diff --git a/docs/sphinx/kerneldoc.py b/docs/sphinx/kerneldoc.py
-index bf442150165f..72c403a73798 100644
---- a/docs/sphinx/kerneldoc.py
-+++ b/docs/sphinx/kerneldoc.py
-@@ -74,6 +74,10 @@ def run(self):
-         # Sphinx versions
-         cmd += ['-sphinx-version', sphinx.__version__]
  
-+        # Pass through the warnings-as-errors flag
-+        if env.config.kerneldoc_werror:
-+            cmd += ['-Werror']
-+
-         filename = env.config.kerneldoc_srctree + '/' + self.arguments[0]
-         export_file_patterns = []
+ /**
+diff --git a/softmmu/memory.c b/softmmu/memory.c
+index 4699ba55ec80..5305aca7ca3d 100644
+--- a/softmmu/memory.c
++++ b/softmmu/memory.c
+@@ -1996,17 +1996,17 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+     }
+ }
  
-@@ -167,6 +171,7 @@ def setup(app):
-     app.add_config_value('kerneldoc_bin', None, 'env')
-     app.add_config_value('kerneldoc_srctree', None, 'env')
-     app.add_config_value('kerneldoc_verbosity', 1, 'env')
-+    app.add_config_value('kerneldoc_werror', 0, 'env')
+-void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n)
++void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier)
+ {
+     IOMMUTLBEvent event;
  
-     app.add_directive('kernel-doc', KernelDocDirective)
+     event.type = IOMMU_NOTIFIER_UNMAP;
+     event.entry.target_as = &address_space_memory;
+-    event.entry.iova = n->start;
++    event.entry.iova = notifier->start;
+     event.entry.perm = IOMMU_NONE;
+-    event.entry.addr_mask = n->end - n->start;
++    event.entry.addr_mask = notifier->end - notifier->start;
  
+-    memory_region_notify_iommu_one(n, &event);
++    memory_region_notify_iommu_one(notifier, &event);
+ }
+ 
+ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
 -- 
 2.39.2
 
