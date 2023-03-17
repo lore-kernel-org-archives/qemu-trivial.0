@@ -1,44 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pdAuQ-0006WX-M6
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Mar 2023 10:18:18 -0400
+	id 1pdAuS-0006XF-H5
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Mar 2023 10:18:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pdAuO-0006WC-Dt; Fri, 17 Mar 2023 10:18:16 -0400
-Received: from mout.kundenserver.de ([212.227.17.13])
+ id 1pdAuQ-0006WP-73; Fri, 17 Mar 2023 10:18:18 -0400
+Received: from mout.kundenserver.de ([212.227.17.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1pdAuM-0004t8-IN; Fri, 17 Mar 2023 10:18:16 -0400
+ id 1pdAuO-0004tn-CU; Fri, 17 Mar 2023 10:18:17 -0400
 Received: from quad ([82.142.8.70]) by mrelayeu.kundenserver.de (mreue108
- [212.227.15.183]) with ESMTPSA (Nemesis) id 1MpDVx-1qImmj0ZTj-00ql7J; Fri, 17
- Mar 2023 15:18:10 +0100
+ [212.227.15.183]) with ESMTPSA (Nemesis) id 1M3DFj-1peYUI3Uyb-003h35; Fri, 17
+ Mar 2023 15:18:12 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 0/3] Trivial branch for 8.0 patches
-Date: Fri, 17 Mar 2023 15:18:05 +0100
-Message-Id: <20230317141808.826875-1-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 3/3] docs/sphinx/kerneldoc.py: Honour --enable-werror
+Date: Fri, 17 Mar 2023 15:18:08 +0100
+Message-Id: <20230317141808.826875-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230317141808.826875-1-laurent@vivier.eu>
+References: <20230317141808.826875-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LrgWGrO3jG4Os6eZUtHHUea7bQzbyGm34oquIGhYTbteK6V8XPn
- iOIiN/VXzmVdqj93vlJv1et726CZ/qc2yrSnoGuI8QZQYhUuR0AuO0xqSMkg3EpCBQf2jSa
- R+EKkprUGbaX096AaDZLt9Wn3EOiyhlA8Sz0hNUA3kKvjbh+hK+iF+oGUP3rxsKIjgYZBHL
- EjoJnRxlzmZ76feXd790Q==
-UI-OutboundReport: notjunk:1;M01:P0:9SnXGM6ThRE=;/gzGBn3tbMWd1FGMzLG7h3kDHJz
- y2mhvOdBt6aLe20nswkZTatnDuOyXGcwh2Kgu1pPVRbps4FzAnkxXj6fzlBe00AyJJEmcg4BP
- CymkISmLNTTefzdlTqWsLAZP9V+LEnGypB2ew2tb57RjSCj+KrQKIiS08QuPI5DSoKYP9sTHH
- 5Ubvr1/qXrSlMldJe64IlLi6HdFKh+ZFX2AXLhhAEuV/oRuh7nrRUlvL482MuUx6QsIxauilz
- +LGWIT+kQz+POXSbpGOVv+G9lvUS5Alvf1tJB9YKqJ5EEpNT5UF4D2IopuYR+0Cnn6FcsLQoh
- 5gJ845ooynktSRSv9csEZnL9QXuc0IZHwiCEXz1VY4af+f8uE35mxFpDN80mUEAU0MsLSE9sr
- qnleK/9dJxTD0R2LgkAszAosd/HzF26xfUEUg3ezsYvmaDG5QLT4jeHTlTmtAFDRrzb5xegPb
- JMdDP0zCENSDU3cRbUESUsrSHbVzsuoiV+eU0IkM8r8gxQJu1EYmCT7QNaoG1RJecKXWuNBwN
- dO9RjZUxZKJ3NwuSbkHuucn+JSd4yB/l3xO1AC04QSJp+k22hvwcGjE1oNz2BElwzUtdm+C/j
- 60gqROea8U1Zk7JShlfp9GE7ZG2wvlssl4eAOIvPYKF+GbqwIO9lwCDnuaAnO2VGp35FMvJ4G
- mecXq/37owY/9wjiEUm6W6M6jv0bPurHLNdE9jDeMA==
-Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:48N5l6aiuxH0hdnn0k0TIWGrUEGIgZc5NQqJg76cXXi8XEoV+6I
+ jizUdQQ6quBytLAw7DXT0xR0t5++T54bdMXJ2/I1Fy00AZPJur6EDXGBJ5LTy9bbLqWQJPi
+ fCu4Y7IoUmr6l5chNGVztJ1W9kLRiQpO6CC4IboZXymtTx4oDC8U9guzDfwluIf2A1QoDu6
+ G1hyBDV4HTzR8MKgrxdWQ==
+UI-OutboundReport: notjunk:1;M01:P0:kpVQatv5Nr0=;AieoV6LN/5SkR94CDn3ejECo2Uo
+ rnmqJAJOG9glKnlYFJikYzT29ic5bTiyJJjTShlmYqca1YhGwX16dIhNRz5t27hCjwSQ9SBU7
+ 2FyAlJewKNtLAJC8Ao4gQErfaiyeX9P5bx8Wy4LKRuE5n4LXq810v+D4htv2j43aQfEmBUC2s
+ 1O0NzkSc8t761Bceg7vhneutvNcFSyWDCHezHdreQkWvWUNT4aBHPTdERlogwzDuwTs+1rGjZ
+ mxqmsE825Qvn5MlkqOicn9YdCkuHvkLrvHJg8GznLiUZbB2Ing7ZdyIZ4/W2oJH7ERiSh26m6
+ +Y6h7xe+Qh1dd12Qhpy2uoOZj59fHfbsPuESXdhOOYdAWiJNoHAQzzUxuyYlCZC/YKuVq9yHi
+ FBvINxd62KgoXYXHg3yaJfWCpXlS844bgirA5EkWqL/mAL0dmIouvaK6ho2IgPaa048jzUZ5a
+ +eBCryh5E/bFRsy4LF91NweUAuZQCKUV6WoSNsVAC4seIXxhyEPSQKwVC+/6UyGZ6G3jfvOpv
+ bBXlmL2IBPi+7xzfCs8gyT4mw1N75e6r2oJ6RX7lo0qlVf8gUwjvF8P6LUTrjxcSI6LflaoHJ
+ IpGLKj6UCZFB9eNkX8R07B3UaOoTsbEmqiLsYC6XOpF1cg4K7XovlqZ5oI0tmnq71tSiDoPhU
+ iGUfGDHfpTDii3bguuh7Ka7moaVTmfoL4PIAMfo5cw==
+Received-SPF: none client-ip=212.227.17.10; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -58,44 +59,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Mar 2023 14:18:16 -0000
+X-List-Received-Date: Fri, 17 Mar 2023 14:18:18 -0000
 
-The following changes since commit 652737c8090eb3792f8b4c4b22ab12d7cc32073f:
+From: Peter Maydell <peter.maydell@linaro.org>
 
-  Update version for v8.0.0-rc0 release (2023-03-14 19:25:05 +0000)
+Currently, the kerneldoc Sphinx plugin doesn't honour the
+--enable-werror configure option, so its warnings are never fatal.
+This is because although we do pass sphinx-build the -W switch, the
+warnings from kerneldoc are produced by the scripts/kernel-doc script
+directly and don't go through Sphinx's "emit a warning" function.
 
-are available in the Git repository at:
+When --enable-werror is in effect, pass sphinx-build an extra
+argument -Dkerneldoc_werror=1.  The kerneldoc plugin can then use
+this to determine whether it should be passing the kernel-doc script
+-Werror.
 
-  https://gitlab.com/laurent_vivier/qemu.git tags/trivial-branch-for-8.0-pull-request
+We do this because there is no documented mechanism for
+a Sphinx plugin to determine whether sphinx-build was
+passed -W or not; if one is provided then we can switch to
+that at a later date:
+https://github.com/sphinx-doc/sphinx/issues/11239
 
-for you to fetch changes up to 364206640c6b34bae3bb9e428817e51d23a794d0:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230314114431.1096972-1-peter.maydell@linaro.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ docs/meson.build         | 2 +-
+ docs/sphinx/kerneldoc.py | 5 +++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
-  docs/sphinx/kerneldoc.py: Honour --enable-werror (2023-03-16 14:39:10 +0100)
-
-----------------------------------------------------------------
-Trivial branch pull request 20230317
-
-Fix doc
-Fix sh4 cpu log output
-
-----------------------------------------------------------------
-
-Bernhard Beschow (1):
-  exec/memory: Fix kernel-doc warning
-
-Ilya Leoshkevich (1):
-  target/sh4: Honor QEMU_LOG_FILENAME with QEMU_LOG=cpu
-
-Peter Maydell (1):
-  docs/sphinx/kerneldoc.py: Honour --enable-werror
-
- docs/meson.build         |  2 +-
- docs/sphinx/kerneldoc.py |  5 +++++
- include/exec/memory.h    |  2 +-
- softmmu/memory.c         |  8 ++++----
- target/sh4/translate.c   | 14 +++++++-------
- 5 files changed, 18 insertions(+), 13 deletions(-)
-
+diff --git a/docs/meson.build b/docs/meson.build
+index bb72c10ea8c5..f220800e3e59 100644
+--- a/docs/meson.build
++++ b/docs/meson.build
+@@ -7,7 +7,7 @@ if sphinx_build.found()
+   SPHINX_ARGS = ['env', 'CONFDIR=' + qemu_confdir, sphinx_build, '-q']
+   # If we're making warnings fatal, apply this to Sphinx runs as well
+   if get_option('werror')
+-    SPHINX_ARGS += [ '-W' ]
++    SPHINX_ARGS += [ '-W', '-Dkerneldoc_werror=1' ]
+   endif
+ 
+   # This is a bit awkward but works: create a trivial document and
+diff --git a/docs/sphinx/kerneldoc.py b/docs/sphinx/kerneldoc.py
+index bf442150165f..72c403a73798 100644
+--- a/docs/sphinx/kerneldoc.py
++++ b/docs/sphinx/kerneldoc.py
+@@ -74,6 +74,10 @@ def run(self):
+         # Sphinx versions
+         cmd += ['-sphinx-version', sphinx.__version__]
+ 
++        # Pass through the warnings-as-errors flag
++        if env.config.kerneldoc_werror:
++            cmd += ['-Werror']
++
+         filename = env.config.kerneldoc_srctree + '/' + self.arguments[0]
+         export_file_patterns = []
+ 
+@@ -167,6 +171,7 @@ def setup(app):
+     app.add_config_value('kerneldoc_bin', None, 'env')
+     app.add_config_value('kerneldoc_srctree', None, 'env')
+     app.add_config_value('kerneldoc_verbosity', 1, 'env')
++    app.add_config_value('kerneldoc_werror', 0, 'env')
+ 
+     app.add_directive('kernel-doc', KernelDocDirective)
+ 
 -- 
 2.39.2
 
