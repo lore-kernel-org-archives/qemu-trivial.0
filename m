@@ -1,85 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pgltb-00007x-3N
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Mar 2023 08:24:19 -0400
+	id 1pgqXp-0002tT-53
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Mar 2023 13:22:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1pglSF-0006u7-Ac; Mon, 27 Mar 2023 07:56:04 -0400
-Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
+ (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
+ id 1pgqXn-0002tJ-4h
+ for qemu-trivial@nongnu.org; Mon, 27 Mar 2023 13:22:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1pglSA-0001gN-39; Mon, 27 Mar 2023 07:56:00 -0400
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.west.internal (Postfix) with ESMTP id 503ED320089C;
- Mon, 27 Mar 2023 07:55:56 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Mon, 27 Mar 2023 07:55:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
- :cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1679918155; x=
- 1680004555; bh=ylcd8ApIadkg24cFh65EK3b8KXwNopU172jf4fw5acI=; b=Y
- UlrLQkaa8rqRXNq1cy8Yu6JrZFx5h4bNhSQCK6bRTMvJT4XeWD7DoE452mxyDCg5
- O0DSHiSPRfTzMpiiQcAvs30U6N+kCHUregm33c/jLqwB1A670u47ip0CnIhAT22J
- WXIbcfJ8mJnRkO9BZQbyeX6MF3Qk+a/EGabi8o1G7MIWBTTfSwCqPOth9sHA9LbE
- IpQ9fu5Wyrw03zHeMRn76ToxsWCYGpsRZXX009Yj6R1G2OrJEc/zmGW4FaN4s+tE
- C4aHLPoIdh4ck136VFc1Ly5J+FRp8KuxWQXyWnBaQ232LXmkE/4xo1QSEoID1p0w
- HwOyE1egJlN0GxfF/UozA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1679918155; x=
- 1680004555; bh=ylcd8ApIadkg24cFh65EK3b8KXwNopU172jf4fw5acI=; b=A
- jGHAP+3mMVzckxc+D97xMKUfEPGPHdBL4NxXs+67Vv2wFBqnbBFGe+WM6hQ5aLAX
- opBrdFg1zeiszr3DeyLDGOSUlxtdg95PcW19EwahvFELM5WVa8OFJWH5ESEODYkA
- E2ip89NWKNMUxbvgfSMioTi1Tn6X/e+WNuMYbO0Re0z4VPFAkF5gZQPwxxhe0IWk
- qUAEUOsMq9fei9Xwb61HUhXxoCDWanWhPlSkRLhnpjJf79xnasO5LgaWmRASUf5x
- CqsevwilWxrhXD/wuwWFtjdWwxaAhnXRVJhh0pKMWCEBXvA2UeaPM7GO2yvgpQZj
- nab90ygMC1fXGKknAsprQ==
-X-ME-Sender: <xms:S4QhZKR_s3Og2vTd_WN4jYpLfWTzK4WNGlWNfuobqFQf_x6-38eI-Q>
- <xme:S4QhZPzMQLOeRipEjOfGZ3vKt-Ay__G1qvaUcoV8EWYp0g4kAIhiH4iyl0iRe2-aS
- vRI5YDl0wloX73lUg>
-X-ME-Received: <xmr:S4QhZH0HcgKX1ll9m940QFU2Z9J8CPDqFe1mGO551shQqMoLjUzcNWDvyNI>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdehvddggeeiucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
- ertdertddtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfies
- rghjrdhiugdrrghuqeenucggtffrrghtthgvrhhnpefhgfelffeujefghefghedugfegfe
- efffdvjeekiedutdekiefgleegkeduleegveenucffohhmrghinhepkhgvrhhnvghlrdho
- rhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprg
- hnughrvgifsegrjhdrihgurdgruh
-X-ME-Proxy: <xmx:S4QhZGDqZg-rg2cxD3pENbYnpVxFR_7xtq-hBcZybBQXs8eIGX4YgQ>
- <xmx:S4QhZDjPJ5I4jZ0YoR9inv-S7AyERBlM3iNXjKvHy_kwSiz1eJTVmQ>
- <xmx:S4QhZConpheZPNVa8C9Rt6_cV4faH71eGgkXITIaIErNGbZTmsbUBQ>
- <xmx:S4QhZLbhDIMe2r6Y_BYKtb1nc3A_bL84dO9Pt2Ph5Z7be3dNyp7gOA>
-Feedback-ID: idfb84289:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 27 Mar 2023 07:55:53 -0400 (EDT)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	laurent@vivier.eu
-Subject: [PATCH 1/2] linux-user: elfload: s/min_mmap_addr/mmap_min_addr/
-Date: Mon, 27 Mar 2023 22:25:23 +1030
-Message-Id: <20230327115524.1981482-2-andrew@aj.id.au>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230327115524.1981482-1-andrew@aj.id.au>
-References: <20230327115524.1981482-1-andrew@aj.id.au>
+ (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
+ id 1pgqXl-00025k-Im
+ for qemu-trivial@nongnu.org; Mon, 27 Mar 2023 13:22:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1679937724;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=AYvkhTSkuOljNyDAJTHjUcD90OjB4ORw+krVEGstItw=;
+ b=Mbs6gFo1zeiZu0dN+ikZ01f22Ad6B4tin7KiTfLxaYB4JI7nKNNGRDt2wY9i2fAblXvNji
+ L3DXKG6MUrTcDKTFoRM/FF3PXh71HieSooPlbUsNZxA7O1rb64JCAgUnyqlFTXSl5UQM9R
+ ADq0qNQ9IjlkuosN35hoyA6Mk6ywiLw=
+Received: from mail-oo1-f72.google.com (mail-oo1-f72.google.com
+ [209.85.161.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-507-Mute0-i_PJS2fKor7c7mHQ-1; Mon, 27 Mar 2023 13:21:55 -0400
+X-MC-Unique: Mute0-i_PJS2fKor7c7mHQ-1
+Received: by mail-oo1-f72.google.com with SMTP id
+ u16-20020a4ad0d0000000b005374bfedd1fso2172795oor.11
+ for <qemu-trivial@nongnu.org>; Mon, 27 Mar 2023 10:21:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1679937714;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=AYvkhTSkuOljNyDAJTHjUcD90OjB4ORw+krVEGstItw=;
+ b=sOyQEZ1ceSvRdTOhdKraCLtYb/3nX2U4BLXC2/R1Vlpgk+4JIRNZRyQZkCVxjpCKlc
+ 5N+ZX4cXeRm/6PwM/TamQItd9tAbJoDHlDVHCtls5pyqeTm5d2daWAtCaKdbtxFTqvBE
+ Nni9j+4zvQilmahWwP5WRzIX3lXdnESNUrRfjUN/aY3CnRv8tAp61QdZRRpSQqwlYLaE
+ 4tMOktx2UpCmZtDl/+wO399Hz4oft8XWVSgJRuclMycwHy31SRYSdzl6pEyevZ7BCrYU
+ 58yu+zzG3eT+DMQtS/aB7WN/5w1qJILnxGhE+LvwGoLmgWwnrV7gAjxSGG+YuxDuptmI
+ 1+7Q==
+X-Gm-Message-State: AO0yUKXCOufG95vD/ae46FUjzakK0DqrBJx+lkGATbJoqZGCIWuU9YZa
+ Wis5P6uPeTB8CIMN5IDP+J6hfLNG1u7mO7//laM4L7P5k7zQ/5uVT/6vJG1YJHrduGorKJvIdOB
+ DvABvnMTuyrUgd2fP8Q==
+X-Received: by 2002:a9d:5e0a:0:b0:698:77ed:2bd3 with SMTP id
+ d10-20020a9d5e0a000000b0069877ed2bd3mr5058613oti.28.1679937714752; 
+ Mon, 27 Mar 2023 10:21:54 -0700 (PDT)
+X-Google-Smtp-Source: AK7set84gUdKvqnKkzCm0mlgDPCk9/Ua2VJVobXrmBEtdAsQwjnfOnzC5RW6QBnRa/magra6z1Eulg==
+X-Received: by 2002:a9d:5e0a:0:b0:698:77ed:2bd3 with SMTP id
+ d10-20020a9d5e0a000000b0069877ed2bd3mr5058607oti.28.1679937714525; 
+ Mon, 27 Mar 2023 10:21:54 -0700 (PDT)
+Received: from casantos.remote.csb ([177.158.139.132])
+ by smtp.gmail.com with ESMTPSA id
+ e26-20020a05683013da00b0069df7242a08sm4339687otq.26.2023.03.27.10.21.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Mar 2023 10:21:54 -0700 (PDT)
+From: casantos@redhat.com
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Carlos Santos <casantos@redhat.com>
+Subject: [PATCH V3] meson: install keyboard maps only if necessary
+Date: Mon, 27 Mar 2023 14:21:47 -0300
+Message-Id: <20230327172147.196607-1-casantos@redhat.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=64.147.123.25; envelope-from=andrew@aj.id.au;
- helo=wout2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=casantos@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 27 Mar 2023 08:24:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,32 +89,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Mar 2023 11:56:05 -0000
+X-List-Received-Date: Mon, 27 Mar 2023 17:22:07 -0000
 
-As-is the error message can cause some confusion as the mentioned sysctl
-attribute name is wrong:
+From: Carlos Santos <casantos@redhat.com>
 
-https://www.kernel.org/doc/html/latest/admin-guide/sysctl/vm.html#mmap-min-addr
+They are required only for system emulation (i.e. have_system is true).
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Signed-off-by: Carlos Santos <casantos@redhat.com>
 ---
- linux-user/elfload.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes v1->v2:
+  Remove stray --{enable,disable}-install-keymaps addition to scripts/meson-buildoptions.sh
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 1dbc1f0f9baa..601b156b476b 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -2771,7 +2771,7 @@ static void pgb_reserved_va(const char *image_name, abi_ulong guest_loaddr,
-     if (addr == MAP_FAILED || addr != test) {
-         error_report("Unable to reserve 0x%lx bytes of virtual address "
-                      "space at %p (%s) for use as guest address space (check your "
--                     "virtual memory ulimit setting, min_mmap_addr or reserve less "
-+                     "virtual memory ulimit setting, mmap_min_addr or reserve less "
-                      "using -R option)", reserved_va, test, strerror(errno));
-         exit(EXIT_FAILURE);
-     }
+Changes v2->v3:
+  Reset submodules (synchronize to origin/master)
+---
+ pc-bios/keymaps/meson.build | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
+index 158a3b410c..bff3083313 100644
+--- a/pc-bios/keymaps/meson.build
++++ b/pc-bios/keymaps/meson.build
+@@ -47,7 +47,7 @@ if native_qemu_keymap.found()
+                        build_by_default: true,
+                        output: km,
+                        command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
+-                       install: true,
++                       install: have_system,
+                        install_dir: qemu_datadir / 'keymaps')
+   endforeach
+ 
+@@ -56,4 +56,6 @@ else
+   install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps')
+ endif
+ 
+-install_data(['sl', 'sv'], install_dir: qemu_datadir / 'keymaps')
++if have_system
++  install_data(['sl', 'sv'], install_dir: qemu_datadir / 'keymaps')
++endif
 -- 
-2.39.2
+2.31.1
 
 
