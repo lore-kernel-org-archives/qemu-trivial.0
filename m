@@ -1,74 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pgqgd-0004f9-PQ
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Mar 2023 13:31:15 -0400
+	id 1pgr8M-0005m4-Mv
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Mar 2023 13:59:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
- id 1pgqgc-0004ef-HM
- for qemu-trivial@nongnu.org; Mon, 27 Mar 2023 13:31:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1pgr8K-0005lk-T3
+ for qemu-trivial@nongnu.org; Mon, 27 Mar 2023 13:59:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
- id 1pgqga-0002KK-NS
- for qemu-trivial@nongnu.org; Mon, 27 Mar 2023 13:31:14 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1pgr8I-0004QT-Ok
+ for qemu-trivial@nongnu.org; Mon, 27 Mar 2023 13:59:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1679938270;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=kLJs/LntwkI3fZ7wZCv1pPKK30p3YvBZrS7+9RPXSG4=;
- b=GE3WfGkjFRdehimeMwvqIZY3Cc1sxhD62M5ueGZ2ZLEqoVbxMZkbaxAN3Uha+AQe/5/uuX
- Foi0ckrUzt8vxYZaN4X5CmmSCr3l9oWnraSa3UXf+za8d1QqWfWGKoNZlVZIwWC1y7oPdA
- F7/z+9Oib2sMWfEAEJpGVgbaQ0TyKZA=
-Received: from mail-oi1-f197.google.com (mail-oi1-f197.google.com
- [209.85.167.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-284-LYbcqSt4O0eSfaUtuYexag-1; Mon, 27 Mar 2023 13:31:06 -0400
-X-MC-Unique: LYbcqSt4O0eSfaUtuYexag-1
-Received: by mail-oi1-f197.google.com with SMTP id
- z129-20020aca3387000000b0038710ae0033so1910114oiz.8
- for <qemu-trivial@nongnu.org>; Mon, 27 Mar 2023 10:31:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679938266;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kLJs/LntwkI3fZ7wZCv1pPKK30p3YvBZrS7+9RPXSG4=;
- b=PlNw0LCbXIiQPnb2EG3PM2fK/T2zuhJnHn1xRVJJtEfoScMygdoHgh9MaJVgpz0zqz
- PsworKd3h5MMGPiTGMrCGw8kK0Ava4DEFy0iNQ6u5rCrbnyTzdMyQK9LhMWnor6nkdNd
- 9cEsPb7Y94u4XPQ4ZB9lDxv0v8DdeZ9TsEqkwll6DdGkLhAfZAyMpmu3DUZCmSm5LwlG
- cI79kNIv5TQ0tR8hhkHJkVHzR6p9wnprXtSdiJyxcMVWNw23+Gire99HX7CGQEsEStLV
- A+VE/oO24GG4jTr/OtsWL3BwRRuZ0ZJrYQj+L360Ci2kBX3qorIe9Qoqx4USviS2dxpY
- 7V7w==
-X-Gm-Message-State: AO0yUKXBtluPZ9NOYjKEllVmf2PwozFZ7YUVOGldQxLRVRhNURMbMMy0
- XekwRkt/g/2uNW8pKIOVKH2WX4oDXDpyJaWu/t9kFBsmfjWETGQEb5mr/06sheK6yqEVdyc38q2
- +MAMBPgre5BqQ8veEVw==
-X-Received: by 2002:a4a:2ccf:0:b0:52b:bab5:eba2 with SMTP id
- o198-20020a4a2ccf000000b0052bbab5eba2mr5530624ooo.0.1679938264463; 
- Mon, 27 Mar 2023 10:31:04 -0700 (PDT)
-X-Google-Smtp-Source: AK7set8YeEiZFpb7Xi8M7+r2YNG6tQQdpT0NPDITMb11AJS7NXPYS7Doy8s5vxf+/4caNg0RvdQFGg==
-X-Received: by 2002:a4a:2ccf:0:b0:52b:bab5:eba2 with SMTP id
- o198-20020a4a2ccf000000b0052bbab5eba2mr5530607ooo.0.1679938263950; 
- Mon, 27 Mar 2023 10:31:03 -0700 (PDT)
-Received: from casantos.remote.csb ([177.158.139.132])
- by smtp.gmail.com with ESMTPSA id
- c192-20020a4a4fc9000000b0053b88b03e24sm5790768oob.18.2023.03.27.10.31.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Mar 2023 10:31:03 -0700 (PDT)
-From: casantos@redhat.com
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Carlos Santos <casantos@redhat.com>
-Subject: [PATCH V2] tracing: install trace events file only if necessary
-Date: Mon, 27 Mar 2023 14:30:58 -0300
-Message-Id: <20230327173058.199027-1-casantos@redhat.com>
-X-Mailer: git-send-email 2.31.1
+ s=mimecast20190719; t=1679939989;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5HmoUrKEFt91TpwPAQjIsnPZBqP32dbH6wUv9hew7OA=;
+ b=EuO2yFfayFYRsqAKd5E/z4A6Gb9ZtVR4Ht2KLnzhRzFOzz19RP2xpAq7+/lrUfxWSFVlM4
+ yyJlATBhjQM3NinDv/xN78jzwUFQLd9BgpyETIztw3pL2QQ0aKxR96+UMWx1AAaDEYcUdD
+ 3nn+jR+xt7iY5kv+vdagkeAOVVz9J8Y=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-531-scdY94nEMBmJvWG2J8aOiQ-1; Mon, 27 Mar 2023 13:59:45 -0400
+X-MC-Unique: scdY94nEMBmJvWG2J8aOiQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0D33D85A5B1;
+ Mon, 27 Mar 2023 17:59:45 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.173])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3BC4F202701E;
+ Mon, 27 Mar 2023 17:59:44 +0000 (UTC)
+Date: Mon, 27 Mar 2023 18:59:41 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: casantos@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH V2] tracing: install trace events file only if necessary
+Message-ID: <ZCHZjfytWZ6pPzpk@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20230327173058.199027-1-casantos@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=casantos@redhat.com;
+In-Reply-To: <20230327173058.199027-1-casantos@redhat.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -89,34 +72,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Mar 2023 17:31:14 -0000
+X-List-Received-Date: Mon, 27 Mar 2023 17:59:53 -0000
 
-From: Carlos Santos <casantos@redhat.com>
+On Mon, Mar 27, 2023 at 02:30:58PM -0300, casantos@redhat.com wrote:
+> From: Carlos Santos <casantos@redhat.com>
+> 
+> It is not useful when configuring with --enable-trace-backends=nop.
+> 
+> Signed-off-by: Carlos Santos <casantos@redhat.com>
+> ---
 
-It is not useful when configuring with --enable-trace-backends=nop.
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-Signed-off-by: Carlos Santos <casantos@redhat.com>
----
-Changes v1->v2:
-  Install based on chosen trace backend, not on chosen emulators.
----
- trace/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/trace/meson.build b/trace/meson.build
-index 8e80be895c..3d96b4eea0 100644
---- a/trace/meson.build
-+++ b/trace/meson.build
-@@ -64,7 +64,7 @@ trace_events_all = custom_target('trace-events-all',
-                                  input: trace_events_files,
-                                  command: [ 'cat', '@INPUT@' ],
-                                  capture: true,
--                                 install: true,
-+                                 install: get_option('trace_backends') != 'nop'
-                                  install_dir: qemu_datadir)
- 
- if 'ust' in get_option('trace_backends')
+With regards,
+Daniel
 -- 
-2.31.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
