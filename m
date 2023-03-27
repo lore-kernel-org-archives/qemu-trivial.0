@@ -1,69 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pgltW-0008VM-1g
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Mar 2023 08:24:15 -0400
+	id 1pglta-00006m-48
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Mar 2023 08:24:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1pglSF-0006u8-Ah; Mon, 27 Mar 2023 07:56:04 -0400
+ id 1pglSJ-0006ub-2c; Mon, 27 Mar 2023 07:56:07 -0400
 Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1pglS9-0001ea-Nf; Mon, 27 Mar 2023 07:56:00 -0400
+ id 1pglSE-0001hy-KW; Mon, 27 Mar 2023 07:56:04 -0400
 Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.west.internal (Postfix) with ESMTP id 3F7E4320077A;
- Mon, 27 Mar 2023 07:55:53 -0400 (EDT)
+ by mailout.west.internal (Postfix) with ESMTP id 558DA32007E8;
+ Mon, 27 Mar 2023 07:55:59 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Mon, 27 Mar 2023 07:55:53 -0400
+ by compute2.internal (MEProxy); Mon, 27 Mar 2023 07:55:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
  :cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:message-id:mime-version:reply-to:sender:subject
- :subject:to:to; s=fm1; t=1679918152; x=1680004552; bh=Enlbqk+iZu
- 4UIwjG8EbGt7vugYorEWZ9LU5bJH3YtBc=; b=md0OclHYscYnj6XKqaL8yBRF/E
- H6vaNIHP9ETbe6OnyRHyiKkGpQ9gYyneNM+FpUpq59fKN+y+4p4EiLSAwoAI0t2v
- buyuo7qFoi+fNOoOG++FI8ZUeBShzrqluCoPT++vLXF/2cZ+72DllKYdtM2/2vhh
- ueYLMemKtPCJmZL+d3kPSB7TmrrwEnL8yKzzhCkm0tmi+vSC3KkT+NCYOLI57U6+
- 20wVczflKPpyI7dwHb2gLn9Tg0oJHZR/sQYMkoV0o12Epi+QRLVF8N8FXzF0TPwQ
- FsV5OtpE/WPebzVVhqeGqKA/fZGYRozQ6xRboZpr9uulQOJx7sStUmSXI22A==
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1679918158; x=
+ 1680004558; bh=G3VEwzrPpgQY1Y6MYXIsAiRyuQmLO4WhRk5XPnxIRc4=; b=D
+ 9iJlV3DnuoZQcj1QrPAIlQZJDx/C7x1fo9lKb1HFBIM3P047hAG5dHr/5t3UDV8Z
+ /c59BA6O9VQ+rWo0XuCmTND6Wa6IoBslbH6tVgcF/lmq3Ber2EAkdgAZBnLaMijX
+ HgTgJdkVEPO414Yb/5ksoXWH/P6VlrukKnMeXIzCR+Uq5beDsqY9OpxyV2InwKtd
+ A0icdn7cl/LqJlgA25JlSbiPPUaPYIj0xNNZYF/MCzATT4LIUoQWPyH+AlMtymcq
+ x+chDJuqeya7jiktLAhVKx3VthEW9nEnqt2V/gTJJfhLyBn/G2QSriI/wFDW5drj
+ AihUwvGigTHHOWNZ+epog==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; t=1679918152; x=1680004552; bh=Enlbqk+iZu4UI
- wjG8EbGt7vugYorEWZ9LU5bJH3YtBc=; b=RVy3LQEKuwVWQGWbG/t95q3jEc7sD
- ief9aQuShZaK7mLaR6Q2JF7dW6bYY/Iv85i2ek5I+JLw9GP/3X3YmdpCMTth8qMF
- xZiUzTlds0sm0boB5l/eDLdXQKrw6XoTfStuVvWZ+bGm8955Z41bTpPH3IImo9FE
- 4aeAVZ/7MNHmkAhNl5yDs/kU87Raedx6lX8KKYuDyEPI6PN3YENaFFrVmebtQsb+
- 407SkfYEYM2+0OoDHXlmE2Pvwp6RmjuF870jNL3WwmyLMTtF0JZMFNZHvqPhZv1x
- j7Xzw0fLcXCsCkW5saD/gLRbKIkxR6kEpfR0TdPB84oXh+CY5kYPzkxmQ==
-X-ME-Sender: <xms:SIQhZFXnNpUFncZ13KdGXvkqcbQ4g7cva1BIppOpspTzYFLux9QRsQ>
- <xme:SIQhZFn5iByY5D-teJy-pY9bA31wzNJO0Ns7m7QCbMBDxZsRaNGPTYfSNq3YtiHEX
- BtzidcSHDQavt3c8Q>
-X-ME-Received: <xmr:SIQhZBZ5xDmHtfkzYndSRgch3K2GJlP1oOE71fmiG6daqOG2VTrq9P0hAbQ>
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1679918158; x=
+ 1680004558; bh=G3VEwzrPpgQY1Y6MYXIsAiRyuQmLO4WhRk5XPnxIRc4=; b=J
+ s+2+BGd8Yg4Tgw+TV5VaJDUjvzI9pbAClZKXewUj0QXwofUckys56xTlaUpd7biQ
+ amW1S7ETLhCVv5zHpcPMpMPAnPCtji/o8VMkxficILyDJTLa8Ec1jkh6LVvwvNuo
+ s/zIIxPXZdF+AkteLhVHZyVl34Mt0SYuvsZW6WeJzoku7ZBEvjAXrUs99lCOESCx
+ YfzkOYFh0frzxeXlwE5FnDTSbkrmBk28oS5L89clnTSrs4oxIioOYG1U7Ybrc8u/
+ XdgU7Pod49kqiPcADr98SmMh3dmjs4EaHFwauwnXGU/m2hyBFY4XvBvQT3y2Gl6R
+ QpoctWK9LSmrKvUR7QHyg==
+X-ME-Sender: <xms:ToQhZKS6se2Zb_knLJLePxdGYEp4BbKxumIKRKNYp5RKNygliKNE-w>
+ <xme:ToQhZPzrgXFR5HqwYavHTOeTTy0OioOmiOFkd2XqG7RSPiWpZSSdmWOrqLctITuGq
+ NqRvWWyAQpKuoZ7gw>
+X-ME-Received: <xmr:ToQhZH06BhqQyRXhiTpFvmDlZUir1X9Z5ljqUxen44sMppphj959zpsTbGA>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdehvddggeeiucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertd
- ertddtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfiesrghj
- rdhiugdrrghuqeenucggtffrrghtthgvrhhnpeffkeevjeekueegveehffdvuddutefgve
- dtieduleeuuefguedtgfdvffehleehffenucffohhmrghinhepghhithhlrggsrdgtohhm
- necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghnug
- hrvgifsegrjhdrihgurdgruh
-X-ME-Proxy: <xmx:SIQhZIW-nBZwwaep1dqddAN30Mlw5_O0II_qOLgUBbZFiMt-IzGiPQ>
- <xmx:SIQhZPlgyKgCBH2nZZKEcM_K1x0N529p7d23kW6DbuqjbB3-GkU5zA>
- <xmx:SIQhZFec47juLBET6y-6uex1rDU9mR8Rxkzpy51-m6CVkwlgwO6CNA>
- <xmx:SIQhZHs1GYSTc5N4kQeULmw9JykbZcMy0RATEJvEnR1w4fi5be1EWQ>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
+ ertdertddtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfies
+ rghjrdhiugdrrghuqeenucggtffrrghtthgvrhhnpeefveekleefgfejteeuheejvddttd
+ euvdduhfelveduleeugefgfeehveefudfgueenucevlhhushhtvghrufhiiigvpedtnecu
+ rfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghu
+X-ME-Proxy: <xmx:ToQhZGChUkOsn8kBlQG8LSZCL8128aiQpNGNcdEXeDuX3z33u2884A>
+ <xmx:ToQhZDi67ifozpV2IKPBdYNnwrtcbT0VLB8JqgvXxNfscg0y49Xpgg>
+ <xmx:ToQhZCo2ejhANf1glLFBqTpm8URV5mBkHj2utc37pHcSXrkTWK0Qfg>
+ <xmx:ToQhZLZ4GA6NiKIVvFaOS3Kt23xZ9p2-JGo_Il8oRXBheTF4faJH_Q>
 Feedback-ID: idfb84289:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 27 Mar 2023 07:55:50 -0400 (EDT)
+ 27 Mar 2023 07:55:57 -0400 (EDT)
 From: Andrew Jeffery <andrew@aj.id.au>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	laurent@vivier.eu
-Subject: [PATCH 0/2] linux-user: Clarify error on failure to map guest address
- space
-Date: Mon, 27 Mar 2023 22:25:22 +1030
-Message-Id: <20230327115524.1981482-1-andrew@aj.id.au>
+Subject: [PATCH 2/2] linux-user: elfload: Specify -R is an option for
+ qemu-user binaries
+Date: Mon, 27 Mar 2023 22:25:24 +1030
+Message-Id: <20230327115524.1981482-3-andrew@aj.id.au>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230327115524.1981482-1-andrew@aj.id.au>
+References: <20230327115524.1981482-1-andrew@aj.id.au>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=64.147.123.25; envelope-from=andrew@aj.id.au;
@@ -88,27 +91,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Mar 2023 11:56:05 -0000
+X-List-Received-Date: Mon, 27 Mar 2023 11:56:07 -0000
 
-Hello,
+Given several different concepts are suggested for investigation, let's
+not confuse e.g. ulimit's -R with what was actually intended.
 
-This series is a couple of trivial improvements to the error message from linux-user's ELF loader
-when it fails to mmap() the guest's address space. Both issues caused me brief confusion when trying
-to sort myself out after hitting https://gitlab.com/qemu-project/qemu/-/issues/447
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+---
+ linux-user/elfload.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-I've build tested the two as a sanity check.
-
-Cheers,
-
-Andrew
-
-Andrew Jeffery (2):
-  linux-user: elfload: s/min_mmap_addr/mmap_min_addr/
-  linux-user: elfload: Specify -R is an option for qemu-user binaries
-
- linux-user/elfload.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 601b156b476b..694794f97202 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2772,7 +2772,8 @@ static void pgb_reserved_va(const char *image_name, abi_ulong guest_loaddr,
+         error_report("Unable to reserve 0x%lx bytes of virtual address "
+                      "space at %p (%s) for use as guest address space (check your "
+                      "virtual memory ulimit setting, mmap_min_addr or reserve less "
+-                     "using -R option)", reserved_va, test, strerror(errno));
++                     "using qemu-user's -R option)",
++                     reserved_va, test, strerror(errno));
+         exit(EXIT_FAILURE);
+     }
+ 
 -- 
 2.39.2
 
