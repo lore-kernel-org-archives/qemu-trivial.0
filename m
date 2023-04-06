@@ -1,66 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pk9Fl-0001ZT-1G
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Apr 2023 15:57:10 -0400
+	id 1pkPZO-0000sm-Mx
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Apr 2023 09:22:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1pk9Fh-0001Yj-5u
- for qemu-trivial@nongnu.org; Wed, 05 Apr 2023 15:57:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1pk9Ff-0005PS-Np
- for qemu-trivial@nongnu.org; Wed, 05 Apr 2023 15:57:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680724623;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=rfXJHCzdtI9vrh74BrZUIzJrzFoqWYPsfco+7CESfpM=;
- b=VdCPxU1LaCYw9rBa0LQMJyPgLuums/xA71t1YIelqT+cKBNM+TA3LLm6tFpUnm1UcyW1M8
- NzODO64fvZrjoNR8NCN0/WjNPcmDX1rZskJ02IOFD4j0C6w+/S+2Z4nTyS+HyMnPkFpkcG
- HnLCISa/1fe4KL+MCBiy2pQ/kSjRZ9E=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-512-E5t3Hu94N8ahW7PikFNJ0Q-1; Wed, 05 Apr 2023 15:56:59 -0400
-X-MC-Unique: E5t3Hu94N8ahW7PikFNJ0Q-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.90_1) (envelope-from <mark@qpok.net>)
+ id 1pkOzt-00066A-9t; Thu, 06 Apr 2023 08:45:50 -0400
+Received: from box.qpok.net ([212.71.237.253])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mark@qpok.net>)
+ id 1pkOzr-00018w-1m; Thu, 06 Apr 2023 08:45:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=qpok.net; s=mail;
+ t=1680785144; bh=djS7Op4pnwVsDeLZ5KuAHBM/nU4vwLVFXbuUGmAv0Yw=;
+ h=From:To:Cc:Subject:Date:From;
+ b=gIV8DisXUKJ0yFcRxWgAJ8S1gvbLZEA2TmQn1BPTCJu6FPN9vITND/6l9MzxJAP5z
+ 64QSCZg/VtEXCnRYpMZDclkF78v7E3ySqBvOKGRjhYUwT+bkYLf2zkqaoFa9Ep/Xmr
+ OkW4kZFo6DOcC1a+RFTW8vDnq5wj2l2TnpKZRbapLV3tUoAIYx8L0wLo6H3TR0TN5w
+ VBILXtf/pIwC0V1xQeE5jyboNOwb8BuoXTjggYF9WzYYd44J4Pq5pHm5dLDJZpKV6U
+ 7L98vhmUtnT7ppScW8l8mbQCz4D6BGS/jJFuCObAcS8/JLjy1+wIRSTY8pdbhlsSto
+ dTKHCu+XzVM/g==
+Received: from authenticated-user (box.qpok.net [212.71.237.253])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 49C0F3C0D1A7;
- Wed,  5 Apr 2023 19:56:59 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.37])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A294CC158BA;
- Wed,  5 Apr 2023 19:56:58 +0000 (UTC)
-Date: Wed, 5 Apr 2023 15:56:56 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- qemu-trivial@nongnu.org,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
- qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>
-Subject: Re: [PATCH-for-8.1] block/dmg: Declare a type definition for DMG
- uncompress function
-Message-ID: <20230405195656.GA679142@fedora>
-References: <20230320152610.32052-1-philmd@linaro.org>
+ by box.qpok.net (Postfix) with ESMTPSA id B10FC40180;
+ Thu,  6 Apr 2023 13:45:44 +0100 (BST)
+From: Mark Somerville <mark@qpok.net>
+To: qemu-devel@nongnu.org
+Cc: Michael Roth <michael.roth@amd.com>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>, qemu-trivial@nongnu.org,
+ Mark Somerville <mark@qpok.net>
+Subject: [PATCH v2] qga: Fix suspend on Linux guests without systemd
+Date: Thu,  6 Apr 2023 13:45:31 +0100
+Message-Id: <20230406124531.9827-1-mark@qpok.net>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="cV5UHNRVckcL+zSy"
-Content-Disposition: inline
-In-Reply-To: <20230320152610.32052-1-philmd@linaro.org>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=212.71.237.253; envelope-from=mark@qpok.net;
+ helo=box.qpok.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 06 Apr 2023 09:22:29 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,45 +55,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Apr 2023 19:57:05 -0000
+X-List-Received-Date: Thu, 06 Apr 2023 12:46:12 -0000
 
+Allow the Linux guest agent to attempt each of the suspend methods
+(systemctl, pm-* and writing to /sys) in turn.
 
---cV5UHNRVckcL+zSy
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Prior to this guests without systemd failed to suspend due to
+`guest_suspend` returning early regardless of the return value of
+`systemd_supports_mode`.
 
-On Mon, Mar 20, 2023 at 04:26:10PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Introduce the BdrvDmgUncompressFunc type defintion. To emphasis
-> dmg_uncompress_bz2 and dmg_uncompress_lzfse are pointer to functions,
-> declare them using this new typedef.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
-> ---
->  block/dmg.h | 8 ++++----
->  block/dmg.c | 7 ++-----
->  2 files changed, 6 insertions(+), 9 deletions(-)
+Signed-off-by: Mark Somerville <mark@qpok.net>
+---
+v1: Identical to this version(!) but missing from qemu-devel... Sincere
+    apologies to anyone receiving this patch twice. I ran up against a
+    deeply frustrating and depressing SMTP issue which should now be
+    resovled.
 
-Sorry for the delay, applied to my block-next tree:
-https://gitlab.com/stefanha/qemu/commits/block-next
+ qga/commands-posix.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Stefan
-
---cV5UHNRVckcL+zSy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmQt0ogACgkQnKSrs4Gr
-c8j05Af9GCUj8XxeWtqHGRCN3nmyS37IL+N+GkFbX2YHCfsO8ivAm+zApXeEyGzF
-AcYxEOijVVptX7TBfEm+dYTNgRC48zZyGDlkxMuHJuiPxBPvMMbN0RhEosqheXIC
-stKWwbM7K6+1AMHG54qMO0x+QZ7wl3JCWrFmvMSqeT7F4RScZEuS/9pZUXp664dT
-2WXQnN48KhYi1bi7r6ldldIZvycL5HBLFMPwcXXLFX3XaAkyYxiy5aDZaBtgLAwj
-JKiMoRUzAIxrxero+G0XJVRxLnNpVRyyBQwCV/aSY17sS6rOP1yv4u0/3DiDMfIv
-jgtYxU9eq6j+ROC20p8fwG/BDPKDpQ==
-=9pJ+
------END PGP SIGNATURE-----
-
---cV5UHNRVckcL+zSy--
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index 079689d79a..59e7154af4 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -1918,10 +1918,10 @@ static void guest_suspend(SuspendMode mode, Error **errp)
+     if (systemd_supports_mode(mode, &local_err)) {
+         mode_supported = true;
+         systemd_suspend(mode, &local_err);
+-    }
+ 
+-    if (!local_err) {
+-        return;
++        if (!local_err) {
++            return;
++        }
+     }
+ 
+     error_free(local_err);
+@@ -1930,10 +1930,10 @@ static void guest_suspend(SuspendMode mode, Error **errp)
+     if (pmutils_supports_mode(mode, &local_err)) {
+         mode_supported = true;
+         pmutils_suspend(mode, &local_err);
+-    }
+ 
+-    if (!local_err) {
+-        return;
++        if (!local_err) {
++            return;
++        }
+     }
+ 
+     error_free(local_err);
+-- 
+2.40.0
 
 
