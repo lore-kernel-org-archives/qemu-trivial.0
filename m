@@ -1,80 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pl4m2-00057b-9Q
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Apr 2023 05:22:18 -0400
+	id 1plEY0-0007Sv-7W
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Apr 2023 15:48:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
- id 1pl4m0-00057H-Lg
- for qemu-trivial@nongnu.org; Sat, 08 Apr 2023 05:22:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <casantos@redhat.com>)
- id 1pl4ly-0004Ok-P3
- for qemu-trivial@nongnu.org; Sat, 08 Apr 2023 05:22:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680945733;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZGP0y+SaPekxP1kD3NlTbAXEbA3CZ4hH0/9Z5w5XwBo=;
- b=e4Tw1Vm7pMPgw8iNtsKELi59CRvHXWYHiu7mo0N8vN9Tw/HhGPol8gkSwmi6sotkbZbOEV
- 5E7XKYbBgOp+HgO55WvxU58VR0H10Kqfa5y04Y+MgdlUlJn6oy8w0UU3WbKQf0VFGt0UE0
- cj0b3fviE08wrz+oZ0Khu1L12ydwh7U=
-Received: from mail-oa1-f70.google.com (mail-oa1-f70.google.com
- [209.85.160.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-27-dpbOw0oxNQSctCzaUU18eA-1; Sat, 08 Apr 2023 05:22:11 -0400
-X-MC-Unique: dpbOw0oxNQSctCzaUU18eA-1
-Received: by mail-oa1-f70.google.com with SMTP id
- 586e51a60fabf-1842ea21762so492695fac.7
- for <qemu-trivial@nongnu.org>; Sat, 08 Apr 2023 02:22:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <landoncoolman@gmail.com>)
+ id 1plEVZ-0006y0-FD; Sat, 08 Apr 2023 15:45:57 -0400
+Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <landoncoolman@gmail.com>)
+ id 1plEVX-0003Ul-Rz; Sat, 08 Apr 2023 15:45:57 -0400
+Received: by mail-qv1-xf34.google.com with SMTP id ly9so4481061qvb.5;
+ Sat, 08 Apr 2023 12:45:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1680983154; x=1683575154;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=t5sSnWd5PI6RbM5XO/pRbSTNTAn2fP7zcPuoCnva3aE=;
+ b=qmypWPrPny0lHtSWYhX8ggfCgC5QAH8BmBw2XVl/h/yerLMqiW9Pm5e+4b3iyXtlCa
+ tYImSpZzMZzVfIdFTLN3VAYlIszDyJeH2iQ7OOD3F5AZF0paxeJXG01nZARlOacn2Bf/
+ 1U2iNppqOeeCvaiefn3TQNUIeN+Ngn6tRn+HIJd5Q4XCpf2cEJY5N7WrKkkJisry3kkE
+ hduBk0mTUDl/PXKc+GQmYYdyB7aKc2HiNdrhp4IGp2QtZMxRUq2y6qKBmXzYcK42yOXV
+ 9NnghLzATM7H366FzMjtQ+4IO4Zre13zR0XzQX3COfF6v8FWBSQYFsCvmUV19ZxTJTEM
+ nXsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680945731;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ZGP0y+SaPekxP1kD3NlTbAXEbA3CZ4hH0/9Z5w5XwBo=;
- b=oYFLl4JAINaAKdEXj981lmJzgis3QU6xG4SW0iZm2No0ECNAe2GM0rDso1cTWKVKFH
- mjBQlochn9GG8MxP8LdTAXNYd93Zf8OItwZVMmSfZFLE1jO2hQQtbYqfHYqSUBez91iE
- Gj/LB39br9d1frDdLI5r79PenTZSv6DJ4ipyGmPZBE64iuWh7K1ixpsjcRHSEW1MPULX
- mRCyRprrDvDkweg0w1EfpdrnsYScO62FKimPO47FPzrwupcA32xoKQmsm7rUE266seLh
- Sz1x08tIoDMY53BVRi677X6zPzGquAN/AsF3PaQVZ+pApGjl9YmmDp8zeTH/rCN/sMhm
- 5+Zg==
-X-Gm-Message-State: AAQBX9fdZHkbewMHnl+NiDIwiLQySxXVmdKWcAQIsuVKXPz/ii9DiBfC
- 9mMCCrOHH4g7swvIc3OBGcfyhmJfkqLkuZi91xanrSPTncd2uIuv5UIWjBK8uy/O+MxXyDJcM8K
- Vn2FGlkS2SrfX0i9bYQ1W6QguZ4yjMaRz4A==
-X-Received: by 2002:a05:6870:971e:b0:184:2e38:c7af with SMTP id
- n30-20020a056870971e00b001842e38c7afmr439366oaq.3.1680945731056; 
- Sat, 08 Apr 2023 02:22:11 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZhcBD79FyMovWcOWkEuovzxMMlMqeQgkLsY/ohCbJFbNt2ielppqAiBwSrNCx+gqUfEMRku9nqutb/2N6ia1I=
-X-Received: by 2002:a05:6870:971e:b0:184:2e38:c7af with SMTP id
- n30-20020a056870971e00b001842e38c7afmr439360oaq.3.1680945730719; Sat, 08 Apr
- 2023 02:22:10 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1680983154; x=1683575154;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=t5sSnWd5PI6RbM5XO/pRbSTNTAn2fP7zcPuoCnva3aE=;
+ b=acvIshqOnXsG2Q1mRzMXYrB+ZIhqszkW7AZi4J7RIMDY9HwS1EaHNHct5kQJ21pxB2
+ JbjlKxooDolnmNtcFzURA35p/3y7EB9mrIdmx+Ol0oyHLIiWly++PHN7TF1Kqsezbd80
+ sysz3YMNwGuO3DduWB5HvBKYQkzcer1BHoZvrGJow1NluwXCXBa5stvWCDnFiqXDbfRO
+ 4REPg6vZvUVHVUtICAv/ihY4bP1AKF8mjf5VR/kUsekc2//XEvU3mNKgS6uktz1C2wRu
+ a6dUMDUvk0iEP07+6V5tHJ+9O3V2MQdT7j+3Sp0pxDpw0ciPBosfwr7D4C43PPj/mNkT
+ DUoA==
+X-Gm-Message-State: AAQBX9cj2vUFfNgdw3g+oTvNDbpv222U5QfBYtF2R0aOub8KhCxyCiV9
+ COdnDL5ZxbxoHhdbXcJhhGKOsBcqwd8Kbq2YvHEYuExGpGU=
+X-Google-Smtp-Source: AKy350b07ZOZGAiPcs5dID4b3R76MMFKWSXrm3SkSV6Kj7RawuNTAVn/VnA+a8ILPR8qFIjtzFQqa5kcP4fz+hBgNyg=
+X-Received: by 2002:a05:6214:192d:b0:56e:96c3:e0f0 with SMTP id
+ es13-20020a056214192d00b0056e96c3e0f0mr1203067qvb.0.1680983153719; Sat, 08
+ Apr 2023 12:45:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230327173058.199027-1-casantos@redhat.com>
- <ZCHZjfytWZ6pPzpk@redhat.com>
-In-Reply-To: <ZCHZjfytWZ6pPzpk@redhat.com>
-From: Carlos Santos <casantos@redhat.com>
-Date: Sat, 8 Apr 2023 06:21:59 -0300
-Message-ID: <CAC1VKkOn-DowAnszwzV_aRgsNQUYTOSwHti1ADAm0oyr8VNSXQ@mail.gmail.com>
-Subject: Re: [PATCH V2] tracing: install trace events file only if necessary
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=casantos@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+From: Landon Johnson <landoncoolman@gmail.com>
+Date: Sat, 8 Apr 2023 14:45:43 -0500
+Message-ID: <CAN8SqADF=F0AOJR6smxNKCEASJ_ocx3RWLGor6Vs8hPfYJLexQ@mail.gmail.com>
+Subject: Error handling: Audit callers of load_image_targphys,...
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "jsnow@redhat.com" <jsnow@redhat.com>,
+ toria.mendoza@live.com, "EylamTagor@gmail.com" <EylamTagor@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000c0400305f8d8633b"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f34;
+ envelope-from=landoncoolman@gmail.com; helo=mail-qv1-xf34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 08 Apr 2023 15:48:26 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,39 +70,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Apr 2023 09:22:16 -0000
+X-List-Received-Date: Sat, 08 Apr 2023 19:45:57 -0000
 
-On Mon, Mar 27, 2023 at 2:59=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange@r=
-edhat.com> wrote:
->
-> On Mon, Mar 27, 2023 at 02:30:58PM -0300, casantos@redhat.com wrote:
-> > From: Carlos Santos <casantos@redhat.com>
-> >
-> > It is not useful when configuring with --enable-trace-backends=3Dnop.
-> >
-> > Signed-off-by: Carlos Santos <casantos@redhat.com>
-> > ---
->
-> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->
->
-> With regards,
-> Daniel
-> --
-> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-> |: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
->
+--000000000000c0400305f8d8633b
+Content-Type: text/plain; charset="UTF-8"
 
-I updated the patch to fix the array comparison and add a missing comma.
+Hello,
 
---=20
-Carlos Santos
-Senior Software Maintenance Engineer
-Red Hat
-casantos@redhat.com    T: +55-11-3534-6186
+I am a student at UT Austin. A few other students and I would like to work
+on this issue as part of a group project in our virtualization class: Error
+handling: Audit callers of load_image_targphys, get_image_size,
+event_notifier_init, msix_init
+<https://gitlab.com/qemu-project/qemu/-/issues/413>.
 
+We have looked through all of the callers of these methods and identified
+where changes need to be made, but have not made any of the changes yet. We
+weren't quite sure where it would be best to make these changes.
+
+I have CC'd the trivial patches mailing list because it seems like this
+might be a possible route forward.
+
+--000000000000c0400305f8d8633b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,=C2=A0<div><br></div><div>I am a student at UT Austi=
+n. A few other students and I would like to work on this issue as part of a=
+ group project in our virtualization class: <a href=3D"https://gitlab.com/q=
+emu-project/qemu/-/issues/413" target=3D"_blank">Error handling: Audit call=
+ers of load_image_targphys, get_image_size, event_notifier_init, msix_init<=
+/a>.=C2=A0<br></div><div><br></div><div>We have looked through all of the c=
+allers of these methods and identified where changes need to be made, but h=
+ave not made any of the changes yet. We weren&#39;t quite sure where it wou=
+ld be best to make these changes.=C2=A0 =C2=A0</div><div><br></div><div>I h=
+ave CC&#39;d the trivial patches mailing list because it seems like this mi=
+ght be a possible route forward.</div></div>
+
+--000000000000c0400305f8d8633b--
 
