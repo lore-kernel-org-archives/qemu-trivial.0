@@ -1,27 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1plbMu-0002BI-4V
-	for mharc-qemu-trivial@gnu.org; Sun, 09 Apr 2023 16:10:32 -0400
+	id 1plbV5-0003cg-3N
+	for mharc-qemu-trivial@gnu.org; Sun, 09 Apr 2023 16:18:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1plbMs-0002Ax-I9; Sun, 09 Apr 2023 16:10:30 -0400
+ id 1plbV3-0003cT-TT; Sun, 09 Apr 2023 16:18:57 -0400
 Received: from mail.weilnetz.de ([37.120.169.71]
  helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1plbMq-0007K0-Rv; Sun, 09 Apr 2023 16:10:30 -0400
+ id 1plbV2-0008Lv-5u; Sun, 09 Apr 2023 16:18:57 -0400
 Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 50326DA0498;
- Sun,  9 Apr 2023 22:10:27 +0200 (CEST)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 9A237DA0498;
+ Sun,  9 Apr 2023 22:18:54 +0200 (CEST)
 Received: by qemu.weilnetz.de (Postfix, from userid 1000)
- id 207A74668B2; Sun,  9 Apr 2023 22:10:27 +0200 (CEST)
+ id 6A3B84668B2; Sun,  9 Apr 2023 22:18:54 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
-To: Richard Henderson <richard.henderson@linaro.org>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH for-8.0] docs: Fix typo (wphx => whpx)
-Date: Sun,  9 Apr 2023 22:10:07 +0200
-Message-Id: <20230409201007.1157671-1-sw@weilnetz.de>
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH for-8.0] docs/cxl: Fix sentence
+Date: Sun,  9 Apr 2023 22:18:28 +0200
+Message-Id: <20230409201828.1159568-1-sw@weilnetz.de>
 X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -44,33 +45,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 09 Apr 2023 20:10:31 -0000
+X-List-Received-Date: Sun, 09 Apr 2023 20:18:58 -0000
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1529
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
 
-I suggest to apply the patch for 8.0 because it fixes documentation.
+If my change is okay I suggest to apply the patch for 8.0
+because it fixes documentation.
 
-Regards
+Regards,
 Stefan W.
 
- docs/system/introduction.rst | 2 +-
+ docs/system/devices/cxl.rst | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/introduction.rst b/docs/system/introduction.rst
-index c8a9fe6c1d..3e256f8326 100644
---- a/docs/system/introduction.rst
-+++ b/docs/system/introduction.rst
-@@ -27,7 +27,7 @@ Tiny Code Generator (TCG) capable of emulating many CPUs.
-   * - Hypervisor Framework (hvf)
-     - MacOS
-     - x86 (64 bit only), Arm (64 bit only)
--  * - Windows Hypervisor Platform (wphx)
-+  * - Windows Hypervisor Platform (whpx)
-     - Windows
-     - x86
-   * - NetBSD Virtual Machine Monitor (nvmm)
+diff --git a/docs/system/devices/cxl.rst b/docs/system/devices/cxl.rst
+index f25783a4ec..4c38223069 100644
+--- a/docs/system/devices/cxl.rst
++++ b/docs/system/devices/cxl.rst
+@@ -111,7 +111,7 @@ Interfaces provided include:
+ 
+ CXL Root Ports (CXL RP)
+ ~~~~~~~~~~~~~~~~~~~~~~~
+-A CXL Root Port servers te same purpose as a PCIe Root Port.
++A CXL Root Port serves the same purpose as a PCIe Root Port.
+ There are a number of CXL specific Designated Vendor Specific
+ Extended Capabilities (DVSEC) in PCIe Configuration Space
+ and associated component register access via PCI bars.
 -- 
 2.39.2
 
