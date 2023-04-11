@@ -1,46 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pmCQ5-0004Ih-Ts
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Apr 2023 07:44:17 -0400
+	id 1pmDLE-00034v-KV
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Apr 2023 08:43:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1pmCQ3-0004Go-Gg; Tue, 11 Apr 2023 07:44:15 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1pmCPy-0006Xv-5s; Tue, 11 Apr 2023 07:44:15 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4PwkSx0hw1z6J6ld;
- Tue, 11 Apr 2023 19:41:37 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Tue, 11 Apr
- 2023 12:43:55 +0100
-Date: Tue, 11 Apr 2023 12:43:54 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1pmDLC-00034T-2K
+ for qemu-trivial@nongnu.org; Tue, 11 Apr 2023 08:43:18 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1pmDLA-0002nI-5i
+ for qemu-trivial@nongnu.org; Tue, 11 Apr 2023 08:43:17 -0400
+Received: by mail-wr1-x436.google.com with SMTP id v29so7433295wra.13
+ for <qemu-trivial@nongnu.org>; Tue, 11 Apr 2023 05:43:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1681216994; x=1683808994;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=nzCFqVL6tz2b7a1AwWb4k7YJdRF/ecySJTqcXWnUTy0=;
+ b=txkFmXv0pt4f5iCjHzesB3CURRGH0Wmu+/Tu+Toc3ytLYKDP3WLaPN0MG8Bp27v02h
+ bO4EsmvM9V/G4DwQv3zoyPvBlo+qGSRnm9K5B1+CTTe6N4cOP8QJ4769QCa8IvgybqGk
+ JZTN0uvlYP0ans0a9p138GoMabPBoEagE6653iHwAM+SJ+qMqU4bU4DTiGbFW46EEQBe
+ o2RfV4X0Lv9czR+RJcAAgPzWOMVqMdei087weNB/q83+gEh4mQ6et7BcoQrXGt96xEWN
+ wVrjSo7iKNEHhi1RSaNahY/aQAOly6q+sxJQf2SxXW0ZT87piE7tQxLBaNwctsBu0mFy
+ dA1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1681216994; x=1683808994;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=nzCFqVL6tz2b7a1AwWb4k7YJdRF/ecySJTqcXWnUTy0=;
+ b=XN6i9k27KCwR80iuxHzMuVpq2X/qGERLQM7l9AV3Kz885ad/0jaMMCsuyprKSCirIB
+ JctdMThK5SSo/0d6c+AWIp6k8EJMCUUH6mrWaMeQzFnolqCRuZzslT8LfToA+z3asxSk
+ 5kw8eoVjc4A7iEp06QHTU/e9pniTXVrVR3nfzCLfGi8GMqpkZvmTAWJB3rtCb+s1M+DX
+ o+zH9piKluiSAiYPBj7P2Ug3RilUeVfVDh2aWETHKHbT66wMyYambfli76XE/s1s0K2/
+ XIralpWbzO5SU4XaUhQUgEsv4Ws//E0Wb9Lh0AhoyRu76/oU5iwMJOLPqTUYTFbn91/0
+ 1NJw==
+X-Gm-Message-State: AAQBX9cnjmh2gaha3DL3apDwo/WYRGhjS6Wu/LzQedDrjchfLc2P4Fhe
+ JOuivHebyxMh0/DquKdHgarZaA==
+X-Google-Smtp-Source: AKy350YzhoFl0SmqtVJEs+SsQH00Sml1pqr0SE5cdsagy7Q/m67GuAmfZxZm+4oJ+x8xTHETuCtygw==
+X-Received: by 2002:a5d:58ee:0:b0:2f2:3536:1678 with SMTP id
+ f14-20020a5d58ee000000b002f235361678mr3587554wrd.49.1681216994239; 
+ Tue, 11 Apr 2023 05:43:14 -0700 (PDT)
+Received: from zen.linaroharston ([85.9.250.243])
+ by smtp.gmail.com with ESMTPSA id
+ w24-20020a05600c099800b003ee74c25f12sm20644058wmp.35.2023.04.11.05.43.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Apr 2023 05:43:13 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 8AA4B1FFB7;
+ Tue, 11 Apr 2023 13:43:13 +0100 (BST)
+References: <20230409201007.1157671-1-sw@weilnetz.de>
+User-agent: mu4e 1.10.0; emacs 29.0.90
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Stefan Weil <sw@weilnetz.de>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, "Michael S . Tsirkin"
- <mst@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH for-8.0] docs/cxl: Fix sentence
-Message-ID: <20230411124354.00006663@Huawei.com>
-In-Reply-To: <20230409201828.1159568-1-sw@weilnetz.de>
-References: <20230409201828.1159568-1-sw@weilnetz.de>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH for-8.0] docs: Fix typo (wphx => whpx)
+Date: Tue, 11 Apr 2023 13:43:08 +0100
+In-reply-to: <20230409201007.1157671-1-sw@weilnetz.de>
+Message-ID: <87wn2ipp26.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,38 +86,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Apr 2023 11:44:16 -0000
+X-List-Received-Date: Tue, 11 Apr 2023 12:43:18 -0000
 
-On Sun, 9 Apr 2023 22:18:28 +0200
-Stefan Weil <sw@weilnetz.de> wrote:
 
+Stefan Weil via <qemu-devel@nongnu.org> writes:
+
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1529
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 > ---
-> 
-> If my change is okay I suggest to apply the patch for 8.0
-> because it fixes documentation.
-> 
-> Regards,
+>
+> I suggest to apply the patch for 8.0 because it fixes documentation.
+>
+> Regards
 > Stefan W.
-> 
->  docs/system/devices/cxl.rst | 2 +-
+>
+>  docs/system/introduction.rst | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/docs/system/devices/cxl.rst b/docs/system/devices/cxl.rst
-> index f25783a4ec..4c38223069 100644
-> --- a/docs/system/devices/cxl.rst
-> +++ b/docs/system/devices/cxl.rst
-> @@ -111,7 +111,7 @@ Interfaces provided include:
->  
->  CXL Root Ports (CXL RP)
->  ~~~~~~~~~~~~~~~~~~~~~~~
-> -A CXL Root Port servers te same purpose as a PCIe Root Port.
-> +A CXL Root Port serves the same purpose as a PCIe Root Port.
->  There are a number of CXL specific Designated Vendor Specific
->  Extended Capabilities (DVSEC) in PCIe Configuration Space
->  and associated component register access via PCI bars.
+>
+> diff --git a/docs/system/introduction.rst b/docs/system/introduction.rst
+> index c8a9fe6c1d..3e256f8326 100644
+> --- a/docs/system/introduction.rst
+> +++ b/docs/system/introduction.rst
+> @@ -27,7 +27,7 @@ Tiny Code Generator (TCG) capable of emulating many CPU=
+s.
+>    * - Hypervisor Framework (hvf)
+>      - MacOS
+>      - x86 (64 bit only), Arm (64 bit only)
+> -  * - Windows Hypervisor Platform (wphx)
+> +  * - Windows Hypervisor Platform (whpx)
+>      - Windows
+>      - x86
+>    * - NetBSD Virtual Machine Monitor (nvmm)
 
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
