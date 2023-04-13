@@ -1,58 +1,107 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pmHqu-0003lM-OH
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Apr 2023 13:32:20 -0400
+	id 1pmuAc-0000Df-1n
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Apr 2023 06:27:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pmHqu-0003ky-8t
- for qemu-trivial@nongnu.org; Tue, 11 Apr 2023 13:32:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <y-koj@outlook.jp>)
+ id 1pmuAa-0000DQ-0s; Thu, 13 Apr 2023 06:27:12 -0400
+Received: from mail-sgaapc01olkn2050.outbound.protection.outlook.com
+ ([40.92.53.50] helo=APC01-SG2-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pmHqs-0002si-Kk
- for qemu-trivial@nongnu.org; Tue, 11 Apr 2023 13:32:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1681234337;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=cru2vvH8IdOYwOkk++FpO1nnMRcqN08FU+jpvG0in78=;
- b=f1kuTiBp7OgTE1jvQoibV7Dw2X9ETFeLjXHg9FOL9H0cWiBrDZPTvEA9vCtZQjoNymw2vX
- nGOi3HlJdXf8ckWrFgqgHve+UtaTeiEEslYmH2cZ+QbyHPR1g2rCABsYuFEKUysvIf8/Ln
- SWgX8RZIwgt3J40kDOQDyOPgzSBioNM=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-26-txYCs1RgMhWl4lxTddq7NA-1; Tue, 11 Apr 2023 13:32:12 -0400
-X-MC-Unique: txYCs1RgMhWl4lxTddq7NA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BE82729324A3;
- Tue, 11 Apr 2023 17:32:10 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.108])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 548D2492C14;
- Tue, 11 Apr 2023 17:32:09 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH for-8.1] hw/char: Move two more files from specific_ss to
- softmmu_ss
-Date: Tue, 11 Apr 2023 19:32:06 +0200
-Message-Id: <20230411173206.1511621-1-thuth@redhat.com>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <y-koj@outlook.jp>)
+ id 1pmuAW-00055t-Ha; Thu, 13 Apr 2023 06:27:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=iSkw02e7JU1D6a9qHYmO0di2FwL2AACY2zOgC1sy7Y0/2WteZjj/NjEWkI21f83Wt/noSqJpAJeUNMyusjSxe5+rNNoNBuz2n+R64OIpbGvULUGZZ7J4NvBy0HmvhVUfKVA2MoCTUK0BnqY/Uw+C97rg+ZfdxvKzI8vYUv3pJ/BDFeZ6Na0l3bHO5V2yLF35PVYpIpskWiRscevdQaJsNsMEkClbSer82JQL5+AvHoWv/IMhpu0GNWDf5qeRg7HH7e4vkipcQa+yV9WqL7vHMCPC7QDLFjzkDasK2ZQzFSb3/ViKGyIHgbVqx9gEcecyTzkPDkPBCJGjWk5cYeWshQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=pls04sFk3rdeP3xN6jzibTJThLiw3w/++DPBKuhGYzE=;
+ b=QlF1QHb3aGq2nOkO/KYtM18x41DZUjm1Y0f8oNIpM5Hlc4yV8vgK2/ZHxiSF3ZoDjMs+2ZkQzd3ph+YUI9/4oR4BC6hj0E5f/dsYJ23SXJe8Eihjoi6z9gaduk4d2oj2/tgc6vtFqeaqdaiuUPXz+6qpSh3TBRakqXuRUKZOfywG9pugT5krOMZgLbW5qwE9HeuncRBHL6EQaPR5M3Mij0uFJmgd6NhllplUOWUmcurW0XHmQOlb/q2QkuVgSHFQGxmRzOksW2yB0lM2e6qdsXERSODxrbl0ieVbbb2vp6612enhvkTI8J/uEP0Pnyf15muytE9ZWZaBXR9GpYUF2A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+Received: from TYZPR06MB5418.apcprd06.prod.outlook.com (2603:1096:400:202::7)
+ by TYZPR06MB4303.apcprd06.prod.outlook.com (2603:1096:400:83::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.30; Thu, 13 Apr
+ 2023 10:22:00 +0000
+Received: from TYZPR06MB5418.apcprd06.prod.outlook.com
+ ([fe80::12b0:2e9a:1b1f:2555]) by TYZPR06MB5418.apcprd06.prod.outlook.com
+ ([fe80::12b0:2e9a:1b1f:2555%6]) with mapi id 15.20.6298.030; Thu, 13 Apr 2023
+ 10:22:00 +0000
+Message-ID: <TYZPR06MB54182D72B75971C4EEC471639D989@TYZPR06MB5418.apcprd06.prod.outlook.com>
+Date: Thu, 13 Apr 2023 19:21:57 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH] qemu-options.hx: Update descriptions of memory options
+ for NUMA node
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <TYZPR06MB5418D6B0175A49E8E76988439D8E9@TYZPR06MB5418.apcprd06.prod.outlook.com>
+ <87sfd6po7k.fsf@linaro.org>
+From: Yohei Kojima <y-koj@outlook.jp>
+In-Reply-To: <87sfd6po7k.fsf@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-TMN: [m7q39ITLZjBougRcamq5sknQFS0Z50Sus2mEdMTOlgctQbKGej8q8UycP0PnWxwfgAHsogM+Yl8=]
+X-ClientProxiedBy: TYAPR01CA0018.jpnprd01.prod.outlook.com (2603:1096:404::30)
+ To TYZPR06MB5418.apcprd06.prod.outlook.com
+ (2603:1096:400:202::7)
+X-Microsoft-Original-Message-ID: <b77f1d8c-6200-9e35-1660-973251dd9527@outlook.jp>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYZPR06MB5418:EE_|TYZPR06MB4303:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3dba3869-42fc-4286-4711-08db3c08eaba
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: SEnQ9bbefsogiJG06cP848Xwb7f0QRNRk4vDtjfqENPc1fHGH0ywjTKlC/d21I/xxgs9+KG4Ptm73oqQTQGs2sc69qO94uMSzZj7o3Dc6+bIny1st2Q8v9mPExiizVnRk9whOD81H5sZmhxlmEvK8vDTWAUEaZna+5YUAUaZ8U3go/9r1Rq5/kexi0cKXXokdI/d/n2cIhuKzhIcNb3YzLNwa/yCtZGISG3vxZqREad9TS33LmCm8Aw1IXjKsObn+K5P44MuqZ20iu3l9gsp9d+0Sqf5jQtQ/zcz0lOVWfogjBb50R01IlwawPoyNP0Db9vBSDrmyYrGFD+CCdE4PYWUoYvo7NNv29HIPJjKu8imAxPwDlgwnQXHfHL1oObUFF6turMG42z16fylW0vWH6MHF8EnbfSUXFzcuNcV99uzq68qIgTPaT1L5D34AbpzhT4EFxLPPPdYSIGg5iIMiwAM9oQEqIBXxMcf0XXdMMSGlfPAC+f99BLHfvrFIQwB+vYsyZU/Romy+8/nUFk80dWWkmYSm4Oy8ucLM+W21cbGFypoprJECJ18EZDAwan4FL/XApV1OmUEe2RzjP5FrdNCq8jEE0wbBaAFczOYai91B9pkY8SW3jJUxFmabOZp/tW22B6pBQKNysL13mI+fEDGVvexvPyjTV+dR4TZTR8=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VTRmcExSbXJrWGg0bmNDN3FRRzdRWDFmZmxLalhaRW15SFMybUJXTkt3L1hD?=
+ =?utf-8?B?YzZycDBXWDF5Mk53UnQvYUNNcU1HMWZ3VEUvYzZSMURiVmpVNktTelFzUWNB?=
+ =?utf-8?B?MVYxUDNXWDg4WVZpVStnUkViYkhwUlpBWHF3WTlKdWdQaGtFNnlReUV3V3lh?=
+ =?utf-8?B?MUdxaDlIZEdVVjlNdVJkUC9uLzRadmlHMlVudmd5TlBJeDhkdkhSVW9SWkpU?=
+ =?utf-8?B?SmN6WitpMzhpd2NjRVY2RUdOTlF0bVpISklyWjN0WmVnVmdmTldQc3NORTIx?=
+ =?utf-8?B?RHdyQy9SZ1JHK3hZRElvSWZnMGJBOExTcXRUNlBpaDh4Z2xNU0FYZ1ZTZldw?=
+ =?utf-8?B?b1RvcXpEc0RZNG9DM1JRbFVJL1NrVWZwcE9jaGpzWmpZN1YrekVOV0FpOHJJ?=
+ =?utf-8?B?cDlXYmFBK0xaTTZGV29TaEtOWUhGMGtUYm5PTi9XcTVqVGg4ZXhTR1loWTJG?=
+ =?utf-8?B?NG5JbTdCeldxOUZsQnB2ekRvNHEyRHFYaWFPZzIyS3EzY3VvaTB1Ynoxamdo?=
+ =?utf-8?B?aW9HNHBaYS9oTWQyVlc5aWVWRXJTcE0zYllSTnJNZlp4VmdCUnRuSmFnWkxS?=
+ =?utf-8?B?b2dmOE4zZXVBSERFVHVsRzV0QlMwdlYza0VkRG8yTWpycUZSVnZqMWo2STRF?=
+ =?utf-8?B?UTQvUWdNRXlXZFZJaUpmODFRQTltMjlINlF1S1J0ZnNQQVBUTkhidVllbjBX?=
+ =?utf-8?B?NGw4UlA1a1duSDRzMHozS0pWNjR4MVYyWFFLUnFrQ0JnQVU5anB0dG5rOTFo?=
+ =?utf-8?B?dEFBdUhuNFd2NkIrYkZPMWxsdGZBRDdGdmt5MjVsS2xhb1JsRDg3ZVZxOHll?=
+ =?utf-8?B?ZVZGOWE4dUdTYjEvMHdnb1ZCMnBhU3Q2dEVGNlZ5WUx4OHREa0NMaGRZRWc4?=
+ =?utf-8?B?Z0RGMUhaemRVS0M2TnYrdkF1SFpKSHgwMXNuaURWN3kzRm5rY2g1ZUh0WTlv?=
+ =?utf-8?B?WW9OcHhQNVRBOTFpR3NtVGQwdTd0aGg1cmtBelF1aFhXQlhTd3UzSC9INVha?=
+ =?utf-8?B?ejhuYXpaNEJURUhTdEVFNzRhWjM4RFNyOU1XcDk1Z3F0Z011VmJQM2orUHhO?=
+ =?utf-8?B?czF1bUtocVdTcXJTR0NoTFFxcjhSWHNVR3E2Q2svT1lrZnFoQUpUTmFwLzY0?=
+ =?utf-8?B?eVNNTktlcjZqeitDYWMxU1B5NEl3ZlNEV2pxOE01YlhWZkx4eXIzaWhHdC9l?=
+ =?utf-8?B?bXgwMEZ0UmZRakMvSmhQdDhaV1l4U3VxSDB2eTlXQmdtSWMzc0xuK1BKSndl?=
+ =?utf-8?B?cnRoRDNRYjVGK1pWQi9kQVZ3UC9XNWtEVXl5bGFPZVFyRHRYTGVGckRyaWJa?=
+ =?utf-8?B?eEZxTDU3U25YUC9QbXhSZ2RkREt5RStHSE94TTlWMDBTRU9pSmVWUXRjdDNS?=
+ =?utf-8?B?NnFBUG9rd3J0aHBFRllhVGMraVhka1J2OFdGek9tak1rOWFUbjdWV2FkeTgr?=
+ =?utf-8?B?Y1FyS2k2VlJ2NDhUWnMxUjlqMEl0ajlIeWJqWXN1ekpyMFhtUEV0eXYzWTdv?=
+ =?utf-8?B?WmMvNmdNSmd1aEl6bElwQmRjMVFSTVpHTGZuSzkzdUtUQVRsWTFLSWY1Wmxy?=
+ =?utf-8?B?WnF0TnNmaE0yem1ocmRNS2ZOL0M2c1l6VHdpeGRYZEE0VStLOTBRNWd6ZzA5?=
+ =?utf-8?B?UDNNaGY2Z3hhRUQwRjBVN0hVV2lFUUFVR2U3QVZTVlF2OExOd3dwbDhuYU9P?=
+ =?utf-8?B?aGFlcEQxZ3p2Rms2aFlHMUxxNW5zTkptdy9sUSt2emI3NHQ1UkR0RHJRPT0=?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-3208f.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3dba3869-42fc-4286-4711-08db3c08eaba
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB5418.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Apr 2023 10:22:00.1949 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB4303
+Received-SPF: pass client-ip=40.92.53.50; envelope-from=y-koj@outlook.jp;
+ helo=APC01-SG2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, FORGED_MUA_MOZILLA=2.309,
+ FREEMAIL_FROM=0.001, NICE_REPLY_A=-1.083, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,39 +114,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Apr 2023 17:32:20 -0000
+X-List-Received-Date: Thu, 13 Apr 2023 10:27:12 -0000
 
-The code for these two devices seems to be independent from any
-target specific macros. "riscv_htif.c" is used for both, riscv32 and
-riscv64, so by moving this to the common code source set, we can
-avoid to compile it twice every time.
-"goldfish_tty.c" is only used for one target at the moment, but
-since it is a paravirtualized device, it could get useful for other
-targets one day, so let's move it now, too.
+Thank you for the review. I will reflect them in the next version.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/char/meson.build | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/hw/char/meson.build b/hw/char/meson.build
-index e02c60dd54..0807e00ae4 100644
---- a/hw/char/meson.build
-+++ b/hw/char/meson.build
-@@ -32,10 +32,9 @@ softmmu_ss.add(when: 'CONFIG_SIFIVE_UART', if_true: files('sifive_uart.c'))
- softmmu_ss.add(when: 'CONFIG_SH_SCI', if_true: files('sh_serial.c'))
- softmmu_ss.add(when: 'CONFIG_STM32F2XX_USART', if_true: files('stm32f2xx_usart.c'))
- softmmu_ss.add(when: 'CONFIG_MCHP_PFSOC_MMUART', if_true: files('mchp_pfsoc_mmuart.c'))
-+softmmu_ss.add(when: 'CONFIG_HTIF', if_true: files('riscv_htif.c'))
-+softmmu_ss.add(when: 'CONFIG_GOLDFISH_TTY', if_true: files('goldfish_tty.c'))
- 
--specific_ss.add(when: 'CONFIG_HTIF', if_true: files('riscv_htif.c'))
- specific_ss.add(when: 'CONFIG_TERMINAL3270', if_true: files('terminal3270.c'))
- specific_ss.add(when: 'CONFIG_VIRTIO', if_true: files('virtio-serial-bus.c'))
- specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_vty.c'))
--
--specific_ss.add(when: 'CONFIG_GOLDFISH_TTY', if_true: files('goldfish_tty.c'))
--- 
-2.31.1
-
+On 2023/04/11 21:57, Alex Bennée wrote:
+> 
+> Yohei Kojima <y-koj@outlook.jp> writes:
+> 
+>> This commit adds the following description:
+>> 1. `memdev` option is recommended over `mem` option (see [1,2])
+>> 2. users must specify memory for all NUMA nodes (see [2])
+>>
+>> This commit also separates descriptions for `mem` and `memdev` into two
+>> paragraphs. The old doc describes legacy `mem` option first, and it was
+>> a bit confusing.
+>>
+>> Related documantations:
+>> [1] https://wiki.qemu.org/ChangeLog/5.1#Incompatible_changes
+>> [2] https://www.qemu.org/docs/master/about/removed-features.html
+>>
+>> Signed-off-by: Yohei Kojima <y-koj@outlook.jp>
+>> ---
+>>  qemu-options.hx | 25 ++++++++++++++++---------
+>>  1 file changed, 16 insertions(+), 9 deletions(-)
+>>
+>> diff --git a/qemu-options.hx b/qemu-options.hx
+>> index 59bdf67a2c..174f0d0c2d 100644
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -405,15 +405,22 @@ SRST
+>>          -numa node,nodeid=0 -numa node,nodeid=1 \
+>>          -numa cpu,node-id=0,socket-id=0 -numa cpu,node-id=1,socket-id=1
+>>  
+>> -    Legacy '\ ``mem``\ ' assigns a given RAM amount to a node (not supported
+>> -    for 5.1 and newer machine types). '\ ``memdev``\ ' assigns RAM from
+>> -    a given memory backend device to a node. If '\ ``mem``\ ' and
+>> -    '\ ``memdev``\ ' are omitted in all nodes, RAM is split equally between them.
+>> -
+>> -
+>> -    '\ ``mem``\ ' and '\ ``memdev``\ ' are mutually exclusive.
+>> -    Furthermore, if one node uses '\ ``memdev``\ ', all of them have to
+>> -    use it.
+>> +    '\ ``memdev``\ ' option assigns RAM from a given memory backend
+>> +    device to a node. It is recommended to use '\ ``memdev``\ ' option
+>> +    over legacy '\ ``mem``\ ' option. This is because '\ ``memdev``\ '
+>> +    option provides better performance and more control over the
+>> +    backend's RAM (e.g. '\ ``prealloc``\ ' parameter of
+>> +    '\ ``-memory-backend-ram``\ ' allows memory preallocation).
+>> +
+>> +    For compatibility reasons, legacy '\ ``mem``\ ' option is
+>> +    supported in 5.0 and older machine types. Note that '\ ``mem``\ '
+>> +    and '\ ``memdev``\ ' are mutually exclusive. If one node uses
+>> +    '\ ``memdev``\ ', the rest nodes have to use '\ ``memdev``\ '
+>> +    option, and vice versa.
+>> +
+>> +    Users must specify memory for all NUMA nodes by '\ ``memdev``\ '
+>> +    (or legacy '\ ``mem``\ ' if available). In QEMU 5.2, the support
+>> +    for '\ ``-numa node``\ ' without memory specified was removed.
+> 
+> I think this mixes up memdev and mem too much. It would be better to
+> make the lead up to the example just talk about memdev (as it is the
+> preferred option) and move the discussion about backwards compatibility
+> to after the example. You can use the .. note:: annotation to put it in
+> a nice little box, something like:
+> 
+> .. note::
+> 
+>     For compatibility reasons, legacy '\ ``mem``\ ' option is
+>     supported in 5.0 and older machine types. Note that '\ ``mem``\ '
+>     and '\ ``memdev``\ ' are mutually exclusive. If one node uses '\
+>     ``memdev``\ ', the rest of the nodes must also use the '\
+>     ``memdev``\ ' option, and vice versa.
+> 
+> 
+>>  
+>>      '\ ``initiator``\ ' is an additional option that points to an
+>>      initiator NUMA node that has best performance (the lowest latency or
+> 
+> 
 
