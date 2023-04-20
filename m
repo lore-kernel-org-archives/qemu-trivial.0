@@ -1,76 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ppPsO-0004hO-Ca
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2023 04:42:48 -0400
+	id 1ppTJX-0002ln-6x
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2023 08:23:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ppPsN-0004hE-Dd
- for qemu-trivial@nongnu.org; Thu, 20 Apr 2023 04:42:47 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ppTJV-0002lF-4p
+ for qemu-trivial@nongnu.org; Thu, 20 Apr 2023 08:23:02 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ppPsK-0003HY-Ok
- for qemu-trivial@nongnu.org; Thu, 20 Apr 2023 04:42:47 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-2eed43bfa4bso363336f8f.2
- for <qemu-trivial@nongnu.org>; Thu, 20 Apr 2023 01:42:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ppTJT-0000WY-GK
+ for qemu-trivial@nongnu.org; Thu, 20 Apr 2023 08:23:00 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ o6-20020a05600c4fc600b003ef6e6754c5so2958405wmq.5
+ for <qemu-trivial@nongnu.org>; Thu, 20 Apr 2023 05:22:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1681980163; x=1684572163;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=QOq17SJpO0dezW32yH4ryi1U0v1B+3eKi102UjcKc4Y=;
- b=G4lHfzrnH+2K9wsKjD6qpVR/BDoPh8ux3J7tI66Vi4lS66sgVsL3A4egzEIDWbV+53
- Wr0eGl/chFIn91OULa6oYrPEwyYrhkkeJIy1KY+Krn/YTfJeJb/kwIW+/QRMOM6mBEbP
- 1U3UIbkeLiikddztPIVx5v/WI0t+5nMB13t1TbiWkYVHyYJvnCGjTdkVVBHOh0ZYiklg
- /Q3qD0cc9S13LD7QdxNcyw8U59btBuTtoWWSqVgIDA0bRMkd1x30D7Gb1V4lsguAPO8P
- P8y9YITY2i+TiXhwp5jYfH9weuS2CSEAAXXWSgg9HnOmD7QDlvcEvltdsQiev+eq+Py2
- V3/A==
+ d=linaro.org; s=google; t=1681993378; x=1684585378;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=6cd/R92LpLzp49y8yUdy/r7HZc5QLWjNbD/woMnw1OI=;
+ b=EDCkDArKWhgcNDHyFS6BX64EEjV11nekanScpLmTSiTwW01NmUSkPjMOE3f6zSsjiB
+ VLiFzSmcjgQiVP0cQjL9fpWiZd54IYFbR2OFZ1gc5YV8gntxStjtR2h2uXYQsv87Wh+T
+ NeLGfhTpin+hyuWb/A1WYZRVddfva2BstxH2F33RjNYWYiGuaMV5HNM9P/KtFlx0k3QH
+ OCo6BVvzalfL3I9eMTkyY+Of14VLELaLwq68nasbo2w8sBqY67yJ030YgeG+1NcUgWTz
+ 3C8AlLEWnlLjbjFuzL42KiTXSMBr8RZ2ZFKVZjx2eYsxqc+HAeG1oMETXbVkWv7SNfcL
+ dTsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1681980163; x=1684572163;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QOq17SJpO0dezW32yH4ryi1U0v1B+3eKi102UjcKc4Y=;
- b=enEVPjpG7fHUorZjbH3kuzmFIWypTwSwcujNeyIA3U9WpowFhq+dyTOCbbg8mx5wva
- TcSWhooSpFWj6GERhMiAZ+JFXwQIdgSw/rTf+vUgmOK1BVZuOXT16iDXbr5Qdtt8/bgx
- 5Yaq5GvNUrDyAwTVfv4z79yzveAglHsu4NFYWpF93OIPPcyrw7uUWgo47j4x/4mroK+p
- jfoQxKCPNrKA3E/S4PWxPHZXJT08qHaeU+Qol/sm2uYVAMq/V8Frp8rKpV6b/P7OlJKR
- nNQrppb0Zvo2VLk5xwO5N6DnvhIFtj2SWB99qOzdcWyuL6tqOGn6LXGWtcRDj6NAwDlP
- I2YQ==
-X-Gm-Message-State: AAQBX9dZdqZ4HlO5dM1UKLqSKgZuU75RFtmIFpgrDEKJVRCCwummtkK7
- rVljC7gWj7RH5J7BnED+fbrSDA==
-X-Google-Smtp-Source: AKy350Zvhb0Cf3y+dCa27l1xKdqkcoJcstICR5l+Cfpr8otjK2ZemzrQsp25NU7CZdxEDjEOZOXWcg==
-X-Received: by 2002:a5d:494e:0:b0:2f7:85e0:de75 with SMTP id
- r14-20020a5d494e000000b002f785e0de75mr756119wrs.19.1681980163137; 
- Thu, 20 Apr 2023 01:42:43 -0700 (PDT)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- j3-20020a5d5643000000b002e4cd2ec5c7sm1327311wrw.86.2023.04.20.01.42.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Apr 2023 01:42:42 -0700 (PDT)
-Message-ID: <8566fbca-deb5-f65d-c624-166381479958@linaro.org>
-Date: Thu, 20 Apr 2023 10:42:41 +0200
+ d=1e100.net; s=20221208; t=1681993378; x=1684585378;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=6cd/R92LpLzp49y8yUdy/r7HZc5QLWjNbD/woMnw1OI=;
+ b=ARKxuMaHQ7nYQzJjGfxChjBdvuORIW+YhRW/Q/9dz99wDGYzEjQVt+8sxmadcs88Jb
+ q02DrGTegz6dsjmE71ojyWVN4wVgLgUjSK0VnmfTsligiGAdztXJNaw/LVKOaB0qRojW
+ KulQK/8PfjhSY4E2QNG185+shHriLPLq1qlBCR3OmyZnrOz2yypC8F4nHlfKydpRuFpy
+ vCbcY7K/RccoMaboIVr6M2Dk4aX76Mr433kWMgw93o05m6PyOGLL4G6QKs+13CPh7ht1
+ VHGKboenujopTvS5ZMMLwFVhWWFDCkIdD3ka/wQgG8XNVHHtSf7j9eeJQY8kbpFc8z3z
+ xnrg==
+X-Gm-Message-State: AAQBX9dS97SZTGS1xoQDiGj/LHmTiQMGrLLlotQtraFJEvV3Kho9rFCM
+ k5t70oLxu9zAygSNPinNU0dovA==
+X-Google-Smtp-Source: AKy350Y5Ch8KqZKunNuvAZ9tFSr6E7lcjGFPyFVEi2zJmH8pRXvkL83pIgpTwYaGbyD15/xSdPWCyg==
+X-Received: by 2002:a05:600c:4e45:b0:3f1:7b63:bf0e with SMTP id
+ e5-20020a05600c4e4500b003f17b63bf0emr4799766wmq.18.1681993377906; 
+ Thu, 20 Apr 2023 05:22:57 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ n12-20020a7bc5cc000000b003f17329f7f2sm1851762wmk.38.2023.04.20.05.22.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Apr 2023 05:22:57 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] docs/about/deprecated.rst: Add "since 7.1" tag to
+ dtb-kaslr-seed deprecation
+Date: Thu, 20 Apr 2023 13:22:56 +0100
+Message-Id: <20230420122256.1023709-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.10.0
-Subject: Re: [PATCH] cpu: Remove parameter of list_cpus()
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: qemu-trivial@nongnu.org, Yanan Wang <wangyanan55@huawei.com>
-References: <20230419124831.678079-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230419124831.678079-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.597,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,18 +78,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Apr 2023 08:42:47 -0000
+X-List-Received-Date: Thu, 20 Apr 2023 12:23:02 -0000
 
-On 19/4/23 14:48, Thomas Huth wrote:
-> The "optarg" parameter is completely unused, so let's drop it.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   include/exec/cpu-common.h | 2 +-
->   cpu.c                     | 2 +-
->   softmmu/vl.c              | 2 +-
->   3 files changed, 3 insertions(+), 3 deletions(-)
+In commit 5242876f37ca we deprecated the dtb-kaslr-seed property of
+the virt board, but forgot the "since n.n" tag in the documentation
+of this in deprecated.rst.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+This deprecation note first appeared in the 7.1 release, so
+retrospectively add the correct "since 7.1" annotation to it.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+My mistake, since I added the deprecation.rst text to that commit.
+---
+ docs/about/deprecated.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 1ca9dc33d61..914938fd76a 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -219,8 +219,8 @@ Use the more generic event ``DEVICE_UNPLUG_GUEST_ERROR`` instead.
+ System emulator machines
+ ------------------------
+ 
+-Arm ``virt`` machine ``dtb-kaslr-seed`` property
+-''''''''''''''''''''''''''''''''''''''''''''''''
++Arm ``virt`` machine ``dtb-kaslr-seed`` property (since 7.1)
++''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ 
+ The ``dtb-kaslr-seed`` property on the ``virt`` board has been
+ deprecated; use the new name ``dtb-randomness`` instead. The new name
+-- 
+2.34.1
 
 
