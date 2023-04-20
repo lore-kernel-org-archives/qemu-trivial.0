@@ -1,75 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ppUmW-0008Tr-EI
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2023 09:57:10 -0400
+	id 1ppaNm-0007x5-Vc
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2023 15:55:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ppUmT-0008NL-Pg
- for qemu-trivial@nongnu.org; Thu, 20 Apr 2023 09:57:02 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ppUmS-0005Ic-AD
- for qemu-trivial@nongnu.org; Thu, 20 Apr 2023 09:57:01 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-3f17b967bfbso19922215e9.1
- for <qemu-trivial@nongnu.org>; Thu, 20 Apr 2023 06:56:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1681999019; x=1684591019;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=A2kn8gM5GK/RBCNXb3Hfg+xGVzZ7hCfN/ENp4GY4y0w=;
- b=Fy08XjFwkhnUQg6QE6VJrSZNQVBIbRYHdX/gHSlQ31wHwdmNo109y1xWouy05yHoBF
- LjMfqMbCfESbCgcb99rg8Wfw2+W5VoeVmcaL8g5C5NfOXWnHdOoONEPpq7ZUNL9PDoZC
- nhyf3X4WDmXHSxIo5L5uXxRfGdw+eoYQ/jawQ0pAT9EoRoqtCXFBhNxBJgchJj/87Xc+
- KEwqYSeV9MhiOn/1Qe+qKEenEG6qu5IroDFLbOFO/VLg/q7pT96QW/21CwXoDysZ03+A
- 7iK9FV+K14zFxShQ0kPgrjEAijJbwOojLdVJguoB/wyKxmI3d0zu2ZEYqyaS4jkZt0bA
- uekQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1681999019; x=1684591019;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=A2kn8gM5GK/RBCNXb3Hfg+xGVzZ7hCfN/ENp4GY4y0w=;
- b=Xk6L5yZ2Tq4Zyd96fDayRrrzAaAdU6hyQzpmucGHuzKP9v4ZdG66XLZ1hRWGmpWEOz
- ZPKkhkhWlGNztKl4KncNbDiGkQXeCbpVmeXlx4FpMgsfvqqsqcFC66wwOhIUHlFgMoT0
- ATkhS4Z+58NlHK9dQOianRFSjjil7xjNy7avPxtVUe+9dzs+5n8IuHWqtK0n6WAXS44T
- MIU2NEJkBHbNd4MjXNSOXDXEkjC+y8N2k/gJ4bqu8AC4fln2QqAbSr145++VxuU/giG+
- wL587CDswv1ohO65aJrz5rlkK96D+CtqKGJnlemavDw+Jq/qoQvyI7fpmclIQd+QP2gH
- 4EcQ==
-X-Gm-Message-State: AAQBX9e8pHTHbqDzf6ic1kD+bksKH9Qf30O9KPA2KELHva9XXy2zREHq
- oYBnjF4l7TBTwf9b0Kyr6ROBOA==
-X-Google-Smtp-Source: AKy350asLyTIKbYBNgEZmqg8ZXtng3ccUnwYewLpVAhEMVUBWPPSV1eEatTS5mgToC0a8E1CmBTiVw==
-X-Received: by 2002:a5d:5551:0:b0:2f1:ef98:8d18 with SMTP id
- g17-20020a5d5551000000b002f1ef988d18mr1276102wrw.26.1681999018956; 
- Thu, 20 Apr 2023 06:56:58 -0700 (PDT)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- z17-20020adfdf91000000b002d97529b3bbsm1994509wrl.96.2023.04.20.06.56.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Apr 2023 06:56:58 -0700 (PDT)
-Message-ID: <1a15dd65-b88f-341c-fb40-4fde56783d4f@linaro.org>
-Date: Thu, 20 Apr 2023 15:56:57 +0200
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ppaNl-0007wi-Lp; Thu, 20 Apr 2023 15:55:53 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ppaNj-00054l-W1; Thu, 20 Apr 2023 15:55:53 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 6A37540146;
+ Thu, 20 Apr 2023 22:55:48 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id EE97B215;
+ Thu, 20 Apr 2023 22:55:46 +0300 (MSK)
+Received: (nullmailer pid 2237132 invoked by uid 1000);
+ Thu, 20 Apr 2023 19:55:46 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH trivial] spelling: information
+Date: Thu, 20 Apr 2023 22:55:41 +0300
+Message-Id: <20230420195541.2237081-1-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.10.0
-Subject: Re: [PATCH] hw/rdma: Remove unused macros PG_DIR_SZ and PG_TBL_SZ
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>
-Cc: qemu-trivial@nongnu.org
-References: <20230419103018.627115-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230419103018.627115-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.669,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,16 +46,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Apr 2023 13:57:02 -0000
+X-List-Received-Date: Thu, 20 Apr 2023 19:55:54 -0000
 
-On 19/4/23 12:30, Thomas Huth wrote:
-> They have apparently never been used.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   hw/rdma/rdma_rm.c | 4 ----
->   1 file changed, 4 deletions(-)
+3 trivial fixes: 2 .json comments which goes to
+executables, and 1 .h file comment.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 
+diff --git a/include/ui/clipboard.h b/include/ui/clipboard.h
+--- a/include/ui/clipboard.h
++++ b/include/ui/clipboard.h
+@@ -173 +173 @@ void qemu_clipboard_peer_release(QemuClipboardPeer *peer,
+- * Return the current clipboard data & owner informations.
++ * Return the current clipboard data & owner information.
+
+diff --git a/qapi/cryptodev.json b/qapi/cryptodev.json
+--- a/qapi/cryptodev.json
++++ b/qapi/cryptodev.json
+@@ -71 +71 @@
+-# @client: the additional infomation of the crypto device
++# @client: the additional information of the crypto device
+
+diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+--- a/qga/qapi-schema.json
++++ b/qga/qapi-schema.json
+@@ -894 +894 @@
+-# NVMe smart informations, based on NVMe specification,
++# NVMe smart information, based on NVMe specification,
 
