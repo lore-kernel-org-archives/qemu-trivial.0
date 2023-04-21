@@ -1,39 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ppaNm-0007x5-Vc
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2023 15:55:54 -0400
+	id 1pptkg-0000uD-CG
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2023 12:36:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1ppaNl-0007wi-Lp; Thu, 20 Apr 2023 15:55:53 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1ppaNj-00054l-W1; Thu, 20 Apr 2023 15:55:53 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 6A37540146;
- Thu, 20 Apr 2023 22:55:48 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id EE97B215;
- Thu, 20 Apr 2023 22:55:46 +0300 (MSK)
-Received: (nullmailer pid 2237132 invoked by uid 1000);
- Thu, 20 Apr 2023 19:55:46 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH trivial] spelling: information
-Date: Thu, 20 Apr 2023 22:55:41 +0300
-Message-Id: <20230420195541.2237081-1-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.30.2
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pptke-0000qy-Hs
+ for qemu-trivial@nongnu.org; Fri, 21 Apr 2023 12:36:48 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pptkc-0002Ax-Em
+ for qemu-trivial@nongnu.org; Fri, 21 Apr 2023 12:36:48 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-3f193ca059bso5448245e9.3
+ for <qemu-trivial@nongnu.org>; Fri, 21 Apr 2023 09:36:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1682095005; x=1684687005;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Q7PgoVYlwe5ZZNw1v9VJab3oIq9RhWdsj7zvVqAUNgg=;
+ b=FhLC5puug9JuaNPDHn9nB6lW1SzeXh5RtQbLEhI9qb29gGVtUuYu9ogMIIngiK9HRO
+ LEzqaU61KpVU2SXzhDPfXY8dEKAi06hgOYZBIry7GwZf4d9g1/TaLsDuiSZSx/r8WfCJ
+ 2kTlBHNa4OuhVtjVBlYBWnJJOpoF6TaffWYwa+T8hgY+BQ3lR/cGQVn90NTRPnCGOOAK
+ NC9dWQutS4Oywmy0kTsS+w1CdfMRTebydYtFyDLDwrfGbg0DUugdtTzdRk8MVdIPCF1B
+ LqDXFFoWL63DYX02ME+QWaoU8T9/VDV+BPqFpsSOYgi97ZRNdw+ESFzPaGHXfPGBb7EU
+ yR7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1682095005; x=1684687005;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Q7PgoVYlwe5ZZNw1v9VJab3oIq9RhWdsj7zvVqAUNgg=;
+ b=Kl66zEQp6i52eBC9ZGz+Jrz/rL92k6mTAIdXGd2aUUX4K/TH1cuV5ehWugKJZtBWpp
+ 2q8VaHnzTBvd4rn3+BpK4YaTMcZdMVyd91vgTWM8X7lN4j+onpzKMMOhBh5DLyLPTtIY
+ O6a7t3bBhPazSwaYz8mtLQ0zByShu4NSTe5K9oOObnFIOv9/i3wfNvlbwE/1eXopZ2/C
+ DI9N6Pvg7+fz/uwxeGi94U92x0haHVBM4fa7Of6G1OYAmi8DvPUlRu2UWoZwDJ0o/WeS
+ f5UH6s3OffzQtXaVQbWA3DXLETUKmuC2FEylGblD5KWdKuqfq7yn08Emim1BM6+E0CAa
+ kOCA==
+X-Gm-Message-State: AAQBX9fhmGBDVsHt7KPl1mwfyNRBgm3XTtF+jzqaiZ6QdKNh10bsmNuN
+ YzqpcZWt7lW0uibbBUc1fmNNJg==
+X-Google-Smtp-Source: AKy350YKfBoEwFD1Dy9xgTKLsCj1LdkFyjsCUt+ecSEqjctczCVFcp2GMhD1F9q2mIzqSdcs2h9QYw==
+X-Received: by 2002:a7b:c7d4:0:b0:3f1:952a:4bf3 with SMTP id
+ z20-20020a7bc7d4000000b003f1952a4bf3mr1548329wmk.32.1682095004700; 
+ Fri, 21 Apr 2023 09:36:44 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ n10-20020a1c720a000000b003edef091b17sm5183231wmc.37.2023.04.21.09.36.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Apr 2023 09:36:44 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] docs: Remove unused weirdly-named cross-reference targets
+Date: Fri, 21 Apr 2023 17:36:42 +0100
+Message-Id: <20230421163642.1151904-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -46,31 +77,113 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Apr 2023 19:55:54 -0000
+X-List-Received-Date: Fri, 21 Apr 2023 16:36:48 -0000
 
-3 trivial fixes: 2 .json comments which goes to
-executables, and 1 .h file comment.
+In the doc sources, we have a few cross-reference targets with odd
+names "pcsys_005fxyz".  These are the legacy of the semi-automated
+conversion of the old info docs to rST (the '005f' is because ASCII
+0x5f is '_' and the old info link names had underscores in them).
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Remove the targets which nothing links to, and rename the two targets
+which are used to something a bit more descriptive.
 
-diff --git a/include/ui/clipboard.h b/include/ui/clipboard.h
---- a/include/ui/clipboard.h
-+++ b/include/ui/clipboard.h
-@@ -173 +173 @@ void qemu_clipboard_peer_release(QemuClipboardPeer *peer,
-- * Return the current clipboard data & owner informations.
-+ * Return the current clipboard data & owner information.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ docs/system/devices/igb.rst     | 2 +-
+ docs/system/devices/ivshmem.rst | 2 --
+ docs/system/devices/net.rst     | 2 +-
+ docs/system/devices/usb.rst     | 2 --
+ docs/system/keys.rst            | 2 +-
+ docs/system/linuxboot.rst       | 2 +-
+ docs/system/target-i386.rst     | 4 ----
+ 7 files changed, 4 insertions(+), 12 deletions(-)
 
-diff --git a/qapi/cryptodev.json b/qapi/cryptodev.json
---- a/qapi/cryptodev.json
-+++ b/qapi/cryptodev.json
-@@ -71 +71 @@
--# @client: the additional infomation of the crypto device
-+# @client: the additional information of the crypto device
+diff --git a/docs/system/devices/igb.rst b/docs/system/devices/igb.rst
+index 70edadd5743..0bcdd857473 100644
+--- a/docs/system/devices/igb.rst
++++ b/docs/system/devices/igb.rst
+@@ -29,7 +29,7 @@ Using igb
+ =========
+ 
+ Using igb should be nothing different from using another network device. See
+-:ref:`pcsys_005fnetwork` in general.
++:ref:`Network_emulation` in general.
+ 
+ However, you may also need to perform additional steps to activate SR-IOV
+ feature on your guest. For Linux, refer to [4]_.
+diff --git a/docs/system/devices/ivshmem.rst b/docs/system/devices/ivshmem.rst
+index b03a48afa3a..e7aaf34c200 100644
+--- a/docs/system/devices/ivshmem.rst
++++ b/docs/system/devices/ivshmem.rst
+@@ -1,5 +1,3 @@
+-.. _pcsys_005fivshmem:
+-
+ Inter-VM Shared Memory device
+ -----------------------------
+ 
+diff --git a/docs/system/devices/net.rst b/docs/system/devices/net.rst
+index 4b2640c448e..2ab516d4b09 100644
+--- a/docs/system/devices/net.rst
++++ b/docs/system/devices/net.rst
+@@ -1,4 +1,4 @@
+-.. _pcsys_005fnetwork:
++.. _Network_Emulation:
+ 
+ Network emulation
+ -----------------
+diff --git a/docs/system/devices/usb.rst b/docs/system/devices/usb.rst
+index 37cb9b33aea..74166810731 100644
+--- a/docs/system/devices/usb.rst
++++ b/docs/system/devices/usb.rst
+@@ -1,5 +1,3 @@
+-.. _pcsys_005fusb:
+-
+ USB emulation
+ -------------
+ 
+diff --git a/docs/system/keys.rst b/docs/system/keys.rst
+index e596ae6c4e7..0fc17b994d3 100644
+--- a/docs/system/keys.rst
++++ b/docs/system/keys.rst
+@@ -1,4 +1,4 @@
+-.. _pcsys_005fkeys:
++.. _GUI_keys:
+ 
+ Keys in the graphical frontends
+ -------------------------------
+diff --git a/docs/system/linuxboot.rst b/docs/system/linuxboot.rst
+index 228650abc5e..5db2e560dc5 100644
+--- a/docs/system/linuxboot.rst
++++ b/docs/system/linuxboot.rst
+@@ -27,4 +27,4 @@ virtual serial port and the QEMU monitor to the console with the
+                     -append "root=/dev/hda console=ttyS0" -nographic
+ 
+ Use Ctrl-a c to switch between the serial console and the monitor (see
+-:ref:`pcsys_005fkeys`).
++:ref:`GUI_keys`).
+diff --git a/docs/system/target-i386.rst b/docs/system/target-i386.rst
+index 77c2f3b9799..1b8a1f248ab 100644
+--- a/docs/system/target-i386.rst
++++ b/docs/system/target-i386.rst
+@@ -3,8 +3,6 @@
+ x86 System emulator
+ -------------------
+ 
+-.. _pcsys_005fdevices:
+-
+ Board-specific documentation
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+@@ -32,8 +30,6 @@ Architectural features
+    i386/sgx
+    i386/amd-memory-encryption
+ 
+-.. _pcsys_005freq:
+-
+ OS requirements
+ ~~~~~~~~~~~~~~~
+ 
+-- 
+2.34.1
 
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -894 +894 @@
--# NVMe smart informations, based on NVMe specification,
-+# NVMe smart information, based on NVMe specification,
 
