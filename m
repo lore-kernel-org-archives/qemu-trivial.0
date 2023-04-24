@@ -1,70 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pptkg-0000uD-CG
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2023 12:36:50 -0400
+	id 1pqvCN-0001OK-9e
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Apr 2023 08:21:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pptke-0000qy-Hs
- for qemu-trivial@nongnu.org; Fri, 21 Apr 2023 12:36:48 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pptkc-0002Ax-Em
- for qemu-trivial@nongnu.org; Fri, 21 Apr 2023 12:36:48 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-3f193ca059bso5448245e9.3
- for <qemu-trivial@nongnu.org>; Fri, 21 Apr 2023 09:36:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682095005; x=1684687005;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=Q7PgoVYlwe5ZZNw1v9VJab3oIq9RhWdsj7zvVqAUNgg=;
- b=FhLC5puug9JuaNPDHn9nB6lW1SzeXh5RtQbLEhI9qb29gGVtUuYu9ogMIIngiK9HRO
- LEzqaU61KpVU2SXzhDPfXY8dEKAi06hgOYZBIry7GwZf4d9g1/TaLsDuiSZSx/r8WfCJ
- 2kTlBHNa4OuhVtjVBlYBWnJJOpoF6TaffWYwa+T8hgY+BQ3lR/cGQVn90NTRPnCGOOAK
- NC9dWQutS4Oywmy0kTsS+w1CdfMRTebydYtFyDLDwrfGbg0DUugdtTzdRk8MVdIPCF1B
- LqDXFFoWL63DYX02ME+QWaoU8T9/VDV+BPqFpsSOYgi97ZRNdw+ESFzPaGHXfPGBb7EU
- yR7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682095005; x=1684687005;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Q7PgoVYlwe5ZZNw1v9VJab3oIq9RhWdsj7zvVqAUNgg=;
- b=Kl66zEQp6i52eBC9ZGz+Jrz/rL92k6mTAIdXGd2aUUX4K/TH1cuV5ehWugKJZtBWpp
- 2q8VaHnzTBvd4rn3+BpK4YaTMcZdMVyd91vgTWM8X7lN4j+onpzKMMOhBh5DLyLPTtIY
- O6a7t3bBhPazSwaYz8mtLQ0zByShu4NSTe5K9oOObnFIOv9/i3wfNvlbwE/1eXopZ2/C
- DI9N6Pvg7+fz/uwxeGi94U92x0haHVBM4fa7Of6G1OYAmi8DvPUlRu2UWoZwDJ0o/WeS
- f5UH6s3OffzQtXaVQbWA3DXLETUKmuC2FEylGblD5KWdKuqfq7yn08Emim1BM6+E0CAa
- kOCA==
-X-Gm-Message-State: AAQBX9fhmGBDVsHt7KPl1mwfyNRBgm3XTtF+jzqaiZ6QdKNh10bsmNuN
- YzqpcZWt7lW0uibbBUc1fmNNJg==
-X-Google-Smtp-Source: AKy350YKfBoEwFD1Dy9xgTKLsCj1LdkFyjsCUt+ecSEqjctczCVFcp2GMhD1F9q2mIzqSdcs2h9QYw==
-X-Received: by 2002:a7b:c7d4:0:b0:3f1:952a:4bf3 with SMTP id
- z20-20020a7bc7d4000000b003f1952a4bf3mr1548329wmk.32.1682095004700; 
- Fri, 21 Apr 2023 09:36:44 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- n10-20020a1c720a000000b003edef091b17sm5183231wmc.37.2023.04.21.09.36.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Apr 2023 09:36:44 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pqvCL-0001O2-E5
+ for qemu-trivial@nongnu.org; Mon, 24 Apr 2023 08:21:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pqvCJ-0002SS-Pi
+ for qemu-trivial@nongnu.org; Mon, 24 Apr 2023 08:21:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1682338894;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=dsuP6VMHnYCR1DZcnBD6Y63DngXMZul/cFptIwU+kLI=;
+ b=fdETvLAg7CTuDXrNBNB73FKoi7N/Vykkr/sPUe9zdoXHc7YsV0PUXBe0k0S5bgd4f26+YA
+ Jyw/CcFm2hwKCkMWwHwUd+v0mcBmNY6ao6AhoWEhigvgeLYOTNNFDzJf6LesKYgpWUoP4n
+ XD0aelXeJrUejDQZmiuQPG2JfYIRKsk=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-610-BmVDO9kVNFi6XVE2Og81HA-1; Mon, 24 Apr 2023 08:21:30 -0400
+X-MC-Unique: BmVDO9kVNFi6XVE2Og81HA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 65E242A59579;
+ Mon, 24 Apr 2023 12:21:30 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.156])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 54D65492C13;
+ Mon, 24 Apr 2023 12:21:29 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] docs: Remove unused weirdly-named cross-reference targets
-Date: Fri, 21 Apr 2023 17:36:42 +0100
-Message-Id: <20230421163642.1151904-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] linux-user/main: Use list_cpus() instead of cpu_list()
+Date: Mon, 24 Apr 2023 14:21:26 +0200
+Message-Id: <20230424122126.236586-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,113 +63,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Apr 2023 16:36:48 -0000
+X-List-Received-Date: Mon, 24 Apr 2023 12:21:37 -0000
 
-In the doc sources, we have a few cross-reference targets with odd
-names "pcsys_005fxyz".  These are the legacy of the semi-automated
-conversion of the old info docs to rST (the '005f' is because ASCII
-0x5f is '_' and the old info link names had underscores in them).
+This way we can get rid of the if'deffery and the XXX comment
+here (it's repeated in the list_cpus() function anyway).
 
-Remove the targets which nothing links to, and rename the two targets
-which are used to something a bit more descriptive.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- docs/system/devices/igb.rst     | 2 +-
- docs/system/devices/ivshmem.rst | 2 --
- docs/system/devices/net.rst     | 2 +-
- docs/system/devices/usb.rst     | 2 --
- docs/system/keys.rst            | 2 +-
- docs/system/linuxboot.rst       | 2 +-
- docs/system/target-i386.rst     | 4 ----
- 7 files changed, 4 insertions(+), 12 deletions(-)
+ linux-user/main.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/docs/system/devices/igb.rst b/docs/system/devices/igb.rst
-index 70edadd5743..0bcdd857473 100644
---- a/docs/system/devices/igb.rst
-+++ b/docs/system/devices/igb.rst
-@@ -29,7 +29,7 @@ Using igb
- =========
- 
- Using igb should be nothing different from using another network device. See
--:ref:`pcsys_005fnetwork` in general.
-+:ref:`Network_emulation` in general.
- 
- However, you may also need to perform additional steps to activate SR-IOV
- feature on your guest. For Linux, refer to [4]_.
-diff --git a/docs/system/devices/ivshmem.rst b/docs/system/devices/ivshmem.rst
-index b03a48afa3a..e7aaf34c200 100644
---- a/docs/system/devices/ivshmem.rst
-+++ b/docs/system/devices/ivshmem.rst
-@@ -1,5 +1,3 @@
--.. _pcsys_005fivshmem:
--
- Inter-VM Shared Memory device
- -----------------------------
- 
-diff --git a/docs/system/devices/net.rst b/docs/system/devices/net.rst
-index 4b2640c448e..2ab516d4b09 100644
---- a/docs/system/devices/net.rst
-+++ b/docs/system/devices/net.rst
-@@ -1,4 +1,4 @@
--.. _pcsys_005fnetwork:
-+.. _Network_Emulation:
- 
- Network emulation
- -----------------
-diff --git a/docs/system/devices/usb.rst b/docs/system/devices/usb.rst
-index 37cb9b33aea..74166810731 100644
---- a/docs/system/devices/usb.rst
-+++ b/docs/system/devices/usb.rst
-@@ -1,5 +1,3 @@
--.. _pcsys_005fusb:
--
- USB emulation
- -------------
- 
-diff --git a/docs/system/keys.rst b/docs/system/keys.rst
-index e596ae6c4e7..0fc17b994d3 100644
---- a/docs/system/keys.rst
-+++ b/docs/system/keys.rst
-@@ -1,4 +1,4 @@
--.. _pcsys_005fkeys:
-+.. _GUI_keys:
- 
- Keys in the graphical frontends
- -------------------------------
-diff --git a/docs/system/linuxboot.rst b/docs/system/linuxboot.rst
-index 228650abc5e..5db2e560dc5 100644
---- a/docs/system/linuxboot.rst
-+++ b/docs/system/linuxboot.rst
-@@ -27,4 +27,4 @@ virtual serial port and the QEMU monitor to the console with the
-                     -append "root=/dev/hda console=ttyS0" -nographic
- 
- Use Ctrl-a c to switch between the serial console and the monitor (see
--:ref:`pcsys_005fkeys`).
-+:ref:`GUI_keys`).
-diff --git a/docs/system/target-i386.rst b/docs/system/target-i386.rst
-index 77c2f3b9799..1b8a1f248ab 100644
---- a/docs/system/target-i386.rst
-+++ b/docs/system/target-i386.rst
-@@ -3,8 +3,6 @@
- x86 System emulator
- -------------------
- 
--.. _pcsys_005fdevices:
--
- Board-specific documentation
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-@@ -32,8 +30,6 @@ Architectural features
-    i386/sgx
-    i386/amd-memory-encryption
- 
--.. _pcsys_005freq:
--
- OS requirements
- ~~~~~~~~~~~~~~~
- 
+diff --git a/linux-user/main.c b/linux-user/main.c
+index fe03293516..aece4d9e91 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -359,10 +359,7 @@ static void handle_arg_cpu(const char *arg)
+ {
+     cpu_model = strdup(arg);
+     if (cpu_model == NULL || is_help_option(cpu_model)) {
+-        /* XXX: implement xxx_cpu_list for targets that still miss it */
+-#if defined(cpu_list)
+-        cpu_list();
+-#endif
++        list_cpus();
+         exit(EXIT_FAILURE);
+     }
+ }
 -- 
-2.34.1
+2.31.1
 
 
