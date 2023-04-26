@@ -1,88 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1prErU-00070T-9v
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Apr 2023 05:21:24 -0400
+	id 1prdaz-0000eh-Uo
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Apr 2023 07:46:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1prErS-0006zs-PT
- for qemu-trivial@nongnu.org; Tue, 25 Apr 2023 05:21:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1prErP-0004wl-Ey
- for qemu-trivial@nongnu.org; Tue, 25 Apr 2023 05:21:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1682414477;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MN9oXgsc8DHoo1VpyjDGkHB8D0MhxIlnzkrg3+EvyyI=;
- b=aGZ/on9nG7bNvfy4DgDwdXyl2eiDNRTiS9i1y14j2wViga5oKgERkrCFDRMJN44KB2e8UU
- 3t4KhJPrsTg2sgVX6OZ2A2F5ELGdj7p7bm4nrPDMjBzGyAc/6dR3RxuhPiSaqjq7aZYrMd
- hg1nwNyXajOMujNo9ANVBBNb3gh0P8w=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-483-I4K95331OLeSnmv7dmusZw-1; Tue, 25 Apr 2023 05:21:16 -0400
-X-MC-Unique: I4K95331OLeSnmv7dmusZw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-3f18b63229bso53597635e9.0
- for <qemu-trivial@nongnu.org>; Tue, 25 Apr 2023 02:21:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mnissler@rivosinc.com>)
+ id 1prbZ8-0003Cw-4o
+ for qemu-trivial@nongnu.org; Wed, 26 Apr 2023 05:35:58 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mnissler@rivosinc.com>)
+ id 1prbYm-0008Bl-CR
+ for qemu-trivial@nongnu.org; Wed, 26 Apr 2023 05:35:51 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-1a8097c1ccfso72342515ad.1
+ for <qemu-trivial@nongnu.org>; Wed, 26 Apr 2023 02:35:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=rivosinc-com.20221208.gappssmtp.com; s=20221208; t=1682501733; x=1685093733; 
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=EnBNKPl5c9zSg2lI4GIRXwC8cVmuK2waM8zKNWabKqI=;
+ b=Io4orK03TGQ+OuvybbrMK+ZvTbYZu3RmiHuyXaYuDqlE/iUySBOjzfw7fmN7X6fRih
+ H3nQFSKcSAwzNUqD5y1tqyecF4wtdBgOFLozqhVus6SK88S9gLt8HDb2H/oz795oRUy4
+ bHDG0G9EEXh7RQZCpE+zz30cg57B6MP6VMslF4JVUFuwXeWx0ZXZu/Yba1eonBBcn2DJ
+ zCgRtjzBTT4QzUciWjcScAZqADzfJuVfw2HxA/fzLrenFNdQ+NZeOUhoGKFqPAjwDvXL
+ 3EHWQNi/c8j7ywQvUdKYbqohEKqI9mIYpoBI73FiTq7KvTAPmLkGNT93fzc6yruoHe7I
+ t0HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682414474; x=1685006474;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=MN9oXgsc8DHoo1VpyjDGkHB8D0MhxIlnzkrg3+EvyyI=;
- b=XjevcjlJSlphVQ4/w3uQ4NmtgSmnV4lo8dBKZ7XgFYboS7oHFOTXMuYVUjPqeyaWu1
- aWdGCB8i1wrhUeS9kVGb7s/HF+4bd51WdGdFapVYIIVAtNcDLwTfrbQgnt9vp5/4Hrdq
- 4+XLLsmJuRxdiKFW6Dg0oSMOrmXR2dPeJOzJQddPCdaRwIbtBkua6o1wnSZxBMaRQ3/N
- FlEDQxqgLToRX5wv9MB6I5+HHd+5/v7Ot/joJXG2gLF9U+V6SwFd7selmZZkoWvy+eit
- MAHtNHFZYqjsOY/1X9mhyZHLDrbb5fzLyUcTJ7BOZXQNn70rPdKNUL2cWVddAvl2Oi7a
- K2WQ==
-X-Gm-Message-State: AAQBX9daEAHLbri5S8cDauuEE0T+RNNNdgcloATnFCcSrd7HFsEal18S
- RfVVXwG0bBDmaFfy2I3wTrmc+qChLOrh2etXviAUpBquZHTdE2duTNj9jVIws8nSqACOaAzb5R0
- QfTlkn8MGdD2sLuZ1nQ==
-X-Received: by 2002:a1c:4c13:0:b0:3f1:72f2:25c4 with SMTP id
- z19-20020a1c4c13000000b003f172f225c4mr9575516wmf.13.1682414474871; 
- Tue, 25 Apr 2023 02:21:14 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZLuSp7XDFOpHgXeBZjKve/FX0TjkCPYNbEdM9TBWh3dDFfTkStP/iM10UGGNvuhPtP6ffuJg==
-X-Received: by 2002:a1c:4c13:0:b0:3f1:72f2:25c4 with SMTP id
- z19-20020a1c4c13000000b003f172f225c4mr9575496wmf.13.1682414474606; 
- Tue, 25 Apr 2023 02:21:14 -0700 (PDT)
-Received: from [10.33.192.205] (nat-pool-str-t.redhat.com. [149.14.88.106])
- by smtp.gmail.com with ESMTPSA id
- m7-20020a5d4a07000000b002c55521903bsm12609942wrq.51.2023.04.25.02.21.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Apr 2023 02:21:14 -0700 (PDT)
-Message-ID: <90e96d55-fc8b-52ec-6747-4fecd10e9e10@redhat.com>
-Date: Tue, 25 Apr 2023 11:21:12 +0200
+ d=1e100.net; s=20221208; t=1682501733; x=1685093733;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EnBNKPl5c9zSg2lI4GIRXwC8cVmuK2waM8zKNWabKqI=;
+ b=YGYr2F6j2UPWbZGi3gtgkjQ1teJ1+QmhMe3sRly2Sa8WVZ6aWTdH/aKj8q2CwNZ+Lq
+ MAucaIPv4ofuJ6KXg97iegEaMS0MNdClg5mcRlRE5oLSbsdCG++4qhQiwJGLpZKkOhkG
+ hhwkhOswij5yhbn9DLwKeI+ly19XtIg1o5ihL9RQFBE4nWlzvG/6WfngYqlb2mA6Yo4+
+ gB8EVoTNppP6Dh7lbGFSMnDQzM61rs4V4ChqO5Guv87eWpAJk+pAR+yE3vgKjldh1piE
+ suR/VXwr4qmABgpQpJscVIhFIGzKv2jEAdx2B9JZIn2y7nTxjoc/X9mLdM5PQEXxrS+I
+ r5eQ==
+X-Gm-Message-State: AAQBX9ezymyKtAbQcRHWZkHLZcpZdh41+EgXjloddPgHspBGcgIt1Qex
+ ASjMumXdtbFQ6T89NAbC8Pgd8w==
+X-Google-Smtp-Source: AKy350bW+hm9TYgoOHd34XXHQ3ylJB1/ULXA9pAzxSghX8e5nnjsGVo6jVL2YbXY5mVEzalwaHvdRg==
+X-Received: by 2002:a17:902:cec9:b0:1a5:253f:ace7 with SMTP id
+ d9-20020a170902cec900b001a5253face7mr25220858plg.29.1682501733005; 
+ Wed, 26 Apr 2023 02:35:33 -0700 (PDT)
+Received: from mnissler.ba.rivosinc.com (mnissler.eu.rivosinc.com.
+ [162.19.61.220]) by smtp.gmail.com with ESMTPSA id
+ n4-20020a1709026a8400b001a69b28f5c5sm9522741plk.222.2023.04.26.02.35.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 26 Apr 2023 02:35:32 -0700 (PDT)
+From: Mattias Nissler <mnissler@rivosinc.com>
+To: Jagannathan Raman <jag.raman@oracle.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Mattias Nissler <mnissler@rivosinc.com>
+Subject: [PATCH] hw/remote: Fix vfu_cfg trace offset format
+Date: Wed, 26 Apr 2023 09:35:18 +0000
+Message-Id: <20230426093518.966397-1-mnissler@rivosinc.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH] aspeed/hace: Initialize g_autofree pointer
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Steven Lee <steven_lee@aspeedtech.com>,
- Joel Stanley <joel@jms.id.au>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20230421131547.2177449-1-clg@kaod.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230421131547.2177449-1-clg@kaod.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.194, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=mnissler@rivosinc.com; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 26 Apr 2023 07:45:53 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,38 +81,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Apr 2023 09:21:23 -0000
+X-List-Received-Date: Wed, 26 Apr 2023 09:35:58 -0000
 
-On 21/04/2023 15.15, Cédric Le Goater wrote:
-> As mentioned in docs/devel/style.rst "Automatic memory deallocation":
-> 
-> * Variables declared with g_auto* MUST always be initialized,
->    otherwise the cleanup function will use uninitialized stack memory
-> 
-> This avoids QEMU to coredump when running the "hash test" command
-> under Zephyr.
-> 
-> Cc: Steven Lee <steven_lee@aspeedtech.com>
-> Cc: Joel Stanley <joel@jms.id.au>
-> Fixes: c5475b3f9a ("hw: Model ASPEED's Hash and Crypto Engine")
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
->   hw/misc/aspeed_hace.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 12a761f1f5..b07506ec04 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -189,7 +189,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->                                 bool acc_mode)
->   {
->       struct iovec iov[ASPEED_HACE_MAX_SG];
-> -    g_autofree uint8_t *digest_buf;
-> +    g_autofree uint8_t *digest_buf = NULL;
+The printed offset value is prefixed with 0x, but was actually printed
+in decimal. To spare others the confusion, adjust the format specifier
+to hexadecimal.
 
-We maybe need a checkpatch.pl rule to catch such bugs...
+Signed-off-by: Mattias Nissler <mnissler@rivosinc.com>
+---
+ hw/remote/trace-events | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+diff --git a/hw/remote/trace-events b/hw/remote/trace-events
+index c167b3c7a5..0d1b7d56a5 100644
+--- a/hw/remote/trace-events
++++ b/hw/remote/trace-events
+@@ -5,8 +5,8 @@ mpqemu_recv_io_error(int cmd, int size, int nfds) "failed to receive %d size %d,
+ 
+ # vfio-user-obj.c
+ vfu_prop(const char *prop, const char *val) "vfu: setting %s as %s"
+-vfu_cfg_read(uint32_t offset, uint32_t val) "vfu: cfg: 0x%u -> 0x%x"
+-vfu_cfg_write(uint32_t offset, uint32_t val) "vfu: cfg: 0x%u <- 0x%x"
++vfu_cfg_read(uint32_t offset, uint32_t val) "vfu: cfg: 0x%x -> 0x%x"
++vfu_cfg_write(uint32_t offset, uint32_t val) "vfu: cfg: 0x%x <- 0x%x"
+ vfu_dma_register(uint64_t gpa, size_t len) "vfu: registering GPA 0x%"PRIx64", %zu bytes"
+ vfu_dma_unregister(uint64_t gpa) "vfu: unregistering GPA 0x%"PRIx64""
+ vfu_bar_register(int i, uint64_t addr, uint64_t size) "vfu: BAR %d: addr 0x%"PRIx64" size 0x%"PRIx64""
+-- 
+2.25.1
 
 
