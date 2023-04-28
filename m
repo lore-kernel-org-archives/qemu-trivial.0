@@ -1,71 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ps1Ah-0004Fz-6v
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Apr 2023 08:56:27 -0400
+	id 1psLn4-0006dv-4H
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Apr 2023 06:57:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ps1Ag-0004DD-9T
- for qemu-trivial@nongnu.org; Thu, 27 Apr 2023 08:56:26 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1psLmv-0006O6-2J
+ for qemu-trivial@nongnu.org; Fri, 28 Apr 2023 06:57:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ps1Ae-0004mH-O7
- for qemu-trivial@nongnu.org; Thu, 27 Apr 2023 08:56:26 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1psLmq-0004WS-Ab
+ for qemu-trivial@nongnu.org; Fri, 28 Apr 2023 06:57:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1682600182;
+ s=mimecast20190719; t=1682679430;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IfclxeSdUSyg5QrSLqcHhq+pSnFVJv1yUJYwKGUdf4c=;
- b=Nc40K73rF7t/zYfFA/DtoDyr1IFjGIPvXBeUip5XAscoURRP7QRiBP2Si+Id21m7AzALbN
- F6wJbxAO7q3RYHR+vpLxjcTDXvAFNxxHxx7QDlv9mJ0VGsHcjgiQxkQIBrBEKBBW0HCiuh
- AyLMse5Lpklp5c39Ua/geFsKukn4tN0=
+ bh=wyW7JyauwMccmOSzvdapIpBe5eBqr3LzZ5dd1oqQRdw=;
+ b=JF0SD6O6WCA1TS2xyHHI66dW127OV3kVd5MlpixStG45WyqKNSrf4C28Jh2MVThiDidiev
+ W7WVElH+fUENavm2OAkCqwr3w0SeNTTcvzetnqBXLHevvPXDjh2IqOIEYzCF17PdG6hAgV
+ dq1MCRGJqFcezmobT0XPSmv1Ie7MO38=
 Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
  [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-348-KKfwGFprMW6v1raN1_fatw-1; Thu, 27 Apr 2023 08:56:21 -0400
-X-MC-Unique: KKfwGFprMW6v1raN1_fatw-1
+ us-mta-590-oTKAEfd5OD24IvQGqFoAFA-1; Fri, 28 Apr 2023 06:57:09 -0400
+X-MC-Unique: oTKAEfd5OD24IvQGqFoAFA-1
 Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-3f1757ebb1eso30189955e9.2
- for <qemu-trivial@nongnu.org>; Thu, 27 Apr 2023 05:56:20 -0700 (PDT)
+ 5b1f17b1804b1-3f175a24fd1so56688325e9.1
+ for <qemu-trivial@nongnu.org>; Fri, 28 Apr 2023 03:57:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682600180; x=1685192180;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=1e100.net; s=20221208; t=1682679428; x=1685271428;
+ h=content-transfer-encoding:in-reply-to:from:cc:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=IfclxeSdUSyg5QrSLqcHhq+pSnFVJv1yUJYwKGUdf4c=;
- b=hI6GxwWekaVvCUPjA7odX1erqaqCeJwtqhBewiRXcjOJdxog2HSyRmzqjV9HIPWFCp
- uyBsgQnhno8UMp7f+a64TCKZ0C4/6MvDK17iLKPTLdNmkCDY+Wr0jO2u7yOWaTGYAag4
- THdRB+wTybdrD0ApV/V43izXGvTlrW9xbwfyluOTsu1Wm4r6hRyq0g7TNwysiCAR5R7O
- MB9197joghDn5JVX5oShXeKjlARhcZm4Wo3hTJW6QXAvhe059cQDZOJxfzWw4lNpcCx+
- GU9OzelhfUtypZySRa4gPk+n57rY496pX6Hei6zEyXPZXbbY3TcQWVJ9jy+Hb7iH+xZh
- OJJg==
-X-Gm-Message-State: AC+VfDyw/cmHkqZoS+hxMD1v9M4njvLn2FZOvWkh9y8GKnJJyNZl8Beq
- 7lz1Tzif2wTlFKk9KZL9KCXzgZNkC95w+NXX8jAERtoQnf/2Ih7oxfOAHaAEJQMnbA2h2QkhSdU
- YjdA1CEXEU+NNfPZGFQ==
-X-Received: by 2002:a7b:cb8c:0:b0:3ee:6cdf:c357 with SMTP id
- m12-20020a7bcb8c000000b003ee6cdfc357mr1419453wmi.20.1682600180082; 
- Thu, 27 Apr 2023 05:56:20 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5vZ1hF6lrpvBQpu6xUI14t+rQJqjlNyuX/dy+gdY36TXRQy7F/QS7TxMkvCsufd+8kDf42Dg==
-X-Received: by 2002:a7b:cb8c:0:b0:3ee:6cdf:c357 with SMTP id
- m12-20020a7bcb8c000000b003ee6cdfc357mr1419442wmi.20.1682600179825; 
- Thu, 27 Apr 2023 05:56:19 -0700 (PDT)
-Received: from [10.33.192.205] (nat-pool-str-t.redhat.com. [149.14.88.106])
- by smtp.gmail.com with ESMTPSA id
- o10-20020a1c750a000000b003f191c9c4b0sm17943557wmc.11.2023.04.27.05.56.18
+ bh=wyW7JyauwMccmOSzvdapIpBe5eBqr3LzZ5dd1oqQRdw=;
+ b=VsP6Aje0anUUeRI0GYrZvN93AWjylne3X7Wh4MpIt4AvU3KpuhRTxgI3GWX3K5NEww
+ fcZJwz7R0ZPIvV9qNex8VJ6Cr+RV+DY70WjX8mI41gF81qBRbO8Uau36uBCiKLntfs3+
+ mABIjNew9l/B8BXO4F2WwQw6TSSD+6UP/W4HNU5+F+zish132kMNhWSfSeCV8mCD1m0L
+ lYqVUUzKiP7iwdnpWYattucFIL20DvcIOuzhWJv3a3qDRmLOX0nbIj/jsgXgxfSeg1pC
+ 4AzfElHv41Mvy+4I0eos0BKthW3a6bXy4BQwpNEr1WJ3VyZogkID479We/TJI1+/813I
+ L4ig==
+X-Gm-Message-State: AC+VfDxSr2s6jWKZCvur0800JIdQJRFMfkQZZ6wzpmZkbq6eYBXYB+E+
+ euJxsoDlMv5V6qtkbJ7BP2HFkYd0HATZVFB2ianiJDipkwTte+BqwO6TWYiwbYtj9oAG8M2v7QR
+ 0odo4LSGOpV/Z3wLSKg==
+X-Received: by 2002:a1c:7716:0:b0:3dc:55d9:ec8 with SMTP id
+ t22-20020a1c7716000000b003dc55d90ec8mr3566719wmi.41.1682679428203; 
+ Fri, 28 Apr 2023 03:57:08 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ69lUn/El1ONjS5427qFFpWQ6KtFAnTWqRTqAv199+kKfDvlmTVA1SIvcU0x9q0kdRPNYVOSQ==
+X-Received: by 2002:a1c:7716:0:b0:3dc:55d9:ec8 with SMTP id
+ t22-20020a1c7716000000b003dc55d90ec8mr3566709wmi.41.1682679427936; 
+ Fri, 28 Apr 2023 03:57:07 -0700 (PDT)
+Received: from [192.168.8.102] (tmo-098-235.customers.d1-online.com.
+ [80.187.98.235]) by smtp.gmail.com with ESMTPSA id
+ 3-20020a05600c22c300b003f31d44f0cbsm3163770wmg.29.2023.04.28.03.57.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Apr 2023 05:56:19 -0700 (PDT)
-Message-ID: <58980d6b-7c33-0663-3712-7a07dc0d33ff@redhat.com>
-Date: Thu, 27 Apr 2023 14:56:18 +0200
+ Fri, 28 Apr 2023 03:57:07 -0700 (PDT)
+Message-ID: <be8ccc72-0dfb-ca33-e309-27d51d96a623@redhat.com>
+Date: Fri, 28 Apr 2023 12:57:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
-Subject: Re: [PATCH] tests: vhost-user-test: release mutex on protocol
- violation
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: mst@redhat.com, qemu-trivial@nongnu.org
-References: <20230427125423.103536-1-pbonzini@redhat.com>
+Subject: Re: [PATCH] softmmu: Tidy dirtylimit_dirty_ring_full_time
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20230428103448.3811208-1-richard.henderson@linaro.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Hyman Huang <huangy81@chinatelecom.cn>, Peter Xu <peterx@redhat.com>,
+ Juan Quintela <quintela@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230427125423.103536-1-pbonzini@redhat.com>
+In-Reply-To: <20230428103448.3811208-1-richard.henderson@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -93,38 +94,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Apr 2023 12:56:26 -0000
+X-List-Received-Date: Fri, 28 Apr 2023 10:57:21 -0000
 
-On 27/04/2023 14.54, Paolo Bonzini wrote:
-> chr_read() is printing an error message and returning with s->data_mutex taken.
-> This can potentially cause a hang.  Reported by Coverity.
+On 28/04/2023 12.34, Richard Henderson wrote:
+> Drop inline marker: let compiler decide.
 > 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Change return type to uint64_t: this matches the computation in the
+> return statement and the local variable assignment in the caller.
+> 
+> Rename local to dirty_ring_size_MB to fix typo.
+> Simplify conversion to MiB via qemu_target_page_bits and right shift.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   tests/qtest/vhost-user-test.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+>   softmmu/dirtylimit.c | 15 ++++++++++-----
+>   1 file changed, 10 insertions(+), 5 deletions(-)
 > 
-> diff --git a/tests/qtest/vhost-user-test.c b/tests/qtest/vhost-user-test.c
-> index bf9f7c4248ca..e4f95b2858f0 100644
-> --- a/tests/qtest/vhost-user-test.c
-> +++ b/tests/qtest/vhost-user-test.c
-> @@ -351,7 +351,7 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
->           if (size != msg.size) {
->               qos_printf("%s: Wrong message size received %d != %d\n",
->                          __func__, size, msg.size);
-> -            return;
-> +            goto out;
->           }
->       }
->   
-> @@ -509,6 +509,7 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
->           break;
->       }
->   
-> +out:
->       g_mutex_unlock(&s->data_mutex);
+> diff --git a/softmmu/dirtylimit.c b/softmmu/dirtylimit.c
+> index 82986c1499..71bf6dc7a4 100644
+> --- a/softmmu/dirtylimit.c
+> +++ b/softmmu/dirtylimit.c
+> @@ -232,18 +232,23 @@ bool dirtylimit_vcpu_index_valid(int cpu_index)
+>                cpu_index >= ms->smp.max_cpus);
 >   }
 >   
+> -static inline int64_t dirtylimit_dirty_ring_full_time(uint64_t dirtyrate)
+> +static uint64_t dirtylimit_dirty_ring_full_time(uint64_t dirtyrate)
+>   {
+>       static uint64_t max_dirtyrate;
+> -    uint32_t dirty_ring_size = kvm_dirty_ring_size();
+> -    uint64_t dirty_ring_size_meory_MB =
+> -        dirty_ring_size * qemu_target_page_size() >> 20;
+> +    unsigned target_page_bits = qemu_target_page_bits();
+> +    uint64_t dirty_ring_size_MB;
+> +
+> +    /* So far, the largest (non-huge) page size is 64k, i.e. 16 bits. */
+> +    assert(target_page_bits < 20);
+> +
+> +    /* Convert ring size (pages) to MiB (2**20). */
+> +    dirty_ring_size_MB = kvm_dirty_ring_size() >> (20 - target_page_bits);
+>   
+>       if (max_dirtyrate < dirtyrate) {
+>           max_dirtyrate = dirtyrate;
+>       }
+>   
+> -    return dirty_ring_size_meory_MB * 1000000 / max_dirtyrate;
+> +    return dirty_ring_size_MB * 1000000 / max_dirtyrate;
+>   }
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
