@@ -1,88 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1psSz7-0005XO-Ow
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Apr 2023 14:38:21 -0400
+	id 1psW9e-0000Tt-7b
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Apr 2023 18:01:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1psSz6-0005X2-IL
- for qemu-trivial@nongnu.org; Fri, 28 Apr 2023 14:38:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1psSz5-0004cZ-5u
- for qemu-trivial@nongnu.org; Fri, 28 Apr 2023 14:38:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1682707096;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=LOGh0lUFieWpa9Yv+vluGGk9yebSZ8Z9UOm8QhfrmBg=;
- b=dzqJZv+XY/2skbP3Ae0rQ9o9beycTw4dIV5bnI+whkOFkKAHO/nvXRJbvDqGplYP/XNLIG
- 1HZm9jwjGcXUYeD2enxuY0WJfw35GcDfTkeWm3XcRSTPHbMyumvrpcK53HrJKQEdoS0Dgj
- 79mXr/hS5WeWwCPLwARw3JeGy2bRpVI=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-137-3jwadNO-P3efSne_IIbsuQ-1; Fri, 28 Apr 2023 14:38:15 -0400
-X-MC-Unique: 3jwadNO-P3efSne_IIbsuQ-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-2f6632b85fcso18472f8f.1
- for <qemu-trivial@nongnu.org>; Fri, 28 Apr 2023 11:38:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1psW9c-0000Sz-5i
+ for qemu-trivial@nongnu.org; Fri, 28 Apr 2023 18:01:24 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1psW9Z-0000LP-9F
+ for qemu-trivial@nongnu.org; Fri, 28 Apr 2023 18:01:23 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-3f1728c2a57so1960445e9.0
+ for <qemu-trivial@nongnu.org>; Fri, 28 Apr 2023 15:01:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1682719276; x=1685311276;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Zbs9f5ZaSvzsyhFHwXQpk7Lu0hiaNaZGyjPxdZWqSDU=;
+ b=wnokqZmAN0SVi6reNsfGTmEHL4iwDtcDT/xnbFZD6YqXpWp3GvWFHb7l4j6dfcd4wP
+ YSZlS4BKGjaqHjB9gRBmCCeD18Wt6Kui/c69xN1D7JqbucpawHV5eDZzppy8E2rgssg5
+ UzVJkxTgSASIq+/DJX0W/gp7C5J/IFRLwY1WM7vXMD8LORW5ykkcO530xfUGxwFxi2cy
+ Yw1C+DO14likh2i6V1NhAB5510c+vP6SDr3dapOoUnCb+Ho1K9aS9NCY6tLIBuEQC8nu
+ ihMhTaWWLhSKY2REhCnr26dwt8e/+i1AaiYRgIUzz0fiA6g/NOjNl5TVpkw2nB6naA5J
+ mN9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682707094; x=1685299094;
- h=mime-version:message-id:date:reply-to:user-agent:references
- :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=LOGh0lUFieWpa9Yv+vluGGk9yebSZ8Z9UOm8QhfrmBg=;
- b=XA+8daYike0VA4zxqbw7yUR4AXv86PyQaC4ZbjT0GuzarA4vzZ5e2HXMOgBYqJdq8C
- 0GriupHVaVGXaG3fWJZxRkFdnl7UWaXySWBZTvPDprJNv8yvZ13rkXqbNNY+l/DElK0V
- rpD2U3FdSwUaKrek2gWkALLIsXAoZj+I3PDaGciwkXr2NgMLEa120yTIjN4JfrVMaPhR
- KW9gigqSk7fyJn2dAsSWInUw0WJE03OIbPdC8nlwdaeFgfBmjQnnQk17Ub1lXEH1yxMN
- uVumGrbOPqqravrsbmLKbIYmNg8pHeJjnsP611KsUdgFCVBON82m3Mzv34L9qbAdcARQ
- QS4g==
-X-Gm-Message-State: AC+VfDxA7yrK21nweJ1WKtlqHhvyoFJ9Gkh2OIQ1VItRw7PItWVqep7S
- d4uS6HTIWpvsusFu0xTSt98xsH8xfQg07/ek9gELttl5HLDOOVXZoMoF3jpgx05s76pUFjMIbSK
- JMnulcEHLs4vvsaNBzw==
-X-Received: by 2002:adf:f346:0:b0:2ef:399c:1051 with SMTP id
- e6-20020adff346000000b002ef399c1051mr4788422wrp.20.1682707094317; 
- Fri, 28 Apr 2023 11:38:14 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6oAfylp749XPph8PoPOkhh/9V6RpnMGJ7TsACxelbOAGlT+Ymq1YM9ojgpiVtbswR+cOHWOA==
-X-Received: by 2002:adf:f346:0:b0:2ef:399c:1051 with SMTP id
- e6-20020adff346000000b002ef399c1051mr4788417wrp.20.1682707093950; 
- Fri, 28 Apr 2023 11:38:13 -0700 (PDT)
-Received: from redhat.com (static-213-163-6-89.ipcom.comunitel.net.
- [89.6.163.213]) by smtp.gmail.com with ESMTPSA id
- u6-20020adff886000000b002f7780eee10sm21757591wrp.59.2023.04.28.11.38.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Apr 2023 11:38:13 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org,  QEMU Trivial <qemu-trivial@nongnu.org>,  Hyman
- Huang <huangy81@chinatelecom.cn>,  Peter Xu <peterx@redhat.com>
+ d=1e100.net; s=20221208; t=1682719276; x=1685311276;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Zbs9f5ZaSvzsyhFHwXQpk7Lu0hiaNaZGyjPxdZWqSDU=;
+ b=ROC90yfxLl3tfmPVEriKQHPRCZkSL4RRK7nnobXnOE3p1dUCzhqUC6yxsip32DN23s
+ ZvARbrlZ7AtOUWPXnOl1tlskmCQ0gkxVBx853udvs5brVeG6IM3YjZmgS/22z99LFxji
+ fpZS7povit0UBmB1Ba1wY9/bgwP6eBzltuFO5NSyzuM7d1EBgHFR1JFpz5ab+HD/4DPf
+ mUpYjeFEU9aVDNhbxMZDCTVitCz9n1aU89Q4wkXIOJ74C9uD/Hqu9I93F+FgNnpArYqX
+ tXWozQ/+79rvgy3kcFVIBE9K0LAy/R7P2mc2PtXZXXfjDJVcMmyw+GAULAHLJZGX8A8F
+ i5lQ==
+X-Gm-Message-State: AC+VfDyk6q1EFM6nCwyFYxxfwXjAORigMwzjAXXcFnKakeujJaWu0wfP
+ kk4PZ2Pr7GIdxr/fAG29rZed9g==
+X-Google-Smtp-Source: ACHHUZ7PSyJIJInklnFSDwRyWBv6VdlCosBThBl99h4w0ImiQfWGSckdrF0hhB31I1PuKPBFAkzDWw==
+X-Received: by 2002:a1c:6a05:0:b0:3f1:95af:172c with SMTP id
+ f5-20020a1c6a05000000b003f195af172cmr4698821wmc.41.1682719275917; 
+ Fri, 28 Apr 2023 15:01:15 -0700 (PDT)
+Received: from [192.168.1.17] (78-141-23-110.xdsl.murphx.net. [78.141.23.110])
+ by smtp.gmail.com with ESMTPSA id
+ e16-20020a5d5950000000b0030490c8ccafsm10022879wri.52.2023.04.28.15.01.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 28 Apr 2023 15:01:15 -0700 (PDT)
+Message-ID: <2ef30855-8f71-3793-f232-b243387183e5@linaro.org>
+Date: Fri, 28 Apr 2023 23:01:13 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
 Subject: Re: [PATCH] softmmu: Tidy dirtylimit_dirty_ring_full_time
-In-Reply-To: <be8ccc72-0dfb-ca33-e309-27d51d96a623@redhat.com> (Thomas Huth's
- message of "Fri, 28 Apr 2023 12:57:05 +0200")
+Content-Language: en-US
+To: quintela@redhat.com, Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Hyman Huang <huangy81@chinatelecom.cn>, Peter Xu <peterx@redhat.com>
 References: <20230428103448.3811208-1-richard.henderson@linaro.org>
  <be8ccc72-0dfb-ca33-e309-27d51d96a623@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Fri, 28 Apr 2023 20:38:12 +0200
-Message-ID: <87jzxv6eej.fsf@secure.mitica>
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ <87jzxv6eej.fsf@secure.mitica>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <87jzxv6eej.fsf@secure.mitica>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.422,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,24 +87,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Apr 2023 18:38:20 -0000
+X-List-Received-Date: Fri, 28 Apr 2023 22:01:24 -0000
 
-Thomas Huth <thuth@redhat.com> wrote:
-> On 28/04/2023 12.34, Richard Henderson wrote:
->> Drop inline marker: let compiler decide.
->> Change return type to uint64_t: this matches the computation in the
->> return statement and the local variable assignment in the caller.
->> Rename local to dirty_ring_size_MB to fix typo.
->> Simplify conversion to MiB via qemu_target_page_bits and right shift.
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 4/28/23 19:38, Juan Quintela wrote:
+> Thomas Huth <thuth@redhat.com> wrote:
+>> On 28/04/2023 12.34, Richard Henderson wrote:
+>>> Drop inline marker: let compiler decide.
+>>> Change return type to uint64_t: this matches the computation in the
+>>> return statement and the local variable assignment in the caller.
+>>> Rename local to dirty_ring_size_MB to fix typo.
+>>> Simplify conversion to MiB via qemu_target_page_bits and right shift.
+>>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> Reviewed-by: Juan Quintela <quintela@redhat.com>
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+Thanks,
 
-Not that I expect the amount of bytes in one machine to not fit in
-64bit, but good change.
+Queueing to tcg-next.
 
-About the signesdness of variables, I really hate it, specially that
-compiler not help here where arguments, operands and assignment place is
-unsigned.  Sniff.
 
+r~
 
