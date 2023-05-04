@@ -1,79 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1puaeo-00084M-Nn
-	for mharc-qemu-trivial@gnu.org; Thu, 04 May 2023 11:14:12 -0400
+	id 1pudKd-0004L0-Oi
+	for mharc-qemu-trivial@gnu.org; Thu, 04 May 2023 14:05:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@gmail.com>)
- id 1puaeZ-00080t-H6; Thu, 04 May 2023 11:13:55 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@gmail.com>)
- id 1puaeX-0001XS-Qp; Thu, 04 May 2023 11:13:55 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-1aaf70676b6so4430615ad.3; 
- Thu, 04 May 2023 08:13:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1683213232; x=1685805232;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=NutIhzJDNxMTIFS9t7wC7dYAQ4J8605wnEL53vTTKq8=;
- b=InyQIdeyMf9NDPULaNrnY4h/3RV6BZAfT7Chvhj1AvDjHhxWCE/OqKywvE38DuEMjY
- lXELf/oB4gEwANpaOTSaJ++Wvj+n1SrDPczCwlpYFqglLzXx1KS64ZXFgItlLR6BJPpz
- jdHWXUIwF1uttGY6on4L5XuWIqvvwnHkercb0LtJLhKaMnC+vKQuQ7gOVxRwDyH2mQS6
- Yc1yfPH4pHCmsAPJm6+mOcf3GZv7Xmb0B7PLLpPDFCgIVU8+KPt7AWZEN5tpgujsQOwz
- eOH3cjRAHyinEbJlGx8+JVfcNn2ghIQyoM5nQgLKAtx/AdI/FS8r/8ZXepYvTyQFEkyg
- 1Lmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683213232; x=1685805232;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=NutIhzJDNxMTIFS9t7wC7dYAQ4J8605wnEL53vTTKq8=;
- b=L098+wzUE95vpMBxXr3rlzxysqxkJe/1DpjKF4C4hqFAbsUBbDivEEjIzaXzWCDxDW
- Tkco7OlcaGzwlRDD5r5Zm8EZgzX0BPWf0fQE3AQOx2G8RiHG12/N3evfMS+5ko6DwsYC
- wv9R0RJgSveW3llzac58fHuUteDImLx06zE+lt7V/JKg+j/1NMOlojDDks5SWcbnEmiI
- F1O/HxvROJ4z0dbmi4KcNBdeapDKbmzmFYHMtlqXtzllDUICDW0XBP/UpKpyQ3VV9pqI
- hSur5o1TW3teO0jciMFF+tkAjXilW1NrjkmaapMr3399r/CtA9e8qnU6WFSoGT3p6fkq
- Z1sA==
-X-Gm-Message-State: AC+VfDwQ2OM47MSiTqWQ0S9pbUQ0RVrRJI92sR3SYMvy3H/S7/DE9cAB
- 67Os5EObpuI3+uhq8yhd5Oo=
-X-Google-Smtp-Source: ACHHUZ7C+6O5YFyhAbK1LCzUqJ9aWM+Ol4ot/HEt1yLuEDAWRNI6/o+dixSqGGIkjMiTJprBO/ZBIg==
-X-Received: by 2002:a17:902:b198:b0:1a1:b174:836c with SMTP id
- s24-20020a170902b19800b001a1b174836cmr3826967plr.16.1683213231657; 
- Thu, 04 May 2023 08:13:51 -0700 (PDT)
-Received: from ?IPV6:2400:4050:a840:1e00:4457:c267:5e09:481b?
- ([2400:4050:a840:1e00:4457:c267:5e09:481b])
- by smtp.gmail.com with ESMTPSA id
- i1-20020a17090332c100b001a3d041ca71sm2322354plr.275.2023.05.04.08.13.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 May 2023 08:13:51 -0700 (PDT)
-Message-ID: <8373e1c9-8b4a-c5e1-cafd-cec7f19dbb7d@gmail.com>
-Date: Fri, 5 May 2023 00:13:48 +0900
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pudKc-0004KG-EB
+ for qemu-trivial@nongnu.org; Thu, 04 May 2023 14:05:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pudKb-0001nw-2a
+ for qemu-trivial@nongnu.org; Thu, 04 May 2023 14:05:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1683223528;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=MzJ2CkEQNDFwOO4AN68zKZ8alOKGdArTgY2Np6Dm8nk=;
+ b=gHFrX2tLi1eVfuypufuEicFwED99CnrTEHXsOLBJRKCKddLcRLUNiM1j+zdedaCpUSd/IA
+ cJN7ve+/kYxovr5YEI8IWsfQrGM/LFxjqnzQCrvotXmnICGdfUAnAi1iOUUKTNj9ffvmoW
+ 39z5csWrOJKXj4qiYO6LwAjciYyLHGM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-630-YWvnyCryPXyZHqDgI3Wi8g-1; Thu, 04 May 2023 14:05:25 -0400
+X-MC-Unique: YWvnyCryPXyZHqDgI3Wi8g-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8CF8F185A7A4;
+ Thu,  4 May 2023 18:05:24 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.104])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 42B451121331;
+ Thu,  4 May 2023 18:05:23 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH] hw/ppc/Kconfig: NVDIMM is a hard requirement for the pseries
+ machine
+Date: Thu,  4 May 2023 20:05:21 +0200
+Message-Id: <20230504180521.220404-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH] include/qemu/osdep.h: Bump _WIN32_WINNT to the Windows 8
- API
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Yonggang Luo <luoyonggang@gmail.com>, Stefan Weil <sw@weilnetz.de>
-References: <20230504081351.125140-1-thuth@redhat.com>
-From: Akihiko Odaki <akihiko.odaki@gmail.com>
-In-Reply-To: <20230504081351.125140-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=akihiko.odaki@gmail.com; helo=mail-pl1-x636.google.com
-X-Spam_score_int: -63
-X-Spam_score: -6.4
-X-Spam_bar: ------
-X-Spam_report: (-6.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-4.28, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.161,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,15 +66,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 May 2023 15:13:55 -0000
+X-List-Received-Date: Thu, 04 May 2023 18:05:30 -0000
 
-On 2023/05/04 17:13, Thomas Huth wrote:
-> Commit cf60ccc330 ("cutils: Introduce bundle mechanism") abandoned
-> compatibility with Windows older than 8 - we should reflect this
-> in our _WIN32_WINNT and set it to the value that corresponds to
-> Windows 8.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+When building QEMU with "--without-default-devices", the pseries
+machine fails to start even when running with the --nodefaults option:
 
-Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+ $ ./qemu-system-ppc64 --nodefaults -M pseries
+ Type 'spapr-nvdimm' is missing its parent 'nvdimm'
+ Aborted (core dumped)
+
+Looks like NVDIMM is a hard requirement for this machine nowadays.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/ppc/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/ppc/Kconfig b/hw/ppc/Kconfig
+index c898021b5f..a689d9b219 100644
+--- a/hw/ppc/Kconfig
++++ b/hw/ppc/Kconfig
+@@ -3,7 +3,7 @@ config PSERIES
+     imply PCI_DEVICES
+     imply TEST_DEVICES
+     imply VIRTIO_VGA
+-    imply NVDIMM
++    select NVDIMM
+     select DIMM
+     select PCI
+     select SPAPR_VSCSI
+-- 
+2.31.1
+
 
