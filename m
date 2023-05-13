@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pxmBz-0008IV-JO
-	for mharc-qemu-trivial@gnu.org; Sat, 13 May 2023 06:09:36 -0400
+	id 1pxmC0-0008Ir-HV
+	for mharc-qemu-trivial@gnu.org; Sat, 13 May 2023 06:09:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pxmBv-0008Fm-8v; Sat, 13 May 2023 06:09:32 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ id 1pxmBv-0008Ft-Jq; Sat, 13 May 2023 06:09:32 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pxmBs-0004MZ-3Z; Sat, 13 May 2023 06:09:29 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-50bc2feb320so16639207a12.3; 
- Sat, 13 May 2023 03:09:23 -0700 (PDT)
+ id 1pxmBt-0004N1-Ae; Sat, 13 May 2023 06:09:31 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-50bd2d7ba74so96527770a12.1; 
+ Sat, 13 May 2023 03:09:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1683972562; x=1686564562;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=kB0fhfl32qFVI6ft2jTJEJ33AnlefeZ8d6wvh4tFsS4=;
- b=gMyfBkGzHLohjZUtqXgRhPI/VYZ59HMfUs3qT3sZA5V8mm5KuPCCfGxb9gDuD4eV+e
- MDV21RxKkDaMM6G1Hn8VJkpOJEdy4jtfm1PdtwpLndiEWxG7TgTi4k6caZbBToz+NgAX
- HDJe5zLY3w/Vw8DrMdU1CBHARA1O417kBeHjPzxFUdjrD+lvfH/j0wQFh94LQeZvF1vh
- xCnZrXGkKhfhNmOw3jtNnsr+IXfITUBikqCfyBYa3+pqcN4I+p/x+wMZaMkAY5YDW2/p
- hy1wZ//L6cHJBZGhHI9V+ud2afIuwWianGkdq+iVVP03Z7KzECNQDI2dJLqhdEV4yWVl
- TEhA==
+ d=gmail.com; s=20221208; t=1683972566; x=1686564566;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=W2cgCTCiy6rpTMmB83MFFmB8jWJpK9cx9olCbX5GQQU=;
+ b=bDa6DQr6jTb7sMeRvv8bOj5f3WIEWu0jx6geR4SI4263zTVB/TADncDmPei7FZd9Hb
+ ipHjwHT4VA+P1MIUegw2X8pmnRewcfdMCiB5EG7WrCg5EpYUGL3hDMdQEGX3s6WjeQSI
+ BNa3Ll5LJ3kVSxpReAjmSubaMAbrbeP1lPwWNdc1qH4Lun79uAyQ0E8Qip7uh3KDZvlM
+ bgsPdyzMwPlqep310m4uGhjSpg5Kq1WB1s5eNafic4FaxZGsE+5b2v+PfAcwSpVfOni6
+ 1ui5wWeYMh+zZVKpNph642yqKD+QY5Lt8TfBqo7/u3nGzyF8fc8gZ40VxGMDRjfixoYw
+ bf+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683972562; x=1686564562;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kB0fhfl32qFVI6ft2jTJEJ33AnlefeZ8d6wvh4tFsS4=;
- b=PXVjHG32OtSrUQoxxYjm5h0dphFspZy08eY0EoCQhe3Mwd+ViVy6oqkOUpLluQKX8U
- wfw8ccRywc4wGuOgRClvw+Mduw6vq4hCwxxApcz7eK2CroJoQ4/1BLif2VZBp5TO9Cl1
- H7G8fSGgczqKu3LvQEu5bVuE9WQWpmE9TRZwpzp1P2SVMQBtbrJUNB+7okXtDZU/Fw5y
- EAiGTVWQpvKl9rewL94cb2seUArhkp2gdJ3/Cxfgs3tt7SK/fBYGUdpk/BwRppoRBOFb
- Gd5SbyFNZVLKEu94jzOOeg5iiYpBuGTehfMt5gJNElM1QbDaCgP6xCV2B8KW+V9v2PCk
- HXgw==
-X-Gm-Message-State: AC+VfDzjT1ihwds9uITJOuoQmrX0LUixumhcYmd4+mg3+lWHOA6qxTIx
- pXtetZQWJD3j/KLkGIqUIrd3XiXR8Tg=
-X-Google-Smtp-Source: ACHHUZ5c/4+dNr3Dhlq7CRk+DjNdi0p/ylgRv6bf0KsMAokoVBldNiUiZPxnV9DGV+OvyBz1nsYKag==
-X-Received: by 2002:a17:907:9703:b0:966:265d:edc9 with SMTP id
- jg3-20020a170907970300b00966265dedc9mr22940134ejc.74.1683972561935; 
- Sat, 13 May 2023 03:09:21 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1683972566; x=1686564566;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=W2cgCTCiy6rpTMmB83MFFmB8jWJpK9cx9olCbX5GQQU=;
+ b=Rfqws2bG+CVd7TepOVwI1IsX8jUW7EhT3a4AfANyDoSyxzv+pTBD0ryGQGBSJSPX6y
+ wM+ayEYDeq+PaYcdEmp5dgy9AsfFL7+OJJvr6MDbZkm+nK4aTxJNKajsLCMHmnUm68/n
+ 5f9XPS9g15fNqwmZq7YKQ63ZFyt045ZgMvJ9GGSKOI7CFz4Gh4MDQLR3kbIyYaYZeq5Y
+ iV8RAho61uwdtSYI2F/CQnble8u/PcuSbOcpoe0FUHv/iWuoupWApk330lgSQ0sUZ0Kq
+ mzHA6y3RAkyDBkxM+BlF2+W4wHrLIu0tq8dMpJDXLTCGyxNo4tuJ8jS7CARcGHiRKNNp
+ YdDw==
+X-Gm-Message-State: AC+VfDwSt8ENY3eKtS+yfxruIDiAMA+ybtzSJdKYX9mWHZV+3iDH1sDr
+ PIMJAAxbzkteu6QvP3yStwDSEyML6rI=
+X-Google-Smtp-Source: ACHHUZ6ssYp5KSkLZsa+z6QRI3na3At/5fASE+b++szLRJFguzqlGstH1T2cIvSwYclp0c0lZn+FPg==
+X-Received: by 2002:a17:907:1c25:b0:969:9c0c:4c97 with SMTP id
+ nc37-20020a1709071c2500b009699c0c4c97mr16119044ejc.1.1683972566177; 
+ Sat, 13 May 2023 03:09:26 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-077-013-174-037.77.13.pool.telefonica.de. [77.13.174.37])
  by smtp.gmail.com with ESMTPSA id
- jr18-20020a170906515200b00965f5d778e3sm6645285ejc.120.2023.05.13.03.09.20
+ jr18-20020a170906515200b00965f5d778e3sm6645285ejc.120.2023.05.13.03.09.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 13 May 2023 03:09:21 -0700 (PDT)
+ Sat, 13 May 2023 03:09:25 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -60,15 +61,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 0/4] Trivial cleanups
-Date: Sat, 13 May 2023 12:09:02 +0200
-Message-Id: <20230513100906.46672-1-shentey@gmail.com>
+Subject: [PATCH 3/4] hw/char/parallel: Export TYPE_ISA_PARALLEL macro
+Date: Sat, 13 May 2023 12:09:05 +0200
+Message-Id: <20230513100906.46672-4-shentey@gmail.com>
 X-Mailer: git-send-email 2.40.1
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20230513100906.46672-1-shentey@gmail.com>
+References: <20230513100906.46672-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -88,32 +90,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 May 2023 10:09:32 -0000
+X-List-Received-Date: Sat, 13 May 2023 10:09:33 -0000
 
-This series:=0D
-* Removes dead code from omap_uart and i82378=0D
-* Resolves redundant code in the i8254 timer devices=0D
-* Replaces string literals by macro usage for TYPE_ISA_PARALLEL devices=0D
-=0D
-Bernhard Beschow (4):=0D
-  hw/timer/i8254_common: Share "iobase" property via base class=0D
-  hw/arm/omap: Remove unused omap_uart_attach()=0D
-  hw/char/parallel: Export TYPE_ISA_PARALLEL macro=0D
-  hw/isa/i82378: Remove unused "io" attribute=0D
-=0D
- include/hw/arm/omap.h      | 1 -=0D
- include/hw/char/parallel.h | 2 ++=0D
- hw/char/omap_uart.c        | 9 ---------=0D
- hw/char/parallel-isa.c     | 2 +-=0D
- hw/char/parallel.c         | 1 -=0D
- hw/i386/kvm/i8254.c        | 1 -=0D
- hw/isa/i82378.c            | 1 -=0D
- hw/isa/isa-superio.c       | 3 ++-=0D
- hw/timer/i8254.c           | 6 ------=0D
- hw/timer/i8254_common.c    | 6 ++++++=0D
- 10 files changed, 11 insertions(+), 21 deletions(-)=0D
-=0D
--- =0D
-2.40.1=0D
-=0D
+Rather than using a string literal which is prone to typos let's use a macro
+instead which is caught by the compiler if mistyped.
+
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ include/hw/char/parallel.h | 2 ++
+ hw/char/parallel-isa.c     | 2 +-
+ hw/char/parallel.c         | 1 -
+ hw/isa/isa-superio.c       | 3 ++-
+ 4 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/include/hw/char/parallel.h b/include/hw/char/parallel.h
+index 0a23c0f57e..29d2876d00 100644
+--- a/include/hw/char/parallel.h
++++ b/include/hw/char/parallel.h
+@@ -4,6 +4,8 @@
+ #include "hw/isa/isa.h"
+ #include "chardev/char.h"
+ 
++#define TYPE_ISA_PARALLEL "isa-parallel"
++
+ void parallel_hds_isa_init(ISABus *bus, int n);
+ 
+ bool parallel_mm_init(MemoryRegion *address_space,
+diff --git a/hw/char/parallel-isa.c b/hw/char/parallel-isa.c
+index 1ccbb96e70..547ae69304 100644
+--- a/hw/char/parallel-isa.c
++++ b/hw/char/parallel-isa.c
+@@ -21,7 +21,7 @@ static void parallel_init(ISABus *bus, int index, Chardev *chr)
+     DeviceState *dev;
+     ISADevice *isadev;
+ 
+-    isadev = isa_new("isa-parallel");
++    isadev = isa_new(TYPE_ISA_PARALLEL);
+     dev = DEVICE(isadev);
+     qdev_prop_set_uint32(dev, "index", index);
+     qdev_prop_set_chr(dev, "chardev", chr);
+diff --git a/hw/char/parallel.c b/hw/char/parallel.c
+index af551e7864..3d32589bb3 100644
+--- a/hw/char/parallel.c
++++ b/hw/char/parallel.c
+@@ -93,7 +93,6 @@ typedef struct ParallelState {
+     PortioList portio_list;
+ } ParallelState;
+ 
+-#define TYPE_ISA_PARALLEL "isa-parallel"
+ OBJECT_DECLARE_SIMPLE_TYPE(ISAParallelState, ISA_PARALLEL)
+ 
+ struct ISAParallelState {
+diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+index c81bfe58ef..53b80de0ce 100644
+--- a/hw/isa/isa-superio.c
++++ b/hw/isa/isa-superio.c
+@@ -20,6 +20,7 @@
+ #include "hw/isa/superio.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/input/i8042.h"
++#include "hw/char/parallel.h"
+ #include "hw/char/serial.h"
+ #include "trace.h"
+ 
+@@ -51,7 +52,7 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
+             } else {
+                 name = g_strdup_printf("parallel%d", i);
+             }
+-            isa = isa_new("isa-parallel");
++            isa = isa_new(TYPE_ISA_PARALLEL);
+             d = DEVICE(isa);
+             qdev_prop_set_uint32(d, "index", i);
+             if (k->parallel.get_iobase) {
+-- 
+2.40.1
+
 
