@@ -1,78 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pwrDl-0006jI-LU
-	for mharc-qemu-trivial@gnu.org; Wed, 10 May 2023 17:19:37 -0400
+	id 1pxmBz-0008IV-JO
+	for mharc-qemu-trivial@gnu.org; Sat, 13 May 2023 06:09:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pwrDj-0006if-My; Wed, 10 May 2023 17:19:35 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ id 1pxmBv-0008Fm-8v; Sat, 13 May 2023 06:09:32 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pwrDh-0006DM-Jw; Wed, 10 May 2023 17:19:35 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-9659f452148so1377292466b.1; 
- Wed, 10 May 2023 14:19:32 -0700 (PDT)
+ id 1pxmBs-0004MZ-3Z; Sat, 13 May 2023 06:09:29 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-50bc2feb320so16639207a12.3; 
+ Sat, 13 May 2023 03:09:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1683753570; x=1686345570;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=wrYuWyyaR+n6ic1gYEfiqe4BjmXyu/qkyBJLPKzd3T0=;
- b=lLcPKQvI7jF02dx+jWS5TJgsuIyCTyKuxIbBLtgrx/4p4nTn9mLfl0xADDVpaGLAvh
- Nrwe0wegqBM74cNJmlrWJnbNOKjuBYLkDSmGrik7cxDcg/SWsRr/0muXwE7T1wm7/Qze
- OG/a9f4WT5BUKyFHEeHIoH6cb3VhHn7aHblyLxrh77zveAxZRwQ4fosjeLES/8dsADCd
- FeD3ocLGE7lnezRxYR7pPP8O7j+zRM73+gjcblYBso+yq4ARhtrWfzjSPzoxXYiOAFxb
- QSItyNfDUb9b5Fr6mXIm0zbYu6hLyApMY4xNOzVu0oND1qIk1IJZw9VHx76k27PMtqSk
- ZecQ==
+ d=gmail.com; s=20221208; t=1683972562; x=1686564562;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=kB0fhfl32qFVI6ft2jTJEJ33AnlefeZ8d6wvh4tFsS4=;
+ b=gMyfBkGzHLohjZUtqXgRhPI/VYZ59HMfUs3qT3sZA5V8mm5KuPCCfGxb9gDuD4eV+e
+ MDV21RxKkDaMM6G1Hn8VJkpOJEdy4jtfm1PdtwpLndiEWxG7TgTi4k6caZbBToz+NgAX
+ HDJe5zLY3w/Vw8DrMdU1CBHARA1O417kBeHjPzxFUdjrD+lvfH/j0wQFh94LQeZvF1vh
+ xCnZrXGkKhfhNmOw3jtNnsr+IXfITUBikqCfyBYa3+pqcN4I+p/x+wMZaMkAY5YDW2/p
+ hy1wZ//L6cHJBZGhHI9V+ud2afIuwWianGkdq+iVVP03Z7KzECNQDI2dJLqhdEV4yWVl
+ TEhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683753570; x=1686345570;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=wrYuWyyaR+n6ic1gYEfiqe4BjmXyu/qkyBJLPKzd3T0=;
- b=VvSCAFeCl+hlB8JEePeamt8d10QmyNx6+c93UwyvrYkFZJ8K26EaJ3RAnErwT/LYoM
- FZ5IrC3A9YHTOqApg9BeoOOyid5K3FNqe8EJ6yjDPVWYSiWFtWqfjbXD1UW7GFZjC6gf
- dPxB7oLDL8wziaH3DF6e984xVRyM1qPXiGDp5d01htsF6KTSFY7Ba5TwLdi7kXlTnQDi
- NBOz2kp+Bwp6L/h8655mk8YD97NA/AP6oE1Lao+RtIS2Q/ctFmFcO13DCdJCXfOfmdGF
- 5hZQLlbCUilPpvmLbgtGl40Jjc0vhWsalLj2jRQK0+G5yCwYHA+GGleIi5YvFTM7BjdC
- KNjg==
-X-Gm-Message-State: AC+VfDwnOFH54KSrDtGzCclt0xrdSl62wkNokYHuvoC4H5pEQMJDOPlM
- XtJvZ8ov/MoByDCRQJoZQn0=
-X-Google-Smtp-Source: ACHHUZ7iaYvN3fOGrU7/yHe98BpVrRc7Brv68RIChXeH4kQrvNJC8VBPO19wUYkx80hobi8UbQotWA==
-X-Received: by 2002:a17:907:36c1:b0:94f:36a0:da45 with SMTP id
- bj1-20020a17090736c100b0094f36a0da45mr16021577ejc.29.1683753570229; 
- Wed, 10 May 2023 14:19:30 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-089-012-021-051.89.12.pool.telefonica.de.
- [89.12.21.51]) by smtp.gmail.com with ESMTPSA id
- jl2-20020a17090775c200b00965cbcaf31fsm3113990ejc.99.2023.05.10.14.19.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 May 2023 14:19:29 -0700 (PDT)
-Date: Wed, 10 May 2023 21:19:25 +0000
+ d=1e100.net; s=20221208; t=1683972562; x=1686564562;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kB0fhfl32qFVI6ft2jTJEJ33AnlefeZ8d6wvh4tFsS4=;
+ b=PXVjHG32OtSrUQoxxYjm5h0dphFspZy08eY0EoCQhe3Mwd+ViVy6oqkOUpLluQKX8U
+ wfw8ccRywc4wGuOgRClvw+Mduw6vq4hCwxxApcz7eK2CroJoQ4/1BLif2VZBp5TO9Cl1
+ H7G8fSGgczqKu3LvQEu5bVuE9WQWpmE9TRZwpzp1P2SVMQBtbrJUNB+7okXtDZU/Fw5y
+ EAiGTVWQpvKl9rewL94cb2seUArhkp2gdJ3/Cxfgs3tt7SK/fBYGUdpk/BwRppoRBOFb
+ Gd5SbyFNZVLKEu94jzOOeg5iiYpBuGTehfMt5gJNElM1QbDaCgP6xCV2B8KW+V9v2PCk
+ HXgw==
+X-Gm-Message-State: AC+VfDzjT1ihwds9uITJOuoQmrX0LUixumhcYmd4+mg3+lWHOA6qxTIx
+ pXtetZQWJD3j/KLkGIqUIrd3XiXR8Tg=
+X-Google-Smtp-Source: ACHHUZ5c/4+dNr3Dhlq7CRk+DjNdi0p/ylgRv6bf0KsMAokoVBldNiUiZPxnV9DGV+OvyBz1nsYKag==
+X-Received: by 2002:a17:907:9703:b0:966:265d:edc9 with SMTP id
+ jg3-20020a170907970300b00966265dedc9mr22940134ejc.74.1683972561935; 
+ Sat, 13 May 2023 03:09:21 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-077-013-174-037.77.13.pool.telefonica.de. [77.13.174.37])
+ by smtp.gmail.com with ESMTPSA id
+ jr18-20020a170906515200b00965f5d778e3sm6645285ejc.120.2023.05.13.03.09.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 13 May 2023 03:09:21 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-CC: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Juan Quintela <quintela@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Ani Sinha <ani@anisinha.ca>,
- Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v4 0/9] PC cleanups
-In-Reply-To: <20230510152043-mutt-send-email-mst@kernel.org>
-References: <20230213162004.2797-1-shentey@gmail.com>
- <776DAC15-E708-47BF-9EF6-D511731DF56D@gmail.com>
- <4A6D076C-5091-42A5-BB83-695B5BF2F04D@gmail.com>
- <73EFF09E-8246-4E6E-8F6E-189BA222A7D7@gmail.com>
- <20230510152043-mutt-send-email-mst@kernel.org>
-Message-ID: <1F853F97-D4A3-456F-8B4A-665EA7BC9076@gmail.com>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ qemu-ppc@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 0/4] Trivial cleanups
+Date: Sat, 13 May 2023 12:09:02 +0200
+Message-Id: <20230513100906.46672-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.40.1
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -92,209 +88,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 May 2023 21:19:36 -0000
+X-List-Received-Date: Sat, 13 May 2023 10:09:32 -0000
 
-
-
-Am 10=2E Mai 2023 19:20:59 UTC schrieb "Michael S=2E Tsirkin" <mst@redhat=
-=2Ecom>:
->On Wed, May 10, 2023 at 06:26:54PM +0000, Bernhard Beschow wrote:
->>=20
->>=20
->> Am 5=2E M=C3=A4rz 2023 07:45:55 UTC schrieb Bernhard Beschow <shentey@g=
-mail=2Ecom>:
->> >
->> >
->> >Am 13=2E Februar 2023 16:45:05 UTC schrieb Bernhard Beschow <shentey@g=
-mail=2Ecom>:
->> >>
->> >>
->> >>Am 13=2E Februar 2023 16:19:55 UTC schrieb Bernhard Beschow <shentey@=
-gmail=2Ecom>:
->> >>>This series contains some cleanups I came across when working on the=
- PC
->> >>>
->> >>>machines=2E It consists of reducing the usage of global variables an=
-d eliminating
->> >>>
->> >>>some redundancies=2E
->> >>>
->> >>>
->> >>>
->> >>>One notable change is that the SMRAM memory region gets moved from t=
-he i440fx
->> >>>
->> >>>and q35 host bridges into the x86 machine=2E This will simplify clea=
-ning up these
->> >>>
->> >>>host bridges which will be done in a separate series=2E Note that th=
-e movement of
->> >>>
->> >>>the SMRAM memory region apparently doesn't change migration ABI for =
-the pc and
->> >>>
->> >>>q35 machines (see below)=2E
->> >>>
->> >>>
->> >>>
->> >>>Testing done:
->> >>>
->> >>>* `make check`
->> >>>
->> >>>' `make check-avocado`
->> >>>
->> >>>* `qemu-system-x86_64 -M q35 -m 2G -cdrom \
->> >>>
->> >>>   manjaro-kde-21=2E3=2E2-220704-linux515=2Eiso`
->> >>>
->> >>>* `qemu-system-x86_64 -M pc -m 2G -cdrom manjaro-kde-21=2E3=2E2-2207=
-04-linux515=2Eiso`
->> >>>
->> >>>* Confirm that JSON representation of migration files (pc & q35) are=
- empty:
->> >>>
->> >>>  1=2E Create four migration files {pc,q35}-{before,after}=2Emig by =
-running
->> >>>
->> >>>     `qemu-system-x86_64 -M {pc,q35} -S` with QEMU built from master=
- and from
->> >>>
->> >>>     this series=2E
->> >>>
->> >>>  2=2E Run `=2E/scripts/analyze-migration=2Epy -d desc -f *=2Emig > =
-*=2Ejson` on the four
->> >>>
->> >>>     files
->> >>>
->> >>>  3=2E Compare the diffs -> both are empty
->> >>>
->> >>>
->> >>>
->> >>>v4:
->> >>>
->> >>>* Remove ram_memory variable in pc_q35 completely (Zoltan)
->> >>>
->> >>
->> >>The last two patches still need review=2E Comments welcome!
->> >
->> >Ping
->> >
->> >Can we queue the reviewed patches (all but the last two) already?
->>=20
->> Ping 2
->
->
->queued 1-7
-
-Thanks -- also for the RTC ones!
-
-Best regards,
-Bernhard
-
->
->> >
->> >Thanks,
->> >Bernhard
->> >
->> >>
->> >>>
->> >>>
->> >>>v3:
->> >>>
->> >>>* Add three patches regarding init_pam() and SMRAM=2E
->> >>>
->> >>>* Drop 'hw/i386/pc_q35: Resolve redundant q35_host variable' since P=
-hil posted
->> >>>
->> >>>  a similar patch in a more comprehensive series:
->> >>>
->> >>>  https://lore=2Ekernel=2Eorg/qemu-devel/20230203180914=2E49112-13-p=
-hilmd@linaro=2Eorg/
->> >>>
->> >>>* Drop 'hw/isa/lpc_ich9: Reuse memory and io address space of PCI bu=
-s' since
->> >>>
->> >>>  it inadvertantly changed the memory hierarchy=2E
->> >>>
->> >>>* Drop ICH9 cleanups again in favor of a separate series=2E
->> >>>
->> >>>
->> >>>
->> >>>v2:
->> >>>
->> >>>* Factor out 'hw/i386/pc_q35: Reuse machine parameter' from 'hw/i386=
-/pc_q35:
->> >>>
->> >>>  Resolve redundant q35_host variable' (Zoltan)
->> >>>
->> >>>* Lower type of phb to Object in 'hw/i386/pc_q35: Resolve redundant =
-q35_host
->> >>>
->> >>>  variable' (Zoltan)
->> >>>
->> >>>* Add ICH9 cleanups
->> >>>
->> >>>
->> >>>
->> >>>Bernhard Beschow (9):
->> >>>
->> >>>  hw/pci-host/i440fx: Inline sysbus_add_io()
->> >>>
->> >>>  hw/pci-host/q35: Inline sysbus_add_io()
->> >>>
->> >>>  hw/i386/pc_q35: Reuse machine parameter
->> >>>
->> >>>  hw/i386/pc_{q35,piix}: Reuse MachineClass::desc as SMB product nam=
-e
->> >>>
->> >>>  hw/i386/pc_{q35,piix}: Minimize usage of get_system_memory()
->> >>>
->> >>>  hw/i386/pc: Initialize ram_memory variable directly
->> >>>
->> >>>  hw/pci-host/pam: Make init_pam() usage more readable
->> >>>
->> >>>  hw/i386/x86: Make TYPE_X86_MACHINE the owner of smram
->> >>>
->> >>>  target/i386/tcg/sysemu/tcg-cpu: Avoid own opinion about smram size
->> >>>
->> >>>
->> >>>
->> >>> include/hw/i386/pc=2Eh             |  1 -
->> >>>
->> >>> include/hw/i386/x86=2Eh            |  2 ++
->> >>>
->> >>> include/hw/pci-host/i440fx=2Eh     |  7 ++++---
->> >>>
->> >>> include/hw/pci-host/pam=2Eh        |  5 +++--
->> >>>
->> >>> include/hw/pci-host/q35=2Eh        |  4 +++-
->> >>>
->> >>> hw/i386/pc=2Ec                     |  2 --
->> >>>
->> >>> hw/i386/pc_piix=2Ec                | 10 +++++-----
->> >>>
->> >>> hw/i386/pc_q35=2Ec                 | 17 +++++++++--------
->> >>>
->> >>> hw/i386/x86=2Ec                    |  4 ++++
->> >>>
->> >>> hw/pci-host/i440fx=2Ec             | 28 +++++++++++++--------------=
--
->> >>>
->> >>> hw/pci-host/pam=2Ec                | 12 ++++++------
->> >>>
->> >>> hw/pci-host/q35=2Ec                | 31 ++++++++++++++++-----------=
-----
->> >>>
->> >>> target/i386/tcg/sysemu/tcg-cpu=2Ec |  3 +--
->> >>>
->> >>> 13 files changed, 66 insertions(+), 60 deletions(-)
->> >>>
->> >>>
->> >>>
->> >>>-- >
->> >>>2=2E39=2E1
->> >>>
->> >>>
->> >>>
->
+This series:=0D
+* Removes dead code from omap_uart and i82378=0D
+* Resolves redundant code in the i8254 timer devices=0D
+* Replaces string literals by macro usage for TYPE_ISA_PARALLEL devices=0D
+=0D
+Bernhard Beschow (4):=0D
+  hw/timer/i8254_common: Share "iobase" property via base class=0D
+  hw/arm/omap: Remove unused omap_uart_attach()=0D
+  hw/char/parallel: Export TYPE_ISA_PARALLEL macro=0D
+  hw/isa/i82378: Remove unused "io" attribute=0D
+=0D
+ include/hw/arm/omap.h      | 1 -=0D
+ include/hw/char/parallel.h | 2 ++=0D
+ hw/char/omap_uart.c        | 9 ---------=0D
+ hw/char/parallel-isa.c     | 2 +-=0D
+ hw/char/parallel.c         | 1 -=0D
+ hw/i386/kvm/i8254.c        | 1 -=0D
+ hw/isa/i82378.c            | 1 -=0D
+ hw/isa/isa-superio.c       | 3 ++-=0D
+ hw/timer/i8254.c           | 6 ------=0D
+ hw/timer/i8254_common.c    | 6 ++++++=0D
+ 10 files changed, 11 insertions(+), 21 deletions(-)=0D
+=0D
+-- =0D
+2.40.1=0D
+=0D
 
