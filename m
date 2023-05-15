@@ -1,39 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pyAxF-0004jZ-Il
-	for mharc-qemu-trivial@gnu.org; Sun, 14 May 2023 08:36:01 -0400
+	id 1pySMx-00038l-Pv
+	for mharc-qemu-trivial@gnu.org; Mon, 15 May 2023 03:11:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pyAx6-0004Zf-9J; Sun, 14 May 2023 08:35:52 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pyAx4-00051o-N5; Sun, 14 May 2023 08:35:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=JxgV9WCX/PZY8Kh2TuMnE/di5xoJ3iGWoJXz4s3abtQ=; b=oV2rU1CrU0SK9S13yMd32Zkx6E
- HsdWj6OY54KN19ET7ZTWJJ6HGcoJ6WA3dk49+ZMphX5NwYYXas8xDmLISP5kpkgEoMEssmjFjee9R
- XmiO14mqs6OKTH2Aa8WnUQtznCmfkXZhIWMqLXVtQVrze3H/rAtupiX9PgI6Yh8+zQmK0hZQpI8lL
- CdOyT5BtRZD+kWMlzLDR+I2Mmz/iMTJGnNVduAIh1PtoGlqJRexRzW9rU55/06ev1ZHteBF3823gq
- 97PBEOcKmVqgSztl/AzuMn1HDmjsk/Y1G/1c35J+8nUQ9YWAZsJbVwpbxYIP2CRHawaLZT4mQDM3j
- D6SexZPMLCDyXSEw17jhKNXY7ear3DmmDrj8uMZwggqqG6VpnM4JT4x+yAglb7BZUO1smq728E5NF
- zDC034EK8OYsf9mTAIsd6VuvqSplfv1bO/2O+Wv2z1Q0OwhlgmjJ+p/+iw40lrp2F53B5B8Szf1qC
- m2x/dHpRCsHOh4sCIlo41NMDUVBBs0kBI66My6uw08PTlyEDwc/9gFxnKa0TEO1+gpj/7eAly4YaS
- nY85QZJeizsHqQaC4R4nu3Iy9MRBd6P8vBXFPe8Ga0fXAqU+qcZNYq0lgnfiG+scmbM8G2fmzT33j
- b58KPuRBuFv833lQg4i3O+f6ccGdAiM0OCYoAP7sA=;
-Received: from [2a00:23c4:8bac:6900:b726:cf58:4c12:f013]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pyAvz-0003Dv-1C; Sun, 14 May 2023 13:34:47 +0100
-Message-ID: <9ecbc639-678c-ca86-2d5a-6a009d5dc398@ilande.co.uk>
-Date: Sun, 14 May 2023 13:35:40 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pySMv-00037e-LU
+ for qemu-trivial@nongnu.org; Mon, 15 May 2023 03:11:41 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pySMt-0001BG-Mm
+ for qemu-trivial@nongnu.org; Mon, 15 May 2023 03:11:41 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-307d84f5ce4so3235927f8f.2
+ for <qemu-trivial@nongnu.org>; Mon, 15 May 2023 00:11:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1684134696; x=1686726696;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sBdlLd0RGmZoGMQI2SU5HJRgzkUTKTcbuAttEZnC7Hs=;
+ b=gSA3hRNv4z8ocOBKDn7UWeB2JV6IW5qQgZU2NrWdWMqToHSwjtqS4a1y2nPBKBQodZ
+ g7kVH39dUkBSDRCo6tJi6Hce1IahrhfEJATsCGhhwvCm0g5Wi8fMyAchutzrZZaiqwI9
+ gwAzAJzpM8KFbJjunRjJBe3R3PjXfarG60qmAvOcI1K19P7KMC7WV+Mm3E9C32LkZPsg
+ ajXX0RHEXJlPeSGFiEdESNAQsNX+F81mSS8j8lAnm+ofOJ991SSFOJFh+F5eyJQI9qRG
+ 76HhgRAtqEZac+zlyU0MRLZ8gGFfUgYYtvXnXXntC/vhNErANNsOi8Lpd01LU18fjJ5T
+ Tzag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684134696; x=1686726696;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sBdlLd0RGmZoGMQI2SU5HJRgzkUTKTcbuAttEZnC7Hs=;
+ b=U3F4t+a8LueuA6gQTh3w8Frq0f2ec2jOJBz9ie9YjNAlgAI75NV2K/fWP3r3w5Ki6g
+ yNFTFwAPoZXTLEqbIX2fkG6H9kgT1Qnd0NJL1dyvYagsXSBYrtTE6DSOE8FWSLsATZMl
+ Cm/45TksOJao9C5iYcyg6rgn686uAiAmRWGLwBJ2Wz1yWmAi4c0rMQyNxTtH6hLFg+I0
+ F5T4EL7VXT2E8hfIRLudtZj3tMs4bO7X7OIIfp5rsWb5xBjV6ACN3lR3lPCqXU1OIMM1
+ 47lFOfnY0uB0tG0FEV+MAeF+BB7OmWTrk562gQznKk4TeTnjcOOMfHxnXzYOxAaoVjjw
+ T1qw==
+X-Gm-Message-State: AC+VfDzPB2pLEuOAIny4C6y9x5ePGMy2h+mR1++DdL9D9OGFKi5elGc+
+ lnH+DRmr0XjgI20KXbOEnG/eNQ==
+X-Google-Smtp-Source: ACHHUZ45scSzwkKUcQCOkH9IA2nXxAncrFwWI5UFnKw01t0q7DOPx9CxgrE5oK1j1PcUi4+GKoHjew==
+X-Received: by 2002:adf:e552:0:b0:307:7be5:90da with SMTP id
+ z18-20020adfe552000000b003077be590damr21224140wrm.68.1684134696341; 
+ Mon, 15 May 2023 00:11:36 -0700 (PDT)
+Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
+ e7-20020a5d65c7000000b00307925ff35bsm24590535wrw.49.2023.05.15.00.11.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 May 2023 00:11:36 -0700 (PDT)
+Message-ID: <16934ed7-b58d-6685-2aaa-6e2e9560bb75@linaro.org>
+Date: Mon, 15 May 2023 09:11:34 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.10.1
+Subject: Re: [PATCH 2/4] hw/arm/omap: Remove unused omap_uart_attach()
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -46,25 +64,20 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  qemu-ppc@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
  <marcandre.lureau@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <20230513100906.46672-1-shentey@gmail.com>
- <20230513100906.46672-5-shentey@gmail.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20230513100906.46672-5-shentey@gmail.com>
+ <20230513100906.46672-3-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230513100906.46672-3-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bac:6900:b726:cf58:4c12:f013
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 4/4] hw/isa/i82378: Remove unused "io" attribute
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.93,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,36 +90,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 14 May 2023 12:35:56 -0000
+X-List-Received-Date: Mon, 15 May 2023 07:11:42 -0000
 
-On 13/05/2023 11:09, Bernhard Beschow wrote:
-
-> The attribute isn't used since commit 5c9736789b79ea49cd236ac326f0a414f63b1015
-> "i82378: Cleanup implementation".
+On 13/5/23 12:09, Bernhard Beschow wrote:
+> The function is unused since commit
+> bdad3654d3c55f478e538037d9eccd204e5fc8ee ('hw/arm/nseries: Remove
+> invalid/unnecessary n8x0_uart_setup()').
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/isa/i82378.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
-> index 5432ab5065..63e0857208 100644
-> --- a/hw/isa/i82378.c
-> +++ b/hw/isa/i82378.c
-> @@ -34,7 +34,6 @@ struct I82378State {
->   
->       qemu_irq cpu_intr;
->       qemu_irq *isa_irqs_in;
-> -    MemoryRegion io;
->   };
->   
->   static const VMStateDescription vmstate_i82378 = {
+>   include/hw/arm/omap.h | 1 -
+>   hw/char/omap_uart.c   | 9 ---------
+>   2 files changed, 10 deletions(-)
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-
-
-ATB,
-
-Mark.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
