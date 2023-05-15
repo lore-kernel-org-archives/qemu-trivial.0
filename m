@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pyakn-00019t-1o
-	for mharc-qemu-trivial@gnu.org; Mon, 15 May 2023 12:08:53 -0400
+	id 1pyalh-0003ka-8F
+	for mharc-qemu-trivial@gnu.org; Mon, 15 May 2023 12:09:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1pyakl-00014f-2G; Mon, 15 May 2023 12:08:51 -0400
+ id 1pyalf-0003iJ-KM; Mon, 15 May 2023 12:09:47 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1pyakj-0002c6-1T; Mon, 15 May 2023 12:08:50 -0400
+ id 1pyale-0002gt-2e; Mon, 15 May 2023 12:09:47 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 1BC236021;
- Mon, 15 May 2023 19:08:47 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 12FDF6023;
+ Mon, 15 May 2023 19:09:44 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id F0E1C55A7;
- Mon, 15 May 2023 19:08:45 +0300 (MSK)
-Message-ID: <147b4e5e-009a-7ab8-7dfc-ea7735319c97@msgid.tls.msk.ru>
-Date: Mon, 15 May 2023 19:08:45 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id EEB6455AA;
+ Mon, 15 May 2023 19:09:42 +0300 (MSK)
+Message-ID: <7e96e406-1467-56da-0e7c-3351692c35f8@msgid.tls.msk.ru>
+Date: Mon, 15 May 2023 19:09:42 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
 Subject: Re: [PATCH v3] hw/pvrdma: Protect against buggy or malicious guest
  driver
 Content-Language: en-US
+From: Michael Tokarev <mjt@tls.msk.ru>
 To: Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>,
@@ -39,8 +40,8 @@ References: <20220403095234.2210-1-yuval.shaia.ml@gmail.com>
  <CAC_L=vUD2vVNSaP7UcDuRUCyd8XNmb4iRY_LXK0UNEE-+Rr4TQ@mail.gmail.com>
  <6cd36e7e-dae7-6258-736a-44630cee9010@redhat.com>
  <5779382f-9f8d-439e-b474-1ac1606d65a5@vivier.eu>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <5779382f-9f8d-439e-b474-1ac1606d65a5@vivier.eu>
+ <147b4e5e-009a-7ab8-7dfc-ea7735319c97@tls.msk.ru>
+In-Reply-To: <147b4e5e-009a-7ab8-7dfc-ea7735319c97@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -63,29 +64,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 May 2023 16:08:51 -0000
+X-List-Received-Date: Mon, 15 May 2023 16:09:48 -0000
 
-16.01.2023 20:50, Laurent Vivier wrote:
-> Le 28/12/2022 à 20:32, Thomas Huth a écrit :
->> On 19/12/2022 12.21, Marcel Apfelbaum wrote:
->>> On Mon, Dec 19, 2022 at 10:57 AM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
+15.05.2023 19:08, Michael Tokarev пишет:
+> 16.01.2023 20:50, Laurent Vivier wrote:
+>> Le 28/12/2022 à 20:32, Thomas Huth a écrit :
+>>> On 19/12/2022 12.21, Marcel Apfelbaum wrote:
+>>>> On Mon, Dec 19, 2022 at 10:57 AM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
+>>>>>
+>>>>> Can anyone else pick this one?
 >>>>
->>>> Can anyone else pick this one?
+>>>> Adding Thomas,
+>>>>
+>>>> I dropped the ball with this one, I am sorry about that, maybe it
+>>>> doesn't worth a Pull Request only for it.
 >>>
->>> Adding Thomas,
+>>> Why not? Pull request for single patches aren't that uncommon.
 >>>
->>> I dropped the ball with this one, I am sorry about that, maybe it
->>> doesn't worth a Pull Request only for it.
+>>>> Maybe it can go through the Misc tree?
+>>>
+>>> hw/rdma/ is really not my turf, but since the patch is small, it sounds like a good candidate for qemu-trivial, I think.
 >>
->> Why not? Pull request for single patches aren't that uncommon.
->>
->>> Maybe it can go through the Misc tree?
->>
->> hw/rdma/ is really not my turf, but since the patch is small, it sounds like a good candidate for qemu-trivial, I think.
+>> Applied to my trivial-patches branch.
 > 
-> Applied to my trivial-patches branch.
+> Has it been forgotten again? :)
 
-Has it been forgotten again? :)
+Ah nope. There are 2 patches with the same subject, always confusing.
+This one is applied.
 
 /mjt
+
 
