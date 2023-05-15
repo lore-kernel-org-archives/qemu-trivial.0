@@ -1,49 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1pyalh-0003ka-8F
-	for mharc-qemu-trivial@gnu.org; Mon, 15 May 2023 12:09:49 -0400
+	id 1pyatt-0003JI-N0
+	for mharc-qemu-trivial@gnu.org; Mon, 15 May 2023 12:18:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1pyalf-0003iJ-KM; Mon, 15 May 2023 12:09:47 -0400
+ id 1pyate-00036W-V6; Mon, 15 May 2023 12:18:04 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1pyale-0002gt-2e; Mon, 15 May 2023 12:09:47 -0400
+ id 1pyatc-0004Ua-TQ; Mon, 15 May 2023 12:18:02 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 12FDF6023;
- Mon, 15 May 2023 19:09:44 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 67572602B;
+ Mon, 15 May 2023 19:17:58 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id EEB6455AA;
- Mon, 15 May 2023 19:09:42 +0300 (MSK)
-Message-ID: <7e96e406-1467-56da-0e7c-3351692c35f8@msgid.tls.msk.ru>
-Date: Mon, 15 May 2023 19:09:42 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 5FF5C55B1;
+ Mon, 15 May 2023 19:17:57 +0300 (MSK)
+Message-ID: <66a3afb0-9a10-fc9a-e4c8-61bd81cdd5d0@msgid.tls.msk.ru>
+Date: Mon, 15 May 2023 19:17:57 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH v3] hw/pvrdma: Protect against buggy or malicious guest
- driver
+Subject: Re: [PATCH trivial for-8.0] hw/virtio/virtio-qmp.c: spelling: suppoted
 Content-Language: en-US
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>
+References: <20230401085140.2691965-1-mjt@msgid.tls.msk.ru>
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Claudio Fontana <cfontana@suse.de>,
- qemu devel list <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, wxhusst@gmail.com,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20220403095234.2210-1-yuval.shaia.ml@gmail.com>
- <CAC_L=vXsKpai6Wr0Fi2r5sr4U+tshPB9VizqntDppqE=1_FbVQ@mail.gmail.com>
- <339b8c7d-1f54-a515-8854-c22d10f79d1d@suse.de>
- <CAMPkWoOFXfyx=ZOv8i6AJ8Lv2GFKt11gnXYZ2W_4roS9UP9m5w@mail.gmail.com>
- <CAC_L=vUD2vVNSaP7UcDuRUCyd8XNmb4iRY_LXK0UNEE-+Rr4TQ@mail.gmail.com>
- <6cd36e7e-dae7-6258-736a-44630cee9010@redhat.com>
- <5779382f-9f8d-439e-b474-1ac1606d65a5@vivier.eu>
- <147b4e5e-009a-7ab8-7dfc-ea7735319c97@tls.msk.ru>
-In-Reply-To: <147b4e5e-009a-7ab8-7dfc-ea7735319c97@tls.msk.ru>
+In-Reply-To: <20230401085140.2691965-1-mjt@msgid.tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -106
@@ -64,34 +49,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 May 2023 16:09:48 -0000
+X-List-Received-Date: Mon, 15 May 2023 16:18:12 -0000
 
-15.05.2023 19:08, Michael Tokarev пишет:
-> 16.01.2023 20:50, Laurent Vivier wrote:
->> Le 28/12/2022 à 20:32, Thomas Huth a écrit :
->>> On 19/12/2022 12.21, Marcel Apfelbaum wrote:
->>>> On Mon, Dec 19, 2022 at 10:57 AM Yuval Shaia <yuval.shaia.ml@gmail.com> wrote:
->>>>>
->>>>> Can anyone else pick this one?
->>>>
->>>> Adding Thomas,
->>>>
->>>> I dropped the ball with this one, I am sorry about that, maybe it
->>>> doesn't worth a Pull Request only for it.
->>>
->>> Why not? Pull request for single patches aren't that uncommon.
->>>
->>>> Maybe it can go through the Misc tree?
->>>
->>> hw/rdma/ is really not my turf, but since the patch is small, it sounds like a good candidate for qemu-trivial, I think.
->>
->> Applied to my trivial-patches branch.
+01.04.2023 11:51, Michael Tokarev wrote:
+> Fixes: f3034ad71fcd0a6a58bc37830f182b307f089159
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>   hw/virtio/virtio-qmp.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Has it been forgotten again? :)
+> This patch were previously sent at 5 Nov 2022, now the
+> code moved to another file, and the patch is still applies
+> (with changed filename).
+> 
+> diff --git a/hw/virtio/virtio-qmp.c b/hw/virtio/virtio-qmp.c
+> index 808446b4c9..e76218bdd5 100644
+> --- a/hw/virtio/virtio-qmp.c
+> +++ b/hw/virtio/virtio-qmp.c
+> @@ -343 +343 @@ qmp_virtio_feature_map_t virtio_scsi_feature_map[] = {
+> -            "buffers suppoted"),
+> +            "buffers supported"),
 
-Ah nope. There are 2 patches with the same subject, always confusing.
-This one is applied.
+Ping?
 
 /mjt
-
 
