@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q0iDP-0001xN-OQ
-	for mharc-qemu-trivial@gnu.org; Sun, 21 May 2023 08:31:11 -0400
+	id 1q0iDR-00021M-TR
+	for mharc-qemu-trivial@gnu.org; Sun, 21 May 2023 08:31:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1q0iDH-0001vT-A0; Sun, 21 May 2023 08:31:03 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ id 1q0iDN-0001w0-Lh; Sun, 21 May 2023 08:31:09 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1q0iDF-0001kF-Kk; Sun, 21 May 2023 08:31:03 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-96f588bc322so431355166b.1; 
- Sun, 21 May 2023 05:31:00 -0700 (PDT)
+ id 1q0iDI-0001kq-5C; Sun, 21 May 2023 08:31:05 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-9659e9bbff5so928451366b.1; 
+ Sun, 21 May 2023 05:31:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1684672259; x=1687264259;
+ d=gmail.com; s=20221208; t=1684672261; x=1687264261;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Anz5dlSMRx2Ue0AdMLdpzN5IRHRJ9vVknwSj+KlouiQ=;
- b=I+MGt1x/fVUA/Vfj1B/iex59UobttsBmPNzrgWbROuH/ockZNifRfZIQYY62PbBhXu
- EieTpWwcoyRqrWngEjBM7G0j9QZlgWSFzXk+ApCUIyb75MH3DQvaGi6sia9ziW5tVuXH
- 6su5qd2WEfmW4bTwUVhx54ODTq6gSQ2O8xspMD1hRMBDWbL3uljWJBCtQc+knxT42Btl
- ZILE7XxBZp4eW++h6ilKG/NEJxyAx97D3HIEclIWK8qVidASArbdQKi0IuQDR6r/itP+
- kVMXqsWSWT/FehaO8EEQYK6TYvg03ISIgzPywdCr2hO+IljU8OQbRz+mS2Am7P6K3ySu
- w8aA==
+ bh=s+kzg83eZnbuI0aq/ydKr/xkgLTYwwbEGaXyAFBj3HY=;
+ b=BmgtQd0RMO9XNHqBY+gMCT+AyQVCDrENTFVH2KwG7cY+lvuYEmytLTpixcXOQPCU6F
+ 9EUwq4lqSoKfBoTbB9xZ6rA6G6Vswzer71DYQ/e9p8gw6h8qDqqJn8iFAD2NfqMRn/50
+ wkej6Vsvse6AbEY2jXo0jshUyRtYapOUTCJ1azDv/OjfCc1drQ2tkGwYE7oyS7WbPNza
+ d7KaCdizDwX3J8SrqBrz4JFkXRBngzKo27oD0y9HSW1zSixVz8ppUq39BwJL1GNR/ofq
+ px7ReGtvwp75vTpY2Mmy3Vj1BICGY4peJHGCnirbTTOMSvBwZW4KuR+VxCJsgWkAxPoh
+ 2VhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684672259; x=1687264259;
+ d=1e100.net; s=20221208; t=1684672261; x=1687264261;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Anz5dlSMRx2Ue0AdMLdpzN5IRHRJ9vVknwSj+KlouiQ=;
- b=fdxsa4Y9vJ3iAUr/Zi+ct4gDnoHEh63mp1gDZ2v+YjlAJuje5Po+o6WFtgT4He/djj
- Vs5ZTgfRCnCacwsWTHCuWDq6G874Tn1UfQ0nJIuCJjob/FvqM4dZ7vCK13U+keVXoJ3p
- Ol4nAKaLNr8hbRDv0Wkkb7t/QId1XzCYSb9BAVpcjhVzc16OisBailyDU3GG0gHq6R6t
- DipizMprrxsA/1jekMVJKV1+H4sXchNm3JU1iDF40ZXSREdy/ZKyA6klY94l+vQwAXCS
- 9oOITYnBY0lU3Fwgij5Ag6TXCB62zRl5zhEZK5Fi1CGWjODGGqbtGHl2vB8USerefLLT
- UlTQ==
-X-Gm-Message-State: AC+VfDyA4W1EBkZ2XBy1qJFQ3F0VDuZ31m5/y5n0afxYGMSzaFTfo4w5
- XbZCEegK7KT5VxlDZvUy0gAaoP6pNOY=
-X-Google-Smtp-Source: ACHHUZ78GZ3ZKHj9M/KHfRLkdL8rRVk2gcWHimYmCN5CRVsyRubKaUO61I3kFRMiqDezSXVt81L6kw==
-X-Received: by 2002:a17:906:58d1:b0:933:3814:e0f4 with SMTP id
- e17-20020a17090658d100b009333814e0f4mr8423846ejs.16.1684672258548; 
- Sun, 21 May 2023 05:30:58 -0700 (PDT)
+ bh=s+kzg83eZnbuI0aq/ydKr/xkgLTYwwbEGaXyAFBj3HY=;
+ b=XcryUl2YFcMltXeKOYnTAxCehIJZUslZJLQWz2DG3I0Yac9bXH9PNxQZvYWRRR60Vy
+ WsksOEQ2Wtb8pT0N5maaJFikyGD3U7B61Fft8IPw3mEMsPo5u62o/luuPmecxeS4543n
+ cfha26Nwv6FvIl6/GSyf7pNvd/A39Wl08N5FaV34YaY2PnT88oLLyrhH0FWrt9F34hLZ
+ 6Wr5S/Is2TsW6HkIStG2ZzwaQkfktdb5FIG0Kyt5MLsEhHEyB0tOLBuAP7N6Zo8xQXvO
+ +owFPhFh4a2p3AeUmeA7/0CQLdZ3tG5+ehviYsdl2luHFaWCMcRQTv16cMGTRB7NKdc/
+ CgVg==
+X-Gm-Message-State: AC+VfDy+JZ0m8kJ0CWWl189vM9pVjwMdh7y8SWtuWmH9j11kZP5tA5XZ
+ NLs+ef9vKbTLrQFVvrQH205fMwm9hEM=
+X-Google-Smtp-Source: ACHHUZ4Oy2LcvaRUIKkFK6Zn/pgNeyDkk4bjuEpAHu6aR8n2C4VxI49AgRDT/EbkEkE9I7sf1XMxnQ==
+X-Received: by 2002:a17:907:25c2:b0:969:edf8:f73b with SMTP id
+ ae2-20020a17090725c200b00969edf8f73bmr6672640ejc.60.1684672261339; 
+ Sun, 21 May 2023 05:31:01 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-077-191-145-122.77.191.pool.telefonica.de. [77.191.145.122])
  by smtp.gmail.com with ESMTPSA id
- b19-20020a170906729300b00965ec1faf27sm1882678ejl.74.2023.05.21.05.30.57
+ b19-20020a170906729300b00965ec1faf27sm1882678ejl.74.2023.05.21.05.30.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 May 2023 05:30:58 -0700 (PDT)
+ Sun, 21 May 2023 05:31:00 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
@@ -60,20 +60,17 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 1/6] hw/timer/i8254_common: Share "iobase" property via
- base class
-Date: Sun, 21 May 2023 14:30:44 +0200
-Message-Id: <20230521123049.312349-2-shentey@gmail.com>
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v2 3/6] hw/isa/i82378: Remove unused "io" attribute
+Date: Sun, 21 May 2023 14:30:46 +0200
+Message-Id: <20230521123049.312349-4-shentey@gmail.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230521123049.312349-1-shentey@gmail.com>
 References: <20230521123049.312349-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -93,82 +90,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 May 2023 12:31:09 -0000
+X-List-Received-Date: Sun, 21 May 2023 12:31:11 -0000
 
-Both TYPE_KVM_I8254 and TYPE_I8254 have their own but same implementation of
-the "iobase" property. The storage for the property already resides in
-PITCommonState, so also move the property definition there.
+The attribute isn't used since commit 5c9736789b79ea49cd236ac326f0a414f63b1015
+"i82378: Cleanup implementation".
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Acked-by: Michael S. Tsirkin <mst@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/i386/kvm/i8254.c     | 1 -
- hw/timer/i8254.c        | 6 ------
- hw/timer/i8254_common.c | 6 ++++++
- 3 files changed, 6 insertions(+), 7 deletions(-)
+ hw/isa/i82378.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/i386/kvm/i8254.c b/hw/i386/kvm/i8254.c
-index 191a26fa57..6a7383d877 100644
---- a/hw/i386/kvm/i8254.c
-+++ b/hw/i386/kvm/i8254.c
-@@ -301,7 +301,6 @@ static void kvm_pit_realizefn(DeviceState *dev, Error **errp)
- }
+diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
+index 5432ab5065..63e0857208 100644
+--- a/hw/isa/i82378.c
++++ b/hw/isa/i82378.c
+@@ -34,7 +34,6 @@ struct I82378State {
  
- static Property kvm_pit_properties[] = {
--    DEFINE_PROP_UINT32("iobase", PITCommonState, iobase,  -1),
-     DEFINE_PROP_LOSTTICKPOLICY("lost_tick_policy", KVMPITState,
-                                lost_tick_policy, LOST_TICK_POLICY_DELAY),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/timer/i8254.c b/hw/timer/i8254.c
-index c8388ea432..c235496fc9 100644
---- a/hw/timer/i8254.c
-+++ b/hw/timer/i8254.c
-@@ -350,11 +350,6 @@ static void pit_realizefn(DeviceState *dev, Error **errp)
-     pc->parent_realize(dev, errp);
- }
- 
--static Property pit_properties[] = {
--    DEFINE_PROP_UINT32("iobase", PITCommonState, iobase,  -1),
--    DEFINE_PROP_END_OF_LIST(),
--};
--
- static void pit_class_initfn(ObjectClass *klass, void *data)
- {
-     PITClass *pc = PIT_CLASS(klass);
-@@ -366,7 +361,6 @@ static void pit_class_initfn(ObjectClass *klass, void *data)
-     k->get_channel_info = pit_get_channel_info_common;
-     k->post_load = pit_post_load;
-     dc->reset = pit_reset;
--    device_class_set_props(dc, pit_properties);
- }
- 
- static const TypeInfo pit_info = {
-diff --git a/hw/timer/i8254_common.c b/hw/timer/i8254_common.c
-index 050875b497..e4093e2904 100644
---- a/hw/timer/i8254_common.c
-+++ b/hw/timer/i8254_common.c
-@@ -240,6 +240,11 @@ static const VMStateDescription vmstate_pit_common = {
-     }
+     qemu_irq cpu_intr;
+     qemu_irq *isa_irqs_in;
+-    MemoryRegion io;
  };
  
-+static Property pit_common_properties[] = {
-+    DEFINE_PROP_UINT32("iobase", PITCommonState, iobase,  -1),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void pit_common_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -252,6 +257,7 @@ static void pit_common_class_init(ObjectClass *klass, void *data)
-      * done by board code.
-      */
-     dc->user_creatable = false;
-+    device_class_set_props(dc, pit_common_properties);
- }
- 
- static const TypeInfo pit_common_type = {
+ static const VMStateDescription vmstate_i82378 = {
 -- 
 2.40.1
 
