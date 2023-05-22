@@ -1,78 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q150K-0001aw-3e
-	for mharc-qemu-trivial@gnu.org; Mon, 22 May 2023 08:51:12 -0400
+	id 1q15Xy-0006sY-9s
+	for mharc-qemu-trivial@gnu.org; Mon, 22 May 2023 09:25:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1q150H-0001af-CG
- for qemu-trivial@nongnu.org; Mon, 22 May 2023 08:51:09 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1q150D-0003K0-Fg
- for qemu-trivial@nongnu.org; Mon, 22 May 2023 08:51:08 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-30a892c45c4so1040611f8f.3
- for <qemu-trivial@nongnu.org>; Mon, 22 May 2023 05:51:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684759864; x=1687351864;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DvIZJk+U/W30xHARsoBsJOAEImxthluOIX2ieX7XX8Y=;
- b=nxBlHE3bUBWztW+QvHFvHmOTQ0CJ7mRengnbjyhEdl4Oj3rwsBqyDDwoKZ4E6cuSDu
- U6HMegvZPoKUugyrDxPyI1VkutICdf4VvtQz+MlhtMnNVMzMdhT9qCeq4+3dsvSKTzzz
- OUhBvVti6Le9yI5UQdmS/cMOeJ1ar/IoFp52a+ulebQ3mEkze4tjlSHwREK4RxHgK53F
- pSX02HrkcbGWgW/M/1htGoz8gXfEKe0yoaj5yMXobHQMb8r1YCT7dsV9nz6LF6OVTEV0
- u09kSuuTY6NfFyGvMjMQqOzLYnOz/Fuyv9vSFksjub5vZCFFb7izZEshZwVk4CDOqFMa
- KssQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684759864; x=1687351864;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=DvIZJk+U/W30xHARsoBsJOAEImxthluOIX2ieX7XX8Y=;
- b=Li037xyW89Ra3Jwma4Tz7evDKJrUfMGWHc2hZ0+09qFtguV3DPUc2qHERKcT1lJrow
- m8YXBL5aSoTNG0KHAhX3NUlFCCIUMooLyeO/57McwYcjWwEFMUITQq9B5An1txtKI8Jx
- Quf+hE7DKNQWiLEoKdW22949inWAqOIPj8cBYrlbgud50lTaYw7X5IJ/u8P8zS4c8lL1
- T9ueYZb6z1/L69ZG23ioPOlkYTFmJmnjCRgjEwsINNrhwCcZTHHTchlnmnblxYzBvDxY
- h3pmkP9vJJlmAM1svcT28TlArTAYpfhNf+jo+rr8aBU9twXfKwtQEC2Az3dRf5vkrvX+
- MUHw==
-X-Gm-Message-State: AC+VfDxlfT5CDd9quX3JTkp87PNbwkv7GbNtYot6SyPRzHcSSwTmUzbg
- 9e7ZVEKcaorEclK83nEJ7H/5mf5wyj7n8pHPBFrteg==
-X-Google-Smtp-Source: ACHHUZ51a99cFvquAv9b08Y7kEpFf0BLZMcwHng6YAjUGOhsCYTgNakJ4XGKCSBlbHg76fNfWyqkww==
-X-Received: by 2002:a5d:4210:0:b0:306:5149:3aa8 with SMTP id
- n16-20020a5d4210000000b0030651493aa8mr6958190wrq.24.1684759863862; 
- Mon, 22 May 2023 05:51:03 -0700 (PDT)
-Received: from zen.linaroharston ([85.9.250.243])
- by smtp.gmail.com with ESMTPSA id
- l18-20020adffe92000000b003093a412310sm7579657wrr.92.2023.05.22.05.51.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 May 2023 05:51:03 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id E55C51FFBB;
- Mon, 22 May 2023 13:51:02 +0100 (BST)
-References: <20230520205444.887287457E7@zero.eik.bme.hu>
-User-agent: mu4e 1.11.6; emacs 29.0.91
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1q15Xw-0006sL-Qx; Mon, 22 May 2023 09:25:56 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1q15Xt-0001cX-Pm; Mon, 22 May 2023 09:25:56 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id D2CD2748A56;
+ Mon, 22 May 2023 15:25:50 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id A5D16748A4D; Mon, 22 May 2023 15:25:50 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id A3FAE748A59;
+ Mon, 22 May 2023 15:25:50 +0200 (CEST)
+Date: Mon, 22 May 2023 15:25:50 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
+cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [PATCH] bitops.h: Compile out asserts without --enable-debug
-Date: Mon, 22 May 2023 12:26:54 +0100
-In-reply-to: <20230520205444.887287457E7@zero.eik.bme.hu>
-Message-ID: <874jo47cnd.fsf@linaro.org>
+In-Reply-To: <874jo47cnd.fsf@linaro.org>
+Message-ID: <aaa22b3f-d548-5a69-489a-5777a7e98cef@eik.bme.hu>
+References: <20230520205444.887287457E7@zero.eik.bme.hu>
+ <874jo47cnd.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-1053451517-1684761950=:76570"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,78 +49,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 May 2023 12:51:09 -0000
+X-List-Received-Date: Mon, 22 May 2023 13:25:57 -0000
 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-BALATON Zoltan <balaton@eik.bme.hu> writes:
+--3866299591-1053451517-1684761950=:76570
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-> The low level extract and deposit funtions provided by bitops.h are
-> used in performance critical places. It crept into target/ppc via
-> FIELD_EX64 and also used by softfloat so PPC code using a lot of FPU
-> where hardfloat is also disabled is doubly affected.
+On Mon, 22 May 2023, Alex Bennée wrote:
+> BALATON Zoltan <balaton@eik.bme.hu> writes:
+>
+>> The low level extract and deposit funtions provided by bitops.h are
+>> used in performance critical places. It crept into target/ppc via
+>> FIELD_EX64 and also used by softfloat so PPC code using a lot of FPU
+>> where hardfloat is also disabled is doubly affected.
+>
+> Most of these asserts compile out to nothing if the compiler is able to
+> verify the constants are in the range. For example examining
+> the start of float64_add:
+>
+>  Dump of assembler code for function float64_add:
+>  ../../fpu/softfloat.c:
+>  1979	{
+>     0x00000000007ac9b0 <+0>:	movabs $0xfffffffffffff,%r9
+>     0x00000000007ac9ba <+10>:	push   %rbx
+>
+>  /home/alex/lsrc/qemu.git/include/qemu/bitops.h:
+>  396	    return (value >> start) & (~0ULL >> (64 - length));
+>     0x00000000007ac9bb <+11>:	mov    %rdi,%rcx
+>     0x00000000007ac9be <+14>:	shr    $0x34,%rcx
+>     0x00000000007ac9c2 <+18>:	and    $0x7ff,%ecx
+>
+>  ../../fpu/softfloat.c:
+>  1979	{
+>     0x00000000007ac9c8 <+24>:	sub    $0x30,%rsp
+>
+>  /home/alex/lsrc/qemu.git/include/qemu/bitops.h:
+>  396	    return (value >> start) & (~0ULL >> (64 - length));
+>     0x00000000007ac9cc <+28>:	mov    %fs:0x28,%rax
+>     0x00000000007ac9d5 <+37>:	mov    %rax,0x28(%rsp)
+>     0x00000000007ac9da <+42>:	mov    %rdi,%rax
+>     0x00000000007ac9dd <+45>:	and    %r9,%rdi
+>
+>  ../../fpu/softfloat.c:
+>  588	    *r = (FloatParts64) {
+>     0x00000000007ac9e0 <+48>:	mov    %ecx,0x4(%rsp)
+>     0x00000000007ac9e4 <+52>:	mov    %rdi,0x8(%rsp)
+>
+>  /home/alex/lsrc/qemu.git/include/qemu/bitops.h:
+>  396	    return (value >> start) & (~0ULL >> (64 - length));
+>     0x00000000007ac9e9 <+57>:	shr    $0x3f,%rax
+>
+>  ../../fpu/softfloat.c:
+>  588	    *r = (FloatParts64) {
+>     0x00000000007ac9ed <+61>:	mov    %al,0x1(%rsp)
+>
+>  589	        .cls = float_class_unclassified,
+>  590	        .sign = extract64(raw, f_size + e_size, 1),
+>     0x00000000007ac9f1 <+65>:	mov    %rax,%r8
+>
+> I don't see any check and abort steps because all the shift and mask
+> values are known at compile time. The softfloat compilation certainly
+> does have some assert points though:
+>
+> readelf -s ./libqemu-ppc64-softmmu.fa.p/fpu_softfloat.c.o  |grep assert
+>   136: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND g_assertion_mess[...]
+>   138: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND __assert_fail
+>
+> but the references are for the ISRA segments so its tricky to know if
+> they get used or are just there for LTO purposes.
+>
+> If there are hot-paths that show up the extract/deposit functions I
+> suspect a better approach would be to implement _nocheck variants (or
+> maybe _noassert?) and use them where required rather than turning off
+> the assert checking for these utility functions.
 
-Most of these asserts compile out to nothing if the compiler is able to
-verify the constants are in the range. For example examining
-the start of float64_add:
+Just to clarify again, the asserts are still there when compiled with 
+--enable-debug. The patch only turns them off for optimised release builds 
+which I think makes sense if these asserts are to catch programming 
+errors. I think I've also suggested adding noassert versions of these but 
+that wasn't a popular idea and it may also not be easy to convert all 
+places to use that like for example the register fields related usage in 
+target/ppc as that would also affect other places. So this seems to be the 
+simplest and most effective approach.
 
-  Dump of assembler code for function float64_add:
-  ../../fpu/softfloat.c:
-  1979	{
-     0x00000000007ac9b0 <+0>:	movabs $0xfffffffffffff,%r9
-     0x00000000007ac9ba <+10>:	push   %rbx
+The softfloat related usage in these tests I've done seem to mostly come 
+from unpacking and repacking floats in softfloat which is done for every 
+operation, e.g. muladd which mp3 encoding mostly uses does 3 unpacks and 1 
+pack for each call and each unpack is 3 extracts so even small overheads 
+add app quickly. Just 1 muladd will result in 9 extracts and 2 deposits at 
+least plus updating PPC flags for each FPU op adds a bunch more. I did 
+some profiling with perf to find these.
 
-  /home/alex/lsrc/qemu.git/include/qemu/bitops.h:
-  396	    return (value >> start) & (~0ULL >> (64 - length));
-     0x00000000007ac9bb <+11>:	mov    %rdi,%rcx
-     0x00000000007ac9be <+14>:	shr    $0x34,%rcx
-     0x00000000007ac9c2 <+18>:	and    $0x7ff,%ecx
-
-  ../../fpu/softfloat.c:
-  1979	{
-     0x00000000007ac9c8 <+24>:	sub    $0x30,%rsp
-
-  /home/alex/lsrc/qemu.git/include/qemu/bitops.h:
-  396	    return (value >> start) & (~0ULL >> (64 - length));
-     0x00000000007ac9cc <+28>:	mov    %fs:0x28,%rax
-     0x00000000007ac9d5 <+37>:	mov    %rax,0x28(%rsp)
-     0x00000000007ac9da <+42>:	mov    %rdi,%rax
-     0x00000000007ac9dd <+45>:	and    %r9,%rdi
-
-  ../../fpu/softfloat.c:
-  588	    *r =3D (FloatParts64) {
-     0x00000000007ac9e0 <+48>:	mov    %ecx,0x4(%rsp)
-     0x00000000007ac9e4 <+52>:	mov    %rdi,0x8(%rsp)
-
-  /home/alex/lsrc/qemu.git/include/qemu/bitops.h:
-  396	    return (value >> start) & (~0ULL >> (64 - length));
-     0x00000000007ac9e9 <+57>:	shr    $0x3f,%rax
-
-  ../../fpu/softfloat.c:
-  588	    *r =3D (FloatParts64) {
-     0x00000000007ac9ed <+61>:	mov    %al,0x1(%rsp)
-
-  589	        .cls =3D float_class_unclassified,
-  590	        .sign =3D extract64(raw, f_size + e_size, 1),
-     0x00000000007ac9f1 <+65>:	mov    %rax,%r8
-
-I don't see any check and abort steps because all the shift and mask
-values are known at compile time. The softfloat compilation certainly
-does have some assert points though:
-
- readelf -s ./libqemu-ppc64-softmmu.fa.p/fpu_softfloat.c.o  |grep assert
-   136: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND g_assertion_mess=
-[...]
-   138: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND __assert_fail
-
-but the references are for the ISRA segments so its tricky to know if
-they get used or are just there for LTO purposes.
-
-If there are hot-paths that show up the extract/deposit functions I
-suspect a better approach would be to implement _nocheck variants (or
-maybe _noassert?) and use them where required rather than turning off
-the assert checking for these utility functions.
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Regards,
+BALATON Zoltan
+--3866299591-1053451517-1684761950=:76570--
 
