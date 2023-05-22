@@ -1,84 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q0yh7-0000VA-SF
-	for mharc-qemu-trivial@gnu.org; Mon, 22 May 2023 02:06:57 -0400
+	id 1q11ex-0004dB-9p
+	for mharc-qemu-trivial@gnu.org; Mon, 22 May 2023 05:16:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q0yh4-0000Qe-31
- for qemu-trivial@nongnu.org; Mon, 22 May 2023 02:06:55 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q11et-0004cr-JF
+ for qemu-trivial@nongnu.org; Mon, 22 May 2023 05:16:52 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q0yh2-0002EN-1J
- for qemu-trivial@nongnu.org; Mon, 22 May 2023 02:06:53 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-3f601c57d8dso7533835e9.0
- for <qemu-trivial@nongnu.org>; Sun, 21 May 2023 23:06:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q11eg-0006kV-3c
+ for qemu-trivial@nongnu.org; Mon, 22 May 2023 05:16:51 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-510d6b939bfso9942517a12.0
+ for <qemu-trivial@nongnu.org>; Mon, 22 May 2023 02:16:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684735608; x=1687327608;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=42PH/00QoWmPwyG5RAq9Du9zwqNWKsNLPesCLbcp4J0=;
- b=f900Q2VuftbThemhFu2SJgpGaRXrk29p3nbGjjoxRtPJc7gkBnCt8X4DFRy4zf12w0
- AeOEm9A78B9jIGgZdtCFPdWQie0jojHPZNjDudu6Er/d4YMioQ88SpwXV+wd0bj92Uj3
- kDJm8KOfId4K19A3QDD0cgJCi5A2q57SA0IA4+lgxLNPojX7XhfNl19v5MWrwgZtWRLT
- U03lXfGdWVINB0tN+5aNHBIEvSqfzybguZwguI+vmwjh+W61NHVl55D5uN7d16gJiJT/
- omqP2gwZIYPqXePD94/0WAdFlry3dHzMnCudz8aUngWczXH+2WFZ06Cz063i9UMKg+oZ
- scmw==
+ d=linaro.org; s=google; t=1684746996; x=1687338996;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=L3pRn/axMfoLuOpEltPeWJPhUx3egcLdSBFz0Mhn4/M=;
+ b=vK1ejSAKnVUb2Fu9xbuKUepN6BZuRRwq7h1+Y1rY2HitucdW3V1po8yhPTBUnEGYE/
+ GshyYWSyYJa2fOZb192J/Vc+SrBc+nCSWJSHDguz7gv13BKOGKwuHWRmfPW/9A6QVG3H
+ GsRIMadF8qnKZyj9U3h8N5K60bgj2CzOhh4+CZZTuFpSK/b7Ox1lUNEgNPzHqAKMfR91
+ ULHNYvOUWYvWl8uMiIVhsmNnmgWjFPZz1hc1T3AOAa+nkqMxS13JhdmPuDMu0Iu9/0Dh
+ BJU+ZfMG1wwpOfHyqKjG7eMRtAroe61VsNFgIYqqLtt6r/VrVss+LR8H5M7oIPvf1EKh
+ DnCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684735608; x=1687327608;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=42PH/00QoWmPwyG5RAq9Du9zwqNWKsNLPesCLbcp4J0=;
- b=lQw50MDi4Xb9wGtEjVG/KvTAAU2xvzAJBkmThDhVo7fSgnvDaYGspCnXvvwzlo5NXk
- ojI7ykCMoPpGSdAY96ijb++puL5bQy0jUA8MrCzCfSdEZeJHLV5M4PYH7z9XgNn/dQOv
- k/JaAPvg7g6eH5GhUERggPKNq9VJBqe0aRgKXwh6de6oPSUf3iRDRmm8G61IXB0cEjIt
- cw2qGjXySKFojnzhnMJ3CNCzlqxRUq1D+ksghk1fa5d0yqXUX4rl55ivDZqrnSHgWK69
- OdslbyTvYxTJfUNLnxRIvmhY8iQzmqJNOrldl7DqDRQ3Vdun99k4NEWMCi6EcThvR11N
- MO4w==
-X-Gm-Message-State: AC+VfDy4oLXFOpRlh7kuvxeEOiqLuO3cy2PZwyu0jqz6nQbqRkLByuu5
- m8asfXnCaMfGS5vfH6xtukucdA==
-X-Google-Smtp-Source: ACHHUZ7RtomUNjN4IxHCiR3WVGfn2PmHnVOl/V8h+pRFjo8RgIKioENpg/4+S4s4Mtvu6+UZYz+R7A==
-X-Received: by 2002:a05:600c:1e01:b0:3f5:6e6:4285 with SMTP id
- ay1-20020a05600c1e0100b003f506e64285mr6600095wmb.11.1684735608023; 
- Sun, 21 May 2023 23:06:48 -0700 (PDT)
-Received: from [192.168.69.115] ([176.176.153.164])
- by smtp.gmail.com with ESMTPSA id
- n10-20020adfe78a000000b0030796e103a1sm6586280wrm.5.2023.05.21.23.06.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 21 May 2023 23:06:47 -0700 (PDT)
-Message-ID: <f5a97618-fde2-b4a4-f926-ab619b1fd1e0@linaro.org>
-Date: Mon, 22 May 2023 08:06:45 +0200
+ d=1e100.net; s=20221208; t=1684746996; x=1687338996;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=L3pRn/axMfoLuOpEltPeWJPhUx3egcLdSBFz0Mhn4/M=;
+ b=hpuTcA5bk9v0M0EjkpYNqLBS+znxm05bsiPJdJR/HESY0SFuSBzT6w9PTrIHTUe+pZ
+ lh7HWSPPAKKJXWefC1Hpb5rdestAke87HwTkQYvRDP2TuS5vUJ1OzTvxUCWcc181wybR
+ d4wu1+QiVAbFtWr1gGR+cZAN4qOfwZU1ptnhRuTWqDRZ1p3PCPJCxEBN7PFkmsGL6BXD
+ p2vRPjOpuoQ/uoMnaQkFPo99CBHgh+W7dDlLPBGOgmD3wIjSTCkhHLDHaS/p/n4FkHFO
+ DfoqKI4Jhfu96tOB3bmDbXi9WdRJhogV7hZ0MuUgJjKCDjVTay5JbnV5IXoh9zEr6V3F
+ FfyQ==
+X-Gm-Message-State: AC+VfDy6o6UnwjJ3kMjuVvRXfcpih3Q+140cb6tmsMM3Nhl06/niP0bI
+ zdVkBa1zISPXl3dKWAm6+YtFba3MslK7YZZvlMFr3Q==
+X-Google-Smtp-Source: ACHHUZ4vHCu+sCNMLG0f6yE5bYSlbpRxmWriERJ1BEHfY7Vsy46mUt+kVU4cs1CBuC9cRGAnfPj4ZQ/d39GHO7czwoE=
+X-Received: by 2002:aa7:c157:0:b0:50a:276f:a3ba with SMTP id
+ r23-20020aa7c157000000b0050a276fa3bamr7157859edp.34.1684746996080; Mon, 22
+ May 2023 02:16:36 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH v2 6/6] hw/char/parallel: Replace string literals by
- TYPE_ISA_PARALLEL macro
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20230521123049.312349-1-shentey@gmail.com>
- <20230521123049.312349-7-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230521123049.312349-7-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20230520205444.887287457E7@zero.eik.bme.hu>
+In-Reply-To: <20230520205444.887287457E7@zero.eik.bme.hu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 May 2023 10:16:25 +0100
+Message-ID: <CAFEAcA9gAYPpOJ6VyPYwCVyOhMmJMEe4QyGzB57xCbK0MOED5A@mail.gmail.com>
+Subject: Re: [PATCH] bitops.h: Compile out asserts without --enable-debug
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.098,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,19 +74,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 May 2023 06:06:55 -0000
+X-List-Received-Date: Mon, 22 May 2023 09:16:53 -0000
 
-On 21/5/23 14:30, Bernhard Beschow wrote:
-> Rather than using a string literal which is prone to typos let's use a macro
-> instead which is caught by the compiler if mistyped.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> Acked-by: Michael S. Tsirkin <mst@redhat.com>
-> ---
->   hw/char/parallel-isa.c | 3 ++-
->   hw/isa/isa-superio.c   | 3 ++-
->   2 files changed, 4 insertions(+), 2 deletions(-)
+On Sat, 20 May 2023 at 21:55, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>
+> The low level extract and deposit funtions provided by bitops.h are
+> used in performance critical places. It crept into target/ppc via
+> FIELD_EX64 and also used by softfloat so PPC code using a lot of FPU
+> where hardfloat is also disabled is doubly affected.
+>
+> Normally asserts should be compiled out from release builds with
+> -DNDEBUG but that cannot be used in QEMU because some places still
+> rely on asserts instead of proper error checking. To resolve this,
+> compile out asserts from deposit/extract functions in optimised builds
+> which improves performance for target/ppc and possibly others too.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Can we have some figures for performance improvements,
+please? General QEMU policy is that asserts remain,
+even in non-debug builds, so exceptions from that policy
+should come with justification with figures attached.
 
+thanks
+-- PMM
 
